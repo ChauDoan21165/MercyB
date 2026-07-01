@@ -112,7 +112,7 @@ const MercyGuidePanel = lazyWithRetry(
   () => import('./mercy-guide/MercyGuidePanel'),
 );
 const MercyGuidePanelResolved =
-  MercyGuidePanel as unknown as React.ComponentType<any>;
+  MercyGuidePanel as unknown as React.ComponentType<Record<string, unknown>>;
 const KIDS_CONTEXT_PATTERN =
   /\bkids?\b|children|child|toddler|preschool|kindergarten|kids[_-]?l?[123]|kidslevel[123]/i;
 const FULLSCREEN_OVERLAY_Z_INDEX = 1000000;
@@ -392,7 +392,7 @@ export function MercyGuide({
   const yesterdaySummary = useMemo<StudyLogEntry | undefined>(() => undefined, []);
   const todayTotalMinutes = 0;
   const hasHeavyMoods = false;
-  const troubleWords = useMemo<any[]>(
+  const troubleWords = useMemo(
     () =>
       (memory?.pronunciation?.troubleWords ?? []).map((word) => ({
         word,
