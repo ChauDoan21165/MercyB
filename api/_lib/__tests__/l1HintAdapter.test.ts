@@ -6,7 +6,7 @@
 // junk inputs so no malformed OpenAI response can re-break the endpoint.
 
 import { describe, expect, it } from 'vitest';
-import { firstL1HintFromIssues } from '../l1HintAdapter.js';
+import { firstL1HintFromIssues, type GrammarIssueLike } from '../l1HintAdapter.js';
 
 describe('firstL1HintFromIssues — defensive behaviour', () => {
   it('returns null when issues is undefined', () => {
@@ -56,7 +56,7 @@ describe('firstL1HintFromIssues — defensive behaviour', () => {
 
   it('accepts `original` / `after` as alternative field names (OpenAI shape)', () => {
     const hit = firstL1HintFromIssues([
-      { original: 'she study', corrected: 'she studies', reason: 'verb' } as any,
+      { original: 'she study', corrected: 'she studies', reason: 'verb' } as GrammarIssueLike & Record<string, unknown>,
     ]);
     expect(hit).not.toBeNull();
     expect(hit?.weaknessTag).toBe('vi_l1_3rd_person_s');
