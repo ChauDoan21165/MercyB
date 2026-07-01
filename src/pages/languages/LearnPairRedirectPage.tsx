@@ -16,6 +16,10 @@ import { Navigate, useParams } from "react-router-dom";
 /** Target-language slugs that have a dedicated /languages/<slug> page but
  *  are NOT in the AI Tutor's language registry. For these we redirect to
  *  the language-lessons page instead of the AI Tutor. */
+/** Target-language slugs that have a dedicated /languages/<slug> page but
+ *  are NOT in the AI Tutor's language registry. For these we redirect to
+ *  the language-lessons page instead of the AI Tutor.
+ *  Verified against actual /languages/<slug> routes in AppRouter.tsx. */
 const PAGE_ONLY_TARGETS = new Set([
   "indonesian",
   "portuguese",
@@ -23,8 +27,6 @@ const PAGE_ONLY_TARGETS = new Set([
   "hindi",
   "urdu",
   "punjabi",
-  "italian",
-  "swahili",
   "thai",
 ]);
 

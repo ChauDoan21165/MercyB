@@ -37,7 +37,6 @@ import RequireAal2 from "@/components/auth/RequireAal2";
 import { WebOnlyRoute } from "@/router/WebOnlyRoute";
 import { ReviewNavEntry } from "@/features/review";
 import ParentNavEntry from "@/components/parent-view/ParentNavEntry";
-import UnsupportedPairPage from "@/pages/languages/UnsupportedPairPage";
 import { writeAnonymousPair } from "@/lib/languagePair/anonymousPair";
 import type { NativeLang } from "@/lib/onboarding/types";
 
@@ -555,24 +554,6 @@ function EnglishLearnRedirect() {
   return <LazyPage><Home nativeLangOverride={nativeCode} /></LazyPage>;
 }
 
-
-function LanguagePairRedirect() {
-  const { nativeSlug, targetSlug } = useParams<{ nativeSlug: string; targetSlug: string }>();
-  const nativeCode = NATIVE_SLUG_TO_CODE[nativeSlug ?? ""] as NativeLang | undefined;
-  const target = targetSlug ?? "english";
-
-  useEffect(() => {
-    if (nativeCode && target === "english") {
-      writeAnonymousPair(nativeCode, ["en"]);
-    }
-  }, [nativeCode, target]);
-
-  if (nativeCode && target === "english") {
-    return <LazyPage><Home nativeLangOverride={nativeCode} /></LazyPage>;
-  }
-
-  return <UnsupportedPairPage />;
-}
 
 function AuthRedirect() {
   const location = useLocation();
@@ -1173,11 +1154,6 @@ export default function AppRouter() {
           />
           <Route path="/professions/hospitality"
             element={<LazyPage><HospitalityLessonsPage /></LazyPage>}
-          />
-
-          {/* Language-pair redirect: /learn/<native>/<target> → real destination */}
-          <Route path="/learn/:nativeSlug/:targetSlug"
-            element={<LanguagePairRedirect />}
           />
 
           {/* Language learning verticals */}

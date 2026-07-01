@@ -12,7 +12,6 @@ const LANGUAGES: Lang[] = [
 { slug: "spanish", name: "Spanish", nativeName: "Español", flag: "🇪🇸" },
 { slug: "french", name: "French", nativeName: "Français", flag: "🇫🇷" },
 { slug: "german", name: "German", nativeName: "Deutsch", flag: "🇩🇪" },
-{ slug: "italian", name: "Italian", nativeName: "Italiano", flag: "🇮🇹" },
 { slug: "portuguese", name: "Portuguese", nativeName: "Português", flag: "🇵🇹" },
 { slug: "russian", name: "Russian", nativeName: "Русский", flag: "🇷🇺" },
 { slug: "arabic", name: "Arabic", nativeName: "العربية", flag: "🇸🇦" },
@@ -20,7 +19,6 @@ const LANGUAGES: Lang[] = [
 { slug: "urdu", name: "Urdu", nativeName: "اردو", flag: "🇵🇰" },
 { slug: "punjabi", name: "Punjabi", nativeName: "ਪੰਜਾਬੀ", flag: "🇮🇳" },
 { slug: "turkish", name: "Turkish", nativeName: "Türkçe", flag: "🇹🇷" },
-{ slug: "swahili", name: "Swahili", nativeName: "Kiswahili", flag: "🇰🇪" },
 ];
 function courseHref(native: Lang, target: Lang) {
 return `/learn/${native.slug}/${target.slug}`;
