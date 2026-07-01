@@ -55,13 +55,13 @@ export const ProtectedContent = ({
       e.preventDefault();
     };
 
-    element.addEventListener('keydown', handleKeyDown as any);
-    element.addEventListener('contextmenu', handleContextMenu as any);
+    element.addEventListener('keydown', handleKeyDown as EventListener);
+    element.addEventListener('contextmenu', handleContextMenu as EventListener);
     element.addEventListener('selectstart', handleSelectStart);
 
     return () => {
-      element.removeEventListener('keydown', handleKeyDown as any);
-      element.removeEventListener('contextmenu', handleContextMenu as any);
+      element.removeEventListener('keydown', handleKeyDown as EventListener);
+      element.removeEventListener('contextmenu', handleContextMenu as EventListener);
       element.removeEventListener('selectstart', handleSelectStart);
     };
   }, [isAdmin]);
