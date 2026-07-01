@@ -97,7 +97,7 @@ function jaccard(a: Set<string>, b: Set<string>): number {
   return inter / (a.size + b.size - inter);
 }
 
-function bestTitleTokens(entry: any): Set<string> {
+function bestTitleTokens(entry: { title?: string | { en?: string; vi?: string } }): Set<string> {
   const titleStr = typeof entry?.title === 'string' ? entry.title : (entry?.title?.en || entry?.title?.vi || '');
   return tokenize(titleStr);
 }
