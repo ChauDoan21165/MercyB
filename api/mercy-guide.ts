@@ -92,9 +92,9 @@ ${payload}
       confidence: 0.8,
       taskIntent,
     });
-  } catch (err: any) {
+  } catch (err: unknown) {
     return res.status(500).json({
-      error: err.message || 'Server error',
+      error: err instanceof Error ? err.message : 'Server error',
     });
   }
 }
