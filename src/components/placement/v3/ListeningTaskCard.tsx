@@ -1,5 +1,6 @@
+import { useEffect, useState } from "react";
 import { Headphones } from "lucide-react";
-import type { PlacementV3Task } from "@/lib/placement/v3/types";
+import type { PlacementV3MediaStatus, PlacementV3Task } from "@/lib/placement/v3/types";
 import { Input } from "@/components/ui/input";
 import BilingualLabel from "./BilingualLabel";
 import GenericTaskCard from "./GenericTaskCard";
@@ -9,9 +10,23 @@ type Props = {
   task: PlacementV3Task;
   value: string;
   onChange: (value: string) => void;
+  onMediaStatusChange?: (status: PlacementV3MediaStatus) => void;
 };
 
-export function ListeningTaskCard({ task, value, onChange }: Props) {
+export function ListeningTaskCard({ task, value, onChange, onMediaStatusChange }: Props) {
+  const [mediaStatus, setMediaStatus] = useState<PlacementV3MediaStatus>(
+    task.audioUrl ? "loading" : "missing",
+  );
+
+  const updateMediaStatus = (next: PlacementV3MediaStatus) => {
+    setMediaStatus(next);
+    onMediaStatusChange?.(next);
+  };
+
+  useEffect(() => {
+    updateMediaStatus(task.audioUrl ? "loading" : "missing");
+  }, [task.id, task.audioUrl]);
+
   const showVi = useChromeLanguage() === "vi";
 
   return (
@@ -27,7 +42,18 @@ export function ListeningTaskCard({ task, value, onChange }: Props) {
             viClassName="text-xs font-medium text-slate-600"
           />
         </div>
-        <audio controls className="w-full" src={task.audioUrl} aria-label="Listening prompt audio" />
+        <audio
+          controls
+          className="w-full"
+          src={task.audioUrl}
+          aria-label="Listening prompt audio"
+          onLoadedMetadata={(event) => {
+            const duration = event.currentTarget.duration;
+            updateMediaStatus(Number.isFinite(duration) && duration > 0 ? "playable" : "unplayable");
+          }}
+          onCanPlay={() => updateMediaStatus("playable")}
+          onError={() => updateMediaStatus("unplayable")}
+        />
         <p className="mt-2 text-xs font-medium text-slate-600">
           Stub audio may be unavailable locally; the production orchestrator will provide a signed audio URL.
           {showVi && (

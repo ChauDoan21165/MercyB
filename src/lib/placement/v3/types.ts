@@ -16,6 +16,19 @@ export type PlacementV3TaskType =
   | "listening_short"
   | "conversation";
 
+export type PlacementV3AnswerMode =
+  | "typed"
+  | "selected_option"
+  | "recorded_audio"
+  | "typed_fallback";
+
+export type PlacementV3MediaStatus =
+  | "not_required"
+  | "missing"
+  | "loading"
+  | "playable"
+  | "unplayable";
+
 export type BilingualText = {
   en: string;
   vi: string;
@@ -100,6 +113,9 @@ export type PlacementV3ResponsePayload = {
   modality: PlacementV3Modality;
   value: string;
   audioBlob?: Blob | null;
+  answerMode?: PlacementV3AnswerMode;
+  mediaStatus?: PlacementV3MediaStatus;
+  scoreEligible?: boolean;
   viRevealed?: boolean;
   elapsedMs?: number;
 };

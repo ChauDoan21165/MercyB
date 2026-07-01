@@ -14,7 +14,7 @@ import {
   WritingTaskCard,
 } from "@/components/placement/v3";
 import { abandonSession, getResults, resumeSession } from "@/lib/placement/v3/clientStub";
-import type { PlacementV3Session, PlacementV3Task } from "@/lib/placement/v3/types";
+import type { PlacementV3AnswerMode, PlacementV3MediaStatus, PlacementV3Session, PlacementV3Task } from "@/lib/placement/v3/types";
 import {
   usePlacementAudioCapture,
   usePlacementProgress,
@@ -31,6 +31,13 @@ function minAnswerLength(task: PlacementV3Task) {
   return 1;
 }
 
+
+function answerModeFor(task: PlacementV3Task, hasAudio: boolean): PlacementV3AnswerMode {
+  if (task.type === "speaking") return hasAudio ? "recorded_audio" : "typed_fallback";
+  if (task.options?.length) return "selected_option";
+  return "typed";
+}
+
 export default function TestPage() {
   const { sessionId = "" } = useParams();
   const navigate = useNavigate();
@@ -39,6 +46,7 @@ export default function TestPage() {
   const showVi = useChromeLanguage() === "vi";
   const [session, setSession] = useState<PlacementV3Session | null>(null);
   const [answer, setAnswer] = useState("");
+  const [listeningMediaStatus, setListeningMediaStatus] = useState<PlacementV3MediaStatus>("not_required");
   const [loading, setLoading] = useState(true);
   const [abandonOpen, setAbandonOpen] = useState(false);
   const [expiredOpen, setExpiredOpen] = useState(false);
@@ -74,10 +82,19 @@ export default function TestPage() {
   }, [session?.currentTask?.id]);
 
   const task = session?.currentTask ?? null;
+
+  useEffect(() => {
+    if (!task) {
+      setListeningMediaStatus("not_required");
+      return;
+    }
+    setListeningMediaStatus(task.modality === "listening" ? (task.audioUrl ? "loading" : "missing") : "not_required");
+  }, [task?.id, task?.audioUrl, task?.modality]);
   const canSubmit = useMemo(() => {
     if (!task) return false;
+    if (task.modality === "listening" && listeningMediaStatus !== "playable") return false;
     return answer.trim().length >= minAnswerLength(task);
-  }, [answer, task]);
+  }, [answer, listeningMediaStatus, task]);
 
   const handleSubmit = async () => {
     if (!session || !task || !canSubmit) return;
@@ -87,6 +104,9 @@ export default function TestPage() {
       modality: task.modality,
       value: answer,
       audioBlob: audio.blob,
+      answerMode: answerModeFor(task, Boolean(audio.blob)),
+      mediaStatus: task.modality === "listening" ? listeningMediaStatus : "not_required",
+      scoreEligible: task.modality !== "listening" || listeningMediaStatus === "playable",
     });
     if (!result) return;
     setSession(result.session);
@@ -209,7 +229,7 @@ export default function TestPage() {
           <ReadingTaskCard task={task} value={answer} onChange={setAnswer} />
         ) : null}
         {task.modality === "listening" ? (
-          <ListeningTaskCard task={task} value={answer} onChange={setAnswer} />
+          <ListeningTaskCard task={task} value={answer} onChange={setAnswer} onMediaStatusChange={setListeningMediaStatus} />
         ) : null}
         {task.modality === "conversation" ? (
           <ConversationTaskCard task={task} value={answer} onChange={setAnswer} />
