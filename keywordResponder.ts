@@ -19,7 +19,7 @@ function getBilingual(obj: Record<string, unknown>, base: string): { en: string;
 }
 
 // Extremely tolerant bilingual extractor across many schemas
-function getBilingualFlexible(entry: any): { en: string; vi: string } {
+function getBilingualFlexible(entry: Record<string, unknown>): { en: string; vi: string } {
   const paths: Array<[string[], string[]]> = [
     // essay object
     [["essay","en"],["essay","vi"]],
