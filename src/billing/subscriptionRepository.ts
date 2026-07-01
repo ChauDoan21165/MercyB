@@ -57,9 +57,27 @@ export interface EntitlementSnapshot {
   source: SubscriptionRow["provider"] | null;
 }
 
+type SupabaseQueryResponse<T = unknown> = {
+  data?: T | null;
+  error?: { message: string } | null;
+};
+
+type SupabaseResult<T = unknown> = Promise<SupabaseQueryResponse<T>>;
+
+type SupabaseSelectQuery<T = unknown> = PromiseLike<SupabaseQueryResponse<T>> & {
+  eq: (column: string, value: unknown) => SupabaseSelectQuery<T>;
+  order: (
+    column: string,
+    options?: { ascending?: boolean; nullsFirst?: boolean },
+  ) => SupabaseSelectQuery<T>;
+  limit: (count: number) => SupabaseSelectQuery<T>;
+  maybeSingle: <Row = unknown>() => SupabaseResult<Row>;
+  single: <Row = unknown>() => SupabaseResult<Row>;
+};
+
 export type SupabaseLike = {
   from: (table: string) => {
-    select: (columns: string) => any;
+    select: <Row = unknown>(columns: string) => SupabaseSelectQuery<Row>;
     insert: (
       values: unknown,
     ) => Promise<{ data?: unknown; error?: { message: string } | null }>;
@@ -69,6 +87,7 @@ export type SupabaseLike = {
     ) => Promise<{ data?: unknown; error?: { message: string } | null }>;
   };
 };
+
 
 async function getSupabase(): Promise<SupabaseLike> {
   const dynamicImport = Function("path", "return import(path)") as (
