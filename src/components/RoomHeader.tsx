@@ -9,7 +9,7 @@ interface RoomHeaderProps {
   breadcrumbs?: ReactNode;
   showThemeToggle?: boolean;
   className?: string;
-  roomData?: any;
+  roomData?: unknown;
   roomId?: string;
   actions?: ReactNode;
 }
@@ -64,7 +64,7 @@ export function RoomHeader({
               {tier}
             </span>
           )}
-          {roomData && roomId && (
+          {!!roomData && roomId && (
             <RoomAdminTools roomData={roomData} roomId={roomId} />
           )}
           {showThemeToggle && (
