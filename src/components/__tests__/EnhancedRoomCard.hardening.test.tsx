@@ -45,7 +45,7 @@ vi.mock('framer-motion', () => {
         onTap: _ot,
         onTapCancel: _otc,
         ...rest
-      }: any) => React.createElement('div', { 'data-testid': 'motion-div', ...rest }, children),
+      }: unknown) => React.createElement('div', { 'data-testid': 'motion-div', ...rest }, children),
     },
   };
 });
