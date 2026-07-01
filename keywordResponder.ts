@@ -111,14 +111,19 @@ function audioTokens(entry: { audio?: string | { en?: string; vi?: string }; aud
   return tokenize(audioStr);
 }
 
-function findEntryByKeyword(matchedKeyword: string | null, groupKey: string | null, entries: readonly Record<string, unknown>[], keywordsSource: any): any | null {
+function findEntryByKeyword(
+  matchedKeyword: string | null,
+  groupKey: string | null,
+  entries: readonly Record<string, unknown>[],
+  keywordsSource: Record<string, { en?: string[]; vi?: string[] } | undefined>
+): Record<string, unknown> | null {
   if (!Array.isArray(entries)) return null;
 
   const mkTokens = tokenize(String(matchedKeyword || ''));
-  const group = groupKey ? (keywordsSource?.[groupKey] || {}) : {};
+  const group = groupKey ? keywordsSource?.[groupKey] : undefined;
   const groupKeywords: string[] = [
-    ...(Array.isArray(group.en) ? group.en : []),
-    ...(Array.isArray(group.vi) ? group.vi : [])
+    ...(Array.isArray(group?.en) ? group.en : []),
+    ...(Array.isArray(group?.vi) ? group.vi : [])
   ];
   const groupTokenSets = groupKeywords.map(k => tokenize(k));
 
