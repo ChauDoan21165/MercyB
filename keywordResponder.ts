@@ -60,7 +60,7 @@ function findMatchingGroup(message: string, keywords: Record<string, { en?: stri
   if (!keywords || typeof keywords !== "object") return null;
   const msg = normalize(message);
   for (const [groupKey, groupVal] of Object.entries(keywords)) {
-    const g: any = groupVal;
+    const g = groupVal;
     const list: string[] = [
       ...(Array.isArray(g.en) ? g.en : []),
       ...(Array.isArray(g.vi) ? g.vi : []),
