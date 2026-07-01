@@ -111,7 +111,7 @@ function audioTokens(entry: { audio?: string | { en?: string; vi?: string }; aud
   return tokenize(audioStr);
 }
 
-function findEntryByKeyword(matchedKeyword: string | null, groupKey: string | null, entries: any[], keywordsSource: any): any | null {
+function findEntryByKeyword(matchedKeyword: string | null, groupKey: string | null, entries: readonly Record<string, unknown>[], keywordsSource: any): any | null {
   if (!Array.isArray(entries)) return null;
 
   const mkTokens = tokenize(String(matchedKeyword || ''));
