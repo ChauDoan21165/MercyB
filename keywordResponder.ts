@@ -185,7 +185,7 @@ export function keywordRespond(roomId: string, message: string, noKeywordCount: 
   const matchedKeyword = matchResult?.matchedKeyword || null;
   
   // Handle both old (array) and new (object) entry structures
-  let matchedEntry = null;
+  let matchedEntry: Record<string, unknown> | null = null;
   let audioFile: string | undefined;
   let entryId: string | undefined;
   
@@ -202,7 +202,8 @@ export function keywordRespond(roomId: string, message: string, noKeywordCount: 
       if (typeof audio === 'string') {
         audioFile = audio;
       } else if (audio && typeof audio === 'object') {
-        audioFile = audio.en || audio.vi;
+        const audioMap = audio as { en?: string; vi?: string };
+        audioFile = audioMap.en || audioMap.vi;
       }
     }
     // No fallback: if no exact/best match, return unmatched state
