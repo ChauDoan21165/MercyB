@@ -56,7 +56,7 @@ function getBilingualFlexible(entry: Record<string, unknown>): { en: string; vi:
   return { en: '', vi: '' };
 }
 
-function findMatchingGroup(message: string, keywords: any): { groupKey: string; matchedKeyword: string } | null {
+function findMatchingGroup(message: string, keywords: Record<string, { en?: string[]; vi?: string[]; slug_vi?: string[] }>): { groupKey: string; matchedKeyword: string } | null {
   if (!keywords || typeof keywords !== "object") return null;
   const msg = normalize(message);
   for (const [groupKey, groupVal] of Object.entries(keywords)) {
