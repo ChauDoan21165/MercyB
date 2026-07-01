@@ -1256,7 +1256,7 @@ describe("harshEvaluatorPrompts — previous turns rendering", () => {
 
   it("when previousTurns is undefined, no turns section appears", () => {
     const input = makeBaseInput({ harshness: "harsh" });
-    delete (input as any).previousTurns;
+    delete (input as unknown).previousTurns;
     const prompt = buildDiagnosisEvaluatorPrompt(input);
     expect(prompt).not.toContain("CÁC LƯỢT TRƯỚC");
   });
