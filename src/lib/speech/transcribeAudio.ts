@@ -84,7 +84,9 @@ export async function transcribeAudio(
         Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
         ...form.getHeaders(),
       },
-      body: form as any,
+      // form-data's FormData extends Readable (Node stream), not the browser
+      // FormData type that BodyInit expects. Node.js fetch accepts it anyway.
+      body: form as unknown as BodyInit,
     }
   );
 
