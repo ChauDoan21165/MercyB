@@ -237,11 +237,22 @@ describe("Emotion Scripts Coverage", () => {
   it("should have emotion variants for all tiers", async () => {
     const { TIER_EMOTION_SCRIPTS } = await import("../lib/teacher-mercy/tierScripts");
 
-    const tiers = ["level0", "level1", "level2", "level3", "level4", "level5", "level6", "level7", "level8", "level9"];
+    const tiers = [
+      "level0",
+      "level1",
+      "level2",
+      "level3",
+      "level4",
+      "level5",
+      "level6",
+      "level7",
+      "level8",
+      "level9",
+    ] as const satisfies readonly (keyof typeof TIER_EMOTION_SCRIPTS)[];
     const requiredEmotions: EmotionState[] = ["low_mood", "confused", "stressed", "celebrating"];
 
     for (const tier of tiers) {
-      const scripts = (TIER_EMOTION_SCRIPTS as any)[tier];
+      const scripts = TIER_EMOTION_SCRIPTS[tier];
       if (scripts) {
         for (const emotion of requiredEmotions) {
           expect(scripts[emotion]).toBeDefined();
@@ -258,8 +269,8 @@ describe("Snapshot Tests", () => {
     const { TIER_EMOTION_SCRIPTS } = await import("../lib/teacher-mercy/tierScripts");
 
     const allEnglishGreetings: Record<string, string[]> = {};
-    for (const [tier, scripts] of Object.entries(TIER_EMOTION_SCRIPTS as any)) {
-      allEnglishGreetings[tier] = Object.values(scripts as any).map((s: any) => s?.en || "");
+    for (const [tier, scripts] of Object.entries(TIER_EMOTION_SCRIPTS)) {
+      allEnglishGreetings[tier] = Object.values(scripts).map((script) => script.en || "");
     }
 
     expect(allEnglishGreetings).toMatchSnapshot();
@@ -269,8 +280,8 @@ describe("Snapshot Tests", () => {
     const { TIER_EMOTION_SCRIPTS } = await import("../lib/teacher-mercy/tierScripts");
 
     const allVietnameseGreetings: Record<string, string[]> = {};
-    for (const [tier, scripts] of Object.entries(TIER_EMOTION_SCRIPTS as any)) {
-      allVietnameseGreetings[tier] = Object.values(scripts as any).map((s: any) => s?.vi || "");
+    for (const [tier, scripts] of Object.entries(TIER_EMOTION_SCRIPTS)) {
+      allVietnameseGreetings[tier] = Object.values(scripts).map((script) => script.vi || "");
     }
 
     expect(allVietnameseGreetings).toMatchSnapshot();
