@@ -63,7 +63,7 @@ export function RoomErrorState(props: RoomErrorStateProps) {
     try {
       // de-dupe within a session to avoid spam on re-renders
       if (typeof window !== "undefined") {
-        const w = window as any;
+        const w = window as { __mb_room_error_log_seen?: Set<string> };
         if (!w.__mb_room_error_log_seen) w.__mb_room_error_log_seen = new Set<string>();
         const seen: Set<string> = w.__mb_room_error_log_seen;
         if (seen.has(logKey)) return;
