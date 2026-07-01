@@ -9,6 +9,8 @@ import {
 } from "@/lib/chunkReload";
 import { unregisterAllServiceWorkers } from "@/lib/swRecovery";
 
+type ErrorBoundaryRecord = Record<string, unknown> & { name?: unknown; message?: unknown; stack?: unknown };
+
 function safeStringify(x: unknown) {
   try {
     return JSON.stringify(x, null, 2);
@@ -32,8 +34,8 @@ function normalizeError(err: unknown) {
       raw: err,
       rawDump: {
         // sometimes extra fields exist
-        ...Object.getOwnPropertyNames(err).reduce((acc: any, k) => {
-          (acc as any)[k] = (err as any)[k];
+        ...Object.getOwnPropertyNames(err).reduce((acc: ErrorBoundaryRecord, k) => {
+          acc[k] = (err as ErrorBoundaryRecord)[k];
           return acc;
         }, {}),
       },
@@ -41,7 +43,7 @@ function normalizeError(err: unknown) {
   }
 
   // thrown string/object/etc
-  const asAny = err as any;
+  const asAny = err as ErrorBoundaryRecord;
 
   return {
     kind: "NonErrorThrown" as const,
