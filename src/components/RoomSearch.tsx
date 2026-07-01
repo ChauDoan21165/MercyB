@@ -8,6 +8,8 @@ import { searchRooms, type RoomSearchResult } from "@/lib/search/roomSearch";
 import { useAllRooms } from "@/hooks/useRooms";
 import { getAllRoomsAsync } from "@/lib/rooms/roomRegistry";
 
+type RoomSearchRecord = { domain?: string; tier?: string; metadata?: { domain?: string; tier?: string }; content?: { domain?: string; tier?: string } };
+
 // Pre-warm the room registry during browser idle time so the first
 // keystroke searches a populated index instead of paying the cold-start
 // fetch. getAllRoomsAsync() is idempotent (cache + in-flight-promise
@@ -159,8 +161,8 @@ export const RoomSearch = () => {
             ) : results.length > 0 ? (
               results.map((room) => {
                 // Safe access if RoomSearchResult shape changes late-stage
-                const domain = (room as any)?.domain ?? "other";
-                const tier = (room as any)?.tier ?? "level0";
+                const domain = (room as RoomSearchRecord)?.domain ?? "other";
+                const tier = (room as RoomSearchRecord)?.tier ?? "level0";
 
                 return (
                   <button
