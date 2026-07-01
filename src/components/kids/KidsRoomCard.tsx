@@ -1,3 +1,4 @@
+import type { ComponentType } from "react";
 import { Card } from "@/components/ui/card";
 import { CheckCircle2, GraduationCap } from "lucide-react";
 import * as LucideIcons from "lucide-react";
@@ -22,7 +23,7 @@ const KIDS_COLORS = ['#B91C1C', '#1D4ED8', '#047857']; // Dark red, dark blue, d
 export const KidsRoomCard = ({ room, index, onClick, useColorTheme = true, isLocked = false }: KidsRoomCardProps) => {
   const getIconComponent = (iconName: string | null) => {
     if (!iconName) return GraduationCap;
-    const Icon = (LucideIcons as any)[iconName];
+    const Icon = (LucideIcons as unknown as Record<string, ComponentType<{ className?: string }>>)[iconName];
     return Icon || GraduationCap;
   };
 
