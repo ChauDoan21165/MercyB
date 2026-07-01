@@ -41,7 +41,7 @@ function getBilingualFlexible(entry: Record<string, unknown>): { en: string; vi:
     [["vi_en"],["vi_vi"]],
   ];
 
-  const readPath = (root: any, path: string[]) => path.reduce((acc, key) => (acc ? acc[key] : undefined), root);
+  const readPath = (root: unknown, path: string[]) => path.reduce((acc, key) => (acc ? (acc as Record<string, unknown>)[key] : undefined), root);
 
   for (const [enPath, viPath] of [...paths, ...singles]) {
     const en = String(readPath(entry, enPath) || "").trim();
