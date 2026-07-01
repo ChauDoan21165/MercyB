@@ -127,7 +127,7 @@ function findEntryByKeyword(
   ];
   const groupTokenSets = groupKeywords.map(k => tokenize(k));
 
-  let best: { entry: any; score: number } | null = null;
+  let best: { entry: Record<string, unknown>; score: number } | null = null;
 
   for (const entry of entries) {
     const tTokens = bestTitleTokens(entry);
@@ -160,11 +160,11 @@ function findRelatedRooms(message: string, currentRoomId: string): string[] {
   
   // Check cross-topic recommendations
   if (crossTopicData?.recommendations) {
-    crossTopicData.recommendations.forEach((rec: any) => {
+    crossTopicData.recommendations.forEach((rec: { keyword: string; rooms?: Array<{ roomId: string; relevance: string; roomNameEn: string; roomNameVi: string }> }) => {
       const keyword = normalize(rec.keyword);
       if (msg.includes(keyword)) {
         // Find rooms that are NOT the current room
-        rec.rooms?.forEach((room: any) => {
+        rec.rooms?.forEach((room) => {
           if (room.roomId !== currentRoomId && room.relevance === 'primary') {
             relatedRooms.add(`${room.roomNameEn} (${room.roomNameVi})`);
           }
@@ -177,7 +177,7 @@ function findRelatedRooms(message: string, currentRoomId: string): string[] {
 }
 
 export function keywordRespond(roomId: string, message: string, noKeywordCount: number = 0, matchedEntryCount: number = 0): { text: string; matched: boolean; relatedRooms?: string[]; audioFile?: string; entryId?: string } {
-  const roomData = roomDataMap[roomId] as any;
+  const roomData = roomDataMap[roomId] as { keywords?: Record<string, string[] | { en?: string[]; vi?: string[] }>; keywords_dict?: Record<string, { en?: string[]; vi?: string[] } | undefined>; entries?: Record<string, Record<string, unknown>> | Array<Record<string, unknown>> };
   if (!roomData) throw new Error("Room data not found");
 
   const matchResult = findMatchingGroup(message, roomData.keywords || roomData.keywords_dict);
@@ -208,7 +208,7 @@ export function keywordRespond(roomId: string, message: string, noKeywordCount: 
     // No fallback: if no exact/best match, return unmatched state
   } else {
     // Old structure: entries is an array
-    const keywordsSource: any = roomData.keywords || (roomData as any).keywords_dict || {};
+    const keywordsSource: Record<string, { en?: string[]; vi?: string[] } | undefined> = roomData.keywords_dict || {};
     matchedEntry = findEntryByKeyword(matchedKeyword, groupKey, roomData.entries || [], keywordsSource);
 
     // No fallback selection of first entry
