@@ -11,7 +11,7 @@ type LegendContentProps = {
   verticalAlign?: "top" | "middle" | "bottom";
 };
 
-type AnyPayload = any[];
+type AnyPayload = unknown[];
 
 // Tooltip typing also drifts across Recharts versions.
 // Keep this wrapper permissive so we don't fight library types.
@@ -100,7 +100,7 @@ ChartContainer.displayName = "Chart";
 
 const ChartStyle = ({ id, config }: { id: string; config: ChartConfig }) => {
   const colorConfig = Object.entries(config).filter(
-    ([_, cfg]) => (cfg as any).theme || (cfg as any).color
+    ([_, cfg]) => (cfg as unknown).theme || (cfg as unknown).color
   );
 
   if (!colorConfig.length) {
@@ -112,7 +112,7 @@ const ChartStyle = ({ id, config }: { id: string; config: ChartConfig }) => {
     .map(([theme, prefix]) => {
       const vars = colorConfig
         .map(([key, itemConfig]) => {
-          const cfg: any = itemConfig as any;
+          const cfg: unknown = itemConfig as unknown;
           const t = cfg.theme as Record<string, string> | undefined;
           const color =
             (t ? t[theme as keyof typeof THEMES] : undefined) ?? cfg.color;
@@ -214,7 +214,7 @@ const ChartTooltipContent = React.forwardRef<HTMLDivElement, TooltipContentProps
       >
         {!nestLabel ? tooltipLabel : null}
         <div className="grid gap-1.5">
-          {safePayload.map((item: any, index: number) => {
+          {safePayload.map((item: unknown, index: number) => {
             const key = `${nameKey || item?.name || item?.dataKey || "value"}`;
             const itemConfig = getPayloadConfigFromPayload(config, item, key);
             const indicatorColor = color || item?.payload?.fill || item?.color;
@@ -326,7 +326,7 @@ const ChartLegendContent = React.forwardRef<
         )}
         {...divProps}
       >
-        {safePayload.map((item: any, index: number) => {
+        {safePayload.map((item: unknown, index: number) => {
           const key = `${nameKey || item?.dataKey || "value"}`;
           const itemConfig = getPayloadConfigFromPayload(config, item, key);
 
@@ -365,7 +365,7 @@ function getPayloadConfigFromPayload(
     return undefined;
   }
 
-  const p: any = payload as any;
+  const p: unknown = payload as unknown;
 
   const payloadPayload =
     "payload" in p && typeof p.payload === "object" && p.payload !== null
