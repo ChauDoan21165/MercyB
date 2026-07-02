@@ -10,7 +10,7 @@ const mockEq = vi.fn();
 const mockSelect = vi.fn();
 const mockMaybeSingle = vi.fn();
 
-const profileChain: any = {
+const profileChain: unknown = {
   select: (...args: unknown[]) => {
     mockSelect(...args);
     return profileChain;
@@ -25,7 +25,7 @@ const profileChain: any = {
   },
   maybeSingle: () => mockMaybeSingle(),
 };
-const telemetryChain: any = {
+const telemetryChain: unknown = {
   insert: (...args: unknown[]) => {
     mockInsert(...args);
     return Promise.resolve({ error: null });
