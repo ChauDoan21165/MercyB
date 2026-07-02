@@ -59,7 +59,7 @@ export type IndonesianDialogueLine = {
 //   fill-blank:  question, answer, hint_vi?, hint_en?
 //   matching:    pairs, instruction, instruction_en?
 //   translation: vietnamese, indonesian, english?, hint_vi?, hint_en?
-export type IndonesianExercise = Record<string, any>;
+export type IndonesianExercise = Record<string, unknown>;
 
 export type IndonesianCefrLevel = "A1" | "A2" | "B1" | "B2" | "C1" | "C2";
 

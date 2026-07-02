@@ -60,7 +60,7 @@ export type DialogueLine = {
 };
 
 // Loosely typed so per-type fields (fill-blank, translation, answer-key) vary.
-export type Exercise = Record<string, any>;
+export type Exercise = Record<string, unknown>;
 
 export type ItalianCefrLevel = "A1" | "A2" | "B1" | "B2" | "C1" | "C2";
 

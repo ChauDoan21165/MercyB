@@ -60,7 +60,7 @@ export type DialogueLine = {
   en?: string;
 };
 
-export type Exercise = Record<string, any>;
+export type Exercise = Record<string, unknown>;
 
 export type IdiomGloss = {
   idiom: string;

@@ -47,7 +47,7 @@ export type DialogueLine = {
 //   fill-blank:  question, answer, hint_vi?, hint_en?
 //   matching:    pairs, instruction, instruction_en?
 //   translation: vietnamese, indonesian, english?
-export type Exercise = Record<string, any>;
+export type Exercise = Record<string, unknown>;
 
 export type IndonesianLesson = {
   id: string;
