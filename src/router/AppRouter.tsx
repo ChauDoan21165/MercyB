@@ -122,6 +122,8 @@ const PlacementV3SkipConfirmPage = lazyWithRetry(() => import("@/pages/placement
 import PlacementRouteShell from "@/pages/placement/v3/PlacementRouteShell";
 import ThaiLessonsPage from "@/pages/languages/ThaiLessonsPage";
 
+import SwahiliLessonsPage from "@/pages/languages/SwahiliLessonsPage";
+
 // Lane D — Spaced-repetition Review module (flag-gated, default off).
 const ReviewApp           = lazyWithRetry(() => import("@/features/review/ReviewApp"));
 
@@ -1903,7 +1905,8 @@ export default function AppRouter() {
 
           <Route path="*" element={<NotFound />} />
       </Route>
-    </Routes>
+              <Route path="/languages/swahili" element={<SwahiliLessonsPage />} />
+</Routes>
     <FeedbackBar />
     </>
   );

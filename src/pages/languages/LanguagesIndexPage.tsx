@@ -312,6 +312,17 @@ export default function LanguagesIndexPage() {
 
         <AITutorCtaBanner uiLang={uiLang} target="en" />
       </header>
+      <div className="mt-6 grid gap-3">
+        <Link
+          to="/languages/swahili"
+          data-testid="language-card-swahili"
+          className="rounded-lg border border-slate-200 bg-white p-4 shadow-sm transition hover:border-emerald-300 hover:shadow-md"
+        >
+          <span className="block font-semibold text-slate-950">Swahili</span>
+          <span className="mt-1 block text-sm text-slate-600">Kiswahili</span>
+        </Link>
+      </div>
+
 
       <div className="grid gap-3 sm:grid-cols-2">
         {CARDS.map((card) => (
