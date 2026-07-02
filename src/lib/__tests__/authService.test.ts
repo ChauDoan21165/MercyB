@@ -5,7 +5,7 @@ import { describe, it, expect, vi, beforeEach } from "vitest";
 // Shared Supabase mock (hoist-safe + TS-safe)
 // --------------------
 vi.mock("@/lib/supabaseClient", async () => {
-  const mod = await vi.importActual<any>("@/test/mocks/supabaseMock");
+  const mod = await vi.importActual<unknown>("@/test/mocks/supabaseMock");
   const supabase = mod.createSupabaseMock();
 
   return {
@@ -15,7 +15,7 @@ vi.mock("@/lib/supabaseClient", async () => {
 });
 
 import * as SupaMod from "@/lib/supabaseClient";
-const supabaseMock = (SupaMod as any).__mock;
+const supabaseMock = (SupaMod as unknown).__mock;
 
 import {
   FAIL_CLOSED_ENTITLEMENT,
