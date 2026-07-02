@@ -24,7 +24,7 @@ beforeAll(() => {
 });
 
 vi.mock("@/lib/supabaseClient", async () => {
-  const mod = await vi.importActual<any>("@/test/mocks/supabaseMock");
+  const mod = await vi.importActual<unknown>("@/test/mocks/supabaseMock");
   const supabase = mod.createSupabaseMock();
   // verifyOtp isn't part of the shared mock surface yet — add it here
   // so each test can override per-scenario without polluting other
@@ -45,7 +45,7 @@ vi.mock("@/lib/security/mfaClient", () => ({
 
 import EmailBlock from "@/components/auth/EmailBlock";
 import * as SupaMod from "@/lib/supabaseClient";
-const supabaseMock = (SupaMod as any).__mock;
+const supabaseMock = (SupaMod as unknown).__mock;
 
 function renderBlock() {
   const onAuthed = vi.fn().mockResolvedValue(undefined);
