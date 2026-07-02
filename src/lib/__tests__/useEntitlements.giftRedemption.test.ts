@@ -19,13 +19,13 @@ import { describe, it, expect, vi, beforeEach } from "vitest";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 vi.mock("@/lib/supabaseClient", async () => {
-  const mod = await vi.importActual<any>("@/test/mocks/supabaseMock");
+  const mod = await vi.importActual<unknown>("@/test/mocks/supabaseMock");
   const supabase = mod.createSupabaseMock();
   return { supabase, __mock: supabase };
 });
 
 vi.mock("@/lib/authService", async () => {
-  const actual = await vi.importActual<any>("@/lib/authService");
+  const actual = await vi.importActual<unknown>("@/lib/authService");
   return {
     ...actual,
     fetchCurrentEntitlement: vi.fn(),
