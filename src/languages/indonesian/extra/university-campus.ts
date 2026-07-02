@@ -42,7 +42,7 @@ export type IndonesianDialogueLine = {
 };
 
 // Loosely typed so per-type fields (translation, matching, fill_blank) can vary.
-export type IndonesianExercise = Record<string, any>;
+export type IndonesianExercise = Record<string, unknown>;
 
 export type IndonesianCefrLevel = "A1" | "A2" | "B1" | "B2" | "C1" | "C2";
 
