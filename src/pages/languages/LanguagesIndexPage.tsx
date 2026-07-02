@@ -321,6 +321,14 @@ export default function LanguagesIndexPage() {
           <span className="block font-semibold text-slate-950">Swahili</span>
           <span className="mt-1 block text-sm text-slate-600">Kiswahili</span>
         </Link>
+        <Link
+          to="/languages/italian"
+          data-testid="language-card-italian"
+          className="rounded-lg border border-slate-200 bg-white p-4 shadow-sm transition hover:border-emerald-300 hover:shadow-md"
+        >
+          <span className="block font-semibold text-slate-950">Italian</span>
+          <span className="mt-1 block text-sm text-slate-600">Italiano</span>
+        </Link>
       </div>
 
 
