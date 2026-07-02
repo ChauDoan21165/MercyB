@@ -46,7 +46,7 @@ type SwahiliLesson = {
   intro_en: string;
   sentences: SwahiliSentence[];
   vocabulary: SwahiliVocabEntry[];
-  exercises?: Array<Record<string, any>>;
+  exercises?: Array<Record<string, unknown>>;
   cultural_notes_vi: string;
   cultural_notes_en: string;
   tip_advice_vi: string;
