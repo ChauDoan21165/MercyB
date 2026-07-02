@@ -20,9 +20,9 @@ export function useBatteryStatus() {
     let cleanup: (() => void) | undefined;
 
     if ("getBattery" in navigator) {
-      (navigator as any)
+      (navigator as unknown)
         .getBattery()
-        .then((battery: any) => {
+        .then((battery: unknown) => {
           const updateBatteryStatus = () => {
             setBatteryLevel(battery.level * 100);
             setIsCharging(Boolean(battery.charging));
@@ -97,13 +97,13 @@ export function useBackgroundPause() {
 export function requestIdleCallbackPolyfill(callback: () => void, timeout = 1000) {
   if (typeof window === "undefined") {
     // SSR fallback
-    return setTimeout(callback, 1) as any;
+    return setTimeout(callback, 1) as unknown;
   }
 
   if ("requestIdleCallback" in window) {
-    return (window as any).requestIdleCallback(callback, { timeout });
+    return (window as unknown).requestIdleCallback(callback, { timeout });
   } else {
-    return setTimeout(callback, 1) as any;
+    return setTimeout(callback, 1) as unknown;
   }
 }
 
@@ -117,7 +117,7 @@ export function cancelIdleCallbackPolyfill(id: number) {
   }
 
   if ("cancelIdleCallback" in window) {
-    (window as any).cancelIdleCallback(id);
+    (window as unknown).cancelIdleCallback(id);
   } else {
     clearTimeout(id);
   }
