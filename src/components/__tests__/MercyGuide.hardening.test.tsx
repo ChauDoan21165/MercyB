@@ -19,11 +19,11 @@ import { render, screen, fireEvent, cleanup, act } from '@testing-library/react'
 // safe to reference inside the hoisted vi.mock factories below).
 // ---------------------------------------------------------------------------
 const mockH = vi.hoisted(() => {
-  const panelState: { last: any; renderCount: number } = {
+  const panelState: { last: unknown; renderCount: number } = {
     last: null,
     renderCount: 0,
   };
-  const MockMercyPanel = (props: any) => {
+  const MockMercyPanel = (props: unknown) => {
     panelState.last = props;
     panelState.renderCount += 1;
     return null;
@@ -32,7 +32,7 @@ const mockH = vi.hoisted(() => {
   return {
     guideState: { isEnabled: true } as { isEnabled: boolean },
     authState: { user: null as null | { id: string } },
-    profileState: { data: null as any },
+    profileState: { data: null as unknown },
     memory: {
       pronunciation: { troubleWords: ['through', 'world'] },
       writing: {} as Record<string, unknown>,
@@ -148,7 +148,7 @@ class FakePointerEvent extends Event {
   clientY: number;
   pointerId: number;
   button: number;
-  constructor(type: string, props: any = {}) {
+  constructor(type: string, props: unknown = {}) {
     super(type, props);
     this.clientX = props.clientX ?? 0;
     this.clientY = props.clientY ?? 0;
@@ -156,9 +156,9 @@ class FakePointerEvent extends Event {
     this.button = props.button ?? 0;
   }
 }
-if (typeof (globalThis as any).PointerEvent === 'undefined') {
-  (globalThis as any).PointerEvent = FakePointerEvent as any;
-  (window as any).PointerEvent = FakePointerEvent as any;
+if (typeof (globalThis as unknown).PointerEvent === 'undefined') {
+  (globalThis as unknown).PointerEvent = FakePointerEvent as unknown;
+  (window as unknown).PointerEvent = FakePointerEvent as unknown;
 }
 
 // ---------------------------------------------------------------------------
@@ -183,7 +183,7 @@ function renderGuide(props: Record<string, unknown> = {}) {
       roomId="room1"
       roomTitle="Daily Life"
       tier="A1"
-      {...(props as any)}
+      {...(props as unknown)}
     />,
   );
 }
@@ -633,7 +633,7 @@ describe('MercyGuide — teacher revision submission', () => {
 
   it('calls the grammar API with the revised text and stores the result', async () => {
     openAdult({ roomId: 'room42', roomTitle: 'Travel', contentEn: 'Ctx' });
-    let result: any;
+    let result: unknown;
     await act(async () => {
       result = await panel().onSubmitTeacherRevision({
         previousText: 'me go store',
@@ -641,7 +641,7 @@ describe('MercyGuide — teacher revision submission', () => {
       });
     });
     expect(mockH.analyze).toHaveBeenCalledTimes(1);
-    const arg = ((mockH.analyze.mock.calls[0] as unknown as unknown[]) as unknown as [unknown])[0] as any;
+    const arg = ((mockH.analyze.mock.calls[0] as unknown as unknown[]) as unknown as [unknown])[0] as unknown;
     expect(arg.text).toBe('I went to the store');
     expect(arg.roomId).toBe('room42');
     expect(arg.isTeacherInitiated).toBe(true);
@@ -659,7 +659,7 @@ describe('MercyGuide — teacher revision submission', () => {
 
   it('returns null and skips the API for empty revised text', async () => {
     openAdult();
-    let result: any = 'unset';
+    let result: unknown = 'unset';
     await act(async () => {
       result = await panel().onSubmitTeacherRevision({
         previousText: 'x',
@@ -673,7 +673,7 @@ describe('MercyGuide — teacher revision submission', () => {
   it('returns null and skips the API entirely in kids mode', async () => {
     renderGuide({ roomId: 'kids_l1' });
     act(() => fireEvent.keyDown(getBubble()!, { key: 'Enter' }));
-    let result: any = 'unset';
+    let result: unknown = 'unset';
     await act(async () => {
       result = await panel().onSubmitTeacherRevision({
         previousText: 'a',
