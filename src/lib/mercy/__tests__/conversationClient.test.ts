@@ -33,7 +33,7 @@ let mockResultData: unknown = null;
 let mockResultError: unknown = null;
 
 function chain() {
-  const c: any = {
+  const c: unknown = {
     insert: (payload: unknown) => {
       recorded.insertPayload = payload;
       return c;
