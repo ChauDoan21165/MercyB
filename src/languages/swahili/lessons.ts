@@ -152,7 +152,7 @@ export type SwahiliLessonInput = {
   tip_advice_en?: string;
   vocabulary?: SwahiliVocabInput[];
   dialogue?: SwahiliDialogueInput[];
-  exercises?: Array<Record<string, any>>;
+  exercises?: Array<Record<string, unknown>>;
   dialogue_long?: SwahiliDialogueInput[];
   roleplay_prompts?: string[];
   roleplay_prompts_en?: string[];

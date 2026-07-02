@@ -21,6 +21,14 @@ import type {
   NormalizedLesson,
 } from "@/components/languages/LessonRenderer.types";
 
+type NormalizeUnknownRecord = Record<string, unknown>;
+
+const normalizeStringOrUndefined = (value: unknown): string | undefined =>
+  typeof value === "string" ? value : undefined;
+
+const normalizeString = (value: unknown): string =>
+  typeof value === "string" ? value : "";
+
 // ── Permissive input shape ──────────────────────────────────────────────
 // Union of every field used across the six Italian level files. Only the
 // fields the renderer consumes are typed; per-file extras (e.g. `category`)
@@ -74,7 +82,7 @@ export type ItalianLessonInput = {
   tip_advice_en?: string;
   vocabulary?: ItalianVocabInput[];
   dialogue?: ItalianDialogueInput[];
-  exercises?: Array<Record<string, any>>;
+  exercises?: Array<Record<string, unknown>>;
   dialogue_long?: ItalianDialogueInput[];
   roleplay_prompts?: string[];
   roleplay_prompts_en?: string[];
@@ -118,7 +126,7 @@ export function normalizeItalianLesson(
       };
     }),
     vocabulary: lesson.vocabulary?.map((v) => ({
-      native: v.word,
+      native: normalizeString(v.word),
       en: v.en,
       vi: v.vi,
       phonetic: v.pronunciation_vi,
@@ -126,7 +134,7 @@ export function normalizeItalianLesson(
     })),
     dialogue: lesson.dialogue?.map((d) => ({
       speaker: d.speaker,
-      native: d.text,
+      native: normalizeString(d.text),
       en: d.en,
       vi: d.vi,
     })),
@@ -143,14 +151,14 @@ export function normalizeItalianLesson(
       idiom: g.idiom,
       literal: g.literal,
       meaning: g.meaning,
-      example: g.example,
+      example: normalizeStringOrUndefined(g.example),
       literalEn: g.literal_en,
       meaningEn: g.meaning_en,
       exampleEn: g.example_en,
     })),
     dialogueLong: lesson.dialogue_long?.map((d) => ({
       speaker: d.speaker,
-      native: d.text,
+      native: normalizeString(d.text),
       en: d.en,
       vi: d.vi,
     })),
@@ -175,9 +183,9 @@ function normalizeItalianExercises(
       if (kind === "matching") {
         out.push({
           kind: "matching",
-          instruction: ex.instruction_vi,
-          instructionEn: ex.instruction_en,
-          pairs: ex.items.map((it: any) => ({
+          instruction: normalizeStringOrUndefined(ex.instruction_vi),
+          instructionEn: normalizeStringOrUndefined(ex.instruction_en),
+          pairs: (ex.items as NormalizeUnknownRecord[]).map((it) => ({
             a: String(it.prompt ?? ""),
             b: String(it.answer ?? ""),
           })),
@@ -209,17 +217,17 @@ function normalizeItalianExercises(
         kind: "fill-blank",
         question: String(ex.question ?? ""),
         answer: String(ex.answer ?? ""),
-        hint: ex.hint_vi,
-        hintEn: ex.hint_en,
+        hint: normalizeStringOrUndefined(ex.hint_vi),
+        hintEn: normalizeStringOrUndefined(ex.hint_en),
       });
     } else if (kind === "matching") {
       // Flat-shape pairs are tuples: [["it", "vi"], ...].
-      const raw: any[] = Array.isArray(ex.pairs) ? ex.pairs : [];
+      const raw: unknown[] = Array.isArray(ex.pairs) ? ex.pairs : [];
       out.push({
         kind: "matching",
-        instruction: ex.instruction ?? ex.instruction_vi,
-        instructionEn: ex.instruction_en,
-        pairs: raw.map((p: any) =>
+        instruction: normalizeStringOrUndefined(ex.instruction ?? ex.instruction_vi),
+        instructionEn: normalizeStringOrUndefined(ex.instruction_en),
+        pairs: (raw as NormalizeUnknownRecord[]).map((p) =>
           Array.isArray(p)
             ? { a: String(p[0] ?? ""), b: String(p[1] ?? "") }
             : {
@@ -232,7 +240,7 @@ function normalizeItalianExercises(
       out.push({
         kind: "translation",
         vi: String(ex.vietnamese ?? ""),
-        en: ex.english,
+        en: normalizeStringOrUndefined(ex.english),
         native: String(ex.italian ?? ""),
       });
     }

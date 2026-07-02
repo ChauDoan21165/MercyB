@@ -10,6 +10,13 @@ import type {
   NormalizedLesson,
 } from "@/components/languages/LessonRenderer.types";
 import { lessonAudioBase } from "@/lib/lessonAudio";
+type NormalizeUnknownRecord = Record<string, unknown>;
+
+const normalizeStringOrUndefined = (value: unknown): string | undefined =>
+  typeof value === "string" ? value : undefined;
+
+const normalizeString = (value: unknown): string =>
+  typeof value === "string" ? value : "";
 
 // Stable hash for FrenchLesson string ids ("french_greetings_intro" etc.)
 // so the React key is deterministic without requiring callers to pass an
@@ -30,20 +37,20 @@ export function normalizeFrenchLesson(
     title: { vi: lesson.title_vi, en: lesson.title_en },
     sentences: (lesson.sentences ?? []).map((s) => ({
       // French content lives in s.en for historical reasons
-      native: s.en,
+      native: normalizeString(s.en),
       vi: s.vi,
       pronunciationFocus: s.pronunciation_focus,
       pronunciationFocusEn: s.pronunciation_focus_en,
     })),
     vocabulary: lesson.vocabulary?.map((v) => ({
-      native: v.word,
+      native: normalizeString(v.word),
       en: v.en,
       vi: v.vi,
       phonetic: v.pronunciation_vi,
     })),
     dialogue: lesson.dialogue?.map((d) => ({
       speaker: d.speaker,
-      native: d.text,
+      native: normalizeString(d.text),
       en: d.en,
       vi: d.vi,
     })),
@@ -60,14 +67,14 @@ export function normalizeFrenchLesson(
       idiom: g.idiom,
       literal: g.literal,
       meaning: g.meaning,
-      example: g.example,
+      example: normalizeStringOrUndefined(g.example),
       literalEn: g.literal_en,
       meaningEn: g.meaning_en,
       exampleEn: g.example_en,
     })),
     dialogueLong: lesson.dialogue_long?.map((d) => ({
       speaker: d.speaker,
-      native: d.text,
+      native: normalizeString(d.text),
       en: d.en,
       vi: d.vi,
     })),
@@ -88,9 +95,9 @@ function normalizeFrenchExercises(
       if (kind === "matching") {
         out.push({
           kind: "matching",
-          instruction: ex.instruction_vi,
-          instructionEn: ex.instruction_en,
-          pairs: ex.items.map((it: any) => ({
+          instruction: normalizeStringOrUndefined(ex.instruction_vi),
+          instructionEn: normalizeStringOrUndefined(ex.instruction_en),
+          pairs: (ex.items as NormalizeUnknownRecord[]).map((it) => ({
             a: String(it.prompt ?? ""),
             b: String(it.answer ?? ""),
           })),
@@ -125,12 +132,12 @@ function normalizeFrenchExercises(
       });
     } else if (kind === "matching") {
       // Flat-shape pairs are tuples: [["a", "b"], ...] in 21-50 data
-      const raw: any[] = Array.isArray(ex.pairs) ? ex.pairs : [];
+      const raw: unknown[] = Array.isArray(ex.pairs) ? ex.pairs : [];
       out.push({
         kind: "matching",
-        instruction: ex.instruction,
-        instructionEn: ex.instruction_en,
-        pairs: raw.map((p: any) =>
+        instruction: normalizeStringOrUndefined(ex.instruction),
+        instructionEn: normalizeStringOrUndefined(ex.instruction_en),
+        pairs: (raw as NormalizeUnknownRecord[]).map((p) =>
           Array.isArray(p)
             ? { a: String(p[0] ?? ""), b: String(p[1] ?? "") }
             : {

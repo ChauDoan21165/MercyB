@@ -21,6 +21,14 @@ import type {
   NormalizedLesson,
 } from "@/components/languages/LessonRenderer.types";
 
+type NormalizeUnknownRecord = Record<string, unknown>;
+
+const normalizeStringOrUndefined = (value: unknown): string | undefined =>
+  typeof value === "string" ? value : undefined;
+
+const normalizeString = (value: unknown): string =>
+  typeof value === "string" ? value : "";
+
 // ── Permissive input shape ──────────────────────────────────────────
 
 type SwahiliSentenceInput = {
@@ -77,7 +85,7 @@ export type SwahiliLessonInput = {
   tip_advice_en?: string;
   vocabulary?: SwahiliVocabInput[];
   dialogue?: SwahiliDialogueInput[];
-  exercises?: Array<Record<string, any>>;
+  exercises?: Array<Record<string, unknown>>;
   dialogue_long?: SwahiliDialogueInput[];
   roleplay_prompts?: string[];
   roleplay_prompts_en?: string[];
@@ -166,7 +174,7 @@ export function normalizeSwahiliLesson(
       vi: s.vi,
       pronunciationFocus: s.pronunciation_focus,
       pronunciationFocusEn: s.pronunciation_focus_en,
-      note: s.note_vi,
+      note: normalizeStringOrUndefined(s.note_vi),
     })),
     vocabulary: lesson.vocabulary?.map((v) => ({
       native: resolveVocabNative(v),
@@ -196,7 +204,7 @@ export function normalizeSwahiliLesson(
       idiom: g.idiom,
       literal: g.literal,
       meaning: g.meaning,
-      example: g.example,
+      example: normalizeStringOrUndefined(g.example),
       literalEn: g.literal_en,
       meaningEn: g.meaning_en,
       exampleEn: g.example_en,
@@ -222,9 +230,9 @@ function normalizeSwahiliExercises(
       if (kind === "matching") {
         out.push({
           kind: "matching",
-          instruction: ex.instruction_vi,
-          instructionEn: ex.instruction_en,
-          pairs: ex.items.map((it: any) => ({
+          instruction: normalizeStringOrUndefined(ex.instruction_vi),
+          instructionEn: normalizeStringOrUndefined(ex.instruction_en),
+          pairs: (ex.items as NormalizeUnknownRecord[]).map((it) => ({
             a: String(it.prompt ?? ""),
             b: String(it.answer ?? ""),
           })),
@@ -255,16 +263,16 @@ function normalizeSwahiliExercises(
         kind: "fill-blank",
         question: String(ex.question ?? ""),
         answer: String(ex.answer ?? ""),
-        hint: ex.hint_vi,
-        hintEn: ex.hint_en,
+        hint: normalizeStringOrUndefined(ex.hint_vi),
+        hintEn: normalizeStringOrUndefined(ex.hint_en),
       });
     } else if (kind === "matching") {
-      const raw: any[] = Array.isArray(ex.pairs) ? ex.pairs : [];
+      const raw: unknown[] = Array.isArray(ex.pairs) ? ex.pairs : [];
       out.push({
         kind: "matching",
-        instruction: ex.instruction ?? ex.instruction_vi,
-        instructionEn: ex.instruction_en,
-        pairs: raw.map((p: any) =>
+        instruction: normalizeStringOrUndefined(ex.instruction ?? ex.instruction_vi),
+        instructionEn: normalizeStringOrUndefined(ex.instruction_en),
+        pairs: (raw as NormalizeUnknownRecord[]).map((p) =>
           Array.isArray(p)
             ? { a: String(p[0] ?? ""), b: String(p[1] ?? "") }
             : {
@@ -277,7 +285,7 @@ function normalizeSwahiliExercises(
       out.push({
         kind: "translation",
         vi: String(ex.vietnamese ?? ex.vi ?? ""),
-        en: ex.english ?? ex.en,
+        en: normalizeStringOrUndefined(ex.english ?? ex.en),
         native: String(ex.swahili ?? ex.sw ?? ""),
       });
     }
