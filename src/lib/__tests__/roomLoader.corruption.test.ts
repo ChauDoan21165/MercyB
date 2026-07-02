@@ -5,7 +5,7 @@ import { describe, it, expect, vi, beforeEach } from "vitest";
 // SHARED Supabase mock (hoist-safe + TS-safe)
 // --------------------
 vi.mock("@/lib/supabaseClient", async () => {
-  const mod = await vi.importActual<any>("@/test/mocks/supabaseMock");
+  const mod = await vi.importActual<unknown>("@/test/mocks/supabaseMock");
   const supabase = mod.createSupabaseMock();
 
   const getRoomFromDB = vi.fn(async (roomId: string) => {
@@ -37,13 +37,13 @@ vi.mock("@/lib/supabaseClient", async () => {
 });
 
 import * as SupaMod from "@/lib/supabaseClient";
-const supabaseMock = (SupaMod as any).__mock;
+const supabaseMock = (SupaMod as unknown).__mock;
 
 // --------------------
 // Other mocks
 // --------------------
 vi.mock("../roomLoaderHelpers", () => ({
-  processEntriesOptimized: vi.fn((entries: any[]) => {
+  processEntriesOptimized: vi.fn((entries: unknown[]) => {
     const safeEntries = Array.isArray(entries) ? entries : [];
 
     const merged = safeEntries.map((entry, index) => {
@@ -101,8 +101,8 @@ import { loadMergedRoom } from "../roomLoader";
 // --------------------
 // Helpers
 // --------------------
-const makeChain = (overrides: Partial<Record<string, any>> = {}) => {
-  const self: any = {
+const makeChain = (overrides: Partial<Record<string, unknown>> = {}) => {
+  const self: unknown = {
     select: vi.fn().mockReturnThis(),
     eq: vi.fn().mockReturnThis(),
     in: vi.fn().mockReturnThis(),
