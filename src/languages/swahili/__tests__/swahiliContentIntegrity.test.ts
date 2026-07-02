@@ -24,7 +24,7 @@ describe("Swahili content integrity", () => {
     const a1 = SWAHILI_LESSONS_BY_LEVEL.A1;
     expect(a1.length).toBe(7);
 
-    const categories = a1.map((l: any) => l.category).sort();
+    const categories = a1.map((l: unknown) => l.category).sort();
     expect(categories).toEqual([
       "directions",
       "family",
@@ -40,7 +40,7 @@ describe("Swahili content integrity", () => {
     const a2 = SWAHILI_LESSONS_BY_LEVEL.A2;
     expect(a2.length).toBe(6);
 
-    const categories = a2.map((l: any) => l.category).sort();
+    const categories = a2.map((l: unknown) => l.category).sort();
     expect(categories).toEqual([
       "daily_routine",
       "housing",
@@ -55,7 +55,7 @@ describe("Swahili content integrity", () => {
     const b1 = SWAHILI_LESSONS_BY_LEVEL.B1;
     expect(b1.length).toBe(5);
 
-    const categories = b1.map((l: any) => l.category).sort();
+    const categories = b1.map((l: unknown) => l.category).sort();
     expect(categories).toEqual([
       "health_pharmacy",
       "opinions_reasons",
@@ -69,7 +69,7 @@ describe("Swahili content integrity", () => {
     const b2 = SWAHILI_LESSONS_BY_LEVEL.B2;
     expect(b2.length).toBe(5);
 
-    const categories = b2.map((l: any) => l.category).sort();
+    const categories = b2.map((l: unknown) => l.category).sort();
     expect(categories).toEqual([
       "debate",
       "media",
@@ -83,7 +83,7 @@ describe("Swahili content integrity", () => {
     const c1 = SWAHILI_LESSONS_BY_LEVEL.C1;
     expect(c1.length).toBe(14);
 
-    const categories = c1.map((l: any) => l.category).sort();
+    const categories = c1.map((l: unknown) => l.category).sort();
     expect(categories).toEqual([
       "academic",
       "business",
@@ -106,7 +106,7 @@ describe("Swahili content integrity", () => {
     const c2 = SWAHILI_LESSONS_BY_LEVEL.C2;
     expect(c2.length).toBe(10);
 
-    const categories = c2.map((l: any) => l.category).sort();
+    const categories = c2.map((l: unknown) => l.category).sort();
     expect(categories).toEqual([
       "academic_discourse",
       "advanced_grammar",
@@ -130,13 +130,13 @@ describe("Swahili content integrity", () => {
   });
 
   it("all lesson IDs are unique across all levels", () => {
-    const ids = allSwahiliLessons.map((l: any) => l.id);
+    const ids = allSwahiliLessons.map((l: unknown) => l.id);
     expect(new Set(ids).size).toBe(ids.length);
   });
 
   it("each lesson has required fields", () => {
     for (const lesson of allSwahiliLessons) {
-      const l = lesson as any;
+      const l = lesson as unknown;
       expect(l.id).toBeTruthy();
       expect(l.id).toMatch(/^swahili_/);
       expect(l.level).toBeTruthy();
@@ -149,7 +149,7 @@ describe("Swahili content integrity", () => {
   });
 
   it("every A1 sentence has vi field", () => {
-    for (const s of SWAHILI_LESSONS_BY_LEVEL.A1.flatMap((l: any) => l.sentences)) {
+    for (const s of SWAHILI_LESSONS_BY_LEVEL.A1.flatMap((l: unknown) => l.sentences)) {
       expect(s.vi).toBeTruthy();
     }
   });
@@ -157,7 +157,7 @@ describe("Swahili content integrity", () => {
   it("every B1/B2/C1/C2 sentence has sw, vi, en fields", () => {
     for (const level of ["B1", "B2", "C1", "C2"] as const) {
       for (const lesson of SWAHILI_LESSONS_BY_LEVEL[level]) {
-        for (const s of (lesson as any).sentences) {
+        for (const s of (lesson as unknown).sentences) {
           expect(s.sw).toBeTruthy();
           expect(s.vi).toBeTruthy();
           expect(s.en).toBeTruthy();
@@ -169,7 +169,7 @@ describe("Swahili content integrity", () => {
   it("every B1/B2/C1/C2 lesson has vocabulary", () => {
     for (const level of ["B1", "B2", "C1", "C2"] as const) {
       for (const lesson of SWAHILI_LESSONS_BY_LEVEL[level]) {
-        const l = lesson as any;
+        const l = lesson as unknown;
         expect(l.vocabulary).toBeTruthy();
         expect(l.vocabulary.length).toBeGreaterThanOrEqual(3);
       }
