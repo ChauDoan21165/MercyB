@@ -7,7 +7,7 @@
 import { describe, it, expect, vi, beforeEach } from "vitest";
 
 vi.mock("@/lib/supabaseClient", async () => {
-  const mod = await vi.importActual<any>("@/test/mocks/supabaseMock");
+  const mod = await vi.importActual<unknown>("@/test/mocks/supabaseMock");
   const supabase = mod.createSupabaseMock();
   return {
     supabase,
@@ -16,7 +16,7 @@ vi.mock("@/lib/supabaseClient", async () => {
 });
 
 import * as SupaMod from "@/lib/supabaseClient";
-const supabaseMock = (SupaMod as any).__mock;
+const supabaseMock = (SupaMod as unknown).__mock;
 
 import {
   getWeeklyTop10,
@@ -204,7 +204,7 @@ describe("awardPoints", () => {
     await awardPoints("u1", 1, "streak");
     await awardPoints("u1", 1, "challenge");
 
-    const kinds = supabaseMock.rpc.mock.calls.map((c: any[]) => c[1]?.p_kind);
+    const kinds = supabaseMock.rpc.mock.calls.map((c: unknown[]) => c[1]?.p_kind);
     expect(kinds).toEqual(["lesson", "streak", "challenge"]);
   });
 });
