@@ -91,7 +91,7 @@ export interface FixReport {
 function hasConfidenceScore(
   r: ValidationResult | RoomAwareValidationResult
 ): r is RoomAwareValidationResult {
-  return typeof (r as any)?.confidenceScore === "number";
+  return typeof (r as unknown)?.confidenceScore === "number";
 }
 
 /**
