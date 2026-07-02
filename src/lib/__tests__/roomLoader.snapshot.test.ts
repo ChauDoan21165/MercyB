@@ -5,7 +5,7 @@ import { describe, it, expect, vi, beforeEach } from "vitest";
 // Shared Supabase mock (hoist-safe + TS-safe)
 // --------------------
 vi.mock("@/lib/supabaseClient", async () => {
-  const mod = await vi.importActual<any>("@/test/mocks/supabaseMock");
+  const mod = await vi.importActual<unknown>("@/test/mocks/supabaseMock");
   const supabase = mod.createSupabaseMock();
 
   const getRoomFromDB = vi.fn(async (roomId: string) => {
@@ -37,7 +37,7 @@ vi.mock("@/lib/supabaseClient", async () => {
 });
 
 import * as SupaMod from "@/lib/supabaseClient";
-const supabaseMock = (SupaMod as any).__mock;
+const supabaseMock = (SupaMod as unknown).__mock;
 
 // --------------------
 // roomLoaderHelpers mock
@@ -70,8 +70,8 @@ vi.mock("../roomJsonResolver", () => ({
 
 import { loadMergedRoom } from "../roomLoader";
 
-const makeChain = (overrides: Partial<Record<string, any>> = {}) => {
-  const self: any = {
+const makeChain = (overrides: Partial<Record<string, unknown>> = {}) => {
+  const self: unknown = {
     select: vi.fn().mockReturnThis(),
     eq: vi.fn().mockReturnThis(),
     in: vi.fn().mockReturnThis(),
@@ -163,10 +163,10 @@ describe("loadMergedRoom snapshots", () => {
     const result = await loadMergedRoom("test-room");
 
     const stable = {
-      audioBasePath: (result as any).audioBasePath,
-      roomTier: (result as any).roomTier,
-      keywordMenu: (result as any).keywordMenu,
-      merged: (result as any).merged,
+      audioBasePath: (result as unknown).audioBasePath,
+      roomTier: (result as unknown).roomTier,
+      keywordMenu: (result as unknown).keywordMenu,
+      merged: (result as unknown).merged,
     };
 
     expect(stable).toMatchInlineSnapshot(`
@@ -235,10 +235,10 @@ describe("loadMergedRoom snapshots", () => {
     const result = await loadMergedRoom("json-room");
 
     const stable = {
-      audioBasePath: (result as any).audioBasePath,
-      roomTier: (result as any).roomTier,
-      keywordMenu: (result as any).keywordMenu,
-      merged: (result as any).merged,
+      audioBasePath: (result as unknown).audioBasePath,
+      roomTier: (result as unknown).roomTier,
+      keywordMenu: (result as unknown).keywordMenu,
+      merged: (result as unknown).merged,
     };
 
     expect(stable).toMatchInlineSnapshot(`
