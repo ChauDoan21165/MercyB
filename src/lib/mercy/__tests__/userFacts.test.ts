@@ -4,7 +4,7 @@
 import { describe, it, expect, vi, beforeEach } from "vitest";
 
 vi.mock("@/lib/supabaseClient", async () => {
-  const mod = await vi.importActual<any>("@/test/mocks/supabaseMock");
+  const mod = await vi.importActual<unknown>("@/test/mocks/supabaseMock");
   const supabase = mod.createSupabaseMock();
   return {
     supabase,
@@ -13,7 +13,7 @@ vi.mock("@/lib/supabaseClient", async () => {
 });
 
 import * as SupaMod from "@/lib/supabaseClient";
-const supabaseMock = (SupaMod as any).__mock;
+const supabaseMock = (SupaMod as unknown).__mock;
 
 import {
   addFact,
@@ -32,7 +32,7 @@ beforeEach(() => {
 // at the terminal call (maybeSingle, then-via-await on the final builder,
 // or order(...).order(...)).
 function chain(terminalPayload: { data: unknown; error: unknown } | null) {
-  const c: any = {};
+  const c: unknown = {};
   const ret = () => c;
   c.select = vi.fn(ret);
   c.insert = vi.fn(ret);
@@ -96,7 +96,7 @@ describe("addFact", () => {
   });
 
   it("trims content before inserting", async () => {
-    const insertSpy = vi.fn(function (this: any) {
+    const insertSpy = vi.fn(function (this: unknown) {
       return this;
     });
     const c = chain({ data: { id: "f2", user_id: "u1", fact_type: "context", content: "loves coffee", confidence: 0.5 }, error: null });
@@ -110,7 +110,7 @@ describe("addFact", () => {
   });
 
   it("uses default confidence per source when none supplied", async () => {
-    const insertSpy = vi.fn(function (this: any) {
+    const insertSpy = vi.fn(function (this: unknown) {
       return this;
     });
     const c = chain({ data: { id: "f3", user_id: "u1", fact_type: "context", content: "x", confidence: 0.5 }, error: null });
@@ -277,7 +277,7 @@ describe("markFactReferenced", () => {
 
   it("issues an update with last_referenced_at = now-ish", async () => {
     const updateSpy = vi.fn<(row: Record<string, unknown>) => unknown>(
-      function (this: any) {
+      function (this: unknown) {
         return this;
       },
     );
