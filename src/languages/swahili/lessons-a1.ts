@@ -52,7 +52,7 @@ type SwahiliLesson = {
   tip_advice_en?: string;
   vocabulary?: VocabEntry[];
   dialogue?: DialogueLine[];
-  exercises?: Array<Record<string, any>>;
+  exercises?: Array<Record<string, unknown>>;
   content?: string;
 };
 
