@@ -1863,6 +1863,7 @@ export default function AppRouter() {
 
           {/* Thai native-English bridge routes. Keep outside /admin/*; these redirect to the existing static Thai-English landing page. */}
           <Route path="/languages/thai" element={<LazyPage><ThaiLessonsPage /></LazyPage>} />
+          <Route path="/languages/swahili" element={<SwahiliLessonsPage />} />
           <Route path="/languages/thai-english" element={<LazyPage><ThaiLessonsPage /></LazyPage>} />
 
           {/* Admin routes */}
@@ -1905,7 +1906,6 @@ export default function AppRouter() {
 
           <Route path="*" element={<NotFound />} />
       </Route>
-              <Route path="/languages/swahili" element={<SwahiliLessonsPage />} />
 </Routes>
     <FeedbackBar />
     </>
