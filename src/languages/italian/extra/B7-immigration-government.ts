@@ -51,7 +51,7 @@ export type ItalianDialogueLine = {
 };
 
 // Loosely typed so per-type fields (translation, checklist, rubric) can vary.
-export type ItalianExercise = Record<string, any>;
+export type ItalianExercise = Record<string, unknown>;
 
 export type ItalianCefrLevel = "A1" | "A2" | "B1" | "B2" | "C1" | "C2";
 
