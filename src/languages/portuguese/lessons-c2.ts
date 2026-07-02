@@ -50,7 +50,7 @@ export type PortugueseDialogueLine = {
 //   fill-blank:  question, answer, hint_vi?, hint_en?
 //   matching:    pairs, instruction, instruction_en?
 //   translation: vietnamese, portuguese, english?, hint_vi?, hint_en?
-export type PortugueseExercise = Record<string, any>;
+export type PortugueseExercise = Record<string, unknown>;
 
 export type PortugueseCefrLevel = "A1" | "A2" | "B1" | "B2" | "C1" | "C2";
 
