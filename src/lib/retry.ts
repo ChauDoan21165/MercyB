@@ -8,8 +8,8 @@ interface RetryOptions {
   initialDelay?: number;
   maxDelay?: number;
   exponentialBase?: number;
-  shouldRetry?: (error: any) => boolean;
-  onRetry?: (attempt: number, error: any) => void;
+  shouldRetry?: (error: unknown) => boolean;
+  onRetry?: (attempt: number, error: unknown) => void;
 }
 
 const DEFAULT_OPTIONS: Required<RetryOptions> = {
@@ -17,10 +17,11 @@ const DEFAULT_OPTIONS: Required<RetryOptions> = {
   initialDelay: 1000, // 1 second
   maxDelay: 10000, // 10 seconds
   exponentialBase: 2,
-  shouldRetry: (error) => {
+  shouldRetry: (error: unknown): boolean => {
     // Retry on network errors, 5xx, 429 (rate limit)
-    if (error?.status) {
-      return error.status >= 500 || error.status === 429;
+    if (error && typeof error === 'object' && 'status' in error) {
+      const err = error as { status: number; statusText?: string };
+      return err.status >= 500 || err.status === 429;
     }
     return true; // Retry on unknown errors
   },
@@ -35,7 +36,7 @@ export async function withRetry<T>(
   options: RetryOptions = {}
 ): Promise<T> {
   const opts = { ...DEFAULT_OPTIONS, ...options };
-  let lastError: any;
+  let lastError: unknown;
 
   for (let attempt = 1; attempt <= opts.maxAttempts; attempt++) {
     try {
@@ -82,10 +83,11 @@ export async function retryFetch(
     },
     {
       ...retryOptions,
-      shouldRetry: (error) => {
+      shouldRetry: (error: unknown): boolean => {
         // Retry on network errors and 5xx/429
-        if (error?.status) {
-          return error.status >= 500 || error.status === 429;
+        if (error && typeof error === 'object' && 'status' in error) {
+          const err = error as { status: number; statusText?: string };
+          return err.status >= 500 || err.status === 429;
         }
         return true;
       },
