@@ -456,7 +456,7 @@ describe("PQ7 — Safety Constraint Audit", () => {
     const kinds = Object.keys(REFUSAL_MESSAGES);
     expect(kinds.length).toBe(8);
     for (const kind of kinds) {
-      const response = buildRefusalResponse(kind as any);
+      const response = buildRefusalResponse(kind as unknown);
       expect(response.vi.length).toBeGreaterThan(5);
     }
   });
@@ -508,7 +508,7 @@ describe("PQ7 — Safety Constraint Audit", () => {
   it("PQ7.8: Safety response VIs are never empty strings", () => {
     const allKinds = Object.keys(REFUSAL_MESSAGES);
     for (const kind of allKinds) {
-      const response = buildRefusalResponse(kind as any);
+      const response = buildRefusalResponse(kind as unknown);
       expect(response.vi.trim().length).toBeGreaterThan(0);
     }
   });
