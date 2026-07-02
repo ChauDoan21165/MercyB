@@ -7,13 +7,13 @@
 
 const isDev = import.meta.env.DEV;
 
-export const logDebug = (...args: any[]) => {
+export const logDebug = (...args: unknown[]) => {
   if (isDev) {
     console.log('[DEBUG]', ...args);
   }
 };
 
-export const logWarn = (...args: any[]) => {
+export const logWarn = (...args: unknown[]) => {
   if (isDev) {
     console.warn('[WARN]', ...args);
   } else {
@@ -22,11 +22,11 @@ export const logWarn = (...args: any[]) => {
   }
 };
 
-export const logError = (...args: any[]) => {
+export const logError = (...args: unknown[]) => {
   console.error('[ERROR]', ...args);
 };
 
-export const logInfo = (...args: any[]) => {
+export const logInfo = (...args: unknown[]) => {
   if (isDev) {
     console.info('[INFO]', ...args);
   }
