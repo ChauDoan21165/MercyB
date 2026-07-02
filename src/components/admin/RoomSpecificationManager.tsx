@@ -58,7 +58,7 @@ export function RoomSpecificationManager() {
 
       if (error) throw error;
       setSpecifications(data?.specifications || []);
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error('Error loading specifications:', error);
       toast.error('Failed to load specifications');
     } finally {
@@ -92,7 +92,7 @@ export function RoomSpecificationManager() {
       setDescription('');
       setUseColorTheme(true);
       loadSpecifications();
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error('Error creating specification:', error);
       toast.error('Failed to create specification');
     } finally {
@@ -130,7 +130,7 @@ export function RoomSpecificationManager() {
 
       toast.success(`Specification applied to ${applyScope}${applyScope !== 'app' ? `: ${targetId}` : ''}`);
       setTargetId('');
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error('Error applying specification:', error);
       toast.error('Failed to apply specification');
     } finally {
