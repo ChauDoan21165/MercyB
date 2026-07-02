@@ -1,13 +1,13 @@
 import { describe, it, expect, vi, beforeEach } from "vitest";
 
 vi.mock("@/lib/supabaseClient", async () => {
-  const mod = await vi.importActual<any>("@/test/mocks/supabaseMock");
+  const mod = await vi.importActual<unknown>("@/test/mocks/supabaseMock");
   const supabase = mod.createSupabaseMock();
   return { supabase, __mock: supabase };
 });
 
 import * as SupaMod from "@/lib/supabaseClient";
-const supabaseMock = (SupaMod as any).__mock;
+const supabaseMock = (SupaMod as unknown).__mock;
 
 import {
   createFamilyPlan,
@@ -25,7 +25,7 @@ beforeEach(() => {
 });
 
 function chain(terminalPayload: { data: unknown; error: unknown } | null) {
-  const c: any = {};
+  const c: unknown = {};
   const ret = () => c;
   c.select = vi.fn(ret);
   c.insert = vi.fn(ret);
@@ -110,7 +110,7 @@ describe("inviteMember", () => {
 
   it("inserts an invite with a generated 8-char code", async () => {
     const insertSpy = vi.fn<(row: Record<string, unknown>) => unknown>(
-      function (this: any) {
+      function (this: unknown) {
         return this;
       },
     );
@@ -139,7 +139,7 @@ describe("inviteMember", () => {
 
   it("normalizes empty/whitespace email to null", async () => {
     const insertSpy = vi.fn<(row: Record<string, unknown>) => unknown>(
-      function (this: any) {
+      function (this: unknown) {
         return this;
       },
     );
