@@ -178,7 +178,7 @@ export function pluralize(count: number, singular: string, plural: string): stri
 /**
  * Get text in current language
  */
-export function getText<T extends Record<string, any>>(
+export function getText<T extends Record<string, unknown>>(
   textObj: { en: T; vi: T },
   lang: 'en' | 'vi' = 'en'
 ): T {
