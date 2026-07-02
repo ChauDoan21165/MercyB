@@ -26,10 +26,10 @@ const captured = vi.hoisted(() => ({
 }));
 
 vi.mock("framer-motion", async () => {
-  const ReactMod: any = await import("react");
+  const ReactMod: unknown = await import("react");
   const React = ReactMod.default ?? ReactMod;
 
-  const AnimatePresence = ({ children, mode, ...rest }: any) => {
+  const AnimatePresence = ({ children, mode, ...rest }: unknown) => {
     captured.presenceRenders.push({ mode, ...rest });
     return React.createElement(React.Fragment, null, children);
   };
@@ -46,7 +46,7 @@ vi.mock("framer-motion", async () => {
           exit,
           transition,
           ...rest
-        }: any) => {
+        }: unknown) => {
           captured.motionRenders.push({
             tag,
             className,
@@ -142,7 +142,7 @@ describe("PageTransition — rendering", () => {
         <p>x</p>
       </PageTransition>,
     );
-    const r = captured.motionRenders[0] as any;
+    const r = captured.motionRenders[0] as unknown;
     expect(r.transition.duration).toBe(0.3);
     expect(r.transition.ease).toEqual([0.4, 0, 0.2, 1]);
   });
@@ -183,7 +183,7 @@ describe("PageFade — rendering", () => {
         <p>x</p>
       </PageFade>,
     );
-    const r = captured.motionRenders[0] as any;
+    const r = captured.motionRenders[0] as unknown;
     expect(r.initial).toEqual({ opacity: 0 });
     expect(r.animate).toEqual({ opacity: 1 });
     expect(r.exit).toEqual({ opacity: 0 });
@@ -198,7 +198,7 @@ describe("PageFade — rendering", () => {
         <p>x</p>
       </PageFade>,
     );
-    const r = captured.motionRenders[0] as any;
+    const r = captured.motionRenders[0] as unknown;
     expect(r.transition.duration).toBe(0.2);
     expect(r.transition.ease).toBeUndefined();
   });
@@ -228,7 +228,7 @@ describe("PageTransition / PageFade — edge cases", () => {
   });
 
   it("renders nothing harmful when children is false", () => {
-    expect(() => renderAt(<PageTransition>{false as any}</PageTransition>)).not.toThrow();
+    expect(() => renderAt(<PageTransition>{false as unknown}</PageTransition>)).not.toThrow();
   });
 
   it("renders multiple children", () => {
