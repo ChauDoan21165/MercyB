@@ -100,7 +100,10 @@ function hasGetSession(
     }>;
   };
 } {
-  return typeof (client as any)?.auth?.getSession === "function";
+  const candidate = client as unknown as {
+    auth?: { getSession?: unknown };
+  };
+  return typeof candidate.auth?.getSession === "function";
 }
 
 function hasFunctionsInvoke(
@@ -113,7 +116,10 @@ function hasFunctionsInvoke(
     ) => Promise<{ data: unknown; error: unknown }>;
   };
 } {
-  return typeof (client as any)?.functions?.invoke === "function";
+  const candidate = client as unknown as {
+    functions?: { invoke?: unknown };
+  };
+  return typeof candidate.functions?.invoke === "function";
 }
 
 function getDefaultEmailRedirectTo(): string | undefined {
