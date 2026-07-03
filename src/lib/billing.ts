@@ -62,6 +62,15 @@ type JsonLike = {
 };
 
 type BillingResponse = CheckoutResponse & ChangePlanResponse & JsonLike;
+type JsonObject = Record<string, unknown>;
+type FunctionBody =
+  | File
+  | Blob
+  | ArrayBuffer
+  | FormData
+  | ReadableStream<Uint8Array>
+  | JsonObject
+  | string;
 
 function isRecord(value: unknown): value is Record<string, unknown> {
   return typeof value === "object" && value !== null;
@@ -113,11 +122,11 @@ function extractErrorMessage(
   return fallback;
 }
 
-async function invokeWithAuth<T>(fn: string, body?: any): Promise<T> {
+async function invokeWithAuth<T>(fn: string, body?: FunctionBody): Promise<T> {
   const token = await getAccessToken();
 
   const { data, error } = await supabase.functions.invoke(fn, {
-    body: body as any,
+    body,
     headers: {
       Authorization: `Bearer ${token}`,
     },
