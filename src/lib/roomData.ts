@@ -1,5 +1,5 @@
-const loadRoomDataMap: any = undefined;
-type RoomData = any;
+type RoomData = Record<string, unknown>;
+const loadRoomDataMap = undefined as unknown as () => Promise<Record<string, RoomData>>;
 // FILE: roomData.ts
 // PATH: src/lib/roomData.ts
 // Room Data Management Utilities (Supabase-first, no build-time roomDataImports)
@@ -70,23 +70,39 @@ function strictTierFromRoomId(roomId: string): RoomInfo["tier"] {
 }
 
 // Normalize room name extraction (supports older schemas)
-function getEnglishName(roomId: string, roomData: any): string {
+function nestedString(
+  record: RoomData,
+  key: string,
+  nestedKey: string,
+): string | null {
+  const nested = record[key];
+  if (!nested || typeof nested !== "object") return null;
+  const value = (nested as Record<string, unknown>)[nestedKey];
+  return typeof value === "string" && value ? value : null;
+}
+
+function pickString(record: RoomData, key: string): string | null {
+  const value = record[key];
+  return typeof value === "string" && value ? value : null;
+}
+
+function getEnglishName(roomId: string, roomData: RoomData): string {
   return (
-    roomData?.nameEn ||
-    roomData?.name ||
-    roomData?.title?.en ||
-    roomData?.title?.en_us ||
-    roomData?.meta?.title_en ||
+    pickString(roomData, "nameEn") ||
+    pickString(roomData, "name") ||
+    nestedString(roomData, "title", "en") ||
+    nestedString(roomData, "title", "en_us") ||
+    nestedString(roomData, "meta", "title_en") ||
     roomId
   );
 }
 
-function getVietnameseName(roomId: string, roomData: any): string {
+function getVietnameseName(roomId: string, roomData: RoomData): string {
   return (
-    roomData?.nameVi ||
-    roomData?.name_vi ||
-    roomData?.title?.vi ||
-    roomData?.meta?.title_vi ||
+    pickString(roomData, "nameVi") ||
+    pickString(roomData, "name_vi") ||
+    nestedString(roomData, "title", "vi") ||
+    nestedString(roomData, "meta", "title_vi") ||
     roomId
   );
 }
@@ -104,7 +120,7 @@ export async function getAllRooms(): Promise<RoomInfo[]> {
     const nameEn = getEnglishName(roomId, roomData);
     const nameVi = getVietnameseName(roomId, roomData);
 
-    const domain = String(roomData?.domain || '').toLowerCase().trim();
+    const domain = String(roomData.domain || '').toLowerCase().trim();
     const domainImageMap: Record<string, string> = {
       'general': '/images/domains/general.svg',
       'kids': '/images/domains/kids.svg',
@@ -145,8 +161,8 @@ export async function getAllRooms(): Promise<RoomInfo[]> {
       domainImage,
       tier,
       hasData: !!(
-        roomData?.hasData ||
-        (Array.isArray((roomData as any)?.entries) && (roomData as any).entries.length > 0)
+        roomData.hasData ||
+        (Array.isArray(roomData.entries) && roomData.entries.length > 0)
       ),
     };
   });

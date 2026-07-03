@@ -14,7 +14,7 @@ import { supabase } from "@/lib/supabaseClient";
 export type EmailMode = "password_signin" | "code_email" | "reset";
 
 export function readBoolEnv(key: string): boolean {
-  const env: Record<string, unknown> = (import.meta as any)?.env ?? {};
+  const env = import.meta.env as Record<string, unknown>;
   const v = String(env[key] ?? "").trim().toLowerCase();
   return v === "true" || v === "1" || v === "yes" || v === "on";
 }
@@ -143,9 +143,10 @@ export async function fetchAdminFlagsSafe(
       return { isAdmin: false };
     }
 
+    const profile = data as Record<string, unknown> | null;
     const isAdmin =
-      Boolean((data as any)?.is_admin) ||
-      Number((data as any)?.admin_level ?? 0) >= 1;
+      Boolean(profile?.is_admin) ||
+      Number(profile?.admin_level ?? 0) >= 1;
 
     return { isAdmin };
   } catch (err) {

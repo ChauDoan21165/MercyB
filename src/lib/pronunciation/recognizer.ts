@@ -88,17 +88,24 @@ type SpeechRecognitionEventLike = {
   results: { length: number;[index: number]: SpeechRecognitionResultLike };
 };
 type SpeechRecognitionErrorEventLike = { error: string; message?: string };
+type SpeechRecognitionConstructorLike = new () => SpeechRecognitionLike;
+type SpeechRecognitionWindow = Window & typeof globalThis & {
+  SpeechRecognition?: SpeechRecognitionConstructorLike;
+  webkitSpeechRecognition?: SpeechRecognitionConstructorLike;
+};
 
 export function isSpeechRecognitionSupported(win?: Window & typeof globalThis): boolean {
-  const w = win ?? (typeof window !== 'undefined' ? window : undefined);
+  const w = (win ?? (typeof window !== 'undefined' ? window : undefined)) as
+    | SpeechRecognitionWindow
+    | undefined;
   if (!w) return false;
-  return typeof (w as any).SpeechRecognition === 'function'
-    || typeof (w as any).webkitSpeechRecognition === 'function';
+  return typeof w.SpeechRecognition === 'function'
+    || typeof w.webkitSpeechRecognition === 'function';
 }
 
-function getCtor(win: Window & typeof globalThis): (new () => SpeechRecognitionLike) | null {
-  const anyWin = win as any;
-  return anyWin.SpeechRecognition ?? anyWin.webkitSpeechRecognition ?? null;
+function getCtor(win: Window & typeof globalThis): SpeechRecognitionConstructorLike | null {
+  const speechWindow = win as SpeechRecognitionWindow;
+  return speechWindow.SpeechRecognition ?? speechWindow.webkitSpeechRecognition ?? null;
 }
 
 /**
