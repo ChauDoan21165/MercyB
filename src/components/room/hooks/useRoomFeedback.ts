@@ -1,6 +1,17 @@
 import { useState } from "react";
+import type { SupabaseClient, User } from "@supabase/supabase-js";
+import type { Database } from "@/integrations/supabase/types";
 
-export function useRoomFeedback(supabase: any, roomId: string, authUser: any) {
+function getFeedbackErrorMessage(error: unknown): string {
+  if (error instanceof Error) return error.message;
+  return String(error || "Failed to send feedback");
+}
+
+export function useRoomFeedback(
+  supabase: SupabaseClient<Database>,
+  roomId: string,
+  authUser: User | null,
+) {
   const [feedbackText, setFeedbackText] = useState("");
   const [feedbackSending, setFeedbackSending] = useState(false);
   const [feedbackSent, setFeedbackSent] = useState(false);
@@ -34,8 +45,8 @@ export function useRoomFeedback(supabase: any, roomId: string, authUser: any) {
 
       setFeedbackText("");
       setFeedbackSent(true);
-    } catch (e: any) {
-      setFeedbackError(String(e?.message || e || "Failed to send feedback"));
+    } catch (e: unknown) {
+      setFeedbackError(getFeedbackErrorMessage(e));
       setFeedbackSent(false);
     } finally {
       setFeedbackSending(false);
