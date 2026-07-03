@@ -58,3 +58,57 @@ export const expectLinhLikeCriticalAudioFailureReplay = (analysis: TmRiReplayAna
     ]),
   );
 };
+
+export const runSpeakingTextFallbackReplay = () => {
+  const runtimeEvents: readonly TmRiRuntimeEvent[] = [
+    {
+      id: "mic-denied",
+      type: "mic_unavailable",
+      timestampMs: 100,
+      modality: "speaking",
+      assessmentSkill: "speaking",
+    },
+    {
+      id: "typed-fallback",
+      type: "fallback_input_used",
+      timestampMs: 150,
+      modality: "speaking",
+      assessmentSkill: "speaking",
+      inputMode: "text",
+    },
+    {
+      id: "speaking-score",
+      type: "assessment_scored",
+      timestampMs: 200,
+      assessmentSkill: "speaking",
+      confidence: 70,
+    },
+  ];
+
+  return new RuntimeReplayEngine().analyze(runtimeEvents, []);
+};
+
+export const expectSpeakingTextFallbackReplay = (analysis: TmRiReplayAnalysis) => {
+  const findingCodes = analysis.observationPacket.findings.map((finding) => finding.code);
+  const repairTitles = analysis.repairPlan.items.map((item) => item.title);
+  const graphEdges = analysis.knowledgeGraph.edges.map((edge) => `${edge.from}->${edge.to}:${edge.relation}`);
+
+  expect(analysis.assessmentIntegrity.speakingModalityDegraded).toBe(true);
+  expect(analysis.assessmentIntegrity.spokenEvidenceAvailable).toBe(false);
+  expect(analysis.honesty.inputModeRecommendation).toBe("text");
+  expect(analysis.honesty.recommendations).toEqual(
+    expect.arrayContaining(["lower_confidence", "explain_degraded", "withhold_cefr"]),
+  );
+  expect(analysis.honesty.resultConfidence).toBe("withheld");
+  expect(findingCodes).toEqual(
+    expect.arrayContaining(["mic_unavailable", "degraded_evidence", "invalid_scoring_risk", "speaking_modality_degraded"]),
+  );
+  expect(repairTitles).toContain("Separate typed fallback from spoken evidence");
+  expect(graphEdges).toEqual(
+    expect.arrayContaining([
+      "observation:mic_unavailable->pedagogy:mic_unavailable:informs",
+      "observation:speaking_modality_degraded->pedagogy:speaking_modality_degraded:informs",
+      "observation:speaking_modality_degraded->repair:2:Separate typed fallback from spoken evidence:requires",
+    ]),
+  );
+};

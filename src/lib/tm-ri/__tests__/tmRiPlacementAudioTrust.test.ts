@@ -1,6 +1,11 @@
 import { describe, expect, it } from "vitest";
 import { RuntimeReplayEngine, type TmRiLearnerSignal, type TmRiRuntimeEvent } from "../index";
-import { expectLinhLikeCriticalAudioFailureReplay, runLinhLikeAudioFailureReplay } from "./replaySample";
+import {
+  expectLinhLikeCriticalAudioFailureReplay,
+  expectSpeakingTextFallbackReplay,
+  runLinhLikeAudioFailureReplay,
+  runSpeakingTextFallbackReplay,
+} from "./replaySample";
 
 const analyze = (events: readonly TmRiRuntimeEvent[], signals: readonly TmRiLearnerSignal[] = []) =>
   new RuntimeReplayEngine().analyze(events, signals);
@@ -50,35 +55,7 @@ describe("TM-RI placement audio and trust intelligence", () => {
   });
 
   it("treats text entry after mic failure as degraded speaking evidence, not spoken evidence", () => {
-    const analysis = analyze([
-      {
-        id: "mic-denied",
-        type: "mic_unavailable",
-        timestampMs: 100,
-        modality: "speaking",
-        assessmentSkill: "speaking",
-      },
-      {
-        id: "typed-fallback",
-        type: "fallback_input_used",
-        timestampMs: 150,
-        modality: "speaking",
-        assessmentSkill: "speaking",
-        inputMode: "text",
-      },
-      {
-        id: "speaking-score",
-        type: "assessment_scored",
-        timestampMs: 200,
-        assessmentSkill: "speaking",
-        confidence: 70,
-      },
-    ]);
-
-    expect(analysis.assessmentIntegrity.speakingModalityDegraded).toBe(true);
-    expect(analysis.honesty.inputModeRecommendation).toBe("text");
-    expect(analysis.assessmentIntegrity.spokenEvidenceAvailable).toBe(false);
-    expect(analysis.observationPacket.findings.map((finding) => finding.code)).toContain("speaking_modality_degraded");
+    expectSpeakingTextFallbackReplay(runSpeakingTextFallbackReplay());
   });
 
   it("detects 0:00 unplayable audio and does not grade listening as wrong", () => {

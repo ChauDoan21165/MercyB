@@ -6,7 +6,12 @@ import {
   VisibilityAnalyzer,
   type TmRiFinding,
 } from "../index";
-import { expectLinhLikeCriticalAudioFailureReplay, runLinhLikeAudioFailureReplay } from "./replaySample";
+import {
+  expectLinhLikeCriticalAudioFailureReplay,
+  expectSpeakingTextFallbackReplay,
+  runLinhLikeAudioFailureReplay,
+  runSpeakingTextFallbackReplay,
+} from "./replaySample";
 
 const visibility = new VisibilityAnalyzer();
 const reachability = new ReachabilityAnalyzer();
@@ -174,6 +179,16 @@ export function ListeningTaskCard() {
     expect(analysis.observationPacket.findings.some((finding) => finding.educationalSeverity === "critical")).toBe(true);
     expect(analysis.trust.collapsePoint).toBeDefined();
     expectLinhLikeCriticalAudioFailureReplay(analysis);
+  });
+
+  it("replays speaking text fallback as reachable degraded evidence", () => {
+    const analysis = runSpeakingTextFallbackReplay();
+
+    expect(analysis.repairPlan.items.map((item) => item.title)).toContain(
+      "Separate typed fallback from spoken evidence",
+    );
+    expect(analysis.knowledgeGraph.nodes.map((node) => node.id)).toContain("pedagogy:speaking_modality_degraded");
+    expectSpeakingTextFallbackReplay(analysis);
   });
 });
 
