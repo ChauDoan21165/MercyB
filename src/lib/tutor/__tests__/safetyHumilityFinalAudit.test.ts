@@ -27,6 +27,8 @@ import type { SafetyContext } from "../../ai-tutor/safety";
 
 // ─── Test Helpers ────────────────────────────────────────────────────────────
 
+type AuditTeacherDecision = NonNullable<SafetyHumilityAuditInput["teacherDecision"]>;
+
 const adultContext: SafetyContext = { mode: "general_chat", tier: "free", isKidsMode: false };
 const kidsContext: SafetyContext = { mode: "general_chat", tier: "free", isKidsMode: true };
 
@@ -950,13 +952,26 @@ describe("SafetyHumilityFinalAudit — Full integration", () => {
   });
 
   it("decision_eval is audited when teacherDecision is provided", () => {
+    const teacherDecision: AuditTeacherDecision = {
+      action: "SUPPRESS",
+      correction: null,
+      timingMode: "SUPPRESS",
+      rationaleVi: "Không cần sửa trực tiếp ở lượt này.",
+      rationaleEn: "No direct correction is needed in this turn.",
+      reasonCode: "test_decision_eval_present",
+      allCandidates: [],
+      enrichment: null,
+      suppressionDecision: null,
+      hintLadder: null,
+      readiness: {
+        decision: "READY_NOW",
+        reason: "Learner is ready for this turn.",
+        reasonCode: "readiness_ready",
+      },
+    };
+
     const result = runSafetyHumilityFinalAudit(makeCleanInput({
-      teacherDecision: {
-        action: "correct",
-        timing: "immediate",
-        rationale: "learner made a grammar error",
-        confidence: 0.9,
-      } as any,
+      teacherDecision,
     }));
     expect(result.subsystemsAudited).toContain("decision_eval");
   });
