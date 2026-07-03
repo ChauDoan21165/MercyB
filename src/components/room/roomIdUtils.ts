@@ -1,11 +1,18 @@
 import type { TierId } from "@/lib/constants/tiers";
 
+function normalizeRoomIdSeparators(id: string): string {
+  return String(id || "")
+    .trim()
+    .replace(/[-_\s]+/g, "_")
+    .replace(/^_+|_+$/g, "");
+}
+
 /** Remove trailing tier markers ONLY at the end: _vip1 ... _vip9, _free */
 export function stripTierSuffix(id: string) {
-  let s = String(id || "").trim();
+  let s = normalizeRoomIdSeparators(id);
   if (!s) return "";
   s = s.replace(/_(level[1-9]|level0|free)$/gi, "");
-  s = s.replace(/_+/g, "_").replace(/^_+|_+$/g, "");
+  s = normalizeRoomIdSeparators(s);
   return s;
 }
 
@@ -20,7 +27,7 @@ export function prettifyRoomIdEN(id: string): string {
 
 /** ✅ Infer tier from room id suffix _vip1.._vip9 / _free (suffix-only) */
 export function inferTierIdFromRoomId(effectiveRoomId: string): TierId | null {
-  const s = String(effectiveRoomId || "").toLowerCase().trim();
+  const s = normalizeRoomIdSeparators(effectiveRoomId).toLowerCase();
   const m = s.match(/_(level[1-9])$/);
   if (m?.[1]) return m[1] as TierId;
   if (/_free$/.test(s)) return "level0";
@@ -44,7 +51,7 @@ export function isBadAutoTitle(raw: string, effectiveRoomId: string) {
 
   if (rLow === ridLow) return true;
 
-  const rCore = stripTierSuffix(rLow);
+  const rCore = rLow.replace(/_(level[1-9]|level0|free)$/i, "").replace(/_+/g, "_").replace(/^_+|_+$/g, "");
   const idCore = stripTierSuffix(ridLow);
   if (rCore && idCore && rCore === idCore) return true;
 

@@ -16,6 +16,26 @@ describe("room id helpers", () => {
     expect(stripTierSuffix("level1_basics")).toBe("level1_basics");
   });
 
+  it("normalizes uppercase suffixes and surrounding whitespace", () => {
+    expect(stripTierSuffix("  PTSD_SUPPORT_FREE  ")).toBe("PTSD_SUPPORT");
+    expect(stripTierSuffix("  family_budget_LEVEL3  ")).toBe("family_budget");
+    expect(inferTierIdFromRoomId("  FAMILY_BUDGET_LEVEL3  ")).toBe("level3");
+    expect(inferTierIdFromRoomId(" PTSD_SUPPORT_FREE ")).toBe("level0");
+  });
+
+  it("handles blank room id input without leaking whitespace", () => {
+    expect(stripTierSuffix("   ")).toBe("");
+    expect(prettifyRoomIdEN("   ")).toBe("Untitled room");
+    expect(inferTierIdFromRoomId("   ")).toBeNull();
+  });
+
+  it("normalizes repeated separators deterministically", () => {
+    expect(stripTierSuffix("room--id__level2")).toBe("room_id");
+    expect(stripTierSuffix("__room___id__free__")).toBe("room_id");
+    expect(prettifyRoomIdEN("room--id__free")).toBe("Room Id");
+    expect(inferTierIdFromRoomId("room--id__level2")).toBe("level2");
+  });
+
   it("keeps tier inference aligned with free suffix stripping", () => {
     expect(inferTierIdFromRoomId("ptsd_support_free")).toBe("level0");
     expect(coreRoomIdFromEffective("ptsd_support_free")).toBe("ptsd_support");
