@@ -698,10 +698,8 @@ function mapResult(value?: GrammarApiResponse | null): TeacherDisplayResult | nu
     correctedText: value.correctedText,
     enhancedText: value.enhancedText,
     explanation: value.explanation,
-    grammarPoints: Array.isArray((value as any).grammarPoints)
-      ? (value as any).grammarPoints
-      : [],
-    tense: (value as any).tenseAnalysis?.likelyMainTense,
+    grammarPoints: Array.isArray(value.grammarPoints) ? value.grammarPoints : [],
+    tense: value.tenseAnalysis?.likelyMainTense,
   };
 }
 
