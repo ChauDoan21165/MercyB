@@ -121,9 +121,9 @@ export type SafetyHumilityAuditInput = {
   learnerText: string;
   /** The tutor's Vietnamese response text. */
   tutorResponseVi: string;
-  /** The tutor's English response text (if any). */
+  /** The tutor's English response text, when present. */
   tutorResponseEn?: string;
-  /** The tutor's detailed explanation (if any). */
+  /** The tutor's detailed explanation, when present. */
   detailedExplanation?: string;
   /** Safety context (mode, tier, kids). */
   safetyContext: SafetyContext;

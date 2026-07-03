@@ -268,7 +268,7 @@ export function auditResponseSafety(
  *
  * @param learnerText       — what the learner typed
  * @param explanationVi     — Mercy's Vietnamese explanation / reply
- * @param correctedSentence — the corrected version of the learner's sentence (if any)
+ * @param correctedSentence — the corrected version of the learner's sentence, when present
  * @param cefrLevel         — learner's CEFR level (null if unknown)
  * @param gateLevel         — audit level
  */

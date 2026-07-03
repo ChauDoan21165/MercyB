@@ -92,7 +92,7 @@ export interface ParentSummary {
   /** CEFR band if a placement snapshot exists, else null. */
   cefr: string | null;
   categories: ParentCategory[];
-  /** True when no category has any reportable item. */
+  /** True when no category has reportable items. */
   isEmpty: boolean;
 }
 

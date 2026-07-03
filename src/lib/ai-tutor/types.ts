@@ -594,7 +594,7 @@ export type TutorGoal_ProvideWritingFeedback = {
  * Fields that MAY be sent to the AI model in the prompt context.
  * Source: A7 §1 — What Learner Data CAN Be Sent to the AI Model.
  *
- * This is an allowlist: any field not listed here MUST be excluded
+ * This is an allowlist: fields not listed here MUST be excluded
  * from the prompt assembly. The adapter layer enforces this.
  */
 export type TutorPromptAllowlistField =

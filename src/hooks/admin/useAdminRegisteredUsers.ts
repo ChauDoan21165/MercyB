@@ -1,7 +1,7 @@
 // PATH: src/hooks/admin/useAdminRegisteredUsers.ts
 //
 // Calls the admin-list-registered-users edge function (auth.users-first
-// admin user list). Defensive: any failure leaves rows empty + surfaces
+// admin user list). Defensive: failures leave rows empty + surface an
 // error string. Pagination is page/perPage with hasMore (listUsers
 // doesn't return totalCount).
 
