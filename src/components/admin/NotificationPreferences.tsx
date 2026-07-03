@@ -11,8 +11,15 @@ import { useNotificationSound } from "@/hooks/useNotificationSound";
 
 interface NotificationSettings {
   sound_enabled: boolean;
-  alert_tone: 'alert' | 'warning' | 'chime' | 'bell';
+  alert_tone: AlertTone;
 }
+
+type AlertTone = 'alert' | 'warning' | 'chime' | 'bell';
+
+const ALERT_TONES: readonly AlertTone[] = ['alert', 'warning', 'chime', 'bell'];
+
+const isAlertTone = (tone: string | null): tone is AlertTone =>
+  tone !== null && ALERT_TONES.includes(tone as AlertTone);
 
 export const NotificationPreferences = () => {
   const { toast } = useToast();
@@ -48,7 +55,7 @@ export const NotificationPreferences = () => {
       if (data) {
         setSettings({
           sound_enabled: data.sound_enabled,
-          alert_tone: data.alert_tone as any,
+          alert_tone: isAlertTone(data.alert_tone) ? data.alert_tone : 'alert',
         });
       }
     } catch (error) {
@@ -153,7 +160,10 @@ export const NotificationPreferences = () => {
             <RadioGroup
               value={settings.alert_tone}
               onValueChange={(value) =>
-                setSettings({ ...settings, alert_tone: value as any })
+                setSettings({
+                  ...settings,
+                  alert_tone: isAlertTone(value) ? value : settings.alert_tone,
+                })
               }
               className="space-y-3"
             >
