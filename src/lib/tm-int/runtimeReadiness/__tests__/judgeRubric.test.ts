@@ -1,8 +1,8 @@
 import { describe, expect, it } from "vitest";
 
 import type { TeacherContext } from "../../runtime";
-import type { RuntimeReadinessEvidenceBundle } from "../contracts";
 import { RUNTIME_GATE_CONTRACTS } from "../contracts";
+import type { RuntimeEvidenceBundle } from "../evidenceBundle";
 import { judgeRuntimeReadinessEvidence, requiredRuntimeEvidenceFields } from "../judgeRubric";
 
 const teacherContext: TeacherContext = {
@@ -77,22 +77,65 @@ const teacherContext: TeacherContext = {
   ],
 };
 
-function rr001Bundle(overrides: Partial<RuntimeReadinessEvidenceBundle> = {}): RuntimeReadinessEvidenceBundle {
+function rr001Bundle(overrides: Partial<RuntimeEvidenceBundle> = {}): RuntimeEvidenceBundle {
   return {
+    schemaVersion: "tm-int-runtime-evidence-bundle-v1",
     contractId: "RR-001",
     runtimeEvent: {
+      eventId: "runtime-event-rr001",
       route: "/placement/v3",
       eventType: "placement_runtime_decision",
+      observedAt: "2026-07-03T00:00:00.000Z",
+      observationIds: ["obs-packet-rr001"],
     },
     obsPacket: {
       schemaVersion: "tm-int-obs-packet-v1",
       packetId: "obs-packet-rr001",
+      createdAt: "2026-07-03T00:00:00.000Z",
+      source: "tm-int-obs",
       facts: [
-        { factType: "AudioDurationZero" },
-        { factType: "AudioPlaybackFailed" },
-        { factType: "MicPermissionDenied" },
-        { factType: "AssessmentAnswerSubmitted" },
-        { factType: "AssessmentAnswerSubmitted" },
+        {
+          capabilityId: "OBS-AUDIO-000002",
+          factType: "AudioDurationZero",
+          severity: "failure",
+          observedAt: "2026-07-03T00:00:00.000Z",
+          context: { route: "/placement/v3", taskId: "listening-a2-class-delay-1" },
+          message: "Audio duration was zero.",
+        },
+        {
+          capabilityId: "OBS-AUDIO-000003",
+          factType: "AudioPlaybackFailed",
+          severity: "failure",
+          observedAt: "2026-07-03T00:00:00.000Z",
+          context: { route: "/placement/v3", taskId: "listening-a2-class-delay-1" },
+          message: "Audio playback failed.",
+        },
+        {
+          capabilityId: "OBS-SPEECH-000001",
+          factType: "MicPermissionDenied",
+          severity: "warning",
+          observedAt: "2026-07-03T00:00:00.000Z",
+          context: { route: "/placement/v3", taskId: "speaking-a2-learning-goals-1" },
+          message: "Microphone permission was denied.",
+        },
+        {
+          capabilityId: "OBS-LEARNING-000004",
+          factType: "AssessmentAnswerSubmitted",
+          severity: "info",
+          observedAt: "2026-07-03T00:00:00.000Z",
+          context: { route: "/placement/v3", taskId: "reading-b1-work-email-1" },
+          metrics: { responseTimeMs: 900, correct: 0 },
+          message: "Assessment answer timing and correctness observed.",
+        },
+        {
+          capabilityId: "OBS-LEARNING-000004",
+          factType: "AssessmentAnswerSubmitted",
+          severity: "info",
+          observedAt: "2026-07-03T00:00:00.000Z",
+          context: { route: "/placement/v3", taskId: "conversation-a2-job-goals-1" },
+          metrics: { responseTimeMs: 800, correct: 0 },
+          message: "Assessment answer timing and correctness observed.",
+        },
       ],
     },
     learningSignals: [],
@@ -104,6 +147,7 @@ function rr001Bundle(overrides: Partial<RuntimeReadinessEvidenceBundle> = {}): R
       evidenceCount: 5,
       productFailure: true,
       learnerWeakness: false,
+      observationIds: ["obs-packet-rr001"],
     },
     pedDecision: {
       stage: "PED",
@@ -112,6 +156,7 @@ function rr001Bundle(overrides: Partial<RuntimeReadinessEvidenceBundle> = {}): R
       evidenceCount: 5,
       productFailure: true,
       learnerWeakness: false,
+      observationIds: ["obs-packet-rr001"],
     },
     runtimeDecision: {
       changed: true,
@@ -119,6 +164,8 @@ function rr001Bundle(overrides: Partial<RuntimeReadinessEvidenceBundle> = {}): R
       teacherContextUsed: true,
       learningSignalsUsed: true,
       summary: "exclude listening, exclude speaking, mark placement questionable",
+      observationIds: ["obs-packet-rr001"],
+      signalKeys: [],
     },
     replay: { deterministic: true, pass: true, failures: [] },
     judgeReproduction: { deterministic: true, pass: true, failures: [] },
@@ -159,7 +206,7 @@ describe("judgeRuntimeReadinessEvidence", () => {
   });
 
   it("fails when Teacher Context is missing", () => {
-    const bundle = rr001Bundle() as Partial<RuntimeReadinessEvidenceBundle>;
+    const bundle = rr001Bundle() as Partial<RuntimeEvidenceBundle>;
     delete bundle.teacherContext;
 
     const result = judgeRuntimeReadinessEvidence(bundle, "RR-001");

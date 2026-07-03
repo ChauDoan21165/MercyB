@@ -1,5 +1,3 @@
-import type { TeacherContext } from "../runtime";
-
 export type RuntimeGateId =
   | "RA-1"
   | "RR-001"
@@ -118,43 +116,6 @@ export const RUNTIME_GATE_CONTRACTS: readonly RuntimeGateContract[] = [
     invariants: REQUIRED_RUNTIME_INVARIANTS,
   },
 ];
-
-export type RuntimeReadinessReplayEvidence = {
-  deterministic: boolean;
-  pass?: boolean;
-  failures?: readonly string[];
-};
-
-export type RuntimeReadinessStageDecision = {
-  stage: "DP" | "PED" | "RUNTIME";
-  source: string;
-  reason?: string;
-  action?: string;
-  evidenceCount?: number;
-  productFailure?: boolean;
-  learnerWeakness?: boolean;
-};
-
-export type RuntimeReadinessRuntimeDecision = {
-  changed: boolean;
-  changedBecauseOfTeacherContext: boolean;
-  teacherContextUsed: boolean;
-  learningSignalsUsed: boolean;
-  summary: string;
-};
-
-export type RuntimeReadinessEvidenceBundle = {
-  contractId: RuntimeGateId;
-  runtimeEvent: unknown;
-  obsPacket: unknown;
-  learningSignals: readonly unknown[];
-  teacherContext: TeacherContext;
-  dpDecision: RuntimeReadinessStageDecision;
-  pedDecision: RuntimeReadinessStageDecision;
-  runtimeDecision: RuntimeReadinessRuntimeDecision;
-  replay: RuntimeReadinessReplayEvidence;
-  judgeReproduction: RuntimeReadinessReplayEvidence;
-};
 
 export function getRuntimeGateContract(gateId: RuntimeGateId): RuntimeGateContract {
   const contract = RUNTIME_GATE_CONTRACTS.find((item) => item.gateId === gateId);

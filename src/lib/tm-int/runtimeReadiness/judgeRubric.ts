@@ -3,8 +3,9 @@ import {
   REQUIRED_RUNTIME_EVIDENCE_FIELDS,
   type RuntimeEvidenceField,
   type RuntimeGateId,
-  type RuntimeReadinessEvidenceBundle,
 } from "./contracts";
+import type { PartialRuntimeEvidenceBundle } from "./evidenceBundle";
+import { validateTeacherContext, type TeacherContextValidationFailureCode } from "./teacherContextValidator";
 
 export type RuntimeReadinessFailureCode =
   | "missing_field"
@@ -14,7 +15,8 @@ export type RuntimeReadinessFailureCode =
   | "teacher_context_bypassed"
   | "learning_signals_bypassed"
   | "replay_not_deterministic"
-  | "runtime_decision_unchanged";
+  | "runtime_decision_unchanged"
+  | TeacherContextValidationFailureCode;
 
 export type RuntimeReadinessFailure = {
   code: RuntimeReadinessFailureCode;
@@ -28,10 +30,6 @@ export type RuntimeReadinessJudgeResult = {
   failures: RuntimeReadinessFailure[];
 };
 
-type PartialRuntimeReadinessEvidenceBundle = Partial<RuntimeReadinessEvidenceBundle> & {
-  contractId?: RuntimeGateId | string;
-};
-
 const LEARNER_WEAKNESS_PATTERN =
   /weak listening|weak speaking|poor learner|bad learner|bad comprehension|poor pronunciation|low ability|lazy|careless|learner weakness/i;
 
@@ -40,7 +38,7 @@ function hasOwn(value: object, key: string): boolean {
 }
 
 function addMissingFieldFailures(
-  bundle: PartialRuntimeReadinessEvidenceBundle,
+  bundle: PartialRuntimeEvidenceBundle,
   requiredFields: readonly RuntimeEvidenceField[],
 ): RuntimeReadinessFailure[] {
   return requiredFields
@@ -52,7 +50,7 @@ function addMissingFieldFailures(
     }));
 }
 
-function hasProductFailure(bundle: PartialRuntimeReadinessEvidenceBundle): boolean {
+function hasProductFailure(bundle: PartialRuntimeEvidenceBundle): boolean {
   const serialized = JSON.stringify({
     obsPacket: bundle.obsPacket,
     teacherContext: bundle.teacherContext,
@@ -66,11 +64,11 @@ function containsLearnerWeakness(value: unknown): boolean {
   return LEARNER_WEAKNESS_PATTERN.test(JSON.stringify(value));
 }
 
-function hasStageTrace(bundle: PartialRuntimeReadinessEvidenceBundle, stage: "DP" | "PED"): boolean {
+function hasStageTrace(bundle: PartialRuntimeEvidenceBundle, stage: "DP" | "PED"): boolean {
   return Boolean(bundle.teacherContext?.replayTrace?.some((step) => step.stage === stage));
 }
 
-function hasTeacherContextShape(bundle: PartialRuntimeReadinessEvidenceBundle): boolean {
+function hasTeacherContextShape(bundle: PartialRuntimeEvidenceBundle): boolean {
   const context = bundle.teacherContext;
   return Boolean(
     context &&
@@ -85,12 +83,12 @@ function hasTeacherContextShape(bundle: PartialRuntimeReadinessEvidenceBundle): 
   );
 }
 
-function hasLearningSignalsShape(bundle: PartialRuntimeReadinessEvidenceBundle): boolean {
+function hasLearningSignalsShape(bundle: PartialRuntimeEvidenceBundle): boolean {
   return Array.isArray(bundle.learningSignals) && Array.isArray(bundle.teacherContext?.learningSignals);
 }
 
 export function judgeRuntimeReadinessEvidence(
-  bundle: PartialRuntimeReadinessEvidenceBundle,
+  bundle: PartialRuntimeEvidenceBundle,
   expectedContractId: RuntimeGateId = bundle.contractId as RuntimeGateId,
 ): RuntimeReadinessJudgeResult {
   const contract = getRuntimeGateContract(expectedContractId);
@@ -125,6 +123,14 @@ export function judgeRuntimeReadinessEvidence(
       reason: "Runtime evidence must include Learning Signals and show they were consumed through Teacher Context.",
     });
   }
+
+  failures.push(
+    ...validateTeacherContext(bundle).failures.map((failure) => ({
+      code: failure.code,
+      path: failure.path,
+      reason: failure.reason,
+    })),
+  );
 
   if (!bundle.dpDecision || (bundle.pedDecision && !bundle.dpDecision) || !hasStageTrace(bundle, "DP")) {
     failures.push({
