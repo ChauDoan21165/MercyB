@@ -11,6 +11,22 @@ export type TmRiRuntimeEventType =
 export type TmRiModality = "listening" | "speaking" | "reading" | "writing" | "mixed";
 export type TmRiSeverity = "info" | "low" | "medium" | "high" | "critical";
 export type TmRiEducationalSeverity = "none" | "minor" | "moderate" | "serious" | "critical";
+export type TmRiVisibilityScope =
+  | "learner_visible"
+  | "admin_visible"
+  | "dev_only"
+  | "test_only"
+  | "type_only"
+  | "comment_only"
+  | "unreachable_unknown";
+export type TmRiReachabilitySurface =
+  | "runtime_ui"
+  | "crash_screen"
+  | "admin_panel"
+  | "test_fixture"
+  | "type_definition"
+  | "source_comment"
+  | "unknown";
 
 export type TmRiFindingCode =
   | "audio_unavailable"
@@ -73,6 +89,20 @@ export interface TmRiFinding {
   readonly evidence: readonly string[];
   readonly impact: string;
   readonly confidence: number;
+  readonly visibility?: TmRiVisibilityAssessment;
+  readonly reachability?: TmRiReachabilityAssessment;
+}
+
+export interface TmRiVisibilityAssessment {
+  readonly scope: TmRiVisibilityScope;
+  readonly confidence: number;
+  readonly reason: string;
+}
+
+export interface TmRiReachabilityAssessment {
+  readonly surface: TmRiReachabilitySurface;
+  readonly confidence: number;
+  readonly reason: string;
 }
 
 export interface TmRiTimelinePoint {

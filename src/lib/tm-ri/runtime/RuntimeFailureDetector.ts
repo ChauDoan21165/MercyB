@@ -98,6 +98,6 @@ export class RuntimeFailureDetector {
   }
 
   private hasInternalText(event: TmRiRuntimeEvent): boolean {
-    return includesAny(event.userFacingText, internalTerms) || includesAny(event.internalText, internalTerms);
+    return includesAny(event.userFacingText, internalTerms);
   }
 }

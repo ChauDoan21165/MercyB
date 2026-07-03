@@ -9,6 +9,8 @@ export { ProductPsychologyAnalyzer } from "./psychology/ProductPsychologyAnalyze
 export { ProductTrustAnalyzer } from "./psychology/ProductTrustAnalyzer";
 export { RuntimeReplayEngine } from "./replay/RuntimeReplayEngine";
 export { RuntimeFailureDetector } from "./runtime/RuntimeFailureDetector";
+export { ReachabilityAnalyzer } from "./visibility/ReachabilityAnalyzer";
+export { VisibilityAnalyzer, type TmRiSourceEvidence } from "./visibility/VisibilityAnalyzer";
 export type {
   TmRiAssessmentIntegrity,
   TmRiEducationalFriction,
@@ -27,10 +29,14 @@ export type {
   TmRiReplayTimeline,
   TmRiRepairPlan,
   TmRiRepairPlanItem,
+  TmRiReachabilityAssessment,
+  TmRiReachabilitySurface,
   TmRiRuntimeEvent,
   TmRiRuntimeEventType,
   TmRiSeverity,
   TmRiTimelinePoint,
   TmRiTrustCurve,
   TmRiTrustPoint,
+  TmRiVisibilityAssessment,
+  TmRiVisibilityScope,
 } from "./types";
