@@ -2,6 +2,10 @@
 
 import type { RoomJson } from '@/lib/roomMaster/roomMasterTypes';
 
+function errorMessage(error: unknown): string {
+  return error instanceof Error ? error.message : String(error);
+}
+
 export interface AudioStressResult {
   passed: boolean;
   errors: string[];
@@ -27,8 +31,8 @@ export async function audioStressTest(room: RoomJson): Promise<AudioStressResult
   // Test 1: Rapid play/stop/play
   try {
     await testRapidPlayStop(room);
-  } catch (error: any) {
-    errors.push(`Rapid play/stop test failed: ${error.message}`);
+  } catch (error: unknown) {
+    errors.push(`Rapid play/stop test failed: ${errorMessage(error)}`);
   }
 
   // Test 2: Load all audio files
@@ -46,9 +50,9 @@ export async function audioStressTest(room: RoomJson): Promise<AudioStressResult
           if (loadTime > 5000) {
             warnings.push(`Slow audio load: ${entry.audio} took ${loadTime}ms`);
           }
-        } catch (error: any) {
+        } catch (error: unknown) {
           failedLoads++;
-          errors.push(`Failed to load audio: ${entry.audio} - ${error.message}`);
+          errors.push(`Failed to load audio: ${entry.audio} - ${errorMessage(error)}`);
         }
       }
     }
@@ -65,8 +69,8 @@ export async function audioStressTest(room: RoomJson): Promise<AudioStressResult
   // Test 4: Concurrent playback
   try {
     concurrentPlaybackIssues = await testConcurrentPlayback(room);
-  } catch (error: any) {
-    errors.push(`Concurrent playback test failed: ${error.message}`);
+  } catch (error: unknown) {
+    errors.push(`Concurrent playback test failed: ${errorMessage(error)}`);
   }
 
   const totalLoads = successfulLoads + failedLoads;
@@ -208,9 +212,9 @@ export async function stressTest100Loads(room: RoomJson): Promise<AudioStressRes
         const loadTime = Date.now() - loadStart;
         loadTimes.push(loadTime);
         successfulLoads++;
-      } catch (error: any) {
+      } catch (error: unknown) {
         failedLoads++;
-        errors.push(`Load ${i + 1} failed: ${error.message}`);
+        errors.push(`Load ${i + 1} failed: ${errorMessage(error)}`);
       }
     }
   }

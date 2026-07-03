@@ -3,7 +3,7 @@
 //
 // BUILD-SAFE FIXES (TS2554 + CI-safe):
 // - roomMasterLoader signature may be (AnyRoom) and accept only 1 arg (ts sees "Expected 1 arguments").
-//   => Call it via `any` shim so we can pass options when supported.
+//   => Call it via a typed shim so we can pass options when supported.
 // - If DB is unavailable (or returns 0 rows), fall back to local registry IDs.
 // - If still 0 rooms, fail fast with a clear assertion (prevents false pass/fail).
 // - Always restore simulated environment in a finally block (even if validation throws).
@@ -12,6 +12,27 @@
 import { simulator } from "../LaunchSimulatorCore";
 import { environment } from "../SimulatorEnvironment";
 import { roomMasterLoader } from "@/lib/roomMaster/roomMasterLoader";
+
+type RoomLoaderResult = {
+  errors?: unknown[];
+  warnings?: unknown[];
+  autofixed?: unknown;
+};
+type RoomLoader = (roomId: string, opts: Record<string, unknown>) => Promise<RoomLoaderResult>;
+type RegistryModule = {
+  getAllRooms?: () => unknown[];
+  getRooms?: () => unknown[];
+  ROOMS?: unknown[];
+  rooms?: unknown[];
+};
+
+function isObject(value: unknown): value is Record<string, unknown> {
+  return typeof value === "object" && value !== null;
+}
+
+function roomIdFromRow(row: unknown): string {
+  return isObject(row) ? String(row.id ?? "").trim() : "";
+}
 
 export async function runScenario_LoadAllRooms() {
   const roomIds = await getAllRoomIds();
@@ -52,8 +73,8 @@ export async function runScenario_LoadAllRooms() {
         try {
           for (const roomId of roomIds) {
             // NOTE: Some repo states type roomMasterLoader as (room: AnyRoom) => ...
-            // We keep this test build-safe by invoking via `any`.
-            const result = await (roomMasterLoader as any)(roomId, validateOpts);
+            // We keep this test build-safe by invoking through a narrow callable shim.
+            const result = await (roomMasterLoader as unknown as RoomLoader)(roomId, validateOpts);
 
             const errors = Array.isArray(result?.errors) ? result.errors : [];
             const warnings = Array.isArray(result?.warnings) ? result.warnings : [];
@@ -95,7 +116,7 @@ async function getAllRoomIds(): Promise<string[]> {
     const { data, error } = await supabase.from("rooms").select("id");
 
     if (!error && Array.isArray(data) && data.length > 0) {
-      return data.map((r: any) => String(r?.id ?? "").trim()).filter(Boolean);
+      return data.map(roomIdFromRow).filter(Boolean);
     }
   } catch {
     // ignore DB failure and fall back
@@ -107,7 +128,7 @@ async function getAllRoomIds(): Promise<string[]> {
 
   for (const path of tryImports) {
     try {
-      const mod: any = await import(path);
+      const mod = await import(path) as RegistryModule;
 
       const rooms =
         (typeof mod?.getAllRooms === "function" && mod.getAllRooms()) ||
@@ -116,8 +137,8 @@ async function getAllRoomIds(): Promise<string[]> {
         (Array.isArray(mod?.rooms) && mod.rooms) ||
         [];
 
-      const ids = (rooms as any[])
-        .map((r) => String(r?.id ?? "").trim())
+      const ids = rooms
+        .map(roomIdFromRow)
         .filter(Boolean);
 
       if (ids.length > 0) return ids;

@@ -2,7 +2,7 @@
 // Scenario: Corrupted JSON Boot - Test handling of corrupted room data
 //
 // BUILD-SAFE FIXES (TS2345 + robustness):
-// - roomMasterLoader signature may be (AnyRoom) (not string roomId). Call it via `any` shim.
+// - roomMasterLoader signature may be (AnyRoom) (not string roomId). Call it via a typed shim.
 // - If Supabase is unavailable / returns 0 rows, fall back to local registry room IDs.
 // - If we still have 0 room IDs, fail fast with a clear assertion (prevents false-fail on caughtErrors > 0).
 // - Keep runtime behavior the same for the main corruption/validation loop.
@@ -10,6 +10,31 @@
 import { simulator } from "../LaunchSimulatorCore";
 import { applyRandomCorruption } from "../JSONCorruptionEngine";
 import { roomMasterLoader } from "@/lib/roomMaster/roomMasterLoader";
+
+type RoomLoaderResult = { cleanedRoom?: unknown; room?: unknown };
+type RoomLoader = (roomId: string) => Promise<unknown>;
+type ValidateRoom = (
+  room: unknown,
+  opts: Record<string, unknown>,
+) => { errors: unknown[]; warnings?: unknown[] };
+type RegistryModule = {
+  getAllRooms?: () => unknown[];
+  getRooms?: () => unknown[];
+  ROOMS?: unknown[];
+  rooms?: unknown[];
+};
+
+function errorMessage(error: unknown): string {
+  return error instanceof Error ? error.message : String(error);
+}
+
+function isObject(value: unknown): value is Record<string, unknown> {
+  return typeof value === "object" && value !== null;
+}
+
+function roomIdFromRow(row: unknown): string {
+  return isObject(row) ? String(row.id ?? "").trim() : "";
+}
 
 export async function runScenario_CorruptedJSONBoot() {
   const roomIds = await getSampleRoomIds(20);
@@ -28,17 +53,16 @@ export async function runScenario_CorruptedJSONBoot() {
           try {
             // Load room
             // NOTE: Some repo states type roomMasterLoader as (room: AnyRoom) => ...
-            // We keep this test build-safe by invoking via `any`.
-            const result = await (roomMasterLoader as any)(roomId);
+            // We keep this test build-safe by invoking through a narrow callable shim.
+            const result = await (roomMasterLoader as unknown as RoomLoader)(roomId);
 
             // Corrupt it
-            const corrupted = applyRandomCorruption((result as any)?.cleanedRoom ?? (result as any)?.room ?? result);
+            const loaded = result as RoomLoaderResult;
+            const corrupted = applyRandomCorruption(loaded.cleanedRoom ?? loaded.room ?? result);
 
             // Try to validate corrupted room
             const mod = await import("@/lib/roomMaster/roomMaster");
-            const validateRoom = (mod as any)?.validateRoom as
-              | undefined
-              | ((room: any, opts: any) => { errors: any[]; warnings?: any[] });
+            const validateRoom = (mod as { validateRoom?: ValidateRoom }).validateRoom;
 
             simulator.assert(typeof validateRoom === "function", "validateRoom() is missing from roomMaster module.");
 
@@ -56,9 +80,9 @@ export async function runScenario_CorruptedJSONBoot() {
               caughtErrors++;
               simulator.info(`RoomMaster caught corruption in ${roomId}`);
             }
-          } catch (error: any) {
+          } catch (error: unknown) {
             uncaughtErrors++;
-            simulator.error(`Uncaught error for ${roomId}: ${error?.message || String(error)}`);
+            simulator.error(`Uncaught error for ${roomId}: ${errorMessage(error)}`);
           }
         }
 
@@ -79,7 +103,7 @@ async function getSampleRoomIds(count: number): Promise<string[]> {
     const { data, error } = await supabase.from("rooms").select("id").limit(count);
 
     if (!error && Array.isArray(data) && data.length > 0) {
-      return data.map((r: any) => String(r?.id ?? "").trim()).filter(Boolean);
+      return data.map(roomIdFromRow).filter(Boolean);
     }
   } catch {
     // ignore DB failure and fall back
@@ -95,7 +119,7 @@ async function getSampleRoomIds(count: number): Promise<string[]> {
 
   for (const path of tryImports) {
     try {
-      const mod: any = await import(path);
+      const mod = await import(path) as RegistryModule;
 
       const rooms =
         (typeof mod?.getAllRooms === "function" && mod.getAllRooms()) ||
@@ -104,8 +128,8 @@ async function getSampleRoomIds(count: number): Promise<string[]> {
         (Array.isArray(mod?.rooms) && mod.rooms) ||
         [];
 
-      const ids = (rooms as any[])
-        .map((r) => String(r?.id ?? "").trim())
+      const ids = rooms
+        .map(roomIdFromRow)
         .filter(Boolean)
         .slice(0, count);
 

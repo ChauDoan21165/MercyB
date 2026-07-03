@@ -20,10 +20,10 @@ import { supabase } from "@/lib/supabaseClient";
 
 const IS_DEV = import.meta.env.DEV;
 
-function devWarn(...args: any[]) {
+function devWarn(...args: unknown[]) {
   if (IS_DEV) console.warn(...args);
 }
-function devError(...args: any[]) {
+function devError(...args: unknown[]) {
   if (IS_DEV) console.error(...args);
 }
 
@@ -50,7 +50,7 @@ export const getUserIP = async (): Promise<string> => {
 export const logSecurityEvent = async (
   eventType: string,
   severity: "low" | "medium" | "high" | "critical",
-  metadata?: any
+  metadata?: Record<string, unknown>
 ) => {
   try {
     const ipAddress = await getUserIP();
@@ -134,10 +134,10 @@ export const trackLoginAttempt = async (
           },
         });
 
-        if ((fn as any)?.error)
+        if (fn.error)
           devWarn(
             "[security] functions.invoke(security-alert) failed (fail-open)",
-            (fn as any).error
+            fn.error
           );
       }
     }
@@ -219,7 +219,13 @@ export const downgradeUserTier = async (userId: string) => {
 };
 
 // Detect suspicious patterns
-export const detectSuspiciousActivity = (loginAttempts: any[]): boolean => {
+type LoginAttempt = {
+  success?: boolean;
+  ip_address?: string | null;
+  created_at: string;
+};
+
+export const detectSuspiciousActivity = (loginAttempts: LoginAttempt[]): boolean => {
   const uniqueIPs = new Set(
     loginAttempts.filter((a) => !a.success).map((a) => a.ip_address)
   ).size;

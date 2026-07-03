@@ -31,7 +31,7 @@ import {
   type EvaluationResult,
   type EvaluationClassification,
 } from "../teachingDecisionEvaluationGate";
-import { decideTeacherAction, type TeacherDecisionInput } from "../teacherDecisionEngine";
+import { decideTeacherAction, type TeacherDecision, type TeacherDecisionInput } from "../teacherDecisionEngine";
 
 // ─── Helpers ──────────────────────────────────────────────────────────────
 
@@ -103,7 +103,7 @@ describe("V1 — Action-input coherence", () => {
 
   it("fails: invalid action string", () => {
     const d = decide({ learnerText: "She happy." });
-    const badDecision = { ...d, action: "INVALID_ACTION" as any };
+    const badDecision = { ...d, action: "INVALID_ACTION" as unknown as TeacherDecision["action"] };
     const result = evaluateTeachingDecision(input({ learnerText: "She happy." }), badDecision);
     const v1 = result.gates.find(g => g.gateId === "V1_ACTION_INPUT_COHERENCE")!;
     expect(v1.passed).toBe(false);
@@ -436,7 +436,7 @@ describe("V7 — Readiness-action agreement", () => {
 
   it("fails: missing readiness entirely (synthetic)", () => {
     const d = decide({ learnerText: "She happy." });
-    const badDecision = { ...d, readiness: null as any };
+    const badDecision = { ...d, readiness: null as unknown as TeacherDecision["readiness"] };
     const result = evaluateTeachingDecision(input({ learnerText: "She happy." }), badDecision);
     const v7 = result.gates.find(g => g.gateId === "V7_READINESS_ACTION_AGREEMENT")!;
     expect(v7.passed).toBe(false);

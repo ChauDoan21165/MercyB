@@ -35,6 +35,10 @@ export interface AssertionResult {
   passed: boolean;
 }
 
+function errorMessage(error: unknown): string {
+  return error instanceof Error ? error.message : String(error);
+}
+
 export class LaunchSimulator {
   private results: SimulationResult[] = [];
   private currentScenario: string | null = null;
@@ -68,18 +72,19 @@ export class LaunchSimulator {
         });
         
         this.info(`Step passed: ${step.name} (${stepDuration}ms)`);
-      } catch (error: any) {
+      } catch (error: unknown) {
         const stepDuration = Date.now() - stepStartTime;
         scenarioPassed = false;
+        const message = errorMessage(error);
         
         stepResults.push({
           name: step.name,
           passed: false,
           duration: stepDuration,
-          error: error.message || String(error),
+          error: message,
         });
         
-        this.error(`Step failed: ${step.name} - ${error.message}`);
+        this.error(`Step failed: ${step.name} - ${message}`);
       }
     }
 

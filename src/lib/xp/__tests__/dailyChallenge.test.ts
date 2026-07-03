@@ -5,15 +5,18 @@
 // patching the supabase mock chain to return canned rows.
 
 import { describe, it, expect, vi, beforeEach } from "vitest";
+import type { createSupabaseMock } from "@/test/mocks/supabaseMock";
+
+type SupabaseMock = ReturnType<typeof createSupabaseMock>;
 
 vi.mock("@/lib/supabaseClient", async () => {
-  const mod = await vi.importActual<any>("@/test/mocks/supabaseMock");
+  const mod = await vi.importActual<typeof import("@/test/mocks/supabaseMock")>("@/test/mocks/supabaseMock");
   const supabase = mod.createSupabaseMock();
   return { supabase, __mock: supabase };
 });
 
 import * as SupaMod from "@/lib/supabaseClient";
-const supabaseMock = (SupaMod as any).__mock;
+const supabaseMock = (SupaMod as typeof SupaMod & { __mock: SupabaseMock }).__mock;
 
 import {
   pickChallenge,
@@ -22,6 +25,9 @@ import {
   generateDaily,
   completeDaily,
 } from "../dailyChallenge";
+import type { DailyChallengeRow } from "../dailyChallenge";
+
+type MaybeDailyChallengeRow = DailyChallengeRow | null;
 
 describe("xpForKind", () => {
   it("matches the documented XP table", () => {
@@ -91,7 +97,7 @@ describe("generateDaily", () => {
     vi.clearAllMocks();
   });
 
-  function mockDailyChallengesRead(row: any) {
+  function mockDailyChallengesRead(row: MaybeDailyChallengeRow) {
     const maybeSingle = vi.fn().mockResolvedValue({ data: row, error: null });
     const eqDate = vi.fn(() => ({ maybeSingle }));
     const eqUser = vi.fn(() => ({ eq: eqDate }));
@@ -109,7 +115,7 @@ describe("generateDaily", () => {
     return { select };
   }
 
-  function mockDailyChallengesInsert(row: any) {
+  function mockDailyChallengesInsert(row: DailyChallengeRow) {
     const single = vi.fn().mockResolvedValue({ data: row, error: null });
     const select = vi.fn(() => ({ single }));
     const insert = vi.fn(() => ({ select }));
@@ -182,7 +188,7 @@ describe("completeDaily", () => {
     vi.clearAllMocks();
   });
 
-  function mockReadRow(row: any) {
+  function mockReadRow(row: MaybeDailyChallengeRow) {
     const maybeSingle = vi.fn().mockResolvedValue({ data: row, error: null });
     const eqDate = vi.fn(() => ({ maybeSingle }));
     const eqUser = vi.fn(() => ({ eq: eqDate }));
@@ -190,7 +196,7 @@ describe("completeDaily", () => {
     return { select };
   }
 
-  function mockUpdateRow(row: any) {
+  function mockUpdateRow(row: DailyChallengeRow) {
     const single = vi.fn().mockResolvedValue({ data: row, error: null });
     const select = vi.fn(() => ({ single }));
     const eqDate = vi.fn(() => ({ select }));

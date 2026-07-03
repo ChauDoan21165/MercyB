@@ -12,6 +12,13 @@ vi.mock("@/lib/supabaseClient", () => ({
 import { ensureVocabulary } from "../autoAdd";
 
 type Resolved<T> = Promise<T>;
+type QueryResult = { data: unknown; error: { code?: string; message?: string } | null };
+type QueryChain = {
+  select: ReturnType<typeof vi.fn>;
+  eq: ReturnType<typeof vi.fn>;
+  maybeSingle: ReturnType<typeof vi.fn>;
+  insert: ReturnType<typeof vi.fn>;
+};
 
 // Builds a chainable supabase query stub. The same chain is used for
 // both `.select(...).eq(...).eq(...).maybeSingle()` (pre-check) and
@@ -20,10 +27,10 @@ function buildChain({
   selectResult,
   insertResult,
 }: {
-  selectResult: Resolved<{ data: any; error: any }>;
-  insertResult: Resolved<{ data: any; error: any }>;
+  selectResult: Resolved<QueryResult>;
+  insertResult: Resolved<QueryResult>;
 }) {
-  const chain: Record<string, any> = {};
+  const chain = {} as QueryChain;
   chain.select = vi.fn(() => chain);
   chain.eq = vi.fn(() => chain);
   chain.maybeSingle = vi.fn(() => selectResult);
@@ -140,8 +147,8 @@ describe("ensureVocabulary", () => {
     supabaseFromMock.mockReturnValue(chain);
 
     await ensureVocabulary({ user_id: "u1", word: "  trimmed  " });
-    const passedWord = (chain.eq as any).mock.calls.find(
-      (c: any[]) => c[0] === "word",
+    const passedWord = chain.eq.mock.calls.find(
+      (c: unknown[]) => c[0] === "word",
     )?.[1];
     expect(passedWord).toBe("trimmed");
   });

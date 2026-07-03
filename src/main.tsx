@@ -32,7 +32,10 @@ if (!String.prototype.at) {
 
 // TypedArrays (Uint8Array, Float32Array, etc.) also lack .at() on the same browsers.
 // Per-constructor assignment so each typed-array type gets the polyfill.
-if (typeof Uint8Array !== "undefined" && !(Uint8Array.prototype as any).at) {
+type TypedArrayWithAt = { at?: typeof Array.prototype.at };
+type TypedArrayConstructorWithPrototype = { prototype: TypedArrayWithAt };
+
+if (typeof Uint8Array !== "undefined" && !(Uint8Array.prototype as TypedArrayWithAt).at) {
   const _at = Array.prototype.at;
   for (const Ctor of [
     Int8Array,
@@ -44,8 +47,8 @@ if (typeof Uint8Array !== "undefined" && !(Uint8Array.prototype as any).at) {
     Uint32Array,
     Float32Array,
     Float64Array,
-  ]) {
-    try { (Ctor.prototype as any).at = _at; } catch { /* ignore */ }
+  ] satisfies TypedArrayConstructorWithPrototype[]) {
+    try { Ctor.prototype.at = _at; } catch { /* ignore */ }
   }
 }
 

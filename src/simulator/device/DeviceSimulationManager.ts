@@ -12,6 +12,10 @@ import {
   resetAccessibilityModes,
 } from './AccessibilityEnvSimulator';
 
+function toError(error: unknown): Error {
+  return error instanceof Error ? error : new Error(String(error));
+}
+
 export interface DeviceSimulationOptions {
   networkProfile?: 'offline' | 'slow_3g' | 'fast_3g' | '4g' | 'wifi';
   a11y?: Array<'screen-reader' | 'large-text' | 'high-contrast' | 'keyboard-nav' | 'reduced-motion'>;
@@ -67,7 +71,7 @@ export async function runOnDevice<T>(
     }
 
     return result;
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error(`[DeviceSimulationManager] Scenario failed:`, error);
     throw error;
   } finally {
@@ -93,9 +97,9 @@ export async function runOnMultipleDevices<T>(
       const result = await runOnDevice(deviceId, options, scenario);
       const duration = Date.now() - startTime;
       results.set(deviceId, { result, duration });
-    } catch (error: any) {
+    } catch (error: unknown) {
       const duration = Date.now() - startTime;
-      results.set(deviceId, { error, duration });
+      results.set(deviceId, { error: toError(error), duration });
     }
   }
 
