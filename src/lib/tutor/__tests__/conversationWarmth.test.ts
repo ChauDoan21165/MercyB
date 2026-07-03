@@ -148,6 +148,17 @@ describe("buildAbstentionRedirect", () => {
     expect(redirect.nextPrompt.en).toBe("Which type of account would you like to open first?");
   });
 
+  it("falls back to a concrete default when caller-supplied next prompt is blank", () => {
+    const redirect = buildAbstentionRedirect({
+      trigger: "no_audio",
+      suggestedNextPrompt: { vi: "   ", en: "" },
+    });
+
+    expect(redirect.nextPrompt.vi.trim().length).toBeGreaterThan(10);
+    expect(redirect.nextPrompt.en.trim().length).toBeGreaterThan(10);
+    expect(redirect.nextPrompt.vi).toMatch(VIETNAMESE_MARKERS);
+  });
+
   it("rotates the default next prompt by turnIndex", () => {
     const prompts = new Set(
       [0, 1, 2].map(

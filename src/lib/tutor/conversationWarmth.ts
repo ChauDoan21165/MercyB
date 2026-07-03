@@ -254,6 +254,13 @@ const DEFAULT_NEXT_PROMPTS: readonly BilingualLine[] = [
   },
 ];
 
+function concreteNextPrompt(input: BilingualLine | null | undefined, turnIndex: number | undefined): BilingualLine {
+  const fallback = pick(DEFAULT_NEXT_PROMPTS, turnIndex);
+  const vi = input?.vi.trim() || fallback.vi;
+  const en = input?.en.trim() || fallback.en;
+  return { vi, en };
+}
+
 /**
  * Trust floor: turn a low-confidence / null signal into an honest, low-shame
  * acknowledgment plus a concrete next practice prompt. The redirect ALWAYS
@@ -261,12 +268,12 @@ const DEFAULT_NEXT_PROMPTS: readonly BilingualLine[] = [
  * acknowledgment never contains a fabricated score.
  */
 export function buildAbstentionRedirect(input: AbstentionRedirectInput): AbstentionRedirect {
-  const nextPrompt = input.suggestedNextPrompt ?? pick(DEFAULT_NEXT_PROMPTS, input.turnIndex);
+  const nextPrompt = concreteNextPrompt(input.suggestedNextPrompt, input.turnIndex);
   return {
     trigger: input.trigger,
     vi: ABSTAIN_VI[input.trigger],
     en: ABSTAIN_EN[input.trigger],
-    nextPrompt: { vi: nextPrompt.vi, en: nextPrompt.en },
+    nextPrompt,
   };
 }
 

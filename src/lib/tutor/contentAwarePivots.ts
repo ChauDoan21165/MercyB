@@ -78,7 +78,7 @@ function labelForTopic(topic: SpeakConversationTopic | string | null, fallback?:
 }
 
 function isHelpRequest(normalized: string): boolean {
-  return /\b(i do not know|i don't know|dont know|don't know|help me|can you help|how to say|how do i say|what should i say)\b/.test(
+  return /\b(i do not know|i don't know|i am not sure|i'm not sure|im not sure|not sure|dont know|don't know|help me|can you help|how to say|how do i say|what should i say)\b/.test(
     normalized,
   );
 }

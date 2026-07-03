@@ -57,6 +57,18 @@ describe("contentAwarePivots", () => {
     expect(decision.safeTeacherMove).toMatch(/model sentence/i);
   });
 
+  it("offers help for uncertainty phrased as not sure", () => {
+    const decision = classifyContentAwarePivot({
+      learnerText: "I'm not sure what should I say.",
+      currentTopicId: "family",
+      topicLabel: "Family",
+    });
+
+    expect(decision.contentType).toBe("help_request");
+    expect(decision.pivotAction).toBe("encourage_expand");
+    expect(decision.safeTeacherMove).toMatch(/model sentence/i);
+  });
+
   it("invites expansion for emotion or opinion", () => {
     const decision = classifyContentAwarePivot({
       learnerText: "I feel tired after work.",
