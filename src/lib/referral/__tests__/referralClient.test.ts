@@ -5,15 +5,26 @@
 // statuses propagate back as the right TypeScript shape.
 
 import { describe, it, expect, vi, beforeEach } from "vitest";
+import type { createSupabaseMock } from "@/test/mocks/supabaseMock";
+
+type SupabaseMock = ReturnType<typeof createSupabaseMock>;
+type RetryReferralUseChain = {
+  select: ReturnType<typeof vi.fn>;
+  eq: ReturnType<typeof vi.fn>;
+  maybeSingle: ReturnType<typeof vi.fn>;
+};
 
 vi.mock("@/lib/supabaseClient", async () => {
-  const mod = await vi.importActual<any>("@/test/mocks/supabaseMock");
+  const mod = await vi.importActual<typeof import("@/test/mocks/supabaseMock")>(
+    "@/test/mocks/supabaseMock",
+  );
   const supabase = mod.createSupabaseMock();
   return { supabase, __mock: supabase };
 });
 
 import * as SupaMod from "@/lib/supabaseClient";
-const supabaseMock = (SupaMod as any).__mock;
+const supabaseMock = (SupaMod as typeof SupaMod & { __mock: SupabaseMock })
+  .__mock;
 
 import {
   REFERRAL_CODE_ALPHABET,
@@ -30,6 +41,15 @@ import {
   resetReferralRetryDedupe,
   retryReferralRewardOnAuth,
 } from "../referralClient";
+
+function createNoReferralUseChain(): RetryReferralUseChain {
+  const sharedChain: RetryReferralUseChain = {
+    select: vi.fn(() => sharedChain),
+    eq: vi.fn(() => sharedChain),
+    maybeSingle: vi.fn().mockResolvedValue({ data: null, error: null }),
+  };
+  return sharedChain;
+}
 
 describe("alphabet + shape", () => {
   it("alphabet excludes ambiguous characters (0, 1, I, O)", () => {
@@ -252,12 +272,7 @@ describe("retryReferralRewardOnAuth — per-userId dedupe", () => {
 
   it("queries referral_uses only once for the same userId across rapid auth events", async () => {
     // Build a chain where .select().eq().eq().maybeSingle() resolves to "no row".
-    const sharedChain: any = {};
-    sharedChain.select = vi.fn(() => sharedChain);
-    sharedChain.eq = vi.fn(() => sharedChain);
-    sharedChain.maybeSingle = vi
-      .fn()
-      .mockResolvedValue({ data: null, error: null });
+    const sharedChain = createNoReferralUseChain();
     supabaseMock.from.mockReturnValue(sharedChain);
 
     // Fire 5 times — Supabase Auth can emit INITIAL_SESSION, SIGNED_IN,
@@ -273,12 +288,7 @@ describe("retryReferralRewardOnAuth — per-userId dedupe", () => {
   });
 
   it("a different userId is not deduped by the previous user's entry", async () => {
-    const sharedChain: any = {};
-    sharedChain.select = vi.fn(() => sharedChain);
-    sharedChain.eq = vi.fn(() => sharedChain);
-    sharedChain.maybeSingle = vi
-      .fn()
-      .mockResolvedValue({ data: null, error: null });
+    const sharedChain = createNoReferralUseChain();
     supabaseMock.from.mockReturnValue(sharedChain);
 
     await retryReferralRewardOnAuth("user-A");
@@ -289,12 +299,7 @@ describe("retryReferralRewardOnAuth — per-userId dedupe", () => {
   });
 
   it("resetReferralRetryDedupe re-arms the retry path (e.g. after sign-out)", async () => {
-    const sharedChain: any = {};
-    sharedChain.select = vi.fn(() => sharedChain);
-    sharedChain.eq = vi.fn(() => sharedChain);
-    sharedChain.maybeSingle = vi
-      .fn()
-      .mockResolvedValue({ data: null, error: null });
+    const sharedChain = createNoReferralUseChain();
     supabaseMock.from.mockReturnValue(sharedChain);
 
     await retryReferralRewardOnAuth("user-A");
