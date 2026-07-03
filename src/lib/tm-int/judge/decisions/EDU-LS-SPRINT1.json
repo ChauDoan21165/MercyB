@@ -1,0 +1,68 @@
+{
+  "framework_id": "EDU-LS-SPRINT1",
+  "name": "EDU INT + Learning Signal Framework Sprint 1",
+  "judge_decision": "promoted",
+  "promoted_by": "ADMIN/JUDGE",
+  "source_commit": "419d45b65",
+  "evidence": {
+    "edu_definitions": {
+      "count": 5,
+      "definitions_present": [
+        "ProductiveHesitation",
+        "HealthySelfCorrection",
+        "HintDependency",
+        "MisconceptionRecurrence",
+        "RetrievalSuccess"
+      ],
+      "required_fields_present": [
+        "edu_id",
+        "signal_key",
+        "educational_definition",
+        "observable_evidence",
+        "alternative_explanations",
+        "teacher_goal",
+        "teacher_actions",
+        "validation_criteria",
+        "anti_fake_checks"
+      ]
+    },
+    "learning_signal_engine": {
+      "consumes_obs_style_events": true,
+      "emits_normalized_learning_signals": true,
+      "includes_evidence_list": true,
+      "includes_confidence": true,
+      "preserves_alternatives": true,
+      "references_edu_definition_id": true,
+      "does_not_infer_psychology": true,
+      "does_not_infer_learner_ability": true
+    },
+    "mappings_tested": [
+      "pause + final correct + no hint -> ProductiveHesitation",
+      "wrong -> revised -> correct -> HealthySelfCorrection",
+      "repeated hint usage -> HintDependency",
+      "same concept wrong repeatedly -> MisconceptionRecurrence",
+      "correct after delay -> RetrievalSuccess"
+    ],
+    "sqlite": {
+      "path": "src/lib/tm-int/workpacks/edu-ls-sprint1.sqlite",
+      "row_count": 8,
+      "duplicate_semantic_key_count": 0,
+      "required_columns_present": true,
+      "required_text_fields_nonempty": true,
+      "f_verified_before_promotion": 0,
+      "f_verified_after_promotion": 0
+    },
+    "gates": {
+      "typecheck": "PASS",
+      "eslint": "PASS",
+      "tests": "PASS",
+      "diff_check": "PASS"
+    }
+  },
+  "verified": true,
+  "notes": [
+    "Judge promotion is scoped only to EDU-LS Sprint 1.",
+    "F workpack rows remain verified=false.",
+    "No DP, PED, or LM expansion was built during promotion."
+  ]
+}

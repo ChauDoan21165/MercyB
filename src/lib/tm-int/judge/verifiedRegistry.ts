@@ -44,3 +44,29 @@ export const VERIFIED_TEACHING_CASES = [
 export function verifiedTeachingCaseCount(): number {
   return VERIFIED_TEACHING_CASES.length;
 }
+
+export type VerifiedEduFramework = {
+  framework_id: "EDU-LS-SPRINT1";
+  semantic_key: "edu_ls.sprint1.learning_signal_framework";
+  judge_decision: "promoted";
+  judge_artifact: string;
+  promoted_by: "ADMIN/JUDGE";
+  source_commit: string;
+  verified: true;
+};
+
+export const VERIFIED_EDU_FRAMEWORKS = [
+  {
+    framework_id: "EDU-LS-SPRINT1",
+    semantic_key: "edu_ls.sprint1.learning_signal_framework",
+    judge_decision: "promoted",
+    judge_artifact: "src/lib/tm-int/judge/decisions/EDU-LS-SPRINT1.json",
+    promoted_by: "ADMIN/JUDGE",
+    source_commit: "419d45b65",
+    verified: true,
+  },
+] as const satisfies readonly VerifiedEduFramework[];
+
+export function verifiedEduFrameworkCount(): number {
+  return VERIFIED_EDU_FRAMEWORKS.length;
+}
