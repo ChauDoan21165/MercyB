@@ -111,6 +111,42 @@ describe("TM-RI placement audio and trust intelligence", () => {
     expect(analysis.honesty.resultConfidence).toBe("withheld");
   });
 
+  it("does not retroactively invalidate a listening score shown before a later audio failure", () => {
+    const analysis = analyze([
+      {
+        id: "listening-result-before-failure",
+        type: "assessment_result_shown",
+        timestampMs: 100,
+        modality: "listening",
+        assessmentSkill: "listening",
+        scoreShown: true,
+        confidence: 92,
+      },
+      {
+        id: "late-audio-failed",
+        type: "media_play_failed",
+        timestampMs: 240,
+        modality: "listening",
+        assessmentSkill: "listening",
+        playable: false,
+      },
+    ]);
+
+    expect(analysis.assessmentIntegrity.degradedEvidence).toBe(true);
+    expect(analysis.assessmentIntegrity.invalidScoringRisk).toBe(false);
+    expect(analysis.assessmentIntegrity.confidenceOverclaimRisk).toBe(false);
+    expect(analysis.assessmentIntegrity.listeningNotGradableAsWrong).toBe(true);
+    expect(analysis.observationPacket.findings.map((finding) => finding.code)).not.toContain("invalid_scoring_risk");
+    expect(analysis.observationPacket.findings.map((finding) => finding.code)).not.toContain(
+      "confidence_overclaim_risk",
+    );
+    expect(analysis.honesty.recommendations).toEqual(
+      expect.arrayContaining(["lower_confidence", "explain_degraded", "retry_required"]),
+    );
+    expect(analysis.honesty.recommendations).not.toContain("withhold_cefr");
+    expect(analysis.honesty.resultConfidence).toBe("lowered");
+  });
+
   it("detects internal debug or stub wording as a product trust risk", () => {
     const analysis = analyze([
       {

@@ -8,19 +8,23 @@ export class AssessmentIntegrityAnalyzer {
     const textFallbackForSpeaking = events.some(
       (event) => event.assessmentSkill === "speaking" && event.inputMode === "text",
     );
+    const firstDegradationTimestamp = this.firstDegradationTimestamp(events);
     const highConfidenceResult = events.some(
-      (event) => event.type === "assessment_result_shown" && (event.confidence ?? 0) >= 80,
+      (event) =>
+        event.type === "assessment_result_shown" &&
+        (event.confidence ?? 0) >= 80 &&
+        this.occursDuringOrAfterDegradation(event, firstDegradationTimestamp),
     );
     const resultShownDuringDegradation = events.some(
       (event) =>
         event.type === "assessment_result_shown" &&
         event.scoreShown === true &&
-        (hasAudioFailure || hasMicFailure || textFallbackForSpeaking),
+        this.occursDuringOrAfterDegradation(event, firstDegradationTimestamp),
     );
     const scoringDuringDegradation = events.some(
       (event) =>
         event.type === "assessment_scored" &&
-        (hasAudioFailure || hasMicFailure || textFallbackForSpeaking),
+        this.occursDuringOrAfterDegradation(event, firstDegradationTimestamp),
     );
 
     const findings: TmRiFinding[] = [];
@@ -91,5 +95,39 @@ export class AssessmentIntegrityAnalyzer {
       spokenEvidenceAvailable: !hasMicFailure && !textFallbackForSpeaking,
       findings,
     };
+  }
+
+  private firstDegradationTimestamp(events: readonly TmRiRuntimeEvent[]): number | undefined {
+    const degradationTimestamps = events
+      .filter((event) => this.isAudioFailureEvent(event) || this.isMicFailureEvent(event) || this.isSpeakingTextFallbackEvent(event))
+      .map((event) => event.timestampMs);
+
+    if (degradationTimestamps.length === 0) {
+      return undefined;
+    }
+
+    return Math.min(...degradationTimestamps);
+  }
+
+  private occursDuringOrAfterDegradation(event: TmRiRuntimeEvent, firstDegradationTimestamp: number | undefined): boolean {
+    return firstDegradationTimestamp !== undefined && event.timestampMs >= firstDegradationTimestamp;
+  }
+
+  private isAudioFailureEvent(event: TmRiRuntimeEvent): boolean {
+    const isAudioSkill = event.assessmentSkill === "listening" || event.modality === "listening";
+    return (
+      event.type === "audio_unavailable" ||
+      event.type === "media_play_failed" ||
+      event.playable === false ||
+      (isAudioSkill && (event.durationSeconds === 0 || event.inputMode === "none"))
+    );
+  }
+
+  private isMicFailureEvent(event: TmRiRuntimeEvent): boolean {
+    return event.type === "mic_unavailable";
+  }
+
+  private isSpeakingTextFallbackEvent(event: TmRiRuntimeEvent): boolean {
+    return event.assessmentSkill === "speaking" && event.inputMode === "text";
   }
 }
