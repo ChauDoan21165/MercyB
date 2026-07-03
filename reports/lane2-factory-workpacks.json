@@ -1,0 +1,320 @@
+{
+  "lane_id": "lane2",
+  "workpacks": [
+    {
+      "wp_id": "WP-L2-001",
+      "semantic_key": "lane2.professions.index.active.routes.coverage",
+      "source_files": ["src/pages/professions/ProfessionsIndexPage.tsx", "src/pages/professions/__tests__/ProfessionsPages.test.tsx"],
+      "objective": "Profession index can drift from active profession routes without tests noticing card count, active links, or route list gaps.",
+      "acceptance_tests": "Focused profession page test proves all active profession cards link to the seven public profession routes and no active card has a missing href.",
+      "validation_commands": ["npx eslint src/pages/professions/__tests__/ProfessionsPages.test.tsx", "npx vitest run src/pages/professions/__tests__/ProfessionsPages.test.tsx", "git diff --check"],
+      "anti_fake_checks": ["no skipped tests", "no placeholder assertions", "test reads rendered links rather than only static prose"]
+    },
+    {
+      "wp_id": "WP-L2-002",
+      "semantic_key": "lane2.professions.no.remote.lesson.loading",
+      "source_files": ["src/pages/professions/*LessonsPage.tsx", "src/pages/professions/__tests__/ProfessionsPages.test.tsx"],
+      "objective": "Profession lesson pages should stay local/static and must not drift into Supabase lesson loaders or remote fetch paths.",
+      "acceptance_tests": "Focused test scans all profession lesson page sources and rejects useLessonData, fetchLessonsBatch, Supabase client calls, fetch, or remote lesson loaders.",
+      "validation_commands": ["npx eslint src/pages/professions/__tests__/ProfessionsPages.test.tsx", "npx vitest run src/pages/professions/__tests__/ProfessionsPages.test.tsx", "git diff --check"],
+      "anti_fake_checks": ["no report-only progress", "source scan covers every active profession page", "no skipped tests"]
+    },
+    {
+      "wp_id": "WP-L2-003",
+      "semantic_key": "lane2.professions.no.fake.media.or.ai.promises",
+      "source_files": ["src/pages/professions/*LessonsPage.tsx", "src/pages/professions/__tests__/ProfessionsPages.test.tsx"],
+      "objective": "Profession pages can accidentally ship fake audio, fake AI tutor, or Promise.resolve placeholder content.",
+      "acceptance_tests": "Focused source test rejects fake audio/AI/tutor strings and Promise.resolve placeholder media in all active profession pages.",
+      "validation_commands": ["npx eslint src/pages/professions/__tests__/ProfessionsPages.test.tsx", "npx vitest run src/pages/professions/__tests__/ProfessionsPages.test.tsx", "git diff --check"],
+      "anti_fake_checks": ["no weakened existing lesson-count assertions", "test checks real source files", "no skipped tests"]
+    },
+    {
+      "wp_id": "WP-L2-004",
+      "semantic_key": "lane2.professions.category.heading.render.coverage",
+      "source_files": ["src/pages/professions/*LessonsPage.tsx", "src/pages/professions/__tests__/ProfessionsPages.test.tsx"],
+      "objective": "A profession page can render the total lesson count while silently dropping category headings or sections.",
+      "acceptance_tests": "Focused test renders each profession page and proves every category title from local data appears as a section heading.",
+      "validation_commands": ["npx eslint src/pages/professions/__tests__/ProfessionsPages.test.tsx", "npx vitest run src/pages/professions/__tests__/ProfessionsPages.test.tsx", "git diff --check"],
+      "anti_fake_checks": ["asserts local data category titles", "no placeholder category literals only", "no skipped tests"]
+    },
+    {
+      "wp_id": "WP-L2-005",
+      "semantic_key": "lane2.professions.expanded.lesson.detail.coverage",
+      "source_files": ["src/pages/professions/*LessonsPage.tsx", "src/pages/professions/__tests__/ProfessionsPages.test.tsx"],
+      "objective": "Profession pages may render lesson buttons but fail to expose sentence, pronunciation, cultural note, or tip detail when expanded.",
+      "acceptance_tests": "Focused test expands the first lesson for each profession page and verifies real sentence, VI gloss, pronunciation, cultural note, and tip advice from local data.",
+      "validation_commands": ["npx eslint src/pages/professions/__tests__/ProfessionsPages.test.tsx", "npx vitest run src/pages/professions/__tests__/ProfessionsPages.test.tsx", "git diff --check"],
+      "anti_fake_checks": ["uses real local data expectations", "no snapshot-only assertion", "no skipped tests"]
+    },
+    {
+      "wp_id": "WP-L2-006",
+      "semantic_key": "lane2.professions.router.registration.coverage",
+      "source_files": ["src/router/AppRouter.tsx", "src/pages/professions/__tests__/ProfessionsPages.test.tsx"],
+      "objective": "Profession pages can remain linked from the index but lose AppRouter route registration.",
+      "acceptance_tests": "Test confirms every active profession page component and route path exists in AppRouter.",
+      "validation_commands": ["npx eslint src/pages/professions/__tests__/ProfessionsPages.test.tsx", "npx vitest run src/pages/professions/__tests__/ProfessionsPages.test.tsx", "git diff --check"],
+      "anti_fake_checks": ["checks router source", "no report-only progress"]
+    },
+    {
+      "wp_id": "WP-L2-007",
+      "semantic_key": "lane2.languages.index.all.public.cards.coverage",
+      "source_files": ["src/pages/languages/LanguagesIndexPage.tsx", "src/pages/languages/__tests__/LanguagePairRouting.test.tsx"],
+      "objective": "Languages hub can omit a public language card while individual lesson page tests still pass.",
+      "acceptance_tests": "Add/strengthen test that the languages hub exposes all public language lesson routes and labels.",
+      "validation_commands": ["npx eslint src/pages/languages/__tests__/LanguagePairRouting.test.tsx", "npx vitest run src/pages/languages/__tests__/LanguagePairRouting.test.tsx", "git diff --check"],
+      "anti_fake_checks": ["no skipped tests", "asserts rendered links or static source route list"]
+    },
+    {
+      "wp_id": "WP-L2-008",
+      "semantic_key": "lane2.languages.app.router.all.lesson.routes.coverage",
+      "source_files": ["src/router/AppRouter.tsx", "src/pages/languages/__tests__/LanguagePairRouting.test.tsx"],
+      "objective": "A language lesson page can exist and be linked from the hub but lose AppRouter registration.",
+      "acceptance_tests": "Focused routing test confirms all language lesson components and paths are registered.",
+      "validation_commands": ["npx eslint src/pages/languages/__tests__/LanguagePairRouting.test.tsx", "npx vitest run src/pages/languages/__tests__/LanguagePairRouting.test.tsx", "git diff --check"],
+      "anti_fake_checks": ["source scan covers all public language slugs", "no skipped tests"]
+    },
+    {
+      "wp_id": "WP-L2-009",
+      "semantic_key": "lane2.languages.no.supabase.loader.common.coverage",
+      "source_files": ["src/pages/languages/*LessonsPage.tsx", "src/pages/languages/__tests__/LanguagePairRouting.test.tsx"],
+      "objective": "Public language lesson pages should render local content, not remote Supabase lesson loading.",
+      "acceptance_tests": "Common test rejects useLessonData, fetchLessonsBatch, and Supabase loader usage across local-content language pages.",
+      "validation_commands": ["npx eslint src/pages/languages/__tests__/LanguagePairRouting.test.tsx", "npx vitest run src/pages/languages/__tests__/LanguagePairRouting.test.tsx", "git diff --check"],
+      "anti_fake_checks": ["test scans actual page sources", "no report-only progress"]
+    },
+    {
+      "wp_id": "WP-L2-010",
+      "semantic_key": "lane2.languages.no.fake.media.ai.common.coverage",
+      "source_files": ["src/pages/languages/*LessonsPage.tsx", "src/pages/languages/__tests__/LanguagePairRouting.test.tsx"],
+      "objective": "Language pages can accidentally ship fake audio/AI tutor placeholders or Promise.resolve lesson promises.",
+      "acceptance_tests": "Common source test rejects fake audio/AI/tutor markers and placeholder Promise.resolve media in all applicable language pages.",
+      "validation_commands": ["npx eslint src/pages/languages/__tests__/LanguagePairRouting.test.tsx", "npx vitest run src/pages/languages/__tests__/LanguagePairRouting.test.tsx", "git diff --check"],
+      "anti_fake_checks": ["no skipped tests", "does not weaken existing per-language tests"]
+    },
+    {
+      "wp_id": "WP-L2-011",
+      "semantic_key": "lane2.languages.arabic.rtl.lesson.detail.coverage",
+      "source_files": ["src/pages/languages/ArabicLessonsPage.tsx", "src/pages/languages/__tests__/ArabicLessonsPage.test.tsx"],
+      "objective": "Arabic page RTL/script details can regress while smoke rendering still passes.",
+      "acceptance_tests": "Strengthen Arabic focused test for local lessons, RTL marker, route and hub visibility.",
+      "validation_commands": ["npx eslint src/pages/languages/__tests__/ArabicLessonsPage.test.tsx", "npx vitest run src/pages/languages/__tests__/ArabicLessonsPage.test.tsx", "git diff --check"],
+      "anti_fake_checks": ["no skipped tests", "asserts real Arabic script from local data"]
+    },
+    {
+      "wp_id": "WP-L2-012",
+      "semantic_key": "lane2.languages.hindi.devanagari.lesson.detail.coverage",
+      "source_files": ["src/pages/languages/HindiLessonsPage.tsx", "src/pages/languages/__tests__/HindiLessonsPage.test.tsx"],
+      "objective": "Hindi page can lose Devanagari/romanization support while generic page smoke still passes.",
+      "acceptance_tests": "Strengthen Hindi focused test for local Devanagari content, romanization, level switch, route and hub visibility.",
+      "validation_commands": ["npx eslint src/pages/languages/__tests__/HindiLessonsPage.test.tsx", "npx vitest run src/pages/languages/__tests__/HindiLessonsPage.test.tsx", "git diff --check"],
+      "anti_fake_checks": ["asserts real Hindi script", "no skipped tests"]
+    },
+    {
+      "wp_id": "WP-L2-013",
+      "semantic_key": "lane2.languages.urdu.rtl.lesson.detail.coverage",
+      "source_files": ["src/pages/languages/UrduLessonsPage.tsx", "src/pages/languages/__tests__/UrduLessonsPage.test.tsx"],
+      "objective": "Urdu page can lose RTL/script or learner-support text while route tests still pass.",
+      "acceptance_tests": "Strengthen Urdu focused test for local Urdu script, RTL marker, romanization support, route and hub visibility.",
+      "validation_commands": ["npx eslint src/pages/languages/__tests__/UrduLessonsPage.test.tsx", "npx vitest run src/pages/languages/__tests__/UrduLessonsPage.test.tsx", "git diff --check"],
+      "anti_fake_checks": ["asserts real Urdu script", "no skipped tests"]
+    },
+    {
+      "wp_id": "WP-L2-014",
+      "semantic_key": "lane2.languages.turkish.ai.tutor.gate.coverage",
+      "source_files": ["src/pages/languages/TurkishLessonsPage.tsx", "src/pages/languages/__tests__/TurkishLessonsPage.test.tsx"],
+      "objective": "Turkish AI Tutor CTA should appear only through supported target-language gate and route wiring.",
+      "acceptance_tests": "Focused test confirms Turkish local content, AI Tutor target=tr gate, route and hub wiring.",
+      "validation_commands": ["npx eslint src/pages/languages/__tests__/TurkishLessonsPage.test.tsx", "npx vitest run src/pages/languages/__tests__/TurkishLessonsPage.test.tsx", "git diff --check"],
+      "anti_fake_checks": ["no fake tutor placeholder", "no skipped tests"]
+    },
+    {
+      "wp_id": "WP-L2-015",
+      "semantic_key": "lane2.languages.indonesian.level.content.coverage",
+      "source_files": ["src/pages/languages/IndonesianLessonsPage.tsx", "src/pages/languages/__tests__/IndonesianLessonsPage.test.tsx"],
+      "objective": "Indonesian page can be wired but lose validated level/category content rendering.",
+      "acceptance_tests": "Strengthen Indonesian test for local lesson level arrays, route, hub, no remote loaders.",
+      "validation_commands": ["npx eslint src/pages/languages/__tests__/IndonesianLessonsPage.test.tsx", "npx vitest run src/pages/languages/__tests__/IndonesianLessonsPage.test.tsx", "git diff --check"],
+      "anti_fake_checks": ["asserts page module source and local content", "no skipped tests"]
+    },
+    {
+      "wp_id": "WP-L2-016",
+      "semantic_key": "lane2.languages.portuguese.route.hub.local.coverage",
+      "source_files": ["src/pages/languages/PortugueseLessonsPage.tsx", "src/pages/languages/__tests__/PortugueseLessonsPage.test.tsx"],
+      "objective": "Portuguese page can drift from route/hub/local content guarantees.",
+      "acceptance_tests": "Focused Portuguese test covers local arrays, route registration, hub link, and no placeholder media.",
+      "validation_commands": ["npx eslint src/pages/languages/__tests__/PortugueseLessonsPage.test.tsx", "npx vitest run src/pages/languages/__tests__/PortugueseLessonsPage.test.tsx", "git diff --check"],
+      "anti_fake_checks": ["no skipped tests", "no source-only fake green without local content assertion"]
+    },
+    {
+      "wp_id": "WP-L2-017",
+      "semantic_key": "lane2.languages.swahili.route.hub.local.coverage",
+      "source_files": ["src/pages/languages/SwahiliLessonsPage.tsx", "src/pages/languages/__tests__/SwahiliLessonsPage.test.tsx"],
+      "objective": "Swahili page can lose local lesson/hub/route wiring.",
+      "acceptance_tests": "Focused Swahili test covers local lessons, explicit route, static hub card, and no Supabase loader.",
+      "validation_commands": ["npx eslint src/pages/languages/__tests__/SwahiliLessonsPage.test.tsx", "npx vitest run src/pages/languages/__tests__/SwahiliLessonsPage.test.tsx", "git diff --check"],
+      "anti_fake_checks": ["no skipped tests", "asserts local lesson export"]
+    },
+    {
+      "wp_id": "WP-L2-018",
+      "semantic_key": "lane2.languages.spanish.route.hub.local.coverage",
+      "source_files": ["src/pages/languages/SpanishLessonsPage.tsx", "src/pages/languages/__tests__/SpanishLessonsPage.test.tsx"],
+      "objective": "Spanish page can exist but lose route or hub discoverability.",
+      "acceptance_tests": "Focused Spanish test covers local content source, route registration, hub discoverability, and no fake media.",
+      "validation_commands": ["npx eslint src/pages/languages/__tests__/SpanishLessonsPage.test.tsx", "npx vitest run src/pages/languages/__tests__/SpanishLessonsPage.test.tsx", "git diff --check"],
+      "anti_fake_checks": ["no skipped tests", "no report-only progress"]
+    },
+    {
+      "wp_id": "WP-L2-019",
+      "semantic_key": "lane2.languages.russian.route.hub.local.coverage",
+      "source_files": ["src/pages/languages/RussianLessonsPage.tsx", "src/pages/languages/__tests__/RussianLessonsPage.test.tsx"],
+      "objective": "Russian page can exist but lose route or hub discoverability.",
+      "acceptance_tests": "Focused Russian test covers local content source, route registration, hub discoverability, and no fake media.",
+      "validation_commands": ["npx eslint src/pages/languages/__tests__/RussianLessonsPage.test.tsx", "npx vitest run src/pages/languages/__tests__/RussianLessonsPage.test.tsx", "git diff --check"],
+      "anti_fake_checks": ["no skipped tests", "no report-only progress"]
+    },
+    {
+      "wp_id": "WP-L2-020",
+      "semantic_key": "lane2.languages.punjabi.route.hub.local.coverage",
+      "source_files": ["src/pages/languages/PunjabiLessonsPage.tsx", "src/pages/languages/__tests__/PunjabiLessonsPage.test.tsx"],
+      "objective": "Punjabi page can exist but lose route or hub discoverability.",
+      "acceptance_tests": "Focused Punjabi test covers local content source, route registration, hub discoverability, and no fake media.",
+      "validation_commands": ["npx eslint src/pages/languages/__tests__/PunjabiLessonsPage.test.tsx", "npx vitest run src/pages/languages/__tests__/PunjabiLessonsPage.test.tsx", "git diff --check"],
+      "anti_fake_checks": ["no skipped tests", "no report-only progress"]
+    },
+    {
+      "wp_id": "WP-L2-021",
+      "semantic_key": "lane2.languages.vietnamese.route.hub.local.coverage",
+      "source_files": ["src/pages/languages/VietnameseLessonsPage.tsx", "src/pages/languages/__tests__/VietnameseLessonsPage.test.tsx"],
+      "objective": "Vietnamese page can exist but lose route or hub discoverability.",
+      "acceptance_tests": "Focused Vietnamese test covers local content source, route registration, hub discoverability, and no fake media.",
+      "validation_commands": ["npx eslint src/pages/languages/__tests__/VietnameseLessonsPage.test.tsx", "npx vitest run src/pages/languages/__tests__/VietnameseLessonsPage.test.tsx", "git diff --check"],
+      "anti_fake_checks": ["no skipped tests", "no report-only progress"]
+    },
+    {
+      "wp_id": "WP-L2-022",
+      "semantic_key": "lane2.languages.french.render.route.hub.coverage",
+      "source_files": ["src/pages/languages/FrenchLessonsPage.tsx", "src/pages/languages/__tests__/FrenchLessonsPage.test.tsx"],
+      "objective": "French page smoke coverage can miss route/hub drift or fake local lesson promises.",
+      "acceptance_tests": "Focused French test covers local arrays, rendered identity, route, hub, and anti-fake source checks.",
+      "validation_commands": ["npx eslint src/pages/languages/__tests__/FrenchLessonsPage.test.tsx", "npx vitest run src/pages/languages/__tests__/FrenchLessonsPage.test.tsx", "git diff --check"],
+      "anti_fake_checks": ["no skipped tests", "asserts local content candidates"]
+    },
+    {
+      "wp_id": "WP-L2-023",
+      "semantic_key": "lane2.languages.german.render.route.hub.coverage",
+      "source_files": ["src/pages/languages/GermanLessonsPage.tsx", "src/pages/languages/__tests__/GermanLessonsPage.test.tsx"],
+      "objective": "German page smoke coverage can miss route/hub drift or fake local lesson promises.",
+      "acceptance_tests": "Focused German test covers local arrays, rendered identity, route, hub, and anti-fake source checks.",
+      "validation_commands": ["npx eslint src/pages/languages/__tests__/GermanLessonsPage.test.tsx", "npx vitest run src/pages/languages/__tests__/GermanLessonsPage.test.tsx", "git diff --check"],
+      "anti_fake_checks": ["no skipped tests", "asserts local content candidates"]
+    },
+    {
+      "wp_id": "WP-L2-024",
+      "semantic_key": "lane2.languages.chinese.render.route.hub.coverage",
+      "source_files": ["src/pages/languages/ChineseLessonsPage.tsx", "src/pages/languages/__tests__/ChineseLessonsPage.test.tsx"],
+      "objective": "Chinese page smoke coverage can miss route/hub drift or fake local lesson promises.",
+      "acceptance_tests": "Focused Chinese test covers local arrays, rendered identity, route, hub, and anti-fake source checks.",
+      "validation_commands": ["npx eslint src/pages/languages/__tests__/ChineseLessonsPage.test.tsx", "npx vitest run src/pages/languages/__tests__/ChineseLessonsPage.test.tsx", "git diff --check"],
+      "anti_fake_checks": ["no skipped tests", "asserts local content candidates"]
+    },
+    {
+      "wp_id": "WP-L2-025",
+      "semantic_key": "lane2.languages.japanese.render.route.hub.coverage",
+      "source_files": ["src/pages/languages/JapaneseLessonsPage.tsx", "src/pages/languages/__tests__/JapaneseLessonsPage.test.tsx"],
+      "objective": "Japanese page coverage can miss local lesson data or route/hub drift.",
+      "acceptance_tests": "Focused Japanese test covers rendered local content, route, hub, and no fake media.",
+      "validation_commands": ["npx eslint src/pages/languages/__tests__/JapaneseLessonsPage.test.tsx", "npx vitest run src/pages/languages/__tests__/JapaneseLessonsPage.test.tsx", "git diff --check"],
+      "anti_fake_checks": ["no skipped tests", "uses real Japanese local content"]
+    },
+    {
+      "wp_id": "WP-L2-026",
+      "semantic_key": "lane2.languages.korean.render.route.hub.coverage",
+      "source_files": ["src/pages/languages/KoreanLessonsPage.tsx", "src/pages/languages/__tests__/KoreanLessonsPage.test.tsx"],
+      "objective": "Korean page coverage can miss local lesson data or route/hub drift.",
+      "acceptance_tests": "Focused Korean test covers rendered local content, route, hub, and no fake media.",
+      "validation_commands": ["npx eslint src/pages/languages/__tests__/KoreanLessonsPage.test.tsx", "npx vitest run src/pages/languages/__tests__/KoreanLessonsPage.test.tsx", "git diff --check"],
+      "anti_fake_checks": ["no skipped tests", "uses real Korean local content"]
+    },
+    {
+      "wp_id": "WP-L2-027",
+      "semantic_key": "lane2.languages.italian.render.route.hub.coverage",
+      "source_files": ["src/pages/languages/ItalianLessonsPage.tsx", "src/pages/languages/__tests__/ItalianLessonsPage.test.tsx"],
+      "objective": "Italian page coverage can miss local lesson data or route/hub drift.",
+      "acceptance_tests": "Focused Italian test covers rendered local content, route, hub, and no fake media.",
+      "validation_commands": ["npx eslint src/pages/languages/__tests__/ItalianLessonsPage.test.tsx", "npx vitest run src/pages/languages/__tests__/ItalianLessonsPage.test.tsx", "git diff --check"],
+      "anti_fake_checks": ["no skipped tests", "uses real Italian local content"]
+    },
+    {
+      "wp_id": "WP-L2-028",
+      "semantic_key": "lane2.languages.index.ui.chrome.en.coverage",
+      "source_files": ["src/pages/languages/LanguagesIndexPage.tsx", "src/pages/languages/__tests__/uiChromeEn.smoke.test.tsx"],
+      "objective": "Language index English UI chrome can regress independently of individual language pages.",
+      "acceptance_tests": "Focused UI chrome test confirms English labels are stable and no Vietnamese-only chrome leaks in English mode.",
+      "validation_commands": ["npx eslint src/pages/languages/__tests__/uiChromeEn.smoke.test.tsx", "npx vitest run src/pages/languages/__tests__/uiChromeEn.smoke.test.tsx", "git diff --check"],
+      "anti_fake_checks": ["no skipped tests", "renders page rather than static-only checking"]
+    },
+    {
+      "wp_id": "WP-L2-029",
+      "semantic_key": "lane2.languages.hero.subtitle.coverage",
+      "source_files": ["src/pages/languages/*LessonsPage.tsx", "src/pages/languages/__tests__/heroSubtitle.smoke.test.tsx"],
+      "objective": "Language page hero subtitles can disappear while page identity smoke still passes.",
+      "acceptance_tests": "Focused hero subtitle test covers representative language pages with non-empty subtitle/supporting copy.",
+      "validation_commands": ["npx eslint src/pages/languages/__tests__/heroSubtitle.smoke.test.tsx", "npx vitest run src/pages/languages/__tests__/heroSubtitle.smoke.test.tsx", "git diff --check"],
+      "anti_fake_checks": ["no snapshot-only assertion", "no skipped tests"]
+    },
+    {
+      "wp_id": "WP-L2-030",
+      "semantic_key": "lane2.language.pair.routing.unsupported.coverage",
+      "source_files": ["src/pages/languages/LanguagePairSelectorPage.tsx", "src/pages/languages/LearnPairRedirectPage.tsx", "src/pages/languages/__tests__/LanguagePairRouting.test.tsx"],
+      "objective": "Unsupported or malformed language pair routes can silently redirect to the wrong page.",
+      "acceptance_tests": "Focused routing test covers supported pair redirect and unsupported pair fallback behavior.",
+      "validation_commands": ["npx eslint src/pages/languages/__tests__/LanguagePairRouting.test.tsx", "npx vitest run src/pages/languages/__tests__/LanguagePairRouting.test.tsx", "git diff --check"],
+      "anti_fake_checks": ["no browser auto-open", "no skipped tests"]
+    },
+    {
+      "wp_id": "WP-L2-031",
+      "semantic_key": "lane2.language.registry.page.coverage",
+      "source_files": ["src/lib/tutor/languageRegistry.ts", "src/lib/tutor/__tests__/languageRegistry.test.ts"],
+      "objective": "Tutor target-language support can drift from public language page CTA expectations.",
+      "acceptance_tests": "Focused registry test confirms supported public lesson page languages align with tutor CTA gates where applicable.",
+      "validation_commands": ["npx eslint src/lib/tutor/__tests__/languageRegistry.test.ts", "npx vitest run src/lib/tutor/__tests__/languageRegistry.test.ts", "git diff --check"],
+      "anti_fake_checks": ["no skipped tests", "does not widen unsupported language claims without tests"]
+    },
+    {
+      "wp_id": "WP-L2-032",
+      "semantic_key": "lane2.language.home.track.coverage",
+      "source_files": ["src/pages/home/LanguageTrackHome.tsx", "src/pages/home/__tests__/LanguageTrackHome.test.tsx"],
+      "objective": "Language track home can lose links into public language pages while individual page tests pass.",
+      "acceptance_tests": "Focused LanguageTrackHome test confirms language track cards route to the expected lesson surfaces.",
+      "validation_commands": ["npx eslint src/pages/home/__tests__/LanguageTrackHome.test.tsx", "npx vitest run src/pages/home/__tests__/LanguageTrackHome.test.tsx", "git diff --check"],
+      "anti_fake_checks": ["no skipped tests", "asserts rendered links"]
+    },
+    {
+      "wp_id": "WP-L2-033",
+      "semantic_key": "lane2.profession.data.category.count.crosscheck",
+      "source_files": ["src/data/profession-packs/*/content.ts", "src/pages/professions/__tests__/ProfessionsPages.test.tsx"],
+      "objective": "Profession pages can render all buttons while category expected_count metadata drifts from local data.",
+      "acceptance_tests": "Focused profession test cross-checks category expected_count against getLessonsByCategory for every active profession.",
+      "validation_commands": ["npx eslint src/pages/professions/__tests__/ProfessionsPages.test.tsx", "npx vitest run src/pages/professions/__tests__/ProfessionsPages.test.tsx", "git diff --check"],
+      "anti_fake_checks": ["uses real data exports", "no skipped tests"]
+    },
+    {
+      "wp_id": "WP-L2-034",
+      "semantic_key": "lane2.profession.lesson.ids.unique.crosscheck",
+      "source_files": ["src/data/profession-packs/*/content.ts", "src/pages/professions/__tests__/ProfessionsPages.test.tsx"],
+      "objective": "Duplicate profession lesson IDs can cause React key collisions and future room migration conflicts.",
+      "acceptance_tests": "Focused profession test asserts lesson IDs are unique per profession and follow expected profession prefix.",
+      "validation_commands": ["npx eslint src/pages/professions/__tests__/ProfessionsPages.test.tsx", "npx vitest run src/pages/professions/__tests__/ProfessionsPages.test.tsx", "git diff --check"],
+      "anti_fake_checks": ["asserts real data exports", "no skipped tests"]
+    },
+    {
+      "wp_id": "WP-L2-035",
+      "semantic_key": "lane2.profession.lesson.detail.required.fields.crosscheck",
+      "source_files": ["src/data/profession-packs/*/content.ts", "src/pages/professions/__tests__/ProfessionsPages.test.tsx"],
+      "objective": "Profession lesson detail cards can render empty cultural notes, tip advice, or sentence fields.",
+      "acceptance_tests": "Focused profession test asserts every lesson has non-empty bilingual titles, 4+ sentences, EN/VI sentence text, pronunciation focus arrays, cultural notes, and tip advice.",
+      "validation_commands": ["npx eslint src/pages/professions/__tests__/ProfessionsPages.test.tsx", "npx vitest run src/pages/professions/__tests__/ProfessionsPages.test.tsx", "git diff --check"],
+      "anti_fake_checks": ["asserts real data shape", "no skipped tests"]
+    }
+  ]
+}
