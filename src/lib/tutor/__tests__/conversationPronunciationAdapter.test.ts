@@ -102,4 +102,29 @@ describe("conversationPronunciationAdapter", () => {
     );
     expect(result.overallScore).toBe(88);
   });
+
+  it("returns a retry-safe result when C1 scoring throws", async () => {
+    const scoreImpl = vi.fn(async () => {
+      throw new Error("scorer unavailable");
+    });
+
+    await expect(
+      scoreLearnerConversationPronunciation({
+        audioBlob: blobOfSize(2000),
+        audioSource: "learner_recording",
+        target: "I think so",
+        transcript: "I think so",
+        step7Enabled: true,
+        costCap: { remaining: 1, limit: 3 },
+        scoreImpl,
+      }),
+    ).resolves.toMatchObject({
+      quality: "scoring_unavailable",
+      overallScore: null,
+      confidence: "low",
+      shouldAskRetry: true,
+      costCap: { remaining: 1, limit: 3 },
+    });
+    expect(scoreImpl).toHaveBeenCalledTimes(1);
+  });
 });

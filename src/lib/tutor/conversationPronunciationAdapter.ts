@@ -58,16 +58,20 @@ export async function scoreLearnerConversationPronunciation(
   }
 
   const scorer = input.scoreImpl ?? scoreConversationTurn;
-  return scorer({
-    audioBlob: input.audioBlob,
-    target: input.target,
-    transcript: input.transcript,
-    step7Enabled: input.step7Enabled,
-    userJwt: input.userJwt,
-    accent: input.accent,
-    supabaseUrl: input.supabaseUrl,
-    fetchImpl: input.fetchImpl,
-    timeoutMs: input.timeoutMs,
-    costCap,
-  });
+  try {
+    return await scorer({
+      audioBlob: input.audioBlob,
+      target: input.target,
+      transcript: input.transcript,
+      step7Enabled: input.step7Enabled,
+      userJwt: input.userJwt,
+      accent: input.accent,
+      supabaseUrl: input.supabaseUrl,
+      fetchImpl: input.fetchImpl,
+      timeoutMs: input.timeoutMs,
+      costCap,
+    });
+  } catch {
+    return emptyConversationPronunciationResult("scoring_unavailable", costCap);
+  }
 }
