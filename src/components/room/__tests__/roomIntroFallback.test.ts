@@ -43,6 +43,38 @@ describe("isViIntroMissing — M4 silent EN-for-VI gate", () => {
     expect(isViIntroMissing(room)).toBe(true);
   });
 
+  it("treats whitespace-only structured summary VI as missing when EN summary exists", () => {
+    const room = { summary: { en: "Welcome to the room", vi: "   \n " } };
+    expect(pickIntroEN(room)).toBe("Welcome to the room");
+    expect(pickIntroVIStrict(room)).toBe("   \n ");
+    expect(isViIntroMissing(room)).toBe(true);
+  });
+
+  it("ignores malformed object descriptions instead of returning object text", () => {
+    const room = {
+      description: { en: { body: "object en" }, vi: { body: "object vi" } },
+      summary_en: "Safe English summary",
+    };
+
+    expect(pickIntroEN(room)).toBe("Safe English summary");
+    expect(pickIntroVI(room)).toBe("");
+    expect(pickIntroEN(room)).not.toBe("[object Object]");
+    expect(pickIntroVI(room)).not.toBe("[object Object]");
+  });
+
+  it("ignores non-string historical intro fields", () => {
+    const room = {
+      intro_en: 123,
+      description_en: ["not", "intro"],
+      summary: { en: "Fallback English", vi: 42 },
+      summary_vi: { body: "not string" },
+    };
+
+    expect(pickIntroEN(room)).toBe("Fallback English");
+    expect(pickIntroVI(room)).toBe("");
+    expect(isViIntroMissing(room)).toBe(true);
+  });
+
   it("does NOT flag when a genuine VI intro exists", () => {
     const room = {
       description: "Practical guidance for managing PTSD",
@@ -60,6 +92,18 @@ describe("isViIntroMissing — M4 silent EN-for-VI gate", () => {
   it("does NOT flag a room with no intro content at all (generated welcome, no leak)", () => {
     expect(isViIntroMissing({})).toBe(false);
     expect(isViIntroMissing({ title: { en: "X" } })).toBe(false);
+  });
+
+  it("does NOT flag generated welcome metadata without an EN intro body", () => {
+    const room = {
+      title: { en: "Sleep Support", vi: "Hỗ trợ giấc ngủ" },
+      tier: "free",
+      welcome: { generated: true },
+    };
+
+    expect(pickIntroEN(room)).toBe("");
+    expect(pickIntroVI(room)).toBe("");
+    expect(isViIntroMissing(room)).toBe(false);
   });
 
   it("does NOT flag an EN-missing room (the other asymmetry — no EN to leak)", () => {

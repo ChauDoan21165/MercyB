@@ -37,25 +37,37 @@ type RoomIntroFallbackRoom = {
 const localizedField = (value: unknown, locale: "en" | "vi"): unknown =>
   value && typeof value === "object" ? (value as LocalizedFields)[locale] : undefined;
 
+const introString = (value: unknown): string => (typeof value === "string" ? value : "");
+
+const firstIntroString = (...values: unknown[]): string => {
+  for (const value of values) {
+    const text = introString(value);
+    if (text) return text;
+  }
+  return "";
+};
+
 export const pickIntroEN = (r: RoomIntroFallbackRoom): string =>
-  (localizedField(r?.intro, "en") ||
-    localizedField(r?.description, "en") ||
-    r?.intro_en ||
-    r?.description_en ||
-    localizedField(r?.summary, "en") ||
-    r?.summary_en ||
-    r?.description ||
-    "") as string;
+  firstIntroString(
+    localizedField(r?.intro, "en"),
+    localizedField(r?.description, "en"),
+    r?.intro_en,
+    r?.description_en,
+    localizedField(r?.summary, "en"),
+    r?.summary_en,
+    r?.description,
+  );
 
 export const pickIntroVI = (r: RoomIntroFallbackRoom): string =>
-  (localizedField(r?.intro, "vi") ||
-    localizedField(r?.description, "vi") ||
-    r?.intro_vi ||
-    r?.description_vi ||
-    localizedField(r?.summary, "vi") ||
-    r?.summary_vi ||
-    r?.description ||
-    "") as string;
+  firstIntroString(
+    localizedField(r?.intro, "vi"),
+    localizedField(r?.description, "vi"),
+    r?.intro_vi,
+    r?.description_vi,
+    localizedField(r?.summary, "vi"),
+    r?.summary_vi,
+    r?.description,
+  );
 
 // Genuine Vietnamese intro ONLY — the same chain as pickIntroVI minus the
 // trailing `r?.description` plain-string fallback (almost always English).
@@ -64,13 +76,14 @@ export const pickIntroVI = (r: RoomIntroFallbackRoom): string =>
 // text renders — out of scope here (this is the delivery-side fix; authoring
 // the missing VI is the separate clinical-content backlog).
 export const pickIntroVIStrict = (r: RoomIntroFallbackRoom): string =>
-  (localizedField(r?.intro, "vi") ||
-    localizedField(r?.description, "vi") ||
-    r?.intro_vi ||
-    r?.description_vi ||
-    localizedField(r?.summary, "vi") ||
-    r?.summary_vi ||
-    "") as string;
+  firstIntroString(
+    localizedField(r?.intro, "vi"),
+    localizedField(r?.description, "vi"),
+    r?.intro_vi,
+    r?.description_vi,
+    localizedField(r?.summary, "vi"),
+    r?.summary_vi,
+  );
 
 // Pure predicate behind the M4 honest-fallback badge + Sentry beacon: a VI
 // learner would otherwise be shown English in the welcome line. True iff
