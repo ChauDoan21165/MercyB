@@ -8,6 +8,12 @@ interface PerformanceMetrics {
   loadTime: number;
 }
 
+interface PerformanceWithMemory extends Performance {
+  memory?: {
+    usedJSHeapSize?: number;
+  };
+}
+
 /**
  * Development-only performance profiler overlay
  * Shows FPS, memory usage, and render performance
@@ -31,11 +37,12 @@ export function PerformanceProfiler() {
     const measureFPS = () => {
       frameCount++;
       const currentTime = performance.now();
-      
+
       if (currentTime >= lastTime + 1000) {
         const fps = Math.round((frameCount * 1000) / (currentTime - lastTime));
-        const memory = (performance as any).memory?.usedJSHeapSize 
-          ? Math.round((performance as any).memory.usedJSHeapSize / 1048576)
+        const usedJSHeapSize = (performance as PerformanceWithMemory).memory?.usedJSHeapSize;
+        const memory = typeof usedJSHeapSize === 'number'
+          ? Math.round(usedJSHeapSize / 1048576)
           : 0;
 
         setMetrics((prev) => ({
