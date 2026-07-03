@@ -224,11 +224,11 @@ const ABSTAIN_VI: Readonly<Record<AbstentionTrigger, string>> = {
 };
 
 const ABSTAIN_EN: Readonly<Record<AbstentionTrigger, string>> = {
-  no_audio: "I couldn't hear a recording this time, so I won't guess a score.",
+  no_audio: "I couldn't hear a recording this time, so I won't guess the pronunciation result.",
   low_confidence_pronunciation:
-    "I'm not confident about the pronunciation here, so I won't give a number — let's just keep practicing.",
+    "I'm not confident about the pronunciation here, so I won't guess the result — let's just keep practicing.",
   scoring_unavailable:
-    "Scoring isn't available right now, so I won't show a number — let's focus on the conversation.",
+    "Pronunciation feedback isn't available right now, so let's focus on the conversation.",
   uncertain_interference:
     "I'm not sure about this one, so I won't correct it — what matters is your meaning came through.",
   uncertain_vietlish:

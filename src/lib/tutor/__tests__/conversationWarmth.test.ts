@@ -24,8 +24,10 @@ const ALL_TRIGGERS: readonly AbstentionTrigger[] = [
 const VIETNAMESE_MARKERS = /[ăâêôơưđàáảãạèéẻẽẹìíỉĩịòóỏõọùúủũụỳýỷỹỵ]/i;
 /** Any fabricated numeric score (a digit or a percent sign) must never appear. */
 const FABRICATED_SCORE = /\d|%/;
+const FABRICATED_CERTAINTY = /\b(score|percent|grade|you said|definitely|certainly)\b/i;
 /** Shame mechanics are forbidden product-wide. */
 const SHAME = /\b(shame|ashamed|guilt|guilty|stupid|dumb|fail(?:ure)?|kém|dốt|ngu)\b/i;
+const HOLLOW_PRAISE_EXTREME = /\b(great job|awesome|amazing|perfect|flawless)\b/i;
 
 function aResult(
   over: Partial<ConversationPronunciationResult>,
@@ -159,6 +161,20 @@ describe("buildAbstentionRedirect", () => {
     expect(redirect.nextPrompt.vi).toMatch(VIETNAMESE_MARKERS);
   });
 
+  it("fills only the blank side of a caller-supplied next prompt", () => {
+    const redirect = buildAbstentionRedirect({
+      trigger: "no_audio",
+      suggestedNextPrompt: {
+        vi: "   ",
+        en: "What would you like to say next?",
+      },
+    });
+
+    expect(redirect.nextPrompt.vi.trim().length).toBeGreaterThan(10);
+    expect(redirect.nextPrompt.vi).toMatch(VIETNAMESE_MARKERS);
+    expect(redirect.nextPrompt.en).toBe("What would you like to say next?");
+  });
+
   it("rotates the default next prompt by turnIndex", () => {
     const prompts = new Set(
       [0, 1, 2].map(
@@ -166,6 +182,46 @@ describe("buildAbstentionRedirect", () => {
       ),
     );
     expect(prompts.size).toBeGreaterThan(1);
+  });
+
+  it("handles negative and very high turn indexes deterministically", () => {
+    const negative = buildAbstentionRedirect({ trigger: "no_audio", turnIndex: -1 });
+    const high = buildAbstentionRedirect({ trigger: "no_audio", turnIndex: 1000 });
+
+    for (const redirect of [negative, high]) {
+      expect(redirect.nextPrompt.vi.trim().length).toBeGreaterThan(10);
+      expect(redirect.nextPrompt.en.trim().length).toBeGreaterThan(10);
+      expect(redirect.nextPrompt.vi).toMatch(VIETNAMESE_MARKERS);
+    }
+  });
+
+  it("keeps abstention copy free of fabricated certainty language", () => {
+    for (const trigger of ALL_TRIGGERS) {
+      const redirect = buildAbstentionRedirect({ trigger });
+      const combined = `${redirect.vi} ${redirect.en} ${redirect.nextPrompt.vi} ${redirect.nextPrompt.en}`;
+
+      expect(combined).not.toMatch(FABRICATED_SCORE);
+      expect(combined).not.toMatch(FABRICATED_CERTAINTY);
+      expect(combined).not.toMatch(/\bscore\b/i);
+    }
+  });
+
+  it("keeps warmth and abstention copy away from shame and extreme hollow praise", () => {
+    const warmthLines = REGISTERS.flatMap((register) =>
+      (["strong", "minor_slip", "struggling"] as const).flatMap((outcome) => {
+        const warmth = buildTurnWarmth({ register, outcome });
+        return [warmth.vi, warmth.en];
+      }),
+    );
+    const abstentionLines = ALL_TRIGGERS.flatMap((trigger) => {
+      const redirect = buildAbstentionRedirect({ trigger });
+      return [redirect.vi, redirect.en, redirect.nextPrompt.vi, redirect.nextPrompt.en];
+    });
+
+    for (const line of [...warmthLines, ...abstentionLines]) {
+      expect(line).not.toMatch(SHAME);
+      expect(line).not.toMatch(HOLLOW_PRAISE_EXTREME);
+    }
   });
 });
 
