@@ -98,11 +98,11 @@ export function dispatchHostContext(detail: Record<string, unknown>) {
   }
 }
 
-// trailing-only suffix remover: _vip1.._vip9 or _free (ONLY at end)
+// trailing-only suffix remover: _level1.._level9, _level0, or _free (ONLY at end)
 export function coreRoomIdFromEffective(effectiveRoomId: string) {
   const id = String(effectiveRoomId || "").trim();
   if (!id) return id;
-  return id.replace(/_(level[1-9]|level0)$/i, "");
+  return id.replace(/_(level[1-9]|level0|free)$/i, "");
 }
 
 // ---------- DB “stub” detection ----------

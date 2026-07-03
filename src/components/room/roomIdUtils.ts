@@ -4,7 +4,7 @@ import type { TierId } from "@/lib/constants/tiers";
 export function stripTierSuffix(id: string) {
   let s = String(id || "").trim();
   if (!s) return "";
-  s = s.replace(/_(level[1-9]|level0)$/gi, "");
+  s = s.replace(/_(level[1-9]|level0|free)$/gi, "");
   s = s.replace(/_+/g, "_").replace(/^_+|_+$/g, "");
   return s;
 }
@@ -31,7 +31,7 @@ export function inferTierIdFromRoomId(effectiveRoomId: string): TierId | null {
  * Detect “bad” titles:
  * - equal to roomId (or equal after stripping tier suffix)
  * - snake_case-ish: has "_" and no spaces, mostly lowercase
- * - ends with _vipX/_level0
+ * - ends with _levelX/_free
  */
 export function isBadAutoTitle(raw: string, effectiveRoomId: string) {
   const r = String(raw || "").trim();
@@ -49,7 +49,7 @@ export function isBadAutoTitle(raw: string, effectiveRoomId: string) {
   if (rCore && idCore && rCore === idCore) return true;
 
   const looksSnake = /^[a-z0-9_]+$/.test(rLow) && rLow.includes("_") && !r.includes(" ");
-  const hasTierSuffix = /_(level[1-9]|level0)$/i.test(r);
+  const hasTierSuffix = /_(level[1-9]|level0|free)$/i.test(r);
 
   return looksSnake || hasTierSuffix;
 }
