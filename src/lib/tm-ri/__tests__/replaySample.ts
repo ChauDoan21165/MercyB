@@ -128,6 +128,11 @@ export const expectMixedPlacementAudioFailureReplay = (analysis: TmRiReplayAnaly
   const findingCodes = analysis.observationPacket.findings.map((finding) => finding.code);
   const graphEdges = analysis.knowledgeGraph.edges.map((edge) => `${edge.from}->${edge.to}:${edge.relation}`);
 
+  expectLearnerSafeDegradedObservationPacket(analysis, [
+    "Listening evidence is degraded and should not be treated as an incorrect learner answer.",
+    "The result should explicitly reflect lower evidence quality.",
+    "The learner may be penalized for product failure rather than skill.",
+  ]);
   expect(analysis.assessmentIntegrity.degradedEvidence).toBe(true);
   expect(analysis.assessmentIntegrity.invalidScoringRisk).toBe(true);
   expect(analysis.assessmentIntegrity.confidenceOverclaimRisk).toBe(true);
@@ -154,6 +159,11 @@ export const expectSpeakingTextFallbackReplay = (analysis: TmRiReplayAnalysis) =
   const repairTitles = analysis.repairPlan.items.map((item) => item.title);
   const graphEdges = analysis.knowledgeGraph.edges.map((edge) => `${edge.from}->${edge.to}:${edge.relation}`);
 
+  expectLearnerSafeDegradedObservationPacket(analysis, [
+    "Speaking evidence is degraded when the learner is forced into text input.",
+    "Typed input must not be treated as spoken evidence.",
+    "The result should explicitly reflect lower evidence quality.",
+  ]);
   expect(analysis.assessmentIntegrity.speakingModalityDegraded).toBe(true);
   expect(analysis.assessmentIntegrity.spokenEvidenceAvailable).toBe(false);
   expect(analysis.honesty.inputModeRecommendation).toBe("text");
@@ -172,4 +182,19 @@ export const expectSpeakingTextFallbackReplay = (analysis: TmRiReplayAnalysis) =
       "observation:speaking_modality_degraded->repair:2:Separate typed fallback from spoken evidence:requires",
     ]),
   );
+};
+
+const expectLearnerSafeDegradedObservationPacket = (
+  analysis: TmRiReplayAnalysis,
+  requiredExplanations: readonly string[],
+) => {
+  const packetText = JSON.stringify(analysis.observationPacket);
+  for (const explanation of requiredExplanations) {
+    expect(packetText).toContain(explanation);
+  }
+
+  const lowerPacketText = packetText.toLowerCase();
+  for (const blockedTerm of ["debug", "stub", "orchestrator", "react", "audiourl", "mediarecorder", "htmlaudioelement"]) {
+    expect(lowerPacketText).not.toContain(blockedTerm);
+  }
 };
