@@ -27,6 +27,9 @@ type Track = {
   /** Public URL to the track. Computed once from the filename at build time. */
   src: string;
 };
+type InlineAudioElement = HTMLAudioElement & {
+  playsInline: boolean;
+};
 
 declare global {
   interface Window {
@@ -59,9 +62,9 @@ function buildTracks(): Track[] {
 
 function getSingletonAudio(): HTMLAudioElement {
   if (!window.__mbBottomAudio) {
-    const a = new Audio();
+    const a = new Audio() as InlineAudioElement;
     a.preload = "auto";
-    (a as any).playsInline = true;
+    a.playsInline = true;
     a.loop = false;
     window.__mbBottomAudio = a;
   }
