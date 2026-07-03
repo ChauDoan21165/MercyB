@@ -29,9 +29,9 @@ export function AudioCoveragePanel() {
     try {
       const data = await generateAudioCoverageReport();
       setReport(data);
-    } catch (err: any) {
+    } catch (err: unknown) {
       console.error('[AudioCoveragePanel] Error:', err);
-      setError(err?.message || 'Failed to load audio coverage');
+      setError(err instanceof Error ? err.message : 'Failed to load audio coverage');
     } finally {
       setLoading(false);
     }
