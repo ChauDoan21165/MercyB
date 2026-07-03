@@ -57,7 +57,29 @@ export type TierLoadResult = {
   debug?: string;
 };
 
-export function isTierId(x: any): x is TierId {
+type UnknownRecord = Record<string, unknown>;
+
+function isRecord(value: unknown): value is UnknownRecord {
+  return !!value && typeof value === "object" && !Array.isArray(value);
+}
+
+function readRecord(record: UnknownRecord, key: string): UnknownRecord | null {
+  const value = record[key];
+  return isRecord(value) ? value : null;
+}
+
+function optionalString(value: unknown): string | undefined {
+  if (value === null || value === undefined || value === "") return undefined;
+  return String(value);
+}
+
+function errorMessage(error: unknown): string {
+  if (error instanceof Error) return error.message;
+  if (isRecord(error) && typeof error.message === "string") return error.message;
+  return String(error);
+}
+
+export function isTierId(x: unknown): x is TierId {
   return (
     x === "level0" ||
     x === "level1" ||
@@ -75,7 +97,7 @@ export function isTierId(x: any): x is TierId {
   );
 }
 
-function isRoomArea(x: any): x is RoomArea {
+function isRoomArea(x: unknown): x is RoomArea {
   return x === "core" || x === "english" || x === "life" || x === "kids" || x === "unknown";
 }
 
@@ -383,38 +405,42 @@ function inferAreaFromMetaAndId(meta: {
   return "core";
 }
 
-function extractRoomLikesFromRegistryJson(json: any): { rooms: any[]; debug: string } {
-  const asArray = (x: any) => (Array.isArray(x) ? x : []);
+function extractRoomLikesFromRegistryJson(json: unknown): { rooms: unknown[]; debug: string } {
+  const jsonRecord = isRecord(json) ? json : {};
+  const asArray = (x: unknown): unknown[] => (Array.isArray(x) ? x : []);
 
   if (Array.isArray(json)) return { rooms: json, debug: `registry shape: array(len=${json.length})` };
 
-  const rooms = asArray(json?.rooms);
+  const rooms = asArray(jsonRecord.rooms);
   if (rooms.length) return { rooms, debug: `registry shape: rooms[] (len=${rooms.length})` };
 
-  const files = asArray(json?.files);
+  const files = asArray(jsonRecord.files);
   if (files.length) return { rooms: files, debug: `registry shape: files[] (len=${files.length})` };
 
-  const manifest = asArray(json?.manifest);
+  const manifest = asArray(jsonRecord.manifest);
   if (manifest.length) return { rooms: manifest, debug: `registry shape: manifest[] (len=${manifest.length})` };
 
-  const roomIds = asArray(json?.roomIds);
+  const roomIds = asArray(jsonRecord.roomIds);
   if (roomIds.length) return { rooms: roomIds, debug: `registry shape: roomIds[] (len=${roomIds.length})` };
 
   const mapObj =
-    (json?.roomDataMap && typeof json.roomDataMap === "object" ? json.roomDataMap : null) ||
-    (json?.rooms && !Array.isArray(json.rooms) && typeof json.rooms === "object" ? json.rooms : null);
+    readRecord(jsonRecord, "roomDataMap") ||
+    (isRecord(jsonRecord.rooms) ? jsonRecord.rooms : null);
 
   if (mapObj) {
-    const rooms2 = Object.keys(mapObj).map((id) => ({ id, ...(mapObj as any)[id] }));
+    const rooms2 = Object.keys(mapObj).map((id) => {
+      const value = mapObj[id];
+      return isRecord(value) ? { id, ...value } : { id };
+    });
     return { rooms: rooms2, debug: `registry shape: object-map(keys=${Object.keys(mapObj).length})` };
   }
 
-  return { rooms: [], debug: `registry shape: unknown keys=${Object.keys(json || {}).join(",")}` };
+  return { rooms: [], debug: `registry shape: unknown keys=${Object.keys(jsonRecord).join(",")}` };
 }
 
-function coerceTierRoomsFromAny(anyRooms: any[]): TierRoom[] {
-  return (anyRooms || [])
-    .map((r: any) => {
+function coerceTierRoomsFromUnknown(roomLikes: unknown[]): TierRoom[] {
+  return (roomLikes || [])
+    .map((r) => {
       if (typeof r === "string") {
         const rawId = String(r || "").trim();
         const id = canonicalizeRoomId(rawId);
@@ -426,16 +452,18 @@ function coerceTierRoomsFromAny(anyRooms: any[]): TierRoom[] {
         return { id, tier, area } as TierRoom;
       }
 
-      if (r && typeof r === "object") {
+      if (isRecord(r)) {
         const rawId = String(r.id || r.roomId || r.path || r.file || "").trim();
         const id = canonicalizeRoomId(rawId);
         if (!id) return null;
 
-        const title_en = (r.title_en ?? r.titleEn ?? r.title?.en ?? r.nameEn ?? r.name?.en ?? r.name ?? null) as any;
-        const title_vi = (r.title_vi ?? r.titleVi ?? r.title?.vi ?? r.nameVi ?? r.name?.vi ?? null) as any;
-        const domain = (r.domain ?? r.group ?? null) as any;
-        const track = (r.track ?? r.path_track ?? r.category ?? null) as any;
-        const areaRaw = (r.area ?? null) as any;
+        const title = readRecord(r, "title");
+        const name = readRecord(r, "name");
+        const title_en = r.title_en ?? r.titleEn ?? title?.en ?? r.nameEn ?? name?.en ?? r.name ?? null;
+        const title_vi = r.title_vi ?? r.titleVi ?? title?.vi ?? r.nameVi ?? name?.vi ?? null;
+        const domain = r.domain ?? r.group ?? null;
+        const track = r.track ?? r.path_track ?? r.category ?? null;
+        const areaRaw = r.area ?? null;
 
         const tier = resolveBestTier(r.tier, id);
         const area = inferAreaFromMetaAndId({
@@ -449,10 +477,10 @@ function coerceTierRoomsFromAny(anyRooms: any[]): TierRoom[] {
 
         return {
           id,
-          title_en: title_en ? String(title_en) : undefined,
-          title_vi: title_vi ? String(title_vi) : undefined,
-          domain: domain ? String(domain) : undefined,
-          track: track ? String(track) : undefined,
+          title_en: optionalString(title_en),
+          title_vi: optionalString(title_vi),
+          domain: optionalString(domain),
+          track: optionalString(track),
           tier,
           area,
         } as TierRoom;
@@ -480,7 +508,7 @@ async function tryLoadFromRegistry(): Promise<{ rooms: TierRoom[]; debug: string
 
       const json = JSON.parse(text);
       const { rooms: roomLikes, debug } = extractRoomLikesFromRegistryJson(json);
-      const rooms = coerceTierRoomsFromAny(roomLikes);
+      const rooms = coerceTierRoomsFromUnknown(roomLikes);
 
       if (rooms.length) {
         return {
@@ -504,13 +532,13 @@ async function tryLoadFromRegistry(): Promise<{ rooms: TierRoom[]; debug: string
 }
 
 function loadFromManifest(): { rooms: TierRoom[]; debug: string } {
-  const any: any = PUBLIC_ROOM_MANIFEST as any;
+  const manifest: unknown = PUBLIC_ROOM_MANIFEST;
   let ids: string[] = [];
 
-  if (Array.isArray(any)) {
-    ids = any.map((x: any) => canonicalizeRoomId(String(x || "").trim())).filter(Boolean);
-  } else if (any && typeof any === "object") {
-    ids = Object.keys(any)
+  if (Array.isArray(manifest)) {
+    ids = manifest.map((x) => canonicalizeRoomId(String(x || "").trim())).filter(Boolean);
+  } else if (isRecord(manifest)) {
+    ids = Object.keys(manifest)
       .map((x) => canonicalizeRoomId(String(x || "").trim()))
       .filter(Boolean);
   }
@@ -541,7 +569,7 @@ async function tryLoadFromDb(): Promise<{ rooms: TierRoom[]; debug: string } | n
       >();
 
     if (error) {
-      return { rooms: [], debug: `DB error: ${String((error as any)?.message || error)}` };
+      return { rooms: [], debug: `DB error: ${errorMessage(error)}` };
     }
 
     const rows = (data || [])
@@ -560,7 +588,7 @@ async function tryLoadFromDb(): Promise<{ rooms: TierRoom[]; debug: string } | n
 
         return {
           id,
-          title_en: r.title_en || (r as any).title || undefined,
+          title_en: r.title_en || undefined,
           title_vi: r.title_vi ?? undefined,
           domain: r.domain ?? undefined,
           track: r.track ?? undefined,
@@ -571,8 +599,8 @@ async function tryLoadFromDb(): Promise<{ rooms: TierRoom[]; debug: string } | n
       .filter(Boolean) as TierRoom[];
 
     return { rooms: rows, debug: `DB rooms=${rows.length}` };
-  } catch (e: any) {
-    return { rooms: [], debug: `DB exception: ${String(e?.message || e)}` };
+  } catch (e: unknown) {
+    return { rooms: [], debug: `DB exception: ${errorMessage(e)}` };
   }
 }
 

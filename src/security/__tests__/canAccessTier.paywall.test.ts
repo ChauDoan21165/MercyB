@@ -1,7 +1,7 @@
 /**
  * Paywall gate regression test.
  *
- * Guards the RoomRenderer paid-content gate after removing the `as any`
+ * Guards the RoomRenderer paid-content gate after removing the loose cast
  * cast on the typed `UserAccess` object (fix/room-renderer-paywall-typesafety).
  *
  * `UserAccess` is imported as a *type* so these fixtures fail to compile if
@@ -83,7 +83,7 @@ const PAID_YEARLY = makeAccess({
 });
 const LEGACY_PAID = makeAccess({ tier: "level9", userTier: "level9" });
 
-describe("RoomRenderer paywall gate — typed UserAccess (no `as any`)", () => {
+describe("RoomRenderer paywall gate — typed UserAccess", () => {
   it("BLOCKS a free user from a paid room (level3)", () => {
     expect(isLocked(FREE, "level3")).toBe(true);
   });

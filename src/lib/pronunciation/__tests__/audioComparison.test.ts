@@ -151,8 +151,8 @@ describe("integration — user vs reference identical → zero divergence", () =
     for (let i = 0; i < wave.length; i++) wave[i] = Math.sin(i / 5) * 0.5 + 0.5;
     const diff = diffWaveforms(wave, wave);
     const mask = divergentMask(diff);
-    let any = 0;
-    for (let i = 0; i < mask.length; i++) any += mask[i];
-    expect(any).toBe(0);
+    let divergentBucketCount = 0;
+    for (let i = 0; i < mask.length; i++) divergentBucketCount += mask[i];
+    expect(divergentBucketCount).toBe(0);
   });
 });
