@@ -26,6 +26,7 @@ import {
 } from './tierCeremonies';
 import { isCrisisRoom, isSafeTrigger, enforceSafeEmotion } from './safetyRails';
 import { memory } from './memory';
+import type { MercyMemoryV2 } from './memorySchema';
 import { submitThrottledEvent } from './eventLimiter';
 import { getDomainCategory, isEnglishDomain, isMartialDomain, type DomainCategory } from './domainMap';
 import { getTeacherTip, type TeacherLevel, type TeacherContext } from './teacherScripts';
@@ -68,6 +69,22 @@ export type RitualIntensity = 'off' | 'minimal' | 'normal';
 
 export type { TeacherLevel };
 export type { MartialCoachLevel };
+
+type LegacyMercyMemoryFields = {
+  ritualIntensity?: RitualIntensity;
+};
+
+type EngineMercyMemory = MercyMemoryV2 & LegacyMercyMemoryFields;
+
+type RitualBannerSpec = RitualSpec | TierCeremonySpec;
+
+const getRitualBannerId = (ritual: RitualBannerSpec): string => {
+  return 'tier' in ritual ? ritual.tier : ritual.id;
+};
+
+const getEngineMemory = (): EngineMercyMemory => {
+  return memory.get() as EngineMercyMemory;
+};
 
 export interface MercyEngineState {
   isEnabled: boolean;
@@ -250,7 +267,7 @@ export function createMercyEngine(
   };
 
   // Helper: show ritual banner
-  const showRitualBanner = (ritual: RitualSpec | TierCeremonySpec, isCeremony = false) => {
+  const showRitualBanner = (ritual: RitualBannerSpec, isCeremony = false) => {
     const state = getState();
 
     // Respect silence mode - no voice or large animations
@@ -265,7 +282,7 @@ export function createMercyEngine(
 
         setState((s) => ({
           ...s,
-          lastRitualId: (ritual as any).tier ?? (ritual as any).id,
+          lastRitualId: getRitualBannerId(ritual),
           lastRitualText: text,
           isRitualBannerVisible: true
         }));
@@ -283,7 +300,7 @@ export function createMercyEngine(
 
     setState((s) => ({
       ...s,
-      lastRitualId: (ritual as any).tier ?? (ritual as any).id,
+      lastRitualId: getRitualBannerId(ritual),
       lastRitualText: text,
       lastCeremonyTier: isCeremony ? (ritual as TierCeremonySpec).tier : s.lastCeremonyTier,
       currentAnimation: ritual.animation,
@@ -385,7 +402,7 @@ export function createMercyEngine(
       const savedLang = localStorage.getItem(STORAGE_KEYS.LANGUAGE) as 'en' | 'vi' | null;
       const tier = config.tier || 'level0';
       const tierScript = getTierScript(tier);
-      const mem = memory.get();
+      const mem = getEngineMemory();
 
       const tierId = normalizeTierId(tier);
       const talkUsage = memory.getTalkUsage();
@@ -401,15 +418,15 @@ export function createMercyEngine(
         userName: config.userName || null,
         avatarStyle: getAvatarForTier(tier),
         presenceState: 'active',
-        visitStreak: (mem as any).streakDays || 0,
+        visitStreak: mem.streakDays || 0,
         lastVisitISO: mem.lastVisitISO,
-        ritualIntensity: (mem as any).ritualIntensity || 'normal',
+        ritualIntensity: mem.ritualIntensity || 'normal',
         silenceMode: mem.hostPreferences?.silenceMode || false,
-        teacherLevel: (mem as any).teacherLevel || 'normal',
+        teacherLevel: mem.teacherLevel || 'normal',
         // Phase 8: Martial Coach from memory
-        martialCoachLevel: (mem as any).martialCoachLevel || 'off',
-        currentMartialDiscipline: (mem as any).lastMartialDiscipline || null,
-        lastMartialTipId: (mem as any).lastMartialTipId || null,
+        martialCoachLevel: mem.martialCoachLevel || 'off',
+        currentMartialDiscipline: mem.lastMartialDiscipline || null,
+        lastMartialTipId: mem.lastMartialTipId || null,
         // Phase 9: Talk Budget from memory
         talkUsedToday: talkUsage.usedChars,
         talkDailyLimit: budget.dailyChars,
@@ -887,8 +904,9 @@ export function createMercyEngine(
     },
 
     setRitualIntensity: (intensity) => {
-      const mem = memory.get();
-      memory.update({ ...mem, ritualIntensity: intensity } as any);
+      const mem = getEngineMemory();
+      const updates: Partial<EngineMercyMemory> = { ...mem, ritualIntensity: intensity };
+      memory.update(updates);
       setState((s) => ({ ...s, ritualIntensity: intensity }));
     },
 
@@ -902,8 +920,8 @@ export function createMercyEngine(
     },
 
     setTeacherLevel: (level) => {
-      const mem = memory.get();
-      memory.update({ ...mem, teacherLevel: level } as any);
+      const mem = getEngineMemory();
+      memory.update({ ...mem, teacherLevel: level });
       setState((s) => ({ ...s, teacherLevel: level }));
     },
 
@@ -914,8 +932,8 @@ export function createMercyEngine(
 
     // Phase 8: Martial Coach actions
     setMartialCoachLevel: (level) => {
-      const mem = memory.get();
-      memory.update({ ...mem, martialCoachLevel: level } as any);
+      const mem = getEngineMemory();
+      memory.update({ ...mem, martialCoachLevel: level });
       setState((s) => ({ ...s, martialCoachLevel: level }));
     },
 
@@ -925,15 +943,15 @@ export function createMercyEngine(
     },
 
     recordMartialPractice: (context) => {
-      const mem = memory.get();
-      const practiceCount = ((mem as any).martialPracticeCount || 0) + 1;
+      const mem = getEngineMemory();
+      const practiceCount = (mem.martialPracticeCount || 0) + 1;
       const discipline = context?.discipline || getState().currentMartialDiscipline;
 
       memory.update({
         ...mem,
         martialPracticeCount: practiceCount,
         lastMartialDiscipline: discipline
-      } as any);
+      });
 
       setState((s) => ({
         ...s,
