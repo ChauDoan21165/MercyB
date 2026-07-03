@@ -123,16 +123,18 @@ export function TestPurchasePanel() {
         setResult(null);
         setSelectedTier("");
       }, 5000);
-    } catch (error: any) {
+    } catch (error: unknown) {
+      const errorMessage = error instanceof Error ? error.message : undefined;
+
       console.error("Test purchase error:", error);
       setResult({
         success: false,
-        message: error.message || "Test purchase failed",
+        message: errorMessage || "Test purchase failed",
       });
 
       toast({
         title: "Test Purchase Failed",
-        description: error.message,
+        description: errorMessage,
         variant: "destructive",
       });
     } finally {
