@@ -80,6 +80,15 @@ describe("pivotPromptSafety", () => {
     });
   });
 
+  it("accepts supported full-width question punctuation", () => {
+    const result = checkPivotCandidate("The fish burned after work. What did you eat instead？");
+
+    expect(result).toEqual({
+      ok: true,
+      text: "The fish burned after work. What did you eat instead？",
+    });
+  });
+
   it("rejects a mocked candidate with more than 30 words", () => {
     const result = checkPivotCandidate(
       "The fish burned after work, and that sounds like a busy evening, so can you slowly explain every step from cooking to eating and cleaning the kitchen, then describe how everyone felt afterward?",
@@ -103,6 +112,14 @@ describe("pivotPromptSafety", () => {
       ok: false,
       reason: "hollow_praise",
     });
+    expect(checkPivotCandidate("Awesome, the fish burned. What did you eat?")).toEqual({
+      ok: false,
+      reason: "hollow_praise",
+    });
+    expect(checkPivotCandidate("Amazing, the fish burned. What did you eat?")).toEqual({
+      ok: false,
+      reason: "hollow_praise",
+    });
   });
 
   it("rejects candidates with more than one follow-up question", () => {
@@ -110,10 +127,18 @@ describe("pivotPromptSafety", () => {
       ok: false,
       reason: "multiple_questions",
     });
+    expect(checkPivotCandidate("The fish burned.\nWhat did you eat?\nDid everyone feel okay.")).toEqual({
+      ok: false,
+      reason: "multiple_questions",
+    });
   });
 
   it("rejects candidates without a follow-up question", () => {
     expect(checkPivotCandidate("The fish burned after work. I understand that detail.")).toEqual({
+      ok: false,
+      reason: "missing_question",
+    });
+    expect(checkPivotCandidate("The fish burned after work at 5 p.m.?")).toEqual({
       ok: false,
       reason: "missing_question",
     });
@@ -126,6 +151,10 @@ describe("pivotPromptSafety", () => {
     );
 
     expect(result).toEqual({ ok: false, reason: "repeated_previous_assistant" });
+    expect(checkPivotCandidate(
+      "What did you eat instead.",
+      "What did you eat instead?",
+    )).toEqual({ ok: false, reason: "repeated_previous_assistant" });
   });
 
   it("rejects missing ending punctuation", () => {

@@ -42,9 +42,11 @@ export type PivotResponseDecisionInput = {
 };
 
 const MAX_PIVOT_RESPONSE_WORDS = 30;
-const ENDING_PUNCTUATION = /[.!?]$/;
-const HOLLOW_PRAISE = /\b(?:great job|that's wonderful|that is wonderful|nice|that's great|that is great)\b/i;
+const ENDING_PUNCTUATION = /[.!?。！？]$/;
+const HOLLOW_PRAISE = /\b(?:great job|that's wonderful|that is wonderful|nice|awesome|amazing|that's great|that is great)\b/i;
 const AS_AN_AI = /\bas an ai\b/i;
+const QUESTION_STARTER = /^(?:what|where|why|who|how|when|do|does|did|can|could|would|is|are|will|should)\b/i;
+const QUESTION_WORD = /\b(?:what|where|why|who|how|when|do|does|did|can|could|would|is|are|will|should)\b/i;
 
 function compact(value: string): string {
   return value.replace(/\s+/g, " ").trim();
@@ -55,11 +57,21 @@ function countWords(value: string): number {
 }
 
 function normalizeForRepeatCheck(value: string): string {
-  return compact(value).toLocaleLowerCase("en");
+  return compact(value).toLocaleLowerCase("en").replace(/[.!?。！？\s]+$/g, "");
 }
 
 function questionCount(value: string): number {
-  return (value.match(/\?/g) ?? []).length;
+  const explicitQuestions = (value.match(/[?？]/g) ?? []).length;
+  const implicitQuestionLines = value
+    .split(/\r?\n/)
+    .map(compact)
+    .filter((line) => line && !/[?？]/.test(line) && QUESTION_STARTER.test(line))
+    .length;
+  return explicitQuestions + implicitQuestionLines;
+}
+
+function hasSemanticQuestion(value: string): boolean {
+  return QUESTION_WORD.test(value);
 }
 
 function lastThreeTurns(turns: PivotPromptTurn[]): PivotPromptTurn[] {
@@ -118,8 +130,9 @@ export function checkPivotCandidate(candidate: string, previousAssistant = ""): 
   if (countWords(text) > MAX_PIVOT_RESPONSE_WORDS) return { ok: false, reason: "too_long" };
   if (AS_AN_AI.test(text)) return { ok: false, reason: "as_ai" };
   if (HOLLOW_PRAISE.test(text)) return { ok: false, reason: "hollow_praise" };
-  if (questionCount(text) === 0) return { ok: false, reason: "missing_question" };
-  if (questionCount(text) > 1) return { ok: false, reason: "multiple_questions" };
+  const questions = questionCount(candidate);
+  if (questions === 0 || !hasSemanticQuestion(candidate)) return { ok: false, reason: "missing_question" };
+  if (questions > 1) return { ok: false, reason: "multiple_questions" };
   if (!ENDING_PUNCTUATION.test(text)) return { ok: false, reason: "missing_punctuation" };
   if (previousAssistant && normalizeForRepeatCheck(text) === normalizeForRepeatCheck(previousAssistant)) {
     return { ok: false, reason: "repeated_previous_assistant" };
