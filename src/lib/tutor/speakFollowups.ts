@@ -79,7 +79,8 @@ const SALIENCE_STOPWORDS = new Set([
   "interesting", "angry", "scared", "excited", "bored", "free", "late", "early",
   // Proper-place nouns and STT fragments become awkward or misleading when
   // inserted after "the" in salience templates ("the Canada", "the I'm").
-  "canada",
+  "canada", "vietnam", "america", "usa", "california", "toronto", "vancouver",
+  "hanoi", "saigon", "home",
 ]);
 
 const SPEAK_UNCLEAR_TRANSCRIPT_PATTERNS = [
@@ -507,6 +508,11 @@ export function resolveSpeakFollowUpTopicId({
   learnerText,
   currentTopicId,
 }: SpeakFollowUpTopicInput): string {
+  if (learnerText?.trim() && !assessSpeakTranscriptClarity(learnerText).clear) {
+    if (currentTopicId) return currentTopicId;
+    return seedSentence ? getSpeakFollowUpTopicId(seedSentence) : "generic";
+  }
+
   const learnerTopicId = learnerText ? getSpeakFollowUpTopicId(learnerText) : "generic";
   if (
     currentTopicId &&

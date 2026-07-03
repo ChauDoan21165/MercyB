@@ -225,6 +225,24 @@ describe("speakFollowups", () => {
     });
   });
 
+  it("does not let unclear learner text switch the resolved topic", () => {
+    expect(resolveSpeakFollowUpTopicId({
+      seedSentence: "I bought a hat yesterday.",
+      learnerText: "I need an ahead because summer is sunny",
+      currentTopicId: "dinner-family",
+    })).toBe("dinner-family");
+
+    expect(selectSpeakFollowUpByTopicId("dinner-family", {
+      askedQuestions: ["What did you eat?"],
+      turnsOnTopic: 1,
+      learnerText: "I need an ahead because summer is sunny",
+    })).toEqual({
+      topicId: "dinner-family",
+      question: SPEAK_TRANSCRIPT_ASK_TO_REPEAT,
+      isPivot: false,
+    });
+  });
+
   it("follows the learner's own words for unmatched sentences (no generic dead-end)", () => {
     // NEW behavior: an unmatched ("generic") sentence no longer dead-ends on a
     // canned "...about that?" — it references the learner's salient word.
@@ -412,6 +430,7 @@ describe("speakFollowups", () => {
         "I get the bus at seven.",
         "I need help this form.",
         "I walk ahead of my brother.",
+        "I know the way to work.",
       ];
       for (const text of ordinaryLearnerSentences) {
         expect(assessSpeakTranscriptClarity(text)).toEqual({
@@ -425,6 +444,9 @@ describe("speakFollowups", () => {
       expect(extractSalientKeyword("I bought a hat because it is sunny.")).toBe("hat");
       expect(extractSalientKeyword("I bought it at a shop that sells old stuff.")).toBe("shop");
       expect(extractSalientKeyword("The weather is nice today.")).toBe("weather");
+      expect(extractSalientKeyword("I moved to Vietnam.")).toBeNull();
+      expect(extractSalientKeyword("I visited America.")).toBeNull();
+      expect(extractSalientKeyword("I went with us yesterday.")).toBeNull();
       // No concrete content word → null (degrades to "that", never worse).
       expect(extractSalientKeyword("I am very tired.")).toBeNull();
     });
@@ -551,6 +573,7 @@ describe("speakFollowups", () => {
         "I buy some noodles.",
         "Do you have any questions?",
         "I like the sunlight in the morning.",
+        "I know the way to work.",
       ];
 
       for (const learnerText of clearCases) {
