@@ -18,26 +18,41 @@
 // detect exactly that case so the caller can show an honest badge + beacon
 // instead.
 
-// Rooms are loaded untyped (JSON of many historical shapes); mirrors the
-// `AnyRoom` alias RoomRenderer uses for the same values.
-type AnyRoom = any;
+type LocalizedFields = Partial<Record<"en" | "vi", unknown>>;
 
-export const pickIntroEN = (r: AnyRoom): string =>
-  (r?.intro?.en ||
-    r?.description?.en ||
+// Rooms are loaded from JSON with many historical shapes. Keep this structural
+// type intentionally loose while avoiding untyped escape hatches.
+type RoomIntroFallbackRoom = {
+  intro?: LocalizedFields | null;
+  description?: LocalizedFields | string | null;
+  intro_en?: unknown;
+  intro_vi?: unknown;
+  description_en?: unknown;
+  description_vi?: unknown;
+  summary?: LocalizedFields | null;
+  summary_en?: unknown;
+  summary_vi?: unknown;
+} | null | undefined;
+
+const localizedField = (value: unknown, locale: "en" | "vi"): unknown =>
+  value && typeof value === "object" ? (value as LocalizedFields)[locale] : undefined;
+
+export const pickIntroEN = (r: RoomIntroFallbackRoom): string =>
+  (localizedField(r?.intro, "en") ||
+    localizedField(r?.description, "en") ||
     r?.intro_en ||
     r?.description_en ||
-    r?.summary?.en ||
+    localizedField(r?.summary, "en") ||
     r?.summary_en ||
     r?.description ||
     "") as string;
 
-export const pickIntroVI = (r: AnyRoom): string =>
-  (r?.intro?.vi ||
-    r?.description?.vi ||
+export const pickIntroVI = (r: RoomIntroFallbackRoom): string =>
+  (localizedField(r?.intro, "vi") ||
+    localizedField(r?.description, "vi") ||
     r?.intro_vi ||
     r?.description_vi ||
-    r?.summary?.vi ||
+    localizedField(r?.summary, "vi") ||
     r?.summary_vi ||
     r?.description ||
     "") as string;
@@ -48,12 +63,12 @@ export const pickIntroVI = (r: AnyRoom): string =>
 // consulted: pickIntroVI never read it, and adding it now would change which
 // text renders — out of scope here (this is the delivery-side fix; authoring
 // the missing VI is the separate clinical-content backlog).
-export const pickIntroVIStrict = (r: AnyRoom): string =>
-  (r?.intro?.vi ||
-    r?.description?.vi ||
+export const pickIntroVIStrict = (r: RoomIntroFallbackRoom): string =>
+  (localizedField(r?.intro, "vi") ||
+    localizedField(r?.description, "vi") ||
     r?.intro_vi ||
     r?.description_vi ||
-    r?.summary?.vi ||
+    localizedField(r?.summary, "vi") ||
     r?.summary_vi ||
     "") as string;
 
@@ -61,5 +76,5 @@ export const pickIntroVIStrict = (r: AnyRoom): string =>
 // learner would otherwise be shown English in the welcome line. True iff
 // there is EN intro content to show AND no genuine VI copy exists. A room
 // with neither just gets the generated bilingual welcome (no leak → false).
-export const isViIntroMissing = (r: AnyRoom): boolean =>
+export const isViIntroMissing = (r: RoomIntroFallbackRoom): boolean =>
   !pickIntroVIStrict(r).trim() && !!pickIntroEN(r).trim();
