@@ -429,6 +429,19 @@ function buildSalienceFollowUps(learnerText: string, turnsOnTopic: number): stri
   );
 }
 
+function normalizeAskedQuestionKey(question: string): string {
+  return question
+    .trim()
+    .toLowerCase()
+    .replace(/\s+/g, " ")
+    .replace(/[?!.\s]+$/g, "");
+}
+
+function normalizeTurnsOnTopic(turnsOnTopic: number): number {
+  if (!Number.isFinite(turnsOnTopic)) return 0;
+  return Math.max(0, Math.floor(turnsOnTopic));
+}
+
 export const SPEAK_FOLLOW_UP_PATTERNS: readonly SpeakFollowUpPattern[] = [
   {
     id: "bicycle-hat-summer",
@@ -523,8 +536,8 @@ export function selectSpeakFollowUpByTopicId(
   const pattern = SPEAK_FOLLOW_UP_PATTERNS.find((candidate) => candidate.id === topicId);
   const libraryTopic = getSpeakTopicLibraryEntry(topicId);
   const resolvedTopicId = pattern?.id ?? libraryTopic?.id ?? "generic";
-  const asked = new Set((options.askedQuestions ?? []).map((question) => question.trim().toLowerCase()));
-  const turnsOnTopic = options.turnsOnTopic ?? 0;
+  const asked = new Set((options.askedQuestions ?? []).map(normalizeAskedQuestionKey));
+  const turnsOnTopic = normalizeTurnsOnTopic(options.turnsOnTopic ?? 0);
   const learnerText = options.learnerText ?? "";
 
   if (learnerText.trim() && !assessSpeakTranscriptClarity(learnerText).clear) {
@@ -556,7 +569,7 @@ export function selectSpeakFollowUpByTopicId(
       ...candidates.slice(turnsOnTopic),
       ...candidates.slice(0, turnsOnTopic),
     ];
-    const selected = ordered.find((candidate) => !asked.has(candidate.question.trim().toLowerCase()));
+    const selected = ordered.find((candidate) => !asked.has(normalizeAskedQuestionKey(candidate.question)));
 
     if (!selected) {
       return { topicId: resolvedTopicId, question: SPEAK_FOLLOW_UP_PIVOT, isPivot: true };
@@ -591,7 +604,7 @@ export function selectSpeakFollowUpByTopicId(
   const candidates = followsLearner
     ? [...salienceQuestions, ...scriptedQuestions]
     : [...scriptedQuestions, ...salienceQuestions];
-  const question = candidates.find((candidate) => !asked.has(candidate.trim().toLowerCase()));
+  const question = candidates.find((candidate) => !asked.has(normalizeAskedQuestionKey(candidate)));
   if (!question) {
     return { topicId: resolvedTopicId, question: SPEAK_FOLLOW_UP_PIVOT, isPivot: true };
   }

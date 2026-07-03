@@ -652,6 +652,50 @@ describe("speakFollowups", () => {
       expect(reply.isPivot).toBe(false);
       expect(reply.question).toBe("Who cooked dinner?");
     });
+
+    it("dedupes asked questions with spacing and terminal punctuation variants", () => {
+      expect(selectSpeakFollowUpByTopicId("dinner-family", {
+        askedQuestions: ["  What   did   you eat  "],
+        turnsOnTopic: 0,
+        learnerText: "I had dinner with my family.",
+      })).toMatchObject({
+        question: "Who cooked dinner?",
+        isPivot: false,
+      });
+
+      expect(selectSpeakFollowUpByTopicId("dinner-family", {
+        askedQuestions: ["What did you eat"],
+        turnsOnTopic: 0,
+        learnerText: "I had dinner with my family.",
+      })).toMatchObject({
+        question: "Who cooked dinner?",
+        isPivot: false,
+      });
+    });
+
+    it("normalizes unsafe turn counts before selecting follow-ups", () => {
+      expect(selectSpeakFollowUpByTopicId("hat-biking-summer", {
+        askedQuestions: [],
+        turnsOnTopic: -1,
+        learnerText: "I bought a hat because summer is sunny.",
+      })).toEqual({
+        topicId: "hat-biking-summer",
+        question: "Why do you need the hat?",
+        isPivot: false,
+      });
+
+      const floatTurnSelection = selectSpeakFollowUpByTopicId("generic", {
+        askedQuestions: [],
+        turnsOnTopic: 1.8,
+        learnerText: "My garden has many flowers.",
+      });
+
+      expect(floatTurnSelection).toEqual({
+        topicId: "generic",
+        question: "What do you like about the garden?",
+        isPivot: false,
+      });
+    });
   });
 
   describe("Speak topic library batch 1", () => {
