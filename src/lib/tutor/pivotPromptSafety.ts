@@ -18,6 +18,7 @@ export type PivotCandidateRejectReason =
   | "too_long"
   | "as_ai"
   | "hollow_praise"
+  | "multiple_questions"
   | "missing_punctuation"
   | "repeated_previous_assistant";
 
@@ -54,6 +55,10 @@ function countWords(value: string): number {
 
 function normalizeForRepeatCheck(value: string): string {
   return compact(value).toLocaleLowerCase("en");
+}
+
+function questionCount(value: string): number {
+  return (value.match(/\?/g) ?? []).length;
 }
 
 function lastThreeTurns(turns: PivotPromptTurn[]): PivotPromptTurn[] {
@@ -112,6 +117,7 @@ export function checkPivotCandidate(candidate: string, previousAssistant = ""): 
   if (countWords(text) > MAX_PIVOT_RESPONSE_WORDS) return { ok: false, reason: "too_long" };
   if (AS_AN_AI.test(text)) return { ok: false, reason: "as_ai" };
   if (HOLLOW_PRAISE.test(text)) return { ok: false, reason: "hollow_praise" };
+  if (questionCount(text) > 1) return { ok: false, reason: "multiple_questions" };
   if (!ENDING_PUNCTUATION.test(text)) return { ok: false, reason: "missing_punctuation" };
   if (previousAssistant && normalizeForRepeatCheck(text) === normalizeForRepeatCheck(previousAssistant)) {
     return { ok: false, reason: "repeated_previous_assistant" };

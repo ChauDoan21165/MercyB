@@ -105,7 +105,7 @@ function decision(stance: ResponseStance, reason: string, priority: number): Res
 
 function salienceSuggestsPause(salience: BilingualSaliencePivot | null | undefined): boolean {
   if (!salience?.highStakes) return false;
-  return containsAny(normalizeText(salience.matchedText), PAUSE_PATTERNS);
+  return true;
 }
 
 export function classifyResponseStance(

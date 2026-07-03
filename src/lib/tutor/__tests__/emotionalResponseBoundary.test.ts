@@ -58,6 +58,18 @@ describe("classifyResponseStance", () => {
     });
   });
 
+  it("trusts high-stakes salience even when the matched text is broad", () => {
+    expect(
+      classifyResponseStance({
+        learnerText: "normal words",
+        salience: { ...pauseSalience, matchedText: "problem" },
+      }),
+    ).toMatchObject({
+      stance: "needs_pause",
+      reason: "safety_adjacent_or_distress_like_content",
+    });
+  });
+
   it("does not put diagnosis wording in exported advisory copy", () => {
     expect(Object.values(RESPONSE_STANCE_ADVISORY_COPY).join(" ")).not.toMatch(
       /diagnos|depress|anxiety|trauma|therapy|therapist|mental health|clinical|disorder/i,

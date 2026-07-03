@@ -105,6 +105,13 @@ describe("pivotPromptSafety", () => {
     });
   });
 
+  it("rejects candidates with more than one follow-up question", () => {
+    expect(checkPivotCandidate("The fish burned. What did you eat? Did everyone feel okay?")).toEqual({
+      ok: false,
+      reason: "multiple_questions",
+    });
+  });
+
   it("rejects a repeated previous assistant response", () => {
     const result = checkPivotCandidate(
       "What did you eat instead?",
