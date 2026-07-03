@@ -23,9 +23,17 @@ type Snapshot = {
   err?: string | null;
 };
 
+type TierRow = {
+  tier: string | null;
+};
+
 function fmt(n: number | null | undefined) {
   if (n === null || n === undefined) return "—";
   return String(n);
+}
+
+function getErrorMessage(error: unknown) {
+  return error instanceof Error ? error.message : "Unknown error";
 }
 
 export default function AdminStatsStrip({
@@ -85,8 +93,8 @@ export default function AdminStatsStrip({
           .limit(5000);
 
         if (!tiersQ.error && Array.isArray(tiersQ.data)) {
-          for (const row of tiersQ.data as any[]) {
-            const t = (row?.tier || "unknown") as string;
+          for (const row of tiersQ.data as TierRow[]) {
+            const t = row.tier || "unknown";
             tiersMap[t] = (tiersMap[t] || 0) + 1;
           }
         }
@@ -107,9 +115,9 @@ export default function AdminStatsStrip({
           tiers: Object.keys(tiersMap).length ? tiersMap : null,
           err: softErr,
         });
-      } catch (e: any) {
+      } catch (e: unknown) {
         if (!alive) return;
-        setSnap((s) => ({ ...s, err: e?.message || "Unknown error" }));
+        setSnap((s) => ({ ...s, err: getErrorMessage(e) }));
       }
     }
 
