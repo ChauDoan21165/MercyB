@@ -2,6 +2,18 @@ import { useState, useEffect } from 'react';
 import { Eye, EyeOff, Activity } from 'lucide-react';
 import { useUserAccess } from '@/hooks/useUserAccess';
 import { logger } from '@/lib/logger';
+import type { RoomLoadMetric } from '@/lib/observability/metrics';
+
+type AppErrorDetail = {
+  kind?: string;
+} & Record<string, unknown>;
+
+declare global {
+  interface WindowEventMap {
+    'room:load:complete': CustomEvent<RoomLoadMetric>;
+    'app:error': CustomEvent<AppErrorDetail>;
+  }
+}
 
 /**
  * Dev Observability Panel
@@ -24,22 +36,22 @@ export function DevObservabilityPanel() {
 
   // Listen for room load events (via custom events)
   useEffect(() => {
-    const handleRoomLoad = (e: CustomEvent) => {
+    const handleRoomLoad = (e: CustomEvent<RoomLoadMetric>) => {
       setLastLoadDuration(e.detail.duration);
       logger.debug('DevPanel: Room load tracked', { duration: e.detail.duration });
     };
 
-    const handleError = (e: CustomEvent) => {
+    const handleError = (e: CustomEvent<AppErrorDetail>) => {
       setLastError(e.detail.kind || 'unknown');
       logger.debug('DevPanel: Error tracked', { kind: e.detail.kind });
     };
 
-    window.addEventListener('room:load:complete' as any, handleRoomLoad);
-    window.addEventListener('app:error' as any, handleError);
+    window.addEventListener('room:load:complete', handleRoomLoad);
+    window.addEventListener('app:error', handleError);
 
     return () => {
-      window.removeEventListener('room:load:complete' as any, handleRoomLoad);
-      window.removeEventListener('app:error' as any, handleError);
+      window.removeEventListener('room:load:complete', handleRoomLoad);
+      window.removeEventListener('app:error', handleError);
     };
   }, []);
 
