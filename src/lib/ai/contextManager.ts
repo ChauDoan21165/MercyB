@@ -48,7 +48,7 @@ export function loadContext(roomId: string): ConversationContext | null {
     return {
       ...context,
       lastActivity: new Date(context.lastActivity),
-      messages: context.messages.map((msg: any) => ({
+      messages: context.messages.map((msg: Record<string, unknown> & { timestamp: string | number | Date }) => ({
         ...msg,
         timestamp: msg.timestamp ? new Date(msg.timestamp) : undefined,
       })),
