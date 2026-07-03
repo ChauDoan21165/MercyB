@@ -220,7 +220,7 @@ const CLARITY_INVALID_ARTICLE_TARGETS = new Set([
 
 const CLARITY_WEAK_NOUN_TARGETS = new Set([
   "guy", "guys", "someone", "somebody", "something", "anyone", "anybody",
-  "anything", "everyone", "everybody", "everything",
+  "anything", "everyone", "everybody", "everything", "person", "people",
 ]);
 
 const CLARITY_WEAK_ABSTRACT_TARGETS = new Set([

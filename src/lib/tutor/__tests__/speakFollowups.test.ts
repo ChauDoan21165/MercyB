@@ -292,6 +292,7 @@ describe("speakFollowups", () => {
         "I order a head",
         "I need a head because summer is very sunny in Canada",
         "I like the summer of you guys very sunny and I can wear short",
+        "I saw the people",
         "the and of to",
         "I bought the",
       ];
@@ -436,6 +437,10 @@ describe("speakFollowups", () => {
         {
           learnerText: "I like the summer of you guys very sunny and I can wear short",
           forbidden: "Why did you choose the guys?",
+        },
+        {
+          learnerText: "I saw the people",
+          forbidden: "Why did you choose the people?",
         },
         {
           learnerText:
