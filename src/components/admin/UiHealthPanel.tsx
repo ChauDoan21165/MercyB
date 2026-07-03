@@ -6,8 +6,23 @@ import { AlertCircle, XCircle } from 'lucide-react';
 import { supabase } from '@/lib/supabaseClient';
 import { Link } from 'react-router-dom';
 
+type UiHealthIssueDetails = {
+  measured_ratio?: number | string | null;
+  [key: string]: string | number | boolean | null | undefined;
+};
+
+type UiHealthIssue = {
+  id?: string | number;
+  issue_type?: string;
+  severity?: string;
+  path?: string;
+  room_id?: string | number | null;
+  details?: UiHealthIssueDetails | null;
+};
+
+
 export const UiHealthPanel = () => {
-  const [uiIssues, setUiIssues] = useState<any[]>([]);
+  const [uiIssues, setUiIssues] = useState<UiHealthIssue[]>([]);
 
   useEffect(() => {
     const loadIssues = async () => {
@@ -44,7 +59,7 @@ export const UiHealthPanel = () => {
               <div className="flex-1">
                 <div className="flex items-center gap-2 mb-2">
                   {issue.severity === 'error' ? <XCircle className="h-5 w-5 text-red-500" /> : <AlertCircle className="h-5 w-5 text-amber-500" />}
-                  <h3 className="font-semibold">{issue.issue_type.replace(/_/g, ' ')}</h3>
+                  <h3 className="font-semibold">{(issue.issue_type ?? 'unknown').replace(/_/g, ' ')}</h3>
                   <Badge variant={issue.severity === 'error' ? 'destructive' : 'outline'}>{issue.severity}</Badge>
                 </div>
                 <p className="text-sm text-muted-foreground mb-1">Path: <code className="bg-muted px-2 py-1 rounded text-xs">{issue.path}</code></p>
