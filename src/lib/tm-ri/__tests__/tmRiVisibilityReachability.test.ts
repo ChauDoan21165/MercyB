@@ -137,6 +137,97 @@ export function PlacementResultNotice() {
     expect(trust.points[0]?.score).toBe(75);
   });
 
+  it("separates learner-visible error copy from comment, type, and test-only strings", () => {
+    const cases = [
+      {
+        name: "source comment",
+        source: `
+export function PlacementResultNotice() {
+  // Learner-visible error: audioUrl missing.
+  return <p>{"Audio could not be checked. Please try again."}</p>;
+}
+`,
+        text: "Learner-visible error: audioUrl missing.",
+        filePath: "src/pages/placement/v3/ResultsPage.tsx",
+        expectedScope: "comment_only",
+        expectedSurface: "source_comment",
+        expectedScore: 100,
+      },
+      {
+        name: "type contract",
+        source: `
+export type PlacementErrorCopy = {
+  readonly learnerVisibleError: "audioUrl missing";
+};
+`,
+        text: "audioUrl missing",
+        filePath: "src/types/placement-v3.ts",
+        expectedScope: "type_only",
+        expectedSurface: "type_definition",
+        expectedScore: 100,
+      },
+      {
+        name: "test assertion",
+        source: `
+import { expect, it } from "vitest";
+it("keeps audio errors visible", () => {
+  expect("audioUrl missing").toBeTruthy();
+});
+`,
+        text: "audioUrl missing",
+        filePath: "src/pages/placement/v3/__tests__/ResultsPage.test.tsx",
+        expectedScope: "test_only",
+        expectedSurface: "test_fixture",
+        expectedScore: 100,
+      },
+      {
+        name: "runtime learner UI",
+        source: `
+export function PlacementResultNotice() {
+  return <p>{"Audio could not be checked. Please try again."}</p>;
+}
+`,
+        text: "Audio could not be checked. Please try again.",
+        filePath: "src/pages/placement/v3/ResultsPage.tsx",
+        expectedScope: "learner_visible",
+        expectedSurface: "runtime_ui",
+        expectedScore: 75,
+      },
+    ] as const;
+
+    for (const example of cases) {
+      const visible = visibility.analyze(example);
+      const reachable = reachability.analyze(example);
+      const trust = new ProductTrustAnalyzer().analyze(
+        [trustFinding(example.text, visible, reachable)],
+        { stages: [] },
+      );
+
+      expect(visible.scope, example.name).toBe(example.expectedScope);
+      expect(reachable.surface, example.name).toBe(example.expectedSurface);
+      expect(trust.points[0]?.score, example.name).toBe(example.expectedScore);
+    }
+  });
+
+  it("does not penalize product trust for trust findings without visibility evidence", () => {
+    const trust = new ProductTrustAnalyzer().analyze(
+      [
+        {
+          code: "product_trust_risk",
+          severity: "medium",
+          educationalSeverity: "moderate",
+          title: "Product trust risk detected",
+          evidence: ["test-only source string"],
+          impact: "Trust in the result may be lower even if scoring logic completes.",
+          confidence: 0.85,
+        },
+      ],
+      { stages: [] },
+    );
+
+    expect(trust.points[0]?.score).toBe(100);
+  });
+
   it("classifies ListeningTaskCard unavailable audio copy as learner-visible runtime UI", () => {
     const source = `
 export function ListeningTaskCard() {
@@ -196,6 +287,20 @@ export function ListeningTaskCard() {
     );
 
     const packetText = JSON.stringify(analysis.observationPacket).toLowerCase();
+    expect(analysis.runtimeFindings).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({
+          code: "internal_text_visible",
+          visibility: expect.objectContaining({ scope: "learner_visible" }),
+          reachability: expect.objectContaining({ surface: "runtime_ui" }),
+        }),
+        expect.objectContaining({
+          code: "product_trust_risk",
+          visibility: expect.objectContaining({ scope: "learner_visible" }),
+          reachability: expect.objectContaining({ surface: "runtime_ui" }),
+        }),
+      ]),
+    );
     expect(packetText).not.toContain("react");
     expect(packetText).not.toContain("audiourl");
     expect(packetText).not.toContain("mediarecorder");

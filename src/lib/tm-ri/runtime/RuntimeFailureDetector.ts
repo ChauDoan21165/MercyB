@@ -65,6 +65,19 @@ export class RuntimeFailureDetector {
       }
 
       if (this.hasInternalText(event)) {
+        const learnerVisible = {
+          visibility: {
+            scope: "learner_visible" as const,
+            confidence: 0.95,
+            reason: "Runtime event reported this text as learner-facing copy.",
+          },
+          reachability: {
+            surface: "runtime_ui" as const,
+            confidence: 0.95,
+            reason: "Runtime event came from visible learner UI text.",
+          },
+        };
+
         findings.push(
           makeFinding({
             code: "internal_text_visible",
@@ -74,6 +87,7 @@ export class RuntimeFailureDetector {
             evidence: [`${event.id}: learner-facing copy exposed non-product wording`],
             impact: "Internal or placeholder language can reduce product trust during assessment.",
             confidence: 0.9,
+            ...learnerVisible,
           }),
         );
         findings.push(
@@ -85,6 +99,7 @@ export class RuntimeFailureDetector {
             evidence: [`${event.id}: learner saw wording that can make the assessment feel unreliable`],
             impact: "Trust in the result may be lower even if scoring logic completes.",
             confidence: 0.85,
+            ...learnerVisible,
           }),
         );
       }

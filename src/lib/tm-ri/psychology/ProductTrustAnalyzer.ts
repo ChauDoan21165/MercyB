@@ -54,6 +54,6 @@ export class ProductTrustAnalyzer {
     if (scope !== undefined || surface !== undefined) {
       return scope === "learner_visible" || surface === "runtime_ui" || surface === "crash_screen";
     }
-    return true;
+    return false;
   }
 }
