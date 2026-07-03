@@ -7,8 +7,8 @@ import path from "path";
 
 type JsonEntry = {
   slug?: string;
-  audio?: string | { en?: string; vi?: string; [k: string]: any };
-  [k: string]: any;
+  audio?: string | { en?: string; vi?: string; [k: string]: unknown };
+  [k: string]: unknown;
 };
 
 type RoomJson = {
@@ -16,7 +16,7 @@ type RoomJson = {
   title?: { en?: string; vi?: string };
   tier?: string;
   entries?: JsonEntry[];
-  [k: string]: any;
+  [k: string]: unknown;
 };
 
 type MissingAudio = {
@@ -103,7 +103,10 @@ async function scan(): Promise<void> {
         audioRaw = entry.audio;
       } else if (entry.audio && typeof entry.audio === "object") {
         // prefer EN if object, fallback any key
-        audioRaw = entry.audio.en ?? entry.audio.vi ?? Object.values(entry.audio)[0];
+        const fallbackAudio = Object.values(entry.audio).find(
+          (value): value is string => typeof value === "string",
+        );
+        audioRaw = entry.audio.en ?? entry.audio.vi ?? fallbackAudio;
       }
 
       if (!audioRaw) return;

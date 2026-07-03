@@ -15,6 +15,16 @@ interface EntryWithoutAudio {
   entryIndex: number;
 }
 
+type RoomEntry = Record<string, unknown>;
+
+function isRecord(value: unknown): value is Record<string, unknown> {
+  return value !== null && typeof value === "object" && !Array.isArray(value);
+}
+
+function stringOrFallback(value: unknown, fallback: string): string {
+  return typeof value === "string" ? value : fallback;
+}
+
 async function findEntriesWithoutAudio(): Promise<void> {
   console.log("🔍 Finding entries without audio files...\n");
 
@@ -29,15 +39,18 @@ async function findEntriesWithoutAudio(): Promise<void> {
     const filePath = path.join(DATA_DIR, file);
     try {
       const content = await fs.readFile(filePath, "utf8");
-      const json = JSON.parse(content);
+      const parsed = JSON.parse(content) as unknown;
+      const json = isRecord(parsed) ? parsed : {};
 
       // Skip non-room files
       if (!json.entries || !Array.isArray(json.entries)) continue;
 
-      const roomId = json.id || path.basename(file, ".json");
-      const roomTitle = json.title?.en || json.title || roomId;
+      const roomId = stringOrFallback(json.id, path.basename(file, ".json"));
+      const titleObject = isRecord(json.title) ? json.title : null;
+      const roomTitle = titleObject?.en || json.title || roomId;
+      const roomTitleText = stringOrFallback(roomTitle, roomId);
 
-      json.entries.forEach((entry: any, index: number) => {
+      json.entries.forEach((entry: RoomEntry, index: number) => {
         totalEntries++;
 
         // Check for audio field
@@ -48,8 +61,8 @@ async function findEntriesWithoutAudio(): Promise<void> {
         } else {
           entriesWithoutAudio.push({
             roomId,
-            roomTitle: typeof roomTitle === "string" ? roomTitle : roomTitle.en || roomId,
-            entrySlug: entry.slug || entry.artifact_id || entry.id || `entry-${index}`,
+            roomTitle: roomTitleText,
+            entrySlug: stringOrFallback(entry.slug || entry.artifact_id || entry.id, `entry-${index}`),
             entryIndex: index + 1,
           });
         }

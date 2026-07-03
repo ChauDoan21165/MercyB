@@ -17,6 +17,14 @@ interface AuditIssue {
   message: string;
 }
 
+function isRecord(value: unknown): value is Record<string, unknown> {
+  return value !== null && typeof value === "object" && !Array.isArray(value);
+}
+
+function getErrorMessage(err: unknown): string {
+  return err instanceof Error ? err.message : String(err);
+}
+
 function auditKeywordMapping(): void {
   console.log("🔍 KEYWORD MAPPING AUDIT");
   console.log("========================\n");
@@ -35,13 +43,14 @@ function auditKeywordMapping(): void {
     const filePath = path.join(DATA_DIR, file);
     try {
       const content = fs.readFileSync(filePath, "utf-8");
-      const room = JSON.parse(content);
-      const roomId = room.id || file.replace(".json", "");
+      const parsed = JSON.parse(content) as unknown;
+      const room = isRecord(parsed) ? parsed : {};
+      const roomId = String(room.id || file.replace(".json", ""));
 
       // Check entries for keywords
       if (Array.isArray(room.entries)) {
         for (let i = 0; i < room.entries.length; i++) {
-          const entry = room.entries[i];
+          const entry = isRecord(room.entries[i]) ? room.entries[i] : {};
           
           // Check keywords_en
           if (entry.keywords_en !== undefined) {
@@ -94,8 +103,8 @@ function auditKeywordMapping(): void {
         });
       }
 
-    } catch (err: any) {
-      console.log(`⚠️ Skipping ${file}: ${err.message}`);
+    } catch (err: unknown) {
+      console.log(`⚠️ Skipping ${file}: ${getErrorMessage(err)}`);
     }
   }
 
