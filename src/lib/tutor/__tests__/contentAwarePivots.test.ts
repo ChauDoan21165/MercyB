@@ -69,6 +69,42 @@ describe("contentAwarePivots", () => {
     expect(decision.safeTeacherMove).toMatch(/model sentence/i);
   });
 
+  it("offers help for example and meaning requests", () => {
+    const examples = [
+      "Can you give me an example?",
+      "Example please.",
+      "What does that mean?",
+      "I have no idea how to answer.",
+    ];
+
+    for (const learnerText of examples) {
+      const decision = classifyContentAwarePivot({
+        learnerText,
+        currentTopicId: "family",
+        topicLabel: "Family",
+      });
+
+      expect(decision.contentType, learnerText).toBe("help_request");
+      expect(decision.pivotAction, learnerText).toBe("encourage_expand");
+      expect(decision.safeTeacherMove, learnerText).toMatch(/model sentence/i);
+      expect(decision.reason, learnerText).toBe("learner_requested_help");
+    }
+  });
+
+  it("handles learner refusal with a gentle pivot instead of expansion", () => {
+    const decision = classifyContentAwarePivot({
+      learnerText: "I don't want to answer that question.",
+      currentTopicId: "family",
+      topicLabel: "Family",
+    });
+
+    expect(decision.contentType).toBe("help_request");
+    expect(decision.pivotAction).toBe("graceful_pivot");
+    expect(decision.suggestedFollowUpIntent).toBe("offer-easier-choice");
+    expect(decision.safeTeacherMove).toMatch(/easier sentence|small topic pivot/i);
+    expect(decision.reason).toBe("learner_declined_answer");
+  });
+
   it("invites expansion for emotion or opinion", () => {
     const decision = classifyContentAwarePivot({
       learnerText: "I feel tired after work.",

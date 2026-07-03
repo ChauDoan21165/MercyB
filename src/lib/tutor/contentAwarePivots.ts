@@ -78,7 +78,13 @@ function labelForTopic(topic: SpeakConversationTopic | string | null, fallback?:
 }
 
 function isHelpRequest(normalized: string): boolean {
-  return /\b(i do not know|i don't know|i am not sure|i'm not sure|im not sure|not sure|dont know|don't know|help me|can you help|how to say|how do i say|what should i say)\b/.test(
+  return /\b(i do not know|i don't know|i am not sure|i'm not sure|im not sure|not sure|dont know|don't know|i have no idea|help me|can you help|please help|can you give me an example|give me an example|example please|how to say|how do i say|what should i say|what does that mean)\b/.test(
+    normalized,
+  );
+}
+
+function isLearnerRefusal(normalized: string): boolean {
+  return /\b(i do not want to answer|i don't want to answer|i dont want to answer|i do not want answer|i don't want answer|i dont want answer)\b/.test(
     normalized,
   );
 }
@@ -141,6 +147,18 @@ export function classifyContentAwarePivot(input: ContentAwarePivotInput): Conten
       suggestedFollowUpIntent: "offer-model-answer",
       safeTeacherMove: "Offer one simple model sentence, then ask the learner to repeat or adapt it.",
       reason: "learner_requested_help",
+    });
+  }
+
+  if (isLearnerRefusal(normalized)) {
+    return makeDecision({
+      contentType: "help_request",
+      pivotAction: "graceful_pivot",
+      topicId: currentTopicId === "general" ? null : currentTopicId,
+      topicLabel: labelForTopic(currentTopicId, input.topicLabel),
+      suggestedFollowUpIntent: "offer-easier-choice",
+      safeTeacherMove: "Acknowledge the learner's choice and offer one easier sentence or a small topic pivot.",
+      reason: "learner_declined_answer",
     });
   }
 
