@@ -58,10 +58,8 @@ function installFakes() {
   // Keep OfflineAudioContext UNDEFINED so the resample falls through to the
   // JS linear path. That path is deterministic and we don't need to fake
   // a Web Audio render graph.
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  (globalThis as any).AudioContext = FakeAudioContext;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  (globalThis as any).OfflineAudioContext = undefined;
+  (globalThis as unknown).AudioContext = FakeAudioContext;
+  (globalThis as unknown).OfflineAudioContext = undefined;
 }
 
 beforeEach(() => {
