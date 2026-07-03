@@ -1,0 +1,34 @@
+import type { ObservationPacket } from "../obs/types";
+import { runRuntimeDecisionPipeline } from "./decisionPipeline";
+import { aggregateLearningSignals } from "./signalAggregator";
+import type { TeacherContext } from "./types";
+
+function confidenceSummary(recommendations: TeacherContext["recommendations"]): TeacherContext["confidenceSummary"] {
+  return recommendations.reduce(
+    (summary, recommendation) => ({
+      ...summary,
+      [recommendation.confidence]: summary[recommendation.confidence] + 1,
+    }),
+    { high: 0, medium: 0, low: 0 },
+  );
+}
+
+export function buildTeacherContext(observationPacket: ObservationPacket): TeacherContext {
+  const decisions = runRuntimeDecisionPipeline(observationPacket);
+  const learningSignals = aggregateLearningSignals(observationPacket);
+
+  return {
+    schemaVersion: "tm-int-teacher-context-v1",
+    observationSummary: {
+      packetId: observationPacket.packetId,
+      factCount: observationPacket.facts.length,
+      factTypes: observationPacket.facts.map((fact) => fact.factType),
+    },
+    learningSignals,
+    productIssues: decisions.productIssues,
+    pendingRetests: decisions.pendingRetests,
+    recommendations: decisions.recommendations,
+    confidenceSummary: confidenceSummary(decisions.recommendations),
+    replayTrace: decisions.replayTrace,
+  };
+}
