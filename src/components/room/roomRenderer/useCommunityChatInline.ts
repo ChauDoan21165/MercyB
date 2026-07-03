@@ -3,20 +3,26 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import { shortEmailLabel, shortUserId } from "@/components/room/roomRenderer/helpers";
-import type { SupabaseClient } from "@supabase/supabase-js";
+import type { SupabaseClient, User } from "@supabase/supabase-js";
+
+type ChatRowId = string | number;
 
 type ChatRow = {
-  id: any;
+  id: ChatRowId;
   room_id?: string;
   user_id?: string;
   message?: string;
   created_at?: string;
 };
 
+function errorMessage(error: unknown): string {
+  return error instanceof Error ? error.message : String(error);
+}
+
 export function useCommunityChatInline(args: {
   supabase: SupabaseClient;
   roomId: string;
-  authUser: any | null;
+  authUser: User | null;
   limit?: number;
 }) {
   const { supabase, roomId, authUser } = args;
@@ -94,9 +100,9 @@ const captureChatStick = () => {
         setChatLoading(false);
 
         setTimeout(() => scrollToBottomIfSticky(), 0);
-      } catch (e: any) {
+      } catch (e: unknown) {
         setChatRows([]);
-        setChatError(`Load exception: ${e?.message || String(e)}`);
+        setChatError(`Load exception: ${errorMessage(e)}`);
         setChatLoading(false);
       }
     },
@@ -121,14 +127,14 @@ const captureChatStick = () => {
     channel.on(
       "postgres_changes",
       { event: "INSERT", schema: "public", table: "community_messages" },
-      (payload: any) => {
+      (payload) => {
         const row = (payload?.new || null) as ChatRow | null;
         if (!row) return;
         if (String(row.room_id || "") !== canonicalChatRoomId) return;
 
         setChatRows((cur) => {
-          const id = String((row as any)?.id ?? "");
-          if (id && cur.some((r) => String((r as any)?.id ?? "") === id)) return cur;
+          const id = String(row.id ?? "");
+          if (id && cur.some((r) => String(r.id ?? "") === id)) return cur;
           return [...cur, row];
         });
 
@@ -187,11 +193,11 @@ const captureChatStick = () => {
         return;
       }
 
-      const data = res?.data as any;
+      const data = res?.data ? (res.data as ChatRow) : null;
       if (data) {
         setChatRows((cur) => {
           const id = String(data?.id ?? "");
-          if (id && cur.some((r) => String((r as any)?.id ?? "") === id)) return cur;
+          if (id && cur.some((r) => String(r.id ?? "") === id)) return cur;
           return [...cur, data];
         });
       } else {
@@ -203,23 +209,23 @@ const captureChatStick = () => {
 
       stickToBottomRef.current = true;
       setTimeout(() => scrollToBottomIfSticky(), 0);
-    } catch (e: any) {
-      setChatError(`Send exception: ${e?.message || String(e)}`);
+    } catch (e: unknown) {
+      setChatError(`Send exception: ${errorMessage(e)}`);
       setChatSending(false);
     }
   }
 
-  function formatWho(m: any) {
+  function formatWho(m: ChatRow) {
     const isMe = String(m?.user_id || "") === String(authUserIdRef.current || "");
 
     const who = isMe
-      ? shortEmailLabel(String((authUser as any)?.email || "")) || "ME"
+      ? shortEmailLabel(String(authUser?.email || "")) || "ME"
       : shortUserId(String(m?.user_id || "user"));
 
     return who;
   }
 
-  function formatWhen(m: any) {
+  function formatWhen(m: ChatRow) {
     return m?.created_at ? new Date(m.created_at).toLocaleString() : "";
   }
 
