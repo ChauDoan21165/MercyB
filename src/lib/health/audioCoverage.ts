@@ -33,31 +33,44 @@ export interface AudioCoverageReport {
   byTier: TierAudioSummary[];
 }
 
+type AudioCoverageEntry = Record<string, unknown>;
+type AudioCoverageRoom = Record<string, unknown> & {
+  entries?: unknown;
+};
+
+function isRecord(value: unknown): value is Record<string, unknown> {
+  return typeof value === "object" && value !== null;
+}
+
+function nonEmptyString(value: unknown): string | null {
+  return typeof value === "string" && value.trim() ? value : null;
+}
+
 /**
  * Check if an entry has valid audio according to canonical rules
  */
-function hasValidAudio(entry: any): boolean {
+function hasValidAudio(entry: AudioCoverageEntry): boolean {
   // Canonical field
-  if (entry?.audio && typeof entry.audio === "string" && entry.audio.trim()) {
+  if (nonEmptyString(entry.audio)) {
     return true;
   }
 
   // Object format (legacy)
-  if (entry?.audio && typeof entry.audio === "object") {
+  if (isRecord(entry.audio)) {
     const audioObj = entry.audio;
-    if (audioObj.en && typeof audioObj.en === "string" && audioObj.en.trim()) {
+    if (nonEmptyString(audioObj.en)) {
       return true;
     }
-    if (audioObj.vi && typeof audioObj.vi === "string" && audioObj.vi.trim()) {
+    if (nonEmptyString(audioObj.vi)) {
       return true;
     }
   }
 
   // Legacy fallbacks
-  if (entry?.audio_en && typeof entry.audio_en === "string" && entry.audio_en.trim()) {
+  if (nonEmptyString(entry.audio_en)) {
     return true;
   }
-  if (entry?.audioEn && typeof entry.audioEn === "string" && entry.audioEn.trim()) {
+  if (nonEmptyString(entry.audioEn)) {
     return true;
   }
 
@@ -67,21 +80,28 @@ function hasValidAudio(entry: any): boolean {
 /**
  * Get entry identifier for reporting
  */
-function getEntryIdentifier(entry: any, index: number): string {
-  return entry?.slug || entry?.id || entry?.artifact_id || `entry-${index}`;
+function getEntryIdentifier(entry: AudioCoverageEntry, index: number): string {
+  return (
+    nonEmptyString(entry.slug) ||
+    nonEmptyString(entry.id) ||
+    nonEmptyString(entry.artifact_id) ||
+    `entry-${index}`
+  );
 }
 
 /**
  * Analyze audio coverage for a single room
  */
-function analyzeRoom(room: any): RoomAudioCoverage {
-  const entries = Array.isArray(room.entries) ? room.entries : [];
+function analyzeRoom(room: AudioCoverageRoom): RoomAudioCoverage {
+  const entries = Array.isArray(room.entries)
+    ? room.entries.map((entry) => (isRecord(entry) ? entry : {}))
+    : [];
   const totalEntries = entries.length;
 
   const missingAudioSlugs: string[] = [];
   let audioEntries = 0;
 
-  entries.forEach((entry: any, index: number) => {
+  entries.forEach((entry, index) => {
     if (hasValidAudio(entry)) {
       audioEntries++;
     } else {
@@ -92,11 +112,12 @@ function analyzeRoom(room: any): RoomAudioCoverage {
   const coveragePercent =
     totalEntries > 0 ? Math.round((audioEntries / totalEntries) * 100) : 0;
 
-  const tier = normalizeTier(room.tier || "level0");
+  const tier = normalizeTier(nonEmptyString(room.tier) || "level0");
+  const roomId = nonEmptyString(room.id) || "";
 
   return {
-    roomId: room.id,
-    roomTitle: room.title_en || room.id,
+    roomId,
+    roomTitle: nonEmptyString(room.title_en) || roomId,
     tier,
     totalEntries,
     audioEntries,
