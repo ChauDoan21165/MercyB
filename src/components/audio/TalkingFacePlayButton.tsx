@@ -53,6 +53,11 @@ type Props = {
   };
 };
 
+type HostRepeatPlayDetail = {
+  srcKey?: string;
+  audioUrl?: string;
+};
+
 export default function TalkingFacePlayButton({
   src, label, ariaLabel, preload = "metadata", className, fullWidthBar, hostContext,
 }: Props) {
@@ -119,9 +124,10 @@ export default function TalkingFacePlayButton({
   };
 
   useEffect(() => {
-    function onHostRepeatPlay(e: any) {
+    function onHostRepeatPlay(e: Event) {
       try {
-        const key = e?.detail?.srcKey ?? e?.detail?.audioUrl ?? null;
+        const { detail } = e as CustomEvent<HostRepeatPlayDetail>;
+        const key = detail?.srcKey ?? detail?.audioUrl ?? null;
         if (!key || !safeSrc || String(key) !== safeSrc) return;
         const a = audioRef.current;
         if (!a) return;
@@ -130,8 +136,8 @@ export default function TalkingFacePlayButton({
       } catch {}
     }
     if (typeof window === "undefined") return;
-    window.addEventListener("mb:host-repeat-play", onHostRepeatPlay as any);
-    return () => window.removeEventListener("mb:host-repeat-play", onHostRepeatPlay as any);
+    window.addEventListener("mb:host-repeat-play", onHostRepeatPlay);
+    return () => window.removeEventListener("mb:host-repeat-play", onHostRepeatPlay);
   }, [safeSrc]);
 
   useEffect(() => {
