@@ -41,8 +41,14 @@ interface FixSuggestion {
   fix: string;
 }
 
+type JsonRecord = Record<string, unknown>;
+
+function isRecord(value: unknown): value is JsonRecord {
+  return value !== null && typeof value === "object" && !Array.isArray(value);
+}
+
 // Utility
-function loadJSON(filePath: string) {
+function loadJSON(filePath: string): unknown | null {
   try {
     return JSON.parse(fs.readFileSync(filePath, "utf-8"));
   } catch (err) {
@@ -64,9 +70,12 @@ async function auditSafeShield() {
   const suggestions: FixSuggestion[] = [];
 
   // Load registry.json
-  let registry: any[] = [];
+  let registry: JsonRecord[] = [];
   try {
-    registry = JSON.parse(fs.readFileSync(REGISTRY_PATH, "utf-8"));
+    const parsedRegistry: unknown = JSON.parse(fs.readFileSync(REGISTRY_PATH, "utf-8"));
+    registry = Array.isArray(parsedRegistry)
+      ? parsedRegistry.filter(isRecord)
+      : [];
   } catch {
     console.log("❌ Cannot load registry.json");
   }
@@ -79,9 +88,9 @@ async function auditSafeShield() {
 
   for (const file of files) {
     const fullPath = path.join(ROOT, file);
-    const data = loadJSON(fullPath);
+    const parsed = loadJSON(fullPath);
 
-    if (!data) {
+    if (!isRecord(parsed)) {
       suggestions.push({
         file,
         type: "invalid_json",
@@ -89,6 +98,8 @@ async function auditSafeShield() {
       });
       continue;
     }
+
+    const data = parsed;
 
     // ---- CHECK: required fields -----------------------------------
     if (!data.id) {
@@ -107,7 +118,8 @@ async function auditSafeShield() {
       });
     }
 
-    if (!data.title?.en || !data.title?.vi) {
+    const title = isRecord(data.title) ? data.title : {};
+    if (!title.en || !title.vi) {
       suggestions.push({
         file,
         type: "missing_title",
@@ -125,7 +137,9 @@ async function auditSafeShield() {
     }
 
     // ---- CHECK: entry structure -----------------------------------
-    data.entries.forEach((entry: any, idx: number) => {
+    data.entries.forEach((entryValue, idx: number) => {
+      const entry = isRecord(entryValue) ? entryValue : {};
+
       if (!entry.slug) {
         suggestions.push({
           file,
@@ -158,7 +172,7 @@ async function auditSafeShield() {
 
     // ---- CHECK: registry.json sync --------------------------------
     const id = data.id || file.replace(".json", "");
-    const inRegistry = registry.find((x: any) => x.id === id);
+    const inRegistry = registry.find((x) => x.id === id);
 
     if (!inRegistry) {
       suggestions.push({
