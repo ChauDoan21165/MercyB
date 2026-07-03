@@ -1,12 +1,40 @@
 import { describe, expect, it } from 'vitest';
 import { buildResponsePlan } from '../responsePlanner';
+import type { LearnerState } from '../learnerState';
+
+type PlannerTestLearnerState = LearnerState &
+  Partial<{
+    directnessRequired: boolean;
+    emotion: 'frustrated';
+    needsConceptReview: boolean;
+    playful: boolean;
+    toneSofteningRequested: boolean;
+  }>;
+
+function makeLearnerState(
+  overrides: Partial<PlannerTestLearnerState> = {}
+): PlannerTestLearnerState {
+  return {
+    confidence: 'medium',
+    clarity: 'clear',
+    momentum: 'steady',
+    affect: 'neutral',
+    ...overrides,
+  };
+}
+
+function makeSparseLearnerState(
+  overrides: Partial<PlannerTestLearnerState> = {}
+): PlannerTestLearnerState {
+  return overrides as PlannerTestLearnerState;
+}
 
 describe('buildResponsePlan', () => {
   it('uses warm, non-humorous support for confused learners', () => {
     const plan = buildResponsePlan({
-      learnerState: {
+      learnerState: makeLearnerState({
         clarity: 'lost',
-      } as any,
+      }),
     });
 
     expect(plan.teachingMode).toBe('correct');
@@ -21,9 +49,9 @@ describe('buildResponsePlan', () => {
 
   it('uses warm, non-humorous support for frustrated learners', () => {
     const plan = buildResponsePlan({
-      learnerState: {
+      learnerState: makeLearnerState({
         emotion: 'frustrated',
-      } as any,
+      }),
     });
 
     expect(plan.teachingMode).toBe('correct');
@@ -38,9 +66,9 @@ describe('buildResponsePlan', () => {
 
   it('switches to review when concept review is required', () => {
     const plan = buildResponsePlan({
-      learnerState: {
+      learnerState: makeLearnerState({
         needsConceptReview: true,
-      } as any,
+      }),
     });
 
     expect(plan.teachingMode).toBe('review');
@@ -54,7 +82,7 @@ describe('buildResponsePlan', () => {
 
   it('uses recap mode when explicitly requested', () => {
     const plan = buildResponsePlan({
-      learnerState: {} as any,
+      learnerState: makeLearnerState(),
       wantsRecap: true,
     });
 
@@ -69,7 +97,7 @@ describe('buildResponsePlan', () => {
 
   it('uses drill mode when explicitly requested', () => {
     const plan = buildResponsePlan({
-      learnerState: {} as any,
+      learnerState: makeLearnerState(),
       wantsDrill: true,
     });
 
@@ -85,7 +113,7 @@ describe('buildResponsePlan', () => {
 
   it('moves into challenge mode when challenge is requested', () => {
     const plan = buildResponsePlan({
-      learnerState: {} as any,
+      learnerState: makeLearnerState(),
       wantsChallenge: true,
     });
 
@@ -100,10 +128,10 @@ describe('buildResponsePlan', () => {
 
   it('moves into challenge mode when learner momentum is flowing', () => {
     const plan = buildResponsePlan({
-      learnerState: {
+      learnerState: makeLearnerState({
         momentum: 'flowing',
         confidence: 'high',
-      } as any,
+      }),
     });
 
     expect(plan.teachingMode).toBe('challenge');
@@ -117,7 +145,7 @@ describe('buildResponsePlan', () => {
 
   it('uses contrastive correction for repeated mistakes', () => {
     const plan = buildResponsePlan({
-      learnerState: {} as any,
+      learnerState: makeLearnerState(),
       isCorrectiveTurn: true,
       repeatedMistake: true,
     });
@@ -134,9 +162,9 @@ describe('buildResponsePlan', () => {
 
   it('uses direct correction when directness is required', () => {
     const plan = buildResponsePlan({
-      learnerState: {
+      learnerState: makeLearnerState({
         directnessRequired: true,
-      } as any,
+      }),
       isCorrectiveTurn: true,
     });
 
@@ -151,9 +179,9 @@ describe('buildResponsePlan', () => {
 
   it('suppresses humor when suppressHumor is true even for playful learners', () => {
     const plan = buildResponsePlan({
-      learnerState: {
+      learnerState: makeLearnerState({
         playful: true,
-      } as any,
+      }),
       suppressHumor: true,
     });
 
@@ -165,10 +193,10 @@ describe('buildResponsePlan', () => {
 
   it('suppresses humor for playful learners who are also confused', () => {
     const plan = buildResponsePlan({
-      learnerState: {
+      learnerState: makeLearnerState({
         playful: true,
         clarity: 'lost',
-      } as any,
+      }),
     });
 
     expect(plan.teachingMode).toBe('correct');
@@ -179,9 +207,9 @@ describe('buildResponsePlan', () => {
 
   it('softens explanation mode for low-confidence learners', () => {
     const plan = buildResponsePlan({
-      learnerState: {
+      learnerState: makeLearnerState({
         confidence: 'low',
-      } as any,
+      }),
       wantsExplanation: true,
     });
 
@@ -195,7 +223,7 @@ describe('buildResponsePlan', () => {
 
   it('defaults to encouragement for neutral learners', () => {
     const plan = buildResponsePlan({
-      learnerState: {} as any,
+      learnerState: makeSparseLearnerState(),
     });
 
     expect(plan.teachingMode).toBe('encourage');
@@ -209,9 +237,9 @@ describe('buildResponsePlan', () => {
 
   it('keeps playful encouragement when learner is stable and playful', () => {
     const plan = buildResponsePlan({
-      learnerState: {
+      learnerState: makeLearnerState({
         playful: true,
-      } as any,
+      }),
     });
 
     expect(plan.teachingMode).toBe('encourage');
@@ -225,9 +253,9 @@ describe('buildResponsePlan', () => {
 
   it('softens playful correction when tone softening is requested', () => {
     const plan = buildResponsePlan({
-      learnerState: {
+      learnerState: makeLearnerState({
         toneSofteningRequested: true,
-      } as any,
+      }),
       isCorrectiveTurn: true,
       repeatedMistake: true,
     });
@@ -242,7 +270,7 @@ describe('buildResponsePlan', () => {
 
   it('uses explanation mode when explicitly requested', () => {
     const plan = buildResponsePlan({
-      learnerState: {} as any,
+      learnerState: makeLearnerState(),
       wantsExplanation: true,
     });
 
@@ -257,7 +285,7 @@ describe('buildResponsePlan', () => {
 
   it('uses gentle correction for a normal corrective turn', () => {
     const plan = buildResponsePlan({
-      learnerState: {} as any,
+      learnerState: makeLearnerState(),
       isCorrectiveTurn: true,
     });
 
