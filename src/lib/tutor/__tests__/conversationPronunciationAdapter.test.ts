@@ -33,6 +33,19 @@ describe("conversationPronunciationAdapter", () => {
     expect(hasRealLearnerConversationAudio({ audioBlob: undefined, audioSource: "text_only" })).toBe(false);
   });
 
+  it("does not throw for malformed Blob-like audio values", () => {
+    const throwsOnSize = Object.defineProperty({}, "size", {
+      get() {
+        throw new Error("bad size");
+      },
+    }) as Blob;
+
+    expect(hasRealLearnerConversationAudio({ audioBlob: { size: "large" } as unknown as Blob, audioSource: "learner_recording" })).toBe(
+      false,
+    );
+    expect(hasRealLearnerConversationAudio({ audioBlob: throwsOnSize, audioSource: "learner_recording" })).toBe(false);
+  });
+
   it("does not call C1 scoring for null, empty, text-only, or model audio", async () => {
     const scoreImpl = vi.fn(async () => scoredResult());
     const base = { target: "I think so", step7Enabled: true, scoreImpl };
@@ -128,6 +141,26 @@ describe("conversationPronunciationAdapter", () => {
     });
   });
 
+  it("does not ask retry when scoring is disabled and cost cap is absent", async () => {
+    const scoreImpl = vi.fn(async () => scoredResult());
+
+    const result = await scoreLearnerConversationPronunciation({
+      audioBlob: blobOfSize(2000),
+      audioSource: "learner_recording",
+      target: "I think so",
+      step7Enabled: false,
+      scoreImpl,
+    });
+
+    expect(scoreImpl).not.toHaveBeenCalled();
+    expect(result).toMatchObject({
+      quality: "scoring_unavailable",
+      overallScore: null,
+      shouldAskRetry: false,
+      costCap: null,
+    });
+  });
+
   it("normalizes negative cost-cap metadata before returning or scoring", async () => {
     const scoreImpl = vi.fn(async () => scoredResult({ costCap: { remaining: -2, limit: -1 } }));
 
@@ -142,6 +175,21 @@ describe("conversationPronunciationAdapter", () => {
 
     expect(scoreImpl).toHaveBeenCalledWith(expect.objectContaining({ costCap: { remaining: 0, limit: 0 } }));
     expect(result.costCap).toEqual({ remaining: 0, limit: 0 });
+  });
+
+  it("normalizes invalid timeout values before calling C1 scoring", async () => {
+    const scoreImpl = vi.fn(async () => scoredResult());
+
+    await scoreLearnerConversationPronunciation({
+      audioBlob: blobOfSize(2000),
+      audioSource: "learner_recording",
+      target: "I think so",
+      step7Enabled: true,
+      timeoutMs: -1,
+      scoreImpl,
+    });
+
+    expect(scoreImpl).toHaveBeenCalledWith(expect.objectContaining({ timeoutMs: undefined }));
   });
 
   it("returns a retry-safe result when C1 resolves malformed scoring data", async () => {
@@ -163,6 +211,20 @@ describe("conversationPronunciationAdapter", () => {
       shouldAskRetry: true,
       costCap: { remaining: 2, limit: 3 },
     });
+  });
+
+  it("lets the lower scorer own missing JWT fallback behavior", async () => {
+    const scoreImpl = vi.fn(async () => scoredResult());
+
+    await scoreLearnerConversationPronunciation({
+      audioBlob: blobOfSize(2000),
+      audioSource: "learner_recording",
+      target: "I think so",
+      step7Enabled: true,
+      scoreImpl,
+    });
+
+    expect(scoreImpl).toHaveBeenCalledWith(expect.objectContaining({ userJwt: undefined }));
   });
 
   it("delegates real learner audio to C1 with the caller's gate and context", async () => {
@@ -217,5 +279,28 @@ describe("conversationPronunciationAdapter", () => {
       costCap: { remaining: 1, limit: 3 },
     });
     expect(scoreImpl).toHaveBeenCalledTimes(1);
+  });
+
+  it("preserves null cost cap when C1 scoring throws", async () => {
+    const scoreImpl = vi.fn(async () => {
+      throw new Error("scorer unavailable");
+    });
+
+    await expect(
+      scoreLearnerConversationPronunciation({
+        audioBlob: blobOfSize(2000),
+        audioSource: "learner_recording",
+        target: "I think so",
+        transcript: "I think so",
+        step7Enabled: true,
+        scoreImpl,
+      }),
+    ).resolves.toMatchObject({
+      quality: "scoring_unavailable",
+      overallScore: null,
+      confidence: "low",
+      shouldAskRetry: true,
+      costCap: null,
+    });
   });
 });

@@ -46,6 +46,10 @@ function normalizeConversationCostCap(
   return { remaining, limit };
 }
 
+function normalizeTimeoutMs(timeoutMs: number | undefined): number | undefined {
+  return typeof timeoutMs === "number" && Number.isFinite(timeoutMs) && timeoutMs > 0 ? timeoutMs : undefined;
+}
+
 function isConversationPronunciationResult(value: unknown): value is ConversationPronunciationResult {
   if (!value || typeof value !== "object") return false;
   const result = value as Partial<ConversationPronunciationResult>;
@@ -67,7 +71,12 @@ export function hasRealLearnerConversationAudio(input: {
   audioBlob?: Blob | null;
   audioSource: ConversationAudioSource;
 }): boolean {
-  return input.audioSource === "learner_recording" && Boolean(input.audioBlob && input.audioBlob.size > 0);
+  if (input.audioSource !== "learner_recording" || !input.audioBlob) return false;
+  try {
+    return typeof input.audioBlob.size === "number" && Number.isFinite(input.audioBlob.size) && input.audioBlob.size > 0;
+  } catch {
+    return false;
+  }
 }
 
 export async function scoreLearnerConversationPronunciation(
@@ -98,7 +107,7 @@ export async function scoreLearnerConversationPronunciation(
       accent: input.accent,
       supabaseUrl: input.supabaseUrl,
       fetchImpl: input.fetchImpl,
-      timeoutMs: input.timeoutMs,
+      timeoutMs: normalizeTimeoutMs(input.timeoutMs),
       costCap,
     });
     return isConversationPronunciationResult(result)
