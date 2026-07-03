@@ -36,8 +36,8 @@ type JsonRoom = {
   content_audio?: string;
   tags?: string[] | null;
   is_active?: boolean;
-  entries?: any[];
-  [key: string]: any;
+  entries?: Array<JsonEntry | string>;
+  [key: string]: unknown;
 };
 
 type JsonEntry = {
@@ -48,8 +48,8 @@ type JsonEntry = {
   audio?: string | null;
   tags?: string[] | null;
   severity?: number;
-  metadata?: any;
-  [key: string]: any;
+  metadata?: unknown;
+  [key: string]: unknown;
 };
 
 const SUPABASE_URL = process.env.SUPABASE_URL;
@@ -69,7 +69,15 @@ const supabase: SupabaseClient = createClient(SUPABASE_URL, SERVICE_ROLE_KEY, {
 
 // --- helpers ------------------------------------------------------------
 
-function loadJsonFile(path: string): any {
+function isRecord(value: unknown): value is Record<string, unknown> {
+  return value !== null && typeof value === "object" && !Array.isArray(value);
+}
+
+function getErrorMessage(error: unknown): string {
+  return error instanceof Error ? error.message : String(error);
+}
+
+function loadJsonFile(path: string): unknown {
   const raw = readFileSync(path, "utf8");
   return JSON.parse(raw);
 }
@@ -98,7 +106,7 @@ async function upsertRoom(room: JsonRoom, fileName: string) {
 
   const slug = room.slug ?? safeSlugify(baseId);
 
-  const tags = (room as any).tags ?? null;
+  const tags = room.tags ?? null;
   const is_active = typeof room.is_active === "boolean" ? room.is_active : true;
 
   const row = {
@@ -125,7 +133,7 @@ async function upsertRoom(room: JsonRoom, fileName: string) {
   return baseId;
 }
 
-async function replaceRoomEntries(roomId: string, entries: JsonEntry[] = []) {
+async function replaceRoomEntries(roomId: string, entries: Array<JsonEntry | string> = []) {
   // Clear old entries for this room
   const { error: delError } = await supabase.from("room_entries").delete().eq("room_id", roomId);
 
@@ -136,17 +144,18 @@ async function replaceRoomEntries(roomId: string, entries: JsonEntry[] = []) {
   if (!entries.length) return;
 
   const rows = entries.map((entry, index) => {
-    const slugBase = entry.slug || `entry-${index + 1}`;
+    const entryRecord = typeof entry === "string" ? {} : entry;
+    const slugBase = entryRecord.slug || `entry-${index + 1}`;
     const slug = safeSlugify(String(slugBase));
 
     const copy_en =
-      entry.copy?.en ??
-      entry.copy_en ??
-      (typeof entry === "string" ? (entry as any) : "");
+      entryRecord.copy?.en ??
+      entryRecord.copy_en ??
+      (typeof entry === "string" ? entry : "");
     const copy_vi =
-      entry.copy?.vi ??
-      entry.copy_vi ??
-      (typeof entry === "string" ? (entry as any) : "");
+      entryRecord.copy?.vi ??
+      entryRecord.copy_vi ??
+      (typeof entry === "string" ? entry : "");
 
     return {
       room_id: roomId,
@@ -154,10 +163,10 @@ async function replaceRoomEntries(roomId: string, entries: JsonEntry[] = []) {
       slug,
       copy_en,
       copy_vi,
-      audio: entry.audio ?? null,
-      tags: entry.tags ?? null,
-      severity: entry.severity ?? null,
-      metadata: entry.metadata ?? null,
+      audio: entryRecord.audio ?? null,
+      tags: entryRecord.tags ?? null,
+      severity: entryRecord.severity ?? null,
+      metadata: entryRecord.metadata ?? null,
     };
   });
 
@@ -196,7 +205,7 @@ async function main() {
       const json = loadJsonFile(filePath);
 
       // Skip non-room files (registries, manifests, etc.)
-      if (!json || typeof json !== "object") {
+      if (!isRecord(json)) {
         console.log(`[migrate] Skipping non-object: ${file}`);
         continue;
       }
@@ -208,13 +217,14 @@ async function main() {
       }
 
       const roomId = await upsertRoom(json, file);
-      await replaceRoomEntries(roomId, json.entries || []);
+      const entries = Array.isArray(json.entries) ? json.entries : [];
+      await replaceRoomEntries(roomId, entries);
 
       successCount++;
-      console.log(`[migrate] ✓ ${file} → ${roomId} (${(json.entries || []).length} entries)`);
-    } catch (err: any) {
+      console.log(`[migrate] ✓ ${file} → ${roomId} (${entries.length} entries)`);
+    } catch (err: unknown) {
       errorCount++;
-      const msg = `${file}: ${err.message}`;
+      const msg = `${file}: ${getErrorMessage(err)}`;
       errors.push(msg);
       console.error(`[migrate] ✗ ${msg}`);
     }
