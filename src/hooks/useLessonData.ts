@@ -14,8 +14,7 @@
 import { useEffect, useState } from "react";
 import { supabase } from "@/lib/supabaseClient";
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export type LessonContent = Record<string, any>;
+export type LessonContent = Record<string, unknown>;
 
 type CacheKey = string;
 
