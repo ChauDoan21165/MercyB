@@ -472,6 +472,18 @@ describe("speakFollowups", () => {
           forbidden: "Why did you choose the people?",
         },
         {
+          learnerText: "I need the stuff",
+          forbidden: "Why did you choose the stuff?",
+        },
+        {
+          learnerText: "I saw the everyone",
+          forbidden: "Why did you choose the everyone?",
+        },
+        {
+          learnerText: "I need the home",
+          forbidden: "Why did you choose the home?",
+        },
+        {
           learnerText:
             "don't lie your sunlight because you know I like summer in general because I can swim I can play Spot I can wear shorts and biking around",
           forbidden: "Why did you choose the general?",
@@ -499,6 +511,7 @@ describe("speakFollowups", () => {
         "I like summer because it is sunny.",
         "I like summer because I can swim and wear shorts.",
         "I want to go swimming in summer.",
+        "I need help with my stuff at home.",
         "I like the sunlight in the morning.",
       ];
 

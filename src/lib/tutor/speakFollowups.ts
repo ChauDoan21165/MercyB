@@ -211,7 +211,7 @@ const CLARITY_HAT_CONFUSION_CONTEXT = new Set([
 
 const CLARITY_PROPER_PLACE_WORDS = new Set([
   "canada", "vietnam", "america", "usa", "us", "california", "toronto", "vancouver",
-  "hanoi", "saigon",
+  "hanoi", "saigon", "home",
 ]);
 
 const CLARITY_INVALID_ARTICLE_TARGETS = new Set([
@@ -337,6 +337,15 @@ export function assessSpeakTranscriptClarity(transcript: string): SpeakTranscrip
 
     if (token === "the" && CLARITY_INVALID_ARTICLE_TARGETS.has(tokens[i + 1] ?? "")) {
       return { clear: false, reason: `article_before_invalid_target:${tokens[i + 1]}` };
+    }
+
+    if (
+      token === "the" &&
+      (CLARITY_WEAK_NOUN_TARGETS.has(tokens[i + 1] ?? "") ||
+        CLARITY_WEAK_ABSTRACT_TARGETS.has(tokens[i + 1] ?? "")) &&
+      !(tokens[i + 1] === "way" && tokens[i + 2] === "to")
+    ) {
+      return { clear: false, reason: `article_before_weak_target:${tokens[i + 1]}` };
     }
 
     if (
