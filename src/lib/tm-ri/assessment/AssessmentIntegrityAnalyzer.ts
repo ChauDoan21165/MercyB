@@ -11,8 +11,16 @@ export class AssessmentIntegrityAnalyzer {
     const highConfidenceResult = events.some(
       (event) => event.type === "assessment_result_shown" && (event.confidence ?? 0) >= 80,
     );
+    const resultShownDuringDegradation = events.some(
+      (event) =>
+        event.type === "assessment_result_shown" &&
+        event.scoreShown === true &&
+        (hasAudioFailure || hasMicFailure || textFallbackForSpeaking),
+    );
     const scoringDuringDegradation = events.some(
-      (event) => event.type === "assessment_scored" && (hasAudioFailure || hasMicFailure || textFallbackForSpeaking),
+      (event) =>
+        event.type === "assessment_scored" &&
+        (hasAudioFailure || hasMicFailure || textFallbackForSpeaking),
     );
 
     const findings: TmRiFinding[] = [];
@@ -31,7 +39,7 @@ export class AssessmentIntegrityAnalyzer {
       );
     }
 
-    if (scoringDuringDegradation) {
+    if (scoringDuringDegradation || resultShownDuringDegradation) {
       findings.push(
         makeFinding({
           code: "invalid_scoring_risk",

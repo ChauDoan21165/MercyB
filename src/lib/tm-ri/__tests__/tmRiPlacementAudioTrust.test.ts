@@ -101,6 +101,34 @@ describe("TM-RI placement audio and trust intelligence", () => {
     expect(analysis.honesty.recommendations).toContain("retry_required");
   });
 
+  it("withholds CEFR when a listening result is shown after degraded audio even at lower confidence", () => {
+    const analysis = analyze([
+      {
+        id: "audio-failed",
+        type: "audio_unavailable",
+        timestampMs: 100,
+        modality: "listening",
+        assessmentSkill: "listening",
+        inputMode: "none",
+      },
+      {
+        id: "cefr-result",
+        type: "assessment_result_shown",
+        timestampMs: 240,
+        modality: "listening",
+        assessmentSkill: "listening",
+        scoreShown: true,
+        confidence: 55,
+      },
+    ]);
+
+    expect(analysis.assessmentIntegrity.invalidScoringRisk).toBe(true);
+    expect(analysis.observationPacket.findings.map((finding) => finding.code)).toContain("invalid_scoring_risk");
+    expect(analysis.honesty.recommendations).toContain("withhold_cefr");
+    expect(analysis.honesty.recommendations).toContain("explain_degraded");
+    expect(analysis.honesty.resultConfidence).toBe("withheld");
+  });
+
   it("detects internal debug or stub wording as a product trust risk", () => {
     const analysis = analyze([
       {
