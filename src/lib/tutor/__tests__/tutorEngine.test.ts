@@ -42,6 +42,40 @@ describe("tutorEngine", () => {
     expect(validateTutorTurn(turn)).toBe(true);
   });
 
+  it("conversation turn strips preamble labels before keeping one next question", () => {
+    const { turn } = buildConversationTurn({
+      id: "turn-preamble",
+      targetLanguage: "en",
+      explainLanguage: "vi",
+      userText: "I cooked dinner.",
+      correctedText: "I cooked dinner.",
+      explanation: "Short explanation.",
+      naturalReply: "Nice.",
+      nextQuestion: "Next question: What did you cook? Did your family like it?",
+      createdAt: "2026-05-24T00:00:00.000Z",
+    });
+
+    expect(turn.nextQuestion).toBe("What did you cook?");
+    expect(getSpeakableText(turn)).toBe("Nice. What did you cook?");
+  });
+
+  it("conversation turn without a question mark is invalid", () => {
+    const { turn } = buildConversationTurn({
+      id: "turn-no-question",
+      targetLanguage: "en",
+      explainLanguage: "vi",
+      userText: "I cooked dinner.",
+      correctedText: "I cooked dinner.",
+      explanation: "Short explanation.",
+      naturalReply: "Nice.",
+      nextQuestion: "Tell me about dinner",
+      createdAt: "2026-05-24T00:00:00.000Z",
+    });
+
+    expect(validateTutorTurn(turn)).toBe(false);
+    expect(getSpeakableText(turn)).toBe("");
+  });
+
   it("speakable text excludes incorrect user text", () => {
     const { turn } = buildConversationTurn({
       id: "turn-3",
@@ -111,6 +145,54 @@ describe("tutorEngine", () => {
 
     expect(validateTutorTurn(turn)).toBe(false);
     expect(getSpeakableText(turn)).toBe("");
+  });
+
+  it("truncates long explanations without replacement characters or trailing combining marks", () => {
+    const { turn } = buildCorrectionTurn({
+      id: "turn-long-explanation",
+      targetLanguage: "en",
+      explainLanguage: "vi",
+      userText: "I buy a hat yesterday.",
+      correctedText: "I bought a hat yesterday.",
+      explanation: `${"a".repeat(238)}e\u0301 more explanation`,
+      createdAt: "2026-05-24T00:00:00.000Z",
+    });
+
+    expect(turn.explanation).toHaveLength(240);
+    expect(turn.explanation).not.toContain("\uFFFD");
+    expect(/\p{M}\.\.\.$/u.test(turn.explanation)).toBe(false);
+  });
+
+  it("falls back to a valid ISO createdAt when input date is invalid", () => {
+    const { turn } = buildCorrectionTurn({
+      id: "turn-invalid-date",
+      targetLanguage: "en",
+      explainLanguage: "vi",
+      userText: "I buy a hat yesterday.",
+      correctedText: "I bought a hat yesterday.",
+      explanation: "Use past tense with yesterday.",
+      createdAt: "not-a-date",
+    });
+
+    expect(Number.isNaN(new Date(turn.createdAt).getTime())).toBe(false);
+    expect(validateTutorTurn(turn)).toBe(true);
+  });
+
+  it("generates a mode-prefixed id when caller id is empty", () => {
+    const { turn } = buildConversationTurn({
+      id: "   ",
+      targetLanguage: "en",
+      explainLanguage: "vi",
+      userText: "I cooked dinner.",
+      correctedText: "I cooked dinner.",
+      explanation: "Short explanation.",
+      naturalReply: "Nice.",
+      nextQuestion: "What did you cook?",
+      createdAt: "2026-05-24T00:00:00.000Z",
+    });
+
+    expect(turn.id).toMatch(/^conversation-/);
+    expect(validateTutorTurn(turn)).toBe(true);
   });
 
   it("sanitizes UI labels, markdown, control characters, and repeated speech fragments", () => {

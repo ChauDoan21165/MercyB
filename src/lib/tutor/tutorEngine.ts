@@ -57,7 +57,11 @@ function createIsoDate(value: string | undefined): string {
 function shortenExplanation(value: string | undefined): string {
   const normalized = normalizeText(value);
   if (normalized.length <= MAX_EXPLANATION_LENGTH) return normalized;
-  return `${normalized.slice(0, MAX_EXPLANATION_LENGTH - 3).trim()}...`;
+  const truncated = Array.from(normalized).slice(0, MAX_EXPLANATION_LENGTH - 3);
+  while (truncated.length > 0 && /\p{M}/u.test(truncated[truncated.length - 1])) {
+    truncated.pop();
+  }
+  return `${truncated.join("").trim()}...`;
 }
 
 function getQuestionCount(value: string | undefined): number {
@@ -65,7 +69,7 @@ function getQuestionCount(value: string | undefined): number {
 }
 
 function keepOneQuestion(value: string | undefined): string {
-  const normalized = normalizeText(value);
+  const normalized = sanitizeSpeakableText(normalizeText(value));
   const firstQuestionEnd = normalized.search(/[?？]/);
   if (firstQuestionEnd === -1) return normalized;
   return normalized.slice(0, firstQuestionEnd + 1).trim();
@@ -74,7 +78,7 @@ function keepOneQuestion(value: string | undefined): string {
 function hasOnlyOneNextQuestion(turn: TutorTurn): boolean {
   if (turn.mode !== "conversation") return true;
   const question = normalizeText(turn.nextQuestion);
-  return Boolean(question) && getQuestionCount(question) <= 1;
+  return Boolean(question) && getQuestionCount(question) === 1;
 }
 
 function buildSpeakableText(parts: Array<string | undefined>): string {
