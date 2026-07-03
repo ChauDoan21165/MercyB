@@ -11,10 +11,34 @@ import {
 // ─────────────────────────────────────────────────────────────────────────
 
 type Handlers = {
-  onresult: ((ev: any) => void) | null;
-  onerror: ((ev: any) => void) | null;
+  onresult: ((ev: FakeSpeechRecognitionEvent) => void) | null;
+  onerror: ((ev: FakeSpeechRecognitionErrorEvent) => void) | null;
   onend: (() => void) | null;
   onaudiostart: (() => void) | null;
+};
+
+type FakeSpeechRecognitionAlternative = {
+  transcript: string;
+  confidence: number;
+};
+
+type FakeSpeechRecognitionResult = {
+  isFinal: boolean;
+  length: number;
+  [index: number]: FakeSpeechRecognitionAlternative;
+};
+
+type FakeSpeechRecognitionEvent = {
+  resultIndex: number;
+  results: {
+    length: number;
+    [index: number]: FakeSpeechRecognitionResult;
+  };
+};
+
+type FakeSpeechRecognitionErrorEvent = {
+  error: string;
+  message: string;
 };
 
 class FakeRecognition implements Handlers {
