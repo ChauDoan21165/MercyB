@@ -88,6 +88,67 @@ export const runSpeakingTextFallbackReplay = () => {
   return new RuntimeReplayEngine().analyze(runtimeEvents, []);
 };
 
+export const runMixedPlacementAudioFailureReplay = () => {
+  const runtimeEvents: readonly TmRiRuntimeEvent[] = [
+    {
+      id: "mixed-listening-audio",
+      type: "media_loaded",
+      timestampMs: 100,
+      modality: "listening",
+      assessmentSkill: "listening",
+      playable: false,
+      durationSeconds: 0,
+      inputMode: "none",
+    },
+    {
+      id: "mixed-placement-result",
+      type: "assessment_result_shown",
+      timestampMs: 260,
+      modality: "mixed",
+      assessmentSkill: "mixed",
+      scoreShown: true,
+      confidence: 84,
+    },
+  ];
+
+  const learnerSignals: readonly TmRiLearnerSignal[] = [
+    {
+      id: "learner-completed-mixed",
+      timestampMs: 280,
+      action: "complete",
+      text: "I finished the placement, but one audio question did not play.",
+      confidence: 45,
+    },
+  ];
+
+  return new RuntimeReplayEngine().analyze(runtimeEvents, learnerSignals);
+};
+
+export const expectMixedPlacementAudioFailureReplay = (analysis: TmRiReplayAnalysis) => {
+  const findingCodes = analysis.observationPacket.findings.map((finding) => finding.code);
+  const graphEdges = analysis.knowledgeGraph.edges.map((edge) => `${edge.from}->${edge.to}:${edge.relation}`);
+
+  expect(analysis.assessmentIntegrity.degradedEvidence).toBe(true);
+  expect(analysis.assessmentIntegrity.invalidScoringRisk).toBe(true);
+  expect(analysis.assessmentIntegrity.confidenceOverclaimRisk).toBe(true);
+  expect(analysis.assessmentIntegrity.listeningNotGradableAsWrong).toBe(true);
+  expect(analysis.honesty.resultConfidence).toBe("withheld");
+  expect(analysis.honesty.recommendations).toEqual(
+    expect.arrayContaining(["withhold_cefr", "explain_degraded", "retry_required"]),
+  );
+  expect(findingCodes).toEqual(
+    expect.arrayContaining(["audio_unavailable", "unplayable_media", "invalid_scoring_risk"]),
+  );
+  expect(analysis.trust.collapsePoint).toBeDefined();
+  expect(analysis.observationPacket.productTrust.collapsed).toBe(true);
+  expect(graphEdges).toEqual(
+    expect.arrayContaining([
+      "observation:audio_unavailable->pedagogy:audio_unavailable:informs",
+      "observation:invalid_scoring_risk->pedagogy:invalid_scoring_risk:informs",
+    ]),
+  );
+};
+
 export const expectSpeakingTextFallbackReplay = (analysis: TmRiReplayAnalysis) => {
   const findingCodes = analysis.observationPacket.findings.map((finding) => finding.code);
   const repairTitles = analysis.repairPlan.items.map((item) => item.title);

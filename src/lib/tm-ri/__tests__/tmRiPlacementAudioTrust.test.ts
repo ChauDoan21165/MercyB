@@ -2,8 +2,10 @@ import { describe, expect, it } from "vitest";
 import { RuntimeReplayEngine, type TmRiLearnerSignal, type TmRiRuntimeEvent } from "../index";
 import {
   expectLinhLikeCriticalAudioFailureReplay,
+  expectMixedPlacementAudioFailureReplay,
   expectSpeakingTextFallbackReplay,
   runLinhLikeAudioFailureReplay,
+  runMixedPlacementAudioFailureReplay,
   runSpeakingTextFallbackReplay,
 } from "./replaySample";
 
@@ -56,6 +58,10 @@ describe("TM-RI placement audio and trust intelligence", () => {
 
   it("treats text entry after mic failure as degraded speaking evidence, not spoken evidence", () => {
     expectSpeakingTextFallbackReplay(runSpeakingTextFallbackReplay());
+  });
+
+  it("withholds mixed placement CEFR when listening audio evidence failed", () => {
+    expectMixedPlacementAudioFailureReplay(runMixedPlacementAudioFailureReplay());
   });
 
   it("does not mark unrelated modality scoring invalid after a speaking capture failure", () => {

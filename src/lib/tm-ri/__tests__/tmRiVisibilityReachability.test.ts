@@ -8,8 +8,10 @@ import {
 } from "../index";
 import {
   expectLinhLikeCriticalAudioFailureReplay,
+  expectMixedPlacementAudioFailureReplay,
   expectSpeakingTextFallbackReplay,
   runLinhLikeAudioFailureReplay,
+  runMixedPlacementAudioFailureReplay,
   runSpeakingTextFallbackReplay,
 } from "./replaySample";
 
@@ -217,6 +219,18 @@ export function ListeningTaskCard() {
     );
     expect(analysis.knowledgeGraph.nodes.map((node) => node.id)).toContain("pedagogy:speaking_modality_degraded");
     expectSpeakingTextFallbackReplay(analysis);
+  });
+
+  it("replays mixed placement audio failure as observation and graph evidence", () => {
+    const analysis = runMixedPlacementAudioFailureReplay();
+
+    expect(analysis.observationPacket.recommendations).toEqual(
+      expect.arrayContaining(["withhold_cefr", "retry_required"]),
+    );
+    expect(analysis.knowledgeGraph.nodes.map((node) => node.id)).toEqual(
+      expect.arrayContaining(["observation:audio_unavailable", "observation:invalid_scoring_risk"]),
+    );
+    expectMixedPlacementAudioFailureReplay(analysis);
   });
 });
 
