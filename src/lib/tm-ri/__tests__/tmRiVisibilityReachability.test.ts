@@ -107,6 +107,34 @@ root.appendChild(debug);
     expect(trust.points[0]?.score).toBe(75);
   });
 
+  it("treats orchestrator wording in learner UI as reachable runtime trust risk", () => {
+    const source = `
+export function PlacementResultNotice() {
+  return <p>{"The placement orchestrator could not load your audio score."}</p>;
+}
+`;
+
+    const visible = visibility.analyze({
+      source,
+      text: "The placement orchestrator could not load your audio score.",
+      filePath: "src/pages/placement/v3/ResultsPage.tsx",
+    });
+    const reachable = reachability.analyze({
+      source,
+      text: "The placement orchestrator could not load your audio score.",
+      filePath: "src/pages/placement/v3/ResultsPage.tsx",
+    });
+
+    expect(visible.scope).toBe("learner_visible");
+    expect(reachable.surface).toBe("runtime_ui");
+
+    const trust = new ProductTrustAnalyzer().analyze(
+      [trustFinding("The placement orchestrator could not load your audio score.", visible, reachable)],
+      { stages: [] },
+    );
+    expect(trust.points[0]?.score).toBe(75);
+  });
+
   it("classifies ListeningTaskCard unavailable audio copy as learner-visible runtime UI", () => {
     const source = `
 export function ListeningTaskCard() {

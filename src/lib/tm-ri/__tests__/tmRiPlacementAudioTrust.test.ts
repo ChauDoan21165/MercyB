@@ -125,6 +125,20 @@ describe("TM-RI placement audio and trust intelligence", () => {
     expect(analysis.runtimeFindings.map((finding) => finding.code)).toContain("product_trust_risk");
   });
 
+  it("detects learner-visible orchestrator wording as a product trust risk", () => {
+    const analysis = analyze([
+      {
+        id: "copy",
+        type: "internal_text_visible",
+        timestampMs: 100,
+        userFacingText: "The placement orchestrator could not load your audio score.",
+      },
+    ]);
+
+    expect(analysis.runtimeFindings.map((finding) => finding.code)).toContain("internal_text_visible");
+    expect(analysis.runtimeFindings.map((finding) => finding.code)).toContain("product_trust_risk");
+  });
+
   it("builds C2-safe observation packets with psychology and educational impact but no implementation internals", () => {
     const analysis = analyze(
       [

@@ -11,6 +11,7 @@ const internalTerms = [
   "audiourl",
   "mediarecorder",
   "htmlaudioelement",
+  "orchestrator",
 ] as const;
 
 export class RuntimeFailureDetector {
