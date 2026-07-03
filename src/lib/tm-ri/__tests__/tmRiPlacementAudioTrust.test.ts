@@ -58,6 +58,37 @@ describe("TM-RI placement audio and trust intelligence", () => {
     expectSpeakingTextFallbackReplay(runSpeakingTextFallbackReplay());
   });
 
+  it("does not mark unrelated modality scoring invalid after a speaking capture failure", () => {
+    const analysis = analyze([
+      {
+        id: "mic-denied",
+        type: "mic_unavailable",
+        timestampMs: 100,
+        modality: "speaking",
+        assessmentSkill: "speaking",
+      },
+      {
+        id: "reading-score",
+        type: "assessment_result_shown",
+        timestampMs: 200,
+        modality: "reading",
+        assessmentSkill: "reading",
+        scoreShown: true,
+        confidence: 90,
+      },
+    ]);
+
+    expect(analysis.assessmentIntegrity.degradedEvidence).toBe(true);
+    expect(analysis.assessmentIntegrity.speakingModalityDegraded).toBe(true);
+    expect(analysis.assessmentIntegrity.invalidScoringRisk).toBe(false);
+    expect(analysis.assessmentIntegrity.confidenceOverclaimRisk).toBe(false);
+    expect(analysis.honesty.recommendations).toEqual(
+      expect.arrayContaining(["lower_confidence", "explain_degraded"]),
+    );
+    expect(analysis.honesty.recommendations).not.toContain("withhold_cefr");
+    expect(analysis.honesty.resultConfidence).toBe("lowered");
+  });
+
   it("detects 0:00 unplayable audio and does not grade listening as wrong", () => {
     const analysis = analyze([
       {

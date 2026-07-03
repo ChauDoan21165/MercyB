@@ -8,23 +8,23 @@ export class AssessmentIntegrityAnalyzer {
     const textFallbackForSpeaking = events.some(
       (event) => event.assessmentSkill === "speaking" && event.inputMode === "text",
     );
-    const firstDegradationTimestamp = this.firstDegradationTimestamp(events);
+    const degradationEvents = this.degradationEvents(events);
     const highConfidenceResult = events.some(
       (event) =>
         event.type === "assessment_result_shown" &&
         (event.confidence ?? 0) >= 80 &&
-        this.occursDuringOrAfterDegradation(event, firstDegradationTimestamp),
+        this.occursDuringOrAfterRelatedDegradation(event, degradationEvents),
     );
     const resultShownDuringDegradation = events.some(
       (event) =>
         event.type === "assessment_result_shown" &&
         event.scoreShown === true &&
-        this.occursDuringOrAfterDegradation(event, firstDegradationTimestamp),
+        this.occursDuringOrAfterRelatedDegradation(event, degradationEvents),
     );
     const scoringDuringDegradation = events.some(
       (event) =>
         event.type === "assessment_scored" &&
-        this.occursDuringOrAfterDegradation(event, firstDegradationTimestamp),
+        this.occursDuringOrAfterRelatedDegradation(event, degradationEvents),
     );
 
     const findings: TmRiFinding[] = [];
@@ -97,20 +97,34 @@ export class AssessmentIntegrityAnalyzer {
     };
   }
 
-  private firstDegradationTimestamp(events: readonly TmRiRuntimeEvent[]): number | undefined {
-    const degradationTimestamps = events
-      .filter((event) => this.isAudioFailureEvent(event) || this.isMicFailureEvent(event) || this.isSpeakingTextFallbackEvent(event))
-      .map((event) => event.timestampMs);
-
-    if (degradationTimestamps.length === 0) {
-      return undefined;
-    }
-
-    return Math.min(...degradationTimestamps);
+  private degradationEvents(events: readonly TmRiRuntimeEvent[]): readonly TmRiRuntimeEvent[] {
+    return events.filter(
+      (event) => this.isAudioFailureEvent(event) || this.isMicFailureEvent(event) || this.isSpeakingTextFallbackEvent(event),
+    );
   }
 
-  private occursDuringOrAfterDegradation(event: TmRiRuntimeEvent, firstDegradationTimestamp: number | undefined): boolean {
-    return firstDegradationTimestamp !== undefined && event.timestampMs >= firstDegradationTimestamp;
+  private occursDuringOrAfterRelatedDegradation(
+    event: TmRiRuntimeEvent,
+    degradationEvents: readonly TmRiRuntimeEvent[],
+  ): boolean {
+    return degradationEvents.some(
+      (degradationEvent) =>
+        event.timestampMs >= degradationEvent.timestampMs && this.affectsSameAssessmentModality(event, degradationEvent),
+    );
+  }
+
+  private affectsSameAssessmentModality(event: TmRiRuntimeEvent, degradationEvent: TmRiRuntimeEvent): boolean {
+    const eventModality = this.assessmentModality(event);
+    const degradationModality = this.assessmentModality(degradationEvent);
+
+    if (eventModality === undefined || degradationModality === undefined) {
+      return true;
+    }
+    return eventModality === degradationModality || eventModality === "mixed" || degradationModality === "mixed";
+  }
+
+  private assessmentModality(event: TmRiRuntimeEvent) {
+    return event.assessmentSkill ?? event.modality;
   }
 
   private isAudioFailureEvent(event: TmRiRuntimeEvent): boolean {
