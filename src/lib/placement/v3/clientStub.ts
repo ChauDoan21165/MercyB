@@ -10,10 +10,17 @@ import type {
   PlacementV3SubmitResult,
   PlacementV3Task,
   PlacementV3TaskType,
+  PlacementV3ObservationTimelineItem,
 } from "./types";
+import {
+  applyPlacementRuntimeDecision,
+  buildPlacementTeacherContext,
+  placementTimelineItemFromSubmit,
+} from "./runtimeIntegration";
 
 const SESSION_CACHE_KEY = "mb.placement.v3.session";
 const RESULT_KEY = "mb.placement.v3.results.";
+const RUNTIME_TIMELINE_KEY = "mb.placement.v3.runtime.";
 
 const modalities: PlacementV3Modality[] = [
   "writing",
@@ -136,6 +143,42 @@ function readCachedSession(): PlacementV3Session | null {
   }
 }
 
+function runtimeTimelineKey(sessionId: string): string {
+  return `${RUNTIME_TIMELINE_KEY}${sessionId}`;
+}
+
+export function readPlacementRuntimeTimeline(sessionId: string): PlacementV3ObservationTimelineItem[] {
+  if (typeof window === "undefined") return [];
+  const raw = window.sessionStorage.getItem(runtimeTimelineKey(sessionId));
+  if (!raw) return [];
+  try {
+    const parsed = JSON.parse(raw) as PlacementV3ObservationTimelineItem[];
+    return Array.isArray(parsed) ? parsed : [];
+  } catch {
+    return [];
+  }
+}
+
+function writePlacementRuntimeTimeline(sessionId: string, timeline: readonly PlacementV3ObservationTimelineItem[]) {
+  if (typeof window === "undefined") return;
+  window.sessionStorage.setItem(runtimeTimelineKey(sessionId), JSON.stringify(timeline));
+}
+
+function appendPlacementRuntimeTimeline(
+  payload: PlacementV3ResponsePayload,
+  task: PlacementV3Task | null | undefined,
+) {
+  const items = placementTimelineItemFromSubmit(payload, task);
+  if (!items.length) return;
+  writePlacementRuntimeTimeline(payload.sessionId, [...readPlacementRuntimeTimeline(payload.sessionId), ...items]);
+}
+
+function applyRuntimeToResults(results: PlacementV3Results): PlacementV3Results {
+  const timeline = readPlacementRuntimeTimeline(results.sessionId);
+  const runtime = buildPlacementTeacherContext(timeline, results.completedAt);
+  return applyPlacementRuntimeDecision(results, runtime.teacherContext, runtime.decision, timeline);
+}
+
 function taskType(prompt: PublicPrompt): PlacementV3TaskType {
   if (prompt.modality === "reading") return "reading_short";
   if (prompt.modality === "listening") return "listening_short";
@@ -230,6 +273,7 @@ export async function startSession(): Promise<PlacementV3Session> {
     existing: readCachedSession(),
   });
   cacheSession(session);
+  writePlacementRuntimeTimeline(session.sessionId, []);
   return session;
 }
 
@@ -247,9 +291,12 @@ export async function submitResponse(
       responseDurationMs: payload.elapsedMs,
     },
   }) as RespondResponse;
+  appendPlacementRuntimeTimeline(payload, existing?.currentTask);
 
   if (json.type === "session_complete") {
-    const results = profileToResults(json.profile, json.recommendations ?? json.profile.recommended_lessons ?? []);
+    const results = applyRuntimeToResults(
+      profileToResults(json.profile, json.recommendations ?? json.profile.recommended_lessons ?? []),
+    );
     const completed: PlacementV3Session = {
       ...(existing ?? toSession({
         sessionId: payload.sessionId,
@@ -281,7 +328,7 @@ export async function submitResponse(
 export async function getResults(sessionId: string): Promise<PlacementV3Results> {
   const json = await callPlacementSession({ action: "status", sessionId }) as StatusResponse;
   if (!json.profile) throw new Error("Placement results are not ready yet.");
-  return profileToResults(json.profile, json.profile.recommended_lessons ?? []);
+  return applyRuntimeToResults(profileToResults(json.profile, json.profile.recommended_lessons ?? []));
 }
 
 export async function abandonSession(sessionId: string): Promise<{ ok: true }> {
@@ -336,6 +383,7 @@ function profileToResults(profile: PlacementProfile, recommendations: RawRecomme
     strengths: (profile.strengths ?? []).map((s) => bilingual(s)),
     gaps: (profile.gaps ?? []).map((g) => bilingual(g)),
     questionCount: Math.max(1, skills.length),
+    placementValidity: "valid",
   };
 }
 

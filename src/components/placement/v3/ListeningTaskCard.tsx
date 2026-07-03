@@ -10,7 +10,10 @@ type Props = {
   task: PlacementV3Task;
   value: string;
   onChange: (value: string) => void;
-  onMediaStatusChange?: (status: PlacementV3MediaStatus) => void;
+  onMediaStatusChange?: (
+    status: PlacementV3MediaStatus,
+    details?: { durationSeconds?: number; playbackError?: string },
+  ) => void;
 };
 
 export function ListeningTaskCard({ task, value, onChange, onMediaStatusChange }: Props) {
@@ -18,9 +21,12 @@ export function ListeningTaskCard({ task, value, onChange, onMediaStatusChange }
     task.audioUrl ? "loading" : "missing",
   );
 
-  const updateMediaStatus = (next: PlacementV3MediaStatus) => {
+  const updateMediaStatus = (
+    next: PlacementV3MediaStatus,
+    details?: { durationSeconds?: number; playbackError?: string },
+  ) => {
     setMediaStatus(next);
-    onMediaStatusChange?.(next);
+    onMediaStatusChange?.(next, details);
   };
 
   useEffect(() => {
@@ -49,17 +55,20 @@ export function ListeningTaskCard({ task, value, onChange, onMediaStatusChange }
           aria-label="Listening prompt audio"
           onLoadedMetadata={(event) => {
             const duration = event.currentTarget.duration;
-            updateMediaStatus(Number.isFinite(duration) && duration > 0 ? "playable" : "unplayable");
+            updateMediaStatus(
+              Number.isFinite(duration) && duration > 0 ? "playable" : "unplayable",
+              Number.isFinite(duration) ? { durationSeconds: duration } : undefined,
+            );
           }}
           onCanPlay={() => updateMediaStatus("playable")}
-          onError={() => updateMediaStatus("unplayable")}
+          onError={() => updateMediaStatus("unplayable", { playbackError: "audio element error" })}
         />
         <p className="mt-2 text-xs font-medium text-slate-600">
           {mediaStatus === "playable"
             ? "Audio is ready. Listen first, then answer."
             : mediaStatus === "loading"
               ? "Loading audio. Please wait before answering."
-              : "Audio is unavailable for this question. This listening item cannot be submitted yet."}
+              : "Audio is unavailable for this question. You can continue; this listening score will be excluded."}
           {showVi && (
             <>
               <br />
@@ -67,7 +76,7 @@ export function ListeningTaskCard({ task, value, onChange, onMediaStatusChange }
                 ? "Âm thanh đã sẵn sàng. Hãy nghe trước khi trả lời."
                 : mediaStatus === "loading"
                   ? "Đang tải âm thanh. Vui lòng chờ trước khi trả lời."
-                  : "Chưa nghe được âm thanh cho câu này nên chưa thể gửi câu trả lời nghe."}
+                  : "Chưa nghe được âm thanh cho câu này. Bạn vẫn có thể tiếp tục; điểm nghe sẽ được loại khỏi kết quả."}
             </>
           )}
         </p>

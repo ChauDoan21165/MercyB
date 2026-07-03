@@ -1,3 +1,5 @@
+import type { TeacherContext } from "@/lib/tm-int/runtime";
+
 export type PlacementV3Cefr = "pre_a1" | "A1" | "A2" | "B1" | "B2" | "C1" | "C2";
 
 export type PlacementV3Modality =
@@ -58,6 +60,8 @@ export type PlacementV3SkillProfile = {
   cefr: PlacementV3Cefr;
   confidence: number;
   summary: BilingualText;
+  scoreEligible?: boolean;
+  runtimeExclusionReason?: "product_failure_audio" | "mic_permission_or_device_block";
 };
 
 export type PlacementV3Recommendation = {
@@ -87,6 +91,10 @@ export type PlacementV3Results = {
   strengths: BilingualText[];
   gaps: BilingualText[];
   questionCount: number;
+  placementValidity?: "valid" | "questionable";
+  teacherContext?: TeacherContext;
+  runtimeDecision?: PlacementV3RuntimeDecision;
+  observationTimeline?: PlacementV3ObservationTimelineItem[];
 };
 
 export type PlacementV3SessionStatus =
@@ -118,10 +126,54 @@ export type PlacementV3ResponsePayload = {
   scoreEligible?: boolean;
   viRevealed?: boolean;
   elapsedMs?: number;
+  requestedAudioUrl?: string;
+  audioDurationSeconds?: number;
+  audioPlaybackError?: string;
+  speechPermission?: "unknown" | "granted" | "denied";
+  speechTimedOut?: boolean;
+  speechTimeoutMs?: number;
+  observedCorrect?: boolean;
+  productLatencyMs?: number;
+  accidentalTap?: boolean;
+  questionTooEasy?: boolean;
+  priorKnowledge?: boolean;
 };
 
 export type PlacementV3SubmitResult = {
   session: PlacementV3Session;
   completed: boolean;
   results?: PlacementV3Results;
+};
+
+export type PlacementV3ObservationTimelineItem = {
+  kind: "listening_media" | "speaking_capture" | "answer";
+  taskId: string;
+  modality: PlacementV3Modality;
+  observedAt: string;
+  mediaStatus?: PlacementV3MediaStatus;
+  requestedAudioUrl?: string;
+  audioDurationSeconds?: number;
+  audioPlaybackError?: string;
+  speechPermission?: "unknown" | "granted" | "denied";
+  speechTimedOut?: boolean;
+  speechTimeoutMs?: number;
+  elapsedMs?: number;
+  observedCorrect?: boolean;
+  productLatencyMs?: number;
+  accidentalTap?: boolean;
+  questionTooEasy?: boolean;
+  priorKnowledge?: boolean;
+};
+
+export type PlacementV3RuntimeDecision = {
+  excludeListeningScore: boolean;
+  excludeSpeakingScore: boolean;
+  placementValidity: "valid" | "questionable";
+  offers: {
+    listeningRetest: boolean;
+    speakingTextFallback: boolean;
+    micRetry: boolean;
+    confidenceFollowUp: boolean;
+  };
+  recommendationActions: string[];
 };
