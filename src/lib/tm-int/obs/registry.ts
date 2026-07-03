@@ -65,6 +65,13 @@ export const OBSERVATION_CAPABILITIES = [
     description: "Records hint usage.",
   },
   {
+    id: "OBS-LEARNING-000004",
+    semanticKey: "obs.learning.assessment_answer_submitted",
+    domain: "learning",
+    factType: "AssessmentAnswerSubmitted",
+    description: "Records assessment answer timing and correctness as facts.",
+  },
+  {
     id: "OBS-EVD-000001",
     semanticKey: "obs.evidence.packet_schema",
     domain: "evidence",

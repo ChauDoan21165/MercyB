@@ -1,12 +1,17 @@
 import { buildAudioDecisionEvidence } from "../dp/audio";
+import { buildLearningDecisionEvidence } from "../dp/learning";
 import { buildSpeechDecisionEvidence } from "../dp/speech";
+import { buildAssessmentBehaviorMemory } from "../lm/learning";
 import { buildListeningAttemptMemory } from "../lm/audio";
 import { buildSpeakingAttemptMemory } from "../lm/speech";
 import { buildAudioPedDecision } from "../ped/audio";
+import { buildLearningPedDecision } from "../ped/learning";
 import { buildSpeechPedDecision } from "../ped/speech";
 import type { ObservationPacket } from "../obs/types";
 import type {
   JudgeReplayResult,
+  LearningJudgeReplayResult,
+  LearningTeachingCasePipelineOutput,
   SpeechJudgeReplayResult,
   SpeechTeachingCasePipelineOutput,
   TeachingCasePipelineOutput,
@@ -125,6 +130,71 @@ export function judgeReplayTeachingCase000002(observation: ObservationPacket): S
   return {
     teachingCaseId: "TC-000002",
     judgeHookId: "JUDGE-TC-000002-REPLAY",
+    deterministic,
+    pass: deterministic && failures.length === 0,
+    failures,
+    first,
+    second,
+  };
+}
+
+export function runTeachingCaseLearningPipeline(observation: ObservationPacket): LearningTeachingCasePipelineOutput {
+  const dp = buildLearningDecisionEvidence(observation, REPLAY_TIME);
+  const ped = buildLearningPedDecision(dp, REPLAY_TIME);
+  const lm = buildAssessmentBehaviorMemory(ped, REPLAY_TIME);
+  return { observation, dp, ped, lm };
+}
+
+export function judgeReplayTeachingCase000003(observation: ObservationPacket): LearningJudgeReplayResult {
+  const first = runTeachingCaseLearningPipeline(observation);
+  const second = runTeachingCaseLearningPipeline(observation);
+  const deterministic = stableJson(first) === stableJson(second);
+  const failures: string[] = [];
+
+  if (!deterministic) failures.push("Learning replay output changed between runs.");
+
+  const answerFacts = observation.facts.filter((fact) => fact.factType === "AssessmentAnswerSubmitted");
+  const quickWrongFacts = answerFacts.filter(
+    (fact) => (fact.metrics?.responseTimeMs ?? Number.POSITIVE_INFINITY) < 1500 && fact.metrics?.correct === 0,
+  );
+  const hasRapidGuessingPattern = quickWrongFacts.length >= 2;
+
+  if (hasRapidGuessingPattern) {
+    const evidence = first.dp.evidence[0];
+    const decision = first.ped.decisions[0];
+    const memory = first.lm.assessmentBehaviorObservations[0];
+
+    if (evidence?.reason !== "possible_rapid_guessing") failures.push("DP did not record possible_rapid_guessing.");
+    if (evidence?.assessment_validity !== "questionable") failures.push("DP did not mark assessment validity questionable.");
+    if (!evidence?.alternative_explanations.includes("product_latency_issue")) failures.push("DP omitted product latency alternative.");
+    if (!evidence?.alternative_explanations.includes("accidental_tap")) failures.push("DP omitted accidental tap alternative.");
+    if (!evidence?.alternative_explanations.includes("question_too_easy")) failures.push("DP omitted question too easy alternative.");
+    if (!evidence?.alternative_explanations.includes("prior_knowledge")) failures.push("DP omitted prior knowledge alternative.");
+    if (!decision?.pause_assessment_flow) failures.push("PED did not pause assessment flow.");
+    if (!decision?.ask_confidence_check_question) failures.push("PED did not ask a confidence check question.");
+    if (!decision?.offer_encouragement) failures.push("PED did not offer encouragement.");
+    if (!decision?.optionally_slow_pacing) failures.push("PED did not optionally slow pacing.");
+    if (!decision?.do_not_immediately_lower_placement) failures.push("PED did not prevent immediate placement lowering.");
+    if (memory?.status !== "needs_followup") failures.push("LM did not store needs_followup behavior observation.");
+    if (memory?.reason !== "possible_rapid_guessing") failures.push("LM reason was not possible_rapid_guessing.");
+    if (memory?.skill_mastery_reduced !== false) failures.push("LM reduced skill mastery.");
+  } else {
+    if (first.dp.evidence.length !== 0) failures.push("DP emitted evidence without rapid guessing pattern.");
+    if (first.ped.decisions.length !== 0) failures.push("PED emitted decision without rapid guessing pattern.");
+    if (first.lm.assessmentBehaviorObservations.length !== 0) failures.push("LM emitted memory without rapid guessing pattern.");
+  }
+
+  const serialized = stableJson(first);
+  if (/lazy|careless|low ability|weakness|skill mastery reduced|lowered mastery/i.test(serialized)) {
+    failures.push("Learning pipeline inferred learner weakness.");
+  }
+  if (/\"verified\":true/i.test(serialized)) {
+    failures.push("Learning pipeline claimed verified=true.");
+  }
+
+  return {
+    teachingCaseId: "TC-000003",
+    judgeHookId: "JUDGE-TC-000003-REPLAY",
     deterministic,
     pass: deterministic && failures.length === 0,
     failures,

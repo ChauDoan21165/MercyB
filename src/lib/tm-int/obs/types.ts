@@ -8,6 +8,7 @@ export type ObservationCapabilityId =
   | "OBS-LEARNING-000001"
   | "OBS-LEARNING-000002"
   | "OBS-LEARNING-000003"
+  | "OBS-LEARNING-000004"
   | "OBS-EVD-000001"
   | "OBS-REP-000001"
   | "OBS-VAL-000001";
@@ -23,7 +24,8 @@ export type ObservationFactType =
   | "SpeechTimeout"
   | "RetryObserved"
   | "SkipObserved"
-  | "HintUsed";
+  | "HintUsed"
+  | "AssessmentAnswerSubmitted";
 
 export type ObservationSeverity = "info" | "warning" | "failure";
 
@@ -75,6 +77,16 @@ export type LearningObservationInput = {
   action: "retry" | "skip" | "hint";
   route?: string;
   taskId?: string;
+} | {
+  action: "answer";
+  responseTimeMs: number;
+  correct: boolean;
+  route?: string;
+  taskId?: string;
+  productLatencyMs?: number;
+  accidentalTap?: boolean;
+  questionTooEasy?: boolean;
+  priorKnowledge?: boolean;
 };
 
 export type ObservationPacket = {
