@@ -1,0 +1,24 @@
+{
+  "producer": "F",
+  "scope": "OBS_INT_SPRINT_1",
+  "verified": false,
+  "artifacts": [
+    "src/lib/tm-int/obs/types.ts",
+    "src/lib/tm-int/obs/registry.ts",
+    "src/lib/tm-int/obs/eventBus.ts",
+    "src/lib/tm-int/obs/evidencePacket.ts",
+    "src/lib/tm-int/obs/detectors/audio.ts",
+    "src/lib/tm-int/obs/detectors/speech.ts",
+    "src/lib/tm-int/obs/detectors/learning.ts",
+    "src/lib/tm-int/obs/replay.ts",
+    "src/lib/tm-int/obs/workpacks.ts",
+    "src/lib/tm-int/obs/__tests__/audioObservation.test.ts",
+    "src/lib/tm-int/obs/__tests__/observationPacket.test.ts",
+    "src/lib/tm-int/obs/__tests__/linhAudioFailureReplay.test.ts"
+  ],
+  "notes": [
+    "F produced candidate OBS INT Sprint 1 artifacts only.",
+    "F did not mark any capability verified.",
+    "Independent Judge must promote verified OBS INT capability."
+  ]
+}
