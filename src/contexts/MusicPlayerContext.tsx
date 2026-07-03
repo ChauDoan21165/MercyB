@@ -38,7 +38,7 @@ type MusicPlayerContextValue = {
   /** Play a track. Accepts a filename or an absolute URL; resolveRoomAudioUrl sorts it out. */
   play: (file: string) => Promise<void>;
 
-  /** Stop current playback (if any) */
+  /** Stop current playback when present */
   stop: () => void;
 };
 

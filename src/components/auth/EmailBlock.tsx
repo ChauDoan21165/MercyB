@@ -55,7 +55,7 @@ export default function EmailBlock({
   const [codeEmail, setCodeEmail] = useState("");
 
   // 2FA Phase 1 — TOTP challenge state. After a successful password
-  // step (or verifyOtp), if the user has any verified TOTP factors we
+  // step (or verifyOtp), if the user has verified TOTP factors we
   // hold them here until they enter their 6-digit code. onAuthed() is
   // NOT called until the challenge verifies. See
   // reports/2fa-design-decisions-2026-04-27.md § Decision 5.

@@ -800,9 +800,9 @@ export default function RoomRenderer({
   const access = useUserAccess();
   const accessLoading = Boolean(access.loading ?? access.isLoading);
   const authUser = useAuthUser(supabase);
-  const authUserId = useMemo(() => String((authUser as any)?.id ?? "").trim() || null, [authUser]);
+  const authUserId = useMemo(() => String(authUser?.id ?? "").trim() || null, [authUser]);
 
-  const isDev = typeof import.meta !== "undefined" && Boolean((import.meta as any).env?.DEV);
+  const isDev = typeof import.meta !== "undefined" && Boolean(import.meta.env?.DEV);
   const showDev = useMemo(() => {
     if (!isDev) return false;
     try {
@@ -821,7 +821,7 @@ export default function RoomRenderer({
   );
   useEffect(() => {
     // DEBUG-PERF
-    console.log("[room-perf]", "t3:RoomRenderer-firstEffect", performance.now() - ((window as any).__mbRoomPerfT0 || 0)); // DEBUG-PERF
+    console.log("[room-perf]", "t3:RoomRenderer-firstEffect", performance.now() - (window.__mbRoomPerfT0 || 0)); // DEBUG-PERF
     if (typeof window === "undefined") return;
     const narrowMq = window.matchMedia("(max-width: 860px)");
     const phoneMq = window.matchMedia("(max-width: 640px)");
@@ -896,7 +896,7 @@ export default function RoomRenderer({
   const requiredTierId = useMemo<TierIdRuntime>(() => inferredTierId, [inferredTierId]);
 
   const displayTierId = useMemo<TierIdRuntime>(() => {
-    if (metaTierId && (metaTierId as any) === inferredTierId) return metaTierId as any;
+    if (metaTierId && metaTierId === inferredTierId) return metaTierId;
     return inferredTierId;
   }, [metaTierId, inferredTierId]);
 
@@ -906,7 +906,7 @@ export default function RoomRenderer({
     // future `UserAccess` refactor must fail `tsc`, not silently open access.
     // `tier` is the raw entitlement tier and is always defined; `userTier`
     // is kept as a defensive fallback. Order preserved from prior behavior
-    // (tier-first fails closed). The old `as any` only existed to read
+    // (tier-first fails closed). The old loose cast only existed to read
     // `access.profile?.tier` / `access.profileTier`, which are not part of
     // the `UserAccess` contract and were unreachable dead branches.
     const raw: TierId = access.tier ?? access.userTier ?? "level0";
@@ -932,7 +932,7 @@ export default function RoomRenderer({
     return !canAccessTier(userTierId, requiredTierId);
   }, [requiredTierId, accessLoading, userTierId]);
 
-  const [dbRows, setDbRows] = useState<any[] | null>(null);
+  const [dbRows, setDbRows] = useState<unknown[] | null>(null);
   const [dbLoading, setDbLoading] = useState(false);
   const [dbError, setDbError] = useState<string | null>(null);
 
@@ -977,7 +977,7 @@ export default function RoomRenderer({
       setDbError(error);
       setDbLoading(false);
       // DEBUG-PERF
-      console.log("[room-perf]", "t4:fetchRoomEntriesDb-resolved", performance.now() - ((window as any).__mbRoomPerfT0 || 0), "rows=", rows.length); // DEBUG-PERF
+      console.log("[room-perf]", "t4:fetchRoomEntriesDb-resolved", performance.now() - (window.__mbRoomPerfT0 || 0), "rows=", rows.length); // DEBUG-PERF
     }
 
     void load();
@@ -1053,8 +1053,9 @@ export default function RoomRenderer({
 
   const jsonLeafEntries = useMemo(() => {
     const extracted = extractJsonLeafEntries(safeRoom);
-    const fallback = Array.isArray((safeRoom as any)?.entries) ? (safeRoom as any).entries : [];
-    const leaf = (Array.isArray(extracted) && extracted.length > 0 ? extracted : fallback) as any[];
+    const roomRecord = isRecord(safeRoom) ? safeRoom : {};
+    const fallback = Array.isArray(roomRecord.entries) ? roomRecord.entries : [];
+    const leaf = Array.isArray(extracted) && extracted.length > 0 ? extracted : fallback;
     return leaf.map(coerceLegacyEntryShape).filter((x) => x && typeof x === "object");
   }, [safeRoom]);
 
@@ -1063,16 +1064,16 @@ export default function RoomRenderer({
     return { source: "JSON" as const, list: jsonLeafEntries };
   }, [dbLeafEntries, jsonLeafEntries]);
 
-  const allEntries = useMemo(() => chosenEntries.list.map((e: any) => ({ entry: e })), [chosenEntries]);
+  const allEntries = useMemo(() => chosenEntries.list.map((e) => ({ entry: e })), [chosenEntries]);
 
-  const looksUuidLikeCb = useCallback((s: any) => {
+  const looksUuidLikeCb = useCallback((s: unknown) => {
     const t = String(s ?? "").trim();
     if (!t) return false;
     return /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(t);
   }, []);
 
   const cleanKwArr = useCallback(
-    (arr: any[]) =>
+    (arr: unknown[]) =>
       (Array.isArray(arr) ? arr : [])
         .map((x) => String(x ?? "").trim())
         .filter(Boolean)
@@ -1089,13 +1090,13 @@ export default function RoomRenderer({
       const perEntry = entries
         .map((e) => pickOneKeywordPairForEntry(e, lookup))
         .filter(Boolean)
-        .filter((p: any) => {
-          const en = String(p?.en ?? "").trim();
-          const vi = String(p?.vi ?? "").trim();
+        .filter((p): p is { en: string; vi: string } => {
+          const en = String(p.en ?? "").trim();
+          const vi = String(p.vi ?? "").trim();
           if (looksUuidLikeCb(en)) return false;
           if (looksUuidLikeCb(vi)) return false;
           return !!(en || vi);
-        }) as Array<{ en: string; vi: string }>;
+        });
 
       if (perEntry.length > 0) {
         const trimmed = perEntry.slice(0, Math.max(1, entryCount));

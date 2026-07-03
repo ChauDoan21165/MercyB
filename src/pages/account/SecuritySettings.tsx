@@ -281,7 +281,7 @@ export default function SecuritySettings() {
   const enabled = hasVerifiedTotpFactor(factors);
 
   // Free-tier users see the upgrade prompt and nothing else.
-  // We don't even fetch their factor list (they can't have any), so
+  // We don't even fetch their factor list (they cannot have factors), so
   // the gate sits before the loader.
   //
   // Eligibility helper covers admin override + paid; both pages share
