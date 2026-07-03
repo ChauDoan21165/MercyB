@@ -12,6 +12,26 @@ interface PerformanceMetrics {
   memoryUsage?: number;
 }
 
+interface PerformanceWithMemory extends Performance {
+  memory?: {
+    usedJSHeapSize?: number;
+  };
+}
+
+type DebugWindow = Window & {
+  __MB_PERF?: PerformanceMonitor;
+  __MB_LOG?: {
+    events: () => PerformanceEventLog[];
+    metrics: () => PerformanceMetrics;
+  };
+};
+
+type PerformanceEventLog = {
+  type: string;
+  timestamp: number;
+  data?: unknown;
+};
+
 class PerformanceMonitor {
   private frameCount = 0;
   private lastFrameTime = performance.now();
@@ -19,7 +39,7 @@ class PerformanceMonitor {
   private isMonitoring = false;
 
   // Global event log
-  private eventLog: Array<{ type: string; timestamp: number; data?: any }> = [];
+  private eventLog: PerformanceEventLog[] = [];
 
   /**
    * Start FPS monitoring
@@ -84,7 +104,7 @@ class PerformanceMonitor {
   /**
    * Log global event
    */
-  logEvent(type: string, data?: any) {
+  logEvent(type: string, data?: unknown) {
     this.eventLog.push({
       type,
       timestamp: Date.now(),
@@ -107,7 +127,7 @@ class PerformanceMonitor {
   /**
    * Measure network timing
    */
-  measureNetwork(url: string, callback: () => Promise<any>) {
+  measureNetwork<T>(url: string, callback: () => Promise<T>): Promise<T> {
     const start = performance.now();
     
     return callback().then((result) => {
@@ -125,8 +145,10 @@ class PerformanceMonitor {
    */
   getMemoryUsage(): number | undefined {
     if ('memory' in performance) {
-      const memory = (performance as any).memory;
-      return memory.usedJSHeapSize / 1048576; // Convert to MB
+      const memory = (performance as PerformanceWithMemory).memory;
+      return typeof memory?.usedJSHeapSize === 'number'
+        ? memory.usedJSHeapSize / 1048576 // Convert to MB
+        : undefined;
     }
     return undefined;
   }
@@ -149,8 +171,9 @@ export const performanceMonitor = new PerformanceMonitor();
 
 // Expose to window for debugging
 if (typeof window !== 'undefined') {
-  (window as any).__MB_PERF = performanceMonitor;
-  (window as any).__MB_LOG = {
+  const debugWindow = window as DebugWindow;
+  debugWindow.__MB_PERF = performanceMonitor;
+  debugWindow.__MB_LOG = {
     events: () => performanceMonitor.getEventLog(),
     metrics: () => performanceMonitor.getMetrics(),
   };

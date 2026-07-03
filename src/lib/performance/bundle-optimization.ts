@@ -99,7 +99,7 @@ export const treeshake = {
   /**
    * Pure function marker
    */
-  pure: <T extends (...args: any[]) => any>(fn: T): T => {
+  pure: <T extends (...args: never[]) => unknown>(fn: T): T => {
     return fn;
   },
 };
@@ -107,12 +107,12 @@ export const treeshake = {
 /**
  * Code splitting helper
  */
-export function splitByRoute(routes: Record<string, () => Promise<any>>) {
+export function splitByRoute<T>(routes: Record<string, () => Promise<T>>) {
   return Object.entries(routes).reduce((acc, [key, loader]) => {
     acc[key] = {
       loader,
       preload: () => loader(),
     };
     return acc;
-  }, {} as Record<string, { loader: () => Promise<any>; preload: () => Promise<any> }>);
+  }, {} as Record<string, { loader: () => Promise<T>; preload: () => Promise<T> }>);
 }

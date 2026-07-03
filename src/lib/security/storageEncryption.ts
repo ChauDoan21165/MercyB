@@ -16,7 +16,7 @@ const getEncryptionKey = (): string => {
 /**
  * Encrypt data before storing
  */
-export const encryptData = (data: any): string => {
+export const encryptData = (data: unknown): string => {
   const key = getEncryptionKey();
   const jsonString = JSON.stringify(data);
   return CryptoJS.AES.encrypt(jsonString, key).toString();
@@ -41,7 +41,7 @@ export const decryptData = <T>(encrypted: string): T | null => {
  * Secure localStorage wrapper
  */
 export const secureStorage = {
-  setItem: (key: string, value: any) => {
+  setItem: (key: string, value: unknown) => {
     const encrypted = encryptData(value);
     localStorage.setItem(key, encrypted);
   },
@@ -65,7 +65,7 @@ export const secureStorage = {
  * Secure sessionStorage wrapper
  */
 export const secureSessionStorage = {
-  setItem: (key: string, value: any) => {
+  setItem: (key: string, value: unknown) => {
     const encrypted = encryptData(value);
     sessionStorage.setItem(key, encrypted);
   },
