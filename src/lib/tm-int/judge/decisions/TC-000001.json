@@ -1,0 +1,57 @@
+{
+  "tc_id": "TC-000001",
+  "name": "Placement Audio Unavailable",
+  "judge_decision": "promoted",
+  "promoted_by": "ADMIN/JUDGE",
+  "source_commit": "3e9406a99",
+  "evidence": {
+    "obs_inputs_consumed_not_duplicated": true,
+    "dp_only_product_audio_failure": true,
+    "dp_forbidden_inferences_absent": [
+      "weak listening",
+      "poor learner",
+      "bad comprehension"
+    ],
+    "ped_decision": {
+      "exclude_listening_score": true,
+      "offer_retest": true,
+      "continue_remaining_sections": true,
+      "show_support_message": true
+    },
+    "lm_memory": {
+      "listening_attempt_status": "invalid",
+      "reason": "product_failure",
+      "retest_pending": true,
+      "ability_lowered": false
+    },
+    "replay": {
+      "pass": true,
+      "deterministic": true,
+      "failures": []
+    },
+    "test_coverage": [
+      "Audio unavailable",
+      "Duration zero",
+      "Playback failure",
+      "Linh replay",
+      "Normal audio",
+      "Regression"
+    ],
+    "sqlite_candidate_rows": {
+      "required_fields_present": true,
+      "verified_before_promotion": 0
+    },
+    "gates": {
+      "typecheck": "PASS",
+      "eslint": "PASS",
+      "tests": "PASS",
+      "diff_check": "PASS"
+    }
+  },
+  "verified": true,
+  "notes": [
+    "Judge promotion is scoped only to TC-000001.",
+    "Candidate workpack rows remain verified=false.",
+    "No new capabilities were built during promotion."
+  ]
+}
