@@ -226,7 +226,7 @@ const CLARITY_WEAK_NOUN_TARGETS = new Set([
 const CLARITY_WEAK_ABSTRACT_TARGETS = new Set([
   "general", "thing", "things", "stuff", "reason", "reasons", "idea", "ideas",
   "part", "parts", "way", "ways", "case", "cases", "point", "points",
-  "context", "contexts",
+  "context", "contexts", "problem", "problems",
 ]);
 
 const CLARITY_FUNCTION_WORDS = new Set([

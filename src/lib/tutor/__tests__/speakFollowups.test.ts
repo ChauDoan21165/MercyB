@@ -484,6 +484,18 @@ describe("speakFollowups", () => {
           forbidden: "Why did you choose the home?",
         },
         {
+          learnerText: "I have the problem",
+          forbidden: "Why did you choose the problem?",
+        },
+        {
+          learnerText: "I buy the some",
+          forbidden: "Why did you choose the some?",
+        },
+        {
+          learnerText: "I buy the any",
+          forbidden: "Why did you choose the any?",
+        },
+        {
           learnerText:
             "don't lie your sunlight because you know I like summer in general because I can swim I can play Spot I can wear shorts and biking around",
           forbidden: "Why did you choose the general?",
@@ -512,6 +524,9 @@ describe("speakFollowups", () => {
         "I like summer because I can swim and wear shorts.",
         "I want to go swimming in summer.",
         "I need help with my stuff at home.",
+        "I have a problem with my sink.",
+        "I buy some noodles.",
+        "Do you have any questions?",
         "I like the sunlight in the morning.",
       ];
 
