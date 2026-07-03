@@ -1,24 +1,38 @@
 import process from "node:process";
 import { randomUUID } from "node:crypto";
 import { createClient } from "@supabase/supabase-js";
+import type { SupabaseLike } from "../../supabase/functions/placement-v3-session/persistence.ts";
+import type { CoreDeps } from "../../supabase/functions/placement-v3-session/core.ts";
+import type {
+  GraderInput,
+  GraderResult,
+  OrchestratorResponse,
+  PlacementV3Request,
+} from "../../supabase/functions/placement-v3-session/types.ts";
 
 const TEST_EMAIL_RE = /^placement-v3-test-[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}@mercyblade\.test$/i;
 const DRY_RUN_UUID = "00000000-0000-4000-8000-000000000000";
 
 type Env = Record<string, string | undefined>;
-type CoreDeps = Record<string, any>;
-type PlacementV3Request = Record<string, any>;
-type OrchestratorResponse =
-  | { ok: true; action: string; session: Record<string, any>; prompt: Record<string, any> | null; profile: Record<string, any> | null; resumed?: boolean }
-  | { ok: false; error: string; message: string; status: number };
-type GraderInput = {
-  modality: string;
-  responseText: string;
-};
-type GraderResult = {
-  ok: boolean;
-  version: string;
-  assessment: Record<string, any>;
+type SupabaseAuthUser = { id?: string; email?: string };
+type SupabaseAuthAdminClient = {
+  auth: {
+    admin: {
+      listUsers: (args: { page: number; perPage: number }) => Promise<{
+        data?: { users?: SupabaseAuthUser[] };
+        error?: unknown;
+      }>;
+      createUser: (args: {
+        email: string;
+        password: string;
+        email_confirm: boolean;
+        user_metadata: Record<string, boolean>;
+      }) => Promise<{
+        data?: { user?: SupabaseAuthUser };
+        error?: unknown;
+      }>;
+    };
+  };
 };
 
 type ValidationMode = "full" | "skip-speaking" | "speaking-only";
@@ -292,7 +306,7 @@ function createSupabaseRuntime(env: Env): LiveRuntime {
     async createDeps() {
       const { createPersistence, recommendLessons } = await import("../../supabase/functions/placement-v3-session/persistence.ts");
       return {
-        ...createPersistence(admin as any, {
+        ...createPersistence(admin as unknown as SupabaseLike, {
           now: () => new Date().toISOString(),
           newId: () => `placement-v3-live-${randomUUID()}`,
           log: () => undefined,
@@ -303,12 +317,12 @@ function createSupabaseRuntime(env: Env): LiveRuntime {
     },
     async run(userId, request, deps) {
       const { handleAction } = await import("../../supabase/functions/placement-v3-session/core.ts");
-      return handleAction({ userId, request: request as any, deps: deps as any });
+      return handleAction({ userId, request, deps });
     },
   };
 }
 
-async function resolveTestLearner(admin: any, email: string): Promise<{ id: string; email: string; created: boolean }> {
+async function resolveTestLearner(admin: SupabaseAuthAdminClient, email: string): Promise<{ id: string; email: string; created: boolean }> {
   for (let page = 1; page <= 20; page += 1) {
     const { data, error } = await admin.auth.admin.listUsers({ page, perPage: 1000 });
     if (error) throw error;
