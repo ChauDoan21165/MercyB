@@ -9,11 +9,18 @@ import {
 import { entryKey } from "@/components/room/roomRenderer/helpers";
 
 export type KwPair = { en: string; vi: string };
-type EntryLike = Record<string, unknown>;
+type EntryForKey = Record<string, unknown> & {
+  audio?: unknown;
+  audio_en?: unknown;
+  content?: Partial<Record<"en" | "vi", unknown>>;
+  copy?: Partial<Record<"en" | "vi", unknown>>;
+  id?: unknown;
+  slug?: unknown;
+};
 
-function asEntry(value: unknown): EntryLike | null {
+function asEntry(value: unknown): EntryForKey | null {
   return value && typeof value === "object" && !Array.isArray(value)
-    ? value as EntryLike
+    ? value as EntryForKey
     : null;
 }
 
@@ -170,15 +177,15 @@ export function buildKeywordsForRoom(args: {
     // refuse fake bilingual pairs
     if (en && vi && normalizeTextForKwMatch(en) === normalizeTextForKwMatch(vi)) vi = "";
 
-    let matched: unknown = null;
+    let matched: EntryForKey | null = null;
     let matchedVia: "en" | "vi" | null = null;
 
     if (en) {
-      matched = entriesForCoverage.find((e) => entryMatchesKeyword(e, en)) || null;
+      matched = asEntry(entriesForCoverage.find((e) => entryMatchesKeyword(e, en)));
       if (matched) matchedVia = "en";
     }
     if (!matched && vi) {
-      matched = entriesForCoverage.find((e) => entryMatchesKeyword(e, vi)) || null;
+      matched = asEntry(entriesForCoverage.find((e) => entryMatchesKeyword(e, vi)));
       if (matched) matchedVia = "vi";
     }
     if (!matched) continue;

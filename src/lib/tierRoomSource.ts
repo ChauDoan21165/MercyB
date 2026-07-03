@@ -464,23 +464,27 @@ function coerceTierRoomsFromUnknown(roomLikes: unknown[]): TierRoom[] {
         const domain = r.domain ?? r.group ?? null;
         const track = r.track ?? r.path_track ?? r.category ?? null;
         const areaRaw = r.area ?? null;
+        const titleEnString = optionalString(title_en) ?? null;
+        const titleViString = optionalString(title_vi) ?? null;
+        const domainString = optionalString(domain) ?? null;
+        const trackString = optionalString(track) ?? null;
 
         const tier = resolveBestTier(r.tier, id);
         const area = inferAreaFromMetaAndId({
           id,
-          domain: domain ?? null,
-          track: track ?? null,
-          title_en: title_en ?? null,
-          title_vi: title_vi ?? null,
+          domain: domainString,
+          track: trackString,
+          title_en: titleEnString,
+          title_vi: titleViString,
           area: areaRaw ? String(areaRaw) : null,
         });
 
         return {
           id,
-          title_en: optionalString(title_en),
-          title_vi: optionalString(title_vi),
-          domain: optionalString(domain),
-          track: optionalString(track),
+          title_en: titleEnString ?? undefined,
+          title_vi: titleViString ?? undefined,
+          domain: domainString ?? undefined,
+          track: trackString ?? undefined,
           tier,
           area,
         } as TierRoom;
