@@ -242,6 +242,8 @@ const CLARITY_PRONOUN_TOKENS = new Set([
 function learnerReportsFollowUpIsUnclear(transcript: string): boolean {
   const normalized = transcript.toLowerCase().replace(/[’]/g, "'").replace(/\s+/g, " ").trim();
   return (
+    /\b(?:i\s+)?(?:do\s+not|don't|dont|did\s+not|didn't|cannot|can't|cant)\s+understand\s+(?:that|this|the)?\s*question\b/.test(normalized) ||
+    /\b(?:that|this|the)?\s*question\s+(?:is|was|feels?|sounds?)\s+(?:confusing|unclear|hard\s+to\s+understand)\b/.test(normalized) ||
     /\b(?:that|this|the)?\s*question\s+(?:does\s+not|doesn't|did\s+not|didn't)\s+make\s+sense\b/.test(normalized) ||
     /\b(?:that|this|it)\s+(?:does\s+not|doesn't|did\s+not|didn't)\s+make\s+sense\b/.test(normalized) ||
     /\b(?:no|not)\s+sense\b/.test(normalized)

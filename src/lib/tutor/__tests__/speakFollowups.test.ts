@@ -346,6 +346,18 @@ describe("speakFollowups", () => {
         clear: false,
         reason: "learner_reports_unclear_follow_up",
       });
+      expect(assessSpeakTranscriptClarity("I don't understand the question.")).toMatchObject({
+        clear: false,
+        reason: "learner_reports_unclear_follow_up",
+      });
+      expect(assessSpeakTranscriptClarity("The question is confusing.")).toMatchObject({
+        clear: false,
+        reason: "learner_reports_unclear_follow_up",
+      });
+      expect(assessSpeakTranscriptClarity("This question sounds hard to understand.")).toMatchObject({
+        clear: false,
+        reason: "learner_reports_unclear_follow_up",
+      });
       expect(assessSpeakTranscriptClarity("the and of to")).toMatchObject({
         clear: false,
         reason: "function_word_salad:the_and_of_to",
