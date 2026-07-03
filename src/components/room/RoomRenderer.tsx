@@ -1253,8 +1253,8 @@ export default function RoomRenderer({
 
     const repeatKey = `${effectiveRoomId}|${entryId}|${activeKeyword ?? ""}`;
     if (typeof window !== "undefined") {
-      if ((window as any).__mb_last_repeat_key === repeatKey) return;
-      (window as any).__mb_last_repeat_key = repeatKey;
+      if (window.__mb_last_repeat_key === repeatKey) return;
+      window.__mb_last_repeat_key = repeatKey;
     }
 
     dispatchHostRepeatTarget({
@@ -1267,7 +1267,8 @@ export default function RoomRenderer({
     });
   }, [effectiveRoomId, activeKeyword, activeEntry, isLocked]);
 
-  type ChatRow = { id: any; room_id?: string; user_id?: string; message?: string; created_at?: string };
+  type ChatRow = { id: unknown; room_id?: string; user_id?: string; message?: string; created_at?: string };
+  type RealtimeInsertPayload = { new?: unknown };
 
   const canonicalChatRoomId = String(effectiveRoomId || "").trim();
 
@@ -1330,11 +1331,11 @@ export default function RoomRenderer({
         setChatRows(rows);
         setChatLoading(false);
         // DEBUG-PERF
-        console.log("[room-perf]", "t7:chat-loaded", performance.now() - ((window as any).__mbRoomPerfT0 || 0), "rows=", rows.length); // DEBUG-PERF
+        console.log("[room-perf]", "t7:chat-loaded", performance.now() - (window.__mbRoomPerfT0 || 0), "rows=", rows.length); // DEBUG-PERF
         setTimeout(() => scrollToBottomIfSticky(), 0);
-      } catch (e: any) {
+      } catch (e: unknown) {
         setChatRows([]);
-        setChatError(`Load exception: ${e?.message || String(e)}`);
+        setChatError(`Load exception: ${e instanceof Error ? e.message : String(e)}`);
         setChatLoading(false);
       }
     },
@@ -1352,14 +1353,14 @@ export default function RoomRenderer({
     channel.on(
       "postgres_changes",
       { event: "INSERT", schema: "public", table: "community_messages" },
-      (payload: any) => {
-        const row = (payload?.new || null) as ChatRow | null;
+      (payload: RealtimeInsertPayload) => {
+        const row = isRecord(payload.new) ? (payload.new as ChatRow) : null;
         if (!row) return;
         if (String(row.room_id || "") !== canonicalChatRoomId) return;
 
         setChatRows((cur) => {
-          const id = String((row as any)?.id ?? "");
-          if (id && cur.some((r) => String((r as any)?.id ?? "") === id)) return cur;
+          const id = String(row.id ?? "");
+          if (id && cur.some((r) => String(r.id ?? "") === id)) return cur;
           return [...cur, row];
         });
 
@@ -1369,7 +1370,7 @@ export default function RoomRenderer({
 
     void channel.subscribe(() => {
       // DEBUG-PERF — fires once the realtime subscribe ack comes back
-      console.log("[room-perf]", "t6:realtime-subscribed", performance.now() - ((window as any).__mbRoomPerfT0 || 0)); // DEBUG-PERF
+      console.log("[room-perf]", "t6:realtime-subscribed", performance.now() - (window.__mbRoomPerfT0 || 0)); // DEBUG-PERF
     });
     return () => {
       try {
@@ -1420,11 +1421,11 @@ export default function RoomRenderer({
         return;
       }
 
-      const data = res?.data as any;
+      const data = isRecord(res?.data) ? (res.data as ChatRow) : null;
       if (data) {
         setChatRows((cur) => {
-          const id = String(data?.id ?? "");
-          if (id && cur.some((r) => String((r as any)?.id ?? "") === id)) return cur;
+          const id = String(data.id ?? "");
+          if (id && cur.some((r) => String(r.id ?? "") === id)) return cur;
           return [...cur, data];
         });
       } else {
@@ -1435,8 +1436,8 @@ export default function RoomRenderer({
       setChatSending(false);
       stickToBottomRef.current = true;
       setTimeout(() => scrollToBottomIfSticky(), 0);
-    } catch (e: any) {
-      setChatError(`Send exception: ${e?.message || String(e)}`);
+    } catch (e: unknown) {
+      setChatError(`Send exception: ${e instanceof Error ? e.message : String(e)}`);
       setChatSending(false);
     }
   }, [authUserId, canonicalChatRoomId, chatText, loadChatInline]);
@@ -1459,8 +1460,8 @@ export default function RoomRenderer({
       overflowWrap: "anywhere",
       wordBreak: "break-word",
       display: "-webkit-box",
-      WebkitLineClamp: 2 as any,
-      WebkitBoxOrient: "vertical" as any,
+      WebkitLineClamp: 2,
+      WebkitBoxOrient: "vertical",
     }),
     [isNarrow],
   );
@@ -1607,8 +1608,8 @@ export default function RoomRenderer({
               <div className="mb-titleLeft">
                 {displayTierForPill ? <span className="mb-tier">{displayTierForPill}</span> : null}
                 {showDev ? (
-                  <span className="mb-tier" title={String((authUser as any)?.email || (authUser as any)?.id || "")}>
-                    DEV: {authUser ? shortEmailLabel(String((authUser as any).email || "")) : "NOAUTH"}
+                  <span className="mb-tier" title={String(authUser?.email || authUser?.id || "")}>
+                    DEV: {authUser ? shortEmailLabel(String(authUser.email || "")) : "NOAUTH"}
                   </span>
                 ) : null}
               </div>
@@ -1754,7 +1755,7 @@ export default function RoomRenderer({
                       index={activeEntryIndex >= 0 ? activeEntryIndex : 0}
                       enKeywords={plainReadingKeywords.en}
                       viKeywords={plainReadingKeywords.vi}
-                      audioAnchorRef={audioAnchorRef as any}
+                      audioAnchorRef={audioAnchorRef}
                     />
                   </>
                 ) : (
@@ -1896,13 +1897,13 @@ export default function RoomRenderer({
                             <span style={{ opacity: 0.7 }}> (room_id="{canonicalChatRoomId}")</span>
                           </div>
                         ) : (
-                          chatRows.map((m: any) => {
+                          chatRows.map((m) => {
                             const isMe = authUser
-                              ? String(m?.user_id || "") === String((authUser as any)?.id || "")
+                              ? String(m?.user_id || "") === String(authUser?.id || "")
                               : false;
 
                             const who = isMe
-                              ? shortEmailLabel(String((authUser as any)?.email || "")) || "ME"
+                              ? shortEmailLabel(String(authUser?.email || "")) || "ME"
                               : shortUserId(String(m?.user_id || "user"));
 
                             const when = m?.created_at ? new Date(m.created_at).toLocaleString() : "";

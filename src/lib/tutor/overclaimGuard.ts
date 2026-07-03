@@ -69,7 +69,7 @@ export type OverclaimGateResult = {
   detailEn: string;
   /** Machine-readable reason code. */
   reasonCode: string;
-  /** The specific matched text snippet that triggered this gate (if any). */
+  /** The specific matched text snippet that triggered this gate, when present. */
   matchedSnippet: string | null;
 };
 

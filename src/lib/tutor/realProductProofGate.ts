@@ -136,7 +136,7 @@ export interface ProductProofDimensionResult {
   shortcomingsVi: string[];
   /** Gate check: did this dimension pass the product bar? */
   passedProductBar: boolean;
-  /** Gate check: any critical failures in this dimension? */
+  /** Gate check: are there critical failures in this dimension? */
   hasCriticalFailure: boolean;
   /** Sub-gate results this dimension depended on */
   subGateResults: string[];

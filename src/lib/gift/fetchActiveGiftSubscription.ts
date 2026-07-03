@@ -9,7 +9,7 @@
 // even though `user_subscriptions` is the authoritative state.
 //
 // This helper queries `user_subscriptions` directly and returns the
-// active, non-expired gift redemption (if any) for the given user. It
+// active, non-expired gift redemption, when present, for the given user. It
 // is meant to be run alongside `fetchCurrentEntitlement` inside
 // `useEntitlements`; if the entitlement reports non-premium but a gift
 // sub exists, the hook overlays the gift sub's values onto the

@@ -25,6 +25,8 @@ declare global {
     __MB_TIER_REPORT__?: unknown;
     /** Room-perf timing anchor (ms, set in ChatHub, read in RoomRenderer). */
     __mbRoomPerfT0?: number;
+    /** Last repeat-target dispatch key for duplicate suppression. */
+    __mb_last_repeat_key?: string;
 
     /* ===============================
      * Runtime / observability hooks
