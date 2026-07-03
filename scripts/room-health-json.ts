@@ -12,7 +12,7 @@ type RoomJson = {
   id?: string;
   tier?: string;
   domain?: string;
-  title?: any;
+  title?: unknown;
   entries?: Array<{
     slug?: string;
     audio?: EntryAudio;
@@ -62,6 +62,14 @@ type RoomHealthReport = {
 // CONFIG – adjust for your repo
 const PUBLIC_DIR = path.resolve(process.cwd(), "public");
 const DATA_DIR = path.join(PUBLIC_DIR, "data");
+
+function isRecord(value: unknown): value is Record<string, unknown> {
+  return value !== null && typeof value === "object" && !Array.isArray(value);
+}
+
+function getErrorMessage(error: unknown): string {
+  return error instanceof Error ? error.message : "Unknown parse error";
+}
 
 // If you have a registry JSON of all slugs, plug it here.
 // For now we derive from filenames only.
@@ -166,12 +174,13 @@ async function main() {
 
     try {
       raw = fs.readFileSync(room.jsonPath, "utf8");
-      data = JSON.parse(raw);
+      const parsed: unknown = JSON.parse(raw);
+      data = isRecord(parsed) ? parsed : {};
       room.validJson = true;
-    } catch (err: any) {
+    } catch (err: unknown) {
       room.issues.push({
         type: "invalid_json",
-        message: `Invalid JSON: ${err?.message || "Unknown parse error"}`,
+        message: `Invalid JSON: ${getErrorMessage(err)}`,
       });
       room.healthScore = computeHealthScore(room);
       rooms.push(room);

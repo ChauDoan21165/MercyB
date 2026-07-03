@@ -42,7 +42,11 @@ function ensureDirExists(dir: string) {
   }
 }
 
-function readJsonSafe<T = any>(filePath: string): T | null {
+function isRecord(value: unknown): value is Record<string, unknown> {
+  return value !== null && typeof value === "object" && !Array.isArray(value);
+}
+
+function readJsonSafe<T = unknown>(filePath: string): T | null {
   if (!fs.existsSync(filePath)) return null;
   try {
     const raw = fs.readFileSync(filePath, "utf-8");
@@ -71,8 +75,13 @@ function collectRoomMetrics(): RoomMetrics {
 
   for (const file of files) {
     const fullPath = path.join(DATA_DIR, file);
-    const data = readJsonSafe<any>(fullPath);
-    if (data && data.id && Array.isArray(data.entries) && data.entries.length > 0) {
+    const data = readJsonSafe(fullPath);
+    if (
+      isRecord(data) &&
+      data.id &&
+      Array.isArray(data.entries) &&
+      data.entries.length > 0
+    ) {
       metrics.validRooms += 1;
     } else {
       metrics.invalidRooms += 1;
@@ -89,8 +98,8 @@ function collectAudioMetrics(): AudioMetrics {
     afterIntegrity: null,
   };
 
-  const status = readJsonSafe<any>(AUTOPILOT_STATUS_PATH);
-  if (status && typeof status.afterIntegrity === "number") {
+  const status = readJsonSafe(AUTOPILOT_STATUS_PATH);
+  if (isRecord(status) && typeof status.afterIntegrity === "number") {
     audio.hasAutopilotStatus = true;
     audio.beforeIntegrity =
       typeof status.beforeIntegrity === "number" ? status.beforeIntegrity : null;
