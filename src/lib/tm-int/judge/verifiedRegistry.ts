@@ -1,8 +1,9 @@
 export type VerifiedTeachingCase = {
-  tc_id: "TC-000001" | "TC-000002";
+  tc_id: "TC-000001" | "TC-000002" | "TC-000003";
   semantic_key:
     | "tc000001.placement_audio_unavailable"
-    | "tc000002.microphone_denied_during_speaking";
+    | "tc000002.microphone_denied_during_speaking"
+    | "tc000003.rapid_guessing_during_assessment";
   judge_decision: "promoted";
   judge_artifact: string;
   promoted_by: "ADMIN/JUDGE";
@@ -27,6 +28,15 @@ export const VERIFIED_TEACHING_CASES = [
     judge_artifact: "src/lib/tm-int/judge/decisions/TC-000002.json",
     promoted_by: "ADMIN/JUDGE",
     source_commit: "cd02dca61",
+    verified: true,
+  },
+  {
+    tc_id: "TC-000003",
+    semantic_key: "tc000003.rapid_guessing_during_assessment",
+    judge_decision: "promoted",
+    judge_artifact: "src/lib/tm-int/judge/decisions/TC-000003.json",
+    promoted_by: "ADMIN/JUDGE",
+    source_commit: "607a38af9",
     verified: true,
   },
 ] as const satisfies readonly VerifiedTeachingCase[];

@@ -1,0 +1,65 @@
+{
+  "tc_id": "TC-000003",
+  "name": "Rapid Guessing During Assessment",
+  "judge_decision": "promoted",
+  "promoted_by": "ADMIN/JUDGE",
+  "source_commit": "607a38af9",
+  "evidence": {
+    "dp_reason_only": "possible_rapid_guessing",
+    "dp_confidence_validity_evidence_based": {
+      "confidence": "medium_or_high_from_quick_wrong_count_and_average_response_time",
+      "assessment_validity": "questionable"
+    },
+    "alternative_explanations_preserved": [
+      "product_latency_issue",
+      "accidental_tap",
+      "question_too_easy",
+      "prior_knowledge"
+    ],
+    "ped_decision": {
+      "pause_assessment_flow": true,
+      "ask_confidence_check_question": true,
+      "offer_encouragement": true,
+      "optionally_slow_pacing": true,
+      "do_not_immediately_lower_placement": true
+    },
+    "lm_memory": {
+      "assessment_behavior_status": "needs_followup",
+      "reason": "possible_rapid_guessing",
+      "skill_mastery_reduced": false
+    },
+    "normal_fast_correct_case": {
+      "flagged": false
+    },
+    "replay": {
+      "pass": true,
+      "deterministic": true,
+      "failures": []
+    },
+    "test_coverage": [
+      "rapid wrong submissions",
+      "fast correct due easy/prior knowledge",
+      "accidental tap alternative",
+      "normal thoughtful response",
+      "no learner weakness inference",
+      "deterministic replay"
+    ],
+    "sqlite_candidate_rows": {
+      "required_fields_present": true,
+      "verified_before_promotion": 0,
+      "verified_after_promotion": 0
+    },
+    "gates": {
+      "typecheck": "PASS",
+      "eslint": "PASS",
+      "tests": "PASS",
+      "diff_check": "PASS"
+    }
+  },
+  "verified": true,
+  "notes": [
+    "Judge promotion is scoped only to TC-000003.",
+    "Candidate workpack rows remain verified=false.",
+    "No new capabilities were built during promotion."
+  ]
+}
