@@ -105,6 +105,50 @@ describe("contentAwarePivots", () => {
     expect(decision.reason).toBe("learner_declined_answer");
   });
 
+  it("uses stable topic labels when current topic label is blank", () => {
+    const decision = classifyContentAwarePivot({
+      learnerText: "Yes.",
+      currentTopicId: "custom-topic",
+      topicLabel: "   ",
+    });
+
+    expect(decision.contentType).toBe("too_short");
+    expect(decision.topicId).toBe("custom-topic");
+    expect(decision.topicLabel).toBe("custom-topic");
+    expect(decision.safeTeacherMove).not.toMatch(/\s{2,}/);
+  });
+
+  it("normalizes help requests across punctuation, romanized Vietnamese, and answer variants", () => {
+    const examples = [
+      "I DON'T KNOW!!!",
+      "khong biet",
+      "How can I answer?",
+      "Please help.",
+    ];
+
+    for (const learnerText of examples) {
+      const decision = classifyContentAwarePivot({
+        learnerText,
+        currentTopicId: "family",
+        topicLabel: "Family",
+      });
+
+      expect(decision.contentType, learnerText).toBe("help_request");
+      expect(decision.pivotAction, learnerText).toBe("encourage_expand");
+      expect(decision.safeTeacherMove, learnerText).toMatch(/model sentence/i);
+    }
+  });
+
+  it("does not treat normal past-tense helped as a help request", () => {
+    const decision = classifyContentAwarePivot({
+      learnerText: "I helped my friend after work.",
+      currentTopicId: "family",
+      topicLabel: "Family",
+    });
+
+    expect(decision.contentType).not.toBe("help_request");
+  });
+
   it("invites expansion for emotion or opinion", () => {
     const decision = classifyContentAwarePivot({
       learnerText: "I feel tired after work.",

@@ -73,12 +73,13 @@ function normalizeTopicId(topicId: string | undefined): string {
 }
 
 function labelForTopic(topic: SpeakConversationTopic | string | null, fallback?: string): string | null {
-  if (!topic) return fallback ?? null;
-  return TOPIC_LABELS[topic as SpeakConversationTopic] ?? fallback ?? compact(topic);
+  const fallbackLabel = compact(fallback ?? "");
+  if (!topic) return fallbackLabel || null;
+  return TOPIC_LABELS[topic as SpeakConversationTopic] ?? (fallbackLabel || compact(topic));
 }
 
 function isHelpRequest(normalized: string): boolean {
-  return /\b(i do not know|i don't know|i am not sure|i'm not sure|im not sure|not sure|dont know|don't know|i have no idea|help me|can you help|please help|can you give me an example|give me an example|example please|how to say|how do i say|what should i say|what does that mean)\b/.test(
+  return /\b(i do not know|i don't know|i am not sure|i'm not sure|im not sure|not sure|dont know|don't know|i have no idea|khong biet|help me|can you help|please help|can you give me an example|give me an example|example please|how to say|how do i say|how can i answer|what should i say|what does that mean)\b/.test(
     normalized,
   );
 }
