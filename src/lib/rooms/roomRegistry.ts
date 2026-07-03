@@ -42,6 +42,47 @@ export interface RoomMeta {
   hasData: boolean;
 }
 
+type RawRoomEntry = {
+  keywords_en?: unknown;
+  keywords_vi?: unknown;
+  keywordsEn?: unknown;
+  keywordsVi?: unknown;
+  tags?: unknown;
+};
+
+type RawRoomData = {
+  id?: unknown;
+  tier?: unknown;
+  tierId?: unknown;
+  accessTier?: unknown;
+  domain?: string | null;
+  title?: {
+    en?: unknown;
+    vi?: unknown;
+  } | null;
+  title_en?: unknown;
+  title_vi?: unknown;
+  titleEn?: unknown;
+  titleVi?: unknown;
+  name?: unknown;
+  name_vi?: unknown;
+  nameEn?: unknown;
+  nameVi?: unknown;
+  keywords?: unknown;
+  keywords_en?: unknown;
+  keywords_vi?: unknown;
+  keywordsEn?: unknown;
+  keywordsVi?: unknown;
+  keywordMenu?: {
+    en?: unknown;
+    vi?: unknown;
+  } | null;
+  tags?: unknown;
+  entries?: RawRoomEntry[] | null;
+  hasData?: unknown;
+  has_data?: unknown;
+};
+
 // Cache for room registry
 let roomRegistryCache: RoomMeta[] | null = null;
 let roomRegistryPromise: Promise<RoomMeta[]> | null = null;
@@ -58,7 +99,7 @@ const normalizeRoomId = (raw: string) =>
     .replace(/__+/g, "_");
 
 /** Lowercase + de-dupe + trim list */
-function cleanList(values: any[]): string[] {
+function cleanList(values: unknown[]): string[] {
   return [
     ...new Set(
       values
@@ -68,7 +109,7 @@ function cleanList(values: any[]): string[] {
   ];
 }
 
-function pickTitles(roomData: any): { en: string; vi: string } {
+function pickTitles(roomData: RawRoomData): { en: string; vi: string } {
   // Supports multiple formats:
   // 1) title: { en, vi }
   // 2) name + name_vi
@@ -96,21 +137,21 @@ function pickTitles(roomData: any): { en: string; vi: string } {
   return { en, vi };
 }
 
-function toArray(v: any): any[] {
+function toArray(v: unknown): unknown[] {
   if (!v) return [];
   if (Array.isArray(v)) return v;
   if (typeof v === "string") return [v];
   return [];
 }
 
-function pickKeywords(roomData: any): { en: string[]; vi: string[] } {
+function pickKeywords(roomData: RawRoomData): { en: string[]; vi: string[] } {
   // Room-level keyword variants:
   // - keywords_en / keywords_vi
   // - keywordsEn / keywordsVi
   // - keywordMenu: { en, vi }
   // - keywords: string[] (single list)
-  const en: any[] = [];
-  const vi: any[] = [];
+  const en: unknown[] = [];
+  const vi: unknown[] = [];
 
   en.push(...toArray(roomData?.keywords_en));
   vi.push(...toArray(roomData?.keywords_vi));
@@ -141,8 +182,8 @@ function pickKeywords(roomData: any): { en: string[]; vi: string[] } {
   return { en: cleanList(en), vi: cleanList(vi) };
 }
 
-function pickTags(roomData: any): string[] {
-  const tags: any[] = [];
+function pickTags(roomData: RawRoomData): string[] {
+  const tags: unknown[] = [];
 
   // Entry-level tags (old behavior)
   if (Array.isArray(roomData?.entries)) {
@@ -157,7 +198,7 @@ function pickTags(roomData: any): string[] {
   return cleanList(tags);
 }
 
-function inferTier(roomId: string, roomData: any): TierId {
+function inferTier(roomId: string, roomData: RawRoomData): TierId {
   // Prefer explicit tier if present, but normalize.
   // If missing/garbage, infer from ID (VIP3II -> Level 3 collapse handled in tierFromRoomId).
   const raw = roomData?.tier ?? roomData?.tierId ?? roomData?.accessTier ?? "";
@@ -175,8 +216,8 @@ function inferTier(roomId: string, roomData: any): TierId {
 /**
  * Build registry from roomFetcher (async).
  */
-async function getRawRooms(): Promise<any[]> {
-  return (await fetchAllRooms()) as any[];
+async function getRawRooms(): Promise<RawRoomData[]> {
+  return fetchAllRooms();
 }
 
 /**
@@ -206,7 +247,7 @@ async function buildRegistryAsync(): Promise<RoomMeta[]> {
       const title_vi = rawTitleVi || rawTitleEn || "";
 
       const tier = inferTier(id, roomData);
-      const domain = getDomainCategory(id, (roomData as any)?.domain);
+      const domain = getDomainCategory(id, roomData.domain);
       const { en: keywords_en, vi: keywords_vi } = pickKeywords(roomData);
       const tags = pickTags(roomData);
 
