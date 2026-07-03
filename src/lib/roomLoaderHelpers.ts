@@ -21,6 +21,16 @@
 // Pre-compiled regex patterns for performance
 const WHITESPACE_SPLIT = /\s+/;
 
+type RoomEntryLike = Record<string, unknown>;
+
+function asRecord(value: unknown): RoomEntryLike {
+  return value && typeof value === "object" && !Array.isArray(value) ? value as RoomEntryLike : {};
+}
+
+function readRecord(record: RoomEntryLike, key: string): RoomEntryLike {
+  return asRecord(record[key]);
+}
+
 /**
  * Normalize audio filename - strips any path prefixes, returns just filename
  * This is the canonical normalizer for room entry audio fields.
@@ -50,7 +60,7 @@ export const normalizeAudioFilename = (
  * Returns FILENAMES ONLY (no paths) - path construction happens at UI layer
  */
 export const processAudioField = (
-  audioRaw: any
+  audioRaw: unknown
 ): { audioFilename?: string; audioPlaylist?: string[] } => {
   if (!audioRaw) return {};
 
@@ -90,32 +100,34 @@ export const processAudioField = (
  * ALSO SUPPORTED: entry.audio as object { en, vi, ... }
  * LEGACY: audio_en, audioEn (deprecated - migrate to audio)
  */
-export const getAudioFilename = (entry: any): string | null => {
+export const getAudioFilename = (entry: unknown): string | null => {
+  const entryRecord = asRecord(entry);
   // Canonical field first
-  if (entry?.audio && typeof entry.audio === "string") {
-    const v = entry.audio.trim();
+  if (entryRecord.audio && typeof entryRecord.audio === "string") {
+    const v = entryRecord.audio.trim();
     return v ? v : null;
   }
 
   // Supported object format { en: "...", vi: "..." }
-  if (entry?.audio && typeof entry.audio === "object") {
+  const audioRecord = asRecord(entryRecord.audio);
+  if (Object.keys(audioRecord).length > 0) {
     const val =
-      entry.audio.en ??
-      entry.audio.vi ??
+      audioRecord.en ??
+      audioRecord.vi ??
       // if some other language key exists, take first value
-      Object.values(entry.audio)[0];
+      Object.values(audioRecord)[0];
 
     const s = val ? String(val).trim() : "";
     return s ? s : null;
   }
 
   // Minimal legacy fallbacks
-  if (entry?.audio_en) {
-    const s = String(entry.audio_en).trim();
+  if (entryRecord.audio_en) {
+    const s = String(entryRecord.audio_en).trim();
     return s ? s : null;
   }
-  if (entry?.audioEn) {
-    const s = String(entry.audioEn).trim();
+  if (entryRecord.audioEn) {
+    const s = String(entryRecord.audioEn).trim();
     return s ? s : null;
   }
 
@@ -129,7 +141,8 @@ export const getAudioFilename = (entry: any): string | null => {
  *
  * Logs warning if audio is missing to help with content fixes.
  */
-export const extractAudio = (entry: any, roomId?: string): any => {
+export const extractAudio = (entry: unknown, roomId?: string): string | null => {
+  const entryRecord = asRecord(entry);
   const filename = getAudioFilename(entry);
 
   if (filename) {
@@ -139,7 +152,7 @@ export const extractAudio = (entry: any, roomId?: string): any => {
   // No audio found - log warning in development only
   if (import.meta.env.DEV) {
     const identifier =
-      entry?.slug || entry?.id || entry?.artifact_id || "unknown-entry";
+      entryRecord.slug || entryRecord.id || entryRecord.artifact_id || "unknown-entry";
 
     console.warn(
       `⚠️ Missing audio: Room "${roomId || "unknown"}" → Entry "${identifier}"`,
@@ -155,22 +168,25 @@ export const extractAudio = (entry: any, roomId?: string): any => {
  * CANONICAL: entry.copy.en + entry.copy.vi
  * LEGACY: copy_en, copy_vi, essay.en, essay.vi (deprecated - migrate to copy.en/vi)
  */
-export const extractContent = (entry: any) => {
+export const extractContent = (entry: unknown) => {
+  const entryRecord = asRecord(entry);
+  const copy = readRecord(entryRecord, "copy");
+  const essay = readRecord(entryRecord, "essay");
   // Canonical nested structure
   const replyEn =
-    entry.copy?.en ||
+    copy.en ||
     // Legacy flat fields (deprecated)
-    entry.copy_en ||
-    entry.essay?.en ||
-    entry.essay_en ||
+    entryRecord.copy_en ||
+    essay.en ||
+    entryRecord.essay_en ||
     "";
 
   const replyVi =
-    entry.copy?.vi ||
+    copy.vi ||
     // Legacy flat fields (deprecated)
-    entry.copy_vi ||
-    entry.essay?.vi ||
-    entry.essay_vi ||
+    entryRecord.copy_vi ||
+    essay.vi ||
+    entryRecord.essay_vi ||
     "";
 
   return { replyEn, replyVi };
@@ -179,9 +195,11 @@ export const extractContent = (entry: any) => {
 /**
  * Extract title from entry - handles various formats
  */
-export const extractTitle = (entry: any) => {
-  const titleEn = typeof entry.title === "object" ? entry.title?.en : entry.title;
-  const titleVi = typeof entry.title === "object" ? entry.title?.vi : "";
+export const extractTitle = (entry: unknown) => {
+  const entryRecord = asRecord(entry);
+  const title = readRecord(entryRecord, "title");
+  const titleEn = title.en ?? entryRecord.title;
+  const titleVi = title.vi ?? "";
   return { titleEn, titleVi };
 };
 
@@ -195,20 +213,21 @@ export const extractTitle = (entry: any) => {
  * @param roomId - Optional room ID for better error logging
  */
 export const processEntry = (
-  entry: any,
+  entry: unknown,
   idx: number,
   seenKeywords: Set<string>,
   roomId?: string
 ) => {
+  const entryRecord = asRecord(entry);
   // Extract keywords for keyword menu
   let keywords: { en: string; vi: string } | null = null;
 
-  if (Array.isArray(entry.keywords_en) && Array.isArray(entry.keywords_vi)) {
-    const maxLen = Math.max(entry.keywords_en.length, entry.keywords_vi.length);
+  if (Array.isArray(entryRecord.keywords_en) && Array.isArray(entryRecord.keywords_vi)) {
+    const maxLen = Math.max(entryRecord.keywords_en.length, entryRecord.keywords_vi.length);
 
     for (let i = 0; i < maxLen; i++) {
-      const en = entry.keywords_en[i] ? String(entry.keywords_en[i]).trim() : "";
-      const vi = entry.keywords_vi[i] ? String(entry.keywords_vi[i]).trim() : "";
+      const en = entryRecord.keywords_en[i] ? String(entryRecord.keywords_en[i]).trim() : "";
+      const vi = entryRecord.keywords_vi[i] ? String(entryRecord.keywords_vi[i]).trim() : "";
 
       if (en) {
         const normalizedEn = en.toLowerCase();
@@ -221,8 +240,8 @@ export const processEntry = (
   } else {
     // Fallback: use title or identifier
     const { titleEn, titleVi } = extractTitle(entry);
-    const en = String(titleEn || entry.identifier || entry.slug || "").trim();
-    const vi = String(titleVi || entry.identifier || entry.slug || "").trim();
+    const en = String(titleEn || entryRecord.identifier || entryRecord.slug || "").trim();
+    const vi = String(titleVi || entryRecord.identifier || entryRecord.slug || "").trim();
 
     if (en) {
       const normalizedEn = en.toLowerCase();
@@ -243,19 +262,19 @@ export const processEntry = (
 
   // Get primary keywords for entry
   const keywordEn =
-    Array.isArray(entry.keywords_en) && entry.keywords_en.length > 0
-      ? entry.keywords_en[0]
-      : entry.identifier || entry.slug || `entry-${idx}`;
+    Array.isArray(entryRecord.keywords_en) && entryRecord.keywords_en.length > 0
+      ? entryRecord.keywords_en[0]
+      : entryRecord.identifier || entryRecord.slug || `entry-${idx}`;
 
   const keywordVi =
-    Array.isArray(entry.keywords_vi) && entry.keywords_vi.length > 0
-      ? entry.keywords_vi[0]
-      : entry.identifier || entry.slug || "";
+    Array.isArray(entryRecord.keywords_vi) && entryRecord.keywords_vi.length > 0
+      ? entryRecord.keywords_vi[0]
+      : entryRecord.identifier || entryRecord.slug || "";
 
   // Transform entry - audio contains FILENAME ONLY (no path prefix)
   const transformedEntry = {
-    ...entry,
-    slug: entry.slug || entry.identifier,
+    ...entryRecord,
+    slug: entryRecord.slug || entryRecord.identifier,
     audio: audioFilename, // Just filename, e.g. "anx_level3_1_en.mp3"
     audioPlaylist, // Array of filenames
     keywordEn,
@@ -275,11 +294,11 @@ export const processEntry = (
  * @param entries - Array of room entries to process
  * @param roomId - Optional room ID for better error logging
  */
-export const processEntriesOptimized = (entries: any[], roomId?: string) => {
+export const processEntriesOptimized = (entries: unknown[], roomId?: string) => {
   const enList: string[] = [];
   const viList: string[] = [];
   const seenKeywords = new Set<string>();
-  const transformedEntries: any[] = [];
+  const transformedEntries: RoomEntryLike[] = [];
 
   entries.forEach((entry, idx) => {
     const { keywords, transformedEntry } = processEntry(

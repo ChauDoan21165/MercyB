@@ -76,6 +76,10 @@ export interface MercyMemoryV2 {
 
 const MEMORY_KEY = 'mercy_host_memory';
 
+function asRecord(value: unknown): Record<string, unknown> {
+  return value && typeof value === 'object' && !Array.isArray(value) ? value as Record<string, unknown> : {};
+}
+
 const DEFAULT_MEMORY: MercyMemoryV2 = {
   version: MEMORY_SCHEMA_VERSION,
   userName: null,
@@ -241,15 +245,16 @@ export function migrateMemory(data: Record<string, unknown>): MercyMemoryV2 {
     migrated.teacherLevel = ['gentle', 'normal', 'intense'].includes(data.teacherLevel as string)
       ? data.teacherLevel as TeacherLevel
       : 'normal';
+    const englishProgress = asRecord(data.englishProgress);
     migrated.englishProgress = {
-      roomsVisited: Array.isArray((data.englishProgress as any)?.roomsVisited) 
-        ? (data.englishProgress as any).roomsVisited 
+      roomsVisited: Array.isArray(englishProgress.roomsVisited)
+        ? englishProgress.roomsVisited.filter((room): room is string => typeof room === 'string')
         : [],
-      entriesCompleted: typeof (data.englishProgress as any)?.entriesCompleted === 'number'
-        ? (data.englishProgress as any).entriesCompleted
+      entriesCompleted: typeof englishProgress.entriesCompleted === 'number'
+        ? englishProgress.entriesCompleted
         : 0,
-      lastEfVisitISO: typeof (data.englishProgress as any)?.lastEfVisitISO === 'string'
-        ? (data.englishProgress as any).lastEfVisitISO
+      lastEfVisitISO: typeof englishProgress.lastEfVisitISO === 'string'
+        ? englishProgress.lastEfVisitISO
         : null
     };
     migrated.totalRoomEnters = typeof data.totalRoomEnters === 'number' ? data.totalRoomEnters : 0;
