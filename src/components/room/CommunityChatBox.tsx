@@ -1,4 +1,5 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
+import type { User } from "@supabase/supabase-js";
 import { supabase } from "@/lib/supabaseClient";
 
 type ChatMsg = {
@@ -19,6 +20,12 @@ function shortEmail(email: string) {
   return `${head}@${domain}`;
 }
 
+function getErrorMessage(error: unknown, fallback: string) {
+  if (error instanceof Error) return error.message;
+  if (typeof error === "string" && error.trim()) return error;
+  return fallback;
+}
+
 export default function CommunityChatBox({
   roomId,
   disabled,
@@ -28,7 +35,7 @@ export default function CommunityChatBox({
 }) {
   const [open, setOpen] = useState(true);
 
-  const [authUser, setAuthUser] = useState<any | null>(null);
+  const [authUser, setAuthUser] = useState<User | null>(null);
 
   const [rows, setRows] = useState<ChatMsg[]>([]);
   const [loading, setLoading] = useState(false);
@@ -88,9 +95,9 @@ export default function CommunityChatBox({
 
         if (error) throw error;
         setRows(Array.isArray(data) ? (data as ChatMsg[]) : []);
-      } catch (e: any) {
+      } catch (e: unknown) {
         if (cancelled) return;
-        setErr(String(e?.message || e || "Failed to load chat"));
+        setErr(getErrorMessage(e, "Failed to load chat"));
         setRows([]);
       } finally {
         if (!cancelled) setLoading(false);
@@ -158,8 +165,8 @@ export default function CommunityChatBox({
 
       setText("");
       // realtime insert will append the message
-    } catch (e: any) {
-      setErr(String(e?.message || e || "Failed to send"));
+    } catch (e: unknown) {
+      setErr(getErrorMessage(e, "Failed to send"));
     } finally {
       setSending(false);
     }
