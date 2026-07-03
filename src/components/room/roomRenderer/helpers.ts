@@ -7,7 +7,30 @@ import type { TierId } from "@/lib/constants/tiers";
 import { normalizeTier } from "@/lib/constants/tiers";
 import { toAudioKey } from "@/lib/roomAudioResolver";
 
-export type AnyRoom = any;
+type LocalizedFields = Partial<Record<"en" | "vi", unknown>>;
+
+export type AnyRoom = Record<string, unknown> & {
+  title?: LocalizedFields;
+  name?: LocalizedFields;
+  intro?: LocalizedFields;
+  description?: LocalizedFields;
+  summary?: LocalizedFields;
+  meta?: { tier?: unknown };
+};
+
+type LegacyEntry = Record<string, unknown> & {
+  content?: LocalizedFields;
+  copy?: LocalizedFields;
+  audio?: unknown;
+  audio_en?: unknown;
+  id?: unknown;
+  keywords?: unknown;
+  keywords_en?: unknown;
+  keywords_vi?: unknown;
+  slug?: unknown;
+  tags?: unknown;
+  title?: unknown;
+};
 
 // ---------- title / intro / tier pickers ----------
 export function pickTitleENRaw(room: AnyRoom) {
@@ -66,7 +89,7 @@ export function shortUserId(id: string) {
 }
 
 // ---------- host context ----------
-export function dispatchHostContext(detail: Record<string, any>) {
+export function dispatchHostContext(detail: Record<string, unknown>) {
   try {
     if (typeof window === "undefined") return;
     window.dispatchEvent(new CustomEvent("mb:host-context", { detail }));
@@ -83,18 +106,18 @@ export function coreRoomIdFromEffective(effectiveRoomId: string) {
 }
 
 // ---------- DB “stub” detection ----------
-function hasMeaningfulText(e: any) {
+function hasMeaningfulText(e: LegacyEntry) {
   const en = String(e?.content?.en ?? "").trim();
   const vi = String(e?.content?.vi ?? "").trim();
   const en2 = String(e?.copy?.en ?? "").trim();
   const vi2 = String(e?.copy?.vi ?? "").trim();
   return en.length + vi.length + en2.length + vi2.length > 0;
 }
-function hasMeaningfulAudio(e: any) {
+function hasMeaningfulAudio(e: LegacyEntry) {
   const a = String(e?.audio_en ?? e?.audio ?? "").trim();
   return !!a;
 }
-function isLegacyStubEntry(e: any) {
+function isLegacyStubEntry(e: LegacyEntry) {
   const slug = String(e?.slug ?? "").trim();
   const id = String(e?.id ?? "").trim();
   return (
@@ -104,24 +127,25 @@ function isLegacyStubEntry(e: any) {
     id.includes("__legacy")
   );
 }
-export function isMeaningfulEntry(e: any) {
+export function isMeaningfulEntry(e: unknown) {
   if (!e || typeof e !== "object") return false;
-  if (isLegacyStubEntry(e)) return false;
+  const entry = e as LegacyEntry;
+  if (isLegacyStubEntry(entry)) return false;
   return (
-    hasMeaningfulText(e) ||
-    hasMeaningfulAudio(e) ||
-    Array.isArray(e?.keywords_en) ||
-    Array.isArray(e?.keywords_vi) ||
-    Array.isArray(e?.keywords) ||
-    Array.isArray(e?.tags)
+    hasMeaningfulText(entry) ||
+    hasMeaningfulAudio(entry) ||
+    Array.isArray(entry.keywords_en) ||
+    Array.isArray(entry.keywords_vi) ||
+    Array.isArray(entry.keywords) ||
+    Array.isArray(entry.tags)
   );
 }
 
 // ---------- legacy coercion (JSON / mixed schemas) ----------
-export function coerceLegacyEntryShape(entry: any) {
+export function coerceLegacyEntryShape(entry: unknown) {
   if (!entry || typeof entry !== "object") return entry;
 
-  const e: any = { ...entry };
+  const e: LegacyEntry = { ...entry };
 
   // 1) copy{} -> content{}
   if (!e.content && e.copy && typeof e.copy === "object") {
@@ -141,7 +165,7 @@ export function coerceLegacyEntryShape(entry: any) {
 
   // 3) merge keywords/tags -> keywords[] (normalized) so entryMatchesKeyword() works
   const bag: string[] = [];
-  const pushMany = (arr: any) => {
+  const pushMany = (arr: unknown) => {
     if (!Array.isArray(arr)) return;
     for (const x of arr) {
       const s = String(x ?? "").trim();
@@ -175,7 +199,7 @@ export function coerceLegacyEntryShape(entry: any) {
   return e;
 }
 
-export function entryKey(e: any) {
+export function entryKey(e: LegacyEntry) {
   const slug = String(e?.slug ?? "").trim();
   const id = String(e?.id ?? "").trim();
   const audio = String(e?.audio_en ?? e?.audio ?? "").trim();
