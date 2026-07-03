@@ -19,6 +19,16 @@ if (!supabaseUrl || !supabaseKey) {
 
 const supabase = createClient(supabaseUrl, supabaseKey);
 
+type JsonRecord = Record<string, unknown>;
+
+function isRecord(value: unknown): value is JsonRecord {
+  return value !== null && typeof value === 'object' && !Array.isArray(value);
+}
+
+function getErrorMessage(error: unknown): string {
+  return error instanceof Error ? error.message : String(error);
+}
+
 // Convert filename to room ID (e.g., "AI_vip1.json" -> "ai-vip1")
 function filenameToRoomId(filename: string): string {
   return filename
@@ -29,12 +39,15 @@ function filenameToRoomId(filename: string): string {
 }
 
 // Extract keywords from entries
-function extractKeywords(entries: any[]): string[] {
+function extractKeywords(entries: unknown[]): string[] {
   const keywords = new Set<string>();
   
   if (!entries || !Array.isArray(entries)) return [];
   
-  entries.forEach(entry => {
+  entries.forEach((entryValue) => {
+    if (!isRecord(entryValue)) return;
+    const entry = entryValue;
+
     if (entry.keywords && Array.isArray(entry.keywords)) {
       entry.keywords.forEach((kw: string) => keywords.add(kw.toLowerCase()));
     }
@@ -48,8 +61,9 @@ function extractKeywords(entries: any[]): string[] {
     }
     
     // Add title words as keywords
-    if (entry.title?.en) {
-      entry.title.en.toLowerCase().split(/\s+/).forEach((word: string) => {
+    const title = isRecord(entry.title) ? entry.title : {};
+    if (typeof title.en === 'string') {
+      title.en.toLowerCase().split(/\s+/).forEach((word: string) => {
         if (word.length > 3) keywords.add(word);
       });
     }
@@ -59,7 +73,7 @@ function extractKeywords(entries: any[]): string[] {
 }
 
 // Determine tier from filename or content
-function determineTier(filename: string, data: any): string {
+function determineTier(filename: string, data: JsonRecord): string {
   const lowerFilename = filename.toLowerCase();
   
   if (lowerFilename.includes('vip4')) return 'vip4';
@@ -69,8 +83,9 @@ function determineTier(filename: string, data: any): string {
   if (lowerFilename.includes('free')) return 'free';
   
   // Check in data
-  if (data.tier) return data.tier;
-  if (data.meta?.tier) return data.meta.tier;
+  if (typeof data.tier === 'string') return data.tier;
+  const meta = isRecord(data.meta) ? data.meta : {};
+  if (typeof meta.tier === 'string') return meta.tier;
   
   return 'free'; // Default to free
 }
@@ -92,24 +107,33 @@ async function importAllRooms() {
     try {
       const filePath = join(dataDir, filename);
       const fileContent = readFileSync(filePath, 'utf-8');
-      const roomData = JSON.parse(fileContent);
+      const parsed: unknown = JSON.parse(fileContent);
+      if (!isRecord(parsed)) {
+        throw new Error('Room JSON root is not an object');
+      }
+      const roomData = parsed;
+      const title = isRecord(roomData.title) ? roomData.title : null;
+      const roomEssay = isRecord(roomData.room_essay) ? roomData.room_essay : null;
+      const safetyDisclaimer = isRecord(roomData.safety_disclaimer) ? roomData.safety_disclaimer : null;
+      const crisisFooter = isRecord(roomData.crisis_footer) ? roomData.crisis_footer : null;
+      const entries = Array.isArray(roomData.entries) ? roomData.entries : [];
 
       const roomId = filenameToRoomId(filename);
       const tier = determineTier(filename, roomData);
-      const keywords = extractKeywords(roomData.entries || []);
+      const keywords = extractKeywords(entries);
 
       const roomRecord = {
         id: roomId,
         schema_id: roomData.schema_id || roomData.id || roomId,
-        title_en: roomData.title?.en || roomData.name || roomData.title || filename.replace('.json', ''),
-        title_vi: roomData.title?.vi || roomData.name_vi || roomData.title?.en || filename.replace('.json', ''),
-        room_essay_en: roomData.room_essay?.en || roomData.description || '',
-        room_essay_vi: roomData.room_essay?.vi || roomData.description_vi || '',
-        safety_disclaimer_en: roomData.safety_disclaimer?.en || '',
-        safety_disclaimer_vi: roomData.safety_disclaimer?.vi || '',
-        crisis_footer_en: roomData.crisis_footer?.en || '',
-        crisis_footer_vi: roomData.crisis_footer?.vi || '',
-        entries: roomData.entries || [],
+        title_en: title?.en || roomData.name || roomData.title || filename.replace('.json', ''),
+        title_vi: title?.vi || roomData.name_vi || title?.en || filename.replace('.json', ''),
+        room_essay_en: roomEssay?.en || roomData.description || '',
+        room_essay_vi: roomEssay?.vi || roomData.description_vi || '',
+        safety_disclaimer_en: safetyDisclaimer?.en || '',
+        safety_disclaimer_vi: safetyDisclaimer?.vi || '',
+        crisis_footer_en: crisisFooter?.en || '',
+        crisis_footer_vi: crisisFooter?.vi || '',
+        entries,
         keywords: keywords,
         tier: tier,
       };
@@ -151,9 +175,10 @@ async function importAllRooms() {
           imported++;
         }
       }
-    } catch (err: any) {
-      console.error(`❌ Failed to process ${filename}:`, err.message);
-      errorDetails.push(`${filename}: ${err.message}`);
+    } catch (err: unknown) {
+      const message = getErrorMessage(err);
+      console.error(`❌ Failed to process ${filename}:`, message);
+      errorDetails.push(`${filename}: ${message}`);
       errors++;
     }
   }

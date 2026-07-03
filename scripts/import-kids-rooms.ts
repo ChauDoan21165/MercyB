@@ -27,6 +27,20 @@ interface KidsEntry {
   is_active: boolean;
 }
 
+type JsonRecord = Record<string, unknown>;
+
+function isRecord(value: unknown): value is JsonRecord {
+  return value !== null && typeof value === 'object' && !Array.isArray(value);
+}
+
+function stringValue(value: unknown): string {
+  return typeof value === 'string' ? value : '';
+}
+
+function getErrorMessage(error: unknown): string {
+  return error instanceof Error ? error.message : String(error);
+}
+
 async function importKidsRooms() {
   console.log('🚀 Starting kids room import...\n');
   
@@ -48,7 +62,11 @@ async function importKidsRooms() {
     try {
       const filePath = join(dataDir, filename);
       const fileContent = readFileSync(filePath, 'utf-8');
-      const roomData = JSON.parse(fileContent);
+      const parsed: unknown = JSON.parse(fileContent);
+      if (!isRecord(parsed)) {
+        throw new Error('Room JSON root is not an object');
+      }
+      const roomData = parsed;
       
       // Extract room ID from filename
       // e.g., "family_home_words_kids_l1.json" -> "family-home"
@@ -74,22 +92,25 @@ async function importKidsRooms() {
       // Process entries
       const entries: KidsEntry[] = [];
       
-      if (roomData.entries && Array.isArray(roomData.entries)) {
-        roomData.entries.forEach((entry: any, index: number) => {
+      if (Array.isArray(roomData.entries)) {
+        roomData.entries.forEach((entryValue, index: number) => {
+          const entry = isRecord(entryValue) ? entryValue : {};
           // Handle different entry structures
           let contentEn = '';
           let contentVi = '';
           
-          if (entry.copy) {
-            contentEn = entry.copy.en || '';
-            contentVi = entry.copy.vi || '';
-          } else if (entry.content) {
-            contentEn = entry.content.en || '';
-            contentVi = entry.content.vi || '';
+          const copy = isRecord(entry.copy) ? entry.copy : null;
+          const content = isRecord(entry.content) ? entry.content : null;
+          if (copy) {
+            contentEn = stringValue(copy.en);
+            contentVi = stringValue(copy.vi);
+          } else if (content) {
+            contentEn = stringValue(content.en);
+            contentVi = stringValue(content.vi);
           }
           
           // Extract audio URL
-          let audioUrl = entry.audio || entry.audio_url || null;
+          let audioUrl = stringValue(entry.audio) || stringValue(entry.audio_url) || null;
           
           // If audio is relative path, ensure it's proper
           if (audioUrl && !audioUrl.startsWith('http')) {
@@ -126,8 +147,8 @@ async function importKidsRooms() {
         console.log(`   ⚠️  No entries found in ${filename}`);
       }
       
-    } catch (err: any) {
-      console.error(`❌ Failed to process ${filename}:`, err.message);
+    } catch (err: unknown) {
+      console.error(`❌ Failed to process ${filename}:`, getErrorMessage(err));
       errors++;
     }
   }
