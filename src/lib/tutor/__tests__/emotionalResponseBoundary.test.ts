@@ -101,6 +101,52 @@ describe("classifyResponseStance", () => {
     }
   });
 
+  it("keeps pause priority above ordinary salience", () => {
+    expect(
+      classifyResponseStance({
+        learnerText: "I feel unsafe and tired.",
+        salience: ordinarySalience,
+      }),
+    ).toMatchObject({
+      stance: "needs_pause",
+      reason: "safety_adjacent_or_distress_like_content",
+      priority: 100,
+    });
+  });
+
+  it("keeps clarification above mild acknowledgment", () => {
+    expect(classifyResponseStance({ learnerText: "I am tired and confused." })).toMatchObject({
+      stance: "needs_clarification",
+      reason: "learner_reply_unclear",
+      priority: 70,
+    });
+  });
+
+  it("handles punctuation around Vietnamese distress phrases", () => {
+    for (const learnerText of [
+      "Tôi rất sợ...",
+      "toi so (tai nan)",
+    ]) {
+      expect(classifyResponseStance({ learnerText }), learnerText).toMatchObject({
+        stance: "needs_pause",
+        reason: "safety_adjacent_or_distress_like_content",
+      });
+    }
+  });
+
+  it("does not match distress or mild-emotion substrings inside longer words", () => {
+    for (const learnerText of [
+      "We planned a picnic in Sonoma.",
+      "The catalog has a sofa design.",
+      "This sentence mentions sadnesses as a grammar example.",
+    ]) {
+      expect(classifyResponseStance({ learnerText }), learnerText).toMatchObject({
+        stance: "neutral",
+        reason: "no_response_stance_signal",
+      });
+    }
+  });
+
   it("trusts high-stakes salience even when the matched text is broad", () => {
     expect(
       classifyResponseStance({
@@ -115,7 +161,7 @@ describe("classifyResponseStance", () => {
 
   it("does not put diagnosis wording in exported advisory copy", () => {
     expect(Object.values(RESPONSE_STANCE_ADVISORY_COPY).join(" ")).not.toMatch(
-      /diagnos|depress|anxiety|trauma|therapy|therapist|mental health|clinical|disorder/i,
+      /diagnos|depress|anxiety|trauma|therapy|therapist|mental health|clinical|disorder|treatment|symptom|counsel/i,
     );
   });
 
