@@ -10,6 +10,14 @@
 
 type ResolveFn<R> = (value: R | PromiseLike<R>) => void;
 type RejectFn = (reason?: unknown) => void;
+type WorkerResultFn = (result: unknown) => void;
+type WorkerJob = {
+  id: string;
+  fn: string;
+  data: unknown;
+  resolve: WorkerResultFn;
+  reject: RejectFn;
+};
 
 type WorkerMessage =
   | { id: string; ok: true; result: unknown }
@@ -95,10 +103,9 @@ export async function parseJSONInWorker<T>(jsonString: string): Promise<T> {
 export class WorkerPool {
   private readonly maxWorkers: number;
   private readonly idle: Worker[] = [];
-  private readonly busy: Map<string, { worker: Worker; resolve: ResolveFn<any>; reject: RejectFn }> =
+  private readonly busy: Map<string, WorkerJob & { worker: Worker }> =
     new Map();
-  private readonly queue: Array<{ id: string; fn: string; data: unknown; resolve: ResolveFn<any>; reject: RejectFn }> =
-    [];
+  private readonly queue: WorkerJob[] = [];
 
   constructor(maxWorkers: number = (typeof navigator !== "undefined" && navigator.hardwareConcurrency) ? navigator.hardwareConcurrency : 4) {
     this.maxWorkers = Math.max(1, maxWorkers);
@@ -107,7 +114,13 @@ export class WorkerPool {
   async execute<T, R>(task: (data: T) => R | Promise<R>, data: T): Promise<R> {
     return new Promise<R>((resolve, reject) => {
       const id = uid();
-      this.queue.push({ id, fn: task.toString(), data, resolve, reject });
+      this.queue.push({
+        id,
+        fn: task.toString(),
+        data,
+        resolve: (result: unknown) => resolve(result as R),
+        reject,
+      });
       this.pump();
     });
   }
@@ -166,7 +179,7 @@ export class WorkerPool {
       if (!worker) return;
 
       const job = this.queue.shift()!;
-      this.busy.set(job.id, { worker, resolve: job.resolve, reject: job.reject });
+      this.busy.set(job.id, { ...job, worker });
 
       const payload: WorkerRequest = { id: job.id, fn: job.fn, data: job.data };
       worker.postMessage(payload);

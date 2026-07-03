@@ -59,7 +59,7 @@ export async function verifyRoomIntegrity(
   
   if (!valid) {
     logger.error('Room integrity check failed', {
-      roomId: roomData.id,
+      roomId: typeof roomData.id === "string" ? roomData.id : undefined,
       expected: expectedHash,
       actual: actualHash,
     });
