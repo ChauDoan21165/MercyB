@@ -6,7 +6,7 @@ import {
   VisibilityAnalyzer,
   type TmRiFinding,
 } from "../index";
-import { runLinhLikeAudioFailureReplay } from "./replaySample";
+import { expectLinhLikeCriticalAudioFailureReplay, runLinhLikeAudioFailureReplay } from "./replaySample";
 
 const visibility = new VisibilityAnalyzer();
 const reachability = new ReachabilityAnalyzer();
@@ -173,7 +173,7 @@ export function ListeningTaskCard() {
 
     expect(analysis.observationPacket.findings.some((finding) => finding.educationalSeverity === "critical")).toBe(true);
     expect(analysis.trust.collapsePoint).toBeDefined();
-    expect(analysis.honesty.recommendations).toContain("withhold_cefr");
+    expectLinhLikeCriticalAudioFailureReplay(analysis);
   });
 });
 

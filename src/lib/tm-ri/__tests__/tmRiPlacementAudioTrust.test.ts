@@ -1,10 +1,15 @@
 import { describe, expect, it } from "vitest";
 import { RuntimeReplayEngine, type TmRiLearnerSignal, type TmRiRuntimeEvent } from "../index";
+import { expectLinhLikeCriticalAudioFailureReplay, runLinhLikeAudioFailureReplay } from "./replaySample";
 
 const analyze = (events: readonly TmRiRuntimeEvent[], signals: readonly TmRiLearnerSignal[] = []) =>
   new RuntimeReplayEngine().analyze(events, signals);
 
 describe("TM-RI placement audio and trust intelligence", () => {
+  it("replays Linh-like audio failure through observation, repair, and graph outputs", () => {
+    expectLinhLikeCriticalAudioFailureReplay(runLinhLikeAudioFailureReplay());
+  });
+
   it("marks guessed completion after unavailable audio as critical educational harm with trust collapse", () => {
     const analysis = analyze(
       [
