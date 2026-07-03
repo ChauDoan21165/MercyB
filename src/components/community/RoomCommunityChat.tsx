@@ -27,6 +27,12 @@ function shortEmail(email?: string | null) {
   return `${head}@${domain}`.toUpperCase();
 }
 
+function errorMessage(error: unknown, fallback: string) {
+  if (error instanceof Error && error.message) return error.message;
+  if (typeof error === "string" && error) return error;
+  return fallback;
+}
+
 export default function RoomCommunityChat({
   roomId,
   className = "",
@@ -69,8 +75,8 @@ export default function RoomCommunityChat({
       setMessages(Array.isArray(data) ? (data as Msg[]) : []);
       // scroll after paint
       setTimeout(scrollToBottom, 0);
-    } catch (e: any) {
-      setError(String(e?.message || e || "Failed to load chat"));
+    } catch (e: unknown) {
+      setError(errorMessage(e, "Failed to load chat"));
     } finally {
       setLoading(false);
     }
@@ -105,8 +111,8 @@ export default function RoomCommunityChat({
 
       setText("");
       await load();
-    } catch (e: any) {
-      setError(String(e?.message || e || "Failed to send"));
+    } catch (e: unknown) {
+      setError(errorMessage(e, "Failed to send"));
     } finally {
       setSending(false);
     }
