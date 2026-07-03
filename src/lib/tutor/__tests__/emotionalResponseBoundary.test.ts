@@ -58,6 +58,26 @@ describe("classifyResponseStance", () => {
     });
   });
 
+  it("returns needs_pause for panic, danger, and unsafe variants", () => {
+    for (const learnerText of [
+      "I panic when I speak.",
+      "I panicked yesterday.",
+      "I am in danger.",
+      "I feel unsafe.",
+    ]) {
+      expect(classifyResponseStance({ learnerText }), learnerText).toMatchObject({
+        stance: "needs_pause",
+        reason: "safety_adjacent_or_distress_like_content",
+        priority: 100,
+      });
+    }
+
+    expect(classifyResponseStance({ learnerText: "We had a picnic yesterday." })).toMatchObject({
+      stance: "neutral",
+      reason: "no_response_stance_signal",
+    });
+  });
+
   it("returns needs_pause for unaccented Vietnamese distress-like content", () => {
     expect(classifyResponseStance({ learnerText: "ba toi chet roi" })).toMatchObject({
       stance: "needs_pause",
@@ -67,6 +87,18 @@ describe("classifyResponseStance", () => {
       stance: "needs_pause",
       reason: "safety_adjacent_or_distress_like_content",
     });
+  });
+
+  it("returns needs_clarification for meaning-confusion variants", () => {
+    for (const learnerText of [
+      "What does this mean?",
+      "toi khong hieu cau hoi",
+    ]) {
+      expect(classifyResponseStance({ learnerText }), learnerText).toMatchObject({
+        stance: "needs_clarification",
+        reason: "learner_reply_unclear",
+      });
+    }
   });
 
   it("trusts high-stakes salience even when the matched text is broad", () => {
