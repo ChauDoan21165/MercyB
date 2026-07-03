@@ -1103,7 +1103,7 @@ export function MercySpeakTab({
       if (voice) u.voice = voice;
       if (i === 0) u.onstart = () => setIsSpeaking(true);
       if (i === parts.length - 1) u.onend = () => setIsSpeaking(false);
-      u.onerror = (e: any) => {
+      u.onerror = (e: SpeechSynthesisErrorEvent) => {
         console.warn('[Speak] TTS error', e?.error ?? e?.type ?? 'unknown');
         setIsSpeaking(false);
       };
@@ -1901,7 +1901,7 @@ export function MercySpeakTab({
                 {(() => {
                   const headingLabel = kidsLesson?.label ?? kidsObject?.label ?? KIDS_OBJECTS[0].label;
                   const normalize = (s: string) => s.replace(/[.!?,;:\s]+$/g, '').trim().toLowerCase();
-                  const dialogue = (kidsLesson as any)?.dialogue as string[] | undefined;
+                  const dialogue = kidsLesson?.dialogue;
                   const hasDialogue = Array.isArray(dialogue) && dialogue.length > 1;
                   const sentenceDiffersFromLabel =
                     !!practiceText && normalize(practiceText) !== normalize(headingLabel);
