@@ -24,7 +24,7 @@ export interface AuditLogEntry {
   action: string;
   targetType?: string;
   targetId?: string;
-  metadata?: Record<string, any>;
+  metadata?: Record<string, unknown>;
 }
 
 /**
@@ -42,8 +42,8 @@ export const logAuditEvent = async (entry: AuditLogEntry) => {
     // Strip PII from metadata
     const sanitizedMetadata = entry.metadata ? {
       ...entry.metadata,
-      user_id: entry.metadata.user_id ? maskUserId(entry.metadata.user_id) : undefined,
-      email: entry.metadata.email ? maskEmail(entry.metadata.email) : undefined,
+      user_id: typeof entry.metadata.user_id === "string" ? maskUserId(entry.metadata.user_id) : undefined,
+      email: typeof entry.metadata.email === "string" ? maskEmail(entry.metadata.email) : undefined,
     } : undefined;
 
     await supabase.from('audit_logs').insert({
@@ -101,7 +101,7 @@ export const logTierChange = async (userId: string, oldTier: string, newTier: st
 /**
  * Log bulk operation
  */
-export const logBulkOperation = async (operation: string, count: number, details?: any) => {
+export const logBulkOperation = async (operation: string, count: number, details?: Record<string, unknown>) => {
   await logAuditEvent({
     type: 'bulk_operation',
     action: operation,
