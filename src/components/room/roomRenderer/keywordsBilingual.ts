@@ -9,12 +9,23 @@ import {
 import { entryKey } from "@/components/room/roomRenderer/helpers";
 
 export type KwPair = { en: string; vi: string };
+type EntryLike = Record<string, unknown>;
 
-export function buildKeywordLookupFromEntries(entries: any[]) {
+function asEntry(value: unknown): EntryLike | null {
+  return value && typeof value === "object" && !Array.isArray(value)
+    ? value as EntryLike
+    : null;
+}
+
+function stringArray(value: unknown): string[] {
+  return Array.isArray(value) ? value.map((item) => String(item ?? "")) : [];
+}
+
+export function buildKeywordLookupFromEntries(entries: unknown[]) {
   const viByEn = new Map<string, string>();
   const enByVi = new Map<string, string>();
 
-  const putPair = (enRaw: any, viRaw: any) => {
+  const putPair = (enRaw: unknown, viRaw: unknown) => {
     const en = String(enRaw ?? "").trim();
     const vi = String(viRaw ?? "").trim();
     if (!en || !vi) return;
@@ -31,8 +42,9 @@ export function buildKeywordLookupFromEntries(entries: any[]) {
   };
 
   for (const e of entries || []) {
-    const enArr = Array.isArray(e?.keywords_en) ? e.keywords_en : [];
-    const viArr = Array.isArray(e?.keywords_vi) ? e.keywords_vi : [];
+    const entry = asEntry(e);
+    const enArr = stringArray(entry?.keywords_en);
+    const viArr = stringArray(entry?.keywords_vi);
     const n = Math.min(enArr.length, viArr.length);
     for (let i = 0; i < n; i++) putPair(enArr[i], viArr[i]);
   }
@@ -41,11 +53,12 @@ export function buildKeywordLookupFromEntries(entries: any[]) {
 }
 
 export function pickOneKeywordPairForEntry(
-  entry: any,
+  entry: unknown,
   lookup: { viByEn: Map<string, string>; enByVi: Map<string, string> },
 ): KwPair | null {
-  const enArr = Array.isArray(entry?.keywords_en) ? entry.keywords_en : [];
-  const viArr = Array.isArray(entry?.keywords_vi) ? entry.keywords_vi : [];
+  const entryRecord = asEntry(entry);
+  const enArr = stringArray(entryRecord?.keywords_en);
+  const viArr = stringArray(entryRecord?.keywords_vi);
 
   // 1) Prefer true paired i↔i where both exist and differ.
   {
@@ -92,9 +105,9 @@ export function pickOneKeywordPairForEntry(
  * - Enforce “clean room”: at most ONE keyword per entry, trim to <= entryCount
  */
 export function buildKeywordsForRoom(args: {
-  entries: any[];
+  entries: unknown[];
   kwRaw: { en: string[]; vi: string[] } | null | undefined;
-  deriveKeywordsFromEntryList: (entries: any[]) => { en: string[]; vi: string[] };
+  deriveKeywordsFromEntryList: (entries: unknown[]) => { en: string[]; vi: string[] };
 }) {
   const entriesForCoverage = args.entries || [];
   const entryCount = entriesForCoverage.length;
@@ -157,7 +170,7 @@ export function buildKeywordsForRoom(args: {
     // refuse fake bilingual pairs
     if (en && vi && normalizeTextForKwMatch(en) === normalizeTextForKwMatch(vi)) vi = "";
 
-    let matched: any = null;
+    let matched: unknown = null;
     let matchedVia: "en" | "vi" | null = null;
 
     if (en) {
