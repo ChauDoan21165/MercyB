@@ -32,6 +32,28 @@ export const KW_CLASSES = [
 // can be a CSS class (mb-kw-0...) OR a hex color (#RRGGBB)
 export type KeywordColorMap = Map<string, string>;
 
+type LooseRecord = Record<string, unknown>;
+
+function isLooseRecord(value: unknown): value is LooseRecord {
+  return typeof value === "object" && value !== null;
+}
+
+function field(value: unknown, key: string): unknown {
+  return isLooseRecord(value) ? value[key] : undefined;
+}
+
+function nestedField(value: unknown, key: string, nestedKey: string): unknown {
+  return field(field(value, key), nestedKey);
+}
+
+function firstNonEmptyString(...values: unknown[]): string {
+  for (const value of values) {
+    const s = String(value ?? "").trim();
+    if (s) return s;
+  }
+  return "";
+}
+
 function escapeRegExp(s: string) {
   return s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 }
@@ -372,14 +394,24 @@ function pickViVerbs(textVi: string, max = 7) {
   return pickFirstMeaningfulViWords(textVi, max);
 }
 
-export function buildEntryVerbColorMap(entry: any, maxPairs = 7): KeywordColorMap {
-  const enText = String(entry?.copy?.en ?? entry?.content?.en ?? entry?.copy_en ?? entry?.content_en ?? "").trim();
-  const viText = String(entry?.copy?.vi ?? entry?.content?.vi ?? entry?.copy_vi ?? entry?.content_vi ?? "").trim();
+export function buildEntryVerbColorMap(entry: unknown, maxPairs = 7): KeywordColorMap {
+  const enText = firstNonEmptyString(
+    nestedField(entry, "copy", "en"),
+    nestedField(entry, "content", "en"),
+    field(entry, "copy_en"),
+    field(entry, "content_en"),
+  );
+  const viText = firstNonEmptyString(
+    nestedField(entry, "copy", "vi"),
+    nestedField(entry, "content", "vi"),
+    field(entry, "copy_vi"),
+    field(entry, "content_vi"),
+  );
 
   const enVerbs = pickEnVerbs(enText, maxPairs);
   const viVerbs = pickViVerbs(viText, maxPairs);
 
-  const entryKey = String(entry?.id || entry?.slug || "entry").trim() || "entry";
+  const entryKey = firstNonEmptyString(field(entry, "id"), field(entry, "slug"), "entry") || "entry";
 
   const pairs = Math.min(maxPairs, Math.max(enVerbs.length, viVerbs.length));
   const map: KeywordColorMap = new Map();
@@ -511,43 +543,45 @@ function stripImplicitAudioLines(text: string): string {
   return out.join("\n").replace(/\n{3,}/g, "\n\n").trim();
 }
 
-function normalizeEntryTextEN(entry: any): string {
+function normalizeEntryTextEN(entry: unknown): string {
   const candidates = [
-    entry?.copy?.en,
-    entry?.text?.en,
-    entry?.body?.en,
-    entry?.content?.en,
-    entry?.description?.en,
-    entry?.summary?.en,
-    entry?.copy_en,
-    entry?.text_en,
-    entry?.body_en,
-    entry?.content_en,
-    entry?.description_en,
-    entry?.summary_en,
+    nestedField(entry, "copy", "en"),
+    nestedField(entry, "text", "en"),
+    nestedField(entry, "body", "en"),
+    nestedField(entry, "content", "en"),
+    nestedField(entry, "description", "en"),
+    nestedField(entry, "summary", "en"),
+    field(entry, "copy_en"),
+    field(entry, "text_en"),
+    field(entry, "body_en"),
+    field(entry, "content_en"),
+    field(entry, "description_en"),
+    field(entry, "summary_en"),
   ];
   for (const c of candidates) {
     if (typeof c === "string" && c.trim()) return stripImplicitAudioLines(c);
   }
-  if (typeof entry?.text === "string" && entry.text.trim()) return stripImplicitAudioLines(entry.text);
-  if (typeof entry?.content === "string" && entry.content.trim()) return stripImplicitAudioLines(entry.content);
+  const text = field(entry, "text");
+  const content = field(entry, "content");
+  if (typeof text === "string" && text.trim()) return stripImplicitAudioLines(text);
+  if (typeof content === "string" && content.trim()) return stripImplicitAudioLines(content);
   return "";
 }
 
-function normalizeEntryTextVI(entry: any): string {
+function normalizeEntryTextVI(entry: unknown): string {
   const candidates = [
-    entry?.copy?.vi,
-    entry?.text?.vi,
-    entry?.body?.vi,
-    entry?.content?.vi,
-    entry?.description?.vi,
-    entry?.summary?.vi,
-    entry?.copy_vi,
-    entry?.text_vi,
-    entry?.body_vi,
-    entry?.content_vi,
-    entry?.description_vi,
-    entry?.summary_vi,
+    nestedField(entry, "copy", "vi"),
+    nestedField(entry, "text", "vi"),
+    nestedField(entry, "body", "vi"),
+    nestedField(entry, "content", "vi"),
+    nestedField(entry, "description", "vi"),
+    nestedField(entry, "summary", "vi"),
+    field(entry, "copy_vi"),
+    field(entry, "text_vi"),
+    field(entry, "body_vi"),
+    field(entry, "content_vi"),
+    field(entry, "description_vi"),
+    field(entry, "summary_vi"),
   ];
   for (const c of candidates) {
     if (typeof c === "string" && c.trim()) return stripImplicitAudioLines(c);
@@ -555,22 +589,21 @@ function normalizeEntryTextVI(entry: any): string {
   return "";
 }
 
-export function entryMatchesKeyword(entry: any, kw: string): boolean {
+export function entryMatchesKeyword(entry: unknown, kw: string): boolean {
   const kRaw = String(kw || "").trim();
   if (!kRaw) return false;
 
   const k = normalizeTextForKwMatch(kRaw);
 
-  const meta = normalizeTextForKwMatch(String(entry?.id || entry?.slug || ""));
+  const meta = normalizeTextForKwMatch(firstNonEmptyString(field(entry, "id"), field(entry, "slug")));
   const title = normalizeTextForKwMatch(
-    String(
-      entry?.title?.en ||
-        entry?.title_en ||
-        entry?.heading?.en ||
-        entry?.heading_en ||
-        entry?.id ||
-        entry?.slug ||
-        ""
+    firstNonEmptyString(
+      nestedField(entry, "title", "en"),
+      field(entry, "title_en"),
+      nestedField(entry, "heading", "en"),
+      field(entry, "heading_en"),
+      field(entry, "id"),
+      field(entry, "slug"),
     )
   );
 
@@ -594,16 +627,16 @@ function prettifyEntryId(id: string): string {
   return s;
 }
 
-function pickEntryHeading(entry: any, index: number) {
-  return (
-    entry?.title?.en ||
-    entry?.heading?.en ||
-    entry?.title_en ||
-    entry?.heading_en ||
-    entry?.name?.en ||
-    entry?.name_en ||
-    prettifyEntryId(entry?.id || entry?.slug || "") ||
-    `Entry ${index + 1}`
+function pickEntryHeading(entry: unknown, index: number) {
+  return firstNonEmptyString(
+    nestedField(entry, "title", "en"),
+    nestedField(entry, "heading", "en"),
+    field(entry, "title_en"),
+    field(entry, "heading_en"),
+    nestedField(entry, "name", "en"),
+    field(entry, "name_en"),
+    prettifyEntryId(firstNonEmptyString(field(entry, "id"), field(entry, "slug"))),
+    `Entry ${index + 1}`,
   );
 }
 
@@ -618,30 +651,30 @@ function isUglyHeading(h: string) {
 // Phase 2: pickAudio / pickAudioList now return canonical KEYS (not URLs).
 // TalkingFacePlayButton's useAudioUrl hook produces the final playable URL.
 
-function pickAudio(entry: any): string {
-  const candidates: any[] = [];
-  candidates.push(entry?.audio, entry?.audio_en, entry?.audio_vi);
-  candidates.push(entry?.audioRef, entry?.audio_ref);
-  candidates.push(entry?.audioUrl, entry?.audio_url);
-  candidates.push(entry?.mp3, entry?.mp3_en, entry?.mp3_vi);
+function pickAudio(entry: unknown): string {
+  const candidates: unknown[] = [];
+  candidates.push(field(entry, "audio"), field(entry, "audio_en"), field(entry, "audio_vi"));
+  candidates.push(field(entry, "audioRef"), field(entry, "audio_ref"));
+  candidates.push(field(entry, "audioUrl"), field(entry, "audio_url"));
+  candidates.push(field(entry, "mp3"), field(entry, "mp3_en"), field(entry, "mp3_vi"));
 
   for (const c of candidates) {
     if (!c) continue;
     if (typeof c === "string") {
       const key = toAudioKey(c);
       if (key) return key;
-    } else if (typeof c === "object") {
-      const key = toAudioKey(c?.en || c?.vi || c?.src || c?.url);
+    } else if (isLooseRecord(c)) {
+      const key = toAudioKey(firstNonEmptyString(c.en, c.vi, c.src, c.url));
       if (key) return key;
     }
   }
   return "";
 }
 
-function pickAudioList(entry: any): string[] {
+function pickAudioList(entry: unknown): string[] {
   const out: string[] = [];
 
-  const push = (v: any) => {
+  const push = (v: unknown) => {
     if (!v) return;
 
     if (Array.isArray(v)) {
@@ -649,8 +682,8 @@ function pickAudioList(entry: any): string[] {
       return;
     }
 
-    if (typeof v === "object") {
-      const s = String(v?.en || v?.vi || v?.src || v?.url || "").trim();
+    if (isLooseRecord(v)) {
+      const s = firstNonEmptyString(v.en, v.vi, v.src, v.url);
       if (s) push(s);
       return;
     }
@@ -673,13 +706,13 @@ function pickAudioList(entry: any): string[] {
     }
   };
 
-  push(entry?.audio_playlist);
-  push(entry?.audioPlaylist);
-  push(entry?.audio_list);
-  push(entry?.audioList);
-  push(entry?.audios);
+  push(field(entry, "audio_playlist"));
+  push(field(entry, "audioPlaylist"));
+  push(field(entry, "audio_list"));
+  push(field(entry, "audioList"));
+  push(field(entry, "audios"));
 
-  if (out.length === 0) push(entry?.audio);
+  if (out.length === 0) push(field(entry, "audio"));
   if (out.length === 0) {
     const one = pickAudio(entry);
     if (one) out.push(one);
@@ -712,7 +745,7 @@ export function MercyGuideCorner({
   onClearKeyword?: () => void;
   onScrollToAudio?: () => void;
 }) {
-  const isDev = typeof import.meta !== "undefined" && (import.meta as any).env?.DEV;
+  const isDev = typeof import.meta !== "undefined" && import.meta.env?.DEV;
   let allow = false;
   try {
     if (isDev && typeof window !== "undefined") {
@@ -803,11 +836,11 @@ export function ActiveEntry({
   index,
   audioAnchorRef,
 }: {
-  entry: any;
+  entry: unknown;
   index: number;
   enKeywords: string[];
   viKeywords: string[];
-  audioAnchorRef?: React.RefObject<HTMLDivElement>;
+  audioAnchorRef?: React.Ref<HTMLDivElement>;
 }) {
   // Load room typography once. Idempotent — every ActiveEntry instance
   // calls it but only the first injects the <link> (see loadGoogleFont).
@@ -871,7 +904,7 @@ export function ActiveEntry({
       ) : null}
 
       {audioList.length ? (
-        <div ref={audioAnchorRef as any} className="mt-5 mb-audioClamp">
+        <div ref={audioAnchorRef} className="mt-5 mb-audioClamp">
           <div className="flex flex-col gap-2">
             {audioList.map((src, i) => {
               const base = audioLabelFromSrc(src);
