@@ -2,14 +2,19 @@ import { describe, expect, it } from "vitest";
 import { EDU_LEARNING_SIGNAL_DEFINITIONS, eduDefinitionById, eduDefinitionBySignalKey } from "../index";
 
 describe("EDU learning signal definitions", () => {
-  it("defines the five canonical EDU learning signals with required fields", () => {
-    expect(EDU_LEARNING_SIGNAL_DEFINITIONS).toHaveLength(5);
+  it("defines the canonical EDU learning signals with required fields", () => {
+    expect(EDU_LEARNING_SIGNAL_DEFINITIONS).toHaveLength(10);
     expect(EDU_LEARNING_SIGNAL_DEFINITIONS.map((definition) => definition.edu_id)).toEqual([
       "EDU-LS-000001",
       "EDU-LS-000002",
       "EDU-LS-000003",
       "EDU-LS-000004",
       "EDU-LS-000005",
+      "EDU-LS-000006",
+      "EDU-LS-000007",
+      "EDU-LS-000008",
+      "EDU-LS-000009",
+      "EDU-LS-000010",
     ]);
 
     for (const definition of EDU_LEARNING_SIGNAL_DEFINITIONS) {

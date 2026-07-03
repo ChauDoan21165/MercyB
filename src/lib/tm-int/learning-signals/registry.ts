@@ -38,4 +38,34 @@ export const LEARNING_SIGNAL_MAPPINGS = [
     source_edu_id: "EDU-LS-000005",
     required_evidence: ["correct after delay"],
   },
+  {
+    engine_id: "LS-ENGINE-000001",
+    signal_key: "productive_struggle",
+    source_edu_id: "EDU-LS-000006",
+    required_evidence: ["multiple wrong attempts", "eventual correct", "shared anchor"],
+  },
+  {
+    engine_id: "LS-ENGINE-000001",
+    signal_key: "sustained_attention",
+    source_edu_id: "EDU-LS-000007",
+    required_evidence: ["three thoughtful responses", "response timing", "session window"],
+  },
+  {
+    engine_id: "LS-ENGINE-000001",
+    signal_key: "confidence_calibration",
+    source_edu_id: "EDU-LS-000008",
+    required_evidence: ["confidence rating", "answer outcome", "same item"],
+  },
+  {
+    engine_id: "LS-ENGINE-000001",
+    signal_key: "cognitive_overload",
+    source_edu_id: "EDU-LS-000009",
+    required_evidence: ["slow wrong answers", "support seeking", "same window"],
+  },
+  {
+    engine_id: "LS-ENGINE-000001",
+    signal_key: "transfer_success",
+    source_edu_id: "EDU-LS-000010",
+    required_evidence: ["correct answers", "shared concept anchor", "distinct items"],
+  },
 ] as const satisfies readonly LearningSignalMapping[];

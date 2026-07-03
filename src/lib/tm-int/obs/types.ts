@@ -87,6 +87,7 @@ export type LearningObservationInput = {
   accidentalTap?: boolean;
   questionTooEasy?: boolean;
   priorKnowledge?: boolean;
+  confidenceRating?: number;
 };
 
 export type ObservationPacket = {

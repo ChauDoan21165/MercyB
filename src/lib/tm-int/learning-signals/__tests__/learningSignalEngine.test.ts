@@ -35,13 +35,18 @@ function hintFact(taskId: string): ObservationFact {
 }
 
 describe("Learning Signal Engine", () => {
-  it("registers the five required EDU mappings", () => {
+  it("registers the required EDU mappings", () => {
     expect(LEARNING_SIGNAL_MAPPINGS.map((mapping) => mapping.signal_key)).toEqual([
       "productive_hesitation",
       "healthy_self_correction",
       "hint_dependency",
       "misconception_recurrence",
       "retrieval_success",
+      "productive_struggle",
+      "sustained_attention",
+      "confidence_calibration",
+      "cognitive_overload",
+      "transfer_success",
     ]);
   });
 

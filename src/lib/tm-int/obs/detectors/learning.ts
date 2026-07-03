@@ -19,6 +19,7 @@ export function detectLearningObservation(input: LearningObservationInput, obser
         accidentalTap: input.accidentalTap ? 1 : 0,
         questionTooEasy: input.questionTooEasy ? 1 : 0,
         priorKnowledge: input.priorKnowledge ? 1 : 0,
+        confidenceRating: input.confidenceRating ?? -1,
       },
       message: "Assessment answer timing and correctness observed.",
     };
