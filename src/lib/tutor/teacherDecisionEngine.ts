@@ -4,7 +4,7 @@
  * Unified entry point for the complete correction pipeline.
  * One function call → one actionable decision for the UI layer.
  *
- * Layers on top of existing modules (does not modify any):
+ * Layers on top of existing modules (without modifying them):
  *   - correctionEngine.ts — WHAT errors exist (rule-based correction)
  *   - teacherMercyCorrectionTiming.ts — WHEN mode to use (T1-T8 gates)
  *   - correctionTimingIntegration.ts — severity/confidence/self-correction inference

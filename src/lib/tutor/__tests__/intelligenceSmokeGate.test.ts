@@ -1359,7 +1359,7 @@ describe("SG8 — Conscious break detection", () => {
     expect(Object.keys(FALLBACK_MESSAGES).length).toBeGreaterThan(0);
   });
 
-  it("BREAK: any gate removal across S+O+V+E chains would change the total", () => {
+  it("BREAK: removing a gate across S+O+V+E chains would change the total", () => {
     const totalGates =
       SELF_AUDIT_GATE_CATALOG.length +
       OVERCLAIM_GATE_CATALOG.length +

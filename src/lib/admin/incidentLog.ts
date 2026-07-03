@@ -31,7 +31,7 @@ export interface IncidentRow {
 }
 
 /**
- * Decide what should happen to the open incident (if any) for one SLO,
+ * Decide what should happen to the open incident, when present, for one SLO,
  * given its latest budget reading and the time the SLO has been in
  * 'healthy' state.
  *

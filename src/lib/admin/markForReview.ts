@@ -48,7 +48,7 @@ export async function markContentForReview(
     return { ok: false, reason: "content_id and content_type are required" };
   }
 
-  // Fetch current row (if any) so we can return precise feedback.
+  // Fetch the current row, when present, so we can return precise feedback.
   const { data: existing, error: fetchError } = await supabase
     .from("content_review_status")
     .select("status")

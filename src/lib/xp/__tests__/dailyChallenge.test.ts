@@ -55,7 +55,7 @@ describe("dateSeed", () => {
 });
 
 describe("pickChallenge", () => {
-  it("picks 'rule' when the user has any L1 grammar tag", () => {
+  it("picks 'rule' when the user has an L1 grammar tag", () => {
     const out = pickChallenge(["vi_l1_3rd_person_s"], "2026-04-22");
     expect(out.kind).toBe("rule");
     expect(out.sourceTag).toBe("vi_l1_3rd_person_s");
