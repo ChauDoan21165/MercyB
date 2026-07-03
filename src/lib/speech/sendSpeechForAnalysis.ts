@@ -62,8 +62,9 @@ export async function sendSpeechForAnalysis({
     throw new Error("Speech analysis returned no data.");
   }
 
-  if ((data as any).error) {
-    throw new Error(String((data as any).error));
+  const response = data as Record<string, unknown>;
+  if (response.error) {
+    throw new Error(String(response.error));
   }
 
   return data as SpeechAnalysisResponse;
