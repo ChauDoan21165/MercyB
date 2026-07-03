@@ -15,6 +15,19 @@ export type RoomJsonResolverErrorKind =
   | "server"
   | "offline_unavailable";
 
+type RoomJsonResolverError = Error & {
+  kind: RoomJsonResolverErrorKind;
+};
+
+function createRoomJsonResolverError(
+  message: string,
+  kind: RoomJsonResolverErrorKind,
+): RoomJsonResolverError {
+  const err = new Error(message) as RoomJsonResolverError;
+  err.kind = kind;
+  return err;
+}
+
 function stripJsonSuffix(s: string): string {
   // Remove ONLY a trailing ".json" (case-insensitive)
   return s.replace(/\.json$/i, "");
@@ -202,7 +215,7 @@ async function tryOfflinePack(
   }
 }
 
-export async function loadRoomJson(roomIdRaw: string): Promise<any> {
+export async function loadRoomJson(roomIdRaw: string): Promise<unknown> {
   const id = canonicalizeRoomId(roomIdRaw);
 
   const manifestPath = resolveRoomJsonPath(id);
@@ -236,23 +249,18 @@ export async function loadRoomJson(roomIdRaw: string): Promise<any> {
     const offlinePack = await tryOfflinePack(id);
     if (offlinePack) return offlinePack;
     const online = isOnline();
-    const err = new Error(online ? "NETWORK_ERROR" : "OFFLINE_UNAVAILABLE");
-    (err as any).kind = (online
-      ? "network"
-      : "offline_unavailable") satisfies RoomJsonResolverErrorKind;
-    throw err;
+    throw createRoomJsonResolverError(
+      online ? "NETWORK_ERROR" : "OFFLINE_UNAVAILABLE",
+      online ? "network" : "offline_unavailable",
+    );
   }
 
   if (res.status === 404) {
-    const err = new Error("ROOM_NOT_FOUND");
-    (err as any).kind = "not_found" satisfies RoomJsonResolverErrorKind;
-    throw err;
+    throw createRoomJsonResolverError("ROOM_NOT_FOUND", "not_found");
   }
 
   if (!res.ok) {
-    const err = new Error(`HTTP_${res.status}`);
-    (err as any).kind = "server" satisfies RoomJsonResolverErrorKind;
-    throw err;
+    throw createRoomJsonResolverError(`HTTP_${res.status}`, "server");
   }
 
   // ✅ Guard: Vercel SPA fallback can return 200 + HTML (index.html) for missing JSON
@@ -261,16 +269,12 @@ export async function loadRoomJson(roomIdRaw: string): Promise<any> {
 
   // If it's clearly HTML, treat as not_found so callers can fallback to DB
   if (!ct.includes("application/json") && /^\s*<!doctype html>|^\s*<html/i.test(text)) {
-    const err = new Error("ROOM_NOT_FOUND");
-    (err as any).kind = "not_found" satisfies RoomJsonResolverErrorKind;
-    throw err;
+    throw createRoomJsonResolverError("ROOM_NOT_FOUND", "not_found");
   }
 
   try {
     return JSON.parse(text);
   } catch {
-    const err = new Error("JSON_INVALID");
-    (err as any).kind = "json_invalid" satisfies RoomJsonResolverErrorKind;
-    throw err;
+    throw createRoomJsonResolverError("JSON_INVALID", "json_invalid");
   }
 }
