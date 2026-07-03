@@ -53,6 +53,60 @@ describe("conversationPronunciationAdapter", () => {
     expect(scoreImpl).not.toHaveBeenCalled();
   });
 
+  it("does not score text-only audio even when a blob is present", async () => {
+    const scoreImpl = vi.fn(async () => scoredResult());
+
+    await expect(
+      scoreLearnerConversationPronunciation({
+        audioBlob: blobOfSize(2000),
+        audioSource: "text_only",
+        target: "I think so",
+        step7Enabled: true,
+        scoreImpl,
+      }),
+    ).resolves.toMatchObject({ quality: "no_audio", overallScore: null });
+
+    expect(scoreImpl).not.toHaveBeenCalled();
+  });
+
+  it("does not score model audio even when the blob looks like learner webm", async () => {
+    const scoreImpl = vi.fn(async () => scoredResult());
+
+    await expect(
+      scoreLearnerConversationPronunciation({
+        audioBlob: blobOfSize(2000),
+        audioSource: "model_audio",
+        target: "I think so",
+        step7Enabled: true,
+        scoreImpl,
+      }),
+    ).resolves.toMatchObject({ quality: "no_audio", overallScore: null });
+
+    expect(scoreImpl).not.toHaveBeenCalled();
+  });
+
+  it("does not call C1 scoring for blank target text", async () => {
+    const scoreImpl = vi.fn(async () => scoredResult());
+
+    await expect(
+      scoreLearnerConversationPronunciation({
+        audioBlob: blobOfSize(2000),
+        audioSource: "learner_recording",
+        target: "   ",
+        step7Enabled: true,
+        costCap: { remaining: 1, limit: 3 },
+        scoreImpl,
+      }),
+    ).resolves.toMatchObject({
+      quality: "scoring_unavailable",
+      overallScore: null,
+      shouldAskRetry: true,
+      costCap: { remaining: 1, limit: 3 },
+    });
+
+    expect(scoreImpl).not.toHaveBeenCalled();
+  });
+
   it("does not call C1 scoring when pronunciation scoring is not enabled", async () => {
     const scoreImpl = vi.fn(async () => scoredResult());
 
@@ -71,6 +125,43 @@ describe("conversationPronunciationAdapter", () => {
       overallScore: null,
       shouldAskRetry: false,
       costCap: { remaining: 0, limit: 3 },
+    });
+  });
+
+  it("normalizes negative cost-cap metadata before returning or scoring", async () => {
+    const scoreImpl = vi.fn(async () => scoredResult({ costCap: { remaining: -2, limit: -1 } }));
+
+    const result = await scoreLearnerConversationPronunciation({
+      audioBlob: blobOfSize(2000),
+      audioSource: "learner_recording",
+      target: "I think so",
+      step7Enabled: true,
+      costCap: { remaining: -4, limit: -3 },
+      scoreImpl,
+    });
+
+    expect(scoreImpl).toHaveBeenCalledWith(expect.objectContaining({ costCap: { remaining: 0, limit: 0 } }));
+    expect(result.costCap).toEqual({ remaining: 0, limit: 0 });
+  });
+
+  it("returns a retry-safe result when C1 resolves malformed scoring data", async () => {
+    const scoreImpl = vi.fn(async () => ({ quality: "ok" }) as unknown as ConversationPronunciationResult);
+
+    await expect(
+      scoreLearnerConversationPronunciation({
+        audioBlob: blobOfSize(2000),
+        audioSource: "learner_recording",
+        target: "I think so",
+        step7Enabled: true,
+        costCap: { remaining: 2, limit: 3 },
+        scoreImpl,
+      }),
+    ).resolves.toMatchObject({
+      quality: "scoring_unavailable",
+      overallScore: null,
+      words: [],
+      shouldAskRetry: true,
+      costCap: { remaining: 2, limit: 3 },
     });
   });
 

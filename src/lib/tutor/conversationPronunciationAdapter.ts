@@ -37,6 +37,32 @@ function emptyConversationPronunciationResult(
   };
 }
 
+function normalizeConversationCostCap(
+  costCap: ConversationPronunciationCostCap | null | undefined,
+): ConversationPronunciationCostCap | null {
+  if (!costCap) return null;
+  const remaining = Number.isFinite(costCap.remaining) ? Math.max(0, costCap.remaining) : 0;
+  const limit = Number.isFinite(costCap.limit) ? Math.max(0, costCap.limit) : 0;
+  return { remaining, limit };
+}
+
+function isConversationPronunciationResult(value: unknown): value is ConversationPronunciationResult {
+  if (!value || typeof value !== "object") return false;
+  const result = value as Partial<ConversationPronunciationResult>;
+  return (
+    result.provider === "azure" &&
+    result.mode === "english-pronunciation-conversation" &&
+    (typeof result.overallScore === "number" || result.overallScore === null) &&
+    Array.isArray(result.words) &&
+    (result.quality === "ok" ||
+      result.quality === "low_confidence" ||
+      result.quality === "no_audio" ||
+      result.quality === "scoring_unavailable") &&
+    (result.confidence === "ok" || result.confidence === "low") &&
+    typeof result.shouldAskRetry === "boolean"
+  );
+}
+
 export function hasRealLearnerConversationAudio(input: {
   audioBlob?: Blob | null;
   audioSource: ConversationAudioSource;
@@ -47,10 +73,14 @@ export function hasRealLearnerConversationAudio(input: {
 export async function scoreLearnerConversationPronunciation(
   input: ConversationPronunciationAdapterInput,
 ): Promise<ConversationPronunciationResult> {
-  const costCap = input.costCap ?? null;
+  const costCap = normalizeConversationCostCap(input.costCap);
 
   if (!hasRealLearnerConversationAudio(input)) {
     return emptyConversationPronunciationResult("no_audio", costCap);
+  }
+
+  if (!input.target.trim()) {
+    return emptyConversationPronunciationResult("scoring_unavailable", costCap);
   }
 
   if (!input.step7Enabled) {
@@ -59,7 +89,7 @@ export async function scoreLearnerConversationPronunciation(
 
   const scorer = input.scoreImpl ?? scoreConversationTurn;
   try {
-    return await scorer({
+    const result = await scorer({
       audioBlob: input.audioBlob,
       target: input.target,
       transcript: input.transcript,
@@ -71,6 +101,9 @@ export async function scoreLearnerConversationPronunciation(
       timeoutMs: input.timeoutMs,
       costCap,
     });
+    return isConversationPronunciationResult(result)
+      ? { ...result, costCap: normalizeConversationCostCap(result.costCap) }
+      : emptyConversationPronunciationResult("scoring_unavailable", costCap);
   } catch {
     return emptyConversationPronunciationResult("scoring_unavailable", costCap);
   }
