@@ -4,15 +4,21 @@
 // applyReferralCode triggers it best-effort after a successful apply.
 
 import { describe, it, expect, vi, beforeEach } from "vitest";
+import type { createSupabaseMock } from "@/test/mocks/supabaseMock";
+
+type SupabaseMock = ReturnType<typeof createSupabaseMock>;
 
 vi.mock("@/lib/supabaseClient", async () => {
-  const mod = await vi.importActual<any>("@/test/mocks/supabaseMock");
+  const mod = await vi.importActual<typeof import("@/test/mocks/supabaseMock")>(
+    "@/test/mocks/supabaseMock",
+  );
   const supabase = mod.createSupabaseMock();
   return { supabase, __mock: supabase };
 });
 
 import * as SupaMod from "@/lib/supabaseClient";
-const supabaseMock = (SupaMod as any).__mock;
+const supabaseMock = (SupaMod as typeof SupaMod & { __mock: SupabaseMock })
+  .__mock;
 
 import {
   applyReferralCode,
@@ -194,7 +200,7 @@ describe("applyReferralCode → reward grant wiring", () => {
     await Promise.resolve();
     await Promise.resolve();
 
-    const calls = supabaseMock.rpc.mock.calls.map((c: any[]) => c[0]);
+    const calls = supabaseMock.rpc.mock.calls.map(([rpcName]) => rpcName);
     expect(calls).toContain("apply_referral_code");
     expect(calls).toContain("grant_referral_reward");
   });
@@ -211,7 +217,7 @@ describe("applyReferralCode → reward grant wiring", () => {
     await Promise.resolve();
     await Promise.resolve();
 
-    const calls = supabaseMock.rpc.mock.calls.map((c: any[]) => c[0]);
+    const calls = supabaseMock.rpc.mock.calls.map(([rpcName]) => rpcName);
     expect(calls).toContain("apply_referral_code");
     expect(calls).not.toContain("grant_referral_reward");
   });
@@ -227,7 +233,7 @@ describe("applyReferralCode → reward grant wiring", () => {
 
     await Promise.resolve();
 
-    const calls = supabaseMock.rpc.mock.calls.map((c: any[]) => c[0]);
+    const calls = supabaseMock.rpc.mock.calls.map(([rpcName]) => rpcName);
     expect(calls).not.toContain("grant_referral_reward");
   });
 
