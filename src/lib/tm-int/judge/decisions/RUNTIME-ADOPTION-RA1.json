@@ -1,0 +1,58 @@
+{
+  "runtime_id": "RUNTIME-ADOPTION-RA1",
+  "name": "Teacher Context Runtime Pipeline",
+  "judge_decision": "promoted",
+  "promoted_by": "ADMIN/JUDGE",
+  "source_commit": "2bb324127",
+  "evidence": {
+    "teacher_context_schema": {
+      "exists": true,
+      "schemaVersion": "tm-int-teacher-context-v1",
+      "required_fields": [
+        "observationSummary",
+        "learningSignals",
+        "productIssues",
+        "pendingRetests",
+        "recommendations",
+        "confidenceSummary",
+        "replayTrace"
+      ]
+    },
+    "runtime_behavior": {
+      "productIssues_populated": true,
+      "pendingRetests_populated": true,
+      "recommendations_populated": true,
+      "confidenceSummary_populated": true,
+      "replayTrace_populated": true,
+      "only_verified_capabilities_influence_recommendations": true,
+      "no_fake_or_placeholder_runtime_events": true,
+      "no_direct_ped_without_dp": true,
+      "no_learner_weakness_inference_from_product_or_permission_failure": true
+    },
+    "replay": {
+      "pass": true,
+      "deterministic": true,
+      "failures": []
+    },
+    "sqlite": {
+      "path": "src/lib/tm-int/workpacks/runtime-adoption-ra1.sqlite",
+      "row_count": 6,
+      "duplicate_semantic_key_count": 0,
+      "required_fields_nonempty": true,
+      "f_verified_before_promotion": 0,
+      "f_verified_after_promotion": 0
+    },
+    "gates": {
+      "typecheck": "PASS",
+      "eslint": "PASS",
+      "tests": "PASS",
+      "diff_check": "PASS"
+    }
+  },
+  "verified": true,
+  "notes": [
+    "Judge promotion is scoped only to Runtime Adoption RA-1.",
+    "F workpack rows remain verified=false.",
+    "Promotion does not deploy or modify product databases."
+  ]
+}

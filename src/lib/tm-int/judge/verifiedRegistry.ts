@@ -96,3 +96,29 @@ export const VERIFIED_LEARNING_BEHAVIOR_FAMILIES = [
 export function verifiedLearningBehaviorFamilyCount(): number {
   return VERIFIED_LEARNING_BEHAVIOR_FAMILIES.length;
 }
+
+export type VerifiedRuntimeAdoption = {
+  runtime_id: "RUNTIME-ADOPTION-RA1";
+  semantic_key: "runtime.teacher_context.ra1";
+  judge_decision: "promoted";
+  judge_artifact: string;
+  promoted_by: "ADMIN/JUDGE";
+  source_commit: string;
+  verified: true;
+};
+
+export const VERIFIED_RUNTIME_ADOPTIONS = [
+  {
+    runtime_id: "RUNTIME-ADOPTION-RA1",
+    semantic_key: "runtime.teacher_context.ra1",
+    judge_decision: "promoted",
+    judge_artifact: "src/lib/tm-int/judge/decisions/RUNTIME-ADOPTION-RA1.json",
+    promoted_by: "ADMIN/JUDGE",
+    source_commit: "2bb324127",
+    verified: true,
+  },
+] as const satisfies readonly VerifiedRuntimeAdoption[];
+
+export function verifiedRuntimeAdoptionCount(): number {
+  return VERIFIED_RUNTIME_ADOPTIONS.length;
+}
