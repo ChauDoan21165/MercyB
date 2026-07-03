@@ -5,6 +5,8 @@
 
 import { logger } from '@/lib/logger';
 
+type RoomIntegrityData = Record<string, unknown>;
+
 /**
  * Calculate SHA-256 hash of string content
  */
@@ -40,7 +42,7 @@ export async function verifyHash(
 /**
  * Calculate hash for room JSON
  */
-export async function calculateRoomHash(roomData: any): Promise<string> {
+export async function calculateRoomHash(roomData: RoomIntegrityData): Promise<string> {
   const normalized = JSON.stringify(roomData, Object.keys(roomData).sort());
   return calculateHash(normalized);
 }
@@ -49,7 +51,7 @@ export async function calculateRoomHash(roomData: any): Promise<string> {
  * Verify room JSON integrity
  */
 export async function verifyRoomIntegrity(
-  roomData: any,
+  roomData: RoomIntegrityData,
   expectedHash: string
 ): Promise<{ valid: boolean; actualHash: string }> {
   const actualHash = await calculateRoomHash(roomData);
@@ -78,13 +80,13 @@ export interface IntegrityReport {
 }
 
 export async function generateIntegrityReport(
-  roomData: any,
+  roomData: RoomIntegrityData,
   expectedHash?: string
 ): Promise<IntegrityReport> {
   const actualHash = await calculateRoomHash(roomData);
   
   return {
-    roomId: roomData.id,
+    roomId: typeof roomData.id === "string" ? roomData.id : String(roomData.id ?? ""),
     valid: expectedHash ? actualHash === expectedHash : true,
     expectedHash,
     actualHash,
