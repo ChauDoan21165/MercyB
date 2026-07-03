@@ -161,7 +161,7 @@ export function __resetRoomSpecCacheForTests(): void {
   roomSpecCacheStats.misses = 0;
 }
 
-function pickBool(row: any, keys: string[], fallback = false): boolean {
+function pickBool(row: Record<string, unknown> | null | undefined, keys: string[], fallback = false): boolean {
   for (const k of keys) {
     if (row && typeof row[k] === "boolean") return row[k];
     if (row && row[k] === 0) return false;
@@ -171,7 +171,7 @@ function pickBool(row: any, keys: string[], fallback = false): boolean {
 }
 
 function pickEnum<T extends string>(
-  row: any,
+  row: Record<string, unknown> | null | undefined,
   keys: string[],
   allowed: readonly T[],
   fallback: T
@@ -195,7 +195,7 @@ function firstDefined<T>(...vals: Array<T | null | undefined>): T | null {
   return null;
 }
 
-function normalizeScope(raw: any): Scope | null {
+function normalizeScope(raw: unknown): Scope | null {
   const s = String(raw || "").trim().toLowerCase();
   if (s === "room") return "room";
   if (s === "tier") return "tier";
@@ -203,7 +203,7 @@ function normalizeScope(raw: any): Scope | null {
   return null;
 }
 
-function normalizeTier(raw: any): string | null {
+function normalizeTier(raw: unknown): string | null {
   const t = String(raw || "").trim().toLowerCase();
   if (!t) return null;
   return t;
