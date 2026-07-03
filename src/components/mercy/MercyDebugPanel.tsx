@@ -8,9 +8,8 @@
  *
  * BUILD-SAFE FIX (TS2353):
  * - `HostSignalPayload` in this repo does NOT accept `payload` (and also didn't accept `meta`).
- * - Keep runtime behavior the same (emit ritual_trigger), but pass a build-safe object shape.
- *   We include ritual + debug_origin directly on the emitted object and cast to `any`
- *   so we don’t fight the local HostSignalPayload typing.
+ * - Keep runtime behavior the same (emit ritual_trigger), but pass a build-safe object shape
+ *   with typed debug-only fields.
  * - Remove unused imports to keep TS clean.
  */
 
@@ -18,7 +17,7 @@ import { useState } from "react";
 import { cn } from "@/lib/utils";
 import { useTeacherMercyContext } from "./TeacherMercyProvider";
 import { runFullValidation } from "@/lib/teacher-mercy/validation";
-import { hostSignal } from "@/lib/teacher-mercy/hostSignal";
+import { hostSignal, type HostSignalPayload } from "@/lib/teacher-mercy/hostSignal";
 import { getRitualForEvent } from "@/lib/teacher-mercy/rituals";
 import { getMemoryData, type MercyMemoryV2 } from "@/lib/teacher-mercy/memorySchema";
 import { getRecentLogs, getLogSummary, getLogBufferSize } from "@/lib/teacher-mercy/logs";
@@ -45,6 +44,13 @@ import {
 interface MercyDebugPanelProps {
   isAdmin?: boolean;
 }
+
+type DebugRitualSignal = HostSignalPayload & {
+  type: "ritual_trigger";
+  source: "admin";
+  ritual: NonNullable<ReturnType<typeof getRitualForEvent>>;
+  debug_origin: "debug_panel";
+};
 
 // Gate: only render in development or for explicit admin
 const isDev =
@@ -78,14 +84,14 @@ export function MercyDebugPanel({ isAdmin = false }: MercyDebugPanelProps) {
     if (!ritual) return;
 
     // BUILD-SAFE: HostSignalPayload typing varies; keep emit working without changing runtime intent.
-    hostSignal.emit(
-      {
-        type: "ritual_trigger",
-        source: "admin",
-        ritual,
-        debug_origin: "debug_panel",
-      } as any,
-    );
+    const signal: DebugRitualSignal = {
+      type: "ritual_trigger",
+      source: "admin",
+      ritual,
+      debug_origin: "debug_panel",
+    };
+
+    hostSignal.emit(signal);
   };
 
   // Simulate comeback ritual
@@ -97,14 +103,14 @@ export function MercyDebugPanel({ isAdmin = false }: MercyDebugPanelProps) {
 
     if (!ritual) return;
 
-    hostSignal.emit(
-      {
-        type: "ritual_trigger",
-        source: "admin",
-        ritual,
-        debug_origin: "debug_panel",
-      } as any,
-    );
+    const signal: DebugRitualSignal = {
+      type: "ritual_trigger",
+      source: "admin",
+      ritual,
+      debug_origin: "debug_panel",
+    };
+
+    hostSignal.emit(signal);
   };
 
   return (
@@ -329,9 +335,9 @@ export function MercyDebugPanel({ isAdmin = false }: MercyDebugPanelProps) {
                   <StateRow label="Coach Level" value={String(mercy.martialCoachLevel)} />
                   <StateRow label="Domain" value={mercy.currentRoomDomain || "None"} />
                   <StateRow label="Hint Visible" value={mercy.isMartialHintVisible ? "Yes" : "No"} />
-                  <StateRow label="Practice Count" value={String((memoryData as any).martialPracticeCount || 0)} />
-                  <StateRow label="Last Discipline" value={(memoryData as any).lastMartialDiscipline || "None"} />
-                  <StateRow label="Last Tip ID" value={(memoryData as any).lastMartialTipId || "None"} />
+                  <StateRow label="Practice Count" value={String(memoryData.martialPracticeCount || 0)} />
+                  <StateRow label="Last Discipline" value={memoryData.lastMartialDiscipline || "None"} />
+                  <StateRow label="Last Tip ID" value={memoryData.lastMartialTipId || "None"} />
                 </div>
 
                 <div className="pt-2 space-y-2">
