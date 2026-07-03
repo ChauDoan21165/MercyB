@@ -18,6 +18,10 @@ interface DeepScanIssue {
   message: string;
 }
 
+function getErrorMessage(error: unknown): string {
+  return error instanceof Error ? error.message : String(error);
+}
+
 function deepScanUI(): void {
   console.log("🔍 UI HEALTH DEEPSCAN");
   console.log("=====================\n");
@@ -125,12 +129,12 @@ function deepScanUI(): void {
         });
       }
 
-    } catch (err: any) {
+    } catch (err: unknown) {
       issues.push({
         roomId,
         severity: "error",
         code: "parse_error",
-        message: err.message
+        message: getErrorMessage(err)
       });
     }
   }

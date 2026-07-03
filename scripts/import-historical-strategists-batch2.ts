@@ -24,15 +24,36 @@ const roomFiles = [
   'machiavelli_strategy_1_vip9.json',
 ];
 
-function extractKeywords(entries: any[]): string[] {
+type JsonRecord = Record<string, unknown>;
+
+function isRecord(value: unknown): value is JsonRecord {
+  return value !== null && typeof value === 'object' && !Array.isArray(value);
+}
+
+function hasToLowerCase(value: unknown): value is { toLowerCase(): string } {
+  return (
+    value !== null &&
+    typeof value === 'object' &&
+    'toLowerCase' in value &&
+    typeof value.toLowerCase === 'function'
+  ) || typeof value === 'string';
+}
+
+function extractKeywords(entries: unknown[]): string[] {
   const keywords = new Set<string>();
   
-  entries.forEach(entry => {
+  entries.forEach((entryValue) => {
+    if (!isRecord(entryValue)) return;
+    const entry = entryValue;
     if (entry.keywords_en && Array.isArray(entry.keywords_en)) {
-      entry.keywords_en.forEach((kw: string) => keywords.add(kw.toLowerCase()));
+      entry.keywords_en.forEach((kw) => {
+        if (hasToLowerCase(kw)) keywords.add(kw.toLowerCase());
+      });
     }
     if (entry.keywords_vi && Array.isArray(entry.keywords_vi)) {
-      entry.keywords_vi.forEach((kw: string) => keywords.add(kw.toLowerCase()));
+      entry.keywords_vi.forEach((kw) => {
+        if (hasToLowerCase(kw)) keywords.add(kw.toLowerCase());
+      });
     }
   });
   
@@ -50,18 +71,25 @@ async function importRooms() {
     try {
       const filePath = join(dataDir, fileName);
       const fileContent = readFileSync(filePath, 'utf-8');
-      const roomData = JSON.parse(fileContent);
+      const parsed: unknown = JSON.parse(fileContent);
+      if (!isRecord(parsed)) {
+        throw new Error('Room JSON root is not an object');
+      }
+      const roomData = parsed;
+      const title = isRecord(roomData.title) ? roomData.title : {};
+      const content = isRecord(roomData.content) ? roomData.content : {};
+      const entries = Array.isArray(roomData.entries) ? roomData.entries : [];
 
-      const keywords = extractKeywords(roomData.entries || []);
+      const keywords = extractKeywords(entries);
 
       const roomRecord = {
         id: roomData.id,
         schema_id: roomData.id,
-        title_en: roomData.title.en,
-        title_vi: roomData.title.vi,
-        room_essay_en: roomData.content.en || '',
-        room_essay_vi: roomData.content.vi || '',
-        entries: roomData.entries || [],
+        title_en: title.en,
+        title_vi: title.vi,
+        room_essay_en: content.en || '',
+        room_essay_vi: content.vi || '',
+        entries,
         keywords: keywords,
         tier: 'vip9',
         domain: 'Strategy',
@@ -75,7 +103,7 @@ async function importRooms() {
         console.error(`❌ Error importing ${roomData.id}:`, error.message);
         errors++;
       } else {
-        console.log(`✅ Imported: ${roomData.id} (${keywords.length} keywords, ${roomData.entries.length} entries)`);
+        console.log(`✅ Imported: ${roomData.id} (${keywords.length} keywords, ${entries.length} entries)`);
         imported++;
       }
     } catch (err) {

@@ -7,6 +7,12 @@ const directories = [
   'supabase/functions/room-chat/data'
 ];
 
+type JsonRecord = Record<string, unknown>;
+
+function isRecord(value: unknown): value is JsonRecord {
+  return value !== null && typeof value === 'object' && !Array.isArray(value);
+}
+
 function cleanText(text: string): string {
   if (!text) return text;
   
@@ -30,13 +36,16 @@ function cleanText(text: string): string {
 function processRoomFile(filePath: string) {
   try {
     const content = readFileSync(filePath, 'utf-8');
-    const data = JSON.parse(content);
+    const parsed: unknown = JSON.parse(content);
+    if (!isRecord(parsed)) return false;
+    const data = parsed;
     
     let modified = false;
     
     // Remove global disclaimer if present
-    if (data.global_notes?.disclaimer) {
-      delete data.global_notes.disclaimer;
+    const globalNotes = isRecord(data.global_notes) ? data.global_notes : null;
+    if (globalNotes?.disclaimer) {
+      delete globalNotes.disclaimer;
       modified = true;
     }
     
@@ -51,40 +60,43 @@ function processRoomFile(filePath: string) {
     }
     
     // Clean room_essay
-    if (data.room_essay) {
-      if (data.room_essay.en) {
-        const cleaned = cleanText(data.room_essay.en);
-        if (cleaned !== data.room_essay.en) {
-          data.room_essay.en = cleaned;
+    const roomEssay = isRecord(data.room_essay) ? data.room_essay : null;
+    if (roomEssay) {
+      if (typeof roomEssay.en === 'string') {
+        const cleaned = cleanText(roomEssay.en);
+        if (cleaned !== roomEssay.en) {
+          roomEssay.en = cleaned;
           modified = true;
         }
       }
-      if (data.room_essay.vi) {
-        const cleaned = cleanText(data.room_essay.vi);
-        if (cleaned !== data.room_essay.vi) {
-          data.room_essay.vi = cleaned;
+      if (typeof roomEssay.vi === 'string') {
+        const cleaned = cleanText(roomEssay.vi);
+        if (cleaned !== roomEssay.vi) {
+          roomEssay.vi = cleaned;
           modified = true;
         }
       }
       
       // Remove word count fields
-      if (data.room_essay.word_count_en) {
-        delete data.room_essay.word_count_en;
+      if (roomEssay.word_count_en) {
+        delete roomEssay.word_count_en;
         modified = true;
       }
-      if (data.room_essay.word_count_vi) {
-        delete data.room_essay.word_count_vi;
+      if (roomEssay.word_count_vi) {
+        delete roomEssay.word_count_vi;
         modified = true;
       }
-      if (data.room_essay.updated_at) {
-        delete data.room_essay.updated_at;
+      if (roomEssay.updated_at) {
+        delete roomEssay.updated_at;
         modified = true;
       }
     }
     
     // Clean entries
     if (data.entries && Array.isArray(data.entries)) {
-      data.entries.forEach((entry: any) => {
+      data.entries.forEach((entryValue) => {
+        if (!isRecord(entryValue)) return;
+        const entry = entryValue;
         // Remove disclaimer from entry
         if (entry.disclaimer) {
           delete entry.disclaimer;
@@ -92,46 +104,48 @@ function processRoomFile(filePath: string) {
         }
         
         // Clean copy text
-        if (entry.copy) {
-          if (entry.copy.en) {
-            const cleaned = cleanText(entry.copy.en);
-            if (cleaned !== entry.copy.en) {
-              entry.copy.en = cleaned;
+        const copy = isRecord(entry.copy) ? entry.copy : null;
+        if (copy) {
+          if (typeof copy.en === 'string') {
+            const cleaned = cleanText(copy.en);
+            if (cleaned !== copy.en) {
+              copy.en = cleaned;
               modified = true;
             }
           }
-          if (entry.copy.vi) {
-            const cleaned = cleanText(entry.copy.vi);
-            if (cleaned !== entry.copy.vi) {
-              entry.copy.vi = cleaned;
+          if (typeof copy.vi === 'string') {
+            const cleaned = cleanText(copy.vi);
+            if (cleaned !== copy.vi) {
+              copy.vi = cleaned;
               modified = true;
             }
           }
           
           // Remove word count fields
-          if (entry.copy.word_count_en) {
-            delete entry.copy.word_count_en;
+          if (copy.word_count_en) {
+            delete copy.word_count_en;
             modified = true;
           }
-          if (entry.copy.word_count_vi) {
-            delete entry.copy.word_count_vi;
+          if (copy.word_count_vi) {
+            delete copy.word_count_vi;
             modified = true;
           }
         }
         
         // Clean title if present
-        if (entry.title) {
-          if (entry.title.en) {
-            const cleaned = cleanText(entry.title.en);
-            if (cleaned !== entry.title.en) {
-              entry.title.en = cleaned;
+        const title = isRecord(entry.title) ? entry.title : null;
+        if (title) {
+          if (typeof title.en === 'string') {
+            const cleaned = cleanText(title.en);
+            if (cleaned !== title.en) {
+              title.en = cleaned;
               modified = true;
             }
           }
-          if (entry.title.vi) {
-            const cleaned = cleanText(entry.title.vi);
-            if (cleaned !== entry.title.vi) {
-              entry.title.vi = cleaned;
+          if (typeof title.vi === 'string') {
+            const cleaned = cleanText(title.vi);
+            if (cleaned !== title.vi) {
+              title.vi = cleaned;
               modified = true;
             }
           }
