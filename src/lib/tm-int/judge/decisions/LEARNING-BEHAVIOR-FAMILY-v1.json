@@ -1,0 +1,67 @@
+{
+  "family_id": "LEARNING-BEHAVIOR-FAMILY-v1",
+  "name": "Learning Behavior Family v1",
+  "judge_decision": "promoted",
+  "promoted_by": "ADMIN/JUDGE",
+  "source_commit": "7af613136",
+  "evidence": {
+    "capabilities_covered": [
+      "Productive Hesitation",
+      "Healthy Self-Correction",
+      "Hint Dependency",
+      "Retrieval Success",
+      "Misconception Recurrence",
+      "Productive Struggle",
+      "Sustained Attention",
+      "Confidence Calibration",
+      "Cognitive Overload",
+      "Transfer Success"
+    ],
+    "edu_definitions_complete": true,
+    "learning_signal_mappings_correct": true,
+    "dp": {
+      "preserves_alternatives": true,
+      "uses_evidence_before_inference": true,
+      "no_learner_weakness_inference": true,
+      "no_mastery_reduction_from_single_event": true
+    },
+    "ped": {
+      "educationally_safe_actions": true,
+      "preserves_alternatives": true,
+      "explainable": true,
+      "does_not_lower_placement_from_single_event": true
+    },
+    "lm_stm": {
+      "stores_learning_behavior_observation": true,
+      "mastery_reduced": false
+    },
+    "replay": {
+      "pass": true,
+      "deterministic": true,
+      "failures": []
+    },
+    "negative_cases": {
+      "prevent_false_positives": true
+    },
+    "sqlite": {
+      "path": "src/lib/tm-int/workpacks/learning-behavior-family-v1.sqlite",
+      "row_count": 16,
+      "duplicate_semantic_key_count": 0,
+      "required_fields_nonempty": true,
+      "f_verified_before_promotion": 0,
+      "f_verified_after_promotion": 0
+    },
+    "gates": {
+      "typecheck": "PASS",
+      "eslint": "PASS",
+      "tests": "PASS",
+      "diff_check": "PASS"
+    }
+  },
+  "verified": true,
+  "notes": [
+    "Judge promotion is scoped only to Learning Behavior Family v1.",
+    "F workpack rows remain verified=false.",
+    "Promotion does not alter product DB or deploy anything."
+  ]
+}

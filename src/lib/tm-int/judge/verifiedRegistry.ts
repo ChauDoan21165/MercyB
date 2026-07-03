@@ -70,3 +70,29 @@ export const VERIFIED_EDU_FRAMEWORKS = [
 export function verifiedEduFrameworkCount(): number {
   return VERIFIED_EDU_FRAMEWORKS.length;
 }
+
+export type VerifiedLearningBehaviorFamily = {
+  family_id: "LEARNING-BEHAVIOR-FAMILY-v1";
+  semantic_key: "learning_behavior.family.v1";
+  judge_decision: "promoted";
+  judge_artifact: string;
+  promoted_by: "ADMIN/JUDGE";
+  source_commit: string;
+  verified: true;
+};
+
+export const VERIFIED_LEARNING_BEHAVIOR_FAMILIES = [
+  {
+    family_id: "LEARNING-BEHAVIOR-FAMILY-v1",
+    semantic_key: "learning_behavior.family.v1",
+    judge_decision: "promoted",
+    judge_artifact: "src/lib/tm-int/judge/decisions/LEARNING-BEHAVIOR-FAMILY-v1.json",
+    promoted_by: "ADMIN/JUDGE",
+    source_commit: "7af613136",
+    verified: true,
+  },
+] as const satisfies readonly VerifiedLearningBehaviorFamily[];
+
+export function verifiedLearningBehaviorFamilyCount(): number {
+  return VERIFIED_LEARNING_BEHAVIOR_FAMILIES.length;
+}
