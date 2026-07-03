@@ -1,3 +1,7 @@
+type FeatureFlagImportMeta = ImportMeta & {
+  env?: Record<string, string | boolean | undefined>;
+};
+
 // src/lib/featureFlags.ts — MB-BLUE-93.9 — 2025-12-24 (+0700)
 
 /**
@@ -22,7 +26,7 @@ function readEnvBool(key: string, defaultValue: boolean): boolean {
         ? import.meta.env.VITE_PLACEMENT_TEST_ENABLED
         : key === "VITE_PLACEMENT_V3_UI_ENABLED"
           ? import.meta.env.VITE_PLACEMENT_V3_UI_ENABLED
-          : (import.meta as any)?.env?.[key];
+          : (import.meta as FeatureFlagImportMeta)?.env?.[key];
     if (raw === undefined || raw === null || raw === "") return defaultValue;
     const s = String(raw).toLowerCase().trim();
     return s === "true" || s === "1" || s === "yes" || s === "on";
