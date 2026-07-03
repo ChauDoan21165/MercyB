@@ -140,7 +140,7 @@ async function runWithConcurrency<T, R>(
   let done = 0;
 
   async function runner() {
-    while (true) {
+    for (;;) {
       const i = nextIndex++;
       if (i >= items.length) return;
       const r = await worker(items[i], i);

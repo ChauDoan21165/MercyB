@@ -52,7 +52,7 @@ async function listBucketObjects(): Promise<string[]> {
   let offset = 0;
   const limit = 1000;
   
-  while (true) {
+  for (;;) {
     const { data, error } = await supabase.storage
       .from(BUCKET_NAME)
       .list('', { 
@@ -99,7 +99,7 @@ async function listFolderRecursive(folderPath: string, allObjects: string[]): Pr
   let offset = 0;
   const limit = 1000;
   
-  while (true) {
+  for (;;) {
     const { data, error } = await supabase.storage
       .from(BUCKET_NAME)
       .list(folderPath, { limit, offset });

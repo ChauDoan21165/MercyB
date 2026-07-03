@@ -124,7 +124,7 @@ async function createOneMp3(job: Mp3Job) {
   const response = await openai.audio.speech.create({
     model: "gpt-4o-mini-tts",
     voice: "alloy",
-    format: "mp3",
+    response_format: "mp3",
     input: job.text,
   });
 
@@ -174,7 +174,7 @@ async function main() {
       await createOneMp3(job);
       // small delay to be gentle with rate limits
       await new Promise((res) => setTimeout(res, 400));
-    } catch (err: any) {
+    } catch (err: unknown) {
       console.error(`❌ Failed to generate ${job.filename}`, err);
     }
   }
