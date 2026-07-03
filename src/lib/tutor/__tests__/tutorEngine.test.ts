@@ -102,6 +102,12 @@ describe("tutorEngine", () => {
     ).toBe("What do you usually do in the morning?");
   });
 
+  it("removes simple markup tags before text is spoken aloud", () => {
+    expect(sanitizeSpeakableText("<strong>Natural reply:</strong> What do you usually do?")).toBe(
+      "What do you usually do?",
+    );
+  });
+
   it("opening starter question speakable text excludes empty-state labels", () => {
     const { turn } = buildConversationTurn({
       id: "turn-5",

@@ -55,6 +55,7 @@ export function sanitizeSpeakableText(text: string): string {
     .join(" ");
 
   const withoutMarkup = withoutLabels
+    .replace(/<[^>\n]*>/g, " ")
     .replace(/[`*_#>~]+/g, " ")
     .replace(/\s+/g, " ")
     .trim();

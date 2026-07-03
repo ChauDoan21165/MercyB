@@ -67,6 +67,10 @@ function compact(value: string): string {
   return value.replace(/\s+/g, " ").trim();
 }
 
+function quoteForPromptList(value: string): string {
+  return compact(value).replace(/["“”]/g, "'").replace(/;/g, ",");
+}
+
 /** True when the suggested next intent would repeat a recently asked question. */
 function detectRepetitionRisk(intent: string, recentQuestions: readonly string[]): boolean {
   const probe = compact(intent);
@@ -83,7 +87,7 @@ function recentQuestionsGuard(recentQuestions: readonly string[]): string {
   if (recentQuestions.length === 0) return "";
   const recent = recentQuestions
     .slice(-RECENT_QUESTION_WINDOW)
-    .map((question) => `"${compact(question)}"`)
+    .map((question) => `"${quoteForPromptList(question)}"`)
     .join("; ");
   return ` Avoid repetition: do not repeat any recent question — ${recent}.`;
 }

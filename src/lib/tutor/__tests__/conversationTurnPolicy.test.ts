@@ -144,6 +144,18 @@ describe("conversationTurnPolicy — anti-repetition", () => {
     expect(d.promptInstruction).toContain(`Question ${RECENT_QUESTION_WINDOW + 4}?`);
     expect(d.promptInstruction).not.toContain("Question 0?");
   });
+
+  it("sanitizes recent questions before placing them in quoted prompt guard lists", () => {
+    const d = decideConversationTurnPolicy({
+      learnerText: "My manager gave me a new task today.",
+      currentTopicId: "work",
+      turnsOnTopic: 1,
+      recentQuestions: ['What does "deadline" mean?; Please explain.'],
+    });
+
+    expect(d.promptInstruction).toContain('"What does \'deadline\' mean?, Please explain."');
+    expect(d.promptInstruction).not.toContain('"deadline"');
+  });
 });
 
 describe("conversationTurnPolicy — prompt-ready output", () => {
