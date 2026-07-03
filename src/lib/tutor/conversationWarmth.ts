@@ -254,10 +254,23 @@ const DEFAULT_NEXT_PROMPTS: readonly BilingualLine[] = [
   },
 ];
 
+function cleanSuggestedPromptLine(value: string | undefined): string {
+  return (value ?? "")
+    .split("")
+    .map((char) => {
+      const code = char.charCodeAt(0);
+      return code < 32 || code === 127 ? " " : char;
+    })
+    .join("")
+    .replace(/\s+/g, " ")
+    .trim()
+    .replace(/^(?:next\s+question|question|prompt)\s*:\s*/i, "");
+}
+
 function concreteNextPrompt(input: BilingualLine | null | undefined, turnIndex: number | undefined): BilingualLine {
   const fallback = pick(DEFAULT_NEXT_PROMPTS, turnIndex);
-  const vi = input?.vi.trim() || fallback.vi;
-  const en = input?.en.trim() || fallback.en;
+  const vi = cleanSuggestedPromptLine(input?.vi) || fallback.vi;
+  const en = cleanSuggestedPromptLine(input?.en) || fallback.en;
   return { vi, en };
 }
 

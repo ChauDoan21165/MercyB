@@ -150,6 +150,24 @@ describe("buildAbstentionRedirect", () => {
     expect(redirect.nextPrompt.en).toBe("Which type of account would you like to open first?");
   });
 
+  it("cleans caller-supplied next prompts before returning them", () => {
+    const redirect = buildAbstentionRedirect({
+      trigger: "no_audio",
+      suggestedNextPrompt: {
+        vi: "Next question:\u0000 Bạn muốn nói gì tiếp theo?",
+        en: "Question:\t What would you like to say next?",
+      },
+    });
+
+    expect(redirect.nextPrompt.vi).toBe("Bạn muốn nói gì tiếp theo?");
+    expect(redirect.nextPrompt.en).toBe("What would you like to say next?");
+    expect([...`${redirect.nextPrompt.vi} ${redirect.nextPrompt.en}`].some((char) => {
+      const code = char.charCodeAt(0);
+      return code < 32 || code === 127;
+    })).toBe(false);
+    expect(`${redirect.nextPrompt.vi} ${redirect.nextPrompt.en}`).not.toMatch(/next question:|question:/i);
+  });
+
   it("falls back to a concrete default when caller-supplied next prompt is blank", () => {
     const redirect = buildAbstentionRedirect({
       trigger: "no_audio",
@@ -222,6 +240,35 @@ describe("buildAbstentionRedirect", () => {
       expect(line).not.toMatch(SHAME);
       expect(line).not.toMatch(HOLLOW_PRAISE_EXTREME);
     }
+  });
+
+  it("keeps every abstention trigger covered with bilingual copy", () => {
+    for (const trigger of ALL_TRIGGERS) {
+      const redirect = buildAbstentionRedirect({ trigger });
+
+      expect(redirect.vi.trim().length).toBeGreaterThan(10);
+      expect(redirect.en.trim().length).toBeGreaterThan(10);
+      expect(redirect.nextPrompt.vi.trim().length).toBeGreaterThan(10);
+      expect(redirect.nextPrompt.en.trim().length).toBeGreaterThan(10);
+    }
+  });
+
+  it("keeps default prompt language boundaries stable", () => {
+    for (const turnIndex of [0, 1, 2]) {
+      const redirect = buildAbstentionRedirect({ trigger: "no_audio", turnIndex });
+
+      expect(redirect.nextPrompt.vi).toMatch(VIETNAMESE_MARKERS);
+      expect(redirect.nextPrompt.en).not.toMatch(VIETNAMESE_MARKERS);
+    }
+  });
+
+  it("keeps no-audio abstention neutral and practice-forward", () => {
+    const redirect = buildAbstentionRedirect({ trigger: "no_audio" });
+    const combined = `${redirect.vi} ${redirect.en} ${redirect.nextPrompt.vi} ${redirect.nextPrompt.en}`;
+
+    expect(combined).not.toMatch(/microphone|your fault|retry|try again/i);
+    expect(redirect.nextPrompt.vi.trim().length).toBeGreaterThan(10);
+    expect(redirect.nextPrompt.en.trim().length).toBeGreaterThan(10);
   });
 });
 
