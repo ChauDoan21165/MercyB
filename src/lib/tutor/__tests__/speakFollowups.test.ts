@@ -358,6 +358,22 @@ describe("speakFollowups", () => {
         clear: false,
         reason: "learner_reports_unclear_follow_up",
       });
+      expect(assessSpeakTranscriptClarity("Your question is not clear.")).toMatchObject({
+        clear: false,
+        reason: "learner_reports_unclear_follow_up",
+      });
+      expect(assessSpeakTranscriptClarity("I don't get the question.")).toMatchObject({
+        clear: false,
+        reason: "learner_reports_unclear_follow_up",
+      });
+      expect(assessSpeakTranscriptClarity("I didn't get that follow-up question.")).toMatchObject({
+        clear: false,
+        reason: "learner_reports_unclear_follow_up",
+      });
+      expect(assessSpeakTranscriptClarity("The follow up question does not make sense.")).toMatchObject({
+        clear: false,
+        reason: "learner_reports_unclear_follow_up",
+      });
       expect(assessSpeakTranscriptClarity("the and of to")).toMatchObject({
         clear: false,
         reason: "function_word_salad:the_and_of_to",
@@ -378,6 +394,7 @@ describe("speakFollowups", () => {
         "I wait you.",
         "I'm tired but okay.",
         "I am from Canada.",
+        "I get the bus at seven.",
         "I need help this form.",
       ];
       for (const text of ordinaryLearnerSentences) {
