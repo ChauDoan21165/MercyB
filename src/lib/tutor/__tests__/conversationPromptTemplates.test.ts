@@ -92,6 +92,46 @@ describe("conversationPromptTemplates", () => {
     expect(fullPrompt).toContain("Use simple English for Vietnamese learners");
     expect(fullPrompt).toContain("do not overclaim certainty");
   });
+
+  it("preserves output shape, privacy, and whitespace-safe prompt boundaries", () => {
+    const topicWithPrivateMetadata = {
+      ...SPARSE_TOPIC,
+      scenarioDescription: "   ",
+      aiRoleDefinition: "\n\t",
+      conversationDirections: ["  ", "Ask about the learner's real need.  "],
+      warmthPatterns: ["  "],
+      privateAdminNote: "DO_NOT_LEAK_PRIVATE_ADMIN_NOTE",
+      supabaseJwt: "DO_NOT_LEAK_SUPABASE_JWT",
+      providerSecret: "DO_NOT_LEAK_PROVIDER_SECRET",
+    } as ConversationPromptTopic & Record<string, unknown>;
+
+    const template = buildConversationPromptTemplate({
+      topic: topicWithPrivateMetadata,
+      turnCount: 0,
+      learnerText: "   ",
+      recentAiTurns: ["   "],
+    });
+    const fullPrompt = [
+      template.systemPrompt,
+      template.topicGroundingPrompt,
+      template.correctionStylePrompt,
+    ].join("\n");
+
+    expect(fullPrompt).toContain("Keep learner-facing copy Vietnamese-primary with English-secondary examples.");
+    expect(fullPrompt).toContain("Use 1-2 short sentences unless one brief correction example is necessary.");
+    expect(fullPrompt).not.toMatch(/\bas an AI\b/i);
+    expect(fullPrompt).not.toMatch(/\b(?:OpenAI|Anthropic|API key|secret|network request)\b/i);
+    expect(fullPrompt).not.toContain("undefined");
+    expect(fullPrompt).not.toContain("DO_NOT_LEAK_PRIVATE_ADMIN_NOTE");
+    expect(fullPrompt).not.toContain("DO_NOT_LEAK_SUPABASE_JWT");
+    expect(fullPrompt).not.toContain("DO_NOT_LEAK_PROVIDER_SECRET");
+    expect(template.grounding.scenarioDescription).toBeNull();
+    expect(template.grounding.aiRoleDefinition).toBeNull();
+    expect(template.grounding.conversationDirections).toEqual(["Ask about the learner's real need."]);
+    expect(template.grounding.warmthPatterns.join(" ")).toContain("face-saving Vietnamese-first coaching");
+    expect(template.systemPrompt).toContain("(none yet; open with the scenario seed)");
+    expect(template.systemPrompt).toContain("Recent AI turns to avoid repeating:\n\n- None.");
+  });
 });
 
 // Step 11: locks the live Vietlish seeding selector that injects corpus

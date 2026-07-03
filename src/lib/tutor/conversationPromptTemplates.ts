@@ -233,6 +233,7 @@ export function buildConversationPromptTemplate(
     correctionStylePrompt,
     "Output contract:",
     "- Return one concise AI turn for the learner.",
+    "- Use 1-2 short sentences unless one brief correction example is necessary.",
     "- Ask exactly one follow-up question, not a question list.",
     "- Include at most one correction and one follow-up question.",
     "- Keep learner-facing copy Vietnamese-primary with English-secondary examples.",
