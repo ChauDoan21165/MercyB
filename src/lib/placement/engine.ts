@@ -46,7 +46,7 @@ export type QuestionResponse = {
   correct: boolean;
   viRevealed: boolean;
   elapsedMs: number;
-  /** Copied from the question's weaknessTag (if any). Present on every
+  /** Copied from the question's weaknessTag when present. Present on every
    *  response so the persisted log is self-describing; also drives the
    *  derivation of EngineSnapshot.weaknessFlags on commit. */
   weaknessTag?: string;

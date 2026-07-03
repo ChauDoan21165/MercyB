@@ -219,7 +219,7 @@ export interface UiSmokeItemEvidence {
   emptyStateHandled: boolean;
   /** Are error states handled gracefully? */
   errorStateHandled: boolean;
-  /** Optional: any specific failure note in Vietnamese */
+  /** Optional specific failure note in Vietnamese */
   failureNoteVi?: string;
 }
 

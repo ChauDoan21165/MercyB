@@ -8,7 +8,7 @@
 //      helper for analytical pseudonymization. It is NOT cryptographically
 //      secure — production-secure hashing must be HMAC-SHA-256 server-side
 //      using a high-entropy secret salt before persistence.
-//   3. Field redaction: any optional free-text field (none present today;
+//   3. Field redaction: optional free-text fields (none present today;
 //      this is a forward-compatibility surface) is stripped before export.
 
 import { aggregateEvents } from "./aggregation";

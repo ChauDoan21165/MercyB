@@ -7,7 +7,7 @@
 //
 // Opt-in by default: with no stored choice, hasCaptureConsent() is false (no
 // capture). The choice is a single localStorage flag — device-local, no
-// account round-trip — so it is best-effort and fail-safe: any storage error
+// account round-trip — so it is best-effort and fail-safe: storage errors
 // reads as "no consent" (fail closed, never capture without a clear yes).
 
 const CONSENT_KEY = "mb-capture-consent";

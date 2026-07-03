@@ -107,10 +107,25 @@ import {
 import { useAuthUser } from "@/components/room/hooks/useAuthUser";
 import { useRoomFeedback } from "@/components/room/hooks/useRoomFeedback";
 
-type AnyRoom = any;
+type LocalizedRoomText = {
+  en?: unknown;
+  vi?: unknown;
+};
+
+type RoomRendererRoom = {
+  id?: unknown;
+  tier?: unknown;
+  title?: LocalizedRoomText | null;
+  title_en?: unknown;
+  title_vi?: unknown;
+  name?: LocalizedRoomText | null;
+  name_en?: unknown;
+  name_vi?: unknown;
+  meta?: { tier?: unknown } | null;
+};
 
 type RoomRendererProps = {
-  room: AnyRoom;
+  room: RoomRendererRoom | null | undefined;
   roomId?: string;
   roomSpec?: { use_color_theme?: boolean };
   uiKind?: "keyword_hub" | "content";
@@ -135,8 +150,8 @@ function readArray(record: RoomEntryLike | null, key: string): unknown[] {
 
 const PLACEMENT_V3_ACTIVE_LESSON_KEY = "mb.placement.v3.activeLesson";
 
-const pickTitleENRaw = (r: AnyRoom) => r?.title?.en || r?.title_en || r?.name?.en || r?.name_en || "";
-const pickTitleVIRaw = (r: AnyRoom) => r?.title?.vi || r?.title_vi || r?.name?.vi || r?.name_vi || "";
+const pickTitleENRaw = (r: RoomRendererRoom) => r.title?.en || r.title_en || r.name?.en || r.name_en || "";
+const pickTitleVIRaw = (r: RoomRendererRoom) => r.title?.vi || r.title_vi || r.name?.vi || r.name_vi || "";
 
 // Room-intro field selection + the M4 honest-fallback predicate now live
 // in roomIntroFallback.ts (dep-free, unit-tested there). pickIntroEN /
@@ -150,8 +165,8 @@ const pickTitleVIRaw = (r: AnyRoom) => r?.title?.vi || r?.title_vi || r?.name?.v
 // need VI" beacon.
 const reportedViIntroGapRooms = new Set<string>();
 
-function pickTier(room: AnyRoom): string {
-  return String(room?.tier ?? room?.meta?.tier ?? "").toLowerCase();
+function pickTier(room: RoomRendererRoom): string {
+  return String(room.tier ?? room.meta?.tier ?? "").toLowerCase();
 }
 function normalizeRoomTierToTierId(roomTier: string): TierId | null {
   const t = String(roomTier || "").trim();
@@ -793,7 +808,7 @@ export default function RoomRenderer({
   const box4Ref = useRef<HTMLElement | null>(null);
 
   const useColorThemeSafe = roomSpec?.use_color_theme !== false;
-  const safeRoom = (room ?? {}) as AnyRoom;
+  const safeRoom: RoomRendererRoom = room ?? {};
   const effectiveRoomId = String(safeRoom?.id || roomId || "");
   const coreRoomId = useMemo(() => coreRoomIdFromEffective(effectiveRoomId), [effectiveRoomId]);
 
