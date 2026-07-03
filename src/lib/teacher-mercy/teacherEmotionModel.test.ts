@@ -1,15 +1,24 @@
 import { describe, expect, it } from 'vitest';
 import { teacherEmotionModel } from './teacherEmotionModel';
+import type { LearnerState } from './learnerState';
+
+function makeLearnerState(overrides: Partial<LearnerState>): LearnerState {
+  return {
+    clarity: 'clear',
+    affect: 'neutral',
+    confidence: 'medium',
+    momentum: 'steady',
+    ...overrides,
+  };
+}
 
 describe('teacherEmotionModel', () => {
   it('reduces humor and slows down when learner is lost', () => {
     const result = teacherEmotionModel({
-      learnerState: {
+      learnerState: makeLearnerState({
         clarity: 'lost',
-        affect: 'neutral',
-        confidence: 'medium',
-        momentum: 'stalled',
-      } as any,
+        momentum: 'stuck',
+      }),
       repeatedMistake: true,
       wantsExplanation: true,
     });
@@ -23,12 +32,10 @@ describe('teacherEmotionModel', () => {
 
   it('increases warmth and encouragement when confidence is low', () => {
     const result = teacherEmotionModel({
-      learnerState: {
-        clarity: 'clear',
-        affect: 'neutral',
+      learnerState: makeLearnerState({
         confidence: 'low',
-        momentum: 'stalled',
-      } as any,
+        momentum: 'stuck',
+      }),
       isCorrectiveTurn: true,
       repeatedMistake: true,
     });
@@ -40,12 +47,11 @@ describe('teacherEmotionModel', () => {
 
   it('preserves momentum when learner is flowing and wants challenge', () => {
     const result = teacherEmotionModel({
-      learnerState: {
-        clarity: 'clear',
+      learnerState: makeLearnerState({
         affect: 'playful',
         confidence: 'high',
         momentum: 'flowing',
-      } as any,
+      }),
       wantsChallenge: true,
     });
 
@@ -57,12 +63,10 @@ describe('teacherEmotionModel', () => {
 
   it('suppresses humor when repeated mistakes are happening', () => {
     const result = teacherEmotionModel({
-      learnerState: {
-        clarity: 'clear',
+      learnerState: makeLearnerState({
         affect: 'playful',
-        confidence: 'medium',
-        momentum: 'stalled',
-      } as any,
+        momentum: 'stuck',
+      }),
       repeatedMistake: true,
     });
 
@@ -72,12 +76,11 @@ describe('teacherEmotionModel', () => {
 
   it('respects suppressHumor override', () => {
     const result = teacherEmotionModel({
-      learnerState: {
-        clarity: 'clear',
+      learnerState: makeLearnerState({
         affect: 'playful',
         confidence: 'high',
         momentum: 'flowing',
-      } as any,
+      }),
       suppressHumor: true,
     });
 
@@ -86,21 +89,17 @@ describe('teacherEmotionModel', () => {
 
   it('leans gentler unless directness is required', () => {
     const gentle = teacherEmotionModel({
-      learnerState: {
-        clarity: 'clear',
-        affect: 'neutral',
+      learnerState: makeLearnerState({
         confidence: 'low',
-        momentum: 'stalled',
-      } as any,
+        momentum: 'stuck',
+      }),
     });
 
     const direct = teacherEmotionModel({
-      learnerState: {
-        clarity: 'clear',
-        affect: 'neutral',
+      learnerState: makeLearnerState({
         confidence: 'low',
-        momentum: 'stalled',
-      } as any,
+        momentum: 'stuck',
+      }),
       requireDirectness: true,
     });
 

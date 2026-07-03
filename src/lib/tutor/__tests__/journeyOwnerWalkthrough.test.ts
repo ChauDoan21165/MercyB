@@ -37,15 +37,17 @@ import type { TutorTurn } from "../tutorTypes";
 import type { TranscriptCorrectionEvent } from "../transcriptCorrectionTypes";
 import type { CorrectionMode } from "../teacherMercyCorrectionTiming";
 import type { AuditResult } from "../teacherMercyAuditGate";
-import type { RubricResult } from "../teacherMercyRubric";
+import type { RubricDimensionId, RubricResult } from "../teacherMercyRubric";
 import type { ContractRuleCheck } from "../teacherMercyContract";
 import type { SelfAuditResult } from "../teacherMercySelfAuditGate";
 import type { OverclaimGuardResult } from "../overclaimGuard";
 import type { EvaluationResult } from "../teachingDecisionEvaluationGate";
 import type { TeacherDecision } from "../teacherDecisionEngine";
-import type { LearningGainResult } from "../learningGainRubric";
+import type { CorrectionEngineResult } from "../correctionEngine";
+import type { LearningGainResult, LearningGainSnapshot } from "../learningGainRubric";
 import type { ChauMemorySnapshot, ChauReviewPacket } from "../chauReviewPacket";
 import type { HumanLearnerChecklistResult } from "../humanLearnerTestingChecklist";
+import type { VietlishInterferenceCategory } from "../vietlishLogicEngine";
 
 // ═══════════════════════════════════════════════════════════════════════════════
 // Test Helpers
@@ -100,7 +102,7 @@ function makeCorrectionEvent(overrides?: Partial<TranscriptCorrectionEvent>): Tr
     matchScore: null,
     weaknessTags: ["tense-past"],
     weaknessLabelsVi: ["Thiếu thì quá khứ"],
-    interferenceCategory: "tense-omission" as any,
+    interferenceCategory: "verb_form" satisfies VietlishInterferenceCategory,
     topicTag: null,
     ...overrides,
   };
@@ -108,7 +110,7 @@ function makeCorrectionEvent(overrides?: Partial<TranscriptCorrectionEvent>): Tr
 
 function makeRubricResult(): RubricResult {
   return {
-    dimensionId: "rb_correction_accuracy" as any,
+    dimensionId: "accuracy" satisfies RubricDimensionId,
     labelVi: "Độ chính xác sửa lỗi",
     labelEn: "Correction Accuracy",
     score: 3,
@@ -180,7 +182,7 @@ function makeReviewPacket(): ChauReviewPacket {
   return {
     sessionId: "session-001",
     learnerId: "learner-001",
-    verdict: "reportable" as any,
+    verdict: "good_teacher",
     dimensions: [],
     summaryVi: "Buổi học tốt.",
     actionItems: [],
@@ -201,12 +203,12 @@ function makeLearningGainResult(
       snapshotId: "base-001",
       eventsCaptured: 10,
       errorRate: 0.4,
-    } as any,
+    } as LearningGainSnapshot,
     outcome: {
       snapshotId: "out-001",
       eventsCaptured: 10,
       errorRate: 0.1,
-    } as any,
+    } as LearningGainSnapshot,
     totalEvents: 20,
     sufficientData: true,
   };
@@ -226,7 +228,7 @@ function makeSessionData(
   turns: TutorTurn[],
   extras?: {
     correctionEvents?: TranscriptCorrectionEvent[];
-    correctionResults?: any[];
+    correctionResults?: CorrectionEngineResult[];
     rubricResults?: RubricResult[];
     contractChecks?: ContractRuleCheck[];
     auditResults?: AuditResult[];
@@ -245,7 +247,7 @@ function makeSessionData(
     sessionTimestamp: new Date().toISOString(),
     turns,
     correctionEvents: extras?.correctionEvents,
-    correctionResults: extras?.correctionResults as any,
+    correctionResults: extras?.correctionResults,
     rubricResults: extras?.rubricResults,
     contractChecks: extras?.contractChecks,
     auditResults: extras?.auditResults,

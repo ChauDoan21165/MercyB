@@ -7,7 +7,12 @@
  */
 
 import { describe, it, expect } from "vitest";
-import type { LearningGainResult, LearningGainSnapshot } from "../learningGainRubric";
+import type {
+  GainDimensionLabel,
+  LearningGainDimensionId,
+  LearningGainResult,
+  LearningGainSnapshot,
+} from "../learningGainRubric";
 import {
   // Core builder
   buildLearningGainEvidencePacket,
@@ -67,6 +72,8 @@ import type {
   GainClaimTypeEntry,
   GainEvidenceVerdict,
   EvidenceStrength,
+  GainClaimTypeId,
+  GainEvidenceTypeId,
 } from "../learningGainEvidencePacket";
 
 // ─── Shared Test Helpers ────────────────────────────────────────────────────
@@ -83,11 +90,11 @@ function makeGainDimension(overrides: Partial<{
   detailEn: string;
 }> = {}) {
   return {
-    dimensionId: (overrides.dimId ?? "lg_error_reduction") as any,
+    dimensionId: (overrides.dimId ?? "lg_error_reduction") as LearningGainDimensionId,
     titleVi: overrides.titleVi ?? "Giảm lỗi",
     titleEn: overrides.titleEn ?? "Error reduction",
     score: (overrides.score ?? 2) as 0 | 1 | 2 | 3,
-    label: (overrides.score === 3 ? "strong" : overrides.score === 2 ? "clear" : overrides.score === 1 ? "minimal" : "none") as any,
+    label: (overrides.score === 3 ? "strong" : overrides.score === 2 ? "clear" : overrides.score === 1 ? "minimal" : "none") satisfies GainDimensionLabel,
     baselineValue: overrides.baselineValue ?? 0.4,
     outcomeValue: overrides.outcomeValue ?? 0.25,
     delta: overrides.delta ?? -0.15,
@@ -112,11 +119,11 @@ function makeFullGainResult(overrides: Partial<LearningGainResult> = {}): Learni
 
   const numImproving = overrides.improvingDimensions ?? 3;
   const dimensions = dimIds.map((id, i) => ({
-    dimensionId: id as any,
+    dimensionId: id as LearningGainDimensionId,
     titleVi: dimTitlesVi[i],
     titleEn: dimTitlesEn[i],
     score: (i < numImproving ? 2 : 1) as 0 | 1 | 2 | 3,
-    label: (i < numImproving ? "clear" : "minimal") as any,
+    label: (i < numImproving ? "clear" : "minimal") satisfies GainDimensionLabel,
     baselineValue: i === 1 ? 65 : 0.4,
     outcomeValue: i === 1 ? 78 : 0.25,
     delta: i === 1 ? 13 : -0.15,
@@ -387,7 +394,7 @@ describe("catalog accessors", () => {
   });
 
   it("getGainEvidenceTypeById returns null for unknown ID", () => {
-    expect(getGainEvidenceTypeById("ev-nonexistent" as any)).toBeNull();
+    expect(getGainEvidenceTypeById("ev-nonexistent" as unknown as GainEvidenceTypeId)).toBeNull();
   });
 
   it("getGainEvidenceTypesByDimension returns correct entries", () => {
@@ -397,7 +404,7 @@ describe("catalog accessors", () => {
   });
 
   it("getGainEvidenceTypesByDimension returns empty for unmatched dimension", () => {
-    const results = getGainEvidenceTypesByDimension("lg_error_reduction" as any);
+    const results = getGainEvidenceTypesByDimension("lg_error_reduction");
     expect(results.length).toBe(1);
     expect(results[0].evidenceTypeId).toBe("ev-error-reduction");
   });
@@ -415,7 +422,7 @@ describe("catalog accessors", () => {
   });
 
   it("getGainClaimTypeById returns null for unknown ID", () => {
-    expect(getGainClaimTypeById("claim-fake" as any)).toBeNull();
+    expect(getGainClaimTypeById("claim-fake" as unknown as GainClaimTypeId)).toBeNull();
   });
 });
 
@@ -1185,8 +1192,8 @@ describe("validation", () => {
     const packet = buildLearningGainEvidencePacket(
       createMinimalGainPacketInput({ rubricResult: makeFullGainResult() }),
     );
-    (packet as any).packetId = "";
-    const errors = validateGainEvidencePacket(packet);
+    const invalidPacket: LearningGainEvidencePacket = { ...packet, packetId: "" };
+    const errors = validateGainEvidencePacket(invalidPacket);
     expect(errors.some((e) => e.field === "packetId")).toBe(true);
   });
 
@@ -1194,8 +1201,8 @@ describe("validation", () => {
     const packet = buildLearningGainEvidencePacket(
       createMinimalGainPacketInput({ rubricResult: makeFullGainResult() }),
     );
-    (packet as any).totalEvidenceCount = 5;
-    const errors = validateGainEvidencePacket(packet);
+    const invalidPacket: LearningGainEvidencePacket = { ...packet, totalEvidenceCount: 5 };
+    const errors = validateGainEvidencePacket(invalidPacket);
     expect(errors.some((e) => e.field === "totalEvidenceCount")).toBe(true);
   });
 });
@@ -1502,7 +1509,7 @@ describe("edge cases", () => {
 
   it("handles null rubric dimensions array", () => {
     const result = makeFullGainResult();
-    result.dimensions = [] as any;
+    result.dimensions = [];
     const packet = buildLearningGainEvidencePacket(
       createMinimalGainPacketInput({ rubricResult: result, totalEvents: 10 }),
     );
