@@ -107,21 +107,29 @@ import {
 import { useAuthUser } from "@/components/room/hooks/useAuthUser";
 import { useRoomFeedback } from "@/components/room/hooks/useRoomFeedback";
 
-type LocalizedRoomText = {
-  en?: unknown;
-  vi?: unknown;
-};
+type LocalizedRoomField = Partial<Record<"en" | "vi" | "ja", unknown>>;
 
 type RoomRendererRoom = {
+  [key: string]: unknown;
   id?: unknown;
-  tier?: unknown;
-  title?: LocalizedRoomText | null;
+  title?: LocalizedRoomField | null;
   title_en?: unknown;
   title_vi?: unknown;
-  name?: LocalizedRoomText | null;
+  name?: LocalizedRoomField | null;
   name_en?: unknown;
   name_vi?: unknown;
-  meta?: { tier?: unknown } | null;
+  tier?: unknown;
+  meta?: (Record<string, unknown> & { tier?: unknown }) | null;
+  intro?: LocalizedRoomField | null;
+  intro_en?: unknown;
+  intro_vi?: unknown;
+  description?: LocalizedRoomField | string | null;
+  description_en?: unknown;
+  description_vi?: unknown;
+  summary?: LocalizedRoomField | null;
+  summary_en?: unknown;
+  summary_vi?: unknown;
+  entries?: unknown;
 };
 
 type RoomRendererProps = {
@@ -133,9 +141,29 @@ type RoomRendererProps = {
 };
 
 type RoomEntryLike = Record<string, unknown>;
+type RoomEntriesResultLike = {
+  data: unknown;
+  error: { message?: string } | null;
+};
+type RoomEntriesQueryLike = PromiseLike<RoomEntriesResultLike> & {
+  order: (column: string, options: { ascending: boolean }) => RoomEntriesQueryLike;
+};
+type RoomEntriesClientLike = {
+  from: (table: "room_entries") => {
+    select: (columns: string) => {
+      or: (filter: string) => RoomEntriesQueryLike;
+      eq: (column: string, value: string) => RoomEntriesQueryLike;
+    };
+  };
+};
 
 function isRecord(value: unknown): value is RoomEntryLike {
   return !!value && typeof value === "object" && !Array.isArray(value);
+}
+
+function isKeywordPair(value: unknown): value is { en: string; vi: string } {
+  if (!isRecord(value)) return false;
+  return typeof value.en === "string" && typeof value.vi === "string";
 }
 
 function readRecord(record: RoomEntryLike, key: string): RoomEntryLike | null {
@@ -809,7 +837,7 @@ export default function RoomRenderer({
 
   const useColorThemeSafe = roomSpec?.use_color_theme !== false;
   const safeRoom: RoomRendererRoom = room ?? {};
-  const effectiveRoomId = String(safeRoom?.id || roomId || "");
+  const effectiveRoomId = String(safeRoom.id || roomId || "");
   const coreRoomId = useMemo(() => coreRoomIdFromEffective(effectiveRoomId), [effectiveRoomId]);
 
   const access = useUserAccess();
@@ -974,12 +1002,13 @@ export default function RoomRenderer({
       setDbLoading(true);
       setDbError(null);
 
-      const r1 = await fetchRoomEntriesDb(supabase, effectiveRoomId);
+      const roomEntriesClient = supabase as unknown as RoomEntriesClientLike;
+      const r1 = await fetchRoomEntriesDb(roomEntriesClient, effectiveRoomId);
       let rows = Array.isArray(r1?.rows) ? r1.rows : [];
       let error = r1?.error ?? null;
 
       if (rows.length === 0 && coreRoomId && coreRoomId !== effectiveRoomId) {
-        const r2 = await fetchRoomEntriesDb(supabase, coreRoomId);
+        const r2 = await fetchRoomEntriesDb(roomEntriesClient, coreRoomId);
         const rows2 = Array.isArray(r2?.rows) ? r2.rows : [];
         if (rows2.length > 0) {
           rows = rows2;
@@ -1051,14 +1080,20 @@ export default function RoomRenderer({
   }, [viIntroMissing, effectiveRoomId]);
 
   const kwRaw = useMemo(() => resolveKeywords(safeRoom), [safeRoom]);
-  const essay = useMemo(() => resolveEssay(safeRoom), [safeRoom]);
+  const essay = useMemo(() => {
+    const resolved = resolveEssay(safeRoom);
+    return {
+      en: String(resolved.en || ""),
+      vi: String(resolved.vi || ""),
+    };
+  }, [safeRoom]);
 
   const dbLeafEntriesRaw = useMemo(() => {
     if (!Array.isArray(dbRows) || dbRows.length === 0) return [];
     return dbRows
       .map(coerceRoomEntryRowToEntry)
       .map(coerceLegacyEntryShape)
-      .filter((x) => x && typeof x === "object");
+      .filter(isRecord);
   }, [dbRows]);
 
   const dbLeafEntries = useMemo(() => {
@@ -1071,7 +1106,7 @@ export default function RoomRenderer({
     const roomRecord = isRecord(safeRoom) ? safeRoom : {};
     const fallback = Array.isArray(roomRecord.entries) ? roomRecord.entries : [];
     const leaf = Array.isArray(extracted) && extracted.length > 0 ? extracted : fallback;
-    return leaf.map(coerceLegacyEntryShape).filter((x) => x && typeof x === "object");
+    return leaf.map(coerceLegacyEntryShape).filter(isRecord);
   }, [safeRoom]);
 
   const chosenEntries = useMemo(() => {
@@ -1104,8 +1139,8 @@ export default function RoomRenderer({
     if (entryCount > 0) {
       const perEntry = entries
         .map((e) => pickOneKeywordPairForEntry(e, lookup))
-        .filter(Boolean)
-        .filter((p): p is { en: string; vi: string } => {
+        .filter(isKeywordPair)
+        .filter((p) => {
           const en = String(p.en ?? "").trim();
           const vi = String(p.vi ?? "").trim();
           if (looksUuidLikeCb(en)) return false;
