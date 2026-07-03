@@ -79,6 +79,25 @@ describe("tutorEngine", () => {
     expect(getSpeakableText(malformed)).toBe("");
   });
 
+  it("malformed conversation turns fail safe when raw user text differs only by case or punctuation", () => {
+    const malformed: TutorTurn = {
+      id: "bad-conversation",
+      mode: "conversation",
+      targetLanguage: "en",
+      explainLanguage: "vi",
+      userText: "i buy a hat yesterday",
+      correctedText: "I bought a hat yesterday.",
+      explanation: "Use past tense with yesterday.",
+      naturalReply: "I buy a hat yesterday!",
+      nextQuestion: "What did you buy?",
+      shouldReadAloudText: "I buy a hat yesterday! What did you buy?",
+      createdAt: "2026-05-24T00:00:00.000Z",
+    };
+
+    expect(validateTutorTurn(malformed)).toBe(false);
+    expect(getSpeakableText(malformed)).toBe("");
+  });
+
   it("rejects unchanged wrong correction text", () => {
     const { turn } = buildCorrectionTurn({
       id: "turn-4",
@@ -105,6 +124,32 @@ describe("tutorEngine", () => {
   it("removes simple markup tags before text is spoken aloud", () => {
     expect(sanitizeSpeakableText("<strong>Natural reply:</strong> What do you usually do?")).toBe(
       "What do you usually do?",
+    );
+  });
+
+  it("removes bracketed UI labels without stripping ordinary bracketed speech", () => {
+    expect(sanitizeSpeakableText("[Corrected] I bought a hat. Please say [the blue one].")).toBe(
+      "I bought a hat. Please say [the blue one].",
+    );
+  });
+
+  it("normalizes basic HTML entity noise before text is spoken aloud", () => {
+    expect(sanitizeSpeakableText("Natural reply:&nbsp;Fish &amp; chips&nbsp;today?")).toBe(
+      "Fish and chips today?",
+    );
+  });
+
+  it("removes script and style markup content before text is spoken aloud", () => {
+    expect(
+      sanitizeSpeakableText(
+        "<style>.hidden { color: red; }</style><script>alert('x')</script>Natural reply: What did you do?",
+      ),
+    ).toBe("What did you do?");
+  });
+
+  it("dedupes repeated speech fragments separated by semicolons or colons", () => {
+    expect(sanitizeSpeakableText("Good answer; Good answer: What did you do next?")).toBe(
+      "Good answer; What did you do next?",
     );
   });
 

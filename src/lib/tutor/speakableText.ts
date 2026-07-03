@@ -1,5 +1,5 @@
 const UI_LABEL_PATTERN =
-  /\b(?:Teacher Mercy|Câu trả lời tự nhiên|Câu đã sửa|Giải thích|Câu hỏi tiếp theo|Natural reply|Corrected|Explanation|Next question)\b\s*[:：\-–—]?/gi;
+  /(?:\[\s*)?\b(?:Teacher Mercy|Câu trả lời tự nhiên|Câu đã sửa|Giải thích|Câu hỏi tiếp theo|Natural reply|Corrected|Explanation|Next question)\b(?:\s*\])?\s*[:：\-–—]?/gi;
 
 const LINE_LABEL_PATTERN =
   /^(?:Mercy|Teacher|Tutor|User|Learner|Bạn|Học viên)\s*[:：\-–—]\s*/i;
@@ -7,7 +7,7 @@ const LINE_LABEL_PATTERN =
 function normalizeForDedupe(value: string): string {
   return value
     .toLowerCase()
-    .replace(/[.!?。！？]+$/u, "")
+    .replace(/[.!?。！？;；:：]+$/u, "")
     .replace(/\s+/g, " ")
     .trim();
 }
@@ -22,7 +22,7 @@ function removeRepeatedHalves(value: string): string {
 }
 
 function removeRepeatedSentences(value: string): string {
-  const fragments = value.match(/[^.!?。！？]+[.!?。！？]?/gu) ?? [value];
+  const fragments = value.match(/[^.!?。！？;；:：]+[.!?。！？;；:：]?/gu) ?? [value];
   const kept: string[] = [];
   const seen = new Set<string>();
 
@@ -47,6 +47,16 @@ function stripControlCharacters(value: string): string {
     .join("");
 }
 
+function normalizeHtmlEntities(value: string): string {
+  return value
+    .replace(/&nbsp;/gi, " ")
+    .replace(/&amp;/gi, " and ")
+    .replace(/&lt;/gi, " ")
+    .replace(/&gt;/gi, " ")
+    .replace(/&quot;/gi, '"')
+    .replace(/&#39;|&apos;/gi, "'");
+}
+
 export function sanitizeSpeakableText(text: string): string {
   const withoutLabels = String(text ?? "")
     .replace(UI_LABEL_PATTERN, " ")
@@ -55,7 +65,9 @@ export function sanitizeSpeakableText(text: string): string {
     .join(" ");
 
   const withoutMarkup = withoutLabels
+    .replace(/<(script|style)\b[^>]*>[\s\S]*?<\/\1>/gi, " ")
     .replace(/<[^>\n]*>/g, " ")
+    .replace(/&[a-z]+;|&#\d+;/gi, (entity) => normalizeHtmlEntities(entity))
     .replace(/[`*_#>~]+/g, " ")
     .replace(/\s+/g, " ")
     .trim();

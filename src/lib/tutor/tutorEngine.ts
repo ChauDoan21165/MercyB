@@ -36,6 +36,14 @@ function normalizeText(value: string | undefined): string {
   return (value ?? "").replace(/\s+/g, " ").trim();
 }
 
+function normalizeForSpeechLeakCheck(value: string | undefined): string {
+  return normalizeText(value)
+    .toLowerCase()
+    .replace(/[^\p{L}\p{N}\s]/gu, "")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
 function createTurnId(mode: TutorMode): string {
   return `${mode}-${Date.now()}-${Math.random().toString(16).slice(2, 8)}`;
 }
@@ -144,10 +152,13 @@ export function validateTutorTurn(turn: TutorTurn): boolean {
     return false;
   }
   const userText = normalizeText(turn.userText);
+  const speakableLeakKey = normalizeForSpeechLeakCheck(speakable);
+  const userLeakKey = normalizeForSpeechLeakCheck(userText);
+  const correctedLeakKey = normalizeForSpeechLeakCheck(turn.correctedText);
   if (
-    userText.length >= 8 &&
-    speakable.includes(userText) &&
-    userText !== normalizeText(turn.correctedText)
+    userLeakKey.length >= 8 &&
+    speakableLeakKey.includes(userLeakKey) &&
+    userLeakKey !== correctedLeakKey
   ) {
     return false;
   }
