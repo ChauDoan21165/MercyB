@@ -58,6 +58,17 @@ describe("classifyResponseStance", () => {
     });
   });
 
+  it("returns needs_pause for unaccented Vietnamese distress-like content", () => {
+    expect(classifyResponseStance({ learnerText: "ba toi chet roi" })).toMatchObject({
+      stance: "needs_pause",
+      reason: "safety_adjacent_or_distress_like_content",
+    });
+    expect(classifyResponseStance({ learnerText: "toi so bi tai nan" })).toMatchObject({
+      stance: "needs_pause",
+      reason: "safety_adjacent_or_distress_like_content",
+    });
+  });
+
   it("trusts high-stakes salience even when the matched text is broad", () => {
     expect(
       classifyResponseStance({

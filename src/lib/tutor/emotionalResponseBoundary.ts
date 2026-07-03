@@ -66,11 +66,16 @@ const PAUSE_PATTERNS = [
   "accident",
   "very sick",
   "chết",
+  "chet",
   "sợ",
+  "so",
   "đau",
+  "dau",
   "tai nạn",
+  "tai nan",
   "bệnh nặng",
   "om nang",
+  "benh nang",
 ];
 
 function normalizeText(value: string): string {

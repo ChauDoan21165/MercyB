@@ -112,6 +112,13 @@ describe("pivotPromptSafety", () => {
     });
   });
 
+  it("rejects candidates without a follow-up question", () => {
+    expect(checkPivotCandidate("The fish burned after work. I understand that detail.")).toEqual({
+      ok: false,
+      reason: "missing_question",
+    });
+  });
+
   it("rejects a repeated previous assistant response", () => {
     const result = checkPivotCandidate(
       "What did you eat instead?",
@@ -122,7 +129,7 @@ describe("pivotPromptSafety", () => {
   });
 
   it("rejects missing ending punctuation", () => {
-    const result = checkPivotCandidate("The fish burned after work");
+    const result = checkPivotCandidate("What did you eat instead? The fish burned after work");
 
     expect(result).toEqual({ ok: false, reason: "missing_punctuation" });
   });
@@ -142,7 +149,7 @@ describe("pivotPromptSafety", () => {
   it("returns deterministic fallback on invalid mocked candidate", () => {
     const decision = decidePivotResponse({
       promptInput: basePromptInput,
-      candidate: "Great job, tell me everything about dinner.",
+      candidate: "Great job, what did you eat after dinner?",
     });
 
     expect(decision).toEqual({
