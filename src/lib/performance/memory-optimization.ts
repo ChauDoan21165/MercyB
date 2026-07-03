@@ -5,17 +5,19 @@
 
 import { useEffect, useRef, useCallback, useMemo } from "react";
 
+type Callable = (this: unknown, ...args: never[]) => unknown;
+
 /**
  * Throttle function calls
  */
-export function throttle<T extends (...args: any[]) => any>(
+export function throttle<T extends Callable>(
   func: T,
   wait: number
-): (...args: Parameters<T>) => void {
+): (this: ThisParameterType<T>, ...args: Parameters<T>) => void {
   let timeout: ReturnType<typeof setTimeout> | null = null;
   let previous = 0;
 
-  return function (this: any, ...args: Parameters<T>) {
+  return function (this: ThisParameterType<T>, ...args: Parameters<T>) {
     const now = Date.now();
     const remaining = wait - (now - previous);
 
@@ -39,13 +41,13 @@ export function throttle<T extends (...args: any[]) => any>(
 /**
  * Debounce function calls
  */
-export function debounce<T extends (...args: any[]) => any>(
+export function debounce<T extends Callable>(
   func: T,
   wait: number
-): (...args: Parameters<T>) => void {
+): (this: ThisParameterType<T>, ...args: Parameters<T>) => void {
   let timeout: ReturnType<typeof setTimeout> | null = null;
 
-  return function (this: any, ...args: Parameters<T>) {
+  return function (this: ThisParameterType<T>, ...args: Parameters<T>) {
     if (timeout) clearTimeout(timeout);
     timeout = setTimeout(() => func.apply(this, args), wait);
   };
@@ -54,10 +56,10 @@ export function debounce<T extends (...args: any[]) => any>(
 /**
  * Hook for throttled callbacks
  */
-export function useThrottle<T extends (...args: any[]) => any>(
+export function useThrottle<T extends Callable>(
   callback: T,
   delay: number
-): (...args: Parameters<T>) => void {
+): (this: ThisParameterType<T>, ...args: Parameters<T>) => void {
   const throttledFn = useMemo(() => throttle(callback, delay), [callback, delay]);
 
   useEffect(() => {
@@ -72,10 +74,10 @@ export function useThrottle<T extends (...args: any[]) => any>(
 /**
  * Hook for debounced callbacks
  */
-export function useDebounce<T extends (...args: any[]) => any>(
+export function useDebounce<T extends Callable>(
   callback: T,
   delay: number
-): (...args: Parameters<T>) => void {
+): (this: ThisParameterType<T>, ...args: Parameters<T>) => void {
   const debouncedFn = useMemo(() => debounce(callback, delay), [callback, delay]);
 
   useEffect(() => {
