@@ -1,0 +1,58 @@
+{
+  "tc_id": "TC-000002",
+  "name": "Microphone Denied During Speaking",
+  "judge_decision": "promoted",
+  "promoted_by": "ADMIN/JUDGE",
+  "source_commit": "cd02dca61",
+  "evidence": {
+    "obs_inputs_consumed_not_duplicated": true,
+    "dp_only_product_or_permission_block": true,
+    "dp_forbidden_inferences_absent": [
+      "weak speaking",
+      "poor pronunciation",
+      "poor learner"
+    ],
+    "ped_decision": {
+      "exclude_speaking_score": true,
+      "offer_text_fallback": true,
+      "offer_mic_retry": true,
+      "continue_remaining_sections": true,
+      "show_supportive_message": true
+    },
+    "lm_memory": {
+      "speaking_attempt_status": "invalid",
+      "reason": "mic_permission_or_device_block",
+      "retest_pending": true,
+      "ability_lowered": false
+    },
+    "replay": {
+      "pass": true,
+      "deterministic": true,
+      "failures": []
+    },
+    "test_coverage": [
+      "Mic denied",
+      "Speech timeout",
+      "Linh-style text fallback allowed",
+      "Normal speaking available",
+      "No learner weakness inference",
+      "Deterministic replay"
+    ],
+    "sqlite_candidate_rows": {
+      "required_fields_present": true,
+      "verified_before_promotion": 0
+    },
+    "gates": {
+      "typecheck": "PASS",
+      "eslint": "PASS",
+      "tests": "PASS",
+      "diff_check": "PASS"
+    }
+  },
+  "verified": true,
+  "notes": [
+    "Judge promotion is scoped only to TC-000002.",
+    "Candidate workpack rows remain verified=false.",
+    "No new capabilities were built during promotion."
+  ]
+}
