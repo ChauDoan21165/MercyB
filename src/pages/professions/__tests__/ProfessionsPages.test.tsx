@@ -76,6 +76,7 @@ type ProfessionLesson = {
 type ProfessionPageCase = {
   name: string;
   Page: ComponentType;
+  componentName: string;
   heading: RegExp;
   expectedLessons: number;
   route: string;
@@ -88,6 +89,7 @@ const lessonPageCases: ProfessionPageCase[] = [
   {
     name: "nail technician",
     Page: NailTechLessonsPage,
+    componentName: "NailTechLessonsPage",
     heading: /Tiếng Anh cho thợ nail/i,
     expectedLessons: countLessons(NAIL_TECH_CATEGORIES, getNailTechLessonsByCategory),
     route: "/professions/nail-tech",
@@ -98,6 +100,7 @@ const lessonPageCases: ProfessionPageCase[] = [
   {
     name: "restaurant",
     Page: RestaurantLessonsPage,
+    componentName: "RestaurantLessonsPage",
     heading: /Tiếng Anh dành cho người làm nhà hàng/i,
     expectedLessons: countLessons(RESTAURANT_CATEGORIES, getRestaurantLessonsByCategory),
     route: "/professions/restaurant",
@@ -108,6 +111,7 @@ const lessonPageCases: ProfessionPageCase[] = [
   {
     name: "customer service",
     Page: CustomerServiceLessonsPage,
+    componentName: "CustomerServiceLessonsPage",
     heading: /Tiếng Anh cho chăm sóc khách hàng/i,
     expectedLessons: countLessons(CUSTOMER_SERVICE_CATEGORIES, getCustomerServiceLessonsByCategory),
     route: "/professions/customer-service",
@@ -118,6 +122,7 @@ const lessonPageCases: ProfessionPageCase[] = [
   {
     name: "tech worker",
     Page: TechWorkerLessonsPage,
+    componentName: "TechWorkerLessonsPage",
     heading: /Tiếng Anh cho người làm tech/i,
     expectedLessons: countLessons(TECH_WORKER_CATEGORIES, getTechWorkerLessonsByCategory),
     route: "/professions/tech-worker",
@@ -128,6 +133,7 @@ const lessonPageCases: ProfessionPageCase[] = [
   {
     name: "healthcare",
     Page: HealthcareLessonsPage,
+    componentName: "HealthcareLessonsPage",
     heading: /Tiếng Anh cho nhân viên y tế/i,
     expectedLessons: countLessons(HEALTHCARE_CATEGORIES, getHealthcareLessonsByCategory),
     route: "/professions/healthcare",
@@ -138,6 +144,7 @@ const lessonPageCases: ProfessionPageCase[] = [
   {
     name: "drivers",
     Page: DriversLessonsPage,
+    componentName: "DriversLessonsPage",
     heading: /Tiếng Anh cho tài xế/i,
     expectedLessons: countLessons(DRIVER_CATEGORIES, getDriverLessonsByCategory),
     route: "/professions/drivers",
@@ -148,6 +155,7 @@ const lessonPageCases: ProfessionPageCase[] = [
   {
     name: "hospitality",
     Page: HospitalityLessonsPage,
+    componentName: "HospitalityLessonsPage",
     heading: /Tiếng Anh cho ngành khách sạn/i,
     expectedLessons: countLessons(HOSPITALITY_CATEGORIES, getHospitalityLessonsByCategory),
     route: "/professions/hospitality",
@@ -189,6 +197,15 @@ describe("profession pages", () => {
     expect(source).not.toMatch(/\bfetch\s*\(/);
     expect(source).not.toMatch(/Promise\.resolve\s*\([^)]*(audio|ai|tutor|lesson)/i);
     expect(source).not.toMatch(/fake(Audio|AI|Tutor)|fake audio|fake ai|fake tutor/i);
+  });
+
+  it("keeps every active profession page registered in AppRouter", () => {
+    const routerSource = readFileSync(resolve(process.cwd(), "src/router/AppRouter.tsx"), "utf8");
+
+    for (const testCase of lessonPageCases) {
+      expect(routerSource).toContain(`path="${testCase.route}"`);
+      expect(routerSource).toContain(`<${testCase.componentName} />`);
+    }
   });
 
   it.each(lessonPageCases)("renders every local category heading for $name", ({ Page, categories }) => {
