@@ -1,6 +1,13 @@
 import { roomDataMap } from "@/lib/roomDataImports";
 import crossTopicData from "@/data/system/cross_topic_recommendations.json";
 
+type KeywordGroup = { en?: string[]; vi?: string[] };
+type KeywordSource = Record<string, string[] | KeywordGroup | undefined>;
+
+function isKeywordGroup(value: unknown): value is KeywordGroup {
+  return !!value && typeof value === "object" && !Array.isArray(value);
+}
+
 function normalize(text: unknown) {
   return String(text ?? "")
     .toLowerCase()
@@ -229,7 +236,7 @@ export function keywordRespond(roomId: string, message: string, noKeywordCount: 
   
   const relatedRooms = findRelatedRooms(message, roomId);
 
-  const buildEntryResponse = (entry: any) => {
+  const buildEntryResponse = (entry: Record<string, unknown>) => {
     // Tolerant bilingual extraction
     let { en: copyEn, vi: copyVi } = getBilingualFlexible(entry);
 
@@ -304,10 +311,10 @@ export function keywordRespond(roomId: string, message: string, noKeywordCount: 
     
     // Before 10 entries, give a helpful prompt
     const desc = getBilingual(roomData, "description");
-    const keywordSource: any = roomData.keywords || roomData.keywords_dict || {};
+    const keywordSource: KeywordSource = roomData.keywords || roomData.keywords_dict || {};
     const keywordGroups = Object.values(keywordSource).slice(0, 3);
-    const topKeysEn = keywordGroups.flatMap((g: any) => (Array.isArray(g.en) ? g.en.slice(0, 2) : [])).join(', ');
-    const topKeysVi = keywordGroups.flatMap((g: any) => (Array.isArray(g.vi) ? g.vi.slice(0, 2) : [])).join(', ');
+    const topKeysEn = keywordGroups.flatMap((g) => (isKeywordGroup(g) && Array.isArray(g.en) ? g.en.slice(0, 2) : [])).join(', ');
+    const topKeysVi = keywordGroups.flatMap((g) => (isKeywordGroup(g) && Array.isArray(g.vi) ? g.vi.slice(0, 2) : [])).join(', ');
     const safeDescEn = desc.en || 'this topic';
     const safeDescVi = desc.vi || 'chủ đề này';
     const text = [
@@ -341,10 +348,10 @@ export function keywordRespond(roomId: string, message: string, noKeywordCount: 
   const desc = getBilingual(roomData, "description");
   
   // Extract actual keywords in both languages
-  const keywordSource: any = roomData.keywords || roomData.keywords_dict || {};
+  const keywordSource: KeywordSource = roomData.keywords || roomData.keywords_dict || {};
   const keywordGroups = Object.values(keywordSource).slice(0, 3);
-  const topKeysEn = keywordGroups.flatMap((g: any) => (Array.isArray(g.en) ? g.en.slice(0, 2) : [])).join(', ');
-  const topKeysVi = keywordGroups.flatMap((g: any) => (Array.isArray(g.vi) ? g.vi.slice(0, 2) : [])).join(', ');
+  const topKeysEn = keywordGroups.flatMap((g) => (isKeywordGroup(g) && Array.isArray(g.en) ? g.en.slice(0, 2) : [])).join(', ');
+  const topKeysVi = keywordGroups.flatMap((g) => (isKeywordGroup(g) && Array.isArray(g.vi) ? g.vi.slice(0, 2) : [])).join(', ');
   
   const promptText = [
     selectedPrompt.en,
