@@ -291,6 +291,9 @@ describe("speakFollowups", () => {
         "I chose some",
         "I order a head",
         "I need a head because summer is very sunny in Canada",
+        "I need an ahead because summer is sunny",
+        "cau hoi confusing",
+        "khong hieu question",
         "I like the summer of you guys very sunny and I can wear short",
         "I saw the people",
         "the and of to",
@@ -338,6 +341,10 @@ describe("speakFollowups", () => {
         clear: false,
         reason: "hat_homophone_confusion:head",
       });
+      expect(assessSpeakTranscriptClarity("I need an ahead because summer is sunny")).toMatchObject({
+        clear: false,
+        reason: "hat_homophone_confusion:ahead",
+      });
       expect(assessSpeakTranscriptClarity("I like the summer of you guys very sunny and I can wear short")).toMatchObject({
         clear: false,
         reason: "weak_pronoun_target_fragment:of_you_guys",
@@ -374,6 +381,14 @@ describe("speakFollowups", () => {
         clear: false,
         reason: "learner_reports_unclear_follow_up",
       });
+      expect(assessSpeakTranscriptClarity("cau hoi confusing")).toMatchObject({
+        clear: false,
+        reason: "learner_reports_unclear_follow_up",
+      });
+      expect(assessSpeakTranscriptClarity("khong hieu question")).toMatchObject({
+        clear: false,
+        reason: "learner_reports_unclear_follow_up",
+      });
       expect(assessSpeakTranscriptClarity("the and of to")).toMatchObject({
         clear: false,
         reason: "function_word_salad:the_and_of_to",
@@ -396,6 +411,7 @@ describe("speakFollowups", () => {
         "I am from Canada.",
         "I get the bus at seven.",
         "I need help this form.",
+        "I walk ahead of my brother.",
       ];
       for (const text of ordinaryLearnerSentences) {
         expect(assessSpeakTranscriptClarity(text)).toEqual({
@@ -431,6 +447,9 @@ describe("speakFollowups", () => {
       expect(isSpeakTranscriptUnclearForFollowUp(
         "I bought ahead yesterday we got this summer I'm going to buy a lot",
       )).toBe(true);
+      expect(isSpeakTranscriptUnclearForFollowUp("I need an ahead because summer is sunny")).toBe(true);
+      expect(isSpeakTranscriptUnclearForFollowUp("cau hoi confusing")).toBe(true);
+      expect(isSpeakTranscriptUnclearForFollowUp("I walk ahead of my brother.")).toBe(false);
       expect(selection.question).not.toBe("Why do you want to buy the i'm?");
       expect(selection.question).not.toBe("What size or color works for the canada?");
       expect(selection.question).not.toBe("Why did you choose the some?");
@@ -454,6 +473,10 @@ describe("speakFollowups", () => {
         {
           learnerText: "I need a head because summer is very sunny in Canada",
           forbidden: "What do you like about the head?",
+        },
+        {
+          learnerText: "I need an ahead because summer is sunny",
+          forbidden: "What do you like about the ahead?",
         },
         {
           learnerText: "I want to buy the i'm",

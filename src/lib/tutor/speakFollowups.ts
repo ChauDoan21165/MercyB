@@ -134,7 +134,10 @@ export function extractSalientKeyword(learnerText: string): string | null {
 export function isSpeakTranscriptUnclearForFollowUp(learnerText: string): boolean {
   const normalized = learnerText.trim();
   if (!normalized) return true;
-  return SPEAK_UNCLEAR_TRANSCRIPT_PATTERNS.some((pattern) => pattern.test(normalized));
+  return (
+    SPEAK_UNCLEAR_TRANSCRIPT_PATTERNS.some((pattern) => pattern.test(normalized)) ||
+    !assessSpeakTranscriptClarity(normalized).clear
+  );
 }
 
 // ── Speak-seed coherence gate (Issue 1: don't push a garbled sample) ──
@@ -246,6 +249,8 @@ function learnerReportsFollowUpIsUnclear(transcript: string): boolean {
     new RegExp(`\\b(?:i\\s+)?(?:do\\s+not|don't|dont|did\\s+not|didn't|cannot|can't|cant)\\s+(?:understand|get)\\s+${questionRef}\\b`).test(normalized) ||
     new RegExp(`\\b${questionRef}\\s+(?:is|was|feels?|sounds?)\\s+(?:not\\s+clear|confusing|unclear|hard\\s+to\\s+understand)\\b`).test(normalized) ||
     new RegExp(`\\b${questionRef}\\s+(?:does\\s+not|doesn't|did\\s+not|didn't)\\s+make\\s+sense\\b`).test(normalized) ||
+    /\bcau\s+hoi\s+(?:confusing|unclear|not\s+clear|khong\s+hieu)\b/.test(normalized) ||
+    /\bkhong\s+hieu\s+(?:(?:that|this|the|your)\s+)?(?:follow[-\s]*up\s+)?question\b/.test(normalized) ||
     /\b(?:that|this|it)\s+(?:does\s+not|doesn't|did\s+not|didn't)\s+make\s+sense\b/.test(normalized) ||
     /\b(?:no|not)\s+sense\b/.test(normalized)
   );
@@ -269,7 +274,7 @@ function hasInvalidGeneratedFollowUpTarget(question: string, learnerText: string
     if (target === "way" && /^\s+to\b/.test(afterTarget)) continue;
     return true;
   }
-  if (/\bthe\s+head\b/.test(normalizedQuestion) && hasHatHomophoneConfusion(salienceTokens(learnerText))) {
+  if (/\bthe\s+(?:head|ahead)\b/.test(normalizedQuestion) && hasHatHomophoneConfusion(salienceTokens(learnerText))) {
     return true;
   }
   return false;
@@ -391,10 +396,10 @@ export function assessSpeakTranscriptClarity(transcript: string): SpeakTranscrip
     if (
       CLARITY_COMMERCE_OR_NEED_VERBS.has(token) &&
       SALIENCE_DET_OR_PREP.has(tokens[i + 1] ?? "") &&
-      tokens[i + 2] === "head" &&
+      (tokens[i + 2] === "head" || tokens[i + 2] === "ahead") &&
       hasHatHomophoneConfusion(tokens)
     ) {
-      return { clear: false, reason: "hat_homophone_confusion:head" };
+      return { clear: false, reason: `hat_homophone_confusion:${tokens[i + 2]}` };
     }
   }
 
