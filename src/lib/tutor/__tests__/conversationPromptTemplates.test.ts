@@ -73,6 +73,25 @@ describe("conversationPromptTemplates", () => {
     expect(template.systemPrompt).toContain("(none yet; open with the scenario seed)");
     expect(template.correctionStylePrompt).toContain("always continue the scenario");
   });
+
+  it("keeps Teacher Mercy prompt constraints explicit and drift-resistant", () => {
+    const template = buildConversationPromptTemplate({
+      topic: SPARSE_TOPIC,
+      turnCount: 1,
+      learnerText: "I want practice this situation.",
+    });
+    const fullPrompt = [
+      template.systemPrompt,
+      template.topicGroundingPrompt,
+      template.correctionStylePrompt,
+    ].join("\n");
+
+    expect(fullPrompt).toContain("Ask exactly one follow-up question, not a question list.");
+    expect(fullPrompt).toContain("Do not jump to a new topic");
+    expect(fullPrompt).toContain("Do not use hollow praise such as 'Nice' or 'Great job'");
+    expect(fullPrompt).toContain("Use simple English for Vietnamese learners");
+    expect(fullPrompt).toContain("do not overclaim certainty");
+  });
 });
 
 // Step 11: locks the live Vietlish seeding selector that injects corpus

@@ -45,6 +45,7 @@ const VIETLISH_PROMPT_EXAMPLE_LIMIT = 5;
 
 const DEFAULT_CONVERSATION_DIRECTIONS = [
   "Stay inside the selected scenario for at least the first four learner turns unless the learner clearly asks to change topic.",
+  "Do not jump to a new topic; deepen the learner's current situation with one concrete detail.",
   "Respond to what the learner just said before asking the next question.",
   "Ask one natural follow-up question at a time.",
   "Avoid repeating the same question, correction, or encouragement from recent turns.",
@@ -198,10 +199,12 @@ export function buildConversationPromptTemplate(
   const correctionStylePrompt = [
     "Correction and warmth style:",
     "- Vietnamese first, English second. Keep explanations short enough for a speaking turn.",
+    "- Use simple English for Vietnamese learners; keep examples short, concrete, and easy to repeat aloud.",
     "- When explaining a correction, use ONE clear Vietnamese analogy — don't mix multiple metaphors. State the rule, give the fix, stop. Long explanations confuse, not help.",
     "- Use this pattern when confident: 'Tiếng Việt: ...' then 'English: ...'.",
     "- Correct only high-confidence VN->EN interference or scenario-critical wording.",
-    "- If confidence is low, say you are not sure in Vietnamese, then redirect into a useful next practice question.",
+    "- If confidence is low or the transcript is ambiguous, say you are not sure in Vietnamese; do not overclaim certainty, then redirect into a useful next practice question.",
+    "- Do not use hollow praise such as 'Nice' or 'Great job' as a full response; make warmth specific to the learner's meaning.",
     "- Never invent pronunciation scores or claim an audio result from text-only input.",
     "- Do not dead-end with only 'try again' or 'skip'; always continue the scenario with one natural prompt.",
     "- The AI conversation engine is premium-gated; do not promise free access or mention pricing. If entitlement fails, the client shows the premium gate before this prompt is used.",
@@ -230,6 +233,7 @@ export function buildConversationPromptTemplate(
     correctionStylePrompt,
     "Output contract:",
     "- Return one concise AI turn for the learner.",
+    "- Ask exactly one follow-up question, not a question list.",
     "- Include at most one correction and one follow-up question.",
     "- Keep learner-facing copy Vietnamese-primary with English-secondary examples.",
   ].join("\n\n");
