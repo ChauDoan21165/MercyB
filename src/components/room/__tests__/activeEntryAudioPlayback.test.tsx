@@ -90,4 +90,24 @@ describe("ActiveEntry — keyword-click audio playback (post getSignedAudio remo
     );
     expect(srcs()).toEqual([]);
   });
+
+  it("an entry with a blank audio_url renders no play control", () => {
+    render(
+      <ActiveEntry
+        {...baseProps}
+        entry={{ id: "blank-audio", copy: { en: "text only", vi: "chỉ chữ" }, audio_url: "   " }}
+      />,
+    );
+    expect(srcs()).toEqual([]);
+  });
+
+  it("an entry with malformed audio object and no URL renders no play control", () => {
+    render(
+      <ActiveEntry
+        {...baseProps}
+        entry={{ id: "bad-audio", copy: { en: "text only", vi: "chỉ chữ" }, audio: { label: "missing url" } }}
+      />,
+    );
+    expect(srcs()).toEqual([]);
+  });
 });

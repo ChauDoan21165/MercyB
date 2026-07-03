@@ -76,7 +76,7 @@ const labelVi: React.CSSProperties = {
 
 export function RoomPronunciationPractice({
   roomId,
-  keywordsEn,
+  keywordsEn = [],
   keywordsVi: _keywordsVi,
 }: RoomPronunciationPracticeProps) {
   const { enabled, loading } = useFeatureFlag("pronunciationScoringEnabled", false);
@@ -91,7 +91,7 @@ export function RoomPronunciationPractice({
   // Trim + drop empty/whitespace-only entries up front. Empty input must
   // not render the button at all (gated below, after all hooks).
   const safeKeywords = useMemo(
-    () => keywordsEn.map((k) => String(k ?? "").trim()).filter(Boolean),
+    () => (Array.isArray(keywordsEn) ? keywordsEn : []).map((k) => String(k ?? "").trim()).filter(Boolean),
     [keywordsEn],
   );
 

@@ -65,6 +65,14 @@ describe("RoomPronunciationPractice — gating", () => {
     );
     expect(container.firstChild).toBeNull();
   });
+
+  it("does not render when keyword data is malformed or missing", () => {
+    mockUseFeatureFlag.mockReturnValue({ enabled: true, loading: false });
+    const { container } = render(
+      <RoomPronunciationPractice roomId="r1" keywordsEn={undefined as unknown as string[]} />,
+    );
+    expect(container.firstChild).toBeNull();
+  });
 });
 
 describe("RoomPronunciationPractice — happy path", () => {
@@ -96,6 +104,20 @@ describe("RoomPronunciationPractice — happy path", () => {
 
     const session = screen.getByTestId("speech-drill-session-stub");
     expect(session.textContent).toContain("sentences=3");
+  });
+
+  it("filters missing and blank phrases before opening the recording flow", () => {
+    render(
+      <RoomPronunciationPractice
+        roomId="r1"
+        keywordsEn={["", "  ", null as unknown as string, "morning"]}
+      />,
+    );
+    fireEvent.click(screen.getByTestId("room-pronunciation-practice-button"));
+
+    expect(screen.getByTestId("speech-drill-session-stub").textContent).toContain(
+      "sentences=1",
+    );
   });
 
   it("fires room_pronunciation_practice_opened on click with room_id + keyword_count", () => {
