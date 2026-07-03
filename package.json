@@ -104,7 +104,8 @@
     "depcruise:validate": "depcruise --config .dependency-cruiser.cjs --output-type err src supabase/functions server",
     "depcruise:metrics": "depcruise --config .dependency-cruiser.cjs --output-type metrics src",
     "depcruise:orphans": "depcruise --config .dependency-cruiser.orphans.cjs --output-type err src",
-    "doctor": "node scripts/doctor.mjs"
+    "doctor": "node scripts/doctor.mjs",
+    "factory-runtime": "node scripts/factory/factory-runtime.mjs"
   },
   "dependencies": {
     "@capacitor/android": "^8.3.0",
