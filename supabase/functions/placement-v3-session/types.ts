@@ -50,6 +50,8 @@ export interface CEFRAssessment {
 export interface SkillProfile {
   level: CEFRLevel;
   confidence: number;
+  evidenceStatus?: "counted" | "degraded" | "not_counted";
+  evidenceNote?: string;
 }
 
 export type PerSkillProfile = Partial<Record<PlacementV3Modality, SkillProfile>>;

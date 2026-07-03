@@ -71,6 +71,75 @@ describe("placement v3 scoring", () => {
     expect(profile.cefr_overall).toBe("B1");
   });
 
+  it("does not let unavailable speaking audio drag CEFR down as a wrong answer", () => {
+    const profile = aggregateProfile({
+      userId: "user-1",
+      sessionId: "session-1",
+      responses: [
+        response("writing", 0, "B1", 0.8),
+        {
+          ...response("speaking", 1, "A1", 0),
+          user_response_text: null,
+          audio_storage_path: "unplayable",
+          ai_assessment: assessment("A1", 0, {
+            gaps: [
+              "Speaking audio was unavailable or unplayable, so no speaking CEFR evidence was counted.",
+            ],
+            metadata: {
+              speakingEvidenceStatus: "not_counted",
+              audioEvidence: "unavailable_or_unplayable",
+              cefrEvidence: "none",
+            },
+          }),
+        },
+      ],
+      now: "2026-05-20T12:00:00.000Z",
+    });
+    expect(profile.cefr_overall).toBe("B1");
+    expect(profile.cefr_overall_confidence).toBe(0.4);
+    expect(profile.cefr_per_skill.speaking).toMatchObject({
+      confidence: 0,
+      evidenceStatus: "not_counted",
+      evidenceNote:
+        "Speaking CEFR was not counted because audio was unavailable or unplayable.",
+    });
+    expect(profile.gaps).toContain(
+      "Speaking audio was unavailable or unplayable, so no speaking CEFR evidence was counted.",
+    );
+  });
+
+  it("marks speaking text fallback as degraded but counted evidence", () => {
+    const profile = aggregateProfile({
+      userId: "user-1",
+      sessionId: "session-1",
+      responses: [
+        {
+          ...response("speaking", 1, "B1", 0.55),
+          audio_storage_path: null,
+          ai_assessment: assessment("B1", 0.55, {
+            gaps: [
+              "Speaking was scored from typed/transcribed text because audio evidence was unavailable.",
+            ],
+            metadata: {
+              speakingEvidenceStatus: "degraded_text_fallback",
+              audioEvidence: "unavailable_or_unplayable",
+              cefrEvidence: "text_fallback",
+            },
+          }),
+        },
+      ],
+      now: "2026-05-20T12:00:00.000Z",
+    });
+    expect(profile.cefr_overall).toBe("B1");
+    expect(profile.cefr_per_skill.speaking).toMatchObject({
+      level: "B1",
+      confidence: 0.55,
+      evidenceStatus: "degraded",
+      evidenceNote:
+        "Speaking CEFR was estimated from typed/transcribed text because audio evidence was unavailable.",
+    });
+  });
+
   it("empty L1 flags stay empty", () => {
     const profile = aggregateProfile({
       userId: "user-1",
@@ -110,4 +179,3 @@ describe("placement v3 scoring", () => {
     expect(recommendLessonsStub(profile).map((r) => r.priority)).toEqual([1, 2, 3]);
   });
 });
-

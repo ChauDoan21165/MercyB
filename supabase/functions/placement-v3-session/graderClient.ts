@@ -209,6 +209,71 @@ export function fallbackAssessment(
 function heuristicAssessment(input: GraderInput): CEFRAssessment {
   const text = input.responseText.trim();
   const words = text ? text.split(/\s+/).length : 0;
+  if (input.modality === "speaking") {
+    return speakingHeuristicAssessment(input, text, words);
+  }
+  return textHeuristicAssessment(input, text, words);
+}
+
+function speakingHeuristicAssessment(
+  input: GraderInput,
+  text: string,
+  words: number,
+): CEFRAssessment {
+  const hasPlayableAudio = hasUsableAudioPath(input.audioStoragePath);
+  if (words === 0 && !hasPlayableAudio) {
+    return {
+      overallLevel: "A1",
+      confidence: 0,
+      strengths: [],
+      gaps: [
+        "Speaking audio was unavailable or unplayable, so no speaking CEFR evidence was counted.",
+      ],
+      l1InterferenceFlags: [],
+      metadata: {
+        stub: true,
+        words,
+        speakingEvidenceStatus: "not_counted",
+        audioEvidence: "unavailable_or_unplayable",
+        cefrEvidence: "none",
+      },
+    };
+  }
+
+  const base = textHeuristicAssessment(input, text, words);
+  if (!hasPlayableAudio) {
+    return {
+      ...base,
+      confidence: Math.min(base.confidence, 0.55),
+      gaps: [
+        ...(base.gaps ?? []),
+        "Speaking was scored from typed/transcribed text because audio evidence was unavailable.",
+      ],
+      metadata: {
+        ...(base.metadata ?? {}),
+        speakingEvidenceStatus: "degraded_text_fallback",
+        audioEvidence: "unavailable_or_unplayable",
+        cefrEvidence: "text_fallback",
+      },
+    };
+  }
+
+  return {
+    ...base,
+    metadata: {
+      ...(base.metadata ?? {}),
+      speakingEvidenceStatus: "counted",
+      audioEvidence: "available",
+      cefrEvidence: "audio_or_transcript",
+    },
+  };
+}
+
+function textHeuristicAssessment(
+  input: GraderInput,
+  text: string,
+  words: number,
+): CEFRAssessment {
   const level = words < 8 ? "A1" : words < 25 ? "A2" : words < 60 ? "B1" : words < 120 ? "B2" : "C1";
   const hasVietnamese = /[ăâđêôơưáàảãạấầẩẫậắằẳẵặéèẻẽẹếềểễệíìỉĩịóòỏõọốồổỗộớờởỡợúùủũụứừửữựýỳỷỹỵ]/i.test(text);
   const promptText = input.prompt.promptText.toLowerCase();
@@ -232,6 +297,20 @@ function heuristicAssessment(input: GraderInput): CEFRAssessment {
       : [],
     metadata: { stub: input.modality !== "writing", words },
   };
+}
+
+function hasUsableAudioPath(path: string | undefined): boolean {
+  if (!path) return false;
+  const normalized = path.trim().toLowerCase();
+  if (!normalized) return false;
+  return ![
+    "unavailable",
+    "unplayable",
+    "audio_unavailable",
+    "audio-unavailable",
+    "recording_failed",
+    "recording-failed",
+  ].includes(normalized);
 }
 
 function looksLikeInstructionEcho(text: string): boolean {

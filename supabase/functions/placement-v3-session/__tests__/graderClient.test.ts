@@ -135,6 +135,39 @@ describe("placement v3 grader client", () => {
     expect(result.version).toBe("stub-speaking-grader-v1");
   });
 
+  it("stub speaking grader treats text as first-class degraded evidence when audio is missing", async () => {
+    const result = await stubGrade(input({
+      modality: "speaking",
+      responseText: "I want to improve pronunciation because clear speech helps my job interviews.",
+      audioStoragePath: undefined,
+    }));
+    expect(result.ok).toBe(true);
+    expect(result.assessment.confidence).toBeLessThanOrEqual(0.55);
+    expect(result.assessment.confidence).toBeGreaterThan(0);
+    expect(result.assessment.metadata).toMatchObject({
+      speakingEvidenceStatus: "degraded_text_fallback",
+      cefrEvidence: "text_fallback",
+    });
+    expect(result.assessment.gaps).toContain(
+      "Speaking was scored from typed/transcribed text because audio evidence was unavailable.",
+    );
+  });
+
+  it("stub speaking grader does not count unavailable audio as a wrong answer", async () => {
+    const result = await stubGrade(input({
+      modality: "speaking",
+      responseText: "",
+      audioStoragePath: "unplayable",
+    }));
+    expect(result.ok).toBe(true);
+    expect(result.assessment.confidence).toBe(0);
+    expect(result.assessment.metadata).toMatchObject({
+      speakingEvidenceStatus: "not_counted",
+      audioEvidence: "unavailable_or_unplayable",
+      cefrEvidence: "none",
+    });
+  });
+
   it("fallback assessment marks low confidence", () => {
     const result = fallbackAssessment(input(), "network_error", "failed");
     expect(result.assessment.confidence).toBe(0.35);

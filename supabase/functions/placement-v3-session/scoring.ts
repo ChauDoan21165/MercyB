@@ -38,10 +38,27 @@ export function aggregateProfile(args: {
     if (rows.length === 0) continue;
     let weighted = 0;
     let confidence = 0;
+    let evidenceStatus: "counted" | "degraded" | "not_counted" = "counted";
+    let evidenceNote: string | undefined;
     for (const row of rows) {
       const assessment = row.ai_assessment;
       weighted += cefrToNumber(assessment.overallLevel) * assessment.confidence;
       confidence += assessment.confidence;
+      const speakingEvidenceStatus = String(
+        assessment.metadata?.speakingEvidenceStatus ?? "",
+      );
+      if (speakingEvidenceStatus === "not_counted") {
+        evidenceStatus = "not_counted";
+        evidenceNote =
+          "Speaking CEFR was not counted because audio was unavailable or unplayable.";
+      } else if (
+        speakingEvidenceStatus === "degraded_text_fallback" &&
+        evidenceStatus !== "not_counted"
+      ) {
+        evidenceStatus = "degraded";
+        evidenceNote =
+          "Speaking CEFR was estimated from typed/transcribed text because audio evidence was unavailable.";
+      }
       for (const s of assessment.strengths ?? []) strengths.add(s);
       for (const g of assessment.gaps ?? []) gaps.add(g);
       for (const flag of assessment.l1InterferenceFlags ?? []) {
@@ -51,10 +68,13 @@ export function aggregateProfile(args: {
         }
       }
     }
-    cefr_per_skill[modality] = {
+    const skill = {
       level: numberToCefr(confidence > 0 ? weighted / confidence : 0),
       confidence: round2(confidence / rows.length),
     };
+    cefr_per_skill[modality] = evidenceStatus === "counted"
+      ? skill
+      : { ...skill, evidenceStatus, evidenceNote };
   }
 
   const skillValues = Object.values(cefr_per_skill);
