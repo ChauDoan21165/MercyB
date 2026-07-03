@@ -10,7 +10,7 @@ const Text = RNText as unknown as NativePrimitive;
 
 import { theme } from "../../core/ui/theme";
 
-export function H1(props: { children: React.ReactNode; style?: any }) {
+export function H1(props: { children: React.ReactNode; style?: unknown }) {
   return (
     <Text style={[theme.type.h1, { color: theme.color.text }, props.style]}>
       {props.children}
@@ -18,7 +18,7 @@ export function H1(props: { children: React.ReactNode; style?: any }) {
   );
 }
 
-export function H2(props: { children: React.ReactNode; style?: any }) {
+export function H2(props: { children: React.ReactNode; style?: unknown }) {
   return (
     <Text style={[theme.type.h2, { color: theme.color.text }, props.style]}>
       {props.children}
@@ -26,7 +26,7 @@ export function H2(props: { children: React.ReactNode; style?: any }) {
   );
 }
 
-export function H3(props: { children: React.ReactNode; style?: any }) {
+export function H3(props: { children: React.ReactNode; style?: unknown }) {
   return (
     <Text style={[theme.type.h3, { color: theme.color.text }, props.style]}>
       {props.children}
@@ -34,7 +34,7 @@ export function H3(props: { children: React.ReactNode; style?: any }) {
   );
 }
 
-export function Body(props: { children: React.ReactNode; dim?: boolean; style?: any }) {
+export function Body(props: { children: React.ReactNode; dim?: boolean; style?: unknown }) {
   return (
     <Text
       style={[
@@ -48,7 +48,7 @@ export function Body(props: { children: React.ReactNode; dim?: boolean; style?: 
   );
 }
 
-export function Small(props: { children: React.ReactNode; dim?: boolean; style?: any }) {
+export function Small(props: { children: React.ReactNode; dim?: boolean; style?: unknown }) {
   return (
     <Text
       style={[
