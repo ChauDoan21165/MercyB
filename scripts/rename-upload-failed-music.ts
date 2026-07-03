@@ -32,6 +32,19 @@ const supabase = createClient(SUPABASE_URL, SERVICE_ROLE_KEY, {
   auth: { persistSession: false, autoRefreshToken: false },
 });
 
+type ManifestFile = {
+  filename: string;
+  status?: string;
+};
+
+function isRecord(value: unknown): value is Record<string, unknown> {
+  return value !== null && typeof value === 'object' && !Array.isArray(value);
+}
+
+function isManifestFile(value: unknown): value is ManifestFile {
+  return isRecord(value) && typeof value.filename === 'string';
+}
+
 function stripDiacritics(s: string): string {
   return s.normalize('NFD').replace(/[\u0300-\u036f]/g, '')
     // Vietnamese đ / Đ are NOT in NFD — handle explicitly.
@@ -60,8 +73,10 @@ async function upload(oldKey: string, newKey: string): Promise<void> {
 }
 
 async function main() {
-  const manifest = JSON.parse(readFileSync(MANIFEST, 'utf8'));
-  const failed = (manifest.files ?? []).filter((f: any) => f.status === 'failed');
+  const parsedManifest: unknown = JSON.parse(readFileSync(MANIFEST, 'utf8'));
+  const manifest = isRecord(parsedManifest) ? parsedManifest : {};
+  const manifestFiles = Array.isArray(manifest.files) ? manifest.files : [];
+  const failed = manifestFiles.filter((f): f is ManifestFile => isManifestFile(f) && f.status === 'failed');
   if (failed.length === 0) {
     console.log('[rename] no failed files in manifest — nothing to do');
     return;

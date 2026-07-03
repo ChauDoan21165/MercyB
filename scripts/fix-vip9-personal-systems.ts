@@ -7,24 +7,39 @@ const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY!;
 
 const supabase = createClient(supabaseUrl, supabaseKey);
 
+type JsonRecord = Record<string, unknown>;
+
+function isRecord(value: unknown): value is JsonRecord {
+  return value !== null && typeof value === 'object' && !Array.isArray(value);
+}
+
 async function fixVIP9PersonalSystems() {
   console.log('🔧 Fixing VIP9 Personal Systems room entries...');
   
   // Read the JSON file
   const jsonPath = path.join(process.cwd(), 'public/data/strategic_personal_systems_vip9.json');
-  const jsonData = JSON.parse(fs.readFileSync(jsonPath, 'utf-8'));
+  const parsed: unknown = JSON.parse(fs.readFileSync(jsonPath, 'utf-8'));
+  if (!isRecord(parsed) || !Array.isArray(parsed.entries)) {
+    throw new Error('Room JSON root is invalid or missing entries');
+  }
+  const jsonData = parsed;
+  const entries = Array.isArray(jsonData.entries) ? jsonData.entries : [];
   
   // Transform entries to match database structure
-  const transformedEntries = jsonData.entries.map((entry: any) => ({
+  const transformedEntries = entries.map((entryValue) => {
+    const entry = isRecord(entryValue) ? entryValue : {};
+    const copy = isRecord(entry.copy) ? entry.copy : {};
+    return {
     slug: entry.slug,
     identifier: entry.slug,
     keywords_en: entry.keywords_en,
     keywords_vi: entry.keywords_vi,
-    copy_en: entry.copy.en,
-    copy_vi: entry.copy.vi,
+    copy_en: copy.en,
+    copy_vi: copy.vi,
     tags: entry.tags,
     audio: entry.audio
-  }));
+    };
+  });
   
   console.log(`📝 Transforming ${transformedEntries.length} entries...`);
   
@@ -49,7 +64,8 @@ async function fixVIP9PersonalSystems() {
     .single();
   
   if (verifyData) {
-    console.log(`✅ Verified: Room has ${(verifyData.entries as any[]).length} entries`);
+    const entries = Array.isArray(verifyData.entries) ? verifyData.entries : [];
+    console.log(`✅ Verified: Room has ${entries.length} entries`);
   }
 }
 
