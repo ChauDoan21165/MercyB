@@ -16,7 +16,7 @@ import {
 } from "lucide-react";
 import { supabase } from "@/lib/supabaseClient";
 import { useToast } from "@/hooks/use-toast";
-import type { AuditIssue, AuditSummary } from "@/lib/audit-v4-types";
+import type { AuditIssue, AuditSummary, AuditTaskSuggestion } from "@/lib/audit-v4-types";
 import { ISSUE_TYPE_LABELS, TASK_TYPE_LABELS } from "@/lib/audit-v4-types";
 import AuditCodeViewer from "./AuditCodeViewer";
 
@@ -69,6 +69,7 @@ interface AuditResponse {
   error?: string;
   stats: AuditSummary;
   summary: AuditSummary & {
+    totalEntries?: number;
     audio?: AudioFileStats;
     intro?: IntroStats;
     storageScan?: StorageScanResult;
@@ -77,7 +78,7 @@ interface AuditResponse {
   };
   issues: AuditIssue[];
   tasks: TTSTask[];
-  legacyTasks?: any[];
+  legacyTasks?: AuditTaskSuggestion[];
   audioJobs: AudioJob[];
   orphanFiles: string[];
   fixesApplied: number;
@@ -187,7 +188,7 @@ export default function AuditSafeShield() {
     }
   };
 
-  const exportToJson = (data: any, filename: string) => {
+  const exportToJson = (data: unknown, filename: string) => {
     const blob = new Blob([JSON.stringify(data, null, 2)], { type: "application/json" });
     const url = URL.createObjectURL(blob);
     const a = document.createElement("a");
@@ -316,7 +317,7 @@ export default function AuditSafeShield() {
         {summary && (
           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-3">
             <Card className="border"><CardContent className="py-3 text-center"><div className="text-xl font-bold">{summary.totalRooms}</div><div className="text-xs text-gray-500">Rooms</div></CardContent></Card>
-            <Card className="border"><CardContent className="py-3 text-center"><div className="text-xl font-bold">{(summary as any).totalEntries || 0}</div><div className="text-xs text-gray-500">Entries</div></CardContent></Card>
+            <Card className="border"><CardContent className="py-3 text-center"><div className="text-xl font-bold">{summary.totalEntries ?? 0}</div><div className="text-xs text-gray-500">Entries</div></CardContent></Card>
             <Card className="border"><CardContent className="py-3 text-center"><div className="text-xl font-bold text-red-600">{summary.errors}</div><div className="text-xs text-gray-500">Errors</div></CardContent></Card>
             <Card className="border"><CardContent className="py-3 text-center"><div className="text-xl font-bold text-amber-600">{summary.warnings}</div><div className="text-xs text-gray-500">Warnings</div></CardContent></Card>
             <Card className="border"><CardContent className="py-3 text-center"><div className={`text-xl font-bold ${audioStats?.coverage === 100 ? 'text-green-600' : audioStats?.coverage && audioStats.coverage < 50 ? 'text-red-600' : ''}`}>{audioStats?.coverage ?? summary.audioCoveragePercent ?? 0}%</div><div className="text-xs text-gray-500">Audio Coverage</div></CardContent></Card>
