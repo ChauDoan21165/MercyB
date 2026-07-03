@@ -117,6 +117,22 @@ type RoomRendererProps = {
   onBack?: () => void;
 };
 
+type RoomEntryLike = Record<string, unknown>;
+
+function isRecord(value: unknown): value is RoomEntryLike {
+  return !!value && typeof value === "object" && !Array.isArray(value);
+}
+
+function readRecord(record: RoomEntryLike, key: string): RoomEntryLike | null {
+  const value = record[key];
+  return isRecord(value) ? value : null;
+}
+
+function readArray(record: RoomEntryLike | null, key: string): unknown[] {
+  const value = record?.[key];
+  return Array.isArray(value) ? value : [];
+}
+
 const PLACEMENT_V3_ACTIVE_LESSON_KEY = "mb.placement.v3.activeLesson";
 
 const pickTitleENRaw = (r: AnyRoom) => r?.title?.en || r?.title_en || r?.name?.en || r?.name_en || "";
@@ -156,7 +172,7 @@ function shortUserId(id: string) {
   if (!s) return "USER";
   return (s.slice(0, 6) + "…" + s.slice(-4)).toUpperCase();
 }
-function dispatchHostContext(detail: Record<string, any>) {
+function dispatchHostContext(detail: Record<string, unknown>) {
   try {
     if (typeof window === "undefined") return;
     window.dispatchEvent(new CustomEvent("mb:host-context", { detail }));
@@ -164,7 +180,7 @@ function dispatchHostContext(detail: Record<string, any>) {
     // ignore
   }
 }
-function dispatchHostRepeatTarget(detail: Record<string, any>) {
+function dispatchHostRepeatTarget(detail: Record<string, unknown>) {
   try {
     if (typeof window === "undefined") return;
     window.dispatchEvent(new CustomEvent("mb:host-repeat-target", { detail }));
@@ -207,14 +223,14 @@ function coreRoomIdFromEffective(effectiveRoomId: string) {
   return id.replace(/_(vip[1-9]|level0)$/i, "");
 }
 
-function looksUuidLike(s: any) {
+function looksUuidLike(s: unknown) {
   const t = String(s ?? "").trim();
   if (!t) return false;
   return /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(t);
 }
 
 type TierIdRuntime = TierId | "level2";
-function normalizeTierIdRuntime(x: any): TierIdRuntime {
+function normalizeTierIdRuntime(x: unknown): TierIdRuntime {
   const t = String(x ?? "").trim().toLowerCase();
   if (t === "level2") return "level2";
   const n = normalizeTier(t);
@@ -222,40 +238,45 @@ function normalizeTierIdRuntime(x: any): TierIdRuntime {
 }
 
 
-function isLegacyStubEntry(e: any) {
-  const slug = String(e?.slug ?? "").trim();
-  const id = String(e?.id ?? "").trim();
+function isLegacyStubEntry(e: unknown) {
+  const entry = isRecord(e) ? e : {};
+  const slug = String(entry.slug ?? "").trim();
+  const id = String(entry.id ?? "").trim();
   return slug.includes("__legacy") || id.includes("__legacy");
 }
-function hasMeaningfulText(e: any) {
-  const en = String(e?.content?.en ?? "").trim();
-  const vi = String(e?.content?.vi ?? "").trim();
-  const en2 = String(e?.copy?.en ?? "").trim();
-  const vi2 = String(e?.copy?.vi ?? "").trim();
+function hasMeaningfulText(e: unknown) {
+  const entry = isRecord(e) ? e : {};
+  const content = readRecord(entry, "content");
+  const copy = readRecord(entry, "copy");
+  const en = String(content?.en ?? "").trim();
+  const vi = String(content?.vi ?? "").trim();
+  const en2 = String(copy?.en ?? "").trim();
+  const vi2 = String(copy?.vi ?? "").trim();
   return en.length + vi.length + en2.length + vi2.length > 0;
 }
-function hasMeaningfulAudio(e: any) {
-  const a = String(e?.audio_en ?? e?.audio ?? "").trim();
+function hasMeaningfulAudio(e: unknown) {
+  const entry = isRecord(e) ? e : {};
+  const a = String(entry.audio_en ?? entry.audio ?? "").trim();
   return !!a;
 }
-function isMeaningfulEntry(e: any) {
-  if (!e || typeof e !== "object") return false;
+function isMeaningfulEntry(e: unknown) {
+  if (!isRecord(e)) return false;
   if (isLegacyStubEntry(e)) return false;
   return (
     hasMeaningfulText(e) ||
     hasMeaningfulAudio(e) ||
-    Array.isArray(e?.keywords_en) ||
-    Array.isArray(e?.keywords_vi) ||
-    Array.isArray(e?.keywords) ||
-    Array.isArray(e?.tags)
+    Array.isArray(e.keywords_en) ||
+    Array.isArray(e.keywords_vi) ||
+    Array.isArray(e.keywords) ||
+    Array.isArray(e.tags)
   );
 }
 
-function coerceLegacyEntryShape(entry: any) {
-  if (!entry || typeof entry !== "object") return entry;
-  const e: any = { ...entry };
+function coerceLegacyEntryShape(entry: unknown) {
+  if (!isRecord(entry)) return entry;
+  const e: RoomEntryLike = { ...entry };
 
-  if (!e.content && e.copy && typeof e.copy === "object") e.content = e.copy;
+  if (!e.content && isRecord(e.copy)) e.content = e.copy;
 
   if (typeof e.audio === "string" && e.audio.trim() && !e.audio_en) e.audio_en = e.audio.trim();
 
@@ -266,7 +287,7 @@ function coerceLegacyEntryShape(entry: any) {
   }
 
   const bag: string[] = [];
-  const pushMany = (arr: any) => {
+  const pushMany = (arr: unknown) => {
     if (!Array.isArray(arr)) return;
     for (const x of arr) {
       const s = String(x ?? "").trim();
@@ -301,11 +322,11 @@ function coerceLegacyEntryShape(entry: any) {
   return e;
 }
 
-function buildKeywordLookupFromEntries(entries: any[]) {
+function buildKeywordLookupFromEntries(entries: unknown[]) {
   const viByEn = new Map<string, string>();
   const enByVi = new Map<string, string>();
 
-  const putPair = (enRaw: any, viRaw: any) => {
+  const putPair = (enRaw: unknown, viRaw: unknown) => {
     const en = String(enRaw ?? "").trim();
     const vi = String(viRaw ?? "").trim();
     if (!en || !vi) return;
@@ -320,8 +341,9 @@ function buildKeywordLookupFromEntries(entries: any[]) {
   };
 
   for (const e of entries || []) {
-    const enArr = Array.isArray(e?.keywords_en) ? e.keywords_en : [];
-    const viArr = Array.isArray(e?.keywords_vi) ? e.keywords_vi : [];
+    const entry = isRecord(e) ? e : null;
+    const enArr = readArray(entry, "keywords_en");
+    const viArr = readArray(entry, "keywords_vi");
     const n = Math.min(enArr.length, viArr.length);
     for (let i = 0; i < n; i++) putPair(enArr[i], viArr[i]);
   }
@@ -330,11 +352,12 @@ function buildKeywordLookupFromEntries(entries: any[]) {
 }
 
 function pickOneKeywordPairForEntry(
-  entry: any,
+  entry: unknown,
   lookup: { viByEn: Map<string, string>; enByVi: Map<string, string> },
 ): { en: string; vi: string } | null {
-  const enArr = Array.isArray(entry?.keywords_en) ? entry.keywords_en : [];
-  const viArr = Array.isArray(entry?.keywords_vi) ? entry.keywords_vi : [];
+  const entryRecord = isRecord(entry) ? entry : null;
+  const enArr = readArray(entryRecord, "keywords_en");
+  const viArr = readArray(entryRecord, "keywords_vi");
 
   {
     const n = Math.min(enArr.length, viArr.length);
@@ -376,23 +399,26 @@ function extractAudioString(v: unknown): string {
   return "";
 }
 
-function pickRepeatTargetFromEntry(entry: any): { text_en: string; text_vi: string; audio_url: string } {
+function pickRepeatTargetFromEntry(entry: unknown): { text_en: string; text_vi: string; audio_url: string } {
+  const entryRecord = isRecord(entry) ? entry : {};
+  const content = readRecord(entryRecord, "content");
+  const copy = readRecord(entryRecord, "copy");
   const en =
-    String(entry?.text_en ?? entry?.content_en ?? entry?.content?.en ?? entry?.copy?.en ?? entry?.en ?? "").trim() ||
+    String(entryRecord.text_en ?? entryRecord.content_en ?? content?.en ?? copy?.en ?? entryRecord.en ?? "").trim() ||
     "";
   const vi =
-    String(entry?.text_vi ?? entry?.content_vi ?? entry?.content?.vi ?? entry?.copy?.vi ?? entry?.vi ?? "").trim() ||
+    String(entryRecord.text_vi ?? entryRecord.content_vi ?? content?.vi ?? copy?.vi ?? entryRecord.vi ?? "").trim() ||
     "";
   // Audio fields can arrive as plain strings OR as `{ en, vi, src, url }`
   // shapes from room JSON. Stringifying an object yields "[object Object]",
   // which downstream splits on the space into two garbage tokens — the
   // duplicate-bar bug. Extract a real string per field instead.
   const audio =
-    extractAudioString(entry?.audio_url) ||
-    extractAudioString(entry?.audio_en) ||
-    extractAudioString(entry?.audio) ||
-    extractAudioString(entry?.audioEn) ||
-    extractAudioString(entry?.audioEN) ||
+    extractAudioString(entryRecord.audio_url) ||
+    extractAudioString(entryRecord.audio_en) ||
+    extractAudioString(entryRecord.audio) ||
+    extractAudioString(entryRecord.audioEn) ||
+    extractAudioString(entryRecord.audioEN) ||
     "";
   return { text_en: en, text_vi: vi, audio_url: audio };
 }

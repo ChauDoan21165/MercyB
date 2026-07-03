@@ -2,7 +2,7 @@
 //
 // We mock @/lib/supabaseClient using the shared supabaseMock helper so
 // rpc() can be re-stubbed per-test. The mock is hoisted (vi.mock) so we
-// import it via `as any` to read the spy back.
+// import it through an unknown cast to read the spy back.
 
 import { describe, it, expect, vi, beforeEach } from "vitest";
 

@@ -2,7 +2,7 @@
 // MB-BLUE-WINDOW-TYPING-2 — 2026-01-03 (+0700)
 //
 // Purpose:
-// - Eliminate all `(window as any)` casts
+// - Eliminate loose Window casts
 // - Centralize MercyB debug globals
 // - Support Safari audio + React runtime inspection
 // - Keep typings permissive but explicit

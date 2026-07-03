@@ -5,7 +5,7 @@
  *
  * Purpose:
  * - verify adaptive teaching biases respond correctly to learner state + emotion
- * - avoid loose `as any` casts
+ * - avoid loose casts
  * - protect momentum / overload / correction behavior from regressions
  */
 

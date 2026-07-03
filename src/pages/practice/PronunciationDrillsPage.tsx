@@ -14,7 +14,7 @@
 //      These carry no uploaded audio (audioTarget null), so they render as read
 //      drills; no scorer, no TTS dependency.
 //
-// Deliberately NOT here: any scorer, any percent, any threshold logic. This is
+// Deliberately NOT here: scorer logic, percent logic, or threshold logic. This is
 // a content browse/practice surface only.
 
 import { useMemo } from "react";
