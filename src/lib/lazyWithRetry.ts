@@ -1,4 +1,4 @@
-import { lazy, type ComponentType, type LazyExoticComponent } from "react";
+import { lazy, type LazyExoticComponent } from "react";
 import { looksLikeChunkLoadFailure } from "@/lib/chunkLoadError";
 import {
   CHUNK_RELOAD_KEY,
@@ -11,6 +11,8 @@ import { unregisterAllServiceWorkers } from "@/lib/swRecovery";
 // alias so the rest of this file (and its tests, which assert the raw
 // string) stay unchanged.
 const RELOAD_SESSION_KEY = CHUNK_RELOAD_KEY;
+
+type LazyComponent = Awaited<ReturnType<Parameters<typeof lazy>[0]>>["default"];
 
 function hasAlreadyReloaded(): boolean {
   try {
@@ -54,7 +56,7 @@ function clearReloadMark(): void {
 // wall-clock `clearChunkReloadMarkerAfterHealthyBoot` timer, which mobile
 // webviews (Facebook in-app browser) throttled to a silent no-op when the
 // post-reload page was backgrounded, defeating the reset entirely.
-export function createRetryLoader<T extends ComponentType<any>>(
+export function createRetryLoader<T extends LazyComponent>(
   componentImport: () => Promise<{ default: T }>,
 ): () => Promise<{ default: T }> {
   return async () => {
@@ -98,7 +100,7 @@ export function createRetryLoader<T extends ComponentType<any>>(
 }
 
 // Drop-in replacement for React.lazy with stale-chunk recovery.
-export function lazyWithRetry<T extends ComponentType<any>>(
+export function lazyWithRetry<T extends LazyComponent>(
   componentImport: () => Promise<{ default: T }>,
 ): LazyExoticComponent<T> {
   return lazy(createRetryLoader(componentImport));
