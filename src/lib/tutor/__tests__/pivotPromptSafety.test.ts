@@ -44,6 +44,26 @@ describe("pivotPromptSafety", () => {
     expect(prompt).toContain("Do not use hollow praise");
   });
 
+  it("builds prompt context from the last three meaningful turns only", () => {
+    const prompt = buildConstrainedPivotPrompt({
+      ...basePromptInput,
+      sessionTurns: [
+        { role: "assistant", text: "Old prompt should be outside the window." },
+        { role: "learner", text: "   " },
+        { role: "learner", text: "I cooked fish." },
+        { role: "assistant", text: "\n\t" },
+        { role: "assistant", text: "What happened after work?" },
+        { role: "learner", text: "The fish burned." },
+      ],
+    });
+
+    expect(prompt).not.toContain("Old prompt should be outside the window.");
+    expect(prompt).not.toContain("undefined");
+    expect(prompt).toContain("learner: I cooked fish.");
+    expect(prompt).toContain("assistant: What happened after work?");
+    expect(prompt).toContain("learner: The fish burned.");
+  });
+
   it("includes the salience token from the Layer 1 output shape", () => {
     const prompt = buildConstrainedPivotPrompt(basePromptInput);
 
@@ -95,12 +115,19 @@ describe("pivotPromptSafety", () => {
     );
 
     expect(result).toEqual({ ok: false, reason: "too_long" });
+    expect(checkPivotCandidate(
+      "The\tfish burned after work and everyone felt tired so please explain each small kitchen detail with rice sauce plates cleanup feelings family timing next steps tomorrow morning slowly carefully now?\u00a0",
+    )).toEqual({ ok: false, reason: "too_long" });
   });
 
   it("rejects a mocked candidate that says As an AI", () => {
     const result = checkPivotCandidate("As an AI, I can ask about your dinner.");
 
     expect(result).toEqual({ ok: false, reason: "as_ai" });
+    expect(checkPivotCandidate("As a language model, I can ask about your dinner.")).toEqual({
+      ok: false,
+      reason: "as_ai",
+    });
   });
 
   it("rejects hollow praise in mocked candidates", () => {
@@ -198,6 +225,47 @@ describe("pivotPromptSafety", () => {
       source: "deterministic_fallback",
       text: "I understand burned. What happened next?",
       rejectReason: "timeout_or_failure",
+    });
+  });
+
+  it("uses a concrete deterministic fallback when salience text is blank", () => {
+    const decision = decidePivotResponse({
+      promptInput: {
+        ...basePromptInput,
+        selectedSaliencePivot: {
+          ...basePromptInput.selectedSaliencePivot,
+          matchedText: "   ",
+        },
+      },
+      failed: true,
+    });
+
+    expect(decision).toEqual({
+      source: "deterministic_fallback",
+      text: "I understand your last answer. What happened next?",
+      rejectReason: "timeout_or_failure",
+    });
+    expect(decision.text).not.toContain("that detail");
+  });
+
+  it("keeps high-stakes deterministic fallback to one safe question", () => {
+    const decision = decidePivotResponse({
+      promptInput: {
+        ...basePromptInput,
+        currentLearnerReply: "My father passed away.",
+        selectedSaliencePivot: {
+          ...salience("My father passed away."),
+          matchedText: "   ",
+        },
+      },
+      failed: true,
+    });
+
+    expect(decision.source).toBe("deterministic_fallback");
+    expect(decision.text).toBe("I understand this important personal detail. Do you want to say more about it?");
+    expect(checkPivotCandidate(decision.text)).toEqual({
+      ok: true,
+      text: decision.text,
     });
   });
 

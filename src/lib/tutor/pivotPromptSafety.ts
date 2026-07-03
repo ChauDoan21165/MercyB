@@ -44,7 +44,7 @@ export type PivotResponseDecisionInput = {
 const MAX_PIVOT_RESPONSE_WORDS = 30;
 const ENDING_PUNCTUATION = /[.!?。！？]$/;
 const HOLLOW_PRAISE = /\b(?:great job|that's wonderful|that is wonderful|nice|awesome|amazing|that's great|that is great)\b/i;
-const AS_AN_AI = /\bas an ai\b/i;
+const AS_AN_AI = /\bas (?:an ai|a language model)\b/i;
 const QUESTION_STARTER = /^(?:what|where|why|who|how|when|do|does|did|can|could|would|is|are|will|should)\b/i;
 const QUESTION_WORD = /\b(?:what|where|why|who|how|when|do|does|did|can|could|would|is|are|will|should)\b/i;
 
@@ -75,10 +75,13 @@ function hasSemanticQuestion(value: string): boolean {
 }
 
 function lastThreeTurns(turns: PivotPromptTurn[]): PivotPromptTurn[] {
-  return turns.slice(-3).map((turn) => ({
-    role: turn.role,
-    text: compact(turn.text),
-  }));
+  return turns
+    .map((turn) => ({
+      role: turn.role,
+      text: compact(turn.text),
+    }))
+    .filter((turn) => turn.text)
+    .slice(-3);
 }
 
 function previousAssistantTurn(turns: PivotPromptTurn[]): string {
@@ -143,7 +146,7 @@ export function checkPivotCandidate(candidate: string, previousAssistant = ""): 
 
 export function buildDeterministicPivotFallback(input: PivotPromptInput): string {
   const token = compact(input.selectedSaliencePivot.matchedText);
-  const detail = token || "that detail";
+  const detail = token || (input.selectedSaliencePivot.highStakes ? "this important personal detail" : "your last answer");
 
   if (input.selectedSaliencePivot.highStakes) {
     return `I understand ${detail}. Do you want to say more about it?`;
