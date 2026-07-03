@@ -62,7 +62,6 @@ export function initPixel(): boolean {
   // Official Meta Pixel snippet, ported to TypeScript without
   // touching its semantics. Do not "tidy" — Meta's loader inspects
   // these exact properties.
-  /* eslint-disable @typescript-eslint/no-explicit-any */
   const w = window as unknown as { fbq?: FbqFunction; _fbq?: FbqFunction };
   if (!w.fbq) {
     const n: FbqFunction = function (...args: unknown[]) {
@@ -79,7 +78,6 @@ export function initPixel(): boolean {
     w.fbq = n;
     if (!w._fbq) w._fbq = n;
   }
-  /* eslint-enable @typescript-eslint/no-explicit-any */
 
   const script = document.createElement("script");
   script.async = true;
