@@ -92,3 +92,14 @@ export {
   type RuntimeRegressionPackReportSummary,
   type RuntimeRegressionPackValidationResult,
 } from "./regressionPack";
+
+export {
+  createInvalidMissingTeacherContextBundle,
+  createProductFailureBundle,
+  createReplayPair,
+  createValidCrossFlowReplayPackage,
+  createValidRegressionPack,
+  createValidRuntimeEvidenceBundle,
+  type ReplayPairOptions,
+  type RuntimeEvidenceReplayPair,
+} from "./fixtureBuilder";
