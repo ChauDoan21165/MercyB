@@ -48,10 +48,10 @@ function stripControlCharacters(value: string): string {
 }
 
 export function sanitizeSpeakableText(text: string): string {
-  const withoutLabels = stripControlCharacters(String(text ?? ""))
+  const withoutLabels = String(text ?? "")
     .replace(UI_LABEL_PATTERN, " ")
     .split(/\r?\n/)
-    .map((line) => line.replace(LINE_LABEL_PATTERN, " "))
+    .map((line) => stripControlCharacters(line).replace(LINE_LABEL_PATTERN, " "))
     .join(" ");
 
   const withoutMarkup = withoutLabels

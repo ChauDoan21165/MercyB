@@ -108,6 +108,14 @@ describe("tutorEngine", () => {
     );
   });
 
+  it("removes role labels from each line before text is spoken aloud", () => {
+    expect(
+      sanitizeSpeakableText(
+        "Natural reply: Good answer.\nLearner: I go yesterday.\nNext question: What did you do next?",
+      ),
+    ).toBe("Good answer. I go yesterday. What did you do next?");
+  });
+
   it("opening starter question speakable text excludes empty-state labels", () => {
     const { turn } = buildConversationTurn({
       id: "turn-5",
