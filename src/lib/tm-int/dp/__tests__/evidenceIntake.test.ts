@@ -8,6 +8,7 @@ import {
 import { validateDpEvidenceIntake } from "../evidenceIntake";
 import {
   buildDpTeacherContextFromObservationPacket,
+  createDpDecisionFromRuntimeEvidenceBundle,
   learningSignalsForDpEvidence,
   observationPacketForDpEvidence,
 } from "../evidenceIntake";
@@ -71,6 +72,15 @@ describe("validateDpEvidenceIntake", () => {
 
     expect(observationPacketForDpEvidence(bundle)).toBe(bundle.obsPacket);
     expect(observationPacketForDpEvidence(bundle).packetId).toBe(bundle.teacherContext.observationSummary.packetId);
+  });
+
+  test("creates a valid DP decision from the runtime evidence fixture", () => {
+    const bundle = createValidRuntimeEvidenceBundle();
+    const decision = createDpDecisionFromRuntimeEvidenceBundle(bundle);
+    const result = validateDpEvidenceIntake(decision, bundle.teacherContext, bundle);
+
+    expect(decision.sourceTeacherContextRef).toEqual(dpTeacherContextReferenceFrom(bundle.teacherContext));
+    expect(result.pass).toBe(true);
   });
 
   test("passes when Teacher Context and DP decision both validate", () => {
