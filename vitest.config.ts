@@ -43,7 +43,7 @@ export default defineConfig({
     ],
 
     // stable test execution
-    pool: "threads",
+    pool: process.env.CI ? "forks" : "threads",
     clearMocks: true,
     restoreMocks: true,
     mockReset: true,

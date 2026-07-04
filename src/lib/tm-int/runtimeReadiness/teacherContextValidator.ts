@@ -112,6 +112,14 @@ function hasLearningSignalEvidence(bundle: PartialRuntimeEvidenceBundle): boolea
   return Boolean(bundle.learningSignals?.length || bundle.teacherContext?.learningSignals?.length);
 }
 
+function normalizeSignalReferenceKey(value: string): string {
+  return value
+    .trim()
+    .replace(/([a-z0-9])([A-Z])/g, "$1_$2")
+    .replace(/[-\s]+/g, "_")
+    .toLowerCase();
+}
+
 export function validateTeacherContext(bundle: PartialRuntimeEvidenceBundle): TeacherContextValidationResult {
   const context = bundle.teacherContext;
   const failures: TeacherContextValidationFailure[] = [];
@@ -215,10 +223,10 @@ export function validateTeacherContext(bundle: PartialRuntimeEvidenceBundle): Te
     }
   }
 
-  const knownSignalKeys = signalKeysFromBundle(bundle);
   const normalizedSignalKeys = normalizedSignalKeysFromBundle(bundle);
+  const normalizedSignalKeySet = new Set(normalizedSignalKeys);
   for (const signal of referencedSignalKeys(bundle)) {
-    if (!knownSignalKeys.has(signal.id)) {
+    if (!normalizedSignalKeySet.has(normalizeSignalReferenceKey(signal.id))) {
       failures.push({
         code: "unknown_signal_reference",
         path: signal.path,
