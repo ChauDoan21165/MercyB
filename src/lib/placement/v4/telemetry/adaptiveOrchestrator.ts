@@ -32,27 +32,27 @@ import {
 } from "./studyPlanTelemetry";
 import { evaluateAdaptiveLoop } from "./adaptiveLoop";
 import { aggregateEvents } from "./aggregation";
+import type { AdaptiveLoopResult } from "./adaptiveLoop";
 import type {
-  AdaptiveLoopResult,
   ForecastLike,
   IneffectiveClusterFlag,
-  IngestionContext,
   InterventionPlan,
   InterventionRecommendation,
   LearnerMemoryEventLike,
   ProgressionSnapshotLike,
-  ProgressionCheckpointInput,
-  ReviewDebtInput,
   StudyPlanLike,
-} from "./index";
+} from "./adaptiveTelemetryTypes";
 import type {
   BurnoutIndicatorInput,
   HesitationLoopInput,
+  IngestionContext,
   LessonCompletionInput,
   LessonRetryInput,
   LessonSkipInput,
   LessonStartInput,
+  ProgressionCheckpointInput,
   RecalculationInput,
+  ReviewDebtInput,
   SpeakingRetryInput,
 } from "./studyPlanTelemetry";
 import type { TelemetryEvent } from "./types";
