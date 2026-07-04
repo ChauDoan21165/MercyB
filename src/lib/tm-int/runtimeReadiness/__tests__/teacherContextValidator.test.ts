@@ -217,6 +217,37 @@ describe("validateTeacherContext", () => {
     expect(result.failures).toContainEqual(expect.objectContaining({ code: "unknown_observation_reference" }));
   });
 
+  it("fails when a DP decision cites an observation id that was not emitted", () => {
+    const result = validateTeacherContext(bundle({
+      dpDecision: {
+        ...bundle().dpDecision,
+        observationIds: ["obs-packet-rr001", "forged-observation-id"],
+      },
+    }));
+
+    expect(result.pass).toBe(false);
+    expect(result.failures).toContainEqual(expect.objectContaining({
+      code: "unknown_observation_reference",
+      path: "dpDecision.observationIds",
+      reason: "Runtime evidence referenced unknown observation id forged-observation-id.",
+    }));
+  });
+
+  it("surfaces forged DP observation references through the Judge rubric", () => {
+    const result = judgeRuntimeReadinessEvidence(bundle({
+      dpDecision: {
+        ...bundle().dpDecision,
+        observationIds: ["forged-observation-id"],
+      },
+    }), "RR-001");
+
+    expect(result.pass).toBe(false);
+    expect(result.failures).toContainEqual(expect.objectContaining({
+      code: "unknown_observation_reference",
+      path: "dpDecision.observationIds",
+    }));
+  });
+
   it("surfaces Teacher Context validator failures through the Judge rubric", () => {
     const result = judgeRuntimeReadinessEvidence(withTeacherContext({
       ...validTeacherContext,

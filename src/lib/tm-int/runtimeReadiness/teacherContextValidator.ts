@@ -58,14 +58,24 @@ function productIssuesInvalidateAssessment(context: TeacherContext): boolean {
   return context.productIssues.some((issue) => issue.affectedSkill === "listening" || issue.affectedSkill === "speaking");
 }
 
-function referencedObservationIds(bundle: PartialRuntimeEvidenceBundle): readonly string[] {
+type EvidenceReference = {
+  id: string;
+  path: string;
+};
+
+function referencedObservationIds(bundle: PartialRuntimeEvidenceBundle): readonly EvidenceReference[] {
   return [
-    ...(bundle.runtimeEvent?.observationIds ?? []),
-    ...(bundle.dpDecision?.observationIds ?? []),
-    ...(bundle.pedDecision?.observationIds ?? []),
-    ...(bundle.runtimeDecision?.observationIds ?? []),
-    bundle.teacherContext?.observationSummary?.packetId,
-  ].filter((id): id is string => typeof id === "string" && id.trim().length > 0);
+    ...(bundle.runtimeEvent?.observationIds ?? []).map((id) => ({ id, path: "runtimeEvent.observationIds" })),
+    ...(bundle.dpDecision?.observationIds ?? []).map((id) => ({ id, path: "dpDecision.observationIds" })),
+    ...(bundle.pedDecision?.observationIds ?? []).map((id) => ({ id, path: "pedDecision.observationIds" })),
+    ...(bundle.runtimeDecision?.observationIds ?? []).map((id) => ({ id, path: "runtimeDecision.observationIds" })),
+    {
+      id: bundle.teacherContext?.observationSummary?.packetId,
+      path: "teacherContext.observationSummary.packetId",
+    },
+  ].filter((reference): reference is EvidenceReference =>
+    typeof reference.id === "string" && reference.id.trim().length > 0,
+  );
 }
 
 function referencedSignalKeys(bundle: PartialRuntimeEvidenceBundle): readonly string[] {
@@ -143,12 +153,12 @@ export function validateTeacherContext(bundle: PartialRuntimeEvidenceBundle): Te
   }
 
   const knownObservationIds = observationIdsFromBundle(bundle);
-  for (const observationId of referencedObservationIds(bundle)) {
-    if (!knownObservationIds.has(observationId)) {
+  for (const observation of referencedObservationIds(bundle)) {
+    if (!knownObservationIds.has(observation.id)) {
       failures.push({
         code: "unknown_observation_reference",
-        path: "teacherContext.observationSummary.packetId",
-        reason: `Teacher Context referenced unknown observation id ${observationId}.`,
+        path: observation.path,
+        reason: `Runtime evidence referenced unknown observation id ${observation.id}.`,
       });
     }
   }
