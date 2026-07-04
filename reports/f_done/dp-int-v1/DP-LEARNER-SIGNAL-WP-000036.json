@@ -1,0 +1,25 @@
+{
+  "wp_id": "DP-LEARNER-SIGNAL-WP-000036",
+  "worker_id": "F-DP-INT-W5",
+  "tm_int_id": "DP-INT-v1",
+  "status": "f_done",
+  "commit_hash": "215c54280",
+  "objective": "Expose the cited DP invariant in reviewable evidence so failures are actionable. Base invariant: Keep productive struggle as a DP interpretation that preserves alternatives.",
+  "implementation": [
+    "Added productive_struggle review evidence in src/lib/tm-int/__tests__/learningBehaviorFamilyV1.test.ts.",
+    "The replay covers signal evidence, DP no-weakness/no-mastery-reduction flags, PED action, and LM memory."
+  ],
+  "files_changed": [
+    "src/lib/tm-int/__tests__/learningBehaviorFamilyV1.test.ts"
+  ],
+  "validation_evidence": [
+    "npm test -- --run src/lib/tm-int/learning-signals src/lib/tm-int => 25 files passed, 189 tests passed",
+    "npm run typecheck => pass",
+    "npm exec eslint -- scripts src --format json => pass, 0 errors, 0 warnings"
+  ],
+  "anti_fake_evidence": [
+    "Source diff exercises OBS-derived facts through signal, DP, PED, and LM packet builders.",
+    "No skipped tests were added.",
+    "No Judge ledger rows were written and no verified flag was set."
+  ]
+}

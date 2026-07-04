@@ -1,0 +1,25 @@
+{
+  "wp_id": "DP-PRODUCT-ISSUE-WP-000034",
+  "worker_id": "F-DP-INT-W5",
+  "tm_int_id": "DP-INT-v1",
+  "status": "f_done",
+  "commit_hash": "9d0412a1f",
+  "objective": "Add replay evidence for the cited DP invariant so OBS to DP to PED behavior is reproducible. Base invariant: Ensure microphone denial produces permission-block DP output and invalid speaking validity only.",
+  "implementation": [
+    "Added microphone denial OBS to DP to PED replay in src/lib/tm-int/__tests__/tc000002MicrophoneDenied.test.ts.",
+    "The replay proves product_or_permission_block, invalid_speaking, text fallback, mic retry, and no learner weakness language."
+  ],
+  "files_changed": [
+    "src/lib/tm-int/__tests__/tc000002MicrophoneDenied.test.ts"
+  ],
+  "validation_evidence": [
+    "npm test -- --run src/lib/tm-int/learning-signals src/lib/tm-int => 25 files passed, 197 tests passed",
+    "npm run typecheck => pass",
+    "npm exec eslint -- scripts src --format json => pass, 0 errors, 0 warnings"
+  ],
+  "anti_fake_evidence": [
+    "Source diff exercises buildSpeechDecisionEvidence and buildSpeechPedDecision.",
+    "No skipped tests were added.",
+    "No Judge ledger rows were written and no verified flag was set."
+  ]
+}

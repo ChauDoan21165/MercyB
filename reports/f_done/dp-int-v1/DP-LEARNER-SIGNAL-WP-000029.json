@@ -1,0 +1,25 @@
+{
+  "wp_id": "DP-LEARNER-SIGNAL-WP-000029",
+  "worker_id": "F-DP-INT-W5",
+  "tm_int_id": "DP-INT-v1",
+  "status": "f_done",
+  "commit_hash": "f223a3301",
+  "objective": "Expose the cited DP invariant in reviewable evidence so failures are actionable. Base invariant: Keep cognitive overload as a needs-followup signal with alternatives intact.",
+  "implementation": [
+    "Extended src/lib/tm-int/__tests__/learningBehaviorFamilyV1.test.ts with a cognitive_overload review object covering signal, DP interpretation, PED action, and LM memory.",
+    "The replay asserts evidence IDs, no learner weakness inference, no mastery reduction, and the simplify/check-directions PED action."
+  ],
+  "files_changed": [
+    "src/lib/tm-int/__tests__/learningBehaviorFamilyV1.test.ts"
+  ],
+  "validation_evidence": [
+    "npm test -- --run src/lib/tm-int/learning-signals src/lib/tm-int => 25 files passed, 184 tests passed",
+    "npm run typecheck => pass",
+    "npm exec eslint -- scripts src --format json => pass, 0 errors, 0 warnings"
+  ],
+  "anti_fake_evidence": [
+    "Source diff exercises OBS facts through signal, DP, PED, and LM packet builders.",
+    "No skipped tests were added.",
+    "No Judge ledger rows were written and no verified flag was set."
+  ]
+}

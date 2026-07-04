@@ -1,0 +1,25 @@
+{
+  "wp_id": "DP-LEARNER-SIGNAL-WP-000038",
+  "worker_id": "F-DP-INT-W5",
+  "tm_int_id": "DP-INT-v1",
+  "status": "f_done",
+  "commit_hash": "215c54280",
+  "objective": "Add deterministic fixtures for the cited DP invariant so tests do not depend on hand-built samples. Base invariant: Keep confidence calibration as a DP interpretation tied to explicit confidence evidence.",
+  "implementation": [
+    "Added deterministic aligned and misaligned confidence_calibration fixtures in src/lib/tm-int/learning-signals/__tests__/learningSignalEngine.test.ts.",
+    "The fixtures prove only high-confidence correct and low-confidence wrong evidence maps to confidence_calibration."
+  ],
+  "files_changed": [
+    "src/lib/tm-int/learning-signals/__tests__/learningSignalEngine.test.ts"
+  ],
+  "validation_evidence": [
+    "npm test -- --run src/lib/tm-int/learning-signals src/lib/tm-int => 25 files passed, 189 tests passed",
+    "npm run typecheck => pass",
+    "npm exec eslint -- scripts src --format json => pass, 0 errors, 0 warnings"
+  ],
+  "anti_fake_evidence": [
+    "Source diff exercises confidenceRating metrics through runLearningSignalEngine.",
+    "No skipped tests were added.",
+    "No Judge ledger rows were written and no verified flag was set."
+  ]
+}

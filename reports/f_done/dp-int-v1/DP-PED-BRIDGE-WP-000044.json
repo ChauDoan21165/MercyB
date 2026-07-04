@@ -1,0 +1,25 @@
+{
+  "wp_id": "DP-PED-BRIDGE-WP-000044",
+  "worker_id": "F-DP-INT-W5",
+  "tm_int_id": "DP-INT-v1",
+  "status": "f_done",
+  "commit_hash": "3e9a6822a",
+  "objective": "Connect the cited DP invariant through the runtime integration path used by placement or lessons. Base invariant: Bridge learning behavior DP signals to bounded teacher actions.",
+  "implementation": [
+    "Added full-pipeline PED bridge coverage in src/lib/tm-int/__tests__/learningBehaviorFamilyV1.test.ts.",
+    "The coverage asserts bounded PED action records from runtime family pipeline evidence."
+  ],
+  "files_changed": [
+    "src/lib/tm-int/__tests__/learningBehaviorFamilyV1.test.ts"
+  ],
+  "validation_evidence": [
+    "npm test -- --run src/lib/tm-int/learning-signals src/lib/tm-int => 25 files passed, 192 tests passed",
+    "npm run typecheck => pass",
+    "npm exec eslint -- scripts src --format json => pass, 0 errors, 0 warnings"
+  ],
+  "anti_fake_evidence": [
+    "Source diff exercises the runtime path, not a report-only artifact.",
+    "No skipped tests were added.",
+    "No Judge ledger rows were written and no verified flag was set."
+  ]
+}

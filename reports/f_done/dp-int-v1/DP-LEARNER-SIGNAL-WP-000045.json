@@ -1,0 +1,25 @@
+{
+  "wp_id": "DP-LEARNER-SIGNAL-WP-000045",
+  "worker_id": "F-DP-INT-W5",
+  "tm_int_id": "DP-INT-v1",
+  "status": "f_done",
+  "commit_hash": "3e9a6822a",
+  "objective": "Add deterministic fixtures for the cited DP invariant so tests do not depend on hand-built samples. Base invariant: Map correct after delay into a retrieval success signal.",
+  "implementation": [
+    "Added deterministic retrieval_success threshold fixture coverage in src/lib/tm-int/learning-signals/__tests__/learningSignalEngine.test.ts in this worker sequence.",
+    "Current validation includes the deterministic retrieval fixtures committed in this branch."
+  ],
+  "files_changed": [
+    "src/lib/tm-int/learning-signals/__tests__/learningSignalEngine.test.ts"
+  ],
+  "validation_evidence": [
+    "npm test -- --run src/lib/tm-int/learning-signals src/lib/tm-int => 25 files passed, 192 tests passed",
+    "npm run typecheck => pass",
+    "npm exec eslint -- scripts src --format json => pass, 0 errors, 0 warnings"
+  ],
+  "anti_fake_evidence": [
+    "Validation ran after the full branch state including deterministic retrieval fixtures.",
+    "No skipped tests were added.",
+    "No Judge ledger rows were written and no verified flag was set."
+  ]
+}

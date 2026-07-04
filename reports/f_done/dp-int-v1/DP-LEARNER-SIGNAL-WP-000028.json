@@ -1,0 +1,25 @@
+{
+  "wp_id": "DP-LEARNER-SIGNAL-WP-000028",
+  "worker_id": "F-DP-INT-W5",
+  "tm_int_id": "DP-INT-v1",
+  "status": "f_done",
+  "commit_hash": "f223a3301",
+  "objective": "Tighten the cited DP contract surface so downstream code cannot bypass the invariant. Base invariant: Keep confidence calibration as a DP interpretation tied to explicit confidence evidence.",
+  "implementation": [
+    "Extended src/lib/tm-int/learning-signals/__tests__/learningSignalEngine.test.ts to require explicit confidence evidence before confidence_calibration maps.",
+    "The fixture rejects missing and negative confidence metrics, and accepts only the anchored explicit confidence fact."
+  ],
+  "files_changed": [
+    "src/lib/tm-int/learning-signals/__tests__/learningSignalEngine.test.ts"
+  ],
+  "validation_evidence": [
+    "npm test -- --run src/lib/tm-int/learning-signals src/lib/tm-int => 25 files passed, 184 tests passed",
+    "npm run typecheck => pass",
+    "npm exec eslint -- scripts src --format json => pass, 0 errors, 0 warnings"
+  ],
+  "anti_fake_evidence": [
+    "Source diff exercises the cited confidenceRating metric through runLearningSignalEngine.",
+    "No skipped tests were added.",
+    "No Judge ledger rows were written and no verified flag was set."
+  ]
+}

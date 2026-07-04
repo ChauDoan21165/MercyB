@@ -1,0 +1,25 @@
+{
+  "wp_id": "DP-LEARNER-SIGNAL-WP-000027",
+  "worker_id": "F-DP-INT-W5",
+  "tm_int_id": "DP-INT-v1",
+  "status": "f_done",
+  "commit_hash": "f223a3301",
+  "objective": "Add replay evidence for the cited DP invariant so OBS to DP to PED behavior is reproducible. Base invariant: Keep sustained attention as evidence-based DP behavior interpretation.",
+  "implementation": [
+    "Extended src/lib/tm-int/__tests__/learningBehaviorFamilyV1.test.ts with a sustained_attention OBS to DP to PED replay.",
+    "The replay asserts evidence task IDs, preserved alternatives, and the PED action continue_flow_with_periodic_comprehension_check."
+  ],
+  "files_changed": [
+    "src/lib/tm-int/__tests__/learningBehaviorFamilyV1.test.ts"
+  ],
+  "validation_evidence": [
+    "npm test -- --run src/lib/tm-int/learning-signals src/lib/tm-int => 25 files passed, 184 tests passed",
+    "npm run typecheck => pass",
+    "npm exec eslint -- scripts src --format json => pass, 0 errors, 0 warnings"
+  ],
+  "anti_fake_evidence": [
+    "Source diff exercises OBS facts through runLearningSignalEngine, buildLearningBehaviorDpPacket, and buildLearningBehaviorPedPacket.",
+    "No skipped tests were added.",
+    "No Judge ledger rows were written and no verified flag was set."
+  ]
+}

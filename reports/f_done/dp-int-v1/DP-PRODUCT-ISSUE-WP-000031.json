@@ -1,0 +1,25 @@
+{
+  "wp_id": "DP-PRODUCT-ISSUE-WP-000031",
+  "worker_id": "F-DP-INT-W5",
+  "tm_int_id": "DP-INT-v1",
+  "status": "f_done",
+  "commit_hash": "9d0412a1f",
+  "objective": "Add deterministic fixtures for the cited DP invariant so tests do not depend on hand-built samples. Base invariant: Ensure unavailable audio produces a product-failure DP reason and invalid listening validity only.",
+  "implementation": [
+    "Added deterministic AudioUnavailable DP evidence fixture in src/lib/tm-int/__tests__/tc000001PlacementAudioUnavailable.test.ts.",
+    "The fixture proves unavailable audio maps to product_failure_audio and invalid_listening without learner weakness language."
+  ],
+  "files_changed": [
+    "src/lib/tm-int/__tests__/tc000001PlacementAudioUnavailable.test.ts"
+  ],
+  "validation_evidence": [
+    "npm test -- --run src/lib/tm-int/learning-signals src/lib/tm-int => 25 files passed, 197 tests passed",
+    "npm run typecheck => pass",
+    "npm exec eslint -- scripts src --format json => pass, 0 errors, 0 warnings"
+  ],
+  "anti_fake_evidence": [
+    "Source diff exercises buildAudioDecisionEvidence with concrete AudioUnavailable facts.",
+    "No skipped tests were added.",
+    "No Judge ledger rows were written and no verified flag was set."
+  ]
+}

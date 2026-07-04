@@ -1,0 +1,25 @@
+{
+  "wp_id": "DP-PRODUCT-ISSUE-WP-000032",
+  "worker_id": "F-DP-INT-W5",
+  "tm_int_id": "DP-INT-v1",
+  "status": "f_done",
+  "commit_hash": "9d0412a1f",
+  "objective": "Add regression coverage for the cited DP invariant so unsupported edits fail before promotion. Base invariant: Preserve zero-duration audio as product evidence for DP handling.",
+  "implementation": [
+    "Added zero-duration audio OBS to DP evidence coverage in src/lib/tm-int/obs/__tests__/audioObservation.test.ts.",
+    "The fixture proves AudioDurationZero preserves duration metrics and routes to product_failure_audio invalid_listening evidence."
+  ],
+  "files_changed": [
+    "src/lib/tm-int/obs/__tests__/audioObservation.test.ts"
+  ],
+  "validation_evidence": [
+    "npm test -- --run src/lib/tm-int/learning-signals src/lib/tm-int => 25 files passed, 197 tests passed",
+    "npm run typecheck => pass",
+    "npm exec eslint -- scripts src --format json => pass, 0 errors, 0 warnings"
+  ],
+  "anti_fake_evidence": [
+    "Source diff exercises detectAudioObservations and buildAudioDecisionEvidence.",
+    "No skipped tests were added.",
+    "No Judge ledger rows were written and no verified flag was set."
+  ]
+}
