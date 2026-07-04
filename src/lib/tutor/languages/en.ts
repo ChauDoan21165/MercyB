@@ -1,4 +1,4 @@
-import type { TutorLanguagePack } from "../tutorCopy";
+import type { TutorLanguagePack } from "../tutorCopyTypes";
 
 export const en = {
   code: "en",
