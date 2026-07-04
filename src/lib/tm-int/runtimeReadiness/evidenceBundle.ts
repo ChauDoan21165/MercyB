@@ -54,17 +54,43 @@ export type RuntimeEvidenceBundle = {
   judgeReproduction: RuntimeReadinessReplayEvidence;
 };
 
+export const RUNTIME_EVIDENCE_BUNDLE_REQUIRED_FIELDS = [
+  "schemaVersion",
+  "contractId",
+  "runtimeEvent",
+  "obsPacket",
+  "learningSignals",
+  "teacherContext",
+  "dpDecision",
+  "pedDecision",
+  "runtimeDecision",
+  "replay",
+  "judgeReproduction",
+] as const satisfies readonly (keyof RuntimeEvidenceBundle)[];
+
+export type RuntimeEvidenceBundleRequiredField = (typeof RUNTIME_EVIDENCE_BUNDLE_REQUIRED_FIELDS)[number];
+
 export type PartialRuntimeEvidenceBundle = Partial<RuntimeEvidenceBundle> & {
   contractId?: RuntimeGateId | string;
 };
 
+export function missingRuntimeEvidenceBundleFields(
+  value: PartialRuntimeEvidenceBundle,
+): RuntimeEvidenceBundleRequiredField[] {
+  return RUNTIME_EVIDENCE_BUNDLE_REQUIRED_FIELDS.filter((field) => {
+    const fieldValue = value[field];
+    return fieldValue === null || typeof fieldValue === "undefined";
+  });
+}
+
 export function isRuntimeEvidenceBundle(value: PartialRuntimeEvidenceBundle): value is RuntimeEvidenceBundle {
   return (
+    missingRuntimeEvidenceBundleFields(value).length === 0 &&
     value.schemaVersion === RUNTIME_EVIDENCE_BUNDLE_SCHEMA_VERSION &&
     typeof value.contractId === "string" &&
+    Array.isArray(value.learningSignals) &&
     Boolean(value.runtimeEvent) &&
     Boolean(value.obsPacket) &&
-    Array.isArray(value.learningSignals) &&
     Boolean(value.teacherContext) &&
     Boolean(value.dpDecision) &&
     Boolean(value.pedDecision) &&

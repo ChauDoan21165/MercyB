@@ -1,10 +1,13 @@
 import { describe, expect, test } from "vitest";
 import {
   isRuntimeEvidenceBundle,
+  missingRuntimeEvidenceBundleFields,
   observationIdsFromBundle,
+  RUNTIME_EVIDENCE_BUNDLE_REQUIRED_FIELDS,
   RUNTIME_EVIDENCE_BUNDLE_SCHEMA_VERSION,
   signalKeysFromBundle,
   type PartialRuntimeEvidenceBundle,
+  type RuntimeEvidenceBundleRequiredField,
 } from "../evidenceBundle";
 import { createValidRuntimeEvidenceBundle } from "../fixtureBuilder";
 
@@ -24,6 +27,18 @@ describe("runtime evidence bundle schema", () => {
     };
 
     expect(isRuntimeEvidenceBundle(partial)).toBe(false);
+  });
+
+  test("reports missing canonical DP input envelope fields", () => {
+    const bundle = createValidRuntimeEvidenceBundle();
+
+    for (const field of RUNTIME_EVIDENCE_BUNDLE_REQUIRED_FIELDS) {
+      const partial = { ...bundle } as PartialRuntimeEvidenceBundle;
+      delete partial[field as RuntimeEvidenceBundleRequiredField];
+
+      expect(missingRuntimeEvidenceBundleFields(partial)).toEqual([field]);
+      expect(isRuntimeEvidenceBundle(partial)).toBe(false);
+    }
   });
 
   test("normalizes observation ids from runtime and OBS source evidence", () => {

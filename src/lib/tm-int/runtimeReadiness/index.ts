@@ -14,10 +14,13 @@ export {
 
 export {
   observationIdsFromBundle,
+  missingRuntimeEvidenceBundleFields,
+  RUNTIME_EVIDENCE_BUNDLE_REQUIRED_FIELDS,
   signalKeysFromBundle,
   type PartialRuntimeEvidenceBundle,
   type RuntimeEventEvidence,
   type RuntimeEvidenceBundle,
+  type RuntimeEvidenceBundleRequiredField,
   type RuntimeReadinessReplayEvidence,
   type RuntimeReadinessRuntimeDecision,
   type RuntimeReadinessStageDecision,
