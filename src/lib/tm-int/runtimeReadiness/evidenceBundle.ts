@@ -152,6 +152,10 @@ export function observationIdsFromBundle(bundle: PartialRuntimeEvidenceBundle): 
   return ids;
 }
 
+export function normalizedObservationIdsFromBundle(bundle: PartialRuntimeEvidenceBundle): readonly string[] {
+  return Array.from(observationIdsFromBundle(bundle)).sort();
+}
+
 export function signalKeysFromBundle(bundle: PartialRuntimeEvidenceBundle): Set<string> {
   const keys = new Set<string>();
   for (const signal of bundle.learningSignals ?? []) keys.add(signal.signal_key);

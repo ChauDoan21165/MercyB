@@ -230,6 +230,18 @@ describe("validateTeacherContext", () => {
       code: "unknown_observation_reference",
       path: "dpDecision.observationIds",
       reason: "Runtime evidence referenced unknown observation id forged-observation-id.",
+      evidence: {
+        referencedObservationId: "forged-observation-id",
+        normalizedObservationIds: [
+          "AssessmentAnswerSubmitted:reading-b1-work-email-1",
+          "AudioDurationZero:listening-a2-class-delay-1",
+          "MicPermissionDenied:speaking-a2-learning-goals-1",
+          "listening-a2-class-delay-1",
+          "obs-packet-rr001",
+          "reading-b1-work-email-1",
+          "speaking-a2-learning-goals-1",
+        ],
+      },
     }));
   });
 

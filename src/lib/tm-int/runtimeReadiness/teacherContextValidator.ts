@@ -1,6 +1,6 @@
 import type { TeacherContext } from "../runtime";
 import type { PartialRuntimeEvidenceBundle } from "./evidenceBundle";
-import { observationIdsFromBundle, signalKeysFromBundle } from "./evidenceBundle";
+import { normalizedObservationIdsFromBundle, observationIdsFromBundle, signalKeysFromBundle } from "./evidenceBundle";
 
 export type TeacherContextValidationFailureCode =
   | "missing_observation_summary"
@@ -18,6 +18,10 @@ export type TeacherContextValidationFailure = {
   code: TeacherContextValidationFailureCode;
   path: string;
   reason: string;
+  evidence?: {
+    normalizedObservationIds?: readonly string[];
+    referencedObservationId?: string;
+  };
 };
 
 export type TeacherContextValidationResult = {
@@ -189,12 +193,17 @@ export function validateTeacherContext(bundle: PartialRuntimeEvidenceBundle): Te
   }
 
   const knownObservationIds = observationIdsFromBundle(bundle);
+  const normalizedObservationIds = normalizedObservationIdsFromBundle(bundle);
   for (const observation of referencedObservationIds(bundle)) {
     if (!knownObservationIds.has(observation.id)) {
       failures.push({
         code: "unknown_observation_reference",
         path: observation.path,
         reason: `Runtime evidence referenced unknown observation id ${observation.id}.`,
+        evidence: {
+          referencedObservationId: observation.id,
+          normalizedObservationIds,
+        },
       });
     }
   }
