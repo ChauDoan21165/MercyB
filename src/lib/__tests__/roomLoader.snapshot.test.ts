@@ -1,12 +1,31 @@
 // src/lib/__tests__/roomLoader.snapshot.test.ts
 import { describe, it, expect, vi, beforeEach } from "vitest";
+import type { createSupabaseMock } from "@/test/mocks/supabaseMock";
+
+type SupabaseMock = ReturnType<typeof createSupabaseMock>;
+type SupabaseFromResult = ReturnType<SupabaseMock["from"]>;
+type ChainMock = SupabaseFromResult & Record<string, unknown>;
+type QueryChain = {
+  select: (...args: unknown[]) => QueryChain;
+  eq: (...args: unknown[]) => QueryChain;
+  order: (...args: unknown[]) => QueryChain;
+  returns: () => Promise<{ data: unknown; error: unknown }>;
+  maybeSingle: () => Promise<{ data: unknown; error: unknown }>;
+};
+type SupabaseLike = Omit<SupabaseMock, "from"> & { from: (table: string) => QueryChain };
+type StableRoomSnapshot = {
+  audioBasePath?: unknown;
+  roomTier?: unknown;
+  keywordMenu?: unknown;
+  merged?: unknown;
+};
 
 // --------------------
 // Shared Supabase mock (hoist-safe + TS-safe)
 // --------------------
 vi.mock("@/lib/supabaseClient", async () => {
-  const mod = await vi.importActual<unknown>("@/test/mocks/supabaseMock");
-  const supabase = mod.createSupabaseMock();
+  const mod = await vi.importActual<typeof import("@/test/mocks/supabaseMock")>("@/test/mocks/supabaseMock");
+  const supabase = mod.createSupabaseMock() as unknown as SupabaseLike;
 
   const getRoomFromDB = vi.fn(async (roomId: string) => {
     const roomsRes = await supabase.from("rooms").select("*").eq("id", roomId).maybeSingle();
@@ -37,7 +56,7 @@ vi.mock("@/lib/supabaseClient", async () => {
 });
 
 import * as SupaMod from "@/lib/supabaseClient";
-const supabaseMock = (SupaMod as unknown).__mock;
+const supabaseMock = (SupaMod as typeof SupaMod & { __mock: SupabaseMock }).__mock;
 
 // --------------------
 // roomLoaderHelpers mock
@@ -70,8 +89,8 @@ vi.mock("../roomJsonResolver", () => ({
 
 import { loadMergedRoom } from "../roomLoader";
 
-const makeChain = (overrides: Partial<Record<string, unknown>> = {}) => {
-  const self: unknown = {
+const makeChain = (overrides: Partial<ChainMock> = {}): SupabaseFromResult => {
+  const self: Partial<ChainMock> = {
     select: vi.fn().mockReturnThis(),
     eq: vi.fn().mockReturnThis(),
     in: vi.fn().mockReturnThis(),
@@ -82,7 +101,7 @@ const makeChain = (overrides: Partial<Record<string, unknown>> = {}) => {
     returns: vi.fn().mockResolvedValue({ data: [], error: null }),
     ...overrides,
   };
-  return self;
+  return self as SupabaseFromResult;
 };
 
 describe("loadMergedRoom snapshots", () => {
@@ -162,11 +181,12 @@ describe("loadMergedRoom snapshots", () => {
   it("DB room → stable merged structure snapshot", async () => {
     const result = await loadMergedRoom("test-room");
 
+    const snapshot = result as StableRoomSnapshot;
     const stable = {
-      audioBasePath: (result as unknown).audioBasePath,
-      roomTier: (result as unknown).roomTier,
-      keywordMenu: (result as unknown).keywordMenu,
-      merged: (result as unknown).merged,
+      audioBasePath: snapshot.audioBasePath,
+      roomTier: snapshot.roomTier,
+      keywordMenu: snapshot.keywordMenu,
+      merged: snapshot.merged,
     };
 
     expect(stable).toMatchInlineSnapshot(`
@@ -234,11 +254,12 @@ describe("loadMergedRoom snapshots", () => {
 
     const result = await loadMergedRoom("json-room");
 
+    const snapshot = result as StableRoomSnapshot;
     const stable = {
-      audioBasePath: (result as unknown).audioBasePath,
-      roomTier: (result as unknown).roomTier,
-      keywordMenu: (result as unknown).keywordMenu,
-      merged: (result as unknown).merged,
+      audioBasePath: snapshot.audioBasePath,
+      roomTier: snapshot.roomTier,
+      keywordMenu: snapshot.keywordMenu,
+      merged: snapshot.merged,
     };
 
     expect(stable).toMatchInlineSnapshot(`

@@ -2,6 +2,7 @@
 
 import { describe, it, expect, vi, beforeEach } from "vitest";
 import { screen, waitFor } from "@testing-library/react";
+import type { ComponentType } from "react";
 import { renderWithRouter, userEvent } from "@/test/test-utils";
 import { createSupabaseMock } from "@/test/mocks/supabaseMock";
 
@@ -48,6 +49,9 @@ function buildMockRoomEntries(roomId: string) {
 }
 
 const supabaseMock = createSupabaseMock();
+type SupabaseFromMock = {
+  mockImplementation(fn: (table: string) => unknown): void;
+};
 
 vi.mock("@/lib/supabaseClient", () => ({
   supabase: supabaseMock,
@@ -123,11 +127,17 @@ async function importMaybeDefault<T = unknown>(modulePath: string): Promise<T | 
   }
 }
 
+type ChainState = {
+  table: string;
+  filters: Array<{ col: string; val: unknown }>;
+  orderBy: null | { col: string; ascending: boolean };
+};
+
 function makeChain(table: string) {
-  const state: { filters: Array<{ col: string; val: unknown }> } = {
+  const state: ChainState = {
     table,
     filters: [],
-    orderBy: null as null | { col: string; ascending: boolean },
+    orderBy: null,
   };
 
   const api = {
@@ -204,7 +214,9 @@ describe("Navigation Integration Tests", () => {
       error: null,
     });
 
-    supabaseMock.from.mockImplementation((table: string) => makeChain(table));
+    (supabaseMock.from as unknown as SupabaseFromMock).mockImplementation((table) =>
+      makeChain(table),
+    );
   });
 
   describe("Route Helper Integration", () => {
@@ -244,12 +256,13 @@ describe("Navigation Integration Tests", () => {
       __mockRoomId = "adhd-support-level3";
 
       const chatHubPath: string = "@/pages/ChatHub";
-      const ChatHub = await importMaybeDefault(chatHubPath);
+      const ChatHub = await importMaybeDefault<ComponentType>(chatHubPath);
 
       // Was a soft-pass guard that silently green-lit this test if the
       // ChatHub module failed to import. Assert truthy so an import
       // regression fails loudly instead of being masked. (A74 audit)
       expect(ChatHub).toBeTruthy();
+      if (!ChatHub) throw new Error("ChatHub module failed to import");
 
       renderWithRouter(<ChatHub />);
 
@@ -270,12 +283,13 @@ describe("Navigation Integration Tests", () => {
       __mockRoomId = "sexuality-curiosity-level3-sub1";
 
       const chatHubPath: string = "@/pages/ChatHub";
-      const ChatHub = await importMaybeDefault(chatHubPath);
+      const ChatHub = await importMaybeDefault<ComponentType>(chatHubPath);
 
       // Was a soft-pass guard that silently green-lit this test if the
       // ChatHub module failed to import. Assert truthy so an import
       // regression fails loudly instead of being masked. (A74 audit)
       expect(ChatHub).toBeTruthy();
+      if (!ChatHub) throw new Error("ChatHub module failed to import");
 
       renderWithRouter(<ChatHub />);
 

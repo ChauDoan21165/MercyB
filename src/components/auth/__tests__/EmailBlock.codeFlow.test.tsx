@@ -14,6 +14,13 @@
 
 import { describe, it, expect, vi, beforeAll, beforeEach } from "vitest";
 import { fireEvent, render, screen, waitFor } from "@testing-library/react";
+import type { createSupabaseMock } from "@/test/mocks/supabaseMock";
+
+type SupabaseMock = ReturnType<typeof createSupabaseMock> & {
+  auth: ReturnType<typeof createSupabaseMock>["auth"] & {
+    verifyOtp: ReturnType<typeof vi.fn>;
+  };
+};
 
 // jsdom doesn't implement scrollIntoView; the component calls it on
 // every status update. Stub once so the useEffect doesn't blow up.
@@ -24,8 +31,8 @@ beforeAll(() => {
 });
 
 vi.mock("@/lib/supabaseClient", async () => {
-  const mod = await vi.importActual<unknown>("@/test/mocks/supabaseMock");
-  const supabase = mod.createSupabaseMock();
+  const mod = await vi.importActual<typeof import("@/test/mocks/supabaseMock")>("@/test/mocks/supabaseMock");
+  const supabase = mod.createSupabaseMock() as SupabaseMock;
   // verifyOtp isn't part of the shared mock surface yet — add it here
   // so each test can override per-scenario without polluting other
   // suites that import the same factory.
@@ -45,7 +52,7 @@ vi.mock("@/lib/security/mfaClient", () => ({
 
 import EmailBlock from "@/components/auth/EmailBlock";
 import * as SupaMod from "@/lib/supabaseClient";
-const supabaseMock = (SupaMod as unknown).__mock;
+const supabaseMock = (SupaMod as typeof SupaMod & { __mock: SupabaseMock }).__mock;
 
 function renderBlock() {
   const onAuthed = vi.fn().mockResolvedValue(undefined);

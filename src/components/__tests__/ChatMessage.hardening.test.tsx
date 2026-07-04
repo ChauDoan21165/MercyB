@@ -16,6 +16,15 @@
 import { describe, it, expect, beforeEach, afterEach, vi } from "vitest";
 import { render, screen, cleanup } from "@testing-library/react";
 import { formatDistanceToNow } from "date-fns";
+import type { ReactNode } from "react";
+
+type MotionDivProps = {
+  children?: ReactNode;
+  className?: string;
+  variants?: unknown;
+  initial?: string;
+  animate?: string;
+};
 
 // ---------------------------------------------------------------------------
 // Mock framer-motion: render a plain <div> and surface the animation props as
@@ -24,7 +33,7 @@ import { formatDistanceToNow } from "date-fns";
 // ---------------------------------------------------------------------------
 vi.mock("framer-motion", () => ({
   motion: {
-    div: ({ children, className, variants, initial, animate }: unknown) => (
+    div: ({ children, className, variants, initial, animate }: MotionDivProps) => (
       <div
         data-testid="motion-div"
         className={className}

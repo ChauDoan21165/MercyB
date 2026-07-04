@@ -17,6 +17,16 @@
 import React from "react";
 import { describe, it, expect, vi, beforeEach } from "vitest";
 import { render, screen, fireEvent, waitFor } from "@testing-library/react";
+import type { AnchorHTMLAttributes, ButtonHTMLAttributes, ReactNode, SVGProps } from "react";
+
+type MockLinkProps = AnchorHTMLAttributes<HTMLAnchorElement> & {
+  to: string;
+  children?: ReactNode;
+};
+
+type MockButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
+  children?: ReactNode;
+};
 
 // --- Mocks -----------------------------------------------------------------
 
@@ -29,7 +39,7 @@ vi.mock("react-router-dom", () => ({
   useNavigate: () => mockNavigate,
   useLocation: () => mockLocation,
   // Render Link as a plain anchor so we can assert hrefs without a Router.
-  Link: ({ to, children, ...rest }: unknown) => (
+  Link: ({ to, children, ...rest }: MockLinkProps) => (
     <a href={typeof to === "string" ? to : "#"} {...rest}>
       {children}
     </a>
@@ -46,7 +56,7 @@ vi.mock("@/providers/AuthProvider", () => ({
 
 // Leaf UI components — stubbed so we test GlobalAppBar in isolation.
 vi.mock("@/components/ui/button", () => ({
-  Button: ({ children, ...props }: unknown) => <button {...props}>{children}</button>,
+  Button: ({ children, ...props }: MockButtonProps) => <button {...props}>{children}</button>,
 }));
 
 vi.mock("@/components/ThemeToggle", () => ({
@@ -63,11 +73,11 @@ vi.mock("@/components/ColorModeToggle", () => ({
 
 // Icons render nothing meaningful; keep them lightweight + identifiable.
 vi.mock("lucide-react", () => ({
-  LogIn: (p: unknown) => <svg data-testid="icon-login" {...p} />,
-  Eye: (p: unknown) => <svg data-testid="icon-eye" {...p} />,
-  ChevronRight: (p: unknown) => <svg data-testid="icon-chevron" {...p} />,
-  Home: (p: unknown) => <svg data-testid="icon-home" {...p} />,
-  LogOut: (p: unknown) => <svg data-testid="icon-logout" {...p} />,
+  LogIn: (p: SVGProps<SVGSVGElement>) => <svg data-testid="icon-login" {...p} />,
+  Eye: (p: SVGProps<SVGSVGElement>) => <svg data-testid="icon-eye" {...p} />,
+  ChevronRight: (p: SVGProps<SVGSVGElement>) => <svg data-testid="icon-chevron" {...p} />,
+  Home: (p: SVGProps<SVGSVGElement>) => <svg data-testid="icon-home" {...p} />,
+  LogOut: (p: SVGProps<SVGSVGElement>) => <svg data-testid="icon-logout" {...p} />,
 }));
 
 // Import AFTER mocks are registered.

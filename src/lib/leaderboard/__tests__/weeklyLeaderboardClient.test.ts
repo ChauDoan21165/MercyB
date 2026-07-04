@@ -5,15 +5,23 @@
 // propagates back as the right TypeScript shape.
 
 import { describe, it, expect, vi, beforeEach } from "vitest";
+import type { createSupabaseMock } from "@/test/mocks/supabaseMock";
+
+type SupabaseMock = ReturnType<typeof createSupabaseMock>;
+type SupabaseFromResult = ReturnType<SupabaseMock["from"]>;
+
+function asSupabaseFromResult(chain: unknown): SupabaseFromResult {
+  return chain as SupabaseFromResult;
+}
 
 vi.mock("@/lib/supabaseClient", async () => {
-  const mod = await vi.importActual<unknown>("@/test/mocks/supabaseMock");
+  const mod = await vi.importActual<typeof import("@/test/mocks/supabaseMock")>("@/test/mocks/supabaseMock");
   const supabase = mod.createSupabaseMock();
   return { supabase, __mock: supabase };
 });
 
 import * as SupaMod from "@/lib/supabaseClient";
-const supabaseMock = (SupaMod as unknown).__mock;
+const supabaseMock = (SupaMod as typeof SupaMod & { __mock: SupabaseMock }).__mock;
 
 import {
   currentWeekStartIso,
@@ -283,7 +291,7 @@ describe("setDisplayName", () => {
     const eqWeek = vi.fn(() => ({ select }));
     const eqUser = vi.fn(() => ({ eq: eqWeek }));
     const update = vi.fn(() => ({ eq: eqUser }));
-    supabaseMock.from.mockImplementationOnce(() => ({ update }));
+    supabaseMock.from.mockImplementationOnce(() => asSupabaseFromResult({ update }));
 
     const result = await setDisplayName("u1", "Lan ✨");
     expect(result).toEqual({ ok: true });
@@ -303,8 +311,8 @@ describe("setDisplayName", () => {
     const insert = vi.fn().mockResolvedValue({ error: null });
 
     supabaseMock.from
-      .mockImplementationOnce(() => ({ update }))
-      .mockImplementationOnce(() => ({ insert }));
+      .mockImplementationOnce(() => asSupabaseFromResult({ update }))
+      .mockImplementationOnce(() => asSupabaseFromResult({ insert }));
 
     const result = await setDisplayName("u1", "New User");
     expect(result).toEqual({ ok: true });
@@ -323,7 +331,7 @@ describe("setDisplayName", () => {
     const updEqWeek = vi.fn(() => ({ select: updSelect }));
     const updEqUser = vi.fn(() => ({ eq: updEqWeek }));
     const update = vi.fn(() => ({ eq: updEqUser }));
-    supabaseMock.from.mockImplementationOnce(() => ({ update }));
+    supabaseMock.from.mockImplementationOnce(() => asSupabaseFromResult({ update }));
 
     const result = await setDisplayName("u1", null);
     expect(result).toEqual({ ok: true });

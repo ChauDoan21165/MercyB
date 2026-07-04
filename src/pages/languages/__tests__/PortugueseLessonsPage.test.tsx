@@ -60,8 +60,10 @@ describe("Portuguese lessons page", () => {
   it("keeps the page tied to the validated local Portuguese curriculum registry", () => {
     expect(PORTUGUESE_VALIDATED_LEVELS).toEqual(["A1", "A2", "B1", "B2", "C1", "C2"]);
     expect(PORTUGUESE_TOTAL_LESSONS).toBeGreaterThanOrEqual(PORTUGUESE_CATEGORIES.length);
-    expect(PORTUGUESE_LESSONS_BY_LEVEL.A1[0].sentences[0].en).toContain("Oi");
-    expect(PORTUGUESE_LESSONS_BY_LEVEL.A1[0].vocabulary?.[0].word).toBe("oi");
+    const firstA1Lesson = PORTUGUESE_LESSONS_BY_LEVEL.A1[0];
+    expect(firstA1Lesson).toBeDefined();
+    expect(firstA1Lesson?.sentences?.[0]?.en).toContain("Oi");
+    expect(firstA1Lesson?.vocabulary?.[0]?.word).toBe("oi");
     expect(PAGE_SRC).toContain('from "@/languages/portuguese"');
     expect(PAGE_SRC).not.toMatch(/Promise\.resolve\s*\([^)]*(audio|ai|tutor|media)/i);
     expect(PAGE_SRC).not.toMatch(/fake(Audio|AI|Tutor)|mock(Audio|AI|Tutor)/i);

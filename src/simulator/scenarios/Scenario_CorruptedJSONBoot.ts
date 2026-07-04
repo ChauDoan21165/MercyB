@@ -10,12 +10,13 @@
 import { simulator } from "../LaunchSimulatorCore";
 import { applyRandomCorruption } from "../JSONCorruptionEngine";
 import { roomMasterLoader } from "@/lib/roomMaster/roomMasterLoader";
+import type { RoomJson, ValidationMode } from "@/lib/roomMaster/roomMasterTypes";
 
 type RoomLoaderResult = { cleanedRoom?: unknown; room?: unknown };
 type RoomLoader = (roomId: string) => Promise<unknown>;
 type ValidateRoom = (
-  room: unknown,
-  opts: Record<string, unknown>,
+  room: RoomJson,
+  opts?: ValidationMode,
 ) => { errors: unknown[]; warnings?: unknown[] };
 type RegistryModule = {
   getAllRooms?: () => unknown[];
@@ -58,11 +59,12 @@ export async function runScenario_CorruptedJSONBoot() {
 
             // Corrupt it
             const loaded = result as RoomLoaderResult;
-            const corrupted = applyRandomCorruption(loaded.cleanedRoom ?? loaded.room ?? result);
+            const loadedRoom = (loaded.cleanedRoom ?? loaded.room ?? result) as RoomJson;
+            const corrupted = applyRandomCorruption(loadedRoom) as RoomJson;
 
             // Try to validate corrupted room
             const mod = await import("@/lib/roomMaster/roomMaster");
-            const validateRoom = (mod as { validateRoom?: ValidateRoom }).validateRoom;
+            const validateRoom = (mod as unknown as { validateRoom?: ValidateRoom }).validateRoom;
 
             simulator.assert(typeof validateRoom === "function", "validateRoom() is missing from roomMaster module.");
 

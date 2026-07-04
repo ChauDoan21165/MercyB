@@ -15,21 +15,44 @@
 import { describe, it, expect, beforeEach, vi } from "vitest";
 import { render, screen, cleanup } from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";
+import type { ComponentType, ReactNode } from "react";
+
+type ReactModule = typeof import("react");
+type AnimatePresenceProps = Record<string, unknown> & {
+  children?: ReactNode;
+  mode?: string;
+};
+type MotionProps = Record<string, unknown> & {
+  children?: ReactNode;
+  className?: string;
+  initial?: unknown;
+  animate?: unknown;
+  exit?: unknown;
+  transition?: unknown;
+};
+type MotionRender = {
+  tag: string;
+  className?: string;
+  initial?: unknown;
+  animate?: unknown;
+  exit?: unknown;
+  transition?: unknown;
+};
 
 // ---------------------------------------------------------------------------
 // Mock framer-motion deterministically. We capture every render so individual
 // tests can inspect what props PageTransition / PageFade declared.
 // ---------------------------------------------------------------------------
 const captured = vi.hoisted(() => ({
-  motionRenders: [] as Array<Record<string, unknown>>,
-  presenceRenders: [] as Array<Record<string, unknown>>,
+  motionRenders: [] as MotionRender[],
+  presenceRenders: [] as AnimatePresenceProps[],
 }));
 
 vi.mock("framer-motion", async () => {
-  const ReactMod: unknown = await import("react");
-  const React = ReactMod.default ?? ReactMod;
+  const ReactMod: ReactModule = await import("react");
+  const React = ReactMod;
 
-  const AnimatePresence = ({ children, mode, ...rest }: unknown) => {
+  const AnimatePresence = ({ children, mode, ...rest }: AnimatePresenceProps) => {
     captured.presenceRenders.push({ mode, ...rest });
     return React.createElement(React.Fragment, null, children);
   };
@@ -46,7 +69,7 @@ vi.mock("framer-motion", async () => {
           exit,
           transition,
           ...rest
-        }: unknown) => {
+        }: MotionProps) => {
           captured.motionRenders.push({
             tag,
             className,
@@ -62,7 +85,7 @@ vi.mock("framer-motion", async () => {
           );
         };
         Comp.displayName = `motion.${tag}`;
-        return Comp;
+        return Comp as ComponentType<MotionProps>;
       },
     },
   );
@@ -142,9 +165,10 @@ describe("PageTransition — rendering", () => {
         <p>x</p>
       </PageTransition>,
     );
-    const r = captured.motionRenders[0] as unknown;
-    expect(r.transition.duration).toBe(0.3);
-    expect(r.transition.ease).toEqual([0.4, 0, 0.2, 1]);
+    const r = captured.motionRenders[0];
+    const transition = r.transition as { duration?: number; ease?: unknown[] };
+    expect(transition.duration).toBe(0.3);
+    expect(transition.ease).toEqual([0.4, 0, 0.2, 1]);
   });
 
   it("wraps the page in AnimatePresence with mode='wait'", () => {
@@ -183,13 +207,15 @@ describe("PageFade — rendering", () => {
         <p>x</p>
       </PageFade>,
     );
-    const r = captured.motionRenders[0] as unknown;
+    const r = captured.motionRenders[0];
+    const initial = r.initial as { y?: unknown };
+    const exit = r.exit as { y?: unknown };
     expect(r.initial).toEqual({ opacity: 0 });
     expect(r.animate).toEqual({ opacity: 1 });
     expect(r.exit).toEqual({ opacity: 0 });
     // Distinct from PageTransition: no y axis movement.
-    expect(r.initial.y).toBeUndefined();
-    expect(r.exit.y).toBeUndefined();
+    expect(initial.y).toBeUndefined();
+    expect(exit.y).toBeUndefined();
   });
 
   it("declares the faster 0.2s transition without custom easing", () => {
@@ -198,9 +224,10 @@ describe("PageFade — rendering", () => {
         <p>x</p>
       </PageFade>,
     );
-    const r = captured.motionRenders[0] as unknown;
-    expect(r.transition.duration).toBe(0.2);
-    expect(r.transition.ease).toBeUndefined();
+    const r = captured.motionRenders[0];
+    const transition = r.transition as { duration?: number; ease?: unknown };
+    expect(transition.duration).toBe(0.2);
+    expect(transition.ease).toBeUndefined();
   });
 
   it("wraps the page in AnimatePresence with mode='wait'", () => {
@@ -228,7 +255,7 @@ describe("PageTransition / PageFade — edge cases", () => {
   });
 
   it("renders nothing harmful when children is false", () => {
-    expect(() => renderAt(<PageTransition>{false as unknown}</PageTransition>)).not.toThrow();
+    expect(() => renderAt(<PageTransition>{false}</PageTransition>)).not.toThrow();
   });
 
   it("renders multiple children", () => {

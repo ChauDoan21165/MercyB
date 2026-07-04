@@ -58,8 +58,14 @@ function installFakes() {
   // Keep OfflineAudioContext UNDEFINED so the resample falls through to the
   // JS linear path. That path is deterministic and we don't need to fake
   // a Web Audio render graph.
-  (globalThis as unknown).AudioContext = FakeAudioContext;
-  (globalThis as unknown).OfflineAudioContext = undefined;
+  Object.defineProperty(globalThis, "AudioContext", {
+    configurable: true,
+    value: FakeAudioContext,
+  });
+  Object.defineProperty(globalThis, "OfflineAudioContext", {
+    configurable: true,
+    value: undefined,
+  });
 }
 
 beforeEach(() => {

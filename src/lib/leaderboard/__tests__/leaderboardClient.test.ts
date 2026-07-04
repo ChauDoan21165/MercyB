@@ -5,9 +5,12 @@
 // import it through an unknown cast to read the spy back.
 
 import { describe, it, expect, vi, beforeEach } from "vitest";
+import type { createSupabaseMock } from "@/test/mocks/supabaseMock";
+
+type SupabaseMock = ReturnType<typeof createSupabaseMock>;
 
 vi.mock("@/lib/supabaseClient", async () => {
-  const mod = await vi.importActual<unknown>("@/test/mocks/supabaseMock");
+  const mod = await vi.importActual<typeof import("@/test/mocks/supabaseMock")>("@/test/mocks/supabaseMock");
   const supabase = mod.createSupabaseMock();
   return {
     supabase,
@@ -16,7 +19,7 @@ vi.mock("@/lib/supabaseClient", async () => {
 });
 
 import * as SupaMod from "@/lib/supabaseClient";
-const supabaseMock = (SupaMod as unknown).__mock;
+const supabaseMock = (SupaMod as typeof SupaMod & { __mock: SupabaseMock }).__mock;
 
 import {
   getWeeklyTop10,
@@ -204,7 +207,8 @@ describe("awardPoints", () => {
     await awardPoints("u1", 1, "streak");
     await awardPoints("u1", 1, "challenge");
 
-    const kinds = supabaseMock.rpc.mock.calls.map((c: unknown[]) => c[1]?.p_kind);
+    const calls = supabaseMock.rpc.mock.calls as Array<[string, { p_kind?: string }]>;
+    const kinds = calls.map((c) => c[1]?.p_kind);
     expect(kinds).toEqual(["lesson", "streak", "challenge"]);
   });
 });

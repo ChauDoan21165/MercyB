@@ -1,7 +1,10 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
+import type { createSupabaseMock } from "@/test/mocks/supabaseMock";
+
+type SupabaseMock = ReturnType<typeof createSupabaseMock>;
 
 vi.mock("@/lib/supabaseClient", async () => {
-  const mod = await vi.importActual<unknown>("@/test/mocks/supabaseMock");
+  const mod = await vi.importActual<typeof import("@/test/mocks/supabaseMock")>("@/test/mocks/supabaseMock");
   const supabase = mod.createSupabaseMock();
   return { supabase, __mock: supabase };
 });
@@ -19,7 +22,7 @@ import {
   type StartBillingResult,
 } from "@/lib/billing";
 
-const supabaseMock = (SupabaseModule as unknown).__mock;
+const supabaseMock = (SupabaseModule as typeof SupabaseModule & { __mock: SupabaseMock }).__mock;
 
 const originalLocation = window.location;
 let assignMock: ReturnType<typeof vi.fn>;

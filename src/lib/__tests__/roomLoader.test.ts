@@ -1,12 +1,41 @@
 // src/lib/__tests__/roomLoader.test.ts
 import { describe, it, expect, vi, beforeEach } from "vitest";
+import type { createSupabaseMock } from "@/test/mocks/supabaseMock";
+
+type SupabaseMock = ReturnType<typeof createSupabaseMock>;
+type SupabaseFromResult = ReturnType<SupabaseMock["from"]>;
+type RoomEntryLike = {
+  slug?: unknown;
+  keyword_en?: unknown;
+  keywordEn?: unknown;
+  keywords_en?: unknown;
+  keyword_vi?: unknown;
+  keywordVi?: unknown;
+  keywords_vi?: unknown;
+  copy?: unknown;
+};
+type MergedEntry = {
+  slug: string;
+  keywordEn: string;
+  keywordVi: string;
+  copy: unknown;
+};
+type QueryChain = {
+  select: (...args: unknown[]) => QueryChain;
+  eq: (...args: unknown[]) => QueryChain;
+  order: (...args: unknown[]) => QueryChain;
+  returns: () => Promise<{ data: unknown; error: unknown }>;
+  maybeSingle: () => Promise<{ data: unknown; error: unknown }>;
+};
+type SupabaseLike = Omit<SupabaseMock, "from"> & { from: (table: string) => QueryChain };
+type ChainMock = SupabaseFromResult & Record<string, unknown>;
 
 // --------------------
 // SHARED Supabase mock (hoist-safe + TS-safe)
 // --------------------
 vi.mock("@/lib/supabaseClient", async () => {
-  const mod = await vi.importActual<unknown>("@/test/mocks/supabaseMock");
-  const supabase = mod.createSupabaseMock();
+  const mod = await vi.importActual<typeof import("@/test/mocks/supabaseMock")>("@/test/mocks/supabaseMock");
+  const supabase = mod.createSupabaseMock() as unknown as SupabaseLike;
 
   const getRoomFromDB = vi.fn(async (roomId: string) => {
     const roomsRes = await supabase.from("rooms").select("*").eq("id", roomId).maybeSingle();
@@ -37,16 +66,16 @@ vi.mock("@/lib/supabaseClient", async () => {
 });
 
 import * as SupaMod from "@/lib/supabaseClient";
-const supabaseMock = (SupaMod as unknown).__mock;
+const supabaseMock = (SupaMod as typeof SupaMod & { __mock: SupabaseMock }).__mock;
 
 // --------------------
 // Other mocks
 // --------------------
 vi.mock("../roomLoaderHelpers", () => ({
   processEntriesOptimized: vi.fn((entries: unknown[]) => {
-    const safeEntries = Array.isArray(entries) ? entries : [];
+    const safeEntries = (Array.isArray(entries) ? entries : []) as RoomEntryLike[];
 
-    const merged = safeEntries.map((entry, index) => {
+    const merged: MergedEntry[] = safeEntries.map((entry, index) => {
       const slug =
         (typeof entry?.slug === "string" && entry.slug.trim()) ||
         (typeof entry?.keyword_en === "string" && entry.keyword_en.trim()) ||
@@ -56,13 +85,13 @@ vi.mock("../roomLoaderHelpers", () => ({
       const keywordEn =
         (typeof entry?.keyword_en === "string" && entry.keyword_en.trim()) ||
         (typeof entry?.keywordEn === "string" && entry.keywordEn.trim()) ||
-        (Array.isArray(entry?.keywords_en) && entry.keywords_en[0]) ||
+        (Array.isArray(entry?.keywords_en) && typeof entry.keywords_en[0] === "string" && entry.keywords_en[0]) ||
         "";
 
       const keywordVi =
         (typeof entry?.keyword_vi === "string" && entry.keyword_vi.trim()) ||
         (typeof entry?.keywordVi === "string" && entry.keywordVi.trim()) ||
-        (Array.isArray(entry?.keywords_vi) && entry.keywords_vi[0]) ||
+        (Array.isArray(entry?.keywords_vi) && typeof entry.keywords_vi[0] === "string" && entry.keywords_vi[0]) ||
         "";
 
       return {
@@ -103,8 +132,8 @@ import { loadMergedRoom } from "../roomLoader";
 // --------------------
 // Helper
 // --------------------
-const makeChain = (overrides: Partial<Record<string, unknown>> = {}) => {
-  const self: unknown = {
+const makeChain = (overrides: Partial<ChainMock> = {}): SupabaseFromResult => {
+  const self: Partial<ChainMock> = {
     select: vi.fn().mockReturnThis(),
     eq: vi.fn().mockReturnThis(),
     in: vi.fn().mockReturnThis(),
@@ -115,7 +144,7 @@ const makeChain = (overrides: Partial<Record<string, unknown>> = {}) => {
     single: vi.fn().mockResolvedValue({ data: null, error: null }),
     ...overrides,
   };
-  return self;
+  return self as SupabaseFromResult;
 };
 
 describe("loadMergedRoom", () => {

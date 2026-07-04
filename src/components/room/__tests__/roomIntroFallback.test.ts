@@ -15,6 +15,9 @@ import {
   isViIntroMissing,
 } from "@/components/room/roomIntroFallback";
 
+type RoomIntroFixture = Parameters<typeof isViIntroMissing>[0];
+const asRoomIntroFixture = (room: unknown): RoomIntroFixture => room as RoomIntroFixture;
+
 describe("isViIntroMissing — M4 silent EN-for-VI gate", () => {
   it("flags the real 28-room shape: plain EN `description`, content.vi empty", () => {
     // ptsd_support_free.json verbatim shape (top-level keys trimmed).
@@ -141,7 +144,7 @@ describe("isViIntroMissing — M4 silent EN-for-VI gate", () => {
 
   it("does NOT flag a room with no intro content at all (generated welcome, no leak)", () => {
     expect(isViIntroMissing({})).toBe(false);
-    expect(isViIntroMissing({ title: { en: "X" } })).toBe(false);
+    expect(isViIntroMissing(asRoomIntroFixture({ title: { en: "X" } }))).toBe(false);
   });
 
   it("does NOT flag generated welcome metadata without an EN intro body", () => {
@@ -151,9 +154,10 @@ describe("isViIntroMissing — M4 silent EN-for-VI gate", () => {
       welcome: { generated: true },
     };
 
-    expect(pickIntroEN(room)).toBe("");
-    expect(pickIntroVI(room)).toBe("");
-    expect(isViIntroMissing(room)).toBe(false);
+    const fixture = asRoomIntroFixture(room);
+    expect(pickIntroEN(fixture)).toBe("");
+    expect(pickIntroVI(fixture)).toBe("");
+    expect(isViIntroMissing(fixture)).toBe(false);
   });
 
   it("does NOT flag an EN-missing room (the other asymmetry — no EN to leak)", () => {
