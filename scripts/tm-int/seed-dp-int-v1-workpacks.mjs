@@ -27,7 +27,26 @@ const familyTests = {
   "DP-REPLAY-JUDGE": "npm test -- --run src/lib/tm-int/runtimeReadiness src/lib/tm-int",
 };
 
-const familyDefinitions = {
+export const DP_INT_V1_FAMILY_TARGETS = {
+  "DP-FOUNDATION": 30,
+  "DP-EVIDENCE": 50,
+  "DP-PRODUCT-ISSUE": 45,
+  "DP-LEARNER-SIGNAL": 45,
+  "DP-PED-BRIDGE": 45,
+  "DP-REPLAY-JUDGE": 45,
+};
+
+const expansionTracks = [
+  ["coverage", "Add regression coverage for the cited DP invariant so unsupported edits fail before promotion."],
+  ["negative-path", "Add a negative-path fixture for the cited DP invariant so unsafe learner claims are rejected."],
+  ["replay", "Add replay evidence for the cited DP invariant so OBS to DP to PED behavior is reproducible."],
+  ["contract", "Tighten the cited DP contract surface so downstream code cannot bypass the invariant."],
+  ["reporting", "Expose the cited DP invariant in reviewable evidence so failures are actionable."],
+  ["integration", "Connect the cited DP invariant through the runtime integration path used by placement or lessons."],
+  ["fixture", "Add deterministic fixtures for the cited DP invariant so tests do not depend on hand-built samples."],
+];
+
+const baseFamilyDefinitions = {
   "DP-FOUNDATION": [
     ["teacher-context-ref", "src/lib/tm-int/dp/decisionContract.ts", "sourceTeacherContextRef", "src/lib/tm-int/dp/__tests__/dpValidator.test.ts", "Require every DP decision to cite the Teacher Context packet it consumed before PED can act.", "Teacher Mercy decides from the same Teacher Context that runtime used, preventing free-floating recommendations."],
     ["observation-citations", "src/lib/tm-int/dp/decisionContract.ts", "citedObservationIds", "src/lib/tm-int/dp/__tests__/dpValidator.test.ts", "Require DP decisions to carry observation citations for each product issue or validity claim.", "Teacher Mercy can trace why a decision changed back to observed facts instead of accepting uncited claims."],
@@ -102,6 +121,36 @@ const familyDefinitions = {
   ],
 };
 
+const familyDefinitions = Object.fromEntries(
+  DP_INT_V1_FAMILIES.map((family) => {
+    const baseEntries = baseFamilyDefinitions[family];
+    const target = DP_INT_V1_FAMILY_TARGETS[family];
+    const entries = [...baseEntries];
+
+    for (let index = baseEntries.length; index < target; index += 1) {
+      const base = baseEntries[index % baseEntries.length];
+      const track = expansionTracks[(index - baseEntries.length) % expansionTracks.length];
+      const cycle = Math.floor((index - baseEntries.length) / expansionTracks.length) + 1;
+      const [slug, sourceFile, anchor, relatedFile, objective, productValue] = base;
+      const suffix = `${track[0]}-${String(cycle).padStart(2, "0")}`;
+      entries.push([
+        `${slug}-${suffix}`,
+        sourceFile,
+        anchor,
+        relatedFile,
+        `${track[1]} Base invariant: ${objective}`,
+        `${productValue} This added workpack makes the behavior harder to regress under DP INT v1.`,
+      ]);
+    }
+
+    return [family, entries];
+  }),
+);
+
+function factoryDbPath() {
+  return process.env.DP_INT_FACTORY_DB || join(REPO_ROOT, "state/dp_int_factory.sqlite3");
+}
+
 function sourceLine(sourceFile, anchor, root = REPO_ROOT) {
   const absolute = join(root, sourceFile);
   const lines = readFileSync(absolute, "utf8").split(/\r?\n/);
@@ -123,11 +172,10 @@ export function createDpIntV1Workpacks(root = REPO_ROOT) {
     entries.forEach(([slug, sourceFile, anchor, relatedFile, objective, productValue], index) => {
       const number = String(index + 1).padStart(6, "0");
       const familyKey = family.toLowerCase().replaceAll("-", ".");
-      const tmIntId = `${family}-${number}`;
       workpacks.push({
         wp_id: `${family}-WP-${number}`,
         semantic_key: `dp.${familyKey}.${slug.replaceAll("-", "_")}`,
-        tm_int_id: tmIntId,
+        tm_int_id: "DP-INT-v1",
         source_file: sourceFile,
         source_line: sourceLine(sourceFile, anchor, root),
         source_anchor_excerpt: anchor,
@@ -218,7 +266,8 @@ export function validateDpIntV1Workpacks(workpacks, root = REPO_ROOT) {
   }
 
   for (const [family, count] of familyCounts.entries()) {
-    if (count !== 10) errors.push(`${family} expected 10 workpacks, found ${count}`);
+    const expected = DP_INT_V1_FAMILY_TARGETS[family];
+    if (count !== expected) errors.push(`${family} expected ${expected} workpacks, found ${count}`);
   }
 
   return {
@@ -231,6 +280,7 @@ export function validateDpIntV1Workpacks(workpacks, root = REPO_ROOT) {
 }
 
 function importWorkpacks(workpacks) {
+  if (workpacks.length === 0) return;
   const root = mkdtempSync(join(tmpdir(), "dp-int-v1-seed-"));
   const file = join(root, "dp-int-v1-workpacks.json");
   writeFileSync(file, JSON.stringify({ workpacks }, null, 2));
@@ -250,13 +300,27 @@ function importWorkpacks(workpacks) {
   }
 }
 
+function existingWorkpackIds() {
+  const db = factoryDbPath();
+  if (!existsSync(db)) return new Set();
+  const result = spawnSync("sqlite3", [db, "SELECT wp_id FROM dp_int_workpacks;"], {
+    cwd: REPO_ROOT,
+    encoding: "utf8",
+  });
+  if (result.status !== 0) return new Set();
+  return new Set(result.stdout.split(/\r?\n/).filter(Boolean));
+}
+
 export function main() {
   const validation = validateDpIntV1Workpacks(DP_INT_V1_WORKPACKS);
   if (!validation.pass) {
     throw new Error(validation.errors.join("\n"));
   }
-  importWorkpacks(DP_INT_V1_WORKPACKS);
-  console.log(`seeded=${validation.count}`);
+  const existing = existingWorkpackIds();
+  const missingWorkpacks = DP_INT_V1_WORKPACKS.filter((workpack) => !existing.has(workpack.wp_id));
+  importWorkpacks(missingWorkpacks);
+  console.log(`validated=${validation.count}`);
+  console.log(`seeded=${missingWorkpacks.length}`);
   for (const family of DP_INT_V1_FAMILIES) {
     console.log(`${family}=${validation.familyCounts[family]}`);
   }
