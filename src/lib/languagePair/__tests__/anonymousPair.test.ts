@@ -22,6 +22,7 @@ beforeEach(() => {
 
 afterEach(() => {
   vi.restoreAllMocks();
+  vi.unstubAllGlobals();
 });
 
 describe("anonymousPair — round trip", () => {
@@ -113,6 +114,15 @@ describe("anonymousPair — defensive parsing (never crashes Home)", () => {
 });
 
 describe("anonymousPair — storage failures", () => {
+  it("returns null and no-ops when window is unavailable", () => {
+    vi.stubGlobal("window", undefined);
+
+    expect(readAnonymousPair()).toBeNull();
+    expect(hasAnonymousPair()).toBe(false);
+    expect(() => writeAnonymousPair("vi", ["en"])).not.toThrow();
+    expect(() => clearAnonymousPair()).not.toThrow();
+  });
+
   it("read returns null when localStorage getItem throws", () => {
     vi.spyOn(Storage.prototype, "getItem").mockImplementation(() => {
       throw new Error("storage unavailable");

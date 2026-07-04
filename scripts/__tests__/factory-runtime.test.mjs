@@ -93,6 +93,17 @@ describe("factory-runtime schema constraints", () => {
     expect(result.stderr).toContain("CHECK constraint failed");
   });
 
+  it("requires a reason when marking held or bad_workpack", () => {
+    const root = setupLane();
+    const held = sqlite(root, "update factory_workpacks set status='held' where lane_id='lane-test' and wp_id='WP-T-001';");
+    expect(held.status).not.toBe(0);
+    expect(held.stderr).toContain("CHECK constraint failed");
+
+    const bad = sqlite(root, "update factory_workpacks set status='bad_workpack' where lane_id='lane-test' and wp_id='WP-T-001';");
+    expect(bad.status).not.toBe(0);
+    expect(bad.stderr).toContain("CHECK constraint failed");
+  });
+
   it("keeps F verified at 0 when Judge records a pass", () => {
     const root = setupLane();
     expect(run(root, ["claim", "lane-test", "WP-T-001", "F"]).status).toBe(0);
@@ -105,6 +116,45 @@ describe("factory-runtime schema constraints", () => {
     );
     expect(result.status).toBe(0);
     expect(result.stdout.trim().split(/\r?\n/)).toEqual(["0", "judge_pass"]);
+  });
+
+  it("keeps held and bad_workpack out of done and verified counts", () => {
+    const root = setupLane();
+    expect(run(root, ["claim", "lane-test", "WP-T-001", "F"]).status).toBe(0);
+    expect(run(root, ["hold", "lane-test", "WP-T-001", "validation failed"]).status).toBe(0);
+
+    const secondFile = join(root, "workpacks-2.json");
+    writeFileSync(
+      secondFile,
+      JSON.stringify([
+        {
+          wp_id: "WP-T-002",
+          semantic_key: "test.two",
+          source_files: ["src/second.ts"],
+          objective: "Reject stale expectation.",
+          acceptance_tests: "Does not count as product progress.",
+          validation_commands: ["npm run factory-runtime -- status lane-test"],
+          anti_fake_checks: ["bad workpack has no Judge pass"],
+        },
+      ]),
+    );
+    expect(run(root, ["import-workpacks", "lane-test", secondFile]).status).toBe(0);
+    expect(run(root, ["bad-workpack", "lane-test", "WP-T-002", "stale expectation"]).status).toBe(0);
+
+    const result = sqlite(
+      root,
+      [
+        "select status,count(*) from factory_workpacks where lane_id='lane-test' group by status order by status;",
+        "select verified,count(*) from factory_workpacks where lane_id='lane-test' group by verified;",
+        "select count(*) from factory_workpacks where lane_id='lane-test' and status='f_done';",
+        "select count(*) from factory_judge_results where lane_id='lane-test';",
+      ].join("\n"),
+    );
+    expect(result.status).toBe(0);
+    expect(result.stdout).toContain("bad_workpack|1");
+    expect(result.stdout).toContain("held|1");
+    expect(result.stdout).toContain("0|2");
+    expect(result.stdout.trim().endsWith("0\n0")).toBe(true);
   });
 });
 
@@ -119,5 +169,15 @@ describe("factory-runtime dashboard", () => {
     expect(result.stdout).toContain("f_done");
     expect(result.stdout).toContain("judge_pass");
     expect(result.stdout).toContain("f_done_without_judge");
+  });
+
+  it("closeout reports held and bad_workpack separately", () => {
+    const root = setupLane();
+    expect(run(root, ["claim", "lane-test", "WP-T-001", "F"]).status).toBe(0);
+    expect(run(root, ["bad-workpack", "lane-test", "WP-T-001", "stale expectation"]).status).toBe(0);
+    const result = run(root, ["closeout", "lane-test"]);
+    expect(result.status).toBe(0);
+    expect(result.stdout).toContain("bad_workpack");
+    expect(result.stdout).toContain("held");
   });
 });

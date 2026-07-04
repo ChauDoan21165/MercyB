@@ -78,6 +78,8 @@ const LEGITIMATE_COLUMNS = [
   "timezone",
   "is_public",
   "preferred_accent",
+  "native_language",
+  "target_languages",
   "primary_goal",
   "profession",
   "english_level",

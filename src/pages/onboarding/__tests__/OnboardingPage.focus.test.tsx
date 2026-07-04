@@ -155,4 +155,39 @@ describe("OnboardingPage — focus management (WCAG 2.4.3)", () => {
       true,
     );
   });
+
+  it("VI-native target copy keeps VI labels and omits unavailable Spanish", async () => {
+    const user = userEvent.setup();
+    renderPage();
+
+    await user.click(screen.getByRole("radio", { name: /Tiếng Việt/ }));
+
+    expect(
+      await screen.findByRole("heading", {
+        level: 1,
+        name: /Bạn muốn học ngôn ngữ nào/,
+      }),
+    ).toBeInTheDocument();
+    expect(screen.getByRole("checkbox", { name: /Tiếng Nhật/ })).toBeInTheDocument();
+    expect(screen.getAllByText(/Nội dung còn hạn chế/).length).toBeGreaterThan(0);
+    expect(screen.queryByRole("checkbox", { name: /Spanish|Tây Ban Nha/ })).toBeNull();
+    expect(screen.queryByText(/Limited content/)).toBeNull();
+  });
+
+  it("EN-native target copy keeps EN labels and readiness badges", async () => {
+    const user = userEvent.setup();
+    renderPage();
+
+    await user.click(screen.getByRole("radio", { name: /Tiếng Anh|English/ }));
+
+    expect(
+      await screen.findByRole("heading", {
+        level: 1,
+        name: /What do you want to learn/i,
+      }),
+    ).toBeInTheDocument();
+    expect(screen.getByRole("checkbox", { name: /Spanish/ })).toBeInTheDocument();
+    expect(screen.getAllByText(/Limited content/).length).toBeGreaterThan(0);
+    expect(screen.queryByText(/Nội dung còn hạn chế/)).toBeNull();
+  });
 });

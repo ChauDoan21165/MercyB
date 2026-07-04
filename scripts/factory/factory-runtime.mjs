@@ -4,10 +4,11 @@ import { dirname } from "node:path";
 import { spawnSync } from "node:child_process";
 
 export const DEFAULT_DB_PATH = "state/factory_runtime.sqlite";
-export const SCHEMA_VERSION = 1;
+export const SCHEMA_VERSION = 2;
 
-const VALID_F_STATUSES = new Set(["workpack_ready", "running", "f_done"]);
+const VALID_F_STATUSES = new Set(["workpack_ready", "running", "f_done", "held", "bad_workpack"]);
 const VALID_JUDGE_STATUSES = new Set(["judge_pass", "judge_fail"]);
+const F_STATUS_SQL = "'workpack_ready', 'running', 'f_done', 'held', 'bad_workpack'";
 
 function dbPath() {
   return process.env.FACTORY_RUNTIME_DB || DEFAULT_DB_PATH;
@@ -58,13 +59,16 @@ CREATE TABLE IF NOT EXISTS factory_workpacks (
   acceptance_tests TEXT NOT NULL,
   validation_commands TEXT NOT NULL,
   anti_fake_checks TEXT NOT NULL,
-  status TEXT NOT NULL CHECK(status IN ('workpack_ready', 'running', 'f_done')) DEFAULT 'workpack_ready',
+  status TEXT NOT NULL CHECK(status IN (${F_STATUS_SQL})) DEFAULT 'workpack_ready',
   verified INTEGER NOT NULL DEFAULT 0 CHECK(verified = 0),
   artifact_path TEXT,
   validation_evidence TEXT,
   commit_hash TEXT,
   claimed_by TEXT,
   claimed_at TEXT,
+  hold_reason TEXT,
+  held_at TEXT,
+  bad_workpack_at TEXT,
   f_done_at TEXT,
   created_at TEXT NOT NULL DEFAULT (datetime('now')),
   updated_at TEXT NOT NULL DEFAULT (datetime('now')),
@@ -75,8 +79,23 @@ CREATE TABLE IF NOT EXISTS factory_workpacks (
   CHECK(status != 'f_done' OR (
     artifact_path IS NOT NULL AND length(trim(artifact_path)) > 0 AND
     validation_evidence IS NOT NULL AND length(trim(validation_evidence)) > 0
+  )),
+  CHECK(status != 'held' OR (
+    hold_reason IS NOT NULL AND length(trim(hold_reason)) > 0 AND held_at IS NOT NULL
+  )),
+  CHECK(status != 'bad_workpack' OR (
+    hold_reason IS NOT NULL AND length(trim(hold_reason)) > 0 AND bad_workpack_at IS NOT NULL
   ))
 );
+`,
+    { output: false },
+  );
+
+  migrateFactoryWorkpacksSchema();
+
+  runSql(
+    `
+PRAGMA foreign_keys = ON;
 
 CREATE TABLE IF NOT EXISTS factory_judge_results (
   lane_id TEXT NOT NULL,
@@ -146,6 +165,82 @@ AFTER UPDATE ON factory_lanes
 BEGIN
   UPDATE factory_lanes SET updated_at = datetime('now') WHERE lane_id = NEW.lane_id;
 END;
+`,
+    { output: false },
+  );
+}
+
+function migrateFactoryWorkpacksSchema() {
+  const tableSql = runSql(
+    "SELECT sql FROM sqlite_master WHERE type='table' AND name='factory_workpacks';",
+    { output: false },
+  );
+  if (tableSql.includes("bad_workpack") && tableSql.includes("hold_reason")) {
+    return;
+  }
+  runSql(
+    `
+PRAGMA foreign_keys = OFF;
+BEGIN IMMEDIATE;
+DROP VIEW IF EXISTS factory_claimable;
+DROP TRIGGER IF EXISTS factory_workpacks_verified_insert_locked;
+DROP TRIGGER IF EXISTS factory_workpacks_verified_update_locked;
+DROP TRIGGER IF EXISTS factory_workpacks_no_verified_status_insert;
+DROP TRIGGER IF EXISTS factory_workpacks_no_verified_status_update;
+DROP TRIGGER IF EXISTS factory_workpacks_updated_at;
+ALTER TABLE factory_workpacks RENAME TO factory_workpacks_old;
+CREATE TABLE factory_workpacks (
+  lane_id TEXT NOT NULL,
+  wp_id TEXT NOT NULL,
+  semantic_key TEXT NOT NULL,
+  source_files TEXT NOT NULL,
+  objective TEXT NOT NULL,
+  acceptance_tests TEXT NOT NULL,
+  validation_commands TEXT NOT NULL,
+  anti_fake_checks TEXT NOT NULL,
+  status TEXT NOT NULL CHECK(status IN (${F_STATUS_SQL})) DEFAULT 'workpack_ready',
+  verified INTEGER NOT NULL DEFAULT 0 CHECK(verified = 0),
+  artifact_path TEXT,
+  validation_evidence TEXT,
+  commit_hash TEXT,
+  claimed_by TEXT,
+  claimed_at TEXT,
+  hold_reason TEXT,
+  held_at TEXT,
+  bad_workpack_at TEXT,
+  f_done_at TEXT,
+  created_at TEXT NOT NULL DEFAULT (datetime('now')),
+  updated_at TEXT NOT NULL DEFAULT (datetime('now')),
+  PRIMARY KEY (lane_id, wp_id),
+  UNIQUE (lane_id, semantic_key),
+  FOREIGN KEY (lane_id) REFERENCES factory_lanes(lane_id) ON DELETE CASCADE,
+  CHECK(status != 'running' OR (claimed_by IS NOT NULL AND claimed_at IS NOT NULL)),
+  CHECK(status != 'f_done' OR (
+    artifact_path IS NOT NULL AND length(trim(artifact_path)) > 0 AND
+    validation_evidence IS NOT NULL AND length(trim(validation_evidence)) > 0
+  )),
+  CHECK(status != 'held' OR (
+    hold_reason IS NOT NULL AND length(trim(hold_reason)) > 0 AND held_at IS NOT NULL
+  )),
+  CHECK(status != 'bad_workpack' OR (
+    hold_reason IS NOT NULL AND length(trim(hold_reason)) > 0 AND bad_workpack_at IS NOT NULL
+  ))
+);
+INSERT INTO factory_workpacks(
+  lane_id, wp_id, semantic_key, source_files, objective, acceptance_tests,
+  validation_commands, anti_fake_checks, status, verified, artifact_path,
+  validation_evidence, commit_hash, claimed_by, claimed_at, f_done_at,
+  created_at, updated_at
+)
+SELECT
+  lane_id, wp_id, semantic_key, source_files, objective, acceptance_tests,
+  validation_commands, anti_fake_checks, status, verified, artifact_path,
+  validation_evidence, commit_hash, claimed_by, claimed_at, f_done_at,
+  created_at, updated_at
+FROM factory_workpacks_old;
+DROP TABLE factory_workpacks_old;
+COMMIT;
+PRAGMA foreign_keys = ON;
 `,
     { output: false },
   );
@@ -274,6 +369,36 @@ SELECT lane_id, wp_id, status, verified, artifact_path, validation_evidence, com
   );
 }
 
+function hold(laneId, wpId, reason) {
+  initializeSchema();
+  required(reason, "reason");
+  runSql(
+    `BEGIN IMMEDIATE;
+UPDATE factory_workpacks
+SET status='held', hold_reason=${sql(reason)}, held_at=datetime('now')
+WHERE lane_id=${sql(laneId)} AND wp_id=${sql(wpId)} AND status='running';
+INSERT INTO factory_events(lane_id, wp_id, actor, event_type, note)
+SELECT ${sql(laneId)}, ${sql(wpId)}, 'F', 'held', ${sql(reason)} WHERE changes() = 1;
+COMMIT;
+SELECT lane_id, wp_id, status, verified, hold_reason, held_at FROM factory_workpacks WHERE lane_id=${sql(laneId)} AND wp_id=${sql(wpId)};`,
+  );
+}
+
+function badWorkpack(laneId, wpId, reason) {
+  initializeSchema();
+  required(reason, "reason");
+  runSql(
+    `BEGIN IMMEDIATE;
+UPDATE factory_workpacks
+SET status='bad_workpack', hold_reason=${sql(reason)}, bad_workpack_at=datetime('now')
+WHERE lane_id=${sql(laneId)} AND wp_id=${sql(wpId)} AND status IN ('workpack_ready', 'running');
+INSERT INTO factory_events(lane_id, wp_id, actor, event_type, note)
+SELECT ${sql(laneId)}, ${sql(wpId)}, 'F', 'bad_workpack', ${sql(reason)} WHERE changes() = 1;
+COMMIT;
+SELECT lane_id, wp_id, status, verified, hold_reason, bad_workpack_at FROM factory_workpacks WHERE lane_id=${sql(laneId)} AND wp_id=${sql(wpId)};`,
+  );
+}
+
 function judge(laneId, wpId, statusValue, artifact, commit) {
   initializeSchema();
   if (!VALID_JUDGE_STATUSES.has(statusValue)) throw new Error(`Invalid judge status: ${statusValue}`);
@@ -309,6 +434,8 @@ SELECT status, COUNT(*) AS rows FROM factory_workpacks WHERE lane_id=${sql(laneI
 SELECT verified, COUNT(*) AS rows FROM factory_workpacks WHERE lane_id=${sql(laneId)} GROUP BY verified ORDER BY verified;
 SELECT judge_status, COUNT(*) AS rows FROM factory_judge_results WHERE lane_id=${sql(laneId)} GROUP BY judge_status ORDER BY judge_status;
 SELECT COUNT(*) AS blockers FROM factory_workpacks WHERE lane_id=${sql(laneId)} AND status='running';
+SELECT COUNT(*) AS held FROM factory_workpacks WHERE lane_id=${sql(laneId)} AND status='held';
+SELECT COUNT(*) AS bad_workpack FROM factory_workpacks WHERE lane_id=${sql(laneId)} AND status='bad_workpack';
 SELECT COUNT(*) AS ready FROM factory_workpacks WHERE lane_id=${sql(laneId)} AND status='workpack_ready';
 SELECT COUNT(*) AS rejected FROM factory_judge_results WHERE lane_id=${sql(laneId)} AND judge_status='judge_fail';
 SELECT COUNT(*) AS f_done_without_judge FROM factory_workpacks w
@@ -363,6 +490,8 @@ function help() {
   node scripts/factory/factory-runtime.mjs next <lane_id>
   node scripts/factory/factory-runtime.mjs claim <lane_id> <wp_id> <worker>
   node scripts/factory/factory-runtime.mjs f-done <lane_id> <wp_id> <artifact> <evidence> <commit>
+  node scripts/factory/factory-runtime.mjs hold <lane_id> <wp_id> <reason>
+  node scripts/factory/factory-runtime.mjs bad-workpack <lane_id> <wp_id> <reason>
   node scripts/factory/factory-runtime.mjs judge-pass <lane_id> <wp_id> <artifact> <commit>
   node scripts/factory/factory-runtime.mjs judge-fail <lane_id> <wp_id> <artifact> <commit>
   node scripts/factory/factory-runtime.mjs closeout <lane_id>
@@ -393,6 +522,8 @@ export function main(argv = process.argv.slice(2)) {
   if (command === "f-done") {
     return fDone(required(args[0], "lane_id"), required(args[1], "wp_id"), required(args[2], "artifact"), required(args[3], "evidence"), required(args[4], "commit"));
   }
+  if (command === "hold") return hold(required(args[0], "lane_id"), required(args[1], "wp_id"), required(args[2], "reason"));
+  if (command === "bad-workpack") return badWorkpack(required(args[0], "lane_id"), required(args[1], "wp_id"), required(args[2], "reason"));
   if (command === "judge-pass") return judge(required(args[0], "lane_id"), required(args[1], "wp_id"), "judge_pass", required(args[2], "artifact"), required(args[3], "commit"));
   if (command === "judge-fail") return judge(required(args[0], "lane_id"), required(args[1], "wp_id"), "judge_fail", required(args[2], "artifact"), required(args[3], "commit"));
   if (command === "closeout") return closeout(required(args[0], "lane_id"));
