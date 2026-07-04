@@ -160,6 +160,7 @@ describe("Study OS static boundary", () => {
       "src/lib/tutor/transcriptCorrectionCollector.ts",
       "src/lib/tutor/transcriptCorrectionTypes.ts",
       "src/lib/tutor/tutorCopy.ts",
+      "src/lib/tutor/tutorCopyTypes.ts",
       "src/lib/tutor/tutorEngine.ts",
       "src/lib/tutor/tutorFailureTaxonomy.ts",
       "src/lib/tutor/tutorTypes.ts",
