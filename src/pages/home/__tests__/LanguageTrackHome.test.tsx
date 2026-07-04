@@ -5,6 +5,7 @@ import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { MemoryRouter } from "react-router-dom";
 import React from "react";
+import { TARGET_META, type TargetLang } from "@/lib/onboarding/types";
 
 const persistMock = vi.fn(async () => ({ ok: true }));
 // A13-circle-8: usePairMutation moved to its own module to break a
@@ -60,6 +61,30 @@ describe("LanguageTrackHome (non-English primary)", () => {
     expect(screen.getByText(/Small Steps\./)).toBeInTheDocument();
     expect(screen.getByText(/Real progress\./)).toBeInTheDocument();
     expect(screen.queryByText(/English for real/i)).toBeNull();
+  });
+
+  it("routes each public target card to its configured language page", async () => {
+    const user = userEvent.setup();
+    const routedTargets = Object.entries(TARGET_META).filter(
+      (entry): entry is [TargetLang, (typeof TARGET_META)[TargetLang] & { slug: string }] => entry[1].slug !== null,
+    );
+
+    expect(routedTargets.length).toBeGreaterThan(0);
+
+    for (const [target, meta] of routedTargets) {
+      navigateMock.mockClear();
+      const { unmount } = wrap(
+        <LanguageTrackHome
+          nativeLanguage="en"
+          targets={[target]}
+          primaryTarget={target}
+        />,
+      );
+
+      await user.click(screen.getByRole("button", { name: new RegExp(`Open ${meta.labelEn} track`, "i") }));
+      expect(navigateMock).toHaveBeenCalledWith(`/languages/${meta.slug}`);
+      unmount();
+    }
   });
 });
 

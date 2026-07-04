@@ -63,7 +63,9 @@ function escapeRegExp(value: string): string {
 }
 
 type ProfessionLesson = {
+  id: string;
   title_vi: string;
+  title_en: string;
   sentences: readonly {
     en: string;
     vi: string;
@@ -81,9 +83,18 @@ type ProfessionPageCase = {
   expectedLessons: number;
   route: string;
   sourceFile: string;
-  categories: readonly { id: string; title_vi: string; title_en: string }[];
+  idPrefix: string;
+  categories: readonly { id: string; title_vi: string; title_en: string; expected_count: number }[];
   getLessons: (id: string) => readonly ProfessionLesson[];
 };
+
+function allLessons(testCase: ProfessionPageCase): ProfessionLesson[] {
+  return testCase.categories.flatMap((category) => [...testCase.getLessons(category.id)]);
+}
+
+function expectNonEmptyText(value: string, label: string) {
+  expect(value, label).toEqual(expect.stringMatching(/\S/));
+}
 
 const lessonPageCases: ProfessionPageCase[] = [
   {
@@ -94,6 +105,7 @@ const lessonPageCases: ProfessionPageCase[] = [
     expectedLessons: countLessons(NAIL_TECH_CATEGORIES, getNailTechLessonsByCategory),
     route: "/professions/nail-tech",
     sourceFile: "NailTechLessonsPage.tsx",
+    idPrefix: "nail_tech_",
     categories: NAIL_TECH_CATEGORIES,
     getLessons: getNailTechLessonsByCategory as ProfessionPageCase["getLessons"],
   },
@@ -105,6 +117,7 @@ const lessonPageCases: ProfessionPageCase[] = [
     expectedLessons: countLessons(RESTAURANT_CATEGORIES, getRestaurantLessonsByCategory),
     route: "/professions/restaurant",
     sourceFile: "RestaurantLessonsPage.tsx",
+    idPrefix: "restaurant_",
     categories: RESTAURANT_CATEGORIES,
     getLessons: getRestaurantLessonsByCategory as ProfessionPageCase["getLessons"],
   },
@@ -116,6 +129,7 @@ const lessonPageCases: ProfessionPageCase[] = [
     expectedLessons: countLessons(CUSTOMER_SERVICE_CATEGORIES, getCustomerServiceLessonsByCategory),
     route: "/professions/customer-service",
     sourceFile: "CustomerServiceLessonsPage.tsx",
+    idPrefix: "customer_service_",
     categories: CUSTOMER_SERVICE_CATEGORIES,
     getLessons: getCustomerServiceLessonsByCategory as ProfessionPageCase["getLessons"],
   },
@@ -127,6 +141,7 @@ const lessonPageCases: ProfessionPageCase[] = [
     expectedLessons: countLessons(TECH_WORKER_CATEGORIES, getTechWorkerLessonsByCategory),
     route: "/professions/tech-worker",
     sourceFile: "TechWorkerLessonsPage.tsx",
+    idPrefix: "tech_worker_",
     categories: TECH_WORKER_CATEGORIES,
     getLessons: getTechWorkerLessonsByCategory as ProfessionPageCase["getLessons"],
   },
@@ -138,6 +153,7 @@ const lessonPageCases: ProfessionPageCase[] = [
     expectedLessons: countLessons(HEALTHCARE_CATEGORIES, getHealthcareLessonsByCategory),
     route: "/professions/healthcare",
     sourceFile: "HealthcareLessonsPage.tsx",
+    idPrefix: "healthcare_",
     categories: HEALTHCARE_CATEGORIES,
     getLessons: getHealthcareLessonsByCategory as ProfessionPageCase["getLessons"],
   },
@@ -149,6 +165,7 @@ const lessonPageCases: ProfessionPageCase[] = [
     expectedLessons: countLessons(DRIVER_CATEGORIES, getDriverLessonsByCategory),
     route: "/professions/drivers",
     sourceFile: "DriversLessonsPage.tsx",
+    idPrefix: "driver_",
     categories: DRIVER_CATEGORIES,
     getLessons: getDriverLessonsByCategory as ProfessionPageCase["getLessons"],
   },
@@ -160,6 +177,7 @@ const lessonPageCases: ProfessionPageCase[] = [
     expectedLessons: countLessons(HOSPITALITY_CATEGORIES, getHospitalityLessonsByCategory),
     route: "/professions/hospitality",
     sourceFile: "HospitalityLessonsPage.tsx",
+    idPrefix: "hospitality_",
     categories: HOSPITALITY_CATEGORIES,
     getLessons: getHospitalityLessonsByCategory as ProfessionPageCase["getLessons"],
   },
@@ -230,5 +248,38 @@ describe("profession pages", () => {
     expect(document.body.textContent).toContain(firstSentence.pronunciation_focus[0]);
     expect(document.body.textContent).toContain(firstLesson.cultural_notes_vi);
     expect(document.body.textContent).toContain(firstLesson.tip_advice_vi);
+  });
+
+  it.each(lessonPageCases)("keeps $name category expected_count aligned with local lessons", ({ categories, getLessons }) => {
+    for (const category of categories) {
+      expect(getLessons(category.id).length).toBe(category.expected_count);
+    }
+  });
+
+  it.each(lessonPageCases)("keeps $name lesson IDs unique and profession-prefixed", (testCase) => {
+    const lessons = allLessons(testCase);
+    const ids = lessons.map((lesson) => lesson.id);
+
+    expect(new Set(ids).size).toBe(ids.length);
+    for (const id of ids) {
+      expect(id).toMatch(new RegExp(`^${escapeRegExp(testCase.idPrefix)}`));
+    }
+  });
+
+  it.each(lessonPageCases)("keeps $name lesson detail fields populated", (testCase) => {
+    for (const lesson of allLessons(testCase)) {
+      expectNonEmptyText(lesson.title_vi, `${testCase.name} ${lesson.id} title_vi`);
+      expectNonEmptyText(lesson.title_en, `${testCase.name} ${lesson.id} title_en`);
+      expect(lesson.sentences.length, `${testCase.name} ${lesson.id} sentences`).toBeGreaterThanOrEqual(4);
+
+      for (const [index, sentence] of lesson.sentences.entries()) {
+        expectNonEmptyText(sentence.en, `${testCase.name} ${lesson.id} sentence ${index} en`);
+        expectNonEmptyText(sentence.vi, `${testCase.name} ${lesson.id} sentence ${index} vi`);
+        expect(sentence.pronunciation_focus.length, `${testCase.name} ${lesson.id} sentence ${index} pronunciation_focus`).toBeGreaterThan(0);
+      }
+
+      expectNonEmptyText(lesson.cultural_notes_vi, `${testCase.name} ${lesson.id} cultural_notes_vi`);
+      expectNonEmptyText(lesson.tip_advice_vi, `${testCase.name} ${lesson.id} tip_advice_vi`);
+    }
   });
 });

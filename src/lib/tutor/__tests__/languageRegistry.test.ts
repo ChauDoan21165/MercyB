@@ -9,6 +9,17 @@ import {
   isTutorTargetLanguageSupported,
   resolveTutorTargetLanguage,
 } from "../languageRegistry";
+import { TARGET_META, type TargetLang } from "@/lib/onboarding/types";
+
+const TARGET_TO_TUTOR_CODE: Partial<Record<TargetLang, (typeof TUTOR_LANGUAGE_CODES)[number]>> = {
+  de: "de",
+  es: "es",
+  fr: "fr",
+  ja: "ja",
+  ko: "ko",
+  vi: "vi",
+  zh: "zh",
+};
 
 describe("tutor language registry", () => {
   it("resolves all supported AI Tutor target languages", () => {
@@ -66,4 +77,19 @@ describe("tutor language registry", () => {
     expect(getTtsLocale("ru")).toBe("ru-RU");
   });
 
+  it("keeps public lesson page targets aligned with tutor language support where applicable", () => {
+    const routedTargets = Object.entries(TARGET_META).filter(
+      (entry): entry is [TargetLang, (typeof TARGET_META)[TargetLang] & { slug: string }] => entry[1].slug !== null,
+    );
+
+    expect(routedTargets.length).toBeGreaterThan(0);
+
+    for (const [target, meta] of routedTargets) {
+      const tutorCode = TARGET_TO_TUTOR_CODE[target];
+
+      expect(tutorCode, `${target} should declare a tutor registry code for /languages/${meta.slug}`).toBeDefined();
+      expect(isTutorTargetLanguageSupported(tutorCode)).toBe(true);
+      expect(getTutorLanguage(tutorCode).labelEn).toBe(meta.labelEn);
+    }
+  });
 });
