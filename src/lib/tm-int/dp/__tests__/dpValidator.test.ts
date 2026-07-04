@@ -119,6 +119,34 @@ describe("validateDpDecision", () => {
     );
   });
 
+  test("FAIL product issue present without issue type", () => {
+    const decision: DpEvidenceBasedDecision = {
+      ...createValidDecision(),
+      productIssueHandling: {
+        ...createValidDecision().productIssueHandling,
+        issueTypes: [],
+      },
+    };
+
+    expect(validateDpDecision(decision, createTeacherContext()).failures).toEqual(
+      expect.arrayContaining([expect.objectContaining({ code: "invalid_product_issue_handling" })]),
+    );
+  });
+
+  test("FAIL product issue present without rationale", () => {
+    const decision: DpEvidenceBasedDecision = {
+      ...createValidDecision(),
+      productIssueHandling: {
+        ...createValidDecision().productIssueHandling,
+        rationale: "",
+      },
+    };
+
+    expect(validateDpDecision(decision, createTeacherContext()).failures).toEqual(
+      expect.arrayContaining([expect.objectContaining({ code: "invalid_product_issue_handling" })]),
+    );
+  });
+
   test("FAIL learner weakness claim without evidence", () => {
     const decision: DpEvidenceBasedDecision = {
       ...createValidDecision(),

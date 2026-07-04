@@ -1,6 +1,7 @@
 import type { TeacherContext } from "../runtime";
 
 export type DpDecisionConfidenceLevel = "low" | "medium" | "high";
+export type DpProductIssueType = TeacherContext["productIssues"][number]["issue"];
 
 export type DpTeacherContextReference = {
   schemaVersion: TeacherContext["schemaVersion"];
@@ -9,7 +10,7 @@ export type DpTeacherContextReference = {
 
 export type DpProductIssueHandling = {
   productIssuePresent: boolean;
-  issueTypes: readonly string[];
+  issueTypes: readonly DpProductIssueType[];
   handledAsProductIssue: boolean;
   classifiedAsLearnerWeakness: boolean;
   rationale: string;

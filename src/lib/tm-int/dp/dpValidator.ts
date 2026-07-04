@@ -10,6 +10,7 @@ export type DpDecisionValidationFailureCode =
   | "unknown_learning_signal_citation"
   | "claim_observation_not_declared"
   | "claim_learning_signal_not_declared"
+  | "invalid_product_issue_handling"
   | "product_failure_as_learner_weakness"
   | "learner_weakness_without_evidence"
   | "invalid_confidence_level"
@@ -141,6 +142,44 @@ function hasProductIssueContext(decision: DpEvidenceBasedDecision, teacherContex
   return decision.productIssueHandling.productIssuePresent || Boolean(teacherContext?.productIssues.length);
 }
 
+function addProductIssueHandlingFailures(
+  decision: DpEvidenceBasedDecision,
+  teacherContext: TeacherContext | undefined,
+): DpDecisionValidationFailure[] {
+  const failures: DpDecisionValidationFailure[] = [];
+  const productIssueHandling = decision.productIssueHandling;
+  const contextIssueTypes = new Set(teacherContext?.productIssues.map((issue) => issue.issue) ?? []);
+  const declaredIssueTypes = new Set(productIssueHandling.issueTypes);
+
+  if (hasProductIssueContext(decision, teacherContext) && productIssueHandling.issueTypes.length === 0) {
+    failures.push({
+      code: "invalid_product_issue_handling",
+      path: "productIssueHandling.issueTypes",
+      reason: "DP product issue handling must list the product issue types from Teacher Context.",
+    });
+  }
+
+  if (productIssueHandling.productIssuePresent && !productIssueHandling.rationale.trim()) {
+    failures.push({
+      code: "invalid_product_issue_handling",
+      path: "productIssueHandling.rationale",
+      reason: "DP product issue handling must include rationale when product issues are present.",
+    });
+  }
+
+  for (const contextIssueType of contextIssueTypes) {
+    if (!declaredIssueTypes.has(contextIssueType)) {
+      failures.push({
+        code: "invalid_product_issue_handling",
+        path: "productIssueHandling.issueTypes",
+        reason: `DP product issue handling omitted Teacher Context issue type ${contextIssueType}.`,
+      });
+    }
+  }
+
+  return failures;
+}
+
 function containsLearnerWeakness(value: unknown): boolean {
   return LEARNER_WEAKNESS_PATTERN.test(JSON.stringify(value));
 }
@@ -193,6 +232,7 @@ export function validateDpDecision(
 
   failures.push(...addUnknownCitationFailures(decision, teacherContext));
   failures.push(...addUndeclaredClaimCitationFailures(decision));
+  failures.push(...addProductIssueHandlingFailures(decision, teacherContext));
 
   if (!VALID_CONFIDENCE_LEVELS.has(decision.confidenceLevel)) {
     failures.push({
