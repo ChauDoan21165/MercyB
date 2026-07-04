@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { detectLearningObservation } from "../detectors/learning";
 import { detectSpeechObservations } from "../detectors/speech";
-import { createObservationPacket, validateObservationPacket } from "../evidencePacket";
+import { createObservationPacket, createObservationPacketFixture, validateObservationPacket } from "../evidencePacket";
 import { OBS_INT_SPRINT1_WORKPACKS, validateObsSprint1Workpacks } from "../workpacks";
 
 describe("OBS INT evidence packets and workpacks", () => {
@@ -24,6 +24,29 @@ describe("OBS INT evidence packets and workpacks", () => {
       "HintUsed",
     ]);
     expect(JSON.stringify(packet)).not.toMatch(/verified|weakness|lazy|motivation/i);
+  });
+
+  it("creates deterministic DP citation observation fixtures", () => {
+    const first = createObservationPacketFixture("dp-citation");
+    const second = createObservationPacketFixture("dp-citation");
+
+    expect(first.packetId).toBe(second.packetId);
+    expect(validateObservationPacket(first)).toEqual([]);
+    expect(first.facts.map((fact) => fact.factType)).toEqual([
+      "AudioUnavailable",
+      "AudioDurationZero",
+      "MicPermissionDenied",
+      "AssessmentAnswerSubmitted",
+      "AssessmentAnswerSubmitted",
+    ]);
+    expect(first.facts.map((fact) => fact.context.taskId)).toEqual([
+      "listening-a2-class-delay-1",
+      "listening-a2-class-delay-1",
+      "speaking-a2-intro-1",
+      "transfer::item-1",
+      "transfer::item-2",
+    ]);
+    expect(JSON.stringify(first)).not.toMatch(/verified|weakness|lazy|motivation/i);
   });
 
   it("seeds 12 workpack-ready rows with verified false", () => {
