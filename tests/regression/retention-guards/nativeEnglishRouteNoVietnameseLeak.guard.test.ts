@@ -1,11 +1,11 @@
 import { afterAll, beforeAll, expect, test } from "vitest";
+import { createServer as createNetServer } from "node:net";
 import { TextEncoder as NodeTextEncoder } from "node:util";
 import { chromium, type Page } from "@playwright/test";
 import type { ViteDevServer } from "vite";
 
 const routes = ["spanish", "french", "german", "italian", "russian", "punjabi", "swahili"];
-const port = 3107;
-const baseUrl = `http://127.0.0.1:${port}`;
+let baseUrl = "";
 
 let viteServer: ViteDevServer | null = null;
 let originalTextEncoder: typeof globalThis.TextEncoder | undefined;
@@ -33,20 +33,45 @@ async function waitForRenderedPageText(page: Page) {
   );
 }
 
-async function hasRunningServer() {
-  try {
-    const response = await fetch(baseUrl);
-    return response.ok;
-  } catch {
-    return false;
+async function findAvailablePort() {
+  return new Promise<number>((resolve, reject) => {
+    const server = createNetServer();
+    server.once("error", reject);
+    server.listen(0, "127.0.0.1", () => {
+      const address = server.address();
+      server.close(() => {
+        if (address && typeof address === "object") {
+          resolve(address.port);
+        } else {
+          reject(new Error("Unable to allocate an isolated Vite port"));
+        }
+      });
+    });
+  });
+}
+
+async function waitForViteReady(timeoutMs = 60000) {
+  const started = Date.now();
+  let lastError: unknown;
+
+  while (Date.now() - started < timeoutMs) {
+    try {
+      const response = await fetch(baseUrl);
+      if (response.ok) {
+        return;
+      }
+      lastError = new Error(`Vite readiness returned ${response.status}`);
+    } catch (error) {
+      lastError = error;
+    }
+
+    await new Promise((resolve) => setTimeout(resolve, 250));
   }
+
+  throw new Error(`Vite did not become ready at ${baseUrl}: ${String(lastError)}`);
 }
 
 beforeAll(async () => {
-  if (await hasRunningServer()) {
-    return;
-  }
-
   process.env.VITE_SUPABASE_URL ??= "http://127.0.0.1:54321";
   process.env.VITE_SUPABASE_ANON_KEY ??= "test-anon-key";
   originalTextEncoder = globalThis.TextEncoder;
@@ -55,6 +80,8 @@ beforeAll(async () => {
   globalThis.Uint8Array = new NodeTextEncoder().encode("").constructor as typeof globalThis.Uint8Array;
 
   const { createServer } = await import("vite");
+  const port = await findAvailablePort();
+  baseUrl = `http://127.0.0.1:${port}`;
 
   viteServer = await createServer({
     logLevel: "error",
@@ -66,7 +93,8 @@ beforeAll(async () => {
   });
 
   await viteServer.listen();
-}, 30000);
+  await waitForViteReady();
+}, 90000);
 
 afterAll(async () => {
   await viteServer?.close();
