@@ -167,6 +167,12 @@ describe("language pair routing pages", () => {
     expect(screen.getByLabelText("current route").textContent).toBe("/languages/thai");
   });
 
+  it("redirects unsupported learn targets to the languages index", () => {
+    renderAt("/learn/vietnamese/klingon", <LearnPairRedirectPage />);
+
+    expect(screen.getByLabelText("current route").textContent).toBe("/languages");
+  });
+
   it("renders Vietnamese fallback copy for unsupported Vietnamese-native pairs", () => {
     renderAt("/languages/vietnamese/klingon", <UnsupportedPairPage />);
 

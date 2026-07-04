@@ -30,20 +30,30 @@ import JapaneseLessonsPage from "@/pages/languages/JapaneseLessonsPage";
 import ChineseLessonsPage from "@/pages/languages/ChineseLessonsPage";
 import FrenchLessonsPage from "@/pages/languages/FrenchLessonsPage";
 import GermanLessonsPage from "@/pages/languages/GermanLessonsPage";
-
-// Shared de-narrowed EN-title anchor — every page's HERO_EN is
-// "<Lang> — real-life lessons, explained clearly. …".
-const EN_TITLE_ANCHOR = "real-life lessons, explained clearly";
+import PortugueseLessonsPage from "@/pages/languages/PortugueseLessonsPage";
+import TurkishLessonsPage from "@/pages/languages/TurkishLessonsPage";
 
 // The exclusionary fragment that must never reach an EN-mode user.
 const EXCLUSIONARY = "cho người Việt";
 
 const PAGES = [
-  { name: "Korean", Page: KoreanLessonsPage, viTitle: "Tiếng Hàn cho người Việt" },
-  { name: "Japanese", Page: JapaneseLessonsPage, viTitle: "Tiếng Nhật cho người Việt" },
-  { name: "Chinese", Page: ChineseLessonsPage, viTitle: "Tiếng Trung cho người Việt" },
-  { name: "French", Page: FrenchLessonsPage, viTitle: "Tiếng Pháp cho người Việt" },
-  { name: "German", Page: GermanLessonsPage, viTitle: "Tiếng Đức cho người Việt" },
+  { name: "Korean", Page: KoreanLessonsPage, viTitle: "Tiếng Hàn cho người Việt", enTitle: "real-life lessons, explained clearly" },
+  { name: "Japanese", Page: JapaneseLessonsPage, viTitle: "Tiếng Nhật cho người Việt", enTitle: "real-life lessons, explained clearly" },
+  { name: "Chinese", Page: ChineseLessonsPage, viTitle: "Tiếng Trung cho người Việt", enTitle: "real-life lessons, explained clearly" },
+  { name: "French", Page: FrenchLessonsPage, viTitle: "Tiếng Pháp cho người Việt", enTitle: "real-life lessons, explained clearly" },
+  { name: "German", Page: GermanLessonsPage, viTitle: "Tiếng Đức cho người Việt", enTitle: "real-life lessons, explained clearly" },
+  {
+    name: "Portuguese",
+    Page: PortugueseLessonsPage,
+    viTitle: "Tiếng Bồ Đào Nha Brazil cho người Việt",
+    enTitle: "real-life lessons, explained clearly",
+  },
+  {
+    name: "Turkish",
+    Page: TurkishLessonsPage,
+    viTitle: "Tiếng Thổ Nhĩ Kỳ cho người Việt",
+    enTitle: "practical local lessons",
+  },
 ] as const;
 
 const STORAGE_KEY = "mercyblade.lessonUiLang";
@@ -64,7 +74,7 @@ describe("language-page hero subtitle (smoke, #509 §8)", () => {
     window.localStorage.clear();
   });
 
-  for (const { name, Page, viTitle } of PAGES) {
+  for (const { name, Page, viTitle, enTitle } of PAGES) {
     it(`${name}: VI mode (default) — VI title only, NO EN secondary line`, () => {
       // No stored value → provider defaults to "vi" (existing behavior).
       const { container } = renderPage(Page);
@@ -73,7 +83,7 @@ describe("language-page hero subtitle (smoke, #509 §8)", () => {
       expect(text).toContain(viTitle);
       // The EN secondary line is now GONE in VI mode too (single
       // language — supersedes #518's asymmetry).
-      expect(text).not.toContain(EN_TITLE_ANCHOR);
+      expect(text).not.toContain(enTitle);
     });
 
     it(`${name}: EN mode — de-narrowed EN title, NO exclusionary VI subtitle`, () => {
@@ -82,7 +92,7 @@ describe("language-page hero subtitle (smoke, #509 §8)", () => {
       const { container } = renderPage(Page);
       const text = container.textContent ?? "";
       // De-narrowed English title is shown.
-      expect(text).toContain(EN_TITLE_ANCHOR);
+      expect(text).toContain(enTitle);
       // The exclusionary Vietnamese line is gone entirely.
       expect(text).not.toContain(EXCLUSIONARY);
       expect(text).not.toContain(viTitle);

@@ -1,9 +1,11 @@
 import { readFileSync, readdirSync, statSync } from "node:fs";
 import { join } from "node:path";
+import { render, screen } from "@testing-library/react";
+import { MemoryRouter } from "react-router-dom";
 import { describe, expect, it } from "vitest";
 
 import * as ItalianContent from "@/languages/italian";
-import { italianLessons } from "../ItalianLessonsPage";
+import ItalianLessonsPage, { italianLessons } from "../ItalianLessonsPage";
 
 const readSource = (path: string) => readFileSync(path, "utf8");
 
@@ -25,10 +27,25 @@ describe("ItalianLessonsPage", () => {
     expect(pageSource).not.toMatch(/supabase/i);
   });
 
+  it("renders local Italian lesson content", () => {
+    render(
+      <MemoryRouter>
+        <ItalianLessonsPage />
+      </MemoryRouter>,
+    );
+
+    expect(screen.getByTestId("italian-lessons-page")).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: "Italian lessons" })).toBeInTheDocument();
+    expect(screen.getByText("Local Italian lesson content is loaded from the bundled language curriculum.")).toBeInTheDocument();
+    expect(screen.getByRole("region", { name: "Italian lesson list" })).toBeInTheDocument();
+    expect(screen.getAllByRole("article").length).toBe(italianLessons.length);
+  });
+
   it("registers an explicit public Italian route", () => {
     const routerSource = readSource("src/router/AppRouter.tsx");
     expect(routerSource).toContain("ItalianLessonsPage");
     expect(routerSource).toContain('path="/languages/italian"');
+    expect(routerSource).toMatch(/<ItalianLessonsPage\s*\/>/);
   });
 
   it("adds an Italian hub card", () => {

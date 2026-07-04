@@ -175,6 +175,11 @@ describe("language-page chrome — EN mode is fully English (#509 §8)", () => {
     expect(text).toContain(
       "greetings, numbers, everyday phrases, grammar, food",
     );
+    expect(text).toContain("Brazilian Portuguese");
+    expect(text).toContain("Turkish");
+    expect(text).toContain("Arabic");
+    expect(text).toContain("Hindi");
+    expect(text).toContain("Urdu");
     expect(text).toContain("Start learning");
     expect(text).not.toContain("Bắt đầu học");
     expect(text).not.toContain("chào hỏi, số đếm, câu giao tiếp");
