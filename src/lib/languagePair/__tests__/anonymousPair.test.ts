@@ -4,19 +4,24 @@
 // that lets a returning anonymous visitor skip the picker and lets
 // Home render the right surface before signup.
 
-import { describe, expect, it, beforeEach } from "vitest";
+import { describe, expect, it, beforeEach, afterEach, vi } from "vitest";
 import {
   readAnonymousPair,
   writeAnonymousPair,
   hasAnonymousPair,
   clearAnonymousPair,
 } from "../anonymousPair";
+import { NATIVE_OPTIONS } from "@/lib/onboarding/types";
 
 const PAIR_KEY = "mercyblade.languagePair";
 const NATIVE_KEY = "mercyblade.nativeLang";
 
 beforeEach(() => {
   window.localStorage.clear();
+});
+
+afterEach(() => {
+  vi.restoreAllMocks();
 });
 
 describe("anonymousPair — round trip", () => {
@@ -73,5 +78,68 @@ describe("anonymousPair — defensive parsing (never crashes Home)", () => {
     writeAnonymousPair("vi", []);
     expect(readAnonymousPair()).toEqual({ native: "vi", targets: [] });
     expect(hasAnonymousPair()).toBe(true);
+  });
+
+  it("keeps every onboarding native valid even when targets are empty", () => {
+    for (const option of NATIVE_OPTIONS) {
+      window.localStorage.clear();
+      writeAnonymousPair(option.value, []);
+      expect(readAnonymousPair()).toEqual({ native: option.value, targets: [] });
+      expect(hasAnonymousPair()).toBe(true);
+    }
+  });
+
+  it("drops non-array or object-shaped target blobs", () => {
+    window.localStorage.setItem(
+      PAIR_KEY,
+      JSON.stringify({ native: "vi", targets: { 0: "en", length: 1 } }),
+    );
+    expect(readAnonymousPair()).toEqual({ native: "vi", targets: [] });
+
+    window.localStorage.setItem(
+      PAIR_KEY,
+      JSON.stringify({ native: "vi", targets: "en" }),
+    );
+    expect(readAnonymousPair()).toEqual({ native: "vi", targets: [] });
+  });
+
+  it("sanitizes mixed tampered target arrays", () => {
+    window.localStorage.setItem(
+      PAIR_KEY,
+      JSON.stringify({ native: "en", targets: ["xx", "es", null, "es", 42, "vi"] }),
+    );
+    expect(readAnonymousPair()).toEqual({ native: "en", targets: ["es", "vi"] });
+  });
+});
+
+describe("anonymousPair — storage failures", () => {
+  it("read returns null when localStorage getItem throws", () => {
+    vi.spyOn(Storage.prototype, "getItem").mockImplementation(() => {
+      throw new Error("storage unavailable");
+    });
+
+    expect(readAnonymousPair()).toBeNull();
+    expect(hasAnonymousPair()).toBe(false);
+  });
+
+  it("write and clear swallow localStorage failures", () => {
+    vi.spyOn(Storage.prototype, "setItem").mockImplementation(() => {
+      throw new Error("quota exceeded");
+    });
+    expect(() => writeAnonymousPair("vi", ["en"])).not.toThrow();
+
+    vi.restoreAllMocks();
+    vi.spyOn(Storage.prototype, "removeItem").mockImplementation(() => {
+      throw new Error("storage unavailable");
+    });
+    expect(() => clearAnonymousPair()).not.toThrow();
+  });
+
+  it("mirrors every onboarding native into NativeLanguageContext's cache key", () => {
+    for (const option of NATIVE_OPTIONS) {
+      window.localStorage.clear();
+      writeAnonymousPair(option.value, []);
+      expect(window.localStorage.getItem(NATIVE_KEY)).toBe(option.value);
+    }
   });
 });
