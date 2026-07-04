@@ -5,7 +5,7 @@ import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { MemoryRouter } from "react-router-dom";
 import React from "react";
-import { TARGET_META, type TargetLang } from "@/lib/onboarding/types";
+import { TARGET_META, targetLabel, type TargetLang } from "@/lib/onboarding/types";
 
 const persistMock = vi.fn(async () => ({ ok: true }));
 // A13-circle-8: usePairMutation moved to its own module to break a
@@ -86,6 +86,34 @@ describe("LanguageTrackHome (non-English primary)", () => {
       unmount();
     }
   });
+
+  it("falls back home when primary target has no public language slug", async () => {
+    const user = userEvent.setup();
+    wrap(
+      <LanguageTrackHome
+        nativeLanguage="en"
+        targets={["en"]}
+        primaryTarget="en"
+      />,
+    );
+
+    await user.click(screen.getByRole("button", { name: /Back to Home/i }));
+    expect(navigateMock).toHaveBeenCalledWith("/");
+  });
+
+  it("falls back home when primary target is missing", async () => {
+    const user = userEvent.setup();
+    wrap(
+      <LanguageTrackHome
+        nativeLanguage="vi"
+        targets={[]}
+        primaryTarget={null}
+      />,
+    );
+
+    await user.click(screen.getByRole("button", { name: /Back to Home/i }));
+    expect(navigateMock).toHaveBeenCalledWith("/");
+  });
 });
 
 describe("TargetSwitcher", () => {
@@ -103,6 +131,47 @@ describe("TargetSwitcher", () => {
     expect(persistMock).toHaveBeenCalledWith({
       target_languages: ["ko", "en", "ja"], // chosen → index 0, order kept
     });
+  });
+
+  it("persists selected-first order for each non-primary chip", async () => {
+    const user = userEvent.setup();
+    wrap(<TargetSwitcher targets={["en", "ja", "ko"]} primaryTarget="en" />);
+
+    await user.click(screen.getByRole("button", { name: /Tiếng Nhật/ }));
+    await user.click(screen.getByRole("button", { name: /Tiếng Hàn/ }));
+
+    expect(persistMock).toHaveBeenNthCalledWith(1, {
+      target_languages: ["ja", "en", "ko"],
+    });
+    expect(persistMock).toHaveBeenNthCalledWith(2, {
+      target_languages: ["ko", "en", "ja"],
+    });
+  });
+
+  it("uses native-language labels for visible chips and bilingual aria labels", () => {
+    const { unmount } = wrap(
+      <TargetSwitcher
+        targets={["ja", "ko"]}
+        primaryTarget="ja"
+        nativeLanguage="en"
+      />,
+    );
+
+    expect(screen.getByRole("button", { name: /Current language Japanese · Ngôn ngữ hiện tại Tiếng Nhật/i })).toBeInTheDocument();
+    expect(screen.getByText(targetLabel("ko", "en"))).toBeInTheDocument();
+    expect(screen.queryByText(targetLabel("ko", "vi"))).toBeNull();
+    unmount();
+
+    wrap(
+      <TargetSwitcher
+        targets={["ja", "ko"]}
+        primaryTarget="ja"
+        nativeLanguage="vi"
+      />,
+    );
+
+    expect(screen.getByText(targetLabel("ko", "vi"))).toBeInTheDocument();
+    expect(screen.queryByText(targetLabel("ko", "en"))).toBeNull();
   });
 
   it("does nothing when the current primary is clicked again", async () => {
