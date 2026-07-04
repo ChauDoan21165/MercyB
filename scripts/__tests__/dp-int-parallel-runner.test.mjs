@@ -169,11 +169,11 @@ describe("DP INT parallel runner", () => {
     expect(status.running).toBe(2);
   });
 
-  it("continues at backlog 20 and stops above backlog 20", () => {
+  it("continues at backlog 50 and stops above backlog 50", () => {
     const root = makeRoot();
     seed(root);
 
-    for (let index = 0; index < 21; index += 1) {
+    for (let index = 0; index < 51; index += 1) {
       const id = `WP-BACKLOG-${String(index).padStart(2, "0")}`;
       const insert = sqlite(
         root,
@@ -183,6 +183,6 @@ describe("DP INT parallel runner", () => {
     }
 
     const blocked = JSON.parse(run(root, runnerScript, ["claim-next", "1"]).stdout);
-    expect(blocked).toMatchObject({ claimed: false, reason: "judge_backlog", backlog: 21, limit: 20 });
+    expect(blocked).toMatchObject({ claimed: false, reason: "judge_backlog", backlog: 51, limit: 50 });
   });
 });

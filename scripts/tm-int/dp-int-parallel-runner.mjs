@@ -7,7 +7,7 @@ export const DEFAULT_REPO_ROOT = "/Users/admin/MercyB";
 export const DEFAULT_DB_PATH = "/Users/admin/MercyB/state/dp_int_factory.sqlite3";
 export const DEFAULT_WORKTREE_ROOT = "/Users/admin/MercyB.worktrees";
 export const DEFAULT_WORKER_COUNT = 5;
-export const JUDGE_BACKLOG_LIMIT = 20;
+export const JUDGE_BACKLOG_LIMIT = 50;
 
 function env(name, fallback) {
   return process.env[name] || fallback;
