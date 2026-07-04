@@ -29,6 +29,23 @@ describe("runtime evidence bundle schema", () => {
     expect(isRuntimeEvidenceBundle(partial)).toBe(false);
   });
 
+  test("rejects malformed nested evidence inside the canonical envelope", () => {
+    const bundle = createValidRuntimeEvidenceBundle();
+
+    expect(isRuntimeEvidenceBundle({
+      ...bundle,
+      obsPacket: { ...bundle.obsPacket, schemaVersion: "not-obs" as never },
+    })).toBe(false);
+    expect(isRuntimeEvidenceBundle({
+      ...bundle,
+      runtimeDecision: { ...bundle.runtimeDecision, signalKeys: undefined as never },
+    })).toBe(false);
+    expect(isRuntimeEvidenceBundle({
+      ...bundle,
+      replay: { ...bundle.replay, deterministic: undefined as never },
+    })).toBe(false);
+  });
+
   test("reports missing canonical DP input envelope fields", () => {
     const bundle = createValidRuntimeEvidenceBundle();
 

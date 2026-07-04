@@ -83,20 +83,58 @@ export function missingRuntimeEvidenceBundleFields(
   });
 }
 
+function hasRuntimeEventShape(value: PartialRuntimeEvidenceBundle["runtimeEvent"]): boolean {
+  return Boolean(
+    value &&
+      typeof value.eventId === "string" &&
+      typeof value.route === "string" &&
+      typeof value.eventType === "string" &&
+      typeof value.observedAt === "string" &&
+      Array.isArray(value.observationIds),
+  );
+}
+
+function hasStageDecisionShape(value: PartialRuntimeEvidenceBundle["dpDecision"]): boolean {
+  return Boolean(
+    value &&
+      typeof value.stage === "string" &&
+      typeof value.source === "string" &&
+      Array.isArray(value.observationIds),
+  );
+}
+
+function hasRuntimeDecisionShape(value: PartialRuntimeEvidenceBundle["runtimeDecision"]): boolean {
+  return Boolean(
+    value &&
+      typeof value.changed === "boolean" &&
+      typeof value.changedBecauseOfTeacherContext === "boolean" &&
+      typeof value.teacherContextUsed === "boolean" &&
+      typeof value.learningSignalsUsed === "boolean" &&
+      typeof value.summary === "string" &&
+      Array.isArray(value.observationIds) &&
+      Array.isArray(value.signalKeys),
+  );
+}
+
+function hasReplayEvidenceShape(value: PartialRuntimeEvidenceBundle["replay"]): boolean {
+  return Boolean(value && typeof value.deterministic === "boolean");
+}
+
 export function isRuntimeEvidenceBundle(value: PartialRuntimeEvidenceBundle): value is RuntimeEvidenceBundle {
   return (
     missingRuntimeEvidenceBundleFields(value).length === 0 &&
     value.schemaVersion === RUNTIME_EVIDENCE_BUNDLE_SCHEMA_VERSION &&
     typeof value.contractId === "string" &&
+    hasRuntimeEventShape(value.runtimeEvent) &&
+    value.obsPacket?.schemaVersion === "tm-int-obs-packet-v1" &&
+    Array.isArray(value.obsPacket.facts) &&
     Array.isArray(value.learningSignals) &&
-    Boolean(value.runtimeEvent) &&
-    Boolean(value.obsPacket) &&
-    Boolean(value.teacherContext) &&
-    Boolean(value.dpDecision) &&
-    Boolean(value.pedDecision) &&
-    Boolean(value.runtimeDecision) &&
-    Boolean(value.replay) &&
-    Boolean(value.judgeReproduction)
+    value.teacherContext?.schemaVersion === "tm-int-teacher-context-v1" &&
+    hasStageDecisionShape(value.dpDecision) &&
+    hasStageDecisionShape(value.pedDecision) &&
+    hasRuntimeDecisionShape(value.runtimeDecision) &&
+    hasReplayEvidenceShape(value.replay) &&
+    hasReplayEvidenceShape(value.judgeReproduction)
   );
 }
 
