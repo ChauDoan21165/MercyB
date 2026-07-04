@@ -180,4 +180,17 @@ describe("factory-runtime dashboard", () => {
     expect(result.stdout).toContain("bad_workpack");
     expect(result.stdout).toContain("held");
   });
+
+  it("status reports bad_workpack without changing F verified", () => {
+    const root = setupLane();
+    expect(run(root, ["claim", "lane-test", "WP-T-001", "F"]).status).toBe(0);
+    expect(run(root, ["bad-workpack", "lane-test", "WP-T-001", "bad input"]).status).toBe(0);
+
+    const result = run(root, ["status", "lane-test"]);
+
+    expect(result.status).toBe(0);
+    expect(result.stdout).toContain("bad_workpack");
+    expect(result.stdout).toContain("0");
+    expect(result.stdout).not.toContain("judge_pass");
+  });
 });

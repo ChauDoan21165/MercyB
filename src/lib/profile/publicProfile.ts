@@ -113,7 +113,23 @@ export async function getPublicProfile(
 
   const row = Array.isArray(data) ? data[0] : data;
   if (!row) return null;
-  return row as PublicProfile;
+  return toPublicProfile(row as PublicProfile);
+}
+
+function toPublicProfile(row: PublicProfile): PublicProfile {
+  return {
+    id: row.id,
+    username: row.username,
+    display_name: row.display_name,
+    bio: row.bio,
+    country: row.country,
+    avatar_url: row.avatar_url,
+    learning_started_at: row.learning_started_at,
+    streak_current: row.streak_current,
+    streak_longest: row.streak_longest,
+    total_xp: row.total_xp,
+    lessons_completed: row.lessons_completed,
+  };
 }
 
 /**

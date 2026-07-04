@@ -142,6 +142,51 @@ describe("getPublicProfile (privacy gating)", () => {
     );
   });
 
+  it("strips profile-only and language-pair fields from the public shape", async () => {
+    supabaseMock.rpc.mockResolvedValueOnce({
+      data: [
+        {
+          id: "u1",
+          username: "chau",
+          display_name: "Chau",
+          bio: "Hello",
+          country: "VN",
+          avatar_url: null,
+          learning_started_at: null,
+          streak_current: 5,
+          streak_longest: 10,
+          total_xp: 1200,
+          lessons_completed: 8,
+          native_language: "vi",
+          target_languages: ["en"],
+          is_admin: true,
+          email_unsubscribe_token: "secret",
+        },
+      ],
+      error: null,
+    });
+
+    const result = await getPublicProfile("chau");
+
+    expect(result).toEqual({
+      id: "u1",
+      username: "chau",
+      display_name: "Chau",
+      bio: "Hello",
+      country: "VN",
+      avatar_url: null,
+      learning_started_at: null,
+      streak_current: 5,
+      streak_longest: 10,
+      total_xp: 1200,
+      lessons_completed: 8,
+    });
+    expect(result).not.toHaveProperty("native_language");
+    expect(result).not.toHaveProperty("target_languages");
+    expect(result).not.toHaveProperty("is_admin");
+    expect(result).not.toHaveProperty("email_unsubscribe_token");
+  });
+
   it("trims whitespace from username before lookup", async () => {
     supabaseMock.rpc.mockResolvedValueOnce({ data: null, error: null });
     await getPublicProfile("   chau   ");
