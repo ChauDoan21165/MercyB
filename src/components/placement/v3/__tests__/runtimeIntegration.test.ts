@@ -2,11 +2,11 @@ import { describe, expect, it } from "vitest";
 
 import {
   applyPlacementRuntimeDecision,
+  buildPlacementRuntimeEvidenceBundle,
   buildPlacementTeacherContext,
 } from "@/lib/placement/v3/runtimeIntegration";
 import { runRr001PlacementRuntimeReplay } from "@/lib/placement/v3/rr001RuntimeReplay";
 import { createDpDecisionFromRuntimeEvidenceBundle, validateDpEvidenceIntake } from "@/lib/tm-int/dp";
-import type { RuntimeEvidenceBundle } from "@/lib/tm-int/runtimeReadiness";
 import type {
   PlacementV3ObservationTimelineItem,
   PlacementV3Results,
@@ -183,57 +183,54 @@ describe("placement RR-001 runtime integration", () => {
         audioDurationSeconds: 0,
       },
     ];
-    const runtime = buildPlacementTeacherContext(timeline, REPLAY_TIME);
-    const bundle: RuntimeEvidenceBundle = {
-      schemaVersion: "tm-int-runtime-evidence-bundle-v1",
-      contractId: "RR-001",
-      runtimeEvent: {
-        eventId: "placement-runtime-dp-intake",
-        route: "/placement/v3",
-        eventType: "placement_runtime_decision",
-        observedAt: REPLAY_TIME,
-        observationIds: [runtime.observationPacket.packetId],
-      },
-      obsPacket: runtime.observationPacket,
-      learningSignals: runtime.teacherContext.learningSignals,
-      teacherContext: runtime.teacherContext,
-      dpDecision: {
-        stage: "DP",
-        source: "TC-000001",
-        reason: "product_failure_audio",
-        evidenceCount: 2,
-        productFailure: true,
-        learnerWeakness: false,
-        observationIds: [runtime.observationPacket.packetId],
-        signalKeys: [],
-      },
-      pedDecision: {
-        stage: "PED",
-        source: "TC-000001",
-        action: "exclude_listening_score_and_offer_retest",
-        evidenceCount: 2,
-        productFailure: true,
-        learnerWeakness: false,
-        observationIds: [runtime.observationPacket.packetId],
-        signalKeys: [],
-      },
-      runtimeDecision: {
-        changed: true,
-        changedBecauseOfTeacherContext: true,
-        teacherContextUsed: true,
-        learningSignalsUsed: true,
-        summary: "placement runtime decision used Teacher Context",
-        observationIds: [runtime.observationPacket.packetId],
-        signalKeys: [],
-      },
-      replay: runtime.replay.replay,
-      judgeReproduction: runtime.replay.replay,
-    };
+    const bundle = buildPlacementRuntimeEvidenceBundle(timeline, REPLAY_TIME);
 
     const decision = createDpDecisionFromRuntimeEvidenceBundle(bundle);
-    const result = validateDpEvidenceIntake(decision, runtime.teacherContext, bundle);
+    const result = validateDpEvidenceIntake(decision, bundle.teacherContext, bundle);
 
     expect(result.pass).toBe(true);
     expect(decision.productIssueHandling.issueTypes).toContain("product_failure_audio");
+  });
+
+  it("rejects placement runtime DP intake that classifies product failure as learner weakness", () => {
+    const timeline: PlacementV3ObservationTimelineItem[] = [
+      {
+        kind: "speaking_capture",
+        taskId: "speaking-a2-learning-goals-1",
+        modality: "speaking",
+        observedAt: REPLAY_TIME,
+        speechPermission: "denied",
+      },
+    ];
+    const bundle = buildPlacementRuntimeEvidenceBundle(timeline, REPLAY_TIME);
+    const unsafeDecision = {
+      ...createDpDecisionFromRuntimeEvidenceBundle(bundle),
+      productIssueHandling: {
+        productIssuePresent: true,
+        issueTypes: ["product_or_permission_block"],
+        handledAsProductIssue: false,
+        classifiedAsLearnerWeakness: true,
+        rationale: "weak speaking caused microphone permission failure",
+      },
+      learnerPerformanceClaims: [
+        {
+          claimId: "unsafe-placement-weakness",
+          claimType: "learner_weakness",
+          statement: "weak speaking",
+          citedObservationIds: [bundle.teacherContext.observationSummary.packetId],
+          citedLearningSignalIds: [],
+          rationale: "weak speaking caused microphone permission failure",
+          supported: true,
+        },
+      ],
+      explanation: "weak speaking caused microphone permission failure",
+    } as const;
+
+    const result = validateDpEvidenceIntake(unsafeDecision, bundle.teacherContext, bundle);
+
+    expect(result.pass).toBe(false);
+    expect(result.dpDecisionValidation.failures).toEqual(
+      expect.arrayContaining([expect.objectContaining({ code: "product_failure_as_learner_weakness" })]),
+    );
   });
 });

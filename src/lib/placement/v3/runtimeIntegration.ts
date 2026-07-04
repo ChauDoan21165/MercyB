@@ -5,6 +5,7 @@ import { detectSpeechObservations } from "@/lib/tm-int/obs/detectors/speech";
 import type { ObservationFact, ObservationPacket } from "@/lib/tm-int/obs/types";
 import { buildTeacherContext, replayTeacherContext } from "@/lib/tm-int/runtime";
 import type { RuntimeVerifiedSource, TeacherContext } from "@/lib/tm-int/runtime";
+import type { RuntimeEvidenceBundle } from "@/lib/tm-int/runtimeReadiness";
 import type {
   PlacementV3ObservationTimelineItem,
   PlacementV3ResponsePayload,
@@ -200,4 +201,62 @@ export function buildPlacementTeacherContext(
   const decision = buildPlacementRuntimeDecision(teacherContext);
   const replay = replayTeacherContext(observationPacket);
   return { observationPacket, teacherContext, decision, replay };
+}
+
+export function buildPlacementRuntimeEvidenceBundle(
+  timeline: readonly PlacementV3ObservationTimelineItem[],
+  createdAt = new Date().toISOString(),
+): RuntimeEvidenceBundle {
+  const runtime = buildPlacementTeacherContext(timeline, createdAt);
+  const packetId = runtime.observationPacket.packetId;
+  const source = runtime.teacherContext.productIssues[0]?.source ?? "TC-000001";
+  const firstRecommendation = runtime.teacherContext.recommendations[0];
+  const productFailure = runtime.teacherContext.productIssues.length > 0;
+  const signalKeys = runtime.teacherContext.learningSignals.map((signal) => signal.signal_key);
+
+  return {
+    schemaVersion: "tm-int-runtime-evidence-bundle-v1",
+    contractId: "RR-001",
+    runtimeEvent: {
+      eventId: `placement-runtime-${packetId}`,
+      route: PLACEMENT_ROUTE,
+      eventType: "placement_runtime_decision",
+      observedAt: createdAt,
+      observationIds: [packetId],
+    },
+    obsPacket: runtime.observationPacket,
+    learningSignals: runtime.teacherContext.learningSignals,
+    teacherContext: runtime.teacherContext,
+    dpDecision: {
+      stage: "DP",
+      source,
+      reason: firstRecommendation?.reason ?? "placement_runtime_teacher_context",
+      evidenceCount: runtime.observationPacket.facts.length,
+      productFailure,
+      learnerWeakness: false,
+      observationIds: [packetId],
+      signalKeys,
+    },
+    pedDecision: {
+      stage: "PED",
+      source,
+      action: firstRecommendation?.action ?? "continue_without_dp_action",
+      evidenceCount: runtime.observationPacket.facts.length,
+      productFailure,
+      learnerWeakness: false,
+      observationIds: [packetId],
+      signalKeys,
+    },
+    runtimeDecision: {
+      changed: runtime.decision.recommendationActions.length > 0,
+      changedBecauseOfTeacherContext: runtime.decision.recommendationActions.length > 0,
+      teacherContextUsed: true,
+      learningSignalsUsed: true,
+      summary: "placement runtime decision used Teacher Context",
+      observationIds: [packetId],
+      signalKeys,
+    },
+    replay: runtime.replay,
+    judgeReproduction: runtime.replay,
+  };
 }
