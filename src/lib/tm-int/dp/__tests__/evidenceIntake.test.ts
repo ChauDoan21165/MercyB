@@ -1,11 +1,12 @@
 import { describe, expect, test } from "vitest";
-import type { TeacherContext } from "../../runtime";
+import { buildTeacherContext, type TeacherContext } from "../../runtime";
 import { createValidRuntimeEvidenceBundle } from "../../runtimeReadiness";
 import {
   dpTeacherContextReferenceFrom,
   type DpEvidenceBasedDecision,
 } from "../decisionContract";
 import { validateDpEvidenceIntake } from "../evidenceIntake";
+import { buildDpTeacherContextFromObservationPacket } from "../evidenceIntake";
 
 function decisionFor(context: TeacherContext): DpEvidenceBasedDecision {
   return {
@@ -33,6 +34,12 @@ function decisionFor(context: TeacherContext): DpEvidenceBasedDecision {
 }
 
 describe("validateDpEvidenceIntake", () => {
+  test("builds Teacher Context from the runtime context builder", () => {
+    const bundle = createValidRuntimeEvidenceBundle();
+
+    expect(buildDpTeacherContextFromObservationPacket(bundle.obsPacket)).toEqual(buildTeacherContext(bundle.obsPacket));
+  });
+
   test("passes when Teacher Context and DP decision both validate", () => {
     const bundle = createValidRuntimeEvidenceBundle();
     const result = validateDpEvidenceIntake(decisionFor(bundle.teacherContext), bundle.teacherContext, bundle);

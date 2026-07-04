@@ -1,4 +1,6 @@
 import type { TeacherContext } from "../runtime";
+import { buildTeacherContext } from "../runtime";
+import type { ObservationPacket } from "../obs";
 import type { RuntimeEvidenceBundle } from "../runtimeReadiness";
 import { validateTeacherContext, type TeacherContextValidationResult } from "../runtimeReadiness";
 import type { DpEvidenceBasedDecision } from "./decisionContract";
@@ -23,4 +25,8 @@ export function validateDpEvidenceIntake(
     teacherContextValidation,
     dpDecisionValidation,
   };
+}
+
+export function buildDpTeacherContextFromObservationPacket(observationPacket: ObservationPacket): TeacherContext {
+  return buildTeacherContext(observationPacket);
 }
