@@ -67,6 +67,21 @@ describe("appendAttempt", () => {
     expect(h).toHaveLength(2);
     expect(h.map((a) => a.attemptNumber)).toEqual([3, 4]);
   });
+
+  it("supports zero cap and default cap without mutating prior history", () => {
+    let h: AttemptRecord[] = [];
+    h = appendAttempt(h, attempt({ overallScore: 10 }), 0);
+    expect(h).toEqual([]);
+
+    const before: AttemptRecord[] = [];
+    let after = before;
+    for (let i = 0; i < ATTEMPT_HISTORY_CAP + 1; i++) {
+      after = appendAttempt(after, attempt());
+    }
+    expect(before).toEqual([]);
+    expect(after).toHaveLength(ATTEMPT_HISTORY_CAP);
+    expect(after.map((a) => a.attemptNumber)).toEqual([2, 3, 4, 5, 6]);
+  });
 });
 
 describe("getBestAttempt", () => {
@@ -88,6 +103,13 @@ describe("getBestAttempt", () => {
     h = appendAttempt(h, attempt({ overallScore: 80, timestamp: 5 }));
     h = appendAttempt(h, attempt({ overallScore: 80, timestamp: 3 }));
     expect(getBestAttempt(h)?.timestamp).toBe(5);
+  });
+
+  it("does not let a newer lower score beat an older higher score", () => {
+    let h: AttemptRecord[] = [];
+    h = appendAttempt(h, attempt({ overallScore: 95, timestamp: 1 }));
+    h = appendAttempt(h, attempt({ overallScore: 94, timestamp: 99 }));
+    expect(getBestAttempt(h)?.overallScore).toBe(95);
   });
 });
 
@@ -122,6 +144,28 @@ describe("computeTrend", () => {
     h = appendAttempt(h, attempt({ overallScore: 80 }));
     h = appendAttempt(h, attempt({ overallScore: 78 }));
     expect(computeTrend(h)).toBe("flat");
+  });
+
+  it("treats exactly ±3 as flat and ±4 as directional", () => {
+    let h: AttemptRecord[] = [];
+    h = appendAttempt(h, attempt({ overallScore: 80 }));
+    h = appendAttempt(h, attempt({ overallScore: 83 }));
+    expect(computeTrend(h)).toBe("flat");
+
+    h = [];
+    h = appendAttempt(h, attempt({ overallScore: 80 }));
+    h = appendAttempt(h, attempt({ overallScore: 84 }));
+    expect(computeTrend(h)).toBe("up");
+
+    h = [];
+    h = appendAttempt(h, attempt({ overallScore: 80 }));
+    h = appendAttempt(h, attempt({ overallScore: 77 }));
+    expect(computeTrend(h)).toBe("flat");
+
+    h = [];
+    h = appendAttempt(h, attempt({ overallScore: 80 }));
+    h = appendAttempt(h, attempt({ overallScore: 76 }));
+    expect(computeTrend(h)).toBe("down");
   });
 });
 
@@ -213,6 +257,35 @@ describe("computePhonemeDeltas", () => {
     expect(improved).toHaveLength(1);
     expect(improved[0].phoneme).toBe("th");
   });
+
+  it("ignores blank phonemes while aggregating mixed-case duplicates", () => {
+    let h: AttemptRecord[] = [];
+    h = appendAttempt(h, attempt({
+      phonemes: [ph(" ", 100), ph("TH", 50), ph("th", 70), ph("r", 90)],
+    }));
+    h = appendAttempt(h, attempt({
+      phonemes: [ph("", 10), ph("th", 90), ph("TH", 100), ph("r", 70)],
+    }));
+
+    const { improved, regressed } = computePhonemeDeltas(h);
+
+    expect(improved).toEqual([
+      {
+        phoneme: "th",
+        previousScore: 60,
+        latestScore: 95,
+        delta: 35,
+      },
+    ]);
+    expect(regressed).toEqual([
+      {
+        phoneme: "r",
+        previousScore: 90,
+        latestScore: 70,
+        delta: -20,
+      },
+    ]);
+  });
 });
 
 describe("hasPhonemeData", () => {
@@ -228,5 +301,17 @@ describe("hasPhonemeData", () => {
     h = appendAttempt(h, attempt({ phonemes: [] }));
     h = appendAttempt(h, attempt({ phonemes: [ph("th", 80)] }));
     expect(hasPhonemeData(h)).toBe(true);
+  });
+
+  it("reflects only phoneme data still present after capped eviction", () => {
+    let h: AttemptRecord[] = [];
+    h = appendAttempt(h, attempt({ phonemes: [ph("th", 80)] }), 2);
+    h = appendAttempt(h, attempt({ phonemes: [] }), 2);
+    expect(hasPhonemeData(h)).toBe(true);
+
+    h = appendAttempt(h, attempt({ phonemes: [] }), 2);
+
+    expect(h.map((a) => a.attemptNumber)).toEqual([2, 3]);
+    expect(hasPhonemeData(h)).toBe(false);
   });
 });
