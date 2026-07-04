@@ -80,6 +80,7 @@ export function observationIdsFromBundle(bundle: PartialRuntimeEvidenceBundle): 
   if (bundle.obsPacket?.packetId) ids.add(bundle.obsPacket.packetId);
   for (const fact of bundle.obsPacket?.facts ?? []) {
     if (fact.context.taskId) ids.add(fact.context.taskId);
+    if (fact.context.requestedUrl) ids.add(fact.context.requestedUrl);
     ids.add(`${fact.factType}:${fact.context.taskId ?? fact.context.requestedUrl ?? fact.observedAt}`);
   }
 
