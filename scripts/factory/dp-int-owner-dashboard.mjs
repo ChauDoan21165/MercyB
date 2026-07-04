@@ -68,6 +68,10 @@ function ratio(done, total) {
   };
 }
 
+function regexEscape(value) {
+  return String(value).replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
+
 function workerProcessStatus(index, claimRows) {
   const worker = `F-DP-INT-W${index}`;
   const session = `dp-int-f-worker-${index}`;
@@ -75,7 +79,10 @@ function workerProcessStatus(index, claimRows) {
   const pane = runMaybe("tmux", ["list-panes", "-t", session, "-F", "#{pane_pid}"]);
   const panePid = pane.ok ? pane.stdout.split(/\r?\n/).filter(Boolean)[0] : "";
   const child = panePid ? runMaybe("pgrep", ["-P", panePid, "-f", "codex exec"]) : { ok: false, stdout: "" };
-  const childPid = child.stdout.split(/\r?\n/).filter(Boolean)[0]?.split(/\s+/)[0] || "";
+  const fallbackChild = child.stdout
+    ? child
+    : runMaybe("pgrep", ["-f", `codex exec.*${regexEscape(worktree)}`]);
+  const childPid = fallbackChild.stdout.split(/\r?\n/).filter(Boolean)[0]?.split(/\s+/)[0] || "";
   const status = runMaybe("git", ["status", "--short"], { cwd: worktree });
   const claim = claimRows.find((row) => row.worker === worker);
   const dirty = status.ok && status.stdout.length > 0;
