@@ -342,6 +342,13 @@ const server = createServer((request, response) => {
       return;
     }
     if (request.method === "GET" && url.pathname === "/api/status") return sendJson(response, 200, getStatus());
+    if (request.method === "GET" && url.pathname === "/api/state") {
+      return sendJson(response, 200, {
+        endpoint: "/api/status",
+        note: "Use /api/status for live DP INT Factory dashboard state.",
+        status: getStatus(),
+      });
+    }
     if (request.method === "POST" && url.pathname === "/api/report") return sendJson(response, 200, writeReport());
     sendJson(response, 404, { error: "Not found" });
   } catch (error) {
