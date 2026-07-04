@@ -34,6 +34,11 @@ type SupabaseAuthAdminClient = {
     };
   };
 };
+type PersistenceQueryBuilder = ReturnType<SupabaseLike["from"]>;
+type PersistenceQueryResult = Awaited<ReturnType<PersistenceQueryBuilder["single"]>>;
+type SupabasePersistenceClient = {
+  from: (table: string) => unknown;
+};
 
 type ValidationMode = "full" | "skip-speaking" | "speaking-only";
 
@@ -306,7 +311,7 @@ function createSupabaseRuntime(env: Env): LiveRuntime {
     async createDeps() {
       const { createPersistence, recommendLessons } = await import("../../supabase/functions/placement-v3-session/persistence.ts");
       return {
-        ...createPersistence(admin as unknown as SupabaseLike, {
+        ...createPersistence(toPersistenceClient(admin), {
           now: () => new Date().toISOString(),
           newId: () => `placement-v3-live-${randomUUID()}`,
           log: () => undefined,
@@ -320,6 +325,69 @@ function createSupabaseRuntime(env: Env): LiveRuntime {
       return handleAction({ userId, request, deps });
     },
   };
+}
+
+function toPersistenceClient(client: SupabasePersistenceClient): SupabaseLike {
+  return {
+    from: (table) => toPersistenceQuery(client.from(table)),
+  };
+}
+
+function toPersistenceQuery(source: unknown): PersistenceQueryBuilder {
+  return {
+    select: (columns, options) => toPersistenceQuery(callQueryMethod(source, "select", columns, options)),
+    insert: (value) => toPersistenceQuery(callQueryMethod(source, "insert", value)),
+    update: (value) => toPersistenceQuery(callQueryMethod(source, "update", value)),
+    upsert: (value, options) => toPersistenceQuery(callQueryMethod(source, "upsert", value, options)),
+    eq: (column, value) => toPersistenceQuery(callQueryMethod(source, "eq", column, value)),
+    order: (column, options) => toPersistenceQuery(callQueryMethod(source, "order", column, options)),
+    limit: (count) => toPersistenceQuery(callQueryMethod(source, "limit", count)),
+    maybeSingle: () => callQueryTerminal(source, "maybeSingle"),
+    single: () => callQueryTerminal(source, "single"),
+    then(onfulfilled, onrejected) {
+      return Promise.resolve(source)
+        .then(ensurePersistenceQueryResult)
+        .then(onfulfilled, onrejected);
+    },
+  };
+}
+
+function callQueryMethod(source: unknown, method: string, ...args: unknown[]): unknown {
+  if (!hasCallableProperty(source, method)) {
+    throw new Error(`Placement V3 live validation query builder is missing ${method}.`);
+  }
+  return source[method](...args);
+}
+
+function callQueryTerminal(source: unknown, method: "maybeSingle" | "single"): Promise<PersistenceQueryResult> {
+  return Promise.resolve(callQueryMethod(source, method)).then(ensurePersistenceQueryResult);
+}
+
+function ensurePersistenceQueryResult(value: unknown): PersistenceQueryResult {
+  if (!isRecord(value) || !("data" in value) || !("error" in value)) {
+    throw new Error("Placement V3 live validation query builder returned an invalid result.");
+  }
+  return {
+    data: value.data,
+    error: isPersistenceError(value.error) ? value.error : null,
+  };
+}
+
+function isPersistenceError(value: unknown): { message?: string } | null {
+  if (value === null) return null;
+  if (!isRecord(value)) return { message: String(value) };
+  return typeof value.message === "string" ? { message: value.message } : {};
+}
+
+function hasCallableProperty<T extends string>(
+  value: unknown,
+  property: T,
+): value is Record<T, (...args: unknown[]) => unknown> {
+  return isRecord(value) && typeof value[property] === "function";
+}
+
+function isRecord(value: unknown): value is Record<string, unknown> {
+  return typeof value === "object" && value !== null;
 }
 
 async function resolveTestLearner(admin: SupabaseAuthAdminClient, email: string): Promise<{ id: string; email: string; created: boolean }> {
