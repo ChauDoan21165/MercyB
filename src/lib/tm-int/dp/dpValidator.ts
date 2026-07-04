@@ -2,11 +2,14 @@ import type { TeacherContext } from "../runtime";
 import type { DpEvidenceBasedDecision, DpLearnerPerformanceClaim } from "./decisionContract";
 
 export type DpDecisionValidationFailureCode =
+  | "missing_teacher_context"
   | "missing_teacher_context_reference"
   | "teacher_context_reference_mismatch"
   | "missing_evidence_citation"
   | "unknown_observation_citation"
   | "unknown_learning_signal_citation"
+  | "claim_observation_not_declared"
+  | "claim_learning_signal_not_declared"
   | "product_failure_as_learner_weakness"
   | "learner_weakness_without_evidence"
   | "invalid_confidence_level"
@@ -49,6 +52,36 @@ function knownLearningSignalIds(context: TeacherContext | undefined): Set<string
   return new Set(context?.learningSignals.map((signal) => signal.signal_key) ?? []);
 }
 
+function addUndeclaredClaimCitationFailures(decision: DpEvidenceBasedDecision): DpDecisionValidationFailure[] {
+  const failures: DpDecisionValidationFailure[] = [];
+  const declaredObservations = new Set(decision.citedObservationIds);
+  const declaredSignals = new Set(decision.citedLearningSignalIds);
+
+  for (const [index, claim] of decision.learnerPerformanceClaims.entries()) {
+    for (const observationId of claim.citedObservationIds) {
+      if (!declaredObservations.has(observationId)) {
+        failures.push({
+          code: "claim_observation_not_declared",
+          path: `learnerPerformanceClaims.${index}.citedObservationIds`,
+          reason: `Learner performance claim cited observation ${observationId} that is not declared on the DP decision.`,
+        });
+      }
+    }
+
+    for (const signalId of claim.citedLearningSignalIds) {
+      if (!declaredSignals.has(signalId)) {
+        failures.push({
+          code: "claim_learning_signal_not_declared",
+          path: `learnerPerformanceClaims.${index}.citedLearningSignalIds`,
+          reason: `Learner performance claim cited learning signal ${signalId} that is not declared on the DP decision.`,
+        });
+      }
+    }
+  }
+
+  return failures;
+}
+
 function addUnknownCitationFailures(
   decision: DpEvidenceBasedDecision,
   teacherContext: TeacherContext | undefined,
@@ -79,6 +112,28 @@ function addUnknownCitationFailures(
     }
   }
 
+  for (const [index, claim] of decision.learnerPerformanceClaims.entries()) {
+    for (const observationId of claim.citedObservationIds) {
+      if (!observations.has(observationId)) {
+        failures.push({
+          code: "unknown_observation_citation",
+          path: `learnerPerformanceClaims.${index}.citedObservationIds`,
+          reason: `DP learner performance claim cited unknown observation id ${observationId}.`,
+        });
+      }
+    }
+
+    for (const signalId of claim.citedLearningSignalIds) {
+      if (!signals.has(signalId)) {
+        failures.push({
+          code: "unknown_learning_signal_citation",
+          path: `learnerPerformanceClaims.${index}.citedLearningSignalIds`,
+          reason: `DP learner performance claim cited unknown learning signal id ${signalId}.`,
+        });
+      }
+    }
+  }
+
   return failures;
 }
 
@@ -99,6 +154,14 @@ export function validateDpDecision(
   teacherContext?: TeacherContext,
 ): DpDecisionValidationResult {
   const failures: DpDecisionValidationFailure[] = [];
+
+  if (!teacherContext) {
+    failures.push({
+      code: "missing_teacher_context",
+      path: "teacherContext",
+      reason: "DP validation requires the Teacher Context consumed by the decision.",
+    });
+  }
 
   if (!decision.sourceTeacherContextRef) {
     failures.push({
@@ -129,6 +192,7 @@ export function validateDpDecision(
   }
 
   failures.push(...addUnknownCitationFailures(decision, teacherContext));
+  failures.push(...addUndeclaredClaimCitationFailures(decision));
 
   if (!VALID_CONFIDENCE_LEVELS.has(decision.confidenceLevel)) {
     failures.push({
@@ -205,4 +269,3 @@ export function validateDpDecision(
     failures,
   };
 }
-

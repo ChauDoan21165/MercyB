@@ -44,3 +44,9 @@ export type DpEvidenceBasedDecision = {
   explanation: string;
 };
 
+export function dpTeacherContextReferenceFrom(context: TeacherContext): DpTeacherContextReference {
+  return {
+    schemaVersion: context.schemaVersion,
+    observationPacketId: context.observationSummary.packetId,
+  };
+}

@@ -1,6 +1,6 @@
 import { describe, expect, test } from "vitest";
 import type { TeacherContext } from "../../runtime";
-import type { DpEvidenceBasedDecision } from "../decisionContract";
+import { dpTeacherContextReferenceFrom, type DpEvidenceBasedDecision } from "../decisionContract";
 import { validateDpDecision } from "../dpValidator";
 
 function createTeacherContext(): TeacherContext {
@@ -39,10 +39,7 @@ function createValidDecision(): DpEvidenceBasedDecision {
   return {
     schemaVersion: "tm-int-dp-decision-contract-v1",
     decisionId: "dp-decision-001",
-    sourceTeacherContextRef: {
-      schemaVersion: "tm-int-teacher-context-v1",
-      observationPacketId: "obs-packet-placement",
-    },
+    sourceTeacherContextRef: dpTeacherContextReferenceFrom(createTeacherContext()),
     citedObservationIds: ["obs-packet-placement"],
     citedLearningSignalIds: [],
     productIssueHandling: {
@@ -77,11 +74,33 @@ describe("validateDpDecision", () => {
     );
   });
 
+  test("FAIL missing Teacher Context object", () => {
+    expect(validateDpDecision(createValidDecision()).failures).toEqual(
+      expect.arrayContaining([expect.objectContaining({ code: "missing_teacher_context" })]),
+    );
+  });
+
   test("FAIL no evidence citations", () => {
     const decision = { ...createValidDecision(), citedObservationIds: [], citedLearningSignalIds: [] };
 
     expect(validateDpDecision(decision, createTeacherContext()).failures).toEqual(
       expect.arrayContaining([expect.objectContaining({ code: "missing_evidence_citation" })]),
+    );
+  });
+
+  test("FAIL unknown observation citation", () => {
+    const decision = { ...createValidDecision(), citedObservationIds: ["unknown-observation"] };
+
+    expect(validateDpDecision(decision, createTeacherContext()).failures).toEqual(
+      expect.arrayContaining([expect.objectContaining({ code: "unknown_observation_citation" })]),
+    );
+  });
+
+  test("FAIL unknown learning signal citation", () => {
+    const decision = { ...createValidDecision(), citedObservationIds: [], citedLearningSignalIds: ["unknown_signal"] };
+
+    expect(validateDpDecision(decision, createTeacherContext()).failures).toEqual(
+      expect.arrayContaining([expect.objectContaining({ code: "unknown_learning_signal_citation" })]),
     );
   });
 
@@ -119,6 +138,47 @@ describe("validateDpDecision", () => {
     expect(validateDpDecision(decision, createTeacherContext()).failures).toEqual(
       expect.arrayContaining([expect.objectContaining({ code: "learner_weakness_without_evidence" })]),
     );
+  });
+
+  test("FAIL claim observation citation not declared on DP decision", () => {
+    const decision: DpEvidenceBasedDecision = {
+      ...createValidDecision(),
+      learnerPerformanceClaims: [
+        {
+          claimId: "claim-001",
+          claimType: "learning_behavior",
+          statement: "Learner repaired the answer after a pause.",
+          citedObservationIds: ["obs-packet-placement"],
+          citedLearningSignalIds: ["productive_hesitation"],
+          rationale: "The cited learning signal is present in Teacher Context.",
+          supported: true,
+        },
+      ],
+    };
+
+    expect(validateDpDecision(decision, createTeacherContext()).failures).toEqual(
+      expect.arrayContaining([expect.objectContaining({ code: "claim_learning_signal_not_declared" })]),
+    );
+  });
+
+  test("PASS learner claim citations declared and known", () => {
+    const decision: DpEvidenceBasedDecision = {
+      ...createValidDecision(),
+      citedLearningSignalIds: ["productive_hesitation"],
+      learnerPerformanceClaims: [
+        {
+          claimId: "claim-001",
+          claimType: "learning_behavior",
+          statement: "Learner showed productive hesitation.",
+          citedObservationIds: ["obs-packet-placement"],
+          citedLearningSignalIds: ["productive_hesitation"],
+          rationale: "Teacher Context contains the cited observation packet and learning signal.",
+          supported: true,
+        },
+      ],
+    };
+
+    expect(validateDpDecision(decision, createTeacherContext()).pass).toBe(true);
   });
 
   test("FAIL invalid confidence level", () => {
