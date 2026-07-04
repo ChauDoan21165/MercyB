@@ -111,6 +111,18 @@ describe("DP INT parallel runner", () => {
     expect(fifthStatus).toBe("workpack_ready");
   });
 
+  it("returns an existing same-worker running claim instead of stranding it", () => {
+    const root = makeRoot();
+    seed(root);
+
+    const first = JSON.parse(run(root, runnerScript, ["claim-next", "1"]).stdout);
+    const resumed = JSON.parse(run(root, runnerScript, ["claim-next", "1"]).stdout);
+
+    expect(first).toMatchObject({ claimed: true, worker_id: "F-DP-INT-W1" });
+    expect(resumed).toMatchObject({ claimed: true, resumed: true, worker_id: "F-DP-INT-W1", wp_id: first.wp_id });
+    expect(sqlite(root, "select count(*) from dp_int_workpacks where status='running';").stdout.trim()).toBe("1");
+  });
+
   it("one worker dirty worktree does not block another worker claim", () => {
     const root = makeRoot();
     seed(root);

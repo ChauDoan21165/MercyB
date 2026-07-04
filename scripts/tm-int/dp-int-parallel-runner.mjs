@@ -140,6 +140,17 @@ function currentRunningRows() {
   return parseJsonRows("SELECT wp_id, claimed_by AS worker_id, source_file, related_test_or_replay_file FROM dp_int_workpacks WHERE status='running'");
 }
 
+function currentWorkerClaim(index) {
+  const rows = parseJsonRows(`
+SELECT wp_id, semantic_key, source_file, related_test_or_replay_file, objective, acceptance_tests
+FROM dp_int_workpacks
+WHERE status='running' AND claimed_by=${sql(workerId(index))}
+ORDER BY claimed_at DESC, wp_id
+LIMIT 1;
+`);
+  return rows[0];
+}
+
 function seedLocksForRunningRows() {
   const rows = currentRunningRows();
   for (const row of rows) {
@@ -163,6 +174,11 @@ export function claimNext(index) {
     if (status) {
       return { claimed: false, reason: "worker_worktree_dirty", status };
     }
+  }
+
+  const existing = currentWorkerClaim(index);
+  if (existing) {
+    return { claimed: true, resumed: true, worker_id: worker, worktree: path, ...existing, file_families: fileFamiliesFor(existing) };
   }
 
   const candidates = parseJsonRows(`
@@ -253,7 +269,7 @@ export function startWorker(index) {
   const session = `dp-int-f-worker-${index}`;
   run("tmux", ["kill-session", "-t", session], { check: false });
   const command = [
-    `cd ${setup.path}`,
+    `cd ${setup.path} &&`,
     "while true; do",
     `codex exec --dangerously-bypass-approvals-and-sandbox -C ${setup.path} ${JSON.stringify(codexPrompt(index))}`,
     `node ${repoRoot()}/scripts/tm-int/dp-int-parallel-runner.mjs should-stop ${index} && break`,
