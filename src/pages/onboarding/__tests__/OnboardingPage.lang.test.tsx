@@ -152,4 +152,17 @@ describe("OnboardingPage — bilingual lang attrs on native peer header (O2)", (
     // pickChrome correctly selected VI based on the native pick).
     expect(targetH1.textContent).toContain("Bạn muốn học ngôn ngữ nào");
   });
+
+  it("EN-native target heading does not inherit stale VI lang or copy", async () => {
+    const user = userEvent.setup();
+    renderPage();
+    await user.click(screen.getByRole("radio", { name: /Tiếng Anh|English/ }));
+
+    const targetH1 = await screen.findByRole("heading", {
+      level: 1,
+      name: /What do you want to learn/i,
+    });
+    expect(targetH1.getAttribute("lang")).not.toBe("vi");
+    expect(screen.queryByText(/Bạn muốn học ngôn ngữ nào/)).toBeNull();
+  });
 });

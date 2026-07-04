@@ -405,6 +405,15 @@
       "acceptance_tests": "Runtime status and SQLite consistency checks show all imported workpacks have verified=0, statuses are only ready/running/f_done, and Judge rows are separate.",
       "validation_commands": ["npm run factory-runtime -- status routing-onboarding", "sqlite3 state/factory_runtime.sqlite \"select verified, count(*) from factory_workpacks where lane_id='routing-onboarding' group by verified;\"", "git diff --check"],
       "anti_fake_checks": ["F queue verified remains 0", "Judge ledger rows are required before product progress is counted"]
+    },
+    {
+      "wp_id": "WP-RO-046",
+      "semantic_key": "routing-onboarding.root-marketing-onboarding-picker.current-truth",
+      "source_files": ["src/router/AppRouter.tsx", "src/router/__tests__/publicRouteRegistration.test.tsx", "src/router/__tests__/AppRouter.routes.test.tsx"],
+      "objective": "Protect current product truth after WP-RO-033 was found stale: root `/` intentionally renders the public marketing landing, while `/onboarding` is the direct public pair-selection picker.",
+      "acceptance_tests": "Focused router tests confirm `/` renders MarketingLandingPage, `/onboarding` renders OnboardingPage, and AppRouter does not wrap the root route in AnonymousOnboardingGate.",
+      "validation_commands": ["npx eslint src/router/__tests__/publicRouteRegistration.test.tsx src/router/__tests__/AppRouter.routes.test.tsx", "npx vitest run src/router/__tests__/publicRouteRegistration.test.tsx src/router/__tests__/AppRouter.routes.test.tsx", "git diff --check"],
+      "anti_fake_checks": ["does not change root behavior", "asserts current AppRouter source", "no skipped tests"]
     }
   ]
 }

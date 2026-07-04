@@ -92,5 +92,6 @@ describe("AppRouter public route registration", () => {
     expect(ROUTER_SRC).toMatch(/path="\/"/);
     expect(ROUTER_SRC).toMatch(/<MarketingLandingPage\s*\/>/);
     expect(ROUTER_SRC).toMatch(/Renders the painting-backed language selector for ALL visitors/);
+    expect(ROUTER_SRC).not.toContain("AnonymousOnboardingGate");
   });
 });

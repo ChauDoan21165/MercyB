@@ -459,6 +459,20 @@ describe("OnboardingPage — back navigation", () => {
     await user.click(screen.getByRole("button", { name: /^Back/ }));
     expect(screen.getByText(/Tiếng mẹ đẻ của bạn là gì/)).toBeInTheDocument();
   });
+
+  it("Back preserves a clean native re-pick and resets targets from that native", async () => {
+    const user = userEvent.setup();
+    renderPage();
+    await toTargetStepVi(user);
+    await user.click(checkboxForTarget("ja", "vi"));
+    await user.click(screen.getByRole("button", { name: /^Back/ }));
+
+    await user.click(screen.getByRole("radio", { name: /Tiếng Anh|English/ }));
+
+    expect(screen.getByText(/What do you want to learn/i)).toBeInTheDocument();
+    expect(checkboxForTarget("es", "en")).toHaveAttribute("aria-checked", "true");
+    expect(checkboxForTarget("vi", "en")).toHaveAttribute("aria-checked", "false");
+  });
 });
 
 describe("OnboardingPage — progress bar", () => {
@@ -568,6 +582,19 @@ describe("OnboardingPage — ?direction=vn (en→vi) handler", () => {
       "/",
       expect.objectContaining({ replace: true }),
     );
+  });
+
+  it("multi-target direction=vn keeps English native and primary-first target order", async () => {
+    const user = userEvent.setup();
+    renderPage({ direction: "vn" });
+    await user.click(checkboxForTarget("es", "en"));
+    await user.click(screen.getByRole("button", { name: /Continue|Tiếp tục/ }));
+    await user.click(screen.getByRole("radio", { name: /Spanish|Tây Ban Nha/ }));
+
+    const payload = updateMock.mock.calls[0][0] as Record<string, unknown>;
+    expect(payload.native_language).toBe("en");
+    expect(payload.target_languages).toEqual(["es", "vi"]);
+    expect(storedPair()).toEqual({ native: "en", targets: ["es", "vi"] });
   });
 });
 

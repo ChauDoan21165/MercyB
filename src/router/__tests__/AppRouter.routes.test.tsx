@@ -59,5 +59,6 @@ describe("AppRouter route registration", () => {
   it("keeps the root route on the standalone marketing landing", () => {
     expect(appRouterSource).toMatch(/path="\/"[\s\S]*<MarketingLandingPage\s*\/>/);
     expect(appRouterSource).toContain("Public marketing landing");
+    expect(appRouterSource).not.toContain("AnonymousOnboardingGate");
   });
 });
