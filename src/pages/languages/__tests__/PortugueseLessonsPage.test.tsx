@@ -8,6 +8,12 @@ import type { ReactNode } from "react";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
 import { UiLanguageProvider } from "@/contexts/UiLanguageContext";
+import {
+  PORTUGUESE_CATEGORIES,
+  PORTUGUESE_LESSONS_BY_LEVEL,
+  PORTUGUESE_TOTAL_LESSONS,
+  PORTUGUESE_VALIDATED_LEVELS,
+} from "@/languages/portuguese";
 import LanguagesIndexPage from "@/pages/languages/LanguagesIndexPage";
 import PortugueseLessonsPage from "@/pages/languages/PortugueseLessonsPage";
 
@@ -22,6 +28,7 @@ const ROUTER_SRC = readFileSync(
   path.resolve(here, "../../../router/AppRouter.tsx"),
   "utf8",
 );
+const PAGE_SRC = readFileSync(path.resolve(here, "../PortugueseLessonsPage.tsx"), "utf8");
 
 function renderWithProviders(ui: ReactNode) {
   return render(
@@ -48,6 +55,16 @@ describe("Portuguese lessons page", () => {
     expect(text).not.toContain("Đang tải bài học");
     expect(text).not.toContain("Chưa có bài học");
     expect(screen.queryByRole("link", { name: /AI Tutor/ })).not.toBeInTheDocument();
+  });
+
+  it("keeps the page tied to the validated local Portuguese curriculum registry", () => {
+    expect(PORTUGUESE_VALIDATED_LEVELS).toEqual(["A1", "A2", "B1", "B2", "C1", "C2"]);
+    expect(PORTUGUESE_TOTAL_LESSONS).toBeGreaterThanOrEqual(PORTUGUESE_CATEGORIES.length);
+    expect(PORTUGUESE_LESSONS_BY_LEVEL.A1[0].sentences[0].en).toContain("Oi");
+    expect(PORTUGUESE_LESSONS_BY_LEVEL.A1[0].vocabulary?.[0].word).toBe("oi");
+    expect(PAGE_SRC).toContain('from "@/languages/portuguese"');
+    expect(PAGE_SRC).not.toMatch(/Promise\.resolve\s*\([^)]*(audio|ai|tutor|media)/i);
+    expect(PAGE_SRC).not.toMatch(/fake(Audio|AI|Tutor)|mock(Audio|AI|Tutor)/i);
   });
 
   it("switches CEFR levels from local arrays", async () => {
