@@ -37,3 +37,7 @@ export function learningSignalsForDpEvidence(teacherContext: TeacherContext): re
     alternatives: [...signal.alternatives],
   }));
 }
+
+export function observationPacketForDpEvidence(evidenceBundle: RuntimeEvidenceBundle): ObservationPacket {
+  return evidenceBundle.obsPacket;
+}

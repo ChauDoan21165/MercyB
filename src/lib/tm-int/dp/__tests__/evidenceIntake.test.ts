@@ -6,7 +6,11 @@ import {
   type DpEvidenceBasedDecision,
 } from "../decisionContract";
 import { validateDpEvidenceIntake } from "../evidenceIntake";
-import { buildDpTeacherContextFromObservationPacket, learningSignalsForDpEvidence } from "../evidenceIntake";
+import {
+  buildDpTeacherContextFromObservationPacket,
+  learningSignalsForDpEvidence,
+  observationPacketForDpEvidence,
+} from "../evidenceIntake";
 
 function decisionFor(context: TeacherContext): DpEvidenceBasedDecision {
   return {
@@ -60,6 +64,13 @@ describe("validateDpEvidenceIntake", () => {
     expect(signals).toEqual(teacherContext.learningSignals);
     expect(signals).not.toBe(teacherContext.learningSignals);
     expect(signals[0]?.alternatives).not.toBe(teacherContext.learningSignals[0]?.alternatives);
+  });
+
+  test("uses the runtime bundle ObservationPacket as DP source evidence", () => {
+    const bundle = createValidRuntimeEvidenceBundle();
+
+    expect(observationPacketForDpEvidence(bundle)).toBe(bundle.obsPacket);
+    expect(observationPacketForDpEvidence(bundle).packetId).toBe(bundle.teacherContext.observationSummary.packetId);
   });
 
   test("passes when Teacher Context and DP decision both validate", () => {
