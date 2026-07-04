@@ -38,6 +38,7 @@ const PUBLIC_ROUTES: ReadonlyArray<{ path: string; component: string }> = [
   { path: "/blog", component: "BlogIndex" },
   { path: "/signin", component: "LoginPage" },
   { path: "/signup", component: "LoginPage" },
+  { path: "/onboarding", component: "OnboardingPage" },
 ];
 
 /** Routes that are registered as redirects, not page renders. */
@@ -85,5 +86,11 @@ describe("AppRouter public route registration", () => {
   it("wraps the public shell so each page lazy-mounts under <Suspense>", () => {
     expect(ROUTER_SRC).toMatch(/<Suspense/);
     expect(ROUTER_SRC).toMatch(/AppHeroShell/);
+  });
+
+  it("keeps the root route as the public marketing landing", () => {
+    expect(ROUTER_SRC).toMatch(/path="\/"/);
+    expect(ROUTER_SRC).toMatch(/<MarketingLandingPage\s*\/>/);
+    expect(ROUTER_SRC).toMatch(/Renders the painting-backed language selector for ALL visitors/);
   });
 });

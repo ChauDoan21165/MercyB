@@ -24,6 +24,7 @@ function renderAt(path: string) {
           }
         />
         <Route path="/" element={<div data-testid="home-page">home</div>} />
+        <Route path="/onboarding" element={<div data-testid="onboarding-page">onboarding</div>} />
       </Routes>
     </MemoryRouter>,
   );
@@ -56,5 +57,12 @@ describe("WebOnlyRoute", () => {
     renderAt("/gift");
     expect(screen.queryByTestId("gift-page")).not.toBeInTheDocument();
     expect(screen.getByTestId("home-page")).toBeInTheDocument();
+  });
+
+  it("does not affect public onboarding routes outside the web-only wrapper", () => {
+    mockGetPlatform.mockReturnValue("ios");
+    renderAt("/onboarding");
+    expect(screen.getByTestId("onboarding-page")).toBeInTheDocument();
+    expect(screen.queryByTestId("home-page")).not.toBeInTheDocument();
   });
 });

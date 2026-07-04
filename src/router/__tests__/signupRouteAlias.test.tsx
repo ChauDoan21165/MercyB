@@ -12,6 +12,8 @@
 //   - /signin renders the same page (alias parity)
 
 import { render, screen } from "@testing-library/react";
+import { readFileSync } from "node:fs";
+import { resolve } from "node:path";
 import { MemoryRouter, useLocation } from "react-router-dom";
 import { describe, it, expect, vi } from "vitest";
 
@@ -33,6 +35,8 @@ vi.mock("@/components/certificates/CertificateToast", () => ({
 }));
 
 import AppRouter from "@/router/AppRouter";
+
+const appRouterSource = readFileSync(resolve(process.cwd(), "src/router/AppRouter.tsx"), "utf8");
 
 function LocationProbe() {
   const { pathname } = useLocation();
@@ -65,5 +69,12 @@ describe("/signup route alias (A79 D1)", () => {
     renderAt("/signin");
     expect(await screen.findByTestId("login-page")).toBeInTheDocument();
     expect(screen.getByTestId("pathname")).toHaveTextContent("/signin");
+  });
+
+  it("does not shadow /onboarding with the signup/login alias", () => {
+    expect(appRouterSource).toContain('path="/signup"');
+    expect(appRouterSource).toContain('path="/signin"');
+    expect(appRouterSource).toContain('path="/onboarding"');
+    expect(appRouterSource).toMatch(/path="\/onboarding"[\s\S]*<OnboardingPage\s*\/>/);
   });
 });

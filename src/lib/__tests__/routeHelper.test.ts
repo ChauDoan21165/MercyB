@@ -83,6 +83,18 @@ describe("routeHelper", () => {
       const bad = new URLSearchParams("returnTo=http%3A%2F%2Fevil.com");
       expect(readReturnTo(bad, "/fallback")).toBe("/fallback");
     });
+
+    it("preserves existing destination query params and encoded onboarding CTA return paths", () => {
+      const url = withReturnTo("/signin?mode=signup", "/?trypron=1");
+      expect(url).toBe(`/signin?mode=signup&returnTo=${encodeURIComponent("/?trypron=1")}`);
+      expect(readReturnTo(new URLSearchParams(url.split("?")[1]), "/fallback")).toBe("/?trypron=1");
+    });
+
+    it("preserves hash fragments inside encoded returnTo values", () => {
+      const url = withReturnTo("/signin", "/onboarding?direction=vn#start");
+      expect(url).toBe(`/signin?returnTo=${encodeURIComponent("/onboarding?direction=vn#start")}`);
+      expect(readReturnTo(new URLSearchParams(url.split("?")[1]), "/fallback")).toBe("/onboarding?direction=vn#start");
+    });
   });
 
   describe("roomPath", () => {
