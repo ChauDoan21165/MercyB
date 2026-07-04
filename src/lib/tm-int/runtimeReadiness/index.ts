@@ -106,9 +106,11 @@ export {
   createInvalidMissingTeacherContextBundle,
   createProductFailureBundle,
   createReplayPair,
+  createTeacherContextValidatorFixture,
   createValidCrossFlowReplayPackage,
   createValidRegressionPack,
   createValidRuntimeEvidenceBundle,
   type ReplayPairOptions,
+  type TeacherContextValidatorFixtureKind,
   type RuntimeEvidenceReplayPair,
 } from "./fixtureBuilder";

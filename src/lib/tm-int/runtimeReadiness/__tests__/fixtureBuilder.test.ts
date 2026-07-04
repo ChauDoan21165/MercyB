@@ -5,6 +5,7 @@ import {
   createInvalidMissingTeacherContextBundle,
   createProductFailureBundle,
   createReplayPair,
+  createTeacherContextValidatorFixture,
   createValidCrossFlowReplayPackage,
   createValidRegressionPack,
   createValidRuntimeEvidenceBundle,
@@ -88,6 +89,7 @@ describe("runtime readiness fixture builders", () => {
 
   it("exposes fixture builders through the public export surface", () => {
     expect(createValidRuntimeEvidenceBundle().schemaVersion).toBe("tm-int-runtime-evidence-bundle-v1");
+    expect(createTeacherContextValidatorFixture().teacherContext.schemaVersion).toBe("tm-int-teacher-context-v1");
     expect(createValidCrossFlowReplayPackage().schemaVersion).toBe("tm-int-cross-flow-replay-package-v1");
     expect(createValidRegressionPack().schemaVersion).toBe("tm-int-runtime-regression-pack-v1");
   });

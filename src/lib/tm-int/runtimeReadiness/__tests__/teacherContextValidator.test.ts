@@ -2,6 +2,7 @@ import { describe, expect, it } from "vitest";
 
 import type { TeacherContext } from "../../runtime";
 import type { RuntimeEvidenceBundle } from "../evidenceBundle";
+import { createTeacherContextValidatorFixture } from "../fixtureBuilder";
 import { judgeRuntimeReadinessEvidence } from "../judgeRubric";
 import { validateTeacherContext } from "../teacherContextValidator";
 
@@ -138,6 +139,44 @@ function withTeacherContext(context: TeacherContext): RuntimeEvidenceBundle {
 describe("validateTeacherContext", () => {
   it("passes a valid RR-001-style bundle", () => {
     expect(validateTeacherContext(bundle())).toEqual({ pass: true, failures: [] });
+  });
+
+  it("passes the deterministic Teacher Context validator fixture", () => {
+    const fixture = createTeacherContextValidatorFixture();
+
+    expect(validateTeacherContext(fixture)).toEqual({ pass: true, failures: [] });
+    expect(fixture.teacherContext.observationSummary.factTypes).toEqual([
+      "AudioDurationZero",
+      "MicPermissionDenied",
+      "AssessmentAnswerSubmitted",
+    ]);
+    expect(fixture.teacherContext.productIssues).toHaveLength(2);
+    expect(fixture.teacherContext.pendingRetests).toHaveLength(2);
+    expect(fixture.teacherContext.recommendations).toHaveLength(2);
+    expect(fixture.teacherContext.confidenceSummary).toEqual({ high: 1, medium: 1, low: 0 });
+    expect(fixture.teacherContext.replayTrace.map((step) => step.stage)).toEqual([
+      "OBS",
+      "DP",
+      "PED",
+      "LM",
+      "SIGNALS",
+      "RUNTIME",
+    ]);
+  });
+
+  it("rejects the deterministic fixture when DP recasts a product issue as learner weakness", () => {
+    const fixture = createTeacherContextValidatorFixture("product_failure_as_learner_weakness");
+    const result = validateTeacherContext(fixture);
+
+    expect(result.pass).toBe(false);
+    expect(result.failures).toContainEqual(expect.objectContaining({
+      code: "product_failure_as_learner_weakness",
+      path: "teacherContext.productIssues",
+    }));
+    expect(fixture.teacherContext.learningSignals[0].alternatives).toEqual([
+      "question_too_easy",
+      "audio_prompt_replayed",
+    ]);
   });
 
   it("fails when Observation Summary is missing", () => {
