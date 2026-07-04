@@ -62,7 +62,7 @@ describe("runtime evidence bundle schema", () => {
     ]));
   });
 
-  test("normalizes signal keys from emitted signals and decision-stage references", () => {
+  test("normalizes signal keys from emitted learning signals", () => {
     const bundle = createValidRuntimeEvidenceBundle();
     const sourceSignal = {
       signal_key: "productive_hesitation",
@@ -81,9 +81,9 @@ describe("runtime evidence bundle schema", () => {
 
     expect(Array.from(keys)).toEqual(expect.arrayContaining([
       sourceSignal.signal_key,
-      "dp_signal",
-      "ped_signal",
-      "runtime_signal",
     ]));
+    expect(keys.has("dp_signal")).toBe(false);
+    expect(keys.has("ped_signal")).toBe(false);
+    expect(keys.has("runtime_signal")).toBe(false);
   });
 });

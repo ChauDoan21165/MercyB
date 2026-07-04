@@ -78,13 +78,18 @@ function referencedObservationIds(bundle: PartialRuntimeEvidenceBundle): readonl
   );
 }
 
-function referencedSignalKeys(bundle: PartialRuntimeEvidenceBundle): readonly string[] {
+function referencedSignalKeys(bundle: PartialRuntimeEvidenceBundle): readonly EvidenceReference[] {
   return [
-    ...(bundle.dpDecision?.signalKeys ?? []),
-    ...(bundle.pedDecision?.signalKeys ?? []),
-    ...(bundle.runtimeDecision?.signalKeys ?? []),
-    ...(bundle.teacherContext?.learningSignals?.map((signal) => signal.signal_key) ?? []),
-  ];
+    ...(bundle.teacherContext?.learningSignals ?? []).map((signal) => ({
+      id: signal.signal_key,
+      path: "teacherContext.learningSignals",
+    })),
+    ...(bundle.dpDecision?.signalKeys ?? []).map((id) => ({ id, path: "dpDecision.signalKeys" })),
+    ...(bundle.pedDecision?.signalKeys ?? []).map((id) => ({ id, path: "pedDecision.signalKeys" })),
+    ...(bundle.runtimeDecision?.signalKeys ?? []).map((id) => ({ id, path: "runtimeDecision.signalKeys" })),
+  ].filter((reference): reference is EvidenceReference =>
+    typeof reference.id === "string" && reference.id.trim().length > 0,
+  );
 }
 
 export function validateTeacherContext(bundle: PartialRuntimeEvidenceBundle): TeacherContextValidationResult {
@@ -164,12 +169,12 @@ export function validateTeacherContext(bundle: PartialRuntimeEvidenceBundle): Te
   }
 
   const knownSignalKeys = signalKeysFromBundle(bundle);
-  for (const signalKey of referencedSignalKeys(bundle)) {
-    if (!knownSignalKeys.has(signalKey)) {
+  for (const signal of referencedSignalKeys(bundle)) {
+    if (!knownSignalKeys.has(signal.id)) {
       failures.push({
         code: "unknown_signal_reference",
-        path: "teacherContext.learningSignals",
-        reason: `Teacher Context referenced unknown learning signal ${signalKey}.`,
+        path: signal.path,
+        reason: `Runtime evidence referenced unknown learning signal ${signal.id}.`,
       });
     }
   }

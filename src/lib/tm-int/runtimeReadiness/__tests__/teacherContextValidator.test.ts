@@ -248,6 +248,37 @@ describe("validateTeacherContext", () => {
     }));
   });
 
+  it("fails when a DP decision cites a learning signal that was not emitted", () => {
+    const result = validateTeacherContext(bundle({
+      dpDecision: {
+        ...bundle().dpDecision,
+        signalKeys: ["ProductiveHesitation", "forged_learning_signal"],
+      },
+    }));
+
+    expect(result.pass).toBe(false);
+    expect(result.failures).toContainEqual(expect.objectContaining({
+      code: "unknown_signal_reference",
+      path: "dpDecision.signalKeys",
+      reason: "Runtime evidence referenced unknown learning signal forged_learning_signal.",
+    }));
+  });
+
+  it("surfaces forged DP signal references through the Judge rubric", () => {
+    const result = judgeRuntimeReadinessEvidence(bundle({
+      dpDecision: {
+        ...bundle().dpDecision,
+        signalKeys: ["forged_learning_signal"],
+      },
+    }), "RR-001");
+
+    expect(result.pass).toBe(false);
+    expect(result.failures).toContainEqual(expect.objectContaining({
+      code: "unknown_signal_reference",
+      path: "dpDecision.signalKeys",
+    }));
+  });
+
   it("surfaces Teacher Context validator failures through the Judge rubric", () => {
     const result = judgeRuntimeReadinessEvidence(withTeacherContext({
       ...validTeacherContext,
