@@ -1,0 +1,410 @@
+{
+  "lane_id": "routing-onboarding",
+  "workpacks": [
+    {
+      "wp_id": "WP-RO-001",
+      "semantic_key": "routing-onboarding.language-pair.native-domain.coverage",
+      "source_files": ["src/lib/languagePair/languagePair.ts", "src/lib/languagePair/__tests__/languagePair.test.ts"],
+      "objective": "The accepted native-language domain can drift from onboarding/native profile support without parseLanguagePair coverage noticing newer native codes.",
+      "acceptance_tests": "Focused languagePair test proves parseLanguagePair accepts every currently supported native code used by onboarding/profile pedagogy and rejects unknown native values.",
+      "validation_commands": ["npx eslint src/lib/languagePair/__tests__/languagePair.test.ts", "npx vitest run src/lib/languagePair/__tests__/languagePair.test.ts", "git diff --check"],
+      "anti_fake_checks": ["no skipped tests", "asserts real exported parser behavior", "does not widen native domain without source-backed cases"]
+    },
+    {
+      "wp_id": "WP-RO-002",
+      "semantic_key": "routing-onboarding.language-pair.target-domain.coverage",
+      "source_files": ["src/lib/languagePair/languagePair.ts", "src/lib/languagePair/__tests__/languagePair.test.ts", "src/lib/onboarding/types.ts"],
+      "objective": "Target parsing can silently drift from TARGET_META and drop valid public target codes or accept unsupported ones.",
+      "acceptance_tests": "Focused languagePair test derives target codes from TARGET_META and verifies parseLanguagePair preserves valid ordered targets while dropping unknown target codes.",
+      "validation_commands": ["npx eslint src/lib/languagePair/__tests__/languagePair.test.ts", "npx vitest run src/lib/languagePair/__tests__/languagePair.test.ts", "git diff --check"],
+      "anti_fake_checks": ["uses TARGET_META rather than duplicated literals", "no skipped tests"]
+    },
+    {
+      "wp_id": "WP-RO-003",
+      "semantic_key": "routing-onboarding.language-pair.no-mutation.coverage",
+      "source_files": ["src/lib/languagePair/languagePair.ts", "src/lib/languagePair/__tests__/languagePair.test.ts"],
+      "objective": "withPrimary can accidentally mutate the caller-owned target array, causing UI state and persisted target order to drift.",
+      "acceptance_tests": "Focused test proves withPrimary returns the expected primary order without mutating the input array.",
+      "validation_commands": ["npx eslint src/lib/languagePair/__tests__/languagePair.test.ts", "npx vitest run src/lib/languagePair/__tests__/languagePair.test.ts", "git diff --check"],
+      "anti_fake_checks": ["asserts original array after call", "no placeholder assertion"]
+    },
+    {
+      "wp_id": "WP-RO-004",
+      "semantic_key": "routing-onboarding.language-pair-arraylike-defense.coverage",
+      "source_files": ["src/lib/languagePair/languagePair.ts", "src/lib/languagePair/__tests__/languagePair.test.ts"],
+      "objective": "Profile rows can contain malformed array-like target values; parser must not treat strings or objects as target arrays.",
+      "acceptance_tests": "Focused parser tests cover string, object, null, and sparse mixed target values and prove only valid array entries survive.",
+      "validation_commands": ["npx eslint src/lib/languagePair/__tests__/languagePair.test.ts", "npx vitest run src/lib/languagePair/__tests__/languagePair.test.ts", "git diff --check"],
+      "anti_fake_checks": ["no skipped tests", "covers malformed values directly"]
+    },
+    {
+      "wp_id": "WP-RO-005",
+      "semantic_key": "routing-onboarding.language-pair-primary-invariant.coverage",
+      "source_files": ["src/lib/languagePair/languagePair.ts", "src/lib/languagePair/__tests__/languagePair.test.ts"],
+      "objective": "The primary target invariant can regress when duplicates or invalid codes appear before the first valid target.",
+      "acceptance_tests": "Focused parser test proves primaryTarget is the first valid deduped target after invalid/duplicate entries are removed.",
+      "validation_commands": ["npx eslint src/lib/languagePair/__tests__/languagePair.test.ts", "npx vitest run src/lib/languagePair/__tests__/languagePair.test.ts", "git diff --check"],
+      "anti_fake_checks": ["asserts primaryTarget and targets together", "no skipped tests"]
+    },
+    {
+      "wp_id": "WP-RO-006",
+      "semantic_key": "routing-onboarding.anonymous-pair-storage-failure.coverage",
+      "source_files": ["src/lib/languagePair/anonymousPair.ts", "src/lib/languagePair/__tests__/anonymousPair.test.ts"],
+      "objective": "Private-mode or quota storage failures must not crash anonymous onboarding persistence.",
+      "acceptance_tests": "Focused anonymousPair test mocks localStorage setItem/getItem failures and proves write/read/clear swallow storage errors safely.",
+      "validation_commands": ["npx eslint src/lib/languagePair/__tests__/anonymousPair.test.ts", "npx vitest run src/lib/languagePair/__tests__/anonymousPair.test.ts", "git diff --check"],
+      "anti_fake_checks": ["mocks real localStorage methods", "no skipped tests"]
+    },
+    {
+      "wp_id": "WP-RO-007",
+      "semantic_key": "routing-onboarding.anonymous-pair-native-mirror.coverage",
+      "source_files": ["src/lib/languagePair/anonymousPair.ts", "src/lib/languagePair/__tests__/anonymousPair.test.ts"],
+      "objective": "Anonymous pair writes can drift from NativeLanguageContext mirror behavior and hydrate the wrong pedagogy axis.",
+      "acceptance_tests": "Focused test proves writeAnonymousPair mirrors each supported native code to mercyblade.nativeLang and clearAnonymousPair removes it.",
+      "validation_commands": ["npx eslint src/lib/languagePair/__tests__/anonymousPair.test.ts", "npx vitest run src/lib/languagePair/__tests__/anonymousPair.test.ts", "git diff --check"],
+      "anti_fake_checks": ["asserts localStorage keys directly", "no skipped tests"]
+    },
+    {
+      "wp_id": "WP-RO-008",
+      "semantic_key": "routing-onboarding.anonymous-pair-valid-native-empty-target.coverage",
+      "source_files": ["src/lib/languagePair/anonymousPair.ts", "src/lib/languagePair/__tests__/anonymousPair.test.ts"],
+      "objective": "A valid native with zero targets is intentionally a stored pair, but future tests may treat it as incomplete and bounce users incorrectly.",
+      "acceptance_tests": "Focused anonymousPair test covers multiple valid native values with empty targets and confirms hasAnonymousPair remains true.",
+      "validation_commands": ["npx eslint src/lib/languagePair/__tests__/anonymousPair.test.ts", "npx vitest run src/lib/languagePair/__tests__/anonymousPair.test.ts", "git diff --check"],
+      "anti_fake_checks": ["asserts readAnonymousPair and hasAnonymousPair", "no skipped tests"]
+    },
+    {
+      "wp_id": "WP-RO-009",
+      "semantic_key": "routing-onboarding.anonymous-pair-tamper-defense.coverage",
+      "source_files": ["src/lib/languagePair/anonymousPair.ts", "src/lib/languagePair/__tests__/anonymousPair.test.ts"],
+      "objective": "Tampered anonymous storage can include non-array targets or object-shaped target data that should never poison Home routing.",
+      "acceptance_tests": "Focused anonymousPair tests cover non-array, object, and mixed tampered target blobs and prove sanitized read behavior.",
+      "validation_commands": ["npx eslint src/lib/languagePair/__tests__/anonymousPair.test.ts", "npx vitest run src/lib/languagePair/__tests__/anonymousPair.test.ts", "git diff --check"],
+      "anti_fake_checks": ["uses direct localStorage blob fixtures", "no report-only progress"]
+    },
+    {
+      "wp_id": "WP-RO-010",
+      "semantic_key": "routing-onboarding.anonymous-pair-ssr-guard.coverage",
+      "source_files": ["src/lib/languagePair/anonymousPair.ts", "src/lib/languagePair/__tests__/anonymousPair.test.ts"],
+      "objective": "SSR or non-browser execution must not throw while checking anonymous pair state.",
+      "acceptance_tests": "Focused test temporarily removes window or storage access where feasible and proves read/write/clear guard browser-only APIs.",
+      "validation_commands": ["npx eslint src/lib/languagePair/__tests__/anonymousPair.test.ts", "npx vitest run src/lib/languagePair/__tests__/anonymousPair.test.ts", "git diff --check"],
+      "anti_fake_checks": ["does not modify production SSR behavior", "no skipped tests"]
+    },
+    {
+      "wp_id": "WP-RO-011",
+      "semantic_key": "routing-onboarding.onboarding-target-menu-native-matrix.coverage",
+      "source_files": ["src/lib/onboarding/types.ts", "src/pages/onboarding/__tests__/OnboardingPage.test.tsx"],
+      "objective": "Target menus can drift from the per-native readiness matrix and expose wrong target choices.",
+      "acceptance_tests": "Focused onboarding test verifies target menu options for VI and EN natives against TARGET_MENU/TARGET_META rather than isolated literals.",
+      "validation_commands": ["npx eslint src/pages/onboarding/__tests__/OnboardingPage.test.tsx", "npx vitest run src/pages/onboarding/__tests__/OnboardingPage.test.tsx", "git diff --check"],
+      "anti_fake_checks": ["asserts rendered checkboxes", "no skipped tests"]
+    },
+    {
+      "wp_id": "WP-RO-012",
+      "semantic_key": "routing-onboarding.onboarding-default-target.coverage",
+      "source_files": ["src/lib/onboarding/types.ts", "src/pages/onboarding/__tests__/OnboardingPage.test.tsx"],
+      "objective": "Recommended defaults can drift, causing first-time users to persist unexpected primary targets.",
+      "acceptance_tests": "Focused onboarding test proves each native menu with a recommended item preselects exactly that target.",
+      "validation_commands": ["npx eslint src/pages/onboarding/__tests__/OnboardingPage.test.tsx", "npx vitest run src/pages/onboarding/__tests__/OnboardingPage.test.tsx", "git diff --check"],
+      "anti_fake_checks": ["uses rendered aria-checked state", "no placeholder assertions"]
+    },
+    {
+      "wp_id": "WP-RO-013",
+      "semantic_key": "routing-onboarding.onboarding-multi-target-start-with.coverage",
+      "source_files": ["src/pages/onboarding/OnboardingPage.tsx", "src/pages/onboarding/__tests__/OnboardingPage.test.tsx"],
+      "objective": "Multi-target onboarding can skip the start_with step or persist the wrong primary ordering.",
+      "acceptance_tests": "Focused test selects multiple targets, reaches start_with, chooses a non-default primary, and verifies persisted target order.",
+      "validation_commands": ["npx eslint src/pages/onboarding/__tests__/OnboardingPage.test.tsx", "npx vitest run src/pages/onboarding/__tests__/OnboardingPage.test.tsx", "git diff --check"],
+      "anti_fake_checks": ["asserts Supabase payload order", "no skipped tests"]
+    },
+    {
+      "wp_id": "WP-RO-014",
+      "semantic_key": "routing-onboarding.onboarding-anonymous-finish.coverage",
+      "source_files": ["src/pages/onboarding/OnboardingPage.tsx", "src/pages/onboarding/__tests__/OnboardingPage.test.tsx", "src/lib/languagePair/anonymousPair.ts"],
+      "objective": "Anonymous onboarding finish must write local pair state and route home without attempting profile writes.",
+      "acceptance_tests": "Focused onboarding test runs without user, finishes a pair, verifies localStorage pair/native mirror, and confirms Supabase update was not called.",
+      "validation_commands": ["npx eslint src/pages/onboarding/__tests__/OnboardingPage.test.tsx", "npx vitest run src/pages/onboarding/__tests__/OnboardingPage.test.tsx", "git diff --check"],
+      "anti_fake_checks": ["asserts storage and update mocks", "no skipped tests"]
+    },
+    {
+      "wp_id": "WP-RO-015",
+      "semantic_key": "routing-onboarding.onboarding-profile-invalidation.coverage",
+      "source_files": ["src/pages/onboarding/OnboardingPage.tsx", "src/pages/onboarding/__tests__/OnboardingPage.test.tsx", "src/lib/queries/keys.ts"],
+      "objective": "Signed-in onboarding finish can over-invalidate query cache or miss profile invalidation.",
+      "acceptance_tests": "Focused test asserts onboarding completion invalidates only the expected profile query key after successful profile write.",
+      "validation_commands": ["npx eslint src/pages/onboarding/__tests__/OnboardingPage.test.tsx", "npx vitest run src/pages/onboarding/__tests__/OnboardingPage.test.tsx", "git diff --check"],
+      "anti_fake_checks": ["uses QueryClient spy", "no broad placeholder invalidate assertion"]
+    },
+    {
+      "wp_id": "WP-RO-016",
+      "semantic_key": "routing-onboarding.onboarding-write-failure.coverage",
+      "source_files": ["src/pages/onboarding/OnboardingPage.tsx", "src/pages/onboarding/__tests__/OnboardingPage.test.tsx"],
+      "objective": "Profile update failures during onboarding can navigate away or mark onboarding complete incorrectly.",
+      "acceptance_tests": "Focused test makes Supabase update return an error and verifies user remains on onboarding, no home navigation, and warning path is exercised.",
+      "validation_commands": ["npx eslint src/pages/onboarding/__tests__/OnboardingPage.test.tsx", "npx vitest run src/pages/onboarding/__tests__/OnboardingPage.test.tsx", "git diff --check"],
+      "anti_fake_checks": ["asserts negative navigation", "does not swallow failure with fake success"]
+    },
+    {
+      "wp_id": "WP-RO-017",
+      "semantic_key": "routing-onboarding.onboarding-back-navigation.coverage",
+      "source_files": ["src/pages/onboarding/OnboardingPage.tsx", "src/pages/onboarding/__tests__/OnboardingPage.test.tsx"],
+      "objective": "Back navigation between onboarding steps can lose selected native or target state.",
+      "acceptance_tests": "Focused test moves native->target->back->target and confirms selections and default target state remain coherent.",
+      "validation_commands": ["npx eslint src/pages/onboarding/__tests__/OnboardingPage.test.tsx", "npx vitest run src/pages/onboarding/__tests__/OnboardingPage.test.tsx", "git diff --check"],
+      "anti_fake_checks": ["asserts rendered state after back navigation", "no skipped tests"]
+    },
+    {
+      "wp_id": "WP-RO-018",
+      "semantic_key": "routing-onboarding.onboarding-direction-param.coverage",
+      "source_files": ["src/pages/onboarding/OnboardingPage.tsx", "src/pages/onboarding/__tests__/OnboardingPage.test.tsx"],
+      "objective": "The /onboarding?direction=vn contract can regress and show the wrong native/target sequence.",
+      "acceptance_tests": "Focused test enters with direction=vn and verifies the intended target/native preselection and persisted pair.",
+      "validation_commands": ["npx eslint src/pages/onboarding/__tests__/OnboardingPage.test.tsx", "npx vitest run src/pages/onboarding/__tests__/OnboardingPage.test.tsx", "git diff --check"],
+      "anti_fake_checks": ["uses real MemoryRouter search params", "no skipped tests"]
+    },
+    {
+      "wp_id": "WP-RO-019",
+      "semantic_key": "routing-onboarding.onboarding-lang-attrs-target-step.coverage",
+      "source_files": ["src/pages/onboarding/OnboardingPage.tsx", "src/pages/onboarding/__tests__/OnboardingPage.lang.test.tsx"],
+      "objective": "Screen-reader language attributes can regress after the native step, especially for EN-native target chrome.",
+      "acceptance_tests": "Focused lang test verifies EN-native target step uses English chrome text without stale VI language attributes.",
+      "validation_commands": ["npx eslint src/pages/onboarding/__tests__/OnboardingPage.lang.test.tsx", "npx vitest run src/pages/onboarding/__tests__/OnboardingPage.lang.test.tsx", "git diff --check"],
+      "anti_fake_checks": ["asserts DOM attributes and rendered copy", "no skipped tests"]
+    },
+    {
+      "wp_id": "WP-RO-020",
+      "semantic_key": "routing-onboarding.onboarding-copy-matrix.coverage",
+      "source_files": ["src/lib/onboarding/types.ts", "src/pages/onboarding/__tests__/OnboardingPage.focus.test.tsx"],
+      "objective": "Learner-facing onboarding copy can mix languages or show unavailable target badges for a chosen native.",
+      "acceptance_tests": "Focused onboarding focus/copy test confirms VI and EN native flows render only appropriate badge language and target labels.",
+      "validation_commands": ["npx eslint src/pages/onboarding/__tests__/OnboardingPage.focus.test.tsx", "npx vitest run src/pages/onboarding/__tests__/OnboardingPage.focus.test.tsx", "git diff --check"],
+      "anti_fake_checks": ["asserts rendered learner-facing strings", "no skipped tests"]
+    },
+    {
+      "wp_id": "WP-RO-021",
+      "semantic_key": "routing-onboarding.home-track-null-primary.coverage",
+      "source_files": ["src/pages/home/LanguageTrackHome.tsx", "src/pages/home/__tests__/LanguageTrackHome.test.tsx"],
+      "objective": "LanguageTrackHome must stay defensive when primaryTarget is null or missing metadata.",
+      "acceptance_tests": "Focused home test renders null primaryTarget and verifies fallback CTA routes to home without crashing.",
+      "validation_commands": ["npx eslint src/pages/home/__tests__/LanguageTrackHome.test.tsx", "npx vitest run src/pages/home/__tests__/LanguageTrackHome.test.tsx", "git diff --check"],
+      "anti_fake_checks": ["asserts rendered fallback path", "no skipped tests"]
+    },
+    {
+      "wp_id": "WP-RO-022",
+      "semantic_key": "routing-onboarding.home-track-english-primary.coverage",
+      "source_files": ["src/pages/home/LanguageTrackHome.tsx", "src/pages/home/__tests__/LanguageTrackHome.test.tsx"],
+      "objective": "English target has no public /languages slug and must not route to /languages/null.",
+      "acceptance_tests": "Focused home test renders primaryTarget=en and verifies fallback behavior rather than language slug navigation.",
+      "validation_commands": ["npx eslint src/pages/home/__tests__/LanguageTrackHome.test.tsx", "npx vitest run src/pages/home/__tests__/LanguageTrackHome.test.tsx", "git diff --check"],
+      "anti_fake_checks": ["asserts navigate target", "no skipped tests"]
+    },
+    {
+      "wp_id": "WP-RO-023",
+      "semantic_key": "routing-onboarding.home-track-switcher-label-language.coverage",
+      "source_files": ["src/pages/home/LanguageTrackHome.tsx", "src/pages/home/__tests__/LanguageTrackHome.test.tsx"],
+      "objective": "TargetSwitcher labels can ignore native language and show the wrong chrome language.",
+      "acceptance_tests": "Focused home test renders TargetSwitcher for VI and EN native languages and verifies visible labels/aria labels follow targetLabel.",
+      "validation_commands": ["npx eslint src/pages/home/__tests__/LanguageTrackHome.test.tsx", "npx vitest run src/pages/home/__tests__/LanguageTrackHome.test.tsx", "git diff --check"],
+      "anti_fake_checks": ["asserts visible labels and aria labels", "no skipped tests"]
+    },
+    {
+      "wp_id": "WP-RO-024",
+      "semantic_key": "routing-onboarding.home-track-switcher-order.coverage",
+      "source_files": ["src/pages/home/LanguageTrackHome.tsx", "src/pages/home/__tests__/LanguageTrackHome.test.tsx", "src/lib/languagePair/languagePair.ts"],
+      "objective": "TargetSwitcher persistence can reorder target arrays incorrectly when switching primary.",
+      "acceptance_tests": "Focused home test clicks several non-primary chips and verifies persisted target_languages preserve selected-first order each time.",
+      "validation_commands": ["npx eslint src/pages/home/__tests__/LanguageTrackHome.test.tsx", "npx vitest run src/pages/home/__tests__/LanguageTrackHome.test.tsx", "git diff --check"],
+      "anti_fake_checks": ["asserts persist payloads", "no skipped tests"]
+    },
+    {
+      "wp_id": "WP-RO-025",
+      "semantic_key": "routing-onboarding.home-track-cta-accessibility.coverage",
+      "source_files": ["src/pages/home/LanguageTrackHome.tsx", "src/pages/home/__tests__/LanguageTrackHome.test.tsx"],
+      "objective": "LanguageTrackHome CTA can lose accessible names while visual labels still render.",
+      "acceptance_tests": "Focused home test verifies each public target CTA has an accessible Open <Language> track name and routes correctly.",
+      "validation_commands": ["npx eslint src/pages/home/__tests__/LanguageTrackHome.test.tsx", "npx vitest run src/pages/home/__tests__/LanguageTrackHome.test.tsx", "git diff --check"],
+      "anti_fake_checks": ["asserts role/name not only text content", "no skipped tests"]
+    },
+    {
+      "wp_id": "WP-RO-026",
+      "semantic_key": "routing-onboarding.home-placement-cta-preservation.coverage",
+      "source_files": ["src/pages/home/__tests__/HomePlacementCta.test.tsx", "src/pages/home/Home.tsx"],
+      "objective": "Home placement CTA can regress while language-track work changes home routing surfaces.",
+      "acceptance_tests": "Focused HomePlacementCta test verifies placement CTA remains visible and routes correctly for the canonical home path.",
+      "validation_commands": ["npx eslint src/pages/home/__tests__/HomePlacementCta.test.tsx", "npx vitest run src/pages/home/__tests__/HomePlacementCta.test.tsx", "git diff --check"],
+      "anti_fake_checks": ["asserts rendered CTA and route target", "no skipped tests"]
+    },
+    {
+      "wp_id": "WP-RO-027",
+      "semantic_key": "routing-onboarding.anonymous-gate-malformed-storage.coverage",
+      "source_files": ["src/router/AnonymousOnboardingGate.tsx", "src/router/__tests__/AnonymousOnboardingGate.test.tsx", "src/lib/languagePair/anonymousPair.ts"],
+      "objective": "Anonymous gate can treat malformed stored pair data as returning-user state or crash during route evaluation.",
+      "acceptance_tests": "Focused gate test stores malformed pair JSON and verifies first-time anonymous behavior remains landing/picker without throwing.",
+      "validation_commands": ["npx eslint src/router/__tests__/AnonymousOnboardingGate.test.tsx", "npx vitest run src/router/__tests__/AnonymousOnboardingGate.test.tsx", "git diff --check"],
+      "anti_fake_checks": ["uses real localStorage fixture", "no skipped tests"]
+    },
+    {
+      "wp_id": "WP-RO-028",
+      "semantic_key": "routing-onboarding.anonymous-gate-invalid-native.coverage",
+      "source_files": ["src/router/AnonymousOnboardingGate.tsx", "src/router/__tests__/AnonymousOnboardingGate.test.tsx"],
+      "objective": "Anonymous gate can trust tampered pair blobs with invalid native code and skip onboarding incorrectly.",
+      "acceptance_tests": "Focused gate test stores invalid-native pair blob and verifies first-time anonymous behavior is preserved.",
+      "validation_commands": ["npx eslint src/router/__tests__/AnonymousOnboardingGate.test.tsx", "npx vitest run src/router/__tests__/AnonymousOnboardingGate.test.tsx", "git diff --check"],
+      "anti_fake_checks": ["asserts landing/picker vs Home state", "no skipped tests"]
+    },
+    {
+      "wp_id": "WP-RO-029",
+      "semantic_key": "routing-onboarding.anonymous-gate-cta-param-value.coverage",
+      "source_files": ["src/router/AnonymousOnboardingGate.tsx", "src/router/__tests__/AnonymousOnboardingGate.test.tsx"],
+      "objective": "CTA escape hatch behavior can drift around query-param values and unrelated params.",
+      "acceptance_tests": "Focused gate tests cover trypron with value, empty value, repeated params, and unrelated params, proving only recognized key presence opens Home.",
+      "validation_commands": ["npx eslint src/router/__tests__/AnonymousOnboardingGate.test.tsx", "npx vitest run src/router/__tests__/AnonymousOnboardingGate.test.tsx", "git diff --check"],
+      "anti_fake_checks": ["uses MemoryRouter search params", "no skipped tests"]
+    },
+    {
+      "wp_id": "WP-RO-030",
+      "semantic_key": "routing-onboarding.anonymous-gate-loading-cache.coverage",
+      "source_files": ["src/router/AnonymousOnboardingGate.tsx", "src/router/__tests__/AnonymousOnboardingGate.test.tsx"],
+      "objective": "Auth loading flips after a resolved user can bounce users to landing/onboarding during token refresh.",
+      "acceptance_tests": "Focused gate test rerenders from resolved signed-in/returning states into isLoading=true and verifies Home remains rendered.",
+      "validation_commands": ["npx eslint src/router/__tests__/AnonymousOnboardingGate.test.tsx", "npx vitest run src/router/__tests__/AnonymousOnboardingGate.test.tsx", "git diff --check"],
+      "anti_fake_checks": ["uses rerender to exercise ref cache", "no skipped tests"]
+    },
+    {
+      "wp_id": "WP-RO-031",
+      "semantic_key": "routing-onboarding.signup-route-alias.coverage",
+      "source_files": ["src/router/AppRouter.tsx", "src/router/__tests__/signupRouteAlias.test.tsx"],
+      "objective": "Signup/login route aliases can drift and break onboarding handoff links.",
+      "acceptance_tests": "Focused route alias test confirms signup aliases route to the expected auth surface and do not shadow onboarding routes.",
+      "validation_commands": ["npx eslint src/router/__tests__/signupRouteAlias.test.tsx", "npx vitest run src/router/__tests__/signupRouteAlias.test.tsx", "git diff --check"],
+      "anti_fake_checks": ["asserts rendered routed surface", "no skipped tests"]
+    },
+    {
+      "wp_id": "WP-RO-032",
+      "semantic_key": "routing-onboarding.public-route-registration.coverage",
+      "source_files": ["src/router/AppRouter.tsx", "src/router/__tests__/publicRouteRegistration.test.tsx"],
+      "objective": "Public route registration can accidentally gate onboarding, pricing, auth, or language routes.",
+      "acceptance_tests": "Focused public route test confirms onboarding and language-pair critical public routes remain registered as public routes.",
+      "validation_commands": ["npx eslint src/router/__tests__/publicRouteRegistration.test.tsx", "npx vitest run src/router/__tests__/publicRouteRegistration.test.tsx", "git diff --check"],
+      "anti_fake_checks": ["checks router source/rendered routes", "no skipped tests"]
+    },
+    {
+      "wp_id": "WP-RO-033",
+      "semantic_key": "routing-onboarding.app-router-root-gate.coverage",
+      "source_files": ["src/router/AppRouter.tsx", "src/router/__tests__/AppRouter.routes.test.tsx", "src/router/AnonymousOnboardingGate.tsx"],
+      "objective": "Root route can stop wrapping Home with AnonymousOnboardingGate and bypass first-time anonymous behavior.",
+      "acceptance_tests": "Focused AppRouter route test confirms root route uses AnonymousOnboardingGate and supplies the first-time anonymous landing element.",
+      "validation_commands": ["npx eslint src/router/__tests__/AppRouter.routes.test.tsx", "npx vitest run src/router/__tests__/AppRouter.routes.test.tsx", "git diff --check"],
+      "anti_fake_checks": ["does not rely on prose-only match if rendered route test exists", "no skipped tests"]
+    },
+    {
+      "wp_id": "WP-RO-034",
+      "semantic_key": "routing-onboarding.web-only-route-preservation.coverage",
+      "source_files": ["src/router/WebOnlyRoute.tsx", "src/router/__tests__/WebOnlyRoute.test.tsx"],
+      "objective": "WebOnlyRoute can block onboarding or home flows unexpectedly on web builds.",
+      "acceptance_tests": "Focused WebOnlyRoute tests prove web mode renders children and non-web mode fallback does not affect public onboarding routing.",
+      "validation_commands": ["npx eslint src/router/__tests__/WebOnlyRoute.test.tsx", "npx vitest run src/router/__tests__/WebOnlyRoute.test.tsx", "git diff --check"],
+      "anti_fake_checks": ["asserts rendered child/fallback state", "no skipped tests"]
+    },
+    {
+      "wp_id": "WP-RO-035",
+      "semantic_key": "routing-onboarding.route-helper-query-preservation.coverage",
+      "source_files": ["src/lib/routeHelper.ts", "src/lib/__tests__/routeHelper.test.ts"],
+      "objective": "Route helper changes can strip query params used by onboarding CTA escape hatches or session routing.",
+      "acceptance_tests": "Focused routeHelper tests cover path/query/hash preservation for onboarding and home route helpers.",
+      "validation_commands": ["npx eslint src/lib/__tests__/routeHelper.test.ts", "npx vitest run src/lib/__tests__/routeHelper.test.ts", "git diff --check"],
+      "anti_fake_checks": ["asserts concrete route strings", "no skipped tests"]
+    },
+    {
+      "wp_id": "WP-RO-036",
+      "semantic_key": "routing-onboarding.profile-public-shape.coverage",
+      "source_files": ["src/lib/profile/publicProfile.ts", "src/lib/profile/__tests__/publicProfile.test.ts"],
+      "objective": "Public profile helpers can expose or drop language-pair fields unexpectedly.",
+      "acceptance_tests": "Focused publicProfile test confirms language-pair-safe public shape behavior and rejects sensitive/profile-only fields.",
+      "validation_commands": ["npx eslint src/lib/profile/__tests__/publicProfile.test.ts", "npx vitest run src/lib/profile/__tests__/publicProfile.test.ts", "git diff --check"],
+      "anti_fake_checks": ["uses real helper output", "no skipped tests"]
+    },
+    {
+      "wp_id": "WP-RO-037",
+      "semantic_key": "routing-onboarding.profile-rls-contract.coverage",
+      "source_files": ["src/lib/profile/__tests__/rlsContract.test.ts"],
+      "objective": "RLS/profile contract tests can miss the language-pair columns that onboarding writes.",
+      "acceptance_tests": "Focused RLS contract test confirms native_language and target_languages remain user-writable and are not part of frozen profile columns.",
+      "validation_commands": ["npx eslint src/lib/profile/__tests__/rlsContract.test.ts", "npx vitest run src/lib/profile/__tests__/rlsContract.test.ts", "git diff --check"],
+      "anti_fake_checks": ["asserts real migration/contract fixture", "no skipped tests"]
+    },
+    {
+      "wp_id": "WP-RO-038",
+      "semantic_key": "routing-onboarding.session-runtime-language-target.coverage",
+      "source_files": ["src/lib/ai-tutor/sessionRuntime.ts", "src/lib/ai-tutor/__tests__/sessionRuntime.test.ts"],
+      "objective": "Session runtime can ignore selected target language and start sessions with mismatched tutor language metadata.",
+      "acceptance_tests": "Focused sessionRuntime test verifies selected pair/target language flows into session runtime defaults or fallback behavior.",
+      "validation_commands": ["npx eslint src/lib/ai-tutor/__tests__/sessionRuntime.test.ts", "npx vitest run src/lib/ai-tutor/__tests__/sessionRuntime.test.ts", "git diff --check"],
+      "anti_fake_checks": ["asserts real runtime output", "no skipped tests"]
+    },
+    {
+      "wp_id": "WP-RO-039",
+      "semantic_key": "routing-onboarding.ai-conversation-session-pair.coverage",
+      "source_files": ["src/lib/ai-conversation/session.ts", "src/lib/ai-conversation/__tests__/session.test.ts"],
+      "objective": "AI conversation session helpers can drop pair/session context during onboarding-to-session handoff.",
+      "acceptance_tests": "Focused ai-conversation session test verifies language/session identifiers are preserved through helper normalization.",
+      "validation_commands": ["npx eslint src/lib/ai-conversation/__tests__/session.test.ts", "npx vitest run src/lib/ai-conversation/__tests__/session.test.ts", "git diff --check"],
+      "anti_fake_checks": ["asserts real helper behavior", "no placeholder tests"]
+    },
+    {
+      "wp_id": "WP-RO-040",
+      "semantic_key": "routing-onboarding.native-bootstrap-pair-cache.coverage",
+      "source_files": ["src/components/native/__tests__/NativeBootstrap.test.tsx", "src/components/native/NativeBootstrap.tsx"],
+      "objective": "Native bootstrap can disagree with anonymous pair native mirror and hydrate the wrong native language.",
+      "acceptance_tests": "Focused NativeBootstrap test verifies mercyblade.nativeLang cache behavior for anonymous and signed-in bootstrapping.",
+      "validation_commands": ["npx eslint src/components/native/__tests__/NativeBootstrap.test.tsx", "npx vitest run src/components/native/__tests__/NativeBootstrap.test.tsx", "git diff --check"],
+      "anti_fake_checks": ["asserts storage/context effects", "no skipped tests"]
+    },
+    {
+      "wp_id": "WP-RO-041",
+      "semantic_key": "routing-onboarding.native-deeplink-listener.coverage",
+      "source_files": ["src/components/native/__tests__/NativeDeepLinkListener.test.tsx", "src/components/native/NativeDeepLinkListener.tsx"],
+      "objective": "Native deep links can bypass onboarding/session routing normalization.",
+      "acceptance_tests": "Focused NativeDeepLinkListener test covers onboarding/home deep links and rejects unsafe or malformed route payloads.",
+      "validation_commands": ["npx eslint src/components/native/__tests__/NativeDeepLinkListener.test.tsx", "npx vitest run src/components/native/__tests__/NativeDeepLinkListener.test.tsx", "git diff --check"],
+      "anti_fake_checks": ["asserts real listener behavior", "no skipped tests"]
+    },
+    {
+      "wp_id": "WP-RO-042",
+      "semantic_key": "routing-onboarding.language-pair-routing-unsupported.coverage",
+      "source_files": ["src/pages/languages/__tests__/LanguagePairRouting.test.tsx", "src/pages/languages/LearnPairRedirectPage.tsx"],
+      "objective": "Unsupported language-pair routes can regress to dead pages or wrong language hubs.",
+      "acceptance_tests": "Focused LanguagePairRouting test covers unsupported native and target combinations and verifies deterministic fallback routes.",
+      "validation_commands": ["npx eslint src/pages/languages/__tests__/LanguagePairRouting.test.tsx", "npx vitest run src/pages/languages/__tests__/LanguagePairRouting.test.tsx", "git diff --check"],
+      "anti_fake_checks": ["asserts rendered navigation route", "no skipped tests"]
+    },
+    {
+      "wp_id": "WP-RO-043",
+      "semantic_key": "routing-onboarding.language-pair-routing-supported.coverage",
+      "source_files": ["src/pages/languages/__tests__/LanguagePairRouting.test.tsx", "src/pages/languages/LearnPairRedirectPage.tsx", "src/lib/onboarding/types.ts"],
+      "objective": "Supported pair redirects can drift from TARGET_META slug definitions.",
+      "acceptance_tests": "Focused LanguagePairRouting test derives supported route expectations from TARGET_META and verifies learn-pair redirects.",
+      "validation_commands": ["npx eslint src/pages/languages/__tests__/LanguagePairRouting.test.tsx", "npx vitest run src/pages/languages/__tests__/LanguagePairRouting.test.tsx", "git diff --check"],
+      "anti_fake_checks": ["uses real route component", "no skipped tests"]
+    },
+    {
+      "wp_id": "WP-RO-044",
+      "semantic_key": "routing-onboarding.home-language-track-target-meta.crosscheck",
+      "source_files": ["src/pages/home/LanguageTrackHome.tsx", "src/pages/home/__tests__/LanguageTrackHome.test.tsx", "src/lib/onboarding/types.ts"],
+      "objective": "TARGET_META label/slug changes can break LanguageTrackHome CTA labels and route targets.",
+      "acceptance_tests": "Focused LanguageTrackHome test cross-checks every non-null TARGET_META slug against rendered CTA accessible name and navigate path.",
+      "validation_commands": ["npx eslint src/pages/home/__tests__/LanguageTrackHome.test.tsx", "npx vitest run src/pages/home/__tests__/LanguageTrackHome.test.tsx", "git diff --check"],
+      "anti_fake_checks": ["derives cases from TARGET_META", "no skipped tests"]
+    },
+    {
+      "wp_id": "WP-RO-045",
+      "semantic_key": "routing-onboarding.closeout-runtime-audit.coverage",
+      "source_files": ["scripts/factory/factory-runtime.mjs", "state/factory_runtime.sqlite"],
+      "objective": "New routing-onboarding lane must preserve the proven Factory Runtime invariant: F done is separate from Judge verification.",
+      "acceptance_tests": "Runtime status and SQLite consistency checks show all imported workpacks have verified=0, statuses are only ready/running/f_done, and Judge rows are separate.",
+      "validation_commands": ["npm run factory-runtime -- status routing-onboarding", "sqlite3 state/factory_runtime.sqlite \"select verified, count(*) from factory_workpacks where lane_id='routing-onboarding' group by verified;\"", "git diff --check"],
+      "anti_fake_checks": ["F queue verified remains 0", "Judge ledger rows are required before product progress is counted"]
+    }
+  ]
+}

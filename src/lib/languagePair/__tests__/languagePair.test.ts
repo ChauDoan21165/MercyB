@@ -1,6 +1,8 @@
 import { describe, expect, it } from "vitest";
 import { parseLanguagePair, withPrimary } from "../languagePair";
 import { LANGUAGES } from "@/store/languageProgress";
+import { NATIVE_OPTIONS, TARGET_META } from "@/lib/onboarding/types";
+import type { TargetLang } from "@/lib/onboarding/types";
 
 describe("parseLanguagePair", () => {
   it("returns nulls/empties for an absent or NULL row", () => {
@@ -42,6 +44,45 @@ describe("parseLanguagePair", () => {
   it("tolerates a non-array target_languages without throwing", () => {
     expect(parseLanguagePair({ target_languages: "en" }).targets).toEqual([]);
   });
+
+  it("accepts every native language exposed by onboarding options", () => {
+    for (const option of NATIVE_OPTIONS) {
+      expect(
+        parseLanguagePair({
+          native_language: option.value,
+          target_languages: ["en"],
+        }).nativeLanguage,
+      ).toBe(option.value);
+    }
+  });
+
+  it("preserves every target language code declared in TARGET_META", () => {
+    const targetCodes = Object.keys(TARGET_META) as TargetLang[];
+
+    expect(parseLanguagePair({ target_languages: targetCodes }).targets).toEqual(targetCodes);
+  });
+
+  it("drops malformed target values without treating array-like data as targets", () => {
+    expect(parseLanguagePair({ target_languages: { 0: "en", length: 1 } }).targets).toEqual([]);
+    expect(parseLanguagePair({ target_languages: "ja" }).targets).toEqual([]);
+    expect(parseLanguagePair({ target_languages: ["xx", null, "ko", "ko", 42, "fr"] }).targets).toEqual([
+      "ko",
+      "fr",
+    ]);
+  });
+
+  it("derives primaryTarget from the first valid deduped target", () => {
+    expect(
+      parseLanguagePair({
+        native_language: "vi",
+        target_languages: ["xx", "ja", "ja", "en"],
+      }),
+    ).toEqual({
+      nativeLanguage: "vi",
+      targets: ["ja", "en"],
+      primaryTarget: "ja",
+    });
+  });
 });
 
 describe("withPrimary", () => {
@@ -51,6 +92,14 @@ describe("withPrimary", () => {
   it("is a no-op when the target is absent or already primary", () => {
     expect(withPrimary(["en", "ja"], "ko")).toEqual(["en", "ja"]);
     expect(withPrimary(["en", "ja"], "en")).toEqual(["en", "ja"]);
+  });
+
+  it("does not mutate the caller-owned targets array", () => {
+    const targets: TargetLang[] = ["en", "ja", "ko"];
+    const original = [...targets];
+
+    expect(withPrimary(targets, "ko")).toEqual(["ko", "en", "ja"]);
+    expect(targets).toEqual(original);
   });
 });
 
