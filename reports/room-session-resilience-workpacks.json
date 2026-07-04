@@ -1,0 +1,365 @@
+{
+  "lane_id": "room-session-resilience",
+  "workpacks": [
+    {
+      "wp_id": "WP-RSR-001",
+      "semantic_key": "room-id-utils.separator-normalization.edge-cases",
+      "source_files": ["src/components/room/roomIdUtils.ts", "src/components/room/__tests__/roomIdUtils.test.ts"],
+      "objective": "Guard room-id helper behavior for mixed separators, leading/trailing separators, and tier suffix stripping.",
+      "acceptance_tests": "Focused roomIdUtils tests prove canonical stripping/prettifying/tier inference is deterministic for separator-heavy room IDs.",
+      "validation_commands": ["npx eslint src/components/room/__tests__/roomIdUtils.test.ts", "npx vitest run src/components/room/__tests__/roomIdUtils.test.ts", "git diff --check"],
+      "anti_fake_checks": ["asserts real helper output", "no skipped tests"]
+    },
+    {
+      "wp_id": "WP-RSR-002",
+      "semantic_key": "room-id-utils.suffix-only-tier-detection",
+      "source_files": ["src/components/room/roomIdUtils.ts", "src/components/room/__tests__/roomIdUtils.test.ts"],
+      "objective": "Protect suffix-only tier detection so embedded free/level tokens are never stripped or inferred as tiers.",
+      "acceptance_tests": "Focused tests cover embedded free/level words and prove only terminal tier markers are treated as tiers.",
+      "validation_commands": ["npx eslint src/components/room/__tests__/roomIdUtils.test.ts", "npx vitest run src/components/room/__tests__/roomIdUtils.test.ts", "git diff --check"],
+      "anti_fake_checks": ["asserts negative and positive helper cases", "no report-only progress"]
+    },
+    {
+      "wp_id": "WP-RSR-003",
+      "semantic_key": "room-id-utils.auto-title-empty-and-case",
+      "source_files": ["src/components/room/roomIdUtils.ts", "src/components/room/__tests__/roomIdUtils.test.ts"],
+      "objective": "Harden bad auto-title detection for empty titles, case variants, and human-readable titles.",
+      "acceptance_tests": "Focused tests prove empty/snake/tier titles are bad while spaced human titles survive.",
+      "validation_commands": ["npx eslint src/components/room/__tests__/roomIdUtils.test.ts", "npx vitest run src/components/room/__tests__/roomIdUtils.test.ts", "git diff --check"],
+      "anti_fake_checks": ["asserts real title predicate", "no skipped tests"]
+    },
+    {
+      "wp_id": "WP-RSR-004",
+      "semantic_key": "room-id-utils.core-room-alignment",
+      "source_files": ["src/components/room/roomIdUtils.ts", "src/components/room/roomRenderer/helpers.ts", "src/components/room/__tests__/roomIdUtils.test.ts"],
+      "objective": "Keep roomIdUtils suffix stripping aligned with RoomRenderer core room ID extraction.",
+      "acceptance_tests": "Focused tests cross-check stripTierSuffix and coreRoomIdFromEffective on representative effective IDs.",
+      "validation_commands": ["npx eslint src/components/room/__tests__/roomIdUtils.test.ts", "npx vitest run src/components/room/__tests__/roomIdUtils.test.ts", "git diff --check"],
+      "anti_fake_checks": ["uses both real helper modules", "no skipped tests"]
+    },
+    {
+      "wp_id": "WP-RSR-005",
+      "semantic_key": "room-id-utils.preserve-non-tier-words",
+      "source_files": ["src/components/room/roomIdUtils.ts", "src/components/room/__tests__/roomIdUtils.test.ts"],
+      "objective": "Ensure room IDs containing free/level as normal words preserve those words in titles.",
+      "acceptance_tests": "Focused tests prove prettifyRoomIdEN keeps non-terminal free/level tokens in user-visible titles.",
+      "validation_commands": ["npx eslint src/components/room/__tests__/roomIdUtils.test.ts", "npx vitest run src/components/room/__tests__/roomIdUtils.test.ts", "git diff --check"],
+      "anti_fake_checks": ["asserts visible title text", "no placeholder tests"]
+    },
+    {
+      "wp_id": "WP-RSR-006",
+      "semantic_key": "room-intro-fallback.empty-structured-fields",
+      "source_files": ["src/components/room/roomIntroFallback.ts", "src/components/room/__tests__/roomIntroFallback.test.ts"],
+      "objective": "Harden intro fallback handling when structured EN/VI fields are empty strings or whitespace.",
+      "acceptance_tests": "Focused tests prove whitespace VI is missing only when EN intro content exists.",
+      "validation_commands": ["npx eslint src/components/room/__tests__/roomIntroFallback.test.ts", "npx vitest run src/components/room/__tests__/roomIntroFallback.test.ts", "git diff --check"],
+      "anti_fake_checks": ["uses real fallback predicates", "no skipped tests"]
+    },
+    {
+      "wp_id": "WP-RSR-007",
+      "semantic_key": "room-intro-fallback.priority-order",
+      "source_files": ["src/components/room/roomIntroFallback.ts", "src/components/room/__tests__/roomIntroFallback.test.ts"],
+      "objective": "Protect intro field priority order across intro, description, summary, and legacy flat fields.",
+      "acceptance_tests": "Focused tests prove higher-priority intro fields win over lower-priority summaries/descriptions.",
+      "validation_commands": ["npx eslint src/components/room/__tests__/roomIntroFallback.test.ts", "npx vitest run src/components/room/__tests__/roomIntroFallback.test.ts", "git diff --check"],
+      "anti_fake_checks": ["asserts real output strings", "no skipped tests"]
+    },
+    {
+      "wp_id": "WP-RSR-008",
+      "semantic_key": "room-intro-fallback.non-string-resilience",
+      "source_files": ["src/components/room/roomIntroFallback.ts", "src/components/room/__tests__/roomIntroFallback.test.ts"],
+      "objective": "Ensure malformed non-string intro/description/summary values never leak object text.",
+      "acceptance_tests": "Focused tests cover arrays, objects, numbers, and nulls in historical intro fields.",
+      "validation_commands": ["npx eslint src/components/room/__tests__/roomIntroFallback.test.ts", "npx vitest run src/components/room/__tests__/roomIntroFallback.test.ts", "git diff --check"],
+      "anti_fake_checks": ["asserts no object string leakage", "no report-only progress"]
+    },
+    {
+      "wp_id": "WP-RSR-009",
+      "semantic_key": "room-intro-fallback.plain-description-leak",
+      "source_files": ["src/components/room/roomIntroFallback.ts", "src/components/room/__tests__/roomIntroFallback.test.ts"],
+      "objective": "Pin the honest-fallback predicate for plain English description fallback into VI intro.",
+      "acceptance_tests": "Focused tests prove plain description still displays in legacy pickIntroVI but isViIntroMissing flags it.",
+      "validation_commands": ["npx eslint src/components/room/__tests__/roomIntroFallback.test.ts", "npx vitest run src/components/room/__tests__/roomIntroFallback.test.ts", "git diff --check"],
+      "anti_fake_checks": ["does not change RoomRenderer behavior", "no skipped tests"]
+    },
+    {
+      "wp_id": "WP-RSR-010",
+      "semantic_key": "room-intro-fallback.generated-welcome-no-leak",
+      "source_files": ["src/components/room/roomIntroFallback.ts", "src/components/room/__tests__/roomIntroFallback.test.ts"],
+      "objective": "Protect generated-welcome metadata from being misclassified as a missing VI intro leak.",
+      "acceptance_tests": "Focused tests cover title-only and welcome-generated rooms with no EN intro body.",
+      "validation_commands": ["npx eslint src/components/room/__tests__/roomIntroFallback.test.ts", "npx vitest run src/components/room/__tests__/roomIntroFallback.test.ts", "git diff --check"],
+      "anti_fake_checks": ["asserts negative predicate cases", "no skipped tests"]
+    },
+    {
+      "wp_id": "WP-RSR-011",
+      "semantic_key": "room-json-validation.entry-count-boundaries",
+      "source_files": ["src/lib/validation/roomJsonValidation.ts", "src/lib/__tests__/roomJsonValidation.test.ts"],
+      "objective": "Harden entry-count boundary checks for strict, preview, and wip modes.",
+      "acceptance_tests": "Focused tests cover min-1, min-1 failure, max, and max+1 per validation mode.",
+      "validation_commands": ["npx eslint src/lib/__tests__/roomJsonValidation.test.ts", "npx vitest run src/lib/__tests__/roomJsonValidation.test.ts", "git diff --check"],
+      "anti_fake_checks": ["asserts real validation messages", "no skipped tests"]
+    },
+    {
+      "wp_id": "WP-RSR-012",
+      "semantic_key": "room-json-validation.audio-aliases",
+      "source_files": ["src/lib/validation/roomJsonValidation.ts", "src/lib/__tests__/roomJsonValidation.test.ts"],
+      "objective": "Protect strict-mode audio detection across legacy audio, audio_en, and audioEn fields.",
+      "acceptance_tests": "Focused tests prove every supported audio alias satisfies strict mode.",
+      "validation_commands": ["npx eslint src/lib/__tests__/roomJsonValidation.test.ts", "npx vitest run src/lib/__tests__/roomJsonValidation.test.ts", "git diff --check"],
+      "anti_fake_checks": ["asserts aliases in real validator", "no skipped tests"]
+    },
+    {
+      "wp_id": "WP-RSR-013",
+      "semantic_key": "room-json-validation.copy-aliases",
+      "source_files": ["src/lib/validation/roomJsonValidation.ts", "src/lib/__tests__/roomJsonValidation.test.ts"],
+      "objective": "Protect bilingual-copy detection across nested copy and flat copy_en/copy_vi fields.",
+      "acceptance_tests": "Focused tests prove nested and flat bilingual copy both pass where required.",
+      "validation_commands": ["npx eslint src/lib/__tests__/roomJsonValidation.test.ts", "npx vitest run src/lib/__tests__/roomJsonValidation.test.ts", "git diff --check"],
+      "anti_fake_checks": ["asserts real aliases", "no report-only progress"]
+    },
+    {
+      "wp_id": "WP-RSR-014",
+      "semantic_key": "room-json-validation.summary-contract",
+      "source_files": ["src/lib/validation/roomJsonValidation.ts", "src/lib/__tests__/roomJsonValidation.test.ts"],
+      "objective": "Lock validation summary text so admin/debug UI sees accurate mode, count, audio, and copy requirements.",
+      "acceptance_tests": "Focused tests assert getValidationSummary output for all modes.",
+      "validation_commands": ["npx eslint src/lib/__tests__/roomJsonValidation.test.ts", "npx vitest run src/lib/__tests__/roomJsonValidation.test.ts", "git diff --check"],
+      "anti_fake_checks": ["asserts user-visible summary", "no skipped tests"]
+    },
+    {
+      "wp_id": "WP-RSR-015",
+      "semantic_key": "room-json-validation.default-mode-contract",
+      "source_files": ["src/lib/validation/roomJsonValidation.ts", "src/lib/__tests__/roomJsonValidation.test.ts"],
+      "objective": "Protect environment-derived default validation mode behavior from silent drift.",
+      "acceptance_tests": "Focused tests cover getValidationConfig defaulting to getValidationMode in the test environment.",
+      "validation_commands": ["npx eslint src/lib/__tests__/roomJsonValidation.test.ts", "npx vitest run src/lib/__tests__/roomJsonValidation.test.ts", "git diff --check"],
+      "anti_fake_checks": ["asserts current env behavior", "no skipped tests"]
+    },
+    {
+      "wp_id": "WP-RSR-016",
+      "semantic_key": "room-progress.noop-inputs",
+      "source_files": ["src/services/roomProgress.ts", "src/services/__tests__/roomProgress.test.ts"],
+      "objective": "Harden room-progress writers for missing userId/roomId and ensure no Supabase call is made.",
+      "acceptance_tests": "Focused tests cover null, undefined, and blank user/room inputs for both writer APIs.",
+      "validation_commands": ["npx eslint src/services/__tests__/roomProgress.test.ts", "npx vitest run src/services/__tests__/roomProgress.test.ts", "git diff --check"],
+      "anti_fake_checks": ["asserts no mock DB calls", "no skipped tests"]
+    },
+    {
+      "wp_id": "WP-RSR-017",
+      "semantic_key": "room-progress.keyword-entry-patch",
+      "source_files": ["src/services/roomProgress.ts", "src/services/__tests__/roomProgress.test.ts"],
+      "objective": "Protect optional keyword/entry metadata patching without accidentally overwriting omitted fields.",
+      "acceptance_tests": "Focused tests verify undefined keyword/entry fields are omitted while explicit null clears are sent.",
+      "validation_commands": ["npx eslint src/services/__tests__/roomProgress.test.ts", "npx vitest run src/services/__tests__/roomProgress.test.ts", "git diff --check"],
+      "anti_fake_checks": ["asserts exact update payloads", "no skipped tests"]
+    },
+    {
+      "wp_id": "WP-RSR-018",
+      "semantic_key": "room-progress.retry-failure-surface",
+      "source_files": ["src/services/roomProgress.ts", "src/services/__tests__/roomProgress.test.ts"],
+      "objective": "Ensure persistent read/write failures surface ok:false with a useful message after one retry.",
+      "acceptance_tests": "Focused tests cover persistent fetchExisting and write failures for trackRoomEntry/updateRoomProgress.",
+      "validation_commands": ["npx eslint src/services/__tests__/roomProgress.test.ts", "npx vitest run src/services/__tests__/roomProgress.test.ts", "git diff --check"],
+      "anti_fake_checks": ["asserts retry count and error text", "no skipped tests"]
+    },
+    {
+      "wp_id": "WP-RSR-019",
+      "semantic_key": "room-progress.progress-clamping",
+      "source_files": ["src/services/roomProgress.ts", "src/services/__tests__/roomProgress.test.ts"],
+      "objective": "Harden progress percentage clamping for negative, over-100, NaN, null, and fractional values.",
+      "acceptance_tests": "Focused tests assert stored patch/insert progress values after clamping and rounding.",
+      "validation_commands": ["npx eslint src/services/__tests__/roomProgress.test.ts", "npx vitest run src/services/__tests__/roomProgress.test.ts", "git diff --check"],
+      "anti_fake_checks": ["asserts exact payload values", "no report-only progress"]
+    },
+    {
+      "wp_id": "WP-RSR-020",
+      "semantic_key": "room-progress.app-id-override",
+      "source_files": ["src/services/roomProgress.ts", "src/services/__tests__/roomProgress.test.ts"],
+      "objective": "Protect test-only appId override behavior so production APP_ID remains default while tests can isolate rows.",
+      "acceptance_tests": "Focused tests assert appId override flows through select/insert/update chains.",
+      "validation_commands": ["npx eslint src/services/__tests__/roomProgress.test.ts", "npx vitest run src/services/__tests__/roomProgress.test.ts", "git diff --check"],
+      "anti_fake_checks": ["asserts mock query filters", "no skipped tests"]
+    },
+    {
+      "wp_id": "WP-RSR-021",
+      "semantic_key": "user-sessions.tracking-flag-gates",
+      "source_files": ["src/services/userSessions.ts", "src/services/__tests__/userSessions.test.ts"],
+      "objective": "Harden session logging/heartbeat tracking flag gates so disabled tracking makes no DB call.",
+      "acceptance_tests": "Focused tests cover logUserSession and heartbeatSession with tracking disabled.",
+      "validation_commands": ["npx eslint src/services/__tests__/userSessions.test.ts", "npx vitest run src/services/__tests__/userSessions.test.ts", "git diff --check"],
+      "anti_fake_checks": ["asserts no Supabase calls", "no skipped tests"]
+    },
+    {
+      "wp_id": "WP-RSR-022",
+      "semantic_key": "user-sessions.device-detection",
+      "source_files": ["src/services/userSessions.ts", "src/services/__tests__/userSessions.test.ts"],
+      "objective": "Protect desktop/mobile device_type detection across common user-agent strings.",
+      "acceptance_tests": "Focused tests stub navigator.userAgent and assert upsert/update device_type.",
+      "validation_commands": ["npx eslint src/services/__tests__/userSessions.test.ts", "npx vitest run src/services/__tests__/userSessions.test.ts", "git diff --check"],
+      "anti_fake_checks": ["asserts actual payload device_type", "no skipped tests"]
+    },
+    {
+      "wp_id": "WP-RSR-023",
+      "semantic_key": "user-sessions.device-info-ssr",
+      "source_files": ["src/services/userSessions.ts", "src/services/__tests__/userSessions.test.ts"],
+      "objective": "Ensure user session writer survives missing browser globals without throwing.",
+      "acceptance_tests": "Focused tests remove/stub browser globals and assert safe device_info payload behavior.",
+      "validation_commands": ["npx eslint src/services/__tests__/userSessions.test.ts", "npx vitest run src/services/__tests__/userSessions.test.ts", "git diff --check"],
+      "anti_fake_checks": ["asserts no throw and payload shape", "no skipped tests"]
+    },
+    {
+      "wp_id": "WP-RSR-024",
+      "semantic_key": "user-sessions.heartbeat-query-filters",
+      "source_files": ["src/services/userSessions.ts", "src/services/__tests__/userSessions.test.ts"],
+      "objective": "Protect heartbeat update filters so it scopes by both user_id and device_type.",
+      "acceptance_tests": "Focused tests assert both eq filters are issued in the update chain.",
+      "validation_commands": ["npx eslint src/services/__tests__/userSessions.test.ts", "npx vitest run src/services/__tests__/userSessions.test.ts", "git diff --check"],
+      "anti_fake_checks": ["asserts exact filter calls", "no skipped tests"]
+    },
+    {
+      "wp_id": "WP-RSR-025",
+      "semantic_key": "user-sessions.error-swallowing",
+      "source_files": ["src/services/userSessions.ts", "src/services/__tests__/userSessions.test.ts"],
+      "objective": "Ensure user session errors are swallowed and reported as ok:false without crashing auth flows.",
+      "acceptance_tests": "Focused tests cover thrown and returned errors for upsert and heartbeat.",
+      "validation_commands": ["npx eslint src/services/__tests__/userSessions.test.ts", "npx vitest run src/services/__tests__/userSessions.test.ts", "git diff --check"],
+      "anti_fake_checks": ["asserts no thrown errors", "no skipped tests"]
+    },
+    {
+      "wp_id": "WP-RSR-026",
+      "semantic_key": "room-loader-normalize.salvage-slug-priority",
+      "source_files": ["src/lib/roomLoaderNormalize.ts", "src/lib/__tests__/roomLoaderNormalize.test.ts"],
+      "objective": "Protect DB entry salvage slug priority across slug, keyword, keyword arrays, and title fields.",
+      "acceptance_tests": "Focused tests assert slug fallback priority and deterministic entry-N fallback.",
+      "validation_commands": ["npx eslint src/lib/__tests__/roomLoaderNormalize.test.ts", "npx vitest run src/lib/__tests__/roomLoaderNormalize.test.ts", "git diff --check"],
+      "anti_fake_checks": ["uses real normalize module", "no skipped tests"]
+    },
+    {
+      "wp_id": "WP-RSR-027",
+      "semantic_key": "room-loader-normalize.copy-normalization",
+      "source_files": ["src/lib/roomLoaderNormalize.ts", "src/lib/__tests__/roomLoaderNormalize.test.ts"],
+      "objective": "Harden copy normalization for string, bilingual object, empty object, and malformed values.",
+      "acceptance_tests": "Focused tests assert copy is trimmed, omitted when empty, and never object-stringified.",
+      "validation_commands": ["npx eslint src/lib/__tests__/roomLoaderNormalize.test.ts", "npx vitest run src/lib/__tests__/roomLoaderNormalize.test.ts", "git diff --check"],
+      "anti_fake_checks": ["asserts exact normalized entries", "no skipped tests"]
+    },
+    {
+      "wp_id": "WP-RSR-028",
+      "semantic_key": "room-loader-normalize.keyword-menu-dedupe",
+      "source_files": ["src/lib/roomLoaderNormalize.ts", "src/lib/__tests__/roomLoaderNormalize.test.ts"],
+      "objective": "Protect keyword menu normalization from duplicates, whitespace, malformed arrays, and missing VI fallback.",
+      "acceptance_tests": "Focused tests assert keywordMenu.en/vi order, dedupe, and fallback behavior.",
+      "validation_commands": ["npx eslint src/lib/__tests__/roomLoaderNormalize.test.ts", "npx vitest run src/lib/__tests__/roomLoaderNormalize.test.ts", "git diff --check"],
+      "anti_fake_checks": ["asserts exact menu arrays", "no skipped tests"]
+    },
+    {
+      "wp_id": "WP-RSR-029",
+      "semantic_key": "room-loader-normalize.tier-normalization",
+      "source_files": ["src/lib/roomLoaderNormalize.ts", "src/lib/__tests__/roomLoaderNormalize.test.ts"],
+      "objective": "Harden room tier normalization across roomTier, tier, accessTier, premium, level, and unknown values.",
+      "acceptance_tests": "Focused tests assert normalizeTier priority and fallback behavior.",
+      "validation_commands": ["npx eslint src/lib/__tests__/roomLoaderNormalize.test.ts", "npx vitest run src/lib/__tests__/roomLoaderNormalize.test.ts", "git diff --check"],
+      "anti_fake_checks": ["asserts real pure function", "no skipped tests"]
+    },
+    {
+      "wp_id": "WP-RSR-030",
+      "semantic_key": "room-loader-normalize.processed-output-guard",
+      "source_files": ["src/lib/roomLoaderNormalize.ts", "src/lib/__tests__/roomLoaderNormalize.test.ts"],
+      "objective": "Ensure normalizeEntries returns safe empty arrays when processEntriesOptimized emits malformed output.",
+      "acceptance_tests": "Focused tests mock malformed processed output and assert safe defaults.",
+      "validation_commands": ["npx eslint src/lib/__tests__/roomLoaderNormalize.test.ts", "npx vitest run src/lib/__tests__/roomLoaderNormalize.test.ts", "git diff --check"],
+      "anti_fake_checks": ["asserts behavior under mocked helper output", "no skipped tests"]
+    },
+    {
+      "wp_id": "WP-RSR-031",
+      "semantic_key": "room-json-resolver.canonicalize-inputs",
+      "source_files": ["src/lib/roomJsonResolver.ts", "src/lib/__tests__/roomJsonResolver.offline.test.ts"],
+      "objective": "Protect canonical room ID normalization for .json suffixes, paths, query strings, spaces, dashes, and casing.",
+      "acceptance_tests": "Focused tests assert canonicalizeRoomId and resolveRoomJsonPath outputs.",
+      "validation_commands": ["npx eslint src/lib/__tests__/roomJsonResolver.offline.test.ts", "npx vitest run src/lib/__tests__/roomJsonResolver.offline.test.ts", "git diff --check"],
+      "anti_fake_checks": ["asserts real resolver output", "no skipped tests"]
+    },
+    {
+      "wp_id": "WP-RSR-032",
+      "semantic_key": "room-json-resolver.offline-pack-shape",
+      "source_files": ["src/lib/roomJsonResolver.ts", "src/lib/__tests__/roomJsonResolver.offline.test.ts"],
+      "objective": "Harden offline pack normalization for envelope, flat, missing entries, and malformed stored values.",
+      "acceptance_tests": "Focused tests cover normalizeOfflineRoom through loadRoomJson fallback and direct edge cases where exported.",
+      "validation_commands": ["npx eslint src/lib/__tests__/roomJsonResolver.offline.test.ts", "npx vitest run src/lib/__tests__/roomJsonResolver.offline.test.ts", "git diff --check"],
+      "anti_fake_checks": ["asserts real offline fallback path", "no skipped tests"]
+    },
+    {
+      "wp_id": "WP-RSR-033",
+      "semantic_key": "room-json-resolver.keyword-backfill-ja",
+      "source_files": ["src/lib/roomJsonResolver.ts", "src/lib/__tests__/roomJsonResolver.offline.test.ts"],
+      "objective": "Protect offline keyword backfill for Japanese keyword arrays alongside EN/VI arrays.",
+      "acceptance_tests": "Focused tests assert keywords_ja are synthesized, deduped, and not overwritten when present.",
+      "validation_commands": ["npx eslint src/lib/__tests__/roomJsonResolver.offline.test.ts", "npx vitest run src/lib/__tests__/roomJsonResolver.offline.test.ts", "git diff --check"],
+      "anti_fake_checks": ["asserts actual offline room output", "no skipped tests"]
+    },
+    {
+      "wp_id": "WP-RSR-034",
+      "semantic_key": "room-json-resolver.error-kind-contract",
+      "source_files": ["src/lib/roomJsonResolver.ts", "src/lib/__tests__/roomJsonResolver.offline.test.ts"],
+      "objective": "Protect error kind classification for offline_unavailable, network, server, and json_invalid paths.",
+      "acceptance_tests": "Focused tests stub fetch responses/rejections and assert thrown error.kind values.",
+      "validation_commands": ["npx eslint src/lib/__tests__/roomJsonResolver.offline.test.ts", "npx vitest run src/lib/__tests__/roomJsonResolver.offline.test.ts", "git diff --check"],
+      "anti_fake_checks": ["asserts thrown error kind", "no skipped tests"]
+    },
+    {
+      "wp_id": "WP-RSR-035",
+      "semantic_key": "room-json-resolver.manifest-path-contract",
+      "source_files": ["src/lib/roomJsonResolver.ts", "src/lib/__tests__/roomJsonResolver.offline.test.ts"],
+      "objective": "Ensure manifest paths are trusted while unknown rooms fall back to canonical /data/<id>.json paths.",
+      "acceptance_tests": "Focused tests assert resolveRoomJsonPath against mocked manifest and fallback cases.",
+      "validation_commands": ["npx eslint src/lib/__tests__/roomJsonResolver.offline.test.ts", "npx vitest run src/lib/__tests__/roomJsonResolver.offline.test.ts", "git diff --check"],
+      "anti_fake_checks": ["asserts real path strings", "no skipped tests"]
+    },
+    {
+      "wp_id": "WP-RSR-036",
+      "semantic_key": "session-attempts.cap-and-numbering",
+      "source_files": ["src/lib/pronunciation/sessionAttempts.ts", "src/lib/pronunciation/__tests__/sessionAttempts.test.ts"],
+      "objective": "Harden attempt history cap and monotonic numbering for zero, default, and explicit cap values.",
+      "acceptance_tests": "Focused tests assert immutable append behavior and visible attempt numbers after eviction.",
+      "validation_commands": ["npx eslint src/lib/pronunciation/__tests__/sessionAttempts.test.ts", "npx vitest run src/lib/pronunciation/__tests__/sessionAttempts.test.ts", "git diff --check"],
+      "anti_fake_checks": ["asserts real pure helper output", "no skipped tests"]
+    },
+    {
+      "wp_id": "WP-RSR-037",
+      "semantic_key": "session-attempts.best-attempt-tie-break",
+      "source_files": ["src/lib/pronunciation/sessionAttempts.ts", "src/lib/pronunciation/__tests__/sessionAttempts.test.ts"],
+      "objective": "Protect best-attempt tie-breaking by score first, then most recent timestamp.",
+      "acceptance_tests": "Focused tests cover equal scores, lower newer score, and empty histories.",
+      "validation_commands": ["npx eslint src/lib/pronunciation/__tests__/sessionAttempts.test.ts", "npx vitest run src/lib/pronunciation/__tests__/sessionAttempts.test.ts", "git diff --check"],
+      "anti_fake_checks": ["asserts exact chosen attempt", "no skipped tests"]
+    },
+    {
+      "wp_id": "WP-RSR-038",
+      "semantic_key": "session-attempts.trend-threshold-boundaries",
+      "source_files": ["src/lib/pronunciation/sessionAttempts.ts", "src/lib/pronunciation/__tests__/sessionAttempts.test.ts"],
+      "objective": "Harden trend threshold boundaries so exactly +/-3 remains flat and +/-4 changes trend.",
+      "acceptance_tests": "Focused tests cover boundary values for up/down/flat.",
+      "validation_commands": ["npx eslint src/lib/pronunciation/__tests__/sessionAttempts.test.ts", "npx vitest run src/lib/pronunciation/__tests__/sessionAttempts.test.ts", "git diff --check"],
+      "anti_fake_checks": ["asserts boundary behavior", "no skipped tests"]
+    },
+    {
+      "wp_id": "WP-RSR-039",
+      "semantic_key": "session-attempts.phoneme-delta-aggregation",
+      "source_files": ["src/lib/pronunciation/sessionAttempts.ts", "src/lib/pronunciation/__tests__/sessionAttempts.test.ts"],
+      "objective": "Protect phoneme delta aggregation for duplicate, blank, mixed-case, and single-side phonemes.",
+      "acceptance_tests": "Focused tests assert averaged scores, ignored blanks, and matching-only deltas.",
+      "validation_commands": ["npx eslint src/lib/pronunciation/__tests__/sessionAttempts.test.ts", "npx vitest run src/lib/pronunciation/__tests__/sessionAttempts.test.ts", "git diff --check"],
+      "anti_fake_checks": ["asserts exact delta arrays", "no skipped tests"]
+    },
+    {
+      "wp_id": "WP-RSR-040",
+      "semantic_key": "session-attempts.phoneme-data-availability",
+      "source_files": ["src/lib/pronunciation/sessionAttempts.ts", "src/lib/pronunciation/__tests__/sessionAttempts.test.ts"],
+      "objective": "Ensure phoneme-data availability reflects any successful Azure phoneme scoring within the current history.",
+      "acceptance_tests": "Focused tests cover all-empty, mixed empty/non-empty, and evicted phoneme attempts.",
+      "validation_commands": ["npx eslint src/lib/pronunciation/__tests__/sessionAttempts.test.ts", "npx vitest run src/lib/pronunciation/__tests__/sessionAttempts.test.ts", "git diff --check"],
+      "anti_fake_checks": ["asserts real hasPhonemeData output", "no skipped tests"]
+    }
+  ]
+}

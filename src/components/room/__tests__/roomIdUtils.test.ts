@@ -36,6 +36,26 @@ describe("room id helpers", () => {
     expect(inferTierIdFromRoomId("room--id__level2")).toBe("level2");
   });
 
+  it("normalizes mixed separators before suffix stripping and prettifying", () => {
+    expect(stripTierSuffix("  _family--budget   level3_ ")).toBe(
+      "family_budget",
+    );
+    expect(stripTierSuffix("daily---check in__free")).toBe("daily_check_in");
+    expect(prettifyRoomIdEN("daily---check in__free")).toBe("Daily Check In");
+    expect(inferTierIdFromRoomId("daily---check in__free")).toBe("level0");
+  });
+
+  it("treats tier markers as suffix-only", () => {
+    expect(stripTierSuffix("free_breathing_level1_intro")).toBe(
+      "free_breathing_level1_intro",
+    );
+    expect(stripTierSuffix("level3_confidence_builder")).toBe(
+      "level3_confidence_builder",
+    );
+    expect(inferTierIdFromRoomId("free_breathing_level1_intro")).toBeNull();
+    expect(inferTierIdFromRoomId("level3_confidence_builder")).toBeNull();
+  });
+
   it("keeps tier inference aligned with free suffix stripping", () => {
     expect(inferTierIdFromRoomId("ptsd_support_free")).toBe("level0");
     expect(coreRoomIdFromEffective("ptsd_support_free")).toBe("ptsd_support");
@@ -50,5 +70,36 @@ describe("room id helpers", () => {
     expect(isBadAutoTitle("ptsd_support_free", "ptsd_support_free")).toBe(true);
     expect(isBadAutoTitle("ptsd_support_free", "ptsd_support")).toBe(true);
     expect(isBadAutoTitle("PTSD support", "ptsd_support_free")).toBe(false);
+  });
+
+  it("detects empty, case-variant, and spaced auto titles safely", () => {
+    expect(isBadAutoTitle("", "family_budget_level3")).toBe(true);
+    expect(isBadAutoTitle("FAMILY_BUDGET_LEVEL3", "family_budget_level3")).toBe(
+      true,
+    );
+    expect(isBadAutoTitle("family_budget", "family_budget_level3")).toBe(true);
+    expect(isBadAutoTitle("Family Budget", "family_budget_level3")).toBe(false);
+  });
+
+  it("keeps roomIdUtils aligned with RoomRenderer core id extraction", () => {
+    const ids = [
+      "ptsd_support_free",
+      "family_budget_level3",
+      "daily_check_in_free",
+    ];
+
+    for (const id of ids) {
+      expect(stripTierSuffix(id)).toBe(coreRoomIdFromEffective(id));
+    }
+  });
+
+  it("preserves non-tier words in generated room titles", () => {
+    expect(prettifyRoomIdEN("stress_free_breathing")).toBe(
+      "Stress Free Breathing",
+    );
+    expect(prettifyRoomIdEN("level1_basics")).toBe("Level1 Basics");
+    expect(prettifyRoomIdEN("free_level_story_level2")).toBe(
+      "Free Level Story",
+    );
   });
 });
