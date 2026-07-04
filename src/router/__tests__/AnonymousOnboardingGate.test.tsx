@@ -126,6 +126,25 @@ describe("AnonymousOnboardingGate — marketing landing contract", () => {
     expect(screen.queryByText("LANDING")).toBeNull();
   });
 
+  it("malformed stored pair does not count as returning anonymous", () => {
+    window.localStorage.setItem("mercyblade.languagePair", "{not json");
+    mockUseAuth.mockReturnValue({ user: null, isLoading: false });
+    renderGateWithLanding();
+    expect(screen.getByText("LANDING")).toBeInTheDocument();
+    expect(screen.queryByText("HOME")).toBeNull();
+  });
+
+  it("invalid-native stored pair does not count as returning anonymous", () => {
+    window.localStorage.setItem(
+      "mercyblade.languagePair",
+      JSON.stringify({ native: "zz", targets: ["en"] }),
+    );
+    mockUseAuth.mockReturnValue({ user: null, isLoading: false });
+    renderGateWithLanding();
+    expect(screen.getByText("LANDING")).toBeInTheDocument();
+    expect(screen.queryByText("HOME")).toBeNull();
+  });
+
   it("signed-in user → Home, never the landing", () => {
     mockUseAuth.mockReturnValue({ user: { id: "u1" }, isLoading: false });
     renderGateWithLanding();
@@ -169,6 +188,20 @@ describe("AnonymousOnboardingGate — CTA URL-param escape hatch (A14e-fix-1)", 
     expect(screen.queryByText("PICKER")).toBeNull();
   });
 
+  it("anonymous + no stored pair + empty ?trypron → Home (key presence is enough)", () => {
+    mockUseAuth.mockReturnValue({ user: null, isLoading: false });
+    renderGateAt("/?trypron");
+    expect(screen.getByText("HOME")).toBeInTheDocument();
+    expect(screen.queryByText("LANDING")).toBeNull();
+  });
+
+  it("anonymous + no stored pair + repeated ?trypron params → Home", () => {
+    mockUseAuth.mockReturnValue({ user: null, isLoading: false });
+    renderGateAt("/?trypron=0&trypron=1");
+    expect(screen.getByText("HOME")).toBeInTheDocument();
+    expect(screen.queryByText("LANDING")).toBeNull();
+  });
+
   it("anonymous + no stored pair + no CTA param → still landing", () => {
     mockUseAuth.mockReturnValue({ user: null, isLoading: false });
     renderGateAt("/");
@@ -192,5 +225,32 @@ describe("AnonymousOnboardingGate — CTA URL-param escape hatch (A14e-fix-1)", 
     renderGateAt("/?trypron=1");
     expect(screen.getByText("HOME")).toBeInTheDocument();
     expect(screen.queryByText("LANDING")).toBeNull();
+  });
+
+  it("resolved signed-in user stays on Home during a later auth loading flip", () => {
+    mockUseAuth.mockReturnValue({ user: { id: "u1" }, isLoading: false });
+    const ui = (
+      <MemoryRouter initialEntries={["/"]}>
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <AnonymousOnboardingGate firstTimeAnonymous={<div>LANDING</div>}>
+                <div>HOME</div>
+              </AnonymousOnboardingGate>
+            }
+          />
+          <Route path="/onboarding" element={<div>PICKER</div>} />
+        </Routes>
+      </MemoryRouter>
+    );
+    const { rerender } = render(ui);
+    expect(screen.getByText("HOME")).toBeInTheDocument();
+
+    mockUseAuth.mockReturnValue({ user: null, isLoading: true });
+    rerender(ui);
+    expect(screen.getByText("HOME")).toBeInTheDocument();
+    expect(screen.queryByText("LANDING")).toBeNull();
+    expect(screen.queryByText("PICKER")).toBeNull();
   });
 });
