@@ -233,6 +233,22 @@ describe("validateTeacherContext", () => {
     }));
   });
 
+  it("fails when a DP decision has no OBS evidence reference", () => {
+    const result = validateTeacherContext(bundle({
+      dpDecision: {
+        ...bundle().dpDecision,
+        observationIds: [],
+      },
+    }));
+
+    expect(result.pass).toBe(false);
+    expect(result.failures).toContainEqual(expect.objectContaining({
+      code: "missing_decision_evidence_reference",
+      path: "dpDecision.observationIds",
+      reason: "DP, PED, and runtime decisions must cite OBS evidence before downstream output changes.",
+    }));
+  });
+
   it("surfaces forged DP observation references through the Judge rubric", () => {
     const result = judgeRuntimeReadinessEvidence(bundle({
       dpDecision: {
@@ -276,6 +292,37 @@ describe("validateTeacherContext", () => {
     expect(result.failures).toContainEqual(expect.objectContaining({
       code: "unknown_signal_reference",
       path: "dpDecision.signalKeys",
+    }));
+  });
+
+  it("fails when runtime output drops Teacher Context learning-signal evidence references", () => {
+    const result = validateTeacherContext(bundle({
+      runtimeDecision: {
+        ...bundle().runtimeDecision,
+        signalKeys: [],
+      },
+    }));
+
+    expect(result.pass).toBe(false);
+    expect(result.failures).toContainEqual(expect.objectContaining({
+      code: "missing_decision_evidence_reference",
+      path: "runtimeDecision.signalKeys",
+      reason: "DP, PED, and runtime decisions must cite Learning Signal evidence when signals are present.",
+    }));
+  });
+
+  it("surfaces missing DP OBS anchors through the Judge rubric", () => {
+    const result = judgeRuntimeReadinessEvidence(bundle({
+      dpDecision: {
+        ...bundle().dpDecision,
+        observationIds: [],
+      },
+    }), "RR-001");
+
+    expect(result.pass).toBe(false);
+    expect(result.failures).toContainEqual(expect.objectContaining({
+      code: "missing_decision_evidence_reference",
+      path: "dpDecision.observationIds",
     }));
   });
 

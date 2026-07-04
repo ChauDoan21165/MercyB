@@ -10,6 +10,7 @@ export type TeacherContextValidationFailureCode =
   | "missing_recommendations"
   | "invalid_confidence_summary"
   | "missing_replay_trace"
+  | "missing_decision_evidence_reference"
   | "unknown_observation_reference"
   | "unknown_signal_reference";
 
@@ -92,6 +93,14 @@ function referencedSignalKeys(bundle: PartialRuntimeEvidenceBundle): readonly Ev
   );
 }
 
+function hasReferences(value: readonly string[] | undefined): boolean {
+  return Array.isArray(value) && value.some((id) => id.trim().length > 0);
+}
+
+function hasLearningSignalEvidence(bundle: PartialRuntimeEvidenceBundle): boolean {
+  return Boolean(bundle.learningSignals?.length || bundle.teacherContext?.learningSignals?.length);
+}
+
 export function validateTeacherContext(bundle: PartialRuntimeEvidenceBundle): TeacherContextValidationResult {
   const context = bundle.teacherContext;
   const failures: TeacherContextValidationFailure[] = [];
@@ -155,6 +164,28 @@ export function validateTeacherContext(bundle: PartialRuntimeEvidenceBundle): Te
       path: "teacherContext.replayTrace",
       reason: "Teacher Context must include replay trace.",
     });
+  }
+
+  for (const [path, decision] of [
+    ["dpDecision", bundle.dpDecision],
+    ["pedDecision", bundle.pedDecision],
+    ["runtimeDecision", bundle.runtimeDecision],
+  ] as const) {
+    if (decision && !hasReferences(decision.observationIds)) {
+      failures.push({
+        code: "missing_decision_evidence_reference",
+        path: `${path}.observationIds`,
+        reason: "DP, PED, and runtime decisions must cite OBS evidence before downstream output changes.",
+      });
+    }
+
+    if (decision && hasLearningSignalEvidence(bundle) && !hasReferences(decision.signalKeys)) {
+      failures.push({
+        code: "missing_decision_evidence_reference",
+        path: `${path}.signalKeys`,
+        reason: "DP, PED, and runtime decisions must cite Learning Signal evidence when signals are present.",
+      });
+    }
   }
 
   const knownObservationIds = observationIdsFromBundle(bundle);
