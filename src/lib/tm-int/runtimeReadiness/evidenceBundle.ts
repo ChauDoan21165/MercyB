@@ -92,5 +92,8 @@ export function signalKeysFromBundle(bundle: PartialRuntimeEvidenceBundle): Set<
   const keys = new Set<string>();
   for (const signal of bundle.learningSignals ?? []) keys.add(signal.signal_key);
   for (const signal of bundle.teacherContext?.learningSignals ?? []) keys.add(signal.signal_key);
+  for (const signalKey of bundle.dpDecision?.signalKeys ?? []) keys.add(signalKey);
+  for (const signalKey of bundle.pedDecision?.signalKeys ?? []) keys.add(signalKey);
+  for (const signalKey of bundle.runtimeDecision?.signalKeys ?? []) keys.add(signalKey);
   return keys;
 }
