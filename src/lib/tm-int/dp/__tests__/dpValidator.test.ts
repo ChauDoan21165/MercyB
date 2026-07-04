@@ -2,6 +2,7 @@ import { describe, expect, test } from "vitest";
 import type { TeacherContext } from "../../runtime";
 import {
   DP_DECISION_CONFIDENCE_LEVELS,
+  dpAllowsPedAction,
   dpTeacherContextReferenceFrom,
   isDpDecisionConfidenceLevel,
   type DpEvidenceBasedDecision,
@@ -271,6 +272,26 @@ describe("validateDpDecision", () => {
     expect(validateDpDecision(decision, createTeacherContext()).failures).toEqual(
       expect.arrayContaining([expect.objectContaining({ code: "ped_allowed_without_rationale" })]),
     );
+  });
+
+  test("FAIL PED allowed without action", () => {
+    const decision = {
+      ...createValidDecision(),
+      recommendation: { action: "", rationale: "Evidence exists, but no action was specified." },
+      pedAllowedToAct: true,
+    };
+
+    expect(dpAllowsPedAction(decision)).toBe(false);
+    expect(validateDpDecision(decision, createTeacherContext()).failures).toEqual(
+      expect.arrayContaining([expect.objectContaining({ code: "ped_allowed_without_rationale" })]),
+    );
+  });
+
+  test("PASS PED action gate with action and rationale", () => {
+    const decision = createValidDecision();
+
+    expect(dpAllowsPedAction(decision)).toBe(true);
+    expect(validateDpDecision(decision, createTeacherContext()).pass).toBe(true);
   });
 
   test("FAIL unsupported inference", () => {

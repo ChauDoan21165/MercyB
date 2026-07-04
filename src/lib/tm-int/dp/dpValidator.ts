@@ -1,5 +1,6 @@
 import type { TeacherContext } from "../runtime";
 import {
+  dpAllowsPedAction,
   isDpDecisionConfidenceLevel,
   type DpEvidenceBasedDecision,
   type DpLearnerPerformanceClaim,
@@ -297,11 +298,11 @@ export function validateDpDecision(
     });
   }
 
-  if (decision.pedAllowedToAct && !decision.recommendation.rationale.trim()) {
+  if (decision.pedAllowedToAct && !dpAllowsPedAction(decision)) {
     failures.push({
       code: "ped_allowed_without_rationale",
       path: "pedAllowedToAct",
-      reason: "PED cannot act from DP unless the DP recommendation has rationale.",
+      reason: "PED cannot act from DP unless the DP recommendation has action and rationale.",
     });
   }
 

@@ -61,3 +61,11 @@ export function dpTeacherContextReferenceFrom(context: TeacherContext): DpTeache
 export function isDpDecisionConfidenceLevel(value: string): value is DpDecisionConfidenceLevel {
   return DP_DECISION_CONFIDENCE_LEVELS.includes(value as DpDecisionConfidenceLevel);
 }
+
+export function dpAllowsPedAction(decision: DpEvidenceBasedDecision): boolean {
+  return (
+    decision.pedAllowedToAct &&
+    decision.recommendation.action.trim().length > 0 &&
+    decision.recommendation.rationale.trim().length > 0
+  );
+}
