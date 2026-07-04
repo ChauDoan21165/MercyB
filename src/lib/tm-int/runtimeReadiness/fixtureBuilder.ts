@@ -19,6 +19,10 @@ function packetIdFor(flowType: string): string {
   return `obs-packet-${flowType}`;
 }
 
+function cloneRuntimeEvidenceBundle(bundle: RuntimeEvidenceBundle): RuntimeEvidenceBundle {
+  return structuredClone(bundle);
+}
+
 function createTeacherContext(flowType = "placement"): TeacherContext {
   const packetId = packetIdFor(flowType);
   return {
@@ -181,7 +185,9 @@ export function createReplayPair(options: ReplayPairOptions = {}): RuntimeEviden
   const first = createValidRuntimeEvidenceBundle();
   return {
     first,
-    second: options.mismatchStage ? withReplayMismatch(first, options.mismatchStage) : createValidRuntimeEvidenceBundle(),
+    second: options.mismatchStage
+      ? withReplayMismatch(cloneRuntimeEvidenceBundle(first), options.mismatchStage)
+      : createValidRuntimeEvidenceBundle(),
   };
 }
 

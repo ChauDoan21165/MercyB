@@ -58,6 +58,20 @@ describe("runtime readiness fixture builders", () => {
     expect(result.mismatchStages).toEqual(["teacherContext"]);
   });
 
+  it("creates replay mismatch fixtures without sharing nested evidence objects", () => {
+    const pair = createReplayPair({ mismatchStage: "runtimeDecision" });
+
+    pair.second.teacherContext.replayTrace.push({
+      stage: "RUNTIME",
+      source: "runtime",
+      summary: "mutated second replay only",
+    });
+    pair.second.obsPacket.facts[0].message = "mutated second replay only";
+
+    expect(pair.first.teacherContext.replayTrace).toHaveLength(6);
+    expect(pair.first.obsPacket.facts[0].message).toBe("Audio duration was zero.");
+  });
+
   it("creates a valid cross-flow package", () => {
     expect(validateCrossFlowReplayPackage(createValidCrossFlowReplayPackage())).toEqual({
       pass: true,
