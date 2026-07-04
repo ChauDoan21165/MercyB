@@ -18,11 +18,11 @@ function dbPath(root) {
   return join(root, "dp_int_factory.sqlite3");
 }
 
-function run(root, args) {
+function run(root, args, extraEnv = {}) {
   return spawnSync(process.execPath, [scriptPath, ...args], {
     cwd: repoRoot,
     encoding: "utf8",
-    env: { ...process.env, DP_INT_FACTORY_DB: dbPath(root) },
+    env: { ...process.env, DP_INT_FACTORY_DB: dbPath(root), ...extraEnv },
   });
 }
 
@@ -131,6 +131,29 @@ describe("DP INT factory control plane", () => {
 
     const result = sqlite(root, "select status, claimed_by from dp_int_workpacks where wp_id='DP-WP-001'; select count(*) from dp_int_f_events where event_type='claim';");
     expect(result.stdout.trim().split(/\r?\n/)).toEqual(["running|F-1", "1"]);
+  });
+
+  it("F refuses to claim while Judge ledger DB mutation is uncommitted", () => {
+    const root = setupImported();
+    const result = run(root, ["claim", "DP-WP-001", "F-1"], {
+      DP_INT_FACTORY_TEST_GIT_STATUS: " M state/dp_int_factory.sqlite3",
+    });
+
+    expect(result.status).not.toBe(0);
+    expect(result.stderr).toContain("F cannot claim workpacks until git status is clean");
+    expect(result.stderr).toContain("state/dp_int_factory.sqlite3");
+  });
+
+  it("Judge/Admin cleanup is required before F resumes", () => {
+    const root = setupImported();
+    const blocked = run(root, ["claim", "DP-WP-001", "F-1"], {
+      DP_INT_FACTORY_TEST_GIT_STATUS: " M state/dp_int_factory.sqlite3",
+    });
+    const resumed = run(root, ["claim", "DP-WP-001", "F-1"]);
+
+    expect(blocked.status).not.toBe(0);
+    expect(resumed.status).toBe(0);
+    expect(resumed.stdout).toContain("running");
   });
 
   it("f-done requires artifact/evidence/commit", () => {

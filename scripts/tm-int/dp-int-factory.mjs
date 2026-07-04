@@ -1,12 +1,13 @@
 #!/usr/bin/env node
 import { mkdirSync, readFileSync } from "node:fs";
-import { dirname } from "node:path";
+import { dirname, resolve } from "node:path";
 import { spawnSync } from "node:child_process";
 
 export const DEFAULT_DB_PATH = "state/dp_int_factory.sqlite3";
 
 const F_STATUSES = new Set(["workpack_ready", "running", "f_done"]);
 const JUDGE_STATUSES = new Set(["judge_pass", "judge_fail"]);
+const JUDGE_LEDGER_BATCH_MESSAGE = "Record DP INT Judge ledger batch";
 
 function dbPath() {
   return process.env.DP_INT_FACTORY_DB || DEFAULT_DB_PATH;
@@ -37,6 +38,118 @@ function runSql(statement, { output = true } = {}) {
 
   if (output) process.stdout.write(result.stdout);
   return result.stdout;
+}
+
+function runGit(args, { output = false } = {}) {
+  const result = spawnSync("git", args, {
+    encoding: "utf8",
+  });
+
+  if (result.status !== 0) {
+    throw new Error((result.stderr || result.stdout || `git ${args.join(" ")} failed`).trim());
+  }
+
+  if (output) process.stdout.write(result.stdout);
+  return result.stdout;
+}
+
+function gitStatusLines() {
+  if (process.env.DP_INT_FACTORY_TEST_GIT_STATUS) {
+    return process.env.DP_INT_FACTORY_TEST_GIT_STATUS.split(/\r?\n/).filter(Boolean);
+  }
+
+  const output = runGit(["status", "--porcelain"]);
+  return output.split(/\r?\n/).filter(Boolean);
+}
+
+function statusPath(line) {
+  return line.slice(3).trim();
+}
+
+function isDefaultFactoryDb() {
+  return resolve(dbPath()) === resolve(DEFAULT_DB_PATH);
+}
+
+function dirtyFiles() {
+  return gitStatusLines().map(statusPath);
+}
+
+function assertFCanClaim() {
+  if (!isDefaultFactoryDb() && !process.env.DP_INT_FACTORY_TEST_GIT_STATUS) return;
+  const files = dirtyFiles();
+  if (files.length > 0) {
+    throw new Error(`F cannot claim workpacks until git status is clean. Dirty files: ${files.join(", ")}`);
+  }
+}
+
+function scalarSql(statement) {
+  return runSql(statement, { output: false }).trim();
+}
+
+function factoryCount(whereClause) {
+  return Number(scalarSql(`SELECT COUNT(*) FROM dp_int_workpacks WHERE ${whereClause};`) || "0");
+}
+
+function judgeCount(whereClause = "1=1") {
+  return Number(scalarSql(`SELECT COUNT(*) FROM dp_int_judge_results WHERE ${whereClause};`) || "0");
+}
+
+function verifiedCount() {
+  return Number(scalarSql("SELECT COALESCE(SUM(verified), 0) FROM dp_int_workpacks;") || "0");
+}
+
+function eventMaxId() {
+  return Number(scalarSql("SELECT COALESCE(MAX(event_id), 0) FROM dp_int_f_events;") || "0");
+}
+
+function claimEventsAfter(eventId) {
+  return Number(scalarSql(`SELECT COUNT(*) FROM dp_int_f_events WHERE event_type='claim' AND event_id > ${Number(eventId)};`) || "0");
+}
+
+function assertJudgeAdminCommitSafe({ reviewedWpId, beforeJudgeRows, beforeReviewedRows, beforeEventId }) {
+  const files = dirtyFiles();
+  const allowedFiles = new Set([DEFAULT_DB_PATH]);
+  const unexpectedFiles = files.filter((file) => !allowedFiles.has(file));
+
+  if (!isDefaultFactoryDb()) return { shouldCommit: false, reason: "non-default DB path" };
+  if (files.length === 0) return { shouldCommit: false, reason: "no git changes" };
+  if (unexpectedFiles.length > 0) {
+    throw new Error(`Judge/Admin auto-commit refused: non-factory files changed: ${unexpectedFiles.join(", ")}`);
+  }
+  if (factoryCount("status='running'") !== 0) {
+    throw new Error("Judge/Admin auto-commit refused: running workpacks exist.");
+  }
+  if (claimEventsAfter(beforeEventId) !== 0) {
+    throw new Error("Judge/Admin auto-commit refused: F claim occurred after Judge started.");
+  }
+  if (verifiedCount() !== 0) {
+    throw new Error("Judge/Admin auto-commit refused: F queue verified is not 0.");
+  }
+
+  const afterJudgeRows = judgeCount();
+  const afterReviewedRows = judgeCount(`wp_id=${sql(reviewedWpId)}`);
+  const expectedIncrease = beforeReviewedRows === 0 ? 1 : 0;
+  if (afterJudgeRows !== beforeJudgeRows + expectedIncrease || afterReviewedRows !== 1) {
+    throw new Error("Judge/Admin auto-commit refused: Judge ledger rows changed beyond the reviewed workpack.");
+  }
+
+  return { shouldCommit: true, reason: "factory DB ledger-only change" };
+}
+
+function commitJudgeLedgerBatch() {
+  const timestamp = new Date().toISOString().replace(/\.\d{3}Z$/, "Z");
+  runGit(["add", DEFAULT_DB_PATH]);
+  runGit(["commit", "-m", `${JUDGE_LEDGER_BATCH_MESSAGE} ${timestamp}`], { output: true });
+  const remaining = dirtyFiles();
+  if (remaining.length > 0) {
+    throw new Error(`Judge/Admin auto-commit did not leave repo clean. Dirty files: ${remaining.join(", ")}`);
+  }
+}
+
+function autoCommitJudgeLedgerIfSafe(safety) {
+  const result = assertJudgeAdminCommitSafe(safety);
+  if (!result.shouldCommit) return;
+  commitJudgeLedgerBatch();
 }
 
 export function initializeSchema() {
@@ -271,6 +384,7 @@ function next() {
 
 function claim(wpId, worker) {
   initializeSchema();
+  assertFCanClaim();
   if (!F_STATUSES.has("running")) throw new Error("Invalid F status configuration");
   runSql(
     `BEGIN IMMEDIATE;
@@ -310,6 +424,9 @@ function judge(wpId, judgeStatus, artifactPath, commitHash) {
   if (!JUDGE_STATUSES.has(judgeStatus)) throw new Error(`Invalid judge status: ${judgeStatus}`);
   required(artifactPath, "judge_artifact");
   required(commitHash, "commit_hash");
+  const beforeJudgeRows = judgeCount();
+  const beforeReviewedRows = judgeCount(`wp_id=${sql(wpId)}`);
+  const beforeEventId = eventMaxId();
   const validationSummary = `${judgeStatus} recorded by Judge/Admin for ${wpId} at ${commitHash}.`;
   const antiFakeSummary = "Judge ledger is separate from F queue; F verified remains locked to 0.";
 
@@ -329,6 +446,7 @@ VALUES (${sql(wpId)}, 'Judge', ${sql(judgeStatus)}, ${sql(`Judge artifact: ${art
 COMMIT;
 SELECT wp_id, judge_status, commit_hash, judge_artifact, verified_at FROM dp_int_judge_results WHERE wp_id=${sql(wpId)};`,
   );
+  autoCommitJudgeLedgerIfSafe({ reviewedWpId: wpId, beforeJudgeRows, beforeReviewedRows, beforeEventId });
 }
 
 function closeout() {
@@ -396,6 +514,9 @@ if (import.meta.url === `file://${process.argv[1]}`) {
 export const internals = {
   F_STATUSES,
   JUDGE_STATUSES,
+  assertFCanClaim,
+  assertJudgeAdminCommitSafe,
+  autoCommitJudgeLedgerIfSafe,
   parseWorkpackFile,
   runSql,
   sql,
