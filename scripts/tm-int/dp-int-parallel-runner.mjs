@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-import { existsSync, mkdirSync, symlinkSync } from "node:fs";
+import { chmodSync, existsSync, mkdirSync, symlinkSync, writeFileSync } from "node:fs";
 import { dirname, resolve } from "node:path";
 import { spawnSync } from "node:child_process";
 
@@ -266,26 +266,32 @@ export function stopStatus(index) {
 export function startWorker(index) {
   const setup = setupWorktree(index);
   const logPath = `/tmp/dp-int-f-worker-${index}-${new Date().toISOString().replace(/[:.]/g, "")}.log`;
+  const promptPath = logPath.replace(/\.log$/, ".prompt.txt");
+  const scriptPath = logPath.replace(/\.log$/, ".supervisor.sh");
   const session = `dp-int-f-worker-${index}`;
   run("tmux", ["kill-session", "-t", session], { check: false });
-  const command = [
-    `cd ${setup.path} &&`,
-    "while true; do",
-    `codex exec --dangerously-bypass-approvals-and-sandbox -C ${setup.path} ${JSON.stringify(codexPrompt(index))}`,
-    `node ${repoRoot()}/scripts/tm-int/dp-int-parallel-runner.mjs should-stop ${index} && break`,
-    "sleep 5",
-    "done",
-  ].join(" ");
+  writeFileSync(promptPath, codexPrompt(index));
+  writeFileSync(scriptPath, `#!/usr/bin/env bash
+set -u
+exec >> "${logPath}" 2>&1
+cd "${setup.path}"
+while true; do
+  codex exec --dangerously-bypass-approvals-and-sandbox -C "${setup.path}" "$(cat "${promptPath}")"
+  node "${repoRoot()}/scripts/tm-int/dp-int-parallel-runner.mjs" should-stop ${index} && break
+  sleep 5
+done
+`);
+  chmodSync(scriptPath, 0o755);
   run("tmux", [
     "new-session",
     "-d",
     "-s",
     session,
-    `${command} > ${logPath} 2>&1`,
+    scriptPath,
   ]);
   const pane = run("tmux", ["list-panes", "-t", session, "-F", "#{pane_pid}"]).stdout.trim();
   const child = run("pgrep", ["-P", pane, "-f", "codex exec"], { check: false }).stdout.trim().split(/\r?\n/).filter(Boolean)[0] || pane;
-  return { ...setup, session, pane_pid: Number(pane), pid: Number(child.split(/\s+/)[0] || child), logPath };
+  return { ...setup, session, pane_pid: Number(pane), pid: Number(child.split(/\s+/)[0] || child), logPath, scriptPath };
 }
 
 export function startWorkers(count = DEFAULT_WORKER_COUNT) {
