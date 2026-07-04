@@ -192,20 +192,31 @@ function parseWorkpackFile(filePath) {
     throw new Error("Workpack file must be a JSON array or an object with a workpacks array");
   }
 
-  return items.map((item, index) => ({
-    wp_id: required(item.wp_id, `workpacks[${index}].wp_id`),
-    semantic_key: required(item.semantic_key, `workpacks[${index}].semantic_key`),
-    tm_int_id: required(item.tm_int_id, `workpacks[${index}].tm_int_id`),
-    source_file: required(item.source_file, `workpacks[${index}].source_file`),
-    source_line: required(item.source_line, `workpacks[${index}].source_line`),
-    source_anchor_excerpt: required(item.source_anchor_excerpt, `workpacks[${index}].source_anchor_excerpt`),
-    related_test_or_replay_file: required(item.related_test_or_replay_file, `workpacks[${index}].related_test_or_replay_file`),
-    objective: required(item.objective, `workpacks[${index}].objective`),
-    expected_product_value: required(item.expected_product_value, `workpacks[${index}].expected_product_value`),
-    acceptance_tests: asLineList(item.acceptance_tests, `workpacks[${index}].acceptance_tests`),
-    judge_checks: asLineList(item.judge_checks, `workpacks[${index}].judge_checks`),
-    anti_fake_checks: asLineList(item.anti_fake_checks, `workpacks[${index}].anti_fake_checks`),
-  }));
+  return items.map((item, index) => {
+    const status = required(item.status, `workpacks[${index}].status`);
+    const verified = item.verified;
+    if (status !== "workpack_ready") {
+      throw new Error(`workpacks[${index}].status must be workpack_ready`);
+    }
+    if (verified !== 0) {
+      throw new Error(`workpacks[${index}].verified must be 0`);
+    }
+
+    return {
+      wp_id: required(item.wp_id, `workpacks[${index}].wp_id`),
+      semantic_key: required(item.semantic_key, `workpacks[${index}].semantic_key`),
+      tm_int_id: required(item.tm_int_id, `workpacks[${index}].tm_int_id`),
+      source_file: required(item.source_file, `workpacks[${index}].source_file`),
+      source_line: required(item.source_line, `workpacks[${index}].source_line`),
+      source_anchor_excerpt: required(item.source_anchor_excerpt, `workpacks[${index}].source_anchor_excerpt`),
+      related_test_or_replay_file: required(item.related_test_or_replay_file, `workpacks[${index}].related_test_or_replay_file`),
+      objective: required(item.objective, `workpacks[${index}].objective`),
+      expected_product_value: required(item.expected_product_value, `workpacks[${index}].expected_product_value`),
+      acceptance_tests: asLineList(item.acceptance_tests, `workpacks[${index}].acceptance_tests`),
+      judge_checks: asLineList(item.judge_checks, `workpacks[${index}].judge_checks`),
+      anti_fake_checks: asLineList(item.anti_fake_checks, `workpacks[${index}].anti_fake_checks`),
+    };
+  });
 }
 
 function init() {
@@ -325,7 +336,10 @@ function closeout() {
   runSql(
     `.mode column
 .headers on
-SELECT status, COUNT(*) AS rows FROM dp_int_workpacks GROUP BY status ORDER BY status;
+SELECT 'workpack_ready' AS status, COUNT(*) AS rows FROM dp_int_workpacks WHERE status='workpack_ready';
+SELECT 'running' AS status, COUNT(*) AS rows FROM dp_int_workpacks WHERE status='running';
+SELECT 'f_done' AS status, COUNT(*) AS rows FROM dp_int_workpacks WHERE status='f_done';
+SELECT 'verified' AS metric, COALESCE(SUM(verified), 0) AS rows FROM dp_int_workpacks;
 SELECT 'judge_pass' AS judge_status, COUNT(*) AS rows FROM dp_int_judge_results WHERE judge_status='judge_pass';
 SELECT 'judge_fail' AS judge_status, COUNT(*) AS rows FROM dp_int_judge_results WHERE judge_status='judge_fail';
 SELECT COUNT(*) AS f_done_unjudged FROM dp_int_f_done_unjudged;`,
@@ -386,4 +400,3 @@ export const internals = {
   runSql,
   sql,
 };
-

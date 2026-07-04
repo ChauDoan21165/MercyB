@@ -54,6 +54,8 @@ function writeWorkpacks(root, overrides = {}) {
             acceptance_tests: ["npm test -- --run src/lib/tm-int/dp"],
             judge_checks: ["F verified remains zero", "Judge result is separate"],
             anti_fake_checks: ["no report-only progress", "no skipped tests"],
+            status: "workpack_ready",
+            verified: 0,
             ...overrides,
           },
         ],
@@ -97,6 +99,24 @@ describe("DP INT factory control plane", () => {
 
     expect(result.status).not.toBe(0);
     expect(result.stderr).toContain("workpacks[0].semantic_key");
+  });
+
+  it("workpack import requires workpack_ready seed status", () => {
+    const root = makeTempRoot();
+    expect(run(root, ["init"]).status).toBe(0);
+    const result = run(root, ["import-workpacks", writeWorkpacks(root, { status: "running" })]);
+
+    expect(result.status).not.toBe(0);
+    expect(result.stderr).toContain("status must be workpack_ready");
+  });
+
+  it("workpack import requires verified=0 seed value", () => {
+    const root = makeTempRoot();
+    expect(run(root, ["init"]).status).toBe(0);
+    const result = run(root, ["import-workpacks", writeWorkpacks(root, { verified: 1 })]);
+
+    expect(result.status).not.toBe(0);
+    expect(result.stderr).toContain("verified must be 0");
   });
 
   it("claim uses atomic running transition", () => {
@@ -178,4 +198,3 @@ describe("DP INT factory control plane", () => {
     expect(output.stdout).toContain("f_done_unjudged");
   });
 });
-
