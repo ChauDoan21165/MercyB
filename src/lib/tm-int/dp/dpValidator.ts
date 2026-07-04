@@ -1,6 +1,7 @@
 import type { TeacherContext } from "../runtime";
 import {
   dpAllowsPedAction,
+  dpRecommendationHasEvidenceRationale,
   isDpDecisionConfidenceLevel,
   type DpEvidenceBasedDecision,
   type DpLearnerPerformanceClaim,
@@ -290,11 +291,11 @@ export function validateDpDecision(
     });
   }
 
-  if (!decision.recommendation.rationale.trim()) {
+  if (!dpRecommendationHasEvidenceRationale(decision)) {
     failures.push({
       code: "recommendation_missing_rationale",
       path: "recommendation.rationale",
-      reason: "DP recommendation must include a rationale.",
+      reason: "DP recommendation must include rationale tied to cited evidence.",
     });
   }
 

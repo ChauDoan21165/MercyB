@@ -3,6 +3,7 @@ import type { TeacherContext } from "../../runtime";
 import {
   DP_DECISION_CONFIDENCE_LEVELS,
   dpAllowsPedAction,
+  dpRecommendationHasEvidenceRationale,
   dpTeacherContextReferenceFrom,
   isDpDecisionConfidenceLevel,
   type DpEvidenceBasedDecision,
@@ -274,6 +275,18 @@ describe("validateDpDecision", () => {
     );
   });
 
+  test("FAIL recommendation with generic rationale not tied to evidence", () => {
+    const decision = {
+      ...createValidDecision(),
+      recommendation: { action: "exclude_listening_score", rationale: "Do this next." },
+    };
+
+    expect(dpRecommendationHasEvidenceRationale(decision)).toBe(false);
+    expect(validateDpDecision(decision, createTeacherContext()).failures).toEqual(
+      expect.arrayContaining([expect.objectContaining({ code: "recommendation_missing_rationale" })]),
+    );
+  });
+
   test("FAIL PED allowed without action", () => {
     const decision = {
       ...createValidDecision(),
@@ -291,6 +304,7 @@ describe("validateDpDecision", () => {
     const decision = createValidDecision();
 
     expect(dpAllowsPedAction(decision)).toBe(true);
+    expect(dpRecommendationHasEvidenceRationale(decision)).toBe(true);
     expect(validateDpDecision(decision, createTeacherContext()).pass).toBe(true);
   });
 

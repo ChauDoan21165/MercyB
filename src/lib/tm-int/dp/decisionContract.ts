@@ -69,3 +69,10 @@ export function dpAllowsPedAction(decision: DpEvidenceBasedDecision): boolean {
     decision.recommendation.rationale.trim().length > 0
   );
 }
+
+export function dpRecommendationHasEvidenceRationale(decision: DpEvidenceBasedDecision): boolean {
+  const rationale = decision.recommendation.rationale.trim();
+  if (!rationale) return false;
+  if (decision.citedObservationIds.length === 0 && decision.citedLearningSignalIds.length === 0) return false;
+  return /teacher context|observation|learning signal|evidence|product issue|validity|retest|fallback|follow-up/i.test(rationale);
+}
