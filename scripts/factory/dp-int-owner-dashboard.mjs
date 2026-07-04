@@ -90,7 +90,7 @@ function workerProcessStatus(index, claimRows) {
   return {
     worker,
     session,
-    live: Boolean(panePid && childPid),
+    live: Boolean(childPid),
     panePid: panePid ? Number(panePid) : null,
     pid: childPid ? Number(childPid) : null,
     worktree,
