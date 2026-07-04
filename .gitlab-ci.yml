@@ -726,6 +726,19 @@ variables:
     command -v nproc  >/dev/null 2>&1 && echo "[B3-CPU-PROBE] nproc=$(nproc)" || true
     command -v sysctl >/dev/null 2>&1 && echo "[B3-CPU-PROBE] hw.logicalcpu=$(sysctl -n hw.logicalcpu 2>/dev/null) hw.physicalcpu=$(sysctl -n hw.physicalcpu 2>/dev/null) hw.ncpu=$(sysctl -n hw.ncpu 2>/dev/null)" || true
     echo "[B3-CPU-PROBE] CI_NODE_INDEX=$CI_NODE_INDEX CI_NODE_TOTAL=$CI_NODE_TOTAL CI_CONCURRENT_ID=$CI_CONCURRENT_ID runner=$CI_RUNNER_DESCRIPTION tags=$CI_RUNNER_TAGS"
+  - |
+    case "$(uname -s)" in
+      Darwin)
+        npx playwright install chromium
+        ;;
+      Linux)
+        npx playwright install --with-deps chromium
+        ;;
+      *)
+        echo "Unsupported CI OS: $(uname -s)" >&2
+        exit 1
+        ;;
+    esac
   - npx vitest run --shard=$CI_NODE_INDEX/$CI_NODE_TOTAL --maxWorkers=4
 
 .ai_tutor_quality_gate_script: &ai_tutor_quality_gate_script

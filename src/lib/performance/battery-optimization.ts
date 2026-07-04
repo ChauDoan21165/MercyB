@@ -5,6 +5,20 @@
 
 import { useEffect, useState, useCallback } from "react";
 
+type BatteryManager = EventTarget & {
+  level: number;
+  charging: boolean;
+};
+
+type NavigatorWithBattery = Navigator & {
+  getBattery?: () => Promise<BatteryManager>;
+};
+
+type WindowWithIdleCallback = Window & {
+  requestIdleCallback?: (callback: () => void, options?: { timeout?: number }) => number;
+  cancelIdleCallback?: (id: number) => void;
+};
+
 /**
  * Detect if user is on low battery
  */
@@ -19,23 +33,26 @@ export function useBatteryStatus() {
 
     let cleanup: (() => void) | undefined;
 
-    if ("getBattery" in navigator) {
-      (navigator as unknown)
+    const navigatorWithBattery = navigator as NavigatorWithBattery;
+
+    if (typeof navigatorWithBattery.getBattery === "function") {
+      navigatorWithBattery
         .getBattery()
         .then((battery: unknown) => {
+          const typedBattery = battery as BatteryManager;
           const updateBatteryStatus = () => {
-            setBatteryLevel(battery.level * 100);
-            setIsCharging(Boolean(battery.charging));
-            setIsLowBattery(battery.level < 0.2 && !battery.charging);
+            setBatteryLevel(typedBattery.level * 100);
+            setIsCharging(Boolean(typedBattery.charging));
+            setIsLowBattery(typedBattery.level < 0.2 && !typedBattery.charging);
           };
 
           updateBatteryStatus();
-          battery.addEventListener("levelchange", updateBatteryStatus);
-          battery.addEventListener("chargingchange", updateBatteryStatus);
+          typedBattery.addEventListener("levelchange", updateBatteryStatus);
+          typedBattery.addEventListener("chargingchange", updateBatteryStatus);
 
           cleanup = () => {
-            battery.removeEventListener("levelchange", updateBatteryStatus);
-            battery.removeEventListener("chargingchange", updateBatteryStatus);
+            typedBattery.removeEventListener("levelchange", updateBatteryStatus);
+            typedBattery.removeEventListener("chargingchange", updateBatteryStatus);
           };
         })
         .catch(() => {
@@ -100,8 +117,10 @@ export function requestIdleCallbackPolyfill(callback: () => void, timeout = 1000
     return setTimeout(callback, 1) as unknown;
   }
 
-  if ("requestIdleCallback" in window) {
-    return (window as unknown).requestIdleCallback(callback, { timeout });
+  const windowWithIdleCallback = window as WindowWithIdleCallback;
+
+  if (typeof windowWithIdleCallback.requestIdleCallback === "function") {
+    return windowWithIdleCallback.requestIdleCallback(callback, { timeout });
   } else {
     return setTimeout(callback, 1) as unknown;
   }
@@ -116,8 +135,10 @@ export function cancelIdleCallbackPolyfill(id: number) {
     return;
   }
 
-  if ("cancelIdleCallback" in window) {
-    (window as unknown).cancelIdleCallback(id);
+  const windowWithIdleCallback = window as WindowWithIdleCallback;
+
+  if (typeof windowWithIdleCallback.cancelIdleCallback === "function") {
+    windowWithIdleCallback.cancelIdleCallback(id);
   } else {
     clearTimeout(id);
   }

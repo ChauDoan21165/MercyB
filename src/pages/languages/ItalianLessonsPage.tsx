@@ -92,7 +92,7 @@ export default function ItalianLessonsPage() {
       <section aria-label="Italian lesson list" className="grid gap-3">
         {italianLessons.map((lesson) => (
           <article key={lesson.key} className="rounded-lg border border-slate-200 bg-white p-4 shadow-sm">
-            <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">{lesson.level}</p>
+            <p className="text-xs font-semibold uppercase tracking-wide text-slate-600">{lesson.level}</p>
             <h2 className="mt-1 text-lg font-semibold text-slate-950">{lesson.title}</h2>
             {lesson.description ? <p className="mt-2 text-sm text-slate-600">{lesson.description}</p> : null}
           </article>

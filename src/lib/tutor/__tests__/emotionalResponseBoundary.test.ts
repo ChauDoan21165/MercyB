@@ -159,6 +159,18 @@ describe("classifyResponseStance", () => {
     });
   });
 
+  it("keeps benign lost-object salience available for pivot without forcing a pause", () => {
+    expect(
+      classifyResponseStance({
+        learnerText: "I lost my keys",
+        salience: { ...pauseSalience, matchedText: "lost" },
+      }),
+    ).toMatchObject({
+      stance: "neutral",
+      reason: "no_response_stance_signal",
+    });
+  });
+
   it("does not put diagnosis wording in exported advisory copy", () => {
     expect(Object.values(RESPONSE_STANCE_ADVISORY_COPY).join(" ")).not.toMatch(
       /diagnos|depress|anxiety|trauma|therapy|therapist|mental health|clinical|disorder|treatment|symptom|counsel/i,

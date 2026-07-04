@@ -94,7 +94,7 @@ function makeGainDimension(overrides: Partial<{
     titleVi: overrides.titleVi ?? "Giảm lỗi",
     titleEn: overrides.titleEn ?? "Error reduction",
     score: (overrides.score ?? 2) as 0 | 1 | 2 | 3,
-    label: (overrides.score === 3 ? "strong" : overrides.score === 2 ? "clear" : overrides.score === 1 ? "minimal" : "none") satisfies GainDimensionLabel,
+    label: (overrides.score === 3 ? "strong" : overrides.score === 2 ? "clear" : overrides.score === 1 ? "minimal" : "none") as GainDimensionLabel,
     baselineValue: overrides.baselineValue ?? 0.4,
     outcomeValue: overrides.outcomeValue ?? 0.25,
     delta: overrides.delta ?? -0.15,
@@ -123,7 +123,7 @@ function makeFullGainResult(overrides: Partial<LearningGainResult> = {}): Learni
     titleVi: dimTitlesVi[i],
     titleEn: dimTitlesEn[i],
     score: (i < numImproving ? 2 : 1) as 0 | 1 | 2 | 3,
-    label: (i < numImproving ? "clear" : "minimal") satisfies GainDimensionLabel,
+    label: (i < numImproving ? "clear" : "minimal") as GainDimensionLabel,
     baselineValue: i === 1 ? 65 : 0.4,
     outcomeValue: i === 1 ? 78 : 0.25,
     delta: i === 1 ? 13 : -0.15,
@@ -136,7 +136,7 @@ function makeFullGainResult(overrides: Partial<LearningGainResult> = {}): Learni
     const declining = overrides.decliningDimensions;
     for (let i = 0; i < Math.min(declining, dimIds.length); i++) {
       dimensions[i].score = 0;
-      dimensions[i].label = "none";
+      dimensions[i].label = "none" as GainDimensionLabel;
     }
   }
 

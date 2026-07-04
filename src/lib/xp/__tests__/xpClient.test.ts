@@ -7,6 +7,11 @@ import { describe, it, expect, vi, beforeEach } from "vitest";
 import type { createSupabaseMock } from "@/test/mocks/supabaseMock";
 
 type SupabaseMock = ReturnType<typeof createSupabaseMock>;
+type SupabaseFromResult = ReturnType<SupabaseMock["from"]>;
+
+function asSupabaseFromResult(chain: unknown): SupabaseFromResult {
+  return chain as SupabaseFromResult;
+}
 
 vi.mock("@/lib/supabaseClient", async () => {
   const mod = await vi.importActual<typeof import("@/test/mocks/supabaseMock")>("@/test/mocks/supabaseMock");
@@ -104,7 +109,7 @@ describe("getXpThisWeek", () => {
     const gte = vi.fn(() => ({ lt }));
     const eq = vi.fn(() => ({ gte }));
     const select = vi.fn(() => ({ eq }));
-    supabaseMock.from.mockImplementationOnce(() => ({ select }));
+    supabaseMock.from.mockImplementationOnce(() => asSupabaseFromResult({ select }));
 
     const total = await getXpThisWeek("u1", new Date(2026, 3, 22));
 
@@ -123,7 +128,7 @@ describe("getXpThisWeek", () => {
     const gte = vi.fn(() => ({ lt }));
     const eq = vi.fn(() => ({ gte }));
     const select = vi.fn(() => ({ eq }));
-    supabaseMock.from.mockImplementationOnce(() => ({ select }));
+    supabaseMock.from.mockImplementationOnce(() => asSupabaseFromResult({ select }));
 
     const total = await getXpThisWeek("u1");
     expect(total).toBe(0);

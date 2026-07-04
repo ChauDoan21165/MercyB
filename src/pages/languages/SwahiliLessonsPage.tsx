@@ -80,7 +80,7 @@ export default function SwahiliLessonsPage() {
               {lesson.title ?? lesson.english ?? lesson.swahili ?? `Swahili lesson ${index + 1}`}
             </h2>
             {lesson.swahili ? <p className="mt-2 text-sm text-slate-700">{lesson.swahili}</p> : null}
-            {lesson.english ? <p className="mt-1 text-sm text-slate-500">{lesson.english}</p> : null}
+            {lesson.english ? <p className="mt-1 text-sm text-slate-600">{lesson.english}</p> : null}
           </article>
         ))}
       </section>

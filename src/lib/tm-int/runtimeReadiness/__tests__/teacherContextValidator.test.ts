@@ -6,7 +6,7 @@ import { judgeRuntimeReadinessEvidence } from "../judgeRubric";
 import { validateTeacherContext } from "../teacherContextValidator";
 
 const learningSignal = {
-  signal_key: "ProductiveHesitation",
+  signal_key: "productive_hesitation",
   source_edu_id: "EDU-LS-000001",
   confidence: "medium",
   evidenceCount: 1,
@@ -104,7 +104,7 @@ function bundle(overrides: Partial<RuntimeEvidenceBundle> = {}): RuntimeEvidence
       productFailure: true,
       learnerWeakness: false,
       observationIds: ["obs-packet-rr001"],
-      signalKeys: ["ProductiveHesitation"],
+      signalKeys: ["productive_hesitation"],
     },
     pedDecision: {
       stage: "PED",
@@ -114,7 +114,7 @@ function bundle(overrides: Partial<RuntimeEvidenceBundle> = {}): RuntimeEvidence
       productFailure: true,
       learnerWeakness: false,
       observationIds: ["obs-packet-rr001"],
-      signalKeys: ["ProductiveHesitation"],
+      signalKeys: ["productive_hesitation"],
     },
     runtimeDecision: {
       changed: true,
@@ -123,7 +123,7 @@ function bundle(overrides: Partial<RuntimeEvidenceBundle> = {}): RuntimeEvidence
       learningSignalsUsed: true,
       summary: "exclude listening score",
       observationIds: ["obs-packet-rr001"],
-      signalKeys: ["ProductiveHesitation"],
+      signalKeys: ["productive_hesitation"],
     },
     replay: { deterministic: true, pass: true, failures: [] },
     judgeReproduction: { deterministic: true, pass: true, failures: [] },

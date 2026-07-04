@@ -2043,7 +2043,7 @@ describe("DE6 — Improvement Evidence", () => {
 
     it("DE6.3.2: recordLearningEvent returns null for invalid event types", () => {
       const event = recordLearningEvent({
-        eventType: "invalid_type" as unknown,
+        eventType: "invalid_type" as never,
         product: "ai_tutor",
         targetLanguage: "en",
       });
