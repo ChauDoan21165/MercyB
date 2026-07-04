@@ -23,7 +23,11 @@ export default [
       "**/*.min.js",
 
       // legacy / infra noise
-      "scripts/**",
+      "scripts/launch-health-check.js",
+      "scripts/migrate-leaf0-to-entries.mjs",
+      "scripts/roommaster-autofix.js",
+      "scripts/validate-audio-content-match.js",
+      "scripts/verify-mobile-audio.mjs",
       "supabase/migrations/**",
       "supabase/seed.sql",
       "src/_legacy_next_pages/**",
@@ -220,6 +224,10 @@ export default [
       "no-console": "off",
       "no-redeclare": "off",
       "prefer-const": "off",
+      "no-empty": "off",
+      "no-useless-escape": "off",
+      "no-constant-condition": "off",
+      "no-fallthrough": "off",
 
       "@typescript-eslint/no-require-imports": "off",
       "@typescript-eslint/no-var-requires": "off",
