@@ -30,6 +30,19 @@ function run(command, args, input) {
   return result.stdout.trim();
 }
 
+function runMaybe(command, args, options = {}) {
+  const result = spawnSync(command, args, {
+    cwd: options.cwd || process.cwd(),
+    encoding: "utf8",
+    input: options.input,
+  });
+  return {
+    ok: result.status === 0,
+    stdout: result.stdout.trim(),
+    stderr: result.stderr.trim(),
+  };
+}
+
 function readSqlJson(statement) {
   const output = run("sqlite3", ["-readonly", "-json", resolve(DB_PATH), statement]);
   return output ? JSON.parse(output) : [];
@@ -52,6 +65,32 @@ function ratio(done, total) {
     total,
     text: `${done} / ${total}`,
     percent: total > 0 ? Math.round((done / total) * 1000) / 10 : 0,
+  };
+}
+
+function workerProcessStatus(index, claimRows) {
+  const worker = `F-DP-INT-W${index}`;
+  const session = `dp-int-f-worker-${index}`;
+  const worktree = `/Users/admin/MercyB.worktrees/dp-f-${index}`;
+  const pane = runMaybe("tmux", ["list-panes", "-t", session, "-F", "#{pane_pid}"]);
+  const panePid = pane.ok ? pane.stdout.split(/\r?\n/).filter(Boolean)[0] : "";
+  const child = panePid ? runMaybe("pgrep", ["-P", panePid, "-f", "codex exec"]) : { ok: false, stdout: "" };
+  const childPid = child.stdout.split(/\r?\n/).filter(Boolean)[0]?.split(/\s+/)[0] || "";
+  const status = runMaybe("git", ["status", "--short"], { cwd: worktree });
+  const claim = claimRows.find((row) => row.worker === worker);
+  const dirty = status.ok && status.stdout.length > 0;
+
+  return {
+    worker,
+    session,
+    live: Boolean(panePid && childPid),
+    panePid: panePid ? Number(panePid) : null,
+    pid: childPid ? Number(childPid) : null,
+    worktree,
+    dirty,
+    dirtyStatus: dirty ? status.stdout.split(/\r?\n/) : [],
+    claim: claim || null,
+    staleClaim: Boolean(claim && !(panePid && childPid)),
   };
 }
 
@@ -78,6 +117,10 @@ function getStatus() {
   const workerRows = readSqlJson(
     "SELECT claimed_by AS worker, wp_id, claimed_at FROM dp_int_workpacks WHERE status='running' ORDER BY claimed_at, wp_id",
   );
+  const workerProcesses = Array.from({ length: TARGET_WORKERS }, (_, offset) => workerProcessStatus(offset + 1, workerRows));
+  const liveWorkers = workerProcesses.filter((worker) => worker.live);
+  const staleClaims = workerProcesses.filter((worker) => worker.staleClaim);
+  const dirtyWorktrees = workerProcesses.filter((worker) => worker.dirty);
   const fDone = statusCounts.f_done || 0;
   const ready = statusCounts.workpack_ready || 0;
   const running = statusCounts.running || 0;
@@ -105,9 +148,13 @@ function getStatus() {
     generatedAt: new Date().toISOString(),
     phase,
     workers: {
-      active: new Set(workerRows.map((row) => row.worker).filter(Boolean)).size,
+      active: liveWorkers.length,
       target: TARGET_WORKERS,
       running: workerRows,
+      runningClaims: new Set(workerRows.map((row) => row.worker).filter(Boolean)).size,
+      processes: workerProcesses,
+      staleClaims,
+      dirtyWorktrees,
     },
     workpacks: {
       total,
@@ -144,6 +191,9 @@ function buildReport(status) {
     `Generated: ${status.generatedAt}`,
     `Current phase: ${status.phase}`,
     `Workers: ${status.workers.active} / ${status.workers.target}`,
+    `Running claims: ${status.workers.runningClaims}`,
+    `Stale/blocked claims: ${status.workers.staleClaims.length}`,
+    `Dirty worktrees: ${status.workers.dirtyWorktrees.length}`,
     `Current blocker: ${status.blocker}`,
     `Judge backlog: ${status.judgeBacklog.text}`,
     `F can continue: ${status.fCanContinue ? "YES" : "NO"}`,
@@ -158,6 +208,14 @@ function buildReport(status) {
     `- judged pass = ${status.workpacks.judge_pass}`,
     `- judged fail = ${status.workpacks.judge_fail}`,
     `- verified = ${status.workpacks.verified}`,
+    "",
+    "## Workers",
+    "",
+    ...status.workers.processes.map((worker) => [
+      `- ${worker.worker}: ${worker.live ? `live pid ${worker.pid}` : "dead"}`,
+      worker.claim ? ` claim=${worker.claim.wp_id}` : " claim=NONE",
+      worker.dirty ? ` dirty=${worker.dirtyStatus.join("; ")}` : " dirty=NO",
+    ].join(";")),
     "",
     "## Progress",
     "",
@@ -220,12 +278,16 @@ li{margin:4px 0;overflow-wrap:anywhere}@media(max-width:820px){header{flex-direc
 <header><div><div class="label">Task name</div><h1 id="task">DP INT v1 Factory Run</h1><div class="subtle">Refreshes every 2 seconds. Local only.</div></div><button id="copy">Copy Report</button></header>
 <section class="grid">
 <div class="panel span4"><div class="label">Current phase</div><div class="value phase" id="phase">Loading</div></div>
-<div class="panel span4"><div class="label">Workers</div><div class="value"><span id="active">0</span> / <span id="target">0</span></div></div>
+<div class="panel span4"><div class="label">Live workers</div><div class="value"><span id="active">0</span> / <span id="target">0</span></div></div>
 <div class="panel span4"><div class="label">Current blocker</div><div class="value ok" id="blocker">NONE</div></div>
+<div class="panel span4"><div class="label">Running claims</div><div class="value" id="runningClaims">0</div></div>
+<div class="panel span4"><div class="label">Stale/blocked claims</div><div class="value warn" id="staleClaims">0</div></div>
+<div class="panel span4"><div class="label">Dirty worktrees</div><div class="value warn" id="dirtyWorktrees">0</div></div>
 <div class="panel span4"><div class="label">Judge backlog</div><div class="value" id="judgeBacklog">0 / 50</div></div>
 <div class="panel span4"><div class="label">F can continue</div><div class="value ok" id="fCanContinue">YES</div></div>
 <div class="panel span6"><div class="label">Workpacks</div><table><tbody id="workpacks"></tbody></table></div>
 <div class="panel span6"><div class="label">Progress</div><div id="progress"></div></div>
+<div class="panel span12"><div class="label">Workers</div><table><thead><tr><th>Worker</th><th>Process</th><th>Claim</th><th>Worktree</th></tr></thead><tbody id="workerRows"></tbody></table></div>
 <div class="panel span6"><div class="label">Latest commits</div><ul id="commits"></ul></div>
 <div class="panel span6"><div class="label">Safety locks</div><ul id="locks"></ul></div>
 <div class="panel span12"><div class="label">Git status</div><ul id="git"></ul></div>
@@ -235,14 +297,17 @@ li{margin:4px 0;overflow-wrap:anywhere}@media(max-width:820px){header{flex-direc
 const $=(id)=>document.getElementById(id);
 function li(text){const el=document.createElement("li");el.textContent=text;return el}
 function tr(name,value){const row=document.createElement("tr");const a=document.createElement("td");const b=document.createElement("td");a.textContent=name;b.textContent=value;row.append(a,b);return row}
+function workerTr(worker){const row=document.createElement("tr");[worker.worker,worker.live?"live pid "+worker.pid:"dead",worker.claim?worker.claim.wp_id:"NONE",worker.dirty?worker.dirtyStatus.join("; "):"clean"].forEach((value)=>{const cell=document.createElement("td");cell.textContent=value;row.append(cell)});return row}
 function metric(name,p){const d=document.createElement("div");d.className="metric";d.innerHTML="<strong>"+name+"</strong> <span class=subtle>"+p.text+" ("+p.percent+"%)</span><div class=bar><span style=width:"+Math.min(100,p.percent)+"%></span></div>";return d}
 function list(id, rows, empty){$(id).replaceChildren(...(rows.length?rows:[empty]).map(li))}
 function render(s){
   $("task").textContent=s.taskName;$("phase").textContent=s.phase;$("active").textContent=s.workers.active;$("target").textContent=s.workers.target;
+  $("runningClaims").textContent=s.workers.runningClaims;$("staleClaims").textContent=s.workers.staleClaims.length;$("dirtyWorktrees").textContent=s.workers.dirtyWorktrees.length;
   $("blocker").textContent=s.blocker;$("blocker").className="value "+(s.blocker==="NONE"?"ok":"warn");
   $("judgeBacklog").textContent=s.judgeBacklog.text;$("fCanContinue").textContent=s.fCanContinue?"YES":"NO";$("fCanContinue").className="value "+(s.fCanContinue?"ok":"warn");
   $("workpacks").replaceChildren(tr("total",s.workpacks.total),tr("done by F = f_done",s.workpacks.f_done),tr("pending = workpack_ready",s.workpacks.workpack_ready),tr("running",s.workpacks.running),tr("f_done_unjudged",s.workpacks.f_done_unjudged),tr("judged pass = judge_pass",s.workpacks.judge_pass),tr("judged fail = judge_fail",s.workpacks.judge_fail),tr("verified",s.workpacks.verified));
   $("progress").replaceChildren(metric("F progress",s.progress.f),metric("Judge progress",s.progress.judge),metric("Verified progress",s.progress.verified));
+  $("workerRows").replaceChildren(...s.workers.processes.map(workerTr));
   list("commits",s.latestCommits,"No commits found");list("locks",s.safetyLocks,"No safety locks found");list("git",s.gitStatus,"clean");
 }
 async function refresh(){const r=await fetch("/api/status",{cache:"no-store"});if(!r.ok)throw new Error(await r.text());render(await r.json())}
