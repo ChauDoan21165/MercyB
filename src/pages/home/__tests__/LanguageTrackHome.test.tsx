@@ -81,8 +81,34 @@ describe("LanguageTrackHome (non-English primary)", () => {
         />,
       );
 
-      await user.click(screen.getByRole("button", { name: new RegExp(`Open ${meta.labelEn} track`, "i") }));
+      expect(
+        screen.getByText(`Learn ${targetLabel(target, "en")}`),
+      ).toBeInTheDocument();
+      await user.click(
+        screen.getByRole("button", {
+          name: new RegExp(`Open ${meta.labelEn} track`, "i"),
+        }),
+      );
       expect(navigateMock).toHaveBeenCalledWith(`/languages/${meta.slug}`);
+      unmount();
+    }
+  });
+
+  it("renders native-language CTA labels for every public target slug", () => {
+    const routedTargets = Object.entries(TARGET_META).filter(
+      (entry): entry is [TargetLang, (typeof TARGET_META)[TargetLang] & { slug: string }] => entry[1].slug !== null,
+    );
+
+    for (const [target] of routedTargets) {
+      const { unmount } = wrap(
+        <LanguageTrackHome
+          nativeLanguage="vi"
+          targets={[target]}
+          primaryTarget={target}
+        />,
+      );
+
+      expect(screen.getByText(`Học ${targetLabel(target, "vi")}`)).toBeInTheDocument();
       unmount();
     }
   });

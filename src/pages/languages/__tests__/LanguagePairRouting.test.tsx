@@ -10,6 +10,7 @@ import LanguagePairSelectorPage from "../LanguagePairSelectorPage";
 import LearnPairRedirectPage from "../LearnPairRedirectPage";
 import UnsupportedPairPage from "../UnsupportedPairPage";
 import { UiLanguageProvider } from "@/contexts/UiLanguageContext";
+import { TARGET_META, type TargetLang } from "@/lib/onboarding/types";
 
 type LanguageRouteCase = {
   name: string;
@@ -171,6 +172,42 @@ describe("language pair routing pages", () => {
     renderAt("/learn/vietnamese/klingon", <LearnPairRedirectPage />);
 
     expect(screen.getByLabelText("current route").textContent).toBe("/languages");
+  });
+
+  it("redirects unsupported native and target combinations to the languages index", () => {
+    renderAt("/learn/klingon/elvish", <LearnPairRedirectPage />);
+
+    expect(screen.getByLabelText("current route").textContent).toBe("/languages");
+  });
+
+  it("keeps TARGET_META public slugs routed from learn-pair redirects", () => {
+    const tutorTargets: Partial<Record<TargetLang, string>> = {
+      fr: "fr",
+      zh: "zh",
+      de: "de",
+      ja: "ja",
+      ko: "ko",
+      es: "es",
+      vi: "vi",
+    };
+    const routedTargets = Object.entries(TARGET_META).filter(
+      (entry): entry is [TargetLang, (typeof TARGET_META)[TargetLang] & { slug: string }] => entry[1].slug !== null,
+    );
+
+    for (const [target, meta] of routedTargets) {
+      const { unmount } = renderAt(
+        `/learn/vietnamese/${meta.slug}`,
+        <LearnPairRedirectPage />,
+      );
+      const expectedRoute = tutorTargets[target]
+        ? `/ai-tutor?native=vietnamese&target=${tutorTargets[target]}`
+        : `/languages/${meta.slug}`;
+
+      expect(screen.getByLabelText("current route").textContent).toBe(
+        expectedRoute,
+      );
+      unmount();
+    }
   });
 
   it("renders Vietnamese fallback copy for unsupported Vietnamese-native pairs", () => {

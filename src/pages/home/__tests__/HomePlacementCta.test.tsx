@@ -273,6 +273,8 @@ describe("Home placement CTA", () => {
   it("routes the Placement card to /placement with placement flags off and records telemetry", async () => {
     renderHome();
 
+    expect(screen.getByTestId("pathname")).toHaveTextContent("/");
+
     await userEvent.click(screen.getByRole("button", { name: "Placement test" }));
 
     expect(screen.getByText("Kiểm tra trình độ")).toBeInTheDocument();
