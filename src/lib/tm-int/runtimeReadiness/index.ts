@@ -1,8 +1,10 @@
 export {
   getRuntimeGateContract,
+  getRuntimeGateDpEvidenceRequirement,
   REQUIRED_RUNTIME_EVIDENCE_FIELDS,
   REQUIRED_RUNTIME_INVARIANTS,
   RUNTIME_GATE_CONTRACTS,
+  type RuntimeGateDpEvidenceRequirement,
   type RuntimeEvidenceField,
   type RuntimeGateContract,
   type RuntimeGateContractStatus,
