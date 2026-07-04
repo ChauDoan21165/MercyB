@@ -60,6 +60,12 @@ describe("TeacherContext pipeline", () => {
       "hint_dependency",
       "transfer_success",
     ]));
+    expect(context.learningSignals.every((signal) => signal.alternatives.length > 0)).toBe(true);
+    expect(context.learningSignals.every((signal) => signal.evidenceReferences?.length === signal.evidenceCount)).toBe(true);
+    expect(context.learningSignals.find((signal) => signal.signal_key === "transfer_success")?.evidenceReferences).toEqual([
+      "AssessmentAnswerSubmitted:transfer::item-1",
+      "AssessmentAnswerSubmitted:transfer::item-2",
+    ]);
     expect(context.recommendations.map((recommendation) => recommendation.source)).toEqual(expect.arrayContaining([
       "TC-000001",
       "TC-000002",
