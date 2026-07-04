@@ -43,6 +43,16 @@ describe("isViIntroMissing — M4 silent EN-for-VI gate", () => {
     expect(isViIntroMissing(room)).toBe(true);
   });
 
+  it("treats empty structured VI fields as missing only when EN exists", () => {
+    expect(
+      isViIntroMissing({ intro: { en: "Welcome", vi: "" } }),
+    ).toBe(true);
+    expect(
+      isViIntroMissing({ description: { en: "About this room", vi: "  " } }),
+    ).toBe(true);
+    expect(isViIntroMissing({ intro: { vi: "  " } })).toBe(false);
+  });
+
   it("treats whitespace-only structured summary VI as missing when EN summary exists", () => {
     const room = { summary: { en: "Welcome to the room", vi: "   \n " } };
     expect(pickIntroEN(room)).toBe("Welcome to the room");
@@ -62,6 +72,32 @@ describe("isViIntroMissing — M4 silent EN-for-VI gate", () => {
     expect(pickIntroVI(room)).not.toBe("[object Object]");
   });
 
+  it("uses intro before description and summary in both languages", () => {
+    const room = {
+      intro: { en: "Intro EN", vi: "Intro VI" },
+      description: { en: "Description EN", vi: "Description VI" },
+      summary: { en: "Summary EN", vi: "Summary VI" },
+      description_en: "Flat description EN",
+      description_vi: "Flat description VI",
+    };
+
+    expect(pickIntroEN(room)).toBe("Intro EN");
+    expect(pickIntroVI(room)).toBe("Intro VI");
+    expect(pickIntroVIStrict(room)).toBe("Intro VI");
+    expect(isViIntroMissing(room)).toBe(false);
+  });
+
+  it("falls through flat description fields before structured summary fields", () => {
+    const room = {
+      description_en: "Flat description EN",
+      description_vi: "Flat description VI",
+      summary: { en: "Summary EN", vi: "Summary VI" },
+    };
+
+    expect(pickIntroEN(room)).toBe("Flat description EN");
+    expect(pickIntroVI(room)).toBe("Flat description VI");
+  });
+
   it("ignores non-string historical intro fields", () => {
     const room = {
       intro_en: 123,
@@ -71,6 +107,20 @@ describe("isViIntroMissing — M4 silent EN-for-VI gate", () => {
     };
 
     expect(pickIntroEN(room)).toBe("Fallback English");
+    expect(pickIntroVI(room)).toBe("");
+    expect(isViIntroMissing(room)).toBe(true);
+  });
+
+  it("ignores arrays and nulls across historical intro fields", () => {
+    const room = {
+      intro: { en: ["bad"], vi: null },
+      description: { en: null, vi: ["bad"] },
+      intro_en: ["not string"],
+      intro_vi: ["not string"],
+      summary_en: "Safe English summary",
+    };
+
+    expect(pickIntroEN(room)).toBe("Safe English summary");
     expect(pickIntroVI(room)).toBe("");
     expect(isViIntroMissing(room)).toBe(true);
   });
@@ -118,5 +168,28 @@ describe("isViIntroMissing — M4 silent EN-for-VI gate", () => {
     expect(pickIntroVI(room)).toBe("plain string");
     expect(pickIntroEN({})).toBe("");
     expect(pickIntroVI({})).toBe("");
+  });
+
+  it("flags a plain description fallback as a VI leak even when content.vi is absent", () => {
+    const room = {
+      description: "English-only intro body",
+      content: { en: "English-only intro body" },
+    };
+
+    expect(pickIntroVI(room)).toBe("English-only intro body");
+    expect(pickIntroVIStrict(room)).toBe("");
+    expect(isViIntroMissing(room)).toBe(true);
+  });
+
+  it("ignores generated welcome metadata with non-string bodies", () => {
+    const room = {
+      title: { en: "Calm Room", vi: "Phòng bình tĩnh" },
+      welcome: { generated: true, body: { en: "not intro" } },
+      intro: { en: null, vi: null },
+    };
+
+    expect(pickIntroEN(room)).toBe("");
+    expect(pickIntroVI(room)).toBe("");
+    expect(isViIntroMissing(room)).toBe(false);
   });
 });
