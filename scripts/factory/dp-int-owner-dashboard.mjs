@@ -8,8 +8,8 @@ const HOST = "127.0.0.1";
 const PORT = Number(process.env.DP_FACTORY_DASHBOARD_PORT || 4160);
 const DB_PATH = process.env.DP_FACTORY_DB || "state/dp_int_factory.sqlite3";
 const REPORT_PATH = "reports/FACTORY_REPORT_FOR_CHATGPT.md";
-const TARGET_WORKERS = Number(process.env.DP_FACTORY_TARGET_WORKERS || 1);
-const JUDGE_BACKLOG_THRESHOLD = 10;
+const TARGET_WORKERS = Number(process.env.DP_FACTORY_TARGET_WORKERS || 5);
+const JUDGE_BACKLOG_THRESHOLD = 20;
 const SAFETY_LOCKS = [
   "verified locked to Judge only",
   "F cannot write Judge ledger",
@@ -222,7 +222,7 @@ li{margin:4px 0;overflow-wrap:anywhere}@media(max-width:820px){header{flex-direc
 <div class="panel span4"><div class="label">Current phase</div><div class="value phase" id="phase">Loading</div></div>
 <div class="panel span4"><div class="label">Workers</div><div class="value"><span id="active">0</span> / <span id="target">0</span></div></div>
 <div class="panel span4"><div class="label">Current blocker</div><div class="value ok" id="blocker">NONE</div></div>
-<div class="panel span4"><div class="label">Judge backlog</div><div class="value" id="judgeBacklog">0 / 10</div></div>
+<div class="panel span4"><div class="label">Judge backlog</div><div class="value" id="judgeBacklog">0 / 20</div></div>
 <div class="panel span4"><div class="label">F can continue</div><div class="value ok" id="fCanContinue">YES</div></div>
 <div class="panel span6"><div class="label">Workpacks</div><table><tbody id="workpacks"></tbody></table></div>
 <div class="panel span6"><div class="label">Progress</div><div id="progress"></div></div>

@@ -6,8 +6,8 @@ import { spawnSync } from "node:child_process";
 export const DEFAULT_REPO_ROOT = "/Users/admin/MercyB";
 export const DEFAULT_DB_PATH = "/Users/admin/MercyB/state/dp_int_factory.sqlite3";
 export const DEFAULT_WORKTREE_ROOT = "/Users/admin/MercyB.worktrees";
-export const DEFAULT_WORKER_COUNT = 4;
-export const JUDGE_BACKLOG_LIMIT = 10;
+export const DEFAULT_WORKER_COUNT = 5;
+export const JUDGE_BACKLOG_LIMIT = 20;
 
 function env(name, fallback) {
   return process.env[name] || fallback;
@@ -116,8 +116,6 @@ export function setupWorktree(index) {
 
   if (!existsSync(path)) {
     run("git", ["worktree", "add", "-B", branch, path, "HEAD"]);
-  } else {
-    run("git", ["-C", path, "checkout", "-B", branch]);
   }
 
   const mainNodeModules = `${repoRoot()}/node_modules`;
@@ -175,7 +173,7 @@ ORDER BY wp_id;
   if (candidates.length === 0) return { claimed: false, reason: "ready_zero" };
 
   const backlog = Number(scalarSql("SELECT COUNT(*) FROM dp_int_f_done_unjudged;") || "0");
-  if (backlog > JUDGE_BACKLOG_LIMIT) return { claimed: false, reason: "judge_backlog", backlog };
+  if (backlog > JUDGE_BACKLOG_LIMIT) return { claimed: false, reason: "judge_backlog", backlog, limit: JUDGE_BACKLOG_LIMIT };
 
   for (const candidate of candidates) {
     const families = fileFamiliesFor(candidate);
@@ -227,14 +225,26 @@ Do not run Judge. Do not set verified. Do not deploy, push, or merge.
 Use central control plane DB only through /Users/admin/MercyB/scripts/tm-int/dp-int-parallel-runner.mjs.
 Loop:
 1. Run: node /Users/admin/MercyB/scripts/tm-int/dp-int-parallel-runner.mjs claim-next ${index}
-2. If it returns claimed=false, stop and report reason.
+2. If it returns claimed=false, stop and report reason. The tmux supervisor will restart you later if the stop condition is temporary.
 3. Implement only the claimed workpack in this worktree and do not touch files outside its source/test family.
 4. Run the workpack acceptance tests locally.
 5. If validation fails, stop this worker only. Do not mark f_done.
 6. If validation passes, write an F artifact under reports/f_done/dp-int-v1/, commit product/test/artifact changes on this worker branch, then run:
    node /Users/admin/MercyB/scripts/tm-int/dp-int-parallel-runner.mjs f-done ${index} <wp_id> <artifact_path> <validation_evidence> <commit_hash>
-7. Continue until f_done_unjudged > 10, ready=0, this worktree is dirty before claim, conflict appears, or validation fails.
+7. Continue until f_done_unjudged > ${JUDGE_BACKLOG_LIMIT}, ready=0, this worktree is dirty before claim, conflict appears, or validation fails.
 Never write dp_int_judge_results. Keep verified at 0.`;
+}
+
+export function stopStatus(index) {
+  const counts = activeCounts();
+  const path = workerPath(index);
+  const status = existsSync(path) ? worktreeStatus(path) : "";
+  if (status) return { stop: true, reason: "worker_worktree_dirty", status };
+  if (counts.f_done_unjudged > JUDGE_BACKLOG_LIMIT) {
+    return { stop: true, reason: "judge_backlog", backlog: counts.f_done_unjudged, limit: JUDGE_BACKLOG_LIMIT };
+  }
+  if (counts.ready === 0) return { stop: true, reason: "ready_zero" };
+  return { stop: false, reason: "continue", counts, limit: JUDGE_BACKLOG_LIMIT };
 }
 
 export function startWorker(index) {
@@ -242,12 +252,20 @@ export function startWorker(index) {
   const logPath = `/tmp/dp-int-f-worker-${index}-${new Date().toISOString().replace(/[:.]/g, "")}.log`;
   const session = `dp-int-f-worker-${index}`;
   run("tmux", ["kill-session", "-t", session], { check: false });
+  const command = [
+    `cd ${setup.path}`,
+    "while true; do",
+    `codex exec --dangerously-bypass-approvals-and-sandbox -C ${setup.path} ${JSON.stringify(codexPrompt(index))}`,
+    `node ${repoRoot()}/scripts/tm-int/dp-int-parallel-runner.mjs should-stop ${index} && break`,
+    "sleep 5",
+    "done",
+  ].join(" ");
   run("tmux", [
     "new-session",
     "-d",
     "-s",
     session,
-    `cd ${setup.path} && codex exec --dangerously-bypass-approvals-and-sandbox -C ${setup.path} ${JSON.stringify(codexPrompt(index))} > ${logPath} 2>&1`,
+    `${command} > ${logPath} 2>&1`,
   ]);
   const pane = run("tmux", ["list-panes", "-t", session, "-F", "#{pane_pid}"]).stdout.trim();
   const child = run("pgrep", ["-P", pane, "-f", "codex exec"], { check: false }).stdout.trim().split(/\r?\n/).filter(Boolean)[0] || pane;
@@ -277,6 +295,11 @@ export function main(argv = process.argv.slice(2)) {
   }
   if (command === "start") return print(startWorkers(Number(args[0] || DEFAULT_WORKER_COUNT)));
   if (command === "status") return print(activeCounts());
+  if (command === "should-stop") {
+    const status = stopStatus(Number(args[0]));
+    print(status);
+    process.exit(status.stop ? 0 : 1);
+  }
   throw new Error(`Usage: node scripts/tm-int/dp-int-parallel-runner.mjs <setup-worktrees|claim-next|f-done|start|status>`);
 }
 

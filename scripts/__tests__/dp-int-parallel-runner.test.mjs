@@ -56,6 +56,7 @@ function seed(root) {
         wp("WP-003", "src/c.ts", "src/c.test.ts"),
         wp("WP-004", "src/d.ts", "src/d.test.ts"),
         wp("WP-005", "src/a.ts", "src/a.other.test.ts"),
+        wp("WP-006", "src/e.ts", "src/e.test.ts"),
       ],
     }),
   );
@@ -86,15 +87,15 @@ afterEach(() => {
 });
 
 describe("DP INT parallel runner", () => {
-  it("lets four workers claim distinct workpacks with SQLite-backed locks", () => {
+  it("lets five workers claim distinct workpacks with SQLite-backed locks", () => {
     const root = makeRoot();
     seed(root);
 
-    const claims = [1, 2, 3, 4].map((worker) => JSON.parse(run(root, runnerScript, ["claim-next", String(worker)]).stdout));
+    const claims = [1, 2, 3, 4, 5].map((worker) => JSON.parse(run(root, runnerScript, ["claim-next", String(worker)]).stdout));
 
     expect(claims.every((claim) => claim.claimed)).toBe(true);
-    expect(new Set(claims.map((claim) => claim.wp_id)).size).toBe(4);
-    expect(sqlite(root, "select count(distinct claimed_by) from dp_int_workpacks where status='running';").stdout.trim()).toBe("4");
+    expect(new Set(claims.map((claim) => claim.wp_id)).size).toBe(5);
+    expect(sqlite(root, "select count(distinct claimed_by) from dp_int_workpacks where status='running';").stdout.trim()).toBe("5");
   });
 
   it("skips a locked file family and claims another ready workpack", () => {
@@ -154,5 +155,22 @@ describe("DP INT parallel runner", () => {
     const status = JSON.parse(run(root, runnerScript, ["status"]).stdout);
     expect(status.active_workers).toBe(2);
     expect(status.running).toBe(2);
+  });
+
+  it("continues at backlog 20 and stops above backlog 20", () => {
+    const root = makeRoot();
+    seed(root);
+
+    for (let index = 0; index < 21; index += 1) {
+      const id = `WP-BACKLOG-${String(index).padStart(2, "0")}`;
+      const insert = sqlite(
+        root,
+        `insert into dp_int_workpacks(wp_id, semantic_key, tm_int_id, source_file, source_line, source_anchor_excerpt, related_test_or_replay_file, objective, expected_product_value, acceptance_tests, judge_checks, anti_fake_checks, status, artifact_path, validation_evidence, commit_hash) values ('${id}', 'semantic.${id}', 'DP-INT-v1', 'src/backlog-${index}.ts', '1', 'anchor', 'src/backlog-${index}.test.ts', 'objective', 'value', 'tests', 'judge', 'anti', 'f_done', 'artifact.md', 'tests pass', 'abc${index}');`,
+      );
+      expect(insert.status).toBe(0);
+    }
+
+    const blocked = JSON.parse(run(root, runnerScript, ["claim-next", "1"]).stdout);
+    expect(blocked).toMatchObject({ claimed: false, reason: "judge_backlog", backlog: 21, limit: 20 });
   });
 });
