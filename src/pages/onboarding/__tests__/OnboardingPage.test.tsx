@@ -8,6 +8,13 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import React from "react";
 
 import { qk } from "@/lib/queries/keys";
+import {
+  RECOMMENDED_TARGET,
+  TARGET_MENU,
+  targetLabel,
+  type NativeLang,
+  type TargetLang,
+} from "@/lib/onboarding/types";
 
 // ── Mocks ────────────────────────────────────────────────────────────
 
@@ -146,6 +153,12 @@ function storedPair(): { native: string; targets: string[] } | null {
   return raw ? (JSON.parse(raw) as { native: string; targets: string[] }) : null;
 }
 
+function checkboxForTarget(target: TargetLang, native: NativeLang) {
+  return screen.getByRole("checkbox", {
+    name: new RegExp(targetLabel(target, native), "i"),
+  });
+}
+
 afterEach(() => {
   vi.restoreAllMocks();
 });
@@ -225,6 +238,40 @@ describe("OnboardingPage — target step (Screen 2, matrix-filtered)", () => {
       screen.getByRole("checkbox", { name: /Tiếng Việt|Vietnamese/ }),
     ).toBeInTheDocument();
   });
+
+  it("renders the VI-native target menu from TARGET_MENU", async () => {
+    const user = userEvent.setup();
+    renderPage();
+    await toTargetStepVi(user);
+
+    for (const item of TARGET_MENU.vi) {
+      expect(checkboxForTarget(item.value, "vi")).toBeInTheDocument();
+    }
+    expect(screen.queryByRole("checkbox", { name: /Tây Ban Nha|Spanish/ })).toBeNull();
+  });
+
+  it("renders the EN-native target menu from TARGET_MENU", async () => {
+    const user = userEvent.setup();
+    renderPage();
+    await user.click(screen.getByRole("radio", { name: /Tiếng Anh|English/ }));
+
+    for (const item of TARGET_MENU.en) {
+      expect(checkboxForTarget(item.value, "en")).toBeInTheDocument();
+    }
+    expect(screen.queryByRole("checkbox", { name: /^English/i })).toBeNull();
+  });
+
+  it("preselects the recommended target for VI and EN entry paths", async () => {
+    const user = userEvent.setup();
+    const { unmount } = renderPage();
+    await toTargetStepVi(user);
+    expect(checkboxForTarget(RECOMMENDED_TARGET.vi, "vi")).toHaveAttribute("aria-checked", "true");
+    unmount();
+
+    renderPage({ direction: "vn" });
+    expect(checkboxForTarget(RECOMMENDED_TARGET.en, "en")).toHaveAttribute("aria-checked", "false");
+    expect(checkboxForTarget("vi", "en")).toHaveAttribute("aria-checked", "true");
+  });
 });
 
 describe("OnboardingPage — single-target Continue finishes (no confirmation)", () => {
@@ -271,6 +318,23 @@ describe("OnboardingPage — single-target Continue finishes (no confirmation)",
 });
 
 describe("OnboardingPage — anonymous (no auth) persists to localStorage", () => {
+  it("anonymous single-target finish writes the pair locally, skips Supabase, and skips profile invalidation", async () => {
+    mockUseAuth.mockReturnValue({ user: null });
+    const user = userEvent.setup();
+    renderPage();
+    await toTargetStepVi(user);
+    await user.click(screen.getByRole("button", { name: /Tiếp tục|Continue/ }));
+
+    expect(updateMock).not.toHaveBeenCalled();
+    expect(invalidateSpy).not.toHaveBeenCalled();
+    expect(storedPair()).toEqual({ native: "vi", targets: ["en"] });
+    expect(window.localStorage.getItem("mercyblade.nativeLang")).toBe("vi");
+    expect(navigateMock).toHaveBeenCalledWith(
+      "/",
+      expect.objectContaining({ replace: true }),
+    );
+  });
+
   it("anonymous multi-target finish writes the pair locally, skips Supabase", async () => {
     mockUseAuth.mockReturnValue({ user: null });
     const user = userEvent.setup();
