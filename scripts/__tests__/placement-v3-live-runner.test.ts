@@ -30,6 +30,18 @@ const safeEnv = {
   PLACEMENT_V3_LIVE_VALIDATION: "1",
 };
 
+function createUnusedRuntime(resolveTestLearner: LiveRuntime["resolveTestLearner"]): LiveRuntime {
+  return {
+    resolveTestLearner,
+    createDeps: async () => {
+      throw new Error("Dry-run validation should not create Placement V3 dependencies.");
+    },
+    run: async () => {
+      throw new Error("Dry-run validation should not invoke the Placement V3 runtime.");
+    },
+  };
+}
+
 describe("Placement V3 live validation clean checkout wiring", () => {
   it("exposes placement:v3:live and resolves the runner file from a clean checkout", () => {
     const root = process.cwd();
@@ -42,18 +54,14 @@ describe("Placement V3 live validation clean checkout wiring", () => {
 
 describe("Placement V3 live validation runner safety", () => {
   it("prints a dry-run plan without resolving a learner or writing persistence", async () => {
-    const resolveTestLearner = vi.fn();
+    const resolveTestLearner = vi.fn(async (email: string) => ({ id: "unused-dry-run-user", email, created: false }));
     const out = { log: vi.fn() };
 
     const result = await runPlacementV3LiveValidation({
       args: ["--dry-run"],
       env: { NODE_ENV: "test", SUPABASE_URL: "https://placement-validation.supabase.co" },
       uuid: TEST_UUID,
-      runtime: {
-        resolveTestLearner,
-        createDeps: vi.fn(),
-        run: vi.fn(),
-      } as unknown as LiveRuntime,
+      runtime: createUnusedRuntime(resolveTestLearner),
       out,
     });
 
