@@ -27,6 +27,13 @@ export type RuntimeGateDpEvidenceRequirement = {
   requiresJudgeReproduction: boolean;
 };
 
+export type RuntimeGateContractReplayEvidence = {
+  gateId: RuntimeGateId;
+  status: RuntimeGateContractStatus;
+  requiredEvidenceFields: readonly RuntimeEvidenceField[];
+  requiredInvariants: readonly RuntimeReadinessInvariant[];
+};
+
 export type RuntimeEvidenceField =
   | "runtimeEvent"
   | "obsPacket"
@@ -142,4 +149,13 @@ export function getRuntimeGateDpEvidenceRequirement(gateId: RuntimeGateId): Runt
     requiresLearningSignals: contract.requiredEvidenceFields.includes("learningSignals"),
     requiresJudgeReproduction: contract.requiredEvidenceFields.includes("judgeReproduction"),
   };
+}
+
+export function createRuntimeGateContractReplayEvidence(): readonly RuntimeGateContractReplayEvidence[] {
+  return RUNTIME_GATE_CONTRACTS.map((contract) => ({
+    gateId: contract.gateId,
+    status: contract.status,
+    requiredEvidenceFields: [...contract.requiredEvidenceFields],
+    requiredInvariants: [...contract.invariants],
+  }));
 }
