@@ -61,12 +61,14 @@ describe("ChineseLessonsPage", () => {
 
   it("is registered as a public language route", () => {
     expect(routerSource).toContain("ChineseLessonsPage");
-    expect(routerSource).toContain("/languages/chinese");
+    expect(routerSource).toContain('path="/languages/chinese"');
+    expect(routerSource).toMatch(/<ChineseLessonsPage\s*\/>/);
   });
 
   it("has a hub card/link on the languages index", () => {
     expect(languagesIndexSource).toContain("Chinese");
-    expect(languagesIndexSource).toContain("/languages/chinese");
+    expect(languagesIndexSource).toContain('slug: "chinese"');
+    expect(languagesIndexSource).toContain('href: "/languages/chinese"');
   });
 
   it("does not fake audio, AI tutor, or local lesson promises", () => {

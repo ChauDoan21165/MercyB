@@ -1,5 +1,5 @@
-import { existsSync, readdirSync, readFileSync } from 'node:fs';
-import { join, resolve } from 'node:path';
+import { existsSync, readFileSync } from 'node:fs';
+import { resolve } from 'node:path';
 import { describe, expect, it } from 'vitest';
 
 const repoRoot = resolve(process.cwd());
@@ -7,30 +7,8 @@ const pagePath = 'src/pages/languages/VietnameseLessonsPage.tsx';
 
 const read = (path: string): string => readFileSync(resolve(repoRoot, path), 'utf8');
 
-const walk = (dir: string): string[] => {
-  const entries = readdirSync(dir, { withFileTypes: true });
-  const files: string[] = [];
-
-  for (const entry of entries) {
-    const fullPath = join(dir, entry.name);
-    if (entry.isDirectory()) {
-      if (entry.name === 'node_modules' || entry.name === '__tests__') {
-        continue;
-      }
-      files.push(...walk(fullPath));
-      continue;
-    }
-
-    if (/\.(ts|tsx)$/.test(entry.name)) {
-      files.push(fullPath);
-    }
-  }
-
-  return files;
-};
-
-const sourceFiles = (): string[] =>
-  walk(resolve(repoRoot, 'src')).filter((file) => !file.includes('/__tests__/'));
+const appRouterSource = (): string => read('src/router/AppRouter.tsx');
+const languageHubSource = (): string => read('src/pages/languages/LanguagesIndexPage.tsx');
 
 describe('Vietnamese lessons page coverage', () => {
   it('uses local Vietnamese lesson content without Supabase loader or fake media promises', () => {
@@ -38,32 +16,27 @@ describe('Vietnamese lessons page coverage', () => {
 
     const source = read(pagePath);
     expect(source).toMatch(/VietnameseLessonsPage|Vietnamese/);
-    expect(source).toMatch(/vietnamese/i);
-    expect(source).toMatch(/lesson/i);
+    expect(source).toContain('from "@/languages/vietnamese/lessons"');
+    expect(source).toContain('loadVietnameseLessons');
+    expect(source).toContain('normalizeVietnameseLesson');
     expect(source).not.toMatch(/supabase/i);
     expect(source).not.toMatch(/Promise\.resolve\s*\([^)]*(audio|ai|tutor)/i);
     expect(source).not.toMatch(/fake(Audio|AI|Tutor)|mock(Audio|AI|Tutor)/i);
   });
 
   it('is wired through app routing', () => {
-    const matches = sourceFiles()
-      .filter((file) => /App|Router|routes/.test(file))
-      .filter((file) => {
-        const source = readFileSync(file, 'utf8');
-        return /VietnameseLessonsPage/.test(source) && /vietnamese/i.test(source);
-      });
+    const router = appRouterSource();
 
-    expect(matches, 'Expected app routing to reference VietnameseLessonsPage and the vietnamese slug').not.toHaveLength(0);
+    expect(router).toContain('const VietnameseLessonsPage');
+    expect(router).toContain('path="/languages/vietnamese"');
+    expect(router).toMatch(/<VietnameseLessonsPage\s*\/>/);
   });
 
   it('is discoverable from the languages hub', () => {
-    const matches = sourceFiles()
-      .filter((file) => /LanguagesIndexPage/.test(file))
-      .filter((file) => {
-        const source = readFileSync(file, 'utf8');
-        return /Vietnamese/.test(source) && /vietnamese/i.test(source);
-      });
+    const hub = languageHubSource();
 
-    expect(matches, 'Expected LanguagesIndexPage to expose the Vietnamese page/card/link').not.toHaveLength(0);
+    expect(hub).toContain('slug: "vietnamese"');
+    expect(hub).toContain('href: "/languages/vietnamese"');
+    expect(hub).toContain('Vietnamese for Foreigners');
   });
 });
