@@ -1,0 +1,24 @@
+{
+  "wp_id": "DP-LEARNER-SIGNAL-WP-000017",
+  "worker_id": "F-DP-INT-W4",
+  "status": "f_done",
+  "implementation_commit": "693181a94",
+  "summary": [
+    "Named the sustained-attention minimum thoughtful answer threshold in the learning-signal engine.",
+    "Added a deterministic sustained-attention fixture that verifies AssessmentAnswerSubmitted evidence, preserved alternatives, DP-safe interpretation flags, and bounded PED action output."
+  ],
+  "changed_files": [
+    "src/lib/tm-int/learning-signals/engine.ts",
+    "src/lib/tm-int/__tests__/learningBehaviorFamilyV1.test.ts"
+  ],
+  "validation_evidence": [
+    "npm test -- --run src/lib/tm-int/learning-signals src/lib/tm-int => 25 test files passed, 177 tests passed",
+    "npm run typecheck => pass",
+    "npm exec eslint -- scripts src --format json => 4931 files, 0 errors, 0 warnings"
+  ],
+  "anti_fake_evidence": [
+    "Fixture asserts the sustained_attention signal evidence has exactly three AssessmentAnswerSubmitted facts with responseTimeMs >= 2000.",
+    "Fixture asserts alternatives remain slow input device, reading load, accessibility need, and network delay.",
+    "Fixture asserts DP keeps no_learner_weakness_inference and no_mastery_reduction_from_single_event true, and PED emits only continue_flow_with_periodic_comprehension_check."
+  ]
+}

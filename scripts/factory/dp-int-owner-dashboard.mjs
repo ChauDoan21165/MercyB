@@ -97,7 +97,7 @@ function workerProcessStatus(index, claimRows) {
     dirty,
     dirtyStatus: dirty ? status.stdout.split(/\r?\n/) : [],
     claim: claim || null,
-    staleClaim: Boolean(claim && !(panePid && childPid)),
+    staleClaim: Boolean(claim && !childPid),
   };
 }
 
