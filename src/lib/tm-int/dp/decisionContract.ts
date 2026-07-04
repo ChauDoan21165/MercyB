@@ -2,6 +2,11 @@ import type { TeacherContext } from "../runtime";
 
 export type DpDecisionConfidenceLevel = "low" | "medium" | "high";
 export type DpProductIssueType = TeacherContext["productIssues"][number]["issue"];
+export type DpLearnerPerformanceClaimType =
+  | "learner_weakness"
+  | "learner_strength"
+  | "learning_behavior"
+  | "assessment_validity";
 
 export type DpTeacherContextReference = {
   schemaVersion: TeacherContext["schemaVersion"];
@@ -18,7 +23,7 @@ export type DpProductIssueHandling = {
 
 export type DpLearnerPerformanceClaim = {
   claimId: string;
-  claimType: "learner_weakness" | "learner_strength" | "learning_behavior" | "assessment_validity";
+  claimType: DpLearnerPerformanceClaimType;
   statement: string;
   citedObservationIds: readonly string[];
   citedLearningSignalIds: readonly string[];

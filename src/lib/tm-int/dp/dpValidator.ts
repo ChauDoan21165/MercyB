@@ -10,6 +10,7 @@ export type DpDecisionValidationFailureCode =
   | "unknown_learning_signal_citation"
   | "claim_observation_not_declared"
   | "claim_learning_signal_not_declared"
+  | "invalid_learner_performance_claim"
   | "invalid_product_issue_handling"
   | "product_failure_as_learner_weakness"
   | "learner_weakness_without_evidence"
@@ -41,6 +42,48 @@ function nonEmpty(values: readonly string[]): boolean {
 
 function hasClaimEvidence(claim: DpLearnerPerformanceClaim): boolean {
   return nonEmpty(claim.citedObservationIds) || nonEmpty(claim.citedLearningSignalIds);
+}
+
+function addLearnerPerformanceClaimFailures(
+  decision: DpEvidenceBasedDecision,
+): DpDecisionValidationFailure[] {
+  const failures: DpDecisionValidationFailure[] = [];
+
+  for (const [index, claim] of decision.learnerPerformanceClaims.entries()) {
+    if (!claim.claimId.trim()) {
+      failures.push({
+        code: "invalid_learner_performance_claim",
+        path: `learnerPerformanceClaims.${index}.claimId`,
+        reason: "DP learner performance claims must include a stable claim id.",
+      });
+    }
+
+    if (!claim.statement.trim()) {
+      failures.push({
+        code: "invalid_learner_performance_claim",
+        path: `learnerPerformanceClaims.${index}.statement`,
+        reason: "DP learner performance claims must include a statement.",
+      });
+    }
+
+    if (!claim.rationale.trim()) {
+      failures.push({
+        code: "invalid_learner_performance_claim",
+        path: `learnerPerformanceClaims.${index}.rationale`,
+        reason: "DP learner performance claims must include rationale.",
+      });
+    }
+
+    if (!hasClaimEvidence(claim)) {
+      failures.push({
+        code: "invalid_learner_performance_claim",
+        path: `learnerPerformanceClaims.${index}`,
+        reason: "DP learner performance claims must cite observation or learning signal evidence.",
+      });
+    }
+  }
+
+  return failures;
 }
 
 function knownObservationIds(context: TeacherContext | undefined): Set<string> {
@@ -232,6 +275,7 @@ export function validateDpDecision(
 
   failures.push(...addUnknownCitationFailures(decision, teacherContext));
   failures.push(...addUndeclaredClaimCitationFailures(decision));
+  failures.push(...addLearnerPerformanceClaimFailures(decision));
   failures.push(...addProductIssueHandlingFailures(decision, teacherContext));
 
   if (!VALID_CONFIDENCE_LEVELS.has(decision.confidenceLevel)) {

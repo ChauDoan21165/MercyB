@@ -164,7 +164,31 @@ describe("validateDpDecision", () => {
     };
 
     expect(validateDpDecision(decision, createTeacherContext()).failures).toEqual(
-      expect.arrayContaining([expect.objectContaining({ code: "learner_weakness_without_evidence" })]),
+      expect.arrayContaining([
+        expect.objectContaining({ code: "learner_weakness_without_evidence" }),
+        expect.objectContaining({ code: "invalid_learner_performance_claim" }),
+      ]),
+    );
+  });
+
+  test("FAIL learner performance claim without statement", () => {
+    const decision: DpEvidenceBasedDecision = {
+      ...createValidDecision(),
+      learnerPerformanceClaims: [
+        {
+          claimId: "claim-001",
+          claimType: "learning_behavior",
+          statement: "",
+          citedObservationIds: ["obs-packet-placement"],
+          citedLearningSignalIds: [],
+          rationale: "Observation packet is cited.",
+          supported: true,
+        },
+      ],
+    };
+
+    expect(validateDpDecision(decision, createTeacherContext()).failures).toEqual(
+      expect.arrayContaining([expect.objectContaining({ code: "invalid_learner_performance_claim" })]),
     );
   });
 
