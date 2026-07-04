@@ -330,7 +330,7 @@ describe("validateTeacherContext", () => {
       reason: "Runtime evidence referenced unknown learning signal forged_learning_signal.",
       evidence: {
         referencedSignalKey: "forged_learning_signal",
-        normalizedSignalKeys: ["ProductiveHesitation"],
+        normalizedSignalKeys: ["productive_hesitation"],
       },
     }));
   });
