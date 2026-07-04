@@ -120,10 +120,9 @@ const PlacementV3SkipConfirmPage = lazyWithRetry(() => import("@/pages/placement
 // with no dependencies worth code-splitting, and it must be on hand
 // to instrument every placement page's mount.
 import PlacementRouteShell from "@/pages/placement/v3/PlacementRouteShell";
-import ThaiLessonsPage from "@/pages/languages/ThaiLessonsPage";
-
-import SwahiliLessonsPage from "@/pages/languages/SwahiliLessonsPage";
-import ItalianLessonsPage from "@/pages/languages/ItalianLessonsPage";
+const ThaiLessonsPage = lazyWithRetry(() => import("@/pages/languages/ThaiLessonsPage"));
+const SwahiliLessonsPage = lazyWithRetry(() => import("@/pages/languages/SwahiliLessonsPage"));
+const ItalianLessonsPage = lazyWithRetry(() => import("@/pages/languages/ItalianLessonsPage"));
 
 // Lane D — Spaced-repetition Review module (flag-gated, default off).
 const ReviewApp           = lazyWithRetry(() => import("@/features/review/ReviewApp"));
@@ -1864,8 +1863,8 @@ export default function AppRouter() {
 
           {/* Thai native-English bridge routes. Keep outside /admin/*; these redirect to the existing static Thai-English landing page. */}
           <Route path="/languages/thai" element={<LazyPage><ThaiLessonsPage /></LazyPage>} />
-          <Route path="/languages/swahili" element={<SwahiliLessonsPage />} />
-          <Route path="/languages/italian" element={<ItalianLessonsPage />} />
+          <Route path="/languages/swahili" element={<LazyPage><SwahiliLessonsPage /></LazyPage>} />
+          <Route path="/languages/italian" element={<LazyPage><ItalianLessonsPage /></LazyPage>} />
           <Route path="/languages/thai-english" element={<LazyPage><ThaiLessonsPage /></LazyPage>} />
 
           {/* Admin routes */}

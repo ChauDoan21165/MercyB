@@ -3,15 +3,16 @@ import type { ComponentType, ReactNode } from "react";
  * Path: src/components/ui/Screen.tsx
  */
 
-import { ScrollView as RNScrollView, View as RNView, type StyleProp, type ViewStyle } from "react-native";
+import { ScrollView as RNScrollView, View as RNView } from "react-native";
 type NativePrimitiveProps = { children?: ReactNode; [key: string]: unknown };
 type NativePrimitive = ComponentType<NativePrimitiveProps>;
+type NativeStyle = Record<string, string | number>;
 const ScrollView = RNScrollView as unknown as NativePrimitive;
 const View = RNView as unknown as NativePrimitive;
 
 
 // Web-safe shim for SafeAreaView
-const SafeAreaView: React.FC<{ style?: StyleProp<ViewStyle>; children?: ReactNode }> = ({ style, children }) => (
+const SafeAreaView: React.FC<{ style?: NativeStyle; children?: ReactNode }> = ({ style, children }) => (
   <View style={style}>{children}</View>
 );
 

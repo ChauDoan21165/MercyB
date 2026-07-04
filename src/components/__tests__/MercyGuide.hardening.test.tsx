@@ -13,17 +13,64 @@
  */
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 import { render, screen, fireEvent, cleanup, act } from '@testing-library/react';
+import type { ComponentProps } from 'react';
+
+type PanelCapture = Record<string, unknown> & {
+  activeTab: string;
+  availableTabs: string[];
+  disableEnglishLogic: boolean;
+  disableGrammarAnalysis: boolean;
+  disableTeacherWriting: boolean;
+  hasEnglishContext: boolean;
+  hideGrammarTab: boolean;
+  hideLogicTab: boolean;
+  isFullscreen: boolean;
+  isKidsMode: boolean;
+  journeyTitle: string;
+  kidsModeAgeBand: string;
+  latestAnalysisResult: null | { correctedText?: string };
+  latestTeacherWritingState: { latestSubmittedText?: string };
+  onAnalysisResult: (result: { correctedText: string }) => void;
+  onCloseGuide: () => void;
+  onCollapseGuide: () => void;
+  onOpenEnglishLogic: () => void;
+  onPracticePronunciation: (payload: { sourceText: string }) => void;
+  onSaveProfile: (profile: Record<string, unknown>) => void;
+  onSetSizePreset: (preset: string) => void;
+  onSubmitTeacherRevision: (input: Record<string, unknown>) => Promise<unknown>;
+  onTeacherOpenPronunciation: () => void;
+  onTeacherOpenWriting: () => void;
+  onToggleFullscreen: () => void;
+  panelRect: { width: number; height: number; right?: number };
+  right: number;
+  panelTitle: string;
+  pendingPronunciationPayload: null | { sourceText?: string };
+  preferPronunciationFirst: boolean;
+  preferTapAndRepeat: boolean;
+  profile: { preferred_name?: string };
+  setActiveTab: (tab: string) => void;
+  teacherMemorySummary: string;
+  teacherMode: string;
+  troubleWords: Array<{ word: string }>;
+};
+
+type PointerEventInitLike = EventInit & {
+  clientX?: number;
+  clientY?: number;
+  pointerId?: number;
+  button?: number;
+};
 
 // ---------------------------------------------------------------------------
 // Hoisted, mutable mock state (vi.hoisted runs before imports so these are
 // safe to reference inside the hoisted vi.mock factories below).
 // ---------------------------------------------------------------------------
 const mockH = vi.hoisted(() => {
-  const panelState: { last: unknown; renderCount: number } = {
+  const panelState: { last: PanelCapture | null; renderCount: number } = {
     last: null,
     renderCount: 0,
   };
-  const MockMercyPanel = (props: unknown) => {
+  const MockMercyPanel = (props: PanelCapture) => {
     panelState.last = props;
     panelState.renderCount += 1;
     return null;
@@ -42,7 +89,7 @@ const mockH = vi.hoisted(() => {
     loadPoints: vi.fn(() => Promise.resolve()),
     breadcrumb: vi.fn(),
     updateMemory: vi.fn(),
-    analyze: vi.fn(() =>
+    analyze: vi.fn((_input: Record<string, unknown>) =>
       Promise.resolve({
         correctedText: 'Corrected.',
         enhancedText: 'Enhanced.',
@@ -148,7 +195,7 @@ class FakePointerEvent extends Event {
   clientY: number;
   pointerId: number;
   button: number;
-  constructor(type: string, props: unknown = {}) {
+  constructor(type: string, props: PointerEventInitLike = {}) {
     super(type, props);
     this.clientX = props.clientX ?? 0;
     this.clientY = props.clientY ?? 0;
@@ -156,9 +203,9 @@ class FakePointerEvent extends Event {
     this.button = props.button ?? 0;
   }
 }
-if (typeof (globalThis as unknown).PointerEvent === 'undefined') {
-  (globalThis as unknown).PointerEvent = FakePointerEvent as unknown;
-  (window as unknown).PointerEvent = FakePointerEvent as unknown;
+if (typeof (globalThis as typeof globalThis & { PointerEvent?: unknown }).PointerEvent === 'undefined') {
+  Object.defineProperty(globalThis, 'PointerEvent', { configurable: true, value: FakePointerEvent });
+  Object.defineProperty(window, 'PointerEvent', { configurable: true, value: FakePointerEvent });
 }
 
 // ---------------------------------------------------------------------------
@@ -177,18 +224,24 @@ function setViewport(width: number, height: number) {
   });
 }
 
-function renderGuide(props: Record<string, unknown> = {}) {
+function renderGuide(props: Partial<ComponentProps<typeof MercyGuide>> = {}) {
   return render(
     <MercyGuide
       roomId="room1"
       roomTitle="Daily Life"
       tier="A1"
-      {...(props as unknown)}
+      {...props}
     />,
   );
 }
 
-const panel = () => mockH.panelState.last;
+const maybePanel = (): PanelCapture | null => mockH.panelState.last;
+
+const panel = (): PanelCapture => {
+  const renderedPanel = maybePanel();
+  if (!renderedPanel) throw new Error('MercyPanel mock did not render');
+  return renderedPanel;
+};
 
 function getBubble() {
   return screen.queryByRole('button', {
@@ -227,14 +280,14 @@ describe('MercyGuide — exports & enablement gate', () => {
     const { container } = renderGuide();
     expect(container.firstChild).toBeNull();
     expect(getBubble()).toBeNull();
-    expect(panel()).toBeNull();
+    expect(maybePanel()).toBeNull();
   });
 
   it('renders the floating bubble (closed) when enabled', () => {
     renderGuide();
     expect(getBubble()).not.toBeNull();
     // Panel is lazy + gated behind isOpen, so it must not render yet.
-    expect(panel()).toBeNull();
+    expect(maybePanel()).toBeNull();
   });
 
   it('still runs the points-load effect even when disabled', () => {
@@ -348,7 +401,7 @@ describe('MercyGuide — opening the panel', () => {
       fireEvent.keyDown(bubble, { key: 'a' });
     });
     expect(getBubble()).not.toBeNull();
-    expect(panel()).toBeNull();
+    expect(maybePanel()).toBeNull();
   });
 
   it('opens via pointer tap (no drag) with a bubble-source breadcrumb', () => {
@@ -374,7 +427,7 @@ describe('MercyGuide — opening the panel', () => {
 
 // ===========================================================================
 describe('MercyGuide — panel prop wiring (adult preset)', () => {
-  function openAdult(extra: Record<string, unknown> = {}) {
+  function openAdult(extra: Partial<ComponentProps<typeof MercyGuide>> = {}) {
     renderGuide(extra);
     act(() => {
       fireEvent.keyDown(getBubble()!, { key: 'Enter' });
@@ -432,7 +485,7 @@ describe('MercyGuide — panel prop wiring (adult preset)', () => {
 
 // ===========================================================================
 describe('MercyGuide — panel prop wiring (kids preset)', () => {
-  function openKids(extra: Record<string, unknown> = {}) {
+  function openKids(extra: Partial<ComponentProps<typeof MercyGuide>> = {}) {
     renderGuide({ roomId: 'kids_l1', roomTitle: 'Animals', ...extra });
     act(() => {
       fireEvent.keyDown(getBubble()!, { key: 'Enter' });
@@ -544,7 +597,7 @@ describe('MercyGuide — size presets & geometry clamping', () => {
 
 // ===========================================================================
 describe('MercyGuide — navigation helpers passed to the panel', () => {
-  function openAdult(extra: Record<string, unknown> = {}) {
+  function openAdult(extra: Partial<ComponentProps<typeof MercyGuide>> = {}) {
     renderGuide(extra);
     act(() => fireEvent.keyDown(getBubble()!, { key: 'Enter' }));
   }
@@ -626,33 +679,33 @@ describe('MercyGuide — analysis result handling', () => {
 
 // ===========================================================================
 describe('MercyGuide — teacher revision submission', () => {
-  function openAdult(extra: Record<string, unknown> = {}) {
+  function openAdult(extra: Partial<ComponentProps<typeof MercyGuide>> = {}) {
     renderGuide(extra);
     act(() => fireEvent.keyDown(getBubble()!, { key: 'Enter' }));
   }
 
   it('calls the grammar API with the revised text and stores the result', async () => {
     openAdult({ roomId: 'room42', roomTitle: 'Travel', contentEn: 'Ctx' });
-    let result: unknown;
+    let result: { correctedText?: string } | undefined;
     await act(async () => {
-      result = await panel().onSubmitTeacherRevision({
+      result = (await panel().onSubmitTeacherRevision({
         previousText: 'me go store',
         newText: 'I went to the store',
-      });
+      })) as { correctedText?: string };
     });
     expect(mockH.analyze).toHaveBeenCalledTimes(1);
-    const arg = ((mockH.analyze.mock.calls[0] as unknown as unknown[]) as unknown as [unknown])[0] as unknown;
+    const arg = mockH.analyze.mock.calls[0]?.[0] as unknown as Record<string, unknown>;
     expect(arg.text).toBe('I went to the store');
     expect(arg.roomId).toBe('room42');
     expect(arg.isTeacherInitiated).toBe(true);
     expect(arg.isRevisionAttempt).toBe(true);
-    expect(result.correctedText).toBe('Corrected.');
-    expect(panel().latestAnalysisResult.correctedText).toBe('Corrected.');
+    expect((result as { correctedText?: string } | undefined)?.correctedText).toBe('Corrected.');
+    expect(panel().latestAnalysisResult?.correctedText).toBe('Corrected.');
     expect(panel().latestTeacherWritingState.latestSubmittedText).toBe(
       'I went to the store',
     );
     // result has corrected/enhanced text -> a pronunciation payload is queued.
-    expect(panel().pendingPronunciationPayload.sourceText).toBe(
+    expect(panel().pendingPronunciationPayload?.sourceText).toBe(
       'I went to the store',
     );
   });

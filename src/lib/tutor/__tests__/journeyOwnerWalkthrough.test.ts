@@ -203,12 +203,12 @@ function makeLearningGainResult(
       snapshotId: "base-001",
       eventsCaptured: 10,
       errorRate: 0.4,
-    } as LearningGainSnapshot,
+    } as unknown as LearningGainSnapshot,
     outcome: {
       snapshotId: "out-001",
       eventsCaptured: 10,
       errorRate: 0.1,
-    } as LearningGainSnapshot,
+    } as unknown as LearningGainSnapshot,
     totalEvents: 20,
     sufficientData: true,
   };

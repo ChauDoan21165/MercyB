@@ -17,15 +17,18 @@ import React from "react";
 import { renderHook, waitFor } from "@testing-library/react";
 import { describe, it, expect, vi, beforeEach } from "vitest";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import type { createSupabaseMock } from "@/test/mocks/supabaseMock";
+
+type SupabaseMock = ReturnType<typeof createSupabaseMock>;
 
 vi.mock("@/lib/supabaseClient", async () => {
-  const mod = await vi.importActual<unknown>("@/test/mocks/supabaseMock");
+  const mod = await vi.importActual<typeof import("@/test/mocks/supabaseMock")>("@/test/mocks/supabaseMock");
   const supabase = mod.createSupabaseMock();
   return { supabase, __mock: supabase };
 });
 
 vi.mock("@/lib/authService", async () => {
-  const actual = await vi.importActual<unknown>("@/lib/authService");
+  const actual = await vi.importActual<typeof import("@/lib/authService")>("@/lib/authService");
   return {
     ...actual,
     fetchCurrentEntitlement: vi.fn(),

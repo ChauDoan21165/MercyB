@@ -8,6 +8,7 @@ import { describe, it, expect, vi, beforeEach } from "vitest";
 import type { createSupabaseMock } from "@/test/mocks/supabaseMock";
 
 type SupabaseMock = ReturnType<typeof createSupabaseMock>;
+type SupabaseFromResult = ReturnType<SupabaseMock["from"]>;
 type RetryReferralUseChain = {
   select: ReturnType<typeof vi.fn>;
   eq: ReturnType<typeof vi.fn>;
@@ -49,6 +50,10 @@ function createNoReferralUseChain(): RetryReferralUseChain {
     maybeSingle: vi.fn().mockResolvedValue({ data: null, error: null }),
   };
   return sharedChain;
+}
+
+function asSupabaseFromResult(chain: unknown): SupabaseFromResult {
+  return chain as SupabaseFromResult;
 }
 
 describe("alphabet + shape", () => {
@@ -136,7 +141,7 @@ describe("getMyCode", () => {
       .mockResolvedValue({ data: { code: "DEF234" }, error: null });
     const eq = vi.fn(() => ({ maybeSingle }));
     const select = vi.fn(() => ({ eq }));
-    supabaseMock.from.mockImplementationOnce(() => ({ select }));
+    supabaseMock.from.mockImplementationOnce(() => asSupabaseFromResult({ select }));
 
     const code = await getMyCode("u1");
     expect(code).toBe("DEF234");
@@ -247,8 +252,8 @@ describe("getReferralStats", () => {
     const usesSelect = vi.fn(() => ({ eq: usesEq1 }));
 
     supabaseMock.from
-      .mockImplementationOnce(() => ({ select: codeSelect }))
-      .mockImplementationOnce(() => ({ select: usesSelect }));
+      .mockImplementationOnce(() => asSupabaseFromResult({ select: codeSelect }))
+      .mockImplementationOnce(() => asSupabaseFromResult({ select: usesSelect }));
 
     const stats = await getReferralStats("u1");
     // 3 total uses, 2 pending → 1 completed → 7 days earned
@@ -273,7 +278,7 @@ describe("retryReferralRewardOnAuth — per-userId dedupe", () => {
   it("queries referral_uses only once for the same userId across rapid auth events", async () => {
     // Build a chain where .select().eq().eq().maybeSingle() resolves to "no row".
     const sharedChain = createNoReferralUseChain();
-    supabaseMock.from.mockReturnValue(sharedChain);
+    supabaseMock.from.mockReturnValue(asSupabaseFromResult(sharedChain));
 
     // Fire 5 times — Supabase Auth can emit INITIAL_SESSION, SIGNED_IN,
     // TOKEN_REFRESHED, USER_UPDATED, and re-fires on focus / visibility.
@@ -289,7 +294,7 @@ describe("retryReferralRewardOnAuth — per-userId dedupe", () => {
 
   it("a different userId is not deduped by the previous user's entry", async () => {
     const sharedChain = createNoReferralUseChain();
-    supabaseMock.from.mockReturnValue(sharedChain);
+    supabaseMock.from.mockReturnValue(asSupabaseFromResult(sharedChain));
 
     await retryReferralRewardOnAuth("user-A");
     await retryReferralRewardOnAuth("user-A");
@@ -300,7 +305,7 @@ describe("retryReferralRewardOnAuth — per-userId dedupe", () => {
 
   it("resetReferralRetryDedupe re-arms the retry path (e.g. after sign-out)", async () => {
     const sharedChain = createNoReferralUseChain();
-    supabaseMock.from.mockReturnValue(sharedChain);
+    supabaseMock.from.mockReturnValue(asSupabaseFromResult(sharedChain));
 
     await retryReferralRewardOnAuth("user-A");
     await retryReferralRewardOnAuth("user-A");

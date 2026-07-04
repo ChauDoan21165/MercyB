@@ -29,8 +29,10 @@ describe("IndonesianLessonsPage", () => {
   it("keeps the rendered page tied to the validated local Indonesian level and category registry", () => {
     expect(INDONESIAN_VALIDATED_LEVELS).toEqual(["A1", "A2", "B1", "B2", "C1", "C2"]);
     expect(INDONESIAN_TOTAL_LESSONS).toBe(INDONESIAN_CATEGORIES.length);
-    expect(INDONESIAN_LESSONS_BY_LEVEL.A1[0].sentences[0].en).toContain("Good morning");
-    expect(INDONESIAN_LESSONS_BY_LEVEL.A1[0].vocabulary?.[0].word).toContain("selamat");
+    const firstA1Lesson = INDONESIAN_LESSONS_BY_LEVEL.A1[0];
+    expect(firstA1Lesson).toBeDefined();
+    expect(firstA1Lesson?.sentences?.[0]?.en).toContain("Good morning");
+    expect(firstA1Lesson?.vocabulary?.[0]?.word).toContain("selamat");
 
     render(
       <MemoryRouter>

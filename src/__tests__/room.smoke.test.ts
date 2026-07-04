@@ -9,11 +9,17 @@ import { resolve } from "node:path";
 import englishA1A108 from "../../public/data/english_a1_a108.json";
 import { extractJsonLeafEntries } from "@/components/room/roomJsonExtract";
 
+function leafSlug(entry: unknown): unknown {
+  return typeof entry === "object" && entry !== null && "slug" in entry
+    ? entry.slug
+    : undefined;
+}
+
 describe("Room smoke", () => {
   it("english_a1_a108 exposes its six leaf entries safely", () => {
     const entries = extractJsonLeafEntries(englishA1A108);
 
-    expect(entries.map((entry) => entry.slug)).toEqual([
+    expect(entries.map(leafSlug)).toEqual([
       "basic-feelings",
       "describing-other-people",
       "common-adjectives",

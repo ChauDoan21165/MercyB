@@ -55,6 +55,8 @@ function createQueryBuilder(defaultData: unknown[] = []) {
 
 export function createSupabaseMock() {
   return {
+    reset: vi.fn(),
+
     auth: {
       getSession: vi.fn().mockResolvedValue({
         data: { session: null },

@@ -16,6 +16,16 @@
 
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { render, screen, fireEvent, cleanup } from '@testing-library/react';
+import type { ReactNode } from 'react';
+
+type MotionDivProps = Record<string, unknown> & {
+  children?: ReactNode;
+  whileHover?: unknown;
+  whileTap?: unknown;
+  onTapStart?: unknown;
+  onTap?: unknown;
+  onTapCancel?: unknown;
+};
 
 // --- Mocks -----------------------------------------------------------------
 
@@ -45,7 +55,7 @@ vi.mock('framer-motion', () => {
         onTap: _ot,
         onTapCancel: _otc,
         ...rest
-      }: unknown) => React.createElement('div', { 'data-testid': 'motion-div', ...rest }, children),
+      }: MotionDivProps) => React.createElement('div', { 'data-testid': 'motion-div', ...rest }, children),
     },
   };
 });

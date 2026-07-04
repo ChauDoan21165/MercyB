@@ -106,7 +106,7 @@ describe("roomLoaderNormalize.normalizeEntries", () => {
         en: [" one ", "one", "", "two"],
         vi: [" mot ", 123, "mot", "hai"],
       },
-    });
+    } as unknown as ReturnType<typeof processEntriesOptimized>);
 
     const result = normalizeEntries([{ slug: "raw" }]);
 
@@ -126,7 +126,7 @@ describe("roomLoaderNormalize.normalizeEntries", () => {
         en: "hello",
         vi: [null, " ", 42],
       },
-    });
+    } as unknown as ReturnType<typeof processEntriesOptimized>);
 
     const result = normalizeEntries([{ slug: "raw" }]);
 

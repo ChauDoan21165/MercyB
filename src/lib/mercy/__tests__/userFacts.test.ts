@@ -2,9 +2,16 @@
 // supabaseMock helper so we can re-stub the from() chain per test.
 
 import { describe, it, expect, vi, beforeEach } from "vitest";
+import type { createSupabaseMock } from "@/test/mocks/supabaseMock";
+
+type SupabaseMock = ReturnType<typeof createSupabaseMock>;
+type SupabaseFromResult = ReturnType<SupabaseMock["from"]>;
+type ChainMock = SupabaseFromResult & {
+  then: (resolve: (v: unknown) => unknown) => unknown;
+};
 
 vi.mock("@/lib/supabaseClient", async () => {
-  const mod = await vi.importActual<unknown>("@/test/mocks/supabaseMock");
+  const mod = await vi.importActual<typeof import("@/test/mocks/supabaseMock")>("@/test/mocks/supabaseMock");
   const supabase = mod.createSupabaseMock();
   return {
     supabase,
@@ -13,7 +20,7 @@ vi.mock("@/lib/supabaseClient", async () => {
 });
 
 import * as SupaMod from "@/lib/supabaseClient";
-const supabaseMock = (SupaMod as unknown).__mock;
+const supabaseMock = (SupaMod as typeof SupaMod & { __mock: SupabaseMock }).__mock;
 
 import {
   addFact,
@@ -31,8 +38,8 @@ beforeEach(() => {
 // Helper — build a minimal chainable that resolves to the given payload
 // at the terminal call (maybeSingle, then-via-await on the final builder,
 // or order(...).order(...)).
-function chain(terminalPayload: { data: unknown; error: unknown } | null) {
-  const c: unknown = {};
+function chain(terminalPayload: { data: unknown; error: unknown } | null): SupabaseFromResult {
+  const c = {} as ChainMock;
   const ret = () => c;
   c.select = vi.fn(ret);
   c.insert = vi.fn(ret);
@@ -49,7 +56,7 @@ function chain(terminalPayload: { data: unknown; error: unknown } | null) {
   // queries that don't end in maybeSingle, e.g. select-list).
   c.then = (resolve: (v: unknown) => unknown) =>
     resolve(terminalPayload ?? { data: [], error: null });
-  return c;
+  return c as SupabaseFromResult;
 }
 
 describe("defaultConfidenceForSource", () => {

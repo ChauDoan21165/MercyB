@@ -42,6 +42,7 @@ import type {
   PromptAssemblyResult,
   ParseResult,
   FilterResult,
+  TutorSafetyKind,
 } from "../promptAssembly";
 import type {
   TutorSession,
@@ -453,10 +454,10 @@ describe("PQ6 — Token Budget Enforcement Audit", () => {
 
 describe("PQ7 — Safety Constraint Audit", () => {
   it("PQ7.1: All 8 refusal safety kinds have non-empty messages", () => {
-    const kinds = Object.keys(REFUSAL_MESSAGES);
+    const kinds = Object.keys(REFUSAL_MESSAGES) as TutorSafetyKind[];
     expect(kinds.length).toBe(8);
     for (const kind of kinds) {
-      const response = buildRefusalResponse(kind as unknown);
+      const response = buildRefusalResponse(kind);
       expect(response.vi.length).toBeGreaterThan(5);
     }
   });
@@ -506,9 +507,9 @@ describe("PQ7 — Safety Constraint Audit", () => {
   });
 
   it("PQ7.8: Safety response VIs are never empty strings", () => {
-    const allKinds = Object.keys(REFUSAL_MESSAGES);
+    const allKinds = Object.keys(REFUSAL_MESSAGES) as TutorSafetyKind[];
     for (const kind of allKinds) {
-      const response = buildRefusalResponse(kind as unknown);
+      const response = buildRefusalResponse(kind);
       expect(response.vi.trim().length).toBeGreaterThan(0);
     }
   });

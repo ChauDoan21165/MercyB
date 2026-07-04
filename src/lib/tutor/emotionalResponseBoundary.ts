@@ -118,12 +118,20 @@ function salienceSuggestsPause(salience: BilingualSaliencePivot | null | undefin
   return true;
 }
 
+function isBenignLostObjectText(text: string, salience: BilingualSaliencePivot | null | undefined): boolean {
+  if (salience?.matchedText !== "lost") return false;
+  return /\blost\s+(?:my|your|his|her|our|their|the|a|an)\s+(?:key|keys|wallet|phone|bag|luggage|card|receipt|ticket|passport|document|documents|file|files|page|paper|papers|package|parcel|mail|voice)\b/u.test(text);
+}
+
 export function classifyResponseStance(
   input: ResponseStanceInput,
 ): ResponseStanceDecision {
   const normalized = normalizeText(input.learnerText);
 
-  if (salienceSuggestsPause(input.salience) || containsAny(normalized, PAUSE_PATTERNS)) {
+  if (
+    (salienceSuggestsPause(input.salience) && !isBenignLostObjectText(normalized, input.salience)) ||
+    containsAny(normalized, PAUSE_PATTERNS)
+  ) {
     return decision("needs_pause", "safety_adjacent_or_distress_like_content", 100);
   }
 

@@ -8,6 +8,7 @@ import { describe, it, expect, vi, beforeEach } from "vitest";
 import type { createSupabaseMock } from "@/test/mocks/supabaseMock";
 
 type SupabaseMock = ReturnType<typeof createSupabaseMock>;
+type SupabaseFromResult = ReturnType<SupabaseMock["from"]>;
 
 vi.mock("@/lib/supabaseClient", async () => {
   const mod = await vi.importActual<typeof import("@/test/mocks/supabaseMock")>("@/test/mocks/supabaseMock");
@@ -28,6 +29,10 @@ import {
 import type { DailyChallengeRow } from "../dailyChallenge";
 
 type MaybeDailyChallengeRow = DailyChallengeRow | null;
+
+function asSupabaseFromResult(chain: unknown): SupabaseFromResult {
+  return chain as SupabaseFromResult;
+}
 
 describe("xpForKind", () => {
   it("matches the documented XP table", () => {
@@ -123,7 +128,7 @@ describe("generateDaily", () => {
   }
 
   it("returns the existing row when one already exists for the date", async () => {
-    const existing = {
+    const existing: DailyChallengeRow = {
       id: "row-1",
       user_id: "u1",
       date: "2026-04-22",
@@ -135,7 +140,7 @@ describe("generateDaily", () => {
     };
 
     const dc = mockDailyChallengesRead(existing);
-    supabaseMock.from.mockImplementationOnce(() => ({ select: dc.select }));
+    supabaseMock.from.mockImplementationOnce(() => asSupabaseFromResult({ select: dc.select }));
 
     const result = await generateDaily("u1", "2026-04-22");
     expect(result?.id).toBe("row-1");
@@ -149,7 +154,7 @@ describe("generateDaily", () => {
     // 2. read profiles → grammar tag, drives 'rule'
     const profile = mockProfileRead(["vi_l1_past_ed"]);
     // 3. insert daily_challenges → returns inserted row
-    const insertedRow = {
+    const insertedRow: DailyChallengeRow = {
       id: "row-2",
       user_id: "u1",
       date: "2026-04-22",
@@ -166,9 +171,9 @@ describe("generateDaily", () => {
     const dcInsert = mockDailyChallengesInsert(insertedRow);
 
     supabaseMock.from
-      .mockImplementationOnce(() => ({ select: dcRead.select }))
-      .mockImplementationOnce(() => ({ select: profile.select }))
-      .mockImplementationOnce(() => ({ insert: dcInsert.insert }));
+      .mockImplementationOnce(() => asSupabaseFromResult({ select: dcRead.select }))
+      .mockImplementationOnce(() => asSupabaseFromResult({ select: profile.select }))
+      .mockImplementationOnce(() => asSupabaseFromResult({ insert: dcInsert.insert }));
 
     const result = await generateDaily("u1", "2026-04-22");
     expect(result?.id).toBe("row-2");
@@ -207,14 +212,14 @@ describe("completeDaily", () => {
 
   it("returns ok:false when no challenge exists for the date", async () => {
     const r = mockReadRow(null);
-    supabaseMock.from.mockImplementationOnce(() => ({ select: r.select }));
+    supabaseMock.from.mockImplementationOnce(() => asSupabaseFromResult({ select: r.select }));
 
     const result = await completeDaily("u1", "2026-04-22");
     expect(result.ok).toBe(false);
   });
 
   it("is idempotent on an already-completed row", async () => {
-    const completedRow = {
+    const completedRow: DailyChallengeRow = {
       id: "row-3",
       user_id: "u1",
       date: "2026-04-22",
@@ -225,14 +230,14 @@ describe("completeDaily", () => {
       xp_awarded: 10,
     };
     const r = mockReadRow(completedRow);
-    supabaseMock.from.mockImplementationOnce(() => ({ select: r.select }));
+    supabaseMock.from.mockImplementationOnce(() => asSupabaseFromResult({ select: r.select }));
 
     const result = await completeDaily("u1", "2026-04-22");
     expect(result).toEqual({ ok: true, xpAwarded: 10, xpTotal: 0 });
   });
 
   it("flips the row, awards XP, and returns the new total", async () => {
-    const pendingRow = {
+    const pendingRow: DailyChallengeRow = {
       id: "row-4",
       user_id: "u1",
       date: "2026-04-22",
@@ -242,14 +247,14 @@ describe("completeDaily", () => {
       completed_at: null,
       xp_awarded: 0,
     };
-    const updatedRow = { ...pendingRow, completed: true, xp_awarded: 15 };
+    const updatedRow: DailyChallengeRow = { ...pendingRow, completed: true, xp_awarded: 15 };
 
     const r = mockReadRow(pendingRow);
     const u = mockUpdateRow(updatedRow);
 
     supabaseMock.from
-      .mockImplementationOnce(() => ({ select: r.select })) // load
-      .mockImplementationOnce(() => ({ update: u.update })); // update
+      .mockImplementationOnce(() => asSupabaseFromResult({ select: r.select })) // load
+      .mockImplementationOnce(() => asSupabaseFromResult({ update: u.update })); // update
 
     supabaseMock.rpc.mockResolvedValueOnce({ data: 100, error: null });
 

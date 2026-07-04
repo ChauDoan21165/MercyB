@@ -3,7 +3,18 @@ import { describe, expect, it } from "vitest";
 import {
   SWAHILI_LESSONS_BY_LEVEL,
   allSwahiliLessons,
+  type SwahiliLessonInput,
 } from "../index";
+
+type SwahiliSentence = NonNullable<SwahiliLessonInput["sentences"]>[number];
+type IntegrityLesson = SwahiliLessonInput & {
+  category?: string;
+  sentences: SwahiliSentence[];
+  vocabulary?: unknown[];
+};
+
+const asIntegrityLessons = (lessons: SwahiliLessonInput[]): IntegrityLesson[] =>
+  lessons as IntegrityLesson[];
 
 describe("Swahili content integrity", () => {
   it("registers A1 through C2 levels", () => {
@@ -24,7 +35,7 @@ describe("Swahili content integrity", () => {
     const a1 = SWAHILI_LESSONS_BY_LEVEL.A1;
     expect(a1.length).toBe(7);
 
-    const categories = a1.map((l: unknown) => l.category).sort();
+    const categories = asIntegrityLessons(a1).map((l) => l.category).sort();
     expect(categories).toEqual([
       "directions",
       "family",
@@ -40,7 +51,7 @@ describe("Swahili content integrity", () => {
     const a2 = SWAHILI_LESSONS_BY_LEVEL.A2;
     expect(a2.length).toBe(6);
 
-    const categories = a2.map((l: unknown) => l.category).sort();
+    const categories = asIntegrityLessons(a2).map((l) => l.category).sort();
     expect(categories).toEqual([
       "daily_routine",
       "housing",
@@ -55,7 +66,7 @@ describe("Swahili content integrity", () => {
     const b1 = SWAHILI_LESSONS_BY_LEVEL.B1;
     expect(b1.length).toBe(5);
 
-    const categories = b1.map((l: unknown) => l.category).sort();
+    const categories = asIntegrityLessons(b1).map((l) => l.category).sort();
     expect(categories).toEqual([
       "health_pharmacy",
       "opinions_reasons",
@@ -69,7 +80,7 @@ describe("Swahili content integrity", () => {
     const b2 = SWAHILI_LESSONS_BY_LEVEL.B2;
     expect(b2.length).toBe(5);
 
-    const categories = b2.map((l: unknown) => l.category).sort();
+    const categories = asIntegrityLessons(b2).map((l) => l.category).sort();
     expect(categories).toEqual([
       "debate",
       "media",
@@ -83,7 +94,7 @@ describe("Swahili content integrity", () => {
     const c1 = SWAHILI_LESSONS_BY_LEVEL.C1;
     expect(c1.length).toBe(14);
 
-    const categories = c1.map((l: unknown) => l.category).sort();
+    const categories = asIntegrityLessons(c1).map((l) => l.category).sort();
     expect(categories).toEqual([
       "academic",
       "business",
@@ -106,7 +117,7 @@ describe("Swahili content integrity", () => {
     const c2 = SWAHILI_LESSONS_BY_LEVEL.C2;
     expect(c2.length).toBe(10);
 
-    const categories = c2.map((l: unknown) => l.category).sort();
+    const categories = asIntegrityLessons(c2).map((l) => l.category).sort();
     expect(categories).toEqual([
       "academic_discourse",
       "advanced_grammar",
@@ -130,34 +141,33 @@ describe("Swahili content integrity", () => {
   });
 
   it("all lesson IDs are unique across all levels", () => {
-    const ids = allSwahiliLessons.map((l: unknown) => l.id);
+    const ids = allSwahiliLessons.map((l) => l.id);
     expect(new Set(ids).size).toBe(ids.length);
   });
 
   it("each lesson has required fields", () => {
-    for (const lesson of allSwahiliLessons) {
-      const l = lesson as unknown;
-      expect(l.id).toBeTruthy();
-      expect(l.id).toMatch(/^swahili_/);
-      expect(l.level).toBeTruthy();
-      expect(l.title_vi).toBeTruthy();
-      expect(l.title_en).toBeTruthy();
-      expect(l.sentences).toBeTruthy();
-      expect(l.sentences.length).toBeGreaterThan(0);
-      expect(l.category).toBeTruthy();
+    for (const lesson of asIntegrityLessons(allSwahiliLessons)) {
+      expect(lesson.id).toBeTruthy();
+      expect(lesson.id).toMatch(/^swahili_/);
+      expect(lesson.level).toBeTruthy();
+      expect(lesson.title_vi).toBeTruthy();
+      expect(lesson.title_en).toBeTruthy();
+      expect(lesson.sentences).toBeTruthy();
+      expect(lesson.sentences.length).toBeGreaterThan(0);
+      expect(lesson.category).toBeTruthy();
     }
   });
 
   it("every A1 sentence has vi field", () => {
-    for (const s of SWAHILI_LESSONS_BY_LEVEL.A1.flatMap((l: unknown) => l.sentences)) {
+    for (const s of asIntegrityLessons(SWAHILI_LESSONS_BY_LEVEL.A1).flatMap((l) => l.sentences)) {
       expect(s.vi).toBeTruthy();
     }
   });
 
   it("every B1/B2/C1/C2 sentence has sw, vi, en fields", () => {
     for (const level of ["B1", "B2", "C1", "C2"] as const) {
-      for (const lesson of SWAHILI_LESSONS_BY_LEVEL[level]) {
-        for (const s of (lesson as unknown).sentences) {
+      for (const lesson of asIntegrityLessons(SWAHILI_LESSONS_BY_LEVEL[level])) {
+        for (const s of lesson.sentences) {
           expect(s.sw).toBeTruthy();
           expect(s.vi).toBeTruthy();
           expect(s.en).toBeTruthy();
@@ -168,10 +178,9 @@ describe("Swahili content integrity", () => {
 
   it("every B1/B2/C1/C2 lesson has vocabulary", () => {
     for (const level of ["B1", "B2", "C1", "C2"] as const) {
-      for (const lesson of SWAHILI_LESSONS_BY_LEVEL[level]) {
-        const l = lesson as unknown;
-        expect(l.vocabulary).toBeTruthy();
-        expect(l.vocabulary.length).toBeGreaterThanOrEqual(3);
+      for (const lesson of asIntegrityLessons(SWAHILI_LESSONS_BY_LEVEL[level])) {
+        expect(lesson.vocabulary).toBeTruthy();
+        expect(lesson.vocabulary?.length).toBeGreaterThanOrEqual(3);
       }
     }
   });
