@@ -169,4 +169,15 @@ describe("Urdu language wiring", () => {
     expect(pageSource).not.toMatch(/audioBase|lessonAudioBase|audioKinds/);
     expect(pageSource).not.toMatch(/\b(audio|listen|play)\b/i);
   });
+
+  it("keeps Urdu script rendering tied to the local lesson module and scoped RTL attributes", () => {
+    const pageSource = readFileSync(PAGE_SRC, "utf8");
+
+    expect(pageSource).toContain('from "@/languages/urdu"');
+    expect(pageSource).toContain("URDU_LESSONS_BY_LEVEL");
+    expect(pageSource).toContain("URDU_VALIDATED_LEVELS");
+    expect(pageSource).toContain("const URDU_RE = /[\\u0600-\\u06FF]/");
+    expect(pageSource).toMatch(/dir=["']rtl["']\s+lang=["']ur["']/);
+    expect(pageSource).toMatch(/sentence\.romanization|entry\.romanization|line\.romanization/);
+  });
 });

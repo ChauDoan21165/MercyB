@@ -152,4 +152,15 @@ describe("Arabic language wiring", () => {
     expect(pageSource).not.toMatch(/audioBase|lessonAudioBase|audioKinds/);
     expect(pageSource).not.toMatch(/\b(audio|listen|play)\b/i);
   });
+
+  it("keeps Arabic script rendering tied to the local lesson module and RTL language attributes", () => {
+    const pageSource = readFileSync(PAGE_SRC, "utf8");
+
+    expect(pageSource).toContain('from "@/languages/arabic"');
+    expect(pageSource).toContain("ARABIC_LESSONS_BY_LEVEL");
+    expect(pageSource).toContain("ARABIC_VALIDATED_LEVELS");
+    expect(pageSource).toContain("const ARABIC_RE = /[\\u0600-\\u06FF]/");
+    expect(pageSource).toMatch(/dir=["']rtl["']\s+lang=["']ar["']/);
+    expect(pageSource).toMatch(/sentence\.romanization|entry\.romanization|line\.romanization/);
+  });
 });

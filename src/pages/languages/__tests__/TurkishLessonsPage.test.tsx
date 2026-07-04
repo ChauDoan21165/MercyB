@@ -6,6 +6,12 @@ import { describe, expect, it } from "vitest";
 
 import { UiLanguageProvider } from "@/contexts/UiLanguageContext";
 import { isTutorTargetLanguageSupported } from "@/lib/tutor/languageRegistry";
+import {
+  TURKISH_CATEGORIES,
+  TURKISH_LESSONS_BY_LEVEL,
+  TURKISH_TOTAL_LESSONS,
+  TURKISH_VALIDATED_LEVELS,
+} from "@/languages/turkish";
 import TurkishLessonsPage from "@/pages/languages/TurkishLessonsPage";
 
 const here = path.dirname(new URL(import.meta.url).pathname);
@@ -22,6 +28,25 @@ describe("TurkishLessonsPage", () => {
     expect(pageSrc).toContain("TURKISH_TOTAL_LESSONS");
     expect(pageSrc).toContain("TURKISH_VALIDATED_LEVELS");
     expect(pageSrc).toContain("normalizeTurkishLesson");
+  });
+
+  it("keeps the rendered page tied to the validated local Turkish level and category registry", () => {
+    expect(TURKISH_VALIDATED_LEVELS).toEqual(["A1", "A2", "B1", "B2", "C1", "C2"]);
+    expect(TURKISH_TOTAL_LESSONS).toBe(TURKISH_CATEGORIES.length);
+    expect(TURKISH_LESSONS_BY_LEVEL.A1[0].sentences[0].en).toContain("Hello");
+    expect(TURKISH_LESSONS_BY_LEVEL.A1[0].sentences[0].tr).toContain("Merhaba");
+
+    render(
+      <MemoryRouter>
+        <UiLanguageProvider>
+          <TurkishLessonsPage />
+        </UiLanguageProvider>
+      </MemoryRouter>,
+    );
+
+    expect(screen.getAllByRole("button", { name: /A1/ })[0]).toHaveAttribute("aria-pressed", "true");
+    expect(screen.getByText("Chào hỏi")).toBeInTheDocument();
+    expect(screen.getByText("Hài hòa nguyên âm")).toBeInTheDocument();
   });
 
   it("does not use remote lessons or sound promise code", () => {

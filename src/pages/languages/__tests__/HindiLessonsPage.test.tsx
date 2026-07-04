@@ -160,4 +160,15 @@ describe("Hindi language wiring", () => {
     expect(pageSource).not.toMatch(/audioBase|lessonAudioBase|audioKinds/);
     expect(pageSource).not.toMatch(/\b(audio|listen|play)\b/i);
   });
+
+  it("keeps Devanagari rendering tied to the local lesson module and Hindi language attributes", () => {
+    const pageSource = readFileSync(PAGE_SRC, "utf8");
+
+    expect(pageSource).toContain('from "@/languages/hindi"');
+    expect(pageSource).toContain("HINDI_LESSONS_BY_LEVEL");
+    expect(pageSource).toContain("HINDI_VALIDATED_LEVELS");
+    expect(pageSource).toContain("const DEVANAGARI_RE = /[\\u0900-\\u097F]/");
+    expect(pageSource).toMatch(/lang=["']hi["']/);
+    expect(pageSource).toMatch(/sentence\.romanization|entry\.romanization|line\.romanization/);
+  });
 });
