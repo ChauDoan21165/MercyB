@@ -35,6 +35,18 @@ declare global {
       getCLS?: () => number;
     };
 
+    // Marketing/analytics globals. `dataLayer` accepts either gtag-style
+    // argument tuples or GTM-style event objects.
+    dataLayer?: unknown[];
+    gtag?: (...args: unknown[]) => void;
+    plausible?: (
+      eventName: string,
+      options?: { props?: Record<string, unknown> },
+    ) => void;
+    analytics?: {
+      track?: (eventName: string, payload?: Record<string, unknown>) => void;
+    };
+
     __REACT_ROUTER__?: unknown;
 
     /* ===============================

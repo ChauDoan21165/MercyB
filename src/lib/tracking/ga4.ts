@@ -13,10 +13,8 @@
 // (paywall_shown, checkout_started, etc.) start firing into GA4
 // automatically — no changes needed at those call sites.
 
-// `window.dataLayer` and `window.gtag` are declared in
-// `src/lib/analytics.ts` — single source of truth so the two
-// modules share a shape and TypeScript doesn't see two
-// conflicting `declare global` blocks.
+// `window.dataLayer` and `window.gtag` are declared centrally in
+// `src/types/window.d.ts` so every typecheck shard shares the same shape.
 
 let initialized = false;
 
