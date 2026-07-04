@@ -1,5 +1,6 @@
 import type { TeacherContext } from "../runtime";
 import {
+  DP_EVIDENCE_BASED_DECISION_SCHEMA_VERSION,
   dpAllowsPedAction,
   dpRecommendationHasEvidenceRationale,
   isDpDecisionConfidenceLevel,
@@ -8,6 +9,7 @@ import {
 } from "./decisionContract";
 
 export type DpDecisionValidationFailureCode =
+  | "invalid_schema_version"
   | "missing_teacher_context"
   | "missing_teacher_context_reference"
   | "teacher_context_reference_mismatch"
@@ -241,6 +243,14 @@ export function validateDpDecision(
   teacherContext?: TeacherContext,
 ): DpDecisionValidationResult {
   const failures: DpDecisionValidationFailure[] = [];
+
+  if (decision.schemaVersion !== DP_EVIDENCE_BASED_DECISION_SCHEMA_VERSION) {
+    failures.push({
+      code: "invalid_schema_version",
+      path: "schemaVersion",
+      reason: `DP decision schemaVersion must be ${DP_EVIDENCE_BASED_DECISION_SCHEMA_VERSION}.`,
+    });
+  }
 
   if (!teacherContext) {
     failures.push({

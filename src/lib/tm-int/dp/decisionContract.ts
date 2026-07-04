@@ -1,5 +1,7 @@
 import type { TeacherContext } from "../runtime";
 
+export const DP_EVIDENCE_BASED_DECISION_SCHEMA_VERSION = "tm-int-dp-decision-contract-v1";
+
 export type DpDecisionConfidenceLevel = "low" | "medium" | "high";
 export const DP_DECISION_CONFIDENCE_LEVELS = ["low", "medium", "high"] as const satisfies readonly DpDecisionConfidenceLevel[];
 export type DpProductIssueType = TeacherContext["productIssues"][number]["issue"];
@@ -38,7 +40,7 @@ export type DpRecommendation = {
 };
 
 export type DpEvidenceBasedDecision = {
-  schemaVersion: "tm-int-dp-decision-contract-v1";
+  schemaVersion: typeof DP_EVIDENCE_BASED_DECISION_SCHEMA_VERSION;
   decisionId: string;
   sourceTeacherContextRef?: DpTeacherContextReference;
   citedObservationIds: readonly string[];

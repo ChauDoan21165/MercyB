@@ -2,6 +2,7 @@ import { describe, expect, test } from "vitest";
 import type { TeacherContext } from "../../runtime";
 import {
   DP_DECISION_CONFIDENCE_LEVELS,
+  DP_EVIDENCE_BASED_DECISION_SCHEMA_VERSION,
   dpAllowsPedAction,
   dpRecommendationHasEvidenceRationale,
   dpTeacherContextReferenceFrom,
@@ -68,6 +69,22 @@ function createValidDecision(): DpEvidenceBasedDecision {
 }
 
 describe("validateDpDecision", () => {
+  test("PASS canonical DP decision schema version", () => {
+    expect(createValidDecision().schemaVersion).toBe(DP_EVIDENCE_BASED_DECISION_SCHEMA_VERSION);
+    expect(validateDpDecision(createValidDecision(), createTeacherContext()).pass).toBe(true);
+  });
+
+  test("FAIL invalid DP decision schema version", () => {
+    const decision = {
+      ...createValidDecision(),
+      schemaVersion: "tm-int-dp-decision-contract-v0",
+    } as unknown as DpEvidenceBasedDecision;
+
+    expect(validateDpDecision(decision, createTeacherContext()).failures).toEqual(
+      expect.arrayContaining([expect.objectContaining({ code: "invalid_schema_version" })]),
+    );
+  });
+
   test("PASS valid DP decision from Teacher Context", () => {
     expect(validateDpDecision(createValidDecision(), createTeacherContext()).pass).toBe(true);
   });
