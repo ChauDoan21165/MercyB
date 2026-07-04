@@ -192,6 +192,38 @@ describe("placement RR-001 runtime integration", () => {
     expect(decision.productIssueHandling.issueTypes).toContain("product_failure_audio");
   });
 
+  it("normalizes placement runtime learning signal keys before DP evidence intake", () => {
+    const timeline: PlacementV3ObservationTimelineItem[] = [
+      {
+        kind: "answer",
+        taskId: "reading-b1-work-email-1",
+        modality: "reading",
+        observedAt: REPLAY_TIME,
+        elapsedMs: 5600,
+        observedCorrect: true,
+      },
+      {
+        kind: "answer",
+        taskId: "conversation-a2-job-goals-1",
+        modality: "conversation",
+        observedAt: REPLAY_TIME,
+        elapsedMs: 3600,
+        observedCorrect: true,
+      },
+    ];
+    const bundle = buildPlacementRuntimeEvidenceBundle(timeline, REPLAY_TIME);
+
+    const normalizedSignalKeys = Array.from(new Set(bundle.learningSignals.map((signal) => signal.signal_key))).sort();
+    const decision = createDpDecisionFromRuntimeEvidenceBundle(bundle);
+    const result = validateDpEvidenceIntake(decision, bundle.teacherContext, bundle);
+
+    expect(bundle.learningSignals.length).toBeGreaterThan(1);
+    expect(bundle.dpDecision.signalKeys).toEqual(normalizedSignalKeys);
+    expect(bundle.pedDecision.signalKeys).toEqual(normalizedSignalKeys);
+    expect(bundle.runtimeDecision.signalKeys).toEqual(normalizedSignalKeys);
+    expect(result.pass).toBe(true);
+  });
+
   it("rejects placement runtime DP intake that classifies product failure as learner weakness", () => {
     const timeline: PlacementV3ObservationTimelineItem[] = [
       {

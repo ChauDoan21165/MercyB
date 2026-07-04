@@ -5,7 +5,7 @@ import { detectSpeechObservations } from "@/lib/tm-int/obs/detectors/speech";
 import type { ObservationFact, ObservationPacket } from "@/lib/tm-int/obs/types";
 import { buildTeacherContext, replayTeacherContext } from "@/lib/tm-int/runtime";
 import type { RuntimeVerifiedSource, TeacherContext } from "@/lib/tm-int/runtime";
-import type { RuntimeEvidenceBundle } from "@/lib/tm-int/runtimeReadiness";
+import { normalizedSignalKeysFromBundle, type RuntimeEvidenceBundle } from "@/lib/tm-int/runtimeReadiness";
 import type {
   PlacementV3ObservationTimelineItem,
   PlacementV3ResponsePayload,
@@ -212,7 +212,9 @@ export function buildPlacementRuntimeEvidenceBundle(
   const source = runtime.teacherContext.productIssues[0]?.source ?? "TC-000001";
   const firstRecommendation = runtime.teacherContext.recommendations[0];
   const productFailure = runtime.teacherContext.productIssues.length > 0;
-  const signalKeys = runtime.teacherContext.learningSignals.map((signal) => signal.signal_key);
+  const signalKeys = normalizedSignalKeysFromBundle({
+    learningSignals: runtime.teacherContext.learningSignals,
+  });
 
   return {
     schemaVersion: "tm-int-runtime-evidence-bundle-v1",

@@ -289,6 +289,10 @@ describe("validateTeacherContext", () => {
       code: "unknown_signal_reference",
       path: "dpDecision.signalKeys",
       reason: "Runtime evidence referenced unknown learning signal forged_learning_signal.",
+      evidence: {
+        referencedSignalKey: "forged_learning_signal",
+        normalizedSignalKeys: ["ProductiveHesitation"],
+      },
     }));
   });
 

@@ -15,6 +15,8 @@ export {
 } from "./contracts";
 
 export {
+  normalizedObservationIdsFromBundle,
+  normalizedSignalKeysFromBundle,
   observationIdsFromBundle,
   missingRuntimeEvidenceBundleFields,
   RUNTIME_EVIDENCE_BUNDLE_REQUIRED_FIELDS,

@@ -1,6 +1,11 @@
 import type { TeacherContext } from "../runtime";
 import type { PartialRuntimeEvidenceBundle } from "./evidenceBundle";
-import { normalizedObservationIdsFromBundle, observationIdsFromBundle, signalKeysFromBundle } from "./evidenceBundle";
+import {
+  normalizedObservationIdsFromBundle,
+  normalizedSignalKeysFromBundle,
+  observationIdsFromBundle,
+  signalKeysFromBundle,
+} from "./evidenceBundle";
 
 export type TeacherContextValidationFailureCode =
   | "missing_observation_summary"
@@ -21,6 +26,8 @@ export type TeacherContextValidationFailure = {
   evidence?: {
     normalizedObservationIds?: readonly string[];
     referencedObservationId?: string;
+    normalizedSignalKeys?: readonly string[];
+    referencedSignalKey?: string;
   };
 };
 
@@ -209,12 +216,17 @@ export function validateTeacherContext(bundle: PartialRuntimeEvidenceBundle): Te
   }
 
   const knownSignalKeys = signalKeysFromBundle(bundle);
+  const normalizedSignalKeys = normalizedSignalKeysFromBundle(bundle);
   for (const signal of referencedSignalKeys(bundle)) {
     if (!knownSignalKeys.has(signal.id)) {
       failures.push({
         code: "unknown_signal_reference",
         path: signal.path,
         reason: `Runtime evidence referenced unknown learning signal ${signal.id}.`,
+        evidence: {
+          referencedSignalKey: signal.id,
+          normalizedSignalKeys,
+        },
       });
     }
   }

@@ -161,3 +161,7 @@ export function signalKeysFromBundle(bundle: PartialRuntimeEvidenceBundle): Set<
   for (const signal of bundle.learningSignals ?? []) keys.add(signal.signal_key);
   return keys;
 }
+
+export function normalizedSignalKeysFromBundle(bundle: PartialRuntimeEvidenceBundle): readonly string[] {
+  return Array.from(signalKeysFromBundle(bundle)).sort();
+}
