@@ -30,6 +30,12 @@ vi.mock("@/lib/offline/offlineDb", () => ({
 }));
 
 import { loadRoomJson } from "../roomJsonResolver";
+import {
+  canonicalizeRoomId,
+  normalizeOfflineRoom,
+  resolveRoomJsonPath,
+} from "../roomJsonResolver";
+import { PUBLIC_ROOM_MANIFEST } from "@/lib/roomManifest";
 import * as detector from "@/lib/offline/offlineDetector";
 import * as db from "@/lib/offline/offlineDb";
 
@@ -57,8 +63,23 @@ function stubFetchJson(body: unknown) {
   );
 }
 
+function stubFetchResponse(status: number, contentType: string, body: string) {
+  vi.stubGlobal(
+    "fetch",
+    vi.fn(async () => ({
+      ok: status >= 200 && status < 300,
+      status,
+      headers: new Headers({ "content-type": contentType }),
+      text: async () => body,
+    })) as unknown as typeof fetch,
+  );
+}
+
 beforeEach(() => {
   vi.clearAllMocks();
+  for (const key of Object.keys(PUBLIC_ROOM_MANIFEST)) {
+    delete PUBLIC_ROOM_MANIFEST[key];
+  }
 });
 
 afterEach(() => {
@@ -233,5 +254,92 @@ describe("loadRoomJson — offline contract (fetch-first → IDB → unavailable
     }
     expect(caught).toBeInstanceOf(Error);
     expect((caught as { kind?: string }).kind).toBe("network");
+  });
+
+  it("canonicalizes room ids from suffixes, paths, queries, spaces, dashes, and casing", () => {
+    expect(canonicalizeRoomId("Depression Support VIP1.json")).toBe("depression_support_vip1");
+    expect(canonicalizeRoomId("/data/Anxiety-Relief.json?download=1")).toBe("anxiety_relief");
+    expect(canonicalizeRoomId("data/family conflict.JSON")).toBe("family_conflict");
+    expect(canonicalizeRoomId(" /room/Level 1 Practice ")).toBe("level_1_practice");
+    expect(resolveRoomJsonPath(" /data/Level-1 Practice.json?x=1 ")).toBe(
+      "data/level_1_practice.json",
+    );
+  });
+
+  it("trusts manifest paths and falls back to canonical data paths for unknown rooms", () => {
+    PUBLIC_ROOM_MANIFEST.manifest_room = "custom/manifest-room.json";
+
+    expect(resolveRoomJsonPath("Manifest Room")).toBe("custom/manifest-room.json");
+    expect(resolveRoomJsonPath("Unknown Room")).toBe("data/unknown_room.json");
+  });
+
+  it("normalizes offline envelope, flat, and malformed stored room shapes", () => {
+    const entries = [{ slug: "one", keywords_en: ["hello"], keywords_vi: ["xin chao"] }];
+
+    expect(
+      normalizeOfflineRoom({
+        roomId: "envelope",
+        room: { id: "envelope" },
+        entries,
+      }),
+    ).toMatchObject({
+      id: "envelope",
+      entries,
+      keywords_en: ["hello"],
+      keywords_vi: ["xin chao"],
+    });
+
+    expect(normalizeOfflineRoom({ id: "flat", entries: [] })).toMatchObject({
+      id: "flat",
+      entries: [],
+    });
+    expect(normalizeOfflineRoom(null)).toBeNull();
+    expect(normalizeOfflineRoom("not-a-room")).toBeNull();
+  });
+
+  it("backfills Japanese keywords without overwriting existing top-level Japanese keywords", async () => {
+    vi.mocked(detector.isOnline).mockReturnValue(false);
+    stubFetchReject();
+    const room = {
+      id: "ja-backfill",
+      entries: [
+        { slug: "one", keywords_ja: ["回復", " 癒し "] },
+        { slug: "two", keywords_ja: ["癒し", "練習"] },
+      ],
+    };
+    vi.mocked(db.getRoom).mockResolvedValueOnce({
+      roomId: "ja-backfill",
+      cachedAt: 0,
+      contentVersion: 0,
+      json: { roomId: "ja-backfill", room, entries: room.entries, audioUrls: [] },
+    });
+
+    const result = (await loadRoomJson("ja-backfill")) as Record<string, unknown>;
+
+    expect(result.keywords_ja).toEqual(["回復", "癒し", "練習"]);
+
+    const preserved = normalizeOfflineRoom({
+      room: {
+        id: "ja-preserved",
+        keywords_ja: ["既存"],
+        entries: [{ keywords_ja: ["ignored"] }],
+      },
+    });
+    expect(preserved?.keywords_ja).toEqual(["既存"]);
+  });
+
+  it("classifies server and invalid-json fetch failures", async () => {
+    vi.mocked(detector.isOnline).mockReturnValue(true);
+    stubFetchResponse(503, "application/json", "{\"error\":\"down\"}");
+
+    await expect(loadRoomJson("server-fail")).rejects.toMatchObject({
+      kind: "server",
+    });
+
+    stubFetchResponse(200, "application/json", "{bad json");
+
+    await expect(loadRoomJson("invalid-json")).rejects.toMatchObject({
+      kind: "json_invalid",
+    });
   });
 });
