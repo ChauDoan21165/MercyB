@@ -49,6 +49,7 @@ export type TeacherContext = {
     packetId: string;
     factCount: number;
     factTypes: string[];
+    factTypeCounts?: Record<string, number>;
   };
   learningSignals: TeacherContextLearningSignal[];
   productIssues: TeacherContextProductIssue[];

@@ -42,6 +42,12 @@ describe("TeacherContext pipeline", () => {
 
     expect(context.schemaVersion).toBe("tm-int-teacher-context-v1");
     expect(context.observationSummary.factCount).toBe(packet.facts.length);
+    expect(context.observationSummary.factTypeCounts).toMatchObject({
+      AudioDurationZero: 1,
+      MicPermissionDenied: 1,
+      AssessmentAnswerSubmitted: 4,
+      HintUsed: 2,
+    });
     expect(context.productIssues).toEqual([
       expect.objectContaining({ source: "TC-000001", issue: "product_failure_audio", affectedSkill: "listening", evidenceCount: 2 }),
       expect.objectContaining({ source: "TC-000002", issue: "product_or_permission_block", affectedSkill: "speaking", evidenceCount: 1 }),
