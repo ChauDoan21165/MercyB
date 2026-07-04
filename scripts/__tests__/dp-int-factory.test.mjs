@@ -34,6 +34,13 @@ function sqlite(root, statement) {
   });
 }
 
+function git(args) {
+  return spawnSync("git", args, {
+    cwd: repoRoot,
+    encoding: "utf8",
+  });
+}
+
 function writeWorkpacks(root, overrides = {}) {
   const file = join(root, "workpacks.json");
   writeFileSync(
@@ -205,6 +212,25 @@ describe("DP INT factory control plane", () => {
 
     const result = sqlite(root, "select verified from dp_int_workpacks where wp_id='DP-WP-001'; select judge_status from dp_int_judge_results where wp_id='DP-WP-001';");
     expect(result.stdout.trim().split(/\r?\n/)).toEqual(["0", "judge_fail"]);
+  });
+
+  it("verify-final promotes only through verifier authorization", () => {
+    const root = setupImported();
+    const commit = git(["rev-parse", "HEAD"]).stdout.trim();
+    const artifact = "scripts/tm-int/dp-int-factory.mjs";
+    const reportPath = join(root, "final-report.md");
+
+    expect(run(root, ["claim", "DP-WP-001", "F-1"]).status).toBe(0);
+    expect(run(root, ["f-done", "DP-WP-001", artifact, "validation passed", commit]).status).toBe(0);
+    expect(run(root, ["judge-pass", "DP-WP-001", artifact, commit]).status).toBe(0);
+    expect(run(root, ["verify-final", reportPath]).status).toBe(0);
+
+    const blocked = sqlite(root, "update dp_int_workpacks set verified=0 where wp_id='DP-WP-001';");
+    expect(blocked.status).not.toBe(0);
+    expect(blocked.stderr).toContain("DP INT F queue cannot mark workpacks verified");
+
+    const result = sqlite(root, "select verified from dp_int_workpacks where wp_id='DP-WP-001'; select verified_count from dp_int_verified_promotions;");
+    expect(result.stdout.trim().split(/\r?\n/)).toEqual(["1", "1"]);
   });
 
   it("closeout reports ready/running/f_done/judge_pass/judge_fail/f_done_unjudged", () => {
