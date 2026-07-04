@@ -27,7 +27,7 @@ interface RoomRow {
   title_en: string;
   title_vi: string;
   tier: string | null;
-  entries: any;
+  entries: unknown;
 }
 
 async function validateRoomsDB() {

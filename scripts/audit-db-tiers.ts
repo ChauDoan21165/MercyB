@@ -20,6 +20,12 @@ if (!SUPABASE_URL || !SUPABASE_KEY) {
 
 const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
 
+type RoomTierRow = {
+  id: string;
+  title_en: string | null;
+  tier: string | null;
+};
+
 async function auditTiers() {
   console.log('\n🔍 TIER AUDIT - Finding non-canonical tier values\n');
 
@@ -35,7 +41,7 @@ async function auditTiers() {
 
   const issues: Array<{ id: string; title: string; current: string; expected: string }> = [];
 
-  (data || []).forEach((room: any) => {
+  (data || []).forEach((room: RoomTierRow) => {
     const normalized = normalizeTier(room.tier || '');
     const canonical = TIER_ID_TO_LABEL[normalized as TierId];
 

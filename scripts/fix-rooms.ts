@@ -50,7 +50,7 @@ interface Entry {
   copy?: LangPair;
   tags?: string[];
   audio?: string;
-  [key: string]: any;
+  [key: string]: unknown;
 }
 
 interface RoomFile {
@@ -58,7 +58,7 @@ interface RoomFile {
   title?: LangPair;
   content?: ContentBlock;
   entries?: Entry[];
-  [key: string]: any;
+  [key: string]: unknown;
 }
 
 interface FixResult {
@@ -80,15 +80,31 @@ function walkJsonFiles(dir: string, acc: string[] = []): string[] {
   return acc;
 }
 
+function isRecord(value: unknown): value is Record<string, unknown> {
+  return value !== null && typeof value === "object" && !Array.isArray(value);
+}
+
+function isLangPair(value: unknown): value is LangPair {
+  return isRecord(value);
+}
+
+function getErrorMessage(error: unknown): string {
+  return error instanceof Error ? error.message : String(error);
+}
+
 function ensureLangPair(
-  obj: any,
+  obj: Record<string, unknown>,
   key: string,
   ctx: string,
   fixes: string[],
   warnings: string[]
 ) {
-  const block: LangPair | undefined = obj[key];
+  const block = obj[key];
   if (!block) return;
+  if (!isLangPair(block)) {
+    warnings.push(`Empty ${ctx} (both en & vi missing)`);
+    return;
+  }
 
   if (!block.en && block.vi) {
     block.en = block.vi;
@@ -203,8 +219,8 @@ function fixRoom(room: RoomFile, file: string): FixResult {
     removeDeprecatedKeys(room, fixes);
 
     return { file, changed: fixes.length > 0, fixes, warnings, errors };
-  } catch (e: any) {
-    errors.push(`Error: ${e.message || e}`);
+  } catch (e: unknown) {
+    errors.push(`Error: ${getErrorMessage(e)}`);
     return { file, changed: false, fixes, warnings, errors };
   }
 }
@@ -225,14 +241,25 @@ function main() {
   for (const file of files) {
     let json: RoomFile;
     try {
-      json = JSON.parse(readFileSync(file, "utf8"));
-    } catch (e: any) {
+      const parsed: unknown = JSON.parse(readFileSync(file, "utf8"));
+      if (!isRecord(parsed)) {
+        results.push({
+          file,
+          changed: false,
+          fixes: [],
+          warnings: [],
+          errors: ["Parse error: JSON root is not an object"],
+        });
+        continue;
+      }
+      json = parsed;
+    } catch (e: unknown) {
       results.push({
         file,
         changed: false,
         fixes: [],
         warnings: [],
-        errors: [`Parse error: ${e.message}`],
+        errors: [`Parse error: ${getErrorMessage(e)}`],
       });
       continue;
     }

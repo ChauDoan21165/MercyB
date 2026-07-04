@@ -27,34 +27,54 @@ const __dirname = path.dirname(__filename);
 const projectRoot = path.resolve(__dirname, "..");
 const publicDataDir = path.join(projectRoot, "public", "data");
 
-function isObject(x: any) {
-  return x && typeof x === "object" && !Array.isArray(x);
+type RoomValidationResult =
+  | {
+      ok: true;
+      id: string;
+      filename: string;
+    }
+  | {
+      ok: false;
+      id: string;
+      filename: string;
+      reason: string;
+      detail: string;
+    };
+
+function isObject(x: unknown): x is Record<string, unknown> {
+  return x !== null && typeof x === "object" && !Array.isArray(x);
 }
 
-function readJsonFile(fullPath: string) {
+function getErrorMessage(error: unknown): string {
+  return error instanceof Error ? error.message : String(error);
+}
+
+function readJsonFile(fullPath: string): unknown {
   const raw = fs.readFileSync(fullPath, "utf8");
   return JSON.parse(raw);
 }
 
-function validateRoomJsonFile(filename: string) {
+function validateRoomJsonFile(filename: string): RoomValidationResult {
   const fullPath = path.join(publicDataDir, filename);
   const expectedId = filename.replace(/\.json$/i, "").toLowerCase().trim();
 
-  let data: any;
+  let data: unknown;
   try {
     data = readJsonFile(fullPath);
-  } catch (e: any) {
+  } catch (e: unknown) {
     return {
       ok: false,
       id: expectedId,
       filename,
       reason: "JSON_PARSE_FAILED",
-      detail: e?.message || String(e),
+      detail: getErrorMessage(e),
     };
   }
 
+  const room = isObject(data) ? data : {};
+
   // id must exist and match filename
-  const actualId = String(data?.id || "").toLowerCase().trim();
+  const actualId = String(room.id || "").toLowerCase().trim();
   if (!actualId) {
     return {
       ok: false,
@@ -75,7 +95,7 @@ function validateRoomJsonFile(filename: string) {
   }
 
   // entries must be array (core requirement)
-  if (!Array.isArray(data.entries)) {
+  if (!Array.isArray(room.entries)) {
     return {
       ok: false,
       id: expectedId,
@@ -88,12 +108,12 @@ function validateRoomJsonFile(filename: string) {
   // Phase II+ content rules (skip in CORE_ONLY)
   if (!CORE_ONLY) {
     // title bilingual OR name + name_vi
+    const title = isObject(room.title) ? room.title : {};
     const hasTitleBilingual =
-      isObject(data.title) &&
-      typeof data.title.en === "string" &&
-      typeof data.title.vi === "string";
+      typeof title.en === "string" &&
+      typeof title.vi === "string";
     const hasNameBilingual =
-      typeof data.name === "string" && typeof data.name_vi === "string";
+      typeof room.name === "string" && typeof room.name_vi === "string";
 
     if (!hasTitleBilingual && !hasNameBilingual) {
       return {
@@ -106,7 +126,7 @@ function validateRoomJsonFile(filename: string) {
     }
 
     // soft rules: warn style but still fail if completely broken
-    if (data.entries.length < 1) {
+    if (room.entries.length < 1) {
       return {
         ok: false,
         id: expectedId,
@@ -117,9 +137,9 @@ function validateRoomJsonFile(filename: string) {
     }
 
     // entry basic fields
-    for (let i = 0; i < data.entries.length; i++) {
-      const entry = data.entries[i];
-      const hasIdentifier = !!(entry?.slug || entry?.artifact_id || entry?.id);
+    for (let i = 0; i < room.entries.length; i++) {
+      const entry = isObject(room.entries[i]) ? room.entries[i] : {};
+      const hasIdentifier = !!(entry.slug || entry.artifact_id || entry.id);
       if (!hasIdentifier) {
         return {
           ok: false,
@@ -146,10 +166,10 @@ function main() {
     .filter((f) => f.endsWith(".json") && !f.startsWith("."))
     .sort();
 
-  const errors: any[] = [];
+  const errors: Extract<RoomValidationResult, { ok: false }>[] = [];
   for (const f of files) {
     const r = validateRoomJsonFile(f);
-    if (!r.ok) errors.push(r);
+    if (r.ok === false) errors.push(r);
   }
 
   console.log(`📦 Total JSON files: ${files.length}`);

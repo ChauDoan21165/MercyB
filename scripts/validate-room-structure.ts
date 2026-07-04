@@ -30,6 +30,21 @@ const supabase = createClient(SUPABASE_URL, SERVICE_ROLE_KEY, {
 
 type Column = "english" | "core" | "life" | "unknown";
 
+type RoomRow = {
+  id: string;
+  tier: string | null;
+  domain: string | null;
+  title_en: string | null;
+};
+
+type Anomaly = {
+  id: string;
+  tier: string | null;
+  domain: string | null;
+  issue: string;
+  column?: Column;
+};
+
 const DOMAIN_TO_COLUMN: Record<string, Column> = {
   // LEFT: English
   English: "english",
@@ -57,7 +72,7 @@ const DOMAIN_TO_COLUMN: Record<string, Column> = {
   Career: "life",
 };
 
-function classifyColumn(room: any): Column {
+function classifyColumn(room: RoomRow): Column {
   const domain = (room.domain || "").trim();
   if (domain && DOMAIN_TO_COLUMN[domain]) return DOMAIN_TO_COLUMN[domain];
 
@@ -133,7 +148,7 @@ async function run() {
 
   const rooms = data || [];
 
-  const anomalies: any[] = [];
+  const anomalies: Anomaly[] = [];
   const byTier: Record<string, { english: number; core: number; life: number; unknown: number }> =
     {};
 

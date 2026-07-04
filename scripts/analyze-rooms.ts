@@ -48,6 +48,20 @@ interface MetricsOutput {
   summary: SummaryMetrics;
 }
 
+type JsonRecord = Record<string, unknown>;
+
+function isRecord(value: unknown): value is JsonRecord {
+  return value !== null && typeof value === 'object' && !Array.isArray(value);
+}
+
+function asString(value: unknown): string {
+  return typeof value === 'string' ? value : '';
+}
+
+function appendText(value: unknown): string {
+  return value ? `${value} ` : '';
+}
+
 // Count words in a string
 function countWords(text: string): number {
   if (!text || typeof text !== 'string') return 0;
@@ -55,52 +69,58 @@ function countWords(text: string): number {
 }
 
 // Extract text content from various JSON structures
-function extractTextContent(json: any): { en: string; vi: string } {
+function extractTextContent(json: JsonRecord): { en: string; vi: string } {
   let enText = '';
   let viText = '';
   
   // Room-level content
   if (json.content) {
-    if (typeof json.content === 'object') {
-      enText += (json.content.en || '') + ' ';
-      viText += (json.content.vi || '') + ' ';
+    if (isRecord(json.content)) {
+      enText += appendText(json.content.en);
+      viText += appendText(json.content.vi);
     } else if (typeof json.content === 'string') {
       enText += json.content + ' ';
     }
   }
   
   if (json.room_essay) {
-    if (typeof json.room_essay === 'object') {
-      enText += (json.room_essay.en || '') + ' ';
-      viText += (json.room_essay.vi || '') + ' ';
+    if (isRecord(json.room_essay)) {
+      enText += appendText(json.room_essay.en);
+      viText += appendText(json.room_essay.vi);
     }
   }
   
-  if (json.room_essay_en) enText += json.room_essay_en + ' ';
-  if (json.room_essay_vi) viText += json.room_essay_vi + ' ';
+  if (json.room_essay_en) enText += appendText(json.room_essay_en);
+  if (json.room_essay_vi) viText += appendText(json.room_essay_vi);
   
   // Entry-level content
-  const entries = json.entries || json.items || [];
+  const entries = Array.isArray(json.entries)
+    ? json.entries
+    : Array.isArray(json.items)
+      ? json.items
+      : [];
   for (const entry of entries) {
+    if (!isRecord(entry)) continue;
+
     // Various content field patterns
-    if (entry.copy_en) enText += entry.copy_en + ' ';
-    if (entry.copy_vi) viText += entry.copy_vi + ' ';
-    if (entry.content_en) enText += entry.content_en + ' ';
-    if (entry.content_vi) viText += entry.content_vi + ' ';
-    if (entry.text_en) enText += entry.text_en + ' ';
-    if (entry.text_vi) viText += entry.text_vi + ' ';
+    if (entry.copy_en) enText += appendText(entry.copy_en);
+    if (entry.copy_vi) viText += appendText(entry.copy_vi);
+    if (entry.content_en) enText += appendText(entry.content_en);
+    if (entry.content_vi) viText += appendText(entry.content_vi);
+    if (entry.text_en) enText += appendText(entry.text_en);
+    if (entry.text_vi) viText += appendText(entry.text_vi);
     
     if (entry.copy) {
-      if (typeof entry.copy === 'object') {
-        enText += (entry.copy.en || '') + ' ';
-        viText += (entry.copy.vi || '') + ' ';
+      if (isRecord(entry.copy)) {
+        enText += appendText(entry.copy.en);
+        viText += appendText(entry.copy.vi);
       }
     }
     
     if (entry.content) {
-      if (typeof entry.content === 'object') {
-        enText += (entry.content.en || '') + ' ';
-        viText += (entry.content.vi || '') + ' ';
+      if (isRecord(entry.content)) {
+        enText += appendText(entry.content.en);
+        viText += appendText(entry.content.vi);
       }
     }
   }
@@ -125,9 +145,9 @@ function normalizeTier(tier: string): string {
 }
 
 // Detect domain
-function detectDomain(json: any): string {
-  const domain = (json.domain || '').toLowerCase();
-  const id = (json.id || '').toLowerCase();
+function detectDomain(json: JsonRecord): string {
+  const domain = asString(json.domain).toLowerCase();
+  const id = asString(json.id).toLowerCase();
   
   if (domain.includes('english') || id.includes('english')) return 'english';
   if (domain.includes('health') || id.includes('health') || id.includes('anxiety') || id.includes('depression')) return 'health';
@@ -142,27 +162,27 @@ function detectDomain(json: any): string {
 }
 
 // Extract titles
-function extractTitles(json: any): { en: string; vi: string } {
+function extractTitles(json: JsonRecord): { en: string; vi: string } {
   let en = '';
   let vi = '';
   
   if (json.title) {
-    if (typeof json.title === 'object') {
-      en = json.title.en || json.title.english || '';
-      vi = json.title.vi || json.title.vietnamese || '';
+    if (isRecord(json.title)) {
+      en = asString(json.title.en || json.title.english);
+      vi = asString(json.title.vi || json.title.vietnamese);
     } else {
-      en = json.title;
+      en = asString(json.title);
     }
   }
   
-  if (!en) en = json.title_en || json.name || json.nameEn || json.id || '';
-  if (!vi) vi = json.title_vi || json.name_vi || json.nameVi || en;
+  if (!en) en = asString(json.title_en || json.name || json.nameEn || json.id);
+  if (!vi) vi = asString(json.title_vi || json.name_vi || json.nameVi) || en;
   
   // Try description
   if (!en && json.description) {
-    if (typeof json.description === 'object') {
-      en = json.description.en || '';
-      vi = json.description.vi || en;
+    if (isRecord(json.description)) {
+      en = asString(json.description.en);
+      vi = asString(json.description.vi) || en;
     }
   }
   
@@ -206,11 +226,13 @@ function analyzeRooms(): MetricsOutput {
   for (const filePath of jsonFiles) {
     try {
       const content = fs.readFileSync(filePath, 'utf8');
-      const json = JSON.parse(content);
+      const parsed: unknown = JSON.parse(content);
+      if (!isRecord(parsed)) continue;
+      const json = parsed;
       
       if (!json.id) continue;
       
-      const tier = normalizeTier(json.tier || '');
+      const tier = normalizeTier(asString(json.tier));
       const domain = detectDomain(json);
       const titles = extractTitles(json);
       const entryCount = Array.isArray(json.entries) ? json.entries.length : 0;
@@ -219,7 +241,7 @@ function analyzeRooms(): MetricsOutput {
       const wordsVi = countWords(textContent.vi);
       
       rooms.push({
-        id: json.id,
+        id: asString(json.id),
         tier,
         domain,
         title_en: titles.en,

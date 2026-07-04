@@ -58,6 +58,16 @@ type RoomDiff = {
   entryCountDb: number;
 };
 
+type JsonRecord = Record<string, unknown>;
+
+function isRecord(value: unknown): value is JsonRecord {
+  return value !== null && typeof value === "object" && !Array.isArray(value);
+}
+
+function stringValue(value: unknown): string {
+  return typeof value === "string" ? value : "";
+}
+
 function normalizeAudioFilename(raw: string): string {
   let s = raw.trim();
   if (s.startsWith("/")) s = s.slice(1);
@@ -95,8 +105,8 @@ async function listFilesRecursively(
   return results;
 }
 
-function extractAudioFromEntry(entry: any): string | null {
-  if (!entry) return null;
+function extractAudioFromEntry(entry: unknown): string | null {
+  if (!isRecord(entry)) return null;
   
   // Try different audio field names
   const audioRaw = entry.audio || entry.audio_en || entry.audioEn;
@@ -105,7 +115,7 @@ function extractAudioFromEntry(entry: any): string | null {
     return normalizeAudioFilename(audioRaw);
   }
   
-  if (audioRaw && typeof audioRaw === "object") {
+  if (isRecord(audioRaw)) {
     const val = audioRaw.en || audioRaw.vi || Object.values(audioRaw)[0];
     if (typeof val === "string" && val.trim()) {
       return normalizeAudioFilename(val);
@@ -128,10 +138,12 @@ async function getGithubRooms(): Promise<Map<string, RoomInfo>> {
     // Skip non-room files
     if (EXCLUDED_FILES.has(filename)) continue;
     
-    let json: any;
+    let json: JsonRecord;
     try {
       const content = await fs.readFile(file, "utf8");
-      json = JSON.parse(content);
+      const parsed: unknown = JSON.parse(content);
+      if (!isRecord(parsed)) continue;
+      json = parsed;
     } catch {
       // skip invalid JSON
       continue;
@@ -141,8 +153,9 @@ async function getGithubRooms(): Promise<Map<string, RoomInfo>> {
     const entries = json.entries;
     if (!Array.isArray(entries)) continue;
 
-    const slug: string = json.id || json.slug || path.basename(file, ".json");
-    const tier: string | undefined = json.tier;
+    const slug: string =
+      stringValue(json.id) || stringValue(json.slug) || path.basename(file, ".json");
+    const tier = typeof json.tier === "string" ? json.tier : undefined;
 
     const room: RoomInfo = {
       id: slug,
@@ -225,21 +238,26 @@ async function getRegistryRooms(): Promise<Map<string, RoomInfo>> {
 
   try {
     const content = await fs.readFile(REGISTRY_FILE, "utf8");
-    const json = JSON.parse(content);
+    const parsed: unknown = JSON.parse(content);
+    const json = isRecord(parsed) ? parsed : {};
 
     const rooms = json.rooms || json || [];
-    const roomArray = Array.isArray(rooms) ? rooms : Object.values(rooms);
+    const roomArray = Array.isArray(rooms)
+      ? rooms
+      : isRecord(rooms)
+        ? Object.values(rooms)
+        : [];
     
     for (const r of roomArray) {
-      if (!r || typeof r !== 'object') continue;
+      if (!isRecord(r)) continue;
       
-      const slug: string = r.slug || r.id;
+      const slug: string = stringValue(r.slug) || stringValue(r.id);
       if (!slug) continue;
       
       map.set(slug, {
-        id: r.id || slug,
+        id: stringValue(r.id) || slug,
         slug,
-        tier: r.tier,
+        tier: typeof r.tier === "string" ? r.tier : undefined,
         source: "registry",
         audio: new Set<string>(),
         entryCount: 0,

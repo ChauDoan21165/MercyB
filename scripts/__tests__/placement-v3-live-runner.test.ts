@@ -11,6 +11,14 @@ import {
   runPlacementV3LiveValidation,
   type LiveRuntime,
 } from "../placement-v3/run-live-validation.ts";
+import type { CoreDeps } from "../../supabase/functions/placement-v3-session/core.ts";
+import type {
+  PlacementV3Profile,
+  PlacementV3Response,
+  PlacementV3Session,
+  PlacementV3Modality,
+  PromptTask,
+} from "../../supabase/functions/placement-v3-session/types.ts";
 
 const TEST_UUID = "123e4567-e89b-42d3-a456-426614174000";
 const TEST_EMAIL = `placement-v3-test-${TEST_UUID}@mercyblade.test`;
@@ -21,6 +29,18 @@ const safeEnv = {
   SUPABASE_SERVICE_ROLE_KEY: "service-role-test",
   PLACEMENT_V3_LIVE_VALIDATION: "1",
 };
+
+function createUnusedRuntime(resolveTestLearner: LiveRuntime["resolveTestLearner"]): LiveRuntime {
+  return {
+    resolveTestLearner,
+    createDeps: async () => {
+      throw new Error("Dry-run validation should not create Placement V3 dependencies.");
+    },
+    run: async () => {
+      throw new Error("Dry-run validation should not invoke the Placement V3 runtime.");
+    },
+  };
+}
 
 describe("Placement V3 live validation clean checkout wiring", () => {
   it("exposes placement:v3:live and resolves the runner file from a clean checkout", () => {
@@ -34,18 +54,14 @@ describe("Placement V3 live validation clean checkout wiring", () => {
 
 describe("Placement V3 live validation runner safety", () => {
   it("prints a dry-run plan without resolving a learner or writing persistence", async () => {
-    const resolveTestLearner = vi.fn();
+    const resolveTestLearner = vi.fn(async (email: string) => ({ id: "unused-dry-run-user", email, created: false }));
     const out = { log: vi.fn() };
 
     const result = await runPlacementV3LiveValidation({
       args: ["--dry-run"],
       env: { NODE_ENV: "test", SUPABASE_URL: "https://placement-validation.supabase.co" },
       uuid: TEST_UUID,
-      runtime: {
-        resolveTestLearner,
-        createDeps: vi.fn(),
-        run: vi.fn(),
-      } as unknown as LiveRuntime,
+      runtime: createUnusedRuntime(resolveTestLearner),
       out,
     });
 
@@ -241,7 +257,8 @@ describe("Placement V3 live validation runner persistence path", () => {
 });
 
 function createFakeRuntime(): LiveRuntime {
-  const prompts = ["writing", "speaking", "reading", "listening", "conversation"].map((modality, index) => ({
+  const modalities: PlacementV3Modality[] = ["writing", "speaking", "reading", "listening", "conversation"];
+  const prompts: PromptTask[] = modalities.map((modality, index) => ({
     id: `prompt-${modality}`,
     modality,
     cefr: "A2",
@@ -249,24 +266,60 @@ function createFakeRuntime(): LiveRuntime {
     expectedResponse: modality === "speaking" ? "audio" : "text",
     index,
   }));
-  const sessions = new Map<string, Record<string, any>>();
-  const responses = new Map<string, Array<Record<string, any>>>();
-  const profiles = new Map<string, Record<string, any>>();
+  const sessions = new Map<string, PlacementV3Session>();
+  const responses = new Map<string, PlacementV3Response[]>();
+  const profiles = new Map<string, PlacementV3Profile>();
 
   return {
     resolveTestLearner: vi.fn(async (email) => ({ id: "user-test-live", email, created: true })),
-    createDeps: vi.fn(async () => ({
+    createDeps: vi.fn(async (): Promise<CoreDeps> => ({
+      now: () => "2026-07-03T00:00:00.000Z",
+      newId: () => "fake-placement-v3-id",
+      loadLatestInProgress: async () => null,
+      loadSession: async (sessionId: string) => sessions.get(sessionId) ?? null,
       loadResponses: async (sessionId: string) => responses.get(sessionId) ?? [],
       loadCurrentProfile: async (sessionId: string) => profiles.get(sessionId) ?? null,
+      createSession: async () => {
+        throw new Error("createSession is not used by fake runtime");
+      },
+      updateSession: async (session) => session,
+      insertResponse: async (response) => ({ response, inserted: true }),
+      updateResponse: async (response) => response,
+      markProfilesNotCurrent: async () => undefined,
+      upsertProfile: async (profile) => profile,
+      writeProfileSnapshot: async () => undefined,
+      grade: async () => ({
+        ok: true,
+        version: "mock-placement-v3-live-fake-grader-v1",
+        assessment: {
+          overallLevel: "A2",
+          confidence: 0.62,
+          metadata: {
+            provider: "mock-placement-v3-live",
+            fallback: false,
+            retryCount: 0,
+            liveProviderCalled: false,
+          },
+        },
+      }),
+      recommendLessons: async () => [],
     })),
     async run(userId, request) {
       if (request.action === "start") {
-        const session = {
+        const session: PlacementV3Session = {
           id: "placement-v3-live-session-1",
           user_id: userId,
+          started_at: "2026-07-03T00:00:00.000Z",
+          completed_at: null,
+          abandoned_at: null,
           flow_state: "in_progress",
           current_task_index: 0,
           current_modality: "writing",
+          total_tasks: prompts.length,
+          language_pair: request.languagePair ?? { native: "vi", target: "en" },
+          metadata: {},
+          created_at: "2026-07-03T00:00:00.000Z",
+          updated_at: "2026-07-03T00:00:00.000Z",
         };
         sessions.set(session.id, session);
         responses.set(session.id, []);
@@ -281,8 +334,17 @@ function createFakeRuntime(): LiveRuntime {
           {
             id: `response-${session.current_task_index}`,
             session_id: session.id,
+            task_index: session.current_task_index,
+            modality: prompt.modality,
+            prompt_id: prompt.id,
+            prompt_text: prompt.promptText,
+            user_response_text: request.response.responseText ?? null,
+            audio_storage_path: request.response.audioStoragePath ?? null,
+            response_duration_ms: request.response.responseDurationMs ?? null,
             ai_assessment_version: `mock-placement-v3-live-${prompt.modality}-grader-v1`,
             ai_assessment: {
+              overallLevel: "A2",
+              confidence: 0.62,
               metadata: {
                 provider: "mock-placement-v3-live",
                 nonProduction: true,
@@ -291,17 +353,43 @@ function createFakeRuntime(): LiveRuntime {
                 liveProviderCalled: false,
               },
             },
+            graded_at: "2026-07-03T00:00:01.000Z",
+            created_at: "2026-07-03T00:00:01.000Z",
           },
         ]);
         const nextIndex = session.current_task_index + 1;
         if (nextIndex >= prompts.length) {
-          const completed = { ...session, flow_state: "completed", current_task_index: nextIndex, current_modality: null };
-          const profile = { session_id: session.id, user_id: userId, is_current: true };
+          const completed: PlacementV3Session = {
+            ...session,
+            flow_state: "completed",
+            current_task_index: nextIndex,
+            current_modality: null,
+            completed_at: "2026-07-03T00:00:02.000Z",
+            updated_at: "2026-07-03T00:00:02.000Z",
+          };
+          const profile: PlacementV3Profile = {
+            session_id: session.id,
+            user_id: userId,
+            cefr_overall: "A2",
+            cefr_overall_confidence: 0.62,
+            cefr_per_skill: {},
+            l1_interference_flags: [],
+            strengths: [],
+            gaps: [],
+            recommended_lessons: [],
+            computed_at: "2026-07-03T00:00:02.000Z",
+            is_current: true,
+          };
           sessions.set(session.id, completed);
           profiles.set(session.id, profile);
           return { ok: true, action: "respond", session: completed, prompt: null, profile };
         }
-        const next = { ...session, current_task_index: nextIndex, current_modality: prompts[nextIndex].modality };
+        const next: PlacementV3Session = {
+          ...session,
+          current_task_index: nextIndex,
+          current_modality: prompts[nextIndex].modality,
+          updated_at: "2026-07-03T00:00:01.000Z",
+        };
         sessions.set(session.id, next);
         return { ok: true, action: "respond", session: next, prompt: prompts[nextIndex], profile: null };
       }

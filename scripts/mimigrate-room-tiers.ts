@@ -30,7 +30,6 @@ type TierId =
   | "vip1"
   | "vip2"
   | "vip3"
-  | "vip3"
   | "vip4"
   | "vip5"
   | "vip6"
@@ -45,7 +44,6 @@ const TIER_ID_TO_LABEL: Record<TierId, string> = {
   free: "Free / Miễn phí",
   vip1: "VIP1 / VIP1",
   vip2: "VIP2 / VIP2",
-  vip3: "VIP3 / VIP3",
   vip3: "VIP3 II / VIP3 II",
   vip4: "VIP4 / VIP4",
   vip5: "VIP5 / VIP5",
@@ -56,6 +54,18 @@ const TIER_ID_TO_LABEL: Record<TierId, string> = {
   kids_1: "Kids 1 / Trẻ em 1",
   kids_2: "Kids 2 / Trẻ em 2",
   kids_3: "Kids 3 / Trẻ em 3",
+};
+
+type RoomTierRow = {
+  id: string;
+  tier: string | null;
+};
+
+type RoomTierUpdate = {
+  id: string;
+  oldTier: string | null;
+  newTier: string;
+  tierId: TierId;
 };
 
 function inferTierId(id: string, tier: string | null): TierId {
@@ -96,9 +106,9 @@ async function run() {
   const rooms = data || [];
   console.log(`Found ${rooms.length} rooms`);
 
-  const updates: any[] = [];
+  const updates: RoomTierUpdate[] = [];
 
-  for (const r of rooms) {
+  for (const r of rooms as RoomTierRow[]) {
     const tierId = inferTierId(r.id, r.tier);
     const canonicalTier = TIER_ID_TO_LABEL[tierId];
     if (r.tier !== canonicalTier) {

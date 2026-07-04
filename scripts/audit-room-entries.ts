@@ -16,10 +16,14 @@ const DATA_DIR = join(process.cwd(), "public", "data");
 
 type Problem = {
   file: string;
-  id?: string;
+  id?: unknown;
   count: number | null;
   reason: string;
 };
+
+function isRecord(value: unknown): value is Record<string, unknown> {
+  return value !== null && typeof value === "object" && !Array.isArray(value);
+}
 
 function main() {
   console.log("🔍 Auditing room entry counts in", DATA_DIR);
@@ -53,7 +57,7 @@ function main() {
       continue;
     }
 
-    let json: any;
+    let json: unknown;
     try {
       json = JSON.parse(raw);
     } catch {
@@ -65,8 +69,9 @@ function main() {
       continue;
     }
 
-    const id = json?.id;
-    const entries = json?.entries;
+    const room = isRecord(json) ? json : {};
+    const id = room.id;
+    const entries = room.entries;
 
     if (!Array.isArray(entries)) {
       problems.push({

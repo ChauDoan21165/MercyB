@@ -17,11 +17,23 @@ if (!supabaseUrl || !supabaseKey) {
 
 const supabase = createClient(supabaseUrl, supabaseKey);
 
+type JsonRecord = Record<string, unknown>;
+
+function isRecord(value: unknown): value is JsonRecord {
+  return value !== null && typeof value === 'object' && !Array.isArray(value);
+}
+
+function getErrorMessage(error: unknown): string {
+  return error instanceof Error ? error.message : String(error);
+}
+
 // Extract keywords from entries
-function extractKeywords(entries: any[]): string[] {
+function extractKeywords(entries: unknown[]): string[] {
   const keywords = new Set<string>();
   
-  entries.forEach(entry => {
+  entries.forEach((entryValue) => {
+    if (!isRecord(entryValue)) return;
+    const entry = entryValue;
     if (entry.keywords_en && Array.isArray(entry.keywords_en)) {
       entry.keywords_en.forEach((kw: string) => keywords.add(kw.toLowerCase()));
     }
@@ -51,22 +63,31 @@ async function restoreVIP6Rooms() {
     try {
       const filePath = join(dataDir, fileName);
       const fileContent = readFileSync(filePath, 'utf-8');
-      const roomData = JSON.parse(fileContent);
+      const parsed: unknown = JSON.parse(fileContent);
+      if (!isRecord(parsed)) {
+        throw new Error('Room JSON root is not an object');
+      }
+      const roomData = parsed;
+      const title = isRecord(roomData.title) ? roomData.title : {};
+      const content = isRecord(roomData.content) ? roomData.content : {};
+      const safetyDisclaimer = isRecord(roomData.safety_disclaimer) ? roomData.safety_disclaimer : {};
+      const crisisFooter = isRecord(roomData.crisis_footer) ? roomData.crisis_footer : {};
+      const entries = Array.isArray(roomData.entries) ? roomData.entries : [];
 
-      const keywords = extractKeywords(roomData.entries || []);
+      const keywords = extractKeywords(entries);
 
       const roomRecord = {
         id: roomData.id,
         schema_id: roomData.id,
-        title_en: roomData.title?.en || roomData.id,
-        title_vi: roomData.title?.vi || roomData.id,
-        room_essay_en: roomData.content?.en || '',
-        room_essay_vi: roomData.content?.vi || '',
-        safety_disclaimer_en: roomData.safety_disclaimer?.en || '',
-        safety_disclaimer_vi: roomData.safety_disclaimer?.vi || '',
-        crisis_footer_en: roomData.crisis_footer?.en || '',
-        crisis_footer_vi: roomData.crisis_footer?.vi || '',
-        entries: roomData.entries || [],
+        title_en: title.en || roomData.id,
+        title_vi: title.vi || roomData.id,
+        room_essay_en: content.en || '',
+        room_essay_vi: content.vi || '',
+        safety_disclaimer_en: safetyDisclaimer.en || '',
+        safety_disclaimer_vi: safetyDisclaimer.vi || '',
+        crisis_footer_en: crisisFooter.en || '',
+        crisis_footer_vi: crisisFooter.vi || '',
+        entries,
         keywords: keywords,
         tier: 'vip6', // Normalized
         domain: 'Shadow Psychology',
@@ -84,8 +105,8 @@ async function restoreVIP6Rooms() {
         console.log(`✅ Restored: ${roomData.id} (${keywords.length} keywords)`);
         restored++;
       }
-    } catch (err: any) {
-      console.error(`❌ Failed to process ${fileName}:`, err.message);
+    } catch (err: unknown) {
+      console.error(`❌ Failed to process ${fileName}:`, getErrorMessage(err));
       errors++;
     }
   }

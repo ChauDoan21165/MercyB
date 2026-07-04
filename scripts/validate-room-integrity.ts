@@ -22,6 +22,16 @@ interface ValidationReport {
   };
 }
 
+type JsonRecord = Record<string, unknown>;
+
+function isRecord(value: unknown): value is JsonRecord {
+  return value !== null && typeof value === 'object' && !Array.isArray(value);
+}
+
+function hasItems(value: unknown): boolean {
+  return Array.isArray(value) && value.length > 0;
+}
+
 const report: ValidationReport = {
   totalFiles: 0,
   validFiles: 0,
@@ -105,14 +115,16 @@ existingFiles.forEach(filename => {
     const content = readFileSync(filePath, 'utf-8');
     
     // 1. JSON Syntax
-    let data: any;
+    let parsed: unknown;
     try {
-      data = JSON.parse(content);
+      parsed = JSON.parse(content);
     } catch (e) {
       report.errors.push({ file: filename, message: `Invalid JSON: ${e instanceof Error ? e.message : 'Parse error'}` });
       hasIssues = true;
       return;
     }
+
+    const data = isRecord(parsed) ? parsed : {};
     
     // 2. Required Fields (legacy room-schema style – keep for now)
     const requiredFields = ['schema_version', 'schema_id', 'description', 'keywords', 'entries'];
@@ -124,20 +136,22 @@ existingFiles.forEach(filename => {
     });
     
     // 3. Description Languages
-    if (data.description) {
-      if (!data.description.en || data.description.en.trim() === '') {
+    const description = isRecord(data.description) ? data.description : null;
+    if (description) {
+      if (typeof description.en !== 'string' || description.en.trim() === '') {
         report.warnings.push({ file: filename, message: 'Missing or empty English description' });
         hasIssues = true;
       }
-      if (!data.description.vi || data.description.vi.trim() === '') {
+      if (typeof description.vi !== 'string' || description.vi.trim() === '') {
         report.warnings.push({ file: filename, message: 'Missing or empty Vietnamese description' });
         hasIssues = true;
       }
     }
     
     // 4. Keywords Quality
-    if (data.keywords) {
-      const keywordCount = Object.keys(data.keywords).length;
+    const keywords = isRecord(data.keywords) ? data.keywords : null;
+    if (keywords) {
+      const keywordCount = Object.keys(keywords).length;
       report.stats.totalKeywords += keywordCount;
       
       if (keywordCount === 0) {
@@ -147,12 +161,13 @@ existingFiles.forEach(filename => {
         report.info.push({ file: filename, message: `Only ${keywordCount} keyword categories (consider adding more)` });
       }
       
-      Object.entries(data.keywords).forEach(([key, value]: [string, any]) => {
-        if (!value?.en || value.en.length === 0) {
+      Object.entries(keywords).forEach(([key, value]) => {
+        const keyword = isRecord(value) ? value : {};
+        if (!hasItems(keyword.en)) {
           report.warnings.push({ file: filename, message: `Keyword "${key}" missing English terms` });
           hasIssues = true;
         }
-        if (!value?.vi || value.vi.length === 0) {
+        if (!hasItems(keyword.vi)) {
           report.warnings.push({ file: filename, message: `Keyword "${key}" missing Vietnamese terms` });
           hasIssues = true;
         }
@@ -160,7 +175,7 @@ existingFiles.forEach(filename => {
     }
     
     // 5. Entries Quality
-    if (data.entries && Array.isArray(data.entries)) {
+    if (Array.isArray(data.entries)) {
       const entryCount = data.entries.length;
       report.stats.totalEntries += entryCount;
       
@@ -171,39 +186,43 @@ existingFiles.forEach(filename => {
         report.info.push({ file: filename, message: `Only ${entryCount} entries (might need more content)` });
       }
       
-      data.entries.forEach((entry: any, idx: number) => {
+      data.entries.forEach((entryValue, idx: number) => {
+        const entry = isRecord(entryValue) ? entryValue : {};
         const entryId = entry.slug || `entry-${idx}`;
+        const title = isRecord(entry.title) ? entry.title : {};
+        const copy = isRecord(entry.copy) ? entry.copy : {};
         
         if (!entry.slug) {
           report.errors.push({ file: filename, message: `Entry ${idx} missing slug` });
           hasIssues = true;
         }
         
-        if (!entry.title?.en || !entry.title?.vi) {
+        if (!title.en || !title.vi) {
           report.warnings.push({ file: filename, message: `Entry "${entryId}" missing title translations` });
           hasIssues = true;
         }
         
-        if (!entry.copy?.en || !entry.copy?.vi) {
+        if (!copy.en || !copy.vi) {
           report.warnings.push({ file: filename, message: `Entry "${entryId}" missing copy translations` });
           hasIssues = true;
         }
         
-        if (!entry.tags || entry.tags.length === 0) {
+        if (!hasItems(entry.tags)) {
           report.info.push({ file: filename, message: `Entry "${entryId}" has no tags` });
         }
       });
     }
     
     // 6. Room Essay
-    if (data.room_essay) {
-      if (!data.room_essay.en && !data.room_essay.vi) {
+    const roomEssay = isRecord(data.room_essay) ? data.room_essay : null;
+    if (roomEssay) {
+      if (!roomEssay.en && !roomEssay.vi) {
         report.info.push({ file: filename, message: 'Room essay defined but empty' });
       } else {
-        if (data.room_essay.en && data.room_essay.en.length < 100) {
+        if (typeof roomEssay.en === 'string' && roomEssay.en.length < 100) {
           report.info.push({ file: filename, message: 'English essay is very short (<100 chars)' });
         }
-        if (data.room_essay.vi && data.room_essay.vi.length < 100) {
+        if (typeof roomEssay.vi === 'string' && roomEssay.vi.length < 100) {
           report.info.push({ file: filename, message: 'Vietnamese essay is very short (<100 chars)' });
         }
       }

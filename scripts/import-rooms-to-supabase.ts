@@ -24,6 +24,21 @@ if (!supabaseUrl || !supabaseKey) {
 
 const supabase = createClient(supabaseUrl, supabaseKey);
 
+type JsonRecord = Record<string, unknown>;
+
+function isRecord(value: unknown): value is JsonRecord {
+  return value !== null && typeof value === 'object' && !Array.isArray(value);
+}
+
+function hasToLowerCase(value: unknown): value is { toLowerCase(): string } {
+  return (
+    value !== null &&
+    typeof value === 'object' &&
+    'toLowerCase' in value &&
+    typeof value.toLowerCase === 'function'
+  ) || typeof value === 'string';
+}
+
 // Room ID mapping (slug to filename)
 const roomFiles: { [key: string]: string } = {
   'abdominal-pain': 'abdominal_pain.json',
@@ -100,18 +115,24 @@ const roomFiles: { [key: string]: string } = {
 };
 
 // Extract keywords from entries for better search
-function extractKeywords(entries: any[]): string[] {
+function extractKeywords(entries: unknown[]): string[] {
   const keywords = new Set<string>();
   
-  entries.forEach(entry => {
+  entries.forEach((entryValue) => {
+    if (!isRecord(entryValue)) return;
+    const entry = entryValue;
+
     // Add keywords from entry
     if (entry.keywords && Array.isArray(entry.keywords)) {
-      entry.keywords.forEach((kw: string) => keywords.add(kw.toLowerCase()));
+      entry.keywords.forEach((kw) => {
+        if (hasToLowerCase(kw)) keywords.add(kw.toLowerCase());
+      });
     }
     
     // Add title words as keywords
-    if (entry.title?.en) {
-      entry.title.en.toLowerCase().split(/\s+/).forEach((word: string) => {
+    const title = isRecord(entry.title) ? entry.title : {};
+    if (hasToLowerCase(title.en)) {
+      title.en.toLowerCase().split(/\s+/).forEach((word: string) => {
         if (word.length > 3) keywords.add(word);
       });
     }
@@ -132,22 +153,31 @@ async function importRooms() {
     try {
       const filePath = join(roomsDir, fileName);
       const fileContent = readFileSync(filePath, 'utf-8');
-      const roomData = JSON.parse(fileContent);
+      const parsed: unknown = JSON.parse(fileContent);
+      if (!isRecord(parsed)) {
+        throw new Error('Room JSON root is not an object');
+      }
+      const roomData = parsed;
+      const title = isRecord(roomData.title) ? roomData.title : {};
+      const roomEssay = isRecord(roomData.room_essay) ? roomData.room_essay : {};
+      const safetyDisclaimer = isRecord(roomData.safety_disclaimer) ? roomData.safety_disclaimer : {};
+      const crisisFooter = isRecord(roomData.crisis_footer) ? roomData.crisis_footer : {};
+      const entries = Array.isArray(roomData.entries) ? roomData.entries : [];
 
-      const keywords = extractKeywords(roomData.entries || []);
+      const keywords = extractKeywords(entries);
 
       const roomRecord = {
         id: roomId,
         schema_id: roomData.schema_id || roomId,
-        title_en: roomData.title?.en || roomData.schema_id || roomId,
-        title_vi: roomData.title?.vi || roomData.schema_id || roomId,
-        room_essay_en: roomData.room_essay?.en || '',
-        room_essay_vi: roomData.room_essay?.vi || '',
-        safety_disclaimer_en: roomData.safety_disclaimer?.en || '',
-        safety_disclaimer_vi: roomData.safety_disclaimer?.vi || '',
-        crisis_footer_en: roomData.crisis_footer?.en || '',
-        crisis_footer_vi: roomData.crisis_footer?.vi || '',
-        entries: roomData.entries || [],
+        title_en: title.en || roomData.schema_id || roomId,
+        title_vi: title.vi || roomData.schema_id || roomId,
+        room_essay_en: roomEssay.en || '',
+        room_essay_vi: roomEssay.vi || '',
+        safety_disclaimer_en: safetyDisclaimer.en || '',
+        safety_disclaimer_vi: safetyDisclaimer.vi || '',
+        crisis_footer_en: crisisFooter.en || '',
+        crisis_footer_vi: crisisFooter.vi || '',
+        entries,
         keywords: keywords,
         tier: 'free', // Default tier, adjust as needed
       };

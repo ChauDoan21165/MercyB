@@ -12,8 +12,13 @@ const roomDirs = [
   'supabase/functions/room-chat/data'
 ];
 
+type JsonRecord = Record<string, unknown>;
+
+function isRecord(value: unknown): value is JsonRecord {
+  return value !== null && typeof value === 'object' && !Array.isArray(value);
+}
+
 function cleanContent(text: string): string {
-  if (typeof text !== 'string') return text as any;
   
   // Remove word count patterns, markdown bold, and cleanup
   let cleaned = text
@@ -35,7 +40,9 @@ function cleanContent(text: string): string {
 function cleanRoomFile(filePath: string) {
   try {
     const content = fs.readFileSync(filePath, 'utf-8');
-    const data = JSON.parse(content);
+    const parsed: unknown = JSON.parse(content);
+    if (!isRecord(parsed)) return false;
+    const data = parsed;
     let modified = false;
 
     // Clean room_essay
@@ -46,9 +53,9 @@ function cleanRoomFile(filePath: string) {
           data.room_essay = cleaned;
           modified = true;
         }
-      } else if (typeof data.room_essay === 'object') {
+      } else if (isRecord(data.room_essay)) {
         ['en', 'vi'].forEach(lang => {
-          if (data.room_essay[lang]) {
+          if (isRecord(data.room_essay) && typeof data.room_essay[lang] === 'string') {
             const cleaned = cleanContent(data.room_essay[lang]);
             if (cleaned !== data.room_essay[lang]) {
               data.room_essay[lang] = cleaned;
@@ -61,7 +68,9 @@ function cleanRoomFile(filePath: string) {
 
     // Clean entries
     if (Array.isArray(data.entries)) {
-      data.entries.forEach((entry: any) => {
+      data.entries.forEach((entryValue) => {
+        if (!isRecord(entryValue)) return;
+        const entry = entryValue;
         ['copy', 'content', 'body', 'copy_en', 'copy_vi', 'content_en', 'content_vi'].forEach(field => {
           if (entry[field]) {
             if (typeof entry[field] === 'string') {
@@ -70,12 +79,13 @@ function cleanRoomFile(filePath: string) {
                 entry[field] = cleaned;
                 modified = true;
               }
-            } else if (typeof entry[field] === 'object') {
+            } else if (isRecord(entry[field])) {
               ['en', 'vi'].forEach(lang => {
-                if (entry[field][lang]) {
-                  const cleaned = cleanContent(entry[field][lang]);
-                  if (cleaned !== entry[field][lang]) {
-                    entry[field][lang] = cleaned;
+                const block = entry[field];
+                if (isRecord(block) && typeof block[lang] === 'string') {
+                  const cleaned = cleanContent(block[lang]);
+                  if (cleaned !== block[lang]) {
+                    block[lang] = cleaned;
                     modified = true;
                   }
                 }
@@ -92,9 +102,9 @@ function cleanRoomFile(filePath: string) {
       ['safety_disclaimer', 'crisis_footer', 'safety_footer'].forEach((key) => {
         if (data[key]) { delete data[key]; changed = true; }
       });
-      if (data.global_notes) {
+      if (isRecord(data.global_notes)) {
         ['safety', 'disclaimer'].forEach((k) => {
-          if (data.global_notes[k]) { delete data.global_notes[k]; changed = true; }
+          if (isRecord(data.global_notes) && data.global_notes[k]) { delete data.global_notes[k]; changed = true; }
         });
         if (Object.keys(data.global_notes).length === 0) {
           delete data.global_notes;

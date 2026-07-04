@@ -17,6 +17,14 @@ interface SmokeResult {
   error?: string;
 }
 
+function isRecord(value: unknown): value is Record<string, unknown> {
+  return value !== null && typeof value === "object" && !Array.isArray(value);
+}
+
+function getErrorMessage(err: unknown): string {
+  return err instanceof Error ? err.message : String(err);
+}
+
 function smokeTestChatHub(): void {
   console.log("🔍 CHATHUB STABILITY SMOKE TEST");
   console.log("================================\n");
@@ -40,7 +48,8 @@ function smokeTestChatHub(): void {
       const content = fs.readFileSync(filePath, "utf-8");
 
       // 2. Parse JSON
-      const room = JSON.parse(content);
+      const parsed = JSON.parse(content) as unknown;
+      const room = isRecord(parsed) ? parsed : {};
 
       // 3. Validate required fields that ChatHub expects
       const issues: string[] = [];
@@ -49,7 +58,8 @@ function smokeTestChatHub(): void {
         issues.push("missing id field");
       }
 
-      if (!room.title || (!room.title.en && !room.title_en)) {
+      const title = isRecord(room.title) ? room.title : null;
+      if (!room.title || (!title?.en && !room.title_en)) {
         issues.push("missing title");
       }
 
@@ -58,7 +68,7 @@ function smokeTestChatHub(): void {
       } else {
         // Validate each entry has required fields
         for (let i = 0; i < room.entries.length; i++) {
-          const entry = room.entries[i];
+          const entry = isRecord(room.entries[i]) ? room.entries[i] : {};
           
           // Check for copy/content
           const hasContent = entry.copy || entry.content || entry.copy_en || entry.content_en;
@@ -79,11 +89,11 @@ function smokeTestChatHub(): void {
         results.push({ roomId, status: "ok" });
       }
 
-    } catch (err: any) {
+    } catch (err: unknown) {
       results.push({
         roomId,
         status: "error",
-        error: err.message
+        error: getErrorMessage(err)
       });
     }
   }
