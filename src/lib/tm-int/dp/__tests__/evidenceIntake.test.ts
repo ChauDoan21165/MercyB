@@ -6,7 +6,7 @@ import {
   type DpEvidenceBasedDecision,
 } from "../decisionContract";
 import { validateDpEvidenceIntake } from "../evidenceIntake";
-import { buildDpTeacherContextFromObservationPacket } from "../evidenceIntake";
+import { buildDpTeacherContextFromObservationPacket, learningSignalsForDpEvidence } from "../evidenceIntake";
 
 function decisionFor(context: TeacherContext): DpEvidenceBasedDecision {
   return {
@@ -38,6 +38,28 @@ describe("validateDpEvidenceIntake", () => {
     const bundle = createValidRuntimeEvidenceBundle();
 
     expect(buildDpTeacherContextFromObservationPacket(bundle.obsPacket)).toEqual(buildTeacherContext(bundle.obsPacket));
+  });
+
+  test("preserves runtime learning signals for DP evidence without mutation", () => {
+    const bundle = createValidRuntimeEvidenceBundle();
+    const teacherContext = {
+      ...bundle.teacherContext,
+      learningSignals: [
+        {
+          signal_key: "productive_hesitation",
+          source_edu_id: "EDU-LS-000001",
+          confidence: "medium",
+          evidenceCount: 1,
+          alternatives: ["question_too_easy"],
+        } as const,
+      ],
+    };
+
+    const signals = learningSignalsForDpEvidence(teacherContext);
+
+    expect(signals).toEqual(teacherContext.learningSignals);
+    expect(signals).not.toBe(teacherContext.learningSignals);
+    expect(signals[0]?.alternatives).not.toBe(teacherContext.learningSignals[0]?.alternatives);
   });
 
   test("passes when Teacher Context and DP decision both validate", () => {

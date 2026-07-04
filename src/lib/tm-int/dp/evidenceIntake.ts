@@ -1,4 +1,4 @@
-import type { TeacherContext } from "../runtime";
+import type { TeacherContext, TeacherContextLearningSignal } from "../runtime";
 import { buildTeacherContext } from "../runtime";
 import type { ObservationPacket } from "../obs";
 import type { RuntimeEvidenceBundle } from "../runtimeReadiness";
@@ -29,4 +29,11 @@ export function validateDpEvidenceIntake(
 
 export function buildDpTeacherContextFromObservationPacket(observationPacket: ObservationPacket): TeacherContext {
   return buildTeacherContext(observationPacket);
+}
+
+export function learningSignalsForDpEvidence(teacherContext: TeacherContext): readonly TeacherContextLearningSignal[] {
+  return teacherContext.learningSignals.map((signal) => ({
+    ...signal,
+    alternatives: [...signal.alternatives],
+  }));
 }
