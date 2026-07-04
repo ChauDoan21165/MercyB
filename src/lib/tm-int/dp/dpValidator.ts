@@ -1,5 +1,9 @@
 import type { TeacherContext } from "../runtime";
-import type { DpEvidenceBasedDecision, DpLearnerPerformanceClaim } from "./decisionContract";
+import {
+  isDpDecisionConfidenceLevel,
+  type DpEvidenceBasedDecision,
+  type DpLearnerPerformanceClaim,
+} from "./decisionContract";
 
 export type DpDecisionValidationFailureCode =
   | "missing_teacher_context"
@@ -30,7 +34,6 @@ export type DpDecisionValidationResult = {
   failures: DpDecisionValidationFailure[];
 };
 
-const VALID_CONFIDENCE_LEVELS = new Set(["low", "medium", "high"]);
 const LEARNER_WEAKNESS_PATTERN =
   /weak listening|weak speaking|poor learner|bad learner|bad comprehension|poor pronunciation|low ability|lazy|careless|learner weakness/i;
 const UNSUPPORTED_INFERENCE_PATTERN =
@@ -278,7 +281,7 @@ export function validateDpDecision(
   failures.push(...addLearnerPerformanceClaimFailures(decision));
   failures.push(...addProductIssueHandlingFailures(decision, teacherContext));
 
-  if (!VALID_CONFIDENCE_LEVELS.has(decision.confidenceLevel)) {
+  if (!isDpDecisionConfidenceLevel(decision.confidenceLevel)) {
     failures.push({
       code: "invalid_confidence_level",
       path: "confidenceLevel",

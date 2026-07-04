@@ -1,6 +1,11 @@
 import { describe, expect, test } from "vitest";
 import type { TeacherContext } from "../../runtime";
-import { dpTeacherContextReferenceFrom, type DpEvidenceBasedDecision } from "../decisionContract";
+import {
+  DP_DECISION_CONFIDENCE_LEVELS,
+  dpTeacherContextReferenceFrom,
+  isDpDecisionConfidenceLevel,
+  type DpEvidenceBasedDecision,
+} from "../decisionContract";
 import { validateDpDecision } from "../dpValidator";
 
 function createTeacherContext(): TeacherContext {
@@ -242,6 +247,18 @@ describe("validateDpDecision", () => {
     expect(validateDpDecision(decision, createTeacherContext()).failures).toEqual(
       expect.arrayContaining([expect.objectContaining({ code: "invalid_confidence_level" })]),
     );
+  });
+
+  test("PASS every canonical confidence level", () => {
+    expect([...DP_DECISION_CONFIDENCE_LEVELS]).toEqual(["low", "medium", "high"]);
+    expect(DP_DECISION_CONFIDENCE_LEVELS.every(isDpDecisionConfidenceLevel)).toBe(true);
+
+    for (const confidenceLevel of DP_DECISION_CONFIDENCE_LEVELS) {
+      expect(validateDpDecision({
+        ...createValidDecision(),
+        confidenceLevel,
+      }, createTeacherContext()).pass).toBe(true);
+    }
   });
 
   test("FAIL PED allowed without rationale", () => {

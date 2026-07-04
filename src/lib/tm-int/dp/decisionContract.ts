@@ -1,6 +1,7 @@
 import type { TeacherContext } from "../runtime";
 
 export type DpDecisionConfidenceLevel = "low" | "medium" | "high";
+export const DP_DECISION_CONFIDENCE_LEVELS = ["low", "medium", "high"] as const satisfies readonly DpDecisionConfidenceLevel[];
 export type DpProductIssueType = TeacherContext["productIssues"][number]["issue"];
 export type DpLearnerPerformanceClaimType =
   | "learner_weakness"
@@ -55,4 +56,8 @@ export function dpTeacherContextReferenceFrom(context: TeacherContext): DpTeache
     schemaVersion: context.schemaVersion,
     observationPacketId: context.observationSummary.packetId,
   };
+}
+
+export function isDpDecisionConfidenceLevel(value: string): value is DpDecisionConfidenceLevel {
+  return DP_DECISION_CONFIDENCE_LEVELS.includes(value as DpDecisionConfidenceLevel);
 }
