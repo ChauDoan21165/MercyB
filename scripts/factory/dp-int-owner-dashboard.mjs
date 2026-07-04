@@ -131,7 +131,9 @@ function getStatus() {
   const fCanContinue = fDoneUnjudged <= JUDGE_BACKLOG_THRESHOLD;
   const blocker = fDoneUnjudged > JUDGE_BACKLOG_THRESHOLD ? "Judge backlog exceeds threshold" : "NONE";
   const phase =
-    running > 0
+    liveWorkers.length === 0 && staleClaims.length > 0
+      ? "Worker Recovery"
+      : running > 0
       ? "F running"
       : fDoneUnjudged > JUDGE_BACKLOG_THRESHOLD
         ? "Judge pending"
