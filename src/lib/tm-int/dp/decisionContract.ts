@@ -14,6 +14,7 @@ export type DpLearnerPerformanceClaimType =
 export type DpTeacherContextReference = {
   schemaVersion: TeacherContext["schemaVersion"];
   observationPacketId: string;
+  factCount: number;
 };
 
 export type DpProductIssueHandling = {
@@ -57,6 +58,7 @@ export function dpTeacherContextReferenceFrom(context: TeacherContext): DpTeache
   return {
     schemaVersion: context.schemaVersion,
     observationPacketId: context.observationSummary.packetId,
+    factCount: context.observationSummary.factCount,
   };
 }
 

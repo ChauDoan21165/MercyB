@@ -3,6 +3,8 @@ import { createObservationPacket } from "../../obs/evidencePacket";
 import { detectAudioObservations } from "../../obs/detectors/audio";
 import { detectLearningObservation } from "../../obs/detectors/learning";
 import { detectSpeechObservations } from "../../obs/detectors/speech";
+import { buildDpTeacherContextFromObservationPacket } from "../../dp/evidenceIntake";
+import { dpTeacherContextReferenceFrom } from "../../dp/decisionContract";
 import { buildTeacherContext } from "../contextBuilder";
 import { observationPacketFromAudio, observationPacketFromLearning, observationPacketFromSpeech } from "../runtimeHooks";
 
@@ -74,6 +76,47 @@ describe("TeacherContext pipeline", () => {
     ]));
     expect(context.recommendations.every((recommendation) => recommendation.evidenceCount > 0)).toBe(true);
     expect(JSON.stringify(context)).not.toMatch(/weak listening|weak speaking|poor learner|low ability|lazy|careless|"verified":true/i);
+  });
+
+  it("anchors DP evidence intake to the runtime TeacherContext builder", () => {
+    const packet = createObservationPacket([
+      ...detectAudioObservations({
+        requestedUrl: "",
+        durationSeconds: 0,
+        route: "/placement/test/:sessionId",
+        taskId: "listening-a2-class-delay-1",
+      }, OBSERVED_AT),
+      answer("transfer::item-1", 1900, true),
+      answer("transfer::item-2", 2100, true),
+    ], OBSERVED_AT);
+
+    const runtimeContext = buildTeacherContext(packet);
+    const dpContext = buildDpTeacherContextFromObservationPacket(packet);
+    const dpContextRef = dpTeacherContextReferenceFrom(dpContext);
+
+    expect(dpContext).toEqual(runtimeContext);
+    expect(dpContext.observationSummary).toMatchObject({
+      packetId: packet.packetId,
+      factCount: packet.facts.length,
+      factTypeCounts: {
+        AudioUnavailable: 1,
+        AudioDurationZero: 1,
+        AssessmentAnswerSubmitted: 2,
+      },
+    });
+    expect(dpContext.learningSignals.find((signal) => signal.signal_key === "transfer_success")).toMatchObject({
+      alternatives: expect.arrayContaining(["prior_knowledge", "question_too_easy"]),
+      evidenceReferences: [
+        "AssessmentAnswerSubmitted:transfer::item-1",
+        "AssessmentAnswerSubmitted:transfer::item-2",
+      ],
+    });
+    expect(dpContextRef).toEqual({
+      schemaVersion: runtimeContext.schemaVersion,
+      observationPacketId: packet.packetId,
+      factCount: packet.facts.length,
+    });
+    expect(JSON.stringify(dpContext)).not.toMatch(/weak listening|weak speaking|poor learner|low ability|lazy|careless|"verified":true/i);
   });
 
   it("does not create a recommendation for normal audio and speaking observations", () => {
