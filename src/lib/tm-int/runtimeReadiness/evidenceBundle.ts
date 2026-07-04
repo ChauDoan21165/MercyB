@@ -2,6 +2,8 @@ import type { ObservationPacket } from "../obs/types";
 import type { TeacherContext, TeacherContextLearningSignal } from "../runtime";
 import type { RuntimeGateId } from "./contracts";
 
+export const RUNTIME_EVIDENCE_BUNDLE_SCHEMA_VERSION = "tm-int-runtime-evidence-bundle-v1";
+
 export type RuntimeEventEvidence = {
   eventId: string;
   route: string;
@@ -39,7 +41,7 @@ export type RuntimeReadinessRuntimeDecision = {
 };
 
 export type RuntimeEvidenceBundle = {
-  schemaVersion: "tm-int-runtime-evidence-bundle-v1";
+  schemaVersion: typeof RUNTIME_EVIDENCE_BUNDLE_SCHEMA_VERSION;
   contractId: RuntimeGateId;
   runtimeEvent: RuntimeEventEvidence;
   obsPacket: ObservationPacket;
@@ -55,6 +57,22 @@ export type RuntimeEvidenceBundle = {
 export type PartialRuntimeEvidenceBundle = Partial<RuntimeEvidenceBundle> & {
   contractId?: RuntimeGateId | string;
 };
+
+export function isRuntimeEvidenceBundle(value: PartialRuntimeEvidenceBundle): value is RuntimeEvidenceBundle {
+  return (
+    value.schemaVersion === RUNTIME_EVIDENCE_BUNDLE_SCHEMA_VERSION &&
+    typeof value.contractId === "string" &&
+    Boolean(value.runtimeEvent) &&
+    Boolean(value.obsPacket) &&
+    Array.isArray(value.learningSignals) &&
+    Boolean(value.teacherContext) &&
+    Boolean(value.dpDecision) &&
+    Boolean(value.pedDecision) &&
+    Boolean(value.runtimeDecision) &&
+    Boolean(value.replay) &&
+    Boolean(value.judgeReproduction)
+  );
+}
 
 export function observationIdsFromBundle(bundle: PartialRuntimeEvidenceBundle): Set<string> {
   const ids = new Set<string>();
