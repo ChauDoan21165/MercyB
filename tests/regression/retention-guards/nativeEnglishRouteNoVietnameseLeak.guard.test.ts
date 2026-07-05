@@ -123,7 +123,9 @@ test("non-Vietnamese /learn/{native}/english routes never fall back to Vietnames
 
     for (const native of routes) {
       await page.goto(`${baseUrl}/learn/${native}/english`, {
-        waitUntil: "domcontentloaded",
+        // CI can stall before domcontentloaded on the cold Spanish route.
+        // Commit proves navigation started; waitForRenderedPageText below proves app render.
+        waitUntil: "commit",
         timeout: 60000,
       });
 
