@@ -72,9 +72,13 @@ export function discoverObjectiveReadyInvestments({ repoRoot, searchRoots = ['fa
           for (const candidate of candidates) {
             try {
               investments.push(normalizeEngineeringInvestment(candidate, path.relative(repoRoot, file)))
-            } catch {}
+            } catch {
+      // Ignore unreadable candidate files during repository discovery.
+    }
           }
-        } catch {}
+        } catch {
+      // Ignore unreadable candidate files during repository discovery.
+    }
       } else {
         const id = text.match(/(?:id|investmentId|wp_id|objective_id)\s*[:=]\s*([A-Z0-9._:-]+)/i)?.[1]
         const pcap = text.match(/(?:PCAP|pcap|product capability)\s*[:=]\s*(.+)/i)?.[1]?.trim()
@@ -89,7 +93,9 @@ export function discoverObjectiveReadyInvestments({ repoRoot, searchRoots = ['fa
               problem: `Discovered from ${path.relative(repoRoot, file)}`,
               productValue: `Repository-discovered MercyB objective from ${path.relative(repoRoot, file)}`
             }, path.relative(repoRoot, file)))
-          } catch {}
+          } catch {
+      // Ignore unreadable candidate files during repository discovery.
+    }
         }
       }
     }
