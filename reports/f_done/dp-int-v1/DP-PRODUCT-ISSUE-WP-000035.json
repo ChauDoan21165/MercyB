@@ -1,0 +1,25 @@
+{
+  "wp_id": "DP-PRODUCT-ISSUE-WP-000035",
+  "worker_id": "F-DP-INT-W5",
+  "tm_int_id": "DP-INT-v1",
+  "status": "f_done",
+  "commit_hash": "9d0412a1f",
+  "objective": "Tighten the cited DP contract surface so downstream code cannot bypass the invariant. Base invariant: Preserve speech timeout observations as possible product or device blocks.",
+  "implementation": [
+    "Added speech timeout observation packet coverage in src/lib/tm-int/obs/__tests__/observationPacket.test.ts.",
+    "The fixture proves SpeechTimeout preserves route, task, timeout metrics, and warning severity without learner weakness language."
+  ],
+  "files_changed": [
+    "src/lib/tm-int/obs/__tests__/observationPacket.test.ts"
+  ],
+  "validation_evidence": [
+    "npm test -- --run src/lib/tm-int/learning-signals src/lib/tm-int => 25 files passed, 197 tests passed",
+    "npm run typecheck => pass",
+    "npm exec eslint -- scripts src --format json => pass, 0 errors, 0 warnings"
+  ],
+  "anti_fake_evidence": [
+    "Source diff exercises detectSpeechObservations and validateObservationPacket.",
+    "No skipped tests were added.",
+    "No Judge ledger rows were written and no verified flag was set."
+  ]
+}

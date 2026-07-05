@@ -1,0 +1,25 @@
+{
+  "wp_id": "DP-LEARNER-SIGNAL-WP-000025",
+  "worker_id": "F-DP-INT-W5",
+  "tm_int_id": "DP-INT-v1",
+  "status": "f_done",
+  "commit_hash": "f223a3301",
+  "objective": "Add regression coverage for the cited DP invariant so unsupported edits fail before promotion. Base invariant: Map correct after delay into a retrieval success signal.",
+  "implementation": [
+    "Extended src/lib/tm-int/learning-signals/__tests__/learningSignalEngine.test.ts with a retrieval_success regression fixture that proves delayed correct answers emit retrieval evidence while faster correct answers are excluded.",
+    "Pinned canonical alternatives and source EDU metadata for the retrieval_success signal."
+  ],
+  "files_changed": [
+    "src/lib/tm-int/learning-signals/__tests__/learningSignalEngine.test.ts"
+  ],
+  "validation_evidence": [
+    "npm test -- --run src/lib/tm-int/learning-signals src/lib/tm-int => 25 files passed, 184 tests passed",
+    "npm run typecheck => pass",
+    "npm exec eslint -- scripts src --format json => pass, 0 errors, 0 warnings"
+  ],
+  "anti_fake_evidence": [
+    "Source diff exercises the cited learning signal path through runLearningSignalEngine.",
+    "No skipped tests were added.",
+    "No Judge ledger rows were written and no verified flag was set."
+  ]
+}

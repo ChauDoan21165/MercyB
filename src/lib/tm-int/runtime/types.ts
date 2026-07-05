@@ -22,6 +22,7 @@ export type TeacherContextLearningSignal = {
   confidence: "low" | "medium" | "high";
   evidenceCount: number;
   alternatives: readonly string[];
+  evidenceReferences?: readonly string[];
 };
 
 export type TeacherContextProductIssue = {
@@ -49,6 +50,7 @@ export type TeacherContext = {
     packetId: string;
     factCount: number;
     factTypes: string[];
+    factTypeCounts?: Record<string, number>;
   };
   learningSignals: TeacherContextLearningSignal[];
   productIssues: TeacherContextProductIssue[];

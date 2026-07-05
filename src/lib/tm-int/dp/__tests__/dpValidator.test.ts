@@ -1,6 +1,14 @@
 import { describe, expect, test } from "vitest";
 import type { TeacherContext } from "../../runtime";
-import type { DpEvidenceBasedDecision } from "../decisionContract";
+import {
+  DP_DECISION_CONFIDENCE_LEVELS,
+  DP_EVIDENCE_BASED_DECISION_SCHEMA_VERSION,
+  dpAllowsPedAction,
+  dpRecommendationHasEvidenceRationale,
+  dpTeacherContextReferenceFrom,
+  isDpDecisionConfidenceLevel,
+  type DpEvidenceBasedDecision,
+} from "../decisionContract";
 import { validateDpDecision } from "../dpValidator";
 
 function createTeacherContext(): TeacherContext {
@@ -39,10 +47,7 @@ function createValidDecision(): DpEvidenceBasedDecision {
   return {
     schemaVersion: "tm-int-dp-decision-contract-v1",
     decisionId: "dp-decision-001",
-    sourceTeacherContextRef: {
-      schemaVersion: "tm-int-teacher-context-v1",
-      observationPacketId: "obs-packet-placement",
-    },
+    sourceTeacherContextRef: dpTeacherContextReferenceFrom(createTeacherContext()),
     citedObservationIds: ["obs-packet-placement"],
     citedLearningSignalIds: [],
     productIssueHandling: {
@@ -64,6 +69,22 @@ function createValidDecision(): DpEvidenceBasedDecision {
 }
 
 describe("validateDpDecision", () => {
+  test("PASS canonical DP decision schema version", () => {
+    expect(createValidDecision().schemaVersion).toBe(DP_EVIDENCE_BASED_DECISION_SCHEMA_VERSION);
+    expect(validateDpDecision(createValidDecision(), createTeacherContext()).pass).toBe(true);
+  });
+
+  test("FAIL invalid DP decision schema version", () => {
+    const decision = {
+      ...createValidDecision(),
+      schemaVersion: "tm-int-dp-decision-contract-v0",
+    } as unknown as DpEvidenceBasedDecision;
+
+    expect(validateDpDecision(decision, createTeacherContext()).failures).toEqual(
+      expect.arrayContaining([expect.objectContaining({ code: "invalid_schema_version" })]),
+    );
+  });
+
   test("PASS valid DP decision from Teacher Context", () => {
     expect(validateDpDecision(createValidDecision(), createTeacherContext()).pass).toBe(true);
   });
@@ -77,11 +98,33 @@ describe("validateDpDecision", () => {
     );
   });
 
+  test("FAIL missing Teacher Context object", () => {
+    expect(validateDpDecision(createValidDecision()).failures).toEqual(
+      expect.arrayContaining([expect.objectContaining({ code: "missing_teacher_context" })]),
+    );
+  });
+
   test("FAIL no evidence citations", () => {
     const decision = { ...createValidDecision(), citedObservationIds: [], citedLearningSignalIds: [] };
 
     expect(validateDpDecision(decision, createTeacherContext()).failures).toEqual(
       expect.arrayContaining([expect.objectContaining({ code: "missing_evidence_citation" })]),
+    );
+  });
+
+  test("FAIL unknown observation citation", () => {
+    const decision = { ...createValidDecision(), citedObservationIds: ["unknown-observation"] };
+
+    expect(validateDpDecision(decision, createTeacherContext()).failures).toEqual(
+      expect.arrayContaining([expect.objectContaining({ code: "unknown_observation_citation" })]),
+    );
+  });
+
+  test("FAIL unknown learning signal citation", () => {
+    const decision = { ...createValidDecision(), citedObservationIds: [], citedLearningSignalIds: ["unknown_signal"] };
+
+    expect(validateDpDecision(decision, createTeacherContext()).failures).toEqual(
+      expect.arrayContaining([expect.objectContaining({ code: "unknown_learning_signal_citation" })]),
     );
   });
 
@@ -97,6 +140,34 @@ describe("validateDpDecision", () => {
 
     expect(validateDpDecision(decision, createTeacherContext()).failures).toEqual(
       expect.arrayContaining([expect.objectContaining({ code: "product_failure_as_learner_weakness" })]),
+    );
+  });
+
+  test("FAIL product issue present without issue type", () => {
+    const decision: DpEvidenceBasedDecision = {
+      ...createValidDecision(),
+      productIssueHandling: {
+        ...createValidDecision().productIssueHandling,
+        issueTypes: [],
+      },
+    };
+
+    expect(validateDpDecision(decision, createTeacherContext()).failures).toEqual(
+      expect.arrayContaining([expect.objectContaining({ code: "invalid_product_issue_handling" })]),
+    );
+  });
+
+  test("FAIL product issue present without rationale", () => {
+    const decision: DpEvidenceBasedDecision = {
+      ...createValidDecision(),
+      productIssueHandling: {
+        ...createValidDecision().productIssueHandling,
+        rationale: "",
+      },
+    };
+
+    expect(validateDpDecision(decision, createTeacherContext()).failures).toEqual(
+      expect.arrayContaining([expect.objectContaining({ code: "invalid_product_issue_handling" })]),
     );
   });
 
@@ -117,8 +188,73 @@ describe("validateDpDecision", () => {
     };
 
     expect(validateDpDecision(decision, createTeacherContext()).failures).toEqual(
-      expect.arrayContaining([expect.objectContaining({ code: "learner_weakness_without_evidence" })]),
+      expect.arrayContaining([
+        expect.objectContaining({ code: "learner_weakness_without_evidence" }),
+        expect.objectContaining({ code: "invalid_learner_performance_claim" }),
+      ]),
     );
+  });
+
+  test("FAIL learner performance claim without statement", () => {
+    const decision: DpEvidenceBasedDecision = {
+      ...createValidDecision(),
+      learnerPerformanceClaims: [
+        {
+          claimId: "claim-001",
+          claimType: "learning_behavior",
+          statement: "",
+          citedObservationIds: ["obs-packet-placement"],
+          citedLearningSignalIds: [],
+          rationale: "Observation packet is cited.",
+          supported: true,
+        },
+      ],
+    };
+
+    expect(validateDpDecision(decision, createTeacherContext()).failures).toEqual(
+      expect.arrayContaining([expect.objectContaining({ code: "invalid_learner_performance_claim" })]),
+    );
+  });
+
+  test("FAIL claim observation citation not declared on DP decision", () => {
+    const decision: DpEvidenceBasedDecision = {
+      ...createValidDecision(),
+      learnerPerformanceClaims: [
+        {
+          claimId: "claim-001",
+          claimType: "learning_behavior",
+          statement: "Learner repaired the answer after a pause.",
+          citedObservationIds: ["obs-packet-placement"],
+          citedLearningSignalIds: ["productive_hesitation"],
+          rationale: "The cited learning signal is present in Teacher Context.",
+          supported: true,
+        },
+      ],
+    };
+
+    expect(validateDpDecision(decision, createTeacherContext()).failures).toEqual(
+      expect.arrayContaining([expect.objectContaining({ code: "claim_learning_signal_not_declared" })]),
+    );
+  });
+
+  test("PASS learner claim citations declared and known", () => {
+    const decision: DpEvidenceBasedDecision = {
+      ...createValidDecision(),
+      citedLearningSignalIds: ["productive_hesitation"],
+      learnerPerformanceClaims: [
+        {
+          claimId: "claim-001",
+          claimType: "learning_behavior",
+          statement: "Learner showed productive hesitation.",
+          citedObservationIds: ["obs-packet-placement"],
+          citedLearningSignalIds: ["productive_hesitation"],
+          rationale: "Teacher Context contains the cited observation packet and learning signal.",
+          supported: true,
+        },
+      ],
+    };
+
+    expect(validateDpDecision(decision, createTeacherContext()).pass).toBe(true);
   });
 
   test("FAIL invalid confidence level", () => {
@@ -132,6 +268,18 @@ describe("validateDpDecision", () => {
     );
   });
 
+  test("PASS every canonical confidence level", () => {
+    expect([...DP_DECISION_CONFIDENCE_LEVELS]).toEqual(["low", "medium", "high"]);
+    expect(DP_DECISION_CONFIDENCE_LEVELS.every(isDpDecisionConfidenceLevel)).toBe(true);
+
+    for (const confidenceLevel of DP_DECISION_CONFIDENCE_LEVELS) {
+      expect(validateDpDecision({
+        ...createValidDecision(),
+        confidenceLevel,
+      }, createTeacherContext()).pass).toBe(true);
+    }
+  });
+
   test("FAIL PED allowed without rationale", () => {
     const decision = {
       ...createValidDecision(),
@@ -142,6 +290,39 @@ describe("validateDpDecision", () => {
     expect(validateDpDecision(decision, createTeacherContext()).failures).toEqual(
       expect.arrayContaining([expect.objectContaining({ code: "ped_allowed_without_rationale" })]),
     );
+  });
+
+  test("FAIL recommendation with generic rationale not tied to evidence", () => {
+    const decision = {
+      ...createValidDecision(),
+      recommendation: { action: "exclude_listening_score", rationale: "Do this next." },
+    };
+
+    expect(dpRecommendationHasEvidenceRationale(decision)).toBe(false);
+    expect(validateDpDecision(decision, createTeacherContext()).failures).toEqual(
+      expect.arrayContaining([expect.objectContaining({ code: "recommendation_missing_rationale" })]),
+    );
+  });
+
+  test("FAIL PED allowed without action", () => {
+    const decision = {
+      ...createValidDecision(),
+      recommendation: { action: "", rationale: "Evidence exists, but no action was specified." },
+      pedAllowedToAct: true,
+    };
+
+    expect(dpAllowsPedAction(decision)).toBe(false);
+    expect(validateDpDecision(decision, createTeacherContext()).failures).toEqual(
+      expect.arrayContaining([expect.objectContaining({ code: "ped_allowed_without_rationale" })]),
+    );
+  });
+
+  test("PASS PED action gate with action and rationale", () => {
+    const decision = createValidDecision();
+
+    expect(dpAllowsPedAction(decision)).toBe(true);
+    expect(dpRecommendationHasEvidenceRationale(decision)).toBe(true);
+    expect(validateDpDecision(decision, createTeacherContext()).pass).toBe(true);
   });
 
   test("FAIL unsupported inference", () => {

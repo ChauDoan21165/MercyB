@@ -5,6 +5,7 @@ import {
   createInvalidMissingTeacherContextBundle,
   createProductFailureBundle,
   createReplayPair,
+  createTeacherContextValidatorFixture,
   createValidCrossFlowReplayPackage,
   createValidRegressionPack,
   createValidRuntimeEvidenceBundle,
@@ -58,6 +59,20 @@ describe("runtime readiness fixture builders", () => {
     expect(result.mismatchStages).toEqual(["teacherContext"]);
   });
 
+  it("creates replay mismatch fixtures without sharing nested evidence objects", () => {
+    const pair = createReplayPair({ mismatchStage: "runtimeDecision" });
+
+    pair.second.teacherContext.replayTrace.push({
+      stage: "RUNTIME",
+      source: "runtime",
+      summary: "mutated second replay only",
+    });
+    pair.second.obsPacket.facts[0].message = "mutated second replay only";
+
+    expect(pair.first.teacherContext.replayTrace).toHaveLength(6);
+    expect(pair.first.obsPacket.facts[0].message).toBe("Audio duration was zero.");
+  });
+
   it("creates a valid cross-flow package", () => {
     expect(validateCrossFlowReplayPackage(createValidCrossFlowReplayPackage())).toEqual({
       pass: true,
@@ -74,6 +89,7 @@ describe("runtime readiness fixture builders", () => {
 
   it("exposes fixture builders through the public export surface", () => {
     expect(createValidRuntimeEvidenceBundle().schemaVersion).toBe("tm-int-runtime-evidence-bundle-v1");
+    expect(createTeacherContextValidatorFixture().teacherContext.schemaVersion).toBe("tm-int-teacher-context-v1");
     expect(createValidCrossFlowReplayPackage().schemaVersion).toBe("tm-int-cross-flow-replay-package-v1");
     expect(createValidRegressionPack().schemaVersion).toBe("tm-int-runtime-regression-pack-v1");
   });

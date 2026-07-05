@@ -18,11 +18,11 @@ function dbPath(root) {
   return join(root, "dp_int_factory.sqlite3");
 }
 
-function run(root, args) {
+function run(root, args, extraEnv = {}) {
   return spawnSync(process.execPath, [scriptPath, ...args], {
     cwd: repoRoot,
     encoding: "utf8",
-    env: { ...process.env, DP_INT_FACTORY_DB: dbPath(root) },
+    env: { ...process.env, DP_INT_FACTORY_DB: dbPath(root), ...extraEnv },
   });
 }
 
@@ -31,6 +31,13 @@ function sqlite(root, statement) {
     cwd: repoRoot,
     encoding: "utf8",
     input: statement,
+  });
+}
+
+function git(args) {
+  return spawnSync("git", args, {
+    cwd: repoRoot,
+    encoding: "utf8",
   });
 }
 
@@ -54,6 +61,8 @@ function writeWorkpacks(root, overrides = {}) {
             acceptance_tests: ["npm test -- --run src/lib/tm-int/dp"],
             judge_checks: ["F verified remains zero", "Judge result is separate"],
             anti_fake_checks: ["no report-only progress", "no skipped tests"],
+            status: "workpack_ready",
+            verified: 0,
             ...overrides,
           },
         ],
@@ -99,6 +108,24 @@ describe("DP INT factory control plane", () => {
     expect(result.stderr).toContain("workpacks[0].semantic_key");
   });
 
+  it("workpack import requires workpack_ready seed status", () => {
+    const root = makeTempRoot();
+    expect(run(root, ["init"]).status).toBe(0);
+    const result = run(root, ["import-workpacks", writeWorkpacks(root, { status: "running" })]);
+
+    expect(result.status).not.toBe(0);
+    expect(result.stderr).toContain("status must be workpack_ready");
+  });
+
+  it("workpack import requires verified=0 seed value", () => {
+    const root = makeTempRoot();
+    expect(run(root, ["init"]).status).toBe(0);
+    const result = run(root, ["import-workpacks", writeWorkpacks(root, { verified: 1 })]);
+
+    expect(result.status).not.toBe(0);
+    expect(result.stderr).toContain("verified must be 0");
+  });
+
   it("claim uses atomic running transition", () => {
     const root = setupImported();
     const first = run(root, ["claim", "DP-WP-001", "F-1"]);
@@ -111,6 +138,29 @@ describe("DP INT factory control plane", () => {
 
     const result = sqlite(root, "select status, claimed_by from dp_int_workpacks where wp_id='DP-WP-001'; select count(*) from dp_int_f_events where event_type='claim';");
     expect(result.stdout.trim().split(/\r?\n/)).toEqual(["running|F-1", "1"]);
+  });
+
+  it("F refuses to claim while Judge ledger DB mutation is uncommitted", () => {
+    const root = setupImported();
+    const result = run(root, ["claim", "DP-WP-001", "F-1"], {
+      DP_INT_FACTORY_TEST_GIT_STATUS: " M state/dp_int_factory.sqlite3",
+    });
+
+    expect(result.status).not.toBe(0);
+    expect(result.stderr).toContain("F cannot claim workpacks until git status is clean");
+    expect(result.stderr).toContain("state/dp_int_factory.sqlite3");
+  });
+
+  it("Judge/Admin cleanup is required before F resumes", () => {
+    const root = setupImported();
+    const blocked = run(root, ["claim", "DP-WP-001", "F-1"], {
+      DP_INT_FACTORY_TEST_GIT_STATUS: " M state/dp_int_factory.sqlite3",
+    });
+    const resumed = run(root, ["claim", "DP-WP-001", "F-1"]);
+
+    expect(blocked.status).not.toBe(0);
+    expect(resumed.status).toBe(0);
+    expect(resumed.stdout).toContain("running");
   });
 
   it("f-done requires artifact/evidence/commit", () => {
@@ -164,6 +214,25 @@ describe("DP INT factory control plane", () => {
     expect(result.stdout.trim().split(/\r?\n/)).toEqual(["0", "judge_fail"]);
   });
 
+  it("verify-final promotes only through verifier authorization", () => {
+    const root = setupImported();
+    const commit = git(["rev-parse", "HEAD"]).stdout.trim();
+    const artifact = "scripts/tm-int/dp-int-factory.mjs";
+    const reportPath = join(root, "final-report.md");
+
+    expect(run(root, ["claim", "DP-WP-001", "F-1"]).status).toBe(0);
+    expect(run(root, ["f-done", "DP-WP-001", artifact, "validation passed", commit]).status).toBe(0);
+    expect(run(root, ["judge-pass", "DP-WP-001", artifact, commit]).status).toBe(0);
+    expect(run(root, ["verify-final", reportPath]).status).toBe(0);
+
+    const blocked = sqlite(root, "update dp_int_workpacks set verified=0 where wp_id='DP-WP-001';");
+    expect(blocked.status).not.toBe(0);
+    expect(blocked.stderr).toContain("DP INT F queue cannot mark workpacks verified");
+
+    const result = sqlite(root, "select verified from dp_int_workpacks where wp_id='DP-WP-001'; select verified_count from dp_int_verified_promotions;");
+    expect(result.stdout.trim().split(/\r?\n/)).toEqual(["1", "1"]);
+  });
+
   it("closeout reports ready/running/f_done/judge_pass/judge_fail/f_done_unjudged", () => {
     const root = setupImported();
     expect(run(root, ["claim", "DP-WP-001", "F-1"]).status).toBe(0);
@@ -178,4 +247,3 @@ describe("DP INT factory control plane", () => {
     expect(output.stdout).toContain("f_done_unjudged");
   });
 });
-

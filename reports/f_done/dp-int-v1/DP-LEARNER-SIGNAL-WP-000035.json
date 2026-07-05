@@ -1,0 +1,25 @@
+{
+  "wp_id": "DP-LEARNER-SIGNAL-WP-000035",
+  "worker_id": "F-DP-INT-W5",
+  "tm_int_id": "DP-INT-v1",
+  "status": "f_done",
+  "commit_hash": "215c54280",
+  "objective": "Tighten the cited DP contract surface so downstream code cannot bypass the invariant. Base invariant: Map correct after delay into a retrieval success signal.",
+  "implementation": [
+    "Added an exact-threshold retrieval_success fixture in src/lib/tm-int/learning-signals/__tests__/learningSignalEngine.test.ts.",
+    "The fixture proves a correct answer at 5000ms maps to EDU-LS-000005 with the answer fact as evidence."
+  ],
+  "files_changed": [
+    "src/lib/tm-int/learning-signals/__tests__/learningSignalEngine.test.ts"
+  ],
+  "validation_evidence": [
+    "npm test -- --run src/lib/tm-int/learning-signals src/lib/tm-int => 25 files passed, 189 tests passed",
+    "npm run typecheck => pass",
+    "npm exec eslint -- scripts src --format json => pass, 0 errors, 0 warnings"
+  ],
+  "anti_fake_evidence": [
+    "Source diff exercises the cited retrieval threshold through runLearningSignalEngine.",
+    "No skipped tests were added.",
+    "No Judge ledger rows were written and no verified flag was set."
+  ]
+}

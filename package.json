@@ -106,7 +106,8 @@
     "depcruise:metrics": "depcruise --config .dependency-cruiser.cjs --output-type metrics src",
     "depcruise:orphans": "depcruise --config .dependency-cruiser.orphans.cjs --output-type err src",
     "doctor": "node scripts/doctor.mjs",
-    "factory-runtime": "node scripts/factory/factory-runtime.mjs"
+    "factory-runtime": "node scripts/factory/factory-runtime.mjs",
+    "factory:dp-parallel": "node scripts/tm-int/dp-int-parallel-runner.mjs"
   },
   "dependencies": {
     "@capacitor/android": "^8.3.0",

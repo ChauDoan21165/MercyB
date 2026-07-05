@@ -1,0 +1,24 @@
+{
+  "wp_id": "DP-LEARNER-SIGNAL-WP-000019",
+  "worker_id": "F-DP-INT-W4",
+  "status": "f_done",
+  "implementation_commit": "e9ec87534",
+  "summary": [
+    "Named the cognitive-overload minimum slow-wrong-answer threshold in the learning-signal engine.",
+    "Added a deterministic negative-path fixture that rejects cognitive_overload when slow wrong answers lack supporting hint evidence."
+  ],
+  "changed_files": [
+    "src/lib/tm-int/learning-signals/engine.ts",
+    "src/lib/tm-int/__tests__/learningBehaviorFamilyV1.test.ts"
+  ],
+  "validation_evidence": [
+    "npm test -- --run src/lib/tm-int/learning-signals src/lib/tm-int => 25 test files passed, 179 tests passed",
+    "npm run typecheck => pass",
+    "npm exec eslint -- scripts src --format json => 4931 files, 0 errors, 0 warnings"
+  ],
+  "anti_fake_evidence": [
+    "Fixture asserts slow wrong answers without hint evidence do not emit cognitive_overload.",
+    "Fixture asserts DP and PED also contain no cognitive_overload interpretation or action.",
+    "Fixture serializes signal, DP, and PED output and rejects unsafe learner-weakness or mastery-reduction language."
+  ]
+}

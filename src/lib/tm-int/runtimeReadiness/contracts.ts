@@ -18,6 +18,22 @@ export type RuntimeGateContract = {
   invariants: readonly RuntimeReadinessInvariant[];
 };
 
+export type RuntimeGateDpEvidenceRequirement = {
+  gateId: RuntimeGateId;
+  requiredEvidenceFields: readonly RuntimeEvidenceField[];
+  requiredInvariants: readonly RuntimeReadinessInvariant[];
+  requiresTeacherContext: boolean;
+  requiresLearningSignals: boolean;
+  requiresJudgeReproduction: boolean;
+};
+
+export type RuntimeGateContractReplayEvidence = {
+  gateId: RuntimeGateId;
+  status: RuntimeGateContractStatus;
+  requiredEvidenceFields: readonly RuntimeEvidenceField[];
+  requiredInvariants: readonly RuntimeReadinessInvariant[];
+};
+
 export type RuntimeEvidenceField =
   | "runtimeEvent"
   | "obsPacket"
@@ -121,4 +137,25 @@ export function getRuntimeGateContract(gateId: RuntimeGateId): RuntimeGateContra
   const contract = RUNTIME_GATE_CONTRACTS.find((item) => item.gateId === gateId);
   if (!contract) throw new Error(`Unknown runtime gate contract: ${gateId}`);
   return contract;
+}
+
+export function getRuntimeGateDpEvidenceRequirement(gateId: RuntimeGateId): RuntimeGateDpEvidenceRequirement {
+  const contract = getRuntimeGateContract(gateId);
+  return {
+    gateId: contract.gateId,
+    requiredEvidenceFields: contract.requiredEvidenceFields,
+    requiredInvariants: contract.invariants,
+    requiresTeacherContext: contract.requiredEvidenceFields.includes("teacherContext"),
+    requiresLearningSignals: contract.requiredEvidenceFields.includes("learningSignals"),
+    requiresJudgeReproduction: contract.requiredEvidenceFields.includes("judgeReproduction"),
+  };
+}
+
+export function createRuntimeGateContractReplayEvidence(): readonly RuntimeGateContractReplayEvidence[] {
+  return RUNTIME_GATE_CONTRACTS.map((contract) => ({
+    gateId: contract.gateId,
+    status: contract.status,
+    requiredEvidenceFields: [...contract.requiredEvidenceFields],
+    requiredInvariants: [...contract.invariants],
+  }));
 }

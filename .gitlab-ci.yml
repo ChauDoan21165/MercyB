@@ -860,7 +860,7 @@ reservoir:test-shard:
     - |
       SHARD="${SHARD:-1}"
       SHARD_TOTAL="${SHARD_TOTAL:-2}"
-      npx vitest run --shard="$SHARD/$SHARD_TOTAL" --maxWorkers=4 --maxWorkers=4
+      npx vitest run --shard="$SHARD/$SHARD_TOTAL" --maxWorkers=2
 
 reservoir:corpus-validate:
   <<: [*node_job, *local_runner, *reservoir_rules]

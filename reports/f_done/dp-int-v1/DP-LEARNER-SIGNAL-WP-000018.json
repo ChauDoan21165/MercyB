@@ -1,0 +1,24 @@
+{
+  "wp_id": "DP-LEARNER-SIGNAL-WP-000018",
+  "worker_id": "F-DP-INT-W4",
+  "status": "f_done",
+  "implementation_commit": "a90aed748",
+  "summary": [
+    "Named the high-confidence and low-confidence calibration thresholds in the learning-signal engine.",
+    "Added a deterministic confidence-calibration fixture that verifies answer correctness plus confidence evidence, preserved alternatives, DP-safe interpretation flags, and bounded PED action output."
+  ],
+  "changed_files": [
+    "src/lib/tm-int/learning-signals/engine.ts",
+    "src/lib/tm-int/__tests__/learningBehaviorFamilyV1.test.ts"
+  ],
+  "validation_evidence": [
+    "npm test -- --run src/lib/tm-int/learning-signals src/lib/tm-int => 25 test files passed, 178 tests passed",
+    "npm run typecheck => pass",
+    "npm exec eslint -- scripts src --format json => 4931 files, 0 errors, 0 warnings"
+  ],
+  "anti_fake_evidence": [
+    "Fixture asserts the confidence_calibration signal evidence is exactly one AssessmentAnswerSubmitted fact.",
+    "Fixture asserts evidence contains correct=1 and confidenceRating=5 from the observation metrics.",
+    "Fixture asserts DP keeps no_learner_weakness_inference and no_mastery_reduction_from_single_event true, and PED emits only ask_reflection_and_calibrate_with_followup."
+  ]
+}

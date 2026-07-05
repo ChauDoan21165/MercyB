@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 
 import type { TeacherContext } from "../../runtime";
-import { RUNTIME_GATE_CONTRACTS } from "../contracts";
+import { createRuntimeGateContractReplayEvidence, getRuntimeGateDpEvidenceRequirement, RUNTIME_GATE_CONTRACTS } from "../contracts";
 import type { RuntimeEvidenceBundle } from "../evidenceBundle";
 import { judgeRuntimeReadinessEvidence, requiredRuntimeEvidenceFields } from "../judgeRubric";
 
@@ -195,6 +195,43 @@ describe("runtime readiness contracts", () => {
       "replay",
       "judgeReproduction",
     ]);
+  });
+
+  it("derives DP evidence requirements from each runtime gate contract", () => {
+    for (const contract of RUNTIME_GATE_CONTRACTS) {
+      const requirement = getRuntimeGateDpEvidenceRequirement(contract.gateId);
+
+      expect(requirement).toMatchObject({
+        gateId: contract.gateId,
+        requiredEvidenceFields: contract.requiredEvidenceFields,
+        requiredInvariants: contract.invariants,
+        requiresTeacherContext: true,
+        requiresLearningSignals: true,
+        requiresJudgeReproduction: true,
+      });
+    }
+  });
+
+  it("creates replay evidence for known runtime gate contracts", () => {
+    const replayEvidence = createRuntimeGateContractReplayEvidence();
+
+    expect(replayEvidence).toHaveLength(RUNTIME_GATE_CONTRACTS.length);
+    expect(replayEvidence.filter((entry) => entry.status !== "planned").map((entry) => entry.gateId)).toEqual([
+      "RA-1",
+      "RR-001",
+    ]);
+    expect(replayEvidence.every((entry) =>
+      entry.requiredEvidenceFields.includes("teacherContext") &&
+      entry.requiredEvidenceFields.includes("judgeReproduction") &&
+      entry.requiredInvariants.includes("no_bypassing_teacher_context") &&
+      entry.requiredInvariants.includes("replay_deterministic"),
+    )).toBe(true);
+  });
+
+  it("rejects unknown runtime gate contracts before DP evidence is trusted", () => {
+    expect(() => getRuntimeGateDpEvidenceRequirement("RR-999" as never)).toThrow(
+      "Unknown runtime gate contract: RR-999",
+    );
   });
 });
 

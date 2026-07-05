@@ -3,6 +3,13 @@ import { runRuntimeDecisionPipeline } from "./decisionPipeline";
 import { aggregateLearningSignals } from "./signalAggregator";
 import type { TeacherContext } from "./types";
 
+function factTypeCounts(observationPacket: ObservationPacket): Record<string, number> {
+  return observationPacket.facts.reduce<Record<string, number>>((counts, fact) => ({
+    ...counts,
+    [fact.factType]: (counts[fact.factType] ?? 0) + 1,
+  }), {});
+}
+
 function confidenceSummary(recommendations: TeacherContext["recommendations"]): TeacherContext["confidenceSummary"] {
   return recommendations.reduce(
     (summary, recommendation) => ({
@@ -23,6 +30,7 @@ export function buildTeacherContext(observationPacket: ObservationPacket): Teach
       packetId: observationPacket.packetId,
       factCount: observationPacket.facts.length,
       factTypes: observationPacket.facts.map((fact) => fact.factType),
+      factTypeCounts: factTypeCounts(observationPacket),
     },
     learningSignals,
     productIssues: decisions.productIssues,

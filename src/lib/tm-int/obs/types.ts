@@ -98,6 +98,8 @@ export type ObservationPacket = {
   facts: ObservationFact[];
 };
 
+export type ObservationPacketFixtureName = "dp-citation";
+
 export type ReplayStep = {
   input:
     | { kind: "audio"; value: AudioObservationInput }

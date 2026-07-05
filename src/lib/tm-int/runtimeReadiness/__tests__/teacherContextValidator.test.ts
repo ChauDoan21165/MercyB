@@ -2,6 +2,7 @@ import { describe, expect, it } from "vitest";
 
 import type { TeacherContext } from "../../runtime";
 import type { RuntimeEvidenceBundle } from "../evidenceBundle";
+import { createTeacherContextValidatorFixture } from "../fixtureBuilder";
 import { judgeRuntimeReadinessEvidence } from "../judgeRubric";
 import { validateTeacherContext } from "../teacherContextValidator";
 
@@ -140,6 +141,44 @@ describe("validateTeacherContext", () => {
     expect(validateTeacherContext(bundle())).toEqual({ pass: true, failures: [] });
   });
 
+  it("passes the deterministic Teacher Context validator fixture", () => {
+    const fixture = createTeacherContextValidatorFixture();
+
+    expect(validateTeacherContext(fixture)).toEqual({ pass: true, failures: [] });
+    expect(fixture.teacherContext.observationSummary.factTypes).toEqual([
+      "AudioDurationZero",
+      "MicPermissionDenied",
+      "AssessmentAnswerSubmitted",
+    ]);
+    expect(fixture.teacherContext.productIssues).toHaveLength(2);
+    expect(fixture.teacherContext.pendingRetests).toHaveLength(2);
+    expect(fixture.teacherContext.recommendations).toHaveLength(2);
+    expect(fixture.teacherContext.confidenceSummary).toEqual({ high: 1, medium: 1, low: 0 });
+    expect(fixture.teacherContext.replayTrace.map((step) => step.stage)).toEqual([
+      "OBS",
+      "DP",
+      "PED",
+      "LM",
+      "SIGNALS",
+      "RUNTIME",
+    ]);
+  });
+
+  it("rejects the deterministic fixture when DP recasts a product issue as learner weakness", () => {
+    const fixture = createTeacherContextValidatorFixture("product_failure_as_learner_weakness");
+    const result = validateTeacherContext(fixture);
+
+    expect(result.pass).toBe(false);
+    expect(result.failures).toContainEqual(expect.objectContaining({
+      code: "product_failure_as_learner_weakness",
+      path: "teacherContext.productIssues",
+    }));
+    expect(fixture.teacherContext.learningSignals[0].alternatives).toEqual([
+      "question_too_easy",
+      "audio_prompt_replayed",
+    ]);
+  });
+
   it("fails when Observation Summary is missing", () => {
     const result = validateTeacherContext(withTeacherContext({
       ...validTeacherContext,
@@ -215,6 +254,131 @@ describe("validateTeacherContext", () => {
 
     expect(result.pass).toBe(false);
     expect(result.failures).toContainEqual(expect.objectContaining({ code: "unknown_observation_reference" }));
+  });
+
+  it("fails when a DP decision cites an observation id that was not emitted", () => {
+    const result = validateTeacherContext(bundle({
+      dpDecision: {
+        ...bundle().dpDecision,
+        observationIds: ["obs-packet-rr001", "forged-observation-id"],
+      },
+    }));
+
+    expect(result.pass).toBe(false);
+    expect(result.failures).toContainEqual(expect.objectContaining({
+      code: "unknown_observation_reference",
+      path: "dpDecision.observationIds",
+      reason: "Runtime evidence referenced unknown observation id forged-observation-id.",
+      evidence: {
+        referencedObservationId: "forged-observation-id",
+        normalizedObservationIds: [
+          "AssessmentAnswerSubmitted:reading-b1-work-email-1",
+          "AudioDurationZero:listening-a2-class-delay-1",
+          "MicPermissionDenied:speaking-a2-learning-goals-1",
+          "listening-a2-class-delay-1",
+          "obs-packet-rr001",
+          "reading-b1-work-email-1",
+          "speaking-a2-learning-goals-1",
+        ],
+      },
+    }));
+  });
+
+  it("fails when a DP decision has no OBS evidence reference", () => {
+    const result = validateTeacherContext(bundle({
+      dpDecision: {
+        ...bundle().dpDecision,
+        observationIds: [],
+      },
+    }));
+
+    expect(result.pass).toBe(false);
+    expect(result.failures).toContainEqual(expect.objectContaining({
+      code: "missing_decision_evidence_reference",
+      path: "dpDecision.observationIds",
+      reason: "DP, PED, and runtime decisions must cite OBS evidence before downstream output changes.",
+    }));
+  });
+
+  it("surfaces forged DP observation references through the Judge rubric", () => {
+    const result = judgeRuntimeReadinessEvidence(bundle({
+      dpDecision: {
+        ...bundle().dpDecision,
+        observationIds: ["forged-observation-id"],
+      },
+    }), "RR-001");
+
+    expect(result.pass).toBe(false);
+    expect(result.failures).toContainEqual(expect.objectContaining({
+      code: "unknown_observation_reference",
+      path: "dpDecision.observationIds",
+    }));
+  });
+
+  it("fails when a DP decision cites a learning signal that was not emitted", () => {
+    const result = validateTeacherContext(bundle({
+      dpDecision: {
+        ...bundle().dpDecision,
+        signalKeys: ["ProductiveHesitation", "forged_learning_signal"],
+      },
+    }));
+
+    expect(result.pass).toBe(false);
+    expect(result.failures).toContainEqual(expect.objectContaining({
+      code: "unknown_signal_reference",
+      path: "dpDecision.signalKeys",
+      reason: "Runtime evidence referenced unknown learning signal forged_learning_signal.",
+      evidence: {
+        referencedSignalKey: "forged_learning_signal",
+        normalizedSignalKeys: ["productive_hesitation"],
+      },
+    }));
+  });
+
+  it("surfaces forged DP signal references through the Judge rubric", () => {
+    const result = judgeRuntimeReadinessEvidence(bundle({
+      dpDecision: {
+        ...bundle().dpDecision,
+        signalKeys: ["forged_learning_signal"],
+      },
+    }), "RR-001");
+
+    expect(result.pass).toBe(false);
+    expect(result.failures).toContainEqual(expect.objectContaining({
+      code: "unknown_signal_reference",
+      path: "dpDecision.signalKeys",
+    }));
+  });
+
+  it("fails when runtime output drops Teacher Context learning-signal evidence references", () => {
+    const result = validateTeacherContext(bundle({
+      runtimeDecision: {
+        ...bundle().runtimeDecision,
+        signalKeys: [],
+      },
+    }));
+
+    expect(result.pass).toBe(false);
+    expect(result.failures).toContainEqual(expect.objectContaining({
+      code: "missing_decision_evidence_reference",
+      path: "runtimeDecision.signalKeys",
+      reason: "DP, PED, and runtime decisions must cite Learning Signal evidence when signals are present.",
+    }));
+  });
+
+  it("surfaces missing DP OBS anchors through the Judge rubric", () => {
+    const result = judgeRuntimeReadinessEvidence(bundle({
+      dpDecision: {
+        ...bundle().dpDecision,
+        observationIds: [],
+      },
+    }), "RR-001");
+
+    expect(result.pass).toBe(false);
+    expect(result.failures).toContainEqual(expect.objectContaining({
+      code: "missing_decision_evidence_reference",
+      path: "dpDecision.observationIds",
+    }));
   });
 
   it("surfaces Teacher Context validator failures through the Judge rubric", () => {

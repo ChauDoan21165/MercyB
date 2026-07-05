@@ -1,0 +1,25 @@
+{
+  "wp_id": "DP-PRODUCT-ISSUE-WP-000033",
+  "worker_id": "F-DP-INT-W5",
+  "tm_int_id": "DP-INT-v1",
+  "status": "f_done",
+  "commit_hash": "9d0412a1f",
+  "objective": "Add a negative-path fixture for the cited DP invariant so unsafe learner claims are rejected. Base invariant: Route playback failure observations into product issue DP decisions.",
+  "implementation": [
+    "Added negative audio replay coverage in src/lib/tm-int/obs/__tests__/audioObservation.test.ts.",
+    "The fixture proves neutral AudioReplayCount facts do not route into product issue DP or PED decisions."
+  ],
+  "files_changed": [
+    "src/lib/tm-int/obs/__tests__/audioObservation.test.ts"
+  ],
+  "validation_evidence": [
+    "npm test -- --run src/lib/tm-int/learning-signals src/lib/tm-int => 25 files passed, 197 tests passed",
+    "npm run typecheck => pass",
+    "npm exec eslint -- scripts src --format json => pass, 0 errors, 0 warnings"
+  ],
+  "anti_fake_evidence": [
+    "Source diff exercises the negative path through DP and PED builders.",
+    "No skipped tests were added.",
+    "No Judge ledger rows were written and no verified flag was set."
+  ]
+}

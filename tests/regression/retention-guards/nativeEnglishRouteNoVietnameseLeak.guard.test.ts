@@ -114,17 +114,18 @@ afterAll(async () => {
 test("non-Vietnamese /learn/{native}/english routes never fall back to Vietnamese UI", async () => {
   const browser = await chromium.launch({ headless: true });
   try {
-    const page = await browser.newPage({ viewport: { width: 1280, height: 1200 } });
+    const context = await browser.newContext({ viewport: { width: 1280, height: 1200 } });
+    await context.addInitScript(() => {
+      localStorage.setItem("mercyblade.nativeLang", "vi");
+      localStorage.setItem("mercyblade.languagePair", JSON.stringify({ native: "vi", targets: ["en"] }));
+    });
+    const page = await context.newPage();
 
     for (const native of routes) {
-      await page.goto(baseUrl, { waitUntil: "domcontentloaded", timeout: 60000 });
-      await page.evaluate(() => {
-        localStorage.setItem("mercyblade.nativeLang", "vi");
-        localStorage.setItem("mercyblade.languagePair", JSON.stringify({ native: "vi", targets: ["en"] }));
-      });
-
       await page.goto(`${baseUrl}/learn/${native}/english`, {
-        waitUntil: "domcontentloaded",
+        // CI can stall before domcontentloaded on the cold Spanish route.
+        // Commit proves navigation started; waitForRenderedPageText below proves app render.
+        waitUntil: "commit",
         timeout: 60000,
       });
 

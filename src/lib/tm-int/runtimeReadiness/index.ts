@@ -1,8 +1,12 @@
 export {
+  createRuntimeGateContractReplayEvidence,
   getRuntimeGateContract,
+  getRuntimeGateDpEvidenceRequirement,
   REQUIRED_RUNTIME_EVIDENCE_FIELDS,
   REQUIRED_RUNTIME_INVARIANTS,
   RUNTIME_GATE_CONTRACTS,
+  type RuntimeGateContractReplayEvidence,
+  type RuntimeGateDpEvidenceRequirement,
   type RuntimeEvidenceField,
   type RuntimeGateContract,
   type RuntimeGateContractStatus,
@@ -11,11 +15,16 @@ export {
 } from "./contracts";
 
 export {
+  normalizedObservationIdsFromBundle,
+  normalizedSignalKeysFromBundle,
   observationIdsFromBundle,
+  missingRuntimeEvidenceBundleFields,
+  RUNTIME_EVIDENCE_BUNDLE_REQUIRED_FIELDS,
   signalKeysFromBundle,
   type PartialRuntimeEvidenceBundle,
   type RuntimeEventEvidence,
   type RuntimeEvidenceBundle,
+  type RuntimeEvidenceBundleRequiredField,
   type RuntimeReadinessReplayEvidence,
   type RuntimeReadinessRuntimeDecision,
   type RuntimeReadinessStageDecision,
@@ -97,9 +106,11 @@ export {
   createInvalidMissingTeacherContextBundle,
   createProductFailureBundle,
   createReplayPair,
+  createTeacherContextValidatorFixture,
   createValidCrossFlowReplayPackage,
   createValidRegressionPack,
   createValidRuntimeEvidenceBundle,
   type ReplayPairOptions,
+  type TeacherContextValidatorFixtureKind,
   type RuntimeEvidenceReplayPair,
 } from "./fixtureBuilder";

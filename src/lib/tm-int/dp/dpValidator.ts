@@ -1,12 +1,25 @@
 import type { TeacherContext } from "../runtime";
-import type { DpEvidenceBasedDecision, DpLearnerPerformanceClaim } from "./decisionContract";
+import {
+  DP_EVIDENCE_BASED_DECISION_SCHEMA_VERSION,
+  dpAllowsPedAction,
+  dpRecommendationHasEvidenceRationale,
+  isDpDecisionConfidenceLevel,
+  type DpEvidenceBasedDecision,
+  type DpLearnerPerformanceClaim,
+} from "./decisionContract";
 
 export type DpDecisionValidationFailureCode =
+  | "invalid_schema_version"
+  | "missing_teacher_context"
   | "missing_teacher_context_reference"
   | "teacher_context_reference_mismatch"
   | "missing_evidence_citation"
   | "unknown_observation_citation"
   | "unknown_learning_signal_citation"
+  | "claim_observation_not_declared"
+  | "claim_learning_signal_not_declared"
+  | "invalid_learner_performance_claim"
+  | "invalid_product_issue_handling"
   | "product_failure_as_learner_weakness"
   | "learner_weakness_without_evidence"
   | "invalid_confidence_level"
@@ -25,7 +38,6 @@ export type DpDecisionValidationResult = {
   failures: DpDecisionValidationFailure[];
 };
 
-const VALID_CONFIDENCE_LEVELS = new Set(["low", "medium", "high"]);
 const LEARNER_WEAKNESS_PATTERN =
   /weak listening|weak speaking|poor learner|bad learner|bad comprehension|poor pronunciation|low ability|lazy|careless|learner weakness/i;
 const UNSUPPORTED_INFERENCE_PATTERN =
@@ -39,6 +51,48 @@ function hasClaimEvidence(claim: DpLearnerPerformanceClaim): boolean {
   return nonEmpty(claim.citedObservationIds) || nonEmpty(claim.citedLearningSignalIds);
 }
 
+function addLearnerPerformanceClaimFailures(
+  decision: DpEvidenceBasedDecision,
+): DpDecisionValidationFailure[] {
+  const failures: DpDecisionValidationFailure[] = [];
+
+  for (const [index, claim] of decision.learnerPerformanceClaims.entries()) {
+    if (!claim.claimId.trim()) {
+      failures.push({
+        code: "invalid_learner_performance_claim",
+        path: `learnerPerformanceClaims.${index}.claimId`,
+        reason: "DP learner performance claims must include a stable claim id.",
+      });
+    }
+
+    if (!claim.statement.trim()) {
+      failures.push({
+        code: "invalid_learner_performance_claim",
+        path: `learnerPerformanceClaims.${index}.statement`,
+        reason: "DP learner performance claims must include a statement.",
+      });
+    }
+
+    if (!claim.rationale.trim()) {
+      failures.push({
+        code: "invalid_learner_performance_claim",
+        path: `learnerPerformanceClaims.${index}.rationale`,
+        reason: "DP learner performance claims must include rationale.",
+      });
+    }
+
+    if (!hasClaimEvidence(claim)) {
+      failures.push({
+        code: "invalid_learner_performance_claim",
+        path: `learnerPerformanceClaims.${index}`,
+        reason: "DP learner performance claims must cite observation or learning signal evidence.",
+      });
+    }
+  }
+
+  return failures;
+}
+
 function knownObservationIds(context: TeacherContext | undefined): Set<string> {
   const ids = new Set<string>();
   if (context?.observationSummary.packetId) ids.add(context.observationSummary.packetId);
@@ -47,6 +101,36 @@ function knownObservationIds(context: TeacherContext | undefined): Set<string> {
 
 function knownLearningSignalIds(context: TeacherContext | undefined): Set<string> {
   return new Set(context?.learningSignals.map((signal) => signal.signal_key) ?? []);
+}
+
+function addUndeclaredClaimCitationFailures(decision: DpEvidenceBasedDecision): DpDecisionValidationFailure[] {
+  const failures: DpDecisionValidationFailure[] = [];
+  const declaredObservations = new Set(decision.citedObservationIds);
+  const declaredSignals = new Set(decision.citedLearningSignalIds);
+
+  for (const [index, claim] of decision.learnerPerformanceClaims.entries()) {
+    for (const observationId of claim.citedObservationIds) {
+      if (!declaredObservations.has(observationId)) {
+        failures.push({
+          code: "claim_observation_not_declared",
+          path: `learnerPerformanceClaims.${index}.citedObservationIds`,
+          reason: `Learner performance claim cited observation ${observationId} that is not declared on the DP decision.`,
+        });
+      }
+    }
+
+    for (const signalId of claim.citedLearningSignalIds) {
+      if (!declaredSignals.has(signalId)) {
+        failures.push({
+          code: "claim_learning_signal_not_declared",
+          path: `learnerPerformanceClaims.${index}.citedLearningSignalIds`,
+          reason: `Learner performance claim cited learning signal ${signalId} that is not declared on the DP decision.`,
+        });
+      }
+    }
+  }
+
+  return failures;
 }
 
 function addUnknownCitationFailures(
@@ -79,11 +163,71 @@ function addUnknownCitationFailures(
     }
   }
 
+  for (const [index, claim] of decision.learnerPerformanceClaims.entries()) {
+    for (const observationId of claim.citedObservationIds) {
+      if (!observations.has(observationId)) {
+        failures.push({
+          code: "unknown_observation_citation",
+          path: `learnerPerformanceClaims.${index}.citedObservationIds`,
+          reason: `DP learner performance claim cited unknown observation id ${observationId}.`,
+        });
+      }
+    }
+
+    for (const signalId of claim.citedLearningSignalIds) {
+      if (!signals.has(signalId)) {
+        failures.push({
+          code: "unknown_learning_signal_citation",
+          path: `learnerPerformanceClaims.${index}.citedLearningSignalIds`,
+          reason: `DP learner performance claim cited unknown learning signal id ${signalId}.`,
+        });
+      }
+    }
+  }
+
   return failures;
 }
 
 function hasProductIssueContext(decision: DpEvidenceBasedDecision, teacherContext: TeacherContext | undefined): boolean {
   return decision.productIssueHandling.productIssuePresent || Boolean(teacherContext?.productIssues.length);
+}
+
+function addProductIssueHandlingFailures(
+  decision: DpEvidenceBasedDecision,
+  teacherContext: TeacherContext | undefined,
+): DpDecisionValidationFailure[] {
+  const failures: DpDecisionValidationFailure[] = [];
+  const productIssueHandling = decision.productIssueHandling;
+  const contextIssueTypes = new Set(teacherContext?.productIssues.map((issue) => issue.issue) ?? []);
+  const declaredIssueTypes = new Set(productIssueHandling.issueTypes);
+
+  if (hasProductIssueContext(decision, teacherContext) && productIssueHandling.issueTypes.length === 0) {
+    failures.push({
+      code: "invalid_product_issue_handling",
+      path: "productIssueHandling.issueTypes",
+      reason: "DP product issue handling must list the product issue types from Teacher Context.",
+    });
+  }
+
+  if (productIssueHandling.productIssuePresent && !productIssueHandling.rationale.trim()) {
+    failures.push({
+      code: "invalid_product_issue_handling",
+      path: "productIssueHandling.rationale",
+      reason: "DP product issue handling must include rationale when product issues are present.",
+    });
+  }
+
+  for (const contextIssueType of contextIssueTypes) {
+    if (!declaredIssueTypes.has(contextIssueType)) {
+      failures.push({
+        code: "invalid_product_issue_handling",
+        path: "productIssueHandling.issueTypes",
+        reason: `DP product issue handling omitted Teacher Context issue type ${contextIssueType}.`,
+      });
+    }
+  }
+
+  return failures;
 }
 
 function containsLearnerWeakness(value: unknown): boolean {
@@ -99,6 +243,22 @@ export function validateDpDecision(
   teacherContext?: TeacherContext,
 ): DpDecisionValidationResult {
   const failures: DpDecisionValidationFailure[] = [];
+
+  if (decision.schemaVersion !== DP_EVIDENCE_BASED_DECISION_SCHEMA_VERSION) {
+    failures.push({
+      code: "invalid_schema_version",
+      path: "schemaVersion",
+      reason: `DP decision schemaVersion must be ${DP_EVIDENCE_BASED_DECISION_SCHEMA_VERSION}.`,
+    });
+  }
+
+  if (!teacherContext) {
+    failures.push({
+      code: "missing_teacher_context",
+      path: "teacherContext",
+      reason: "DP validation requires the Teacher Context consumed by the decision.",
+    });
+  }
 
   if (!decision.sourceTeacherContextRef) {
     failures.push({
@@ -129,8 +289,11 @@ export function validateDpDecision(
   }
 
   failures.push(...addUnknownCitationFailures(decision, teacherContext));
+  failures.push(...addUndeclaredClaimCitationFailures(decision));
+  failures.push(...addLearnerPerformanceClaimFailures(decision));
+  failures.push(...addProductIssueHandlingFailures(decision, teacherContext));
 
-  if (!VALID_CONFIDENCE_LEVELS.has(decision.confidenceLevel)) {
+  if (!isDpDecisionConfidenceLevel(decision.confidenceLevel)) {
     failures.push({
       code: "invalid_confidence_level",
       path: "confidenceLevel",
@@ -138,19 +301,19 @@ export function validateDpDecision(
     });
   }
 
-  if (!decision.recommendation.rationale.trim()) {
+  if (!dpRecommendationHasEvidenceRationale(decision)) {
     failures.push({
       code: "recommendation_missing_rationale",
       path: "recommendation.rationale",
-      reason: "DP recommendation must include a rationale.",
+      reason: "DP recommendation must include rationale tied to cited evidence.",
     });
   }
 
-  if (decision.pedAllowedToAct && !decision.recommendation.rationale.trim()) {
+  if (decision.pedAllowedToAct && !dpAllowsPedAction(decision)) {
     failures.push({
       code: "ped_allowed_without_rationale",
       path: "pedAllowedToAct",
-      reason: "PED cannot act from DP unless the DP recommendation has rationale.",
+      reason: "PED cannot act from DP unless the DP recommendation has action and rationale.",
     });
   }
 
@@ -205,4 +368,3 @@ export function validateDpDecision(
     failures,
   };
 }
-

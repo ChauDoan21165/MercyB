@@ -1,0 +1,25 @@
+{
+  "wp_id": "DP-LEARNER-SIGNAL-WP-000039",
+  "worker_id": "F-DP-INT-W5",
+  "tm_int_id": "DP-INT-v1",
+  "status": "f_done",
+  "commit_hash": "215c54280",
+  "objective": "Add regression coverage for the cited DP invariant so unsupported edits fail before promotion. Base invariant: Keep cognitive overload as a needs-followup signal with alternatives intact.",
+  "implementation": [
+    "Added cognitive_overload threshold regression coverage in src/lib/tm-int/__tests__/learningBehaviorFamilyV1.test.ts.",
+    "The fixtures reject slow wrong answers without support evidence and fast wrong answers with support evidence, while accepting slow wrong answers plus hint evidence."
+  ],
+  "files_changed": [
+    "src/lib/tm-int/__tests__/learningBehaviorFamilyV1.test.ts"
+  ],
+  "validation_evidence": [
+    "npm test -- --run src/lib/tm-int/learning-signals src/lib/tm-int => 25 files passed, 189 tests passed",
+    "npm run typecheck => pass",
+    "npm exec eslint -- scripts src --format json => pass, 0 errors, 0 warnings"
+  ],
+  "anti_fake_evidence": [
+    "Source diff exercises the cited cognitive_overload thresholds through real packet builders.",
+    "No skipped tests were added.",
+    "No Judge ledger rows were written and no verified flag was set."
+  ]
+}

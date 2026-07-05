@@ -1,6 +1,11 @@
 import type { TeacherContext } from "../runtime";
 import type { PartialRuntimeEvidenceBundle } from "./evidenceBundle";
-import { observationIdsFromBundle, signalKeysFromBundle } from "./evidenceBundle";
+import {
+  normalizedObservationIdsFromBundle,
+  normalizedSignalKeysFromBundle,
+  observationIdsFromBundle,
+  signalKeysFromBundle,
+} from "./evidenceBundle";
 
 export type TeacherContextValidationFailureCode =
   | "missing_observation_summary"
@@ -10,6 +15,7 @@ export type TeacherContextValidationFailureCode =
   | "missing_recommendations"
   | "invalid_confidence_summary"
   | "missing_replay_trace"
+  | "missing_decision_evidence_reference"
   | "unknown_observation_reference"
   | "unknown_signal_reference";
 
@@ -17,6 +23,12 @@ export type TeacherContextValidationFailure = {
   code: TeacherContextValidationFailureCode;
   path: string;
   reason: string;
+  evidence?: {
+    normalizedObservationIds?: readonly string[];
+    referencedObservationId?: string;
+    normalizedSignalKeys?: readonly string[];
+    referencedSignalKey?: string;
+  };
 };
 
 export type TeacherContextValidationResult = {
@@ -58,23 +70,54 @@ function productIssuesInvalidateAssessment(context: TeacherContext): boolean {
   return context.productIssues.some((issue) => issue.affectedSkill === "listening" || issue.affectedSkill === "speaking");
 }
 
-function referencedObservationIds(bundle: PartialRuntimeEvidenceBundle): readonly string[] {
+type EvidenceReference = {
+  id: string;
+  path: string;
+};
+
+function referencedObservationIds(bundle: PartialRuntimeEvidenceBundle): readonly EvidenceReference[] {
   return [
-    ...(bundle.runtimeEvent?.observationIds ?? []),
-    ...(bundle.dpDecision?.observationIds ?? []),
-    ...(bundle.pedDecision?.observationIds ?? []),
-    ...(bundle.runtimeDecision?.observationIds ?? []),
-    bundle.teacherContext?.observationSummary?.packetId,
-  ].filter((id): id is string => typeof id === "string" && id.trim().length > 0);
+    ...(bundle.runtimeEvent?.observationIds ?? []).map((id) => ({ id, path: "runtimeEvent.observationIds" })),
+    ...(bundle.dpDecision?.observationIds ?? []).map((id) => ({ id, path: "dpDecision.observationIds" })),
+    ...(bundle.pedDecision?.observationIds ?? []).map((id) => ({ id, path: "pedDecision.observationIds" })),
+    ...(bundle.runtimeDecision?.observationIds ?? []).map((id) => ({ id, path: "runtimeDecision.observationIds" })),
+    {
+      id: bundle.teacherContext?.observationSummary?.packetId,
+      path: "teacherContext.observationSummary.packetId",
+    },
+  ].filter((reference): reference is EvidenceReference =>
+    typeof reference.id === "string" && reference.id.trim().length > 0,
+  );
 }
 
-function referencedSignalKeys(bundle: PartialRuntimeEvidenceBundle): readonly string[] {
+function referencedSignalKeys(bundle: PartialRuntimeEvidenceBundle): readonly EvidenceReference[] {
   return [
-    ...(bundle.dpDecision?.signalKeys ?? []),
-    ...(bundle.pedDecision?.signalKeys ?? []),
-    ...(bundle.runtimeDecision?.signalKeys ?? []),
-    ...(bundle.teacherContext?.learningSignals?.map((signal) => signal.signal_key) ?? []),
-  ];
+    ...(bundle.teacherContext?.learningSignals ?? []).map((signal) => ({
+      id: signal.signal_key,
+      path: "teacherContext.learningSignals",
+    })),
+    ...(bundle.dpDecision?.signalKeys ?? []).map((id) => ({ id, path: "dpDecision.signalKeys" })),
+    ...(bundle.pedDecision?.signalKeys ?? []).map((id) => ({ id, path: "pedDecision.signalKeys" })),
+    ...(bundle.runtimeDecision?.signalKeys ?? []).map((id) => ({ id, path: "runtimeDecision.signalKeys" })),
+  ].filter((reference): reference is EvidenceReference =>
+    typeof reference.id === "string" && reference.id.trim().length > 0,
+  );
+}
+
+function hasReferences(value: readonly string[] | undefined): boolean {
+  return Array.isArray(value) && value.some((id) => id.trim().length > 0);
+}
+
+function hasLearningSignalEvidence(bundle: PartialRuntimeEvidenceBundle): boolean {
+  return Boolean(bundle.learningSignals?.length || bundle.teacherContext?.learningSignals?.length);
+}
+
+function normalizeSignalReferenceKey(value: string): string {
+  return value
+    .trim()
+    .replace(/([a-z0-9])([A-Z])/g, "$1_$2")
+    .replace(/[-\s]+/g, "_")
+    .toLowerCase();
 }
 
 export function validateTeacherContext(bundle: PartialRuntimeEvidenceBundle): TeacherContextValidationResult {
@@ -142,24 +185,56 @@ export function validateTeacherContext(bundle: PartialRuntimeEvidenceBundle): Te
     });
   }
 
-  const knownObservationIds = observationIdsFromBundle(bundle);
-  for (const observationId of referencedObservationIds(bundle)) {
-    if (!knownObservationIds.has(observationId)) {
+  for (const [path, decision] of [
+    ["dpDecision", bundle.dpDecision],
+    ["pedDecision", bundle.pedDecision],
+    ["runtimeDecision", bundle.runtimeDecision],
+  ] as const) {
+    if (decision && !hasReferences(decision.observationIds)) {
       failures.push({
-        code: "unknown_observation_reference",
-        path: "teacherContext.observationSummary.packetId",
-        reason: `Teacher Context referenced unknown observation id ${observationId}.`,
+        code: "missing_decision_evidence_reference",
+        path: `${path}.observationIds`,
+        reason: "DP, PED, and runtime decisions must cite OBS evidence before downstream output changes.",
+      });
+    }
+
+    if (decision && hasLearningSignalEvidence(bundle) && !hasReferences(decision.signalKeys)) {
+      failures.push({
+        code: "missing_decision_evidence_reference",
+        path: `${path}.signalKeys`,
+        reason: "DP, PED, and runtime decisions must cite Learning Signal evidence when signals are present.",
       });
     }
   }
 
-  const knownSignalKeys = signalKeysFromBundle(bundle);
-  for (const signalKey of referencedSignalKeys(bundle)) {
-    if (!knownSignalKeys.has(signalKey)) {
+  const knownObservationIds = observationIdsFromBundle(bundle);
+  const normalizedObservationIds = normalizedObservationIdsFromBundle(bundle);
+  for (const observation of referencedObservationIds(bundle)) {
+    if (!knownObservationIds.has(observation.id)) {
+      failures.push({
+        code: "unknown_observation_reference",
+        path: observation.path,
+        reason: `Runtime evidence referenced unknown observation id ${observation.id}.`,
+        evidence: {
+          referencedObservationId: observation.id,
+          normalizedObservationIds,
+        },
+      });
+    }
+  }
+
+  const normalizedSignalKeys = normalizedSignalKeysFromBundle(bundle);
+  const normalizedSignalKeySet = new Set(normalizedSignalKeys);
+  for (const signal of referencedSignalKeys(bundle)) {
+    if (!normalizedSignalKeySet.has(normalizeSignalReferenceKey(signal.id))) {
       failures.push({
         code: "unknown_signal_reference",
-        path: "teacherContext.learningSignals",
-        reason: `Teacher Context referenced unknown learning signal ${signalKey}.`,
+        path: signal.path,
+        reason: `Runtime evidence referenced unknown learning signal ${signal.id}.`,
+        evidence: {
+          referencedSignalKey: signal.id,
+          normalizedSignalKeys,
+        },
       });
     }
   }

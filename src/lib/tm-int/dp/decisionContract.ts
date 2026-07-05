@@ -1,15 +1,25 @@
 import type { TeacherContext } from "../runtime";
 
+export const DP_EVIDENCE_BASED_DECISION_SCHEMA_VERSION = "tm-int-dp-decision-contract-v1";
+
 export type DpDecisionConfidenceLevel = "low" | "medium" | "high";
+export const DP_DECISION_CONFIDENCE_LEVELS = ["low", "medium", "high"] as const satisfies readonly DpDecisionConfidenceLevel[];
+export type DpProductIssueType = TeacherContext["productIssues"][number]["issue"];
+export type DpLearnerPerformanceClaimType =
+  | "learner_weakness"
+  | "learner_strength"
+  | "learning_behavior"
+  | "assessment_validity";
 
 export type DpTeacherContextReference = {
   schemaVersion: TeacherContext["schemaVersion"];
   observationPacketId: string;
+  factCount: number;
 };
 
 export type DpProductIssueHandling = {
   productIssuePresent: boolean;
-  issueTypes: readonly string[];
+  issueTypes: readonly DpProductIssueType[];
   handledAsProductIssue: boolean;
   classifiedAsLearnerWeakness: boolean;
   rationale: string;
@@ -17,7 +27,7 @@ export type DpProductIssueHandling = {
 
 export type DpLearnerPerformanceClaim = {
   claimId: string;
-  claimType: "learner_weakness" | "learner_strength" | "learning_behavior" | "assessment_validity";
+  claimType: DpLearnerPerformanceClaimType;
   statement: string;
   citedObservationIds: readonly string[];
   citedLearningSignalIds: readonly string[];
@@ -31,7 +41,7 @@ export type DpRecommendation = {
 };
 
 export type DpEvidenceBasedDecision = {
-  schemaVersion: "tm-int-dp-decision-contract-v1";
+  schemaVersion: typeof DP_EVIDENCE_BASED_DECISION_SCHEMA_VERSION;
   decisionId: string;
   sourceTeacherContextRef?: DpTeacherContextReference;
   citedObservationIds: readonly string[];
@@ -44,3 +54,29 @@ export type DpEvidenceBasedDecision = {
   explanation: string;
 };
 
+export function dpTeacherContextReferenceFrom(context: TeacherContext): DpTeacherContextReference {
+  return {
+    schemaVersion: context.schemaVersion,
+    observationPacketId: context.observationSummary.packetId,
+    factCount: context.observationSummary.factCount,
+  };
+}
+
+export function isDpDecisionConfidenceLevel(value: string): value is DpDecisionConfidenceLevel {
+  return DP_DECISION_CONFIDENCE_LEVELS.includes(value as DpDecisionConfidenceLevel);
+}
+
+export function dpAllowsPedAction(decision: DpEvidenceBasedDecision): boolean {
+  return (
+    decision.pedAllowedToAct &&
+    decision.recommendation.action.trim().length > 0 &&
+    decision.recommendation.rationale.trim().length > 0
+  );
+}
+
+export function dpRecommendationHasEvidenceRationale(decision: DpEvidenceBasedDecision): boolean {
+  const rationale = decision.recommendation.rationale.trim();
+  if (!rationale) return false;
+  if (decision.citedObservationIds.length === 0 && decision.citedLearningSignalIds.length === 0) return false;
+  return /teacher context|observation|learning signal|evidence|product issue|validity|retest|fallback|follow-up/i.test(rationale);
+}
