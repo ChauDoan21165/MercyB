@@ -1,0 +1,71 @@
+export function generateJudgePrompt({ econ, boundaryValidatorName = 'EconBoundaryValidator' }) {
+  if (!econ || econ.type !== 'ExecutionContract' || econ.status !== 'econ_ready') {
+    throw new Error('Judge prompt requires econ_ready ExecutionContract')
+  }
+
+  return {
+    type: 'JudgePrompt',
+    status: 'judge_prompt_ready',
+    sourceObjectiveId: econ.sourceObjectiveId,
+    pcap: econ.pcap,
+    pflow: econ.pflow,
+    prompt: [
+      '# C2 Independent Judge Prompt',
+      '',
+      'You are the independent Judge. You are not the F worker.',
+      'The F worker may not certify itself and may not mark verified.',
+      '',
+      `PCAP: ${econ.pcap}`,
+      `PFLOW: ${econ.pflow}`,
+      `Source Objective: ${econ.sourceObjectiveId}`,
+      `Base Commit: ${econ.baseCommit}`,
+      '',
+      '## ECON Baseline Modified Files',
+      ...(econ.baselineModifiedFiles || []).map(file => `- ${file}`),
+      '',
+      '## Allowed Files',
+      ...(econ.allowedFiles || []).map(file => `- ${file}`),
+      '',
+      '## Forbidden Files',
+      ...(econ.forbiddenFiles || []).map(file => `- ${file}`),
+      '',
+      '## Required Boundary Validation',
+      `Run or apply ${boundaryValidatorName}.`,
+      'Classify final changes into:',
+      '- allowedNewWork',
+      '- preExistingDirtyFiles',
+      '- forbiddenDrift',
+      '- outOfScopeContamination',
+      '',
+      'FAIL if forbiddenDrift or outOfScopeContamination is non-empty.',
+      '',
+      '## Required Verification',
+      ...(econ.verificationCommands || []).map(cmd => `- ${cmd}`),
+      '',
+      '## Acceptance Criteria',
+      ...(econ.acceptanceCriteria || []).map(item => `- ${item}`),
+      '',
+      '## Anti-Fake Checks',
+      '- Reject runtime readiness claims.',
+      '- Reject product capability verified claims without independent replay/Judge evidence.',
+      '- Reject evidence that only restates the prompt.',
+      '- Reject docs-only work unless ECON explicitly allowed docs-only.',
+      '- Reject missing PCAP/PFLOW identity.',
+      '- Reject worker self-certification.',
+      '',
+      '## Output Format',
+      'Return exactly one verdict:',
+      '- PASS with evidence',
+      '- FAIL with reasons',
+      '',
+      'Do not merge, push, deploy, or mark verified.'
+    ].join('\n'),
+    boundary: {
+      judgeIndependentFromWorker: true,
+      workerMayMarkVerified: false,
+      runtimeReadinessClaimed: false,
+      capabilityVerifiedClaimed: false,
+      mayMergePushDeploy: false
+    }
+  }
+}
