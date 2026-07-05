@@ -1,0 +1,26 @@
+{
+  "kind": "ProductObservationBundle",
+  "version": "1.0",
+  "source": "speakingRuntimeObserver",
+  "runtimeFlow": "speaking",
+  "observations": [
+    {
+      "id": "POBS-TM-SPEAKING-TONE-PRODUCT-LIKE-001",
+      "kind": "ProductObservation",
+      "version": "1.0",
+      "productCapability": "PCAP-TM-TONE-PRODUCTION-ASSESSMENT",
+      "runtimeFlow": "speaking",
+      "eventType": "tone_assessment_runtime_candidate",
+      "occurredAt": "2026-07-05T11:18:15.451Z",
+      "evidence": [
+        "product-like-speaking-observation-contract"
+      ],
+      "state": "observed"
+    }
+  ],
+  "boundary": {
+    "liveRuntimeIntegrated": false,
+    "runtimeReadinessClaimed": false,
+    "productCapabilityVerifiedClaimed": false
+  }
+}
