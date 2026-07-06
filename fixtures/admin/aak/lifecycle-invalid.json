@@ -1,0 +1,9 @@
+{
+  "package_id": "EIPC-PKG-001",
+  "execution_id": "EXEC-001",
+  "transition": {
+    "from": "PLANNING_APPROVED",
+    "to": "ENGINEERING_VALIDATED"
+  },
+  "owner_team": "Admin"
+}
