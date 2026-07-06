@@ -12,6 +12,7 @@ on:
     branches: ['main', 'develop']
   pull_request:
     branches: ['main', 'develop']
+  workflow_dispatch:
 
 jobs:
   build:
@@ -103,6 +104,23 @@ jobs:
       - name: Run tests
         run: npm test
         continue-on-error: false
+
+      - name: Run AAK CI advisory (report-only)
+        run: npm run aak:ci-advisory -- reports/aak-ci-advisory
+        continue-on-error: true
+
+      - name: Run AAK CI advisory delta (report-only)
+        if: always()
+        run: npm run aak:ci-advisory:delta -- reports/aak-ci-advisory/aak-ci-advisory-report.json
+        continue-on-error: true
+
+      - name: Upload AAK CI advisory reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: aak-ci-advisory
+          path: reports/aak-ci-advisory/
+          retention-days: 14
 
   lint:
     name: Lint Code
