@@ -105,6 +105,20 @@ jobs:
         run: npm test
         continue-on-error: false
 
+  aak-advisory:
+    name: AAK Advisory
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+
       - name: Run AAK CI advisory (report-only)
         run: npm run aak:ci-advisory -- reports/aak-ci-advisory
         continue-on-error: true
