@@ -62,17 +62,18 @@ describe("user-data-manifest — structural invariants", () => {
 });
 
 describe("user-data-manifest — B1 (#797) coverage lock", () => {
-  // The 42 live user-id tables the script surfaced after PR #797 wired the
+  // The live user-id tables the script surfaced after PR #797 wired the
   // CI gate. If any of these stop being covered, this test fails BEFORE the
   // CI gate is needed — earlier, cheaper feedback than the prod-env-gated
   // check.
   const REQUIRED_B1_TABLES = [
-    "all_time_referral_leaderboard",
     "certificates",
     "corporate_seats",
     "daily_challenges",
+    "conversations",
     "email_audit",
     "email_sends_log",
+    "feature_outcome_events",
     "family_plan_members",
     "interview_sessions",
     "leaderboard_weekly",
@@ -84,7 +85,6 @@ describe("user-data-manifest — B1 (#797) coverage lock", () => {
     "mfa_backup_codes",
     "mfa_lockouts",
     "mock_interview_sessions",
-    "monthly_referral_leaderboard",
     "paywall_experiment_exposures",
     "pronunciation_srs_items",
     "push_preferences",
@@ -111,7 +111,7 @@ describe("user-data-manifest — B1 (#797) coverage lock", () => {
     "xp_events",
   ] as const;
 
-  it("covers all 42 tables from PR #797's surfacing", () => {
+  it("covers all surfaced live user-id tables from PR #797's follow-up", () => {
     const covered = getCoveredTableNames();
     const missing = REQUIRED_B1_TABLES.filter((t) => !covered.has(t));
     expect(missing).toEqual([]);

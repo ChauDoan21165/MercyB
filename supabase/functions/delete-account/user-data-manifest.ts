@@ -76,8 +76,8 @@ export const USER_DATA_MANIFEST: ManifestEntry[] = [
   { table: "mercy_host_notes",                action: "delete",    column: "user_id", reason: "Mercy's notes about the user" },
   { table: "point_transactions",              action: "delete",    column: "user_id", reason: "points ledger" },
   { table: "presence_sessions",               action: "delete",    column: "user_id", reason: "presence tracking" },
+  { table: "conversations",                   action: "delete",    column: "user_id", reason: "tutor conversation sessions; written by the browser client and owned by the learner" },
   { table: "placement_v3_profiles",           action: "delete",    column: "user_id", reason: "placement v3 computed profile; user-owned learning diagnosis" },
-  { table: "placement_v3_responses",          action: "delete",    column: "session_id", reason: "placement v3 response evidence; hard-deleted by ON DELETE CASCADE from placement_v3_sessions/auth.users because this table has no user_id column" },
   { table: "placement_v3_sessions",           action: "delete",    column: "user_id", reason: "placement v3 session history; cascades placement_v3_responses" },
   { table: "pronunciation_evaluations",       action: "delete",    column: "user_id", reason: "pronunciation evals" },
   { table: "room_assignments",                action: "delete",    column: "user_id", reason: "room-to-user assignments" },
@@ -406,8 +406,6 @@ export const USER_DATA_MANIFEST: ManifestEntry[] = [
   },
 
   // ── B1: Views + materialized views → SKIP_VIEW ──
-  { table: "all_time_referral_leaderboard",   action: "skip_view", reason: "MATERIALIZED VIEW — REFRESH rebuilds it from base tables" },
-  { table: "monthly_referral_leaderboard",    action: "skip_view", reason: "MATERIALIZED VIEW — REFRESH rebuilds it from base tables" },
   { table: "v_analytics_user_cohorts",        action: "skip_view", reason: "view over profiles" },
   { table: "v_user_pronunciation_stats",      action: "skip_view", reason: "view over speech_attempts" },
 
@@ -423,6 +421,11 @@ export const USER_DATA_MANIFEST: ManifestEntry[] = [
   { table: "v4_admin_telemetry_daily",            action: "skip_view", reason: "V5 admin view over v4_telemetry_events" },
   { table: "v4_admin_provider_decisions_summary", action: "skip_view", reason: "V5 admin view over v4_provider_decisions" },
   { table: "v4_admin_curriculum_plans_summary",   action: "skip_view", reason: "V5 admin view over v4_curriculum_plans" },
+
+  // ────────────────────────────────────────────────────────────
+  // First-party feature / conversation telemetry → DELETE
+  // ────────────────────────────────────────────────────────────
+  { table: "feature_outcome_events",           action: "delete",    column: "user_id", reason: "first-party feature telemetry; cascades from auth.users" },
 
   // ────────────────────────────────────────────────────────────
   // profiles — handled separately at the END of delete-account
