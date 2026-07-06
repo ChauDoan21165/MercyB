@@ -1,0 +1,36 @@
+name: AAK CI Advisory
+
+on:
+  workflow_dispatch:
+
+jobs:
+  advisory:
+    name: AAK Advisory Report
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: "npm"
+
+      - name: Run AAK CI advisory (report-only)
+        run: npm run aak:ci-advisory -- reports/aak-ci-advisory
+        continue-on-error: true
+
+      - name: Run AAK CI advisory delta (report-only)
+        if: always()
+        run: npm run aak:ci-advisory:delta -- reports/aak-ci-advisory/aak-ci-advisory-report.json
+        continue-on-error: true
+
+      - name: Upload AAK CI advisory reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: aak-ci-advisory
+          path: reports/aak-ci-advisory/
+          retention-days: 14
