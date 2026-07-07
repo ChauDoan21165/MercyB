@@ -7,7 +7,7 @@
 
 import { supabase } from "@/lib/supabaseClient";
 import { FEATURE_FLAGS } from "@/lib/featureFlags";
-import { getStreakDays } from "@/services/pointsService";
+import { getCanonicalStreak } from "@/lib/streak/canonicalStreak";
 import { isStreakAtRisk } from "@/lib/streak/canonicalStreak";
 import {
   fetchDueCount,
@@ -66,7 +66,7 @@ export async function buildHabitSnapshot(
   const { timezone, lastStudied } = await readProfile(userId);
   const { todayLocal, yesterdayLocal, timezone: resolvedTz } =
     getLocalStudyDates(timezone, now);
-  const streakDays = getStreakDays();
+  const streakDays = getCanonicalStreak().current;
   const { dueCount, nextScheduledAt } = await readDue();
 
   // At-risk computed via the single shared rule (canonicalStreak). lastStudied
