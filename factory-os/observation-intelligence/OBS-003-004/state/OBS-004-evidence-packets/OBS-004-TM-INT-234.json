@@ -1,0 +1,59 @@
+{
+  "schema": "tm-int-obs-evidence-packet-v1",
+  "packet_id": "OBS-004-TM-INT-234",
+  "created_at": "2026-07-07T00:00:00.000Z",
+  "source": "tm-int-obs",
+  "module": "promptAssembly",
+  "tm_int_id": "TM-INT-234",
+  "axis": "existing-product-evidence:P13-cefr-constraint-present",
+  "code_path": "src/lib/ai-tutor/promptAssembly.ts:assembleCefrConstraint",
+  "probe_id": "assembleCefrConstraint",
+  "input": [
+    "A2"
+  ],
+  "output": "VOCABULARY: Use vocabulary at or below CEFR B1 level.\nAvoid words that would be unfamiliar to a B1-level learner.\nWhen you must use a higher-level word, immediately explain it in Vietnamese.\n\nThe learner's current CEFR level is approximately A2. Do not state\nthis to the learner — use it only to calibrate your vocabulary.",
+  "input_digest": "sha256:a634a9ede9b4a2af035746c2237ff53a8f431f77ec9674152fb64e9f15e9cc81",
+  "output_digest": "sha256:17683849750c7c16acf1c525644b9616acb5f214013157d6df518973b54d086b",
+  "attribution": {
+    "status": "attributed",
+    "confidence": "high",
+    "evidence": "P13: CEFR vocabulary constraint injected when cefrLevel present",
+    "is_covered_anchor": true,
+    "sharpened": false
+  },
+  "replay_proof": {
+    "replay": "pass",
+    "recorded_output_digest": "sha256:17683849750c7c16acf1c525644b9616acb5f214013157d6df518973b54d086b",
+    "replayed_output_digest": "sha256:17683849750c7c16acf1c525644b9616acb5f214013157d6df518973b54d086b",
+    "recorded_input_digest": "sha256:a634a9ede9b4a2af035746c2237ff53a8f431f77ec9674152fb64e9f15e9cc81",
+    "replayed_input_digest": "sha256:a634a9ede9b4a2af035746c2237ff53a8f431f77ec9674152fb64e9f15e9cc81",
+    "checks": {
+      "code_path_match": true,
+      "input_digest_match": true,
+      "output_digest_match": true
+    }
+  },
+  "run_ids": {
+    "obs001": "obs001-proof-run-001",
+    "obs002": "obs002-proof-run-001",
+    "obs003": "obs003-proof-run-001",
+    "obs004": "obs004-proof-run-001"
+  },
+  "lineage": [
+    {
+      "stage": "OBS-001",
+      "artifact": "state/observations/tm-int-observations.jsonl",
+      "run_id": "obs001-proof-run-001"
+    },
+    {
+      "stage": "OBS-002",
+      "artifact": "state/observations/OBS-002-attributions.jsonl",
+      "run_id": "obs002-proof-run-001"
+    },
+    {
+      "stage": "OBS-003",
+      "artifact": "state/observations/OBS-003-replays.jsonl",
+      "run_id": "obs003-proof-run-001"
+    }
+  ]
+}

@@ -1,0 +1,72 @@
+{
+  "schema": "tm-int-obs-evidence-packet-v1",
+  "packet_id": "OBS-004-TM-INT-2504",
+  "created_at": "2026-07-07T00:00:00.000Z",
+  "source": "tm-int-obs",
+  "module": "promptAssembly",
+  "tm_int_id": "TM-INT-2504",
+  "axis": "session-memory-recall",
+  "code_path": "src/lib/ai-tutor/promptAssembly.ts:assembleContextBlock",
+  "probe_id": "assembleContextBlock",
+  "input": [
+    null,
+    "A2",
+    "Minh",
+    "3",
+    "thì quá khứ",
+    "mạo từ, thì quá khứ",
+    [
+      "Vietnamese speakers often delete or simplify English word-final consonant clusters.",
+      "Third-person, plural, possessive, and past endings are not pronounced clearly.",
+      "Learners rely on time adverbs and leave verbs in base form.",
+      "Be is omitted before adjectives, nouns, or locations.",
+      "Questions keep Vietnamese declarative order instead of English auxiliary inversion.",
+      "No/not is placed before the main verb without English auxiliary support."
+    ]
+  ],
+  "output": "Bạn đã học liên tục 3 ngày.\nLần trước bạn học về: thì quá khứ.\nBạn đang cần cải thiện: mạo từ, thì quá khứ.\nLưu ý các lỗi tiếng Việt thường gặp ở trình độ này: Vietnamese speakers often delete or simplify English word-final consonant clusters. Third-person, plural, possessive, and past endings are not pronounced clearly. Learners rely on time adverbs and leave verbs in base form. Be is omitted before adjectives, nouns, or locations. Questions keep Vietnamese declarative order instead of English auxiliary inversion. No/not is placed before the main verb without English auxiliary support.",
+  "input_digest": "sha256:df67c58fe1eff8acf39b6d5f28d00e71e53416359990b263ed1512b8b061965b",
+  "output_digest": "sha256:41d598e20d9e3bae273e7f63400bc342bb6f6112161d793cec10ecd0293d3213",
+  "attribution": {
+    "status": "attributed",
+    "confidence": "high",
+    "evidence": "recalls streak + last session: \"Bạn đã học liên tục 3 ngày.\"",
+    "is_covered_anchor": false,
+    "sharpened": false
+  },
+  "replay_proof": {
+    "replay": "pass",
+    "recorded_output_digest": "sha256:41d598e20d9e3bae273e7f63400bc342bb6f6112161d793cec10ecd0293d3213",
+    "replayed_output_digest": "sha256:41d598e20d9e3bae273e7f63400bc342bb6f6112161d793cec10ecd0293d3213",
+    "recorded_input_digest": "sha256:df67c58fe1eff8acf39b6d5f28d00e71e53416359990b263ed1512b8b061965b",
+    "replayed_input_digest": "sha256:df67c58fe1eff8acf39b6d5f28d00e71e53416359990b263ed1512b8b061965b",
+    "checks": {
+      "code_path_match": true,
+      "input_digest_match": true,
+      "output_digest_match": true
+    }
+  },
+  "run_ids": {
+    "obs001": "obs001-proof-run-001",
+    "obs002": "obs002-proof-run-001",
+    "obs003": "obs003-proof-run-001",
+    "obs004": "obs004-proof-run-001"
+  },
+  "lineage": [
+    {
+      "stage": "OBS-001",
+      "artifact": "state/observations/tm-int-observations.jsonl",
+      "run_id": "obs001-proof-run-001"
+    },
+    {
+      "stage": "OBS-002",
+      "artifact": "state/observations/OBS-002-attributions.jsonl",
+      "run_id": "obs002-proof-run-001"
+    },
+    {
+      "stage": "OBS-003",
+      "artifact": "state/observations/OBS-003-replays.jsonl",
+      "run_id": "obs003-proof-run-001"
+    }
+  ]
+}

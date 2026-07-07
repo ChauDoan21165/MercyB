@@ -1,0 +1,63 @@
+{
+  "schema": "tm-int-obs-evidence-packet-v1",
+  "packet_id": "OBS-004-TM-INT-2204",
+  "created_at": "2026-07-07T00:00:00.000Z",
+  "source": "tm-int-obs",
+  "module": "promptAssembly",
+  "tm_int_id": "TM-INT-2204",
+  "axis": "suppression-rule-correctness",
+  "code_path": "src/lib/ai-tutor/promptAssembly.ts:applyForbiddenVocabFilter",
+  "probe_id": "applyForbiddenVocabFilter",
+  "input": [
+    "Bạn giỏi tuyệt vời, xuất sắc nhất!"
+  ],
+  "output": {
+    "filtered": "Bạn giỏi tuyệt vời, xuất sắc nhất!",
+    "strippedCount": 0,
+    "strippedRatio": 0
+  },
+  "input_digest": "sha256:18cb7cec13b1b830915816e4d24a4c88fbb84fd513459bae4cb0ff5b0089b142",
+  "output_digest": "sha256:f3afe433a9b6ec84671a93428b902357661cf6066a07dcd1755c9b1c6af45f49",
+  "attribution": {
+    "status": "attributed",
+    "confidence": "high",
+    "evidence": "suppression count exact: 3 forbidden occurrences → strippedCount=3",
+    "is_covered_anchor": false,
+    "sharpened": true
+  },
+  "replay_proof": {
+    "replay": "pass",
+    "recorded_output_digest": "sha256:f3afe433a9b6ec84671a93428b902357661cf6066a07dcd1755c9b1c6af45f49",
+    "replayed_output_digest": "sha256:f3afe433a9b6ec84671a93428b902357661cf6066a07dcd1755c9b1c6af45f49",
+    "recorded_input_digest": "sha256:18cb7cec13b1b830915816e4d24a4c88fbb84fd513459bae4cb0ff5b0089b142",
+    "replayed_input_digest": "sha256:18cb7cec13b1b830915816e4d24a4c88fbb84fd513459bae4cb0ff5b0089b142",
+    "checks": {
+      "code_path_match": true,
+      "input_digest_match": true,
+      "output_digest_match": true
+    }
+  },
+  "run_ids": {
+    "obs001": "obs001-proof-run-001",
+    "obs002": "obs002-proof-run-001",
+    "obs003": "obs003-proof-run-001",
+    "obs004": "obs004-proof-run-001"
+  },
+  "lineage": [
+    {
+      "stage": "OBS-001",
+      "artifact": "state/observations/tm-int-observations.jsonl",
+      "run_id": "obs001-proof-run-001"
+    },
+    {
+      "stage": "OBS-002",
+      "artifact": "state/observations/OBS-002-attributions.jsonl",
+      "run_id": "obs002-proof-run-001"
+    },
+    {
+      "stage": "OBS-003",
+      "artifact": "state/observations/OBS-003-replays.jsonl",
+      "run_id": "obs003-proof-run-001"
+    }
+  ]
+}

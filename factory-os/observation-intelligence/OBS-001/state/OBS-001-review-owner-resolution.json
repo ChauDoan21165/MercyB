@@ -1,0 +1,47 @@
+{
+  "mission": "C2-OBS-INT-PHASE2-001",
+  "step": "OBS-001-v2 review-owner resolution",
+  "question": "Does the `review` owner (42 IDs, axis rubric-signal-preservation) resolve to a real source path, or is it report-only / not observation-unlockable?",
+  "method": "registry read-only; grep MercyB src for rubric/review/scoring paths and for the axis's actual behavior logic",
+  "axis": "rubric-signal-preservation",
+  "id_count": 42,
+  "behaviors": [
+    {
+      "normalized_boundary": "blocks duplicate output when prior signal already covers learner gap",
+      "id_count": 21,
+      "executes_in": "detectorHint",
+      "real_source_path": "src/lib/ai-tutor/detectorHint.ts",
+      "evidence": "per-tag dedup API hasShownHint()/markHintShown()/getShownCount() + session-wide SESSION_CAP gate (detectorHint.ts:95,184-185,226-242) — exactly 'block duplicate output when prior signal already shown'",
+      "confidence": "high"
+    },
+    {
+      "normalized_boundary": "keeps learner-facing reply specific without inventing product state",
+      "id_count": 21,
+      "executes_in": "promptAssembly",
+      "real_source_path": "src/lib/ai-tutor/promptAssembly.ts",
+      "evidence": "assembleContextBlock contract 'Missing data -> fields omitted entirely. Never inject null/placeholder text.' (promptAssembly.ts:261) — exactly 'keep reply specific without inventing product state'. Already instrumented in OBS-001.",
+      "confidence": "high",
+      "already_instrumented_obs001": true
+    }
+  ],
+  "review_scoring_paths_examined": [
+    {"path": "src/lib/writing-feedback/scoreEssay.ts", "role": "deterministic essay scorer (5 writing dimensions)", "executes_this_axis": false},
+    {"path": "src/lib/writing-feedback/rubric.ts", "role": "WritingRubric type / emptyRubric", "executes_this_axis": false},
+    {"path": "src/lib/writing-feedback/vn-band-rubric.ts", "role": "IELTS band rubric for VN learners", "executes_this_axis": false},
+    {"path": "src/core/engine/scoring.ts", "role": "engine scoring", "executes_this_axis": false},
+    {"path": "src/features/review/ReviewApp.tsx", "role": "review UI feature", "executes_this_axis": false},
+    {"path": "src/languages/punjabi/*Review*.ts / assessmentRubrics.ts", "role": "Punjabi content decks (not TM runtime)", "executes_this_axis": false}
+  ],
+  "verdict": "NO_REVIEW_MODULE",
+  "conclusion": "There is NO rubric/review/scoring runtime path that executes the rubric-signal-preservation axis. Real rubric/scoring code exists but implements essay grading, a different feature. The axis's two behaviors are real and DO execute — in already-owned modules (detectorHint dedup, promptAssembly anti-invention). So the 42 IDs are observation-unlockable, but NOT via a separate `review` module.",
+  "recommended_gap_list_correction": {
+    "remove_owner": "review",
+    "removed_id_count": 42,
+    "reassign": [
+      {"owner": "detectorHint", "add_ids": 21, "detectorHint_v2_new_total": 122},
+      {"owner": "promptAssembly", "add_ids": 21, "note": "already instrumented in OBS-001; new true total 677", "promptAssembly_v2_new_total": 677}
+    ],
+    "net_effect": "remaining-to-lease surface drops by 42 (no separate `review` lease); detectorHint rises to 122, promptAssembly (done) rises to 677. Total behavioral still 1198."
+  },
+  "matched_sentinel": "left untouched per instruction (1 ID, axis 'matched')"
+}

@@ -1,0 +1,52 @@
+{
+  "mode": "commit",
+  "db": "state/int_registry.sqlite3",
+  "total_ids": 35,
+  "flip_count": 33,
+  "refuse_count": 2,
+  "would_flip": [
+    "TM-INT-2198",
+    "TM-INT-2199",
+    "TM-INT-2203",
+    "TM-INT-2204",
+    "TM-INT-2206",
+    "TM-INT-2208",
+    "TM-INT-2315",
+    "TM-INT-2357",
+    "TM-INT-2378",
+    "TM-INT-2399",
+    "TM-INT-2483",
+    "TM-INT-2504",
+    "TM-INT-2546",
+    "TM-INT-2567",
+    "TM-INT-2588",
+    "TM-INT-2609",
+    "TM-INT-2651",
+    "TM-INT-2693",
+    "TM-INT-2735",
+    "TM-INT-2756",
+    "TM-INT-2840",
+    "TM-INT-2882",
+    "TM-INT-2903",
+    "TM-INT-2924",
+    "TM-INT-3008",
+    "TM-INT-3029",
+    "TM-INT-3071",
+    "TM-INT-3092",
+    "TM-INT-3113",
+    "TM-INT-3134",
+    "TM-INT-3176",
+    "TM-INT-3218",
+    "TM-INT-3260"
+  ],
+  "refused": [
+    {
+      "tm_int_id": "TM-INT-234",
+      "reason": "not_report_only:verified"
+    },
+    {
+      "tm_int_id": "TM-INT-235",
+      "reason": "not_report_only:verified"
+    }
+  ]
+}

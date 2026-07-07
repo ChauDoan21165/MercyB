@@ -1,0 +1,26 @@
+OBS-004 → Judge submission (STAGING SANDBOX, zero prod writes)
+Judge lane: TM-INT registry lane — runnable entrypoint = c2-submit-evidence.py + c2-judge-capability.py
+Run mode: copied logic (ROOT path redirected to staging), staging DB = copy of prod c2_execution.sqlite3
+Packet submitted: OBS-004-TM-INT-234.json (tm-int-obs-evidence-packet-v1)
+
+$ python3 c2-submit-evidence.staging.py OBS-PROMPTASSEMBLY-VERTICAL-001 .../manifest.json
+evidence_submitted OBS-PROMPTASSEMBLY-VERTICAL-001 1
+submit_exit=0
+
+$ python3 c2-judge-capability.staging.py OBS-PROMPTASSEMBLY-VERTICAL-001 OBS-INT-STAGING-JUDGE-01
+JUDGE_ACCEPTED OBS-PROMPTASSEMBLY-VERTICAL-001
+judge_exit=0
+
+Recorded staging verdict (completions table):
+  capability_id = OBS-PROMPTASSEMBLY-VERTICAL-001
+  judge_id      = OBS-INT-STAGING-JUDGE-01
+  decision_note = all required evidence passed
+  evidence_ids  = ["313"]
+  evidence_ledger: obs-replay-evidence | verdict=pass | artifact_sha=f3c456eb6b0c1bfaec4483b2866255bb78b610576cf2e446212aa4831424427c
+
+VERDICT: ACCEPT (JUDGE_ACCEPTED), exit 0.
+
+PROD UNCHANGED PROOF (sha256 identical before/after):
+  c2_execution.sqlite3    9f0d760e639ee9d344c219bd80c7d6c9b65ed45ec8a559ef4e965826a1d4d99f
+  c2_dashboard_state.json 89229f0c3f9f95ba099c00b46990ba0d5ad38c8ae2dd0fb48490094fa49f83f8
+  prod rows unchanged: evidence_ledger=312 completions=49 proof_judge_decisions=221 proof_judge_confirmed=220

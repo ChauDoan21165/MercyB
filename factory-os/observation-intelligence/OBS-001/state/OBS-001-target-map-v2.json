@@ -1,0 +1,494 @@
+{
+  "mission": "C2-OBS-INT-PHASE2-001",
+  "step": "OBS-001-v2",
+  "artifact": "OBS-001-target-map-v2.json",
+  "supersedes": "OBS-001-target-map.json (v1 grouped by registry module)",
+  "method": "Regroup the 1198 runtime-behavioral report_only IDs by AXIS OWNER. axis->owner reused from OBS-002 attribution output: attributed axes -> promptAssembly (proven, already instrumented); parked axes -> the belongs_to module OBS-002 named (inferred, to confirm on instrumentation).",
+  "baseline": {
+    "behavioral_ids_total": 1198,
+    "distinct_axes": 33,
+    "v2_owner_modules": 12
+  },
+  "v1_vs_v2_diff": {
+    "ids_that_moved_owner": 1141,
+    "ids_moved_pct": 95.2,
+    "drift_large": true,
+    "verdict": "LARGE \u2014 v2-based leasing is mandatory before more hooks",
+    "per_module_delta": [
+      {
+        "module": "promptAssembly",
+        "v1": 61,
+        "v2": 656,
+        "delta": 595
+      },
+      {
+        "module": "studyPath",
+        "v1": 55,
+        "v2": 119,
+        "delta": 64
+      },
+      {
+        "module": "l1FollowUpLoop",
+        "v1": 60,
+        "v2": 16,
+        "delta": -44
+      },
+      {
+        "module": "review",
+        "v1": 0,
+        "v2": 42,
+        "delta": 42
+      },
+      {
+        "module": "detectorHint",
+        "v1": 60,
+        "v2": 101,
+        "delta": 41
+      },
+      {
+        "module": "tutorUiCopy",
+        "v1": 47,
+        "v2": 21,
+        "delta": -26
+      },
+      {
+        "module": "aiTutorService",
+        "v1": 60,
+        "v2": 84,
+        "delta": 24
+      },
+      {
+        "module": "costLimits",
+        "v1": 60,
+        "v2": 42,
+        "delta": -18
+      },
+      {
+        "module": "staleSessionGuard",
+        "v1": 60,
+        "v2": 42,
+        "delta": -18
+      },
+      {
+        "module": "SpeakPracticeMode",
+        "v1": 0,
+        "v2": 16,
+        "delta": 16
+      },
+      {
+        "module": "sessionRuntime",
+        "v1": 60,
+        "v2": 58,
+        "delta": -2
+      },
+      {
+        "module": "UNRESOLVED",
+        "v1": 0,
+        "v2": 1,
+        "delta": 1
+      },
+      {
+        "module": "emotionalResponse",
+        "v1": 60,
+        "v2": 0,
+        "delta": -60
+      },
+      {
+        "module": "freeFormStt",
+        "v1": 60,
+        "v2": 0,
+        "delta": -60
+      },
+      {
+        "module": "learningMemory",
+        "v1": 60,
+        "v2": 0,
+        "delta": -60
+      },
+      {
+        "module": "safety",
+        "v1": 60,
+        "v2": 0,
+        "delta": -60
+      },
+      {
+        "module": "step5VnEnDetectors",
+        "v1": 60,
+        "v2": 0,
+        "delta": -60
+      },
+      {
+        "module": "mockProvider",
+        "v1": 59,
+        "v2": 0,
+        "delta": -59
+      },
+      {
+        "module": "teacherMercyHandoff",
+        "v1": 47,
+        "v2": 0,
+        "delta": -47
+      },
+      {
+        "module": "teacherMercyLiveIntelligenceBridge",
+        "v1": 47,
+        "v2": 0,
+        "delta": -47
+      },
+      {
+        "module": "transcriptSanity",
+        "v1": 47,
+        "v2": 0,
+        "delta": -47
+      },
+      {
+        "module": "types",
+        "v1": 47,
+        "v2": 0,
+        "delta": -47
+      },
+      {
+        "module": "useBrowserStt",
+        "v1": 47,
+        "v2": 0,
+        "delta": -47
+      },
+      {
+        "module": "useTtsSpeaker",
+        "v1": 47,
+        "v2": 0,
+        "delta": -47
+      },
+      {
+        "module": "client",
+        "v1": 12,
+        "v2": 0,
+        "delta": -12
+      },
+      {
+        "module": "session",
+        "v1": 12,
+        "v2": 0,
+        "delta": -12
+      },
+      {
+        "module": "serverInterferenceMemory",
+        "v1": 9,
+        "v2": 0,
+        "delta": -9
+      },
+      {
+        "module": "teacherMercy",
+        "v1": 1,
+        "v2": 0,
+        "delta": -1
+      }
+    ]
+  },
+  "v2_owner_gap_list": [
+    {
+      "owner_module": "promptAssembly",
+      "tm_int_id_count": 656,
+      "axes_owned": [
+        "anti-placeholder-output",
+        "conversation-turn-normalization",
+        "deterministic-output-shape",
+        "edge-case-empty-input",
+        "edge-case-mixed-language",
+        "error-recovery-strategy",
+        "high-stakes-pause-pivot",
+        "no-fake-confidence",
+        "overclaim-prevention",
+        "practice-topic-carryover",
+        "provider-fallback-boundary",
+        "safe-serialization-boundary",
+        "session-memory-recall",
+        "suppression-rule-correctness",
+        "testable-public-contract",
+        "tone-safety-no-overwarmth",
+        "vietlish-curated-behavior",
+        "weakness-memory-continuity"
+      ],
+      "distinct_probes_needed": 125,
+      "owner_confidence": {
+        "high": 656
+      },
+      "instrumented_in_obs001": true
+    },
+    {
+      "owner_module": "studyPath",
+      "tm_int_id_count": 119,
+      "axes_owned": [
+        "lesson-recommendation-explanation",
+        "readiness-policy-boundary"
+      ],
+      "distinct_probes_needed": 39,
+      "owner_confidence": {
+        "medium": 119
+      },
+      "instrumented_in_obs001": false
+    },
+    {
+      "owner_module": "detectorHint",
+      "tm_int_id_count": 101,
+      "axes_owned": [
+        "hint-ladder-escalation",
+        "teacher-mercy-minimal-hint"
+      ],
+      "distinct_probes_needed": 21,
+      "owner_confidence": {
+        "medium": 101
+      },
+      "instrumented_in_obs001": false
+    },
+    {
+      "owner_module": "aiTutorService",
+      "tm_int_id_count": 84,
+      "axes_owned": [
+        "edge-case-repeated-answer",
+        "self-correction-loop-continuity"
+      ],
+      "distinct_probes_needed": 4,
+      "owner_confidence": {
+        "medium": 84
+      },
+      "instrumented_in_obs001": false
+    },
+    {
+      "owner_module": "sessionRuntime",
+      "tm_int_id_count": 58,
+      "axes_owned": [
+        "learner-state-routing",
+        "student-state-transition"
+      ],
+      "distinct_probes_needed": 18,
+      "owner_confidence": {
+        "medium": 58
+      },
+      "instrumented_in_obs001": false
+    },
+    {
+      "owner_module": "costLimits",
+      "tm_int_id_count": 42,
+      "axes_owned": [
+        "retry-deduplication-boundary"
+      ],
+      "distinct_probes_needed": 2,
+      "owner_confidence": {
+        "medium": 42
+      },
+      "instrumented_in_obs001": false
+    },
+    {
+      "owner_module": "review",
+      "tm_int_id_count": 42,
+      "axes_owned": [
+        "rubric-signal-preservation"
+      ],
+      "distinct_probes_needed": 2,
+      "owner_confidence": {
+        "medium": 42
+      },
+      "instrumented_in_obs001": false
+    },
+    {
+      "owner_module": "staleSessionGuard",
+      "tm_int_id_count": 42,
+      "axes_owned": [
+        "edge-case-stale-memory"
+      ],
+      "distinct_probes_needed": 2,
+      "owner_confidence": {
+        "medium": 42
+      },
+      "instrumented_in_obs001": false
+    },
+    {
+      "owner_module": "tutorUiCopy",
+      "tm_int_id_count": 21,
+      "axes_owned": [
+        "ui-copy-source-of-truth"
+      ],
+      "distinct_probes_needed": 1,
+      "owner_confidence": {
+        "medium": 21
+      },
+      "instrumented_in_obs001": false
+    },
+    {
+      "owner_module": "SpeakPracticeMode",
+      "tm_int_id_count": 16,
+      "axes_owned": [
+        "speak-follow-up-replacement"
+      ],
+      "distinct_probes_needed": 16,
+      "owner_confidence": {
+        "medium": 16
+      },
+      "instrumented_in_obs001": false
+    },
+    {
+      "owner_module": "l1FollowUpLoop",
+      "tm_int_id_count": 16,
+      "axes_owned": [
+        "follow-up-intelligence-continuity"
+      ],
+      "distinct_probes_needed": 16,
+      "owner_confidence": {
+        "medium": 16
+      },
+      "instrumented_in_obs001": false
+    },
+    {
+      "owner_module": "UNRESOLVED",
+      "tm_int_id_count": 1,
+      "axes_owned": [
+        "matched"
+      ],
+      "distinct_probes_needed": 1,
+      "owner_confidence": {
+        "none": 1
+      },
+      "instrumented_in_obs001": false
+    }
+  ],
+  "v2_remaining_gap_list_to_lease": [
+    {
+      "owner_module": "studyPath",
+      "tm_int_id_count": 119,
+      "axes_owned": [
+        "lesson-recommendation-explanation",
+        "readiness-policy-boundary"
+      ],
+      "distinct_probes_needed": 39,
+      "owner_confidence": {
+        "medium": 119
+      },
+      "instrumented_in_obs001": false
+    },
+    {
+      "owner_module": "detectorHint",
+      "tm_int_id_count": 101,
+      "axes_owned": [
+        "hint-ladder-escalation",
+        "teacher-mercy-minimal-hint"
+      ],
+      "distinct_probes_needed": 21,
+      "owner_confidence": {
+        "medium": 101
+      },
+      "instrumented_in_obs001": false
+    },
+    {
+      "owner_module": "aiTutorService",
+      "tm_int_id_count": 84,
+      "axes_owned": [
+        "edge-case-repeated-answer",
+        "self-correction-loop-continuity"
+      ],
+      "distinct_probes_needed": 4,
+      "owner_confidence": {
+        "medium": 84
+      },
+      "instrumented_in_obs001": false
+    },
+    {
+      "owner_module": "sessionRuntime",
+      "tm_int_id_count": 58,
+      "axes_owned": [
+        "learner-state-routing",
+        "student-state-transition"
+      ],
+      "distinct_probes_needed": 18,
+      "owner_confidence": {
+        "medium": 58
+      },
+      "instrumented_in_obs001": false
+    },
+    {
+      "owner_module": "costLimits",
+      "tm_int_id_count": 42,
+      "axes_owned": [
+        "retry-deduplication-boundary"
+      ],
+      "distinct_probes_needed": 2,
+      "owner_confidence": {
+        "medium": 42
+      },
+      "instrumented_in_obs001": false
+    },
+    {
+      "owner_module": "review",
+      "tm_int_id_count": 42,
+      "axes_owned": [
+        "rubric-signal-preservation"
+      ],
+      "distinct_probes_needed": 2,
+      "owner_confidence": {
+        "medium": 42
+      },
+      "instrumented_in_obs001": false
+    },
+    {
+      "owner_module": "staleSessionGuard",
+      "tm_int_id_count": 42,
+      "axes_owned": [
+        "edge-case-stale-memory"
+      ],
+      "distinct_probes_needed": 2,
+      "owner_confidence": {
+        "medium": 42
+      },
+      "instrumented_in_obs001": false
+    },
+    {
+      "owner_module": "tutorUiCopy",
+      "tm_int_id_count": 21,
+      "axes_owned": [
+        "ui-copy-source-of-truth"
+      ],
+      "distinct_probes_needed": 1,
+      "owner_confidence": {
+        "medium": 21
+      },
+      "instrumented_in_obs001": false
+    },
+    {
+      "owner_module": "SpeakPracticeMode",
+      "tm_int_id_count": 16,
+      "axes_owned": [
+        "speak-follow-up-replacement"
+      ],
+      "distinct_probes_needed": 16,
+      "owner_confidence": {
+        "medium": 16
+      },
+      "instrumented_in_obs001": false
+    },
+    {
+      "owner_module": "l1FollowUpLoop",
+      "tm_int_id_count": 16,
+      "axes_owned": [
+        "follow-up-intelligence-continuity"
+      ],
+      "distinct_probes_needed": 16,
+      "owner_confidence": {
+        "medium": 16
+      },
+      "instrumented_in_obs001": false
+    },
+    {
+      "owner_module": "UNRESOLVED",
+      "tm_int_id_count": 1,
+      "axes_owned": [
+        "matched"
+      ],
+      "distinct_probes_needed": 1,
+      "owner_confidence": {
+        "none": 1
+      },
+      "instrumented_in_obs001": false
+    }
+  ],
+  "note_promptAssembly": "promptAssembly is already instrumented (OBS-001). Under axis-ownership its true reach is far larger than v1's 61 \u2014 one hook made every axis it owns observable across all modules. Those IDs need per-behavior probes but no new module hook."
+}
