@@ -1031,6 +1031,15 @@ test:
     - mercyb
     - isolated-builds
     - mercyb-tuned
+  # Belt-and-suspenders for the intermittent esbuild-service OOM. The tuned Air is
+  # now concurrent=1 (whole-machine serial: no build/lint/other job ever co-runs
+  # with a shard), which removes the deterministic co-run OOM. Non-CI background
+  # load on the 16 GB host can still occasionally jetsam-kill an esbuild service;
+  # a script_failure retry lands a green shard without manual intervention.
+  retry:
+    max: 2
+    when:
+      - script_failure
   cache:
     <<: *npm_cache_def
     policy: pull
