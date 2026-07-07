@@ -47,10 +47,14 @@ guard that was the failing step, and its behavior is verified both ways.
 `repair/c4-build-env-prebuild-guard-001`
 
 ## Commit hash
-<recorded below after commit>
+`1f71117b984d51c486b8661e9a1c6416d769fb9c` (short `1f71117`), message
+`Fix build env prebuild guard`. Pre-commit hook (typecheck + lint + rooms
+validate + registry) passed.
 
 ## Push result
-<recorded below after push>
+Pushed to `origin` (GitLab `gitlab.com:cd12536/MercyB.git`): new branch
+`repair/c4-build-env-prebuild-guard-001`, tracking set. GitLab offered MR link:
+https://gitlab.com/cd12536/mercyB/-/merge_requests/new?merge_request%5Bsource_branch%5D=repair%2Fc4-build-env-prebuild-guard-001
 
 ## MR recommendation
 Open an MR from `repair/c4-build-env-prebuild-guard-001` → `main`. Low risk:
