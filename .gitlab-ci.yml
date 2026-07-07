@@ -1008,6 +1008,21 @@ test:
   # Serializing the shards removes both the RAM oversubscription and the cache race
   # with one deterministic knob. Keep --maxWorkers=1 (belt-and-suspenders, no harm).
   resource_group: local-runner-vitest-shards
+  # PIN to the single tuned host. The self-hosted Mac fleet is several separate
+  # physical machines all sharing the `local,mac,mercyb` tags, so test shards
+  # scattered onto untuned hosts (concurrent=5) and still OOM-killed esbuild —
+  # verified in pipeline 2658734561 (test 2/2 landed on the untuned mac-runner-3).
+  # Only THIS host's runner (mac-runner-2) carries `mercyb-tuned` (concurrent=2),
+  # so requiring that tag confines every test shard to the tuned Air. This
+  # OVERRIDES the `tags` merged from *local_runner for the test job ONLY — all
+  # other jobs keep the fleet-wide `local,mac,mercyb` tags and still distribute.
+  # Tradeoff: all test load funnels onto one Air → slower runs. Reliability > speed.
+  tags:
+    - local
+    - mac
+    - mercyb
+    - isolated-builds
+    - mercyb-tuned
   cache:
     <<: *npm_cache_def
     policy: pull
