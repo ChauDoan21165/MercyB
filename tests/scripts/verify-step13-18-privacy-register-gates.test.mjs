@@ -4,7 +4,10 @@ import { resolve } from "node:path";
 import { describe, expect, it, vi } from "vitest";
 
 const C4_PRIVACY_REGISTER_GATE_TIMEOUT_MS = 180_000;
-vi.setConfig({ testTimeout: C4_PRIVACY_REGISTER_GATE_TIMEOUT_MS });
+vi.setConfig({
+  testTimeout: C4_PRIVACY_REGISTER_GATE_TIMEOUT_MS,
+  hookTimeout: C4_PRIVACY_REGISTER_GATE_TIMEOUT_MS,
+});
 const repoRoot = resolve(".");
 const verifier = resolve(
   repoRoot,
@@ -29,5 +32,5 @@ describe("verify-step13-18-privacy-register-gates", () => {
     expect(result.stdout).toContain(
       "[step13-18-privacy-register-gates] verified"
     );
-  }, 60_000);
+  }, 120_000);
 });

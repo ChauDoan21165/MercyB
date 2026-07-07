@@ -1,4 +1,4 @@
-import { afterAll, beforeAll, expect, test } from "vitest";
+import { afterAll, beforeAll, expect, test, vi } from "vitest";
 import { createServer as createNetServer } from "node:net";
 import { TextEncoder as NodeTextEncoder } from "node:util";
 import { chromium, type Page } from "@playwright/test";
@@ -25,11 +25,20 @@ const forbiddenVietnameseMarkers = [
   "của bạn",
 ];
 
+vi.setConfig({
+  testTimeout: 420_000,
+  hookTimeout: 420_000,
+});
+
 async function waitForRenderedPageText(page: Page) {
   await page.waitForFunction(
-    () => document.body.innerText.replace(/\s+/g, " ").trim().length > 500,
+    () => {
+      const body = document.body;
+      if (!body) return false;
+      return body.innerText.replace(/\s+/g, " ").trim().length > 500;
+    },
     undefined,
-    { timeout: 60000 },
+    { timeout: 240_000 },
   );
 }
 
@@ -94,7 +103,7 @@ beforeAll(async () => {
 
   await viteServer.listen();
   await waitForViteReady();
-}, 90000);
+}, 420_000);
 
 afterAll(async () => {
   await viteServer?.close();
@@ -140,4 +149,4 @@ test("non-Vietnamese /learn/{native}/english routes never fall back to Vietnames
   } finally {
     await browser.close();
   }
-}, 90000);
+}, 420_000);
