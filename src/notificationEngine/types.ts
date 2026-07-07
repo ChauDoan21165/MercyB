@@ -25,7 +25,7 @@ export interface HabitSnapshot {
   yesterdayLocal: string;
   /** Resolved IANA timezone used for the date math. */
   timezone: string;
-  /** Current study streak (flag-agnostic via pointsService.getStreakDays). */
+  /** Current study streak (flag-agnostic via canonicalStreak.getCanonicalStreak). */
   streakDays: number;
   /** Whether SERVER_STREAKS_ENABLED is on (gates streak-save entirely). */
   serverStreaksEnabled: boolean;

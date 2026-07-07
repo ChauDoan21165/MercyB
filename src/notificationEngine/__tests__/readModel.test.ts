@@ -18,7 +18,18 @@ vi.mock("@/lib/supabaseClient", () => ({
     }),
   },
 }));
-vi.mock("@/services/pointsService", () => ({ getStreakDays: () => h.streakDays }));
+vi.mock("@/lib/streak/canonicalStreak", async (importOriginal) => {
+  const actual = await importOriginal<typeof import("@/lib/streak/canonicalStreak")>();
+  return {
+    ...actual,
+    getCanonicalStreak: () => ({
+      current: h.streakDays,
+      longest: h.streakDays,
+      lastStudiedDate: null,
+      source: "local" as const,
+    }),
+  };
+});
 vi.mock("@/lib/vocabulary/repository", () => ({
   fetchDueCount: async () => h.dueCount,
   fetchNextScheduledAt: async () => h.nextScheduledAt,
