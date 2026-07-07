@@ -32,7 +32,6 @@ const DEFAULT_OUTPUT_DIR = path.join("/Users/admin/autorun/reports", "aak-ci-art
 
 const SCAN_ROOTS = [
   { name: "reports", path: path.join(repoRoot, "reports") },
-  { name: "autorun_reports", path: "/Users/admin/autorun/reports" },
   { name: "artifacts", path: path.join(repoRoot, "artifacts") },
   { name: "state_packets", path: path.join(repoRoot, "state/packets") },
 ];
