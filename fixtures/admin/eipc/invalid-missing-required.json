@@ -1,0 +1,22 @@
+{
+  "execution_id": "EXEC-002",
+  "contract_id": "CONTRACT-EIPC-001",
+  "contract_version": "1.1.0",
+  "contract_profile": "standard",
+  "capability_refs": [],
+  "decision_lineage_id": "",
+  "mutation_level": "unrecognized",
+  "risk_level": "extreme",
+  "status": "broken",
+  "evidence_refs": [],
+  "confidence_metrics": {
+    "overall": 200,
+    "evidence": -10,
+    "decision": 101,
+    "capability": 42,
+    "learning": 17
+  },
+  "supersedes_package_id": null,
+  "superseded_by_package_id": null,
+  "supersession_reason": null
+}

@@ -1,0 +1,74 @@
+{
+  "registry_id": "aak-ownership-routing-registry",
+  "version": "1.0.0",
+  "default_owner_team": "Admin",
+  "rules": [
+    {
+      "rule_id": "ownership-routing-replay",
+      "priority": 10,
+      "pattern": "replay",
+      "flags": "i",
+      "owner_team": "C4",
+      "examples": [
+        "replay",
+        "Replay"
+      ]
+    },
+    {
+      "rule_id": "ownership-routing-teacher-mercy",
+      "priority": 20,
+      "pattern": "teacher.?mercy",
+      "flags": "i",
+      "owner_team": "C2",
+      "examples": [
+        "teacher mercy",
+        "teacher-mercy"
+      ]
+    },
+    {
+      "rule_id": "ownership-routing-coverage",
+      "priority": 30,
+      "pattern": "coverage",
+      "flags": "i",
+      "owner_team": "C3",
+      "examples": [
+        "coverage",
+        "Coverage Engine"
+      ]
+    },
+    {
+      "rule_id": "ownership-routing-judge-decision",
+      "priority": 40,
+      "pattern": "judge|decision",
+      "flags": "i",
+      "owner_team": "Admin",
+      "examples": [
+        "judge",
+        "decision"
+      ]
+    },
+    {
+      "rule_id": "ownership-routing-admin-governance",
+      "priority": 50,
+      "pattern": "eipc|oii|governance|admin",
+      "flags": "i",
+      "owner_team": "Admin",
+      "examples": [
+        "eipc",
+        "oii",
+        "governance",
+        "admin"
+      ]
+    },
+    {
+      "rule_id": "ownership-routing-capability",
+      "priority": 60,
+      "pattern": "capability",
+      "flags": "i",
+      "owner_team": "Admin",
+      "examples": [
+        "capability"
+      ]
+    }
+  ]
+}

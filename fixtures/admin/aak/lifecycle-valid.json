@@ -1,0 +1,12 @@
+{
+  "package_id": "EIPC-PKG-001",
+  "execution_id": "EXEC-001",
+  "transition": {
+    "from": "PLANNING_APPROVED",
+    "to": "ENGINEERING_VALIDATED"
+  },
+  "validation_report_ref": "reports/validation/eipc-001.json",
+  "execution_record_ref": "artifacts/execution/exec-001.json",
+  "rollback_ref": "artifacts/rollback/rollback-001.json",
+  "owner_team": "Admin"
+}

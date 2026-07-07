@@ -12,6 +12,7 @@ on:
     branches: ['main', 'develop']
   pull_request:
     branches: ['main', 'develop']
+  workflow_dispatch:
 
 jobs:
   build:
@@ -103,6 +104,53 @@ jobs:
       - name: Run tests
         run: npm test
         continue-on-error: false
+
+  aak-advisory:
+    name: AAK Advisory
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+
+      - name: Download previous AAK CI advisory reports
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p reports/aak-ci-advisory/previous
+          previous_run_id="$(gh run list --workflow "$GITHUB_WORKFLOW" --branch "$GITHUB_REF_NAME" --status success --limit 20 --json databaseId --jq '.[].databaseId' | awk -v current="$GITHUB_RUN_ID" '$0 != current { print; exit }')"
+          if [ -n "$previous_run_id" ]; then
+            gh run download "$previous_run_id" --name aak-ci-advisory --dir reports/aak-ci-advisory/previous || true
+          fi
+
+      - name: Run AAK CI advisory (report-only)
+        run: npm run aak:ci-advisory -- reports/aak-ci-advisory
+        continue-on-error: true
+
+      - name: Run AAK CI advisory delta (report-only)
+        if: always()
+        run: npm run aak:ci-advisory:delta -- reports/aak-ci-advisory/aak-ci-advisory-report.json
+        continue-on-error: true
+
+      - name: Read AAK CI advisory artifacts
+        if: always()
+        run: npm run aak:ci-artifact-consumer -- reports/aak-ci-advisory reports/aak-ci-advisory/consumer
+        continue-on-error: true
+
+      - name: Upload AAK CI advisory reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: aak-ci-advisory
+          path: reports/aak-ci-advisory/
+          retention-days: 14
 
   lint:
     name: Lint Code
