@@ -44,6 +44,19 @@ if (missing.length > 0) {
   console.error(
     "[validate-vite-supabase-env] Refusing to build; production auth must never fall back to placeholder Supabase config.",
   );
+  console.error("[validate-vite-supabase-env] How to fix:");
+  console.error(
+    "  • Local build: create .env.local (or .env) in the repo root and set the missing var(s). See the",
+  );
+  console.error(
+    "    'Supabase (core build env)' section of .env.example for the exact keys.",
+  );
+  console.error(
+    "  • CI build: provide the var(s) via the pipeline's build environment / secrets, not a committed file.",
+  );
+  console.error(
+    `  • Missing now: ${missing.map((key) => `${key}=<value>`).join("  ")}`,
+  );
   process.exit(2);
 }
 
