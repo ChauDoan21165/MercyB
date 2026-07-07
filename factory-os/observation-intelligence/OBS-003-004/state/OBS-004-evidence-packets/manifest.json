@@ -1,0 +1,253 @@
+{
+  "schema": "tm-int-obs-evidence-packet-manifest-v1",
+  "run_id": "obs004-proof-run-001",
+  "created_at": "2026-07-07T00:00:00.000Z",
+  "packet_count": 35,
+  "packets": [
+    {
+      "packet_id": "OBS-004-TM-INT-234",
+      "tm_int_id": "TM-INT-234",
+      "axis": "existing-product-evidence:P13-cefr-constraint-present",
+      "file": "OBS-004-evidence-packets/OBS-004-TM-INT-234.json",
+      "output_digest": "sha256:17683849750c7c16acf1c525644b9616acb5f214013157d6df518973b54d086b"
+    },
+    {
+      "packet_id": "OBS-004-TM-INT-235",
+      "tm_int_id": "TM-INT-235",
+      "axis": "existing-product-evidence:P13b-no-constraint-when-null",
+      "file": "OBS-004-evidence-packets/OBS-004-TM-INT-235.json",
+      "output_digest": "sha256:9aacb95dfb25068cd097584d477339ce8ab54541aa1b407461567ef69024dfb8"
+    },
+    {
+      "packet_id": "OBS-004-TM-INT-2198",
+      "tm_int_id": "TM-INT-2198",
+      "axis": "overclaim-prevention",
+      "file": "OBS-004-evidence-packets/OBS-004-TM-INT-2198.json",
+      "output_digest": "sha256:f3afe433a9b6ec84671a93428b902357661cf6066a07dcd1755c9b1c6af45f49"
+    },
+    {
+      "packet_id": "OBS-004-TM-INT-2199",
+      "tm_int_id": "TM-INT-2199",
+      "axis": "weakness-memory-continuity",
+      "file": "OBS-004-evidence-packets/OBS-004-TM-INT-2199.json",
+      "output_digest": "sha256:41d598e20d9e3bae273e7f63400bc342bb6f6112161d793cec10ecd0293d3213"
+    },
+    {
+      "packet_id": "OBS-004-TM-INT-2203",
+      "tm_int_id": "TM-INT-2203",
+      "axis": "error-recovery-strategy",
+      "file": "OBS-004-evidence-packets/OBS-004-TM-INT-2203.json",
+      "output_digest": "sha256:b4682f0e1f40687ce1c4c8a91e3bee24d43bb33ae70c17cee60dd88e2e45213c"
+    },
+    {
+      "packet_id": "OBS-004-TM-INT-2204",
+      "tm_int_id": "TM-INT-2204",
+      "axis": "suppression-rule-correctness",
+      "file": "OBS-004-evidence-packets/OBS-004-TM-INT-2204.json",
+      "output_digest": "sha256:f3afe433a9b6ec84671a93428b902357661cf6066a07dcd1755c9b1c6af45f49"
+    },
+    {
+      "packet_id": "OBS-004-TM-INT-2206",
+      "tm_int_id": "TM-INT-2206",
+      "axis": "vietlish-curated-behavior",
+      "file": "OBS-004-evidence-packets/OBS-004-TM-INT-2206.json",
+      "output_digest": "sha256:78f1d927d97830592ec4edc3b989e525cf8e13c671bce706b0a1b91e2e4e88c1"
+    },
+    {
+      "packet_id": "OBS-004-TM-INT-2208",
+      "tm_int_id": "TM-INT-2208",
+      "axis": "high-stakes-pause-pivot",
+      "file": "OBS-004-evidence-packets/OBS-004-TM-INT-2208.json",
+      "output_digest": "sha256:cc9bcc78476a9a380a37c848119acac640fc7c2682f22081bd5d2ce9edde457e"
+    },
+    {
+      "packet_id": "OBS-004-TM-INT-2315",
+      "tm_int_id": "TM-INT-2315",
+      "axis": "weakness-memory-continuity",
+      "file": "OBS-004-evidence-packets/OBS-004-TM-INT-2315.json",
+      "output_digest": "sha256:41d598e20d9e3bae273e7f63400bc342bb6f6112161d793cec10ecd0293d3213"
+    },
+    {
+      "packet_id": "OBS-004-TM-INT-2357",
+      "tm_int_id": "TM-INT-2357",
+      "axis": "error-recovery-strategy",
+      "file": "OBS-004-evidence-packets/OBS-004-TM-INT-2357.json",
+      "output_digest": "sha256:b4682f0e1f40687ce1c4c8a91e3bee24d43bb33ae70c17cee60dd88e2e45213c"
+    },
+    {
+      "packet_id": "OBS-004-TM-INT-2378",
+      "tm_int_id": "TM-INT-2378",
+      "axis": "provider-fallback-boundary",
+      "file": "OBS-004-evidence-packets/OBS-004-TM-INT-2378.json",
+      "output_digest": "sha256:74ebdb60119f358614e785d944f2c7a5ba03d61100bf0af388669e654fdbd4f5"
+    },
+    {
+      "packet_id": "OBS-004-TM-INT-2399",
+      "tm_int_id": "TM-INT-2399",
+      "axis": "tone-safety-no-overwarmth",
+      "file": "OBS-004-evidence-packets/OBS-004-TM-INT-2399.json",
+      "output_digest": "sha256:f3afe433a9b6ec84671a93428b902357661cf6066a07dcd1755c9b1c6af45f49"
+    },
+    {
+      "packet_id": "OBS-004-TM-INT-2483",
+      "tm_int_id": "TM-INT-2483",
+      "axis": "practice-topic-carryover",
+      "file": "OBS-004-evidence-packets/OBS-004-TM-INT-2483.json",
+      "output_digest": "sha256:41d598e20d9e3bae273e7f63400bc342bb6f6112161d793cec10ecd0293d3213"
+    },
+    {
+      "packet_id": "OBS-004-TM-INT-2504",
+      "tm_int_id": "TM-INT-2504",
+      "axis": "session-memory-recall",
+      "file": "OBS-004-evidence-packets/OBS-004-TM-INT-2504.json",
+      "output_digest": "sha256:41d598e20d9e3bae273e7f63400bc342bb6f6112161d793cec10ecd0293d3213"
+    },
+    {
+      "packet_id": "OBS-004-TM-INT-2546",
+      "tm_int_id": "TM-INT-2546",
+      "axis": "no-fake-confidence",
+      "file": "OBS-004-evidence-packets/OBS-004-TM-INT-2546.json",
+      "output_digest": "sha256:f3afe433a9b6ec84671a93428b902357661cf6066a07dcd1755c9b1c6af45f49"
+    },
+    {
+      "packet_id": "OBS-004-TM-INT-2567",
+      "tm_int_id": "TM-INT-2567",
+      "axis": "anti-placeholder-output",
+      "file": "OBS-004-evidence-packets/OBS-004-TM-INT-2567.json",
+      "output_digest": "sha256:41d598e20d9e3bae273e7f63400bc342bb6f6112161d793cec10ecd0293d3213"
+    },
+    {
+      "packet_id": "OBS-004-TM-INT-2588",
+      "tm_int_id": "TM-INT-2588",
+      "axis": "testable-public-contract",
+      "file": "OBS-004-evidence-packets/OBS-004-TM-INT-2588.json",
+      "output_digest": "sha256:378bc6d4d8c7966d0140d44a7486e3b0d6944cad6edf14f080de1962d90a6e24"
+    },
+    {
+      "packet_id": "OBS-004-TM-INT-2609",
+      "tm_int_id": "TM-INT-2609",
+      "axis": "edge-case-empty-input",
+      "file": "OBS-004-evidence-packets/OBS-004-TM-INT-2609.json",
+      "output_digest": "sha256:79ccc4849dc5448029813cc3903bdf5347378cfc2d40a7c1a60747b37dc3989c"
+    },
+    {
+      "packet_id": "OBS-004-TM-INT-2651",
+      "tm_int_id": "TM-INT-2651",
+      "axis": "edge-case-mixed-language",
+      "file": "OBS-004-evidence-packets/OBS-004-TM-INT-2651.json",
+      "output_digest": "sha256:22e390054559bd16b92f93d3258e786c14af6ba5f54a2ddfc61a1f1ac802271f"
+    },
+    {
+      "packet_id": "OBS-004-TM-INT-2693",
+      "tm_int_id": "TM-INT-2693",
+      "axis": "conversation-turn-normalization",
+      "file": "OBS-004-evidence-packets/OBS-004-TM-INT-2693.json",
+      "output_digest": "sha256:378bc6d4d8c7966d0140d44a7486e3b0d6944cad6edf14f080de1962d90a6e24"
+    },
+    {
+      "packet_id": "OBS-004-TM-INT-2735",
+      "tm_int_id": "TM-INT-2735",
+      "axis": "deterministic-output-shape",
+      "file": "OBS-004-evidence-packets/OBS-004-TM-INT-2735.json",
+      "output_digest": "sha256:17683849750c7c16acf1c525644b9616acb5f214013157d6df518973b54d086b"
+    },
+    {
+      "packet_id": "OBS-004-TM-INT-2756",
+      "tm_int_id": "TM-INT-2756",
+      "axis": "safe-serialization-boundary",
+      "file": "OBS-004-evidence-packets/OBS-004-TM-INT-2756.json",
+      "output_digest": "sha256:dc727b8e89d16a2afcbf34c6cfc0253e3b0e247d69b590686d2171621b3f38a5"
+    },
+    {
+      "packet_id": "OBS-004-TM-INT-2840",
+      "tm_int_id": "TM-INT-2840",
+      "axis": "weakness-memory-continuity",
+      "file": "OBS-004-evidence-packets/OBS-004-TM-INT-2840.json",
+      "output_digest": "sha256:41d598e20d9e3bae273e7f63400bc342bb6f6112161d793cec10ecd0293d3213"
+    },
+    {
+      "packet_id": "OBS-004-TM-INT-2882",
+      "tm_int_id": "TM-INT-2882",
+      "axis": "error-recovery-strategy",
+      "file": "OBS-004-evidence-packets/OBS-004-TM-INT-2882.json",
+      "output_digest": "sha256:b4682f0e1f40687ce1c4c8a91e3bee24d43bb33ae70c17cee60dd88e2e45213c"
+    },
+    {
+      "packet_id": "OBS-004-TM-INT-2903",
+      "tm_int_id": "TM-INT-2903",
+      "axis": "provider-fallback-boundary",
+      "file": "OBS-004-evidence-packets/OBS-004-TM-INT-2903.json",
+      "output_digest": "sha256:74ebdb60119f358614e785d944f2c7a5ba03d61100bf0af388669e654fdbd4f5"
+    },
+    {
+      "packet_id": "OBS-004-TM-INT-2924",
+      "tm_int_id": "TM-INT-2924",
+      "axis": "tone-safety-no-overwarmth",
+      "file": "OBS-004-evidence-packets/OBS-004-TM-INT-2924.json",
+      "output_digest": "sha256:f3afe433a9b6ec84671a93428b902357661cf6066a07dcd1755c9b1c6af45f49"
+    },
+    {
+      "packet_id": "OBS-004-TM-INT-3008",
+      "tm_int_id": "TM-INT-3008",
+      "axis": "practice-topic-carryover",
+      "file": "OBS-004-evidence-packets/OBS-004-TM-INT-3008.json",
+      "output_digest": "sha256:41d598e20d9e3bae273e7f63400bc342bb6f6112161d793cec10ecd0293d3213"
+    },
+    {
+      "packet_id": "OBS-004-TM-INT-3029",
+      "tm_int_id": "TM-INT-3029",
+      "axis": "session-memory-recall",
+      "file": "OBS-004-evidence-packets/OBS-004-TM-INT-3029.json",
+      "output_digest": "sha256:41d598e20d9e3bae273e7f63400bc342bb6f6112161d793cec10ecd0293d3213"
+    },
+    {
+      "packet_id": "OBS-004-TM-INT-3071",
+      "tm_int_id": "TM-INT-3071",
+      "axis": "no-fake-confidence",
+      "file": "OBS-004-evidence-packets/OBS-004-TM-INT-3071.json",
+      "output_digest": "sha256:f3afe433a9b6ec84671a93428b902357661cf6066a07dcd1755c9b1c6af45f49"
+    },
+    {
+      "packet_id": "OBS-004-TM-INT-3092",
+      "tm_int_id": "TM-INT-3092",
+      "axis": "anti-placeholder-output",
+      "file": "OBS-004-evidence-packets/OBS-004-TM-INT-3092.json",
+      "output_digest": "sha256:41d598e20d9e3bae273e7f63400bc342bb6f6112161d793cec10ecd0293d3213"
+    },
+    {
+      "packet_id": "OBS-004-TM-INT-3113",
+      "tm_int_id": "TM-INT-3113",
+      "axis": "testable-public-contract",
+      "file": "OBS-004-evidence-packets/OBS-004-TM-INT-3113.json",
+      "output_digest": "sha256:378bc6d4d8c7966d0140d44a7486e3b0d6944cad6edf14f080de1962d90a6e24"
+    },
+    {
+      "packet_id": "OBS-004-TM-INT-3134",
+      "tm_int_id": "TM-INT-3134",
+      "axis": "edge-case-empty-input",
+      "file": "OBS-004-evidence-packets/OBS-004-TM-INT-3134.json",
+      "output_digest": "sha256:79ccc4849dc5448029813cc3903bdf5347378cfc2d40a7c1a60747b37dc3989c"
+    },
+    {
+      "packet_id": "OBS-004-TM-INT-3176",
+      "tm_int_id": "TM-INT-3176",
+      "axis": "edge-case-mixed-language",
+      "file": "OBS-004-evidence-packets/OBS-004-TM-INT-3176.json",
+      "output_digest": "sha256:22e390054559bd16b92f93d3258e786c14af6ba5f54a2ddfc61a1f1ac802271f"
+    },
+    {
+      "packet_id": "OBS-004-TM-INT-3218",
+      "tm_int_id": "TM-INT-3218",
+      "axis": "conversation-turn-normalization",
+      "file": "OBS-004-evidence-packets/OBS-004-TM-INT-3218.json",
+      "output_digest": "sha256:378bc6d4d8c7966d0140d44a7486e3b0d6944cad6edf14f080de1962d90a6e24"
+    },
+    {
+      "packet_id": "OBS-004-TM-INT-3260",
+      "tm_int_id": "TM-INT-3260",
+      "axis": "deterministic-output-shape",
+      "file": "OBS-004-evidence-packets/OBS-004-TM-INT-3260.json",
+      "output_digest": "sha256:17683849750c7c16acf1c525644b9616acb5f214013157d6df518973b54d086b"
+    }
+  ]
+}

@@ -1,0 +1,74 @@
+{
+  "schema": "tm-int-obs-evidence-packet-v1",
+  "packet_id": "OBS-004-TM-INT-2756",
+  "created_at": "2026-07-07T00:00:00.000Z",
+  "source": "tm-int-obs",
+  "module": "promptAssembly",
+  "tm_int_id": "TM-INT-2756",
+  "axis": "safe-serialization-boundary",
+  "code_path": "src/lib/ai-tutor/promptAssembly.ts:enforceTokenBudget",
+  "probe_id": "enforceTokenBudget",
+  "input": [
+    "SYSTEM",
+    [
+      {
+        "role": "user",
+        "content": "hello teacher"
+      }
+    ],
+    4000
+  ],
+  "output": {
+    "systemPrompt": "SYSTEM",
+    "messages": [
+      {
+        "role": "user",
+        "content": "hello teacher"
+      }
+    ]
+  },
+  "input_digest": "sha256:6a1a0d5ae7762240c6c7aba2d7aac0cd5bf7b4f44947079b75c416f9e068449b",
+  "output_digest": "sha256:dc727b8e89d16a2afcbf34c6cfc0253e3b0e247d69b590686d2171621b3f38a5",
+  "attribution": {
+    "status": "attributed",
+    "confidence": "high",
+    "evidence": "serialized within budget: {systemPrompt:string, messages:1 normalized}",
+    "is_covered_anchor": false,
+    "sharpened": true
+  },
+  "replay_proof": {
+    "replay": "pass",
+    "recorded_output_digest": "sha256:dc727b8e89d16a2afcbf34c6cfc0253e3b0e247d69b590686d2171621b3f38a5",
+    "replayed_output_digest": "sha256:dc727b8e89d16a2afcbf34c6cfc0253e3b0e247d69b590686d2171621b3f38a5",
+    "recorded_input_digest": "sha256:6a1a0d5ae7762240c6c7aba2d7aac0cd5bf7b4f44947079b75c416f9e068449b",
+    "replayed_input_digest": "sha256:6a1a0d5ae7762240c6c7aba2d7aac0cd5bf7b4f44947079b75c416f9e068449b",
+    "checks": {
+      "code_path_match": true,
+      "input_digest_match": true,
+      "output_digest_match": true
+    }
+  },
+  "run_ids": {
+    "obs001": "obs001-proof-run-001",
+    "obs002": "obs002-proof-run-001",
+    "obs003": "obs003-proof-run-001",
+    "obs004": "obs004-proof-run-001"
+  },
+  "lineage": [
+    {
+      "stage": "OBS-001",
+      "artifact": "state/observations/tm-int-observations.jsonl",
+      "run_id": "obs001-proof-run-001"
+    },
+    {
+      "stage": "OBS-002",
+      "artifact": "state/observations/OBS-002-attributions.jsonl",
+      "run_id": "obs002-proof-run-001"
+    },
+    {
+      "stage": "OBS-003",
+      "artifact": "state/observations/OBS-003-replays.jsonl",
+      "run_id": "obs003-proof-run-001"
+    }
+  ]
+}

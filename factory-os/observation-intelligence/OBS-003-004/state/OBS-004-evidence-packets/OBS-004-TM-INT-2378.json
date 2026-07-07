@@ -1,0 +1,79 @@
+{
+  "schema": "tm-int-obs-evidence-packet-v1",
+  "packet_id": "OBS-004-TM-INT-2378",
+  "created_at": "2026-07-07T00:00:00.000Z",
+  "source": "tm-int-obs",
+  "module": "promptAssembly",
+  "tm_int_id": "TM-INT-2378",
+  "axis": "provider-fallback-boundary",
+  "code_path": "src/lib/ai-tutor/promptAssembly.ts:buildFallbackResponse",
+  "probe_id": "buildFallbackResponse",
+  "input": [
+    2
+  ],
+  "output": {
+    "vi": "Mình hiện hỗ trợ tiếng Anh và tiếng Việt. Bạn muốn luyện tiếng Anh không?",
+    "nextSteps": [
+      {
+        "labelVi": "Thử lại",
+        "action": "write",
+        "payload": ""
+      },
+      {
+        "labelVi": "Sửa câu",
+        "action": "write",
+        "payload": ""
+      },
+      {
+        "labelVi": "Luyện nói",
+        "action": "speak",
+        "payload": "Hello, how are you?"
+      }
+    ],
+    "saveTargets": []
+  },
+  "input_digest": "sha256:038966de9f6b9a901b20b4c6ca8b2a46009feebe031babc842d43690c0bc222b",
+  "output_digest": "sha256:74ebdb60119f358614e785d944f2c7a5ba03d61100bf0af388669e654fdbd4f5",
+  "attribution": {
+    "status": "attributed",
+    "confidence": "high",
+    "evidence": "provider-fallback response produced: \"Mình hiện hỗ trợ tiếng Anh và tiếng Việt. Bạn muốn luyện tiếng Anh không?\"",
+    "is_covered_anchor": false,
+    "sharpened": false
+  },
+  "replay_proof": {
+    "replay": "pass",
+    "recorded_output_digest": "sha256:74ebdb60119f358614e785d944f2c7a5ba03d61100bf0af388669e654fdbd4f5",
+    "replayed_output_digest": "sha256:74ebdb60119f358614e785d944f2c7a5ba03d61100bf0af388669e654fdbd4f5",
+    "recorded_input_digest": "sha256:038966de9f6b9a901b20b4c6ca8b2a46009feebe031babc842d43690c0bc222b",
+    "replayed_input_digest": "sha256:038966de9f6b9a901b20b4c6ca8b2a46009feebe031babc842d43690c0bc222b",
+    "checks": {
+      "code_path_match": true,
+      "input_digest_match": true,
+      "output_digest_match": true
+    }
+  },
+  "run_ids": {
+    "obs001": "obs001-proof-run-001",
+    "obs002": "obs002-proof-run-001",
+    "obs003": "obs003-proof-run-001",
+    "obs004": "obs004-proof-run-001"
+  },
+  "lineage": [
+    {
+      "stage": "OBS-001",
+      "artifact": "state/observations/tm-int-observations.jsonl",
+      "run_id": "obs001-proof-run-001"
+    },
+    {
+      "stage": "OBS-002",
+      "artifact": "state/observations/OBS-002-attributions.jsonl",
+      "run_id": "obs002-proof-run-001"
+    },
+    {
+      "stage": "OBS-003",
+      "artifact": "state/observations/OBS-003-replays.jsonl",
+      "run_id": "obs003-proof-run-001"
+    }
+  ]
+}

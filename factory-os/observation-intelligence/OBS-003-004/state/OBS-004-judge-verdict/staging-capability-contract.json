@@ -1,0 +1,6 @@
+{
+  "capability_id": "OBS-PROMPTASSEMBLY-VERTICAL-001",
+  "title": "OBS promptAssembly attributed-observation evidence class (vertical slice)",
+  "lane_id": "OBS-INT",
+  "required_evidence": ["obs-replay-evidence"]
+}

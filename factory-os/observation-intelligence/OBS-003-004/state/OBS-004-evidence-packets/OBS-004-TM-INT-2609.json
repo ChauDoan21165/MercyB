@@ -1,0 +1,79 @@
+{
+  "schema": "tm-int-obs-evidence-packet-v1",
+  "packet_id": "OBS-004-TM-INT-2609",
+  "created_at": "2026-07-07T00:00:00.000Z",
+  "source": "tm-int-obs",
+  "module": "promptAssembly",
+  "tm_int_id": "TM-INT-2609",
+  "axis": "edge-case-empty-input",
+  "code_path": "src/lib/ai-tutor/promptAssembly.ts:buildInvalidInputResponse",
+  "probe_id": "buildInvalidInputEmpty",
+  "input": [
+    "empty"
+  ],
+  "output": {
+    "vi": "Bạn muốn luyện gì hôm nay? Mình có thể giúp bạn sửa câu, giải thích ngữ pháp, hoặc luyện nói.",
+    "nextSteps": [
+      {
+        "labelVi": "Sửa câu",
+        "action": "write",
+        "payload": ""
+      },
+      {
+        "labelVi": "Luyện nói",
+        "action": "speak",
+        "payload": "Hello, how are you?"
+      },
+      {
+        "labelVi": "Hỏi ngữ pháp",
+        "action": "write",
+        "payload": ""
+      }
+    ],
+    "saveTargets": []
+  },
+  "input_digest": "sha256:6c7accfe4beda7ac50b2228fb8e847f3900c2ed65b1b8b729a5d5f88c753d066",
+  "output_digest": "sha256:79ccc4849dc5448029813cc3903bdf5347378cfc2d40a7c1a60747b37dc3989c",
+  "attribution": {
+    "status": "attributed",
+    "confidence": "high",
+    "evidence": "empty-input edge handled with guidance response: \"Bạn muốn luyện gì hôm nay? Mình có thể giúp bạn sửa câu, giải thích ngữ pháp, hoặc luyện nói.\"",
+    "is_covered_anchor": false,
+    "sharpened": false
+  },
+  "replay_proof": {
+    "replay": "pass",
+    "recorded_output_digest": "sha256:79ccc4849dc5448029813cc3903bdf5347378cfc2d40a7c1a60747b37dc3989c",
+    "replayed_output_digest": "sha256:79ccc4849dc5448029813cc3903bdf5347378cfc2d40a7c1a60747b37dc3989c",
+    "recorded_input_digest": "sha256:6c7accfe4beda7ac50b2228fb8e847f3900c2ed65b1b8b729a5d5f88c753d066",
+    "replayed_input_digest": "sha256:6c7accfe4beda7ac50b2228fb8e847f3900c2ed65b1b8b729a5d5f88c753d066",
+    "checks": {
+      "code_path_match": true,
+      "input_digest_match": true,
+      "output_digest_match": true
+    }
+  },
+  "run_ids": {
+    "obs001": "obs001-proof-run-001",
+    "obs002": "obs002-proof-run-001",
+    "obs003": "obs003-proof-run-001",
+    "obs004": "obs004-proof-run-001"
+  },
+  "lineage": [
+    {
+      "stage": "OBS-001",
+      "artifact": "state/observations/tm-int-observations.jsonl",
+      "run_id": "obs001-proof-run-001"
+    },
+    {
+      "stage": "OBS-002",
+      "artifact": "state/observations/OBS-002-attributions.jsonl",
+      "run_id": "obs002-proof-run-001"
+    },
+    {
+      "stage": "OBS-003",
+      "artifact": "state/observations/OBS-003-replays.jsonl",
+      "run_id": "obs003-proof-run-001"
+    }
+  ]
+}

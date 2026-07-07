@@ -1,0 +1,6 @@
+{
+  "capability_id": "OBS-PROMPTASSEMBLY-VERTICAL-001",
+  "evidence": [
+    { "type": "obs-replay-evidence", "path": "OBS-004-TM-INT-234.json", "verdict": "pass" }
+  ]
+}

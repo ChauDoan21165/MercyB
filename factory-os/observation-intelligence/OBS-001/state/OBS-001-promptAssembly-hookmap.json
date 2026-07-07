@@ -1,0 +1,329 @@
+{
+  "mission": "C2-OBS-INT-PHASE2-001",
+  "step": "OBS-001",
+  "module": "promptAssembly",
+  "code_path": "src/lib/ai-tutor/promptAssembly.ts",
+  "generated_by": "bin/c2-obs-001-gen-hookmap.py",
+  "target_count": 61,
+  "tm_int_ids": [
+    {
+      "tm_int_id": "TM-INT-2197",
+      "axis": "learner-state-routing",
+      "behavior_boundary": "Teacher Mercy spec-only product-gap exact learner-state routing for promptAssembly"
+    },
+    {
+      "tm_int_id": "TM-INT-2198",
+      "axis": "overclaim-prevention",
+      "behavior_boundary": "Teacher Mercy spec-only product-gap overclaim prevention for promptAssembly"
+    },
+    {
+      "tm_int_id": "TM-INT-2199",
+      "axis": "weakness-memory-continuity",
+      "behavior_boundary": "carry weakness memory continuity into the assembled system prompt"
+    },
+    {
+      "tm_int_id": "TM-INT-2200",
+      "axis": "lesson-recommendation-explanation",
+      "behavior_boundary": "explain why a lesson is recommended from learner memory in the assembled prompt"
+    },
+    {
+      "tm_int_id": "TM-INT-2201",
+      "axis": "readiness-policy-boundary",
+      "behavior_boundary": "Teacher Mercy spec-only product-gap readiness policy boundary for promptAssembly"
+    },
+    {
+      "tm_int_id": "TM-INT-2202",
+      "axis": "hint-ladder-escalation",
+      "behavior_boundary": "Teacher Mercy spec-only product-gap hint ladder escalation for promptAssembly"
+    },
+    {
+      "tm_int_id": "TM-INT-2203",
+      "axis": "error-recovery-strategy",
+      "behavior_boundary": "Teacher Mercy spec-only product-gap error recovery strategy for promptAssembly"
+    },
+    {
+      "tm_int_id": "TM-INT-2204",
+      "axis": "suppression-rule-correctness",
+      "behavior_boundary": "Teacher Mercy spec-only product-gap suppression rule correctness for promptAssembly"
+    },
+    {
+      "tm_int_id": "TM-INT-2205",
+      "axis": "follow-up-intelligence-continuity",
+      "behavior_boundary": "Teacher Mercy spec-only product-gap follow-up intelligence continuity for promptAssembly"
+    },
+    {
+      "tm_int_id": "TM-INT-2206",
+      "axis": "vietlish-curated-behavior",
+      "behavior_boundary": "Teacher Mercy spec-only product-gap Vietlish curated response behavior for promptAssembly"
+    },
+    {
+      "tm_int_id": "TM-INT-2207",
+      "axis": "speak-follow-up-replacement",
+      "behavior_boundary": "Teacher Mercy spec-only product-gap Speak follow-up replacement for promptAssembly"
+    },
+    {
+      "tm_int_id": "TM-INT-2208",
+      "axis": "high-stakes-pause-pivot",
+      "behavior_boundary": "Teacher Mercy spec-only product-gap high-stakes pause and pivot behavior for promptAssembly"
+    },
+    {
+      "tm_int_id": "TM-INT-2273",
+      "axis": "readiness-policy-boundary",
+      "behavior_boundary": "blocks duplicate output when prior signal already covers the learner gap"
+    },
+    {
+      "tm_int_id": "TM-INT-2294",
+      "axis": "hint-ladder-escalation",
+      "behavior_boundary": "blocks duplicate output when prior signal already covers the learner gap"
+    },
+    {
+      "tm_int_id": "TM-INT-2315",
+      "axis": "weakness-memory-continuity",
+      "behavior_boundary": "blocks duplicate output when prior signal already covers the learner gap"
+    },
+    {
+      "tm_int_id": "TM-INT-2336",
+      "axis": "lesson-recommendation-explanation",
+      "behavior_boundary": "blocks duplicate output when prior signal already covers the learner gap"
+    },
+    {
+      "tm_int_id": "TM-INT-2357",
+      "axis": "error-recovery-strategy",
+      "behavior_boundary": "blocks duplicate output when prior signal already covers the learner gap"
+    },
+    {
+      "tm_int_id": "TM-INT-2378",
+      "axis": "provider-fallback-boundary",
+      "behavior_boundary": "blocks duplicate output when prior signal already covers the learner gap"
+    },
+    {
+      "tm_int_id": "TM-INT-2399",
+      "axis": "tone-safety-no-overwarmth",
+      "behavior_boundary": "blocks duplicate output when prior signal already covers the learner gap"
+    },
+    {
+      "tm_int_id": "TM-INT-2420",
+      "axis": "self-correction-loop-continuity",
+      "behavior_boundary": "blocks duplicate output when prior signal already covers the learner gap"
+    },
+    {
+      "tm_int_id": "TM-INT-2441",
+      "axis": "retry-deduplication-boundary",
+      "behavior_boundary": "blocks duplicate output when prior signal already covers the learner gap"
+    },
+    {
+      "tm_int_id": "TM-INT-2462",
+      "axis": "student-state-transition",
+      "behavior_boundary": "blocks duplicate output when prior signal already covers the learner gap"
+    },
+    {
+      "tm_int_id": "TM-INT-2483",
+      "axis": "practice-topic-carryover",
+      "behavior_boundary": "blocks duplicate output when prior signal already covers the learner gap"
+    },
+    {
+      "tm_int_id": "TM-INT-2504",
+      "axis": "session-memory-recall",
+      "behavior_boundary": "blocks duplicate output when prior signal already covers the learner gap"
+    },
+    {
+      "tm_int_id": "TM-INT-2525",
+      "axis": "teacher-mercy-minimal-hint",
+      "behavior_boundary": "blocks duplicate output when prior signal already covers the learner gap"
+    },
+    {
+      "tm_int_id": "TM-INT-2546",
+      "axis": "no-fake-confidence",
+      "behavior_boundary": "blocks duplicate output when prior signal already covers the learner gap"
+    },
+    {
+      "tm_int_id": "TM-INT-2567",
+      "axis": "anti-placeholder-output",
+      "behavior_boundary": "blocks duplicate output when prior signal already covers the learner gap"
+    },
+    {
+      "tm_int_id": "TM-INT-2588",
+      "axis": "testable-public-contract",
+      "behavior_boundary": "blocks duplicate output when prior signal already covers the learner gap"
+    },
+    {
+      "tm_int_id": "TM-INT-2609",
+      "axis": "edge-case-empty-input",
+      "behavior_boundary": "blocks duplicate output when prior signal already covers the learner gap"
+    },
+    {
+      "tm_int_id": "TM-INT-2630",
+      "axis": "edge-case-repeated-answer",
+      "behavior_boundary": "blocks duplicate output when prior signal already covers the learner gap"
+    },
+    {
+      "tm_int_id": "TM-INT-2651",
+      "axis": "edge-case-mixed-language",
+      "behavior_boundary": "blocks duplicate output when prior signal already covers the learner gap"
+    },
+    {
+      "tm_int_id": "TM-INT-2672",
+      "axis": "edge-case-stale-memory",
+      "behavior_boundary": "blocks duplicate output when prior signal already covers the learner gap"
+    },
+    {
+      "tm_int_id": "TM-INT-2693",
+      "axis": "conversation-turn-normalization",
+      "behavior_boundary": "blocks duplicate output when prior signal already covers the learner gap"
+    },
+    {
+      "tm_int_id": "TM-INT-2714",
+      "axis": "rubric-signal-preservation",
+      "behavior_boundary": "blocks duplicate output when prior signal already covers the learner gap"
+    },
+    {
+      "tm_int_id": "TM-INT-2735",
+      "axis": "deterministic-output-shape",
+      "behavior_boundary": "blocks duplicate output when prior signal already covers the learner gap"
+    },
+    {
+      "tm_int_id": "TM-INT-2756",
+      "axis": "safe-serialization-boundary",
+      "behavior_boundary": "blocks duplicate output when prior signal already covers the learner gap"
+    },
+    {
+      "tm_int_id": "TM-INT-2777",
+      "axis": "ui-copy-source-of-truth",
+      "behavior_boundary": "blocks duplicate output when prior signal already covers the learner gap"
+    },
+    {
+      "tm_int_id": "TM-INT-2798",
+      "axis": "readiness-policy-boundary",
+      "behavior_boundary": "keeps learner-facing reply specific without inventing product state"
+    },
+    {
+      "tm_int_id": "TM-INT-2819",
+      "axis": "hint-ladder-escalation",
+      "behavior_boundary": "keeps learner-facing reply specific without inventing product state"
+    },
+    {
+      "tm_int_id": "TM-INT-2840",
+      "axis": "weakness-memory-continuity",
+      "behavior_boundary": "keeps learner-facing reply specific without inventing product state"
+    },
+    {
+      "tm_int_id": "TM-INT-2861",
+      "axis": "lesson-recommendation-explanation",
+      "behavior_boundary": "keeps learner-facing reply specific without inventing product state"
+    },
+    {
+      "tm_int_id": "TM-INT-2882",
+      "axis": "error-recovery-strategy",
+      "behavior_boundary": "keeps learner-facing reply specific without inventing product state"
+    },
+    {
+      "tm_int_id": "TM-INT-2903",
+      "axis": "provider-fallback-boundary",
+      "behavior_boundary": "keeps learner-facing reply specific without inventing product state"
+    },
+    {
+      "tm_int_id": "TM-INT-2924",
+      "axis": "tone-safety-no-overwarmth",
+      "behavior_boundary": "keeps learner-facing reply specific without inventing product state"
+    },
+    {
+      "tm_int_id": "TM-INT-2945",
+      "axis": "self-correction-loop-continuity",
+      "behavior_boundary": "keeps learner-facing reply specific without inventing product state"
+    },
+    {
+      "tm_int_id": "TM-INT-2966",
+      "axis": "retry-deduplication-boundary",
+      "behavior_boundary": "keeps learner-facing reply specific without inventing product state"
+    },
+    {
+      "tm_int_id": "TM-INT-2987",
+      "axis": "student-state-transition",
+      "behavior_boundary": "keeps learner-facing reply specific without inventing product state"
+    },
+    {
+      "tm_int_id": "TM-INT-3008",
+      "axis": "practice-topic-carryover",
+      "behavior_boundary": "keeps learner-facing reply specific without inventing product state"
+    },
+    {
+      "tm_int_id": "TM-INT-3029",
+      "axis": "session-memory-recall",
+      "behavior_boundary": "keeps learner-facing reply specific without inventing product state"
+    },
+    {
+      "tm_int_id": "TM-INT-3050",
+      "axis": "teacher-mercy-minimal-hint",
+      "behavior_boundary": "keeps learner-facing reply specific without inventing product state"
+    },
+    {
+      "tm_int_id": "TM-INT-3071",
+      "axis": "no-fake-confidence",
+      "behavior_boundary": "keeps learner-facing reply specific without inventing product state"
+    },
+    {
+      "tm_int_id": "TM-INT-3092",
+      "axis": "anti-placeholder-output",
+      "behavior_boundary": "keeps learner-facing reply specific without inventing product state"
+    },
+    {
+      "tm_int_id": "TM-INT-3113",
+      "axis": "testable-public-contract",
+      "behavior_boundary": "keeps learner-facing reply specific without inventing product state"
+    },
+    {
+      "tm_int_id": "TM-INT-3134",
+      "axis": "edge-case-empty-input",
+      "behavior_boundary": "keeps learner-facing reply specific without inventing product state"
+    },
+    {
+      "tm_int_id": "TM-INT-3155",
+      "axis": "edge-case-repeated-answer",
+      "behavior_boundary": "keeps learner-facing reply specific without inventing product state"
+    },
+    {
+      "tm_int_id": "TM-INT-3176",
+      "axis": "edge-case-mixed-language",
+      "behavior_boundary": "keeps learner-facing reply specific without inventing product state"
+    },
+    {
+      "tm_int_id": "TM-INT-3197",
+      "axis": "edge-case-stale-memory",
+      "behavior_boundary": "keeps learner-facing reply specific without inventing product state"
+    },
+    {
+      "tm_int_id": "TM-INT-3218",
+      "axis": "conversation-turn-normalization",
+      "behavior_boundary": "keeps learner-facing reply specific without inventing product state"
+    },
+    {
+      "tm_int_id": "TM-INT-3239",
+      "axis": "rubric-signal-preservation",
+      "behavior_boundary": "keeps learner-facing reply specific without inventing product state"
+    },
+    {
+      "tm_int_id": "TM-INT-3260",
+      "axis": "deterministic-output-shape",
+      "behavior_boundary": "keeps learner-facing reply specific without inventing product state"
+    },
+    {
+      "tm_int_id": "TM-INT-9999",
+      "axis": "lesson-recommendation-explanation",
+      "behavior_boundary": "explain why a lesson is recommended from learner memory"
+    }
+  ],
+  "covered_anchors": [
+    {
+      "tm_int_id": "TM-INT-234",
+      "probe": "assembleCefrConstraint",
+      "behavior": "P13: injects CEFR vocabulary constraint when cefrLevel present",
+      "covered": true
+    },
+    {
+      "tm_int_id": "TM-INT-235",
+      "probe": "assembleSystemPromptNullCefr",
+      "behavior": "P13b: no CEFR constraint when cefrLevel is null",
+      "covered": true
+    }
+  ]
+}
