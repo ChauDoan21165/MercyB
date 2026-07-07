@@ -959,6 +959,14 @@ reservoir:type-sweep:
 build:
   <<: [*node_job, *local_runner, *app_test_rules]
   stage: test
+  # Same resource_group as the vitest `test` shards: `build` and the shards can
+  # NEVER run concurrently. On the tuned 16 GB Air a lone shard is infra-clean,
+  # but `build` (vite build + tsc) co-running with a shard OOM-killed esbuild —
+  # verified in pipeline 2659287832 (build 16:38:54–16:41:04 overlapped test 1/2,
+  # which died with "The service is no longer running" → 158 files). Serializing
+  # build⇄shards eliminates that specific co-run while keeping concurrent=2 (light
+  # jobs can still pair). Tradeoff: builds serialize project-wide across pipelines.
+  resource_group: local-runner-vitest-shards
   script: *build_script
 
 build:shared-fallback:
