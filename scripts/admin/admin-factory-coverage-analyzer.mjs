@@ -7,8 +7,10 @@ import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
+const REPORTS_ROOT = process.env.ADMIN_FACTORY_REPORTS_ROOT || "/Users/admin/autorun/reports";
+
 const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../..");
-const OUT = path.join("/Users/admin/autorun/reports", "admin-factory-coverage");
+const OUT = path.join(REPORTS_ROOT, "admin-factory-coverage");
 
 function exists(p) { return fs.existsSync(p); }
 function ensureDir(dir) { fs.mkdirSync(dir, { recursive: true }); }
@@ -16,11 +18,11 @@ function readJson(f) { try { return JSON.parse(fs.readFileSync(f, "utf8")); } ca
 
 function loadData() {
   return {
-    execManifest: readJson(path.join("/Users/admin/autorun/reports", "admin-factory-execution-records", "execution-record-manifest.json")),
-    bundleManifest: readJson(path.join("/Users/admin/autorun/reports", "admin-factory-evidence-bundles", "evidence-bundle-manifest.json")),
-    traceLinks: readJson(path.join("/Users/admin/autorun/reports", "admin-factory-traceability-links", "traceability_links.json")),
-    traceMissing: readJson(path.join("/Users/admin/autorun/reports", "admin-factory-traceability-links", "missing_links.json")),
-    gapManifest: readJson(path.join("/Users/admin/autorun/reports", "aak-traceability-gap", "aak-traceability-gap-manifest.json")),
+    execManifest: readJson(path.join(REPORTS_ROOT, "admin-factory-execution-records", "execution-record-manifest.json")),
+    bundleManifest: readJson(path.join(REPORTS_ROOT, "admin-factory-evidence-bundles", "evidence-bundle-manifest.json")),
+    traceLinks: readJson(path.join(REPORTS_ROOT, "admin-factory-traceability-links", "traceability_links.json")),
+    traceMissing: readJson(path.join(REPORTS_ROOT, "admin-factory-traceability-links", "missing_links.json")),
+    gapManifest: readJson(path.join(REPORTS_ROOT, "aak-traceability-gap", "aak-traceability-gap-manifest.json")),
   };
 }
 

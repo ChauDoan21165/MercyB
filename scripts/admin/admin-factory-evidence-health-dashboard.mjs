@@ -7,15 +7,17 @@ import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
+const REPORTS_ROOT = process.env.ADMIN_FACTORY_REPORTS_ROOT || "/Users/admin/autorun/reports";
+
 const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../..");
-const OUT = path.join("/Users/admin/autorun/reports", "admin-factory-evidence-health");
+const OUT = path.join(REPORTS_ROOT, "admin-factory-evidence-health");
 
 function exists(p) { return fs.existsSync(p); }
 function ensureDir(dir) { fs.mkdirSync(dir, { recursive: true }); }
 function readJson(f) { try { return JSON.parse(fs.readFileSync(f, "utf8")); } catch { return null; } }
 
 function loadAll() {
-  const base = "/Users/admin/autorun/reports";
+  const base = REPORTS_ROOT;
   return {
     exec: readJson(path.join(base, "admin-factory-execution-records", "execution-record-manifest.json")),
     bundle: readJson(path.join(base, "admin-factory-evidence-bundles", "evidence-bundle-manifest.json")),

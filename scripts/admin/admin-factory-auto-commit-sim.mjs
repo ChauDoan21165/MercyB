@@ -29,9 +29,11 @@ import path from "node:path";
 import { spawnSync } from "node:child_process";
 import { fileURLToPath } from "node:url";
 
+const REPORTS_ROOT = process.env.ADMIN_FACTORY_REPORTS_ROOT || "/Users/admin/autorun/reports";
+
 const scriptDir = path.dirname(fileURLToPath(import.meta.url));
 const repoRoot = path.resolve(scriptDir, "../..");
-const OUT = path.join("/Users/admin/autorun/reports", "admin-factory-auto-commit-sim");
+const OUT = path.join(REPORTS_ROOT, "admin-factory-auto-commit-sim");
 
 // ---------------------------------------------------------------------------
 // Configuration — forbidden change patterns
@@ -80,7 +82,7 @@ function discoverCompletedJobs() {
   const jobs = [];
 
   // From execution records
-  const execDir = path.join("/Users/admin/autorun/reports", "admin-factory-execution-records");
+  const execDir = path.join(REPORTS_ROOT, "admin-factory-execution-records");
   if (exists(execDir)) {
     for (const f of fs.readdirSync(execDir)) {
       if (!f.startsWith("EXEC-") || !f.endsWith(".json")) continue;
@@ -91,9 +93,9 @@ function discoverCompletedJobs() {
 
   // From fresh workpack reports
   const freshDirs = [
-    path.join("/Users/admin/autorun/reports", "fresh-workpack-1-artifact-inventory"),
-    path.join("/Users/admin/autorun/reports", "fresh-workpack-2-cross-validation"),
-    path.join("/Users/admin/autorun/reports", "fresh-workpack-3-readiness-checklist"),
+    path.join(REPORTS_ROOT, "fresh-workpack-1-artifact-inventory"),
+    path.join(REPORTS_ROOT, "fresh-workpack-2-cross-validation"),
+    path.join(REPORTS_ROOT, "fresh-workpack-3-readiness-checklist"),
   ];
   for (const dir of freshDirs) {
     if (!exists(dir)) continue;
@@ -107,7 +109,7 @@ function discoverCompletedJobs() {
   }
 
   // From evidence bundles
-  const bundleDir = path.join("/Users/admin/autorun/reports", "admin-factory-evidence-bundles");
+  const bundleDir = path.join(REPORTS_ROOT, "admin-factory-evidence-bundles");
   if (exists(bundleDir)) {
     for (const f of fs.readdirSync(bundleDir)) {
       if (!f.startsWith("BUNDLE-") || !f.endsWith(".json")) continue;
@@ -217,8 +219,8 @@ function evaluateSafetyGates(job, gitState) {
   });
 
   // Gate 5: Traceability complete
-  const traceLinks = readJson(path.join("/Users/admin/autorun/reports", "admin-factory-traceability-links", "traceability_links.json"));
-  const traceMissing = readJson(path.join("/Users/admin/autorun/reports", "admin-factory-traceability-links", "missing_links.json"));
+  const traceLinks = readJson(path.join(REPORTS_ROOT, "admin-factory-traceability-links", "traceability_links.json"));
+  const traceMissing = readJson(path.join(REPORTS_ROOT, "admin-factory-traceability-links", "missing_links.json"));
   const traceabilityComplete = (traceMissing?.count || 0) === 0 && (traceLinks?.links?.length || 0) > 0;
   gates.push({
     gate: 5, name: "traceability_complete",

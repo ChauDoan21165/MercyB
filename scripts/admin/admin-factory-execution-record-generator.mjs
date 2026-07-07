@@ -10,9 +10,11 @@ import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
+const REPORTS_ROOT = process.env.ADMIN_FACTORY_REPORTS_ROOT || "/Users/admin/autorun/reports";
+
 const scriptDir = path.dirname(fileURLToPath(import.meta.url));
 const repoRoot = path.resolve(scriptDir, "../..");
-const OUT = path.join("/Users/admin/autorun/reports", "admin-factory-execution-records");
+const OUT = path.join(REPORTS_ROOT, "admin-factory-execution-records");
 
 function exists(p) { return fs.existsSync(p); }
 function ensureDir(dir) { fs.mkdirSync(dir, { recursive: true }); }
@@ -48,7 +50,7 @@ function discoverEipPackages() {
 
 function discoverRelatedArtifacts(pkgId) {
   const artifacts = [];
-  const reportsDir = path.join("/Users/admin/autorun/reports");
+  const reportsDir = path.join(REPORTS_ROOT);
   if (!exists(reportsDir)) return artifacts;
   const walk = (dir, depth) => {
     if (depth > 2) return;
@@ -77,9 +79,9 @@ function generateExecutionRecord(pkg) {
 
   // Find validation reports
   const validationReports = [];
-  const traceManifest = path.join("/Users/admin/autorun/reports", "aak-traceability-gap", "aak-traceability-gap-manifest.json");
+  const traceManifest = path.join(REPORTS_ROOT, "aak-traceability-gap", "aak-traceability-gap-manifest.json");
   if (exists(traceManifest)) validationReports.push({ path: traceManifest, type: "traceability_gap" });
-  const aakReport = path.join("/Users/admin/autorun/reports", "aak-ci-advisory", "aak-ci-advisory-report.json");
+  const aakReport = path.join(REPORTS_ROOT, "aak-ci-advisory", "aak-ci-advisory-report.json");
   if (exists(aakReport)) validationReports.push({ path: aakReport, type: "aak_advisory" });
 
   const record = {

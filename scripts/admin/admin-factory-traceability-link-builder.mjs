@@ -9,10 +9,12 @@ import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
+const REPORTS_ROOT = process.env.ADMIN_FACTORY_REPORTS_ROOT || "/Users/admin/autorun/reports";
+
 const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../..");
-const EXEC_DIR = path.join("/Users/admin/autorun/reports", "admin-factory-execution-records");
-const BUNDLE_DIR = path.join("/Users/admin/autorun/reports", "admin-factory-evidence-bundles");
-const OUT = path.join("/Users/admin/autorun/reports", "admin-factory-traceability-links");
+const EXEC_DIR = path.join(REPORTS_ROOT, "admin-factory-execution-records");
+const BUNDLE_DIR = path.join(REPORTS_ROOT, "admin-factory-evidence-bundles");
+const OUT = path.join(REPORTS_ROOT, "admin-factory-traceability-links");
 
 function exists(p) { return fs.existsSync(p); }
 function ensureDir(dir) { fs.mkdirSync(dir, { recursive: true }); }
