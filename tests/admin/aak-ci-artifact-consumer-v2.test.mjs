@@ -60,9 +60,30 @@ describe("AAK-CI-ARTIFACT-CONSUMER-001 (v2)", () => {
     });
 
     it("finds real artifacts from scan roots", () => {
-      const r = runScript(["--discover"]);
-      if (r.parsed.total_discovered < 1) {
-        throw new Error(`No artifacts discovered (total_discovered=${r.parsed.total_discovered})`);
+      // Hermetic: seed a fixture artifact into a scanned root (reports/) so
+      // discovery finds >=1 deterministically in a CLEAN checkout, instead of
+      // relying on ambient repo artifacts (which are generated at runtime and
+      // gitignored, so absent in CI). Cleaned up in finally → zero residue.
+      const reportsRoot = path.join(repoRoot, "reports");
+      const reportsPreExisted = fs.existsSync(reportsRoot);
+      fs.mkdirSync(reportsRoot, { recursive: true });
+      const fixtureDir = fs.mkdtempSync(path.join(reportsRoot, "aak-hermetic-fixture-"));
+      try {
+        fs.writeFileSync(
+          path.join(fixtureDir, "aak-ci-advisory-report.json"),
+          JSON.stringify({ ok: true, mode: "ADVISORY_ONLY", blocking: false, summary: { checks_run: 1, advisory_pass: 1, advisory_fail: 0, skipped: 0 } }),
+        );
+        const r = runScript(["--discover"]);
+        if (!r.parsed) throw new Error(`No JSON output. stderr: ${r.stderr}`);
+        if (r.parsed.total_discovered < 1) {
+          throw new Error(`No artifacts discovered (total_discovered=${r.parsed.total_discovered})`);
+        }
+      } finally {
+        fs.rmSync(fixtureDir, { recursive: true, force: true });
+        // Only remove reports/ if we created it and it is now empty.
+        if (!reportsPreExisted) {
+          try { fs.rmdirSync(reportsRoot); } catch { /* not empty — leave as-is */ }
+        }
       }
     });
 

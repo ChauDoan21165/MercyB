@@ -9,8 +9,10 @@ import path from "node:path";
 import { spawnSync } from "node:child_process";
 import { fileURLToPath } from "node:url";
 
+const REPORTS_ROOT = process.env.ADMIN_FACTORY_REPORTS_ROOT || "/Users/admin/autorun/reports";
+
 const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../..");
-const OUT = path.join("/Users/admin/autorun/reports/fresh-workpack-2-cross-validation");
+const OUT = path.join(REPORTS_ROOT, "fresh-workpack-2-cross-validation");
 
 function exists(p) { return fs.existsSync(p); }
 function ensureDir(dir) { fs.mkdirSync(dir, { recursive: true }); }

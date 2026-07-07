@@ -739,7 +739,18 @@ variables:
         exit 1
         ;;
     esac
-  - npx vitest run --shard=$CI_NODE_INDEX/$CI_NODE_TOTAL --maxWorkers=2
+  # --maxWorkers=1 (was 2): the macOS shell runner is `concurrent = 5`
+  # with no memory isolation, so both `parallel: 2` test shards (plus
+  # other test-stage jobs) share one 16 GB host. At 2 workers/shard the
+  # combined vitest forks + their native esbuild service children
+  # oversubscribe RAM; under pressure macOS kills an esbuild service and
+  # every in-flight `vite:esbuild` transform fails with "The service is
+  # no longer running", cascading to hundreds of false test failures
+  # (see pipeline 2658090361: test 1/2 = 434 files failed / test 2/2
+  # green). Halving to 1 worker/shard cuts the concurrent esbuild service
+  # count and RAM footprint. A NODE_OPTIONS heap bump would NOT help —
+  # the esbuild service is a native child process, not V8 heap.
+  - npx vitest run --shard=$CI_NODE_INDEX/$CI_NODE_TOTAL --maxWorkers=1
 
 .ai_tutor_quality_gate_script: &ai_tutor_quality_gate_script
   - npm run test:ai-tutor-golden-flow
@@ -948,6 +959,14 @@ reservoir:type-sweep:
 build:
   <<: [*node_job, *local_runner, *app_test_rules]
   stage: test
+  # Same resource_group as the vitest `test` shards: `build` and the shards can
+  # NEVER run concurrently. On the tuned 16 GB Air a lone shard is infra-clean,
+  # but `build` (vite build + tsc) co-running with a shard OOM-killed esbuild —
+  # verified in pipeline 2659287832 (build 16:38:54–16:41:04 overlapped test 1/2,
+  # which died with "The service is no longer running" → 158 files). Serializing
+  # build⇄shards eliminates that specific co-run while keeping concurrent=2 (light
+  # jobs can still pair). Tradeoff: builds serialize project-wide across pipelines.
+  resource_group: local-runner-vitest-shards
   script: *build_script
 
 build:shared-fallback:
@@ -982,6 +1001,45 @@ test:
   <<: [*node_job, *local_runner, *app_test_rules_hotfix_lane]
   stage: test
   parallel: 2
+  # resource_group serializes the two `parallel: 2` shards so they never run
+  # AT THE SAME TIME on the single, memory-unisolated macOS runner (concurrent=5,
+  # 16 GB). Co-running shards were the shared root cause of BOTH intermittent
+  # failures — verified on pipeline 2658374072 (SHA d8beca57):
+  #   * shard 1 → macOS OOM-kills an esbuild service under combined RAM pressure
+  #     → "The service is no longer running" cascades to hundreds of files.
+  #     (--maxWorkers=1 reduced but did NOT eliminate this; NOT a version
+  #     mismatch — the vite esbuild host 0.25.12 matches its 0.25.12 binary and
+  #     the error is "service died", not "Host version does not match binary".)
+  #   * shard 2 → two concurrent `npx playwright install chromium` writes race the
+  #     shared ~/Library/Caches/ms-playwright cache, leaving chromium-headless-shell
+  #     absent → "browserType.launch: Executable doesn't exist … chrome-headless-shell".
+  # Serializing the shards removes both the RAM oversubscription and the cache race
+  # with one deterministic knob. Keep --maxWorkers=1 (belt-and-suspenders, no harm).
+  resource_group: local-runner-vitest-shards
+  # PIN to the single tuned host. The self-hosted Mac fleet is several separate
+  # physical machines all sharing the `local,mac,mercyb` tags, so test shards
+  # scattered onto untuned hosts (concurrent=5) and still OOM-killed esbuild —
+  # verified in pipeline 2658734561 (test 2/2 landed on the untuned mac-runner-3).
+  # Only THIS host's runner (mac-runner-2) carries `mercyb-tuned` (concurrent=2),
+  # so requiring that tag confines every test shard to the tuned Air. This
+  # OVERRIDES the `tags` merged from *local_runner for the test job ONLY — all
+  # other jobs keep the fleet-wide `local,mac,mercyb` tags and still distribute.
+  # Tradeoff: all test load funnels onto one Air → slower runs. Reliability > speed.
+  tags:
+    - local
+    - mac
+    - mercyb
+    - isolated-builds
+    - mercyb-tuned
+  # Belt-and-suspenders for the intermittent esbuild-service OOM. The tuned Air is
+  # now concurrent=1 (whole-machine serial: no build/lint/other job ever co-runs
+  # with a shard), which removes the deterministic co-run OOM. Non-CI background
+  # load on the 16 GB host can still occasionally jetsam-kill an esbuild service;
+  # a script_failure retry lands a green shard without manual intervention.
+  retry:
+    max: 2
+    when:
+      - script_failure
   cache:
     <<: *npm_cache_def
     policy: pull
