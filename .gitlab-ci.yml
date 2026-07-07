@@ -739,7 +739,18 @@ variables:
         exit 1
         ;;
     esac
-  - npx vitest run --shard=$CI_NODE_INDEX/$CI_NODE_TOTAL --maxWorkers=2
+  # --maxWorkers=1 (was 2): the macOS shell runner is `concurrent = 5`
+  # with no memory isolation, so both `parallel: 2` test shards (plus
+  # other test-stage jobs) share one 16 GB host. At 2 workers/shard the
+  # combined vitest forks + their native esbuild service children
+  # oversubscribe RAM; under pressure macOS kills an esbuild service and
+  # every in-flight `vite:esbuild` transform fails with "The service is
+  # no longer running", cascading to hundreds of false test failures
+  # (see pipeline 2658090361: test 1/2 = 434 files failed / test 2/2
+  # green). Halving to 1 worker/shard cuts the concurrent esbuild service
+  # count and RAM footprint. A NODE_OPTIONS heap bump would NOT help —
+  # the esbuild service is a native child process, not V8 heap.
+  - npx vitest run --shard=$CI_NODE_INDEX/$CI_NODE_TOTAL --maxWorkers=1
 
 .ai_tutor_quality_gate_script: &ai_tutor_quality_gate_script
   - npm run test:ai-tutor-golden-flow
