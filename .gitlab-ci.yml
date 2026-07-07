@@ -993,6 +993,21 @@ test:
   <<: [*node_job, *local_runner, *app_test_rules_hotfix_lane]
   stage: test
   parallel: 2
+  # resource_group serializes the two `parallel: 2` shards so they never run
+  # AT THE SAME TIME on the single, memory-unisolated macOS runner (concurrent=5,
+  # 16 GB). Co-running shards were the shared root cause of BOTH intermittent
+  # failures — verified on pipeline 2658374072 (SHA d8beca57):
+  #   * shard 1 → macOS OOM-kills an esbuild service under combined RAM pressure
+  #     → "The service is no longer running" cascades to hundreds of files.
+  #     (--maxWorkers=1 reduced but did NOT eliminate this; NOT a version
+  #     mismatch — the vite esbuild host 0.25.12 matches its 0.25.12 binary and
+  #     the error is "service died", not "Host version does not match binary".)
+  #   * shard 2 → two concurrent `npx playwright install chromium` writes race the
+  #     shared ~/Library/Caches/ms-playwright cache, leaving chromium-headless-shell
+  #     absent → "browserType.launch: Executable doesn't exist … chrome-headless-shell".
+  # Serializing the shards removes both the RAM oversubscription and the cache race
+  # with one deterministic knob. Keep --maxWorkers=1 (belt-and-suspenders, no harm).
+  resource_group: local-runner-vitest-shards
   cache:
     <<: *npm_cache_def
     policy: pull
