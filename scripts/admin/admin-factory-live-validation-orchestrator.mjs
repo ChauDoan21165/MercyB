@@ -10,9 +10,11 @@ import path from "node:path";
 import { spawnSync } from "node:child_process";
 import { fileURLToPath } from "node:url";
 
+const REPORTS_ROOT = process.env.ADMIN_FACTORY_REPORTS_ROOT || "/Users/admin/autorun/reports";
+
 const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../..");
 const SCRIPTS = path.join(repoRoot, "scripts/admin");
-const OUT = path.join("/Users/admin/autorun/reports", "admin-factory-live-validation");
+const OUT = path.join(REPORTS_ROOT, "admin-factory-live-validation");
 
 function exists(p) { return fs.existsSync(p); }
 function ensureDir(dir) { fs.mkdirSync(dir, { recursive: true }); }
@@ -45,28 +47,28 @@ function verifyEvidenceForWorkpack(wpId, stepResults) {
   const proof = { workpack_id: wpId, checks: {} };
 
   // Check 1: execution record exists
-  const execManifest = readJson(path.join("/Users/admin/autorun/reports", "admin-factory-execution-records", "execution-record-manifest.json"));
+  const execManifest = readJson(path.join(REPORTS_ROOT, "admin-factory-execution-records", "execution-record-manifest.json"));
   proof.checks.execution_record = { pass: (execManifest?.records_generated || 0) > 0, detail: `${execManifest?.records_generated || 0} records` };
 
   // Check 2: evidence bundle exists
-  const bundleManifest = readJson(path.join("/Users/admin/autorun/reports", "admin-factory-evidence-bundles", "evidence-bundle-manifest.json"));
+  const bundleManifest = readJson(path.join(REPORTS_ROOT, "admin-factory-evidence-bundles", "evidence-bundle-manifest.json"));
   proof.checks.evidence_bundle = { pass: (bundleManifest?.bundles_generated || 0) > 0, detail: `${bundleManifest?.bundles_generated || 0} bundles` };
 
   // Check 3: traceability links built
-  const traceLinks = readJson(path.join("/Users/admin/autorun/reports", "admin-factory-traceability-links", "traceability_links.json"));
-  const traceMissing = readJson(path.join("/Users/admin/autorun/reports", "admin-factory-traceability-links", "missing_links.json"));
+  const traceLinks = readJson(path.join(REPORTS_ROOT, "admin-factory-traceability-links", "traceability_links.json"));
+  const traceMissing = readJson(path.join(REPORTS_ROOT, "admin-factory-traceability-links", "missing_links.json"));
   proof.checks.traceability = { pass: (traceLinks?.links?.length || 0) > 0 && (traceMissing?.count || 0) === 0, detail: `${traceLinks?.links?.length || 0} links, ${traceMissing?.count || 0} missing` };
 
   // Check 4: coverage updated
-  const coverage = readJson(path.join("/Users/admin/autorun/reports", "admin-factory-coverage", "coverage_dashboard.json"));
+  const coverage = readJson(path.join(REPORTS_ROOT, "admin-factory-coverage", "coverage_dashboard.json"));
   proof.checks.coverage = { pass: (coverage?.overall?.coverage_pct || 0) >= 100, detail: `coverage=${coverage?.overall?.coverage_pct || 0}%` };
 
   // Check 5: judge package prepared
-  const judgeManifest = readJson(path.join("/Users/admin/autorun/reports", "admin-factory-judge-packages", "judge-package-manifest.json"));
+  const judgeManifest = readJson(path.join(REPORTS_ROOT, "admin-factory-judge-packages", "judge-package-manifest.json"));
   proof.checks.judge_package = { pass: (judgeManifest?.judge_ready || 0) > 0, detail: `${judgeManifest?.judge_ready || 0}/${judgeManifest?.total_packages || 0} ready` };
 
   // Check 6: evidence health dashboard includes new data
-  const evHealth = readJson(path.join("/Users/admin/autorun/reports", "admin-factory-evidence-health", "evidence-health-dashboard.json"));
+  const evHealth = readJson(path.join(REPORTS_ROOT, "admin-factory-evidence-health", "evidence-health-dashboard.json"));
   proof.checks.evidence_health = { pass: (evHealth?.evidence_health?.score || 0) >= 75, detail: `score=${evHealth?.evidence_health?.score || 0}` };
 
   // Check 7: pipeline steps all succeeded
@@ -105,7 +107,7 @@ function main() {
   }
 
   // Final evidence health
-  const finalHealth = readJson(path.join("/Users/admin/autorun/reports", "admin-factory-evidence-health", "evidence-health-dashboard.json"));
+  const finalHealth = readJson(path.join(REPORTS_ROOT, "admin-factory-evidence-health", "evidence-health-dashboard.json"));
   const allProofsPass = validationLog.proofs.every((p) => p.all_pass);
   const allWorkpacksOk = validationLog.workpack_runs.every((r) => r.ok);
 

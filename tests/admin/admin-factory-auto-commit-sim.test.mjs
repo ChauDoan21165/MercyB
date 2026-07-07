@@ -1,7 +1,7 @@
 /**
  * ADMIN-FACTORY-LEVEL3A-AUTO-COMMIT-SIMULATION-001 — Tests
  */
-import { describe, it } from "vitest";
+import { describe, it, afterEach } from "vitest";
 import { spawnSync } from "node:child_process";
 import fs from "node:fs";
 import path from "node:path";
@@ -11,12 +11,40 @@ import os from "node:os";
 const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../..");
 const sp = path.join(repoRoot, "scripts/admin/admin-factory-auto-commit-sim.mjs");
 
+const created = [];
+
+// Hermetic: point the simulator at a unique tmp reports-root (via
+// ADMIN_FACTORY_REPORTS_ROOT) and seed ONE completed fresh-workpack job there,
+// so the test drives OUR fixture — never ambient /Users/admin state.
+// Deterministic on any machine. Cleaned up in afterEach → zero residue.
 function run() {
-  const d = fs.mkdtempSync(path.join(os.tmpdir(), "auto-commit-sim-"));
-  const r = spawnSync(process.execPath, [sp, d], { encoding: "utf8", cwd: repoRoot });
+  const root = fs.mkdtempSync(path.join(os.tmpdir(), "auto-commit-sim-"));
+  created.push(root);
+  const wpDir = path.join(root, "fresh-workpack-1-artifact-inventory");
+  fs.mkdirSync(wpDir, { recursive: true });
+  fs.writeFileSync(
+    path.join(wpDir, "wp1.json"),
+    JSON.stringify({
+      workpack_id: "WP-HERMETIC-1",
+      title: "hermetic fixture workpack",
+      mutation_level: "read_only",
+      status: "validated",
+      ok: true,
+      simulation: true,
+    }),
+  );
+  const r = spawnSync(process.execPath, [sp, root], {
+    encoding: "utf8",
+    cwd: repoRoot,
+    env: { ...process.env, ADMIN_FACTORY_REPORTS_ROOT: root },
+  });
   let p = null; try { p = JSON.parse((r.stdout || "").trim()); } catch { /* */ }
-  return { ...r, parsed: p, tmpDir: d };
+  return { ...r, parsed: p, tmpDir: root };
 }
+
+afterEach(() => {
+  for (const d of created.splice(0)) fs.rmSync(d, { recursive: true, force: true });
+});
 
 function readArtifact(d, f) {
   const fp = path.join(d, f);

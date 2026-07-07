@@ -15,8 +15,10 @@ import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
+const REPORTS_ROOT = process.env.ADMIN_FACTORY_REPORTS_ROOT || "/Users/admin/autorun/reports";
+
 const scriptDir = path.dirname(fileURLToPath(import.meta.url));
-const DEFAULT_OUTPUT_DIR = path.join("/Users/admin/autorun/reports", "admin-factory-human-gate-analyzer");
+const DEFAULT_OUTPUT_DIR = path.join(REPORTS_ROOT, "admin-factory-human-gate-analyzer");
 
 function exists(p) { return fs.existsSync(p); }
 function ensureDir(dir) { fs.mkdirSync(dir, { recursive: true }); }
@@ -35,12 +37,12 @@ const CATEGORY_DETERMINISM_POTENTIAL = {
 };
 
 function loadEscalatorData() {
-  const p = path.join("/Users/admin/autorun/reports", "admin-factory-exception-escalator", "exception-escalator-manifest.json");
+  const p = path.join(REPORTS_ROOT, "admin-factory-exception-escalator", "exception-escalator-manifest.json");
   return exists(p) ? readJson(p) : null;
 }
 
 function analyzeGates(escalatorData) {
-  if (!escalatorData?.results) return { categories: {}, summary: { total_gates: 0, potentially_deterministic: 0, always_requires_human: 0 } };
+  if (!escalatorData?.results) return { categories: [], summary: { total_gates: 0, total_categories: 0, potentially_deterministic: 0, always_requires_human: 0, determinism_potential_pct: 0, human_required_pct: 0 } };
 
   const escalated = escalatorData.results.filter((r) => r.classification === "HUMAN_GATE_REQUIRED");
   const byCategory = {};

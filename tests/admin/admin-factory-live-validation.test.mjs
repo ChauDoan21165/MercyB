@@ -1,4 +1,4 @@
-import { describe, it } from "vitest";
+import { describe, it, afterEach } from "vitest";
 import { spawnSync } from "node:child_process";
 import fs from "node:fs";
 import path from "node:path";
@@ -11,11 +11,44 @@ const wp1 = path.join(repoRoot, "scripts/admin/admin-factory-fresh-wp1-artifact-
 const wp2 = path.join(repoRoot, "scripts/admin/admin-factory-fresh-wp2-cross-validation.mjs");
 const wp3 = path.join(repoRoot, "scripts/admin/admin-factory-fresh-wp3-readiness-checklist.mjs");
 
+const created = [];
+
+// Hermetic: give every run its own tmp reports-root (via ADMIN_FACTORY_REPORTS_ROOT)
+// and seed a small artifact set there, so the evidence pipeline the orchestrator
+// drives (execution-record → bundle → traceability → coverage → judge → health)
+// produces non-empty, healthy evidence from the FIRST iteration — deterministically,
+// on any machine, never touching ambient /Users/admin state. Cleaned up in
+// afterEach → zero residue.
+function seedArtifacts(root) {
+  const dir = path.join(root, "seed-artifacts");
+  fs.mkdirSync(dir, { recursive: true });
+  // Files contain "manifest"/"report" + the EIP fixture package id so the record
+  // generator's artifact discovery treats them as related evidence (non-empty bundle).
+  for (let i = 1; i <= 5; i++) {
+    fs.writeFileSync(
+      path.join(dir, `artifact-${i}-manifest.json`),
+      JSON.stringify({ package_id: "EIPC-PKG-001", kind: "manifest", report: `seed artifact ${i}`, artifact_count: 3 }),
+    );
+  }
+}
+
 function run(script) {
-  const r = spawnSync(process.execPath, [script], { encoding: "utf8", cwd: repoRoot, timeout: 120000 });
+  const root = fs.mkdtempSync(path.join(os.tmpdir(), "l2lv-"));
+  created.push(root);
+  seedArtifacts(root);
+  const r = spawnSync(process.execPath, [script], {
+    encoding: "utf8",
+    cwd: repoRoot,
+    timeout: 120000,
+    env: { ...process.env, ADMIN_FACTORY_REPORTS_ROOT: root },
+  });
   let p = null; try { p = JSON.parse((r.stdout || "").trim()); } catch { /* */ }
   return { ok: r.status === 0, parsed: p };
 }
+
+afterEach(() => {
+  for (const d of created.splice(0)) fs.rmSync(d, { recursive: true, force: true });
+});
 
 describe("LIVE-VALIDATION", () => {
   describe("fresh workpacks execute", () => {

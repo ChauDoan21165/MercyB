@@ -9,15 +9,17 @@ import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
+const REPORTS_ROOT = process.env.ADMIN_FACTORY_REPORTS_ROOT || "/Users/admin/autorun/reports";
+
 const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../..");
-const OUT = path.join("/Users/admin/autorun/reports/fresh-workpack-1-artifact-inventory");
+const OUT = path.join(REPORTS_ROOT, "fresh-workpack-1-artifact-inventory");
 
 function exists(p) { return fs.existsSync(p); }
 function ensureDir(dir) { fs.mkdirSync(dir, { recursive: true }); }
 function sha256(s) { return crypto.createHash("sha256").update(s).digest("hex"); }
 
 const SCAN_ROOTS = [
-  "/Users/admin/autorun/reports",
+  REPORTS_ROOT,
   path.join(repoRoot, "state/packets"),
   path.join(repoRoot, "artifacts"),
   path.join(repoRoot, "fixtures/admin"),

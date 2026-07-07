@@ -16,9 +16,11 @@ import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
+const REPORTS_ROOT = process.env.ADMIN_FACTORY_REPORTS_ROOT || "/Users/admin/autorun/reports";
+
 const scriptDir = path.dirname(fileURLToPath(import.meta.url));
 const repoRoot = path.resolve(scriptDir, "../..");
-const DEFAULT_OUTPUT_DIR = path.join("/Users/admin/autorun/reports", "admin-factory-traceability-closure");
+const DEFAULT_OUTPUT_DIR = path.join(REPORTS_ROOT, "admin-factory-traceability-closure");
 
 function exists(p) { return fs.existsSync(p); }
 function ensureDir(dir) { fs.mkdirSync(dir, { recursive: true }); }
@@ -70,13 +72,13 @@ const NODE_AUTO_FIXABLE = {
 // ---------------------------------------------------------------------------
 
 function loadTraceabilityGaps() {
-  const p = path.join("/Users/admin/autorun/reports", "aak-traceability-gap", "aak-traceability-gap-manifest.json");
+  const p = path.join(REPORTS_ROOT, "aak-traceability-gap", "aak-traceability-gap-manifest.json");
   if (!exists(p)) return null;
   return readJson(p);
 }
 
 function classifyGaps(gapManifest) {
-  if (!gapManifest?.package_gaps) return { edges: [], nodes: [], summary: { total_gaps: 0, auto_fixable: 0, requires_human: 0 } };
+  if (!gapManifest?.package_gaps) return { edges: [], nodes: [], by_edge_type: [], summary: { total_edge_gaps: 0, total_node_gaps: 0, total_gaps: 0, auto_fixable: 0, requires_human: 0 } };
 
   const edgeGaps = [];
   const nodeGaps = [];
