@@ -1,0 +1,23 @@
+{
+  "package_id": "EIPC-PKG-001",
+  "execution_id": "EXEC-001",
+  "contract_id": "CONTRACT-EIPC-001",
+  "contract_version": "1.1.0",
+  "contract_profile": "standard",
+  "capability_refs": ["CAPABILITY-ROW-MERGE"],
+  "decision_lineage_id": "LINEAGE-001",
+  "mutation_level": "dry_run",
+  "risk_level": "low",
+  "status": "draft",
+  "evidence_refs": ["artifact://evidence/eipc/001"],
+  "confidence_metrics": {
+    "overall": 88,
+    "evidence": 90,
+    "decision": 84,
+    "capability": 86,
+    "learning": 80
+  },
+  "supersedes_package_id": null,
+  "superseded_by_package_id": null,
+  "supersession_reason": null
+}

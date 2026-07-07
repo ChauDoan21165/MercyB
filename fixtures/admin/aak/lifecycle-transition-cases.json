@@ -1,0 +1,24 @@
+{
+  "case_set_id": "aak-lifecycle-transition-validation-cases",
+  "version": "1.0.0",
+  "cases": [
+    {
+      "case_id": "valid-planning-approved-to-engineering-validated",
+      "execution_record_file": "fixtures/admin/aak/lifecycle-valid.json",
+      "expected_ok": true,
+      "expected_diagnostics": []
+    },
+    {
+      "case_id": "invalid-allowed-transition-missing-artifacts",
+      "execution_record_file": "fixtures/admin/aak/lifecycle-invalid.json",
+      "expected_ok": false,
+      "expected_diagnostics": ["LIFECYCLE_ARTIFACT_REQUIRED"]
+    },
+    {
+      "case_id": "invalid-transition-not-allowed",
+      "execution_record_file": "fixtures/admin/aak/lifecycle-invalid-transition.json",
+      "expected_ok": false,
+      "expected_diagnostics": ["LIFECYCLE_TRANSITION_NOT_ALLOWED"]
+    }
+  ]
+}

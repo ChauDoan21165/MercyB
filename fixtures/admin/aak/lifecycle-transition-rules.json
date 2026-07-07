@@ -1,0 +1,36 @@
+{
+  "rule_set_id": "aak-lifecycle-transition-rules",
+  "version": "1.0.0",
+  "mode": "ADVISORY_VALIDATION_ONLY",
+  "transitions": [
+    {
+      "transition": "DRAFT->PLANNING_APPROVED",
+      "from": "DRAFT",
+      "to": "PLANNING_APPROVED",
+      "required_artifacts": ["owner_team"],
+      "diagnostic_code": "LIFECYCLE_DRAFT_APPROVAL_EVIDENCE_REQUIRED",
+      "description": "Draft packages may move into planning approval only when an owner team is attached."
+    },
+    {
+      "transition": "ENGINEERING_VALIDATED->JUDGE_REVIEWED",
+      "from": "ENGINEERING_VALIDATED",
+      "to": "JUDGE_REVIEWED",
+      "required_artifacts": ["evidence_bundle_ref", "judge_package_ref"],
+      "diagnostic_code": "LIFECYCLE_JUDGE_REVIEW_EVIDENCE_REQUIRED",
+      "description": "Engineering-validated packages may move to judge review only when judge and evidence bundle references are attached."
+    },
+    {
+      "transition": "PLANNING_APPROVED->ENGINEERING_VALIDATED",
+      "from": "PLANNING_APPROVED",
+      "to": "ENGINEERING_VALIDATED",
+      "required_artifacts": ["execution_record_ref", "rollback_ref", "validation_report_ref"],
+      "diagnostic_code": "LIFECYCLE_ENGINEERING_VALIDATION_EVIDENCE_REQUIRED",
+      "description": "Planning-approved packages may move to engineering validated only when validation, execution, and rollback evidence is attached."
+    }
+  ],
+  "diagnostics": {
+    "LIFECYCLE_TRANSITION_MISSING": "The execution record must provide transition.from and transition.to.",
+    "LIFECYCLE_TRANSITION_NOT_ALLOWED": "The requested lifecycle transition is not in this deterministic rule set.",
+    "LIFECYCLE_ARTIFACT_REQUIRED": "The execution record is missing an artifact required by the allowed transition."
+  }
+}

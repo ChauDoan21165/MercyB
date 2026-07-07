@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://mercyb.local/schemas/oii-scorecard-v1.schema.json",
+  "title": "Organizational Improvement Intelligence Scorecard v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "engineering_health",
+    "evidence_health",
+    "decision_health",
+    "capability_health",
+    "learning_health"
+  ],
+  "properties": {
+    "engineering_health": { "type": "number", "minimum": 0, "maximum": 100 },
+    "evidence_health": { "type": "number", "minimum": 0, "maximum": 100 },
+    "decision_health": { "type": "number", "minimum": 0, "maximum": 100 },
+    "capability_health": { "type": "number", "minimum": 0, "maximum": 100 },
+    "learning_health": { "type": "number", "minimum": 0, "maximum": 100 }
+  }
+}

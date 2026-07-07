@@ -1,0 +1,9 @@
+{
+  "package_id": "EIPC-PKG-001",
+  "execution_id": "EXEC-INVALID-TRANSITION-001",
+  "transition": {
+    "from": "DRAFT",
+    "to": "JUDGE_REVIEWED"
+  },
+  "owner_team": "Admin"
+}

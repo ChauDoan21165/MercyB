@@ -51,6 +51,13 @@ Any change above `concurrent = 2` requires updating `docs/ops/mac-runner-node-mo
 
 ## Application Learning Components
 
+### Cell Runtime v1 contracts
+
+- Repo contracts: `docs/cell-runtime/v1/`.
+- Validation script: `scripts/cell-runtime-contracts/v1/validate-cell-runtime-contracts.mjs`.
+- Purpose: contract-only schema/interface seed for MercyB anatomy objects, multi-graph edges, and deterministic reasoning results.
+- Status: C3 hardening package only; no runtime imports, no product behavior changes, and no generated Admin inventory snapshots.
+
 ### Adaptive mastery engine V1
 
 - Repo implementation: `src/lib/mastery/`.

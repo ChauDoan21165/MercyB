@@ -1,0 +1,69 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://mercyb.local/schemas/eipc-v1.1.schema.json",
+  "title": "Engineering Improvement Package Contract v1.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "package_id",
+    "execution_id",
+    "contract_id",
+    "contract_version",
+    "contract_profile",
+    "capability_refs",
+    "decision_lineage_id",
+    "mutation_level",
+    "risk_level",
+    "status",
+    "evidence_refs",
+    "confidence_metrics",
+    "supersedes_package_id",
+    "superseded_by_package_id",
+    "supersession_reason"
+  ],
+  "properties": {
+    "package_id": { "type": "string", "minLength": 1 },
+    "execution_id": { "type": "string", "minLength": 1 },
+    "contract_id": { "type": "string", "minLength": 1 },
+    "contract_version": { "type": "string", "minLength": 1 },
+    "contract_profile": { "type": "string", "minLength": 1 },
+    "capability_refs": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "decision_lineage_id": { "type": "string", "minLength": 1 },
+    "mutation_level": {
+      "type": "string",
+      "enum": ["read_only", "dry_run", "metadata_only", "contract_only", "patch_ready"]
+    },
+    "risk_level": {
+      "type": "string",
+      "enum": ["low", "medium", "high", "critical"]
+    },
+    "status": {
+      "type": "string",
+      "enum": ["draft", "validated", "approved", "superseded", "archived"]
+    },
+    "evidence_refs": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "confidence_metrics": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["overall", "evidence", "decision", "capability", "learning"],
+      "properties": {
+        "overall": { "type": "number", "minimum": 0, "maximum": 100 },
+        "evidence": { "type": "number", "minimum": 0, "maximum": 100 },
+        "decision": { "type": "number", "minimum": 0, "maximum": 100 },
+        "capability": { "type": "number", "minimum": 0, "maximum": 100 },
+        "learning": { "type": "number", "minimum": 0, "maximum": 100 }
+      }
+    },
+    "supersedes_package_id": { "type": ["string", "null"] },
+    "superseded_by_package_id": { "type": ["string", "null"] },
+    "supersession_reason": { "type": ["string", "null"] }
+  }
+}
