@@ -1,12 +1,15 @@
-import { beforeEach, describe, expect, it } from "vitest";
+import { beforeEach, describe, expect, it, vi } from "vitest";
 import {
+  ackEvents,
   clearLearningEvents,
   getLearningEventSummary,
   getLearningEvents,
   getLearningEventsSessionKey,
   getLearningEventsStorageKey,
+  peekPendingEvents,
   pruneLearningEvents,
   recordLearningEvent,
+  type LearningEvent,
 } from "@/lib/tutor/learningEvents";
 
 describe("learningEvents", () => {
@@ -28,6 +31,7 @@ describe("learningEvents", () => {
     });
 
     expect(event).toEqual({
+      id: expect.any(String),
       eventType: "lesson_started",
       product: "ai_tutor",
       targetLanguage: "fr",
@@ -37,6 +41,7 @@ describe("learningEvents", () => {
       sessionId: "local-session-1",
       count: 1,
     });
+    expect(event?.id).toBeTruthy();
     expect(getLearningEvents()).toEqual([event]);
   });
 
@@ -128,5 +133,81 @@ describe("learningEvents", () => {
     expect(first?.sessionId).toBeTruthy();
     expect(getLearningEvents()).toEqual([]);
     expect(window.localStorage.getItem(getLearningEventsSessionKey())).toBe(sessionKey);
+  });
+
+  it("carries ruleOrDetectorId through when provided (no producer wired)", () => {
+    const event = recordLearningEvent({
+      eventType: "mistake_retried",
+      product: "ai_tutor",
+      ruleOrDetectorId: "l1-detector:past-tense",
+    });
+    expect(event?.ruleOrDetectorId).toBe("l1-detector:past-tense");
+    expect(getLearningEvents()[0]?.ruleOrDetectorId).toBe("l1-detector:past-tense");
+  });
+
+  describe("drain API (peekPendingEvents / ackEvents)", () => {
+    it("drains oldest-first and acks a round-trip, leaving the rest queued", () => {
+      const now = Date.now();
+      const a = recordLearningEvent({ eventType: "lesson_started", product: "ai_tutor", timestamp: now + 1 });
+      const b = recordLearningEvent({ eventType: "lesson_completed", product: "ai_tutor", timestamp: now + 2 });
+      const c = recordLearningEvent({ eventType: "logic_insight_viewed", product: "ai_tutor", timestamp: now + 3 });
+
+      const peeked = peekPendingEvents(2);
+      expect(peeked.map((e) => e.id)).toEqual([a?.id, b?.id]); // oldest first, limited
+      expect(peeked.every((e) => typeof e.id === "string" && e.id.length > 0)).toBe(true);
+
+      // Peek does not remove.
+      expect(getLearningEvents()).toHaveLength(3);
+
+      ackEvents([a!.id!, b!.id!]);
+      const remaining = getLearningEvents();
+      expect(remaining.map((e) => e.id)).toEqual([c?.id]);
+
+      // Acking unknown ids is a no-op.
+      ackEvents(["does-not-exist"]);
+      expect(getLearningEvents()).toHaveLength(1);
+    });
+
+    it("back-fills stable ids for legacy id-less entries on first drain", () => {
+      const now = Date.now();
+      // Simulate a pre-upgrade queue written without ids.
+      const legacy = [
+        { eventType: "lesson_started", product: "ai_tutor", targetLanguage: "en", timestamp: now + 1, sessionId: "s" },
+        { eventType: "lesson_completed", product: "ai_tutor", targetLanguage: "en", timestamp: now + 2, sessionId: "s" },
+      ];
+      window.localStorage.setItem(getLearningEventsStorageKey(), JSON.stringify(legacy));
+
+      const peeked = peekPendingEvents();
+      expect(peeked).toHaveLength(2);
+      expect(peeked.every((e) => typeof e.id === "string" && e.id.length > 0)).toBe(true);
+
+      // Ids are now persisted (stable across a second drain) so they are ackable.
+      const secondPeek = peekPendingEvents();
+      expect(secondPeek.map((e) => e.id)).toEqual(peeked.map((e) => e.id));
+
+      ackEvents(peeked.map((e) => e.id!));
+      expect(getLearningEvents()).toEqual([]);
+    });
+
+    it("leaves the queue untouched when the ack storage write fails", () => {
+      const a = recordLearningEvent({ eventType: "lesson_started", product: "ai_tutor" });
+      const b = recordLearningEvent({ eventType: "lesson_completed", product: "ai_tutor" });
+      const before = window.localStorage.getItem(getLearningEventsStorageKey());
+
+      const setItemSpy = vi.spyOn(window.localStorage, "setItem").mockImplementation(() => {
+        throw new Error("quota exceeded");
+      });
+      try {
+        // Must not throw, and must not partially remove.
+        expect(() => ackEvents([a!.id!, b!.id!])).not.toThrow();
+      } finally {
+        setItemSpy.mockRestore();
+      }
+
+      const after = window.localStorage.getItem(getLearningEventsStorageKey());
+      expect(after).toBe(before);
+      const events: LearningEvent[] = getLearningEvents();
+      expect(events.map((e) => e.id).sort()).toEqual([a?.id, b?.id].sort());
+    });
   });
 });
