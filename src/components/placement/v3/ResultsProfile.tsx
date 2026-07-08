@@ -1,8 +1,9 @@
-import type { PlacementV3Results } from "@/lib/placement/v3/types";
+import type { BilingualText, PlacementV3Results } from "@/lib/placement/v3/types";
 import BilingualLabel from "./BilingualLabel";
 import { useChromeLanguage } from "@/lib/i18n/chromeLanguage";
 import { usePlacementT } from "@/components/placement/nativeCopy";
 import type { PlacementNativeSlots } from "@/components/placement/nativeCopy";
+import { FEATURE_FLAGS } from "@/lib/featureFlags";
 
 type Props = {
   results: PlacementV3Results;
@@ -71,6 +72,90 @@ const LABEL_CONFIDENCE: PlacementNativeSlots = {
   tr: "güven",
 };
 
+const LABEL_HOW_WE_ASSESSED: BilingualText = {
+  en: "How we assessed you",
+  vi: "Cách chúng tôi đánh giá bạn",
+};
+
+const LABEL_REFERENCE_RESULT: BilingualText = {
+  en: "Reference result",
+  vi: "Kết quả tham khảo",
+};
+
+/**
+ * Derive a short, honest, human-readable rationale for the placement result
+ * from fields the runtime pipeline already wrote onto `results`
+ * (placementValidity, runtimeDecision.offers, and per-skill scoreEligible /
+ * runtimeExclusionReason). Pure — reads only real fields, invents nothing,
+ * and never fetches. Exported so tests can assert the derivation directly.
+ *
+ * `isReference` is true when the result should be shown as a reference rather
+ * than a firm placement — i.e. validity is "questionable" OR any skill score
+ * was ruled ineligible (product/device failure). That is the integrity path:
+ * we surface it instead of hiding it.
+ */
+export function buildAssessmentRationale(results: PlacementV3Results): {
+  isReference: boolean;
+  notes: BilingualText[];
+} {
+  const validity = results.placementValidity ?? results.runtimeDecision?.placementValidity ?? "valid";
+  const offers = results.runtimeDecision?.offers;
+  const excluded = results.skills.filter((skill) => skill.scoreEligible === false);
+  const isReference = validity === "questionable" || excluded.length > 0;
+
+  const notes: BilingualText[] = [];
+
+  // Always: what the pipeline based the estimate on.
+  notes.push({
+    en: "We estimated your level from your answers and how you completed each task.",
+    vi: "Chúng tôi ước lượng trình độ của bạn dựa trên các câu trả lời và cách bạn hoàn thành từng phần.",
+  });
+
+  // Per-skill: any score the runtime ruled ineligible, framed as our fault, not the learner's.
+  for (const skill of excluded) {
+    if (skill.runtimeExclusionReason === "product_failure_audio") {
+      notes.push({
+        en: "We did not count your Listening score because the audio did not play — a technical problem on our side, not a reflection of your ability.",
+        vi: "Chúng tôi không tính điểm phần Nghe vì âm thanh không phát được — đây là lỗi kỹ thuật từ phía chúng tôi, không phải do khả năng của bạn.",
+      });
+    } else if (skill.runtimeExclusionReason === "mic_permission_or_device_block") {
+      notes.push({
+        en: "We did not count your Speaking score because the microphone was blocked — a device or permission issue, not a reflection of your ability.",
+        vi: "Chúng tôi không tính điểm phần Nói vì micro bị chặn — đây là lỗi thiết bị hoặc quyền truy cập, không phải do khả năng của bạn.",
+      });
+    }
+  }
+
+  // Offers the runtime made available, so the learner knows there is a way forward.
+  if (offers?.listeningRetest) {
+    notes.push({
+      en: "You can retake the Listening section when you are ready.",
+      vi: "Bạn có thể làm lại phần Nghe khi sẵn sàng.",
+    });
+  }
+  if (offers?.speakingTextFallback || offers?.micRetry) {
+    notes.push({
+      en: "You can retry the microphone or answer the Speaking section in writing.",
+      vi: "Bạn có thể thử lại micro hoặc trả lời phần Nói bằng văn bản.",
+    });
+  }
+
+  // Validity: reference caution (questionable) or a reassurance when everything counted.
+  if (validity === "questionable") {
+    notes.push({
+      en: "This is a reference result: some answers came very quickly, so we are not fully certain — but we did not lower your level because of it.",
+      vi: "Đây là kết quả tham khảo: một số câu được trả lời rất nhanh nên chúng tôi chưa hoàn toàn chắc chắn — nhưng chúng tôi không hạ trình độ của bạn vì điều đó.",
+    });
+  } else if (excluded.length === 0) {
+    notes.push({
+      en: "This result is complete and reliable.",
+      vi: "Kết quả này đầy đủ và đáng tin cậy.",
+    });
+  }
+
+  return { isReference, notes };
+}
+
 export function ResultsProfile({ results }: Props) {
   const showVi = useChromeLanguage() === "vi";
   const pt = usePlacementT();
@@ -126,6 +211,43 @@ export function ResultsProfile({ results }: Props) {
           </article>
         ))}
       </div>
+
+      {FEATURE_FLAGS.PLACEMENT_DECISION_VISIBLE && (() => {
+        const { isReference, notes } = buildAssessmentRationale(results);
+        return (
+          <div
+            data-testid="assessment-rationale"
+            className="mt-6 rounded-[14px] border border-slate-200 bg-slate-50 p-4"
+          >
+            <div className="flex flex-wrap items-start justify-between gap-2">
+              <BilingualLabel
+                text={LABEL_HOW_WE_ASSESSED}
+                enClassName="text-sm font-black text-slate-800"
+                viClassName="text-xs font-medium text-slate-600"
+              />
+              {isReference && (
+                <BilingualLabel
+                  text={LABEL_REFERENCE_RESULT}
+                  className="rounded-full bg-amber-100 px-3 py-1"
+                  enClassName="text-[11px] font-black uppercase tracking-[0.04em] text-amber-800"
+                  viClassName="text-[10px] font-bold text-amber-700"
+                />
+              )}
+            </div>
+            <ul className="mt-3 space-y-2">
+              {notes.map((note, index) => (
+                <li key={index}>
+                  <BilingualLabel
+                    text={note}
+                    enClassName="text-sm font-semibold leading-6 text-slate-700"
+                    viClassName="text-xs font-medium leading-5 text-slate-600"
+                  />
+                </li>
+              ))}
+            </ul>
+          </div>
+        );
+      })()}
     </section>
   );
 }
