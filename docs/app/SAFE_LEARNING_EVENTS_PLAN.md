@@ -30,10 +30,20 @@ No other event names are approved by this plan.
 
 ## Non-Goals
 
+> **SUPERSEDED (2026-07-08, WP-PHASE2-01 v2):** The two Non-Goals below —
+> "No network transport approval" and "No Supabase event table approval" — are
+> **no longer in force.** Per Chau's standing strategy ruling, the durable
+> learning-event sink is approved strategic infrastructure. The `learning_events`
+> table + RLS are defined in `supabase/migrations/20260708000000_learning_events.sql`
+> and the client transport in `src/lib/learning/eventSink.ts` (flag
+> `VITE_LEARNING_EVENT_SINK_ENABLED`, default off). All *other* Non-Goals below —
+> especially the raw-text / raw-audio / transcript prohibitions — remain fully
+> in force: the sink transmits only the allowlisted, sanitized payload.
+
 - No implementation in this PR.
 - No analytics provider selection.
-- No network transport approval.
-- No Supabase event table approval.
+- ~~No network transport approval.~~ **Superseded by WP-PHASE2-01 v2** (see note above).
+- ~~No Supabase event table approval.~~ **Superseded by WP-PHASE2-01 v2** (see note above).
 - No Supabase memory sync.
 - No Placement read or write behavior.
 - No raw learner text collection.
