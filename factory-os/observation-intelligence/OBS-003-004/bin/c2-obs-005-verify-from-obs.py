@@ -13,7 +13,7 @@ Gate (all must hold, else REFUSE with reason):
   3. OBS-004 packet OBS-004-<ID>.json exists.
   4. packet.tm_int_id == ID.
   5. packet.replay_proof.checks are ALL true (code_path + input_digest + output_digest).
-  6. Identity bind: packet.module == registry.module AND packet.axis == registry.axis.
+  6. Identity bind: packet.axis == registry.axis  (AXIS only; registry.module is round-robin noise, kept as a non-blocking audit field — recorded, never gating).
   7. Digest re-derivation AT FLIP TIME (byte-exact, via c2-obs-005-digest.mjs):
        node_digest(packet.output)
          == packet.output_digest
