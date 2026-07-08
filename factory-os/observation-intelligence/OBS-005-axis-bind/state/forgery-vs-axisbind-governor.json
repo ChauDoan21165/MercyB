@@ -1,0 +1,49 @@
+{
+  "suite": "OBS-006-forgery-suite",
+  "gate": "/Users/chaudoanm3/mercyb-obs005-axisbind-wt/factory-os/observation-intelligence/OBS-003-004/bin/c2-obs-005-verify-from-obs.py",
+  "control_flips": true,
+  "all_refused": true,
+  "healthy": true,
+  "cases": [
+    {
+      "name": "control",
+      "flip_count": 1,
+      "refuse_count": 0,
+      "reason": null,
+      "refused": false,
+      "flipped": true
+    },
+    {
+      "name": "tampered",
+      "flip_count": 0,
+      "refuse_count": 1,
+      "reason": "digest_rederive_mismatch:rederived=sha256:0b12fd7ab9cd82c4487e4a09030f0b4f88eb30aa6e812e780e7403a5531a2420 packet=sha256:820fe117aed02a327846a9e0df607b5f549b3286a0535ebeea2fcb943818e25c replay=sha256:820fe117aed02a327846a9e0df607b5f549b3286a0535ebeea2fcb943818e25c obs001=sha256:820fe117aed02a327846a9e0df607b5f549b3286a0535ebeea2fcb943818e25c",
+      "refused": true,
+      "flipped": false
+    },
+    {
+      "name": "broken_replay",
+      "flip_count": 0,
+      "refuse_count": 1,
+      "reason": "replay_checks_failed:output_digest_match",
+      "refused": true,
+      "flipped": false
+    },
+    {
+      "name": "wrong_axis",
+      "flip_count": 0,
+      "refuse_count": 1,
+      "reason": "axis_mismatch:packet=some-other-axis!=registry=forge-axis",
+      "refused": true,
+      "flipped": false
+    },
+    {
+      "name": "behavior_differs",
+      "flip_count": 0,
+      "refuse_count": 1,
+      "reason": "digest_rederive_mismatch:rederived=sha256:820fe117aed02a327846a9e0df607b5f549b3286a0535ebeea2fcb943818e25c packet=sha256:820fe117aed02a327846a9e0df607b5f549b3286a0535ebeea2fcb943818e25c replay=sha256:820fe117aed02a327846a9e0df607b5f549b3286a0535ebeea2fcb943818e25c obs001=sha256:dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+      "refused": true,
+      "flipped": false
+    }
+  ]
+}
