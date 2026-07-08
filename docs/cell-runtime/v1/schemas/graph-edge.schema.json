@@ -1,0 +1,37 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://mercyb.local/schemas/cell-runtime-v1/graph-edge.schema.json",
+  "title": "MercyB Multi-Graph Edge",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "edge_id",
+    "graph_type",
+    "relationship_type",
+    "from_id",
+    "to_id",
+    "source_system",
+    "confidence",
+    "reason"
+  ],
+  "properties": {
+    "edge_id": { "type": "string", "minLength": 1 },
+    "graph_type": {
+      "type": "string",
+      "enum": ["OWNERSHIP_GRAPH", "KNOWLEDGE_GRAPH", "RUNTIME_GRAPH", "EVIDENCE_GRAPH", "DEPENDENCY_GRAPH"]
+    },
+    "relationship_type": { "type": "string", "minLength": 1 },
+    "from_id": { "type": "string", "minLength": 1 },
+    "to_id": { "type": "string", "minLength": 1 },
+    "from_type": { "type": "string" },
+    "to_type": { "type": "string" },
+    "source_system": { "type": "string", "minLength": 1 },
+    "source_location": { "type": "string" },
+    "confidence": {
+      "type": "string",
+      "enum": ["HIGH", "MEDIUM", "LOW", "UNKNOWN"]
+    },
+    "reason": { "type": "string", "minLength": 1 },
+    "evidence_id": { "type": "string" }
+  }
+}
