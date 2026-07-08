@@ -109,7 +109,6 @@ describe("Study OS static boundary", () => {
       "src/lib/tutor/correctionEngine.ts",
       "src/lib/tutor/correctionExperienceEnricher.ts",
       "src/lib/tutor/correctionTimingIntegration.ts",
-      "src/lib/tutor/decisionEngineTurnAdapter.ts",
       "src/lib/tutor/drillTimingPolicy.ts",
       "src/lib/tutor/emotionalResponseBoundary.ts",
       "src/lib/tutor/encouragementTimingPolicy.ts",

@@ -68,15 +68,12 @@ import {
   correctWithTutorRules,
 } from "@/lib/tutor/correctionEngine";
 import {
+  correctWithTimingAwareness,
   createDeferredCorrectionQueue,
   buildSuppressMessage,
   buildDeferredSurfacingMessage,
   type DeferredCorrectionQueue,
 } from "@/lib/tutor/correctionTimingIntegration";
-// WP-000 — wire the decision engine into the live turn loop. Drop-in for
-// correctWithTimingAwareness: same routing shape, driven by decideTeacherAction.
-// Deferred decisions flow through the unchanged deferred-correction queue below.
-import { decideTurnCorrectionCompat } from "@/lib/tutor/decisionEngineTurnAdapter";
 import {
   diagnoseVietlishLogicWithMatch,
   type VietlishLogicDiagnosisResult,
@@ -2367,10 +2364,8 @@ export default function AiTutorPage() {
       setError(CANNOT_CORRECT_NO_SESSION_MESSAGE);
       return;
     }
-    // Step 013 / WP-000 — run the decision engine before showing the result.
-    // decideTurnCorrectionCompat routes via decideTeacherAction but returns the
-    // same shape; suppress/defer/show handling and the deferred queue are unchanged.
-    const timingResult = decideTurnCorrectionCompat({
+    // Step 013 — check correction timing before showing the result.
+    const timingResult = correctWithTimingAwareness({
       learnerText: trimmed,
       targetLanguage: "en",
       cefrLevel: null,
