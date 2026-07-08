@@ -1,3 +1,7 @@
+> ⚠️ **CORRECTED 2026-07-08 — see [`DP_INT_LIVE_READINESS_MAP_CORRECTION.md`](./DP_INT_LIVE_READINESS_MAP_CORRECTION.md).**
+> The LIVE table below overstates reach: no live component/page imports `tm-int` (only a
+> placement test does). The sole live path is the placement chain. Read the correction first.
+
 # DP INT Live Readiness Map — Phase 0
 
 **Runner:** Admin | **Date:** 2026-07-07 | **Mode:** READ-ONLY MAP — NO WIRING
