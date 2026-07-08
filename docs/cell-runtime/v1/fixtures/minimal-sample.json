@@ -1,0 +1,75 @@
+{
+  "anatomy_objects": [
+    {
+      "anatomy_id": "ANAT-SAMPLE-SENTENCE-001",
+      "source_id": "CELL-SENTENCE-SAMPLE-001",
+      "source_type": "CELL_TYPE_SENTENCE",
+      "anatomy_layer": "CELL",
+      "canonical_type": "SENTENCE",
+      "parent_anatomy_id": "ANAT-SAMPLE-LESSON-001",
+      "owner_id": "CELL-LESSON-SAMPLE-001",
+      "source_system": "fixture",
+      "source_location": "fixtures/minimal-sample.json",
+      "confidence": "HIGH",
+      "reason": "Minimal sample sentence object for Cell Runtime v1."
+    },
+    {
+      "anatomy_id": "ANAT-SAMPLE-CONCEPT-001",
+      "source_id": "CELL-CONCEPT-SAMPLE-001",
+      "source_type": "CELL_TYPE_CONCEPT",
+      "anatomy_layer": "CELL",
+      "canonical_type": "CONCEPT",
+      "parent_anatomy_id": "",
+      "owner_id": "",
+      "source_system": "fixture",
+      "source_location": "fixtures/minimal-sample.json",
+      "confidence": "HIGH",
+      "reason": "Minimal sample concept object for Knowledge Graph."
+    }
+  ],
+  "graph_edges": [
+    {
+      "edge_id": "MG-SAMPLE-001",
+      "graph_type": "KNOWLEDGE_GRAPH",
+      "relationship_type": "SENTENCE_TEACHES_CONCEPT",
+      "from_id": "CELL-SENTENCE-SAMPLE-001",
+      "to_id": "CELL-CONCEPT-SAMPLE-001",
+      "from_type": "SENTENCE",
+      "to_type": "CONCEPT",
+      "source_system": "fixture",
+      "source_location": "fixtures/minimal-sample.json",
+      "confidence": "HIGH",
+      "reason": "Sentence teaches concept is knowledge, not ownership.",
+      "evidence_id": "FIXTURE"
+    }
+  ],
+  "reasoning_result": {
+    "object_id": "CELL-SENTENCE-SAMPLE-001",
+    "deterministic": true,
+    "llm_used": false,
+    "health": "UNHEALTHY",
+    "who_am_i": { "anatomy_layer": "CELL", "canonical_type": "SENTENCE" },
+    "who_owns_me": [],
+    "what_i_own": [],
+    "what_should_exist": {
+      "expected_resources": ["AUDIO_ASSET", "TRANSLATION", "IPA", "HINT"],
+      "expected_evidence": ["JUDGE_ARTIFACT", "VERIFICATION_RECORD"]
+    },
+    "what_exists": { "resources": [], "evidence": [] },
+    "what_is_missing": {
+      "resources": ["AUDIO_ASSET", "TRANSLATION", "IPA", "HINT"],
+      "evidence": ["JUDGE_ARTIFACT", "VERIFICATION_RECORD"]
+    },
+    "why": [
+      {
+        "step": "WHAT_IS_MISSING",
+        "evidence": "Reasoning rules plus graph lookup",
+        "result": "Missing audio, translation, IPA, hint, and evidence."
+      }
+    ],
+    "release_blockers": [],
+    "recommended_next_actions": [
+      { "action": "Generate or link sentence audio", "reason": "Sentence expects AUDIO_ASSET." }
+    ]
+  }
+}

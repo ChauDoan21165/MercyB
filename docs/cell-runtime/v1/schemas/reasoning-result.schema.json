@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://mercyb.local/schemas/cell-runtime-v1/reasoning-result.schema.json",
+  "title": "MercyB Reasoning Result",
+  "type": "object",
+  "additionalProperties": true,
+  "required": [
+    "object_id",
+    "deterministic",
+    "llm_used",
+    "health",
+    "who_am_i",
+    "what_should_exist",
+    "what_exists",
+    "what_is_missing",
+    "why",
+    "recommended_next_actions"
+  ],
+  "properties": {
+    "object_id": { "type": "string", "minLength": 1 },
+    "deterministic": { "const": true },
+    "llm_used": { "const": false },
+    "health": { "type": "string", "enum": ["HEALTHY", "UNHEALTHY", "BLOCKED", "UNKNOWN"] },
+    "who_am_i": { "type": "object" },
+    "who_owns_me": { "type": "array" },
+    "what_i_own": { "type": "array" },
+    "what_should_exist": { "type": "object" },
+    "what_exists": { "type": "object" },
+    "what_is_missing": { "type": "object" },
+    "why": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["step", "evidence", "result"],
+        "properties": {
+          "step": { "type": "string" },
+          "evidence": { "type": "string" },
+          "result": { "type": "string" }
+        }
+      }
+    },
+    "release_blockers": { "type": "array" },
+    "recommended_next_actions": { "type": "array" }
+  }
+}
