@@ -39,6 +39,18 @@ export const FEATURE_FLAGS = {
   MERCY_HOST_ENABLED: false, // flip to true when ready
 
   /**
+   * Teacher decision engine on the live grammar-correction turn (WP-000).
+   *
+   * OFF (default): the tutor turn uses the original `correctWithTimingAwareness`
+   * path — byte-identical to pre-WP-000 main. ON: the turn routes through
+   * `decideTeacherAction` (src/lib/tm-int/decisionEngineTurnAdapter) for
+   * suppress/defer/show; deferred corrections still resurface via the same
+   * deferred-correction queue (advanceTurn). Default OFF per the "default OFF for
+   * any new visible system" rule; flip to true only after re-review.
+   */
+  TUTOR_DECISION_ENGINE_ENABLED: false,
+
+  /**
    * Placement test — HIDDEN from every user-facing surface.
    *
    * WHY: the test inflates results for Vietnamese L1 learners — they

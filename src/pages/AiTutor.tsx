@@ -74,6 +74,12 @@ import {
   buildDeferredSurfacingMessage,
   type DeferredCorrectionQueue,
 } from "@/lib/tutor/correctionTimingIntegration";
+// WP-000 (reworked) — decision-engine turn adapter lives in tm-int (C2-owned),
+// NOT src/lib/tutor (Lane A). Only used when TUTOR_DECISION_ENGINE_ENABLED is ON.
+import {
+  decideTurnCorrectionCompat,
+  buildDeferredTurnCorrection,
+} from "@/lib/tm-int/decisionEngineTurnAdapter";
 import {
   diagnoseVietlishLogicWithMatch,
   type VietlishLogicDiagnosisResult,
@@ -2364,39 +2370,80 @@ export default function AiTutorPage() {
       setError(CANNOT_CORRECT_NO_SESSION_MESSAGE);
       return;
     }
-    // Step 013 — check correction timing before showing the result.
-    const timingResult = correctWithTimingAwareness({
-      learnerText: trimmed,
-      targetLanguage: "en",
-      cefrLevel: null,
-      isCurrentLessonTarget: activeTodayLesson?.plan?.targetSkill
-        ? trimmed.toLowerCase().includes(activeTodayLesson.plan.targetSkill.toLowerCase())
-        : false,
-      previousCorrectionsThisSession: surfacedCorrectionsRef.current,
-    });
-
-    // SUPPRESS: the error is minor / learner context says not to interrupt.
-    if (timingResult.shouldSuppress) {
-      setLoading(false);
-      setError(buildSuppressMessage(timingResult.timing, explainLanguage));
-      return;
-    }
-
-    // DELAYED / FOLLOW_UP_FIRST: defer the correction to a future turn.
-    if (timingResult.shouldDefer && timingResult.correction.status === "corrected") {
-      deferredQueueRef.current.enqueue({
+    // Step 013 / WP-000 — correction timing before showing the result.
+    // Flag OFF (default): original correctWithTimingAwareness path — byte-identical
+    // to pre-WP-000 main (the `else` branch below is the verbatim original code).
+    // Flag ON: route via the decision engine (decideTurnCorrectionCompat); deferred
+    // corrections still resurface via the same deferred-correction queue (advanceTurn).
+    if (FEATURE_FLAGS.TUTOR_DECISION_ENGINE_ENABLED) {
+      const engineResult = decideTurnCorrectionCompat({
         learnerText: trimmed,
-        correctedText: timingResult.correction.corrected,
-        timing: timingResult.timing,
-        remainingTurns: timingResult.timing.delayTurns ?? 1,
+        targetLanguage: "en",
+        cefrLevel: null,
+        isCurrentLessonTarget: activeTodayLesson?.plan?.targetSkill
+          ? trimmed.toLowerCase().includes(activeTodayLesson.plan.targetSkill.toLowerCase())
+          : false,
+        previousCorrectionsThisSession: surfacedCorrectionsRef.current,
       });
-      setLoading(false);
-      setError(
-        explainLanguage === "vi"
-          ? "Mercy ghi nhận câu này và sẽ gợi ý sau nhé."
-          : "Got it — I'll share a small tip in a moment.",
-      );
-      return;
+
+      // SUPPRESS: the error is minor / learner context says not to interrupt.
+      if (engineResult.shouldSuppress) {
+        setLoading(false);
+        setError(buildSuppressMessage(engineResult.timing, explainLanguage));
+        return;
+      }
+
+      // DELAYED / FOLLOW_UP_FIRST: defer. Persist-and-resurface the guaranteed-corrected
+      // LOCAL text (localCorrection is status "corrected" at this seam) — never the
+      // engine's needs_ai correction (which is empty). Resurfaces via advanceTurn below.
+      if (engineResult.shouldDefer) {
+        deferredQueueRef.current.enqueue(
+          buildDeferredTurnCorrection(trimmed, localCorrection.corrected, engineResult),
+        );
+        setLoading(false);
+        setError(
+          explainLanguage === "vi"
+            ? "Mercy ghi nhận câu này và sẽ gợi ý sau nhé."
+            : "Got it — I'll share a small tip in a moment.",
+        );
+        return;
+      }
+      // else: fall through to the common "show now" path below.
+    } else {
+      // Step 013 — check correction timing before showing the result.
+      const timingResult = correctWithTimingAwareness({
+        learnerText: trimmed,
+        targetLanguage: "en",
+        cefrLevel: null,
+        isCurrentLessonTarget: activeTodayLesson?.plan?.targetSkill
+          ? trimmed.toLowerCase().includes(activeTodayLesson.plan.targetSkill.toLowerCase())
+          : false,
+        previousCorrectionsThisSession: surfacedCorrectionsRef.current,
+      });
+
+      // SUPPRESS: the error is minor / learner context says not to interrupt.
+      if (timingResult.shouldSuppress) {
+        setLoading(false);
+        setError(buildSuppressMessage(timingResult.timing, explainLanguage));
+        return;
+      }
+
+      // DELAYED / FOLLOW_UP_FIRST: defer the correction to a future turn.
+      if (timingResult.shouldDefer && timingResult.correction.status === "corrected") {
+        deferredQueueRef.current.enqueue({
+          learnerText: trimmed,
+          correctedText: timingResult.correction.corrected,
+          timing: timingResult.timing,
+          remainingTurns: timingResult.timing.delayTurns ?? 1,
+        });
+        setLoading(false);
+        setError(
+          explainLanguage === "vi"
+            ? "Mercy ghi nhận câu này và sẽ gợi ý sau nhé."
+            : "Got it — I'll share a small tip in a moment.",
+        );
+        return;
+      }
     }
 
     const corrected = localCorrection.corrected;
