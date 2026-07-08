@@ -15,6 +15,10 @@ export type LearningEventProduct = "ai_tutor" | "mercy_kids";
 export type LearningEventMode = "journey" | "grammar" | "speak" | "logic";
 
 export type LearningEvent = {
+  // Stable, client-generated id. Minted at record time for new events and
+  // back-filled on first drain for legacy id-less entries (see peekPendingEvents).
+  // Optional so historical stored rows deserialize without loss.
+  id?: string;
   eventType: LearningEventType;
   product: LearningEventProduct;
   targetLanguage: string;
@@ -24,9 +28,14 @@ export type LearningEvent = {
   safeTopicTag?: string;
   count?: number;
   value?: number;
+  // Provenance for feedback/correction-class events (which rule or detector
+  // produced them). No producer wires this yet; carried through so the durable
+  // sink (WP-PHASE2-01) can persist it once producers opt in.
+  ruleOrDetectorId?: string;
 };
 
 export type LearningEventInput = {
+  id?: string | null;
   eventType: LearningEventType;
   product: LearningEventProduct;
   targetLanguage?: string | null;
@@ -36,6 +45,7 @@ export type LearningEventInput = {
   safeTopicTag?: string | null;
   count?: number | null;
   value?: number | null;
+  ruleOrDetectorId?: string | null;
 };
 
 export type LearningEventFilter = {
@@ -70,6 +80,10 @@ const DEFAULT_MAX_EVENTS = 200;
 const DEFAULT_MAX_AGE_DAYS = 30;
 const MAX_SAFE_TAG_LENGTH = 48;
 const MAX_COUNT_VALUE = 9999;
+const MAX_ID_LENGTH = 64;
+const MAX_RULE_ID_LENGTH = 64;
+const DEFAULT_PEEK_LIMIT = 50;
+const MAX_PEEK_LIMIT = 300;
 const DAY_MS = 24 * 60 * 60 * 1000;
 
 const EVENT_TYPES = new Set<LearningEventType>([
@@ -90,7 +104,8 @@ const PRODUCTS = new Set<LearningEventProduct>(["ai_tutor", "mercy_kids"]);
 const MODES = new Set<LearningEventMode>(["journey", "grammar", "speak", "logic"]);
 
 export function recordLearningEvent(event: LearningEventInput): LearningEvent | null {
-  const normalized = normalizeLearningEvent(event);
+  // New events are minted with a stable id so the durable sink can ack them.
+  const normalized = normalizeLearningEvent(event, { mintId: true });
   if (!normalized) return null;
 
   const events = [...readStoredEvents(), normalized];
@@ -110,6 +125,48 @@ export function getLearningEvents(filter: LearningEventFilter = {}): LearningEve
     if (typeof filter.until === "number" && event.timestamp > filter.until) return false;
     return true;
   });
+}
+
+/**
+ * Drain-read the pending queue, oldest first, without removing anything.
+ *
+ * Every returned event carries a stable `id`: new events already have one
+ * (minted at record time); legacy id-less entries are back-filled with a fresh
+ * id which is persisted here, on their first drain, so the caller can ack them
+ * by id. Back-fill is the only mutation this function performs (best-effort);
+ * on any storage failure the queue is left exactly as it was.
+ */
+export function peekPendingEvents(limit: number = DEFAULT_PEEK_LIMIT): LearningEvent[] {
+  const stored = readStoredEvents();
+  if (stored.length === 0) return [];
+
+  let mutated = false;
+  const withIds = stored.map((event) => {
+    if (event.id) return event;
+    mutated = true;
+    return { ...event, id: createEventId() };
+  });
+
+  // Persist back-filled ids so a later ackEvents(ids) can match. Best-effort:
+  // if this write fails the events simply get fresh ids on the next drain.
+  if (mutated) writeStoredEvents(withIds);
+
+  const cap = clampInteger(limit, 1, MAX_PEEK_LIMIT);
+  return [...withIds].sort((a, b) => a.timestamp - b.timestamp).slice(0, cap);
+}
+
+/**
+ * Remove acknowledged events from the queue by id. Ids not present are ignored.
+ * Best-effort and atomic from the caller's view: if the storage write throws,
+ * the queue is left untouched (nothing is half-removed).
+ */
+export function ackEvents(ids: string[]): void {
+  if (!Array.isArray(ids) || ids.length === 0) return;
+  const ackSet = new Set(ids.map((id) => sanitizeEventId(id)).filter((id): id is string => Boolean(id)));
+  if (ackSet.size === 0) return;
+
+  const remaining = readStoredEvents().filter((event) => !(event.id && ackSet.has(event.id)));
+  writeStoredEvents(remaining);
 }
 
 export function getLearningEventSummary(): LearningEventSummary {
@@ -161,7 +218,10 @@ export function getLearningEventsSessionKey(): string {
   return SESSION_STORAGE_KEY;
 }
 
-function normalizeLearningEvent(input: LearningEventInput): LearningEvent | null {
+function normalizeLearningEvent(
+  input: LearningEventInput,
+  options: { mintId?: boolean } = {},
+): LearningEvent | null {
   if (!EVENT_TYPES.has(input.eventType)) return null;
   if (!PRODUCTS.has(input.product)) return null;
 
@@ -169,8 +229,12 @@ function normalizeLearningEvent(input: LearningEventInput): LearningEvent | null
   const safeTopicTag = sanitizeSafeTopicTag(input.safeTopicTag);
   const count = normalizeOptionalNumber(input.count);
   const value = normalizeOptionalNumber(input.value);
+  const ruleOrDetectorId = sanitizeRuleOrDetectorId(input.ruleOrDetectorId);
+  const existingId = sanitizeEventId(input.id);
+  const id = existingId ?? (options.mintId ? createEventId() : undefined);
 
   return {
+    ...(id ? { id } : {}),
     eventType: input.eventType,
     product: input.product,
     targetLanguage: normalizeLanguage(input.targetLanguage),
@@ -180,6 +244,7 @@ function normalizeLearningEvent(input: LearningEventInput): LearningEvent | null
     ...(safeTopicTag ? { safeTopicTag } : {}),
     ...(count !== undefined ? { count } : {}),
     ...(value !== undefined ? { value } : {}),
+    ...(ruleOrDetectorId ? { ruleOrDetectorId } : {}),
   };
 }
 
@@ -214,17 +279,24 @@ function writeStoredEvents(events: LearningEvent[]): void {
 function normalizeStoredEvent(value: unknown): LearningEvent | null {
   if (!value || typeof value !== "object") return null;
   const event = value as Partial<LearningEvent>;
-  return normalizeLearningEvent({
-    eventType: event.eventType as LearningEventType,
-    product: event.product as LearningEventProduct,
-    targetLanguage: event.targetLanguage,
-    timestamp: event.timestamp,
-    sessionId: event.sessionId,
-    mode: event.mode,
-    safeTopicTag: event.safeTopicTag,
-    count: event.count,
-    value: event.value,
-  });
+  // mintId:false — stored rows keep their existing id (or stay id-less until
+  // first drained). Re-reading must never mint, or ids would not be stable.
+  return normalizeLearningEvent(
+    {
+      id: event.id,
+      eventType: event.eventType as LearningEventType,
+      product: event.product as LearningEventProduct,
+      targetLanguage: event.targetLanguage,
+      timestamp: event.timestamp,
+      sessionId: event.sessionId,
+      mode: event.mode,
+      safeTopicTag: event.safeTopicTag,
+      count: event.count,
+      value: event.value,
+      ruleOrDetectorId: event.ruleOrDetectorId,
+    },
+    { mintId: false },
+  );
 }
 
 function pruneEvents(events: LearningEvent[], options: LearningEventPruneOptions = {}): LearningEvent[] {
@@ -315,6 +387,32 @@ function sanitizeSessionId(value: string | null | undefined): string {
     .toLowerCase()
     .replace(/[^a-z0-9._:-]/g, "")
     .slice(0, 64);
+}
+
+function sanitizeEventId(value: string | null | undefined): string | undefined {
+  const cleaned = String(value ?? "")
+    .trim()
+    .toLowerCase()
+    .replace(/[^a-z0-9._:-]/g, "")
+    .slice(0, MAX_ID_LENGTH);
+  return cleaned || undefined;
+}
+
+function sanitizeRuleOrDetectorId(value: string | null | undefined): string | undefined {
+  const cleaned = String(value ?? "")
+    .trim()
+    .replace(/[^A-Za-z0-9._:-]/g, "")
+    .slice(0, MAX_RULE_ID_LENGTH);
+  return cleaned || undefined;
+}
+
+function createEventId(): string {
+  const cryptoObj = typeof globalThis !== "undefined" ? globalThis.crypto : undefined;
+  if (cryptoObj && typeof cryptoObj.randomUUID === "function") {
+    return cryptoObj.randomUUID();
+  }
+  const random = Math.random().toString(36).slice(2, 12);
+  return `evt-${Date.now().toString(36)}-${random}`;
 }
 
 function getOrCreateSessionId(): string {
