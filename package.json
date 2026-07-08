@@ -10,7 +10,9 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "predev": "node scripts/validate-vite-supabase-env.mjs",
     "dev": "concurrently \"vite --host 127.0.0.1 --port 3107 --strictPort\" \"npm run grammar:server\"",
+    "predev:frontend": "node scripts/validate-vite-supabase-env.mjs",
     "dev:frontend": "vite --host 127.0.0.1 --port 3107 --strictPort",
     "grammar:server": "tsx server/grammar-server.ts",
     "generate:room-registry": "node scripts/generate-room-registry.mjs",
@@ -62,6 +64,7 @@
     "prebuild": "node scripts/validate-vite-supabase-env.mjs && npm run rooms:check && npm run check:no-raw-react-lazy",
     "build": "node scripts/generate-version.js && npm run generate:audio-manifest && npm run generate:sitemap && vite build",
     "deploy:cf-pages:main": "bash scripts/deploy-cloudflare-pages-main.sh",
+    "prebuild:dev": "node scripts/validate-vite-supabase-env.mjs",
     "build:dev": "vite build --mode development",
     "cap:sync": "npx cap sync",
     "cap:sync:ios": "npx cap sync ios",

@@ -28,8 +28,17 @@ const isVitest =
   import.meta.env.MODE === "test" || String(import.meta.env.VITEST ?? "") === "true";
 
 if ((!rawSupabaseUrl || !rawSupabaseAnonKey) && !isVitest) {
+  const missing = [
+    rawSupabaseUrl ? null : "VITE_SUPABASE_URL",
+    rawSupabaseAnonKey ? null : "VITE_SUPABASE_ANON_KEY",
+  ].filter(Boolean);
   throw new Error(
-    "[supabaseClient] Missing VITE_SUPABASE_URL or VITE_SUPABASE_ANON_KEY; refusing to initialize Supabase client.",
+    `[supabaseClient] Missing required Supabase env var(s): ${missing.join(", ")}. ` +
+      "The app cannot initialize its Supabase client without these. " +
+      "Set them in .env.local (or .env) at the repo root — see the " +
+      '"Supabase (core build env)" section of .env.example for the exact keys. ' +
+      "(For local dev/build the guard scripts/validate-vite-supabase-env.mjs reports the " +
+      "same thing before the server or build starts.)",
   );
 }
 
