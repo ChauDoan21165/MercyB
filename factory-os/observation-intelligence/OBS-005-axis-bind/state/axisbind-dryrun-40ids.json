@@ -1,0 +1,80 @@
+{
+  "decision": "OBS-005 identity bind = AXIS (module = non-blocking audit)",
+  "governors": {
+    "module_bind": "/private/tmp/claude-501/-Users-chaudoanm3-MercyB/9f4dca62-eeda-40f7-93ab-ad77f68b3bea/scratchpad/mbgov/c2-obs-005-verify-from-obs.py",
+    "axis_bind": "/Users/chaudoanm3/mercyb-obs005-axisbind-wt/factory-os/observation-intelligence/OBS-003-004/bin/c2-obs-005-verify-from-obs.py"
+  },
+  "real_registry_untouched": true,
+  "counts": {
+    "module_bind_backup": {
+      "flip": 2,
+      "refuse": 40
+    },
+    "axis_bind_backup": {
+      "flip": 42,
+      "refuse": 0,
+      "module_audit_disagreements": 40
+    },
+    "axis_bind_live": {
+      "flip": 0,
+      "refuse": 42
+    }
+  },
+  "the_40_module_mismatch_ids": [
+    "TM-INT-2413",
+    "TM-INT-2414",
+    "TM-INT-2415",
+    "TM-INT-2416",
+    "TM-INT-2417",
+    "TM-INT-2418",
+    "TM-INT-2419",
+    "TM-INT-2420",
+    "TM-INT-2421",
+    "TM-INT-2422",
+    "TM-INT-2423",
+    "TM-INT-2424",
+    "TM-INT-2425",
+    "TM-INT-2426",
+    "TM-INT-2427",
+    "TM-INT-2428",
+    "TM-INT-2429",
+    "TM-INT-2430",
+    "TM-INT-2431",
+    "TM-INT-2432",
+    "TM-INT-2938",
+    "TM-INT-2939",
+    "TM-INT-2940",
+    "TM-INT-2941",
+    "TM-INT-2942",
+    "TM-INT-2943",
+    "TM-INT-2944",
+    "TM-INT-2945",
+    "TM-INT-2946",
+    "TM-INT-2947",
+    "TM-INT-2948",
+    "TM-INT-2949",
+    "TM-INT-2950",
+    "TM-INT-2951",
+    "TM-INT-2952",
+    "TM-INT-2953",
+    "TM-INT-2954",
+    "TM-INT-2955",
+    "TM-INT-2956",
+    "TM-INT-2957"
+  ],
+  "the_40_under_axis_bind": {
+    "now_flip": 40,
+    "still_refuse": 0,
+    "still_refuse_detail": []
+  },
+  "live_provenance_note": {
+    "axis_bind_live_refuse_reasons": [
+      "not_report_only"
+    ]
+  },
+  "copies_unchanged": {
+    "module_bind__pre_aitutor_backup": true,
+    "axis_bind__pre_aitutor_backup": true,
+    "axis_bind__current_live": true
+  }
+}

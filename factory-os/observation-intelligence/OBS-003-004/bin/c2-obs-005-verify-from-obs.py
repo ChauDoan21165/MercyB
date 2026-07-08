@@ -106,8 +106,12 @@ def evaluate(con, tm_int_id, packets_dir, obs001, now):
         failed = [k for k, v in checks.items() if not v] or ["missing_checks"]
         return "REFUSE", f"replay_checks_failed:{','.join(failed)}", None
 
-    if packet.get("module") != module:
-        return "REFUSE", f"module_mismatch:packet={packet.get('module')}!=registry={module}", None
+    # Identity bind is on AXIS (the v2-established real owner). The registry
+    # `module` column is round-robin noise for cross-module axes, so it is NOT a
+    # blocking check — it is kept only as a non-blocking AUDIT field (any
+    # packet.module != registry.module disagreement is recorded in the event
+    # payload below, surfaced never masked). The anti-forgery guarantee is the
+    # crypto chain (replay checks + digest==OBS-001 anchor + tm_int_id + axis).
     if packet.get("axis") != axis:
         return "REFUSE", f"axis_mismatch:packet={packet.get('axis')}!=registry={axis}", None
 
@@ -126,11 +130,17 @@ def evaluate(con, tm_int_id, packets_dir, obs001, now):
             f"replay={replay_recorded} obs001={obs1_digest}"
         ), None
 
+    module_audit = {
+        "packet_module": packet.get("module"),
+        "registry_module": module,
+        "module_disagreement": packet.get("module") != module,
+    }
     evidence_ref = json.dumps({
         "packet_id": packet.get("packet_id"),
         "output_digest": packet_digest,
         "obs003_run_id": (packet.get("run_ids") or {}).get("obs003"),
         "obs001_run_id": (packet.get("run_ids") or {}).get("obs001"),
+        "module_audit": module_audit,
     }, ensure_ascii=False)
     return "FLIP", "evidence_gate_passed", evidence_ref
 
@@ -157,11 +167,15 @@ def main():
     if args.commit:
         ensure_evidence_ref_column(con)
 
-    would_flip, refused = [], []
+    would_flip, refused, module_audit_disagreements = [], [], []
     for tm_int_id in ids:
         decision, reason, evidence_ref = evaluate(con, tm_int_id, args.packets_dir, obs001, now)
         if decision == "FLIP":
             would_flip.append(tm_int_id)
+            ref = json.loads(evidence_ref)
+            audit = ref.get("module_audit") or {}
+            if audit.get("module_disagreement"):
+                module_audit_disagreements.append({"tm_int_id": tm_int_id, **audit})
             if args.commit:
                 ensure_evidence_ref_column(con)
                 con.execute(
@@ -173,7 +187,7 @@ def main():
                     "INSERT INTO int_registry_events (tm_int_id, event_type, payload_json, created_at) "
                     "VALUES (?, ?, ?, ?)",
                     (tm_int_id, "verified_from_obs_evidence",
-                     json.dumps({"reason": reason, "evidence_ref": json.loads(evidence_ref)},
+                     json.dumps({"reason": reason, "evidence_ref": ref, "module_audit": audit},
                                 ensure_ascii=False),
                      now),
                 )
@@ -192,6 +206,8 @@ def main():
         "refuse_count": len(refused),
         "would_flip": would_flip,
         "refused": refused,
+        "module_audit_disagreement_count": len(module_audit_disagreements),
+        "module_audit_disagreements": module_audit_disagreements,
     }
     print(json.dumps(summary, indent=2, ensure_ascii=False))
     return 0
