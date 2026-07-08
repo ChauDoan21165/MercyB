@@ -83,6 +83,21 @@ export const FEATURE_FLAGS = {
   PLACEMENT_V3_UI_ENABLED: readEnvBool("VITE_PLACEMENT_V3_UI_ENABLED", false),
 
   /**
+   * Placement results — surface the already-computed runtime decision to the
+   * learner. The placement runtime pipeline (applyPlacementRuntimeDecision)
+   * already writes placementValidity / runtimeDecision / teacherContext and
+   * per-skill scoreEligible onto the results object, but <ResultsProfile>
+   * renders only cefr/confidence/summary and drops the rest. When ON, a
+   * modest "How we assessed you" rationale section is rendered under the
+   * summary — derived purely from those existing result fields (no new
+   * fetches). It honestly surfaces reference/ineligible results (product
+   * audio failure, blocked mic, rapid-guessing) rather than hiding them.
+   * When OFF, <ResultsProfile> output is byte-identical to before.
+   * Reads env `VITE_PLACEMENT_DECISION_VISIBLE`; defaults to OFF.
+   */
+  PLACEMENT_DECISION_VISIBLE: readEnvBool("VITE_PLACEMENT_DECISION_VISIBLE", false),
+
+  /**
    * Home page "Your focus areas" card that surfaces placement-test
    * weakness tags. Off until CC3's placement-test persistence lands
    * and manual QA passes.
