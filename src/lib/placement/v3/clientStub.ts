@@ -18,6 +18,15 @@ import {
   placementTimelineItemFromSubmit,
 } from "./runtimeIntegration";
 import { openSignal, track } from "@/lib/telemetry/signalCell";
+import { LISTENING_PLACEMENT_PROMPTS } from "@/data/placement/v3/prompts/listening";
+
+// The placement-v3-session edge function emits audioScript but not audioUrl, so
+// the client falls back to the catalog's audioUrl (Supabase room-audio bucket,
+// scripts/generate-placement-v3-listening-audio.ts) keyed by prompt id. Catalog
+// is the single source of truth; no edge-function change required.
+const LISTENING_AUDIO_BY_ID: Record<string, string> = Object.fromEntries(
+  LISTENING_PLACEMENT_PROMPTS.flatMap((p) => (p.audioUrl ? [[p.id, p.audioUrl] as const] : [])),
+);
 
 const SESSION_CACHE_KEY = "mb.placement.v3.session";
 const RESULT_KEY = "mb.placement.v3.results.";
@@ -232,7 +241,9 @@ function toTask(prompt: PublicPrompt | null): PlacementV3Task | null {
     passage: typeof metadata.passageText === "string"
       ? bilingual(metadata.passageText, metadata.passageTextVi)
       : undefined,
-    audioUrl: typeof metadata.audioUrl === "string" ? metadata.audioUrl : undefined,
+    audioUrl:
+      (typeof metadata.audioUrl === "string" ? metadata.audioUrl : undefined) ??
+      (prompt.modality === "listening" ? LISTENING_AUDIO_BY_ID[prompt.id] : undefined),
     mercyTurn: prompt.modality === "conversation" ? bilingual(String(metadata.mercyTurn ?? prompt.promptText)) : undefined,
     options,
   };
