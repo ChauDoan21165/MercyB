@@ -1031,13 +1031,12 @@ test:
     - mercyb
     - isolated-builds
     - mercyb-tuned
-  # Belt-and-suspenders for the intermittent esbuild-service OOM. The tuned Air is
-  # now concurrent=1 (whole-machine serial: no build/lint/other job ever co-runs
-  # with a shard), which removes the deterministic co-run OOM. Non-CI background
-  # load on the 16 GB host can still occasionally jetsam-kill an esbuild service;
-  # a script_failure retry lands a green shard without manual intervention.
+  # UNWIND step 1: retry:2 -> retry:0. The esbuild-service crash was NOT OOM — it was the
+  # host cron `mercyb-strengthen-c2.sh` pkilling the live esbuild service (fixed 2026-07-09,
+  # esbuild pkill lines removed). retry:2 was masking that. retry:0 with a */15 cron fire in
+  # the shard window landing single-attempt green = proof nothing is left to mask.
   retry:
-    max: 2
+    max: 0
     when:
       - script_failure
   cache:
