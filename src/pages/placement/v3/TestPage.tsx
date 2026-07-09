@@ -88,12 +88,24 @@ export default function TestPage() {
 
   const task = session?.currentTask ?? null;
 
-  // "Preparing results" is a terminal render state: nothing in this component
-  // can leave it (the only navigate() to results lives in handleSubmit, and the
-  // submit button is not rendered here). Open a cell on entry so that sitting in
-  // it past the budget emits failed{timeout} instead of hanging silently.
+  // A session with no current task is an exit, never a resting place. If the
+  // session finished, leave for the results route — this is the path a resumed
+  // completed session takes, which previously parked on the spinner forever.
+  // Anything else is a dead end (server gave no next task but did not complete)
+  // and renders an actionable error below rather than a terminal spinner.
+  const awaitingResults = !loading && !!session && !task && session.status === "completed";
+  const deadEnd = !loading && !!session && !task && session.status !== "completed";
+
   useEffect(() => {
-    if (loading || !session || task) return;
+    if (!awaitingResults || !session) return;
+    navigate(`/placement/results/${session.sessionId}`, { replace: true });
+  }, [awaitingResults, navigate, session]);
+
+  // Cell covers the hand-off to the results route. A stuck navigate still emits
+  // failed{timeout}. The dead-end branch is already reported as an invariant by
+  // clientStub (`no_next_task_and_not_complete`), so it opens no second cell.
+  useEffect(() => {
+    if (!awaitingResults || !session) return;
     const cell = openSignal("PLACEMENT_RENDER_RESULTS", {
       context: {
         session_id: session.sessionId,
@@ -102,7 +114,7 @@ export default function TestPage() {
       },
     });
     return () => cell.cancel();
-  }, [loading, session, task]);
+  }, [awaitingResults, session]);
 
   useEffect(() => {
     if (!task) {
@@ -177,10 +189,75 @@ export default function TestPage() {
     );
   }
 
-  if (!task) {
+  // Completed → the effect above is navigating to results. This spinner is a
+  // one-frame hand-off, not a resting state.
+  if (awaitingResults) {
     return (
       <main id="main-content" tabIndex={-1} className="px-4 py-8">
         <LoadingPlaceholder label={{ en: "Preparing results", vi: "Đang chuẩn bị kết quả" }} />
+      </main>
+    );
+  }
+
+  // Dead end: no next task, but the session never completed. Give the user a way
+  // out instead of an indefinite spinner.
+  if (deadEnd) {
+    return (
+      <main id="main-content" tabIndex={-1} className="px-4 py-8">
+        <div
+          role="alert"
+          className="mx-auto flex max-w-[620px] items-start gap-3 rounded-[14px] border border-rose-200 bg-rose-50 p-4 text-sm text-rose-800"
+        >
+          <AlertCircle className="mt-0.5 h-4 w-4 shrink-0" aria-hidden />
+          <div>
+            <div className="font-black">
+              {pt({
+                en: "We could not load the next question.",
+                vi: "Không tải được câu hỏi tiếp theo.",
+                ja: "次の問題を読み込めませんでした。",
+                id: "Tidak dapat memuat pertanyaan berikutnya.",
+                th: "ไม่สามารถโหลดคำถามถัดไปได้",
+                ar: "تعذر تحميل السؤال التالي.",
+                hi: "अगला प्रश्न लोड नहीं हो सका।",
+                ur: "اگلا سوال لوڈ نہیں ہو سکا۔",
+                ko: "다음 문제를 불러오지 못했습니다.",
+                zh: "无法加载下一道题。",
+                pt: "Não foi possível carregar a próxima pergunta.",
+                tr: "Sonraki soru yüklenemedi.",
+              })}
+            </div>
+            <Button
+              type="button"
+              variant="outline"
+              size="sm"
+              onClick={() => navigate("/placement/who", { replace: true })}
+              className="mt-3 rounded-full bg-white"
+            >
+              {pt({
+                en: "Start a new test",
+                vi: "Bắt đầu bài mới",
+                ja: "新しいテストを開始",
+                id: "Mulai tes baru",
+                th: "เริ่มการทดสอบใหม่",
+                ar: "ابدأ اختبارًا جديدًا",
+                hi: "नया परीक्षण शुरू करें",
+                ur: "نیا ٹیسٹ شروع کریں",
+                ko: "새 테스트 시작",
+                zh: "开始新测试",
+                pt: "Iniciar um novo teste",
+                tr: "Yeni test başlat",
+              })}
+            </Button>
+          </div>
+        </div>
+      </main>
+    );
+  }
+
+  if (!task) {
+    return (
+      <main id="main-content" tabIndex={-1} className="px-4 py-8">
+        <LoadingPlaceholder />
       </main>
     );
   }
