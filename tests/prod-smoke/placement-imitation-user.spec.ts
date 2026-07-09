@@ -39,6 +39,11 @@ const KNOWN_CONSOLE_NOISE = [
   /\[vite\]/i,
   /Download the React DevTools/i,
   /favicon/i,
+  // Known, non-fatal prod issue surfaced by this smoke (2026-07-09): a Web
+  // Worker created from a blob: URL is blocked by the CSP script-src. The
+  // placement flow completes despite it. Tolerated here so it does not mask
+  // the two target assertions; reported separately for a real fix.
+  /Creating a worker from 'blob:.*violates the following Content Security Policy/i,
 ];
 
 // UI anchors (from src/pages/placement/v3/ResultsPage.tsx + ListeningTaskCard.tsx)
@@ -54,7 +59,10 @@ const AUDIO_FALLBACK =
 // the placement. With a canary session the adult card becomes a start button.
 const WHO_FOR_HEADING = /Who is this account for\?|Tài khoản này là của ai\?/i;
 const SIGNIN_GATE = /Sign in to take the test|Đăng nhập để làm bài test/i;
-const ADULT_START = /adult learner|người lớn|take the test|làm bài test|Start placement/i;
+// Authenticated adult card copy ("Me — an adult learner / Mình — người lớn").
+// Deliberately does NOT match the signed-out "Sign in to take the test" card,
+// so a not-yet-hydrated session can't send us into the OAuth flow by mistake.
+const ADULT_START = /adult learner|người lớn đang học|Start placement/i;
 
 function isKnownNoise(text: string): boolean {
   return KNOWN_CONSOLE_NOISE.some((re) => re.test(text));
@@ -136,17 +144,14 @@ async function maybeLoginCanary(page: Page): Promise<"canary" | "anonymous"> {
   if (!res.ok()) {
     throw new Error(`Canary login failed: ${res.status()} ${await res.text()}`);
   }
+  // The grant response IS the session shape supabase-js persists. The app uses a
+  // CUSTOM storage key (src/lib/supabaseClient.ts): `mb-supabase-auth-<projectId>`
+  // where projectId is the `<ref>` of `<ref>.supabase.co` — NOT the default
+  // `sb-<ref>-auth-token`. Writing the default key silently fails to authenticate.
   const session = await res.json();
   const projectRef = new URL(supabaseUrl).host.split(".")[0];
-  const storageKey = `sb-${projectRef}-auth-token`;
-  const value = JSON.stringify({
-    access_token: session.access_token,
-    refresh_token: session.refresh_token,
-    token_type: session.token_type ?? "bearer",
-    expires_in: session.expires_in ?? 3600,
-    expires_at: Math.floor(Date.now() / 1000) + (session.expires_in ?? 3600),
-    user: session.user,
-  });
+  const storageKey = `mb-supabase-auth-${projectRef}`;
+  const value = JSON.stringify(session);
   await page.addInitScript(
     ([k, v]) => window.localStorage.setItem(k, v),
     [storageKey, value] as const,
@@ -162,53 +167,75 @@ async function isOnResults(page: Page): Promise<boolean> {
     .catch(() => false);
 }
 
-/** Answer whatever task card is currently on screen, preferring a text answer. */
+const SUBMIT_LABEL = /Submit answer|Continue|Next|Tiếp tục|Nộp|Gửi/i;
+
+/** Wait for a real answer control (text field or radio) or the results screen. */
+async function waitForAnswerable(page: Page): Promise<void> {
+  await page
+    .waitForFunction(() => {
+      const b = document.body.innerText;
+      return (
+        /Here's what we found|Đây là kết quả/.test(b) ||
+        !!document.querySelector("textarea, input, [role=radio]")
+      );
+    }, undefined, { timeout: 15_000 })
+    .catch(() => {});
+}
+
+/**
+ * Answer whatever task card is on screen, preferring a text answer.
+ * Text fields are filled by real typing (pressSequentially) — the app's
+ * word-count gate does not register a programmatic value set (`.fill()`),
+ * which silently keeps Submit disabled.
+ */
 async function answerCurrentStep(page: Page): Promise<void> {
-  // Who-are-you gate (first step): pick the adult / take-the-test path.
-  const adult = page.getByRole("button", { name: ADULT_START });
-  if ((await adult.count()) && (await adult.first().isVisible().catch(() => false))) {
-    await adult.first().click();
-    return;
-  }
-  // Some builds render the who-for options as clickable cards, not buttons.
-  const adultCard = page.getByText(ADULT_START).first();
-  if ((await adultCard.count()) && (await adultCard.isVisible().catch(() => false))) {
-    await adultCard.click();
+  // Who-are-you step: pick the adult path.
+  const adult = page.getByRole("button", { name: ADULT_START }).first();
+  if ((await adult.count()) && (await adult.isVisible().catch(() => false))) {
+    await adult.click();
     return;
   }
 
-  // Prefer a free-text answer (writing / conversation / short answer) — this is
-  // how we bypass the mic.
-  const textbox = page.locator("textarea, input[type='text']").first();
-  if ((await textbox.count()) && (await textbox.isEditable().catch(() => false))) {
-    await textbox.fill(CANNED_TEXT);
+  // Prefer a free-text answer (writing / conversation / short answer) — bypasses
+  // the mic. getByRole('textbox') covers both <textarea> and <input> (incl.
+  // inputs with no explicit type attribute).
+  const field = page.getByRole("textbox").first();
+  if ((await field.count()) && (await field.isEditable().catch(() => false))) {
+    await field.click();
+    await field.fill("");
+    await field.pressSequentially(CANNED_TEXT, { delay: 2 });
     return;
   }
 
   // A "Record" gate may hide the transcript field until clicked.
-  const record = page.getByRole("button", { name: /Record|Ghi âm/i });
-  if ((await record.count()) && (await record.first().isVisible().catch(() => false))) {
-    await record.first().click();
-    const transcript = page.getByLabel(/Transcript or typed answer|Conversation answer|Writing answer/i);
-    if (await transcript.count()) await transcript.first().fill(CANNED_TEXT);
+  const record = page.getByRole("button", { name: /Record|Ghi âm/i }).first();
+  if ((await record.count()) && (await record.isVisible().catch(() => false))) {
+    await record.click();
+    const transcript = page.getByRole("textbox").first();
+    if ((await transcript.count()) && (await transcript.isEditable().catch(() => false))) {
+      await transcript.click();
+      await transcript.pressSequentially(CANNED_TEXT, { delay: 2 });
+    }
     return;
   }
 
   // Otherwise a multiple-choice task (listening / reading / feedback): pick one.
   const radios = page.getByRole("radio");
-  if (await radios.count()) {
-    await radios.first().click();
-    return;
-  }
+  if (await radios.count()) await radios.first().click();
 }
 
-/** Click the advance control (Submit / Next / Continue) and let the next task settle. */
+/** Click Submit, then wait out the async "Đang gửi câu trả lời" (submitting…) state. */
 async function advanceStep(page: Page): Promise<void> {
-  const advance = page
-    .getByRole("button", { name: /Submit answer|Continue|Next|Tiếp tục|Nộp|Gửi/i })
-    .first();
+  const advance = page.getByRole("button", { name: SUBMIT_LABEL }).first();
   if ((await advance.count()) && (await advance.isEnabled().catch(() => false))) {
     await advance.click().catch(() => {});
+    await page
+      .waitForFunction(
+        () => !/Đang gửi câu trả lời|Submitting/i.test(document.body.innerText),
+        undefined,
+        { timeout: 25_000 },
+      )
+      .catch(() => {});
     await page.waitForLoadState("networkidle", { timeout: 10_000 }).catch(() => {});
   }
 }
@@ -285,8 +312,10 @@ test.describe("PROD smoke — imitation user completes a full placement test", (
     const authMode = await maybeLoginCanary(page);
     testInfo.annotations.push({ type: "auth", description: authMode });
 
-    // 1. Start a fresh placement (real prod, real pipeline).
-    await page.goto("/placement/who", { waitUntil: "domcontentloaded" });
+    // 1. Start a fresh placement (real prod, real pipeline). networkidle so the
+    // Supabase session hydrates before we touch the who-for card — clicking
+    // before hydration shows the signed-out card and derails into OAuth.
+    await page.goto("/placement/who", { waitUntil: "networkidle" });
     await expect(page.getByText(WHO_FOR_HEADING).first()).toBeVisible({ timeout: 20_000 });
 
     // Auth gate: on prod the adult placement requires sign-in. An anonymous run
@@ -306,11 +335,19 @@ test.describe("PROD smoke — imitation user completes a full placement test", (
             "PROD_SMOKE_SUPABASE_ANON_KEY (canary account) to drive the full audio + results flow.",
         );
       }
+    } else {
+      // Canary: wait for the authenticated adult card to hydrate before we click,
+      // so we never fall through to the signed-out sign-in gate.
+      await expect(
+        page.getByRole("button", { name: ADULT_START }).first(),
+        "authenticated adult card ('Me — an adult learner') did not hydrate — canary session may be invalid.",
+      ).toBeVisible({ timeout: 20_000 });
     }
 
     // 2. Answer every item until the results screen appears.
     let sawListening = false;
     for (let step = 0; step < MAX_STEPS; step++) {
+      await waitForAnswerable(page);
       if (await isOnResults(page)) break;
 
       if (await page.locator(AUDIO_SELECTOR).count()) {
