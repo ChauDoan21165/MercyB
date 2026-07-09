@@ -188,6 +188,50 @@ async function captureRlsDeniedWithContext(
   });
 }
 
+/**
+ * Capture a placement "signal cell" failure as a tagged Sentry event.
+ *
+ * `action_code` + `failure_reason` are set as INDEXED tags on THIS event only
+ * — `withScope` isolates them so they never leak onto later events the way a
+ * global setTag would (same reasoning as captureRlsDenied). Dashboards and
+ * alert rules key on `action_code`.
+ *
+ * The message is a stable, low-cardinality string so Sentry groups all
+ * failures of one action+reason into a single issue; per-event detail rides in
+ * `extra`. `failure_reason:timeout` is the one that makes a hang visible — an
+ * action that never settles emits nothing else.
+ *
+ * No-op when Sentry is disabled (tests / SSR / no DSN), but still pulls init so
+ * a sustained failure reaches Sentry once the SDK is up.
+ */
+export function captureActionFailure(
+  actionCode: string,
+  reason: string,
+  context?: Record<string, unknown>,
+): void {
+  if (!isSentryEnabled()) {
+    activateSentry("explicit-action-failure");
+    return;
+  }
+  const sdk = getSentryModule() as SentryShape | null;
+  if (!sdk || typeof sdk.withScope !== "function") return;
+
+  const safeContext: Record<string, unknown> = {};
+  if (context) {
+    for (const [k, v] of Object.entries(context)) {
+      safeContext[k] = typeof v === "string" ? stripPII(v) : v;
+    }
+  }
+
+  sdk.withScope((scope) => {
+    scope.setTag("action_code", actionCode);
+    scope.setTag("failure_reason", reason);
+    sdk.captureException(new Error(`${actionCode} failed: ${reason}`), {
+      extra: safeContext,
+    });
+  });
+}
+
 async function buildRlsDeniedContext(
   sdk: SentryShape,
   context: RlsDeniedCaptureContext,
