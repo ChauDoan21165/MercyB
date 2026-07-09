@@ -1,0 +1,91 @@
+{
+  "rule": "pastNegationBuMei",
+  "ruleId": "zh-past-negation-bu-mei",
+  "language": "zh",
+  "description": "VN→ZH negation transfer: Vietnamese 'không' is a single negator for every tense, but Mandarin uses 没(有) for a COMPLETED event and 不 for habitual/future/volition/states. The 没-vs-不 contrast is aspect (completion), not tense. Learners carry the single VN form over and write '昨天我不去' for a completed event. Rule zh-past-negation-bu-mei rewrites 不 → 没 only when a BOUNDED-OCCASION marker (昨天/前天/刚才/刚刚) co-occurs with 不 immediately before a closed action verb.",
+  "fp_risk_note": "Medium risk, tightly scoped. Fires only when a bounded-occasion marker (昨天/前天/刚才/刚刚) is present AND 不 immediately precedes a closed action verb (去来吃喝看买卖做说写听见到回找). Habitual/durational markers (以前/去年/上周/上个月) are EXCLUDED because 不 is often correct with them ('以前他不吃肉' = used to not eat meat). Stative/modal/copula 不 (不高兴/不想/不是/不会/不喜欢) is out of scope because those verbs are not in the action set. 不 with no bounded marker ('我不去', habitual) abstains.",
+  "positive": [
+    {
+      "id": "past-bu-mei-pos-001",
+      "input": "昨天我不去",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "昨天我没去。",
+      "expectedRuleFired": "zh-past-negation-bu-mei",
+      "notes": "Bounded marker 昨天 + action verb 去: 不去 → 没去 (completed event)."
+    },
+    {
+      "id": "past-bu-mei-pos-002",
+      "input": "刚才他不吃",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "刚才他没吃。",
+      "expectedRuleFired": "zh-past-negation-bu-mei",
+      "notes": "Bounded marker 刚才 + action verb 吃: 不吃 → 没吃."
+    },
+    {
+      "id": "past-bu-mei-pos-003",
+      "input": "前天我不买",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "前天我没买。",
+      "expectedRuleFired": "zh-past-negation-bu-mei",
+      "notes": "Bounded marker 前天 + action verb 买: 不买 → 没买."
+    }
+  ],
+  "negative": [
+    {
+      "id": "past-bu-mei-neg-001",
+      "input": "我不去",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "我不去",
+      "expectedRuleFired": null,
+      "notes": "No bounded marker — habitual/future 不去 is correct, must abstain."
+    },
+    {
+      "id": "past-bu-mei-neg-002",
+      "input": "昨天我不高兴",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "昨天我不高兴",
+      "expectedRuleFired": null,
+      "notes": "Stative adjective 高兴 keeps 不 even with a bounded marker — not an action verb, must abstain."
+    },
+    {
+      "id": "past-bu-mei-neg-003",
+      "input": "昨天我不想去",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "昨天我不想去",
+      "expectedRuleFired": null,
+      "notes": "Modal/volition 想 ('did not want to go') keeps 不 — 不 lands on 想, not in the action set, must abstain."
+    },
+    {
+      "id": "past-bu-mei-neg-004",
+      "input": "昨天我不是学生",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "昨天我不是学生",
+      "expectedRuleFired": null,
+      "notes": "Copula negation 不是 keeps 不 even with a bounded marker — 是 is not an action verb, must abstain."
+    },
+    {
+      "id": "past-bu-mei-neg-005",
+      "input": "那时候我还不会说",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "那时候我还不会说",
+      "expectedRuleFired": null,
+      "notes": "Modal ability 不会 ('couldn't speak yet') keeps 不 — 会 is not an action verb (double-guarded: 那时候 is not a bounded marker), must abstain."
+    },
+    {
+      "id": "past-bu-mei-neg-006",
+      "input": "以前他不吃肉",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "以前他不吃肉",
+      "expectedRuleFired": null,
+      "notes": "Habitual-past 以前他不吃肉 ('used to not eat meat') keeps 不 — 以前 is a habitual/durational marker, deliberately excluded from the trigger, must abstain."
+    },
+    {
+      "id": "past-bu-mei-neg-007",
+      "input": "以前我不喜欢",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "以前我不喜欢",
+      "expectedRuleFired": null,
+      "notes": "Stative 喜欢 ('did not use to like') keeps 不 — both the habitual marker 以前 and the non-action verb spare it, must abstain."
+    }
+  ]
+}

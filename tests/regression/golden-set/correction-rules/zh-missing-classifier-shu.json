@@ -1,0 +1,59 @@
+{
+  "rule": "missingClassifierShu",
+  "ruleId": "zh-missing-classifier-shu",
+  "language": "zh",
+  "description": "VN→ZH bare-count transfer: Mandarin requires 数词 + 量词 + 名词, and the classifier for 书 (book) is 本. Under uncertainty about the Chinese classifier, learners drop it and write the number directly against the noun (三书). Rule zh-missing-classifier-shu inserts 本 between a number and the bare counted noun 书.",
+  "fp_risk_note": "Low risk. Scoped to the single noun 书 → 本 and fires only when a number (一两三…十) directly precedes 书. Abstains when a classifier is already present (三本书) and on compounds where 书 is not the counted head (图书馆, 书店, 书法) — those either lack number adjacency or are blocked by the tail lookahead.",
+  "positive": [
+    {
+      "id": "classifier-shu-pos-001",
+      "input": "我有三书",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "我有三本书。",
+      "expectedRuleFired": "zh-missing-classifier-shu",
+      "notes": "三书 → 三本书 (insert 本)."
+    },
+    {
+      "id": "classifier-shu-pos-002",
+      "input": "他买了五书",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "他买了五本书。",
+      "expectedRuleFired": "zh-missing-classifier-shu",
+      "notes": "五书 → 五本书 (insert 本)."
+    },
+    {
+      "id": "classifier-shu-pos-003",
+      "input": "桌上有两书",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "桌上有两本书。",
+      "expectedRuleFired": "zh-missing-classifier-shu",
+      "notes": "两书 → 两本书 (insert 本; 两 already correct so only the classifier rule fires)."
+    }
+  ],
+  "negative": [
+    {
+      "id": "classifier-shu-neg-001",
+      "input": "他有三本书",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "他有三本书",
+      "expectedRuleFired": null,
+      "notes": "Classifier 本 already present — must not double-insert, must abstain."
+    },
+    {
+      "id": "classifier-shu-neg-002",
+      "input": "我喜欢看书",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "我喜欢看书",
+      "expectedRuleFired": null,
+      "notes": "No number before 书 (看书 = 'read books', generic) — must abstain."
+    },
+    {
+      "id": "classifier-shu-neg-003",
+      "input": "图书馆很大",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "图书馆很大",
+      "expectedRuleFired": null,
+      "notes": "图书馆 (library) — 书 is inside a compound, preceded by 图 not a number, must abstain."
+    }
+  ]
+}

@@ -59,7 +59,7 @@ import {
   resolveExplainLanguage,
   type TutorProductMode,
 } from "@/lib/tutor/productConfigs";
-import { FEATURE_FLAGS } from "@/lib/featureFlags";
+import { FEATURE_FLAGS, isZhTutorCorrectionEnabled } from "@/lib/featureFlags";
 import { isPlacementEntryRouteAvailable } from "@/lib/placement/availability";
 import { reportRouteMountPerf } from "@/lib/monitoring/routePerf";
 import { captureCorrection } from "@/services/learnerCapture";
@@ -547,7 +547,7 @@ function createOpeningMessage(
   return { ...turn, role: "mercy" };
 }
 
-function buildLocalCorrection(
+export function buildLocalCorrection(
   input: string,
   target: TutorTarget,
 ): { ok: true; corrected: string; appliedRuleIds: string[]; status: "corrected" | "unchanged" } | { ok: false; message: string } {
@@ -561,6 +561,23 @@ function buildLocalCorrection(
       };
     }
     const result = correctWithTutorRules(input, "en");
+    if (result.status === "needs_ai") {
+      return { ok: false, message: result.message || AI_CORRECTION_REQUIRED_MESSAGE };
+    }
+    return {
+      ok: true,
+      corrected: result.corrected,
+      appliedRuleIds: result.appliedRuleIds,
+      status: result.status,
+    };
+  }
+
+  // Phase B — VN→Chinese delivery. Gated OFF by default so production is
+  // unaffected until the flag is flipped; the `en` branch above is never
+  // touched. When ON, zh learner input runs through the real correction engine
+  // (chineseCorrectionRules) instead of the legacy non-engine demo path.
+  if (target === "zh" && isZhTutorCorrectionEnabled()) {
+    const result = correctWithTutorRules(input, "zh");
     if (result.status === "needs_ai") {
       return { ok: false, message: result.message || AI_CORRECTION_REQUIRED_MESSAGE };
     }

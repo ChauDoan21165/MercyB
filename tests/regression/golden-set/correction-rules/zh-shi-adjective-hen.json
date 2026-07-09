@@ -1,0 +1,59 @@
+{
+  "rule": "shiAdjectiveHen",
+  "ruleId": "zh-shi-adjective-hen",
+  "language": "zh",
+  "description": "VN→ZH copula over-generalization: Mandarin predicative adjectives take a degree adverb (很), never the copula 是 — '我很高', not '我是高'. Beginners over-apply 是 as a universal copula, reinforced by VN 'là' being taught as = 是 and then mis-extended from nouns to adjectives. Rule zh-shi-adjective-hen replaces 是 with 很 for a subject pronoun + 是 + a closed monosyllabic adjective at clause end.",
+  "fp_risk_note": "Low-medium risk. Object scope is a closed adjective set (高矮胖瘦忙累饿渴冷热贵快慢远近难) at clause end. 是 + noun ('我是学生') never matches (the noun is not in the adjective set); the 是…的 focus structure ('这是红的') never matches (这 is not a subject pronoun in scope and 的 follows); negated 不是 ('我不是高') is blocked by the 不 lookbehind.",
+  "positive": [
+    {
+      "id": "shi-adj-pos-001",
+      "input": "我是高",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "我很高。",
+      "expectedRuleFired": "zh-shi-adjective-hen",
+      "notes": "我是高 → 我很高 (drop copula, insert degree adverb 很)."
+    },
+    {
+      "id": "shi-adj-pos-002",
+      "input": "他是忙",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "他很忙。",
+      "expectedRuleFired": "zh-shi-adjective-hen",
+      "notes": "他是忙 → 他很忙."
+    },
+    {
+      "id": "shi-adj-pos-003",
+      "input": "她是累",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "她很累。",
+      "expectedRuleFired": "zh-shi-adjective-hen",
+      "notes": "她是累 → 她很累."
+    }
+  ],
+  "negative": [
+    {
+      "id": "shi-adj-neg-001",
+      "input": "我是学生",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "我是学生",
+      "expectedRuleFired": null,
+      "notes": "是 + noun (学生 = student) is correct — must abstain."
+    },
+    {
+      "id": "shi-adj-neg-002",
+      "input": "这是红的",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "这是红的",
+      "expectedRuleFired": null,
+      "notes": "是…的 focus structure ('this one is the red one') is correct — must abstain."
+    },
+    {
+      "id": "shi-adj-neg-003",
+      "input": "我不是高",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "我不是高",
+      "expectedRuleFired": null,
+      "notes": "不是 negation — the 不 lookbehind guards it, must abstain (a different error, out of this rule's scope)."
+    }
+  ]
+}
