@@ -50,6 +50,13 @@ export type ListeningPlacementPrompt = PlacementPrompt & {
   titleVi: string;
   audioScript: string;
   audioScriptVi: string;
+  /**
+   * Full public URL of the ElevenLabs-generated clip in the Supabase room-audio
+   * bucket (key `placement-v3-listening/<id>.mp3`). A full URL (not a `/audio/…`
+   * static path) so the client fetches Supabase directly — a wrong static path
+   * would be served by Cloudflare as 200 text/html and fail silently.
+   */
+  audioUrl?: string;
   questions: PlacementQuestion[];
 };
 

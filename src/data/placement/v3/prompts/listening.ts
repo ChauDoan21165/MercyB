@@ -1,8 +1,15 @@
 import type { ListeningPlacementPrompt } from "./index.ts";
 
+// ElevenLabs-generated clips in the Supabase room-audio public bucket
+// (scripts/generate-placement-v3-listening-audio.ts). Full URLs so the client
+// fetches Supabase directly and never hits the Cloudflare-serves-html trap.
+const AUDIO_BASE =
+  "https://buemdfxyhxunzpgdoqin.supabase.co/storage/v1/object/public/room-audio/placement-v3-listening";
+
 export const LISTENING_PLACEMENT_PROMPTS = [
   {
     id: "a1-l-school-schedule",
+    audioUrl: `${AUDIO_BASE}/a1-l-school-schedule.mp3`,
     modality: "listening",
     targetLevel: "A1",
     acceptableLevels: ["A1", "A2"],
@@ -37,6 +44,7 @@ export const LISTENING_PLACEMENT_PROMPTS = [
   },
   {
     id: "a2-l-food-order",
+    audioUrl: `${AUDIO_BASE}/a2-l-food-order.mp3`,
     modality: "listening",
     targetLevel: "A2",
     acceptableLevels: ["A1", "A2", "B1"],
@@ -71,6 +79,7 @@ export const LISTENING_PLACEMENT_PROMPTS = [
   },
   {
     id: "b1-l-parent-teacher",
+    audioUrl: `${AUDIO_BASE}/b1-l-parent-teacher.mp3`,
     modality: "listening",
     targetLevel: "B1",
     acceptableLevels: ["A2", "B1", "B2"],
@@ -103,6 +112,7 @@ export const LISTENING_PLACEMENT_PROMPTS = [
   },
   {
     id: "b1-l-delivery-problem",
+    audioUrl: `${AUDIO_BASE}/b1-l-delivery-problem.mp3`,
     modality: "listening",
     targetLevel: "B1",
     acceptableLevels: ["A2", "B1", "B2"],
@@ -135,6 +145,7 @@ export const LISTENING_PLACEMENT_PROMPTS = [
   },
   {
     id: "b2-l-scholarship-advice",
+    audioUrl: `${AUDIO_BASE}/b2-l-scholarship-advice.mp3`,
     modality: "listening",
     targetLevel: "B2",
     acceptableLevels: ["B1", "B2", "C1"],
@@ -167,6 +178,7 @@ export const LISTENING_PLACEMENT_PROMPTS = [
   },
   {
     id: "c1-l-workplace-feedback",
+    audioUrl: `${AUDIO_BASE}/c1-l-workplace-feedback.mp3`,
     modality: "listening",
     targetLevel: "C1",
     acceptableLevels: ["B2", "C1", "C2"],
