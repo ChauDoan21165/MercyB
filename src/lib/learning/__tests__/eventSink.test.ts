@@ -2,9 +2,16 @@ import { beforeEach, describe, expect, it, vi } from "vitest";
 import {
   createLearningEventSink,
   toLearningEventRow,
+  type InsertResult,
   type LearningEventRow,
 } from "@/lib/learning/eventSink";
 import type { LearningEvent } from "@/lib/tutor/learningEvents";
+
+// Explicitly-typed insert mock: without the signature, vi.fn() infers an
+// empty-args tuple (mock.calls[0][0] → TS2493) and pins the return type to the
+// first literal (so a later { error: null } fails). Typing it fixes both.
+type InsertFn = (rows: LearningEventRow[]) => Promise<InsertResult>;
+const insertMock = (impl: InsertFn) => vi.fn<InsertFn>(impl);
 
 // A tiny in-memory stand-in for the localStorage queue that honours the real
 // drain semantics: peek returns oldest-first; ack removes by id.
@@ -48,7 +55,7 @@ describe("learning eventSink", () => {
 
   it("flushes a batch and acks only on a successful insert", async () => {
     const q = makeFakeQueue([ev("a", 1), ev("b", 2), ev("c", 3)]);
-    const insertRows = vi.fn(async () => ({ error: null }));
+    const insertRows = insertMock(async () => ({ error: null }));
     const sink = createLearningEventSink({
       enabled: true, peek: q.peek, ack: q.ack, insertRows,
       getUserId: async () => "user-1", batchSize: 2, now: () => 0,
@@ -67,7 +74,7 @@ describe("learning eventSink", () => {
 
   it("does NOT ack and backs off when the insert errors (queue intact)", async () => {
     const q = makeFakeQueue([ev("a", 1), ev("b", 2)]);
-    const insertRows = vi.fn(async () => ({ error: { message: "network down" } }));
+    const insertRows = insertMock(async () => ({ error: { message: "network down" } }));
     let clock = 0;
     const sink = createLearningEventSink({
       enabled: true, peek: q.peek, ack: q.ack, insertRows,
@@ -94,7 +101,7 @@ describe("learning eventSink", () => {
 
   it("skips when signed out (cannot satisfy RLS user_id = auth.uid())", async () => {
     const q = makeFakeQueue([ev("a", 1)]);
-    const insertRows = vi.fn(async () => ({ error: null }));
+    const insertRows = insertMock(async () => ({ error: null }));
     const sink = createLearningEventSink({
       enabled: true, peek: q.peek, ack: q.ack, insertRows,
       getUserId: async () => null, now: () => 0,
@@ -106,17 +113,29 @@ describe("learning eventSink", () => {
     expect(q.remaining().map((e) => e.id)).toEqual(["a"]); // untouched
   });
 
-  it("is a no-op when disabled", async () => {
-    const insertRows = vi.fn(async () => ({ error: null }));
-    const sink = createLearningEventSink({ enabled: false, insertRows, getUserId: async () => "u" });
+  it("is a no-op when disabled (flush skipped, start schedules no timer)", async () => {
+    const insertRows = insertMock(async () => ({ error: null }));
+    const peek = vi.fn(() => [] as LearningEvent[]);
+    const setIntervalSpy = vi.spyOn(globalThis, "setInterval");
+
+    const sink = createLearningEventSink({ enabled: false, insertRows, peek, getUserId: async () => "u" });
     expect(sink.isEnabled()).toBe(false);
+
+    // start() must not schedule an interval or drain anything when disabled.
+    sink.start();
+    expect(setIntervalSpy).not.toHaveBeenCalled();
+    expect(peek).not.toHaveBeenCalled();
+
     expect((await sink.flush()).skipped).toBe("disabled");
     expect(insertRows).not.toHaveBeenCalled();
+
+    sink.stop();
+    setIntervalSpy.mockRestore();
   });
 
   it("maybeFlushOnSize only flushes at or above the threshold", async () => {
     const q = makeFakeQueue([ev("a", 1), ev("b", 2)]);
-    const insertRows = vi.fn(async () => ({ error: null }));
+    const insertRows = insertMock(async () => ({ error: null }));
     const sink = createLearningEventSink({
       enabled: true, peek: q.peek, ack: q.ack, insertRows,
       getUserId: async () => "u", sizeThreshold: 3, now: () => 0,

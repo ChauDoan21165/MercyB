@@ -97,6 +97,7 @@ const AccessibleToaster = lazyWithRetry(() =>
 );
 import "@/index.css";
 import { supabase } from "@/lib/supabaseClient";
+import { createLearningEventSink, isLearningEventSinkEnabled } from "@/lib/learning/eventSink";
 import { AuthProvider } from "@/providers/AuthProvider";
 import NotificationBootstrap from "@/components/NotificationBootstrap";
 import { QueryClientProvider } from "@tanstack/react-query";
@@ -697,3 +698,16 @@ w.__MB_REACT_ROOT__.render(
     </BrowserRouter>
   </ErrorBoundary>,
 );
+
+// ── Durable learning-event sink (WP-PHASE2-01 v2) ───────────────────────────
+// Drains the local learning-events queue to Supabase on an interval. Gated hard
+// behind VITE_LEARNING_EVENT_SINK_ENABLED: when the flag is unset/false the
+// guard is not entered — no sink object, no timer, no listener, zero work.
+if (isLearningEventSinkEnabled()) {
+  const learningEventSink = createLearningEventSink();
+  learningEventSink.start();
+  // Vite dev HMR: dispose the interval on hot-reload so timers never stack.
+  if (import.meta.hot) {
+    import.meta.hot.dispose(() => learningEventSink.stop());
+  }
+}
