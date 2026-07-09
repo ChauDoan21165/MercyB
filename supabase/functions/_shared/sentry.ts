@@ -25,8 +25,10 @@
  *
  * `wrapHandler` catches anything thrown by the inner handler, ships it
  * to Sentry with `function_name` tag + `user_id` (when the JWT is
- * attached), and re-throws so the platform's normal error response
- * (500 + structured log) is unchanged.
+ * attached), and returns a 500 that carries the function's CORS headers
+ * (the platform's default 500 carries none, so browsers would see an
+ * opaque CORS / net::ERR_FAILED instead of the real error). The success
+ * path is passed through untouched.
  */
 
 // deno-lint-ignore-file no-explicit-any
@@ -218,28 +220,67 @@ export function readUserIdFromAuthHeader(req: Request): string | null {
 }
 
 /**
+ * CORS headers attached to the wrapper's own 500 error response. Every
+ * function that currently uses `wrapHandler` serves browser traffic with
+ * `Access-Control-Allow-Origin: *` and no credentials, so this default
+ * matches their success + OPTIONS paths. A function that needs different
+ * headers (e.g. a specific origin with credentials) passes its own set via
+ * `wrapHandler(name, handler, { corsHeaders })`.
+ */
+const DEFAULT_ERROR_CORS: Record<string, string> = {
+  'Access-Control-Allow-Origin': '*',
+  'Access-Control-Allow-Headers':
+    'authorization, x-client-info, apikey, content-type',
+};
+
+export interface WrapHandlerOptions {
+  /** CORS headers for the wrapper's 500 response. Defaults to `Origin: *`
+   * (see `DEFAULT_ERROR_CORS`). Should mirror the wrapped function's
+   * success/OPTIONS CORS so the browser can read the error instead of
+   * reporting an opaque CORS / net::ERR_FAILED failure. */
+  corsHeaders?: Record<string, string>;
+}
+
+/**
  * Drop-in wrapper for an edge-function handler. Catches throws and
  * unhandled rejections, attributes them to the function name, attaches
- * the user id (if present), and rethrows so the platform sees the
- * original error and produces its normal 500 / log line.
+ * the user id (if present), and — instead of re-throwing into the
+ * platform's default 500 (which carries NO CORS headers, so browsers see
+ * an opaque CORS / net::ERR_FAILED instead of the real error) — returns a
+ * 500 that carries the function's CORS headers plus a small JSON body.
+ *
+ * Error path only: a handler that returns normally is passed straight
+ * through, byte-for-byte unchanged. The Sentry capture stays
+ * fire-and-forget so a slow or failing log can never delay or break the
+ * 500 response.
  */
 export function wrapHandler(
   functionName: string,
   handler: (req: Request) => Response | Promise<Response>,
+  options: WrapHandlerOptions = {},
 ): (req: Request) => Promise<Response> {
+  const corsHeaders = options.corsHeaders ?? DEFAULT_ERROR_CORS;
   return async (req: Request): Promise<Response> => {
     try {
       return await handler(req);
     } catch (err) {
+      // Build the response first, then start the capture fire-and-forget:
+      // the error response must never await (or depend on the success of)
+      // observability. `captureEdgeError` is already non-throwing.
+      const response = new Response(
+        JSON.stringify({ error: 'internal_error' }),
+        {
+          status: 500,
+          headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+        },
+      );
       const userId = readUserIdFromAuthHeader(req);
-      // Fire-and-forget; we don't want the capture to block the error
-      // response, but we do want it to start before we rethrow.
       void captureEdgeError(err, {
         functionName,
         userId,
         extra: { method: req.method, url: stripUrlPii(req.url) },
       });
-      throw err;
+      return response;
     }
   };
 }
