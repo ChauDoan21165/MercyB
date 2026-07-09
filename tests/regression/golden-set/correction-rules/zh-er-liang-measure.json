@@ -1,0 +1,59 @@
+{
+  "rule": "erLiangMeasure",
+  "ruleId": "zh-er-liang-measure",
+  "language": "zh",
+  "description": "VN→ZH number transfer: Vietnamese 'hai' is a single word for the number 2 in every context, but Mandarin splits it into 二 (counting/ordinals/dates) and 两 (before a measure word). Learners carry the single VN form over and write 二个/二本/二斤. Rule zh-er-liang-measure rewrites 二 → 两 only when it directly precedes a measure word.",
+  "fp_risk_note": "Low risk. Fires only on 二 immediately before a measure word (个本只张条杯瓶件位双台辆碗块斤). The digit lookbehind excludes 二 inside a larger numeral (十二个, 二十); the 第 lookbehind excludes ordinals (第二个); dates and floors (二月, 二号, 二楼) never match because 月/号/楼 are not measure words.",
+  "positive": [
+    {
+      "id": "er-liang-pos-001",
+      "input": "我要二个",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "我要两个。",
+      "expectedRuleFired": "zh-er-liang-measure",
+      "notes": "二个 → 两个 before the generic measure word 个."
+    },
+    {
+      "id": "er-liang-pos-002",
+      "input": "他有二本书",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "他有两本书。",
+      "expectedRuleFired": "zh-er-liang-measure",
+      "notes": "二本 → 两本 before the book classifier 本."
+    },
+    {
+      "id": "er-liang-pos-003",
+      "input": "买二斤茶",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "买两斤茶。",
+      "expectedRuleFired": "zh-er-liang-measure",
+      "notes": "二斤 → 两斤 before the weight measure 斤 (neutral market phrase)."
+    }
+  ],
+  "negative": [
+    {
+      "id": "er-liang-neg-001",
+      "input": "二月很冷",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "二月很冷",
+      "expectedRuleFired": null,
+      "notes": "二月 (February) keeps 二 — 月 is not a measure word, must abstain."
+    },
+    {
+      "id": "er-liang-neg-002",
+      "input": "第二个人来了",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "第二个人来了",
+      "expectedRuleFired": null,
+      "notes": "第二 (ordinal 'second') keeps 二 — 第 lookbehind guards it, must abstain."
+    },
+    {
+      "id": "er-liang-neg-003",
+      "input": "十二个学生",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "十二个学生",
+      "expectedRuleFired": null,
+      "notes": "十二 (12) keeps 二 — the digit lookbehind blocks 二 inside a larger numeral, must abstain."
+    }
+  ]
+}
