@@ -33,6 +33,13 @@ export default defineConfig({
       "**/.{idea,git,cache,output,temp}/**",
       "**/e2e/**",
       "**/playwright/**",
+      // Playwright prod-smoke specs use @playwright/test's test.describe(), which
+      // throws under vitest ("two versions of @playwright/test" at collection).
+      // They run in their own lane — CI job `production-placement-smoke` →
+      // `npm run test:prod-smoke` → playwright.prod-smoke.config.ts (testDir
+      // ./tests/prod-smoke) — against real prod, NOT vitest/jsdom. Exclude here
+      // so vitest stops mis-collecting them; coverage stays in the Playwright lane.
+      "tests/prod-smoke/**",
       // Nested agent git worktrees live under the main checkout's
       // .claude/worktrees/. Without this, `vitest run` from the repo
       // root re-discovers every test inside each worktree copy and
