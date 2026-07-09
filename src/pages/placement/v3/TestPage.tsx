@@ -23,6 +23,7 @@ import {
 import { useChromeT, useChromeLanguage } from "@/lib/i18n/chromeLanguage";
 import { usePlacementT } from "@/components/placement/nativeCopy";
 import type { PlacementNativeSlots } from "@/components/placement/nativeCopy";
+import { openSignal } from "@/lib/telemetry/signalCell";
 
 function minAnswerLength(task: PlacementV3Task) {
   if (task.type === "writing") return 40;
@@ -86,6 +87,22 @@ export default function TestPage() {
   }, [session?.currentTask?.id]);
 
   const task = session?.currentTask ?? null;
+
+  // "Preparing results" is a terminal render state: nothing in this component
+  // can leave it (the only navigate() to results lives in handleSubmit, and the
+  // submit button is not rendered here). Open a cell on entry so that sitting in
+  // it past the budget emits failed{timeout} instead of hanging silently.
+  useEffect(() => {
+    if (loading || !session || task) return;
+    const cell = openSignal("PLACEMENT_RENDER_RESULTS", {
+      context: {
+        session_id: session.sessionId,
+        session_status: session.status,
+        answered_count: session.answeredCount,
+      },
+    });
+    return () => cell.cancel();
+  }, [loading, session, task]);
 
   useEffect(() => {
     if (!task) {
