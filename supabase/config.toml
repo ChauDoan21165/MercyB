@@ -68,9 +68,6 @@ verify_jwt = true
 # =========================
 # PAYMENTS
 # =========================
-[functions.paypal-payment]
-verify_jwt = true
-
 [functions.bank-transfer-orders]
 verify_jwt = false
 
