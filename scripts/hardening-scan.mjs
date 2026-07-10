@@ -237,13 +237,35 @@ function checkC() {
   }));
 
   // supabase .data destructured without a sibling error binding.
-  const supabaseData = scanLines(SRC_FILES, () => /const\s*\{\s*data\s*(:\s*\w+)?\s*\}\s*=\s*await\s+/);
+  // Refinement (v2): drop two false-positive classes the H8 exercise exposed —
+  //   (1) auth reads (supabase.auth.getUser/getSession/getClaims): the error is
+  //       an auth failure, not a data-query swallow, and callers already handle
+  //       the null-user path (e.g. speechAttempts.ts, learnerCapture.ts,
+  //       notebookService.ts).
+  //   (2) reads inside an open try{ … } block: the error is not silently
+  //       dropped, it surfaces via the surrounding catch.
+  const supabaseData = scanLines(
+    SRC_FILES,
+    () => /const\s*\{\s*data\s*(:\s*\w+)?\s*\}\s*=\s*await\s+/,
+    (lines, i) => {
+      const authRe = /\.auth\.(getUser|getSession|getClaims)/;
+      // the awaited call may spill onto the next 1–2 lines
+      if (authRe.test(lines[i]) || authRe.test(lines[i + 1] || "") || authRe.test(lines[i + 2] || "")) return false;
+      // inside an open try above (no intervening catch) → not a silent swallow
+      let opens = 0;
+      for (let k = Math.max(0, i - 10); k < i; k++) {
+        if (/\btry\s*\{/.test(lines[k])) opens++;
+        if (/\}\s*catch\b/.test(lines[k])) opens--;
+      }
+      return opens <= 0;
+    },
+  );
   if (supabaseData.length) findings.push(makeFinding({
     id: "BOUNDARY-async-data-no-error",
     severity: "HIGH",
-    evidence: `regex: "const { data } = await …" destructures data with no sibling { error } binding — ${supabaseData.length} hit(s). e.g. ${supabaseData[0].file}:${supabaseData[0].line}: ${supabaseData[0].text}`,
+    evidence: `regex: "const { data } = await …" destructures data with no sibling { error } binding (v2: excludes auth.get* reads and try/catch-wrapped calls) — ${supabaseData.length} hit(s). e.g. ${supabaseData[0].file}:${supabaseData[0].line}: ${supabaseData[0].text}`,
     hits: supabaseData,
-    consumer_question: "Does this call have an error channel (Supabase/fetch) that is being ignored, so a failed call silently yields undefined data downstream?",
+    consumer_question: "Does this data query have an error channel (Supabase/fetch) that is being ignored, so a failed call silently yields undefined data downstream?",
   }));
 
   return { status: "ok", findings };
