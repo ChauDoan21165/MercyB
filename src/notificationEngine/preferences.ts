@@ -25,11 +25,19 @@ export const DEFAULT_NOTIFICATION_PREFERENCES: NotificationPreferences = {
 export async function loadNotificationPreferences(
   userId: string,
 ): Promise<NotificationPreferences> {
-  const { data } = await supabase
+  const { data, error } = await supabase
     .from("push_preferences")
     .select("*")
     .eq("user_id", userId)
     .maybeSingle();
+
+  // Surface load failures instead of silently masking them as "no prefs":
+  // a transient Supabase error otherwise makes a learner's saved reminder
+  // settings look reset. We still fall back to defaults (safe), but the
+  // failure is now observable rather than swallowed.
+  if (error) {
+    console.warn("[notificationEngine] loadNotificationPreferences failed; using defaults", { userId, error });
+  }
 
   if (!data) return { ...DEFAULT_NOTIFICATION_PREFERENCES };
 

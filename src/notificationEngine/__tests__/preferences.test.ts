@@ -1,13 +1,16 @@
 import { vi, describe, it, expect, beforeEach } from "vitest";
 
-const h = vi.hoisted(() => ({ data: null as Record<string, unknown> | null }));
+const h = vi.hoisted(() => ({
+  data: null as Record<string, unknown> | null,
+  error: null as { message: string } | null,
+}));
 
 vi.mock("@/lib/supabaseClient", () => ({
   supabase: {
     from: () => ({
       select: () => ({
         eq: () => ({
-          maybeSingle: async () => ({ data: h.data, error: null }),
+          maybeSingle: async () => ({ data: h.data, error: h.error }),
         }),
       }),
     }),
@@ -21,6 +24,37 @@ import {
 
 beforeEach(() => {
   h.data = null;
+  h.error = null;
+});
+
+describe("preferences.loadNotificationPreferences — error surfacing (WP-H8)", () => {
+  it("surfaces a Supabase load error (does not silently swallow) and still returns defaults", async () => {
+    h.data = null;
+    h.error = { message: "connection reset" };
+    const warn = vi.spyOn(console, "warn").mockImplementation(() => {});
+    try {
+      const prefs = await loadNotificationPreferences("u1");
+      // Safe fallback preserved…
+      expect(prefs).toEqual(DEFAULT_NOTIFICATION_PREFERENCES);
+      // …but the failure is now observable, not swallowed.
+      expect(warn).toHaveBeenCalledTimes(1);
+      expect(warn.mock.calls[0].join(" ")).toMatch(/loadNotificationPreferences failed/i);
+    } finally {
+      warn.mockRestore();
+    }
+  });
+
+  it("does not warn on the happy path (no error)", async () => {
+    h.data = null;
+    h.error = null;
+    const warn = vi.spyOn(console, "warn").mockImplementation(() => {});
+    try {
+      await loadNotificationPreferences("u1");
+      expect(warn).not.toHaveBeenCalled();
+    } finally {
+      warn.mockRestore();
+    }
+  });
 });
 
 describe("preferences.loadNotificationPreferences", () => {
