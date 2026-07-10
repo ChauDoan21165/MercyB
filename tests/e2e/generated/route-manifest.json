@@ -1,0 +1,1424 @@
+{
+  "generatedFrom": "src/router/AppRouter.tsx",
+  "routeCount": 213,
+  "crawlableCount": 172,
+  "skipped": [
+    {
+      "reason": "dev-only",
+      "count": 3
+    },
+    {
+      "reason": "unresolvable-param::sloId",
+      "count": 1
+    },
+    {
+      "reason": "unresolvable-param::slug",
+      "count": 3
+    },
+    {
+      "reason": "unresolvable-param::weekStart",
+      "count": 1
+    },
+    {
+      "reason": "unresolvable-param::code",
+      "count": 1
+    },
+    {
+      "reason": "unresolvable-param::packId",
+      "count": 1
+    },
+    {
+      "reason": "unresolvable-param::itemId",
+      "count": 4
+    },
+    {
+      "reason": "unresolvable-param::passageId",
+      "count": 2
+    },
+    {
+      "reason": "unresolvable-param::topicId",
+      "count": 6
+    },
+    {
+      "reason": "unresolvable-param::sectionId",
+      "count": 1
+    },
+    {
+      "reason": "unresolvable-param::id",
+      "count": 1
+    },
+    {
+      "reason": "unresolvable-param::token",
+      "count": 1
+    },
+    {
+      "reason": "unresolvable-param::native",
+      "count": 2
+    },
+    {
+      "reason": "unresolvable-param::clipId",
+      "count": 1
+    },
+    {
+      "reason": "redirect",
+      "count": 3
+    },
+    {
+      "reason": "unresolvable-param::scenarioId",
+      "count": 1
+    },
+    {
+      "reason": "unresolvable-param::learnerId",
+      "count": 1
+    },
+    {
+      "reason": "unresolvable-param::sessionId",
+      "count": 2
+    },
+    {
+      "reason": "unresolvable-param::phonemeSlug",
+      "count": 1
+    },
+    {
+      "reason": "feature-flag-gated",
+      "count": 1
+    },
+    {
+      "reason": "unresolvable-param::storyId",
+      "count": 1
+    },
+    {
+      "reason": "unresolvable-param::tierId",
+      "count": 1
+    },
+    {
+      "reason": "unresolvable-param::username",
+      "count": 1
+    },
+    {
+      "reason": "unresolvable-param::promptId",
+      "count": 1
+    }
+  ],
+  "routes": [
+    {
+      "path": "/",
+      "raw": "/",
+      "kind": "public",
+      "crawl": true
+    },
+    {
+      "path": "/__sentry-smoke-test",
+      "raw": "/__sentry-smoke-test",
+      "kind": "dev",
+      "crawl": false,
+      "skipReason": "dev-only"
+    },
+    {
+      "path": "/account",
+      "raw": "/account",
+      "kind": "auth",
+      "crawl": true
+    },
+    {
+      "path": "/account/notifications",
+      "raw": "/account/notifications",
+      "kind": "auth",
+      "crawl": true
+    },
+    {
+      "path": "/account/push-preferences",
+      "raw": "/account/push-preferences",
+      "kind": "auth",
+      "crawl": true
+    },
+    {
+      "path": "/account/security",
+      "raw": "/account/security",
+      "kind": "auth",
+      "crawl": true
+    },
+    {
+      "path": "/admin",
+      "raw": "/admin",
+      "kind": "admin",
+      "crawl": true
+    },
+    {
+      "path": "/admin/access-codes",
+      "raw": "/admin/access-codes",
+      "kind": "admin",
+      "crawl": true
+    },
+    {
+      "path": "/admin/analytics",
+      "raw": "/admin/analytics",
+      "kind": "admin",
+      "crawl": true
+    },
+    {
+      "path": "/admin/audio-coverage",
+      "raw": "/admin/audio-coverage",
+      "kind": "admin",
+      "crawl": true
+    },
+    {
+      "path": "/admin/behavioral",
+      "raw": "/admin/behavioral",
+      "kind": "admin",
+      "crawl": true
+    },
+    {
+      "path": "/admin/cost-monitoring",
+      "raw": "/admin/cost-monitoring",
+      "kind": "admin",
+      "crawl": true
+    },
+    {
+      "path": "/admin/feature-flags",
+      "raw": "/admin/feature-flags",
+      "kind": "admin",
+      "crawl": true
+    },
+    {
+      "path": "/admin/feedback",
+      "raw": "/admin/feedback",
+      "kind": "admin",
+      "crawl": true
+    },
+    {
+      "path": "/admin/feedback-triage",
+      "raw": "/admin/feedback-triage",
+      "kind": "admin",
+      "crawl": true
+    },
+    {
+      "path": "/admin/frontend-perf",
+      "raw": "/admin/frontend-perf",
+      "kind": "admin",
+      "crawl": true
+    },
+    {
+      "path": "/admin/interview-prompts",
+      "raw": "/admin/interview-prompts",
+      "kind": "admin",
+      "crawl": true
+    },
+    {
+      "path": "/admin/latency",
+      "raw": "/admin/latency",
+      "kind": "admin",
+      "crawl": true
+    },
+    {
+      "path": "/admin/payments",
+      "raw": "/admin/payments",
+      "kind": "admin",
+      "crawl": true
+    },
+    {
+      "path": "/admin/pending-sentences",
+      "raw": "/admin/pending-sentences",
+      "kind": "admin",
+      "crawl": true
+    },
+    {
+      "path": "/admin/placement-forensics",
+      "raw": "/admin/placement-forensics",
+      "kind": "admin",
+      "crawl": true
+    },
+    {
+      "path": "/admin/retention",
+      "raw": "/admin/retention",
+      "kind": "admin",
+      "crawl": true
+    },
+    {
+      "path": "/admin/room-load-diagnostics",
+      "raw": "/admin/room-load-diagnostics",
+      "kind": "admin",
+      "crawl": true
+    },
+    {
+      "path": "/admin/slo",
+      "raw": "/admin/slo",
+      "kind": "admin",
+      "crawl": true
+    },
+    {
+      "path": "/admin/slo/:sloId",
+      "raw": "/admin/slo/:sloId",
+      "kind": "admin",
+      "crawl": false,
+      "skipReason": "unresolvable-param::sloId"
+    },
+    {
+      "path": "/admin/stories",
+      "raw": "/admin/stories",
+      "kind": "admin",
+      "crawl": true
+    },
+    {
+      "path": "/admin/subscriptions",
+      "raw": "/admin/subscriptions",
+      "kind": "admin",
+      "crawl": true
+    },
+    {
+      "path": "/admin/teacher-feedback",
+      "raw": "/admin/teacher-feedback",
+      "kind": "admin",
+      "crawl": true
+    },
+    {
+      "path": "/admin/users",
+      "raw": "/admin/users",
+      "kind": "admin",
+      "crawl": true
+    },
+    {
+      "path": "/ai-tutor",
+      "raw": "/ai-tutor",
+      "kind": "auth",
+      "crawl": true
+    },
+    {
+      "path": "/auth",
+      "raw": "/auth",
+      "kind": "auth",
+      "crawl": true
+    },
+    {
+      "path": "/auth/callback",
+      "raw": "/auth/callback",
+      "kind": "auth",
+      "crawl": true
+    },
+    {
+      "path": "/auth/challenge",
+      "raw": "/auth/challenge",
+      "kind": "auth",
+      "crawl": true
+    },
+    {
+      "path": "/auth/recover",
+      "raw": "/auth/recover",
+      "kind": "auth",
+      "crawl": true
+    },
+    {
+      "path": "/auth/save-progress",
+      "raw": "/auth/save-progress",
+      "kind": "auth",
+      "crawl": true
+    },
+    {
+      "path": "/auth/security",
+      "raw": "/auth/security",
+      "kind": "auth",
+      "crawl": true
+    },
+    {
+      "path": "/billing",
+      "raw": "/billing",
+      "kind": "auth",
+      "crawl": true
+    },
+    {
+      "path": "/billing/success",
+      "raw": "/billing/success",
+      "kind": "auth",
+      "crawl": true
+    },
+    {
+      "path": "/blog",
+      "raw": "/blog",
+      "kind": "public",
+      "crawl": true
+    },
+    {
+      "path": "/blog/:slug",
+      "raw": "/blog/:slug",
+      "kind": "public",
+      "crawl": false,
+      "skipReason": "unresolvable-param::slug"
+    },
+    {
+      "path": "/blog/weekly-digest",
+      "raw": "/blog/weekly-digest",
+      "kind": "public",
+      "crawl": true
+    },
+    {
+      "path": "/blog/weekly-digest/:weekStart",
+      "raw": "/blog/weekly-digest/:weekStart",
+      "kind": "public",
+      "crawl": false,
+      "skipReason": "unresolvable-param::weekStart"
+    },
+    {
+      "path": "/cert/:code",
+      "raw": "/cert/:code",
+      "kind": "public",
+      "crawl": false,
+      "skipReason": "unresolvable-param::code"
+    },
+    {
+      "path": "/certificates",
+      "raw": "/certificates",
+      "kind": "auth",
+      "crawl": true
+    },
+    {
+      "path": "/challenge",
+      "raw": "/challenge",
+      "kind": "auth",
+      "crawl": true
+    },
+    {
+      "path": "/challenge/history",
+      "raw": "/challenge/history",
+      "kind": "auth",
+      "crawl": true
+    },
+    {
+      "path": "/chat/addiction_support_free",
+      "raw": "/chat/:roomId",
+      "kind": "auth",
+      "crawl": true
+    },
+    {
+      "path": "/contribute",
+      "raw": "/contribute",
+      "kind": "auth",
+      "crawl": true
+    },
+    {
+      "path": "/contribute/my-submissions",
+      "raw": "/contribute/my-submissions",
+      "kind": "auth",
+      "crawl": true
+    },
+    {
+      "path": "/corporate",
+      "raw": "/corporate",
+      "kind": "auth",
+      "crawl": true
+    },
+    {
+      "path": "/corporate/join",
+      "raw": "/corporate/join",
+      "kind": "auth",
+      "crawl": true
+    },
+    {
+      "path": "/corporate/setup",
+      "raw": "/corporate/setup",
+      "kind": "auth",
+      "crawl": true
+    },
+    {
+      "path": "/culture/vn",
+      "raw": "/culture/vn",
+      "kind": "public",
+      "crawl": true
+    },
+    {
+      "path": "/culture/vn/:packId",
+      "raw": "/culture/vn/:packId",
+      "kind": "public",
+      "crawl": false,
+      "skipReason": "unresolvable-param::packId"
+    },
+    {
+      "path": "/dev/api",
+      "raw": "/dev/api",
+      "kind": "dev",
+      "crawl": false,
+      "skipReason": "dev-only"
+    },
+    {
+      "path": "/dev/audio-test",
+      "raw": "/dev/audio-test",
+      "kind": "dev",
+      "crawl": false,
+      "skipReason": "dev-only"
+    },
+    {
+      "path": "/exam-prep/ielts/listening",
+      "raw": "/exam-prep/ielts/listening",
+      "kind": "public",
+      "crawl": true
+    },
+    {
+      "path": "/exam-prep/ielts/listening/:itemId",
+      "raw": "/exam-prep/ielts/listening/:itemId",
+      "kind": "public",
+      "crawl": false,
+      "skipReason": "unresolvable-param::itemId"
+    },
+    {
+      "path": "/exam-prep/ielts/reading",
+      "raw": "/exam-prep/ielts/reading",
+      "kind": "public",
+      "crawl": true
+    },
+    {
+      "path": "/exam-prep/ielts/reading/:passageId",
+      "raw": "/exam-prep/ielts/reading/:passageId",
+      "kind": "public",
+      "crawl": false,
+      "skipReason": "unresolvable-param::passageId"
+    },
+    {
+      "path": "/exam-prep/ielts/speaking",
+      "raw": "/exam-prep/ielts/speaking",
+      "kind": "public",
+      "crawl": true
+    },
+    {
+      "path": "/exam-prep/ielts/speaking/:topicId",
+      "raw": "/exam-prep/ielts/speaking/:topicId",
+      "kind": "public",
+      "crawl": false,
+      "skipReason": "unresolvable-param::topicId"
+    },
+    {
+      "path": "/exam-prep/ielts/writing",
+      "raw": "/exam-prep/ielts/writing",
+      "kind": "public",
+      "crawl": true
+    },
+    {
+      "path": "/exam-prep/ielts/writing/:topicId",
+      "raw": "/exam-prep/ielts/writing/:topicId",
+      "kind": "public",
+      "crawl": false,
+      "skipReason": "unresolvable-param::topicId"
+    },
+    {
+      "path": "/exam-prep/toefl/listening",
+      "raw": "/exam-prep/toefl/listening",
+      "kind": "public",
+      "crawl": true
+    },
+    {
+      "path": "/exam-prep/toefl/listening/:itemId",
+      "raw": "/exam-prep/toefl/listening/:itemId",
+      "kind": "public",
+      "crawl": false,
+      "skipReason": "unresolvable-param::itemId"
+    },
+    {
+      "path": "/exam-prep/toefl/reading",
+      "raw": "/exam-prep/toefl/reading",
+      "kind": "public",
+      "crawl": true
+    },
+    {
+      "path": "/exam-prep/toefl/reading/:passageId",
+      "raw": "/exam-prep/toefl/reading/:passageId",
+      "kind": "public",
+      "crawl": false,
+      "skipReason": "unresolvable-param::passageId"
+    },
+    {
+      "path": "/exam-prep/toefl/speaking",
+      "raw": "/exam-prep/toefl/speaking",
+      "kind": "public",
+      "crawl": true
+    },
+    {
+      "path": "/exam-prep/toefl/speaking/:topicId",
+      "raw": "/exam-prep/toefl/speaking/:topicId",
+      "kind": "public",
+      "crawl": false,
+      "skipReason": "unresolvable-param::topicId"
+    },
+    {
+      "path": "/exam-prep/toefl/writing",
+      "raw": "/exam-prep/toefl/writing",
+      "kind": "public",
+      "crawl": true
+    },
+    {
+      "path": "/exam-prep/toefl/writing/:topicId",
+      "raw": "/exam-prep/toefl/writing/:topicId",
+      "kind": "public",
+      "crawl": false,
+      "skipReason": "unresolvable-param::topicId"
+    },
+    {
+      "path": "/exam-prep/toeic",
+      "raw": "/exam-prep/toeic",
+      "kind": "public",
+      "crawl": true
+    },
+    {
+      "path": "/exam/ielts",
+      "raw": "/exam/ielts",
+      "kind": "public",
+      "crawl": true
+    },
+    {
+      "path": "/exam/ielts/estimator",
+      "raw": "/exam/ielts/estimator",
+      "kind": "public",
+      "crawl": true
+    },
+    {
+      "path": "/exam/ielts/listening",
+      "raw": "/exam/ielts/listening",
+      "kind": "public",
+      "crawl": true
+    },
+    {
+      "path": "/exam/ielts/reading",
+      "raw": "/exam/ielts/reading",
+      "kind": "public",
+      "crawl": true
+    },
+    {
+      "path": "/exam/ielts/speaking",
+      "raw": "/exam/ielts/speaking",
+      "kind": "public",
+      "crawl": true
+    },
+    {
+      "path": "/exam/ielts/writing",
+      "raw": "/exam/ielts/writing",
+      "kind": "public",
+      "crawl": true
+    },
+    {
+      "path": "/exam/toefl",
+      "raw": "/exam/toefl",
+      "kind": "public",
+      "crawl": true
+    },
+    {
+      "path": "/exam/toefl/estimator",
+      "raw": "/exam/toefl/estimator",
+      "kind": "public",
+      "crawl": true
+    },
+    {
+      "path": "/exam/toefl/listening",
+      "raw": "/exam/toefl/listening",
+      "kind": "public",
+      "crawl": true
+    },
+    {
+      "path": "/exam/toefl/reading",
+      "raw": "/exam/toefl/reading",
+      "kind": "public",
+      "crawl": true
+    },
+    {
+      "path": "/exam/toefl/speaking",
+      "raw": "/exam/toefl/speaking",
+      "kind": "public",
+      "crawl": true
+    },
+    {
+      "path": "/exam/toefl/writing",
+      "raw": "/exam/toefl/writing",
+      "kind": "public",
+      "crawl": true
+    },
+    {
+      "path": "/exam/toeic",
+      "raw": "/exam/toeic",
+      "kind": "public",
+      "crawl": true
+    },
+    {
+      "path": "/exam/toeic/estimator",
+      "raw": "/exam/toeic/estimator",
+      "kind": "public",
+      "crawl": true
+    },
+    {
+      "path": "/exam/toeic/practice/:sectionId",
+      "raw": "/exam/toeic/practice/:sectionId",
+      "kind": "public",
+      "crawl": false,
+      "skipReason": "unresolvable-param::sectionId"
+    },
+    {
+      "path": "/exam/vstep",
+      "raw": "/exam/vstep",
+      "kind": "public",
+      "crawl": true
+    },
+    {
+      "path": "/exam/vstep/listening",
+      "raw": "/exam/vstep/listening",
+      "kind": "public",
+      "crawl": true
+    },
+    {
+      "path": "/exam/vstep/reading",
+      "raw": "/exam/vstep/reading",
+      "kind": "public",
+      "crawl": true
+    },
+    {
+      "path": "/exam/vstep/speaking",
+      "raw": "/exam/vstep/speaking",
+      "kind": "public",
+      "crawl": true
+    },
+    {
+      "path": "/exam/vstep/writing",
+      "raw": "/exam/vstep/writing",
+      "kind": "public",
+      "crawl": true
+    },
+    {
+      "path": "/family",
+      "raw": "/family",
+      "kind": "auth",
+      "crawl": true
+    },
+    {
+      "path": "/gift",
+      "raw": "/gift",
+      "kind": "auth",
+      "crawl": true
+    },
+    {
+      "path": "/gift/my",
+      "raw": "/gift/my",
+      "kind": "auth",
+      "crawl": true
+    },
+    {
+      "path": "/gift/redeem",
+      "raw": "/gift/redeem",
+      "kind": "auth",
+      "crawl": true
+    },
+    {
+      "path": "/groups",
+      "raw": "/groups",
+      "kind": "auth",
+      "crawl": true
+    },
+    {
+      "path": "/groups/:id",
+      "raw": "/groups/:id",
+      "kind": "auth",
+      "crawl": false,
+      "skipReason": "unresolvable-param::id"
+    },
+    {
+      "path": "/groups/new",
+      "raw": "/groups/new",
+      "kind": "auth",
+      "crawl": true
+    },
+    {
+      "path": "/ielts/writing/topic/:topicId",
+      "raw": "/ielts/writing/topic/:topicId",
+      "kind": "auth",
+      "crawl": false,
+      "skipReason": "unresolvable-param::topicId"
+    },
+    {
+      "path": "/interview",
+      "raw": "/interview",
+      "kind": "auth",
+      "crawl": true
+    },
+    {
+      "path": "/interview/:slug",
+      "raw": "/interview/:slug",
+      "kind": "auth",
+      "crawl": false,
+      "skipReason": "unresolvable-param::slug"
+    },
+    {
+      "path": "/interview/:slug/summary",
+      "raw": "/interview/:slug/summary",
+      "kind": "auth",
+      "crawl": false,
+      "skipReason": "unresolvable-param::slug"
+    },
+    {
+      "path": "/invite/:token",
+      "raw": "/invite/:token",
+      "kind": "auth",
+      "crawl": false,
+      "skipReason": "unresolvable-param::token"
+    },
+    {
+      "path": "/kids/vi-english",
+      "raw": "/kids/vi-english",
+      "kind": "auth",
+      "crawl": true
+    },
+    {
+      "path": "/languages",
+      "raw": "/languages",
+      "kind": "public",
+      "crawl": true
+    },
+    {
+      "path": "/languages/arabic",
+      "raw": "/languages/arabic",
+      "kind": "public",
+      "crawl": true
+    },
+    {
+      "path": "/languages/chinese",
+      "raw": "/languages/chinese",
+      "kind": "public",
+      "crawl": true
+    },
+    {
+      "path": "/languages/french",
+      "raw": "/languages/french",
+      "kind": "public",
+      "crawl": true
+    },
+    {
+      "path": "/languages/german",
+      "raw": "/languages/german",
+      "kind": "public",
+      "crawl": true
+    },
+    {
+      "path": "/languages/hindi",
+      "raw": "/languages/hindi",
+      "kind": "public",
+      "crawl": true
+    },
+    {
+      "path": "/languages/indonesian",
+      "raw": "/languages/indonesian",
+      "kind": "public",
+      "crawl": true
+    },
+    {
+      "path": "/languages/italian",
+      "raw": "/languages/italian",
+      "kind": "public",
+      "crawl": true
+    },
+    {
+      "path": "/languages/japanese",
+      "raw": "/languages/japanese",
+      "kind": "public",
+      "crawl": true
+    },
+    {
+      "path": "/languages/korean",
+      "raw": "/languages/korean",
+      "kind": "public",
+      "crawl": true
+    },
+    {
+      "path": "/languages/portuguese",
+      "raw": "/languages/portuguese",
+      "kind": "public",
+      "crawl": true
+    },
+    {
+      "path": "/languages/punjabi",
+      "raw": "/languages/punjabi",
+      "kind": "public",
+      "crawl": true
+    },
+    {
+      "path": "/languages/russian",
+      "raw": "/languages/russian",
+      "kind": "public",
+      "crawl": true
+    },
+    {
+      "path": "/languages/spanish",
+      "raw": "/languages/spanish",
+      "kind": "public",
+      "crawl": true
+    },
+    {
+      "path": "/languages/swahili",
+      "raw": "/languages/swahili",
+      "kind": "public",
+      "crawl": true
+    },
+    {
+      "path": "/languages/thai",
+      "raw": "/languages/thai",
+      "kind": "public",
+      "crawl": true
+    },
+    {
+      "path": "/languages/thai-english",
+      "raw": "/languages/thai-english",
+      "kind": "public",
+      "crawl": true
+    },
+    {
+      "path": "/languages/turkish",
+      "raw": "/languages/turkish",
+      "kind": "public",
+      "crawl": true
+    },
+    {
+      "path": "/languages/urdu",
+      "raw": "/languages/urdu",
+      "kind": "public",
+      "crawl": true
+    },
+    {
+      "path": "/languages/vietnamese",
+      "raw": "/languages/vietnamese",
+      "kind": "public",
+      "crawl": true
+    },
+    {
+      "path": "/leaderboard",
+      "raw": "/leaderboard",
+      "kind": "auth",
+      "crawl": true
+    },
+    {
+      "path": "/leaderboard/referral",
+      "raw": "/leaderboard/referral",
+      "kind": "auth",
+      "crawl": true
+    },
+    {
+      "path": "/learn/:native/:target",
+      "raw": "/learn/:native/:target",
+      "kind": "auth",
+      "crawl": false,
+      "skipReason": "unresolvable-param::native"
+    },
+    {
+      "path": "/learn/:native/english",
+      "raw": "/learn/:native/english",
+      "kind": "auth",
+      "crawl": false,
+      "skipReason": "unresolvable-param::native"
+    },
+    {
+      "path": "/legal/content-advisory",
+      "raw": "/legal/content-advisory",
+      "kind": "public",
+      "crawl": true
+    },
+    {
+      "path": "/legal/privacy",
+      "raw": "/legal/privacy",
+      "kind": "public",
+      "crawl": true
+    },
+    {
+      "path": "/legal/terms",
+      "raw": "/legal/terms",
+      "kind": "public",
+      "crawl": true
+    },
+    {
+      "path": "/listening",
+      "raw": "/listening",
+      "kind": "auth",
+      "crawl": true
+    },
+    {
+      "path": "/listening/:clipId",
+      "raw": "/listening/:clipId",
+      "kind": "auth",
+      "crawl": false,
+      "skipReason": "unresolvable-param::clipId"
+    },
+    {
+      "path": "/login",
+      "raw": "/login",
+      "kind": "redirect",
+      "crawl": false,
+      "skipReason": "redirect"
+    },
+    {
+      "path": "/mercy",
+      "raw": "/mercy",
+      "kind": "auth",
+      "crawl": true
+    },
+    {
+      "path": "/mercy/chat",
+      "raw": "/mercy/chat",
+      "kind": "auth",
+      "crawl": true
+    },
+    {
+      "path": "/mock-interview",
+      "raw": "/mock-interview",
+      "kind": "auth",
+      "crawl": true
+    },
+    {
+      "path": "/mock-interview/:scenarioId",
+      "raw": "/mock-interview/:scenarioId",
+      "kind": "auth",
+      "crawl": false,
+      "skipReason": "unresolvable-param::scenarioId"
+    },
+    {
+      "path": "/mock-interview/community",
+      "raw": "/mock-interview/community",
+      "kind": "auth",
+      "crawl": true
+    },
+    {
+      "path": "/mock-interview/submit-prompt",
+      "raw": "/mock-interview/submit-prompt",
+      "kind": "auth",
+      "crawl": true
+    },
+    {
+      "path": "/onboarding",
+      "raw": "/onboarding",
+      "kind": "public",
+      "crawl": true
+    },
+    {
+      "path": "/pack/nail-tech",
+      "raw": "/pack/nail-tech",
+      "kind": "auth",
+      "crawl": true
+    },
+    {
+      "path": "/parent/:learnerId",
+      "raw": "/parent/:learnerId",
+      "kind": "auth",
+      "crawl": false,
+      "skipReason": "unresolvable-param::learnerId"
+    },
+    {
+      "path": "/placement",
+      "raw": "/placement",
+      "kind": "auth",
+      "crawl": true
+    },
+    {
+      "path": "/placement/results",
+      "raw": "/placement/results",
+      "kind": "auth",
+      "crawl": true
+    },
+    {
+      "path": "/placement/results/:sessionId",
+      "raw": "/placement/results/:sessionId",
+      "kind": "auth",
+      "crawl": false,
+      "skipReason": "unresolvable-param::sessionId"
+    },
+    {
+      "path": "/placement/resume",
+      "raw": "/placement/resume",
+      "kind": "auth",
+      "crawl": true
+    },
+    {
+      "path": "/placement/skip",
+      "raw": "/placement/skip",
+      "kind": "auth",
+      "crawl": true
+    },
+    {
+      "path": "/placement/test",
+      "raw": "/placement/test",
+      "kind": "auth",
+      "crawl": true
+    },
+    {
+      "path": "/placement/test/:sessionId",
+      "raw": "/placement/test/:sessionId",
+      "kind": "auth",
+      "crawl": false,
+      "skipReason": "unresolvable-param::sessionId"
+    },
+    {
+      "path": "/placement/who",
+      "raw": "/placement/who",
+      "kind": "auth",
+      "crawl": true
+    },
+    {
+      "path": "/practice/phoneme/:phonemeSlug",
+      "raw": "/practice/phoneme/:phonemeSlug",
+      "kind": "auth",
+      "crawl": false,
+      "skipReason": "unresolvable-param::phonemeSlug"
+    },
+    {
+      "path": "/practice/pronunciation",
+      "raw": "/practice/pronunciation",
+      "kind": "auth",
+      "crawl": true
+    },
+    {
+      "path": "/pricing",
+      "raw": "/pricing",
+      "kind": "public",
+      "crawl": true
+    },
+    {
+      "path": "/privacy",
+      "raw": "/privacy",
+      "kind": "public",
+      "crawl": true
+    },
+    {
+      "path": "/professions",
+      "raw": "/professions",
+      "kind": "public",
+      "crawl": true
+    },
+    {
+      "path": "/professions/customer-service",
+      "raw": "/professions/customer-service",
+      "kind": "public",
+      "crawl": true
+    },
+    {
+      "path": "/professions/drivers",
+      "raw": "/professions/drivers",
+      "kind": "public",
+      "crawl": true
+    },
+    {
+      "path": "/professions/healthcare",
+      "raw": "/professions/healthcare",
+      "kind": "public",
+      "crawl": true
+    },
+    {
+      "path": "/professions/hospitality",
+      "raw": "/professions/hospitality",
+      "kind": "public",
+      "crawl": true
+    },
+    {
+      "path": "/professions/nail-tech",
+      "raw": "/professions/nail-tech",
+      "kind": "public",
+      "crawl": true
+    },
+    {
+      "path": "/professions/restaurant",
+      "raw": "/professions/restaurant",
+      "kind": "public",
+      "crawl": true
+    },
+    {
+      "path": "/professions/tech-worker",
+      "raw": "/professions/tech-worker",
+      "kind": "public",
+      "crawl": true
+    },
+    {
+      "path": "/progress",
+      "raw": "/progress",
+      "kind": "auth",
+      "crawl": true
+    },
+    {
+      "path": "/progress/play",
+      "raw": "/progress/play",
+      "kind": "auth",
+      "crawl": true
+    },
+    {
+      "path": "/promo-code",
+      "raw": "/promo-code",
+      "kind": "auth",
+      "crawl": true
+    },
+    {
+      "path": "/pronunciation/srs",
+      "raw": "/pronunciation/srs",
+      "kind": "auth",
+      "crawl": true
+    },
+    {
+      "path": "/redeem",
+      "raw": "/redeem",
+      "kind": "redirect",
+      "crawl": false,
+      "skipReason": "redirect"
+    },
+    {
+      "path": "/referral",
+      "raw": "/referral",
+      "kind": "auth",
+      "crawl": true
+    },
+    {
+      "path": "/referral/invite-family",
+      "raw": "/referral/invite-family",
+      "kind": "auth",
+      "crawl": true
+    },
+    {
+      "path": "/reset-password",
+      "raw": "/reset-password",
+      "kind": "auth",
+      "crawl": true
+    },
+    {
+      "path": "/review/*",
+      "raw": "/review/*",
+      "kind": "flag",
+      "crawl": false,
+      "skipReason": "feature-flag-gated"
+    },
+    {
+      "path": "/roadmap",
+      "raw": "/roadmap",
+      "kind": "auth",
+      "crawl": true
+    },
+    {
+      "path": "/roleplay",
+      "raw": "/roleplay",
+      "kind": "auth",
+      "crawl": true
+    },
+    {
+      "path": "/room",
+      "raw": "/room",
+      "kind": "auth",
+      "crawl": true
+    },
+    {
+      "path": "/room/addiction_support_free",
+      "raw": "/room/:roomId",
+      "kind": "public",
+      "crawl": true
+    },
+    {
+      "path": "/room/room/addiction_support_free",
+      "raw": "/room/room/:roomId",
+      "kind": "public",
+      "crawl": true
+    },
+    {
+      "path": "/rooms",
+      "raw": "/rooms",
+      "kind": "public",
+      "crawl": true
+    },
+    {
+      "path": "/rooms/addiction_support_free",
+      "raw": "/rooms/:roomId",
+      "kind": "public",
+      "crawl": true
+    },
+    {
+      "path": "/rooms/room/addiction_support_free",
+      "raw": "/rooms/room/:roomId",
+      "kind": "public",
+      "crawl": true
+    },
+    {
+      "path": "/seo/hoc-tieng-anh-cho-nguoi-viet",
+      "raw": "/seo/hoc-tieng-anh-cho-nguoi-viet",
+      "kind": "public",
+      "crawl": true
+    },
+    {
+      "path": "/seo/hoc-tieng-anh-mien-phi",
+      "raw": "/seo/hoc-tieng-anh-mien-phi",
+      "kind": "public",
+      "crawl": true
+    },
+    {
+      "path": "/seo/loi-tieng-anh-nguoi-viet-hay-sai",
+      "raw": "/seo/loi-tieng-anh-nguoi-viet-hay-sai",
+      "kind": "public",
+      "crawl": true
+    },
+    {
+      "path": "/seo/phong-van-tieng-anh",
+      "raw": "/seo/phong-van-tieng-anh",
+      "kind": "public",
+      "crawl": true
+    },
+    {
+      "path": "/seo/sua-phat-am-tieng-anh",
+      "raw": "/seo/sua-phat-am-tieng-anh",
+      "kind": "public",
+      "crawl": true
+    },
+    {
+      "path": "/share/progress",
+      "raw": "/share/progress",
+      "kind": "auth",
+      "crawl": true
+    },
+    {
+      "path": "/signin",
+      "raw": "/signin",
+      "kind": "public",
+      "crawl": true
+    },
+    {
+      "path": "/signup",
+      "raw": "/signup",
+      "kind": "public",
+      "crawl": true
+    },
+    {
+      "path": "/speak",
+      "raw": "/speak",
+      "kind": "auth",
+      "crawl": true
+    },
+    {
+      "path": "/speech/history",
+      "raw": "/speech/history",
+      "kind": "auth",
+      "crawl": true
+    },
+    {
+      "path": "/stories",
+      "raw": "/stories",
+      "kind": "public",
+      "crawl": true
+    },
+    {
+      "path": "/stories/:storyId",
+      "raw": "/stories/:storyId",
+      "kind": "public",
+      "crawl": false,
+      "skipReason": "unresolvable-param::storyId"
+    },
+    {
+      "path": "/stories/share",
+      "raw": "/stories/share",
+      "kind": "public",
+      "crawl": true
+    },
+    {
+      "path": "/support",
+      "raw": "/support",
+      "kind": "public",
+      "crawl": true
+    },
+    {
+      "path": "/teacher",
+      "raw": "/teacher",
+      "kind": "auth",
+      "crawl": true
+    },
+    {
+      "path": "/terms",
+      "raw": "/terms",
+      "kind": "public",
+      "crawl": true
+    },
+    {
+      "path": "/tiers",
+      "raw": "/tiers",
+      "kind": "auth",
+      "crawl": true
+    },
+    {
+      "path": "/tiers/:tierId",
+      "raw": "/tiers/:tierId",
+      "kind": "auth",
+      "crawl": false,
+      "skipReason": "unresolvable-param::tierId"
+    },
+    {
+      "path": "/toeic/practice/:itemId",
+      "raw": "/toeic/practice/:itemId",
+      "kind": "auth",
+      "crawl": false,
+      "skipReason": "unresolvable-param::itemId"
+    },
+    {
+      "path": "/u/:username",
+      "raw": "/u/:username",
+      "kind": "auth",
+      "crawl": false,
+      "skipReason": "unresolvable-param::username"
+    },
+    {
+      "path": "/unsubscribe",
+      "raw": "/unsubscribe",
+      "kind": "auth",
+      "crawl": true
+    },
+    {
+      "path": "/upgrade",
+      "raw": "/upgrade",
+      "kind": "redirect",
+      "crawl": false,
+      "skipReason": "redirect"
+    },
+    {
+      "path": "/vocabulary",
+      "raw": "/vocabulary",
+      "kind": "auth",
+      "crawl": true
+    },
+    {
+      "path": "/vocabulary/review",
+      "raw": "/vocabulary/review",
+      "kind": "auth",
+      "crawl": true
+    },
+    {
+      "path": "/vstep/speaking/:topicId",
+      "raw": "/vstep/speaking/:topicId",
+      "kind": "auth",
+      "crawl": false,
+      "skipReason": "unresolvable-param::topicId"
+    },
+    {
+      "path": "/weak-at",
+      "raw": "/weak-at",
+      "kind": "auth",
+      "crawl": true
+    },
+    {
+      "path": "/writing",
+      "raw": "/writing",
+      "kind": "auth",
+      "crawl": true
+    },
+    {
+      "path": "/writing-feedback",
+      "raw": "/writing-feedback",
+      "kind": "auth",
+      "crawl": true
+    },
+    {
+      "path": "/writing/:promptId",
+      "raw": "/writing/:promptId",
+      "kind": "auth",
+      "crawl": false,
+      "skipReason": "unresolvable-param::promptId"
+    },
+    {
+      "path": "/xp",
+      "raw": "/xp",
+      "kind": "auth",
+      "crawl": true
+    },
+    {
+      "path": "review/:itemId",
+      "raw": "review/:itemId",
+      "kind": "auth",
+      "crawl": false,
+      "skipReason": "unresolvable-param::itemId"
+    }
+  ]
+}
