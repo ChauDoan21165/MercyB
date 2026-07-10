@@ -1,0 +1,2081 @@
+{
+  "meta": {
+    "baseURL": "https://mercyblade.com",
+    "crawledAt": "2026-07-10T16:18:32.245Z",
+    "authMode": "anonymous",
+    "skippedRoutes": [
+      {
+        "path": "/__sentry-smoke-test",
+        "reason": "dev-only"
+      },
+      {
+        "path": "/admin/slo/:sloId",
+        "reason": "unresolvable-param::sloId"
+      },
+      {
+        "path": "/blog/:slug",
+        "reason": "unresolvable-param::slug"
+      },
+      {
+        "path": "/blog/weekly-digest/:weekStart",
+        "reason": "unresolvable-param::weekStart"
+      },
+      {
+        "path": "/cert/:code",
+        "reason": "unresolvable-param::code"
+      },
+      {
+        "path": "/culture/vn/:packId",
+        "reason": "unresolvable-param::packId"
+      },
+      {
+        "path": "/dev/api",
+        "reason": "dev-only"
+      },
+      {
+        "path": "/dev/audio-test",
+        "reason": "dev-only"
+      },
+      {
+        "path": "/exam-prep/ielts/listening/:itemId",
+        "reason": "unresolvable-param::itemId"
+      },
+      {
+        "path": "/exam-prep/ielts/reading/:passageId",
+        "reason": "unresolvable-param::passageId"
+      },
+      {
+        "path": "/exam-prep/ielts/speaking/:topicId",
+        "reason": "unresolvable-param::topicId"
+      },
+      {
+        "path": "/exam-prep/ielts/writing/:topicId",
+        "reason": "unresolvable-param::topicId"
+      },
+      {
+        "path": "/exam-prep/toefl/listening/:itemId",
+        "reason": "unresolvable-param::itemId"
+      },
+      {
+        "path": "/exam-prep/toefl/reading/:passageId",
+        "reason": "unresolvable-param::passageId"
+      },
+      {
+        "path": "/exam-prep/toefl/speaking/:topicId",
+        "reason": "unresolvable-param::topicId"
+      },
+      {
+        "path": "/exam-prep/toefl/writing/:topicId",
+        "reason": "unresolvable-param::topicId"
+      },
+      {
+        "path": "/exam/toeic/practice/:sectionId",
+        "reason": "unresolvable-param::sectionId"
+      },
+      {
+        "path": "/groups/:id",
+        "reason": "unresolvable-param::id"
+      },
+      {
+        "path": "/ielts/writing/topic/:topicId",
+        "reason": "unresolvable-param::topicId"
+      },
+      {
+        "path": "/interview/:slug",
+        "reason": "unresolvable-param::slug"
+      },
+      {
+        "path": "/interview/:slug/summary",
+        "reason": "unresolvable-param::slug"
+      },
+      {
+        "path": "/invite/:token",
+        "reason": "unresolvable-param::token"
+      },
+      {
+        "path": "/learn/:native/:target",
+        "reason": "unresolvable-param::native"
+      },
+      {
+        "path": "/learn/:native/english",
+        "reason": "unresolvable-param::native"
+      },
+      {
+        "path": "/listening/:clipId",
+        "reason": "unresolvable-param::clipId"
+      },
+      {
+        "path": "/login",
+        "reason": "redirect"
+      },
+      {
+        "path": "/mock-interview/:scenarioId",
+        "reason": "unresolvable-param::scenarioId"
+      },
+      {
+        "path": "/parent/:learnerId",
+        "reason": "unresolvable-param::learnerId"
+      },
+      {
+        "path": "/placement/results/:sessionId",
+        "reason": "unresolvable-param::sessionId"
+      },
+      {
+        "path": "/placement/test/:sessionId",
+        "reason": "unresolvable-param::sessionId"
+      },
+      {
+        "path": "/practice/phoneme/:phonemeSlug",
+        "reason": "unresolvable-param::phonemeSlug"
+      },
+      {
+        "path": "/redeem",
+        "reason": "redirect"
+      },
+      {
+        "path": "/review/*",
+        "reason": "feature-flag-gated"
+      },
+      {
+        "path": "/stories/:storyId",
+        "reason": "unresolvable-param::storyId"
+      },
+      {
+        "path": "/tiers/:tierId",
+        "reason": "unresolvable-param::tierId"
+      },
+      {
+        "path": "/toeic/practice/:itemId",
+        "reason": "unresolvable-param::itemId"
+      },
+      {
+        "path": "/u/:username",
+        "reason": "unresolvable-param::username"
+      },
+      {
+        "path": "/upgrade",
+        "reason": "redirect"
+      },
+      {
+        "path": "/vstep/speaking/:topicId",
+        "reason": "unresolvable-param::topicId"
+      },
+      {
+        "path": "/writing/:promptId",
+        "reason": "unresolvable-param::promptId"
+      },
+      {
+        "path": "review/:itemId",
+        "reason": "unresolvable-param::itemId"
+      }
+    ]
+  },
+  "summary": {
+    "pass": 136,
+    "gated": 0,
+    "fail": 36,
+    "newFailures": 36,
+    "knownReproduced": []
+  },
+  "results": [
+    {
+      "path": "/",
+      "kind": "public",
+      "outcome": "pass",
+      "httpStatus": 200,
+      "landedOn": "/",
+      "failures": [],
+      "knownDefectsHit": []
+    },
+    {
+      "path": "/account",
+      "kind": "auth",
+      "outcome": "pass",
+      "httpStatus": 200,
+      "landedOn": "/account",
+      "failures": [],
+      "knownDefectsHit": []
+    },
+    {
+      "path": "/account/notifications",
+      "kind": "auth",
+      "outcome": "pass",
+      "httpStatus": 200,
+      "landedOn": "/account/notifications",
+      "failures": [],
+      "knownDefectsHit": []
+    },
+    {
+      "path": "/account/push-preferences",
+      "kind": "auth",
+      "outcome": "pass",
+      "httpStatus": 200,
+      "landedOn": "/account/push-preferences",
+      "failures": [],
+      "knownDefectsHit": []
+    },
+    {
+      "path": "/account/security",
+      "kind": "auth",
+      "outcome": "pass",
+      "httpStatus": 200,
+      "landedOn": "/account/security",
+      "failures": [],
+      "knownDefectsHit": []
+    },
+    {
+      "path": "/admin",
+      "kind": "admin",
+      "outcome": "pass",
+      "httpStatus": 200,
+      "landedOn": "/admin",
+      "failures": [],
+      "knownDefectsHit": []
+    },
+    {
+      "path": "/admin/access-codes",
+      "kind": "admin",
+      "outcome": "pass",
+      "httpStatus": 200,
+      "landedOn": "/admin/access-codes",
+      "failures": [],
+      "knownDefectsHit": []
+    },
+    {
+      "path": "/admin/analytics",
+      "kind": "admin",
+      "outcome": "pass",
+      "httpStatus": 200,
+      "landedOn": "/admin/analytics",
+      "failures": [],
+      "knownDefectsHit": []
+    },
+    {
+      "path": "/admin/audio-coverage",
+      "kind": "admin",
+      "outcome": "pass",
+      "httpStatus": 200,
+      "landedOn": "/admin/audio-coverage",
+      "failures": [],
+      "knownDefectsHit": []
+    },
+    {
+      "path": "/admin/behavioral",
+      "kind": "admin",
+      "outcome": "pass",
+      "httpStatus": 200,
+      "landedOn": "/admin/behavioral",
+      "failures": [],
+      "knownDefectsHit": []
+    },
+    {
+      "path": "/admin/cost-monitoring",
+      "kind": "admin",
+      "outcome": "pass",
+      "httpStatus": 200,
+      "landedOn": "/admin/cost-monitoring",
+      "failures": [],
+      "knownDefectsHit": []
+    },
+    {
+      "path": "/admin/feature-flags",
+      "kind": "admin",
+      "outcome": "pass",
+      "httpStatus": 200,
+      "landedOn": "/admin/feature-flags",
+      "failures": [],
+      "knownDefectsHit": []
+    },
+    {
+      "path": "/admin/feedback",
+      "kind": "admin",
+      "outcome": "pass",
+      "httpStatus": 200,
+      "landedOn": "/admin/feedback",
+      "failures": [],
+      "knownDefectsHit": []
+    },
+    {
+      "path": "/admin/feedback-triage",
+      "kind": "admin",
+      "outcome": "pass",
+      "httpStatus": 200,
+      "landedOn": "/admin/feedback-triage",
+      "failures": [],
+      "knownDefectsHit": []
+    },
+    {
+      "path": "/admin/frontend-perf",
+      "kind": "admin",
+      "outcome": "pass",
+      "httpStatus": 200,
+      "landedOn": "/admin/frontend-perf",
+      "failures": [],
+      "knownDefectsHit": []
+    },
+    {
+      "path": "/admin/interview-prompts",
+      "kind": "admin",
+      "outcome": "pass",
+      "httpStatus": 200,
+      "landedOn": "/admin/interview-prompts",
+      "failures": [],
+      "knownDefectsHit": []
+    },
+    {
+      "path": "/admin/latency",
+      "kind": "admin",
+      "outcome": "pass",
+      "httpStatus": 200,
+      "landedOn": "/admin/latency",
+      "failures": [],
+      "knownDefectsHit": []
+    },
+    {
+      "path": "/admin/payments",
+      "kind": "admin",
+      "outcome": "pass",
+      "httpStatus": 200,
+      "landedOn": "/admin/payments",
+      "failures": [],
+      "knownDefectsHit": []
+    },
+    {
+      "path": "/admin/pending-sentences",
+      "kind": "admin",
+      "outcome": "pass",
+      "httpStatus": 200,
+      "landedOn": "/admin/pending-sentences",
+      "failures": [],
+      "knownDefectsHit": []
+    },
+    {
+      "path": "/admin/placement-forensics",
+      "kind": "admin",
+      "outcome": "pass",
+      "httpStatus": 200,
+      "landedOn": "/admin/placement-forensics",
+      "failures": [],
+      "knownDefectsHit": []
+    },
+    {
+      "path": "/admin/retention",
+      "kind": "admin",
+      "outcome": "pass",
+      "httpStatus": 200,
+      "landedOn": "/admin/retention",
+      "failures": [],
+      "knownDefectsHit": []
+    },
+    {
+      "path": "/admin/room-load-diagnostics",
+      "kind": "admin",
+      "outcome": "pass",
+      "httpStatus": 200,
+      "landedOn": "/admin/room-load-diagnostics",
+      "failures": [],
+      "knownDefectsHit": []
+    },
+    {
+      "path": "/admin/slo",
+      "kind": "admin",
+      "outcome": "pass",
+      "httpStatus": 200,
+      "landedOn": "/admin/slo",
+      "failures": [],
+      "knownDefectsHit": []
+    },
+    {
+      "path": "/admin/stories",
+      "kind": "admin",
+      "outcome": "pass",
+      "httpStatus": 200,
+      "landedOn": "/admin/stories",
+      "failures": [],
+      "knownDefectsHit": []
+    },
+    {
+      "path": "/admin/subscriptions",
+      "kind": "admin",
+      "outcome": "pass",
+      "httpStatus": 200,
+      "landedOn": "/admin/subscriptions",
+      "failures": [],
+      "knownDefectsHit": []
+    },
+    {
+      "path": "/admin/teacher-feedback",
+      "kind": "admin",
+      "outcome": "pass",
+      "httpStatus": 200,
+      "landedOn": "/admin/teacher-feedback",
+      "failures": [],
+      "knownDefectsHit": []
+    },
+    {
+      "path": "/admin/users",
+      "kind": "admin",
+      "outcome": "pass",
+      "httpStatus": 200,
+      "landedOn": "/admin/users",
+      "failures": [],
+      "knownDefectsHit": []
+    },
+    {
+      "path": "/ai-tutor",
+      "kind": "auth",
+      "outcome": "pass",
+      "httpStatus": 200,
+      "landedOn": "/ai-tutor",
+      "failures": [],
+      "knownDefectsHit": []
+    },
+    {
+      "path": "/auth",
+      "kind": "auth",
+      "outcome": "pass",
+      "httpStatus": 200,
+      "landedOn": "/auth",
+      "failures": [],
+      "knownDefectsHit": []
+    },
+    {
+      "path": "/auth/callback",
+      "kind": "auth",
+      "outcome": "pass",
+      "httpStatus": 200,
+      "landedOn": "/auth/callback",
+      "failures": [],
+      "knownDefectsHit": []
+    },
+    {
+      "path": "/auth/challenge",
+      "kind": "auth",
+      "outcome": "pass",
+      "httpStatus": 200,
+      "landedOn": "/auth/challenge",
+      "failures": [],
+      "knownDefectsHit": []
+    },
+    {
+      "path": "/auth/recover",
+      "kind": "auth",
+      "outcome": "pass",
+      "httpStatus": 200,
+      "landedOn": "/auth/recover",
+      "failures": [],
+      "knownDefectsHit": []
+    },
+    {
+      "path": "/auth/save-progress",
+      "kind": "auth",
+      "outcome": "pass",
+      "httpStatus": 200,
+      "landedOn": "/auth/save-progress",
+      "failures": [],
+      "knownDefectsHit": []
+    },
+    {
+      "path": "/auth/security",
+      "kind": "auth",
+      "outcome": "pass",
+      "httpStatus": 200,
+      "landedOn": "/auth/security",
+      "failures": [],
+      "knownDefectsHit": []
+    },
+    {
+      "path": "/billing",
+      "kind": "auth",
+      "outcome": "pass",
+      "httpStatus": 200,
+      "landedOn": "/billing",
+      "failures": [],
+      "knownDefectsHit": []
+    },
+    {
+      "path": "/billing/success",
+      "kind": "auth",
+      "outcome": "pass",
+      "httpStatus": 200,
+      "landedOn": "/billing/success",
+      "failures": [],
+      "knownDefectsHit": []
+    },
+    {
+      "path": "/blog",
+      "kind": "public",
+      "outcome": "pass",
+      "httpStatus": 200,
+      "landedOn": "/blog",
+      "failures": [],
+      "knownDefectsHit": []
+    },
+    {
+      "path": "/blog/weekly-digest",
+      "kind": "public",
+      "outcome": "pass",
+      "httpStatus": 200,
+      "landedOn": "/blog/weekly-digest",
+      "failures": [],
+      "knownDefectsHit": []
+    },
+    {
+      "path": "/certificates",
+      "kind": "auth",
+      "outcome": "pass",
+      "httpStatus": 200,
+      "landedOn": "/certificates",
+      "failures": [],
+      "knownDefectsHit": []
+    },
+    {
+      "path": "/challenge",
+      "kind": "auth",
+      "outcome": "pass",
+      "httpStatus": 200,
+      "landedOn": "/challenge",
+      "failures": [],
+      "knownDefectsHit": []
+    },
+    {
+      "path": "/challenge/history",
+      "kind": "auth",
+      "outcome": "pass",
+      "httpStatus": 200,
+      "landedOn": "/challenge/history",
+      "failures": [],
+      "knownDefectsHit": []
+    },
+    {
+      "path": "/chat/addiction_support_free",
+      "kind": "auth",
+      "outcome": "pass",
+      "httpStatus": 200,
+      "landedOn": "/chat/addiction_support_free",
+      "failures": [],
+      "knownDefectsHit": []
+    },
+    {
+      "path": "/contribute",
+      "kind": "auth",
+      "outcome": "pass",
+      "httpStatus": 200,
+      "landedOn": "/contribute",
+      "failures": [],
+      "knownDefectsHit": []
+    },
+    {
+      "path": "/contribute/my-submissions",
+      "kind": "auth",
+      "outcome": "pass",
+      "httpStatus": 200,
+      "landedOn": "/contribute/my-submissions",
+      "failures": [],
+      "knownDefectsHit": []
+    },
+    {
+      "path": "/corporate",
+      "kind": "auth",
+      "outcome": "pass",
+      "httpStatus": 200,
+      "landedOn": "/corporate",
+      "failures": [],
+      "knownDefectsHit": []
+    },
+    {
+      "path": "/corporate/join",
+      "kind": "auth",
+      "outcome": "pass",
+      "httpStatus": 200,
+      "landedOn": "/corporate/join",
+      "failures": [],
+      "knownDefectsHit": []
+    },
+    {
+      "path": "/corporate/setup",
+      "kind": "auth",
+      "outcome": "pass",
+      "httpStatus": 200,
+      "landedOn": "/corporate/setup",
+      "failures": [],
+      "knownDefectsHit": []
+    },
+    {
+      "path": "/culture/vn",
+      "kind": "public",
+      "outcome": "pass",
+      "httpStatus": 200,
+      "landedOn": "/culture/vn",
+      "failures": [],
+      "knownDefectsHit": []
+    },
+    {
+      "path": "/exam-prep/ielts/listening",
+      "kind": "public",
+      "outcome": "pass",
+      "httpStatus": 200,
+      "landedOn": "/exam-prep/ielts/listening",
+      "failures": [],
+      "knownDefectsHit": []
+    },
+    {
+      "path": "/exam-prep/ielts/reading",
+      "kind": "public",
+      "outcome": "pass",
+      "httpStatus": 200,
+      "landedOn": "/exam-prep/ielts/reading",
+      "failures": [],
+      "knownDefectsHit": []
+    },
+    {
+      "path": "/exam-prep/ielts/speaking",
+      "kind": "public",
+      "outcome": "pass",
+      "httpStatus": 200,
+      "landedOn": "/exam-prep/ielts/speaking",
+      "failures": [],
+      "knownDefectsHit": []
+    },
+    {
+      "path": "/exam-prep/ielts/writing",
+      "kind": "public",
+      "outcome": "pass",
+      "httpStatus": 200,
+      "landedOn": "/exam-prep/ielts/writing",
+      "failures": [],
+      "knownDefectsHit": []
+    },
+    {
+      "path": "/exam-prep/toefl/listening",
+      "kind": "public",
+      "outcome": "pass",
+      "httpStatus": 200,
+      "landedOn": "/exam-prep/toefl/listening",
+      "failures": [],
+      "knownDefectsHit": []
+    },
+    {
+      "path": "/exam-prep/toefl/reading",
+      "kind": "public",
+      "outcome": "pass",
+      "httpStatus": 200,
+      "landedOn": "/exam-prep/toefl/reading",
+      "failures": [],
+      "knownDefectsHit": []
+    },
+    {
+      "path": "/exam-prep/toefl/speaking",
+      "kind": "public",
+      "outcome": "pass",
+      "httpStatus": 200,
+      "landedOn": "/exam-prep/toefl/speaking",
+      "failures": [],
+      "knownDefectsHit": []
+    },
+    {
+      "path": "/exam-prep/toefl/writing",
+      "kind": "public",
+      "outcome": "pass",
+      "httpStatus": 200,
+      "landedOn": "/exam-prep/toefl/writing",
+      "failures": [],
+      "knownDefectsHit": []
+    },
+    {
+      "path": "/exam-prep/toeic",
+      "kind": "public",
+      "outcome": "pass",
+      "httpStatus": 200,
+      "landedOn": "/exam-prep/toeic",
+      "failures": [],
+      "knownDefectsHit": []
+    },
+    {
+      "path": "/exam/ielts",
+      "kind": "public",
+      "outcome": "pass",
+      "httpStatus": 200,
+      "landedOn": "/exam/ielts",
+      "failures": [],
+      "knownDefectsHit": []
+    },
+    {
+      "path": "/exam/ielts/estimator",
+      "kind": "public",
+      "outcome": "pass",
+      "httpStatus": 200,
+      "landedOn": "/exam/ielts/estimator",
+      "failures": [],
+      "knownDefectsHit": []
+    },
+    {
+      "path": "/exam/ielts/listening",
+      "kind": "public",
+      "outcome": "pass",
+      "httpStatus": 200,
+      "landedOn": "/exam/ielts/listening",
+      "failures": [],
+      "knownDefectsHit": []
+    },
+    {
+      "path": "/exam/ielts/reading",
+      "kind": "public",
+      "outcome": "pass",
+      "httpStatus": 200,
+      "landedOn": "/exam/ielts/reading",
+      "failures": [],
+      "knownDefectsHit": []
+    },
+    {
+      "path": "/exam/ielts/speaking",
+      "kind": "public",
+      "outcome": "pass",
+      "httpStatus": 200,
+      "landedOn": "/exam/ielts/speaking",
+      "failures": [],
+      "knownDefectsHit": []
+    },
+    {
+      "path": "/exam/ielts/writing",
+      "kind": "public",
+      "outcome": "pass",
+      "httpStatus": 200,
+      "landedOn": "/exam/ielts/writing",
+      "failures": [],
+      "knownDefectsHit": []
+    },
+    {
+      "path": "/exam/toefl",
+      "kind": "public",
+      "outcome": "pass",
+      "httpStatus": 200,
+      "landedOn": "/exam/toefl",
+      "failures": [],
+      "knownDefectsHit": []
+    },
+    {
+      "path": "/exam/toefl/estimator",
+      "kind": "public",
+      "outcome": "pass",
+      "httpStatus": 200,
+      "landedOn": "/exam/toefl/estimator",
+      "failures": [],
+      "knownDefectsHit": []
+    },
+    {
+      "path": "/exam/toefl/listening",
+      "kind": "public",
+      "outcome": "pass",
+      "httpStatus": 200,
+      "landedOn": "/exam/toefl/listening",
+      "failures": [],
+      "knownDefectsHit": []
+    },
+    {
+      "path": "/exam/toefl/reading",
+      "kind": "public",
+      "outcome": "pass",
+      "httpStatus": 200,
+      "landedOn": "/exam/toefl/reading",
+      "failures": [],
+      "knownDefectsHit": []
+    },
+    {
+      "path": "/exam/toefl/speaking",
+      "kind": "public",
+      "outcome": "pass",
+      "httpStatus": 200,
+      "landedOn": "/exam/toefl/speaking",
+      "failures": [],
+      "knownDefectsHit": []
+    },
+    {
+      "path": "/exam/toefl/writing",
+      "kind": "public",
+      "outcome": "pass",
+      "httpStatus": 200,
+      "landedOn": "/exam/toefl/writing",
+      "failures": [],
+      "knownDefectsHit": []
+    },
+    {
+      "path": "/exam/toeic",
+      "kind": "public",
+      "outcome": "pass",
+      "httpStatus": 200,
+      "landedOn": "/exam/toeic",
+      "failures": [],
+      "knownDefectsHit": []
+    },
+    {
+      "path": "/exam/toeic/estimator",
+      "kind": "public",
+      "outcome": "pass",
+      "httpStatus": 200,
+      "landedOn": "/exam/toeic/estimator",
+      "failures": [],
+      "knownDefectsHit": []
+    },
+    {
+      "path": "/exam/vstep",
+      "kind": "public",
+      "outcome": "pass",
+      "httpStatus": 200,
+      "landedOn": "/exam/vstep",
+      "failures": [],
+      "knownDefectsHit": []
+    },
+    {
+      "path": "/exam/vstep/listening",
+      "kind": "public",
+      "outcome": "pass",
+      "httpStatus": 200,
+      "landedOn": "/exam/vstep/listening",
+      "failures": [],
+      "knownDefectsHit": []
+    },
+    {
+      "path": "/exam/vstep/reading",
+      "kind": "public",
+      "outcome": "pass",
+      "httpStatus": 200,
+      "landedOn": "/exam/vstep/reading",
+      "failures": [],
+      "knownDefectsHit": []
+    },
+    {
+      "path": "/exam/vstep/speaking",
+      "kind": "public",
+      "outcome": "pass",
+      "httpStatus": 200,
+      "landedOn": "/exam/vstep/speaking",
+      "failures": [],
+      "knownDefectsHit": []
+    },
+    {
+      "path": "/exam/vstep/writing",
+      "kind": "public",
+      "outcome": "pass",
+      "httpStatus": 200,
+      "landedOn": "/exam/vstep/writing",
+      "failures": [],
+      "knownDefectsHit": []
+    },
+    {
+      "path": "/family",
+      "kind": "auth",
+      "outcome": "pass",
+      "httpStatus": 200,
+      "landedOn": "/family",
+      "failures": [],
+      "knownDefectsHit": []
+    },
+    {
+      "path": "/gift",
+      "kind": "auth",
+      "outcome": "pass",
+      "httpStatus": 200,
+      "landedOn": "/gift",
+      "failures": [],
+      "knownDefectsHit": []
+    },
+    {
+      "path": "/gift/my",
+      "kind": "auth",
+      "outcome": "pass",
+      "httpStatus": 200,
+      "landedOn": "/gift/my",
+      "failures": [],
+      "knownDefectsHit": []
+    },
+    {
+      "path": "/gift/redeem",
+      "kind": "auth",
+      "outcome": "pass",
+      "httpStatus": 200,
+      "landedOn": "/gift/redeem",
+      "failures": [],
+      "knownDefectsHit": []
+    },
+    {
+      "path": "/groups",
+      "kind": "auth",
+      "outcome": "pass",
+      "httpStatus": 200,
+      "landedOn": "/groups",
+      "failures": [],
+      "knownDefectsHit": []
+    },
+    {
+      "path": "/groups/new",
+      "kind": "auth",
+      "outcome": "pass",
+      "httpStatus": 200,
+      "landedOn": "/groups/new",
+      "failures": [],
+      "knownDefectsHit": []
+    },
+    {
+      "path": "/interview",
+      "kind": "auth",
+      "outcome": "pass",
+      "httpStatus": 200,
+      "landedOn": "/interview",
+      "failures": [],
+      "knownDefectsHit": []
+    },
+    {
+      "path": "/kids/vi-english",
+      "kind": "auth",
+      "outcome": "pass",
+      "httpStatus": 200,
+      "landedOn": "/kids/vi-english",
+      "failures": [],
+      "knownDefectsHit": []
+    },
+    {
+      "path": "/languages",
+      "kind": "public",
+      "outcome": "pass",
+      "httpStatus": 200,
+      "landedOn": "/languages",
+      "failures": [],
+      "knownDefectsHit": []
+    },
+    {
+      "path": "/languages/arabic",
+      "kind": "public",
+      "outcome": "pass",
+      "httpStatus": 200,
+      "landedOn": "/languages/arabic",
+      "failures": [],
+      "knownDefectsHit": []
+    },
+    {
+      "path": "/languages/chinese",
+      "kind": "public",
+      "outcome": "pass",
+      "httpStatus": 200,
+      "landedOn": "/languages/chinese",
+      "failures": [],
+      "knownDefectsHit": []
+    },
+    {
+      "path": "/languages/french",
+      "kind": "public",
+      "outcome": "pass",
+      "httpStatus": 200,
+      "landedOn": "/languages/french",
+      "failures": [],
+      "knownDefectsHit": []
+    },
+    {
+      "path": "/languages/german",
+      "kind": "public",
+      "outcome": "pass",
+      "httpStatus": 200,
+      "landedOn": "/languages/german",
+      "failures": [],
+      "knownDefectsHit": []
+    },
+    {
+      "path": "/languages/hindi",
+      "kind": "public",
+      "outcome": "pass",
+      "httpStatus": 200,
+      "landedOn": "/languages/hindi",
+      "failures": [],
+      "knownDefectsHit": []
+    },
+    {
+      "path": "/languages/indonesian",
+      "kind": "public",
+      "outcome": "pass",
+      "httpStatus": 200,
+      "landedOn": "/languages/indonesian",
+      "failures": [],
+      "knownDefectsHit": []
+    },
+    {
+      "path": "/languages/italian",
+      "kind": "public",
+      "outcome": "pass",
+      "httpStatus": 200,
+      "landedOn": "/languages/italian",
+      "failures": [],
+      "knownDefectsHit": []
+    },
+    {
+      "path": "/languages/japanese",
+      "kind": "public",
+      "outcome": "pass",
+      "httpStatus": 200,
+      "landedOn": "/languages/japanese",
+      "failures": [],
+      "knownDefectsHit": []
+    },
+    {
+      "path": "/languages/korean",
+      "kind": "public",
+      "outcome": "pass",
+      "httpStatus": 200,
+      "landedOn": "/languages/korean",
+      "failures": [],
+      "knownDefectsHit": []
+    },
+    {
+      "path": "/languages/portuguese",
+      "kind": "public",
+      "outcome": "pass",
+      "httpStatus": 200,
+      "landedOn": "/languages/portuguese",
+      "failures": [],
+      "knownDefectsHit": []
+    },
+    {
+      "path": "/languages/punjabi",
+      "kind": "public",
+      "outcome": "pass",
+      "httpStatus": 200,
+      "landedOn": "/languages/punjabi",
+      "failures": [],
+      "knownDefectsHit": []
+    },
+    {
+      "path": "/languages/russian",
+      "kind": "public",
+      "outcome": "pass",
+      "httpStatus": 200,
+      "landedOn": "/languages/russian",
+      "failures": [],
+      "knownDefectsHit": []
+    },
+    {
+      "path": "/languages/spanish",
+      "kind": "public",
+      "outcome": "pass",
+      "httpStatus": 200,
+      "landedOn": "/languages/spanish",
+      "failures": [],
+      "knownDefectsHit": []
+    },
+    {
+      "path": "/languages/swahili",
+      "kind": "public",
+      "outcome": "pass",
+      "httpStatus": 200,
+      "landedOn": "/languages/swahili",
+      "failures": [],
+      "knownDefectsHit": []
+    },
+    {
+      "path": "/languages/thai",
+      "kind": "public",
+      "outcome": "pass",
+      "httpStatus": 200,
+      "landedOn": "/languages/thai",
+      "failures": [],
+      "knownDefectsHit": []
+    },
+    {
+      "path": "/languages/thai-english",
+      "kind": "public",
+      "outcome": "fail",
+      "httpStatus": 200,
+      "landedOn": "/languages/thai-english/",
+      "failures": [
+        {
+          "type": "blank-render",
+          "detail": "#root did not render any content",
+          "repro": "Open https://mercyblade.com/languages/thai-english in a logged-out browser and observe: a blank page (the SPA shell never mounted #root)"
+        }
+      ],
+      "knownDefectsHit": []
+    },
+    {
+      "path": "/languages/turkish",
+      "kind": "public",
+      "outcome": "pass",
+      "httpStatus": 200,
+      "landedOn": "/languages/turkish",
+      "failures": [],
+      "knownDefectsHit": []
+    },
+    {
+      "path": "/languages/urdu",
+      "kind": "public",
+      "outcome": "pass",
+      "httpStatus": 200,
+      "landedOn": "/languages/urdu",
+      "failures": [],
+      "knownDefectsHit": []
+    },
+    {
+      "path": "/languages/vietnamese",
+      "kind": "public",
+      "outcome": "pass",
+      "httpStatus": 200,
+      "landedOn": "/languages/vietnamese",
+      "failures": [],
+      "knownDefectsHit": []
+    },
+    {
+      "path": "/leaderboard",
+      "kind": "auth",
+      "outcome": "pass",
+      "httpStatus": 200,
+      "landedOn": "/leaderboard",
+      "failures": [],
+      "knownDefectsHit": []
+    },
+    {
+      "path": "/leaderboard/referral",
+      "kind": "auth",
+      "outcome": "pass",
+      "httpStatus": 200,
+      "landedOn": "/leaderboard/referral",
+      "failures": [],
+      "knownDefectsHit": []
+    },
+    {
+      "path": "/legal/content-advisory",
+      "kind": "public",
+      "outcome": "pass",
+      "httpStatus": 200,
+      "landedOn": "/legal/content-advisory",
+      "failures": [],
+      "knownDefectsHit": []
+    },
+    {
+      "path": "/legal/privacy",
+      "kind": "public",
+      "outcome": "pass",
+      "httpStatus": 200,
+      "landedOn": "/legal/privacy",
+      "failures": [],
+      "knownDefectsHit": []
+    },
+    {
+      "path": "/legal/terms",
+      "kind": "public",
+      "outcome": "pass",
+      "httpStatus": 200,
+      "landedOn": "/legal/terms",
+      "failures": [],
+      "knownDefectsHit": []
+    },
+    {
+      "path": "/listening",
+      "kind": "auth",
+      "outcome": "fail",
+      "httpStatus": 200,
+      "landedOn": "/listening",
+      "failures": [
+        {
+          "type": "console-error",
+          "detail": "Failed to load module script: Expected a JavaScript-or-Wasm module script but the server responded with a MIME type of \"text/html\". Strict MIME type checking is enforced for module scripts per HTML spec.",
+          "repro": "Open https://mercyblade.com/listening in a logged-out browser and observe: console error: Failed to load module script: Expected a JavaScript-or-Wasm module script but the server responded with a MIME type of \"text/html\". Strict MIME type checking is enforced for module scripts per HTML spec."
+        },
+        {
+          "type": "console-error",
+          "detail": "Failed to load module script: Expected a JavaScript-or-Wasm module script but the server responded with a MIME type of \"text/html\". Strict MIME type checking is enforced for module scripts per HTML spec.",
+          "repro": "Open https://mercyblade.com/listening in a logged-out browser and observe: console error: Failed to load module script: Expected a JavaScript-or-Wasm module script but the server responded with a MIME type of \"text/html\". Strict MIME type checking is enforced for module scripts per HTML spec."
+        },
+        {
+          "type": "console-error",
+          "detail": "Failed to load module script: Expected a JavaScript-or-Wasm module script but the server responded with a MIME type of \"text/html\". Strict MIME type checking is enforced for module scripts per HTML spec.",
+          "repro": "Open https://mercyblade.com/listening in a logged-out browser and observe: console error: Failed to load module script: Expected a JavaScript-or-Wasm module script but the server responded with a MIME type of \"text/html\". Strict MIME type checking is enforced for module scripts per HTML spec."
+        },
+        {
+          "type": "console-error",
+          "detail": "Failed to load module script: Expected a JavaScript-or-Wasm module script but the server responded with a MIME type of \"text/html\". Strict MIME type checking is enforced for module scripts per HTML spec.",
+          "repro": "Open https://mercyblade.com/listening in a logged-out browser and observe: console error: Failed to load module script: Expected a JavaScript-or-Wasm module script but the server responded with a MIME type of \"text/html\". Strict MIME type checking is enforced for module scripts per HTML spec."
+        },
+        {
+          "type": "console-error",
+          "detail": "Failed to load module script: Expected a JavaScript-or-Wasm module script but the server responded with a MIME type of \"text/html\". Strict MIME type checking is enforced for module scripts per HTML spec.",
+          "repro": "Open https://mercyblade.com/listening in a logged-out browser and observe: console error: Failed to load module script: Expected a JavaScript-or-Wasm module script but the server responded with a MIME type of \"text/html\". Strict MIME type checking is enforced for module scripts per HTML spec."
+        }
+      ],
+      "knownDefectsHit": []
+    },
+    {
+      "path": "/mercy",
+      "kind": "auth",
+      "outcome": "pass",
+      "httpStatus": 200,
+      "landedOn": "/mercy",
+      "failures": [],
+      "knownDefectsHit": []
+    },
+    {
+      "path": "/mercy/chat",
+      "kind": "auth",
+      "outcome": "fail",
+      "httpStatus": 200,
+      "landedOn": "/mercy/chat",
+      "failures": [
+        {
+          "type": "console-error",
+          "detail": "Failed to load module script: Expected a JavaScript-or-Wasm module script but the server responded with a MIME type of \"text/html\". Strict MIME type checking is enforced for module scripts per HTML spec.",
+          "repro": "Open https://mercyblade.com/mercy/chat in a logged-out browser and observe: console error: Failed to load module script: Expected a JavaScript-or-Wasm module script but the server responded with a MIME type of \"text/html\". Strict MIME type checking is enforced for module scripts per HTML spec."
+        },
+        {
+          "type": "console-error",
+          "detail": "Failed to load module script: Expected a JavaScript-or-Wasm module script but the server responded with a MIME type of \"text/html\". Strict MIME type checking is enforced for module scripts per HTML spec.",
+          "repro": "Open https://mercyblade.com/mercy/chat in a logged-out browser and observe: console error: Failed to load module script: Expected a JavaScript-or-Wasm module script but the server responded with a MIME type of \"text/html\". Strict MIME type checking is enforced for module scripts per HTML spec."
+        },
+        {
+          "type": "console-error",
+          "detail": "Failed to load module script: Expected a JavaScript-or-Wasm module script but the server responded with a MIME type of \"text/html\". Strict MIME type checking is enforced for module scripts per HTML spec.",
+          "repro": "Open https://mercyblade.com/mercy/chat in a logged-out browser and observe: console error: Failed to load module script: Expected a JavaScript-or-Wasm module script but the server responded with a MIME type of \"text/html\". Strict MIME type checking is enforced for module scripts per HTML spec."
+        },
+        {
+          "type": "console-error",
+          "detail": "Failed to load module script: Expected a JavaScript-or-Wasm module script but the server responded with a MIME type of \"text/html\". Strict MIME type checking is enforced for module scripts per HTML spec.",
+          "repro": "Open https://mercyblade.com/mercy/chat in a logged-out browser and observe: console error: Failed to load module script: Expected a JavaScript-or-Wasm module script but the server responded with a MIME type of \"text/html\". Strict MIME type checking is enforced for module scripts per HTML spec."
+        }
+      ],
+      "knownDefectsHit": []
+    },
+    {
+      "path": "/mock-interview",
+      "kind": "auth",
+      "outcome": "fail",
+      "httpStatus": 200,
+      "landedOn": "/mock-interview",
+      "failures": [
+        {
+          "type": "console-error",
+          "detail": "Failed to load module script: Expected a JavaScript-or-Wasm module script but the server responded with a MIME type of \"text/html\". Strict MIME type checking is enforced for module scripts per HTML spec.",
+          "repro": "Open https://mercyblade.com/mock-interview in a logged-out browser and observe: console error: Failed to load module script: Expected a JavaScript-or-Wasm module script but the server responded with a MIME type of \"text/html\". Strict MIME type checking is enforced for module scripts per HTML spec."
+        },
+        {
+          "type": "console-error",
+          "detail": "Failed to load module script: Expected a JavaScript-or-Wasm module script but the server responded with a MIME type of \"text/html\". Strict MIME type checking is enforced for module scripts per HTML spec.",
+          "repro": "Open https://mercyblade.com/mock-interview in a logged-out browser and observe: console error: Failed to load module script: Expected a JavaScript-or-Wasm module script but the server responded with a MIME type of \"text/html\". Strict MIME type checking is enforced for module scripts per HTML spec."
+        },
+        {
+          "type": "console-error",
+          "detail": "Failed to load module script: Expected a JavaScript-or-Wasm module script but the server responded with a MIME type of \"text/html\". Strict MIME type checking is enforced for module scripts per HTML spec.",
+          "repro": "Open https://mercyblade.com/mock-interview in a logged-out browser and observe: console error: Failed to load module script: Expected a JavaScript-or-Wasm module script but the server responded with a MIME type of \"text/html\". Strict MIME type checking is enforced for module scripts per HTML spec."
+        },
+        {
+          "type": "console-error",
+          "detail": "Failed to load module script: Expected a JavaScript-or-Wasm module script but the server responded with a MIME type of \"text/html\". Strict MIME type checking is enforced for module scripts per HTML spec.",
+          "repro": "Open https://mercyblade.com/mock-interview in a logged-out browser and observe: console error: Failed to load module script: Expected a JavaScript-or-Wasm module script but the server responded with a MIME type of \"text/html\". Strict MIME type checking is enforced for module scripts per HTML spec."
+        }
+      ],
+      "knownDefectsHit": []
+    },
+    {
+      "path": "/mock-interview/community",
+      "kind": "auth",
+      "outcome": "fail",
+      "httpStatus": 200,
+      "landedOn": "/mock-interview/community",
+      "failures": [
+        {
+          "type": "console-error",
+          "detail": "Failed to load module script: Expected a JavaScript-or-Wasm module script but the server responded with a MIME type of \"text/html\". Strict MIME type checking is enforced for module scripts per HTML spec.",
+          "repro": "Open https://mercyblade.com/mock-interview/community in a logged-out browser and observe: console error: Failed to load module script: Expected a JavaScript-or-Wasm module script but the server responded with a MIME type of \"text/html\". Strict MIME type checking is enforced for module scripts per HTML spec."
+        },
+        {
+          "type": "console-error",
+          "detail": "Failed to load module script: Expected a JavaScript-or-Wasm module script but the server responded with a MIME type of \"text/html\". Strict MIME type checking is enforced for module scripts per HTML spec.",
+          "repro": "Open https://mercyblade.com/mock-interview/community in a logged-out browser and observe: console error: Failed to load module script: Expected a JavaScript-or-Wasm module script but the server responded with a MIME type of \"text/html\". Strict MIME type checking is enforced for module scripts per HTML spec."
+        },
+        {
+          "type": "console-error",
+          "detail": "Failed to load module script: Expected a JavaScript-or-Wasm module script but the server responded with a MIME type of \"text/html\". Strict MIME type checking is enforced for module scripts per HTML spec.",
+          "repro": "Open https://mercyblade.com/mock-interview/community in a logged-out browser and observe: console error: Failed to load module script: Expected a JavaScript-or-Wasm module script but the server responded with a MIME type of \"text/html\". Strict MIME type checking is enforced for module scripts per HTML spec."
+        },
+        {
+          "type": "console-error",
+          "detail": "Failed to load module script: Expected a JavaScript-or-Wasm module script but the server responded with a MIME type of \"text/html\". Strict MIME type checking is enforced for module scripts per HTML spec.",
+          "repro": "Open https://mercyblade.com/mock-interview/community in a logged-out browser and observe: console error: Failed to load module script: Expected a JavaScript-or-Wasm module script but the server responded with a MIME type of \"text/html\". Strict MIME type checking is enforced for module scripts per HTML spec."
+        }
+      ],
+      "knownDefectsHit": []
+    },
+    {
+      "path": "/mock-interview/submit-prompt",
+      "kind": "auth",
+      "outcome": "fail",
+      "httpStatus": 200,
+      "landedOn": "/mock-interview/submit-prompt",
+      "failures": [
+        {
+          "type": "console-error",
+          "detail": "Failed to load module script: Expected a JavaScript-or-Wasm module script but the server responded with a MIME type of \"text/html\". Strict MIME type checking is enforced for module scripts per HTML spec.",
+          "repro": "Open https://mercyblade.com/mock-interview/submit-prompt in a logged-out browser and observe: console error: Failed to load module script: Expected a JavaScript-or-Wasm module script but the server responded with a MIME type of \"text/html\". Strict MIME type checking is enforced for module scripts per HTML spec."
+        },
+        {
+          "type": "console-error",
+          "detail": "Failed to load module script: Expected a JavaScript-or-Wasm module script but the server responded with a MIME type of \"text/html\". Strict MIME type checking is enforced for module scripts per HTML spec.",
+          "repro": "Open https://mercyblade.com/mock-interview/submit-prompt in a logged-out browser and observe: console error: Failed to load module script: Expected a JavaScript-or-Wasm module script but the server responded with a MIME type of \"text/html\". Strict MIME type checking is enforced for module scripts per HTML spec."
+        },
+        {
+          "type": "console-error",
+          "detail": "Failed to load module script: Expected a JavaScript-or-Wasm module script but the server responded with a MIME type of \"text/html\". Strict MIME type checking is enforced for module scripts per HTML spec.",
+          "repro": "Open https://mercyblade.com/mock-interview/submit-prompt in a logged-out browser and observe: console error: Failed to load module script: Expected a JavaScript-or-Wasm module script but the server responded with a MIME type of \"text/html\". Strict MIME type checking is enforced for module scripts per HTML spec."
+        }
+      ],
+      "knownDefectsHit": []
+    },
+    {
+      "path": "/onboarding",
+      "kind": "public",
+      "outcome": "fail",
+      "httpStatus": 200,
+      "landedOn": "/onboarding",
+      "failures": [
+        {
+          "type": "console-error",
+          "detail": "Failed to load module script: Expected a JavaScript-or-Wasm module script but the server responded with a MIME type of \"text/html\". Strict MIME type checking is enforced for module scripts per HTML spec.",
+          "repro": "Open https://mercyblade.com/onboarding in a logged-out browser and observe: console error: Failed to load module script: Expected a JavaScript-or-Wasm module script but the server responded with a MIME type of \"text/html\". Strict MIME type checking is enforced for module scripts per HTML spec."
+        },
+        {
+          "type": "console-error",
+          "detail": "Failed to load module script: Expected a JavaScript-or-Wasm module script but the server responded with a MIME type of \"text/html\". Strict MIME type checking is enforced for module scripts per HTML spec.",
+          "repro": "Open https://mercyblade.com/onboarding in a logged-out browser and observe: console error: Failed to load module script: Expected a JavaScript-or-Wasm module script but the server responded with a MIME type of \"text/html\". Strict MIME type checking is enforced for module scripts per HTML spec."
+        },
+        {
+          "type": "console-error",
+          "detail": "Failed to load module script: Expected a JavaScript-or-Wasm module script but the server responded with a MIME type of \"text/html\". Strict MIME type checking is enforced for module scripts per HTML spec.",
+          "repro": "Open https://mercyblade.com/onboarding in a logged-out browser and observe: console error: Failed to load module script: Expected a JavaScript-or-Wasm module script but the server responded with a MIME type of \"text/html\". Strict MIME type checking is enforced for module scripts per HTML spec."
+        }
+      ],
+      "knownDefectsHit": []
+    },
+    {
+      "path": "/pack/nail-tech",
+      "kind": "auth",
+      "outcome": "fail",
+      "httpStatus": 200,
+      "landedOn": "/pack/nail-tech",
+      "failures": [
+        {
+          "type": "console-error",
+          "detail": "Failed to load module script: Expected a JavaScript-or-Wasm module script but the server responded with a MIME type of \"text/html\". Strict MIME type checking is enforced for module scripts per HTML spec.",
+          "repro": "Open https://mercyblade.com/pack/nail-tech in a logged-out browser and observe: console error: Failed to load module script: Expected a JavaScript-or-Wasm module script but the server responded with a MIME type of \"text/html\". Strict MIME type checking is enforced for module scripts per HTML spec."
+        },
+        {
+          "type": "console-error",
+          "detail": "Failed to load module script: Expected a JavaScript-or-Wasm module script but the server responded with a MIME type of \"text/html\". Strict MIME type checking is enforced for module scripts per HTML spec.",
+          "repro": "Open https://mercyblade.com/pack/nail-tech in a logged-out browser and observe: console error: Failed to load module script: Expected a JavaScript-or-Wasm module script but the server responded with a MIME type of \"text/html\". Strict MIME type checking is enforced for module scripts per HTML spec."
+        },
+        {
+          "type": "console-error",
+          "detail": "Failed to load module script: Expected a JavaScript-or-Wasm module script but the server responded with a MIME type of \"text/html\". Strict MIME type checking is enforced for module scripts per HTML spec.",
+          "repro": "Open https://mercyblade.com/pack/nail-tech in a logged-out browser and observe: console error: Failed to load module script: Expected a JavaScript-or-Wasm module script but the server responded with a MIME type of \"text/html\". Strict MIME type checking is enforced for module scripts per HTML spec."
+        }
+      ],
+      "knownDefectsHit": []
+    },
+    {
+      "path": "/placement",
+      "kind": "auth",
+      "outcome": "fail",
+      "httpStatus": 200,
+      "landedOn": "/placement",
+      "failures": [
+        {
+          "type": "console-error",
+          "detail": "Failed to load module script: Expected a JavaScript-or-Wasm module script but the server responded with a MIME type of \"text/html\". Strict MIME type checking is enforced for module scripts per HTML spec.",
+          "repro": "Open https://mercyblade.com/placement in a logged-out browser and observe: console error: Failed to load module script: Expected a JavaScript-or-Wasm module script but the server responded with a MIME type of \"text/html\". Strict MIME type checking is enforced for module scripts per HTML spec."
+        },
+        {
+          "type": "console-error",
+          "detail": "Failed to load module script: Expected a JavaScript-or-Wasm module script but the server responded with a MIME type of \"text/html\". Strict MIME type checking is enforced for module scripts per HTML spec.",
+          "repro": "Open https://mercyblade.com/placement in a logged-out browser and observe: console error: Failed to load module script: Expected a JavaScript-or-Wasm module script but the server responded with a MIME type of \"text/html\". Strict MIME type checking is enforced for module scripts per HTML spec."
+        },
+        {
+          "type": "console-error",
+          "detail": "Failed to load module script: Expected a JavaScript-or-Wasm module script but the server responded with a MIME type of \"text/html\". Strict MIME type checking is enforced for module scripts per HTML spec.",
+          "repro": "Open https://mercyblade.com/placement in a logged-out browser and observe: console error: Failed to load module script: Expected a JavaScript-or-Wasm module script but the server responded with a MIME type of \"text/html\". Strict MIME type checking is enforced for module scripts per HTML spec."
+        }
+      ],
+      "knownDefectsHit": []
+    },
+    {
+      "path": "/placement/results",
+      "kind": "auth",
+      "outcome": "fail",
+      "httpStatus": 200,
+      "landedOn": "/placement/results",
+      "failures": [
+        {
+          "type": "console-error",
+          "detail": "Failed to load module script: Expected a JavaScript-or-Wasm module script but the server responded with a MIME type of \"text/html\". Strict MIME type checking is enforced for module scripts per HTML spec.",
+          "repro": "Open https://mercyblade.com/placement/results in a logged-out browser and observe: console error: Failed to load module script: Expected a JavaScript-or-Wasm module script but the server responded with a MIME type of \"text/html\". Strict MIME type checking is enforced for module scripts per HTML spec."
+        },
+        {
+          "type": "console-error",
+          "detail": "Failed to load module script: Expected a JavaScript-or-Wasm module script but the server responded with a MIME type of \"text/html\". Strict MIME type checking is enforced for module scripts per HTML spec.",
+          "repro": "Open https://mercyblade.com/placement/results in a logged-out browser and observe: console error: Failed to load module script: Expected a JavaScript-or-Wasm module script but the server responded with a MIME type of \"text/html\". Strict MIME type checking is enforced for module scripts per HTML spec."
+        },
+        {
+          "type": "console-error",
+          "detail": "Failed to load module script: Expected a JavaScript-or-Wasm module script but the server responded with a MIME type of \"text/html\". Strict MIME type checking is enforced for module scripts per HTML spec.",
+          "repro": "Open https://mercyblade.com/placement/results in a logged-out browser and observe: console error: Failed to load module script: Expected a JavaScript-or-Wasm module script but the server responded with a MIME type of \"text/html\". Strict MIME type checking is enforced for module scripts per HTML spec."
+        }
+      ],
+      "knownDefectsHit": []
+    },
+    {
+      "path": "/placement/resume",
+      "kind": "auth",
+      "outcome": "fail",
+      "httpStatus": 200,
+      "landedOn": "/placement/resume",
+      "failures": [
+        {
+          "type": "console-error",
+          "detail": "Failed to load module script: Expected a JavaScript-or-Wasm module script but the server responded with a MIME type of \"text/html\". Strict MIME type checking is enforced for module scripts per HTML spec.",
+          "repro": "Open https://mercyblade.com/placement/resume in a logged-out browser and observe: console error: Failed to load module script: Expected a JavaScript-or-Wasm module script but the server responded with a MIME type of \"text/html\". Strict MIME type checking is enforced for module scripts per HTML spec."
+        },
+        {
+          "type": "console-error",
+          "detail": "Failed to load module script: Expected a JavaScript-or-Wasm module script but the server responded with a MIME type of \"text/html\". Strict MIME type checking is enforced for module scripts per HTML spec.",
+          "repro": "Open https://mercyblade.com/placement/resume in a logged-out browser and observe: console error: Failed to load module script: Expected a JavaScript-or-Wasm module script but the server responded with a MIME type of \"text/html\". Strict MIME type checking is enforced for module scripts per HTML spec."
+        },
+        {
+          "type": "console-error",
+          "detail": "Failed to load module script: Expected a JavaScript-or-Wasm module script but the server responded with a MIME type of \"text/html\". Strict MIME type checking is enforced for module scripts per HTML spec.",
+          "repro": "Open https://mercyblade.com/placement/resume in a logged-out browser and observe: console error: Failed to load module script: Expected a JavaScript-or-Wasm module script but the server responded with a MIME type of \"text/html\". Strict MIME type checking is enforced for module scripts per HTML spec."
+        }
+      ],
+      "knownDefectsHit": []
+    },
+    {
+      "path": "/placement/skip",
+      "kind": "auth",
+      "outcome": "fail",
+      "httpStatus": 200,
+      "landedOn": "/placement/skip",
+      "failures": [
+        {
+          "type": "console-error",
+          "detail": "Failed to load module script: Expected a JavaScript-or-Wasm module script but the server responded with a MIME type of \"text/html\". Strict MIME type checking is enforced for module scripts per HTML spec.",
+          "repro": "Open https://mercyblade.com/placement/skip in a logged-out browser and observe: console error: Failed to load module script: Expected a JavaScript-or-Wasm module script but the server responded with a MIME type of \"text/html\". Strict MIME type checking is enforced for module scripts per HTML spec."
+        },
+        {
+          "type": "console-error",
+          "detail": "Failed to load module script: Expected a JavaScript-or-Wasm module script but the server responded with a MIME type of \"text/html\". Strict MIME type checking is enforced for module scripts per HTML spec.",
+          "repro": "Open https://mercyblade.com/placement/skip in a logged-out browser and observe: console error: Failed to load module script: Expected a JavaScript-or-Wasm module script but the server responded with a MIME type of \"text/html\". Strict MIME type checking is enforced for module scripts per HTML spec."
+        }
+      ],
+      "knownDefectsHit": []
+    },
+    {
+      "path": "/placement/test",
+      "kind": "auth",
+      "outcome": "fail",
+      "httpStatus": 200,
+      "landedOn": "/placement/test",
+      "failures": [
+        {
+          "type": "console-error",
+          "detail": "Failed to load module script: Expected a JavaScript-or-Wasm module script but the server responded with a MIME type of \"text/html\". Strict MIME type checking is enforced for module scripts per HTML spec.",
+          "repro": "Open https://mercyblade.com/placement/test in a logged-out browser and observe: console error: Failed to load module script: Expected a JavaScript-or-Wasm module script but the server responded with a MIME type of \"text/html\". Strict MIME type checking is enforced for module scripts per HTML spec."
+        },
+        {
+          "type": "console-error",
+          "detail": "Failed to load module script: Expected a JavaScript-or-Wasm module script but the server responded with a MIME type of \"text/html\". Strict MIME type checking is enforced for module scripts per HTML spec.",
+          "repro": "Open https://mercyblade.com/placement/test in a logged-out browser and observe: console error: Failed to load module script: Expected a JavaScript-or-Wasm module script but the server responded with a MIME type of \"text/html\". Strict MIME type checking is enforced for module scripts per HTML spec."
+        }
+      ],
+      "knownDefectsHit": []
+    },
+    {
+      "path": "/placement/who",
+      "kind": "auth",
+      "outcome": "fail",
+      "httpStatus": 200,
+      "landedOn": "/placement/who",
+      "failures": [
+        {
+          "type": "console-error",
+          "detail": "Failed to load module script: Expected a JavaScript-or-Wasm module script but the server responded with a MIME type of \"text/html\". Strict MIME type checking is enforced for module scripts per HTML spec.",
+          "repro": "Open https://mercyblade.com/placement/who in a logged-out browser and observe: console error: Failed to load module script: Expected a JavaScript-or-Wasm module script but the server responded with a MIME type of \"text/html\". Strict MIME type checking is enforced for module scripts per HTML spec."
+        }
+      ],
+      "knownDefectsHit": []
+    },
+    {
+      "path": "/practice/pronunciation",
+      "kind": "auth",
+      "outcome": "pass",
+      "httpStatus": 200,
+      "landedOn": "/practice/pronunciation",
+      "failures": [],
+      "knownDefectsHit": []
+    },
+    {
+      "path": "/pricing",
+      "kind": "public",
+      "outcome": "fail",
+      "httpStatus": 200,
+      "landedOn": "/pricing",
+      "failures": [
+        {
+          "type": "console-error",
+          "detail": "Failed to load module script: Expected a JavaScript-or-Wasm module script but the server responded with a MIME type of \"text/html\". Strict MIME type checking is enforced for module scripts per HTML spec.",
+          "repro": "Open https://mercyblade.com/pricing in a logged-out browser and observe: console error: Failed to load module script: Expected a JavaScript-or-Wasm module script but the server responded with a MIME type of \"text/html\". Strict MIME type checking is enforced for module scripts per HTML spec."
+        }
+      ],
+      "knownDefectsHit": []
+    },
+    {
+      "path": "/privacy",
+      "kind": "public",
+      "outcome": "pass",
+      "httpStatus": 200,
+      "landedOn": "/privacy",
+      "failures": [],
+      "knownDefectsHit": []
+    },
+    {
+      "path": "/professions",
+      "kind": "public",
+      "outcome": "pass",
+      "httpStatus": 200,
+      "landedOn": "/professions",
+      "failures": [],
+      "knownDefectsHit": []
+    },
+    {
+      "path": "/professions/customer-service",
+      "kind": "public",
+      "outcome": "pass",
+      "httpStatus": 200,
+      "landedOn": "/professions/customer-service",
+      "failures": [],
+      "knownDefectsHit": []
+    },
+    {
+      "path": "/professions/drivers",
+      "kind": "public",
+      "outcome": "pass",
+      "httpStatus": 200,
+      "landedOn": "/professions/drivers",
+      "failures": [],
+      "knownDefectsHit": []
+    },
+    {
+      "path": "/professions/healthcare",
+      "kind": "public",
+      "outcome": "pass",
+      "httpStatus": 200,
+      "landedOn": "/professions/healthcare",
+      "failures": [],
+      "knownDefectsHit": []
+    },
+    {
+      "path": "/professions/hospitality",
+      "kind": "public",
+      "outcome": "pass",
+      "httpStatus": 200,
+      "landedOn": "/professions/hospitality",
+      "failures": [],
+      "knownDefectsHit": []
+    },
+    {
+      "path": "/professions/nail-tech",
+      "kind": "public",
+      "outcome": "pass",
+      "httpStatus": 200,
+      "landedOn": "/professions/nail-tech",
+      "failures": [],
+      "knownDefectsHit": []
+    },
+    {
+      "path": "/professions/restaurant",
+      "kind": "public",
+      "outcome": "pass",
+      "httpStatus": 200,
+      "landedOn": "/professions/restaurant",
+      "failures": [],
+      "knownDefectsHit": []
+    },
+    {
+      "path": "/professions/tech-worker",
+      "kind": "public",
+      "outcome": "pass",
+      "httpStatus": 200,
+      "landedOn": "/professions/tech-worker",
+      "failures": [],
+      "knownDefectsHit": []
+    },
+    {
+      "path": "/progress",
+      "kind": "auth",
+      "outcome": "pass",
+      "httpStatus": 200,
+      "landedOn": "/progress",
+      "failures": [],
+      "knownDefectsHit": []
+    },
+    {
+      "path": "/progress/play",
+      "kind": "auth",
+      "outcome": "fail",
+      "httpStatus": 200,
+      "landedOn": "/progress/play",
+      "failures": [
+        {
+          "type": "not-found-404",
+          "detail": "route rendered the NotFound (404) page",
+          "repro": "Open https://mercyblade.com/progress/play in a logged-out browser and observe: the app's 404 'Không tìm thấy trang.' page — the route is not wired"
+        }
+      ],
+      "knownDefectsHit": []
+    },
+    {
+      "path": "/promo-code",
+      "kind": "auth",
+      "outcome": "pass",
+      "httpStatus": 200,
+      "landedOn": "/promo-code",
+      "failures": [],
+      "knownDefectsHit": []
+    },
+    {
+      "path": "/pronunciation/srs",
+      "kind": "auth",
+      "outcome": "pass",
+      "httpStatus": 200,
+      "landedOn": "/pronunciation/srs",
+      "failures": [],
+      "knownDefectsHit": []
+    },
+    {
+      "path": "/referral",
+      "kind": "auth",
+      "outcome": "pass",
+      "httpStatus": 200,
+      "landedOn": "/referral",
+      "failures": [],
+      "knownDefectsHit": []
+    },
+    {
+      "path": "/referral/invite-family",
+      "kind": "auth",
+      "outcome": "pass",
+      "httpStatus": 200,
+      "landedOn": "/referral/invite-family",
+      "failures": [],
+      "knownDefectsHit": []
+    },
+    {
+      "path": "/reset-password",
+      "kind": "auth",
+      "outcome": "pass",
+      "httpStatus": 200,
+      "landedOn": "/reset-password",
+      "failures": [],
+      "knownDefectsHit": []
+    },
+    {
+      "path": "/roadmap",
+      "kind": "auth",
+      "outcome": "pass",
+      "httpStatus": 200,
+      "landedOn": "/roadmap",
+      "failures": [],
+      "knownDefectsHit": []
+    },
+    {
+      "path": "/roleplay",
+      "kind": "auth",
+      "outcome": "pass",
+      "httpStatus": 200,
+      "landedOn": "/roleplay",
+      "failures": [],
+      "knownDefectsHit": []
+    },
+    {
+      "path": "/room",
+      "kind": "auth",
+      "outcome": "pass",
+      "httpStatus": 200,
+      "landedOn": "/room",
+      "failures": [],
+      "knownDefectsHit": []
+    },
+    {
+      "path": "/room/addiction_support_free",
+      "kind": "public",
+      "outcome": "pass",
+      "httpStatus": 200,
+      "landedOn": "/room/addiction_support_free",
+      "failures": [],
+      "knownDefectsHit": []
+    },
+    {
+      "path": "/room/room/addiction_support_free",
+      "kind": "public",
+      "outcome": "pass",
+      "httpStatus": 200,
+      "landedOn": "/room/room/addiction_support_free",
+      "failures": [],
+      "knownDefectsHit": []
+    },
+    {
+      "path": "/rooms",
+      "kind": "public",
+      "outcome": "pass",
+      "httpStatus": 200,
+      "landedOn": "/rooms",
+      "failures": [],
+      "knownDefectsHit": []
+    },
+    {
+      "path": "/rooms/addiction_support_free",
+      "kind": "public",
+      "outcome": "fail",
+      "httpStatus": 200,
+      "landedOn": "/rooms/addiction_support_free",
+      "failures": [
+        {
+          "type": "console-error",
+          "detail": "Failed to load module script: Expected a JavaScript-or-Wasm module script but the server responded with a MIME type of \"text/html\". Strict MIME type checking is enforced for module scripts per HTML spec.",
+          "repro": "Open https://mercyblade.com/rooms/addiction_support_free in a logged-out browser and observe: console error: Failed to load module script: Expected a JavaScript-or-Wasm module script but the server responded with a MIME type of \"text/html\". Strict MIME type checking is enforced for module scripts per HTML spec."
+        }
+      ],
+      "knownDefectsHit": []
+    },
+    {
+      "path": "/rooms/room/addiction_support_free",
+      "kind": "public",
+      "outcome": "pass",
+      "httpStatus": 200,
+      "landedOn": "/rooms/room/addiction_support_free",
+      "failures": [],
+      "knownDefectsHit": []
+    },
+    {
+      "path": "/seo/hoc-tieng-anh-cho-nguoi-viet",
+      "kind": "public",
+      "outcome": "fail",
+      "httpStatus": 200,
+      "landedOn": "/seo/hoc-tieng-anh-cho-nguoi-viet",
+      "failures": [
+        {
+          "type": "console-error",
+          "detail": "Failed to load module script: Expected a JavaScript-or-Wasm module script but the server responded with a MIME type of \"text/html\". Strict MIME type checking is enforced for module scripts per HTML spec.",
+          "repro": "Open https://mercyblade.com/seo/hoc-tieng-anh-cho-nguoi-viet in a logged-out browser and observe: console error: Failed to load module script: Expected a JavaScript-or-Wasm module script but the server responded with a MIME type of \"text/html\". Strict MIME type checking is enforced for module scripts per HTML spec."
+        }
+      ],
+      "knownDefectsHit": []
+    },
+    {
+      "path": "/seo/hoc-tieng-anh-mien-phi",
+      "kind": "public",
+      "outcome": "fail",
+      "httpStatus": 200,
+      "landedOn": "/seo/hoc-tieng-anh-mien-phi",
+      "failures": [
+        {
+          "type": "console-error",
+          "detail": "Failed to load module script: Expected a JavaScript-or-Wasm module script but the server responded with a MIME type of \"text/html\". Strict MIME type checking is enforced for module scripts per HTML spec.",
+          "repro": "Open https://mercyblade.com/seo/hoc-tieng-anh-mien-phi in a logged-out browser and observe: console error: Failed to load module script: Expected a JavaScript-or-Wasm module script but the server responded with a MIME type of \"text/html\". Strict MIME type checking is enforced for module scripts per HTML spec."
+        }
+      ],
+      "knownDefectsHit": []
+    },
+    {
+      "path": "/seo/loi-tieng-anh-nguoi-viet-hay-sai",
+      "kind": "public",
+      "outcome": "fail",
+      "httpStatus": 200,
+      "landedOn": "/seo/loi-tieng-anh-nguoi-viet-hay-sai",
+      "failures": [
+        {
+          "type": "console-error",
+          "detail": "Failed to load module script: Expected a JavaScript-or-Wasm module script but the server responded with a MIME type of \"text/html\". Strict MIME type checking is enforced for module scripts per HTML spec.",
+          "repro": "Open https://mercyblade.com/seo/loi-tieng-anh-nguoi-viet-hay-sai in a logged-out browser and observe: console error: Failed to load module script: Expected a JavaScript-or-Wasm module script but the server responded with a MIME type of \"text/html\". Strict MIME type checking is enforced for module scripts per HTML spec."
+        }
+      ],
+      "knownDefectsHit": []
+    },
+    {
+      "path": "/seo/phong-van-tieng-anh",
+      "kind": "public",
+      "outcome": "fail",
+      "httpStatus": 200,
+      "landedOn": "/seo/phong-van-tieng-anh",
+      "failures": [
+        {
+          "type": "console-error",
+          "detail": "Failed to load module script: Expected a JavaScript-or-Wasm module script but the server responded with a MIME type of \"text/html\". Strict MIME type checking is enforced for module scripts per HTML spec.",
+          "repro": "Open https://mercyblade.com/seo/phong-van-tieng-anh in a logged-out browser and observe: console error: Failed to load module script: Expected a JavaScript-or-Wasm module script but the server responded with a MIME type of \"text/html\". Strict MIME type checking is enforced for module scripts per HTML spec."
+        }
+      ],
+      "knownDefectsHit": []
+    },
+    {
+      "path": "/seo/sua-phat-am-tieng-anh",
+      "kind": "public",
+      "outcome": "fail",
+      "httpStatus": 200,
+      "landedOn": "/seo/sua-phat-am-tieng-anh",
+      "failures": [
+        {
+          "type": "console-error",
+          "detail": "Failed to load module script: Expected a JavaScript-or-Wasm module script but the server responded with a MIME type of \"text/html\". Strict MIME type checking is enforced for module scripts per HTML spec.",
+          "repro": "Open https://mercyblade.com/seo/sua-phat-am-tieng-anh in a logged-out browser and observe: console error: Failed to load module script: Expected a JavaScript-or-Wasm module script but the server responded with a MIME type of \"text/html\". Strict MIME type checking is enforced for module scripts per HTML spec."
+        }
+      ],
+      "knownDefectsHit": []
+    },
+    {
+      "path": "/share/progress",
+      "kind": "auth",
+      "outcome": "fail",
+      "httpStatus": 200,
+      "landedOn": "/share/progress",
+      "failures": [
+        {
+          "type": "console-error",
+          "detail": "Failed to load module script: Expected a JavaScript-or-Wasm module script but the server responded with a MIME type of \"text/html\". Strict MIME type checking is enforced for module scripts per HTML spec.",
+          "repro": "Open https://mercyblade.com/share/progress in a logged-out browser and observe: console error: Failed to load module script: Expected a JavaScript-or-Wasm module script but the server responded with a MIME type of \"text/html\". Strict MIME type checking is enforced for module scripts per HTML spec."
+        }
+      ],
+      "knownDefectsHit": []
+    },
+    {
+      "path": "/signin",
+      "kind": "public",
+      "outcome": "pass",
+      "httpStatus": 200,
+      "landedOn": "/signin",
+      "failures": [],
+      "knownDefectsHit": []
+    },
+    {
+      "path": "/signup",
+      "kind": "public",
+      "outcome": "fail",
+      "httpStatus": 200,
+      "landedOn": "/signup",
+      "failures": [
+        {
+          "type": "console-error",
+          "detail": "Failed to load module script: Expected a JavaScript-or-Wasm module script but the server responded with a MIME type of \"text/html\". Strict MIME type checking is enforced for module scripts per HTML spec.",
+          "repro": "Open https://mercyblade.com/signup in a logged-out browser and observe: console error: Failed to load module script: Expected a JavaScript-or-Wasm module script but the server responded with a MIME type of \"text/html\". Strict MIME type checking is enforced for module scripts per HTML spec."
+        }
+      ],
+      "knownDefectsHit": []
+    },
+    {
+      "path": "/speak",
+      "kind": "auth",
+      "outcome": "fail",
+      "httpStatus": 200,
+      "landedOn": "/speak",
+      "failures": [
+        {
+          "type": "console-error",
+          "detail": "Failed to load module script: Expected a JavaScript-or-Wasm module script but the server responded with a MIME type of \"text/html\". Strict MIME type checking is enforced for module scripts per HTML spec.",
+          "repro": "Open https://mercyblade.com/speak in a logged-out browser and observe: console error: Failed to load module script: Expected a JavaScript-or-Wasm module script but the server responded with a MIME type of \"text/html\". Strict MIME type checking is enforced for module scripts per HTML spec."
+        }
+      ],
+      "knownDefectsHit": []
+    },
+    {
+      "path": "/speech/history",
+      "kind": "auth",
+      "outcome": "fail",
+      "httpStatus": 200,
+      "landedOn": "/speech/history",
+      "failures": [
+        {
+          "type": "console-error",
+          "detail": "Failed to load module script: Expected a JavaScript-or-Wasm module script but the server responded with a MIME type of \"text/html\". Strict MIME type checking is enforced for module scripts per HTML spec.",
+          "repro": "Open https://mercyblade.com/speech/history in a logged-out browser and observe: console error: Failed to load module script: Expected a JavaScript-or-Wasm module script but the server responded with a MIME type of \"text/html\". Strict MIME type checking is enforced for module scripts per HTML spec."
+        }
+      ],
+      "knownDefectsHit": []
+    },
+    {
+      "path": "/stories",
+      "kind": "public",
+      "outcome": "pass",
+      "httpStatus": 200,
+      "landedOn": "/stories",
+      "failures": [],
+      "knownDefectsHit": []
+    },
+    {
+      "path": "/stories/share",
+      "kind": "public",
+      "outcome": "fail",
+      "httpStatus": 200,
+      "landedOn": "/stories/share",
+      "failures": [
+        {
+          "type": "console-error",
+          "detail": "Failed to load module script: Expected a JavaScript-or-Wasm module script but the server responded with a MIME type of \"text/html\". Strict MIME type checking is enforced for module scripts per HTML spec.",
+          "repro": "Open https://mercyblade.com/stories/share in a logged-out browser and observe: console error: Failed to load module script: Expected a JavaScript-or-Wasm module script but the server responded with a MIME type of \"text/html\". Strict MIME type checking is enforced for module scripts per HTML spec."
+        }
+      ],
+      "knownDefectsHit": []
+    },
+    {
+      "path": "/support",
+      "kind": "public",
+      "outcome": "fail",
+      "httpStatus": 200,
+      "landedOn": "/support",
+      "failures": [
+        {
+          "type": "console-error",
+          "detail": "Failed to load module script: Expected a JavaScript-or-Wasm module script but the server responded with a MIME type of \"text/html\". Strict MIME type checking is enforced for module scripts per HTML spec.",
+          "repro": "Open https://mercyblade.com/support in a logged-out browser and observe: console error: Failed to load module script: Expected a JavaScript-or-Wasm module script but the server responded with a MIME type of \"text/html\". Strict MIME type checking is enforced for module scripts per HTML spec."
+        }
+      ],
+      "knownDefectsHit": []
+    },
+    {
+      "path": "/teacher",
+      "kind": "auth",
+      "outcome": "fail",
+      "httpStatus": 200,
+      "landedOn": "/teacher",
+      "failures": [
+        {
+          "type": "console-error",
+          "detail": "Failed to load module script: Expected a JavaScript-or-Wasm module script but the server responded with a MIME type of \"text/html\". Strict MIME type checking is enforced for module scripts per HTML spec.",
+          "repro": "Open https://mercyblade.com/teacher in a logged-out browser and observe: console error: Failed to load module script: Expected a JavaScript-or-Wasm module script but the server responded with a MIME type of \"text/html\". Strict MIME type checking is enforced for module scripts per HTML spec."
+        }
+      ],
+      "knownDefectsHit": []
+    },
+    {
+      "path": "/terms",
+      "kind": "public",
+      "outcome": "fail",
+      "httpStatus": 200,
+      "landedOn": "/terms",
+      "failures": [
+        {
+          "type": "console-error",
+          "detail": "Failed to load module script: Expected a JavaScript-or-Wasm module script but the server responded with a MIME type of \"text/html\". Strict MIME type checking is enforced for module scripts per HTML spec.",
+          "repro": "Open https://mercyblade.com/terms in a logged-out browser and observe: console error: Failed to load module script: Expected a JavaScript-or-Wasm module script but the server responded with a MIME type of \"text/html\". Strict MIME type checking is enforced for module scripts per HTML spec."
+        }
+      ],
+      "knownDefectsHit": []
+    },
+    {
+      "path": "/tiers",
+      "kind": "auth",
+      "outcome": "fail",
+      "httpStatus": 200,
+      "landedOn": "/tiers",
+      "failures": [
+        {
+          "type": "console-error",
+          "detail": "Failed to load module script: Expected a JavaScript-or-Wasm module script but the server responded with a MIME type of \"text/html\". Strict MIME type checking is enforced for module scripts per HTML spec.",
+          "repro": "Open https://mercyblade.com/tiers in a logged-out browser and observe: console error: Failed to load module script: Expected a JavaScript-or-Wasm module script but the server responded with a MIME type of \"text/html\". Strict MIME type checking is enforced for module scripts per HTML spec."
+        }
+      ],
+      "knownDefectsHit": []
+    },
+    {
+      "path": "/unsubscribe",
+      "kind": "auth",
+      "outcome": "fail",
+      "httpStatus": 200,
+      "landedOn": "/unsubscribe",
+      "failures": [
+        {
+          "type": "console-error",
+          "detail": "Failed to load module script: Expected a JavaScript-or-Wasm module script but the server responded with a MIME type of \"text/html\". Strict MIME type checking is enforced for module scripts per HTML spec.",
+          "repro": "Open https://mercyblade.com/unsubscribe in a logged-out browser and observe: console error: Failed to load module script: Expected a JavaScript-or-Wasm module script but the server responded with a MIME type of \"text/html\". Strict MIME type checking is enforced for module scripts per HTML spec."
+        }
+      ],
+      "knownDefectsHit": []
+    },
+    {
+      "path": "/vocabulary",
+      "kind": "auth",
+      "outcome": "fail",
+      "httpStatus": 200,
+      "landedOn": "/vocabulary",
+      "failures": [
+        {
+          "type": "console-error",
+          "detail": "Failed to load module script: Expected a JavaScript-or-Wasm module script but the server responded with a MIME type of \"text/html\". Strict MIME type checking is enforced for module scripts per HTML spec.",
+          "repro": "Open https://mercyblade.com/vocabulary in a logged-out browser and observe: console error: Failed to load module script: Expected a JavaScript-or-Wasm module script but the server responded with a MIME type of \"text/html\". Strict MIME type checking is enforced for module scripts per HTML spec."
+        }
+      ],
+      "knownDefectsHit": []
+    },
+    {
+      "path": "/vocabulary/review",
+      "kind": "auth",
+      "outcome": "fail",
+      "httpStatus": 200,
+      "landedOn": "/vocabulary/review",
+      "failures": [
+        {
+          "type": "console-error",
+          "detail": "Failed to load module script: Expected a JavaScript-or-Wasm module script but the server responded with a MIME type of \"text/html\". Strict MIME type checking is enforced for module scripts per HTML spec.",
+          "repro": "Open https://mercyblade.com/vocabulary/review in a logged-out browser and observe: console error: Failed to load module script: Expected a JavaScript-or-Wasm module script but the server responded with a MIME type of \"text/html\". Strict MIME type checking is enforced for module scripts per HTML spec."
+        }
+      ],
+      "knownDefectsHit": []
+    },
+    {
+      "path": "/weak-at",
+      "kind": "auth",
+      "outcome": "fail",
+      "httpStatus": 200,
+      "landedOn": "/weak-at",
+      "failures": [
+        {
+          "type": "console-error",
+          "detail": "Failed to load module script: Expected a JavaScript-or-Wasm module script but the server responded with a MIME type of \"text/html\". Strict MIME type checking is enforced for module scripts per HTML spec.",
+          "repro": "Open https://mercyblade.com/weak-at in a logged-out browser and observe: console error: Failed to load module script: Expected a JavaScript-or-Wasm module script but the server responded with a MIME type of \"text/html\". Strict MIME type checking is enforced for module scripts per HTML spec."
+        }
+      ],
+      "knownDefectsHit": []
+    },
+    {
+      "path": "/writing",
+      "kind": "auth",
+      "outcome": "fail",
+      "httpStatus": 200,
+      "landedOn": "/writing",
+      "failures": [
+        {
+          "type": "console-error",
+          "detail": "Failed to load module script: Expected a JavaScript-or-Wasm module script but the server responded with a MIME type of \"text/html\". Strict MIME type checking is enforced for module scripts per HTML spec.",
+          "repro": "Open https://mercyblade.com/writing in a logged-out browser and observe: console error: Failed to load module script: Expected a JavaScript-or-Wasm module script but the server responded with a MIME type of \"text/html\". Strict MIME type checking is enforced for module scripts per HTML spec."
+        }
+      ],
+      "knownDefectsHit": []
+    },
+    {
+      "path": "/writing-feedback",
+      "kind": "auth",
+      "outcome": "pass",
+      "httpStatus": 200,
+      "landedOn": "/writing-feedback",
+      "failures": [],
+      "knownDefectsHit": []
+    },
+    {
+      "path": "/xp",
+      "kind": "auth",
+      "outcome": "pass",
+      "httpStatus": 200,
+      "landedOn": "/xp",
+      "failures": [],
+      "knownDefectsHit": []
+    }
+  ]
+}
