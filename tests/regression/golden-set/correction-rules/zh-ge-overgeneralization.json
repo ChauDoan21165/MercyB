@@ -1,0 +1,59 @@
+{
+  "rule": "geOvergeneralization",
+  "ruleId": "zh-ge-overgeneralization",
+  "language": "zh",
+  "description": "VN→ZH classifier over-generalization: Vietnamese learners default to 个 for every noun, but Mandarin assigns a specific classifier per noun. Rule zh-ge-overgeneralization rewrites 个 → the correct classifier for a closed noun map (书→本, 狗/猫/鸟→只, 马→匹).",
+  "fp_risk_note": "Low risk. Rewrites 个 → the correct classifier only for a closed noun map (书→本; 狗/猫/鸟→只; 马→匹) after a number/demonstrative. Compounds where the char is not the counted head (书店/书法/书架, 马路/马桶) are guarded by tail lookaheads; nouns that genuinely take 个 (人, 苹果, 学生) are not in the map and abstain.",
+  "positive": [
+    {
+      "id": "ge-overgeneral-pos-001",
+      "input": "我有一个书",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "我有一本书。",
+      "expectedRuleFired": "zh-ge-overgeneralization",
+      "notes": "一个书 → 一本书 (书 takes 本, not 个)."
+    },
+    {
+      "id": "ge-overgeneral-pos-002",
+      "input": "他有一个狗",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "他有一只狗。",
+      "expectedRuleFired": "zh-ge-overgeneralization",
+      "notes": "一个狗 → 一只狗 (animal classifier 只)."
+    },
+    {
+      "id": "ge-overgeneral-pos-003",
+      "input": "那个猫很可爱",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "那只猫很可爱。",
+      "expectedRuleFired": "zh-ge-overgeneralization",
+      "notes": "那个猫 → 那只猫 (demonstrative + animal classifier 只)."
+    }
+  ],
+  "negative": [
+    {
+      "id": "ge-overgeneral-neg-001",
+      "input": "这个人很好",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "这个人很好",
+      "expectedRuleFired": null,
+      "notes": "人 genuinely takes 个 — not in the map, must abstain."
+    },
+    {
+      "id": "ge-overgeneral-neg-002",
+      "input": "三个苹果",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "三个苹果",
+      "expectedRuleFired": null,
+      "notes": "苹果 genuinely takes 个 — not in the map, must abstain."
+    },
+    {
+      "id": "ge-overgeneral-neg-003",
+      "input": "那个书店很大",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "那个书店很大",
+      "expectedRuleFired": null,
+      "notes": "书店 (bookstore) — 书 is not the counted head; the 店 tail lookahead blocks it, must abstain."
+    }
+  ]
+}

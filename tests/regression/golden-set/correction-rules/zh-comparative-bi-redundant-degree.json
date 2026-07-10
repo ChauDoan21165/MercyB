@@ -1,0 +1,59 @@
+{
+  "rule": "comparativeBiRedundantDegree",
+  "ruleId": "zh-comparative-bi-redundant-degree",
+  "language": "zh",
+  "description": "VN→ZH comparative transfer: Mandarin 'A 比 B adj' is inherently comparative and rejects an absolute degree adverb (很/非常/太) before the adjective; the correct intensifier is 更/还. Vietnamese 'hơn' and English '-er than' keep the plain degree adverb, so learners write '我比你很高'. Rule zh-comparative-bi-redundant-degree drops the stray 很/非常/太 between 比…B and the adjective.",
+  "fp_risk_note": "Low risk. Drops 很/非常/太 only between 比…B and a closed comparative adjective (高大小长短贵快慢胖瘦忙累冷热远近难). 比 with the correct comparative intensifier (更/还) is untouched; a sentence with no 比 never matches; 多 is excluded so the valid quantifier '很多' is never stripped.",
+  "positive": [
+    {
+      "id": "bi-degree-pos-001",
+      "input": "我比你很高",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "我比你高。",
+      "expectedRuleFired": "zh-comparative-bi-redundant-degree",
+      "notes": "比…很高 → 比…高 (drop the absolute degree adverb 很)."
+    },
+    {
+      "id": "bi-degree-pos-002",
+      "input": "他比我非常忙",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "他比我忙。",
+      "expectedRuleFired": "zh-comparative-bi-redundant-degree",
+      "notes": "比…非常忙 → 比…忙 (drop 非常)."
+    },
+    {
+      "id": "bi-degree-pos-003",
+      "input": "今天比昨天太冷",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "今天比昨天冷。",
+      "expectedRuleFired": "zh-comparative-bi-redundant-degree",
+      "notes": "比…太冷 → 比…冷 (drop 太); comparand B is a two-char noun 昨天."
+    }
+  ],
+  "negative": [
+    {
+      "id": "bi-degree-neg-001",
+      "input": "我比你更高",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "我比你更高",
+      "expectedRuleFired": null,
+      "notes": "更 is the correct comparative intensifier — must abstain."
+    },
+    {
+      "id": "bi-degree-neg-002",
+      "input": "我很高",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "我很高",
+      "expectedRuleFired": null,
+      "notes": "No 比 — 很高 is a correct absolute statement, must abstain."
+    },
+    {
+      "id": "bi-degree-neg-003",
+      "input": "他比我高",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "他比我高",
+      "expectedRuleFired": null,
+      "notes": "Already correct — no degree adverb to drop, must abstain."
+    }
+  ]
+}
