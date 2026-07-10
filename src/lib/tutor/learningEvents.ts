@@ -10,6 +10,11 @@ export type LearningEventType =
   | "placement_cta_clicked"
   | "kids_picture_selected"
   | "kids_speak_clicked"
+  // WP-001 prediction-error capture (SHADOW MODE). Recorded only when
+  // FEATURE_FLAGS.TUTOR_PREDICTION_CAPTURE_ENABLED is on; both carry no learner text
+  // (enum labels, scaled scalars, a PII-free turn anchor) and reuse this drain verbatim.
+  | "prediction_recorded"
+  | "surprise_resolved"
   // Learner feedback on a displayed tutor correction. These are the only
   // `feedback_*` producers today; the durable sink's DB CHECK constraint
   // (learning_events_provenance_chk) rejects a feedback row unless
@@ -104,6 +109,8 @@ const EVENT_TYPES = new Set<LearningEventType>([
   "placement_cta_clicked",
   "kids_picture_selected",
   "kids_speak_clicked",
+  "prediction_recorded",
+  "surprise_resolved",
   "feedback_helpful",
   "feedback_not_helpful",
 ]);

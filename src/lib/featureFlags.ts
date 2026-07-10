@@ -51,6 +51,19 @@ export const FEATURE_FLAGS = {
   TUTOR_DECISION_ENGINE_ENABLED: false,
 
   /**
+   * Prediction-error capture, SHADOW MODE (WP-001).
+   *
+   * OFF (default): the live tutor turn is byte-identical to today — no prediction is
+   * captured, no surprise is drained, nothing learner-facing changes. ON: on every turn
+   * the decision pipeline records a lookup-table prediction of the learner outcome
+   * BEFORE the outcome exists, then measures surprise once the outcome arrives
+   * (src/lib/tm-int/pred). Strict side-channel: learner-facing output is identical
+   * whether this is on or off (see pred/shadowRunner + wp001FlagOffByteIdentical test).
+   * Default OFF per the "default OFF for any new system" rule.
+   */
+  TUTOR_PREDICTION_CAPTURE_ENABLED: readEnvBool("VITE_TUTOR_PREDICTION_CAPTURE_ENABLED", false),
+
+  /**
    * Placement test — HIDDEN from every user-facing surface.
    *
    * WHY: the test inflates results for Vietnamese L1 learners — they

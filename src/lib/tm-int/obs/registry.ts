@@ -89,6 +89,27 @@ export const OBSERVATION_CAPABILITIES = [
     domain: "validation",
     description: "Replays Linh placement audio failure without inferring listening weakness.",
   },
+  {
+    id: "OBS-PRED-000001",
+    semanticKey: "obs.prediction.recorded",
+    domain: "prediction",
+    factType: "PredictionRecorded",
+    description: "Records a lookup-table prediction of a learner outcome BEFORE the outcome exists.",
+  },
+  {
+    id: "OBS-PRED-000002",
+    semanticKey: "obs.prediction.surprise_resolved",
+    domain: "prediction",
+    factType: "SurpriseResolved",
+    description: "Records surprise (distance between predicted and actual outcome) for an accepted pair.",
+  },
+  {
+    id: "OBS-PRED-000003",
+    semanticKey: "obs.prediction.hindsight_rejected",
+    domain: "prediction",
+    factType: "HindsightRejected",
+    description: "Records that a pair was excluded because its prediction was not strictly before the outcome.",
+  },
 ] as const satisfies readonly ObservationCapability[];
 
 export function capabilityById(id: string): ObservationCapability | null {
