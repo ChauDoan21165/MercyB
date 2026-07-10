@@ -75,7 +75,8 @@ export default function AdminStatsStrip({
         const usersQ = await supabase
           .from("profiles")
           .select("id", { count: "exact", head: true })
-          .eq("app_id", appId);
+          .eq("app_id", appId)
+          .eq("is_synthetic", false);
 
         // Feedback last 24h
         const feedbackQ = await supabase
@@ -90,6 +91,7 @@ export default function AdminStatsStrip({
           .from("profiles")
           .select("tier")
           .eq("app_id", appId)
+          .eq("is_synthetic", false)
           .limit(5000);
 
         if (!tiersQ.error && Array.isArray(tiersQ.data)) {

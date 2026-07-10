@@ -141,6 +141,7 @@ async function loadCandidates(
       "user_id, email, email_weekly_digest_enabled, email_unsubscribe_token",
     )
     .eq("email_weekly_digest_enabled", true)
+    .eq("is_synthetic", false)
     .not("email", "is", null);
   if (profileErr || !profiles) return [];
 

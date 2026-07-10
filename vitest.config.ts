@@ -40,6 +40,11 @@ export default defineConfig({
       // ./tests/prod-smoke) — against real prod, NOT vitest/jsdom. Exclude here
       // so vitest stops mis-collecting them; coverage stays in the Playwright lane.
       "tests/prod-smoke/**",
+      // Same reason: the Tier-3 synthetic-learner journeys are Playwright specs
+      // (playwright.synthetic-learner.config.ts, testDir ./tests/prod-synthetic-learner)
+      // that hit real prod. The DB guard test tests/synthetic-exclusion/** is a
+      // real vitest test and is deliberately NOT excluded.
+      "tests/prod-synthetic-learner/**",
       // Nested agent git worktrees live under the main checkout's
       // .claude/worktrees/. Without this, `vitest run` from the repo
       // root re-discovers every test inside each worktree copy and

@@ -1810,3 +1810,32 @@ flywheel-mine:
     expire_in: 90 days
     paths:
       - _flywheel_out/
+
+# ── Tier-3 prod synthetic learner (SL-001) ──────────────────────────────────
+# DISABLED BY DEFAULT. Runs journeys (a)–(f) against REAL production as the
+# dedicated synthetic account, on a schedule (or ad-hoc web run) ONLY when Chau
+# sets SYNTHETIC_LEARNER_ENABLED=1 and has provisioned the masked PROD_SYNTH_*
+# (and RESEND_ALERT_TOKEN) CI variables. No credential lives in this repo — the
+# job reads them from the runner env at run time. Until the gate is set, the
+# rules fall through to `when: never`, so this job never runs. This is also the
+# uptime monitor + placement keepalive (journey e) — the standalone pg_cron
+# keepalive is retired (see the migration).
+prod-synthetic-learner:
+  <<: [*node_job, *local_runner]
+  stage: verify
+  interruptible: false
+  rules:
+    - if: '$RESERVOIR == "1"'
+      when: never
+    - if: '$CI_PIPELINE_SOURCE == "schedule" && $SYNTHETIC_LEARNER_ENABLED == "1"'
+    - if: '$CI_PIPELINE_SOURCE == "web" && $SYNTHETIC_LEARNER_ENABLED == "1"'
+      when: manual
+    - when: never
+  script:
+    - npx playwright install --with-deps chromium
+    - npm run test:synthetic-learner
+  artifacts:
+    when: always
+    expire_in: 30 days
+    paths:
+      - reports/prod-synthetic-learner/

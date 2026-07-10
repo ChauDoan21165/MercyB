@@ -78,6 +78,7 @@ Deno.serve(async (req: Request): Promise<Response> => {
   const { data: profiles, error: pErr } = await supabase
     .from("profiles")
     .select("id, created_at, tier")
+    .eq("is_synthetic", false)
     .gte("created_at", sinceIso);
   if (pErr) return json({ error: "profiles read failed", detail: pErr.message }, 500);
 
