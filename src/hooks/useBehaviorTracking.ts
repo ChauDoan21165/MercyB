@@ -63,11 +63,14 @@ export const useBehaviorTracking = (roomId: string) => {
 
 // Helper function to update knowledge profile
 async function updateKnowledgeProfile(userId: string, interest: string) {
-  const { data: profile } = await supabase
+  const { data: profile, error } = await supabase
     .from('user_knowledge_profile')
     .select('*')
     .eq('user_id', userId)
     .maybeSingle();
+  if (error) {
+    console.warn('[useBehaviorTracking] updateKnowledgeProfile read failed', error);
+  }
 
   if (profile) {
     const interests = Array.isArray(profile.interests) ? profile.interests : [];
@@ -90,11 +93,14 @@ async function updateKnowledgeProfile(userId: string, interest: string) {
 
 // Helper function to update completed topics
 async function updateCompletedTopics(userId: string, roomId: string) {
-  const { data: profile } = await supabase
+  const { data: profile, error } = await supabase
     .from('user_knowledge_profile')
     .select('*')
     .eq('user_id', userId)
     .maybeSingle();
+  if (error) {
+    console.warn('[useBehaviorTracking] updateCompletedTopics read failed', error);
+  }
 
   if (profile) {
     const completed = Array.isArray(profile.completed_topics) ? profile.completed_topics : [];

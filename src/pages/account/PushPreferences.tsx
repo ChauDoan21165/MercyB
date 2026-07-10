@@ -64,11 +64,16 @@ export default function PushPreferencesPage() {
     if (!user?.id) return;
 
     (async () => {
-      const { data } = await supabase
+      const { data, error } = await supabase
         .from("push_preferences")
         .select("*")
         .eq("user_id", user.id)
         .maybeSingle();
+      if (error) {
+        // Surface the load failure rather than silently rendering defaults,
+        // which would make a learner's saved push settings look reset.
+        console.warn("[PushPreferences] push_preferences read failed", error);
+      }
       if (cancelled) return;
       if (data) {
         setPrefs({

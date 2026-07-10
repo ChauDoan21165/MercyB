@@ -155,6 +155,26 @@ describe("addFact", () => {
     expect(result?.id).toBe("f-existing");
   });
 
+  it("surfaces a recovery re-read error (WP-H8b), not silently masking as null", async () => {
+    // Insert hits a unique violation → recovery re-read path…
+    supabaseMock.from.mockReturnValueOnce(
+      chain({ data: null, error: { code: "23505", message: "duplicate" } }),
+    );
+    // …but the re-read itself fails.
+    supabaseMock.from.mockReturnValueOnce(
+      chain({ data: null, error: { message: "reread timeout" } }),
+    );
+    const warn = vi.spyOn(console, "warn").mockImplementation(() => {});
+    try {
+      const result = await addFact("u1", "preference", "x", "user_stated");
+      expect(result).toBeNull(); // safe fallback preserved
+      expect(warn).toHaveBeenCalledTimes(1); // failure surfaced, not swallowed
+      expect(warn.mock.calls[0].join(" ")).toMatch(/recovery re-read failed/i);
+    } finally {
+      warn.mockRestore();
+    }
+  });
+
   it("returns null on non-unique error", async () => {
     supabaseMock.from.mockReturnValueOnce(
       chain({ data: null, error: { code: "42501", message: "permission denied" } }),

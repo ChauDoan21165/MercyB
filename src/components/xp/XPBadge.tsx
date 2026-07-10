@@ -37,11 +37,15 @@ export function XPBadge() {
       return;
     }
     (async () => {
-      const { data } = await supabase
+      const { data, error } = await supabase
         .from("user_xp")
         .select("total_xp, current_level, gamification_enabled")
         .eq("user_id", user.id)
         .maybeSingle();
+      if (error) {
+        // Surface the read failure instead of silently showing 0 XP.
+        console.warn("[XPBadge] user_xp read failed", error);
+      }
       if (cancelled) return;
       const row = (data ?? null) as UserXPRow | null;
       const t = typeof row?.total_xp === "number" ? row.total_xp : 0;
