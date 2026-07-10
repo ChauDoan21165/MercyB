@@ -118,8 +118,11 @@ export default function CorrectionFeedbackButtons({
         </button>
       </div>
       {locked && (
-        <span data-testid="correction-feedback-thanks" className="sr-only">
-          Đã ghi nhận · Recorded
+        <span
+          data-testid="correction-feedback-thanks"
+          className="text-xs font-bold text-emerald-700"
+        >
+          ✓ Đã ghi nhận · Recorded
         </span>
       )}
     </div>
