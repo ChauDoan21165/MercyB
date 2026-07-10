@@ -13,6 +13,7 @@ import {
   isAiEnabled,
   isUserAiEnabled,
   logAiUsage,
+  logAiUsageLogBackground,
 } from "../_shared/aiUsage.ts";
 import {
   buildPronunciationAnalysisResult,
@@ -275,6 +276,19 @@ serve(async (req: Request): Promise<Response> => {
       ]).catch((error) => {
         console.error("Background task error:", error);
       });
+
+      // Additive: VND-costed, language-tagged spend to ai_usage_logs (the
+      // CostMonitoring table). Only when the provider returned real usage
+      // (no fabricated numbers). Fire-and-forget; never delays the reply.
+      if (coachingResult?.usage) {
+        logAiUsageLogBackground({
+          userId: authContext.userId,
+          feature: "guide-pronunciation-coach",
+          model: "gpt-4.1-mini",
+          inputTokens: coachingResult.usage.prompt_tokens ?? 0,
+          outputTokens: coachingResult.usage.completion_tokens ?? 0,
+        });
+      }
     }
 
     return response;

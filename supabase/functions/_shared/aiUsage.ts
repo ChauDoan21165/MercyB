@@ -266,3 +266,44 @@ export async function logAiUsageLog(params: {
     });
   }
 }
+
+/**
+ * Fire-and-forget wrapper around logAiUsageLog for the response hot path.
+ *
+ * - Resolves language_pair (best-effort) when not supplied, then logs.
+ * - NEVER blocks or fails the caller: the whole task runs in the background via
+ *   EdgeRuntime.waitUntil (falling back to a detached promise off-runtime), and
+ *   every failure is swallowed with a console.warn.
+ * - No fabricated numbers: callers should only invoke this when the provider
+ *   returned real token usage (skip it entirely otherwise).
+ */
+export function logAiUsageLogBackground(params: {
+  userId: string | null;
+  feature: string;
+  model: string;
+  inputTokens: number;
+  outputTokens: number;
+  languagePair?: string | null;
+  conversationId?: string | null;
+  requestId?: string | null;
+  meta?: Record<string, unknown>;
+}): void {
+  const task = (async () => {
+    if (!params.userId) return;
+    const languagePair = params.languagePair ??
+      (await resolveLanguagePairForUser(params.userId));
+    await logAiUsageLog({ ...params, languagePair });
+  })().catch((e) =>
+    console.warn(`[${params.feature}] ai_usage_logs background logging failed:`, e)
+  );
+
+  try {
+    const er = (globalThis as {
+      EdgeRuntime?: { waitUntil?: (p: Promise<unknown>) => void };
+    }).EdgeRuntime;
+    if (er?.waitUntil) er.waitUntil(task);
+    else void task;
+  } catch {
+    void task;
+  }
+}
