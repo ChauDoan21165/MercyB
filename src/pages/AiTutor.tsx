@@ -115,6 +115,7 @@ import {
 } from "@/lib/tutor/speakFollowups";
 import { auditCorrectionQuick } from "@/lib/tutor/teacherMercyAuditGate";
 import { selfAuditCorrectionQuick } from "@/lib/tutor/teacherMercySelfAuditGate";
+import { detectResidualError } from "@/lib/tutor/residualErrorCheck";
 import { enrichCorrectionExperience } from "@/lib/tutor/correctionExperienceEnricher";
 import { getInterferenceCategoryExplanation } from "@/lib/tutor/vietnameseInterferenceExplanation";
 import { detectBilingualSaliencePivot } from "@/lib/tutor/bilingualSalienceDetector";
@@ -2354,6 +2355,17 @@ export default function AiTutorPage() {
           if (selfAuditResult.decision === "SHOW_WITH_CAUTION") {
             console.warn("[MercySelfAudit] AI correction shown with caution:", selfAuditResult.summaryVi);
           }
+          // Residual-error gate — a "confident" correction can still be ungrammatical.
+          // Never promote broken English into the speaking-practice model slot.
+          const aiResidual = detectResidualError(aiCorrected);
+          if (aiResidual) {
+            console.warn(
+              `[MercyResidualCheck] AI correction withheld (${aiResidual.errorClass}: "${aiResidual.evidence}")`,
+            );
+            setLoading(false);
+            setError(GRAMMAR_CORRECTION_UNAVAILABLE_MESSAGE);
+            return;
+          }
           setResult({
             ...turn,
             grammarTip: aiResult.grammarTip,
@@ -2487,6 +2499,18 @@ export default function AiTutorPage() {
     }
     if (selfAuditResult.decision === "SHOW_WITH_CAUTION") {
       console.warn("[MercySelfAudit] Rule correction shown with caution:", selfAuditResult.summaryVi);
+    }
+    // Residual-error gate — the rule engine returns status "corrected" after a single
+    // clause-level rule fires, even when a later clause is still broken ("…and I no
+    // have book."). Never promote that into the speaking-practice model slot.
+    const ruleResidual = detectResidualError(corrected);
+    if (ruleResidual) {
+      console.warn(
+        `[MercyResidualCheck] Rule correction withheld (${ruleResidual.errorClass}: "${ruleResidual.evidence}")`,
+      );
+      setLoading(false);
+      setError(GRAMMAR_CORRECTION_UNAVAILABLE_MESSAGE);
+      return;
     }
     setResult({
       ...turn,
@@ -2803,6 +2827,17 @@ export default function AiTutorPage() {
   const handleSendCorrectedSentenceToSpeak = (correctedSentence: string) => {
     const trimmed = correctedSentence.trim();
     if (!trimmed) return;
+    // Defence in depth: the two paths above already withhold a residually broken
+    // correction, so this button should be unreachable for one. A correction that
+    // arrives here by any other route must still never become the model sentence.
+    const residual = detectResidualError(trimmed);
+    if (residual) {
+      console.warn(
+        `[MercyResidualCheck] Send-to-speak withheld (${residual.errorClass}: "${residual.evidence}")`,
+      );
+      setError(GRAMMAR_CORRECTION_UNAVAILABLE_MESSAGE);
+      return;
+    }
     setLatestCorrectedSeed({
       correctedSentence: trimmed,
       sourceText: input.trim(),

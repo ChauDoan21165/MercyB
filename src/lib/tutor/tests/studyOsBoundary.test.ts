@@ -139,6 +139,7 @@ describe("Study OS static boundary", () => {
       "src/lib/tutor/pivotPromptSafety.ts",
       "src/lib/tutor/productConfigs.ts",
       "src/lib/tutor/realProductProofGate.ts",
+      "src/lib/tutor/residualErrorCheck.ts",
       "src/lib/tutor/safetyHumilityFinalAudit.ts",
       "src/lib/tutor/speakableText.ts",
       "src/lib/tutor/speakConversationState.ts",
