@@ -29,6 +29,7 @@ import {
 } from "./subscription-insert.ts";
 import { captureEdgeError } from "../_shared/sentry.ts";
 import { monotonicBackoffDelayMs, sleep } from "./monotonic-backoff.ts";
+import { resolveMonotonicExhaustion } from "./monotonic-resolution.ts";
 
 /* ============================================================================
  * Config
@@ -709,6 +710,15 @@ export async function upsertSharedSubscriptionMonotonic(params: {
     params.event,
   );
 
+  // Holds the most recent `write` the CAS loop built. Used ONLY by the terminal
+  // reconciliation below (after the loop exhausts) to perform the final
+  // monotonic-guarded apply. Its money-critical columns (status / period / etc.)
+  // come from `params` (the incoming event), so it is a correct basis for the
+  // final apply regardless of which loop iteration produced it.
+  let lastMonotonicWrite:
+    | ReturnType<typeof mapStripeSubscription>
+    | null = null;
+
   for (let attempt = 0; attempt < MAX_MONOTONIC_RETRIES; attempt++) {
     // A91 fix A: full-jitter exponential backoff between CAS attempts so a
     // concurrent Stripe multi-event burst for this subscription can commit
@@ -813,6 +823,8 @@ export async function upsertSharedSubscriptionMonotonic(params: {
       metadata: params.metadata ?? existing?.metadata ?? null,
       rawPayload: resolvedRawPayload.rawPayload,
     });
+
+    lastMonotonicWrite = write;
 
     if (existing) {
       const persistedFreshness = derivePersistedFreshness(existing.raw_payload);
@@ -1073,6 +1085,88 @@ export async function upsertSharedSubscriptionMonotonic(params: {
     }
   }
 
+  // ── Retry loop exhausted — graceful terminal reconciliation ───────────────
+  // Historically this threw -> HTTP 500 -> Stripe retry: the intermittent
+  // invoice.paid / customer.subscription.updated 500 seen live on Jul 7–8 under
+  // a concurrent burst (two events for one subscription racing the CAS). By now
+  // a sibling event has almost certainly committed a correct monotonic state, so
+  // we reconcile from freshness instead of throwing. Monotonicity is preserved by
+  // construction (see monotonic-resolution.ts): an older/equal incoming event can
+  // only "noop", and the final apply below is guarded to ADVANCE only.
+  const reconLatest = await getSharedSubscriptionForUpsert({
+    supabase: params.supabase,
+    providerSubscriptionId: params.providerSubscriptionId,
+    providerCustomerId: params.providerCustomerId,
+  });
+
+  const reconLatestFreshness = reconLatest
+    ? derivePersistedFreshness(reconLatest.raw_payload)
+    : null;
+  const reconComparison =
+    reconLatest && reconLatestFreshness
+      ? compareStripeFreshness(incomingFreshness, reconLatestFreshness)
+      : null;
+
+  const reconAction = resolveMonotonicExhaustion({
+    hasLatest: reconLatest != null,
+    freshnessComparison: reconComparison,
+  });
+
+  if (reconAction === "noop") {
+    // Incoming is older-or-equal than the persisted row: the winner already
+    // carries an equal-or-newer state, so the monotonic invariant already holds.
+    // Return success (no 500) without overwriting the newer row.
+    return {
+      stateChanged: false,
+      shouldRecomputeBeforeFinalMark:
+        reconLatestFreshness?.event_id === params.event.id,
+    };
+  }
+
+  if (reconAction === "apply" && reconLatest && lastMonotonicWrite) {
+    // Incoming is strictly newer than the persisted row. Land it with ONE final
+    // update, scoped to the row identity and guarded by a single-column CAS on
+    // current_period_end (the monotonic-critical column). This is robust to the
+    // unrelated-column churn that made the full-row CAS livelock, yet can only
+    // ADVANCE: if a concurrent writer already moved current_period_end since our
+    // read, the CAS matches 0 rows — which is itself correct (that writer's state
+    // is equal-or-newer), so 0 rows is a satisfied invariant, not an error.
+    let finalUpdate = params.supabase
+      .from("subscriptions")
+      .update(
+        lastMonotonicWrite as import("./types.ts").Database["public"]["Tables"]["subscriptions"]["Update"],
+      )
+      .eq("provider", STRIPE_PROVIDER)
+      .eq("provider_subscription_id", reconLatest.provider_subscription_id)
+      .eq("user_id", params.userId);
+
+    finalUpdate = applyExactFilter(
+      finalUpdate,
+      "current_period_end",
+      reconLatest.current_period_end,
+    );
+
+    const { data: finalData, error: finalError } = await finalUpdate
+      .select("provider_subscription_id")
+      .limit(1)
+      .maybeSingle();
+
+    if (finalError) throw finalError;
+
+    if (
+      (finalData as { provider_subscription_id?: string | null } | null)
+        ?.provider_subscription_id
+    ) {
+      return { stateChanged: true, shouldRecomputeBeforeFinalMark: true };
+    }
+
+    // 0 rows: a concurrent writer advanced current_period_end at/past ours since
+    // the read -> persisted state is equal-or-newer -> invariant satisfied.
+    return { stateChanged: false, shouldRecomputeBeforeFinalMark: false };
+  }
+
+  // action === "throw": the row could not be re-read at all (it vanished). That
+  // should not happen — we were racing writes on it — so surface it.
   throw new Error(
     "Failed to apply monotonic Stripe subscription update after concurrent modifications",
   );
