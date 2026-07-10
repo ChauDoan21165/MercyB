@@ -235,6 +235,179 @@ function repairGeOvergeneralization(input: string): string {
   );
 }
 
+// ── Rule 11: degree 太 + adjective missing sentence-final 了 ───────────────────
+// Predicative "太 + adj" in Mandarin is an exclamative that takes sentence-final
+// 了 ("太贵了" = too expensive!). VN "quá đắt" has no such particle, so learners
+// write "太贵". Appends 了 only for a closed adjective at clause end. The 不 lookbehind
+// spares "不太贵" (not too…); an attributive "太贵的车" (贵 followed by 的) and an
+// already-marked "太贵了" both fail the clause-end lookahead and abstain.
+const ZH_TAI_ADJ = "贵好难忙累冷热高大小多快慢胖瘦";
+const ZH_TAI_ADJ_LE_PATTERN = new RegExp(`(?<!不)(太[${ZH_TAI_ADJ}])(?=$|[。！？])`);
+
+function hasTaiAdjectiveLe(input: string): boolean {
+  return ZH_TAI_ADJ_LE_PATTERN.test(input);
+}
+
+function repairTaiAdjectiveLe(input: string): string {
+  return input.replace(new RegExp(`(?<!不)(太[${ZH_TAI_ADJ}])(?=$|[。！？])`, "g"), "$1了");
+}
+
+// ── Rule 12: redundant 了 after negated 没(有) + verb ──────────────────────────
+// 没(有) already negates completion, so a following perfective 了 is ungrammatical
+// ("他没有来了" → "他没有来"). VN over-marks with a generic past particle. Drops
+// 了 only after 没(有) + a closed action verb. The change-of-state 了 after a NOUN
+// ("没有钱了" = out of money now) never matches (钱 is not in the verb set), and a
+// resultative ("没有做完了") never matches because 了 does not sit right after the verb.
+const ZH_MEI_VERB = "去|来|吃|喝|看|买|卖|做|说|写|听|到";
+const ZH_MEI_VERB_LE_PATTERN = new RegExp(`没有?(${ZH_MEI_VERB})了`);
+
+function hasMeiVerbLe(input: string): boolean {
+  return ZH_MEI_VERB_LE_PATTERN.test(input);
+}
+
+function repairMeiVerbLe(input: string): string {
+  return input.replace(new RegExp(`(没有?(?:${ZH_MEI_VERB}))了`, "g"), "$1");
+}
+
+// ── Rule 13: redundant 吗 on a wh-question ────────────────────────────────────
+// A wh-question (什么/谁/哪里/…) is already a question and must not carry final 吗;
+// learners transfer a yes/no marker onto it. Drops trailing 吗 only when an
+// unambiguous wh-word is present and no embedding verb precedes it. An embedded
+// wh-clause under a matrix verb ("你知道他是谁吗", where 吗 is correct) is spared by
+// the embedding-verb guard. 几/多少 are excluded to avoid the "a few" reading.
+const ZH_WH_WORD_PATTERN = /什么|谁|哪里|哪儿|怎么|为什么|多少/;
+const ZH_WH_EMBEDDING_PATTERN = /知道|告诉|问|明白|清楚|记得/;
+
+function hasWhRedundantMa(input: string): boolean {
+  const t = input.trim();
+  return (
+    /吗$/.test(t) && ZH_WH_WORD_PATTERN.test(t) && !ZH_WH_EMBEDDING_PATTERN.test(t)
+  );
+}
+
+function repairWhRedundantMa(input: string): string {
+  if (!hasWhRedundantMa(input)) return input;
+  return input.replace(/吗(?=[。！？]?$)/, "");
+}
+
+// ── Rule 14: missing possessive 的 between pronoun and noun ────────────────────
+// VN "sách của tôi" (book of-me) maps to 我的书, but learners drop 的 ("这是我书").
+// Inserts 的 only in the predicative frame 是 + pronoun + a closed possession noun,
+// which is unambiguously possessive — so a dative "给我书" (give me a book, no 是)
+// and the kinship/我家 cases (家 not in the noun set, where 的 is naturally dropped)
+// never match. An already-correct "这是我的书" fails because 的 sits between.
+const ZH_POSSESSION_NOUN = "书|车|手机|电脑|房子|衣服|钱包|雨伞";
+const ZH_POSSESSIVE_DE_PATTERN = new RegExp(
+  `是([我你他她它]们?)(${ZH_POSSESSION_NOUN})(?=$|[。！？，])`,
+);
+
+function hasPossessiveDeMissing(input: string): boolean {
+  return ZH_POSSESSIVE_DE_PATTERN.test(input);
+}
+
+function repairPossessiveDeMissing(input: string): string {
+  return input.replace(
+    new RegExp(`是([我你他她它]们?)(${ZH_POSSESSION_NOUN})(?=$|[。！？，])`, "g"),
+    "是$1的$2",
+  );
+}
+
+// ── Rule 15: predicative adjective missing degree adverb 很 ────────────────────
+// A bare monosyllabic adjective predicate needs a degree adverb ("我很累", not
+// "我累" as a neutral statement). VN "tôi mệt" has no such word, so learners drop
+// 很. Inserts 很 only for a subject pronoun + a closed monosyllabic adjective at
+// clause end. Anything between the pronoun and the adjective (很/不/太/是) blocks
+// the match; the change-of-state "我累了" fails the clause-end lookahead and abstains.
+const ZH_BARE_ADJ = "高累忙饿渴冷热好难贵大小多";
+const ZH_BARE_ADJ_HEN_PATTERN = new RegExp(`^([我你他她它]们?)([${ZH_BARE_ADJ}])(?=$|[。！？])`);
+
+function hasBareAdjectiveHen(input: string): boolean {
+  return ZH_BARE_ADJ_HEN_PATTERN.test(input.trim());
+}
+
+function repairBareAdjectiveHen(input: string): string {
+  return input.replace(new RegExp(`^([我你他她它]们?)([${ZH_BARE_ADJ}])(?=$|[。！？])`), "$1很$2");
+}
+
+// ── Rules 16-20: 个 over-generalization, per specific classifier ──────────────
+// Classifier substitution is the single highest-frequency VN→ZH error class; each
+// of these targets a distinct correct classifier a learner must acquire. All share
+// the shape "(number|demonstrative)个 + noun → correct classifier", scoped to a
+// CLOSED noun set with tail lookaheads that spare compounds where the char is not
+// the counted head (票房, 车站, 路口, 事故, 水果, …). Nouns that genuinely take 个
+// are simply absent from each map.
+const ZH_GE_QUANTIFIER = "一|两|三|四|五|六|七|八|九|十|这|那|几";
+
+// 16 — 张 (flat objects: 纸/票/照片/地图/桌子/床)
+const ZH_GE_ZHANG_PATTERN = new RegExp(
+  `(${ZH_GE_QUANTIFIER})个(纸(?!巾)|票(?!房|价)|照片|地图|桌子|床)`,
+);
+function hasGeToZhang(input: string): boolean {
+  return ZH_GE_ZHANG_PATTERN.test(input);
+}
+function repairGeToZhang(input: string): string {
+  return input.replace(
+    new RegExp(`(${ZH_GE_QUANTIFIER})个(纸(?!巾)|票(?!房|价)|照片|地图|桌子|床)`, "g"),
+    "$1张$2",
+  );
+}
+
+// 17 — 辆 (wheeled vehicles: 车/自行车/汽车/公交车/卡车)
+const ZH_GE_LIANG_PATTERN = new RegExp(
+  `(${ZH_GE_QUANTIFIER})个(自行车|汽车|公交车|卡车|车(?!站|库|间|票|祸|轮))`,
+);
+function hasGeToLiang(input: string): boolean {
+  return ZH_GE_LIANG_PATTERN.test(input);
+}
+function repairGeToLiang(input: string): string {
+  return input.replace(
+    new RegExp(`(${ZH_GE_QUANTIFIER})个(自行车|汽车|公交车|卡车|车(?!站|库|间|票|祸|轮))`, "g"),
+    "$1辆$2",
+  );
+}
+
+// 18 — 条 (long/thin things: 鱼/裤子/裙子/河/路/船)
+const ZH_GE_TIAO_PATTERN = new RegExp(
+  `(${ZH_GE_QUANTIFIER})个(鱼(?!缸|塘)|裤子|裙子|河|船|路(?!口|灯|边|人|过))`,
+);
+function hasGeToTiao(input: string): boolean {
+  return ZH_GE_TIAO_PATTERN.test(input);
+}
+function repairGeToTiao(input: string): string {
+  return input.replace(
+    new RegExp(`(${ZH_GE_QUANTIFIER})个(鱼(?!缸|塘)|裤子|裙子|河|船|路(?!口|灯|边|人|过))`, "g"),
+    "$1条$2",
+  );
+}
+
+// 19 — 件 (clothing / matters / gifts: 衣服/事/事情/礼物/行李/毛衣/衬衫)
+const ZH_GE_JIAN_PATTERN = new RegExp(
+  `(${ZH_GE_QUANTIFIER})个(衣服|事情|礼物|行李|毛衣|衬衫|事(?!业|故|实|件|物))`,
+);
+function hasGeToJian(input: string): boolean {
+  return ZH_GE_JIAN_PATTERN.test(input);
+}
+function repairGeToJian(input: string): string {
+  return input.replace(
+    new RegExp(`(${ZH_GE_QUANTIFIER})个(衣服|事情|礼物|行李|毛衣|衬衫|事(?!业|故|实|件|物))`, "g"),
+    "$1件$2",
+  );
+}
+
+// 20 — 杯 (drinks in a cup/glass: 茶/水/咖啡/酒/牛奶/果汁)
+const ZH_GE_BEI_PATTERN = new RegExp(
+  `(${ZH_GE_QUANTIFIER})个(咖啡|果汁|牛奶|茶(?!杯|壶|馆|叶|几)|酒(?!吧|店|杯|瓶)|水(?!果|平|杯|管|龙))`,
+);
+function hasGeToBei(input: string): boolean {
+  return ZH_GE_BEI_PATTERN.test(input);
+}
+function repairGeToBei(input: string): string {
+  return input.replace(
+    new RegExp(`(${ZH_GE_QUANTIFIER})个(咖啡|果汁|牛奶|茶(?!杯|壶|馆|叶|几)|酒(?!吧|店|杯|瓶)|水(?!果|平|杯|管|龙))`, "g"),
+    "$1杯$2",
+  );
+}
+
 export const chineseCorrectionRules: CorrectionRule[] = [
   {
     id: "zh-er-liang-measure",
@@ -305,5 +478,75 @@ export const chineseCorrectionRules: CorrectionRule[] = [
     apply: repairGeOvergeneralization,
     fpRiskNote:
       "Rewrites 个 → the correct classifier for a closed noun map (书→本; 狗/猫/鸟→只; 马→匹). Compounds where the char is not the counted head (书店/书法/书架, 马路/马桶) are guarded by tail lookaheads; nouns that genuinely take 个 (人, 苹果, 学生) are not in the map and abstain.",
+  },
+  {
+    id: "zh-tai-adjective-le",
+    detects: hasTaiAdjectiveLe,
+    apply: repairTaiAdjectiveLe,
+    fpRiskNote:
+      "Appends sentence-final 了 only for 太 + a closed clause-final adjective (贵好难忙累冷热高大小多快慢胖瘦). The 不 lookbehind spares '不太贵'; an attributive '太贵的车' and an already-marked '太贵了' fail the clause-end lookahead and abstain.",
+  },
+  {
+    id: "zh-mei-verb-le",
+    detects: hasMeiVerbLe,
+    apply: repairMeiVerbLe,
+    fpRiskNote:
+      "Drops 了 only after 没(有) + a closed action verb (去来吃喝看买卖做说写听到). The change-of-state 了 after a noun ('没有钱了') never matches (钱 is not a verb), and a resultative ('没有做完了') never matches because 了 is not adjacent to the verb.",
+  },
+  {
+    id: "zh-wh-redundant-ma",
+    detects: hasWhRedundantMa,
+    apply: repairWhRedundantMa,
+    fpRiskNote:
+      "Drops sentence-final 吗 only when an unambiguous wh-word (什么/谁/哪里/哪儿/怎么/为什么/多少) is present and no embedding verb (知道/告诉/问/明白/清楚/记得) precedes it. A plain 吗 question has no wh-word and never matches; an embedded wh-clause ('你知道他是谁吗', 吗 correct) is spared; 几 is excluded to avoid the 'a few' reading.",
+  },
+  {
+    id: "zh-possessive-de-insert",
+    detects: hasPossessiveDeMissing,
+    apply: repairPossessiveDeMissing,
+    fpRiskNote:
+      "Inserts possessive 的 only in the frame 是 + pronoun + a closed possession noun (书/车/手机/电脑/房子/衣服/钱包/雨伞), which is unambiguously possessive. A dative 'give me a book' ('给我书', no 是), the kinship/我家 cases (家 not in the set), and an already-correct '这是我的书' all abstain.",
+  },
+  {
+    id: "zh-bare-adjective-hen",
+    detects: hasBareAdjectiveHen,
+    apply: repairBareAdjectiveHen,
+    fpRiskNote:
+      "Inserts degree 很 only for a leading subject pronoun + a closed monosyllabic adjective (高累忙饿渴冷热好难贵大小多) at clause end. Any 很/不/太/是 between the pronoun and the adjective blocks it (那 rules own those); the change-of-state '我累了' fails the clause-end lookahead and abstains.",
+  },
+  {
+    id: "zh-ge-to-zhang",
+    detects: hasGeToZhang,
+    apply: repairGeToZhang,
+    fpRiskNote:
+      "Rewrites 个 → 张 only before a closed flat-object noun (纸/票/照片/地图/桌子/床) after a number/demonstrative. Compounds (纸巾, 票房, 票价) are guarded by tail lookaheads; nouns that take 个 are not in the set.",
+  },
+  {
+    id: "zh-ge-to-liang",
+    detects: hasGeToLiang,
+    apply: repairGeToLiang,
+    fpRiskNote:
+      "Rewrites 个 → 辆 only before a closed wheeled-vehicle noun (车/自行车/汽车/公交车/卡车). Compounds where 车 is not the counted head (车站/车库/车间/车票/车祸) are guarded by a tail lookahead.",
+  },
+  {
+    id: "zh-ge-to-tiao",
+    detects: hasGeToTiao,
+    apply: repairGeToTiao,
+    fpRiskNote:
+      "Rewrites 个 → 条 only before a closed long/thin noun (鱼/裤子/裙子/河/船/路). Compounds (鱼缸, 鱼塘, 路口/路灯/路边) are guarded by tail lookaheads.",
+  },
+  {
+    id: "zh-ge-to-jian",
+    detects: hasGeToJian,
+    apply: repairGeToJian,
+    fpRiskNote:
+      "Rewrites 个 → 件 only before a closed clothing/matter/gift noun (衣服/事/事情/礼物/行李/毛衣/衬衫). Compounds where 事 is not the counted head (事业/事故/事实) are guarded by a tail lookahead.",
+  },
+  {
+    id: "zh-ge-to-bei",
+    detects: hasGeToBei,
+    apply: repairGeToBei,
+    fpRiskNote:
+      "Rewrites 个 → 杯 only before a closed cup/glass-drink noun (茶/水/咖啡/酒/牛奶/果汁). Compounds and non-drink senses (水果/水平, 酒吧/酒店, 茶馆/茶叶) are guarded by tail lookaheads so only the drink-in-a-cup reading matches.",
   },
 ];

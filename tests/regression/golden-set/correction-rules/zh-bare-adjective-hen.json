@@ -1,0 +1,59 @@
+{
+  "rule": "bareAdjectiveHen",
+  "ruleId": "zh-bare-adjective-hen",
+  "language": "zh",
+  "description": "VN→ZH missing degree adverb: a bare monosyllabic adjective predicate needs a degree adverb in Mandarin ('我很累', not '我累' as a neutral statement). Vietnamese 'tôi mệt' has no such word, so learners drop 很. Rule zh-bare-adjective-hen inserts 很 for a subject pronoun + a closed monosyllabic adjective at clause end.",
+  "fp_risk_note": "Medium risk, tightly scoped. Inserts 很 only for a leading subject pronoun + a closed monosyllabic adjective (高累忙饿渴冷热好难贵大小多) at clause end. Any 很/不/太/是 between the pronoun and the adjective blocks the match (those are other rules' domain); the change-of-state '我累了' fails the clause-end lookahead and abstains.",
+  "positive": [
+    {
+      "id": "bare-hen-pos-001",
+      "input": "我累",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "我很累。",
+      "expectedRuleFired": "zh-bare-adjective-hen",
+      "notes": "我累 → 我很累 (insert degree adverb 很)."
+    },
+    {
+      "id": "bare-hen-pos-002",
+      "input": "他忙",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "他很忙。",
+      "expectedRuleFired": "zh-bare-adjective-hen",
+      "notes": "他忙 → 他很忙."
+    },
+    {
+      "id": "bare-hen-pos-003",
+      "input": "你高",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "你很高。",
+      "expectedRuleFired": "zh-bare-adjective-hen",
+      "notes": "你高 → 你很高."
+    }
+  ],
+  "negative": [
+    {
+      "id": "bare-hen-neg-001",
+      "input": "我很累",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "我很累",
+      "expectedRuleFired": null,
+      "notes": "Already has 很 — must abstain."
+    },
+    {
+      "id": "bare-hen-neg-002",
+      "input": "我不累",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "我不累",
+      "expectedRuleFired": null,
+      "notes": "Negated 不累 — 不 sits between pronoun and adjective, must abstain."
+    },
+    {
+      "id": "bare-hen-neg-003",
+      "input": "我累了",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "我累了",
+      "expectedRuleFired": null,
+      "notes": "Change-of-state '我累了' ('I've gotten tired') — 累 is followed by 了, not clause end, must abstain."
+    }
+  ]
+}

@@ -1,0 +1,59 @@
+{
+  "rule": "geToBei",
+  "ruleId": "zh-ge-to-bei",
+  "language": "zh",
+  "description": "VN→ZH classifier over-generalization (杯 family): Vietnamese learners default to 个, but a drink served in a cup/glass (茶/水/咖啡/酒/牛奶/果汁) takes 杯. Rule zh-ge-to-bei rewrites 个 → 杯 for a closed drink noun.",
+  "fp_risk_note": "Low risk. Rewrites 个 → 杯 only before a closed cup/glass-drink noun (茶/水/咖啡/酒/牛奶/果汁) after a number/demonstrative. Non-drink senses and compounds (水果/水平, 酒吧/酒店, 茶馆/茶叶) are guarded by tail lookaheads so only the drink-in-a-cup reading matches.",
+  "positive": [
+    {
+      "id": "ge-bei-pos-001",
+      "input": "我要一个茶",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "我要一杯茶。",
+      "expectedRuleFired": "zh-ge-to-bei",
+      "notes": "一个茶 → 一杯茶."
+    },
+    {
+      "id": "ge-bei-pos-002",
+      "input": "他喝了一个咖啡",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "他喝了一杯咖啡。",
+      "expectedRuleFired": "zh-ge-to-bei",
+      "notes": "一个咖啡 → 一杯咖啡."
+    },
+    {
+      "id": "ge-bei-pos-003",
+      "input": "给我一个水",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "给我一杯水。",
+      "expectedRuleFired": "zh-ge-to-bei",
+      "notes": "一个水 → 一杯水 (drink sense)."
+    }
+  ],
+  "negative": [
+    {
+      "id": "ge-bei-neg-001",
+      "input": "一杯茶",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "一杯茶",
+      "expectedRuleFired": null,
+      "notes": "Already 杯 — must abstain."
+    },
+    {
+      "id": "ge-bei-neg-002",
+      "input": "三个水果",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "三个水果",
+      "expectedRuleFired": null,
+      "notes": "水果 (fruit) genuinely takes 个 — 水 is not the drink head, the 果 tail lookahead guards it, must abstain."
+    },
+    {
+      "id": "ge-bei-neg-003",
+      "input": "那个酒吧很热闹",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "那个酒吧很热闹",
+      "expectedRuleFired": null,
+      "notes": "酒吧 (bar) — 酒 is not the drink-in-a-cup head, the 吧 tail lookahead guards it, must abstain."
+    }
+  ]
+}

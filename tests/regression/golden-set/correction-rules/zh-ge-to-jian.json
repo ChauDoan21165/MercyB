@@ -1,0 +1,59 @@
+{
+  "rule": "geToJian",
+  "ruleId": "zh-ge-to-jian",
+  "language": "zh",
+  "description": "VN→ZH classifier over-generalization (件 family): Vietnamese learners default to 个, but clothing / matters / gifts (衣服/事/事情/礼物/行李/毛衣/衬衫) take 件. Rule zh-ge-to-jian rewrites 个 → 件 for a closed noun in that class.",
+  "fp_risk_note": "Low risk. Rewrites 个 → 件 only before a closed clothing/matter/gift noun (衣服/事/事情/礼物/行李/毛衣/衬衫) after a number/demonstrative. Compounds where 事 is not the counted head (事业/事故/事实) are guarded by a tail lookahead.",
+  "positive": [
+    {
+      "id": "ge-jian-pos-001",
+      "input": "这是一个事",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "这是一件事。",
+      "expectedRuleFired": "zh-ge-to-jian",
+      "notes": "一个事 → 一件事."
+    },
+    {
+      "id": "ge-jian-pos-002",
+      "input": "他买了一个礼物",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "他买了一件礼物。",
+      "expectedRuleFired": "zh-ge-to-jian",
+      "notes": "一个礼物 → 一件礼物."
+    },
+    {
+      "id": "ge-jian-pos-003",
+      "input": "那个衣服很贵",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "那件衣服很贵。",
+      "expectedRuleFired": "zh-ge-to-jian",
+      "notes": "那个衣服 → 那件衣服 (demonstrative)."
+    }
+  ],
+  "negative": [
+    {
+      "id": "ge-jian-neg-001",
+      "input": "一件事",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "一件事",
+      "expectedRuleFired": null,
+      "notes": "Already 件 — must abstain."
+    },
+    {
+      "id": "ge-jian-neg-002",
+      "input": "三个人",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "三个人",
+      "expectedRuleFired": null,
+      "notes": "人 genuinely takes 个 — not in the map, must abstain."
+    },
+    {
+      "id": "ge-jian-neg-003",
+      "input": "那个事故很严重",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "那个事故很严重",
+      "expectedRuleFired": null,
+      "notes": "事故 (accident) — 事 is not the counted head, the 故 tail lookahead guards it, must abstain."
+    }
+  ]
+}

@@ -1,0 +1,59 @@
+{
+  "rule": "possessiveDeInsert",
+  "ruleId": "zh-possessive-de-insert",
+  "language": "zh",
+  "description": "VN→ZH possessive marker drop: Vietnamese 'sách của tôi' (book of-me) maps to 我的书, but learners drop 的 ('这是我书'). Rule zh-possessive-de-insert inserts 的 in the unambiguous predicative frame 是 + pronoun + a closed possession noun.",
+  "fp_risk_note": "Low risk. Inserts 的 only in the frame 是 + pronoun + a closed possession noun (书/车/手机/电脑/房子/衣服/钱包/雨伞). A dative 'give me a book' ('给我书', no 是), the kinship/我家 cases (家 not in the set, where 的 is naturally dropped), and an already-correct '这是我的书' all abstain.",
+  "positive": [
+    {
+      "id": "poss-de-pos-001",
+      "input": "这是我书",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "这是我的书。",
+      "expectedRuleFired": "zh-possessive-de-insert",
+      "notes": "是我书 → 是我的书 (insert possessive 的)."
+    },
+    {
+      "id": "poss-de-pos-002",
+      "input": "那是你车",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "那是你的车。",
+      "expectedRuleFired": "zh-possessive-de-insert",
+      "notes": "是你车 → 是你的车."
+    },
+    {
+      "id": "poss-de-pos-003",
+      "input": "这是他手机",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "这是他的手机。",
+      "expectedRuleFired": "zh-possessive-de-insert",
+      "notes": "是他手机 → 是他的手机."
+    }
+  ],
+  "negative": [
+    {
+      "id": "poss-de-neg-001",
+      "input": "这是我的书",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "这是我的书",
+      "expectedRuleFired": null,
+      "notes": "Already has 的 — must abstain."
+    },
+    {
+      "id": "poss-de-neg-002",
+      "input": "给我书",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "给我书",
+      "expectedRuleFired": null,
+      "notes": "Dative 'give me a book' (no 是) — 我 is the recipient, not a possessor, must abstain."
+    },
+    {
+      "id": "poss-de-neg-003",
+      "input": "这是我家",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "这是我家",
+      "expectedRuleFired": null,
+      "notes": "家 (home) naturally drops 的 ('this is my home') and is not in the noun set, must abstain."
+    }
+  ]
+}
