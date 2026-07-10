@@ -154,3 +154,115 @@ export function aiDisabledResponse(
     }
   );
 }
+
+/**
+ * VND cost for a call, using the same method as ai-chat (USD_TO_VND env, default 26000).
+ */
+export function estimateOpenAICostVnd(params: {
+  model: string;
+  inputTokens: number;
+  outputTokens: number;
+}): number {
+  const usdToVnd = Number(Deno.env.get('USD_TO_VND') || '26000');
+  const prices = getPricePer1k(params.model);
+  const inputUsd = (normalizeTokenCount(params.inputTokens) / 1000) * prices.input;
+  const outputUsd = (normalizeTokenCount(params.outputTokens) / 1000) * prices.output;
+  return Number(((inputUsd + outputUsd) * usdToVnd).toFixed(2));
+}
+
+/**
+ * "<native>-en" language-pair tag, matching ai-chat's cost-per-language format
+ * (feat/cost-per-language / !2582). Returns null when native language is unknown.
+ */
+export function deriveLanguagePair(
+  native: string | null | undefined,
+  target = 'en',
+): string | null {
+  const n = String(native ?? '').trim().toLowerCase();
+  if (!n) return null;
+  return `${n}-${target}`;
+}
+
+/**
+ * Resolve a user's language_pair from profiles.native_language. Best-effort:
+ * returns null on any failure (missing profile, DB error). Never throws.
+ */
+export async function resolveLanguagePairForUser(userId: string): Promise<string | null> {
+  try {
+    const { data } = await getSupabaseAdmin()
+      .from('profiles')
+      .select('native_language')
+      .eq('id', userId)
+      .single();
+    return deriveLanguagePair(
+      (data as { native_language?: string | null } | null)?.native_language,
+    );
+  } catch {
+    return null;
+  }
+}
+
+/**
+ * Log an AI-spend row to ai_usage_logs — the table the admin CostMonitoring page
+ * reads and the ai-chat cost cap uses — VND-costed and language-tagged.
+ *
+ * Contract:
+ * - ai_usage_logs.user_id is NOT NULL: a missing/invalid userId SKIPS the row
+ *   (console.warn) rather than inserting a fabricated user.
+ * - FIRE-AND-FORGET: never throws; a logging failure must not fail the caller.
+ *   Callers should not await this on the response hot path (use it in the
+ *   background) so a slow/failed insert can't delay the learner's reply.
+ */
+export async function logAiUsageLog(params: {
+  userId: string | null;
+  feature: string;
+  model: string;
+  inputTokens: number;
+  outputTokens: number;
+  languagePair?: string | null;
+  conversationId?: string | null;
+  requestId?: string | null;
+  meta?: Record<string, unknown>;
+}): Promise<void> {
+  if (!params.userId || !isUuid(params.userId)) {
+    console.warn('Skipping ai_usage_logs insert: missing/invalid userId', {
+      feature: params.feature,
+    });
+    return;
+  }
+
+  const estimatedCostVnd = estimateOpenAICostVnd({
+    model: params.model,
+    inputTokens: params.inputTokens,
+    outputTokens: params.outputTokens,
+  });
+
+  try {
+    const { error } = await getSupabaseAdmin()
+      .from('ai_usage_logs')
+      .insert({
+        user_id: params.userId,
+        feature: params.feature,
+        model: params.model,
+        request_id: params.requestId ?? null,
+        input_tokens: normalizeTokenCount(params.inputTokens),
+        output_tokens: normalizeTokenCount(params.outputTokens),
+        estimated_cost_vnd: estimatedCostVnd,
+        language_pair: params.languagePair ?? null,
+        meta: params.meta ?? {},
+        conversation_id: params.conversationId ?? null,
+      });
+
+    if (error) {
+      console.warn('Failed to log ai_usage_logs:', {
+        error,
+        feature: params.feature,
+      });
+    }
+  } catch (error) {
+    console.warn('Failed to log ai_usage_logs:', {
+      error,
+      feature: params.feature,
+    });
+  }
+}
