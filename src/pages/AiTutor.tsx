@@ -80,6 +80,9 @@ import {
   decideTurnCorrectionCompat,
   buildDeferredTurnCorrection,
 } from "@/lib/tm-int/decisionEngineTurnAdapter";
+// WP-001 — prediction-error capture (SHADOW MODE). Self-guarding + never-throws; a no-op
+// unless TUTOR_PREDICTION_CAPTURE_ENABLED is on. Learner-facing behavior is unchanged.
+import { captureLiveTurnPrediction } from "@/lib/tm-int/pred/liveTurn";
 import {
   diagnoseVietlishLogicWithMatch,
   type VietlishLogicDiagnosisResult,
@@ -2492,6 +2495,18 @@ export default function AiTutorPage() {
     });
     // Step 013 — correction was shown (IMMEDIATE/EXPLAIN_PATTERN path).
     surfacedCorrectionsRef.current += 1;
+
+    // WP-001 (SHADOW MODE, default OFF) — record a prediction of the learner's next-turn
+    // outcome BEFORE it exists. Self-guarding + never-throws; learner-facing behavior is
+    // byte-identical whether capture is on or off.
+    captureLiveTurnPrediction({
+      status: localCorrection.status,
+      appliedRuleIds: localCorrection.appliedRuleIds,
+      isCurrentLessonTarget: activeTodayLesson?.plan?.targetSkill
+        ? trimmed.toLowerCase().includes(activeTodayLesson.plan.targetSkill.toLowerCase())
+        : false,
+      msgId: turn.id,
+    });
 
     clearSpeakBoardState();
     setLatestCorrectedSeed({

@@ -11,9 +11,14 @@ export type ObservationCapabilityId =
   | "OBS-LEARNING-000004"
   | "OBS-EVD-000001"
   | "OBS-REP-000001"
-  | "OBS-VAL-000001";
+  | "OBS-VAL-000001"
+  // WP-001 prediction-error capture (SHADOW MODE). Predictions and their resolved
+  // surprise are first-class observations on the same bus/digest as everything else.
+  | "OBS-PRED-000001"
+  | "OBS-PRED-000002"
+  | "OBS-PRED-000003";
 
-export type ObservationDomain = "audio" | "speech" | "learning" | "evidence" | "replay" | "validation";
+export type ObservationDomain = "audio" | "speech" | "learning" | "evidence" | "replay" | "validation" | "prediction";
 
 export type ObservationFactType =
   | "AudioUnavailable"
@@ -25,7 +30,11 @@ export type ObservationFactType =
   | "RetryObserved"
   | "SkipObserved"
   | "HintUsed"
-  | "AssessmentAnswerSubmitted";
+  | "AssessmentAnswerSubmitted"
+  // WP-001 prediction-error capture (SHADOW MODE).
+  | "PredictionRecorded"
+  | "SurpriseResolved"
+  | "HindsightRejected";
 
 export type ObservationSeverity = "info" | "warning" | "failure";
 

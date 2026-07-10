@@ -9,7 +9,12 @@ export type LearningEventType =
   | "next_focus_viewed"
   | "placement_cta_clicked"
   | "kids_picture_selected"
-  | "kids_speak_clicked";
+  | "kids_speak_clicked"
+  // WP-001 prediction-error capture (SHADOW MODE). Recorded only when
+  // FEATURE_FLAGS.TUTOR_PREDICTION_CAPTURE_ENABLED is on; both carry no learner text
+  // (enum labels, scaled scalars, a PII-free turn anchor) and reuse this drain verbatim.
+  | "prediction_recorded"
+  | "surprise_resolved";
 
 export type LearningEventProduct = "ai_tutor" | "mercy_kids";
 export type LearningEventMode = "journey" | "grammar" | "speak" | "logic";
@@ -98,6 +103,8 @@ const EVENT_TYPES = new Set<LearningEventType>([
   "placement_cta_clicked",
   "kids_picture_selected",
   "kids_speak_clicked",
+  "prediction_recorded",
+  "surprise_resolved",
 ]);
 
 const PRODUCTS = new Set<LearningEventProduct>(["ai_tutor", "mercy_kids"]);
