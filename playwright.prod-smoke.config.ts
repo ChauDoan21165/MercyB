@@ -23,10 +23,12 @@ export default defineConfig({
   testDir: "./tests/prod-smoke",
   testMatch: /.*\.spec\.ts$/,
 
-  // A full placement run (start -> answer every item -> score) can legitimately
-  // take a while against real infra; the results-hang assertion has its own
-  // tighter 30s budget inside the test.
-  timeout: 180 * 1000,
+  // A full placement run (start -> answer all 11 items -> score) over real infra,
+  // now that listening items carry real audio (3 clips × metadata load), takes
+  // longer than the old 180s ceiling — a fresh full session was timing out mid-
+  // flow (not hanging: a step-logged walk reaches results). The results-hang
+  // assertion keeps its own tighter 30s budget inside the test.
+  timeout: 360 * 1000,
   expect: { timeout: 15 * 1000 },
 
   fullyParallel: false,
