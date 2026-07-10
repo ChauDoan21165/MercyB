@@ -123,6 +123,118 @@ function repairMissingLocalizer(input: string): string {
   );
 }
 
+// ── Rule 6: redundant degree adverb inside a 比 comparative ───────────────────
+// Mandarin "A 比 B adj" is inherently comparative and REJECTS an absolute degree
+// adverb (很/非常/太) before the adjective — the correct intensifier is 更/还
+// ("我比你更高"). VN "hơn" and English "-er than" keep the plain degree adverb, so
+// learners write "我比你很高". Drops the stray 很/非常/太 between 比…B and the
+// adjective. Closed adjective set (多 is excluded to avoid the valid "很多"
+// quantifier reading). The comparand B is 1–6 Han chars (non-greedy).
+const ZH_COMPARATIVE_ADJ = "高大小长短贵快慢胖瘦忙累冷热远近难";
+const ZH_BI_REDUNDANT_DEGREE_PATTERN = new RegExp(
+  `(比[\\u4e00-\\u9fa5]{1,6}?)(很|非常|太)([${ZH_COMPARATIVE_ADJ}])`,
+);
+
+function hasBiRedundantDegree(input: string): boolean {
+  return ZH_BI_REDUNDANT_DEGREE_PATTERN.test(input);
+}
+
+function repairBiRedundantDegree(input: string): string {
+  return input.replace(
+    new RegExp(`(比[\\u4e00-\\u9fa5]{1,6}?)(很|非常|太)([${ZH_COMPARATIVE_ADJ}])`, "g"),
+    "$1$3",
+  );
+}
+
+// ── Rule 7: 的 → 得 before a manner/degree complement ─────────────────────────
+// The three "de" particles collapse for learners; after a verb, a following
+// manner/degree complement needs 得, not attributive 的 ("他跑得快", not "他跑的
+// 快"). Scoped to a closed verb set + a closed single-char complement at clause
+// end, so the nominalizer/attributive 的 ("我买的书" = the book I bought — a NOUN
+// follows) and possessive 的 ("这是我的") never match.
+const ZH_DE_VERB = "跑|走|说|写|吃|唱|做|来|去|睡|笑|画|飞|读|想";
+const ZH_DE_COMPLEMENT = "快慢好早晚对多清楚";
+const ZH_DE_COMPLEMENT_PATTERN = new RegExp(
+  `(${ZH_DE_VERB})的([${ZH_DE_COMPLEMENT}])(?=$|[。！？，])`,
+);
+
+function hasDeVerbComplement(input: string): boolean {
+  return ZH_DE_COMPLEMENT_PATTERN.test(input);
+}
+
+function repairDeVerbComplement(input: string): string {
+  return input.replace(
+    new RegExp(`(${ZH_DE_VERB})的([${ZH_DE_COMPLEMENT}])(?=$|[。！？，])`, "g"),
+    "$1得$2",
+  );
+}
+
+// ── Rule 8: perfective 了 over-marked on a habitual clause ────────────────────
+// VN has no aspect particle, so learners over-apply 了 as a generic past marker,
+// including on habitual clauses where it is ungrammatical ("我每天吃了饭" — a
+// habitual with 每天 rejects perfective 了). Fires only when a habitual adverb
+// (每天/经常/常常/通常/总是) co-occurs with a closed action verb + 了, dropping the
+// post-verb 了. A completed single event ("我昨天吃了饭") keeps 了 because 昨天 is
+// not habitual and the verb-了 stays untouched.
+const ZH_HABITUAL_MARKER_PATTERN = /每天|经常|常常|通常|总是/;
+const ZH_HABITUAL_LE_PATTERN = /(吃|喝|看|买|做|写|说|去|来|读|听)了/;
+
+function hasHabitualLe(input: string): boolean {
+  return ZH_HABITUAL_MARKER_PATTERN.test(input) && ZH_HABITUAL_LE_PATTERN.test(input);
+}
+
+function repairHabitualLe(input: string): string {
+  if (!ZH_HABITUAL_MARKER_PATTERN.test(input)) return input;
+  return input.replace(/(吃|喝|看|买|做|写|说|去|来|读|听)了/g, "$1");
+}
+
+// ── Rule 9: redundant 吗 on an A-not-A question ───────────────────────────────
+// An A-not-A question (是不是 / 有没有 / V不V) is ALREADY a yes/no question and
+// must not also carry sentence-final 吗 — learners double-mark the question.
+// Scoped to an A-not-A that immediately follows the leading subject pronoun so
+// an EMBEDDED A-not-A under a matrix verb ("你知道他是不是学生吗" — 吗 is correct
+// there) never matches. Drops the trailing 吗.
+const ZH_ANOT_A =
+  "是不是|有没有|去不去|吃不吃|要不要|来不来|好不好|对不对|会不会|能不能|想不想|喜不喜欢";
+const ZH_ANOT_A_MA_PATTERN = new RegExp(`^[我你他她它]们?(${ZH_ANOT_A})[\\u4e00-\\u9fa5]*吗$`);
+
+function hasAnotARedundantMa(input: string): boolean {
+  return ZH_ANOT_A_MA_PATTERN.test(input.trim());
+}
+
+function repairAnotARedundantMa(input: string): string {
+  if (!hasAnotARedundantMa(input)) return input;
+  return input.replace(/吗(?=[。！？]?$)/, "");
+}
+
+// ── Rule 10: 个 over-generalized as a universal classifier ────────────────────
+// VN learners default to 个 for every noun; Mandarin assigns a specific
+// classifier per noun. Rewrites 个 → the correct classifier for a CLOSED noun map
+// (书→本, 狗/猫/鸟→只, 马→匹). Compounds where the char is not the counted head
+// (书店/书法/书架, 马路/马桶) are guarded by tail lookaheads. Nouns that genuinely
+// take 个 (人, 苹果, 学生) are not in the map, so they abstain.
+const ZH_GE_CLASSIFIER_MAP: Record<string, string> = {
+  书: "本",
+  狗: "只",
+  猫: "只",
+  鸟: "只",
+  马: "匹",
+};
+const ZH_GE_OVERGENERAL_PATTERN =
+  /(一|两|三|四|五|六|七|八|九|十|这|那|几)个(书(?![店法馆架包])|狗|猫|鸟|马(?![路桶]))/;
+
+function hasGeOvergeneralization(input: string): boolean {
+  return ZH_GE_OVERGENERAL_PATTERN.test(input);
+}
+
+function repairGeOvergeneralization(input: string): string {
+  return input.replace(
+    /(一|两|三|四|五|六|七|八|九|十|这|那|几)个(书(?![店法馆架包])|狗|猫|鸟|马(?![路桶]))/g,
+    (_match, quantifier: string, noun: string) =>
+      `${quantifier}${ZH_GE_CLASSIFIER_MAP[noun] ?? "个"}${noun}`,
+  );
+}
+
 export const chineseCorrectionRules: CorrectionRule[] = [
   {
     id: "zh-er-liang-measure",
@@ -158,5 +270,40 @@ export const chineseCorrectionRules: CorrectionRule[] = [
     apply: repairMissingLocalizer,
     fpRiskNote:
       "Appends the postposed localizer only for a closed noun set (桌子/床/墙 → 上; 盒子/抽屉 → 里) after 在. Abstains when a localizer is already present (在桌子上) and on nouns that need none (在学校, 在家), which are not in the map.",
+  },
+  {
+    id: "zh-comparative-bi-redundant-degree",
+    detects: hasBiRedundantDegree,
+    apply: repairBiRedundantDegree,
+    fpRiskNote:
+      "Drops 很/非常/太 only between 比…B and a closed comparative adjective (高大小长短贵快慢胖瘦忙累冷热远近难). 比 with the correct comparative intensifier (更/还) never matches; a sentence with no 比 never matches; 多 is excluded so the valid quantifier 很多 is untouched.",
+  },
+  {
+    id: "zh-de-verb-complement",
+    detects: hasDeVerbComplement,
+    apply: repairDeVerbComplement,
+    fpRiskNote:
+      "Rewrites 的 → 得 only between a closed verb (跑走说写吃唱做来去睡笑画飞读想) and a closed single-char manner/degree complement (快慢好早晚对多清楚) at clause end. The nominalizer/attributive 的 before a noun (我买的书) and possessive 的 (这是我的) never match.",
+  },
+  {
+    id: "zh-habitual-le-overmark",
+    detects: hasHabitualLe,
+    apply: repairHabitualLe,
+    fpRiskNote:
+      "Drops perfective 了 only when a habitual adverb (每天/经常/常常/通常/总是) co-occurs with a closed action verb + 了. A completed single event (昨天我吃了饭) keeps 了 because 昨天 is not habitual; verbs outside the set (忘了, 累了) are untouched.",
+  },
+  {
+    id: "zh-anot-a-redundant-ma",
+    detects: hasAnotARedundantMa,
+    apply: repairAnotARedundantMa,
+    fpRiskNote:
+      "Drops sentence-final 吗 only when an A-not-A form (是不是/有没有/V不V) immediately follows the leading subject pronoun. A plain 吗 question (你是学生吗) has no A-not-A and never matches; an embedded A-not-A under a matrix verb (你知道他是不是学生吗, where 吗 is correct) never matches because 知道 sits between the pronoun and the A-not-A.",
+  },
+  {
+    id: "zh-ge-overgeneralization",
+    detects: hasGeOvergeneralization,
+    apply: repairGeOvergeneralization,
+    fpRiskNote:
+      "Rewrites 个 → the correct classifier for a closed noun map (书→本; 狗/猫/鸟→只; 马→匹). Compounds where the char is not the counted head (书店/书法/书架, 马路/马桶) are guarded by tail lookaheads; nouns that genuinely take 个 (人, 苹果, 学生) are not in the map and abstain.",
   },
 ];

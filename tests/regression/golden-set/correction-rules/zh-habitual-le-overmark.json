@@ -1,0 +1,59 @@
+{
+  "rule": "habitualLeOvermark",
+  "ruleId": "zh-habitual-le-overmark",
+  "language": "zh",
+  "description": "VN→ZH aspect over-marking: Vietnamese has no aspect particle, so learners over-apply 了 as a generic past marker — including on habitual clauses where perfective 了 is ungrammatical ('我每天吃了饭'). Rule zh-habitual-le-overmark drops the post-verb 了 when a habitual adverb co-occurs with a closed action verb + 了.",
+  "fp_risk_note": "Medium risk, tightly scoped. Fires only when a habitual adverb (每天/经常/常常/通常/总是) co-occurs with a closed action verb (吃喝看买做写说去来读听) + 了. A completed single event ('我昨天吃了饭') keeps 了 because 昨天 is not habitual; verbs outside the set ('我经常忘了钥匙' — 忘 not in the set) are untouched.",
+  "positive": [
+    {
+      "id": "habitual-le-pos-001",
+      "input": "我每天吃了饭",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "我每天吃饭。",
+      "expectedRuleFired": "zh-habitual-le-overmark",
+      "notes": "每天 (habitual) + 吃了 → 吃 (drop perfective 了)."
+    },
+    {
+      "id": "habitual-le-pos-002",
+      "input": "他经常看了书",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "他经常看书。",
+      "expectedRuleFired": "zh-habitual-le-overmark",
+      "notes": "经常 (habitual) + 看了 → 看."
+    },
+    {
+      "id": "habitual-le-pos-003",
+      "input": "我们常常去了公园",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "我们常常去公园。",
+      "expectedRuleFired": "zh-habitual-le-overmark",
+      "notes": "常常 (habitual) + 去了 → 去."
+    }
+  ],
+  "negative": [
+    {
+      "id": "habitual-le-neg-001",
+      "input": "我昨天吃了饭",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "我昨天吃了饭",
+      "expectedRuleFired": null,
+      "notes": "昨天 is a bounded past occasion, not habitual — 吃了 is correct (completed event), must abstain."
+    },
+    {
+      "id": "habitual-le-neg-002",
+      "input": "我每天吃饭",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "我每天吃饭",
+      "expectedRuleFired": null,
+      "notes": "Already correct — no 了 to drop, must abstain."
+    },
+    {
+      "id": "habitual-le-neg-003",
+      "input": "我经常忘了钥匙",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "我经常忘了钥匙",
+      "expectedRuleFired": null,
+      "notes": "忘 is not in the action-verb set — '忘了' (forget) is a valid change-of-state 了 even with a habitual adverb, must abstain."
+    }
+  ]
+}

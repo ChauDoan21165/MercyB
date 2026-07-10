@@ -1,0 +1,59 @@
+{
+  "rule": "anotARedundantMa",
+  "ruleId": "zh-anot-a-redundant-ma",
+  "language": "zh",
+  "description": "VN→ZH double question-marking: an A-not-A question (是不是 / 有没有 / V不V) is already a yes/no question and must not also carry sentence-final 吗. Learners double-mark the question. Rule zh-anot-a-redundant-ma drops the trailing 吗 when the A-not-A immediately follows the leading subject pronoun.",
+  "fp_risk_note": "Low-medium risk. Fires only when an A-not-A form (是不是/有没有/去不去/…) immediately follows the leading subject pronoun and 吗 is sentence-final. A plain 吗 question ('你是学生吗') has no A-not-A and never matches; an embedded A-not-A under a matrix verb ('你知道他是不是学生吗', where 吗 is correct) never matches because 知道 sits between the pronoun and the A-not-A.",
+  "positive": [
+    {
+      "id": "anot-a-ma-pos-001",
+      "input": "你是不是学生吗",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "你是不是学生。",
+      "expectedRuleFired": "zh-anot-a-redundant-ma",
+      "notes": "是不是 A-not-A + 吗 → drop redundant 吗."
+    },
+    {
+      "id": "anot-a-ma-pos-002",
+      "input": "他有没有钱吗",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "他有没有钱。",
+      "expectedRuleFired": "zh-anot-a-redundant-ma",
+      "notes": "有没有 A-not-A + 吗 → drop 吗."
+    },
+    {
+      "id": "anot-a-ma-pos-003",
+      "input": "你要不要茶吗",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "你要不要茶。",
+      "expectedRuleFired": "zh-anot-a-redundant-ma",
+      "notes": "要不要 A-not-A + 吗 → drop 吗 (neutral 'do you want tea')."
+    }
+  ],
+  "negative": [
+    {
+      "id": "anot-a-ma-neg-001",
+      "input": "你是学生吗",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "你是学生吗",
+      "expectedRuleFired": null,
+      "notes": "Plain 吗 question, no A-not-A — 吗 is required, must abstain."
+    },
+    {
+      "id": "anot-a-ma-neg-002",
+      "input": "你去不去",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "你去不去",
+      "expectedRuleFired": null,
+      "notes": "A-not-A with no 吗 — already correct, nothing to drop, must abstain."
+    },
+    {
+      "id": "anot-a-ma-neg-003",
+      "input": "你知道他是不是学生吗",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "你知道他是不是学生吗",
+      "expectedRuleFired": null,
+      "notes": "Embedded A-not-A under 知道 ('do you know whether he is a student') — 吗 is correct on the matrix question; 知道 between 你 and 是不是 blocks the rule, must abstain."
+    }
+  ]
+}

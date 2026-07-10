@@ -1,0 +1,59 @@
+{
+  "rule": "deVerbComplement",
+  "ruleId": "zh-de-verb-complement",
+  "language": "zh",
+  "description": "VN→ZH 'de' particle confusion: the three homophonous particles 的/得/地 collapse for learners. After a verb, a manner/degree complement needs 得, not attributive 的 — '他跑得快', not '他跑的快'. Rule zh-de-verb-complement rewrites 的 → 得 between a closed verb and a closed single-char complement at clause end.",
+  "fp_risk_note": "Low-medium risk. Rewrites 的 → 得 only between a closed verb (跑走说写吃唱做来去睡笑画飞读想) and a closed single-char manner/degree complement (快慢好早晚对多清楚) at clause end. The nominalizer/attributive 的 before a noun ('我说的话' = the words I said) and possessive 的 ('这是我的') never match because the following token is a noun, not a complement.",
+  "positive": [
+    {
+      "id": "de-complement-pos-001",
+      "input": "他跑的快",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "他跑得快。",
+      "expectedRuleFired": "zh-de-verb-complement",
+      "notes": "跑的快 → 跑得快 (manner complement)."
+    },
+    {
+      "id": "de-complement-pos-002",
+      "input": "她说的好",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "她说得好。",
+      "expectedRuleFired": "zh-de-verb-complement",
+      "notes": "说的好 → 说得好 (degree complement)."
+    },
+    {
+      "id": "de-complement-pos-003",
+      "input": "你来的早",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "你来得早。",
+      "expectedRuleFired": "zh-de-verb-complement",
+      "notes": "来的早 → 来得早 (degree complement)."
+    }
+  ],
+  "negative": [
+    {
+      "id": "de-complement-neg-001",
+      "input": "我说的话",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "我说的话",
+      "expectedRuleFired": null,
+      "notes": "Nominalizer/attributive 的 before a noun (话 = words) — 'the words I said', 的 is correct, must abstain."
+    },
+    {
+      "id": "de-complement-neg-002",
+      "input": "他跑得快",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "他跑得快",
+      "expectedRuleFired": null,
+      "notes": "Already 得 — must not touch, must abstain."
+    },
+    {
+      "id": "de-complement-neg-003",
+      "input": "这是我的",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "这是我的",
+      "expectedRuleFired": null,
+      "notes": "Possessive 的 ('this is mine') — must abstain."
+    }
+  ]
+}

@@ -39,6 +39,27 @@ const ZH_DELIVERY_CASES: ReadonlyArray<readonly [string, string, string]> = [
   ["书在桌子", "书在桌子上。", "zh-locative-localizer"],
   ["猫在床", "猫在床上。", "zh-locative-localizer"],
   ["钱在盒子", "钱在盒子里。", "zh-locative-localizer"],
+  // ── Scale group 1 ──
+  // zh-comparative-bi-redundant-degree — drop 很/非常/太 inside a 比 comparative
+  ["我比你很高", "我比你高。", "zh-comparative-bi-redundant-degree"],
+  ["他比我非常忙", "他比我忙。", "zh-comparative-bi-redundant-degree"],
+  ["今天比昨天太冷", "今天比昨天冷。", "zh-comparative-bi-redundant-degree"],
+  // zh-de-verb-complement — 的 → 得 before a manner/degree complement
+  ["他跑的快", "他跑得快。", "zh-de-verb-complement"],
+  ["她说的好", "她说得好。", "zh-de-verb-complement"],
+  ["你来的早", "你来得早。", "zh-de-verb-complement"],
+  // zh-habitual-le-overmark — drop perfective 了 on a habitual clause
+  ["我每天吃了饭", "我每天吃饭。", "zh-habitual-le-overmark"],
+  ["他经常看了书", "他经常看书。", "zh-habitual-le-overmark"],
+  ["我们常常去了公园", "我们常常去公园。", "zh-habitual-le-overmark"],
+  // zh-anot-a-redundant-ma — drop redundant 吗 on an A-not-A question
+  ["你是不是学生吗", "你是不是学生。", "zh-anot-a-redundant-ma"],
+  ["他有没有钱吗", "他有没有钱。", "zh-anot-a-redundant-ma"],
+  ["你要不要茶吗", "你要不要茶。", "zh-anot-a-redundant-ma"],
+  // zh-ge-overgeneralization — 个 → correct classifier
+  ["我有一个书", "我有一本书。", "zh-ge-overgeneralization"],
+  ["他有一个狗", "他有一只狗。", "zh-ge-overgeneralization"],
+  ["那个猫很可爱", "那只猫很可爱。", "zh-ge-overgeneralization"],
 ];
 
 describe("Phase B — VN→Chinese delivery E2E (turn-loop seam)", () => {
