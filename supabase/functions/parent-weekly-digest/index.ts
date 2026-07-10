@@ -126,6 +126,7 @@ async function loadCandidates(
       "user_id, email, email_unsubscribe_token, placement_cefr, placement_weaknesses",
     )
     .eq("email_parent_digest_enabled", true)
+    .eq("is_synthetic", false)
     .not("email", "is", null);
   if (error || !profiles) return [];
 

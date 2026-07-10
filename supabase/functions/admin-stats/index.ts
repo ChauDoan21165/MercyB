@@ -137,7 +137,15 @@ Deno.serve(async (req) => {
       return json({ ok: false, error: "Forbidden (not admin)" }, 403, CORS);
     }
 
-    const totalUsers = await countRegisteredAuthUsers(admin);
+    const totalUsersRaw = await countRegisteredAuthUsers(admin);
+    // Exclude the Tier-3 synthetic learner (a real auth user + profiles row)
+    // from the headline user count. is_synthetic lives on profiles, not
+    // auth.users, so subtract the synthetic profile count from the auth total.
+    const { count: syntheticCount } = await admin
+      .from("profiles")
+      .select("id", { count: "exact", head: true })
+      .eq("is_synthetic", true);
+    const totalUsers = Math.max(0, totalUsersRaw - (syntheticCount ?? 0));
 
     const activeToday = 0;
     const totalRooms = 0;

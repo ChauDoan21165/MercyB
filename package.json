@@ -115,6 +115,7 @@
     "test:e2e:ui": "playwright test -c playwright.smoke.config.ts --ui",
     "test:perf-budgets": "playwright test -c playwright.perf-budget.config.ts",
     "test:prod-smoke": "playwright test -c playwright.prod-smoke.config.ts",
+    "test:synthetic-learner": "playwright test -c playwright.synthetic-learner.config.ts",
     "test:crawl": "playwright test -c playwright.crawler.config.ts",
     "generate:route-manifest": "tsx scripts/generate-route-manifest.ts",
     "storybook": "storybook dev -p 6006 --no-open",

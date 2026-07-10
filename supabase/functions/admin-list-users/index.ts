@@ -70,7 +70,8 @@ Deno.serve(async (req) => {
             name_vi
           )
         )
-      `, { count: 'exact' });
+      `, { count: 'exact' })
+      .eq('is_synthetic', false);
 
     // Apply search filter
     if (search) {

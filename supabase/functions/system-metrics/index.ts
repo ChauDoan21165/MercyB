@@ -83,7 +83,7 @@ Deno.serve(async (req) => {
     ];
 
     // User metrics
-    const { count: usersCount } = await supabase.from('profiles').select('*', { count: 'exact', head: true });
+    const { count: usersCount } = await supabase.from('profiles').select('*', { count: 'exact', head: true }).eq('is_synthetic', false);
     const { count: activeSubscriptions } = await supabase
       .from('user_subscriptions')
       .select('*', { count: 'exact', head: true })
