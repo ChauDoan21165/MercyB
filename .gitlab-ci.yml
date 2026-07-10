@@ -971,14 +971,6 @@ reservoir:type-sweep:
 build:
   <<: [*node_job, *local_runner, *app_test_rules]
   stage: test
-  # Same resource_group as the vitest `test` shards: `build` and the shards can
-  # NEVER run concurrently. On the tuned 16 GB Air a lone shard is infra-clean,
-  # but `build` (vite build + tsc) co-running with a shard OOM-killed esbuild —
-  # verified in pipeline 2659287832 (build 16:38:54–16:41:04 overlapped test 1/2,
-  # which died with "The service is no longer running" → 158 files). Serializing
-  # build⇄shards eliminates that specific co-run while keeping concurrent=2 (light
-  # jobs can still pair). Tradeoff: builds serialize project-wide across pipelines.
-  resource_group: local-runner-vitest-shards
   script: *build_script
 
 build:shared-fallback:
@@ -1013,21 +1005,11 @@ test:
   <<: [*node_job, *local_runner, *app_test_rules_hotfix_lane]
   stage: test
   parallel: 2
-  # resource_group serializes the two `parallel: 2` shards so they never run
-  # AT THE SAME TIME on the single, memory-unisolated macOS runner (concurrent=5,
-  # 16 GB). Co-running shards were the shared root cause of BOTH intermittent
-  # failures — verified on pipeline 2658374072 (SHA d8beca57):
-  #   * shard 1 → macOS OOM-kills an esbuild service under combined RAM pressure
-  #     → "The service is no longer running" cascades to hundreds of files.
-  #     (--maxWorkers=1 reduced but did NOT eliminate this; NOT a version
-  #     mismatch — the vite esbuild host 0.25.12 matches its 0.25.12 binary and
-  #     the error is "service died", not "Host version does not match binary".)
-  #   * shard 2 → two concurrent `npx playwright install chromium` writes race the
-  #     shared ~/Library/Caches/ms-playwright cache, leaving chromium-headless-shell
-  #     absent → "browserType.launch: Executable doesn't exist … chrome-headless-shell".
-  # Serializing the shards removes both the RAM oversubscription and the cache race
-  # with one deterministic knob. Keep --maxWorkers=1 (belt-and-suspenders, no harm).
-  resource_group: local-runner-vitest-shards
+  # UNWIND step 4 (2026-07-09): resource_group serialization REMOVED. The esbuild
+  # "service is no longer running" crash was the host cron `mercyb-strengthen-c2.sh`
+  # pkilling the LIVE esbuild service (fixed 2026-07-09), NOT RAM oversubscription
+  # from co-running shards. Shards now run in parallel on the tuned Air (concurrent=5).
+  # --maxWorkers=1 kept (belt-and-suspenders, no harm).
   # PIN to the single tuned host. The self-hosted Mac fleet is several separate
   # physical machines all sharing the `local,mac,mercyb` tags, so test shards
   # scattered onto untuned hosts (concurrent=5) and still OOM-killed esbuild —
