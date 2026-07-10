@@ -7,6 +7,7 @@ import type { TutorTurn } from "@/lib/tutor/tutorTypes";
 import type { TutorCopy } from "@/lib/tutor/tutorCopy";
 import TeacherMercyVoiceControls from "@/components/teacher-mercy/TeacherMercyVoiceControls";
 import DetectorHintChip from "@/components/ai-tutor/DetectorHintChip";
+import CorrectionFeedbackButtons from "@/components/ai-tutor/CorrectionFeedbackButtons";
 import type { DetectorHintContent } from "@/lib/ai-tutor/detectorHint";
 import { detectRegisterError } from "@/lib/feedback";
 import { trackEvent } from "@/lib/analytics";
@@ -75,6 +76,13 @@ export default function CorrectionMode({
   // nothing extra and the grammar feedback stands (trust-floor / C6).
   const register = result ? detectRegisterError({ learnerText: result.userText }) : { matched: false as const };
   const registerTag = register.matched ? register.tag : null;
+
+  // Provenance for the displayed correction, used to gate + attribute the
+  // learner feedback thumbs. Prefer the register detector (its explanation is a
+  // dedicated correction block), fall back to the L1 pattern chip. Null when the
+  // correction carries no rule/detector id → CorrectionFeedbackButtons renders
+  // nothing (no id, no buttons).
+  const correctionRuleId = registerTag ?? detectorHint?.tag ?? null;
   useEffect(() => {
     // Telemetry: emit register_correction_shown with the tag so the team can
     // measure how often each surface-detectable register pattern fires in prod.
@@ -298,6 +306,11 @@ export default function CorrectionMode({
           </div>
 
           <DetectorHintChip content={detectorHint} />
+
+          <CorrectionFeedbackButtons
+            ruleOrDetectorId={correctionRuleId}
+            targetLanguage={result.targetLanguage}
+          />
 
           <button
             type="button"
