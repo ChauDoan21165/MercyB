@@ -225,7 +225,12 @@ export default function LoginPage() {
       try {
         const { data } = await supabase.auth.getSession();
         if (!alive) return;
-        setHasSession(Boolean(data?.session));
+        // Verified-session gate: an anonymous bootstrap session
+        // (signInAnonymously → no email_confirmed_at) must NOT count as
+        // signed-in, or routeAfterAuth fires and bounces a first-time visitor
+        // straight off /signin. Same rule AuthProvider.getVerifiedSession uses
+        // (email_confirmed_at present). See !2580 / reports/signin-bounce-trace.md.
+        setHasSession(Boolean(data?.session?.user?.email_confirmed_at));
         setSessionBooted(true);
       } catch (err) {
         console.error("[bootSessionFlag] error:", err);
@@ -241,7 +246,9 @@ export default function LoginPage() {
 
     const { data: sub } = supabase.auth.onAuthStateChange((_evt, session) => {
       if (!alive) return;
-      setHasSession(Boolean(session));
+      // Verified-session gate (see bootSessionFlag above): ignore anonymous
+      // bootstrap sessions so they never trigger the post-auth redirect.
+      setHasSession(Boolean(session?.user?.email_confirmed_at));
       setSessionBooted(true);
     });
 
