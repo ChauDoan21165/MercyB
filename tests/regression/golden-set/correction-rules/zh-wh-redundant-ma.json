@@ -1,0 +1,59 @@
+{
+  "rule": "whRedundantMa",
+  "ruleId": "zh-wh-redundant-ma",
+  "language": "zh",
+  "description": "VN→ZH double question-marking: a wh-question (什么/谁/哪里/…) is already a question and must not carry sentence-final 吗. Learners transfer a yes/no marker onto it. Rule zh-wh-redundant-ma drops the trailing 吗 when an unambiguous wh-word is present and no embedding verb precedes it.",
+  "fp_risk_note": "Low-medium risk. Drops final 吗 only when an unambiguous wh-word (什么/谁/哪里/哪儿/怎么/为什么/多少) is present and no embedding verb (知道/告诉/问/明白/清楚/记得) precedes it. A plain 吗 question has no wh-word and never matches; an embedded wh-clause ('你知道他是谁吗', 吗 correct) is spared; 几 is excluded to avoid the 'a few' reading.",
+  "positive": [
+    {
+      "id": "wh-ma-pos-001",
+      "input": "你想吃什么吗",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "你想吃什么。",
+      "expectedRuleFired": "zh-wh-redundant-ma",
+      "notes": "什么 wh-question + 吗 → drop 吗."
+    },
+    {
+      "id": "wh-ma-pos-002",
+      "input": "他是谁吗",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "他是谁。",
+      "expectedRuleFired": "zh-wh-redundant-ma",
+      "notes": "谁 wh-question + 吗 → drop 吗."
+    },
+    {
+      "id": "wh-ma-pos-003",
+      "input": "你去哪里吗",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "你去哪里。",
+      "expectedRuleFired": "zh-wh-redundant-ma",
+      "notes": "哪里 wh-question + 吗 → drop 吗."
+    }
+  ],
+  "negative": [
+    {
+      "id": "wh-ma-neg-001",
+      "input": "你吃饭吗",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "你吃饭吗",
+      "expectedRuleFired": null,
+      "notes": "Plain yes/no question, no wh-word — 吗 is required, must abstain."
+    },
+    {
+      "id": "wh-ma-neg-002",
+      "input": "你想吃什么",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "你想吃什么",
+      "expectedRuleFired": null,
+      "notes": "wh-question with no 吗 — already correct, must abstain."
+    },
+    {
+      "id": "wh-ma-neg-003",
+      "input": "你知道他是谁吗",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "你知道他是谁吗",
+      "expectedRuleFired": null,
+      "notes": "Embedded wh-clause under 知道 ('do you know who he is') — 吗 is correct on the matrix question, the embedding-verb guard spares it, must abstain."
+    }
+  ]
+}

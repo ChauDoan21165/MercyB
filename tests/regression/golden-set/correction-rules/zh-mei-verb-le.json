@@ -1,0 +1,59 @@
+{
+  "rule": "meiVerbLe",
+  "ruleId": "zh-mei-verb-le",
+  "language": "zh",
+  "description": "VN→ZH negation-aspect clash: 没(有) already negates completion, so a following perfective 了 is ungrammatical ('他没有来了' → '他没有来'). Vietnamese over-marks with a generic past particle. Rule zh-mei-verb-le drops 了 after 没(有) + a closed action verb.",
+  "fp_risk_note": "Medium risk, tightly scoped. Drops 了 only after 没(有) + a closed action verb (去来吃喝看买卖做说写听到). The change-of-state 了 after a noun ('没有钱了' = out of money now) never matches (钱 is not a verb); a resultative ('没有做完了') never matches because 了 is not adjacent to the verb.",
+  "positive": [
+    {
+      "id": "mei-le-pos-001",
+      "input": "他没有来了",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "他没有来。",
+      "expectedRuleFired": "zh-mei-verb-le",
+      "notes": "没有来了 → 没有来 (drop redundant 了)."
+    },
+    {
+      "id": "mei-le-pos-002",
+      "input": "我没吃了",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "我没吃。",
+      "expectedRuleFired": "zh-mei-verb-le",
+      "notes": "没吃了 → 没吃 (没 without 有 also matches)."
+    },
+    {
+      "id": "mei-le-pos-003",
+      "input": "他们没买了",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "他们没买。",
+      "expectedRuleFired": "zh-mei-verb-le",
+      "notes": "没买了 → 没买."
+    }
+  ],
+  "negative": [
+    {
+      "id": "mei-le-neg-001",
+      "input": "没有钱了",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "没有钱了",
+      "expectedRuleFired": null,
+      "notes": "没有 + NOUN (钱) + 了 ('out of money now') — change-of-state 了 is correct, must abstain."
+    },
+    {
+      "id": "mei-le-neg-002",
+      "input": "他没有来",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "他没有来",
+      "expectedRuleFired": null,
+      "notes": "Already correct — no 了 to drop, must abstain."
+    },
+    {
+      "id": "mei-le-neg-003",
+      "input": "我没吃饭",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "我没吃饭",
+      "expectedRuleFired": null,
+      "notes": "No 了 present — must abstain."
+    }
+  ]
+}

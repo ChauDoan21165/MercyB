@@ -1,0 +1,59 @@
+{
+  "rule": "taiAdjectiveLe",
+  "ruleId": "zh-tai-adjective-le",
+  "language": "zh",
+  "description": "VN→ZH exclamative aspect: predicative '太 + adj' in Mandarin takes sentence-final 了 ('太贵了' = too expensive!). Vietnamese 'quá đắt' has no such particle, so learners write '太贵'. Rule zh-tai-adjective-le appends 了 for a closed clause-final adjective after 太.",
+  "fp_risk_note": "Low-medium risk. Appends 了 only for 太 + a closed adjective (贵好难忙累冷热高大小多快慢胖瘦) at clause end. The 不 lookbehind spares '不太贵' (not too…); an attributive '太贵的车' (贵 before 的) and an already-marked '太贵了' fail the clause-end lookahead and abstain.",
+  "positive": [
+    {
+      "id": "tai-le-pos-001",
+      "input": "这个太贵",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "这个太贵了。",
+      "expectedRuleFired": "zh-tai-adjective-le",
+      "notes": "太贵 → 太贵了 (exclamative 了)."
+    },
+    {
+      "id": "tai-le-pos-002",
+      "input": "今天太热",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "今天太热了。",
+      "expectedRuleFired": "zh-tai-adjective-le",
+      "notes": "太热 → 太热了."
+    },
+    {
+      "id": "tai-le-pos-003",
+      "input": "他太忙",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "他太忙了。",
+      "expectedRuleFired": "zh-tai-adjective-le",
+      "notes": "太忙 → 太忙了."
+    }
+  ],
+  "negative": [
+    {
+      "id": "tai-le-neg-001",
+      "input": "不太贵",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "不太贵",
+      "expectedRuleFired": null,
+      "notes": "不太 ('not too expensive') — the 不 lookbehind spares it, must abstain."
+    },
+    {
+      "id": "tai-le-neg-002",
+      "input": "太贵了",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "太贵了",
+      "expectedRuleFired": null,
+      "notes": "Already marked with 了 — must not double-append, must abstain."
+    },
+    {
+      "id": "tai-le-neg-003",
+      "input": "太贵的车",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "太贵的车",
+      "expectedRuleFired": null,
+      "notes": "Attributive '太贵的车' (a too-expensive car) — 贵 is followed by 的, not clause end, must abstain."
+    }
+  ]
+}

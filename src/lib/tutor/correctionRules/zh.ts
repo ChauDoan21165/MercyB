@@ -235,6 +235,100 @@ function repairGeOvergeneralization(input: string): string {
   );
 }
 
+// ── Rule 11: degree 太 + adjective missing sentence-final 了 ───────────────────
+// Predicative "太 + adj" in Mandarin is an exclamative that takes sentence-final
+// 了 ("太贵了" = too expensive!). VN "quá đắt" has no such particle, so learners
+// write "太贵". Appends 了 only for a closed adjective at clause end. The 不 lookbehind
+// spares "不太贵" (not too…); an attributive "太贵的车" (贵 followed by 的) and an
+// already-marked "太贵了" both fail the clause-end lookahead and abstain.
+const ZH_TAI_ADJ = "贵好难忙累冷热高大小多快慢胖瘦";
+const ZH_TAI_ADJ_LE_PATTERN = new RegExp(`(?<!不)(太[${ZH_TAI_ADJ}])(?=$|[。！？])`);
+
+function hasTaiAdjectiveLe(input: string): boolean {
+  return ZH_TAI_ADJ_LE_PATTERN.test(input);
+}
+
+function repairTaiAdjectiveLe(input: string): string {
+  return input.replace(new RegExp(`(?<!不)(太[${ZH_TAI_ADJ}])(?=$|[。！？])`, "g"), "$1了");
+}
+
+// ── Rule 12: redundant 了 after negated 没(有) + verb ──────────────────────────
+// 没(有) already negates completion, so a following perfective 了 is ungrammatical
+// ("他没有来了" → "他没有来"). VN over-marks with a generic past particle. Drops
+// 了 only after 没(有) + a closed action verb. The change-of-state 了 after a NOUN
+// ("没有钱了" = out of money now) never matches (钱 is not in the verb set), and a
+// resultative ("没有做完了") never matches because 了 does not sit right after the verb.
+const ZH_MEI_VERB = "去|来|吃|喝|看|买|卖|做|说|写|听|到";
+const ZH_MEI_VERB_LE_PATTERN = new RegExp(`没有?(${ZH_MEI_VERB})了`);
+
+function hasMeiVerbLe(input: string): boolean {
+  return ZH_MEI_VERB_LE_PATTERN.test(input);
+}
+
+function repairMeiVerbLe(input: string): string {
+  return input.replace(new RegExp(`(没有?(?:${ZH_MEI_VERB}))了`, "g"), "$1");
+}
+
+// ── Rule 13: redundant 吗 on a wh-question ────────────────────────────────────
+// A wh-question (什么/谁/哪里/…) is already a question and must not carry final 吗;
+// learners transfer a yes/no marker onto it. Drops trailing 吗 only when an
+// unambiguous wh-word is present and no embedding verb precedes it. An embedded
+// wh-clause under a matrix verb ("你知道他是谁吗", where 吗 is correct) is spared by
+// the embedding-verb guard. 几/多少 are excluded to avoid the "a few" reading.
+const ZH_WH_WORD_PATTERN = /什么|谁|哪里|哪儿|怎么|为什么|多少/;
+const ZH_WH_EMBEDDING_PATTERN = /知道|告诉|问|明白|清楚|记得/;
+
+function hasWhRedundantMa(input: string): boolean {
+  const t = input.trim();
+  return (
+    /吗$/.test(t) && ZH_WH_WORD_PATTERN.test(t) && !ZH_WH_EMBEDDING_PATTERN.test(t)
+  );
+}
+
+function repairWhRedundantMa(input: string): string {
+  if (!hasWhRedundantMa(input)) return input;
+  return input.replace(/吗(?=[。！？]?$)/, "");
+}
+
+// ── Rule 14: missing possessive 的 between pronoun and noun ────────────────────
+// VN "sách của tôi" (book of-me) maps to 我的书, but learners drop 的 ("这是我书").
+// Inserts 的 only in the predicative frame 是 + pronoun + a closed possession noun,
+// which is unambiguously possessive — so a dative "给我书" (give me a book, no 是)
+// and the kinship/我家 cases (家 not in the noun set, where 的 is naturally dropped)
+// never match. An already-correct "这是我的书" fails because 的 sits between.
+const ZH_POSSESSION_NOUN = "书|车|手机|电脑|房子|衣服|钱包|雨伞";
+const ZH_POSSESSIVE_DE_PATTERN = new RegExp(
+  `是([我你他她它]们?)(${ZH_POSSESSION_NOUN})(?=$|[。！？，])`,
+);
+
+function hasPossessiveDeMissing(input: string): boolean {
+  return ZH_POSSESSIVE_DE_PATTERN.test(input);
+}
+
+function repairPossessiveDeMissing(input: string): string {
+  return input.replace(
+    new RegExp(`是([我你他她它]们?)(${ZH_POSSESSION_NOUN})(?=$|[。！？，])`, "g"),
+    "是$1的$2",
+  );
+}
+
+// ── Rule 15: predicative adjective missing degree adverb 很 ────────────────────
+// A bare monosyllabic adjective predicate needs a degree adverb ("我很累", not
+// "我累" as a neutral statement). VN "tôi mệt" has no such word, so learners drop
+// 很. Inserts 很 only for a subject pronoun + a closed monosyllabic adjective at
+// clause end. Anything between the pronoun and the adjective (很/不/太/是) blocks
+// the match; the change-of-state "我累了" fails the clause-end lookahead and abstains.
+const ZH_BARE_ADJ = "高累忙饿渴冷热好难贵大小多";
+const ZH_BARE_ADJ_HEN_PATTERN = new RegExp(`^([我你他她它]们?)([${ZH_BARE_ADJ}])(?=$|[。！？])`);
+
+function hasBareAdjectiveHen(input: string): boolean {
+  return ZH_BARE_ADJ_HEN_PATTERN.test(input.trim());
+}
+
+function repairBareAdjectiveHen(input: string): string {
+  return input.replace(new RegExp(`^([我你他她它]们?)([${ZH_BARE_ADJ}])(?=$|[。！？])`), "$1很$2");
+}
+
 export const chineseCorrectionRules: CorrectionRule[] = [
   {
     id: "zh-er-liang-measure",
@@ -305,5 +399,40 @@ export const chineseCorrectionRules: CorrectionRule[] = [
     apply: repairGeOvergeneralization,
     fpRiskNote:
       "Rewrites 个 → the correct classifier for a closed noun map (书→本; 狗/猫/鸟→只; 马→匹). Compounds where the char is not the counted head (书店/书法/书架, 马路/马桶) are guarded by tail lookaheads; nouns that genuinely take 个 (人, 苹果, 学生) are not in the map and abstain.",
+  },
+  {
+    id: "zh-tai-adjective-le",
+    detects: hasTaiAdjectiveLe,
+    apply: repairTaiAdjectiveLe,
+    fpRiskNote:
+      "Appends sentence-final 了 only for 太 + a closed clause-final adjective (贵好难忙累冷热高大小多快慢胖瘦). The 不 lookbehind spares '不太贵'; an attributive '太贵的车' and an already-marked '太贵了' fail the clause-end lookahead and abstain.",
+  },
+  {
+    id: "zh-mei-verb-le",
+    detects: hasMeiVerbLe,
+    apply: repairMeiVerbLe,
+    fpRiskNote:
+      "Drops 了 only after 没(有) + a closed action verb (去来吃喝看买卖做说写听到). The change-of-state 了 after a noun ('没有钱了') never matches (钱 is not a verb), and a resultative ('没有做完了') never matches because 了 is not adjacent to the verb.",
+  },
+  {
+    id: "zh-wh-redundant-ma",
+    detects: hasWhRedundantMa,
+    apply: repairWhRedundantMa,
+    fpRiskNote:
+      "Drops sentence-final 吗 only when an unambiguous wh-word (什么/谁/哪里/哪儿/怎么/为什么/多少) is present and no embedding verb (知道/告诉/问/明白/清楚/记得) precedes it. A plain 吗 question has no wh-word and never matches; an embedded wh-clause ('你知道他是谁吗', 吗 correct) is spared; 几 is excluded to avoid the 'a few' reading.",
+  },
+  {
+    id: "zh-possessive-de-insert",
+    detects: hasPossessiveDeMissing,
+    apply: repairPossessiveDeMissing,
+    fpRiskNote:
+      "Inserts possessive 的 only in the frame 是 + pronoun + a closed possession noun (书/车/手机/电脑/房子/衣服/钱包/雨伞), which is unambiguously possessive. A dative 'give me a book' ('给我书', no 是), the kinship/我家 cases (家 not in the set), and an already-correct '这是我的书' all abstain.",
+  },
+  {
+    id: "zh-bare-adjective-hen",
+    detects: hasBareAdjectiveHen,
+    apply: repairBareAdjectiveHen,
+    fpRiskNote:
+      "Inserts degree 很 only for a leading subject pronoun + a closed monosyllabic adjective (高累忙饿渴冷热好难贵大小多) at clause end. Any 很/不/太/是 between the pronoun and the adjective blocks it (那 rules own those); the change-of-state '我累了' fails the clause-end lookahead and abstains.",
   },
 ];

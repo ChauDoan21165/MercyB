@@ -60,6 +60,27 @@ const ZH_DELIVERY_CASES: ReadonlyArray<readonly [string, string, string]> = [
   ["我有一个书", "我有一本书。", "zh-ge-overgeneralization"],
   ["他有一个狗", "他有一只狗。", "zh-ge-overgeneralization"],
   ["那个猫很可爱", "那只猫很可爱。", "zh-ge-overgeneralization"],
+  // ── Scale group 2 ──
+  // zh-tai-adjective-le — 太 + adj → append 了
+  ["这个太贵", "这个太贵了。", "zh-tai-adjective-le"],
+  ["今天太热", "今天太热了。", "zh-tai-adjective-le"],
+  ["他太忙", "他太忙了。", "zh-tai-adjective-le"],
+  // zh-mei-verb-le — drop redundant 了 after 没(有) + verb
+  ["他没有来了", "他没有来。", "zh-mei-verb-le"],
+  ["我没吃了", "我没吃。", "zh-mei-verb-le"],
+  ["他们没买了", "他们没买。", "zh-mei-verb-le"],
+  // zh-wh-redundant-ma — drop 吗 on a wh-question
+  ["你想吃什么吗", "你想吃什么。", "zh-wh-redundant-ma"],
+  ["他是谁吗", "他是谁。", "zh-wh-redundant-ma"],
+  ["你去哪里吗", "你去哪里。", "zh-wh-redundant-ma"],
+  // zh-possessive-de-insert — insert possessive 的
+  ["这是我书", "这是我的书。", "zh-possessive-de-insert"],
+  ["那是你车", "那是你的车。", "zh-possessive-de-insert"],
+  ["这是他手机", "这是他的手机。", "zh-possessive-de-insert"],
+  // zh-bare-adjective-hen — insert degree 很
+  ["我累", "我很累。", "zh-bare-adjective-hen"],
+  ["他忙", "他很忙。", "zh-bare-adjective-hen"],
+  ["你高", "你很高。", "zh-bare-adjective-hen"],
 ];
 
 describe("Phase B — VN→Chinese delivery E2E (turn-loop seam)", () => {
