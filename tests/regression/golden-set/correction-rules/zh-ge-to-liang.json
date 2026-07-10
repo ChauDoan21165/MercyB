@@ -1,0 +1,59 @@
+{
+  "rule": "geToLiang",
+  "ruleId": "zh-ge-to-liang",
+  "language": "zh",
+  "description": "VN→ZH classifier over-generalization (辆 family): Vietnamese learners default to 个, but wheeled vehicles (车/自行车/汽车/公交车/卡车) take 辆. Rule zh-ge-to-liang rewrites 个 → 辆 for a closed vehicle noun.",
+  "fp_risk_note": "Low risk. Rewrites 个 → 辆 only before a closed wheeled-vehicle noun (车/自行车/汽车/公交车/卡车) after a number/demonstrative. Compounds where 车 is not the counted head (车站/车库/车间/车票/车祸/车轮) are guarded by a tail lookahead.",
+  "positive": [
+    {
+      "id": "ge-liang-pos-001",
+      "input": "我有一个车",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "我有一辆车。",
+      "expectedRuleFired": "zh-ge-to-liang",
+      "notes": "一个车 → 一辆车."
+    },
+    {
+      "id": "ge-liang-pos-002",
+      "input": "他买了一个自行车",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "他买了一辆自行车。",
+      "expectedRuleFired": "zh-ge-to-liang",
+      "notes": "一个自行车 → 一辆自行车 (multi-char vehicle noun)."
+    },
+    {
+      "id": "ge-liang-pos-003",
+      "input": "那个汽车很贵",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "那辆汽车很贵。",
+      "expectedRuleFired": "zh-ge-to-liang",
+      "notes": "那个汽车 → 那辆汽车 (demonstrative)."
+    }
+  ],
+  "negative": [
+    {
+      "id": "ge-liang-neg-001",
+      "input": "一辆车",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "一辆车",
+      "expectedRuleFired": null,
+      "notes": "Already 辆 — must abstain."
+    },
+    {
+      "id": "ge-liang-neg-002",
+      "input": "三个人",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "三个人",
+      "expectedRuleFired": null,
+      "notes": "人 genuinely takes 个 — not in the map, must abstain."
+    },
+    {
+      "id": "ge-liang-neg-003",
+      "input": "那个车站很大",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "那个车站很大",
+      "expectedRuleFired": null,
+      "notes": "车站 (station) — 车 is not the counted head, the 站 tail lookahead guards it, must abstain."
+    }
+  ]
+}

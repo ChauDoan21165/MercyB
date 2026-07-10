@@ -329,6 +329,85 @@ function repairBareAdjectiveHen(input: string): string {
   return input.replace(new RegExp(`^([我你他她它]们?)([${ZH_BARE_ADJ}])(?=$|[。！？])`), "$1很$2");
 }
 
+// ── Rules 16-20: 个 over-generalization, per specific classifier ──────────────
+// Classifier substitution is the single highest-frequency VN→ZH error class; each
+// of these targets a distinct correct classifier a learner must acquire. All share
+// the shape "(number|demonstrative)个 + noun → correct classifier", scoped to a
+// CLOSED noun set with tail lookaheads that spare compounds where the char is not
+// the counted head (票房, 车站, 路口, 事故, 水果, …). Nouns that genuinely take 个
+// are simply absent from each map.
+const ZH_GE_QUANTIFIER = "一|两|三|四|五|六|七|八|九|十|这|那|几";
+
+// 16 — 张 (flat objects: 纸/票/照片/地图/桌子/床)
+const ZH_GE_ZHANG_PATTERN = new RegExp(
+  `(${ZH_GE_QUANTIFIER})个(纸(?!巾)|票(?!房|价)|照片|地图|桌子|床)`,
+);
+function hasGeToZhang(input: string): boolean {
+  return ZH_GE_ZHANG_PATTERN.test(input);
+}
+function repairGeToZhang(input: string): string {
+  return input.replace(
+    new RegExp(`(${ZH_GE_QUANTIFIER})个(纸(?!巾)|票(?!房|价)|照片|地图|桌子|床)`, "g"),
+    "$1张$2",
+  );
+}
+
+// 17 — 辆 (wheeled vehicles: 车/自行车/汽车/公交车/卡车)
+const ZH_GE_LIANG_PATTERN = new RegExp(
+  `(${ZH_GE_QUANTIFIER})个(自行车|汽车|公交车|卡车|车(?!站|库|间|票|祸|轮))`,
+);
+function hasGeToLiang(input: string): boolean {
+  return ZH_GE_LIANG_PATTERN.test(input);
+}
+function repairGeToLiang(input: string): string {
+  return input.replace(
+    new RegExp(`(${ZH_GE_QUANTIFIER})个(自行车|汽车|公交车|卡车|车(?!站|库|间|票|祸|轮))`, "g"),
+    "$1辆$2",
+  );
+}
+
+// 18 — 条 (long/thin things: 鱼/裤子/裙子/河/路/船)
+const ZH_GE_TIAO_PATTERN = new RegExp(
+  `(${ZH_GE_QUANTIFIER})个(鱼(?!缸|塘)|裤子|裙子|河|船|路(?!口|灯|边|人|过))`,
+);
+function hasGeToTiao(input: string): boolean {
+  return ZH_GE_TIAO_PATTERN.test(input);
+}
+function repairGeToTiao(input: string): string {
+  return input.replace(
+    new RegExp(`(${ZH_GE_QUANTIFIER})个(鱼(?!缸|塘)|裤子|裙子|河|船|路(?!口|灯|边|人|过))`, "g"),
+    "$1条$2",
+  );
+}
+
+// 19 — 件 (clothing / matters / gifts: 衣服/事/事情/礼物/行李/毛衣/衬衫)
+const ZH_GE_JIAN_PATTERN = new RegExp(
+  `(${ZH_GE_QUANTIFIER})个(衣服|事情|礼物|行李|毛衣|衬衫|事(?!业|故|实|件|物))`,
+);
+function hasGeToJian(input: string): boolean {
+  return ZH_GE_JIAN_PATTERN.test(input);
+}
+function repairGeToJian(input: string): string {
+  return input.replace(
+    new RegExp(`(${ZH_GE_QUANTIFIER})个(衣服|事情|礼物|行李|毛衣|衬衫|事(?!业|故|实|件|物))`, "g"),
+    "$1件$2",
+  );
+}
+
+// 20 — 杯 (drinks in a cup/glass: 茶/水/咖啡/酒/牛奶/果汁)
+const ZH_GE_BEI_PATTERN = new RegExp(
+  `(${ZH_GE_QUANTIFIER})个(咖啡|果汁|牛奶|茶(?!杯|壶|馆|叶|几)|酒(?!吧|店|杯|瓶)|水(?!果|平|杯|管|龙))`,
+);
+function hasGeToBei(input: string): boolean {
+  return ZH_GE_BEI_PATTERN.test(input);
+}
+function repairGeToBei(input: string): string {
+  return input.replace(
+    new RegExp(`(${ZH_GE_QUANTIFIER})个(咖啡|果汁|牛奶|茶(?!杯|壶|馆|叶|几)|酒(?!吧|店|杯|瓶)|水(?!果|平|杯|管|龙))`, "g"),
+    "$1杯$2",
+  );
+}
+
 export const chineseCorrectionRules: CorrectionRule[] = [
   {
     id: "zh-er-liang-measure",
@@ -434,5 +513,40 @@ export const chineseCorrectionRules: CorrectionRule[] = [
     apply: repairBareAdjectiveHen,
     fpRiskNote:
       "Inserts degree 很 only for a leading subject pronoun + a closed monosyllabic adjective (高累忙饿渴冷热好难贵大小多) at clause end. Any 很/不/太/是 between the pronoun and the adjective blocks it (那 rules own those); the change-of-state '我累了' fails the clause-end lookahead and abstains.",
+  },
+  {
+    id: "zh-ge-to-zhang",
+    detects: hasGeToZhang,
+    apply: repairGeToZhang,
+    fpRiskNote:
+      "Rewrites 个 → 张 only before a closed flat-object noun (纸/票/照片/地图/桌子/床) after a number/demonstrative. Compounds (纸巾, 票房, 票价) are guarded by tail lookaheads; nouns that take 个 are not in the set.",
+  },
+  {
+    id: "zh-ge-to-liang",
+    detects: hasGeToLiang,
+    apply: repairGeToLiang,
+    fpRiskNote:
+      "Rewrites 个 → 辆 only before a closed wheeled-vehicle noun (车/自行车/汽车/公交车/卡车). Compounds where 车 is not the counted head (车站/车库/车间/车票/车祸) are guarded by a tail lookahead.",
+  },
+  {
+    id: "zh-ge-to-tiao",
+    detects: hasGeToTiao,
+    apply: repairGeToTiao,
+    fpRiskNote:
+      "Rewrites 个 → 条 only before a closed long/thin noun (鱼/裤子/裙子/河/船/路). Compounds (鱼缸, 鱼塘, 路口/路灯/路边) are guarded by tail lookaheads.",
+  },
+  {
+    id: "zh-ge-to-jian",
+    detects: hasGeToJian,
+    apply: repairGeToJian,
+    fpRiskNote:
+      "Rewrites 个 → 件 only before a closed clothing/matter/gift noun (衣服/事/事情/礼物/行李/毛衣/衬衫). Compounds where 事 is not the counted head (事业/事故/事实) are guarded by a tail lookahead.",
+  },
+  {
+    id: "zh-ge-to-bei",
+    detects: hasGeToBei,
+    apply: repairGeToBei,
+    fpRiskNote:
+      "Rewrites 个 → 杯 only before a closed cup/glass-drink noun (茶/水/咖啡/酒/牛奶/果汁). Compounds and non-drink senses (水果/水平, 酒吧/酒店, 茶馆/茶叶) are guarded by tail lookaheads so only the drink-in-a-cup reading matches.",
   },
 ];

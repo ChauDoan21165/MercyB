@@ -1,0 +1,59 @@
+{
+  "rule": "geToTiao",
+  "ruleId": "zh-ge-to-tiao",
+  "language": "zh",
+  "description": "VN→ZH classifier over-generalization (条 family): Vietnamese learners default to 个, but long/thin things (鱼/裤子/裙子/河/船/路) take 条. Rule zh-ge-to-tiao rewrites 个 → 条 for a closed long/thin noun.",
+  "fp_risk_note": "Low risk. Rewrites 个 → 条 only before a closed long/thin noun (鱼/裤子/裙子/河/船/路) after a number/demonstrative. Compounds (鱼缸/鱼塘, 路口/路灯/路边) are guarded by tail lookaheads.",
+  "positive": [
+    {
+      "id": "ge-tiao-pos-001",
+      "input": "我买了一个鱼",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "我买了一条鱼。",
+      "expectedRuleFired": "zh-ge-to-tiao",
+      "notes": "一个鱼 → 一条鱼."
+    },
+    {
+      "id": "ge-tiao-pos-002",
+      "input": "他有一个裤子",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "他有一条裤子。",
+      "expectedRuleFired": "zh-ge-to-tiao",
+      "notes": "一个裤子 → 一条裤子."
+    },
+    {
+      "id": "ge-tiao-pos-003",
+      "input": "这个河很长",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "这条河很长。",
+      "expectedRuleFired": "zh-ge-to-tiao",
+      "notes": "这个河 → 这条河 (demonstrative)."
+    }
+  ],
+  "negative": [
+    {
+      "id": "ge-tiao-neg-001",
+      "input": "一条鱼",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "一条鱼",
+      "expectedRuleFired": null,
+      "notes": "Already 条 — must abstain."
+    },
+    {
+      "id": "ge-tiao-neg-002",
+      "input": "三个人",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "三个人",
+      "expectedRuleFired": null,
+      "notes": "人 genuinely takes 个 — not in the map, must abstain."
+    },
+    {
+      "id": "ge-tiao-neg-003",
+      "input": "那个路口很宽",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "那个路口很宽",
+      "expectedRuleFired": null,
+      "notes": "路口 (intersection) — 路 is not the counted head, the 口 tail lookahead guards it, must abstain."
+    }
+  ]
+}

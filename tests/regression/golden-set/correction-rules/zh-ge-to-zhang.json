@@ -1,0 +1,59 @@
+{
+  "rule": "geToZhang",
+  "ruleId": "zh-ge-to-zhang",
+  "language": "zh",
+  "description": "VN→ZH classifier over-generalization (张 family): Vietnamese learners default to 个, but flat objects (纸/票/照片/地图/桌子/床) take 张. Rule zh-ge-to-zhang rewrites 个 → 张 for a closed flat-object noun.",
+  "fp_risk_note": "Low risk. Rewrites 个 → 张 only before a closed flat-object noun (纸/票/照片/地图/桌子/床) after a number/demonstrative. Compounds (纸巾, 票房, 票价) are guarded by tail lookaheads; nouns that genuinely take 个 (人, 苹果) are not in the map.",
+  "positive": [
+    {
+      "id": "ge-zhang-pos-001",
+      "input": "我要一个纸",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "我要一张纸。",
+      "expectedRuleFired": "zh-ge-to-zhang",
+      "notes": "一个纸 → 一张纸."
+    },
+    {
+      "id": "ge-zhang-pos-002",
+      "input": "他有一个照片",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "他有一张照片。",
+      "expectedRuleFired": "zh-ge-to-zhang",
+      "notes": "一个照片 → 一张照片."
+    },
+    {
+      "id": "ge-zhang-pos-003",
+      "input": "这个桌子很大",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "这张桌子很大。",
+      "expectedRuleFired": "zh-ge-to-zhang",
+      "notes": "这个桌子 → 这张桌子 (demonstrative)."
+    }
+  ],
+  "negative": [
+    {
+      "id": "ge-zhang-neg-001",
+      "input": "一张纸",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "一张纸",
+      "expectedRuleFired": null,
+      "notes": "Already 张 — must abstain."
+    },
+    {
+      "id": "ge-zhang-neg-002",
+      "input": "三个人",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "三个人",
+      "expectedRuleFired": null,
+      "notes": "人 genuinely takes 个 — not in the map, must abstain."
+    },
+    {
+      "id": "ge-zhang-neg-003",
+      "input": "那个票房很高",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "那个票房很高",
+      "expectedRuleFired": null,
+      "notes": "票房 (box-office takings) — 票 is not the counted head, the 房 tail lookahead guards it, must abstain."
+    }
+  ]
+}
