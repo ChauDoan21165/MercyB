@@ -44,6 +44,13 @@ export type AiErrorKind =
   | "parse_error"
   | "no_key";
 
+/**
+ * Token usage for a single provider call. ADDITIVE + OPTIONAL: populated only
+ * when the provider response carries it (OpenAI/DeepSeek `usage`, Gemini
+ * `usageMetadata`); `undefined` otherwise. Callers that ignore it are unaffected.
+ */
+export type TokenUsage = { inputTokens: number; outputTokens: number };
+
 export type ChatJsonResult = {
   ok: boolean;
   json: Record<string, unknown>;
@@ -52,6 +59,8 @@ export type ChatJsonResult = {
   latencyMs: number;
   attempts: AiProvider[];
   errorKind?: AiErrorKind;
+  /** Optional token usage from the winning provider call; undefined if not surfaced. */
+  usage?: TokenUsage;
 };
 
 export type ChatTextResult = {
@@ -117,8 +126,30 @@ const DEFAULT_PROVIDER_ORDER: readonly ConfiguredAiProvider[] = ["openai", "gemi
 
 // ── Failover-decision helpers (shared) ───────────────────────────────────
 
+// Defensive token-usage extraction across provider response shapes.
+// OpenAI / DeepSeek: `usage.prompt_tokens` / `usage.completion_tokens`.
+// Gemini: `usageMetadata.promptTokenCount` / `usageMetadata.candidatesTokenCount`.
+// Returns undefined when neither shape is present (never fabricated).
+function extractUsage(data: unknown): TokenUsage | undefined {
+  const d = data as {
+    usage?: { prompt_tokens?: unknown; completion_tokens?: unknown };
+    usageMetadata?: { promptTokenCount?: unknown; candidatesTokenCount?: unknown };
+  } | null;
+  const oaIn = d?.usage?.prompt_tokens;
+  const oaOut = d?.usage?.completion_tokens;
+  if (typeof oaIn === "number" && typeof oaOut === "number") {
+    return { inputTokens: oaIn, outputTokens: oaOut };
+  }
+  const gIn = d?.usageMetadata?.promptTokenCount;
+  const gOut = d?.usageMetadata?.candidatesTokenCount;
+  if (typeof gIn === "number" && typeof gOut === "number") {
+    return { inputTokens: gIn, outputTokens: gOut };
+  }
+  return undefined;
+}
+
 type Outcome =
-  | { kind: "ok"; raw: string }
+  | { kind: "ok"; raw: string; usage?: TokenUsage }
   | { kind: "ok-stream"; body: ReadableStream<Uint8Array> }
   | { kind: "fail"; status?: number; isAbort?: boolean; threw?: boolean };
 
@@ -197,7 +228,7 @@ async function callOpenAi(
       choices?: Array<{ message?: { content?: string } }>;
     };
     const raw = data?.choices?.[0]?.message?.content ?? "";
-    return { kind: "ok", raw };
+    return { kind: "ok", raw, usage: extractUsage(data) };
   } catch (err) {
     const isAbort = err instanceof Error && err.name === "AbortError";
     return { kind: "fail", isAbort, threw: !isAbort };
@@ -280,7 +311,7 @@ async function callDeepSeek(
       choices?: Array<{ message?: { content?: string } }>;
     };
     const raw = data?.choices?.[0]?.message?.content ?? "";
-    return { kind: "ok", raw };
+    return { kind: "ok", raw, usage: extractUsage(data) };
   } catch (err) {
     const isAbort = err instanceof Error && err.name === "AbortError";
     return { kind: "fail", isAbort, threw: !isAbort };
@@ -390,7 +421,7 @@ async function callGemini(
     const raw = Array.isArray(parts)
       ? parts.map((p) => p?.text ?? "").join("")
       : "";
-    return { kind: "ok", raw };
+    return { kind: "ok", raw, usage: extractUsage(data) };
   } catch (err) {
     const isAbort = err instanceof Error && err.name === "AbortError";
     return { kind: "fail", isAbort, threw: !isAbort };
@@ -651,6 +682,7 @@ export async function chatJsonWithFailover(
           provider,
           latencyMs,
           attempts,
+          usage: outcome.usage,
         };
       }
       console.log(
