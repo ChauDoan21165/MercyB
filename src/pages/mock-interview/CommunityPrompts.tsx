@@ -93,11 +93,15 @@ export default function CommunityPrompts(): React.ReactElement {
     }
     let cancelled = false;
     (async () => {
-      const { data } = await supabase
+      const { data, error } = await supabase
         .from("user_interview_prompt_votes")
         .select("prompt_id")
         .eq("user_id", user.id)
         .eq("vote_type", "up");
+      if (error) {
+        // Surface the read failure instead of silently showing no upvotes.
+        console.warn("[CommunityPrompts] upvotes read failed", error);
+      }
       if (cancelled) return;
       setMyUpvotes(
         new Set((data ?? []).map((r: { prompt_id: string }) => r.prompt_id)),

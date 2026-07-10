@@ -84,13 +84,17 @@ export async function addFact(
 
   // Unique-violation (duplicate fact): re-read the existing row.
   if (error && isUniqueViolation(error)) {
-    const { data: existing } = await supabase
+    const { data: existing, error: reReadError } = await supabase
       .from(TABLE)
       .select("*")
       .eq("user_id", userId)
       .eq("fact_type", factType)
       .eq("content", content.trim())
       .maybeSingle();
+    if (reReadError) {
+      // Surface the recovery re-read failure rather than masking it as "no fact".
+      console.warn("[userFacts] duplicate-fact recovery re-read failed", reReadError);
+    }
     return existing ? toUserFact(existing) : null;
   }
 
