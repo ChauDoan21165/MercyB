@@ -17,6 +17,7 @@ import {
   buildPlacementTeacherContext,
   placementTimelineItemFromSubmit,
 } from "./runtimeIntegration";
+import { withRetry } from "@/lib/retry";
 import { openSignal, track } from "@/lib/telemetry/signalCell";
 import { LISTENING_PLACEMENT_PROMPTS } from "@/data/placement/v3/prompts/listening";
 
@@ -110,6 +111,24 @@ type RawRecommendation = {
   cefrLevel?: string;
 };
 
+/** Gateway statuses that mean the request never reached a booted handler
+ * (cold-start / gateway drop). Safe to retry — the handler never ran, and
+ * `respond` is idempotent server-side (dedupes by task_index), so even a
+ * re-sent submission can't double-process. */
+const RETRYABLE_GATEWAY_STATUSES = new Set([502, 503, 504]);
+
+/** Marks a failure where the edge function returned NO usable HTTP response —
+ * a fetch TypeError / net::ERR_FAILED, or a gateway 5xx. These are the
+ * intermittent cold-start non-responses the retry loop absorbs. A real app
+ * response (any status the handler itself produced) is NOT one of these: it is
+ * returned as-is so an answered `respond` is never retried. */
+class RetryablePlacementNetworkError extends Error {
+  constructor(message: string, readonly reason?: unknown) {
+    super(message);
+    this.name = "RetryablePlacementNetworkError";
+  }
+}
+
 async function callPlacementSession(body: unknown): Promise<unknown> {
   const { supabase } = await import("@/lib/supabaseClient");
   const { data } = await supabase.auth.getSession();
@@ -120,7 +139,7 @@ async function callPlacementSession(body: unknown): Promise<unknown> {
   const anonKey = String(import.meta.env.VITE_SUPABASE_ANON_KEY ?? "");
   if (!supabaseUrl || !anonKey) throw new Error("Placement service is not configured.");
 
-  const res = await fetch(`${supabaseUrl}/functions/v1/placement-v3-session`, {
+  const requestInit: RequestInit = {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -128,7 +147,42 @@ async function callPlacementSession(body: unknown): Promise<unknown> {
       apikey: anonKey,
     },
     body: JSON.stringify(body),
-  });
+  };
+
+  // Cold-start / load makes this edge function intermittently return
+  // net::ERR_FAILED with no HTTP response — the app usually recovers on a
+  // retry, so make that retry reliable. Retry ONLY a non-response (fetch
+  // throws) or a gateway 5xx; a response the handler actually produced is
+  // returned unchanged and handled below (never retried), so this cannot
+  // double-submit a `respond`.
+  const res = await withRetry(
+    async () => {
+      let response: Response;
+      try {
+        response = await fetch(`${supabaseUrl}/functions/v1/placement-v3-session`, requestInit);
+      } catch (err) {
+        throw new RetryablePlacementNetworkError(
+          "Placement service is temporarily unavailable. Please try again in a moment.",
+          err,
+        );
+      }
+      if (RETRYABLE_GATEWAY_STATUSES.has(response.status)) {
+        throw new RetryablePlacementNetworkError(
+          "Placement service is temporarily unavailable. Please try again in a moment.",
+          response.status,
+        );
+      }
+      return response;
+    },
+    {
+      maxAttempts: 4,
+      initialDelay: 400,
+      maxDelay: 4000,
+      exponentialBase: 2,
+      shouldRetry: (error) => error instanceof RetryablePlacementNetworkError,
+    },
+  );
+
   const json = await res.json().catch(() => null);
   if (!res.ok || json?.ok === false) {
     throw new Error(String(json?.message ?? json?.error ?? `Placement request failed (${res.status})`));
