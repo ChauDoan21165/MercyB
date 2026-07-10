@@ -183,6 +183,20 @@ async function markFactsReferencedBatch(factIds: string[]): Promise<void> {
   );
 }
 
+/**
+ * Normalize a native L1 into the spend event's language pair. The Mercy tutor's
+ * target is English (the X→English factory), so the pair is "<native>-en".
+ * Returns null when the native language is unknown, so untagged spend stays out
+ * of the per-language chart rather than being bucketed under a bogus pair.
+ */
+function deriveLanguagePair(native: string | null | undefined, target = "en"): string | null {
+  const clean = (v: string | null | undefined, fallback = "") =>
+    String(v ?? "").trim().toLowerCase().replace(/[^a-z-]/g, "").slice(0, 8) || fallback;
+  const n = clean(native);
+  const t = clean(target, "en");
+  return n ? `${n}-${t}` : null;
+}
+
 async function logAiUsageLog(params: {
   userId: string;
   feature: string;
@@ -194,6 +208,8 @@ async function logAiUsageLog(params: {
   meta?: Record<string, unknown>;
   /** Optional conversation grouping key — read by the cap gate on next turn. */
   conversationId?: string | null;
+  /** Native-target pair for cost-per-language instrumentation, e.g. "vi-en". */
+  languagePair?: string | null;
 }) {
   try {
     const { error } = await supabaseAdmin
@@ -208,6 +224,7 @@ async function logAiUsageLog(params: {
         estimated_cost_vnd: params.estimatedCostVnd,
         meta: params.meta ?? {},
         conversation_id: params.conversationId ?? null,
+        language_pair: params.languagePair ?? null,
       });
 
     if (error) {
@@ -621,7 +638,7 @@ serve(wrapHandler("ai-chat", async (req) => {
 
     const { data: profile } = await supabaseAdmin
       .from("profiles")
-      .select("is_premium, created_at")
+      .select("is_premium, created_at, native_language")
       .eq("id", user.id)
       .single();
 
@@ -798,6 +815,9 @@ serve(wrapHandler("ai-chat", async (req) => {
           outputTokens: completionTokens,
           estimatedCostVnd,
           conversationId,
+          languagePair: deriveLanguagePair(
+            (profile as { native_language?: string | null } | null)?.native_language,
+          ),
         }),
         // Step 7 — bump last_referenced_at on every fact we slotted into
         // this turn's prompt. Heuristic per the brief: mark ALL fetched
