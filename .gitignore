@@ -145,3 +145,6 @@ state/cell_os_engineering.sqlite3
 # Note: state/dp_int_factory.sqlite3 (tracked, canonical-shared) is deliberately
 # NOT ignored — its ledger commits are the multi-machine source of truth; its
 # pending change is committed separately once the factory idles.
+
+# Wrangler local build artifacts (generated worker bundles, tmp)
+.wrangler/

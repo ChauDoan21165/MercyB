@@ -17,6 +17,16 @@ import {
   buildPlacementTeacherContext,
   placementTimelineItemFromSubmit,
 } from "./runtimeIntegration";
+import { openSignal, track } from "@/lib/telemetry/signalCell";
+import { LISTENING_PLACEMENT_PROMPTS } from "@/data/placement/v3/prompts/listening";
+
+// The placement-v3-session edge function emits audioScript but not audioUrl, so
+// the client falls back to the catalog's audioUrl (Supabase room-audio bucket,
+// scripts/generate-placement-v3-listening-audio.ts) keyed by prompt id. Catalog
+// is the single source of truth; no edge-function change required.
+const LISTENING_AUDIO_BY_ID: Record<string, string> = Object.fromEntries(
+  LISTENING_PLACEMENT_PROMPTS.flatMap((p) => (p.audioUrl ? [[p.id, p.audioUrl] as const] : [])),
+);
 
 const SESSION_CACHE_KEY = "mb.placement.v3.session";
 const RESULT_KEY = "mb.placement.v3.results.";
@@ -174,9 +184,24 @@ function appendPlacementRuntimeTimeline(
 }
 
 function applyRuntimeToResults(results: PlacementV3Results): PlacementV3Results {
-  const timeline = readPlacementRuntimeTimeline(results.sessionId);
-  const runtime = buildPlacementTeacherContext(timeline, results.completedAt);
-  return applyPlacementRuntimeDecision(results, runtime.teacherContext, runtime.decision, timeline);
+  // Synchronous (buildPlacementTeacherContext -> runRuntimeDecisionPipeline has
+  // no await anywhere), so this can throw but can never hang. The cell exists to
+  // prove that: a `timeout` here would falsify the "sync" assumption.
+  const cell = openSignal("PLACEMENT_COMPUTE_RESULTS", {
+    context: { session_id: results.sessionId },
+  });
+  try {
+    const timeline = readPlacementRuntimeTimeline(results.sessionId);
+    const runtime = buildPlacementTeacherContext(timeline, results.completedAt);
+    const applied = applyPlacementRuntimeDecision(results, runtime.teacherContext, runtime.decision, timeline);
+    cell.succeeded({ timeline_items: timeline.length, validity: applied.placementValidity });
+    return applied;
+  } catch (error) {
+    cell.failed("exception", {
+      error_message: error instanceof Error ? error.message : String(error),
+    });
+    throw error;
+  }
 }
 
 function taskType(prompt: PublicPrompt): PlacementV3TaskType {
@@ -216,7 +241,9 @@ function toTask(prompt: PublicPrompt | null): PlacementV3Task | null {
     passage: typeof metadata.passageText === "string"
       ? bilingual(metadata.passageText, metadata.passageTextVi)
       : undefined,
-    audioUrl: typeof metadata.audioUrl === "string" ? metadata.audioUrl : undefined,
+    audioUrl:
+      (typeof metadata.audioUrl === "string" ? metadata.audioUrl : undefined) ??
+      (prompt.modality === "listening" ? LISTENING_AUDIO_BY_ID[prompt.id] : undefined),
     mercyTurn: prompt.modality === "conversation" ? bilingual(String(metadata.mercyTurn ?? prompt.promptText)) : undefined,
     options,
   };
@@ -260,6 +287,10 @@ function toSession(input: {
 }
 
 export async function startSession(): Promise<PlacementV3Session> {
+  return track("PLACEMENT_START_SESSION", startSessionInner);
+}
+
+async function startSessionInner(): Promise<PlacementV3Session> {
   const json = await callPlacementSession({
     action: "start",
     languagePair: { native: "vi", target: "en" },
@@ -278,6 +309,14 @@ export async function startSession(): Promise<PlacementV3Session> {
 }
 
 export async function submitResponse(
+  payload: PlacementV3ResponsePayload,
+): Promise<PlacementV3SubmitResult> {
+  return track("PLACEMENT_SUBMIT_ANSWER", () => submitResponseInner(payload), {
+    context: { session_id: payload.sessionId, modality: payload.modality },
+  });
+}
+
+async function submitResponseInner(
   payload: PlacementV3ResponsePayload,
 ): Promise<PlacementV3SubmitResult> {
   const existing = readCachedSession();
@@ -322,16 +361,43 @@ export async function submitResponse(
     existing,
   });
   cacheSession(session);
+
+  if (!session.currentTask) {
+    // Dead end: the server said "not complete" (no `session_complete` envelope,
+    // so `completed` stays false) but handed back no next task. TestPage then
+    // renders "Preparing results" with nothing left to advance it. Emitting here
+    // is what turns a silent forever-hang into a Sentry issue.
+    openSignal("PLACEMENT_SUBMIT_ANSWER", {
+      context: { session_id: payload.sessionId },
+    }).failed("invariant", {
+      cause: "no_next_task_and_not_complete",
+      response_type: json.type,
+      progress_state: json.progress?.state,
+    });
+  }
+
   return { session, completed: false };
 }
 
 export async function getResults(sessionId: string): Promise<PlacementV3Results> {
+  return track("PLACEMENT_FETCH_RESULTS", () => getResultsInner(sessionId), {
+    context: { session_id: sessionId },
+  });
+}
+
+async function getResultsInner(sessionId: string): Promise<PlacementV3Results> {
   const json = await callPlacementSession({ action: "status", sessionId }) as StatusResponse;
   if (!json.profile) throw new Error("Placement results are not ready yet.");
   return applyRuntimeToResults(profileToResults(json.profile, json.profile.recommended_lessons ?? []));
 }
 
 export async function abandonSession(sessionId: string): Promise<{ ok: true }> {
+  return track("PLACEMENT_ABANDON_SESSION", () => abandonSessionInner(sessionId), {
+    context: { session_id: sessionId },
+  });
+}
+
+async function abandonSessionInner(sessionId: string): Promise<{ ok: true }> {
   await callPlacementSession({ action: "abandon", sessionId });
   const existing = readCachedSession();
   if (existing?.sessionId === sessionId) cacheSession({ ...existing, status: "abandoned" });
@@ -339,6 +405,10 @@ export async function abandonSession(sessionId: string): Promise<{ ok: true }> {
 }
 
 export async function resumeSession(): Promise<PlacementV3Session | null> {
+  return track("PLACEMENT_RESUME_SESSION", resumeSessionInner);
+}
+
+async function resumeSessionInner(): Promise<PlacementV3Session | null> {
   const json = await callPlacementSession({ action: "resume" }) as StatusResponse | StartResponse;
   if ("type" in json && json.type === "no_session") {
     cacheSession(null);

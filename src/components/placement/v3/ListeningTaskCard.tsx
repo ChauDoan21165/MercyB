@@ -1,10 +1,11 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Headphones } from "lucide-react";
 import type { PlacementV3MediaStatus, PlacementV3Task } from "@/lib/placement/v3/types";
 import { Input } from "@/components/ui/input";
 import BilingualLabel from "./BilingualLabel";
 import GenericTaskCard from "./GenericTaskCard";
 import { useChromeLanguage } from "@/lib/i18n/chromeLanguage";
+import { openSignal, type SignalCell } from "@/lib/telemetry/signalCell";
 
 type Props = {
   task: PlacementV3Task;
@@ -20,6 +21,10 @@ export function ListeningTaskCard({ task, value, onChange, onMediaStatusChange }
   const [mediaStatus, setMediaStatus] = useState<PlacementV3MediaStatus>(
     task.audioUrl ? "loading" : "missing",
   );
+  // One signal cell per (task, audioUrl). Audio load is event-driven, so the
+  // cell is opened here and closed by the <audio> handlers below — or by its
+  // own timeout, if the element never fires either event.
+  const audioSignal = useRef<SignalCell | null>(null);
 
   const updateMediaStatus = (
     next: PlacementV3MediaStatus,
@@ -31,6 +36,23 @@ export function ListeningTaskCard({ task, value, onChange, onMediaStatusChange }
 
   useEffect(() => {
     updateMediaStatus(task.audioUrl ? "loading" : "missing");
+
+    audioSignal.current?.cancel();
+    if (!task.audioUrl) {
+      // No src at all. A src-less <audio controls> renders 0:00/0:00 and fires
+      // NO error event, so this is the only place the failure can be observed.
+      audioSignal.current = null;
+      openSignal("PLACEMENT_LOAD_AUDIO", { context: { task_id: task.id } })
+        .failed("invariant", { cause: "missing_audio_url" });
+      return;
+    }
+    audioSignal.current = openSignal("PLACEMENT_LOAD_AUDIO", {
+      context: { task_id: task.id, has_audio_url: true },
+    });
+    return () => {
+      audioSignal.current?.cancel();
+      audioSignal.current = null;
+    };
   }, [task.id, task.audioUrl]);
 
   const showVi = useChromeLanguage() === "vi";
@@ -48,21 +70,37 @@ export function ListeningTaskCard({ task, value, onChange, onMediaStatusChange }
             viClassName="text-xs font-medium text-slate-600"
           />
         </div>
-        <audio
-          controls
-          className="w-full"
-          src={task.audioUrl}
-          aria-label="Listening prompt audio"
-          onLoadedMetadata={(event) => {
-            const duration = event.currentTarget.duration;
-            updateMediaStatus(
-              Number.isFinite(duration) && duration > 0 ? "playable" : "unplayable",
-              Number.isFinite(duration) ? { durationSeconds: duration } : undefined,
-            );
-          }}
-          onCanPlay={() => updateMediaStatus("playable")}
-          onError={() => updateMediaStatus("unplayable", { playbackError: "audio element error" })}
-        />
+        {/*
+          Render the player ONLY with a real source. `<audio src={undefined}>`
+          drops the attribute and renders a 0:00/0:00 control that can never
+          play and fires no `error` event — it reads as "broken audio" when the
+          truth is "no audio was ever provided". Never synthesize a URL here:
+          an unmatched /audio/... path is answered by the SPA rewrite with
+          200 text/html, which the element would load and then fail on.
+        */}
+        {task.audioUrl ? (
+          <audio
+            controls
+            className="w-full"
+            src={task.audioUrl}
+            aria-label="Listening prompt audio"
+            onLoadedMetadata={(event) => {
+              const duration = event.currentTarget.duration;
+              const playable = Number.isFinite(duration) && duration > 0;
+              if (playable) audioSignal.current?.succeeded({ duration_seconds: duration });
+              else audioSignal.current?.failed("invariant", { cause: "zero_duration" });
+              updateMediaStatus(
+                playable ? "playable" : "unplayable",
+                Number.isFinite(duration) ? { durationSeconds: duration } : undefined,
+              );
+            }}
+            onCanPlay={() => updateMediaStatus("playable")}
+            onError={() => {
+              audioSignal.current?.failed("exception", { cause: "audio_element_error" });
+              updateMediaStatus("unplayable", { playbackError: "audio element error" });
+            }}
+          />
+        ) : null}
         <p className="mt-2 text-xs font-medium text-slate-600">
           {mediaStatus === "playable"
             ? "Audio is ready. Listen first, then answer."

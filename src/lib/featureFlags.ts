@@ -218,6 +218,24 @@ export const FEATURE_FLAGS = {
 };
 
 /**
+ * Phase B — VN→Chinese deterministic correction delivery.
+ *
+ * When ON: the AI Tutor turn loop routes `target === "zh"` learner input through
+ * the real correction engine (`correctWithTutorRules(input, "zh")`, the
+ * chineseCorrectionRules), so Chinese corrections actually execute for a learner.
+ * When OFF (default): zh input keeps the legacy non-engine demo path — English
+ * delivery is never affected either way (the `en` branch is untouched).
+ *
+ * Read at CALL TIME (not an import-time constant) so the acceptance E2E can flip
+ * it per-test via vi.stubEnv without module-cache games. Reads env
+ * `VITE_AI_TUTOR_ZH_CORRECTION_ENABLED`; default OFF ("default OFF for any new
+ * visible system").
+ */
+export function isZhTutorCorrectionEnabled(): boolean {
+  return readEnvBool("VITE_AI_TUTOR_ZH_CORRECTION_ENABLED", false);
+}
+
+/**
  * Minimal structural type for a Supabase client — accepts both the browser
  * singleton from `@/lib/supabaseClient` and a server-side client built with
  * the service-role key. We only need the `.from(...).select(...).eq(...)`

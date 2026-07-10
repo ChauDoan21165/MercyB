@@ -1,0 +1,59 @@
+{
+  "rule": "locativeLocalizer",
+  "ruleId": "zh-locative-localizer",
+  "language": "zh",
+  "description": "VN→ZH localizer position transfer: Vietnamese localizers PRECEDE the noun ('trên bàn' = on-table), while Mandarin postposes them (桌子上). Learners drop the trailing localizer and write '在桌子'. Rule zh-locative-localizer appends the postposed localizer for a closed place-noun set after 在.",
+  "fp_risk_note": "Low risk. Scoped to a closed noun→localizer map (桌子/床/墙 → 上; 盒子/抽屉 → 里) after 在. Abstains when a localizer is already present ('在桌子上') via the trailing lookahead, and on place nouns that need no localizer ('在学校', '在家'), which are simply not in the map.",
+  "positive": [
+    {
+      "id": "localizer-pos-001",
+      "input": "书在桌子",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "书在桌子上。",
+      "expectedRuleFired": "zh-locative-localizer",
+      "notes": "在桌子 → 在桌子上 (append 上)."
+    },
+    {
+      "id": "localizer-pos-002",
+      "input": "猫在床",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "猫在床上。",
+      "expectedRuleFired": "zh-locative-localizer",
+      "notes": "在床 → 在床上 (append 上)."
+    },
+    {
+      "id": "localizer-pos-003",
+      "input": "钱在盒子",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "钱在盒子里。",
+      "expectedRuleFired": "zh-locative-localizer",
+      "notes": "在盒子 → 在盒子里 (append 里)."
+    }
+  ],
+  "negative": [
+    {
+      "id": "localizer-neg-001",
+      "input": "书在桌子上",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "书在桌子上",
+      "expectedRuleFired": null,
+      "notes": "Localizer 上 already present — the lookahead blocks it, must abstain."
+    },
+    {
+      "id": "localizer-neg-002",
+      "input": "我在学校",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "我在学校",
+      "expectedRuleFired": null,
+      "notes": "学校 (school) needs no localizer and is not in the map — must abstain."
+    },
+    {
+      "id": "localizer-neg-003",
+      "input": "他在家",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "他在家",
+      "expectedRuleFired": null,
+      "notes": "家 (home) needs no localizer and is not in the map — must abstain."
+    }
+  ]
+}

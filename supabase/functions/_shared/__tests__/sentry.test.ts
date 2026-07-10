@@ -13,7 +13,7 @@
 
 import { describe, expect, it } from "vitest";
 
-import { captureEdgeError, type CaptureOptions } from "../sentry";
+import { captureEdgeError, type CaptureOptions, wrapHandler } from "../sentry";
 
 describe("captureEdgeError — safe no-op without Sentry config", () => {
   it("resolves (does not throw) when SENTRY_DSN/Deno env is absent", async () => {
@@ -58,5 +58,76 @@ describe("captureEdgeError — safe no-op without Sentry config", () => {
     const t0 = Date.now();
     await captureEdgeError(new Error("x"), { functionName: "stripe-webhook" });
     expect(Date.now() - t0).toBeLessThan(1000);
+  });
+});
+
+describe("wrapHandler — error path returns a CORS-bearing 500", () => {
+  const req = () =>
+    new Request("https://edge.example/functions/v1/placement-v3-session?token=secret", {
+      method: "POST",
+    });
+
+  it("returns 500 with access-control-allow-origin when the handler throws", async () => {
+    // This is the regression under fix: the platform's default 500 on a
+    // re-throw carries NO CORS headers, so the browser reports an opaque
+    // CORS / net::ERR_FAILED instead of the real error.
+    const wrapped = wrapHandler("placement-v3-session", () => {
+      throw new Error("boom");
+    });
+
+    const res = await wrapped(req());
+
+    expect(res.status).toBe(500);
+    expect(res.headers.get("access-control-allow-origin")).toBe("*");
+    expect(res.headers.get("content-type")).toContain("application/json");
+    await expect(res.json()).resolves.toEqual({ error: "internal_error" });
+  });
+
+  it("also covers async throws / rejected promises", async () => {
+    const wrapped = wrapHandler("placement-v3-session", async () => {
+      await Promise.resolve();
+      throw new Error("async boom");
+    });
+
+    const res = await wrapped(req());
+    expect(res.status).toBe(500);
+    expect(res.headers.get("access-control-allow-origin")).toBe("*");
+  });
+
+  it("honors a caller-supplied corsHeaders override on the 500", async () => {
+    const wrapped = wrapHandler(
+      "some-fn",
+      () => {
+        throw new Error("boom");
+      },
+      { corsHeaders: { "Access-Control-Allow-Origin": "https://app.example" } },
+    );
+
+    const res = await wrapped(req());
+    expect(res.status).toBe(500);
+    expect(res.headers.get("access-control-allow-origin")).toBe("https://app.example");
+  });
+
+  it("passes a successful response through byte-for-byte (success path unchanged)", async () => {
+    // The wrapper must be a pure pass-through on success: same object,
+    // same status, same headers, same body. Only the throw path is touched.
+    const original = new Response(JSON.stringify({ ok: true, hello: "world" }), {
+      status: 207,
+      headers: {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+        "X-Custom": "keep-me",
+      },
+    });
+    const wrapped = wrapHandler("placement-v3-session", () => original);
+
+    const res = await wrapped(req());
+
+    // Same Response instance — the wrapper adds/removes nothing on success.
+    expect(res).toBe(original);
+    expect(res.status).toBe(207);
+    expect(res.headers.get("x-custom")).toBe("keep-me");
+    expect(res.headers.get("access-control-allow-origin")).toBe("*");
+    await expect(res.json()).resolves.toEqual({ ok: true, hello: "world" });
   });
 });
