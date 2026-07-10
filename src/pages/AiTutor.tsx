@@ -116,6 +116,10 @@ import {
 import { auditCorrectionQuick } from "@/lib/tutor/teacherMercyAuditGate";
 import { selfAuditCorrectionQuick } from "@/lib/tutor/teacherMercySelfAuditGate";
 import { detectResidualError } from "@/lib/tutor/residualErrorCheck";
+import {
+  resolveInterimEnglishBridge,
+  interimBridgeComingSoonNote,
+} from "@/lib/tutor/interimEnglishBridge";
 import { enrichCorrectionExperience } from "@/lib/tutor/correctionExperienceEnricher";
 import { getInterferenceCategoryExplanation } from "@/lib/tutor/vietnameseInterferenceExplanation";
 import { detectBilingualSaliencePivot } from "@/lib/tutor/bilingualSalienceDetector";
@@ -228,22 +232,10 @@ declare global {
 }
 
 
-function isThaiNativeEnglishSearch(search?: string): boolean {
-  if (!search) return false;
-  try {
-    const params = new URLSearchParams(search);
-    const native = (params.get("native") ?? "").trim().toLowerCase();
-    const target = (params.get("target") ?? "en").trim().toLowerCase();
-    const nativeIsThai = native === "th" || native === "thai" || native === "ภาษาไทย" || native === "tiếng thái" || native === "tieng thai";
-    const targetIsEnglish = target === "en" || target === "english" || target === "tiếng anh" || target === "tieng anh";
-    return nativeIsThai && targetIsEnglish;
-  } catch {
-    return false;
-  }
-}
-
 function resolveAiTutorExplainLanguage(search: string | undefined, target: TutorTarget | string): ExplainLanguage {
-  if (isThaiNativeEnglishSearch(search)) return "en";
+  // Interim English bridge natives (e.g. Thai) get English explanations, never
+  // the Vietnamese default — resolved from the URL native OR the stored pair.
+  if (resolveInterimEnglishBridge(search)) return "en";
   return resolveExplainLanguage(aiTutorConfig, getExplainLanguage(search), target);
 }
 
@@ -3012,33 +3004,51 @@ export default function AiTutorPage() {
     setMode(nextMode);
   };
 
-  const isThaiNativeEnglishPair =
-    typeof window !== "undefined" && isThaiNativeEnglishSearch(window.location.search);
+  // Interim English bridge (e.g. Thai): resolved from the URL native OR — when no
+  // native param is threaded through — the stored language pair. This is what
+  // routes learners who reach /ai-tutor via an entry point that dropped `native`.
+  const interimBridge =
+    typeof window !== "undefined" ? resolveInterimEnglishBridge(window.location.search) : null;
 
-  if (isThaiNativeEnglishPair) {
-    const thaiEnglishTutorCopy = getTutorCopy("en", "en");
+  if (interimBridge) {
+    const bridgeTutorCopy = getTutorCopy("en", "en");
+    // Detector-hint chips are sourced from the Vietnamese-L1 catalogue
+    // (L1_VN_EXPLANATIONS). They are withheld on the bridge surface below so a
+    // non-Vietnamese learner is never shown a VN interference claim — honest
+    // framing that keeps the bridge separate from other native-language flows.
     return (
       <main
         data-testid="thai-native-ai-tutor"
+        data-bridge-native={interimBridge.code}
         lang="en"
         style={{ minHeight: "100vh", background: "#f7efe0", color: "#1a221d", padding: "32px 20px" }}
       >
         <section style={{ maxWidth: 1040, margin: "0 auto" }}>
           <header style={{ marginBottom: 24 }}>
             <p style={{ margin: "0 0 8px", fontSize: 13, fontWeight: 800, letterSpacing: "0.08em", textTransform: "uppercase", color: "#6f654d" }}>
-              Thai learner English tutor · Native language: ไทย (Thai) · Target: English
+              {interimBridge.englishName} learner English tutor · Native language: {interimBridge.endonym} ({interimBridge.englishName}) · Target: English
             </p>
             <h1 style={{ margin: 0, fontFamily: "serif", fontSize: 36, lineHeight: 1.1 }}>
-              Teacher Mercy for Thai-speaking English learners
+              Teacher Mercy for {interimBridge.englishName}-speaking English learners
             </h1>
             <p style={{ margin: "12px 0 0", maxWidth: 760, fontSize: 16, lineHeight: 1.6, color: "#575045" }}>
-              Practice English with Mercy using a Thai-native learning route. Mercy corrects English sentences and keeps this bridge separate from other native-language learner flows.
+              Practice English with Mercy using a {interimBridge.englishName}-native learning route. Mercy corrects English sentences and keeps this bridge separate from other native-language learner flows.
             </p>
-            <p style={{ margin: "14px 0 0", fontSize: 14 }}>
-              <a href="/thai-english/" style={{ color: "#5d5038", fontWeight: 800 }}>
-                Open Thai-English lesson page
-              </a>
+            {/* Honest interim framing: real English practice today, native-specific
+                depth still to come. Light note, not a warning banner. */}
+            <p
+              data-testid="interim-bridge-coming-soon-note"
+              style={{ margin: "10px 0 0", fontSize: 13, fontStyle: "italic", color: "#8a7f66" }}
+            >
+              {interimBridgeComingSoonNote(interimBridge)}
             </p>
+            {interimBridge.lessonHref ? (
+              <p style={{ margin: "14px 0 0", fontSize: 14 }}>
+                <a href={interimBridge.lessonHref} style={{ color: "#5d5038", fontWeight: 800 }}>
+                  Open {interimBridge.englishName}-English lesson page
+                </a>
+              </p>
+            ) : null}
           </header>
 
           <CorrectionMode
@@ -3065,8 +3075,8 @@ export default function AiTutorPage() {
             }}
             onSendToSpeak={handleSendCorrectedSentenceToSpeak}
             onClear={handleClear}
-            tutorCopy={thaiEnglishTutorCopy}
-            detectorHint={detectorHint}
+            tutorCopy={bridgeTutorCopy}
+            detectorHint={null}
           />
         </section>
       </main>
