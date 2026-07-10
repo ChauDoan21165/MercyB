@@ -148,3 +148,16 @@ state/cell_os_engineering.sqlite3
 
 # Wrangler local build artifacts (generated worker bundles, tmp)
 .wrangler/
+
+# ── Fake-factory apparatus + generated reports (chore/untrack-factory-reports) ──
+# The c3-factory/ and cell-os/ apparatus and every reports/c3-* output are
+# machine-local scratch that touched zero product files (91/91 workpacks were
+# self-validating PASS proofs). Never deliverables — kept on disk, never tracked.
+# Rationale: docs/postmortems/2026-07-08-fake-factory.md and C3-STRATEGY.md LAW 10.
+# (Anchored to repo root so tracked scripts/cell-os/** and scripts/factory/** are
+#  unaffected.)
+/c3-factory/
+/cell-os/
+/reports/c3-factory/
+/reports/c3-*
+/reports/canonical-cell-map-validation.latest.json
