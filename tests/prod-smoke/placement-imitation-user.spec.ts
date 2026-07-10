@@ -44,11 +44,14 @@ const KNOWN_CONSOLE_NOISE = [
   // placement flow completes despite it. Tolerated here so it does not mask
   // the two target assertions; reported separately for a real fix.
   /Creating a worker from 'blob:.*violates the following Content Security Policy/i,
-  // FILED BUG (MR !2551, reports/BUG-placement-v3-session-cors-2026-07-09.md):
-  // placement-v3-session intermittently 500s (wrapHandler re-throw) so the
-  // response carries no CORS headers → browser reports a CORS / net::ERR_FAILED.
-  // Allowlisted so this known-and-tracked issue doesn't mask the audio/results
-  // asserts. REMOVE both patterns once the wrapHandler fix ships.
+  // KNOWN, FILED BUG — reports/BUG-placement-v3-session-gateway-net-err-failed-2026-07-09.md:
+  // placement-v3-session intermittently returns net::ERR_FAILED (NO http response —
+  // a cold-start/timeout/502 at the gateway level), which surfaces as a missing-ACAO
+  // CORS error. This is NOT the handler-level bug that !2555 fixed (that returns
+  // CORS-carrying errors now); !2555 cannot reach a request that never returns.
+  // Tolerated so it doesn't mask the audio/results asserts.
+  // REMOVE both patterns when the gateway-level fix (edge warmup/keepalive or a
+  // Supabase-side cold-start/timeout mitigation) ships.
   /placement-v3-session.*blocked by CORS|No 'Access-Control-Allow-Origin'.*placement/i,
   /Failed to load resource: net::ERR_FAILED/i,
 ];
@@ -62,10 +65,11 @@ const AUDIO_FALLBACK =
   /Audio is unavailable for this question|Chưa nghe được âm thanh cho câu này/i;
 const AUDIO_LOADING = /Loading audio\. Please wait|Đang tải âm thanh/i;
 // A listening task is present whenever the "Audio prompt" section renders —
-// detect on this, NOT on the <audio> element. On prod the <audio> element is
-// often absent entirely (the task ships with no audioUrl and degrades straight
-// to the "unavailable / excluded" fallback), so keying detection off the
-// element would silently skip the assertion.
+// detect on this, NOT on the <audio> element. Listening items now ship a real
+// audioUrl (Supabase room-audio, MR !2556) so the <audio> element renders and
+// plays; but detecting via the section (not the element) keeps the assertion
+// firing even if a clip is ever missing and the item degrades to the
+// "unavailable / excluded" fallback.
 const LISTENING_SECTION = /Audio prompt|Đoạn nghe/i;
 
 // The "Who is this account for?" step. On real prod the adult path is gated
