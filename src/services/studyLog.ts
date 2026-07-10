@@ -81,20 +81,27 @@ export async function getYesterdayAndTodaySummary(): Promise<{
   const yesterdayStr = yesterday.toISOString().split('T')[0];
 
   // Get yesterday's latest entry
-  const { data: yesterdayData } = await supabase
+  const { data: yesterdayData, error: yesterdayError } = await supabase
     .from('study_log')
     .select('id, date, room_id, path_slug, day_index, topic_en, topic_vi, minutes, mood_before, mood_after')
     .eq('user_id', user.id)
     .eq('date', yesterdayStr)
     .order('created_at', { ascending: false })
     .limit(1);
+  if (yesterdayError) {
+    // Surface the read failure rather than silently showing a blank streak.
+    console.warn('[studyLog] getStudyStreakContext: yesterday read failed', yesterdayError);
+  }
 
   // Get today's total minutes
-  const { data: todayData } = await supabase
+  const { data: todayData, error: todayError } = await supabase
     .from('study_log')
     .select('minutes')
     .eq('user_id', user.id)
     .eq('date', todayStr);
+  if (todayError) {
+    console.warn('[studyLog] getStudyStreakContext: today read failed', todayError);
+  }
 
   const todayTotalMinutes = (todayData || []).reduce((sum, row) => sum + (row.minutes || 0), 0);
 
@@ -108,13 +115,16 @@ export async function getRecentMoods(limit = 3): Promise<MoodKey[]> {
   const { data: { user } } = await supabase.auth.getUser();
   if (!user) return [];
 
-  const { data } = await supabase
+  const { data, error } = await supabase
     .from('study_log')
     .select('mood_after')
     .eq('user_id', user.id)
     .not('mood_after', 'is', null)
     .order('created_at', { ascending: false })
     .limit(limit);
+  if (error) {
+    console.warn('[studyLog] getRecentMoods: read failed', error);
+  }
 
   return (data || []).map(d => d.mood_after as MoodKey).filter(Boolean);
 }
