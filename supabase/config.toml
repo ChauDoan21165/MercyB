@@ -158,11 +158,6 @@ enabled = true
 verify_jwt = true
 entrypoint = "./functions/secure-room-loader/index.ts"
 
-[functions.access-control]
-enabled = true
-verify_jwt = true
-entrypoint = "./functions/access-control/index.ts"
-
 
 # =========================
 # STRIPE WEBHOOK
