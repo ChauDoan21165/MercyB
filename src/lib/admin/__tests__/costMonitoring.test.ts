@@ -13,6 +13,9 @@ import {
   toCsv,
   utcDateRange,
   utcDayKey,
+  normalizeLanguagePair,
+  aggregateCostByLanguagePair,
+  type LanguagePairCostRow,
 } from "../costMonitoring";
 
 const NOW = new Date("2026-04-30T08:00:00Z");
@@ -276,5 +279,56 @@ describe("costToRevenueRatio", () => {
   it("returns null when revenue is zero (avoid div-by-zero)", () => {
     expect(costToRevenueRatio(100_000, 0)).toBeNull();
     expect(costToRevenueRatio(100_000, -1)).toBeNull();
+  });
+});
+
+describe("normalizeLanguagePair", () => {
+  it("builds a stable <native>-<target> key, lowercased", () => {
+    expect(normalizeLanguagePair("VI", "en")).toBe("vi-en");
+    expect(normalizeLanguagePair("th")).toBe("th-en"); // target defaults to en
+    expect(normalizeLanguagePair("zh", "en")).toBe("zh-en");
+  });
+  it("returns null when the native language is unknown", () => {
+    expect(normalizeLanguagePair(null)).toBeNull();
+    expect(normalizeLanguagePair("")).toBeNull();
+    expect(normalizeLanguagePair("  ")).toBeNull();
+  });
+  it("strips junk and caps length (no injection into the pair key)", () => {
+    expect(normalizeLanguagePair("v!i;", "e n")).toBe("vi-en");
+  });
+});
+
+describe("aggregateCostByLanguagePair", () => {
+  const NOW2 = new Date("2026-07-10T08:00:00Z");
+  const rows: LanguagePairCostRow[] = [
+    { language_pair: "vi-en", estimated_cost_vnd: 100, created_at: "2026-07-10T01:00:00Z" },
+    { language_pair: "vi-en", estimated_cost_vnd: 50, created_at: "2026-07-10T02:00:00Z" },
+    { language_pair: "th-en", estimated_cost_vnd: 40, created_at: "2026-07-09T05:00:00Z" },
+    { language_pair: null, estimated_cost_vnd: 999, created_at: "2026-07-10T03:00:00Z" }, // ignored
+    { language_pair: "vi-en", estimated_cost_vnd: 30, created_at: "2026-01-01T00:00:00Z" }, // out of range
+  ];
+
+  it("groups per pair per day and summarizes, ignoring null-pair and out-of-range rows", () => {
+    const { pairs, points, summary } = aggregateCostByLanguagePair(rows, NOW2, 3);
+    expect(pairs).toEqual(["th-en", "vi-en"]);
+
+    const today = points.find((p) => p.date === "2026-07-10")!;
+    expect(today["vi-en"]).toBe(150); // 100 + 50, null-pair 999 excluded
+    expect(today["th-en"]).toBe(0);
+
+    const yesterday = points.find((p) => p.date === "2026-07-09")!;
+    expect(yesterday["th-en"]).toBe(40);
+
+    // summary sorted by spend desc; the Jan row is out of the 3-day window
+    expect(summary).toEqual([
+      { pair: "vi-en", totalVnd: 150, events: 2 },
+      { pair: "th-en", totalVnd: 40, events: 1 },
+    ]);
+  });
+
+  it("returns an empty series (no pairs) when there is no tagged spend", () => {
+    const { pairs, summary } = aggregateCostByLanguagePair([], NOW2, 3);
+    expect(pairs).toEqual([]);
+    expect(summary).toEqual([]);
   });
 });

@@ -537,3 +537,105 @@ export function costToRevenueRatio(
   if (monthlyRevenueVnd <= 0) return null;
   return Number((monthlyCostVnd / monthlyRevenueVnd).toFixed(4));
 }
+
+// ── Cost per language pair (X→English factory moat visibility) ─────────────
+//
+// Every AI-spend row (ai_usage_logs) is tagged server-side with its language
+// pair ("vi-en", "th-en", …). These helpers turn those rows into a per-pair,
+// per-day series for the admin chart plus a per-pair summary. Data begins on
+// instrumentation day (no backfill); rows with a null pair are ignored here.
+
+export interface LanguagePairCostRow {
+  language_pair: string | null;
+  estimated_cost_vnd: number | string | null;
+  created_at: string | null;
+}
+
+/** One day on the x-axis; per-pair VND under the pair's key (recharts-friendly). */
+export type LanguagePairCostPoint = { date: string } & Record<string, number | string>;
+
+export interface LanguagePairSummary {
+  pair: string;
+  totalVnd: number;
+  events: number;
+}
+
+export interface LanguagePairCostResult {
+  pairs: string[]; // sorted, stable series keys for the chart
+  points: LanguagePairCostPoint[]; // one per UTC day in range, oldest→newest
+  summary: LanguagePairSummary[]; // per-pair totals, highest spend first
+}
+
+/**
+ * Normalize a native + target into a stable pair key, e.g. ("VI", "en") →
+ * "vi-en". Returns null when the native language is unknown (so untagged spend
+ * stays out of the chart rather than polluting it with a bogus pair).
+ */
+export function normalizeLanguagePair(
+  native: string | null | undefined,
+  target: string | null | undefined = "en",
+): string | null {
+  const clean = (v: string | null | undefined, fallback = "") =>
+    String(v ?? "").trim().toLowerCase().replace(/[^a-z-]/g, "").slice(0, 8) || fallback;
+  const n = clean(native);
+  const t = clean(target, "en");
+  if (!n) return null;
+  return `${n}-${t}`;
+}
+
+export function aggregateCostByLanguagePair(
+  rows: LanguagePairCostRow[],
+  now: Date = new Date(),
+  days = 30,
+): LanguagePairCostResult {
+  const dayKeys = utcDateRange(now, days); // oldest→newest UTC day strings
+  const dayIndex = new Set(dayKeys);
+  const perDay = new Map<string, Map<string, number>>(); // day → pair → vnd
+  const totals = new Map<string, { totalVnd: number; events: number }>();
+
+  for (const r of rows) {
+    // The pair was normalized at write time; here we only sanitize the stored
+    // string (it is already a full "<native>-<target>" key, not a bare native).
+    const pair = String(r.language_pair ?? "").trim().toLowerCase().replace(/[^a-z-]/g, "").slice(0, 17);
+    if (!pair || !pair.includes("-")) continue;
+    const day = utcDayKey(r.created_at);
+    if (!day || !dayIndex.has(day)) continue;
+    const vnd = Math.max(0, Number(r.estimated_cost_vnd ?? 0)) || 0;
+
+    if (!perDay.has(day)) perDay.set(day, new Map());
+    const byPair = perDay.get(day)!;
+    byPair.set(pair, (byPair.get(pair) ?? 0) + vnd);
+
+    const t = totals.get(pair) ?? { totalVnd: 0, events: 0 };
+    t.totalVnd += vnd;
+    t.events += 1;
+    totals.set(pair, t);
+  }
+
+  const pairs = Array.from(totals.keys()).sort();
+  const points: LanguagePairCostPoint[] = dayKeys.map((date) => {
+    const point: LanguagePairCostPoint = { date };
+    const byPair = perDay.get(date);
+    for (const pair of pairs) point[pair] = Math.round(byPair?.get(pair) ?? 0);
+    return point;
+  });
+  const summary: LanguagePairSummary[] = Array.from(totals.entries())
+    .map(([pair, t]) => ({ pair, totalVnd: Math.round(t.totalVnd), events: t.events }))
+    .sort((a, b) => b.totalVnd - a.totalVnd || a.pair.localeCompare(b.pair));
+
+  return { pairs, points, summary };
+}
+
+export async function getCostByLanguagePairByDay(
+  supabase: SupabaseClient,
+  days: number,
+  now: Date = new Date(),
+): Promise<LanguagePairCostResult> {
+  const { data, error } = await supabase
+    .from("ai_usage_logs")
+    .select("language_pair, estimated_cost_vnd, created_at")
+    .not("language_pair", "is", null)
+    .gte("created_at", isoDaysAgo(now, days));
+  if (error) throw new Error(`ai_usage_logs language_pair query failed: ${error.message}`);
+  return aggregateCostByLanguagePair((data ?? []) as LanguagePairCostRow[], now, days);
+}

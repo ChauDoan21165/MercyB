@@ -36,11 +36,13 @@ import {
   costToRevenueRatio,
   DEFAULT_USD_VND_RATE,
   forecastMonthlyVnd,
+  getCostByLanguagePairByDay,
   getMonthlyRecognizedRevenueVnd,
   getTotalDailyCost,
   toCsv,
   type CostCategory,
   type DailyCostPoint,
+  type LanguagePairCostResult,
   type UserCostRow,
 } from "@/lib/admin/costMonitoring";
 import {
@@ -173,25 +175,34 @@ function downloadCsv(csv: string, filename: string) {
   URL.revokeObjectURL(url);
 }
 
+const EMPTY_LANG_PAIRS: LanguagePairCostResult = { pairs: [], points: [], summary: [] };
+
+// Distinct colors for language-pair bars (cycled if there are more pairs).
+const LANG_PAIR_COLORS = ["#2563eb", "#16a34a", "#ea580c", "#9333ea", "#0891b2", "#dc2626", "#ca8a04", "#4f46e5"];
+
 interface FetchResult {
   daily30: DailyCostPoint[];
   topUsers: UserCostRow[];
   forecastMonthlyVnd: number;
   monthlyRevenueVnd: number;
+  langPairs: LanguagePairCostResult;
   fetchedAt: number;
 }
 
 async function fetchAll(usdVndRate: number): Promise<FetchResult> {
   const now = new Date();
-  const [{ daily, topUsers, forecast_monthly_vnd }, monthlyRevenueVnd] = await Promise.all([
+  const [{ daily, topUsers, forecast_monthly_vnd }, monthlyRevenueVnd, langPairs] = await Promise.all([
     getTotalDailyCost(supabase, 30, { now, usdVndRate, topN: 10 }),
     getMonthlyRecognizedRevenueVnd(supabase).catch(() => 0),
+    // Optional dimension — never break the page if the column/rows aren't there yet.
+    getCostByLanguagePairByDay(supabase, 30, now).catch(() => EMPTY_LANG_PAIRS),
   ]);
   return {
     daily30: daily,
     topUsers,
     forecastMonthlyVnd: forecast_monthly_vnd,
     monthlyRevenueVnd,
+    langPairs,
     fetchedAt: Date.now(),
   };
 }
@@ -395,6 +406,75 @@ export default function CostMonitoring(): React.ReactElement {
               </BarChart>
             </ResponsiveContainer>
           </div>
+        </div>
+
+        {/* Cost per language pair (X→English factory moat visibility) */}
+        <div style={card}>
+          <h2 style={heading}>Chi phí theo cặp ngôn ngữ / Cost per language pair</h2>
+          <p style={subHeading}>
+            AI spend (ai-chat) by native→English pair, last 30 days (VND). Data from 2026-07-10 (instrumentation day; no backfill).
+          </p>
+          {(data?.langPairs.pairs.length ?? 0) === 0 ? (
+            <p style={{ color: "#64748b", fontSize: 14 }}>
+              No per-pair spend yet — appears once the migration is applied, the
+              ai-chat edge function is deployed, and tutor sessions run.
+            </p>
+          ) : (
+            <>
+              <div style={{ width: "100%", height: 280 }}>
+                <ResponsiveContainer>
+                  <BarChart
+                    data={(data?.langPairs.points ?? []).map((p) => ({
+                      ...p,
+                      date: String(p.date).slice(5),
+                    }))}
+                  >
+                    <CartesianGrid strokeDasharray="3 3" />
+                    <XAxis dataKey="date" />
+                    <YAxis />
+                    <Tooltip
+                      formatter={(value) => {
+                        const n = typeof value === "number" ? value : Number(value);
+                        return Number.isFinite(n) ? `${n.toLocaleString("vi-VN")} ₫` : "—";
+                      }}
+                    />
+                    <Legend />
+                    {(data?.langPairs.pairs ?? []).map((pair, i) => (
+                      <Bar
+                        key={pair}
+                        dataKey={pair}
+                        stackId="lang"
+                        fill={LANG_PAIR_COLORS[i % LANG_PAIR_COLORS.length]}
+                        name={pair}
+                      />
+                    ))}
+                  </BarChart>
+                </ResponsiveContainer>
+              </div>
+              <table style={{ width: "100%", borderCollapse: "collapse", marginTop: 12, fontSize: 14 }}>
+                <thead>
+                  <tr>
+                    <th style={{ textAlign: "left", padding: "6px 8px", borderBottom: "1px solid #e2e8f0" }}>Pair</th>
+                    <th style={{ textAlign: "right", padding: "6px 8px", borderBottom: "1px solid #e2e8f0" }}>30-day cost</th>
+                    <th style={{ textAlign: "right", padding: "6px 8px", borderBottom: "1px solid #e2e8f0" }}>Events</th>
+                    <th style={{ textAlign: "right", padding: "6px 8px", borderBottom: "1px solid #e2e8f0" }}>Cost / event</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {(data?.langPairs.summary ?? []).map((s) => (
+                    <tr key={s.pair}>
+                      <td style={{ padding: "6px 8px", borderBottom: "1px solid #f1f5f9" }}>{s.pair}</td>
+                      <td style={{ textAlign: "right", padding: "6px 8px", borderBottom: "1px solid #f1f5f9" }}>{fmtVnd(s.totalVnd)}</td>
+                      <td style={{ textAlign: "right", padding: "6px 8px", borderBottom: "1px solid #f1f5f9" }}>{s.events.toLocaleString("vi-VN")}</td>
+                      <td style={{ textAlign: "right", padding: "6px 8px", borderBottom: "1px solid #f1f5f9" }}>
+                        {s.events > 0 ? fmtVnd(Math.round(s.totalVnd / s.events)) : "—"}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </>
+          )}
         </div>
 
         {/* 30-day table + CSV */}
