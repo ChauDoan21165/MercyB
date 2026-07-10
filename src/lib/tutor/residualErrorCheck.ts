@@ -128,14 +128,28 @@ const INVERTING_AUXILIARIES = [
   "may", "might", "must",
 ];
 
+/**
+ * Causative / permissive trigger verbs. When one immediately precedes the
+ * pronoun, the pronoun is an OBJECT and the following bare verb is a correct bare
+ * infinitive, not a missing -s: "Let it go", "Make it work", "Watch it grow",
+ * "Help him learn", "Have him call me". Without this guard these grammatical
+ * constructions are false-flagged and their (good) correction is withheld —
+ * "Let it go" in particular is extremely common. Mirrors how
+ * INVERTING_AUXILIARIES already excludes subject-aux inversion.
+ */
+const CAUSATIVE_PERMISSIVE_TRIGGERS = ["let", "make", "watch", "help", "see", "hear", "have"];
+
 function detectSubjectVerbAgreement(text: string): ResidualErrorFinding | null {
   const lower = text.toLowerCase();
   // A modal/auxiliary AFTER the pronoun ("he can teach", "he will teach") never
   // matches, because the token following the pronoun would be the modal, which is
   // not in BASE_VERBS. A modal/auxiliary BEFORE the pronoun ("does he like") is
-  // subject-aux inversion and must be excluded explicitly.
+  // subject-aux inversion, and a causative/permissive trigger before the pronoun
+  // ("let it go", "make it work") turns the pronoun into an object — both are
+  // grammatical and must be excluded explicitly.
+  const precedingExclusions = [...INVERTING_AUXILIARIES, ...CAUSATIVE_PERMISSIVE_TRIGGERS];
   const pattern = new RegExp(
-    `(?<!\\b(?:${INVERTING_AUXILIARIES.join("|")})\\s)` +
+    `(?<!\\b(?:${precedingExclusions.join("|")})\\s)` +
       `\\b(${THIRD_SINGULAR_SUBJECTS.join("|")})\\s+(${BASE_VERBS.join("|")})\\b`,
     "i",
   );

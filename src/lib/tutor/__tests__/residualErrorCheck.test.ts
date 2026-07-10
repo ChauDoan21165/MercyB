@@ -46,6 +46,16 @@ const MUST_STILL_PROMOTE: string[] = [
   "No one knows the answer.",
   "He has no doubt about it.",
 
+  // Causative / permissive — the pronoun is an OBJECT, so the bare verb is a
+  // correct bare infinitive, not a missing -s. "Let it go" is very common.
+  "Let it go.",
+  "Make it work.",
+  "Watch it grow.",
+  "Help him learn.",
+  "Let it be.",
+  "See her leave.",
+  "Have him call me.",
+
   // Subject-aux inversion — bare verb is correct after do-support / modals.
   "Does he like it?",
   "Did she go to the market?",
