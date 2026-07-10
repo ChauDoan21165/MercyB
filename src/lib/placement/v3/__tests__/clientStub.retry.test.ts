@@ -86,7 +86,7 @@ describe("placement-v3 client — cold-start retry hardening", () => {
     vi.stubGlobal("fetch", fetchMock);
 
     await expect(
-      submitResponse({ sessionId: "sess-1", taskId: "writing-1", value: "hi", elapsedMs: 10 }),
+      submitResponse({ sessionId: "sess-1", taskId: "writing-1", modality: "writing", value: "hi", elapsedMs: 10 }),
     ).rejects.toThrow("Invalid JSON.");
     expect(fetchMock).toHaveBeenCalledTimes(1);
   });
