@@ -9,7 +9,13 @@ export type LearningEventType =
   | "next_focus_viewed"
   | "placement_cta_clicked"
   | "kids_picture_selected"
-  | "kids_speak_clicked";
+  | "kids_speak_clicked"
+  // Learner feedback on a displayed tutor correction. These are the only
+  // `feedback_*` producers today; the durable sink's DB CHECK constraint
+  // (learning_events_provenance_chk) rejects a feedback row unless
+  // rule_or_detector_id is set, so every producer MUST pass a non-empty id.
+  | "feedback_helpful"
+  | "feedback_not_helpful";
 
 export type LearningEventProduct = "ai_tutor" | "mercy_kids";
 export type LearningEventMode = "journey" | "grammar" | "speak" | "logic";
@@ -98,6 +104,8 @@ const EVENT_TYPES = new Set<LearningEventType>([
   "placement_cta_clicked",
   "kids_picture_selected",
   "kids_speak_clicked",
+  "feedback_helpful",
+  "feedback_not_helpful",
 ]);
 
 const PRODUCTS = new Set<LearningEventProduct>(["ai_tutor", "mercy_kids"]);
