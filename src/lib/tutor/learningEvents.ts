@@ -14,7 +14,13 @@ export type LearningEventType =
   // FEATURE_FLAGS.TUTOR_PREDICTION_CAPTURE_ENABLED is on; both carry no learner text
   // (enum labels, scaled scalars, a PII-free turn anchor) and reuse this drain verbatim.
   | "prediction_recorded"
-  | "surprise_resolved";
+  | "surprise_resolved"
+  // Learner feedback on a displayed tutor correction. These are the only
+  // `feedback_*` producers today; the durable sink's DB CHECK constraint
+  // (learning_events_provenance_chk) rejects a feedback row unless
+  // rule_or_detector_id is set, so every producer MUST pass a non-empty id.
+  | "feedback_helpful"
+  | "feedback_not_helpful";
 
 export type LearningEventProduct = "ai_tutor" | "mercy_kids";
 export type LearningEventMode = "journey" | "grammar" | "speak" | "logic";
@@ -105,6 +111,8 @@ const EVENT_TYPES = new Set<LearningEventType>([
   "kids_speak_clicked",
   "prediction_recorded",
   "surprise_resolved",
+  "feedback_helpful",
+  "feedback_not_helpful",
 ]);
 
 const PRODUCTS = new Set<LearningEventProduct>(["ai_tutor", "mercy_kids"]);
