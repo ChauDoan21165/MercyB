@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
-import { getCompanionEnabled } from './useCompanionSession';
+import { getCompanionEnabled, getMutedRoomsList } from './useCompanionSession';
 import { getRandomCompanionLineAsync, preloadCompanionLines } from '@/lib/companionLines';
 
 /**
@@ -35,7 +35,7 @@ export function useRoomCompanion(roomId: string | undefined) {
     if (!debugMode && !getCompanionEnabled()) return;
 
     // Check muted rooms
-    const mutedRooms = JSON.parse(localStorage.getItem('mercy_muted_rooms') || '[]');
+    const mutedRooms = getMutedRoomsList();
     if (!debugMode && mutedRooms.includes(roomId)) return;
 
     // Check if already greeted in this room this session
@@ -82,7 +82,7 @@ export function useRoomCompanion(roomId: string | undefined) {
 
   const muteRoom = useCallback(() => {
     if (!roomId) return;
-    const mutedRooms = JSON.parse(localStorage.getItem('mercy_muted_rooms') || '[]');
+    const mutedRooms = getMutedRoomsList();
     if (!mutedRooms.includes(roomId)) {
       localStorage.setItem('mercy_muted_rooms', JSON.stringify([...mutedRooms, roomId]));
     }

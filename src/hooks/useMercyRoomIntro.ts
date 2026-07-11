@@ -2,7 +2,7 @@
 import { useState, useCallback, useEffect, useRef } from "react";
 import { supabase } from "@/lib/supabaseClient";
 import { useAuth } from "@/providers/AuthProvider";
-import { getCompanionEnabled } from "./useCompanionSession";
+import { getCompanionEnabled, getMutedRoomsList } from "./useCompanionSession";
 
 export type IntroState =
   | "greeting"
@@ -325,7 +325,7 @@ export function useMercyRoomIntro({
     if (!roomId || hasInitialized.current) return;
     if (!isDebugMode && !getCompanionEnabled()) return;
 
-    const mutedRooms = JSON.parse(localStorage.getItem("mercy_muted_rooms") || "[]");
+    const mutedRooms = getMutedRoomsList();
     if (!isDebugMode && mutedRooms.includes(roomId)) return;
 
     const roomState = getRoomState();

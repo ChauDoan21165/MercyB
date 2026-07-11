@@ -1,0 +1,814 @@
+{
+  "benchmarkVersion": "lpi-judgment-v2-shipped-policy",
+  "caseCount": 40,
+  "actions": [
+    "correct_now",
+    "defer_to_recap",
+    "log_silently"
+  ],
+  "scores": [
+    {
+      "policy": "MercyBlade policy",
+      "correct": 16,
+      "total": 40,
+      "accuracy": 0.4
+    },
+    {
+      "policy": "Always-correct baseline",
+      "correct": 16,
+      "total": 40,
+      "accuracy": 0.4
+    },
+    {
+      "policy": "Seeded-random baseline",
+      "correct": 16,
+      "total": 40,
+      "accuracy": 0.4
+    }
+  ],
+  "predictions": [
+    {
+      "id": "first-target-article",
+      "gold": "correct_now",
+      "shippedPolicyInput": {
+        "detectorTag": "article-omission",
+        "severity": "high",
+        "recurrenceCount": 0,
+        "sessionErrorDensity": 0.2,
+        "consecutiveErrors": 1,
+        "correctionsThisBurst": 0
+      },
+      "adapterFlags": [],
+      "predictions": {
+        "mercyBlade": "correct_now",
+        "mercyBladeReason": "first_occurrence_teach_cause",
+        "alwaysCorrect": "correct_now",
+        "seededRandom": "log_silently"
+      }
+    },
+    {
+      "id": "first-target-past-tense",
+      "gold": "correct_now",
+      "shippedPolicyInput": {
+        "detectorTag": "past-tense-ed",
+        "severity": "high",
+        "recurrenceCount": 0,
+        "sessionErrorDensity": 0.4,
+        "consecutiveErrors": 1,
+        "correctionsThisBurst": 0
+      },
+      "adapterFlags": [],
+      "predictions": {
+        "mercyBlade": "correct_now",
+        "mercyBladeReason": "first_occurrence_teach_cause",
+        "alwaysCorrect": "correct_now",
+        "seededRandom": "defer_to_recap"
+      }
+    },
+    {
+      "id": "first-target-plural-s",
+      "gold": "correct_now",
+      "shippedPolicyInput": {
+        "detectorTag": "plural-s",
+        "severity": "high",
+        "recurrenceCount": 0,
+        "sessionErrorDensity": 0.4,
+        "consecutiveErrors": 0,
+        "correctionsThisBurst": 0
+      },
+      "adapterFlags": [],
+      "predictions": {
+        "mercyBlade": "correct_now",
+        "mercyBladeReason": "first_occurrence_teach_cause",
+        "alwaysCorrect": "correct_now",
+        "seededRandom": "correct_now"
+      }
+    },
+    {
+      "id": "first-target-word-order",
+      "gold": "correct_now",
+      "shippedPolicyInput": {
+        "detectorTag": "question-word-order",
+        "severity": "high",
+        "recurrenceCount": 1,
+        "sessionErrorDensity": 0.4,
+        "consecutiveErrors": 1,
+        "correctionsThisBurst": 0
+      },
+      "adapterFlags": [],
+      "predictions": {
+        "mercyBlade": "correct_now",
+        "mercyBladeReason": "default",
+        "alwaysCorrect": "correct_now",
+        "seededRandom": "log_silently"
+      }
+    },
+    {
+      "id": "first-meaning-blocker",
+      "gold": "correct_now",
+      "shippedPolicyInput": {
+        "detectorTag": "wrong-keyword",
+        "severity": "high",
+        "recurrenceCount": 0,
+        "sessionErrorDensity": 0.2,
+        "consecutiveErrors": 1,
+        "correctionsThisBurst": 0
+      },
+      "adapterFlags": [
+        "lossy_severity_mapping: meaning_blocking -> high"
+      ],
+      "predictions": {
+        "mercyBlade": "correct_now",
+        "mercyBladeReason": "first_occurrence_teach_cause",
+        "alwaysCorrect": "correct_now",
+        "seededRandom": "correct_now"
+      }
+    },
+    {
+      "id": "first-dangerous-negation",
+      "gold": "correct_now",
+      "shippedPolicyInput": {
+        "detectorTag": "negation-reversal",
+        "severity": "high",
+        "recurrenceCount": 0,
+        "sessionErrorDensity": 0.4,
+        "consecutiveErrors": 1,
+        "correctionsThisBurst": 0
+      },
+      "adapterFlags": [
+        "lossy_severity_mapping: meaning_blocking -> high"
+      ],
+      "predictions": {
+        "mercyBlade": "correct_now",
+        "mercyBladeReason": "first_occurrence_teach_cause",
+        "alwaysCorrect": "correct_now",
+        "seededRandom": "log_silently"
+      }
+    },
+    {
+      "id": "first-medium-preposition",
+      "gold": "defer_to_recap",
+      "shippedPolicyInput": {
+        "detectorTag": "preposition-choice",
+        "severity": "medium",
+        "recurrenceCount": 0,
+        "sessionErrorDensity": 0.2,
+        "consecutiveErrors": 0,
+        "correctionsThisBurst": 0
+      },
+      "adapterFlags": [],
+      "predictions": {
+        "mercyBlade": "correct_now",
+        "mercyBladeReason": "first_occurrence_teach_cause",
+        "alwaysCorrect": "correct_now",
+        "seededRandom": "defer_to_recap"
+      }
+    },
+    {
+      "id": "first-medium-collocation",
+      "gold": "defer_to_recap",
+      "shippedPolicyInput": {
+        "detectorTag": "collocation",
+        "severity": "medium",
+        "recurrenceCount": 0,
+        "sessionErrorDensity": 0.4,
+        "consecutiveErrors": 1,
+        "correctionsThisBurst": 0
+      },
+      "adapterFlags": [],
+      "predictions": {
+        "mercyBlade": "correct_now",
+        "mercyBladeReason": "first_occurrence_teach_cause",
+        "alwaysCorrect": "correct_now",
+        "seededRandom": "correct_now"
+      }
+    },
+    {
+      "id": "first-low-pronunciation",
+      "gold": "log_silently",
+      "shippedPolicyInput": {
+        "detectorTag": "minor-pronunciation",
+        "severity": "low",
+        "recurrenceCount": 0,
+        "sessionErrorDensity": 0.2,
+        "consecutiveErrors": 0,
+        "correctionsThisBurst": 0
+      },
+      "adapterFlags": [],
+      "predictions": {
+        "mercyBlade": "correct_now",
+        "mercyBladeReason": "first_occurrence_teach_cause",
+        "alwaysCorrect": "correct_now",
+        "seededRandom": "defer_to_recap"
+      }
+    },
+    {
+      "id": "first-low-punctuation",
+      "gold": "log_silently",
+      "shippedPolicyInput": {
+        "detectorTag": "punctuation",
+        "severity": "low",
+        "recurrenceCount": 0,
+        "sessionErrorDensity": 0.2,
+        "consecutiveErrors": 0,
+        "correctionsThisBurst": 0
+      },
+      "adapterFlags": [],
+      "predictions": {
+        "mercyBlade": "correct_now",
+        "mercyBladeReason": "first_occurrence_teach_cause",
+        "alwaysCorrect": "correct_now",
+        "seededRandom": "defer_to_recap"
+      }
+    },
+    {
+      "id": "repeat-article-second",
+      "gold": "defer_to_recap",
+      "shippedPolicyInput": {
+        "detectorTag": "article-omission",
+        "severity": "medium",
+        "recurrenceCount": 2,
+        "sessionErrorDensity": 0.4,
+        "consecutiveErrors": 1,
+        "correctionsThisBurst": 0
+      },
+      "adapterFlags": [],
+      "predictions": {
+        "mercyBlade": "defer_to_recap",
+        "mercyBladeReason": "repeat_tag_no_hammer",
+        "alwaysCorrect": "correct_now",
+        "seededRandom": "correct_now"
+      }
+    },
+    {
+      "id": "repeat-article-third",
+      "gold": "correct_now",
+      "shippedPolicyInput": {
+        "detectorTag": "article-omission",
+        "severity": "medium",
+        "recurrenceCount": 3,
+        "sessionErrorDensity": 0.4,
+        "consecutiveErrors": 1,
+        "correctionsThisBurst": 0
+      },
+      "adapterFlags": [],
+      "predictions": {
+        "mercyBlade": "defer_to_recap",
+        "mercyBladeReason": "repeat_tag_no_hammer",
+        "alwaysCorrect": "correct_now",
+        "seededRandom": "defer_to_recap"
+      }
+    },
+    {
+      "id": "repeat-past-third",
+      "gold": "correct_now",
+      "shippedPolicyInput": {
+        "detectorTag": "past-tense-ed",
+        "severity": "medium",
+        "recurrenceCount": 3,
+        "sessionErrorDensity": 0.2,
+        "consecutiveErrors": 1,
+        "correctionsThisBurst": 0
+      },
+      "adapterFlags": [],
+      "predictions": {
+        "mercyBlade": "defer_to_recap",
+        "mercyBladeReason": "repeat_tag_no_hammer",
+        "alwaysCorrect": "correct_now",
+        "seededRandom": "correct_now"
+      }
+    },
+    {
+      "id": "repeat-subject-verb-third",
+      "gold": "correct_now",
+      "shippedPolicyInput": {
+        "detectorTag": "subject-verb-agreement",
+        "severity": "medium",
+        "recurrenceCount": 3,
+        "sessionErrorDensity": 0.4,
+        "consecutiveErrors": 2,
+        "correctionsThisBurst": 0
+      },
+      "adapterFlags": [],
+      "predictions": {
+        "mercyBlade": "defer_to_recap",
+        "mercyBladeReason": "repeat_tag_no_hammer",
+        "alwaysCorrect": "correct_now",
+        "seededRandom": "log_silently"
+      }
+    },
+    {
+      "id": "repeat-word-order-fourth",
+      "gold": "correct_now",
+      "shippedPolicyInput": {
+        "detectorTag": "word-order",
+        "severity": "medium",
+        "recurrenceCount": 4,
+        "sessionErrorDensity": 0.6,
+        "consecutiveErrors": 1,
+        "correctionsThisBurst": 0
+      },
+      "adapterFlags": [
+        "density_boundary: integer count 3 maps exactly to 0.6"
+      ],
+      "predictions": {
+        "mercyBlade": "defer_to_recap",
+        "mercyBladeReason": "repeat_tag_no_hammer",
+        "alwaysCorrect": "correct_now",
+        "seededRandom": "log_silently"
+      }
+    },
+    {
+      "id": "repeat-low-pronunciation",
+      "gold": "defer_to_recap",
+      "shippedPolicyInput": {
+        "detectorTag": "minor-pronunciation",
+        "severity": "low",
+        "recurrenceCount": 4,
+        "sessionErrorDensity": 0.4,
+        "consecutiveErrors": 1,
+        "correctionsThisBurst": 0
+      },
+      "adapterFlags": [],
+      "predictions": {
+        "mercyBlade": "defer_to_recap",
+        "mercyBladeReason": "repeat_tag_no_hammer",
+        "alwaysCorrect": "correct_now",
+        "seededRandom": "defer_to_recap"
+      }
+    },
+    {
+      "id": "repeat-low-spelling",
+      "gold": "defer_to_recap",
+      "shippedPolicyInput": {
+        "detectorTag": "spelling",
+        "severity": "low",
+        "recurrenceCount": 4,
+        "sessionErrorDensity": 0.4,
+        "consecutiveErrors": 0,
+        "correctionsThisBurst": 0
+      },
+      "adapterFlags": [],
+      "predictions": {
+        "mercyBlade": "defer_to_recap",
+        "mercyBladeReason": "repeat_tag_no_hammer",
+        "alwaysCorrect": "correct_now",
+        "seededRandom": "log_silently"
+      }
+    },
+    {
+      "id": "repeat-filler-words",
+      "gold": "defer_to_recap",
+      "shippedPolicyInput": {
+        "detectorTag": "filler-word",
+        "severity": "low",
+        "recurrenceCount": 3,
+        "sessionErrorDensity": 0.6,
+        "consecutiveErrors": 1,
+        "correctionsThisBurst": 0
+      },
+      "adapterFlags": [
+        "density_boundary: integer count 3 maps exactly to 0.6"
+      ],
+      "predictions": {
+        "mercyBlade": "defer_to_recap",
+        "mercyBladeReason": "repeat_tag_no_hammer",
+        "alwaysCorrect": "correct_now",
+        "seededRandom": "log_silently"
+      }
+    },
+    {
+      "id": "repeat-meaning-blocker",
+      "gold": "correct_now",
+      "shippedPolicyInput": {
+        "detectorTag": "wrong-keyword",
+        "severity": "high",
+        "recurrenceCount": 2,
+        "sessionErrorDensity": 0.6,
+        "consecutiveErrors": 2,
+        "correctionsThisBurst": 0
+      },
+      "adapterFlags": [
+        "lossy_severity_mapping: meaning_blocking -> high",
+        "density_boundary: integer count 3 maps exactly to 0.6"
+      ],
+      "predictions": {
+        "mercyBlade": "defer_to_recap",
+        "mercyBladeReason": "repeat_tag_no_hammer",
+        "alwaysCorrect": "correct_now",
+        "seededRandom": "correct_now"
+      }
+    },
+    {
+      "id": "repeat-negation-third",
+      "gold": "correct_now",
+      "shippedPolicyInput": {
+        "detectorTag": "negation-reversal",
+        "severity": "high",
+        "recurrenceCount": 3,
+        "sessionErrorDensity": 0.8,
+        "consecutiveErrors": 2,
+        "correctionsThisBurst": 0
+      },
+      "adapterFlags": [
+        "lossy_severity_mapping: meaning_blocking -> high"
+      ],
+      "predictions": {
+        "mercyBlade": "defer_to_recap",
+        "mercyBladeReason": "repeat_tag_no_hammer",
+        "alwaysCorrect": "correct_now",
+        "seededRandom": "correct_now"
+      }
+    },
+    {
+      "id": "burst-target-after-three-errors",
+      "gold": "defer_to_recap",
+      "shippedPolicyInput": {
+        "detectorTag": "article-omission",
+        "severity": "high",
+        "recurrenceCount": 1,
+        "sessionErrorDensity": 1,
+        "consecutiveErrors": 3,
+        "correctionsThisBurst": 0
+      },
+      "adapterFlags": [],
+      "predictions": {
+        "mercyBlade": "defer_to_recap",
+        "mercyBladeReason": "density_defer",
+        "alwaysCorrect": "correct_now",
+        "seededRandom": "defer_to_recap"
+      }
+    },
+    {
+      "id": "burst-target-tense",
+      "gold": "defer_to_recap",
+      "shippedPolicyInput": {
+        "detectorTag": "past-tense-ed",
+        "severity": "high",
+        "recurrenceCount": 2,
+        "sessionErrorDensity": 1,
+        "consecutiveErrors": 4,
+        "correctionsThisBurst": 0
+      },
+      "adapterFlags": [],
+      "predictions": {
+        "mercyBlade": "correct_now",
+        "mercyBladeReason": "burst_cap_one",
+        "alwaysCorrect": "correct_now",
+        "seededRandom": "defer_to_recap"
+      }
+    },
+    {
+      "id": "burst-form-preposition",
+      "gold": "log_silently",
+      "shippedPolicyInput": {
+        "detectorTag": "preposition-choice",
+        "severity": "medium",
+        "recurrenceCount": 1,
+        "sessionErrorDensity": 1,
+        "consecutiveErrors": 3,
+        "correctionsThisBurst": 0
+      },
+      "adapterFlags": [],
+      "predictions": {
+        "mercyBlade": "defer_to_recap",
+        "mercyBladeReason": "density_defer",
+        "alwaysCorrect": "correct_now",
+        "seededRandom": "defer_to_recap"
+      }
+    },
+    {
+      "id": "burst-form-agreement",
+      "gold": "defer_to_recap",
+      "shippedPolicyInput": {
+        "detectorTag": "subject-verb-agreement",
+        "severity": "medium",
+        "recurrenceCount": 2,
+        "sessionErrorDensity": 1,
+        "consecutiveErrors": 4,
+        "correctionsThisBurst": 0
+      },
+      "adapterFlags": [],
+      "predictions": {
+        "mercyBlade": "correct_now",
+        "mercyBladeReason": "burst_cap_one",
+        "alwaysCorrect": "correct_now",
+        "seededRandom": "defer_to_recap"
+      }
+    },
+    {
+      "id": "burst-low-punctuation",
+      "gold": "log_silently",
+      "shippedPolicyInput": {
+        "detectorTag": "punctuation",
+        "severity": "low",
+        "recurrenceCount": 2,
+        "sessionErrorDensity": 1,
+        "consecutiveErrors": 4,
+        "correctionsThisBurst": 0
+      },
+      "adapterFlags": [],
+      "predictions": {
+        "mercyBlade": "correct_now",
+        "mercyBladeReason": "burst_cap_one",
+        "alwaysCorrect": "correct_now",
+        "seededRandom": "correct_now"
+      }
+    },
+    {
+      "id": "burst-low-fluency",
+      "gold": "log_silently",
+      "shippedPolicyInput": {
+        "detectorTag": "hesitation",
+        "severity": "low",
+        "recurrenceCount": 2,
+        "sessionErrorDensity": 1,
+        "consecutiveErrors": 5,
+        "correctionsThisBurst": 0
+      },
+      "adapterFlags": [],
+      "predictions": {
+        "mercyBlade": "correct_now",
+        "mercyBladeReason": "burst_cap_one",
+        "alwaysCorrect": "correct_now",
+        "seededRandom": "log_silently"
+      }
+    },
+    {
+      "id": "burst-meaning-blocker",
+      "gold": "correct_now",
+      "shippedPolicyInput": {
+        "detectorTag": "wrong-keyword",
+        "severity": "high",
+        "recurrenceCount": 1,
+        "sessionErrorDensity": 1,
+        "consecutiveErrors": 4,
+        "correctionsThisBurst": 0
+      },
+      "adapterFlags": [
+        "lossy_severity_mapping: meaning_blocking -> high"
+      ],
+      "predictions": {
+        "mercyBlade": "correct_now",
+        "mercyBladeReason": "burst_cap_one",
+        "alwaysCorrect": "correct_now",
+        "seededRandom": "correct_now"
+      }
+    },
+    {
+      "id": "burst-negation",
+      "gold": "correct_now",
+      "shippedPolicyInput": {
+        "detectorTag": "negation-reversal",
+        "severity": "high",
+        "recurrenceCount": 1,
+        "sessionErrorDensity": 1,
+        "consecutiveErrors": 3,
+        "correctionsThisBurst": 0
+      },
+      "adapterFlags": [
+        "lossy_severity_mapping: meaning_blocking -> high"
+      ],
+      "predictions": {
+        "mercyBlade": "defer_to_recap",
+        "mercyBladeReason": "density_defer",
+        "alwaysCorrect": "correct_now",
+        "seededRandom": "correct_now"
+      }
+    },
+    {
+      "id": "low-severity-single-hesitation",
+      "gold": "log_silently",
+      "shippedPolicyInput": {
+        "detectorTag": "hesitation",
+        "severity": "low",
+        "recurrenceCount": 0,
+        "sessionErrorDensity": 0.2,
+        "consecutiveErrors": 0,
+        "correctionsThisBurst": 0
+      },
+      "adapterFlags": [],
+      "predictions": {
+        "mercyBlade": "correct_now",
+        "mercyBladeReason": "first_occurrence_teach_cause",
+        "alwaysCorrect": "correct_now",
+        "seededRandom": "defer_to_recap"
+      }
+    },
+    {
+      "id": "low-severity-single-capitalization",
+      "gold": "log_silently",
+      "shippedPolicyInput": {
+        "detectorTag": "capitalization",
+        "severity": "low",
+        "recurrenceCount": 0,
+        "sessionErrorDensity": 0.2,
+        "consecutiveErrors": 0,
+        "correctionsThisBurst": 0
+      },
+      "adapterFlags": [],
+      "predictions": {
+        "mercyBlade": "correct_now",
+        "mercyBladeReason": "first_occurrence_teach_cause",
+        "alwaysCorrect": "correct_now",
+        "seededRandom": "correct_now"
+      }
+    },
+    {
+      "id": "low-severity-single-register",
+      "gold": "log_silently",
+      "shippedPolicyInput": {
+        "detectorTag": "slightly-informal-register",
+        "severity": "low",
+        "recurrenceCount": 1,
+        "sessionErrorDensity": 0.4,
+        "consecutiveErrors": 0,
+        "correctionsThisBurst": 0
+      },
+      "adapterFlags": [],
+      "predictions": {
+        "mercyBlade": "correct_now",
+        "mercyBladeReason": "default",
+        "alwaysCorrect": "correct_now",
+        "seededRandom": "log_silently"
+      }
+    },
+    {
+      "id": "low-severity-repeated-capitalization",
+      "gold": "defer_to_recap",
+      "shippedPolicyInput": {
+        "detectorTag": "capitalization",
+        "severity": "low",
+        "recurrenceCount": 5,
+        "sessionErrorDensity": 0.4,
+        "consecutiveErrors": 0,
+        "correctionsThisBurst": 0
+      },
+      "adapterFlags": [],
+      "predictions": {
+        "mercyBlade": "defer_to_recap",
+        "mercyBladeReason": "repeat_tag_no_hammer",
+        "alwaysCorrect": "correct_now",
+        "seededRandom": "correct_now"
+      }
+    },
+    {
+      "id": "low-severity-repeated-register",
+      "gold": "defer_to_recap",
+      "shippedPolicyInput": {
+        "detectorTag": "slightly-informal-register",
+        "severity": "low",
+        "recurrenceCount": 4,
+        "sessionErrorDensity": 0.6,
+        "consecutiveErrors": 1,
+        "correctionsThisBurst": 0
+      },
+      "adapterFlags": [
+        "density_boundary: integer count 3 maps exactly to 0.6"
+      ],
+      "predictions": {
+        "mercyBlade": "defer_to_recap",
+        "mercyBladeReason": "repeat_tag_no_hammer",
+        "alwaysCorrect": "correct_now",
+        "seededRandom": "correct_now"
+      }
+    },
+    {
+      "id": "frustrated-high-target",
+      "gold": "defer_to_recap",
+      "shippedPolicyInput": {
+        "detectorTag": "question-word-order",
+        "severity": "high",
+        "recurrenceCount": 3,
+        "sessionErrorDensity": 1,
+        "consecutiveErrors": 4,
+        "correctionsThisBurst": 0
+      },
+      "adapterFlags": [],
+      "predictions": {
+        "mercyBlade": "correct_now",
+        "mercyBladeReason": "burst_cap_one",
+        "alwaysCorrect": "correct_now",
+        "seededRandom": "log_silently"
+      }
+    },
+    {
+      "id": "frustrated-high-form",
+      "gold": "defer_to_recap",
+      "shippedPolicyInput": {
+        "detectorTag": "subject-verb-agreement",
+        "severity": "medium",
+        "recurrenceCount": 3,
+        "sessionErrorDensity": 1,
+        "consecutiveErrors": 5,
+        "correctionsThisBurst": 0
+      },
+      "adapterFlags": [],
+      "predictions": {
+        "mercyBlade": "correct_now",
+        "mercyBladeReason": "burst_cap_one",
+        "alwaysCorrect": "correct_now",
+        "seededRandom": "defer_to_recap"
+      }
+    },
+    {
+      "id": "frustrated-high-collocation",
+      "gold": "defer_to_recap",
+      "shippedPolicyInput": {
+        "detectorTag": "collocation",
+        "severity": "medium",
+        "recurrenceCount": 4,
+        "sessionErrorDensity": 1,
+        "consecutiveErrors": 4,
+        "correctionsThisBurst": 0
+      },
+      "adapterFlags": [],
+      "predictions": {
+        "mercyBlade": "correct_now",
+        "mercyBladeReason": "burst_cap_one",
+        "alwaysCorrect": "correct_now",
+        "seededRandom": "correct_now"
+      }
+    },
+    {
+      "id": "frustrated-high-meaning",
+      "gold": "correct_now",
+      "shippedPolicyInput": {
+        "detectorTag": "wrong-keyword",
+        "severity": "high",
+        "recurrenceCount": 2,
+        "sessionErrorDensity": 1,
+        "consecutiveErrors": 5,
+        "correctionsThisBurst": 0
+      },
+      "adapterFlags": [
+        "lossy_severity_mapping: meaning_blocking -> high"
+      ],
+      "predictions": {
+        "mercyBlade": "correct_now",
+        "mercyBladeReason": "burst_cap_one",
+        "alwaysCorrect": "correct_now",
+        "seededRandom": "defer_to_recap"
+      }
+    },
+    {
+      "id": "frustrated-high-negation",
+      "gold": "correct_now",
+      "shippedPolicyInput": {
+        "detectorTag": "negation-reversal",
+        "severity": "high",
+        "recurrenceCount": 2,
+        "sessionErrorDensity": 1,
+        "consecutiveErrors": 5,
+        "correctionsThisBurst": 0
+      },
+      "adapterFlags": [
+        "lossy_severity_mapping: meaning_blocking -> high"
+      ],
+      "predictions": {
+        "mercyBlade": "correct_now",
+        "mercyBladeReason": "burst_cap_one",
+        "alwaysCorrect": "correct_now",
+        "seededRandom": "correct_now"
+      }
+    },
+    {
+      "id": "frustrated-low-spelling",
+      "gold": "log_silently",
+      "shippedPolicyInput": {
+        "detectorTag": "spelling",
+        "severity": "low",
+        "recurrenceCount": 3,
+        "sessionErrorDensity": 1,
+        "consecutiveErrors": 5,
+        "correctionsThisBurst": 0
+      },
+      "adapterFlags": [],
+      "predictions": {
+        "mercyBlade": "correct_now",
+        "mercyBladeReason": "burst_cap_one",
+        "alwaysCorrect": "correct_now",
+        "seededRandom": "defer_to_recap"
+      }
+    },
+    {
+      "id": "frustrated-low-hesitation",
+      "gold": "log_silently",
+      "shippedPolicyInput": {
+        "detectorTag": "hesitation",
+        "severity": "low",
+        "recurrenceCount": 5,
+        "sessionErrorDensity": 1,
+        "consecutiveErrors": 6,
+        "correctionsThisBurst": 0
+      },
+      "adapterFlags": [],
+      "predictions": {
+        "mercyBlade": "correct_now",
+        "mercyBladeReason": "burst_cap_one",
+        "alwaysCorrect": "correct_now",
+        "seededRandom": "defer_to_recap"
+      }
+    }
+  ]
+}
