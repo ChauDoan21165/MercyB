@@ -258,15 +258,19 @@ export default function AiConversationScenarioPanel({
       // sanitizes the tag; no raw learner text stored) so a future session can
       // recall it. Conversation practice is English on this surface.
       if (response.correction?.interferencePattern) {
-        void putCorrection({
-          id: `conv-${Date.now()}`,
-          topic: response.correction.interferencePattern,
-          cefr: "B1",
-          createdAt: Date.now(),
-          practiced: false,
-          tutorProduct: "ai-tutor",
-          targetLanguage: "en",
-        }).catch(() => {});
+        try {
+          await putCorrection({
+            id: `conv-${Date.now()}`,
+            topic: response.correction.interferencePattern,
+            cefr: "B1",
+            createdAt: Date.now(),
+            practiced: false,
+            tutorProduct: "ai-tutor",
+            targetLanguage: "en",
+          });
+        } catch (err) {
+          console.warn("[ai-conversation] correction memory write failed", err);
+        }
       }
       if (telemetrySession) {
         // Telemetry drives consent-gated capture + flag-gated retention (XP +
