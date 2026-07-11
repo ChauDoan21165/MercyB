@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { getLevel } from "@/lib/progression/xpEngine";
+import { fetchWithTimeout } from "@/lib/networkTimeout";
 
 type MinimalSpeechRecognition = {
   lang: string;
@@ -71,6 +72,8 @@ function getOptionalVoiceIdOverride(): string | undefined {
   const env = (import.meta as unknown as { env?: Record<string, string | undefined> }).env;
   return env?.VITE_ELEVENLABS_VOICE_ID || undefined;
 }
+
+const ROLEPLAY_TTS_TIMEOUT_MS = 15_000;
 
 function detectVocab(text: string, targets: string[]): string[] {
   if (!text || targets.length === 0) return [];
@@ -247,7 +250,7 @@ export function RoleplaySession({
 
       (async () => {
         try {
-          const res = await fetch("/api/tts", {
+          const res = await fetchWithTimeout("/api/tts", {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
@@ -257,6 +260,7 @@ export function RoleplaySession({
               text,
               ...(voiceIdOverride ? { voiceId: voiceIdOverride } : {}),
             }),
+            timeoutMs: ROLEPLAY_TTS_TIMEOUT_MS,
           });
 
           if (!res.ok) {

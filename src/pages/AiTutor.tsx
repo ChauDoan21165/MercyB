@@ -38,6 +38,7 @@ import {
   normalizeSpokenText,
   appendCleanSpeech,
 } from "@/lib/ai-tutor/tutorUiCopy";
+import { fetchWithTimeout } from "@/lib/networkTimeout";
 import { getTutorCopy, type TutorCopy, type TutorTarget } from "@/lib/tutor/tutorCopy";
 import { getSpeechLocale, getTtsLocale } from "@/lib/tutor/languageRegistry";
 import { bilingualText, speechTextFromBilingual, type BilingualText } from "@/lib/tutor/englishOnlyTts";
@@ -329,6 +330,7 @@ const STEP7_AZURE_BATCH_ENABLED =
   (import.meta as ImportMeta & { env?: Record<string, string> }).env
     ?.VITE_AZURE_PHONEME_BATCH_ENABLED === "true";
 const EMPTY_SPEAK_AUDIO_BLOB = new Blob([], { type: "audio/webm" });
+const AI_TUTOR_FETCH_TIMEOUT_MS = 15_000;
 const VIETNAMESE_SPEAK_TEXT_PATTERN =
   /[ăâđêôơưàáạảãằắặẳẵầấậẩẫèéẹẻẽềếệểễìíịỉĩòóọỏõồốộổỗờớợởỡùúụủũừứựửữỳýỵỷỹ]/i;
 const MERCY_CLARIFICATION_PREFIX_PATTERN = /^\s*Mercy\s+chưa\s+nghe\s+rõ\b/i;
@@ -358,10 +360,11 @@ async function callAiSentenceCorrection(
   tgt: TutorTarget,
 ): Promise<AiCorrectionResult | null> {
   try {
-    const res = await fetch(resolveApiUrl("/api/mercy-ai"), {
+    const res = await fetchWithTimeout(resolveApiUrl("/api/mercy-ai"), {
       method: "POST",
       headers: { "Content-Type": "application/json", Authorization: `Bearer ${accessToken}` },
       body: JSON.stringify({ mode: "sentence-correction", learnerText, explainLanguage: explainLang, target: tgt }),
+      timeoutMs: AI_TUTOR_FETCH_TIMEOUT_MS,
     });
     if (!res.ok) return null;
     const data = (await res.json()) as Partial<AiCorrectionResult>;
@@ -428,7 +431,7 @@ async function fetchDeepSeekSpeakFollowUp({
   avoidTokens,
 }: SpeakAiFollowUpRequest): Promise<string | null | SpeakFollowUpProviderError> {
   try {
-    const response = await fetch(resolveApiUrl("/api/mercy-ai"), {
+    const response = await fetchWithTimeout(resolveApiUrl("/api/mercy-ai"), {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -445,6 +448,7 @@ async function fetchDeepSeekSpeakFollowUp({
           ...(avoidTokens && avoidTokens.length > 0 ? { avoidTokens } : {}),
         },
       }),
+      timeoutMs: AI_TUTOR_FETCH_TIMEOUT_MS,
     });
     if (!response.ok) return null;
     const data = (await response.json()) as { question?: unknown; ok?: unknown; retryable?: unknown; reason?: unknown };

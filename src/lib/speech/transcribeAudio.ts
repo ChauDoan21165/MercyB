@@ -11,10 +11,13 @@
 import OpenAI from "openai";
 import FormData from "form-data";
 import { Readable } from "stream";
+import { fetchWithTimeout } from "@/lib/networkTimeout";
 
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
 });
+
+const TRANSCRIPTION_TIMEOUT_MS = 20_000;
 
 function extFromMimeType(mimeType: string): string {
   const type = mimeType.toLowerCase();
@@ -76,7 +79,7 @@ export async function transcribeAudio(
     "Transcribe the spoken English sentence clearly for an English learning app."
   );
 
-  const response = await fetch(
+  const response = await fetchWithTimeout(
     "https://api.openai.com/v1/audio/transcriptions",
     {
       method: "POST",
@@ -87,6 +90,7 @@ export async function transcribeAudio(
       // form-data's FormData extends Readable (Node stream), not the browser
       // FormData type that BodyInit expects. Node.js fetch accepts it anyway.
       body: form as unknown as BodyInit,
+      timeoutMs: TRANSCRIPTION_TIMEOUT_MS,
     }
   );
 
