@@ -1,0 +1,242 @@
+[
+  {
+    "id": "first-target-article",
+    "context": { "detectorTag": "article-omission", "severity": "target_form", "recurrenceCount": 0, "sessionErrorDensity": 1, "consecutiveErrors": 1 },
+    "gold": "correct_now",
+    "rationale": "Correct now because the error is the current lesson target and low density leaves attention available; Ellis-Loewen-Erlam 2006 supports explicit form feedback for targeted grammar."
+  },
+  {
+    "id": "first-target-past-tense",
+    "context": { "detectorTag": "past-tense-ed", "severity": "target_form", "recurrenceCount": 0, "sessionErrorDensity": 2, "consecutiveErrors": 1 },
+    "gold": "correct_now",
+    "rationale": "Correct now because targeted tense morphology benefits from explicit feedback while the learner is not in an error burst; Ellis-Loewen-Erlam 2006."
+  },
+  {
+    "id": "first-target-plural-s",
+    "context": { "detectorTag": "plural-s", "severity": "target_form", "recurrenceCount": 0, "sessionErrorDensity": 2, "consecutiveErrors": 0 },
+    "gold": "correct_now",
+    "rationale": "Correct now because the form is lesson-salient and isolated; Lyster-Ranta 1997 distinguishes explicit correction/prompts as useful uptake moves."
+  },
+  {
+    "id": "first-target-word-order",
+    "context": { "detectorTag": "question-word-order", "severity": "target_form", "recurrenceCount": 1, "sessionErrorDensity": 2, "consecutiveErrors": 1 },
+    "gold": "correct_now",
+    "rationale": "Correct now because a repeated target-form error should receive an overt prompt before it fossilizes; Ammar-Spada 2006 says feedback technique should fit learner need."
+  },
+  {
+    "id": "first-meaning-blocker",
+    "context": { "detectorTag": "wrong-keyword", "severity": "meaning_blocking", "recurrenceCount": 0, "sessionErrorDensity": 1, "consecutiveErrors": 1 },
+    "gold": "correct_now",
+    "rationale": "Correct now because meaning is blocked; communicative classrooms prioritize repair when comprehension fails, as in Lyster-Ranta 1997 error-treatment sequences."
+  },
+  {
+    "id": "first-dangerous-negation",
+    "context": { "detectorTag": "negation-reversal", "severity": "meaning_blocking", "recurrenceCount": 0, "sessionErrorDensity": 2, "consecutiveErrors": 1 },
+    "gold": "correct_now",
+    "rationale": "Correct now because negation reversal changes intent; explicit repair is justified when communication would otherwise be wrong, per Lyster-Ranta 1997."
+  },
+  {
+    "id": "first-medium-preposition",
+    "context": { "detectorTag": "preposition-choice", "severity": "form", "recurrenceCount": 0, "sessionErrorDensity": 1, "consecutiveErrors": 0 },
+    "gold": "defer_to_recap",
+    "rationale": "Defer because the first medium form error does not block meaning; recast or recap protects fluency while still noticing the form, a Lyster-Ranta 1997 tradeoff."
+  },
+  {
+    "id": "first-medium-collocation",
+    "context": { "detectorTag": "collocation", "severity": "form", "recurrenceCount": 0, "sessionErrorDensity": 2, "consecutiveErrors": 1 },
+    "gold": "defer_to_recap",
+    "rationale": "Defer because an isolated collocation issue is better batched than interrupting output; overcorrection risk follows affective-filter and WCF-debate heuristics."
+  },
+  {
+    "id": "first-low-pronunciation",
+    "context": { "detectorTag": "minor-pronunciation", "severity": "fluency", "recurrenceCount": 0, "sessionErrorDensity": 1, "consecutiveErrors": 0 },
+    "gold": "log_silently",
+    "rationale": "Log silently because low-severity fluency noise should not interrupt communicative flow; Lyster-Ranta 1997 notes implicit moves are common for minor errors."
+  },
+  {
+    "id": "first-low-punctuation",
+    "context": { "detectorTag": "punctuation", "severity": "minor", "recurrenceCount": 0, "sessionErrorDensity": 1, "consecutiveErrors": 0 },
+    "gold": "log_silently",
+    "rationale": "Log silently because first low-stakes surface noise has weak pedagogical value; Truscott-Ferris WCF debate cautions against correcting every grammar mark."
+  },
+  {
+    "id": "repeat-article-second",
+    "context": { "detectorTag": "article-omission", "severity": "form", "recurrenceCount": 2, "sessionErrorDensity": 2, "consecutiveErrors": 1 },
+    "gold": "defer_to_recap",
+    "rationale": "Defer because a second non-target article error deserves pattern tracking but not immediate interruption; Ammar-Spada 2006 rejects one-size correction."
+  },
+  {
+    "id": "repeat-article-third",
+    "context": { "detectorTag": "article-omission", "severity": "form", "recurrenceCount": 3, "sessionErrorDensity": 2, "consecutiveErrors": 1 },
+    "gold": "correct_now",
+    "rationale": "Correct now because repeated form errors justify explicit attention; Lyster-Ranta 1997 and Ellis-Loewen-Erlam 2006 support more overt feedback for persistent form."
+  },
+  {
+    "id": "repeat-past-third",
+    "context": { "detectorTag": "past-tense-ed", "severity": "form", "recurrenceCount": 3, "sessionErrorDensity": 1, "consecutiveErrors": 1 },
+    "gold": "correct_now",
+    "rationale": "Correct now because recurrence indicates a pattern, not a slip; Ellis-Loewen-Erlam 2006 found explicit feedback useful for past tense accuracy."
+  },
+  {
+    "id": "repeat-subject-verb-third",
+    "context": { "detectorTag": "subject-verb-agreement", "severity": "form", "recurrenceCount": 3, "sessionErrorDensity": 2, "consecutiveErrors": 2 },
+    "gold": "correct_now",
+    "rationale": "Correct now because the repeated agreement pattern is still outside an overload burst; prompts can produce useful uptake per Lyster-Ranta 1997."
+  },
+  {
+    "id": "repeat-word-order-fourth",
+    "context": { "detectorTag": "word-order", "severity": "form", "recurrenceCount": 4, "sessionErrorDensity": 3, "consecutiveErrors": 1 },
+    "gold": "correct_now",
+    "rationale": "Correct now because recurrence is high and density is not extreme; Ammar-Spada 2006 supports adapting feedback intensity to persistent learner need."
+  },
+  {
+    "id": "repeat-low-pronunciation",
+    "context": { "detectorTag": "minor-pronunciation", "severity": "fluency", "recurrenceCount": 4, "sessionErrorDensity": 2, "consecutiveErrors": 1 },
+    "gold": "defer_to_recap",
+    "rationale": "Defer because repeated fluency noise may need later modeling but immediate correction can damage willingness to speak; affective-filter heuristic."
+  },
+  {
+    "id": "repeat-low-spelling",
+    "context": { "detectorTag": "spelling", "severity": "minor", "recurrenceCount": 4, "sessionErrorDensity": 2, "consecutiveErrors": 0 },
+    "gold": "defer_to_recap",
+    "rationale": "Defer because repeated low-level spelling should be batched; Truscott-Ferris WCF debate warns against constant surface correction."
+  },
+  {
+    "id": "repeat-filler-words",
+    "context": { "detectorTag": "filler-word", "severity": "fluency", "recurrenceCount": 3, "sessionErrorDensity": 3, "consecutiveErrors": 1 },
+    "gold": "defer_to_recap",
+    "rationale": "Defer because repeated fillers are a coaching topic, not an immediate repair unless meaning fails; affective-filter and communicative-flow heuristics."
+  },
+  {
+    "id": "repeat-meaning-blocker",
+    "context": { "detectorTag": "wrong-keyword", "severity": "meaning_blocking", "recurrenceCount": 2, "sessionErrorDensity": 3, "consecutiveErrors": 2 },
+    "gold": "correct_now",
+    "rationale": "Correct now because repeated meaning blockage prevents communication; Lyster-Ranta 1997 error-treatment sequences prioritize negotiation of meaning/form."
+  },
+  {
+    "id": "repeat-negation-third",
+    "context": { "detectorTag": "negation-reversal", "severity": "meaning_blocking", "recurrenceCount": 3, "sessionErrorDensity": 4, "consecutiveErrors": 2 },
+    "gold": "correct_now",
+    "rationale": "Correct now because a repeated negation reversal misstates intent even in a dense session; explicit correction is warranted for meaning safety."
+  },
+  {
+    "id": "burst-target-after-three-errors",
+    "context": { "detectorTag": "article-omission", "severity": "target_form", "recurrenceCount": 1, "sessionErrorDensity": 5, "consecutiveErrors": 3 },
+    "gold": "defer_to_recap",
+    "rationale": "Defer because the target form is real but the learner is in an error burst; affective-filter and overcorrection heuristics favor preserving participation."
+  },
+  {
+    "id": "burst-target-tense",
+    "context": { "detectorTag": "past-tense-ed", "severity": "target_form", "recurrenceCount": 2, "sessionErrorDensity": 5, "consecutiveErrors": 4 },
+    "gold": "defer_to_recap",
+    "rationale": "Defer because repeated target feedback during a burst risks hammering; Ammar-Spada 2006 supports context-sensitive feedback rather than one-size correction."
+  },
+  {
+    "id": "burst-form-preposition",
+    "context": { "detectorTag": "preposition-choice", "severity": "form", "recurrenceCount": 1, "sessionErrorDensity": 5, "consecutiveErrors": 3 },
+    "gold": "log_silently",
+    "rationale": "Log silently because medium form feedback during a burst has high affective cost and low immediate value; affective-filter heuristic."
+  },
+  {
+    "id": "burst-form-agreement",
+    "context": { "detectorTag": "subject-verb-agreement", "severity": "form", "recurrenceCount": 2, "sessionErrorDensity": 6, "consecutiveErrors": 4 },
+    "gold": "defer_to_recap",
+    "rationale": "Defer because a repeat pattern is visible but the current moment is overloaded; batch correction reduces overcorrection risk."
+  },
+  {
+    "id": "burst-low-punctuation",
+    "context": { "detectorTag": "punctuation", "severity": "minor", "recurrenceCount": 2, "sessionErrorDensity": 6, "consecutiveErrors": 4 },
+    "gold": "log_silently",
+    "rationale": "Log silently because low-stakes surface correction in a burst is classic overcorrection; Truscott-Ferris WCF debate and affective-filter heuristic."
+  },
+  {
+    "id": "burst-low-fluency",
+    "context": { "detectorTag": "hesitation", "severity": "fluency", "recurrenceCount": 2, "sessionErrorDensity": 5, "consecutiveErrors": 5 },
+    "gold": "log_silently",
+    "rationale": "Log silently because correcting hesitation while the learner is already struggling undermines speech confidence; affective-filter heuristic."
+  },
+  {
+    "id": "burst-meaning-blocker",
+    "context": { "detectorTag": "wrong-keyword", "severity": "meaning_blocking", "recurrenceCount": 1, "sessionErrorDensity": 6, "consecutiveErrors": 4 },
+    "gold": "correct_now",
+    "rationale": "Correct now because meaning blockage is the exception to burst suppression; negotiation of meaning requires immediate repair, per Lyster-Ranta 1997."
+  },
+  {
+    "id": "burst-negation",
+    "context": { "detectorTag": "negation-reversal", "severity": "meaning_blocking", "recurrenceCount": 1, "sessionErrorDensity": 5, "consecutiveErrors": 3 },
+    "gold": "correct_now",
+    "rationale": "Correct now because the utterance means the opposite of intended; communicative repair outweighs affective cost."
+  },
+  {
+    "id": "low-severity-single-hesitation",
+    "context": { "detectorTag": "hesitation", "severity": "fluency", "recurrenceCount": 0, "sessionErrorDensity": 1, "consecutiveErrors": 0 },
+    "gold": "log_silently",
+    "rationale": "Log silently because a single hesitation is not a language target; affective-filter heuristic protects willingness to speak."
+  },
+  {
+    "id": "low-severity-single-capitalization",
+    "context": { "detectorTag": "capitalization", "severity": "minor", "recurrenceCount": 0, "sessionErrorDensity": 1, "consecutiveErrors": 0 },
+    "gold": "log_silently",
+    "rationale": "Log silently because first capitalization noise is not worth interrupting; Truscott-Ferris WCF debate cautions against surface-error fixation."
+  },
+  {
+    "id": "low-severity-single-register",
+    "context": { "detectorTag": "slightly-informal-register", "severity": "minor", "recurrenceCount": 1, "sessionErrorDensity": 2, "consecutiveErrors": 0 },
+    "gold": "log_silently",
+    "rationale": "Log silently because slight register mismatch has low immediate payoff; communicative-flow and affective-filter heuristics."
+  },
+  {
+    "id": "low-severity-repeated-capitalization",
+    "context": { "detectorTag": "capitalization", "severity": "minor", "recurrenceCount": 5, "sessionErrorDensity": 2, "consecutiveErrors": 0 },
+    "gold": "defer_to_recap",
+    "rationale": "Defer because repetition makes it worth a recap pattern, but immediate correction would overvalue mechanics; Truscott-Ferris WCF debate."
+  },
+  {
+    "id": "low-severity-repeated-register",
+    "context": { "detectorTag": "slightly-informal-register", "severity": "minor", "recurrenceCount": 4, "sessionErrorDensity": 3, "consecutiveErrors": 1 },
+    "gold": "defer_to_recap",
+    "rationale": "Defer because repeated register drift is teachable as a pattern, not urgent repair; Ammar-Spada 2006 context-sensitive feedback heuristic."
+  },
+  {
+    "id": "frustrated-high-target",
+    "context": { "detectorTag": "question-word-order", "severity": "target_form", "recurrenceCount": 3, "sessionErrorDensity": 6, "consecutiveErrors": 4 },
+    "gold": "defer_to_recap",
+    "rationale": "Defer because even repeated target feedback becomes counterproductive under high consecutive errors; affective-filter and overcorrection heuristics."
+  },
+  {
+    "id": "frustrated-high-form",
+    "context": { "detectorTag": "subject-verb-agreement", "severity": "form", "recurrenceCount": 3, "sessionErrorDensity": 6, "consecutiveErrors": 5 },
+    "gold": "defer_to_recap",
+    "rationale": "Defer because a repeated form pattern should be handled after the turn when frustration is likely lower; affective-filter heuristic."
+  },
+  {
+    "id": "frustrated-high-collocation",
+    "context": { "detectorTag": "collocation", "severity": "form", "recurrenceCount": 4, "sessionErrorDensity": 5, "consecutiveErrors": 4 },
+    "gold": "defer_to_recap",
+    "rationale": "Defer because collocation feedback is useful but not urgent under high affective load; Ammar-Spada 2006 and affective-filter heuristics."
+  },
+  {
+    "id": "frustrated-high-meaning",
+    "context": { "detectorTag": "wrong-keyword", "severity": "meaning_blocking", "recurrenceCount": 2, "sessionErrorDensity": 7, "consecutiveErrors": 5 },
+    "gold": "correct_now",
+    "rationale": "Correct now because comprehension has failed; Lyster-Ranta 1997 negotiation of form/meaning justifies immediate repair despite affective cost."
+  },
+  {
+    "id": "frustrated-high-negation",
+    "context": { "detectorTag": "negation-reversal", "severity": "meaning_blocking", "recurrenceCount": 2, "sessionErrorDensity": 7, "consecutiveErrors": 5 },
+    "gold": "correct_now",
+    "rationale": "Correct now because a reversed meaning cannot be safely deferred; communicative repair is the exception to overcorrection suppression."
+  },
+  {
+    "id": "frustrated-low-spelling",
+    "context": { "detectorTag": "spelling", "severity": "minor", "recurrenceCount": 3, "sessionErrorDensity": 6, "consecutiveErrors": 5 },
+    "gold": "log_silently",
+    "rationale": "Log silently because spelling feedback during high frustration is low-value and high-cost; affective-filter and WCF-debate heuristics."
+  },
+  {
+    "id": "frustrated-low-hesitation",
+    "context": { "detectorTag": "hesitation", "severity": "fluency", "recurrenceCount": 5, "sessionErrorDensity": 7, "consecutiveErrors": 6 },
+    "gold": "log_silently",
+    "rationale": "Log silently because repeated hesitation under frustration should not be corrected in the moment; affective-filter heuristic."
+  }
+]
