@@ -1839,3 +1839,8 @@ prod-synthetic-learner:
     expire_in: 30 days
     paths:
       - reports/prod-synthetic-learner/
+      # Playwright traces (config: trace "retain-on-failure") so a failed
+      # journey's exact session/redirect sequence is retrievable — journey (a)
+      # is runner-conditional and needs the trace.zip to confirm the anon-session
+      # bootstrap race (run #3 had no trace uploaded → undiagnosable from CI).
+      - test-results/
