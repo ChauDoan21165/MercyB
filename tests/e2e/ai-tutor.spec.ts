@@ -3,6 +3,16 @@ import { expectSpaResponse } from "./routeSmoke";
 
 test.describe("AI Tutor", () => {
   test("loads without crashing and renders the topic path", async ({ page }) => {
+    // Bare /ai-tutor with no language pair renders the "Choose Your Language"
+    // onboarding picker (AiTutor.tsx: `if (!hasUrlPair && !hasStoredPair)`), so the
+    // tutor shell never mounts. Seed the pair a real onboarded user carries — the
+    // readAnonymousPair shape {native, targets[]} + the nativeLang mirror — before
+    // navigating, so the shell renders. (Same gate diagnosed in the synthetic-learner
+    // run #8b; this stale pre-gate e2e reddened scheduled runs.)
+    await page.addInitScript(() => {
+      localStorage.setItem("mercyblade.languagePair", JSON.stringify({ native: "vi", targets: ["en"] }));
+      localStorage.setItem("mercyblade.nativeLang", "vi");
+    });
     await expectSpaResponse(page, "/ai-tutor");
 
     await expect(page.getByTestId("ai-tutor-shell")).toBeVisible();
