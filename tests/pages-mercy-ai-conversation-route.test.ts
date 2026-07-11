@@ -375,7 +375,7 @@ describe("Pages /api/mercy-ai sentence-correction mode", () => {
     expect(body.corrected).toBe("");
   });
 
-  it("recovers the confirmed buy-a-head hat correction when OpenAI abstains", async () => {
+  it("does not override OpenAI abstain with a hardcoded buy-a-head correction", async () => {
     const fetchMock = vi.fn<typeof fetch>().mockResolvedValueOnce(
       jsonResponse({
         choices: [{
@@ -402,10 +402,10 @@ describe("Pages /api/mercy-ai sentence-correction mode", () => {
 
     expect(response.status).toBe(200);
     await expect(response.json()).resolves.toMatchObject({
-      confident: true,
-      corrected: "Hello. I bought a hat yesterday because someone is coming, and I am going to be out a lot, so I need a hat.",
-      explanation: expect.stringContaining("'Head' được sửa thành 'hat'"),
-      grammarTip: expect.stringContaining("bought"),
+      confident: false,
+      corrected: "",
+      explanation: "Mercy chưa sửa chắc câu này. Bạn thử viết ngắn hơn, rõ hơn rồi gửi lại nhé.",
+      grammarTip: "",
     });
   });
 
