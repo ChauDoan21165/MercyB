@@ -7,6 +7,26 @@ const corsHeaders = {
   'Access-Control-Allow-Origin': '*',
   'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
 };
+const MODERATION_TIMEOUT_MS = 10_000;
+
+const loggedMissingEnv = new Set<string>();
+
+function getRequiredEnv(name: string): string | null {
+  const value = Deno.env.get(name)?.trim() ?? "";
+  if (value) return value;
+  if (!loggedMissingEnv.has(name)) {
+    console.error(`[room-chat] Missing required env ${name}`);
+    loggedMissingEnv.add(name);
+  }
+  return null;
+}
+
+function jsonResponse(body: unknown, status = 200): Response {
+  return new Response(
+    JSON.stringify(body),
+    { status, headers: { ...corsHeaders, 'Content-Type': 'application/json' } },
+  );
+}
 
 // Load room data from database
 async function loadRoomData(roomId: string, supabaseClient: any): Promise<any | null> {
@@ -119,15 +139,18 @@ serve(wrapHandler("room-chat", async (req) => {
     // Verify authentication
     const authHeader = req.headers.get('Authorization')
     if (!authHeader) {
-      return new Response(
-        JSON.stringify({ error: 'Authentication required' }),
-        { status: 401, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
-      )
+      return jsonResponse({ error: 'Authentication required' }, 401)
+    }
+
+    const supabaseUrl = getRequiredEnv('SUPABASE_URL');
+    const supabaseAnonKey = getRequiredEnv('SUPABASE_ANON_KEY');
+    if (!supabaseUrl || !supabaseAnonKey) {
+      return jsonResponse({ error: 'Room chat is temporarily unavailable' }, 500);
     }
 
     const supabaseClient = createClient(
-      Deno.env.get('SUPABASE_URL') ?? '',
-      Deno.env.get('SUPABASE_ANON_KEY') ?? '',
+      supabaseUrl,
+      supabaseAnonKey,
       { global: { headers: { Authorization: authHeader } } }
     )
 
@@ -190,29 +213,44 @@ serve(wrapHandler("room-chat", async (req) => {
     }
 
     // Server-side content moderation
-    const serviceSupabase = createClient(
-      Deno.env.get('SUPABASE_URL') ?? '',
-      Deno.env.get('SUPABASE_SERVICE_ROLE_KEY') ?? ''
-    );
+    const supabaseServiceKey = getRequiredEnv('SUPABASE_SERVICE_ROLE_KEY');
+    if (!supabaseServiceKey) {
+      return jsonResponse({ error: 'Room chat is temporarily unavailable' }, 500);
+    }
 
-    const moderationResponse = await fetch(
-      `${Deno.env.get('SUPABASE_URL')}/functions/v1/content-moderation`,
-      {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')}`
-        },
-        body: JSON.stringify({
-          content: message,
-          userId: user.id,
-          roomId,
-          language: 'en'
-        })
+    const moderationController = new AbortController();
+    const moderationTimeout = setTimeout(() => moderationController.abort(), MODERATION_TIMEOUT_MS);
+    let moderationResponse: Response | null = null;
+    try {
+      moderationResponse = await fetch(
+        `${supabaseUrl}/functions/v1/content-moderation`,
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${supabaseServiceKey}`
+          },
+          body: JSON.stringify({
+            content: message,
+            userId: user.id,
+            roomId,
+            language: 'en'
+          }),
+          signal: moderationController.signal,
+        }
+      );
+    } catch (error) {
+      const isAbort = error instanceof Error && error.name === 'AbortError';
+      if (isAbort) {
+        console.error('[room-chat] content moderation timed out');
+      } else {
+        console.error('[room-chat] content moderation failed:', error);
       }
-    );
+    } finally {
+      clearTimeout(moderationTimeout);
+    }
 
-    if (moderationResponse.ok) {
+    if (moderationResponse?.ok) {
       const moderationResult = await moderationResponse.json();
       if (!moderationResult.allowed) {
         return new Response(
