@@ -1,16 +1,19 @@
 // Cost telemetry for the Cloudflare Pages Function `/api/mercy-ai`.
 //
-// Writes VND-costed, language_pair-tagged AI-spend rows to `ai_usage_logs` —
-// the table the admin CostMonitoring page reads. This is the CF/Workers-runtime
-// counterpart of the Deno edge `_shared/aiUsage.ts#logAiUsageLog`; it cannot
-// import that module (different runtime / esm.sh URL imports), so the pricing
-// and language-pair derivation are duplicated here and kept in sync.
+// Writes VND-costed AI-spend rows to `ai_usage_logs` — the table the admin
+// CostMonitoring page reads. When the optional `language_pair` migration exists,
+// the row is tagged with it; otherwise the row is retried without that column.
+// This is the CF/Workers-runtime counterpart of the Deno edge
+// `_shared/aiUsage.ts#logAiUsageLog`; it cannot import that module (different
+// runtime / esm.sh URL imports), so the pricing and language-pair derivation are
+// duplicated here and kept in sync.
 //
 // Contract (identical to the edge instrumentation):
 // - service-role insert; `ai_usage_logs.user_id` is NOT NULL, so a missing /
 //   non-UUID userId SKIPS the row rather than fabricating a user.
 // - FIRE-AND-FORGET: scheduled via the Pages event context `waitUntil`; never
-//   blocks or fails the learner's response, and every failure is swallowed.
+//   blocks or fails the learner's response, but failures are logged with
+//   `console.error` so Cloudflare Function logs expose the cause.
 // - NO fabricated numbers: callers invoke this only when the provider returned
 //   real OpenAI token usage. The DeepSeek path logs nothing (no multi-provider
 //   VND pricing yet).
@@ -55,6 +58,21 @@ function deriveLanguagePair(native: string | null | undefined, target = "en"): s
 const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 
 type WithWaitUntil = { waitUntil?: (promise: Promise<unknown>) => void };
+type AiUsageInsert = {
+  user_id: string;
+  feature: string;
+  model: string;
+  input_tokens: number;
+  output_tokens: number;
+  estimated_cost_vnd: number;
+  language_pair?: string | null;
+  meta: Record<string, unknown>;
+};
+
+function isMissingLanguagePairColumn(error: { message?: string; code?: string } | null): boolean {
+  const message = String(error?.message ?? "");
+  return error?.code === "PGRST204" || /\blanguage_pair\b/i.test(message);
+}
 
 /**
  * Fire-and-forget AI-spend log for the CF Pages runtime. Scheduled via
@@ -81,11 +99,13 @@ export function logMercyAiUsage(
 
   const task = (async () => {
     if (!supabaseUrl || !serviceKey) {
-      console.warn(`[${params.feature}] ai_usage_logs skipped: no service-role key`);
+      console.error(
+        `[${params.feature}] ai_usage_logs skipped: missing SUPABASE_SERVICE_ROLE_KEY`,
+      );
       return;
     }
     if (!params.userId || !UUID_RE.test(params.userId)) {
-      console.warn(`[${params.feature}] ai_usage_logs skipped: missing/invalid userId`);
+      console.error(`[${params.feature}] ai_usage_logs skipped: missing/invalid userId`);
       return;
     }
 
@@ -116,7 +136,8 @@ export function logMercyAiUsage(
       params.outputTokens,
     );
 
-    const { error } = await client.from("ai_usage_logs").insert({
+    const baseMeta = params.meta ?? {};
+    const row: AiUsageInsert = {
       user_id: params.userId,
       feature: params.feature,
       model: params.model,
@@ -124,12 +145,23 @@ export function logMercyAiUsage(
       output_tokens: normalizeTokenCount(params.outputTokens),
       estimated_cost_vnd: estimatedCostVnd,
       language_pair: languagePair,
-      meta: params.meta ?? {},
-    });
+      meta: { ...baseMeta, ...(languagePair ? { languagePair } : {}) },
+    };
+    const { error } = await client.from("ai_usage_logs").insert(row);
     if (error) {
-      console.warn(`[${params.feature}] ai_usage_logs insert failed:`, error.message);
+      if (isMissingLanguagePairColumn(error)) {
+        const { language_pair: _languagePair, ...schemaCompatibleRow } = row;
+        const retry = await client.from("ai_usage_logs").insert(schemaCompatibleRow);
+        if (!retry.error) return;
+        console.error(
+          `[${params.feature}] ai_usage_logs insert failed after language_pair fallback:`,
+          retry.error.message,
+        );
+        return;
+      }
+      console.error(`[${params.feature}] ai_usage_logs insert failed:`, error.message);
     }
-  })().catch((e) => console.warn(`[${params.feature}] ai_usage_logs background failed:`, e));
+  })().catch((e) => console.error(`[${params.feature}] ai_usage_logs background failed:`, e));
 
   const waitUntil = (context as PagesContext & WithWaitUntil).waitUntil;
   if (typeof waitUntil === "function") waitUntil(task);
