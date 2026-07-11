@@ -1,0 +1,391 @@
+{
+  "benchmarkVersion": "lpi-judgment-v1",
+  "caseCount": 40,
+  "actions": [
+    "correct_now",
+    "defer_to_recap",
+    "log_silently"
+  ],
+  "scores": [
+    {
+      "policy": "MercyBlade policy",
+      "correct": 36,
+      "total": 40,
+      "accuracy": 0.9
+    },
+    {
+      "policy": "Always-correct baseline",
+      "correct": 16,
+      "total": 40,
+      "accuracy": 0.4
+    },
+    {
+      "policy": "Seeded-random baseline",
+      "correct": 16,
+      "total": 40,
+      "accuracy": 0.4
+    }
+  ],
+  "predictions": [
+    {
+      "id": "first-target-article",
+      "gold": "correct_now",
+      "predictions": {
+        "mercyBlade": "correct_now",
+        "alwaysCorrect": "correct_now",
+        "seededRandom": "log_silently"
+      }
+    },
+    {
+      "id": "first-target-past-tense",
+      "gold": "correct_now",
+      "predictions": {
+        "mercyBlade": "correct_now",
+        "alwaysCorrect": "correct_now",
+        "seededRandom": "defer_to_recap"
+      }
+    },
+    {
+      "id": "first-target-plural-s",
+      "gold": "correct_now",
+      "predictions": {
+        "mercyBlade": "correct_now",
+        "alwaysCorrect": "correct_now",
+        "seededRandom": "correct_now"
+      }
+    },
+    {
+      "id": "first-target-word-order",
+      "gold": "correct_now",
+      "predictions": {
+        "mercyBlade": "correct_now",
+        "alwaysCorrect": "correct_now",
+        "seededRandom": "log_silently"
+      }
+    },
+    {
+      "id": "first-meaning-blocker",
+      "gold": "correct_now",
+      "predictions": {
+        "mercyBlade": "correct_now",
+        "alwaysCorrect": "correct_now",
+        "seededRandom": "correct_now"
+      }
+    },
+    {
+      "id": "first-dangerous-negation",
+      "gold": "correct_now",
+      "predictions": {
+        "mercyBlade": "correct_now",
+        "alwaysCorrect": "correct_now",
+        "seededRandom": "log_silently"
+      }
+    },
+    {
+      "id": "first-medium-preposition",
+      "gold": "defer_to_recap",
+      "predictions": {
+        "mercyBlade": "defer_to_recap",
+        "alwaysCorrect": "correct_now",
+        "seededRandom": "defer_to_recap"
+      }
+    },
+    {
+      "id": "first-medium-collocation",
+      "gold": "defer_to_recap",
+      "predictions": {
+        "mercyBlade": "defer_to_recap",
+        "alwaysCorrect": "correct_now",
+        "seededRandom": "correct_now"
+      }
+    },
+    {
+      "id": "first-low-pronunciation",
+      "gold": "log_silently",
+      "predictions": {
+        "mercyBlade": "log_silently",
+        "alwaysCorrect": "correct_now",
+        "seededRandom": "defer_to_recap"
+      }
+    },
+    {
+      "id": "first-low-punctuation",
+      "gold": "log_silently",
+      "predictions": {
+        "mercyBlade": "log_silently",
+        "alwaysCorrect": "correct_now",
+        "seededRandom": "defer_to_recap"
+      }
+    },
+    {
+      "id": "repeat-article-second",
+      "gold": "defer_to_recap",
+      "predictions": {
+        "mercyBlade": "defer_to_recap",
+        "alwaysCorrect": "correct_now",
+        "seededRandom": "correct_now"
+      }
+    },
+    {
+      "id": "repeat-article-third",
+      "gold": "correct_now",
+      "predictions": {
+        "mercyBlade": "correct_now",
+        "alwaysCorrect": "correct_now",
+        "seededRandom": "defer_to_recap"
+      }
+    },
+    {
+      "id": "repeat-past-third",
+      "gold": "correct_now",
+      "predictions": {
+        "mercyBlade": "correct_now",
+        "alwaysCorrect": "correct_now",
+        "seededRandom": "correct_now"
+      }
+    },
+    {
+      "id": "repeat-subject-verb-third",
+      "gold": "correct_now",
+      "predictions": {
+        "mercyBlade": "correct_now",
+        "alwaysCorrect": "correct_now",
+        "seededRandom": "log_silently"
+      }
+    },
+    {
+      "id": "repeat-word-order-fourth",
+      "gold": "correct_now",
+      "predictions": {
+        "mercyBlade": "correct_now",
+        "alwaysCorrect": "correct_now",
+        "seededRandom": "log_silently"
+      }
+    },
+    {
+      "id": "repeat-low-pronunciation",
+      "gold": "defer_to_recap",
+      "predictions": {
+        "mercyBlade": "defer_to_recap",
+        "alwaysCorrect": "correct_now",
+        "seededRandom": "defer_to_recap"
+      }
+    },
+    {
+      "id": "repeat-low-spelling",
+      "gold": "defer_to_recap",
+      "predictions": {
+        "mercyBlade": "defer_to_recap",
+        "alwaysCorrect": "correct_now",
+        "seededRandom": "log_silently"
+      }
+    },
+    {
+      "id": "repeat-filler-words",
+      "gold": "defer_to_recap",
+      "predictions": {
+        "mercyBlade": "log_silently",
+        "alwaysCorrect": "correct_now",
+        "seededRandom": "log_silently"
+      }
+    },
+    {
+      "id": "repeat-meaning-blocker",
+      "gold": "correct_now",
+      "predictions": {
+        "mercyBlade": "correct_now",
+        "alwaysCorrect": "correct_now",
+        "seededRandom": "correct_now"
+      }
+    },
+    {
+      "id": "repeat-negation-third",
+      "gold": "correct_now",
+      "predictions": {
+        "mercyBlade": "correct_now",
+        "alwaysCorrect": "correct_now",
+        "seededRandom": "correct_now"
+      }
+    },
+    {
+      "id": "burst-target-after-three-errors",
+      "gold": "defer_to_recap",
+      "predictions": {
+        "mercyBlade": "defer_to_recap",
+        "alwaysCorrect": "correct_now",
+        "seededRandom": "defer_to_recap"
+      }
+    },
+    {
+      "id": "burst-target-tense",
+      "gold": "defer_to_recap",
+      "predictions": {
+        "mercyBlade": "defer_to_recap",
+        "alwaysCorrect": "correct_now",
+        "seededRandom": "defer_to_recap"
+      }
+    },
+    {
+      "id": "burst-form-preposition",
+      "gold": "log_silently",
+      "predictions": {
+        "mercyBlade": "log_silently",
+        "alwaysCorrect": "correct_now",
+        "seededRandom": "defer_to_recap"
+      }
+    },
+    {
+      "id": "burst-form-agreement",
+      "gold": "defer_to_recap",
+      "predictions": {
+        "mercyBlade": "log_silently",
+        "alwaysCorrect": "correct_now",
+        "seededRandom": "defer_to_recap"
+      }
+    },
+    {
+      "id": "burst-low-punctuation",
+      "gold": "log_silently",
+      "predictions": {
+        "mercyBlade": "log_silently",
+        "alwaysCorrect": "correct_now",
+        "seededRandom": "correct_now"
+      }
+    },
+    {
+      "id": "burst-low-fluency",
+      "gold": "log_silently",
+      "predictions": {
+        "mercyBlade": "log_silently",
+        "alwaysCorrect": "correct_now",
+        "seededRandom": "log_silently"
+      }
+    },
+    {
+      "id": "burst-meaning-blocker",
+      "gold": "correct_now",
+      "predictions": {
+        "mercyBlade": "correct_now",
+        "alwaysCorrect": "correct_now",
+        "seededRandom": "correct_now"
+      }
+    },
+    {
+      "id": "burst-negation",
+      "gold": "correct_now",
+      "predictions": {
+        "mercyBlade": "correct_now",
+        "alwaysCorrect": "correct_now",
+        "seededRandom": "correct_now"
+      }
+    },
+    {
+      "id": "low-severity-single-hesitation",
+      "gold": "log_silently",
+      "predictions": {
+        "mercyBlade": "log_silently",
+        "alwaysCorrect": "correct_now",
+        "seededRandom": "defer_to_recap"
+      }
+    },
+    {
+      "id": "low-severity-single-capitalization",
+      "gold": "log_silently",
+      "predictions": {
+        "mercyBlade": "log_silently",
+        "alwaysCorrect": "correct_now",
+        "seededRandom": "correct_now"
+      }
+    },
+    {
+      "id": "low-severity-single-register",
+      "gold": "log_silently",
+      "predictions": {
+        "mercyBlade": "log_silently",
+        "alwaysCorrect": "correct_now",
+        "seededRandom": "log_silently"
+      }
+    },
+    {
+      "id": "low-severity-repeated-capitalization",
+      "gold": "defer_to_recap",
+      "predictions": {
+        "mercyBlade": "defer_to_recap",
+        "alwaysCorrect": "correct_now",
+        "seededRandom": "correct_now"
+      }
+    },
+    {
+      "id": "low-severity-repeated-register",
+      "gold": "defer_to_recap",
+      "predictions": {
+        "mercyBlade": "defer_to_recap",
+        "alwaysCorrect": "correct_now",
+        "seededRandom": "correct_now"
+      }
+    },
+    {
+      "id": "frustrated-high-target",
+      "gold": "defer_to_recap",
+      "predictions": {
+        "mercyBlade": "defer_to_recap",
+        "alwaysCorrect": "correct_now",
+        "seededRandom": "log_silently"
+      }
+    },
+    {
+      "id": "frustrated-high-form",
+      "gold": "defer_to_recap",
+      "predictions": {
+        "mercyBlade": "defer_to_recap",
+        "alwaysCorrect": "correct_now",
+        "seededRandom": "defer_to_recap"
+      }
+    },
+    {
+      "id": "frustrated-high-collocation",
+      "gold": "defer_to_recap",
+      "predictions": {
+        "mercyBlade": "defer_to_recap",
+        "alwaysCorrect": "correct_now",
+        "seededRandom": "correct_now"
+      }
+    },
+    {
+      "id": "frustrated-high-meaning",
+      "gold": "correct_now",
+      "predictions": {
+        "mercyBlade": "correct_now",
+        "alwaysCorrect": "correct_now",
+        "seededRandom": "defer_to_recap"
+      }
+    },
+    {
+      "id": "frustrated-high-negation",
+      "gold": "correct_now",
+      "predictions": {
+        "mercyBlade": "correct_now",
+        "alwaysCorrect": "correct_now",
+        "seededRandom": "correct_now"
+      }
+    },
+    {
+      "id": "frustrated-low-spelling",
+      "gold": "log_silently",
+      "predictions": {
+        "mercyBlade": "defer_to_recap",
+        "alwaysCorrect": "correct_now",
+        "seededRandom": "defer_to_recap"
+      }
+    },
+    {
+      "id": "frustrated-low-hesitation",
+      "gold": "log_silently",
+      "predictions": {
+        "mercyBlade": "defer_to_recap",
+        "alwaysCorrect": "correct_now",
+        "seededRandom": "defer_to_recap"
+      }
+    }
+  ]
+}
