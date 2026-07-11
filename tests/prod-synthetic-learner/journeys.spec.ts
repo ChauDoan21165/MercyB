@@ -85,7 +85,11 @@ test("(a) sign-in completes without redirect bounce", async ({ page }, testInfo)
     await page.locator('input[type="password"], input[autocomplete="current-password"]').first().fill(SYNTH_PASSWORD);
     await Promise.all([
       page.waitForURL((u) => !/\/(signin|login)/.test(new URL(u).pathname), { timeout: 20_000 }).catch(() => {}),
-      page.locator('button:has-text(/sign ?in|log ?in|đăng ?nhập/i), button[type="submit"]').first().click(),
+      // Real /signin button is <button type="button"> named "Đăng nhập · Sign in"
+      // (EmailBlock.tsx:782) — there is NO button[type="submit"] on the page.
+      // `:has-text(/regex/)` is invalid inside a CSS string (throws
+      // "Unexpected token / while parsing css selector"), so match by role+name.
+      page.getByRole("button", { name: /đăng nhập · sign in|^sign ?in$|^log ?in$/i }).or(page.locator('button[type="submit"]')).first().click(),
     ]);
     const landed = new URL(page.url()).pathname;
     ok = !/\/(signin|login)/.test(landed);
@@ -109,7 +113,10 @@ test("(b/c/d) correction → feedback tap → row lands with rule_or_detector_id
     const field = page.getByRole("textbox").first();
     await field.click();
     await field.fill(SEEDED_ERROR_SENTENCE);
-    await page.locator('button:has-text(/Sửa câu|Submit|Gửi|Kiểm tra/i), button[type="submit"]').first().click();
+    // Grammar submit is <button type="button"> (CorrectionMode.tsx:140, label
+    // ui.submit) — no button[type="submit"]. Same `:has-text(/regex/)` CSS bug as
+    // journey (a); match by role+name instead.
+    await page.getByRole("button", { name: /Sửa câu|Submit|Gửi|Kiểm tra/i }).or(page.locator('button[type="submit"]')).first().click();
     // The correction is "rendered" iff the feedback buttons mount (they only
     // render for a correction that carries a real rule_or_detector_id).
     await expect(page.getByTestId("correction-feedback-helpful")).toBeVisible({ timeout: 30_000 });
