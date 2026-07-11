@@ -25,7 +25,7 @@ import {
   hasSyntheticCreds,
   redact,
 } from "./env";
-import { resolveExpectedDeploySha } from "./expectedDeploy";
+import { isDeployShaAcceptable } from "./expectedDeploy";
 import type { JourneyResult } from "./report";
 
 test.describe.configure({ mode: "default", timeout: 90_000 });
@@ -216,11 +216,14 @@ test("(f) version.json matches expected deploy sha", async ({ request }, testInf
   const t0 = Date.now();
   let ok = false, detail = "";
   try {
-    const expected = await resolveExpectedDeploySha(request);
     const v = await (await request.get(`${SYNTH_BASE_URL}/version.json`, { timeout: 15_000 })).json();
     const live = String(v.hash ?? "");
-    ok = Boolean(expected) && (live === expected || expected.startsWith(live) || live.startsWith(expected));
-    detail = `live=${live} expected=${expected || "(unresolved)"}`;
+    // Deploy-lag tolerant: live must equal CI_COMMIT_SHA or be an ancestor of it
+    // on origin/main (Cloudflare auto-deploy can lag/lead the "latest green"
+    // resolver). Fails only if live is not an ancestor (rollback/foreign build).
+    const verdict = await isDeployShaAcceptable(request, live);
+    ok = verdict.ok;
+    detail = verdict.reason;
   } catch (e) {
     detail = redact(`version check failed: ${(e as Error).message}`);
   }
