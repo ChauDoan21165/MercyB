@@ -1,7 +1,7 @@
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 import { checkRateLimit, getClientIP, rateLimitResponse } from "../_shared/rateLimit.ts";
-import { logAiUsage, isAiEnabled, isUserAiEnabled, aiDisabledResponse } from "../_shared/aiUsage.ts";
+import { logAiUsage, isAiEnabled, isUserAiEnabled, aiDisabledResponse, logAiUsageLogBackground } from "../_shared/aiUsage.ts";
 import { SAFE_RESPONSE, SAFE_ENCOURAGEMENT } from "../_shared/crisisResponse.ts";
 
 const corsHeaders = {
@@ -193,6 +193,15 @@ Remember to return valid JSON only.`;
         tokensInput: usage.prompt_tokens || 0,
         tokensOutput: usage.completion_tokens || 0,
         endpoint: 'guide-english-helper',
+      });
+      // Additive: also record VND-costed, language-tagged spend to ai_usage_logs
+      // (the CostMonitoring table). Fire-and-forget; never delays the reply.
+      logAiUsageLogBackground({
+        userId,
+        feature: 'guide-english-helper',
+        model: 'gpt-4o-mini',
+        inputTokens: usage.prompt_tokens || 0,
+        outputTokens: usage.completion_tokens || 0,
       });
     }
 

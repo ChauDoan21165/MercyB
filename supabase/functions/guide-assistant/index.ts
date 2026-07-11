@@ -3,7 +3,7 @@ import { serve } from "https://deno.land/std@0.224.0/http/server.ts";
 import OpenAI from "https://esm.sh/openai@4.56.0";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2.45.4";
 import { checkRateLimit, getClientIP, rateLimitResponse } from "../_shared/rateLimit.ts";
-import { logAiUsage, isAiEnabled, isUserAiEnabled, aiDisabledResponse } from "../_shared/aiUsage.ts";
+import { logAiUsage, isAiEnabled, isUserAiEnabled, aiDisabledResponse, logAiUsageLogBackground } from "../_shared/aiUsage.ts";
 import { SAFE_RESPONSE } from "../_shared/crisisResponse.ts";
 
 // Restored from deployed prod v127 (lost in PR #198). Abuse rate-limit:
@@ -561,6 +561,18 @@ ${JSON.stringify(plan, null, 2)}
       endpoint: "guide-assistant",
     });
 
+    // Additive: VND-costed, language-tagged spend to ai_usage_logs. Only when the
+    // provider returned real usage (no fabricated numbers). Fire-and-forget.
+    if (first.usage) {
+      logAiUsageLogBackground({
+        userId: user.id,
+        feature: "guide-assistant",
+        model,
+        inputTokens: first.usage.prompt_tokens ?? 0,
+        outputTokens: first.usage.completion_tokens ?? 0,
+      });
+    }
+
     if (parsed1) {
       const normalized = normalizePronunciationJson(parsed1, tierPolicy.depth);
       const weaknesses = extractWeaknesses(normalized);
@@ -623,6 +635,18 @@ ${stripMarkdownCodeFences(content1).slice(0, 6000)}
       tokensOutput: second.usage?.completion_tokens ?? 0,
       endpoint: "guide-assistant",
     });
+
+    // Additive: VND-costed, language-tagged spend to ai_usage_logs. Only when the
+    // provider returned real usage (no fabricated numbers). Fire-and-forget.
+    if (second.usage) {
+      logAiUsageLogBackground({
+        userId: user.id,
+        feature: "guide-assistant",
+        model,
+        inputTokens: second.usage.prompt_tokens ?? 0,
+        outputTokens: second.usage.completion_tokens ?? 0,
+      });
+    }
 
     if (parsed2) {
       const normalized = normalizePronunciationJson(parsed2, tierPolicy.depth);
