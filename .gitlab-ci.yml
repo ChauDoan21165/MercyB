@@ -1828,6 +1828,14 @@ flywheel-mine:
 # keepalive is retired (see the migration).
 prod-synthetic-learner:
   <<: [*node_job, *local_runner]
+  # Pin to C2 (mac-runner-2, id 53419565 — Chau's always-on Air) ONLY. Overrides
+  # the *local_runner tags: [local] so the job requires BOTH tags; only that one
+  # runner carries `mac-c2`, so the synthetic learner never lands on a cold/slow
+  # shell runner. Target is unchanged (still prod: PROD_SYNTH_BASE_URL default
+  # https://mercyblade.com) — this pins the HOST, not the URL. Synthetic job only.
+  tags:
+    - local
+    - mac-c2
   stage: verify
   interruptible: false
   rules:
