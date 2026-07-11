@@ -28,6 +28,7 @@
     "check:delete-account-guard": "vitest run supabase/functions/delete-account/__tests__ src/pages/__tests__/deleteAccountFlow.test.ts && node scripts/check-delete-account-coverage.mjs",
     "check:delete-account-live": "node scripts/check-delete-account-live.mjs",
     "check:mercy-grammar": "rg -n \"localGrammarFallback|tabs/GrammarWritingTab|grammar-writing/fallback\" src && exit 1 || exit 0",
+    "check:supabase-types-drift": "node scripts/check-supabase-types-drift.mjs",
     "placement:v3:live": "tsx scripts/placement-v3/run-live-validation.ts",
     "placement:a2:validate": "bash scripts/observability/a2-auto-validate.sh",
     "placement:a2:evidence": "bash scripts/observability/a2-generate-evidence.sh",
