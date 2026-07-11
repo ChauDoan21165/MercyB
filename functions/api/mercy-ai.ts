@@ -27,6 +27,7 @@ import {
   readJsonBody,
   type PagesContext,
 } from "../../src/pages-functions/http";
+import { logMercyAiUsage } from "../../api/_lib/aiUsageLog";
 
 type MercyAiBody = {
   mode?: string;
@@ -228,6 +229,16 @@ export async function onRequestPost(context: PagesContext): Promise<Response> {
         { supabaseUrl: cfSupabaseUrl, serviceKey: cfServiceKey },
       );
 
+      // Additive: VND-costed, language-tagged spend to ai_usage_logs (the
+      // CostMonitoring table). OpenAI-provider only; fire-and-forget.
+      logMercyAiUsage(context, {
+        userId: user.id,
+        feature: "mercy-ai:ai-conversation-turn",
+        model: result.model,
+        inputTokens: result.cost.promptTokens,
+        outputTokens: result.cost.completionTokens,
+      });
+
       return json(result);
     } catch (err) {
       return json({
@@ -284,11 +295,25 @@ On low-confidence: {"corrected":"","explanation":"${explainLang === "vi" ? viAbs
         }),
       });
       if (!corrResponse.ok) return json({ error: "correction_failed" }, 500);
-      const corrData = await corrResponse.json() as { choices?: Array<{ message?: { content?: string } }> };
+      const corrData = await corrResponse.json() as {
+        choices?: Array<{ message?: { content?: string } }>;
+        usage?: { prompt_tokens?: number; completion_tokens?: number };
+      };
       const raw = corrData.choices?.[0]?.message?.content ?? "{}";
       let parsed: { corrected?: string; explanation?: string; grammarTip?: string; confident?: boolean } = {};
       try { parsed = JSON.parse(raw); } catch { /* leave empty */ }
       const confident = parsed.confident !== false;
+      // Additive: VND-costed spend to ai_usage_logs. Only when usage present
+      // (no fabricated numbers). Fire-and-forget.
+      if (corrData.usage) {
+        logMercyAiUsage(context, {
+          userId: user.id,
+          feature: "mercy-ai:sentence-correction",
+          model: "gpt-4o-mini",
+          inputTokens: corrData.usage.prompt_tokens ?? 0,
+          outputTokens: corrData.usage.completion_tokens ?? 0,
+        });
+      }
       return json({
         corrected: norm(parsed.corrected) || (confident ? learnerText : ""),
         explanation: norm(parsed.explanation) || (confident ? "" : (explainLang === "vi" ? viAbstain : enAbstain)),
@@ -363,6 +388,20 @@ Rules:
   });
 
   if (!response.ok) return json({ error: `OpenAI ${response.status}` }, 502);
-  const data = await response.json() as { choices?: Array<{ message?: { content?: string } }> };
+  const data = await response.json() as {
+    choices?: Array<{ message?: { content?: string } }>;
+    usage?: { prompt_tokens?: number; completion_tokens?: number };
+  };
+  // Additive: VND-costed spend to ai_usage_logs for the Mercy-host chat path.
+  // Only when usage present (no fabricated numbers). Fire-and-forget.
+  if (data.usage) {
+    logMercyAiUsage(context, {
+      userId: user.id,
+      feature: "mercy-ai:host",
+      model: "gpt-4o-mini",
+      inputTokens: data.usage.prompt_tokens ?? 0,
+      outputTokens: data.usage.completion_tokens ?? 0,
+    });
+  }
   return json({ text: data.choices?.[0]?.message?.content ?? "" });
 }
