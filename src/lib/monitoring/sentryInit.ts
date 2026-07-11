@@ -145,10 +145,11 @@ export function initSentry(): void {
         import.meta.env.VITE_APP_ENV ?? import.meta.env.MODE ?? "development",
       ).trim();
       const isProd = env === "production" || env === "prod";
-      // Vercel injects VERCEL_GIT_COMMIT_SHA at build time; vite.config.ts
-      // re-exports it as VITE_VERCEL_GIT_COMMIT_SHA via `define`. Empty in
-      // local builds → undefined release (Sentry's auto-detect default).
+      // Cloudflare Pages uses the MercyB bundle hash; Vercel's SHA is kept as
+      // a legacy fallback for non-Cloudflare builds. Empty in local builds →
+      // undefined release (Sentry's auto-detect default).
       const release =
+        String(import.meta.env.VITE_MERCYB_BUILD_HASH ?? "").trim() ||
         String(import.meta.env.VITE_VERCEL_GIT_COMMIT_SHA ?? "").trim() ||
         undefined;
 
@@ -433,7 +434,10 @@ export function scrubBreadcrumb<B extends SentryBreadcrumbLike>(breadcrumb: B): 
 // Build-time release SHA. Compared against event.release so we can tag
 // whether the event originated in the bundle we're currently running.
 // Empty in local builds — in that case we tag current_release="unknown".
-const BUILD_RELEASE = String(import.meta.env.VITE_VERCEL_GIT_COMMIT_SHA ?? "").trim();
+const BUILD_RELEASE = (
+  String(import.meta.env.VITE_MERCYB_BUILD_HASH ?? "").trim() ||
+  String(import.meta.env.VITE_VERCEL_GIT_COMMIT_SHA ?? "").trim()
+);
 
 // Stack-frame URL patterns that mark events as "not our code". Anything
 // that matches in the message, exception value, exception stack-frame

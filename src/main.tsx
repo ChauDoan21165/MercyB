@@ -110,6 +110,7 @@ import {
   stringLooksLikeExternalNoise,
 } from "@/lib/monitoring/sentryInit";
 import { installBootErrorBuffer } from "@/lib/monitoring/bootErrorBuffer";
+import { installClientErrorSentinel } from "@/lib/monitoring/clientErrors";
 import { armSentryActivation, activateSentry } from "@/lib/monitoring/sentryActivation";
 // runConfigHealthCheck and initializeWebVitals are imported dynamically
 // from inside an idle-callback below — see `deferNonCriticalBootWork`. Both
@@ -172,6 +173,11 @@ const bootErrors = installBootErrorBuffer({
   // Trigger (1): first window error/rejection → pull Sentry init.
   onFirstCapture: () => activateSentry("boot-error"),
 });
+
+// R1 SENTINEL: DB-first client error capture. This is independent of Sentry
+// and runs even for anonymous users so signed-out page-load crashes and failed
+// API calls are not invisible.
+installClientErrorSentinel();
 
 // Register what "init Sentry now" concretely does, and how an explicit
 // pre-init captureError() enqueues into THIS buffer. Done synchronously
