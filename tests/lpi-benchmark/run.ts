@@ -1,5 +1,11 @@
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { dirname, resolve } from "node:path";
+import {
+  decideCorrection,
+  HIGH_ERROR_DENSITY_THRESHOLD,
+  type PolicyInput,
+  type PolicySeverity,
+} from "../../src/services/lpi/correctionPolicy.js";
 
 type Action = "correct_now" | "defer_to_recap" | "log_silently";
 type Severity = "meaning_blocking" | "target_form" | "form" | "fluency" | "minor";
@@ -24,49 +30,66 @@ interface PolicyScore {
   accuracy: number;
 }
 
+interface AdaptedPolicyInput {
+  input: PolicyInput;
+  adapterFlags: string[];
+}
+
 const ACTIONS: Action[] = ["correct_now", "defer_to_recap", "log_silently"];
 
-// SYNC: If LPI-1 lands src/services/lpi/correctionPolicy.ts, replace this table
-// with an import from that module and keep the benchmark cases unchanged.
-const MERCYBLADE_RULE_TABLE = {
-  burstDensity: 5,
-  burstConsecutive: 3,
-  repeatedFormThreshold: 3,
-  repeatedMinorThreshold: 4,
-} as const;
+function adaptCaseForShippedPolicy(testCase: BenchmarkCase): AdaptedPolicyInput {
+  const { severity, sessionErrorDensity } = testCase.context;
+  const adapterFlags: string[] = [];
+  let adaptedSeverity: PolicySeverity;
+
+  // Explicit benchmark-to-production adapter:
+  // - target_form -> high
+  // - form -> medium
+  // - fluency -> low
+  // - minor -> low
+  // The benchmark also has meaning_blocking. Production has no equivalent, so
+  // those cases are mapped to high and flagged as lossy instead of hidden.
+  switch (severity) {
+    case "meaning_blocking":
+      adaptedSeverity = "high";
+      adapterFlags.push("lossy_severity_mapping: meaning_blocking -> high");
+      break;
+    case "target_form":
+      adaptedSeverity = "high";
+      break;
+    case "form":
+      adaptedSeverity = "medium";
+      break;
+    case "fluency":
+    case "minor":
+      adaptedSeverity = "low";
+      break;
+    default: {
+      const unreachable: never = severity;
+      throw new Error(`Unhandled benchmark severity: ${unreachable}`);
+    }
+  }
+
+  const adaptedDensity = Math.min(sessionErrorDensity / 5, 1);
+  if (adaptedDensity === HIGH_ERROR_DENSITY_THRESHOLD) {
+    adapterFlags.push("density_boundary: integer count 3 maps exactly to 0.6");
+  }
+
+  return {
+    input: {
+      detectorTag: testCase.context.detectorTag,
+      severity: adaptedSeverity,
+      recurrenceCount: testCase.context.recurrenceCount,
+      sessionErrorDensity: adaptedDensity,
+      consecutiveErrors: testCase.context.consecutiveErrors,
+      correctionsThisBurst: 0,
+    },
+    adapterFlags,
+  };
+}
 
 function mercyBladePolicy(testCase: BenchmarkCase): Action {
-  const { severity, recurrenceCount, sessionErrorDensity, consecutiveErrors } = testCase.context;
-  const inBurst =
-    sessionErrorDensity >= MERCYBLADE_RULE_TABLE.burstDensity ||
-    consecutiveErrors >= MERCYBLADE_RULE_TABLE.burstConsecutive;
-
-  if (severity === "meaning_blocking") {
-    return "correct_now";
-  }
-
-  if (inBurst) {
-    if (severity === "target_form" || recurrenceCount >= MERCYBLADE_RULE_TABLE.repeatedFormThreshold) {
-      return "defer_to_recap";
-    }
-    return "log_silently";
-  }
-
-  if (severity === "target_form") {
-    return "correct_now";
-  }
-
-  if (severity === "form") {
-    return recurrenceCount >= MERCYBLADE_RULE_TABLE.repeatedFormThreshold
-      ? "correct_now"
-      : "defer_to_recap";
-  }
-
-  if (recurrenceCount >= MERCYBLADE_RULE_TABLE.repeatedMinorThreshold) {
-    return "defer_to_recap";
-  }
-
-  return "log_silently";
+  return decideCorrection(adaptCaseForShippedPolicy(testCase).input).action;
 }
 
 function alwaysCorrectPolicy(): Action {
@@ -147,18 +170,26 @@ const scores = [
   scorePolicy("Seeded-random baseline", cases, seededRandomPolicy),
 ];
 
-const predictions = cases.map((testCase, index) => ({
-  id: testCase.id,
-  gold: testCase.gold,
-  predictions: {
-    mercyBlade: mercyBladePolicy(testCase),
-    alwaysCorrect: alwaysCorrectPolicy(),
-    seededRandom: seededRandomPolicy(testCase, index),
-  },
-}));
+const predictions = cases.map((testCase, index) => {
+  const adapted = adaptCaseForShippedPolicy(testCase);
+  const mercyBladeDecision = decideCorrection(adapted.input);
+
+  return {
+    id: testCase.id,
+    gold: testCase.gold,
+    shippedPolicyInput: adapted.input,
+    adapterFlags: adapted.adapterFlags,
+    predictions: {
+      mercyBlade: mercyBladeDecision.action,
+      mercyBladeReason: mercyBladeDecision.reason,
+      alwaysCorrect: alwaysCorrectPolicy(),
+      seededRandom: seededRandomPolicy(testCase, index),
+    },
+  };
+});
 
 const output = {
-  benchmarkVersion: "lpi-judgment-v1",
+  benchmarkVersion: "lpi-judgment-v2-shipped-policy",
   caseCount: cases.length,
   actions: ACTIONS,
   scores,
