@@ -64,6 +64,15 @@ import { isPlacementEntryRouteAvailable } from "@/lib/placement/availability";
 import { reportRouteMountPerf } from "@/lib/monitoring/routePerf";
 import { captureCorrection } from "@/services/learnerCapture";
 import {
+  applyCorrectionPolicyDecision,
+  decideCorrection,
+  resolveLpiPolicyMode,
+  type LpiPolicyMode,
+  type PolicyDecision,
+  type PolicyInput,
+  type PolicySeverity,
+} from "@/services/lpi/correctionPolicy";
+import {
   AI_CORRECTION_REQUIRED_MESSAGE,
   correctWithTutorRules,
 } from "@/lib/tutor/correctionEngine";
@@ -131,7 +140,8 @@ import {
   type PivotPromptTurn,
 } from "@/lib/tutor/pivotPromptSafety";
 import CorrectionMode from "@/components/ai-tutor/CorrectionMode";
-import { detectEnVnError } from "@/lib/feedback";
+import { detectEnVnError, detectRegisterError } from "@/lib/feedback";
+import { REGISTER_TAXONOMY } from "@/lib/feedback/rule-packs/en-vn-register/taxonomy";
 import {
   getDetectorHint,
   hasShownHint,
@@ -186,6 +196,19 @@ import { TutorTodayLessonCard } from "@/components/ai-tutor/TutorMemoryCard";
 type CorrectionResult = TutorTurn & {
   grammarTip: string;
   practicePrompt: string;
+};
+
+type LpiSessionTracker = {
+  tagCounts: Map<string, number>;
+  recentErrorTurns: boolean[];
+  consecutiveErrors: number;
+  correctionsThisBurst: number;
+};
+
+type LpiDeferredRecapItem = {
+  result: CorrectionResult;
+  detectorTag: string | null;
+  queuedAtTurn: number;
 };
 
 type PracticeFeedback = {
@@ -296,6 +319,12 @@ const GRAMMAR_CORRECTION_UNAVAILABLE_MESSAGE =
   "Mercy chưa sửa chắc câu này bằng bộ quy tắc hiện tại. Bạn có thể chỉnh lại câu ngắn hơn một chút rồi bấm Sửa câu này nhé.";
 const CANNOT_CORRECT_NO_SESSION_MESSAGE =
   "Mercy cần đăng nhập để kiểm tra câu này. Bạn thử đăng nhập nhé.";
+const LPI_ERROR_DENSITY_WINDOW = 5;
+const LPI_RECAP_TURN_LIMIT = 8;
+const LPI_UNKNOWN_TAG = "__unknown__";
+const LPI_POLICY_MODE = resolveLpiPolicyMode(
+  (import.meta as ImportMeta & { env?: Record<string, string> }).env?.VITE_LPI_POLICY_MODE,
+);
 const STEP7_AZURE_BATCH_ENABLED =
   (import.meta as ImportMeta & { env?: Record<string, string> }).env
     ?.VITE_AZURE_PHONEME_BATCH_ENABLED === "true";
@@ -586,6 +615,100 @@ export function buildLocalCorrection(
   }
 
   return { ok: true, corrected: buildInputAwareCorrection(input, target), appliedRuleIds: [], status: "corrected" };
+}
+
+function createLpiSessionTracker(): LpiSessionTracker {
+  return {
+    tagCounts: new Map<string, number>(),
+    recentErrorTurns: [],
+    consecutiveErrors: 0,
+    correctionsThisBurst: 0,
+  };
+}
+
+function resolveCorrectionSeverity(detectorTag: string | null): PolicySeverity {
+  if (detectorTag) {
+    const registerPattern = REGISTER_TAXONOMY.find((pattern) => pattern.tag === detectorTag);
+    if (registerPattern?.severity) return registerPattern.severity;
+  }
+
+  // TODO(lpi): add rule/detector registry severity lookup as registries expose severity consistently.
+  return "medium";
+}
+
+function updateLpiTurnDensity(tracker: LpiSessionTracker, hasError: boolean): number {
+  tracker.recentErrorTurns = [...tracker.recentErrorTurns, hasError].slice(-LPI_ERROR_DENSITY_WINDOW);
+  if (hasError) {
+    tracker.consecutiveErrors += 1;
+  } else {
+    tracker.consecutiveErrors = 0;
+    tracker.correctionsThisBurst = 0;
+  }
+
+  const errorCount = tracker.recentErrorTurns.filter(Boolean).length;
+  return tracker.recentErrorTurns.length > 0 ? errorCount / tracker.recentErrorTurns.length : 0;
+}
+
+function buildLpiPolicyInput(
+  tracker: LpiSessionTracker,
+  detectorTag: string | null,
+  sessionErrorDensity: number,
+): PolicyInput {
+  const tagKey = detectorTag ?? LPI_UNKNOWN_TAG;
+  return {
+    detectorTag,
+    severity: resolveCorrectionSeverity(detectorTag),
+    recurrenceCount: tracker.tagCounts.get(tagKey) ?? 0,
+    sessionErrorDensity,
+    consecutiveErrors: tracker.consecutiveErrors,
+    correctionsThisBurst: tracker.correctionsThisBurst,
+  };
+}
+
+function commitLpiPolicyDecision(
+  tracker: LpiSessionTracker,
+  input: PolicyInput,
+  decision: PolicyDecision,
+  rendered: boolean,
+): void {
+  const tagKey = input.detectorTag ?? LPI_UNKNOWN_TAG;
+  tracker.tagCounts.set(tagKey, (tracker.tagCounts.get(tagKey) ?? 0) + 1);
+  if (rendered && decision.action === "correct_now") {
+    tracker.correctionsThisBurst += 1;
+  }
+}
+
+function buildLpiRecapCorrection(
+  items: LpiDeferredRecapItem[],
+  target: TutorTarget,
+  explainLanguage: ExplainLanguage,
+): CorrectionResult | null {
+  if (items.length === 0) return null;
+  const [first] = items;
+  const remaining = items.length - 1;
+  const correctedText = remaining > 0
+    ? `${first.result.correctedText} (+${remaining} more deferred tip${remaining === 1 ? "" : "s"})`
+    : first.result.correctedText;
+  const explanation = explainLanguage === "vi"
+    ? `Mercy gom ${items.length} lỗi đã hoãn để không ngắt mạch học. Mẫu đầu tiên: ${first.result.explanation}`
+    : `Mercy grouped ${items.length} deferred correction${items.length === 1 ? "" : "s"} to avoid over-interrupting. First pattern: ${first.result.explanation}`;
+
+  const { turn } = buildCorrectionTurn({
+    id: `lpi-recap-${Date.now()}-${Math.random().toString(16).slice(2, 8)}`,
+    targetLanguage: target,
+    explainLanguage,
+    userText: first.result.userText,
+    correctedText,
+    explanation,
+  });
+
+  return {
+    ...turn,
+    grammarTip: explainLanguage === "vi"
+      ? "Ôn lại một mẫu trước, rồi tiếp tục câu mới."
+      : "Review one pattern first, then continue with a new sentence.",
+    practicePrompt: first.result.practicePrompt,
+  };
 }
 
 function buildEnglishConversationExplanation(
@@ -1307,6 +1430,79 @@ export default function AiTutorPage() {
     refreshLocalEventSummary();
   };
 
+  const recordLpiPolicyDecision = (
+    mode: LpiPolicyMode,
+    input: PolicyInput,
+    decision: PolicyDecision,
+  ) => {
+    recordLearningEvent({
+      eventType: "lpi_policy_decision",
+      product: "ai_tutor",
+      targetLanguage: target,
+      mode: "grammar",
+      ruleOrDetectorId: input.detectorTag,
+      payload: {
+        action: decision.action,
+        reason: decision.reason,
+        mode,
+        recurrenceCount: input.recurrenceCount,
+        sessionErrorDensity: input.sessionErrorDensity,
+        consecutiveErrors: input.consecutiveErrors,
+      },
+    });
+    refreshLocalEventSummary();
+  };
+
+  const recordLpiLearnerTurn = (hasError: boolean): number => {
+    lpiLearnerTurnRef.current += 1;
+    return updateLpiTurnDensity(lpiTrackerRef.current, hasError);
+  };
+
+  const maybeSurfaceLpiRecap = (): boolean => {
+    const dueItems = lpiDeferredRecapRef.current.filter(
+      (item) => lpiLearnerTurnRef.current - item.queuedAtTurn >= LPI_RECAP_TURN_LIMIT,
+    );
+    if (dueItems.length === 0) return false;
+
+    const dueSet = new Set(dueItems);
+    lpiDeferredRecapRef.current = lpiDeferredRecapRef.current.filter((item) => !dueSet.has(item));
+    const recap = buildLpiRecapCorrection(dueItems, target, explainLanguage);
+    if (!recap) return false;
+    setResult(recap);
+    return true;
+  };
+
+  const applyLpiPolicyToCorrection = (
+    candidate: CorrectionResult,
+    detectorTag: string | null,
+    sessionErrorDensity: number,
+  ): boolean => {
+    if (LPI_POLICY_MODE === "off") return true;
+
+    const tracker = lpiTrackerRef.current;
+    const inputForPolicy = buildLpiPolicyInput(tracker, detectorTag, sessionErrorDensity);
+    const decision = decideCorrection(inputForPolicy);
+    const renderDecision = applyCorrectionPolicyDecision(LPI_POLICY_MODE, decision);
+    recordLpiPolicyDecision(LPI_POLICY_MODE, inputForPolicy, decision);
+    commitLpiPolicyDecision(
+      tracker,
+      inputForPolicy,
+      decision,
+      renderDecision.shouldRenderCorrection,
+    );
+
+    if (renderDecision.shouldRenderCorrection) return true;
+    if (renderDecision.shouldQueueRecap) {
+      lpiDeferredRecapRef.current.push({
+        result: candidate,
+        detectorTag,
+        queuedAtTurn: lpiLearnerTurnRef.current,
+      });
+    }
+    maybeSurfaceLpiRecap();
+    return false;
+  };
+
   const sttBaseInputRef = useRef<string>("");
   const lastCommittedSttRef = useRef<string>("");
   const lastRecordedSpeakAttemptRef = useRef<string>("");
@@ -1330,6 +1526,9 @@ export default function AiTutorPage() {
   );
   // Count corrections surfaced this session for timing-gate context.
   const surfacedCorrectionsRef = useRef(0);
+  const lpiTrackerRef = useRef<LpiSessionTracker>(createLpiSessionTracker());
+  const lpiDeferredRecapRef = useRef<LpiDeferredRecapItem[]>([]);
+  const lpiLearnerTurnRef = useRef(0);
 
   // Detailed-scoring gate (premium/trial + per-session cap). When the gate flag
   // is OFF this is a no-op (gateAllows always true → legacy behavior). Using the
@@ -2356,13 +2555,22 @@ export default function AiTutorPage() {
             );
             setLoading(false);
             setError(GRAMMAR_CORRECTION_UNAVAILABLE_MESSAGE);
+            recordLpiLearnerTurn(false);
             return;
           }
-          setResult({
+          const aiCandidate: CorrectionResult = {
             ...turn,
             grammarTip: aiResult.grammarTip,
             practicePrompt: MOCK_RESULTS_BY_TARGET[target].practicePrompt[explainLanguage],
-          });
+          };
+          const sessionErrorDensity = recordLpiLearnerTurn(true);
+          const registerDetection = detectRegisterError({ learnerText: turn.userText });
+          const detectorTag = registerDetection.matched ? registerDetection.tag : "ai-correction";
+          if (!applyLpiPolicyToCorrection(aiCandidate, detectorTag, sessionErrorDensity)) {
+            setLoading(false);
+            return;
+          }
+          setResult(aiCandidate);
           clearSpeakBoardState();
           setLatestCorrectedSeed({ correctedSentence: aiCorrected, sourceText: trimmed, updatedAt: Date.now() });
           // Legacy audit gate — kept for telemetry continuity (non-blocking).
@@ -2379,6 +2587,7 @@ export default function AiTutorPage() {
           return;
         }
         // AI also not confident — specific abstention, not a generic canned line.
+        recordLpiLearnerTurn(false);
         setError(aiResult?.explanation || GRAMMAR_CORRECTION_UNAVAILABLE_MESSAGE);
         return;
       }
@@ -2386,14 +2595,17 @@ export default function AiTutorPage() {
       if (!localCorrection.ok) {
         setLoading(false);
         setError(GRAMMAR_CORRECTION_UNAVAILABLE_MESSAGE);
+        recordLpiLearnerTurn(false);
         return;
       }
       // No token + unchanged: the sentence may be correct but AI cannot verify it.
       // Never show a correction card in this state — that would echo the input as a "correction".
       setLoading(false);
       setError(CANNOT_CORRECT_NO_SESSION_MESSAGE);
+      recordLpiLearnerTurn(false);
       return;
     }
+    const sessionErrorDensity = recordLpiLearnerTurn(true);
     // Step 013 / WP-000 — correction timing before showing the result.
     // Flag OFF (default): original correctWithTimingAwareness path — byte-identical
     // to pre-WP-000 main (the `else` branch below is the verbatim original code).
@@ -2504,11 +2716,20 @@ export default function AiTutorPage() {
       setError(GRAMMAR_CORRECTION_UNAVAILABLE_MESSAGE);
       return;
     }
-    setResult({
+    const candidate: CorrectionResult = {
       ...turn,
       grammarTip: buildGrammarTip(target, localCorrection, explainLanguage),
       practicePrompt: next.practicePrompt[explainLanguage],
-    });
+    };
+    const registerDetection = detectRegisterError({ learnerText: turn.userText });
+    const detectorTag = registerDetection.matched
+      ? registerDetection.tag
+      : (localCorrection.appliedRuleIds[0] ?? null);
+    if (!applyLpiPolicyToCorrection(candidate, detectorTag, sessionErrorDensity)) {
+      setLoading(false);
+      return;
+    }
+    setResult(candidate);
     // Step 013 — correction was shown (IMMEDIATE/EXPLAIN_PATTERN path).
     surfacedCorrectionsRef.current += 1;
 
@@ -2933,6 +3154,9 @@ export default function AiTutorPage() {
     // Step 013 — reset deferred queue on board clear.
     deferredQueueRef.current.clear();
     surfacedCorrectionsRef.current = 0;
+    lpiTrackerRef.current = createLpiSessionTracker();
+    lpiDeferredRecapRef.current = [];
+    lpiLearnerTurnRef.current = 0;
     // Clear the visible surface for the next sentence, but PRESERVE the focus:
     // "try another sentence" is the learner continuing, so the loop should keep
     // circling the same weakness across sentences. Focus is in-session only and
