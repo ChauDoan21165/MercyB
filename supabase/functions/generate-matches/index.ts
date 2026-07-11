@@ -6,6 +6,26 @@ const corsHeaders = {
   'Access-Control-Allow-Origin': '*',
   'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
 };
+const MATCH_AI_TIMEOUT_MS = 15_000;
+
+const loggedMissingEnv = new Set<string>();
+
+function getRequiredEnv(name: string): string | null {
+  const value = Deno.env.get(name)?.trim() ?? "";
+  if (value) return value;
+  if (!loggedMissingEnv.has(name)) {
+    console.error(`[generate-matches] Missing required env ${name}`);
+    loggedMissingEnv.add(name);
+  }
+  return null;
+}
+
+function jsonResponse(body: unknown, status = 200): Response {
+  return new Response(
+    JSON.stringify(body),
+    { status, headers: { ...corsHeaders, 'Content-Type': 'application/json' } },
+  );
+}
 
 serve(async (req) => {
   if (req.method === 'OPTIONS') {
@@ -16,15 +36,18 @@ serve(async (req) => {
     // Verify authentication
     const authHeader = req.headers.get('Authorization')
     if (!authHeader) {
-      return new Response(
-        JSON.stringify({ error: 'Authentication required' }),
-        { status: 401, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
-      )
+      return jsonResponse({ error: 'Authentication required' }, 401)
+    }
+
+    const supabaseUrl = getRequiredEnv('SUPABASE_URL');
+    const supabaseAnonKey = getRequiredEnv('SUPABASE_ANON_KEY');
+    if (!supabaseUrl || !supabaseAnonKey) {
+      return jsonResponse({ error: 'Match generation is temporarily unavailable' }, 500);
     }
 
     const supabaseClient = createClient(
-      Deno.env.get('SUPABASE_URL') ?? '',
-      Deno.env.get('SUPABASE_ANON_KEY') ?? '',
+      supabaseUrl,
+      supabaseAnonKey,
       { global: { headers: { Authorization: authHeader } } }
     )
 
@@ -58,9 +81,14 @@ serve(async (req) => {
     const userId = user.id;
 
     // Create admin client for database operations
+    const supabaseServiceKey = getRequiredEnv('SUPABASE_SERVICE_ROLE_KEY');
+    if (!supabaseServiceKey) {
+      return jsonResponse({ error: 'Match generation is temporarily unavailable' }, 500);
+    }
+
     const supabaseAdmin = createClient(
-      Deno.env.get('SUPABASE_URL') ?? '',
-      Deno.env.get('SUPABASE_SERVICE_ROLE_KEY') ?? ''
+      supabaseUrl,
+      supabaseServiceKey
     );
 
     // Get user's knowledge profile
@@ -97,7 +125,10 @@ serve(async (req) => {
     }
 
     // Calculate match scores using AI
-    const LOVABLE_API_KEY = Deno.env.get('LOVABLE_API_KEY');
+    const LOVABLE_API_KEY = getRequiredEnv('LOVABLE_API_KEY');
+    if (!LOVABLE_API_KEY) {
+      return jsonResponse({ error: 'Match generation is temporarily unavailable' }, 500);
+    }
     
     const matchPromises = otherProfiles.map(async (otherProfile: any) => {
       const prompt = `Analyze compatibility between two users based on their profiles and generate a match score from 0 to 1.
@@ -118,35 +149,51 @@ Return a JSON object with:
 - complementary_traits (array of strings)
 - match_reason (object with explanation)`;
 
-      const response = await fetch('https://ai.gateway.lovable.dev/v1/chat/completions', {
-        method: 'POST',
-        headers: {
-          'Authorization': `Bearer ${LOVABLE_API_KEY}`,
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          model: 'google/gemini-2.5-flash',
-          messages: [{ role: 'user', content: prompt }],
-          tools: [{
-            type: 'function',
-            function: {
-              name: 'calculate_match',
-              description: 'Calculate match score between two users',
-              parameters: {
-                type: 'object',
-                properties: {
-                  match_score: { type: 'number' },
-                  common_interests: { type: 'array', items: { type: 'string' } },
-                  complementary_traits: { type: 'array', items: { type: 'string' } },
-                  match_reason: { type: 'object' }
-                },
-                required: ['match_score', 'common_interests', 'complementary_traits', 'match_reason']
+      const controller = new AbortController();
+      const timeout = setTimeout(() => controller.abort(), MATCH_AI_TIMEOUT_MS);
+      let response: Response;
+      try {
+        response = await fetch('https://ai.gateway.lovable.dev/v1/chat/completions', {
+          method: 'POST',
+          headers: {
+            'Authorization': `Bearer ${LOVABLE_API_KEY}`,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            model: 'google/gemini-2.5-flash',
+            messages: [{ role: 'user', content: prompt }],
+            tools: [{
+              type: 'function',
+              function: {
+                name: 'calculate_match',
+                description: 'Calculate match score between two users',
+                parameters: {
+                  type: 'object',
+                  properties: {
+                    match_score: { type: 'number' },
+                    common_interests: { type: 'array', items: { type: 'string' } },
+                    complementary_traits: { type: 'array', items: { type: 'string' } },
+                    match_reason: { type: 'object' }
+                  },
+                  required: ['match_score', 'common_interests', 'complementary_traits', 'match_reason']
+                }
               }
-            }
-          }],
-          tool_choice: { type: 'function', function: { name: 'calculate_match' } }
-        }),
-      });
+            }],
+            tool_choice: { type: 'function', function: { name: 'calculate_match' } }
+          }),
+          signal: controller.signal,
+        });
+      } catch (error) {
+        const isAbort = error instanceof Error && error.name === 'AbortError';
+        if (isAbort) {
+          console.error('[generate-matches] AI match scoring timed out');
+        } else {
+          console.error('[generate-matches] AI match scoring failed:', error);
+        }
+        return null;
+      } finally {
+        clearTimeout(timeout);
+      }
 
       const aiResult = await response.json();
       const toolCall = aiResult.choices?.[0]?.message?.tool_calls?.[0];

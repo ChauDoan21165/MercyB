@@ -79,6 +79,23 @@ Accepted as-is for now:
 - Admin/internal bucket: defer; these are operational/admin reliability concerns rather than the first learner-exposure pass.
 - Optional capability checks such as `Boolean(...GEMINI_API_KEY)` should be accepted as-is only when the callsite is purely feature detection and not used as a required secret later in the same request.
 
+## ACCEPTED-RISKS
+
+These items were verified during the C3.3 fix workpacks and are accepted as-is for this queue:
+
+| Class | Callsite or group | Reason |
+| --- | --- | --- |
+| no-timeout | `api/_lib/aiConversation.ts:425` | Upstream caller passes an `AbortSignal` through the AI conversation path; duplicating a second timeout inside the provider call would risk conflicting cancellation semantics. |
+| no-timeout | `api/_lib/aiProvider.ts:149` | Provider fetch is invoked only through public failover wrappers that create an `AbortController` and clear the timeout per attempt. |
+| no-timeout | `supabase/functions/_shared/aiProvider.ts:216` | Edge provider fetch is invoked through timeout-wrapped public failover functions that pass `signal` to the fetch. |
+| no-timeout | `supabase/functions/_shared/aiProvider.ts:299` | Edge DeepSeek provider fetch is invoked through the same timeout-wrapped provider path. |
+| no-timeout | Billing, entitlement, auth, account, and security callsites | Explicitly out of scope under this queue's forbidden-surface rules; defer to an owner-approved pass. |
+| no-timeout | Admin/internal bucket | Lower direct learner exposure; defer to an internal reliability pass. |
+| no-timeout | Scripts/CI/dev-only bucket | Scanner text/comment false positives; no runtime callsite to harden. |
+| env-handling | `ai-chat` defaulted cost/pricing env reads | Optional numeric config has explicit defaults and is not a required secret; missing values do not crash learner requests. |
+| env-handling | Provider capability checks for absent optional providers | Missing optional provider keys now log once when considered and preserve `no_key` fail-soft behavior; provider absence is a supported failover state. |
+| env-handling | Admin/internal bucket | Operational/admin reliability concern rather than first learner-exposure pass; defer. |
+
 ## Premise For WP-DIST-01
 
 Located diagnostic/interference profile surfaces on `origin/main`:
