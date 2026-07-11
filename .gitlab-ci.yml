@@ -1223,7 +1223,10 @@ nightly-full-suite:
   rules:
     - if: '$RESERVOIR == "1"'
       when: never
-    - if: '$CI_PIPELINE_SOURCE == "schedule" && $CI_COMMIT_BRANCH == "main"'
+    # Nightly maintenance schedule only (NIGHTLY_MAINTENANCE_ENABLED=1), not the
+    # */15 "Synthetic learner" schedule — both are source==schedule, and without
+    # this gate the 505s full suite ran every 15 minutes.
+    - if: '$CI_PIPELINE_SOURCE == "schedule" && $CI_COMMIT_BRANCH == "main" && $NIGHTLY_MAINTENANCE_ENABLED == "1"'
     - when: never
   script:
     - |
@@ -1652,8 +1655,11 @@ nightly-db-backup:
   rules:
     - if: '$RESERVOIR == "1"'
       when: never
-    # Schedule-only. Never runs on merge requests, pushes, or tags.
-    - if: '$CI_PIPELINE_SOURCE == "schedule"'
+    # Schedule-only, AND only on a maintenance schedule that sets
+    # NIGHTLY_MAINTENANCE_ENABLED=1 (the 04:00 nightly-db-backup schedule).
+    # Without this gate the job also fired on the */15 "Synthetic learner"
+    # schedule (both are source==schedule) → a prod DB backup every 15 min.
+    - if: '$CI_PIPELINE_SOURCE == "schedule" && $NIGHTLY_MAINTENANCE_ENABLED == "1"'
   variables:
     BACKUP_OUTPUT_DIR: "$CI_PROJECT_DIR/_backup_out"
     BACKUP_ENV_LABEL: "prod"
