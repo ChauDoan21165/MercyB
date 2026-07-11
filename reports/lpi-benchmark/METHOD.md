@@ -55,11 +55,38 @@ Literature anchors:
 - Truscott/Ferris written corrective-feedback debate: grammar correction has contested effects, so low-value surface correction should not be automatic. Source: https://academiccommons.columbia.edu/doi/10.7916/D8JT0277/download
 - Affective-filter/overcorrection heuristic: too much correction can reduce confidence, increase anxiety, and reduce willingness to participate. Source: https://seidlitzblog.org/2020/09/22/what-is-the-affective-filter-and-why-is-it-important-in-the-classroom/
 
+## Production Policy Adapter
+
+The benchmark now scores the shipped policy module: `src/services/lpi/correctionPolicy.ts`.
+
+The fixture vocabulary intentionally stays stable, so `tests/lpi-benchmark/run.ts` uses an explicit adapter before calling `decideCorrection`. The adapter is part of the measured method, not an invisible coercion.
+
+Severity mapping:
+
+- `target_form` -> shipped `high`
+- `form` -> shipped `medium`
+- `fluency` -> shipped `low`
+- `minor` -> shipped `low`
+- `meaning_blocking` -> shipped `high`, with an adapter flag in `results.json` because the shipped policy has no separate meaning-blocking severity. This is a lossy but conservative mapping.
+
+Density mapping:
+
+- Benchmark `sessionErrorDensity` is an integer count of recent errors.
+- Shipped `sessionErrorDensity` is a `0..1` fraction over the last five learner turns.
+- The adapter uses `min(count / 5, 1)`.
+- Count `3` maps exactly to `0.6`, the shipped `HIGH_ERROR_DENSITY_THRESHOLD`. The shipped rule uses `>` rather than `>=`, so exactly `0.6` does not trigger the high-density branch. Those boundary cases are flagged in `results.json`.
+
+Burst correction count:
+
+- Benchmark cases do not carry `correctionsThisBurst`.
+- The adapter defaults `correctionsThisBurst` to `0` for every case and records this limitation here.
+- This means shipped burst behavior is measured as "first correction available in the burst," not as the capped-after-one-correction state. A future fixture version should add `correctionsThisBurst` to burst scenarios instead of inferring it.
+
 ## Policies Scored
 
 `tests/lpi-benchmark/run.ts` scores three policies with the same gold labels:
 
-- MercyBlade policy: deterministic rule table for immediate correction, deferred recap, and silent logging.
+- MercyBlade policy: the shipped `decideCorrection` module, reached through the explicit adapter above.
 - Always-correct baseline: always returns `correct_now`, matching the common general-AI behavior of correcting every detected error.
 - Seeded-random baseline: deterministic pseudo-random action selection across the three actions.
 
@@ -85,6 +112,8 @@ Outputs:
 - The cases are synthetic and detector-level, not drawn from public ESL corpora.
 - The rubric models pedagogical judgment, not detector accuracy.
 - The seeded random baseline is reproducible but not a statistical confidence interval.
+- The adapter is necessary because the benchmark fixture and shipped policy currently use different severity and density vocabularies.
+- The default `correctionsThisBurst = 0` under-measures capped burst behavior after a correction has already happened in the same burst.
 
 ## Extension Path
 
