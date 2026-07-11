@@ -3,6 +3,7 @@
  */
 
 import { supabase } from "@/integrations/supabase/client";
+import { invokeFunctionWithTimeout } from "@/lib/networkTimeout";
 
 export type MercyGuideLanguage = "vi" | "en";
 export type MercyGuideSuggestedAction = "none" | "open_speak";
@@ -43,6 +44,8 @@ export interface MercyGuideClientResponse {
 type MercyGuideFunctionResponse = Partial<MercyGuideClientResponse> & {
   error?: string;
 };
+
+const MERCY_GUIDE_TIMEOUT_MS = 15_000;
 
 function cleanText(value?: string | null): string {
   return String(value ?? "").replace(/\s+/g, " ").trim();
@@ -181,9 +184,12 @@ export async function askMercyGuide(
   }
 
   try {
-    const { data, error } = await supabase.functions.invoke("mercy-guide", {
-      body: safeRequest,
-    });
+    const { data, error } = await invokeFunctionWithTimeout<MercyGuideFunctionResponse>(
+      supabase,
+      "mercy-guide",
+      { body: safeRequest },
+      MERCY_GUIDE_TIMEOUT_MS,
+    );
 
     if (error) {
       console.error("askMercyGuide invoke error:", error);
