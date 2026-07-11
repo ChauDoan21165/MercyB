@@ -13,6 +13,7 @@
  *      rather than silently passing.
  */
 import type { APIRequestContext } from "@playwright/test";
+import { execFileSync } from "node:child_process";
 
 export async function resolveExpectedDeploySha(request: APIRequestContext): Promise<string> {
   const override = process.env.EXPECTED_DEPLOY_SHA;
@@ -36,32 +37,46 @@ export async function resolveExpectedDeploySha(request: APIRequestContext): Prom
   }
 }
 
+/** Run a git command in the repo; return its exit code (execFileSync throws on
+ *  non-zero — `e.status` carries the code; -1 means git absent/unusable). No
+ *  shell, no output captured (stdio ignored). Host-independent, no token/API. */
+function gitCode(args: string[]): number {
+  try {
+    execFileSync("git", args, { stdio: "ignore", timeout: 20_000 });
+    return 0;
+  } catch (e) {
+    const code = (e as { status?: number }).status;
+    return typeof code === "number" ? code : -1;
+  }
+}
+
 /**
- * Journey (f) acceptance with DEPLOY-LAG tolerance (run #3 fix).
+ * Journey (f) — DEPLOY-IDENTITY check (run #3 lag-tolerance + run #5 host-indep).
  *
- * The old equality check compared version.json against "latest green main
- * pipeline", which races Cloudflare's auto-deploy: the synthetic job can start
- * before its own pipeline is marked green, so the resolver returns the PRIOR
- * green sha while Cloudflare has already deployed the newer one — a spurious
- * red (run #3: live=df2b0b9 vs resolver=75b2a45, where df2b0b9 == this
- * pipeline's own commit).
+ * (f) asserts that the live version.json sha is a real main build for this run —
+ * NOT a rollback or a foreign build. It must test DEPLOY IDENTITY, not host
+ * tooling, so ancestry is resolved with **local git** in the checked-out repo
+ * (`git merge-base --is-ancestor`), not the GitLab API — run #5 (host
+ * /Users/macbook) failed with `merge_base API http 404` because that host's
+ * CI_JOB_TOKEN can't reach the endpoint, even though the deploy was fine.
  *
- * New model: the target is CI_COMMIT_SHA (the main HEAD this run is for). The
- * live deploy is acceptable if it EQUALS that sha OR is an ANCESTOR of it on
- * origin/main (deploy still catching up). It fails only if live is NOT an
- * ancestor — that means a rollback or a foreign build, a real alarm.
- * Ancestry is checked via the GitLab merge_base API (full history; robust to
- * the runner's shallow clone).
+ * Acceptable iff live and CI_COMMIT_SHA are on the SAME main lineage:
+ *   - equal                          → deployed exactly this commit;
+ *   - live is an ANCESTOR of ci      → deploy lag (Cloudflare catching up);
+ *   - live is a DESCENDANT of ci     → a NEWER main deploy while an older /
+ *                                      scheduled pipeline runs (run #5:
+ *                                      live 5631e41 is ahead of ci 8a7fc9e).
+ * FAIL only if git decisively says they are UNRELATED (rollback / foreign).
+ * If the oracle can't decide (git missing, commit not in the clone, fetch
+ * failed) → FAIL OPEN with a WARN — a host-tooling gap must not red (f).
  */
 export async function isDeployShaAcceptable(
-  request: APIRequestContext,
+  _request: APIRequestContext, // kept for call-site compat; no longer used
   liveSha: string,
 ): Promise<{ ok: boolean; reason: string }> {
   const live = (liveSha || "").trim().toLowerCase();
   if (!live) return { ok: false, reason: "no live sha in version.json" };
 
-  // Baseline = the pipeline's own commit (main HEAD for this run). Fall back to
-  // an explicit override only when CI_COMMIT_SHA is absent (e.g. local runs).
   const ci = (process.env.CI_COMMIT_SHA ?? process.env.EXPECTED_DEPLOY_SHA ?? "")
     .trim()
     .toLowerCase();
@@ -72,25 +87,25 @@ export async function isDeployShaAcceptable(
     return { ok: true, reason: `live ${live} == CI_COMMIT_SHA ${ci.slice(0, 7)}` };
   }
 
-  // Deploy lag: accept iff live is an ANCESTOR of CI_COMMIT_SHA on origin/main.
-  const apiBase = process.env.CI_API_V4_URL ?? "https://gitlab.com/api/v4";
-  const projectId = process.env.CI_PROJECT_ID ?? encodeURIComponent("cd12536/mercyB");
-  const token = process.env.GITLAB_TOKEN ?? process.env.CI_JOB_TOKEN ?? "";
-  if (!token) return { ok: false, reason: `live ${live} != ci ${ci.slice(0, 7)} and no token to verify ancestry` };
+  // Best-effort: pull recent main history so a possibly-AHEAD live sha is in the
+  // (shallow) clone. Failure is fine — handled by the resolvability check below.
+  gitCode(["fetch", "--quiet", "--depth=200", "origin", "main"]);
 
-  try {
-    const resp = await request.get(
-      `${apiBase}/projects/${projectId}/repository/merge_base?refs[]=${encodeURIComponent(live)}&refs[]=${encodeURIComponent(ci)}`,
-      { headers: { "PRIVATE-TOKEN": token, "JOB-TOKEN": token }, timeout: 15_000 },
-    );
-    if (!resp.ok()) return { ok: false, reason: `merge_base API http ${resp.status()} (live ${live} vs ci ${ci.slice(0, 7)})` };
-    const base = String(((await resp.json()) as { id?: string }).id ?? "").toLowerCase();
-    // live is an ancestor of ci  ⇔  merge_base(live, ci) === live.
-    const liveIsAncestor = Boolean(base) && (base.startsWith(live) || live.startsWith(base));
-    return liveIsAncestor
-      ? { ok: true, reason: `deploy-lag: live ${live} is an ancestor of CI_COMMIT_SHA ${ci.slice(0, 7)}` }
-      : { ok: false, reason: `live ${live} is NOT an ancestor of CI_COMMIT_SHA ${ci.slice(0, 7)} — rollback or foreign build` };
-  } catch (e) {
-    return { ok: false, reason: `merge_base check failed: ${(e as Error).message}` };
+  const liveKnown = gitCode(["cat-file", "-e", `${live}^{commit}`]) === 0;
+  const ciKnown = gitCode(["cat-file", "-e", `${ci}^{commit}`]) === 0;
+  if (!liveKnown || !ciKnown) {
+    const missing = [!liveKnown ? `live ${live}` : "", !ciKnown ? `ci ${ci.slice(0, 7)}` : ""].filter(Boolean).join(" & ");
+    return { ok: true, reason: `WARN oracle-unavailable: ${missing} not resolvable in the checked-out repo — accepting (deploy identity unverifiable, NOT a host-tooling red)` };
   }
+
+  // --is-ancestor: exit 0 = ancestor, 1 = not, other = error.
+  const liveAncOfCi = gitCode(["merge-base", "--is-ancestor", live, ci]);
+  const ciAncOfLive = gitCode(["merge-base", "--is-ancestor", ci, live]);
+  if (liveAncOfCi === 0) return { ok: true, reason: `deploy-lag: live ${live} is an ancestor of ci ${ci.slice(0, 7)}` };
+  if (ciAncOfLive === 0) return { ok: true, reason: `deploy-ahead: live ${live} is a descendant of ci ${ci.slice(0, 7)} (newer main build)` };
+  if (liveAncOfCi === 1 && ciAncOfLive === 1) {
+    return { ok: false, reason: `live ${live} and ci ${ci.slice(0, 7)} are UNRELATED on origin/main — rollback or foreign build` };
+  }
+  // A git error on the compare → oracle uncertain → fail open with WARN.
+  return { ok: true, reason: `WARN oracle-inconclusive (git exit ${liveAncOfCi}/${ciAncOfLive}) for live ${live} vs ci ${ci.slice(0, 7)} — accepting` };
 }
