@@ -21,7 +21,8 @@ The fixture is `tests/lpi-benchmark/cases.json`: 40 hand-authored scenarios with
     "severity": "target_form",
     "recurrenceCount": 0,
     "sessionErrorDensity": 1,
-    "consecutiveErrors": 1
+    "consecutiveErrors": 1,
+    "correctionsThisBurst": 0
   },
   "gold": "correct_now",
   "rationale": "..."
@@ -63,11 +64,13 @@ The fixture vocabulary intentionally stays stable, so `tests/lpi-benchmark/run.t
 
 Severity mapping:
 
-- `target_form` -> shipped `high`
-- `form` -> shipped `medium`
-- `fluency` -> shipped `low`
-- `minor` -> shipped `low`
-- `meaning_blocking` -> shipped `high`, with an adapter flag in `results.json` because the shipped policy has no separate meaning-blocking severity. This is a lossy but conservative mapping.
+- `meaning_blocking` -> shipped `meaning_blocking`
+- `target_form` -> shipped `target_form`
+- `form` -> shipped `form`
+- `fluency` -> shipped `fluency`
+- `minor` -> shipped `minor`
+
+There is no remaining severity coercion in v2, so no benchmark case is severity-misrepresented by the adapter.
 
 Density mapping:
 
@@ -78,9 +81,10 @@ Density mapping:
 
 Burst correction count:
 
-- Benchmark cases do not carry `correctionsThisBurst`.
-- The adapter defaults `correctionsThisBurst` to `0` for every case and records this limitation here.
-- This means shipped burst behavior is measured as "first correction available in the burst," not as the capped-after-one-correction state. A future fixture version should add `correctionsThisBurst` to burst scenarios instead of inferring it.
+- Benchmark cases now carry `correctionsThisBurst`.
+- The deterministic convention is: first correction in a burst = `0`; narrative implies a prior in-burst correction = `1`.
+- Cases set to `1`: `burst-target-tense`, `burst-form-agreement`, `burst-low-punctuation`, `burst-low-fluency`, `frustrated-high-target`, `frustrated-high-form`, `frustrated-high-collocation`, `frustrated-high-meaning`, `frustrated-high-negation`, `frustrated-low-spelling`, `frustrated-low-hesitation`.
+- The harness reports scores before and after using this enrichment. Policy v2 currently scores the same both ways because it uses consecutive-error and density state for burst suppression rather than the old one-correction burst cap.
 
 ## Policies Scored
 
@@ -108,12 +112,13 @@ Outputs:
 ## Limitations
 
 - `n=40` is a small benchmark.
+- No cases were added for policy v2; golds and authored scenario contexts stayed frozen except for the documented `correctionsThisBurst` field.
 - Gold labels are expert heuristics, not outcomes from a randomized learner study.
 - The cases are synthetic and detector-level, not drawn from public ESL corpora.
+- `n=40` authored cases can overfit a rule table. This benchmark is useful for regression and pitch explanation, but the out-of-sample answer is the public ESL corpus extension below.
 - The rubric models pedagogical judgment, not detector accuracy.
 - The seeded random baseline is reproducible but not a statistical confidence interval.
-- The adapter is necessary because the benchmark fixture and shipped policy currently use different severity and density vocabularies.
-- The default `correctionsThisBurst = 0` under-measures capped burst behavior after a correction has already happened in the same burst.
+- The adapter is still necessary for density because the benchmark fixture stores integer recent-error counts while production stores a `0..1` fraction.
 
 ## Extension Path
 
