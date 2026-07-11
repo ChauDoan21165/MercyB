@@ -11,13 +11,26 @@
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
 
-import { render, screen } from "@testing-library/react";
+import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";
-import { describe, expect, it } from "vitest";
+import { afterEach, describe, expect, it, vi } from "vitest";
 
 import WeakAt from "../WeakAt";
 
 const REPO_ROOT = join(__dirname, "..", "..", "..");
+const supabaseMock = vi.hoisted(() => ({
+  insert: vi.fn(async () => ({ error: null })),
+  from: vi.fn(() => ({ insert: supabaseMock.insert })),
+}));
+
+vi.mock("@/integrations/supabase/client", () => ({
+  supabase: {
+    from: supabaseMock.from,
+  },
+  default: {
+    from: supabaseMock.from,
+  },
+}));
 
 // SuggestedPracticeList (Day 6 wire-in) calls `useNavigate()` at the
 // hook level, so WeakAt requires a router context to render. The
@@ -30,6 +43,13 @@ function renderPage() {
     </MemoryRouter>,
   );
 }
+
+afterEach(() => {
+  vi.unstubAllEnvs();
+  supabaseMock.from.mockClear();
+  supabaseMock.insert.mockClear();
+  window.sessionStorage.clear();
+});
 
 describe("WeakAt page (/weak-at)", () => {
   it("renders the LocalWeaknessMap component", () => {
@@ -83,6 +103,52 @@ describe("WeakAt page (/weak-at)", () => {
     // SuggestedPracticeList wire-in uses `useNavigate()`, which is
     // why the bare-render variant is no longer viable.
     expect(() => renderPage()).not.toThrow();
+  });
+
+  it("keeps the full profile visible when the contact gate flag is off by default", () => {
+    renderPage();
+    expect(screen.queryByTestId("diagnostic-contact-gate")).toBeNull();
+    expect(
+      screen.queryByTestId("local-weakness-empty") ||
+        screen.queryByTestId("local-weakness-map") ||
+        screen.queryByTestId("local-weakness-loading"),
+    ).toBeTruthy();
+  });
+
+  it("shows teaser and contact capture instead of the full profile when the flag is on", () => {
+    vi.stubEnv("VITE_DIAGNOSTIC_CONTACT_GATE", "true");
+    renderPage();
+    expect(screen.getByTestId("diagnostic-contact-gate")).toBeTruthy();
+    expect(screen.queryByTestId("local-weakness-map")).toBeNull();
+    expect(screen.queryByTestId("local-weakness-empty")).toBeNull();
+    expect(screen.getByTestId("diagnostic-contact-input")).toBeTruthy();
+  });
+
+  it("stores a diagnostic lead and unlocks the full profile after contact capture", async () => {
+    vi.stubEnv("VITE_DIAGNOSTIC_CONTACT_GATE", "true");
+    renderPage();
+
+    fireEvent.change(screen.getByTestId("diagnostic-contact-input"), {
+      target: { value: "learner@example.com" },
+    });
+    fireEvent.click(screen.getByRole("button", { name: /Mở hồ sơ đầy đủ/i }));
+
+    await waitFor(() => {
+      expect(supabaseMock.from).toHaveBeenCalledWith("diagnostic_leads");
+    });
+    expect(supabaseMock.insert).toHaveBeenCalledWith({
+      contact: "learner@example.com",
+      contact_type: "email",
+      profile_ref: "weak-at-local-v1",
+    });
+    await waitFor(() => {
+      expect(screen.queryByTestId("diagnostic-contact-gate")).toBeNull();
+    });
+    expect(
+      screen.queryByTestId("local-weakness-empty") ||
+        screen.queryByTestId("local-weakness-map") ||
+        screen.queryByTestId("local-weakness-loading"),
+    ).toBeTruthy();
   });
 });
 
