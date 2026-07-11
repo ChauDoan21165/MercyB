@@ -23,7 +23,7 @@
  * BUDGET_GZIP_BYTES below in the same PR that adds the bytes and
  * call it out in the PR description so the reviewer can sign off.
  */
-import { readFileSync, existsSync, statSync } from 'node:fs';
+import { readFileSync, existsSync, readdirSync } from 'node:fs';
 import { gzipSync } from 'node:zlib';
 import { resolve, join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -49,6 +49,20 @@ const INDEX_HTML = join(DIST_DIR, 'index.html');
 // new eager vendor): raise this number in the same PR that adds the
 // bytes and explain why in the PR description.
 const BUDGET_GZIP_BYTES = Number(process.env.BUNDLE_BUDGET_GZIP_BYTES) || 263_000;
+const ROUTE_CHUNK_RATCHETS = [
+  {
+    label: 'Home',
+    prefix: 'Home-',
+    budgetGzipBytes: Number(process.env.BUNDLE_RATCHET_HOME_GZIP_BYTES) || 162_802,
+    baselineGzipBytes: 148_001,
+  },
+  {
+    label: 'VietnameseLessonsPage',
+    prefix: 'VietnameseLessonsPage-',
+    budgetGzipBytes: Number(process.env.BUNDLE_RATCHET_VIETNAMESE_LESSONS_GZIP_BYTES) || 417_093,
+    baselineGzipBytes: 379_175,
+  },
+];
 
 function fail(msg) {
   console.error(`❌ ${msg}`);
@@ -131,3 +145,33 @@ if (totalGzip > BUDGET_GZIP_BYTES) {
 }
 
 pass(`Eager first-paint gzip total ${num(totalGzip)} B under budget ${num(BUDGET_GZIP_BYTES)} B.`);
+
+console.log('');
+console.log('📦 Route chunk ratchets (gzip, current +10% max)');
+console.log('');
+console.log(`  ${pad('chunk', 28)} ${pad('baseline', 12)} ${pad('budget', 12)} ${pad('actual', 12)} file`);
+console.log(`  ${pad('-'.repeat(28), 28)} ${pad('-'.repeat(12), 12)} ${pad('-'.repeat(12), 12)} ${pad('-'.repeat(12), 12)} ${'-'.repeat(24)}`);
+
+for (const ratchet of ROUTE_CHUNK_RATCHETS) {
+  const assetDir = join(DIST_DIR, 'assets');
+  const fileName = existsSync(assetDir)
+    ? readdirSync(assetDir).find((name) => name.startsWith(ratchet.prefix) && name.endsWith('.js'))
+    : null;
+  if (!fileName) {
+    fail(`Route chunk ratchet '${ratchet.label}' found no dist/assets/${ratchet.prefix}*.js file. Build output changed or chunk was renamed.`);
+  }
+  const raw = readFileSync(join(assetDir, fileName));
+  const gz = gzipSync(raw, { level: 9 }).length;
+  console.log(
+    `  ${pad(ratchet.label, 28)} ${pad(num(ratchet.baselineGzipBytes), 12)} ` +
+    `${pad(num(ratchet.budgetGzipBytes), 12)} ${pad(num(gz), 12)} ${fileName}`
+  );
+  if (gz > ratchet.budgetGzipBytes) {
+    fail(
+      `${ratchet.label} route chunk gzip ${num(gz)} B exceeds ratchet ${num(ratchet.budgetGzipBytes)} B ` +
+      `(baseline ${num(ratchet.baselineGzipBytes)} B +10%; over by ${num(gz - ratchet.budgetGzipBytes)} B).`
+    );
+  }
+}
+
+pass('Route chunk ratchets are under budget.');
