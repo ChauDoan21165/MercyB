@@ -15,6 +15,7 @@ export type LearningEventType =
   // (enum labels, scaled scalars, a PII-free turn anchor) and reuse this drain verbatim.
   | "prediction_recorded"
   | "surprise_resolved"
+  | "lpi_policy_decision"
   // Learner feedback on a displayed tutor correction. These are the only
   // `feedback_*` producers today; the durable sink's DB CHECK constraint
   // (learning_events_provenance_chk) rejects a feedback row unless
@@ -43,6 +44,7 @@ export type LearningEvent = {
   // produced them). No producer wires this yet; carried through so the durable
   // sink (WP-PHASE2-01) can persist it once producers opt in.
   ruleOrDetectorId?: string;
+  payload?: Record<string, unknown>;
 };
 
 export type LearningEventInput = {
@@ -57,6 +59,7 @@ export type LearningEventInput = {
   count?: number | null;
   value?: number | null;
   ruleOrDetectorId?: string | null;
+  payload?: Record<string, unknown> | null;
 };
 
 export type LearningEventFilter = {
@@ -111,6 +114,7 @@ const EVENT_TYPES = new Set<LearningEventType>([
   "kids_speak_clicked",
   "prediction_recorded",
   "surprise_resolved",
+  "lpi_policy_decision",
   "feedback_helpful",
   "feedback_not_helpful",
 ]);
@@ -245,6 +249,7 @@ function normalizeLearningEvent(
   const count = normalizeOptionalNumber(input.count);
   const value = normalizeOptionalNumber(input.value);
   const ruleOrDetectorId = sanitizeRuleOrDetectorId(input.ruleOrDetectorId);
+  const payload = sanitizePayload(input.payload);
   const existingId = sanitizeEventId(input.id);
   const id = existingId ?? (options.mintId ? createEventId() : undefined);
 
@@ -260,6 +265,7 @@ function normalizeLearningEvent(
     ...(count !== undefined ? { count } : {}),
     ...(value !== undefined ? { value } : {}),
     ...(ruleOrDetectorId ? { ruleOrDetectorId } : {}),
+    ...(payload ? { payload } : {}),
   };
 }
 
@@ -309,6 +315,7 @@ function normalizeStoredEvent(value: unknown): LearningEvent | null {
       count: event.count,
       value: event.value,
       ruleOrDetectorId: event.ruleOrDetectorId,
+      payload: event.payload,
     },
     { mintId: false },
   );
@@ -419,6 +426,28 @@ function sanitizeRuleOrDetectorId(value: string | null | undefined): string | un
     .replace(/[^A-Za-z0-9._:-]/g, "")
     .slice(0, MAX_RULE_ID_LENGTH);
   return cleaned || undefined;
+}
+
+function sanitizePayload(value: Record<string, unknown> | null | undefined): Record<string, unknown> | undefined {
+  if (!value || typeof value !== "object" || Array.isArray(value)) return undefined;
+
+  const payload: Record<string, unknown> = {};
+  for (const [key, raw] of Object.entries(value).slice(0, 24)) {
+    const cleanKey = key
+      .trim()
+      .replace(/[^A-Za-z0-9_:-]/g, "")
+      .slice(0, 48);
+    if (!cleanKey) continue;
+    if (typeof raw === "string") {
+      payload[cleanKey] = raw.slice(0, 160);
+    } else if (typeof raw === "number" && Number.isFinite(raw)) {
+      payload[cleanKey] = Math.round(raw * 1000) / 1000;
+    } else if (typeof raw === "boolean" || raw === null) {
+      payload[cleanKey] = raw;
+    }
+  }
+
+  return Object.keys(payload).length > 0 ? payload : undefined;
 }
 
 function createEventId(): string {

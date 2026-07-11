@@ -90,6 +90,7 @@ export function toLearningEventRow(
   if (event.safeTopicTag !== undefined) payload.safe_topic_tag = event.safeTopicTag;
   if (event.count !== undefined) payload.count = event.count;
   if (event.value !== undefined) payload.value = event.value;
+  if (event.payload !== undefined) Object.assign(payload, event.payload);
 
   return {
     user_id: userId,
