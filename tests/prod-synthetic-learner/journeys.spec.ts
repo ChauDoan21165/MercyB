@@ -161,10 +161,15 @@ test("(b/c/d) correction → feedback tap → row lands with rule_or_detector_id
     const field = page.getByRole("textbox").first();
     await field.click();
     await field.fill(SEEDED_ERROR_SENTENCE);
-    // Grammar submit is <button type="button"> (CorrectionMode.tsx:140, label
-    // ui.submit) — no button[type="submit"]. Same `:has-text(/regex/)` CSS bug as
-    // journey (a); match by role+name instead.
-    await page.getByRole("button", { name: /Sửa câu|Submit|Gửi|Kiểm tra/i }).or(page.locator('button[type="submit"]')).first().click();
+    // Grammar submit is <button type="button"> (CorrectionMode.tsx:140), label
+    // ui.submit = "Sửa câu này" (vi) / "Correct my sentence" (en). Match the FULL
+    // submit label — NOT the bare "Sửa câu", which also names the mode-switcher
+    // TAB (already active on this surface). `.first()` on the loose regex clicked
+    // that no-op tab, so the sentence was never submitted and the correction
+    // never rendered (run #9: output stuck at "Sẵn sàng sửa câu"). Same wrong-
+    // button class as journey (a). The unit test uses this exact name too
+    // (staleSessionGuard.test.tsx: getByRole button "Sửa câu này").
+    await page.getByRole("button", { name: /Sửa câu này|Correct my sentence/i }).first().click();
     // The correction is "rendered" iff the feedback buttons mount (they only
     // render for a correction that carries a real rule_or_detector_id).
     await expect(page.getByTestId("correction-feedback-helpful")).toBeVisible({ timeout: 30_000 });
