@@ -190,6 +190,43 @@ describe("AiConversationScenarioPanel", () => {
     });
   });
 
+  it("surfaces correction-memory write failures instead of swallowing the rejection", async () => {
+    const warn = vi.spyOn(console, "warn").mockImplementation(() => {});
+    putCorrection.mockRejectedValueOnce(new Error("indexeddb unavailable"));
+    const sendTurn = vi.fn().mockResolvedValue({
+      reply: "Great, you would like to order food.",
+      correction: {
+        original: "I want order food.",
+        corrected: "I want to order food.",
+        explanationVi: "Tiếng Anh cần 'to' sau 'want' trước động từ.",
+        interferencePattern: "Vietnamese transfer after want",
+        confidence: "high",
+      },
+      summary: null,
+      cost: { totalTokens: 90, estimatedUsd: 0.0001 },
+      provider: "openai",
+      pronunciationAbstention: null,
+    });
+
+    render(
+      <AiConversationScenarioPanel
+        accessToken="token"
+        hasPremium
+        loadingAccess={false}
+        sendTurn={sendTurn}
+      />,
+    );
+
+    await send("I want order food.");
+
+    expect(putCorrection).toHaveBeenCalledTimes(1);
+    expect(warn).toHaveBeenCalledWith(
+      "[ai-conversation] correction memory write failed",
+      expect.any(Error),
+    );
+    warn.mockRestore();
+  });
+
   it("passes learnerMemory into the turn request for cross-session recall (Step 12)", async () => {
     const sendTurn = vi.fn().mockResolvedValue({
       reply: "Welcome back!", correction: null, summary: null,
