@@ -151,6 +151,34 @@ function json(data: unknown, status = 200) {
   });
 }
 
+const loggedMissingEnv = new Set<string>();
+
+function getRequiredEnv(name: string): string | null {
+  const value = Deno.env.get(name)?.trim() ?? "";
+  if (value) return value;
+  if (!loggedMissingEnv.has(name)) {
+    console.error(`[guide-assistant] Missing required env ${name}`);
+    loggedMissingEnv.add(name);
+  }
+  return null;
+}
+
+function getOpenAiKey(): string | null {
+  const legacyName = "OPENAI_KEY";
+  const canonicalName = "OPENAI_API_KEY";
+  const legacyValue = Deno.env.get(legacyName)?.trim() ?? "";
+  if (legacyValue) return legacyValue;
+  const canonicalValue = Deno.env.get(canonicalName)?.trim() ?? "";
+  if (canonicalValue) return canonicalValue;
+  for (const name of [legacyName, canonicalName]) {
+    if (!loggedMissingEnv.has(name)) {
+      console.error(`[guide-assistant] Missing required env ${name}`);
+      loggedMissingEnv.add(name);
+    }
+  }
+  return null;
+}
+
 function makeRequestId() {
   try {
     return crypto.randomUUID();
@@ -351,13 +379,13 @@ serve(async (req) => {
     return aiDisabledResponse("global", {});
   }
 
-  const SUPABASE_URL = Deno.env.get("SUPABASE_URL")!;
-  const ANON_KEY = Deno.env.get("SUPABASE_ANON_KEY")!;
-  const SERVICE_ROLE = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
-  const OPENAI_KEY = Deno.env.get("OPENAI_KEY") || Deno.env.get("OPENAI_API_KEY")!;
+  const SUPABASE_URL = getRequiredEnv("SUPABASE_URL");
+  const ANON_KEY = getRequiredEnv("SUPABASE_ANON_KEY");
+  const SERVICE_ROLE = getRequiredEnv("SUPABASE_SERVICE_ROLE_KEY");
+  const OPENAI_KEY = getOpenAiKey();
 
   if (!SUPABASE_URL || !ANON_KEY || !SERVICE_ROLE || !OPENAI_KEY) {
-    return json({ error: "Missing env vars (SUPABASE_URL/ANON_KEY/SERVICE_ROLE/OPENAI_KEY)" }, 500);
+    return json({ error: "Mercy guide is temporarily unavailable" }, 500);
   }
 
   const authHeader = req.headers.get("Authorization") || "";

@@ -91,6 +91,7 @@ beforeEach(() => {
 
 afterEach(() => {
   vi.unstubAllGlobals();
+  vi.restoreAllMocks();
   delete process.env.OPENAI_API_KEY;
   delete process.env.DEEPSEEK_API_KEY;
   delete process.env.GEMINI_API_KEY;
@@ -369,5 +370,26 @@ describe("chatJsonWithFailover — Gemini response parsing", () => {
     expect(result.provider).toBe("gemini");
     expect(result.json).toEqual({ a: "b" });
     expect(result.raw).toBe('{"a": "b"}');
+  });
+});
+
+describe("chatJsonWithFailover — missing provider key observability", () => {
+  it("logs the exact missing provider env while preserving no_key fail-soft behavior", async () => {
+    delete process.env.OPENAI_API_KEY;
+    delete process.env.GEMINI_API_KEY;
+    const errorSpy = vi.spyOn(console, "error").mockImplementation(() => {});
+    const fetchMock = vi.fn();
+    vi.stubGlobal("fetch", fetchMock);
+
+    const result = await chatJsonWithFailover({
+      ...SAMPLE_OPTS,
+      providerOrder: ["openai"],
+    });
+
+    expect(result.ok).toBe(false);
+    expect(result.provider).toBe("none");
+    expect(result.errorKind).toBe("no_key");
+    expect(fetchMock).not.toHaveBeenCalled();
+    expect(errorSpy).toHaveBeenCalledWith("[aiProvider] Missing required env OPENAI_API_KEY");
   });
 });

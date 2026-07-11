@@ -27,22 +27,43 @@ import {
   checkFreeConversationTurns,
 } from "./_lib/conversationCost";
 
-const client = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
+const loggedMissingEnv = new Set<string>();
+
+function logMissingEnv(name: string): void {
+  if (loggedMissingEnv.has(name)) return;
+  console.error(`[mercy-ai] Missing required env ${name}`);
+  loggedMissingEnv.add(name);
+}
+
+function readEnv(name: string): string {
+  const value = process.env[name]?.trim() ?? "";
+  if (!value) logMissingEnv(name);
+  return value;
+}
+
+function readFirstEnv(names: readonly string[]): string {
+  for (const name of names) {
+    const value = process.env[name]?.trim() ?? "";
+    if (value) return value;
+  }
+  for (const name of names) logMissingEnv(name);
+  return "";
+}
+
+const openAiApiKey = readEnv("OPENAI_API_KEY");
+const client = new OpenAI({ apiKey: openAiApiKey || "missing-openai-api-key" });
 
 // Prefer server-only env names first. Fall back to VITE_* only if needed.
-const supabaseUrl =
-  process.env.SUPABASE_URL || process.env.VITE_SUPABASE_URL || "";
+const supabaseUrl = readFirstEnv(["SUPABASE_URL", "VITE_SUPABASE_URL"]);
 
-const supabaseAnonKey =
-  process.env.SUPABASE_ANON_KEY || process.env.VITE_SUPABASE_ANON_KEY || "";
+const supabaseAnonKey = readFirstEnv(["SUPABASE_ANON_KEY", "VITE_SUPABASE_ANON_KEY"]);
 
 const supabase =
   supabaseUrl && supabaseAnonKey
     ? createClient(supabaseUrl, supabaseAnonKey)
     : null;
 
-const supabaseServiceKey =
-  process.env.SUPABASE_SERVICE_ROLE_KEY || "";
+const supabaseServiceKey = readEnv("SUPABASE_SERVICE_ROLE_KEY");
 
 const requestLog = new Map<string, number[]>();
 
@@ -291,7 +312,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       if (learnerText.length > 500) {
         return safeJson(res, 400, { error: "Input too long" });
       }
-      if (!process.env.OPENAI_API_KEY) {
+      if (!openAiApiKey) {
         return safeJson(res, 500, { error: "Missing OPENAI_API_KEY" });
       }
 
@@ -350,7 +371,7 @@ On low-confidence: {"corrected":"","explanation":"${explainLang === "vi" ? viAbs
       }
     }
 
-    if (!process.env.OPENAI_API_KEY) {
+    if (!openAiApiKey) {
       return safeJson(res, 500, { error: "Missing OPENAI_API_KEY" });
     }
 

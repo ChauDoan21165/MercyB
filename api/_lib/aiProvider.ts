@@ -88,6 +88,12 @@ const DEFAULT_GEMINI_MODEL = "gemini-2.5-flash";
 const DEFAULT_TEMPERATURE = 0.15;
 const DEFAULT_MAX_TOKENS = 800;
 const DEFAULT_PROVIDER_ORDER: readonly ConfiguredAiProvider[] = ["openai", "gemini"];
+const PROVIDER_ENV_NAMES: Record<ConfiguredAiProvider, string> = {
+  openai: "OPENAI_API_KEY",
+  deepseek: "DEEPSEEK_API_KEY",
+  gemini: "GEMINI_API_KEY",
+};
+const loggedMissingProviderEnv = new Set<string>();
 
 // ── Internal helpers ─────────────────────────────────────────────────────
 
@@ -116,6 +122,22 @@ function errorKindFor(reason: {
   return "upstream_error";
 }
 
+function logMissingProviderEnv(envName: string): void {
+  if (loggedMissingProviderEnv.has(envName)) return;
+  console.error(`[aiProvider] Missing required env ${envName}`);
+  loggedMissingProviderEnv.add(envName);
+}
+
+function getProviderApiKey(provider: ConfiguredAiProvider): string | null {
+  const envName = PROVIDER_ENV_NAMES[provider];
+  const value = process.env[envName]?.trim() ?? "";
+  if (!value) {
+    logMissingProviderEnv(envName);
+    return null;
+  }
+  return value;
+}
+
 // ── OpenAI calls (JSON + text) ───────────────────────────────────────────
 
 type OpenAiOutcome =
@@ -127,7 +149,7 @@ async function callOpenAi(
   jsonMode: boolean,
   signal: AbortSignal,
 ): Promise<OpenAiOutcome> {
-  const apiKey = process.env.OPENAI_API_KEY;
+  const apiKey = getProviderApiKey("openai");
   if (!apiKey) {
     return { kind: "fail", status: 401 };
   }
@@ -182,7 +204,7 @@ async function callDeepSeek(
   jsonMode: boolean,
   signal: AbortSignal,
 ): Promise<DeepSeekOutcome> {
-  const apiKey = process.env.DEEPSEEK_API_KEY;
+  const apiKey = getProviderApiKey("deepseek");
   if (!apiKey) {
     return { kind: "fail", status: 401 };
   }
@@ -238,7 +260,7 @@ async function callGemini(
   jsonMode: boolean,
   signal: AbortSignal,
 ): Promise<GeminiOutcome> {
-  const apiKey = process.env.GEMINI_API_KEY;
+  const apiKey = getProviderApiKey("gemini");
   if (!apiKey) {
     return { kind: "fail", status: 401 };
   }
@@ -510,9 +532,7 @@ function normalizeProviderOrder(
 }
 
 function hasProviderKey(provider: ConfiguredAiProvider): boolean {
-  if (provider === "openai") return Boolean(process.env.OPENAI_API_KEY);
-  if (provider === "deepseek") return Boolean(process.env.DEEPSEEK_API_KEY);
-  return Boolean(process.env.GEMINI_API_KEY);
+  return Boolean(getProviderApiKey(provider));
 }
 
 function callConfiguredProvider(
