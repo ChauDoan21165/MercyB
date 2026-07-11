@@ -227,11 +227,12 @@ async function sendAlertEmail(
   since: Date,
   now: Date,
 ): Promise<boolean> {
-  const apiKey = Deno.env.get("RESEND_API_KEY");
+  const apiKey = (Deno.env.get("RESEND_API_KEY") ?? "").trim();
   if (!apiKey) {
     console.warn("[client-error-alert] RESEND_API_KEY missing; skipping email");
     return false;
   }
+  console.log("[client-error-alert] RESEND_API_KEY length:", apiKey.length);
 
   const resend = new Resend(apiKey);
   const subject = `R1 SENTINEL: ${group.status ?? "5xx"} spike ${group.endpoint ?? group.errorSignature}`;
