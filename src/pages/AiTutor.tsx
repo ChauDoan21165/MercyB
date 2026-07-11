@@ -627,13 +627,19 @@ function createLpiSessionTracker(): LpiSessionTracker {
 }
 
 function resolveCorrectionSeverity(detectorTag: string | null): PolicySeverity {
+  if (detectorTag === "wrong-keyword" || detectorTag === "negation-reversal") {
+    return "meaning_blocking";
+  }
+
   if (detectorTag) {
     const registerPattern = REGISTER_TAXONOMY.find((pattern) => pattern.tag === detectorTag);
-    if (registerPattern?.severity) return registerPattern.severity;
+    if (registerPattern?.severity === "high") return "target_form";
+    if (registerPattern?.severity === "medium") return "form";
+    if (registerPattern?.severity === "low") return "minor";
   }
 
   // TODO(lpi): add rule/detector registry severity lookup as registries expose severity consistently.
-  return "medium";
+  return "form";
 }
 
 function updateLpiTurnDensity(tracker: LpiSessionTracker, hasError: boolean): number {
