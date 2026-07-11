@@ -2191,4 +2191,43 @@ describe("AiTutor Grammar submit — unchanged sentence + session handling", () 
     const [, init] = aiCall;
     expect(init?.headers).toMatchObject({ Authorization: "Bearer session-jwt" });
   });
+
+  it("shows the confirmed buy-a-head correction from the AI path instead of the fallback", async () => {
+    useAuthMock.mockReturnValue({
+      user: { id: "user-1", user_metadata: {} },
+      session: { access_token: "session-jwt" },
+      isLoading: false,
+    });
+    vi.stubGlobal(
+      "fetch",
+      vi.fn<typeof fetch>(async () =>
+        new Response(
+          JSON.stringify({
+            confident: true,
+            corrected:
+              "Hello. I bought a hat yesterday because someone is coming, and I am going to be out a lot, so I need a hat.",
+            explanation:
+              "'Head' được sửa thành 'hat' vì cuối câu nói rõ bạn cần một chiếc mũ.",
+            grammarTip:
+              "Mẹo: Khi nói về quá khứ với 'yesterday', dùng động từ quá khứ như 'bought'.",
+          }),
+          { status: 200, headers: { "Content-Type": "application/json" } },
+        ),
+      ),
+    );
+    renderAiTutor();
+
+    await userEvent.type(
+      screen.getByRole("textbox", { name: /Gõ câu tiếng Anh của bạn/i }),
+      "hello I buy a head yesterday because someone's coming and I'm going to be out a lot so I need a hat",
+    );
+    await userEvent.click(screen.getByRole("button", { name: "Sửa câu này" }));
+
+    expect(
+      await screen.findByText(
+        "Hello. I bought a hat yesterday because someone is coming, and I am going to be out a lot, so I need a hat.",
+      ),
+    ).toBeInTheDocument();
+    expect(screen.queryByText(FRIENDLY_CORRECTION_UNAVAILABLE_MESSAGE)).not.toBeInTheDocument();
+  });
 });

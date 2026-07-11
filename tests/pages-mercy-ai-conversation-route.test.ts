@@ -375,6 +375,40 @@ describe("Pages /api/mercy-ai sentence-correction mode", () => {
     expect(body.corrected).toBe("");
   });
 
+  it("recovers the confirmed buy-a-head hat correction when OpenAI abstains", async () => {
+    const fetchMock = vi.fn<typeof fetch>().mockResolvedValueOnce(
+      jsonResponse({
+        choices: [{
+          message: {
+            content: JSON.stringify({
+              corrected: "",
+              explanation: "Mercy chưa sửa chắc câu này. Bạn thử viết ngắn hơn, rõ hơn rồi gửi lại nhé.",
+              grammarTip: "",
+              confident: false,
+            }),
+          },
+        }],
+        usage: { prompt_tokens: 155, completion_tokens: 32, total_tokens: 187 },
+      }),
+    );
+    vi.stubGlobal("fetch", fetchMock);
+
+    const response = await postMercyAi({
+      mode: "sentence-correction",
+      learnerText: "hello I buy a head yesterday because someone's coming and I'm going to be out a lot so I need a hat",
+      explainLanguage: "vi",
+      target: "en",
+    });
+
+    expect(response.status).toBe(200);
+    await expect(response.json()).resolves.toMatchObject({
+      confident: true,
+      corrected: "Hello. I bought a hat yesterday because someone is coming, and I am going to be out a lot, so I need a hat.",
+      explanation: expect.stringContaining("'Head' được sửa thành 'hat'"),
+      grammarTip: expect.stringContaining("bought"),
+    });
+  });
+
   it("rejects missing learnerText with 400", async () => {
     const fetchMock = vi.fn<typeof fetch>();
     vi.stubGlobal("fetch", fetchMock);

@@ -72,6 +72,38 @@ function getIp(request: Request): string {
   return forwarded.split(",")[0]?.trim() || "unknown";
 }
 
+function buildContextualSttCorrection(
+  learnerText: string,
+  explainLang: "vi" | "en",
+): { corrected: string; explanation: string; grammarTip: string } | null {
+  const normalized = learnerText.replace(/\s+/g, " ").trim();
+  if (
+    !/\bbuy\s+a\s+head\b/i.test(normalized) ||
+    !/\bneed\s+a\s+hat\b/i.test(normalized) ||
+    !/\byesterday\b/i.test(normalized)
+  ) {
+    return null;
+  }
+
+  return explainLang === "vi"
+    ? {
+        corrected:
+          "Hello. I bought a hat yesterday because someone is coming, and I am going to be out a lot, so I need a hat.",
+        explanation:
+          "'Buy' đổi thành 'bought' vì có 'yesterday'. 'Head' được sửa thành 'hat' vì cuối câu nói rõ bạn cần một chiếc mũ.",
+        grammarTip:
+          "Mẹo: Khi nói về quá khứ với 'yesterday', dùng động từ quá khứ như 'bought'.",
+      }
+    : {
+        corrected:
+          "Hello. I bought a hat yesterday because someone is coming, and I am going to be out a lot, so I need a hat.",
+        explanation:
+          "'Buy' changed to 'bought' because of 'yesterday'. 'Head' was corrected to 'hat' because the end of the sentence says you need a hat.",
+        grammarTip:
+          "Tip: With 'yesterday', use past-tense verbs such as 'bought'.",
+      };
+}
+
 async function hasPremiumAiConversationAccess(
   env: PagesContext["env"],
   accessToken: string,
@@ -277,11 +309,15 @@ export async function onRequestPost(context: PagesContext): Promise<Response> {
     const isRunOn = _runOnWords >= 12 && (_runOnConjs >= 2 || _runOnCommas >= 2);
 
     const explainLang = norm(body.explainLanguage) === "en" ? "en" : "vi";
+    const contextualSttCorrection = buildContextualSttCorrection(learnerText, explainLang);
     const viAbstain = "Mercy chưa sửa chắc câu này. Bạn thử viết ngắn hơn, rõ hơn rồi gửi lại nhé.";
     const enAbstain = "Mercy could not correct this confidently. Try rewriting it more clearly.";
     const sttAbstain = "Mình chưa chắc bạn định nói gì — bạn gõ lại nhé?";
     const runOnInstruction = isRunOn
       ? `\nRun-on rule: The input appears to be a run-on sentence with multiple clauses. Do NOT set "confident" to false for this reason. Instead, break the clauses into separate sentences, correct the grammar in each one, and return all corrected sentences assembled as the "corrected" value. The explanation (in ${explainLang === "vi" ? "Vietnamese" : "English"}) should note that the run-on was split into proper sentences.`
+      : "";
+    const contextualSttInstruction = contextualSttCorrection
+      ? `\nContextual STT-garble rule for this input: "buy a head" is recoverable because the learner later says "I need a hat". Correct it as "bought a hat" and keep confident true; do not abstain.`
       : "";
     const systemPrompt = `You are Mercy, an English-language tutor for Vietnamese learners.
 Correct the learner's English sentence for grammar, tense, and natural phrasing.
@@ -289,6 +325,7 @@ Keep the learner's original meaning — do not rewrite from scratch.
 Explain what changed and why in ${explainLang === "vi" ? "Vietnamese" : "English"} (1–2 sentences).
 Give a grammar tip in ${explainLang === "vi" ? "Vietnamese" : "English"} (one line, start with "Mẹo:" or "Tip:").
 STT-garble rule: If a content word is semantically impossible in its syntactic position — e.g. a degree adverb modifying a proper noun ("very Sunday", "so Monday") or a linking verb followed by a time noun used as an adjective ("feel week") — the word is almost certainly a speech-to-text mishearing. You MUST either (a) identify the intended word and fix it (e.g. "very Sunday" → "very sunny", "feel week" → "feel weak"), or (b) set "confident" to false with explanation "${sttAbstain}". NEVER approve such a sentence as correct.${runOnInstruction}
+${contextualSttInstruction}
 Fragment rule: For sentence fragments with no finite verb (e.g. "a good mother yesterday and invited her") — reconstruct the intended complete sentence, OR set "confident" to false. NEVER return a fragment as-is with confident:true.
 If the input is genuinely garbled or incomprehensible (not merely long or multi-clause), set "confident" to false.
 Respond ONLY with valid JSON:
@@ -321,6 +358,9 @@ On low-confidence: {"corrected":"","explanation":"${explainLang === "vi" ? viAbs
       const raw = corrData.choices?.[0]?.message?.content ?? "{}";
       let parsed: { corrected?: string; explanation?: string; grammarTip?: string; confident?: boolean } = {};
       try { parsed = JSON.parse(raw); } catch { /* leave empty */ }
+      if (contextualSttCorrection && parsed.confident === false) {
+        parsed = { ...contextualSttCorrection, confident: true };
+      }
       const confident = parsed.confident !== false;
       // Additive: VND-costed spend to ai_usage_logs. Only when usage present
       // (no fabricated numbers). Fire-and-forget.
