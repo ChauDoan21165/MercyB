@@ -19,6 +19,7 @@ export default [
       "coverage/**",
       ".vite/**",
       ".vercel/**",
+      ".wrangler/**",
       "**/*.map",
       "**/*.min.js",
 
