@@ -4,6 +4,7 @@ import { MemoryRouter, Route, Routes, useLocation, useParams } from "react-route
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import RoomRenderer from "@/components/room/RoomRenderer";
 import ResultsPage from "../ResultsPage";
+import { getResults } from "@/lib/placement/v3/clientStub";
 import type { PlacementV3Recommendation, PlacementV3Results } from "@/lib/placement/v3/types";
 
 vi.mock("@/lib/placement/v3/clientStub", () => ({
@@ -374,6 +375,18 @@ afterEach(() => {
 });
 
 describe("Placement V3 resume reliability", () => {
+  it("refetches results when the cached result payload is corrupted", async () => {
+    const freshResults = results();
+    vi.mocked(getResults).mockResolvedValueOnce(freshResults);
+    window.sessionStorage.setItem(`mb.placement.v3.results.${SESSION_ID}`, "{bad json");
+
+    renderResultsRoute();
+
+    expect(await screen.findByText("A2 with next lesson.")).toBeInTheDocument();
+    expect(getResults).toHaveBeenCalledWith(SESSION_ID);
+    expect(window.sessionStorage.getItem(`mb.placement.v3.results.${SESSION_ID}`)).toBeNull();
+  });
+
   it("start recommended lesson persists marker", async () => {
     const lessonId = `room:${ROOM_ID}`;
     cacheResults();

@@ -85,6 +85,22 @@ type ActiveLessonMarker = {
   completionCount: number;
 };
 
+function resultsCacheKey(sessionId: string) {
+  return `mb.placement.v3.results.${sessionId}`;
+}
+
+function readCachedResults(sessionId: string): PlacementV3Results | null {
+  const key = resultsCacheKey(sessionId);
+  const stored = window.sessionStorage.getItem(key);
+  if (!stored) return null;
+  try {
+    return JSON.parse(stored) as PlacementV3Results;
+  } catch {
+    window.sessionStorage.removeItem(key);
+    return null;
+  }
+}
+
 export default function ResultsPage() {
   const { sessionId = "" } = useParams();
   const navigate = useNavigate();
@@ -97,9 +113,9 @@ export default function ResultsPage() {
 
   useEffect(() => {
     let cancelled = false;
-    const stored = window.sessionStorage.getItem(`mb.placement.v3.results.${sessionId}`);
-    if (stored) {
-      setResults(JSON.parse(stored) as PlacementV3Results);
+    const cachedResults = readCachedResults(sessionId);
+    if (cachedResults) {
+      setResults(cachedResults);
       setLoading(false);
       return;
     }
