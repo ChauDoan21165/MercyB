@@ -85,12 +85,19 @@ test("(a) sign-in completes without redirect bounce", async ({ page }, testInfo)
     const pwToggle = page.getByRole("button", {
       name: /sign in with password|đăng nhập bằng mật khẩu/i,
     });
-    if (await pwToggle.first().isVisible().catch(() => false)) await pwToggle.first().click();
-
-    // Deterministic: wait for the password field to actually mount before filling
-    // (proves we entered password mode) — no sleep, no blind fill.
     const pwField = page.locator('input[type="password"], input[autocomplete="current-password"]');
-    await pwField.first().waitFor({ state: "visible", timeout: 10_000 });
+    // Enter password mode if not already there. Do NOT gate the toggle click on a
+    // one-shot isVisible() — run #6 (host "MercyB Mac shell runner", frozen
+    // chromium) evaluated isVisible=false right at networkidle before the toggle
+    // laid out, so the click was SKIPPED, the password field never mounted, and
+    // waitFor timed out (no login POST). Click with Playwright auto-waiting
+    // instead (it waits for the toggle to render + become actionable); tolerate
+    // its absence in case the page is already in password mode.
+    if (!(await pwField.first().isVisible().catch(() => false))) {
+      await pwToggle.first().click({ timeout: 15_000 }).catch(() => {});
+    }
+    // Deterministic: the password field must actually mount before we fill.
+    await pwField.first().waitFor({ state: "visible", timeout: 15_000 });
 
     await page.locator('input[type="email"], input[name="email"], input[autocomplete="email"]').first().fill(SYNTH_EMAIL);
     await pwField.first().fill(SYNTH_PASSWORD);
