@@ -76,24 +76,34 @@ test("(a) sign-in completes without redirect bounce", async ({ page }, testInfo)
   let detail = "";
   try {
     await page.goto(`${SYNTH_BASE_URL}/signin`, { waitUntil: "networkidle" });
-    const passwordTab = page.getByRole("button", {
-      name: /sign in with password|đăng nhập bằng mật khẩu|^sign in$|đăng nhập · sign in/i,
+    // Switch to PASSWORD mode. /signin defaults to EMAIL-CODE mode; the password
+    // field only mounts after the "Sign in with password" toggle. Run #4 trace
+    // (test-results/journeys--a-.../trace.zip) proved the old regex ALSO matched
+    // the "Đăng nhập · Sign in" SUBMIT button and clicked THAT — so the form never
+    // entered password mode, no /auth/v1/token POST ever fired, and the page stayed
+    // in email-code mode → spurious "BOUNCED". Match ONLY the mode toggle.
+    const pwToggle = page.getByRole("button", {
+      name: /sign in with password|đăng nhập bằng mật khẩu/i,
     });
-    if (await passwordTab.first().isVisible().catch(() => false)) await passwordTab.first().click();
+    if (await pwToggle.first().isVisible().catch(() => false)) await pwToggle.first().click();
+
+    // Deterministic: wait for the password field to actually mount before filling
+    // (proves we entered password mode) — no sleep, no blind fill.
+    const pwField = page.locator('input[type="password"], input[autocomplete="current-password"]');
+    await pwField.first().waitFor({ state: "visible", timeout: 10_000 });
 
     await page.locator('input[type="email"], input[name="email"], input[autocomplete="email"]').first().fill(SYNTH_EMAIL);
-    await page.locator('input[type="password"], input[autocomplete="current-password"]').first().fill(SYNTH_PASSWORD);
-    await Promise.all([
-      page.waitForURL((u) => !/\/(signin|login)/.test(new URL(u).pathname), { timeout: 20_000 }).catch(() => {}),
-      // Real /signin button is <button type="button"> named "Đăng nhập · Sign in"
-      // (EmailBlock.tsx:782) — there is NO button[type="submit"] on the page.
-      // `:has-text(/regex/)` is invalid inside a CSS string (throws
-      // "Unexpected token / while parsing css selector"), so match by role+name.
-      page.getByRole("button", { name: /đăng nhập · sign in|^sign ?in$|^log ?in$/i }).or(page.locator('button[type="submit"]')).first().click(),
-    ]);
+    await pwField.first().fill(SYNTH_PASSWORD);
+
+    // Submit — password-mode primary is <button type="button"> "Đăng nhập · Sign in"
+    // (EmailBlock.tsx:782); no button[type="submit"] exists.
+    await page.getByRole("button", { name: /đăng nhập · sign in/i }).or(page.locator('button[type="submit"]')).first().click();
+
+    // Deterministic auth-state settle: a real sign-in navigates away from /signin.
+    await page.waitForURL((u) => !/\/(signin|login)/.test(new URL(u).pathname), { timeout: 20_000 }).catch(() => {});
     const landed = new URL(page.url()).pathname;
     ok = !/\/(signin|login)/.test(landed);
-    detail = ok ? `landed on ${landed}` : `BOUNCED back to ${landed}`;
+    detail = ok ? `landed on ${landed}` : `still on ${landed} after password submit (no redirect)`;
   } catch (e) {
     detail = redact(`error: ${(e as Error).message}`);
   }
