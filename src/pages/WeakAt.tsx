@@ -12,8 +12,20 @@
 
 import LocalWeaknessMap from "@/components/stage-3a/LocalWeaknessMap";
 import SuggestedPracticeList from "@/components/stage-3b/SuggestedPracticeList";
+import DiagnosticContactGate from "@/components/diagnostic/DiagnosticContactGate";
+import { isDiagnosticContactGateEnabled } from "@/lib/diagnosticLeads";
 
 export default function WeakAt() {
+  const fullProfile = (
+    <>
+      <LocalWeaknessMap />
+      <div className="mt-6">
+        <SuggestedPracticeList />
+      </div>
+    </>
+  );
+  const profileRef = "weak-at-local-v1";
+
   return (
     <main id="main-content" tabIndex={-1} className="mx-auto max-w-2xl px-4 py-8 sm:px-6 sm:py-12">
       <header className="mb-6">
@@ -35,10 +47,13 @@ export default function WeakAt() {
           không gửi lên server. Càng luyện càng chính xác.
         </p>
       </header>
-      <LocalWeaknessMap />
-      <div className="mt-6">
-        <SuggestedPracticeList />
-      </div>
+      {isDiagnosticContactGateEnabled() ? (
+        <DiagnosticContactGate profileRef={profileRef}>
+          {fullProfile}
+        </DiagnosticContactGate>
+      ) : (
+        fullProfile
+      )}
     </main>
   );
 }
