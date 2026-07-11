@@ -37,6 +37,8 @@ const corsHeaders = {
 
 const FREE_TRIAL_DAYS = 3;
 const AI_MODEL = "gpt-4.1-mini";
+const MISSING_SUPABASE_URL = "https://missing.supabase.co";
+const MISSING_SUPABASE_SERVICE_KEY = "missing-service-role-key";
 
 const MERCY_MESSAGES = {
   ALREADY_SUBSCRIBED: {
@@ -53,12 +55,31 @@ const MERCY_MESSAGES = {
   }
 };
 
-const supabaseUrl = Deno.env.get("SUPABASE_URL")!;
-const supabaseAnonKey = Deno.env.get("SUPABASE_ANON_KEY")!;
-const supabaseServiceKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
+const loggedMissingEnv = new Set<string>();
+
+function getRequiredEnv(name: string): string | null {
+  const value = Deno.env.get(name)?.trim() ?? "";
+  if (value) return value;
+  if (!loggedMissingEnv.has(name)) {
+    console.error(`[ai-chat] Missing required env ${name}`);
+    loggedMissingEnv.add(name);
+  }
+  return null;
+}
+
+const supabaseUrl = getRequiredEnv("SUPABASE_URL") ?? "";
+const supabaseAnonKey = getRequiredEnv("SUPABASE_ANON_KEY") ?? "";
+const supabaseServiceKey = getRequiredEnv("SUPABASE_SERVICE_ROLE_KEY") ?? "";
 
 // Admin client (bypasses RLS): safe for server-only reads
-const supabaseAdmin = createClient(supabaseUrl, supabaseServiceKey);
+const supabaseAdmin = createClient(
+  supabaseUrl || MISSING_SUPABASE_URL,
+  supabaseServiceKey || MISSING_SUPABASE_SERVICE_KEY,
+);
+
+function hasRequiredRuntimeEnv(): boolean {
+  return Boolean(supabaseUrl && supabaseAnonKey && supabaseServiceKey);
+}
 
 // ---------------------------
 // AI budget helpers
@@ -541,6 +562,16 @@ async function loadRoomData(roomId: string): Promise<any | null> {
 serve(wrapHandler("ai-chat", async (req) => {
   if (req.method === "OPTIONS") {
     return new Response(null, { headers: corsHeaders });
+  }
+
+  if (!hasRequiredRuntimeEnv()) {
+    return new Response(
+      JSON.stringify({ error: "AI chat is temporarily unavailable" }),
+      {
+        status: 500,
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+      },
+    );
   }
 
   const totalStartedAt = performance.now();

@@ -11,6 +11,7 @@ const corsHeaders = {
 
 // Rate limit: 20 requests per minute per IP
 const RATE_LIMIT_CONFIG = { maxRequests: 20, windowMs: 60000 };
+const OPENAI_TIMEOUT_MS = 15_000;
 
 // Safety keywords that trigger templated response
 const CRISIS_KEYWORDS = [
@@ -62,6 +63,25 @@ function containsCrisisKeywords(text: string): boolean {
   return CRISIS_KEYWORDS.some(keyword => lower.includes(keyword));
 }
 
+const loggedMissingEnv = new Set<string>();
+
+function getRequiredEnv(name: string): string | null {
+  const value = Deno.env.get(name)?.trim() ?? "";
+  if (value) return value;
+  if (!loggedMissingEnv.has(name)) {
+    console.error(`[guide-english-helper] Missing required env ${name}`);
+    loggedMissingEnv.add(name);
+  }
+  return null;
+}
+
+function jsonResponse(body: unknown, status = 200): Response {
+  return new Response(
+    JSON.stringify(body),
+    { status, headers: { ...corsHeaders, 'Content-Type': 'application/json' } },
+  );
+}
+
 serve(async (req) => {
   if (req.method === 'OPTIONS') {
     return new Response(null, { headers: corsHeaders });
@@ -85,9 +105,17 @@ serve(async (req) => {
     let userId: string | null = null;
     const authHeader = req.headers.get('Authorization');
     if (authHeader) {
+      const supabaseUrl = getRequiredEnv('SUPABASE_URL');
+      const supabaseAnonKey = getRequiredEnv('SUPABASE_ANON_KEY');
+      if (!supabaseUrl || !supabaseAnonKey) {
+        return jsonResponse(
+          { ok: false, error: 'English helper is temporarily unavailable' },
+          500,
+        );
+      }
       const supabase = createClient(
-        Deno.env.get('SUPABASE_URL')!,
-        Deno.env.get('SUPABASE_ANON_KEY')!,
+        supabaseUrl,
+        supabaseAnonKey,
         { global: { headers: { Authorization: authHeader } } }
       );
       const { data: { user } } = await supabase.auth.getUser();
@@ -109,10 +137,7 @@ serve(async (req) => {
     } = await req.json();
 
     if (!sourceText || typeof sourceText !== 'string' || sourceText.trim().length === 0) {
-      return new Response(
-        JSON.stringify({ ok: false, error: 'Source text is required' }),
-        { status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
-      );
+      return jsonResponse({ ok: false, error: 'Source text is required' }, 400);
     }
 
     // Safety check
@@ -124,18 +149,12 @@ serve(async (req) => {
         encouragement_en: SAFE_ENCOURAGEMENT.en,
         encouragement_vi: SAFE_ENCOURAGEMENT.vi
       });
-      return new Response(
-        JSON.stringify({ ok: true, answer }),
-        { headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
-      );
+      return jsonResponse({ ok: true, answer });
     }
 
-    const openaiKey = Deno.env.get('OPENAI_API_KEY');
+    const openaiKey = getRequiredEnv('OPENAI_API_KEY');
     if (!openaiKey) {
-      return new Response(
-        JSON.stringify({ ok: false, error: 'OpenAI API key not configured' }),
-        { status: 500, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
-      );
+      return jsonResponse({ ok: false, error: 'English helper is temporarily unavailable' }, 500);
     }
 
     // Truncate source text if too long
@@ -155,30 +174,42 @@ ${userQuestion ? `User's question: ${userQuestion}` : 'Please teach me simple En
 Remember to return valid JSON only.`;
 
     // Call OpenAI
-    const response = await fetch('https://api.openai.com/v1/chat/completions', {
-      method: 'POST',
-      headers: {
-        'Authorization': `Bearer ${openaiKey}`,
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        model: 'gpt-4o-mini',
-        messages: [
-          { role: 'system', content: SYSTEM_PROMPT },
-          { role: 'user', content: userMessage }
-        ],
-        max_tokens: 800,
-        temperature: 0.7,
-      }),
-    });
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), OPENAI_TIMEOUT_MS);
+    let response: Response;
+    try {
+      response = await fetch('https://api.openai.com/v1/chat/completions', {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${openaiKey}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          model: 'gpt-4o-mini',
+          messages: [
+            { role: 'system', content: SYSTEM_PROMPT },
+            { role: 'user', content: userMessage }
+          ],
+          max_tokens: 800,
+          temperature: 0.7,
+        }),
+        signal: controller.signal,
+      });
+    } catch (error) {
+      const isAbort = error instanceof Error && error.name === 'AbortError';
+      if (isAbort) {
+        console.error('OpenAI API timed out for guide-english-helper');
+        return jsonResponse({ ok: false, error: 'English helper timed out. Please try again.' }, 504);
+      }
+      throw error;
+    } finally {
+      clearTimeout(timeout);
+    }
 
     if (!response.ok) {
       const errorText = await response.text();
       console.error('OpenAI API error:', response.status, errorText);
-      return new Response(
-        JSON.stringify({ ok: false, error: 'Failed to get AI response' }),
-        { status: 500, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
-      );
+      return jsonResponse({ ok: false, error: 'Failed to get AI response' }, 500);
     }
 
     const data = await response.json();
@@ -208,9 +239,15 @@ Remember to return valid JSON only.`;
     // Update last_english_activity for the user if authenticated
     if (userId) {
       try {
+        const supabaseUrl = getRequiredEnv('SUPABASE_URL');
+        const supabaseServiceKey = getRequiredEnv('SUPABASE_SERVICE_ROLE_KEY');
+        if (!supabaseUrl || !supabaseServiceKey) {
+          console.error('Skipping last_english_activity update because Supabase admin env is missing');
+          return jsonResponse({ ok: true, answer });
+        }
         const supabaseAdmin = createClient(
-          Deno.env.get('SUPABASE_URL')!,
-          Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!
+          supabaseUrl,
+          supabaseServiceKey
         );
         await supabaseAdmin
           .from('companion_state')
@@ -224,16 +261,10 @@ Remember to return valid JSON only.`;
       }
     }
 
-    return new Response(
-      JSON.stringify({ ok: true, answer }),
-      { headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
-    );
+    return jsonResponse({ ok: true, answer });
 
   } catch (error) {
     console.error('English helper error:', error);
-    return new Response(
-      JSON.stringify({ ok: false, error: 'An error occurred. Please try again.' }),
-      { status: 500, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
-    );
+    return jsonResponse({ ok: false, error: 'An error occurred. Please try again.' }, 500);
   }
 });

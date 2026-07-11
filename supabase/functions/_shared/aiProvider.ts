@@ -123,6 +123,12 @@ const DEFAULT_GEMINI_MODEL = "gemini-2.5-flash";
 const DEFAULT_TEMPERATURE = 0.15;
 const DEFAULT_MAX_TOKENS = 800;
 const DEFAULT_PROVIDER_ORDER: readonly ConfiguredAiProvider[] = ["openai", "gemini"];
+const PROVIDER_ENV_NAMES: Record<ConfiguredAiProvider, string> = {
+  openai: "OPENAI_API_KEY",
+  deepseek: "DEEPSEEK_API_KEY",
+  gemini: "GEMINI_API_KEY",
+};
+const loggedMissingProviderEnv = new Set<string>();
 
 // ── Failover-decision helpers (shared) ───────────────────────────────────
 
@@ -184,6 +190,22 @@ function describeFail(o: { status?: number; isAbort?: boolean; threw?: boolean }
   return "unknown";
 }
 
+function logMissingProviderEnv(envName: string): void {
+  if (loggedMissingProviderEnv.has(envName)) return;
+  console.error(`[aiProvider] Missing required env ${envName}`);
+  loggedMissingProviderEnv.add(envName);
+}
+
+function getProviderApiKey(provider: ConfiguredAiProvider): string | null {
+  const envName = PROVIDER_ENV_NAMES[provider];
+  const value = Deno.env.get(envName)?.trim() ?? "";
+  if (!value) {
+    logMissingProviderEnv(envName);
+    return null;
+  }
+  return value;
+}
+
 // ── OpenAI calls ─────────────────────────────────────────────────────────
 
 function buildOpenAiMessages(opts: ChatJsonOpts) {
@@ -201,7 +223,7 @@ async function callOpenAi(
   jsonMode: boolean,
   signal: AbortSignal,
 ): Promise<Outcome> {
-  const apiKey = Deno.env.get("OPENAI_API_KEY");
+  const apiKey = getProviderApiKey("openai");
   if (!apiKey) return { kind: "fail", status: 401 };
 
   const body: Record<string, unknown> = {
@@ -239,7 +261,7 @@ async function callOpenAiStream(
   opts: StreamChatOpts,
   signal: AbortSignal,
 ): Promise<Outcome> {
-  const apiKey = Deno.env.get("OPENAI_API_KEY");
+  const apiKey = getProviderApiKey("openai");
   if (!apiKey) return { kind: "fail", status: 401 };
 
   const body: Record<string, unknown> = {
@@ -283,7 +305,7 @@ async function callDeepSeek(
   jsonMode: boolean,
   signal: AbortSignal,
 ): Promise<Outcome> {
-  const apiKey = Deno.env.get("DEEPSEEK_API_KEY");
+  const apiKey = getProviderApiKey("deepseek");
   if (!apiKey) return { kind: "fail", status: 401 };
 
   const body: Record<string, unknown> = {
@@ -322,7 +344,7 @@ async function callDeepSeekStream(
   opts: StreamChatOpts,
   signal: AbortSignal,
 ): Promise<Outcome> {
-  const apiKey = Deno.env.get("DEEPSEEK_API_KEY");
+  const apiKey = getProviderApiKey("deepseek");
   if (!apiKey) return { kind: "fail", status: 401 };
 
   const body: Record<string, unknown> = {
@@ -385,7 +407,7 @@ async function callGemini(
   jsonMode: boolean,
   signal: AbortSignal,
 ): Promise<Outcome> {
-  const apiKey = Deno.env.get("GEMINI_API_KEY");
+  const apiKey = getProviderApiKey("gemini");
   if (!apiKey) return { kind: "fail", status: 401 };
 
   const model = opts.geminiModel ?? DEFAULT_GEMINI_MODEL;
@@ -432,7 +454,7 @@ async function callGeminiStream(
   opts: StreamChatOpts,
   signal: AbortSignal,
 ): Promise<Outcome> {
-  const apiKey = Deno.env.get("GEMINI_API_KEY");
+  const apiKey = getProviderApiKey("gemini");
   if (!apiKey) return { kind: "fail", status: 401 };
 
   const model = opts.geminiModel ?? DEFAULT_GEMINI_MODEL;
@@ -921,9 +943,7 @@ function normalizeProviderOrder(
 }
 
 function hasProviderKey(provider: ConfiguredAiProvider): boolean {
-  if (provider === "openai") return Boolean(Deno.env.get("OPENAI_API_KEY"));
-  if (provider === "deepseek") return Boolean(Deno.env.get("DEEPSEEK_API_KEY"));
-  return Boolean(Deno.env.get("GEMINI_API_KEY"));
+  return Boolean(getProviderApiKey(provider));
 }
 
 function callConfiguredProvider(

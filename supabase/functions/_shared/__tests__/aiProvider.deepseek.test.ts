@@ -81,6 +81,7 @@ beforeEach(() => {
 
 afterEach(() => {
   vi.unstubAllGlobals();
+  vi.restoreAllMocks();
 });
 
 describe("aiProvider (Deno) — DeepSeek key PRESENT routes to DeepSeek", () => {
@@ -179,6 +180,7 @@ describe("aiProvider (Deno) — DeepSeek key PRESENT routes to DeepSeek", () => 
 describe("aiProvider (Deno) — DeepSeek key ABSENT degrades gracefully", () => {
   it("skips DeepSeek with no crash and lets OpenAI answer", async () => {
     stubEnv({ OPENAI_API_KEY: "sk", GEMINI_API_KEY: "g" }); // no DEEPSEEK_API_KEY
+    const errorSpy = vi.spyOn(console, "error").mockImplementation(() => {});
 
     const fetchMock = vi.fn(async (input: FetchInput) => {
       if (isOpenAiUrl(input)) return chatOk('{"answer":"openai fallback"}');
@@ -195,6 +197,7 @@ describe("aiProvider (Deno) — DeepSeek key ABSENT degrades gracefully", () => 
     expect(result.provider).toBe("openai");
     expect(result.attempts).toEqual(["openai"]); // deepseek skipped, not attempted
     expect(fetchMock).toHaveBeenCalledTimes(1);
+    expect(errorSpy).toHaveBeenCalledWith("[aiProvider] Missing required env DEEPSEEK_API_KEY");
   });
 
   it("skips DeepSeek mid-chain after an OpenAI failure and reaches Gemini", async () => {
