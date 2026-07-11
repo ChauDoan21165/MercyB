@@ -978,6 +978,15 @@ build:shared-fallback:
   stage: test
   script: *build_script
 
+supabase-types-drift:
+  <<: [*node_job, *local_runner, *app_test_rules]
+  stage: test
+  cache:
+    <<: *npm_cache_def
+    policy: pull
+  script:
+    - npm run check:supabase-types-drift
+
 # `test` — Vitest suite, sharded across N parallel job instances.
 # Extracted from the old monolithic `npm test` step that closed the
 # `build` job. Vitest's native `--shard i/n` partitions test *files*
