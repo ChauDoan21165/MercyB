@@ -24,6 +24,14 @@ export type AiConversationRequest = {
   scenario?: AiConversationScenarioInput | null;
   grounding?: unknown;
   promptMetadata?: Record<string, unknown> | null;
+  /**
+   * Optional abort signal for the whole turn. The handler sets a deadline so a
+   * slow OpenAI subrequest is cancelled and the function returns its OWN error
+   * BEFORE Cloudflare kills the Pages Worker (which otherwise serves an opaque
+   * HTML 502 — see reports/mercy-ai-502-trace.md). Threaded into every
+   * callOpenAiJson fetch below.
+   */
+  signal?: AbortSignal;
 };
 
 export type AiConversationMessage = {
@@ -281,6 +289,7 @@ export async function buildAiConversationTurn(input: AiConversationRequest): Pro
     ],
     temperature: 0.35,
     maxTokens: 380,
+    signal: input.signal,
   });
 
   const draft = draftData.value;
@@ -300,6 +309,7 @@ export async function buildAiConversationTurn(input: AiConversationRequest): Pro
       ],
       temperature: 0,
       maxTokens: 80,
+      signal: input.signal,
     });
     gateUsage = gateData.usage;
     if (gateData.value.accept === true) {
@@ -408,21 +418,34 @@ async function callOpenAiJson<T>(params: {
   messages: Array<{ role: "developer" | "user"; content: string }>;
   temperature: number;
   maxTokens: number;
+  signal?: AbortSignal;
 }): Promise<{ value: T; usage: Usage }> {
-  const response = await fetch("https://api.openai.com/v1/chat/completions", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${params.apiKey}`,
-    },
-    body: JSON.stringify({
-      model: params.model,
-      messages: params.messages,
-      temperature: params.temperature,
-      max_tokens: params.maxTokens,
-      response_format: { type: "json_object" },
-    }),
-  });
+  let response: Response;
+  try {
+    response = await fetch("https://api.openai.com/v1/chat/completions", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${params.apiKey}`,
+      },
+      body: JSON.stringify({
+        model: params.model,
+        messages: params.messages,
+        temperature: params.temperature,
+        max_tokens: params.maxTokens,
+        response_format: { type: "json_object" },
+      }),
+      signal: params.signal,
+    });
+  } catch (err) {
+    // The deadline fired (or the client aborted) — surface a stable, classifiable
+    // message so the handler can return its own fast 5xx instead of hanging until
+    // Cloudflare kills the Worker.
+    if (err instanceof Error && err.name === "AbortError") {
+      throw new Error("OpenAI request timed out");
+    }
+    throw err;
+  }
   if (!response.ok) throw new Error(`OpenAI ${response.status}`);
   const data = await response.json() as {
     choices?: Array<{ message?: { content?: string } }>;

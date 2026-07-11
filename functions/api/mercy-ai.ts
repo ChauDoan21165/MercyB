@@ -198,6 +198,14 @@ export async function onRequestPost(context: PagesContext): Promise<Response> {
       return json({ error: "Session turn cap reached" }, 400);
     }
 
+    // Bound the whole turn so a slow OpenAI subrequest returns OUR error fast
+    // instead of the Cloudflare Pages Worker being killed at its platform
+    // time/CPU limit (which serves an opaque HTML 502 the app can't observe —
+    // see reports/mercy-ai-502-trace.md). MERCY_AI_TURN_TIMEOUT_MS is kept
+    // safely under Cloudflare's limit; tune via env if needed.
+    const turnTimeoutMs = Number(envValue(env, "MERCY_AI_TURN_TIMEOUT_MS")) || 22_000;
+    const turnAbort = new AbortController();
+    const turnTimer = setTimeout(() => turnAbort.abort(), turnTimeoutMs);
     try {
       const result = await buildAiConversationTurn({
         scenarioId: asString(body.scenarioId, 100) || "job-interview",
@@ -209,6 +217,7 @@ export async function onRequestPost(context: PagesContext): Promise<Response> {
         grounding: body.grounding,
         promptMetadata: isRecord(body.promptMetadata) ? body.promptMetadata : null,
         env,
+        signal: turnAbort.signal,
       });
 
       // Cost telemetry: log every turn for cost-per-session accounting.
@@ -241,9 +250,19 @@ export async function onRequestPost(context: PagesContext): Promise<Response> {
 
       return json(result);
     } catch (err) {
+      // Timed out on our own deadline → 504 (an observable, app-owned response)
+      // rather than letting Cloudflare kill the Worker and serve its HTML 502.
+      const timedOut =
+        turnAbort.signal.aborted ||
+        (err instanceof Error && /timed out/i.test(err.message));
+      if (timedOut) {
+        return json({ error: "AI conversation timed out", timeout: true }, 504);
+      }
       return json({
         error: err instanceof Error ? err.message : "AI conversation failed",
       }, 502);
+    } finally {
+      clearTimeout(turnTimer);
     }
   }
 
