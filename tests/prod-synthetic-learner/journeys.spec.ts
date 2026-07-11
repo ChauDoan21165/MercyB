@@ -100,8 +100,25 @@ async function seedSession(
   const blob = captured[key];
   if (!blob) throw new Error("GoTrueClient persisted no session blob under the storage key");
   await context.addInitScript(
-    ([k, v]) => { window.localStorage.setItem(k, v); },
-    [key, blob] as const,
+    ([k, v, pairKey, pairVal, nativeKey, nativeVal]) => {
+      window.localStorage.setItem(k, v);
+      // The synthetic account authenticates via API injection and never runs the
+      // /ai-tutor language picker, so it has no stored pair. Bare /ai-tutor gates
+      // on that (AiTutor.tsx: `if (!hasUrlPair && !hasStoredPair)` → "Choose Your
+      // Language"), so the correction tutor — and getByRole('textbox') — never
+      // mounts and (b) times out. Seed the pair a real onboarded user carries
+      // (readAnonymousPair shape {native, targets[]} + the nativeLang mirror).
+      window.localStorage.setItem(pairKey, pairVal);
+      window.localStorage.setItem(nativeKey, nativeVal);
+    },
+    [
+      key,
+      blob,
+      "mercyblade.languagePair",
+      JSON.stringify({ native: "vi", targets: ["en"] }),
+      "mercyblade.nativeLang",
+      "vi",
+    ] as const,
   );
   return { accessToken: data.session.access_token };
 }
