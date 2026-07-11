@@ -55,7 +55,18 @@ function walk(dir, exts, acc = []) {
   return acc;
 }
 
-const SRC_FILES = fs.existsSync(SRC) ? walk(SRC, [".ts", ".tsx"]).sort() : [];
+const SOURCE_ROOTS = ["src", "api", "functions", "supabase/functions"];
+const SRC_FILES = SOURCE_ROOTS
+  .filter((dir) => fs.existsSync(dir))
+  .flatMap((dir) => walk(dir, [".ts", ".tsx", ".js", ".jsx"]))
+  .filter((file) => !rel(file).startsWith("src/lib/tutor/"))
+  .sort();
+const APP_FILES = SRC_FILES.filter((file) => {
+  const r = rel(file);
+  return !/(^|\/)(__tests__|tests|fixtures|__fixtures__)\//.test(r)
+    && !/\.(test|spec)\.[cm]?[tj]sx?$/.test(r);
+});
+const ENV_BOUNDARY_FILES = APP_FILES.filter((file) => /^(api|functions|supabase\/functions)\//.test(rel(file)));
 
 // Per-line regex scan. Returns { file, line, text } for each matching line.
 // `refine` can further filter using the full line array + index (for lookback).
@@ -93,6 +104,23 @@ function scanText(files, makeRegex) {
     }
   }
   return hits.sort((a, b) => a.file.localeCompare(b.file) || a.line - b.line);
+}
+
+function windowText(lines, index, radius = 8) {
+  return lines.slice(Math.max(0, index - radius), Math.min(lines.length, index + radius + 1)).join("\n");
+}
+
+function isInTryBlock(lines, index, lookback = 12) {
+  let opens = 0;
+  for (let k = Math.max(0, index - lookback); k < index; k++) {
+    if (/\btry\s*\{/.test(lines[k])) opens++;
+    if (/\}\s*catch\b/.test(lines[k])) opens = Math.max(0, opens - 1);
+  }
+  return opens > 0;
+}
+
+function objectLiteralAtCallsite(lines, index) {
+  return lines.slice(index, Math.min(lines.length, index + 10)).join("\n");
 }
 
 function locs(hits) {
@@ -139,19 +167,19 @@ function checkB() {
   const notes = [];
 
   // B1 — real typecheck
-  const t = run("npm", ["run", "typecheck:app"]);
+  const t = run("node", ["--max-old-space-size=6144", "./node_modules/typescript/bin/tsc", "-p", "tsconfig.typecheck.json", "--noEmit"]);
   const tout = `${t.stdout}\n${t.stderr}`;
   const tscErrLines = tout.split("\n").filter((l) => /error TS\d+:/.test(l));
   if (tscErrLines.length > 0) {
     findings.push(makeFinding({
       id: "TYPE-tsc-errors",
       severity: "MEDIUM",
-      evidence: `tsc (npm run typecheck:app) reported ${tscErrLines.length} error(s):\n${tscErrLines.slice(0, 10).join("\n")}`,
+      evidence: `tsc (node --max-old-space-size=6144 ./node_modules/typescript/bin/tsc -p tsconfig.typecheck.json --noEmit) reported ${tscErrLines.length} error(s):\n${tscErrLines.slice(0, 10).join("\n")}`,
       hits: tscErrLines.slice(0, 10).map((l) => { const mm = l.match(/^([^(]+)\((\d+),/); return mm ? { file: mm[1], line: Number(mm[2]) } : { file: l.slice(0, 40), line: 0 }; }),
       consumer_question: "Does the affected code run in a shipped path, or is it dead/test-only?",
     }));
   } else {
-    notes.push(`tsc typecheck:app: 0 errors (exit ${t.code}).`);
+    notes.push(`tsc --noEmit with 6144 MB heap: 0 errors (exit ${t.code}).`);
   }
 
   // B2 — explicit type escape hatches
@@ -333,6 +361,96 @@ function checkE() {
   return { status: "ok", findings };
 }
 
+// ── Check F — v3: storage/network JSON.parse boundaries ──────────────────
+function checkF() {
+  const jsonParse = scanLines(
+    APP_FILES,
+    () => /JSON\.parse\s*\(/,
+    (lines, i) => {
+      if (isInTryBlock(lines, i, 12)) return false;
+      if (/\btry\s*\{[^}]*JSON\.parse\s*\([^}]*\}\s*catch\b/.test(lines[i])) return false;
+      const callsite = windowText(lines, i, 5);
+      const storageOrNetworkInput = /(localStorage|sessionStorage|\.getItem\s*\(|request\.|req\.|response\.|res\.|event\.data|\.text\s*\(\)|\.json\s*\(\)|body|payload|message\.data|FileReader|WebSocket)/.test(callsite);
+      const obviousStaticOrTestFixture = /JSON\.parse\s*\(\s*["'`{[]/.test(lines[i]) || /JSON\.stringify|structuredClone/.test(callsite);
+      return storageOrNetworkInput && !obviousStaticOrTestFixture;
+    },
+  );
+  const findings = [];
+  if (jsonParse.length) findings.push(makeFinding({
+    id: "V3-jsonparse-storage-network-unguarded",
+    severity: "HIGH",
+    evidence: `v3 callsite scan: unguarded JSON.parse where the local callsite references storage/network/body input, excluding tests, src/lib/tutor/**, static literals, and parse-inside-try — ${jsonParse.length} hit(s). e.g. ${jsonParse[0].file}:${jsonParse[0].line}: ${jsonParse[0].text}`,
+    hits: jsonParse,
+    consumer_question: "Can a learner or deployed request carry malformed storage/network data to this parse and crash or lose state?",
+  }));
+  return { status: "ok", findings };
+}
+
+// ── Check G — v3: fire-and-forget promises with swallowed rejection ───────
+function checkG() {
+  const swallowed = scanText(
+    APP_FILES,
+    () => /(^|[;\n]\s*)(void\s+)?(?!await\b|return\b)([A-Za-z_$][\w$.[\]()'"`,\s?:-]+?)\.catch\s*\(\s*(async\s*)?\(?\s*\w*\s*\)?\s*=>\s*\{\s*(?:console\.(?:debug|log|warn)\([^{};]*\);?)?\s*\}\s*\)/gm,
+  ).filter((hit) => !/intentional|best-effort|noncritical|fire-and-forget-ok/i.test(hit.text));
+  const findings = [];
+  if (swallowed.length) findings.push(makeFinding({
+    id: "V3-fire-forget-swallowed-rejection",
+    severity: "HIGH",
+    evidence: `v3 callsite scan: unawaited promise expression with empty/log-only .catch(), excluding tests, src/lib/tutor/**, and explicit intentional/best-effort markers — ${swallowed.length} hit(s). e.g. ${swallowed[0].file}:${swallowed[0].line}: ${swallowed[0].text}`,
+    hits: swallowed,
+    consumer_question: "Does the promise persist learner/app state or call a backend where a dropped rejection would silently lose data?",
+  }));
+  return { status: "ok", findings };
+}
+
+// ── Check H — v3: fetch/invoke without timeout/AbortController ────────────
+function checkH() {
+  const noTimeout = scanLines(
+    APP_FILES,
+    () => /\b(fetch\s*\(|\.functions\.invoke\s*\(|supabase\.functions\.invoke\s*\()/,
+    (lines, i) => {
+      const callsite = objectLiteralAtCallsite(lines, i);
+      const nearby = windowText(lines, i, 8);
+      if (/signal\s*:|AbortController|AbortSignal\.timeout|timeoutMs|withTimeout|fetchWithTimeout|invokeWithTimeout/.test(callsite) || /AbortController|AbortSignal\.timeout|withTimeout|fetchWithTimeout|invokeWithTimeout/.test(nearby)) return false;
+      if (/new\s+Request\s*\(|addEventListener\s*\(\s*["']fetch/.test(nearby)) return false;
+      return true;
+    },
+  );
+  const findings = [];
+  if (noTimeout.length) findings.push(makeFinding({
+    id: "V3-network-call-no-timeout",
+    severity: "HIGH",
+    evidence: `v3 callsite scan: fetch()/supabase.functions.invoke() with no nearby signal/AbortController/timeout wrapper, excluding tests and src/lib/tutor/** — ${noTimeout.length} hit(s). e.g. ${noTimeout[0].file}:${noTimeout[0].line}: ${noTimeout[0].text}`,
+    hits: noTimeout,
+    consumer_question: "Can this learner-facing request hang until platform timeout and surface as a 502/blank state instead of a bounded failure?",
+  }));
+  return { status: "ok", findings };
+}
+
+// ── Check I — v3: edge/api env reads without missing-var handling ─────────
+function checkI() {
+  const envReads = scanLines(
+    ENV_BOUNDARY_FILES,
+    () => /(process\.env\.[A-Z0-9_]+|Deno\.env\.get\s*\(\s*["'][A-Z0-9_]+["']\s*\))/,
+    (lines, i) => {
+      const l = lines[i];
+      const nearby = windowText(lines, i, 6);
+      if (/\?\?|\|\||if\s*\(|throw\s+new\s+Error|return\s+new\s+Response|missing|required|assert|envValue|requireEnv|getRequiredEnv|getEnv/.test(l)) return false;
+      if (/if\s*\([^)]*(process\.env|Deno\.env\.get)|throw\s+new\s+Error|return\s+new\s+Response|missing|required|envValue|requireEnv|getRequiredEnv|getEnv/.test(nearby)) return false;
+      return true;
+    },
+  );
+  const findings = [];
+  if (envReads.length) findings.push(makeFinding({
+    id: "V3-api-env-read-no-missing-handling",
+    severity: "HIGH",
+    evidence: `v3 callsite scan: process.env/Deno.env.get in api/**, functions/**, supabase/functions/** without nearby default, explicit missing-var branch, or required-env helper, excluding src/lib/tutor/** — ${envReads.length} hit(s). e.g. ${envReads[0].file}:${envReads[0].line}: ${envReads[0].text}`,
+    hits: envReads,
+    consumer_question: "Can a deployed function miss this env var and crash at runtime instead of returning a controlled error or disabling optional work?",
+  }));
+  return { status: "ok", findings };
+}
+
 // ── Orchestrate ───────────────────────────────────────────────────────────
 function main() {
   const started = new Date().toISOString();
@@ -357,8 +475,18 @@ function main() {
     node: process.version,
   };
 
-  const checks = { A: checkA(), B: checkB(), C: checkC(), D: checkD(), E: checkE() };
-  const labels = { A: "Lint debt (eslint)", B: "Type safety gaps (tsc + patterns)", C: "Unguarded external boundaries", D: "Dependency vulnerabilities (npm audit)", E: "Silent-failure patterns" };
+  const checks = { A: checkA(), B: checkB(), C: checkC(), D: checkD(), E: checkE(), F: checkF(), G: checkG(), H: checkH(), I: checkI() };
+  const labels = {
+    A: "Lint debt (eslint)",
+    B: "Type safety gaps (tsc + patterns)",
+    C: "Unguarded external boundaries",
+    D: "Dependency vulnerabilities (npm audit)",
+    E: "Silent-failure patterns",
+    F: "v3 storage/network JSON.parse boundaries",
+    G: "v3 fire-and-forget swallowed rejections",
+    H: "v3 network calls without timeouts",
+    I: "v3 api/function env reads without missing-var handling",
+  };
 
   const skipped = Object.entries(checks).filter(([, c]) => c.status === "SKIPPED").map(([k]) => k);
   const ran = Object.keys(checks).filter((k) => !skipped.includes(k));
@@ -384,7 +512,7 @@ function main() {
   L.push("");
 
   const counts = Object.fromEntries(Object.entries(checks).map(([k, c]) => [k, c.findings.length]));
-  L.push(`Finding counts — A:${counts.A} B:${counts.B} C:${counts.C} D:${counts.D} E:${counts.E}  (total ${allFindings.length})`);
+  L.push(`Finding counts — ${Object.keys(checks).map((k) => `${k}:${counts[k]}`).join(" ")}  (total ${allFindings.length})`);
   L.push("");
   L.push("## Findings ranked by severity");
   if (allFindings.length === 0) {
