@@ -2,7 +2,7 @@
 //
 // R1 SENTINEL interim spike detector.
 // Schedule every 5-10 minutes. Finds any 5xx client-error signature with
-// >= 3 real, non-synthetic authenticated users in the last 10 minutes, dedupes
+// >= 3 real, non-synthetic users in the last 10 minutes, dedupes
 // through client_error_alert_history, and emails admin@mercyblade.com.
 
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
@@ -32,7 +32,6 @@ type ClientErrorRow = {
   method: string | null;
   duration_ms: number | null;
   error_signature: string;
-  profiles?: { is_synthetic?: boolean | null } | null;
 };
 
 type SignatureGroup = {
@@ -75,7 +74,7 @@ serve(async (req) => {
 
   const { data, error } = await supabase
     .from("client_errors")
-    .select("id,created_at,route,user_id,build_sha,endpoint,status,method,duration_ms,error_signature,profiles!client_errors_user_id_fkey(is_synthetic)")
+    .select("id,created_at,route,user_id,build_sha,endpoint,status,method,duration_ms,error_signature")
     .gte("created_at", since.toISOString())
     .gte("status", 500)
     .order("created_at", { ascending: false })
@@ -86,7 +85,23 @@ serve(async (req) => {
     return jsonResponse({ error: error.message }, 500);
   }
 
-  const groups = groupRows((data ?? []) as ClientErrorRow[]);
+  const rows = (data ?? []) as ClientErrorRow[];
+  const userIds = [...new Set(rows.map((row) => row.user_id).filter((id): id is string => Boolean(id)))];
+  const syntheticUserIds = new Set<string>();
+  if (userIds.length > 0) {
+    const { data: syntheticProfiles, error: syntheticErr } = await supabase
+      .from("profiles")
+      .select("id")
+      .in("id", userIds)
+      .eq("is_synthetic", true);
+    if (syntheticErr) {
+      console.error("[client-error-alert] synthetic profile query failed:", syntheticErr.message);
+      return jsonResponse({ error: syntheticErr.message }, 500);
+    }
+    for (const profile of syntheticProfiles ?? []) syntheticUserIds.add(profile.id);
+  }
+
+  const groups = groupRows(rows, syntheticUserIds);
   const result = {
     checked: groups.length,
     sent: 0,
@@ -166,11 +181,11 @@ serve(async (req) => {
   return jsonResponse(result, 200);
 });
 
-function groupRows(rows: ClientErrorRow[]): SignatureGroup[] {
+function groupRows(rows: ClientErrorRow[], syntheticUserIds: Set<string>): SignatureGroup[] {
   const groups = new Map<string, SignatureGroup>();
   for (const row of rows) {
-    if (!row.user_id) continue;
-    if (row.profiles?.is_synthetic === true) continue;
+    if (row.user_id && syntheticUserIds.has(row.user_id)) continue;
+    const actorKey = row.user_id ? `user:${row.user_id}` : `anonymous:${row.id}`;
     const key = [
       row.error_signature,
       row.status ?? "network",
@@ -180,7 +195,7 @@ function groupRows(rows: ClientErrorRow[]): SignatureGroup[] {
     const existing = groups.get(key);
     if (existing) {
       existing.rows.push(row);
-      existing.realUsers.add(row.user_id);
+      existing.realUsers.add(actorKey);
       continue;
     }
     groups.set(key, {
@@ -191,7 +206,7 @@ function groupRows(rows: ClientErrorRow[]): SignatureGroup[] {
       status: row.status,
       buildSha: row.build_sha,
       rows: [row],
-      realUsers: new Set([row.user_id]),
+      realUsers: new Set([actorKey]),
     });
   }
   return [...groups.values()];
