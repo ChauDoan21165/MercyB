@@ -1,4 +1,4 @@
-// Supabase migrations fingerprint: 49e8b89dd328027583675f36cf3536eb22fdd4a0939fd89c1df8a5757e80249c
+// Supabase migrations fingerprint: 41bd0720448eea4d59c854ee0ceb2ac1e4933077191266517b27b2ac706c550f
 export type Json =
   | string
   | number
@@ -1326,6 +1326,105 @@ export type Database = {
           preferred_name?: string | null
           reflection_history?: Json | null
           user_id?: string
+        }
+        Relationships: []
+      }
+      client_error_alert_history: {
+        Row: {
+          build_sha: string | null
+          created_at: string
+          diagnosis: string | null
+          email_sent: boolean
+          endpoint: string | null
+          error_signature: string
+          event_count: number
+          id: string
+          real_user_count: number
+          route: string | null
+          signature_key: string
+          status: number | null
+          window_ended_at: string
+          window_started_at: string
+        }
+        Insert: {
+          build_sha?: string | null
+          created_at?: string
+          diagnosis?: string | null
+          email_sent?: boolean
+          endpoint?: string | null
+          error_signature: string
+          event_count?: number
+          id?: string
+          real_user_count?: number
+          route?: string | null
+          signature_key: string
+          status?: number | null
+          window_ended_at: string
+          window_started_at: string
+        }
+        Update: {
+          build_sha?: string | null
+          created_at?: string
+          diagnosis?: string | null
+          email_sent?: boolean
+          endpoint?: string | null
+          error_signature?: string
+          event_count?: number
+          id?: string
+          real_user_count?: number
+          route?: string | null
+          signature_key?: string
+          status?: number | null
+          window_ended_at?: string
+          window_started_at?: string
+        }
+        Relationships: []
+      }
+      client_errors: {
+        Row: {
+          build_sha: string | null
+          client_ts: string | null
+          created_at: string
+          duration_ms: number | null
+          endpoint: string | null
+          error_kind: string
+          error_signature: string
+          id: string
+          method: string | null
+          route: string
+          source: string
+          status: number | null
+          user_id: string | null
+        }
+        Insert: {
+          build_sha?: string | null
+          client_ts?: string | null
+          created_at?: string
+          duration_ms?: number | null
+          endpoint?: string | null
+          error_kind: string
+          error_signature: string
+          id?: string
+          method?: string | null
+          route?: string
+          source?: string
+          status?: number | null
+          user_id?: string | null
+        }
+        Update: {
+          build_sha?: string | null
+          client_ts?: string | null
+          created_at?: string
+          duration_ms?: number | null
+          endpoint?: string | null
+          error_kind?: string
+          error_signature?: string
+          id?: string
+          method?: string | null
+          route?: string
+          source?: string
+          status?: number | null
+          user_id?: string | null
         }
         Relationships: []
       }
