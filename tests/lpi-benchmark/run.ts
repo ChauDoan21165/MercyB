@@ -108,9 +108,9 @@ function scorePolicy(
   };
 }
 
-function validateCases(cases: BenchmarkCase[]): void {
-  if (cases.length !== 40) {
-    throw new Error(`Expected 40 benchmark cases; found ${cases.length}.`);
+function validateCases(cases: BenchmarkCase[], expectedCount: number): void {
+  if (cases.length !== expectedCount) {
+    throw new Error(`Expected ${expectedCount} benchmark cases; found ${cases.length}.`);
   }
 
   const ids = new Set<string>();
@@ -165,12 +165,20 @@ function buildPredictions(cases: BenchmarkCase[], useBurstEnrichment: boolean) {
   });
 }
 
-const casesPath = resolve("tests/lpi-benchmark/cases.json");
-const resultsPath = resolve("reports/lpi-benchmark/results.json");
-const tablePath = resolve("reports/lpi-benchmark/ACCURACY.md");
+const defaultCasesPath = resolve("tests/lpi-benchmark/cases.json");
+const requestedCasesFile = process.argv[2] ?? "tests/lpi-benchmark/cases.json";
+const requestedCasesPath = resolve(requestedCasesFile);
+const isDefaultCasesFile = requestedCasesPath === defaultCasesPath;
+const expectedCaseCount = isDefaultCasesFile ? 40 : 30;
+const resultsPath = isDefaultCasesFile
+  ? resolve("reports/lpi-benchmark/results.json")
+  : resolve("reports/lpi-benchmark/heldout-results.json");
+const tablePath = isDefaultCasesFile
+  ? resolve("reports/lpi-benchmark/ACCURACY.md")
+  : resolve("reports/lpi-benchmark/HELDOUT_ACCURACY.md");
 
-const cases = JSON.parse(readFileSync(casesPath, "utf8")) as BenchmarkCase[];
-validateCases(cases);
+const cases = JSON.parse(readFileSync(requestedCasesPath, "utf8")) as BenchmarkCase[];
+validateCases(cases, expectedCaseCount);
 
 const oldReconciledScores = [
   { policy: "MercyBlade policy", correct: 16, total: 40, accuracy: 0.4 },
@@ -193,46 +201,66 @@ const scores = [
 const predictionsBeforeBurstEnrichment = buildPredictions(cases, false);
 const predictions = buildPredictions(cases, true);
 
-const output = {
-  benchmarkVersion: "lpi-judgment-v3-policy-v2-severity-model",
-  caseCount: cases.length,
-  actions: ACTIONS,
-  oldReconciledScores,
-  scoresBeforeBurstEnrichment,
-  scores,
-  predictionsBeforeBurstEnrichment,
-  predictions,
-};
+const output = isDefaultCasesFile
+  ? {
+      benchmarkVersion: "lpi-judgment-v3-policy-v2-severity-model",
+      caseCount: cases.length,
+      actions: ACTIONS,
+      oldReconciledScores,
+      scoresBeforeBurstEnrichment,
+      scores,
+      predictionsBeforeBurstEnrichment,
+      predictions,
+    }
+  : {
+      benchmarkVersion: "lpi-judgment-v3-policy-v2-severity-model",
+      casesFile: requestedCasesFile,
+      caseCount: cases.length,
+      actions: ACTIONS,
+      scores,
+      predictions,
+    };
 
 mkdirSync(dirname(resultsPath), { recursive: true });
 writeFileSync(resultsPath, `${JSON.stringify(output, null, 2)}\n`);
 writeFileSync(
   tablePath,
-  [
-    "# LPI Pedagogical-Judgment Benchmark Accuracy",
-    "",
-    "## Reconciled Shipped Policy v1",
-    "",
-    markdownTable(oldReconciledScores),
-    "",
-    "## Policy v2 Before Burst Enrichment",
-    "",
-    markdownTable(scoresBeforeBurstEnrichment),
-    "",
-    "## Policy v2 After Burst Enrichment",
-    "",
-    markdownTable(scores),
-    "",
-  ].join("\n"),
+  isDefaultCasesFile
+    ? [
+        "# LPI Pedagogical-Judgment Benchmark Accuracy",
+        "",
+        "## Reconciled Shipped Policy v1",
+        "",
+        markdownTable(oldReconciledScores),
+        "",
+        "## Policy v2 Before Burst Enrichment",
+        "",
+        markdownTable(scoresBeforeBurstEnrichment),
+        "",
+        "## Policy v2 After Burst Enrichment",
+        "",
+        markdownTable(scores),
+        "",
+      ].join("\n")
+    : [
+        "# LPI Held-Out Benchmark Accuracy",
+        "",
+        markdownTable(scores),
+        "",
+      ].join("\n"),
 );
 
 console.log(JSON.stringify(output, null, 2));
 console.log("");
-console.log("Reconciled shipped policy v1");
-console.log(markdownTable(oldReconciledScores));
-console.log("");
-console.log("Policy v2 before burst enrichment");
-console.log(markdownTable(scoresBeforeBurstEnrichment));
-console.log("");
-console.log("Policy v2 after burst enrichment");
+if (isDefaultCasesFile) {
+  console.log("Reconciled shipped policy v1");
+  console.log(markdownTable(oldReconciledScores));
+  console.log("");
+  console.log("Policy v2 before burst enrichment");
+  console.log(markdownTable(scoresBeforeBurstEnrichment));
+  console.log("");
+  console.log("Policy v2 after burst enrichment");
+} else {
+  console.log("Held-out validation");
+}
 console.log(markdownTable(scores));
