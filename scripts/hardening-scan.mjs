@@ -29,16 +29,52 @@ import { pathToFileURL } from "node:url";
 const ROOT = process.cwd();
 const SRC = "src";
 const SEV_RANK = { HIGH: 0, MEDIUM: 1, LOW: 2 };
+const DEFAULT_CMD_TIMEOUT_MS = 120_000;
+const CHECK_TIMEOUT_MS = {
+  A: 180_000,
+  B: 240_000,
+  D: 90_000,
+};
 const rel = (p) => path.relative(ROOT, p) || p;
 
 // Run a command, capturing stdout even when the tool exits non-zero (eslint,
 // tsc and npm audit all exit non-zero when they have something to report).
-function run(cmd, args) {
+export function run(cmd, args, options = {}) {
+  const timeout = options.timeoutMs ?? DEFAULT_CMD_TIMEOUT_MS;
   try {
-    const out = execFileSync(cmd, args, { cwd: ROOT, encoding: "utf8", maxBuffer: 1 << 28 });
+    const out = execFileSync(cmd, args, { cwd: ROOT, encoding: "utf8", maxBuffer: 1 << 28, timeout });
     return { code: 0, stdout: out, stderr: "" };
   } catch (e) {
-    return { code: e.status ?? 1, stdout: e.stdout ? String(e.stdout) : "", stderr: e.stderr ? String(e.stderr) : String(e.message) };
+    const timedOut = e.signal === "SIGTERM" || /ETIMEDOUT|timed out/i.test(String(e.message));
+    return {
+      code: timedOut ? 124 : (e.status ?? 1),
+      stdout: e.stdout ? String(e.stdout) : "",
+      stderr: e.stderr ? String(e.stderr) : String(e.message),
+      timedOut,
+      timeoutMs: timeout,
+    };
+  }
+}
+
+export function runCheck(key, label, fn) {
+  const started = Date.now();
+  const timeoutMs = CHECK_TIMEOUT_MS[key] ?? 60_000;
+  process.stderr.write(`[hardening-scan] START ${key} ${label} timeout=${timeoutMs}ms\n`);
+  try {
+    const result = fn(timeoutMs);
+    const elapsedMs = Date.now() - started;
+    process.stderr.write(`[hardening-scan] END ${key} status=${result.status || "ok"} elapsed=${elapsedMs}ms findings=${result.findings?.length ?? 0}\n`);
+    return { ...result, elapsedMs, timeoutMs };
+  } catch (e) {
+    const elapsedMs = Date.now() - started;
+    process.stderr.write(`[hardening-scan] ERROR ${key} elapsed=${elapsedMs}ms ${e?.message || e}\n`);
+    return {
+      status: "SKIPPED",
+      note: `check threw after ${elapsedMs}ms: ${e?.message || String(e)}`,
+      findings: [],
+      elapsedMs,
+      timeoutMs,
+    };
   }
 }
 
@@ -182,8 +218,9 @@ function makeFinding({ id, severity, evidence, hits, consumer_question }) {
 }
 
 // ── Check A — Lint debt (real eslint) ─────────────────────────────────────
-function checkA() {
-  const r = run("npx", ["--no-install", "eslint", SRC, "--format", "json"]);
+function checkA(timeoutMs) {
+  const r = run("npx", ["--no-install", "eslint", SRC, "--format", "json"], { timeoutMs });
+  if (r.timedOut) return { status: "SKIPPED", note: `eslint timed out after ${r.timeoutMs}ms; last stderr: ${r.stderr.slice(0, 200)}`, findings: [] };
   const raw = r.stdout.trim();
   if (!raw) return { status: "SKIPPED", note: `eslint produced no JSON (code ${r.code}): ${r.stderr.slice(0, 200)}`, findings: [] };
   let results;
@@ -212,15 +249,26 @@ function checkA() {
 }
 
 // ── Check B — Type safety gaps (real tsc + regex) ─────────────────────────
-function checkB() {
+function checkB(timeoutMs) {
   const findings = [];
   const notes = [];
 
   // B1 — real typecheck
-  const t = run("node", ["--max-old-space-size=6144", "./node_modules/typescript/bin/tsc", "-p", "tsconfig.typecheck.json", "--noEmit"]);
+  const t = run("node", ["--max-old-space-size=6144", "./node_modules/typescript/bin/tsc", "-p", "tsconfig.typecheck.json", "--noEmit"], { timeoutMs });
+  if (t.timedOut) {
+    notes.push(`tsc timed out after ${t.timeoutMs}ms; regex type-safety scans still ran. Last stderr: ${t.stderr.slice(0, 200)}`);
+  }
   const tout = `${t.stdout}\n${t.stderr}`;
   const tscErrLines = tout.split("\n").filter((l) => /error TS\d+:/.test(l));
-  if (tscErrLines.length > 0) {
+  if (t.timedOut) {
+    findings.push(makeFinding({
+      id: "TYPE-tsc-timeout",
+      severity: "MEDIUM",
+      evidence: `tsc (node --max-old-space-size=6144 ./node_modules/typescript/bin/tsc -p tsconfig.typecheck.json --noEmit) timed out after ${t.timeoutMs}ms with no complete result.`,
+      hits: [{ file: "tsconfig.typecheck.json", line: 0 }],
+      consumer_question: "Is the typecheck hanging due to a pathological file/import graph, or does the timeout need adjustment for the current repo size?",
+    }));
+  } else if (tscErrLines.length > 0) {
     findings.push(makeFinding({
       id: "TYPE-tsc-errors",
       severity: "MEDIUM",
@@ -350,8 +398,9 @@ function checkC() {
 }
 
 // ── Check D — Dependency vulnerabilities (real npm audit) ─────────────────
-function checkD() {
-  const r = run("npm", ["audit", "--json"]);
+function checkD(timeoutMs) {
+  const r = run("npm", ["audit", "--json"], { timeoutMs });
+  if (r.timedOut) return { status: "SKIPPED", note: `npm audit timed out after ${r.timeoutMs}ms; likely advisory/network stall. Last stderr: ${r.stderr.slice(0, 200)}`, findings: [] };
   const raw = r.stdout.trim();
   if (!raw) return { status: "SKIPPED", note: `npm audit produced no JSON (offline?): ${r.stderr.slice(0, 200)}`, findings: [] };
   let j;
@@ -564,7 +613,7 @@ function main() {
   const checkKeys = requestedChecks.length
     ? requestedChecks.filter((k) => Object.hasOwn(checkFns, k))
     : Object.keys(checkFns);
-  const checks = Object.fromEntries(checkKeys.map((k) => [k, checkFns[k]()]));
+  const checks = Object.fromEntries(checkKeys.map((k) => [k, runCheck(k, labels[k], checkFns[k])]));
 
   const skipped = Object.entries(checks).filter(([, c]) => c.status === "SKIPPED").map(([k]) => k);
   const ran = Object.keys(checks).filter((k) => !skipped.includes(k));
@@ -587,6 +636,7 @@ function main() {
   for (const k of skipped) L.push(`  - SKIPPED ${k} (${labels[k]}): ${checks[k].note || "tool unavailable"}`);
   const notes = Object.values(checks).flatMap((c) => c.notes || []).concat(Object.values(checks).map((c) => c.note).filter(Boolean));
   for (const n of notes) L.push(`  - note: ${n}`);
+  for (const [k, c] of Object.entries(checks)) L.push(`  - check ${k} elapsed_ms=${c.elapsedMs ?? "unknown"} timeout_ms=${c.timeoutMs ?? "n/a"}`);
   L.push("");
 
   const counts = Object.fromEntries(Object.entries(checks).map(([k, c]) => [k, c.findings.length]));
