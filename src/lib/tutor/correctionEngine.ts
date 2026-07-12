@@ -290,8 +290,9 @@ export function segmentRunOn(text: string): string[] | null {
   const clean = (parts: string[]): string[] =>
     parts.map(stripLeadingConj).filter(enoughWords);
 
-  // 1. Already has internal sentence boundaries — split there.
-  const bySentence = normalized.split(/(?<=[.!?])\s+/).map(s => s.trim()).filter(Boolean);
+  // 1. Already has internal sentence boundaries — split there, including
+  // learner input that omits the space after punctuation ("yesterday.Because").
+  const bySentence = normalized.split(/(?<=[.!?])\s*(?=[A-Z])/).map(s => s.trim()).filter(Boolean);
   if (bySentence.length > 1) return bySentence;
 
   // 2. Comma + coordinating conjunction: "A, and B" / "A, but C".
@@ -516,11 +517,33 @@ export function correctWithTutorRules(
   // carryover rule, the dinner-invite run-on rule) must take priority over the generic
   // run-on segmenter — they already produce the correct assembled output.
   const clauseResult = _correctClause(trimmed, language);
+  const isEnglishRunOn = language === "en" && detectRunOn(trimmed);
 
   // Generic run-on segmentation: only when no specific rule fired (status "unchanged"),
   // the language is English, and the input looks like a multi-clause sentence.
   // Per spec: abstain only when segmentation itself fails (segmentRunOn returns null).
-  if (clauseResult.status !== "unchanged" || language !== "en" || !detectRunOn(trimmed)) {
+  if (clauseResult.status !== "unchanged") {
+    if (isEnglishRunOn && clauseResult.status === "corrected" && /[.!?](?=[A-Z])/.test(trimmed)) {
+      const boundarySegments = segmentRunOn(trimmed);
+      if (boundarySegments) {
+        const correctedParts = boundarySegments.map((seg) => {
+          const segTrimmed = normalizeWhitespace(seg);
+          const result = _correctClause(segTrimmed, language);
+          return result.status === "corrected"
+            ? result.corrected
+            : ensureTerminalPunctuation(capitalizeFirst(segTrimmed), language);
+        });
+        return {
+          status: "corrected",
+          corrected: correctedParts.join(" "),
+          appliedRuleIds: ["runon-segmented", ...clauseResult.appliedRuleIds],
+        };
+      }
+    }
+    return clauseResult;
+  }
+
+  if (!isEnglishRunOn) {
     return clauseResult;
   }
 
