@@ -1,0 +1,4 @@
+{"id":"fixture-icnale-vn-001","corpus":"fixture-icnale-wep","group":"vn_l1","text":"She go to university by bus every day.","reference_text":"She goes to university by bus every day."}
+{"id":"fixture-icnale-vn-002","corpus":"fixture-icnale-wep","group":"vn_l1","text":"Many student want part-time job.","reference_text":"Many students want a part-time job."}
+{"id":"fixture-icnale-native-001","corpus":"fixture-icnale-wep","group":"native_reference","text":"Students often want a part-time job.","reference_text":"Students often want a part-time job."}
+{"id":"fixture-icnale-native-002","corpus":"fixture-icnale-wep","group":"native_reference","text":"Smoking should be banned in restaurants.","reference_text":"Smoking should be banned in restaurants."}

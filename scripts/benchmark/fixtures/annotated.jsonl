@@ -1,0 +1,4 @@
+{"id":"fixture-fce-001","corpus":"fixture-fce","learner_l1":"vi","source":"She go to school every day.","reference":"She goes to school every day.","gold_error_codes":["M:VERB:SVA"]}
+{"id":"fixture-fce-002","corpus":"fixture-fce","learner_l1":"vi","source":"I bought two book.","reference":"I bought two books.","gold_error_codes":["M:NOUN:NUM"]}
+{"id":"fixture-fce-003","corpus":"fixture-fce","learner_l1":"vi","source":"I am interested about music.","reference":"I am interested in music.","gold_error_codes":["R:PREP"]}
+{"id":"fixture-fce-004","corpus":"fixture-fce","learner_l1":"vi","source":"The idea is useful.","reference":"The idea is useful.","gold_error_codes":["OTHER:LEXICAL"]}

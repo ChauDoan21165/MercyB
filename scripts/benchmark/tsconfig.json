@@ -1,0 +1,14 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "types": ["node", "vite/client", "vitest/globals"],
+    "noEmit": true
+  },
+  "include": [
+    "./**/*.ts",
+    "../../src/lib/feedback/**/*.ts",
+    "../../src/lib/ai-tutor/detectorHint.ts"
+  ],
+  "exclude": []
+}

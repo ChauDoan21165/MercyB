@@ -1,0 +1,66 @@
+{
+  "generated_at": "2026-07-12T09:33:51.495Z",
+  "seed": 20260712,
+  "limit_per_track": 5000,
+  "detectors": [
+    "detectL1Error"
+  ],
+  "annotated": {
+    "sample_size": 4,
+    "corpus_counts": {
+      "fixture-fce": 4
+    },
+    "per_tag": {
+      "vi_l1_3rd_person_s": {
+        "tp": 1,
+        "fp": 0,
+        "fn": 0,
+        "precision": 1,
+        "recall": 1,
+        "support": 1
+      },
+      "vi_l1_plural_s": {
+        "tp": 1,
+        "fp": 0,
+        "fn": 0,
+        "precision": 1,
+        "recall": 1,
+        "support": 1
+      },
+      "vi_l1_preposition_transfer": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 1,
+        "precision": null,
+        "recall": 0,
+        "support": 1
+      }
+    },
+    "unmappable_gold_codes": {
+      "OTHER:LEXICAL": 1
+    }
+  },
+  "proxy": {
+    "sample_size": 4,
+    "corpus_counts": {
+      "fixture-icnale-wep": 4
+    },
+    "groups": {
+      "native_reference": {
+        "samples": 2,
+        "detector_fires": 0,
+        "fire_rate": 0,
+        "tags": {}
+      },
+      "vn_l1": {
+        "samples": 2,
+        "detector_fires": 2,
+        "fire_rate": 1,
+        "tags": {
+          "vi_l1_3rd_person_s": 1,
+          "vi_l1_plural_s": 1
+        }
+      }
+    }
+  }
+}
