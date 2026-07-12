@@ -129,7 +129,7 @@ function paintInterferenceProfileCard(ctx: CanvasRenderingContext2D, input: Inte
 
   ctx.fillStyle = "#0F172A";
   ctx.font = "950 54px -apple-system, system-ui, 'Segoe UI', Roboto, sans-serif";
-  ctx.fillText("Hồ sơ Interference", 56, 150);
+  ctx.fillText("Dấu vết tiếng mẹ đẻ", 56, 150);
 
   ctx.fillStyle = "rgba(15,23,42,0.66)";
   ctx.font = "800 28px -apple-system, system-ui, 'Segoe UI', Roboto, sans-serif";
