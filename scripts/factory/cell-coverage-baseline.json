@@ -1,0 +1,63 @@
+{
+  "schema": "cell-coverage-baseline-v1",
+  "date": "2026-07-12",
+  "source": "Measured from origin/main after git fetch origin && git reset --hard origin/main.",
+  "ratchet": "Uncovered counts may not rise. Coverage may improve. The only legitimate baseline increase is intentional CELL content removal, updated in the same MR that removes it.",
+  "definitions": {
+    "ipaCovered": "An object is IPA-covered when any of ipa, ipa_en, ipa_vi, pronunciation, pronunciation_en, pronunciation_vi exists as a non-empty string. Empty strings are uncovered.",
+    "audioAddressable": "An object is audio-addressable when any of audio, audio_url, audioUrl, audio_path, audioPath, reference_audio, referenceAudio points to a checked-in audio asset under public/ or uses a data:audio URI. Missing files, empty strings, and http(s) runtime URLs are not counted as checked-in reference audio.",
+    "denominators": "Reports both per-object coverage and per-unique-word-token coverage."
+  },
+  "scan": {
+    "filesScanned": 1235,
+    "filesWithCell": 487,
+    "lessonObjects": 2061,
+    "audioAssets": 1285
+  },
+  "totals": {
+    "vocabulary": {
+      "objects": 14418,
+      "ipaCoveredObjects": 10365,
+      "audioCoveredObjects": 0,
+      "uniqueWordTokens": 11062,
+      "ipaCoveredUniqueWordTokens": 8124,
+      "audioCoveredUniqueWordTokens": 0,
+      "uncoveredIpaObjects": 4053,
+      "uncoveredAudioObjects": 14418,
+      "uncoveredIpaUniqueWordTokens": 2938,
+      "uncoveredAudioUniqueWordTokens": 11062
+    },
+    "dialogue": {
+      "objects": 7053,
+      "ipaCoveredObjects": 1139,
+      "audioCoveredObjects": 0,
+      "uniqueWordTokens": 13158,
+      "ipaCoveredUniqueWordTokens": 1649,
+      "audioCoveredUniqueWordTokens": 0,
+      "uncoveredIpaObjects": 5914,
+      "uncoveredAudioObjects": 7053,
+      "uncoveredIpaUniqueWordTokens": 11509,
+      "uncoveredAudioUniqueWordTokens": 13158
+    }
+  },
+  "worstFileClusters": [
+    {
+      "file": "src/languages/japanese/lessons-b2.ts",
+      "totalObjects": 644,
+      "missingIpaObjects": 644,
+      "missingAudioObjects": 644
+    },
+    {
+      "file": "src/languages/korean/lessons-b2.ts",
+      "totalObjects": 644,
+      "missingIpaObjects": 644,
+      "missingAudioObjects": 644
+    },
+    {
+      "file": "src/languages/korean/lessons-c1.ts",
+      "totalObjects": 530,
+      "missingIpaObjects": 530,
+      "missingAudioObjects": 530
+    }
+  ]
+}
