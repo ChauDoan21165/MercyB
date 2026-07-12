@@ -1237,6 +1237,9 @@ nightly-full-suite:
     # this gate the 505s full suite ran every 15 minutes.
     - if: '$CI_PIPELINE_SOURCE == "schedule" && $CI_COMMIT_BRANCH == "main" && $NIGHTLY_MAINTENANCE_ENABLED == "1"'
     - when: never
+  before_script:
+    - !reference [.node_job, before_script]
+    - npx playwright install chromium
   script:
     - |
       case "$(uname -s)" in
