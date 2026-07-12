@@ -147,7 +147,9 @@ serve(async (req) => {
 
   let emailSent = false;
   if (alertable.length > 0) {
-    emailSent = await sendAlertEmail(alertable, since, now);
+    const dispatcherResults = await Promise.all(alertable.map((group) => sendDispatcherAlert(group)));
+    const dispatcherFullyHandled = dispatcherResults.length > 0 && dispatcherResults.every((result) => result.ok);
+    emailSent = dispatcherFullyHandled || await sendAlertEmail(alertable, since, now);
     for (const group of alertable) {
       const { error: insertErr } = await supabase
         .from("r2_logwatch_alert_history")
@@ -407,6 +409,48 @@ async function sendAlertEmail(groups: R2Group[], since: Date, now: Date): Promis
   } catch (err) {
     console.error("[r2-logwatch] resend threw:", err instanceof Error ? err.message : "unknown");
     return false;
+  }
+}
+
+async function sendDispatcherAlert(group: R2Group): Promise<{ ok: boolean; attempted: boolean }> {
+  const dispatcherUrl = Deno.env.get("DISPATCHER_URL")?.trim();
+  const dispatcherSecret = Deno.env.get("DISPATCHER_SECRET")?.trim();
+  if (!dispatcherUrl || !dispatcherSecret) return { ok: false, attempted: false };
+
+  try {
+    const response = await fetch(dispatcherUrl, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "x-dispatcher-secret": dispatcherSecret,
+      },
+      body: JSON.stringify({
+        robot: "R2 LOGWATCH",
+        severity: "high",
+        signature: group.signatureKey,
+        summary: `${group.count} server failure event(s): ${group.errorClass}`,
+        evidence_url: "https://mercyblade.com/admin/slo",
+        occurred_at: group.lastSeenAt,
+        metadata: {
+          source: group.source,
+          provider: group.provider,
+          route: group.route,
+          mode: group.mode,
+          status: group.status,
+          firstSeenAt: group.firstSeenAt,
+          requestIds: group.requestIds,
+          diagnosis: diagnose(group),
+        },
+      }),
+    });
+    if (!response.ok) {
+      console.error("[r2-logwatch] dispatcher failed:", response.status, await response.text());
+      return { ok: false, attempted: true };
+    }
+    return { ok: true, attempted: true };
+  } catch (err) {
+    console.error("[r2-logwatch] dispatcher threw:", err instanceof Error ? err.message : "unknown");
+    return { ok: false, attempted: true };
   }
 }
 

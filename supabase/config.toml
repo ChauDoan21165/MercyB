@@ -144,6 +144,12 @@ verify_jwt = false
 [functions.room-health-summary]
 verify_jwt = true
 
+[functions.dispatcher]
+enabled = true
+verify_jwt = false
+import_map = "./functions/dispatcher/deno.json"
+entrypoint = "./functions/dispatcher/index.ts"
+
 
 # =========================
 # ROOM ACCESS / LOADING
