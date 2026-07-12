@@ -3,6 +3,7 @@ import type { BilingualText, PlacementV3L1Flag, PlacementV3Results } from "@/lib
 
 export const INTERFERENCE_CARD_WIDTH = 1200;
 export const INTERFERENCE_CARD_HEIGHT = 630;
+export const INTERFERENCE_PROFILE_SITE_URL = "https://mercyblade.com";
 
 export type InterferenceProfileFinding = {
   id: string;
@@ -27,20 +28,25 @@ const UUID_RE = /\b[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0
 const LONG_ID_RE = /\b(?:user|account|session|profile|uid|id)[_-]?[a-z0-9]{8,}\b/gi;
 
 export function buildInterferenceProfileFindings(results: PlacementV3Results): InterferenceProfileFinding[] {
-  return [...results.l1Flags]
-    .map((flag, index) => ({ flag, index }))
-    .sort(
-      (left, right) =>
-        SEVERITY_RANK[left.flag.severity] - SEVERITY_RANK[right.flag.severity] || left.index - right.index,
-    )
-    .slice(0, 3)
-    .map(({ flag }) => ({
+  const distinctByCause = new Map<string, { finding: InterferenceProfileFinding; index: number }>();
+
+  results.l1Flags.forEach((flag, index) => {
+    const finding: InterferenceProfileFinding = {
       id: flag.id,
       severity: flag.severity,
       label: sanitizeBilingualText(flag.label),
       example: sanitizeBilingualText(flag.evidence),
-    }))
-    .filter((finding) => finding.label.en || finding.label.vi);
+    };
+    if (!finding.label.en && !finding.label.vi) return;
+
+    const causeKey = normalizeCauseKey(flag.id);
+    const previous = distinctByCause.get(causeKey);
+    if (!previous || compareRankedFindings({ finding, index }, previous) < 0) {
+      distinctByCause.set(causeKey, { finding, index });
+    }
+  });
+
+  return [...distinctByCause.values()].sort(compareRankedFindings).slice(0, 3).map(({ finding }) => finding);
 }
 
 export function formatInterferenceProfileShareText(findings: InterferenceProfileFinding[], siteUrl: string): string {
@@ -166,11 +172,17 @@ function paintInterferenceProfileCard(ctx: CanvasRenderingContext2D, input: Inte
   ctx.font = "900 24px -apple-system, system-ui, 'Segoe UI', Roboto, sans-serif";
   ctx.textBaseline = "alphabetic";
   ctx.fillText(input.siteUrl, 56, INTERFERENCE_CARD_HEIGHT - 44);
+}
 
-  ctx.fillStyle = "rgba(15,118,110,0.62)";
-  ctx.font = "800 italic 20px -apple-system, system-ui, 'Segoe UI', Roboto, sans-serif";
-  ctx.textAlign = "right";
-  ctx.fillText("client-side only", INTERFERENCE_CARD_WIDTH - 56, INTERFERENCE_CARD_HEIGHT - 44);
+function normalizeCauseKey(id: string): string {
+  return id.trim().toLowerCase().replace(/[_\s]+/g, "-");
+}
+
+function compareRankedFindings(
+  left: { finding: InterferenceProfileFinding; index: number },
+  right: { finding: InterferenceProfileFinding; index: number },
+): number {
+  return SEVERITY_RANK[left.finding.severity] - SEVERITY_RANK[right.finding.severity] || left.index - right.index;
 }
 
 function severityColor(severity: PlacementV3L1Flag["severity"]): string {
