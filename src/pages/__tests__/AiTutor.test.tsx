@@ -34,6 +34,10 @@ const CANNOT_CORRECT_NO_SESSION_MESSAGE =
   "Mercy cần đăng nhập để kiểm tra câu này. Bạn thử đăng nhập nhé.";
 const GRAMMAR_CORRECTION_AUTH_MESSAGE =
   "Mercy cần đăng nhập lại để kiểm tra câu này bằng AI. Bạn đăng nhập lại rồi thử Sửa câu này nhé.";
+const GRAMMAR_CORRECTION_TIMEOUT_MESSAGE =
+  "Mercy sửa câu quá thời gian. Bạn thử lại nhé. Correction timed out. Try again.";
+const GRAMMAR_CORRECTION_API_MESSAGE =
+  "Mercy chưa kết nối được máy sửa câu AI. Bạn thử lại sau một chút nhé.";
 
 const EMPTY_SUMMARY: MemorySummary = {
   tutorProduct: "ai-tutor",
@@ -2241,6 +2245,56 @@ describe("AiTutor Grammar submit — unchanged sentence + session handling", () 
     await userEvent.click(screen.getByRole("button", { name: "Sửa câu này" }));
 
     expect(await screen.findByText(GRAMMAR_CORRECTION_AUTH_MESSAGE)).toBeInTheDocument();
+    expect(screen.queryByText(FRIENDLY_CORRECTION_UNAVAILABLE_MESSAGE)).not.toBeInTheDocument();
+  });
+
+  it("shows a typed timeout correction state when /api/mercy-ai returns correction_timeout", async () => {
+    useAuthMock.mockReturnValue({
+      user: { id: "user-1", user_metadata: {} },
+      session: { access_token: "session-jwt" },
+      isLoading: false,
+    });
+    vi.stubGlobal("fetch", vi.fn<typeof fetch>(async () =>
+      new Response(JSON.stringify({ error: "Correction timed out", timeout: true }), {
+        status: 504,
+        headers: { "Content-Type": "application/json" },
+      }),
+    ));
+    renderAiTutor();
+
+    await userEvent.type(
+      screen.getByRole("textbox", { name: /Gõ câu tiếng Anh của bạn/i }),
+      "I went to school.",
+    );
+    await userEvent.click(screen.getByRole("button", { name: "Sửa câu này" }));
+
+    expect(await screen.findByText(GRAMMAR_CORRECTION_TIMEOUT_MESSAGE)).toBeInTheDocument();
+    expect(screen.queryByText(GRAMMAR_CORRECTION_API_MESSAGE)).not.toBeInTheDocument();
+    expect(screen.queryByText(FRIENDLY_CORRECTION_UNAVAILABLE_MESSAGE)).not.toBeInTheDocument();
+  });
+
+  it("keeps the generic correction error for non-timeout /api/mercy-ai failures", async () => {
+    useAuthMock.mockReturnValue({
+      user: { id: "user-1", user_metadata: {} },
+      session: { access_token: "session-jwt" },
+      isLoading: false,
+    });
+    vi.stubGlobal("fetch", vi.fn<typeof fetch>(async () =>
+      new Response(JSON.stringify({ error: "correction_failed" }), {
+        status: 500,
+        headers: { "Content-Type": "application/json" },
+      }),
+    ));
+    renderAiTutor();
+
+    await userEvent.type(
+      screen.getByRole("textbox", { name: /Gõ câu tiếng Anh của bạn/i }),
+      "I went to school.",
+    );
+    await userEvent.click(screen.getByRole("button", { name: "Sửa câu này" }));
+
+    expect(await screen.findByText(GRAMMAR_CORRECTION_API_MESSAGE)).toBeInTheDocument();
+    expect(screen.queryByText(GRAMMAR_CORRECTION_TIMEOUT_MESSAGE)).not.toBeInTheDocument();
     expect(screen.queryByText(FRIENDLY_CORRECTION_UNAVAILABLE_MESSAGE)).not.toBeInTheDocument();
   });
 

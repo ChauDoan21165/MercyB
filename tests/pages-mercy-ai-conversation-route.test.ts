@@ -409,6 +409,48 @@ describe("Pages /api/mercy-ai sentence-correction mode", () => {
     });
   });
 
+  it("returns app-owned 504 when sentence correction exceeds the server deadline", async () => {
+    vi.useFakeTimers();
+    try {
+      getUserMock.mockResolvedValueOnce({
+        data: { user: { id: "timeout-user" } },
+        error: null,
+      });
+      const fetchMock = vi.fn<typeof fetch>((_url, init) => {
+        const signal = init?.signal;
+        return new Promise<Response>((_resolve, reject) => {
+          signal?.addEventListener(
+            "abort",
+            () => reject(new DOMException("Aborted", "AbortError")),
+            { once: true },
+          );
+        });
+      });
+      vi.stubGlobal("fetch", fetchMock);
+
+      const responsePromise = postMercyAi(
+        {
+          mode: "sentence-correction",
+          learnerText: "I go to school yesterday.",
+        },
+        { ...env, MERCY_AI_CORRECTION_TIMEOUT_MS: "25" },
+      );
+
+      await vi.advanceTimersByTimeAsync(25);
+      const response = await responsePromise;
+
+      expect(response.status).toBe(504);
+      await expect(response.json()).resolves.toEqual({
+        error: "Correction timed out",
+        timeout: true,
+      });
+      expect(fetchMock).toHaveBeenCalledTimes(1);
+      expect(fetchMock.mock.calls[0][1]?.signal).toBeInstanceOf(AbortSignal);
+    } finally {
+      vi.useRealTimers();
+    }
+  });
+
   it("rejects missing learnerText with 400", async () => {
     const fetchMock = vi.fn<typeof fetch>();
     vi.stubGlobal("fetch", fetchMock);

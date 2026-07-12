@@ -322,6 +322,8 @@ const GRAMMAR_CORRECTION_AUTH_MESSAGE =
   "Mercy cần đăng nhập lại để kiểm tra câu này bằng AI. Bạn đăng nhập lại rồi thử Sửa câu này nhé.";
 const GRAMMAR_CORRECTION_API_MESSAGE =
   "Mercy chưa kết nối được máy sửa câu AI. Bạn thử lại sau một chút nhé.";
+const GRAMMAR_CORRECTION_TIMEOUT_MESSAGE =
+  "Mercy sửa câu quá thời gian. Bạn thử lại nhé. Correction timed out. Try again.";
 const CANNOT_CORRECT_NO_SESSION_MESSAGE =
   "Mercy cần đăng nhập để kiểm tra câu này. Bạn thử đăng nhập nhé.";
 const LPI_ERROR_DENSITY_WINDOW = 5;
@@ -361,6 +363,7 @@ const STEP7_AZURE_BATCH_ENABLED =
     ?.VITE_AZURE_PHONEME_BATCH_ENABLED === "true";
 const EMPTY_SPEAK_AUDIO_BLOB = new Blob([], { type: "audio/webm" });
 const AI_TUTOR_FETCH_TIMEOUT_MS = 15_000;
+const AI_TUTOR_CORRECTION_FETCH_TIMEOUT_MS = 18_000;
 const VIETNAMESE_SPEAK_TEXT_PATTERN =
   /[ăâđêôơưàáạảãằắặẳẵầấậẩẫèéẹẻẽềếệểễìíịỉĩòóọỏõồốộổỗờớợởỡùúụủũừứựửữỳýỵỷỹ]/i;
 const MERCY_CLARIFICATION_PREFIX_PATTERN = /^\s*Mercy\s+chưa\s+nghe\s+rõ\b/i;
@@ -384,7 +387,7 @@ type AiCorrectionResult = {
 };
 type AiCorrectionFailure = {
   ok: false;
-  reason: "auth" | "api";
+  reason: "auth" | "api" | "timeout";
 };
 type AiCorrectionResponse = AiCorrectionResult | AiCorrectionFailure | null;
 
@@ -403,9 +406,19 @@ async function callAiSentenceCorrection(
       method: "POST",
       headers: { "Content-Type": "application/json", Authorization: `Bearer ${accessToken}` },
       body: JSON.stringify({ mode: "sentence-correction", learnerText, explainLanguage: explainLang, target: tgt }),
-      timeoutMs: AI_TUTOR_FETCH_TIMEOUT_MS,
+      timeoutMs: AI_TUTOR_CORRECTION_FETCH_TIMEOUT_MS,
     });
-    if (!res.ok) return { ok: false, reason: res.status === 401 ? "auth" : "api" };
+    if (!res.ok) {
+      let errorBody: { timeout?: unknown } | null = null;
+      try {
+        errorBody = await res.json() as { timeout?: unknown };
+      } catch {
+        errorBody = null;
+      }
+      if (res.status === 401) return { ok: false, reason: "auth" };
+      if (res.status === 504 && errorBody?.timeout === true) return { ok: false, reason: "timeout" };
+      return { ok: false, reason: "api" };
+    }
     const data = (await res.json()) as Partial<AiCorrectionResult>;
     return {
       corrected: data.corrected ?? "",
@@ -2601,7 +2614,13 @@ export default function AiTutorPage() {
         setLoading(false);
         if (isAiCorrectionFailure(aiResult)) {
           recordLpiLearnerTurn(false);
-          setError(aiResult.reason === "auth" ? GRAMMAR_CORRECTION_AUTH_MESSAGE : GRAMMAR_CORRECTION_API_MESSAGE);
+          setError(
+            aiResult.reason === "auth"
+              ? GRAMMAR_CORRECTION_AUTH_MESSAGE
+              : aiResult.reason === "timeout"
+                ? GRAMMAR_CORRECTION_TIMEOUT_MESSAGE
+                : GRAMMAR_CORRECTION_API_MESSAGE,
+          );
           return;
         }
         if (aiResult?.confident && aiResult.corrected) {
