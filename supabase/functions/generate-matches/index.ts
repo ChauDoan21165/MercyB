@@ -1,12 +1,14 @@
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
 import { checkRateLimit, checkFeatureFlag } from "../shared/rate-limit.ts";
+import { logAiUsageLogBackground } from "../_shared/aiUsage.ts";
 
 const corsHeaders = {
   'Access-Control-Allow-Origin': '*',
   'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
 };
 const MATCH_AI_TIMEOUT_MS = 15_000;
+const MATCH_AI_MODEL = 'google/gemini-2.5-flash';
 
 const loggedMissingEnv = new Set<string>();
 
@@ -160,7 +162,7 @@ Return a JSON object with:
             'Content-Type': 'application/json',
           },
           body: JSON.stringify({
-            model: 'google/gemini-2.5-flash',
+            model: MATCH_AI_MODEL,
             messages: [{ role: 'user', content: prompt }],
             tools: [{
               type: 'function',
@@ -196,6 +198,20 @@ Return a JSON object with:
       }
 
       const aiResult = await response.json();
+      const usage = aiResult.usage;
+      if (usage) {
+        await logAiUsageLogBackground({
+          userId,
+          feature: 'generate-matches',
+          model: MATCH_AI_MODEL,
+          inputTokens: usage.prompt_tokens ?? usage.input_tokens ?? 0,
+          outputTokens: usage.completion_tokens ?? usage.output_tokens ?? 0,
+          meta: {
+            comparedUserId: otherProfile.user_id,
+          },
+        });
+      }
+
       const toolCall = aiResult.choices?.[0]?.message?.tool_calls?.[0];
       
       if (toolCall) {
