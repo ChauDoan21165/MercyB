@@ -29,7 +29,7 @@ const SUBHEAD: PlacementNativeSlots = {
 };
 
 const CARD_TITLE: PlacementNativeSlots = {
-  vi: "Hồ sơ Interference",
+  vi: "Dấu vết tiếng mẹ đẻ",
   en: "Interference Profile",
 };
 
