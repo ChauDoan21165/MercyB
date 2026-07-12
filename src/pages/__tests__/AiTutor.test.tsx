@@ -32,6 +32,8 @@ const FRIENDLY_CORRECTION_UNAVAILABLE_MESSAGE =
   "Mercy chưa sửa chắc câu này bằng bộ quy tắc hiện tại. Bạn có thể chỉnh lại câu ngắn hơn một chút rồi bấm Sửa câu này nhé.";
 const CANNOT_CORRECT_NO_SESSION_MESSAGE =
   "Mercy cần đăng nhập để kiểm tra câu này. Bạn thử đăng nhập nhé.";
+const GRAMMAR_CORRECTION_AUTH_MESSAGE =
+  "Mercy cần đăng nhập lại để kiểm tra câu này bằng AI. Bạn đăng nhập lại rồi thử Sửa câu này nhé.";
 
 const EMPTY_SUMMARY: MemorySummary = {
   tutorProduct: "ai-tutor",
@@ -1117,7 +1119,7 @@ describe("AiTutor four-tab seed flow", () => {
     expect(screen.getByTestId("self-compare-recorder")).toBeInTheDocument();
   });
 
-  it("asks for clarification when the DeepSeek Speak path fails", async () => {
+  it("shows a provider retry state when the DeepSeek Speak path fails", async () => {
     useAuthMock.mockReturnValue({
       user: { id: "user-1", user_metadata: {} },
       session: { access_token: "session-jwt" },
@@ -1132,11 +1134,11 @@ describe("AiTutor four-tab seed flow", () => {
     await speakCurrentTarget("I like summer because it is sunny.");
 
     await waitFor(() => {
-      expect(screen.getByTestId("ai-tutor-speak-follow-up")).toHaveTextContent(
-        "Mercy chưa nghe rõ. Bạn nói lại câu đó nhé.",
+      expect(screen.getByTestId("ai-tutor-speak-follow-up-error")).toHaveTextContent(
+        "Mercy chưa lấy được câu hỏi tiếp theo. Bấm thử lại nhé.",
       );
     });
-    expect(screen.getByTestId("ai-tutor-speak-follow-up")).not.toHaveTextContent("Why did you choose");
+    expect(screen.queryByTestId("ai-tutor-speak-follow-up")).not.toBeInTheDocument();
     expect(screen.getByTestId("self-compare-recorder")).toBeInTheDocument();
   });
 
@@ -2190,6 +2192,30 @@ describe("AiTutor Grammar submit — unchanged sentence + session handling", () 
     }
     const [, init] = aiCall;
     expect(init?.headers).toMatchObject({ Authorization: "Bearer session-jwt" });
+  });
+
+  it("shows an auth-specific correction state when /api/mercy-ai rejects the session", async () => {
+    useAuthMock.mockReturnValue({
+      user: { id: "user-1", user_metadata: {} },
+      session: { access_token: "expired-session-jwt" },
+      isLoading: false,
+    });
+    vi.stubGlobal("fetch", vi.fn<typeof fetch>(async () =>
+      new Response(JSON.stringify({ error: "Unauthorized" }), {
+        status: 401,
+        headers: { "Content-Type": "application/json" },
+      }),
+    ));
+    renderAiTutor();
+
+    await userEvent.type(
+      screen.getByRole("textbox", { name: /Gõ câu tiếng Anh của bạn/i }),
+      "I went to school.",
+    );
+    await userEvent.click(screen.getByRole("button", { name: "Sửa câu này" }));
+
+    expect(await screen.findByText(GRAMMAR_CORRECTION_AUTH_MESSAGE)).toBeInTheDocument();
+    expect(screen.queryByText(FRIENDLY_CORRECTION_UNAVAILABLE_MESSAGE)).not.toBeInTheDocument();
   });
 
   it("shows the confirmed buy-a-head correction from the AI path instead of the fallback", async () => {
