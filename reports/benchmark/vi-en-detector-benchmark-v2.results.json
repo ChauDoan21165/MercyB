@@ -1,0 +1,84 @@
+{
+  "generated_at": "2026-07-12T11:21:04.875Z",
+  "seed": 20260712,
+  "limit_per_track": 5000,
+  "detectors": [
+    "detectL1Error"
+  ],
+  "annotated": {
+    "sample_size": 0,
+    "corpus_counts": {},
+    "per_tag": {},
+    "unmappable_gold_codes": {}
+  },
+  "proxy": {
+    "sample_size": 5000,
+    "corpus_counts": {
+      "icnale-wep": 5000
+    },
+    "groups": {
+      "non_vn_l1_baseline": {
+        "samples": 3402,
+        "detector_fires": 1067,
+        "fire_rate": 0.3136,
+        "tags": {
+          "vi_l1_topic_comment_fronting": 95,
+          "vi_l1_tag_polarity": 79,
+          "vi_l1_missing_article": 877,
+          "vi_l1_conditional_mix": 3,
+          "vi_l1_no_article_generic": 5,
+          "vi_l1_preposition_transfer": 7,
+          "vi_l1_double_negative": 1
+        },
+        "tag_fire_rates": {
+          "vi_l1_topic_comment_fronting": 0.0279,
+          "vi_l1_tag_polarity": 0.0232,
+          "vi_l1_missing_article": 0.2578,
+          "vi_l1_conditional_mix": 0.0009,
+          "vi_l1_no_article_generic": 0.0015,
+          "vi_l1_preposition_transfer": 0.0021,
+          "vi_l1_double_negative": 0.0003
+        }
+      },
+      "vn_l1": {
+        "samples": 1598,
+        "detector_fires": 509,
+        "fire_rate": 0.3185,
+        "tags": {
+          "vi_l1_missing_article": 400,
+          "vi_l1_tag_polarity": 57,
+          "vi_l1_topic_comment_fronting": 44,
+          "vi_l1_preposition_transfer": 6,
+          "vi_l1_no_article_generic": 1,
+          "vi_l1_countable": 1
+        },
+        "tag_fire_rates": {
+          "vi_l1_missing_article": 0.2503,
+          "vi_l1_tag_polarity": 0.0357,
+          "vi_l1_topic_comment_fronting": 0.0275,
+          "vi_l1_preposition_transfer": 0.0038,
+          "vi_l1_no_article_generic": 0.0006,
+          "vi_l1_countable": 0.0006
+        }
+      }
+    },
+    "comparisons": [
+      {
+        "baseline_group": "non_vn_l1_baseline",
+        "comparison_group": "vn_l1",
+        "baseline_samples": 3402,
+        "comparison_samples": 1598,
+        "tag_ratios": {
+          "vi_l1_conditional_mix": 0,
+          "vi_l1_countable": null,
+          "vi_l1_double_negative": 0,
+          "vi_l1_missing_article": 0.9709,
+          "vi_l1_no_article_generic": 0.4,
+          "vi_l1_preposition_transfer": 1.8095,
+          "vi_l1_tag_polarity": 1.5388,
+          "vi_l1_topic_comment_fronting": 0.9857
+        }
+      }
+    ]
+  }
+}

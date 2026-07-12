@@ -15,7 +15,7 @@ export type AnnotatedRecord = {
 export type ProxyRecord = {
   id: string;
   corpus: string;
-  group: "vn_l1" | "native_reference";
+  group: "vn_l1" | "native_reference" | "non_vn_l1_baseline";
   text: string;
   reference_text: string;
 };
@@ -44,6 +44,7 @@ export type BenchmarkResults = {
     sample_size: number;
     corpus_counts: Record<string, number>;
     groups: Record<string, ProxyGroupMetrics>;
+    comparisons: ProxyComparisonMetrics[];
   };
 };
 
@@ -61,6 +62,15 @@ export type ProxyGroupMetrics = {
   detector_fires: number;
   fire_rate: number;
   tags: Record<string, number>;
+  tag_fire_rates: Record<string, number>;
+};
+
+export type ProxyComparisonMetrics = {
+  baseline_group: string;
+  comparison_group: string;
+  baseline_samples: number;
+  comparison_samples: number;
+  tag_ratios: Record<string, number | null>;
 };
 
 const GOLD_CODE_TO_TAG: Record<string, string> = {
@@ -180,6 +190,7 @@ function evaluateProxy(records: ProxyRecord[]): BenchmarkResults["proxy"] {
       detector_fires: 0,
       fire_rate: 0,
       tags: {},
+      tag_fire_rates: {},
     };
     const prediction = runViEnL1Detector({
       userAnswer: record.text,
@@ -191,6 +202,7 @@ function evaluateProxy(records: ProxyRecord[]): BenchmarkResults["proxy"] {
       group.tags[prediction.tag] = (group.tags[prediction.tag] ?? 0) + 1;
     }
     group.fire_rate = round(group.detector_fires / group.samples);
+    group.tag_fire_rates = rates(group.tags, group.samples);
     groups[record.group] = group;
   }
 
@@ -198,6 +210,7 @@ function evaluateProxy(records: ProxyRecord[]): BenchmarkResults["proxy"] {
     sample_size: records.length,
     corpus_counts: countBy(records, (record) => record.corpus),
     groups,
+    comparisons: compareProxyGroups(groups),
   };
 }
 
@@ -230,6 +243,13 @@ export function renderReport(results: BenchmarkResults): string {
       `| ${group} | ${metric.samples} | ${metric.detector_fires} | ${display(metric.fire_rate)} | ${formatTags(metric.tags)} |`
     ))
     .join("\n");
+  const ratioRows = results.proxy.comparisons
+    .flatMap((comparison) => (
+      Object.entries(comparison.tag_ratios).map(([tag, ratio]) => (
+        `| ${comparison.comparison_group} vs ${comparison.baseline_group} | ${tag} | ${comparison.comparison_samples} | ${display(results.proxy.groups[comparison.comparison_group]?.tag_fire_rates[tag] ?? 0)} | ${comparison.baseline_samples} | ${display(results.proxy.groups[comparison.baseline_group]?.tag_fire_rates[tag] ?? 0)} | ${display(ratio)} |`
+      ))
+    ))
+    .join("\n");
   const unmappable = Object.entries(results.annotated.unmappable_gold_codes)
     .map(([code, count]) => `- ${code}: ${count}`)
     .join("\n") || "- None in this run.";
@@ -242,7 +262,7 @@ Status: ${fixtureOnly ? "fixture-smoke-run; public-corpus run pending licensed l
 
 ## Method
 
-This report was produced by scripts/benchmark/run-vi-en-detector-benchmark.ts. It imports the shipped detectL1Error detector surface and does not inline detector logic. The annotated track measures precision/recall against mappable gold tags. The VN-L1 proxy track measures detector fire-rate against a native/reference comparison set and is not an accuracy score.
+This report was produced by scripts/benchmark/run-vi-en-detector-benchmark.ts. It imports the shipped detectL1Error detector surface and does not inline detector logic. The annotated track measures precision/recall against mappable gold tags. The VN-L1 proxy track measures detector fire-rate against a reference/baseline comparison set and is not an accuracy score.
 
 Seed: ${results.seed}
 
@@ -251,7 +271,7 @@ Limit per track: ${results.limit_per_track}
 ## Corpus Choices And Licenses
 
 - Annotated track: CLC FCE Dataset, optionally paired with UD English-ESL/TLE annotations. FCE contains learner scripts, error annotation, and first-language metadata under a non-commercial research/education license that excludes product/service use and requires citation. UD English-ESL annotations are CC BY-SA 4.0 but omit the underlying FCE text.
-- VN-L1 proxy track: ICNALE Written Essays Plus, selected because WEP includes Vietnam-region learner essays and ICNALE includes native-speaker reference data. ICNALE downloads require registration/password and prohibit reproducing or redistributing data.
+- VN-L1 proxy track: ICNALE Written Essays Plus, selected because WEP includes Vietnam-region learner essays. The local WEP v0.7 package used for v2 does not include the original ICNALE native-speaker Written Essays module, so the comparison group is non-Vietnamese-L1 WEP learner text rather than native reference text. ICNALE downloads require registration/password and prohibit reproducing or redistributing data.
 - Skipped in v1: Lang-8 because the public release does not provide a clean Vietnamese-L1 English subset for this harness; BEA W&I+LOCNESS because FCE/UD is the clearer first annotated path.
 
 ## Annotated Track
@@ -268,7 +288,7 @@ Unmappable gold codes:
 
 ${unmappable}
 
-## VN-L1 Proxy Track
+## ${fixtureOnly ? "VN-L1 Proxy Track" : "v2 ICNALE WEP Proxy Track"}
 
 Sample size: ${results.proxy.sample_size}
 
@@ -278,17 +298,24 @@ Corpus counts: ${JSON.stringify(results.proxy.corpus_counts)}
 | --- | ---: | ---: | ---: | --- |
 ${proxyRows || "| No public proxy corpus rows were run. | 0 | 0 | n/a | n/a |"}
 
+### Proxy Tag Ratios
+
+| Comparison | Detector tag | VN samples | VN fire-rate | Baseline samples | Baseline fire-rate | VN/baseline ratio |
+| --- | --- | ---: | ---: | ---: | ---: | ---: |
+${ratioRows || "| No proxy comparison was available. | n/a | 0 | n/a | 0 | n/a | n/a |"}
+
 ## Limitations
 
 - ${fixtureOnly ? "The numbers above are fixture smoke data, not public-corpus evidence." : "The numbers above are derived from local licensed corpus exports; raw corpus text is not committed."}
-- The committed snapshot is a fixture smoke run unless the owner reruns the harness with licensed local FCE and ICNALE exports.
+- ${fixtureOnly ? "The committed snapshot is a fixture smoke run unless the owner reruns the harness with licensed local FCE and ICNALE exports." : "The v2 proxy snapshot uses licensed local ICNALE WEP text only; the raw corpus and prepared JSONL remain outside git."}
 - FCE error annotations are not Vietnamese-L1-specific; only mappable error classes are scored, and unmappable classes remain explicit.
-- ICNALE/WEP proxy results are a false-positive/fire-rate proxy over learner and native/reference texts, not an accuracy measurement.
+- ICNALE/WEP proxy results are a false-positive/fire-rate proxy over learner and reference/baseline texts, not an accuracy measurement.
+- The v2 WEP package has no native-speaker/reference correction layer, so high baseline fire-rates are evidence of broad detector sensitivity, not Vietnamese-specific precision.
 - Corpus text is intentionally excluded from git because the source licenses restrict redistribution.
 
 ## Publishability Read
 
-${fixtureOnly ? "Not publishable as an accuracy claim yet. It is publishable only as a methods draft until the owner supplies licensed local FCE and ICNALE exports and reruns the harness." : "Publishable as a v1 draft if the sample preparation notes and corpus license citations are kept with the report."}
+${fixtureOnly ? "Not publishable as an accuracy claim yet. It is publishable only as a methods draft until the owner supplies licensed local FCE and ICNALE exports and reruns the harness." : "Not publishable as an accuracy claim. This v2 section is publishable only as a proxy/fire-rate methods artifact until the FCE annotated track is run and the ICNALE native/reference module is added or the baseline is renamed explicitly in any public copy."}
 `;
 }
 
@@ -314,6 +341,45 @@ function countUnmappable(codes: string[]): Record<string, number> {
   const counts: Record<string, number> = {};
   for (const code of codes) counts[code] = (counts[code] ?? 0) + 1;
   return counts;
+}
+
+function compareProxyGroups(groups: Record<string, ProxyGroupMetrics>): ProxyComparisonMetrics[] {
+  const baseline =
+    groups.native_reference
+      ? { name: "native_reference", metrics: groups.native_reference }
+      : groups.non_vn_l1_baseline
+        ? { name: "non_vn_l1_baseline", metrics: groups.non_vn_l1_baseline }
+        : null;
+  const comparison = groups.vn_l1;
+  if (!baseline || !comparison) return [];
+
+  const tags = new Set([
+    ...Object.keys(comparison.tag_fire_rates),
+    ...Object.keys(baseline.metrics.tag_fire_rates),
+  ]);
+  const tagRatios: Record<string, number | null> = {};
+  for (const tag of [...tags].sort()) {
+    const comparisonRate = comparison.tag_fire_rates[tag] ?? 0;
+    const baselineRate = baseline.metrics.tag_fire_rates[tag] ?? 0;
+    tagRatios[tag] = baselineRate === 0 ? null : round(comparisonRate / baselineRate);
+  }
+
+  return [{
+    baseline_group: baseline.name,
+    comparison_group: "vn_l1",
+    baseline_samples: baseline.metrics.samples,
+    comparison_samples: comparison.samples,
+    tag_ratios: tagRatios,
+  }];
+}
+
+function rates(counts: Record<string, number>, samples: number): Record<string, number> {
+  const result: Record<string, number> = {};
+  if (samples === 0) return result;
+  for (const [tag, count] of Object.entries(counts)) {
+    result[tag] = round(count / samples);
+  }
+  return result;
 }
 
 function writeJson(path: string, data: unknown): void {
