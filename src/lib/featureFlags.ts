@@ -119,6 +119,14 @@ export const FEATURE_FLAGS = {
   INTERFERENCE_PROFILE_SHARE: readEnvBool("VITE_INTERFERENCE_PROFILE_SHARE", false),
 
   /**
+   * Two-price funnel test. Default OFF: the Pricing page uses the existing
+   * display prices and Stripe price ids. When ON, a persisted 50/50 assignment
+   * may show an alternate configured price variant, provided all alternate
+   * display amounts and Stripe price ids are present in env.
+   */
+  PRICE_TEST_ENABLED: readEnvBool("VITE_PRICE_TEST_ENABLED", false),
+
+  /**
    * Home page "Your focus areas" card that surfaces placement-test
    * weakness tags. Off until CC3's placement-test persistence lands
    * and manual QA passes.

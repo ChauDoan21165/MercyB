@@ -38,6 +38,8 @@ vi.mock("@/lib/platform", () => ({
 vi.mock("@/lib/analytics", () => ({
   trackCheckoutStarted: vi.fn(),
   trackPaywallShown: vi.fn(),
+  trackPriceTestCheckoutStart: vi.fn(),
+  trackPriceTestVariantExposure: vi.fn(),
   trackPricingViewed: vi.fn(),
 }));
 

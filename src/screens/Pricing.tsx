@@ -14,6 +14,8 @@ import {
 import {
   trackCheckoutStarted,
   trackPaywallShown,
+  trackPriceTestCheckoutStart,
+  trackPriceTestVariantExposure,
   trackPricingViewed,
 } from "@/lib/analytics";
 import { getPlatform } from "@/lib/platform";
@@ -26,6 +28,11 @@ import {
   MONTHLY_PRICE_VND,
   YEARLY_PRICE_VND,
 } from "@/lib/pricing/displayPrices";
+import {
+  priceTestAnalyticsPayload,
+  recordPriceTestLearningEvent,
+  resolvePriceTestPlan,
+} from "@/lib/pricing/priceTest";
 import PaywallExperiment from "@/components/pricing/PaywallExperiment";
 import SeoMeta from "@/components/seo/SeoMeta";
 import { Bilingual } from "@/components/Bilingual";
@@ -166,6 +173,21 @@ export default function Pricing() {
     DIRECT_ONE_YEAR_PRICE_ID,
   );
 
+  const priceTestPlan = useMemo(() => resolvePriceTestPlan({
+    userId: user?.id ?? null,
+    control: {
+      monthPriceId: ONE_MONTH_PRICE_ID,
+      yearPriceId: ONE_YEAR_PRICE_ID,
+      monthlyAmountVnd: MONTHLY_PRICE_VND,
+      yearlyAmountVnd: YEARLY_PRICE_VND,
+    },
+  }), [ONE_MONTH_PRICE_ID, ONE_YEAR_PRICE_ID, user?.id]);
+
+  const activeMonthlyPriceVnd = priceTestPlan.monthlyAmountVnd;
+  const activeYearlyPriceVnd = priceTestPlan.yearlyAmountVnd;
+  const activeMonthPriceId = priceTestPlan.monthPriceId;
+  const activeYearPriceId = priceTestPlan.yearPriceId;
+
   const [busyPlan, setBusyPlan]       = useState<PaidPlanKey | null>(null);
   const [manageBusy, setManageBusy]   = useState(false);
   const [errorText, setErrorText]     = useState("");
@@ -180,6 +202,7 @@ export default function Pricing() {
 
   const trackedPricingViewed = useRef(false);
   const trackedPaywallShown  = useRef(false);
+  const trackedPriceTestExposure = useRef(false);
 
   const canceled = useMemo(() => {
     const params = new URLSearchParams(window.location.search);
@@ -199,10 +222,11 @@ export default function Pricing() {
 
   const configWarning = useMemo(() => {
     const missing: string[] = [];
-    if (!ONE_MONTH_PRICE_ID) missing.push("monthly Stripe price_id");
-    if (!ONE_YEAR_PRICE_ID)  missing.push("yearly Stripe price_id");
+    if (!activeMonthPriceId) missing.push("monthly Stripe price_id");
+    if (!activeYearPriceId)  missing.push("yearly Stripe price_id");
+    if (priceTestPlan.configWarning) missing.push(priceTestPlan.configWarning);
     return missing.length > 0 ? `Missing config: ${missing.join(", ")}` : "";
-  }, [ONE_MONTH_PRICE_ID, ONE_YEAR_PRICE_ID]);
+  }, [activeMonthPriceId, activeYearPriceId, priceTestPlan.configWarning]);
 
   const plans = useMemo<Plan[]>(() => [
     {
@@ -233,7 +257,7 @@ export default function Pricing() {
       eyebrow: "Flexible",
       title: "Full Access — Monthly",
       titleVi: "Toàn quyền — Hàng tháng",
-      price: `${formatPrice(MONTHLY_PRICE_VND, "VND")} / month`,
+      price: `${formatPrice(activeMonthlyPriceVnd, "VND")} / month`,
       subtitleEn: "Flexible recurring access with monthly billing.",
       subtitleVi: "Toàn quyền truy cập linh hoạt với thanh toán hàng tháng.",
       bodyEn: "Good for learners who want every premium room without a longer commitment.",
@@ -256,7 +280,7 @@ export default function Pricing() {
       eyebrow: "Best value",
       title: "Full Access — Yearly",
       titleVi: "Toàn quyền — Hàng năm",
-      price: `${formatPrice(YEARLY_PRICE_VND, "VND")} / year`,
+      price: `${formatPrice(activeYearlyPriceVnd, "VND")} / year`,
       subtitleEn: "Save more and stay fully unlocked all year.",
       subtitleVi: "Tiết kiệm hơn và giữ toàn bộ quyền truy cập suốt cả năm.",
       bodyEn: "Best long-term value for steady learning without billing friction.",
@@ -278,7 +302,7 @@ export default function Pricing() {
       // intentionally left unset so the per-card render path skips the
       // generic string and uses the computed badge instead.
     },
-  ], []);
+  ], [activeMonthlyPriceVnd, activeYearlyPriceVnd]);
 
   const hasPremium      = access.hasPremium;
   const currentPriceId  = String(entitlement?.price_id ?? "").trim();
@@ -289,9 +313,28 @@ export default function Pricing() {
 
   useEffect(() => {
     if (trackedPricingViewed.current) return;
-    trackPricingViewed({ screen: "pricing", path: window.location.pathname });
+    const payload = priceTestAnalyticsPayload(priceTestPlan, {
+      screen: "pricing",
+      path: window.location.pathname,
+    });
+    trackPricingViewed(payload);
     trackedPricingViewed.current = true;
-  }, []);
+  }, [priceTestPlan]);
+
+  useEffect(() => {
+    if (isIos) return;
+    if (!priceTestPlan.exposureEligible) return;
+    if (trackedPriceTestExposure.current) return;
+    trackPriceTestVariantExposure(priceTestAnalyticsPayload(priceTestPlan, {
+      screen: "pricing",
+      path: window.location.pathname,
+    }));
+    void recordPriceTestLearningEvent("price_test_variant_exposure", priceTestPlan, {
+      screen: "pricing",
+      path: window.location.pathname,
+    });
+    trackedPriceTestExposure.current = true;
+  }, [isIos, priceTestPlan]);
 
   useEffect(() => {
     let mounted = true;
@@ -318,9 +361,12 @@ export default function Pricing() {
     if (entitlementLoading) return;
     if (hasPremium) return;
     if (trackedPaywallShown.current) return;
-    trackPaywallShown("pricing", { screen: "pricing", path: window.location.pathname });
+    trackPaywallShown("pricing", priceTestAnalyticsPayload(priceTestPlan, {
+      screen: "pricing",
+      path: window.location.pathname,
+    }));
     trackedPaywallShown.current = true;
-  }, [entitlementLoading, hasPremium]);
+  }, [entitlementLoading, hasPremium, priceTestPlan]);
 
   useEffect(() => {
     if (!entitlementLoading && hasPremium) {
@@ -365,7 +411,7 @@ export default function Pricing() {
   }
 
   function isCurrentPlan(plan: PaidPlanKey): boolean {
-    const targetPriceId = getPlanPriceId(plan, ONE_MONTH_PRICE_ID, ONE_YEAR_PRICE_ID);
+    const targetPriceId = getPlanPriceId(plan, activeMonthPriceId, activeYearPriceId);
     return !!currentPriceId && currentPriceId === targetPriceId;
   }
 
@@ -373,7 +419,7 @@ export default function Pricing() {
     // Hard guard — ignore duplicate taps including taps on a different plan
     if (busyPlanRef.current !== null) return;
 
-    const priceId = getPlanPriceId(plan, ONE_MONTH_PRICE_ID, ONE_YEAR_PRICE_ID);
+    const priceId = getPlanPriceId(plan, activeMonthPriceId, activeYearPriceId);
 
     setErrorText("");
     setPlanChangedText("");
@@ -403,7 +449,22 @@ export default function Pricing() {
         price_id: priceId,
         path: window.location.pathname,
         mode: hasPremium ? "change_plan" : "checkout",
+        ...priceTestAnalyticsPayload(priceTestPlan),
       });
+      if (priceTestPlan.exposureEligible) {
+        const payload = priceTestAnalyticsPayload(priceTestPlan, {
+          screen: "pricing",
+          plan,
+          path: window.location.pathname,
+          mode: hasPremium ? "change_plan" : "checkout",
+        });
+        trackPriceTestCheckoutStart(payload);
+        void recordPriceTestLearningEvent("price_test_checkout_start", priceTestPlan, {
+          screen: "pricing",
+          plan,
+          mode: hasPremium ? "change_plan" : "checkout",
+        });
+      }
 
       await startCheckoutOrOpenPortal({ priceId });
 
@@ -694,8 +755,8 @@ export default function Pricing() {
         ) : null}
         {plan.key === "year" ? (
           <SavingsBadge
-            monthlyAmount={MONTHLY_PRICE_VND}
-            yearlyAmount={YEARLY_PRICE_VND}
+            monthlyAmount={activeMonthlyPriceVnd}
+            yearlyAmount={activeYearlyPriceVnd}
             currency="VND"
             variant="full"
           />
@@ -912,9 +973,9 @@ export default function Pricing() {
           aria-label="Monthly vs yearly comparison"
         >
           {(() => {
-            const monthlyTotal = MONTHLY_PRICE_VND * 12;
-            const savings = monthlyTotal - YEARLY_PRICE_VND;
-            const pct = computeYearlySavingsPct(MONTHLY_PRICE_VND, YEARLY_PRICE_VND);
+            const monthlyTotal = activeMonthlyPriceVnd * 12;
+            const savings = monthlyTotal - activeYearlyPriceVnd;
+            const pct = computeYearlySavingsPct(activeMonthlyPriceVnd, activeYearlyPriceVnd);
             const cellBase: React.CSSProperties = {
               borderRadius: 14,
               padding: "12px 14px",
@@ -948,7 +1009,7 @@ export default function Pricing() {
                   <div style={labelViStyle}>Nếu trả theo tháng (12 tháng)</div>
                   <div style={figureStyle}>{formatPrice(monthlyTotal, "VND")}</div>
                   <div style={subFigureStyle}>
-                    {formatPrice(MONTHLY_PRICE_VND, "VND")} × 12 tháng
+                    {formatPrice(activeMonthlyPriceVnd, "VND")} × 12 tháng
                   </div>
                 </div>
 
@@ -959,12 +1020,12 @@ export default function Pricing() {
                 <div style={cellHighlight}>
                   <div style={{ ...labelEnStyle, color: "#065f46" }}>Yearly plan</div>
                   <div style={{ ...labelViStyle, color: "#0f766e" }}>Gói hàng năm</div>
-                  <div style={figureStyle}>{formatPrice(YEARLY_PRICE_VND, "VND")}</div>
+                  <div style={figureStyle}>{formatPrice(activeYearlyPriceVnd, "VND")}</div>
                   <div style={{ ...subFigureStyle, color: "#0f766e", fontWeight: 700 }}>
-                    Tiết kiệm {pct}% — chỉ {formatPrice(YEARLY_PRICE_VND / 12, "VND")}/tháng
+                    Tiết kiệm {pct}% — chỉ {formatPrice(activeYearlyPriceVnd / 12, "VND")}/tháng
                   </div>
                   <div style={{ fontSize: 11, color: "#64748b", marginTop: 2 }}>
-                    Save {pct}% · ≈ {formatPrice(YEARLY_PRICE_VND / 12, "VND")}/month
+                    Save {pct}% · ≈ {formatPrice(activeYearlyPriceVnd / 12, "VND")}/month
                   </div>
                   <div style={{ marginTop: 8, fontSize: 12, fontWeight: 700, color: "#065f46" }}>
                     You save {formatPrice(savings, "VND")} per year
