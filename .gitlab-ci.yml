@@ -1536,6 +1536,41 @@ deploy-cloudflare-pages:
   script:
     - bash scripts/deploy-cloudflare-pages-main.sh
 
+# ── Supabase CD (DORMANT — Chau enables with SUPABASE_CD_ENABLED=1) ─────
+#
+# Main-pipeline only. Tokens are protected+masked CI variables and never enter
+# lane shells. `supabase db push` stays forbidden; migration application uses
+# psql against MIGRATOR_DATABASE_URL after scripts/sql-lint.mjs.
+deploy-functions-on-main:
+  <<: [*node_job, *local_runner]
+  stage: deploy
+  interruptible: false
+  rules:
+    - if: '$RESERVOIR == "1"'
+      when: never
+    - if: '$SUPABASE_CD_ENABLED == "1" && $CI_PIPELINE_SOURCE == "push" && $CI_COMMIT_BRANCH == "main"'
+      changes:
+        - supabase/functions/**/*
+    - when: never
+  script:
+    - test -n "${SUPABASE_ACCESS_TOKEN:-}" || { echo "SUPABASE_ACCESS_TOKEN is required"; exit 1; }
+    - npx supabase functions deploy --project-ref "${SUPABASE_PROJECT_REF:-buemdfxyhxunzpgdoqin}" --use-api
+
+apply-migrations-on-main:
+  <<: [*node_job, *local_runner]
+  stage: deploy
+  interruptible: false
+  rules:
+    - if: '$RESERVOIR == "1"'
+      when: never
+    - if: '$SUPABASE_CD_ENABLED == "1" && $CI_PIPELINE_SOURCE == "push" && $CI_COMMIT_BRANCH == "main"'
+      changes:
+        - supabase/migrations/**/*.sql
+    - when: never
+  script:
+    - test -n "${MIGRATOR_DATABASE_URL:-}" || { echo "MIGRATOR_DATABASE_URL is required"; exit 1; }
+    - node scripts/apply-supabase-migrations.mjs
+
 # ── `verify` stage: post-deploy production golden flows ────────────────
 #
 # Runs the production golden-flow smoke against the LIVE Cloudflare Pages
