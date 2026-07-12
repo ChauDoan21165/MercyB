@@ -5,7 +5,6 @@ import { correctWithTutorRules, type TutorCorrectionLanguage } from "../../src/l
 import { lessons } from "../../src/languages/vietnamese/lessons-a1";
 
 type GoldenStatus = "corrected" | "unchanged" | "needs_ai";
-
 type GoldenCase = {
   id: string;
   input: string;
@@ -15,39 +14,18 @@ type GoldenCase = {
   expectedRulesFired?: string[];
   language?: TutorCorrectionLanguage;
 };
-
 type GoldenFixture = {
   rule: string;
   ruleId: string;
   language?: TutorCorrectionLanguage;
   positive: GoldenCase[];
 };
-
 type InventoryCell = {
   id: string;
   cell_type: string;
-  source_object?: {
-    lesson_id?: number;
-    ordinal?: number;
-    lesson_title_en?: string;
-  };
-  address_text?: string;
+  source_object?: { lesson_id?: number; ordinal?: number; lesson_title_en?: string };
 };
-
-type Inventory = {
-  metadata?: unknown;
-  cells?: InventoryCell[];
-  inventory?: InventoryCell[];
-  items?: InventoryCell[];
-};
-
-type Token = {
-  raw: string;
-  key: string;
-  leading: string;
-  trailing: string;
-};
-
+type Token = { raw: string; key: string; leading: string; trailing: string };
 type Transformation = {
   id: string;
   fixtureFile: string;
@@ -60,7 +38,6 @@ type Transformation = {
   sourceRight: string;
   sourceWrong: string;
 };
-
 type Probe = {
   probe_id: string;
   transformation_id: string;
@@ -76,7 +53,6 @@ type Probe = {
   caught: boolean;
   rule_family_correct: boolean;
 };
-
 type CellReport = {
   cell_id: string;
   lesson_id: number;
@@ -139,18 +115,13 @@ function changedSpans(wrong: Token[], right: Token[]): Array<{ wrongStart: numbe
   let i = 0;
   let j = 0;
   let pending: { wrongStart: number; wrongEnd: number; rightStart: number; rightEnd: number } | null = null;
-
   const flush = () => {
-    if (pending && (pending.wrongStart < pending.wrongEnd || pending.rightStart < pending.rightEnd)) {
-      spans.push(pending);
-    }
+    if (pending && (pending.wrongStart < pending.wrongEnd || pending.rightStart < pending.rightEnd)) spans.push(pending);
     pending = null;
   };
-
   const ensurePending = () => {
     pending ??= { wrongStart: i, wrongEnd: i, rightStart: j, rightEnd: j };
   };
-
   while (i < wrong.length || j < right.length) {
     if (i < wrong.length && j < right.length && wrong[i].key === right[j].key) {
       flush();
@@ -176,17 +147,14 @@ function tokensText(tokens: Token[]): string {
 
 function buildTransformations(fixtures: Array<{ file: string; fixture: GoldenFixture }>): Transformation[] {
   const transformations = new Map<string, Transformation>();
-
   for (const { file, fixture } of fixtures) {
     for (const testCase of fixture.positive) {
       const language = testCase.language ?? fixture.language ?? "en";
       if (language !== "en") continue;
-
       const wrong = tokenize(stripTerminal(testCase.input));
       const right = tokenize(stripTerminal(testCase.expectedCorrection));
       const spans = changedSpans(wrong, right).filter((span) => span.wrongStart < span.wrongEnd || span.rightStart < span.rightEnd);
       if (spans.length !== 1 || spans[0].rightStart === spans[0].rightEnd) continue;
-
       const span = spans[0];
       const rightStart = Math.max(0, span.rightStart - 1);
       const rightEnd = Math.min(right.length, span.rightEnd + 1);
@@ -195,11 +163,9 @@ function buildTransformations(fixtures: Array<{ file: string; fixture: GoldenFix
       const rightText = tokensText(right.slice(rightStart, rightEnd));
       const wrongText = tokensText(wrong.slice(wrongStart, wrongEnd));
       if (!rightText || rightText.toLowerCase() === wrongText.toLowerCase()) continue;
-
       const ids = expectedRuleIds(fixture, testCase);
       const key = `${fixture.ruleId}\t${rightText.toLowerCase()}\t${wrongText.toLowerCase()}`;
       if (transformations.has(key)) continue;
-
       transformations.set(key, {
         id: `tx-${transformations.size + 1}`,
         fixtureFile: file,
@@ -214,7 +180,6 @@ function buildTransformations(fixtures: Array<{ file: string; fixture: GoldenFix
       });
     }
   }
-
   return [...transformations.values()].sort((a, b) =>
     `${a.ruleId}:${a.rightText}:${a.wrongText}`.localeCompare(`${b.ruleId}:${b.rightText}:${b.wrongText}`),
   );
@@ -224,11 +189,8 @@ function applyTransformation(sentence: string, transformation: Transformation): 
   const tokens = tokenize(sentence);
   const pattern = tokenize(transformation.rightText);
   if (!pattern.length || pattern.length > tokens.length) return null;
-
   for (let i = 0; i <= tokens.length - pattern.length; i += 1) {
-    const matches = pattern.every((token, offset) => token.key === tokens[i + offset].key);
-    if (!matches) continue;
-
+    if (!pattern.every((token, offset) => token.key === tokens[i + offset].key)) continue;
     const out = [...tokens];
     const wrongTokens = transformation.wrongText ? transformation.wrongText.split(" ") : [];
     const replacement = wrongTokens.map((raw, offset) => {
@@ -236,14 +198,11 @@ function applyTransformation(sentence: string, transformation: Transformation): 
       if (offset === wrongTokens.length - 1) return `${raw}${tokens[i + pattern.length - 1].trailing}`;
       return raw;
     });
-    if (replacement.length === 0 && i > 0) {
-      out[i - 1] = { ...out[i - 1], raw: `${out[i - 1].raw}${tokens[i + pattern.length - 1].trailing}` };
-    }
+    if (replacement.length === 0 && i > 0) out[i - 1] = { ...out[i - 1], raw: `${out[i - 1].raw}${tokens[i + pattern.length - 1].trailing}` };
     out.splice(i, pattern.length, ...replacement.map((raw) => ({ raw, key: raw.toLowerCase(), leading: "", trailing: "" })));
     const corrupted = normalizeSpace(out.map((token) => token.raw).join(" "));
     if (corrupted && corrupted !== sentence) return corrupted;
   }
-
   return null;
 }
 
@@ -270,7 +229,7 @@ function inventoryCells(value: unknown): InventoryCell[] {
     }
     for (const child of Object.values(record)) visit(child);
   };
-  visit(value as Inventory);
+  visit(value);
   return found.sort((a, b) => a.id.localeCompare(b.id));
 }
 
@@ -288,7 +247,6 @@ function runSelfTest(fixtures: Array<{ file: string; fixture: GoldenFixture }>) 
   const cases = [];
   let passed = 0;
   let failed = 0;
-
   for (const { file, fixture } of fixtures) {
     for (const testCase of fixture.positive) {
       const language = testCase.language ?? fixture.language ?? "en";
@@ -313,31 +271,22 @@ function runSelfTest(fixtures: Array<{ file: string; fixture: GoldenFixture }>) 
       });
     }
   }
-
-  return {
-    status: failed === 0 ? "passed" : "failed",
-    passed,
-    failed,
-    cases,
-  };
+  return { status: failed === 0 ? "passed" : "failed", passed, failed, cases };
 }
 
 function probeCells(transformations: Transformation[]): CellReport[] {
   const inventory = JSON.parse(readFileSync(INVENTORY_PATH, "utf8")) as unknown;
   const cells = inventoryCells(inventory);
   const englishByAddress = dialogueEnglishByAddress();
-
   return cells.map((cell) => {
     const lessonId = cell.source_object?.lesson_id ?? -1;
     const ordinal = cell.source_object?.ordinal ?? -1;
     const mapped = englishByAddress.get(`${lessonId}:${ordinal}`);
     const english = mapped?.english ?? "";
     const probes: Probe[] = [];
-
     for (const transformation of transformations) {
       const corrupted = applyTransformation(english, transformation);
       if (!corrupted || corrupted === english) continue;
-
       const result = correctWithTutorRules(corrupted, "en");
       const caught = result.status === "corrected" || result.status === "needs_ai";
       const ruleFamilyCorrect = transformation.expectedRuleIds.every((id) => result.appliedRuleIds.includes(id));
@@ -358,18 +307,10 @@ function probeCells(transformations: Transformation[]): CellReport[] {
         rule_family_correct: ruleFamilyCorrect,
       });
     }
-
     const caughtCount = probes.filter((probe) => probe.caught).length;
     const familyCount = probes.filter((probe) => probe.rule_family_correct).length;
     const coverage =
-      probes.length === 0
-        ? "no_applicable_probes"
-        : familyCount === probes.length
-          ? "full"
-          : familyCount === 0
-            ? "blind"
-            : "partial";
-
+      probes.length === 0 ? "no_applicable_probes" : familyCount === probes.length ? "full" : familyCount === 0 ? "blind" : "partial";
     return {
       cell_id: cell.id,
       lesson_id: lessonId,
@@ -393,13 +334,7 @@ function markdown(report: ReturnType<typeof buildReport>): string {
       const br = b.probes_run === 0 ? 1 : b.rule_family_correct / b.probes_run;
       return ar - br || b.probes_run - a.probes_run || a.cell_id.localeCompare(b.cell_id);
     });
-
-  const queueRows = blindOrPartial.flatMap((cell) =>
-    cell.probes
-      .filter((probe) => !probe.rule_family_correct)
-      .map((probe) => ({ cell, probe })),
-  );
-
+  const queueRows = blindOrPartial.flatMap((cell) => cell.probes.filter((probe) => !probe.rule_family_correct).map((probe) => ({ cell, probe })));
   const lines = [
     "# INT Probe VN-EN A1",
     "",
@@ -425,28 +360,21 @@ function markdown(report: ReturnType<typeof buildReport>): string {
     "## Ranked Blind-Spot List",
     "",
   ];
-
   if (queueRows.length === 0) {
     lines.push("No blind spots among applicable fixture-derived corruptions.");
   } else {
     lines.push("| Rank | Cell | Lesson | Rule family | Corrupted sentence | Engine status | Applied rule ids |");
     lines.push("| ---: | --- | --- | --- | --- | --- | --- |");
     queueRows.slice(0, 100).forEach(({ cell, probe }, index) => {
-      lines.push(
-        `| ${index + 1} | ${cell.cell_id} | ${cell.lesson_title_en} | ${probe.rule_family} | ${probe.corrupted.replaceAll("|", "\\|")} | ${probe.engine_status} | ${probe.applied_rule_ids.join(", ") || "-"} |`,
-      );
+      lines.push(`| ${index + 1} | ${cell.cell_id} | ${cell.lesson_title_en} | ${probe.rule_family} | ${probe.corrupted.replaceAll("|", "\\|")} | ${probe.engine_status} | ${probe.applied_rule_ids.join(", ") || "-"} |`);
     });
   }
-
   lines.push("", "## Cell Coverage", "");
   lines.push("| Cell | English | Probes | Caught | Rule-family-correct | Coverage |");
   lines.push("| --- | --- | ---: | ---: | ---: | --- |");
   for (const cell of report.cells) {
-    lines.push(
-      `| ${cell.cell_id} | ${cell.english.replaceAll("|", "\\|")} | ${cell.probes_run} | ${cell.caught} | ${cell.rule_family_correct} | ${cell.coverage} |`,
-    );
+    lines.push(`| ${cell.cell_id} | ${cell.english.replaceAll("|", "\\|")} | ${cell.probes_run} | ${cell.caught} | ${cell.rule_family_correct} | ${cell.coverage} |`);
   }
-
   return `${lines.join("\n")}\n`;
 }
 
@@ -477,7 +405,6 @@ function buildReport() {
       cells: [],
     };
   }
-
   const transformations = buildTransformations(fixtures);
   const cells = probeCells(transformations);
   const summary = {
@@ -492,7 +419,6 @@ function buildReport() {
     cells_blind: cells.filter((cell) => cell.coverage === "blind").length,
     cells_no_applicable_probes: cells.filter((cell) => cell.coverage === "no_applicable_probes").length,
   };
-
   return {
     metadata: {
       generated_by: "scripts/cell-inventory/int-probe-vn-en-a1.ts",
@@ -512,11 +438,9 @@ function buildReport() {
 const report = buildReport();
 writeFileSync(JSON_OUT, `${JSON.stringify(report, null, 2)}\n`);
 writeFileSync(MD_OUT, markdown(report));
-
 if (report.self_test.status !== "passed") {
   console.error(`Self-test gate failed: ${report.self_test.failed} failing cases. Wrote ${JSON_OUT}`);
   process.exit(1);
 }
-
 console.log(`Wrote ${JSON_OUT}`);
 console.log(`Wrote ${MD_OUT}`);
