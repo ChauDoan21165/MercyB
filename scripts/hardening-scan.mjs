@@ -24,6 +24,7 @@
 import { execFileSync } from "node:child_process";
 import fs from "node:fs";
 import path from "node:path";
+import { pathToFileURL } from "node:url";
 
 const ROOT = process.cwd();
 const SRC = "src";
@@ -67,6 +68,12 @@ const APP_FILES = SRC_FILES.filter((file) => {
     && !/\.(test|spec)\.[cm]?[tj]sx?$/.test(r);
 });
 const ENV_BOUNDARY_FILES = APP_FILES.filter((file) => /^(api|functions|supabase\/functions)\//.test(rel(file)));
+const AI_TUTOR_UI_FILES = APP_FILES.filter((file) => {
+  const r = rel(file);
+  return r === "src/pages/AiTutor.tsx"
+    || r.startsWith("src/components/ai-tutor/")
+    || r.startsWith("src/lib/ai-tutor/");
+});
 
 // Per-line regex scan. Returns { file, line, text } for each matching line.
 // `refine` can further filter using the full line array + index (for lookback).
@@ -121,6 +128,49 @@ function isInTryBlock(lines, index, lookback = 12) {
 
 function objectLiteralAtCallsite(lines, index) {
   return lines.slice(index, Math.min(lines.length, index + 10)).join("\n");
+}
+
+function blockFrom(lines, index, maxLines = 140) {
+  const start = index;
+  const end = Math.min(lines.length, index + maxLines);
+  return lines.slice(start, end).join("\n");
+}
+
+function hasTerminalAsyncUiState(block, setterName, fileText = "") {
+  const escapedSetter = setterName.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  const clearsPending = new RegExp(`${escapedSetter}\\s*\\(\\s*false\\s*\\)`).test(block);
+  if (!clearsPending) return false;
+
+  const failureBranch = /\bcatch\s*(?:\(|\{)|\.catch\s*\(|\bfinally\s*\(|provider\s*===\s*["']local-fallback["']|is[A-Za-z0-9_]*ProviderError\s*\(/.test(block);
+  if (!failureBranch) return false;
+
+  const distinctFailureState = /set[A-Za-z0-9_]*(Error|ProviderError|Retry|Failed|Unavailable)\s*\(|setError\s*\(|setEntitlementGateVisible\s*\(\s*true\s*\)|local-fallback|timeout|network|try again|retry|thử lại|thử lại sau/.test(block);
+  if (!distinctFailureState) return false;
+
+  const retryAffordance = /retry|try again|thử lại|handleRetry|onRetry/i.test(block)
+    || (/ProviderError/.test(block) && /onRetry|handleRetry|retry/i.test(fileText));
+  return retryAffordance;
+}
+
+export function scanAsyncUiStateNoTerminalFailureFromText(content, file = "fixture.tsx") {
+  const lines = content.split("\n");
+  const hits = [];
+  const pendingSetterRe = /\b(set[A-Z][A-Za-z0-9_]*)\s*\(\s*true\s*\)/g;
+  const pendingSetterSuffixRe = /(Pending|Loading|Waiting|Listening|Submitting|Busy|Saving|Processing)$/;
+  for (let i = 0; i < lines.length; i++) {
+    let m;
+    while ((m = pendingSetterRe.exec(lines[i])) !== null) {
+      const setterName = m[1];
+      if (!pendingSetterSuffixRe.test(setterName)) continue;
+      const block = blockFrom(lines, i);
+      const hasLearnerRequest = /\b(fetchWithTimeout|invokeWithTimeout|sendTurn|callAiSentenceCorrection|fetchDeepSeekSpeakFollowUp|fetch\s*\(|\.functions\.invoke\s*\(|supabase\.functions\.invoke\s*\()/.test(block);
+      if (!hasLearnerRequest) continue;
+      if (/best-effort|non-blocking|fire-and-forget|telemetry/i.test(block)) continue;
+      if (hasTerminalAsyncUiState(block, setterName, content)) continue;
+      hits.push({ file, line: i + 1, text: lines[i].trim().slice(0, 200) });
+    }
+  }
+  return hits;
 }
 
 function locs(hits) {
@@ -451,6 +501,25 @@ function checkI() {
   return { status: "ok", findings };
 }
 
+// ── Check J — v4: async UI request state without terminal failure state ────
+function checkJ() {
+  const hits = [];
+  for (const file of AI_TUTOR_UI_FILES) {
+    let content;
+    try { content = fs.readFileSync(file, "utf8"); } catch { continue; }
+    hits.push(...scanAsyncUiStateNoTerminalFailureFromText(content, rel(file)));
+  }
+  const findings = [];
+  if (hits.length) findings.push(makeFinding({
+    id: "V4-async-ui-state-no-terminal-failure",
+    severity: "HIGH",
+    evidence: `v4 callsite scan: learner-visible /ai-tutor async request state sets pending/loading true around a network/provider call but lacks a bounded terminal failure state plus retry affordance; excludes tests, src/lib/tutor/**, telemetry/fire-and-forget blocks — ${hits.length} hit(s). e.g. ${hits[0].file}:${hits[0].line}: ${hits[0].text}`,
+    hits,
+    consumer_question: "Can this learner-visible action fail or time out while leaving the UI stuck in a listening/waiting/loading state with no retry?",
+  }));
+  return { status: "ok", findings };
+}
+
 // ── Orchestrate ───────────────────────────────────────────────────────────
 function main() {
   const started = new Date().toISOString();
@@ -475,7 +544,7 @@ function main() {
     node: process.version,
   };
 
-  const checks = { A: checkA(), B: checkB(), C: checkC(), D: checkD(), E: checkE(), F: checkF(), G: checkG(), H: checkH(), I: checkI() };
+  const checkFns = { A: checkA, B: checkB, C: checkC, D: checkD, E: checkE, F: checkF, G: checkG, H: checkH, I: checkI, J: checkJ };
   const labels = {
     A: "Lint debt (eslint)",
     B: "Type safety gaps (tsc + patterns)",
@@ -486,7 +555,16 @@ function main() {
     G: "v3 fire-and-forget swallowed rejections",
     H: "v3 network calls without timeouts",
     I: "v3 api/function env reads without missing-var handling",
+    J: "v4 async UI request states without terminal failure state",
   };
+  const requestedChecks = (process.env.HARDENING_SCAN_CHECKS || "")
+    .split(",")
+    .map((k) => k.trim().toUpperCase())
+    .filter(Boolean);
+  const checkKeys = requestedChecks.length
+    ? requestedChecks.filter((k) => Object.hasOwn(checkFns, k))
+    : Object.keys(checkFns);
+  const checks = Object.fromEntries(checkKeys.map((k) => [k, checkFns[k]()]));
 
   const skipped = Object.entries(checks).filter(([, c]) => c.status === "SKIPPED").map(([k]) => k);
   const ran = Object.keys(checks).filter((k) => !skipped.includes(k));
@@ -559,4 +637,6 @@ function main() {
   }
 }
 
-main();
+if (import.meta.url === pathToFileURL(process.argv[1]).href) {
+  main();
+}
