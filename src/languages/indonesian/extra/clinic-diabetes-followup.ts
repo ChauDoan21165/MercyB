@@ -18,6 +18,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   /** Indonesian word/phrase. */
   word: string;
   /** English meaning. */
@@ -33,6 +34,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   /** Indonesian line. */
   text: string;
@@ -243,6 +245,7 @@ export const clinicDiabetesFollowupLessons: IndonesianLesson[] = [
       "Useful lines: `Saya datang untuk kontrol`, `Gula darah saya masih tinggi`, `Saya harus minum obat rutin`, `Saya punya luka kecil di kaki`, `Mohon jelaskan hasil lab ini dengan sederhana`. For diabetes, words like `kontrol`, `gula darah`, `obat rutin`, `pola makan`, and `rujukan` are important.",
     vocabulary: [
       {
+        cell_id: "30f682e4-4cdd-4b51-bb06-01cfcc90111f",
         word: "kontrol",
         en: "follow-up checkup",
         vi: "tái khám / kiểm tra định kỳ",
@@ -251,6 +254,7 @@ export const clinicDiabetesFollowupLessons: IndonesianLesson[] = [
         pronunciation_en: "kon-TROHL",
       },
       {
+        cell_id: "fba34484-d895-46fd-a987-1a5292f73212",
         word: "gula darah",
         en: "blood sugar",
         vi: "đường huyết",
@@ -259,6 +263,7 @@ export const clinicDiabetesFollowupLessons: IndonesianLesson[] = [
         pronunciation_en: "GOO-lah DA-rah",
       },
       {
+        cell_id: "eb53a653-eb5d-4252-81d9-c5d91effdf8e",
         word: "obat rutin",
         en: "regular medication",
         vi: "thuốc uống đều đặn",
@@ -267,6 +272,7 @@ export const clinicDiabetesFollowupLessons: IndonesianLesson[] = [
         pronunciation_en: "OH-bat ROO-tin",
       },
       {
+        cell_id: "9f2793bf-aabc-4a13-b5c5-fdf9aeeba918",
         word: "pola makan",
         en: "eating pattern / diet",
         vi: "chế độ ăn",
@@ -275,6 +281,7 @@ export const clinicDiabetesFollowupLessons: IndonesianLesson[] = [
         pronunciation_en: "PAH-lah MAH-kahn",
       },
       {
+        cell_id: "44ea874c-9fe3-4771-8919-92b79aaf6e48",
         word: "olahraga ringan",
         en: "light exercise",
         vi: "vận động nhẹ",
@@ -283,6 +290,7 @@ export const clinicDiabetesFollowupLessons: IndonesianLesson[] = [
         pronunciation_en: "oh-lah-RAH-gah RING-ahn",
       },
       {
+        cell_id: "e393b6f6-01df-4be4-b923-6bb9c33d230a",
         word: "rujukan dokter",
         en: "doctor's referral",
         vi: "giấy giới thiệu của bác sĩ",
@@ -291,6 +299,7 @@ export const clinicDiabetesFollowupLessons: IndonesianLesson[] = [
         pronunciation_en: "roo-JOO-kan DOK-ter",
       },
       {
+        cell_id: "1dad96cf-165d-49da-b189-f24c82aebad7",
         word: "luka kaki",
         en: "foot wound",
         vi: "vết thương ở chân/bàn chân",
@@ -299,6 +308,7 @@ export const clinicDiabetesFollowupLessons: IndonesianLesson[] = [
         pronunciation_en: "LOO-kah KAH-kee",
       },
       {
+        cell_id: "94a5faa2-6eca-4b5a-ac9f-7f92bca47276",
         word: "hasil lab",
         en: "lab result",
         vi: "kết quả xét nghiệm",
@@ -307,6 +317,7 @@ export const clinicDiabetesFollowupLessons: IndonesianLesson[] = [
         pronunciation_en: "HAH-seel lab",
       },
       {
+        cell_id: "41919202-8074-4d08-83f2-b3819dbb75a0",
         word: "jelaskan",
         en: "explain",
         vi: "giải thích",
@@ -315,6 +326,7 @@ export const clinicDiabetesFollowupLessons: IndonesianLesson[] = [
         pronunciation_en: "jeh-LAS-kan",
       },
       {
+        cell_id: "63ae074f-0420-416c-9e34-2c382f728804",
         word: "sederhana",
         en: "simple / simple manner",
         vi: "đơn giản",
@@ -325,36 +337,42 @@ export const clinicDiabetesFollowupLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "ac6da4aa-9f5d-4b85-ba86-5ac000e1276c",
         speaker: "Pasien",
         text: "Saya datang untuk kontrol diabetes saya.",
         vi: "Tôi đến để tái khám bệnh tiểu đường của tôi.",
         en: "I came for my diabetes follow-up.",
       },
       {
+        cell_id: "1c973f6c-2857-4660-b1b8-2f99691fc092",
         speaker: "Perawat",
         text: "Baik, apakah gula darah Anda masih tinggi pagi ini?",
         vi: "Vâng, sáng nay đường huyết của anh/chị vẫn còn cao không?",
         en: "Okay, is your blood sugar still high this morning?",
       },
       {
+        cell_id: "960a64bf-d7a5-44d1-a2f4-5a88f2e32b4e",
         speaker: "Pasien",
         text: "Masih, dan saya juga lupa minum obat rutin tadi malam.",
         vi: "Vẫn còn cao, và tối qua tôi cũng quên uống thuốc đều đặn.",
         en: "Yes, and I also forgot to take my regular medicine last night.",
       },
       {
+        cell_id: "16893ab1-5b74-479e-bd56-4b88362a5440",
         speaker: "Perawat",
         text: "Dokter akan melihat hasil lab Anda dan menjelaskan pola makan yang perlu dijaga.",
         vi: "Bác sĩ sẽ xem kết quả xét nghiệm của anh/chị và giải thích chế độ ăn cần giữ.",
         en: "The doctor will look at your lab results and explain the diet you need to maintain.",
       },
       {
+        cell_id: "b3b30898-d270-4351-8681-a680ff3e0d3d",
         speaker: "Pasien",
         text: "Saya juga punya luka kecil di kaki. Apakah perlu kontrol lagi minggu depan?",
         vi: "Tôi cũng có vết thương nhỏ ở chân. Có cần tái khám lại vào tuần sau không?",
         en: "I also have a small wound on my foot. Do I need another follow-up next week?",
       },
       {
+        cell_id: "54da4b75-cd9e-43e2-b98d-fd14f6196726",
         speaker: "Perawat",
         text: "Ya, dan mohon jelaskan hasil lab ini dengan sederhana kalau masih belum paham.",
         vi: "Vâng, và nếu vẫn chưa hiểu thì xin hãy giải thích kết quả xét nghiệm này một cách đơn giản.",

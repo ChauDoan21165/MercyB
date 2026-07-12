@@ -17,6 +17,7 @@ type LessonSentence = {
 };
 
 type VocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -28,6 +29,7 @@ type VocabEntry = {
 };
 
 type DialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -144,6 +146,7 @@ export const marriageCivilRegistryLessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: 'nikah' is conversational, while paperwork often uses 'pernikahan' or 'perkawinan'. 'Akta' is a civil certificate, while 'buku nikah' is the marriage booklet from KUA. The most useful office question is 'Apa saja syarat dokumennya?'",
     vocabulary: [
       {
+        cell_id: "577e397c-4269-40c5-898f-36f07d1d52e5",
         word: "catatan sipil",
         en: "civil registry",
         vi: "cơ quan hộ tịch",
@@ -152,6 +155,7 @@ export const marriageCivilRegistryLessons: IndonesianLesson[] = [
         pronunciation_en: "cha-TA-tan SEE-pil",
       },
       {
+        cell_id: "ab4beba0-07ec-4a1c-8975-2a41566e7039",
         word: "akta nikah",
         en: "marriage certificate",
         vi: "giấy chứng nhận kết hôn",
@@ -160,6 +164,7 @@ export const marriageCivilRegistryLessons: IndonesianLesson[] = [
         pronunciation_en: "AK-ta NEE-kah",
       },
       {
+        cell_id: "ad65c24c-f2c1-4cf8-af47-4c2f29145593",
         word: "buku nikah",
         en: "marriage booklet",
         vi: "sổ hôn nhân",
@@ -168,6 +173,7 @@ export const marriageCivilRegistryLessons: IndonesianLesson[] = [
         pronunciation_en: "BOO-koo NEE-kah",
       },
       {
+        cell_id: "bfc9ab7b-648b-479f-87f2-b06a680a3de2",
         word: "syarat dokumen",
         en: "document requirements",
         vi: "điều kiện giấy tờ",
@@ -176,6 +182,7 @@ export const marriageCivilRegistryLessons: IndonesianLesson[] = [
         pronunciation_en: "SYA-rat do-ku-MEN",
       },
       {
+        cell_id: "c118355f-8568-407a-b85f-70a4898f1eb9",
         word: "saksi",
         en: "witness",
         vi: "người làm chứng",
@@ -184,6 +191,7 @@ export const marriageCivilRegistryLessons: IndonesianLesson[] = [
         pronunciation_en: "SAK-see",
       },
       {
+        cell_id: "a60db6ee-4559-48c8-b112-7437de326141",
         word: "status perkawinan",
         en: "marital status",
         vi: "tình trạng hôn nhân",
@@ -192,6 +200,7 @@ export const marriageCivilRegistryLessons: IndonesianLesson[] = [
         pronunciation_en: "STA-toos per-ka-WEE-nan",
       },
       {
+        cell_id: "fd12f3bf-f7d5-4faf-92ac-6430803447c3",
         word: "lajang",
         en: "single / unmarried",
         vi: "độc thân",
@@ -202,24 +211,28 @@ export const marriageCivilRegistryLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "33f26df2-e4ce-4c3e-9c12-f504f483ef4c",
         speaker: "Pemohon",
         text: "Selamat pagi, kami mau mendaftarkan pernikahan di catatan sipil.",
         vi: "Chào buổi sáng, chúng tôi muốn đăng ký hôn nhân ở cơ quan hộ tịch.",
         en: "Good morning, we want to register our marriage at the civil registry.",
       },
       {
+        cell_id: "4a946a6c-4d72-44db-8654-637c42e51902",
         speaker: "Petugas",
         text: "Baik. Boleh saya cek syarat dokumennya dulu?",
         vi: "Vâng. Tôi kiểm tra điều kiện giấy tờ trước được không?",
         en: "Okay. May I check the document requirements first?",
       },
       {
+        cell_id: "c017f064-ebe0-4adc-a7d4-f1da6aaafd64",
         speaker: "Pemohon",
         text: "Kami membawa KTP, KK, pas foto, dan surat pengantar.",
         vi: "Chúng tôi mang căn cước, thẻ gia đình, ảnh thẻ và giấy giới thiệu.",
         en: "We brought ID cards, family cards, passport photos, and referral letters.",
       },
       {
+        cell_id: "8d4edfa9-216c-472f-87c2-e771b52e604a",
         speaker: "Petugas",
         text: "Nanti saat pendaftaran perlu dua orang saksi.",
         vi: "Lát nữa khi đăng ký cần hai người làm chứng.",
@@ -360,6 +373,7 @@ export const marriageCivilRegistryLessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: bureaucracy sentences often use passive di-: 'dilegalisasi' (legalized/certified), 'diterjemahkan' (translated), 'diperbaiki' (fixed). When you find a document error, say 'Ada kesalahan nama/tanggal lahir' and ask 'bagaimana cara memperbaikinya?'",
     vocabulary: [
       {
+        cell_id: "5e7d1cab-7446-4aa5-9521-a0ce5b09ffea",
         word: "legalisasi",
         en: "legalization / certification",
         vi: "hợp pháp hóa / chứng thực",
@@ -368,6 +382,7 @@ export const marriageCivilRegistryLessons: IndonesianLesson[] = [
         pronunciation_en: "le-ga-lee-SA-see",
       },
       {
+        cell_id: "edd46ed0-2bfc-43dd-b79c-4178f162e0f1",
         word: "dilegalisasi",
         en: "legalized / certified",
         vi: "được hợp pháp hóa / chứng thực",
@@ -376,6 +391,7 @@ export const marriageCivilRegistryLessons: IndonesianLesson[] = [
         pronunciation_en: "dee-le-ga-lee-SA-see",
       },
       {
+        cell_id: "72b3b6ff-ff9b-4e01-8127-5d7accee652b",
         word: "penerjemah tersumpah",
         en: "sworn translator",
         vi: "người dịch tuyên thệ",
@@ -384,6 +400,7 @@ export const marriageCivilRegistryLessons: IndonesianLesson[] = [
         pronunciation_en: "pe-ner-JEH-mah ter-SOOM-pah",
       },
       {
+        cell_id: "76c544c1-93d0-4258-a3f7-ad7e52332c40",
         word: "mengubah status",
         en: "to change status",
         vi: "đổi tình trạng",
@@ -392,6 +409,7 @@ export const marriageCivilRegistryLessons: IndonesianLesson[] = [
         pronunciation_en: "me-NGOO-bah STA-toos",
       },
       {
+        cell_id: "9ba89b85-aac8-4537-9140-e4e018071355",
         word: "fotokopi",
         en: "photocopy",
         vi: "bản phô-tô",
@@ -400,6 +418,7 @@ export const marriageCivilRegistryLessons: IndonesianLesson[] = [
         pronunciation_en: "fo-to-KO-pee",
       },
       {
+        cell_id: "0f6be456-31f9-4b12-8439-840d986fe421",
         word: "kesalahan nama",
         en: "name error",
         vi: "lỗi tên",
@@ -408,6 +427,7 @@ export const marriageCivilRegistryLessons: IndonesianLesson[] = [
         pronunciation_en: "ke-sa-LA-han NA-ma",
       },
       {
+        cell_id: "1fdc81b8-25dc-4d09-b23d-898a881fbf69",
         word: "memperbaiki",
         en: "to fix / correct",
         vi: "sửa / chỉnh sửa",
@@ -418,24 +438,28 @@ export const marriageCivilRegistryLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "86fa86d8-37d1-47ae-b50d-247eea8ddfde",
         speaker: "Pemohon",
         text: "Saya perlu legalisasi buku nikah untuk urusan visa.",
         vi: "Tôi cần chứng thực sổ hôn nhân cho việc visa.",
         en: "I need legalization of the marriage booklet for a visa matter.",
       },
       {
+        cell_id: "e501916a-5543-48ad-9f86-f9697e531ce6",
         speaker: "Petugas",
         text: "Apakah dokumen ini akan dipakai di luar negeri?",
         vi: "Giấy tờ này sẽ được dùng ở nước ngoài phải không?",
         en: "Will this document be used overseas?",
       },
       {
+        cell_id: "49641dcc-68ee-42aa-973b-9fc20742131d",
         speaker: "Pemohon",
         text: "Iya. Apakah harus diterjemahkan oleh penerjemah tersumpah?",
         vi: "Vâng. Có phải được dịch bởi người dịch tuyên thệ không?",
         en: "Yes. Must it be translated by a sworn translator?",
       },
       {
+        cell_id: "d73da1f9-12d1-4ee9-b1bd-4928a53c682d",
         speaker: "Petugas",
         text: "Betul. Fotokopi dokumen juga harus dilegalisasi.",
         vi: "Đúng. Bản phô-tô giấy tờ cũng phải được chứng thực.",

@@ -16,6 +16,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   /** Indonesian word/phrase. */
   word: string;
   /** English meaning. */
@@ -31,6 +32,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   /** Indonesian line. */
   text: string;
@@ -193,6 +195,7 @@ export const lessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: separate `nilai` (grade), `PR` (homework), `seragam` (uniform), `izin tidak masuk` (request absence), and `kegiatan sekolah` (school activity). Indonesian has no verb conjugation, so questions stay compact: `Bagaimana nilai anak saya?`, `PR-nya apa?`, `Kegiatan dimulai jam berapa?`",
     vocabulary: [
       {
+        cell_id: "fbd14a6f-946d-4197-a577-6e74b2d85825",
         word: "rapat orang tua",
         en: "parent meeting",
         vi: "họp phụ huynh",
@@ -201,6 +204,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "RA-pat o-RANG TOO-a",
       },
       {
+        cell_id: "e0af3015-cb9d-4ab9-b2a9-edc1c76b9ebd",
         word: "wali kelas",
         en: "homeroom teacher / class teacher",
         vi: "giáo viên chủ nhiệm",
@@ -209,6 +213,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "WA-li KE-las",
       },
       {
+        cell_id: "800a517d-533b-4ec3-bdd1-ffcab7c1f254",
         word: "nilai",
         en: "grade / score",
         vi: "điểm số",
@@ -217,6 +222,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "NEE-lai",
       },
       {
+        cell_id: "c9f5115f-4bc6-4141-8847-3a912e01e556",
         word: "PR",
         en: "homework",
         vi: "bài tập về nhà",
@@ -225,6 +231,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "peh-er",
       },
       {
+        cell_id: "72e2e097-7cc5-42ad-801d-733be908d67c",
         word: "seragam",
         en: "uniform",
         vi: "đồng phục",
@@ -233,6 +240,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "se-RA-gam",
       },
       {
+        cell_id: "ab40c358-e62a-4b03-aa18-5ab415f6edb7",
         word: "izin tidak masuk",
         en: "request absence",
         vi: "xin phép nghỉ/vắng",
@@ -241,6 +249,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "EE-zin TI-dak MA-suk",
       },
       {
+        cell_id: "354e9118-3a08-4a24-ac38-cbf71bb02771",
         word: "kegiatan sekolah",
         en: "school activity",
         vi: "hoạt động trường",
@@ -249,6 +258,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "ke-GI-a-tan se-KO-lah",
       },
       {
+        cell_id: "75a762e4-0e6d-4321-8d7d-b94f9463786f",
         word: "kabari",
         en: "inform / let someone know",
         vi: "báo tin cho",
@@ -257,6 +267,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "ka-BA-ri",
       },
       {
+        cell_id: "b612c06a-33f1-4ef2-a0ce-aba3e977ab50",
         word: "jadwal",
         en: "schedule",
         vi: "lịch",
@@ -265,6 +276,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "JAD-wal",
       },
       {
+        cell_id: "6b4e72d3-2b9a-4d68-8aa2-b6efdae5aeee",
         word: "sakit",
         en: "sick",
         vi: "ốm / đau",
@@ -275,30 +287,35 @@ export const lessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "0abc53c5-9fcf-4e37-b526-c56d86b126c9",
         speaker: "Orang tua",
         text: "Selamat pagi, Bu. Saya orang tua dari Minh.",
         vi: "Chào buổi sáng cô. Tôi là phụ huynh của Minh.",
         en: "Good morning, ma'am. I am Minh's parent.",
       },
       {
+        cell_id: "7befd947-fdb8-4db5-b4d7-6e2e55489a4d",
         speaker: "Wali kelas",
         text: "Selamat pagi. Silakan duduk. Mau bertanya tentang apa?",
         vi: "Chào buổi sáng. Mời anh/chị ngồi. Anh/chị muốn hỏi về việc gì?",
         en: "Good morning. Please sit. What would you like to ask about?",
       },
       {
+        cell_id: "c9d3390f-6afc-4d43-a1ea-b312f710a8f6",
         speaker: "Orang tua",
         text: "Bagaimana nilai dan PR anak saya semester ini?",
         vi: "Điểm và bài tập về nhà của con tôi học kỳ này thế nào?",
         en: "How are my child's grades and homework this semester?",
       },
       {
+        cell_id: "abc0a119-0a58-49b8-bf0c-6e4bc6abba7f",
         speaker: "Wali kelas",
         text: "Nilainya cukup baik, tapi PR sering terlambat.",
         vi: "Điểm khá tốt, nhưng bài tập về nhà thường nộp trễ.",
         en: "The grades are quite good, but homework is often late.",
       },
       {
+        cell_id: "1c126bed-50fb-4292-b9d1-fc2015087fa7",
         speaker: "Orang tua",
         text: "Baik, Bu. Tolong kabari saya kalau ada masalah.",
         vi: "Vâng cô. Xin báo cho tôi nếu có vấn đề.",

@@ -17,6 +17,7 @@ type LessonSentence = {
 };
 
 type VocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -28,6 +29,7 @@ type VocabEntry = {
 };
 
 type DialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -144,6 +146,7 @@ export const onlineShoppingMarketplaceLessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: 'ongkir' is short for 'ongkos kirim', similar to saying 'shipping fee'. App language uses many passive di- verbs: 'dipakai' (used), 'dikirim' (sent), 'dibatalkan' (canceled). Don't over-translate 'checkout'; Indonesians use 'checkout' directly as a verb.",
     vocabulary: [
       {
+        cell_id: "d22a4f6e-c5b9-4a0c-9f4e-3accc6bca712",
         word: "Tokopedia",
         en: "Tokopedia marketplace",
         vi: "sàn Tokopedia",
@@ -152,6 +155,7 @@ export const onlineShoppingMarketplaceLessons: IndonesianLesson[] = [
         pronunciation_en: "to-ko-PEH-dee-a",
       },
       {
+        cell_id: "b09c4439-cce2-4882-87c4-c7f2559f05ff",
         word: "Shopee",
         en: "Shopee marketplace",
         vi: "sàn Shopee",
@@ -160,6 +164,7 @@ export const onlineShoppingMarketplaceLessons: IndonesianLesson[] = [
         pronunciation_en: "SHO-pee",
       },
       {
+        cell_id: "99e88e62-f01d-4f07-ad07-f1213d89c368",
         word: "checkout",
         en: "checkout / place order",
         vi: "checkout / chốt đơn",
@@ -168,6 +173,7 @@ export const onlineShoppingMarketplaceLessons: IndonesianLesson[] = [
         pronunciation_en: "CHEK-out",
       },
       {
+        cell_id: "2d72bd3f-6ad4-4f30-951d-499343f1e675",
         word: "ongkir",
         en: "shipping fee",
         vi: "phí ship",
@@ -176,6 +182,7 @@ export const onlineShoppingMarketplaceLessons: IndonesianLesson[] = [
         pronunciation_en: "ONG-keer",
       },
       {
+        cell_id: "c50ed53e-ebf0-4186-a350-7c089b103605",
         word: "voucher",
         en: "voucher / coupon",
         vi: "mã ưu đãi",
@@ -184,6 +191,7 @@ export const onlineShoppingMarketplaceLessons: IndonesianLesson[] = [
         pronunciation_en: "VOW-cher",
       },
       {
+        cell_id: "fbf2ec60-c850-4158-acef-903be7316891",
         word: "COD",
         en: "cash on delivery",
         vi: "trả tiền khi nhận hàng",
@@ -192,6 +200,7 @@ export const onlineShoppingMarketplaceLessons: IndonesianLesson[] = [
         pronunciation_en: "see-oh-dee",
       },
       {
+        cell_id: "4365c2ff-d9af-49e4-bb53-ef593fef9ea7",
         word: "kurir",
         en: "courier",
         vi: "người giao hàng / shipper",
@@ -202,24 +211,28 @@ export const onlineShoppingMarketplaceLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "0c9c36cb-7e5b-43f2-ab22-b0e926bc350b",
         speaker: "Pembeli",
         text: "Kak, barang ini ready di Shopee?",
         vi: "Bạn ơi, món này còn hàng trên Shopee không?",
         en: "Hi, is this item in stock on Shopee?",
       },
       {
+        cell_id: "c3d1fb80-b324-4d1a-921d-1ae8ddc8a6bb",
         speaker: "Penjual",
         text: "Ready, Kak. Silakan checkout, nanti pakai voucher gratis ongkir.",
         vi: "Còn hàng bạn nhé. Mời checkout, lát nữa dùng voucher miễn phí ship.",
         en: "In stock. Please checkout and use the free-shipping voucher.",
       },
       {
+        cell_id: "d88b123e-8425-4ebc-9335-fab7b04c5c90",
         speaker: "Pembeli",
         text: "Bisa COD tidak? Saya mau bayar ke kurir.",
         vi: "COD được không? Tôi muốn trả cho shipper.",
         en: "Is COD available? I want to pay the courier.",
       },
       {
+        cell_id: "0a65c657-0b68-4e13-98d6-f069a842fb5f",
         speaker: "Penjual",
         text: "Bisa. Setelah checkout, sistem akan cek ongkir otomatis.",
         vi: "Được. Sau khi checkout, hệ thống sẽ tự kiểm tra phí ship.",
@@ -374,6 +387,7 @@ export const onlineShoppingMarketplaceLessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: keep the core pair clear: 'jual' = sell, 'beli' = buy; 'penjual' = seller, 'pembeli' = buyer. For negation, 'bukan' negates nouns: 'bukan foto katalog'; 'tidak' negates verbs/adjectives: 'tidak rusak'. In apps, 'retur' is a natural loanword as noun/verb, better than a long translation.",
     vocabulary: [
       {
+        cell_id: "c3bf39e4-23ac-4f10-8ac5-531a555535c1",
         word: "penjual",
         en: "seller",
         vi: "người bán",
@@ -382,6 +396,7 @@ export const onlineShoppingMarketplaceLessons: IndonesianLesson[] = [
         pronunciation_en: "pen-JOO-al",
       },
       {
+        cell_id: "3e3d6d0f-a391-4a6c-af4c-3d6ce215fb7e",
         word: "pembeli",
         en: "buyer",
         vi: "người mua",
@@ -390,6 +405,7 @@ export const onlineShoppingMarketplaceLessons: IndonesianLesson[] = [
         pronunciation_en: "pem-BEH-lee",
       },
       {
+        cell_id: "416d18a4-c62c-485e-9259-2c1303f89b5a",
         word: "retur barang",
         en: "item return",
         vi: "trả hàng",
@@ -398,6 +414,7 @@ export const onlineShoppingMarketplaceLessons: IndonesianLesson[] = [
         pronunciation_en: "re-TOOR BA-rang",
       },
       {
+        cell_id: "05147515-abaa-4d94-a4b4-d0c33421e9b1",
         word: "ulasan",
         en: "review",
         vi: "đánh giá / nhận xét",
@@ -406,6 +423,7 @@ export const onlineShoppingMarketplaceLessons: IndonesianLesson[] = [
         pronunciation_en: "oo-LA-san",
       },
       {
+        cell_id: "1aaabd01-9dec-41f2-b8c2-fd963ec33aac",
         word: "foto asli",
         en: "real/original photo",
         vi: "ảnh thật",
@@ -414,6 +432,7 @@ export const onlineShoppingMarketplaceLessons: IndonesianLesson[] = [
         pronunciation_en: "FO-to AS-lee",
       },
       {
+        cell_id: "c3421652-33d7-48d7-bfcc-3477c44554f1",
         word: "barang rusak",
         en: "damaged item",
         vi: "hàng bị hỏng",
@@ -422,6 +441,7 @@ export const onlineShoppingMarketplaceLessons: IndonesianLesson[] = [
         pronunciation_en: "BA-rang ROO-sak",
       },
       {
+        cell_id: "adf1678e-901f-4fc5-a4ba-34773958da9d",
         word: "bintang lima",
         en: "five stars",
         vi: "năm sao",
@@ -432,24 +452,28 @@ export const onlineShoppingMarketplaceLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "0b02514d-423d-4a20-82c9-6b397e548ffd",
         speaker: "Pembeli",
         text: "Kak, saya mau tanya. Bisa kirim foto asli barangnya?",
         vi: "Bạn ơi, tôi muốn hỏi. Có thể gửi ảnh thật của hàng không?",
         en: "Hi, I want to ask something. Can you send a real photo of the item?",
       },
       {
+        cell_id: "7300952a-2ebd-4d4e-950f-557858c3b400",
         speaker: "Penjual",
         text: "Bisa, Kak. Nanti saya kirim lewat chat.",
         vi: "Được bạn. Lát nữa tôi gửi qua chat.",
         en: "Yes. I'll send it later through chat.",
       },
       {
+        cell_id: "a382b80e-bf33-4e4d-9d5a-743959fef5a6",
         speaker: "Pembeli",
         text: "Kalau barang rusak saat sampai, bisa retur barang?",
         vi: "Nếu hàng bị hỏng khi tới nơi, có thể trả hàng không?",
         en: "If the item is damaged when it arrives, can I return it?",
       },
       {
+        cell_id: "07090ade-1a46-4a6a-ac89-eb6b6eb230c4",
         speaker: "Penjual",
         text: "Bisa ajukan retur lewat aplikasi dengan foto bukti.",
         vi: "Có thể gửi yêu cầu trả hàng qua ứng dụng với ảnh bằng chứng.",

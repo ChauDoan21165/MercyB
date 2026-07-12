@@ -44,6 +44,7 @@ export type ItalianLessonSentence = {
 };
 
 export type ItalianVocabEntry = {
+  cell_id?: string;
   /** Italian word, with article where gender matters (e.g. "la famiglia"). */
   word: string;
   en: string;
@@ -55,6 +56,7 @@ export type ItalianVocabEntry = {
 };
 
 export type ItalianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -201,19 +203,19 @@ export const lessons: ItalianLesson[] = [
       },
     ],
     vocabulary: [
-      { word: "ciao", en: "hi / bye (informal)", vi: "chào (thân mật)", pos: "interjection", pronunciation_vi: "'chao' — 'ci' đọc 'ch'", pronunciation_en: "'chow'" },
-      { word: "buongiorno", en: "good morning / hello", vi: "chào buổi sáng", pos: "interjection", pronunciation_vi: "buôn-JOR-nô", pronunciation_en: "bwon-JOR-noh" },
-      { word: "buonasera", en: "good evening", vi: "chào buổi tối", pos: "interjection", pronunciation_vi: "buô-na-XÊ-ra", pronunciation_en: "bwoh-nah-SEH-rah" },
-      { word: "arrivederci", en: "goodbye (polite)", vi: "tạm biệt", pos: "interjection", pronunciation_vi: "a-ri-vê-ĐÊR-chi — 'rr' rung mạnh", pronunciation_en: "ah-ree-veh-DEHR-chee" },
-      { word: "grazie", en: "thank you", vi: "cảm ơn", pos: "interjection", pronunciation_vi: "GRA-tsiê", pronunciation_en: "GRAH-tsyeh" },
-      { word: "prego", en: "you're welcome / go ahead", vi: "không có gì / xin mời", pos: "interjection", pronunciation_vi: "PRÊ-gô", pronunciation_en: "PREH-goh" },
-      { word: "per favore", en: "please", vi: "làm ơn", pos: "phrase", pronunciation_vi: "pêr fa-VÔ-rê", pronunciation_en: "pehr fah-VOH-reh" },
-      { word: "scusi", en: "excuse me (formal)", vi: "xin lỗi (trang trọng)", pos: "phrase", pronunciation_vi: "XCU-ji", pronunciation_en: "SKOO-zee" },
+      { cell_id: "4bd3c276-66b2-49f6-9ab4-177f6dde9ba0", word: "ciao", en: "hi / bye (informal)", vi: "chào (thân mật)", pos: "interjection", pronunciation_vi: "'chao' — 'ci' đọc 'ch'", pronunciation_en: "'chow'" },
+      { cell_id: "0dec2e81-7335-4714-b730-b479e5cce91e", word: "buongiorno", en: "good morning / hello", vi: "chào buổi sáng", pos: "interjection", pronunciation_vi: "buôn-JOR-nô", pronunciation_en: "bwon-JOR-noh" },
+      { cell_id: "2a203a2a-3ba3-4230-856c-d73e02d6cf7e", word: "buonasera", en: "good evening", vi: "chào buổi tối", pos: "interjection", pronunciation_vi: "buô-na-XÊ-ra", pronunciation_en: "bwoh-nah-SEH-rah" },
+      { cell_id: "d6085857-d2d1-4433-819a-c0a26534ce4a", word: "arrivederci", en: "goodbye (polite)", vi: "tạm biệt", pos: "interjection", pronunciation_vi: "a-ri-vê-ĐÊR-chi — 'rr' rung mạnh", pronunciation_en: "ah-ree-veh-DEHR-chee" },
+      { cell_id: "40e774fc-ed4b-4662-8f4e-4a08fb80fef0", word: "grazie", en: "thank you", vi: "cảm ơn", pos: "interjection", pronunciation_vi: "GRA-tsiê", pronunciation_en: "GRAH-tsyeh" },
+      { cell_id: "680671a9-337d-48e0-b7a0-d8e33b23644d", word: "prego", en: "you're welcome / go ahead", vi: "không có gì / xin mời", pos: "interjection", pronunciation_vi: "PRÊ-gô", pronunciation_en: "PREH-goh" },
+      { cell_id: "f5255670-8528-431d-ab86-e2804866f400", word: "per favore", en: "please", vi: "làm ơn", pos: "phrase", pronunciation_vi: "pêr fa-VÔ-rê", pronunciation_en: "pehr fah-VOH-reh" },
+      { cell_id: "dcae7b82-ed0a-4c14-b590-c823e446da37", word: "scusi", en: "excuse me (formal)", vi: "xin lỗi (trang trọng)", pos: "phrase", pronunciation_vi: "XCU-ji", pronunciation_en: "SKOO-zee" },
     ],
     dialogue: [
-      { speaker: "A", text: "Buongiorno! Come sta?", vi: "Chào buổi sáng! Anh/chị khỏe không?", en: "Good morning! How are you (formal)?" },
-      { speaker: "B", text: "Bene, grazie. E Lei?", vi: "Khỏe, cảm ơn. Còn anh/chị?", en: "Fine, thanks. And you (formal)?" },
-      { speaker: "A", text: "Molto bene. Arrivederci!", vi: "Rất khỏe. Tạm biệt!", en: "Very well. Goodbye!" },
+      { cell_id: "3ad852c8-d16d-43fd-9061-f9beb51d7e01", speaker: "A", text: "Buongiorno! Come sta?", vi: "Chào buổi sáng! Anh/chị khỏe không?", en: "Good morning! How are you (formal)?" },
+      { cell_id: "5692413c-55b2-41ed-ae2d-683c0cf5151e", speaker: "B", text: "Bene, grazie. E Lei?", vi: "Khỏe, cảm ơn. Còn anh/chị?", en: "Fine, thanks. And you (formal)?" },
+      { cell_id: "b5f70dde-6a38-4ba8-a85f-b65c6bc3db54", speaker: "A", text: "Molto bene. Arrivederci!", vi: "Rất khỏe. Tạm biệt!", en: "Very well. Goodbye!" },
     ],
     exercises: [
       {
@@ -346,18 +348,18 @@ export const lessons: ItalianLesson[] = [
       },
     ],
     vocabulary: [
-      { word: "mi chiamo", en: "my name is", vi: "tôi tên là", pos: "phrase", pronunciation_vi: "mi KIA-mô", pronunciation_en: "mee KYAH-moh" },
-      { word: "sono", en: "I am", vi: "tôi là", pos: "verb (essere)", pronunciation_vi: "XÔ-nô", pronunciation_en: "SOH-noh" },
-      { word: "vietnamita", en: "Vietnamese", vi: "người Việt", pos: "adjective", pronunciation_vi: "viê-na-MI-ta", pronunciation_en: "vyeh-nah-MEE-tah" },
-      { word: "piacere", en: "nice to meet you", vi: "rất vui được gặp", pos: "phrase", pronunciation_vi: "pia-CHÊ-rê", pronunciation_en: "pyah-CHEH-reh" },
-      { word: "Di dove sei?", en: "Where are you from?", vi: "Bạn quê ở đâu?", pos: "phrase", pronunciation_vi: "đi ĐÔ-vê xei", pronunciation_en: "dee DOH-veh say" },
-      { word: "vivo", en: "I live", vi: "tôi sống", pos: "verb (vivere)", pronunciation_vi: "VI-vô", pronunciation_en: "VEE-voh" },
+      { cell_id: "b16713f7-1940-4604-8071-a82445469c88", word: "mi chiamo", en: "my name is", vi: "tôi tên là", pos: "phrase", pronunciation_vi: "mi KIA-mô", pronunciation_en: "mee KYAH-moh" },
+      { cell_id: "97578a19-5c19-4ffb-b645-dc9a538f3011", word: "sono", en: "I am", vi: "tôi là", pos: "verb (essere)", pronunciation_vi: "XÔ-nô", pronunciation_en: "SOH-noh" },
+      { cell_id: "f98ac56d-3205-4a6c-91ba-dd788d92c972", word: "vietnamita", en: "Vietnamese", vi: "người Việt", pos: "adjective", pronunciation_vi: "viê-na-MI-ta", pronunciation_en: "vyeh-nah-MEE-tah" },
+      { cell_id: "e26a8ac0-6e4a-44b8-ae40-8b70a72ecead", word: "piacere", en: "nice to meet you", vi: "rất vui được gặp", pos: "phrase", pronunciation_vi: "pia-CHÊ-rê", pronunciation_en: "pyah-CHEH-reh" },
+      { cell_id: "8d2e120e-5c88-479c-8256-c605ec547f9b", word: "Di dove sei?", en: "Where are you from?", vi: "Bạn quê ở đâu?", pos: "phrase", pronunciation_vi: "đi ĐÔ-vê xei", pronunciation_en: "dee DOH-veh say" },
+      { cell_id: "8cdde87a-4a4b-40f9-9aa6-0d3409ee3db5", word: "vivo", en: "I live", vi: "tôi sống", pos: "verb (vivere)", pronunciation_vi: "VI-vô", pronunciation_en: "VEE-voh" },
     ],
     dialogue: [
-      { speaker: "A", text: "Ciao! Come ti chiami?", vi: "Chào! Bạn tên là gì?", en: "Hi! What's your name?" },
-      { speaker: "B", text: "Mi chiamo Minh. E tu?", vi: "Tôi tên Minh. Còn bạn?", en: "My name is Minh. And you?" },
-      { speaker: "A", text: "Sono Giulia. Di dove sei?", vi: "Tôi là Giulia. Bạn quê ở đâu?", en: "I'm Giulia. Where are you from?" },
-      { speaker: "B", text: "Sono del Vietnam, di Hanoi. Piacere!", vi: "Tôi đến từ Việt Nam, Hà Nội. Rất vui được gặp!", en: "I'm from Vietnam, from Hanoi. Nice to meet you!" },
+      { cell_id: "cb296cad-8309-41e5-af72-4e2df17321b7", speaker: "A", text: "Ciao! Come ti chiami?", vi: "Chào! Bạn tên là gì?", en: "Hi! What's your name?" },
+      { cell_id: "8392b663-c0bf-4d9f-a72b-0110efe07a5a", speaker: "B", text: "Mi chiamo Minh. E tu?", vi: "Tôi tên Minh. Còn bạn?", en: "My name is Minh. And you?" },
+      { cell_id: "89c00312-a23c-49fc-a7ae-22c1e5d910a2", speaker: "A", text: "Sono Giulia. Di dove sei?", vi: "Tôi là Giulia. Bạn quê ở đâu?", en: "I'm Giulia. Where are you from?" },
+      { cell_id: "1767f47b-429c-4303-99f9-a9c092d12101", speaker: "B", text: "Sono del Vietnam, di Hanoi. Piacere!", vi: "Tôi đến từ Việt Nam, Hà Nội. Rất vui được gặp!", en: "I'm from Vietnam, from Hanoi. Nice to meet you!" },
     ],
     exercises: [
       {
@@ -490,13 +492,13 @@ export const lessons: ItalianLesson[] = [
       },
     ],
     vocabulary: [
-      { word: "uno / una", en: "one", vi: "một", pos: "number", pronunciation_vi: "U-nô / U-na — 'un' trước danh từ đực", pronunciation_en: "OO-noh / OO-nah" },
-      { word: "cinque", en: "five", vi: "năm", pos: "number", pronunciation_vi: "CHIN-quê", pronunciation_en: "CHEEN-kweh" },
-      { word: "dieci", en: "ten", vi: "mười", pos: "number", pronunciation_vi: "ĐIÊ-chi", pronunciation_en: "DYEH-chee" },
-      { word: "venti", en: "twenty", vi: "hai mươi", pos: "number", pronunciation_vi: "VEN-ti", pronunciation_en: "VEN-tee" },
-      { word: "cento", en: "hundred", vi: "một trăm", pos: "number", pronunciation_vi: "CHEN-tô", pronunciation_en: "CHEN-toh" },
-      { word: "mille", en: "thousand", vi: "một nghìn", pos: "number", pronunciation_vi: "MI-lê — 'll' đôi", pronunciation_en: "MEEL-leh" },
-      { word: "anni", en: "years (of age)", vi: "tuổi / năm", pos: "noun (m pl)", pronunciation_vi: "A-ni — 'nn' đôi", pronunciation_en: "AH-nee" },
+      { cell_id: "1fe83723-a766-4306-b91a-6fd6705cbc08", word: "uno / una", en: "one", vi: "một", pos: "number", pronunciation_vi: "U-nô / U-na — 'un' trước danh từ đực", pronunciation_en: "OO-noh / OO-nah" },
+      { cell_id: "067679d4-478b-413f-830a-59dd8c05ca8d", word: "cinque", en: "five", vi: "năm", pos: "number", pronunciation_vi: "CHIN-quê", pronunciation_en: "CHEEN-kweh" },
+      { cell_id: "6ab20226-565a-4e74-b012-80d161bb1c61", word: "dieci", en: "ten", vi: "mười", pos: "number", pronunciation_vi: "ĐIÊ-chi", pronunciation_en: "DYEH-chee" },
+      { cell_id: "921199e3-c4bb-456d-ad15-c021ac73056b", word: "venti", en: "twenty", vi: "hai mươi", pos: "number", pronunciation_vi: "VEN-ti", pronunciation_en: "VEN-tee" },
+      { cell_id: "0511e65d-edfe-4d4a-94eb-858612f5b76b", word: "cento", en: "hundred", vi: "một trăm", pos: "number", pronunciation_vi: "CHEN-tô", pronunciation_en: "CHEN-toh" },
+      { cell_id: "1511c166-bcc8-485b-8a87-24deb7fb5c40", word: "mille", en: "thousand", vi: "một nghìn", pos: "number", pronunciation_vi: "MI-lê — 'll' đôi", pronunciation_en: "MEEL-leh" },
+      { cell_id: "0c091167-5d54-40df-a576-ec9caa46810a", word: "anni", en: "years (of age)", vi: "tuổi / năm", pos: "noun (m pl)", pronunciation_vi: "A-ni — 'nn' đôi", pronunciation_en: "AH-nee" },
     ],
     exercises: [
       {
@@ -628,17 +630,17 @@ export const lessons: ItalianLesson[] = [
       },
     ],
     vocabulary: [
-      { word: "dove", en: "where", vi: "ở đâu", pos: "question word", pronunciation_vi: "ĐÔ-vê", pronunciation_en: "DOH-veh" },
-      { word: "quanto", en: "how much", vi: "bao nhiêu", pos: "question word", pronunciation_vi: "QUAN-tô", pronunciation_en: "KWAN-toh" },
-      { word: "quando", en: "when", vi: "khi nào", pos: "question word", pronunciation_vi: "QUAN-đô", pronunciation_en: "KWAN-doh" },
-      { word: "perché", en: "why / because", vi: "tại sao / bởi vì", pos: "question word", pronunciation_vi: "pêr-CHÊ", pronunciation_en: "pehr-KEH" },
-      { word: "il bagno", en: "the toilet / bathroom", vi: "nhà vệ sinh", pos: "noun (m)", pronunciation_vi: "il BA-nhô", pronunciation_en: "eel BAH-nyoh" },
-      { word: "la stazione", en: "the station", vi: "nhà ga", pos: "noun (f)", pronunciation_vi: "la xta-TSIÔ-nê", pronunciation_en: "lah stah-TSYOH-neh" },
+      { cell_id: "cc0cf07d-5bf7-4550-b64c-92930c9dfcd1", word: "dove", en: "where", vi: "ở đâu", pos: "question word", pronunciation_vi: "ĐÔ-vê", pronunciation_en: "DOH-veh" },
+      { cell_id: "11aeef42-ee37-4d64-b4b2-3b4e6aee9589", word: "quanto", en: "how much", vi: "bao nhiêu", pos: "question word", pronunciation_vi: "QUAN-tô", pronunciation_en: "KWAN-toh" },
+      { cell_id: "50dc2d76-df65-4f33-b33b-050577a66bbd", word: "quando", en: "when", vi: "khi nào", pos: "question word", pronunciation_vi: "QUAN-đô", pronunciation_en: "KWAN-doh" },
+      { cell_id: "4ca212ac-a268-4c1c-9e02-3cc4f78a5b08", word: "perché", en: "why / because", vi: "tại sao / bởi vì", pos: "question word", pronunciation_vi: "pêr-CHÊ", pronunciation_en: "pehr-KEH" },
+      { cell_id: "a680f463-860d-4d26-a5d8-f93934867e1c", word: "il bagno", en: "the toilet / bathroom", vi: "nhà vệ sinh", pos: "noun (m)", pronunciation_vi: "il BA-nhô", pronunciation_en: "eel BAH-nyoh" },
+      { cell_id: "ac9ea48e-caa1-436f-9065-5601ff413c81", word: "la stazione", en: "the station", vi: "nhà ga", pos: "noun (f)", pronunciation_vi: "la xta-TSIÔ-nê", pronunciation_en: "lah stah-TSYOH-neh" },
     ],
     dialogue: [
-      { speaker: "A", text: "Scusi, dov'è la stazione?", vi: "Xin lỗi, nhà ga ở đâu ạ?", en: "Excuse me, where is the station?" },
-      { speaker: "B", text: "È lì, a sinistra.", vi: "Ở đằng kia, bên trái.", en: "It's over there, on the left." },
-      { speaker: "A", text: "Grazie! Può ripetere, per favore?", vi: "Cảm ơn! Anh/chị nhắc lại được không ạ?", en: "Thanks! Can you repeat, please?" },
+      { cell_id: "69633378-cee6-4a83-9ae3-44785d94a680", speaker: "A", text: "Scusi, dov'è la stazione?", vi: "Xin lỗi, nhà ga ở đâu ạ?", en: "Excuse me, where is the station?" },
+      { cell_id: "d8013fdc-5818-4245-b718-60a7f3b5ca80", speaker: "B", text: "È lì, a sinistra.", vi: "Ở đằng kia, bên trái.", en: "It's over there, on the left." },
+      { cell_id: "8a56962b-62e2-4700-8c02-7056d7c51f98", speaker: "A", text: "Grazie! Può ripetere, per favore?", vi: "Cảm ơn! Anh/chị nhắc lại được không ạ?", en: "Thanks! Can you repeat, please?" },
     ],
     exercises: [
       {
@@ -772,13 +774,13 @@ export const lessons: ItalianLesson[] = [
       },
     ],
     vocabulary: [
-      { word: "sono", en: "I am / they are", vi: "tôi là / họ là", pos: "verb (essere)", pronunciation_vi: "XÔ-nô", pronunciation_en: "SOH-noh" },
-      { word: "sei", en: "you are (informal)", vi: "bạn là", pos: "verb (essere)", pronunciation_vi: "xei", pronunciation_en: "say" },
-      { word: "è", en: "he/she/it is", vi: "anh ấy/cô ấy/nó là", pos: "verb (essere)", pronunciation_vi: "ê (có dấu huyền)", pronunciation_en: "eh" },
-      { word: "ho", en: "I have", vi: "tôi có", pos: "verb (avere)", pronunciation_vi: "ô (h câm)", pronunciation_en: "oh (silent h)" },
-      { word: "hai", en: "you have (informal)", vi: "bạn có", pos: "verb (avere)", pronunciation_vi: "ai (h câm)", pronunciation_en: "eye" },
-      { word: "ha", en: "he/she/it has", vi: "anh ấy/cô ấy có", pos: "verb (avere)", pronunciation_vi: "a (h câm)", pronunciation_en: "ah" },
-      { word: "Ho fame", en: "I'm hungry", vi: "tôi đói", pos: "phrase", pronunciation_vi: "ô FA-mê", pronunciation_en: "oh FAH-meh" },
+      { cell_id: "58a07c68-c765-4c91-8ae1-da084c27234c", word: "sono", en: "I am / they are", vi: "tôi là / họ là", pos: "verb (essere)", pronunciation_vi: "XÔ-nô", pronunciation_en: "SOH-noh" },
+      { cell_id: "d4587e7d-582a-41fb-a03c-41600b4c4674", word: "sei", en: "you are (informal)", vi: "bạn là", pos: "verb (essere)", pronunciation_vi: "xei", pronunciation_en: "say" },
+      { cell_id: "08e109fc-13ee-4b63-87e6-ab4fe7dc3ab7", word: "è", en: "he/she/it is", vi: "anh ấy/cô ấy/nó là", pos: "verb (essere)", pronunciation_vi: "ê (có dấu huyền)", pronunciation_en: "eh" },
+      { cell_id: "7f6853e1-42b3-4395-b70e-a9cbe675a8d5", word: "ho", en: "I have", vi: "tôi có", pos: "verb (avere)", pronunciation_vi: "ô (h câm)", pronunciation_en: "oh (silent h)" },
+      { cell_id: "9339c9ae-2f7d-4b06-8555-efa0f80f3aea", word: "hai", en: "you have (informal)", vi: "bạn có", pos: "verb (avere)", pronunciation_vi: "ai (h câm)", pronunciation_en: "eye" },
+      { cell_id: "8666c3ac-50fb-449e-aaf0-c19860325c26", word: "ha", en: "he/she/it has", vi: "anh ấy/cô ấy có", pos: "verb (avere)", pronunciation_vi: "a (h câm)", pronunciation_en: "ah" },
+      { cell_id: "f70440a1-a03e-4621-ba0a-7a309ef35b97", word: "Ho fame", en: "I'm hungry", vi: "tôi đói", pos: "phrase", pronunciation_vi: "ô FA-mê", pronunciation_en: "oh FAH-meh" },
     ],
     exercises: [
       {
@@ -912,18 +914,18 @@ export const lessons: ItalianLesson[] = [
       },
     ],
     vocabulary: [
-      { word: "il caffè", en: "coffee / espresso", vi: "cà phê", pos: "noun (m)", pronunciation_vi: "il ca-PHÊ", pronunciation_en: "eel kahf-FEH" },
-      { word: "vorrei", en: "I would like", vi: "tôi muốn (lịch sự)", pos: "verb (volere)", pronunciation_vi: "vô-RÊI", pronunciation_en: "vor-RAY" },
-      { word: "il cornetto", en: "croissant", vi: "bánh sừng bò", pos: "noun (m)", pronunciation_vi: "il cor-NÊT-tô", pronunciation_en: "eel kor-NET-toh" },
-      { word: "il conto", en: "the bill", vi: "hóa đơn", pos: "noun (m)", pronunciation_vi: "il CÔN-tô", pronunciation_en: "eel KOHN-toh" },
-      { word: "l'acqua", en: "water", vi: "nước", pos: "noun (f)", pronunciation_vi: "LA-qua", pronunciation_en: "LAH-kwah" },
-      { word: "buonissimo", en: "delicious", vi: "rất ngon", pos: "adjective", pronunciation_vi: "buô-NIS-si-mô", pronunciation_en: "bwoh-NEES-see-moh" },
+      { cell_id: "a6fa5dc6-d54a-4e5e-85bb-33428c6ec586", word: "il caffè", en: "coffee / espresso", vi: "cà phê", pos: "noun (m)", pronunciation_vi: "il ca-PHÊ", pronunciation_en: "eel kahf-FEH" },
+      { cell_id: "26d7af5c-cfd3-4be4-989f-f538cae3c3f7", word: "vorrei", en: "I would like", vi: "tôi muốn (lịch sự)", pos: "verb (volere)", pronunciation_vi: "vô-RÊI", pronunciation_en: "vor-RAY" },
+      { cell_id: "a1144ed4-82b4-41fb-8e42-d2cf77f6630c", word: "il cornetto", en: "croissant", vi: "bánh sừng bò", pos: "noun (m)", pronunciation_vi: "il cor-NÊT-tô", pronunciation_en: "eel kor-NET-toh" },
+      { cell_id: "1184aff6-923b-4b0a-882e-0c5f809efb2d", word: "il conto", en: "the bill", vi: "hóa đơn", pos: "noun (m)", pronunciation_vi: "il CÔN-tô", pronunciation_en: "eel KOHN-toh" },
+      { cell_id: "dd86de83-d486-4896-b27d-e0eac2c96452", word: "l'acqua", en: "water", vi: "nước", pos: "noun (f)", pronunciation_vi: "LA-qua", pronunciation_en: "LAH-kwah" },
+      { cell_id: "3945f113-9db3-4758-a643-b6592377e950", word: "buonissimo", en: "delicious", vi: "rất ngon", pos: "adjective", pronunciation_vi: "buô-NIS-si-mô", pronunciation_en: "bwoh-NEES-see-moh" },
     ],
     dialogue: [
-      { speaker: "Cameriere", text: "Buongiorno! Cosa prende?", vi: "Chào! Anh/chị dùng gì ạ?", en: "Good morning! What will you have?" },
-      { speaker: "Cliente", text: "Vorrei un caffè e un cornetto, per favore.", vi: "Tôi muốn một cà phê và một bánh sừng bò ạ.", en: "I'd like a coffee and a croissant, please." },
-      { speaker: "Cameriere", text: "Subito! Altro?", vi: "Ngay đây! Còn gì nữa không ạ?", en: "Right away! Anything else?" },
-      { speaker: "Cliente", text: "No, grazie. Il conto, per favore.", vi: "Không, cảm ơn. Cho xin hóa đơn ạ.", en: "No, thanks. The bill, please." },
+      { cell_id: "696ac87c-44fc-4562-b907-273a3fe07482", speaker: "Cameriere", text: "Buongiorno! Cosa prende?", vi: "Chào! Anh/chị dùng gì ạ?", en: "Good morning! What will you have?" },
+      { cell_id: "c41784a8-c40e-452a-81bf-53470bf573b7", speaker: "Cliente", text: "Vorrei un caffè e un cornetto, per favore.", vi: "Tôi muốn một cà phê và một bánh sừng bò ạ.", en: "I'd like a coffee and a croissant, please." },
+      { cell_id: "518e15d0-0356-4176-92c7-cdfed09b93c8", speaker: "Cameriere", text: "Subito! Altro?", vi: "Ngay đây! Còn gì nữa không ạ?", en: "Right away! Anything else?" },
+      { cell_id: "f9127d2b-7724-424b-86e9-462847670930", speaker: "Cliente", text: "No, grazie. Il conto, per favore.", vi: "Không, cảm ơn. Cho xin hóa đơn ạ.", en: "No, thanks. The bill, please." },
     ],
     exercises: [
       {
@@ -1056,19 +1058,19 @@ export const lessons: ItalianLesson[] = [
       },
     ],
     vocabulary: [
-      { word: "la madre", en: "mother", vi: "mẹ", pos: "noun (f)", pronunciation_vi: "la MA-đrê", pronunciation_en: "lah MAH-dreh" },
-      { word: "il padre", en: "father", vi: "bố", pos: "noun (m)", pronunciation_vi: "il PA-đrê", pronunciation_en: "eel PAH-dreh" },
-      { word: "il fratello", en: "brother", vi: "anh/em trai", pos: "noun (m)", pronunciation_vi: "il fra-TÊL-lô", pronunciation_en: "eel frah-TEL-loh" },
-      { word: "la sorella", en: "sister", vi: "chị/em gái", pos: "noun (f)", pronunciation_vi: "la xô-RÊL-la", pronunciation_en: "lah soh-REL-lah" },
-      { word: "i genitori", en: "parents", vi: "bố mẹ", pos: "noun (m pl)", pronunciation_vi: "i jê-ni-TÔ-ri", pronunciation_en: "ee jeh-nee-TOH-ree" },
-      { word: "la famiglia", en: "family", vi: "gia đình", pos: "noun (f)", pronunciation_vi: "la fa-MI-lia", pronunciation_en: "lah fah-MEE-lyah" },
-      { word: "il figlio / la figlia", en: "son / daughter", vi: "con trai / con gái", pos: "noun", pronunciation_vi: "FI-liô / FI-lia", pronunciation_en: "FEE-lyoh / FEE-lyah" },
+      { cell_id: "1af5c804-eb45-410e-8741-a4715b824f54", word: "la madre", en: "mother", vi: "mẹ", pos: "noun (f)", pronunciation_vi: "la MA-đrê", pronunciation_en: "lah MAH-dreh" },
+      { cell_id: "77f51eca-e902-4d6e-80f8-9bd5d0871912", word: "il padre", en: "father", vi: "bố", pos: "noun (m)", pronunciation_vi: "il PA-đrê", pronunciation_en: "eel PAH-dreh" },
+      { cell_id: "ca673bf0-7c55-463d-b0aa-51b24513adc4", word: "il fratello", en: "brother", vi: "anh/em trai", pos: "noun (m)", pronunciation_vi: "il fra-TÊL-lô", pronunciation_en: "eel frah-TEL-loh" },
+      { cell_id: "1ac28eeb-e8f1-4f61-904a-7863150b0afc", word: "la sorella", en: "sister", vi: "chị/em gái", pos: "noun (f)", pronunciation_vi: "la xô-RÊL-la", pronunciation_en: "lah soh-REL-lah" },
+      { cell_id: "b79351e8-da8e-4cca-a7d4-e44080c97614", word: "i genitori", en: "parents", vi: "bố mẹ", pos: "noun (m pl)", pronunciation_vi: "i jê-ni-TÔ-ri", pronunciation_en: "ee jeh-nee-TOH-ree" },
+      { cell_id: "4449960a-7269-4a04-8b42-b8d1553d1c1b", word: "la famiglia", en: "family", vi: "gia đình", pos: "noun (f)", pronunciation_vi: "la fa-MI-lia", pronunciation_en: "lah fah-MEE-lyah" },
+      { cell_id: "f5234ddf-b1d4-4171-af45-4ea521f49e80", word: "il figlio / la figlia", en: "son / daughter", vi: "con trai / con gái", pos: "noun", pronunciation_vi: "FI-liô / FI-lia", pronunciation_en: "FEE-lyoh / FEE-lyah" },
     ],
     dialogue: [
-      { speaker: "A", text: "Hai fratelli o sorelle?", vi: "Bạn có anh chị em không?", en: "Do you have brothers or sisters?" },
-      { speaker: "B", text: "Sì, ho un fratello e una sorella.", vi: "Có, tôi có một anh trai và một em gái.", en: "Yes, I have a brother and a sister." },
-      { speaker: "A", text: "E i tuoi genitori?", vi: "Còn bố mẹ bạn?", en: "And your parents?" },
-      { speaker: "B", text: "I miei genitori vivono a Hanoi.", vi: "Bố mẹ tôi sống ở Hà Nội.", en: "My parents live in Hanoi." },
+      { cell_id: "0b0d3b5e-02ab-4604-b635-5eea09d7a912", speaker: "A", text: "Hai fratelli o sorelle?", vi: "Bạn có anh chị em không?", en: "Do you have brothers or sisters?" },
+      { cell_id: "0803028f-baa1-42c9-a7f9-a3ff1dcc2550", speaker: "B", text: "Sì, ho un fratello e una sorella.", vi: "Có, tôi có một anh trai và một em gái.", en: "Yes, I have a brother and a sister." },
+      { cell_id: "de8ebe97-3552-4617-b920-4ac844d89b13", speaker: "A", text: "E i tuoi genitori?", vi: "Còn bố mẹ bạn?", en: "And your parents?" },
+      { cell_id: "270db979-c307-42ce-b223-4bdc596b42c8", speaker: "B", text: "I miei genitori vivono a Hanoi.", vi: "Bố mẹ tôi sống ở Hà Nội.", en: "My parents live in Hanoi." },
     ],
     exercises: [
       {
@@ -1201,19 +1203,19 @@ export const lessons: ItalianLesson[] = [
       },
     ],
     vocabulary: [
-      { word: "Che ora è?", en: "What time is it?", vi: "Mấy giờ rồi?", pos: "phrase", pronunciation_vi: "kê Ô-ra ê", pronunciation_en: "keh OH-rah eh" },
-      { word: "mezzogiorno", en: "midday", vi: "12 giờ trưa", pos: "noun (m)", pronunciation_vi: "mê-tsô-JOR-nô", pronunciation_en: "med-dzoh-JOR-noh" },
-      { word: "mezzanotte", en: "midnight", vi: "12 giờ đêm", pos: "noun (f)", pronunciation_vi: "mê-tsa-NÔT-tê", pronunciation_en: "med-dzah-NOT-teh" },
-      { word: "lunedì", en: "Monday", vi: "thứ Hai", pos: "noun (m)", pronunciation_vi: "lu-nê-ĐI", pronunciation_en: "loo-neh-DEE" },
-      { word: "domenica", en: "Sunday", vi: "Chủ nhật", pos: "noun (f)", pronunciation_vi: "đô-MÊ-ni-ca", pronunciation_en: "doh-MEH-nee-kah" },
-      { word: "oggi", en: "today", vi: "hôm nay", pos: "adverb", pronunciation_vi: "ÔD-ji ('gg' mạnh)", pronunciation_en: "OD-jee" },
-      { word: "domani", en: "tomorrow", vi: "ngày mai", pos: "adverb", pronunciation_vi: "đô-MA-ni", pronunciation_en: "doh-MAH-nee" },
+      { cell_id: "72bb0472-a523-491e-a4ed-dc0b63ea930b", word: "Che ora è?", en: "What time is it?", vi: "Mấy giờ rồi?", pos: "phrase", pronunciation_vi: "kê Ô-ra ê", pronunciation_en: "keh OH-rah eh" },
+      { cell_id: "12a650cc-f59b-4b85-8aa3-306a175558f9", word: "mezzogiorno", en: "midday", vi: "12 giờ trưa", pos: "noun (m)", pronunciation_vi: "mê-tsô-JOR-nô", pronunciation_en: "med-dzoh-JOR-noh" },
+      { cell_id: "5b04f4a2-010a-4a2d-a58a-9e0e2d28ef55", word: "mezzanotte", en: "midnight", vi: "12 giờ đêm", pos: "noun (f)", pronunciation_vi: "mê-tsa-NÔT-tê", pronunciation_en: "med-dzah-NOT-teh" },
+      { cell_id: "56249d27-d4ea-4378-8ca1-8484cd277e6b", word: "lunedì", en: "Monday", vi: "thứ Hai", pos: "noun (m)", pronunciation_vi: "lu-nê-ĐI", pronunciation_en: "loo-neh-DEE" },
+      { cell_id: "dd838fb1-235c-4ce5-902f-a4fd28fc970d", word: "domenica", en: "Sunday", vi: "Chủ nhật", pos: "noun (f)", pronunciation_vi: "đô-MÊ-ni-ca", pronunciation_en: "doh-MEH-nee-kah" },
+      { cell_id: "84b65342-ac80-465c-8e4e-f968f95a919a", word: "oggi", en: "today", vi: "hôm nay", pos: "adverb", pronunciation_vi: "ÔD-ji ('gg' mạnh)", pronunciation_en: "OD-jee" },
+      { cell_id: "e7faaae1-bc23-47c4-b373-4936a7ace845", word: "domani", en: "tomorrow", vi: "ngày mai", pos: "adverb", pronunciation_vi: "đô-MA-ni", pronunciation_en: "doh-MAH-nee" },
     ],
     dialogue: [
-      { speaker: "A", text: "Scusi, che ora è?", vi: "Xin lỗi, mấy giờ rồi ạ?", en: "Excuse me, what time is it?" },
-      { speaker: "B", text: "Sono le tre e mezza.", vi: "Ba giờ rưỡi.", en: "It's half past three." },
-      { speaker: "A", text: "Grazie! Che giorno è oggi?", vi: "Cảm ơn! Hôm nay thứ mấy?", en: "Thanks! What day is it today?" },
-      { speaker: "B", text: "Oggi è venerdì.", vi: "Hôm nay là thứ Sáu.", en: "Today is Friday." },
+      { cell_id: "ba6cd3f9-4cd1-4398-990d-00aeb9dcd630", speaker: "A", text: "Scusi, che ora è?", vi: "Xin lỗi, mấy giờ rồi ạ?", en: "Excuse me, what time is it?" },
+      { cell_id: "11d1e392-32c2-495e-ad64-b8fcfeb82842", speaker: "B", text: "Sono le tre e mezza.", vi: "Ba giờ rưỡi.", en: "It's half past three." },
+      { cell_id: "c34c92b4-0483-488b-888e-c1a0483ed30c", speaker: "A", text: "Grazie! Che giorno è oggi?", vi: "Cảm ơn! Hôm nay thứ mấy?", en: "Thanks! What day is it today?" },
+      { cell_id: "1692fc30-a796-4f0a-8e22-d0987727364b", speaker: "B", text: "Oggi è venerdì.", vi: "Hôm nay là thứ Sáu.", en: "Today is Friday." },
     ],
     exercises: [
       {
@@ -1346,18 +1348,18 @@ export const lessons: ItalianLesson[] = [
       },
     ],
     vocabulary: [
-      { word: "svegliarsi", en: "to wake up", vi: "thức dậy", pos: "verb (reflexive)", pronunciation_vi: "zvê-LIAR-xi", pronunciation_en: "zveh-LYAR-see" },
-      { word: "fare colazione", en: "to have breakfast", vi: "ăn sáng", pos: "phrase", pronunciation_vi: "FA-rê cô-la-TSIÔ-nê", pronunciation_en: "FAH-reh koh-lah-TSYOH-neh" },
-      { word: "il lavoro", en: "work / job", vi: "công việc", pos: "noun (m)", pronunciation_vi: "il la-VÔ-rô", pronunciation_en: "eel lah-VOH-roh" },
-      { word: "il pranzo", en: "lunch", vi: "bữa trưa", pos: "noun (m)", pronunciation_vi: "il PRAN-tsô", pronunciation_en: "eel PRAN-tsoh" },
-      { word: "la cena", en: "dinner", vi: "bữa tối", pos: "noun (f)", pronunciation_vi: "la CHÊ-na", pronunciation_en: "lah CHEH-nah" },
-      { word: "riposarsi", en: "to rest", vi: "nghỉ ngơi", pos: "verb (reflexive)", pronunciation_vi: "ri-pô-XAR-xi", pronunciation_en: "ree-poh-ZAR-see" },
+      { cell_id: "b24df48a-e031-4bb6-80a3-1c16d671a569", word: "svegliarsi", en: "to wake up", vi: "thức dậy", pos: "verb (reflexive)", pronunciation_vi: "zvê-LIAR-xi", pronunciation_en: "zveh-LYAR-see" },
+      { cell_id: "b5bdb2db-8095-4eef-9389-4f59351c8290", word: "fare colazione", en: "to have breakfast", vi: "ăn sáng", pos: "phrase", pronunciation_vi: "FA-rê cô-la-TSIÔ-nê", pronunciation_en: "FAH-reh koh-lah-TSYOH-neh" },
+      { cell_id: "05ff5408-73a4-490d-b7e0-b013a6773a30", word: "il lavoro", en: "work / job", vi: "công việc", pos: "noun (m)", pronunciation_vi: "il la-VÔ-rô", pronunciation_en: "eel lah-VOH-roh" },
+      { cell_id: "26ccfa37-e8a6-4e9a-963d-6e19c0f4f58e", word: "il pranzo", en: "lunch", vi: "bữa trưa", pos: "noun (m)", pronunciation_vi: "il PRAN-tsô", pronunciation_en: "eel PRAN-tsoh" },
+      { cell_id: "07aa5390-96f2-4231-baad-deb4fec11db6", word: "la cena", en: "dinner", vi: "bữa tối", pos: "noun (f)", pronunciation_vi: "la CHÊ-na", pronunciation_en: "lah CHEH-nah" },
+      { cell_id: "1b8a5d61-4b39-4db7-9724-75e5becbcaaa", word: "riposarsi", en: "to rest", vi: "nghỉ ngơi", pos: "verb (reflexive)", pronunciation_vi: "ri-pô-XAR-xi", pronunciation_en: "ree-poh-ZAR-see" },
     ],
     dialogue: [
-      { speaker: "A", text: "A che ora ti svegli?", vi: "Bạn thức dậy lúc mấy giờ?", en: "What time do you wake up?" },
-      { speaker: "B", text: "Mi sveglio alle sei e mezza.", vi: "Tôi dậy lúc sáu rưỡi.", en: "I wake up at half past six." },
-      { speaker: "A", text: "E poi?", vi: "Rồi sao nữa?", en: "And then?" },
-      { speaker: "B", text: "Faccio colazione e vado al lavoro.", vi: "Tôi ăn sáng và đi làm.", en: "I have breakfast and go to work." },
+      { cell_id: "b9ab97ea-773f-41b3-8988-4ac5f13f8a26", speaker: "A", text: "A che ora ti svegli?", vi: "Bạn thức dậy lúc mấy giờ?", en: "What time do you wake up?" },
+      { cell_id: "60a6d7e8-f0be-4e9d-8b07-acb0ae323d20", speaker: "B", text: "Mi sveglio alle sei e mezza.", vi: "Tôi dậy lúc sáu rưỡi.", en: "I wake up at half past six." },
+      { cell_id: "c032ce7f-feaa-469c-bb91-444e8fef1f42", speaker: "A", text: "E poi?", vi: "Rồi sao nữa?", en: "And then?" },
+      { cell_id: "1ecaa12d-1793-4919-b8d8-4e4f13708034", speaker: "B", text: "Faccio colazione e vado al lavoro.", vi: "Tôi ăn sáng và đi làm.", en: "I have breakfast and go to work." },
     ],
     exercises: [
       {
@@ -1490,19 +1492,19 @@ export const lessons: ItalianLesson[] = [
       },
     ],
     vocabulary: [
-      { word: "la scuola", en: "school", vi: "trường học", pos: "noun (f)", pronunciation_vi: "la XCUÔ-la", pronunciation_en: "lah SKWOH-lah" },
-      { word: "l'autobus", en: "bus", vi: "xe buýt", pos: "noun (m)", pronunciation_vi: "LAU-tô-bus", pronunciation_en: "LOW-toh-boos" },
-      { word: "la fermata", en: "(bus) stop", vi: "trạm xe", pos: "noun (f)", pronunciation_vi: "la fêr-MA-ta", pronunciation_en: "lah fer-MAH-tah" },
-      { word: "a destra", en: "to the right", vi: "bên phải", pos: "phrase", pronunciation_vi: "a ĐÊ-xtra", pronunciation_en: "ah DEH-strah" },
-      { word: "a sinistra", en: "to the left", vi: "bên trái", pos: "phrase", pronunciation_vi: "a xi-NI-xtra", pronunciation_en: "ah see-NEE-strah" },
-      { word: "vicino", en: "near", vi: "gần", pos: "adjective/adverb", pronunciation_vi: "vi-CHI-nô", pronunciation_en: "vee-CHEE-noh" },
-      { word: "lontano", en: "far", vi: "xa", pos: "adjective/adverb", pronunciation_vi: "lôn-TA-nô", pronunciation_en: "lon-TAH-noh" },
+      { cell_id: "3f5f0f93-016b-4fbc-a75b-455999b91f1f", word: "la scuola", en: "school", vi: "trường học", pos: "noun (f)", pronunciation_vi: "la XCUÔ-la", pronunciation_en: "lah SKWOH-lah" },
+      { cell_id: "189e4415-5d74-4e25-ad95-6e317545b49a", word: "l'autobus", en: "bus", vi: "xe buýt", pos: "noun (m)", pronunciation_vi: "LAU-tô-bus", pronunciation_en: "LOW-toh-boos" },
+      { cell_id: "172e6ff3-a4d3-4bbd-b467-7ea612e96db4", word: "la fermata", en: "(bus) stop", vi: "trạm xe", pos: "noun (f)", pronunciation_vi: "la fêr-MA-ta", pronunciation_en: "lah fer-MAH-tah" },
+      { cell_id: "fb1aa7b8-b013-4781-a24c-4f0b937ec37b", word: "a destra", en: "to the right", vi: "bên phải", pos: "phrase", pronunciation_vi: "a ĐÊ-xtra", pronunciation_en: "ah DEH-strah" },
+      { cell_id: "e0d42dd8-f795-4a53-b41b-a9d1e53782be", word: "a sinistra", en: "to the left", vi: "bên trái", pos: "phrase", pronunciation_vi: "a xi-NI-xtra", pronunciation_en: "ah see-NEE-strah" },
+      { cell_id: "fac8c0d1-17ce-4cbc-802b-f5e0e8805bc7", word: "vicino", en: "near", vi: "gần", pos: "adjective/adverb", pronunciation_vi: "vi-CHI-nô", pronunciation_en: "vee-CHEE-noh" },
+      { cell_id: "6a10cb86-f527-4038-b4e9-2fe6406670ca", word: "lontano", en: "far", vi: "xa", pos: "adjective/adverb", pronunciation_vi: "lôn-TA-nô", pronunciation_en: "lon-TAH-noh" },
     ],
     dialogue: [
-      { speaker: "A", text: "Scusi, dov'è la stazione?", vi: "Xin lỗi, nhà ga ở đâu ạ?", en: "Excuse me, where is the station?" },
-      { speaker: "B", text: "Giri a destra e vada dritto.", vi: "Rẽ phải rồi đi thẳng.", en: "Turn right and go straight." },
-      { speaker: "A", text: "È lontano?", vi: "Có xa không ạ?", en: "Is it far?" },
-      { speaker: "B", text: "No, è qui vicino. Cinque minuti.", vi: "Không, gần đây thôi. Năm phút.", en: "No, it's nearby. Five minutes." },
+      { cell_id: "d38cf38a-9ddc-4b3f-bbe2-d98211d9399d", speaker: "A", text: "Scusi, dov'è la stazione?", vi: "Xin lỗi, nhà ga ở đâu ạ?", en: "Excuse me, where is the station?" },
+      { cell_id: "d05e34eb-868b-4303-873c-31ddf3ba5d8a", speaker: "B", text: "Giri a destra e vada dritto.", vi: "Rẽ phải rồi đi thẳng.", en: "Turn right and go straight." },
+      { cell_id: "c515e4ca-bc74-40a6-a4dc-ed35ef188043", speaker: "A", text: "È lontano?", vi: "Có xa không ạ?", en: "Is it far?" },
+      { cell_id: "e29c21f0-811f-48b6-9e44-72213f8c7ea3", speaker: "B", text: "No, è qui vicino. Cinque minuti.", vi: "Không, gần đây thôi. Năm phút.", en: "No, it's nearby. Five minutes." },
     ],
     exercises: [
       {

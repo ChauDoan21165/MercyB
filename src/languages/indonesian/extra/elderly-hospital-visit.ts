@@ -18,6 +18,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   /** Indonesian word/phrase. */
   word: string;
   /** English meaning. */
@@ -33,6 +34,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   /** Indonesian line. */
   text: string;
@@ -243,6 +245,7 @@ export const elderlyHospitalVisitLessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: `menjenguk` is the right word for visiting someone who is sick, not just generic `mengunjungi`. Distinguish `rawat inap` (inpatient) from `rawat jalan` (outpatient). In hospital settings, useful chunks are `jam besuk`, `lapor ke perawat`, `kursi roda`, `kamar rawat`, `obat sudah diberikan`, `kondisi membaik`, and `tolong kabari kami`.",
     vocabulary: [
       {
+        cell_id: "fb8046fb-ba6b-4a15-895a-a5f0b1ac6743",
         word: "menjenguk",
         en: "to visit a sick person",
         vi: "thăm người bệnh",
@@ -251,6 +254,7 @@ export const elderlyHospitalVisitLessons: IndonesianLesson[] = [
         pronunciation_en: "men-JENG-uk",
       },
       {
+        cell_id: "64b1dcfd-a342-4adf-8e03-ccb0c5e637e7",
         word: "rawat inap",
         en: "inpatient care",
         vi: "điều trị nội trú",
@@ -259,6 +263,7 @@ export const elderlyHospitalVisitLessons: IndonesianLesson[] = [
         pronunciation_en: "RA-wat EE-nap",
       },
       {
+        cell_id: "8cc7726c-64f0-4932-9474-b7a57285e5fb",
         word: "jam besuk",
         en: "visiting hours",
         vi: "giờ thăm bệnh",
@@ -267,6 +272,7 @@ export const elderlyHospitalVisitLessons: IndonesianLesson[] = [
         pronunciation_en: "JAM be-SOOK",
       },
       {
+        cell_id: "8bb35fde-729b-4e65-a372-81d1cce83901",
         word: "perawat",
         en: "nurse",
         vi: "y tá / điều dưỡng",
@@ -275,6 +281,7 @@ export const elderlyHospitalVisitLessons: IndonesianLesson[] = [
         pronunciation_en: "pe-RA-wat",
       },
       {
+        cell_id: "24c9d9fd-40ad-4cfc-82dd-28627ed1186c",
         word: "kursi roda",
         en: "wheelchair",
         vi: "xe lăn",
@@ -283,6 +290,7 @@ export const elderlyHospitalVisitLessons: IndonesianLesson[] = [
         pronunciation_en: "KUR-see RO-da",
       },
       {
+        cell_id: "189cd902-858d-4e64-ae9f-3b5a8ab4c2db",
         word: "bergiliran",
         en: "taking turns",
         vi: "luân phiên / thay phiên",
@@ -291,6 +299,7 @@ export const elderlyHospitalVisitLessons: IndonesianLesson[] = [
         pronunciation_en: "ber-gi-LEER-an",
       },
       {
+        cell_id: "de02a403-e73d-41f8-a5fb-aaff4193916a",
         word: "kamar rawat",
         en: "patient room / ward room",
         vi: "phòng bệnh",
@@ -299,6 +308,7 @@ export const elderlyHospitalVisitLessons: IndonesianLesson[] = [
         pronunciation_en: "KA-mar RA-wat",
       },
       {
+        cell_id: "0ead0244-91a3-462d-a0f6-3a30f3e52f4d",
         word: "kondisi membaik",
         en: "condition is improving",
         vi: "tình trạng tốt lên",
@@ -307,6 +317,7 @@ export const elderlyHospitalVisitLessons: IndonesianLesson[] = [
         pronunciation_en: "kon-DEE-see mem-BA-ik",
       },
       {
+        cell_id: "05c0621f-4037-4bfa-b483-92b11f3800e1",
         word: "beliau",
         en: "he/she, respectfully",
         vi: "ông/bà/người ấy (kính trọng)",
@@ -315,6 +326,7 @@ export const elderlyHospitalVisitLessons: IndonesianLesson[] = [
         pronunciation_en: "be-LEE-au",
       },
       {
+        cell_id: "624f18fe-87d8-4633-a3f0-a44705dca88f",
         word: "kabari kami",
         en: "let us know",
         vi: "báo cho chúng tôi",
@@ -325,30 +337,35 @@ export const elderlyHospitalVisitLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "672e0c45-b677-4761-84ec-59b4de4e27d5",
         speaker: "Keluarga",
         text: "Selamat sore, Bu. Kami mau menjenguk ayah yang rawat inap.",
         vi: "Chào buổi chiều chị. Chúng tôi muốn thăm bố đang điều trị nội trú.",
         en: "Good afternoon, ma'am. We want to visit our father who is an inpatient.",
       },
       {
+        cell_id: "11bd186e-c310-4c43-b35c-444838c3bcfd",
         speaker: "Perawat",
         text: "Baik. Jam besuk sampai pukul enam sore. Mohon lapor di meja jaga dulu.",
         vi: "Được. Giờ thăm bệnh đến sáu giờ chiều. Vui lòng báo ở bàn trực trước.",
         en: "All right. Visiting hours are until 6 p.m. Please check in at the nurse station first.",
       },
       {
+        cell_id: "3f6d950a-03e5-42e0-956f-686e111cc788",
         speaker: "Keluarga",
         text: "Boleh pinjam kursi roda kalau Ayah perlu ke ruang periksa?",
         vi: "Có thể mượn xe lăn nếu bố cần đến phòng khám không?",
         en: "May we borrow a wheelchair if Dad needs to go to the examination room?",
       },
       {
+        cell_id: "ce3390a7-a75b-42f9-95ba-aa13cbbfb757",
         speaker: "Perawat",
         text: "Boleh. Obat malam juga sudah diberikan, dan kondisi beliau mulai membaik.",
         vi: "Được. Thuốc buổi tối cũng đã được cho rồi, và tình trạng của bác bắt đầu tốt lên.",
         en: "Yes. The evening medicine has also been given, and his condition is starting to improve.",
       },
       {
+        cell_id: "49534c03-e38d-479f-be35-8dfa77386245",
         speaker: "Keluarga",
         text: "Terima kasih. Tolong kabari kami kalau ada perubahan kondisi.",
         vi: "Cảm ơn. Xin báo cho chúng tôi nếu có thay đổi tình trạng.",

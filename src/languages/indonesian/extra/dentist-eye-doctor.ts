@@ -31,6 +31,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   /** Indonesian word/phrase. */
   word: string;
   /** English meaning. */
@@ -46,6 +47,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   /** Indonesian line. */
   text: string;
@@ -284,6 +286,7 @@ export const lessons: IndonesianLesson[] = [
     vocabulary: [
       // Dental
       {
+        cell_id: "6b585bcc-d976-433e-835d-3ae61ea76ca9",
         word: "dokter gigi",
         en: "dentist",
         vi: "nha sĩ",
@@ -292,6 +295,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "DOK-ter GI-gi — 'doctor + tooth'; abbreviated `drg.`",
       },
       {
+        cell_id: "a11206ef-4144-42f8-b2a3-bdbb827d9be7",
         word: "gigi",
         en: "tooth / teeth",
         vi: "răng",
@@ -300,6 +304,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "GI-gi — hard `g` both times; NOT `gusi` (gum)",
       },
       {
+        cell_id: "0bbb0cf6-4003-4d82-b8c8-ff6e78bb458e",
         word: "gusi",
         en: "gum (in the mouth)",
         vi: "nướu / lợi",
@@ -308,6 +313,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "GU-si — `gusi berdarah` = bleeding gums",
       },
       {
+        cell_id: "4b745544-b9e9-4a1b-a1cf-f724da43da2f",
         word: "gigi berlubang",
         en: "cavity / decayed tooth",
         vi: "răng sâu",
@@ -316,6 +322,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "GI-gi ber-LU-bang — ber- + `lubang` (hole); not `gigi lubang`",
       },
       {
+        cell_id: "116b4c5a-bf16-4111-bee2-adcc8dfeafd4",
         word: "cabut",
         en: "to extract / pull out",
         vi: "nhổ (răng)",
@@ -324,6 +331,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "CHA-but — `c` = 'ch'; passive `dicabut` (be extracted)",
       },
       {
+        cell_id: "85154738-be77-476d-b582-c319c925d2cd",
         word: "tambal",
         en: "to fill (a cavity)",
         vi: "trám (răng)",
@@ -332,6 +340,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "TAM-bal — passive `ditambal` (be filled); not `cabut`",
       },
       {
+        cell_id: "26d901ef-1b2b-4f50-b285-517e42375a91",
         word: "karang gigi",
         en: "tartar / plaque",
         vi: "cao răng / vôi răng",
@@ -341,6 +350,7 @@ export const lessons: IndonesianLesson[] = [
       },
       // Eye
       {
+        cell_id: "f1cfcf5b-cb27-4957-8e0f-4bce01ba5b80",
         word: "dokter mata",
         en: "eye doctor / ophthalmologist",
         vi: "bác sĩ mắt",
@@ -349,6 +359,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "DOK-ter MA-ta — 'doctor + eye'",
       },
       {
+        cell_id: "2b213298-5d21-45ea-a240-340f77672c54",
         word: "mata",
         en: "eye",
         vi: "mắt",
@@ -357,6 +368,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "MA-ta — `periksa mata` = eye exam; `mata kabur` = blurry eyes",
       },
       {
+        cell_id: "6eba59f3-3ce4-4cb4-853b-ccead8b3d31d",
         word: "kabur",
         en: "blurry (vision)",
         vi: "mờ",
@@ -365,6 +377,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "KA-bur — unclear sight; NOT `buta` (fully blind)",
       },
       {
+        cell_id: "64c82ed0-7e15-4bfb-94c1-583c1cf40f15",
         word: "kacamata",
         en: "eyeglasses",
         vi: "kính mắt",
@@ -373,6 +386,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "ka-cha-MA-ta — ONE word; `c` = 'ch'; `buat kacamata` = to make glasses",
       },
       {
+        cell_id: "a2fe261e-635e-4642-88cf-69fcc6acb376",
         word: "lensa",
         en: "lens",
         vi: "tròng kính",
@@ -381,6 +395,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "LEN-sa — `lensa baru` = new lens; `bingkai`/`frame` = the frame",
       },
       {
+        cell_id: "7cde2ecb-a2a1-4d05-99e2-0f661faed197",
         word: "optik",
         en: "optical shop / optician",
         vi: "tiệm kính",
@@ -390,6 +405,7 @@ export const lessons: IndonesianLesson[] = [
       },
       // Insurance / admin
       {
+        cell_id: "6dd26971-4e02-4a26-8cd6-de596f30dc67",
         word: "ditanggung",
         en: "covered / borne (by insurance)",
         vi: "được chi trả / bảo lãnh",
@@ -398,6 +414,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "di-TANG-gung — passive `di-`; `ditanggung BPJS` = covered by BPJS",
       },
       {
+        cell_id: "a83e886a-86ff-43a9-b203-5da565e032ff",
         word: "klaim",
         en: "to claim (insurance)",
         vi: "yêu cầu chi trả bảo hiểm",
@@ -409,42 +426,49 @@ export const lessons: IndonesianLesson[] = [
     dialogue: [
       // Dialogue: a dentist visit, ending with a BPJS question
       {
+        cell_id: "73539dca-2c39-48dc-b46b-a35ca7b34ddc",
         speaker: "Dokter",
         text: "Selamat siang. Ada keluhan apa dengan gigi Anda?",
         vi: "Chào buổi trưa. Răng anh/chị có vấn đề gì ạ?",
         en: "Good afternoon. What's the problem with your teeth?",
       },
       {
+        cell_id: "09c0fd16-58e7-429a-acb2-0b1c6fad2e30",
         speaker: "Pasien",
         text: "Gigi saya sakit sejak kemarin, Dok. Sepertinya ada gigi berlubang.",
         vi: "Răng tôi đau từ hôm qua. Hình như có cái răng sâu.",
         en: "My tooth has hurt since yesterday, doctor. I think there's a cavity.",
       },
       {
+        cell_id: "73949d38-abae-41c6-a0ee-47956dfff5c5",
         speaker: "Dokter",
         text: "Mari saya periksa. Ya, ada lubang. Tapi masih bisa ditambal, tidak perlu dicabut.",
         vi: "Để tôi khám. Đúng rồi, có lỗ sâu. Nhưng vẫn trám được, không cần nhổ.",
         en: "Let me check. Yes, there's a hole. But it can still be filled — no need to extract it.",
       },
       {
+        cell_id: "a9dd56bb-093e-487d-b1e1-1f24f662634c",
         speaker: "Pasien",
         text: "Syukurlah. Tolong bersihkan karang gigi saya juga, ya, Dok.",
         vi: "May quá. Nhờ bác cạo vôi răng giúp tôi luôn nhé.",
         en: "What a relief. Please descale my teeth too, doctor.",
       },
       {
+        cell_id: "623acaee-1cbe-4a02-b1d8-980e764e070d",
         speaker: "Dokter",
         text: "Baik. Tambal dan bersihkan hari ini. Apakah Anda pakai BPJS?",
         vi: "Được. Hôm nay trám và cạo vôi. Anh/chị có dùng BPJS không?",
         en: "Okay. Filling and cleaning today. Do you use BPJS?",
       },
       {
+        cell_id: "c11af669-1bd2-493f-b365-18f4f666596d",
         speaker: "Pasien",
         text: "Iya. Apakah tambal gigi ditanggung BPJS? Saya mau klaim.",
         vi: "Vâng. Trám răng có được BPJS chi trả không? Tôi muốn làm yêu cầu chi trả.",
         en: "Yes. Is a filling covered by BPJS? I'd like to claim.",
       },
       {
+        cell_id: "1a9875a4-a9bc-440e-9bc8-f39eb69bf10c",
         speaker: "Dokter",
         text: "Tambal dan scaling ditanggung. Bawa kartu BPJS ke loket, ya.",
         vi: "Trám và cạo vôi được chi trả. Mang thẻ BPJS ra quầy nhé.",

@@ -34,6 +34,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   /** Indonesian word/phrase. */
   word: string;
   /** English meaning. */
@@ -49,6 +50,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   /** Indonesian line. */
   text: string;
@@ -306,6 +308,7 @@ export const lessons: IndonesianLesson[] = [
       "Four steps to pick a register: (1) READ THE AUDIENCE — stranger/senior → formal; peer/close → casual; (2) PICK THE PRONOUN TIER and KEEP IT CONSISTENT (don't mix `Ibu` with `kamu`, or `bukuku` with `Anda`); (3) MATCH VERBS + PARTICLES to that tier — formal keeps full `meN-` (`membaca`, `menerima`) + `apakah`/`mohon`; casual clips (`udah`, `nggak`) + `-in`/`dong`; (4) WHEN IN DOUBT go FORMAL — easy to drop later, hard to climb back. Iron rules: replacing 'you' with `Pak/Bu/Mas/Mbak/Kak` + name is the safest and politest; `gue/lu` is Jakarta + close friends only; for a respected third person use `beliau`. Drill 'dual translation': take one sentence, write both the formal and casual versions to build switching reflex.",
     vocabulary: [
       {
+        cell_id: "47b2dba3-6fde-4179-96e1-2c0d04707f67",
         word: "saya / aku / gue",
         en: "I (formal / casual / Jakarta slang)",
         vi: "tôi / tớ / tao",
@@ -314,6 +317,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "SAH-yah / AH-koo / GOO-eh — safe default is `saya`",
       },
       {
+        cell_id: "210aaf2d-4c42-410c-9106-765c62a4b281",
         word: "Anda / kamu / lu",
         en: "you (formal / casual / Jakarta slang)",
         vi: "anh-chị / cậu / mày",
@@ -322,6 +326,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "AHN-dah / KAH-moo / loo — `Anda` capitalized; `lu` Jakarta-only",
       },
       {
+        cell_id: "a10198ed-cde3-4391-b876-3614f083b31a",
         word: "Bapak / Ibu",
         en: "sir / ma'am (Pak / Bu)",
         vi: "chú-ông / cô-bà",
@@ -330,6 +335,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "BAH-pak / EE-boo — title-as-'you' = the most polite",
       },
       {
+        cell_id: "9cd0e3de-0129-4114-9a44-ad8a059455b6",
         word: "Mas / Mbak / Kak",
         en: "young man / young woman / older sibling (you)",
         vi: "anh / chị (trẻ) / anh-chị",
@@ -338,6 +344,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "mahs / mbahk / kahk — the polite-friendly service tier",
       },
       {
+        cell_id: "fcc542cb-6284-40ec-92f6-5d1b5a8679c5",
         word: "beliau",
         en: "he/she (honorific)",
         vi: "ông/bà ấy (kính ngữ)",
@@ -346,6 +353,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "be-LEE-ow — upgrade of `dia` for respected people",
       },
       {
+        cell_id: "2f9dace9-bd4b-468e-87f2-44ed6b2e7b3d",
         word: "nggak / gak",
         en: "no / not (casual `tidak`)",
         vi: "không (khẩu ngữ)",
@@ -354,6 +362,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "ng-GAK / gak — speech/chat only; formal uses `tidak`",
       },
       {
+        cell_id: "b05feaf4-3f27-4ec5-96e3-7c0611956230",
         word: "udah",
         en: "already (casual `sudah`)",
         vi: "đã/rồi (khẩu ngữ)",
@@ -362,6 +371,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "oo-DAH — spoken form of `sudah`",
       },
       {
+        cell_id: "66e59331-4d19-44a1-afaa-a41a610e0098",
         word: "mohon maaf",
         en: "(formal) my apologies",
         vi: "xin lỗi (trang trọng)",
@@ -370,6 +380,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "MO-hon mah-AF — more formal than bare `maaf`",
       },
       {
+        cell_id: "a637771a-2532-4757-84bf-ac79561c10d9",
         word: "basa-basi",
         en: "small talk / pleasantries",
         vi: "xã giao, lời mở đầu",
@@ -378,6 +389,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "BAH-sah-BAH-see — the obligatory polite opener before business",
       },
       {
+        cell_id: "d9b0c708-2535-4c48-88aa-96018ee1375e",
         word: "-ku / -mu",
         en: "my / your (casual suffix)",
         vi: "của tôi / của bạn (đuôi thân mật)",
@@ -388,30 +400,35 @@ export const lessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "fc1d2023-cd56-4fc2-af4c-c67f4a4f6a10",
         speaker: "Karyawan (ke atasan)",
         text: "Selamat pagi, Pak. Mohon maaf mengganggu. Apakah Bapak ada waktu sebentar?",
         vi: "Chào buổi sáng ạ. Xin lỗi đã làm phiền. Chú/anh có chút thời gian không ạ?",
         en: "Good morning, sir. Sorry to bother you. Do you have a moment?",
       },
       {
+        cell_id: "189cd1b1-858a-4442-8433-1dd40a343a6c",
         speaker: "Atasan",
         text: "Pagi. Ada, silakan. Ada apa, ya?",
         vi: "Chào. Có, cứ nói. Có chuyện gì vậy?",
         en: "Morning. Yes, go ahead. What is it?",
       },
       {
+        cell_id: "b0156b13-7ee6-46f7-8f32-06ca510dde49",
         speaker: "Karyawan",
         text: "Saya belum menerima dokumennya. Bisa tolong dikirim ulang, Pak?",
         vi: "Tôi vẫn chưa nhận được tài liệu. Anh gửi lại giúp được không ạ?",
         en: "I haven't received the document. Could you resend it, sir?",
       },
       {
+        cell_id: "c62738fb-fb70-486d-9e73-8c03c4b99fee",
         speaker: "Teman (chat)",
         text: "Eh, lu udah kirim tugasnya belum? Gue belum, nih. Bantuin, dong!",
         vi: "Ê, mày gửi bài chưa? Tao chưa nè. Giúp tao cái đi!",
         en: "Hey, did you send the assignment? I haven't. Help me out!",
       },
       {
+        cell_id: "32deb36c-6277-43d0-9dfc-bc5483d51525",
         speaker: "Teman 2",
         text: "Udah, kok. Santai, aku kirimin ke kamu sekarang.",
         vi: "Gửi rồi mà. Bình tĩnh, tớ gửi cho cậu bây giờ.",

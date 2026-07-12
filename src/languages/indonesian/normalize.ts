@@ -54,6 +54,7 @@ type IndonesianSentenceInput = {
 };
 
 type IndonesianVocabInput = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -63,6 +64,7 @@ type IndonesianVocabInput = {
 };
 
 type IndonesianDialogueInput = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;

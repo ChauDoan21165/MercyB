@@ -6,6 +6,7 @@ type IndonesianLessonSentence = {
 };
 
 type VocabEntry = {
+  cell_id?: string;
   word: string;
   meaning_vi: string;
   meaning_en: string;
@@ -14,6 +15,7 @@ type VocabEntry = {
 };
 
 type DialogueLine = {
+  cell_id?: string;
   speaker: string;
   line: string;
   vi: string;
@@ -117,6 +119,7 @@ export const lessons: IndonesianLesson[] = [
     ],
     vocabulary: [
       {
+        cell_id: "38448a2d-dfb0-40e1-aed5-f89c269f25fd",
         word: 'penggalangan dana',
         meaning_vi: 'gây quỹ',
         meaning_en: 'fundraising',
@@ -124,6 +127,7 @@ export const lessons: IndonesianLesson[] = [
         example_vi: 'Gây quỹ được thực hiện qua sự kiện cộng đồng.',
       },
       {
+        cell_id: "68ec02b6-dba7-429b-a2e7-d34d39ce39b5",
         word: 'donasi',
         meaning_vi: 'quyên góp',
         meaning_en: 'donation',
@@ -131,6 +135,7 @@ export const lessons: IndonesianLesson[] = [
         example_vi: 'Khoản quyên góp có thể được gửi hôm nay.',
       },
       {
+        cell_id: "02f08634-8189-4ef2-91fe-9eda131b72f9",
         word: 'rekening bersama',
         meaning_vi: 'tài khoản chung',
         meaning_en: 'joint account',
@@ -138,6 +143,7 @@ export const lessons: IndonesianLesson[] = [
         example_vi: 'Tất cả tiền quyên góp vào tài khoản chung.',
       },
       {
+        cell_id: "1a0be03a-ae07-4589-a9da-61730cdce268",
         word: 'laporan dana',
         meaning_vi: 'báo cáo quỹ',
         meaning_en: 'fund report',
@@ -145,6 +151,7 @@ export const lessons: IndonesianLesson[] = [
         example_vi: 'Báo cáo quỹ được chia cho người dân mỗi tuần.',
       },
       {
+        cell_id: "5781d3c5-f678-4464-a2bb-111d9e7cf640",
         word: 'panitia',
         meaning_vi: 'ban tổ chức',
         meaning_en: 'committee',
@@ -152,6 +159,7 @@ export const lessons: IndonesianLesson[] = [
         example_vi: 'Ban tổ chức ghi lại mọi khoản thu chi.',
       },
       {
+        cell_id: "d90fe84a-bb9c-44fa-8fec-c607351d78af",
         word: 'transparansi',
         meaning_vi: 'tính minh bạch',
         meaning_en: 'transparency',
@@ -159,6 +167,7 @@ export const lessons: IndonesianLesson[] = [
         example_vi: 'Tính minh bạch làm người dân tin tưởng hơn.',
       },
       {
+        cell_id: "cfccb5d0-bdb4-4d52-a7c8-1a0631ccfb72",
         word: 'bantuan warga',
         meaning_vi: 'sự giúp đỡ của người dân',
         meaning_en: 'community support',
@@ -166,6 +175,7 @@ export const lessons: IndonesianLesson[] = [
         example_vi: 'Sự giúp đỡ của người dân rất hữu ích cho gia đình đó.',
       },
       {
+        cell_id: "53158d43-4003-470b-b85d-3c6e8cd56e51",
         word: 'target dana',
         meaning_vi: 'mục tiêu số tiền',
         meaning_en: 'fundraising target',
@@ -175,36 +185,42 @@ export const lessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "00d56c10-17bd-4e64-af86-df47f608df0b",
         speaker: 'Ketua Panitia',
         line: 'Kami sedang mengadakan penggalangan dana untuk tetangga yang sakit.',
         vi: 'Chúng tôi đang tổ chức gây quỹ cho người hàng xóm bị bệnh.',
         en: 'We are holding a fundraising drive for a sick neighbor.',
       },
       {
+        cell_id: "be76358f-f698-40ab-9fb9-8e16481f93ea",
         speaker: 'Warga',
         line: 'Baik, saya mau ikut donasi. Apakah ada rekening bersama?',
         vi: 'Được, tôi muốn quyên góp. Có tài khoản chung không?',
         en: 'Okay, I want to donate. Is there a joint account?',
       },
       {
+        cell_id: "0047da07-572e-40c4-8118-2557c58fef81",
         speaker: 'Ketua Panitia',
         line: 'Ada. Semua donasi kami catat untuk laporan dana.',
         vi: 'Có. Chúng tôi ghi lại mọi khoản quyên góp cho báo cáo quỹ.',
         en: 'Yes. We record all donations for the fund report.',
       },
       {
+        cell_id: "2dcd79d6-49bf-426e-b4b3-36923c888323",
         speaker: 'Warga',
         line: 'Bagus. Saya senang kalau transparansi penggunaan dananya jelas.',
         vi: 'Tốt quá. Tôi thích khi việc sử dụng quỹ minh bạch và rõ ràng.',
         en: 'Great. I like it when the use of funds is transparent and clear.',
       },
       {
+        cell_id: "715f3298-f25e-462b-a7e8-0b6c3d86fa2a",
         speaker: 'Ketua Panitia',
         line: 'Tentu. Laporan dana akan kami kirim ke semua warga minggu depan.',
         vi: 'Chắc chắn rồi. Chúng tôi sẽ gửi báo cáo quỹ cho tất cả người dân vào tuần tới.',
         en: 'Of course. We will send the fund report to all residents next week.',
       },
       {
+        cell_id: "a1ebf3c4-91ad-4df3-9967-8f0f97dc3134",
         speaker: 'Warga',
         line: 'Terima kasih. Saya juga akan mengajak warga lain membantu.',
         vi: 'Cảm ơn. Tôi cũng sẽ rủ những người dân khác giúp đỡ.',

@@ -18,6 +18,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   /** Indonesian word/phrase. */
   word: string;
   /** English meaning. */
@@ -33,6 +34,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   /** Indonesian line. */
   text: string;
@@ -243,6 +245,7 @@ export const repairComplaintFollowupLessons: IndonesianLesson[] = [
       "Safe frame: `Saya mau follow up...` -> `nomor laporan saya...` -> issue (`teknisi belum datang`) -> request (`mohon kepastian` / `janji ulang`). If frustrated, avoid all-caps or threats; use `mohon`, `tolong catat`, and `saya berharap ada solusi yang jelas` to stay polite but firm.",
     vocabulary: [
       {
+        cell_id: "405692ea-3346-42d4-994a-0728ea38fdb6",
         word: "follow up perbaikan",
         en: "follow up on a repair",
         vi: "theo dõi tiếp việc sửa chữa",
@@ -251,6 +254,7 @@ export const repairComplaintFollowupLessons: IndonesianLesson[] = [
         pronunciation_en: "FO-low up per-BAI-kan",
       },
       {
+        cell_id: "77116450-a694-4a2a-be8e-a4a6ec4ebea0",
         word: "teknisi belum datang",
         en: "the technician has not arrived yet",
         vi: "kỹ thuật viên chưa đến",
@@ -259,6 +263,7 @@ export const repairComplaintFollowupLessons: IndonesianLesson[] = [
         pronunciation_en: "tek-NEE-see BE-lum DA-tang",
       },
       {
+        cell_id: "84461694-5d68-447b-9f9b-3ca330b3db9a",
         word: "nomor laporan",
         en: "report/reference number",
         vi: "số báo cáo/số hồ sơ",
@@ -267,6 +272,7 @@ export const repairComplaintFollowupLessons: IndonesianLesson[] = [
         pronunciation_en: "NO-mor la-PO-ran",
       },
       {
+        cell_id: "a6e26ae8-84b2-40ca-94ee-d3fd31fe7308",
         word: "janji ulang",
         en: "rescheduled appointment",
         vi: "lịch hẹn lại",
@@ -275,6 +281,7 @@ export const repairComplaintFollowupLessons: IndonesianLesson[] = [
         pronunciation_en: "JAN-jee OO-lang",
       },
       {
+        cell_id: "3b162d57-ee0c-49b2-9d6d-13a310543fb3",
         word: "komplain sopan",
         en: "polite complaint",
         vi: "khiếu nại lịch sự",
@@ -283,6 +290,7 @@ export const repairComplaintFollowupLessons: IndonesianLesson[] = [
         pronunciation_en: "kom-PLAIN SO-pan",
       },
       {
+        cell_id: "ebd84435-a2c4-4117-b5e9-654429f3962a",
         word: "minta kepastian",
         en: "ask for certainty/confirmation",
         vi: "xin sự chắc chắn/xác nhận rõ",
@@ -291,6 +299,7 @@ export const repairComplaintFollowupLessons: IndonesianLesson[] = [
         pronunciation_en: "MIN-ta ke-PAS-tee-an",
       },
       {
+        cell_id: "87324552-3c7d-4fea-8321-a4e74b53b12e",
         word: "status laporan",
         en: "case/report status",
         vi: "trạng thái hồ sơ/báo cáo",
@@ -299,6 +308,7 @@ export const repairComplaintFollowupLessons: IndonesianLesson[] = [
         pronunciation_en: "STA-tus la-PO-ran",
       },
       {
+        cell_id: "282b91eb-b51d-49c8-862b-01d43a7eb345",
         word: "konfirmasi tertulis",
         en: "written confirmation",
         vi: "xác nhận bằng văn bản",
@@ -307,6 +317,7 @@ export const repairComplaintFollowupLessons: IndonesianLesson[] = [
         pronunciation_en: "kon-fir-MA-see ter-TOO-lis",
       },
       {
+        cell_id: "266c1383-6329-4f78-b883-0b97a6895521",
         word: "kendala",
         en: "constraint/obstacle",
         vi: "trở ngại/vướng mắc",
@@ -315,6 +326,7 @@ export const repairComplaintFollowupLessons: IndonesianLesson[] = [
         pronunciation_en: "ken-DA-la",
       },
       {
+        cell_id: "c9024f83-19aa-479b-b464-6f504654b114",
         word: "beri tahu sejak awal",
         en: "inform early/from the start",
         vi: "báo từ sớm/từ đầu",
@@ -325,36 +337,42 @@ export const repairComplaintFollowupLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "e6577a41-54cc-464f-9af4-6675308f8850",
         speaker: "Pelanggan",
         text: "Halo, saya mau follow up perbaikan AC. Nomor laporan saya 4572.",
         vi: "Alô, tôi muốn theo dõi tiếp việc sửa máy lạnh. Số báo cáo của tôi là 4572.",
         en: "Hello, I want to follow up on the AC repair. My report number is 4572.",
       },
       {
+        cell_id: "3c1bb831-bce8-43d4-85ce-daf5230f6cb5",
         speaker: "Layanan pelanggan",
         text: "Baik, mohon tunggu sebentar. Saya cek status laporannya dulu.",
         vi: "Vâng, xin chờ một chút. Tôi kiểm tra trạng thái hồ sơ trước.",
         en: "Okay, please wait a moment. I will check the case status first.",
       },
       {
+        cell_id: "b4d19bda-590a-42c5-8efe-6a8b8d02b42c",
         speaker: "Pelanggan",
         text: "Teknisi belum datang sesuai jadwal, dan saya belum menerima kabar.",
         vi: "Kỹ thuật viên chưa đến theo lịch, và tôi chưa nhận được tin báo.",
         en: "The technician has not arrived as scheduled, and I have not received an update.",
       },
       {
+        cell_id: "bf544a3c-7904-4fab-9110-1770da1f41a7",
         speaker: "Layanan pelanggan",
         text: "Mohon maaf, ada kendala di jadwal teknisi.",
         vi: "Xin lỗi, có vướng mắc trong lịch của kỹ thuật viên.",
         en: "We apologize, there is an issue with the technician's schedule.",
       },
       {
+        cell_id: "93b1262b-b4a6-4885-87ee-60197e616c18",
         speaker: "Pelanggan",
         text: "Saya mengerti, tetapi saya perlu kepastian. Bisa dibuat janji ulang untuk besok pagi?",
         vi: "Tôi hiểu, nhưng tôi cần xác nhận rõ. Có thể lập lịch hẹn lại cho sáng mai không?",
         en: "I understand, but I need certainty. Can a new appointment be made for tomorrow morning?",
       },
       {
+        cell_id: "8236f124-9cce-458b-895d-34865dfa600d",
         speaker: "Layanan pelanggan",
         text: "Bisa. Kami akan kirim konfirmasi tertulis lewat WhatsApp.",
         vi: "Được. Chúng tôi sẽ gửi xác nhận bằng văn bản qua WhatsApp.",

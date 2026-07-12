@@ -13,6 +13,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -22,6 +23,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -208,6 +210,7 @@ export const lessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: learn clinic chunks: `sedang hamil`, `periksa kandungan`, `bidan praktik`, `jadwal USG`, `minum vitamin`, `sering mual`, `jadwal kontrol`, `buku KIA`. For schedule questions, use `Kapan jadwal ... berikutnya?`. For symptoms, use `Saya sering ...` or `Kalau ada ..., segera ke IGD`.",
     vocabulary: [
       {
+        cell_id: "9e799029-aefd-4a01-9fc3-32ed3223b432",
         word: "hamil",
         en: "pregnant",
         vi: "mang thai / có bầu",
@@ -216,6 +219,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "HA-mil",
       },
       {
+        cell_id: "5a1b9630-84ed-4dcb-b311-24ed22838b3d",
         word: "periksa kandungan",
         en: "pregnancy checkup",
         vi: "khám thai",
@@ -224,6 +228,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "pe-RIK-sa kan-DOONG-an",
       },
       {
+        cell_id: "152ec161-2f0d-4a21-a719-7180aefe0885",
         word: "bidan",
         en: "midwife",
         vi: "nữ hộ sinh",
@@ -232,6 +237,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "BEE-dan",
       },
       {
+        cell_id: "40eda014-d945-4f21-941a-12bdcaa28529",
         word: "USG",
         en: "ultrasound",
         vi: "siêu âm",
@@ -240,6 +246,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "oo-es-geh",
       },
       {
+        cell_id: "b12597e4-9767-4a6e-bdbd-878a2a0487fa",
         word: "vitamin",
         en: "vitamin",
         vi: "vitamin",
@@ -248,6 +255,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "VEE-ta-min",
       },
       {
+        cell_id: "a0b6421f-cbad-41b9-b6d9-0beac9f057a1",
         word: "mual",
         en: "nauseous",
         vi: "buồn nôn",
@@ -256,6 +264,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "MOO-al",
       },
       {
+        cell_id: "845d0c0b-ac0c-4d39-b60a-320b91e04c9b",
         word: "jadwal kontrol",
         en: "follow-up schedule",
         vi: "lịch tái khám",
@@ -264,6 +273,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "JAD-wal KON-trol",
       },
       {
+        cell_id: "8760955a-98ae-41c1-85e9-348263d11293",
         word: "buku KIA",
         en: "mother-and-child health book",
         vi: "sổ sức khỏe mẹ và bé",
@@ -272,6 +282,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "BOO-ku kee-ah",
       },
       {
+        cell_id: "b0cc870b-3bda-46b0-8bca-984cb4a80f79",
         word: "tablet tambah darah",
         en: "iron tablet",
         vi: "viên sắt / viên bổ máu",
@@ -280,6 +291,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "TAB-let TAM-bah DA-rah",
       },
       {
+        cell_id: "492550e8-c30f-4331-8cec-c7e0c0ab4e6f",
         word: "tekanan darah",
         en: "blood pressure",
         vi: "huyết áp",
@@ -290,30 +302,35 @@ export const lessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "2abe8f59-55f1-40f0-a368-1e18e85ac848",
         speaker: "Pasien",
         text: "Selamat pagi, Bu. Saya mau periksa kandungan.",
         vi: "Chào buổi sáng cô/chị. Tôi muốn khám thai.",
         en: "Good morning, ma'am. I want a pregnancy checkup.",
       },
       {
+        cell_id: "fc4dfecd-3452-4cc3-a09a-3aa8dd620ebf",
         speaker: "Bidan",
         text: "Baik. Usia kehamilannya berapa minggu?",
         vi: "Được. Tuổi thai là bao nhiêu tuần?",
         en: "Okay. How many weeks is the pregnancy?",
       },
       {
+        cell_id: "39bcc6e8-5a0e-4232-86ad-d86fc6ef990f",
         speaker: "Pasien",
         text: "Sekitar dua belas minggu. Saya juga sering mual.",
         vi: "Khoảng mười hai tuần. Tôi cũng thường buồn nôn.",
         en: "About twelve weeks. I also often feel nauseous.",
       },
       {
+        cell_id: "1691603d-7d0f-4c90-9e12-29e6a2dbe922",
         speaker: "Bidan",
         text: "Bawa buku KIA? Nanti saya catat tekanan darah dan jadwal kontrol.",
         vi: "Có mang sổ KIA không? Lát nữa tôi ghi huyết áp và lịch tái khám.",
         en: "Did you bring the KIA book? I will record blood pressure and the follow-up schedule.",
       },
       {
+        cell_id: "dbe14e95-23ee-4411-8747-b0d52f028706",
         speaker: "Pasien",
         text: "Ada, Bu. Kapan jadwal USG berikutnya?",
         vi: "Có ạ. Lịch siêu âm tiếp theo khi nào?",

@@ -16,6 +16,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   /** Indonesian word/phrase. */
   word: string;
   /** English meaning. */
@@ -31,6 +32,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   /** Indonesian line. */
   text: string;
@@ -193,6 +195,7 @@ export const lessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: learn the email frame: opening greeting -> email purpose -> attachments -> follow-up -> clarification/apology if needed -> polite closing. Use `mohon` for formal requests, `jika` for formal conditions, and passives like `dikirimkan`, `tercantum`, `dilampirkan`.",
     vocabulary: [
       {
+        cell_id: "a42fb0a4-abb9-48b0-b3dd-b5892568d62e",
         word: "email formal",
         en: "formal email",
         vi: "email trang trọng",
@@ -201,6 +204,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "e-mail for-MAL",
       },
       {
+        cell_id: "2eea8607-03db-4bd1-99ec-51b19d9977c6",
         word: "salam pembuka",
         en: "opening greeting",
         vi: "lời chào mở đầu",
@@ -209,6 +213,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "SA-lam pem-BOO-ka",
       },
       {
+        cell_id: "ce0aa558-3cd0-4994-8021-ea709cf6566c",
         word: "lampiran",
         en: "attachment",
         vi: "tệp đính kèm",
@@ -217,6 +222,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "lam-PIR-an",
       },
       {
+        cell_id: "c7831b9e-fe52-4a4c-b1ac-bb357b6d3696",
         word: "tindak lanjut",
         en: "follow-up",
         vi: "việc tiếp tục xử lý",
@@ -225,6 +231,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "TIN-dak LAN-jut",
       },
       {
+        cell_id: "16b5cdc0-8766-482d-946d-18aabb77938b",
         word: "permintaan maaf",
         en: "apology",
         vi: "lời xin lỗi",
@@ -233,6 +240,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "per-min-TA-an ma-AF",
       },
       {
+        cell_id: "82cb63b9-901c-4ee9-93f8-c787e09dfc3c",
         word: "klarifikasi",
         en: "clarification",
         vi: "sự làm rõ",
@@ -241,6 +249,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "kla-ri-fi-KA-see",
       },
       {
+        cell_id: "aa021a1a-058e-4842-9038-1798b7993fbd",
         word: "penutup sopan",
         en: "polite closing",
         vi: "lời kết lịch sự",
@@ -249,6 +258,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "pe-NOO-tup SO-pan",
       },
       {
+        cell_id: "f4fc8553-366b-452a-9e87-1ecd8e93cc94",
         word: "Yth.",
         en: "Honorable / Dear",
         vi: "Kính gửi",
@@ -257,6 +267,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "yang ter-HOR-mat",
       },
       {
+        cell_id: "1433a999-e38c-432c-9c7c-1c4cb37f15a9",
         word: "terlampir",
         en: "attached",
         vi: "được đính kèm",
@@ -265,6 +276,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "ter-lam-PIR",
       },
       {
+        cell_id: "a711c652-0aa5-44bd-b8f4-d142764435bd",
         word: "Hormat kami",
         en: "Respectfully / sincerely",
         vi: "Trân trọng / kính thư",
@@ -275,24 +287,28 @@ export const lessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "ce681c84-600c-4272-ae49-e8d8501fa5d0",
         speaker: "Staf",
         text: "Yth. Bapak/Ibu, saya ingin menindaklanjuti email sebelumnya.",
         vi: "Kính gửi quý Ông/Bà, tôi muốn tiếp nối email trước đó.",
         en: "Dear Sir/Madam, I would like to follow up on the previous email.",
       },
       {
+        cell_id: "473ccede-5e3e-487f-97dc-739ef89efb2c",
         speaker: "Manajer",
         text: "Baik. Jangan lupa sebutkan lampiran dan batas waktunya.",
         vi: "Được. Đừng quên nêu tệp đính kèm và thời hạn.",
         en: "Good. Do not forget to mention the attachment and the deadline.",
       },
       {
+        cell_id: "bfd36e68-887c-4ff5-a343-d07d04ed1bc6",
         speaker: "Staf",
         text: "Saya tulis: bersama email ini, kami lampirkan dokumen pendukung.",
         vi: "Tôi viết: kèm theo email này, chúng tôi đính kèm tài liệu hỗ trợ.",
         en: "I write: with this email, we attach the supporting documents.",
       },
       {
+        cell_id: "b7ab0e83-d157-47b1-b4b3-df115139dc15",
         speaker: "Manajer",
         text: "Bagus. Tutup dengan penutup sopan dan ucapan terima kasih.",
         vi: "Tốt. Kết bằng lời kết lịch sự và lời cảm ơn.",

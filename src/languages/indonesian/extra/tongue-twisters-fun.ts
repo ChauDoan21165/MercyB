@@ -13,6 +13,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -22,6 +23,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -235,37 +237,41 @@ export const lessons: IndonesianLesson[] = [
     tip_advice_en:
       "Tip for Vietnamese speakers: to understand Indonesian humor, listen for sound first, then analyze meaning. Watch `c` = ch, `ng` as one sound, and final `k/h/r` without swallowing them. With new acquaintances, avoid appearance, religion, and ethnicity; `cuma bercanda` helps only when the joke is already polite.",
     vocabulary: [
-      { word: "permainan kata", en: "wordplay", vi: "trò chơi chữ", pos: "noun phrase", pronunciation_vi: "per-ma-IN-an KA-ta", pronunciation_en: "per-ma-IN-an KA-ta" },
-      { word: "pantun", en: "rhymed quatrain", vi: "thơ pantun bốn dòng", pos: "noun", pronunciation_vi: "PAN-tun", pronunciation_en: "PAN-toon" },
-      { word: "tebak-tebakan", en: "riddle / guessing joke", vi: "câu đố", pos: "noun", pronunciation_vi: "TE-bak-TE-ba-kan", pronunciation_en: "TE-bak-TE-ba-kan" },
-      { word: "pelesetan", en: "pun / sound twist", vi: "nói lái / biến âm gây cười", pos: "noun", pronunciation_vi: "peu-leu-SE-tan", pronunciation_en: "pe-le-SE-tan" },
-      { word: "bercanda", en: "to joke", vi: "đùa", pos: "verb", pronunciation_vi: "ber-CHAN-da", pronunciation_en: "ber-CHAN-da" },
-      { word: "lucu", en: "funny / cute", vi: "buồn cười / dễ thương", pos: "adjective", pronunciation_vi: "LU-chu", pronunciation_en: "LOO-choo" },
-      { word: "ketawa", en: "to laugh", vi: "cười", pos: "verb", pronunciation_vi: "keu-TA-wa", pronunciation_en: "ke-TA-wa" },
-      { word: "receh", en: "corny / low-effort joke", vi: "nhạt, nhảm nhưng vui", pos: "slang adjective", pronunciation_vi: "RE-chèh", pronunciation_en: "RE-cheh" },
-      { word: "baper", en: "too emotionally affected", vi: "nhạy cảm / tự ái", pos: "slang adjective", pronunciation_vi: "BA-per", pronunciation_en: "BA-per" },
-      { word: "bunyi", en: "sound", vi: "âm thanh", pos: "noun", pronunciation_vi: "BU-nyi", pronunciation_en: "BOO-nyee" },
+      { cell_id: "33ae809a-9225-4a9c-b3f8-39ea428b6879", word: "permainan kata", en: "wordplay", vi: "trò chơi chữ", pos: "noun phrase", pronunciation_vi: "per-ma-IN-an KA-ta", pronunciation_en: "per-ma-IN-an KA-ta" },
+      { cell_id: "3449bbfb-d9bd-47dc-b177-7d92108d0e5f", word: "pantun", en: "rhymed quatrain", vi: "thơ pantun bốn dòng", pos: "noun", pronunciation_vi: "PAN-tun", pronunciation_en: "PAN-toon" },
+      { cell_id: "37f67c8b-d75e-4e4c-b772-814a66ca0be6", word: "tebak-tebakan", en: "riddle / guessing joke", vi: "câu đố", pos: "noun", pronunciation_vi: "TE-bak-TE-ba-kan", pronunciation_en: "TE-bak-TE-ba-kan" },
+      { cell_id: "58d6eed1-e918-423a-8aac-e6b26b9211a0", word: "pelesetan", en: "pun / sound twist", vi: "nói lái / biến âm gây cười", pos: "noun", pronunciation_vi: "peu-leu-SE-tan", pronunciation_en: "pe-le-SE-tan" },
+      { cell_id: "a6838486-46e4-4253-ab9d-1aaa10e79935", word: "bercanda", en: "to joke", vi: "đùa", pos: "verb", pronunciation_vi: "ber-CHAN-da", pronunciation_en: "ber-CHAN-da" },
+      { cell_id: "bc6b644a-7241-4858-8904-6382ffd68ac2", word: "lucu", en: "funny / cute", vi: "buồn cười / dễ thương", pos: "adjective", pronunciation_vi: "LU-chu", pronunciation_en: "LOO-choo" },
+      { cell_id: "3ca515af-22b5-41df-b904-5644419329d0", word: "ketawa", en: "to laugh", vi: "cười", pos: "verb", pronunciation_vi: "keu-TA-wa", pronunciation_en: "ke-TA-wa" },
+      { cell_id: "ee32578a-a1b5-4ed1-b93b-47e35a190502", word: "receh", en: "corny / low-effort joke", vi: "nhạt, nhảm nhưng vui", pos: "slang adjective", pronunciation_vi: "RE-chèh", pronunciation_en: "RE-cheh" },
+      { cell_id: "3a9300a8-92c7-4d57-b027-956f339e7cf4", word: "baper", en: "too emotionally affected", vi: "nhạy cảm / tự ái", pos: "slang adjective", pronunciation_vi: "BA-per", pronunciation_en: "BA-per" },
+      { cell_id: "6bfcc027-ff82-4164-a5ca-2cc6c692773e", word: "bunyi", en: "sound", vi: "âm thanh", pos: "noun", pronunciation_vi: "BU-nyi", pronunciation_en: "BOO-nyee" },
     ],
     dialogue: [
       {
+        cell_id: "9505c7d1-cfe8-4de9-83fd-3349a62b1e91",
         speaker: "Dina",
         text: "Coba baca cepat: Kuku kaki kakekku kaku-kaku.",
         vi: "Thử đọc nhanh đi: Móng chân của ông tôi cứng cứng.",
         en: "Try reading this fast: Kuku kaki kakekku kaku-kaku.",
       },
       {
+        cell_id: "b9dc04a2-e969-4854-9066-2d087f78bb4a",
         speaker: "Minh",
         text: "Aduh, susah! Lidah saya belibet.",
         vi: "Ôi khó quá! Lưỡi tôi líu lại.",
         en: "Ouch, hard! My tongue is tied.",
       },
       {
+        cell_id: "1dbd3068-1374-408a-a077-a68567b0bc7c",
         speaker: "Dina",
         text: "Santai, ini cuma permainan kata.",
         vi: "Thoải mái đi, đây chỉ là trò chơi chữ thôi.",
         en: "Relax, this is just wordplay.",
       },
       {
+        cell_id: "a2835a30-e1f4-4002-a4a0-e9770683f7ac",
         speaker: "Minh",
         text: "Receh banget, tapi lucu. Saya mau coba tebak-tebakan juga.",
         vi: "Nhạt thật, nhưng vui. Tôi cũng muốn thử câu đố.",

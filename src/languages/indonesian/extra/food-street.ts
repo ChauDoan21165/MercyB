@@ -32,6 +32,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   /** Indonesian word/phrase. */
   word: string;
   /** English meaning. */
@@ -47,6 +48,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   /** Indonesian line. */
   text: string;
@@ -313,6 +315,7 @@ export const lessons: IndonesianLesson[] = [
       "Six golden frames for ordering street food: (1) hail the vendor + order — `Mas/Mbak, mau pesan ___`; (2) pick ingredients — `Pakai ___` / `Jangan pakai ___`; (3) spice — `Jangan terlalu pedas` / `Tidak pedas` / `Pedasnya sedikit`; (4) drinks — `Minumnya ___ satu` (say `manis`/`tawar`); (5) pay — `Berapa semuanya?` / `Bayar pakai QRIS bisa?`; (6) takeaway — `Bungkus` (to go) vs `makan di sini` (eat in). Street speech DROPS `meN-` (`mau pesan`, `mau tambah`) and adds the friendly `-in` suffix (`bungkusin` = wrap it for me, `pedasin` = make it spicier). Use counters: sate is counted in `tusuk`, rice/meals in `porsi`. Always say amounts with the `ribu` scale.",
     vocabulary: [
       {
+        cell_id: "9e0ccdc3-0eae-41a7-a702-1013574cb0a9",
         word: "warung",
         en: "small food stall / eatery",
         vi: "quán ăn nhỏ",
@@ -321,6 +324,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "WAH-roong — `warung makan`; `warteg` = cheap rice eatery",
       },
       {
+        cell_id: "211bc230-3aa4-4b4e-90b9-999881a73f5f",
         word: "kaki lima",
         en: "street vendor / pushcart",
         vi: "hàng rong, xe đẩy vỉa hè",
@@ -329,6 +333,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "KAH-kee LEE-mah — literally 'five legs'",
       },
       {
+        cell_id: "c2d0a02b-a462-4c2a-9209-dba7dbe837d2",
         word: "bakso",
         en: "meatball soup",
         vi: "canh/súp thịt viên",
@@ -337,6 +342,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "BAHK-soh — the national street snack",
       },
       {
+        cell_id: "2cadbecb-1fcf-4246-a372-c7d30d9c28fd",
         word: "sate",
         en: "satay / grilled skewers",
         vi: "thịt xiên nướng (sa-tế)",
@@ -345,6 +351,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "SAH-teh — counted in `tusuk` (skewers), with peanut sauce",
       },
       {
+        cell_id: "8dee5c95-5cb8-4935-aff6-0b9a9f734bac",
         word: "gorengan",
         en: "fried snacks / fritters",
         vi: "đồ chiên",
@@ -353,6 +360,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "go-RENG-ahn — root `goreng` (to fry) + `-an`",
       },
       {
+        cell_id: "1b150642-b1ec-495b-aebe-26b5d5003cc7",
         word: "sambal",
         en: "chili paste",
         vi: "tương ớt cay",
@@ -361,6 +369,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "SAHM-bal — NOT `kecap manis` (sweet soy sauce)",
       },
       {
+        cell_id: "13070b3d-24f8-423c-af86-d886e655d257",
         word: "pedas",
         en: "spicy",
         vi: "cay",
@@ -369,6 +378,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "puh-DAS — `tidak pedas` = not spicy; `sedikit pedas` = a little spicy",
       },
       {
+        cell_id: "6cf060fa-bf2d-4b4a-bbe0-5cf114b2bb4c",
         word: "es teh manis",
         en: "sweet iced tea",
         vi: "trà đá ngọt",
@@ -377,6 +387,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "es teh MAH-nis — `tawar` = unsweetened",
       },
       {
+        cell_id: "d7697ea9-2e7f-4687-808c-91e58ef81cfe",
         word: "porsi",
         en: "portion / serving",
         vi: "phần (suất)",
@@ -385,6 +396,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "POR-see — `satu porsi` = one portion",
       },
       {
+        cell_id: "1f5bdb8c-aea0-4a8e-a1b9-ea65ecb6275f",
         word: "bungkus",
         en: "to wrap / takeaway",
         vi: "gói (mang đi)",
@@ -393,6 +405,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "BOONG-koos — eat-in = `makan di sini`",
       },
       {
+        cell_id: "b95bad47-5089-4871-8615-e524f6dd3108",
         word: "mas / mbak",
         en: "young man / young woman (address)",
         vi: "anh / chị (gọi người trẻ)",
@@ -401,6 +414,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "mahs / mbahk — hum a light 'm' before 'bak'",
       },
       {
+        cell_id: "c5638f1e-830a-4ab1-8530-b96dbf16b7a8",
         word: "tambah",
         en: "to add / one more",
         vi: "thêm",
@@ -409,6 +423,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "TAHM-bah — `tambah nasi` = more rice",
       },
       {
+        cell_id: "eed1d0a8-573e-4ee3-8440-2a86744f227e",
         word: "enak",
         en: "tasty / delicious",
         vi: "ngon",
@@ -419,36 +434,42 @@ export const lessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "cdc96462-c4d2-418d-b09d-f235d0bd4863",
         speaker: "Pembeli",
         text: "Mas, mau pesan bakso satu sama es teh manis, ya.",
         vi: "Anh ơi, cho tôi một tô bakso và một ly trà đá ngọt nhé.",
         en: "Hey, one bakso and a sweet iced tea, please.",
       },
       {
+        cell_id: "ad1a026d-7f49-4a86-9392-4052758d6666",
         speaker: "Penjual",
         text: "Baik. Pakai sambal, Mas? Pedas atau tidak?",
         vi: "Vâng. Cho tương ớt không anh? Cay hay không cay?",
         en: "Sure. Sambal? Spicy or not?",
       },
       {
+        cell_id: "3da1d623-55f1-45ff-8047-42b7acdcd960",
         speaker: "Pembeli",
         text: "Sambalnya sedikit saja, jangan terlalu pedas.",
         vi: "Tương ớt một chút thôi, đừng cay quá.",
         en: "Just a little sambal, not too spicy.",
       },
       {
+        cell_id: "73b51ced-63a6-4891-80f7-e58ea326a7fa",
         speaker: "Penjual",
         text: "Siap. Ada lagi? Sate ayamnya enak, lho.",
         vi: "Sẵn sàng. Còn gì nữa không? Sate gà ngon lắm đấy.",
         en: "Got it. Anything else? The chicken sate is great.",
       },
       {
+        cell_id: "61b67ebd-0c76-4cd9-b4f3-8f665163eef7",
         speaker: "Pembeli",
         text: "Boleh, sate ayam lima tusuk. Berapa semuanya?",
         vi: "Được, năm xiên sate gà. Tất cả bao nhiêu?",
         en: "Sure, five chicken sate. How much is it all?",
       },
       {
+        cell_id: "b5047e68-0988-431b-b8bd-8801e86574bf",
         speaker: "Penjual",
         text: "Semuanya tiga puluh lima ribu. Bisa tunai atau QRIS.",
         vi: "Tất cả ba lăm nghìn. Tiền mặt hay QRIS đều được.",

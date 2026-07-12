@@ -13,6 +13,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -22,6 +23,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -208,6 +210,7 @@ export const lessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: in banking use `rekening`, not `akun`. Memorize these emergency lines: `Kartu ATM saya hilang, tolong segera diblokir`, `Ada transaksi mencurigakan`, `Rekening saya sepertinya dibobol`, and `Saya tidak pernah memberikan PIN kepada siapa pun`.",
     vocabulary: [
       {
+        cell_id: "549fb465-83ce-476f-a563-5641e4c362a3",
         word: "kartu ATM hilang",
         en: "lost ATM card",
         vi: "thẻ ATM bị mất",
@@ -216,6 +219,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "KAR-tu A-TE-EM HI-lang",
       },
       {
+        cell_id: "f045a4a3-6dd1-4977-bff1-a6aa36eff90d",
         word: "transaksi mencurigakan",
         en: "suspicious transaction",
         vi: "giao dịch đáng ngờ",
@@ -224,6 +228,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "tran-SAK-see men-choo-ree-GA-kan",
       },
       {
+        cell_id: "06e5a9f0-21eb-4a9e-b283-fcbc9e83a9e3",
         word: "blokir kartu",
         en: "block/freeze a card",
         vi: "khóa thẻ",
@@ -232,6 +237,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "BLO-keer KAR-too",
       },
       {
+        cell_id: "85d31e47-bab3-4cfe-b872-68eb6ec1fea2",
         word: "lapor bank",
         en: "report to the bank",
         vi: "báo ngân hàng",
@@ -240,6 +246,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "la-POR bank",
       },
       {
+        cell_id: "d86226f8-7af7-44d1-a68f-b8bad1e80350",
         word: "PIN",
         en: "PIN",
         vi: "mã PIN",
@@ -248,6 +255,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "pin",
       },
       {
+        cell_id: "cbb5713c-d402-4307-a163-12c80bad8007",
         word: "rekening dibobol",
         en: "account breached/drained",
         vi: "tài khoản bị xâm nhập/rút trộm",
@@ -256,6 +264,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "re-KE-ning di-BO-bol",
       },
       {
+        cell_id: "4e40c5b4-e9e1-4e7d-a14d-41a894bb0f99",
         word: "customer service",
         en: "customer service",
         vi: "chăm sóc khách hàng",
@@ -264,6 +273,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "customer service",
       },
       {
+        cell_id: "5352458b-89d3-4692-a935-ca637bb630cb",
         word: "nomor laporan",
         en: "report number",
         vi: "số báo cáo/mã vụ việc",
@@ -272,6 +282,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "NO-mor la-POR-an",
       },
       {
+        cell_id: "ace22645-fc5f-4d87-a09b-38dd921aafc7",
         word: "dana hilang",
         en: "missing funds",
         vi: "số tiền bị mất",
@@ -280,6 +291,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "DA-na HI-lang",
       },
       {
+        cell_id: "24165301-1a69-4692-9965-bc997e71ad31",
         word: "disalahgunakan",
         en: "misused",
         vi: "bị lạm dụng/sử dụng sai mục đích",
@@ -290,24 +302,28 @@ export const lessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "7584f565-7d83-4c34-b224-c4f058eeb2e6",
         speaker: "Nasabah",
         text: "Halo, kartu ATM saya hilang. Tolong segera diblokir.",
         vi: "Alo, thẻ ATM của tôi bị mất. Làm ơn khóa ngay.",
         en: "Hello, my ATM card is lost. Please block it immediately.",
       },
       {
+        cell_id: "ffb540d7-4894-434e-9beb-a941889b1ba3",
         speaker: "Customer Service",
         text: "Baik, Pak. Apakah ada transaksi mencurigakan?",
         vi: "Vâng ạ. Có giao dịch đáng ngờ không?",
         en: "Okay, sir. Is there any suspicious transaction?",
       },
       {
+        cell_id: "5a49f652-da7b-4fcd-8215-2317ab493852",
         speaker: "Nasabah",
         text: "Ada. Rekening saya sepertinya dibobol, dan saya tidak pernah memberikan PIN.",
         vi: "Có. Tài khoản của tôi hình như bị xâm nhập, và tôi chưa bao giờ đưa mã PIN.",
         en: "Yes. My account seems to have been breached, and I never gave out my PIN.",
       },
       {
+        cell_id: "59208a87-3e03-4488-b6f1-cd64ea51df32",
         speaker: "Customer Service",
         text: "Kami buatkan laporan. Mohon simpan nomor laporan ini.",
         vi: "Chúng tôi sẽ lập báo cáo. Xin lưu số báo cáo này.",

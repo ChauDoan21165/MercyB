@@ -22,6 +22,7 @@ export type PunjabiReadingBridgeA2Question = {
 };
 
 export type PunjabiReadingBridgeA2Vocab = {
+  cell_id?: string;
   word: string;
   romanization: string;
   vi: string;

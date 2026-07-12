@@ -16,6 +16,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   /** Indonesian word/phrase. */
   word: string;
   /** English meaning. */
@@ -31,6 +32,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   /** Indonesian line. */
   text: string;
@@ -193,6 +195,7 @@ export const lessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: in live selling, learn chunks like `keranjang kuning`, `stok terbatas`, `checkout sekarang`, `gratis ongkir`, `komentar penonton`, and `promo spesial`. The host should use `kami` if speaking for a team, and `kita` when inviting viewers into the shared atmosphere. Short, repeated, rhythmic sentences sound more natural than long explanations.",
     vocabulary: [
       {
+        cell_id: "10331720-c6d9-4914-886a-73fd2a3125f3",
         word: "host",
         en: "live host",
         vi: "người dẫn live",
@@ -201,6 +204,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "HOST",
       },
       {
+        cell_id: "40d1338e-c226-40ac-8ba2-e12b22301a52",
         word: "promo",
         en: "promotion",
         vi: "khuyến mãi",
@@ -209,6 +213,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "PRO-mo",
       },
       {
+        cell_id: "3253ad05-d6bd-4ee1-95ef-e28137b5c767",
         word: "keranjang kuning",
         en: "yellow cart",
         vi: "giỏ vàng",
@@ -217,6 +222,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "keh-rahn-JAHNG KOO-ning",
       },
       {
+        cell_id: "27190e8a-7941-4b26-b070-bec50ced7126",
         word: "stok terbatas",
         en: "limited stock",
         vi: "hàng có hạn",
@@ -225,6 +231,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "stok ter-BAH-tahs",
       },
       {
+        cell_id: "e9364a31-4027-4750-90d2-d38ab39dceb0",
         word: "komentar penonton",
         en: "viewer comments",
         vi: "bình luận của khán giả",
@@ -233,6 +240,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "ko-men-TAR pe-NON-ton",
       },
       {
+        cell_id: "985ef134-64fd-42bb-9b85-65916f957431",
         word: "checkout",
         en: "checkout / place order",
         vi: "chốt đơn",
@@ -241,6 +249,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "CHEK-out",
       },
       {
+        cell_id: "37e31d29-31ba-4e10-9b5a-946855617996",
         word: "gratis ongkir",
         en: "free shipping",
         vi: "miễn phí ship",
@@ -249,6 +258,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "GRAH-tees ONG-keer",
       },
       {
+        cell_id: "eb56d960-1640-46be-a3ce-8ab52e0be83e",
         word: "penonton",
         en: "audience / viewers",
         vi: "khán giả / người xem",
@@ -259,24 +269,28 @@ export const lessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "737fcd2d-97c6-423d-bb5f-c672ebac4eb6",
         speaker: "Host",
         text: "Halo, teman-teman. Selamat datang di live kami.",
         vi: "Xin chào mọi người. Chào mừng đến với livestream của chúng tôi.",
         en: "Hello everyone. Welcome to our live.",
       },
       {
+        cell_id: "ad3f3cb0-aab2-42fb-96f5-e4f690138052",
         speaker: "Penonton",
         text: "Kak, stok warna hitam masih ada?",
         vi: "Bạn ơi, còn hàng màu đen không?",
         en: "Is the black color still in stock?",
       },
       {
+        cell_id: "40c7f2f8-7665-4b4f-8b86-7b85914971c0",
         speaker: "Host",
         text: "Masih ada, Kak. Silakan cek keranjang kuning untuk checkout.",
         vi: "Vẫn còn nha bạn. Mời xem giỏ vàng để chốt đơn.",
         en: "Yes, still available. Please check the yellow cart to checkout.",
       },
       {
+        cell_id: "bce0ec0a-b4d9-431c-8793-183fcba0b66a",
         speaker: "Penonton",
         text: "Kalau checkout sekarang, dapat gratis ongkir tidak?",
         vi: "Nếu chốt đơn ngay bây giờ thì có được miễn phí ship không?",

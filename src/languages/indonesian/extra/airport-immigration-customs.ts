@@ -21,6 +21,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   /** Indonesian word/phrase. */
   word: string;
   /** English meaning. */
@@ -36,6 +37,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   /** Indonesian line. */
   text: string;
@@ -253,6 +255,7 @@ export const lessons: IndonesianLesson[] = [
       "When speaking with officers, use short polite sentences: `Saya datang untuk liburan`, `Alamat hotel ada di formulir`, `Saya tidak membawa barang yang harus dideklarasikan`. If you do not understand, say `Maaf, bisa diulang pelan-pelan?`",
     vocabulary: [
       {
+        cell_id: "09aa4e74-9e6a-4ae0-ad05-1232c7ef6998",
         word: "bandara",
         en: "airport",
         vi: "sân bay",
@@ -261,6 +264,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "ban-DA-ra",
       },
       {
+        cell_id: "53eb18bc-66e2-4546-97bd-ab062ca32526",
         word: "imigrasi",
         en: "immigration",
         vi: "nhập cảnh/di trú",
@@ -269,6 +273,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "ee-mee-GRA-see",
       },
       {
+        cell_id: "661287ce-a074-4a74-b4b2-2627a1af7a5e",
         word: "bea cukai",
         en: "customs",
         vi: "hải quan",
@@ -277,6 +282,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "BEH-a CHOO-kai",
       },
       {
+        cell_id: "641cf5d1-c6a7-4bd0-8e40-ab19556bef73",
         word: "paspor",
         en: "passport",
         vi: "hộ chiếu",
@@ -285,6 +291,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "PAS-por",
       },
       {
+        cell_id: "9bcfccfa-915c-4545-b331-e96177fe511f",
         word: "bagasi",
         en: "baggage",
         vi: "hành lý ký gửi",
@@ -293,6 +300,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "ba-GA-see",
       },
       {
+        cell_id: "316f0295-213a-4aff-a64d-d138b7d2e0a6",
         word: "barang bawaan",
         en: "carried items; belongings",
         vi: "đồ mang theo",
@@ -301,6 +309,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "BA-rang ba-WA-an",
       },
       {
+        cell_id: "2bdcb72a-65e7-49c9-b633-51dcba3337fc",
         word: "formulir kedatangan",
         en: "arrival form",
         vi: "tờ khai nhập cảnh",
@@ -309,6 +318,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "for-moo-LEER ke-da-TA-ngan",
       },
       {
+        cell_id: "b60e65b9-2700-4c84-aa08-fcdcbd2887e1",
         word: "pemeriksaan",
         en: "inspection; check",
         vi: "kiểm tra",
@@ -317,6 +327,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "peh-me-RIK-sa-an",
       },
       {
+        cell_id: "607b0e40-b667-45cf-8e6a-b662ce496604",
         word: "petugas",
         en: "officer; staff member",
         vi: "nhân viên/cán bộ",
@@ -325,6 +336,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "peh-TOO-gas",
       },
       {
+        cell_id: "3c0d17cb-b1f2-478d-b1e0-8d3571e1c70e",
         word: "dideklarasikan",
         en: "declared",
         vi: "được khai báo",
@@ -335,24 +347,28 @@ export const lessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "5f55bf69-d4ee-43c6-897c-dbda1ccbb1de",
         speaker: "Petugas Imigrasi",
         text: "Selamat datang. Tujuan Anda ke Indonesia untuk apa?",
         vi: "Chào mừng. Mục đích của anh/chị đến Indonesia là gì?",
         en: "Welcome. What is your purpose for coming to Indonesia?",
       },
       {
+        cell_id: "20bf47ef-0d25-47f9-9a70-3d83225f5c0f",
         speaker: "Penumpang",
         text: "Saya datang untuk liburan selama dua minggu. Alamat hotel ada di formulir kedatangan.",
         vi: "Tôi đến du lịch trong hai tuần. Địa chỉ khách sạn có trong tờ khai nhập cảnh.",
         en: "I am here for vacation for two weeks. The hotel address is on the arrival form.",
       },
       {
+        cell_id: "2eccd74d-1723-460b-954b-16d3bb09acb1",
         speaker: "Petugas Bea Cukai",
         text: "Apakah ada barang yang harus dideklarasikan?",
         vi: "Có hàng hóa nào phải khai báo không?",
         en: "Do you have any items that must be declared?",
       },
       {
+        cell_id: "379ce196-0bee-4e9a-965b-7816410ea54a",
         speaker: "Penumpang",
         text: "Tidak ada. Saya hanya membawa barang bawaan pribadi.",
         vi: "Không có. Tôi chỉ mang đồ cá nhân.",

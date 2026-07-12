@@ -22,6 +22,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   /** Indonesian word/phrase. */
   word: string;
   /** English meaning. */
@@ -37,6 +38,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   /** Indonesian line. */
   text: string;
@@ -254,6 +256,7 @@ export const lessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: do not use only `rusak` for every fault. A flat tire is `ban bocor`; weak brakes are `rem kurang pakem`; a weak battery is `aki lemah` or `aki soak`; rough engine noise is `mesinnya bunyi kasar`. Golden bengkel frames: `Saya mau servis motor`, `Berapa biayanya?`, `Perlu ganti spare part?`, `Bisa selesai sore ini?`.",
     vocabulary: [
       {
+        cell_id: "3495d55f-886e-4945-ba2d-3374a5647cec",
         word: "bengkel motor",
         en: "motorcycle repair shop",
         vi: "tiệm sửa xe máy",
@@ -262,6 +265,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "BENG-kel MO-tor",
       },
       {
+        cell_id: "630fed6c-d209-4bdf-97ed-ac8d0ec80deb",
         word: "ban bocor",
         en: "flat/leaking tire",
         vi: "lốp thủng / xì hơi",
@@ -270,6 +274,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "ban BO-chor",
       },
       {
+        cell_id: "677b10e8-91ab-43bd-8c8e-63321be52743",
         word: "tambal ban",
         en: "patch a tire",
         vi: "vá lốp",
@@ -278,6 +283,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "TAM-bal ban",
       },
       {
+        cell_id: "ad7f3e90-f4d5-4b28-b00a-d29e5b1be173",
         word: "ganti oli",
         en: "change oil",
         vi: "thay dầu nhớt",
@@ -286,6 +292,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "GAN-tee O-lee",
       },
       {
+        cell_id: "0b261ac1-a4c8-44ce-9e17-2fa7a783ce9a",
         word: "rem",
         en: "brake",
         vi: "phanh",
@@ -294,6 +301,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "rem",
       },
       {
+        cell_id: "d585e3f8-a5ca-42a4-93a7-cefd477fe374",
         word: "aki",
         en: "vehicle battery",
         vi: "ắc quy",
@@ -302,6 +310,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "A-kee",
       },
       {
+        cell_id: "5a647d64-8055-4dbe-959b-04abe1b7dc51",
         word: "servis rutin",
         en: "routine service",
         vi: "bảo dưỡng định kỳ",
@@ -310,6 +319,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "SER-vis roo-TEEN",
       },
       {
+        cell_id: "b099f088-7403-48ed-9c8c-ff98a570ae2a",
         word: "spare part",
         en: "replacement part",
         vi: "phụ tùng",
@@ -318,6 +328,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "SPARE-part",
       },
       {
+        cell_id: "83578575-403b-4f16-b9b8-f89de0cebe40",
         word: "suku cadang",
         en: "spare part (formal)",
         vi: "phụ tùng / linh kiện",
@@ -326,6 +337,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "SOO-koo CHA-dang",
       },
       {
+        cell_id: "36a9e87d-c67d-4d60-9545-ef3ed32e91c6",
         word: "biaya perbaikan",
         en: "repair cost",
         vi: "chi phí sửa chữa",
@@ -334,6 +346,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "BEE-a-ya per-ba-EE-kan",
       },
       {
+        cell_id: "9d74056b-85fc-4c97-80d6-00d977e1acc4",
         word: "pakem",
         en: "grippy/effective",
         vi: "ăn / chắc / hiệu quả",
@@ -342,6 +355,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "PA-kem",
       },
       {
+        cell_id: "de8a14a0-a04a-46f3-9b12-97a22c18de31",
         word: "nota",
         en: "receipt",
         vi: "hóa đơn / phiếu",
@@ -352,24 +366,28 @@ export const lessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "2d30eba2-fcf0-4858-80e3-d5a69c74db13",
         speaker: "Pelanggan",
         text: "Mas, ban belakang bocor dan rem depan kurang pakem.",
         vi: "Anh ơi, lốp sau bị thủng và phanh trước không ăn lắm.",
         en: "Sir, the rear tire is flat and the front brake is weak.",
       },
       {
+        cell_id: "4285d45b-3abd-4184-98d7-b3bfa9f09966",
         speaker: "Mekanik",
         text: "Baik, saya cek dulu. Kapan terakhir servis rutin?",
         vi: "Vâng, tôi kiểm tra trước. Lần bảo dưỡng định kỳ gần nhất là khi nào?",
         en: "Okay, I will check first. When was the last routine service?",
       },
       {
+        cell_id: "7cacce98-d3f4-4181-a785-e50c79dcc090",
         speaker: "Pelanggan",
         text: "Sudah lama. Kalau perlu ganti spare part, kabari saya dulu.",
         vi: "Lâu rồi. Nếu cần thay phụ tùng, báo tôi trước nhé.",
         en: "It has been a long time. If parts need replacing, tell me first.",
       },
       {
+        cell_id: "bea5e790-4051-4ae9-95c0-0e38623d7b8d",
         speaker: "Mekanik",
         text: "Siap. Nanti saya beri tahu biaya perbaikannya.",
         vi: "Được. Lát nữa tôi sẽ báo chi phí sửa chữa.",

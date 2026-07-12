@@ -29,6 +29,7 @@ export type LessonSentence = {
 };
 
 export type VocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -40,6 +41,7 @@ export type VocabEntry = {
 };
 
 export type DialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -167,6 +169,7 @@ export const lessons: PortugueseLesson[] = [
       "Lock in the time-of-day trio: *bom dia* (morning), *boa tarde* (afternoon), *boa noite* (evening AND goodnight). The signature Brazilian sound: 'di/de' becomes 'dji' and 'ti/te' becomes 'tchi' — so *dia* is 'DJEE-ah' and *noite* is 'NOY-tchi'. European Portuguese does not do this, so it's the fastest way to sound Brazilian.",
     vocabulary: [
       {
+        cell_id: "f5c7c232-0c55-4ddb-b9c7-98cd3fa8f9ad",
         word: "oi",
         en: "hi (informal)",
         vi: "chào (thân mật)",
@@ -175,6 +178,7 @@ export const lessons: PortugueseLesson[] = [
         pronunciation_en: "OY — like 'oy' in 'boy'",
       },
       {
+        cell_id: "b15c8721-0561-411c-bdbf-b30d8f37a8c3",
         word: "olá",
         en: "hello",
         vi: "xin chào",
@@ -183,6 +187,7 @@ export const lessons: PortugueseLesson[] = [
         pronunciation_en: "oh-LAH — stress the final syllable",
       },
       {
+        cell_id: "686f720c-9c49-4ca6-b7e8-0266aef8d9e5",
         word: "bom dia",
         en: "good morning",
         vi: "chào buổi sáng",
@@ -191,6 +196,7 @@ export const lessons: PortugueseLesson[] = [
         pronunciation_en: "bong DJEE-ah — nasal 'bong'",
       },
       {
+        cell_id: "72c63044-2bf1-449a-9a76-0e737f4df907",
         word: "boa tarde",
         en: "good afternoon",
         vi: "chào buổi chiều",
@@ -199,6 +205,7 @@ export const lessons: PortugueseLesson[] = [
         pronunciation_en: "BOH-ah TAR-dji",
       },
       {
+        cell_id: "79ae4399-64d7-41f1-9f33-96e5281350ff",
         word: "boa noite",
         en: "good evening / goodnight",
         vi: "chào buổi tối / chúc ngủ ngon",
@@ -207,6 +214,7 @@ export const lessons: PortugueseLesson[] = [
         pronunciation_en: "BOH-ah NOY-tchi",
       },
       {
+        cell_id: "04a5742d-b699-4396-9216-7f02322c2a7d",
         word: "tchau",
         en: "bye",
         vi: "tạm biệt",
@@ -215,6 +223,7 @@ export const lessons: PortugueseLesson[] = [
         pronunciation_en: "chow — like Italian 'ciao'",
       },
       {
+        cell_id: "96145706-c5dd-423d-94ee-a4448f7ff522",
         word: "obrigado / obrigada",
         en: "thank you (male / female speaker)",
         vi: "cảm ơn (nam / nữ nói)",
@@ -223,6 +232,7 @@ export const lessons: PortugueseLesson[] = [
         pronunciation_en: "oh-bree-GAH-doo / oh-bree-GAH-dah",
       },
       {
+        cell_id: "2b9405e1-88e9-48a6-a672-a90968b2ca94",
         word: "de nada",
         en: "you're welcome",
         vi: "không có gì",
@@ -231,6 +241,7 @@ export const lessons: PortugueseLesson[] = [
         pronunciation_en: "dji NAH-dah",
       },
       {
+        cell_id: "e486d7e0-7e68-4707-b8dd-366607689d45",
         word: "por favor",
         en: "please",
         vi: "làm ơn / xin",
@@ -239,6 +250,7 @@ export const lessons: PortugueseLesson[] = [
         pronunciation_en: "por fah-VOR — soft final 'r'",
       },
       {
+        cell_id: "4db9f8c6-192b-4dfd-bc4b-04f3d463e7d0",
         word: "com licença",
         en: "excuse me",
         vi: "xin phép / xin lỗi (để đi qua)",
@@ -249,24 +261,28 @@ export const lessons: PortugueseLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "d041be70-79e7-4a99-bb76-3a4be4bbff2a",
         speaker: "A",
         text: "Oi! Bom dia! Tudo bem?",
         vi: "Chào! Buổi sáng tốt lành! Mọi chuyện ổn chứ?",
         en: "Hi! Good morning! All good?",
       },
       {
+        cell_id: "be0a3bbb-7ede-480d-b0f3-2a003a9b6a8b",
         speaker: "B",
         text: "Tudo bem, obrigada! E você?",
         vi: "Mọi chuyện ổn, cảm ơn! Còn bạn?",
         en: "All good, thank you! And you?",
       },
       {
+        cell_id: "ddfd5676-e9ff-41b0-abfc-9417c7ab559a",
         speaker: "A",
         text: "Tudo ótimo! Até logo!",
         vi: "Tuyệt vời! Hẹn gặp lại!",
         en: "Everything's great! See you soon!",
       },
       {
+        cell_id: "5dd5af61-e512-422e-91ad-7c37f248488d",
         speaker: "B",
         text: "Tchau, tchau!",
         vi: "Tạm biệt nhé!",
@@ -432,6 +448,7 @@ export const lessons: PortugueseLesson[] = [
       "Four core lines: *Meu nome é...* (My name is...), *Eu sou do/da...* (I'm from...), *Eu tenho ... anos* (I'm ... years old), *Eu sou...* (I am a [job]). Watch the 'from' contraction: *do Vietnã* (masculine country) but *da França* (feminine) — *de + o/a* fuses into *do/da*. The nasal '-ão' (São, profissão) is the hardest sound — drill it separately by humming the vowel through your nose.",
     vocabulary: [
       {
+        cell_id: "22f65843-7d11-415a-9a35-adbb451c764d",
         word: "o nome",
         en: "name",
         vi: "tên",
@@ -440,6 +457,7 @@ export const lessons: PortugueseLesson[] = [
         pronunciation_en: "oo NOH-mi",
       },
       {
+        cell_id: "de298bba-d5f9-43ec-80bf-1cbc56f7c905",
         word: "eu sou",
         en: "I am",
         vi: "tôi là",
@@ -448,6 +466,7 @@ export const lessons: PortugueseLesson[] = [
         pronunciation_en: "eh-oo SOH",
       },
       {
+        cell_id: "63340e73-ef7a-47b4-965f-f1991073e2ac",
         word: "você",
         en: "you",
         vi: "bạn",
@@ -456,6 +475,7 @@ export const lessons: PortugueseLesson[] = [
         pronunciation_en: "voh-SEH",
       },
       {
+        cell_id: "2262eab7-5599-4406-868d-25ab4a77f7f5",
         word: "ter ... anos",
         en: "to be ... years old (lit. to have ... years)",
         vi: "... tuổi (nghĩa đen: có ... năm)",
@@ -464,6 +484,7 @@ export const lessons: PortugueseLesson[] = [
         pronunciation_en: "TEHR ... AH-noos",
       },
       {
+        cell_id: "a73751ca-f7b0-4fb9-a112-64a6016b57d6",
         word: "morar",
         en: "to live (reside)",
         vi: "sống / cư trú",
@@ -472,6 +493,7 @@ export const lessons: PortugueseLesson[] = [
         pronunciation_en: "moh-RAR",
       },
       {
+        cell_id: "bc870188-1d59-470d-8cb9-af246646d12b",
         word: "a profissão",
         en: "profession / job",
         vi: "nghề nghiệp",
@@ -480,6 +502,7 @@ export const lessons: PortugueseLesson[] = [
         pronunciation_en: "ah proh-fee-SOWN",
       },
       {
+        cell_id: "bae98385-b798-41af-9e78-63345cb0468e",
         word: "o estudante / a estudante",
         en: "student",
         vi: "sinh viên / học sinh",
@@ -488,6 +511,7 @@ export const lessons: PortugueseLesson[] = [
         pronunciation_en: "es-too-DAN-tchi",
       },
       {
+        cell_id: "1b63ed90-a025-45d1-aa27-5f4c54c6efb0",
         word: "prazer",
         en: "pleasure (nice to meet you)",
         vi: "hân hạnh",
@@ -496,6 +520,7 @@ export const lessons: PortugueseLesson[] = [
         pronunciation_en: "prah-ZEHR — buzzing 'z'",
       },
       {
+        cell_id: "ccda3d80-ad90-4173-8847-dd3497a686b3",
         word: "de onde",
         en: "from where",
         vi: "từ đâu",
@@ -504,6 +529,7 @@ export const lessons: PortugueseLesson[] = [
         pronunciation_en: "dji OWN-dji",
       },
       {
+        cell_id: "6fa6f042-a3ca-46ae-b6c1-b4ef14fe3e68",
         word: "o amigo / a amiga",
         en: "friend",
         vi: "bạn (nam / nữ)",
@@ -514,24 +540,28 @@ export const lessons: PortugueseLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "5477cb1b-6d11-42fb-9d65-831980b35b98",
         speaker: "A",
         text: "Oi! Meu nome é Lucas. Como você se chama?",
         vi: "Chào! Tôi tên Lucas. Bạn tên gì?",
         en: "Hi! My name is Lucas. What's your name?",
       },
       {
+        cell_id: "73d57a21-1a1c-4a89-b8d6-d7652a96353d",
         speaker: "B",
         text: "Eu me chamo Mai. Muito prazer!",
         vi: "Tôi tên Mai. Rất hân hạnh!",
         en: "I'm called Mai. Nice to meet you!",
       },
       {
+        cell_id: "889e6a10-5dd5-43d7-b871-3c6175640661",
         speaker: "A",
         text: "De onde você é, Mai?",
         vi: "Bạn từ đâu đến, Mai?",
         en: "Where are you from, Mai?",
       },
       {
+        cell_id: "b529055b-d433-477c-8e51-c5a7e8fed03b",
         speaker: "B",
         text: "Eu sou do Vietnã, mas moro no Brasil agora.",
         vi: "Tôi đến từ Việt Nam, nhưng giờ sống ở Brazil.",
@@ -685,37 +715,41 @@ export const lessons: PortugueseLesson[] = [
     tip_advice_en:
       "Count 1–20 out loud daily until the rhythm sticks. Pronunciation key: words ending in '-e' (sete, nove, onze, vinte) end in an '-i' sound in Brazil, and 'te' becomes 'tchi'. When you pay, listen for the number of *reais* and try saying the price aloud in Portuguese — vendors warm to the effort.",
     vocabulary: [
-      { word: "um / uma", en: "one (m / f)", vi: "một (đực / cái)", pos: "number", pronunciation_vi: "UNG / U-ma", pronunciation_en: "oong / OO-mah" },
-      { word: "dois / duas", en: "two (m / f)", vi: "hai (đực / cái)", pos: "number", pronunciation_vi: "DÔIS / DU-as", pronunciation_en: "doh-ees / DOO-ahss" },
-      { word: "três", en: "three", vi: "ba", pos: "number", pronunciation_vi: "TRÊS", pronunciation_en: "trehs" },
-      { word: "quatro", en: "four", vi: "bốn", pos: "number", pronunciation_vi: "KUA-tru", pronunciation_en: "KWAH-troo" },
-      { word: "cinco", en: "five", vi: "năm", pos: "number", pronunciation_vi: "SIN-cu — 'in' âm mũi", pronunciation_en: "SEEN-koo" },
-      { word: "dez", en: "ten", vi: "mười", pos: "number", pronunciation_vi: "DÉS — 'e' mở", pronunciation_en: "dehss" },
-      { word: "vinte", en: "twenty", vi: "hai mươi", pos: "number", pronunciation_vi: "VIN-tchi", pronunciation_en: "VEEN-tchi" },
-      { word: "o número", en: "number", vi: "con số", pos: "noun (m)", pronunciation_vi: "u NU-me-ru", pronunciation_en: "oo NOO-meh-roo" },
-      { word: "quanto custa?", en: "how much is it?", vi: "bao nhiêu tiền?", pos: "phrase", pronunciation_vi: "KUAN-tu KUS-ta", pronunciation_en: "KWAN-too KOOS-tah" },
-      { word: "o real / os reais", en: "real / reais (currency)", vi: "đồng real (tiền Brazil)", pos: "noun (m)", pronunciation_vi: "he-AL / he-AIS — 'r' đầu đọc 'h'", pronunciation_en: "heh-OW / heh-EYESS" },
+      { cell_id: "592919b6-e58b-44a5-b849-e78f6085496a", word: "um / uma", en: "one (m / f)", vi: "một (đực / cái)", pos: "number", pronunciation_vi: "UNG / U-ma", pronunciation_en: "oong / OO-mah" },
+      { cell_id: "70a27186-cfa8-40a6-b1c5-212e5933fcc6", word: "dois / duas", en: "two (m / f)", vi: "hai (đực / cái)", pos: "number", pronunciation_vi: "DÔIS / DU-as", pronunciation_en: "doh-ees / DOO-ahss" },
+      { cell_id: "087320e9-383c-4b70-913c-9bd649b7578c", word: "três", en: "three", vi: "ba", pos: "number", pronunciation_vi: "TRÊS", pronunciation_en: "trehs" },
+      { cell_id: "004e1857-4027-41b7-acc7-4e0e171af4e3", word: "quatro", en: "four", vi: "bốn", pos: "number", pronunciation_vi: "KUA-tru", pronunciation_en: "KWAH-troo" },
+      { cell_id: "97316ab5-7578-49b7-affe-4a1e0a1cf046", word: "cinco", en: "five", vi: "năm", pos: "number", pronunciation_vi: "SIN-cu — 'in' âm mũi", pronunciation_en: "SEEN-koo" },
+      { cell_id: "0b3e8d18-89fb-46de-9014-45a5d62cff76", word: "dez", en: "ten", vi: "mười", pos: "number", pronunciation_vi: "DÉS — 'e' mở", pronunciation_en: "dehss" },
+      { cell_id: "77bc3b37-f3e8-439e-a0d2-ef5ac686139f", word: "vinte", en: "twenty", vi: "hai mươi", pos: "number", pronunciation_vi: "VIN-tchi", pronunciation_en: "VEEN-tchi" },
+      { cell_id: "6bbb1c50-f004-4c9a-bd88-f45c00c25311", word: "o número", en: "number", vi: "con số", pos: "noun (m)", pronunciation_vi: "u NU-me-ru", pronunciation_en: "oo NOO-meh-roo" },
+      { cell_id: "70c460a4-468b-4372-8902-28fec5ed374c", word: "quanto custa?", en: "how much is it?", vi: "bao nhiêu tiền?", pos: "phrase", pronunciation_vi: "KUAN-tu KUS-ta", pronunciation_en: "KWAN-too KOOS-tah" },
+      { cell_id: "af010b3a-996a-42b2-b5d6-48323fffed47", word: "o real / os reais", en: "real / reais (currency)", vi: "đồng real (tiền Brazil)", pos: "noun (m)", pronunciation_vi: "he-AL / he-AIS — 'r' đầu đọc 'h'", pronunciation_en: "heh-OW / heh-EYESS" },
     ],
     dialogue: [
       {
+        cell_id: "174489ce-7eab-4339-aed4-95b26465596d",
         speaker: "A",
         text: "Quanto custa o café?",
         vi: "Cà phê bao nhiêu tiền?",
         en: "How much is the coffee?",
       },
       {
+        cell_id: "63b843b8-f1af-4f0d-98f0-2170624d8940",
         speaker: "B",
         text: "Cinco reais.",
         vi: "Năm real.",
         en: "Five reais.",
       },
       {
+        cell_id: "1b76b275-bf5d-42a1-becf-ec81db3aa407",
         speaker: "A",
         text: "E dois pães de queijo?",
         vi: "Còn hai cái bánh phô mai thì sao?",
         en: "And two cheese breads?",
       },
       {
+        cell_id: "7218f9c4-bdea-43cb-acd7-0e9d01950a43",
         speaker: "B",
         text: "Mais seis reais. No total, onze reais.",
         vi: "Thêm sáu real. Tổng cộng, mười một real.",
@@ -862,37 +896,41 @@ export const lessons: PortugueseLesson[] = [
     tip_advice_en:
       "Ordering frame: *Eu queria + [item], por favor*. To ask the price: *Quanto custa?* To pay: *A conta, por favor*. Key pronunciation rule: a single 's' BETWEEN two vowels becomes 'z' (*casa* = 'KAH-zah', *delicioso* = '...OH-zoo'), but a double 'ss' stays a sharp 's' (*pessoa*, *posso*). Vietnamese speakers tend to keep it as 's' — train the 'z' buzz.",
     vocabulary: [
-      { word: "eu queria", en: "I would like", vi: "tôi muốn (lịch sự)", pos: "verb phrase", pronunciation_vi: "ê-u ke-RI-a", pronunciation_en: "eh-oo keh-REE-ah" },
-      { word: "o pão", en: "bread", vi: "bánh mì", pos: "noun (m)", pronunciation_vi: "u PÃU — '-ão' âm mũi", pronunciation_en: "oo POWN" },
-      { word: "a água", en: "water", vi: "nước", pos: "noun (f)", pronunciation_vi: "a Á-gua", pronunciation_en: "AH-gwah" },
-      { word: "o café", en: "coffee", vi: "cà phê", pos: "noun (m)", pronunciation_vi: "u ca-FÉ — nhấn cuối", pronunciation_en: "oo kah-FEH" },
-      { word: "o suco", en: "juice", vi: "nước ép", pos: "noun (m)", pronunciation_vi: "u SU-cu", pronunciation_en: "oo SOO-koo" },
-      { word: "a comida", en: "food", vi: "đồ ăn", pos: "noun (f)", pronunciation_vi: "a co-MI-da", pronunciation_en: "ah koh-MEE-dah" },
-      { word: "almoçar", en: "to have lunch", vi: "ăn trưa", pos: "verb", pronunciation_vi: "al-mo-SAR — 'ç' đọc 's'", pronunciation_en: "ow-moh-SAR" },
-      { word: "estar com fome", en: "to be hungry", vi: "đói bụng", pos: "verb phrase", pronunciation_vi: "es-TAR com FÔ-mi", pronunciation_en: "es-TAR kong FOH-mi" },
-      { word: "a conta", en: "the bill", vi: "hóa đơn", pos: "noun (f)", pronunciation_vi: "a CON-ta — 'on' âm mũi", pronunciation_en: "ah KOWN-tah" },
-      { word: "gostoso / delicioso", en: "tasty / delicious", vi: "ngon", pos: "adjective", pronunciation_vi: "gos-TÔ-zu / de-li-si-Ô-zu — 's' đọc 'z'", pronunciation_en: "gohs-TOH-zoo / deh-lee-see-OH-zoo" },
+      { cell_id: "306491b9-bfde-427e-85ec-4968c57effe7", word: "eu queria", en: "I would like", vi: "tôi muốn (lịch sự)", pos: "verb phrase", pronunciation_vi: "ê-u ke-RI-a", pronunciation_en: "eh-oo keh-REE-ah" },
+      { cell_id: "878d4873-730f-4027-bac9-9be75741cb5d", word: "o pão", en: "bread", vi: "bánh mì", pos: "noun (m)", pronunciation_vi: "u PÃU — '-ão' âm mũi", pronunciation_en: "oo POWN" },
+      { cell_id: "73fb0f40-0398-4308-9587-ead97c20d7a3", word: "a água", en: "water", vi: "nước", pos: "noun (f)", pronunciation_vi: "a Á-gua", pronunciation_en: "AH-gwah" },
+      { cell_id: "04f77717-3f97-4b5e-830d-1b4e8c2c64c8", word: "o café", en: "coffee", vi: "cà phê", pos: "noun (m)", pronunciation_vi: "u ca-FÉ — nhấn cuối", pronunciation_en: "oo kah-FEH" },
+      { cell_id: "cfd0a501-851d-4cb6-9e98-9c2e13eb6c93", word: "o suco", en: "juice", vi: "nước ép", pos: "noun (m)", pronunciation_vi: "u SU-cu", pronunciation_en: "oo SOO-koo" },
+      { cell_id: "d251fff1-5d33-4f7e-a02d-3f1af295e411", word: "a comida", en: "food", vi: "đồ ăn", pos: "noun (f)", pronunciation_vi: "a co-MI-da", pronunciation_en: "ah koh-MEE-dah" },
+      { cell_id: "5ff2a66f-2e92-430f-b15a-212cad6572a0", word: "almoçar", en: "to have lunch", vi: "ăn trưa", pos: "verb", pronunciation_vi: "al-mo-SAR — 'ç' đọc 's'", pronunciation_en: "ow-moh-SAR" },
+      { cell_id: "17978187-8698-450f-b596-fb2a8dc2cdb1", word: "estar com fome", en: "to be hungry", vi: "đói bụng", pos: "verb phrase", pronunciation_vi: "es-TAR com FÔ-mi", pronunciation_en: "es-TAR kong FOH-mi" },
+      { cell_id: "17f1f5bf-c45c-425b-8035-699cf1d140ed", word: "a conta", en: "the bill", vi: "hóa đơn", pos: "noun (f)", pronunciation_vi: "a CON-ta — 'on' âm mũi", pronunciation_en: "ah KOWN-tah" },
+      { cell_id: "5273ae69-668a-465f-8b57-d4ac949397ad", word: "gostoso / delicioso", en: "tasty / delicious", vi: "ngon", pos: "adjective", pronunciation_vi: "gos-TÔ-zu / de-li-si-Ô-zu — 's' đọc 'z'", pronunciation_en: "gohs-TOH-zoo / deh-lee-see-OH-zoo" },
     ],
     dialogue: [
       {
+        cell_id: "a256942f-de9e-40da-8da4-7d6216935c34",
         speaker: "Garçom",
         text: "Boa tarde! O que vocês vão querer?",
         vi: "Chào buổi chiều! Quý khách dùng gì ạ?",
         en: "Good afternoon! What would you like?",
       },
       {
+        cell_id: "2fc03892-aa08-42e9-8a01-cf407a4b7ed1",
         speaker: "Cliente",
         text: "Eu queria um pão de queijo e um café, por favor.",
         vi: "Cho tôi một bánh phô mai và một cà phê ạ.",
         en: "I'd like a cheese bread and a coffee, please.",
       },
       {
+        cell_id: "a5255217-147d-41ea-a14e-9742f3a5a8a1",
         speaker: "Garçom",
         text: "Mais alguma coisa?",
         vi: "Còn gì nữa không ạ?",
         en: "Anything else?",
       },
       {
+        cell_id: "2d5f6c73-aec7-42df-8563-cb50e1005851",
         speaker: "Cliente",
         text: "Só isso. A conta, por favor.",
         vi: "Chỉ vậy thôi. Cho xin hóa đơn ạ.",
@@ -1042,37 +1080,41 @@ export const lessons: PortugueseLesson[] = [
     tip_advice_en:
       "Two golden questions: *Onde fica...?* ('Where is...?') and *É perto daqui?* ('Is it near here?'). Learn the opposites in pairs: *direita* (right) ↔ *esquerda* (left), *perto* (near) ↔ *longe* (far), *em frente* (straight) ↔ *atrás* (behind). The hardest sound for Vietnamese speakers: an initial 'r' (*rua*, *restaurante*) is a strong 'h', NOT a rolled or tapped 'r' — say 'HOO-ah', not 'ROO-ah'.",
     vocabulary: [
-      { word: "onde fica?", en: "where is (it located)?", vi: "ở đâu?", pos: "phrase", pronunciation_vi: "ON-dji FI-ca", pronunciation_en: "OWN-dji FEE-kah" },
-      { word: "à direita", en: "to the right", vi: "bên phải", pos: "phrase", pronunciation_vi: "a di-REI-ta", pronunciation_en: "ah dee-RAY-tah" },
-      { word: "à esquerda", en: "to the left", vi: "bên trái", pos: "phrase", pronunciation_vi: "a es-KER-da", pronunciation_en: "ah es-KEHR-dah" },
-      { word: "em frente", en: "straight ahead", vi: "đi thẳng", pos: "phrase", pronunciation_vi: "eng FREN-tchi", pronunciation_en: "eng FREN-tchi" },
-      { word: "perto", en: "near", vi: "gần", pos: "adverb", pronunciation_vi: "PER-tu", pronunciation_en: "PEHR-too" },
-      { word: "longe", en: "far", vi: "xa", pos: "adverb", pronunciation_vi: "LON-ji — 'on' âm mũi", pronunciation_en: "LOWN-zhi" },
-      { word: "a rua", en: "street", vi: "con phố / đường", pos: "noun (f)", pronunciation_vi: "a HU-a — 'r' đầu đọc 'h'", pronunciation_en: "ah HOO-ah" },
-      { word: "a esquina", en: "corner", vi: "góc đường", pos: "noun (f)", pronunciation_vi: "a es-KI-na", pronunciation_en: "ah es-KEE-nah" },
-      { word: "o banheiro", en: "bathroom / toilet", vi: "nhà vệ sinh", pos: "noun (m)", pronunciation_vi: "u ba-NHEI-ru — 'nh' như tiếng Việt", pronunciation_en: "oo bah-NYAY-roo" },
-      { word: "a estação", en: "station", vi: "nhà ga / trạm", pos: "noun (f)", pronunciation_vi: "a es-ta-SÃU — '-ão' âm mũi", pronunciation_en: "ah es-tah-SOWN" },
+      { cell_id: "a4a905a7-4955-4501-ba5e-b7ae983d0845", word: "onde fica?", en: "where is (it located)?", vi: "ở đâu?", pos: "phrase", pronunciation_vi: "ON-dji FI-ca", pronunciation_en: "OWN-dji FEE-kah" },
+      { cell_id: "1987c217-4111-479d-8bee-02ed36cf6fa4", word: "à direita", en: "to the right", vi: "bên phải", pos: "phrase", pronunciation_vi: "a di-REI-ta", pronunciation_en: "ah dee-RAY-tah" },
+      { cell_id: "f4276420-abf1-4464-b4a7-dd0e1367946b", word: "à esquerda", en: "to the left", vi: "bên trái", pos: "phrase", pronunciation_vi: "a es-KER-da", pronunciation_en: "ah es-KEHR-dah" },
+      { cell_id: "60707733-265e-4915-96de-3835a0b49710", word: "em frente", en: "straight ahead", vi: "đi thẳng", pos: "phrase", pronunciation_vi: "eng FREN-tchi", pronunciation_en: "eng FREN-tchi" },
+      { cell_id: "cce1ecb9-d1c5-47d2-bdb1-9c3828cd82d0", word: "perto", en: "near", vi: "gần", pos: "adverb", pronunciation_vi: "PER-tu", pronunciation_en: "PEHR-too" },
+      { cell_id: "eb27f243-c027-4b88-8373-546067d31336", word: "longe", en: "far", vi: "xa", pos: "adverb", pronunciation_vi: "LON-ji — 'on' âm mũi", pronunciation_en: "LOWN-zhi" },
+      { cell_id: "fd133d86-8e06-40d9-8b50-91a5b37b3413", word: "a rua", en: "street", vi: "con phố / đường", pos: "noun (f)", pronunciation_vi: "a HU-a — 'r' đầu đọc 'h'", pronunciation_en: "ah HOO-ah" },
+      { cell_id: "9421d44e-cc85-48cd-b95f-668070349c01", word: "a esquina", en: "corner", vi: "góc đường", pos: "noun (f)", pronunciation_vi: "a es-KI-na", pronunciation_en: "ah es-KEE-nah" },
+      { cell_id: "6f8aae1d-de67-49fc-8991-0921f8da5cc2", word: "o banheiro", en: "bathroom / toilet", vi: "nhà vệ sinh", pos: "noun (m)", pronunciation_vi: "u ba-NHEI-ru — 'nh' như tiếng Việt", pronunciation_en: "oo bah-NYAY-roo" },
+      { cell_id: "2f0ef394-cf0d-4dcc-95b2-235e2033e18e", word: "a estação", en: "station", vi: "nhà ga / trạm", pos: "noun (f)", pronunciation_vi: "a es-ta-SÃU — '-ão' âm mũi", pronunciation_en: "ah es-tah-SOWN" },
     ],
     dialogue: [
       {
+        cell_id: "a718a0df-f1b3-4eb0-b215-ec673719b75b",
         speaker: "Turista",
         text: "Com licença, onde fica a estação de metrô?",
         vi: "Xin lỗi, ga tàu điện ngầm ở đâu ạ?",
         en: "Excuse me, where is the metro station?",
       },
       {
+        cell_id: "22586247-9e9d-4bd8-b912-40569bd969d1",
         speaker: "Local",
         text: "Vá em frente e vire à direita na próxima rua.",
         vi: "Đi thẳng rồi rẽ phải ở con phố tiếp theo.",
         en: "Go straight and turn right at the next street.",
       },
       {
+        cell_id: "a27ba2a5-b87b-458a-a785-b6d6350a4b1e",
         speaker: "Turista",
         text: "É perto daqui?",
         vi: "Có gần đây không ạ?",
         en: "Is it near here?",
       },
       {
+        cell_id: "38248bd2-e4e6-491f-ba6c-6ed0530a2eed",
         speaker: "Local",
         text: "Sim, fica logo ali, ao lado do banco.",
         vi: "Có, ngay đằng kia, cạnh ngân hàng.",

@@ -25,6 +25,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   /** Indonesian word/phrase. */
   word: string;
   /** English meaning. */
@@ -40,6 +41,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   /** Indonesian line. */
   text: string;
@@ -243,6 +245,7 @@ export const lessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: when compromising, do not only say `yes` or `no`. Use a sequence: acknowledge (`saya setuju` / `saya paham`), open the shift (`tapi`, `namun`, `hanya saja`), offer a solution (`jalan tengah`, `opsi yang di tengah-tengah`), and if needed add a condition with `asalkan`. This keeps the tone soft and clear, which is ideal for preserving relationships.",
     vocabulary: [
       {
+        cell_id: "679c0761-becb-4590-9a41-8822d3583456",
         word: "kompromi",
         en: "compromise",
         vi: "thỏa hiệp",
@@ -251,6 +254,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "kom-PROH-mee",
       },
       {
+        cell_id: "7cd2b7d4-de06-4e88-968a-2e236bbb95d2",
         word: "jalan tengah",
         en: "middle ground",
         vi: "phương án dung hòa",
@@ -259,6 +263,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "JAH-lan TEHN-gah",
       },
       {
+        cell_id: "d60008ec-62d5-4856-969b-6564e7ce930f",
         word: "mengalah sedikit",
         en: "to give in a little",
         vi: "nhường một chút",
@@ -267,6 +272,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "meh-NGAH-lah seh-DEE-kit",
       },
       {
+        cell_id: "57e08f15-feb7-4852-b658-605d45e5542e",
         word: "kesepakatan bersama",
         en: "mutual agreement",
         vi: "sự đồng thuận chung",
@@ -275,6 +281,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "keh-seh-pah-KAH-tahn ber-SAH-mah",
       },
       {
+        cell_id: "ff777dc5-0a41-4295-90c7-65cf35d5e230",
         word: "syarat tambahan",
         en: "additional condition",
         vi: "điều kiện thêm",
@@ -283,6 +290,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "shyah-RAT tahm-BAH-han",
       },
       {
+        cell_id: "e57d30e9-0a75-4395-975c-8e3a56bbfa2e",
         word: "asalkan",
         en: "as long as",
         vi: "miễn là",
@@ -291,6 +299,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "ah-SAHL-kahn",
       },
       {
+        cell_id: "369227a2-1d62-4ef3-beb8-0d54e9923dba",
         word: "menghormati",
         en: "to respect",
         vi: "tôn trọng",
@@ -299,6 +308,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "me-nghor-MAH-tee",
       },
       {
+        cell_id: "21f28783-43f0-43a1-b582-672fadecae80",
         word: "dibicarakan",
         en: "to be discussed",
         vi: "được bàn bạc",
@@ -309,30 +319,35 @@ export const lessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "2275e643-1487-4d69-bced-2c5011ff531e",
         speaker: "Mira",
         text: "Saya setuju dengan tujuannya, tapi kita perlu cari jalan tengah.",
         vi: "Tôi đồng ý với mục tiêu, nhưng chúng ta cần tìm cách dung hòa.",
         en: "I agree with the goal, but we need to find a middle ground.",
       },
       {
+        cell_id: "0f7f3d57-7524-4f94-9b2f-c79ac47d6004",
         speaker: "Rafi",
         text: "Kalau bisa, saya mau mengalah sedikit supaya semua pihak nyaman.",
         vi: "Nếu được, tôi muốn nhường một chút để mọi bên đều thoải mái.",
         en: "If possible, I want to give in a little so everyone feels comfortable.",
       },
       {
+        cell_id: "a63b005b-2c62-4f80-8247-c76c13b60d72",
         speaker: "Mira",
         text: "Baik, mungkin ada syarat tambahan yang masih bisa dibicarakan.",
         vi: "Được, có lẽ vẫn còn thêm điều kiện có thể bàn tiếp.",
         en: "All right, maybe there are additional conditions we can still discuss.",
       },
       {
+        cell_id: "914fef30-2b84-4816-bb5b-e06982d00f92",
         speaker: "Rafi",
         text: "Saya menghargai usul Anda, hanya saja perlu disesuaikan sedikit.",
         vi: "Tôi trân trọng đề xuất của anh/chị, chỉ là cần chỉnh lại một chút.",
         en: "I appreciate your suggestion, only it needs a little adjustment.",
       },
       {
+        cell_id: "27d024cf-07e7-42a4-852e-123519715120",
         speaker: "Mira",
         text: "Setuju. Yang penting, kita cari solusi bersama.",
         vi: "Đồng ý. Quan trọng là chúng ta cùng tìm giải pháp.",

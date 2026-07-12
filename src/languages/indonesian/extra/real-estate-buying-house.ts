@@ -21,6 +21,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   /** Indonesian word/phrase. */
   word: string;
   /** English meaning. */
@@ -36,6 +37,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   /** Indonesian line. */
   text: string;
@@ -253,6 +255,7 @@ export const lessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: for large transactions, use polite, specific questions. Ask `Berapa DP?`, `Cicilan per bulan berapa?`, `Sertifikatnya sudah jelas?`, `Harga bisa dinegosiasikan?`. Do not ask only about price; ask about `survei lokasi`, `lingkungan`, flooding, `notaris`, and the `sertifikat`.",
     vocabulary: [
       {
+        cell_id: "ada60b99-f2ef-4ed6-83ae-4a01370c3941",
         word: "beli rumah",
         en: "to buy a house",
         vi: "mua nhà",
@@ -261,6 +264,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "BEH-lee ROO-mah",
       },
       {
+        cell_id: "93700f50-b96f-488c-bc1b-9cb2583e82eb",
         word: "KPR",
         en: "mortgage / home loan",
         vi: "vay mua nhà",
@@ -269,6 +273,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "ka-peh-ER",
       },
       {
+        cell_id: "20aa6ad0-2088-4f30-ad63-7caf52bafa91",
         word: "DP",
         en: "down payment",
         vi: "tiền trả trước",
@@ -277,6 +282,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "deh-PEH",
       },
       {
+        cell_id: "d59b6de4-652a-436d-a9c9-329304a93011",
         word: "cicilan",
         en: "installment",
         vi: "khoản trả góp",
@@ -285,6 +291,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "chee-CHEE-lan",
       },
       {
+        cell_id: "616babba-a881-4da8-8768-2d0d68f5a554",
         word: "sertifikat",
         en: "certificate / property title",
         vi: "giấy chứng nhận / sổ nhà đất",
@@ -293,6 +300,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "ser-tee-fee-KAT",
       },
       {
+        cell_id: "245daef4-3847-4b9a-ad04-33d4c620d0f5",
         word: "notaris",
         en: "notary",
         vi: "công chứng viên",
@@ -301,6 +309,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "no-TA-ris",
       },
       {
+        cell_id: "3b261dab-d581-4862-a477-584ab6a84307",
         word: "agen properti",
         en: "property agent",
         vi: "môi giới bất động sản",
@@ -309,6 +318,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "A-gen pro-PER-tee",
       },
       {
+        cell_id: "8e750e8e-45d8-41b5-add9-3838ae442ea6",
         word: "survei lokasi",
         en: "site visit / location survey",
         vi: "khảo sát vị trí",
@@ -317,6 +327,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "soor-VAY lo-KA-see",
       },
       {
+        cell_id: "c7289f1c-fff7-4831-9195-f9d1002dbcfa",
         word: "uang muka",
         en: "down payment",
         vi: "tiền trả trước",
@@ -325,6 +336,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "OO-ang MOO-ka",
       },
       {
+        cell_id: "ea505139-cdca-4aaa-ba6c-1021b312ea5a",
         word: "serah terima kunci",
         en: "key handover",
         vi: "bàn giao chìa khóa",
@@ -333,6 +345,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "SEH-rah te-REE-ma KOON-chee",
       },
       {
+        cell_id: "9b70f35c-9006-4cc4-a738-922ca1fca0a0",
         word: "lingkungan",
         en: "neighborhood / surroundings",
         vi: "khu vực xung quanh / môi trường",
@@ -341,6 +354,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "ling-KOO-ngan",
       },
       {
+        cell_id: "3fbdac1f-a386-4105-b09d-4531e4d927d4",
         word: "dinegosiasikan",
         en: "negotiable / can be negotiated",
         vi: "có thể thương lượng",
@@ -351,24 +365,28 @@ export const lessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "198355b7-1b18-4f21-b152-33ceb1b6511d",
         speaker: "Pembeli",
         text: "Saya tertarik dengan rumah ini. Apakah bisa dibeli dengan KPR?",
         vi: "Tôi quan tâm căn nhà này. Có thể mua bằng KPR không?",
         en: "I am interested in this house. Can it be bought with a mortgage?",
       },
       {
+        cell_id: "3ba63fd2-114e-4298-91d7-678c3c5a6fab",
         speaker: "Agen",
         text: "Bisa. DP minimal dua puluh persen, lalu cicilan per bulan tergantung bank.",
         vi: "Được. Trả trước tối thiểu hai mươi phần trăm, rồi khoản trả góp mỗi tháng tùy ngân hàng.",
         en: "Yes. The minimum down payment is twenty percent, then the monthly installment depends on the bank.",
       },
       {
+        cell_id: "73398880-62dc-4acb-8afb-fd60946913e9",
         speaker: "Pembeli",
         text: "Sebelum memutuskan, saya ingin survei lokasi dan cek sertifikat.",
         vi: "Trước khi quyết định, tôi muốn khảo sát vị trí và kiểm tra giấy chứng nhận.",
         en: "Before deciding, I want to survey the location and check the title.",
       },
       {
+        cell_id: "0b224b35-6625-4830-a0da-38041c0c2b4e",
         speaker: "Agen",
         text: "Baik. Notaris juga bisa memeriksa dokumen setelah penawaran disetujui.",
         vi: "Vâng. Công chứng viên cũng có thể kiểm tra giấy tờ sau khi đề nghị giá được chấp thuận.",

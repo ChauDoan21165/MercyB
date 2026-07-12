@@ -21,6 +21,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   /** Indonesian word/phrase. */
   word: string;
   /** English meaning. */
@@ -36,6 +37,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   /** Indonesian line. */
   text: string;
@@ -253,6 +255,7 @@ export const lessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: in accounting email, use polite frames: `Mohon kirim invoice`, `Saya lampirkan bukti bayar`, `Mohon konfirmasi setelah pembayaran diterima`, `Mohon revisi invoice sesuai nomor PO`. Avoid `aku/kamu`; use `saya/kami/Bapak/Ibu`.",
     vocabulary: [
       {
+        cell_id: "3a216928-8209-455d-b783-8ffffef1f346",
         word: "faktur",
         en: "invoice / tax invoice",
         vi: "hóa đơn / hóa đơn thuế",
@@ -261,6 +264,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "FAK-toor",
       },
       {
+        cell_id: "41f0694a-0bfa-4a7b-a3cd-d5bb496e1770",
         word: "invoice",
         en: "invoice",
         vi: "invoice / hóa đơn yêu cầu thanh toán",
@@ -269,6 +273,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "IN-voice",
       },
       {
+        cell_id: "330e0eab-c1cf-441b-a9a3-ff9bfc41860e",
         word: "kuitansi",
         en: "receipt",
         vi: "phiếu thu / biên nhận",
@@ -277,6 +282,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "kwee-TAN-see",
       },
       {
+        cell_id: "eded2f17-46d5-4c7c-a6b4-aac0f87a6bce",
         word: "tanda terima",
         en: "receipt / acknowledgment",
         vi: "biên nhận",
@@ -285,6 +291,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "TAN-da te-REE-ma",
       },
       {
+        cell_id: "119c0abe-5ad7-4ce4-bcbc-5c0611240077",
         word: "jatuh tempo",
         en: "due date / due",
         vi: "đến hạn",
@@ -293,6 +300,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "ja-TOOH TEM-po",
       },
       {
+        cell_id: "f9cc970e-5b8a-4967-a873-506d47bf6144",
         word: "pembayaran",
         en: "payment",
         vi: "thanh toán",
@@ -301,6 +309,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "pem-ba-YA-ran",
       },
       {
+        cell_id: "69492021-ed86-412b-8eed-8099622e87db",
         word: "nomor PO",
         en: "purchase order number",
         vi: "số PO / số đơn đặt hàng",
@@ -309,6 +318,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "NO-mor peh-O",
       },
       {
+        cell_id: "fb289233-638c-4853-b089-8b3dc73f3d43",
         word: "bukti bayar",
         en: "payment proof",
         vi: "chứng từ thanh toán",
@@ -317,6 +327,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "BOOK-tee BA-yar",
       },
       {
+        cell_id: "9038812a-2006-4728-bcfc-31064d5ccd4d",
         word: "terlampir",
         en: "attached",
         vi: "đính kèm",
@@ -325,6 +336,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "ter-LAM-peer",
       },
       {
+        cell_id: "47cd213b-8654-47fd-8af5-690090c93f27",
         word: "ditandatangani",
         en: "signed",
         vi: "được ký",
@@ -333,6 +345,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "dee-tan-da-TA-ngan-ee",
       },
       {
+        cell_id: "065398c5-aa3b-4b70-a107-8a464ec4d9b7",
         word: "revisi invoice",
         en: "invoice revision",
         vi: "chỉnh sửa invoice",
@@ -341,6 +354,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "re-VEE-see IN-voice",
       },
       {
+        cell_id: "9b893d6f-8c33-4087-9dcd-0b5d271a99af",
         word: "faktur pajak",
         en: "tax invoice",
         vi: "hóa đơn thuế",
@@ -351,24 +365,28 @@ export const lessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "f4768f22-7962-46a0-a789-f7b1aadf1fc7",
         speaker: "Vendor",
         text: "Selamat siang, Bu. Invoice dan faktur pajak sudah kami kirim lewat email.",
         vi: "Chào buổi trưa, chị. Invoice và hóa đơn thuế chúng tôi đã gửi qua email.",
         en: "Good afternoon, ma'am. We have sent the invoice and tax invoice by email.",
       },
       {
+        cell_id: "89521fce-ed3b-4c7e-a7ed-b135201c3497",
         speaker: "Finance",
         text: "Terima kasih. Mohon cantumkan nomor PO di invoice.",
         vi: "Cảm ơn. Vui lòng ghi số PO trên invoice.",
         en: "Thank you. Please include the PO number on the invoice.",
       },
       {
+        cell_id: "ebf6173f-152a-4519-a14c-0437592682d1",
         speaker: "Vendor",
         text: "Baik, kami revisi hari ini. Kapan jatuh tempo pembayarannya?",
         vi: "Vâng, hôm nay chúng tôi chỉnh sửa. Khi nào đến hạn thanh toán?",
         en: "Okay, we will revise it today. When is the payment due date?",
       },
       {
+        cell_id: "350433a4-41f7-4464-9d54-022a6e6d479a",
         speaker: "Finance",
         text: "Tujuh hari setelah dokumen lengkap. Setelah transfer, kami kirim bukti bayar.",
         vi: "Bảy ngày sau khi giấy tờ đầy đủ. Sau khi chuyển khoản, chúng tôi gửi chứng từ thanh toán.",

@@ -13,6 +13,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -22,6 +23,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -138,6 +140,7 @@ export const meetingDeadlinePressureLessons: IndonesianLesson[] = [
       "Useful frames: `rapat singkat`, `deadline laporan`, `prioritas kerja`, `pembagian tugas`, `progres terbaru`. With coworkers, use `kita` when both of you share responsibility.",
     vocabulary: [
       {
+        cell_id: "fd75fb48-15ac-4b87-973e-12813811a0b0",
         word: "deadline",
         en: "deadline",
         vi: "hạn chót",
@@ -146,6 +149,7 @@ export const meetingDeadlinePressureLessons: IndonesianLesson[] = [
         pronunciation_en: "DED-line",
       },
       {
+        cell_id: "b8311639-31af-4061-961e-a0cebcc742f3",
         word: "prioritas kerja",
         en: "work priority",
         vi: "ưu tiên công việc",
@@ -154,6 +158,7 @@ export const meetingDeadlinePressureLessons: IndonesianLesson[] = [
         pronunciation_en: "pri-o-ri-TAS KER-ja",
       },
       {
+        cell_id: "f2745302-2cdc-4562-b376-ecbebf4770b7",
         word: "rapat singkat",
         en: "short meeting",
         vi: "cuộc họp ngắn",
@@ -162,6 +167,7 @@ export const meetingDeadlinePressureLessons: IndonesianLesson[] = [
         pronunciation_en: "RA-pat SING-kat",
       },
       {
+        cell_id: "ebc9ccf7-ab87-4c67-9e9d-c45410179528",
         word: "pembagian tugas",
         en: "task division",
         vi: "phân chia nhiệm vụ",
@@ -170,6 +176,7 @@ export const meetingDeadlinePressureLessons: IndonesianLesson[] = [
         pronunciation_en: "pem-BA-gi-an TOO-gas",
       },
       {
+        cell_id: "61cbb7b4-dc8b-48cb-8024-74164e8b6f22",
         word: "progres terbaru",
         en: "latest progress",
         vi: "tiến độ mới nhất",
@@ -178,6 +185,7 @@ export const meetingDeadlinePressureLessons: IndonesianLesson[] = [
         pronunciation_en: "PRO-gres ter-BA-ru",
       },
       {
+        cell_id: "30e65349-7e25-4b56-a823-b64514d3db8b",
         word: "laporan",
         en: "report",
         vi: "báo cáo",
@@ -188,18 +196,21 @@ export const meetingDeadlinePressureLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "bf4886f6-96e1-4fdc-b6c4-1c5ede3ae838",
         speaker: "Manajer",
         text: "Kita perlu rapat singkat tentang deadline laporan.",
         vi: "Chúng ta cần họp ngắn về deadline báo cáo.",
         en: "We need a short meeting about the report deadline.",
       },
       {
+        cell_id: "2b13138e-4903-40b8-a2e3-0dba0136befd",
         speaker: "Staf",
         text: "Baik. Saya akan kirim progres terbaru sebelum rapat.",
         vi: "Được. Tôi sẽ gửi tiến độ mới nhất trước buổi họp.",
         en: "Okay. I will send the latest progress before the meeting.",
       },
       {
+        cell_id: "d583b573-f404-499b-ad61-c15040d66c18",
         speaker: "Manajer",
         text: "Tolong siapkan juga daftar prioritas kerja minggu ini.",
         vi: "Làm ơn chuẩn bị cả danh sách ưu tiên công việc tuần này.",
@@ -316,6 +327,7 @@ export const meetingDeadlinePressureLessons: IndonesianLesson[] = [
       "Safe extension pattern: `Saya butuh tambahan waktu karena...`, then add a solution: `Saya bisa kirim progres dulu` or `Saya fokus menyelesaikan yang paling penting`.",
     vocabulary: [
       {
+        cell_id: "55443eb9-22c4-43ad-b28c-06f528a176bb",
         word: "minta waktu tambahan",
         en: "ask for extra time",
         vi: "xin thêm thời gian",
@@ -324,6 +336,7 @@ export const meetingDeadlinePressureLessons: IndonesianLesson[] = [
         pronunciation_en: "MIN-ta WAK-tu tam-BA-han",
       },
       {
+        cell_id: "d6a6fefd-5a15-459b-8080-fc0b31a32cdd",
         word: "tekanan kerja",
         en: "work pressure",
         vi: "áp lực công việc",
@@ -332,6 +345,7 @@ export const meetingDeadlinePressureLessons: IndonesianLesson[] = [
         pronunciation_en: "te-KA-nan KER-ja",
       },
       {
+        cell_id: "df64c78b-2f0c-4144-b1cd-6457a8fdce0e",
         word: "belum lengkap",
         en: "not complete yet",
         vi: "chưa đầy đủ",
@@ -340,6 +354,7 @@ export const meetingDeadlinePressureLessons: IndonesianLesson[] = [
         pronunciation_en: "be-LOOM leng-KAP",
       },
       {
+        cell_id: "8bb2cccd-220a-4a2c-9067-431d6d94f9b0",
         word: "dipaksakan",
         en: "forced / rushed",
         vi: "bị ép / làm gượng",
@@ -348,6 +363,7 @@ export const meetingDeadlinePressureLessons: IndonesianLesson[] = [
         pronunciation_en: "di-PAK-sa-kan",
       },
       {
+        cell_id: "590ffebe-f9e2-43a2-901e-7a5924b128d4",
         word: "kualitasnya turun",
         en: "the quality drops",
         vi: "chất lượng giảm",
@@ -356,6 +372,7 @@ export const meetingDeadlinePressureLessons: IndonesianLesson[] = [
         pronunciation_en: "ku-a-li-TAS-nya TOO-run",
       },
       {
+        cell_id: "5aa94692-4258-4543-832a-5ff8f1a06071",
         word: "menyelesaikan",
         en: "to complete / finish something",
         vi: "hoàn thành việc gì",
@@ -366,24 +383,28 @@ export const meetingDeadlinePressureLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "e4dc75f5-d2fb-4915-a190-a07c03ac7291",
         speaker: "Staf",
         text: "Pak, apakah saya bisa minta waktu tambahan sampai besok pagi?",
         vi: "Anh/chú ơi, tôi có thể xin thêm thời gian đến sáng mai không?",
         en: "Sir, can I ask for extra time until tomorrow morning?",
       },
       {
+        cell_id: "6488b22e-f24d-4b09-9562-e8566d38044c",
         speaker: "Manajer",
         text: "Apa kendalanya?",
         vi: "Vướng mắc là gì?",
         en: "What is the obstacle?",
       },
       {
+        cell_id: "7ed9cf1b-23c4-41a2-a277-2772979543be",
         speaker: "Staf",
         text: "Datanya belum lengkap, dan saya khawatir kualitasnya turun kalau dipaksakan hari ini.",
         vi: "Dữ liệu chưa đầy đủ, và tôi lo chất lượng giảm nếu ép hoàn thành hôm nay.",
         en: "The data is not complete yet, and I worry the quality will drop if it is forced today.",
       },
       {
+        cell_id: "ce6fc812-4d84-4f40-8736-17fc5a54a715",
         speaker: "Manajer",
         text: "Baik, kirim progres dulu sore ini.",
         vi: "Được, gửi tiến độ trước chiều nay.",

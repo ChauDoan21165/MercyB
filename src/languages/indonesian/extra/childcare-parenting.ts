@@ -32,6 +32,7 @@ type LessonSentence = {
 };
 
 type VocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -43,6 +44,7 @@ type VocabEntry = {
 };
 
 type DialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -159,6 +161,7 @@ export const childcareParentingLessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: 'berumur + number + tahun' states an age — no 'to be' verb needed. 'Anak saya berumur empat tahun' (my child is four). Reusable enrollment frame: 'Saya mau mendaftarkan … ke …' (I want to enroll … in …). Memorize the school-level abbreviations: PAUD → TK → SD (primary) → SMP (junior high) → SMA (senior high).",
     vocabulary: [
       {
+        cell_id: "6a00d667-5478-41be-a5bb-d178ebc88344",
         word: "anak",
         en: "child",
         vi: "con / đứa trẻ",
@@ -167,6 +170,7 @@ export const childcareParentingLessons: IndonesianLesson[] = [
         pronunciation_en: "A-nak",
       },
       {
+        cell_id: "430a4e41-adc9-4d4a-9fdf-e6db860eca59",
         word: "PAUD",
         en: "early childhood education",
         vi: "giáo dục mầm non sớm",
@@ -175,6 +179,7 @@ export const childcareParentingLessons: IndonesianLesson[] = [
         pronunciation_en: "pa-OOD",
       },
       {
+        cell_id: "eee74296-f7da-4252-be2f-67a8cc3f0e2f",
         word: "TK (Taman Kanak-Kanak)",
         en: "kindergarten",
         vi: "trường mẫu giáo",
@@ -183,6 +188,7 @@ export const childcareParentingLessons: IndonesianLesson[] = [
         pronunciation_en: "teh-KA",
       },
       {
+        cell_id: "862eed64-75e6-433c-8a59-1686454f7703",
         word: "mendaftarkan",
         en: "to enroll / register (someone)",
         vi: "đăng ký (cho ai)",
@@ -191,6 +197,7 @@ export const childcareParentingLessons: IndonesianLesson[] = [
         pronunciation_en: "men-daf-TAR-kan",
       },
       {
+        cell_id: "d989e776-03f5-473d-97d9-cd2c8dc8db7c",
         word: "biaya",
         en: "cost / fee",
         vi: "chi phí",
@@ -199,6 +206,7 @@ export const childcareParentingLessons: IndonesianLesson[] = [
         pronunciation_en: "bee-A-ya",
       },
       {
+        cell_id: "4a82c0a3-73e5-4576-b791-cd6b51b4e9f5",
         word: "SPP",
         en: "monthly tuition fee",
         vi: "học phí hàng tháng",
@@ -207,6 +215,7 @@ export const childcareParentingLessons: IndonesianLesson[] = [
         pronunciation_en: "ess-peh-peh",
       },
       {
+        cell_id: "3ac181d9-9bd2-4fd9-9685-72d25f4a8ec4",
         word: "berumur",
         en: "to be … years old",
         vi: "được … tuổi",
@@ -215,6 +224,7 @@ export const childcareParentingLessons: IndonesianLesson[] = [
         pronunciation_en: "ber-OO-moor",
       },
       {
+        cell_id: "ef5fb45a-6e44-437d-b99a-1128f6aa001b",
         word: "pengasuh",
         en: "carer / nanny",
         vi: "người trông trẻ",
@@ -223,6 +233,7 @@ export const childcareParentingLessons: IndonesianLesson[] = [
         pronunciation_en: "peng-A-sooh",
       },
       {
+        cell_id: "a7c06ce3-8f01-4c72-a1a8-9cdbf7705278",
         word: "tidur siang",
         en: "afternoon nap",
         vi: "ngủ trưa",
@@ -233,24 +244,28 @@ export const childcareParentingLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "6ab15c09-41c3-4727-99a4-9f6e05e0d462",
         speaker: "Orang tua",
         text: "Selamat pagi. Saya mau mendaftarkan anak saya ke PAUD ini.",
         vi: "Chào buổi sáng. Tôi muốn đăng ký cho con vào trường mầm non này.",
         en: "Good morning. I'd like to enroll my child in this PAUD.",
       },
       {
+        cell_id: "810fc7fd-3edf-4e05-92eb-056b4595cd64",
         speaker: "Guru",
         text: "Baik, Bu. Anaknya berumur berapa?",
         vi: "Vâng, chị. Cháu mấy tuổi ạ?",
         en: "Sure, ma'am. How old is your child?",
       },
       {
+        cell_id: "c30de01e-9916-430a-b116-7014edb0d9a8",
         speaker: "Orang tua",
         text: "Empat tahun. Berapa SPP per bulan?",
         vi: "Bốn tuổi. Học phí mỗi tháng bao nhiêu?",
         en: "Four years old. How much is the monthly tuition?",
       },
       {
+        cell_id: "448fc018-323e-4555-991d-c1ebbc8e2949",
         speaker: "Guru",
         text: "Tiga ratus ribu. Sudah termasuk makan siang dan tidur siang.",
         vi: "Ba trăm nghìn. Đã bao gồm ăn trưa và ngủ trưa.",
@@ -391,6 +406,7 @@ export const childcareParentingLessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: distinguish 'memberi' (to give — active) from 'diberi' (to be given — passive). Medical labels lean on passive 'di-': disuntik (was injected), ditimbang (was weighed), diberi vitamin (was given vitamins). Learn the abbreviations: ASI (breast milk), KIA (maternal & child health), Posyandu (community health post). Schedule-question frame: 'Kapan jadwal … berikutnya?'.",
     vocabulary: [
       {
+        cell_id: "e074ae56-6cdc-4657-904f-9909c5140767",
         word: "bayi",
         en: "baby / infant",
         vi: "em bé",
@@ -399,6 +415,7 @@ export const childcareParentingLessons: IndonesianLesson[] = [
         pronunciation_en: "BA-yee",
       },
       {
+        cell_id: "1ffc832b-ac7b-4dc6-b2dd-269b151b57c9",
         word: "imunisasi",
         en: "immunization",
         vi: "tiêm chủng",
@@ -407,6 +424,7 @@ export const childcareParentingLessons: IndonesianLesson[] = [
         pronunciation_en: "ee-moo-nee-SA-see",
       },
       {
+        cell_id: "118f471f-2684-4f6f-8f38-e43170619345",
         word: "Posyandu",
         en: "community health post",
         vi: "trạm y tế cộng đồng",
@@ -415,6 +433,7 @@ export const childcareParentingLessons: IndonesianLesson[] = [
         pronunciation_en: "pos-YAN-doo",
       },
       {
+        cell_id: "80bb9fa0-3a81-44ef-8093-aa736881b5ec",
         word: "ASI (Air Susu Ibu)",
         en: "breast milk",
         vi: "sữa mẹ",
@@ -423,6 +442,7 @@ export const childcareParentingLessons: IndonesianLesson[] = [
         pronunciation_en: "A-see",
       },
       {
+        cell_id: "5eb12586-1454-4a4d-b009-11083ee71068",
         word: "menimbang",
         en: "to weigh",
         vi: "cân (đo)",
@@ -431,6 +451,7 @@ export const childcareParentingLessons: IndonesianLesson[] = [
         pronunciation_en: "me-nim-BANG",
       },
       {
+        cell_id: "ddbc028e-644e-4bb4-9fc6-e1b3f9c84cd2",
         word: "berat badan",
         en: "body weight",
         vi: "cân nặng",
@@ -439,6 +460,7 @@ export const childcareParentingLessons: IndonesianLesson[] = [
         pronunciation_en: "be-RAT BA-dan",
       },
       {
+        cell_id: "cddf4512-a0cc-47a5-bdbd-ae43cfcafb0f",
         word: "disuntik",
         en: "to be injected / given a shot",
         vi: "được tiêm",
@@ -447,6 +469,7 @@ export const childcareParentingLessons: IndonesianLesson[] = [
         pronunciation_en: "dee-SOON-tik",
       },
       {
+        cell_id: "47033228-d661-4c4f-97e0-b5146aff618d",
         word: "jadwal",
         en: "schedule",
         vi: "lịch / thời gian biểu",
@@ -455,6 +478,7 @@ export const childcareParentingLessons: IndonesianLesson[] = [
         pronunciation_en: "JAD-wal",
       },
       {
+        cell_id: "289abf8b-c969-40fc-8910-92dea6fc4edf",
         word: "vitamin",
         en: "vitamin",
         vi: "vitamin",
@@ -465,24 +489,28 @@ export const childcareParentingLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "7d3e8fe9-59b7-42fe-b342-4524f6e19134",
         speaker: "Ibu",
         text: "Bu kader, bayi saya perlu imunisasi bulan ini?",
         vi: "Chị tình nguyện ơi, em bé tôi tháng này cần tiêm chủng không?",
         en: "Volunteer, does my baby need an immunization this month?",
       },
       {
+        cell_id: "95a07b28-f386-445a-b6d2-aab5ba8800a2",
         speaker: "Kader",
         text: "Iya, Bu. Kita timbang dulu, lalu disuntik.",
         vi: "Vâng, chị. Mình cân trước, rồi tiêm.",
         en: "Yes, ma'am. We'll weigh first, then give the shot.",
       },
       {
+        cell_id: "01515d30-776f-4673-8875-39bfb97eb7b4",
         speaker: "Ibu",
         text: "Nanti dia demam tidak setelah disuntik?",
         vi: "Sau khi tiêm cháu có bị sốt không?",
         en: "Will she get a fever after the injection?",
       },
       {
+        cell_id: "f5070a84-5e8b-401e-91ef-6932788662ee",
         speaker: "Kader",
         text: "Mungkin sedikit, itu normal. Tetap beri ASI, ya.",
         vi: "Có thể hơi sốt, đó là bình thường. Vẫn cho bú sữa mẹ nhé.",
@@ -623,6 +651,7 @@ export const childcareParentingLessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: sibling terms are ranked by AGE just like Vietnamese — kakak (older), adik (younger) — with no English-style neutral 'sibling', so this feels natural. Conditionals use 'kalau' (if) + clause, no 'then' needed: 'Kalau rajin, nanti dapat hadiah.' Negative commands always use 'jangan', never 'tidak': Jangan + verb.",
     vocabulary: [
       {
+        cell_id: "e348ee6a-9d44-4ca1-9e9f-ecec69400259",
         word: "jaga",
         en: "to watch / look after",
         vi: "trông / giữ",
@@ -631,6 +660,7 @@ export const childcareParentingLessons: IndonesianLesson[] = [
         pronunciation_en: "JA-ga",
       },
       {
+        cell_id: "47d02281-01e6-4190-8dfa-5da1d273b8e6",
         word: "popok",
         en: "diaper",
         vi: "tã",
@@ -639,6 +669,7 @@ export const childcareParentingLessons: IndonesianLesson[] = [
         pronunciation_en: "POH-pok",
       },
       {
+        cell_id: "d78ba3f8-df10-4f82-a923-895a8e57eebb",
         word: "mandi",
         en: "to bathe",
         vi: "tắm",
@@ -647,6 +678,7 @@ export const childcareParentingLessons: IndonesianLesson[] = [
         pronunciation_en: "MAN-dee",
       },
       {
+        cell_id: "0d07373a-2ccf-46b1-a2d3-214fd95ac57d",
         word: "kakak",
         en: "older sibling",
         vi: "anh / chị",
@@ -655,6 +687,7 @@ export const childcareParentingLessons: IndonesianLesson[] = [
         pronunciation_en: "KA-kak",
       },
       {
+        cell_id: "07babdb2-8ec3-49e0-adc9-70bd446dc42e",
         word: "adik",
         en: "younger sibling",
         vi: "em",
@@ -663,6 +696,7 @@ export const childcareParentingLessons: IndonesianLesson[] = [
         pronunciation_en: "A-dik",
       },
       {
+        cell_id: "4aa5c602-3db0-4ebc-8d8b-69b2a6ff5595",
         word: "rajin",
         en: "diligent / hardworking",
         vi: "chăm chỉ",
@@ -671,6 +705,7 @@ export const childcareParentingLessons: IndonesianLesson[] = [
         pronunciation_en: "RA-jin",
       },
       {
+        cell_id: "6a0affe4-05e6-48f8-87da-093502906dbe",
         word: "manja",
         en: "clingy / spoiled (affectionate)",
         vi: "nũng nịu",
@@ -679,6 +714,7 @@ export const childcareParentingLessons: IndonesianLesson[] = [
         pronunciation_en: "MAN-ja",
       },
       {
+        cell_id: "e0c18564-d0b1-4320-b6c9-afc17b1b1e2c",
         word: "hadiah",
         en: "gift / reward",
         vi: "phần thưởng / quà",
@@ -687,6 +723,7 @@ export const childcareParentingLessons: IndonesianLesson[] = [
         pronunciation_en: "ha-DEE-ah",
       },
       {
+        cell_id: "71eb357e-cd04-46c8-a8c6-2e9c7c0196f4",
         word: "nakal",
         en: "naughty",
         vi: "nghịch ngợm / hư",
@@ -697,24 +734,28 @@ export const childcareParentingLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "ee13ba9d-664d-4c02-b6b0-c8ce18efb920",
         speaker: "Ibu",
         text: "Kakak, tolong jaga adik selama Ibu masak, ya.",
         vi: "Con (lớn) ơi, trông em giúp mẹ trong lúc mẹ nấu ăn nhé.",
         en: "Sweetie (older child), please watch your little sibling while Mom cooks.",
       },
       {
+        cell_id: "fa44ce53-9687-403e-8356-336cca3168e3",
         speaker: "Anak",
         text: "Iya, Bu. Tapi adik nakal, main gadget terus.",
         vi: "Vâng mẹ. Nhưng em hư lắm, cứ chơi điện thoại suốt.",
         en: "Okay, Mom. But the little one is naughty, always on the gadget.",
       },
       {
+        cell_id: "072e95fe-a83c-436d-9403-c8fba7e85dd2",
         speaker: "Ibu",
         text: "Bilang, 'Jangan main gadget terlalu lama.' Suruh dia mandi.",
         vi: "Bảo em: 'Đừng chơi điện thoại quá lâu.' Bảo em đi tắm.",
         en: "Tell him, 'Don't play on the gadget too long.' Have him take a bath.",
       },
       {
+        cell_id: "558a7ca7-ef39-46b3-bea2-824aad8a6e1f",
         speaker: "Anak",
         text: "Baik. Kalau dia rajin, boleh dapat hadiah?",
         vi: "Dạ. Nếu em ngoan thì được thưởng không ạ?",

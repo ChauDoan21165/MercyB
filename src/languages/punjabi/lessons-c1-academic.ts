@@ -25,6 +25,7 @@ export type PunjabiSentence = {
 };
 
 export type PunjabiVocab = {
+  cell_id?: string;
   word: string;
   rom: string;
   vi: string;
@@ -76,10 +77,10 @@ export const lessons: PunjabiC1Lesson[] = [
       },
     ],
     vocabulary: [
-      { word: "ਮਾਣਯੋਗ", rom: "maanyog", vi: "kính mến, đáng kính", en: "honorable / distinguished", pos: "adj." },
-      { word: "ਪੇਸ਼ਕਾਰੀ", rom: "peshkari", vi: "bài trình bày", en: "presentation", pos: "n." },
-      { word: "ਪਿਛੋਕੜ", rom: "pichhokar", vi: "bối cảnh", en: "background", pos: "n." },
-      { word: "ਦਲੀਲ", rom: "daleel", vi: "lập luận", en: "argument", pos: "n." },
+      { cell_id: "54a385c7-705b-4f00-850e-1ca301f0a995", word: "ਮਾਣਯੋਗ", rom: "maanyog", vi: "kính mến, đáng kính", en: "honorable / distinguished", pos: "adj." },
+      { cell_id: "4216d170-d141-44f0-8c3a-11ab1180d94d", word: "ਪੇਸ਼ਕਾਰੀ", rom: "peshkari", vi: "bài trình bày", en: "presentation", pos: "n." },
+      { cell_id: "1d75f53d-6b50-400f-b36f-c78bd5b12829", word: "ਪਿਛੋਕੜ", rom: "pichhokar", vi: "bối cảnh", en: "background", pos: "n." },
+      { cell_id: "c4480376-4bf3-4b62-9677-36975753d671", word: "ਦਲੀਲ", rom: "daleel", vi: "lập luận", en: "argument", pos: "n." },
     ],
     notes_vi:
       "Trong văn phong chuyên nghiệp Punjabi, ਮਾਣਯੋਗ tạo sắc thái trang trọng. Gurmukhi là chữ chính trong khóa này; Shahmukhi tồn tại trong cộng đồng Punjabi khác nhưng chỉ được nhắc để nhận biết.",
@@ -118,10 +119,10 @@ export const lessons: PunjabiC1Lesson[] = [
       },
     ],
     vocabulary: [
-      { word: "ਸਤਿਕਾਰਯੋਗ", rom: "satkaryog", vi: "kính gửi, đáng kính", en: "respected", pos: "adj." },
-      { word: "ਖੋਜ ਪ੍ਰਸਤਾਵ", rom: "khoj prastav", vi: "đề cương nghiên cứu", en: "research proposal", pos: "n." },
-      { word: "ਰਾਏ", rom: "rae", vi: "ý kiến", en: "opinion", pos: "n." },
-      { word: "ਮਾਰਗਦਰਸ਼ਨ", rom: "margdarshan", vi: "sự hướng dẫn", en: "guidance", pos: "n." },
+      { cell_id: "26e09718-5ac6-49af-a934-47f0d99b1388", word: "ਸਤਿਕਾਰਯੋਗ", rom: "satkaryog", vi: "kính gửi, đáng kính", en: "respected", pos: "adj." },
+      { cell_id: "cc3b37aa-a70c-472e-8118-892e19b1e1d3", word: "ਖੋਜ ਪ੍ਰਸਤਾਵ", rom: "khoj prastav", vi: "đề cương nghiên cứu", en: "research proposal", pos: "n." },
+      { cell_id: "25f177fd-0942-477a-9cd3-a5c310c5ea4b", word: "ਰਾਏ", rom: "rae", vi: "ý kiến", en: "opinion", pos: "n." },
+      { cell_id: "b6b045df-5866-4556-9fac-f994df4dd6e7", word: "ਮਾਰਗਦਰਸ਼ਨ", rom: "margdarshan", vi: "sự hướng dẫn", en: "guidance", pos: "n." },
     ],
     notes_vi:
       "ਜੀ sau tên hoặc chức danh làm câu lịch sự hơn. Công thức ਜੇ ਤੁਹਾਡੇ ਲਈ ਸੰਭਵ ਹੋਵੇ tương đương 'nếu thuận tiện cho ông/bà', mềm hơn yêu cầu trực tiếp.",
@@ -160,10 +161,10 @@ export const lessons: PunjabiC1Lesson[] = [
       },
     ],
     vocabulary: [
-      { word: "ਐਜੰਡਾ", rom: "agenda", vi: "chương trình họp", en: "agenda", pos: "n." },
-      { word: "ਬਿੰਦੂ", rom: "bindu", vi: "điểm, mục", en: "point / item", pos: "n." },
-      { word: "ਐਤਰਾਜ਼", rom: "aitraaz", vi: "sự phản đối", en: "objection", pos: "n." },
-      { word: "ਫ਼ੈਸਲਾ", rom: "faisla", vi: "quyết định", en: "decision", pos: "n." },
+      { cell_id: "485fd818-19a4-4273-84bf-cd5d62564034", word: "ਐਜੰਡਾ", rom: "agenda", vi: "chương trình họp", en: "agenda", pos: "n." },
+      { cell_id: "e4b55f6f-f89b-4720-8ca9-e0703f59899b", word: "ਬਿੰਦੂ", rom: "bindu", vi: "điểm, mục", en: "point / item", pos: "n." },
+      { cell_id: "a1642a2b-c393-4272-8f04-d13e04ac84b7", word: "ਐਤਰਾਜ਼", rom: "aitraaz", vi: "sự phản đối", en: "objection", pos: "n." },
+      { cell_id: "191c6875-097f-4634-a095-86c6f4abde91", word: "ਫ਼ੈਸਲਾ", rom: "faisla", vi: "quyết định", en: "decision", pos: "n." },
     ],
     notes_vi:
       "ਆਓ + động từ tạo lời mời điều phối, không áp đặt. Trong họp chuyên nghiệp, dùng ਅਸੀਂ để tạo trách nhiệm chung thay vì chỉ ra lỗi cá nhân.",
@@ -202,10 +203,10 @@ export const lessons: PunjabiC1Lesson[] = [
       },
     ],
     vocabulary: [
-      { word: "ਨੀਤੀ", rom: "niti", vi: "chính sách", en: "policy", pos: "n." },
-      { word: "ਲਾਗੂ ਕਰਨਾ", rom: "lagu karna", vi: "triển khai, áp dụng", en: "to implement", pos: "v." },
-      { word: "ਮੁਲਾਂਕਣ", rom: "mulankan", vi: "đánh giá", en: "evaluation", pos: "n." },
-      { word: "ਪ੍ਰਭਾਵ", rom: "prabhav", vi: "tác động", en: "impact", pos: "n." },
+      { cell_id: "712b9e98-ab1a-4909-893f-0ee684ed7deb", word: "ਨੀਤੀ", rom: "niti", vi: "chính sách", en: "policy", pos: "n." },
+      { cell_id: "948c6c33-dd74-45e3-9e75-3c8dc8413567", word: "ਲਾਗੂ ਕਰਨਾ", rom: "lagu karna", vi: "triển khai, áp dụng", en: "to implement", pos: "v." },
+      { cell_id: "a646b4f0-284c-40ac-8573-35b13a8b195b", word: "ਮੁਲਾਂਕਣ", rom: "mulankan", vi: "đánh giá", en: "evaluation", pos: "n." },
+      { cell_id: "77e23ea5-c722-4c54-80c1-e3adad0fabc5", word: "ਪ੍ਰਭਾਵ", rom: "prabhav", vi: "tác động", en: "impact", pos: "n." },
     ],
     notes_vi:
       "Cấu trúc 'ਉਦੇਸ਼... ਪਰ...' cho phép nêu mục tiêu và giới hạn cùng lúc. Đây là văn phong chính sách cân bằng, tránh biến thảo luận thành khẩu hiệu.",
@@ -244,10 +245,10 @@ export const lessons: PunjabiC1Lesson[] = [
       },
     ],
     vocabulary: [
-      { word: "ਸੰਖੇਪ ਵਿੱਚ", rom: "sankhep vich", vi: "tóm lại", en: "in brief", pos: "phr." },
-      { word: "ਰੁਝਾਨ", rom: "rujhan", vi: "xu hướng", en: "trend", pos: "n." },
-      { word: "ਭਾਗੀਦਾਰੀ", rom: "bhagidari", vi: "sự tham gia", en: "participation", pos: "n." },
-      { word: "ਅਸਪਸ਼ਟ", rom: "aspasht", vi: "không rõ ràng", en: "unclear", pos: "adj." },
+      { cell_id: "831af292-d83a-4d9f-95c2-ab6fef73bebf", word: "ਸੰਖੇਪ ਵਿੱਚ", rom: "sankhep vich", vi: "tóm lại", en: "in brief", pos: "phr." },
+      { cell_id: "914ca771-290e-48e0-9a2f-abe89edaa7f1", word: "ਰੁਝਾਨ", rom: "rujhan", vi: "xu hướng", en: "trend", pos: "n." },
+      { cell_id: "dd027f1f-3e2d-4d46-b94a-567933e920f2", word: "ਭਾਗੀਦਾਰੀ", rom: "bhagidari", vi: "sự tham gia", en: "participation", pos: "n." },
+      { cell_id: "098cdd22-3978-4bbe-8436-48519f1aede8", word: "ਅਸਪਸ਼ਟ", rom: "aspasht", vi: "không rõ ràng", en: "unclear", pos: "adj." },
     ],
     notes_vi:
       "ਸੰਖੇਪ ਵਿੱਚ mở phần tóm tắt. ਜਦਕਿ tương đương 'trong khi', hữu ích để so sánh hai kết quả mà không viết hai câu rời rạc.",
@@ -286,10 +287,10 @@ export const lessons: PunjabiC1Lesson[] = [
       },
     ],
     vocabulary: [
-      { word: "ਅਸਹਿਮਤੀ", rom: "asahimati", vi: "bất đồng", en: "disagreement", pos: "n." },
-      { word: "ਸਹਿਮਤ", rom: "sahimat", vi: "đồng ý", en: "in agreement", pos: "adj." },
-      { word: "ਸਬੂਤ", rom: "sabut", vi: "bằng chứng", en: "evidence", pos: "n." },
-      { word: "ਸੀਮਿਤ", rom: "simit", vi: "giới hạn", en: "limited", pos: "adj." },
+      { cell_id: "fa2405f8-b0cc-4de2-a963-43af32a5b5e4", word: "ਅਸਹਿਮਤੀ", rom: "asahimati", vi: "bất đồng", en: "disagreement", pos: "n." },
+      { cell_id: "4d00fcd1-70f7-4f1d-a076-d11124828ffa", word: "ਸਹਿਮਤ", rom: "sahimat", vi: "đồng ý", en: "in agreement", pos: "adj." },
+      { cell_id: "7fda1c58-602b-4ab2-8ec9-72584bd28ff4", word: "ਸਬੂਤ", rom: "sabut", vi: "bằng chứng", en: "evidence", pos: "n." },
+      { cell_id: "7b25ab37-9d18-4523-a373-6037e084910b", word: "ਸੀਮਿਤ", rom: "simit", vi: "giới hạn", en: "limited", pos: "adj." },
     ],
     notes_vi:
       "Câu 'ਮੈਂ ਤੁਹਾਡੀ ਗੱਲ ਸਮਝਦਾ ਹਾਂ' công nhận quan điểm trước khi phản biện. 'ਪੂਰੀ ਤਰ੍ਹਾਂ ਨਹੀਂ' mềm hơn 'ਗਲਤ ਹੈ' và phù hợp học thuật.",
@@ -328,10 +329,10 @@ export const lessons: PunjabiC1Lesson[] = [
       },
     ],
     vocabulary: [
-      { word: "ਉਪਲਬਧ", rom: "upalabdh", vi: "hiện có, sẵn có", en: "available", pos: "adj." },
-      { word: "ਨਮੂਨਾ", rom: "namuna", vi: "mẫu", en: "sample", pos: "n." },
-      { word: "ਵਿਚਾਰਯੋਗ", rom: "vicharyog", vi: "đáng xem xét", en: "worth considering", pos: "adj." },
-      { word: "ਤੁਲਨਾਤਮਕ", rom: "tulnatmak", vi: "mang tính so sánh", en: "comparative", pos: "adj." },
+      { cell_id: "adfbd7b2-15fb-4390-bd03-e32b0b04cffa", word: "ਉਪਲਬਧ", rom: "upalabdh", vi: "hiện có, sẵn có", en: "available", pos: "adj." },
+      { cell_id: "2a18ae0c-623e-46e6-b5ee-786959a873b1", word: "ਨਮੂਨਾ", rom: "namuna", vi: "mẫu", en: "sample", pos: "n." },
+      { cell_id: "28e8607e-b8e8-4e81-b2bb-1b262201db48", word: "ਵਿਚਾਰਯੋਗ", rom: "vicharyog", vi: "đáng xem xét", en: "worth considering", pos: "adj." },
+      { cell_id: "c5a10d5a-83ab-40b7-8c59-f6436a4cca4c", word: "ਤੁਲਨਾਤਮਕ", rom: "tulnatmak", vi: "mang tính so sánh", en: "comparative", pos: "adj." },
     ],
     notes_vi:
       "ਹਾਲਾਂਕਿ... ਫਿਰ ਵੀ... là khung nhượng bộ: thừa nhận giới hạn nhưng giữ giá trị của lập luận. Đây là dấu hiệu văn phong học thuật trưởng thành.",
@@ -370,10 +371,10 @@ export const lessons: PunjabiC1Lesson[] = [
       },
     ],
     vocabulary: [
-      { word: "ਸਿਫਾਰਸ਼", rom: "sifarash", vi: "khuyến nghị", en: "recommendation", pos: "n." },
-      { word: "ਪਾਇਲਟ ਯੋਜਨਾ", rom: "pilot yojna", vi: "kế hoạch thí điểm", en: "pilot plan", pos: "n." },
-      { word: "ਪੜਾਅ", rom: "paraa", vi: "giai đoạn", en: "phase", pos: "n." },
-      { word: "ਵਿਸਤਾਰ", rom: "vistar", vi: "mở rộng", en: "expansion", pos: "n." },
+      { cell_id: "0c09233c-03fc-44aa-9951-49da644fb6e5", word: "ਸਿਫਾਰਸ਼", rom: "sifarash", vi: "khuyến nghị", en: "recommendation", pos: "n." },
+      { cell_id: "0270316e-6dfb-4231-9f28-28a1949be637", word: "ਪਾਇਲਟ ਯੋਜਨਾ", rom: "pilot yojna", vi: "kế hoạch thí điểm", en: "pilot plan", pos: "n." },
+      { cell_id: "7186b837-19c4-4616-a4ac-b5b57492b813", word: "ਪੜਾਅ", rom: "paraa", vi: "giai đoạn", en: "phase", pos: "n." },
+      { cell_id: "d32271fc-2286-42cf-80a1-ba72118dd29f", word: "ਵਿਸਤਾਰ", rom: "vistar", vi: "mở rộng", en: "expansion", pos: "n." },
     ],
     notes_vi:
       "Câu bị động/khả năng 'ਕੀਤੀ ਜਾਵੇ' và 'ਕੀਤਾ ਜਾ ਸਕਦਾ ਹੈ' tạo giọng khách quan, phù hợp báo cáo hoặc đề xuất nội bộ.",
@@ -412,10 +413,10 @@ export const lessons: PunjabiC1Lesson[] = [
       },
     ],
     vocabulary: [
-      { word: "ਲੇਖਕ", rom: "lekhak", vi: "tác giả", en: "author", pos: "n." },
-      { word: "ਸਮਾਜਕ ਭਰੋਸਾ", rom: "samajik bharosa", vi: "niềm tin xã hội", en: "social trust", pos: "n." },
-      { word: "ਪਰਾਭਾਸ਼ਾ", rom: "parabhasha", vi: "diễn giải", en: "paraphrase", pos: "n." },
-      { word: "ਸ਼ਬਦਾਵਲੀ", rom: "shabdavali", vi: "từ vựng, cách dùng từ", en: "vocabulary / wording", pos: "n." },
+      { cell_id: "7f3e89dc-5852-4d6c-809b-c8e650de5a2f", word: "ਲੇਖਕ", rom: "lekhak", vi: "tác giả", en: "author", pos: "n." },
+      { cell_id: "41c52518-2683-450d-a500-17d3465113be", word: "ਸਮਾਜਕ ਭਰੋਸਾ", rom: "samajik bharosa", vi: "niềm tin xã hội", en: "social trust", pos: "n." },
+      { cell_id: "6869c672-6ec3-4129-bb12-00854858de4a", word: "ਪਰਾਭਾਸ਼ਾ", rom: "parabhasha", vi: "diễn giải", en: "paraphrase", pos: "n." },
+      { cell_id: "7cb64d7d-1da2-4546-b197-68c3a3ccee55", word: "ਸ਼ਬਦਾਵਲੀ", rom: "shabdavali", vi: "từ vựng, cách dùng từ", en: "vocabulary / wording", pos: "n." },
     ],
     notes_vi:
       "ਲੇਖਕ ਦਲੀਲ ਦਿੰਦਾ ਹੈ ਕਿ... là công thức báo cáo nguồn. ਦੂਜੇ ਸ਼ਬਦਾਂ ਵਿੱਚ dùng để diễn giải, không phải để thêm ý mới không có trong nguồn.",
@@ -454,10 +455,10 @@ export const lessons: PunjabiC1Lesson[] = [
       },
     ],
     vocabulary: [
-      { word: "ਮਸੌਦਾ", rom: "masoda", vi: "bản dự thảo", en: "draft", pos: "n." },
-      { word: "ਸੋਧਣਾ", rom: "sodhna", vi: "sửa đổi, chỉnh sửa", en: "to revise", pos: "v." },
-      { word: "ਸਮਾਂ-ਸਾਰਣੀ", rom: "sama-sarni", vi: "lịch trình", en: "timeline", pos: "n." },
-      { word: "ਸਮੀਖਿਆ", rom: "samikhia", vi: "rà soát, đánh giá lại", en: "review", pos: "n." },
+      { cell_id: "78a2a7fe-ce46-4468-a30c-73ed5c2bfcfa", word: "ਮਸੌਦਾ", rom: "masoda", vi: "bản dự thảo", en: "draft", pos: "n." },
+      { cell_id: "11cda6db-c5ac-4cd4-a9ae-c00572b9e1a0", word: "ਸੋਧਣਾ", rom: "sodhna", vi: "sửa đổi, chỉnh sửa", en: "to revise", pos: "v." },
+      { cell_id: "45f8c144-1b2a-4244-8da9-b6b57d72a5a1", word: "ਸਮਾਂ-ਸਾਰਣੀ", rom: "sama-sarni", vi: "lịch trình", en: "timeline", pos: "n." },
+      { cell_id: "c20c7a11-3835-41fc-872d-b08d4252a929", word: "ਸਮੀਖਿਆ", rom: "samikhia", vi: "rà soát, đánh giá lại", en: "review", pos: "n." },
     ],
     notes_vi:
       "Biên bản thường dùng bị động để tập trung vào quyết định hơn là người nói: ਫ਼ੈਸਲਾ ਕੀਤਾ ਗਿਆ, ਭੇਜੀ ਜਾਵੇਗੀ, ਵੇਖੀਆਂ ਜਾਣਗੀਆਂ.",
@@ -496,10 +497,10 @@ export const lessons: PunjabiC1Lesson[] = [
       },
     ],
     vocabulary: [
-      { word: "ਕਾਰਜਕਾਰੀ ਸੰਖੇਪ", rom: "karjkari sankhep", vi: "tóm tắt điều hành", en: "executive summary", pos: "n." },
-      { word: "ਦਸਤਾਵੇਜ਼", rom: "dastavez", vi: "tài liệu", en: "document", pos: "n." },
-      { word: "ਪ੍ਰਕਿਰਿਆ", rom: "prakiria", vi: "quy trình", en: "process", pos: "n." },
-      { word: "ਮਾਪਦੰਡ", rom: "mapdand", vi: "tiêu chuẩn đo lường", en: "metric / standard", pos: "n." },
+      { cell_id: "e07da7b8-e558-4cb8-8d2b-b4d761ef0bb6", word: "ਕਾਰਜਕਾਰੀ ਸੰਖੇਪ", rom: "karjkari sankhep", vi: "tóm tắt điều hành", en: "executive summary", pos: "n." },
+      { cell_id: "132343ee-e28e-4835-a7e3-1982d2eeb312", word: "ਦਸਤਾਵੇਜ਼", rom: "dastavez", vi: "tài liệu", en: "document", pos: "n." },
+      { cell_id: "68d51b20-e263-401a-9644-900ece086da2", word: "ਪ੍ਰਕਿਰਿਆ", rom: "prakiria", vi: "quy trình", en: "process", pos: "n." },
+      { cell_id: "6d249c7e-7023-42ea-8d7c-7c54c50bf94f", word: "ਮਾਪਦੰਡ", rom: "mapdand", vi: "tiêu chuẩn đo lường", en: "metric / standard", pos: "n." },
     ],
     notes_vi:
       "Tóm tắt điều hành không phải mục lục. Nó phải nêu vấn đề, kết luận chính và khuyến nghị để người bận rộn có thể quyết định nhanh.",
@@ -538,10 +539,10 @@ export const lessons: PunjabiC1Lesson[] = [
       },
     ],
     vocabulary: [
-      { word: "ਸੁਝਾਅ", rom: "sujhaa", vi: "gợi ý, góp ý", en: "suggestion", pos: "n." },
-      { word: "ਲਾਭਦਾਇਕ", rom: "labhdaik", vi: "hữu ích", en: "useful", pos: "adj." },
-      { word: "ਸਾਂਝਾ ਕਰਨਾ", rom: "sanjha karna", vi: "chia sẻ", en: "to share", pos: "v." },
-      { word: "ਜਾਣੂ ਕਰਵਾਉਣਾ", rom: "janu karvauna", vi: "cho biết, thông báo", en: "to inform", pos: "v." },
+      { cell_id: "9d6a89ed-c5ca-47b4-a3f1-c9652b69cdd8", word: "ਸੁਝਾਅ", rom: "sujhaa", vi: "gợi ý, góp ý", en: "suggestion", pos: "n." },
+      { cell_id: "dd0982e9-0eb2-4e35-907c-512e963609ef", word: "ਲਾਭਦਾਇਕ", rom: "labhdaik", vi: "hữu ích", en: "useful", pos: "adj." },
+      { cell_id: "5fe4f83e-af5b-48ca-96a7-b582fd57100b", word: "ਸਾਂਝਾ ਕਰਨਾ", rom: "sanjha karna", vi: "chia sẻ", en: "to share", pos: "v." },
+      { cell_id: "ca80940d-f133-450b-b830-bd9a10c7e9d7", word: "ਜਾਣੂ ਕਰਵਾਉਣਾ", rom: "janu karvauna", vi: "cho biết, thông báo", en: "to inform", pos: "v." },
     ],
     notes_vi:
       "ਜਿਵੇਂ ਸਹਿਮਤੀ ਹੋਈ tương đương 'as agreed' và rất hữu ích trong email/tin nhắn sau họp để biến trao đổi thành cam kết cụ thể.",
@@ -580,10 +581,10 @@ export const lessons: PunjabiC1Lesson[] = [
       },
     ],
     vocabulary: [
-      { word: "ਅਧਿਐਨ", rom: "adhian", vi: "nghiên cứu", en: "study", pos: "n." },
-      { word: "ਸੀਮਾ", rom: "sima", vi: "giới hạn", en: "limitation", pos: "n." },
-      { word: "ਸੰਦਰਭ", rom: "sandarbh", vi: "bối cảnh", en: "context", pos: "n." },
-      { word: "ਅਗਲੀ ਖੋਜ", rom: "agli khoj", vi: "nghiên cứu tiếp theo", en: "further research", pos: "n." },
+      { cell_id: "74411a2c-981a-41bd-ba37-1ef456af08fa", word: "ਅਧਿਐਨ", rom: "adhian", vi: "nghiên cứu", en: "study", pos: "n." },
+      { cell_id: "7797a4dd-5298-4069-a6ea-7ccb96508973", word: "ਸੀਮਾ", rom: "sima", vi: "giới hạn", en: "limitation", pos: "n." },
+      { cell_id: "3594ace6-d1f1-4f20-b4f9-07639b888e74", word: "ਸੰਦਰਭ", rom: "sandarbh", vi: "bối cảnh", en: "context", pos: "n." },
+      { cell_id: "9f9f0014-4ca5-4506-8817-024b0bda2d9e", word: "ਅਗਲੀ ਖੋਜ", rom: "agli khoj", vi: "nghiên cứu tiếp theo", en: "further research", pos: "n." },
     ],
     notes_vi:
       "Ở C1, thừa nhận ਸੀਮਾ không làm lập luận yếu đi; nó làm phạm vi kết luận chính xác hơn. ਫਿਰ ਵੀ giúp giữ giá trị sau khi nêu hạn chế.",

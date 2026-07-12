@@ -10,42 +10,52 @@ export const lessons: JapaneseLesson[] = [
     "level": "C2",
     "vocabulary": [
       {
+        cell_id: "958f1f63-f9e0-47e5-a7dc-46e5bd586b5b",
         "japanese": "精読 (せいどく)",
         "english": "close reading"
       },
       {
+        cell_id: "5dd14e29-df6c-49d7-a5e9-4ace1940926d",
         "japanese": "文体 (ぶんたい)",
         "english": "style / register"
       },
       {
+        cell_id: "2c3ef3a3-a823-4346-8e1b-8bde43d20258",
         "japanese": "修辞 (しゅうじ)",
         "english": "rhetoric"
       },
       {
+        cell_id: "0aa247d9-7e88-4c53-87f7-86b92b4d94b1",
         "japanese": "語彙選択 (ごいせんたく)",
         "english": "lexical choice"
       },
       {
+        cell_id: "8e205210-3c94-4b57-875c-1d44d45fb67d",
         "japanese": "構文 (こうぶん)",
         "english": "syntax"
       },
       {
+        cell_id: "a3acc02f-c514-4919-931c-050174b3bc48",
         "japanese": "反復 (はんぷく)",
         "english": "repetition"
       },
       {
+        cell_id: "755fa59c-97d2-4ed0-bc56-aa9a77d3d60f",
         "japanese": "韻律 (いんりつ)",
         "english": "prosody"
       },
       {
+        cell_id: "c64816b9-9569-49d1-bb8c-86a2073488b5",
         "japanese": "句読法 (くとうほう)",
         "english": "punctuation usage"
       },
       {
+        cell_id: "94a33e8b-b520-4aa7-967f-6d2a84408914",
         "japanese": "余白 (よはく)",
         "english": "blank / unsaid space"
       },
       {
+        cell_id: "b6cd6734-fc12-48f7-9bbb-f2a50e4c0d08",
         "japanese": "含意 (がんい)",
         "english": "implication / connotation"
       }
@@ -78,21 +88,25 @@ export const lessons: JapaneseLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "1035c855-a49c-48c2-8b44-cbd792b5fda0",
         "speaker": "院生",
         "japanese": "本日は、川端「雪国」冒頭の精読を試みたく存じます。",
         "english": "Today I would like to attempt a close reading of the opening of Kawabata's 'Snow Country.'"
       },
       {
+        cell_id: "abc3de31-c4d7-4004-aae1-cf3739ea57d3",
         "speaker": "指導教員",
         "japanese": "あの一文ですね。「国境」「トンネル」「雪国」、三つの名詞の並びだけで、空間が転換する。",
         "english": "That one sentence. With just the arrangement of the three nouns — 'border,' 'tunnel,' 'snow country' — space itself transforms."
       },
       {
+        cell_id: "ca60a069-a142-483e-aec0-62f862fa530a",
         "speaker": "院生",
         "japanese": "助詞の選択にも、留意すべき点が多々ございます。「と」「であった」、いずれも淡々とした文字面が、かえって衝撃を増幅させております。",
         "english": "There are many points to attend to in the choice of particles as well. 'When' and 'was' — the very plainness of the surface intensifies, paradoxically, the impact."
       },
       {
+        cell_id: "65379355-dbd1-416f-a819-5064d72c8c37",
         "speaker": "指導教員",
         "japanese": "その「淡々」を支えているのが過去形の選択でしょう。現在形なら速度が消えてしまう。",
         "english": "What sustains that 'plainness,' I would say, is the choice of past tense. With present tense, the velocity would vanish."
@@ -268,42 +282,52 @@ export const lessons: JapaneseLesson[] = [
     "level": "C2",
     "vocabulary": [
       {
+        cell_id: "b3c09d81-d1a5-48c8-8c31-e64938b46455",
         "japanese": "語り手 (かたりて)",
         "english": "narrator"
       },
       {
+        cell_id: "b9750f23-dcc7-486a-878f-907db229cee7",
         "japanese": "視点 (してん)",
         "english": "point of view"
       },
       {
+        cell_id: "bdc6dbc4-933a-4855-8385-1d22f98eec33",
         "japanese": "焦点化 (しょうてんか)",
         "english": "focalization"
       },
       {
+        cell_id: "de0aa123-aef0-44a8-83e5-431c7e38f30f",
         "japanese": "一人称 (いちにんしょう)",
         "english": "first-person"
       },
       {
+        cell_id: "9896b7b1-c6ee-4e2f-81e6-cd8cc7b5f0f5",
         "japanese": "三人称 (さんにんしょう)",
         "english": "third-person"
       },
       {
+        cell_id: "1c661d56-1e4b-4b28-9952-8ce792c3e121",
         "japanese": "全知視点 (ぜんちしてん)",
         "english": "omniscient POV"
       },
       {
+        cell_id: "9f1d462a-3295-46fc-9a3b-bda1ef6ff1f5",
         "japanese": "限定視点 (げんていしてん)",
         "english": "limited POV"
       },
       {
+        cell_id: "230c77b9-87c9-453f-9471-eef42e7f4107",
         "japanese": "自由間接話法 (じゆうかんせつわほう)",
         "english": "free indirect discourse"
       },
       {
+        cell_id: "84c102a3-1fab-42a9-acc3-b82d3137d758",
         "japanese": "信頼できない語り手 (しんらいできないかたりて)",
         "english": "unreliable narrator"
       },
       {
+        cell_id: "7a6e9bbf-736b-4694-9619-39782c89ac88",
         "japanese": "内的独白 (ないてきどくはく)",
         "english": "interior monologue"
       }
@@ -336,21 +360,25 @@ export const lessons: JapaneseLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "0ab7ce1e-a68a-4304-ae7d-4c5570f135b7",
         "speaker": "院生",
         "japanese": "「こゝろ」の三層構造について、論文を書いておりますが、視点の分析が定まりません。",
         "english": "I am writing a paper on the triple-layer structure of 'Kokoro,' but my analysis of viewpoint will not settle."
       },
       {
+        cell_id: "8312a366-4043-41ea-872b-3d8c627e35be",
         "speaker": "指導教員",
         "japanese": "三層を、誰が誰に語っているか、まずそこから整理しなさい。「私」が「先生」を語る上巻、「私」が「両親」を語る中巻、「先生」が「私」に書く下巻。",
         "english": "First organize from there: who is narrating to whom in the three layers. Volume one, 'I' narrates Sensei; volume two, 'I' narrates the parents; volume three, Sensei writes to 'I.'"
       },
       {
+        cell_id: "f0907ffc-d471-45ec-9eae-149509550803",
         "speaker": "院生",
         "japanese": "下巻のみが手紙体——書かれたテクストとして読者に到達するわけですね。",
         "english": "Only the third volume is in epistolary form — it reaches the reader as a written text."
       },
       {
+        cell_id: "b253e5a5-fa51-416b-bf2f-453a8b92a1b8",
         "speaker": "指導教員",
         "japanese": "そのとおり。語りの媒体の差異が、認識の不可能性を構造化している。これが「こゝろ」の核心です。",
         "english": "Exactly. The difference in narrative medium structures the impossibility of cognition. This is the core of 'Kokoro.'"
@@ -521,42 +549,52 @@ export const lessons: JapaneseLesson[] = [
     "level": "C2",
     "vocabulary": [
       {
+        cell_id: "8001c57c-10fd-443b-81ae-f7415ab6a1d9",
         "japanese": "象徴 (しょうちょう)",
         "english": "symbol"
       },
       {
+        cell_id: "298e7b7d-3140-4388-80fe-3a0a90f4a226",
         "japanese": "比喩 (ひゆ)",
         "english": "metaphor / figurative"
       },
       {
+        cell_id: "1bb12ce5-e859-44e0-a1a2-1b4ad12090fd",
         "japanese": "隠喩 (いんゆ)",
         "english": "metaphor (proper)"
       },
       {
+        cell_id: "4756a8ca-4e56-405d-bc54-5c913f4bce7b",
         "japanese": "直喩 (ちょくゆ)",
         "english": "simile"
       },
       {
+        cell_id: "5bc9d0dc-02fc-4877-9c16-58d20da3c623",
         "japanese": "換喩 (かんゆ)",
         "english": "metonymy"
       },
       {
+        cell_id: "8927d265-320e-407c-a52c-f6f6de0ee2be",
         "japanese": "提喩 (ていゆ)",
         "english": "synecdoche"
       },
       {
+        cell_id: "b4ec7da4-1210-4788-8178-4320eccd320b",
         "japanese": "イメージ",
         "english": "image"
       },
       {
+        cell_id: "2fcad8c3-6103-48e3-8c78-d7dbcf7ff170",
         "japanese": "モチーフ",
         "english": "motif"
       },
       {
+        cell_id: "f661fac1-ab40-4375-bdf4-5a82923eee71",
         "japanese": "表象 (ひょうしょう)",
         "english": "representation / figuration"
       },
       {
+        cell_id: "f0cf30b2-4092-4680-a292-993dda917e31",
         "japanese": "アレゴリー",
         "english": "allegory"
       }
@@ -589,21 +627,25 @@ export const lessons: JapaneseLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "2848dec4-538f-4db3-bc75-69aab675b5a0",
         "speaker": "院生",
         "japanese": "三島の金閣を、単なる美の象徴と読むだけでは、不十分でしょうか。",
         "english": "Reading the Kinkaku in Mishima as merely a symbol of beauty — would that be insufficient?"
       },
       {
+        cell_id: "0151f570-9072-4c9e-8902-5f20017cca7f",
         "speaker": "指導教員",
         "japanese": "不十分ですね。象徴は、何かを「指す」だけでなく、何かを「行う」のです。金閣は美を指すと同時に、主人公の認識を規定し、最後には焼却の対象となる。",
         "english": "Insufficient, yes. A symbol does not merely 'point to' something but also 'does' something. The Kinkaku points to beauty and at the same time regulates the protagonist's cognition, ultimately becoming the object of incineration."
       },
       {
+        cell_id: "e54e2ae3-8673-46fb-90f4-b41032a5f256",
         "speaker": "院生",
         "japanese": "つまり、象徴自体が物語を駆動する力を持つ、ということですね。",
         "english": "In other words, the symbol itself possesses the power to drive the narrative."
       },
       {
+        cell_id: "cdfead01-af24-4e95-adbc-35fcbf36bc12",
         "speaker": "指導教員",
         "japanese": "そのとおり。静的な意味付与の対象ではなく、動的な力学の中心として読むべきなのです。",
         "english": "Exactly. It should be read not as the object of static meaning-attribution but as the center of dynamic force."
@@ -779,42 +821,52 @@ export const lessons: JapaneseLesson[] = [
     "level": "C2",
     "vocabulary": [
       {
+        cell_id: "73f01b3e-11a0-4dce-b180-e417b1510190",
         "japanese": "ジャンル",
         "english": "genre"
       },
       {
+        cell_id: "c9aa2bef-da4d-4772-b9be-f88a8e47e5a3",
         "japanese": "様式 (ようしき)",
         "english": "form / style"
       },
       {
+        cell_id: "eb418321-da70-4dbd-8b8f-bc1fc98c7193",
         "japanese": "型 (かた)",
         "english": "established form / mold"
       },
       {
+        cell_id: "4fd55d16-e9f7-4687-8166-25d32fa0758e",
         "japanese": "規範 (きはん)",
         "english": "norm / convention"
       },
       {
+        cell_id: "1b708518-6f5c-4a90-9b0d-a8725fb2b617",
         "japanese": "逸脱 (いつだつ)",
         "english": "deviation / departure"
       },
       {
+        cell_id: "e3dd6771-33a0-45aa-8e13-9237a48389bf",
         "japanese": "撹乱 (かくらん)",
         "english": "disruption"
       },
       {
+        cell_id: "8b5ba1dd-9ce0-4e03-8008-32dc76448227",
         "japanese": "反転 (はんてん)",
         "english": "inversion / reversal"
       },
       {
+        cell_id: "fb572be4-4896-40a0-8142-239cf919e398",
         "japanese": "脱構築 (だつこうちく)",
         "english": "deconstruction"
       },
       {
+        cell_id: "dd403d63-6c2e-48ed-bd36-b9b804c7c4f8",
         "japanese": "境界横断 (きょうかいおうだん)",
         "english": "boundary-crossing"
       },
       {
+        cell_id: "25a87db4-d2f2-4692-b3d8-5f4859fdc9d1",
         "japanese": "ハイブリッド",
         "english": "hybrid"
       }
@@ -847,21 +899,25 @@ export const lessons: JapaneseLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "362c8531-4ecf-46d0-85d7-49a927e3f136",
         "speaker": "院生",
         "japanese": "「コンビニ人間」を私小説の系譜で読むことは、可能でしょうか。",
         "english": "Would it be possible to read 'Convenience Store Woman' within the genealogy of the I-novel?"
       },
       {
+        cell_id: "875c7574-9b23-4f69-8e06-ca6f09d3f45c",
         "speaker": "指導教員",
         "japanese": "可能ですが、単純な継承ではなく、私小説形式を「擬態」する作品として読むのが妥当でしょう。",
         "english": "Possible, but reading it not as simple inheritance but as a work that 'mimics' the I-novel form would be appropriate."
       },
       {
+        cell_id: "98b215ed-3262-4d88-abcb-fa9bf9f123f0",
         "speaker": "院生",
         "japanese": "擬態——つまり、形式を踏襲しつつ、その内側から規範を撹乱しているわけですね。",
         "english": "Mimicry — in other words, while following the form, it disrupts the norm from inside it."
       },
       {
+        cell_id: "c25c56f1-8252-4903-aa9e-081ff138ea3c",
         "speaker": "指導教員",
         "japanese": "そのとおり。ジャンルの逸脱は、規範への完全な依拠を前提としてのみ可能となる。これが、ジャンル研究の逆説です。",
         "english": "Exactly. Generic deviation becomes possible only on the premise of complete reliance on the norm. This is the paradox of genre studies."
@@ -1032,42 +1088,52 @@ export const lessons: JapaneseLesson[] = [
     "level": "C2",
     "vocabulary": [
       {
+        cell_id: "c5fe091c-7d2a-4f35-9599-a6d71ac5d741",
         "japanese": "翻訳論 (ほんやくろん)",
         "english": "translation theory"
       },
       {
+        cell_id: "1211d04c-101e-4afd-8db5-59451af86a62",
         "japanese": "原文 (げんぶん)",
         "english": "source text"
       },
       {
+        cell_id: "dc3e4a74-9327-4269-a4e4-c2b2caf1e4c2",
         "japanese": "訳文 (やくぶん)",
         "english": "translation text"
       },
       {
+        cell_id: "c624193c-59f2-464c-95f1-ede9b7a745aa",
         "japanese": "等価 (とうか)",
         "english": "equivalence"
       },
       {
+        cell_id: "0f171454-d539-4db5-973f-fefabbb44dc6",
         "japanese": "可訳性 (かやくせい)",
         "english": "translatability"
       },
       {
+        cell_id: "a6695a7b-8697-4dd7-9dd6-8decc447ff05",
         "japanese": "不可訳性 (ふかやくせい)",
         "english": "untranslatability"
       },
       {
+        cell_id: "fb5973e8-ddef-4422-ab96-b6a6709e9633",
         "japanese": "直訳 (ちょくやく)",
         "english": "literal translation"
       },
       {
+        cell_id: "d05ffb84-c0bd-44f9-aa71-ef5dead1df34",
         "japanese": "意訳 (いやく)",
         "english": "free translation"
       },
       {
+        cell_id: "c749eebe-a897-427b-a468-4d167e209952",
         "japanese": "翻訳者の介入 (ほんやくしゃのかいにゅう)",
         "english": "translator's intervention"
       },
       {
+        cell_id: "af626f43-7e0d-4c56-a96f-c060efb90d26",
         "japanese": "受容文化 (じゅようぶんか)",
         "english": "receiving culture"
       }
@@ -1100,21 +1166,25 @@ export const lessons: JapaneseLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "e2c40ea8-bbed-40e5-9bfa-2a6cd08add72",
         "speaker": "院生",
         "japanese": "「源氏物語」の三英訳を比較する論文を書きたいのですが、比較の軸がまだ定まっておりません。",
         "english": "I want to write a paper comparing the three English translations of 'The Tale of Genji,' but the axis of comparison has not yet settled."
       },
       {
+        cell_id: "5c2c1205-3f4f-4c4a-be67-f90cbc0c12f2",
         "speaker": "指導教員",
         "japanese": "三軸を設定するのが定石でしょう。第一に、敬語表現の処理。第二に、和歌の翻訳方針。第三に、原文の曖昧性に対する解釈の度合い。",
         "english": "Setting up three axes would be the standard approach. First, the handling of honorific expressions. Second, the policy on translating waka poems. Third, the degree of interpretation of the source text's ambiguity."
       },
       {
+        cell_id: "505fa18e-a264-4de6-a808-66cdc545d0f7",
         "speaker": "院生",
         "japanese": "敬語処理について、三者の方針はかなり異なっておりますね。ウェイリーは大胆に意訳し、サイデンステッカーは中庸を取り、タイラーは原文への忠実性を徹底した、と整理してよろしいでしょうか。",
         "english": "Regarding honorific handling, the three policies differ considerably. Waley translated freely and boldly, Seidensticker took the middle way, Tyler thoroughly insisted on fidelity to the source — would that organization be acceptable?"
       },
       {
+        cell_id: "75c54616-c38f-42b3-9d51-5f3fc46c84ec",
         "speaker": "指導教員",
         "japanese": "概ね妥当な整理です。ただし、各翻訳者の方針を、翻訳が行われた歴史的文脈と接続することが肝要です。文体的選択の背後には、当該時代の受容文化の期待が常に作用しています。",
         "english": "A broadly valid organization. However, connecting each translator's policy with the historical context in which the translation was carried out is essential. Behind stylistic choices, the expectations of the receiving culture of that era are always at work."
@@ -1285,42 +1355,52 @@ export const lessons: JapaneseLesson[] = [
     "level": "C2",
     "vocabulary": [
       {
+        cell_id: "0ccb3817-c3a1-4e02-987e-994f83b74765",
         "japanese": "伝記 (でんき)",
         "english": "biography"
       },
       {
+        cell_id: "0b62ae28-fd55-4555-b7ab-90cd7173cf6f",
         "japanese": "伝記的読解 (でんきてきどっかい)",
         "english": "biographical reading"
       },
       {
+        cell_id: "e1194049-7a14-4023-abd5-1407ab52a80e",
         "japanese": "作者の死 (さくしゃのし)",
         "english": "death of the author"
       },
       {
+        cell_id: "02d818f5-88f3-436e-a8ca-6b7241726e32",
         "japanese": "作家論 (さっかろん)",
         "english": "author-study"
       },
       {
+        cell_id: "c3304036-71ac-45a4-b9ce-e8056db438d7",
         "japanese": "作品論 (さくひんろん)",
         "english": "work-study"
       },
       {
+        cell_id: "99d5c2cb-6169-42c1-8147-d038dd0a220c",
         "japanese": "意図 (いと)",
         "english": "intention"
       },
       {
+        cell_id: "1f915035-1bfa-400d-9ac3-1e83253cedf2",
         "japanese": "意図主義の誤謬 (いとしゅぎのごびゅう)",
         "english": "intentional fallacy"
       },
       {
+        cell_id: "7bc26945-c3b9-41f7-8cb5-61b00eaa2fec",
         "japanese": "テクスト論 (てくすとろん)",
         "english": "text-theory / textualism"
       },
       {
+        cell_id: "31b0b00e-30d5-418d-a22d-9d09b029a227",
         "japanese": "実証主義 (じっしょうしゅぎ)",
         "english": "positivism"
       },
       {
+        cell_id: "9b9fea28-3bb0-4a28-918a-4dc6ff32bcda",
         "japanese": "私小説性 (ししょうせつせい)",
         "english": "I-novel-ness"
       }
@@ -1353,21 +1433,25 @@ export const lessons: JapaneseLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "26fdd557-4e45-4113-a528-697f70acf85b",
         "speaker": "院生",
         "japanese": "三島の「豊饒の海」を分析する際、自決という伝記的事実を、いかに取り扱うべきでしょうか。",
         "english": "When analyzing Mishima's 'Sea of Fertility,' how should one handle the biographical fact of his suicide?"
       },
       {
+        cell_id: "9fcd7d26-648f-4793-bbce-28644c13459f",
         "speaker": "指導教員",
         "japanese": "完全に無視することも、過度に依拠することも、いずれも誤りでしょう。自決は作品解釈の鍵ではなく、作品が提起する問題の一つの帰結として位置づけるべきです。",
         "english": "Both completely ignoring it and excessively relying on it would be errors. The suicide should be positioned not as the key to interpreting the works but as one consequence of the questions the works raise."
       },
       {
+        cell_id: "a8b74f94-3439-4826-b6c9-05c36b08e234",
         "speaker": "院生",
         "japanese": "つまり、伝記が作品を説明するのではなく、作品が伝記を説明する——という方向の読みも可能、ということでしょうか。",
         "english": "In other words, not biography explaining the works but a reading in the direction of works explaining biography is also possible?"
       },
       {
+        cell_id: "9194b78f-8089-4d3c-abd9-f9ea71288cde",
         "speaker": "指導教員",
         "japanese": "そのとおり。両者の関係を一方向的因果として捉えるのではなく、相互照射の場として捉え直す必要があります。",
         "english": "Exactly. There is a need to re-grasp the relationship between the two not as one-directional causality but as a site of mutual illumination."
@@ -1528,42 +1612,52 @@ export const lessons: JapaneseLesson[] = [
     "level": "C2",
     "vocabulary": [
       {
+        cell_id: "e6da48c0-d4d5-4688-839e-a651be93a018",
         "japanese": "受容史 (じゅようし)",
         "english": "reception history"
       },
       {
+        cell_id: "b29bbcfa-4fc7-4d3f-8737-1b3f74000a18",
         "japanese": "正典 (せいてん)",
         "english": "canon"
       },
       {
+        cell_id: "2ed9ef6e-c5cb-4994-a746-e8559e1dbf74",
         "japanese": "正典化 (せいてんか)",
         "english": "canonization"
       },
       {
+        cell_id: "4362fd97-e525-4713-89ba-120bb7f7fa5a",
         "japanese": "脱正典化 (だつせいてんか)",
         "english": "decanonization"
       },
       {
+        cell_id: "06340f7e-7555-4b52-a4b3-205306c894ea",
         "japanese": "読者反応 (どくしゃはんのう)",
         "english": "reader response"
       },
       {
+        cell_id: "9061b0c6-5555-4b42-9373-703e9f06f834",
         "japanese": "解釈共同体 (かいしゃくきょうどうたい)",
         "english": "interpretive community"
       },
       {
+        cell_id: "9fbdbbd9-a888-4e1c-a16a-8cc34904c705",
         "japanese": "期待の地平 (きたいのちへい)",
         "english": "horizon of expectations"
       },
       {
+        cell_id: "acd84370-92ed-447d-af02-573713db3e07",
         "japanese": "古典化 (こてんか)",
         "english": "classicization"
       },
       {
+        cell_id: "0eb1e130-eaf0-4e6a-9f96-bb417c575d2e",
         "japanese": "再評価 (さいひょうか)",
         "english": "revaluation"
       },
       {
+        cell_id: "a07623f5-2bdf-4d96-815e-560416e25b61",
         "japanese": "周縁化 (しゅうえんか)",
         "english": "marginalization"
       }
@@ -1596,21 +1690,25 @@ export const lessons: JapaneseLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "b5b34f26-1a1e-471b-8e63-3638114dad33",
         "speaker": "院生",
         "japanese": "本論文では、樋口一葉の受容史を整理しようと考えております。",
         "english": "In this paper, I am considering organizing the reception history of Higuchi Ichiyō."
       },
       {
+        cell_id: "9347af43-aaa7-4320-a4fe-fa3e54c8b650",
         "speaker": "指導教員",
         "japanese": "良い対象です。一葉の受容は、いくつかの転換点を経ています。明治期の同時代評価、大正・昭和期の女流作家としての位置づけ、戦後フェミニズム批評以降の再評価——それぞれの位相を識別する必要があります。",
         "english": "A good object. Ichiyō's reception has gone through several turning points. Contemporary evaluation in the Meiji era, positioning as a 'female writer' in the Taishō-Shōwa era, revaluation after postwar feminist criticism — each phase needs to be distinguished."
       },
       {
+        cell_id: "5be69f35-f882-48e3-a3be-ff1d56b5806e",
         "speaker": "院生",
         "japanese": "「女流」というカテゴリー自体が、受容史の中で構築された制度的概念である、という観点でしょうか。",
         "english": "Is the standpoint that the very category of 'female writer' is an institutional concept constructed within the reception history?"
       },
       {
+        cell_id: "7752107d-7762-430b-8534-b5d629b00e5b",
         "speaker": "指導教員",
         "japanese": "そのとおり。受容史研究は、テクストの「真の価値」を発掘する作業ではなく、価値そのものが歴史的に構成される過程を解明する作業です。",
         "english": "Exactly. Reception history research is not the work of excavating the 'true value' of a text but the work of elucidating the process by which value itself is historically constituted."
@@ -1776,42 +1874,52 @@ export const lessons: JapaneseLesson[] = [
     "level": "C2",
     "vocabulary": [
       {
+        cell_id: "ba74eaa7-01ac-42b8-ad30-4d93e1b37c8a",
         "japanese": "理論的視座 (りろんてきしざ)",
         "english": "theoretical standpoint"
       },
       {
+        cell_id: "82813c09-6425-492e-9f6d-4181e924fa8b",
         "japanese": "形式主義 (けいしきしゅぎ)",
         "english": "formalism"
       },
       {
+        cell_id: "97b01a86-1568-4d00-aae7-cb91a7079bab",
         "japanese": "新批評 (しんひひょう)",
         "english": "New Criticism"
       },
       {
+        cell_id: "e4bff1a5-1aac-4b25-88e9-9919db5cc7a6",
         "japanese": "フェミニズム批評 (フェミニズムひひょう)",
         "english": "feminist criticism"
       },
       {
+        cell_id: "bc23cacb-e618-4ffc-9005-a04197142b98",
         "japanese": "ポストコロニアル批評 (ポストコロニアルひひょう)",
         "english": "postcolonial criticism"
       },
       {
+        cell_id: "8af05216-de4d-4add-8e41-a3a4b92154d6",
         "japanese": "ジェンダー",
         "english": "gender"
       },
       {
+        cell_id: "cc09d37b-9920-47e2-93a4-8c50c670a66e",
         "japanese": "他者性 (たしゃせい)",
         "english": "alterity"
       },
       {
+        cell_id: "bf647c5b-9b27-4087-9906-284c8c159402",
         "japanese": "オリエンタリズム",
         "english": "Orientalism"
       },
       {
+        cell_id: "7d422318-bbb3-47f4-a144-64329eec9216",
         "japanese": "サバルタン",
         "english": "subaltern"
       },
       {
+        cell_id: "1d196f8f-efe6-4211-954a-ff6b07624d6f",
         "japanese": "差異 (さい)",
         "english": "difference"
       }
@@ -1844,21 +1952,25 @@ export const lessons: JapaneseLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "a7f386b1-1a4c-4e8c-aac0-faa46c3c75ec",
         "speaker": "院生",
         "japanese": "ジェンダー批評で「人間失格」を読みたいのですが、太宰の自伝的内容と、ジェンダー分析とを、いかに接合すればよろしいでしょうか。",
         "english": "I want to read 'No Longer Human' through gender criticism, but how should I join Dazai's autobiographical content and gender analysis?"
       },
       {
+        cell_id: "e5c3cb81-f018-482f-a8d0-e7acddc257e1",
         "speaker": "指導教員",
         "japanese": "二段階で考えるとよい。第一に、テクスト内の女性人物造形——「葉蔵」が関わる女性たちの描かれ方——のジェンダー分析。第二に、それを支える私小説形式自体のジェンダー的政治性——「告白する男性主体」と「告白される女性他者」という非対称構造——への批判。",
         "english": "Think in two stages. First, gender analysis of the female character construction within the text — the way the women that 'Yōzō' relates to are depicted. Second, criticism of the gender politics of the I-novel form itself supporting it — the asymmetric structure of 'confessing male subject' and 'confessed female other.'"
       },
       {
+        cell_id: "36e79e3e-0b9b-4c48-b59b-9c8a3bce872d",
         "speaker": "院生",
         "japanese": "後者の方が、より構造的な分析になりますね。",
         "english": "The latter would become a more structural analysis."
       },
       {
+        cell_id: "5937e3fb-862e-491c-8799-148c30068b34",
         "speaker": "指導教員",
         "japanese": "そう。形式自体のジェンダー的政治性を問うことが、フェミニズム批評の真価が発揮される場面です。内容批評にとどまる読みは、表面的に終わりがちです。",
         "english": "Yes. Asking after the gender politics of form itself is the scene where the true value of feminist criticism is demonstrated. Readings that stop at content criticism tend to end up superficial."
@@ -2024,42 +2136,52 @@ export const lessons: JapaneseLesson[] = [
     "level": "C2",
     "vocabulary": [
       {
+        cell_id: "910067d9-9801-4e34-b052-148a690c7b10",
         "japanese": "冒頭 (ぼうとう)",
         "english": "opening"
       },
       {
+        cell_id: "8408c0c6-39f0-4c4c-9588-7ece90b498e1",
         "japanese": "問題提起 (もんだいていき)",
         "english": "problem-setting"
       },
       {
+        cell_id: "c3fbf3f8-0c6d-4f88-958f-38c65dca43af",
         "japanese": "問題系 (もんだいけい)",
         "english": "problematic"
       },
       {
+        cell_id: "ebfb885d-3676-4595-a53d-0067c74171e4",
         "japanese": "通説 (つうせつ)",
         "english": "received view / consensus"
       },
       {
+        cell_id: "ef9d1192-a42e-4c7c-96fe-e9456c4e376c",
         "japanese": "通念 (つうねん)",
         "english": "common notion"
       },
       {
+        cell_id: "d053123d-9ad8-439d-9668-55d37f1f7dfd",
         "japanese": "再検討 (さいけんとう)",
         "english": "reexamination"
       },
       {
+        cell_id: "10681239-0e75-4204-8cbc-91e603f75dfe",
         "japanese": "立論 (りつろん)",
         "english": "constructing argument"
       },
       {
+        cell_id: "e6884c63-9c40-4468-80b8-0f61eca08b39",
         "japanese": "射程 (しゃてい)",
         "english": "scope / reach"
       },
       {
+        cell_id: "8c9f7a3a-ddd9-4efd-8526-e2933d465471",
         "japanese": "切り口 (きりくち)",
         "english": "angle / approach"
       },
       {
+        cell_id: "14c5c9cf-8f66-465c-9343-8f5293517e6b",
         "japanese": "問いの設定 (といのせってい)",
         "english": "framing the question"
       }
@@ -2092,21 +2214,25 @@ export const lessons: JapaneseLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "9aac1e7d-fc86-456b-ae84-df201e7ac766",
         "speaker": "院生",
         "japanese": "論文の冒頭が、何度書き直しても定まりません。背景説明が長くなり、問題提起にたどり着く前に読者を疲れさせてしまいます。",
         "english": "The opening of my paper, no matter how many times I rewrite it, will not settle. Background explanation grows long, and I tire the reader before reaching the problem-setting."
       },
       {
+        cell_id: "10318d48-f129-4549-862c-61d649da0a4d",
         "speaker": "指導教員",
         "japanese": "背景の長さが原因ですね。三段階を試みなさい。第一文で対象テクストの細部を提示。第二文でその細部が呼び起こす疑問を述べる。第三文で本論文の問いを設定する。背景説明はその後でよい。",
         "english": "The length of the background is the cause. Try three stages. In the first sentence, present a detail of the target text. In the second, state the question that detail raises. In the third, set the question of this paper. Background explanation can come after."
       },
       {
+        cell_id: "3ad5c3c4-5aef-4bb7-9577-33e56ac44714",
         "speaker": "院生",
         "japanese": "細部から問いへ、問いから本論へ、という展開でしょうか。",
         "english": "Is it the development from detail to question, from question to main argument?"
       },
       {
+        cell_id: "081cf324-2210-473c-9981-6e5bbd100e4f",
         "speaker": "指導教員",
         "japanese": "そのとおり。蓮實重彦が好んで用いる手法です。一字一句から論を立ち上げる。冒頭で読者の精読的注意を喚起できれば、論文全体への信頼が確保されます。",
         "english": "Exactly. A method that Hasumi Shigehiko favors. Raising an argument from a single word or phrase. If you can call forth the reader's close-reading attention at the opening, trust in the entire paper is secured."
@@ -2287,42 +2413,52 @@ export const lessons: JapaneseLesson[] = [
     "level": "C2",
     "vocabulary": [
       {
+        cell_id: "b6a6506f-df9f-48cb-bbd3-126571158139",
         "japanese": "異論 (いろん)",
         "english": "dissenting view"
       },
       {
+        cell_id: "29a2e317-0f18-4217-ab4c-4792910d0820",
         "japanese": "異読 (いどく)",
         "english": "alternative reading"
       },
       {
+        cell_id: "b34b4192-b34a-44b6-a8ba-e3f5d93d4928",
         "japanese": "通説への挑戦 (つうせつへのちょうせん)",
         "english": "challenge to received view"
       },
       {
+        cell_id: "13d1f4a5-4ee7-4e15-ad76-229fabad3a6d",
         "japanese": "傍証 (ぼうしょう)",
         "english": "corroborating evidence"
       },
       {
+        cell_id: "5bd80968-6151-44a2-91cb-59e5d723ec49",
         "japanese": "反証 (はんしょう)",
         "english": "counter-evidence"
       },
       {
+        cell_id: "86f5b52e-ed3e-487e-90e0-86d06cad7d9b",
         "japanese": "弁証 (べんしょう)",
         "english": "argumentation / defense"
       },
       {
+        cell_id: "18d9c3b9-1aae-40a6-971f-ba28e6a74ad5",
         "japanese": "立証責任 (りっしょうせきにん)",
         "english": "burden of proof"
       },
       {
+        cell_id: "83526fd6-5500-4e97-8467-330445d72661",
         "japanese": "論駁 (ろんばく)",
         "english": "refutation"
       },
       {
+        cell_id: "aaceb68a-b5f9-46b5-9bc4-9473cc43b431",
         "japanese": "蓋然性 (がいぜんせい)",
         "english": "probability / plausibility"
       },
       {
+        cell_id: "2754690a-5b30-4afa-852b-5bcfc430946e",
         "japanese": "解釈学的循環 (かいしゃくがくてきじゅんかん)",
         "english": "hermeneutic circle"
       }
@@ -2355,31 +2491,37 @@ export const lessons: JapaneseLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "120acb55-428c-43b4-80d5-41297590e0b5",
         "speaker": "院生",
         "japanese": "「ノルウェイの森」の「僕」を信頼できない語り手として読む論を、学会で発表する予定です。しかし、反論への準備が整いません。",
         "english": "I plan to present at the conference an argument reading 'boku' of 'Norwegian Wood' as an unreliable narrator. However, my preparation for counter-arguments is not in order."
       },
       {
+        cell_id: "e77907c1-c4cb-4c8b-9085-1bd51a084272",
         "speaker": "指導教員",
         "japanese": "想定される最強の反論を、自身で予め定式化しなさい。それに答えられなければ、論文として未熟です。",
         "english": "Formulate the strongest anticipated counter-argument yourself in advance. If you cannot answer it, the paper is immature."
       },
       {
+        cell_id: "3219345f-c23a-4671-82d0-34c46c5a0ec2",
         "speaker": "院生",
         "japanese": "最強の反論は、「僕」の語りには明白な不一致や誤りがなく、信頼できない語り手と読む積極的根拠を欠く、というものでございましょう。",
         "english": "The strongest counter-argument would be that 'boku's' narration has no clear inconsistency or error, lacking active grounds for reading as unreliable."
       },
       {
+        cell_id: "a6bb6d40-9f54-4072-ac73-bcf22a9fd825",
         "speaker": "指導教員",
         "japanese": "それに対するあなたの応答は。",
         "english": "Your response to that?"
       },
       {
+        cell_id: "47dab606-42bc-470e-9e6a-e28d16b80f91",
         "speaker": "院生",
         "japanese": "明示的不一致ではなく、自身の感情への異常なまでの距離感、登場人物の死への非常に冷静な反応、これらの「不在」が、別種の不信頼性を構成する——という形で答えるつもりでございます。",
         "english": "Not explicit inconsistency, but an abnormally extreme distance from his own emotions, an extraordinarily calm reaction to characters' deaths — these 'absences' constitute a different type of unreliability — I intend to answer in that form."
       },
       {
+        cell_id: "0e683b29-491d-4c56-9c45-437b3db13eac",
         "speaker": "指導教員",
         "japanese": "「不在による不信頼性」という概念は、それ自体に立証責任が伴います。先行研究で類似概念が提唱されているか、調べた上で位置づけなさい。",
         "english": "The concept of 'unreliability through absence' itself bears burden of proof. Investigate whether similar concepts are proposed in prior research, and position yours accordingly."
@@ -2549,16 +2691,16 @@ export const lessons: JapaneseLesson[] = [
     "category": "arts_criticism",
     "level": "C2",
     "vocabulary": [
-      {"japanese": "美術批評 (びじゅつひひょう)", "english": "art criticism"},
-      {"japanese": "造形言語 (ぞうけいげんご)", "english": "plastic language / visual idiom"},
-      {"japanese": "物質性 (ぶっしつせい)", "english": "materiality"},
-      {"japanese": "支持体 (しじたい)", "english": "support / substrate (of painting)"},
-      {"japanese": "筆触 (ひっしょく)", "english": "brushstroke"},
-      {"japanese": "展示空間 (てんじくうかん)", "english": "exhibition space"},
-      {"japanese": "観者 (かんじゃ)", "english": "viewer / beholder"},
-      {"japanese": "物質への還元 (ぶっしつへのかんげん)", "english": "reduction to materiality"},
-      {"japanese": "前衛 (ぜんえい)", "english": "avant-garde"},
-      {"japanese": "具象／抽象 (ぐしょう／ちゅうしょう)", "english": "figurative / abstract"}
+      { cell_id: "6739537e-71fb-47d2-8a2f-bb5011ae883f","japanese": "美術批評 (びじゅつひひょう)", "english": "art criticism"},
+      { cell_id: "fc06820f-6ebb-41e6-bdc0-e10b2c05c940","japanese": "造形言語 (ぞうけいげんご)", "english": "plastic language / visual idiom"},
+      { cell_id: "fde16fe6-3255-49f5-a496-c1ca5f795fca","japanese": "物質性 (ぶっしつせい)", "english": "materiality"},
+      { cell_id: "f63cfd11-46ad-46e0-ae09-7d7b0d2bcd63","japanese": "支持体 (しじたい)", "english": "support / substrate (of painting)"},
+      { cell_id: "9b0adb69-9074-45a9-8726-18fed964120e","japanese": "筆触 (ひっしょく)", "english": "brushstroke"},
+      { cell_id: "3c87cbdf-052d-4b1c-9d33-bc8a5c208a63","japanese": "展示空間 (てんじくうかん)", "english": "exhibition space"},
+      { cell_id: "a1b6d821-54e5-43aa-91d5-3a5125dd92e3","japanese": "観者 (かんじゃ)", "english": "viewer / beholder"},
+      { cell_id: "0c45d5ee-7599-4937-b9a6-cb7db6d06b41","japanese": "物質への還元 (ぶっしつへのかんげん)", "english": "reduction to materiality"},
+      { cell_id: "8270e36f-cd58-4296-9728-c6296cd62ec8","japanese": "前衛 (ぜんえい)", "english": "avant-garde"},
+      { cell_id: "696f8b79-9369-4a59-8cc1-5fd024e012a2","japanese": "具象／抽象 (ぐしょう／ちゅうしょう)", "english": "figurative / abstract"}
     ],
     "examples": [
       {"japanese": "もの派の作家たちは、素材を加工するのではなく、素材そのものの「ありよう」を提示することを企てた。", "english": "The Mono-ha artists undertook not to process materials but to present the very 'way of being' of the materials themselves."},
@@ -2569,10 +2711,10 @@ export const lessons: JapaneseLesson[] = [
       {"japanese": "瀧口修造の批評言語は、理論的厳密さよりも詩的喚起力を重視する点で、フランスのシュルレアリスム批評と共鳴しつつも、独自の文体を確立している。", "english": "Takiguchi Shūzō's critical language, in prioritizing poetic evocativeness over theoretical rigor, while resonating with French surrealist criticism, nevertheless establishes a distinctive style."}
     ],
     "dialogue": [
-      {"speaker": "院生", "japanese": "戦後日本美術を論じる際、もの派と具体、いずれを基準として設定すべきでしょうか。", "english": "When discussing postwar Japanese art, which should one set as benchmark — Mono-ha or Gutai?"},
-      {"speaker": "指導教員", "japanese": "二者択一は危うい。両者は同一の問い — 「物質とは何か」 — を異なる角度から追及したと捉えるべきでしょう。", "english": "Either-or is dangerous. One should grasp the two as having pursued the same question — 'What is materiality?' — from different angles."},
-      {"speaker": "院生", "japanese": "西洋の理論枠組みで日本美術を論じることの限界は、どこにあるとお考えですか。", "english": "Where do you see the limits of discussing Japanese art through Western theoretical frameworks?"},
-      {"speaker": "指導教員", "japanese": "限界は、「分析できたつもりになる」点です。日本の「間」や「余白」は、西欧の二元論では捉えきれない残余を常に含んでいる。", "english": "The limit is the point of 'thinking one has analyzed it.' Japanese concepts like ma and yohaku always contain a remainder that cannot be captured by Western dualism."}
+      { cell_id: "9f678fe0-85c4-4c66-bcfa-10dd9fdc7344","speaker": "院生", "japanese": "戦後日本美術を論じる際、もの派と具体、いずれを基準として設定すべきでしょうか。", "english": "When discussing postwar Japanese art, which should one set as benchmark — Mono-ha or Gutai?"},
+      { cell_id: "e87d4041-6699-4606-96b2-802d3181f15f","speaker": "指導教員", "japanese": "二者択一は危うい。両者は同一の問い — 「物質とは何か」 — を異なる角度から追及したと捉えるべきでしょう。", "english": "Either-or is dangerous. One should grasp the two as having pursued the same question — 'What is materiality?' — from different angles."},
+      { cell_id: "aeae4888-473b-4acf-a8f8-5b9471419d0a","speaker": "院生", "japanese": "西洋の理論枠組みで日本美術を論じることの限界は、どこにあるとお考えですか。", "english": "Where do you see the limits of discussing Japanese art through Western theoretical frameworks?"},
+      { cell_id: "91838a8e-32db-49db-8c32-1670a3c1e7dc","speaker": "指導教員", "japanese": "限界は、「分析できたつもりになる」点です。日本の「間」や「余白」は、西欧の二元論では捉えきれない残余を常に含んでいる。", "english": "The limit is the point of 'thinking one has analyzed it.' Japanese concepts like ma and yohaku always contain a remainder that cannot be captured by Western dualism."}
     ],
     "dialogue_long": [
       {"speaker": "院生", "japanese": "本日は、李禹煥の絵画作品における「余白」の機能について、ご指導いただきたく存じます。", "english": "Today, I would like to receive guidance on the function of 'blank space' in Lee Ufan's paintings."},
@@ -2620,16 +2762,16 @@ export const lessons: JapaneseLesson[] = [
     "category": "arts_criticism",
     "level": "C2",
     "vocabulary": [
-      {"japanese": "映画批評 (えいがひひょう)", "english": "film criticism"},
-      {"japanese": "画面構成 (がめんこうせい)", "english": "shot composition / mise en scène"},
-      {"japanese": "長回し (ながまわし)", "english": "long take / plan-séquence"},
-      {"japanese": "編集／モンタージュ (へんしゅう)", "english": "editing / montage"},
-      {"japanese": "音響設計 (おんきょうせっけい)", "english": "sound design"},
-      {"japanese": "画面外 (がめんがい)", "english": "off-screen space"},
-      {"japanese": "作家主義 (さっかしゅぎ)", "english": "auteur theory"},
-      {"japanese": "視線の政治学 (しせんのせいじがく)", "english": "politics of the gaze"},
-      {"japanese": "長編デビュー作 (ちょうへんデビューさく)", "english": "feature debut"},
-      {"japanese": "映像倫理 (えいぞうりんり)", "english": "ethics of the image"}
+      { cell_id: "d787788a-2f5f-449e-9411-b69b2551207c","japanese": "映画批評 (えいがひひょう)", "english": "film criticism"},
+      { cell_id: "fbc387d8-5e6e-413d-b72b-fbb91ab626fa","japanese": "画面構成 (がめんこうせい)", "english": "shot composition / mise en scène"},
+      { cell_id: "0e961a8c-ad24-4785-a127-2d6d6cf085e7","japanese": "長回し (ながまわし)", "english": "long take / plan-séquence"},
+      { cell_id: "d0254895-41d3-4f15-8b91-61a772473482","japanese": "編集／モンタージュ (へんしゅう)", "english": "editing / montage"},
+      { cell_id: "dcac67b7-f043-4631-9da4-d7c50d9e3b39","japanese": "音響設計 (おんきょうせっけい)", "english": "sound design"},
+      { cell_id: "c718bb25-331f-4751-9351-6a05ec0412a2","japanese": "画面外 (がめんがい)", "english": "off-screen space"},
+      { cell_id: "66ef4edb-2675-4aca-86e0-e81c551f1eae","japanese": "作家主義 (さっかしゅぎ)", "english": "auteur theory"},
+      { cell_id: "fcf11b02-6558-4899-8db1-085e89c68391","japanese": "視線の政治学 (しせんのせいじがく)", "english": "politics of the gaze"},
+      { cell_id: "e1b1fc5a-3cb4-448f-b0e1-74e6e5ce1837","japanese": "長編デビュー作 (ちょうへんデビューさく)", "english": "feature debut"},
+      { cell_id: "7cbc3f64-b274-4626-bad4-1a5da0c651a9","japanese": "映像倫理 (えいぞうりんり)", "english": "ethics of the image"}
     ],
     "examples": [
       {"japanese": "小津安二郎のロー・ポジション撮影は、単なる様式ではなく、世界を見る態度そのものを表明している。", "english": "Ozu Yasujirō's low-position cinematography is not mere style — it declares the very attitude through which the world is seen."},
@@ -2640,10 +2782,10 @@ export const lessons: JapaneseLesson[] = [
       {"japanese": "国際映画祭において評価される「日本的なるもの」が、しばしば日本人批評家の見る「日本映画」と乖離することは、批評の政治性を考える上で避けて通れない問題である。", "english": "That the 'Japaneseness' valued at international film festivals often diverges from the 'Japanese cinema' seen by Japanese critics is an unavoidable problem in considering the politics of criticism."}
     ],
     "dialogue": [
-      {"speaker": "院生", "japanese": "濱口竜介の『ドライブ・マイ・カー』における長回しの機能を分析したいのですが、どの観点から切り込むべきでしょうか。", "english": "I want to analyze the function of the long take in Hamaguchi's 'Drive My Car' — from what angle should I cut in?"},
-      {"speaker": "指導教員", "japanese": "長回しの「長さ」ではなく、長回しの「あいだ」に何が起きているかに着目しなさい。濱口の場合、ことばの「ずれ」が可視化される時間がそれです。", "english": "Focus not on the 'length' of the long take but on what happens in the 'interval' of the long take. In Hamaguchi's case, that is the time in which the 'slippage' of language becomes visible."},
-      {"speaker": "院生", "japanese": "蓮實重彦の表層批評を、現代の日本映画にそのまま適用することは可能でしょうか。", "english": "Is it possible to apply Hasumi Shigehiko's surface criticism directly to contemporary Japanese cinema?"},
-      {"speaker": "指導教員", "japanese": "可能ですが、蓮實の方法を「固有名詞」としてではなく、「表層を読む態度」として継承することが肝要です。", "english": "Possible, but it is essential to inherit Hasumi's method not as a 'proper noun' but as an 'attitude of reading the surface.'"}
+      { cell_id: "1006e059-4b84-4b39-854c-4df064dcfa7f","speaker": "院生", "japanese": "濱口竜介の『ドライブ・マイ・カー』における長回しの機能を分析したいのですが、どの観点から切り込むべきでしょうか。", "english": "I want to analyze the function of the long take in Hamaguchi's 'Drive My Car' — from what angle should I cut in?"},
+      { cell_id: "8462ab06-2b27-4fe9-984b-6aa4880d9ee8","speaker": "指導教員", "japanese": "長回しの「長さ」ではなく、長回しの「あいだ」に何が起きているかに着目しなさい。濱口の場合、ことばの「ずれ」が可視化される時間がそれです。", "english": "Focus not on the 'length' of the long take but on what happens in the 'interval' of the long take. In Hamaguchi's case, that is the time in which the 'slippage' of language becomes visible."},
+      { cell_id: "f68a36ea-3756-4e17-a039-d5b5e775bbc8","speaker": "院生", "japanese": "蓮實重彦の表層批評を、現代の日本映画にそのまま適用することは可能でしょうか。", "english": "Is it possible to apply Hasumi Shigehiko's surface criticism directly to contemporary Japanese cinema?"},
+      { cell_id: "d747c977-d087-4c2b-92ac-56c9d00f314e","speaker": "指導教員", "japanese": "可能ですが、蓮實の方法を「固有名詞」としてではなく、「表層を読む態度」として継承することが肝要です。", "english": "Possible, but it is essential to inherit Hasumi's method not as a 'proper noun' but as an 'attitude of reading the surface.'"}
     ],
     "dialogue_long": [
       {"speaker": "院生", "japanese": "卒業論文で、是枝裕和の作品における「不在の演出」について論じたいと考えております。", "english": "For my graduation thesis, I am considering discussing the 'direction of absence' in Kore-eda Hirokazu's works."},
@@ -2679,16 +2821,16 @@ export const lessons: JapaneseLesson[] = [
     "id": 144, "level": "C2", "category": "civic_discourse",
     "title": "Civic discourse — analyzing political speech", "title_vi": "Diễn ngôn công dân — Phân tích diễn văn chính trị", "title_en": "Civic discourse — analyzing political speech",
     "vocabulary": [
-      {"japanese": "政治演説 (せいじえんぜつ)", "english": "political speech"},
-      {"japanese": "所信表明演説 (しょしんひょうめいえんぜつ)", "english": "policy speech (Prime Minister)"},
-      {"japanese": "修辞分析 (しゅうじぶんせき)", "english": "rhetorical analysis"},
-      {"japanese": "代名詞の政治学 (だいめいしのせいじがく)", "english": "politics of pronouns"},
-      {"japanese": "空疎な言葉 (くうそなことば)", "english": "empty rhetoric / hollow words"},
-      {"japanese": "説得力 (せっとくりょく)", "english": "persuasiveness"},
-      {"japanese": "大衆煽動 (たいしゅうせんどう)", "english": "demagoguery"},
-      {"japanese": "熟議 (じゅくぎ)", "english": "deliberation"},
-      {"japanese": "公的理性 (こうてきりせい)", "english": "public reason"},
-      {"japanese": "熟議民主主義 (じゅくぎみんしゅしゅぎ)", "english": "deliberative democracy"}
+      { cell_id: "22fe9c1d-7b27-4ad7-bb26-d7b4e2a2135c","japanese": "政治演説 (せいじえんぜつ)", "english": "political speech"},
+      { cell_id: "365816dc-4453-4107-aa14-cac9c11b519c","japanese": "所信表明演説 (しょしんひょうめいえんぜつ)", "english": "policy speech (Prime Minister)"},
+      { cell_id: "0786d9c9-41dc-4469-b13f-49c6fc60547f","japanese": "修辞分析 (しゅうじぶんせき)", "english": "rhetorical analysis"},
+      { cell_id: "5afc7fff-590b-4b99-b762-6901cfc87b6d","japanese": "代名詞の政治学 (だいめいしのせいじがく)", "english": "politics of pronouns"},
+      { cell_id: "1ce6fecd-c12c-4a15-877c-5a7f13a9312c","japanese": "空疎な言葉 (くうそなことば)", "english": "empty rhetoric / hollow words"},
+      { cell_id: "43a5f348-21dc-4d06-95b2-4decbc8838f9","japanese": "説得力 (せっとくりょく)", "english": "persuasiveness"},
+      { cell_id: "6e7acf51-5748-4f6a-aa1f-337220142a1a","japanese": "大衆煽動 (たいしゅうせんどう)", "english": "demagoguery"},
+      { cell_id: "180fadd8-abfb-460a-a2d7-88efcfeeab75","japanese": "熟議 (じゅくぎ)", "english": "deliberation"},
+      { cell_id: "faf6bff3-81f0-4a12-af18-cba75481be6f","japanese": "公的理性 (こうてきりせい)", "english": "public reason"},
+      { cell_id: "e69ead6f-b5a3-48a5-a997-c78bbb39dab9","japanese": "熟議民主主義 (じゅくぎみんしゅしゅぎ)", "english": "deliberative democracy"}
     ],
     "examples": [
       {"japanese": "日本の政治演説は、しばしば「熟議」よりも「空気」によって動かされる。この「空気」を分析することこそ、修辞分析の課題である。", "english": "Japanese political speech is often moved by 'atmosphere' rather than 'deliberation.' Analyzing this 'atmosphere' is precisely the task of rhetorical analysis."},
@@ -2698,8 +2840,8 @@ export const lessons: JapaneseLesson[] = [
       {"japanese": "街頭演説においては、話者と聴衆との距離が、国会演説とは根本的に異なる。その距離が近いほど、「われわれ」という代名詞の求心力が強く働く。", "english": "In street speeches, the distance between speaker and audience differs fundamentally from parliamentary speech. The closer that distance, the more strongly the centripetal force of the pronoun 'we' operates."}
     ],
     "dialogue": [
-      {"speaker": "院生", "japanese": "日本の総理の所信表明演説を修辞分析する際、何に着目すべきでしょうか。", "english": "When rhetorically analyzing a Japanese Prime Minister's policy speech, what should one focus on?"},
-      {"speaker": "指導教員", "japanese": "まず代名詞です。「私」「わたくし」「我々」「国民の皆様」—それぞれの出現頻度と文脈が、話者の権力観を露呈します。", "english": "First, pronouns. 'I,' 'I (formal),' 'we,' 'everyone of the nation' — the frequency and context of each exposes the speaker's conception of power."}
+      { cell_id: "ee7864d1-6f8a-4289-8115-99047bdf0167","speaker": "院生", "japanese": "日本の総理の所信表明演説を修辞分析する際、何に着目すべきでしょうか。", "english": "When rhetorically analyzing a Japanese Prime Minister's policy speech, what should one focus on?"},
+      { cell_id: "eb1884a8-e364-4ebf-a0b8-739191b6c60e","speaker": "指導教員", "japanese": "まず代名詞です。「私」「わたくし」「我々」「国民の皆様」—それぞれの出現頻度と文脈が、話者の権力観を露呈します。", "english": "First, pronouns. 'I,' 'I (formal),' 'we,' 'everyone of the nation' — the frequency and context of each exposes the speaker's conception of power."}
     ],
     "dialogue_long": [
       {"speaker": "院生", "japanese": "卒業論文で、村山談話の修辞分析を行いたいと考えております。", "english": "For my graduation thesis, I wish to conduct a rhetorical analysis of the Murayama Statement."},
@@ -2729,16 +2871,16 @@ export const lessons: JapaneseLesson[] = [
     "id": 145, "level": "C2", "category": "civic_discourse",
     "title": "Civic discourse — citizen deliberation and public reason", "title_vi": "Diễn ngôn công dân — Thảo luận công dân và lý tính công cộng", "title_en": "Civic discourse — citizen deliberation and public reason",
     "vocabulary": [
-      {"japanese": "市民参加 (しみんさんか)", "english": "citizen participation"},
-      {"japanese": "公聴会 (こうちょうかい)", "english": "public hearing"},
-      {"japanese": "討論型世論調査 (とうろんがたよろんちょうさ)", "english": "deliberative polling"},
-      {"japanese": "合意形成 (ごういけいせい)", "english": "consensus building"},
-      {"japanese": "意見集約 (いけんしゅうやく)", "english": "opinion aggregation"},
-      {"japanese": "少数意見の尊重 (しょうすういけんのそんちょう)", "english": "respect for minority opinions"},
-      {"japanese": "根回し (ねまわし)", "english": "prior consensus-building / nemawashi"},
-      {"japanese": "熟議の場 (じゅくぎのば)", "english": "forum for deliberation"},
-      {"japanese": "世論 (よろん／せろん)", "english": "public opinion"},
-      {"japanese": "付度 (そんたく)", "english": "surmising superior's intent / sontaku"}
+      { cell_id: "cdfe03c8-b65c-417a-8020-d9d8aaef39ab","japanese": "市民参加 (しみんさんか)", "english": "citizen participation"},
+      { cell_id: "d9ef95be-dde1-497f-b80a-123cf0ee6c8a","japanese": "公聴会 (こうちょうかい)", "english": "public hearing"},
+      { cell_id: "0e8670c2-3b7d-4d5e-a967-67b6d647e1c1","japanese": "討論型世論調査 (とうろんがたよろんちょうさ)", "english": "deliberative polling"},
+      { cell_id: "6f90dc08-e1ac-4394-92a2-12ba6148387a","japanese": "合意形成 (ごういけいせい)", "english": "consensus building"},
+      { cell_id: "19f9cac4-df97-4b51-b40f-294fe1cde686","japanese": "意見集約 (いけんしゅうやく)", "english": "opinion aggregation"},
+      { cell_id: "25a3c8f4-43ff-4df3-b199-9128c6a37b3f","japanese": "少数意見の尊重 (しょうすういけんのそんちょう)", "english": "respect for minority opinions"},
+      { cell_id: "527cd1b3-f57b-49e1-820b-705c755c0e97","japanese": "根回し (ねまわし)", "english": "prior consensus-building / nemawashi"},
+      { cell_id: "7d0cc18e-e7c3-4536-80ea-6dc2831398ba","japanese": "熟議の場 (じゅくぎのば)", "english": "forum for deliberation"},
+      { cell_id: "d97ed757-96a3-48f4-964c-f71861390ea6","japanese": "世論 (よろん／せろん)", "english": "public opinion"},
+      { cell_id: "ede7bccd-b0e7-4056-aad6-685d10a3aa52","japanese": "付度 (そんたく)", "english": "surmising superior's intent / sontaku"}
     ],
     "examples": [
       {"japanese": "日本社会において、公式の「議論」の前に「根回し」が行われることは、しばしば非民主的と批判される。しかし、「根回し」がなければ合意形成そのものが不可能になる場合も少なくない。", "english": "In Japanese society, the fact that 'nemawashi' is conducted before formal 'debate' is often criticized as undemocratic. Yet there are not few cases where consensus-building itself becomes impossible without nemawashi."},
@@ -2746,8 +2888,8 @@ export const lessons: JapaneseLesson[] = [
       {"japanese": "討論型世論調査は、無作為抽出された市民が、専門家の説明を受け、討論を経て意見を変化させるプロセスを可視化する。この手法は、通常の世論調査が見落とす「熟議」の可能性を示している。", "english": "Deliberative polling visualizes the process in which randomly selected citizens, receiving expert explanations and passing through discussion, change their opinions. This method shows the possibility of 'deliberation' that ordinary opinion polls overlook."}
     ],
     "dialogue": [
-      {"speaker": "市民A", "japanese": "どうせ私たちの意見は政策に反映されない。公聴会に行っても意味がない。", "english": "Our opinions are never reflected in policy anyway. There's no point going to public hearings."},
-      {"speaker": "Linh", "japanese": "お気持ちは理解できます。しかし、声をあげなければ「なかったこと」にされる。それに対して、声をあげれば「あったこと」になる — その差は小さくないと存じます。", "english": "I understand your feeling. But if you don't raise your voice, it becomes 'something that never happened.' Whereas if you raise your voice, it becomes 'something that happened' — that difference, I believe, is not small."}
+      { cell_id: "a2f6e2ca-598b-494c-a7b7-35ee7062e0d8","speaker": "市民A", "japanese": "どうせ私たちの意見は政策に反映されない。公聴会に行っても意味がない。", "english": "Our opinions are never reflected in policy anyway. There's no point going to public hearings."},
+      { cell_id: "91015afa-5d38-423e-a4d4-b0c5ffe5bb44","speaker": "Linh", "japanese": "お気持ちは理解できます。しかし、声をあげなければ「なかったこと」にされる。それに対して、声をあげれば「あったこと」になる — その差は小さくないと存じます。", "english": "I understand your feeling. But if you don't raise your voice, it becomes 'something that never happened.' Whereas if you raise your voice, it becomes 'something that happened' — that difference, I believe, is not small."}
     ],
     "dialogue_long": [
       {"speaker": "ファシリテーター", "japanese": "本日は、この地域のまちづくり計画について、市民の皆様のご意見を伺います。ルールは一つです：人の意見を遮らないこと。", "english": "Today we will hear the opinions of citizens regarding the town development plan for this area. There is one rule: do not interrupt others' opinions."},
@@ -2778,14 +2920,14 @@ export const lessons: JapaneseLesson[] = [
     "id": 146, "level": "C2", "category": "rhetoric_capstone",
     "title": "Rhetoric capstone — writing the critical essay", "title_vi": "Viết tiểu luận phê bình — 評論執筆", "title_en": "Rhetoric capstone — writing the critical essay",
     "vocabulary": [
-      {"japanese": "評論 (ひょうろん)", "english": "critical essay / critique"},
-      {"japanese": "論証 (ろんしょう)", "english": "argumentation / proof"},
-      {"japanese": "起承転結 (きしょうてんけつ)", "english": "four-part structure (classical)"},
-      {"japanese": "序論・本論・結論 (じょろん・ほんろん・けつろん)", "english": "introduction-body-conclusion"},
-      {"japanese": "問題提起 (もんだいていき)", "english": "problem statement"},
-      {"japanese": "批判的検討 (ひはんてきけんとう)", "english": "critical examination"},
-      {"japanese": "留保 (りゅうほ)", "english": "reservation / qualification"},
-      {"japanese": "敷衍 (ふえん)", "english": "elaboration / exposition"}
+      { cell_id: "e4a28567-da59-4e1e-ad68-d0b6d90facff","japanese": "評論 (ひょうろん)", "english": "critical essay / critique"},
+      { cell_id: "63625ef0-433a-4527-b6be-c93e3b86b621","japanese": "論証 (ろんしょう)", "english": "argumentation / proof"},
+      { cell_id: "ab5747c7-1850-467e-852d-b11e89ef38e1","japanese": "起承転結 (きしょうてんけつ)", "english": "four-part structure (classical)"},
+      { cell_id: "5eb1e15b-e505-48dc-82db-25aa78b378b6","japanese": "序論・本論・結論 (じょろん・ほんろん・けつろん)", "english": "introduction-body-conclusion"},
+      { cell_id: "4edb075f-e419-47e9-be8b-e3e009a0aad9","japanese": "問題提起 (もんだいていき)", "english": "problem statement"},
+      { cell_id: "26e50aff-ed5a-4a9f-aacd-3064d59008d6","japanese": "批判的検討 (ひはんてきけんとう)", "english": "critical examination"},
+      { cell_id: "d83b551e-c2da-40f9-b719-53e799034322","japanese": "留保 (りゅうほ)", "english": "reservation / qualification"},
+      { cell_id: "c700a7a7-7aea-4407-a03a-c5b68ebea7a6","japanese": "敷衍 (ふえん)", "english": "elaboration / exposition"}
     ],
     "examples": [
       {"japanese": "すぐれた評論とは、結論の正しさではなく、結論に至る道筋の明晰さによって評価される。", "english": "An excellent critical essay is evaluated not by the correctness of its conclusion but by the clarity of the path leading to it."},
@@ -2793,8 +2935,8 @@ export const lessons: JapaneseLesson[] = [
       {"japanese": "「留保」は弱さではない。自説の限界を自ら指摘することは、批判的思考の最も高度な形態の一つである。", "english": "'Qualification' is not weakness. Pointing out the limits of one's own argument oneself is one of the highest forms of critical thinking."}
     ],
     "dialogue": [
-      {"speaker": "院生", "japanese": "論文と評論の違いは何でしょうか。", "english": "What is the difference between a thesis and a critical essay?"},
-      {"speaker": "指導教員", "japanese": "論文は「証明」、評論は「照明」です。論文はある命題が真であることを示し、評論はある対象の見えていなかった側面に光を当てる。", "english": "A thesis 'proves'; a critique 'illuminates.' A thesis shows that a proposition is true; a critique sheds light on an unseen aspect of an object."}
+      { cell_id: "2b568eb1-6f92-49b8-8d77-8950f155bcf0","speaker": "院生", "japanese": "論文と評論の違いは何でしょうか。", "english": "What is the difference between a thesis and a critical essay?"},
+      { cell_id: "ec9ba7b5-fc0a-4653-8547-121b531c244e","speaker": "指導教員", "japanese": "論文は「証明」、評論は「照明」です。論文はある命題が真であることを示し、評論はある対象の見えていなかった側面に光を当てる。", "english": "A thesis 'proves'; a critique 'illuminates.' A thesis shows that a proposition is true; a critique sheds light on an unseen aspect of an object."}
     ],
     "exercises": [
       {"type": "fill-blank", "question": "すぐれた評論とは、結論の正しさではなく、結論に至る___の明晰さによって評価される。", "answer": "道筋"},
@@ -2805,12 +2947,12 @@ export const lessons: JapaneseLesson[] = [
     "id": 147, "level": "C2", "category": "rhetoric_capstone",
     "title": "Rhetoric capstone — oral defense", "title_vi": "Bảo vệ luận văn — 口頭試問", "title_en": "Rhetoric capstone — oral defense",
     "vocabulary": [
-      {"japanese": "口頭試問 (こうとうしもん)", "english": "oral examination / defense"},
-      {"japanese": "副査 (ふくさ)", "english": "secondary examiner"},
-      {"japanese": "質疑応答 (しつぎおうとう)", "english": "Q&A session"},
-      {"japanese": "主旨説明 (しゅしせつめい)", "english": "summary of main argument"},
-      {"japanese": "今後の課題 (こんごのかだい)", "english": "future research questions"},
-      {"japanese": "謙虚さ (けんきょさ)", "english": "humility"}
+      { cell_id: "dc3316e8-3202-42b3-8c79-50d71e43e827","japanese": "口頭試問 (こうとうしもん)", "english": "oral examination / defense"},
+      { cell_id: "7f3ef9bb-5e55-49a5-b9bb-efe2f941b21a","japanese": "副査 (ふくさ)", "english": "secondary examiner"},
+      { cell_id: "c72f19f6-e8b1-4a02-a221-e3cfe0ed1304","japanese": "質疑応答 (しつぎおうとう)", "english": "Q&A session"},
+      { cell_id: "a13cee04-1e02-49b0-ba4f-01f024050579","japanese": "主旨説明 (しゅしせつめい)", "english": "summary of main argument"},
+      { cell_id: "c3322f95-cde6-463a-b3de-1c84abb27b5b","japanese": "今後の課題 (こんごのかだい)", "english": "future research questions"},
+      { cell_id: "510c0675-e816-41b2-bc85-635b893edf81","japanese": "謙虚さ (けんきょさ)", "english": "humility"}
     ],
     "examples": [
       {"japanese": "口頭試問の目的は、執筆者を貶めることではなく、論文の論理を共に検証することにある。", "english": "The purpose of the oral defense is not to denigrate the author but to verify the logic of the thesis together."},
@@ -2829,16 +2971,16 @@ export const lessons: JapaneseLesson[] = [
     "title": "Rhetoric capstone — philosophical reasoning and abstract thought",
     "title_vi": "Tư duy triết học và lập luận trừu tượng", "title_en": "Philosophical reasoning and abstract thought",
     "vocabulary": [
-      {"japanese": "超越論的 (ちょうえつろんてき)", "english": "transcendental (Kant)"},
-      {"japanese": "概念分析 (がいねんぶんせき)", "english": "conceptual analysis"},
-      {"japanese": "前提 (ぜんてい)", "english": "presupposition / premise"},
-      {"japanese": "帰謬法 (きびゅうほう)", "english": "reductio ad absurdum"},
-      {"japanese": "ジレンマ", "english": "dilemma"},
-      {"japanese": "思想実験 (しそうじっけん)", "english": "thought experiment"},
-      {"japanese": "抽象 (ちゅうしょう)", "english": "abstraction"},
-      {"japanese": "普遍 (ふへん)", "english": "universal"},
-      {"japanese": "論駁 (ろんばく)", "english": "refutation"},
-      {"japanese": "言語ゲーム (げんごゲーム)", "english": "language-game (Wittgenstein)"}
+      { cell_id: "7f3444a8-e7fa-492b-abb5-5e00bd06d42b","japanese": "超越論的 (ちょうえつろんてき)", "english": "transcendental (Kant)"},
+      { cell_id: "ee56fa9a-d468-4972-b2d2-d5f83d4318eb","japanese": "概念分析 (がいねんぶんせき)", "english": "conceptual analysis"},
+      { cell_id: "d61140ff-7cb3-4d63-a3a6-1089c76fac8e","japanese": "前提 (ぜんてい)", "english": "presupposition / premise"},
+      { cell_id: "88de8d4b-b225-4c4e-aa12-c2b26677607e","japanese": "帰謬法 (きびゅうほう)", "english": "reductio ad absurdum"},
+      { cell_id: "a2638487-66f6-48a6-a13f-befabd248620","japanese": "ジレンマ", "english": "dilemma"},
+      { cell_id: "2c6d9fbf-a5d6-4390-aeab-1c5d5698e283","japanese": "思想実験 (しそうじっけん)", "english": "thought experiment"},
+      { cell_id: "7cb026c5-8a91-4dac-87f2-302df10bb3c8","japanese": "抽象 (ちゅうしょう)", "english": "abstraction"},
+      { cell_id: "74748e5f-1683-4310-bdaa-fe94284522c6","japanese": "普遍 (ふへん)", "english": "universal"},
+      { cell_id: "ae784aca-7880-404d-b4e3-4e501bca869c","japanese": "論駁 (ろんばく)", "english": "refutation"},
+      { cell_id: "5350b773-87ad-4c34-a820-f1bb9eb40644","japanese": "言語ゲーム (げんごゲーム)", "english": "language-game (Wittgenstein)"}
     ],
     "examples": [
       {"japanese": "すぐれた哲学論文とは、結論の正しさによってではなく、自説への反論をどこまで真剣に検討したかによって評価される。", "english": "An excellent philosophy paper is evaluated not by the correctness of its conclusion but by how seriously it examines objections to its own position."},
@@ -2847,8 +2989,8 @@ export const lessons: JapaneseLesson[] = [
       {"japanese": "「語りえぬものについては、沈黙しなければならない」— ウィトゲンシュタインのこの一句は、単なる神秘主義ではなく、言語の限界を正確に見定めようとする哲学的態度の表明である。", "english": "'Whereof one cannot speak, thereof one must be silent' — this line of Wittgenstein is not mere mysticism but the declaration of a philosophical attitude that seeks to delineate precisely the limits of language."}
     ],
     "dialogue": [
-      {"speaker": "院生", "japanese": "哲学の論文で、「私の意見では」と書いてはいけないのでしょうか。", "english": "In a philosophy paper, should one not write 'in my opinion'?"},
-      {"speaker": "指導教員", "japanese": "書いてはいけません。哲学は意見の表明ではなく、論証の構築です。「私は〜と考える」ではなく、「〜という理由により、〜と結論せざるを得ない」と書くべきです。", "english": "You should not. Philosophy is not the expression of opinion but the construction of argument. Not 'I think that...' but 'For reasons X, Y, and Z, one cannot but conclude that...'"}
+      { cell_id: "37d9eadc-22f2-4e7c-9ee9-a0728bfaa463","speaker": "院生", "japanese": "哲学の論文で、「私の意見では」と書いてはいけないのでしょうか。", "english": "In a philosophy paper, should one not write 'in my opinion'?"},
+      { cell_id: "b6cfc237-3d28-49c2-ac6e-7cdc97527a2b","speaker": "指導教員", "japanese": "書いてはいけません。哲学は意見の表明ではなく、論証の構築です。「私は〜と考える」ではなく、「〜という理由により、〜と結論せざるを得ない」と書くべきです。", "english": "You should not. Philosophy is not the expression of opinion but the construction of argument. Not 'I think that...' but 'For reasons X, Y, and Z, one cannot but conclude that...'"}
     ],
     "exercises": [
       {"type": "fill-blank", "question": "カントの超越論的方法は、「Xが___条件のもとではじめて可能か」を問う。", "answer": "いかなる"},
@@ -2860,14 +3002,14 @@ export const lessons: JapaneseLesson[] = [
     "title": "Rhetoric capstone — persuasion theory and classical rhetoric",
     "title_vi": "Lý thuyết thuyết phục và tu từ học cổ điển", "title_en": "Persuasion theory and classical rhetoric",
     "vocabulary": [
-      {"japanese": "説得 (せっとく)", "english": "persuasion"},
-      {"japanese": "ロゴス", "english": "logos — logical argument"},
-      {"japanese": "エートス", "english": "ethos — speaker's credibility"},
-      {"japanese": "パトス", "english": "pathos — emotional appeal"},
-      {"japanese": "省略三段論法 (しょうりゃくさんだんろんぽう)", "english": "enthymeme"},
-      {"japanese": "聴衆 (ちょうしゅう)", "english": "audience"},
-      {"japanese": "反論の先回り (はんろんのさきまわり)", "english": "anticipating objections"},
-      {"japanese": "計算された譲歩 (けいさんされたじょうほ)", "english": "calculated concession"}
+      { cell_id: "74befb96-ce9a-4276-a3ac-175b0055de9d","japanese": "説得 (せっとく)", "english": "persuasion"},
+      { cell_id: "d4ca9678-da64-47cd-bb8f-9a90520ea3d1","japanese": "ロゴス", "english": "logos — logical argument"},
+      { cell_id: "cb3c0d9b-ef7f-43db-b50c-cd81db086086","japanese": "エートス", "english": "ethos — speaker's credibility"},
+      { cell_id: "3ff7d9c2-9a8c-4245-a946-ff4282347914","japanese": "パトス", "english": "pathos — emotional appeal"},
+      { cell_id: "172c13e2-4a49-4379-95b6-c3b2da94f1eb","japanese": "省略三段論法 (しょうりゃくさんだんろんぽう)", "english": "enthymeme"},
+      { cell_id: "12a1d533-24bd-491e-b76d-ec0b0f18c7e2","japanese": "聴衆 (ちょうしゅう)", "english": "audience"},
+      { cell_id: "24f61e88-2a64-41ae-92e6-1bb9785dbebc","japanese": "反論の先回り (はんろんのさきまわり)", "english": "anticipating objections"},
+      { cell_id: "839a1828-eb74-4454-a405-e7882443eafe","japanese": "計算された譲歩 (けいさんされたじょうほ)", "english": "calculated concession"}
     ],
     "examples": [
       {"japanese": "アリストテレス以来、説得の技術は三つの柱に支えられてきた。ロゴス（論理）、エートス（話し手の信頼性）、パトス（聴衆の感情）である。", "english": "Since Aristotle, the art of persuasion has been supported by three pillars: logos (logic), ethos (the speaker's credibility), and pathos (the audience's emotion)."},
@@ -2875,8 +3017,8 @@ export const lessons: JapaneseLesson[] = [
       {"japanese": "説得が操作と異なるのは、ロゴスを欠いたパトスへの訴えだけが操作と呼ばれるからである。三つの柱のバランスこそが、倫理的な説得の条件である。", "english": "Persuasion differs from manipulation because only an appeal to pathos without logos is called manipulation. The balance of the three pillars is the condition of ethical persuasion."}
     ],
     "dialogue": [
-      {"speaker": "院生", "japanese": "説得と操作の境界線はどこにあるのでしょうか。", "english": "Where is the boundary between persuasion and manipulation?"},
-      {"speaker": "指導教員", "japanese": "ロゴスの有無です。相手の理性に訴えず、感情だけを動かそうとするのが操作。理性と感情と信頼のすべてにバランスよく訴えるのが説得です。", "english": "It is the presence or absence of logos. To try to move only emotion without appealing to the other's reason is manipulation. To appeal in a balanced way to reason, emotion, and trust — all three — is persuasion."}
+      { cell_id: "6ce0dc81-ed3a-4b01-9d4c-e2372491e0c7","speaker": "院生", "japanese": "説得と操作の境界線はどこにあるのでしょうか。", "english": "Where is the boundary between persuasion and manipulation?"},
+      { cell_id: "55c0282d-3346-4d3b-b9b1-c9a85ca4c477","speaker": "指導教員", "japanese": "ロゴスの有無です。相手の理性に訴えず、感情だけを動かそうとするのが操作。理性と感情と信頼のすべてにバランスよく訴えるのが説得です。", "english": "It is the presence or absence of logos. To try to move only emotion without appealing to the other's reason is manipulation. To appeal in a balanced way to reason, emotion, and trust — all three — is persuasion."}
     ],
     "exercises": [
       {"type": "fill-blank", "question": "アリストテレス以来、説得の技術はロゴス、エートス、___の三つの柱に支えられてきた。", "answer": "パトス"},
@@ -2887,14 +3029,14 @@ export const lessons: JapaneseLesson[] = [
     "id": 150, "level": "C2", "category": "arts_criticism",
     "title": "Media criticism — journalistic language analysis", "title_vi": "Phê bình truyền thông — phân tích ngôn ngữ báo chí", "title_en": "Media criticism and journalistic language analysis",
     "vocabulary": [
-      {"japanese": "メディア批評 (メディアひひょう)", "english": "media criticism"},
-      {"japanese": "報道 (ほうどう)", "english": "news reporting"},
-      {"japanese": "論評 (ろんぴょう)", "english": "commentary / editorial"},
-      {"japanese": " framing (フレーミング)", "english": "framing (media analysis)"},
-      {"japanese": "見出し (みだし)", "english": "headline"},
-      {"japanese": "匿名情報源 (とくめいじょうほうげん)", "english": "anonymous source"},
-      {"japanese": "報道姿勢 (ほうどうしせい)", "english": "reporting stance / editorial bias"},
-      {"japanese": "客観性 (きゃっかんせい)", "english": "objectivity"}
+      { cell_id: "41d34a93-da3e-4bd2-9af0-961c5a09668b","japanese": "メディア批評 (メディアひひょう)", "english": "media criticism"},
+      { cell_id: "4d7d4161-7ede-49a2-b342-11a86f518cd1","japanese": "報道 (ほうどう)", "english": "news reporting"},
+      { cell_id: "4c4e08c3-56b5-4154-8229-7fa478135e7f","japanese": "論評 (ろんぴょう)", "english": "commentary / editorial"},
+      { cell_id: "4ceb1311-fb18-44c5-99f3-aaa14eba7f2f","japanese": " framing (フレーミング)", "english": "framing (media analysis)"},
+      { cell_id: "57342a29-17ad-4fca-9724-f82c6f475325","japanese": "見出し (みだし)", "english": "headline"},
+      { cell_id: "ab6b8957-9add-491d-a9e0-e9fbb44ab873","japanese": "匿名情報源 (とくめいじょうほうげん)", "english": "anonymous source"},
+      { cell_id: "0d7d7875-84b9-4e7a-bf73-7ed43bfb89cf","japanese": "報道姿勢 (ほうどうしせい)", "english": "reporting stance / editorial bias"},
+      { cell_id: "a6d0b27e-602e-4500-aed3-661539738dca","japanese": "客観性 (きゃっかんせい)", "english": "objectivity"}
     ],
     "examples": [
       {"japanese": "優れたメディア批評は「この記事は偏向している」と叫ぶのではなく、どの見出しがどの情報源を選び、どの動詞で引用しているかを具体的に指摘する。", "english": "Good media criticism does not shout 'this article is biased' but concretely points out which headline chose which source and with which verb it quoted."},
@@ -2902,8 +3044,8 @@ export const lessons: JapaneseLesson[] = [
       {"japanese": "同じ記者会見でも、見出しが「首相、改革を強調」となるか「首相、具体的言及避ける」となるかで、読者の受け取り方は根本的に変わる。", "english": "Even from the same press conference, whether the headline becomes 'PM emphasizes reform' or 'PM avoids specific mention' fundamentally changes the reader's reception."}
     ],
     "dialogue": [
-      {"speaker": "院生", "japanese": "記事が「報道」か「論評」かを見分けるポイントは何ですか。", "english": "What is the key to distinguishing whether an article is 'reporting' or 'commentary'?"},
-      {"speaker": "指導教員", "japanese": "動詞です。「述べた」「明らかにした」は報道。「主張した」「〜にすぎない」は論評です。形容詞の有無も重要な指標です。", "english": "It is the verbs. 'Stated,' 'revealed' are reporting. 'Claimed,' 'merely' are commentary. The presence or absence of adjectives is also an important indicator."}
+      { cell_id: "61c98ff4-57f2-4c4f-bc13-5e9a3dcfdf13","speaker": "院生", "japanese": "記事が「報道」か「論評」かを見分けるポイントは何ですか。", "english": "What is the key to distinguishing whether an article is 'reporting' or 'commentary'?"},
+      { cell_id: "79cb5f33-615a-4c30-a65b-61a42b295557","speaker": "指導教員", "japanese": "動詞です。「述べた」「明らかにした」は報道。「主張した」「〜にすぎない」は論評です。形容詞の有無も重要な指標です。", "english": "It is the verbs. 'Stated,' 'revealed' are reporting. 'Claimed,' 'merely' are commentary. The presence or absence of adjectives is also an important indicator."}
     ],
     "exercises": [
       {"type": "fill-blank", "question": "同じ記者会見でも、___が「首相、改革を強調」となるか「首相、具体的言及避ける」となるかで読者の受け取り方は変わる。", "answer": "見出し"},
@@ -2914,14 +3056,14 @@ export const lessons: JapaneseLesson[] = [
     "id": 151, "level": "C2", "category": "civic_discourse",
     "title": "Diplomatic language and international discourse", "title_vi": "Ngôn ngữ ngoại giao và diễn ngôn quốc tế", "title_en": "Diplomatic language and international discourse",
     "vocabulary": [
-      {"japanese": "外交言語 (がいこうげんご)", "english": "diplomatic language"},
-      {"japanese": "共同声明 (きょうどうせいめい)", "english": "joint statement / communiqué"},
-      {"japanese": "非難 (ひなん)", "english": "condemnation"},
-      {"japanese": "遺憾の意 (いかんのい)", "english": "expression of regret"},
-      {"japanese": "戦略的曖昧さ (せんりゃくてきあいまいさ)", "english": "strategic ambiguity"},
-      {"japanese": "多国間協議 (たこくかんきょうぎ)", "english": "multilateral negotiation"},
-      {"japanese": "建設的対話 (けんせつてきたいわ)", "english": "constructive dialogue"},
-      {"japanese": "懸念 (けねん)", "english": "concern (diplomatic register)"}
+      { cell_id: "3612af08-fcbf-491a-aa17-d451ce26aba4","japanese": "外交言語 (がいこうげんご)", "english": "diplomatic language"},
+      { cell_id: "61a0a06b-f2ac-4ebe-a812-3b445d4bfc0f","japanese": "共同声明 (きょうどうせいめい)", "english": "joint statement / communiqué"},
+      { cell_id: "f197cf7b-1fb6-4e64-8347-6f9efdab2913","japanese": "非難 (ひなん)", "english": "condemnation"},
+      { cell_id: "deb60db2-7399-4bcc-8b3b-54d0e5f9f540","japanese": "遺憾の意 (いかんのい)", "english": "expression of regret"},
+      { cell_id: "65450ac5-0484-4cab-b51b-0f8d721ecd3c","japanese": "戦略的曖昧さ (せんりゃくてきあいまいさ)", "english": "strategic ambiguity"},
+      { cell_id: "fe4b911c-8050-4017-b015-34ac412bcc6b","japanese": "多国間協議 (たこくかんきょうぎ)", "english": "multilateral negotiation"},
+      { cell_id: "d36372c4-b85e-4142-a466-3d127d7e98a0","japanese": "建設的対話 (けんせつてきたいわ)", "english": "constructive dialogue"},
+      { cell_id: "9416b997-6241-46c7-8cb1-3dc57f70684d","japanese": "懸念 (けねん)", "english": "concern (diplomatic register)"}
     ],
     "examples": [
       {"japanese": "外交言語の本質は、拘束するに足ることを言いながら、固定されるに足ることは言わない、という精確な曖昧さの技術である。", "english": "The essence of diplomatic language is the art of precise ambiguity: saying enough to commit but not enough to be pinned down."},
@@ -2929,8 +3071,8 @@ export const lessons: JapaneseLesson[] = [
       {"japanese": "共同声明において「建設的かつ率直な意見交換が行われた」と書かれている場合、それは「合意に至らなかった」ことを意味する外交符牒である。", "english": "When a joint statement says 'a constructive and frank exchange of views took place,' this is diplomatic code meaning 'no agreement was reached.'"}
     ],
     "dialogue": [
-      {"speaker": "外交官", "japanese": "共同声明で「非難」と「遺憾」、どちらにしますか。", "english": "In the joint statement, shall we use 'condemn' or 'express regret'?"},
-      {"speaker": "Linh", "japanese": "「遺憾」です。「非難」は次の会合への扉を閉ざします。「遺憾」は不同意を表明しつつ、出口を残します。", "english": "'Express regret.' 'Condemn' closes the door to the next meeting. 'Regret' expresses disagreement while leaving an exit."}
+      { cell_id: "037ec97e-d586-43ad-bb6d-a9a564f5f1f5","speaker": "外交官", "japanese": "共同声明で「非難」と「遺憾」、どちらにしますか。", "english": "In the joint statement, shall we use 'condemn' or 'express regret'?"},
+      { cell_id: "74247d83-b960-45e2-a101-847a628d3a4b","speaker": "Linh", "japanese": "「遺憾」です。「非難」は次の会合への扉を閉ざします。「遺憾」は不同意を表明しつつ、出口を残します。", "english": "'Express regret.' 'Condemn' closes the door to the next meeting. 'Regret' expresses disagreement while leaving an exit."}
     ],
     "exercises": [
       {"type": "fill-blank", "question": "「建設的かつ率直な意見交換が行われた」は「___に至らなかった」を意味する外交符牒である。", "answer": "合意"},

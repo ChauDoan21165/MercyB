@@ -30,6 +30,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   /** Indonesian word/phrase. */
   word: string;
   /** English meaning. */
@@ -45,6 +46,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   /** Indonesian line. */
   text: string;
@@ -326,6 +328,7 @@ export const lessons: IndonesianLesson[] = [
     vocabulary: [
       // Apps & platforms
       {
+        cell_id: "cd824d42-5145-4ffd-9209-ab31ba55d6c8",
         word: "aplikasi",
         en: "app / application",
         vi: "ứng dụng",
@@ -334,6 +337,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "ap-li-KA-si — often clipped to `apl` / `app`",
       },
       {
+        cell_id: "3840b4c9-d693-4adc-ad3f-abc26265e086",
         word: "ojek online",
         en: "app motorbike taxi (ojol)",
         vi: "xe ôm công nghệ",
@@ -342,6 +346,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "O-jek ON-line — short `ojol`; Gojek/Grab",
       },
       {
+        cell_id: "caabd6f7-f365-4eea-b0ee-0dd8240e6783",
         word: "driver",
         en: "driver (rider)",
         vi: "tài xế / người chạy xe",
@@ -351,6 +356,7 @@ export const lessons: IndonesianLesson[] = [
       },
       // E-wallet & money
       {
+        cell_id: "cefbc441-d955-4f00-9189-59e94da10192",
         word: "saldo",
         en: "balance (in a wallet)",
         vi: "số dư",
@@ -359,6 +365,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "SAL-do — `saldonya kurang` = balance is low",
       },
       {
+        cell_id: "80c2972c-5f0b-4d13-bc7e-b78cbab6ffde",
         word: "top up",
         en: "to top up / load funds",
         vi: "nạp tiền",
@@ -367,6 +374,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "top-AP — also `isi saldo`",
       },
       {
+        cell_id: "105482e6-e831-47c1-88a5-9a7857c9334d",
         word: "transfer",
         en: "to transfer (money)",
         vi: "chuyển khoản",
@@ -375,6 +383,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "TRANS-fer — `transfer ke bank` = transfer to a bank",
       },
       {
+        cell_id: "8074e208-42b9-4b86-a9ea-a5654e9d7ae2",
         word: "QRIS",
         en: "national QR payment standard",
         vi: "chuẩn thanh toán QR quốc gia",
@@ -384,6 +393,7 @@ export const lessons: IndonesianLesson[] = [
       },
       // Shopping
       {
+        cell_id: "847dec46-8de4-4304-90a7-6fcdf973cf82",
         word: "ongkir",
         en: "shipping fee",
         vi: "phí vận chuyển",
@@ -392,6 +402,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "ONG-kir — short for `ongkos kirim`; `gratis ongkir` = free shipping",
       },
       {
+        cell_id: "538c7dbd-6fc7-45c0-af34-080d13d3cda0",
         word: "barang",
         en: "item / goods",
         vi: "hàng / món đồ",
@@ -400,6 +411,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "BA-rang — `barangnya` = the item",
       },
       {
+        cell_id: "e5540229-2fc9-4769-9178-ec4968bcd801",
         word: "kirim",
         en: "to send / ship",
         vi: "gửi / giao",
@@ -408,6 +420,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "KI-rim — passive `dikirim` = is sent",
       },
       {
+        cell_id: "ac924cce-3009-4246-9741-856b624f0b40",
         word: "keranjang",
         en: "(shopping) cart",
         vi: "giỏ hàng",
@@ -416,6 +429,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "ke-RAN-jang — `masuk keranjang` = add to cart",
       },
       {
+        cell_id: "1f8d26e9-be41-4d7b-be30-9b89779401a6",
         word: "diskon",
         en: "discount",
         vi: "giảm giá",
@@ -425,6 +439,7 @@ export const lessons: IndonesianLesson[] = [
       },
       // Account & connectivity
       {
+        cell_id: "2e582f05-122c-4acd-be56-876c55e71aa8",
         word: "akun",
         en: "account",
         vi: "tài khoản",
@@ -433,6 +448,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "a-KUN — `daftar akun` = register an account",
       },
       {
+        cell_id: "338468a0-40c5-4581-86ea-c2ecbb556e38",
         word: "kata sandi",
         en: "password",
         vi: "mật khẩu",
@@ -441,6 +457,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "KA-ta SAN-di — also `password`; NOT `kunci`",
       },
       {
+        cell_id: "6803e257-14de-4cd8-bc08-f9e56dee151c",
         word: "sinyal",
         en: "signal / reception",
         vi: "sóng / tín hiệu",
@@ -449,6 +466,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "si-NYAL — `sinyalnya jelek` = poor signal",
       },
       {
+        cell_id: "813a42ca-89e1-4558-87bc-50d8eea337d7",
         word: "unduh",
         en: "to download",
         vi: "tải xuống",
@@ -460,42 +478,49 @@ export const lessons: IndonesianLesson[] = [
     dialogue: [
       // Dialogue: chatting with a Gojek/GoFood driver, then a payment hiccup
       {
+        cell_id: "c22d50b3-e798-42b9-994e-5199a1588043",
         speaker: "Pelanggan",
         text: "Halo, Kak. Pesanannya sudah dijemput dari restoran?",
         vi: "Chào anh. Đơn đã lấy từ nhà hàng chưa ạ?",
         en: "Hi. Has the order been picked up from the restaurant?",
       },
       {
+        cell_id: "14a7e987-8a1e-4c7d-b237-d9ef9b8acbd3",
         speaker: "Driver",
         text: "Sudah, Kak. Saya OTW ke alamatnya sekarang.",
         vi: "Rồi ạ. Em đang trên đường tới địa chỉ đây.",
         en: "Yes. I'm on the way to your address now.",
       },
       {
+        cell_id: "387b49fe-743b-45a0-bc36-f6d5a678e179",
         speaker: "Pelanggan",
         text: "Oke. Tolong jemput saya di depan minimarket, ya. Sinyal di sini agak jelek.",
         vi: "Được. Anh đón em ở trước cửa hàng tiện lợi nhé. Sóng ở đây hơi yếu.",
         en: "Okay. Please come to the front of the minimarket. The signal here is a bit poor.",
       },
       {
+        cell_id: "512391c8-e481-4da3-a521-69ca76484ecd",
         speaker: "Driver",
         text: "Siap, Kak. Bayarnya tunai atau GoPay?",
         vi: "Vâng ạ. Anh/chị trả tiền mặt hay GoPay?",
         en: "Got it. Will you pay cash or GoPay?",
       },
       {
+        cell_id: "bde6c669-3e89-40d5-bdc2-c8ec633e375d",
         speaker: "Pelanggan",
         text: "GoPay saja. Eh, saldonya kurang. Saya top up dulu, ya.",
         vi: "GoPay thôi. Ơ, số dư không đủ. Để em nạp tiền đã nhé.",
         en: "GoPay, please. Oh, the balance is low. Let me top up first.",
       },
       {
+        cell_id: "fb0330f5-d15d-4791-9029-7b1c99b913db",
         speaker: "Driver",
         text: "Tidak apa-apa, Kak. Saya tunggu di depan.",
         vi: "Không sao đâu ạ. Em chờ ở phía trước.",
         en: "No problem. I'll wait out front.",
       },
       {
+        cell_id: "c9bd7f3e-b0d9-40d7-ab71-265c2ef3f8d9",
         speaker: "Pelanggan",
         text: "Sudah, Kak. Scan QR-nya bisa? Terima kasih, nanti saya kasih bintang lima.",
         vi: "Xong rồi ạ. Quét mã QR được chưa? Cảm ơn anh, lát em đánh giá năm sao.",

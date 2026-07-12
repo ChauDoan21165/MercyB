@@ -6,6 +6,7 @@ type IndonesianLessonSentence = {
 };
 
 type VocabEntry = {
+  cell_id?: string;
   word: string;
   meaning_vi: string;
   meaning_en: string;
@@ -14,6 +15,7 @@ type VocabEntry = {
 };
 
 type DialogueLine = {
+  cell_id?: string;
   speaker: string;
   line: string;
   vi: string;
@@ -117,6 +119,7 @@ export const lessons: IndonesianLesson[] = [
     ],
     vocabulary: [
       {
+        cell_id: "83a22802-10db-4e46-bb3a-5da04b74a43e",
         word: 'berbagi makanan',
         meaning_vi: 'chia sẻ đồ ăn',
         meaning_en: 'sharing food',
@@ -124,6 +127,7 @@ export const lessons: IndonesianLesson[] = [
         example_vi: 'Khi có sự kiện, người dân thường chia sẻ đồ ăn.',
       },
       {
+        cell_id: "6315d429-f7a4-4582-9385-28792fa800b4",
         word: 'oleh-oleh',
         meaning_vi: 'quà mang về, quà thăm hỏi',
         meaning_en: 'souvenir or small gift brought when visiting',
@@ -131,6 +135,7 @@ export const lessons: IndonesianLesson[] = [
         example_vi: 'Tôi mang quà từ Bandung về.',
       },
       {
+        cell_id: "fca0aaa9-8593-4257-b29c-a6a15e1c6817",
         word: 'makan bersama',
         meaning_vi: 'ăn cùng nhau',
         meaning_en: 'eat together',
@@ -138,6 +143,7 @@ export const lessons: IndonesianLesson[] = [
         example_vi: 'Tối nay chúng tôi ăn cùng đại gia đình.',
       },
       {
+        cell_id: "3400e8a5-c55c-4aa6-a366-c23a3c7b5f63",
         word: 'menolak dengan halus',
         meaning_vi: 'từ chối nhẹ nhàng/lịch sự',
         meaning_en: 'refuse politely or tactfully',
@@ -145,6 +151,7 @@ export const lessons: IndonesianLesson[] = [
         example_vi: 'Nếu đã no, hãy từ chối nhẹ nhàng.',
       },
       {
+        cell_id: "63171bd9-afd3-4a5d-8c4d-6c9232ff2bef",
         word: 'pujian masakan',
         meaning_vi: 'lời khen món ăn/tài nấu ăn',
         meaning_en: 'compliment about cooking',
@@ -152,6 +159,7 @@ export const lessons: IndonesianLesson[] = [
         example_vi: 'Lời khen món ăn làm chủ nhà vui.',
       },
       {
+        cell_id: "e0dc8741-2fc1-47f7-8fee-e4786d7e8d2b",
         word: 'bumbu',
         meaning_vi: 'gia vị, hỗn hợp gia vị',
         meaning_en: 'seasoning or spice mixture',
@@ -159,6 +167,7 @@ export const lessons: IndonesianLesson[] = [
         example_vi: 'Gia vị món rendang rất thơm.',
       },
       {
+        cell_id: "90fc7f19-bff6-41cb-b554-fdf1362c4c28",
         word: 'lauk',
         meaning_vi: 'món ăn kèm cơm',
         meaning_en: 'side dish eaten with rice',
@@ -166,6 +175,7 @@ export const lessons: IndonesianLesson[] = [
         example_vi: 'Cá chiên này hợp làm món ăn kèm cơm.',
       },
       {
+        cell_id: "5f74e8a6-54f2-4eb1-af36-02b038638798",
         word: 'adat keluarga',
         meaning_vi: 'nếp nhà, phong tục gia đình',
         meaning_en: 'family custom',
@@ -175,36 +185,42 @@ export const lessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "b3441f2f-98c8-42ed-a58a-fe6c84d9e88b",
         speaker: 'Tamu',
         line: 'Bu, saya membawa oleh-oleh kecil dari Vietnam.',
         vi: 'Cô/chị ơi, tôi mang một chút quà nhỏ từ Việt Nam.',
         en: 'Ma’am, I brought a small gift from Vietnam.',
       },
       {
+        cell_id: "b526e93d-808e-43e8-8a14-eb5a8dce6791",
         speaker: 'Tuan Rumah',
         line: 'Wah, terima kasih. Ayo makan bersama dulu.',
         vi: 'Ôi, cảm ơn. Mình cùng ăn trước nhé.',
         en: 'Oh, thank you. Let’s eat together first.',
       },
       {
+        cell_id: "acd32fe6-919a-4d17-aa1e-457a09977532",
         speaker: 'Tamu',
         line: 'Masakannya enak sekali. Bumbunya pas.',
         vi: 'Món ăn ngon quá. Gia vị vừa miệng.',
         en: 'The food is very delicious. The seasoning is just right.',
       },
       {
+        cell_id: "f51a518c-c0d0-48c8-b875-65a654cf0d42",
         speaker: 'Tuan Rumah',
         line: 'Tambah lagi, ya. Jangan malu-malu.',
         vi: 'Lấy thêm nhé. Đừng ngại.',
         en: 'Have some more. Don’t be shy.',
       },
       {
+        cell_id: "f2e41ee0-a890-4443-88b3-e73aa36bfc9c",
         speaker: 'Tamu',
         line: 'Terima kasih, saya mau sedikit saja. Saya sudah hampir kenyang.',
         vi: 'Cảm ơn, tôi chỉ lấy một chút thôi. Tôi gần no rồi.',
         en: 'Thank you, I will have just a little. I am almost full.',
       },
       {
+        cell_id: "6fa66017-0dda-4554-ac8d-01313fc26ce9",
         speaker: 'Tuan Rumah',
         line: 'Baik. Kalau ada makanan yang tidak bisa dimakan, bilang saja.',
         vi: 'Được. Nếu có món nào không ăn được thì cứ nói nhé.',

@@ -13,6 +13,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -22,6 +23,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -138,6 +140,7 @@ export const traditionalMarketSupplierLessons: IndonesianLesson[] = [
       "Useful frames: `bisa dapat harga grosir?`, `stok barang masih aman`, `tolong buatkan nota`. Separate `harga grosir` = wholesale price, `harga eceran` = retail price, and `harga modal` = cost price.",
     vocabulary: [
       {
+        cell_id: "cf4b7231-cc84-4b59-a924-2e8c4d5b96b6",
         word: "supplier pasar",
         en: "market supplier",
         vi: "nhà cung cấp ở chợ",
@@ -146,6 +149,7 @@ export const traditionalMarketSupplierLessons: IndonesianLesson[] = [
         pronunciation_en: "su-PLY-er PA-sar",
       },
       {
+        cell_id: "c9846450-7828-4dd3-978d-9d21b56b43f6",
         word: "harga grosir",
         en: "wholesale price",
         vi: "giá sỉ",
@@ -154,6 +158,7 @@ export const traditionalMarketSupplierLessons: IndonesianLesson[] = [
         pronunciation_en: "HAR-ga GRO-seer",
       },
       {
+        cell_id: "ce90cdf7-60b9-47df-bd1d-62715eefd115",
         word: "stok barang",
         en: "inventory / goods stock",
         vi: "hàng tồn",
@@ -162,6 +167,7 @@ export const traditionalMarketSupplierLessons: IndonesianLesson[] = [
         pronunciation_en: "stok BA-rang",
       },
       {
+        cell_id: "bce94307-5673-46e6-92d4-df7de4e59da9",
         word: "langganan",
         en: "regular customer / subscription relationship",
         vi: "khách quen / mối quen",
@@ -170,6 +176,7 @@ export const traditionalMarketSupplierLessons: IndonesianLesson[] = [
         pronunciation_en: "lang-GA-nan",
       },
       {
+        cell_id: "ea91fba6-54b5-4acf-8804-c69bb8f17323",
         word: "nota",
         en: "receipt / purchase note",
         vi: "phiếu mua hàng / hóa đơn chợ",
@@ -178,6 +185,7 @@ export const traditionalMarketSupplierLessons: IndonesianLesson[] = [
         pronunciation_en: "NO-ta",
       },
       {
+        cell_id: "b17e5fd3-6f58-4fa3-9a8a-22b3a9d51ddf",
         word: "harga eceran",
         en: "retail price",
         vi: "giá lẻ",
@@ -188,18 +196,21 @@ export const traditionalMarketSupplierLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "e42ce541-b553-49e1-ae2e-853290373304",
         speaker: "Pembeli",
         text: "Pak, kalau saya ambil dua karung, bisa dapat harga grosir?",
         vi: "Chú ơi, nếu tôi lấy hai bao thì có được giá sỉ không?",
         en: "Sir, if I take two sacks, can I get the wholesale price?",
       },
       {
+        cell_id: "d95658fa-b7de-4e22-a83f-971a7958f8f3",
         speaker: "Supplier",
         text: "Bisa, apalagi kalau jadi langganan.",
         vi: "Được, nhất là nếu trở thành khách quen.",
         en: "Yes, especially if you become a regular customer.",
       },
       {
+        cell_id: "7da03cfb-31c3-4d1e-93e7-c6dfd25dc1fb",
         speaker: "Pembeli",
         text: "Baik. Tolong buatkan nota untuk pembelian hari ini.",
         vi: "Được. Làm ơn viết phiếu mua hàng cho lần mua hôm nay.",
@@ -316,6 +327,7 @@ export const traditionalMarketSupplierLessons: IndonesianLesson[] = [
       "When negotiating, state concrete terms: quantity, purchase schedule, delivery time, and payment method. Strong frames: `kalau pembelian rutin`, `sebelum dikirim`, `setelah barang datang`.",
     vocabulary: [
       {
+        cell_id: "f9fd00c9-a62e-4e57-ae07-a6856e5ffcfe",
         word: "pengiriman",
         en: "delivery / shipment",
         vi: "việc giao hàng",
@@ -324,6 +336,7 @@ export const traditionalMarketSupplierLessons: IndonesianLesson[] = [
         pronunciation_en: "pe-ngi-RIM-an",
       },
       {
+        cell_id: "f0a4e158-64c3-438f-b31e-6069756b8f1f",
         word: "kualitas barang",
         en: "goods quality",
         vi: "chất lượng hàng",
@@ -332,6 +345,7 @@ export const traditionalMarketSupplierLessons: IndonesianLesson[] = [
         pronunciation_en: "ku-a-li-TAS BA-rang",
       },
       {
+        cell_id: "9f8a9c72-52b4-4b18-ab89-e6cf122523fb",
         word: "barang rusak",
         en: "damaged goods",
         vi: "hàng hỏng",
@@ -340,6 +354,7 @@ export const traditionalMarketSupplierLessons: IndonesianLesson[] = [
         pronunciation_en: "BA-rang ROO-sak",
       },
       {
+        cell_id: "e4839c2b-c90d-4424-b14b-a78c439f3c70",
         word: "negosiasi",
         en: "negotiation",
         vi: "thương lượng",
@@ -348,6 +363,7 @@ export const traditionalMarketSupplierLessons: IndonesianLesson[] = [
         pronunciation_en: "ne-go-see-A-see",
       },
       {
+        cell_id: "7bef07ae-034e-408c-b660-4842aa249364",
         word: "pembelian rutin",
         en: "regular purchasing",
         vi: "việc mua đều đặn",
@@ -356,6 +372,7 @@ export const traditionalMarketSupplierLessons: IndonesianLesson[] = [
         pronunciation_en: "pem-BE-li-an roo-TEEN",
       },
       {
+        cell_id: "a5225a4b-da4e-40df-b599-5bb1047de9cf",
         word: "sisanya",
         en: "the rest / remaining amount",
         vi: "phần còn lại",
@@ -366,24 +383,28 @@ export const traditionalMarketSupplierLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "0bfac59a-5f24-4621-b3fc-761fa5a361e5",
         speaker: "Pembeli",
         text: "Bu, pengiriman bisa sampai sebelum jam tujuh pagi?",
         vi: "Cô ơi, hàng giao có thể tới trước bảy giờ sáng không?",
         en: "Ma'am, can the delivery arrive before seven in the morning?",
       },
       {
+        cell_id: "a2d92b4b-b6bd-45bf-9199-e3af92ed3352",
         speaker: "Supplier",
         text: "Bisa, asal pesanannya dikonfirmasi malam sebelumnya.",
         vi: "Được, miễn là đơn được xác nhận từ tối hôm trước.",
         en: "Yes, as long as the order is confirmed the night before.",
       },
       {
+        cell_id: "d96342c0-2e99-4e3c-9b2a-a58d527ab0b3",
         speaker: "Pembeli",
         text: "Kalau ada barang rusak, bisa ditukar besok?",
         vi: "Nếu có hàng hỏng, có thể đổi ngày mai không?",
         en: "If there are damaged goods, can they be exchanged tomorrow?",
       },
       {
+        cell_id: "0c530fe9-6b43-4517-bf47-90339276153b",
         speaker: "Supplier",
         text: "Bisa, asal ada foto dan nota pembelian.",
         vi: "Được, miễn là có ảnh và phiếu mua hàng.",

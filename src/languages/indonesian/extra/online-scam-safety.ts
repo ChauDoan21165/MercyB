@@ -13,6 +13,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -22,6 +23,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -235,39 +237,43 @@ export const lessons: IndonesianLesson[] = [
     tip_advice_en:
       "Tip for Vietnamese speakers: learn whole warning chunks instead of translating word by word: `jangan pernah bagikan OTP`, `link mencurigakan`, `bukti transfer palsu`, `akun saya dibajak`, `lapor bank`, `blokir kartu`. Distinguish `rekening` (bank account) from `akun` (app account), and `palsu` (fake) from `salah` (wrong).",
     vocabulary: [
-      { word: "penipuan online", en: "online scam", vi: "lừa đảo online", pos: "noun phrase", pronunciation_vi: "peu-ni-PU-an ON-lain", pronunciation_en: "pe-ni-POO-an ON-line" },
-      { word: "OTP", en: "one-time password/code", vi: "mã OTP", pos: "noun", pronunciation_vi: "o-te-pe", pronunciation_en: "oh-teh-peh" },
-      { word: "transfer palsu", en: "fake transfer", vi: "chuyển khoản giả", pos: "noun phrase", pronunciation_vi: "TRANS-fer PAL-su", pronunciation_en: "TRANS-fer PAL-soo" },
-      { word: "akun dibajak", en: "account hacked/hijacked", vi: "tài khoản bị chiếm", pos: "phrase", pronunciation_vi: "A-kun di-BA-jak", pronunciation_en: "A-koon di-BA-jak" },
-      { word: "link mencurigakan", en: "suspicious link", vi: "đường link đáng ngờ", pos: "noun phrase", pronunciation_vi: "link men-chu-ri-GA-kan", pronunciation_en: "link men-choo-ree-GA-kan" },
-      { word: "lapor bank", en: "report to the bank", vi: "báo ngân hàng", pos: "verb phrase", pronunciation_vi: "la-POR bank", pronunciation_en: "la-POR bank" },
-      { word: "blokir kartu", en: "block/freeze a card", vi: "khóa thẻ", pos: "verb phrase", pronunciation_vi: "BLO-kir KAR-tu", pronunciation_en: "BLO-keer KAR-too" },
-      { word: "hati-hati", en: "be careful", vi: "cẩn thận", pos: "interjection / adjective", pronunciation_vi: "HA-ti-HA-ti", pronunciation_en: "HA-tee-HA-tee" },
-      { word: "kata sandi", en: "password", vi: "mật khẩu", pos: "noun", pronunciation_vi: "KA-ta SAN-di", pronunciation_en: "KA-ta SAN-dee" },
-      { word: "tangkapan layar", en: "screenshot", vi: "ảnh chụp màn hình", pos: "noun phrase", pronunciation_vi: "tang-KAP-an LA-yar", pronunciation_en: "tang-KAP-an LA-yar" },
-      { word: "layanan resmi", en: "official support/service", vi: "dịch vụ chính thức", pos: "noun phrase", pronunciation_vi: "la-YA-nan res-MI", pronunciation_en: "la-YA-nan res-MEE" },
-      { word: "biaya tambahan", en: "extra fee", vi: "phí bổ sung", pos: "noun phrase", pronunciation_vi: "bi-A-ya tam-BA-han", pronunciation_en: "bee-A-ya tam-BA-han" },
+      { cell_id: "61cacfa9-f387-427b-809d-39994d5a3335", word: "penipuan online", en: "online scam", vi: "lừa đảo online", pos: "noun phrase", pronunciation_vi: "peu-ni-PU-an ON-lain", pronunciation_en: "pe-ni-POO-an ON-line" },
+      { cell_id: "f14026bb-8704-4f02-bd12-f771343ef7b5", word: "OTP", en: "one-time password/code", vi: "mã OTP", pos: "noun", pronunciation_vi: "o-te-pe", pronunciation_en: "oh-teh-peh" },
+      { cell_id: "e88561ce-6a45-470a-9fa0-f7a86e02519b", word: "transfer palsu", en: "fake transfer", vi: "chuyển khoản giả", pos: "noun phrase", pronunciation_vi: "TRANS-fer PAL-su", pronunciation_en: "TRANS-fer PAL-soo" },
+      { cell_id: "31164365-84f8-41c5-8f15-61a08db044f3", word: "akun dibajak", en: "account hacked/hijacked", vi: "tài khoản bị chiếm", pos: "phrase", pronunciation_vi: "A-kun di-BA-jak", pronunciation_en: "A-koon di-BA-jak" },
+      { cell_id: "a81f7d2a-67fa-47c2-9b95-8a26547d3a35", word: "link mencurigakan", en: "suspicious link", vi: "đường link đáng ngờ", pos: "noun phrase", pronunciation_vi: "link men-chu-ri-GA-kan", pronunciation_en: "link men-choo-ree-GA-kan" },
+      { cell_id: "2af812eb-978d-4cfa-922f-5b0191aecc78", word: "lapor bank", en: "report to the bank", vi: "báo ngân hàng", pos: "verb phrase", pronunciation_vi: "la-POR bank", pronunciation_en: "la-POR bank" },
+      { cell_id: "0d6a91d9-7f79-4d35-a6f4-fe275c6b9eaa", word: "blokir kartu", en: "block/freeze a card", vi: "khóa thẻ", pos: "verb phrase", pronunciation_vi: "BLO-kir KAR-tu", pronunciation_en: "BLO-keer KAR-too" },
+      { cell_id: "4001fd90-4053-4520-b25a-5a05ca0f5652", word: "hati-hati", en: "be careful", vi: "cẩn thận", pos: "interjection / adjective", pronunciation_vi: "HA-ti-HA-ti", pronunciation_en: "HA-tee-HA-tee" },
+      { cell_id: "139c1539-3098-462c-a41d-283044b01dc1", word: "kata sandi", en: "password", vi: "mật khẩu", pos: "noun", pronunciation_vi: "KA-ta SAN-di", pronunciation_en: "KA-ta SAN-dee" },
+      { cell_id: "14306b6d-1af4-451b-aa6a-a56094fc5ae2", word: "tangkapan layar", en: "screenshot", vi: "ảnh chụp màn hình", pos: "noun phrase", pronunciation_vi: "tang-KAP-an LA-yar", pronunciation_en: "tang-KAP-an LA-yar" },
+      { cell_id: "4e05949c-b23d-4a31-a452-616f403df24c", word: "layanan resmi", en: "official support/service", vi: "dịch vụ chính thức", pos: "noun phrase", pronunciation_vi: "la-YA-nan res-MI", pronunciation_en: "la-YA-nan res-MEE" },
+      { cell_id: "5caaa2a8-2d6c-430b-a759-1dd447ac33dc", word: "biaya tambahan", en: "extra fee", vi: "phí bổ sung", pos: "noun phrase", pronunciation_vi: "bi-A-ya tam-BA-han", pronunciation_en: "bee-A-ya tam-BA-han" },
     ],
     dialogue: [
       {
+        cell_id: "98f1599a-2056-4752-9e62-406dc1fe440a",
         speaker: "Linh",
         text: "Saya dapat SMS dari bank, katanya harus klik link dan isi OTP.",
         vi: "Tôi nhận được SMS từ ngân hàng, họ nói phải bấm link và điền OTP.",
         en: "I got an SMS from the bank, saying I must click a link and enter an OTP.",
       },
       {
+        cell_id: "42975e6b-49ba-4e9c-be40-ba018a6cce1f",
         speaker: "Rafi",
         text: "Jangan diklik. Bank tidak pernah meminta OTP lewat SMS.",
         vi: "Đừng bấm. Ngân hàng không bao giờ yêu cầu OTP qua SMS.",
         en: "Do not click it. Banks never ask for OTP by SMS.",
       },
       {
+        cell_id: "9b8b8dd7-8c4e-44ff-a1fb-5389a80f7f52",
         speaker: "Linh",
         text: "Kalau begitu saya simpan tangkapan layar dan lapor bank.",
         vi: "Vậy tôi sẽ lưu ảnh chụp màn hình và báo ngân hàng.",
         en: "Then I will save a screenshot and report it to the bank.",
       },
       {
+        cell_id: "98e318c3-9f1d-4ba7-9cc4-037bd40041f0",
         speaker: "Rafi",
         text: "Betul. Hubungi layanan resmi lewat aplikasi saja.",
         vi: "Đúng rồi. Chỉ liên hệ dịch vụ chính thức qua ứng dụng thôi.",

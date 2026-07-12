@@ -30,6 +30,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   /** Indonesian word/phrase. */
   word: string;
   /** English meaning. */
@@ -45,6 +46,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   /** Indonesian line. */
   text: string;
@@ -292,6 +294,7 @@ export const lessons: IndonesianLesson[] = [
     vocabulary: [
       // ── Family members ──────────────────────────────────────────────
       {
+        cell_id: "6e0bcb97-97cb-4e6f-a679-4e09ae025509",
         word: "keluarga",
         en: "family",
         vi: "gia đình",
@@ -300,6 +303,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "ke-lu-AR-ga — `keluarga besar` = extended family",
       },
       {
+        cell_id: "f65fe56d-d994-45b8-8f27-5c4c6696d756",
         word: "orang tua",
         en: "parents",
         vi: "cha mẹ",
@@ -308,6 +312,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "o-rang-TU-a — lit. 'old person'; not literal",
       },
       {
+        cell_id: "2ae5da8d-a2ae-413a-8f94-4d7eefd2585b",
         word: "saudara",
         en: "sibling / relative",
         vi: "anh chị em / họ hàng",
@@ -316,6 +321,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "sau-DA-ra — `bersaudara` = to be siblings",
       },
       {
+        cell_id: "c6c218a9-cb9f-4384-9c56-41491a46a94d",
         word: "kakak",
         en: "older sibling",
         vi: "anh / chị",
@@ -324,6 +330,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "KA-kak — short `Kak`; for an older person of either sex",
       },
       {
+        cell_id: "9690120b-7f07-408c-b64e-d05f1fd00d18",
         word: "adik",
         en: "younger sibling",
         vi: "em",
@@ -332,6 +339,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "A-dik — short `Dik`; sound the final `k`",
       },
       {
+        cell_id: "64b6b1b0-1d40-47c0-8dc8-835f5f2c507c",
         word: "sepupu",
         en: "cousin",
         vi: "anh/chị/em họ",
@@ -340,6 +348,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "se-PU-pu — no paternal/maternal split like Vietnamese",
       },
       {
+        cell_id: "9a87a375-fa54-4f1f-8927-21916740c282",
         word: "mertua",
         en: "parents-in-law",
         vi: "cha mẹ chồng/vợ",
@@ -348,6 +357,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "mer-TU-a — `menantu` = son/daughter-in-law",
       },
       {
+        cell_id: "5ec6a509-75b7-4a97-9c7f-872c8d3ef7d7",
         word: "anak sulung",
         en: "eldest child",
         vi: "con cả",
@@ -357,6 +367,7 @@ export const lessons: IndonesianLesson[] = [
       },
       // ── Address & respect ───────────────────────────────────────────
       {
+        cell_id: "d6715dda-0982-4eff-931d-e080b259483f",
         word: "Bapak / Pak",
         en: "Mr. / sir / older man",
         vi: "ông / bác (nam, trang trọng)",
@@ -365,6 +376,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "BA-pak / pak — respectful for an older man",
       },
       {
+        cell_id: "82595fc9-d4a0-49e0-a28f-ff86c018d852",
         word: "Ibu / Bu",
         en: "Mrs./Ms. / ma'am / older woman",
         vi: "bà / cô (nữ, trang trọng)",
@@ -373,6 +385,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "I-bu / bu — respectful for an older woman",
       },
       {
+        cell_id: "b4cb6a39-fe64-40f0-8f34-ded648113527",
         word: "Mas",
         en: "older brother / young man (Javanese)",
         vi: "anh (nam, trẻ hơn Pak)",
@@ -381,6 +394,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "mas — for an older-but-young man",
       },
       {
+        cell_id: "a1aa0971-f50b-42f0-8dce-524b7b097e90",
         word: "Mbak",
         en: "older sister / young woman (Javanese)",
         vi: "chị (nữ, trẻ hơn Bu)",
@@ -390,6 +404,7 @@ export const lessons: IndonesianLesson[] = [
       },
       // ── Weddings & events ───────────────────────────────────────────
       {
+        cell_id: "5a2938ad-21f5-4dbf-a2fd-30d25509174f",
         word: "pernikahan",
         en: "wedding",
         vi: "đám cưới",
@@ -398,6 +413,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "per-ni-KA-han — `menikah` = to marry",
       },
       {
+        cell_id: "21df01d4-576e-48c9-834c-15c86b50fe79",
         word: "undangan",
         en: "invitation",
         vi: "thiệp mời / lời mời",
@@ -406,6 +422,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "un-DA-ngan — `diundang` = be invited (passive)",
       },
       {
+        cell_id: "61e342f9-c884-451c-8cc8-fc25dfa081ae",
         word: "amplop",
         en: "envelope (cash gift)",
         vi: "phong bì (tiền mừng)",
@@ -414,6 +431,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "am-PLOP — sound the final `p`; the usual wedding gift",
       },
       {
+        cell_id: "8a75454f-ff57-45e0-8c3f-9cc36a4ceeec",
         word: "hadiah",
         en: "gift",
         vi: "quà",
@@ -422,6 +440,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "ha-DI-ah — `kado` (casual) also = a present",
       },
       {
+        cell_id: "84ea3ee4-19ee-4130-b081-a7361c9b9bb0",
         word: "oleh-oleh",
         en: "souvenir / food gift",
         vi: "quà đặc sản mang về",
@@ -431,6 +450,7 @@ export const lessons: IndonesianLesson[] = [
       },
       // ── Arisan & social life ────────────────────────────────────────
       {
+        cell_id: "762f8d23-d8a4-4baa-ba0a-cdf6ec84c6ae",
         word: "arisan",
         en: "rotating savings club",
         vi: "hội hụi xoay vòng",
@@ -439,6 +459,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "a-RI-san — monthly savings-plus-social gathering",
       },
       {
+        cell_id: "1cf84f59-7116-4274-b93b-fc641a4c5925",
         word: "tetangga",
         en: "neighbor",
         vi: "hàng xóm",
@@ -447,6 +468,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "te-TANG-ga — hold the `ngg` then release",
       },
       {
+        cell_id: "f2d35ec2-ec1e-47a9-bc81-aa24af2eb7fb",
         word: "tuan rumah",
         en: "host / homeowner",
         vi: "chủ nhà",
@@ -455,6 +477,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "tu-AN ru-MAH — the one hosting guests",
       },
       {
+        cell_id: "873b0915-829a-4d22-b910-cb317490f21a",
         word: "silaturahmi",
         en: "keeping up family/social ties",
         vi: "thăm viếng, gắn kết tình thân",
@@ -463,6 +486,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "si-la-tu-RAH-mi — Arabic root; a key social value",
       },
       {
+        cell_id: "21f317e1-c3a6-41c6-8309-c0ce30dc4b6e",
         word: "gotong royong",
         en: "communal mutual help",
         vi: "tinh thần tương trợ cộng đồng",
@@ -472,6 +496,7 @@ export const lessons: IndonesianLesson[] = [
       },
       // ── Useful verbs ────────────────────────────────────────────────
       {
+        cell_id: "3d03184e-92c7-4d0b-a076-c9b263a00355",
         word: "bertemu",
         en: "to meet",
         vi: "gặp nhau",
@@ -480,6 +505,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "ber-te-MU — `ber-` = reciprocal; `sudah lama tidak bertemu` = long time no see",
       },
       {
+        cell_id: "19bf25e2-3632-4a6a-a418-6d423d63b5a1",
         word: "memanggil",
         en: "to call / to address (as)",
         vi: "gọi (xưng hô)",
@@ -488,6 +514,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "me-mang-GIL — `panggil` + `me-`; `panggil saya Pak` = call me Pak",
       },
       {
+        cell_id: "7a5de182-6bc8-424a-9937-7fbc4a9fb204",
         word: "minta izin",
         en: "to ask permission",
         vi: "xin phép",
@@ -499,42 +526,49 @@ export const lessons: IndonesianLesson[] = [
     dialogue: [
       // Dialogue: meeting relatives at an arisan, getting an invitation
       {
+        cell_id: "0ffd818b-ca1b-4414-b262-c50534559102",
         speaker: "Bu Sari",
         text: "Eh, Mas Anto! Sudah lama tidak bertemu. Apa kabar keluarga?",
         vi: "Ơ, anh Anto! Lâu rồi không gặp. Gia đình anh khỏe không?",
         en: "Oh, Anto! Long time no see. How's the family?",
       },
       {
+        cell_id: "ee19a6ff-fd2e-44f3-87f7-085cfadce3a9",
         speaker: "Anto",
         text: "Baik, Bu. Ini istri saya, dan ini anak bungsu kami.",
         vi: "Khỏe ạ, cô. Đây là vợ tôi, còn đây là con út nhà tôi.",
         en: "Good, ma'am. This is my wife, and this is our youngest child.",
       },
       {
+        cell_id: "ccc0038e-331b-47a9-ba65-46476e3d8587",
         speaker: "Bu Sari",
         text: "Wah, manis sekali! Hari Minggu ada arisan di rumah saya, datang ya.",
         vi: "Chà, dễ thương quá! Chủ nhật có buổi arisan ở nhà tôi, đến nhé.",
         en: "Aw, so sweet! There's an arisan at my place on Sunday — do come.",
       },
       {
+        cell_id: "4a49ad29-86f6-44c5-93b0-8e99b53ce60d",
         speaker: "Anto",
         text: "Terima kasih undangannya, Bu. Kami pasti datang.",
         vi: "Cảm ơn lời mời, cô. Chúng tôi nhất định đến.",
         en: "Thank you for the invitation, ma'am. We'll definitely come.",
       },
       {
+        cell_id: "fd780d46-6359-4a4c-8e90-0a9a821a2337",
         speaker: "Istri Anto",
         text: "Kami bawa oleh-oleh dari kampung, Bu. Boleh, kan?",
         vi: "Chúng tôi mang chút quà quê đến, cô nhé. Được chứ ạ?",
         en: "We'll bring some food gift from our hometown, ma'am. Is that okay?",
       },
       {
+        cell_id: "22e6b478-2f85-4cc2-a74f-5fbaf1906f54",
         speaker: "Bu Sari",
         text: "Tentu boleh! Jangan sungkan. Oh ya, bulan depan sepupu saya menikah juga.",
         vi: "Tất nhiên được! Đừng ngại. À này, tháng sau anh/chị họ tôi cũng cưới đấy.",
         en: "Of course! Don't be shy. Oh, and my cousin gets married next month too.",
       },
       {
+        cell_id: "5dc21cc8-474f-48cd-8346-cce4ca634be6",
         speaker: "Anto",
         text: "Selamat! Sampaikan salam dan ucapan selamat menempuh hidup baru dari kami.",
         vi: "Chúc mừng! Cho chúng tôi gửi lời chào và lời chúc trăm năm hạnh phúc.",

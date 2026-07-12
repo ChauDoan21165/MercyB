@@ -18,6 +18,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   /** Indonesian word/phrase. */
   word: string;
   /** English meaning. */
@@ -33,6 +34,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   /** Indonesian line. */
   text: string;
@@ -243,6 +245,7 @@ export const rainySeasonMoldHouseLessons: IndonesianLesson[] = [
       "Useful patterns: `Rumah jadi lembap`, `Atapnya bocor`, `Dinding berjamur`, `Bau apek muncul`, `Tolong buka jendela`. For damp homes, `lembap` describes humidity, `berjamur` describes the moldy condition, and `bocor` is used for roofs, pipes, or leaks.",
     vocabulary: [
       {
+        cell_id: "c4213b73-38fb-4d01-aae7-ceb634090d10",
         word: "musim hujan",
         en: "rainy season",
         vi: "mùa mưa",
@@ -251,6 +254,7 @@ export const rainySeasonMoldHouseLessons: IndonesianLesson[] = [
         pronunciation_en: "moo-SIM HOO-jan",
       },
       {
+        cell_id: "06fff362-69bb-4aba-9d08-b1c787b2b6b3",
         word: "lembap",
         en: "damp / humid",
         vi: "ẩm",
@@ -259,6 +263,7 @@ export const rainySeasonMoldHouseLessons: IndonesianLesson[] = [
         pronunciation_en: "lem-BUP",
       },
       {
+        cell_id: "3abf92e8-ac79-46c3-943b-08cedcaf8d34",
         word: "berjamur",
         en: "moldy",
         vi: "bị mốc",
@@ -267,6 +272,7 @@ export const rainySeasonMoldHouseLessons: IndonesianLesson[] = [
         pronunciation_en: "ber-JAH-moor",
       },
       {
+        cell_id: "f5f6b161-310e-47a1-b642-f44136cd0968",
         word: "bocor",
         en: "leaking",
         vi: "bị dột / rò rỉ",
@@ -275,6 +281,7 @@ export const rainySeasonMoldHouseLessons: IndonesianLesson[] = [
         pronunciation_en: "BOH-chor",
       },
       {
+        cell_id: "bd394199-7d52-4a88-9011-d255e4bead64",
         word: "ventilasi",
         en: "ventilation",
         vi: "thông gió",
@@ -283,6 +290,7 @@ export const rainySeasonMoldHouseLessons: IndonesianLesson[] = [
         pronunciation_en: "ven-ti-LA-si",
       },
       {
+        cell_id: "d1c0e0b4-6594-42d4-97dd-24d543301732",
         word: "bau apek",
         en: "musty smell",
         vi: "mùi ẩm mốc",
@@ -291,6 +299,7 @@ export const rainySeasonMoldHouseLessons: IndonesianLesson[] = [
         pronunciation_en: "BAH-oo AH-pek",
       },
       {
+        cell_id: "4ecebe8d-64f3-4c71-a5d4-14a6b756731a",
         word: "membersihkan",
         en: "to clean / clean up",
         vi: "làm sạch, dọn sạch",
@@ -299,6 +308,7 @@ export const rainySeasonMoldHouseLessons: IndonesianLesson[] = [
         pronunciation_en: "mem-ber-SEEH-kan",
       },
       {
+        cell_id: "cc0b4f88-0e55-468a-bc85-a6e54b701f32",
         word: "mengecat ulang",
         en: "to repaint",
         vi: "sơn lại",
@@ -307,6 +317,7 @@ export const rainySeasonMoldHouseLessons: IndonesianLesson[] = [
         pronunciation_en: "mehn-ge-CHAT oo-LANG",
       },
       {
+        cell_id: "82c29bb1-ba1f-4ac0-8494-5d566719a91c",
         word: "jendela",
         en: "window",
         vi: "cửa sổ",
@@ -315,6 +326,7 @@ export const rainySeasonMoldHouseLessons: IndonesianLesson[] = [
         pronunciation_en: "jen-DEH-lah",
       },
       {
+        cell_id: "f5ad1101-9448-40bf-9da7-63fb6b068f27",
         word: "lemari pakaian",
         en: "wardrobe / clothes cabinet",
         vi: "tủ quần áo",
@@ -325,36 +337,42 @@ export const rainySeasonMoldHouseLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "5859e5ff-e958-44f5-a9f2-2303a09c40fd",
         speaker: "Pemilik rumah",
         text: "Musim hujan ini rumah jadi lembap sekali.",
         vi: "Mùa mưa này nhà trở nên rất ẩm.",
         en: "This rainy season, the house has become very damp.",
       },
       {
+        cell_id: "7726151d-5d6d-40b6-b3be-36184479a8c1",
         speaker: "Tukang",
         text: "Saya lihat dinding belakang mulai berjamur.",
         vi: "Tôi thấy tường phía sau bắt đầu bị mốc.",
         en: "I can see the back wall is starting to get moldy.",
       },
       {
+        cell_id: "4124e431-4143-4020-b594-ca1ba27ac4eb",
         speaker: "Pemilik rumah",
         text: "Atapnya juga bocor saat hujan deras.",
         vi: "Mái nhà cũng bị dột khi mưa lớn.",
         en: "The roof also leaks during heavy rain.",
       },
       {
+        cell_id: "4520b3b8-d697-4af3-bd7d-e26adda5ee46",
         speaker: "Tukang",
         text: "Baik, kita perbaiki atap dan cek ventilasi supaya udara lebih lancar.",
         vi: "Được, chúng ta sửa mái và kiểm tra thông gió để không khí lưu thông tốt hơn.",
         en: "Okay, we will repair the roof and check the ventilation so the air flows better.",
       },
       {
+        cell_id: "66ee4d93-f0fd-4c05-9a8d-c267d2649a0a",
         speaker: "Pemilik rumah",
         text: "Saya juga mencium bau apek dari lemari pakaian.",
         vi: "Tôi cũng ngửi thấy mùi ẩm mốc từ tủ quần áo.",
         en: "I also smell a musty odor from the wardrobe.",
       },
       {
+        cell_id: "2b52f86e-c4f8-44d1-97b2-faabaeedd96f",
         speaker: "Tukang",
         text: "Tolong buka jendela dan bersihkan jamurnya dulu.",
         vi: "Làm ơn mở cửa sổ và dọn sạch mốc trước đã.",

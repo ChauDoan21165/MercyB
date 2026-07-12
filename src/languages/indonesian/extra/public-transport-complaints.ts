@@ -13,6 +13,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -22,6 +23,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -235,39 +237,43 @@ export const lessons: IndonesianLesson[] = [
     tip_advice_en:
       "Tip for Vietnamese speakers: distinguish `tarif` (fare), `rute` (route), `sopir` (driver), `kondektur` (fare collector/conductor), `penumpang` (passenger), and `keluhan` (complaint). Complaint sentences often use passive `di-`: `diberi karcis`, `dilewati`, `diminta`, `diturunkan`.",
     vocabulary: [
-      { word: "angkot", en: "shared minibus", vi: "xe minibus tuyến ngắn", pos: "noun", pronunciation_vi: "ANG-kot", pronunciation_en: "ANG-kot" },
-      { word: "bus kota", en: "city bus", vi: "xe buýt thành phố", pos: "noun phrase", pronunciation_vi: "bus KO-ta", pronunciation_en: "bus KO-ta" },
-      { word: "sopir", en: "driver", vi: "tài xế", pos: "noun", pronunciation_vi: "SO-pir", pronunciation_en: "SO-peer" },
-      { word: "tarif", en: "fare", vi: "cước / giá vé", pos: "noun", pronunciation_vi: "TA-rif", pronunciation_en: "TA-rif" },
-      { word: "rute", en: "route", vi: "tuyến đường", pos: "noun", pronunciation_vi: "RU-te", pronunciation_en: "ROO-te" },
-      { word: "berhenti sembarangan", en: "stop carelessly / anywhere", vi: "dừng tùy tiện", pos: "verb phrase", pronunciation_vi: "ber-HEN-ti sem-ba-RANG-an", pronunciation_en: "ber-HEN-ti sem-ba-RANG-an" },
-      { word: "barang hilang", en: "lost item", vi: "đồ thất lạc", pos: "noun phrase", pronunciation_vi: "BA-rang HI-lang", pronunciation_en: "BA-rang HI-lang" },
-      { word: "keluhan penumpang", en: "passenger complaint", vi: "khiếu nại của hành khách", pos: "noun phrase", pronunciation_vi: "ke-LUH-an pe-NUM-pang", pronunciation_en: "ke-LOOH-an pe-NUM-pang" },
-      { word: "kondektur", en: "conductor / fare collector", vi: "phụ xe / người thu vé", pos: "noun", pronunciation_vi: "kon-DEK-tur", pronunciation_en: "kon-DEK-toor" },
-      { word: "karcis", en: "paper ticket", vi: "vé giấy", pos: "noun", pronunciation_vi: "KAR-cis", pronunciation_en: "KAR-chis" },
-      { word: "nomor kendaraan", en: "vehicle number / plate", vi: "số xe / biển xe", pos: "noun phrase", pronunciation_vi: "NO-mor ken-da-RA-an", pronunciation_en: "NO-mor ken-da-RA-an" },
-      { word: "jam kejadian", en: "time of incident", vi: "giờ xảy ra sự việc", pos: "noun phrase", pronunciation_vi: "jam ke-JA-di-an", pronunciation_en: "jam ke-JA-dee-an" },
+      { cell_id: "3076a84f-c984-46f2-9a38-c2d000f7d1c2", word: "angkot", en: "shared minibus", vi: "xe minibus tuyến ngắn", pos: "noun", pronunciation_vi: "ANG-kot", pronunciation_en: "ANG-kot" },
+      { cell_id: "9e7cb736-b44e-43ff-9b72-9eef25023b9d", word: "bus kota", en: "city bus", vi: "xe buýt thành phố", pos: "noun phrase", pronunciation_vi: "bus KO-ta", pronunciation_en: "bus KO-ta" },
+      { cell_id: "763cd3e6-1b76-41f5-8353-e0335702faf3", word: "sopir", en: "driver", vi: "tài xế", pos: "noun", pronunciation_vi: "SO-pir", pronunciation_en: "SO-peer" },
+      { cell_id: "57f7e9a8-b3a5-402d-8f7a-c928bd37efad", word: "tarif", en: "fare", vi: "cước / giá vé", pos: "noun", pronunciation_vi: "TA-rif", pronunciation_en: "TA-rif" },
+      { cell_id: "b168077d-df66-4a87-98ac-a86a84ec1219", word: "rute", en: "route", vi: "tuyến đường", pos: "noun", pronunciation_vi: "RU-te", pronunciation_en: "ROO-te" },
+      { cell_id: "b05b91d8-9380-40d6-81b1-cb3767399ad0", word: "berhenti sembarangan", en: "stop carelessly / anywhere", vi: "dừng tùy tiện", pos: "verb phrase", pronunciation_vi: "ber-HEN-ti sem-ba-RANG-an", pronunciation_en: "ber-HEN-ti sem-ba-RANG-an" },
+      { cell_id: "44060116-cefd-48c7-8672-b849f9e31fa0", word: "barang hilang", en: "lost item", vi: "đồ thất lạc", pos: "noun phrase", pronunciation_vi: "BA-rang HI-lang", pronunciation_en: "BA-rang HI-lang" },
+      { cell_id: "6eba2eca-36d3-4089-ae26-1834932a9841", word: "keluhan penumpang", en: "passenger complaint", vi: "khiếu nại của hành khách", pos: "noun phrase", pronunciation_vi: "ke-LUH-an pe-NUM-pang", pronunciation_en: "ke-LOOH-an pe-NUM-pang" },
+      { cell_id: "f9724e6f-cd5c-4501-b61d-11951b8ac85e", word: "kondektur", en: "conductor / fare collector", vi: "phụ xe / người thu vé", pos: "noun", pronunciation_vi: "kon-DEK-tur", pronunciation_en: "kon-DEK-toor" },
+      { cell_id: "59e71461-dfbf-4eeb-b91d-2362f63ec64f", word: "karcis", en: "paper ticket", vi: "vé giấy", pos: "noun", pronunciation_vi: "KAR-cis", pronunciation_en: "KAR-chis" },
+      { cell_id: "7548c5fd-df76-4160-814b-0c4d123fa9ec", word: "nomor kendaraan", en: "vehicle number / plate", vi: "số xe / biển xe", pos: "noun phrase", pronunciation_vi: "NO-mor ken-da-RA-an", pronunciation_en: "NO-mor ken-da-RA-an" },
+      { cell_id: "e0872bfb-e4b8-46b3-ab15-7fa2b6237bfd", word: "jam kejadian", en: "time of incident", vi: "giờ xảy ra sự việc", pos: "noun phrase", pronunciation_vi: "jam ke-JA-di-an", pronunciation_en: "jam ke-JA-dee-an" },
     ],
     dialogue: [
       {
+        cell_id: "1eb86e3c-564c-4126-b48c-c1a7a9801976",
         speaker: "Penumpang",
         text: "Permisi, saya mau mengajukan keluhan tentang bus kota.",
         vi: "Xin phép, tôi muốn gửi khiếu nại về xe buýt thành phố.",
         en: "Excuse me, I want to submit a complaint about a city bus.",
       },
       {
+        cell_id: "0cddf357-2297-4754-ab1f-180548135c7f",
         speaker: "Petugas",
         text: "Baik. Apa masalahnya, dan nomor kendaraannya berapa?",
         vi: "Được. Vấn đề là gì, và số xe là bao nhiêu?",
         en: "Okay. What was the issue, and what was the vehicle number?",
       },
       {
+        cell_id: "5b7f3ccb-0c11-4936-b5f8-242821ea45a8",
         speaker: "Penumpang",
         text: "Sopir berhenti sembarangan dan saya tidak diberi karcis.",
         vi: "Tài xế dừng tùy tiện và tôi không được đưa vé giấy.",
         en: "The driver stopped carelessly and I was not given a ticket.",
       },
       {
+        cell_id: "7290ced5-ad7c-4e5b-bbb3-c04dfbdccacf",
         speaker: "Petugas",
         text: "Tolong tulis rute, jam kejadian, dan lokasi kejadian di formulir ini.",
         vi: "Làm ơn ghi tuyến, giờ xảy ra và địa điểm xảy ra vào mẫu này.",

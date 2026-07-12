@@ -18,6 +18,7 @@ export type PunjabiCiReadinessFocus =
 export type PunjabiCiReadinessStage = "ci_readiness" | "final_freeze" | "mr_readiness" | "pre_integration" | "sanity";
 
 export type PunjabiScriptVocabularyCiReadinessSample = {
+  cell_id?: string;
   id: string;
   focus: PunjabiCiReadinessFocus;
   stage: PunjabiCiReadinessStage;
@@ -39,6 +40,7 @@ export type PunjabiScriptVocabularyCiReadinessSample = {
 };
 
 export type PunjabiScriptVocabularyCiReadinessSection = {
+  cell_id?: string;
   focus: PunjabiCiReadinessFocus;
   title_vi: string;
   title_en: string;

@@ -17,6 +17,7 @@ type IndonesianLessonSentence = {
 };
 
 type IndonesianVocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -26,6 +27,7 @@ type IndonesianVocabEntry = {
 };
 
 type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -184,6 +186,7 @@ export const lessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: use a four-step complaint frame: `Saya mau mengajukan komplain` -> issue (`barang rusak`) -> evidence (`foto sebagai bukti`) -> request (`refund`, `garansi`, `solusi`). Use `mohon` to sound polite while staying firm.",
     vocabulary: [
       {
+        cell_id: "a41dbe63-13ac-4503-bd4b-322ec5ade0b5",
         word: "layanan pelanggan",
         en: "customer service",
         vi: "chăm sóc khách hàng",
@@ -192,6 +195,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "la-YA-nan pe-LANG-gan",
       },
       {
+        cell_id: "bd8ea8a2-34b6-4feb-bcd6-87f2eb2a47b5",
         word: "komplain",
         en: "complaint",
         vi: "khiếu nại",
@@ -200,6 +204,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "kom-PLAIN",
       },
       {
+        cell_id: "10ba3001-296e-4ba0-ac33-4e37f3037d9c",
         word: "nomor tiket",
         en: "ticket number",
         vi: "số ticket / số hồ sơ",
@@ -208,6 +213,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "NO-mor TEE-ket",
       },
       {
+        cell_id: "6309c4eb-cfcd-4b54-bf3c-0e966f9ea21c",
         word: "refund",
         en: "refund",
         vi: "hoàn tiền",
@@ -216,6 +222,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "REE-fund",
       },
       {
+        cell_id: "d1ee4f89-02f7-4a66-aff6-e96c1a8b7677",
         word: "garansi",
         en: "warranty",
         vi: "bảo hành",
@@ -224,6 +231,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "ga-RAN-see",
       },
       {
+        cell_id: "1935ffdc-3f5c-41cb-b841-f4144d5aad9b",
         word: "barang rusak",
         en: "damaged item",
         vi: "hàng bị hỏng",
@@ -232,6 +240,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "BA-rang ROO-sak",
       },
       {
+        cell_id: "c5230216-e8cb-4ed2-8f9a-b429bed34f4b",
         word: "follow up",
         en: "follow up",
         vi: "theo dõi xử lý",
@@ -240,6 +249,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "FO-low up",
       },
       {
+        cell_id: "590e2a99-a1ec-460f-be92-77fc79b2cff1",
         word: "solusi",
         en: "solution",
         vi: "giải pháp",
@@ -250,36 +260,42 @@ export const lessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "c58ab1e0-90d4-438a-9789-09f8cd17982a",
         speaker: "Pelanggan",
         text: "Halo, Kak. Saya mau mengajukan komplain.",
         vi: "Chào bạn. Tôi muốn gửi khiếu nại.",
         en: "Hi. I would like to submit a complaint.",
       },
       {
+        cell_id: "fe79de3d-4fe7-47f5-b036-60977eb8bb74",
         speaker: "CS",
         text: "Baik, Kak. Boleh jelaskan kendalanya?",
         vi: "Vâng bạn. Bạn có thể giải thích vấn đề không?",
         en: "Sure. Could you explain the issue?",
       },
       {
+        cell_id: "c0b4d203-877a-4793-8073-c8891048aad1",
         speaker: "Pelanggan",
         text: "Barang yang saya terima rusak. Saya sudah kirim foto sebagai bukti.",
         vi: "Hàng tôi nhận bị hỏng. Tôi đã gửi ảnh làm bằng chứng.",
         en: "The item I received is damaged. I have sent photos as proof.",
       },
       {
+        cell_id: "c5097d52-a076-4cd5-b317-25f8b053a706",
         speaker: "CS",
         text: "Kami buatkan nomor tiket dulu, ya.",
         vi: "Chúng tôi sẽ tạo số ticket trước nhé.",
         en: "We will create a ticket number first.",
       },
       {
+        cell_id: "d927bbb4-d48c-4caa-8baf-d08c003fab89",
         speaker: "Pelanggan",
         text: "Apakah saya bisa minta refund atau klaim garansi?",
         vi: "Tôi có thể xin hoàn tiền hoặc yêu cầu bảo hành không?",
         en: "Can I request a refund or make a warranty claim?",
       },
       {
+        cell_id: "f41dd7ed-f060-42e1-b168-3aa24c38724a",
         speaker: "CS",
         text: "Bisa, Kak. Mohon ditunggu, kami follow up hari ini.",
         vi: "Được bạn. Mong bạn chờ, hôm nay chúng tôi sẽ theo dõi xử lý.",

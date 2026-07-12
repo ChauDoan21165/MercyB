@@ -18,6 +18,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   /** Indonesian word/phrase. */
   word: string;
   /** English meaning. */
@@ -33,6 +34,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   /** Indonesian line. */
   text: string;
@@ -243,6 +245,7 @@ export const nannyDaycareInstructionsLessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: distinguish `antar` = drop off/take there and `jemput` = pick up. For child-safety prohibitions, use `jangan`: `jangan beri`, `jangan berikan`, `jangan lupa`. Key chunks: `instruksi pengasuh`, `jam makan`, `tidur siang`, `alergi anak`, `nomor darurat`, `yang boleh jemput`, `rutinitas harian`.",
     vocabulary: [
       {
+        cell_id: "157abb98-51c6-41bc-b640-cf5570eb6f0c",
         word: "instruksi pengasuh",
         en: "caregiver instructions",
         vi: "hướng dẫn cho người trông trẻ",
@@ -251,6 +254,7 @@ export const nannyDaycareInstructionsLessons: IndonesianLesson[] = [
         pronunciation_en: "in-STRUK-si pe-NGA-sooh",
       },
       {
+        cell_id: "9bec3f4d-1e67-48cf-a8bc-d1c87524ce7c",
         word: "jam makan",
         en: "meal time",
         vi: "giờ ăn",
@@ -259,6 +263,7 @@ export const nannyDaycareInstructionsLessons: IndonesianLesson[] = [
         pronunciation_en: "JAM MA-kan",
       },
       {
+        cell_id: "0c715f46-f922-4d81-8bc4-9847a809a911",
         word: "tidur siang",
         en: "nap / midday sleep",
         vi: "ngủ trưa",
@@ -267,6 +272,7 @@ export const nannyDaycareInstructionsLessons: IndonesianLesson[] = [
         pronunciation_en: "TEE-door SEE-ang",
       },
       {
+        cell_id: "a62260e1-7e14-46c3-98c7-e871cba5c4d5",
         word: "alergi anak",
         en: "child allergy",
         vi: "dị ứng của trẻ",
@@ -275,6 +281,7 @@ export const nannyDaycareInstructionsLessons: IndonesianLesson[] = [
         pronunciation_en: "a-LER-gee A-nak",
       },
       {
+        cell_id: "e7ce3054-fe26-4639-9400-afd63c404f64",
         word: "nomor darurat",
         en: "emergency number",
         vi: "số khẩn cấp",
@@ -283,6 +290,7 @@ export const nannyDaycareInstructionsLessons: IndonesianLesson[] = [
         pronunciation_en: "NO-mor da-ROO-rat",
       },
       {
+        cell_id: "4f388401-826d-4dac-8c9c-625ac0a5996c",
         word: "jemput anak",
         en: "pick up the child",
         vi: "đón con / đón trẻ",
@@ -291,6 +299,7 @@ export const nannyDaycareInstructionsLessons: IndonesianLesson[] = [
         pronunciation_en: "JEM-put A-nak",
       },
       {
+        cell_id: "a093b7bf-aff8-4383-92f6-aa2ca7134a04",
         word: "rutinitas harian",
         en: "daily routine",
         vi: "lịch sinh hoạt hằng ngày",
@@ -299,6 +308,7 @@ export const nannyDaycareInstructionsLessons: IndonesianLesson[] = [
         pronunciation_en: "roo-tee-NEE-tas HA-ree-an",
       },
       {
+        cell_id: "7ff9aeb1-178e-4b08-ad3f-fd4aed408a65",
         word: "mengandung kacang",
         en: "contains nuts/peanuts",
         vi: "có chứa đậu/phộng",
@@ -307,6 +317,7 @@ export const nannyDaycareInstructionsLessons: IndonesianLesson[] = [
         pronunciation_en: "me-NGAN-doong KA-chang",
       },
       {
+        cell_id: "1f478263-f840-45f7-b118-1a2d8dd9974c",
         word: "orang yang tidak dikenal",
         en: "unknown person / stranger",
         vi: "người lạ",
@@ -315,6 +326,7 @@ export const nannyDaycareInstructionsLessons: IndonesianLesson[] = [
         pronunciation_en: "O-rang yang TEE-dak dee-ke-NAL",
       },
       {
+        cell_id: "7cae7f95-2951-4eb0-9e2d-d92bbafbb710",
         word: "buku catatan",
         en: "notebook / logbook",
         vi: "sổ ghi chú",
@@ -325,30 +337,35 @@ export const nannyDaycareInstructionsLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "ce072b52-2571-4d9a-a9fa-5c6c5d31fa92",
         speaker: "Orang Tua",
         text: "Ini instruksi untuk pengasuh anak saya hari ini.",
         vi: "Đây là hướng dẫn cho người trông con tôi hôm nay.",
         en: "These are the instructions for my child's caregiver today.",
       },
       {
+        cell_id: "f69520dd-28eb-48c0-9c6d-0196bb2d9cb6",
         speaker: "Pengasuh",
         text: "Baik, Bu. Jam makan dan tidur siangnya pukul berapa?",
         vi: "Vâng chị. Giờ ăn và ngủ trưa là mấy giờ?",
         en: "All right, ma'am. What time are meal time and nap time?",
       },
       {
+        cell_id: "02aa7bbb-da02-4c61-b8d3-9b261ffe6495",
         speaker: "Orang Tua",
         text: "Makan siang pukul dua belas, lalu tidur siang setelah makan.",
         vi: "Ăn trưa lúc mười hai giờ, rồi ngủ trưa sau khi ăn.",
         en: "Lunch is at twelve, then nap time after eating.",
       },
       {
+        cell_id: "dfd8a788-f6a6-43e4-a043-e15452f931f0",
         speaker: "Pengasuh",
         text: "Apakah ada alergi anak yang perlu saya perhatikan?",
         vi: "Có dị ứng nào của bé mà tôi cần chú ý không?",
         en: "Are there any child allergies I should pay attention to?",
       },
       {
+        cell_id: "7d4ef3ac-2763-47d7-8ad8-0ebfd9571b4a",
         speaker: "Orang Tua",
         text: "Ada alergi kacang. Kalau muncul ruam, segera hubungi nomor darurat.",
         vi: "Có dị ứng đậu/phộng. Nếu xuất hiện phát ban, hãy liên hệ số khẩn cấp ngay.",

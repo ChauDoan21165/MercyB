@@ -32,6 +32,7 @@ export type ThaiTopic =
   | "money";
 
 export type ThaiTopicVocabEntry = {
+  cell_id?: string;
   th: string;
   rom: string;
   vi: string;

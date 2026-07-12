@@ -17,6 +17,7 @@ type IndonesianLessonSentence = {
 };
 
 type IndonesianVocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -26,6 +27,7 @@ type IndonesianVocabEntry = {
 };
 
 type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -212,6 +214,7 @@ export const publicLibraryDigitalServicesLessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: use polite library-desk frames: `Saya ingin membuat kartu anggota`, `Bisa bantu saya login?`, `Saya mau reservasi buku`, `Apakah ada biaya denda?`, `Komputer umum masih tersedia?`. Remember the difference between `bisa` for ability and `boleh` for permission under rules.",
     vocabulary: [
       {
+        cell_id: "29efb03a-9d58-4db1-9e6d-6e4c0aa5f99a",
         word: "perpustakaan digital",
         en: "digital library",
         vi: "thư viện số",
@@ -220,6 +223,7 @@ export const publicLibraryDigitalServicesLessons: IndonesianLesson[] = [
         pronunciation_en: "per-poos-ta-KA-an DEE-gee-tal",
       },
       {
+        cell_id: "395968e8-7a9e-496b-b07d-6bd403117761",
         word: "e-book",
         en: "e-book",
         vi: "sách điện tử",
@@ -228,6 +232,7 @@ export const publicLibraryDigitalServicesLessons: IndonesianLesson[] = [
         pronunciation_en: "EE-book",
       },
       {
+        cell_id: "e9d54677-a0e5-4adc-9b59-bc458f21ac9d",
         word: "komputer umum",
         en: "public computer",
         vi: "máy tính công cộng",
@@ -236,6 +241,7 @@ export const publicLibraryDigitalServicesLessons: IndonesianLesson[] = [
         pronunciation_en: "kom-POO-ter OO-moom",
       },
       {
+        cell_id: "f3c63fb8-9b9a-45d0-b919-a12743ceaabf",
         word: "kartu anggota",
         en: "membership card",
         vi: "thẻ thành viên",
@@ -244,6 +250,7 @@ export const publicLibraryDigitalServicesLessons: IndonesianLesson[] = [
         pronunciation_en: "KAR-too ang-GO-ta",
       },
       {
+        cell_id: "473ef503-7ef1-418f-a92c-63a24e5f7c66",
         word: "reservasi buku",
         en: "book reservation",
         vi: "đặt trước sách",
@@ -252,6 +259,7 @@ export const publicLibraryDigitalServicesLessons: IndonesianLesson[] = [
         pronunciation_en: "reh-ser-VA-see BOO-koo",
       },
       {
+        cell_id: "92007238-905e-4ed5-81e9-c05331b7e201",
         word: "akses internet",
         en: "internet access",
         vi: "truy cập internet",
@@ -260,6 +268,7 @@ export const publicLibraryDigitalServicesLessons: IndonesianLesson[] = [
         pronunciation_en: "AK-ses IN-ter-net",
       },
       {
+        cell_id: "6310a4c7-3361-4aef-ac58-5802d8ed1fb6",
         word: "petugas",
         en: "staff member on duty",
         vi: "nhân viên phụ trách",
@@ -268,6 +277,7 @@ export const publicLibraryDigitalServicesLessons: IndonesianLesson[] = [
         pronunciation_en: "peh-TOO-gas",
       },
       {
+        cell_id: "549da3d7-358e-487c-8d68-4f1fd817f474",
         word: "tersedia",
         en: "available",
         vi: "có sẵn",
@@ -278,30 +288,35 @@ export const publicLibraryDigitalServicesLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "369713c3-05f9-4b29-b22a-c306b4efeb57",
         speaker: "Pengunjung",
         text: "Selamat pagi, saya ingin membuat kartu anggota perpustakaan.",
         vi: "Chào buổi sáng, tôi muốn làm thẻ thành viên thư viện.",
         en: "Good morning, I would like to get a library membership card.",
       },
       {
+        cell_id: "023585e4-3564-4e42-a7b3-ab63de76a2e9",
         speaker: "Petugas",
         text: "Boleh. Apakah Bapak sudah punya akun perpustakaan digital?",
         vi: "Được ạ. Anh đã có tài khoản thư viện số chưa?",
         en: "Sure. Do you already have a digital library account?",
       },
       {
+        cell_id: "237d25d7-2b66-49a8-ab3c-122e63ee4d60",
         speaker: "Pengunjung",
         text: "Belum. Saya juga ingin meminjam e-book dan memakai komputer umum.",
         vi: "Chưa. Tôi cũng muốn mượn e-book và dùng máy tính công cộng.",
         en: "Not yet. I also want to borrow e-books and use a public computer.",
       },
       {
+        cell_id: "3bb14b5f-84e7-4709-b237-812014475ff2",
         speaker: "Petugas",
         text: "Nanti saya bantu aktivasi akun. Komputer umum bisa dipakai selama satu jam.",
         vi: "Lát nữa tôi sẽ giúp kích hoạt tài khoản. Máy tính công cộng có thể dùng trong một giờ.",
         en: "I will help activate the account. The public computer can be used for one hour.",
       },
       {
+        cell_id: "b8a29d6b-c7cf-49ef-b055-08931b517356",
         speaker: "Pengunjung",
         text: "Kalau buku yang saya cari belum tersedia, bisa reservasi?",
         vi: "Nếu sách tôi tìm chưa có sẵn, có thể đặt trước không?",

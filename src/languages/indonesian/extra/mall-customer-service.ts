@@ -18,6 +18,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   /** Indonesian word/phrase. */
   word: string;
   /** English meaning. */
@@ -33,6 +34,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   /** Indonesian line. */
   text: string;
@@ -243,6 +245,7 @@ export const mallCustomerServiceLessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: in malls, use short polite frames with `permisi`, `boleh minta`, `mohon`, and `apakah ada`. Distinguish `barang hilang` = lost item, `tiket parkir` = parking ticket, `pusat informasi` = information desk, and `musala` = prayer room. For indoor directions, `sebelah mana?` is very natural.",
     vocabulary: [
       {
+        cell_id: "e373fd8f-a603-4f90-b215-d69fb2a7e0ed",
         word: "pusat informasi",
         en: "information desk",
         vi: "quầy thông tin",
@@ -251,6 +254,7 @@ export const mallCustomerServiceLessons: IndonesianLesson[] = [
         pronunciation_en: "POO-sat in-for-MA-see",
       },
       {
+        cell_id: "bdfba9f0-bde8-48ef-95fe-fb8f7554614f",
         word: "mal",
         en: "mall",
         vi: "trung tâm thương mại",
@@ -259,6 +263,7 @@ export const mallCustomerServiceLessons: IndonesianLesson[] = [
         pronunciation_en: "mal",
       },
       {
+        cell_id: "c0c7b37e-b9dc-45a7-95ac-6219df6dfcf7",
         word: "barang hilang",
         en: "lost item",
         vi: "đồ thất lạc",
@@ -267,6 +272,7 @@ export const mallCustomerServiceLessons: IndonesianLesson[] = [
         pronunciation_en: "BA-rang HEE-lang",
       },
       {
+        cell_id: "789a4a60-a48f-468e-a0f6-33f8c0cc2298",
         word: "tiket parkir",
         en: "parking ticket",
         vi: "vé gửi xe / vé bãi đậu xe",
@@ -275,6 +281,7 @@ export const mallCustomerServiceLessons: IndonesianLesson[] = [
         pronunciation_en: "TEE-ket PAR-kir",
       },
       {
+        cell_id: "edb6a003-1b85-4f53-a642-f2cbeb834579",
         word: "toilet terdekat",
         en: "nearest restroom",
         vi: "nhà vệ sinh gần nhất",
@@ -283,6 +290,7 @@ export const mallCustomerServiceLessons: IndonesianLesson[] = [
         pronunciation_en: "toi-LET ter-DE-kat",
       },
       {
+        cell_id: "3ba05966-a23e-46ca-b78a-6c593859d0e9",
         word: "musala",
         en: "prayer room",
         vi: "phòng cầu nguyện",
@@ -291,6 +299,7 @@ export const mallCustomerServiceLessons: IndonesianLesson[] = [
         pronunciation_en: "mu-SA-la",
       },
       {
+        cell_id: "06ce1587-d586-44ac-91d4-d47c1e51db4d",
         word: "voucher belanja",
         en: "shopping voucher",
         vi: "voucher / phiếu mua sắm",
@@ -299,6 +308,7 @@ export const mallCustomerServiceLessons: IndonesianLesson[] = [
         pronunciation_en: "VOU-cher be-LAN-ja",
       },
       {
+        cell_id: "14f55a03-17b2-4834-892e-971397913859",
         word: "komplain toko",
         en: "store complaint",
         vi: "khiếu nại về cửa hàng",
@@ -307,6 +317,7 @@ export const mallCustomerServiceLessons: IndonesianLesson[] = [
         pronunciation_en: "kom-PLAIN TO-ko",
       },
       {
+        cell_id: "7adcaa3b-5917-491f-a7a6-e8823ba055cd",
         word: "nomor laporan",
         en: "report number",
         vi: "số báo cáo / số hồ sơ",
@@ -315,6 +326,7 @@ export const mallCustomerServiceLessons: IndonesianLesson[] = [
         pronunciation_en: "NO-mor la-PO-ran",
       },
       {
+        cell_id: "e9e2d1b0-7534-4cfd-98b6-6769a61c897e",
         word: "ditemukan",
         en: "found",
         vi: "được tìm thấy",
@@ -325,30 +337,35 @@ export const mallCustomerServiceLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "0822936a-179d-4279-ae3d-7ee3c3bf5bd7",
         speaker: "Pengunjung",
         text: "Permisi, pusat informasi ada di lantai berapa?",
         vi: "Xin lỗi, quầy thông tin ở tầng mấy?",
         en: "Excuse me, which floor is the information desk on?",
       },
       {
+        cell_id: "3b90424a-2c18-48bf-90cf-7070a3c122ed",
         speaker: "Petugas",
         text: "Ada di lantai satu, dekat pintu utama.",
         vi: "Ở tầng một, gần cửa chính.",
         en: "It is on the first floor, near the main entrance.",
       },
       {
+        cell_id: "3d043022-1d63-4f1c-bdb6-c7b31bdc6096",
         speaker: "Pengunjung",
         text: "Saya kehilangan dompet di area food court. Apakah ada layanan barang hilang?",
         vi: "Tôi bị mất ví ở khu food court. Có dịch vụ đồ thất lạc không?",
         en: "I lost my wallet in the food court area. Is there a lost-item service?",
       },
       {
+        cell_id: "dee656d2-c7f9-44cd-b487-269c7392470c",
         speaker: "Petugas",
         text: "Ada. Kami bantu buat laporan. Boleh sebutkan ciri-ciri dompetnya?",
         vi: "Có. Chúng tôi hỗ trợ lập báo cáo. Anh/chị mô tả đặc điểm ví được không?",
         en: "Yes. We can help make a report. Could you describe the wallet?",
       },
       {
+        cell_id: "a8219a82-4895-4abf-bf1e-c4048d8f8116",
         speaker: "Pengunjung",
         text: "Terima kasih. Mohon hubungi saya kalau barangnya ditemukan.",
         vi: "Cảm ơn. Xin liên hệ với tôi nếu món đồ được tìm thấy.",

@@ -34,6 +34,7 @@ export type ThaiComprehensionQuestion = {
 };
 
 export type ThaiReadingVocab = {
+  cell_id?: string;
   /** Thai headword in script. */
   word: string;
   /** Romanization (kept for all levels — vocab is where it helps most). */

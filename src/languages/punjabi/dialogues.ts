@@ -31,6 +31,7 @@ export type PunjabiCommonMistake = {
 };
 
 export type PunjabiDialogue = {
+  cell_id?: string;
   id: number;
   level: PunjabiCefrLevel;
   topic: PunjabiDialogueTopic;

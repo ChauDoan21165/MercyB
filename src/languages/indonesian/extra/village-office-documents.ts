@@ -16,6 +16,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   /** Indonesian word/phrase. */
   word: string;
   /** English meaning. */
@@ -31,6 +32,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   /** Indonesian line. */
   text: string;
@@ -193,6 +195,7 @@ export const lessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: key administrative chunks are `mengurus surat`, `surat keterangan`, `surat domisili`, `tanda tangan`, `stempel`, `fotokopi KTP`. Ask for the document list with `Dokumen apa saja yang harus saya bawa?` and timing with `Kapan bisa diambil?`.",
     vocabulary: [
       {
+        cell_id: "83a05c78-b1a4-4356-abb2-473a0351175c",
         word: "kantor desa",
         en: "village office",
         vi: "văn phòng xã/thôn",
@@ -201,6 +204,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "KAN-tor DE-sa",
       },
       {
+        cell_id: "92f3d194-ace4-46d9-b4e9-9816044a677e",
         word: "surat keterangan",
         en: "certificate / statement letter",
         vi: "giấy xác nhận",
@@ -209,6 +213,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "SOO-rat ke-te-RANG-an",
       },
       {
+        cell_id: "adf73530-ef8f-4f71-ae4b-b36c6868f648",
         word: "domisili",
         en: "domicile / residence",
         vi: "nơi cư trú",
@@ -217,6 +222,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "do-mi-SEE-li",
       },
       {
+        cell_id: "e3b136b5-f2e5-4312-82cc-18f5622ac12b",
         word: "RT/RW",
         en: "neighborhood/community units",
         vi: "đơn vị dân cư RT/RW",
@@ -225,6 +231,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "er-te / er-we",
       },
       {
+        cell_id: "4e8365b8-6b48-451e-9454-2a86b916d431",
         word: "lurah",
         en: "local administrative head",
         vi: "trưởng phường/xã cấp kelurahan",
@@ -233,6 +240,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "LOO-rah",
       },
       {
+        cell_id: "7d18137e-73f8-4aa9-a494-9dd21981844a",
         word: "tanda tangan",
         en: "signature / sign",
         vi: "chữ ký / ký tên",
@@ -241,6 +249,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "TAN-da TA-ngan",
       },
       {
+        cell_id: "5f90f37c-b992-469f-ae74-4c7eba61bedb",
         word: "stempel",
         en: "official stamp",
         vi: "con dấu",
@@ -249,6 +258,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "STEM-pel",
       },
       {
+        cell_id: "296a1869-65e1-403b-8869-bc84e027a92e",
         word: "fotokopi KTP",
         en: "photocopy of ID card",
         vi: "bản photo KTP",
@@ -257,6 +267,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "fo-to-KO-pi ka-te-pe",
       },
       {
+        cell_id: "2c3eaa24-dbc9-4dd0-91cb-9cbf19dfcc00",
         word: "lembar",
         en: "sheet / copy",
         vi: "tờ / bản",
@@ -265,6 +276,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "LEM-bar",
       },
       {
+        cell_id: "42c40909-22d9-428a-9b14-1e40807ecb74",
         word: "diambil",
         en: "picked up / collected",
         vi: "được lấy / nhận lại",
@@ -275,30 +287,35 @@ export const lessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "82b437bd-9b33-4c46-aeef-6aeb125fbc6a",
         speaker: "Pemohon",
         text: "Permisi, Pak. Saya mau mengurus surat domisili.",
         vi: "Xin lỗi anh/chú. Tôi muốn làm giấy xác nhận cư trú.",
         en: "Excuse me, sir. I want to process a domicile letter.",
       },
       {
+        cell_id: "a227ebe5-bb24-4d2d-a08e-4d428fc61611",
         speaker: "Petugas",
         text: "Sudah ada tanda tangan RT dan RW?",
         vi: "Đã có chữ ký RT và RW chưa?",
         en: "Do you already have the RT and RW signatures?",
       },
       {
+        cell_id: "dd007281-2d47-44ae-a8dd-27c4eb62a127",
         speaker: "Pemohon",
         text: "Sudah, Pak. Ini fotokopi KTP dua lembar.",
         vi: "Có rồi ạ. Đây là hai bản photo KTP.",
         en: "Yes, sir. Here are two photocopies of the KTP.",
       },
       {
+        cell_id: "d932341a-2d3f-4cea-b20e-58b0a6b822db",
         speaker: "Petugas",
         text: "Baik. Nanti suratnya perlu tanda tangan Pak Lurah dan stempel.",
         vi: "Được. Lát nữa giấy cần chữ ký ông lurah và con dấu.",
         en: "Okay. Later the letter needs the lurah's signature and stamp.",
       },
       {
+        cell_id: "ef783661-e8ba-4e74-b796-3714710fff7b",
         speaker: "Pemohon",
         text: "Kapan surat ini bisa diambil?",
         vi: "Khi nào có thể lấy giấy này?",

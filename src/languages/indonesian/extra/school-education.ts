@@ -31,6 +31,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   /** Indonesian word/phrase. */
   word: string;
   /** English meaning. */
@@ -46,6 +47,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   /** Indonesian line. */
   text: string;
@@ -285,6 +287,7 @@ export const lessons: IndonesianLesson[] = [
     vocabulary: [
       // People & places
       {
+        cell_id: "fdec6c28-b914-461b-bdb7-9e46dc2213fd",
         word: "sekolah",
         en: "school",
         vi: "trường học",
@@ -293,6 +296,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "se-KO-lah — schwa first `e`; lightly sound the final `h`",
       },
       {
+        cell_id: "2f6b53cc-b970-4a7d-a443-3db5a789122d",
         word: "universitas",
         en: "university",
         vi: "trường đại học",
@@ -301,6 +305,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "u-ni-ver-SI-tas — Dutch loanword; stress on 'SI'",
       },
       {
+        cell_id: "c8b92ee8-94a1-4917-b918-b7ae95072071",
         word: "guru",
         en: "teacher",
         vi: "giáo viên / thầy cô",
@@ -309,6 +314,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "GU-ru — polite address with a name: `Bu Guru`, `Pak Guru`",
       },
       {
+        cell_id: "56bd929b-9ca5-482d-b3fd-e2e2611a23ac",
         word: "wali kelas",
         en: "homeroom / form teacher",
         vi: "giáo viên chủ nhiệm",
@@ -317,6 +323,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "WA-li KE-las — `wali` = guardian/the one in charge",
       },
       {
+        cell_id: "85c17c63-3ad8-47ab-b2b0-9c8486b8c13a",
         word: "kepala sekolah",
         en: "principal / headmaster",
         vi: "hiệu trưởng",
@@ -325,6 +332,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "ke-PA-la se-KO-lah — `kepala` (head) = the one at the top",
       },
       {
+        cell_id: "0298858b-2031-47b8-84c4-e08b764c9a45",
         word: "siswa / murid",
         en: "pupil / student (school)",
         vi: "học sinh",
@@ -333,6 +341,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "SIS-wa / MU-rid — sound the final `d` in `murid`",
       },
       {
+        cell_id: "ce6267d8-d3e5-43c4-9aba-c9cca5718e43",
         word: "mahasiswa",
         en: "university student",
         vi: "sinh viên",
@@ -341,6 +350,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "ma-ha-SIS-wa — `maha-` = great/higher; contrast with `siswa`",
       },
       {
+        cell_id: "b84b2cef-651e-4bb0-886b-9638fd0a1f6c",
         word: "ruang kelas",
         en: "classroom",
         vi: "phòng học / lớp học",
@@ -349,6 +359,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "RU-ang KE-las — `ruang` = room/space",
       },
       {
+        cell_id: "8c648bd3-f3f5-4d6c-9005-28c11d958739",
         word: "perpustakaan",
         en: "library",
         vi: "thư viện",
@@ -358,6 +369,7 @@ export const lessons: IndonesianLesson[] = [
       },
       // Registration & documents
       {
+        cell_id: "98da005d-ee16-4c4a-858d-dabc622014e3",
         word: "pendaftaran",
         en: "registration / enrollment",
         vi: "việc đăng ký / ghi danh",
@@ -366,6 +378,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "pen-daf-TA-ran — root `daftar` via the `pe-...-an` frame",
       },
       {
+        cell_id: "fb35ac07-b57f-4f23-a01a-9a3897c5a816",
         word: "mendaftar",
         en: "to register / sign up",
         vi: "đăng ký",
@@ -374,6 +387,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "men-DAF-tar — `mendaftarkan` = to register someone else",
       },
       {
+        cell_id: "5dd335ac-dec6-44d6-8401-68b41c917ef1",
         word: "formulir",
         en: "form (to fill in)",
         vi: "đơn / mẫu đơn",
@@ -382,6 +396,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "for-mu-LIR — Dutch loanword; sound the final `r`",
       },
       {
+        cell_id: "b0425a8b-dd72-42e3-8865-9a2d6f60588b",
         word: "akta kelahiran",
         en: "birth certificate",
         vi: "giấy khai sinh",
@@ -390,6 +405,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "AK-ta ke-la-HI-ran — a required document for enrollment",
       },
       {
+        cell_id: "eafe3eb4-a892-4fba-bcdd-1fa61e0dd0e8",
         word: "rapor",
         en: "report card",
         vi: "học bạ / phiếu điểm",
@@ -398,6 +414,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "RA-por — sound the final `r`; handed out each term",
       },
       {
+        cell_id: "77275510-b6c6-4a7b-a4b0-f2ad475802db",
         word: "seragam",
         en: "uniform",
         vi: "đồng phục",
@@ -407,6 +424,7 @@ export const lessons: IndonesianLesson[] = [
       },
       // Academics
       {
+        cell_id: "378389c4-2ba2-4916-aefe-9b3772301294",
         word: "mata pelajaran",
         en: "school subject",
         vi: "môn học",
@@ -415,6 +433,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "MA-ta pe-la-JA-ran — short form `mapel`; root `ajar` (to teach)",
       },
       {
+        cell_id: "a79da925-c466-4a6c-9245-2e46abd24f0b",
         word: "ujian",
         en: "exam / test",
         vi: "kỳ thi / bài kiểm tra",
@@ -423,6 +442,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "U-ji-an — `ulangan` = a small in-class quiz",
       },
       {
+        cell_id: "beb1fb8c-9249-4aa4-9302-a0e0bbf50380",
         word: "nilai",
         en: "grade / score / mark",
         vi: "điểm số",
@@ -431,6 +451,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "NI-lai — also means 'value'; `nilai bagus` = a good grade",
       },
       {
+        cell_id: "5e79f31a-b3eb-4cb3-a0fe-9c4a144b3a87",
         word: "PR (pekerjaan rumah)",
         en: "homework",
         vi: "bài tập về nhà",
@@ -439,6 +460,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "pe-er — say the two letters; a very common abbreviation",
       },
       {
+        cell_id: "f973586f-6836-4241-9872-c77f3db39ffd",
         word: "semester",
         en: "semester / term",
         vi: "học kỳ",
@@ -447,6 +469,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "se-MES-ter — `semester ganjil/genap` = odd/even term",
       },
       {
+        cell_id: "0f48ae90-a10f-4bdf-b7b6-e35c24ced9a1",
         word: "jurusan",
         en: "major / study track",
         vi: "ngành / ban học",
@@ -455,6 +478,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "ju-RU-san — chosen in senior high (IPA/IPS) and at university",
       },
       {
+        cell_id: "1c98f3db-9f72-41c3-a754-0c22252197dd",
         word: "beasiswa",
         en: "scholarship",
         vi: "học bổng",
@@ -464,6 +488,7 @@ export const lessons: IndonesianLesson[] = [
       },
       // Fees & assistance
       {
+        cell_id: "4fbe73e7-36d8-4259-a041-26763052e056",
         word: "biaya sekolah / SPP",
         en: "school fees / monthly tuition",
         vi: "học phí",
@@ -472,6 +497,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "BI-a-ya / es-pe-pe — spell `SPP` letter by letter",
       },
       {
+        cell_id: "bff957f6-d7af-462b-a514-9e12b96af73c",
         word: "KIP (Kartu Indonesia Pintar)",
         en: "the 'Smart Indonesia' student aid card",
         vi: "thẻ hỗ trợ học tập KIP",
@@ -480,6 +506,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "kip — study aid for low-income families (the real program name, not 'BPJS Pendidikan')",
       },
       {
+        cell_id: "dad24e70-0f6f-434e-a16d-020a83f007de",
         word: "dana BOS",
         en: "school operational assistance fund",
         vi: "quỹ hỗ trợ hoạt động trường (BOS)",
@@ -491,48 +518,56 @@ export const lessons: IndonesianLesson[] = [
     dialogue: [
       // Parent meets the homeroom teacher
       {
+        cell_id: "62daf574-55fd-4402-af63-05f3b3efec27",
         speaker: "Orang tua",
         text: "Selamat siang, Bu. Saya ibu dari Linh, murid kelas lima.",
         vi: "Chào cô buổi chiều. Tôi là mẹ của Linh, học sinh lớp năm.",
         en: "Good afternoon, ma'am. I'm Linh's mother, the fifth-grade pupil.",
       },
       {
+        cell_id: "e875e36f-e80f-4f98-9257-9cba257c21ea",
         speaker: "Wali kelas",
         text: "Selamat siang, Bu. Silakan duduk. Ada yang bisa saya bantu?",
         vi: "Chào chị buổi chiều. Mời ngồi. Tôi có thể giúp gì ạ?",
         en: "Good afternoon. Please sit. How can I help you?",
       },
       {
+        cell_id: "049cf4a5-918d-4b6c-b446-157783a93606",
         speaker: "Orang tua",
         text: "Saya ingin tahu bagaimana perkembangan anak saya di sekolah.",
         vi: "Tôi muốn biết con tôi tiến bộ ở trường như thế nào.",
         en: "I'd like to know how my child is progressing at school.",
       },
       {
+        cell_id: "410d6ec7-af91-4363-bf10-7683d8e3123a",
         speaker: "Wali kelas",
         text: "Nilainya sudah bagus, tapi dia belum mengerjakan beberapa PR.",
         vi: "Điểm của cháu đã tốt rồi, nhưng cháu chưa làm một vài bài tập về nhà.",
         en: "Her grades are already good, but she hasn't done several homework assignments.",
       },
       {
+        cell_id: "b79639a4-390c-40cb-a65c-78c3d574994f",
         speaker: "Orang tua",
         text: "Oh, begitu. Di rumah saya akan ingatkan dia setiap sore.",
         vi: "Ồ, vậy à. Ở nhà tôi sẽ nhắc cháu mỗi buổi chiều.",
         en: "Oh, I see. At home I'll remind her every afternoon.",
       },
       {
+        cell_id: "96ca1158-c586-40aa-b745-f44be660fe6f",
         speaker: "Wali kelas",
         text: "Bagus. Oh ya, pendaftaran ujian akhir dibuka minggu depan.",
         vi: "Tốt. À đúng rồi, đăng ký thi cuối kỳ mở vào tuần sau.",
         en: "Good. Oh, and registration for the final exam opens next week.",
       },
       {
+        cell_id: "fa756333-2241-47c3-ab69-2178449ae4fb",
         speaker: "Orang tua",
         text: "Baik, Bu. Dokumen apa saja yang perlu saya siapkan?",
         vi: "Vâng, thưa cô. Tôi cần chuẩn bị những giấy tờ gì?",
         en: "Alright. Which documents do I need to prepare?",
       },
       {
+        cell_id: "2fb32b53-0e48-4c54-a532-048ec7a873f0",
         speaker: "Wali kelas",
         text: "Cukup rapor semester lalu dan formulir ini. Terima kasih, Bu.",
         vi: "Chỉ cần học bạ học kỳ trước và mẫu đơn này. Cảm ơn chị.",

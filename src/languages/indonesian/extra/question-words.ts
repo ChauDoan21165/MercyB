@@ -33,6 +33,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   /** Indonesian word/phrase. */
   word: string;
   /** English meaning. */
@@ -48,6 +49,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   /** Indonesian line. */
   text: string;
@@ -250,6 +252,7 @@ export const lessons: IndonesianLesson[] = [
       "Treat the 10 WH-words as a toolkit and slot them into statement order (NO inversion):\n\n| WH-word | Meaning | Example |\n| `apa` | what | `Ini apa?` / `Apa yang kamu mau?` |\n| `siapa` | who (incl. a NAME) | `Siapa namamu?` / `Dengan siapa?` |\n| `di/ke/dari mana` | where at/to/from | `Tinggal di mana? Mau ke mana? Dari mana?` |\n| `kapan` | when | `Kapan ulang tahunmu?` |\n| `jam berapa` | what time | `Jam berapa sekarang?` |\n| `mengapa`/`kenapa` | why | `Kenapa sedih?` → answer `Karena …` |\n| `berapa` | how much/many | `Berapa harganya? Berapa orang?` |\n| `bagaimana`/`gimana` | how | `Bagaimana kabarmu?` |\n| `yang mana` | which one | `Kamu pilih yang mana?` |\n\nTHREE GOLDEN RULES:\n1) Ask a NAME with `siapa`, not `apa` (`Siapa namamu?`).\n2) `mana` must take the direction-correct preposition: `di`/`ke`/`dari`.\n3) When 'what/who/which' is the OBJECT of a verb, add `yang`: `Apa yang kamu beli?`, `Siapa yang datang?`, `Yang mana yang kamu suka?`.\n\nFORMALITY UPGRADE: add `apakah` for yes/no questions (`Apakah Anda sudah makan?`), use `mengapa` over `kenapa`, `bagaimana` over `gimana`. Keep your pitch flat; `c` is 'ch', `j` is the English 'j' as in 'jam'.",
     vocabulary: [
       {
+        cell_id: "1696f4ce-f4bd-45c6-91a2-6074de6e36c6",
         word: "apa",
         en: "what (also a yes/no marker)",
         vi: "gì / cái gì",
@@ -258,6 +261,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "A-pa — `apa yang …` when 'what' is an object; sentence-initial = yes/no marker",
       },
       {
+        cell_id: "aa647acb-08bf-4428-814a-692c5f0fe4d4",
         word: "siapa",
         en: "who (and for asking names)",
         vi: "ai (cả khi hỏi tên)",
@@ -266,6 +270,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "si-A-pa — ask a name: `Siapa namamu?` (NOT `apa`)",
       },
       {
+        cell_id: "20f299d8-80c6-46a2-b467-e5ffd1b726cb",
         word: "mana",
         en: "where (with di/ke/dari)",
         vi: "đâu (đi với di/ke/dari)",
@@ -274,6 +279,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "MA-na — `di mana` (at), `ke mana` (to), `dari mana` (from)",
       },
       {
+        cell_id: "adae4577-2033-4d8b-b00d-26aef8cace81",
         word: "kapan",
         en: "when (day/occasion)",
         vi: "khi nào",
@@ -282,6 +288,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "KA-pan — for clock time use `jam berapa`, not `kapan`",
       },
       {
+        cell_id: "ef0beaca-1f6d-4a64-a645-bf6b8866a976",
         word: "mengapa",
         en: "why (formal)",
         vi: "tại sao (trang trọng)",
@@ -290,6 +297,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "me-NGA-pa — synonym of `kenapa`; answer with `karena …`",
       },
       {
+        cell_id: "c0f5c61a-0c80-49a4-92c5-529d84cec6c8",
         word: "kenapa",
         en: "why (casual)",
         vi: "sao (đời thường)",
@@ -298,6 +306,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "ke-NA-pa — same meaning as `mengapa`, used casually",
       },
       {
+        cell_id: "8777fc17-57a6-4a01-b244-be041ebe55d7",
         word: "berapa",
         en: "how much / how many",
         vi: "bao nhiêu",
@@ -306,6 +315,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "be-RA-pa — number/price/age/quantity; add a classifier when counting (`berapa orang`)",
       },
       {
+        cell_id: "e6c185e8-7267-4f1b-8d39-6c0bf4d2e15d",
         word: "bagaimana",
         en: "how (manner / state)",
         vi: "thế nào / làm sao",
@@ -314,6 +324,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "ba-gai-MA-na — casual `gimana`; appearance uses `seperti apa`",
       },
       {
+        cell_id: "163ea3e9-b42a-4786-a7ae-b883b8ac0729",
         word: "yang mana",
         en: "which one (selection)",
         vi: "cái nào",
@@ -322,6 +333,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "yang MA-na — choosing from a set; differs from `mana` (location)",
       },
       {
+        cell_id: "5f3b2c6f-5a17-4f79-b3ca-2669ec99d1d2",
         word: "yang",
         en: "that / which (relativizer)",
         vi: "(cái) mà",
@@ -330,6 +342,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "yang — add it when the WH-word is an object: `Apa yang…`, `Siapa yang…`",
       },
       {
+        cell_id: "7f26c97e-fbce-4033-89af-626734d502b2",
         word: "apakah",
         en: "(formal yes/no question marker)",
         vi: "(dấu hỏi có/không trang trọng)",
@@ -338,6 +351,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "a-pa-KAH — `Apakah Anda setuju?`; casual drops it, just intonation",
       },
       {
+        cell_id: "d0b53eba-2792-432f-a2fb-b10249097bd2",
         word: "jam berapa",
         en: "what time",
         vi: "mấy giờ",
@@ -349,42 +363,49 @@ export const lessons: IndonesianLesson[] = [
     dialogue: [
       // Dialogue A: first-meeting small talk, running through the WH-words
       {
+        cell_id: "fdbc94c4-8a35-43f8-81c9-451e95d8c0fe",
         speaker: "Budi",
         text: "Hai! Siapa nama kamu?",
         vi: "Chào! Bạn tên gì?",
         en: "Hi! What's your name?",
       },
       {
+        cell_id: "e11fc684-5a0b-463d-8041-60b35a9ad192",
         speaker: "Linh",
         text: "Nama saya Linh. Kamu siapa?",
         vi: "Tôi tên Linh. Còn bạn?",
         en: "My name is Linh. And you?",
       },
       {
+        cell_id: "d88bda97-90b3-496f-b9a0-37152fc13afc",
         speaker: "Budi",
         text: "Saya Budi. Kamu dari mana? Tinggal di mana sekarang?",
         vi: "Tôi là Budi. Bạn từ đâu đến? Giờ sống ở đâu?",
         en: "I'm Budi. Where are you from? Where do you live now?",
       },
       {
+        cell_id: "df196eeb-f180-416c-baa9-95c95065df37",
         speaker: "Linh",
         text: "Saya dari Vietnam. Sekarang tinggal di Jakarta. Kamu kerja apa?",
         vi: "Tôi từ Việt Nam. Giờ sống ở Jakarta. Bạn làm nghề gì?",
         en: "I'm from Vietnam. Now I live in Jakarta. What work do you do?",
       },
       {
+        cell_id: "b433c5ea-a51a-4b3a-844c-808f5320b3be",
         speaker: "Budi",
         text: "Saya guru. Kapan kamu datang ke Indonesia? Dan kenapa pilih Jakarta?",
         vi: "Tôi là giáo viên. Bạn đến Indonesia khi nào? Và sao lại chọn Jakarta?",
         en: "I'm a teacher. When did you come to Indonesia? And why did you choose Jakarta?",
       },
       {
+        cell_id: "2eb376e0-60b8-42ec-9f3b-d4529f66a247",
         speaker: "Linh",
         text: "Saya datang tahun lalu, karena ada pekerjaan di sini. Bagaimana cara ke kantor pos dari sini?",
         vi: "Tôi đến năm ngoái, vì có việc làm ở đây. Làm sao để đi tới bưu điện từ đây?",
         en: "I came last year, because there's a job here. How do I get to the post office from here?",
       },
       {
+        cell_id: "c0e127e4-068b-43e1-bea7-d91d2866a00d",
         speaker: "Budi",
         text: "Naik bus nomor lima. Oh ya, ini ada dua peta — kamu mau yang mana?",
         vi: "Đi xe buýt số năm. À, đây có hai tấm bản đồ — bạn muốn cái nào?",
@@ -392,12 +413,14 @@ export const lessons: IndonesianLesson[] = [
       },
       // Dialogue B: shopping, the berapa / yang mana cluster
       {
+        cell_id: "3b2257ee-24e2-4363-9107-b98e31532eac",
         speaker: "Linh",
         text: "Permisi, tas ini berapa harganya? Dan yang merah yang mana?",
         vi: "Xin lỗi, cái túi này giá bao nhiêu? Và cái màu đỏ là cái nào?",
         en: "Excuse me, how much is this bag? And which one is the red one?",
       },
       {
+        cell_id: "75e28354-50f8-4ffe-9c40-ebdf13ee4d55",
         speaker: "Penjual",
         text: "Yang ini dua ratus ribu. Yang merah ada di sebelah kiri. Mau berapa, Mbak?",
         vi: "Cái này hai trăm nghìn. Cái đỏ ở bên trái. Chị lấy mấy cái?",

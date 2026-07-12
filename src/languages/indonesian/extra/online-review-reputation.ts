@@ -18,6 +18,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   /** Indonesian word/phrase. */
   word: string;
   /** English meaning. */
@@ -33,6 +34,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   /** Indonesian line. */
   text: string;
@@ -243,6 +245,7 @@ export const onlineReviewReputationLessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: review replies can follow `Terima kasih` -> `mohon maaf` if there was a bad experience -> `mohon kirim nomor pesanan` -> `kami cek segera`. Avoid blame phrases like `itu salah pembeli`. Use `kami` for the store, not `kita`, unless you intentionally include the customer.",
     vocabulary: [
       {
+        cell_id: "43a4792d-ea7c-48cd-b6d2-e4c06200c341",
         word: "ulasan online",
         en: "online review",
         vi: "đánh giá online",
@@ -251,6 +254,7 @@ export const onlineReviewReputationLessons: IndonesianLesson[] = [
         pronunciation_en: "u-LA-san ON-line",
       },
       {
+        cell_id: "5c38b68f-1bf1-40aa-ae5b-23de9028e3d4",
         word: "bintang lima",
         en: "five stars",
         vi: "năm sao",
@@ -259,6 +263,7 @@ export const onlineReviewReputationLessons: IndonesianLesson[] = [
         pronunciation_en: "BIN-tang LEE-ma",
       },
       {
+        cell_id: "30e1a777-56b0-4071-be6c-d230a704ba7d",
         word: "komentar pelanggan",
         en: "customer comment",
         vi: "bình luận khách hàng",
@@ -267,6 +272,7 @@ export const onlineReviewReputationLessons: IndonesianLesson[] = [
         pronunciation_en: "ko-MEN-tar pe-LANG-gan",
       },
       {
+        cell_id: "60400756-9ab1-4481-a7a3-c56288e22040",
         word: "reputasi toko",
         en: "store reputation",
         vi: "uy tín cửa hàng",
@@ -275,6 +281,7 @@ export const onlineReviewReputationLessons: IndonesianLesson[] = [
         pronunciation_en: "re-pu-TA-see TO-ko",
       },
       {
+        cell_id: "0b9b9153-e43c-4515-9837-66aad3f05de6",
         word: "balas ulasan",
         en: "reply to a review",
         vi: "trả lời đánh giá",
@@ -283,6 +290,7 @@ export const onlineReviewReputationLessons: IndonesianLesson[] = [
         pronunciation_en: "BA-las u-LA-san",
       },
       {
+        cell_id: "a7294be2-7413-4cec-a190-e2fb19c26f99",
         word: "komplain publik",
         en: "public complaint",
         vi: "khiếu nại công khai",
@@ -291,6 +299,7 @@ export const onlineReviewReputationLessons: IndonesianLesson[] = [
         pronunciation_en: "kom-PLAIN PUB-lik",
       },
       {
+        cell_id: "e0abeab1-5622-40c8-aff8-28ffe4906db3",
         word: "mohon maaf",
         en: "please accept our apology",
         vi: "xin lỗi / mong thông cảm",
@@ -299,6 +308,7 @@ export const onlineReviewReputationLessons: IndonesianLesson[] = [
         pronunciation_en: "MO-hon MA-af",
       },
       {
+        cell_id: "19c30f56-1b69-42a8-a709-105a1a6af834",
         word: "pesan pribadi",
         en: "private message",
         vi: "tin nhắn riêng",
@@ -307,6 +317,7 @@ export const onlineReviewReputationLessons: IndonesianLesson[] = [
         pronunciation_en: "PE-san pri-BA-dee",
       },
       {
+        cell_id: "f213f89b-cf6a-48d4-be45-6b895efda32e",
         word: "nomor pesanan",
         en: "order number",
         vi: "số đơn hàng",
@@ -315,6 +326,7 @@ export const onlineReviewReputationLessons: IndonesianLesson[] = [
         pronunciation_en: "NO-mor pe-SA-nan",
       },
       {
+        cell_id: "04002729-df9f-40cd-aa34-048fec31b92d",
         word: "memperbarui ulasan",
         en: "update a review",
         vi: "cập nhật đánh giá",
@@ -325,30 +337,35 @@ export const onlineReviewReputationLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "118e40ce-f4ee-4155-9b20-63388566796f",
         speaker: "Admin Toko",
         text: "Kak, terima kasih atas ulasan online dan rating bintang lima.",
         vi: "Bạn ơi, cảm ơn về đánh giá online và rating năm sao.",
         en: "Hi, thank you for the online review and five-star rating.",
       },
       {
+        cell_id: "ee4c2b6f-a20c-4675-9da2-e7fc1802a9cc",
         speaker: "Pelanggan",
         text: "Barangnya bagus, tetapi pengirimannya agak lama.",
         vi: "Hàng tốt, nhưng giao hàng hơi lâu.",
         en: "The item is good, but delivery was a bit slow.",
       },
       {
+        cell_id: "97b3d3df-7501-4e82-ae30-892043308359",
         speaker: "Admin Toko",
         text: "Kami mohon maaf atas pengalaman yang kurang menyenangkan.",
         vi: "Chúng tôi xin lỗi về trải nghiệm chưa hài lòng.",
         en: "We apologize for the unpleasant experience.",
       },
       {
+        cell_id: "32c6589b-1e4b-4c7d-82ff-315f976067a4",
         speaker: "Admin Toko",
         text: "Mohon kirim nomor pesanan lewat pesan pribadi agar kami bisa cek.",
         vi: "Xin gửi số đơn hàng qua tin nhắn riêng để chúng tôi có thể kiểm tra.",
         en: "Please send the order number via private message so we can check.",
       },
       {
+        cell_id: "a06bb378-b2da-4b78-a8ba-be02f8f47b9c",
         speaker: "Pelanggan",
         text: "Baik, saya kirim sekarang.",
         vi: "Được, tôi gửi ngay bây giờ.",

@@ -32,6 +32,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   /** Indonesian word/phrase. */
   word: string;
   /** English meaning. */
@@ -47,6 +48,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   /** Indonesian line. */
   text: string;
@@ -271,6 +273,7 @@ export const lessons: IndonesianLesson[] = [
     vocabulary: [
       // People & community structure
       {
+        cell_id: "201e65e6-8e19-4ffe-a42a-1c76b7ddc735",
         word: "tetangga",
         en: "neighbor",
         vi: "hàng xóm",
@@ -279,6 +282,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "te-TANG-ga — `ngg` is one nasal; `tetangga sebelah` = next-door neighbor",
       },
       {
+        cell_id: "eab8f942-75a7-42b7-b7e6-9a7c29e5ad4b",
         word: "warga",
         en: "resident / citizen",
         vi: "cư dân",
@@ -287,6 +291,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "WAR-ga — `warga` = a resident; `warga negara` = a citizen of a country",
       },
       {
+        cell_id: "4b8c588c-c0ba-42d1-a326-102a55e82036",
         word: "RT (Rukun Tetangga)",
         en: "neighborhood unit (head)",
         vi: "tổ dân phố / tổ trưởng",
@@ -295,6 +300,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "er-te — `Pak RT` = the unit head; the smallest community level",
       },
       {
+        cell_id: "5f98f3a1-57bb-4754-9bcf-7e7af3ec2820",
         word: "RW (Rukun Warga)",
         en: "community unit (head)",
         vi: "khu phố / trưởng khu",
@@ -303,6 +309,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "er-we — groups several `RT`s; above `RT`, below `kelurahan`",
       },
       {
+        cell_id: "9391ba0e-fcea-4ba3-b1e4-870c3b14a10c",
         word: "ketua RT",
         en: "head of the neighborhood unit",
         vi: "tổ trưởng dân phố",
@@ -312,6 +319,7 @@ export const lessons: IndonesianLesson[] = [
       },
       // Dues, security, cleanliness
       {
+        cell_id: "48db93d8-3661-4326-ba34-8dc60fcef680",
         word: "iuran",
         en: "dues / contribution fee",
         vi: "tiền đóng góp / phí",
@@ -320,6 +328,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "I-u-ran — `iuran bulanan` = monthly dues; root `iur` (to chip in)",
       },
       {
+        cell_id: "d9e1b4e2-d3f0-4c31-a2fa-43ce9747b8b2",
         word: "keamanan",
         en: "security",
         vi: "an ninh",
@@ -328,6 +337,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "ke-a-MA-nan — `aman` (safe) via `ke-...-an`; `satpam` = the security guard",
       },
       {
+        cell_id: "8eafd4b2-3e0b-4f97-bc91-f3e6d238b4fc",
         word: "kebersihan",
         en: "cleanliness / sanitation",
         vi: "vệ sinh",
@@ -336,6 +346,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "ke-ber-SI-han — `bersih` (clean) via `ke-...-an`",
       },
       {
+        cell_id: "6a84a71d-46ef-43b2-8061-7ec09cae0768",
         word: "satpam",
         en: "security guard",
         vi: "bảo vệ",
@@ -344,6 +355,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "SAT-pam — short for `satuan pengamanan`; guards the complex gate",
       },
       {
+        cell_id: "b7ee3cc8-b612-4155-b5b2-a153430bb98f",
         word: "pos ronda",
         en: "neighborhood watch post",
         vi: "chòi canh / trạm tuần tra",
@@ -353,6 +365,7 @@ export const lessons: IndonesianLesson[] = [
       },
       // Community spirit & activities
       {
+        cell_id: "69463acc-3326-4805-a648-09a18af3f50a",
         word: "gotong royong",
         en: "communal mutual help",
         vi: "tinh thần tương trợ cộng đồng",
@@ -361,6 +374,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "go-tong RO-yong — a core value; the whole community pitches in together",
       },
       {
+        cell_id: "141640ab-f5e2-4d5d-9dbb-f489438c6a00",
         word: "kerja bakti",
         en: "communal volunteer work",
         vi: "lao động công ích chung",
@@ -369,6 +383,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "ker-ja BAK-ti — a neighborhood clean-up session, usually on weekends",
       },
       {
+        cell_id: "04b2325e-7df9-42eb-a44e-657d0027fc09",
         word: "arisan",
         en: "rotating savings social gathering",
         vi: "hụi / họ (góp xoay vòng)",
@@ -377,6 +392,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "a-RI-san — a rotating savings club that doubles as a social meetup",
       },
       {
+        cell_id: "8e995b0a-8ebf-4da7-aadc-8e6a5bf027e7",
         word: "berisik",
         en: "noisy",
         vi: "ồn ào",
@@ -385,6 +401,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "be-RI-sik — `agak berisik` = a bit noisy (polite); `ribut` is a synonym",
       },
       {
+        cell_id: "b435f5a0-6bf0-4be4-927e-928248130046",
         word: "tamu",
         en: "guest / visitor",
         vi: "khách",
@@ -394,6 +411,7 @@ export const lessons: IndonesianLesson[] = [
       },
       // Useful actions
       {
+        cell_id: "49442eb9-8146-433d-ada3-2b4d513a0d7c",
         word: "lapor",
         en: "to report / register (with authority)",
         vi: "trình báo",
@@ -402,6 +420,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "LA-por — `lapor ke Pak RT` = report to the unit head; `melapor` is the full form",
       },
       {
+        cell_id: "a45ac52e-dcfa-417c-8058-55478a1e0946",
         word: "menegur",
         en: "to gently warn / speak to",
         vi: "nhắc nhở",
@@ -410,6 +429,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "me-ne-GUR — root `tegur`; `ditegur` = be spoken to (passive)",
       },
       {
+        cell_id: "45e3522b-bbb0-47eb-9287-e01d45213820",
         word: "numpang",
         en: "to impose / borrow briefly (a favor)",
         vi: "nhờ / đi nhờ / ở nhờ",
@@ -418,6 +438,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "NUM-pang — `numpang tanya` = may I ask; `numpang lewat` = excuse me, passing through",
       },
       {
+        cell_id: "b37daceb-2ee2-40cb-b1f3-58c0fd565cd8",
         word: "saling",
         en: "each other / mutually",
         vi: "lẫn nhau",
@@ -426,6 +447,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "SA-ling — `saling` + verb = a reciprocal action: `saling membantu`",
       },
       {
+        cell_id: "fb340617-d9fd-49a8-bfb2-3d60a6663a9a",
         word: "pagar",
         en: "fence / gate",
         vi: "hàng rào / cổng",
@@ -437,48 +459,56 @@ export const lessons: IndonesianLesson[] = [
     dialogue: [
       // New tenant greets a neighbor and learns the community rules
       {
+        cell_id: "c7fdbcb4-630f-4f54-886a-d51542080d59",
         speaker: "Penghuni baru",
         text: "Permisi, Bu. Saya Linh, penghuni baru di nomor 12.",
         vi: "Xin chào chị. Tôi là Linh, người mới chuyển đến số nhà 12.",
         en: "Excuse me, ma'am. I'm Linh, the new tenant at number 12.",
       },
       {
+        cell_id: "dac5e686-de99-492f-9315-06c66be6dc5d",
         speaker: "Tetangga",
         text: "Oh, selamat datang! Sudah lapor ke Pak RT belum?",
         vi: "Ồ, chào mừng nhé! Đã báo với ông tổ trưởng (RT) chưa?",
         en: "Oh, welcome! Have you registered with the RT head yet?",
       },
       {
+        cell_id: "c62ece52-570e-4ca5-ade6-6a0c22ac6d55",
         speaker: "Penghuni baru",
         text: "Belum, Bu. Nanti sore saya ke sana. Iurannya berapa, ya?",
         vi: "Chưa ạ. Chiều nay tôi sẽ qua đó. Phí đóng góp bao nhiêu vậy chị?",
         en: "Not yet. I'll go this afternoon. How much are the dues?",
       },
       {
+        cell_id: "cd2862a1-54e0-4bd4-a387-794098b90b77",
         speaker: "Tetangga",
         text: "Lima puluh ribu sebulan, untuk keamanan dan kebersihan.",
         vi: "Năm mươi nghìn một tháng, cho an ninh và vệ sinh.",
         en: "Fifty thousand a month, for security and cleanliness.",
       },
       {
+        cell_id: "30e7132a-201f-43bb-8d0b-1504b7153b5e",
         speaker: "Penghuni baru",
         text: "Baik. Oh ya, kalau ada tamu menginap perlu lapor juga?",
         vi: "Vâng. À, nếu có khách ở lại qua đêm cũng cần báo nữa ạ?",
         en: "Okay. Oh, and if I have an overnight guest, do I report that too?",
       },
       {
+        cell_id: "3ad42d08-dc47-4585-9b6c-c2c0ab234909",
         speaker: "Tetangga",
         text: "Iya, cukup bilang ke satpam. Minggu pagi ada kerja bakti, ikut ya.",
         vi: "Đúng vậy, chỉ cần nói với bảo vệ. Sáng Chủ nhật có lao động chung, tham gia nhé.",
         en: "Yes, just tell the guard. Sunday morning there's communal work — do join.",
       },
       {
+        cell_id: "8fb910b1-0c8b-4346-b2c0-e92fd01aa20f",
         speaker: "Penghuni baru",
         text: "Pasti, Bu. Senang bisa kenal. Kalau butuh apa-apa, ketuk saja pintu saya.",
         vi: "Chắc chắn rồi chị. Rất vui được làm quen. Cần gì cứ gõ cửa nhà tôi nhé.",
         en: "Definitely. Nice to meet you. If you need anything, just knock on my door.",
       },
       {
+        cell_id: "986fbe77-cec5-46ed-9d01-d0ce0e4b7c9a",
         speaker: "Tetangga",
         text: "Sama-sama. Namanya juga bertetangga, harus saling bantu.",
         vi: "Tôi cũng vậy. Đã là hàng xóm thì phải giúp đỡ lẫn nhau mà.",

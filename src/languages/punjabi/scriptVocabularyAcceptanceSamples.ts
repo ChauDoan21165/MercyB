@@ -18,6 +18,7 @@ export type PunjabiAcceptanceFocus =
 export type PunjabiAcceptanceStage = "acceptance" | "ship_candidate" | "go_no_go" | "release_candidate" | "pre_integration" | "sanity";
 
 export type PunjabiScriptVocabularyAcceptanceSample = {
+  cell_id?: string;
   id: string;
   focus: PunjabiAcceptanceFocus;
   stage: PunjabiAcceptanceStage;
@@ -39,6 +40,7 @@ export type PunjabiScriptVocabularyAcceptanceSample = {
 };
 
 export type PunjabiScriptVocabularyAcceptanceSection = {
+  cell_id?: string;
   focus: PunjabiAcceptanceFocus;
   title_vi: string;
   title_en: string;

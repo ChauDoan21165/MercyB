@@ -24,6 +24,7 @@ type LessonSentence = {
 };
 
 type VocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -35,6 +36,7 @@ type VocabEntry = {
 };
 
 type DialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -150,6 +152,7 @@ export const jobInterviewIndonesiaLessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: in hiring, `panggilan` can mean a call, invitation, or summons. Safe polite frames are `Boleh saya konfirmasi ...?` and `Apakah saya perlu ...?`.",
     vocabulary: [
       {
+        cell_id: "83536216-011d-4d35-a728-15db91e2bb7c",
         word: "panggilan HRD",
         en: "HR call / interview invitation",
         vi: "cuộc gọi/lời mời từ nhân sự",
@@ -158,6 +161,7 @@ export const jobInterviewIndonesiaLessons: IndonesianLesson[] = [
         pronunciation_en: "pang-GIL-an ha-er-deh",
       },
       {
+        cell_id: "cdaeab9b-d323-4bc6-b7fb-4555f0b0a864",
         word: "wawancara kerja",
         en: "job interview",
         vi: "phỏng vấn xin việc",
@@ -166,6 +170,7 @@ export const jobInterviewIndonesiaLessons: IndonesianLesson[] = [
         pronunciation_en: "wa-wan-CHA-ra KER-ja",
       },
       {
+        cell_id: "662fa3cb-776d-49c4-a9c5-8e3f079fc7c0",
         word: "CV",
         en: "CV / resume",
         vi: "CV / sơ yếu lý lịch",
@@ -174,6 +179,7 @@ export const jobInterviewIndonesiaLessons: IndonesianLesson[] = [
         pronunciation_en: "see-vee",
       },
       {
+        cell_id: "44a17461-04bf-40ac-a536-689970787902",
         word: "jadwal",
         en: "schedule",
         vi: "lịch",
@@ -182,6 +188,7 @@ export const jobInterviewIndonesiaLessons: IndonesianLesson[] = [
         pronunciation_en: "JAD-wal",
       },
       {
+        cell_id: "68fb49b8-21f9-4010-a585-c8bacdcfe60e",
         word: "mengirim",
         en: "to send",
         vi: "gửi",
@@ -190,6 +197,7 @@ export const jobInterviewIndonesiaLessons: IndonesianLesson[] = [
         pronunciation_en: "meh-NGEE-rim",
       },
       {
+        cell_id: "97bfffdb-226a-49c9-8a1f-dc9a8c887cac",
         word: "dokumen asli",
         en: "original documents",
         vi: "giấy tờ bản gốc",
@@ -198,6 +206,7 @@ export const jobInterviewIndonesiaLessons: IndonesianLesson[] = [
         pronunciation_en: "do-KOO-men AS-lee",
       },
       {
+        cell_id: "3eca3ddb-3517-4354-ac73-2aa9f2fa2dcf",
         word: "hadir",
         en: "to attend / be present",
         vi: "có mặt / tham dự",
@@ -208,24 +217,28 @@ export const jobInterviewIndonesiaLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "d44a3964-1c41-459b-938e-cba0be94fd96",
         speaker: "HRD",
         text: "Selamat pagi, apakah benar ini dengan Ibu Linh?",
         vi: "Chào buổi sáng, có đúng đây là chị Linh không ạ?",
         en: "Good morning, am I speaking with Ms. Linh?",
       },
       {
+        cell_id: "73609963-7084-4984-ab57-43f29188d874",
         speaker: "Pelamar",
         text: "Benar, Ibu. Saya Linh.",
         vi: "Đúng ạ. Tôi là Linh.",
         en: "Yes, ma'am. This is Linh.",
       },
       {
+        cell_id: "18b5a67d-57d3-4d03-9ba9-1d27adb8b9c8",
         speaker: "HRD",
         text: "Kami ingin mengundang Ibu untuk wawancara kerja besok.",
         vi: "Chúng tôi muốn mời chị phỏng vấn xin việc ngày mai.",
         en: "We would like to invite you for a job interview tomorrow.",
       },
       {
+        cell_id: "2e41e2d5-729f-4d37-8ba2-cde4c03413ef",
         speaker: "Pelamar",
         text: "Terima kasih. Boleh saya konfirmasi jadwal dan alamatnya?",
         vi: "Cảm ơn ạ. Cho tôi xác nhận lịch và địa chỉ được không?",
@@ -380,6 +393,7 @@ export const jobInterviewIndonesiaLessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: for experience, use `pengalaman kerja + number + tahun`. For salary, use `kisaran gaji` instead of blunt `gaji berapa?`. For employment contracts, `kontrak kerja` is the natural phrase.",
     vocabulary: [
       {
+        cell_id: "8e143a0f-e2ba-4cbb-8087-291b8f5a14eb",
         word: "pengalaman kerja",
         en: "work experience",
         vi: "kinh nghiệm làm việc",
@@ -388,6 +402,7 @@ export const jobInterviewIndonesiaLessons: IndonesianLesson[] = [
         pronunciation_en: "peh-nga-LA-man KER-ja",
       },
       {
+        cell_id: "b849c27f-4bef-4057-a684-797a5bfda1d5",
         word: "gaji",
         en: "salary / wage",
         vi: "lương",
@@ -396,6 +411,7 @@ export const jobInterviewIndonesiaLessons: IndonesianLesson[] = [
         pronunciation_en: "GA-jee",
       },
       {
+        cell_id: "2bb7ddcc-24f4-4ef0-b146-882fc2cdb472",
         word: "kisaran gaji",
         en: "salary range",
         vi: "khoảng lương",
@@ -404,6 +420,7 @@ export const jobInterviewIndonesiaLessons: IndonesianLesson[] = [
         pronunciation_en: "kee-SA-ran GA-jee",
       },
       {
+        cell_id: "3e0be096-4700-4f14-834b-825b2f136ddc",
         word: "gaji pokok",
         en: "base salary",
         vi: "lương cơ bản",
@@ -412,6 +429,7 @@ export const jobInterviewIndonesiaLessons: IndonesianLesson[] = [
         pronunciation_en: "GA-jee PO-kok",
       },
       {
+        cell_id: "1bf10a2c-ddf0-4ed7-ad54-90b8e53b0614",
         word: "tunjangan",
         en: "allowance / benefit",
         vi: "phụ cấp",
@@ -420,6 +438,7 @@ export const jobInterviewIndonesiaLessons: IndonesianLesson[] = [
         pronunciation_en: "toon-JANG-an",
       },
       {
+        cell_id: "6f83f2bd-5a24-46fb-b306-240eaff37234",
         word: "kontrak kerja",
         en: "employment contract",
         vi: "hợp đồng lao động",
@@ -428,6 +447,7 @@ export const jobInterviewIndonesiaLessons: IndonesianLesson[] = [
         pronunciation_en: "KON-trak KER-ja",
       },
       {
+        cell_id: "abc0e9bb-b336-42bc-b56a-927f4512fd2d",
         word: "masa percobaan",
         en: "probation period",
         vi: "thời gian thử việc",
@@ -438,24 +458,28 @@ export const jobInterviewIndonesiaLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "9a451465-2015-4b5f-8719-0daccd9ceddd",
         speaker: "HRD",
         text: "Bisa ceritakan pengalaman kerja Anda?",
         vi: "Anh/chị có thể kể về kinh nghiệm làm việc của mình không?",
         en: "Can you describe your work experience?",
       },
       {
+        cell_id: "84ad6a87-fef0-4d4c-ab2a-16721bbb8fb6",
         speaker: "Pelamar",
         text: "Saya punya pengalaman kerja tiga tahun di bidang layanan pelanggan.",
         vi: "Tôi có ba năm kinh nghiệm làm việc trong lĩnh vực chăm sóc khách hàng.",
         en: "I have three years of work experience in customer service.",
       },
       {
+        cell_id: "c7665d38-2604-4773-be70-07bbe6f12bd2",
         speaker: "Pelamar",
         text: "Boleh saya bertanya kisaran gaji untuk posisi ini?",
         vi: "Cho tôi hỏi khoảng lương cho vị trí này được không?",
         en: "May I ask the salary range for this position?",
       },
       {
+        cell_id: "b889805c-1c66-41c4-90d3-971c4f9b12b6",
         speaker: "HRD",
         text: "Nanti kami jelaskan gaji pokok, tunjangan, dan kontraknya.",
         vi: "Lát nữa chúng tôi sẽ giải thích lương cơ bản, phụ cấp và hợp đồng.",
@@ -610,6 +634,7 @@ export const jobInterviewIndonesiaLessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: avoid blunt condition questions like `lembur bayar?`. Use polite frames: `Bagaimana sistem pembayaran lembur ...?`, `Apakah perusahaan membantu izin kerja?`, and `Saya perlu waktu untuk mempertimbangkan tawaran ini.`",
     vocabulary: [
       {
+        cell_id: "a3b0fe29-968e-412e-a880-d36e830a8467",
         word: "izin kerja",
         en: "work permit",
         vi: "giấy phép lao động",
@@ -618,6 +643,7 @@ export const jobInterviewIndonesiaLessons: IndonesianLesson[] = [
         pronunciation_en: "EE-zin KER-ja",
       },
       {
+        cell_id: "74924340-8dc2-421b-8086-e0cccb1b5832",
         word: "pekerja asing",
         en: "foreign worker",
         vi: "lao động nước ngoài",
@@ -626,6 +652,7 @@ export const jobInterviewIndonesiaLessons: IndonesianLesson[] = [
         pronunciation_en: "peh-KER-ja A-sing",
       },
       {
+        cell_id: "baa7b6f7-0c93-4ebe-844f-98a145c71b43",
         word: "lembur",
         en: "overtime",
         vi: "tăng ca",
@@ -634,6 +661,7 @@ export const jobInterviewIndonesiaLessons: IndonesianLesson[] = [
         pronunciation_en: "LEM-boor",
       },
       {
+        cell_id: "bedd608f-2b01-4a5e-a3e1-d491a99edb44",
         word: "pembayaran lembur",
         en: "overtime payment",
         vi: "tiền/trả tiền tăng ca",
@@ -642,6 +670,7 @@ export const jobInterviewIndonesiaLessons: IndonesianLesson[] = [
         pronunciation_en: "pem-ba-YA-ran LEM-boor",
       },
       {
+        cell_id: "30c92375-0a18-46db-90fa-c32cb6b21997",
         word: "tawaran",
         en: "offer",
         vi: "lời đề nghị / offer",
@@ -650,6 +679,7 @@ export const jobInterviewIndonesiaLessons: IndonesianLesson[] = [
         pronunciation_en: "ta-WA-ran",
       },
       {
+        cell_id: "cef4c01c-3bad-4908-bace-51c66ce09f9c",
         word: "mempertimbangkan",
         en: "to consider",
         vi: "cân nhắc",
@@ -658,6 +688,7 @@ export const jobInterviewIndonesiaLessons: IndonesianLesson[] = [
         pronunciation_en: "mem-per-tim-BANG-kan",
       },
       {
+        cell_id: "6485ca60-539f-4d36-9063-8cb589291891",
         word: "mendapat kabar",
         en: "to receive news / get an update",
         vi: "nhận tin / nhận cập nhật",
@@ -668,24 +699,28 @@ export const jobInterviewIndonesiaLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "796d4d06-bb16-4be1-b304-f159ffd0b0a9",
         speaker: "Pelamar",
         text: "Untuk pekerja asing, apakah perusahaan membantu izin kerja?",
         vi: "Đối với lao động nước ngoài, công ty có hỗ trợ giấy phép lao động không?",
         en: "For foreign workers, does the company assist with work permits?",
       },
       {
+        cell_id: "a9e7e32b-f553-4198-835b-7c2d65145fb1",
         speaker: "HRD",
         text: "Kami bisa jelaskan prosesnya setelah tahap wawancara berikutnya.",
         vi: "Chúng tôi có thể giải thích quy trình sau vòng phỏng vấn tiếp theo.",
         en: "We can explain the process after the next interview stage.",
       },
       {
+        cell_id: "cddce8cf-d815-49f4-855a-6d8b7fdeb2d8",
         speaker: "Pelamar",
         text: "Baik. Apakah posisi ini sering lembur?",
         vi: "Vâng. Vị trí này có thường phải tăng ca không?",
         en: "Okay. Does this position often require overtime?",
       },
       {
+        cell_id: "94d5e9e5-05d6-497e-a256-1e383b1e93fd",
         speaker: "HRD",
         text: "Kadang ada lembur, dan pembayarannya mengikuti aturan perusahaan.",
         vi: "Đôi khi có tăng ca, và việc trả tiền theo quy định công ty.",

@@ -13,6 +13,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -22,6 +23,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -208,6 +210,7 @@ export const lessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: Indonesian legal language often uses abstract nouns and the `di-` passive: `konsultasi`, `kewajiban`, `kesepakatan`, `diselesaikan`, `dibuat tertulis`. Do not translate word by word from Vietnamese. Learn chunks: `konsultasi hukum`, `panggilan sidang`, `membawa bukti`, `saksi hadir`, `surat kuasa`, `biaya jasa pengacara`, `lewat mediasi`.",
     vocabulary: [
       {
+        cell_id: "e069bfdc-cff9-4741-bdc2-56ba3b5cc04c",
         word: "pengacara",
         en: "lawyer",
         vi: "luật sư",
@@ -216,6 +219,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "pe-nga-CHA-ra",
       },
       {
+        cell_id: "27f26b1a-3fbd-4d79-b43f-fa574a591db1",
         word: "sidang",
         en: "court hearing / session",
         vi: "phiên tòa / phiên họp",
@@ -224,6 +228,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "SEE-dang",
       },
       {
+        cell_id: "ced116ba-eefa-4296-96dd-0d4eec854427",
         word: "bukti",
         en: "evidence",
         vi: "bằng chứng",
@@ -232,6 +237,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "BUK-tee",
       },
       {
+        cell_id: "fa0234e0-1bdd-49ae-9a83-ce55ba760d0a",
         word: "saksi",
         en: "witness",
         vi: "nhân chứng",
@@ -240,6 +246,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "SAK-see",
       },
       {
+        cell_id: "485c612c-9bed-4142-b782-9cb89cf278c6",
         word: "surat kuasa",
         en: "power of attorney / authorization letter",
         vi: "giấy ủy quyền",
@@ -248,6 +255,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "SOO-rat KOO-a-sa",
       },
       {
+        cell_id: "2a3292c6-0da0-4b66-a539-df2f10012a3b",
         word: "konsultasi hukum",
         en: "legal consultation",
         vi: "tư vấn pháp luật",
@@ -256,6 +264,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "kon-sool-TA-see HOO-koom",
       },
       {
+        cell_id: "3b0ead6a-23d7-4c4b-b36e-7fe03b81b33f",
         word: "biaya jasa",
         en: "service fee",
         vi: "phí dịch vụ",
@@ -264,6 +273,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "bee-AH-ya JAH-sa",
       },
       {
+        cell_id: "ce473a57-1e06-4b6f-84d6-1805bc28581d",
         word: "mediasi",
         en: "mediation",
         vi: "hòa giải",
@@ -272,6 +282,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "me-dee-A-see",
       },
       {
+        cell_id: "ef909078-e1da-483c-baff-9576f1a2ab2d",
         word: "hak dan kewajiban",
         en: "rights and obligations",
         vi: "quyền và nghĩa vụ",
@@ -280,6 +291,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "HAK dan ke-wa-JEE-ban",
       },
       {
+        cell_id: "eb818f1c-59a0-4021-a5d4-07160bbf3925",
         word: "kesepakatan tertulis",
         en: "written agreement",
         vi: "thỏa thuận bằng văn bản",
@@ -290,30 +302,35 @@ export const lessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "7e62708d-e708-4da0-8772-ca7020d1310f",
         speaker: "Klien",
         text: "Selamat siang, Pak. Saya perlu konsultasi hukum.",
         vi: "Chào buổi trưa anh/chú. Tôi cần tư vấn pháp luật.",
         en: "Good afternoon, sir. I need a legal consultation.",
       },
       {
+        cell_id: "39b84a8e-b75d-49ca-89de-2f648c797ce7",
         speaker: "Pengacara",
         text: "Baik. Apakah Anda sudah menerima panggilan sidang?",
         vi: "Được. Anh/chị đã nhận giấy gọi ra phiên tòa chưa?",
         en: "Okay. Have you received a court summons?",
       },
       {
+        cell_id: "86442eba-34e0-4393-82c7-4e8f79a39eae",
         speaker: "Klien",
         text: "Sudah. Bukti apa saja yang harus saya bawa?",
         vi: "Rồi. Tôi phải mang những bằng chứng nào?",
         en: "Yes. What evidence should I bring?",
       },
       {
+        cell_id: "33028242-c932-4449-9983-f90a9e4fe3ac",
         speaker: "Pengacara",
         text: "Bawa semua dokumen asli dan saksi jika ada.",
         vi: "Mang tất cả giấy tờ gốc và nhân chứng nếu có.",
         en: "Bring all original documents and witnesses if any.",
       },
       {
+        cell_id: "72ecac62-860d-4f4f-a33b-c0f9445d26db",
         speaker: "Klien",
         text: "Berapa biaya jasa pengacara untuk mediasi?",
         vi: "Phí dịch vụ luật sư cho hòa giải là bao nhiêu?",

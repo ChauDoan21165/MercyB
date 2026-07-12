@@ -13,6 +13,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -22,6 +23,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -208,6 +210,7 @@ export const lessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: learn factory chunks: `masuk shift`, `shift pagi`, `shift malam`, `absensi`, `lembur`, `target produksi`, `seragam kerja`, `lapor ke supervisor`. Keep `di` = at/in (`di pabrik`, `di line`) separate from `ke` = to/report to (`ke pabrik`, `lapor ke supervisor`). For work not yet done, use `belum`, not `tidak`.",
     vocabulary: [
       {
+        cell_id: "0796f477-ef0d-43a6-94ee-bac1b69555e8",
         word: "pabrik",
         en: "factory",
         vi: "nhà máy",
@@ -216,6 +219,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "PAB-rik",
       },
       {
+        cell_id: "1a1270c2-15d6-4180-9f00-42cf96ef79cb",
         word: "shift pagi",
         en: "morning shift",
         vi: "ca sáng",
@@ -224,6 +228,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "shift PAH-gi",
       },
       {
+        cell_id: "11085a9d-23ba-4d9d-b7e0-18e49ce92b2c",
         word: "shift malam",
         en: "night shift",
         vi: "ca đêm",
@@ -232,6 +237,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "shift MAH-lam",
       },
       {
+        cell_id: "e05ec77f-dfdb-4e51-9dca-5cbdffc1513f",
         word: "absensi",
         en: "attendance / clock-in record",
         vi: "chấm công / điểm danh",
@@ -240,6 +246,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "ab-SEN-see",
       },
       {
+        cell_id: "3250b998-ad28-43c6-b8f8-c43a90fc5570",
         word: "lembur",
         en: "overtime",
         vi: "tăng ca",
@@ -248,6 +255,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "LEM-boor",
       },
       {
+        cell_id: "01c2e967-6750-4d56-9f9c-d558e05f6ab7",
         word: "supervisor",
         en: "supervisor",
         vi: "giám sát",
@@ -256,6 +264,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "SOO-per-vai-zor",
       },
       {
+        cell_id: "8d946218-986e-4f88-aa52-f1ab8e81775a",
         word: "seragam kerja",
         en: "work uniform",
         vi: "đồng phục làm việc",
@@ -264,6 +273,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "se-RAH-gam KER-ja",
       },
       {
+        cell_id: "2e896273-797d-44e3-b8db-b98521d17220",
         word: "target produksi",
         en: "production target",
         vi: "chỉ tiêu sản xuất",
@@ -272,6 +282,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "TAR-get pro-DUK-see",
       },
       {
+        cell_id: "f1c4d0c1-b3c7-4269-8f2e-d976c5948f4b",
         word: "line produksi",
         en: "production line",
         vi: "dây chuyền sản xuất",
@@ -280,6 +291,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "line pro-DUK-see",
       },
       {
+        cell_id: "6ccd95e0-3331-4be4-b545-8c78a46cdd01",
         word: "gangguan mesin",
         en: "machine disruption/fault",
         vi: "sự cố máy",
@@ -290,30 +302,35 @@ export const lessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "c1e6c3e2-1ea5-4f1f-8a6a-cf67dd26f9e8",
         speaker: "Supervisor",
         text: "Hari ini kamu masuk shift pagi, ya?",
         vi: "Hôm nay bạn vào ca sáng đúng không?",
         en: "Today you are on the morning shift, right?",
       },
       {
+        cell_id: "bfc1ba36-8326-435e-85a1-e2953f665fd7",
         speaker: "Karyawan",
         text: "Iya, Pak. Saya sudah absensi dan pakai seragam kerja.",
         vi: "Vâng anh/chú. Tôi đã chấm công và mặc đồng phục làm việc.",
         en: "Yes, sir. I have clocked in and put on the work uniform.",
       },
       {
+        cell_id: "9250308d-cec2-499c-bb1e-3b99d0a59673",
         speaker: "Supervisor",
         text: "Target produksi hari ini tinggi, mungkin ada lembur dua jam.",
         vi: "Chỉ tiêu sản xuất hôm nay cao, có thể tăng ca hai tiếng.",
         en: "Today's production target is high, so there may be two hours of overtime.",
       },
       {
+        cell_id: "42dbc1b3-1a28-4571-81d8-b64e070c1142",
         speaker: "Karyawan",
         text: "Baik. Kalau ada gangguan mesin, saya lapor ke Bapak.",
         vi: "Vâng. Nếu có sự cố máy, tôi báo cho anh/chú.",
         en: "Okay. If there is a machine fault, I will report to you.",
       },
       {
+        cell_id: "f5828ddd-bc94-48fa-b523-64ea5c544652",
         speaker: "Supervisor",
         text: "Bagus. Jangan lupa cek kualitas barang di line.",
         vi: "Tốt. Đừng quên kiểm tra chất lượng hàng ở dây chuyền.",

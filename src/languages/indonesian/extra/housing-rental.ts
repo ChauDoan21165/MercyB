@@ -31,6 +31,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   /** Indonesian word/phrase. */
   word: string;
   /** English meaning. */
@@ -46,6 +47,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   /** Indonesian line. */
   text: string;
@@ -283,6 +285,7 @@ export const lessons: IndonesianLesson[] = [
     vocabulary: [
       // Types of housing
       {
+        cell_id: "399524a8-ca3a-471e-9a4b-f10dc2c9d6f2",
         word: "kos",
         en: "rented room / boarding house room",
         vi: "phòng trọ",
@@ -291,6 +294,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "kos — also `kos-kosan`; paid monthly; `kos putri` (women), `kos putra` (men)",
       },
       {
+        cell_id: "558977e6-d20b-474b-87dd-80d558ab7b95",
         word: "kontrakan",
         en: "rented house (yearly)",
         vi: "nhà thuê nguyên căn",
@@ -299,6 +303,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "kon-tra-KAN — from `kontrak` + -an; usually rented yearly",
       },
       {
+        cell_id: "0f6deb88-62ef-49d1-a4cd-4e832257c582",
         word: "apartemen",
         en: "apartment / condo",
         vi: "căn hộ chung cư",
@@ -307,6 +312,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "a-par-te-MEN — English loan; common in big cities",
       },
       {
+        cell_id: "f345f986-7188-4cc8-b761-a11f34c66718",
         word: "kamar",
         en: "room",
         vi: "phòng",
@@ -316,6 +322,7 @@ export const lessons: IndonesianLesson[] = [
       },
       // The deal
       {
+        cell_id: "9761ef30-e642-4fd7-b2e3-e04da1d92ca4",
         word: "sewa",
         en: "rent (noun); to rent (root)",
         vi: "tiền thuê",
@@ -324,6 +331,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "SE-wa — `menyewa` to rent from ≠ `menyewakan` to rent out",
       },
       {
+        cell_id: "3495227e-d5c6-4a70-8e2c-2f6730dc0f45",
         word: "menyewa",
         en: "to rent (as tenant)",
         vi: "thuê (mình đi thuê)",
@@ -332,6 +340,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "me-NYE-wa — meN- + `sewa`; you're the tenant",
       },
       {
+        cell_id: "fe5468f1-6d56-4fd3-9ea8-a66f85ad5ccf",
         word: "deposit",
         en: "deposit",
         vi: "tiền đặt cọc",
@@ -340,6 +349,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "de-PO-sit — also `uang jaminan`; usually one month's rent",
       },
       {
+        cell_id: "07aca522-407e-49bc-a1cf-7e068eb32561",
         word: "pemilik kos",
         en: "landlord (kos owner)",
         vi: "chủ nhà trọ",
@@ -348,6 +358,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "pe-MI-lik kos — `pemilik` owner (peN- + `milik`); address as `Pak`/`Bu`",
       },
       {
+        cell_id: "0599cc75-1ca8-4561-a845-eb8b0c27ff05",
         word: "kontrak",
         en: "contract / lease",
         vi: "hợp đồng",
@@ -357,6 +368,7 @@ export const lessons: IndonesianLesson[] = [
       },
       // Utilities
       {
+        cell_id: "0333f4aa-93a9-4fe2-a50e-4bc8bc31cb82",
         word: "listrik",
         en: "electricity",
         vi: "điện",
@@ -365,6 +377,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "LIS-trik — provider `PLN` (spell 'pe-el-en'); prepaid via `token`",
       },
       {
+        cell_id: "fa7d90a6-957c-48e5-85f6-5e3df712ffe0",
         word: "PLN",
         en: "the state electricity company",
         vi: "công ty điện lực quốc gia",
@@ -373,6 +386,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "pe-el-EN — spell each letter, NOT 'plen'",
       },
       {
+        cell_id: "62d2b73e-c286-4195-ab31-dd529ad98421",
         word: "PDAM",
         en: "the regional water utility",
         vi: "công ty cấp nước",
@@ -381,6 +395,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "pe-de-a-EM — spell each letter; supplies `air` (water)",
       },
       {
+        cell_id: "90b36017-00a7-47cd-8ebe-95320f3892e9",
         word: "air",
         en: "water",
         vi: "nước",
@@ -389,6 +404,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "AH-ir — TWO clear vowels, not a single 'a'",
       },
       {
+        cell_id: "00172623-e2d1-4d10-b070-225e40a91ab7",
         word: "WiFi",
         en: "WiFi / internet",
         vi: "WiFi / mạng",
@@ -398,6 +414,7 @@ export const lessons: IndonesianLesson[] = [
       },
       // Problems
       {
+        cell_id: "d3f53736-36a8-4b9d-baab-dce692732f61",
         word: "bocor",
         en: "leaking",
         vi: "rò / dột nước",
@@ -406,6 +423,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "BO-chor — `c` = 'ch'",
       },
       {
+        cell_id: "aa88e846-4c57-4583-95df-ba5dc5a35336",
         word: "rusak",
         en: "broken / out of order",
         vi: "hỏng / hư",
@@ -417,42 +435,49 @@ export const lessons: IndonesianLesson[] = [
     dialogue: [
       // Dialogue: viewing and renting a kos
       {
+        cell_id: "1f9a2ff0-9ab9-4e68-80d7-b1e4faf4938a",
         speaker: "Penyewa",
         text: "Permisi, Bu. Saya mencari kos dekat kampus. Apakah masih ada kamar kosong?",
         vi: "Xin lỗi cô. Cháu đang tìm phòng trọ gần trường. Còn phòng trống không ạ?",
         en: "Excuse me, ma'am. I'm looking for a kos near campus. Are there any rooms available?",
       },
       {
+        cell_id: "09718129-425f-41b2-a401-259c2279811e",
         speaker: "Pemilik",
         text: "Masih ada satu kamar di lantai dua. Mari saya tunjukkan.",
         vi: "Còn một phòng ở tầng hai. Để cô dẫn đi xem.",
         en: "There's still one room on the second floor. Let me show you.",
       },
       {
+        cell_id: "1ea067d3-8821-45fa-818f-99344bb549b6",
         speaker: "Penyewa",
         text: "Berapa sewa per bulan? Apakah listrik dan air sudah termasuk?",
         vi: "Tiền thuê mỗi tháng bao nhiêu ạ? Điện nước đã bao gồm chưa?",
         en: "How much is the rent per month? Are electricity and water included?",
       },
       {
+        cell_id: "f52c8358-7289-4102-b8f8-32279423cfca",
         speaker: "Pemilik",
         text: "Satu juta lima ratus ribu. Air termasuk, tapi listrik pakai token PLN sendiri.",
         vi: "Một triệu năm trăm nghìn. Nước thì bao gồm, nhưng điện tự nạp token PLN.",
         en: "One million five hundred thousand. Water is included, but electricity is your own PLN token.",
       },
       {
+        cell_id: "9790b671-8998-4297-9bd9-38f91dd37378",
         speaker: "Penyewa",
         text: "Apakah ada uang deposit? Dan harganya bisa kurang sedikit?",
         vi: "Có tiền đặt cọc không ạ? Và giá có bớt được một chút không?",
         en: "Is there a deposit? And can the price come down a little?",
       },
       {
+        cell_id: "fd32e349-f95a-446a-8cb4-e84a17374fc7",
         speaker: "Pemilik",
         text: "Deposit satu bulan. Kalau bayar setahun, saya kurangi sedikit.",
         vi: "Đặt cọc một tháng. Nếu trả cả năm, cô bớt cho một ít.",
         en: "A one-month deposit. If you pay for a year, I'll knock a bit off.",
       },
       {
+        cell_id: "1348a7ff-167c-4c54-9efc-c9bf9a06f3d2",
         speaker: "Penyewa",
         text: "Baik, saya mau menyewa kamar ini. Terima kasih, Bu.",
         vi: "Vâng, cháu muốn thuê phòng này. Cảm ơn cô ạ.",

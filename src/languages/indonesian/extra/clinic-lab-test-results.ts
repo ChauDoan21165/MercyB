@@ -12,6 +12,7 @@ type LessonSentence = {
 };
 
 type VocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -21,6 +22,7 @@ type VocabEntry = {
 };
 
 type DialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -178,34 +180,38 @@ export const lessons: IndonesianLesson[] = [
     tip_advice_en:
       "Fast memory set: `tes darah`, `puasa sebelum tes`, `hasil lab`, `diambil`, `rujukan dokter`, `gula darah`, `kolesterol`. Vietnamese speakers should note that `diambil` = can be picked up, while `mengambil` = to go pick up; passive forms sound very natural at the results counter.",
     vocabulary: [
-      { word: "tes darah", en: "blood test", vi: "xét nghiệm máu", pos: "noun phrase", pronunciation_vi: "tes DA-rah", pronunciation_en: "tes DAH-rah" },
-      { word: "puasa sebelum tes", en: "fasting before a test", vi: "nhịn ăn trước xét nghiệm", pos: "noun phrase", pronunciation_vi: "PU-a-sa se-BE-lum tes", pronunciation_en: "POO-ah-sah seh-BEH-loom tes" },
-      { word: "hasil lab", en: "lab result", vi: "kết quả xét nghiệm", pos: "noun phrase", pronunciation_vi: "ha-SIL lab", pronunciation_en: "hah-SEEL lab" },
-      { word: "kolesterol", en: "cholesterol", vi: "cholesterol", pos: "noun", pronunciation_vi: "ko-le-STER-ol", pronunciation_en: "koh-leh-STEH-rol" },
-      { word: "gula darah", en: "blood sugar", vi: "đường huyết", pos: "noun phrase", pronunciation_vi: "GU-la DA-rah", pronunciation_en: "GOO-lah DAH-rah" },
-      { word: "rujukan dokter", en: "doctor referral", vi: "giấy chuyển tuyến bác sĩ", pos: "noun phrase", pronunciation_vi: "ru-JU-kan DOK-ter", pronunciation_en: "roo-JOO-kan DOK-ter" },
-      { word: "diambil", en: "can be collected", vi: "được lấy", pos: "verb / passive", pronunciation_vi: "di-AM-bil", pronunciation_en: "dee-AM-beel" },
+      { cell_id: "d4f74498-a1cc-493c-9e30-9e5b9d5ac61b", word: "tes darah", en: "blood test", vi: "xét nghiệm máu", pos: "noun phrase", pronunciation_vi: "tes DA-rah", pronunciation_en: "tes DAH-rah" },
+      { cell_id: "3a054fa1-7256-412b-be51-cf5a25f6b923", word: "puasa sebelum tes", en: "fasting before a test", vi: "nhịn ăn trước xét nghiệm", pos: "noun phrase", pronunciation_vi: "PU-a-sa se-BE-lum tes", pronunciation_en: "POO-ah-sah seh-BEH-loom tes" },
+      { cell_id: "d43791e6-4aae-4517-9015-77fa429014b4", word: "hasil lab", en: "lab result", vi: "kết quả xét nghiệm", pos: "noun phrase", pronunciation_vi: "ha-SIL lab", pronunciation_en: "hah-SEEL lab" },
+      { cell_id: "d98487a5-d9a6-400a-84ac-eb9e878a87e8", word: "kolesterol", en: "cholesterol", vi: "cholesterol", pos: "noun", pronunciation_vi: "ko-le-STER-ol", pronunciation_en: "koh-leh-STEH-rol" },
+      { cell_id: "c63bfd8b-1c8c-469b-b7f8-0458dbaf69f2", word: "gula darah", en: "blood sugar", vi: "đường huyết", pos: "noun phrase", pronunciation_vi: "GU-la DA-rah", pronunciation_en: "GOO-lah DAH-rah" },
+      { cell_id: "21edea3d-cdba-4f60-89cc-3d7e80fa3ec7", word: "rujukan dokter", en: "doctor referral", vi: "giấy chuyển tuyến bác sĩ", pos: "noun phrase", pronunciation_vi: "ru-JU-kan DOK-ter", pronunciation_en: "roo-JOO-kan DOK-ter" },
+      { cell_id: "78eb694f-3c0b-45c6-8599-cac54eab018c", word: "diambil", en: "can be collected", vi: "được lấy", pos: "verb / passive", pronunciation_vi: "di-AM-bil", pronunciation_en: "dee-AM-beel" },
     ],
     dialogue: [
       {
+        cell_id: "1e8217a4-043e-409b-9021-0c4dbeaedfd7",
         speaker: "Pasien",
         text: "Selamat pagi, saya perlu tes darah pagi ini.",
         vi: "Chào buổi sáng, tôi cần xét nghiệm máu sáng nay.",
         en: "Good morning, I need a blood test this morning.",
       },
       {
+        cell_id: "a5d7f479-ff91-4bcd-a441-46a307c81950",
         speaker: "Petugas",
         text: "Baik. Apakah Anda sudah puasa sebelum tes?",
         vi: "Vâng. Anh/chị đã nhịn ăn trước khi xét nghiệm chưa?",
         en: "Okay. Have you fasted before the test?",
       },
       {
+        cell_id: "12f479f7-6661-4f49-95bf-e21532e2163a",
         speaker: "Pasien",
         text: "Sudah, sejak jam sepuluh malam tadi.",
         vi: "Rồi, từ 10 giờ tối hôm qua.",
         en: "Yes, since ten o'clock last night.",
       },
       {
+        cell_id: "00351fa6-8107-487a-89b0-4aadf6ec2a97",
         speaker: "Petugas",
         text: "Baik. Hasil lab bisa diambil besok sore.",
         vi: "Được. Kết quả xét nghiệm có thể lấy vào chiều mai.",
@@ -365,34 +371,38 @@ export const lessons: IndonesianLesson[] = [
     tip_advice_en:
       "Fast memory set: `Apakah saya harus puasa?`, `Kapan hasil lab bisa diambil?`, `Bisa dijelaskan secara sederhana?`, `Saya perlu rujukan dokter?`. Vietnamese speakers should remember `diambil` = can be collected, `dijelaskan` = explained, and `kontrol berikutnya` = the next follow-up visit.",
     vocabulary: [
-      { word: "hasil lab", en: "lab result", vi: "kết quả xét nghiệm", pos: "noun phrase", pronunciation_vi: "ha-SIL lab", pronunciation_en: "hah-SEEL lab" },
-      { word: "kolesterol", en: "cholesterol", vi: "cholesterol", pos: "noun", pronunciation_vi: "ko-le-STER-ol", pronunciation_en: "koh-leh-STEH-rol" },
-      { word: "gula darah", en: "blood sugar", vi: "đường huyết", pos: "noun phrase", pronunciation_vi: "GU-la DA-rah", pronunciation_en: "GOO-lah DAH-rah" },
-      { word: "rujukan dokter", en: "doctor referral", vi: "giấy chuyển tuyến bác sĩ", pos: "noun phrase", pronunciation_vi: "ru-JU-kan DOK-ter", pronunciation_en: "roo-JOO-kan DOK-ter" },
-      { word: "puasa sebelum tes", en: "fasting before a test", vi: "nhịn ăn trước xét nghiệm", pos: "noun phrase", pronunciation_vi: "PU-a-sa se-BE-lum tes", pronunciation_en: "POO-ah-sah seh-BEH-loom tes" },
-      { word: "kontrol berikutnya", en: "next follow-up visit", vi: "lần tái khám tiếp theo", pos: "noun phrase", pronunciation_vi: "kon-TROL be-RI-kut-nya", pronunciation_en: "kon-TROL beh-REE-koot-nya" },
-      { word: "batas normal", en: "normal range", vi: "ngưỡng bình thường", pos: "noun phrase", pronunciation_vi: "BA-tas NOR-mal", pronunciation_en: "BAH-tas NOR-mal" },
+      { cell_id: "af93c75a-2d8f-4255-9bdb-4a3be6557339", word: "hasil lab", en: "lab result", vi: "kết quả xét nghiệm", pos: "noun phrase", pronunciation_vi: "ha-SIL lab", pronunciation_en: "hah-SEEL lab" },
+      { cell_id: "d007168c-7804-4d78-aadc-e028729099af", word: "kolesterol", en: "cholesterol", vi: "cholesterol", pos: "noun", pronunciation_vi: "ko-le-STER-ol", pronunciation_en: "koh-leh-STEH-rol" },
+      { cell_id: "a95fa51b-cd7a-4019-882f-f57ed36ab58b", word: "gula darah", en: "blood sugar", vi: "đường huyết", pos: "noun phrase", pronunciation_vi: "GU-la DA-rah", pronunciation_en: "GOO-lah DAH-rah" },
+      { cell_id: "ec94418c-194c-4c24-bf74-21c7a7a7b3fe", word: "rujukan dokter", en: "doctor referral", vi: "giấy chuyển tuyến bác sĩ", pos: "noun phrase", pronunciation_vi: "ru-JU-kan DOK-ter", pronunciation_en: "roo-JOO-kan DOK-ter" },
+      { cell_id: "56a37bfe-bc0c-4164-a1bd-89de764891f1", word: "puasa sebelum tes", en: "fasting before a test", vi: "nhịn ăn trước xét nghiệm", pos: "noun phrase", pronunciation_vi: "PU-a-sa se-BE-lum tes", pronunciation_en: "POO-ah-sah seh-BEH-loom tes" },
+      { cell_id: "82f3f073-bc42-460c-9121-0d627576c5b0", word: "kontrol berikutnya", en: "next follow-up visit", vi: "lần tái khám tiếp theo", pos: "noun phrase", pronunciation_vi: "kon-TROL be-RI-kut-nya", pronunciation_en: "kon-TROL beh-REE-koot-nya" },
+      { cell_id: "75a62352-9850-4ed0-b4fc-9e5ed1935374", word: "batas normal", en: "normal range", vi: "ngưỡng bình thường", pos: "noun phrase", pronunciation_vi: "BA-tas NOR-mal", pronunciation_en: "BAH-tas NOR-mal" },
     ],
     dialogue: [
       {
+        cell_id: "899eecb8-4599-459c-b904-42107b69394b",
         speaker: "Pasien",
         text: "Bisa dijelaskan hasil lab saya secara sederhana?",
         vi: "Có thể giải thích kết quả xét nghiệm của tôi một cách đơn giản không?",
         en: "Can my lab results be explained in simple terms?",
       },
       {
+        cell_id: "75ed857a-d19e-47ac-99fd-49630ca0fb79",
         speaker: "Petugas",
         text: "Tentu. Gula darah Anda masih normal, tetapi kolesterol sedikit tinggi.",
         vi: "Tất nhiên. Đường huyết của anh/chị vẫn bình thường, nhưng cholesterol hơi cao.",
         en: "Of course. Your blood sugar is still normal, but cholesterol is a little high.",
       },
       {
+        cell_id: "16de7473-ad98-4bf7-99fa-072a69fa1808",
         speaker: "Pasien",
         text: "Apakah saya perlu rujukan dokter untuk tes lanjutan?",
         vi: "Tôi có cần giấy chuyển tuyến bác sĩ cho xét nghiệm tiếp theo không?",
         en: "Do I need a doctor's referral for a follow-up test?",
       },
       {
+        cell_id: "49138f0d-5b56-4de5-bdec-d132ae4383b4",
         speaker: "Petugas",
         text: "Ya, dan mohon simpan hasil lab ini untuk kontrol berikutnya.",
         vi: "Có, và xin hãy giữ kết quả xét nghiệm này cho lần tái khám tiếp theo.",

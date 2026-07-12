@@ -16,6 +16,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   /** Indonesian word/phrase. */
   word: string;
   /** English meaning. */
@@ -31,6 +32,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   /** Indonesian line. */
   text: string;
@@ -193,6 +195,7 @@ export const lessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: distinguish `tanaman` (plant), `pohon` (tree), `daun` (leaf), `akar` (root), `pot` (pot), and `pupuk` (fertilizer). For plant care, passive phrases like `perlu disiram`, `perlu dipupuk`, and `harus dipindah` sound natural.",
     vocabulary: [
       {
+        cell_id: "25e0ac17-3b80-4139-8540-4fe85c556848",
         word: "tanaman rumah",
         en: "houseplant",
         vi: "cây trong nhà",
@@ -201,6 +204,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "ta-NA-man ROO-mah",
       },
       {
+        cell_id: "22f22934-8f9f-4c1e-99ba-5085a9edf641",
         word: "menyiram",
         en: "to water",
         vi: "tưới nước",
@@ -209,6 +213,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "me-NYEE-ram",
       },
       {
+        cell_id: "f35f0cbb-902d-4d59-92c1-2f258f586ff0",
         word: "pupuk",
         en: "fertilizer",
         vi: "phân bón",
@@ -217,6 +222,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "POO-puk",
       },
       {
+        cell_id: "a9060ddd-c453-490d-ac31-59dc36274fda",
         word: "pot",
         en: "plant pot",
         vi: "chậu cây",
@@ -225,6 +231,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "pot",
       },
       {
+        cell_id: "f7a91d35-1735-48a0-8607-3b9c41f2ff85",
         word: "hama tanaman",
         en: "plant pest",
         vi: "sâu/bọ hại cây",
@@ -233,6 +240,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "HA-ma ta-NA-man",
       },
       {
+        cell_id: "2264ef0e-ff8b-4993-bc09-e3ee13d60224",
         word: "kebun kecil",
         en: "small garden",
         vi: "vườn nhỏ",
@@ -241,6 +249,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "KE-boon KE-chil",
       },
       {
+        cell_id: "a3557761-ad49-4c20-8d65-3e6a5604aa68",
         word: "tanaman hias",
         en: "ornamental plant",
         vi: "cây cảnh",
@@ -249,6 +258,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "ta-NA-man HEE-as",
       },
       {
+        cell_id: "d67f4fb5-fd15-4c68-b703-643d14046bb5",
         word: "cahaya matahari",
         en: "sunlight",
         vi: "ánh nắng mặt trời",
@@ -259,30 +269,35 @@ export const lessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "09066fc8-8f70-44cf-baad-6f895353e937",
         speaker: "Pembeli",
         text: "Permisi, saya mau tanaman rumah yang mudah dirawat.",
         vi: "Xin phép, tôi muốn cây trong nhà dễ chăm sóc.",
         en: "Excuse me, I want a houseplant that is easy to care for.",
       },
       {
+        cell_id: "63953d60-defe-4ed7-99e5-dbcff762f265",
         speaker: "Penjual tanaman",
         text: "Boleh. Tanaman hias ini cocok untuk tempat teduh.",
         vi: "Được. Cây cảnh này phù hợp với nơi râm mát.",
         en: "Sure. This ornamental plant is suitable for a shady spot.",
       },
       {
+        cell_id: "772d2cd6-80bc-45e3-ad46-1a65853ce629",
         speaker: "Pembeli",
         text: "Perlu disiram setiap hari atau dua hari sekali?",
         vi: "Cần tưới mỗi ngày hay hai ngày một lần?",
         en: "Does it need to be watered every day or once every two days?",
       },
       {
+        cell_id: "52f34fb8-49b2-46fb-9bf3-1ced261dd404",
         speaker: "Penjual tanaman",
         text: "Dua hari sekali cukup. Jangan terlalu banyak air.",
         vi: "Hai ngày một lần là đủ. Đừng tưới quá nhiều nước.",
         en: "Once every two days is enough. Do not use too much water.",
       },
       {
+        cell_id: "f361520d-1558-4462-9595-66ed2c306521",
         speaker: "Pembeli",
         text: "Kalau ada hama tanaman, pupuk atau obat apa yang cocok?",
         vi: "Nếu có sâu/bọ hại cây, phân bón hoặc thuốc nào phù hợp?",

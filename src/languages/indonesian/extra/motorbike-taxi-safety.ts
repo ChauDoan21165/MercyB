@@ -17,6 +17,7 @@ type LessonSentence = {
 };
 
 type VocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -26,6 +27,7 @@ type VocabEntry = {
 };
 
 type DialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -198,6 +200,7 @@ export const motorbikeTaxiSafetyLessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: distinguish `di` for fixed location (`di depan minimarket`) and `ke` for direction (`ke stasiun`). For safer rides, use polite but clear frames: `Boleh lewat rute yang lebih aman?`, `Tolong beri tahu saya dulu`, `Tolong jangan ngebut`.",
     vocabulary: [
       {
+        cell_id: "d7b75af1-3998-4246-941b-3e6af0005042",
         word: "naik ojek",
         en: "take a motorbike taxi",
         vi: "đi xe ôm",
@@ -206,6 +209,7 @@ export const motorbikeTaxiSafetyLessons: IndonesianLesson[] = [
         pronunciation_en: "NA-ik OH-jek",
       },
       {
+        cell_id: "0416cad5-7bfc-491c-afdd-576be48e6038",
         word: "lokasi jemput",
         en: "pickup location",
         vi: "điểm đón",
@@ -214,6 +218,7 @@ export const motorbikeTaxiSafetyLessons: IndonesianLesson[] = [
         pronunciation_en: "lo-KA-see JEM-poot",
       },
       {
+        cell_id: "f5b935f5-6745-4395-9294-69d8e362b638",
         word: "helm",
         en: "helmet",
         vi: "mũ bảo hiểm",
@@ -222,6 +227,7 @@ export const motorbikeTaxiSafetyLessons: IndonesianLesson[] = [
         pronunciation_en: "helm",
       },
       {
+        cell_id: "67958881-3f3d-44ff-b049-4249d590ded8",
         word: "rute aman",
         en: "safe route",
         vi: "tuyến đường an toàn",
@@ -230,6 +236,7 @@ export const motorbikeTaxiSafetyLessons: IndonesianLesson[] = [
         pronunciation_en: "ROO-teh A-man",
       },
       {
+        cell_id: "5699679b-c875-461b-b477-b991a1e4be67",
         word: "tarif",
         en: "fare",
         vi: "giá cước",
@@ -238,6 +245,7 @@ export const motorbikeTaxiSafetyLessons: IndonesianLesson[] = [
         pronunciation_en: "TA-rif",
       },
       {
+        cell_id: "8089354a-85fb-4283-860d-b3d01c3c2a22",
         word: "malam hari",
         en: "nighttime",
         vi: "ban đêm",
@@ -246,6 +254,7 @@ export const motorbikeTaxiSafetyLessons: IndonesianLesson[] = [
         pronunciation_en: "MA-lam HA-ree",
       },
       {
+        cell_id: "55edf2d5-7b74-4d83-a04e-4e988b9836b0",
         word: "berbagi lokasi",
         en: "share location",
         vi: "chia sẻ vị trí",
@@ -254,6 +263,7 @@ export const motorbikeTaxiSafetyLessons: IndonesianLesson[] = [
         pronunciation_en: "ber-BA-gee lo-KA-see",
       },
       {
+        cell_id: "64cd0858-cd6f-41f9-86a9-50a613eabae7",
         word: "plat nomor",
         en: "license plate",
         vi: "biển số xe",
@@ -264,30 +274,35 @@ export const motorbikeTaxiSafetyLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "c9933344-450e-4007-8b29-45e1be60f831",
         speaker: "Penumpang",
         text: "Pak, tolong tunggu di depan minimarket, ya.",
         vi: "Anh ơi, làm ơn chờ trước cửa hàng tiện lợi nhé.",
         en: "Sir, please wait in front of the minimarket.",
       },
       {
+        cell_id: "368e7fd5-960d-4728-bbc1-c95475991be7",
         speaker: "Driver",
         text: "Baik. Saya sudah dekat. Pakai helm dulu sebelum naik.",
         vi: "Vâng. Tôi gần tới rồi. Đội mũ bảo hiểm trước khi lên nhé.",
         en: "Okay. I am nearby. Put on the helmet before getting on.",
       },
       {
+        cell_id: "9474fca6-6696-446b-883b-5457eac464d2",
         speaker: "Penumpang",
         text: "Saya sudah cek plat nomor. Kalau bisa, lewat rute yang lebih aman.",
         vi: "Tôi đã kiểm tra biển số. Nếu được, đi tuyến đường an toàn hơn.",
         en: "I have checked the plate number. If possible, take the safer route.",
       },
       {
+        cell_id: "78dc1d25-5c97-42f0-a7a8-2287dc81665e",
         speaker: "Driver",
         text: "Bisa. Rutenya sedikit lebih jauh, tapi jalannya lebih ramai.",
         vi: "Được. Tuyến đó xa hơn một chút, nhưng đường đông người hơn.",
         en: "Sure. The route is a bit farther, but the road is busier.",
       },
       {
+        cell_id: "c897eed5-7537-4932-9bbe-4f44c6352e1d",
         speaker: "Penumpang",
         text: "Terima kasih. Saya juga berbagi lokasi dengan teman.",
         vi: "Cảm ơn. Tôi cũng chia sẻ vị trí với bạn.",

@@ -16,6 +16,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   /** Indonesian word/phrase. */
   word: string;
   /** English meaning. */
@@ -31,6 +32,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   /** Indonesian line. */
   text: string;
@@ -193,6 +195,7 @@ export const lessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: survival chunks are `naik gunung`, `jalur pendakian`, `pos registrasi`, `sewa porter`, `cuaca dingin`, `pasang tenda`, `logistik`, `tersesat`. When you need help, keep it short: `Kami tersesat`, `Kami butuh bantuan`, `Tolong hubungi petugas pos`.",
     vocabulary: [
       {
+        cell_id: "01ddfa93-1b83-491a-bae2-0ee23a20d72d",
         word: "naik gunung",
         en: "go mountain hiking",
         vi: "leo núi",
@@ -201,6 +204,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "NAIK GU-noong",
       },
       {
+        cell_id: "56f6878c-f73c-4823-a82a-8620d0369862",
         word: "jalur pendakian",
         en: "hiking trail",
         vi: "tuyến đường leo núi",
@@ -209,6 +213,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "JA-lur pen-da-KEE-an",
       },
       {
+        cell_id: "861668a4-4eb5-4024-a2e7-2eb7f531d841",
         word: "pos registrasi",
         en: "registration post",
         vi: "trạm đăng ký",
@@ -217,6 +222,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "pos re-gis-TRA-see",
       },
       {
+        cell_id: "63e30c22-fffe-4a22-9441-d88062a1fcbe",
         word: "porter",
         en: "porter",
         vi: "người khuân đồ",
@@ -225,6 +231,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "POR-ter",
       },
       {
+        cell_id: "757e6cf8-d5bc-4483-a936-4f7d477e0f4e",
         word: "cuaca dingin",
         en: "cold weather",
         vi: "thời tiết lạnh",
@@ -233,6 +240,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "CHU-a-cha DI-ngin",
       },
       {
+        cell_id: "6f11ff6c-18b6-4db8-b7e7-730d57c763d6",
         word: "tenda",
         en: "tent",
         vi: "lều",
@@ -241,6 +249,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "TEN-da",
       },
       {
+        cell_id: "9a7a31a7-e8a2-44d9-b148-f9a5ec4a86f0",
         word: "logistik",
         en: "supplies / logistics",
         vi: "đồ hậu cần / tiếp tế",
@@ -249,6 +258,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "lo-GIS-tik",
       },
       {
+        cell_id: "074190c8-50eb-4db8-8d15-217d60f14576",
         word: "tersesat",
         en: "lost",
         vi: "bị lạc",
@@ -257,6 +267,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "ter-SE-sat",
       },
       {
+        cell_id: "5170003f-d7a6-4044-b92d-16aa3de7e9bd",
         word: "puncak",
         en: "summit",
         vi: "đỉnh núi",
@@ -265,6 +276,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "PUN-chak",
       },
       {
+        cell_id: "213aeb2d-511c-4284-a75e-70b9b2ae0cb4",
         word: "turun",
         en: "descend / go down",
         vi: "xuống núi / đi xuống",
@@ -275,30 +287,35 @@ export const lessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "5ea62dd4-f408-44ce-a305-4ceb1e9deec1",
         speaker: "Pendaki",
         text: "Pak, kami mau daftar naik gunung.",
         vi: "Chú ơi, chúng tôi muốn đăng ký leo núi.",
         en: "Sir, we want to register for hiking.",
       },
       {
+        cell_id: "3b91fb0f-f98c-4a9c-b167-2276b58ad1e9",
         speaker: "Petugas pos",
         text: "Lewat jalur mana, dan berapa orang?",
         vi: "Đi theo tuyến nào, và bao nhiêu người?",
         en: "Which route, and how many people?",
       },
       {
+        cell_id: "26362d8c-7e03-4aef-9fb2-8e00566d6ec6",
         speaker: "Pendaki",
         text: "Lewat jalur utama, empat orang. Apakah perlu porter?",
         vi: "Theo tuyến chính, bốn người. Có cần porter không?",
         en: "Via the main trail, four people. Do we need a porter?",
       },
       {
+        cell_id: "988f72f3-37bd-43fc-bb7b-76e9ace55f81",
         speaker: "Petugas pos",
         text: "Kalau logistik banyak, lebih baik sewa porter.",
         vi: "Nếu nhiều đồ hậu cần, tốt hơn nên thuê porter.",
         en: "If you have many supplies, it is better to hire a porter.",
       },
       {
+        cell_id: "254ff2e3-980e-4b98-a368-ee7d1121f77a",
         speaker: "Pendaki",
         text: "Baik. Kalau kami belum turun besok siang, tolong hubungi nomor ini.",
         vi: "Vâng. Nếu trưa mai chúng tôi chưa xuống, xin liên hệ số này.",

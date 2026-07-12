@@ -13,6 +13,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -22,6 +23,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -138,6 +140,7 @@ export const onlineSubscriptionCancelLessons: IndonesianLesson[] = [
       "Useful frames: `batal langganan`, `masa percobaan`, `tagihan otomatis`, `akun premium`, `kartu kredit terhubung`. In support chat, ask for confirmation with `Tolong konfirmasi...`.",
     vocabulary: [
       {
+        cell_id: "64d0dc47-460a-445b-b537-27577885a005",
         word: "langganan online",
         en: "online subscription",
         vi: "gói đăng ký online",
@@ -146,6 +149,7 @@ export const onlineSubscriptionCancelLessons: IndonesianLesson[] = [
         pronunciation_en: "lang-GA-nan ON-line",
       },
       {
+        cell_id: "3b36656b-3037-4617-a65a-380a145f71b9",
         word: "batal langganan",
         en: "cancel a subscription",
         vi: "hủy đăng ký",
@@ -154,6 +158,7 @@ export const onlineSubscriptionCancelLessons: IndonesianLesson[] = [
         pronunciation_en: "BA-tal lang-GA-nan",
       },
       {
+        cell_id: "4bdde1f0-8c8a-4ab6-8f30-4997b132aee2",
         word: "tagihan otomatis",
         en: "automatic billing",
         vi: "tính phí/hóa đơn tự động",
@@ -162,6 +167,7 @@ export const onlineSubscriptionCancelLessons: IndonesianLesson[] = [
         pronunciation_en: "ta-GEE-han o-to-MA-tis",
       },
       {
+        cell_id: "aed8d024-fb4b-4015-9063-e0a63975f958",
         word: "kartu kredit",
         en: "credit card",
         vi: "thẻ tín dụng",
@@ -170,6 +176,7 @@ export const onlineSubscriptionCancelLessons: IndonesianLesson[] = [
         pronunciation_en: "KAR-too KRE-dit",
       },
       {
+        cell_id: "ca9e84ca-dc05-45cf-a350-12170910aac4",
         word: "akun premium",
         en: "premium account",
         vi: "tài khoản premium/trả phí",
@@ -178,6 +185,7 @@ export const onlineSubscriptionCancelLessons: IndonesianLesson[] = [
         pronunciation_en: "A-kun PRE-mi-um",
       },
       {
+        cell_id: "3e871d6d-0f55-439f-82f2-af17daaa1997",
         word: "masa percobaan",
         en: "trial period",
         vi: "thời gian dùng thử",
@@ -188,18 +196,21 @@ export const onlineSubscriptionCancelLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "30327068-b23d-4b05-a841-c7c74883fd20",
         speaker: "Pelanggan",
         text: "Halo, saya mau batal langganan online sebelum masa percobaan selesai.",
         vi: "A lô, tôi muốn hủy gói đăng ký online trước khi thời gian dùng thử kết thúc.",
         en: "Hello, I want to cancel my online subscription before the trial period ends.",
       },
       {
+        cell_id: "7060b408-87b6-48b8-8ffb-b69000b38e8a",
         speaker: "Customer Service",
         text: "Baik. Akun premium Anda masih aktif sampai akhir bulan.",
         vi: "Vâng. Tài khoản premium của bạn vẫn hoạt động đến cuối tháng.",
         en: "Okay. Your premium account is still active until the end of the month.",
       },
       {
+        cell_id: "71d332c3-322d-4721-a1d4-1a684d92829a",
         speaker: "Pelanggan",
         text: "Tolong pastikan tidak ada tagihan otomatis bulan depan.",
         vi: "Làm ơn đảm bảo không có tính phí tự động vào tháng sau.",
@@ -316,6 +327,7 @@ export const onlineSubscriptionCancelLessons: IndonesianLesson[] = [
       "Clear complaint pattern: problem + evidence + request. Example: `Saya sudah batal langganan, tetapi masih kena tagihan. Bukti pembayaran sudah saya lampirkan. Saya ingin mengajukan refund.`",
     vocabulary: [
       {
+        cell_id: "2ef1766a-703c-41e4-b1f5-eca453b326c6",
         word: "kena tagihan",
         en: "got charged / billed",
         vi: "bị tính phí",
@@ -324,6 +336,7 @@ export const onlineSubscriptionCancelLessons: IndonesianLesson[] = [
         pronunciation_en: "ke-NA ta-GEE-han",
       },
       {
+        cell_id: "139857c7-70d2-4bb8-95ee-76c30041ca5e",
         word: "mengajukan refund",
         en: "request a refund",
         vi: "yêu cầu hoàn tiền",
@@ -332,6 +345,7 @@ export const onlineSubscriptionCancelLessons: IndonesianLesson[] = [
         pronunciation_en: "meng-a-JOO-kan REE-fund",
       },
       {
+        cell_id: "fb97033e-67a5-41e2-b329-ed203cd72b68",
         word: "bukti pembayaran",
         en: "proof of payment",
         vi: "bằng chứng thanh toán",
@@ -340,6 +354,7 @@ export const onlineSubscriptionCancelLessons: IndonesianLesson[] = [
         pronunciation_en: "BOOK-ti pem-ba-YAR-an",
       },
       {
+        cell_id: "f24fa945-6cf6-4725-875b-819e2a2d395d",
         word: "email pembatalan",
         en: "cancellation email",
         vi: "email hủy đăng ký",
@@ -348,6 +363,7 @@ export const onlineSubscriptionCancelLessons: IndonesianLesson[] = [
         pronunciation_en: "E-mail pem-ba-TA-lan",
       },
       {
+        cell_id: "0187d382-0432-4777-806b-0f03bd9b49ac",
         word: "status refund",
         en: "refund status",
         vi: "trạng thái hoàn tiền",
@@ -356,6 +372,7 @@ export const onlineSubscriptionCancelLessons: IndonesianLesson[] = [
         pronunciation_en: "STA-tus REE-fund",
       },
       {
+        cell_id: "3ea2ecea-5f24-46b5-ba54-11b3314cf069",
         word: "ditagih lagi",
         en: "charged again",
         vi: "bị tính phí lại",
@@ -366,24 +383,28 @@ export const onlineSubscriptionCancelLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "5fdd907f-7f34-48c4-b5cb-532b91e5c92e",
         speaker: "Pelanggan",
         text: "Saya sudah batal langganan, tetapi masih kena tagihan.",
         vi: "Tôi đã hủy đăng ký, nhưng vẫn bị tính phí.",
         en: "I already canceled the subscription, but I was still charged.",
       },
       {
+        cell_id: "0d1aea7d-30ab-4791-81fa-a8981ec11f7c",
         speaker: "Customer Service",
         text: "Mohon kirim bukti pembayaran dan email pembatalan.",
         vi: "Vui lòng gửi bằng chứng thanh toán và email hủy.",
         en: "Please send proof of payment and the cancellation email.",
       },
       {
+        cell_id: "60efd9bd-8ff4-4c96-9f1c-d4ef6fa448fd",
         speaker: "Pelanggan",
         text: "Sudah saya lampirkan. Saya ingin mengajukan refund.",
         vi: "Tôi đã đính kèm rồi. Tôi muốn yêu cầu hoàn tiền.",
         en: "I have attached them. I want to request a refund.",
       },
       {
+        cell_id: "31397da8-b1c2-42f1-9ac4-5cad3244d967",
         speaker: "Customer Service",
         text: "Baik, kami akan cek status refund Anda.",
         vi: "Vâng, chúng tôi sẽ kiểm tra trạng thái hoàn tiền của bạn.",

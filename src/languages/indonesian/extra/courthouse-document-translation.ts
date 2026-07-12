@@ -6,6 +6,7 @@ type IndonesianLessonSentence = {
 };
 
 type VocabEntry = {
+  cell_id?: string;
   word: string;
   meaning_vi: string;
   meaning_en: string;
@@ -14,6 +15,7 @@ type VocabEntry = {
 };
 
 type DialogueLine = {
+  cell_id?: string;
   speaker: string;
   line: string;
   vi: string;
@@ -117,6 +119,7 @@ export const lessons: IndonesianLesson[] = [
     ],
     vocabulary: [
       {
+        cell_id: "ab00e4cd-509c-4df9-9a81-ae4387a08ac6",
         word: 'terjemahan dokumen',
         meaning_vi: 'bản dịch tài liệu/giấy tờ',
         meaning_en: 'document translation',
@@ -124,6 +127,7 @@ export const lessons: IndonesianLesson[] = [
         example_vi: 'Bản dịch giấy tờ này được dùng cho phiên tòa.',
       },
       {
+        cell_id: "38ba2816-17bb-476e-8e1b-a06c1fd81bfc",
         word: 'penerjemah tersumpah',
         meaning_vi: 'biên dịch viên tuyên thệ/có chứng nhận pháp lý',
         meaning_en: 'sworn translator',
@@ -131,6 +135,7 @@ export const lessons: IndonesianLesson[] = [
         example_vi: 'Tòa án yêu cầu biên dịch viên tuyên thệ.',
       },
       {
+        cell_id: "9afed388-b2b2-4279-bdb2-d7860fd4ef77",
         word: 'akta',
         meaning_vi: 'giấy chứng nhận/hồ sơ hộ tịch',
         meaning_en: 'certificate or civil-registry deed',
@@ -138,6 +143,7 @@ export const lessons: IndonesianLesson[] = [
         example_vi: 'Giấy khai sinh phải được dịch sang tiếng Indonesia.',
       },
       {
+        cell_id: "6fe35760-a227-43e4-ac90-b8a85e7cf90b",
         word: 'ijazah',
         meaning_vi: 'bằng tốt nghiệp, văn bằng',
         meaning_en: 'diploma or graduation certificate',
@@ -145,6 +151,7 @@ export const lessons: IndonesianLesson[] = [
         example_vi: 'Bằng tốt nghiệp và bảng điểm cần được chứng thực.',
       },
       {
+        cell_id: "68f885fc-8233-4c8e-98f8-9cbbac858f54",
         word: 'legalisasi',
         meaning_vi: 'chứng thực, hợp pháp hóa',
         meaning_en: 'legalization or certification',
@@ -152,6 +159,7 @@ export const lessons: IndonesianLesson[] = [
         example_vi: 'Việc chứng thực được làm sau khi giấy tờ được dịch.',
       },
       {
+        cell_id: "75a9c82f-2b1e-4d5d-a756-2a5d00d64537",
         word: 'notaris',
         meaning_vi: 'công chứng viên',
         meaning_en: 'notary',
@@ -159,6 +167,7 @@ export const lessons: IndonesianLesson[] = [
         example_vi: 'Công chứng viên kiểm tra bản sao giấy tờ chính thức.',
       },
       {
+        cell_id: "4ddded0f-9ae7-4b2d-96de-65788d2df77c",
         word: 'dokumen resmi',
         meaning_vi: 'giấy tờ chính thức',
         meaning_en: 'official document',
@@ -166,6 +175,7 @@ export const lessons: IndonesianLesson[] = [
         example_vi: 'Giấy tờ chính thức phải khớp với tên trên hộ chiếu.',
       },
       {
+        cell_id: "3878a1b2-e6df-41f9-bc2c-476e80d28b88",
         word: 'biaya terjemahan',
         meaning_vi: 'phí dịch thuật',
         meaning_en: 'translation fee',
@@ -175,36 +185,42 @@ export const lessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "d71610f6-0a19-459b-b0cb-5045add2a34b",
         speaker: 'Pemohon',
         line: 'Selamat pagi. Saya perlu terjemahan dokumen untuk pengadilan.',
         vi: 'Chào buổi sáng. Tôi cần bản dịch giấy tờ cho tòa án.',
         en: 'Good morning. I need document translation for court.',
       },
       {
+        cell_id: "8420ecd6-8367-4e22-ae02-723506b13f01",
         speaker: 'Petugas',
         line: 'Dokumennya apa saja, Pak?',
         vi: 'Các giấy tờ gồm những gì ạ?',
         en: 'What documents are they, Sir?',
       },
       {
+        cell_id: "68851e6f-9126-4152-8426-d1c438445f59",
         speaker: 'Pemohon',
         line: 'Ada akta lahir, ijazah, dan surat keterangan dari notaris.',
         vi: 'Có giấy khai sinh, bằng tốt nghiệp và giấy xác nhận từ công chứng viên.',
         en: 'There is a birth certificate, diploma, and statement letter from a notary.',
       },
       {
+        cell_id: "1b1acb3c-ad83-4ce7-8e17-50cdc398b72d",
         speaker: 'Petugas',
         line: 'Untuk pengadilan, biasanya perlu penerjemah tersumpah.',
         vi: 'Đối với tòa án, thường cần biên dịch viên tuyên thệ.',
         en: 'For court, a sworn translator is usually needed.',
       },
       {
+        cell_id: "18ccbab9-e563-4fdf-83a7-9cce703ca570",
         speaker: 'Pemohon',
         line: 'Berapa biaya terjemahan dan legalisasinya?',
         vi: 'Phí dịch thuật và chứng thực là bao nhiêu?',
         en: 'How much are the translation and legalization fees?',
       },
       {
+        cell_id: "fc166f0c-0bce-43d8-97d7-c59dac3b3da6",
         speaker: 'Petugas',
         line: 'Biayanya dihitung per halaman. Hasilnya selesai tiga hari kerja.',
         vi: 'Phí được tính theo từng trang. Kết quả hoàn thành sau ba ngày làm việc.',

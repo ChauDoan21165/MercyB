@@ -89,6 +89,7 @@ export const lessons: GermanLesson[] = [
     "tip_advice_en": "One week before the Kolloquium: (1) Draft a 2-page A4 handout — These (thesis), Forschungsfrage (research question), methodischer Rahmen (methodological framework), vorläufige Ergebnisse (preliminary results), offene Fragen (open questions). Photocopy 15–20 copies. (2) Read your opening aloud (3 minutes) until you no longer need to glance at the slide. (3) Prepare 5–7 stock answers for Standardeinwände (standard objections): 'Warum diese Methode?' (why this method?), 'Warum dieser Korpus?' (why this corpus?), 'Wie generalisierbar?' (how generalisable?), 'Was ist neu?' (what's new?), 'Welche Theorie?' (which theory?).\n\nDuring the presentation: (1) Slow pace — 100–120 words per minute (noticeably slower than the brisk delivery many English-speaking academics default to). (2) Foreground the Gliederungssignale (structural signals): 'Im Folgenden...' (in what follows), 'Sodann...' (next), 'Abschließend lässt sich festhalten...' (in closing it can be noted that...). Listeners take notes by these signals. (3) When citing sources, use Konjunktiv I: 'Bourdieu (1991) zufolge sei...' (according to Bourdieu, it is...) — this is the academic equivalent of English reported speech, but more rigorous.\n\nCanonical thesis-presentation language:\n- 'Die zentrale These der vorliegenden Arbeit besteht darin...' (the central thesis of the present work is...)\n- 'Daraus ergibt sich die Hypothese, dass...' (from this arises the hypothesis that...)\n- 'Es ließe sich argumentieren, dass...' (one could argue that... — Konjunktiv II hedging)\n- 'Mein Beitrag zielt darauf ab, ... zu ...' (my contribution aims to...)\n- 'Im Folgenden möchte ich ... darlegen / umreißen / erläutern' (in what follows I will set out / outline / explain)\n- 'Damit komme ich zum Schluss' (with that I come to my conclusion)\n\nWhen challenged:\n- 'Das ist ein berechtigter Einwand' (that's a legitimate objection)\n- 'Diese Frage berührt einen wesentlichen Punkt' (this question touches on an essential point)\n- 'Darauf möchte ich differenziert eingehen' (I'd like to address that in a nuanced way)\n- 'In dieser Allgemeinheit würde ich der Aussage nicht zustimmen, allerdings...' (at that level of generality I wouldn't agree with the statement; however...)\n\nWhen you don't know: 'Das übersteigt den Rahmen meiner gegenwärtigen Untersuchung — ich nehme die Anregung gern auf' (that exceeds the scope of my current investigation — I'm glad to take up the suggestion). DON'T fabricate.\n\nFinal tip: record your first Kolloquium (with permission) — listen back to catch the patterns in your academic German that betray your L1 (typical issues: missing Genitiv, Akkusativ where Dativ is required after a preposition). C1 academic German demands a noticeably higher level of structural precision than B2 conversational German.",
     "vocabulary": [
       {
+        cell_id: "6e1801b6-145e-45a2-9bc6-4ac7d3916039",
         "word": "die These",
         "en": "thesis, central claim",
         "vi": "luận điểm",
@@ -97,6 +98,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee TAY-zuh — long 'ay' as in 'they'; rhymes with English 'gaze-uh'"
       },
       {
+        cell_id: "ee57504f-a0d7-43d4-89fa-cdb0e7684b9a",
         "word": "die Hypothese",
         "en": "hypothesis",
         "vi": "giả thuyết",
@@ -105,6 +107,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee hue-poh-TAY-zuh — initial 'Hy-' rhymes with 'view', not 'high'"
       },
       {
+        cell_id: "fc8e0191-83dd-4dc4-953a-e8dee2a48956",
         "word": "der Forschungsstand",
         "en": "state of the art (research)",
         "vi": "tình trạng nghiên cứu hiện tại",
@@ -113,6 +116,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dayr FOR-shungs-shtahnt — 'st' at start of a word/syllable = 'sht'; final 'd' devoices to 't'"
       },
       {
+        cell_id: "ff106fcf-add2-4377-962e-081668a9805d",
         "word": "die Forschungslücke",
         "en": "research gap",
         "vi": "khoảng trống nghiên cứu",
@@ -121,6 +125,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee FOR-shungs-loo-kuh — 'ü' = rounded 'oo' (lips for 'oo', say 'ee')"
       },
       {
+        cell_id: "cbfee349-8fd7-444a-b663-db0d90ec0453",
         "word": "der theoretische Rahmen",
         "en": "theoretical framework",
         "vi": "khung lý thuyết",
@@ -129,6 +134,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dayr tay-oh-REH-tish-er RAH-men — German 'th' is just 't', no English 'th' sound"
       },
       {
+        cell_id: "425fc32d-d93a-44ee-8787-2a18ab5f2770",
         "word": "die Vorgehensweise",
         "en": "methodological approach",
         "vi": "phương pháp tiến hành",
@@ -137,6 +143,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee FOR-gay-ens-vye-zuh — 'w' is always 'v'; 'ei' = 'eye' sound"
       },
       {
+        cell_id: "6f6038a7-b0c0-4e56-9212-bb98f04b48cc",
         "word": "umreißen",
         "en": "to outline (in broad strokes)",
         "vi": "phác thảo (rộng)",
@@ -145,6 +152,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "UM-rye-sen — separable verb; 'ß' = 'ss', 'ei' = 'eye'"
       },
       {
+        cell_id: "942de6c7-3778-4527-9131-28a4f428b133",
         "word": "darlegen",
         "en": "to set forth, expound",
         "vi": "trình bày (chi tiết)",
@@ -153,6 +161,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "DAR-lay-gen — separable: 'legen ... dar' in main clauses"
       },
       {
+        cell_id: "84621fdf-d179-40fa-8785-cc821922d881",
         "word": "konzeptualisieren",
         "en": "to conceptualize",
         "vi": "khái niệm hóa",
@@ -161,6 +170,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "kon-tsep-too-ah-lee-ZEE-ren — final-syllable stress; 'z' is always 'ts'"
       },
       {
+        cell_id: "2bcf9725-42c9-4f85-b42a-cd636851f9ff",
         "word": "der Beitrag (zu)",
         "en": "contribution (to a field)",
         "vi": "đóng góp (cho lĩnh vực)",
@@ -171,21 +181,25 @@ export const lessons: GermanLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "4e6d7863-03f7-497d-b44a-4ea67c9753bc",
         "speaker": "Linh",
         "text": "Sehr geehrte Kolleginnen und Kollegen, im Zentrum meiner Untersuchung steht die Frage, inwiefern Code-Switching als Ressource zu rekonzeptualisieren ist.",
         "vi": "Kính thưa quý đồng nghiệp, trọng tâm nghiên cứu của tôi là câu hỏi: chuyển mã ngôn ngữ có thể được tái khái niệm hóa như một nguồn lực ở mức độ nào."
       },
       {
+        cell_id: "119c14be-05d4-4eb6-a29c-08ba9a810a1e",
         "speaker": "Prof. Bauer",
         "text": "Was unterscheidet Ihren Ansatz von den ressourcenorientierten Studien der Hamburger Schule?",
         "vi": "Cách tiếp cận của bạn khác gì so với những nghiên cứu hướng nguồn lực của trường phái Hamburg?"
       },
       {
+        cell_id: "d4162b69-0f14-455d-9be2-41063a0b040d",
         "speaker": "Linh",
         "text": "Eine berechtigte Frage. Im Unterschied zu jener Tradition lege ich den Schwerpunkt auf vietnamesisch-deutsche Sprecher zweiter Generation, deren Verhalten bislang kaum dokumentiert ist.",
         "vi": "Một câu hỏi có cơ sở. Khác với truyền thống đó, tôi đặt trọng tâm vào người nói thế hệ hai Việt-Đức, hành vi của họ cho đến nay hầu như chưa được tư liệu hóa."
       },
       {
+        cell_id: "39614afc-185e-4137-b974-87c52b19db33",
         "speaker": "Prof. Bauer",
         "text": "Demzufolge wäre Ihre Arbeit als komplementäre Vertiefung zu verstehen.",
         "vi": "Theo đó công trình của bạn được hiểu như một sự đào sâu bổ sung."
@@ -489,6 +503,7 @@ export const lessons: GermanLesson[] = [
     "tip_advice_en": "Before citing:\n1. CHECK THE SOURCE DIRECTLY — don't requote from secondary sources without marking it. If you have to use secondary: 'X (1985, zit. nach Y 2010, S. 23)' — the 'zit. nach' marker is mandatory.\n2. VERIFY exact page numbers — Citavi/Zotero auto-format, but always confirm against the original print or PDF.\n3. CHECK Sekundärliteratur (secondary literature) — German academia expects you to read the critics of your primary source. Citing Bourdieu without reading Wacquant on Bourdieu is a noticeable gap.\n\nFormal citation structures:\n- 'X zufolge sei Y' — Konjunktiv I, the most formal frame\n- 'Nach X handle es sich um Y' — Konjunktiv I, formal\n- 'X (Jahr) argumentiert, dass Y sei' — Konjunktiv I inside the subordinate clause\n- 'In Anlehnung an X' — following X (agreement)\n- 'Im Anschluss an X' — picking up from X (agreement)\n- 'Im Unterschied zu X' — in contrast with X\n- 'In Abgrenzung von X' — distinguishing from X (more formal)\n- 'Entgegen der Auffassung von X' — against the view of X\n- 'Wie bereits ... ausgeführt wurde (vgl. X Jahr)' — as already noted (paraphrase self-citation)\n- 'Bekanntlich verweist X darauf, dass...' — as is well known, X points out that... (formal)\n\nWhen you disagree with an author:\n- 'Diese Position erscheint mir aus zwei Gründen problematisch' (this position seems problematic to me for two reasons — formal)\n- 'In dieser Allgemeinheit lässt sich der Aussage nicht zustimmen' (at this level of generality, one cannot agree with the statement)\n- 'Gegen diese Lesart spricht jedoch...' (against this reading, however, speaks...)\n- DON'T USE: 'X liegt falsch' / 'X ist Unsinn' (X is wrong / X is nonsense — colloquial, wrong register)\n\nWhen a source is old but still relevant:\n- 'Auch wenn die Studie aus dem Jahr 1985 stammt, behält ihre Argumentation Gültigkeit, da...' (even though the study is from 1985, its argument retains validity because…)\n\nWhen the primary source is inaccessible:\n- 'Für eine umfassende Diskussion vgl. Y (Jahr)' (for a comprehensive discussion, cf. Y year) — point the reader to a secondary source\n\nFinal tip: write a 1-page Begründung (justification) for each major source — WHY are you citing Bourdieu rather than Foucault? Your Doktorvater will ask. Having it pre-written makes your defence much easier. Citavi has a built-in note function — use it from day one of your PhD.",
     "vocabulary": [
       {
+        cell_id: "4d097195-90bd-4b17-880e-7718cfc49f8e",
         "word": "das Zitat",
         "en": "quotation, citation",
         "vi": "trích dẫn",
@@ -497,6 +512,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dahs tsee-TAHT — 'z' = 'ts'; final stress"
       },
       {
+        cell_id: "8c249593-85d0-4d79-a8d0-8f096ee2b6f0",
         "word": "die Quelle",
         "en": "source",
         "vi": "nguồn",
@@ -505,6 +521,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee KVEH-luh — 'qu' = 'kv', not 'kw' like English"
       },
       {
+        cell_id: "a964a569-da1e-452b-a1c6-e50382f30def",
         "word": "zufolge (+ Dat)",
         "en": "according to",
         "vi": "theo (formal)",
@@ -513,6 +530,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "tsoo-FOL-guh — 'z' = 'ts'; takes Dativ case"
       },
       {
+        cell_id: "91c9eb27-994a-4472-823b-738497896fd9",
         "word": "in Anlehnung an",
         "en": "in accordance with, following",
         "vi": "dựa theo",
@@ -521,6 +539,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "in AHN-lay-nung ahn — stress on 'AHN-'; followed by Akkusativ"
       },
       {
+        cell_id: "80181294-57a7-41ab-a1b0-ed7d1b5196c8",
         "word": "verweisen auf",
         "en": "to refer to",
         "vi": "dẫn chiếu đến",
@@ -529,6 +548,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "fer-VYE-zen owf — 'v' = 'f'; 'ei' = 'eye'; 'au' = 'ow' as in 'how'"
       },
       {
+        cell_id: "d993019c-c2c4-40c2-83f0-ddaf0b5859eb",
         "word": "die Anmerkung / Fußnote",
         "en": "footnote, annotation",
         "vi": "chú thích / cước chú",
@@ -537,6 +557,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee AHN-mer-kung / FOOSS-noh-tuh — 'ß' = 'ss'"
       },
       {
+        cell_id: "3fdd6490-9e6a-445d-b3c1-fe9f32f26258",
         "word": "vgl. (vergleiche)",
         "en": "cf. (compare)",
         "vi": "xem / so sánh (cước chú)",
@@ -545,6 +566,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "fer-GLY-khuh — abbreviation written 'vgl.' but spoken in full"
       },
       {
+        cell_id: "06f6440a-42b3-40fd-804b-507a7d317693",
         "word": "ebd. (ebenda)",
         "en": "ibid.",
         "vi": "cùng nguồn (như trên)",
@@ -553,6 +575,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "AY-ben-dah — written 'ebd.' but spoken in full"
       },
       {
+        cell_id: "c6472a42-5222-4176-9500-1d570f5972c4",
         "word": "der/die Verfasser/-in",
         "en": "author",
         "vi": "tác giả",
@@ -561,6 +584,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dayr fer-FAH-ser — 'v' = 'f'; feminine form takes '-in'"
       },
       {
+        cell_id: "d6750136-17c0-4288-9206-0bb98d305586",
         "word": "die Sekundärliteratur",
         "en": "secondary literature",
         "vi": "tài liệu thứ cấp",
@@ -571,21 +595,25 @@ export const lessons: GermanLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "fe1b6755-888b-4995-b149-6f7b62115f40",
         "speaker": "Doktorandin Linh",
         "text": "In meinem dritten Kapitel beziehe ich mich primär auf Bourdieu — meinen Sie, das ist die richtige Schwerpunktsetzung?",
         "vi": "Ở chương ba tôi tham chiếu chủ yếu Bourdieu — thầy thấy đó có phải trọng tâm đúng không?"
       },
       {
+        cell_id: "0da5f490-a037-40df-bb4e-0b9d74984acc",
         "speaker": "Prof. Bauer",
         "text": "Bourdieu ist unverzichtbar, gewiss. Doch sollten Sie auch die kritische Rezeption — Wacquant, Calhoun — heranziehen, andernfalls wirkt Ihre Argumentation einseitig.",
         "vi": "Bourdieu chắc chắn không thể thiếu. Nhưng bạn cũng nên đưa vào sự tiếp nhận phê phán — Wacquant, Calhoun — nếu không lập luận của bạn sẽ trông một chiều."
       },
       {
+        cell_id: "273337a1-a446-431f-91e5-6c128153d606",
         "speaker": "Linh",
         "text": "Verstanden. Wäre es zulässig, Bourdieus Begriff in Anlehnung an Wacquant zu modifizieren, statt ihn unverändert zu übernehmen?",
         "vi": "Tôi hiểu. Liệu có chấp nhận được khi sửa đổi khái niệm của Bourdieu dựa theo Wacquant, thay vì tiếp thu không đổi không?"
       },
       {
+        cell_id: "85a9e7bf-5116-40f2-924e-901561964978",
         "speaker": "Prof. Bauer",
         "text": "Nicht nur zulässig — wissenschaftlich erforderlich. Aber begründen Sie die Modifikation explizit.",
         "vi": "Không chỉ chấp nhận được — về khoa học là cần thiết. Nhưng hãy biện minh sự sửa đổi một cách rõ ràng."
@@ -884,6 +912,7 @@ export const lessons: GermanLesson[] = [
     "tip_advice_en": "Before you counter:\n1. RE-READ the opponent's argument — make sure you've understood it correctly.\n2. CLASSIFY the kind of objection you're making:\n   - Empirisch (the data are wrong or insufficient)\n   - Methodisch (the method doesn't fit)\n   - Theoretisch (the theoretical frame is shaky)\n   - Logisch (the chain of reasoning has a flaw)\n3. PICK ONE — do NOT mix several types of objection in a single move.\n\nFormal 5-step counter-argument structure:\n1. ANERKENNEN (acknowledge): 'Ich teile Ihre Grundannahme, dass...' / 'Ihr Ansatz ist in vielerlei Hinsicht überzeugend.'\n2. EINSCHRÄNKEN (qualify): 'Gleichwohl möchte ich einen Aspekt zur Diskussion stellen.'\n3. EINWAND (the objection itself): 'Gegen Ihre Lesart spricht jedoch...'\n4. BEGRÜNDEN (ground it): 'Konkret zeigt sich dies darin, dass...'\n5. ANGEBOT (offer an alternative): 'Eine alternative Lesart wäre...' / 'In Anlehnung an X ließe sich auch...'\n\nC1 counter-argument language:\n- 'Gegen diese Lesart spricht jedoch...' (against this reading, however, speaks…)\n- 'Demgegenüber wäre einzuwenden, dass...' (against that one would have to object that…)\n- 'Diese Argumentation greift meines Erachtens zu kurz' (this argumentation, in my view, falls short)\n- 'Insofern als ... ist, wäre die Schlussfolgerung problematisch' (inasmuch as…, the conclusion would be problematic)\n- 'In dieser Allgemeinheit lässt sich der Aussage nicht zustimmen' (at this level of generality the claim cannot be endorsed)\n- 'Ihre These ist mit der Datenlage nicht vollständig in Einklang zu bringen' (your thesis is not fully reconcilable with the state of the data)\n\nWhen the other side is right:\n- 'In diesem Punkt müssen Sie mir Recht geben' (on this point I must concede)\n- 'Ihre Beobachtung trifft zu — ich werde das überdenken' (your observation holds — I'll rethink that)\n- 'Das ist ein berechtigter Hinweis, der mich zum Umdenken bewegt' (that's a legitimate pointer that moves me to rethink)\n\nWhen you need more time:\n- 'Diese Frage berührt einen komplexen Punkt — gestatten Sie, dass ich darauf schriftlich zurückkomme' (this question touches on a complex point — allow me to come back to it in writing)\n\nAvoid at all costs:\n- 'Sie haben das nicht verstanden' (personalises)\n- 'Das ist falsch' (too rigid, no hedge)\n- 'Wie ich bereits sagte...' (passive-aggressive)\n- 'Mit Respekt, aber...' (Anglo-style; sounds awkward and faintly sarcastic in formal German)\n- Persönliche Angriffe (personal attacks) of any kind\n\nFinal tip: if you feel yourself getting emotional during a counter-argument, pause for one beat. The canonical phrase: 'Gestatten Sie, dass ich kurz nachdenke' (allow me a moment to think). Five seconds of formal silence reads more competently than a rushed counter. German academics respect Bedacht (deliberation) — restraint reads as strength, not weakness.",
     "vocabulary": [
       {
+        cell_id: "dbbccbe8-44cb-4eb4-b841-c1e4bc5344c9",
         "word": "der Einwand",
         "en": "objection (in argument)",
         "vi": "phản biện, phản đối",
@@ -892,6 +921,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dayr INE-vahnt — 'ei' = 'eye'; final 'd' devoices to 't'"
       },
       {
+        cell_id: "48838263-b2e3-496b-9391-7d4cd6c6d1c9",
         "word": "die Lesart",
         "en": "reading, interpretation",
         "vi": "cách đọc, cách hiểu",
@@ -900,6 +930,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee LAYS-art — long 'ay'; key C1 term for textual interpretation"
       },
       {
+        cell_id: "430cab9d-79bc-4cce-8abb-7f5f3a84f19f",
         "word": "die Schlussfolgerung",
         "en": "conclusion (logical)",
         "vi": "kết luận",
@@ -908,6 +939,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee SHLOOS-fol-gay-roong — 'sch' = 'sh'; 'ß' = 'ss'"
       },
       {
+        cell_id: "06b8a270-c80b-4428-8b44-01d21d45b3bd",
         "word": "die Voraussetzung",
         "en": "premise, prerequisite",
         "vi": "tiền đề",
@@ -916,6 +948,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee FOR-ows-zets-oong — 'au' = 'ow'; 'z' = 'ts'"
       },
       {
+        cell_id: "7e413ef4-fb73-47b7-b8f6-9b4e68d5aaf7",
         "word": "die Reichweite",
         "en": "scope, range",
         "vi": "phạm vi",
@@ -924,6 +957,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee RIKH-vy-teh — 'ei' = 'eye'; literally 'reach-width'"
       },
       {
+        cell_id: "757b6545-fcb3-4d4d-b826-a37512da82ec",
         "word": "in Frage stellen",
         "en": "to call into question",
         "vi": "đặt vấn đề về",
@@ -932,6 +966,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "in FRAH-geh SHTEL-len — Funktionsverbgefüge, the most formal C1 form for 'question'"
       },
       {
+        cell_id: "2d007383-d26b-47cd-9258-9fd893436eb8",
         "word": "in Zweifel ziehen",
         "en": "to draw into doubt",
         "vi": "đưa vào nghi ngờ",
@@ -940,6 +975,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "in TSVY-fel TSEE-en — 'z' = 'ts'; 'ei' = 'eye'"
       },
       {
+        cell_id: "d65d0d7d-e5a4-43d1-9b88-c1e923561058",
         "word": "einen Einwand erheben",
         "en": "to raise an objection",
         "vi": "đưa ra phản đối",
@@ -948,6 +984,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "EYE-nen INE-vahnt er-HAY-ben — 'h' between vowels is fully pronounced"
       },
       {
+        cell_id: "119c4328-d4f6-428a-9df9-d196b7ded58e",
         "word": "die Verzerrung",
         "en": "bias, distortion",
         "vi": "thiên lệch, méo mó",
@@ -956,6 +993,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee fer-TSER-roong — 'z' = 'ts'; standard methodology term"
       },
       {
+        cell_id: "0351d8d6-178d-471d-a2d2-f9e50bc7b258",
         "word": "zielführend",
         "en": "purposive, conducive to the goal",
         "vi": "có tính dẫn dắt đến mục đích",
@@ -966,21 +1004,25 @@ export const lessons: GermanLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "10f59c36-9523-4679-9a81-dbaad3602a9f",
         "speaker": "Dr. Akinwumi",
         "text": "Ihre Schlussfolgerung erscheint mir voreilig — Sie generalisieren von 42 Stunden Korpus auf eine ganze Sprechergruppe.",
         "vi": "Kết luận của bạn tôi thấy vội vã — bạn khái quát từ ngữ liệu 42 giờ ra một nhóm người nói toàn bộ."
       },
       {
+        cell_id: "0592228f-a85f-48c2-8a75-8242335c7e27",
         "speaker": "Linh",
         "text": "Das ist ein berechtigter Einwand. Allerdings erhebe ich keinen Anspruch auf statistische Repräsentativität, sondern auf typologische Tiefenschärfe.",
         "vi": "Đó là phản biện có cơ sở. Tuy nhiên tôi không tuyên bố tính đại diện thống kê, mà là độ sắc nét loại hình học."
       },
       {
+        cell_id: "46d1102d-f83f-4f32-9667-cb361b711c5c",
         "speaker": "Dr. Akinwumi",
         "text": "Das mag zutreffen. Demgegenüber wäre dennoch einzuwenden, dass Ihr Sample auf einen Universitätskontext begrenzt ist.",
         "vi": "Điều đó có thể đúng. Đối lại vẫn cần phản đối rằng mẫu của bạn bị giới hạn ở môi trường đại học."
       },
       {
+        cell_id: "d89906c7-21de-4c66-917a-61990b69be2a",
         "speaker": "Linh",
         "text": "In diesem Punkt müssen Sie mir Recht geben — der außeruniversitäre Kontext bleibt eine Lücke, die ich in einer Anschlussstudie schließen möchte.",
         "vi": "Ở điểm này tôi phải thừa nhận bạn đúng — môi trường ngoài đại học vẫn là một khoảng trống tôi muốn khép lại ở nghiên cứu tiếp nối."
@@ -1279,6 +1321,7 @@ export const lessons: GermanLesson[] = [
     "tip_advice_en": "Before stating a claim:\n1. ASSESS your evidence strength (1–10).\n2. PICK the matching hedge level:\n   - 1–3: 'es ist nicht auszuschließen, dass...' / 'eine Möglichkeit wäre, dass...'\n   - 4–6: 'unter Umständen' / 'es ist denkbar, dass...'\n   - 7–8: 'vermutlich' / 'wahrscheinlich' / 'es spricht einiges dafür, dass...'\n   - 9: 'es ist davon auszugehen, dass...' / 'mit hoher Wahrscheinlichkeit'\n   - 10: 'es steht außer Frage, dass...' (EXTREMELY RARE — logic/math only)\n3. AVOID overshooting (claim too strong) AND undershooting (so many hedges the claim disappears — wishy-washy).\n\nC1 hedging vocabulary:\n- Modal verbs: 'dürfte', 'könnte', 'mag', 'mögen' (Konjunktiv I for indirect speech)\n- Adverbs: 'vermutlich', 'wahrscheinlich', 'tendenziell', 'gegebenenfalls', 'unter Umständen'\n- Verbs of caution: 'es lässt sich annehmen', 'es spricht dafür', 'es liegt nahe'\n- Konjunktiv II constructions: 'wäre denkbar', 'ließe sich vermuten', 'könnte erklärt werden'\n- Limiters: 'in der Tendenz', 'tendenziell', 'mit Einschränkung', 'vorbehaltlich'\n\nIn the concluding paragraph:\n- 'Die Befunde sprechen tendenziell für die Hypothese, ohne sie indes zwingend zu belegen' (the findings tend to support the hypothesis, without however compellingly proving it)\n- 'Eine endgültige Bewertung ließe sich erst auf der Grundlage repliktativer Studien vornehmen' (a final evaluation could only be made on the basis of replicative studies)\n- 'Inwieweit sich diese Schlussfolgerung verallgemeinern lässt, bleibt einer Anschlussstudie vorbehalten' (the extent to which this conclusion generalises is left for a follow-up study)\n\nWhen reporting key limitations:\n- 'Im Rahmen dieser Untersuchung lässt sich nicht klären, ob...' (within the scope of this investigation it cannot be resolved whether...)\n- 'Die vorliegende Studie weist Einschränkungen auf, die in zukünftigen Arbeiten zu berücksichtigen wären...' (the present study has limitations to be addressed in future work)\n\nWhen causality is uncertain:\n- 'Es zeigt sich ein Zusammenhang, ohne dass sich die Kausalität daraus zwingend ableiten ließe' (a connection emerges, but causality cannot be compellingly derived from it)\n\nWhen the data are insufficient:\n- 'Die Datenlage gestattet keine abschließende Bewertung' (the state of the data does not permit a final evaluation)\n- 'Auf Grundlage des vorhandenen Korpus lässt sich diese Frage nur tentativ beantworten' (on the basis of the available corpus this question can only be tentatively answered)\n\nFinal tip: count how often you use 'eindeutig' (clearly), 'klar' (clear), 'offensichtlich' (obviously) in your draft — more than two per chapter is a red flag for anti-hedging. Replace with formulations whose strength matches the evidence.",
     "vocabulary": [
       {
+        cell_id: "9ce31fc8-812e-44c9-8ad2-d1770e19a02d",
         "word": "vermutlich",
         "en": "presumably, probably",
         "vi": "có lẽ, có khả năng",
@@ -1287,6 +1330,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "fer-MOOT-likh — final soft 'ch'; ~60% confidence hedge"
       },
       {
+        cell_id: "4fca72f2-7b47-4272-b109-9be5b01c208e",
         "word": "tendenziell",
         "en": "tendentially, by tendency",
         "vi": "có xu hướng",
@@ -1295,6 +1339,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "ten-den-tsee-EL — final stress; literally 'by tendency'"
       },
       {
+        cell_id: "eca2beb3-239c-4dd9-a048-55ee2ddbfb37",
         "word": "unter Umständen",
         "en": "under (some) circumstances, possibly",
         "vi": "trong một số trường hợp",
@@ -1303,6 +1348,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "OON-ter OOM-shten-den — ~30% confidence hedge"
       },
       {
+        cell_id: "3f51e3b0-2b40-4356-9f65-6e08fe745900",
         "word": "gegebenenfalls",
         "en": "if applicable, where appropriate",
         "vi": "nếu áp dụng được",
@@ -1311,6 +1357,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "ge-GAY-be-nen-fals — often abbreviated 'ggf.' in writing"
       },
       {
+        cell_id: "86cfdb4a-5a52-4daf-90d7-afe77fddce6f",
         "word": "vorbehaltlich (+ Gen)",
         "en": "subject to, conditional upon",
         "vi": "với điều kiện, dành cho",
@@ -1319,6 +1366,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "FOR-be-hahlt-likh — takes the genitive; legal-academic register"
       },
       {
+        cell_id: "156515f7-4ec0-43ed-8320-eaefe167ebde",
         "word": "indes",
         "en": "however, yet (formal)",
         "vi": "song, tuy nhiên (formal)",
@@ -1327,6 +1375,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "in-DES — gehoben; more formal than 'jedoch' or 'aber'"
       },
       {
+        cell_id: "43e4a7f5-3102-4c0b-9ac9-c113f1e0a18b",
         "word": "die Tragweite",
         "en": "scope, ramification",
         "vi": "tầm vóc, hệ quả",
@@ -1335,6 +1384,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee TRAHK-vy-teh — final 'g' devoices to 'k'"
       },
       {
+        cell_id: "e60a6caa-d150-4a7b-b747-b7dbbf9a3b8f",
         "word": "abschließend",
         "en": "conclusive(ly), final(ly)",
         "vi": "chung cuộc, cuối cùng",
@@ -1343,6 +1393,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "AHP-shlee-sent — 'sch' = 'sh'; from 'abschließen' (to conclude)"
       },
       {
+        cell_id: "79cafa01-6136-409e-b45e-8a92ae3ebb39",
         "word": "die Einschränkung",
         "en": "limitation, qualification",
         "vi": "hạn chế, giới hạn",
@@ -1351,6 +1402,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee INE-shren-koong — Limitations-section staple"
       },
       {
+        cell_id: "64df8576-63e4-4871-b3b5-99fc02e47802",
         "word": "es lässt sich annehmen",
         "en": "it can be assumed",
         "vi": "có thể giả định",
@@ -1361,21 +1413,25 @@ export const lessons: GermanLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "89fd43a8-87f6-4a46-b718-def05f13c80e",
         "speaker": "Reviewer",
         "text": "Sie schreiben in der Diskussion: ‚Eindeutig zeigt sich, dass Code-Switching identitätskonstitutiv ist.' Ist diese Formulierung angesichts Ihrer Datenlage nicht zu stark?",
         "vi": "Bạn viết ở phần thảo luận: ‚Rõ ràng cho thấy chuyển mã có tính cấu thành căn tính'. Diễn đạt này không phải quá mạnh trước tình trạng dữ liệu của bạn sao?"
       },
       {
+        cell_id: "b6fa7a28-9045-4a01-bab9-4db0879b07a7",
         "speaker": "Linh",
         "text": "Sie haben Recht — die Formulierung ist zu absolut. Ich werde sie zu ‚Die Befunde sprechen tendenziell dafür, dass...' abschwächen.",
         "vi": "Bạn đúng — diễn đạt quá tuyệt đối. Tôi sẽ giảm xuống ‚Các kết quả có xu hướng ủng hộ rằng...'."
       },
       {
+        cell_id: "d4447139-f127-4d51-a04e-4bc815722342",
         "speaker": "Reviewer",
         "text": "Treffender. Erwägen Sie zudem den Zusatz ‚unter den Bedingungen unseres Korpus' — das sichert die epistemische Reichweite zusätzlich ab.",
         "vi": "Chính xác hơn. Hãy thêm ‚trong điều kiện ngữ liệu của chúng tôi' — điều đó còn đảm bảo phạm vi tri thức."
       },
       {
+        cell_id: "1ce5df23-ee5c-4f3f-84b2-14dd7cb522a4",
         "speaker": "Linh",
         "text": "Übernehme ich. Vielen Dank für die präzisierende Lektüre.",
         "vi": "Tôi tiếp thu. Cảm ơn vì sự đọc làm chính xác."
@@ -1674,6 +1730,7 @@ export const lessons: GermanLesson[] = [
     "tip_advice_en": "C1 5-step definition structure:\n1. BEGRIFFSGESCHICHTE: 'Der Begriff geht auf X zurück, wurde von Y weiterentwickelt...'\n2. REVIEW competing definitions: 'In der Forschungsliteratur lassen sich grob drei Lesarten unterscheiden: erstens..., zweitens..., drittens...'\n3. KRITISCHE WÜRDIGUNG (critical appraisal): 'Während die erste Lesart den Vorteil X hat, übergeht sie Y. Die zweite hingegen...'\n4. ARBEITSDEFINITION: 'Vor diesem Hintergrund verwende ich den Begriff im folgenden Sinne: ...'\n5. OPERATIONALISIERUNG (if empirical): 'Operationalisiert wird das Konstrukt durch drei Indikatoren: A, B, C'\n\nFormal definition language:\n- 'Unter dem Begriff X verstehe ich im Folgenden Y' (Nominaldefinition — how I will use X here)\n- 'Der Terminus X bezeichnet Y' (Realdefinition — X designates Y)\n- 'Der Begriff geht auf X (Jahr) zurück' (the term traces back to X)\n- 'In der einschlägigen Literatur lassen sich drei Lesarten unterscheiden' (Review: three readings can be distinguished)\n- 'In Abgrenzung zu X' (in delimitation from X)\n- 'Im Anschluss an X' (following on from X)\n- 'Operationalisiert wird das Konstrukt durch...' (operationalization)\n- 'Aus heuristischen Gründen verwende ich den Begriff im weiten Sinne' (Working term in the broad sense)\n\nWhen several concepts sit next to each other:\n- 'Translanguaging ist nicht zu verwechseln mit Code-Switching, da X den Schwerpunkt auf Y legt' (X is not to be confused with Y, since X places the emphasis on Z)\n- 'Während X eine strukturelle Perspektive einnimmt, ist Y diskursanalytisch ausgerichtet' (while X takes a structural perspective, Y is discourse-analytically oriented)\n\nWhen your definition modifies an existing concept:\n- 'Ich modifiziere Bourdieus Habitus-Begriff dergestalt, dass migrationsspezifische Konfigurationen berücksichtigt werden' (I modify Bourdieu's habitus concept in such a way that migration-specific configurations are taken into account)\n\nWhen deciding between Anglizismus vs Eindeutschung:\n- 'Im deutschsprachigen Raum existiert die Übersetzung X (Y, Z), die jedoch in der Fachdiskussion uneinheitlich verwendet wird. Aus Gründen der Anschlussfähigkeit an die internationale Literatur verwende ich den englischen Originalterminus.' (In the German-speaking area the translation X exists, but is used inconsistently in the specialist discussion. For reasons of connectability to the international literature I use the English original term.)\n\nFinal check: if your definition runs under 1 page in a PhD, it's likely insufficient. Over 5 pages is likely too heavy. The sweet spot: 1.5–3 pages per Schlüsselbegriff (key concept).",
     "vocabulary": [
       {
+        cell_id: "01587b5f-5c66-4cfc-84aa-61f572fee6b9",
         "word": "der Begriff",
         "en": "concept, term",
         "vi": "khái niệm, thuật ngữ",
@@ -1682,6 +1739,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dayr be-GRIF — final stress; central C1 academic term"
       },
       {
+        cell_id: "5d713a6d-39d8-4e8a-a307-c65be636b9cd",
         "word": "der Terminus (pl. Termini)",
         "en": "technical term",
         "vi": "thuật ngữ chuyên ngành",
@@ -1690,6 +1748,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dayr TAYR-mee-noos — Latin loan; plural 'Termini'"
       },
       {
+        cell_id: "f63b5489-ec30-43db-996e-3176bdf943bd",
         "word": "die Begriffsklärung",
         "en": "conceptual clarification",
         "vi": "việc làm rõ khái niệm",
@@ -1698,6 +1757,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee be-GRIFS-klay-roong — Begriff + Klärung"
       },
       {
+        cell_id: "a905dbd8-8bd1-48fd-b2fd-248b788c6dfa",
         "word": "die Abgrenzung (zu/von)",
         "en": "delimitation, distinction (from)",
         "vi": "sự phân biệt (với)",
@@ -1706,6 +1766,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee AHP-gren-tsoong — 'z' = 'ts'"
       },
       {
+        cell_id: "a4ab5610-34e7-4fb4-b2cf-1a61e32c41fc",
         "word": "die Konzeption",
         "en": "conception, framework",
         "vi": "quan niệm, khung khái niệm",
@@ -1714,6 +1775,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee kon-tsep-tsee-OHN — final stress"
       },
       {
+        cell_id: "d7a25be5-e3dc-423d-a62c-533bb41db7aa",
         "word": "operationalisieren",
         "en": "to operationalize",
         "vi": "vận hành hóa (làm khái niệm thành chỉ báo đo được)",
@@ -1722,6 +1784,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "o-per-ah-tsee-o-nah-lee-ZEE-ren — six syllables, final stress"
       },
       {
+        cell_id: "c462f6ba-6783-4054-9ace-a51a11222ba9",
         "word": "der Indikator (pl. Indikatoren)",
         "en": "indicator",
         "vi": "chỉ báo",
@@ -1730,6 +1793,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dayr in-dee-KAH-tor — Latin loan"
       },
       {
+        cell_id: "2992f88f-d6fa-43ee-ae76-fd1b575c8c9a",
         "word": "einschlägig",
         "en": "relevant, pertinent (literature)",
         "vi": "liên quan, chuyên ngành",
@@ -1738,6 +1802,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "INE-shleh-gikh — used almost exclusively in academic prose"
       },
       {
+        cell_id: "9d7a2c60-a357-4830-8c39-2f0b71d9de23",
         "word": "uneinheitlich",
         "en": "non-uniform, inconsistent",
         "vi": "không thống nhất",
@@ -1746,6 +1811,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "OON-ine-hite-likh — 'ei' = 'eye'; final soft 'ch'"
       },
       {
+        cell_id: "168f0e6f-37d5-4860-8169-a38c16b6c768",
         "word": "heuristisch",
         "en": "heuristic",
         "vi": "có tính heuristic, công cụ phân tích",
@@ -1756,21 +1822,25 @@ export const lessons: GermanLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "a6d4b662-0378-40cd-8aa6-961ac3bb4f71",
         "speaker": "Doktorand Linh",
         "text": "Frau Bauer, im zweiten Kapitel definiere ich Translanguaging. Genügt eine kurze Arbeitsdefinition oder soll ich die Begriffsgeschichte ausführlich darstellen?",
         "vi": "Thưa cô Bauer, ở chương hai tôi định nghĩa Translanguaging. Một định nghĩa làm việc ngắn có đủ không hay tôi nên trình bày lịch sử khái niệm chi tiết?"
       },
       {
+        cell_id: "11e67b24-74fe-4b30-9a57-75c442ca2032",
         "speaker": "Prof. Bauer",
         "text": "Bei einem Schlüsselbegriff wie diesem brauchen Sie die volle Konzeptionsgeschichte — von García über Wei bis Pennycook — zudem eine klare Abgrenzung zu Code-Switching.",
         "vi": "Với một khái niệm then chốt như vậy, bạn cần lịch sử khái niệm đầy đủ — từ García qua Wei đến Pennycook — kèm phân biệt rõ với Code-Switching."
       },
       {
+        cell_id: "27c59d1b-5d35-4b62-8d31-d4637f5efb53",
         "speaker": "Linh",
         "text": "Soll ich auch operationalisieren — drei Indikatoren konkret nennen?",
         "vi": "Tôi cũng nên vận hành hóa — kể ra cụ thể ba chỉ báo không?"
       },
       {
+        cell_id: "28555127-907d-40e0-8f19-407a696f033d",
         "speaker": "Prof. Bauer",
         "text": "Unbedingt. Ohne Operationalisierung bleibt der Begriff theoretisch hängend.",
         "vi": "Tuyệt đối. Không có vận hành hóa, khái niệm vẫn lơ lửng về mặt lý thuyết."
@@ -2069,6 +2139,7 @@ export const lessons: GermanLesson[] = [
     "tip_advice_en": "Formal 4-step structure for comparing methods:\n1. KRITERIENRASTER: define the criteria — Tiefenschärfe, Generalisierbarkeit, Aufwand (effort), Kontextsensitivität, etc.\n2. PRO/CONTRA per method: enumerate systematically.\n3. BEZUG ZUR FRAGESTELLUNG: which method fits your specific research question best?\n4. ENTSCHEIDUNG + BEGRÜNDUNG: choose + justify + acknowledge limitations.\n\nFormal comparison language:\n- 'Während X auf A abzielt, ist Y auf B ausgerichtet' (while X aims at A, Y is oriented toward B)\n- 'Beide Verfahren weisen je spezifische Stärken auf' (both procedures show their own specific strengths)\n- 'Im direkten Vergleich erweist sich X als geeigneter, da Y' (in direct comparison X turns out more suitable, because Y)\n- 'Demgegenüber bietet Z den Vorzug von W' (against this, Z offers the advantage of W)\n- 'Allerdings auf Kosten von V' (however at the cost of V)\n- 'Eine Triangulation erlaubt es, die Schwächen des einen durch die Stärken des anderen abzufedern' (a triangulation lets the weaknesses of one be cushioned by the strengths of the other)\n- 'Vor diesem Hintergrund entscheide ich mich für X, ergänzt durch Y' (against this background I opt for X, complemented by Y)\n\nGütekriterien per method:\n- Quantitative: 'Validität' (validity), 'Reliabilität' (reliability), 'Objektivität' (objectivity)\n- Qualitative (Lincoln & Guba): 'Glaubwürdigkeit' (credibility), 'Übertragbarkeit' (transferability), 'Zuverlässigkeit' (dependability), 'Bestätigbarkeit' (confirmability)\n- Mixed-methods: 'Triangulationsqualität' (quality of triangulation) + both sets above\n\nWhen defending the chosen method:\n- 'Die Methodenwahl ist durch die Fragestellung determiniert: da meine Untersuchung sequenzielle Mikromuster identifizieren soll, kommt nur die Konversationsanalyse in Frage' (the choice of method is determined by the research question: because my study must identify sequential micro-patterns, only conversation analysis is admissible)\n\nWhen acknowledging limitations:\n- 'Diese Methodenwahl bringt die Einschränkung mit sich, dass...' (this method choice brings with it the limitation that...)\n- 'Eine breitere Generalisierbarkeit wäre durch eine ergänzende quantitative Erhebung zu erzielen, die im Rahmen der vorliegenden Arbeit nicht zu leisten war' (broader generalisability would be achievable through a supplementary quantitative survey, which was not feasible within the present work)\n\nFinal tip: prepare a one-page Tabelle comparing Method A vs B vs C — columns: criteria, rows: methods. Having it ready makes the Verteidigung (defence) much easier. Add a final column: 'Eignung für meine Fragestellung' (suitability for my research question).",
     "vocabulary": [
       {
+        cell_id: "1672c971-30e2-442f-9388-d5678a3dd6ce",
         "word": "die Methode (pl. Methoden)",
         "en": "method",
         "vi": "phương pháp",
@@ -2077,6 +2148,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee meh-TOH-deh — Greek loan, stress on second syllable"
       },
       {
+        cell_id: "df413deb-f2bd-4687-9e40-c6ef508dc4f3",
         "word": "die Methodenwahl",
         "en": "choice of method",
         "vi": "việc chọn phương pháp",
@@ -2085,6 +2157,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee meh-TOH-den-vahl — central methodology-chapter term"
       },
       {
+        cell_id: "a34516aa-0fa6-4722-9e2b-968aa2c0d144",
         "word": "der Zugang (pl. Zugänge)",
         "en": "approach",
         "vi": "cách tiếp cận",
@@ -2093,6 +2166,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dayr TSOO-gang — 'z' = 'ts'; the plural takes umlaut"
       },
       {
+        cell_id: "5648696f-1e06-4a0e-88e8-9df1bb3cb907",
         "word": "die Verfahrensweise",
         "en": "procedure, way of proceeding",
         "vi": "cách tiến hành",
@@ -2101,6 +2175,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee fer-FAH-rens-vy-zeh"
       },
       {
+        cell_id: "9ad19dda-e094-4723-9fd6-7c3d8ff18f2d",
         "word": "die Triangulation",
         "en": "triangulation",
         "vi": "tam giác hóa",
@@ -2109,6 +2184,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee tree-ang-goo-lah-tsee-OHN — final stress"
       },
       {
+        cell_id: "9c3e0d81-2c21-4d01-96dc-710226fe290a",
         "word": "die Tiefenschärfe",
         "en": "depth of focus, granularity",
         "vi": "độ sắc nét chiều sâu",
@@ -2117,6 +2193,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee TEE-fen-shayr-feh — literally 'depth of sharpness'"
       },
       {
+        cell_id: "47e0bb72-3e8f-4b50-b3a9-dab8451bc304",
         "word": "die Generalisierbarkeit",
         "en": "generalizability",
         "vi": "tính khái quát hóa",
@@ -2125,6 +2202,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee gay-neh-rah-lee-ZEER-bar-kite"
       },
       {
+        cell_id: "33996f88-c0eb-4b3f-bf8e-dd61bc88e321",
         "word": "abfedern",
         "en": "to cushion, mitigate",
         "vi": "giảm nhẹ",
@@ -2133,6 +2211,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "AHP-fay-dern — separable verb"
       },
       {
+        cell_id: "5bbad8f7-c07a-49bc-8219-af5e2d261f08",
         "word": "die Gütekriterien (pl.)",
         "en": "quality criteria",
         "vi": "các tiêu chí chất lượng",
@@ -2141,6 +2220,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee GUE-teh-kree-tay-ree-en — rounded 'ü'"
       },
       {
+        cell_id: "92f868ad-a11e-45de-8265-b09773810d74",
         "word": "auf Kosten (+ Gen)",
         "en": "at the expense of",
         "vi": "trên cái giá của (+ sở hữu cách)",
@@ -2151,21 +2231,25 @@ export const lessons: GermanLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "68e53fe2-a98b-4fc8-9a6f-b5bdaab1bef8",
         "speaker": "Prof. Bauer",
         "text": "Frau Nguyễn, weshalb verwerfen Sie die korpuslinguistische Herangehensweise zugunsten der Konversationsanalyse?",
         "vi": "Cô Nguyễn, tại sao bạn loại bỏ cách tiếp cận ngôn ngữ học ngữ liệu để chọn phân tích hội thoại?"
       },
       {
+        cell_id: "7b62cb66-440d-4cb4-832d-698cc9abd755",
         "speaker": "Linh",
         "text": "Im direkten Vergleich erweist sich die diskursanalytische Methode für meine Fragestellung als geeigneter, da sie sequenzielle Mikromuster aufzudecken vermag.",
         "vi": "Trong so sánh trực tiếp, phương pháp phân tích diễn ngôn tỏ ra phù hợp hơn cho câu hỏi nghiên cứu, bởi nó có khả năng phơi bày các vi-mẫu trình tự."
       },
       {
+        cell_id: "83f76f4d-e427-45bd-9393-3fe963bb2640",
         "speaker": "Prof. Bauer",
         "text": "Verzichten Sie damit nicht auf Generalisierbarkeit?",
         "vi": "Như vậy bạn không từ bỏ tính khái quát hóa sao?"
       },
       {
+        cell_id: "d4078edf-e47c-4c32-bd9a-1baa049cd5cc",
         "speaker": "Linh",
         "text": "Ja — das ist der bewusste Trade-off. Korpuslinguistik bietet Breite, allerdings auf Kosten der Kontextsensitivität, die meine Fragestellung erfordert.",
         "vi": "Có — đó là trade-off có ý thức. Ngôn ngữ học ngữ liệu cho bề rộng, song trên giá của độ nhạy ngữ cảnh mà câu hỏi của tôi đòi hỏi."
@@ -2474,6 +2558,7 @@ export const lessons: GermanLesson[] = [
     "tip_advice_en": "Formal Studienkritik structure (4 levels + Würdigung):\n1. ANERKENNUNG (10–15%): 'Die vorliegende Arbeit verdient Anerkennung für X'\n2. THEORETISCHE KRITIK: 'Theoretisch ist anzumerken, dass...'\n3. METHODISCHE KRITIK: 'Methodisch problematisch erscheint...'\n4. EMPIRISCHE KRITIK: 'Auf empirischer Ebene wäre einzuwenden...'\n5. INTERPRETATIVE KRITIK: 'Die Interpretation der Befunde übergeht...'\n6. KONSTRUKTIVE WENDUNG: 'Eine Verbesserung ließe sich durch X erzielen'\n7. GESAMTBEWERTUNG: 'Trotz dieser Einschränkungen leistet die Arbeit einen wichtigen Beitrag, indem...'\n\nFormal critique language:\n- 'Die vorliegende Studie weist methodische Mängel auf' (the present study exhibits methodological shortcomings)\n- 'Insbesondere bleibt X unscharf' (in particular X remains fuzzy)\n- 'Hinzu kommt, dass Y' (added to this is the fact that Y)\n- 'Es wäre zu fragen, ob...' (it would have to be asked whether...)\n- 'Die Argumentation greift meines Erachtens zu kurz' (the argumentation, in my judgement, falls short)\n- 'Die Schlussfolgerung übergeht den Aspekt X' (the conclusion glosses over aspect X)\n- 'Was die Stichprobenkonstruktion betrifft, ist anzumerken...' (as for the sample construction, it should be noted...)\n\nWhen critiquing an empirical shortcoming:\n- 'Die Datenlage gestattet die gezogene Schlussfolgerung nicht in dieser Allgemeinheit' (the state of the data does not permit the drawn conclusion at this level of generality)\n- 'Eine Triangulation der Methoden wäre hier wünschenswert gewesen' (a methodological triangulation would have been desirable here)\n- 'Der vorgelegte Befund wäre durch eine Replikation zu erhärten' (the presented finding would need to be corroborated by replication)\n\nWhen critiquing theoretically:\n- 'Die theoretische Verortung erscheint mir nicht hinreichend reflektiert' (the theoretical positioning seems to me insufficiently reflected)\n- 'In Anlehnung an Wacquants (2014) Kritik lässt sich anmerken, dass...' (drawing on Wacquant's 2014 critique, one can note that)\n\nFormal Verbesserungsvorschläge:\n- 'Eine Präzisierung wäre durch X erreichbar' (a clarification would be achievable through X)\n- 'Eine Erweiterung der Stichprobe um Y würde Z ermöglichen' (an extension of the sample by Y would enable Z)\n- 'In einer Anschlussstudie wäre zu prüfen, ob...' (in a follow-up study it should be tested whether...)\n\nGesamteinschätzung formula:\n- 'Trotz der genannten Einschränkungen leistet die Arbeit einen wichtigen Beitrag zur Forschungsdiskussion, indem sie...' — mandatory positive closer.\n- 'Insgesamt handelt es sich um eine sorgfältig durchgeführte Untersuchung, deren Befunde in folgender Hinsicht zu differenzieren wären:...' (overall, this is a carefully executed study whose findings need to be qualified in the following respects:...)\n\nAvoid at all costs:\n- 'Die Studie ist schlecht / wertlos' (personalising, polemical)\n- 'Der Autor versteht X nicht' (ad hominem)\n- 'Diese Forschung ist überholt' (no argumentation)\n- 'Mit Verlaub, das ist Unsinn' (highly unprofessional)\n\nFinal tip: before submitting a Rezension, do one read-through and count the ratio of negative to positive. If it's worse than 1:1 (more critique than praise), reconsider — you may be too hard. German sweet spot: 60% structured critique + 40% Würdigung. Below 30% Würdigung is too negative and publishing venues may reject.",
     "vocabulary": [
       {
+        cell_id: "172c514c-b7bd-4e0d-b6f1-f3b35fd09926",
         "word": "die Studienkritik",
         "en": "study critique",
         "vi": "phê phán nghiên cứu",
@@ -2482,6 +2567,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee SHTOO-dee-en-kree-teek"
       },
       {
+        cell_id: "8565aefa-fd89-4bfb-99e8-e3584a43f37f",
         "word": "der Mangel (pl. Mängel)",
         "en": "shortcoming, deficiency",
         "vi": "thiếu sót",
@@ -2490,6 +2576,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dayr MAHN-gel — plural takes umlaut 'Mängel' (MENG-el)"
       },
       {
+        cell_id: "b80b6fea-9138-4b9e-bed0-d5f77145c87a",
         "word": "die Tragweite",
         "en": "scope, ramification",
         "vi": "tầm vóc",
@@ -2498,6 +2585,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee TRAHK-vy-teh"
       },
       {
+        cell_id: "e3e88c40-96be-44dd-9668-f095e2633ba2",
         "word": "relativieren",
         "en": "to relativize, qualify",
         "vi": "tương đối hóa",
@@ -2506,6 +2594,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "reh-lah-tee-VEE-ren"
       },
       {
+        cell_id: "7ad1ba1b-168f-4650-8b26-ed6aacee9626",
         "word": "der Bias / die Verzerrung",
         "en": "bias",
         "vi": "thiên lệch",
@@ -2514,6 +2603,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dayr BYE-ahs (English loan) / dee fer-TSER-roong"
       },
       {
+        cell_id: "c9a06c9c-aa05-404d-bd06-3dd93cedd784",
         "word": "übergehen (etw.)",
         "en": "to overlook, skip over",
         "vi": "bỏ qua, không tính đến",
@@ -2522,6 +2612,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "UE-ber-gay-en — rounded 'ü'; key critique verb"
       },
       {
+        cell_id: "dd0db2cd-9b20-443c-8a0a-41fad3ba3567",
         "word": "die Würdigung",
         "en": "appreciation, recognition",
         "vi": "sự đánh giá tích cực",
@@ -2530,6 +2621,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee VUER-dee-goong — rounded 'ü'; mandatory in any German Rezension"
       },
       {
+        cell_id: "b5df604d-55c2-4bc7-a005-84af571a98de",
         "word": "die Replikation",
         "en": "replication",
         "vi": "nghiên cứu lặp lại",
@@ -2538,6 +2630,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee reh-plee-kah-tsee-OHN — final stress"
       },
       {
+        cell_id: "a9bf7068-cc48-4e00-a9e0-316f5fc3c3dd",
         "word": "wünschenswert",
         "en": "desirable",
         "vi": "đáng mong muốn",
@@ -2546,6 +2639,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "VUEN-shens-vayrt — rounded 'ü'"
       },
       {
+        cell_id: "8aeadbc4-bae6-482b-85f2-d1431f415d67",
         "word": "in den Blick nehmen",
         "en": "to take into view, focus on",
         "vi": "đưa vào tầm nhìn",
@@ -2556,21 +2650,25 @@ export const lessons: GermanLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "686aa9b6-2720-455d-8347-2ad992daa231",
         "speaker": "Linh",
         "text": "Ich habe die Müller-Studie 2022 für meine Rezension gelesen — ihre Schlussfolgerung erscheint mir empirisch unterbestimmt.",
         "vi": "Tôi đã đọc nghiên cứu Müller 2022 cho Rezension của tôi — kết luận của họ với tôi có vẻ thiếu cơ sở thực nghiệm."
       },
       {
+        cell_id: "c433d8b4-7aa9-4b78-957e-f4afa811e48f",
         "speaker": "Prof. Bauer",
         "text": "Konkret welcher Punkt?",
         "vi": "Cụ thể điểm nào?"
       },
       {
+        cell_id: "83cfc7c2-1502-4496-9066-ef2751a35ae5",
         "speaker": "Linh",
         "text": "Die Stichprobe umfasst 23 Personen, davon 18 aus einer einzigen Universität — die Generalisierung auf ‚urbane Migranten' erscheint mir nicht haltbar.",
         "vi": "Mẫu gồm 23 người, trong đó 18 từ một trường đại học duy nhất — sự khái quát hóa lên ‚dân di cư đô thị' với tôi không vững."
       },
       {
+        cell_id: "20be2979-e277-4a76-9fee-53f7be8113c1",
         "speaker": "Prof. Bauer",
         "text": "Stichhaltige Kritik. Vergessen Sie aber nicht die Würdigung — was leistet die Arbeit dennoch?",
         "vi": "Phê phán có cơ sở. Nhưng đừng quên Würdigung — công trình vẫn đóng góp gì?"
@@ -2879,6 +2977,7 @@ export const lessons: GermanLesson[] = [
     "tip_advice_en": "Asking a question at a Tagung (3-step structure):\n1. ACKNOWLEDGMENT (5–10 seconds): 'Vielen Dank für den anregenden Vortrag, Frau Nguyễn'\n2. LOKALISIERUNG (5–10 seconds): 'Ich hätte eine Frage zu Ihrem Punkt zur Stichprobenkonstruktion'\n3. KONKRETE FRAGE (10–20 seconds): 'Inwiefern ließe sich Ihre Befundlage gegen den Vorwurf der Selbstselektion absichern?'\n\nFormal question language:\n- 'Vielen Dank für den anregenden Vortrag' (many thanks for the stimulating talk)\n- 'Ich hätte eine Frage zu...' (I'd have a question about...)\n- 'Mich würde interessieren...' (I'd be interested to know...)\n- 'Inwiefern...' (to what extent)\n- 'Wie verhält es sich mit...?' (how does it stand with...?)\n- 'Könnten Sie präzisieren, ob...?' (could you clarify whether...?)\n- 'Wie würden Sie auf den Einwand reagieren, dass...?' (how would you respond to the objection that...?)\n\nAnswering a question (4-step structure):\n1. ACKNOWLEDGMENT: 'Diese Frage berührt einen wesentlichen Punkt' / 'Eine sehr berechtigte Frage'\n2. SIGNALISIERUNG: 'gestatten Sie, dass ich differenziert darauf eingehe'\n3. ANTWORT: clear, structured\n4. SCHLUSSWENDUNG: signal the close — 'Das wäre meine erste Antwort dazu' / 'Ich danke für den Hinweis'\n\nWhen you don't know the answer:\n- 'Diese Frage übersteigt den Rahmen meiner gegenwärtigen Untersuchung' (this question exceeds the scope of my current investigation)\n- 'Ich nehme die Anregung sehr gern auf' (I'm very glad to take the suggestion on board)\n- 'Auf diesen Punkt müsste ich Sie um Geduld bitten — ich werde ihn schriftlich nachreichen' (on this point I'd have to ask for your patience — I'll respond in writing)\n- AVOID: a bare 'Ich weiß es nicht'. AVOID: 'Das ist eine gute Frage' (cliched in formal German).\n\nFor multi-part questions:\n- 'Was Ihren ersten Aspekt betrifft, würde ich folgendermaßen argumentieren — was den zweiten betrifft, müsste ich Sie um Geduld bitten' (regarding your first aspect, I'd argue as follows — regarding the second, I must ask for patience)\n- If the chair cuts you off: 'Aufgrund der Zeit muss ich auf den dritten Aspekt verzichten — ich biete Ihnen gern an, das im Anschluss zu vertiefen' (due to time I must skip the third aspect — I'd be glad to dig into it afterwards)\n\nWhen you disagree with the question itself:\n- 'Diese Lesart Ihrer Frage teile ich nicht ganz' (I don't fully share that reading of your question)\n- 'Wenn ich Sie richtig verstanden habe, fragen Sie X — meine Antwort wäre Y' (if I've understood you correctly, you're asking X — my answer would be Y)\n\nWhen the chair cuts your question short:\n- 'Verstanden — ich fasse zusammen: ...' (understood — I'll summarise: ...)\n- Do NOT protest, do NOT continue ignoring the chair.\n\nFinal tip: write down the names and affiliations of people whose questions matter to you — approach them at the Coffee Break to follow up. A Tagung is fundamentally a Vernetzungsereignis (networking event). One good question plus one follow-up conversation = a potential collaboration partner.",
     "vocabulary": [
       {
+        cell_id: "46d2b2c7-c01a-471a-a651-42ba57412712",
         "word": "der Vortrag (pl. Vorträge)",
         "en": "lecture, presentation",
         "vi": "bài thuyết trình",
@@ -2887,6 +2986,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dayr FOR-trahk — plural takes umlaut: 'Vorträge'"
       },
       {
+        cell_id: "38e5edb4-d62b-4c3c-be6d-5e874d92462a",
         "word": "die Tagung",
         "en": "academic conference",
         "vi": "hội nghị học thuật",
@@ -2895,6 +2995,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee TAH-goong — formal academic conference"
       },
       {
+        cell_id: "d6d8c72b-a980-4927-a52e-10962dfb9d9e",
         "word": "der/die Diskutant/-in",
         "en": "discussant (formal)",
         "vi": "người thảo luận chính thức",
@@ -2903,6 +3004,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dayr dis-koo-TAHNT — final stress; pre-invited responder role"
       },
       {
+        cell_id: "fe038584-69a8-4657-b539-f6bed0d9443b",
         "word": "anregend",
         "en": "stimulating, thought-provoking",
         "vi": "kích thích tư duy",
@@ -2911,6 +3013,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "AHN-ray-gent — standard Q&A opener compliment"
       },
       {
+        cell_id: "b1ef870c-0780-4937-8a73-768aaaac413d",
         "word": "die Befundlage",
         "en": "state of findings, evidential basis",
         "vi": "tình trạng kết quả nghiên cứu",
@@ -2919,6 +3022,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee be-FOONT-lah-geh"
       },
       {
+        cell_id: "fa104bff-21f8-476f-8386-987bbbc9ffd2",
         "word": "inwiefern",
         "en": "to what extent",
         "vi": "ở mức độ nào",
@@ -2927,6 +3031,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "in-vee-FERN — formal Q&A question opener"
       },
       {
+        cell_id: "3f5d4673-b8ac-482a-bb0d-bc4639d05fae",
         "word": "präzisieren",
         "en": "to specify, refine",
         "vi": "làm chính xác",
@@ -2935,6 +3040,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "preh-tsee-ZEE-ren — final-syllable stress before infinitive ending"
       },
       {
+        cell_id: "7c333ee2-e0ba-48fb-a25c-d011a4b14c20",
         "word": "die Anregung",
         "en": "stimulus, suggestion",
         "vi": "gợi ý",
@@ -2943,6 +3049,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee AHN-ray-goong"
       },
       {
+        cell_id: "e4095015-855d-4495-9e48-58be70bca9d7",
         "word": "den Rahmen übersteigen",
         "en": "to exceed the scope",
         "vi": "vượt khỏi khuôn khổ",
@@ -2951,6 +3058,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dayn RAH-men ue-ber-SHTY-gen — the canonical 'I don't know' Funktionsverbgefüge"
       },
       {
+        cell_id: "0615e0f3-833b-44ca-a492-8a8ff1e41713",
         "word": "die Anschlussstudie",
         "en": "follow-up study",
         "vi": "nghiên cứu tiếp nối",
@@ -2961,21 +3069,25 @@ export const lessons: GermanLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "5c46e472-f266-4606-9ba0-1f2897e4a22a",
         "speaker": "Dr. Schmidt",
         "text": "Frau Nguyễn, vielen Dank für den anregenden Vortrag. Ich hätte eine Frage zur Stichprobenkonstruktion: inwiefern ließe sich Ihre Befundlage gegen den Vorwurf der Selbstselektion absichern?",
         "vi": "Cô Nguyễn, cảm ơn vì bài thuyết trình kích thích tư duy. Tôi có một câu hỏi về cấu trúc mẫu: bạn có thể bảo vệ tình trạng kết quả ở mức độ nào trước cáo buộc tự chọn lọc?"
       },
       {
+        cell_id: "b9ba612c-6ddf-4950-925b-daaf28b21e8c",
         "speaker": "Linh",
         "text": "Diese Frage berührt einen wesentlichen Punkt — gestatten Sie, dass ich differenziert eingehe.",
         "vi": "Câu hỏi này chạm đến một điểm cốt yếu — cho phép tôi trả lời một cách phân biệt."
       },
       {
+        cell_id: "5c069163-c23b-41a8-b111-c744b9992625",
         "speaker": "Linh",
         "text": "Selbstselektion ist tatsächlich eine reale Limitation. Ich begegne ihr durch zwei Strategien: Erstens habe ich kontrastive Vergleichsgruppen gebildet, zweitens habe ich Selbstauskunft mit Beobachtungsdaten trianguliert.",
         "vi": "Tự chọn lọc thực sự là một hạn chế thật. Tôi đối phó qua hai chiến lược: thứ nhất tôi đã tạo các nhóm so sánh đối chiếu, thứ hai tôi đã tam giác hóa tự khai với dữ liệu quan sát."
       },
       {
+        cell_id: "8e7eba6b-ef4d-4e2d-8604-45e879f6588d",
         "speaker": "Dr. Schmidt",
         "text": "Eine differenzierte Antwort — vielen Dank.",
         "vi": "Một câu trả lời phân biệt — xin cảm ơn."
@@ -3284,6 +3396,7 @@ export const lessons: GermanLesson[] = [
     "tip_advice_en": "Standard German Abstract structure (5 sentences / 5 functions):\n1. CONTEXT + FRAGESTELLUNG (1 sentence): 'Der vorliegende Beitrag untersucht die Frage, inwiefern X als Y fungiert'\n2. THEORETISCHE VERORTUNG (optional, 1 sentence): 'Theoretisch im Anschluss an Z verortet, ...'\n3. METHODE + DATEN (1 sentence): 'Auf der Grundlage eines Korpus von X werden mittels Y-Verfahren systematische Muster rekonstruiert'\n4. BEFUNDE (1 sentence): 'Die Befunde legen nahe, dass X primär als Y fungiert und Z erfüllt'\n5. BEITRAG (1 sentence): 'Die Studie leistet einen Beitrag zu W und schließt eine empirische Lücke hinsichtlich V'\n+ SCHLÜSSELWÖRTER: 4–6 keywords\n\nFormal Abstract language:\n- 'Der vorliegende Beitrag untersucht...' (the present contribution investigates)\n- 'Auf der Grundlage von X' (on the basis of X)\n- 'Mittels Y-Verfahren' (by means of Y procedures)\n- 'werden ... rekonstruiert / herausgearbeitet' (are reconstructed / worked out — passive)\n- 'Die Befunde legen nahe, dass...' (the findings suggest that)\n- 'Die Studie leistet einen Beitrag zu...' (the study contributes to)\n- 'schließt eine Lücke hinsichtlich (+ Gen)' (closes a gap with respect to)\n\nWhen writing a Zusammenfassung (Summary, longer than an Abstract — 500–1000 words for a Tagungsband):\n- Full IMRAD with one paragraph per section\n- Subheadings allowed\n- Citations OK in Zusammenfassung, NOT in Abstract\n\nWhen writing a Kurzfassung (very short, ~100 words for a Newsletter):\n- 1 sentence Forschungsfrage + 1 Methode + 1 main Befund + 1 Beitrag\n- NO Schlüsselwörter\n- Audience: non-specialists\n\nWhen writing an Exposé (research proposal):\n- Completely different — not a summary of completed work, but a PLAN for future work\n- 5–10 pages: Forschungsstand → Forschungslücke → Forschungsfrage → Theorie → Methode → Zeitplan → Literatur\n- Tense: Konjunktiv II for future actions ('Es soll untersucht werden, ob...')\n\nSchlüsselwörter selection:\n- 4–6 words\n- Single nouns or 2-word compounds\n- Semicolon-separated\n- Order: general > specific\n- Hyphenated Vietnamese-Deutsch where needed\n\nFinal tip: write the Abstract LAST — after the thesis/paper is complete. Drafting an Abstract first and then writing toward it usually produces drift between Abstract and actual content. The Abstract is a mirror of the work, not a plan.\n\nFinal Abstract checklist:\n- 150–250 words?\n- 5 sentences, each with its own function?\n- No 'in this paper' (= 'in diesem Beitrag') — use 'der vorliegende Beitrag'?\n- Konjunktiv II where evidence is incomplete?\n- Do the Schlüsselwörter help search / indexing?",
     "vocabulary": [
       {
+        cell_id: "611fd198-b60f-422c-b761-05e924769761",
         "word": "der Beitrag",
         "en": "contribution, article",
         "vi": "bài viết, đóng góp",
@@ -3292,6 +3405,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dayr BYE-trahk — 'ei' = 'eye'; final 'g' devoices to 'k'"
       },
       {
+        cell_id: "dea276bf-6957-43dc-8641-45eb9cea008b",
         "word": "die Zusammenfassung",
         "en": "summary",
         "vi": "tóm tắt",
@@ -3300,6 +3414,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee tsoo-ZAH-men-fah-soong"
       },
       {
+        cell_id: "8cc72dfb-c807-4c8b-9468-31fc0bdb0358",
         "word": "die Kurzfassung",
         "en": "brief version, short summary",
         "vi": "phiên bản ngắn",
@@ -3308,6 +3423,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee KOORTS-fah-soong — 'z' = 'ts'"
       },
       {
+        cell_id: "616fc6b6-0843-4196-97a7-7040e74bc60e",
         "word": "das Abstract",
         "en": "abstract (academic)",
         "vi": "tóm tắt khoa học",
@@ -3316,6 +3432,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dahs AHP-strakt — English loan, German prosody"
       },
       {
+        cell_id: "6f5190db-cdc0-46c2-84e5-89b6556228f0",
         "word": "die Schlüsselwörter (pl.)",
         "en": "keywords",
         "vi": "từ khóa",
@@ -3324,6 +3441,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee SHLUE-sel-vuer-ter — rounded 'ü' and 'ö'"
       },
       {
+        cell_id: "c5c059ba-c4b7-436e-a93c-57f8325e2e2d",
         "word": "vorliegend",
         "en": "present, at hand",
         "vi": "hiện tại, đang xét",
@@ -3332,6 +3450,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "FOR-lee-gent — present participle of 'vorliegen'"
       },
       {
+        cell_id: "481ac558-5278-4b80-986d-8908fe0fbb4a",
         "word": "fungieren als",
         "en": "to function as",
         "vi": "vận hành như",
@@ -3340,6 +3459,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "foon-GEE-ren ahls"
       },
       {
+        cell_id: "68bc03a2-aa18-44eb-9259-976d37855c84",
         "word": "auf der Grundlage von",
         "en": "on the basis of",
         "vi": "dựa trên cơ sở",
@@ -3348,6 +3468,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "owf dayr GROONT-lah-geh fon"
       },
       {
+        cell_id: "b6e55dc0-baf0-46a3-b4ff-bbba5f9f98d8",
         "word": "mittels (+ Gen)",
         "en": "by means of",
         "vi": "thông qua, bằng phương tiện",
@@ -3356,6 +3477,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "MIT-tels — takes genitive; formal alternative to 'mit'"
       },
       {
+        cell_id: "6dd551c5-5d92-4f18-b4a2-71c9cdcd9f98",
         "word": "nahelegen",
         "en": "to suggest, indicate",
         "vi": "gợi ý",
@@ -3366,21 +3488,25 @@ export const lessons: GermanLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "da1fcbf8-7f41-4b2c-9f8a-3e9a65b42f9e",
         "speaker": "Linh",
         "text": "Frau Bauer, ich habe einen ersten Abstract-Entwurf — könnten Sie kurz draufschauen?",
         "vi": "Thưa cô Bauer, tôi có bản thảo Abstract đầu tiên — cô có thể xem nhanh được không?"
       },
       {
+        cell_id: "7790ce7f-e038-49ac-9256-72a267ded40e",
         "speaker": "Prof. Bauer",
         "text": "Gerne. Wie viele Wörter umfasst er?",
         "vi": "Sẵn lòng. Nó dài bao nhiêu từ?"
       },
       {
+        cell_id: "08dd8255-ce10-4335-b971-5d8892da5660",
         "speaker": "Linh",
         "text": "320 — möglicherweise zu lang für die Tagungsanforderungen.",
         "vi": "320 — có lẽ quá dài cho yêu cầu hội nghị."
       },
       {
+        cell_id: "16b3a00d-b2a0-40bd-b030-dd4d52d52839",
         "speaker": "Prof. Bauer",
         "text": "Definitiv zu lang. Streichen Sie alle Hintergrundsätze — Abstracts beginnen direkt mit der Fragestellung.",
         "vi": "Chắc chắn quá dài. Hãy xóa hết các câu nền — Abstract bắt đầu trực tiếp với câu hỏi nghiên cứu."
@@ -3694,6 +3820,7 @@ export const lessons: GermanLesson[] = [
     "tip_advice_en": "When writing a Gutachten (peer review):\n\nFormal German structure (4–5 parts):\n1. ZUSAMMENFASSUNG (1 paragraph): summarise the Beitrag's argument — show you've read it carefully\n2. ALLGEMEINE BEWERTUNG (1–2 paragraphs): overall assessment — Stärken + Limitationen\n3. SUBSTANZIELLE ANMERKUNGEN (2–4 paragraphs): substantive critique, structured\n4. STILISTISCHE / FORMALE ANMERKUNGEN (1 paragraph): typos, formatting — short\n5. EMPFEHLUNG (1 sentence): Annahme / Annahme mit Änderungen / Überarbeitung erforderlich / Ablehnung\n\nFormal Gutachten language:\n- 'Der eingereichte Beitrag adressiert X' (the submitted contribution addresses X)\n- 'Insgesamt ist die Arbeit sorgfältig gearbeitet' (overall, the work is carefully done)\n- 'Gleichwohl sehe ich an X Stellen Überarbeitungsbedarf' (nevertheless I see revision need in X places)\n- 'Was Punkt X betrifft, würde ich um Y bitten' (regarding point X, I'd ask for Y)\n- 'Diese Argumentation greift meines Erachtens zu kurz, weil...' (this argumentation, in my view, falls short, because)\n- 'Eine Präzisierung in folgender Hinsicht wäre wünschenswert' (a clarification in the following respect would be desirable)\n\nEmpfehlung formulae:\n- 'Ich empfehle die Annahme mit kleinen Änderungen' (acceptance with minor changes)\n- 'Ich empfehle eine Überarbeitung mit anschließender Begutachtung' (revision with subsequent re-review)\n- 'Ich empfehle die Ablehnung in der vorliegenden Form, regelmäßig sind die Defizite jedoch behebbar' (rejection in the present form, though the deficits are generally fixable)\n\nWhen writing the Erwiderung (response to reviewer):\n\nFormal structure:\n1. ANSCHREIBEN AN HERAUSGEBER (1 paragraph): thank the editor, summarise changes\n2. PUNKT-FÜR-PUNKT-ANTWORT: each reviewer comment + response + line reference\n\nFormal Erwiderung language:\n- 'Vielen Dank für Ihre kritische und konstruktive Lektüre' (thank you for your critical and constructive reading)\n- 'Ich habe die Anregungen weitgehend berücksichtigt' (I have largely taken the suggestions on board)\n- 'In Anlehnung an Ihren Hinweis habe ich Abschnitt X grundlegend überarbeitet' (following your pointer, I have fundamentally reworked section X)\n- 'Diesen Punkt habe ich auf S. Y wie folgt präzisiert: ...' (I have clarified this point on p. Y as follows)\n- 'An diesem Punkt sehe ich mich aus methodischen Gründen nicht in der Lage, dem Vorschlag zu folgen, weil...' (at this point I cannot follow the suggestion for methodological reasons, because)\n\nWhen declining a comment (RECHTFERTIGUNG mandatory):\n- Acknowledge you considered it: 'Ihre Anregung habe ich sorgfältig erwogen'\n- Give a specific reason for declining: 'Aus folgenden Gründen sehe ich von einer Umsetzung ab: erstens..., zweitens...'\n- Acknowledge partial value: 'Ich teile Ihre Sorge in der Sache, halte aber die vorgeschlagene Lösung für nicht zielführend'\n\nAvoid at all costs in the Erwiderung:\n- 'Reviewer hat das nicht verstanden' (defensive, ad hominem)\n- 'Diese Kritik ist unberechtigt' (without Begründung — too curt)\n- Silent ignore: do NOT skip any comment — even rejection must be explicit\n\nReviewer-2 avoidance:\n- Do not nitpick typos at length — list them briefly at the end\n- Do not demand stylistic changes that are matters of taste\n- Do not ask the author to cite your own (revealing) work — double-blind violation\n- Do not over-extend the review timeline (30+ days is unprofessional)\n\nFinal tip: before submitting a Gutachten, read it once asking yourself 'would I want to receive this review?' If the answer is 'no' — re-tone. Substantive critique can be delivered constructively.",
     "vocabulary": [
       {
+        cell_id: "b53b6d48-52d7-4511-bfe3-14a2f179dcda",
         "word": "die Begutachtung",
         "en": "peer review (process)",
         "vi": "thẩm định đồng nghiệp",
@@ -3702,6 +3829,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee be-GOO-tahkh-toong — hard 'ch' in '-tach-'"
       },
       {
+        cell_id: "367659f5-fb30-46a2-90d1-6b5bbfc81cfd",
         "word": "das Gutachten",
         "en": "review report",
         "vi": "báo cáo thẩm định",
@@ -3710,6 +3838,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dahs GOO-tahkh-ten"
       },
       {
+        cell_id: "e67ef68e-5118-459a-b352-b342a87bf821",
         "word": "der/die Gutachter/-in",
         "en": "reviewer",
         "vi": "người thẩm định",
@@ -3718,6 +3847,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dayr GOO-tahkh-ter — feminine 'Gutachterin'"
       },
       {
+        cell_id: "835f7809-0fc2-4880-a266-bf5ff36ba1a2",
         "word": "die Erwiderung",
         "en": "response to review",
         "vi": "phản hồi thẩm định",
@@ -3726,6 +3856,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee er-VEE-de-roong"
       },
       {
+        cell_id: "5da7827b-7c97-4530-8391-3fc62393db47",
         "word": "der Überarbeitungsbedarf",
         "en": "revision need",
         "vi": "nhu cầu chỉnh sửa",
@@ -3734,6 +3865,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dayr ue-ber-AR-by-toongs-be-darf — rounded 'ü'"
       },
       {
+        cell_id: "04dfe054-2578-41b4-b782-01c7add9e382",
         "word": "einreichen",
         "en": "to submit",
         "vi": "nộp (bài)",
@@ -3742,6 +3874,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "INE-rye-khen — separable verb"
       },
       {
+        cell_id: "7a6e69f0-4315-4817-be7c-b5103562ac84",
         "word": "berücksichtigen",
         "en": "to take into account",
         "vi": "tính đến, xem xét",
@@ -3750,6 +3883,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "be-RUEK-zikh-tee-gen — rounded 'ü'"
       },
       {
+        cell_id: "c91cf0b3-b295-4be8-b23e-d6a4e344d3c8",
         "word": "die Annahme / Ablehnung",
         "en": "acceptance / rejection",
         "vi": "chấp nhận / từ chối",
@@ -3758,6 +3892,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee AHN-nah-meh / AHP-lay-noong"
       },
       {
+        cell_id: "7e7563c0-369f-4264-9b48-f82625c94cb2",
         "word": "die Anregung (pl. Anregungen)",
         "en": "suggestion, stimulus",
         "vi": "gợi ý",
@@ -3766,6 +3901,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee AHN-ray-goong"
       },
       {
+        cell_id: "ed3ddba8-262b-4efc-a3fa-567ea34504db",
         "word": "in der Lage sein",
         "en": "to be in a position to",
         "vi": "có thể, có khả năng",
@@ -3776,21 +3912,25 @@ export const lessons: GermanLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "b9f90ea0-7668-4e74-ab61-769f4e55e71a",
         "speaker": "Herausgeberin",
         "text": "Frau Nguyễn, wir haben Ihre Replik auf die Gutachten erhalten. Ein Punkt — Reviewer 2 schlägt eine quantitative Erweiterung vor. Wie gehen Sie damit um?",
         "vi": "Cô Nguyễn, chúng tôi đã nhận phản hồi của cô đối với các Gutachten. Một điểm — Reviewer 2 đề xuất mở rộng định lượng. Cô xử lý thế nào?"
       },
       {
+        cell_id: "4d5c064e-cdca-4288-8e73-b4c64ffb8ce2",
         "speaker": "Linh",
         "text": "An diesem Punkt sehe ich mich aus methodischen Gründen nicht in der Lage, dem Vorschlag zu folgen — meine Studie ist explizit qualitativ konzipiert.",
         "vi": "Ở điểm này tôi không thấy mình có thể theo đề xuất vì lý do phương pháp luận — nghiên cứu của tôi được thiết kế rõ ràng định tính."
       },
       {
+        cell_id: "a15109bd-6002-4e5a-8877-73a546f616b2",
         "speaker": "Herausgeberin",
         "text": "Haben Sie das in der Erwiderung explizit begründet?",
         "vi": "Cô đã biện minh rõ ràng trong phản hồi chưa?"
       },
       {
+        cell_id: "f6c30764-b703-4a10-bb9a-9da8e2964c2d",
         "speaker": "Linh",
         "text": "Ja — ich verweise auf Tashakkori und Teddlie (2003) und argumentiere, dass die Fragestellung qualitative Tiefenschärfe erfordert.",
         "vi": "Có — tôi tham chiếu Tashakkori và Teddlie (2003) và lập luận rằng câu hỏi nghiên cứu đòi hỏi độ sắc nét chiều sâu định tính."
@@ -4084,6 +4224,7 @@ export const lessons: GermanLesson[] = [
     "tip_advice_en": "Before the Gehaltsgespräch (4 weeks ahead):\n1. SAMMELN: document your achievements — projects delivered, revenue contributed, responsibility expanded. Concrete numbers, not feelings.\n2. RECHERCHIEREN: pull the Stepstone Gehaltsreport for your position + region + sector. Note 25th percentile, median, 75th percentile.\n3. ZIEL DEFINIEREN: your dream number (75th percentile), walk-away number (median), midpoint for negotiation.\n4. ALTERNATIVES: if cash isn't possible — Weiterbildung budget? Home-Office? Sabbatical? Dienstwagen?\n\nIn the meeting (4-step structure):\n1. ANERKENNUNG: 'Vielen Dank, dass Sie sich heute Zeit nehmen' (one sentence, no more)\n2. LEISTUNGSBILANZ: 3–4 concrete Erfolge (90 seconds total)\n3. ZAHL: 'Vor dem Hintergrund der erweiterten Verantwortung halte ich eine Anpassung um X Prozent für angemessen, gemessen an Y'\n4. RAUM for response: stay silent after putting the number on the table — DON'T nervous-talk\n\nFormal Gehaltsverhandlung language:\n- 'Vor dem Hintergrund von X halte ich Y für angemessen' (against the background of X, I consider Y appropriate)\n- 'Ich hätte gerne über eine Erhöhung um X Prozent gesprochen' (Konjunktiv II soft request)\n- 'Gemessen an vergleichbaren Positionen im Markt' (measured against comparable positions in the market)\n- 'Hinsichtlich des variablen Anteils schlage ich vor...' (regarding the variable component, I propose...)\n- 'Sollten X für Y nicht ausreichen, wäre Z denkbar' (should X be insufficient for Y, Z would be conceivable)\n- 'Mir geht es nicht ausschließlich um die Zahl, sondern um...' (for me it's not solely about the number, but about...)\n\nWhen the boss says 'Budget ist eng':\n- 'Ich verstehe die Budget-Lage. Wäre alternativ ein Weiterbildungsbudget oder zusätzliche Home-Office-Tage denkbar?' (I understand. Could a training budget or extra Home-Office days be an alternative?)\n- 'Könnten wir eine Zwischenüberprüfung in sechs Monaten vereinbaren?' (could we agree on an interim review in six months?)\n\nWhen the boss makes a low offer:\n- 'Das liegt unter meiner Vorstellung. Ich hatte X im Kopf — ist hier noch Bewegung?' (that's below what I had in mind. I was thinking X — is there still room here?)\n- DON'T: 'Das ist zu wenig' (too confrontational). DON'T: 'Das geht klar' if it doesn't.\n\nWhen you need time to think:\n- 'Ich möchte das Angebot in Ruhe prüfen — könnten wir uns Anfang nächster Woche zurückmelden?' (I'd like to consider this carefully — could we touch base early next week?)\n\nWhen rejected outright:\n- 'Ich nehme das zur Kenntnis. Können wir die Kriterien festhalten, die für eine Anpassung im nächsten Jahr erfüllt sein müssten?' (I note that. Can we record the criteria that would need to be met for an adjustment next year?)\n\nFinal tip: prepare authentically — don't act. Germans spot acting immediately. Authentic preparation beats false confidence. If you're nervous, say so once: 'Ich gestehe, das Gespräch fällt mir schwer — gleichwohl ist es mir wichtig.' That admission often de-escalates.",
     "vocabulary": [
       {
+        cell_id: "15d0ded2-3238-4773-902e-8b9532170e7d",
         "word": "die Gehaltsverhandlung",
         "en": "salary negotiation",
         "vi": "đàm phán lương",
@@ -4092,6 +4233,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee ge-HAHLTS-fer-hand-loong"
       },
       {
+        cell_id: "4e3c9f55-e64b-43ef-9f25-0d86b00f0834",
         "word": "die Anpassung (des Gehalts)",
         "en": "adjustment (of salary)",
         "vi": "việc điều chỉnh (lương)",
@@ -4100,6 +4242,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee AHN-pas-soong"
       },
       {
+        cell_id: "8955b61b-dcdf-49f2-af31-565bc29764b4",
         "word": "das Grundgehalt / der variable Anteil",
         "en": "base salary / variable component",
         "vi": "lương cơ bản / phần biến thiên",
@@ -4108,6 +4251,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dahs GROONT-ge-hahlt / dayr vah-REE-ah-bleh AHN-tile"
       },
       {
+        cell_id: "f5784222-36bc-4ad8-b49a-8225a10a76ae",
         "word": "die Zielvereinbarung",
         "en": "performance agreement",
         "vi": "thỏa thuận mục tiêu",
@@ -4116,6 +4260,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee TSEEL-fer-ine-bah-roong"
       },
       {
+        cell_id: "0b78dc49-85f0-4bf5-86e7-7ce1cf9f0f48",
         "word": "der Erreichungsgrad",
         "en": "level of target achievement",
         "vi": "mức độ đạt mục tiêu",
@@ -4124,6 +4269,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dayr er-RYE-khoongs-graht"
       },
       {
+        cell_id: "c87ce03e-2890-49c8-82b7-f5228706c059",
         "word": "vergleichbar (mit)",
         "en": "comparable (with)",
         "vi": "tương đương (với)",
@@ -4132,6 +4278,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "fer-GLYKH-bar"
       },
       {
+        cell_id: "91508e91-9ab7-44a0-ba98-5a083cb057c4",
         "word": "der Tarifvertrag",
         "en": "collective bargaining agreement",
         "vi": "thỏa ước tập thể",
@@ -4140,6 +4287,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dayr tah-REEF-fer-trahk"
       },
       {
+        cell_id: "c925df6a-3539-4d70-96d1-d3001431e72a",
         "word": "außertariflich (AT)",
         "en": "outside collective agreement (AT)",
         "vi": "ngoài thỏa ước tập thể",
@@ -4148,6 +4296,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "OW-ser-tah-reef-likh — 'au' = 'ow'"
       },
       {
+        cell_id: "75184069-cb42-422e-9216-642c01a008fb",
         "word": "die Zwischenüberprüfung",
         "en": "interim review",
         "vi": "rà soát giữa kỳ",
@@ -4156,6 +4305,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee TSVISH-en-ue-ber-prue-foong — rounded 'ü'"
       },
       {
+        cell_id: "100ae07a-4db3-46a9-9030-06042ce9f76e",
         "word": "angemessen",
         "en": "appropriate, reasonable",
         "vi": "phù hợp, hợp lý",
@@ -4166,21 +4316,25 @@ export const lessons: GermanLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "194fd7fe-c994-4fee-a074-a377e36a1373",
         "speaker": "Linh",
         "text": "Vielen Dank, dass Sie sich heute Zeit nehmen. Ich möchte über eine Anpassung des Grundgehalts sprechen — vor dem Hintergrund der erweiterten Verantwortung im laufenden Jahr.",
         "vi": "Cám ơn anh đã dành thời gian hôm nay. Tôi muốn trao đổi về việc điều chỉnh mức lương cơ bản — trên cơ sở phạm vi trách nhiệm được mở rộng trong năm nay."
       },
       {
+        cell_id: "a832686d-7c6d-4ce5-9142-e9b2a2315aa1",
         "speaker": "HR-Leiter Berger",
         "text": "Gerne. Welche Größenordnung schwebt Ihnen vor?",
         "vi": "Sẵn lòng. Cô nghĩ đến mức nào?"
       },
       {
+        cell_id: "9f35ba04-7c47-46be-a07d-9af5c30e284e",
         "speaker": "Linh",
         "text": "Acht Prozent — gemessen an vergleichbaren Positionen im Markt, die ich anhand des Stepstone-Reports geprüft habe.",
         "vi": "Tám phần trăm — tham chiếu các vị trí tương đương trên thị trường, tôi đã kiểm tra qua báo cáo Stepstone."
       },
       {
+        cell_id: "63313ce1-8e55-4c2b-a045-8e7cd8fd2503",
         "speaker": "HR-Leiter Berger",
         "text": "Acht ist im oberen Bereich. Lassen Sie uns die Zahlen gemeinsam durchgehen.",
         "vi": "Tám phần trăm nằm ở phần trên. Mình cùng đi qua các số liệu."
@@ -4477,6 +4631,7 @@ export const lessons: GermanLesson[] = [
     "tip_advice_en": "Before contract negotiation (one week ahead):\n1. JURIST review (optional, recommended): an Anwalt für Arbeitsrecht spends 1–2 hours reviewing, charges €200–400 — the cheapest insurance you can buy.\n2. KLAUSELN MARKIEREN: print the contract, three colours — green (OK), yellow (clarify), red (must change).\n3. PRIORISIEREN: top 3 most important points. Mention others verbally without demanding.\n4. ALTERNATIVTEXT prepared: not only 'X must go', but 'X could be replaced by Y' — constructive.\n\nIn the negotiation meeting (structure):\n1. SET THE RAHMEN: 'Bevor ich unterzeichne, möchte ich auf drei Klauseln zurückkommen, die mir in der vorliegenden Form nicht tragfähig erscheinen.'\n2. NAME the clauses: specific § + clause text, not vague.\n3. BEGRÜNDUNG: why is it problematic? — legally, market-typically, personal risk.\n4. ALTERNATIV-VORSCHLAG: concrete replacement text.\n5. CLOSE: 'Diese Anpassungen sind aus meiner Sicht nicht verhandlungsschwer.'\n\nFormal Vertragsverhandlung language:\n- 'Bevor ich unterzeichne, möchte ich auf drei Klauseln zurückkommen' (before I sign, I'd like to come back to three clauses)\n- 'In der vorliegenden Form erscheint mir X nicht tragfähig' (in the present form X does not appear tenable to me)\n- 'X ist meines Erachtens unverhältnismäßig' (X is in my judgement disproportionate)\n- 'Bezüglich X würde ich anregen, Y' (regarding X I would suggest Y)\n- 'Hinsichtlich X schlage ich eine Klarstellung vor' (regarding X I propose a clarification)\n- 'Diese Anpassungen sind nicht verhandlungsschwer' (these adjustments are not heavy negotiation-wise)\n- 'Ausdruck der Symmetrie, die ein langfristiges Arbeitsverhältnis erfordert' (an expression of the symmetry a long-term employment relationship demands)\n\nWhen HR says 'Standardvertrag, nicht änderbar':\n- 'Ich verstehe — gleichwohl bitte ich um Prüfung. Die genannten Klauseln betreffen meine berufliche Bewegungsfreiheit nach der Kündigung; in der jetzigen Form könnte ich nicht unterzeichnen.'\n\nWhen HR offers a Kompromiss:\n- 'Das ist ein konstruktiver Vorschlag. Lassen Sie mich das mit meinem Anwalt durchgehen — ich melde mich Ende der Woche zurück.'\n\nWhen the Verhandlung fails:\n- 'Ich nehme zur Kenntnis, dass die Klausel nicht änderbar ist. In der vorliegenden Form sehe ich mich gezwungen, vom Vertrag Abstand zu nehmen — bedauerlich, da die Position fachlich attraktiv ist.'\n\nFinal tip: do NOT issue threats ('wenn nicht, gehe ich'). Do NOT be emotional. Be sachlich, konkret, alternativ-orientiert. If you really have to walk away — say so once, calmly, at the end. Repeating a threat weakens your position.",
     "vocabulary": [
       {
+        cell_id: "057c46e0-41b3-482b-9fe2-a6230ee07d84",
         "word": "der Arbeitsvertrag",
         "en": "employment contract",
         "vi": "hợp đồng lao động",
@@ -4485,6 +4640,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dayr AR-byts-fer-trahk"
       },
       {
+        cell_id: "a29c0789-8397-4fde-98d1-324210a8ac48",
         "word": "die Vertragsklausel",
         "en": "contract clause",
         "vi": "điều khoản hợp đồng",
@@ -4493,6 +4649,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee fer-TRAHKS-klow-zel"
       },
       {
+        cell_id: "c15aad52-492b-44cf-b7d7-020b9718bc0c",
         "word": "das Wettbewerbsverbot (nachvertraglich)",
         "en": "non-compete clause (post-contractual)",
         "vi": "điều khoản cấm cạnh tranh (sau hợp đồng)",
@@ -4501,6 +4658,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dahs VET-be-verps-fer-boht — German non-compete; max 24 months by law"
       },
       {
+        cell_id: "ed25fa66-7131-4ca6-a5ce-cc9e20b3bfdc",
         "word": "die Karenzentschädigung",
         "en": "compensation during non-compete period",
         "vi": "bồi thường thời gian cấm cạnh tranh",
@@ -4509,6 +4667,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee kah-RENTS-ent-sheh-dee-goong — required 50%+ for Wettbewerbsverbot to be valid"
       },
       {
+        cell_id: "6823f0e9-a7f0-4b3e-a279-6a9a3cc0d05c",
         "word": "die Vertraulichkeitsklausel",
         "en": "confidentiality clause",
         "vi": "điều khoản bảo mật",
@@ -4517,6 +4676,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee fer-TROW-likh-kites-klow-zel"
       },
       {
+        cell_id: "a9bce625-295d-47e6-8ad7-bd43aae5ad58",
         "word": "die Überstundenabgeltung",
         "en": "overtime compensation arrangement",
         "vi": "bù khoán giờ làm thêm",
@@ -4525,6 +4685,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee ue-ber-SHTOON-den-ahp-gel-toong — rounded 'ü'"
       },
       {
+        cell_id: "c3207874-b5c1-41b8-84e3-e2afc2489f3b",
         "word": "die Kündigungsfrist",
         "en": "notice period",
         "vi": "thời hạn báo trước nghỉ việc",
@@ -4533,6 +4694,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee KUEN-dee-goongs-frist — governed by § 622 BGB"
       },
       {
+        cell_id: "32f494bf-183e-466b-91fd-639f5b7ab6a1",
         "word": "die Probezeit",
         "en": "probation period",
         "vi": "thời gian thử việc",
@@ -4541,6 +4703,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee PRO-be-tsite — max 6 months in Germany"
       },
       {
+        cell_id: "484f1068-7741-4668-bb91-3be3d5a5d14a",
         "word": "tragfähig",
         "en": "tenable, sustainable (of a clause)",
         "vi": "vững (về điều khoản)",
@@ -4549,6 +4712,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "TRAHK-feh-ikh — used of contracts/arguments that can be sustained"
       },
       {
+        cell_id: "24672aef-11d4-45d0-a863-392d6bb0e0c0",
         "word": "unverhältnismäßig",
         "en": "disproportionate",
         "vi": "không tương xứng",
@@ -4559,21 +4723,25 @@ export const lessons: GermanLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "3e59a1e3-9e1b-4b06-a822-eaeb93a8fde8",
         "speaker": "Linh",
         "text": "Frau Berger, vielen Dank für den Vertragsentwurf. Bevor ich unterzeichne, möchte ich auf drei Klauseln zurückkommen.",
         "vi": "Cô Berger, cám ơn cô về bản dự thảo hợp đồng. Trước khi ký, tôi muốn quay lại ba điều khoản."
       },
       {
+        cell_id: "499847e4-c5bf-4461-bf3a-6995f546b7bc",
         "speaker": "HR-Berger",
         "text": "Gerne. Welche Klauseln meinen Sie?",
         "vi": "Sẵn lòng. Cô nghĩ đến điều khoản nào?"
       },
       {
+        cell_id: "fc02f222-5ed7-4588-980a-6cc6bae3853a",
         "speaker": "Linh",
         "text": "Das Wettbewerbsverbot in § 12, die Vertraulichkeitsklausel in § 14, und die Überstundenregelung in § 8 — alle drei erscheinen mir in der vorliegenden Form unverhältnismäßig.",
         "vi": "Điều khoản cấm cạnh tranh § 12, điều khoản bảo mật § 14, và quy định làm thêm giờ § 8 — cả ba ở dạng hiện tại với tôi đều không tương xứng."
       },
       {
+        cell_id: "327fe38e-1337-489f-86d8-73ec19e42a0b",
         "speaker": "HR-Berger",
         "text": "Das ist viel auf einmal. Lassen Sie uns mit dem Wettbewerbsverbot beginnen.",
         "vi": "Đó là nhiều cùng lúc. Mình bắt đầu với điều khoản cấm cạnh tranh."
@@ -4870,6 +5038,7 @@ export const lessons: GermanLesson[] = [
     "tip_advice_en": "Before the multi-party negotiation (1 day ahead):\n1. STRUCTURE the AGENDA: 5 points, max 90 minutes total. More than 5 = overload. More than 90 = concentration loss.\n2. CLARIFY who keeps the PROTOKOLL: manually or with a tool (e.g. Confluence)?\n3. CHECK YOUR OWN NEUTRALITY: do you have a stake in any point? If yes — say so BEFORE the meeting, not during.\n4. ANTICIPATE potential SACKGASSEN: which points will be hard? How will you lift them to a higher Aggregationsebene?\n\nIn the room (4 phases):\n1. SET THE RAHMEN (5 min): goal, participants, roles, agenda, time\n2. OPENING (15 min): each party gives 3 Kernanforderungen without discussion\n3. DISCUSSION (50 min): point-by-point, moderator ensures balanced Sprechzeit\n4. CLOSING (20 min): summary of agreements + open points + next steps\n\nC1 Moderator language:\n- 'Lassen Sie mich zunächst den Rahmen abstecken' (let me first mark out the frame)\n- 'Ich schlage vor, dass jede Seite ihre Kernanforderungen in höchstens drei Punkten formuliert' (I propose each side states its core requirements in no more than three points)\n- 'Damit verschaffen wir uns Klarheit darüber, wo Übereinstimmung besteht' (that gives us clarity on where agreement exists)\n- 'Meine Rolle ist heute moderierend' (my role today is to moderate)\n- 'Sollten wir in eine Sackgasse geraten, schlage ich vor, den Punkt auf eine höhere Aggregationsebene zu heben' (if we end up in a dead end, I propose lifting the point to a higher level of aggregation)\n- 'Habe ich das richtig zusammengefasst?' (have I summarised that correctly?)\n\nWhen a party dominates / monologues:\n- 'Herr Müller, lassen Sie mich kurz unterbrechen — ich möchte sicherstellen, dass auch Frau Bauer dazu die Gelegenheit hat' (Mr Müller, let me briefly interrupt — I want to make sure Ms Bauer has the chance too)\n- 'Sehr produktiver Beitrag — bevor wir vertiefen, würde ich gerne die Vertriebs-Sicht hören' (very productive contribution — before we dig deeper, I'd like to hear the Sales perspective)\n\nWhen you hit a Sackgasse:\n- 'Wir scheinen hier in eine Sackgasse zu geraten — ich schlage vor, den Punkt zurückzustellen und am Ende auf einer höheren Aggregationsebene zu lösen'\n- 'Lassen Sie uns für fünfzehn Minuten Bilateral-Pause machen — Engineering und Vertrieb klären den Detailpunkt, wir kommen mit Vorschlag zurück'\n\nWhen things escalate:\n- 'Lassen Sie uns kurz innehalten — ich glaube, hier ist die Sache wichtiger als die Person. Können wir zur Sachebene zurückkehren?'\n\nClosing formula:\n- 'Lassen Sie mich zusammenfassen, was wir heute vereinbart haben: erstens X, zweitens Y, drittens Z. Offen bleiben A und B — wir treffen uns nächste Woche zu diesen Punkten. Habe ich das richtig erfasst?'\n\nFinal tip: being a moderator does NOT mean 'playing referee'. The moderator is a SERVANT of the discussion — guarantees Sprechzeit, summarises, keeps structure. Anyone who treats the moderator role as a power position loses the trust of all parties.",
     "vocabulary": [
       {
+        cell_id: "cbf300b9-6923-484a-a698-883fb4128620",
         "word": "die Mehrparteien-Verhandlung",
         "en": "multi-party negotiation",
         "vi": "đàm phán nhiều bên",
@@ -4878,6 +5047,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee MAYR-par-ty-en-fer-hand-loong"
       },
       {
+        cell_id: "ba2b4d38-a62d-4ba1-a989-232164d091bf",
         "word": "moderieren",
         "en": "to moderate, facilitate",
         "vi": "điều phối",
@@ -4886,6 +5056,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "mo-de-REE-ren — to facilitate, not the English 'to moderate (a forum)'"
       },
       {
+        cell_id: "2fb022fa-44e8-41db-b4f7-18cb511c1e3b",
         "word": "die Kernanforderung",
         "en": "core requirement",
         "vi": "yêu cầu cốt lõi",
@@ -4894,6 +5065,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee KAYRN-ahn-for-de-roong"
       },
       {
+        cell_id: "453be619-bd28-40c1-8871-d4948f24c7c9",
         "word": "die Übereinstimmung",
         "en": "agreement, alignment",
         "vi": "sự đồng thuận",
@@ -4902,6 +5074,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee UE-ber-ine-shtim-moong — rounded 'ü'"
       },
       {
+        cell_id: "3b571fc5-c276-40b8-8525-55f430143470",
         "word": "die Sackgasse",
         "en": "dead end, deadlock",
         "vi": "ngõ cụt, bế tắc",
@@ -4910,6 +5083,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee ZAHK-gah-seh"
       },
       {
+        cell_id: "5d7745a9-91bc-436b-97e9-fb5070bee7aa",
         "word": "die Aggregationsebene",
         "en": "level of aggregation",
         "vi": "cấp tổng hợp",
@@ -4918,6 +5092,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee ah-greh-gah-tsee-OHNS-eh-bay-neh"
       },
       {
+        cell_id: "cd0b7521-56b6-467e-949a-cf6c31433817",
         "word": "die Bilateral-Pause / das Caucusing",
         "en": "bilateral pause, caucusing",
         "vi": "tạm dừng song phương",
@@ -4926,6 +5101,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee bee-lah-te-RAHL-pow-zeh — borrowed mediation technique"
       },
       {
+        cell_id: "af9477fc-37e3-4429-9673-c7386d848c43",
         "word": "das BATNA / die beste Alternative",
         "en": "BATNA — best alternative to negotiated agreement",
         "vi": "BATNA — phương án thay thế tốt nhất",
@@ -4934,6 +5110,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dahs BAHT-nah — international negotiation-theory loanword (Fisher & Ury)"
       },
       {
+        cell_id: "09519a73-31fe-46ad-935a-b51f7744e97a",
         "word": "gewährleisten",
         "en": "to ensure, guarantee",
         "vi": "đảm bảo",
@@ -4942,6 +5119,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "ge-VAYR-lice-ten — more formal than 'sicherstellen'"
       },
       {
+        cell_id: "5d942bef-14da-444a-bc4b-ec063fd6825c",
         "word": "das Protokoll führen",
         "en": "to take minutes",
         "vi": "ghi biên bản",
@@ -4952,21 +5130,25 @@ export const lessons: GermanLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "2b15846d-e891-4ff8-a0f3-1275427ee449",
         "speaker": "Linh (Moderatorin)",
         "text": "Lassen Sie mich zunächst den Rahmen abstecken: wir haben drei Bereiche am Tisch — Engineering, Vertrieb, Recht. Meine Rolle ist heute moderierend.",
         "vi": "Cho phép tôi xác định khung trước: chúng ta có ba bộ phận — Engineering, Bán hàng, Pháp chế. Vai trò tôi hôm nay là điều phối."
       },
       {
+        cell_id: "13b1145d-e101-4f36-952c-eeddc387b917",
         "speaker": "Engineering-Lead",
         "text": "Können wir direkt zur Diskussion einsteigen? Wir haben nur achtzig Minuten.",
         "vi": "Mình có thể đi vào thảo luận luôn không? Chúng ta chỉ có 80 phút."
       },
       {
+        cell_id: "882ef5b8-1202-48e4-bb59-428096ac27a8",
         "speaker": "Linh",
         "text": "Bevor wir das tun, schlage ich vor, dass jede Seite ihre Kernanforderungen in höchstens drei Punkten formuliert — fünfzehn Minuten total. Damit verschaffen wir uns Klarheit darüber, wo Übereinstimmung besteht und wo tatsächlich verhandelt werden muss.",
         "vi": "Trước khi làm vậy, tôi đề xuất mỗi bên nêu yêu cầu cốt lõi tối đa ba điểm — 15 phút tổng cộng. Như vậy chúng ta có sự rõ ràng về nơi đồng thuận và nơi cần đàm phán."
       },
       {
+        cell_id: "286d5248-9cb5-4742-961a-fd96e0fa540b",
         "speaker": "Engineering-Lead",
         "text": "Verstanden. Engineering beginnt.",
         "vi": "Tôi hiểu. Engineering bắt đầu."
@@ -5263,6 +5445,7 @@ export const lessons: GermanLesson[] = [
     "tip_advice_en": "Before the supplier negotiation (one week ahead):\n1. RFQ DATA: current spec, volumes, lead times documented.\n2. MARKET-PRICE COMPARISON: 3 alternative suppliers benchmarked (even if you don't intend to switch).\n3. IDENTIFY WIN-WIN POINTS: volume commitment, forecast sharing, joint audit, long-term agreement.\n4. DEFINE the WALK-AWAY POINT: at what price / lead time would you actually leave?\n\nIn the meeting (structure):\n1. RAHMEN: present the volume increase (numbers + timeframe)\n2. BEGRÜNDUNG: 'Vor diesem Hintergrund halten wir eine Anpassung für angezeigt'\n3. CONCRETE PROPOSAL: Mengenrabatt + condition (Abnahmezusage)\n4. PARTNERSCHAFT framing: 'gemeinsame Optimierung'\n5. OFFER AUDIT / FORECAST: a Win-Win component\n\nFormal supplier-negotiation language:\n- 'Vor dem Hintergrund unserer Volumen-Steigerung halten wir eine Anpassung für angezeigt' (given our volume increase we consider an adjustment warranted)\n- 'Konkret schlagen wir einen Mengenrabatt von X Prozent vor' (specifically we propose a volume discount of X%)\n- 'Gekoppelt an eine verbindliche Abnahmezusage' (tied to a binding purchase commitment)\n- 'Die aktuellen Lieferzeiten sind an der Grenze des Tragbaren' (current lead times are at the limit of what's bearable)\n- 'Hinsichtlich der Qualitätssicherung schlagen wir vor...' (on QS we propose…)\n- 'Eine langfristige Partnerschaft setzt voraus, dass beide Seiten X' (a long-term partnership requires both sides to X)\n\nWhen the supplier resists:\n- 'Ich verstehe Ihre Position. Lassen Sie uns die Zahlen gemeinsam durchgehen — vielleicht finden wir auf der Volumen-Seite oder bei den Lieferzeiten Spielraum, der für beide trägt.'\n- AVOID: 'Wettbewerber gibt mir billiger' (unprofessional in DACH)\n- AVOID: 'Sie müssen' (confrontational)\n\nWhen a compromise is possible:\n- 'Drei Prozent Mengenrabatt plus Forecast-Sharing klingt wie ein guter erster Schritt. Lassen Sie uns das in einem Probezeitraum von sechs Monaten testen.'\n\nWhen the supplier turns aggressive:\n- 'Lassen Sie uns kurz innehalten. Beide Seiten haben Interesse an einer langfristigen Partnerschaft. Wo sehen Sie Konzessionsspielraum auf Ihrer Seite?'\n\nFinal tip: German supplier negotiation is a marathon, not a sprint. Build trust over several order cycles, then negotiate larger concessions. Whoever demands maximum at the first meeting gets minimum. Patience is rewarded with better terms over time + delivery reliability when the market goes tight.",
     "vocabulary": [
       {
+        cell_id: "82d911fb-f271-4686-943f-6ea30706c0e2",
         "word": "der/die Lieferant/-in",
         "en": "supplier",
         "vi": "nhà cung cấp",
@@ -5271,6 +5454,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dayr LEE-fe-rahnt"
       },
       {
+        cell_id: "11289162-dc99-4972-8d58-a0e2698d8f0d",
         "word": "die Konditionen (pl.)",
         "en": "terms, conditions (commercial)",
         "vi": "điều kiện (thương mại)",
@@ -5279,6 +5463,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee kon-dee-tsee-OH-nen"
       },
       {
+        cell_id: "3a937e92-7e86-45ea-bd99-214219829bd6",
         "word": "der Mengenrabatt",
         "en": "volume discount",
         "vi": "chiết khấu khối lượng",
@@ -5287,6 +5472,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dayr MENG-en-rah-baht"
       },
       {
+        cell_id: "b726752d-a5ab-4c90-8290-8b020f17d526",
         "word": "die Abnahmezusage",
         "en": "purchase commitment",
         "vi": "cam kết tiếp nhận",
@@ -5295,6 +5481,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee AHP-nah-meh-tsoo-zah-geh"
       },
       {
+        cell_id: "67bf8bfa-771e-4499-8603-1883199997be",
         "word": "die Lieferzeit / Lieferzuverlässigkeit",
         "en": "delivery time / reliability",
         "vi": "thời gian giao / độ tin cậy giao",
@@ -5303,6 +5490,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee LEE-fer-tsite / LEE-fer-tsoo-fer-leh-sikh-kite"
       },
       {
+        cell_id: "6e050c0c-b769-4ecc-b8d7-3100e55471c0",
         "word": "die Qualitätssicherung",
         "en": "quality assurance",
         "vi": "đảm bảo chất lượng",
@@ -5311,6 +5499,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee kvah-lee-TAYTS-zee-kher-oong"
       },
       {
+        cell_id: "c8cb78cc-ca6b-4b5a-ad01-1e91db2bd72e",
         "word": "das gemeinsame Audit",
         "en": "joint audit",
         "vi": "audit chung",
@@ -5319,6 +5508,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dahs ge-MINE-zah-meh OW-deet"
       },
       {
+        cell_id: "107a0d0a-7e62-40a6-8af6-cca760bf6976",
         "word": "der Forecast / die Bedarfsprognose",
         "en": "forecast / demand forecast",
         "vi": "dự báo nhu cầu",
@@ -5327,6 +5517,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dayr FOR-kahst — English loan"
       },
       {
+        cell_id: "8b5d52fa-d002-4976-81c3-b18adcb85e9d",
         "word": "das Skonto",
         "en": "early-payment discount",
         "vi": "chiết khấu thanh toán sớm",
@@ -5335,6 +5526,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dahs SKON-to — Italian loan; '2% Skonto at 14 days' is standard"
       },
       {
+        cell_id: "de72b194-4a5c-464a-9269-989404fa4db4",
         "word": "an der Grenze des Tragbaren",
         "en": "at the limit of what is bearable",
         "vi": "ở giới hạn chịu đựng",
@@ -5345,21 +5537,25 @@ export const lessons: GermanLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "074ed258-a5ba-44d9-b46a-9b5dc7351436",
         "speaker": "Linh (Procurement)",
         "text": "Herr Kaufmann, vor dem Hintergrund unserer Volumen-Steigerung von achtzehn Prozent halten wir eine Anpassung der Konditionen für angezeigt.",
         "vi": "Anh Kaufmann, trên cơ sở mức tăng volume 18% chúng tôi cho rằng điều chỉnh điều kiện là cần thiết."
       },
       {
+        cell_id: "43303e8d-8172-4403-9064-dd35e9798f0c",
         "speaker": "Vertrieb Kaufmann",
         "text": "Welche Konditionen schweben Ihnen vor?",
         "vi": "Anh nghĩ đến điều kiện nào?"
       },
       {
+        cell_id: "608437e1-2bd2-45b0-bb55-b7cc19bd08d8",
         "speaker": "Linh",
         "text": "Konkret: Mengenrabatt von vier Prozent ab dem nächsten Bestellzyklus, gekoppelt an eine verbindliche Abnahmezusage über zwölf Monate.",
         "vi": "Cụ thể: chiết khấu khối lượng 4% từ chu kỳ tới, gắn với cam kết tiếp nhận có hiệu lực 12 tháng."
       },
       {
+        cell_id: "e8185ec6-d99b-4276-9ad7-b3afc92669b0",
         "speaker": "Vertrieb Kaufmann",
         "text": "Vier Prozent ist im oberen Bereich. Bei verbindlicher Zusage über zwölf Monate können wir über drei Prozent reden — das wäre marktkonform.",
         "vi": "4% nằm ở phần trên. Với cam kết có hiệu lực 12 tháng, mình có thể bàn 3% — phù hợp thị trường."
@@ -5661,6 +5857,7 @@ export const lessons: GermanLesson[] = [
     "tip_advice_en": "Before the pushback conversation:\n1. CLARIFY your goal: surface risks OR overturn the decision? The latter is much harder and needs stronger arguments.\n2. SACHEBENE: 2–3 concrete operational risks, with probability and impact.\n3. PROPOSE AN ALTERNATIVE: what would you do instead? Pushback without an alternative is lament, not advice.\n4. PREPARE THE LOYALTY ASSURANCE: 'Sollten Sie das anders sehen, übernehme ich die Linie' at the end.\n\nIn the meeting (5-step structure):\n1. AGREEMENT with the strategic Stoßrichtung (1 sentence): 'Ich teile die strategische Stoßrichtung im Grundsatz'\n2. ANNOUNCE the pushback: 'möchte jedoch zwei Punkte zur Diskussion stellen'\n3. NAME the risks: concrete, with reasoning\n4. ALTERNATIVE / MITIGATION: what would you do?\n5. LOYALTY ASSURANCE: 'Sollten Sie das anders sehen, übernehme ich die Linie'\n\nC1 Konstruktiver Widerspruch language:\n- 'Ich teile die strategische Stoßrichtung im Grundsatz, möchte jedoch zwei Punkte zur Diskussion stellen'\n- 'Aus operativer Sicht erscheinen mir folgende Punkte problematisch'\n- 'Ich halte X für ambitioniert / problematisch / unzureichend'\n- 'Meines Erachtens reicht Y nicht aus, um Z abzufedern'\n- 'Ich würde anregen, dass...'\n- 'Mein Anliegen ist nicht, die Entscheidung in Frage zu stellen, sondern die Umsetzung zu erleichtern'\n- 'Sollten Sie das anders sehen, übernehme ich selbstverständlich die Linie'\n\nWhen the Direktorin assumes ('Sie verstehen die Strategie nicht'):\n- 'Ich verstehe die strategische Logik — meine Bedenken betreffen die operative Umsetzung. Können wir das auseinanderhalten?'\n\nWhen the Direktorin partially accepts the pushback:\n- 'Vielen Dank, dass Sie den Punkt aufnehmen. Lassen Sie uns konkret werden — was wäre ein realistischer Zeitplan?'\n\nWhen the Direktorin sticks with the decision:\n- 'Ich nehme das zur Kenntnis. Selbstverständlich übernehme ich die Linie — ich wollte die Risiken transparent gemacht haben, bevor wir starten. Können wir die Mitigation-Maßnahmen kurz besprechen?'\n\nAfter the meeting — memo (within 1 day):\n- 'Liebe Frau Direktorin, vielen Dank für das offene Gespräch heute. Zur Dokumentation halte ich die diskutierten Risiken kurz fest: 1. Zeitplan-Risiko (geschätzt mittelhoch); 2. Engineering-Einbindung (geschätzt hoch). Mitigation-Maßnahmen wie besprochen: A, B, C. Ich starte wie vereinbart Montag mit der Umsetzung. Mit besten Grüßen, Linh.'\n\nFinal tip: pushback is a CAREER strengthener when done well — proof of loyalty through courage + factuality. Anyone who NEVER pushes back is read as 'not thinking independently'. Anyone who pushes back TOO OFTEN is read as 'difficult'. Sweet spot: 2–3 substantive Pushbacks per year on strategic decisions.",
     "vocabulary": [
       {
+        cell_id: "873e663b-1e5e-4440-887c-5d7726be2469",
         "word": "der konstruktive Widerspruch",
         "en": "constructive pushback",
         "vi": "phản đối có tính xây dựng",
@@ -5669,6 +5866,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dayr kon-strook-TEE-veh VEE-der-shprookh"
       },
       {
+        cell_id: "e03e5810-99ea-49a9-b2d7-5a1b878e7c32",
         "word": "die Stoßrichtung",
         "en": "strategic direction, thrust",
         "vi": "định hướng chiến lược",
@@ -5677,6 +5875,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee SHTOHS-rikh-toong"
       },
       {
+        cell_id: "b4399f10-21f5-49e1-84fe-1093fe7d5350",
         "word": "im Grundsatz",
         "en": "in principle",
         "vi": "về căn bản",
@@ -5685,6 +5884,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "im GROONT-zahts — formal hedge for partial agreement"
       },
       {
+        cell_id: "0d742d7f-ce6d-405f-a7fb-dcd5ce80b8e3",
         "word": "operativ",
         "en": "operational",
         "vi": "vận hành",
@@ -5693,6 +5893,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "o-pe-rah-TEEF — distinct from 'strategisch'"
       },
       {
+        cell_id: "852127ad-0064-496b-9d05-3f32ab38fefc",
         "word": "ambitioniert",
         "en": "ambitious",
         "vi": "đầy tham vọng",
@@ -5701,6 +5902,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "am-bee-tsee-o-NEERT — diplomatic substitute for 'too optimistic'"
       },
       {
+        cell_id: "02af8ed4-f4d1-47e6-b696-98bd8863dd5a",
         "word": "abfedern",
         "en": "to cushion, mitigate",
         "vi": "giảm thiểu",
@@ -5709,6 +5911,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "AHP-fay-dern"
       },
       {
+        cell_id: "3284ad54-54fd-4e40-9899-51d8a4a052d7",
         "word": "die Migrations-Risiken (pl.)",
         "en": "migration risks",
         "vi": "rủi ro migration",
@@ -5717,6 +5920,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee mee-grah-tsee-OHNS-ree-zee-ken"
       },
       {
+        cell_id: "862d95b6-f4a5-4fa4-b180-776d09fe326f",
         "word": "das Anliegen",
         "en": "concern, request (formal)",
         "vi": "mối quan tâm (formal)",
@@ -5725,6 +5929,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dahs AHN-lee-gen — softer than 'Forderung'"
       },
       {
+        cell_id: "c56cd1bd-520c-454a-a1d7-ee1c5302e4a7",
         "word": "die Linie übernehmen",
         "en": "to follow the official line",
         "vi": "theo chỉ đạo chính thức",
@@ -5733,6 +5938,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee LEE-nee-eh ue-ber-NAY-men — rounded 'ü'"
       },
       {
+        cell_id: "8ae017d1-2348-4685-b246-da5662aff54d",
         "word": "das Mitigation-Maßnahmen",
         "en": "mitigation measures",
         "vi": "biện pháp giảm thiểu",
@@ -5743,21 +5949,25 @@ export const lessons: GermanLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "61953420-623a-4d2e-b679-83feb53798f4",
         "speaker": "Linh",
         "text": "Frau Direktorin, ich teile die strategische Stoßrichtung im Grundsatz, möchte jedoch zwei Punkte zur Diskussion stellen, die mir aus operativer Sicht problematisch erscheinen.",
         "vi": "Thưa giám đốc, tôi chia sẻ định hướng chiến lược về căn bản, song muốn đưa hai điểm ra thảo luận mà từ góc vận hành có vẻ có vấn đề."
       },
       {
+        cell_id: "e2b16244-a98e-47ce-abfb-6f25e1d63418",
         "speaker": "Direktorin Wagner",
         "text": "Bitte, treten Sie ein. Welche Punkte?",
         "vi": "Mời cô. Điểm nào?"
       },
       {
+        cell_id: "7a13e09a-506b-44c7-94da-c0fd198ae564",
         "speaker": "Linh",
         "text": "Erstens der Zeitplan — zwölf Wochen sind meines Erachtens zu knapp für die Migrations-Risiken. Zweitens die Engineering-Einbindung — eine reine Top-Down-Vorgabe birgt Umsetzungsrisiken.",
         "vi": "Thứ nhất kế hoạch — 12 tuần theo tôi quá hẹp cho rủi ro migration. Thứ hai sự tham gia của Engineering — chỉ định hướng top-down chứa rủi ro triển khai."
       },
       {
+        cell_id: "cba033fe-a1a1-4218-a595-c2b46d1cceae",
         "speaker": "Direktorin Wagner",
         "text": "Vielen Dank, dass Sie das ansprechen. Lassen Sie uns die Punkte einzeln durchgehen.",
         "vi": "Cám ơn cô đã nêu lên. Mình đi qua từng điểm."
@@ -6064,6 +6274,7 @@ export const lessons: GermanLesson[] = [
     "tip_advice_en": "Before the intercultural negotiation (1 week of prep):\n1. LIST cultural expectations — both sides. Directness scale? Time horizon? Decision-making mode?\n2. CLARIFY language choice — English (neutral), German (DE home advantage), Vietnamese (VN home advantage), or code-switching with a translator backup?\n3. GENEROUS TIMELINE — intercultural negotiations take 30–50% longer than monocultural. Plan accordingly.\n4. BINDEGLIED ROLE clarified: are you playing that role? If yes, communicate it transparently.\n\nIn the room (4-phase structure):\n1. ERWARTUNGSABGLEICH (10 min): both sides name procedural expectations\n2. RELATIONSHIP PHASE (15 min): small talk, common reference points, personal topics — important for the VN norm\n3. SACH-DISKUSSION (60–90 min): content, alternating direct and indirect modes depending on speaker\n4. ZUSAMMENFASSUNG (15 min): explicit, verified in writing — German-style, but cross-checked with the VN side: 'habe ich das richtig erfasst?'\n\nC1 intercultural-negotiation language:\n- 'Eine erfolgreiche interkulturelle Verhandlung setzt voraus, dass beide Seiten ihre kulturell geprägten Erwartungen explizit machen'\n- 'Was im einen System als X gilt, kann im anderen als Y registriert werden'\n- 'Beides ist legitim, aber muss übersetzt werden'\n- 'Ich schlage einen kurzen Erwartungsabgleich vor'\n- 'Mein Vorschlag ist, dass ich als Bindeglied zwischen den Kulturen agieren kann'\n- 'Nicht, um Konflikte zu vermeiden, sondern um sie produktiv zu machen'\n\nWhen the German side is frustrated by Vietnamese indirectness:\n- 'Ich verstehe, dass die indirekte Formulierung deutsche Erwartungen unterläuft. Lassen Sie mich übersetzen: was Frau Tran sagte, bedeutet auf der Sachebene Y.'\n\nWhen the Vietnamese side is hurt by German directness:\n- 'Anh/chị Tran, the German 'das ist nicht akzeptabel' is not an attack — it's 'we have a substantial difference and we respect you enough to say so'. The relationship is intact.'\n\nWhen there is a timeline conflict:\n- 'Beide Seiten haben unterschiedliche Zeit-Horizonte. Lassen Sie uns ein Hybrid-Modell festlegen: hard deadlines für externe Liefertermine, fluid für interne Abstimmungen.'\n\nWhen a decision is pushed in the meeting:\n- 'Ich würde anregen, dass wir die Entscheidung nicht heute treffen — die VN-Seite braucht interne Konsultation, das ist Standard. Wir können in einer Woche zurückkommen mit beidseitig commit-fähigem Vorschlag.'\n\nFinal tip: intercultural negotiation is real-time translation. There is no 'right' or 'wrong' — both modes are optimal in their own contexts. The Bindeglied role is the most challenging and most valuable role in the room. Don't act 'culturally neutral' — be explicitly bicultural and make both modes visible.",
     "vocabulary": [
       {
+        cell_id: "66d3b511-cd31-45ee-a872-afb94133b647",
         "word": "die interkulturelle Verhandlung",
         "en": "intercultural negotiation",
         "vi": "đàm phán liên văn hóa",
@@ -6072,6 +6283,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee in-ter-kool-too-REL-leh fer-HAND-loong"
       },
       {
+        cell_id: "079bf3a7-1a24-4044-82cc-12c94efaf73e",
         "word": "der Erwartungsabgleich",
         "en": "expectation alignment",
         "vi": "hiệu chỉnh kỳ vọng",
@@ -6080,6 +6292,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dayr er-VAR-toongs-ahp-glykh"
       },
       {
+        cell_id: "e05505e6-e9fa-421d-a897-8d8d4c16d012",
         "word": "kulturell geprägt",
         "en": "culturally shaped",
         "vi": "được định hình bởi văn hóa",
@@ -6088,6 +6301,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "kool-too-REL ge-PRAYKT"
       },
       {
+        cell_id: "7487dc1a-8785-4e04-a0c0-d9c0d463695f",
         "word": "die Direktheit",
         "en": "directness",
         "vi": "sự thẳng thắn",
@@ -6096,6 +6310,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee dee-REKT-hite"
       },
       {
+        cell_id: "5dc37ab7-2874-47ac-b8c9-a73dc2ebc05f",
         "word": "die Höflichkeit",
         "en": "politeness, courtesy",
         "vi": "sự lễ phép",
@@ -6104,6 +6319,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee HUEF-likh-kite — rounded 'ö'"
       },
       {
+        cell_id: "ead3aa92-7a77-4bc4-bfa6-d2ad25562321",
         "word": "die Beziehungsverletzung",
         "en": "relationship violation",
         "vi": "vi phạm quan hệ",
@@ -6112,6 +6328,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee be-TSEE-oongs-fer-let-tsoong"
       },
       {
+        cell_id: "e3dc45a5-cf5d-48d8-9a23-90662ee9274d",
         "word": "das Bindeglied",
         "en": "link, bridge (between groups)",
         "vi": "cầu nối",
@@ -6120,6 +6337,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dahs BIN-de-gleet — literally 'binding-member'"
       },
       {
+        cell_id: "c53098d9-b31b-486f-bc85-918406f855d9",
         "word": "der Zeit-Horizont",
         "en": "time horizon",
         "vi": "tầm thời gian",
@@ -6128,6 +6346,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dayr TSITE-ho-ree-tsont"
       },
       {
+        cell_id: "07710152-47e1-40ab-9c8f-45c53cd46348",
         "word": "die Entscheidungsfindung",
         "en": "decision-making",
         "vi": "quá trình ra quyết định",
@@ -6136,6 +6355,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee ent-SHY-doongs-fin-doong"
       },
       {
+        cell_id: "09f7b12c-e71f-4a9e-a32d-c768173b6978",
         "word": "stillschweigend voraussetzen",
         "en": "to tacitly assume",
         "vi": "giả định ngầm",
@@ -6146,21 +6366,25 @@ export const lessons: GermanLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "8cdd8c03-0b0b-45e8-b12d-ae41cd3a7aed",
         "speaker": "Linh (Bindeglied)",
         "text": "Bevor wir in die Sach-Diskussion einsteigen, schlage ich einen kurzen Erwartungsabgleich vor — fünf Minuten, in denen beide Seiten benennen, was ihnen prozedural wichtig ist.",
         "vi": "Trước khi đi vào thảo luận nội dung, tôi đề xuất một hiệu chỉnh kỳ vọng ngắn — 5 phút, trong đó cả hai bên nêu điều quan trọng về thủ tục."
       },
       {
+        cell_id: "a8a9a960-0c3a-41d9-8e18-a79fbb844e23",
         "speaker": "Frau Müller (DE)",
         "text": "Sehr gut. Mir ist wichtig: klare Deadlines, Entscheidung heute, schriftliches Memo am Ende.",
         "vi": "Rất tốt. Với tôi quan trọng: deadline rõ, quyết định hôm nay, memo viết ở cuối."
       },
       {
+        cell_id: "692ddeb6-2ba7-4ab0-a8e6-ed6ac3f94694",
         "speaker": "Herr Tran (VN)",
         "text": "Tôi hiểu — bên tôi cần khoảng một tuần tham vấn nội bộ trước khi commit. Hôm nay tụi tôi có thể nêu vị trí, song quyết định cuối cùng cần thời gian.",
         "vi": "(Tôi hiểu — bên tôi cần khoảng một tuần tham vấn nội bộ trước khi commit. Hôm nay tụi tôi có thể nêu vị trí, song quyết định cuối cùng cần thời gian.)"
       },
       {
+        cell_id: "0f54da9c-f8a7-4255-b0ac-ffa12e3d1694",
         "speaker": "Linh",
         "text": "Damit haben wir einen ersten kulturellen Übersetzungspunkt: deutsche Erwartung an heutige Entscheidung trifft auf vietnamesische Erwartung an interne Konsultation. Beides ist legitim — lassen Sie uns einen Hybrid-Modus festlegen.",
         "vi": "Như vậy chúng ta có điểm dịch văn hóa đầu: kỳ vọng Đức về quyết định hôm nay gặp kỳ vọng Việt về tham vấn nội bộ. Cả hai hợp pháp — mình thiết lập hybrid-modus."
@@ -6457,6 +6681,7 @@ export const lessons: GermanLesson[] = [
     "tip_advice_en": "Before formal dispute resolution (one-week prep):\n1. Build a CHRONOLOGY: date, event, your reaction, the other side's reaction — as a table.\n2. Gather DOCUMENTATION: emails, memos, witness statements where relevant.\n3. Reflect on YOUR OWN BEHAVIOUR: what did you contribute? Where weren't you clear?\n4. Define your GOAL: behaviour change from the other party? A clearer agreement? Separated areas of responsibility? A reassignment? Clarity on the goal prevents in-the-moment escalation.\n\nIn the formal process (steps):\n1. DIREKTGESPRÄCH (2–3 documented attempts)\n2. VORGESETZTER (joint meeting, with minutes)\n3. HR-MEDIATION (neutral, voluntary, with written agreement)\n4. BETRIEBSRAT (for structural issues)\n5. ARBEITSGERICHT (last resort, lawyer required)\n\nC1 formal dispute-resolution language:\n- 'Ich bitte um eine formelle Klärung' (I'm requesting a formal clarification)\n- 'Mein Anliegen betrifft die Sachebene — nicht die Person als solche' (my concern is the substantive level, not the person)\n- 'Ich habe bereits dreimal das direkte Gespräch gesucht' (I have already sought direct conversation three times)\n- 'Die getroffenen Vereinbarungen wurden im Anschluss nicht umgesetzt' (the agreements reached were subsequently not implemented)\n- 'Mein Wunsch ist eine moderierte Aussprache mit klarem Protokoll' (my request is a moderated discussion with a clear record)\n- 'Sollte die Mediation scheitern, wäre die nächste Eskalationsstufe X' (should mediation fail, the next escalation step would be X)\n- 'Diese Option möchte ich vermeiden, sehe sie jedoch transparent vor' (I'd like to avoid this option but I name it transparently)\n\nWhen the manager hesitates:\n- 'Ich verstehe Ihren Wunsch nach informeller Lösung. Drei Direktgespräche haben aber keine Verhaltensänderung gebracht — eine moderierte Aussprache wäre der nächste Schritt im Stufenmodell.' (I understand your wish for an informal solution. But three direct conversations have produced no behavioural change — a moderated discussion would be the next step in the model.)\n\nWhen HR asks about a Mobbing accusation:\n- 'Es handelt sich nicht um Mobbing im juristischen Sinn — kein systematisches Anfeinden. Es handelt sich um wiederholte Pflichtverletzung bei Schnittstellen-Abstimmung. Sachebene, nicht Personebene.' (This is not Mobbing in the legal sense — no systematic hostility. It's repeated breach of duty around interface coordination. Substantive level, not personal level.)\n\nWhen mediation is offered:\n- 'Ich stimme einer Mediation gerne zu, sofern sie ergebnisoffen geführt wird und beide Seiten gleichberechtigt vertreten sind. Wer moderiert?' (I gladly agree to mediation, provided it's run open-endedly and both sides are equally represented. Who will moderate?)\n\nAfter mediation — written agreement:\n- 'Lassen Sie uns das Ergebnis schriftlich festhalten: Verhaltensvereinbarung mit konkreten Pflichten, Eskalationsmechanismus bei Verstößen, Überprüfung in drei Monaten.' (Let's capture the result in writing: a behavioural agreement with concrete duties, an escalation mechanism in case of breach, a review in three months.)\n\nFinal tip: dispute resolution is a marathon, not a sprint. Two to six months for more complex conflicts is normal. Patience + documentation + Sachebene-discipline = success. Anyone who skips an escalation step damages their own standing first.",
     "vocabulary": [
       {
+        cell_id: "423561f1-3e3d-48b6-8728-561178078af3",
         "word": "die formelle Streitbeilegung",
         "en": "formal dispute resolution",
         "vi": "giải quyết tranh chấp chính thức",
@@ -6465,6 +6690,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee for-MEL-luh SHTRYTE-bye-lay-gung — 'ei' = 'eye'; literal 'fight-resolution'"
       },
       {
+        cell_id: "2401eaf3-f9f5-4f4c-8371-6cf41f609093",
         "word": "die Sachebene / Personebene",
         "en": "content level / personal level",
         "vi": "cấp độ nội dung / cá nhân",
@@ -6473,6 +6699,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee ZAHKH-ay-buh-nuh / per-ZOHN-ay-buh-nuh — content level vs. personal level"
       },
       {
+        cell_id: "2c741996-2cda-44f3-aecc-0a7850c7fe5f",
         "word": "die moderierte Aussprache",
         "en": "moderated discussion",
         "vi": "cuộc trao đổi có điều phối",
@@ -6481,6 +6708,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee moh-day-REER-tuh OWS-shprah-khuh — 'au' = 'ow'; literal 'speaking-out'"
       },
       {
+        cell_id: "4a4ac1e3-2d1d-4451-bd50-094c306affcb",
         "word": "der Betriebsrat",
         "en": "works council",
         "vi": "Hội đồng người lao động",
@@ -6489,6 +6717,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dayr buh-TREEPS-raht — works council; 'ie' = 'ee'; final '-b' devoices to 'p'"
       },
       {
+        cell_id: "e491c5d2-740c-461e-a3f2-b8d0c4d0d766",
         "word": "die Eskalationsstufe",
         "en": "escalation level",
         "vi": "cấp escalation",
@@ -6497,6 +6726,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee es-kah-lah-tsee-OHNS-shtoo-fuh — escalation level; six syllables, stress on -OHNS-"
       },
       {
+        cell_id: "9e05ebcf-850b-409d-89d5-c102e5ed62f1",
         "word": "das Mobbing / der Mobbing-Vorwurf",
         "en": "bullying / accusation of bullying",
         "vi": "mobbing / cáo buộc mobbing",
@@ -6505,6 +6735,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dahs MOB-bing — borrowed English term; in German always means workplace bullying specifically"
       },
       {
+        cell_id: "8059fb59-a203-4c3f-a144-a3535969a89a",
         "word": "die Mediation",
         "en": "mediation",
         "vi": "hòa giải",
@@ -6513,6 +6744,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee meh-dee-ah-tsee-OHN — 't' before '-ion' = 'tsee', not 'sh'"
       },
       {
+        cell_id: "3a20e8c2-5aa3-4ce8-bfa3-7fe5e108f398",
         "word": "ergebnisoffen",
         "en": "open-ended (mediation)",
         "vi": "mở kết quả",
@@ -6521,6 +6753,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "er-GAYP-niss-OFF-en — 'open-ended' (literally 'result-open'); standard mediation term"
       },
       {
+        cell_id: "c9fa2bf4-c7ac-4bf3-9e9e-e47737222d0f",
         "word": "die Verhaltensvereinbarung",
         "en": "behavioral agreement",
         "vi": "thỏa thuận hành vi",
@@ -6529,6 +6762,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee fer-HAHL-tens-fer-INE-bah-rung — behavioural agreement; long compound, primary stress on -INE-"
       },
       {
+        cell_id: "0331cd1d-01c2-4710-aa37-cb5e9f375f05",
         "word": "beilegen",
         "en": "to settle, resolve (a dispute)",
         "vi": "giải quyết (tranh chấp)",
@@ -6539,21 +6773,25 @@ export const lessons: GermanLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "4f6e7014-dab8-44d5-85a8-f084de25e907",
         "speaker": "Linh",
         "text": "Frau Berger, ich bitte um eine formelle Klärung. Der Konflikt mit Herrn Schmitt konnte durch drei informelle Gespräche nicht beigelegt werden.",
         "vi": "Cô Berger, tôi xin sự làm rõ chính thức. Xung đột với anh Schmitt qua ba cuộc trao đổi không chính thức không thể được giải quyết."
       },
       {
+        cell_id: "dc595204-40d7-4caf-85f0-2c21fe4a9cd4",
         "speaker": "HR-Berger",
         "text": "Worum geht es konkret? Mobbing-Vorwurf?",
         "vi": "Cụ thể là gì? Cáo buộc mobbing?"
       },
       {
+        cell_id: "e5a0e12b-028e-4a81-95bc-72584dfd5339",
         "speaker": "Linh",
         "text": "Kein Mobbing — Sachebene. Wiederholte fehlende Abstimmung bei Schnittstellen-Themen, die zu Re-Work und Verzögerungen führt. Mein Wunsch ist eine moderierte Aussprache mit klarem Protokoll.",
         "vi": "Không mobbing — cấp độ nội dung. Sự thiếu phối hợp lặp lại ở các chủ đề giao diện, dẫn đến Re-Work và chậm trễ. Nguyện vọng của tôi là moderierte Aussprache với biên bản rõ."
       },
       {
+        cell_id: "4f537cb9-b11c-4270-8c69-628b91c1a69e",
         "speaker": "HR-Berger",
         "text": "Das ist ein konstruktiver Ansatz. Ich kontaktiere Herrn Schmitt und schlage einen Mediations-Termin vor.",
         "vi": "Đó là cách tiếp cận xây dựng. Tôi liên lạc anh Schmitt và đề xuất lịch hòa giải."
@@ -6855,6 +7093,7 @@ export const lessons: GermanLesson[] = [
     "tip_advice_en": "Before a BATNA walk-away (preparation):\n1. Make your BATNA REAL: a concrete alternative — another supplier, another job offer, an alternative investment. No vague 'we'll do it ourselves' if you actually can't.\n2. Define your ECKWERTE (anchor values): wish point, walk-away point, mid-range. In writing, before the negotiation.\n3. Check the ZOPA: what do you know about the counterpart's acceptance zone? If ZOPA is empty, walk-away is rational.\n4. Prepare your SCRIPT for the walk-away moment — prevents in-the-heat escalation.\n\nIn the negotiation room (3-phase walk-away):\n1. ANNOUNCEMENT (transparent): 'Bevor ich fortfahre, möchte ich transparent machen, dass ich eine konkrete Alternative verfolge' (before I continue, I want to make transparent that I'm pursuing a concrete alternative)\n2. NAME the Eckwerten: walk-away point clearly (with reasoning)\n3. WALK-AWAY without Groll: regret + thanks + door open\n\nC1 BATNA / walk-away language:\n- 'Bevor ich fortfahre, möchte ich transparent machen, dass ich eine konkrete Alternative zu dieser Vereinbarung verfolge' (before I continue, I want to make transparent that I'm pursuing a concrete alternative to this agreement)\n- 'Meine BATNA liegt nicht im Hypothetischen' (my BATNA is not hypothetical)\n- 'Sollten wir uns nicht einigen können, sehe ich mich gezwungen, von der Verhandlung Abstand zu nehmen' (should we fail to agree, I see myself forced to step back from the negotiation)\n- 'Mein Walk-Away-Punkt ist nicht aus Verhandlungstaktik gewählt, sondern entspricht der wirtschaftlichen Realität' (my walk-away point isn't chosen as a negotiation tactic but reflects economic reality)\n- 'Ich bedauere, dass wir an diesem Punkt nicht weiterkommen — gleichwohl danke ich Ihnen' (I regret that we can't get further at this point — nonetheless I thank you)\n- 'Sollte sich die Lage ändern, stehe ich für ein erneutes Gespräch zur Verfügung — die Tür bleibt offen' (should the situation change, I'm available for a renewed conversation — the door stays open)\n\nWhen the counterpart asks for BATNA details:\n- 'Ich bestätige nicht jedes Detail meiner BATNA — das wäre Verhandlungsnaivität. Ich bestätige aber, dass sie real ist und mir Walk-Away ermöglicht.' (I won't confirm every detail of my BATNA — that would be negotiation naivety. But I confirm: it is real and enables walk-away.)\n\nWhen the counterpart accuses you of bluffing:\n- 'Sie unterstellen mir Bluffen. Lassen Sie es mich sachlich sagen: meine BATNA ist real. Sollten wir keine Einigung finden, gehe ich tatsächlich weg — ohne Drama, aber mit Konsequenz.' (You're alleging that I'm bluffing. Let me put it factually: my BATNA is real. Should we find no agreement, I will actually leave — without drama, but with follow-through.)\n\nAt the last round:\n- 'Bevor wir endgültig auseinandergehen, ein letzter Versuch: vielleicht haben wir das Problem falsch zugeschnitten? Lassen Sie uns für zehn Minuten frei denken — was wären Optionen außerhalb der bisherigen Konditionen?' (Before we part for good, one last attempt: maybe we've cut the problem the wrong way? Let's think freely for ten minutes — what options exist outside the conditions we've been discussing?)\n\nAfter walk-away — email (24 hours):\n- 'Sehr geehrter Herr X, vielen Dank für die offene Diskussion gestern. Wie besprochen konnten wir uns auf den Konditionen leider nicht einigen — ich bedauere das. Sollte sich die Marktlage Ihrerseits in den nächsten Wochen verändern, stehe ich gerne für ein erneutes Gespräch zur Verfügung. Mit freundlichen Grüßen, Linh.'\n\nFinal tip: a real BATNA is the strongest negotiating leverage you have — but only if real. Anyone caught bluffing loses not only this negotiation but reputation for future ones. Better no walk-away than a bluffed walk-away.",
     "vocabulary": [
       {
+        cell_id: "55866b3e-94c9-4f74-87b0-4468bd9853bb",
         "word": "die BATNA / die beste Alternative",
         "en": "BATNA — best alternative to negotiated agreement",
         "vi": "BATNA — phương án thay thế tốt nhất",
@@ -6863,6 +7102,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee BAHT-nah — English-borrowed acronym; 'best alternative to a negotiated agreement', from Fisher & Ury"
       },
       {
+        cell_id: "56214b8e-ccaf-4275-9cce-38009ca65e3b",
         "word": "der Walk-Away-Punkt",
         "en": "walk-away point",
         "vi": "điểm rút lui",
@@ -6871,6 +7111,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dayr WOK-uh-WAY-poonkt — half-borrowed compound; the threshold below which you leave the table"
       },
       {
+        cell_id: "d0910543-16e4-4776-8618-009674426e32",
         "word": "die Eckwerte (pl.)",
         "en": "key parameters, anchor values",
         "vi": "các giá trị mốc",
@@ -6879,6 +7120,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee EK-vair-tuh — anchor values; from 'Eckpunkt' (corner-point) + 'Wert' (value)"
       },
       {
+        cell_id: "56f24aa7-8f1b-436e-8cb4-6921a6e0ba04",
         "word": "ZOPA / Zone of Possible Agreement",
         "en": "ZOPA — zone of possible agreement",
         "vi": "ZOPA — vùng khả thi đồng thuận",
@@ -6887,6 +7129,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee TSOH-pah — English-borrowed acronym; 'zone of possible agreement'; rhymes with 'so far'"
       },
       {
+        cell_id: "77bec2e7-ab76-41e3-a46a-5c2486f76483",
         "word": "Abstand nehmen von",
         "en": "to step back from, withdraw",
         "vi": "rút khỏi",
@@ -6895,6 +7138,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "AHP-shtahnt NAY-men fon — verb phrase; literally 'take distance from'; idiomatic 'step back from / withdraw from'"
       },
       {
+        cell_id: "f7566b5c-7bfe-4380-83bb-df2758d3c557",
         "word": "der Groll",
         "en": "resentment, grudge",
         "vi": "ác cảm",
@@ -6903,6 +7147,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dayr GROHL — long, dark 'o'; resentment / lingering grudge"
       },
       {
+        cell_id: "19b09e33-ab70-4c11-90a5-520057e917b9",
         "word": "unwirtschaftlich",
         "en": "uneconomical",
         "vi": "không kinh tế",
@@ -6911,6 +7156,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "un-VEERT-shahft-likh — uneconomical; final 'ch' is the soft 'ich' sound"
       },
       {
+        cell_id: "2c00d0c1-af7e-467a-ac58-be01fa2e80f8",
         "word": "die Tür offen halten",
         "en": "to keep the door open",
         "vi": "giữ cửa mở",
@@ -6919,6 +7165,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee TUER OFF-en HAHL-ten — verb phrase; 'ü' = rounded 'oo' (lips for 'oo', say 'ee')"
       },
       {
+        cell_id: "c7bc4e3a-f048-487e-b339-88a1f5e58a26",
         "word": "das Bluffen / der Bluff",
         "en": "bluffing / bluff",
         "vi": "bluff",
@@ -6927,6 +7174,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dahs BLUFF-en — borrowed English term; pronounced as in English, with German verb ending"
       },
       {
+        cell_id: "abf440a4-df79-487b-a811-21a1511ce3de",
         "word": "die Verhandlungsmacht",
         "en": "negotiating power",
         "vi": "quyền lực đàm phán",
@@ -6937,21 +7185,25 @@ export const lessons: GermanLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "c2b79651-405e-47eb-9e5a-8ab18106301f",
         "speaker": "Linh",
         "text": "Bevor ich fortfahre, möchte ich transparent machen, dass ich eine konkrete Alternative zu dieser Vereinbarung verfolge — meine BATNA liegt nicht im Hypothetischen.",
         "vi": "Trước khi tiếp, tôi muốn minh bạch rằng tôi đang theo đuổi alternative cụ thể — BATNA của tôi không ở giả định."
       },
       {
+        cell_id: "9c4e8df7-faab-412d-8b74-c8682415db5f",
         "speaker": "Verhandlungspartner",
         "text": "Können Sie konkretisieren?",
         "vi": "Anh có thể cụ thể được không?"
       },
       {
+        cell_id: "f112bd05-ddf4-4a5a-992d-6a218c05ccc6",
         "speaker": "Linh",
         "text": "Ich bestätige nicht jedes Detail meiner BATNA — das wäre Verhandlungsnaivität. Ich bestätige aber: sie ist real, sie liegt im akzeptablen Bereich, und sie ermöglicht mir Walk-Away.",
         "vi": "Tôi không xác nhận từng chi tiết — đó sẽ là ngây thơ đàm phán. Nhưng tôi xác nhận: BATNA của tôi thật, nằm trong phạm vi chấp nhận được, và cho phép tôi walk-away."
       },
       {
+        cell_id: "31417b9b-4e40-4798-9530-d4a813e8a56e",
         "speaker": "Verhandlungspartner",
         "text": "Verstanden. Lassen Sie uns die Konditionen nochmal durchgehen.",
         "vi": "Tôi hiểu. Mình đi qua điều kiện một lần nữa."
@@ -7253,6 +7505,7 @@ export const lessons: GermanLesson[] = [
     "tip_advice_en": "Before rejecting a low offer (preparation):\n1. Get a MARKET REFERENCE: concrete data on the market average — industry report, Stepstone, your own comparison offers.\n2. Define your ECKWERTE (anchor values): what would still be acceptable? You keep this number to yourself but you know it.\n3. Prepare a 'NIEDRIGSCHWELLIGE LÖSUNG' (low-threshold solution): how can the counterpart re-engage without losing face?\n4. Prepare a SCRIPT for the rejection — prevents improvised harshness.\n\nIn the negotiation conversation (4-phase rejection):\n1. ACKNOWLEDGE: 'Vielen Dank für Ihr Angebot — ich schätze die Sorgfalt'\n2. FACTUAL REJECTION with market reference: 'X percent below the market average'\n3. SIGNAL INTENT: 'wir möchten weiterverhandeln, daher direkte Rückmeldung'\n4. LOW-THRESHOLD SOLUTION: 'überarbeiteter Vorschlag in 14 Tagen'\n\nC1 low-offer rejection language:\n- 'Vielen Dank für Ihr Angebot — ich schätze die Sorgfalt, mit der es ausgearbeitet wurde' (many thanks for your offer — I value the thoroughness with which it was prepared)\n- 'Sehe es jedoch deutlich unterhalb des Bereichs, der für uns wirtschaftlich tragfähig ist' (but see it clearly below the range that is economically viable for us)\n- 'Ihr Vorschlag liegt etwa X Prozent unter dem Marktdurchschnitt' (your proposal sits about X percent below the market average)\n- 'Eine Annäherung wäre erforderlich, damit wir weiterverhandeln können' (a convergence would be required for us to continue negotiating)\n- 'Mir ist daran gelegen, dass beide Seiten am Ende eine Vereinbarung mitgestalten, die sich rechnet' (it matters to me that both sides ultimately co-shape an agreement that pays off)\n- 'Daher meine offene Rückmeldung statt höflicher Hinhaltung' (hence my open feedback rather than polite stalling)\n- 'Eine niedrigschwellige Lösung wäre, dass Sie einen überarbeiteten Vorschlag einreichen' (a low-threshold solution would be that you submit a revised proposal)\n\nWhen the counterpart pushes back ('this is our maximum'):\n- 'Ich verstehe Ihre Position. Sollten Sie Ihrerseits keine weiteren Spielräume sehen, müssen wir das so akzeptieren — gleichwohl möchten wir die Tür für eine Anpassung in einer späteren Runde nicht schließen.' (I understand your position. Should you see no further leeway, we'll have to accept that — nonetheless we don't want to close the door for an adjustment in a later round.)\n\nWhen the counterpart starts a status game ('then we'll go to a competitor'):\n- 'Das verstehe ich — Sie müssen tun, was wirtschaftlich für Sie sinnvoll ist. Auch wir suchen die wirtschaftlich beste Lösung. Sollte sich Ihre Lage ändern, stehe ich für ein erneutes Gespräch zur Verfügung.' (I understand — you have to do what's economically sensible for you. We're also looking for the economically best solution. Should your situation change, I'm available for a renewed conversation.)\n\nAfter rejection — email (24 hours):\n- 'Sehr geehrter Herr X, vielen Dank für das heutige Gespräch. Wie besprochen sehen wir Ihren Vorschlag noch nicht im wirtschaftlich tragfähigen Bereich — eine Annäherung um etwa zehn Prozent würde uns Spielraum für eine Einigung geben. Wir freuen uns auf einen überarbeiteten Vorschlag bis zum 15. November. Mit freundlichen Grüßen, Linh.'\n\nWhen long-term relationship matters:\n- 'Auch wenn wir heute keine Einigung finden, schätze ich die professionelle Zusammenarbeit. Lassen Sie uns in drei Monaten erneut in Kontakt treten — die Marktlage wird sich entwickeln.' (Even if we don't reach agreement today, I value the professional cooperation. Let's get back in touch in three months — the market will evolve.)\n\nFinal tip: rejection with dignity strengthens your reputation for the next round. Anyone who can say 'no' professionally is taken seriously when they say 'yes'. Polite stalling is long-term worse than factual rejection on the day of the offer-review.",
     "vocabulary": [
       {
+        cell_id: "3beef387-c773-4f77-8843-cc839a1f3d61",
         "word": "die Sorgfalt",
         "en": "thoroughness, diligence",
         "vi": "sự cẩn thận",
@@ -7261,6 +7514,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee ZORG-fahlt — thoroughness; final 't' fully released, not aspirated"
       },
       {
+        cell_id: "b3260a2f-679a-4f15-8d36-6c9e50fa9809",
         "word": "wirtschaftlich tragfähig",
         "en": "economically viable",
         "vi": "kinh tế khả thi",
@@ -7269,6 +7523,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "VEERT-shahft-likh TRAHK-fay-ikh — adjective phrase; 'economically viable'"
       },
       {
+        cell_id: "a40aab82-38cb-425b-877e-90017097893e",
         "word": "der Marktdurchschnitt",
         "en": "market average",
         "vi": "trung bình thị trường",
@@ -7277,6 +7532,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dayr MARKT-doorkh-shnit — market average; 'rk' is one consonant cluster, no inserted vowel"
       },
       {
+        cell_id: "5fe113da-480a-42fa-bc67-07f5247a0ed6",
         "word": "die Annäherung",
         "en": "approximation, convergence",
         "vi": "sự xích lại",
@@ -7285,6 +7541,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee AHN-nay-er-ung — approximation / convergence; from 'sich nähern' (to approach)"
       },
       {
+        cell_id: "2666b9a1-c5da-4ac2-88e9-efed50549b34",
         "word": "die Hinhaltung",
         "en": "stalling, delay tactic",
         "vi": "kéo dài, trì hoãn",
@@ -7293,6 +7550,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee HIN-hahl-tung — stalling; carries a slightly negative connotation in business contexts"
       },
       {
+        cell_id: "ca9e05b3-91e3-4c41-b938-c3bae4eb0c09",
         "word": "der Spielraum",
         "en": "negotiation room, leeway",
         "vi": "dư địa thương lượng",
@@ -7301,6 +7559,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dayr SHPEEL-rowm — leeway; literally 'play-room'; the most common 'wiggle-room' word"
       },
       {
+        cell_id: "75da8526-eb7a-40c3-ab53-5fc2c1479aba",
         "word": "niedrigschwellig",
         "en": "low-threshold",
         "vi": "ngưỡng thấp",
@@ -7309,6 +7568,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "NEED-rikh-shvel-likh — low-threshold; from 'Schwelle' (threshold) — a low entry barrier"
       },
       {
+        cell_id: "8a1beca9-328d-4c3e-9995-f533178c1a79",
         "word": "es rechnet sich (nicht)",
         "en": "it's (not) economically viable",
         "vi": "có lợi (không) kinh tế",
@@ -7317,6 +7577,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "ess REKH-net zikh — verb phrase; 'it adds up' / 'it's profitable'; the most natural German way to say 'it pencils out'"
       },
       {
+        cell_id: "a1fba494-8c1e-48d8-989b-a5b36baf1745",
         "word": "die offene Rückmeldung",
         "en": "open feedback",
         "vi": "phản hồi cởi mở",
@@ -7325,6 +7586,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee OFF-uh-nuh REUK-mel-doong — open feedback; 'ü' = rounded 'oo'"
       },
       {
+        cell_id: "a09850f1-75e1-4aac-bc7a-1249dcb91ad2",
         "word": "das Statussignal",
         "en": "status signal",
         "vi": "tín hiệu địa vị",
@@ -7335,21 +7597,25 @@ export const lessons: GermanLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "34713e05-5ee2-4d26-b991-2314d24e1028",
         "speaker": "Linh",
         "text": "Herr Schneider, vielen Dank für Ihr Angebot — ich schätze die Sorgfalt, mit der es ausgearbeitet wurde. Sehe es jedoch deutlich unterhalb des Bereichs, der für uns wirtschaftlich tragfähig ist.",
         "vi": "Anh Schneider, cám ơn về đề xuất — tôi trân trọng sự cẩn thận. Song thấy rõ ràng dưới mức kinh tế khả thi với chúng tôi."
       },
       {
+        cell_id: "c24ac008-6c5d-4197-88d5-ad3be61a09c6",
         "speaker": "Schneider",
         "text": "Wie groß ist der Abstand?",
         "vi": "Khoảng cách lớn cỡ nào?"
       },
       {
+        cell_id: "abc59d3c-84ad-4cc0-ad86-48bd4949c903",
         "speaker": "Linh",
         "text": "Etwa vierzehn Prozent unter dem Marktdurchschnitt für vergleichbare Leistungen. Eine Annäherung wäre erforderlich, damit wir weiterverhandeln können — daher meine offene Rückmeldung statt höflicher Hinhaltung.",
         "vi": "Khoảng 14% dưới trung bình thị trường cho dịch vụ tương đương. Sự xích lại cần thiết để chúng ta có thể tiếp tục đàm phán — do đó phản hồi cởi mở thay vì lịch sự kéo dài."
       },
       {
+        cell_id: "231262d1-2425-494f-837b-7353e70ae01b",
         "speaker": "Schneider",
         "text": "Vielen Dank für die Direktheit. Lassen Sie uns das intern prüfen — wir kommen mit überarbeitetem Vorschlag zurück.",
         "vi": "Cám ơn về sự thẳng thắn. Cho chúng tôi kiểm tra nội bộ — sẽ quay lại với đề xuất chỉnh sửa."
@@ -7651,6 +7917,7 @@ export const lessons: GermanLesson[] = [
     "tip_advice_en": "Before a hostile negotiation (preparation):\n1. ECKWERTE in writing in front of you: a reminder of Sachebene-discipline in the heat of the moment.\n2. MANDATE clear: what am I not allowed to change? This duty makes it easier to defend against pressure.\n3. Define a PAUSE TRIGGER: at what level of escalation do I call a 'pause'? Set the threshold beforehand.\n4. Define a WALK-AWAY THRESHOLD: from what point do I leave the negotiation?\n\nIn the hostile negotiation (5 reactions):\n1. STAY COMPOSED: breathe, speak slowly, do NOT match the tone\n2. SACHEBENE REFRAMING: 'I understand that you feel strongly about this — on the substantive level...'\n3. MANDATE DEFENCE: 'the parameters come from the principal — I can't deviate from them'\n4. CALL A PAUSE on escalation: 'Lassen Sie uns kurz innehalten'\n5. WALK AWAY on a line crossing: 'Auf dieser Ebene kann ich nicht weiterverhandeln'\n\nC1 hostile-counterpart language:\n- 'Ich nehme zur Kenntnis, dass Sie den Ton verschärft haben — gleichwohl möchte ich die Sachebene nicht verlassen' (I note that you've raised the temperature — nonetheless I'd like not to leave the substantive level)\n- 'Ihre Rhetorik mag intensiv sein — sie ändert jedoch nichts an den Eckwerten' (your rhetoric may be intense — it doesn't change the parameters)\n- 'Eckwerten, die mein Mandat mir vorgibt' (the parameters my mandate gives me)\n- 'Lassen Sie uns kurz innehalten — wir können auf dieser Eskalationsstufe nicht produktiv weiterverhandeln' (let's pause briefly — we can't continue productively at this escalation level)\n- 'Wenn Sie persönliche Angriffe als Taktik einsetzen, signalisiere ich Ihnen offen: das wirkt nicht' (if you're using personal attacks as a tactic, I'm telling you openly: it doesn't work)\n- 'Ich schlage vor, dass wir eine fünfzehnminütige Pause einlegen' (I propose we take a fifteen-minute pause)\n\nWhen the counterpart intimidates with volume:\n- 'Herr Müller, ich höre Sie auch in normaler Lautstärke. Können wir den Pegel etwas senken? Das hilft uns beiden, sachlich zu bleiben.' (Mr. Müller, I can hear you at normal volume too. Can we lower the level a bit? It helps both of us stay factual.)\n\nWhen the counterpart applies deadline pressure:\n- 'Sie setzen eine Deadline — verständlich, dass die Zeit für Sie wichtig ist. Ich bin nicht bereit, eine Vereinbarung unter Zeitdruck zu unterzeichnen, die ich nicht ausreichend prüfen konnte. Sollte die Deadline nicht verhandelbar sein, müssten wir das Gespräch verschieben.' (You're setting a deadline — understandable that time matters to you. I'm not prepared to sign an agreement under time pressure that I couldn't review adequately. Should the deadline not be negotiable, we'd need to postpone the conversation.)\n\nWhen the counterpart attacks personally:\n- 'Was Sie über meine Person sagen, gehört nicht in diese Verhandlung. Lassen Sie uns auf die Sachebene zurückkehren — wir verhandeln einen Vertrag, nicht meine Kompetenz.' (What you're saying about me personally doesn't belong in this negotiation. Let's return to the substantive level — we're negotiating a contract, not my competence.)\n\nWhen the counterpart threatens to walk out:\n- 'Wenn Sie die Verhandlung beenden möchten, respektiere ich das. Ich biete einen Folgetermin in der nächsten Woche an — bei beiderseitigem Interesse können wir weitersprechen.' (If you'd like to end the negotiation, I respect that. I'm offering a follow-up appointment next week — given mutual interest we can keep talking.)\n\nWhen the counterpart uses silent treatment:\n- (let the long silence stand — 30–60 seconds) — 'Ich nehme das Schweigen als Hinweis, dass Sie nachdenken. Möchten Sie, dass ich den nächsten Punkt vorbringe, oder bevorzugen Sie eine kurze Pause?' (I take the silence to mean you're thinking. Would you like me to bring up the next point, or do you prefer a brief pause?)\n\nAfter the hostile negotiation — email (24 hours):\n- 'Sehr geehrter Herr Müller, vielen Dank für die Verhandlung gestern. Wie besprochen ist eine produktive Fortsetzung auf der bisherigen Eskalationsstufe nicht möglich. Ich biete einen Folgetermin am [Datum] an, sofern beide Seiten zur Sachebene zurückkehren. Mit freundlichen Grüßen, Linh.'\n\nFinal tip: a hostile counterpart is often a test — if you stay composed and hold the Sachebene, you earn respect. If you counter-aggress, you validate the game and lose long-term.",
     "vocabulary": [
       {
+        cell_id: "638e20d5-d655-463a-ba7e-71612e32927f",
         "word": "der feindliche Verhandlungspartner",
         "en": "hostile negotiation counterpart",
         "vi": "đối tác đàm phán thù địch",
@@ -7659,6 +7926,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dayr FINE-likh-uh fer-HAHND-lungs-PART-ner — hostile negotiation counterpart; long compound, primary stress on FINE-"
       },
       {
+        cell_id: "9436284b-1caf-40bd-a839-a52bc4d02ff9",
         "word": "den Ton verschärfen",
         "en": "to harden the tone",
         "vi": "làm gay gắt giọng",
@@ -7667,6 +7935,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "den TOHN fer-SHAIR-fen — verb phrase; 'sharpen the tone' / 'raise the temperature'"
       },
       {
+        cell_id: "c4fc0b6c-b04e-43f8-9a1e-995c670397d5",
         "word": "die Eskalationsstufe",
         "en": "escalation level",
         "vi": "cấp eskalation",
@@ -7675,6 +7944,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee es-kah-lah-tsee-OHNS-shtoo-fuh — escalation level; six syllables, stress on -OHNS-"
       },
       {
+        cell_id: "56cb2a22-0ef7-47ea-a047-ec5f0b4f55a8",
         "word": "innehalten",
         "en": "to pause, take a break",
         "vi": "dừng, nghỉ",
@@ -7683,6 +7953,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "IN-uh-HAHL-ten — separable verb; in main clauses 'halten ... inne'"
       },
       {
+        cell_id: "197ee983-5662-47f0-9fbe-834859925ba7",
         "word": "der persönliche Angriff",
         "en": "personal attack",
         "vi": "tấn công cá nhân",
@@ -7691,6 +7962,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dayr per-ZOHN-likh-uh AHN-grif — personal attack; 'ö' = rounded 'eh'"
       },
       {
+        cell_id: "3b1d10f1-fa01-4f85-b432-1ce40f7a1166",
         "word": "das Mandat",
         "en": "mandate, authorization",
         "vi": "ủy nhiệm",
@@ -7699,6 +7971,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dahs mahn-DAHT — mandate; final-syllable stress; 't' fully released"
       },
       {
+        cell_id: "badd3aef-f57d-4b4b-ad33-8d6ed6441baf",
         "word": "die Deadline-Pressure / der Zeitdruck",
         "en": "deadline pressure",
         "vi": "áp lực thời gian",
@@ -7707,6 +7980,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dayr TSYTE-drook — time pressure; 'ei' = 'eye'; final '-ck' = sharp 'k'"
       },
       {
+        cell_id: "cbc0f25d-9873-4f6d-bfd7-2845bb702c07",
         "word": "die Intimidation / die Einschüchterung",
         "en": "intimidation",
         "vi": "đe dọa",
@@ -7715,6 +7989,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee INE-shue-kher-ung — intimidation; 'ü' = rounded 'oo'; 'ch' is the soft 'ich' sound"
       },
       {
+        cell_id: "d8a023e7-d919-4fe5-ab0c-bb1bc138a798",
         "word": "die Grenzüberschreitung",
         "en": "boundary violation, overstep",
         "vi": "vượt ranh giới",
@@ -7723,6 +7998,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee GREN-tsue-ber-SHRYE-tung — boundary violation; 'ü' = rounded 'oo'"
       },
       {
+        cell_id: "91cd5f60-9c14-4d51-8e82-9a9b2e8099c5",
         "word": "Ruhe bewahren",
         "en": "to remain composed",
         "vi": "giữ bình tĩnh",
@@ -7733,21 +8009,25 @@ export const lessons: GermanLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "130da3f0-34da-463a-b140-9e39fb4d1991",
         "speaker": "Müller (feindselig)",
         "text": "Frau Nguyễn, das ist absurd! Sie versuchen offensichtlich, uns über den Tisch zu ziehen — typische asiatische Verhandlungstaktik!",
         "vi": "Cô Nguyễn, điều này absurd! Cô rõ ràng đang cố gắng lừa chúng tôi — chiến thuật đàm phán châu Á điển hình!"
       },
       {
+        cell_id: "1e2df8dd-3156-466e-9570-868c797d0ec6",
         "speaker": "Linh",
         "text": "Herr Müller, ich nehme zur Kenntnis, dass Sie den Ton verschärft haben — gleichwohl möchte ich die Sachebene nicht verlassen. Was Sie über meine Person oder Herkunft sagen, gehört nicht in diese Verhandlung.",
         "vi": "Anh Müller, tôi ghi nhận anh đã làm gay gắt giọng — song không muốn rời Sachebene. Cái anh nói về con người hay gốc gác của tôi không thuộc đàm phán này."
       },
       {
+        cell_id: "e280ac03-8f27-48b0-b4a7-d4d777aff766",
         "speaker": "Müller",
         "text": "Sie sind hier nicht, um Manieren zu lehren!",
         "vi": "Cô không có ở đây để dạy cách cư xử!"
       },
       {
+        cell_id: "2c633d69-f076-4eeb-b403-2f427f154add",
         "speaker": "Linh",
         "text": "Ich lehre keine Manieren — ich definiere die Bedingungen, unter denen ich verhandle. Lassen Sie uns eine fünfzehnminütige Pause einlegen. Danach beginnen wir mit dem Punkt, an dem produktive Diskussion möglich ist.",
         "vi": "Tôi không dạy manners — tôi định nghĩa điều kiện đàm phán. Hãy nghỉ 15 phút. Sau đó bắt đầu từ điểm thảo luận năng suất có thể."
@@ -8040,6 +8320,7 @@ export const lessons: GermanLesson[] = [
     ],
     "vocabulary": [
       {
+        cell_id: "4b7bf90b-3a78-424f-a3c1-1cfe4acb2f27",
         "word": "die Disputation",
         "en": "oral defense",
         "vi": "bảo vệ luận án",
@@ -8048,6 +8329,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee dis-poo-tah-tsee-OHN — oral defence; final-syllable stress"
       },
       {
+        cell_id: "e7ada2ca-b099-4106-92ef-de1381891efe",
         "word": "der Einwand",
         "en": "objection, criticism",
         "vi": "phản biện, ý kiến phản đối",
@@ -8056,6 +8338,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dayr INE-vahnt — objection; 'ei' = 'eye'; final '-d' devoices to '-t'"
       },
       {
+        cell_id: "fcae20fa-457c-44b5-87e1-b64fdd51f85c",
         "word": "die Gesamtargumentation",
         "en": "overall argumentation",
         "vi": "toàn bộ lập luận",
@@ -8064,6 +8347,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee guh-ZAHMT-ar-goo-men-tah-tsee-OHN — overall argumentation; long compound, primary stress on -ZAHMT-"
       },
       {
+        cell_id: "e27b6ae5-6ebf-4f95-b9f0-67aa1f4ca759",
         "word": "das Gutachten",
         "en": "expert report / review",
         "vi": "bản nhận xét chuyên môn",
@@ -8072,6 +8356,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dahs GOO-tahkh-ten — expert report / referee report; 'ch' here is the hard 'ach' sound"
       },
       {
+        cell_id: "993df891-2829-41f8-b848-07972e78f712",
         "word": "die Präzisierung",
         "en": "specification, refinement",
         "vi": "sự tinh chỉnh, làm rõ",
@@ -8082,21 +8367,25 @@ export const lessons: GermanLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "83ba1926-f9e4-4eda-b4ff-e3eecf4717af",
         "speaker": "Vorsitzender",
         "text": "Herr Kandidat, wie würden Sie den Kern Ihres Beitrags in einem Satz formulieren?",
         "vi": "Thưa ứng viên, anh sẽ diễn đạt cốt lõi đóng góp của mình trong một câu như thế nào?"
       },
       {
+        cell_id: "3f9475bb-f3a7-436c-a2d6-ae17b535d11a",
         "speaker": "Kandidat",
         "text": "Der Beitrag liegt in der empirischen Präzisierung eines bislang zu weit gefassten Begriffs.",
         "vi": "Đóng góp nằm ở việc tinh chỉnh thực nghiệm một khái niệm vốn trước nay được hiểu quá rộng."
       },
       {
+        cell_id: "88e04bef-1f12-43f3-8997-7dc24c9e312e",
         "speaker": "Gutachterin",
         "text": "Inwiefern ist das mehr als nur eine moderate Verschiebung der Terminologie?",
         "vi": "Ở mức nào đây không chỉ là một sự dịch chuyển nhẹ về thuật ngữ?"
       },
       {
+        cell_id: "369c06a7-c463-4fe5-98ba-18f70b54ec65",
         "speaker": "Kandidat",
         "text": "Das ist ein berechtigter Einwand, den ich in der Fassung der Schlusskapitel bereits berücksichtigt habe.",
         "vi": "Đó là một phản biện xác đáng, điều mà tôi đã tính đến trong bản chỉnh sửa của các chương kết."
@@ -8227,6 +8516,7 @@ export const lessons: GermanLesson[] = [
     ],
     "vocabulary": [
       {
+        cell_id: "75dc2cc4-b5de-4c5e-ae96-ba11bebb1f64",
         "word": "die Habilitation",
         "en": "postdoctoral qualification / habilitation",
         "vi": "học vị/điều kiện habilitation",
@@ -8235,6 +8525,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee hah-bee-lee-tah-tsee-OHN — postdoctoral qualification; the highest German academic teaching qualification"
       },
       {
+        cell_id: "7903434d-a914-428a-a9c0-9e462cc59329",
         "word": "die Probevorlesung",
         "en": "trial lecture",
         "vi": "giờ giảng thử",
@@ -8243,6 +8534,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee PROH-buh-FOR-lay-zung — trial lecture; literally 'sample lecture'"
       },
       {
+        cell_id: "4e65e8e7-91d6-4d77-a1a9-6d4b91aa5916",
         "word": "didaktisch",
         "en": "didactic, pedagogically structured",
         "vi": "theo hướng sư phạm",
@@ -8251,6 +8543,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee-DAHK-tish — adjective; 'pedagogically structured', not 'didactic' in the negative English sense"
       },
       {
+        cell_id: "7e93dfb6-531d-49cd-8e7c-14078cb44f6c",
         "word": "anschlussfähig",
         "en": "accessible / connectable to the field",
         "vi": "có tính liên kết, dễ nối vào mạch chuyên ngành",
@@ -8259,6 +8552,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "AHN-shloos-FAY-ikh — adjective; 'connectable to the field', i.e. accessible enough to link into ongoing scholarship"
       },
       {
+        cell_id: "ed451256-42f8-4460-b969-85bb44c1649b",
         "word": "die Zielgruppe",
         "en": "target audience",
         "vi": "đối tượng mục tiêu",
@@ -8269,21 +8563,25 @@ export const lessons: GermanLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "aff858b9-b5af-44ef-bfd5-b04048d0c0f1",
         "speaker": "Professorin",
         "text": "Wie würden Sie Ihre Lehrperspektive im Rahmen der Probevorlesung erläutern?",
         "vi": "Cô sẽ trình bày quan điểm giảng dạy của mình như thế nào trong phạm vi giờ giảng thử?"
       },
       {
+        cell_id: "598b220b-3d42-45be-a0dc-18bcd5bcc16f",
         "speaker": "Bewerber",
         "text": "Ich würde Forschung und Lehre nicht gegeneinander ausspielen, sondern didaktisch aufeinander beziehen.",
         "vi": "Tôi sẽ không đặt nghiên cứu và giảng dạy đối lập nhau, mà liên hệ chúng với nhau theo cách sư phạm."
       },
       {
+        cell_id: "4a96d948-fea1-49da-9023-3aec852f166d",
         "speaker": "Professorin",
         "text": "Und wie sichern Sie die Anschlussfähigkeit für eine nicht spezialisierte Hörerschaft?",
         "vi": "Và làm sao anh bảo đảm tính dễ theo dõi cho một nhóm người nghe không chuyên sâu?"
       },
       {
+        cell_id: "51875e1c-5704-496c-a80c-61b9a5d53b4f",
         "speaker": "Bewerber",
         "text": "Ich beginne mit einem alltagsnahen Beispiel und führe dann schrittweise in den theoretischen Kern ein.",
         "vi": "Tôi bắt đầu bằng một ví dụ gần với đời sống rồi từng bước đưa vào lõi lý thuyết."
@@ -8414,6 +8712,7 @@ export const lessons: GermanLesson[] = [
     ],
     "vocabulary": [
       {
+        cell_id: "ffaf9524-fe56-4a52-89a4-6ee6dfe709a8",
         "word": "der DFG-Antrag",
         "en": "DFG grant application",
         "vi": "đơn xin tài trợ DFG",
@@ -8422,6 +8721,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dayr DAY-EFF-GAY AHN-trahk — DFG grant application; the abbreviation is always spelled out"
       },
       {
+        cell_id: "b6b4ab2f-3807-4f88-a2a8-8735f369f7a5",
         "word": "die Projektbeschreibung",
         "en": "project description",
         "vi": "mô tả dự án",
@@ -8430,6 +8730,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee proh-YEKT-buh-SHRYE-bung — project description; long compound, primary stress on -SHRYE-"
       },
       {
+        cell_id: "60532f82-e38f-4368-8078-0fb822e0d8b7",
         "word": "die Machbarkeit",
         "en": "feasibility",
         "vi": "tính khả thi",
@@ -8438,6 +8739,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee MAHKH-bar-kyte — feasibility; from 'machen' (to do/make) + '-bar' (-able) + '-keit' (-ness)"
       },
       {
+        cell_id: "45a9860a-849f-40f0-8ac9-5bd9e04c5308",
         "word": "das Arbeitsprogramm",
         "en": "work programme",
         "vi": "chương trình công việc",
@@ -8446,6 +8748,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dahs AR-byts-proh-GRAHM — work programme; 'ei' = 'eye'; primary stress on -GRAHM"
       },
       {
+        cell_id: "ce23e38c-ad49-424f-b71a-db98940dfd4a",
         "word": "die Originalität",
         "en": "originality",
         "vi": "tính nguyên gốc",
@@ -8456,21 +8759,25 @@ export const lessons: GermanLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "4b030634-e0db-4fa9-ba8e-dd02645bb628",
         "speaker": "Postdoc",
         "text": "Wie würden Sie den roten Faden Ihres DFG-Antrags in zwei Sätzen zusammenfassen?",
         "vi": "Anh/chị sẽ tóm tắt sợi chỉ đỏ của đơn DFG trong hai câu như thế nào?"
       },
       {
+        cell_id: "124c1ae6-8e5b-43f8-9c8c-24a304f52c74",
         "speaker": "Beraterin",
         "text": "Der Antrag braucht ein klares Erkenntnisinteresse, einen präzisen Forschungsstand und ein realistisches Arbeitsprogramm.",
         "vi": "Đơn cần có mối quan tâm nhận thức rõ, tình trạng nghiên cứu chính xác và một chương trình công việc thực tế."
       },
       {
+        cell_id: "f5d88c1c-f037-410d-8364-bc4ef1095743",
         "speaker": "Postdoc",
         "text": "Und wie stark muss ich die Originalität betonen?",
         "vi": "Và tôi cần nhấn mạnh tính nguyên gốc đến mức nào?"
       },
       {
+        cell_id: "d75a2efe-db36-4a27-9e59-f332e8de2088",
         "speaker": "Beraterin",
         "text": "Deutlich, aber belegt — die Gutachtenden wollen kein Pathos, sondern einen nachvollziehbaren Erkenntnisgewinn.",
         "vi": "Rõ ràng, nhưng có chứng cứ — người phản biện không cần lời hoa mỹ, mà cần giá trị nhận thức có thể theo dõi được."
@@ -8601,6 +8908,7 @@ export const lessons: GermanLesson[] = [
     ],
     "vocabulary": [
       {
+        cell_id: "3311c814-4d5c-422e-9a97-547691b73faf",
         "word": "der Doktorvater / die Doktormutter",
         "en": "doctoral supervisor / advisor",
         "vi": "người hướng dẫn tiến sĩ",
@@ -8609,6 +8917,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dayr DOK-tor-FAH-ter / dee DOK-tor-MOO-ter — doctoral supervisor; literal compound, gendered forms used routinely"
       },
       {
+        cell_id: "ca89a8ba-7ead-40b7-a488-10e5d6d6ebfb",
         "word": "die Eigenständigkeit",
         "en": "independence, self-reliance",
         "vi": "tính độc lập",
@@ -8617,6 +8926,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee EYE-gen-shten-dikh-kyte — independence / self-reliance; long compound noun, final '-keit' = 'kyte'"
       },
       {
+        cell_id: "f6324bc4-b372-4fd8-89b6-6c3c74c66a65",
         "word": "die Promotionsphase",
         "en": "doctoral phase",
         "vi": "giai đoạn làm tiến sĩ",
@@ -8625,6 +8935,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee proh-moh-tsee-OHNS-FAH-zuh — doctoral phase; 's' between vowels is voiced (= 'z')"
       },
       {
+        cell_id: "d08083ae-dc5b-4f08-bfb7-280f2e81634e",
         "word": "um Rat bitten",
         "en": "to ask for advice",
         "vi": "xin lời khuyên",
@@ -8633,6 +8944,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "oom RAHT BIT-ten — verb phrase; 'to ask for advice'; literally 'beg for counsel'"
       },
       {
+        cell_id: "37173672-6446-4898-a818-3111e1c28b9d",
         "word": "die Kränkung",
         "en": "hurt feelings / offense",
         "vi": "sự tự ái bị tổn thương",
@@ -8643,21 +8955,25 @@ export const lessons: GermanLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "d7a7805f-bffd-4b69-af01-11adf9d484c8",
         "speaker": "Doktorandin",
         "text": "Ich wollte Sie um Rat bitten, ohne meine eigene Entscheidung aus der Hand zu geben.",
         "vi": "Em muốn xin thầy/cô lời khuyên mà không đánh mất quyền quyết định của chính mình."
       },
       {
+        cell_id: "97cbe272-faa2-4329-bb69-3b468f026673",
         "speaker": "Doktormutter",
         "text": "Das ist ein vernünftiger Ansatz — Eigenständigkeit und Rücksprache schließen sich nicht aus.",
         "vi": "Đó là một cách tiếp cận hợp lý — tính độc lập và việc xin ý kiến không loại trừ nhau."
       },
       {
+        cell_id: "c9654313-6418-4174-b93d-b060ca2e2689",
         "speaker": "Doktorandin",
         "text": "Manchmal habe ich das Gefühl, dass unausgesprochene Erwartungen schwerer wiegen als formale Vorgaben.",
         "vi": "Đôi khi em có cảm giác những kỳ vọng không nói ra lại nặng hơn các quy định chính thức."
       },
       {
+        cell_id: "be72ae7f-4da3-4a0e-a946-a103151f4bea",
         "speaker": "Doktormutter",
         "text": "Das ist in der Promotionsphase nicht ungewöhnlich. Wichtig ist, dass Sie Rückfragen frühzeitig ansprechen.",
         "vi": "Điều đó không lạ trong giai đoạn tiến sĩ. Quan trọng là em nêu câu hỏi sớm."
@@ -8788,6 +9104,7 @@ export const lessons: GermanLesson[] = [
     ],
     "vocabulary": [
       {
+        cell_id: "03c63063-db49-4b65-8dd1-261f010f51a9",
         "word": "der Konjunktiv I",
         "en": "reported speech mood",
         "vi": "thức gián tiếp / trần thuật gián tiếp",
@@ -8796,6 +9113,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dayr kon-YOONK-teef AYNS — reported-speech mood; the Roman numeral 'I' is read as 'eins'"
       },
       {
+        cell_id: "275af36d-1ab1-4563-aaa1-f6ac41c587a5",
         "word": "die Begutachtung",
         "en": "review / evaluation",
         "vi": "việc thẩm định",
@@ -8804,6 +9122,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee buh-GOO-tahkh-tung — review / evaluation; 'ch' here is the hard 'ach' sound"
       },
       {
+        cell_id: "73b590da-6918-4ef2-84f5-df0c19d47697",
         "word": "die Wiedergabe",
         "en": "rendering, reproduction",
         "vi": "sự tái hiện",
@@ -8812,6 +9131,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee VEE-der-gah-buh — rendering / reproduction; 'ie' = 'ee'"
       },
       {
+        cell_id: "40ae442e-87bf-44ea-9041-57f18c088924",
         "word": "die Distanzierung",
         "en": "distancing",
         "vi": "sự tạo khoảng cách",
@@ -8820,6 +9140,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee dis-tahn-TSEER-ung — distancing; from 'distanzieren'"
       },
       {
+        cell_id: "2f2e3307-558f-436c-9e32-b627bf429dfa",
         "word": "referieren",
         "en": "to report, summarize",
         "vi": "thuật lại, tóm tắt",
@@ -8830,21 +9151,25 @@ export const lessons: GermanLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "1f9f2630-fb47-41ee-b8a5-c7a273a4e528",
         "speaker": "Sekretärin",
         "text": "Der Gutachter bemerke, die Argumentation sei an mehreren Stellen zu eng geführt.",
         "vi": "Người phản biện nhận xét rằng lập luận được triển khai quá chặt ở nhiều chỗ."
       },
       {
+        cell_id: "42d0244e-6fd3-4b8c-991c-13687416539c",
         "speaker": "Autor",
         "text": "Ich würde das im Protokoll mit Konjunktiv I wiedergeben, damit die Distanz zur fremden Rede klar bleibt.",
         "vi": "Tôi sẽ ghi lại trong biên bản bằng Konjunktiv I để giữ rõ khoảng cách với lời của người khác."
       },
       {
+        cell_id: "faf05276-83d3-4c13-bc26-1ade233faa7d",
         "speaker": "Sekretärin",
         "text": "Und wenn Sie die Kritik in Ihrer Erwiderung zusammenfassen?",
         "vi": "Còn khi anh/chị tóm tắt phản biện trong phản hồi thì sao?"
       },
       {
+        cell_id: "b576d009-06cc-4f34-9da4-13f3953c16ca",
         "speaker": "Autor",
         "text": "Dann verwende ich ebenfalls den Konjunktiv I, sofern ich den Inhalt neutral referieren möchte.",
         "vi": "Khi đó tôi cũng dùng Konjunktiv I, miễn là tôi muốn thuật lại nội dung một cách trung tính."
@@ -8961,6 +9286,7 @@ export const lessons: GermanLesson[] = [
     ],
     "vocabulary": [
       {
+        cell_id: "9ccfeeaa-a79b-43ed-94a5-4592df578dc7",
         "word": "m.E.",
         "en": "meines Erachtens / in my view",
         "vi": "theo ý kiến của tôi",
@@ -8969,6 +9295,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "em AY — abbreviation read as letter names: 'em' + 'ay' (long 'ay' as in 'they')"
       },
       {
+        cell_id: "ce317aa9-d22b-4727-81a5-2ba3a6e9fcf9",
         "word": "gegebenenfalls",
         "en": "if necessary / where appropriate",
         "vi": "nếu cần / trong trường hợp cần thiết",
@@ -8977,6 +9304,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "guh-GAY-ben-en-fahls — adverb 'if necessary'; six syllables, primary stress on -GAY-"
       },
       {
+        cell_id: "48766324-a232-4d94-bc1e-58a8d0e0dc08",
         "word": "womöglich",
         "en": "possibly, perhaps",
         "vi": "có lẽ, có khả năng",
@@ -8985,6 +9313,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "voh-MOEK-likh — adverb 'possibly'; 'ö' = rounded 'eh'; final 'ch' is the soft 'ich' sound"
       },
       {
+        cell_id: "d0542485-87b5-48b0-9ce4-fd196c879d7e",
         "word": "belastbar",
         "en": "robust, sound",
         "vi": "đủ vững, có sức nặng",
@@ -8993,6 +9322,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "buh-LAHST-bar — adjective 'robust' / 'load-bearing'; from 'Last' (load) + '-bar' (-able)"
       },
       {
+        cell_id: "f943a31d-31cd-446e-85f0-0da9d041ca0f",
         "word": "bestreiten",
         "en": "to dispute, contest",
         "vi": "phản bác, bác bỏ",
@@ -9003,21 +9333,25 @@ export const lessons: GermanLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "d76f9ac1-90ec-4d03-bb90-536f34425c37",
         "speaker": "Professorin",
         "text": "Ich würde den Einspruch nicht zurückweisen, aber m.E. braucht er noch eine präzisere Begründung.",
         "vi": "Tôi sẽ không bác bỏ phản biện, nhưng theo tôi nó vẫn cần một lập luận chặt hơn."
       },
       {
+        cell_id: "f17db984-85a1-464b-a124-b2377aacd0bc",
         "speaker": "Doktorand",
         "text": "Das verstehe ich. Gegebenenfalls kann ich die Passage mit mehr Daten absichern.",
         "vi": "Em hiểu ạ. Nếu cần, em có thể củng cố đoạn đó bằng thêm dữ liệu."
       },
       {
+        cell_id: "85869d07-64dd-4650-8f37-688ee510ecac",
         "speaker": "Professorin",
         "text": "Wichtig ist, dass der Widerspruch sachlich bleibt und nicht persönlich wirkt.",
         "vi": "Điều quan trọng là sự phản biện phải giữ tính khách quan, không làm nó thành chuyện cá nhân."
       },
       {
+        cell_id: "1edc7304-1e4c-4177-a2ad-8700fa9e8cfe",
         "speaker": "Doktorand",
         "text": "Genau. Dann kann auch eine kritische Rückmeldung produktiv werden.",
         "vi": "Đúng vậy. Khi đó một phản hồi mang tính phê bình vẫn có thể trở nên hữu ích."
@@ -9134,6 +9468,7 @@ export const lessons: GermanLesson[] = [
     ],
     "vocabulary": [
       {
+        cell_id: "596a8269-ac5e-406b-a8e3-4e90629ee6bd",
         "word": "das Kolloquium",
         "en": "colloquium, academic discussion",
         "vi": "buổi colloquium / thảo luận học thuật",
@@ -9142,6 +9477,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dahs koh-LOH-kvee-um — colloquium / academic discussion; 'qu' = 'kv'"
       },
       {
+        cell_id: "e9f8b516-c93e-4cef-8824-6738c0a992de",
         "word": "bündeln",
         "en": "to bundle, consolidate",
         "vi": "gom lại, tập hợp",
@@ -9150,6 +9486,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "BUEN-deln — verb 'to bundle / consolidate'; 'ü' = rounded 'oo'"
       },
       {
+        cell_id: "6aee9ab5-9e10-40a1-abed-bde24cfbeac3",
         "word": "der rote Faden",
         "en": "the thread, guiding line",
         "vi": "mạch chính",
@@ -9158,6 +9495,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dayr ROH-ter FAH-den — noun phrase 'the red thread'; the standard idiom for the guiding line of an argument"
       },
       {
+        cell_id: "d63c2343-1e3e-4271-bf31-5578869275f6",
         "word": "strukturieren",
         "en": "to structure",
         "vi": "cấu trúc, sắp xếp",
@@ -9166,6 +9504,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "shtrook-too-REER-en — verb 'to structure'; final-syllable stress on -REER-"
       },
       {
+        cell_id: "8a3ded03-8bd3-44ff-a679-d9252da95db7",
         "word": "die Rückfrage",
         "en": "follow-up question",
         "vi": "câu hỏi tiếp theo",
@@ -9176,21 +9515,25 @@ export const lessons: GermanLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "10bc763b-582b-4611-978b-cb89556fce8e",
         "speaker": "Vorsitzende",
         "text": "Ich würde die Diskussion jetzt öffnen, aber bitte zunächst nur zwei Rückfragen.",
         "vi": "Tôi sẽ mở thảo luận ngay bây giờ, nhưng trước hết xin chỉ hai câu hỏi."
       },
       {
+        cell_id: "d06f8a03-2e5a-4f3c-a627-5ee9085a4c34",
         "speaker": "Teilnehmer",
         "text": "Womöglich wäre es sinnvoll, erst die methodischen Unklarheiten zu klären.",
         "vi": "Có lẽ sẽ hợp lý nếu trước tiên làm rõ các điểm chưa rõ về phương pháp."
       },
       {
+        cell_id: "4dd2f1ac-2e8f-4f72-81c3-dbfdc250632d",
         "speaker": "Vorsitzende",
         "text": "Genau, ich bündele das und gebe dann das Wort zurück in die Runde.",
         "vi": "Đúng vậy, tôi sẽ gom ý đó lại rồi trả lời phát biểu trở lại cho cả vòng thảo luận."
       },
       {
+        cell_id: "71139aa9-a37b-409b-9901-dc09e78ad6fa",
         "speaker": "Teilnehmer",
         "text": "So bleibt der rote Faden erhalten und niemand verliert den Anschluss.",
         "vi": "Như vậy mạch chính sẽ được giữ và không ai bị mất kết nối."
@@ -9307,6 +9650,7 @@ export const lessons: GermanLesson[] = [
     ],
     "vocabulary": [
       {
+        cell_id: "6ca01bb7-7253-40ee-841d-49f1d5edffcc",
         "word": "das WissZeitVG",
         "en": "German Fixed-Term Contracts for Academic Staff Act",
         "vi": "luật hợp đồng có thời hạn cho nhân sự học thuật",
@@ -9315,6 +9659,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dahs VISS-tsyte-FOW-gay — German Fixed-Term Contracts for Academic Staff Act; the abbreviation is read letter-by-letter"
       },
       {
+        cell_id: "d99a732c-50a9-40d3-b848-9e122b939927",
         "word": "Planbarkeit",
         "en": "predictability",
         "vi": "tính dự đoán được",
@@ -9323,6 +9668,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "PLAHN-bar-kyte — predictability; literally 'plan-ability'"
       },
       {
+        cell_id: "a195ee14-9bfa-480a-8f2b-96e87664a493",
         "word": "befristet",
         "en": "fixed-term",
         "vi": "có thời hạn",
@@ -9331,6 +9677,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "buh-FRIS-tet — adjective 'fixed-term'; from 'Frist' (deadline)"
       },
       {
+        cell_id: "25ec4f23-d01f-4f12-a41b-ef6e88da1e93",
         "word": "einordnen",
         "en": "to contextualize, frame",
         "vi": "đặt vào bối cảnh",
@@ -9339,6 +9686,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "INE-ord-nen — verb 'to classify / frame / contextualise'; separable verb"
       },
       {
+        cell_id: "6cd5a26d-7c02-4fb7-a865-c9369ece358e",
         "word": "der Diskussionsstand",
         "en": "state of the discussion",
         "vi": "tình hình thảo luận hiện tại",
@@ -9349,21 +9697,25 @@ export const lessons: GermanLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "046a4dd3-41ad-43ca-a048-4c098a0cbb7f",
         "speaker": "Dozentin",
         "text": "Wir sollten die Reform des WissZeitVG sachlich einordnen und keine vorschnellen Schlussfolgerungen ziehen.",
         "vi": "Chúng ta nên đặt cải cách WissZeitVG vào bối cảnh một cách khách quan và không rút ra kết luận vội."
       },
       {
+        cell_id: "1831b74a-fea5-460e-a769-f72bab3046fa",
         "speaker": "Doktorand",
         "text": "Das sehe ich auch so, wobei die Planbarkeit für den Nachwuchs zentral bleibt.",
         "vi": "Em cũng thấy vậy, trong đó tính dự đoán cho thế hệ trẻ vẫn là then chốt."
       },
       {
+        cell_id: "fd39b1ac-cf8f-4eac-87b9-2288dcea7b51",
         "speaker": "Dozentin",
         "text": "Genau, aber das ist keine Rechtsberatung, sondern nur eine Einordnung des Diskussionsstands.",
         "vi": "Đúng vậy, nhưng đây không phải tư vấn pháp lý, mà chỉ là cách đặt vấn đề theo tình hình thảo luận."
       },
       {
+        cell_id: "cfdaca29-a995-4839-9b78-6d355db158b9",
         "speaker": "Doktorand",
         "text": "Dann kann man die Argumente sauber voneinander trennen: rechtlich, institutionell und akademisch.",
         "vi": "Khi đó ta có thể tách các lập luận ra rõ ràng: pháp lý, thể chế và học thuật."
@@ -9480,6 +9832,7 @@ export const lessons: GermanLesson[] = [
     ],
     "vocabulary": [
       {
+        cell_id: "62dac7c3-1cc5-4ff9-b586-7c474d082bcf",
         "word": "die Erwiderung",
         "en": "response, rejoinder",
         "vi": "phản hồi",
@@ -9488,6 +9841,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee er-VEE-der-ung — response / rejoinder; from 'erwidern' (to respond)"
       },
       {
+        cell_id: "b622b2d6-2dbb-420d-8680-95b94e8ce88d",
         "word": "der Einwand",
         "en": "objection",
         "vi": "phản biện, ý kiến phản đối",
@@ -9496,6 +9850,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dayr INE-vahnt — objection; 'ei' = 'eye'; final '-d' devoices to '-t'"
       },
       {
+        cell_id: "459ded86-7aaa-4b32-a975-bc8817125298",
         "word": "präzisieren",
         "en": "to specify, make precise",
         "vi": "làm rõ, cụ thể hóa",
@@ -9504,6 +9859,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "pray-tsee-ZEER-en — verb 'to specify / make precise'; final-syllable stress on -ZEER-"
       },
       {
+        cell_id: "43ab1631-52a0-4221-a885-4bb3a2862cbc",
         "word": "revidieren",
         "en": "to revise",
         "vi": "sửa đổi",
@@ -9512,6 +9868,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "ray-vee-DEER-en — verb 'to revise'; final-syllable stress"
       },
       {
+        cell_id: "51a45c83-0f2d-4bdb-8dce-dfc6fe404e46",
         "word": "der Theoriebezug",
         "en": "theoretical link",
         "vi": "liên hệ lý thuyết",
@@ -9522,21 +9879,25 @@ export const lessons: GermanLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "ab48d79e-43bf-4fc4-af4c-e0311868ef4d",
         "speaker": "Reviewer",
         "text": "Der Gutachter bemerke, der Theoriebezug sei noch zu implizit.",
         "vi": "Người phản biện nhận xét rằng liên hệ với lý thuyết vẫn còn quá hàm ẩn."
       },
       {
+        cell_id: "0f876aa2-2fe0-426b-a428-5f1025db6f84",
         "speaker": "Autorin",
         "text": "Ich nehme den Einwand dankbar auf und werde die Passage präzisieren.",
         "vi": "Tôi ghi nhận ý kiến đó với sự biết ơn và sẽ làm rõ đoạn này."
       },
       {
+        cell_id: "ee3632b6-2ebe-4221-a182-a811d6dd319d",
         "speaker": "Reviewer",
         "text": "Wichtig ist, dass die Revision sichtbar wird und nicht nur behauptet wird.",
         "vi": "Điều quan trọng là phần sửa đổi phải nhìn thấy được chứ không chỉ được nói miệng."
       },
       {
+        cell_id: "0892bd3f-8ba3-4cfa-8a3d-55f88dc30445",
         "speaker": "Autorin",
         "text": "Genau, deshalb formuliere ich die Erwiderung kurz, sachlich und präzise.",
         "vi": "Đúng vậy, vì thế tôi sẽ viết phản hồi ngắn gọn, khách quan và chính xác."
@@ -9653,6 +10014,7 @@ export const lessons: GermanLesson[] = [
     ],
     "vocabulary": [
       {
+        cell_id: "c7d4a00b-2121-4a57-9fbd-3077ccdf0b64",
         "word": "begrifflich",
         "en": "conceptual",
         "vi": "thuộc khái niệm",
@@ -9661,6 +10023,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "buh-GRIF-likh — adjective 'conceptual'; from 'Begriff' (concept) + '-lich' (-al)"
       },
       {
+        cell_id: "8926dd26-54fb-4d13-b680-f3202d628e86",
         "word": "Schärfe",
         "en": "sharpness, precision",
         "vi": "độ sắc, độ chính xác",
@@ -9669,6 +10032,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee SHAIR-fuh — sharpness / precision; from 'scharf' (sharp)"
       },
       {
+        cell_id: "029c00ab-fcfa-4d37-985f-5d96999e2db8",
         "word": "anschlussfähig",
         "en": "connectable, linkable",
         "vi": "có khả năng nối kết",
@@ -9677,6 +10041,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "AHN-shloos-FAY-ikh — adjective 'connectable / linkable'; from 'Anschluss' (connection) + '-fähig' (-able)"
       },
       {
+        cell_id: "6eb38dce-9786-4286-8801-e5bcfc2b04cc",
         "word": "tragfähig",
         "en": "robust, substantial",
         "vi": "có sức nặng, có khả năng đứng vững",
@@ -9685,6 +10050,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "TRAHK-fay-ikh — adjective 'robust / substantial'; literally 'load-bearing'"
       },
       {
+        cell_id: "9cdb3bc9-2b4b-46fa-a997-7ffcdb26c17b",
         "word": "die Fragestellung",
         "en": "research question",
         "vi": "câu hỏi nghiên cứu",
@@ -9695,21 +10061,25 @@ export const lessons: GermanLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "8c3dca21-a048-4e30-839f-50cd64673bf8",
         "speaker": "Professor",
         "text": "Ein Beitrag überzeugt mich erst, wenn er begrifflich scharf und anschlussfähig formuliert ist.",
         "vi": "Một bài viết chỉ thuyết phục tôi khi nó được diễn đạt vừa sắc về khái niệm vừa có khả năng nối kết."
       },
       {
+        cell_id: "42751981-624d-4ba1-be8c-06801281c742",
         "speaker": "Doktorandin",
         "text": "Dann sollte ich die Fragestellung wohl noch stärker zuschneiden.",
         "vi": "Vậy có lẽ em nên chỉnh lại câu hỏi nghiên cứu chặt hơn."
       },
       {
+        cell_id: "d63eb653-8ce3-49cb-b41a-a7fd380bd7d9",
         "speaker": "Professor",
         "text": "Genau, gegebenenfalls weniger Material, aber mehr analytische Präzision.",
         "vi": "Đúng vậy, nếu cần thì ít chất liệu hơn nhưng phân tích chính xác hơn."
       },
       {
+        cell_id: "8967853c-691e-4bd0-aa36-48ededda6573",
         "speaker": "Doktorandin",
         "text": "Das hilft, damit der Gedanke tragfähig und weiterverwendbar wird.",
         "vi": "Điều đó sẽ giúp ý tưởng đủ vững và có thể tiếp tục được sử dụng."
@@ -9788,12 +10158,12 @@ export const lessons: GermanLesson[] = [
       }
     ],
     "vocabulary": [
-      { "word": "die Pressekonferenz", "en": "press conference", "vi": "họp báo", "pos": "noun (f)", "pronunciation_vi": "PRES-sê-kon-fê-rents", "pronunciation_en": "dee PRES-suh-kon-feh-rents — 'z' = 'ts'" },
-      { "word": "gesichert", "en": "verified / established", "vi": "đã được xác nhận", "pos": "adjective", "pronunciation_vi": "gê-zí-khơt", "pronunciation_en": "guh-ZIKH-ert — 'ch' here is the soft front-of-mouth sound (like 'ich')" }
+      { cell_id: "da006847-cd38-42e8-9809-f73450d224b2", "word": "die Pressekonferenz", "en": "press conference", "vi": "họp báo", "pos": "noun (f)", "pronunciation_vi": "PRES-sê-kon-fê-rents", "pronunciation_en": "dee PRES-suh-kon-feh-rents — 'z' = 'ts'" },
+      { cell_id: "c0132c53-5649-488b-b3f6-727d8c8ec0b9", "word": "gesichert", "en": "verified / established", "vi": "đã được xác nhận", "pos": "adjective", "pronunciation_vi": "gê-zí-khơt", "pronunciation_en": "guh-ZIKH-ert — 'ch' here is the soft front-of-mouth sound (like 'ich')" }
     ],
     "dialogue": [
-      { "speaker": "Pressesprecherin", "text": "Ich werde zunächst drei Punkte darstellen, anschließend öffnen wir die Fragerunde.", "vi": "Trước hết tôi sẽ trình bày ba điểm, sau đó chúng ta mở phần hỏi đáp." },
-      { "speaker": "Journalist", "text": "Wird die Geschäftsführung selbst Fragen beantworten?", "vi": "Ban điều hành sẽ tự trả lời câu hỏi chứ?" }
+      { cell_id: "dca9c913-82c9-4b09-8782-084281eddb0e", "speaker": "Pressesprecherin", "text": "Ich werde zunächst drei Punkte darstellen, anschließend öffnen wir die Fragerunde.", "vi": "Trước hết tôi sẽ trình bày ba điểm, sau đó chúng ta mở phần hỏi đáp." },
+      { cell_id: "35fbc390-cae1-4d83-b340-e800060592ae", "speaker": "Journalist", "text": "Wird die Geschäftsführung selbst Fragen beantworten?", "vi": "Ban điều hành sẽ tự trả lời câu hỏi chứ?" }
     ],
     "cultural_notes_vi": "Mở họp báo tiếng Đức cần rõ, có thứ tự, không màu mè. Gesicherte Fakten là cụm rất quan trọng.",
     "cultural_notes_en": "Opening a German press conference calls for clarity, order, and no flourishes. 'Gesicherte Fakten' (verified facts) is a key phrase — the audience listens for what's marked as confirmed versus what's still being checked.",
@@ -9830,12 +10200,12 @@ export const lessons: GermanLesson[] = [
       }
     ],
     "vocabulary": [
-      { "word": "die Pressemitteilung", "en": "press release", "vi": "thông cáo báo chí", "pos": "noun (f)", "pronunciation_vi": "PRES-sê-mit-tai-lung", "pronunciation_en": "dee PRES-suh-mit-tye-lung — 'ei' = 'eye' sound" },
-      { "word": "nach Angaben", "en": "according to statements", "vi": "theo thông tin", "pos": "phrase", "pronunciation_vi": "nakh AP-ga-bơn", "pronunciation_en": "nahkh AHN-gah-ben — set phrase that often triggers Konjunktiv I in the following clause" }
+      { cell_id: "3df10f19-7140-4f44-a72c-3aa9d69aaf25", "word": "die Pressemitteilung", "en": "press release", "vi": "thông cáo báo chí", "pos": "noun (f)", "pronunciation_vi": "PRES-sê-mit-tai-lung", "pronunciation_en": "dee PRES-suh-mit-tye-lung — 'ei' = 'eye' sound" },
+      { cell_id: "d41c52f6-8559-4af1-9e4d-fd364651d960", "word": "nach Angaben", "en": "according to statements", "vi": "theo thông tin", "pos": "phrase", "pronunciation_vi": "nakh AP-ga-bơn", "pronunciation_en": "nahkh AHN-gah-ben — set phrase that often triggers Konjunktiv I in the following clause" }
     ],
     "dialogue": [
-      { "speaker": "Redakteur", "text": "Die Überschrift klingt nach Werbung. Schreiben Sie lieber, was tatsächlich neu ist.", "vi": "Tiêu đề nghe như quảng cáo. Hãy viết điều thực sự mới." },
-      { "speaker": "Kommunikationsmanager", "text": "Verstanden. Ich stelle die überprüfbare Nachricht an den Anfang.", "vi": "Hiểu rồi. Tôi sẽ đặt tin có thể kiểm chứng lên đầu." }
+      { cell_id: "ae2aa1e4-dbba-4e3c-a4bf-40550a6be3b9", "speaker": "Redakteur", "text": "Die Überschrift klingt nach Werbung. Schreiben Sie lieber, was tatsächlich neu ist.", "vi": "Tiêu đề nghe như quảng cáo. Hãy viết điều thực sự mới." },
+      { cell_id: "a10906e8-0c20-4bc5-86b5-54202169dd1a", "speaker": "Kommunikationsmanager", "text": "Verstanden. Ich stelle die überprüfbare Nachricht an den Anfang.", "vi": "Hiểu rồi. Tôi sẽ đặt tin có thể kiểm chứng lên đầu." }
     ],
     "cultural_notes_vi": "Thông cáo báo chí tiếng Đức thích sự kiểm chứng và Konjunktiv I khi tường thuật tuyên bố.",
     "cultural_notes_en": "German press releases value verifiability and reach for Konjunktiv I when reporting company claims — it puts a small linguistic distance between the press office and the claim itself.",
@@ -9872,12 +10242,12 @@ export const lessons: GermanLesson[] = [
       }
     ],
     "vocabulary": [
-      { "word": "der Gastbeitrag", "en": "op-ed / guest essay", "vi": "bài quan điểm", "pos": "noun (m)", "pronunciation_vi": "GAST-bai-trak", "pronunciation_en": "dayr GAHST-bye-trahk — 'ei' = 'eye'; final '-g' devoices to '-k'" },
-      { "word": "die Streitkultur", "en": "culture of argument", "vi": "văn hóa tranh luận", "pos": "noun (f)", "pronunciation_vi": "SHTRAIT-kul-tua", "pronunciation_en": "dee SHTRYTE-kool-toor — distinctly German concept: principled, public disagreement" }
+      { cell_id: "bac6b0d2-81cb-4873-b6a4-a021fd0f13f0", "word": "der Gastbeitrag", "en": "op-ed / guest essay", "vi": "bài quan điểm", "pos": "noun (m)", "pronunciation_vi": "GAST-bai-trak", "pronunciation_en": "dayr GAHST-bye-trahk — 'ei' = 'eye'; final '-g' devoices to '-k'" },
+      { cell_id: "13113c0e-5365-42ae-88ff-858e85eff73f", "word": "die Streitkultur", "en": "culture of argument", "vi": "văn hóa tranh luận", "pos": "noun (f)", "pronunciation_vi": "SHTRAIT-kul-tua", "pronunciation_en": "dee SHTRYTE-kool-toor — distinctly German concept: principled, public disagreement" }
     ],
     "dialogue": [
-      { "speaker": "Ressortleiterin", "text": "Ihre These ist stark, aber die Gegenposition wirkt noch wie eine Karikatur.", "vi": "Luận điểm của anh/chị mạnh, nhưng phía đối lập vẫn bị vẽ như biếm họa." },
-      { "speaker": "Autor", "text": "Ich schärfe den Widerspruch, ohne die Gegenseite lächerlich zu machen.", "vi": "Tôi sẽ làm sắc mâu thuẫn mà không biến phía đối lập thành trò cười." }
+      { cell_id: "f5d8f51b-a2da-4004-9cdd-90cb7a97fd25", "speaker": "Ressortleiterin", "text": "Ihre These ist stark, aber die Gegenposition wirkt noch wie eine Karikatur.", "vi": "Luận điểm của anh/chị mạnh, nhưng phía đối lập vẫn bị vẽ như biếm họa." },
+      { cell_id: "b2c2ef8d-294a-4222-b94a-8f5fb7560229", "speaker": "Autor", "text": "Ich schärfe den Widerspruch, ohne die Gegenseite lächerlich zu machen.", "vi": "Tôi sẽ làm sắc mâu thuẫn mà không biến phía đối lập thành trò cười." }
     ],
     "cultural_notes_vi": "Op-ed Đức có thể tranh luận mạnh. Streitkultur không có nghĩa là công kích cá nhân.",
     "cultural_notes_en": "German op-eds can argue hard. 'Streitkultur' (the culture of vigorous disagreement) does NOT mean personal attack — it means sharp contestation of arguments while keeping the opposing side recognisable, not caricatured.",
@@ -9914,12 +10284,12 @@ export const lessons: GermanLesson[] = [
       }
     ],
     "vocabulary": [
-      { "word": "womöglich", "en": "possibly", "vi": "có thể", "pos": "adverb", "pronunciation_vi": "vô-mơk-likh", "pronunciation_en": "voh-MEUK-likh — 'w' = 'v'; 'ö' = rounded 'eh' (lips for 'oh', say 'eh')" },
-      { "word": "präzisieren", "en": "to make precise", "vi": "làm rõ chính xác", "pos": "verb", "pronunciation_vi": "prê-tsi-zi-rơn", "pronunciation_en": "preh-tsee-ZEE-ren — final-syllable stress; 'z' = 'ts'" }
+      { cell_id: "bdd70a1b-1299-4d37-8a5f-aa35191eb543", "word": "womöglich", "en": "possibly", "vi": "có thể", "pos": "adverb", "pronunciation_vi": "vô-mơk-likh", "pronunciation_en": "voh-MEUK-likh — 'w' = 'v'; 'ö' = rounded 'eh' (lips for 'oh', say 'eh')" },
+      { cell_id: "3d97ba4a-a62e-4c5c-b697-8b57dac02f21", "word": "präzisieren", "en": "to make precise", "vi": "làm rõ chính xác", "pos": "verb", "pronunciation_vi": "prê-tsi-zi-rơn", "pronunciation_en": "preh-tsee-ZEE-ren — final-syllable stress; 'z' = 'ts'" }
     ],
     "dialogue": [
-      { "speaker": "Moderator", "text": "Heißt das, Sie wussten intern schon lange Bescheid?", "vi": "Có nghĩa là nội bộ các anh/chị đã biết từ lâu?" },
-      { "speaker": "Gast", "text": "Womöglich entsteht dieser Eindruck. Präzise gesagt: Wir hatten ein Signal, aber noch keine belastbare Diagnose.", "vi": "Có thể tạo ra ấn tượng đó. Nói chính xác: chúng tôi có một tín hiệu, nhưng chưa có chẩn đoán đủ vững." }
+      { cell_id: "38d0c9ed-42c2-46a2-b484-ef2a25a28205", "speaker": "Moderator", "text": "Heißt das, Sie wussten intern schon lange Bescheid?", "vi": "Có nghĩa là nội bộ các anh/chị đã biết từ lâu?" },
+      { cell_id: "83058ba9-de7a-4e4d-ac1b-4a2a439139a6", "speaker": "Gast", "text": "Womöglich entsteht dieser Eindruck. Präzise gesagt: Wir hatten ein Signal, aber noch keine belastbare Diagnose.", "vi": "Có thể tạo ra ấn tượng đó. Nói chính xác: chúng tôi có một tín hiệu, nhưng chưa có chẩn đoán đủ vững." }
     ],
     "cultural_notes_vi": "Podcast Đức có thể tự nhiên hơn nhưng vẫn thích sự chính xác khái niệm.",
     "cultural_notes_en": "German podcasts let you sound more relaxed than in a press conference, but the audience still expects conceptual precision — vague answers register as evasion, not warmth.",
@@ -9956,12 +10326,12 @@ export const lessons: GermanLesson[] = [
       }
     ],
     "vocabulary": [
-      { "word": "belastbar", "en": "robust / reliable", "vi": "vững, đáng tin", "pos": "adjective", "pronunciation_vi": "bê-LAST-ba", "pronunciation_en": "buh-LAHST-bar — key C1 word: 'able to bear weight' (literally), 'verifiable / defensible' (figuratively)" },
-      { "word": "gegebenenfalls", "en": "if applicable", "vi": "nếu phù hợp", "pos": "adverb", "pronunciation_vi": "gê-GÊ-bơ-nơn-fals", "pronunciation_en": "guh-GAY-buh-nen-fahls — five-syllable single word; the formal hedge for 'if applicable / where appropriate'" }
+      { cell_id: "d4f4c20d-4c63-4669-8d40-bdcf902ce057", "word": "belastbar", "en": "robust / reliable", "vi": "vững, đáng tin", "pos": "adjective", "pronunciation_vi": "bê-LAST-ba", "pronunciation_en": "buh-LAHST-bar — key C1 word: 'able to bear weight' (literally), 'verifiable / defensible' (figuratively)" },
+      { cell_id: "23ee394d-dfa8-4a73-87ca-cfcb29462e1a", "word": "gegebenenfalls", "en": "if applicable", "vi": "nếu phù hợp", "pos": "adverb", "pronunciation_vi": "gê-GÊ-bơ-nơn-fals", "pronunciation_en": "guh-GAY-buh-nen-fahls — five-syllable single word; the formal hedge for 'if applicable / where appropriate'" }
     ],
     "dialogue": [
-      { "speaker": "Moderatorin", "text": "Können Sie heute Abend garantieren, dass so etwas nicht wieder passiert?", "vi": "Tối nay ông/bà có thể đảm bảo rằng việc này không lặp lại không?" },
-      { "speaker": "Sprecher", "text": "Eine Garantie wäre unseriös. Belastbar zusagen kann ich: Der Prüfbericht kommt am Freitag.", "vi": "Đảm bảo như vậy sẽ thiếu nghiêm túc. Điều tôi có thể cam kết vững là: báo cáo rà soát ra vào thứ Sáu." }
+      { cell_id: "d96b4548-1f90-4f99-a68c-20378334093f", "speaker": "Moderatorin", "text": "Können Sie heute Abend garantieren, dass so etwas nicht wieder passiert?", "vi": "Tối nay ông/bà có thể đảm bảo rằng việc này không lặp lại không?" },
+      { cell_id: "2ec25731-fc2c-47af-bc27-03c2b8fb609c", "speaker": "Sprecher", "text": "Eine Garantie wäre unseriös. Belastbar zusagen kann ich: Der Prüfbericht kommt am Freitag.", "vi": "Đảm bảo như vậy sẽ thiếu nghiêm túc. Điều tôi có thể cam kết vững là: báo cáo rà soát ra vào thứ Sáu." }
     ],
     "cultural_notes_vi": "Trên truyền hình Đức, câu trả lời tốt thường thẳng, ngắn, không hứa quá.",
     "cultural_notes_en": "On German live TV, a good answer is typically direct, short, and refuses to over-promise. The audience reads vague reassurance as evasion; honest 'we don't know yet, here's when we will' lands better than a soothing soundbite.",
@@ -9998,12 +10368,12 @@ export const lessons: GermanLesson[] = [
       }
     ],
     "vocabulary": [
-      { "word": "die Abhilfe", "en": "remedy", "vi": "biện pháp khắc phục", "pos": "noun (f)", "pronunciation_vi": "AP-hil-fơ", "pronunciation_en": "dee AHP-hil-fuh — final 'b' devoices to 'p' before 'h'" },
-      { "word": "die Zuständigkeit", "en": "responsibility / remit", "vi": "trách nhiệm phụ trách", "pos": "noun (f)", "pronunciation_vi": "TSU-shten-dikh-kait", "pronunciation_en": "dee TSOO-shten-dikh-kite — 'z' = 'ts'; 'ei' = 'eye'; 'remit / area of responsibility'" }
+      { cell_id: "151b9340-465c-48de-b55d-8fdba762219d", "word": "die Abhilfe", "en": "remedy", "vi": "biện pháp khắc phục", "pos": "noun (f)", "pronunciation_vi": "AP-hil-fơ", "pronunciation_en": "dee AHP-hil-fuh — final 'b' devoices to 'p' before 'h'" },
+      { cell_id: "31dd2404-dec6-456a-add6-56069736952a", "word": "die Zuständigkeit", "en": "responsibility / remit", "vi": "trách nhiệm phụ trách", "pos": "noun (f)", "pronunciation_vi": "TSU-shten-dikh-kait", "pronunciation_en": "dee TSOO-shten-dikh-kite — 'z' = 'ts'; 'ei' = 'eye'; 'remit / area of responsibility'" }
     ],
     "dialogue": [
-      { "speaker": "Vorstand", "text": "Ich beginne mit der Entschuldigung. Danach nennen wir die konkreten Abhilfemaßnahmen und Fristen.", "vi": "Tôi bắt đầu bằng lời xin lỗi. Sau đó chúng tôi nêu biện pháp khắc phục và thời hạn cụ thể." },
-      { "speaker": "Journalistin", "text": "Wer übernimmt die operative Verantwortung?", "vi": "Ai nhận trách nhiệm vận hành?" }
+      { cell_id: "7b1ced7c-e78e-402b-a0d5-25cb21bf64bd", "speaker": "Vorstand", "text": "Ich beginne mit der Entschuldigung. Danach nennen wir die konkreten Abhilfemaßnahmen und Fristen.", "vi": "Tôi bắt đầu bằng lời xin lỗi. Sau đó chúng tôi nêu biện pháp khắc phục và thời hạn cụ thể." },
+      { cell_id: "519341c4-ff4c-4d09-bd1a-dcece4df1bea", "speaker": "Journalistin", "text": "Wer übernimmt die operative Verantwortung?", "vi": "Ai nhận trách nhiệm vận hành?" }
     ],
     "cultural_notes_vi": "Xin lỗi tổ chức bằng tiếng Đức cần Entschuldigung + Verantwortung + Fristen. Bedauern một mình là yếu.",
     "cultural_notes_en": "A German institutional apology needs Entschuldigung (apology) + Verantwortung (responsibility) + Fristen (deadlines). 'Bedauern' (regret) alone is weak — German audiences read 'wir bedauern' without further action as PR-speak.",
@@ -10040,12 +10410,12 @@ export const lessons: GermanLesson[] = [
       }
     ],
     "vocabulary": [
-      { "word": "das Hintergrundgespräch", "en": "background briefing", "vi": "trao đổi bối cảnh", "pos": "noun (n)", "pronunciation_vi": "HIN-tơ-grunt-gơ-shprekh", "pronunciation_en": "dahs HIN-ter-groont-guh-shprekh — compound: Hintergrund (background) + Gespräch (conversation)" },
-      { "word": "die Zitierung", "en": "quotation", "vi": "trích dẫn", "pos": "noun (f)", "pronunciation_vi": "tsi-TI-rung", "pronunciation_en": "dee tsee-TEE-rung — 'z' = 'ts'; the act of quoting (vs. das Zitat = the quote itself)" }
+      { cell_id: "094dd7cc-463e-473b-a5fa-2beca878f3c4", "word": "das Hintergrundgespräch", "en": "background briefing", "vi": "trao đổi bối cảnh", "pos": "noun (n)", "pronunciation_vi": "HIN-tơ-grunt-gơ-shprekh", "pronunciation_en": "dahs HIN-ter-groont-guh-shprekh — compound: Hintergrund (background) + Gespräch (conversation)" },
+      { cell_id: "ad8e5c3e-370b-4c04-a491-0829689094e9", "word": "die Zitierung", "en": "quotation", "vi": "trích dẫn", "pos": "noun (f)", "pronunciation_vi": "tsi-TI-rung", "pronunciation_en": "dee tsee-TEE-rung — 'z' = 'ts'; the act of quoting (vs. das Zitat = the quote itself)" }
     ],
     "dialogue": [
-      { "speaker": "Pressereferent", "text": "Diese Einordnung ist als Hintergrund gedacht, nicht als namentliches Zitat.", "vi": "Phần phân loại này là thông tin bối cảnh, không phải trích dẫn kèm tên." },
-      { "speaker": "Journalist", "text": "Kann ich die Chronologie ohne Namensnennung verwenden?", "vi": "Tôi có thể dùng trình tự thời gian mà không nêu tên không?" }
+      { cell_id: "2f8e5584-0096-401d-b39c-dd356f0f7ab8", "speaker": "Pressereferent", "text": "Diese Einordnung ist als Hintergrund gedacht, nicht als namentliches Zitat.", "vi": "Phần phân loại này là thông tin bối cảnh, không phải trích dẫn kèm tên." },
+      { cell_id: "4e695d25-a899-4546-96c2-e418047ca2a6", "speaker": "Journalist", "text": "Kann ich die Chronologie ohne Namensnennung verwenden?", "vi": "Tôi có thể dùng trình tự thời gian mà không nêu tên không?" }
     ],
     "cultural_notes_vi": "Trong báo chí Đức, Hintergrundgespräch phải rõ quy tắc trích dẫn trước khi nói nội dung nhạy cảm.",
     "cultural_notes_en": "In German journalism, a Hintergrundgespräch (background briefing) requires the attribution rules to be set EXPLICITLY before any sensitive content is shared. The English equivalents — 'off the record', 'on background', 'deep background' — map roughly but the German practice tends to be more formally stated up front.",
@@ -10082,12 +10452,12 @@ export const lessons: GermanLesson[] = [
       }
     ],
     "vocabulary": [
-      { "word": "die Prämisse", "en": "premise", "vi": "tiền đề", "pos": "noun (f)", "pronunciation_vi": "prê-MIS-sơ", "pronunciation_en": "dee PRAY-miss-uh — 'ä' = 'eh' as in 'fed'" },
-      { "word": "der sachliche Kern", "en": "substantive core", "vi": "cốt lõi nội dung", "pos": "noun phrase", "pronunciation_vi": "ZAKH-likh-er kern", "pronunciation_en": "dayr ZAHKH-likh-er kern — 'sachlich' (substantive / on the matter) is the C1 alternative to 'inhaltlich'" }
+      { cell_id: "7bbde64b-27fa-431d-aacb-843a908f932b", "word": "die Prämisse", "en": "premise", "vi": "tiền đề", "pos": "noun (f)", "pronunciation_vi": "prê-MIS-sơ", "pronunciation_en": "dee PRAY-miss-uh — 'ä' = 'eh' as in 'fed'" },
+      { cell_id: "612f248e-672b-4371-875e-09cfdb612c22", "word": "der sachliche Kern", "en": "substantive core", "vi": "cốt lõi nội dung", "pos": "noun phrase", "pronunciation_vi": "ZAKH-likh-er kern", "pronunciation_en": "dayr ZAHKH-likh-er kern — 'sachlich' (substantive / on the matter) is the C1 alternative to 'inhaltlich'" }
     ],
     "dialogue": [
-      { "speaker": "Journalist", "text": "Sie haben doch erst reagiert, als der öffentliche Druck zu groß wurde.", "vi": "Các ông/bà chỉ phản ứng khi áp lực công chúng quá lớn thôi mà." },
-      { "speaker": "Sprecherin", "text": "Diese Prämisse teile ich nicht. M. E. ist aber richtig: Unsere erste Kommunikation war nicht präzise genug.", "vi": "Tôi không chia sẻ tiền đề đó. Theo tôi, điểm đúng là: truyền thông đầu tiên của chúng tôi chưa đủ chính xác." }
+      { cell_id: "d6b4cef7-8a47-4397-b38a-c46da6f8be4f", "speaker": "Journalist", "text": "Sie haben doch erst reagiert, als der öffentliche Druck zu groß wurde.", "vi": "Các ông/bà chỉ phản ứng khi áp lực công chúng quá lớn thôi mà." },
+      { cell_id: "f91a5528-d1fd-40f1-8b52-757e463f1ef9", "speaker": "Sprecherin", "text": "Diese Prämisse teile ich nicht. M. E. ist aber richtig: Unsere erste Kommunikation war nicht präzise genug.", "vi": "Tôi không chia sẻ tiền đề đó. Theo tôi, điểm đúng là: truyền thông đầu tiên của chúng tôi chưa đủ chính xác." }
     ],
     "cultural_notes_vi": "Streitkultur Đức cho phép phản đối trực tiếp, miễn là phản đối vào tiền đề hoặc nội dung, không vào con người.",
     "cultural_notes_en": "Germany's Streitkultur (culture of disagreement) permits direct contradiction, as long as the contradiction targets the premise or the substance — never the person. 'Ich halte Ihre Prämisse für falsch' is acceptable; 'Sie liegen falsch' (you're wrong) is not.",
@@ -10124,12 +10494,12 @@ export const lessons: GermanLesson[] = [
       }
     ],
     "vocabulary": [
-      { "word": "der Pressesprecher", "en": "spokesperson", "vi": "người phát ngôn", "pos": "noun (m)", "pronunciation_vi": "PRES-sê-shpre-khơ", "pronunciation_en": "dayr PRES-suh-shpre-kher — 'sp' at start of stem 'sprechen' = 'shp'" },
-      { "word": "der neue Stand", "en": "latest status", "vi": "tình trạng mới", "pos": "noun phrase", "pronunciation_vi": "NOY-ơ shtant", "pronunciation_en": "dayr NOY-er shtahnt — 'eu' = 'oy' as in 'boy'" }
+      { cell_id: "154a8943-74ab-4d4b-8be3-14accd711fb1", "word": "der Pressesprecher", "en": "spokesperson", "vi": "người phát ngôn", "pos": "noun (m)", "pronunciation_vi": "PRES-sê-shpre-khơ", "pronunciation_en": "dayr PRES-suh-shpre-kher — 'sp' at start of stem 'sprechen' = 'shp'" },
+      { cell_id: "6e84243c-4414-428a-8d61-cd6282713e39", "word": "der neue Stand", "en": "latest status", "vi": "tình trạng mới", "pos": "noun phrase", "pronunciation_vi": "NOY-ơ shtant", "pronunciation_en": "dayr NOY-er shtahnt — 'eu' = 'oy' as in 'boy'" }
     ],
     "dialogue": [
-      { "speaker": "Pressesprecher", "text": "Ich beginne mit zwei bestätigten Updates und markiere anschließend die offenen Punkte.", "vi": "Tôi bắt đầu bằng hai cập nhật đã xác nhận rồi đánh dấu các điểm còn mở." },
-      { "speaker": "Journalistin", "text": "Warum gibt es zu dem Vorfall noch keinen neuen Stand?", "vi": "Vì sao sự cố đó vẫn chưa có trạng thái mới?" }
+      { cell_id: "195b6612-fe0b-4808-847f-5bb374cf6afd", "speaker": "Pressesprecher", "text": "Ich beginne mit zwei bestätigten Updates und markiere anschließend die offenen Punkte.", "vi": "Tôi bắt đầu bằng hai cập nhật đã xác nhận rồi đánh dấu các điểm còn mở." },
+      { cell_id: "bbfe2b4c-b7a0-461f-9579-d436326c6287", "speaker": "Journalistin", "text": "Warum gibt es zu dem Vorfall noch keinen neuen Stand?", "vi": "Vì sao sự cố đó vẫn chưa có trạng thái mới?" }
     ],
     "cultural_notes_vi": "Briefing Đức thích sự lặp lại ổn định: confirmed update, offener Punkt, schriftliche Ergänzung.",
     "cultural_notes_en": "German briefings prize stable, predictable repetition: confirmed update, open question, written supplement. The audience (regular beat reporters) is tracking changes across weeks — the wording stability is the feature, not a bug.",
@@ -10166,12 +10536,12 @@ export const lessons: GermanLesson[] = [
       }
     ],
     "vocabulary": [
-      { "word": "die Stellungnahme", "en": "statement", "vi": "tuyên bố / phát biểu lập trường", "pos": "noun (f)", "pronunciation_vi": "SHTEL-lung-nah-mơ", "pronunciation_en": "dee SHTEL-lung-nah-muh — 'st' at word start = 'sht'; literally 'position-taking'" },
-      { "word": "beiläufig", "en": "casual / incidental", "vi": "tùy tiện, tiện miệng", "pos": "adjective", "pronunciation_vi": "BAI-loy-fikh", "pronunciation_en": "BYE-loy-fikh — 'ei' = 'eye'; 'äu' = 'oy' as in 'boy'; tone-killer in formal contexts" }
+      { cell_id: "e71f4c74-8b91-4bbb-9861-5f4c77b79f3d", "word": "die Stellungnahme", "en": "statement", "vi": "tuyên bố / phát biểu lập trường", "pos": "noun (f)", "pronunciation_vi": "SHTEL-lung-nah-mơ", "pronunciation_en": "dee SHTEL-lung-nah-muh — 'st' at word start = 'sht'; literally 'position-taking'" },
+      { cell_id: "9c370081-962c-4f2a-a628-0cc898ca601e", "word": "beiläufig", "en": "casual / incidental", "vi": "tùy tiện, tiện miệng", "pos": "adjective", "pronunciation_vi": "BAI-loy-fikh", "pronunciation_en": "BYE-loy-fikh — 'ei' = 'eye'; 'äu' = 'oy' as in 'boy'; tone-killer in formal contexts" }
     ],
     "dialogue": [
-      { "speaker": "Social-Media-Redakteur", "text": "Die Antwort klingt zu spontan für einen offiziellen Kanal.", "vi": "Câu trả lời nghe quá ứng biến đối với một kênh chính thức." },
-      { "speaker": "Kommunikationsleiterin", "text": "Dann formulieren wir es als kurze Stellungnahme: Position, Maßnahme, Link zum Update.", "vi": "Vậy ta diễn đạt như một tuyên bố ngắn: lập trường, biện pháp, link tới cập nhật." }
+      { cell_id: "3f54d332-bd6f-421d-8b7e-b7a75073eae8", "speaker": "Social-Media-Redakteur", "text": "Die Antwort klingt zu spontan für einen offiziellen Kanal.", "vi": "Câu trả lời nghe quá ứng biến đối với một kênh chính thức." },
+      { cell_id: "f0a95020-21f9-4fc2-9245-f2cb73cfcbba", "speaker": "Kommunikationsleiterin", "text": "Dann formulieren wir es als kurze Stellungnahme: Position, Maßnahme, Link zum Update.", "vi": "Vậy ta diễn đạt như một tuyên bố ngắn: lập trường, biện pháp, link tới cập nhật." }
     ],
     "cultural_notes_vi": "Social media tiếng Đức vẫn có thể rất gọn, nhưng tài khoản chính thức cần giọng đáng tin và không 'chatty'.",
     "cultural_notes_en": "German social copy can be brief, but an official account needs a trustworthy voice — never 'chatty'. The line between concise and casual is the line readers use to assess credibility.",

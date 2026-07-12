@@ -24,6 +24,7 @@ type LessonSentence = {
 };
 
 type VocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -35,6 +36,7 @@ type VocabEntry = {
 };
 
 type DialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -150,6 +152,7 @@ export const localTourGuideLessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: `wisata` means tourism/sightseeing, so `pemandu wisata` is a tour guide. Use three tour frames: `Boleh saya lihat itinerary?`, `Tiket masuk sudah termasuk?`, and `Jadwal turnya mulai jam berapa?`.",
     vocabulary: [
       {
+        cell_id: "671b8d24-7cfd-46d9-aaac-e77ce5a82439",
         word: "pemandu wisata",
         en: "tour guide",
         vi: "hướng dẫn viên du lịch",
@@ -158,6 +161,7 @@ export const localTourGuideLessons: IndonesianLesson[] = [
         pronunciation_en: "peh-MAN-doo wee-SA-ta",
       },
       {
+        cell_id: "4d617f19-82e8-40c0-9521-a990f824b799",
         word: "itinerary",
         en: "itinerary",
         vi: "lịch trình",
@@ -166,6 +170,7 @@ export const localTourGuideLessons: IndonesianLesson[] = [
         pronunciation_en: "eye-TIN-er-air-ee",
       },
       {
+        cell_id: "dea5cec4-3195-4bde-94f3-76707fc4af8f",
         word: "jadwal tur",
         en: "tour schedule",
         vi: "lịch tour",
@@ -174,6 +179,7 @@ export const localTourGuideLessons: IndonesianLesson[] = [
         pronunciation_en: "JAD-wal tour",
       },
       {
+        cell_id: "c232799a-601c-4007-8358-b6d0f0f905ab",
         word: "tiket masuk",
         en: "entrance ticket",
         vi: "vé vào cửa",
@@ -182,6 +188,7 @@ export const localTourGuideLessons: IndonesianLesson[] = [
         pronunciation_en: "TEE-ket MA-sook",
       },
       {
+        cell_id: "bc6e4018-dc74-41b2-a8ce-27c0bfcd193f",
         word: "tempat bersejarah",
         en: "historical site",
         vi: "địa điểm lịch sử",
@@ -190,6 +197,7 @@ export const localTourGuideLessons: IndonesianLesson[] = [
         pronunciation_en: "TEM-pat ber-seh-JA-rah",
       },
       {
+        cell_id: "d0d96b26-1931-4b59-9890-e82f020c7d01",
         word: "mengunjungi",
         en: "to visit",
         vi: "tham quan / ghé thăm",
@@ -200,24 +208,28 @@ export const localTourGuideLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "d60fd2d2-4d24-4e7c-aee2-6159405e6b89",
         speaker: "Wisatawan",
         text: "Saya mencari pemandu wisata lokal untuk besok.",
         vi: "Tôi đang tìm hướng dẫn viên địa phương cho ngày mai.",
         en: "I am looking for a local tour guide for tomorrow.",
       },
       {
+        cell_id: "155f767d-d6ff-4f15-9124-9f070ad4d909",
         speaker: "Agen tur",
         text: "Bisa. Mau tur kota atau tempat bersejarah?",
         vi: "Được. Muốn tour thành phố hay địa điểm lịch sử?",
         en: "Sure. Do you want a city tour or historical sites?",
       },
       {
+        cell_id: "056737d5-82ea-4018-be46-a0ebad19a2b0",
         speaker: "Wisatawan",
         text: "Tempat bersejarah. Boleh saya lihat itinerary turnya?",
         vi: "Địa điểm lịch sử. Cho tôi xem lịch trình tour được không?",
         en: "Historical sites. May I see the tour itinerary?",
       },
       {
+        cell_id: "68fc2b62-075a-4f25-9e15-913cc4a1c16f",
         speaker: "Agen tur",
         text: "Tentu. Tiket masuk sudah termasuk dalam harga tur.",
         vi: "Tất nhiên. Vé vào cửa đã bao gồm trong giá tour.",
@@ -372,6 +384,7 @@ export const localTourGuideLessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: `boleh` asks permission, while `bisa` asks ability/possibility. Say `Boleh foto?` when asking whether photos are allowed. `Oleh-oleh` is a very Indonesian word: gifts brought back from a trip.",
     vocabulary: [
       {
+        cell_id: "2312b338-0371-4f96-9a57-f5c5be09877d",
         word: "boleh foto",
         en: "may take photos",
         vi: "được chụp ảnh",
@@ -380,6 +393,7 @@ export const localTourGuideLessons: IndonesianLesson[] = [
         pronunciation_en: "BO-leh FO-to",
       },
       {
+        cell_id: "7440100f-90fc-4f90-a26b-b1d3d920b0f4",
         word: "museum",
         en: "museum",
         vi: "bảo tàng",
@@ -388,6 +402,7 @@ export const localTourGuideLessons: IndonesianLesson[] = [
         pronunciation_en: "moo-SEH-um",
       },
       {
+        cell_id: "569c4598-173f-423f-9137-b2c04a0a2eeb",
         word: "candi",
         en: "ancient temple",
         vi: "đền cổ",
@@ -396,6 +411,7 @@ export const localTourGuideLessons: IndonesianLesson[] = [
         pronunciation_en: "CHAN-dee",
       },
       {
+        cell_id: "6a442728-ab52-40ae-a3f0-5b4a7b921921",
         word: "oleh-oleh",
         en: "souvenir / gift brought home",
         vi: "quà lưu niệm / quà mang về",
@@ -404,6 +420,7 @@ export const localTourGuideLessons: IndonesianLesson[] = [
         pronunciation_en: "OH-leh OH-leh",
       },
       {
+        cell_id: "15b5f91e-9b5f-4ced-b619-f96a60133667",
         word: "harga wajar",
         en: "reasonable price",
         vi: "giá hợp lý",
@@ -412,6 +429,7 @@ export const localTourGuideLessons: IndonesianLesson[] = [
         pronunciation_en: "HAR-ga WA-jar",
       },
       {
+        cell_id: "6bd4d283-8428-4d5d-8fb7-20dbcc54a95e",
         word: "tips",
         en: "tip / gratuity",
         vi: "tiền tip",
@@ -420,6 +438,7 @@ export const localTourGuideLessons: IndonesianLesson[] = [
         pronunciation_en: "tips",
       },
       {
+        cell_id: "4211f899-2461-443c-9113-ef0ee554048b",
         word: "berubah",
         en: "to change",
         vi: "thay đổi",
@@ -430,24 +449,28 @@ export const localTourGuideLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "4e275a04-a160-4e0c-9c87-5cdd64ade518",
         speaker: "Wisatawan",
         text: "Boleh foto di dalam museum ini?",
         vi: "Có được chụp ảnh bên trong bảo tàng này không?",
         en: "May we take photos inside this museum?",
       },
       {
+        cell_id: "28cef8e0-f03a-462d-ad46-37c762e894c2",
         speaker: "Pemandu",
         text: "Boleh, tapi tanpa flash, ya.",
         vi: "Được, nhưng không dùng flash nhé.",
         en: "Yes, but without flash, please.",
       },
       {
+        cell_id: "84e195fd-daec-4021-a784-18144f4c5768",
         speaker: "Wisatawan",
         text: "Di mana tempat beli oleh-oleh yang harganya wajar?",
         vi: "Chỗ mua quà lưu niệm có giá hợp lý ở đâu?",
         en: "Where can we buy souvenirs at a reasonable price?",
       },
       {
+        cell_id: "f05784c6-22d4-4de0-8b64-068f9fa8085c",
         speaker: "Pemandu",
         text: "Nanti setelah candi, kita mampir ke toko lokal.",
         vi: "Lát nữa sau đền, chúng ta ghé cửa hàng địa phương.",

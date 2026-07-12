@@ -33,6 +33,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   /** Indonesian word/phrase. */
   word: string;
   /** English meaning. */
@@ -48,6 +49,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   /** Indonesian line. */
   text: string;
@@ -308,6 +310,7 @@ export const lessons: IndonesianLesson[] = [
       "How to learn peribahasa well: (1) MEMORIZE THE WHOLE LINE as a block — don't swap words; they're fixed; (2) immediately anchor each to its VIETNAMESE EQUIVALENT for the figurative sense (your existing Vietnamese network is a big advantage); (3) watch for FALSE friends — check the image truly matches (`bubur` = porridge, not cooked rice); (4) note the grammar inside: `di-` passive, `ber-...-...` reduplication, `daripada` comparison; (5) match the context: advice (`sedia payung sebelum hujan`) differs from warning (`ada udang di balik batu`). A golden opener when quoting one: `Kata pepatah, …` ('As the proverb says, …') or `Seperti kata peribahasa, …`.",
     vocabulary: [
       {
+        cell_id: "71a71113-c633-4a18-ba99-ddaae7825e43",
         word: "peribahasa",
         en: "proverb / idiom",
         vi: "tục ngữ, thành ngữ",
@@ -316,6 +319,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "pe-ree-BAH-hah-sah — synonym `pepatah`",
       },
       {
+        cell_id: "27bc4b8d-baf1-40b6-9db2-14049ef669fd",
         word: "menghanyutkan",
         en: "to sweep away / carry off",
         vi: "cuốn trôi",
@@ -324,6 +328,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "meng-ha-nyoot-KAN — root `hanyut` (adrift) + `meN-...-kan`",
       },
       {
+        cell_id: "f8dd816e-a18b-44f5-898a-8b7f67278963",
         word: "bubur",
         en: "rice porridge / congee",
         vi: "cháo",
@@ -332,6 +337,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "BOO-boor — `nasi jadi bubur`: rice becomes PORRIDGE (not cooked rice)",
       },
       {
+        cell_id: "9fea2ad0-4d95-43bd-bc96-03d92cf68011",
         word: "gading",
         en: "ivory / elephant tusk",
         vi: "ngà voi",
@@ -340,6 +346,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "GAH-ding — `tak ada gading yang tak retak`",
       },
       {
+        cell_id: "e6c85ae7-d22b-4f41-9f47-9fc8505d088a",
         word: "daripada",
         en: "than (in comparisons)",
         vi: "hơn (so sánh)",
@@ -348,6 +355,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "dah-ree-PAH-dah — NOT `dari` (from)",
       },
       {
+        cell_id: "6f12da96-655b-4738-902c-7b0dadea4146",
         word: "dipijak",
         en: "to be stepped on",
         vi: "bị/được giẫm lên",
@@ -356,6 +364,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "dee-PEE-jak — root `pijak` (to tread) + passive `di-`",
       },
       {
+        cell_id: "2511fa52-5dfb-4d5a-8232-824379121865",
         word: "nyaring",
         en: "loud / resonant",
         vi: "vang, kêu to",
@@ -364,6 +373,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "NYAH-ring — `ny` = 'ny'; `tong kosong nyaring bunyinya`",
       },
       {
+        cell_id: "854ddcac-4736-49cb-be19-ed1c3646c725",
         word: "kata pepatah",
         en: "as the proverb says",
         vi: "tục ngữ có câu",
@@ -374,24 +384,28 @@ export const lessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "f1d2318c-b80f-4d7d-b5f6-0cbfd4e375b4",
         speaker: "Adik",
         text: "Aku gagal ujian, padahal sudah belajar. Menyesal banget.",
         vi: "Em thi trượt, dù đã học rồi. Tiếc ghê.",
         en: "I failed the exam even though I studied. I really regret it.",
       },
       {
+        cell_id: "f9482963-a1bd-4333-83a3-38154734dd57",
         speaker: "Kakak",
         text: "Sudahlah, nasi sudah menjadi bubur. Sekarang fokus ke depan.",
         vi: "Thôi mà, gạo đã thành cháo rồi (việc đã rồi). Giờ tập trung phía trước.",
         en: "Let it go — what's done is done. Focus forward now.",
       },
       {
+        cell_id: "29ebf178-4c53-4930-86ef-9f3be87e64ff",
         speaker: "Adik",
         text: "Iya. Mulai sekarang aku belajar sedikit-sedikit tiap hari.",
         vi: "Vâng. Từ giờ em sẽ học từng chút mỗi ngày.",
         en: "Right. From now I'll study a little every day.",
       },
       {
+        cell_id: "d7ccc29b-c31f-41c8-afcf-3d9549114290",
         speaker: "Kakak",
         text: "Bagus. Sedikit-sedikit, lama-lama menjadi bukit. Sedia payung sebelum hujan, ya.",
         vi: "Tốt. Tích tiểu thành đại. Và nhớ lo xa phòng bị trước nhé.",

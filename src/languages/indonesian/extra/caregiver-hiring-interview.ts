@@ -12,6 +12,7 @@ type LessonSentence = {
 };
 
 type VocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -21,6 +22,7 @@ type VocabEntry = {
 };
 
 type DialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -137,6 +139,7 @@ export const caregiverHiringInterviewLessons: IndonesianLesson[] = [
       "Safe interview frames: `Apakah Ibu punya pengalaman...?`, `Tugas hariannya...`, `Kami perlu orang yang...`, `Boleh saya hubungi referensi?`. Vietnamese speakers should distinguish `pengasuh` (caregiver) from `perawat` (nurse/caregiver with more medical skill).",
     vocabulary: [
       {
+        cell_id: "99a1918f-7726-4c6c-955a-51e55cd0ff21",
         word: "pengasuh",
         en: "caregiver",
         vi: "người chăm sóc",
@@ -145,6 +148,7 @@ export const caregiverHiringInterviewLessons: IndonesianLesson[] = [
         pronunciation_en: "pe-NGA-sooh",
       },
       {
+        cell_id: "eae92e0c-4149-4568-915b-903e857aca02",
         word: "wawancara kerja",
         en: "job interview",
         vi: "phỏng vấn việc làm",
@@ -153,6 +157,7 @@ export const caregiverHiringInterviewLessons: IndonesianLesson[] = [
         pronunciation_en: "wa-WAN-cha-ra KER-ja",
       },
       {
+        cell_id: "7b6bb7b6-4094-4966-9679-1118c3a27f19",
         word: "pengalaman merawat",
         en: "caregiving experience",
         vi: "kinh nghiệm chăm sóc",
@@ -161,6 +166,7 @@ export const caregiverHiringInterviewLessons: IndonesianLesson[] = [
         pronunciation_en: "pe-nga-LA-man me-RA-wat",
       },
       {
+        cell_id: "ba62b6c9-112a-41ee-87cc-15b2aefc2ab5",
         word: "tugas harian",
         en: "daily duties",
         vi: "nhiệm vụ hằng ngày",
@@ -169,6 +175,7 @@ export const caregiverHiringInterviewLessons: IndonesianLesson[] = [
         pronunciation_en: "TOO-gas ha-ree-AN",
       },
       {
+        cell_id: "eb8e4511-84f0-4637-a2e8-e416b6f6622a",
         word: "referensi",
         en: "reference",
         vi: "người/thông tin tham khảo",
@@ -177,6 +184,7 @@ export const caregiverHiringInterviewLessons: IndonesianLesson[] = [
         pronunciation_en: "re-fe-REN-see",
       },
       {
+        cell_id: "0daf0acf-8834-4f02-b445-fc5724958076",
         word: "bisa dipercaya",
         en: "trustworthy",
         vi: "đáng tin cậy",
@@ -187,24 +195,28 @@ export const caregiverHiringInterviewLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "f3fd7d9d-6cd8-4eee-a932-e973efd0fecd",
         speaker: "Keluarga",
         text: "Terima kasih sudah datang untuk wawancara kerja.",
         vi: "Cảm ơn cô/chị đã đến phỏng vấn việc làm.",
         en: "Thank you for coming for the job interview.",
       },
       {
+        cell_id: "155857e4-810a-4452-a0c8-c863d49884ec",
         speaker: "Calon Pengasuh",
         text: "Sama-sama. Saya pernah merawat nenek selama dua tahun.",
         vi: "Không có gì. Tôi từng chăm sóc bà trong hai năm.",
         en: "You're welcome. I cared for an elderly grandmother for two years.",
       },
       {
+        cell_id: "0d81f71a-2b48-454b-be9d-4fb90e8c7368",
         speaker: "Keluarga",
         text: "Apakah kami boleh menghubungi referensi dari pekerjaan sebelumnya?",
         vi: "Chúng tôi có thể liên hệ người tham khảo từ công việc trước đây không?",
         en: "May we contact references from your previous job?",
       },
       {
+        cell_id: "94c64e9a-bba0-4846-a301-9ebf141941eb",
         speaker: "Calon Pengasuh",
         text: "Boleh. Saya akan kirim nomor keluarga lama saya.",
         vi: "Được. Tôi sẽ gửi số của gia đình cũ tôi từng làm.",
@@ -334,6 +346,7 @@ export const caregiverHiringInterviewLessons: IndonesianLesson[] = [
       "Agreement chunks to use: `jadwal kerjanya`, `jam kerja mulai...`, `gaji dibayar...`, `tugas harian perlu ditulis`, `mohon beri tahu lebih awal`. Vietnamese speakers should note that `jadwal` is schedule, while `jam` is hour/time.",
     vocabulary: [
       {
+        cell_id: "3177b977-dc66-480a-bb92-3688b7ebc4a0",
         word: "jadwal",
         en: "schedule",
         vi: "lịch",
@@ -342,6 +355,7 @@ export const caregiverHiringInterviewLessons: IndonesianLesson[] = [
         pronunciation_en: "JAD-wal",
       },
       {
+        cell_id: "91cd1888-9f7e-49a2-81bf-c04d1365ba4d",
         word: "gaji",
         en: "salary / wage",
         vi: "lương",
@@ -350,6 +364,7 @@ export const caregiverHiringInterviewLessons: IndonesianLesson[] = [
         pronunciation_en: "GA-jee",
       },
       {
+        cell_id: "30e3a735-294c-4fb4-bcaa-59040e2041e4",
         word: "akhir bulan",
         en: "end of the month",
         vi: "cuối tháng",
@@ -358,6 +373,7 @@ export const caregiverHiringInterviewLessons: IndonesianLesson[] = [
         pronunciation_en: "A-khir BOO-lan",
       },
       {
+        cell_id: "3c545bf0-cf48-483e-968b-eac58a44240f",
         word: "transfer bank",
         en: "bank transfer",
         vi: "chuyển khoản ngân hàng",
@@ -366,6 +382,7 @@ export const caregiverHiringInterviewLessons: IndonesianLesson[] = [
         pronunciation_en: "TRANS-fer bank",
       },
       {
+        cell_id: "bdae7232-775a-459c-9cc7-154088bbe013",
         word: "perubahan jadwal",
         en: "schedule change",
         vi: "thay đổi lịch",
@@ -374,6 +391,7 @@ export const caregiverHiringInterviewLessons: IndonesianLesson[] = [
         pronunciation_en: "pe-ru-BA-han JAD-wal",
       },
       {
+        cell_id: "db561d82-50e6-4a9b-9cfc-0604427d9569",
         word: "masa percobaan",
         en: "trial period",
         vi: "thời gian thử việc",
@@ -384,24 +402,28 @@ export const caregiverHiringInterviewLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "7164e988-ac50-497f-9250-4783b56e0731",
         speaker: "Keluarga",
         text: "Jadwal kerjanya dari Senin sampai Jumat.",
         vi: "Lịch làm việc là từ thứ Hai đến thứ Sáu.",
         en: "The work schedule is from Monday to Friday.",
       },
       {
+        cell_id: "16f50fb8-d97e-4dfa-9f90-7eea45c20a55",
         speaker: "Calon Pengasuh",
         text: "Jam kerjanya mulai jam berapa?",
         vi: "Giờ làm bắt đầu lúc mấy giờ?",
         en: "What time do the working hours start?",
       },
       {
+        cell_id: "12916462-423c-4ec2-8307-bb9e661da67e",
         speaker: "Keluarga",
         text: "Mulai jam tujuh pagi sampai jam lima sore.",
         vi: "Bắt đầu lúc bảy giờ sáng đến năm giờ chiều.",
         en: "From seven in the morning until five in the afternoon.",
       },
       {
+        cell_id: "686faf2e-f995-4a00-83de-fa27d05a3b70",
         speaker: "Calon Pengasuh",
         text: "Baik. Mohon tugas hariannya ditulis supaya jelas.",
         vi: "Vâng. Xin viết rõ nhiệm vụ hằng ngày để rõ ràng.",

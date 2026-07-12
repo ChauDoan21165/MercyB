@@ -11,42 +11,52 @@ export const lessons: JapaneseLesson[] = [
     "level": "B2",
     "vocabulary": [
       {
+        cell_id: "101b30cf-b44f-4829-ab84-f903db3b0820",
         "japanese": "条件文",
         "english": "conditional sentence"
       },
       {
+        cell_id: "53c6c0c2-cbfd-4c51-a296-92b7a0bc2d25",
         "japanese": "～ば",
         "english": "if (conditional -ba form)"
       },
       {
+        cell_id: "3e450e0f-c893-45c2-8543-f9f4d68eb144",
         "japanese": "～たら",
         "english": "if (conditional -tara)"
       },
       {
+        cell_id: "61e0ddef-5e98-44fe-b815-857f68db795a",
         "japanese": "～なら",
         "english": "if (conditional -nara)"
       },
       {
+        cell_id: "954ff781-a923-4bed-ad76-61c424c75b20",
         "japanese": "～と",
         "english": "when / if (natural consequence)"
       },
       {
+        cell_id: "d4953cdf-9ce8-4514-b6e1-871f523ce6d7",
         "japanese": "仮定",
         "english": "hypothesis"
       },
       {
+        cell_id: "bd26525e-7da3-481d-8869-1fb0bc53edb7",
         "japanese": "結果",
         "english": "result"
       },
       {
+        cell_id: "bcace4db-97bf-45d6-8167-b6b046a2de67",
         "japanese": "現実",
         "english": "reality"
       },
       {
+        cell_id: "9749c914-376e-495a-898d-ef9668841b77",
         "japanese": "非現実",
         "english": "unreal"
       },
       {
+        cell_id: "07dfdbee-3561-4df7-b50a-11c78f088096",
         "japanese": "逆説",
         "english": "paradox"
       }
@@ -159,21 +169,25 @@ export const lessons: JapaneseLesson[] = [
     "tip_advice_en": "Don't drill the four conditionals from a rules table — it freezes in real speech. At B2: shadow Japanese drama and meeting clips; at every 'if', pause and ask 'why たら here, not と'. Bank 10–15 real sentences in Anki as collocations, not isolated words. Keep input/output ~70/30: absorb the nuance first, then force yourself to rewrite one idea daily in all three forms and have a native correct it — the corrected output is what fixes the と/ば/たら/なら distinction.",
     "dialogue": [
       {
+        cell_id: "7e9b9fe3-40d9-4e68-a635-14915bc366ed",
         "speaker": "A",
         "japanese": "もし雨が降ったら、ピクニックは中止？",
         "english": "If it rains, will the picnic be canceled?"
       },
       {
+        cell_id: "b2c5963c-2e6d-4010-940f-1b22176df3a9",
         "speaker": "B",
         "japanese": "そうですね。雨なら屋内でゲームをしましょう。",
         "english": "Well, if it rains, let's play indoor games."
       },
       {
+        cell_id: "5c1682f2-776f-4b35-bb62-9873c2f918ab",
         "speaker": "A",
         "japanese": "晴れたら、何をする？",
         "english": "If it's sunny, what will we do?"
       },
       {
+        cell_id: "93d102a8-9c4d-4aef-b4f4-528a60cc9000",
         "speaker": "B",
         "japanese": "バーベキューをしようよ。",
         "english": "Let's have a barbecue."
@@ -212,42 +226,52 @@ export const lessons: JapaneseLesson[] = [
     "level": "B2",
     "vocabulary": [
       {
+        cell_id: "15604887-f0a7-4888-9487-4d2736db56f0",
         "japanese": "慣用句",
         "english": "idiomatic expression"
       },
       {
+        cell_id: "053e4794-780a-4b7b-bfc0-63db603f657d",
         "japanese": "猫の手も借りたい",
         "english": "very busy (lit. want even a cat's paw)"
       },
       {
+        cell_id: "4620c3ff-9bb4-4e87-abfb-08d708fada1e",
         "japanese": "猿も木から落ちる",
         "english": "even experts make mistakes"
       },
       {
+        cell_id: "2a272dcd-ae15-4cfd-bbdf-75094133560c",
         "japanese": "花より団子",
         "english": "substance over style"
       },
       {
+        cell_id: "fa0725f9-28aa-43f2-bdfe-b11edad58c47",
         "japanese": "泣きっ面に蜂",
         "english": "adding insult to injury"
       },
       {
+        cell_id: "5877c8f1-8369-4548-a585-280697671526",
         "japanese": "石橋を叩いて渡る",
         "english": "to be extremely cautious"
       },
       {
+        cell_id: "fed0323c-d3d0-4c44-b2c1-3df02ccbb324",
         "japanese": "口が滑る",
         "english": "to slip of the tongue"
       },
       {
+        cell_id: "e963a3db-d2db-408a-ac43-208bb9aee44c",
         "japanese": "足を引っ張る",
         "english": "to hold someone back"
       },
       {
+        cell_id: "ed81d6e8-a4b0-4cdb-83c0-6c197b2ba1b8",
         "japanese": "肩を持つ",
         "english": "to take sides"
       },
       {
+        cell_id: "498e7f4d-8933-4905-85ce-5108ae40a91c",
         "japanese": "手を焼く",
         "english": "to have trouble dealing with"
       }
@@ -368,21 +392,25 @@ export const lessons: JapaneseLesson[] = [
     "tip_advice_en": "Don't learn 慣用句 through literal meaning — learn the SITUATION and register (which are slangy, which survive keigo). At B2: 'harvest' proverbs from real drama and news, banking each with one contextual example in Anki tagged by register. The rule of 5: only actively use the 5 you have heard a native use and whose nuance you are sure of; keep the rest receptive. Overusing proverbs as a foreigner sounds like trying too hard — fewer and correct beats many and wrong.",
     "dialogue": [
       {
+        cell_id: "93bdfa93-ab0f-42e5-8a8e-2fa26f9ac8b5",
         "speaker": "A",
         "japanese": "試験に落ちてしまった。しかも彼女に振られた。",
         "english": "I failed the exam. And my girlfriend dumped me."
       },
       {
+        cell_id: "08d9dda2-9ff0-4a9e-b6ac-fd182f10cd07",
         "speaker": "B",
         "japanese": "泣きっ面に蜂だね。でも次があるさ。",
         "english": "Adding insult to injury. But there will be a next time."
       },
       {
+        cell_id: "a5e4ad41-cf16-45db-98d5-38a3b1521d97",
         "speaker": "A",
         "japanese": "そう言ってもらえると助かるよ。",
         "english": "It helps to hear you say that."
       },
       {
+        cell_id: "11c4bc6a-6031-4308-a604-e1627b747c3a",
         "speaker": "B",
         "japanese": "頑張って！石橋を叩いて渡るくらい慎重にね。",
         "english": "Do your best! Be as cautious as tapping the stone bridge."
@@ -421,42 +449,52 @@ export const lessons: JapaneseLesson[] = [
     "level": "B2",
     "vocabulary": [
       {
+        cell_id: "5783c17b-d5fa-42b8-98c0-2e2e3ad4299a",
         "japanese": "やばい",
         "english": "awesome/bad (slang)"
       },
       {
+        cell_id: "f5c16b97-a9b1-47b4-a053-a330b08b24a7",
         "japanese": "めっちゃ",
         "english": "very (slang)"
       },
       {
+        cell_id: "4ec95674-931e-47a0-8011-842822db32b9",
         "japanese": "超",
         "english": "super ~"
       },
       {
+        cell_id: "d35e1a8a-cdfb-49d6-bb6a-866fafaf07ee",
         "japanese": "マジで",
         "english": "seriously/for real"
       },
       {
+        cell_id: "4ffffcb8-3a0b-41d7-a72e-36eb08b4a86b",
         "japanese": "すげえ",
         "english": "amazing (slang)"
       },
       {
+        cell_id: "94e8dc7f-ba8d-4266-84c0-a3217f3370c8",
         "japanese": "うざい",
         "english": "annoying"
       },
       {
+        cell_id: "f8533460-c89e-4737-b804-d3f6e782fef3",
         "japanese": "きもい",
         "english": "gross/creepy"
       },
       {
+        cell_id: "fa090e88-b4ba-4be9-90a4-a45a1f824fc9",
         "japanese": "だるい",
         "english": "tiresome/lazy"
       },
       {
+        cell_id: "e08955b5-7350-41e7-8a0a-213fbd70e990",
         "japanese": "～じゃん",
         "english": "isn't it? (colloquial)"
       },
       {
+        cell_id: "5ed10281-a7be-4fab-b717-ac0cd788450c",
         "japanese": "～てる",
         "english": "contraction of ている"
       }
@@ -555,21 +593,25 @@ export const lessons: JapaneseLesson[] = [
     "tip_advice_en": "At B2, build a receptive slang bank — understand it, don't necessarily produce it. Tag each item by register (how casual), age and region. Learn from variety shows (バラエティ) and Twitter/X, NOT textbooks. Production rule: only echo back what your Japanese friends actually say to you, and only inside that same relationship. Overusing slang as a foreigner sounds like a performance — the safe play is understand a lot, say little, and match the relationship.",
     "dialogue": [
       {
+        cell_id: "94759bee-c93d-4951-8abf-c495de973826",
         "speaker": "A",
         "japanese": "昨日のライブ、すげえ楽しかった！",
         "english": "Yesterday's live concert was super fun!"
       },
       {
+        cell_id: "187d0007-307c-47fe-88ed-65be50310001",
         "speaker": "B",
         "japanese": "え、マジ？行けばよかった。",
         "english": "What, seriously? I wish I had gone."
       },
       {
+        cell_id: "3af3c23f-a357-4a19-948e-696361005e02",
         "speaker": "A",
         "japanese": "めっちゃ盛り上がったよ。次は一緒に行こう！",
         "english": "It was super lively. Let's go together next time!"
       },
       {
+        cell_id: "705a4775-7c64-4f6c-9a1a-e951aaf678d6",
         "speaker": "B",
         "japanese": "いいね。絶対行く！",
         "english": "Sounds good. I'll definitely go!"
@@ -608,42 +650,52 @@ export const lessons: JapaneseLesson[] = [
     "level": "B2",
     "vocabulary": [
       {
+        cell_id: "8b46d434-eb28-4a03-9401-a46bf491b567",
         "japanese": "討論",
         "english": "debate"
       },
       {
+        cell_id: "19ac2797-261f-4556-8959-eb399073e69b",
         "japanese": "論点",
         "english": "argument point"
       },
       {
+        cell_id: "8f58e540-347f-412e-bae7-f2784a6266c2",
         "japanese": "主張",
         "english": "claim"
       },
       {
+        cell_id: "31f068a6-58f9-43ba-b310-991edd3710e4",
         "japanese": "反論",
         "english": "rebuttal"
       },
       {
+        cell_id: "96d12e05-9c9c-416f-8174-769f5e66ebac",
         "japanese": "立証",
         "english": "proof"
       },
       {
+        cell_id: "4a8aca40-2f6d-47d0-bdb8-d4e0d14d174c",
         "japanese": "データ",
         "english": "data"
       },
       {
+        cell_id: "99d622a3-a66a-4b0f-9158-141b845180d8",
         "japanese": "論理的",
         "english": "logical"
       },
       {
+        cell_id: "2937980a-a8bb-47a6-b7ff-98783c515e0f",
         "japanese": "感情論",
         "english": "emotional argument"
       },
       {
+        cell_id: "950ae2a9-dfec-457d-bbb4-def5aad8065d",
         "japanese": "妥協点",
         "english": "common ground"
       },
       {
+        cell_id: "4691378f-06c5-4719-8929-25bf52a1c856",
         "japanese": "結論",
         "english": "conclusion"
       }
@@ -752,21 +804,25 @@ export const lessons: JapaneseLesson[] = [
     "tip_advice_en": "This is a B2 OUTPUT skill — drill the 'CUSHION + COUNTER' template: acknowledge the other side's point first, then rebut. Record yourself and time 60-second arguments; learn the connectors (～にもかかわらず, ～という理由で) as fixed chunks, not pieced together. Watch 国会中継 and 討論番組 for register. The Vietnamese trap: translating Vietnamese directness literally sounds aggressive in Japanese — soften systematically, not by mood.",
     "dialogue": [
       {
+        cell_id: "364e5579-27ec-4c70-be1d-468ccf427b0c",
         "speaker": "A",
         "japanese": "私はリモートワークを推進すべきだと思います。",
         "english": "I think we should promote remote work."
       },
       {
+        cell_id: "db7ad0f8-2a05-481d-8c0a-8c84e3212c1c",
         "speaker": "B",
         "japanese": "しかし、チームのコミュニケーションが難しくなります。",
         "english": "But team communication becomes difficult."
       },
       {
+        cell_id: "266cb1df-b6dc-491f-b2c9-8215e83a3d71",
         "speaker": "A",
         "japanese": "オンラインツールを使えば解決できます。",
         "english": "We can solve it with online tools."
       },
       {
+        cell_id: "2fa9369d-8f8e-42f1-bb97-03de7cbfc383",
         "speaker": "B",
         "japanese": "確かにそうですが、対面のメリットも無視できません。",
         "english": "That's true, but we can't ignore the benefits of face-to-face."
@@ -805,42 +861,52 @@ export const lessons: JapaneseLesson[] = [
     "level": "B2",
     "vocabulary": [
       {
+        cell_id: "446ee014-f9e8-494a-bf32-ef55c546cb8d",
         "japanese": "復習",
         "english": "review"
       },
       {
+        cell_id: "4d105794-3735-4edc-979f-722ca0c5ec0d",
         "japanese": "総合",
         "english": "comprehensive"
       },
       {
+        cell_id: "1f13b84a-af0d-482e-bf7a-987041de655a",
         "japanese": "応用",
         "english": "application"
       },
       {
+        cell_id: "3f580720-39af-4e88-8ee4-250cf27d02d4",
         "japanese": "まとめる",
         "english": "to summarize"
       },
       {
+        cell_id: "b65218ac-15c4-4cd6-a10d-2cad253eccd4",
         "japanese": "確認",
         "english": "confirmation"
       },
       {
+        cell_id: "2869352d-e6c8-4407-93c5-951f78dd9aae",
         "japanese": "達成",
         "english": "achievement"
       },
       {
+        cell_id: "e4a4a3c7-8deb-4b2d-b462-38780c5e524e",
         "japanese": "成長",
         "english": "growth"
       },
       {
+        cell_id: "1f567b10-4ba0-4d8a-904b-0baa6fb3dddd",
         "japanese": "目標",
         "english": "goal"
       },
       {
+        cell_id: "8b3e1b3c-f3d6-4c6a-aad7-ae725338c9f9",
         "japanese": "挑戦",
         "english": "challenge"
       },
       {
+        cell_id: "e8b38531-303d-4f0d-b0a3-e19707e5af78",
         "japanese": "継続",
         "english": "continuation"
       }
@@ -955,21 +1021,25 @@ export const lessons: JapaneseLesson[] = [
     "tip_advice_en": "This is the B2→C1 transition: shift from 'studying' to 'immersion + production'. Rebalance input/output from ~70/30 toward ~50/50; isolate weak points and drill them deliberately; find a language-exchange or shadowing partner. The biggest risk here is the plateau — break it with spaced output plus native correction, not more grammar study. 継続は力なり is a real method here, not a slogan: small but regular, with feedback.",
     "dialogue": [
       {
+        cell_id: "12ebe835-31f6-4045-bd09-2a1a53a3017a",
         "speaker": "A",
         "japanese": "このコースが終わりましたね。お疲れさまでした。",
         "english": "This course is over. You've worked hard."
       },
       {
+        cell_id: "a0f7e6f6-c187-4d86-8377-d9d42b651718",
         "speaker": "B",
         "japanese": "ありがとうございます。本当にたくさんのことを学びました。",
         "english": "Thank you. I really learned a lot."
       },
       {
+        cell_id: "8c5ba3b1-6fcf-4698-8cbd-a2e417d61657",
         "speaker": "A",
         "japanese": "これからも日本語の勉強を続けますか。",
         "english": "Will you continue studying Japanese from now on?"
       },
       {
+        cell_id: "b9e32cab-63a2-4d01-8dc7-caf157b14ee7",
         "speaker": "B",
         "japanese": "はい、もっと上達できるように頑張ります！",
         "english": "Yes, I'll do my best to improve even more!"
@@ -1101,63 +1171,77 @@ export const lessons: JapaneseLesson[] = [
     ],
     "vocabulary": [
       {
+        cell_id: "599b2faf-1ac8-48f0-8d92-492ead5a7d61",
         "japanese": "退職 (たいしょく)",
         "english": "resignation / leaving a job"
       },
       {
+        cell_id: "e1ef8bdc-98e0-47d2-8f42-bd86ceed8406",
         "japanese": "退職届 (たいしょくとどけ)",
         "english": "letter of resignation (handwritten, paper)"
       },
       {
+        cell_id: "70052335-4e37-4678-b983-2bd4f9a389a8",
         "japanese": "お世話になりました",
         "english": "thank you for your kindness (set farewell to colleagues / managers)"
       },
       {
+        cell_id: "25f314d3-a782-4a2d-815f-5ba15aa2590e",
         "japanese": "申し訳ございません",
         "english": "I am very sorry (kenjougo of すみません)"
       },
       {
+        cell_id: "b9d551f8-43d2-46a4-8692-51f2de791a03",
         "japanese": "引き継ぎ (ひきつぎ)",
         "english": "handover / transition of duties"
       },
       {
+        cell_id: "140c72ba-ecc4-4dca-9478-b4ac27f36ef3",
         "japanese": "後任 (こうにん)",
         "english": "successor / replacement hire"
       },
       {
+        cell_id: "91625dc3-80ce-41a9-99e5-fb34b8e6063e",
         "japanese": "慰留 (いりゅう)",
         "english": "persuasion to stay; the boss's counter-offer"
       },
       {
+        cell_id: "c009239b-67f3-4b14-9fd9-2b5f15b2b165",
         "japanese": "最終出勤日 (さいしゅうしゅっきんび)",
         "english": "last working day"
       },
       {
+        cell_id: "1101b734-75a2-425b-bb40-589cb5ddf497",
         "japanese": "～させていただきます",
         "english": "humbly do — kenjougo construction for one's own action"
       },
       {
+        cell_id: "f2a9bae5-f98f-4ece-bfb1-ac40ea4fccd4",
         "japanese": "～ていただけませんでしょうか",
         "english": "could I possibly ~? (maximum-polite request form)"
       }
     ],
     "dialogue": [
       {
+        cell_id: "dbb6c40e-36ee-4fdc-a068-2a020677bf3f",
         "speaker": "チャウ",
         "japanese": "田中部長、退職のことで、ご相談させていただきたく存じます。",
         "english": "Manager Tanaka, I would humbly like to consult with you regarding my resignation."
       },
       {
+        cell_id: "2275bc9a-e7f9-4a16-8bdd-dc8f26bb5640",
         "speaker": "田中部長",
         "japanese": "退職ですか。差し支えなければ、理由を聞かせてもらえますか。",
         "english": "Resignation? If you don't mind, may I hear the reason?"
       },
       {
+        cell_id: "5c0ffa22-3605-4025-93b3-b3ca758cf7c4",
         "speaker": "チャウ",
         "japanese": "家族の事情で、ベトナムに戻ることになりました。",
         "english": "Due to family circumstances, I've decided to return to Vietnam."
       },
       {
+        cell_id: "0ab76dc5-8bd6-47ef-8daf-f1eaab1ada1c",
         "speaker": "田中部長",
         "japanese": "わかりました。立つ鳥跡を濁さず、引き継ぎを丁寧にお願いします。",
         "english": "Understood. Please leave things in good order — handle the handover carefully."
@@ -1353,42 +1437,52 @@ export const lessons: JapaneseLesson[] = [
     "level": "B2",
     "vocabulary": [
       {
+        cell_id: "3d8ad3ff-fda4-4354-9faf-0c142cb6f86c",
         "japanese": "面接 (めんせつ)",
         "english": "job interview"
       },
       {
+        cell_id: "c65088f8-63af-40fc-b576-3266d1b4f3ef",
         "japanese": "履歴書 (りれきしょ)",
         "english": "résumé / CV (Japanese format with photo)"
       },
       {
+        cell_id: "ba5713c4-a60a-47ef-bf37-1a93fd4ea3d2",
         "japanese": "職務経歴書 (しょくむけいれきしょ)",
         "english": "work-history document (separate from résumé in Japan)"
       },
       {
+        cell_id: "f7ec1da9-d03d-48c9-9a54-86934fa133e1",
         "japanese": "志望動機 (しぼうどうき)",
         "english": "motivation for applying (mandatory interview question)"
       },
       {
+        cell_id: "db21d1ff-93f8-440d-8efb-bbd0afe11b68",
         "japanese": "自己PR (じこピーアール)",
         "english": "self-promotion / strengths pitch"
       },
       {
+        cell_id: "49799f74-f075-44fa-976d-b37afa13402e",
         "japanese": "御社 (おんしゃ)",
         "english": "your company (spoken — used by candidate to interviewer)"
       },
       {
+        cell_id: "2e4972cb-2f95-4e8b-937c-ba14fae5c7f7",
         "japanese": "貴社 (きしゃ)",
         "english": "your company (written — used in cover letters)"
       },
       {
+        cell_id: "fa3bfcf6-7eac-4366-afae-e6d11994fe1b",
         "japanese": "弊社 (へいしゃ)",
         "english": "our company (humble — used by interviewer about own firm)"
       },
       {
+        cell_id: "51a72006-8035-42e3-83d3-84aaecdf21fb",
         "japanese": "内定 (ないてい)",
         "english": "informal job offer (binding in practice)"
       },
       {
+        cell_id: "06abda59-1263-4b63-9006-6eaad0faca0d",
         "japanese": "入社 (にゅうしゃ)",
         "english": "joining the company / first day"
       }
@@ -1487,21 +1581,25 @@ export const lessons: JapaneseLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "81993d25-12eb-4666-9ede-ee3a5b69b3fa",
         "speaker": "面接官",
         "japanese": "本日はお越しいただき、ありがとうございます。まず自己紹介をお願いします。",
         "english": "Thank you for coming today. First, please introduce yourself."
       },
       {
+        cell_id: "6c0fe8d5-9381-4637-af14-4f369f344603",
         "speaker": "チャウ",
         "japanese": "ベトナムから参りました、グエン・ティ・チャウと申します。本日はよろしくお願いいたします。",
         "english": "I am Nguyen Thi Chau, from Vietnam. Thank you for having me today."
       },
       {
+        cell_id: "a14e00a4-2ec6-4af3-b23d-cea21a6f9484",
         "speaker": "面接官",
         "japanese": "弊社を志望された理由をお聞かせいただけますか。",
         "english": "Could you tell us your reason for applying to our company?"
       },
       {
+        cell_id: "c01ada94-07b2-4173-9a91-31ae0cb64bb9",
         "speaker": "チャウ",
         "japanese": "御社のベトナム工場での品質改善活動に深く共感したからでございます。",
         "english": "It is because I deeply resonate with your company's quality-improvement activities at the Vietnam plant."
@@ -1697,42 +1795,52 @@ export const lessons: JapaneseLesson[] = [
     "level": "B2",
     "vocabulary": [
       {
+        cell_id: "8d1021d6-2cfb-455b-abcb-7e7b0b993033",
         "japanese": "国費留学生 (こくひりゅうがくせい)",
         "english": "MEXT-funded foreign student"
       },
       {
+        cell_id: "8f0c40bf-a191-4b34-9f1d-c4f8063fd1cb",
         "japanese": "研究計画書 (けんきゅうけいかくしょ)",
         "english": "research-plan document (heart of MEXT app)"
       },
       {
+        cell_id: "c39e2524-92a0-454c-8b1f-5cc2aaa6a770",
         "japanese": "指導教官 (しどうきょうかん)",
         "english": "supervising professor"
       },
       {
+        cell_id: "0aa5e5cc-b8b7-433f-a4f2-e734d7312409",
         "japanese": "研究室 (けんきゅうしつ)",
         "english": "research lab (the unit, not the room)"
       },
       {
+        cell_id: "9e974654-65c2-44ba-9b1b-75aaaf9c40b6",
         "japanese": "修士課程 (しゅうしかてい)",
         "english": "master's program"
       },
       {
+        cell_id: "4a60f147-d70f-40c5-81d5-54da9738789e",
         "japanese": "博士課程 (はかせかてい)",
         "english": "doctoral program"
       },
       {
+        cell_id: "522aae86-150b-49ca-aba6-54e8626a8bc0",
         "japanese": "学位 (がくい)",
         "english": "academic degree"
       },
       {
+        cell_id: "8cd385b4-f3a3-4fbc-8ffc-d80fd33fe7d4",
         "japanese": "教鞭を執る (きょうべんをとる)",
         "english": "to teach (literary — used in formal aspirations)"
       },
       {
+        cell_id: "9952bd6a-bf4f-45f3-a9b2-a29ca44ad474",
         "japanese": "後進の育成 (こうしんのいくせい)",
         "english": "nurturing future generations (signals giving back)"
       },
       {
+        cell_id: "896a7a72-21c1-420a-8017-73e9a764a9c1",
         "japanese": "研鑽を積む (けんさんをつむ)",
         "english": "to accumulate diligent study (set phrase for academic effort)"
       }
@@ -1829,21 +1937,25 @@ export const lessons: JapaneseLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "858e42f8-5cd9-4d2f-8b8f-59bd8360db19",
         "speaker": "面接官",
         "japanese": "それでは、研究計画について、簡潔にお話しください。",
         "english": "Now, please briefly tell us about your research plan."
       },
       {
+        cell_id: "75d51280-1b21-4e1d-8775-88d301a7921e",
         "speaker": "チャウ",
         "japanese": "はい。京都大学で水質浄化技術の研究を希望しております。",
         "english": "Yes. I wish to research water-purification technology at Kyoto University."
       },
       {
+        cell_id: "dff88ee6-7afd-4a8e-aef0-047297840e64",
         "speaker": "面接官",
         "japanese": "なぜ日本で、その研究をしたいのですか。",
         "english": "Why do you want to do that research in Japan, specifically?"
       },
       {
+        cell_id: "caf4560a-1d20-4aeb-9787-da5ff6364876",
         "speaker": "チャウ",
         "japanese": "山田教授の論文を拝読し、ぜひご指導を仰ぎたいと考えたためでございます。",
         "english": "Because I read Professor Yamada's papers and wish to seek his guidance."
@@ -2039,42 +2151,52 @@ export const lessons: JapaneseLesson[] = [
     "level": "B2",
     "vocabulary": [
       {
+        cell_id: "85a76da4-91ba-49c9-9319-6c189f0e8ad3",
         "japanese": "卒業研究 (そつぎょうけんきゅう)",
         "english": "graduation research / undergraduate thesis"
       },
       {
+        cell_id: "257da8e9-3cc8-4378-aa3f-bb8803b619db",
         "japanese": "テーマ",
         "english": "topic / theme (research subject)"
       },
       {
+        cell_id: "5d0a956d-0c58-4bd4-9d5d-e1dd10c1efc3",
         "japanese": "先行研究 (せんこうけんきゅう)",
         "english": "prior literature / precedent studies"
       },
       {
+        cell_id: "22dfeb13-7bfd-4224-bd1a-0cb127e86971",
         "japanese": "問題意識 (もんだいいしき)",
         "english": "problem awareness — the why this matters core"
       },
       {
+        cell_id: "6d724146-e200-4733-a643-efd1cceb7d34",
         "japanese": "アプローチ",
         "english": "approach / methodology"
       },
       {
+        cell_id: "14e21706-805a-4b39-b39b-7ac9d7da3339",
         "japanese": "ご指導 (ごしどう)",
         "english": "guidance (sonkeigo for sensei's teaching)"
       },
       {
+        cell_id: "4d45db01-a3fd-4aa9-8e9c-9e1a3803c518",
         "japanese": "ゼミ",
         "english": "seminar (small-group lab meeting)"
       },
       {
+        cell_id: "73dfa692-9e2f-456d-97f2-c7e28fa4d7fc",
         "japanese": "中間発表 (ちゅうかんはっぴょう)",
         "english": "mid-progress presentation"
       },
       {
+        cell_id: "56bc3647-3899-464e-b021-497dce0d3ce1",
         "japanese": "考察 (こうさつ)",
         "english": "discussion / interpretation (thesis section)"
       },
       {
+        cell_id: "78942fa9-c3f2-4a54-9452-57f8675d3f8d",
         "japanese": "妥当性 (だとうせい)",
         "english": "validity / appropriateness (of method or argument)"
       }
@@ -2161,21 +2283,25 @@ export const lessons: JapaneseLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "946ef874-d829-4c75-9aee-9f9d3536e94d",
         "speaker": "チャウ",
         "japanese": "山田先生、卒業研究のことでご相談させていただきたく存じます。",
         "english": "Professor Yamada, I would humbly like to consult with you about my graduation research."
       },
       {
+        cell_id: "9e648ef8-d2fd-498a-85e6-527ccf7aacb7",
         "speaker": "山田先生",
         "japanese": "ああ、グエンさん、どうぞ。今、考えているテーマはありますか。",
         "english": "Ah, Nguyen-san, please. Do you have a topic in mind right now?"
       },
       {
+        cell_id: "e5a40192-acf5-437c-beaf-dcfd2245a8f4",
         "speaker": "チャウ",
         "japanese": "はい、二つございます。一つは膜分離、もう一つは生物処理でございます。",
         "english": "Yes, two. One is membrane separation, the other is biological treatment."
       },
       {
+        cell_id: "806cbf22-20d1-41c4-8bbf-7e5cd8d7674c",
         "speaker": "山田先生",
         "japanese": "なるほど。それぞれの問題意識を聞かせてください。",
         "english": "I see. Tell me the problem awareness behind each."
@@ -2371,42 +2497,52 @@ export const lessons: JapaneseLesson[] = [
     "level": "B2",
     "vocabulary": [
       {
+        cell_id: "5da80e8f-9fd2-4de8-b7cd-a97a64dbaaab",
         "japanese": "インターンシップ",
         "english": "internship"
       },
       {
+        cell_id: "1fba224f-1c22-4234-93bf-48a1f42b2ddf",
         "japanese": "受け入れ先 (うけいれさき)",
         "english": "host company / receiving organization"
       },
       {
+        cell_id: "e3c3cc71-bfba-4473-8249-5221e0ce171e",
         "japanese": "業務内容 (ぎょうむないよう)",
         "english": "work content / scope of duties"
       },
       {
+        cell_id: "3a082e0e-0aa2-4f6e-8ea1-5edb08ed7054",
         "japanese": "勤務時間 (きんむじかん)",
         "english": "working hours"
       },
       {
+        cell_id: "c0653998-4116-4a2a-89f1-4de1d7f62054",
         "japanese": "報酬 (ほうしゅう)",
         "english": "compensation / pay (often unpaid in Japan)"
       },
       {
+        cell_id: "c92ec793-706a-4742-ad6e-766112d60410",
         "japanese": "交通費 (こうつうひ)",
         "english": "transportation expenses"
       },
       {
+        cell_id: "1bdff8d8-6483-4dd3-a8e0-8f5377bea3ac",
         "japanese": "守秘義務 (しゅひぎむ)",
         "english": "non-disclosure obligation (NDA)"
       },
       {
+        cell_id: "68f7437d-a613-4811-abcf-87404703b764",
         "japanese": "メンター",
         "english": "mentor (assigned supervisor during internship)"
       },
       {
+        cell_id: "3d63ca40-195d-410b-8759-7c3f067aa6e8",
         "japanese": "成果物 (せいかぶつ)",
         "english": "deliverable / output"
       },
       {
+        cell_id: "2da7980c-64ee-41da-b111-99ba2f683b94",
         "japanese": "学業との両立 (がくぎょうとのりょうりつ)",
         "english": "balance with studies (frame for declining over-work)"
       }
@@ -2493,21 +2629,25 @@ export const lessons: JapaneseLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "4a3ea2c7-a752-44b8-86f4-98448e0eae24",
         "speaker": "チャウ",
         "japanese": "人事の佐藤様、インターンシップの件で、一点ご相談がございます。",
         "english": "Sato-san from HR, I have one point of consultation about the internship."
       },
       {
+        cell_id: "7d60b86f-7ea8-469b-ba8c-7b0b17749b7d",
         "speaker": "佐藤",
         "japanese": "はい、どうしました。",
         "english": "Yes, what is it?"
       },
       {
+        cell_id: "9e9e13f2-70d0-44cb-8479-b531ed5a677a",
         "speaker": "チャウ",
         "japanese": "期間について、二週間の延長は可能でございますでしょうか。",
         "english": "Regarding the period — would a two-week extension be possible?"
       },
       {
+        cell_id: "8f764d37-db50-4d6e-82e5-681c1a9f61b2",
         "speaker": "佐藤",
         "japanese": "理由をお聞かせいただけますか。",
         "english": "Could you tell me the reason?"
@@ -2703,42 +2843,52 @@ export const lessons: JapaneseLesson[] = [
     "level": "B2",
     "vocabulary": [
       {
+        cell_id: "05b4d723-741d-440b-8923-c82b5f4c2e3b",
         "japanese": "在留資格認定証明書 (ざいりゅうしかくにんていしょうめいしょ)",
         "english": "Certificate of Eligibility (COE) — required for student visa"
       },
       {
+        cell_id: "b3609ff7-434e-4271-a167-a484526ff2da",
         "japanese": "国際交流課 (こくさいこうりゅうか)",
         "english": "International Exchange Office"
       },
       {
+        cell_id: "a1d9c929-fc74-48ac-a2cc-0f6dcf4db613",
         "japanese": "件名 (けんめい)",
         "english": "subject line (of email)"
       },
       {
+        cell_id: "36ce6f4b-7924-4496-9ace-8a17c81f718f",
         "japanese": "ご担当者様 (ごたんとうしゃさま)",
         "english": "[To the] person in charge (used when name unknown)"
       },
       {
+        cell_id: "f33caae4-4f6e-438a-804b-8841df04b2c7",
         "japanese": "進捗状況 (しんちょくじょうきょう)",
         "english": "progress status"
       },
       {
+        cell_id: "d72133b4-0d4a-44fb-8124-6710c09f6e73",
         "japanese": "ご教示 (ごきょうじ)",
         "english": "instruction / informing me (sonkeigo)"
       },
       {
+        cell_id: "647f9669-eb05-4eb0-b903-3889838881cd",
         "japanese": "添付 (てんぷ)",
         "english": "attachment (of file)"
       },
       {
+        cell_id: "4419951e-2d7a-415d-b626-7d05f686393e",
         "japanese": "重ねて (かさねて)",
         "english": "again / repeatedly (used in thanks again)"
       },
       {
+        cell_id: "0fdd7974-7277-489a-af63-9a41e227367e",
         "japanese": "ご対応 (ごたいおう)",
         "english": "your handling / response (sonkeigo)"
       },
       {
+        cell_id: "6affb8f3-02aa-40ca-a097-8495a01f68e3",
         "japanese": "お力添え (おちからぞえ)",
         "english": "your support / assistance (humble)"
       }
@@ -2827,21 +2977,25 @@ export const lessons: JapaneseLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "53a078a9-d65f-4954-844b-66de812c7f99",
         "speaker": "本人(独白)",
         "japanese": "ビザの書類が三週間届かない。問い合わせメールを書こう。",
         "english": "The visa document hasn't arrived for three weeks. Let me write an inquiry email. (internal monologue)"
       },
       {
+        cell_id: "d6a52317-b98d-4d47-b529-e6f971957bf7",
         "speaker": "本人(独白)",
         "japanese": "件名を最初に明確にして、状況、依頼、感謝の順で書く。",
         "english": "Subject line clear first, then situation, request, gratitude — in that order. (internal)"
       },
       {
+        cell_id: "922ffc6d-84ac-4715-8ae6-64ed964fa215",
         "speaker": "本人(独白)",
         "japanese": "添付ファイルは申請書のコピー。重さは1MB以内に。",
         "english": "Attachment is a copy of the application form. Keep size under 1MB. (internal)"
       },
       {
+        cell_id: "d91e74a9-424c-4e6a-88c0-b3554a4a73f1",
         "speaker": "本人(独白)",
         "japanese": "返信が来なかったら一週間後に丁寧に再送する。",
         "english": "If no reply comes, politely resend after a week. (internal)"
@@ -3032,42 +3186,52 @@ export const lessons: JapaneseLesson[] = [
     "level": "B2",
     "vocabulary": [
       {
+        cell_id: "712ae72d-9baa-4122-868f-0d062ff45b27",
         "japanese": "電話面接 (でんわめんせつ)",
         "english": "phone interview"
       },
       {
+        cell_id: "3b6aa114-b6ba-4d2c-97d1-5b4eae8edc4f",
         "japanese": "オンライン面接 (オンラインめんせつ)",
         "english": "online (video) interview"
       },
       {
+        cell_id: "97e76867-8ee4-40d9-a081-591f4574b4ca",
         "japanese": "音声 (おんせい)",
         "english": "audio / voice"
       },
       {
+        cell_id: "5ec19251-ef01-48f8-8d11-8b451fb40ce2",
         "japanese": "聞き取りにくい (ききとりにくい)",
         "english": "hard to make out (audio)"
       },
       {
+        cell_id: "3e66c556-cf82-4aca-86c9-8539e5544758",
         "japanese": "時差 (じさ)",
         "english": "time difference (Japan-Vietnam: Japan +2 hours)"
       },
       {
+        cell_id: "ead15a30-4a6c-4af1-8837-f084dc2c447d",
         "japanese": "都合 (つごう)",
         "english": "convenience / availability"
       },
       {
+        cell_id: "2b61c835-c799-4ecb-ae75-d107c791e0e3",
         "japanese": "電波 (でんぱ)",
         "english": "signal / reception"
       },
       {
+        cell_id: "d3c9f2c0-6010-4a5f-8ab1-07d1cca4d174",
         "japanese": "切れる (きれる)",
         "english": "to be cut off (call dropping)"
       },
       {
+        cell_id: "e0389961-ea72-4c6b-bfc5-6051e13260b6",
         "japanese": "おかけ直し (おかけなおし)",
         "english": "calling back (you re-call them)"
       },
       {
+        cell_id: "f78361a1-683b-4bbd-8ce0-49100d4a4925",
         "japanese": "折り返し (おりかえし)",
         "english": "callback (they call you back)"
       }
@@ -3154,21 +3318,25 @@ export const lessons: JapaneseLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "2994f7aa-d0c4-426f-ab95-1d575d629c63",
         "speaker": "面接官",
         "japanese": "もしもし、グエン・ティ・チャウさんのお電話でしょうか。",
         "english": "Hello, is this Nguyen Thi Chau's phone?"
       },
       {
+        cell_id: "b2cd1875-d0c3-4451-866e-ae037b071fa0",
         "speaker": "チャウ",
         "japanese": "はい、グエンでございます。お世話になっております。",
         "english": "Yes, this is Nguyen. Thank you for your continued kindness."
       },
       {
+        cell_id: "cea899d8-49cd-449d-bd7c-bb382d105f79",
         "speaker": "面接官",
         "japanese": "ABC商事の田中と申します。本日は面接のお電話でございます。",
         "english": "I am Tanaka from ABC Trading. This is the call for the interview today."
       },
       {
+        cell_id: "8d80e400-bc78-4a5a-afdf-0c83b6e78ae7",
         "speaker": "チャウ",
         "japanese": "お電話ありがとうございます。よろしくお願いいたします。",
         "english": "Thank you for your call. I look forward to it."
@@ -3384,42 +3552,52 @@ export const lessons: JapaneseLesson[] = [
     "level": "B2",
     "vocabulary": [
       {
+        cell_id: "735dfacb-8a69-4b66-af24-d35c0b7b3862",
         "japanese": "異業種交流会 (いぎょうしゅこうりゅうかい)",
         "english": "cross-industry networking event"
       },
       {
+        cell_id: "50ee7542-97cd-447e-8bd6-b60f22564d14",
         "japanese": "名刺 (めいし)",
         "english": "business card (sacred object in Japan)"
       },
       {
+        cell_id: "fab0852a-4179-4874-8b0e-96135c7c7422",
         "japanese": "名刺交換 (めいしこうかん)",
         "english": "business-card exchange (formal ritual)"
       },
       {
+        cell_id: "990348b0-1bd8-4379-8b58-f6c9e5a42325",
         "japanese": "頂戴する (ちょうだいする)",
         "english": "to receive (kenjougo of もらう — used for cards, time)"
       },
       {
+        cell_id: "c8e90f50-2617-4269-ad2a-3fa2affa0ec0",
         "japanese": "拝見する (はいけんする)",
         "english": "to look at (kenjougo of 見る — used when receiving card)"
       },
       {
+        cell_id: "f209b6a1-00b8-424e-8612-87cace10a23b",
         "japanese": "ご縁 (ごえん)",
         "english": "fated connection / good fortune of meeting"
       },
       {
+        cell_id: "b9a75cd5-f816-4c20-a821-2fec86257824",
         "japanese": "つなぎ役 (つなぎやく)",
         "english": "bridging role / introducer"
       },
       {
+        cell_id: "f6850faa-fe29-46f6-9159-60eda70b3b79",
         "japanese": "業界 (ぎょうかい)",
         "english": "industry / sector"
       },
       {
+        cell_id: "28485eec-eb21-47c9-9591-29eb1a0b7899",
         "japanese": "ご紹介 (ごしょうかい)",
         "english": "introduction (used when introducing one party to another)"
       },
       {
+        cell_id: "c38eba3b-19b7-4ac7-8456-d4f27a08e95a",
         "japanese": "懇親会 (こんしんかい)",
         "english": "informal social mixer (often after main event)"
       }
@@ -3506,21 +3684,25 @@ export const lessons: JapaneseLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "eeeea8a4-77b3-4cb8-8b0e-51c12b672da6",
         "speaker": "チャウ",
         "japanese": "初めまして。ABC商事のグエンと申します。お名刺を頂戴できますでしょうか。",
         "english": "Nice to meet you. I am Nguyen from ABC Trading. May I please receive your business card?"
       },
       {
+        cell_id: "8841c214-b9ed-4dad-bdd1-585158a047b3",
         "speaker": "佐藤",
         "japanese": "佐藤と申します。XYZ製造の海外事業部でございます。",
         "english": "I am Sato, from the overseas business division of XYZ Manufacturing."
       },
       {
+        cell_id: "fd0dd1b7-e091-4c12-92bb-a2fd49f46cef",
         "speaker": "チャウ",
         "japanese": "佐藤様、頂戴いたします。ありがとうございます。",
         "english": "Mr. Sato, I receive this. Thank you."
       },
       {
+        cell_id: "967b7d32-8739-4902-b662-9caaa9e819cd",
         "speaker": "佐藤",
         "japanese": "ベトナムからいらっしゃったんですか。お珍しいですね。",
         "english": "You came from Vietnam? That's unusual."
@@ -3716,42 +3898,52 @@ export const lessons: JapaneseLesson[] = [
     "level": "B2",
     "vocabulary": [
       {
+        cell_id: "3ddf0f91-efc6-465c-a115-0292fd9617fa",
         "japanese": "選考結果 (せんこうけっか)",
         "english": "selection result (interview outcome)"
       },
       {
+        cell_id: "4184cf55-f1fc-4da5-9685-27b3b5a5141d",
         "japanese": "お見送り (おみおくり)",
         "english": "polite term for rejection (literally sending off)"
       },
       {
+        cell_id: "51f0a32e-b2e4-4268-9296-aa5e69f80332",
         "japanese": "不採用 (ふさいよう)",
         "english": "non-hire / rejection (more direct)"
       },
       {
+        cell_id: "52ad9d3a-eae8-4932-84c7-f2fcb641c230",
         "japanese": "ご縁 (ごえん)",
         "english": "fated connection (also used as soft fit euphemism)"
       },
       {
+        cell_id: "a95f0f03-d988-4308-bd09-9658cc894238",
         "japanese": "真摯に (しんしに)",
         "english": "sincerely / earnestly"
       },
       {
+        cell_id: "1e01883f-63a2-4c95-9fd7-20c1a5a13e8c",
         "japanese": "受け止める (うけとめる)",
         "english": "to accept (a difficult result)"
       },
       {
+        cell_id: "752f6d50-c859-4880-a1e0-aba82ecc7b6a",
         "japanese": "ご助言 (ごじょげん)",
         "english": "advice (sonkeigo for someone giving you advice)"
       },
       {
+        cell_id: "95412416-d19b-4470-a193-7f2e57b6846b",
         "japanese": "糧 (かて)",
         "english": "nourishment / sustenance (figurative — for growth)"
       },
       {
+        cell_id: "b6acb0c8-44ea-4282-8180-8ba9bd722c47",
         "japanese": "精進 (しょうじん)",
         "english": "diligent application / self-improvement (Buddhist root)"
       },
       {
+        cell_id: "1334458f-96b9-4af2-b603-94617b480be2",
         "japanese": "末筆ながら (まっぴつながら)",
         "english": "in closing / at the end of the brush (formal letter close)"
       }
@@ -3842,21 +4034,25 @@ export const lessons: JapaneseLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "47583122-8d59-42b6-abec-83bdb1e43ccf",
         "speaker": "チャウ",
         "japanese": "(メールを書きながら)残念だが、礼儀正しく返信しよう。",
         "english": "(while writing email) Disappointed, but I will reply politely. (internal)"
       },
       {
+        cell_id: "d6340cfd-c0dc-4e0f-8c8a-63b63939a84b",
         "speaker": "チャウ",
         "japanese": "件名は「選考結果のご連絡につきまして」にする。",
         "english": "Subject will be Regarding the notice of selection result. (internal)"
       },
       {
+        cell_id: "1adeead0-39a7-4805-8b6a-b27b8bf21030",
         "speaker": "チャウ",
         "japanese": "ご助言をお願いするのは失礼ではない。むしろ意欲を示せる。",
         "english": "Asking for advice is not impolite — actually it shows motivation. (internal)"
       },
       {
+        cell_id: "9a2aec25-0da0-4ed5-96dc-8b7ce754cd45",
         "speaker": "チャウ",
         "japanese": "感情的な言葉は避け、感謝と前向きさを伝える。",
         "english": "Avoid emotional words; convey gratitude and forward-looking attitude. (internal)"
@@ -4052,42 +4248,52 @@ export const lessons: JapaneseLesson[] = [
     "level": "B2",
     "vocabulary": [
       {
+        cell_id: "2a02e564-e683-4f6d-9f30-70fc670dbb61",
         "japanese": "推薦状 (すいせんじょう)",
         "english": "letter of recommendation"
       },
       {
+        cell_id: "20f52402-126e-4161-ba72-f1ae3da2452a",
         "japanese": "推薦書 (すいせんしょ)",
         "english": "recommendation document (interchangeable with 推薦状)"
       },
       {
+        cell_id: "8e638e5d-0683-4887-99d9-60430d31fc0c",
         "japanese": "提出期限 (ていしゅつきげん)",
         "english": "submission deadline"
       },
       {
+        cell_id: "99805726-0de4-4a53-8ff7-842252d1ade3",
         "japanese": "応募先 (おうぼさき)",
         "english": "where you are applying to"
       },
       {
+        cell_id: "9b85e863-e228-4b58-804a-7a5cc71a66cb",
         "japanese": "研究計画書 (けんきゅうけいかくしょ)",
         "english": "research plan / study proposal"
       },
       {
+        cell_id: "48437f64-64b3-4429-aefa-6ed9acd00def",
         "japanese": "成績証明書 (せいせきしょうめいしょ)",
         "english": "transcript / grades certificate"
       },
       {
+        cell_id: "cbd87e8c-821d-4717-b593-b991b72fba0f",
         "japanese": "封筒 (ふうとう)",
         "english": "envelope (recommendation often in sealed envelope)"
       },
       {
+        cell_id: "a277b542-7148-4c44-b3d9-a2bd6a64d0da",
         "japanese": "厳封 (げんぷう)",
         "english": "sealed (envelope sealed by professor — never opened by candidate)"
       },
       {
+        cell_id: "176f613d-8bb4-42f7-bb89-44a1ef0171a3",
         "japanese": "学恩 (がくおん)",
         "english": "academic indebtedness / debt of teaching"
       },
       {
+        cell_id: "51cad758-dba4-4239-8b51-15b7b03fd157",
         "japanese": "三顧の礼 (さんこのれい)",
         "english": "courtesy of three visits (going to ask multiple times respectfully)"
       }
@@ -4180,21 +4386,25 @@ export const lessons: JapaneseLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "cf0fa3b9-52fe-4ccb-9b21-597b3f6a7fb3",
         "speaker": "チャウ",
         "japanese": "山田先生、お忙しいところ恐れ入ります。少しお時間を頂戴できますでしょうか。",
         "english": "Professor Yamada, sorry to disturb you when busy. Could I please have a moment of your time?"
       },
       {
+        cell_id: "14f0dd6a-0617-41d7-9d23-2f191f2ee8dd",
         "speaker": "山田先生",
         "japanese": "はいはい、グエンさん、どうしました。",
         "english": "Yes, yes, Nguyen-san, what is it?"
       },
       {
+        cell_id: "856d6374-d4d8-4041-8a47-cc3fd71f3ab7",
         "speaker": "チャウ",
         "japanese": "推薦状の件で、ご相談させていただきたく存じます。",
         "english": "I would humbly like to consult about a letter of recommendation."
       },
       {
+        cell_id: "7d4e69e4-61ee-48ed-ba21-8dfd8f3781b4",
         "speaker": "山田先生",
         "japanese": "推薦状ですね。何の応募ですか。",
         "english": "A recommendation, then. What application?"
@@ -4390,42 +4600,52 @@ export const lessons: JapaneseLesson[] = [
     "level": "B2",
     "vocabulary": [
       {
+        cell_id: "a07d13f2-86d5-4295-b8fe-6e5dcb305b64",
         "japanese": "研究関心 (けんきゅうかんしん)",
         "english": "research interest"
       },
       {
+        cell_id: "96988114-da85-4cbd-afe2-729cd9d372ad",
         "japanese": "研究分野 (けんきゅうぶんや)",
         "english": "research field / discipline"
       },
       {
+        cell_id: "99e57560-9bd1-445e-a952-b29e90e8fd9f",
         "japanese": "アプローチ",
         "english": "approach / methodology"
       },
       {
+        cell_id: "df4cf752-b562-430c-89c5-0f99ad7c2eef",
         "japanese": "仮説 (かせつ)",
         "english": "hypothesis"
       },
       {
+        cell_id: "6eb17bbf-536d-4d58-b062-da67d6fc5b53",
         "japanese": "実験データ (じっけんデータ)",
         "english": "experimental data"
       },
       {
+        cell_id: "faf35f07-f587-4020-bbb6-fd71b89d63b4",
         "japanese": "再現性 (さいげんせい)",
         "english": "reproducibility (key research virtue)"
       },
       {
+        cell_id: "9a28f007-82e9-4d85-ac32-f83f8afebfa6",
         "japanese": "学会 (がっかい)",
         "english": "academic society / conference body"
       },
       {
+        cell_id: "8a190364-289b-4766-ac5b-0d0bd93d3bab",
         "japanese": "査読 (さどく)",
         "english": "peer review"
       },
       {
+        cell_id: "da696f49-2b47-4586-9158-8a724881a0e4",
         "japanese": "共同研究 (きょうどうけんきゅう)",
         "english": "collaborative research"
       },
       {
+        cell_id: "0487ba3b-fd52-484a-a699-86683192c9b3",
         "japanese": "知見 (ちけん)",
         "english": "insight / finding (academic register, not idea)"
       }
@@ -4518,21 +4738,25 @@ export const lessons: JapaneseLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "3dcf4f65-343b-4bc0-8356-6fa8cb887d97",
         "speaker": "中村教授",
         "japanese": "グエンさん、研究室にようこそ。今、関心のあるテーマは何ですか。",
         "english": "Nguyen-san, welcome to my lab. What topic are you interested in now?"
       },
       {
+        cell_id: "ca1f1e51-3883-4ded-b943-8e03421c6ec8",
         "speaker": "チャウ",
         "japanese": "メコンデルタの塩害対策に関心がございます。先生のご研究と接点があるかと存じます。",
         "english": "I'm interested in salinization countermeasures in the Mekong Delta. I believe there is overlap with your research."
       },
       {
+        cell_id: "3435275a-62a4-430a-aafc-0d72c6fb1593",
         "speaker": "中村教授",
         "japanese": "なるほど。具体的にはどの段階の研究ですか。",
         "english": "I see. At what stage is your research specifically?"
       },
       {
+        cell_id: "dcaf1f1b-4d03-48a5-a2e4-986705c1f4c4",
         "speaker": "チャウ",
         "japanese": "現在は文献レビューと、現地データの整理を進めている段階でございます。",
         "english": "Currently at the stage of literature review and organizing field data."
@@ -4728,42 +4952,52 @@ export const lessons: JapaneseLesson[] = [
     "level": "B2",
     "vocabulary": [
       {
+        cell_id: "292f036b-b956-415e-be99-c48368d5fefc",
         "japanese": "ご出張 (ごしゅっちょう)",
         "english": "business trip (sonkeigo — for boss's trip)"
       },
       {
+        cell_id: "736dfb2c-69ee-45da-868e-15cabc041698",
         "japanese": "遠路はるばる (えんろはるばる)",
         "english": "from far away (set greeting for long-distance arrival)"
       },
       {
+        cell_id: "9d7d1452-351b-4e9a-a89d-86976def028d",
         "japanese": "お疲れ様でございます",
         "english": "thank you for your effort (max-formal greeting at arrival)"
       },
       {
+        cell_id: "48dde930-8a16-4638-a55f-58b5e085040d",
         "japanese": "現地スタッフ (げんちスタッフ)",
         "english": "local (Vietnamese) staff"
       },
       {
+        cell_id: "2547a41f-ef54-4e1d-9b9b-571944ede73c",
         "japanese": "視察 (しさつ)",
         "english": "inspection / observation (formal factory visit)"
       },
       {
+        cell_id: "b6292bd5-8f8b-4b5c-abf0-f0a880a8d032",
         "japanese": "工場見学 (こうじょうけんがく)",
         "english": "factory tour"
       },
       {
+        cell_id: "4cb74252-6399-45e1-baa0-7b194a0bc16f",
         "japanese": "ご案内 (ごあんない)",
         "english": "guidance / showing around (sonkeigo)"
       },
       {
+        cell_id: "b3df58f1-10e8-4bd8-ae92-0abb7da345de",
         "japanese": "時差ぼけ (じさぼけ)",
         "english": "jet lag"
       },
       {
+        cell_id: "c3bd59e1-0b5a-44f4-a62f-7caca5f9b537",
         "japanese": "現地時間 (げんちじかん)",
         "english": "local time (Vietnam)"
       },
       {
+        cell_id: "90792a52-bab0-41d3-a1a1-eb6c50a92682",
         "japanese": "おもてなし",
         "english": "hospitality (Japanese-specific concept of guest care)"
       }
@@ -4860,21 +5094,25 @@ export const lessons: JapaneseLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "163e396c-9027-4d97-b0b9-de6a54609487",
         "speaker": "チャウ",
         "japanese": "山田部長、お疲れ様でございます。遠路はるばるありがとうございます。",
         "english": "Manager Yamada, thank you for your effort. Thank you for coming from afar."
       },
       {
+        cell_id: "80cdf305-3c2e-450e-ab24-767af3fcdb97",
         "speaker": "山田部長",
         "japanese": "グエンさん、お迎えありがとうございます。空港まで来てくださって。",
         "english": "Nguyen-san, thank you for the welcome. Coming all the way to the airport."
       },
       {
+        cell_id: "57ddc8f8-1f47-4d79-a40c-37b3e3f7aeb3",
         "speaker": "チャウ",
         "japanese": "とんでもございません。お車をご用意しております。こちらへどうぞ。",
         "english": "Not at all. We have a car prepared. This way please."
       },
       {
+        cell_id: "375f2075-bb73-4cfc-b1a4-e5c89e8801bc",
         "speaker": "山田部長",
         "japanese": "ホーチミンは初めてなので、楽しみにしています。",
         "english": "It's my first time in Ho Chi Minh, so I'm looking forward to it."
@@ -5070,42 +5308,52 @@ export const lessons: JapaneseLesson[] = [
     "level": "B2",
     "vocabulary": [
       {
+        cell_id: "34332fdf-ab1b-444c-8694-a9e4a32f6c35",
         "japanese": "お客様 (おきゃくさま)",
         "english": "client / customer (sacred concept in JP business)"
       },
       {
+        cell_id: "ff66c352-699a-459f-accf-e35ba31313f3",
         "japanese": "ご訪問 (ごほうもん)",
         "english": "visit (sonkeigo for client's visit)"
       },
       {
+        cell_id: "89527208-cc58-40e2-88cb-3937cec81076",
         "japanese": "工場見学 (こうじょうけんがく)",
         "english": "factory tour"
       },
       {
+        cell_id: "45f3e0c2-f340-4915-b20e-f0fb3451e694",
         "japanese": "生産ライン (せいさんライン)",
         "english": "production line"
       },
       {
+        cell_id: "b2e9f700-32cd-4124-a58e-7001dcb66c61",
         "japanese": "品質管理 (ひんしつかんり)",
         "english": "quality control"
       },
       {
+        cell_id: "e089c2b1-9ea8-430f-8952-840151547e3f",
         "japanese": "お土産 (おみやげ)",
         "english": "souvenir / gift (mandatory for visitors)"
       },
       {
+        cell_id: "7a189456-1e75-4af0-bba8-3f1a626b49b3",
         "japanese": "ご贔屓に (ごひいきに)",
         "english": "favor / patronage (used in business closing)"
       },
       {
+        cell_id: "69503b1f-7ed9-4dcb-9607-7c0ffb64a84b",
         "japanese": "懇親 (こんしん)",
         "english": "friendly relations / informal bonding"
       },
       {
+        cell_id: "085958dd-aae8-40a3-95b1-1875265f9a82",
         "japanese": "乾杯 (かんぱい)",
         "english": "cheers / toast (drinking culture)"
       },
       {
+        cell_id: "6c457267-b036-4108-8ba4-44a86ff13af4",
         "japanese": "お見送り (おみおくり)",
         "english": "seeing someone off (here: literal — to airport)"
       }
@@ -5194,21 +5442,25 @@ export const lessons: JapaneseLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "8d95f139-b645-4a7e-bcbf-af748dae6fdb",
         "speaker": "チャウ",
         "japanese": "佐藤様、本日は弊社工場へお越しいただき、誠にありがとうございます。",
         "english": "Mr. Sato, thank you sincerely for coming to our factory today."
       },
       {
+        cell_id: "19777fdf-c942-4859-bccc-42db34ef5eb8",
         "speaker": "佐藤",
         "japanese": "こちらこそ、お時間を頂戴し、ありがとうございます。",
         "english": "On the contrary, thank you for the time."
       },
       {
+        cell_id: "24dcea96-7a7c-4042-bebf-77424cefc615",
         "speaker": "チャウ",
         "japanese": "まずは応接室で会社概要をご説明させていただいた後、生産ラインをご案内いたします。",
         "english": "First we'll explain company overview in the reception room, then guide you through the production line."
       },
       {
+        cell_id: "522e800c-e927-4e5d-97f7-a73669f59a92",
         "speaker": "佐藤",
         "japanese": "よろしくお願いします。",
         "english": "Thank you, looking forward to it."
@@ -5404,42 +5656,52 @@ export const lessons: JapaneseLesson[] = [
     "level": "B2",
     "vocabulary": [
       {
+        cell_id: "f926d9f6-ebe4-474d-9650-c20bbebd723e",
         "japanese": "文化の違い (ぶんかのちがい)",
         "english": "cultural difference"
       },
       {
+        cell_id: "98d16b63-2598-47fb-a812-450dd3adcfcd",
         "japanese": "なるほど",
         "english": "I see / makes sense (key listener-feedback word)"
       },
       {
+        cell_id: "cf5f7193-3fd5-475e-9831-417bee019f21",
         "japanese": "そうなんですね",
         "english": "is that so (acknowledging cultural info)"
       },
       {
+        cell_id: "ba8ae1a0-2b7a-4cb1-ad6d-813235e2d1f0",
         "japanese": "意外と (いがいと)",
         "english": "unexpectedly / contrary to expectation"
       },
       {
+        cell_id: "f4a53077-e6e1-4a29-9046-04cede4699b3",
         "japanese": "実は (じつは)",
         "english": "actually / in truth (signals interesting fact)"
       },
       {
+        cell_id: "c5fc0795-a1fa-4cc7-af1e-7e87215eef7d",
         "japanese": "家族中心 (かぞくちゅうしん)",
         "english": "family-centered (Vietnamese cultural trait)"
       },
       {
+        cell_id: "2cfaae79-31eb-4fc4-962e-9d2e57695802",
         "japanese": "バイク文化 (バイクぶんか)",
         "english": "motorbike culture"
       },
       {
+        cell_id: "ec90f252-9150-4be8-9de4-7f334038c2b8",
         "japanese": "カフェ文化 (カフェぶんか)",
         "english": "café culture"
       },
       {
+        cell_id: "e67454bf-25bc-4066-a67e-b03d9d6991af",
         "japanese": "気さく (きさく)",
         "english": "friendly / approachable (positive trait)"
       },
       {
+        cell_id: "209315b2-6789-42c3-bf58-605892043ae7",
         "japanese": "おおらか",
         "english": "easy-going / relaxed (often used for Vietnamese vs Japanese)"
       }
@@ -5534,21 +5796,25 @@ export const lessons: JapaneseLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "03d41e63-5f0a-46f0-9baf-d86df5caf902",
         "speaker": "田中さん",
         "japanese": "ベトナムのバイク、本当に多いですね。皆さん、危なくないんですか。",
         "english": "Vietnam has so many motorbikes. Aren't they dangerous?"
       },
       {
+        cell_id: "a8bb8f65-18e5-49fb-93cf-a186e1939a52",
         "speaker": "チャウ",
         "japanese": "慣れですね。実は、私たちにとってバイクは生活の一部なんです。",
         "english": "It's habit. Actually, motorbikes are part of life for us."
       },
       {
+        cell_id: "12d8bd9d-74da-43e5-ac37-530d6572c357",
         "speaker": "田中さん",
         "japanese": "なるほど。一家に何台くらいあるんですか。",
         "english": "I see. About how many per household?"
       },
       {
+        cell_id: "e06d0f3c-eba0-488a-9083-c909a1962cd5",
         "speaker": "チャウ",
         "japanese": "都市部だと、家族一人に一台が普通ですね。",
         "english": "In cities, one per family member is normal."
@@ -5744,42 +6010,52 @@ export const lessons: JapaneseLesson[] = [
     "level": "B2",
     "vocabulary": [
       {
+        cell_id: "317bf05d-0a19-4c5a-88ec-c11ad1e98242",
         "japanese": "先輩・後輩 (せんぱい・こうはい)",
         "english": "senior / junior (hierarchical pair)"
       },
       {
+        cell_id: "8b7a1f66-a477-423f-8e2e-64ed039755f5",
         "japanese": "礼儀 (れいぎ)",
         "english": "etiquette / manners"
       },
       {
+        cell_id: "fb9d6e7f-0762-4331-8c1c-3d02bd03462d",
         "japanese": "上下関係 (じょうげかんけい)",
         "english": "vertical (hierarchical) relationship"
       },
       {
+        cell_id: "94c7bdc8-cfa7-40c3-b4b0-6a02baf01883",
         "japanese": "稟議 (りんぎ)",
         "english": "ringi — bottom-up document-circulation decision"
       },
       {
+        cell_id: "c749b406-c982-461d-9a8f-21687af9315e",
         "japanese": "根回し (ねまわし)",
         "english": "groundwork / pre-consensus building"
       },
       {
+        cell_id: "e89e560b-a994-4883-af13-9c0ffc5be7d7",
         "japanese": "和を以て貴しとなす",
         "english": "harmony is to be valued (Prince Shotoku, 604 AD)"
       },
       {
+        cell_id: "e6db79ac-48e9-4746-9d98-e1eb96592287",
         "japanese": "集団主義 (しゅうだんしゅぎ)",
         "english": "collectivism"
       },
       {
+        cell_id: "21d3ed92-65bd-4a3a-b093-b093bada1292",
         "japanese": "個人主義 (こじんしゅぎ)",
         "english": "individualism"
       },
       {
+        cell_id: "2eb6906a-359a-4559-b430-6e378add6a24",
         "japanese": "意思決定 (いしけってい)",
         "english": "decision-making"
       },
       {
+        cell_id: "89a29e1d-4fc1-4fe2-9311-2795e5234158",
         "japanese": "合意形成 (ごういけいせい)",
         "english": "consensus-building"
       }
@@ -5870,21 +6146,25 @@ export const lessons: JapaneseLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "e1c53a09-f7ca-4b68-b31f-59471c23a5fd",
         "speaker": "ベトナム同僚",
         "japanese": "なんで日本の会議って、決まる前に皆もう答え知ってるの?",
         "english": "Why do Japanese meetings have everyone already knowing the answer before deciding?"
       },
       {
+        cell_id: "7d040ff7-781c-46c9-8b58-cb17029d6de8",
         "speaker": "チャウ",
         "japanese": "それが「根回し」って文化なんです。会議は確認の場で、決定の場じゃないんですよ。",
         "english": "That's the nemawashi culture. Meetings are for confirmation, not decision."
       },
       {
+        cell_id: "3c54f8c2-6620-48c5-9d49-51672e1b8b06",
         "speaker": "ベトナム同僚",
         "japanese": "じゃあ、いつ本当に話し合うの?",
         "english": "Then when do they really discuss?"
       },
       {
+        cell_id: "bfba5bb1-38b0-40c0-b4f1-3867573b0c85",
         "speaker": "チャウ",
         "japanese": "会議の前に、一対一で。これが一番重要なステップ。",
         "english": "Before the meeting, one-on-one. That's the most important step."
@@ -6080,42 +6360,52 @@ export const lessons: JapaneseLesson[] = [
     "level": "B2",
     "vocabulary": [
       {
+        cell_id: "7b58b3ca-810d-4047-9bb4-80950304b13e",
         "japanese": "申し訳ございません",
         "english": "I am very sorry (kenjougo of すみません — for serious situations)"
       },
       {
+        cell_id: "90c96b95-0cac-4caf-b7f7-f8df5ce936a7",
         "japanese": "認識不足 (にんしきぶそく)",
         "english": "lack of awareness (admitting one's own gap)"
       },
       {
+        cell_id: "b70d8a7b-9766-4283-9e53-f8dde70f426f",
         "japanese": "配慮 (はいりょ)",
         "english": "consideration / thoughtfulness"
       },
       {
+        cell_id: "917b35a6-10ad-4f16-aa84-ae20210991d1",
         "japanese": "失礼 (しつれい)",
         "english": "rudeness / impoliteness"
       },
       {
+        cell_id: "cb9c3e8f-2c6a-4fea-bc71-0044285df3c6",
         "japanese": "ご無礼 (ごぶれい)",
         "english": "rudeness (formal — used by self about own action)"
       },
       {
+        cell_id: "ab6214e0-5287-4b7a-b6f1-e72d3586b9f6",
         "japanese": "心よりお詫び申し上げます",
         "english": "I sincerely apologize from the heart (highest apology register)"
       },
       {
+        cell_id: "b5f7456e-6dc8-4e49-9668-5e398569c2e3",
         "japanese": "二度とこのようなことがないよう",
         "english": "so that this never happens again (pledge phrase)"
       },
       {
+        cell_id: "060709d9-7f62-41b0-9fe7-a1921e84c040",
         "japanese": "深く反省 (ふかくはんせい)",
         "english": "deeply self-reflect"
       },
       {
+        cell_id: "272a3f19-363e-4ae0-b0fd-28cac1e4f776",
         "japanese": "弁解 (べんかい)",
         "english": "excuse / justification (avoid in apology)"
       },
       {
+        cell_id: "d1bf8fb1-0808-4112-af33-ebc8f096d1fe",
         "japanese": "再発防止 (さいはつぼうし)",
         "english": "prevention of recurrence"
       }
@@ -6206,21 +6496,25 @@ export const lessons: JapaneseLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "342e10b0-1377-4242-b969-4ca38e035c0d",
         "speaker": "チャウ",
         "japanese": "山田部長、先日の食事会の件で、お詫びに参りました。",
         "english": "Manager Yamada, I have come to apologize regarding the dinner the other day."
       },
       {
+        cell_id: "a2573a34-290b-43ac-bf80-fc3d0580393a",
         "speaker": "山田部長",
         "japanese": "ああ、グエンさん。座ってください。",
         "english": "Ah, Nguyen-san. Please sit."
       },
       {
+        cell_id: "0a8a9975-1172-4be0-8f3d-108b27dde89d",
         "speaker": "チャウ",
         "japanese": "私の文化に対する認識不足で、ご無礼を働いてしまいました。",
         "english": "Due to my lack of cultural awareness, I committed rudeness."
       },
       {
+        cell_id: "e9ed2d1f-6219-4023-9f65-75d04fcdb54a",
         "speaker": "山田部長",
         "japanese": "気にしすぎですよ。学びの過程ですから。",
         "english": "You're worrying too much. It's part of learning."
@@ -6411,42 +6705,52 @@ export const lessons: JapaneseLesson[] = [
     "level": "B2",
     "vocabulary": [
       {
+        cell_id: "782d8ebf-5fde-48dd-be36-1d1863e40bd7",
         "japanese": "国際会議 (こくさいかいぎ)",
         "english": "international conference"
       },
       {
+        cell_id: "68a8f227-0b38-45d4-a23d-aebb5195b4ee",
         "japanese": "代表 (だいひょう)",
         "english": "representative / delegate"
       },
       {
+        cell_id: "855e1c6f-8f32-4023-a0ab-be46cd05ff8a",
         "japanese": "発表 (はっぴょう)",
         "english": "presentation"
       },
       {
+        cell_id: "65244f86-671a-4608-aafd-0cb16552d720",
         "japanese": "質疑応答 (しつぎおうとう)",
         "english": "Q&A session"
       },
       {
+        cell_id: "a7dbbd53-a7a7-468e-9236-7f80b89f3964",
         "japanese": "ご清聴 (ごせいちょう)",
         "english": "your kind attention (closing presentation phrase)"
       },
       {
+        cell_id: "63fa0a47-0d17-467c-844f-6aee28f67ac2",
         "japanese": "登壇 (とうだん)",
         "english": "taking the stage / standing at podium"
       },
       {
+        cell_id: "c6855102-36dd-420a-91d4-e799cee161de",
         "japanese": "セッション",
         "english": "session"
       },
       {
+        cell_id: "19c0915f-609f-4bbb-988c-e0e85805408f",
         "japanese": "パネリスト",
         "english": "panelist"
       },
       {
+        cell_id: "7798604b-5847-4f9a-8e21-1d22c870ba85",
         "japanese": "懇親会 (こんしんかい)",
         "english": "social mixer / networking reception"
       },
       {
+        cell_id: "2a588f78-fc5b-4cf5-adcd-0bcda25b8336",
         "japanese": "切磋琢磨 (せっさたくま)",
         "english": "mutual diligent improvement (idiom for academic/professional exchange)"
       }
@@ -6539,21 +6843,25 @@ export const lessons: JapaneseLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "a766c12e-c366-4b43-bcf8-99e8c92cb96b",
         "speaker": "司会",
         "japanese": "次の発表者は、ベトナムからお越しのグエン・ティ・チャウさんです。",
         "english": "Our next presenter is Ms. Nguyen Thi Chau, who has come from Vietnam."
       },
       {
+        cell_id: "449c0f83-d67a-4a95-b065-977763fcc3f5",
         "speaker": "チャウ",
         "japanese": "ご紹介ありがとうございます。本日はよろしくお願いいたします。",
         "english": "Thank you for the introduction. I look forward to today."
       },
       {
+        cell_id: "a9195a78-0f7e-4a85-8325-101a53952bf9",
         "speaker": "司会",
         "japanese": "では、十五分間でお願いします。",
         "english": "Then please proceed for fifteen minutes."
       },
       {
+        cell_id: "77345474-06a8-4d7d-b71a-17a72a96c260",
         "speaker": "チャウ",
         "japanese": "承知いたしました。それでは、始めさせていただきます。",
         "english": "Understood. Then I will begin."
@@ -6734,42 +7042,52 @@ export const lessons: JapaneseLesson[] = [
     "level": "B2",
     "vocabulary": [
       {
+        cell_id: "7ebd9840-9f06-451a-b142-2db241ec8f3d",
         "japanese": "お食事 (おしょくじ)",
         "english": "meal (sonkeigo of meshi)"
       },
       {
+        cell_id: "696385dd-a16f-4cc4-b2d2-8110be122b59",
         "japanese": "いただきます",
         "english": "I humbly receive (said before eating — ritual)"
       },
       {
+        cell_id: "1cbf844a-fd13-4111-81d8-1070132b664d",
         "japanese": "ごちそうさまでした",
         "english": "thanks for the feast (said after eating)"
       },
       {
+        cell_id: "3d8e9433-b9aa-48a1-ac43-80087daf3ca6",
         "japanese": "お口に合う (おくちにあう)",
         "english": "to suit one's palate (asking if guest likes food)"
       },
       {
+        cell_id: "88bd0f25-c2e2-42ac-9845-14e5d23f3e1c",
         "japanese": "辛い (からい)",
         "english": "spicy"
       },
       {
+        cell_id: "91cf3cde-9fbc-4fe5-9ec7-3b53480dc220",
         "japanese": "薄味 (うすあじ)",
         "english": "lightly seasoned (Japanese preference)"
       },
       {
+        cell_id: "fe6bdf64-c120-41dc-a809-5a57f6aa6f09",
         "japanese": "濃い味 (こいあじ)",
         "english": "strongly seasoned"
       },
       {
+        cell_id: "7079ab8a-25f1-4829-8a5f-8a72c73c2531",
         "japanese": "お酒 (おさけ)",
         "english": "alcoholic beverage / sake"
       },
       {
+        cell_id: "ecc9084e-f171-4ca1-911d-0200dd8c42ea",
         "japanese": "苦手 (にがて)",
         "english": "not good with / can't handle (used to politely decline food/drink)"
       },
       {
+        cell_id: "30021770-0d41-45fd-9511-f01a12f593f9",
         "japanese": "同じ釜の飯 (おなじかまのめし)",
         "english": "rice from the same pot (idiom: bonding through shared meals)"
       }
@@ -6858,21 +7176,25 @@ export const lessons: JapaneseLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "c9f05000-c5cc-4e81-a40c-c39252a7cbd4",
         "speaker": "山田部長",
         "japanese": "わあ、これは綺麗な料理ですね。何という料理ですか。",
         "english": "Wow, this is a beautiful dish. What is it called?"
       },
       {
+        cell_id: "d179c82e-c1a2-40e0-b16d-8f70a8eeb0b5",
         "speaker": "チャウ",
         "japanese": "これは「生春巻き」、ベトナム語で「ゴイ・クオン」と申します。エビと豚肉、野菜を米紙で巻いたものでございます。",
         "english": "This is summer roll — goi cuon in Vietnamese. Shrimp, pork, and vegetables wrapped in rice paper."
       },
       {
+        cell_id: "fabdd2b4-3708-450c-a102-7fccd9626337",
         "speaker": "山田部長",
         "japanese": "ヘルシーで美味しそうですね。タレは何ですか。",
         "english": "Healthy and delicious-looking. What's the sauce?"
       },
       {
+        cell_id: "73efd7ab-53c7-4cdd-a4a9-33a5d8424b8c",
         "speaker": "チャウ",
         "japanese": "ピーナッツソースでございます。お口に合えばよろしいのですが。",
         "english": "Peanut sauce. I hope it suits your palate."
@@ -7083,42 +7405,52 @@ export const lessons: JapaneseLesson[] = [
     "level": "B2",
     "vocabulary": [
       {
+        cell_id: "f3182e25-9855-4c3f-9b13-f994b89936eb",
         "japanese": "旧正月 (きゅうしょうがつ)",
         "english": "Lunar New Year (the term Japanese use for Tết)"
       },
       {
+        cell_id: "a0b5e9fd-b7db-4992-9918-12fa7b1640ae",
         "japanese": "ベトナム正月 (ベトナムしょうがつ)",
         "english": "Vietnamese New Year (alternative term)"
       },
       {
+        cell_id: "1df54c28-849a-4ab6-928b-8e057e50d5f0",
         "japanese": "お年玉 (おとしだま)",
         "english": "New Year money gift (Japan's equivalent of li xi)"
       },
       {
+        cell_id: "762119c2-430a-403a-9dc4-3fc120670a1a",
         "japanese": "親戚 (しんせき)",
         "english": "relatives"
       },
       {
+        cell_id: "8838c8ee-8cfa-4309-be6b-5f1ae50ad9a4",
         "japanese": "一族 (いちぞく)",
         "english": "extended family / clan"
       },
       {
+        cell_id: "5b2b4248-a290-4cd3-8eef-b9186cc1f130",
         "japanese": "祖先 (そせん)",
         "english": "ancestors"
       },
       {
+        cell_id: "3450ae89-367a-461b-acc5-b67bfd5130f7",
         "japanese": "供える (そなえる)",
         "english": "to offer (food/incense to ancestors)"
       },
       {
+        cell_id: "be4098f7-024a-4f81-896e-d2b9a0d581bf",
         "japanese": "初詣 (はつもうで)",
         "english": "first shrine visit of the year (Japanese parallel)"
       },
       {
+        cell_id: "fd71e9b4-8898-4596-95ff-2b7a0c9cdaeb",
         "japanese": "縁起 (えんぎ)",
         "english": "auspiciousness / luck-omen"
       },
       {
+        cell_id: "d7f57246-b7d4-41b1-ad8a-93d13c71123c",
         "japanese": "新年 (しんねん)",
         "english": "new year"
       }
@@ -7213,21 +7545,25 @@ export const lessons: JapaneseLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "e860f4eb-f4f2-4b5a-81bd-0b2528cb9d62",
         "speaker": "田中さん",
         "japanese": "ベトナムの「テト」って、いつですか。",
         "english": "When is Vietnam's Tet?"
       },
       {
+        cell_id: "04467233-d481-45c9-b5a8-4c1e201c8a11",
         "speaker": "チャウ",
         "japanese": "旧暦の一月一日でございます。今年は二月十日でした。",
         "english": "The 1st of the lunar new year. This year it was February 10."
       },
       {
+        cell_id: "40c9d874-f91f-4a48-bff1-e0110b35c843",
         "speaker": "田中さん",
         "japanese": "中国のお正月と一緒ですね。",
         "english": "Same as Chinese New Year, then."
       },
       {
+        cell_id: "ed094236-14fb-48a0-82f9-9a4d774039fa",
         "speaker": "チャウ",
         "japanese": "はい、暦は同じですが、過ごし方には違いがございます。",
         "english": "Yes, same calendar, but different ways of celebrating."
@@ -7443,42 +7779,52 @@ export const lessons: JapaneseLesson[] = [
     "level": "B2",
     "vocabulary": [
       {
+        cell_id: "7ac25562-7237-42d0-b28d-6618dd63b681",
         "japanese": "誤解 (ごかい)",
         "english": "misunderstanding"
       },
       {
+        cell_id: "0e6c422a-7152-4c9a-abe8-178655635dc8",
         "japanese": "齟齬 (そご)",
         "english": "discrepancy / misalignment (formal)"
       },
       {
+        cell_id: "890c3370-5b31-4942-a118-93407359ce01",
         "japanese": "認識の違い (にんしきのちがい)",
         "english": "difference in perception"
       },
       {
+        cell_id: "5e504db7-d173-4a73-bc97-eb3495d5de28",
         "japanese": "立場 (たちば)",
         "english": "standpoint / position"
       },
       {
+        cell_id: "9b5428e1-5743-4fca-922f-8d343600d4a1",
         "japanese": "歩み寄る (あゆみよる)",
         "english": "to meet halfway / approach each other"
       },
       {
+        cell_id: "0e0aec74-08ca-4b76-aa42-0d84db332c62",
         "japanese": "落ち着いて (おちついて)",
         "english": "calmly (defusing tense moment)"
       },
       {
+        cell_id: "acba73d0-e004-403c-a1c7-2fb9295df528",
         "japanese": "一旦 (いったん)",
         "english": "momentarily / for a moment (used in pause-and-reset)"
       },
       {
+        cell_id: "9b5dfdcd-0238-43d9-a917-792540371eb5",
         "japanese": "腹を割って (はらをわって)",
         "english": "openly / without holding back (idiom-derived)"
       },
       {
+        cell_id: "44f2bb18-eb59-4ad7-a859-a7ae2680b402",
         "japanese": "建設的 (けんせつてき)",
         "english": "constructive"
       },
       {
+        cell_id: "2ebb7895-6a79-49a4-9095-e5090dac4fa5",
         "japanese": "柔軟に (じゅうなんに)",
         "english": "flexibly"
       }
@@ -7571,21 +7917,25 @@ export const lessons: JapaneseLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "47ae7c97-f443-46a9-aea1-acba058b51b9",
         "speaker": "山田部長",
         "japanese": "グエンさん、率直に言って、先週の対応に問題があったと感じています。",
         "english": "Nguyen-san, frankly, I feel there was a problem with last week's handling."
       },
       {
+        cell_id: "74937eb1-0982-4472-a3d7-046912845b52",
         "speaker": "チャウ",
         "japanese": "ご指摘、ありがとうございます。具体的にどの点でございましょうか。",
         "english": "Thank you for the feedback. Specifically which point?"
       },
       {
+        cell_id: "d25f0838-ac4f-481e-8f6e-29456892d86e",
         "speaker": "山田部長",
         "japanese": "顧客への返信が遅すぎました。",
         "english": "The reply to the client was too late."
       },
       {
+        cell_id: "3fdc02a8-c9cb-4614-a62d-d6c75d5d3250",
         "speaker": "チャウ",
         "japanese": "なるほど。一旦整理させていただいて、状況をご説明してもよろしいでしょうか。",
         "english": "I see. May I take a moment to organize and explain the situation?"
@@ -7771,42 +8121,52 @@ export const lessons: JapaneseLesson[] = [
     "level": "B2",
     "vocabulary": [
       {
+        cell_id: "4511b88c-881c-421d-9fa1-259dc10ff13b",
         "japanese": "慣れる (なれる)",
         "english": "to get used to (key word for cultural adaptation)"
       },
       {
+        cell_id: "9ceddecb-b417-47c0-970b-5af34b34de7c",
         "japanese": "親しくなる (したしくなる)",
         "english": "to grow close"
       },
       {
+        cell_id: "a9a1dd06-0914-4bc4-87c0-660e91f87e54",
         "japanese": "気が合う (きがあう)",
         "english": "to click / to be on the same wavelength"
       },
       {
+        cell_id: "67512efe-d901-4edf-86d9-bd5df73dcb7d",
         "japanese": "本音 (ほんね)",
         "english": "true feelings (vs. tatemae — public face)"
       },
       {
+        cell_id: "6b5e6448-61ab-47bd-8e89-076790544c2d",
         "japanese": "建前 (たてまえ)",
         "english": "public-face / surface position"
       },
       {
+        cell_id: "402691c2-4be6-4b8c-8e1d-267f5897497b",
         "japanese": "心を開く (こころをひらく)",
         "english": "to open one's heart"
       },
       {
+        cell_id: "93009c9e-116c-4596-b682-f1cb1620d2ad",
         "japanese": "気を遣わない (きをつかわない)",
         "english": "to not be on guard / be at ease"
       },
       {
+        cell_id: "5cda1b2d-c731-476c-9d71-3081beb9efa0",
         "japanese": "ざっくばらん",
         "english": "frank / unreserved (positive informal trait)"
       },
       {
+        cell_id: "210f0268-9ab5-47d1-a367-42ae2bb85289",
         "japanese": "誘う (さそう)",
         "english": "to invite (key for friendship escalation)"
       },
       {
+        cell_id: "3418ec8e-048c-491f-bbf7-c8d9047ce69c",
         "japanese": "馴染む (なじむ)",
         "english": "to settle in / become familiar"
       }
@@ -7899,21 +8259,25 @@ export const lessons: JapaneseLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "ec0a84f1-ebab-4d1f-8c73-56e6e878ed7b",
         "speaker": "チャウ",
         "japanese": "田中さん、明日の夜、もしお時間あれば、一緒にビールでもどうですか。",
         "english": "Tanaka-san, if you have time tomorrow night, how about a beer together?"
       },
       {
+        cell_id: "f50472b6-f264-4d7b-863f-dfd8b153eb90",
         "speaker": "田中さん",
         "japanese": "ぜひ。実は誘ってもらえると嬉しいなと思っていました。",
         "english": "Sure. Actually I was hoping for an invitation."
       },
       {
+        cell_id: "d635e25f-5796-4c13-acc2-6d00da44ad96",
         "speaker": "チャウ",
         "japanese": "良かったです。じゃあ、19時にロビーで。",
         "english": "Glad. Then 7pm at the lobby."
       },
       {
+        cell_id: "125ed724-2d27-4fc8-be34-156589950338",
         "speaker": "田中さん",
         "japanese": "楽しみにしています。",
         "english": "Looking forward to it."
@@ -8129,42 +8493,52 @@ export const lessons: JapaneseLesson[] = [
     "level": "B2",
     "vocabulary": [
       {
+        cell_id: "fd29c00e-cbb4-4812-858f-504bbf7c1d38",
         "japanese": "入国審査 (にゅうこくしんさ)",
         "english": "immigration inspection"
       },
       {
+        cell_id: "29bb771b-351e-499a-9c30-38a3052c4fbc",
         "japanese": "入国カード (にゅうこくカード)",
         "english": "landing card / disembarkation card"
       },
       {
+        cell_id: "3c4a1fbd-e1e1-4713-826c-5687bd1cd7f0",
         "japanese": "滞在目的 (たいざいもくてき)",
         "english": "purpose of stay"
       },
       {
+        cell_id: "f469aa3e-12ca-4649-81bb-5d19b32627f9",
         "japanese": "滞在期間 (たいざいきかん)",
         "english": "duration of stay"
       },
       {
+        cell_id: "fc21d8c0-67de-4140-b2cc-41098e7e82d8",
         "japanese": "滞在先 (たいざいさき)",
         "english": "place of stay (hotel/host address)"
       },
       {
+        cell_id: "36412816-1f2d-4cb9-a710-f372f5123356",
         "japanese": "観光 (かんこう)",
         "english": "tourism / sightseeing"
       },
       {
+        cell_id: "73476763-95fe-40b9-b032-9ef0186d561f",
         "japanese": "商用 (しょうよう)",
         "english": "business purpose"
       },
       {
+        cell_id: "6ab1e03f-b2d0-4286-a4a5-f0afd0ca032c",
         "japanese": "短期滞在 (たんきたいざい)",
         "english": "short-term stay (90-day visa-free)"
       },
       {
+        cell_id: "963d1b10-6936-4487-9c05-2362e2182625",
         "japanese": "旅券 (りょけん)",
         "english": "passport (formal — used by officials)"
       },
       {
+        cell_id: "845dbc09-41c1-4e5f-9608-bb44321b344b",
         "japanese": "復路便 (ふくろびん)",
         "english": "return flight (proof of departure)"
       }
@@ -8243,21 +8617,25 @@ export const lessons: JapaneseLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "0bf19449-dbd6-47a7-8088-f2d3aa4247b4",
         "speaker": "審査官",
         "japanese": "パスポートと入国カードをお願いします。滞在の目的は?",
         "english": "Passport and landing card, please. Purpose of stay?"
       },
       {
+        cell_id: "7e57e5c7-4989-48fa-9749-c599f4cae697",
         "speaker": "チャウ",
         "japanese": "観光で参りました。二週間の滞在予定でございます。",
         "english": "I came for tourism. Planning a two-week stay."
       },
       {
+        cell_id: "be9bb629-f6e0-41b4-b790-302a77d3e22e",
         "speaker": "審査官",
         "japanese": "宿泊先はどちらですか。",
         "english": "Where are you staying?"
       },
       {
+        cell_id: "c4d7ffff-01a8-41e4-9e32-55096af15a23",
         "speaker": "チャウ",
         "japanese": "新宿の京王プラザホテルでございます。",
         "english": "Keio Plaza Hotel in Shinjuku."
@@ -8448,42 +8826,52 @@ export const lessons: JapaneseLesson[] = [
     "level": "B2",
     "vocabulary": [
       {
+        cell_id: "fe2e103a-91f1-4315-970d-6e77fe80e997",
         "japanese": "紛失 (ふんしつ)",
         "english": "loss (of object)"
       },
       {
+        cell_id: "d76d3220-f348-4967-98b0-bcef8d1712b2",
         "japanese": "紛失届 (ふんしつとどけ)",
         "english": "lost-item report (filed at police)"
       },
       {
+        cell_id: "9ea36f28-4ee5-47f9-bdd0-9e6df00c0184",
         "japanese": "再発行 (さいはっこう)",
         "english": "re-issuance"
       },
       {
+        cell_id: "ba09e140-3d13-48da-abe5-30fe0815c108",
         "japanese": "大使館 (たいしかん)",
         "english": "embassy"
       },
       {
+        cell_id: "9751af34-f88f-4707-8b33-79df1533d5b4",
         "japanese": "領事部 (りょうじぶ)",
         "english": "consular section"
       },
       {
+        cell_id: "5005fb66-3aa7-4831-9b3b-fb6b20f523c3",
         "japanese": "申請 (しんせい)",
         "english": "application"
       },
       {
+        cell_id: "e7c57dd4-abad-43a3-af25-bd30c67835c3",
         "japanese": "緊急 (きんきゅう)",
         "english": "emergency"
       },
       {
+        cell_id: "0489b6eb-d665-4b2e-bff9-9d20fb9ad445",
         "japanese": "本人確認 (ほんにんかくにん)",
         "english": "identity verification"
       },
       {
+        cell_id: "5fd47595-a7be-40ed-b2ef-1a1b64e2eb06",
         "japanese": "渡航書 (とこうしょ)",
         "english": "emergency travel document (interim)"
       },
       {
+        cell_id: "0b754d8a-caaf-4671-a12f-925e91ab4a3e",
         "japanese": "手数料 (てすうりょう)",
         "english": "processing fee"
       }
@@ -8570,21 +8958,25 @@ export const lessons: JapaneseLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "03eee810-82be-476c-85a9-81d9b2583c02",
         "speaker": "領事館スタッフ",
         "japanese": "ベトナム大使館領事部です。どのようなご用件でしょうか。",
         "english": "Vietnamese Embassy Consular Section. How may I help?"
       },
       {
+        cell_id: "d81ab489-8681-4298-83eb-f0547993b7fe",
         "speaker": "チャウ",
         "japanese": "パスポートを紛失してしまい、再発行をお願いしたく参りました。",
         "english": "I lost my passport and have come to request re-issuance."
       },
       {
+        cell_id: "ae8a0dff-3f13-4539-9b41-9bc39d61ce44",
         "speaker": "領事館スタッフ",
         "japanese": "警察での紛失届はお済みですか。",
         "english": "Have you completed the lost-item report at the police?"
       },
       {
+        cell_id: "45749f12-1594-48b9-97d7-c3e89944e1e8",
         "speaker": "チャウ",
         "japanese": "はい、昨日、新宿警察署で済ませてまいりました。",
         "english": "Yes, I completed it yesterday at Shinjuku Police Station."
@@ -8775,42 +9167,52 @@ export const lessons: JapaneseLesson[] = [
     "level": "B2",
     "vocabulary": [
       {
+        cell_id: "e12789a0-ba49-403e-9585-60f9a1570158",
         "japanese": "切符 (きっぷ)",
         "english": "ticket"
       },
       {
+        cell_id: "f906980e-871b-44a0-98ce-943eb4c51c5f",
         "japanese": "変更 (へんこう)",
         "english": "change / modification"
       },
       {
+        cell_id: "a8132613-8a2c-4604-ac81-31e38a49c197",
         "japanese": "払い戻し (はらいもどし)",
         "english": "refund"
       },
       {
+        cell_id: "f9e0ad60-5e79-49dc-ae96-2b8682d94661",
         "japanese": "手数料 (てすうりょう)",
         "english": "processing fee"
       },
       {
+        cell_id: "b631c979-6edd-46c7-8c6e-8a880a884fa0",
         "japanese": "指定席 (していせき)",
         "english": "reserved seat"
       },
       {
+        cell_id: "f6743716-55ad-4e2b-9107-c779f6d048f4",
         "japanese": "自由席 (じゆうせき)",
         "english": "non-reserved seat"
       },
       {
+        cell_id: "c8014aa9-6908-404a-9a0b-16b05df80192",
         "japanese": "新幹線 (しんかんせん)",
         "english": "bullet train"
       },
       {
+        cell_id: "032c3fd1-de0f-4331-9980-b11ca314774e",
         "japanese": "みどりの窓口 (みどりのまどぐち)",
         "english": "JR ticket office (Green Window)"
       },
       {
+        cell_id: "45d70c2d-410c-4425-842e-f580e1fa2f78",
         "japanese": "発車 (はっしゃ)",
         "english": "departure (of train)"
       },
       {
+        cell_id: "41971836-7bbd-45a5-a18a-ec1bbefde92f",
         "japanese": "ご利用 (ごりよう)",
         "english": "your use (sonkeigo for using a service)"
       }
@@ -8895,21 +9297,25 @@ export const lessons: JapaneseLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "abe8756c-c087-4694-838c-c4575e297ddf",
         "speaker": "チャウ",
         "japanese": "すみません、新幹線の切符を変更したいのですが。",
         "english": "Excuse me, I'd like to change a Shinkansen ticket."
       },
       {
+        cell_id: "21a118c4-4598-4d72-8aef-b5aad198d4d1",
         "speaker": "駅員",
         "japanese": "切符を拝見します。元の予約はいつのですか。",
         "english": "Let me see the ticket. When was the original booking?"
       },
       {
+        cell_id: "44d484bf-fe70-4fdc-8dac-b7e131647980",
         "speaker": "チャウ",
         "japanese": "明日の朝十時、東京発、京都行きでございます。",
         "english": "Tomorrow morning 10am, from Tokyo to Kyoto."
       },
       {
+        cell_id: "1ad42322-4c38-4f35-acfb-4d314de8d179",
         "speaker": "駅員",
         "japanese": "明後日に変更ですね。少々お待ちください。",
         "english": "Change to the day after, then. One moment please."
@@ -9100,42 +9506,52 @@ export const lessons: JapaneseLesson[] = [
     "level": "B2",
     "vocabulary": [
       {
+        cell_id: "4251152b-7aec-46ff-8461-a9a97c4c96a7",
         "japanese": "病院 (びょういん)",
         "english": "hospital"
       },
       {
+        cell_id: "41c26644-aa50-4a86-89c5-439fcd997ed1",
         "japanese": "救急外来 (きゅうきゅうがいらい)",
         "english": "emergency outpatient ward"
       },
       {
+        cell_id: "94a3174f-279e-45bd-9e29-a144f68e166c",
         "japanese": "診察 (しんさつ)",
         "english": "medical examination"
       },
       {
+        cell_id: "f460b6aa-4705-4ed6-9090-e4cfee517a2d",
         "japanese": "症状 (しょうじょう)",
         "english": "symptoms"
       },
       {
+        cell_id: "21feac38-0679-4f39-946b-cc91d87c9a67",
         "japanese": "保険証 (ほけんしょう)",
         "english": "insurance card"
       },
       {
+        cell_id: "6823e6ef-4b1f-4ef2-bac6-79f5726588ad",
         "japanese": "処方箋 (しょほうせん)",
         "english": "prescription"
       },
       {
+        cell_id: "94e23155-8e48-4db8-aba1-7f0aaf114d17",
         "japanese": "薬 (くすり)",
         "english": "medicine"
       },
       {
+        cell_id: "1e24fa7b-9dab-46ea-a71f-935d30faa3c1",
         "japanese": "アレルギー",
         "english": "allergy"
       },
       {
+        cell_id: "ca6a3210-93c3-4fcb-801c-a40092bf6057",
         "japanese": "発熱 (はつねつ)",
         "english": "fever"
       },
       {
+        cell_id: "c14d8258-480a-4b5f-a2ff-0c57292b12da",
         "japanese": "問診票 (もんしんひょう)",
         "english": "medical questionnaire (filled before exam)"
       }
@@ -9220,21 +9636,25 @@ export const lessons: JapaneseLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "9049a0a3-751a-486c-bcb9-f7188a01ddc1",
         "speaker": "受付",
         "japanese": "保険証をお願いします。今日はどうされましたか。",
         "english": "Insurance card, please. What brings you here today?"
       },
       {
+        cell_id: "f2609e20-3a4a-4362-b59d-4db66846a0e5",
         "speaker": "チャウ",
         "japanese": "昨日から発熱と頭痛がございまして、診察をお願いしたく参りました。",
         "english": "Since yesterday I have fever and headache, so I came for examination."
       },
       {
+        cell_id: "8d751137-fecd-4ea4-b641-35b88ceb57db",
         "speaker": "受付",
         "japanese": "問診票にご記入ください。受付番号は二十三番です。",
         "english": "Please fill out the questionnaire. Your number is 23."
       },
       {
+        cell_id: "d69247bf-c8a2-4711-83fb-603243d8f28b",
         "speaker": "チャウ",
         "japanese": "承知いたしました。ありがとうございます。",
         "english": "Understood. Thank you."
@@ -9440,42 +9860,52 @@ export const lessons: JapaneseLesson[] = [
     "level": "B2",
     "vocabulary": [
       {
+        cell_id: "c0755de2-2264-4bd4-bfa3-449ffcaeb2c0",
         "japanese": "ホテル",
         "english": "hotel (Western style)"
       },
       {
+        cell_id: "c06db6eb-1b58-4762-bc82-664a45bf12ea",
         "japanese": "旅館 (りょかん)",
         "english": "ryokan (traditional Japanese inn)"
       },
       {
+        cell_id: "ed6bca0d-c8ee-4640-b3f0-5e81c05f867c",
         "japanese": "フロント",
         "english": "front desk"
       },
       {
+        cell_id: "2ae32492-e87a-42bb-b938-3f34f29fa6f1",
         "japanese": "客室 (きゃくしつ)",
         "english": "guest room"
       },
       {
+        cell_id: "165b2964-6fa8-4656-9c9a-cd343e628150",
         "japanese": "故障 (こしょう)",
         "english": "malfunction / broken"
       },
       {
+        cell_id: "0a35b950-c00e-49c9-82ba-e02bd9851cf1",
         "japanese": "不具合 (ふぐあい)",
         "english": "defect / problem (general)"
       },
       {
+        cell_id: "39c86d22-98ba-4f57-87fb-aa558805f5d1",
         "japanese": "お部屋の変更 (おへやのへんこう)",
         "english": "room change"
       },
       {
+        cell_id: "1606b604-68e3-4aa0-a0df-78146e643857",
         "japanese": "騒音 (そうおん)",
         "english": "noise"
       },
       {
+        cell_id: "0cc5d3d2-08b5-4a4f-b559-172dad548587",
         "japanese": "エアコン",
         "english": "air conditioner"
       },
       {
+        cell_id: "a935bf7e-ce09-48cf-ab6e-1b8d029e3858",
         "japanese": "浴室 (よくしつ)",
         "english": "bathroom"
       }
@@ -9556,21 +9986,25 @@ export const lessons: JapaneseLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "7a52a4d9-2f9e-4b6c-870f-1131a46bbf7b",
         "speaker": "チャウ",
         "japanese": "失礼いたします。三〇五号室のグエンと申します。お部屋について、ご相談がございます。",
         "english": "Excuse me. I'm Nguyen from room 305. I have a request about my room."
       },
       {
+        cell_id: "afd579fd-586f-428f-a355-6102e6b15954",
         "speaker": "フロント",
         "japanese": "はい、グエン様、どうされましたか。",
         "english": "Yes, Ms. Nguyen, what's the issue?"
       },
       {
+        cell_id: "64dbcb14-182a-4650-b170-56f72cd4aa0c",
         "speaker": "チャウ",
         "japanese": "エアコンが故障しているようでして、室温が下がりません。",
         "english": "The air conditioner seems broken; the temperature isn't dropping."
       },
       {
+        cell_id: "4c561387-4f25-4f50-99ca-d30dd1cd7600",
         "speaker": "フロント",
         "japanese": "それは申し訳ございません。すぐに技術スタッフをお部屋に派遣いたします。",
         "english": "I'm so sorry. I'll send technical staff to your room immediately."
@@ -9756,42 +10190,52 @@ export const lessons: JapaneseLesson[] = [
     "level": "B2",
     "vocabulary": [
       {
+        cell_id: "d4eb87ba-a62f-4d06-b267-424afaf94c0c",
         "japanese": "手荷物 (てにもつ)",
         "english": "carry-on / hand luggage"
       },
       {
+        cell_id: "6ed67c5c-9a59-49ab-85c9-a13bf59bf909",
         "japanese": "預け荷物 (あずけにもつ)",
         "english": "checked luggage"
       },
       {
+        cell_id: "66edff88-55ad-4b2d-aa96-3364f0cfbda2",
         "japanese": "荷物紛失 (にもつふんしつ)",
         "english": "luggage loss"
       },
       {
+        cell_id: "16730d24-cb80-4226-a9f8-24a551b43c68",
         "japanese": "ロスト・バゲージ・カウンター",
         "english": "lost baggage counter"
       },
       {
+        cell_id: "baa4456d-0b52-4127-aa56-f1ef5381addd",
         "japanese": "便名 (びんめい)",
         "english": "flight number"
       },
       {
+        cell_id: "f2c75639-d115-40fe-babd-bf0e417bd307",
         "japanese": "出発地 (しゅっぱつち)",
         "english": "departure point"
       },
       {
+        cell_id: "ca85fe5e-9848-4f9f-8e40-9e504bcc1bd7",
         "japanese": "経由地 (けいゆち)",
         "english": "transit point"
       },
       {
+        cell_id: "3c20efc7-844c-4ce7-8667-001735c1b79d",
         "japanese": "受取証 (うけとりしょう)",
         "english": "receipt (luggage tag stub)"
       },
       {
+        cell_id: "12324db3-c8d6-4ced-b25e-5a20ae515ecb",
         "japanese": "賠償 (ばいしょう)",
         "english": "compensation"
       },
       {
+        cell_id: "69806a65-c53f-4731-a84c-3300262c1b71",
         "japanese": "配送 (はいそう)",
         "english": "delivery (sending lost luggage to your address)"
       }
@@ -9876,21 +10320,25 @@ export const lessons: JapaneseLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "6514f3c9-a0d8-43f7-a3ae-d1329e9c7102",
         "speaker": "チャウ",
         "japanese": "失礼いたします。預け荷物が見つからず、こちらにお伺いしました。",
         "english": "Excuse me. My checked luggage isn't found, so I came here."
       },
       {
+        cell_id: "7a354dcb-cae3-4343-9948-8dc490e2e117",
         "speaker": "ANAスタッフ",
         "japanese": "それは大変申し訳ございません。便名と受取証をお見せいただけますか。",
         "english": "I'm so sorry. May I see your flight number and luggage stub?"
       },
       {
+        cell_id: "0ae86a3f-b287-4b23-81c5-19581938471d",
         "speaker": "チャウ",
         "japanese": "ANA二〇八便、ハノイ発成田着でございます。受取証はこちらです。",
         "english": "ANA 208, Hanoi to Narita. Stub is here."
       },
       {
+        cell_id: "87984512-8091-49ef-a472-1fc1fede0a04",
         "speaker": "ANAスタッフ",
         "japanese": "確認いたします。少々お待ちください。",
         "english": "Let me check. One moment please."
@@ -10081,42 +10529,52 @@ export const lessons: JapaneseLesson[] = [
     "level": "B2",
     "vocabulary": [
       {
+        cell_id: "c07dfb75-0859-474b-bc72-8ce814e8d8ae",
         "japanese": "交番 (こうばん)",
         "english": "neighborhood police box"
       },
       {
+        cell_id: "c565741c-e10f-4fbd-ae9c-fbf6c8fe96ee",
         "japanese": "警察署 (けいさつしょ)",
         "english": "police station (full)"
       },
       {
+        cell_id: "654cdb08-c489-4ec0-a6ac-f9e99095f91a",
         "japanese": "盗難 (とうなん)",
         "english": "theft"
       },
       {
+        cell_id: "74dd0981-ac96-4dca-96f8-63247df98566",
         "japanese": "盗難届 (とうなんとどけ)",
         "english": "theft report"
       },
       {
+        cell_id: "db025102-985e-4e20-b206-5ddf74ea6a0b",
         "japanese": "被害届 (ひがいとどけ)",
         "english": "victim report (formal)"
       },
       {
+        cell_id: "a72a213c-6685-41c9-a18c-59522fa053ae",
         "japanese": "事情聴取 (じじょうちょうしゅ)",
         "english": "questioning / statement-taking"
       },
       {
+        cell_id: "f609b978-b832-4057-98ad-303e6e9ee85d",
         "japanese": "現金 (げんきん)",
         "english": "cash"
       },
       {
+        cell_id: "c02b007b-528c-45dd-a74a-a0e635709529",
         "japanese": "クレジットカード",
         "english": "credit card"
       },
       {
+        cell_id: "9cc60210-7355-43f7-bd25-438321296c2d",
         "japanese": "受理番号 (じゅりばんごう)",
         "english": "case receipt number"
       },
       {
+        cell_id: "7b3280fb-4458-4bdd-ab6a-c44004a7a95e",
         "japanese": "防犯カメラ (ぼうはんカメラ)",
         "english": "security camera"
       }
@@ -10203,21 +10661,25 @@ export const lessons: JapaneseLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "9b6b8b60-f86b-4bbb-8ca2-93359457cab2",
         "speaker": "警察官",
         "japanese": "こんにちは、何かありましたか。",
         "english": "Hello, is something wrong?"
       },
       {
+        cell_id: "23bfcedd-db3a-40bd-a337-0a1926ab7d22",
         "speaker": "チャウ",
         "japanese": "失礼いたします。財布を盗まれてしまいまして、盗難届を出したく参りました。",
         "english": "Excuse me. My wallet was stolen, so I came to file a theft report."
       },
       {
+        cell_id: "7336d479-1841-48b5-b2f5-f2c47170385c",
         "speaker": "警察官",
         "japanese": "それは大変でしたね。中へどうぞ。落ち着いてお話を聞かせてください。",
         "english": "That's terrible. Please come in. Calmly tell me what happened."
       },
       {
+        cell_id: "725d25d6-6fea-41f1-a0cb-905cf78c7e8f",
         "speaker": "チャウ",
         "japanese": "ありがとうございます。",
         "english": "Thank you."
@@ -10413,42 +10875,52 @@ export const lessons: JapaneseLesson[] = [
     "level": "B2",
     "vocabulary": [
       {
+        cell_id: "62f285cc-dbce-4f5d-955a-3f6aed280c70",
         "japanese": "道 (みち)",
         "english": "road / way / directions"
       },
       {
+        cell_id: "3e4bb93e-6f9a-41c0-be6f-3fb9a4409fd9",
         "japanese": "方向 (ほうこう)",
         "english": "direction"
       },
       {
+        cell_id: "ac937001-c008-46ec-9d31-ff71a529531a",
         "japanese": "目的地 (もくてきち)",
         "english": "destination"
       },
       {
+        cell_id: "e3733a85-fc5b-465c-a373-a5b8ed08af1a",
         "japanese": "右 (みぎ)",
         "english": "right"
       },
       {
+        cell_id: "855099e8-b2dd-4a3b-ac42-2f2a5432cb58",
         "japanese": "左 (ひだり)",
         "english": "left"
       },
       {
+        cell_id: "b4ee6a48-61b8-42ac-b42c-29edb2ceae55",
         "japanese": "まっすぐ",
         "english": "straight ahead"
       },
       {
+        cell_id: "b013ff08-afc8-49a8-9613-70c911db0513",
         "japanese": "信号 (しんごう)",
         "english": "traffic light"
       },
       {
+        cell_id: "c6493dee-7d95-4f60-817b-b787a25abbdb",
         "japanese": "交差点 (こうさてん)",
         "english": "intersection"
       },
       {
+        cell_id: "69bfd1b0-96ea-4932-a3c1-43cd501de77a",
         "japanese": "駅 (えき)",
         "english": "station"
       },
       {
+        cell_id: "ccbfaa10-970f-4082-a3ce-19701537858c",
         "japanese": "出口 (でぐち)",
         "english": "exit"
       }
@@ -10529,21 +11001,25 @@ export const lessons: JapaneseLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "f9bb4bf2-1f02-453a-8785-2384959a755d",
         "speaker": "チャウ",
         "japanese": "(formal — older stranger) すみません、新宿駅の東口はどちらでしょうか。",
         "english": "Excuse me, which way is Shinjuku Station's east exit?"
       },
       {
+        cell_id: "37264b76-167b-414e-92ac-97274329ca7f",
         "speaker": "高齢者",
         "japanese": "東口ですね。この道をまっすぐ二百メートル、信号を右に曲がってください。",
         "english": "East exit. This street straight 200m, turn right at the traffic light."
       },
       {
+        cell_id: "48bdc35a-4dd9-45ba-8579-da1b75ae0234",
         "speaker": "チャウ",
         "japanese": "ありがとうございます。歩いてどのくらいでしょうか。",
         "english": "Thank you. About how long walking?"
       },
       {
+        cell_id: "2f5d4e40-b77a-4192-9f4e-c72a4a2784dd",
         "speaker": "高齢者",
         "japanese": "五分程度ですよ。",
         "english": "About 5 minutes."
@@ -10729,42 +11205,52 @@ export const lessons: JapaneseLesson[] = [
     "level": "B2",
     "vocabulary": [
       {
+        cell_id: "205ba29b-45e0-47ea-8bc7-d9f6ed1175ee",
         "japanese": "注文 (ちゅうもん)",
         "english": "order"
       },
       {
+        cell_id: "575c3edb-1b14-4ebc-a1de-b70fe46911b2",
         "japanese": "違う (ちがう)",
         "english": "to differ / be wrong"
       },
       {
+        cell_id: "e7138093-fd85-4e41-97ad-bbf0bb518f27",
         "japanese": "確認 (かくにん)",
         "english": "confirmation / verification"
       },
       {
+        cell_id: "95ccb25d-726c-41a3-ae69-f059cc122951",
         "japanese": "お会計 (おかいけい)",
         "english": "bill / check"
       },
       {
+        cell_id: "24eab6af-4f82-4a04-b54e-7923b7c25296",
         "japanese": "間違い (まちがい)",
         "english": "mistake / error"
       },
       {
+        cell_id: "e12688b2-fc73-4972-b3f0-1001af88b318",
         "japanese": "領収書 (りょうしゅうしょ)",
         "english": "receipt (formal — for tax/expense)"
       },
       {
+        cell_id: "2df67311-281a-47d0-91b1-a51fa302cef9",
         "japanese": "メニュー",
         "english": "menu"
       },
       {
+        cell_id: "f1e51610-890e-4733-969f-e26fcebbc0d5",
         "japanese": "店員 (てんいん)",
         "english": "store/restaurant staff"
       },
       {
+        cell_id: "048fa554-3771-4102-8062-ef2b9a003755",
         "japanese": "サービス料 (サービスりょう)",
         "english": "service charge"
       },
       {
+        cell_id: "c593706c-df10-4e6b-912e-6633150b5ddd",
         "japanese": "再確認 (さいかくにん)",
         "english": "re-verification"
       }
@@ -10847,21 +11333,25 @@ export const lessons: JapaneseLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "9bc29334-9285-4e60-be4b-98caf37026f1",
         "speaker": "チャウ",
         "japanese": "すみません、ちょっとお伺いしたいのですが、こちらの料理、注文と違うように見えるのですが。",
         "english": "Excuse me, I'd like to ask — this dish seems different from what I ordered."
       },
       {
+        cell_id: "ca731ba6-2b0b-42f6-b772-c4854469a3d6",
         "speaker": "店員",
         "japanese": "申し訳ございません、ご注文を確認させていただきます。",
         "english": "I apologize, let me verify your order."
       },
       {
+        cell_id: "11ca0336-7f59-409b-90d6-31f1436c8a98",
         "speaker": "チャウ",
         "japanese": "私はチキンカツを注文したと思うのですが、こちらは豚カツのようでして。",
         "english": "I think I ordered chicken katsu, but this looks like pork katsu."
       },
       {
+        cell_id: "bdcf25fa-a629-47c3-b100-c88abfc8039c",
         "speaker": "店員",
         "japanese": "大変申し訳ございません、すぐに作り直してまいります。",
         "english": "I'm so sorry, I'll remake it immediately."
@@ -11057,42 +11547,52 @@ export const lessons: JapaneseLesson[] = [
     "level": "B2",
     "vocabulary": [
       {
+        cell_id: "6b597b7a-1474-4395-8f44-ff0a97e56813",
         "japanese": "タクシー",
         "english": "taxi"
       },
       {
+        cell_id: "cddfd1d9-6917-4b4b-b63a-ead3d4097e0c",
         "japanese": "運転手 (うんてんしゅ)",
         "english": "driver"
       },
       {
+        cell_id: "9eeac951-837a-4780-94e6-5c399687f818",
         "japanese": "目的地 (もくてきち)",
         "english": "destination"
       },
       {
+        cell_id: "4f915e3f-3ce4-48a7-8982-429d0f2dbf63",
         "japanese": "経路 (けいろ)",
         "english": "route"
       },
       {
+        cell_id: "537470db-bbca-40c7-aa7d-4ae6de22f255",
         "japanese": "回り道 (まわりみち)",
         "english": "detour / longer route"
       },
       {
+        cell_id: "6fb0068f-f35d-4dc0-a362-4ffaa47ce2e7",
         "japanese": "メーター",
         "english": "meter (taxi fare meter)"
       },
       {
+        cell_id: "c34af316-7182-494b-9412-0ac3e3a98e93",
         "japanese": "料金 (りょうきん)",
         "english": "fare"
       },
       {
+        cell_id: "70c9f925-9b5b-4bc8-849f-ada610ad0fc3",
         "japanese": "領収書 (りょうしゅうしょ)",
         "english": "receipt"
       },
       {
+        cell_id: "9ce89f5a-3319-4e9d-9a80-17740129d013",
         "japanese": "苦情 (くじょう)",
         "english": "complaint (formal)"
       },
       {
+        cell_id: "9fbc42c0-7d61-4e70-a792-a9ed04436d28",
         "japanese": "タクシーセンター",
         "english": "taxi industry oversight center"
       }
@@ -11171,21 +11671,25 @@ export const lessons: JapaneseLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "fe722fb1-c1c1-4881-b9fa-0daf530eac59",
         "speaker": "チャウ",
         "japanese": "すみません、運転手さん、この経路は通常より少し遠回りのように思うのですが。",
         "english": "Excuse me, driver, this route seems a bit longer than usual."
       },
       {
+        cell_id: "3c4e4b6c-7896-46bc-9069-c753e3ecc4aa",
         "speaker": "運転手",
         "japanese": "渋滞を避けるため、こちらの経路を選びました。",
         "english": "To avoid traffic, I chose this route."
       },
       {
+        cell_id: "97bffee0-9750-4f51-a855-434c560c1858",
         "speaker": "チャウ",
         "japanese": "なるほど。料金は通常と同じくらいでしょうか。",
         "english": "I see. Is the fare similar to normal?"
       },
       {
+        cell_id: "e948898f-a47a-4335-80c5-4e6edbe5d3cf",
         "speaker": "運転手",
         "japanese": "メーター通りでございます。",
         "english": "As per the meter."
@@ -11366,42 +11870,52 @@ export const lessons: JapaneseLesson[] = [
     "level": "B2",
     "vocabulary": [
       {
+        cell_id: "bf719f1c-9e3e-4ad2-b3d3-e84524d694b1",
         "japanese": "義両親 (ぎりょうしん)",
         "english": "parents-in-law"
       },
       {
+        cell_id: "b38adbea-fa39-4465-b86b-6f07e6b5d436",
         "japanese": "義理 (ぎり)",
         "english": "duty / obligation (in-law / social)"
       },
       {
+        cell_id: "6fc80f74-95d1-409c-b579-3a733ff875a8",
         "japanese": "価値観 (かちかん)",
         "english": "values / outlook"
       },
       {
+        cell_id: "fc21d9bf-f127-476e-91ee-eb7f5161ad0a",
         "japanese": "文化の違い (ぶんかのちがい)",
         "english": "cultural difference"
       },
       {
+        cell_id: "8297b410-caac-4913-a272-520f1021895b",
         "japanese": "期待 (きたい)",
         "english": "expectation"
       },
       {
+        cell_id: "bb472164-94cb-4a0a-9de3-0c419d3ead19",
         "japanese": "思いやり (おもいやり)",
         "english": "consideration / empathy"
       },
       {
+        cell_id: "88891ba7-7343-49a7-99dd-27e51c557951",
         "japanese": "距離感 (きょりかん)",
         "english": "sense of closeness/distance"
       },
       {
+        cell_id: "0bd5ee62-2eaf-41d0-94cb-ae816069d361",
         "japanese": "お盆 (おぼん)",
         "english": "Obon — summer ancestor festival"
       },
       {
+        cell_id: "ff67ab2e-cc9d-4099-a07c-a58a50604da8",
         "japanese": "帰省 (きせい)",
         "english": "returning to one's family home"
       },
       {
+        cell_id: "06c39028-f1fe-4a59-ab3b-ae83a2ab68d4",
         "japanese": "歩み寄る (あゆみよる)",
         "english": "to meet halfway / mutually adjust"
       }
@@ -11490,21 +12004,25 @@ export const lessons: JapaneseLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "1703b9fd-5cf6-44fc-a905-e755d5c0e3b2",
         "speaker": "チャウ",
         "japanese": "お義母さま、少しお話しさせていただいてもよろしいでしょうか。",
         "english": "Mother-in-law, may I take a little of your time to talk?"
       },
       {
+        cell_id: "af4b90c9-d5de-4d70-b3e0-25e715a885fa",
         "speaker": "義母",
         "japanese": "ええ、何かしら。",
         "english": "Yes, what is it?"
       },
       {
+        cell_id: "838f2dda-c3f4-45ab-8da5-d6a6b19bb046",
         "speaker": "チャウ",
         "japanese": "今年のお盆ですが、ベトナムの家族の事情がございまして、帰省が短めになりそうでして。ご理解いただけますと幸いです。",
         "english": "About Obon this year — there are circumstances on my Vietnamese family's side; my stay may be shorter. I'd appreciate your understanding."
       },
       {
+        cell_id: "78fb5e15-395c-4150-876c-297471f3c9c9",
         "speaker": "義母",
         "japanese": "そうでしたか。事情があるのね。少し残念だけれど、大丈夫よ。",
         "english": "I see. You have your reasons. A little disappointing, but it's all right."
@@ -11700,42 +12218,52 @@ export const lessons: JapaneseLesson[] = [
     "level": "B2",
     "vocabulary": [
       {
+        cell_id: "0fe05c9d-726d-4e54-95c8-e70684fadcf8",
         "japanese": "意見 (いけん)",
         "english": "opinion"
       },
       {
+        cell_id: "9015499e-82ad-4b91-9b97-41a788610d42",
         "japanese": "立場 (たちば)",
         "english": "position / standpoint"
       },
       {
+        cell_id: "9d4d49df-7247-4f5c-af2c-ce486b6ca305",
         "japanese": "考え方 (かんがえかた)",
         "english": "way of thinking"
       },
       {
+        cell_id: "771893e4-2aed-48b8-a046-ac6625fb351d",
         "japanese": "賛成 (さんせい)",
         "english": "agreement / approval"
       },
       {
+        cell_id: "cf2ff12a-c727-4c75-888c-ee60cda90bee",
         "japanese": "反対 (はんたい)",
         "english": "opposition / disagreement"
       },
       {
+        cell_id: "79c42027-b316-41b8-8190-98c6198b877b",
         "japanese": "尊重する (そんちょうする)",
         "english": "to respect"
       },
       {
+        cell_id: "5f7e1b83-5e4f-4973-80bb-5e9b683717e3",
         "japanese": "議論 (ぎろん)",
         "english": "debate / discussion"
       },
       {
+        cell_id: "796c219a-1ab7-4557-886c-2aa6c55bb1e4",
         "japanese": "視点 (してん)",
         "english": "viewpoint / perspective"
       },
       {
+        cell_id: "29dfefec-4740-4aad-b035-6d6cac4f603d",
         "japanese": "前提 (ぜんてい)",
         "english": "premise / assumption"
       },
       {
+        cell_id: "591c8f42-fbc2-43fd-9463-22a8e8809ba5",
         "japanese": "気を悪くする (きをわるくする)",
         "english": "to take offense / feel bad"
       }
@@ -11822,21 +12350,25 @@ export const lessons: JapaneseLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "42250aa2-0d13-44b1-a09a-077fafd6a321",
         "speaker": "友人",
         "japanese": "あの政策、けっこういいと思うんだよね。チャウさんはどう思う?",
         "english": "I think that policy is pretty good. What do you think, Chau?"
       },
       {
+        cell_id: "8188ca93-69e6-4ee2-9c2b-7ecd6ae8b79b",
         "speaker": "チャウ",
         "japanese": "正直に申し上げますと、私は少し違う見方をしております。",
         "english": "Honestly, I see it a little differently."
       },
       {
+        cell_id: "2660749b-9705-4814-b097-47c15c2bc022",
         "speaker": "友人",
         "japanese": "へえ、どんなところが気になるの?",
         "english": "Oh, what bothers you about it?"
       },
       {
+        cell_id: "72a60402-c48d-45b9-a6b4-5a738cfc8ebf",
         "speaker": "チャウ",
         "japanese": "立場の違いはあるかもしれませんが、まずお考えを聞かせていただいてもよろしいですか。",
         "english": "Our positions may differ — first, may I hear your thinking?"
@@ -12032,42 +12564,52 @@ export const lessons: JapaneseLesson[] = [
     "level": "B2",
     "vocabulary": [
       {
+        cell_id: "1ccd0933-b6ab-4056-b461-6de9a216d836",
         "japanese": "ご愁傷さま (ごしゅうしょうさま)",
         "english": "my condolences (formal, funeral context)"
       },
       {
+        cell_id: "504a57eb-23aa-407a-90ff-a07879ae4cc1",
         "japanese": "お悔やみ (おくやみ)",
         "english": "condolences"
       },
       {
+        cell_id: "a6d973a5-5f49-4467-aa65-d0d7790ecd26",
         "japanese": "悲しみ (かなしみ)",
         "english": "sadness / grief"
       },
       {
+        cell_id: "41d23899-15be-4fe1-a158-e850b2a9273c",
         "japanese": "気持ち (きもち)",
         "english": "feeling / mood"
       },
       {
+        cell_id: "21a9224c-a86f-4e25-9448-f7a0bfe2c614",
         "japanese": "寄り添う (よりそう)",
         "english": "to stay close beside / accompany"
       },
       {
+        cell_id: "79969d68-f752-44a8-a79f-61792b90e4c2",
         "japanese": "無理しないで (むりしないで)",
         "english": "don't push yourself"
       },
       {
+        cell_id: "5a84e4d8-9048-44fc-86f3-61c4cf08b24c",
         "japanese": "支える (ささえる)",
         "english": "to support"
       },
       {
+        cell_id: "fd27f2ae-7cfb-48c7-83ab-84c2420044fb",
         "japanese": "言葉が見つからない (ことばがみつからない)",
         "english": "I can't find the words"
       },
       {
+        cell_id: "74f25bef-43b2-4962-ad03-a220c1f3e752",
         "japanese": "そっと",
         "english": "softly / quietly"
       },
       {
+        cell_id: "955571cd-ad66-4162-a674-2cc5adc6e4ca",
         "japanese": "回復 (かいふく)",
         "english": "recovery"
       }
@@ -12154,21 +12696,25 @@ export const lessons: JapaneseLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "23ad77dc-9372-4982-945e-75cebcb6d0a5",
         "speaker": "チャウ",
         "japanese": "この度は、本当に...言葉になりません。心よりお悔やみ申し上げます。",
         "english": "About this... I can't put it into words. My deepest condolences."
       },
       {
+        cell_id: "0e7aebdb-327d-4e4d-8e5c-05d79aebeea7",
         "speaker": "友人",
         "japanese": "ありがとう。来てくれて、本当に助かる。",
         "english": "Thank you. You came — it really helps."
       },
       {
+        cell_id: "d81cd0d1-7b21-4bc6-926e-3ac81bbb7abe",
         "speaker": "チャウ",
         "japanese": "話したいときも、話さなくていいときも、私はここにいます。",
         "english": "Whether you want to talk or not, I'll be here."
       },
       {
+        cell_id: "2a4fa087-e98a-494a-b813-424341335c7a",
         "speaker": "友人",
         "japanese": "今は、ただ誰かそばにいてくれるだけで、ありがたい。",
         "english": "Right now, just having someone close — that's a help."
@@ -12369,42 +12915,52 @@ export const lessons: JapaneseLesson[] = [
     "level": "B2",
     "vocabulary": [
       {
+        cell_id: "fbb25852-93d4-4444-998a-ec9651346d16",
         "japanese": "お詫び (おわび)",
         "english": "apology (formal noun)"
       },
       {
+        cell_id: "e5913629-7afc-4548-a40b-58fdca543fa2",
         "japanese": "申し訳ない (もうしわけない)",
         "english": "inexcusable / I'm so sorry"
       },
       {
+        cell_id: "70f2fb1e-0fa9-4cb1-bc13-2f2e9aa292f2",
         "japanese": "反省 (はんせい)",
         "english": "self-reflection / accountability"
       },
       {
+        cell_id: "1663e8fd-eae7-40b7-b097-f2387e04afdb",
         "japanese": "責任 (せきにん)",
         "english": "responsibility"
       },
       {
+        cell_id: "69806ce6-b158-4078-bdda-c44e4aa03523",
         "japanese": "言い訳 (いいわけ)",
         "english": "excuse"
       },
       {
+        cell_id: "083703a5-7bc1-4cfd-8b72-9cae7b619101",
         "japanese": "信頼 (しんらい)",
         "english": "trust"
       },
       {
+        cell_id: "b29b5817-423a-40ea-a4a9-f055762c5479",
         "japanese": "裏切る (うらぎる)",
         "english": "to betray"
       },
       {
+        cell_id: "cb005738-7f81-4acf-b978-e4e98715c92f",
         "japanese": "取り戻す (とりもどす)",
         "english": "to recover / regain"
       },
       {
+        cell_id: "258c5f98-c282-447f-ae1e-971825be4a85",
         "japanese": "誠意 (せいい)",
         "english": "sincerity"
       },
       {
+        cell_id: "58162adc-239f-4c25-bb30-ec1d9156de68",
         "japanese": "二度と (にどと)",
         "english": "never again"
       }
@@ -12489,21 +13045,25 @@ export const lessons: JapaneseLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "1a4e56cc-dba7-4461-8f51-78d8388e9e27",
         "speaker": "チャウ",
         "japanese": "今日はお時間いただいて、ありがとうございます。先日の件で、直接お詫びがしたくて参りました。",
         "english": "Thank you for the time today. I came in person to apologize for the other day."
       },
       {
+        cell_id: "92223abc-e405-43dc-9f04-afb0ac537618",
         "speaker": "友人",
         "japanese": "うん、座って。",
         "english": "Mm, sit down."
       },
       {
+        cell_id: "bd8a572b-5f2b-4c73-a3f8-428032842768",
         "speaker": "チャウ",
         "japanese": "本当に申し訳ございませんでした。言い訳のしようもありません。",
         "english": "I am truly sorry. There's no excuse I can offer."
       },
       {
+        cell_id: "613ebd01-cd0b-4a29-a13d-df7c23f1345c",
         "speaker": "友人",
         "japanese": "正直、傷ついた。でも、来てくれたこと、まずは聞かせて。",
         "english": "Honestly, I was hurt. But — first, you came. Let me hear you."
@@ -12704,42 +13264,52 @@ export const lessons: JapaneseLesson[] = [
     "level": "B2",
     "vocabulary": [
       {
+        cell_id: "cf706745-b639-4aec-9095-1a2ea88a9c99",
         "japanese": "別れ (わかれ)",
         "english": "parting / farewell"
       },
       {
+        cell_id: "2a1c7621-c88e-4c4e-be15-bc1d976d0ead",
         "japanese": "再会 (さいかい)",
         "english": "reunion"
       },
       {
+        cell_id: "aec6afb9-25c2-4f7e-a1d0-a8795c4f624b",
         "japanese": "思い出 (おもいで)",
         "english": "memory"
       },
       {
+        cell_id: "5741cdc2-2db9-45dd-9081-3bb88ee8e8b3",
         "japanese": "感謝 (かんしゃ)",
         "english": "gratitude"
       },
       {
+        cell_id: "9b13fb03-6615-4b25-b0ad-499d631723e2",
         "japanese": "寂しい (さびしい)",
         "english": "lonely / wistful"
       },
       {
+        cell_id: "3a4bf9eb-da0f-4267-ba86-d4122704536e",
         "japanese": "縁 (えん)",
         "english": "fate / connection"
       },
       {
+        cell_id: "7a9654ec-7621-4ff4-8cc0-7e871f31c279",
         "japanese": "見送る (みおくる)",
         "english": "to see (someone) off"
       },
       {
+        cell_id: "7ec59230-6dc5-4a6d-9245-37fbd17b7a92",
         "japanese": "前向き (まえむき)",
         "english": "forward-looking / positive"
       },
       {
+        cell_id: "2883f873-86cf-4cb6-9244-3c3092a11b2b",
         "japanese": "新しい門出 (あたらしいかどで)",
         "english": "new departure (for someone starting over)"
       },
       {
+        cell_id: "80a296fa-7097-4df7-94e0-66f84d51ca9a",
         "japanese": "心の中 (こころのなか)",
         "english": "in one's heart"
       }
@@ -12826,21 +13396,25 @@ export const lessons: JapaneseLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "675f6174-baa9-499b-9dfc-62480136b782",
         "speaker": "チャウ",
         "japanese": "本当に、明日出発なんですね。",
         "english": "You're really leaving tomorrow."
       },
       {
+        cell_id: "0ab0d9d1-0cb6-4b75-8c01-ce5d178c49db",
         "speaker": "友人",
         "japanese": "うん。長かったような、短かったような。",
         "english": "Yeah. Felt long, felt short."
       },
       {
+        cell_id: "fb8fab67-a6b1-4014-bea4-b9944f78edf4",
         "speaker": "チャウ",
         "japanese": "今日まで、本当にありがとうございました。あなたと過ごした時間は、私の宝物です。",
         "english": "Until today — thank you truly. The time with you is my treasure."
       },
       {
+        cell_id: "14c267ce-e743-4b3b-87ee-227e4f11c392",
         "speaker": "友人",
         "japanese": "こちらこそ。離れても、つながっていようね。",
         "english": "Same here. Even apart, let's stay connected."
@@ -13041,42 +13615,52 @@ export const lessons: JapaneseLesson[] = [
     "level": "B2",
     "vocabulary": [
       {
+        cell_id: "c93c5b58-4ab4-4519-8fa4-66294cc101cb",
         "japanese": "辛い (つらい)",
         "english": "tough / painful (emotionally)"
       },
       {
+        cell_id: "46ead531-04fe-4ab1-823f-7e5698756a11",
         "japanese": "大変 (たいへん)",
         "english": "rough / a lot to handle"
       },
       {
+        cell_id: "dd39e08c-7182-4382-9eb8-d2b72894abe7",
         "japanese": "頑張る (がんばる)",
         "english": "to do one's best / endure"
       },
       {
+        cell_id: "5065ec66-8130-4c48-bdc9-d66e2da75a4e",
         "japanese": "無理しないで (むりしないで)",
         "english": "don't push yourself"
       },
       {
+        cell_id: "05de8b8d-132b-4035-bb1f-70323949758d",
         "japanese": "肩の荷 (かたのに)",
         "english": "burden on one's shoulders"
       },
       {
+        cell_id: "6ce467c7-be52-44b1-bbe9-2eff12ac6c7c",
         "japanese": "話を聞く (はなしをきく)",
         "english": "to listen (to someone's story)"
       },
       {
+        cell_id: "7e21fd78-4b81-4f0e-bfeb-713627d3b8bd",
         "japanese": "心配 (しんぱい)",
         "english": "worry / concern"
       },
       {
+        cell_id: "148f2858-59fd-4463-a16b-1466d1acbac0",
         "japanese": "応援 (おうえん)",
         "english": "cheering / support"
       },
       {
+        cell_id: "80334f93-0a2e-4171-9c3b-e96f23e772e1",
         "japanese": "休む (やすむ)",
         "english": "to rest"
       },
       {
+        cell_id: "aa02617d-bf69-4900-b4bb-f1953b869609",
         "japanese": "そばにいる (そばにいる)",
         "english": "to be by someone's side"
       }
@@ -13159,21 +13743,25 @@ export const lessons: JapaneseLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "0632d749-ce44-4813-ba41-0d1ca52967d1",
         "speaker": "チャウ",
         "japanese": "最近、お元気ですか。少しお疲れのご様子で、心配しております。",
         "english": "How have you been lately? You seem tired — I'm worried."
       },
       {
+        cell_id: "af280aee-fb25-40ec-af3b-e7874f7ef474",
         "speaker": "友人",
         "japanese": "うん...仕事と家のことで、ちょっと参ってる。",
         "english": "Yeah... between work and home, I'm a bit worn out."
       },
       {
+        cell_id: "36415342-e1fe-4a62-a4e8-b5a6eeb5a0bd",
         "speaker": "チャウ",
         "japanese": "話したくなければ、無理になさらなくて大丈夫です。ただ、一人で抱え込まないでくださいね。",
         "english": "You don't have to force yourself to talk. Just — don't carry it alone."
       },
       {
+        cell_id: "1feec398-b123-4b27-a7b9-b0fd63210045",
         "speaker": "友人",
         "japanese": "ありがとう。少し聞いてもらってもいい?",
         "english": "Thank you. May I share a little?"
@@ -13374,42 +13962,52 @@ export const lessons: JapaneseLesson[] = [
     "level": "B2",
     "vocabulary": [
       {
+        cell_id: "e19b293c-aae6-4499-a84a-59789112cf1e",
         "japanese": "貸し借り (かしかり)",
         "english": "lending and borrowing"
       },
       {
+        cell_id: "89784b89-7f9d-4320-8622-b7234401c0a4",
         "japanese": "立て替える (たてかえる)",
         "english": "to pay temporarily on behalf of"
       },
       {
+        cell_id: "e2fb3fdb-c8d7-4796-9dde-c16a3ae5fafa",
         "japanese": "返済 (へんさい)",
         "english": "repayment"
       },
       {
+        cell_id: "d048e079-0c78-4fad-bce8-55a6ec412b73",
         "japanese": "金銭 (きんせん)",
         "english": "money (formal noun)"
       },
       {
+        cell_id: "2660133b-d08d-454a-b386-ffaae3cd85b9",
         "japanese": "お金のやり取り (おかねのやりとり)",
         "english": "money exchange / transaction"
       },
       {
+        cell_id: "7cb588be-e1f3-45ee-a353-823ac3950493",
         "japanese": "気まずい (きまずい)",
         "english": "awkward / uncomfortable"
       },
       {
+        cell_id: "bc05a9aa-e8d6-4d3b-b183-35bc5430d9ed",
         "japanese": "切り出す (きりだす)",
         "english": "to bring up (a difficult topic)"
       },
       {
+        cell_id: "4368f57a-026b-43a0-8451-3483e9ee29e0",
         "japanese": "都合 (つごう)",
         "english": "circumstances / convenience"
       },
       {
+        cell_id: "d728c943-a876-4c46-b895-baa403659a7d",
         "japanese": "正直に申し上げると (しょうじきにもうしあげると)",
         "english": "honestly speaking (formal frame)"
       },
       {
+        cell_id: "5f23eb87-f4b6-44a4-87e4-4b5347e69ebe",
         "japanese": "関係に響く (かんけいにひびく)",
         "english": "to affect the relationship"
       }
@@ -13496,21 +14094,25 @@ export const lessons: JapaneseLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "e9bdc4bf-a65b-4b78-b6f3-7a484608f040",
         "speaker": "チャウ",
         "japanese": "ちょっとお話があるのですが、お時間よろしいでしょうか。",
         "english": "I have a bit to discuss — do you have time?"
       },
       {
+        cell_id: "e159ed84-fba2-4f98-89a3-75fc61b7316a",
         "speaker": "友人",
         "japanese": "うん、なに?",
         "english": "Sure, what is it?"
       },
       {
+        cell_id: "41d7b33b-0419-4a0d-9dbe-ce4f7db39b57",
         "speaker": "チャウ",
         "japanese": "先月の旅行で、立て替えさせていただいた分のことなのですが。",
         "english": "About the amount I covered for you during last month's trip."
       },
       {
+        cell_id: "b43ab8af-3339-4569-b9b5-aefa6ba0d4c9",
         "speaker": "友人",
         "japanese": "ああ、ごめん、すっかり忘れてた。明日中に振り込むね。",
         "english": "Ah, sorry — completely forgot. I'll transfer it by tomorrow."
@@ -13706,42 +14308,52 @@ export const lessons: JapaneseLesson[] = [
     "level": "B2",
     "vocabulary": [
       {
+        cell_id: "6db9f182-fff4-4113-9b42-18768b7617a6",
         "japanese": "信仰 (しんこう)",
         "english": "religious belief / faith"
       },
       {
+        cell_id: "5e5964f0-8406-4499-b9ba-55d26394984d",
         "japanese": "宗教 (しゅうきょう)",
         "english": "religion (broad term)"
       },
       {
+        cell_id: "2e542181-6cec-47a2-8aaa-633e37eb60ab",
         "japanese": "神社 (じんじゃ)",
         "english": "Shinto shrine"
       },
       {
+        cell_id: "ad837d65-5002-4558-8d02-9ebb7c45f491",
         "japanese": "お寺 (おてら)",
         "english": "Buddhist temple"
       },
       {
+        cell_id: "42a7c43d-a2ff-440d-add8-e7fb6eb7e714",
         "japanese": "参拝 (さんぱい)",
         "english": "visit / worship at shrine or temple"
       },
       {
+        cell_id: "527ee54f-eaf6-4e67-a8b8-d3d1cb2f537f",
         "japanese": "初詣 (はつもうで)",
         "english": "first shrine visit of the new year"
       },
       {
+        cell_id: "3a63b0d3-8ae0-4555-b6a6-62d84635c85c",
         "japanese": "お墓参り (おはかまいり)",
         "english": "visiting ancestors' grave"
       },
       {
+        cell_id: "4beb36e3-da93-4938-b035-4bc39b4e8537",
         "japanese": "祈る (いのる)",
         "english": "to pray"
       },
       {
+        cell_id: "cf134275-3669-4e32-b3df-217b28c8a500",
         "japanese": "尊重 (そんちょう)",
         "english": "respect (for others' beliefs)"
       },
       {
+        cell_id: "966308d8-06b6-47b6-9903-1f6d5a00081d",
         "japanese": "価値観 (かちかん)",
         "english": "values"
       }
@@ -13828,21 +14440,25 @@ export const lessons: JapaneseLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "632651a5-d545-4d20-8d58-4e70cb6291e7",
         "speaker": "友人",
         "japanese": "正月、初詣行く?",
         "english": "You doing hatsumode for New Year?"
       },
       {
+        cell_id: "482331fd-5e58-425b-bc3a-f8d886e90460",
         "speaker": "チャウ",
         "japanese": "ぜひ伺いたいのですが、作法をきちんと存じませんで。",
         "english": "I'd like to — but I don't really know the proper manners."
       },
       {
+        cell_id: "8da51b10-1ac3-4381-92af-fc9ef4d1bf49",
         "speaker": "友人",
         "japanese": "簡単だよ。ご一緒しよう。",
         "english": "It's simple. Let's go together."
       },
       {
+        cell_id: "f81bb30c-5d78-4b3a-b7a1-0a2a89a71d9e",
         "speaker": "チャウ",
         "japanese": "ありがとうございます。ベトナムでも先祖を大切にする習慣がございますので、似たお気持ちで参拝できれば。",
         "english": "Thank you. We honor ancestors in Vietnam too, so I can approach it with a similar feeling."
@@ -14038,42 +14654,52 @@ export const lessons: JapaneseLesson[] = [
     "level": "B2",
     "vocabulary": [
       {
+        cell_id: "f3b473ba-063e-4c7f-b126-0ef7760c278a",
         "japanese": "過去 (かこ)",
         "english": "past"
       },
       {
+        cell_id: "98ecabcd-7c01-404c-b38b-5d0c9e496463",
         "japanese": "経験 (けいけん)",
         "english": "experience"
       },
       {
+        cell_id: "2830509b-1686-4d5c-9e6f-eece057944f3",
         "japanese": "打ち明ける (うちあける)",
         "english": "to confide / open up"
       },
       {
+        cell_id: "4155b9fa-d7c0-45bb-9a44-e9f81114c689",
         "japanese": "聞き手 (ききて)",
         "english": "listener"
       },
       {
+        cell_id: "d89a1fdd-d2dc-4621-9f8e-0389e6aaeed9",
         "japanese": "相づち (あいづち)",
         "english": "verbal cues acknowledging the speaker"
       },
       {
+        cell_id: "1b9904ec-09f4-484e-a5e3-95c457e87973",
         "japanese": "共感 (きょうかん)",
         "english": "empathy"
       },
       {
+        cell_id: "819cc045-579a-470e-a487-737e1214441a",
         "japanese": "詮索 (せんさく)",
         "english": "prying / probing"
       },
       {
+        cell_id: "b8742558-2ef7-456f-9928-06d8cea9d721",
         "japanese": "信頼 (しんらい)",
         "english": "trust"
       },
       {
+        cell_id: "efb6ca3a-6156-49ec-b8dd-be8ba6364002",
         "japanese": "受け止める (うけとめる)",
         "english": "to receive / take in (a heavy thing)"
       },
       {
+        cell_id: "bd716f08-43cc-4e5a-9c32-918eeee94263",
         "japanese": "そっと",
         "english": "softly / quietly"
       }
@@ -14156,21 +14782,25 @@ export const lessons: JapaneseLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "a7cce699-c03d-4d3b-98de-e7d9c1c6a5ba",
         "speaker": "友人",
         "japanese": "実は、誰にもあまり話してこなかったことがあって。",
         "english": "Actually, there's something I've barely told anyone."
       },
       {
+        cell_id: "eb1d0ef8-0f9e-4cf9-b54b-ceacb37c971a",
         "speaker": "チャウ",
         "japanese": "...伺ってもよろしいですか。話したくなければ、もちろん大丈夫です。",
         "english": "...may I hear? If you don't want to tell me, of course that's fine too."
       },
       {
+        cell_id: "86664157-83f1-4a97-a554-c02024132d2f",
         "speaker": "友人",
         "japanese": "ううん、聞いてもらえるなら、聞いてほしい。",
         "english": "No — if you'll listen, I want you to."
       },
       {
+        cell_id: "2976e4c1-145a-4002-b957-1c2a1507f23a",
         "speaker": "チャウ",
         "japanese": "ゆっくりで、大丈夫です。",
         "english": "Slowly — it's all right."
@@ -14371,42 +15001,52 @@ export const lessons: JapaneseLesson[] = [
     "level": "B2",
     "vocabulary": [
       {
+        cell_id: "b8a7de3a-cf7b-4276-831c-7d1e526a3d08",
         "japanese": "境界 (きょうかい)",
         "english": "boundary"
       },
       {
+        cell_id: "35dc1f6c-772b-4a14-83ad-5f5a264924b8",
         "japanese": "距離感 (きょりかん)",
         "english": "sense of closeness/distance"
       },
       {
+        cell_id: "d7aa1c35-0de0-4dff-8b19-38ac0d875332",
         "japanese": "余裕 (よゆう)",
         "english": "capacity / room (emotional)"
       },
       {
+        cell_id: "585fd6c0-f234-4114-9551-1cd3c131173c",
         "japanese": "限界 (げんかい)",
         "english": "limit"
       },
       {
+        cell_id: "be723077-455f-42ca-abd6-ad4973100ece",
         "japanese": "断る (ことわる)",
         "english": "to decline"
       },
       {
+        cell_id: "52528fbb-b93f-46dd-984b-c7078bc0a3b1",
         "japanese": "踏み込む (ふみこむ)",
         "english": "to step too far in / overreach"
       },
       {
+        cell_id: "bd83caf7-d9b1-4d84-a2b1-ad5855eae941",
         "japanese": "プライベート",
         "english": "private (life)"
       },
       {
+        cell_id: "6e840fab-a332-4db4-8c43-87eb4c822102",
         "japanese": "尊重 (そんちょう)",
         "english": "respect"
       },
       {
+        cell_id: "f219c36b-b4a5-465f-a089-ce25142dbae3",
         "japanese": "心地よい (ここちよい)",
         "english": "comfortable"
       },
       {
+        cell_id: "44bafe97-4619-4400-b77d-f5a43323b66c",
         "japanese": "わきまえる",
         "english": "to know one's place / observe propriety"
       }
@@ -14491,21 +15131,25 @@ export const lessons: JapaneseLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "8293ce49-5bc1-4cbf-8d01-40c095eaf8a3",
         "speaker": "友人",
         "japanese": "また土曜、家に来て、夜まで話そうよ。",
         "english": "Come over Saturday again, talk till night."
       },
       {
+        cell_id: "c60b83a9-f75c-4ae1-9b1d-01436e36d912",
         "speaker": "チャウ",
         "japanese": "お誘い、ありがとうございます。今月、少し余裕がなくて、ご連絡を控えさせていただいておりました。",
         "english": "Thanks for inviting. This month I don't have much capacity; I've been holding back."
       },
       {
+        cell_id: "47346efd-fbbb-4034-b12b-48a08de7caaa",
         "speaker": "友人",
         "japanese": "あ、忙しい? 来月でもいい?",
         "english": "Oh, busy? Next month OK?"
       },
       {
+        cell_id: "829ead0d-71bc-4988-8ce7-8f3601ce0c95",
         "speaker": "チャウ",
         "japanese": "はい、来月、少し余裕が出てきたら、こちらからご連絡させていただきます。",
         "english": "Yes — when I have more capacity next month, I'll reach out."

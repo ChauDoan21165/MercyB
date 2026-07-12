@@ -18,6 +18,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   /** Indonesian word/phrase. */
   word: string;
   /** English meaning. */
@@ -33,6 +34,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   /** Indonesian line. */
   text: string;
@@ -211,6 +213,7 @@ export const movingHouseLessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: distinguish `pindah` (move/relocate), `pindahan` (the move/moving day), and `memindahkan` (move an object). For heavy belongings, learn these chunks: `angkat barang`, `angkut barang`, `sewa mobil bak`, `kardus besar`, `barang mudah pecah`, `alamat baru`, `tetangga baru`, `bersih-bersih`.",
     vocabulary: [
       {
+        cell_id: "e1c9f05c-b9ef-4e44-b844-fd333793a245",
         word: "pindahan rumah",
         en: "moving house / moving day",
         vi: "việc/ngày chuyển nhà",
@@ -219,6 +222,7 @@ export const movingHouseLessons: IndonesianLesson[] = [
         pronunciation_en: "pin-DA-han ROO-mah",
       },
       {
+        cell_id: "bcdf66d9-a14d-4d73-9209-f9e45bd0a838",
         word: "mobil bak",
         en: "pickup / open-bed vehicle",
         vi: "xe bán tải / xe thùng hở",
@@ -227,6 +231,7 @@ export const movingHouseLessons: IndonesianLesson[] = [
         pronunciation_en: "MO-bil BAK",
       },
       {
+        cell_id: "15411f34-c454-4430-8f60-247e7e35cb8b",
         word: "kardus",
         en: "cardboard box",
         vi: "thùng carton",
@@ -235,6 +240,7 @@ export const movingHouseLessons: IndonesianLesson[] = [
         pronunciation_en: "KAR-doos",
       },
       {
+        cell_id: "fb2d9408-58c9-461e-8b0b-a26da644ec42",
         word: "angkat barang",
         en: "lift/carry belongings",
         vi: "khiêng đồ / bê đồ",
@@ -243,6 +249,7 @@ export const movingHouseLessons: IndonesianLesson[] = [
         pronunciation_en: "ANG-kat BA-rang",
       },
       {
+        cell_id: "b3abeb62-a4da-46d2-a97e-b03741012646",
         word: "angkut barang",
         en: "transport belongings",
         vi: "chở đồ / vận chuyển đồ",
@@ -251,6 +258,7 @@ export const movingHouseLessons: IndonesianLesson[] = [
         pronunciation_en: "ANG-koot BA-rang",
       },
       {
+        cell_id: "c2a8c15e-5c56-41a9-8abe-a0397b1e9b9a",
         word: "alamat baru",
         en: "new address",
         vi: "địa chỉ mới",
@@ -259,6 +267,7 @@ export const movingHouseLessons: IndonesianLesson[] = [
         pronunciation_en: "a-LA-mat BA-roo",
       },
       {
+        cell_id: "e29a0bf3-1775-481a-add5-8e0e5406a633",
         word: "tetangga baru",
         en: "new neighbor",
         vi: "hàng xóm mới",
@@ -267,6 +276,7 @@ export const movingHouseLessons: IndonesianLesson[] = [
         pronunciation_en: "te-TANG-ga BA-roo",
       },
       {
+        cell_id: "5306afca-516c-409d-ad12-2fe2a34ef11a",
         word: "bersih-bersih",
         en: "clean up",
         vi: "dọn dẹp",
@@ -275,6 +285,7 @@ export const movingHouseLessons: IndonesianLesson[] = [
         pronunciation_en: "BER-sih BER-sih",
       },
       {
+        cell_id: "27954099-1a37-460d-a16b-f94b8616147c",
         word: "barang mudah pecah",
         en: "fragile items",
         vi: "đồ dễ vỡ",
@@ -283,6 +294,7 @@ export const movingHouseLessons: IndonesianLesson[] = [
         pronunciation_en: "BA-rang MOO-dah PE-chah",
       },
       {
+        cell_id: "e504dcc7-e080-4b8c-8d7a-b4c4441f373b",
         word: "jasa pindahan",
         en: "moving service / movers",
         vi: "dịch vụ chuyển nhà",
@@ -293,24 +305,28 @@ export const movingHouseLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "fefeb068-4f39-4bf9-ac85-a3f1b0b4dc64",
         speaker: "Linh",
         text: "Pak, bisa sewa mobil bak untuk pindahan hari Sabtu?",
         vi: "Chú ơi, có thể thuê xe thùng để chuyển nhà ngày thứ Bảy không?",
         en: "Sir, can I rent a pickup for moving on Saturday?",
       },
       {
+        cell_id: "0d9fcd23-312d-4773-b2c8-ca96e12c9124",
         speaker: "Pemilik Mobil",
         text: "Bisa. Barangnya banyak? Perlu bantuan angkat barang?",
         vi: "Được. Đồ có nhiều không? Cần hỗ trợ khiêng đồ không?",
         en: "Yes. Are there many items? Do you need help carrying them?",
       },
       {
+        cell_id: "24cc7cc7-26f0-40d9-8e61-c8749115fc75",
         speaker: "Linh",
         text: "Lumayan banyak. Ada lemari, meja, dan beberapa kardus.",
         vi: "Khá nhiều. Có tủ, bàn và vài thùng carton.",
         en: "Quite a lot. There is a wardrobe, a table, and several boxes.",
       },
       {
+        cell_id: "effec7ff-36e3-4b1c-8efe-804582c4df12",
         speaker: "Pemilik Mobil",
         text: "Baik, kirim alamat lama dan alamat baru lewat WhatsApp, ya.",
         vi: "Được, gửi địa chỉ cũ và địa chỉ mới qua WhatsApp nhé.",

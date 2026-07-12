@@ -6,6 +6,7 @@ type IndonesianLessonSentence = {
 };
 
 type VocabEntry = {
+  cell_id?: string;
   word: string;
   meaning_vi: string;
   meaning_en: string;
@@ -14,6 +15,7 @@ type VocabEntry = {
 };
 
 type DialogueLine = {
+  cell_id?: string;
   speaker: string;
   line: string;
   vi: string;
@@ -117,6 +119,7 @@ export const lessons: IndonesianLesson[] = [
     ],
     vocabulary: [
       {
+        cell_id: "43719364-7b57-4718-becd-c0a00c123855",
         word: 'kata sandi',
         meaning_vi: 'mật khẩu',
         meaning_en: 'password',
@@ -124,6 +127,7 @@ export const lessons: IndonesianLesson[] = [
         example_vi: 'Mật khẩu của tôi phải được đổi ngay bây giờ.',
       },
       {
+        cell_id: "eaa90587-0190-4f37-84a8-31357a3dfe19",
         word: 'verifikasi dua langkah',
         meaning_vi: 'xác minh hai bước',
         meaning_en: 'two-step verification',
@@ -131,6 +135,7 @@ export const lessons: IndonesianLesson[] = [
         example_vi: 'Xác minh hai bước làm tài khoản an toàn hơn.',
       },
       {
+        cell_id: "64a5309e-95be-48bc-b268-1db5ed11c353",
         word: 'data pribadi',
         meaning_vi: 'dữ liệu cá nhân',
         meaning_en: 'personal data',
@@ -138,6 +143,7 @@ export const lessons: IndonesianLesson[] = [
         example_vi: 'Đừng gửi dữ liệu cá nhân qua chat công khai/chung.',
       },
       {
+        cell_id: "34249270-985f-4d0f-a059-169890d89b75",
         word: 'akun bocor',
         meaning_vi: 'tài khoản bị rò rỉ/lộ dữ liệu',
         meaning_en: 'leaked account or compromised account data',
@@ -145,6 +151,7 @@ export const lessons: IndonesianLesson[] = [
         example_vi: 'Tôi lo tài khoản của tôi bị lộ dữ liệu.',
       },
       {
+        cell_id: "5d6019a2-1812-4698-93ef-b3336dd57570",
         word: 'email palsu',
         meaning_vi: 'email giả/mạo',
         meaning_en: 'fake or spoofed email',
@@ -152,6 +159,7 @@ export const lessons: IndonesianLesson[] = [
         example_vi: 'Email giả đó trông giống email chính thức.',
       },
       {
+        cell_id: "22a8e109-b7ee-4f9b-b226-f3cbfce9972a",
         word: 'privasi online',
         meaning_vi: 'quyền riêng tư online',
         meaning_en: 'online privacy',
@@ -159,6 +167,7 @@ export const lessons: IndonesianLesson[] = [
         example_vi: 'Tôi muốn cải thiện quyền riêng tư online của tôi.',
       },
       {
+        cell_id: "184798f8-b844-42fa-8162-751d8061451b",
         word: 'keamanan akun',
         meaning_vi: 'bảo mật tài khoản',
         meaning_en: 'account security',
@@ -166,6 +175,7 @@ export const lessons: IndonesianLesson[] = [
         example_vi: 'Bảo mật tài khoản quan trọng để ngăn lừa lừa đảo.',
       },
       {
+        cell_id: "8aa74c8a-9348-4a2e-a123-11e7dbab11b3",
         word: 'perangkat asing',
         meaning_vi: 'thiết bị lạ',
         meaning_en: 'unknown device',
@@ -175,36 +185,42 @@ export const lessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "164728aa-bfe5-4aa8-8575-6310a3ab1f2b",
         speaker: 'Pengguna',
         line: 'Halo, saya menerima email palsu yang meminta kode OTP.',
         vi: 'Xin chào, tôi nhận được email giả yêu cầu mã OTP.',
         en: 'Hello, I received a fake email asking for an OTP code.',
       },
       {
+        cell_id: "b9a3a436-4966-4458-ab88-7acf7989cc9d",
         speaker: 'Customer Service',
         line: 'Jangan bagikan kode OTP atau kata sandi kepada siapa pun.',
         vi: 'Đừng chia sẻ mã OTP hoặc mật khẩu cho bất kỳ ai.',
         en: 'Do not share the OTP code or password with anyone.',
       },
       {
+        cell_id: "865d5ee1-5b6d-4eca-8732-f156faaa57b2",
         speaker: 'Pengguna',
         line: 'Sepertinya akun saya bocor. Ada login dari perangkat asing.',
         vi: 'Có vẻ tài khoản của tôi bị lộ. Có đăng nhập từ thiết bị lạ.',
         en: 'It seems my account has been compromised. There is a login from an unknown device.',
       },
       {
+        cell_id: "16b16ae1-8c68-47b5-a5bb-0f4336267321",
         speaker: 'Customer Service',
         line: 'Silakan ganti kata sandi dan aktifkan verifikasi dua langkah.',
         vi: 'Vui lòng đổi mật khẩu và bật xác minh hai bước.',
         en: 'Please change your password and enable two-step verification.',
       },
       {
+        cell_id: "eb432a9a-a79f-4f11-bc3c-1b06c8ee92db",
         speaker: 'Pengguna',
         line: 'Bisa bantu keluar dari semua perangkat?',
         vi: 'Có thể giúp đăng xuất khỏi tất cả thiết bị không?',
         en: 'Can you help log out from all devices?',
       },
       {
+        cell_id: "a2217d28-d5ab-4b53-828f-07a3a97905f1",
         speaker: 'Customer Service',
         line: 'Bisa. Setelah itu, cek lagi pengaturan privasi online Anda.',
         vi: 'Có thể. Sau đó, hãy kiểm tra lại cài đặt quyền riêng tư online của bạn.',

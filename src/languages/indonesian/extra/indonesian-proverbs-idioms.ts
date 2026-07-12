@@ -13,6 +13,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -22,6 +23,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -235,37 +237,41 @@ export const lessons: IndonesianLesson[] = [
     tip_advice_en:
       "Tip for Vietnamese speakers: before using a proverb, learn three layers: literal meaning, figurative meaning, and usage situation. Do not swap words in fixed idioms (`pasak`, not `paku`; `bubur`, not `nasi`). If you are unsure about nuance, add a short explanation: `maksud saya, jangan boros` or `maksudnya, ada motif tersembunyi`.",
     vocabulary: [
-      { word: "peribahasa", en: "proverb", vi: "tục ngữ", pos: "noun", pronunciation_vi: "pe-ri-ba-HA-sa", pronunciation_en: "pe-ree-ba-HA-sa" },
-      { word: "ungkapan", en: "expression / idiom", vi: "thành ngữ / cách nói", pos: "noun", pronunciation_vi: "ung-KAP-an", pronunciation_en: "ung-KAP-an" },
-      { word: "bagai pinang dibelah dua", en: "like two identical halves", vi: "giống nhau như hai giọt nước", pos: "idiom", pronunciation_vi: "BA-gai PI-nang di-BE-lah DU-a", pronunciation_en: "BA-gai PI-nang di-BE-lah DOO-a" },
-      { word: "ada udang di balik batu", en: "there is a hidden motive", vi: "có ẩn ý / có ý đồ riêng", pos: "proverb", pronunciation_vi: "A-da U-dang di BA-lik BA-tu", pronunciation_en: "A-da OO-dang di BA-lik BA-too" },
-      { word: "besar pasak daripada tiang", en: "expenses exceed income", vi: "vung tay quá trán", pos: "proverb", pronunciation_vi: "be-SAR PA-sak da-ri-PA-da TI-ang", pronunciation_en: "be-SAR PA-sak da-ree-PA-da TEE-ang" },
-      { word: "makna budaya", en: "cultural meaning", vi: "ý nghĩa văn hóa", pos: "noun phrase", pronunciation_vi: "MAK-na bu-DA-ya", pronunciation_en: "MAK-na boo-DA-ya" },
-      { word: "menyindir", en: "to hint / criticize indirectly", vi: "nói bóng / châm nhẹ", pos: "verb", pronunciation_vi: "me-NYIN-dir", pronunciation_en: "me-NYIN-deer" },
-      { word: "boros", en: "wasteful", vi: "hoang phí", pos: "adjective", pronunciation_vi: "BO-ros", pronunciation_en: "BO-ros" },
-      { word: "motif tersembunyi", en: "hidden motive", vi: "động cơ ẩn", pos: "noun phrase", pronunciation_vi: "mo-TIF ter-sem-BU-nyi", pronunciation_en: "mo-TEEF ter-sem-BOO-nyee" },
-      { word: "sindiran halus", en: "gentle indirect criticism", vi: "lời châm nhẹ tế nhị", pos: "noun phrase", pronunciation_vi: "sin-DIR-an HA-lus", pronunciation_en: "sin-DEER-an HA-loos" },
+      { cell_id: "6a25f756-aafa-402b-a46c-3b5187260200", word: "peribahasa", en: "proverb", vi: "tục ngữ", pos: "noun", pronunciation_vi: "pe-ri-ba-HA-sa", pronunciation_en: "pe-ree-ba-HA-sa" },
+      { cell_id: "6c386142-d315-4d76-8c6f-4a23fcab2af3", word: "ungkapan", en: "expression / idiom", vi: "thành ngữ / cách nói", pos: "noun", pronunciation_vi: "ung-KAP-an", pronunciation_en: "ung-KAP-an" },
+      { cell_id: "2a3db7dc-aefa-40ad-bb5d-35d3b2babda6", word: "bagai pinang dibelah dua", en: "like two identical halves", vi: "giống nhau như hai giọt nước", pos: "idiom", pronunciation_vi: "BA-gai PI-nang di-BE-lah DU-a", pronunciation_en: "BA-gai PI-nang di-BE-lah DOO-a" },
+      { cell_id: "82fa4f8a-a156-4b62-aa45-f9ced4b479ed", word: "ada udang di balik batu", en: "there is a hidden motive", vi: "có ẩn ý / có ý đồ riêng", pos: "proverb", pronunciation_vi: "A-da U-dang di BA-lik BA-tu", pronunciation_en: "A-da OO-dang di BA-lik BA-too" },
+      { cell_id: "9ae2a3a7-7058-4521-a8e4-f9c03f10701a", word: "besar pasak daripada tiang", en: "expenses exceed income", vi: "vung tay quá trán", pos: "proverb", pronunciation_vi: "be-SAR PA-sak da-ri-PA-da TI-ang", pronunciation_en: "be-SAR PA-sak da-ree-PA-da TEE-ang" },
+      { cell_id: "c0bfa888-ddaf-4c6b-b9d8-b30370f146b9", word: "makna budaya", en: "cultural meaning", vi: "ý nghĩa văn hóa", pos: "noun phrase", pronunciation_vi: "MAK-na bu-DA-ya", pronunciation_en: "MAK-na boo-DA-ya" },
+      { cell_id: "3ab04c99-3c54-470c-8d51-fa4ae9ddc461", word: "menyindir", en: "to hint / criticize indirectly", vi: "nói bóng / châm nhẹ", pos: "verb", pronunciation_vi: "me-NYIN-dir", pronunciation_en: "me-NYIN-deer" },
+      { cell_id: "ea615731-e78d-48f3-b49e-052e9207e15c", word: "boros", en: "wasteful", vi: "hoang phí", pos: "adjective", pronunciation_vi: "BO-ros", pronunciation_en: "BO-ros" },
+      { cell_id: "2c2ec63e-7db1-444e-9e43-2101cd3d485c", word: "motif tersembunyi", en: "hidden motive", vi: "động cơ ẩn", pos: "noun phrase", pronunciation_vi: "mo-TIF ter-sem-BU-nyi", pronunciation_en: "mo-TEEF ter-sem-BOO-nyee" },
+      { cell_id: "240ac831-87e9-4b9e-8bcd-cc8bf105067a", word: "sindiran halus", en: "gentle indirect criticism", vi: "lời châm nhẹ tế nhị", pos: "noun phrase", pronunciation_vi: "sin-DIR-an HA-lus", pronunciation_en: "sin-DEER-an HA-loos" },
     ],
     dialogue: [
       {
+        cell_id: "d00bdbe7-cd78-4e1f-b4b6-58a70de7f7ae",
         speaker: "Ayu",
         text: "Kakak beradik itu mirip sekali.",
         vi: "Hai anh em đó giống nhau quá.",
         en: "Those siblings look so alike.",
       },
       {
+        cell_id: "8c81cb13-dfb8-4271-baec-23b60e8030ce",
         speaker: "Bima",
         text: "Iya, bagai pinang dibelah dua.",
         vi: "Ừ, giống nhau như hai giọt nước.",
         en: "Yes, like two identical halves of a betel nut.",
       },
       {
+        cell_id: "9711e82e-9efb-4654-9523-4f0ef6c9b843",
         speaker: "Ayu",
         text: "Tapi teman kita yang tiba-tiba baik itu agak mencurigakan.",
         vi: "Nhưng người bạn tự nhiên tốt bất thường kia hơi đáng ngờ.",
         en: "But our friend who is suddenly so nice is a bit suspicious.",
       },
       {
+        cell_id: "4f240229-6d3a-4f9a-a5b8-db22aa405925",
         speaker: "Bima",
         text: "Mungkin ada udang di balik batu.",
         vi: "Có thể có ẩn ý phía sau.",

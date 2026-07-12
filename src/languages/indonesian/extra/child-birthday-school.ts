@@ -17,6 +17,7 @@ type IndonesianLessonSentence = {
 };
 
 type IndonesianVocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -26,6 +27,7 @@ type IndonesianVocabEntry = {
 };
 
 type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -198,6 +200,7 @@ export const childBirthdaySchoolLessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: with teachers, use `Bu Guru/Pak Guru`, `apakah saya boleh...`, `kalau sekolah tidak mengizinkan...`, and `terima kasih sudah membantu...`. Keep `boleh` = allowed/may separate from `bisa` = can/able.",
     vocabulary: [
       {
+        cell_id: "4b51c5bd-865e-4eca-9ab6-140cc0f8d862",
         word: "ulang tahun di sekolah",
         en: "birthday at school",
         vi: "sinh nhật ở trường",
@@ -206,6 +209,7 @@ export const childBirthdaySchoolLessons: IndonesianLesson[] = [
         pronunciation_en: "OO-lang TA-hoon dee seh-KO-lah",
       },
       {
+        cell_id: "2670f98e-0b33-42f1-af4b-2805e8ea505a",
         word: "kue kecil",
         en: "small cake / small cakes",
         vi: "bánh nhỏ",
@@ -214,6 +218,7 @@ export const childBirthdaySchoolLessons: IndonesianLesson[] = [
         pronunciation_en: "KOO-eh KEH-chil",
       },
       {
+        cell_id: "e8884863-ee58-4656-8ef3-52ce6f7c0632",
         word: "izin guru",
         en: "teacher permission",
         vi: "sự cho phép của giáo viên",
@@ -222,6 +227,7 @@ export const childBirthdaySchoolLessons: IndonesianLesson[] = [
         pronunciation_en: "EE-zin GOO-roo",
       },
       {
+        cell_id: "8ee79071-9681-4dfb-bf2b-a7929853e7f5",
         word: "teman sekelas",
         en: "classmate",
         vi: "bạn cùng lớp",
@@ -230,6 +236,7 @@ export const childBirthdaySchoolLessons: IndonesianLesson[] = [
         pronunciation_en: "teh-MAN seh-KEH-las",
       },
       {
+        cell_id: "f9b6306f-9475-4ade-8a80-5f6a118a67df",
         word: "goodie bag",
         en: "party favor bag",
         vi: "túi quà nhỏ",
@@ -238,6 +245,7 @@ export const childBirthdaySchoolLessons: IndonesianLesson[] = [
         pronunciation_en: "GOO-dee bag",
       },
       {
+        cell_id: "aceca41a-a879-47ea-8d41-16f166096c6b",
         word: "alergi makanan",
         en: "food allergy",
         vi: "dị ứng thức ăn",
@@ -246,6 +254,7 @@ export const childBirthdaySchoolLessons: IndonesianLesson[] = [
         pronunciation_en: "a-LER-gee ma-KA-nan",
       },
       {
+        cell_id: "7d56312c-2c1b-4793-8fdb-cabb371019a9",
         word: "foto bersama",
         en: "group photo",
         vi: "ảnh chung / chụp ảnh chung",
@@ -254,6 +263,7 @@ export const childBirthdaySchoolLessons: IndonesianLesson[] = [
         pronunciation_en: "FO-toh ber-SA-ma",
       },
       {
+        cell_id: "aabf7f1f-c5ee-40b7-9ebf-db0eabc807c7",
         word: "jam istirahat",
         en: "break time / recess",
         vi: "giờ nghỉ / giờ ra chơi",
@@ -264,30 +274,35 @@ export const childBirthdaySchoolLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "51901c17-5fd0-4402-b77c-9b9e2703f812",
         speaker: "Orang Tua",
         text: "Bu Guru, besok anak saya ulang tahun. Apakah boleh membawa kue kecil?",
         vi: "Cô ơi, mai con tôi sinh nhật. Có được mang bánh nhỏ không ạ?",
         en: "Teacher, tomorrow is my child's birthday. May I bring small cakes?",
       },
       {
+        cell_id: "72f6f323-91b9-4901-837b-c20209cc3d27",
         speaker: "Guru",
         text: "Boleh, Bu. Tapi kuenya jangan terlalu besar, supaya mudah dibagikan.",
         vi: "Được chị. Nhưng bánh đừng quá lớn, để dễ chia.",
         en: "Yes, ma'am. But please keep the cake not too big, so it is easy to distribute.",
       },
       {
+        cell_id: "38941597-514d-4832-9703-1d0b1e3691ab",
         speaker: "Orang Tua",
         text: "Baik. Apakah ada murid yang punya alergi makanan?",
         vi: "Vâng. Có học sinh nào bị dị ứng thức ăn không?",
         en: "Okay. Are there any students with food allergies?",
       },
       {
+        cell_id: "4e91e63e-8947-4228-8b8f-cec244edc36e",
         speaker: "Guru",
         text: "Ada satu anak alergi kacang. Goodie bag sebaiknya tanpa kacang.",
         vi: "Có một bé dị ứng đậu phộng. Túi quà nên không có đậu phộng.",
         en: "One child is allergic to peanuts. The goodie bag should be without peanuts.",
       },
       {
+        cell_id: "ca5978a1-1cc9-4472-8ec8-d5e193853d52",
         speaker: "Orang Tua",
         text: "Siap, Bu. Nanti saya datang sebentar saat jam istirahat.",
         vi: "Dạ được, cô. Lát tôi sẽ ghé một chút vào giờ ra chơi.",

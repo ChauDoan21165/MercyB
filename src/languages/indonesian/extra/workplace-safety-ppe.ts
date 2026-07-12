@@ -18,6 +18,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   /** Indonesian word/phrase. */
   word: string;
   /** English meaning. */
@@ -33,6 +34,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   /** Indonesian line. */
   text: string;
@@ -243,6 +245,7 @@ export const workplaceSafetyPpeLessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: prohibitions use `jangan` or sign language `dilarang`, not `tidak`. Learn safety chunks whole: `wajib memakai APD`, `helm proyek`, `sepatu safety`, `pelatihan K3`, `area berbahaya`, `segera lapor`, `laporan insiden`. When unsure about safety, short questions like `Ini berbahaya?` or `Boleh masuk area ini?` are useful.",
     vocabulary: [
       {
+        cell_id: "4a9d036c-7a58-48ff-839b-006c04e49c09",
         word: "keselamatan kerja",
         en: "workplace safety",
         vi: "an toàn lao động",
@@ -251,6 +254,7 @@ export const workplaceSafetyPpeLessons: IndonesianLesson[] = [
         pronunciation_en: "ke-se-la-MAT-an KER-ja",
       },
       {
+        cell_id: "b031e6e4-f53c-4315-8b69-9c3e5dab3d0f",
         word: "APD",
         en: "PPE / personal protective equipment",
         vi: "đồ bảo hộ cá nhân",
@@ -259,6 +263,7 @@ export const workplaceSafetyPpeLessons: IndonesianLesson[] = [
         pronunciation_en: "A-pe-DAY",
       },
       {
+        cell_id: "2eb3f3ea-d720-4420-90dc-6db686b33bb5",
         word: "helm proyek",
         en: "hard hat / project helmet",
         vi: "mũ bảo hộ công trình",
@@ -267,6 +272,7 @@ export const workplaceSafetyPpeLessons: IndonesianLesson[] = [
         pronunciation_en: "HELM PRO-yek",
       },
       {
+        cell_id: "0e3aea00-6b6d-453c-ab6d-7e52ca9ea41e",
         word: "sepatu safety",
         en: "safety shoes",
         vi: "giày bảo hộ",
@@ -275,6 +281,7 @@ export const workplaceSafetyPpeLessons: IndonesianLesson[] = [
         pronunciation_en: "se-PA-too SAFE-tee",
       },
       {
+        cell_id: "c2c6db1c-65c3-4f6d-ba29-abc85a8f8699",
         word: "pelatihan K3",
         en: "occupational safety training",
         vi: "đào tạo K3 / an toàn lao động",
@@ -283,6 +290,7 @@ export const workplaceSafetyPpeLessons: IndonesianLesson[] = [
         pronunciation_en: "pe-LA-tih-an ka-TEE-ga",
       },
       {
+        cell_id: "fb123924-8321-4355-a61f-4a04d5855274",
         word: "laporan insiden",
         en: "incident report",
         vi: "báo cáo sự cố",
@@ -291,6 +299,7 @@ export const workplaceSafetyPpeLessons: IndonesianLesson[] = [
         pronunciation_en: "la-PO-ran IN-see-den",
       },
       {
+        cell_id: "097a5828-df64-4785-8c80-c420df7654d6",
         word: "area berbahaya",
         en: "dangerous area",
         vi: "khu vực nguy hiểm",
@@ -299,6 +308,7 @@ export const workplaceSafetyPpeLessons: IndonesianLesson[] = [
         pronunciation_en: "A-re-a ber-ba-HA-ya",
       },
       {
+        cell_id: "c2d883a4-42d6-4b65-95ef-d052e64bddb9",
         word: "kabel terbuka",
         en: "exposed cable",
         vi: "dây điện/cáp bị hở",
@@ -307,6 +317,7 @@ export const workplaceSafetyPpeLessons: IndonesianLesson[] = [
         pronunciation_en: "KA-bel ter-BOO-ka",
       },
       {
+        cell_id: "8303e690-a710-4d95-9b78-54502940a393",
         word: "terpeleset",
         en: "slipped",
         vi: "bị trượt ngã",
@@ -315,6 +326,7 @@ export const workplaceSafetyPpeLessons: IndonesianLesson[] = [
         pronunciation_en: "ter-pe-LE-set",
       },
       {
+        cell_id: "2d1557a6-dc8c-4258-a911-0a79f5126b7f",
         word: "sarung tangan",
         en: "gloves",
         vi: "găng tay",
@@ -325,30 +337,35 @@ export const workplaceSafetyPpeLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "810ddfb2-d68c-4158-9f6c-25df26806828",
         speaker: "Supervisor",
         text: "Sebelum masuk area proyek, semua pekerja wajib memakai APD.",
         vi: "Trước khi vào khu vực công trình, mọi công nhân bắt buộc phải dùng đồ bảo hộ.",
         en: "Before entering the project area, all workers must wear PPE.",
       },
       {
+        cell_id: "db82160c-6924-489e-a153-be8ca58f942b",
         speaker: "Pekerja",
         text: "Baik, Pak. Helm proyek dan sepatu safety sudah saya pakai.",
         vi: "Vâng anh. Mũ bảo hộ và giày bảo hộ tôi đã mang rồi.",
         en: "Yes, sir. I am already wearing the hard hat and safety shoes.",
       },
       {
+        cell_id: "ea986497-632b-445a-b64a-5b029d39f21b",
         speaker: "Supervisor",
         text: "Kalau melihat kabel terbuka atau area berbahaya, segera lapor.",
         vi: "Nếu thấy dây điện hở hoặc khu vực nguy hiểm, báo ngay.",
         en: "If you see exposed cables or a dangerous area, report it immediately.",
       },
       {
+        cell_id: "fd192672-8039-4ccf-9679-d4d1af42d187",
         speaker: "Pekerja",
         text: "Tadi ada pekerja terpeleset, tetapi tidak ada luka serius.",
         vi: "Lúc nãy có công nhân bị trượt ngã, nhưng không có vết thương nghiêm trọng.",
         en: "A worker slipped earlier, but there was no serious injury.",
       },
       {
+        cell_id: "f3b3280b-0b8f-4fb2-ae1f-ffd373acf540",
         speaker: "Supervisor",
         text: "Tetap buat laporan insiden sebelum pulang.",
         vi: "Vẫn lập báo cáo sự cố trước khi về.",

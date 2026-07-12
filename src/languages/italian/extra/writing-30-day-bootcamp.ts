@@ -31,6 +31,7 @@ export type LessonSentence = {
 };
 
 export type VocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -42,6 +43,7 @@ export type VocabEntry = {
 };
 
 export type DialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -242,6 +244,7 @@ export const lesson: ItalianLesson = {
   vocabulary: [
     // ── Core Writing Formula (the six building blocks of any message) ────
     {
+      cell_id: "2a90e0b2-30de-4610-b839-27127ff2f148",
       word: "Buongiorno,",
       en: "greeting — hello / good morning",
       vi: "xin chào",
@@ -252,6 +255,7 @@ export const lesson: ItalianLesson = {
         "Open any polite message with 'Buongiorno,' (until ~6 PM) or 'Buonasera,' (evening)",
     },
     {
+      cell_id: "7242d778-9c06-42ae-89f8-3212795bd0f8",
       word: "mi chiamo ___",
       en: "identity — my name is ___",
       vi: "tôi tên là ___",
@@ -260,6 +264,7 @@ export const lesson: ItalianLesson = {
       pronunciation_en: "Reflexive verb 'chiamarsi': mi chiamo / ti chiami / si chiama",
     },
     {
+      cell_id: "9d08320d-8cc6-428c-ad32-d6b0a97cc1ab",
       word: "scrivo per...",
       en: "reason — I am writing to...",
       vi: "tôi viết để...",
@@ -268,6 +273,7 @@ export const lesson: ItalianLesson = {
       pronunciation_en: "'per' + infinitive = purpose: scrivo per chiedere / per segnalare",
     },
     {
+      cell_id: "e281f521-f765-486f-a592-cf135647675b",
       word: "vorrei chiedere...",
       en: "request — I would like to ask...",
       vi: "tôi muốn xin/hỏi...",
@@ -276,6 +282,7 @@ export const lesson: ItalianLesson = {
       pronunciation_en: "'vorrei' (conditional) is more polite than 'voglio' (I want — sounds like an order)",
     },
     {
+      cell_id: "d8babde9-3238-469e-b78c-df2e1ee49620",
       word: "La ringrazio",
       en: "thanks — I thank you (formal)",
       vi: "xin cảm ơn ông/bà",
@@ -284,6 +291,7 @@ export const lesson: ItalianLesson = {
       pronunciation_en: "Capitalised 'La' — polite Lei pronoun; more formal than 'grazie'",
     },
     {
+      cell_id: "1e606d97-a786-4ab6-a8bb-6f36723520fe",
       word: "Cordiali saluti",
       en: "closing — kind regards",
       vi: "trân trọng",
@@ -294,6 +302,7 @@ export const lesson: ItalianLesson = {
 
     // ── Form fields (Days 6–10) ─────────────────────────────────────────
     {
+      cell_id: "85b28e28-d0ad-4e03-af32-203196e41970",
       word: "Nome",
       en: "given name",
       vi: "tên",
@@ -302,6 +311,7 @@ export const lesson: ItalianLesson = {
       pronunciation_en: "The 'Nome' box = your first/given name",
     },
     {
+      cell_id: "270276fd-6e50-4a77-b36f-0dbb72a253e6",
       word: "Cognome",
       en: "family name / surname",
       vi: "họ",
@@ -310,6 +320,7 @@ export const lesson: ItalianLesson = {
       pronunciation_en: "'Cognome' = surname; learners often swap it with 'Nome'",
     },
     {
+      cell_id: "6a1e6a1d-7632-461d-b906-cdf754a52c13",
       word: "Data di nascita",
       en: "date of birth",
       vi: "ngày sinh",
@@ -318,6 +329,7 @@ export const lesson: ItalianLesson = {
       pronunciation_en: "Italian format is day/month/year (gg/mm/aaaa)",
     },
     {
+      cell_id: "e8df8114-cd36-4e7f-9fe1-c33c22ca9b8b",
       word: "Luogo di nascita",
       en: "place of birth",
       vi: "nơi sinh",
@@ -326,6 +338,7 @@ export const lesson: ItalianLesson = {
       pronunciation_en: "Enter the town/city of birth",
     },
     {
+      cell_id: "ade99c12-3880-4240-bdeb-75c56c09851d",
       word: "Indirizzo",
       en: "address",
       vi: "địa chỉ",
@@ -334,6 +347,7 @@ export const lesson: ItalianLesson = {
       pronunciation_en: "'Indirizzo' has a double 'zz' — write both z's",
     },
     {
+      cell_id: "7c04f8e1-fcc8-45ec-a8da-ec58e2f595f3",
       word: "Codice fiscale",
       en: "tax code",
       vi: "mã số thuế",
@@ -346,30 +360,35 @@ export const lesson: ItalianLesson = {
   // The 5-step daily method (repurposes `dialogue` as a numbered routine).
   dialogue: [
     {
+      cell_id: "1050e4f3-c898-42b7-966f-13392d10b978",
       speaker: "Passo 1",
       text: "Copia un testo modello.",
       vi: "Chép một văn bản mẫu.",
       en: "Copy one model text.",
     },
     {
+      cell_id: "77ef4327-f370-4516-a6ba-450ed51201f7",
       speaker: "Passo 2",
       text: "Segna gli articoli e le preposizioni.",
       vi: "Đánh dấu mạo từ và giới từ.",
       en: "Mark articles and prepositions.",
     },
     {
+      cell_id: "0c2baeb1-d1d7-4247-be7e-1fb470352153",
       speaker: "Passo 3",
       text: "Cambia nomi, date e dettagli.",
       vi: "Thay tên, ngày tháng và chi tiết.",
       en: "Replace names, dates, and details.",
     },
     {
+      cell_id: "d28f8a5d-47a9-4e7d-bd36-98813a74ef57",
       speaker: "Passo 4",
       text: "Scrivi la tua versione.",
       vi: "Viết phiên bản của riêng bạn.",
       en: "Write your own version.",
     },
     {
+      cell_id: "3f533836-c528-49ce-8cd6-082a298a2669",
       speaker: "Passo 5",
       text: "Correggi un errore tipico dei vietnamiti.",
       vi: "Sửa một lỗi điển hình của người Việt.",

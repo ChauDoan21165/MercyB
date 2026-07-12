@@ -18,6 +18,7 @@ export type PunjabiShipCandidateFocus =
 export type PunjabiShipCandidateStage = "ship_candidate" | "go_no_go" | "release_candidate" | "pre_integration" | "sanity";
 
 export type PunjabiScriptVocabularyShipCandidateSample = {
+  cell_id?: string;
   id: string;
   focus: PunjabiShipCandidateFocus;
   stage: PunjabiShipCandidateStage;
@@ -39,6 +40,7 @@ export type PunjabiScriptVocabularyShipCandidateSample = {
 };
 
 export type PunjabiScriptVocabularyShipCandidateSection = {
+  cell_id?: string;
   focus: PunjabiShipCandidateFocus;
   title_vi: string;
   title_en: string;

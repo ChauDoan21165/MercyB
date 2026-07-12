@@ -6,6 +6,7 @@ type IndonesianLessonSentence = {
 };
 
 type VocabEntry = {
+  cell_id?: string;
   word: string;
   meaning_vi: string;
   meaning_en: string;
@@ -14,6 +15,7 @@ type VocabEntry = {
 };
 
 type DialogueLine = {
+  cell_id?: string;
   speaker: string;
   line: string;
   vi: string;
@@ -117,6 +119,7 @@ export const lessons: IndonesianLesson[] = [
     ],
     vocabulary: [
       {
+        cell_id: "dba73c5a-1880-489b-8c4c-ca06d414aeac",
         word: 'kontrak sewa',
         meaning_vi: 'hợp đồng thuê',
         meaning_en: 'rental contract',
@@ -124,6 +127,7 @@ export const lessons: IndonesianLesson[] = [
         example_vi: 'Hợp đồng thuê cần được đọc kỹ.',
       },
       {
+        cell_id: "cf5e81cb-9c53-466a-b65f-8b5454752c7f",
         word: 'masa sewa',
         meaning_vi: 'thời hạn thuê',
         meaning_en: 'lease term',
@@ -131,6 +135,7 @@ export const lessons: IndonesianLesson[] = [
         example_vi: 'Thời hạn thuê kết thúc vào tháng Mười Hai.',
       },
       {
+        cell_id: "a76df159-4cfd-4a47-9633-9f519c815236",
         word: 'naik harga',
         meaning_vi: 'tăng giá',
         meaning_en: 'price increase',
@@ -138,6 +143,7 @@ export const lessons: IndonesianLesson[] = [
         example_vi: 'Chủ nhà muốn tăng giá vào năm sau.',
       },
       {
+        cell_id: "e7e943cf-9a96-4b6e-b319-8dcfebac9d48",
         word: 'perpanjang kontrak',
         meaning_vi: 'gia hạn hợp đồng',
         meaning_en: 'extend or renew a contract',
@@ -145,6 +151,7 @@ export const lessons: IndonesianLesson[] = [
         example_vi: 'Chúng tôi muốn gia hạn hợp đồng trong sáu tháng.',
       },
       {
+        cell_id: "9cf963f6-7a64-455e-837a-8af237db1103",
         word: 'deposit',
         meaning_vi: 'tiền cọc',
         meaning_en: 'deposit',
@@ -152,6 +159,7 @@ export const lessons: IndonesianLesson[] = [
         example_vi: 'Tiền cọc được trả khi ký hợp đồng.',
       },
       {
+        cell_id: "17f17015-d127-4bf5-8f8c-325f860f3ed6",
         word: 'perbaikan rumah',
         meaning_vi: 'sửa chữa nhà',
         meaning_en: 'home repairs',
@@ -159,6 +167,7 @@ export const lessons: IndonesianLesson[] = [
         example_vi: 'Việc sửa chữa nhà là trách nhiệm của chủ nhà.',
       },
       {
+        cell_id: "8cc11c87-006d-4c7a-bcfb-98b10d609ea3",
         word: 'negosiasi',
         meaning_vi: 'thương lượng, đàm phán',
         meaning_en: 'negotiation',
@@ -166,6 +175,7 @@ export const lessons: IndonesianLesson[] = [
         example_vi: 'Việc thương lượng giá được thực hiện trước khi hợp đồng được ký.',
       },
       {
+        cell_id: "5a302768-cca4-4957-bffa-0f67dc8d44d2",
         word: 'tanda tangan',
         meaning_vi: 'chữ ký, ký tên',
         meaning_en: 'signature or signing',
@@ -175,36 +185,42 @@ export const lessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "fb11236b-8f03-4d2b-a32a-754c26679ff8",
         speaker: 'Penyewa',
         line: 'Pak, saya ingin membahas kontrak sewa sebelum tanda tangan.',
         vi: 'Anh/chú ơi, tôi muốn thảo luận hợp đồng thuê trước khi ký.',
         en: 'Sir, I would like to discuss the rental contract before signing.',
       },
       {
+        cell_id: "a57b75cf-7517-418f-9f67-16d5e20bfbb5",
         speaker: 'Pemilik Rumah',
         line: 'Boleh. Bagian mana yang ingin dibahas?',
         vi: 'Được. Phần nào muốn thảo luận?',
         en: 'Sure. Which part would you like to discuss?',
       },
       {
+        cell_id: "cc826236-2233-46b6-a763-22ffc405d798",
         speaker: 'Penyewa',
         line: 'Saya mau memastikan masa sewa dan aturan deposit.',
         vi: 'Tôi muốn xác nhận thời hạn thuê và quy định tiền cọc.',
         en: 'I want to confirm the lease term and deposit rules.',
       },
       {
+        cell_id: "adb90a71-eaff-4831-a750-f004289a7734",
         speaker: 'Pemilik Rumah',
         line: 'Masa sewa satu tahun. Deposit dikembalikan kalau tidak ada kerusakan.',
         vi: 'Thời hạn thuê là một năm. Tiền cọc được trả lại nếu không có hư hỏng.',
         en: 'The lease term is one year. The deposit is returned if there is no damage.',
       },
       {
+        cell_id: "cfb1168e-ccb6-47dc-9667-f644e4bb3422",
         speaker: 'Penyewa',
         line: 'Kalau tahun depan harga sewa naik, apakah bisa negosiasi dulu?',
         vi: 'Nếu năm sau giá thuê tăng, có thể thương lượng trước không?',
         en: 'If the rent increases next year, can we negotiate first?',
       },
       {
+        cell_id: "0a1f3633-4f1a-4667-8f43-6b2903d12e88",
         speaker: 'Pemilik Rumah',
         line: 'Bisa. Kita tulis syarat perpanjang kontrak di sini.',
         vi: 'Có thể. Chúng ta ghi điều kiện gia hạn hợp đồng ở đây.',

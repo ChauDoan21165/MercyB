@@ -99,6 +99,11 @@ function stringField(properties, field) {
   return stringValue(properties.get(field));
 }
 
+function populatedStringField(properties, field) {
+  const value = stringField(properties, field);
+  return value && value.trim().length > 0 ? value.trim() : "";
+}
+
 function hasArrayField(properties, field) {
   return properties.get(field) && ts.isArrayLiteralExpression(properties.get(field));
 }
@@ -190,6 +195,7 @@ function percent(numerator, denominator) {
 function emptyCoverage() {
   return {
     objects: 0,
+    cellIdCoveredObjects: 0,
     ipaCoveredObjects: 0,
     audioCoveredObjects: 0,
     uniqueWordTokens: 0,
@@ -197,6 +203,7 @@ function emptyCoverage() {
     audioCoveredUniqueWordTokens: 0,
     uncoveredIpaObjects: 0,
     uncoveredAudioObjects: 0,
+    uncoveredCellIdObjects: 0,
     uncoveredIpaUniqueWordTokens: 0,
     uncoveredAudioUniqueWordTokens: 0,
     ipaObjectPercent: 100,
@@ -221,6 +228,7 @@ function summarizeType(items, type) {
   const summary = {
     ...emptyCoverage(),
     objects: selected.length,
+    cellIdCoveredObjects: selected.filter((item) => item.cellId).length,
     ipaCoveredObjects: selected.filter((item) => item.ipaCovered).length,
     audioCoveredObjects: selected.filter((item) => item.audioCovered).length,
     uniqueWordTokens: byToken.size,
@@ -229,6 +237,7 @@ function summarizeType(items, type) {
   };
   summary.uncoveredIpaObjects = summary.objects - summary.ipaCoveredObjects;
   summary.uncoveredAudioObjects = summary.objects - summary.audioCoveredObjects;
+  summary.uncoveredCellIdObjects = summary.objects - summary.cellIdCoveredObjects;
   summary.uncoveredIpaUniqueWordTokens = summary.uniqueWordTokens - summary.ipaCoveredUniqueWordTokens;
   summary.uncoveredAudioUniqueWordTokens = summary.uniqueWordTokens - summary.audioCoveredUniqueWordTokens;
   summary.ipaObjectPercent = percent(summary.ipaCoveredObjects, summary.objects);
@@ -236,6 +245,29 @@ function summarizeType(items, type) {
   summary.ipaUniqueWordTokenPercent = percent(summary.ipaCoveredUniqueWordTokens, summary.uniqueWordTokens);
   summary.audioUniqueWordTokenPercent = percent(summary.audioCoveredUniqueWordTokens, summary.uniqueWordTokens);
   return summary;
+}
+
+function summarizeCellIds(items) {
+  const populated = items.filter((item) => item.cellId);
+  const byId = new Map();
+  for (const item of populated) {
+    const existing = byId.get(item.cellId) || [];
+    existing.push(item);
+    byId.set(item.cellId, existing);
+  }
+  const duplicates = [...byId.entries()].filter(([, entries]) => entries.length > 1);
+  return {
+    totalObjects: items.length,
+    populated: populated.length,
+    missing: items.length - populated.length,
+    unique: byId.size,
+    duplicateIds: duplicates.length,
+    duplicateObjects: duplicates.reduce((sum, [, entries]) => sum + entries.length, 0),
+    duplicateSamples: duplicates.slice(0, 10).map(([id, entries]) => ({
+      id,
+      locations: entries.map((entry) => `${entry.file}:${entry.type}`).slice(0, 5),
+    })),
+  };
 }
 
 function clusterItems(items, key) {
@@ -302,6 +334,7 @@ export function scanCellCoverage(options = {}) {
             type,
             level,
             text: textForObject(properties, type),
+            cellId: populatedStringField(properties, "cell_id"),
             ipaCovered: ipaRefs.some((ref) => String(ref.value || "").trim().length > 0),
             audioCovered: audioRefs.some((ref) => resolveAudioReference(ref, audioAssets)),
           });
@@ -315,6 +348,7 @@ export function scanCellCoverage(options = {}) {
     dialogue: summarizeType(items, "dialogue"),
   };
   const combined = summarizeType(items.map((item) => ({ ...item, type: "all" })), "all");
+  const cellIds = summarizeCellIds(items);
 
   return {
     definitions: {
@@ -326,6 +360,7 @@ export function scanCellCoverage(options = {}) {
     filesWithCell: filesWithCell.size,
     lessonObjects: lessonObjectCount,
     audioAssets: audioAssets.size,
+    cellIds,
     totals,
     combined,
     clusters: {
@@ -370,6 +405,7 @@ export function compareCellCoverageToBaseline(current, baseline) {
 export function formatCellCoverageSummary(scan, baselineFindings = []) {
   const lines = [];
   lines.push(`CELL files scanned=${scan.filesScanned}; files_with_cell=${scan.filesWithCell}; lesson_objects=${scan.lessonObjects}; audio_assets=${scan.audioAssets}`);
+  lines.push(`cell_id: populated=${scan.cellIds.populated}/${scan.cellIds.totalObjects}; missing=${scan.cellIds.missing}; unique=${scan.cellIds.unique}; duplicate_ids=${scan.cellIds.duplicateIds}; duplicate_objects=${scan.cellIds.duplicateObjects}`);
   for (const type of ["vocabulary", "dialogue"]) {
     const s = scan.totals[type];
     lines.push(`${type}: objects=${s.objects}; IPA=${s.ipaCoveredObjects}/${s.objects} (${s.ipaObjectPercent}%); audio=${s.audioCoveredObjects}/${s.objects} (${s.audioObjectPercent}%); unique_tokens=${s.uniqueWordTokens}; IPA_tokens=${s.ipaCoveredUniqueWordTokens}/${s.uniqueWordTokens} (${s.ipaUniqueWordTokenPercent}%); audio_tokens=${s.audioCoveredUniqueWordTokens}/${s.uniqueWordTokens} (${s.audioUniqueWordTokenPercent}%)`);

@@ -17,6 +17,7 @@ type LessonSentence = {
 };
 
 type VocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -28,6 +29,7 @@ type VocabEntry = {
 };
 
 type DialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -144,6 +146,7 @@ export const homeApplianceRepairLessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: a broken machine is 'rusak', not 'tidak baik'. A device that will not power on is 'mati' or 'mati total'. To turn a device on, use 'menyalakan'; when the device turns on, use 'menyala'. This pair is easy to mix up.",
     vocabulary: [
       {
+        cell_id: "8a1f6271-22a4-4810-9bcc-f37e5ff81fae",
         word: "teknisi",
         en: "technician",
         vi: "kỹ thuật viên",
@@ -152,6 +155,7 @@ export const homeApplianceRepairLessons: IndonesianLesson[] = [
         pronunciation_en: "tek-NEE-see",
       },
       {
+        cell_id: "03bc4150-b9d1-4096-bfe8-6c26625615c9",
         word: "kulkas",
         en: "refrigerator",
         vi: "tủ lạnh",
@@ -160,6 +164,7 @@ export const homeApplianceRepairLessons: IndonesianLesson[] = [
         pronunciation_en: "KOOL-kas",
       },
       {
+        cell_id: "89691b86-4341-47c6-b213-d6d95d608f35",
         word: "mesin cuci",
         en: "washing machine",
         vi: "máy giặt",
@@ -168,6 +173,7 @@ export const homeApplianceRepairLessons: IndonesianLesson[] = [
         pronunciation_en: "me-SEEN CHOO-chee",
       },
       {
+        cell_id: "3f845ef4-45b3-45b9-b0c4-ba1051d971a1",
         word: "AC",
         en: "air conditioner",
         vi: "máy lạnh / điều hòa",
@@ -176,6 +182,7 @@ export const homeApplianceRepairLessons: IndonesianLesson[] = [
         pronunciation_en: "ah-seh",
       },
       {
+        cell_id: "bd683979-c40e-4898-bfff-93a2c0f51d3e",
         word: "kompor",
         en: "stove",
         vi: "bếp",
@@ -184,6 +191,7 @@ export const homeApplianceRepairLessons: IndonesianLesson[] = [
         pronunciation_en: "KOM-por",
       },
       {
+        cell_id: "f92db560-e3bb-4180-9df4-b89253e65f56",
         word: "rusak",
         en: "broken / damaged",
         vi: "hỏng",
@@ -192,6 +200,7 @@ export const homeApplianceRepairLessons: IndonesianLesson[] = [
         pronunciation_en: "ROO-sak",
       },
       {
+        cell_id: "a279b687-1771-48b0-ba71-4774b3a8ba14",
         word: "mati total",
         en: "completely dead",
         vi: "chết hẳn / không lên nguồn",
@@ -202,24 +211,28 @@ export const homeApplianceRepairLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "f9fba2d5-2b01-4407-b2e1-92becf454793",
         speaker: "Pelanggan",
         text: "Halo, saya butuh teknisi. Kulkas saya rusak.",
         vi: "Alô, tôi cần kỹ thuật viên. Tủ lạnh của tôi bị hỏng.",
         en: "Hello, I need a technician. My refrigerator is broken.",
       },
       {
+        cell_id: "273120e0-e1d8-475c-be09-3395ad5d99d2",
         speaker: "Teknisi",
         text: "Rusaknya bagaimana, Bu? Tidak dingin atau mati total?",
         vi: "Hỏng thế nào ạ? Không lạnh hay chết hẳn?",
         en: "How is it broken, ma'am? Not cold or completely dead?",
       },
       {
+        cell_id: "61c343ee-d5c3-4dce-967f-478540801184",
         speaker: "Pelanggan",
         text: "Tidak dingin sejak kemarin, tapi lampunya masih menyala.",
         vi: "Không lạnh từ hôm qua, nhưng đèn vẫn sáng.",
         en: "It has not been cold since yesterday, but the light still turns on.",
       },
       {
+        cell_id: "b83b48c2-7dfc-47c7-90b2-407af55d5f30",
         speaker: "Teknisi",
         text: "Baik, saya bisa datang sore ini untuk cek dulu.",
         vi: "Vâng, chiều nay tôi có thể đến kiểm tra trước.",
@@ -374,6 +387,7 @@ export const homeApplianceRepairLessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: Indonesian 'servis' works as both noun and verb in everyday speech: 'servis AC', 'biaya servis'. For a more formal word, use 'perbaikan'. Ask first with 'Tolong beri estimasi biaya sebelum diperbaiki' to avoid money misunderstandings.",
     vocabulary: [
       {
+        cell_id: "15d1b9f2-0e44-484b-b888-8896f7f43c82",
         word: "garansi",
         en: "warranty",
         vi: "bảo hành",
@@ -382,6 +396,7 @@ export const homeApplianceRepairLessons: IndonesianLesson[] = [
         pronunciation_en: "ga-RAN-see",
       },
       {
+        cell_id: "e245b8ce-2b35-4730-9cfd-e2c582ae6c1b",
         word: "biaya servis",
         en: "service fee / repair cost",
         vi: "phí sửa chữa / phí dịch vụ",
@@ -390,6 +405,7 @@ export const homeApplianceRepairLessons: IndonesianLesson[] = [
         pronunciation_en: "bee-A-ya SER-vis",
       },
       {
+        cell_id: "31be9f46-bf95-423d-82ab-cf329b2da8be",
         word: "spare part",
         en: "spare part / component",
         vi: "linh kiện / phụ tùng",
@@ -398,6 +414,7 @@ export const homeApplianceRepairLessons: IndonesianLesson[] = [
         pronunciation_en: "SPARE part",
       },
       {
+        cell_id: "2c207265-1f96-45e3-bf03-63a0632c1dff",
         word: "diganti",
         en: "replaced",
         vi: "được thay",
@@ -406,6 +423,7 @@ export const homeApplianceRepairLessons: IndonesianLesson[] = [
         pronunciation_en: "dee-GAN-tee",
       },
       {
+        cell_id: "63ac1b39-0508-44e6-9fb1-c4c2b0c741e6",
         word: "estimasi biaya",
         en: "cost estimate",
         vi: "ước tính chi phí",
@@ -414,6 +432,7 @@ export const homeApplianceRepairLessons: IndonesianLesson[] = [
         pronunciation_en: "es-tee-MA-see bee-A-ya",
       },
       {
+        cell_id: "66055cea-b3f6-4a7c-af32-a51e99d24a44",
         word: "nota",
         en: "receipt / service slip",
         vi: "phiếu / biên nhận",
@@ -422,6 +441,7 @@ export const homeApplianceRepairLessons: IndonesianLesson[] = [
         pronunciation_en: "NO-ta",
       },
       {
+        cell_id: "0fc67612-547d-484f-a02b-3319df547cf0",
         word: "diperbaiki",
         en: "repaired",
         vi: "được sửa",
@@ -432,24 +452,28 @@ export const homeApplianceRepairLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "0e88c52f-6490-4447-a305-efbacc73f82f",
         speaker: "Pelanggan",
         text: "Apakah mesin cuci ini masih dalam masa garansi?",
         vi: "Máy giặt này vẫn còn trong thời hạn bảo hành không?",
         en: "Is this washing machine still under warranty?",
       },
       {
+        cell_id: "24d2c37d-8657-4de7-b92a-a3d1cbae31c0",
         speaker: "Teknisi",
         text: "Boleh saya lihat nota pembelian dan kartu garansi?",
         vi: "Tôi có thể xem hóa đơn mua hàng và thẻ bảo hành không?",
         en: "May I see the purchase receipt and warranty card?",
       },
       {
+        cell_id: "8a039184-7c38-44c7-b7eb-6957585c5c16",
         speaker: "Pelanggan",
         text: "Kalau perlu ganti spare part, tolong beri estimasi biaya dulu.",
         vi: "Nếu cần thay linh kiện, làm ơn báo ước tính chi phí trước.",
         en: "If a spare part needs replacing, please give a cost estimate first.",
       },
       {
+        cell_id: "7f0c8bec-08e8-4b24-9a7b-0060aef1998a",
         speaker: "Teknisi",
         text: "Baik. Saya cek dulu, lalu kabari biaya servisnya.",
         vi: "Vâng. Tôi kiểm tra trước, rồi báo phí sửa.",

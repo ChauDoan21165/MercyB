@@ -13,6 +13,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -22,6 +23,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -208,6 +210,7 @@ export const lessons: IndonesianLesson[] = [
       "Safe speaking frame: `Maaf, mobilnya menghalangi jalan`, `Kalau bisa, tolong pindahkan mobilnya`, `Bisa kita bicarakan lewat RT/RW?`. To sound softer, focus on the narrow road, access, and resident agreement, not blame.",
     vocabulary: [
       {
+        cell_id: "5d83e487-c5ca-4c7c-baaa-05c1ba25bfd0",
         word: "parkir sembarangan",
         en: "park carelessly / anywhere",
         vi: "đỗ xe bừa bãi",
@@ -216,6 +219,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "PAR-keer sem-bah-RAHN-gahn",
       },
       {
+        cell_id: "ded62ab3-19c2-405c-a465-05aa7abb5929",
         word: "jalan sempit",
         en: "narrow road",
         vi: "đường hẹp",
@@ -224,6 +228,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "JAH-lahn SEM-peet",
       },
       {
+        cell_id: "696460b6-b113-4a55-b73f-1994bf5f035e",
         word: "menegur sopan",
         en: "to warn/remind politely",
         vi: "nhắc nhở lịch sự",
@@ -232,6 +237,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "meh-neh-GOOR SOH-pahn",
       },
       {
+        cell_id: "da082188-0d6b-4ddb-ab23-55b54238d70c",
         word: "RT/RW",
         en: "neighborhood association leaders",
         vi: "ban khu phố / tổ dân phố",
@@ -240,6 +246,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "AR-TEE / AR-DUB-lyoo",
       },
       {
+        cell_id: "5748eb4a-6cb3-4412-b703-202c167b2ec2",
         word: "mobil tamu",
         en: "visitor's car",
         vi: "xe của khách",
@@ -248,6 +255,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "MOH-beel TAH-moo",
       },
       {
+        cell_id: "bb7d98e7-a7e8-4379-8914-7457f4ae7dad",
         word: "kesepakatan warga",
         en: "resident agreement",
         vi: "thỏa thuận của cư dân",
@@ -256,6 +264,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "ke-se-pa-KAH-tan WAHR-gah",
       },
       {
+        cell_id: "8f85f69f-77fb-477a-9724-f670d935661d",
         word: "garasi",
         en: "garage",
         vi: "gara",
@@ -264,6 +273,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "gah-RAH-see",
       },
       {
+        cell_id: "cbb460b5-ebd3-451f-8260-53e98088efc0",
         word: "pindahkan",
         en: "move (something) away",
         vi: "dời đi / chuyển đi",
@@ -274,24 +284,28 @@ export const lessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "975a130a-6f9e-4d71-be63-40d4f868593c",
         speaker: "Warga A",
         text: "Maaf, mobilnya parkir menghalangi jalan sempit ini.",
         vi: "Xin lỗi, xe đang đỗ chắn con đường hẹp này.",
         en: "Sorry, the car is parked and blocking this narrow road.",
       },
       {
+        cell_id: "8bfd4d98-7d89-45e7-88fb-4daa90fb6989",
         speaker: "Warga B",
         text: "Oh, maaf. Saya pindahkan ke garasi sekarang.",
         vi: "Ồ, xin lỗi. Tôi sẽ dời vào gara ngay.",
         en: "Oh, sorry. I will move it into the garage now.",
       },
       {
+        cell_id: "227f6a25-c531-40c8-90d8-21b64a951e86",
         speaker: "Warga A",
         text: "Terima kasih. Kami cuma ingin menjaga jalan tetap bisa dilewati.",
         vi: "Cảm ơn. Chúng tôi chỉ muốn giữ cho đường đi vẫn thông suốt.",
         en: "Thank you. We just want to keep the road passable.",
       },
       {
+        cell_id: "1d6feadf-1ada-47fc-8995-831c5733977b",
         speaker: "Warga B",
         text: "Kalau ada masalah lagi, mari kita bicarakan lewat RT.",
         vi: "Nếu còn vấn đề gì nữa, hãy cùng bàn qua RT.",

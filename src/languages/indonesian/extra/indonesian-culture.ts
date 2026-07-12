@@ -30,6 +30,7 @@ export type LessonSentence = {
 };
 
 export type VocabEntry = {
+  cell_id?: string;
   // Indonesian word/phrase.
   word: string;
   en: string;
@@ -42,6 +43,7 @@ export type VocabEntry = {
 };
 
 export type DialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -139,19 +141,19 @@ export const lessons: IndonesianLesson[] = [
     tip_advice_en:
       "Pronunciation tip for Vietnamese speakers: the Indonesian 'r' is rolled/tapped (like Spanish), never softened to a 'd' or 'z'. Word-initial 'ng' (as in many affixed verbs) is the hardest sound — see pronunciation-guide.ts.",
     vocabulary: [
-      { word: "gotong royong", en: "communal cooperation", vi: "tinh thần tương trợ cộng đồng", pos: "noun phrase", pronunciation_vi: "go-TONG ro-YONG", pronunciation_en: "go-TONG ro-YONG" },
-      { word: "kerja bakti", en: "community volunteer work", vi: "lao động công ích", pos: "noun phrase", pronunciation_vi: "KER-ja BAK-ti", pronunciation_en: "KER-jah BAHK-tee" },
-      { word: "tetangga", en: "neighbour", vi: "hàng xóm", pos: "noun", pronunciation_vi: "te-TANG-ga", pronunciation_en: "tuh-TANG-gah" },
-      { word: "warga", en: "resident, citizen", vi: "dân cư, công dân", pos: "noun", pronunciation_vi: "WAR-ga", pronunciation_en: "WAR-gah" },
-      { word: "masyarakat", en: "society, community", vi: "xã hội", pos: "noun", pronunciation_vi: "ma-sya-ra-KAT", pronunciation_en: "mah-sya-rah-KAT" },
-      { word: "bersama", en: "together", vi: "cùng nhau", pos: "adverb", pronunciation_vi: "ber-SA-ma", pronunciation_en: "ber-SAH-mah" },
-      { word: "membantu", en: "to help", vi: "giúp đỡ", pos: "verb", pronunciation_vi: "mem-BAN-tu", pronunciation_en: "mem-BAN-too" },
+      { cell_id: "8d3a4c34-b2e9-4374-b49e-43682c117da5", word: "gotong royong", en: "communal cooperation", vi: "tinh thần tương trợ cộng đồng", pos: "noun phrase", pronunciation_vi: "go-TONG ro-YONG", pronunciation_en: "go-TONG ro-YONG" },
+      { cell_id: "8d7848ca-3a2b-40a6-8790-adb33469d08b", word: "kerja bakti", en: "community volunteer work", vi: "lao động công ích", pos: "noun phrase", pronunciation_vi: "KER-ja BAK-ti", pronunciation_en: "KER-jah BAHK-tee" },
+      { cell_id: "9e7bcd55-d388-4878-b794-430a70a126e0", word: "tetangga", en: "neighbour", vi: "hàng xóm", pos: "noun", pronunciation_vi: "te-TANG-ga", pronunciation_en: "tuh-TANG-gah" },
+      { cell_id: "74a4a08b-4bf9-45f4-ba7f-f81f24f66f4b", word: "warga", en: "resident, citizen", vi: "dân cư, công dân", pos: "noun", pronunciation_vi: "WAR-ga", pronunciation_en: "WAR-gah" },
+      { cell_id: "2add9b9d-f3b8-4b55-a194-85f26aaacdf8", word: "masyarakat", en: "society, community", vi: "xã hội", pos: "noun", pronunciation_vi: "ma-sya-ra-KAT", pronunciation_en: "mah-sya-rah-KAT" },
+      { cell_id: "4dd1929e-142a-4f6d-8a5b-c66aa63aeecd", word: "bersama", en: "together", vi: "cùng nhau", pos: "adverb", pronunciation_vi: "ber-SA-ma", pronunciation_en: "ber-SAH-mah" },
+      { cell_id: "b4e80758-7686-48cb-b282-5540477c7038", word: "membantu", en: "to help", vi: "giúp đỡ", pos: "verb", pronunciation_vi: "mem-BAN-tu", pronunciation_en: "mem-BAN-too" },
     ],
     dialogue: [
-      { speaker: "Pak Budi", text: "Besok ada kerja bakti di kampung. Bisa ikut?", vi: "Mai có lao động công ích ở làng. Tham gia được không?", en: "There's community work in the neighbourhood tomorrow. Can you join?" },
-      { speaker: "Anh", text: "Tentu saja! Saya bawa apa?", vi: "Tất nhiên! Tôi mang gì đến?", en: "Of course! What should I bring?" },
-      { speaker: "Pak Budi", text: "Bawa sapu saja. Kita bersihkan selokan bersama.", vi: "Mang chổi thôi. Chúng ta cùng dọn cống rãnh.", en: "Just bring a broom. We'll clean the drains together." },
-      { speaker: "Anh", text: "Siap, Pak. Gotong royong memang penting.", vi: "Sẵn sàng, bác ạ. Tinh thần tương trợ đúng là quan trọng.", en: "Ready, sir. Mutual cooperation really matters." },
+      { cell_id: "ca067dd2-d0c5-452f-bfb1-8d0f40a93ccd", speaker: "Pak Budi", text: "Besok ada kerja bakti di kampung. Bisa ikut?", vi: "Mai có lao động công ích ở làng. Tham gia được không?", en: "There's community work in the neighbourhood tomorrow. Can you join?" },
+      { cell_id: "58346948-1ff1-4dfc-86ab-37423c904540", speaker: "Anh", text: "Tentu saja! Saya bawa apa?", vi: "Tất nhiên! Tôi mang gì đến?", en: "Of course! What should I bring?" },
+      { cell_id: "dd8428cf-1544-4d65-a798-95630879d07d", speaker: "Pak Budi", text: "Bawa sapu saja. Kita bersihkan selokan bersama.", vi: "Mang chổi thôi. Chúng ta cùng dọn cống rãnh.", en: "Just bring a broom. We'll clean the drains together." },
+      { cell_id: "844d0f18-e6be-473e-b244-11d82ae1f9bb", speaker: "Anh", text: "Siap, Pak. Gotong royong memang penting.", vi: "Sẵn sàng, bác ạ. Tinh thần tương trợ đúng là quan trọng.", en: "Ready, sir. Mutual cooperation really matters." },
     ],
     exercises: [
       {
@@ -245,12 +247,12 @@ export const lessons: IndonesianLesson[] = [
     tip_advice_en:
       "Golden rule for Vietnamese speakers: Indonesian 'c' is ALWAYS 'ch' as in 'church', never 'k'. 'Pancasila' = 'pan-cha-see-lah'; 'baca' (to read) = 'BAH-chah'. This is the number-one beginner error.",
     vocabulary: [
-      { word: "Pancasila", en: "the five state principles", vi: "năm nguyên tắc lập quốc", pos: "proper noun", pronunciation_vi: "pan-ca-SI-la", pronunciation_en: "pan-cha-SEE-lah" },
-      { word: "negara", en: "state, nation", vi: "quốc gia, nhà nước", pos: "noun", pronunciation_vi: "ne-GA-ra", pronunciation_en: "nuh-GAH-rah" },
-      { word: "dasar", en: "basis, foundation", vi: "nền tảng", pos: "noun", pronunciation_vi: "DA-sar", pronunciation_en: "DAH-sar" },
-      { word: "persatuan", en: "unity", vi: "sự thống nhất", pos: "noun", pronunciation_vi: "per-sa-TU-an", pronunciation_en: "per-sah-TOO-an" },
-      { word: "keadilan", en: "justice", vi: "công lý, công bằng", pos: "noun", pronunciation_vi: "ke-a-DIL-an", pronunciation_en: "kuh-ah-DEEL-an" },
-      { word: "Bhinneka Tunggal Ika", en: "Unity in Diversity", vi: "Thống nhất trong đa dạng", pos: "motto", pronunciation_vi: "bin-NE-ka TUNG-gal I-ka", pronunciation_en: "bin-NEH-kah TOONG-gal EE-kah" },
+      { cell_id: "60912a41-6659-40c8-9419-83b8b8b29196", word: "Pancasila", en: "the five state principles", vi: "năm nguyên tắc lập quốc", pos: "proper noun", pronunciation_vi: "pan-ca-SI-la", pronunciation_en: "pan-cha-SEE-lah" },
+      { cell_id: "a41547b3-a9b4-4e03-b615-4356f79ea793", word: "negara", en: "state, nation", vi: "quốc gia, nhà nước", pos: "noun", pronunciation_vi: "ne-GA-ra", pronunciation_en: "nuh-GAH-rah" },
+      { cell_id: "50bd6a50-4259-46ff-85c2-4618028908eb", word: "dasar", en: "basis, foundation", vi: "nền tảng", pos: "noun", pronunciation_vi: "DA-sar", pronunciation_en: "DAH-sar" },
+      { cell_id: "d065a521-73ef-4665-bc28-9162dfbc5623", word: "persatuan", en: "unity", vi: "sự thống nhất", pos: "noun", pronunciation_vi: "per-sa-TU-an", pronunciation_en: "per-sah-TOO-an" },
+      { cell_id: "0e110c58-f080-464d-bf67-ab52eafcde44", word: "keadilan", en: "justice", vi: "công lý, công bằng", pos: "noun", pronunciation_vi: "ke-a-DIL-an", pronunciation_en: "kuh-ah-DEEL-an" },
+      { cell_id: "ffc9e92c-6174-4da7-b3a4-fdc9f3216ac9", word: "Bhinneka Tunggal Ika", en: "Unity in Diversity", vi: "Thống nhất trong đa dạng", pos: "motto", pronunciation_vi: "bin-NE-ka TUNG-gal I-ka", pronunciation_en: "bin-NEH-kah TOONG-gal EE-kah" },
     ],
     exercises: [
       {
@@ -342,18 +344,18 @@ export const lessons: IndonesianLesson[] = [
     tip_advice_en:
       "Map it to Vietnamese: Lebaran = Indonesia's Tết, 'mudik' = going home for the holiday, 'THR' = lucky money. Learn 'mohon maaf lahir dan batin' as one fixed chunk, not word by word.",
     vocabulary: [
-      { word: "Lebaran", en: "Eid al-Fitr (popular name)", vi: "lễ Idul Fitri", pos: "noun", pronunciation_vi: "le-BA-ran", pronunciation_en: "luh-BAH-ran" },
-      { word: "mudik", en: "holiday homecoming", vi: "về quê dịp lễ", pos: "verb/noun", pronunciation_vi: "MU-dik", pronunciation_en: "MOO-dik" },
-      { word: "ketupat", en: "woven rice cake", vi: "bánh gạo gói lá", pos: "noun", pronunciation_vi: "ke-TU-pat", pronunciation_en: "kuh-TOO-pat" },
-      { word: "keluarga", en: "family", vi: "gia đình", pos: "noun", pronunciation_vi: "ke-lu-AR-ga", pronunciation_en: "kuh-loo-AR-gah" },
-      { word: "maaf", en: "sorry, forgiveness", vi: "xin lỗi", pos: "noun/interjection", pronunciation_vi: "ma-AF", pronunciation_en: "mah-AF" },
-      { word: "selamat", en: "congratulations, safe", vi: "chúc mừng, an lành", pos: "interjection", pronunciation_vi: "se-LA-mat", pronunciation_en: "suh-LAH-mat" },
-      { word: "THR (tunjangan hari raya)", en: "holiday bonus / cash gift", vi: "tiền lì xì lễ", pos: "noun", pronunciation_vi: "te-ha-ER", pronunciation_en: "teh-hah-AIR" },
+      { cell_id: "bdb9d969-41c6-4ab6-a379-d9a10e82f865", word: "Lebaran", en: "Eid al-Fitr (popular name)", vi: "lễ Idul Fitri", pos: "noun", pronunciation_vi: "le-BA-ran", pronunciation_en: "luh-BAH-ran" },
+      { cell_id: "7a556db9-92f6-4337-9df5-bbf58d2a3c8e", word: "mudik", en: "holiday homecoming", vi: "về quê dịp lễ", pos: "verb/noun", pronunciation_vi: "MU-dik", pronunciation_en: "MOO-dik" },
+      { cell_id: "186dad08-9bb7-484d-8765-c43b46211f38", word: "ketupat", en: "woven rice cake", vi: "bánh gạo gói lá", pos: "noun", pronunciation_vi: "ke-TU-pat", pronunciation_en: "kuh-TOO-pat" },
+      { cell_id: "e36d6bf2-a125-41c6-ad0c-1cfec880d735", word: "keluarga", en: "family", vi: "gia đình", pos: "noun", pronunciation_vi: "ke-lu-AR-ga", pronunciation_en: "kuh-loo-AR-gah" },
+      { cell_id: "731e6276-8efe-4e5a-8ce4-3a142ff34f98", word: "maaf", en: "sorry, forgiveness", vi: "xin lỗi", pos: "noun/interjection", pronunciation_vi: "ma-AF", pronunciation_en: "mah-AF" },
+      { cell_id: "2eb970ba-d401-432b-abfe-c42da0f9eb5b", word: "selamat", en: "congratulations, safe", vi: "chúc mừng, an lành", pos: "interjection", pronunciation_vi: "se-LA-mat", pronunciation_en: "suh-LAH-mat" },
+      { cell_id: "8c39d656-f649-4555-b322-db51c8c49223", word: "THR (tunjangan hari raya)", en: "holiday bonus / cash gift", vi: "tiền lì xì lễ", pos: "noun", pronunciation_vi: "te-ha-ER", pronunciation_en: "teh-hah-AIR" },
     ],
     dialogue: [
-      { speaker: "Rina", text: "Selamat Idul Fitri! Mohon maaf lahir dan batin ya.", vi: "Chúc mừng Idul Fitri! Mong bạn thứ lỗi mọi điều nhé.", en: "Happy Eid! Please forgive me for everything." },
-      { speaker: "Anh", text: "Sama-sama. Mohon maaf juga. Mudik ke mana?", vi: "Cũng vậy. Tôi cũng xin lỗi. Về quê ở đâu thế?", en: "Likewise. I'm sorry too. Where are you heading home to?" },
-      { speaker: "Rina", text: "Ke Yogyakarta. Rumah orang tua di sana.", vi: "Về Yogyakarta. Nhà bố mẹ ở đó.", en: "To Yogyakarta. My parents' home is there." },
+      { cell_id: "d287742c-84c6-4181-8d99-583aab090e5a", speaker: "Rina", text: "Selamat Idul Fitri! Mohon maaf lahir dan batin ya.", vi: "Chúc mừng Idul Fitri! Mong bạn thứ lỗi mọi điều nhé.", en: "Happy Eid! Please forgive me for everything." },
+      { cell_id: "0eb369d0-e56e-434c-be4c-edbacfa56f23", speaker: "Anh", text: "Sama-sama. Mohon maaf juga. Mudik ke mana?", vi: "Cũng vậy. Tôi cũng xin lỗi. Về quê ở đâu thế?", en: "Likewise. I'm sorry too. Where are you heading home to?" },
+      { cell_id: "edefa848-846f-42b8-8339-5f6c3e763b30", speaker: "Rina", text: "Ke Yogyakarta. Rumah orang tua di sana.", vi: "Về Yogyakarta. Nhà bố mẹ ở đó.", en: "To Yogyakarta. My parents' home is there." },
     ],
     exercises: [
       {
@@ -438,12 +440,12 @@ export const lessons: IndonesianLesson[] = [
     tip_advice_en:
       "'ny' = the Vietnamese 'nh' sound — an EASY sound for Vietnamese speakers (Nyepi = 'nyeh-pee'). The passive 'di-' prefix (ditutup = 'is closed') maps neatly onto Vietnamese 'bị/được' passive constructions.",
     vocabulary: [
-      { word: "Nyepi", en: "Day of Silence", vi: "Ngày Tĩnh Lặng", pos: "proper noun", pronunciation_vi: "NYE-pi", pronunciation_en: "NYEH-pee" },
-      { word: "umat", en: "religious community", vi: "tín đồ, cộng đồng", pos: "noun", pronunciation_vi: "U-mat", pronunciation_en: "OO-mat" },
-      { word: "diam", en: "silent, still", vi: "im lặng, ở yên", pos: "adjective/verb", pronunciation_vi: "DI-am", pronunciation_en: "DEE-am" },
-      { word: "bandara", en: "airport", vi: "sân bay", pos: "noun", pronunciation_vi: "ban-DA-ra", pronunciation_en: "ban-DAH-rah" },
-      { word: "Ogoh-ogoh", en: "giant demon effigy", vi: "hình nộm quỷ khổng lồ", pos: "noun", pronunciation_vi: "O-goh O-goh", pronunciation_en: "OH-goh OH-goh" },
-      { word: "merenung", en: "to reflect, contemplate", vi: "suy ngẫm", pos: "verb", pronunciation_vi: "me-re-NUNG", pronunciation_en: "muh-ruh-NOONG" },
+      { cell_id: "18ae95a8-489b-4d87-b92e-b5c839283001", word: "Nyepi", en: "Day of Silence", vi: "Ngày Tĩnh Lặng", pos: "proper noun", pronunciation_vi: "NYE-pi", pronunciation_en: "NYEH-pee" },
+      { cell_id: "7b6a5c9b-c7df-4af5-b4f8-98727a10b05d", word: "umat", en: "religious community", vi: "tín đồ, cộng đồng", pos: "noun", pronunciation_vi: "U-mat", pronunciation_en: "OO-mat" },
+      { cell_id: "74a6f357-98a3-41d0-b3ca-4591273829d3", word: "diam", en: "silent, still", vi: "im lặng, ở yên", pos: "adjective/verb", pronunciation_vi: "DI-am", pronunciation_en: "DEE-am" },
+      { cell_id: "febb1e6e-fb79-46a8-935b-4cbb091b4d6d", word: "bandara", en: "airport", vi: "sân bay", pos: "noun", pronunciation_vi: "ban-DA-ra", pronunciation_en: "ban-DAH-rah" },
+      { cell_id: "bb12799b-a49d-4a9d-b98f-09d3edad3ffa", word: "Ogoh-ogoh", en: "giant demon effigy", vi: "hình nộm quỷ khổng lồ", pos: "noun", pronunciation_vi: "O-goh O-goh", pronunciation_en: "OH-goh OH-goh" },
+      { cell_id: "a399a20a-8494-47ff-b083-bb055a5b0bbd", word: "merenung", en: "to reflect, contemplate", vi: "suy ngẫm", pos: "verb", pronunciation_vi: "me-re-NUNG", pronunciation_en: "muh-ruh-NOONG" },
     ],
     exercises: [
       {
@@ -526,17 +528,17 @@ export const lessons: IndonesianLesson[] = [
     tip_advice_en:
       "Watch vowel sequences: 'kain', 'daerah', 'pakai' keep each vowel distinct — Vietnamese speakers tend to collapse them. And again: 'c' = 'ch' (acara = 'ah-CHAH-rah').",
     vocabulary: [
-      { word: "batik", en: "wax-resist patterned cloth", vi: "vải hoa văn truyền thống", pos: "noun", pronunciation_vi: "BA-tik", pronunciation_en: "BAH-tik" },
-      { word: "kain", en: "cloth, fabric", vi: "vải", pos: "noun", pronunciation_vi: "KA-in", pronunciation_en: "KAH-in" },
-      { word: "motif", en: "motif, pattern", vi: "họa tiết", pos: "noun", pronunciation_vi: "mo-TIF", pronunciation_en: "moh-TIF" },
-      { word: "memakai", en: "to wear, to use", vi: "mặc, dùng", pos: "verb", pronunciation_vi: "me-ma-KAI", pronunciation_en: "muh-mah-KAI" },
-      { word: "resmi", en: "official, formal", vi: "chính thức, trang trọng", pos: "adjective", pronunciation_vi: "RES-mi", pronunciation_en: "RES-mee" },
-      { word: "daerah", en: "region, area", vi: "vùng, địa phương", pos: "noun", pronunciation_vi: "da-E-rah", pronunciation_en: "dah-EH-rah" },
+      { cell_id: "fd7e1587-d04b-4061-b373-ea0273e553bb", word: "batik", en: "wax-resist patterned cloth", vi: "vải hoa văn truyền thống", pos: "noun", pronunciation_vi: "BA-tik", pronunciation_en: "BAH-tik" },
+      { cell_id: "b1152900-65db-46a4-bc32-7eeb468d942a", word: "kain", en: "cloth, fabric", vi: "vải", pos: "noun", pronunciation_vi: "KA-in", pronunciation_en: "KAH-in" },
+      { cell_id: "bda209e6-9130-494f-a78f-298487dfe370", word: "motif", en: "motif, pattern", vi: "họa tiết", pos: "noun", pronunciation_vi: "mo-TIF", pronunciation_en: "moh-TIF" },
+      { cell_id: "6b0bcc64-81a0-450e-aec6-df4e3a8213c7", word: "memakai", en: "to wear, to use", vi: "mặc, dùng", pos: "verb", pronunciation_vi: "me-ma-KAI", pronunciation_en: "muh-mah-KAI" },
+      { cell_id: "937d0401-c65e-4248-9595-17103b55a9db", word: "resmi", en: "official, formal", vi: "chính thức, trang trọng", pos: "adjective", pronunciation_vi: "RES-mi", pronunciation_en: "RES-mee" },
+      { cell_id: "691ee2c2-8aec-4274-8492-b12bb6aa6a80", word: "daerah", en: "region, area", vi: "vùng, địa phương", pos: "noun", pronunciation_vi: "da-E-rah", pronunciation_en: "dah-EH-rah" },
     ],
     dialogue: [
-      { speaker: "Penjual", text: "Ini batik tulis asli dari Solo. Bukan cetak.", vi: "Đây là batik vẽ tay thật từ Solo. Không phải in.", en: "This is genuine hand-drawn batik from Solo. Not printed." },
-      { speaker: "Anh", text: "Bagus sekali. Motifnya punya makna apa?", vi: "Đẹp quá. Hoa văn này có ý nghĩa gì?", en: "Beautiful. What does the motif mean?" },
-      { speaker: "Penjual", text: "Motif parang artinya keberanian dan kekuatan.", vi: "Hoa văn parang nghĩa là sự dũng cảm và sức mạnh.", en: "The parang motif means courage and strength." },
+      { cell_id: "f04159f4-494f-491f-9ed5-ac83278e5d00", speaker: "Penjual", text: "Ini batik tulis asli dari Solo. Bukan cetak.", vi: "Đây là batik vẽ tay thật từ Solo. Không phải in.", en: "This is genuine hand-drawn batik from Solo. Not printed." },
+      { cell_id: "aa0bbdf2-b616-48c5-a397-0b07f746b156", speaker: "Anh", text: "Bagus sekali. Motifnya punya makna apa?", vi: "Đẹp quá. Hoa văn này có ý nghĩa gì?", en: "Beautiful. What does the motif mean?" },
+      { cell_id: "4c95e46d-c320-49da-ba61-174f8ca74430", speaker: "Penjual", text: "Motif parang artinya keberanian dan kekuatan.", vi: "Hoa văn parang nghĩa là sự dũng cảm và sức mạnh.", en: "The parang motif means courage and strength." },
     ],
     exercises: [
       {
@@ -619,12 +621,12 @@ export const lessons: IndonesianLesson[] = [
     tip_advice_en:
       "The Indonesian 'J' is the English 'j' ('jam'), never 'y' or 'z': Jawa = 'JAH-wah'. The affixed verbs here (mengiringi, pertunjukan) are best peeled apart: meN- + root + suffix — see the prefix system in lessons-a2.ts.",
     vocabulary: [
-      { word: "gamelan", en: "bronze gong orchestra", vi: "dàn nhạc đồng", pos: "noun", pronunciation_vi: "GA-me-lan", pronunciation_en: "GAH-muh-lan" },
-      { word: "gong", en: "gong", vi: "cồng, chiêng", pos: "noun", pronunciation_vi: "GONG", pronunciation_en: "GONG" },
-      { word: "kendang", en: "two-headed hand drum", vi: "trống tay", pos: "noun", pronunciation_vi: "ken-DANG", pronunciation_en: "ken-DANG" },
-      { word: "wayang kulit", en: "shadow-puppet theatre", vi: "múa rối bóng", pos: "noun", pronunciation_vi: "WA-yang KU-lit", pronunciation_en: "WAH-yang KOO-lit" },
-      { word: "pertunjukan", en: "performance", vi: "buổi biểu diễn", pos: "noun", pronunciation_vi: "per-tun-JU-kan", pronunciation_en: "per-toon-JOO-kan" },
-      { word: "logam", en: "metal", vi: "kim loại", pos: "noun", pronunciation_vi: "LO-gam", pronunciation_en: "LOH-gam" },
+      { cell_id: "5af121a7-8eb7-4220-96d4-1e0727b1f636", word: "gamelan", en: "bronze gong orchestra", vi: "dàn nhạc đồng", pos: "noun", pronunciation_vi: "GA-me-lan", pronunciation_en: "GAH-muh-lan" },
+      { cell_id: "f7a99d7a-6645-461e-ac9f-c718e59019f5", word: "gong", en: "gong", vi: "cồng, chiêng", pos: "noun", pronunciation_vi: "GONG", pronunciation_en: "GONG" },
+      { cell_id: "49719a3b-8d3c-462f-a071-4bcecd71fdf5", word: "kendang", en: "two-headed hand drum", vi: "trống tay", pos: "noun", pronunciation_vi: "ken-DANG", pronunciation_en: "ken-DANG" },
+      { cell_id: "5b5a3982-d373-4fb0-abc9-5a1ea427b1a8", word: "wayang kulit", en: "shadow-puppet theatre", vi: "múa rối bóng", pos: "noun", pronunciation_vi: "WA-yang KU-lit", pronunciation_en: "WAH-yang KOO-lit" },
+      { cell_id: "17a62520-aee2-441f-a60f-1669b07e6486", word: "pertunjukan", en: "performance", vi: "buổi biểu diễn", pos: "noun", pronunciation_vi: "per-tun-JU-kan", pronunciation_en: "per-toon-JOO-kan" },
+      { cell_id: "e57076cf-28d2-4b57-a1bf-420db02dfda0", word: "logam", en: "metal", vi: "kim loại", pos: "noun", pronunciation_vi: "LO-gam", pronunciation_en: "LOH-gam" },
     ],
     exercises: [
       {
@@ -709,17 +711,17 @@ export const lessons: IndonesianLesson[] = [
     tip_advice_en:
       "Key command frame: 'jangan' + verb = 'don't...'. Jangan menunjuk (don't point), jangan marah (don't get angry). Prefix 'tolong' (please) for politeness. Medial 'ng' (tangan, jangan) is easy for Vietnamese speakers; word-INITIAL 'ng' is the hard one — see pronunciation-guide.ts.",
     vocabulary: [
-      { word: "tangan kanan", en: "right hand", vi: "tay phải", pos: "noun phrase", pronunciation_vi: "TA-ngan KA-nan", pronunciation_en: "TAH-ngan KAH-nan" },
-      { word: "sepatu", en: "shoes", vi: "giày", pos: "noun", pronunciation_vi: "se-PA-tu", pronunciation_en: "suh-PAH-too" },
-      { word: "lepas", en: "to take off, remove", vi: "cởi, tháo", pos: "verb", pronunciation_vi: "le-PAS", pronunciation_en: "luh-PAS" },
-      { word: "jangan", en: "don't (command)", vi: "đừng", pos: "particle", pronunciation_vi: "JA-ngan", pronunciation_en: "JAH-ngan" },
-      { word: "menjaga muka", en: "to save face", vi: "giữ thể diện", pos: "verb phrase", pronunciation_vi: "men-JA-ga MU-ka", pronunciation_en: "men-JAH-gah MOO-kah" },
-      { word: "sopan", en: "polite, well-mannered", vi: "lịch sự", pos: "adjective", pronunciation_vi: "SO-pan", pronunciation_en: "SOH-pan" },
+      { cell_id: "5c539fc8-eddb-4a75-b732-3923ae324fe3", word: "tangan kanan", en: "right hand", vi: "tay phải", pos: "noun phrase", pronunciation_vi: "TA-ngan KA-nan", pronunciation_en: "TAH-ngan KAH-nan" },
+      { cell_id: "88063ced-b5ab-437a-acbe-b9bcf849494a", word: "sepatu", en: "shoes", vi: "giày", pos: "noun", pronunciation_vi: "se-PA-tu", pronunciation_en: "suh-PAH-too" },
+      { cell_id: "5266ae40-d3d6-4785-867d-087ddc9c12ad", word: "lepas", en: "to take off, remove", vi: "cởi, tháo", pos: "verb", pronunciation_vi: "le-PAS", pronunciation_en: "luh-PAS" },
+      { cell_id: "36b114a8-8081-4a95-b3e0-8ad5d53d53f7", word: "jangan", en: "don't (command)", vi: "đừng", pos: "particle", pronunciation_vi: "JA-ngan", pronunciation_en: "JAH-ngan" },
+      { cell_id: "b2476b3d-8b1d-4a31-aa64-a1dce67bc3ee", word: "menjaga muka", en: "to save face", vi: "giữ thể diện", pos: "verb phrase", pronunciation_vi: "men-JA-ga MU-ka", pronunciation_en: "men-JAH-gah MOO-kah" },
+      { cell_id: "77f7c4b6-bcd6-422a-ac98-7ef881b5eb8a", word: "sopan", en: "polite, well-mannered", vi: "lịch sự", pos: "adjective", pronunciation_vi: "SO-pan", pronunciation_en: "SOH-pan" },
     ],
     dialogue: [
-      { speaker: "Tuan rumah", text: "Silakan masuk! Tapi lepas sepatu dulu ya.", vi: "Mời vào! Nhưng cởi giày trước nhé.", en: "Please come in! But take off your shoes first." },
-      { speaker: "Tamu", text: "Tentu. Ini oleh-oleh untuk Anda.", vi: "Tất nhiên. Đây là quà cho anh/chị.", en: "Of course. Here's a small gift for you." },
-      { speaker: "Tuan rumah", text: "Terima kasih banyak! (menerima dengan tangan kanan)", vi: "Cảm ơn nhiều! (nhận bằng tay phải)", en: "Thank you so much! (receiving with the right hand)" },
+      { cell_id: "24d8d647-d03b-4e1b-a538-2f221df77d9d", speaker: "Tuan rumah", text: "Silakan masuk! Tapi lepas sepatu dulu ya.", vi: "Mời vào! Nhưng cởi giày trước nhé.", en: "Please come in! But take off your shoes first." },
+      { cell_id: "e5afc963-806d-4aee-8b3e-88cc23baf741", speaker: "Tamu", text: "Tentu. Ini oleh-oleh untuk Anda.", vi: "Tất nhiên. Đây là quà cho anh/chị.", en: "Of course. Here's a small gift for you." },
+      { cell_id: "12344ecd-8658-4f55-b0fe-6871e6a636de", speaker: "Tuan rumah", text: "Terima kasih banyak! (menerima dengan tangan kanan)", vi: "Cảm ơn nhiều! (nhận bằng tay phải)", en: "Thank you so much! (receiving with the right hand)" },
     ],
     exercises: [
       {

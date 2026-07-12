@@ -35,6 +35,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   /** Indonesian word/phrase. */
   word: string;
   /** English meaning. */
@@ -50,6 +51,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   /** Indonesian line. */
   text: string;
@@ -273,6 +275,7 @@ export const lessons: IndonesianLesson[] = [
     vocabulary: [
       // The kos itself & the people
       {
+        cell_id: "f3113a1a-9206-4562-953b-6994e253fcba",
         word: "kos / kosan / indekos",
         en: "boarding house / rented room",
         vi: "nhà trọ / phòng trọ",
@@ -281,6 +284,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "kos / KOS-an / in-de-KOS — sound the final `s`; `ngekos` = to live in a kos (casual)",
       },
       {
+        cell_id: "097588a7-f15b-4642-aa13-5d546e6fcbed",
         word: "ibu kos / bapak kos",
         en: "the (female/male) boarding-house owner",
         vi: "bà chủ / ông chủ nhà trọ",
@@ -289,6 +293,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "I-bu kos / BA-pak kos — short `bu kos`/`pak kos`; often lives on-site",
       },
       {
+        cell_id: "3e5e254c-540a-4c23-a6fa-5a4048151300",
         word: "penghuni",
         en: "occupant / tenant",
         vi: "người ở trọ",
@@ -297,6 +302,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "peng-HU-ni — `penghuni kos` = a kos tenant; root `huni` (to dwell)",
       },
       {
+        cell_id: "c7ad3dac-3f34-4a8a-94aa-d8c07a14907e",
         word: "kamar",
         en: "room",
         vi: "phòng",
@@ -306,6 +312,7 @@ export const lessons: IndonesianLesson[] = [
       },
       // Money
       {
+        cell_id: "937b0f8c-e36e-4bcb-9d21-0703220d0952",
         word: "sewa",
         en: "rent",
         vi: "tiền thuê",
@@ -314,6 +321,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "SE-wa — `sewa bulanan` = monthly rent; `menyewa` = to rent",
       },
       {
+        cell_id: "da8e9234-e3de-4f56-84e8-50fb927bb244",
         word: "deposit / uang jaminan",
         en: "security deposit",
         vi: "tiền đặt cọc / tiền bảo đảm",
@@ -322,6 +330,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "de-PO-sit / U-ang ja-MI-nan — refunded on move-out if undamaged",
       },
       {
+        cell_id: "cfe0a263-0e86-4301-aba6-20b775666d03",
         word: "uang muka / DP",
         en: "down payment / advance",
         vi: "tiền đặt trước",
@@ -330,6 +339,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "U-ang MU-ka / de-pe — `DP` spelled 'de-pe'; paid up front to hold the room",
       },
       {
+        cell_id: "13e0336a-081c-4596-95ac-cccfb9ba7f16",
         word: "iuran listrik",
         en: "electricity charge",
         vi: "phí điện",
@@ -339,6 +349,7 @@ export const lessons: IndonesianLesson[] = [
       },
       // Rules
       {
+        cell_id: "96cd0d1c-28b0-4ef6-b5c7-5418bb653927",
         word: "aturan",
         en: "rules / regulations",
         vi: "nội quy",
@@ -347,6 +358,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "a-TU-ran — `aturan kos` = boarding-house rules; root `atur` (to arrange)",
       },
       {
+        cell_id: "cafa700a-bfe2-434e-be2e-7d50f6ad8e9b",
         word: "jam malam",
         en: "curfew",
         vi: "giờ giới nghiêm",
@@ -355,6 +367,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "jam MA-lam — gate locks after this hour; usually 10–11 pm",
       },
       {
+        cell_id: "d75c4052-de72-434a-bbdc-57aae9b15fa1",
         word: "tamu",
         en: "guest / visitor",
         vi: "khách",
@@ -363,6 +376,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "TA-mu — `tamu menginap` = an overnight guest; `lawan jenis` = opposite sex",
       },
       {
+        cell_id: "d89c6dac-5513-4827-981c-c2c68d36f755",
         word: "boleh / tidak boleh",
         en: "may / may not (permission)",
         vi: "được phép / không được phép",
@@ -371,6 +385,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "BO-leh / TI-dak BO-leh — PERMISSION, unlike `bisa` (ability)",
       },
       {
+        cell_id: "4365d700-d8c2-4ec8-af51-08c5b041a99e",
         word: "putri / putra / campur",
         en: "women's / men's / mixed (kos type)",
         vi: "nữ / nam / chung",
@@ -380,6 +395,7 @@ export const lessons: IndonesianLesson[] = [
       },
       // Facilities & actions
       {
+        cell_id: "89d3a5dc-634e-4081-98a5-f45b904d4189",
         word: "kamar mandi",
         en: "bathroom",
         vi: "nhà tắm / nhà vệ sinh",
@@ -388,6 +404,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "ka-mar MAN-di — `dalam` (en-suite) ↔ `luar` (shared)",
       },
       {
+        cell_id: "cca0c9d3-1fbb-4b9a-ba53-55b0e0fa64f8",
         word: "dapur bersama",
         en: "shared kitchen",
         vi: "bếp chung",
@@ -396,6 +413,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "DA-pur ber-SA-ma — `bersama` = shared; many kos have a common kitchen",
       },
       {
+        cell_id: "1d61ee8d-3b2c-43be-bb3d-20dd8310607f",
         word: "pindah kos",
         en: "to move out / change boarding house",
         vi: "chuyển trọ / dọn đi",
@@ -404,6 +422,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "PIN-dah kos — sound the `h`; give notice (`lapor sebelumnya`) to reclaim the deposit",
       },
       {
+        cell_id: "403fc775-bb98-4bbf-9e26-230c6391b69f",
         word: "lapor",
         en: "to report / give notice",
         vi: "báo / trình báo",
@@ -412,6 +431,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "LA-por — `lapor ke ibu kos` = notify the landlady",
       },
       {
+        cell_id: "7732d6da-c83c-414a-b0d1-eebb93846d6e",
         word: "kontrak",
         en: "contract / lease term",
         vi: "hợp đồng",
@@ -423,48 +443,56 @@ export const lessons: IndonesianLesson[] = [
     dialogue: [
       // A Vietnamese newcomer views a kos and asks the ibu kos about the rules
       {
+        cell_id: "4dc9958b-707b-45af-9e84-1e4aa961edfc",
         speaker: "Calon penghuni",
         text: "Permisi, Bu. Saya lihat kosnya ada kamar kosong, masih ada?",
         vi: "Xin lỗi cô. Em thấy nhà trọ còn phòng trống, vẫn còn không ạ?",
         en: "Excuse me, ma'am. I saw your kos has a vacant room — is it still available?",
       },
       {
+        cell_id: "3a61f6d9-69c8-43fa-b132-249b677d2193",
         speaker: "Ibu kos",
         text: "Masih ada satu, Mbak. Sewanya satu juta sebulan, sudah termasuk listrik.",
         vi: "Vẫn còn một phòng đấy. Thuê một triệu một tháng, đã bao gồm tiền điện.",
         en: "There's one left. Rent is one million a month, electricity included.",
       },
       {
+        cell_id: "a79be3a4-893b-4023-91e6-ef602815fbdf",
         speaker: "Calon penghuni",
         text: "Ada uang deposit, Bu? Lalu aturannya bagaimana?",
         vi: "Có tiền đặt cọc không cô? Rồi nội quy thế nào ạ?",
         en: "Is there a deposit, ma'am? And what are the rules?",
       },
       {
+        cell_id: "1f7a4078-5ebd-406f-8816-ce3eee9edeb6",
         speaker: "Ibu kos",
         text: "Deposit satu bulan. Ada jam malam jam sebelas, gerbang dikunci.",
         vi: "Cọc một tháng. Có giờ giới nghiêm lúc mười một giờ, cổng sẽ khóa.",
         en: "A one-month deposit. There's an 11 o'clock curfew — the gate gets locked.",
       },
       {
+        cell_id: "8d03cbf8-88d5-4feb-8763-9527fd86c66e",
         speaker: "Calon penghuni",
         text: "Saya boleh menerima tamu, Bu?",
         vi: "Em có được phép tiếp khách không cô?",
         en: "Am I allowed to have guests, ma'am?",
       },
       {
+        cell_id: "bd2b659c-0368-4319-b5bd-d87e4f2df95a",
         speaker: "Ibu kos",
         text: "Boleh, tapi tamu lawan jenis tidak boleh masuk kamar, ya. Ini kos putri.",
         vi: "Được, nhưng khách khác giới không được vào phòng nhé. Đây là trọ nữ.",
         en: "Yes, but opposite-sex guests can't enter the room. This is a women's kos.",
       },
       {
+        cell_id: "14b66b07-f1cc-4926-a778-e0e0a976a08c",
         speaker: "Calon penghuni",
         text: "Baik, mengerti. Bayar kos paling lambat tanggal berapa, Bu?",
         vi: "Vâng, em hiểu. Trả tiền trọ chậm nhất ngày mấy ạ cô?",
         en: "Alright, understood. By what date should I pay, ma'am?",
       },
       {
+        cell_id: "e4e17825-63a1-4487-a8e7-cbb500dda78b",
         speaker: "Ibu kos",
         text: "Tanggal lima tiap bulan. Kalau mau pindah, lapor sebulan sebelumnya, ya.",
         vi: "Ngày năm mỗi tháng. Nếu muốn dọn đi, báo trước một tháng nhé.",

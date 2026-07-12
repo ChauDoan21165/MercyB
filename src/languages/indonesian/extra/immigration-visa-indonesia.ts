@@ -21,6 +21,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   /** Indonesian word/phrase. */
   word: string;
   /** English meaning. */
@@ -36,6 +37,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   /** Indonesian line. */
   text: string;
@@ -155,17 +157,17 @@ export const immigrationVisaIndonesiaLessons: IndonesianLesson[] = [
     tip_advice_en:
       "Survival set: `Dokumen apa saja yang harus saya bawa?`, `Saya sudah ambil nomor antrean`, `Paspor saya masih berlaku...`. The big trap is using generic wording for paperwork; in Indonesian admin contexts, use precise words like `dokumen`, `paspor`, `visa`, `nomor antrean`.",
     vocabulary: [
-      { word: "visa", en: "visa", vi: "visa/thị thực", pos: "noun", pronunciation_vi: "VI-sa", pronunciation_en: "VEE-sa" },
-      { word: "paspor", en: "passport", vi: "hộ chiếu", pos: "noun", pronunciation_vi: "PAS-por", pronunciation_en: "PAS-por" },
-      { word: "imigrasi", en: "immigration", vi: "nhập cư/cục xuất nhập cảnh", pos: "noun", pronunciation_vi: "i-mi-GRA-si", pronunciation_en: "i-mi-GRA-see" },
-      { word: "dokumen", en: "documents", vi: "giấy tờ/tài liệu", pos: "noun", pronunciation_vi: "do-ku-MEN", pronunciation_en: "do-koo-MEN" },
-      { word: "nomor antrean", en: "queue number", vi: "số thứ tự xếp hàng", pos: "noun phrase", pronunciation_vi: "NO-mor an-TRE-an", pronunciation_en: "NO-mor an-TRE-an" },
-      { word: "loket", en: "service counter", vi: "quầy", pos: "noun", pronunciation_vi: "LO-ket", pronunciation_en: "LO-ket" },
+      { cell_id: "8cff47da-33d0-44e8-9434-bb36a40b6a67", word: "visa", en: "visa", vi: "visa/thị thực", pos: "noun", pronunciation_vi: "VI-sa", pronunciation_en: "VEE-sa" },
+      { cell_id: "641fa344-76d1-4be4-9eb3-e70d849bdcad", word: "paspor", en: "passport", vi: "hộ chiếu", pos: "noun", pronunciation_vi: "PAS-por", pronunciation_en: "PAS-por" },
+      { cell_id: "d972ce72-7da1-48a8-88fd-903546bbd811", word: "imigrasi", en: "immigration", vi: "nhập cư/cục xuất nhập cảnh", pos: "noun", pronunciation_vi: "i-mi-GRA-si", pronunciation_en: "i-mi-GRA-see" },
+      { cell_id: "09fb27fa-6032-4ba6-acbd-ab59ea808a13", word: "dokumen", en: "documents", vi: "giấy tờ/tài liệu", pos: "noun", pronunciation_vi: "do-ku-MEN", pronunciation_en: "do-koo-MEN" },
+      { cell_id: "c0f8f097-93a7-4f7d-a8fb-1a19d01515cb", word: "nomor antrean", en: "queue number", vi: "số thứ tự xếp hàng", pos: "noun phrase", pronunciation_vi: "NO-mor an-TRE-an", pronunciation_en: "NO-mor an-TRE-an" },
+      { cell_id: "0d00cfdb-a8e3-45df-9fc9-c4f060f5d2b7", word: "loket", en: "service counter", vi: "quầy", pos: "noun", pronunciation_vi: "LO-ket", pronunciation_en: "LO-ket" },
     ],
     dialogue: [
-      { speaker: "Pemohon", text: "Selamat pagi. Saya mau bertanya tentang visa Indonesia.", vi: "Chào buổi sáng. Tôi muốn hỏi về visa Indonesia.", en: "Good morning. I want to ask about an Indonesian visa." },
-      { speaker: "Petugas", text: "Silakan ambil nomor antrean dulu, lalu tunggu di ruang ini.", vi: "Vui lòng lấy số thứ tự trước, rồi chờ ở phòng này.", en: "Please take a queue number first, then wait in this room." },
-      { speaker: "Pemohon", text: "Baik. Dokumen apa saja yang harus saya bawa?", vi: "Vâng. Tôi phải mang theo những giấy tờ gì?", en: "Okay. What documents do I need to bring?" },
+      { cell_id: "cf10ff25-0ab1-423b-85e4-a71f195edcf2", speaker: "Pemohon", text: "Selamat pagi. Saya mau bertanya tentang visa Indonesia.", vi: "Chào buổi sáng. Tôi muốn hỏi về visa Indonesia.", en: "Good morning. I want to ask about an Indonesian visa." },
+      { cell_id: "753b344b-e6e0-411c-98fa-48ea10591a68", speaker: "Petugas", text: "Silakan ambil nomor antrean dulu, lalu tunggu di ruang ini.", vi: "Vui lòng lấy số thứ tự trước, rồi chờ ở phòng này.", en: "Please take a queue number first, then wait in this room." },
+      { cell_id: "a584f11a-ccb4-4020-ab71-51d9a86e2e39", speaker: "Pemohon", text: "Baik. Dokumen apa saja yang harus saya bawa?", vi: "Vâng. Tôi phải mang theo những giấy tờ gì?", en: "Okay. What documents do I need to bring?" },
     ],
     exercises: [
       {
@@ -291,18 +293,18 @@ export const immigrationVisaIndonesiaLessons: IndonesianLesson[] = [
     tip_advice_en:
       "Distinguish `memperpanjang` and `perpanjangan`: `Saya ingin memperpanjang izin tinggal` is the action of extending; `proses perpanjangan` is the extension process. This is a big trap because Vietnamese uses the same wording for both verb and noun.",
     vocabulary: [
-      { word: "KITAS", en: "limited stay permit", vi: "thẻ/giấy phép cư trú tạm thời", pos: "noun", pronunciation_vi: "KI-tas", pronunciation_en: "KEE-tas" },
-      { word: "izin tinggal", en: "stay permit", vi: "giấy phép cư trú", pos: "noun phrase", pronunciation_vi: "I-zin TING-gal", pronunciation_en: "EE-zin TING-gal" },
-      { word: "memperpanjang", en: "to extend", vi: "gia hạn", pos: "verb", pronunciation_vi: "mem-per-PAN-jang", pronunciation_en: "mem-per-PAN-jang" },
-      { word: "perpanjangan", en: "extension", vi: "sự gia hạn", pos: "noun", pronunciation_vi: "per-pan-JA-ngan", pronunciation_en: "per-pan-JA-ngan" },
-      { word: "sponsor", en: "sponsor/guarantor", vi: "bên bảo lãnh", pos: "noun", pronunciation_vi: "SPON-sor", pronunciation_en: "SPON-sor" },
-      { word: "surat sponsor", en: "sponsor letter", vi: "thư bảo lãnh", pos: "noun phrase", pronunciation_vi: "SU-rat SPON-sor", pronunciation_en: "SOO-rat SPON-sor" },
-      { word: "wawancara", en: "interview", vi: "phỏng vấn", pos: "noun", pronunciation_vi: "wa-WAN-ca-ra", pronunciation_en: "wa-WAN-cha-ra" },
+      { cell_id: "728b608c-d1c3-4f79-b893-ad81b2ea83a3", word: "KITAS", en: "limited stay permit", vi: "thẻ/giấy phép cư trú tạm thời", pos: "noun", pronunciation_vi: "KI-tas", pronunciation_en: "KEE-tas" },
+      { cell_id: "321c0728-4991-4e73-80c7-2cf0cca32a07", word: "izin tinggal", en: "stay permit", vi: "giấy phép cư trú", pos: "noun phrase", pronunciation_vi: "I-zin TING-gal", pronunciation_en: "EE-zin TING-gal" },
+      { cell_id: "dc6df80a-4ff0-4c47-a028-a4d025b55792", word: "memperpanjang", en: "to extend", vi: "gia hạn", pos: "verb", pronunciation_vi: "mem-per-PAN-jang", pronunciation_en: "mem-per-PAN-jang" },
+      { cell_id: "73b00093-8336-4bb4-bef9-deb00791306a", word: "perpanjangan", en: "extension", vi: "sự gia hạn", pos: "noun", pronunciation_vi: "per-pan-JA-ngan", pronunciation_en: "per-pan-JA-ngan" },
+      { cell_id: "f58dcf37-d163-41a9-aef9-e37be11807b9", word: "sponsor", en: "sponsor/guarantor", vi: "bên bảo lãnh", pos: "noun", pronunciation_vi: "SPON-sor", pronunciation_en: "SPON-sor" },
+      { cell_id: "c017dbb2-beaa-4886-9069-6f61d9312826", word: "surat sponsor", en: "sponsor letter", vi: "thư bảo lãnh", pos: "noun phrase", pronunciation_vi: "SU-rat SPON-sor", pronunciation_en: "SOO-rat SPON-sor" },
+      { cell_id: "caa94088-b2a0-40ca-90b9-051ad19a3f4d", word: "wawancara", en: "interview", vi: "phỏng vấn", pos: "noun", pronunciation_vi: "wa-WAN-ca-ra", pronunciation_en: "wa-WAN-cha-ra" },
     ],
     dialogue: [
-      { speaker: "Pemohon", text: "Saya ingin memperpanjang izin tinggal saya. KITAS saya akan habis bulan depan.", vi: "Tôi muốn gia hạn giấy phép cư trú của tôi. KITAS của tôi sẽ hết hạn vào tháng sau.", en: "I want to extend my stay permit. My KITAS will expire next month." },
-      { speaker: "Petugas", text: "Apakah sponsor Anda sudah mengirim surat sponsor?", vi: "Bên bảo lãnh của anh/chị đã gửi thư bảo lãnh chưa?", en: "Has your sponsor sent the sponsor letter?" },
-      { speaker: "Pemohon", text: "Sudah. Saya menunggu konfirmasi dari kantor imigrasi.", vi: "Rồi. Tôi đang chờ xác nhận từ văn phòng nhập cư.", en: "Yes. I am waiting for confirmation from the immigration office." },
+      { cell_id: "2fe48744-698c-4ba9-b04d-cc7dcc476783", speaker: "Pemohon", text: "Saya ingin memperpanjang izin tinggal saya. KITAS saya akan habis bulan depan.", vi: "Tôi muốn gia hạn giấy phép cư trú của tôi. KITAS của tôi sẽ hết hạn vào tháng sau.", en: "I want to extend my stay permit. My KITAS will expire next month." },
+      { cell_id: "8a235354-c89f-40f0-a9df-123a0bd4e9a6", speaker: "Petugas", text: "Apakah sponsor Anda sudah mengirim surat sponsor?", vi: "Bên bảo lãnh của anh/chị đã gửi thư bảo lãnh chưa?", en: "Has your sponsor sent the sponsor letter?" },
+      { cell_id: "243e1f21-b193-4c81-b537-99b8b9f8a66d", speaker: "Pemohon", text: "Sudah. Saya menunggu konfirmasi dari kantor imigrasi.", vi: "Rồi. Tôi đang chờ xác nhận từ văn phòng nhập cư.", en: "Yes. I am waiting for confirmation from the immigration office." },
     ],
     exercises: [
       {
@@ -427,17 +429,17 @@ export const immigrationVisaIndonesiaLessons: IndonesianLesson[] = [
     tip_advice_en:
       "Good follow-up phrases: `mengecek status permohonan`, `dokumen sudah diperiksa`, `melengkapi dokumen`, `batas waktu`, `mohon beri tahu`. The big trap is passive `di-`: documents are `diperiksa`, applications are `diproses`, visas are `disetujui` or `ditolak`.",
     vocabulary: [
-      { word: "permohonan visa", en: "visa application", vi: "hồ sơ/đơn xin visa", pos: "noun phrase", pronunciation_vi: "per-mo-HO-nan VI-sa", pronunciation_en: "per-mo-HO-nan VEE-sa" },
-      { word: "mengecek status", en: "check status", vi: "kiểm tra trạng thái", pos: "verb phrase", pronunciation_vi: "me-NGE-cek STA-tus", pronunciation_en: "me-NGE-chek STA-tus" },
-      { word: "diperiksa", en: "checked/examined", vi: "được kiểm tra", pos: "passive verb", pronunciation_vi: "di-pe-RIK-sa", pronunciation_en: "dee-pe-RIK-sa" },
-      { word: "melengkapi dokumen", en: "complete/supplement documents", vi: "bổ sung/hoàn thiện giấy tờ", pos: "verb phrase", pronunciation_vi: "me-leng-KA-pi do-ku-MEN", pronunciation_en: "me-leng-KA-pee do-koo-MEN" },
-      { word: "batas waktu", en: "deadline", vi: "hạn chót", pos: "noun phrase", pronunciation_vi: "BA-tas WAK-tu", pronunciation_en: "BA-tas WAK-too" },
-      { word: "mohon beri tahu", en: "please inform", vi: "vui lòng báo cho biết", pos: "polite phrase", pronunciation_vi: "MO-hon BE-ri TA-hu", pronunciation_en: "MO-hon BEH-ree TA-hoo" },
+      { cell_id: "0b90cd9e-387c-4e3d-8c9f-839dfe28d0ab", word: "permohonan visa", en: "visa application", vi: "hồ sơ/đơn xin visa", pos: "noun phrase", pronunciation_vi: "per-mo-HO-nan VI-sa", pronunciation_en: "per-mo-HO-nan VEE-sa" },
+      { cell_id: "1818c4de-661a-4f8c-9828-8f8a5313d44f", word: "mengecek status", en: "check status", vi: "kiểm tra trạng thái", pos: "verb phrase", pronunciation_vi: "me-NGE-cek STA-tus", pronunciation_en: "me-NGE-chek STA-tus" },
+      { cell_id: "b389fdda-c1ac-4318-ab19-1a0ad0b8c93a", word: "diperiksa", en: "checked/examined", vi: "được kiểm tra", pos: "passive verb", pronunciation_vi: "di-pe-RIK-sa", pronunciation_en: "dee-pe-RIK-sa" },
+      { cell_id: "920f6678-d001-487e-bb09-9eb15a6d114a", word: "melengkapi dokumen", en: "complete/supplement documents", vi: "bổ sung/hoàn thiện giấy tờ", pos: "verb phrase", pronunciation_vi: "me-leng-KA-pi do-ku-MEN", pronunciation_en: "me-leng-KA-pee do-koo-MEN" },
+      { cell_id: "542a915c-f42d-4bc2-abd0-825dbb5379f3", word: "batas waktu", en: "deadline", vi: "hạn chót", pos: "noun phrase", pronunciation_vi: "BA-tas WAK-tu", pronunciation_en: "BA-tas WAK-too" },
+      { cell_id: "6394384a-d8b4-4754-9a33-aa03c1cd345a", word: "mohon beri tahu", en: "please inform", vi: "vui lòng báo cho biết", pos: "polite phrase", pronunciation_vi: "MO-hon BE-ri TA-hu", pronunciation_en: "MO-hon BEH-ree TA-hoo" },
     ],
     dialogue: [
-      { speaker: "Pemohon", text: "Saya mau mengecek status permohonan visa saya.", vi: "Tôi muốn kiểm tra trạng thái hồ sơ xin visa của tôi.", en: "I want to check the status of my visa application." },
-      { speaker: "Petugas", text: "Dokumen Anda sedang diperiksa. Ada satu dokumen yang kurang.", vi: "Giấy tờ của anh/chị đang được kiểm tra. Có một giấy tờ còn thiếu.", en: "Your documents are being checked. One document is missing." },
-      { speaker: "Pemohon", text: "Saya perlu melengkapi dokumen apa lagi?", vi: "Tôi cần bổ sung thêm giấy tờ gì nữa?", en: "What document do I need to add?" },
+      { cell_id: "aca38872-4851-4d22-9cfe-3fea09d4a629", speaker: "Pemohon", text: "Saya mau mengecek status permohonan visa saya.", vi: "Tôi muốn kiểm tra trạng thái hồ sơ xin visa của tôi.", en: "I want to check the status of my visa application." },
+      { cell_id: "f54d4f42-5a2f-4d8c-a36c-16007a203721", speaker: "Petugas", text: "Dokumen Anda sedang diperiksa. Ada satu dokumen yang kurang.", vi: "Giấy tờ của anh/chị đang được kiểm tra. Có một giấy tờ còn thiếu.", en: "Your documents are being checked. One document is missing." },
+      { cell_id: "410736b0-eba2-4178-a486-920273d24b75", speaker: "Pemohon", text: "Saya perlu melengkapi dokumen apa lagi?", vi: "Tôi cần bổ sung thêm giấy tờ gì nữa?", en: "What document do I need to add?" },
     ],
     exercises: [
       {

@@ -13,6 +13,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -22,6 +23,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -208,6 +210,7 @@ export const lessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: learn online-learning chunks: `kelas online`, `ikut kursus`, `materi video`, `tugas dikumpulkan`, `sertifikat digital`, `forum diskusi`, `webinar`, `jadwal belajar`. For tech issues or unfinished actions, use `belum`: `belum bisa mengakses`, `tugas belum selesai`, `sertifikat belum keluar`.",
     vocabulary: [
       {
+        cell_id: "f19d678b-fe90-4c5d-835e-8183e650c589",
         word: "kelas online",
         en: "online class",
         vi: "lớp học online",
@@ -216,6 +219,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "KEH-las ON-line",
       },
       {
+        cell_id: "bcc561c9-1ea4-4d14-818e-cad3b30366e1",
         word: "kursus",
         en: "course",
         vi: "khóa học",
@@ -224,6 +228,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "KUR-soos",
       },
       {
+        cell_id: "a07e7cce-1cfe-4a16-b320-38f2918c6a0f",
         word: "materi video",
         en: "video material",
         vi: "tài liệu video",
@@ -232,6 +237,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "ma-TEH-ri VEE-de-o",
       },
       {
+        cell_id: "b87822ba-ba1a-486d-9259-bbcc7ca499b8",
         word: "tugas",
         en: "assignment / task",
         vi: "bài tập / nhiệm vụ",
@@ -240,6 +246,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "TOO-gas",
       },
       {
+        cell_id: "13fb5c58-6a74-4069-a274-c7b2e139b467",
         word: "sertifikat",
         en: "certificate",
         vi: "chứng chỉ",
@@ -248,6 +255,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "ser-ti-fi-KAT",
       },
       {
+        cell_id: "a7340234-6b35-4b7d-8bd2-45048b03dad4",
         word: "forum diskusi",
         en: "discussion forum",
         vi: "diễn đàn thảo luận",
@@ -256,6 +264,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "FO-rum dis-KOO-see",
       },
       {
+        cell_id: "bbe315fd-2467-4937-abb5-911ded60f827",
         word: "webinar",
         en: "webinar / online seminar",
         vi: "hội thảo online",
@@ -264,6 +273,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "WE-bi-nar",
       },
       {
+        cell_id: "f1d239a3-1981-4b20-b1e3-2fc10580f454",
         word: "jadwal belajar",
         en: "study schedule",
         vi: "lịch học",
@@ -272,6 +282,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "JAD-wal be-LA-jar",
       },
       {
+        cell_id: "deb9125c-e1e4-440b-ab60-7daea56a4dee",
         word: "dikumpulkan",
         en: "submitted / turned in",
         vi: "được nộp",
@@ -280,6 +291,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "dee-KUM-pool-kan",
       },
       {
+        cell_id: "4825e337-c4ec-43a9-a1e5-7f8bd3d7dfed",
         word: "mengakses",
         en: "to access",
         vi: "truy cập",
@@ -290,30 +302,35 @@ export const lessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "fc846d92-9ea6-48b7-8cb2-07561ff47250",
         speaker: "Peserta",
         text: "Kak, saya belum bisa mengakses materi video.",
         vi: "Anh/chị ơi, tôi chưa truy cập được tài liệu video.",
         en: "Hi, I still cannot access the video material.",
       },
       {
+        cell_id: "b131b78b-3a16-45c5-894c-63ddac3e088e",
         speaker: "Admin",
         text: "Baik. Apakah akun kursusnya sudah aktif?",
         vi: "Được. Tài khoản khóa học đã kích hoạt chưa?",
         en: "Okay. Is the course account already active?",
       },
       {
+        cell_id: "0639fabe-1849-444a-9ba4-2e243bc3f190",
         speaker: "Peserta",
         text: "Sudah aktif, tapi koneksi internet saya kurang stabil.",
         vi: "Đã kích hoạt, nhưng kết nối internet của tôi không ổn định lắm.",
         en: "It is active, but my internet connection is not very stable.",
       },
       {
+        cell_id: "2c9100dd-48e7-4f5e-9b27-b8722ef82e28",
         speaker: "Admin",
         text: "Coba tonton ulang nanti. Tugas dikumpulkan hari Jumat.",
         vi: "Thử xem lại sau nhé. Bài tập nộp vào thứ Sáu.",
         en: "Try watching it again later. The assignment is submitted on Friday.",
       },
       {
+        cell_id: "85737c25-dfd0-4e7a-8604-b79f45f1f095",
         speaker: "Peserta",
         text: "Baik. Webinar besok mulai jam tujuh malam, ya?",
         vi: "Được. Webinar ngày mai bắt đầu lúc bảy giờ tối đúng không?",

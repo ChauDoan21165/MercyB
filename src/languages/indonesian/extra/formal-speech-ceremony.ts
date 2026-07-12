@@ -13,6 +13,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -22,6 +23,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -235,37 +237,41 @@ export const lessons: IndonesianLesson[] = [
     tip_advice_en:
       "Tip for Vietnamese speakers: do not translate casual Vietnamese speech too directly. In formal ceremonies, use fixed formulas: `Yang saya hormati...`, `Atas nama panitia...`, `Terima kasih atas...`, `Mohon maaf apabila...`, `Demikian... dari saya`. Avoid `kamu`, `halo semua`, `makasih`, and `acaranya selesai` in official settings.",
     vocabulary: [
-      { word: "sambutan resmi", en: "official remarks", vi: "lời phát biểu chính thức", pos: "noun phrase", pronunciation_vi: "sam-BU-tan res-MI", pronunciation_en: "sam-BOO-tan res-MEE" },
-      { word: "pembukaan acara", en: "event opening", vi: "khai mạc sự kiện", pos: "noun phrase", pronunciation_vi: "pem-BU-ka-an a-CA-ra", pronunciation_en: "pem-BOO-ka-an a-CHA-ra" },
-      { word: "hadirin", en: "attendees / audience", vi: "quý vị tham dự", pos: "noun", pronunciation_vi: "ha-DI-rin", pronunciation_en: "ha-DEE-rin" },
-      { word: "panitia", en: "committee", vi: "ban tổ chức", pos: "noun", pronunciation_vi: "pa-NI-ti-a", pronunciation_en: "pa-NEE-ti-a" },
-      { word: "ucapan terima kasih", en: "expression of thanks", vi: "lời cảm ơn", pos: "noun phrase", pronunciation_vi: "u-CA-pan te-ri-MA KA-sih", pronunciation_en: "u-CHA-pan te-ri-MA KA-sih" },
-      { word: "pidato singkat", en: "short speech", vi: "bài phát biểu ngắn", pos: "noun phrase", pronunciation_vi: "pi-DA-to SING-kat", pronunciation_en: "pi-DA-to SING-kat" },
-      { word: "penutup acara", en: "event closing", vi: "bế mạc sự kiện", pos: "noun phrase", pronunciation_vi: "pe-NU-tup a-CA-ra", pronunciation_en: "pe-NOO-tup a-CHA-ra" },
-      { word: "kehadiran", en: "attendance / presence", vi: "sự hiện diện", pos: "noun", pronunciation_vi: "ke-ha-DI-ran", pronunciation_en: "ke-ha-DEE-ran" },
-      { word: "penyelenggaraan", en: "organization / running of an event", vi: "việc tổ chức", pos: "noun", pronunciation_vi: "pe-nye-leng-ga-RA-an", pronunciation_en: "pe-nye-leng-ga-RA-an" },
-      { word: "hadirin sekalian", en: "all attendees", vi: "toàn thể quý vị", pos: "noun phrase", pronunciation_vi: "ha-DI-rin se-KA-li-an", pronunciation_en: "ha-DEE-rin se-KA-li-an" },
+      { cell_id: "a4cb2cef-c837-44bc-ae7a-d1b9ebb2820e", word: "sambutan resmi", en: "official remarks", vi: "lời phát biểu chính thức", pos: "noun phrase", pronunciation_vi: "sam-BU-tan res-MI", pronunciation_en: "sam-BOO-tan res-MEE" },
+      { cell_id: "13b35f75-2ae0-40c1-a728-50af78391a34", word: "pembukaan acara", en: "event opening", vi: "khai mạc sự kiện", pos: "noun phrase", pronunciation_vi: "pem-BU-ka-an a-CA-ra", pronunciation_en: "pem-BOO-ka-an a-CHA-ra" },
+      { cell_id: "9ea6ea71-bc03-4691-a6af-97680dce9d86", word: "hadirin", en: "attendees / audience", vi: "quý vị tham dự", pos: "noun", pronunciation_vi: "ha-DI-rin", pronunciation_en: "ha-DEE-rin" },
+      { cell_id: "14c1cb2c-a205-464b-bf87-0cfde22a95b4", word: "panitia", en: "committee", vi: "ban tổ chức", pos: "noun", pronunciation_vi: "pa-NI-ti-a", pronunciation_en: "pa-NEE-ti-a" },
+      { cell_id: "f5ea38a1-6f83-4643-8e9d-77b0d569e735", word: "ucapan terima kasih", en: "expression of thanks", vi: "lời cảm ơn", pos: "noun phrase", pronunciation_vi: "u-CA-pan te-ri-MA KA-sih", pronunciation_en: "u-CHA-pan te-ri-MA KA-sih" },
+      { cell_id: "2834c02c-b412-46e3-ac1e-a948545b5d42", word: "pidato singkat", en: "short speech", vi: "bài phát biểu ngắn", pos: "noun phrase", pronunciation_vi: "pi-DA-to SING-kat", pronunciation_en: "pi-DA-to SING-kat" },
+      { cell_id: "19520f5f-3d14-4020-9f5a-6d359d1b43bc", word: "penutup acara", en: "event closing", vi: "bế mạc sự kiện", pos: "noun phrase", pronunciation_vi: "pe-NU-tup a-CA-ra", pronunciation_en: "pe-NOO-tup a-CHA-ra" },
+      { cell_id: "c8195ade-edb7-478f-b767-55f7389d1c90", word: "kehadiran", en: "attendance / presence", vi: "sự hiện diện", pos: "noun", pronunciation_vi: "ke-ha-DI-ran", pronunciation_en: "ke-ha-DEE-ran" },
+      { cell_id: "6d91a31f-5e3c-4e2c-b639-ffd37ada0fc9", word: "penyelenggaraan", en: "organization / running of an event", vi: "việc tổ chức", pos: "noun", pronunciation_vi: "pe-nye-leng-ga-RA-an", pronunciation_en: "pe-nye-leng-ga-RA-an" },
+      { cell_id: "4e8ffc37-4aea-4d6a-86ca-74d158bfa42a", word: "hadirin sekalian", en: "all attendees", vi: "toàn thể quý vị", pos: "noun phrase", pronunciation_vi: "ha-DI-rin se-KA-li-an", pronunciation_en: "ha-DEE-rin se-KA-li-an" },
     ],
     dialogue: [
       {
+        cell_id: "a416ad29-cb6a-461a-8bc1-27f12e980608",
         speaker: "MC",
         text: "Kami persilakan ketua panitia untuk memberikan sambutan.",
         vi: "Xin mời trưởng ban tổ chức lên phát biểu.",
         en: "We invite the committee chair to give opening remarks.",
       },
       {
+        cell_id: "1f4b4c34-927e-4621-9745-b5c38514c8af",
         speaker: "Ketua Panitia",
         text: "Yang saya hormati Bapak dan Ibu sekalian. Atas nama panitia, kami mengucapkan terima kasih atas kehadiran Anda.",
         vi: "Kính thưa quý vị. Thay mặt ban tổ chức, chúng tôi xin cảm ơn sự hiện diện của quý vị.",
         en: "Honored ladies and gentlemen. On behalf of the committee, we thank you for your presence.",
       },
       {
+        cell_id: "d53d3719-c38f-4a1e-bd4d-9eb0633105a5",
         speaker: "Ketua Panitia",
         text: "Sambutan resmi ini akan saya sampaikan secara singkat.",
         vi: "Tôi sẽ trình bày lời phát biểu chính thức này một cách ngắn gọn.",
         en: "I will deliver these official remarks briefly.",
       },
       {
+        cell_id: "4e407707-f724-4bc3-ab9a-9668e04e158f",
         speaker: "Ketua Panitia",
         text: "Demikian pidato singkat dari saya. Terima kasih atas perhatian hadirin sekalian.",
         vi: "Đó là bài phát biểu ngắn của tôi. Xin cảm ơn sự chú ý của toàn thể quý vị.",

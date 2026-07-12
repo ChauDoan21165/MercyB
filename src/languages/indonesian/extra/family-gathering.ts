@@ -13,6 +13,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -22,6 +23,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -208,6 +210,7 @@ export const lessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: your age-based address instinct helps, but do not copy the Vietnamese kinship system one-to-one. `Sepupu` does not require older/younger/male/female cousin; `mertua` broadly means parents-in-law; `saudara` can be wider than siblings. Keep `kami` = we excluding the listener and `kita` = we including the listener separate in family talk.",
     vocabulary: [
       {
+        cell_id: "d446d272-7b88-42c9-a620-05d180671b92",
         word: "kumpul keluarga",
         en: "family gathering",
         vi: "họp mặt gia đình",
@@ -216,6 +219,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "KOOM-pool ke-LOO-ar-ga",
       },
       {
+        cell_id: "3398417b-d8f5-47ff-bc2c-3bb023a1429e",
         word: "saudara",
         en: "sibling / relative",
         vi: "anh chị em / họ hàng",
@@ -224,6 +228,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "sau-DA-ra",
       },
       {
+        cell_id: "0efac4e6-65de-4bcd-9ff0-e3b8d933ad68",
         word: "sepupu",
         en: "cousin",
         vi: "anh/chị/em họ",
@@ -232,6 +237,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "se-POO-poo",
       },
       {
+        cell_id: "ba611bf4-ba71-46cb-87e8-3a40be2f4df6",
         word: "mertua",
         en: "parents-in-law",
         vi: "bố mẹ vợ/chồng",
@@ -240,6 +246,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "mer-TOO-a",
       },
       {
+        cell_id: "b9f1e6df-2cf4-4edf-a38a-afec205e30ff",
         word: "arisan",
         en: "rotating savings/social gathering",
         vi: "hụi / buổi góp tiền xoay vòng",
@@ -248,6 +255,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "a-REE-san",
       },
       {
+        cell_id: "2bbdd219-1456-4432-b92b-2c85a8f05417",
         word: "makan bersama",
         en: "eat together",
         vi: "ăn cùng nhau",
@@ -256,6 +264,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "MA-kan ber-SA-ma",
       },
       {
+        cell_id: "a6c1fa1a-ac59-4a62-9e05-b776bca6bc90",
         word: "oleh-oleh",
         en: "souvenir / gift brought back",
         vi: "quà mang về / đặc sản",
@@ -264,6 +273,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "OH-leh OH-leh",
       },
       {
+        cell_id: "a5bf4702-4d35-47b7-b972-39c148fb4cb4",
         word: "sungkem",
         en: "kneel/bow respectfully to elders",
         vi: "lễ cúi/quỳ kính người lớn",
@@ -272,6 +282,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "SOONG-kem",
       },
       {
+        cell_id: "ef94764d-a1aa-4c98-b2af-b84e4681f729",
         word: "tuan rumah",
         en: "host",
         vi: "chủ nhà / người tổ chức",
@@ -280,6 +291,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "TOO-an ROO-mah",
       },
       {
+        cell_id: "c0547e44-197b-4bed-818c-657ac498345c",
         word: "giliran",
         en: "turn",
         vi: "lượt",
@@ -290,24 +302,28 @@ export const lessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "eb68ace4-7806-4985-a7fd-bc550a667482",
         speaker: "Linh",
         text: "Akhir pekan ini ada kumpul keluarga di rumah nenek, ya?",
         vi: "Cuối tuần này có họp mặt gia đình ở nhà bà đúng không?",
         en: "There is a family gathering at grandma's house this weekend, right?",
       },
       {
+        cell_id: "9734bbe2-679b-4579-8578-1559febfa474",
         speaker: "Raka",
         text: "Iya. Banyak saudara dan sepupu datang dari luar kota.",
         vi: "Đúng rồi. Nhiều họ hàng và anh chị em họ đến từ ngoài thành phố.",
         en: "Yes. Many relatives and cousins are coming from out of town.",
       },
       {
+        cell_id: "7a46a5be-919c-48e4-ab4d-c61e4756367b",
         speaker: "Linh",
         text: "Saya harus bawa apa? Oleh-oleh cukup?",
         vi: "Tôi nên mang gì? Quà đặc sản là đủ không?",
         en: "What should I bring? Are souvenirs/food gifts enough?",
       },
       {
+        cell_id: "259d0479-8648-4585-82e0-eee71f17acdf",
         speaker: "Raka",
         text: "Cukup. Nanti kita makan bersama, lalu ada arisan keluarga.",
         vi: "Đủ rồi. Lát nữa chúng ta ăn cùng nhau, rồi có arisan gia đình.",

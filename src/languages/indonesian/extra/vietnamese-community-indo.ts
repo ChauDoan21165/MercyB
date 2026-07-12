@@ -33,6 +33,7 @@ type LessonSentence = {
 };
 
 type VocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -44,6 +45,7 @@ type VocabEntry = {
 };
 
 type DialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -160,6 +162,7 @@ export const vietnameseCommunityIndoLessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: 'rindu' (to long for) is easy to remember and works for people and homeland food alike — 'rindu pho', 'rindu keluarga'. The comparison 'the same as' uses 'sama dengan': 'sama dengan di Vietnam'. To tune a flavor, use 'jangan terlalu + adjective': jangan terlalu manis/pedas/asin. Your country's name is 'Vietnam' (one word, no diacritics) in Indonesian.",
     vocabulary: [
       {
+        cell_id: "308d8f06-912b-4d91-a129-2543e7571f63",
         word: "restoran",
         en: "restaurant",
         vi: "nhà hàng",
@@ -168,6 +171,7 @@ export const vietnameseCommunityIndoLessons: IndonesianLesson[] = [
         pronunciation_en: "res-toh-RAN",
       },
       {
+        cell_id: "dbffdbc1-f5b7-499b-9ff6-17f2ea4bea8f",
         word: "rindu",
         en: "to miss / long for",
         vi: "nhớ (nhung)",
@@ -176,6 +180,7 @@ export const vietnameseCommunityIndoLessons: IndonesianLesson[] = [
         pronunciation_en: "RIN-doo",
       },
       {
+        cell_id: "8bac0997-6b08-4750-baca-c7e648da3e39",
         word: "kuah",
         en: "broth / soup liquid",
         vi: "nước dùng / nước lèo",
@@ -184,6 +189,7 @@ export const vietnameseCommunityIndoLessons: IndonesianLesson[] = [
         pronunciation_en: "KOO-ah",
       },
       {
+        cell_id: "0032a489-6e19-42a5-be07-186598777942",
         word: "kopi",
         en: "coffee",
         vi: "cà phê",
@@ -192,6 +198,7 @@ export const vietnameseCommunityIndoLessons: IndonesianLesson[] = [
         pronunciation_en: "KOH-pee",
       },
       {
+        cell_id: "57261fbe-0fcb-49bd-8744-169d864b420a",
         word: "saus ikan",
         en: "fish sauce",
         vi: "nước mắm",
@@ -200,6 +207,7 @@ export const vietnameseCommunityIndoLessons: IndonesianLesson[] = [
         pronunciation_en: "SOWS EE-kan",
       },
       {
+        cell_id: "616a230b-5cdb-47ca-a923-7e640aad1481",
         word: "rasa",
         en: "taste / flavor",
         vi: "vị",
@@ -208,6 +216,7 @@ export const vietnameseCommunityIndoLessons: IndonesianLesson[] = [
         pronunciation_en: "RA-sa",
       },
       {
+        cell_id: "ca22dd11-5b5a-4fbb-92ad-1abb042ce5f4",
         word: "sama dengan",
         en: "the same as",
         vi: "giống như",
@@ -216,6 +225,7 @@ export const vietnameseCommunityIndoLessons: IndonesianLesson[] = [
         pronunciation_en: "SA-ma DENG-an",
       },
       {
+        cell_id: "1b15e02e-ee91-4c77-90c2-16b1f3775868",
         word: "orang Vietnam",
         en: "Vietnamese person",
         vi: "người Việt Nam",
@@ -226,24 +236,28 @@ export const vietnameseCommunityIndoLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "98141ecb-6211-4b6a-b935-fe8734d778b1",
         speaker: "Linh",
         text: "Mas, apakah ada restoran Vietnam yang jual pho di sekitar sini?",
         vi: "Anh ơi, có nhà hàng Việt nào bán phở quanh đây không?",
         en: "Excuse me, is there a Vietnamese restaurant selling pho around here?",
       },
       {
+        cell_id: "0a31fc0e-b1c8-40a0-82b6-52d7e0ae788a",
         speaker: "Warga lokal",
         text: "Ada, di mal sebelah. Mbak orang Vietnam, ya?",
         vi: "Có, ở trung tâm thương mại bên cạnh. Chị là người Việt à?",
         en: "Yes, in the mall next door. You're Vietnamese, aren't you?",
       },
       {
+        cell_id: "7d645311-8989-4d9b-8753-a846eb3f46a6",
         speaker: "Linh",
         text: "Iya. Saya rindu rasa kampung halaman. Kuah pho di sana enak?",
         vi: "Vâng. Tôi nhớ vị quê nhà. Nước phở ở đó ngon không?",
         en: "Yes. I miss the taste of home. Is the pho broth there good?",
       },
       {
+        cell_id: "c1b6d370-59fc-4645-9b60-691803b8705b",
         speaker: "Warga lokal",
         text: "Enak, hampir sama dengan aslinya. Tapi minta jangan terlalu manis, ya.",
         vi: "Ngon, gần giống bản gốc. Nhưng nhớ dặn đừng quá ngọt nhé.",
@@ -384,6 +398,7 @@ export const vietnameseCommunityIndoLessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: word order partly inverts Vietnamese — modifiers go AFTER the head noun: 'komunitas orang Vietnam' (Vietnamese community), 'Kedutaan Besar Vietnam' (Embassy of Vietnam). For a polite question add '-kah': 'Bisakah Anda …?' (Could you …?). The helper verb 'membantu' (to help) + a verb is very useful: 'membantu menerjemahkan' (help translate).",
     vocabulary: [
       {
+        cell_id: "2cf66dc0-5b7d-4ef8-a489-11731d921664",
         word: "komunitas",
         en: "community",
         vi: "cộng đồng",
@@ -392,6 +407,7 @@ export const vietnameseCommunityIndoLessons: IndonesianLesson[] = [
         pronunciation_en: "ko-moo-nee-TAS",
       },
       {
+        cell_id: "ecbe8cf4-c5ca-4fdf-a1dd-3ab9253a27eb",
         word: "Kedutaan Besar",
         en: "embassy",
         vi: "đại sứ quán",
@@ -400,6 +416,7 @@ export const vietnameseCommunityIndoLessons: IndonesianLesson[] = [
         pronunciation_en: "ke-doo-TA-an be-SAR",
       },
       {
+        cell_id: "f4da56b0-1dfb-45e5-a8f8-6cde340a8988",
         word: "alamat",
         en: "address",
         vi: "địa chỉ",
@@ -408,6 +425,7 @@ export const vietnameseCommunityIndoLessons: IndonesianLesson[] = [
         pronunciation_en: "a-LA-mat",
       },
       {
+        cell_id: "fe46217e-0466-40fb-8b3d-350c7eee2b86",
         word: "berkumpul",
         en: "to gather",
         vi: "tụ họp",
@@ -416,6 +434,7 @@ export const vietnameseCommunityIndoLessons: IndonesianLesson[] = [
         pronunciation_en: "ber-KOOM-pool",
       },
       {
+        cell_id: "dd514b52-5acb-4bcf-be66-4469f9630a9a",
         word: "vihara",
         en: "Buddhist temple",
         vi: "chùa",
@@ -424,6 +443,7 @@ export const vietnameseCommunityIndoLessons: IndonesianLesson[] = [
         pronunciation_en: "vee-HA-ra",
       },
       {
+        cell_id: "b8358c91-f5c0-4846-a7d6-42e58144231f",
         word: "berdoa",
         en: "to pray",
         vi: "cầu nguyện",
@@ -432,6 +452,7 @@ export const vietnameseCommunityIndoLessons: IndonesianLesson[] = [
         pronunciation_en: "ber-DOH-a",
       },
       {
+        cell_id: "6ab9e7ce-c98e-4e88-8018-7d9e9ca8ecc5",
         word: "membantu",
         en: "to help",
         vi: "giúp đỡ",
@@ -440,6 +461,7 @@ export const vietnameseCommunityIndoLessons: IndonesianLesson[] = [
         pronunciation_en: "mem-BAN-too",
       },
       {
+        cell_id: "1929a792-bf7f-4e3b-942e-4a96289ce048",
         word: "menerjemahkan",
         en: "to translate",
         vi: "dịch (thuật)",
@@ -448,6 +470,7 @@ export const vietnameseCommunityIndoLessons: IndonesianLesson[] = [
         pronunciation_en: "me-ner-je-MAH-kan",
       },
       {
+        cell_id: "666291aa-8032-4feb-935d-6b7b9e88f1bc",
         word: "akhir pekan",
         en: "weekend",
         vi: "cuối tuần",
@@ -458,24 +481,28 @@ export const vietnameseCommunityIndoLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "804f4831-3b17-41d6-a3a9-d513f09b1de9",
         speaker: "Huy",
         text: "Saya baru pindah ke Jakarta. Mencari komunitas orang Vietnam.",
         vi: "Tôi mới chuyển đến Jakarta. Đang tìm cộng đồng người Việt.",
         en: "I just moved to Jakarta. I'm looking for the Vietnamese community.",
       },
       {
+        cell_id: "f3fac9d5-7a00-4971-a371-400410e0467f",
         speaker: "Mai",
         text: "Oh, kami berkumpul setiap akhir pekan. Kamu sudah ke Kedutaan?",
         vi: "Ồ, bọn mình tụ họp mỗi cuối tuần. Bạn đã đến Đại sứ quán chưa?",
         en: "Oh, we gather every weekend. Have you been to the embassy yet?",
       },
       {
+        cell_id: "930e80e9-0ceb-4a70-8c1e-b7360ab0407e",
         speaker: "Huy",
         text: "Belum. Bisakah kamu beri saya alamatnya?",
         vi: "Chưa. Bạn cho mình địa chỉ được không?",
         en: "Not yet. Could you give me the address?",
       },
       {
+        cell_id: "68a39f40-dca6-44e1-86a1-902bcee7d9f5",
         speaker: "Mai",
         text: "Tentu. Hari Minggu kita berdoa di vihara, lalu makan pho bersama.",
         vi: "Chắc chắn. Chủ nhật bọn mình cầu nguyện ở chùa, rồi ăn phở cùng nhau.",
@@ -616,6 +643,7 @@ export const vietnameseCommunityIndoLessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: the 'ter-' prefix forms superlatives — 'terpenting' (most important), 'terbaik' (best), 'terbesar' (biggest). Use 'semoga + a wish' to bless: 'Semoga tahun ini penuh keberuntungan.' Explain Tết via a reference Indonesians already know: 'sama dengan Imlek' (the same as Chinese New Year). The core greeting works as-is: 'Selamat Tahun Baru!'.",
     vocabulary: [
       {
+        cell_id: "d36cadf4-d91a-45d8-8b00-a847fc37f7e3",
         word: "merayakan",
         en: "to celebrate",
         vi: "ăn mừng / tổ chức",
@@ -624,6 +652,7 @@ export const vietnameseCommunityIndoLessons: IndonesianLesson[] = [
         pronunciation_en: "me-ra-YA-kan",
       },
       {
+        cell_id: "f83660aa-fcf5-43de-8e31-909cd23ab516",
         word: "Tahun Baru",
         en: "New Year",
         vi: "năm mới",
@@ -632,6 +661,7 @@ export const vietnameseCommunityIndoLessons: IndonesianLesson[] = [
         pronunciation_en: "TA-hoon BA-roo",
       },
       {
+        cell_id: "4e68b0e3-a157-4339-9171-e7222107e6bc",
         word: "amplop merah / angpao",
         en: "red envelope (lucky money)",
         vi: "bao lì xì",
@@ -640,6 +670,7 @@ export const vietnameseCommunityIndoLessons: IndonesianLesson[] = [
         pronunciation_en: "AM-plop MEH-rah / ANG-pow",
       },
       {
+        cell_id: "dc124d6f-7728-48e9-8d66-fd35ad4f5188",
         word: "makanan khas",
         en: "traditional / typical food",
         vi: "món truyền thống",
@@ -648,6 +679,7 @@ export const vietnameseCommunityIndoLessons: IndonesianLesson[] = [
         pronunciation_en: "ma-KA-nan KHAS",
       },
       {
+        cell_id: "1aca2522-d79d-42a2-bd4b-0a7644250e6b",
         word: "mengundang",
         en: "to invite",
         vi: "mời",
@@ -656,6 +688,7 @@ export const vietnameseCommunityIndoLessons: IndonesianLesson[] = [
         pronunciation_en: "meng-OON-dang",
       },
       {
+        cell_id: "133f2530-bcee-4faf-be34-1d262bec313b",
         word: "terpenting",
         en: "most important",
         vi: "quan trọng nhất",
@@ -664,6 +697,7 @@ export const vietnameseCommunityIndoLessons: IndonesianLesson[] = [
         pronunciation_en: "ter-PEN-ting",
       },
       {
+        cell_id: "3b5b523d-0b01-4773-a664-387159c47e2a",
         word: "semoga",
         en: "may / hopefully (wish)",
         vi: "cầu mong / chúc",
@@ -672,6 +706,7 @@ export const vietnameseCommunityIndoLessons: IndonesianLesson[] = [
         pronunciation_en: "se-MOH-ga",
       },
       {
+        cell_id: "4bef2fad-6893-4534-84a3-686a644fcab2",
         word: "keberuntungan",
         en: "good fortune / luck",
         vi: "sự may mắn",
@@ -682,24 +717,28 @@ export const vietnameseCommunityIndoLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "86af4142-3699-4580-87a6-8fc356e9c4ca",
         speaker: "Teman Indonesia",
         text: "Linh, Tet itu apa? Sama dengan Imlek?",
         vi: "Linh ơi, Tết là gì? Giống Tết người Hoa à?",
         en: "Linh, what is Tet? Is it the same as Imlek?",
       },
       {
+        cell_id: "11b44269-f5c2-4f0a-ab26-d9dc6fa96062",
         speaker: "Linh",
         text: "Iya, Tet adalah Imlek versi Vietnam, perayaan terpenting kami.",
         vi: "Đúng, Tết là Tết Nguyên đán phiên bản Việt, lễ quan trọng nhất của bọn mình.",
         en: "Yes, Tet is the Vietnamese version of Imlek, our most important celebration.",
       },
       {
+        cell_id: "63c178ce-53fa-49b5-b761-4b72102f13db",
         speaker: "Teman Indonesia",
         text: "Wah, menarik! Ada amplop merah juga?",
         vi: "Ồ, thú vị! Cũng có bao lì xì à?",
         en: "Wow, interesting! Are there red envelopes too?",
       },
       {
+        cell_id: "8fff9b74-4dd1-4636-ba2a-a472f65848c9",
         speaker: "Linh",
         text: "Ada! Saya ingin mengundang kamu merasakan Tet. Selamat Tahun Baru!",
         vi: "Có chứ! Mình muốn mời bạn trải nghiệm Tết. Chúc mừng năm mới!",

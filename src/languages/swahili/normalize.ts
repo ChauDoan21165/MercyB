@@ -43,6 +43,7 @@ type SwahiliSentenceInput = {
 };
 
 type SwahiliVocabInput = {
+  cell_id?: string;
   sw?: string;
   word?: string;
   en: string;
@@ -54,6 +55,7 @@ type SwahiliVocabInput = {
 };
 
 type SwahiliDialogueInput = {
+  cell_id?: string;
   speaker: string;
   sw?: string;
   text?: string;

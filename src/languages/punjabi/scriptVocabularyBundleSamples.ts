@@ -18,6 +18,7 @@ export type PunjabiBundleFocus =
 export type PunjabiBundleStage = "pre_a11_bundle" | "receipt" | "ledger" | "pre_integration" | "regression";
 
 export type PunjabiScriptVocabularyBundleSample = {
+  cell_id?: string;
   id: string;
   focus: PunjabiBundleFocus;
   stage: PunjabiBundleStage;

@@ -17,6 +17,7 @@ type LessonSentence = {
 };
 
 type VocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -28,6 +29,7 @@ type VocabEntry = {
 };
 
 type DialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -158,6 +160,7 @@ export const hotelHomestayCheckinLessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: 'atas nama...' is the useful booking phrase: 'under the name Nguyen'. Do not mix 'di' and 'ke': 'di lantai dua' = on the second floor, 'ke lantai dua' = to the second floor. For time, use 'jam berapa'; for floor/room numbers, use 'berapa' or 'nomor berapa'.",
     vocabulary: [
       {
+        cell_id: "eb8576a7-cfaa-4397-90fd-f0a5d538118c",
         word: "check-in",
         en: "check-in",
         vi: "nhận phòng / check-in",
@@ -166,6 +169,7 @@ export const hotelHomestayCheckinLessons: IndonesianLesson[] = [
         pronunciation_en: "CHEK-in",
       },
       {
+        cell_id: "ae4e2eef-ab9b-4658-94be-5463ed00fa2a",
         word: "KTP",
         en: "Indonesian ID card",
         vi: "căn cước Indonesia",
@@ -174,6 +178,7 @@ export const hotelHomestayCheckinLessons: IndonesianLesson[] = [
         pronunciation_en: "kah-teh-peh",
       },
       {
+        cell_id: "0c8e375f-0ac7-4eeb-ac77-adb0194b0980",
         word: "paspor",
         en: "passport",
         vi: "hộ chiếu",
@@ -182,6 +187,7 @@ export const hotelHomestayCheckinLessons: IndonesianLesson[] = [
         pronunciation_en: "PAS-por",
       },
       {
+        cell_id: "79e13560-76f0-407f-8721-82c5eb0cdff0",
         word: "deposit",
         en: "deposit",
         vi: "tiền đặt cọc",
@@ -190,6 +196,7 @@ export const hotelHomestayCheckinLessons: IndonesianLesson[] = [
         pronunciation_en: "de-PO-sit",
       },
       {
+        cell_id: "94773a73-6f04-4912-be83-a095b3fe7901",
         word: "kamar",
         en: "room",
         vi: "phòng",
@@ -198,6 +205,7 @@ export const hotelHomestayCheckinLessons: IndonesianLesson[] = [
         pronunciation_en: "KA-mar",
       },
       {
+        cell_id: "1f325e0d-6f63-4308-87e4-6476041bb052",
         word: "sarapan",
         en: "breakfast",
         vi: "bữa sáng / ăn sáng",
@@ -206,6 +214,7 @@ export const hotelHomestayCheckinLessons: IndonesianLesson[] = [
         pronunciation_en: "sa-RA-pan",
       },
       {
+        cell_id: "be278dfe-47f3-4e74-85b1-b4ee7dc81fad",
         word: "checkout",
         en: "checkout",
         vi: "trả phòng / checkout",
@@ -216,24 +225,28 @@ export const hotelHomestayCheckinLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "3151ee9f-4245-4e5f-bc77-e4153cef8af3",
         speaker: "Tamu",
         text: "Selamat siang, saya mau check-in atas nama Nguyen.",
         vi: "Chào buổi trưa, tôi muốn check-in dưới tên Nguyen.",
         en: "Good afternoon, I want to check in under the name Nguyen.",
       },
       {
+        cell_id: "e8794481-2c54-4547-8371-cd7403a231d3",
         speaker: "Resepsionis",
         text: "Baik, Pak. Boleh saya lihat paspor?",
         vi: "Vâng, anh. Tôi có thể xem hộ chiếu không ạ?",
         en: "Certainly, sir. May I see your passport?",
       },
       {
+        cell_id: "651135e6-4ae3-44b9-934a-5bdd7eb53b0b",
         speaker: "Tamu",
         text: "Ini paspor saya. Apakah ada deposit?",
         vi: "Đây là hộ chiếu của tôi. Có đặt cọc không?",
         en: "Here is my passport. Is there a deposit?",
       },
       {
+        cell_id: "1244152d-57aa-45cd-a178-cda4ff460f8e",
         speaker: "Resepsionis",
         text: "Ada deposit dua ratus ribu. Sarapan mulai jam tujuh.",
         vi: "Có đặt cọc hai trăm nghìn. Bữa sáng bắt đầu lúc bảy giờ.",
@@ -388,6 +401,7 @@ export const hotelHomestayCheckinLessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: 'menginap' is the standard verb for staying overnight/lodging, different from 'tinggal' = live/stay long-term. For room issues, passive di- is common: 'diganti' (replaced), 'dicek' (checked), 'diperbaiki' (repaired). To ask for a room change, use the soft question 'Boleh pindah kamar?'",
     vocabulary: [
       {
+        cell_id: "7de75d14-1aa7-47aa-aea1-072858a4650e",
         word: "homestay",
         en: "homestay / guesthouse-style lodging",
         vi: "homestay / nhà nghỉ kiểu gia đình",
@@ -396,6 +410,7 @@ export const hotelHomestayCheckinLessons: IndonesianLesson[] = [
         pronunciation_en: "HOM-stay",
       },
       {
+        cell_id: "7667adc5-dc3e-4e80-ba11-a79c638d3a93",
         word: "menginap",
         en: "to stay overnight",
         vi: "lưu trú / ở qua đêm",
@@ -404,6 +419,7 @@ export const hotelHomestayCheckinLessons: IndonesianLesson[] = [
         pronunciation_en: "me-NGEE-nap",
       },
       {
+        cell_id: "0d83cebb-cd76-414e-8bc3-be22719327f3",
         word: "AC",
         en: "air conditioner",
         vi: "máy lạnh / điều hòa",
@@ -412,6 +428,7 @@ export const hotelHomestayCheckinLessons: IndonesianLesson[] = [
         pronunciation_en: "ah-seh",
       },
       {
+        cell_id: "2995f8d5-c77f-4249-b34d-7d4888374ed7",
         word: "air panas",
         en: "hot water",
         vi: "nước nóng",
@@ -420,6 +437,7 @@ export const hotelHomestayCheckinLessons: IndonesianLesson[] = [
         pronunciation_en: "AH-ir PA-nas",
       },
       {
+        cell_id: "0c709242-448a-4685-b4de-c646dcdbdd45",
         word: "pindah kamar",
         en: "change rooms",
         vi: "đổi phòng",
@@ -428,6 +446,7 @@ export const hotelHomestayCheckinLessons: IndonesianLesson[] = [
         pronunciation_en: "PIN-dah KA-mar",
       },
       {
+        cell_id: "1cbe02b8-3866-43f0-b7a3-8d52927de2e2",
         word: "handuk",
         en: "towel",
         vi: "khăn tắm",
@@ -436,6 +455,7 @@ export const hotelHomestayCheckinLessons: IndonesianLesson[] = [
         pronunciation_en: "HAN-dook",
       },
       {
+        cell_id: "13c46171-8aa8-430c-86ef-fb62b7e6f1af",
         word: "berisik",
         en: "noisy",
         vi: "ồn",
@@ -446,24 +466,28 @@ export const hotelHomestayCheckinLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "36131cf3-b5cb-469d-8d9e-e3029c418eaf",
         speaker: "Tamu",
         text: "Maaf, AC di kamar saya tidak dingin.",
         vi: "Xin lỗi, máy lạnh trong phòng của tôi không lạnh.",
         en: "Excuse me, the AC in my room is not cold.",
       },
       {
+        cell_id: "4f764f4d-5137-42e2-a192-34a897a1866f",
         speaker: "Staf",
         text: "Baik, Pak. Nanti teknisi kami cek.",
         vi: "Vâng, anh. Lát nữa kỹ thuật viên của chúng tôi kiểm tra.",
         en: "Okay, sir. Our technician will check it later.",
       },
       {
+        cell_id: "41346025-dfa6-4f20-90a7-2833d0f7dc35",
         speaker: "Tamu",
         text: "Kalau tidak bisa diperbaiki, boleh pindah kamar?",
         vi: "Nếu không sửa được, tôi có thể đổi phòng không?",
         en: "If it cannot be fixed, may I change rooms?",
       },
       {
+        cell_id: "f2d4e2a3-5508-474a-9c93-ee8a29c44bd7",
         speaker: "Staf",
         text: "Boleh, kalau masih ada kamar kosong.",
         vi: "Được, nếu vẫn còn phòng trống.",

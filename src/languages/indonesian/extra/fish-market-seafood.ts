@@ -20,6 +20,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   /** Indonesian word/phrase. */
   word: string;
   /** English meaning. */
@@ -35,6 +36,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   /** Indonesian line. */
   text: string;
@@ -154,6 +156,7 @@ export const fishMarketSeafoodLessons: IndonesianLesson[] = [
       "Useful frames: `___ berapa satu kilo?`, `masih segar?`, `boleh tawar harga sedikit?`. Keep `segar` = fresh, `amis` = fishy, and `busuk` = rotten separate.",
     vocabulary: [
       {
+        cell_id: "70552d72-14f3-4d11-ac3a-ae9443221bb0",
         word: "pasar ikan",
         en: "fish market",
         vi: "chợ cá",
@@ -162,6 +165,7 @@ export const fishMarketSeafoodLessons: IndonesianLesson[] = [
         pronunciation_en: "PA-sar EE-kan",
       },
       {
+        cell_id: "23341811-adde-48e7-a548-ef1ba722a1ae",
         word: "ikan segar",
         en: "fresh fish",
         vi: "cá tươi",
@@ -170,6 +174,7 @@ export const fishMarketSeafoodLessons: IndonesianLesson[] = [
         pronunciation_en: "EE-kan SE-gar",
       },
       {
+        cell_id: "5894ad46-8066-43e8-8806-111b17b8da43",
         word: "udang",
         en: "shrimp / prawn",
         vi: "tôm",
@@ -178,6 +183,7 @@ export const fishMarketSeafoodLessons: IndonesianLesson[] = [
         pronunciation_en: "OO-dang",
       },
       {
+        cell_id: "ae20a4ef-da9f-4ed8-8247-405b6e05e506",
         word: "cumi",
         en: "squid",
         vi: "mực",
@@ -186,6 +192,7 @@ export const fishMarketSeafoodLessons: IndonesianLesson[] = [
         pronunciation_en: "CHOO-mi",
       },
       {
+        cell_id: "d420aa79-2652-4fcb-ba05-380190021706",
         word: "tawar harga",
         en: "to bargain over price",
         vi: "trả giá / mặc cả",
@@ -194,6 +201,7 @@ export const fishMarketSeafoodLessons: IndonesianLesson[] = [
         pronunciation_en: "TA-war HAR-ga",
       },
       {
+        cell_id: "02973ffe-8e54-4c63-95fd-6a53075f67de",
         word: "bau amis",
         en: "fishy smell",
         vi: "mùi tanh",
@@ -204,24 +212,28 @@ export const fishMarketSeafoodLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "78e4d400-6002-4935-8df2-fc0a8adff689",
         speaker: "Pembeli",
         text: "Bu, udangnya berapa satu kilo?",
         vi: "Cô ơi, tôm bao nhiêu một ký?",
         en: "Ma'am, how much is the shrimp per kilo?",
       },
       {
+        cell_id: "b88a1ba9-4b3a-4b9b-8769-f6fa2e075bee",
         speaker: "Penjual",
         text: "Satu kilo delapan puluh ribu, masih segar.",
         vi: "Một ký tám mươi nghìn, còn tươi.",
         en: "One kilo is eighty thousand, still fresh.",
       },
       {
+        cell_id: "dc314103-01a4-4371-ba38-cffc7020dfe3",
         speaker: "Pembeli",
         text: "Boleh tawar sedikit? Saya ambil dua kilo kalau cocok.",
         vi: "Bớt một chút được không? Nếu hợp giá tôi lấy hai ký.",
         en: "May I bargain a little? I'll take two kilos if the price works.",
       },
       {
+        cell_id: "6480d2ff-2147-4e12-81b8-8336ecc015c2",
         speaker: "Penjual",
         text: "Boleh, dua kilo seratus lima puluh ribu saja.",
         vi: "Được, hai ký một trăm năm mươi nghìn thôi.",
@@ -338,6 +350,7 @@ export const fishMarketSeafoodLessons: IndonesianLesson[] = [
       "Fish-market requests use many passive `di-` forms: `dibersihkan`, `dibuang`, `dikupas`, `dibungkus`. This is the natural way to describe what you want done to the item.",
     vocabulary: [
       {
+        cell_id: "974789d7-20cb-4197-acc3-6bef34c58301",
         word: "dibersihkan",
         en: "cleaned",
         vi: "được làm sạch",
@@ -346,6 +359,7 @@ export const fishMarketSeafoodLessons: IndonesianLesson[] = [
         pronunciation_en: "di-BER-sih-kan",
       },
       {
+        cell_id: "4381338b-eec6-46aa-8fad-3ca259624441",
         word: "sisik",
         en: "fish scales",
         vi: "vảy cá",
@@ -354,6 +368,7 @@ export const fishMarketSeafoodLessons: IndonesianLesson[] = [
         pronunciation_en: "SEE-sik",
       },
       {
+        cell_id: "ced7f22f-1ac0-4d63-acd4-c0a6813a8c43",
         word: "dibuang",
         en: "removed / thrown away",
         vi: "bị bỏ đi",
@@ -362,6 +377,7 @@ export const fishMarketSeafoodLessons: IndonesianLesson[] = [
         pronunciation_en: "di-BOO-ang",
       },
       {
+        cell_id: "50c0227f-c6cd-4bb5-a0c4-746e88043bb2",
         word: "masak bakar",
         en: "cook by grilling",
         vi: "nấu kiểu nướng",
@@ -370,6 +386,7 @@ export const fishMarketSeafoodLessons: IndonesianLesson[] = [
         pronunciation_en: "MA-sak BA-kar",
       },
       {
+        cell_id: "4e97a046-2d4a-432c-bc59-eb3d0f072a97",
         word: "dikupas",
         en: "peeled",
         vi: "được bóc vỏ",
@@ -378,6 +395,7 @@ export const fishMarketSeafoodLessons: IndonesianLesson[] = [
         pronunciation_en: "di-KOO-pas",
       },
       {
+        cell_id: "084913de-1b4d-4a43-a848-de6deae687a9",
         word: "dibungkus",
         en: "wrapped / packed",
         vi: "được gói",
@@ -386,6 +404,7 @@ export const fishMarketSeafoodLessons: IndonesianLesson[] = [
         pronunciation_en: "di-BOONG-kus",
       },
       {
+        cell_id: "c5cac6dd-e4d2-4e16-a1b0-b6d883fce383",
         word: "tetap segar",
         en: "stay fresh",
         vi: "giữ tươi",
@@ -396,24 +415,28 @@ export const fishMarketSeafoodLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "727d861f-1628-4c2c-8918-455b36370cd2",
         speaker: "Pembeli",
         text: "Pak, ikannya tolong dibersihkan sekalian.",
         vi: "Chú ơi, làm sạch cá luôn giúp tôi.",
         en: "Sir, please clean the fish as well.",
       },
       {
+        cell_id: "30cf1d3f-19d9-4229-ad45-c92ca7aa7c08",
         speaker: "Penjual",
         text: "Mau dibuang kepala dan sisiknya?",
         vi: "Có muốn bỏ đầu và vảy không?",
         en: "Do you want the head and scales removed?",
       },
       {
+        cell_id: "2c740211-7291-4fe7-8969-0cfe0aa06b9b",
         speaker: "Pembeli",
         text: "Iya, tapi udangnya jangan dikupas semua.",
         vi: "Vâng, nhưng tôm đừng bóc vỏ hết.",
         en: "Yes, but don't peel all the shrimp.",
       },
       {
+        cell_id: "41d9abb0-04e2-4c17-a3ff-4db8c145107a",
         speaker: "Penjual",
         text: "Baik. Nanti saya bungkus dengan es.",
         vi: "Được. Lát nữa tôi gói với đá.",

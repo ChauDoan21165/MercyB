@@ -55,6 +55,7 @@ export type PortugueseLessonSentence = {
 };
 
 export type PortugueseVocabEntry = {
+  cell_id?: string;
   /** Portuguese word, with article where gender matters (e.g. "a conta"). */
   word: string;
   en: string;
@@ -66,6 +67,7 @@ export type PortugueseVocabEntry = {
 };
 
 export type PortugueseDialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -212,20 +214,20 @@ export const lessons: PortugueseLesson[] = [
       },
     ],
     vocabulary: [
-      { word: "acordar", en: "to wake up", vi: "thức dậy", pos: "verb", pronunciation_vi: "a-côr-ĐAR", pronunciation_en: "ah-kor-DAR" },
-      { word: "o café da manhã", en: "breakfast", vi: "bữa sáng", pos: "n.m.", pronunciation_vi: "u ca-FÉ đa man-NHÃ", pronunciation_en: "oo kah-FEH dah mun-NYAH" },
-      { word: "o trabalho", en: "work / job", vi: "công việc", pos: "n.m.", pronunciation_vi: "u tra-BA-liu", pronunciation_en: "oo trah-BAH-lyoo" },
-      { word: "o almoço", en: "lunch", vi: "bữa trưa", pos: "n.m.", pronunciation_vi: "u au-MÔ-su", pronunciation_en: "oo ow-MOH-soo" },
-      { word: "à noite", en: "at night / in the evening", vi: "buổi tối", pos: "adv. phrase", pronunciation_vi: "a NÔI-tchi", pronunciation_en: "ah NOY-tchee" },
-      { word: "cedo", en: "early", vi: "sớm", pos: "adv.", pronunciation_vi: "XÊ-đu", pronunciation_en: "SEH-doo" },
-      { word: "tarde", en: "late / afternoon", vi: "muộn / buổi chiều", pos: "adv. / n.f.", pronunciation_vi: "TAR-đji", pronunciation_en: "TAR-jee" },
-      { word: "todos os dias", en: "every day", vi: "mỗi ngày", pos: "phrase", pronunciation_vi: "TÔ-đus us ĐJI-as", pronunciation_en: "TOH-doos oos JEE-ahs" },
+      { cell_id: "39236cbf-e05e-44d6-9b81-7ad8e01b28db", word: "acordar", en: "to wake up", vi: "thức dậy", pos: "verb", pronunciation_vi: "a-côr-ĐAR", pronunciation_en: "ah-kor-DAR" },
+      { cell_id: "07f10125-51bc-4b89-a934-009e9016c2fc", word: "o café da manhã", en: "breakfast", vi: "bữa sáng", pos: "n.m.", pronunciation_vi: "u ca-FÉ đa man-NHÃ", pronunciation_en: "oo kah-FEH dah mun-NYAH" },
+      { cell_id: "760f5596-cd82-4610-b624-6b5feade0da0", word: "o trabalho", en: "work / job", vi: "công việc", pos: "n.m.", pronunciation_vi: "u tra-BA-liu", pronunciation_en: "oo trah-BAH-lyoo" },
+      { cell_id: "26ea7907-da7f-4ece-982a-0775af3f2cbe", word: "o almoço", en: "lunch", vi: "bữa trưa", pos: "n.m.", pronunciation_vi: "u au-MÔ-su", pronunciation_en: "oo ow-MOH-soo" },
+      { cell_id: "cbab33d5-2fbb-4eaf-b371-9a4524ca8dcd", word: "à noite", en: "at night / in the evening", vi: "buổi tối", pos: "adv. phrase", pronunciation_vi: "a NÔI-tchi", pronunciation_en: "ah NOY-tchee" },
+      { cell_id: "50b176b7-b392-4cb3-aa65-96e5d7d9e2a5", word: "cedo", en: "early", vi: "sớm", pos: "adv.", pronunciation_vi: "XÊ-đu", pronunciation_en: "SEH-doo" },
+      { cell_id: "8cb41d35-b9d3-4a02-a627-6cc17c057fd9", word: "tarde", en: "late / afternoon", vi: "muộn / buổi chiều", pos: "adv. / n.f.", pronunciation_vi: "TAR-đji", pronunciation_en: "TAR-jee" },
+      { cell_id: "adc4f24c-a0f4-41ea-9f54-7b2f532a4a51", word: "todos os dias", en: "every day", vi: "mỗi ngày", pos: "phrase", pronunciation_vi: "TÔ-đus us ĐJI-as", pronunciation_en: "TOH-doos oos JEE-ahs" },
     ],
     dialogue: [
-      { speaker: "A", text: "A que horas você acorda?", vi: "Bạn thức dậy lúc mấy giờ?", en: "What time do you wake up?" },
-      { speaker: "B", text: "Acordo às seis e meia. E você?", vi: "Tôi dậy lúc sáu giờ rưỡi. Còn bạn?", en: "I wake up at half past six. And you?" },
-      { speaker: "A", text: "Mais tarde, às sete. Vou para o trabalho de metrô.", vi: "Muộn hơn, lúc bảy giờ. Tôi đi làm bằng tàu điện ngầm.", en: "Later, at seven. I take the metro to work." },
-      { speaker: "B", text: "Eu vou de ônibus. À noite, durmo cedo.", vi: "Tôi đi xe buýt. Buổi tối tôi ngủ sớm.", en: "I go by bus. At night I sleep early." },
+      { cell_id: "288c107d-795a-43d3-b05d-845b11187c0c", speaker: "A", text: "A que horas você acorda?", vi: "Bạn thức dậy lúc mấy giờ?", en: "What time do you wake up?" },
+      { cell_id: "60817503-07f2-4592-b554-49eb850df13e", speaker: "B", text: "Acordo às seis e meia. E você?", vi: "Tôi dậy lúc sáu giờ rưỡi. Còn bạn?", en: "I wake up at half past six. And you?" },
+      { cell_id: "6e2a0e3d-675f-42cd-ab01-4079f9f44973", speaker: "A", text: "Mais tarde, às sete. Vou para o trabalho de metrô.", vi: "Muộn hơn, lúc bảy giờ. Tôi đi làm bằng tàu điện ngầm.", en: "Later, at seven. I take the metro to work." },
+      { cell_id: "99d143bf-c2a2-4122-b83b-1f2771d4e20b", speaker: "B", text: "Eu vou de ônibus. À noite, durmo cedo.", vi: "Tôi đi xe buýt. Buổi tối tôi ngủ sớm.", en: "I go by bus. At night I sleep early." },
     ],
     exercises: [
       {
@@ -358,20 +360,20 @@ export const lessons: PortugueseLesson[] = [
       },
     ],
     vocabulary: [
-      { word: "o quilo", en: "kilo", vi: "ký, kg", pos: "n.m.", pronunciation_vi: "u KI-lu", pronunciation_en: "oo KEE-loo" },
-      { word: "caro", en: "expensive", vi: "đắt", pos: "adj.", pronunciation_vi: "CA-ru", pronunciation_en: "KAH-roo" },
-      { word: "barato", en: "cheap", vi: "rẻ", pos: "adj.", pronunciation_vi: "ba-RA-tu", pronunciation_en: "bah-RAH-too" },
-      { word: "o caixa", en: "checkout / cashier", vi: "quầy thu ngân", pos: "n.m.", pronunciation_vi: "u CAI-sa", pronunciation_en: "oo KIGH-shah" },
-      { word: "o cartão", en: "card (payment)", vi: "thẻ", pos: "n.m.", pronunciation_vi: "u car-TÃUNG", pronunciation_en: "oo kar-TOWNG" },
-      { word: "o dinheiro", en: "cash / money", vi: "tiền mặt", pos: "n.m.", pronunciation_vi: "u đji-NHÊI-ru", pronunciation_en: "oo jee-NYAY-roo" },
-      { word: "a feira", en: "street market", vi: "chợ phiên", pos: "n.f.", pronunciation_vi: "a FÊI-ra", pronunciation_en: "ah FAY-rah" },
-      { word: "o troco", en: "change (money back)", vi: "tiền thối", pos: "n.m.", pronunciation_vi: "u TRÔ-cu", pronunciation_en: "oo TROH-koo" },
+      { cell_id: "f2db59cd-e9d3-435a-b5b7-2086181c51e7", word: "o quilo", en: "kilo", vi: "ký, kg", pos: "n.m.", pronunciation_vi: "u KI-lu", pronunciation_en: "oo KEE-loo" },
+      { cell_id: "6c9f0ab6-e75a-4d8a-9f0d-1091f6cb4bff", word: "caro", en: "expensive", vi: "đắt", pos: "adj.", pronunciation_vi: "CA-ru", pronunciation_en: "KAH-roo" },
+      { cell_id: "d651179d-92b7-44b6-bf6e-d1d45c98f484", word: "barato", en: "cheap", vi: "rẻ", pos: "adj.", pronunciation_vi: "ba-RA-tu", pronunciation_en: "bah-RAH-too" },
+      { cell_id: "b7833ad0-fab7-447f-b349-56cc7f8752b5", word: "o caixa", en: "checkout / cashier", vi: "quầy thu ngân", pos: "n.m.", pronunciation_vi: "u CAI-sa", pronunciation_en: "oo KIGH-shah" },
+      { cell_id: "a23b11f5-8ab3-4862-b355-542a1e7a7f0b", word: "o cartão", en: "card (payment)", vi: "thẻ", pos: "n.m.", pronunciation_vi: "u car-TÃUNG", pronunciation_en: "oo kar-TOWNG" },
+      { cell_id: "97313110-7289-44ae-acc3-21e8ca79124a", word: "o dinheiro", en: "cash / money", vi: "tiền mặt", pos: "n.m.", pronunciation_vi: "u đji-NHÊI-ru", pronunciation_en: "oo jee-NYAY-roo" },
+      { cell_id: "9c677d30-6e14-4afb-98fd-1a3659b8cb33", word: "a feira", en: "street market", vi: "chợ phiên", pos: "n.f.", pronunciation_vi: "a FÊI-ra", pronunciation_en: "ah FAY-rah" },
+      { cell_id: "9804011f-ae4d-483c-87e0-53bed7cae2f7", word: "o troco", en: "change (money back)", vi: "tiền thối", pos: "n.m.", pronunciation_vi: "u TRÔ-cu", pronunciation_en: "oo TROH-koo" },
     ],
     dialogue: [
-      { speaker: "Cliente", text: "Bom dia! Quanto custa o quilo de banana?", vi: "Chào buổi sáng! Một ký chuối bao nhiêu?", en: "Good morning! How much is a kilo of bananas?" },
-      { speaker: "Vendedor", text: "Cinco reais o quilo. Quanto a senhora quer?", vi: "Năm real một ký. Chị muốn mua bao nhiêu?", en: "Five reais a kilo. How much would you like?" },
-      { speaker: "Cliente", text: "Meio quilo, por favor. Posso pagar no cartão?", vi: "Nửa ký, làm ơn. Tôi trả thẻ được không?", en: "Half a kilo, please. Can I pay by card?" },
-      { speaker: "Vendedor", text: "Pode sim, ou no Pix. São dois e cinquenta.", vi: "Được ạ, hoặc Pix. Hết hai real rưỡi.", en: "Yes, or by Pix. That's two-fifty." },
+      { cell_id: "423d3a7a-5e47-4637-adaf-113036c6a49f", speaker: "Cliente", text: "Bom dia! Quanto custa o quilo de banana?", vi: "Chào buổi sáng! Một ký chuối bao nhiêu?", en: "Good morning! How much is a kilo of bananas?" },
+      { cell_id: "0f75828a-5bff-4a48-8cc1-cb572f1c50b4", speaker: "Vendedor", text: "Cinco reais o quilo. Quanto a senhora quer?", vi: "Năm real một ký. Chị muốn mua bao nhiêu?", en: "Five reais a kilo. How much would you like?" },
+      { cell_id: "7ac32999-6bf8-42cc-bf21-0dfcb62582fb", speaker: "Cliente", text: "Meio quilo, por favor. Posso pagar no cartão?", vi: "Nửa ký, làm ơn. Tôi trả thẻ được không?", en: "Half a kilo, please. Can I pay by card?" },
+      { cell_id: "5a63d033-2322-4507-84c9-a962ab416f2c", speaker: "Vendedor", text: "Pode sim, ou no Pix. São dois e cinquenta.", vi: "Được ạ, hoặc Pix. Hết hai real rưỡi.", en: "Yes, or by Pix. That's two-fifty." },
     ],
     exercises: [
       {
@@ -505,20 +507,20 @@ export const lessons: PortugueseLesson[] = [
       },
     ],
     vocabulary: [
-      { word: "o ônibus", en: "bus", vi: "xe buýt", pos: "n.m.", pronunciation_vi: "u Ô-ni-bus", pronunciation_en: "oo OH-nee-boos" },
-      { word: "o metrô", en: "metro / subway", vi: "tàu điện ngầm", pos: "n.m.", pronunciation_vi: "u mê-TRÔ", pronunciation_en: "oo meh-TROH" },
-      { word: "o ponto de ônibus", en: "bus stop", vi: "trạm xe buýt", pos: "n.m.", pronunciation_vi: "u PÔN-tu đji Ô-ni-bus", pronunciation_en: "oo POWN-too jee OH-nee-boos" },
-      { word: "a passagem", en: "ticket / fare", vi: "vé", pos: "n.f.", pronunciation_vi: "a pa-SA-giêng", pronunciation_en: "ah pah-SAH-zheng" },
-      { word: "a parada", en: "stop", vi: "trạm dừng", pos: "n.f.", pronunciation_vi: "a pa-RA-đa", pronunciation_en: "ah pah-RAH-dah" },
-      { word: "descer", en: "to get off / go down", vi: "xuống xe", pos: "verb", pronunciation_vi: "đes-SER", pronunciation_en: "deh-SEHR" },
-      { word: "subir", en: "to get on / go up", vi: "lên xe", pos: "verb", pronunciation_vi: "su-BIR", pronunciation_en: "soo-BEER" },
-      { word: "o centro", en: "downtown / centre", vi: "trung tâm", pos: "n.m.", pronunciation_vi: "u XÊN-tru", pronunciation_en: "oo SEN-troo" },
+      { cell_id: "0e4c568a-cabc-42f8-98ef-24b094ae8baa", word: "o ônibus", en: "bus", vi: "xe buýt", pos: "n.m.", pronunciation_vi: "u Ô-ni-bus", pronunciation_en: "oo OH-nee-boos" },
+      { cell_id: "3d865f28-6899-46e9-bb42-b51dd57a9e5e", word: "o metrô", en: "metro / subway", vi: "tàu điện ngầm", pos: "n.m.", pronunciation_vi: "u mê-TRÔ", pronunciation_en: "oo meh-TROH" },
+      { cell_id: "8500dd4c-ed5c-46a4-b1b2-6e7f83668c36", word: "o ponto de ônibus", en: "bus stop", vi: "trạm xe buýt", pos: "n.m.", pronunciation_vi: "u PÔN-tu đji Ô-ni-bus", pronunciation_en: "oo POWN-too jee OH-nee-boos" },
+      { cell_id: "e5abcb74-9a03-4bfc-8ac2-be0f06d96027", word: "a passagem", en: "ticket / fare", vi: "vé", pos: "n.f.", pronunciation_vi: "a pa-SA-giêng", pronunciation_en: "ah pah-SAH-zheng" },
+      { cell_id: "acc52a91-d51b-4717-a8ac-c18a8a577430", word: "a parada", en: "stop", vi: "trạm dừng", pos: "n.f.", pronunciation_vi: "a pa-RA-đa", pronunciation_en: "ah pah-RAH-dah" },
+      { cell_id: "efd679f5-0a41-4f1c-862e-04d924b84e28", word: "descer", en: "to get off / go down", vi: "xuống xe", pos: "verb", pronunciation_vi: "đes-SER", pronunciation_en: "deh-SEHR" },
+      { cell_id: "99281248-f806-467a-b95d-004c71fbb102", word: "subir", en: "to get on / go up", vi: "lên xe", pos: "verb", pronunciation_vi: "su-BIR", pronunciation_en: "soo-BEER" },
+      { cell_id: "df685a31-f709-42b5-a3c0-eff3a0fe5a28", word: "o centro", en: "downtown / centre", vi: "trung tâm", pos: "n.m.", pronunciation_vi: "u XÊN-tru", pronunciation_en: "oo SEN-troo" },
     ],
     dialogue: [
-      { speaker: "Turista", text: "Com licença, este ônibus vai para o centro?", vi: "Xin lỗi, xe buýt này có đi trung tâm không?", en: "Excuse me, does this bus go downtown?" },
-      { speaker: "Cobrador", text: "Vai sim. São quatro reais e cinquenta.", vi: "Có đi ạ. Bốn real năm mươi.", en: "Yes it does. That's four-fifty." },
-      { speaker: "Turista", text: "Obrigado. Pode me avisar na praça da Sé?", vi: "Cảm ơn. Tới quảng trường Sé báo giúp tôi nhé?", en: "Thanks. Can you let me know at Praça da Sé?" },
-      { speaker: "Cobrador", text: "Pode deixar. Você desce na próxima parada.", vi: "Cứ yên tâm. Bạn xuống ở trạm tiếp theo.", en: "Sure thing. You get off at the next stop." },
+      { cell_id: "b7d7c9fd-4d38-4dce-9f07-d6ecde912d35", speaker: "Turista", text: "Com licença, este ônibus vai para o centro?", vi: "Xin lỗi, xe buýt này có đi trung tâm không?", en: "Excuse me, does this bus go downtown?" },
+      { cell_id: "3cde365c-f51a-46b7-a5db-11ff2d155fd4", speaker: "Cobrador", text: "Vai sim. São quatro reais e cinquenta.", vi: "Có đi ạ. Bốn real năm mươi.", en: "Yes it does. That's four-fifty." },
+      { cell_id: "7ed10225-1a3b-4a91-82ce-b0fec3ff18e8", speaker: "Turista", text: "Obrigado. Pode me avisar na praça da Sé?", vi: "Cảm ơn. Tới quảng trường Sé báo giúp tôi nhé?", en: "Thanks. Can you let me know at Praça da Sé?" },
+      { cell_id: "7b7bf69a-4c28-40b7-9b99-af39b4814f72", speaker: "Cobrador", text: "Pode deixar. Você desce na próxima parada.", vi: "Cứ yên tâm. Bạn xuống ở trạm tiếp theo.", en: "Sure thing. You get off at the next stop." },
     ],
     exercises: [
       {
@@ -651,20 +653,20 @@ export const lessons: PortugueseLesson[] = [
       },
     ],
     vocabulary: [
-      { word: "marcar", en: "to book / schedule", vi: "đặt lịch", pos: "verb", pronunciation_vi: "mar-CAR", pronunciation_en: "mar-KAR" },
-      { word: "desmarcar", en: "to cancel", vi: "hủy lịch", pos: "verb", pronunciation_vi: "đjis-mar-CAR", pronunciation_en: "jees-mar-KAR" },
-      { word: "remarcar", en: "to reschedule", vi: "đặt lại", pos: "verb", pronunciation_vi: "he-mar-CAR", pronunciation_en: "heh-mar-KAR" },
-      { word: "a consulta", en: "appointment (medical)", vi: "buổi khám", pos: "n.f.", pronunciation_vi: "a côn-SUL-ta", pronunciation_en: "ah kohn-SOOL-tah" },
-      { word: "o horário", en: "time-slot / schedule", vi: "giờ hẹn, lịch", pos: "n.m.", pronunciation_vi: "u o-RA-ri-u", pronunciation_en: "oo oh-RAH-ree-oo" },
-      { word: "disponível", en: "available", vi: "còn trống", pos: "adj.", pronunciation_vi: "đjis-pô-NI-vel", pronunciation_en: "jees-poh-NEE-vehw" },
-      { word: "sexta-feira", en: "Friday", vi: "thứ Sáu", pos: "n.f.", pronunciation_vi: "SÉS-ta FÊI-ra", pronunciation_en: "SESS-tah FAY-rah" },
-      { word: "confirmar", en: "to confirm", vi: "xác nhận", pos: "verb", pronunciation_vi: "côn-fir-MAR", pronunciation_en: "kohn-feer-MAR" },
+      { cell_id: "86a9f189-3d8d-481f-9542-0ab3205e37f5", word: "marcar", en: "to book / schedule", vi: "đặt lịch", pos: "verb", pronunciation_vi: "mar-CAR", pronunciation_en: "mar-KAR" },
+      { cell_id: "aed5508f-c5f4-48fd-b041-28c35d31d4f7", word: "desmarcar", en: "to cancel", vi: "hủy lịch", pos: "verb", pronunciation_vi: "đjis-mar-CAR", pronunciation_en: "jees-mar-KAR" },
+      { cell_id: "98e8e4a3-d13f-4331-b167-feb72b3ccd70", word: "remarcar", en: "to reschedule", vi: "đặt lại", pos: "verb", pronunciation_vi: "he-mar-CAR", pronunciation_en: "heh-mar-KAR" },
+      { cell_id: "3fc05b6b-e3a6-4fcf-85fe-b7a93addd28f", word: "a consulta", en: "appointment (medical)", vi: "buổi khám", pos: "n.f.", pronunciation_vi: "a côn-SUL-ta", pronunciation_en: "ah kohn-SOOL-tah" },
+      { cell_id: "d3fbec3f-734b-42fc-938e-c30ffba40dca", word: "o horário", en: "time-slot / schedule", vi: "giờ hẹn, lịch", pos: "n.m.", pronunciation_vi: "u o-RA-ri-u", pronunciation_en: "oo oh-RAH-ree-oo" },
+      { cell_id: "03a8b835-e9de-4cd7-b404-3656fbee5f73", word: "disponível", en: "available", vi: "còn trống", pos: "adj.", pronunciation_vi: "đjis-pô-NI-vel", pronunciation_en: "jees-poh-NEE-vehw" },
+      { cell_id: "5b367f5b-d7bd-449c-8a4c-77bc09d183d0", word: "sexta-feira", en: "Friday", vi: "thứ Sáu", pos: "n.f.", pronunciation_vi: "SÉS-ta FÊI-ra", pronunciation_en: "SESS-tah FAY-rah" },
+      { cell_id: "d74fddde-d977-4f30-aca8-bcb065de9782", word: "confirmar", en: "to confirm", vi: "xác nhận", pos: "verb", pronunciation_vi: "côn-fir-MAR", pronunciation_en: "kohn-feer-MAR" },
     ],
     dialogue: [
-      { speaker: "Paciente", text: "Boa tarde, gostaria de marcar uma consulta.", vi: "Chào buổi chiều, tôi muốn đặt lịch khám.", en: "Good afternoon, I'd like to make an appointment." },
-      { speaker: "Recepção", text: "Claro. Tem horário na sexta-feira de manhã.", vi: "Vâng. Thứ Sáu buổi sáng còn giờ.", en: "Of course. There's a slot Friday morning." },
-      { speaker: "Paciente", text: "Sexta de manhã não posso. Pode ser à tarde?", vi: "Sáng thứ Sáu tôi bận. Buổi chiều được không?", en: "I can't on Friday morning. Could it be the afternoon?" },
-      { speaker: "Recepção", text: "Pode. Às três da tarde. Confirmo então?", vi: "Được. Ba giờ chiều. Tôi xác nhận nhé?", en: "Sure. At three. Shall I confirm then?" },
+      { cell_id: "f62fd998-b983-4b6e-aef0-9f077517c6ce", speaker: "Paciente", text: "Boa tarde, gostaria de marcar uma consulta.", vi: "Chào buổi chiều, tôi muốn đặt lịch khám.", en: "Good afternoon, I'd like to make an appointment." },
+      { cell_id: "5502913d-e1e0-4bec-b9d7-3e26f7b2ea06", speaker: "Recepção", text: "Claro. Tem horário na sexta-feira de manhã.", vi: "Vâng. Thứ Sáu buổi sáng còn giờ.", en: "Of course. There's a slot Friday morning." },
+      { cell_id: "cb8019b4-2ee0-4008-84ee-72ad5fa0d109", speaker: "Paciente", text: "Sexta de manhã não posso. Pode ser à tarde?", vi: "Sáng thứ Sáu tôi bận. Buổi chiều được không?", en: "I can't on Friday morning. Could it be the afternoon?" },
+      { cell_id: "45157e17-b83d-44a1-b4b8-748cc444e9bd", speaker: "Recepção", text: "Pode. Às três da tarde. Confirmo então?", vi: "Được. Ba giờ chiều. Tôi xác nhận nhé?", en: "Sure. At three. Shall I confirm then?" },
     ],
     exercises: [
       {
@@ -797,20 +799,20 @@ export const lessons: PortugueseLesson[] = [
       },
     ],
     vocabulary: [
-      { word: "o apartamento", en: "apartment", vi: "căn hộ", pos: "n.m.", pronunciation_vi: "u a-par-ta-MÊN-tu", pronunciation_en: "oo ah-par-tah-MEN-too" },
-      { word: "alugar", en: "to rent", vi: "thuê / cho thuê", pos: "verb", pronunciation_vi: "a-lu-GAR", pronunciation_en: "ah-loo-GAR" },
-      { word: "o aluguel", en: "rent (the amount)", vi: "tiền thuê", pos: "n.m.", pronunciation_vi: "u a-lu-GUEL", pronunciation_en: "oo ah-loo-GEHW" },
-      { word: "o quarto", en: "bedroom", vi: "phòng ngủ", pos: "n.m.", pronunciation_vi: "u CUAR-tu", pronunciation_en: "oo KWAR-too" },
-      { word: "a cozinha", en: "kitchen", vi: "bếp", pos: "n.f.", pronunciation_vi: "a cô-ZI-nha", pronunciation_en: "ah koh-ZEE-nyah" },
-      { word: "o banheiro", en: "bathroom", vi: "nhà vệ sinh", pos: "n.m.", pronunciation_vi: "u ba-NHÊI-ru", pronunciation_en: "oo bah-NYAY-roo" },
-      { word: "o condomínio", en: "building fee / condo", vi: "phí chung cư", pos: "n.m.", pronunciation_vi: "u côn-đô-MI-ni-u", pronunciation_en: "oo kohn-doh-MEE-nee-oo" },
-      { word: "o imóvel", en: "property", vi: "bất động sản, nhà", pos: "n.m.", pronunciation_vi: "u i-MÓ-vel", pronunciation_en: "oo ee-MOH-vehw" },
+      { cell_id: "36358c79-3cb3-4015-9b2f-bd5c18bbef43", word: "o apartamento", en: "apartment", vi: "căn hộ", pos: "n.m.", pronunciation_vi: "u a-par-ta-MÊN-tu", pronunciation_en: "oo ah-par-tah-MEN-too" },
+      { cell_id: "0eba8bff-9aaa-437d-afe0-ad56c210a369", word: "alugar", en: "to rent", vi: "thuê / cho thuê", pos: "verb", pronunciation_vi: "a-lu-GAR", pronunciation_en: "ah-loo-GAR" },
+      { cell_id: "054ea9b5-8242-4172-85ca-859a417079d8", word: "o aluguel", en: "rent (the amount)", vi: "tiền thuê", pos: "n.m.", pronunciation_vi: "u a-lu-GUEL", pronunciation_en: "oo ah-loo-GEHW" },
+      { cell_id: "4fc20383-fb89-4c3d-a63a-1a56d3860282", word: "o quarto", en: "bedroom", vi: "phòng ngủ", pos: "n.m.", pronunciation_vi: "u CUAR-tu", pronunciation_en: "oo KWAR-too" },
+      { cell_id: "12ab2e85-24a4-48bf-a08d-1a213e7012ec", word: "a cozinha", en: "kitchen", vi: "bếp", pos: "n.f.", pronunciation_vi: "a cô-ZI-nha", pronunciation_en: "ah koh-ZEE-nyah" },
+      { cell_id: "71928e86-f87a-445e-9d5c-eca79b47755c", word: "o banheiro", en: "bathroom", vi: "nhà vệ sinh", pos: "n.m.", pronunciation_vi: "u ba-NHÊI-ru", pronunciation_en: "oo bah-NYAY-roo" },
+      { cell_id: "c4c23645-9799-41d3-aeea-4288694b8d65", word: "o condomínio", en: "building fee / condo", vi: "phí chung cư", pos: "n.m.", pronunciation_vi: "u côn-đô-MI-ni-u", pronunciation_en: "oo kohn-doh-MEE-nee-oo" },
+      { cell_id: "d7b72a34-3fd0-482f-af23-9758fdde9fd9", word: "o imóvel", en: "property", vi: "bất động sản, nhà", pos: "n.m.", pronunciation_vi: "u i-MÓ-vel", pronunciation_en: "oo ee-MOH-vehw" },
     ],
     dialogue: [
-      { speaker: "Cliente", text: "Oi, estou procurando um apartamento para alugar.", vi: "Chào, tôi đang tìm căn hộ để thuê.", en: "Hi, I'm looking for an apartment to rent." },
-      { speaker: "Corretor", text: "Temos um de dois quartos no centro. Quanto pode pagar?", vi: "Có một căn hai phòng ở trung tâm. Bạn trả được bao nhiêu?", en: "We have a two-bedroom downtown. What's your budget?" },
-      { speaker: "Cliente", text: "Até dois mil. O condomínio está incluído?", vi: "Tối đa hai nghìn. Phí chung cư đã tính chưa?", en: "Up to two thousand. Is the building fee included?" },
-      { speaker: "Corretor", text: "O condomínio é à parte. Quer visitar amanhã?", vi: "Phí chung cư tính riêng. Mai bạn muốn xem nhà không?", en: "The fee is separate. Want to visit tomorrow?" },
+      { cell_id: "09471cc5-b51f-45bf-b4ba-e1f9c1f6f8b9", speaker: "Cliente", text: "Oi, estou procurando um apartamento para alugar.", vi: "Chào, tôi đang tìm căn hộ để thuê.", en: "Hi, I'm looking for an apartment to rent." },
+      { cell_id: "0959d16e-a57e-4d70-b87b-2ae3f1a94e42", speaker: "Corretor", text: "Temos um de dois quartos no centro. Quanto pode pagar?", vi: "Có một căn hai phòng ở trung tâm. Bạn trả được bao nhiêu?", en: "We have a two-bedroom downtown. What's your budget?" },
+      { cell_id: "7ef5cae2-f8fa-4d21-b7f2-2fcc60129508", speaker: "Cliente", text: "Até dois mil. O condomínio está incluído?", vi: "Tối đa hai nghìn. Phí chung cư đã tính chưa?", en: "Up to two thousand. Is the building fee included?" },
+      { cell_id: "52e5ab32-3dac-4a28-8d1c-93828f89c496", speaker: "Corretor", text: "O condomínio é à parte. Quer visitar amanhã?", vi: "Phí chung cư tính riêng. Mai bạn muốn xem nhà không?", en: "The fee is separate. Want to visit tomorrow?" },
     ],
     exercises: [
       {
@@ -944,20 +946,20 @@ export const lessons: PortugueseLesson[] = [
       },
     ],
     vocabulary: [
-      { word: "a camisa", en: "shirt", vi: "áo sơ mi", pos: "n.f.", pronunciation_vi: "a ca-MI-za", pronunciation_en: "ah kah-MEE-zah" },
-      { word: "o tamanho", en: "size", vi: "cỡ, kích thước", pos: "n.m.", pronunciation_vi: "u ta-MA-nhu", pronunciation_en: "oo tah-MAH-nyoo" },
-      { word: "experimentar", en: "to try on", vi: "thử (đồ)", pos: "verb", pronunciation_vi: "es-pe-ri-men-TAR", pronunciation_en: "es-peh-ree-men-TAR" },
-      { word: "o provador", en: "fitting room", vi: "phòng thử đồ", pos: "n.m.", pronunciation_vi: "u pro-va-ĐÔR", pronunciation_en: "oo proh-vah-DOR" },
-      { word: "apertado", en: "tight", vi: "chật", pos: "adj.", pronunciation_vi: "a-per-TA-đu", pronunciation_en: "ah-pehr-TAH-doo" },
-      { word: "maior", en: "bigger", vi: "to hơn", pos: "adj.", pronunciation_vi: "ma-IÔR", pronunciation_en: "mah-YOR" },
-      { word: "menor", en: "smaller", vi: "nhỏ hơn", pos: "adj.", pronunciation_vi: "mê-NÔR", pronunciation_en: "meh-NOR" },
-      { word: "o desconto", en: "discount", vi: "giảm giá", pos: "n.m.", pronunciation_vi: "u đjis-CÔN-tu", pronunciation_en: "oo jees-KOWN-too" },
+      { cell_id: "c9d70599-ff49-43a9-b9b4-d7fabad7ac75", word: "a camisa", en: "shirt", vi: "áo sơ mi", pos: "n.f.", pronunciation_vi: "a ca-MI-za", pronunciation_en: "ah kah-MEE-zah" },
+      { cell_id: "eeb15f4e-7ec8-47be-bff6-534f6feb9b14", word: "o tamanho", en: "size", vi: "cỡ, kích thước", pos: "n.m.", pronunciation_vi: "u ta-MA-nhu", pronunciation_en: "oo tah-MAH-nyoo" },
+      { cell_id: "7551f81e-f1ad-406b-96f1-dbe0a1f12c70", word: "experimentar", en: "to try on", vi: "thử (đồ)", pos: "verb", pronunciation_vi: "es-pe-ri-men-TAR", pronunciation_en: "es-peh-ree-men-TAR" },
+      { cell_id: "5c1736bb-61cb-4698-a0c4-44f16bdde6ef", word: "o provador", en: "fitting room", vi: "phòng thử đồ", pos: "n.m.", pronunciation_vi: "u pro-va-ĐÔR", pronunciation_en: "oo proh-vah-DOR" },
+      { cell_id: "6d3f70fe-3ef9-4bbe-a138-d550d930448d", word: "apertado", en: "tight", vi: "chật", pos: "adj.", pronunciation_vi: "a-per-TA-đu", pronunciation_en: "ah-pehr-TAH-doo" },
+      { cell_id: "b4aa5bd0-676e-4698-a556-dff45cfede5a", word: "maior", en: "bigger", vi: "to hơn", pos: "adj.", pronunciation_vi: "ma-IÔR", pronunciation_en: "mah-YOR" },
+      { cell_id: "bc368dff-4b38-4006-9856-a7cdb343f2de", word: "menor", en: "smaller", vi: "nhỏ hơn", pos: "adj.", pronunciation_vi: "mê-NÔR", pronunciation_en: "meh-NOR" },
+      { cell_id: "42612790-68e3-42db-870a-5c3f81a1e690", word: "o desconto", en: "discount", vi: "giảm giá", pos: "n.m.", pronunciation_vi: "u đjis-CÔN-tu", pronunciation_en: "oo jees-KOWN-too" },
     ],
     dialogue: [
-      { speaker: "Vendedora", text: "Posso ajudar? Está procurando alguma coisa?", vi: "Tôi giúp gì được không? Bạn đang tìm gì ạ?", en: "Can I help? Are you looking for something?" },
-      { speaker: "Cliente", text: "Estou procurando uma camisa azul, tamanho M.", vi: "Tôi đang tìm áo sơ mi xanh, cỡ M.", en: "I'm looking for a blue shirt, size M." },
-      { speaker: "Vendedora", text: "Aqui está. O provador é ali. Pode experimentar.", vi: "Đây ạ. Phòng thử ở kia. Bạn cứ thử.", en: "Here it is. The fitting room's over there. You can try it on." },
-      { speaker: "Cliente", text: "Ficou apertado. Tem maior? Aí eu levo.", vi: "Hơi chật. Có cỡ to hơn không? Vậy tôi lấy.", en: "It's tight. Have a bigger one? Then I'll take it." },
+      { cell_id: "a53f3581-b117-4a4c-b600-4cbbe0d95bd2", speaker: "Vendedora", text: "Posso ajudar? Está procurando alguma coisa?", vi: "Tôi giúp gì được không? Bạn đang tìm gì ạ?", en: "Can I help? Are you looking for something?" },
+      { cell_id: "d9dbfeb1-1609-49fc-a087-86490b71b897", speaker: "Cliente", text: "Estou procurando uma camisa azul, tamanho M.", vi: "Tôi đang tìm áo sơ mi xanh, cỡ M.", en: "I'm looking for a blue shirt, size M." },
+      { cell_id: "fa05ab5d-a865-44fe-96bd-ed9b9195490c", speaker: "Vendedora", text: "Aqui está. O provador é ali. Pode experimentar.", vi: "Đây ạ. Phòng thử ở kia. Bạn cứ thử.", en: "Here it is. The fitting room's over there. You can try it on." },
+      { cell_id: "4fc218e6-b145-4131-9fc4-34fd8ae4b807", speaker: "Cliente", text: "Ficou apertado. Tem maior? Aí eu levo.", vi: "Hơi chật. Có cỡ to hơn không? Vậy tôi lấy.", en: "It's tight. Have a bigger one? Then I'll take it." },
     ],
     exercises: [
       {

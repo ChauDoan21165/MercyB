@@ -18,6 +18,7 @@ export type PunjabiFinalRegressionFocus =
 export type PunjabiFinalRegressionMode = "final_regression" | "sanity" | "pre_integration" | "readiness";
 
 export type PunjabiScriptVocabularyFinalRegressionSample = {
+  cell_id?: string;
   id: string;
   focus: PunjabiFinalRegressionFocus;
   mode: PunjabiFinalRegressionMode;
@@ -39,6 +40,7 @@ export type PunjabiScriptVocabularyFinalRegressionSample = {
 };
 
 export type PunjabiScriptVocabularyFinalRegressionSection = {
+  cell_id?: string;
   focus: PunjabiFinalRegressionFocus;
   title_vi: string;
   title_en: string;

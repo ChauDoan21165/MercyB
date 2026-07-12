@@ -31,6 +31,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   /** Indonesian word/phrase. */
   word: string;
   /** English meaning. */
@@ -46,6 +47,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   /** Indonesian line. */
   text: string;
@@ -294,6 +296,7 @@ export const lessons: IndonesianLesson[] = [
     vocabulary: [
       // ── Core acronyms ───────────────────────────────────────────────
       {
+        cell_id: "52999dac-ec30-452a-915f-8c85f428f435",
         word: "NPWP",
         en: "taxpayer ID number",
         vi: "mã số thuế",
@@ -302,6 +305,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "en-pe-way-PAY — Nomor Pokok Wajib Pajak",
       },
       {
+        cell_id: "918e14de-702f-465f-8405-2165683c4b54",
         word: "SPT",
         en: "annual tax return",
         vi: "tờ khai thuế",
@@ -310,6 +314,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "es-pay-TAY — Surat Pemberitahuan; filed by end of March",
       },
       {
+        cell_id: "66dcb011-0e53-4cdc-a4c3-3c0e21532301",
         word: "PPh",
         en: "income tax",
         vi: "thuế thu nhập",
@@ -318,6 +323,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "pay-pay-HA — Pajak Penghasilan",
       },
       {
+        cell_id: "e613b6a0-df00-47d2-87f6-647555a64172",
         word: "DJP",
         en: "tax authority (Directorate General of Taxes)",
         vi: "cơ quan thuế",
@@ -326,6 +332,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "day-jay-PAY — Direktorat Jenderal Pajak; the `DJP Online` site",
       },
       {
+        cell_id: "a3455b88-fcc4-42ac-ae17-c51984adc29e",
         word: "e-filing",
         en: "online tax filing",
         vi: "khai thuế trực tuyến",
@@ -335,6 +342,7 @@ export const lessons: IndonesianLesson[] = [
       },
       // ── BPJS & payroll ──────────────────────────────────────────────
       {
+        cell_id: "a94f261f-b49b-423d-845c-31ae8fe07ece",
         word: "BPJS Ketenagakerjaan",
         en: "worker social-security scheme",
         vi: "bảo hiểm lao động",
@@ -343,6 +351,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "bay-pay-jay-ES ke-te-na-ga-ker-JA-an — accident, pension, death benefit",
       },
       {
+        cell_id: "574315cb-fb92-4da9-abb1-568b2c1060da",
         word: "BPJS Kesehatan",
         en: "national health insurance",
         vi: "bảo hiểm y tế",
@@ -351,6 +360,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "bay-pay-jay-ES ke-se-HA-tan — different from Ketenagakerjaan",
       },
       {
+        cell_id: "73df05df-7402-4eb4-acae-faf454affaf7",
         word: "iuran",
         en: "contribution / monthly fee",
         vi: "phí đóng góp",
@@ -359,6 +369,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "ee-OO-ran — `iuran BPJS` paid monthly",
       },
       {
+        cell_id: "b37e40eb-4aa9-49c7-80f4-f27891d9ba5f",
         word: "slip gaji",
         en: "payslip",
         vi: "phiếu lương",
@@ -367,6 +378,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "slip GA-ji — lists salary + deductions",
       },
       {
+        cell_id: "a2f8ac92-7eee-454e-8ebe-af2ed6381e9a",
         word: "potongan",
         en: "deduction",
         vi: "khoản khấu trừ",
@@ -375,6 +387,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "po-TO-ngan — root `potong` (cut) + `-an`",
       },
       {
+        cell_id: "01d80a6c-64fb-472b-9b72-b775778fd5ff",
         word: "penghasilan",
         en: "income / earnings",
         vi: "thu nhập",
@@ -384,6 +397,7 @@ export const lessons: IndonesianLesson[] = [
       },
       // ── Tax & office actions ────────────────────────────────────────
       {
+        cell_id: "8444c146-e8d5-4226-a56d-c5d2f65868c8",
         word: "pajak",
         en: "tax",
         vi: "thuế",
@@ -392,6 +406,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "PA-jak — `kantor pajak` = tax office; `wajib pajak` = taxpayer",
       },
       {
+        cell_id: "b71ea12a-2592-4112-b38d-d753ab3d66a6",
         word: "melaporkan",
         en: "to report / file",
         vi: "khai báo / báo cáo",
@@ -400,6 +415,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "me-la-POR-kan — `lapor` + `me-…-kan`; `melaporkan SPT`",
       },
       {
+        cell_id: "f1d2878c-bfd4-43f8-bc93-7838d1d7f4e1",
         word: "mendaftarkan",
         en: "to register (someone)",
         vi: "đăng ký (cho ai)",
@@ -408,6 +424,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "men-daf-TAR-kan — `mendaftar` = register oneself; `-kan` adds an object",
       },
       {
+        cell_id: "d757ae40-580c-48a1-86ae-af2579959e5c",
         word: "mengisi formulir",
         en: "to fill in a form",
         vi: "điền tờ khai/mẫu đơn",
@@ -416,6 +433,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "me-ngi-SI for-mu-LIR — `isi` = content / to fill",
       },
       {
+        cell_id: "37d75cbe-079c-49c0-b7fb-70f7e5db0a64",
         word: "tanda tangan",
         en: "signature / to sign",
         vi: "chữ ký / ký tên",
@@ -424,6 +442,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "TAN-da TA-ngan — `menandatangani` = to sign (something)",
       },
       {
+        cell_id: "80165dc7-f631-4d6a-8d89-2f55d17dddc1",
         word: "dokumen",
         en: "document",
         vi: "giấy tờ / tài liệu",
@@ -432,6 +451,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "do-KU-men — `dokumen apa saja?` = which documents?",
       },
       {
+        cell_id: "c0ee8283-6f84-44b9-be96-7d5da79f74b7",
         word: "wajib",
         en: "obligatory (by law)",
         vi: "bắt buộc",
@@ -440,6 +460,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "WA-jib — stronger than `harus`; `wajib pajak` = taxpayer",
       },
       {
+        cell_id: "7f89d3f3-1fea-413a-9665-a4d80ce2d87c",
         word: "batas waktu",
         en: "deadline",
         vi: "hạn chót",
@@ -448,6 +469,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "BA-tas WAK-tu — `batas` = limit; `tenggat` also = deadline",
       },
       {
+        cell_id: "d5b91988-1781-4896-b82e-7acedd4509fe",
         word: "kantor pajak",
         en: "tax office",
         vi: "cơ quan thuế",
@@ -456,6 +478,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "kan-TOR PA-jak — `KPP` = Kantor Pelayanan Pajak",
       },
       {
+        cell_id: "7350161b-1ec9-4803-9a7b-4a09b85ff8c3",
         word: "konsultan pajak",
         en: "tax consultant",
         vi: "tư vấn thuế",
@@ -467,42 +490,49 @@ export const lessons: IndonesianLesson[] = [
     dialogue: [
       // Dialogue: a foreign worker sorts out NPWP & SPT with HR
       {
+        cell_id: "64709c55-ffc8-4ab7-9923-d0940966abae",
         speaker: "Karyawan",
         text: "Selamat pagi, Bu. Saya karyawan baru, apakah saya wajib punya NPWP?",
         vi: "Chào buổi sáng, cô. Em là nhân viên mới, em có bắt buộc phải có mã số thuế không ạ?",
         en: "Good morning, ma'am. I'm a new employee — am I required to have an NPWP?",
       },
       {
+        cell_id: "4cc0fdcb-f328-4965-b40d-f7938b950ab2",
         speaker: "HRD",
         text: "Iya, wajib. Nanti kami bantu daftar. Dokumen yang diperlukan: paspor dan KITAS.",
         vi: "Vâng, bắt buộc. Chúng tôi sẽ giúp đăng ký. Giấy tờ cần: hộ chiếu và KITAS.",
         en: "Yes, it's required. We'll help you register. The documents needed: passport and KITAS.",
       },
       {
+        cell_id: "1da5252c-7074-4d9e-b85f-9fb7c5d94d7b",
         speaker: "Karyawan",
         text: "Baik. Lalu pajak penghasilan saya bagaimana, Bu?",
         vi: "Vâng. Vậy còn thuế thu nhập của em thì sao ạ?",
         en: "Alright. And what about my income tax, ma'am?",
       },
       {
+        cell_id: "21bd75e0-f4f1-4fcc-8871-8b997505ae2d",
         speaker: "HRD",
         text: "PPh-nya sudah dipotong langsung dari gaji, tercatat di slip gaji setiap bulan.",
         vi: "Thuế thu nhập đã được trừ thẳng từ lương, ghi trên phiếu lương mỗi tháng.",
         en: "Your income tax is withheld straight from salary, recorded on the monthly payslip.",
       },
       {
+        cell_id: "0de48514-bf2d-4dd4-8e67-2dfa1ac86ce9",
         speaker: "Karyawan",
         text: "Maaf, saya belum mengerti soal SPT tahunan. Mohon dibantu.",
         vi: "Xin lỗi, em chưa hiểu về tờ khai thuế năm. Kính mong cô giúp ạ.",
         en: "Sorry, I don't yet understand the annual SPT. Please help me.",
       },
       {
+        cell_id: "a73682c6-8012-4844-87d4-2b65d00d4722",
         speaker: "HRD",
         text: "Tenang, SPT bisa dilaporkan online lewat e-filing. Batas waktunya akhir Maret.",
         vi: "Yên tâm, tờ khai có thể nộp trực tuyến qua e-filing. Hạn chót là cuối tháng Ba.",
         en: "Don't worry, the SPT can be filed online via e-filing. The deadline is the end of March.",
       },
       {
+        cell_id: "51b9ddc1-73da-47a9-9433-5a70d82a8e8b",
         speaker: "Karyawan",
         text: "Terima kasih banyak, Bu. Nanti saya tanda tangani formulirnya.",
         vi: "Cảm ơn cô nhiều ạ. Lát em sẽ ký vào tờ khai.",

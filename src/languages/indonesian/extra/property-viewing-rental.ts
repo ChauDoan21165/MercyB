@@ -12,6 +12,7 @@ type LessonSentence = {
 };
 
 type VocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -21,6 +22,7 @@ type VocabEntry = {
 };
 
 type DialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -137,6 +139,7 @@ export const propertyViewingRentalLessons: IndonesianLesson[] = [
       "Quick question frames: `Kapan bisa survei?`, `Fasilitas apa saja?`, `Lokasinya dekat...?`, `Lingkungannya aman?`, `Boleh lihat kamar mandinya?`. Vietnamese speakers should note `lokasi` = location, while `tempat` = place in general.",
     vocabulary: [
       {
+        cell_id: "a72a8935-4853-4006-8bf4-b8997bcdb50d",
         word: "lihat rumah",
         en: "view a house",
         vi: "đi xem nhà",
@@ -145,6 +148,7 @@ export const propertyViewingRentalLessons: IndonesianLesson[] = [
         pronunciation_en: "LEE-hat ROO-mah",
       },
       {
+        cell_id: "2b7e90b1-7c14-4994-8f5d-64a3145ffa2a",
         word: "survei kos",
         en: "view/check a kost",
         vi: "đi xem/khảo sát phòng trọ",
@@ -153,6 +157,7 @@ export const propertyViewingRentalLessons: IndonesianLesson[] = [
         pronunciation_en: "SUR-vay kos",
       },
       {
+        cell_id: "8cf699da-aedf-49cf-969e-8e40afbe5868",
         word: "fasilitas",
         en: "facilities / amenities",
         vi: "tiện nghi / cơ sở vật chất",
@@ -161,6 +166,7 @@ export const propertyViewingRentalLessons: IndonesianLesson[] = [
         pronunciation_en: "fa-see-lee-TAS",
       },
       {
+        cell_id: "d42559cb-d465-4aeb-9a81-52c31cc2eb32",
         word: "lokasi",
         en: "location",
         vi: "vị trí",
@@ -169,6 +175,7 @@ export const propertyViewingRentalLessons: IndonesianLesson[] = [
         pronunciation_en: "lo-KA-see",
       },
       {
+        cell_id: "c324f29b-a3ca-4451-a20c-7c499c3d84be",
         word: "keamanan",
         en: "security / safety",
         vi: "an ninh / sự an toàn",
@@ -177,6 +184,7 @@ export const propertyViewingRentalLessons: IndonesianLesson[] = [
         pronunciation_en: "ke-a-MA-nan",
       },
       {
+        cell_id: "1465647f-28c0-4c69-8eb5-5a33b6056567",
         word: "lingkungan",
         en: "neighborhood / surroundings",
         vi: "khu vực xung quanh / môi trường",
@@ -187,24 +195,28 @@ export const propertyViewingRentalLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "39070814-07c8-4754-905b-b0f9f1da2657",
         speaker: "Calon Penyewa",
         text: "Selamat sore, Pak. Saya mau lihat rumah yang disewakan.",
         vi: "Chào buổi chiều bác/anh. Tôi muốn xem căn nhà đang cho thuê.",
         en: "Good afternoon, Sir. I would like to view the house for rent.",
       },
       {
+        cell_id: "dfcdd64c-1a62-49ff-a6cb-49a68a3309d7",
         speaker: "Pemilik",
         text: "Silakan. Mau lihat kamar depan dulu?",
         vi: "Mời vào. Muốn xem phòng phía trước trước không?",
         en: "Please. Would you like to see the front room first?",
       },
       {
+        cell_id: "17f70525-a836-429d-92b1-6e9f6a75df2d",
         speaker: "Calon Penyewa",
         text: "Boleh. Fasilitas apa saja yang sudah tersedia?",
         vi: "Được ạ. Có sẵn những tiện nghi nào?",
         en: "Sure. What facilities are already available?",
       },
       {
+        cell_id: "4b8966c0-cc50-41f3-a2c6-1fbe28955e00",
         speaker: "Pemilik",
         text: "Sudah ada AC, kasur, lemari, Wi-Fi, dan tempat parkir.",
         vi: "Đã có máy lạnh, giường, tủ, Wi-Fi và chỗ đậu xe.",
@@ -334,6 +346,7 @@ export const propertyViewingRentalLessons: IndonesianLesson[] = [
       "Chunks to know before paying: `harga sewa`, `deposit dikembalikan`, `sudah termasuk`, `aturan tamu`, `bertanggung jawab`, `kesepakatan tertulis`. Vietnamese speakers should distinguish `boleh` (permission) from `bisa` (ability/possibility).",
     vocabulary: [
       {
+        cell_id: "67e22ae2-91cf-4f68-83a1-25595fc220a9",
         word: "harga sewa",
         en: "rental price",
         vi: "giá thuê",
@@ -342,6 +355,7 @@ export const propertyViewingRentalLessons: IndonesianLesson[] = [
         pronunciation_en: "HAR-ga SE-wa",
       },
       {
+        cell_id: "5e3026b7-65b4-4caa-a142-e2b6918434a2",
         word: "deposit",
         en: "deposit",
         vi: "tiền đặt cọc",
@@ -350,6 +364,7 @@ export const propertyViewingRentalLessons: IndonesianLesson[] = [
         pronunciation_en: "de-PO-sit",
       },
       {
+        cell_id: "5391ce58-acf3-43d9-ab2b-e2b3ab871c47",
         word: "dikembalikan",
         en: "returned / refunded",
         vi: "được trả lại / hoàn lại",
@@ -358,6 +373,7 @@ export const propertyViewingRentalLessons: IndonesianLesson[] = [
         pronunciation_en: "di-kem-BA-lee-kan",
       },
       {
+        cell_id: "49a00345-06b8-4be6-a061-b3c006848257",
         word: "aturan tamu",
         en: "guest rules",
         vi: "quy định về khách",
@@ -366,6 +382,7 @@ export const propertyViewingRentalLessons: IndonesianLesson[] = [
         pronunciation_en: "a-TOOR-an TA-moo",
       },
       {
+        cell_id: "00dec93c-6b5c-48b4-ae0a-c87c57ff3964",
         word: "jam malam",
         en: "curfew / late-night rule",
         vi: "giờ giới nghiêm / giờ đóng cổng",
@@ -374,6 +391,7 @@ export const propertyViewingRentalLessons: IndonesianLesson[] = [
         pronunciation_en: "jam MA-lam",
       },
       {
+        cell_id: "ce77d4d1-f012-4bab-b863-1bc1f01c9117",
         word: "bertanggung jawab",
         en: "to be responsible",
         vi: "chịu trách nhiệm",
@@ -384,24 +402,28 @@ export const propertyViewingRentalLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "9c6a2c10-bcfe-4702-8f14-bf5bf72fe5d0",
         speaker: "Calon Penyewa",
         text: "Harga sewanya berapa per bulan, Bu?",
         vi: "Giá thuê mỗi tháng là bao nhiêu ạ?",
         en: "How much is the rent per month, Ma'am?",
       },
       {
+        cell_id: "31b3b89a-d485-415b-81e4-f21d812fa1b6",
         speaker: "Pemilik",
         text: "Tiga juta per bulan, belum termasuk listrik dan air.",
         vi: "Ba triệu mỗi tháng, chưa bao gồm điện và nước.",
         en: "Three million per month, not including electricity and water.",
       },
       {
+        cell_id: "261bb2be-74fc-4c31-bfdd-a5cc3e65cdd2",
         speaker: "Calon Penyewa",
         text: "Apakah deposit bisa dikembalikan saat saya pindah?",
         vi: "Tiền cọc có thể được trả lại khi tôi dọn đi không?",
         en: "Can the deposit be returned when I move out?",
       },
       {
+        cell_id: "e7285ff1-fba8-4498-b398-58f200e1e64e",
         speaker: "Pemilik",
         text: "Bisa, kalau tidak ada kerusakan dan semua tagihan sudah dibayar.",
         vi: "Có thể, nếu không có hư hỏng và mọi hóa đơn đã được trả.",

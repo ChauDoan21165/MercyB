@@ -16,6 +16,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   /** Indonesian word/phrase. */
   word: string;
   /** English meaning. */
@@ -31,6 +32,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   /** Indonesian line. */
   text: string;
@@ -221,6 +223,7 @@ export const lessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: in administration, fixed frames work best: `mengurus izin`, `surat pengantar`, `nomor antrean`, `persyaratan`, `tanda tangan`, `stempel`. `Boleh saya...` sounds softer than `saya mau...` when speaking to a counter staff member.",
     vocabulary: [
       {
+        cell_id: "36169f2a-59ce-4bff-9ca8-6e78b5313174",
         word: "izin usaha",
         en: "business permit",
         vi: "giấy phép kinh doanh",
@@ -229,6 +232,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "EE-zin oo-SA-ha",
       },
       {
+        cell_id: "555fa445-bc89-49c8-af99-09a9234a1417",
         word: "kantor kelurahan",
         en: "local ward office",
         vi: "văn phòng phường/xã",
@@ -237,6 +241,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "KAN-tor keh-loo-RA-han",
       },
       {
+        cell_id: "1dd793b3-f429-4374-a8f5-a7149236da7e",
         word: "surat pengantar",
         en: "introductory letter; referral letter",
         vi: "giấy giới thiệu",
@@ -245,6 +250,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "SOO-rat peh-ngan-TAR",
       },
       {
+        cell_id: "3e949a84-8989-4845-a5de-535cd00f962d",
         word: "formulir",
         en: "form",
         vi: "mẫu đơn",
@@ -253,6 +259,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "for-my-LEER",
       },
       {
+        cell_id: "0b2560b5-b6fc-48f1-9494-1790687e3bf5",
         word: "tanda tangan",
         en: "signature; to sign",
         vi: "chữ ký; ký tên",
@@ -261,6 +268,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "TAN-da TA-ngan",
       },
       {
+        cell_id: "e1686abb-88d7-4d9b-bbdd-5f3aff574dff",
         word: "stempel",
         en: "stamp; to stamp",
         vi: "con dấu; đóng dấu",
@@ -269,6 +277,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "STEM-pel",
       },
       {
+        cell_id: "1d146d06-2c80-4c93-8fef-e2cefe5a7a06",
         word: "persyaratan",
         en: "requirements",
         vi: "yêu cầu; điều kiện; hồ sơ cần có",
@@ -277,6 +286,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "per-sha-RAH-tan",
       },
       {
+        cell_id: "39fc113c-8699-49cc-a168-00e0ab813899",
         word: "antrean",
         en: "queue; line",
         vi: "hàng chờ; xếp hàng",
@@ -285,6 +295,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "an-TRAY-an",
       },
       {
+        cell_id: "5efe7538-7687-41aa-b15f-964a82724b03",
         word: "nomor antrean",
         en: "queue number",
         vi: "số thứ tự xếp hàng",
@@ -293,6 +304,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "NO-mor an-TRAY-an",
       },
       {
+        cell_id: "2247c6bd-89ec-44e1-84a3-478a0b3831da",
         word: "salinan",
         en: "copy",
         vi: "bản sao",
@@ -303,36 +315,42 @@ export const lessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "cb5d84b8-2469-4fd2-a1ba-df90f8a12c6c",
         speaker: "Warga",
         text: "Selamat pagi, saya mau mengurus izin usaha di kantor kelurahan.",
         vi: "Chào buổi sáng, tôi muốn làm giấy phép kinh doanh ở văn phòng phường.",
         en: "Good morning, I want to handle a business permit at the kelurahan office.",
       },
       {
+        cell_id: "835f464b-d2d9-4c31-a9d3-6f953a8eae86",
         speaker: "Petugas",
         text: "Silakan ambil nomor antrean dulu dan isi formulir ini.",
         vi: "Xin hãy lấy số thứ tự trước và điền mẫu này.",
         en: "Please take a queue number first and fill out this form.",
       },
       {
+        cell_id: "eb1bf46d-3e79-49c1-83d2-0a1b11e16819",
         speaker: "Warga",
         text: "Apakah saya perlu surat pengantar dari RT atau RW?",
         vi: "Tôi có cần giấy giới thiệu từ RT hoặc RW không?",
         en: "Do I need a referral letter from the RT or RW?",
       },
       {
+        cell_id: "d10ee6d9-bffa-4f35-ba63-3101f17cda77",
         speaker: "Petugas",
         text: "Untuk izin ini, ya. Setelah itu, tanda tangan dan stempel akan diproses.",
         vi: "Đối với giấy phép này thì có. Sau đó chữ ký và con dấu sẽ được xử lý.",
         en: "For this permit, yes. After that, the signature and stamp will be processed.",
       },
       {
+        cell_id: "95c378e1-db54-474c-a523-0fd7901b151c",
         speaker: "Warga",
         text: "Kalau dokumen kurang, saya harus kembali lagi besok, ya?",
         vi: "Nếu thiếu giấy tờ thì tôi phải quay lại vào ngày mai, đúng không?",
         en: "If documents are missing, I have to come back tomorrow, right?",
       },
       {
+        cell_id: "651924b9-1208-42b3-a5da-918f2b0cc8f1",
         speaker: "Petugas",
         text: "Benar. Mohon cek persyaratan dulu supaya tidak bolak-balik.",
         vi: "Đúng rồi. Vui lòng kiểm tra yêu cầu trước để khỏi phải đi lại nhiều lần.",

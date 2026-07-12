@@ -18,6 +18,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   /** Indonesian word/phrase. */
   word: string;
   /** English meaning. */
@@ -33,6 +34,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   /** Indonesian line. */
   text: string;
@@ -243,6 +245,7 @@ export const souvenirCraftMarketLessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: distinguish `hadiah` = gift in general, `oleh-oleh` = trip souvenir/gift to bring home, and `barang khas daerah` = regional specialty item. For bargaining, use soft frames: `Bisa tawar-menawar sedikit?`, `Kalau beli lima, bisa kurang?`, `Harga pas ya?`. For fragile crafts, ask `boleh dibungkus aman?`.",
     vocabulary: [
       {
+        cell_id: "f36038da-48a0-4a20-8014-9d4cbb930fdd",
         word: "pasar kerajinan",
         en: "craft market",
         vi: "chợ thủ công",
@@ -251,6 +254,7 @@ export const souvenirCraftMarketLessons: IndonesianLesson[] = [
         pronunciation_en: "PA-sar ke-ra-JIN-an",
       },
       {
+        cell_id: "79245a45-c58d-4ec9-ac5b-553e962b22b5",
         word: "oleh-oleh",
         en: "souvenir / gift brought back",
         vi: "quà lưu niệm / quà mang về",
@@ -259,6 +263,7 @@ export const souvenirCraftMarketLessons: IndonesianLesson[] = [
         pronunciation_en: "o-leh O-leh",
       },
       {
+        cell_id: "c5f12469-fbf3-49fe-bfbb-aa11b665205b",
         word: "batik tulis",
         en: "hand-drawn batik",
         vi: "batik vẽ tay",
@@ -267,6 +272,7 @@ export const souvenirCraftMarketLessons: IndonesianLesson[] = [
         pronunciation_en: "BA-tik TOO-lis",
       },
       {
+        cell_id: "eddb132a-34ed-4883-8494-77b2f171e8f0",
         word: "ukiran kayu",
         en: "wood carving",
         vi: "đồ chạm khắc gỗ",
@@ -275,6 +281,7 @@ export const souvenirCraftMarketLessons: IndonesianLesson[] = [
         pronunciation_en: "u-KEER-an KA-yoo",
       },
       {
+        cell_id: "ce58ee3a-051e-4fdf-b6cf-55ff0172c2e1",
         word: "anyaman bambu",
         en: "woven bamboo craft",
         vi: "đồ đan tre",
@@ -283,6 +290,7 @@ export const souvenirCraftMarketLessons: IndonesianLesson[] = [
         pronunciation_en: "a-NYA-man BAM-boo",
       },
       {
+        cell_id: "4a40abef-a455-4d00-9184-aa5ac6c1e608",
         word: "barang khas daerah",
         en: "regional specialty item",
         vi: "món đặc trưng vùng",
@@ -291,6 +299,7 @@ export const souvenirCraftMarketLessons: IndonesianLesson[] = [
         pronunciation_en: "BA-rang khas DA-e-rah",
       },
       {
+        cell_id: "c7a8d8dd-4c1d-47ff-9768-8c6c9d649e6b",
         word: "harga satuan",
         en: "unit price",
         vi: "đơn giá",
@@ -299,6 +308,7 @@ export const souvenirCraftMarketLessons: IndonesianLesson[] = [
         pronunciation_en: "HAR-ga sa-TOO-an",
       },
       {
+        cell_id: "97026481-9589-4fa4-a1c4-29c4022b9ffb",
         word: "tawar-menawar",
         en: "bargaining",
         vi: "mặc cả",
@@ -307,6 +317,7 @@ export const souvenirCraftMarketLessons: IndonesianLesson[] = [
         pronunciation_en: "TA-war me-NA-war",
       },
       {
+        cell_id: "39dccc1b-4077-4032-b862-f53d1078a34d",
         word: "harga pas",
         en: "fixed / final price",
         vi: "giá chốt / giá cố định",
@@ -315,6 +326,7 @@ export const souvenirCraftMarketLessons: IndonesianLesson[] = [
         pronunciation_en: "HAR-ga pas",
       },
       {
+        cell_id: "09086fb6-9ca6-49f2-9f5d-0b40d741b3d1",
         word: "rapuh",
         en: "fragile",
         vi: "dễ vỡ / mỏng manh",
@@ -325,30 +337,35 @@ export const souvenirCraftMarketLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "d706c420-8f94-49ac-809c-348f74f7f23f",
         speaker: "Pembeli",
         text: "Bu, saya mau mencari oleh-oleh. Apa barang khas daerah yang terkenal di sini?",
         vi: "Cô ơi, tôi muốn tìm quà mang về. Món đặc trưng vùng nào nổi tiếng ở đây?",
         en: "Ma'am, I'm looking for souvenirs. What regional specialty item is famous here?",
       },
       {
+        cell_id: "85015ed7-1117-42e0-b92c-f62dc9125454",
         speaker: "Pedagang",
         text: "Ada batik tulis, ukiran kayu, dan anyaman bambu.",
         vi: "Có batik vẽ tay, đồ chạm khắc gỗ và đồ đan tre.",
         en: "There is hand-drawn batik, wood carving, and woven bamboo craft.",
       },
       {
+        cell_id: "3449fcef-8b7d-4b40-92cf-72f9fc065ad0",
         speaker: "Pembeli",
         text: "Harga satuannya berapa kalau saya beli lima?",
         vi: "Đơn giá bao nhiêu nếu tôi mua năm cái?",
         en: "What is the unit price if I buy five?",
       },
       {
+        cell_id: "938f4d16-7b73-4c15-b147-81662e1fa486",
         speaker: "Pedagang",
         text: "Kalau beli lima, saya bisa kasih diskon sedikit.",
         vi: "Nếu mua năm cái, tôi có thể giảm một chút.",
         en: "If you buy five, I can give a small discount.",
       },
       {
+        cell_id: "32ac6a4d-c95a-48b5-8405-4fccfe78814e",
         speaker: "Pembeli",
         text: "Barang ini rapuh, jadi tolong bungkus yang aman, ya.",
         vi: "Món này dễ vỡ, nên làm ơn gói chắc chắn nhé.",

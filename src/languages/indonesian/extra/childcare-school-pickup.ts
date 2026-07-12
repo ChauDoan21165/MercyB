@@ -13,6 +13,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -22,6 +23,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -208,6 +210,7 @@ export const lessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: memorize the pair `antar` = drop off/take there and `jemput` = pick up. `Bekal` is food brought from home, not only lunch. `Tidur siang` is nap; `izin pulang` is permission to go home. If someone else will pick up the child, use `Nanti yang jemput anak adalah...`.",
     vocabulary: [
       {
+        cell_id: "32252c2a-c645-489d-a624-8426a6e3ac99",
         word: "antar jemput",
         en: "drop-off and pickup",
         vi: "đưa đón",
@@ -216,6 +219,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "AN-tar JEM-poot",
       },
       {
+        cell_id: "63546801-9679-4033-b7aa-976edf1a5522",
         word: "daycare",
         en: "daycare",
         vi: "nhà trẻ tư / daycare",
@@ -224,6 +228,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "DAY-care",
       },
       {
+        cell_id: "f37d60f2-7519-4611-bfd7-17e699774370",
         word: "pengasuh",
         en: "caregiver / nanny",
         vi: "người trông trẻ",
@@ -232,6 +237,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "pe-NGA-sooh",
       },
       {
+        cell_id: "71057c68-b277-4299-8deb-5f8084d1e072",
         word: "izin pulang",
         en: "permission to go home",
         vi: "xin phép về",
@@ -240,6 +246,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "EE-zin POO-lang",
       },
       {
+        cell_id: "6582e4f3-a97a-44d5-a1ea-802ad66e5163",
         word: "bekal",
         en: "packed food / lunchbox",
         vi: "đồ ăn mang theo / cơm hộp",
@@ -248,6 +255,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "BE-kal",
       },
       {
+        cell_id: "f3a19905-d77f-4631-83d6-82767464a97f",
         word: "tidur siang",
         en: "nap",
         vi: "ngủ trưa",
@@ -256,6 +264,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "TEE-door SEE-ang",
       },
       {
+        cell_id: "d67d84a8-519f-427a-9932-f05d94846ca2",
         word: "jemput anak",
         en: "pick up the child",
         vi: "đón con",
@@ -264,6 +273,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "JEM-poot A-nak",
       },
       {
+        cell_id: "78bd40be-123e-4d77-8dbd-8fdd06fb2af6",
         word: "kontak guru",
         en: "teacher contact",
         vi: "liên hệ giáo viên",
@@ -272,6 +282,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "KON-tak GOO-roo",
       },
       {
+        cell_id: "371db4d5-be36-42a8-b69e-b1fffc712919",
         word: "air putih",
         en: "plain water",
         vi: "nước lọc",
@@ -280,6 +291,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "AH-eer POO-tih",
       },
       {
+        cell_id: "f539501b-6021-4d54-bd04-70568c1a8f61",
         word: "terlambat",
         en: "late",
         vi: "trễ / muộn",
@@ -290,24 +302,28 @@ export const lessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "e6cdec3f-b62f-480d-a494-d9d463208f40",
         speaker: "Orang tua",
         text: "Bu, saya antar anak saya sekarang. Bekalnya ada di tas.",
         vi: "Cô ơi, tôi đưa con tôi đến bây giờ. Đồ ăn mang theo ở trong cặp.",
         en: "Ma'am, I am dropping off my child now. The packed food is in the bag.",
       },
       {
+        cell_id: "3428493a-1312-4abc-8da6-eb54ef05cbd4",
         speaker: "Guru",
         text: "Baik, Bu. Nanti anak dijemput jam berapa?",
         vi: "Vâng ạ. Lát nữa bé được đón lúc mấy giờ?",
         en: "Okay, ma'am. What time will the child be picked up later?",
       },
       {
+        cell_id: "c3642eac-3c95-4d2f-8b3b-64ce26e5f007",
         speaker: "Orang tua",
         text: "Jam empat. Kalau saya terlambat, neneknya yang jemput.",
         vi: "Bốn giờ. Nếu tôi trễ, bà của bé sẽ đón.",
         en: "At four. If I am late, the grandmother will pick up.",
       },
       {
+        cell_id: "9e84bdb8-3ce4-47c8-81ac-ddf6400acbc7",
         speaker: "Guru",
         text: "Baik. Tolong kirim nomor kontak neneknya juga.",
         vi: "Được ạ. Làm ơn gửi cả số liên hệ của bà bé.",

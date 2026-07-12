@@ -18,6 +18,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   /** Indonesian word/phrase. */
   word: string;
   /** English meaning. */
@@ -33,6 +34,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   /** Indonesian line. */
   text: string;
@@ -241,6 +243,7 @@ export const techSupportPasswordRecoveryLessons: IndonesianLesson[] = [
       "Useful patterns: `Saya lupa password`, `Kode OTP belum masuk`, `Saya perlu bantuan teknis`, `Tolong keluarkan semua sesi`, `Saya akan ganti kata sandi`. In account support, `silakan` and `tolong` keep the tone polite; `belum` is for something you are still waiting on.",
     vocabulary: [
       {
+        cell_id: "7196f763-e305-4e01-8bd7-ec468c77328e",
         word: "kata sandi",
         en: "password",
         vi: "mật khẩu",
@@ -249,6 +252,7 @@ export const techSupportPasswordRecoveryLessons: IndonesianLesson[] = [
         pronunciation_en: "KA-tah SAN-dee",
       },
       {
+        cell_id: "3d3b1c12-2b0c-443f-8839-7b53cde080b7",
         word: "reset akun",
         en: "reset account",
         vi: "đặt lại tài khoản",
@@ -257,6 +261,7 @@ export const techSupportPasswordRecoveryLessons: IndonesianLesson[] = [
         pronunciation_en: "REH-set AH-koon",
       },
       {
+        cell_id: "ffccb812-6cd0-4c8a-8cc6-62a8931c946c",
         word: "verifikasi email",
         en: "email verification",
         vi: "xác minh email",
@@ -265,6 +270,7 @@ export const techSupportPasswordRecoveryLessons: IndonesianLesson[] = [
         pronunciation_en: "veh-ree-fee-KA-see EE-mail",
       },
       {
+        cell_id: "3f1282c2-34c9-4e34-8ceb-393644bbd903",
         word: "kode OTP",
         en: "OTP code",
         vi: "mã OTP",
@@ -273,6 +279,7 @@ export const techSupportPasswordRecoveryLessons: IndonesianLesson[] = [
         pronunciation_en: "KO-de OH-tee-PEE",
       },
       {
+        cell_id: "d7082eba-2b1a-4c67-bfd7-0c62a27de171",
         word: "keamanan akun",
         en: "account security",
         vi: "bảo mật tài khoản",
@@ -281,6 +288,7 @@ export const techSupportPasswordRecoveryLessons: IndonesianLesson[] = [
         pronunciation_en: "keh-ah-MAH-nahn AH-koon",
       },
       {
+        cell_id: "7c684bef-8a70-4001-87f5-a3345a4365b9",
         word: "bantuan teknis",
         en: "technical support",
         vi: "hỗ trợ kỹ thuật",
@@ -289,6 +297,7 @@ export const techSupportPasswordRecoveryLessons: IndonesianLesson[] = [
         pronunciation_en: "bahn-TOO-ahn TEK-nees",
       },
       {
+        cell_id: "76846834-bd01-401e-bbff-fee136303b62",
         word: "login ulang",
         en: "log in again",
         vi: "đăng nhập lại",
@@ -297,6 +306,7 @@ export const techSupportPasswordRecoveryLessons: IndonesianLesson[] = [
         pronunciation_en: "LOH-gin OO-lang",
       },
       {
+        cell_id: "ae1d6a0b-5d1b-429b-a5c2-fcf14759c741",
         word: "perangkat baru",
         en: "new device",
         vi: "thiết bị mới",
@@ -305,6 +315,7 @@ export const techSupportPasswordRecoveryLessons: IndonesianLesson[] = [
         pronunciation_en: "peh-RANG-kat BAH-roo",
       },
       {
+        cell_id: "e3d350e7-a748-4de4-b53e-8f6e73b0005a",
         word: "sesi",
         en: "session",
         vi: "phiên",
@@ -313,6 +324,7 @@ export const techSupportPasswordRecoveryLessons: IndonesianLesson[] = [
         pronunciation_en: "SEH-see",
       },
       {
+        cell_id: "a95c85af-24bc-4b0e-99dc-a916825df9a7",
         word: "silakan",
         en: "please / go ahead",
         vi: "xin hãy / cứ tự nhiên",
@@ -323,36 +335,42 @@ export const techSupportPasswordRecoveryLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "bcfa50d3-5aea-429d-b4fc-a99be2b3deba",
         speaker: "Pengguna",
         text: "Halo, saya lupa password akun saya.",
         vi: "Xin chào, tôi quên mật khẩu tài khoản của tôi.",
         en: "Hello, I forgot my account password.",
       },
       {
+        cell_id: "8932e5d0-5255-4934-b8ca-94d21cf81926",
         speaker: "CS",
         text: "Baik, silakan cek email Anda untuk verifikasi.",
         vi: "Vâng, vui lòng kiểm tra email của bạn để xác minh.",
         en: "Okay, please check your email for verification.",
       },
       {
+        cell_id: "809278e3-3b3e-4948-9406-bc16e2de61fc",
         speaker: "Pengguna",
         text: "Kode OTP saya belum masuk.",
         vi: "Mã OTP của tôi vẫn chưa vào tới.",
         en: "My OTP code has not arrived yet.",
       },
       {
+        cell_id: "1961009a-5616-4631-ac9c-e7dec189fb19",
         speaker: "CS",
         text: "Mohon cek folder spam atau coba login ulang dari perangkat baru.",
         vi: "Xin kiểm tra thư mục spam hoặc thử đăng nhập lại từ thiết bị mới.",
         en: "Please check the spam folder or try logging in again from a new device.",
       },
       {
+        cell_id: "7907ceea-ae82-4cd0-8b92-7569063a0df2",
         speaker: "Pengguna",
         text: "Bisa bantu reset akun dan keluarkan semua sesi?",
         vi: "Có thể giúp đặt lại tài khoản và đăng xuất hết tất cả phiên không?",
         en: "Can you help reset the account and log out all sessions?",
       },
       {
+        cell_id: "b83addb7-0339-4696-990b-be9732822fcd",
         speaker: "CS",
         text: "Bisa. Setelah itu, saya sarankan ganti kata sandi dan aktifkan keamanan akun.",
         vi: "Được. Sau đó, tôi khuyên anh/chị đổi mật khẩu và bật bảo mật tài khoản.",

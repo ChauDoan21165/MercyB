@@ -17,6 +17,7 @@ type IndonesianLessonSentence = {
 };
 
 type IndonesianVocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -26,6 +27,7 @@ type IndonesianVocabEntry = {
 };
 
 type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -184,6 +186,7 @@ export const lessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: remember three important pairs: `obat` = medicine, `resep` = prescription; `hasil lab` = lab results, `keluhan` = symptoms/complaint; `kontrol` = follow-up, `rujukan` = referral. When symptoms improve, say `sudah membaik`, not just `sudah baik`.",
     vocabulary: [
       {
+        cell_id: "5f240d8b-5012-4123-bf3e-aea6c6577857",
         word: "kontrol dokter",
         en: "doctor follow-up",
         vi: "tái khám bác sĩ",
@@ -192,6 +195,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "kon-TROL DOK-ter",
       },
       {
+        cell_id: "1a797696-f435-4486-8a77-232767290dea",
         word: "hasil lab",
         en: "lab results",
         vi: "kết quả xét nghiệm",
@@ -200,6 +204,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "HA-sil lab",
       },
       {
+        cell_id: "2cdacf22-56cf-4bec-9207-0234dcecda87",
         word: "tekanan darah",
         en: "blood pressure",
         vi: "huyết áp",
@@ -208,6 +213,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "te-KA-nan DA-rah",
       },
       {
+        cell_id: "cbfadcdc-84f5-4e37-a98c-8435956f337a",
         word: "resep ulang",
         en: "prescription refill",
         vi: "kê lại đơn thuốc",
@@ -216,6 +222,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "RE-sep OO-lang",
       },
       {
+        cell_id: "bae71076-6452-46d2-8848-7fc0f04d7ce2",
         word: "rujukan",
         en: "referral",
         vi: "giấy chuyển tuyến",
@@ -224,6 +231,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "roo-JOO-kan",
       },
       {
+        cell_id: "18956e88-d0f2-4d3d-861e-40b663e7345f",
         word: "keluhan membaik",
         en: "symptoms improving",
         vi: "triệu chứng đỡ hơn",
@@ -232,6 +240,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "ke-LOO-han mem-BA-ik",
       },
       {
+        cell_id: "bfe6ab58-e5b1-42ba-99d7-953ee2bdbf88",
         word: "efek obat",
         en: "medicine effect / side effect",
         vi: "tác dụng của thuốc / tác dụng phụ",
@@ -242,24 +251,28 @@ export const lessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "a51e778b-cd9f-4daa-b0c0-05038f9a43fc",
         speaker: "Pasien",
         text: "Dok, saya datang untuk kontrol dan mengambil hasil lab.",
         vi: "Bác sĩ, tôi đến tái khám và lấy kết quả xét nghiệm.",
         en: "Doctor, I came for a follow-up and to collect lab results.",
       },
       {
+        cell_id: "b3051beb-f048-4445-868b-39c01bf8adf8",
         speaker: "Dokter",
         text: "Baik. Keluhannya sekarang bagaimana?",
         vi: "Được. Bây giờ triệu chứng thế nào?",
         en: "Okay. How are the symptoms now?",
       },
       {
+        cell_id: "09d9af81-d08e-46d7-96d9-8998bdb71e40",
         speaker: "Pasien",
         text: "Keluhan saya sudah membaik, tapi obatnya membuat saya mengantuk.",
         vi: "Triệu chứng đã đỡ hơn, nhưng thuốc làm tôi buồn ngủ.",
         en: "My symptoms have improved, but the medicine makes me drowsy.",
       },
       {
+        cell_id: "ad85b17f-6a5d-4b9f-a7ac-f1141be2e30e",
         speaker: "Dokter",
         text: "Tekanan darah masih tinggi. Saya beri resep ulang dan rujukan ke spesialis.",
         vi: "Huyết áp vẫn cao. Tôi sẽ kê lại đơn và cho giấy chuyển tuyến đến chuyên khoa.",

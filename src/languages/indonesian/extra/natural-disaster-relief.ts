@@ -13,6 +13,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -22,6 +23,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -235,39 +237,43 @@ export const lessons: IndonesianLesson[] = [
     tip_advice_en:
       "Tip for Vietnamese speakers: separate easily confused relief terms: `bantuan` (aid/help), `donasi` (donation), `logistik` (supplies), `pengungsi` (evacuee/displaced person), `mengungsi` (evacuate), `tenda darurat` (emergency tent), and `dapur umum` (relief kitchen). Relief notices constantly use passive `di-`: `dikirim`, `dibagikan`, `dicatat`, `dialihkan`.",
     vocabulary: [
-      { word: "bantuan bencana", en: "disaster aid", vi: "cứu trợ thiên tai", pos: "noun phrase", pronunciation_vi: "ban-TU-an ben-CA-na", pronunciation_en: "ban-TOO-an ben-CHA-na" },
-      { word: "posko", en: "relief / command post", vi: "điểm cứu trợ / chỉ huy", pos: "noun", pronunciation_vi: "POS-ko", pronunciation_en: "POS-ko" },
-      { word: "donasi", en: "donation", vi: "quyên góp", pos: "noun", pronunciation_vi: "do-NA-si", pronunciation_en: "do-NA-see" },
-      { word: "relawan", en: "volunteer", vi: "tình nguyện viên", pos: "noun", pronunciation_vi: "re-LA-wan", pronunciation_en: "re-LA-wan" },
-      { word: "logistik", en: "relief supplies / logistics", vi: "hàng hậu cần", pos: "noun", pronunciation_vi: "lo-GIS-tik", pronunciation_en: "lo-GIS-tik" },
-      { word: "pengungsi", en: "evacuee / displaced person", vi: "người sơ tán", pos: "noun", pronunciation_vi: "pe-NGUNG-si", pronunciation_en: "pe-NGUNG-see" },
-      { word: "tenda darurat", en: "emergency tent", vi: "lều khẩn cấp", pos: "noun phrase", pronunciation_vi: "TEN-da da-RU-rat", pronunciation_en: "TEN-da da-ROO-rat" },
-      { word: "dapur umum", en: "communal relief kitchen", vi: "bếp ăn cứu trợ", pos: "noun phrase", pronunciation_vi: "DA-pur U-mum", pronunciation_en: "DA-pur OO-mum" },
-      { word: "warga terdampak", en: "affected residents", vi: "người dân bị ảnh hưởng", pos: "noun phrase", pronunciation_vi: "WAR-ga ter-DAM-pak", pronunciation_en: "WAR-ga ter-DAM-pak" },
-      { word: "rekening resmi", en: "official bank account", vi: "tài khoản chính thức", pos: "noun phrase", pronunciation_vi: "re-KE-ning res-MI", pronunciation_en: "re-KE-ning res-MEE" },
-      { word: "tanggap darurat", en: "emergency response", vi: "ứng phó khẩn cấp", pos: "noun phrase", pronunciation_vi: "tang-GAP da-RU-rat", pronunciation_en: "tang-GAP da-ROO-rat" },
-      { word: "pemulihan", en: "recovery", vi: "phục hồi", pos: "noun", pronunciation_vi: "pe-mu-LIH-an", pronunciation_en: "pe-moo-LIH-an" },
+      { cell_id: "5c7a1ed3-5466-4249-8410-08e3eb37cc1d", word: "bantuan bencana", en: "disaster aid", vi: "cứu trợ thiên tai", pos: "noun phrase", pronunciation_vi: "ban-TU-an ben-CA-na", pronunciation_en: "ban-TOO-an ben-CHA-na" },
+      { cell_id: "2826fbe6-2901-466f-b064-84625af397f1", word: "posko", en: "relief / command post", vi: "điểm cứu trợ / chỉ huy", pos: "noun", pronunciation_vi: "POS-ko", pronunciation_en: "POS-ko" },
+      { cell_id: "251b8ca1-36ea-4e80-ab95-69e9a04227cf", word: "donasi", en: "donation", vi: "quyên góp", pos: "noun", pronunciation_vi: "do-NA-si", pronunciation_en: "do-NA-see" },
+      { cell_id: "91b44d66-ba45-435e-bf55-0a2ce55ae105", word: "relawan", en: "volunteer", vi: "tình nguyện viên", pos: "noun", pronunciation_vi: "re-LA-wan", pronunciation_en: "re-LA-wan" },
+      { cell_id: "348ec2b9-a8d4-49a0-9a1c-ca3ad7f2cefe", word: "logistik", en: "relief supplies / logistics", vi: "hàng hậu cần", pos: "noun", pronunciation_vi: "lo-GIS-tik", pronunciation_en: "lo-GIS-tik" },
+      { cell_id: "e7d09d11-ba64-4944-905c-4ce25e0b02c7", word: "pengungsi", en: "evacuee / displaced person", vi: "người sơ tán", pos: "noun", pronunciation_vi: "pe-NGUNG-si", pronunciation_en: "pe-NGUNG-see" },
+      { cell_id: "702b4d1a-b446-44ba-bf79-1057aea5123f", word: "tenda darurat", en: "emergency tent", vi: "lều khẩn cấp", pos: "noun phrase", pronunciation_vi: "TEN-da da-RU-rat", pronunciation_en: "TEN-da da-ROO-rat" },
+      { cell_id: "a291d91e-8890-44c5-b8ab-b6900b84c001", word: "dapur umum", en: "communal relief kitchen", vi: "bếp ăn cứu trợ", pos: "noun phrase", pronunciation_vi: "DA-pur U-mum", pronunciation_en: "DA-pur OO-mum" },
+      { cell_id: "11dc6c8a-e107-4a51-905e-c7f76aef6a96", word: "warga terdampak", en: "affected residents", vi: "người dân bị ảnh hưởng", pos: "noun phrase", pronunciation_vi: "WAR-ga ter-DAM-pak", pronunciation_en: "WAR-ga ter-DAM-pak" },
+      { cell_id: "73fefd1d-403a-4d07-83bb-bb7106ea5712", word: "rekening resmi", en: "official bank account", vi: "tài khoản chính thức", pos: "noun phrase", pronunciation_vi: "re-KE-ning res-MI", pronunciation_en: "re-KE-ning res-MEE" },
+      { cell_id: "c5cbd490-dfe3-47a2-a7a6-56c6b9ee0e58", word: "tanggap darurat", en: "emergency response", vi: "ứng phó khẩn cấp", pos: "noun phrase", pronunciation_vi: "tang-GAP da-RU-rat", pronunciation_en: "tang-GAP da-ROO-rat" },
+      { cell_id: "5111c05f-f3ae-41dd-9e8b-8ba556ecc4dd", word: "pemulihan", en: "recovery", vi: "phục hồi", pos: "noun", pronunciation_vi: "pe-mu-LIH-an", pronunciation_en: "pe-moo-LIH-an" },
     ],
     dialogue: [
       {
+        cell_id: "ccf37038-886e-4246-9e71-92f02e72017f",
         speaker: "Koordinator",
         text: "Posko utama butuh relawan untuk mencatat data pengungsi.",
         vi: "Điểm cứu trợ chính cần tình nguyện viên ghi dữ liệu người sơ tán.",
         en: "The main relief post needs volunteers to record evacuee data.",
       },
       {
+        cell_id: "801f5933-875b-44dd-b358-1e7cf01a7326",
         speaker: "Relawan",
         text: "Saya bisa bantu. Logistik apa yang paling dibutuhkan?",
         vi: "Tôi có thể giúp. Hàng hậu cần nào đang cần nhất?",
         en: "I can help. Which supplies are needed most?",
       },
       {
+        cell_id: "2d3dd8ce-1058-417a-86f1-636dbd42f2f0",
         speaker: "Koordinator",
         text: "Air bersih, obat-obatan, selimut, dan perlengkapan bayi.",
         vi: "Nước sạch, thuốc men, chăn và đồ dùng em bé.",
         en: "Clean water, medicines, blankets, and baby supplies.",
       },
       {
+        cell_id: "d64cc4e9-cf51-4ea6-819f-99403fc0bf8c",
         speaker: "Relawan",
         text: "Baik. Donasi uang saya kirim ke rekening resmi lembaga.",
         vi: "Được. Tiền quyên góp tôi gửi vào tài khoản chính thức của tổ chức.",

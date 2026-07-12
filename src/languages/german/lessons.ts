@@ -97,6 +97,7 @@ export type LessonSentence = {
 };
 
 export type VocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -108,6 +109,7 @@ export type VocabEntry = {
 };
 
 export type DialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi: string;

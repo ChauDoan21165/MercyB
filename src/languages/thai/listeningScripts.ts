@@ -47,6 +47,7 @@ export type ScriptLine = {
 };
 
 export type VocabItem = {
+  cell_id?: string;
   th: string;
   rtgs?: string;
   en: string;

@@ -21,6 +21,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   /** Indonesian word/phrase. */
   word: string;
   /** English meaning. */
@@ -36,6 +37,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   /** Indonesian line. */
   text: string;
@@ -253,6 +255,7 @@ export const lessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: remember `gigi` = tooth, `gusi` = gum, `tambal` = filling, `cabut` = extraction, `obat nyeri` = pain medicine. If you are afraid of a procedure, use the soft question: `Bisa dijelaskan pilihannya?`",
     vocabulary: [
       {
+        cell_id: "8d35470a-6eef-42f7-9569-0cc259adb413",
         word: "sakit gigi mendadak",
         en: "sudden toothache",
         vi: "đau răng đột ngột",
@@ -261,6 +264,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "SA-kit GEE-gee men-DA-dak",
       },
       {
+        cell_id: "20e155fd-87fa-4275-8675-10345c4f4ada",
         word: "gigi bengkak",
         en: "swollen tooth area",
         vi: "răng/vùng quanh răng bị sưng",
@@ -269,6 +273,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "GEE-gee BENG-kak",
       },
       {
+        cell_id: "eede7229-d9bb-4925-aafd-e62054edf536",
         word: "dokter gigi darurat",
         en: "emergency dentist",
         vi: "nha sĩ cấp cứu",
@@ -277,6 +282,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "DOK-ter GEE-gee da-ROO-rat",
       },
       {
+        cell_id: "567190b7-e6d8-4257-be13-ccd5ed8c5603",
         word: "obat nyeri",
         en: "pain medicine",
         vi: "thuốc giảm đau",
@@ -285,6 +291,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "O-bat NYEH-ree",
       },
       {
+        cell_id: "bc5bfc10-c3ed-499f-910b-87de14f56944",
         word: "tambal sementara",
         en: "temporary filling",
         vi: "trám tạm thời",
@@ -293,6 +300,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "TAM-bal seh-men-TA-ra",
       },
       {
+        cell_id: "068b50de-ad05-4f0c-9f47-9d77c0b28353",
         word: "cabut gigi",
         en: "tooth extraction",
         vi: "nhổ răng",
@@ -301,6 +309,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "CHA-boot GEE-gee",
       },
       {
+        cell_id: "e7bdd870-13d9-4176-bf87-bef87a36d23e",
         word: "jadwal cepat",
         en: "quick appointment",
         vi: "lịch sớm/nhanh",
@@ -309,6 +318,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "JAD-wal CHEH-pat",
       },
       {
+        cell_id: "6b4e96df-a99f-4ce0-811e-2e729069eb7e",
         word: "gusi",
         en: "gum",
         vi: "nướu/lợi",
@@ -317,6 +327,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "GOO-see",
       },
       {
+        cell_id: "48fafc1d-67d5-4308-a907-d29093c3d866",
         word: "rontgen",
         en: "X-ray",
         vi: "chụp X-quang",
@@ -325,6 +336,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "RON-gen",
       },
       {
+        cell_id: "94361ced-1a41-4dea-b48e-40397e433f9e",
         word: "tindakan",
         en: "medical procedure",
         vi: "thủ thuật/xử lý y tế",
@@ -335,24 +347,28 @@ export const lessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "d278a640-8128-4ee8-b483-1063d56f7ed6",
         speaker: "Pasien",
         text: "Permisi, saya sakit gigi mendadak dan gusi saya bengkak.",
         vi: "Xin lỗi, tôi bị đau răng đột ngột và nướu bị sưng.",
         en: "Excuse me, I have a sudden toothache and my gum is swollen.",
       },
       {
+        cell_id: "aff00a92-52de-47ca-9bc0-799ed5fe0b48",
         speaker: "Resepsionis Klinik",
         text: "Kami cek dulu jadwal dokter gigi darurat. Sakitnya sejak kapan?",
         vi: "Chúng tôi kiểm tra lịch nha sĩ cấp cứu trước. Đau từ khi nào?",
         en: "We will check the emergency dentist schedule first. Since when has it hurt?",
       },
       {
+        cell_id: "fef5dcd9-a72b-4ed6-843b-4df551192203",
         speaker: "Pasien",
         text: "Sejak tadi malam. Saya butuh jadwal cepat karena sakitnya tidak tertahan.",
         vi: "Từ tối qua. Tôi cần lịch sớm vì đau không chịu nổi.",
         en: "Since last night. I need a quick appointment because the pain is unbearable.",
       },
       {
+        cell_id: "f11b7d85-421f-40c3-a6dd-a51504e41250",
         speaker: "Dokter Gigi",
         text: "Nanti kita periksa. Mungkin perlu rontgen sebelum tambal sementara atau cabut gigi.",
         vi: "Lát nữa chúng ta sẽ khám. Có thể cần chụp X-quang trước khi trám tạm hoặc nhổ răng.",

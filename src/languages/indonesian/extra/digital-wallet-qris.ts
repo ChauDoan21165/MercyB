@@ -17,6 +17,7 @@ type IndonesianLessonSentence = {
 };
 
 type IndonesianVocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -26,6 +27,7 @@ type IndonesianVocabEntry = {
 };
 
 type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -184,6 +186,7 @@ export const lessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: three survival phrases are `bayar pakai ...` (pay with ...), `top up/isi saldo` (load balance), and `transaksi gagal` (failed transaction). When money is deducted, say `saldo terpotong`; when you need help checking, say `tolong cek status pembayaran saya`.",
     vocabulary: [
       {
+        cell_id: "58448569-fc92-4fe7-a2a0-1895eaff8d32",
         word: "e-wallet",
         en: "digital wallet",
         vi: "ví điện tử",
@@ -192,6 +195,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "EE-WA-let",
       },
       {
+        cell_id: "d83cd49b-3567-48ae-b351-f6d94fab97ca",
         word: "QRIS",
         en: "Indonesian QR payment standard",
         vi: "chuẩn thanh toán QRIS",
@@ -200,6 +204,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "koo-RIS",
       },
       {
+        cell_id: "55938de1-4a08-4496-8e8b-b1735d566ab4",
         word: "GoPay",
         en: "GoPay e-wallet",
         vi: "ví GoPay",
@@ -208,6 +213,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "go-PIE",
       },
       {
+        cell_id: "ada6a24a-19cd-4b59-9301-5d234412030a",
         word: "OVO",
         en: "OVO e-wallet",
         vi: "ví OVO",
@@ -216,6 +222,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "OH-vo",
       },
       {
+        cell_id: "1a9f11a0-8988-4e6b-a1c5-e628523509e9",
         word: "DANA",
         en: "DANA e-wallet",
         vi: "ví DANA",
@@ -224,6 +231,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "DA-na",
       },
       {
+        cell_id: "dfd8bcdc-e348-47f3-ab7a-bd98475a8113",
         word: "ShopeePay",
         en: "ShopeePay e-wallet",
         vi: "ví ShopeePay",
@@ -232,6 +240,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "SHO-pee-pay",
       },
       {
+        cell_id: "c364779a-2055-4c8c-8854-fdbb897cd277",
         word: "top up",
         en: "top up / load funds",
         vi: "nạp tiền",
@@ -240,6 +249,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "top-UP",
       },
       {
+        cell_id: "80a43356-7cfb-461d-b7a3-c4cc6375e41b",
         word: "scan QR",
         en: "scan QR code",
         vi: "quét mã QR",
@@ -248,6 +258,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "scan cue-AR",
       },
       {
+        cell_id: "1209aa2d-847f-4019-8fc9-a9bf6346aee7",
         word: "transaksi gagal",
         en: "failed transaction",
         vi: "giao dịch thất bại",
@@ -258,30 +269,35 @@ export const lessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "140502f1-56f2-4f23-aa02-06e0223d6f10",
         speaker: "Pembeli",
         text: "Pak, bisa bayar pakai QRIS?",
         vi: "Chú ơi, có thể trả bằng QRIS không?",
         en: "Sir, can I pay with QRIS?",
       },
       {
+        cell_id: "fa0d2e12-8ead-4447-adf7-ab140af639a9",
         speaker: "Penjual",
         text: "Bisa. Silakan scan QR-nya di sini.",
         vi: "Được. Mời quét mã QR ở đây.",
         en: "Yes. Please scan the QR code here.",
       },
       {
+        cell_id: "acf1d04d-9110-4020-9693-33870e74bf56",
         speaker: "Pembeli",
         text: "Saldo GoPay saya kurang. Saya top up dulu, ya.",
         vi: "Số dư GoPay của tôi không đủ. Tôi nạp tiền trước nhé.",
         en: "My GoPay balance is insufficient. I'll top up first.",
       },
       {
+        cell_id: "3c21fe8a-f871-4442-b84b-0a250b38480b",
         speaker: "Pembeli",
         text: "Transaksi saya gagal, tapi saldo sudah terpotong.",
         vi: "Giao dịch của tôi thất bại, nhưng số dư đã bị trừ.",
         en: "My transaction failed, but the balance was deducted.",
       },
       {
+        cell_id: "4bb14852-acb3-44b5-a0ed-234021c3e193",
         speaker: "Penjual",
         text: "Tolong cek status pembayaran di aplikasinya dulu.",
         vi: "Làm ơn kiểm tra trạng thái thanh toán trong app trước.",

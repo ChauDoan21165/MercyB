@@ -18,6 +18,7 @@ export type PunjabiFinalValidationFocus =
 export type PunjabiFinalValidationStage = "final_validation" | "verification" | "pre_integration" | "sanity";
 
 export type PunjabiScriptVocabularyFinalValidationSample = {
+  cell_id?: string;
   id: string;
   focus: PunjabiFinalValidationFocus;
   stage: PunjabiFinalValidationStage;
@@ -39,6 +40,7 @@ export type PunjabiScriptVocabularyFinalValidationSample = {
 };
 
 export type PunjabiScriptVocabularyFinalValidationSection = {
+  cell_id?: string;
   focus: PunjabiFinalValidationFocus;
   title_vi: string;
   title_en: string;

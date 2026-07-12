@@ -13,6 +13,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -22,6 +23,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -194,6 +196,7 @@ export const lessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: in an emergency, use short and clear sentences such as `Alarm kebakaran berbunyi`, `Jangan gunakan lift`, `Turun lewat tangga darurat`, `Titik kumpul di depan lobby`, `Hubungi petugas`. Imperatives and passive forms are very natural in safety instructions.",
     vocabulary: [
       {
+        cell_id: "8b119466-6162-468a-8f13-e85644ca95a2",
         word: "alarm kebakaran",
         en: "fire alarm",
         vi: "báo cháy",
@@ -202,6 +205,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "a-LARM keh-ba-KAH-ran",
       },
       {
+        cell_id: "7a531a67-80ac-4494-a7bf-dd46e318d906",
         word: "tangga darurat",
         en: "emergency stairs",
         vi: "cầu thang thoát hiểm",
@@ -210,6 +214,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "TANG-gah da-ROO-rat",
       },
       {
+        cell_id: "db1d3c17-6c1f-498c-b380-aebc9cd4bd9b",
         word: "evakuasi",
         en: "evacuation",
         vi: "sơ tán",
@@ -218,6 +223,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "eh-vah-koo-AH-see",
       },
       {
+        cell_id: "c7524fe5-956d-4ad8-af60-dc39d4083b59",
         word: "titik kumpul",
         en: "assembly point",
         vi: "điểm tập trung",
@@ -226,6 +232,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "TEE-teek KOOM-pool",
       },
       {
+        cell_id: "5186689e-7b98-4384-8721-51891d63e392",
         word: "satpam",
         en: "security guard",
         vi: "bảo vệ",
@@ -234,6 +241,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "SAHT-pam",
       },
       {
+        cell_id: "7303c8a5-fff7-4aaa-a86c-a3980293b780",
         word: "asap",
         en: "smoke",
         vi: "khói",
@@ -242,6 +250,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "AH-sahp",
       },
       {
+        cell_id: "97a3825f-a33d-47be-976e-6131cfcf24f0",
         word: "penghuni",
         en: "resident / occupant",
         vi: "cư dân / người ở",
@@ -250,6 +259,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "pehng-HOO-nee",
       },
       {
+        cell_id: "9bf5e9dc-bc11-4e05-9e12-3e2d43dcc796",
         word: "pintu darurat",
         en: "emergency door",
         vi: "cửa khẩn cấp",
@@ -258,6 +268,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "PEEN-too da-ROO-rat",
       },
       {
+        cell_id: "53989e1f-48ff-4309-bc71-c7f9174af392",
         word: "petugas",
         en: "officer / staff member",
         vi: "nhân viên / cán bộ phụ trách",
@@ -266,6 +277,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "peh-TOO-gas",
       },
       {
+        cell_id: "bfea8893-b8d3-4b8b-8014-f060b5e2de1f",
         word: "lift mati",
         en: "elevator is out of service",
         vi: "thang máy ngừng hoạt động",
@@ -276,36 +288,42 @@ export const lessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "3b1045b7-2c75-4c4f-bd01-274d8c46451c",
         speaker: "Penghuni",
         text: "Alarm kebakaran berbunyi! Semua orang keluar sekarang!",
         vi: "Báo cháy đang kêu! Mọi người ra ngoài ngay!",
         en: "The fire alarm is ringing! Everyone get out now!",
       },
       {
+        cell_id: "fa609f9c-3ae7-475d-9eda-ff7cb95f64f1",
         speaker: "Satpam",
         text: "Silakan turun lewat tangga darurat. Jangan gunakan lift.",
         vi: "Vui lòng đi xuống bằng cầu thang thoát hiểm. Đừng dùng thang máy.",
         en: "Please go down the emergency stairs. Do not use the elevator.",
       },
       {
+        cell_id: "c3001dfb-888c-4f6d-b1d2-265da1466f39",
         speaker: "Penghuni",
         text: "Asap sudah masuk ke koridor, kami langsung menuju titik kumpul.",
         vi: "Khói đã vào hành lang, chúng tôi đi thẳng tới điểm tập trung.",
         en: "Smoke has entered the corridor, and we are heading straight to the assembly point.",
       },
       {
+        cell_id: "3edb4924-9b1a-4e89-80b3-4289ef7f0cd8",
         speaker: "Satpam",
         text: "Baik, saya akan hubungi petugas dan cek apakah ada orang terjebak.",
         vi: "Vâng, tôi sẽ gọi nhân viên và kiểm tra xem có ai bị kẹt không.",
         en: "All right, I will contact staff and check whether anyone is trapped.",
       },
       {
+        cell_id: "283bfe69-0350-4b92-b46c-8214b3d20c46",
         speaker: "Penghuni",
         text: "Lift mati, jadi semua penghuni harus pakai tangga darurat.",
         vi: "Thang máy bị ngắt, nên tất cả cư dân phải dùng cầu thang thoát hiểm.",
         en: "The elevator is out, so all residents must use the emergency stairs.",
       },
       {
+        cell_id: "116320f1-31e2-4cc5-8c67-5c58c92142d2",
         speaker: "Satpam",
         text: "Setelah evakuasi selesai, kita menunggu informasi resmi dari gedung.",
         vi: "Sau khi sơ tán xong, chúng ta chờ thông tin chính thức từ tòa nhà.",

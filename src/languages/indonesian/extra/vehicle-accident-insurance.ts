@@ -16,6 +16,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   /** Indonesian word/phrase. */
   word: string;
   /** English meaning. */
@@ -31,6 +32,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   /** Indonesian line. */
   text: string;
@@ -193,6 +195,7 @@ export const lessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: key chunks are `mengajukan klaim`, `bengkel rekanan`, `kronologi`, `foto kerusakan`, `laporan polisi`, `ganti rugi`. Insurance paperwork favors nouns and passives: `dokumen klaim`, `laporan kecelakaan`, `harus dilengkapi`.",
     vocabulary: [
       {
+        cell_id: "179fe926-784f-478f-971d-dbb16bde7bce",
         word: "kecelakaan kendaraan",
         en: "vehicle accident",
         vi: "tai nạn xe",
@@ -201,6 +204,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "ke-che-la-KA-an ken-da-RA-an",
       },
       {
+        cell_id: "4c40615c-c3c3-4347-b902-399918ef902d",
         word: "asuransi",
         en: "insurance",
         vi: "bảo hiểm",
@@ -209,6 +213,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "a-su-RAN-see",
       },
       {
+        cell_id: "e2ed8e0d-424c-4076-bde3-a68ec886d587",
         word: "klaim",
         en: "claim",
         vi: "yêu cầu bồi thường",
@@ -217,6 +222,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "claim",
       },
       {
+        cell_id: "1f31626c-87ef-411e-b2fc-092660cef3ff",
         word: "bengkel rekanan",
         en: "partner repair shop",
         vi: "gara liên kết",
@@ -225,6 +231,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "BENG-kel re-KA-nan",
       },
       {
+        cell_id: "9ade0396-c16f-453c-bc92-0751abf05f69",
         word: "kronologi",
         en: "chronology",
         vi: "trình tự diễn biến",
@@ -233,6 +240,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "kro-no-lo-GI",
       },
       {
+        cell_id: "240d64d2-ee2c-4bc0-832c-0c0cdf8a4c3b",
         word: "foto kerusakan",
         en: "damage photos",
         vi: "ảnh hư hỏng/thiệt hại",
@@ -241,6 +249,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "FO-to ke-ru-SA-kan",
       },
       {
+        cell_id: "7734c421-a444-4010-be66-0c34c4afa1a0",
         word: "polisi",
         en: "police",
         vi: "cảnh sát",
@@ -249,6 +258,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "po-LEE-see",
       },
       {
+        cell_id: "18f7f710-24d6-4f8c-813a-844046c94ec2",
         word: "ganti rugi",
         en: "compensation",
         vi: "bồi thường",
@@ -257,6 +267,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "GAN-ti ROO-gi",
       },
       {
+        cell_id: "2d5abf9a-2d02-491e-a2fa-be3e917dfb44",
         word: "laporan kecelakaan",
         en: "accident report",
         vi: "báo cáo/biên bản tai nạn",
@@ -265,6 +276,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "la-PO-ran ke-che-la-KA-an",
       },
       {
+        cell_id: "22bb6dc2-e12f-40b5-8c7e-3d6255c25792",
         word: "dilengkapi",
         en: "completed / supplemented",
         vi: "được bổ sung đầy đủ",
@@ -275,30 +287,35 @@ export const lessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "17b7e890-aa56-4f16-9dae-5ed32eb2c0a4",
         speaker: "Nasabah",
         text: "Saya mau mengajukan klaim asuransi mobil.",
         vi: "Tôi muốn nộp yêu cầu bồi thường bảo hiểm ô tô.",
         en: "I want to file a car insurance claim.",
       },
       {
+        cell_id: "4ec4b2fb-9398-4c7d-9b2d-99ef29bd45ea",
         speaker: "Petugas asuransi",
         text: "Boleh. Mohon siapkan kronologi dan foto kerusakan.",
         vi: "Được. Vui lòng chuẩn bị trình tự sự việc và ảnh hư hỏng.",
         en: "Sure. Please prepare the chronology and damage photos.",
       },
       {
+        cell_id: "a799c9cf-b71f-4b86-ae0d-cfc90f00e061",
         speaker: "Nasabah",
         text: "Apakah harus ada laporan polisi?",
         vi: "Có bắt buộc phải có báo cáo cảnh sát không?",
         en: "Is a police report required?",
       },
       {
+        cell_id: "3d3c3278-8033-48c7-b713-33c22a0bb874",
         speaker: "Petugas asuransi",
         text: "Untuk kerusakan besar, biasanya perlu laporan kecelakaan.",
         vi: "Với hư hỏng lớn, thường cần báo cáo tai nạn.",
         en: "For major damage, an accident report is usually required.",
       },
       {
+        cell_id: "3dffd434-2037-48c9-8c16-07be979425ea",
         speaker: "Nasabah",
         text: "Baik. Setelah itu saya ke bengkel rekanan, ya?",
         vi: "Vâng. Sau đó tôi đến gara liên kết đúng không?",

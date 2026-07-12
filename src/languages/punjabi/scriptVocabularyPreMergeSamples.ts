@@ -18,6 +18,7 @@ export type PunjabiPreMergeFocus =
 export type PunjabiPreMergeStage = "pre_merge" | "pre_a11_checksum" | "runner_readiness" | "pre_integration" | "sanity";
 
 export type PunjabiScriptVocabularyPreMergeSample = {
+  cell_id?: string;
   id: string;
   focus: PunjabiPreMergeFocus;
   stage: PunjabiPreMergeStage;
@@ -39,6 +40,7 @@ export type PunjabiScriptVocabularyPreMergeSample = {
 };
 
 export type PunjabiScriptVocabularyPreMergeSection = {
+  cell_id?: string;
   focus: PunjabiPreMergeFocus;
   title_vi: string;
   title_en: string;

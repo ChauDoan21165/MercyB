@@ -60,6 +60,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   /** Indonesian word (base or affixed form, as the learner will meet it). */
   word: string;
   en: string;
@@ -71,6 +72,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -217,20 +219,20 @@ export const lessons: IndonesianLesson[] = [
       },
     ],
     vocabulary: [
-      { word: "bangun", en: "to wake up", vi: "thức dậy", pos: "verb", pronunciation_vi: "BA-ngun", pronunciation_en: "BAH-ngoon" },
-      { word: "mandi", en: "to bathe / shower", vi: "tắm", pos: "verb", pronunciation_vi: "MAN-di", pronunciation_en: "MAHN-dee" },
-      { word: "sarapan", en: "breakfast", vi: "bữa sáng", pos: "noun/verb", pronunciation_vi: "sa-RA-pan", pronunciation_en: "sah-RAH-pahn" },
-      { word: "berangkat", en: "to depart / leave for", vi: "khởi hành / đi tới", pos: "verb (ber-)", pronunciation_vi: "be-RANG-kat", pronunciation_en: "buh-RAHNG-kat" },
-      { word: "kantor", en: "office", vi: "văn phòng", pos: "noun", pronunciation_vi: "KAN-tor", pronunciation_en: "KAHN-tor" },
-      { word: "bekerja", en: "to work", vi: "làm việc", pos: "verb (ber-)", pronunciation_vi: "be-KER-ja", pronunciation_en: "buh-KER-jah" },
-      { word: "beristirahat", en: "to rest", vi: "nghỉ ngơi", pos: "verb (ber-)", pronunciation_vi: "be-ris-ti-RA-hat", pronunciation_en: "buh-ris-tee-RAH-hat" },
-      { word: "setiap hari", en: "every day", vi: "mỗi ngày", pos: "phrase", pronunciation_vi: "se-TI-ap HA-ri", pronunciation_en: "suh-TEE-ap HAH-ree" },
+      { cell_id: "05c84804-fc83-435c-8113-bc00060c6a30", word: "bangun", en: "to wake up", vi: "thức dậy", pos: "verb", pronunciation_vi: "BA-ngun", pronunciation_en: "BAH-ngoon" },
+      { cell_id: "ec7c2f5e-9281-44c5-ab62-f0acbf8280a0", word: "mandi", en: "to bathe / shower", vi: "tắm", pos: "verb", pronunciation_vi: "MAN-di", pronunciation_en: "MAHN-dee" },
+      { cell_id: "adac9c56-b4ba-44ab-a6cc-8cda39dbef8a", word: "sarapan", en: "breakfast", vi: "bữa sáng", pos: "noun/verb", pronunciation_vi: "sa-RA-pan", pronunciation_en: "sah-RAH-pahn" },
+      { cell_id: "ed2bdc62-51ca-48a6-add3-5a810a725ec2", word: "berangkat", en: "to depart / leave for", vi: "khởi hành / đi tới", pos: "verb (ber-)", pronunciation_vi: "be-RANG-kat", pronunciation_en: "buh-RAHNG-kat" },
+      { cell_id: "0c7b47cd-0118-4788-961b-68a1ddd8e50f", word: "kantor", en: "office", vi: "văn phòng", pos: "noun", pronunciation_vi: "KAN-tor", pronunciation_en: "KAHN-tor" },
+      { cell_id: "4ee32b5b-d443-4dc7-a88a-370e8239b68d", word: "bekerja", en: "to work", vi: "làm việc", pos: "verb (ber-)", pronunciation_vi: "be-KER-ja", pronunciation_en: "buh-KER-jah" },
+      { cell_id: "9f139381-95eb-48ea-bc66-6e41670cc3e2", word: "beristirahat", en: "to rest", vi: "nghỉ ngơi", pos: "verb (ber-)", pronunciation_vi: "be-ris-ti-RA-hat", pronunciation_en: "buh-ris-tee-RAH-hat" },
+      { cell_id: "ba1cf15a-df87-43a4-9820-10754a0b90b7", word: "setiap hari", en: "every day", vi: "mỗi ngày", pos: "phrase", pronunciation_vi: "se-TI-ap HA-ri", pronunciation_en: "suh-TEE-ap HAH-ree" },
     ],
     dialogue: [
-      { speaker: "A", text: "Jam berapa kamu bangun?", vi: "Bạn thức dậy lúc mấy giờ?", en: "What time do you wake up?" },
-      { speaker: "B", text: "Saya bangun jam enam. Lalu mandi dan sarapan.", vi: "Tôi dậy lúc sáu giờ. Rồi tắm và ăn sáng.", en: "I wake up at six. Then I shower and have breakfast." },
-      { speaker: "A", text: "Kamu berangkat ke kantor naik apa?", vi: "Bạn đi đến văn phòng bằng gì?", en: "How do you get to the office?" },
-      { speaker: "B", text: "Naik ojek online. Malam hari saya beristirahat di rumah.", vi: "Bằng xe ôm công nghệ. Buổi tối tôi nghỉ ngơi ở nhà.", en: "By app motorbike taxi. In the evening I rest at home." },
+      { cell_id: "fff8ee64-dad2-4021-aed1-c881b1ca1da2", speaker: "A", text: "Jam berapa kamu bangun?", vi: "Bạn thức dậy lúc mấy giờ?", en: "What time do you wake up?" },
+      { cell_id: "267043eb-6098-4d5a-8d7a-53f9bf30148c", speaker: "B", text: "Saya bangun jam enam. Lalu mandi dan sarapan.", vi: "Tôi dậy lúc sáu giờ. Rồi tắm và ăn sáng.", en: "I wake up at six. Then I shower and have breakfast." },
+      { cell_id: "aeba7fd3-9eea-4069-80be-f4ca4697e0bf", speaker: "A", text: "Kamu berangkat ke kantor naik apa?", vi: "Bạn đi đến văn phòng bằng gì?", en: "How do you get to the office?" },
+      { cell_id: "298d066a-2d72-4e16-9ca7-bb5b6b7867ce", speaker: "B", text: "Naik ojek online. Malam hari saya beristirahat di rumah.", vi: "Bằng xe ôm công nghệ. Buổi tối tôi nghỉ ngơi ở nhà.", en: "By app motorbike taxi. In the evening I rest at home." },
     ],
     exercises: [
       {
@@ -363,22 +365,22 @@ export const lessons: IndonesianLesson[] = [
       },
     ],
     vocabulary: [
-      { word: "pasar", en: "market", vi: "chợ", pos: "noun", pronunciation_vi: "PA-sar", pronunciation_en: "PAH-sar" },
-      { word: "toko", en: "shop / store", vi: "cửa hàng", pos: "noun", pronunciation_vi: "TÔ-ko", pronunciation_en: "TOH-koh" },
-      { word: "harga", en: "price", vi: "giá", pos: "noun", pronunciation_vi: "HAR-ga", pronunciation_en: "HAR-gah" },
-      { word: "menawar", en: "to bargain / haggle", vi: "trả giá / mặc cả", pos: "verb (meN-)", pronunciation_vi: "me-NA-war", pronunciation_en: "muh-NAH-war" },
-      { word: "membeli", en: "to buy", vi: "mua", pos: "verb (meN-)", pronunciation_vi: "mem-BE-li", pronunciation_en: "mem-BUH-lee" },
-      { word: "membayar", en: "to pay", vi: "trả tiền", pos: "verb (meN-)", pronunciation_vi: "mem-BA-yar", pronunciation_en: "mem-BAH-yar" },
-      { word: "mahal", en: "expensive", vi: "đắt", pos: "adj.", pronunciation_vi: "MA-hal", pronunciation_en: "MAH-hal" },
-      { word: "murah", en: "cheap", vi: "rẻ", pos: "adj.", pronunciation_vi: "MU-rah", pronunciation_en: "MOO-rah" },
-      { word: "tunai", en: "cash", vi: "tiền mặt", pos: "noun", pronunciation_vi: "TU-nai", pronunciation_en: "TOO-nigh" },
-      { word: "ribu", en: "thousand", vi: "nghìn", pos: "num.", pronunciation_vi: "RI-bu", pronunciation_en: "REE-boo" },
+      { cell_id: "7a030265-a59a-48c6-b44a-6876408b4f4e", word: "pasar", en: "market", vi: "chợ", pos: "noun", pronunciation_vi: "PA-sar", pronunciation_en: "PAH-sar" },
+      { cell_id: "859a17fd-0824-4b85-baa8-7cbf5a6ef0e5", word: "toko", en: "shop / store", vi: "cửa hàng", pos: "noun", pronunciation_vi: "TÔ-ko", pronunciation_en: "TOH-koh" },
+      { cell_id: "5a4edf6a-5d08-4bb2-bbee-19d22a266844", word: "harga", en: "price", vi: "giá", pos: "noun", pronunciation_vi: "HAR-ga", pronunciation_en: "HAR-gah" },
+      { cell_id: "386777f9-a5ea-40d2-8590-2c2fae1c07f4", word: "menawar", en: "to bargain / haggle", vi: "trả giá / mặc cả", pos: "verb (meN-)", pronunciation_vi: "me-NA-war", pronunciation_en: "muh-NAH-war" },
+      { cell_id: "2e29e92e-5a9d-4e38-8afb-1c47427fd975", word: "membeli", en: "to buy", vi: "mua", pos: "verb (meN-)", pronunciation_vi: "mem-BE-li", pronunciation_en: "mem-BUH-lee" },
+      { cell_id: "99ba5206-303d-48da-96c9-08b51af118c9", word: "membayar", en: "to pay", vi: "trả tiền", pos: "verb (meN-)", pronunciation_vi: "mem-BA-yar", pronunciation_en: "mem-BAH-yar" },
+      { cell_id: "7675ceba-3dda-43f6-9dde-38b88966c2a4", word: "mahal", en: "expensive", vi: "đắt", pos: "adj.", pronunciation_vi: "MA-hal", pronunciation_en: "MAH-hal" },
+      { cell_id: "a800964b-bd84-4774-8305-3b945571c81e", word: "murah", en: "cheap", vi: "rẻ", pos: "adj.", pronunciation_vi: "MU-rah", pronunciation_en: "MOO-rah" },
+      { cell_id: "f89d1268-0926-4e94-bbb3-66ab91c409f3", word: "tunai", en: "cash", vi: "tiền mặt", pos: "noun", pronunciation_vi: "TU-nai", pronunciation_en: "TOO-nigh" },
+      { cell_id: "f33b3321-c61a-4dbd-ae32-e62475e48585", word: "ribu", en: "thousand", vi: "nghìn", pos: "num.", pronunciation_vi: "RI-bu", pronunciation_en: "REE-boo" },
     ],
     dialogue: [
-      { speaker: "Pembeli", text: "Bu, berapa harga satu kilo mangga?", vi: "Cô ơi, một ký xoài bao nhiêu?", en: "Ma'am, how much is a kilo of mangoes?" },
-      { speaker: "Penjual", text: "Dua puluh lima ribu, Mas.", vi: "Hai lăm nghìn, anh.", en: "Twenty-five thousand, sir." },
-      { speaker: "Pembeli", text: "Mahal. Boleh kurang? Dua puluh ribu, ya?", vi: "Đắt quá. Bớt được không? Hai mươi nghìn nhé?", en: "Pricey. Can you lower it? Twenty thousand?" },
-      { speaker: "Penjual", text: "Boleh, dua puluh dua ribu. Bayar tunai atau QRIS?", vi: "Được, hai hai nghìn. Trả tiền mặt hay QRIS?", en: "Okay, twenty-two thousand. Cash or QRIS?" },
+      { cell_id: "23739912-368f-4449-829e-86984bfb6bfd", speaker: "Pembeli", text: "Bu, berapa harga satu kilo mangga?", vi: "Cô ơi, một ký xoài bao nhiêu?", en: "Ma'am, how much is a kilo of mangoes?" },
+      { cell_id: "c22bf21b-b92d-453e-800a-5231bd8088e9", speaker: "Penjual", text: "Dua puluh lima ribu, Mas.", vi: "Hai lăm nghìn, anh.", en: "Twenty-five thousand, sir." },
+      { cell_id: "e038e276-89d9-4af8-8a37-9d03d85e45ac", speaker: "Pembeli", text: "Mahal. Boleh kurang? Dua puluh ribu, ya?", vi: "Đắt quá. Bớt được không? Hai mươi nghìn nhé?", en: "Pricey. Can you lower it? Twenty thousand?" },
+      { cell_id: "5e1ffe5a-4a1c-4e1e-bc68-c7e39d97ba6b", speaker: "Penjual", text: "Boleh, dua puluh dua ribu. Bayar tunai atau QRIS?", vi: "Được, hai hai nghìn. Trả tiền mặt hay QRIS?", en: "Okay, twenty-two thousand. Cash or QRIS?" },
     ],
     exercises: [
       {
@@ -511,21 +513,21 @@ export const lessons: IndonesianLesson[] = [
       },
     ],
     vocabulary: [
-      { word: "naik", en: "to ride / board / go by", vi: "lên (xe) / đi bằng", pos: "verb", pronunciation_vi: "NA-ik", pronunciation_en: "NAH-eek" },
-      { word: "ojek", en: "motorbike taxi", vi: "xe ôm", pos: "noun", pronunciation_vi: "Ô-jek", pronunciation_en: "OH-jek" },
-      { word: "kereta", en: "train", vi: "tàu hỏa", pos: "noun", pronunciation_vi: "ke-RÊ-ta", pronunciation_en: "kuh-REH-tah" },
-      { word: "stasiun", en: "(train) station", vi: "nhà ga", pos: "noun", pronunciation_vi: "sta-SI-un", pronunciation_en: "stah-SEE-oon" },
-      { word: "berhenti", en: "to stop", vi: "dừng lại", pos: "verb (ber-)", pronunciation_vi: "ber-HEN-ti", pronunciation_en: "ber-HEN-tee" },
-      { word: "mengantar", en: "to take / deliver (someone)", vi: "đưa / chở", pos: "verb (meN-)", pronunciation_vi: "me-ngan-TAR", pronunciation_en: "muh-ngahn-TAR" },
-      { word: "bandara", en: "airport", vi: "sân bay", pos: "noun", pronunciation_vi: "ban-DA-ra", pronunciation_en: "bahn-DAH-rah" },
-      { word: "becak", en: "pedicab / cycle-rickshaw", vi: "xe xích lô", pos: "noun", pronunciation_vi: "BÊ-chak", pronunciation_en: "BEH-chak" },
-      { word: "macet", en: "traffic jam / congested", vi: "kẹt xe", pos: "noun/adj.", pronunciation_vi: "MA-chet", pronunciation_en: "MAH-chet" },
+      { cell_id: "df25dd0b-8df0-4335-8103-021e93ccafe1", word: "naik", en: "to ride / board / go by", vi: "lên (xe) / đi bằng", pos: "verb", pronunciation_vi: "NA-ik", pronunciation_en: "NAH-eek" },
+      { cell_id: "cfa762bd-4bbf-4d89-b6a9-8f31574291f5", word: "ojek", en: "motorbike taxi", vi: "xe ôm", pos: "noun", pronunciation_vi: "Ô-jek", pronunciation_en: "OH-jek" },
+      { cell_id: "b8a17e54-d33b-48a0-b262-c1eacc07306b", word: "kereta", en: "train", vi: "tàu hỏa", pos: "noun", pronunciation_vi: "ke-RÊ-ta", pronunciation_en: "kuh-REH-tah" },
+      { cell_id: "68e771ad-1932-4d41-8464-0a9ce19c88bf", word: "stasiun", en: "(train) station", vi: "nhà ga", pos: "noun", pronunciation_vi: "sta-SI-un", pronunciation_en: "stah-SEE-oon" },
+      { cell_id: "e5d392b1-ce60-4165-ba7f-1b5cc7b30ad4", word: "berhenti", en: "to stop", vi: "dừng lại", pos: "verb (ber-)", pronunciation_vi: "ber-HEN-ti", pronunciation_en: "ber-HEN-tee" },
+      { cell_id: "07619a77-1f6a-4bb0-a5d0-1326135a05c2", word: "mengantar", en: "to take / deliver (someone)", vi: "đưa / chở", pos: "verb (meN-)", pronunciation_vi: "me-ngan-TAR", pronunciation_en: "muh-ngahn-TAR" },
+      { cell_id: "63598091-7075-4959-85ee-fb1df68ffd0e", word: "bandara", en: "airport", vi: "sân bay", pos: "noun", pronunciation_vi: "ban-DA-ra", pronunciation_en: "bahn-DAH-rah" },
+      { cell_id: "bba9d486-aebf-4dd2-b0a8-975baf138dbb", word: "becak", en: "pedicab / cycle-rickshaw", vi: "xe xích lô", pos: "noun", pronunciation_vi: "BÊ-chak", pronunciation_en: "BEH-chak" },
+      { cell_id: "bee6641e-f340-4a37-afe6-48564bacb615", word: "macet", en: "traffic jam / congested", vi: "kẹt xe", pos: "noun/adj.", pronunciation_vi: "MA-chet", pronunciation_en: "MAH-chet" },
     ],
     dialogue: [
-      { speaker: "A", text: "Mau ke Bandung naik apa?", vi: "Đi Bandung bằng gì?", en: "How are you getting to Bandung?" },
-      { speaker: "B", text: "Naik kereta. Tiketnya seratus ribu.", vi: "Đi tàu. Vé một trăm nghìn.", en: "By train. The ticket is a hundred thousand." },
-      { speaker: "A", text: "Ke stasiun naik apa?", vi: "Đến nhà ga bằng gì?", en: "How do you get to the station?" },
-      { speaker: "B", text: "Naik ojek online, lebih cepat daripada bus.", vi: "Đi xe ôm app, nhanh hơn xe buýt.", en: "App motorbike taxi — faster than the bus." },
+      { cell_id: "fd92baa0-c91a-4d35-9d41-a82f2ddea182", speaker: "A", text: "Mau ke Bandung naik apa?", vi: "Đi Bandung bằng gì?", en: "How are you getting to Bandung?" },
+      { cell_id: "dea238b1-62ac-4154-b1aa-57be894d3070", speaker: "B", text: "Naik kereta. Tiketnya seratus ribu.", vi: "Đi tàu. Vé một trăm nghìn.", en: "By train. The ticket is a hundred thousand." },
+      { cell_id: "bbc9399c-4b30-4c0d-a6c8-c751c4eeb5e8", speaker: "A", text: "Ke stasiun naik apa?", vi: "Đến nhà ga bằng gì?", en: "How do you get to the station?" },
+      { cell_id: "12b2f86c-c4e3-4977-9347-16e6451a6fe8", speaker: "B", text: "Naik ojek online, lebih cepat daripada bus.", vi: "Đi xe ôm app, nhanh hơn xe buýt.", en: "App motorbike taxi — faster than the bus." },
     ],
     exercises: [
       {
@@ -658,21 +660,21 @@ export const lessons: IndonesianLesson[] = [
       },
     ],
     vocabulary: [
-      { word: "jam", en: "hour / o'clock / clock", vi: "giờ / đồng hồ", pos: "noun", pronunciation_vi: "jam", pronunciation_en: "jahm" },
-      { word: "hari", en: "day", vi: "ngày", pos: "noun", pronunciation_vi: "HA-ri", pronunciation_en: "HAH-ree" },
-      { word: "minggu", en: "week / Sunday", vi: "tuần / Chủ nhật", pos: "noun", pronunciation_vi: "MING-gu", pronunciation_en: "MING-goo" },
-      { word: "bulan", en: "month / moon", vi: "tháng / mặt trăng", pos: "noun", pronunciation_vi: "BU-lan", pronunciation_en: "BOO-lahn" },
-      { word: "tahun", en: "year", vi: "năm", pos: "noun", pronunciation_vi: "TA-hun", pronunciation_en: "TAH-hoon" },
-      { word: "sekarang", en: "now", vi: "bây giờ", pos: "adv.", pronunciation_vi: "se-KA-rang", pronunciation_en: "suh-KAH-rahng" },
-      { word: "depan", en: "next / front", vi: "tới / phía trước", pos: "adj./prep.", pronunciation_vi: "de-PAN", pronunciation_en: "duh-PAHN" },
-      { word: "buka", en: "open", vi: "mở", pos: "verb/adj.", pronunciation_vi: "BU-ka", pronunciation_en: "BOO-kah" },
-      { word: "tutup", en: "closed / to close", vi: "đóng", pos: "verb/adj.", pronunciation_vi: "TU-tup", pronunciation_en: "TOO-toop" },
+      { cell_id: "e9472996-2feb-4101-ba0d-faa20277e55b", word: "jam", en: "hour / o'clock / clock", vi: "giờ / đồng hồ", pos: "noun", pronunciation_vi: "jam", pronunciation_en: "jahm" },
+      { cell_id: "37b4c464-320c-4c7a-9711-3bcf4ba2355e", word: "hari", en: "day", vi: "ngày", pos: "noun", pronunciation_vi: "HA-ri", pronunciation_en: "HAH-ree" },
+      { cell_id: "ec1e4e9e-5ba1-4ee8-a330-1eaa083af8f7", word: "minggu", en: "week / Sunday", vi: "tuần / Chủ nhật", pos: "noun", pronunciation_vi: "MING-gu", pronunciation_en: "MING-goo" },
+      { cell_id: "e1a63ddf-6e72-4dc9-9ea1-8dd8103ad9ce", word: "bulan", en: "month / moon", vi: "tháng / mặt trăng", pos: "noun", pronunciation_vi: "BU-lan", pronunciation_en: "BOO-lahn" },
+      { cell_id: "66f5448e-2f6a-43d5-8d0d-3ee50753cf58", word: "tahun", en: "year", vi: "năm", pos: "noun", pronunciation_vi: "TA-hun", pronunciation_en: "TAH-hoon" },
+      { cell_id: "2fcd6fbf-2704-4cc0-8e72-177308fc197c", word: "sekarang", en: "now", vi: "bây giờ", pos: "adv.", pronunciation_vi: "se-KA-rang", pronunciation_en: "suh-KAH-rahng" },
+      { cell_id: "eda5a55d-d636-4dc6-912e-b5c925510612", word: "depan", en: "next / front", vi: "tới / phía trước", pos: "adj./prep.", pronunciation_vi: "de-PAN", pronunciation_en: "duh-PAHN" },
+      { cell_id: "b6e14b87-a521-4aa7-8494-14f785f3ec6d", word: "buka", en: "open", vi: "mở", pos: "verb/adj.", pronunciation_vi: "BU-ka", pronunciation_en: "BOO-kah" },
+      { cell_id: "bc9682e4-3e8e-46bd-97d8-a834b64d5634", word: "tutup", en: "closed / to close", vi: "đóng", pos: "verb/adj.", pronunciation_vi: "TU-tup", pronunciation_en: "TOO-toop" },
     ],
     dialogue: [
-      { speaker: "A", text: "Sekarang jam berapa?", vi: "Bây giờ mấy giờ?", en: "What time is it now?" },
-      { speaker: "B", text: "Jam setengah tiga. Toko buka sampai jam sembilan.", vi: "Hai giờ rưỡi. Cửa hàng mở đến chín giờ.", en: "Half past two. The shop is open until nine." },
-      { speaker: "A", text: "Hari ini hari apa?", vi: "Hôm nay là thứ mấy?", en: "What day is it today?" },
-      { speaker: "B", text: "Hari Kamis. Sampai jumpa minggu depan, ya!", vi: "Thứ Năm. Hẹn gặp tuần sau nhé!", en: "Thursday. See you next week!" },
+      { cell_id: "f500f49f-bb6a-45de-9be8-df431aa88928", speaker: "A", text: "Sekarang jam berapa?", vi: "Bây giờ mấy giờ?", en: "What time is it now?" },
+      { cell_id: "2efb9614-9df2-4275-b58a-276e525d6d78", speaker: "B", text: "Jam setengah tiga. Toko buka sampai jam sembilan.", vi: "Hai giờ rưỡi. Cửa hàng mở đến chín giờ.", en: "Half past two. The shop is open until nine." },
+      { cell_id: "f7170ea5-a02f-44b3-91ee-0dbb4275320a", speaker: "A", text: "Hari ini hari apa?", vi: "Hôm nay là thứ mấy?", en: "What day is it today?" },
+      { cell_id: "5b14f9b5-c939-41be-809f-ff074eb68304", speaker: "B", text: "Hari Kamis. Sampai jumpa minggu depan, ya!", vi: "Thứ Năm. Hẹn gặp tuần sau nhé!", en: "Thursday. See you next week!" },
     ],
     exercises: [
       {
@@ -805,21 +807,21 @@ export const lessons: IndonesianLesson[] = [
       },
     ],
     vocabulary: [
-      { word: "panas", en: "hot", vi: "nóng", pos: "adj.", pronunciation_vi: "PA-nas", pronunciation_en: "PAH-nas" },
-      { word: "dingin", en: "cold", vi: "lạnh", pos: "adj.", pronunciation_vi: "DI-ngin", pronunciation_en: "DEE-ngin" },
-      { word: "hujan", en: "rain", vi: "mưa", pos: "noun/verb", pronunciation_vi: "HU-jan", pronunciation_en: "HOO-jahn" },
-      { word: "musim", en: "season", vi: "mùa", pos: "noun", pronunciation_vi: "MU-sim", pronunciation_en: "MOO-sim" },
-      { word: "musim hujan", en: "rainy season", vi: "mùa mưa", pos: "noun", pronunciation_vi: "MU-sim HU-jan", pronunciation_en: "MOO-sim HOO-jahn" },
-      { word: "musim kemarau", en: "dry season", vi: "mùa khô", pos: "noun", pronunciation_vi: "MU-sim ke-MA-rau", pronunciation_en: "MOO-sim kuh-MAH-row" },
-      { word: "payung", en: "umbrella", vi: "cái ô / dù", pos: "noun", pronunciation_vi: "PA-yung", pronunciation_en: "PAH-yoong" },
-      { word: "nyalakan", en: "to turn on", vi: "bật (lên)", pos: "verb (-kan)", pronunciation_vi: "nya-LA-kan", pronunciation_en: "nyah-LAH-kahn" },
-      { word: "kehujanan", en: "to get caught in the rain", vi: "bị mắc mưa", pos: "verb (ke-…-an)", pronunciation_vi: "ke-hu-JA-nan", pronunciation_en: "kuh-hoo-JAH-nan" },
+      { cell_id: "f0a743a2-8930-46ab-87e0-54adf34eed95", word: "panas", en: "hot", vi: "nóng", pos: "adj.", pronunciation_vi: "PA-nas", pronunciation_en: "PAH-nas" },
+      { cell_id: "9e4124c8-5d70-491e-bed0-f674643b6ca7", word: "dingin", en: "cold", vi: "lạnh", pos: "adj.", pronunciation_vi: "DI-ngin", pronunciation_en: "DEE-ngin" },
+      { cell_id: "8fd9474a-3e50-4b58-96f5-03f5cb3c6f30", word: "hujan", en: "rain", vi: "mưa", pos: "noun/verb", pronunciation_vi: "HU-jan", pronunciation_en: "HOO-jahn" },
+      { cell_id: "ab13d7e7-99d8-4a6b-8fcb-3428ed69db40", word: "musim", en: "season", vi: "mùa", pos: "noun", pronunciation_vi: "MU-sim", pronunciation_en: "MOO-sim" },
+      { cell_id: "acf3c9a5-1820-4f77-9a2f-5148364e5dcb", word: "musim hujan", en: "rainy season", vi: "mùa mưa", pos: "noun", pronunciation_vi: "MU-sim HU-jan", pronunciation_en: "MOO-sim HOO-jahn" },
+      { cell_id: "dc3b2407-6cfc-4ea0-a2e3-3695cbcfa4e0", word: "musim kemarau", en: "dry season", vi: "mùa khô", pos: "noun", pronunciation_vi: "MU-sim ke-MA-rau", pronunciation_en: "MOO-sim kuh-MAH-row" },
+      { cell_id: "8622b7b3-2158-49fa-aadb-e7d59e53a0bb", word: "payung", en: "umbrella", vi: "cái ô / dù", pos: "noun", pronunciation_vi: "PA-yung", pronunciation_en: "PAH-yoong" },
+      { cell_id: "2be00cd2-6dbe-404e-b0c7-c95be2187902", word: "nyalakan", en: "to turn on", vi: "bật (lên)", pos: "verb (-kan)", pronunciation_vi: "nya-LA-kan", pronunciation_en: "nyah-LAH-kahn" },
+      { cell_id: "e167e43e-faf6-41aa-9e63-6b8f387216d0", word: "kehujanan", en: "to get caught in the rain", vi: "bị mắc mưa", pos: "verb (ke-…-an)", pronunciation_vi: "ke-hu-JA-nan", pronunciation_en: "kuh-hoo-JAH-nan" },
     ],
     dialogue: [
-      { speaker: "A", text: "Panas sekali hari ini, ya.", vi: "Hôm nay nóng quá nhỉ.", en: "It's so hot today." },
-      { speaker: "B", text: "Iya. Tolong nyalakan AC-nya.", vi: "Ừ. Làm ơn bật điều hòa đi.", en: "Yeah. Please turn on the AC." },
-      { speaker: "A", text: "Tapi sepertinya nanti sore akan hujan.", vi: "Nhưng hình như chiều nay sắp mưa.", en: "But it looks like it'll rain this afternoon." },
-      { speaker: "B", text: "Jangan lupa bawa payung. Tadi pagi saya kehujanan.", vi: "Đừng quên mang ô. Sáng nay tôi bị mắc mưa.", en: "Don't forget an umbrella. I got rained on this morning." },
+      { cell_id: "7f3e5cf1-85a7-44f1-84c2-73aaee6fdbac", speaker: "A", text: "Panas sekali hari ini, ya.", vi: "Hôm nay nóng quá nhỉ.", en: "It's so hot today." },
+      { cell_id: "bc12d475-f013-4cc1-b216-d16df34f8c74", speaker: "B", text: "Iya. Tolong nyalakan AC-nya.", vi: "Ừ. Làm ơn bật điều hòa đi.", en: "Yeah. Please turn on the AC." },
+      { cell_id: "f7c81e40-7805-4a0a-85c1-8f3f5e4fa0e5", speaker: "A", text: "Tapi sepertinya nanti sore akan hujan.", vi: "Nhưng hình như chiều nay sắp mưa.", en: "But it looks like it'll rain this afternoon." },
+      { cell_id: "22e766ec-9333-4dca-8525-633da7b53a56", speaker: "B", text: "Jangan lupa bawa payung. Tadi pagi saya kehujanan.", vi: "Đừng quên mang ô. Sáng nay tôi bị mắc mưa.", en: "Don't forget an umbrella. I got rained on this morning." },
     ],
     exercises: [
       {
@@ -952,22 +954,22 @@ export const lessons: IndonesianLesson[] = [
       },
     ],
     vocabulary: [
-      { word: "rumah", en: "house", vi: "nhà", pos: "noun", pronunciation_vi: "RU-mah", pronunciation_en: "ROO-mah" },
-      { word: "kamar", en: "room", vi: "phòng", pos: "noun", pronunciation_vi: "KA-mar", pronunciation_en: "KAH-mar" },
-      { word: "kamar tidur", en: "bedroom", vi: "phòng ngủ", pos: "noun", pronunciation_vi: "KA-mar TI-dur", pronunciation_en: "KAH-mar TEE-door" },
-      { word: "kamar mandi", en: "bathroom", vi: "phòng tắm / nhà vệ sinh", pos: "noun", pronunciation_vi: "KA-mar MAN-di", pronunciation_en: "KAH-mar MAHN-dee" },
-      { word: "sewa", en: "rent / to rent", vi: "thuê / tiền thuê", pos: "noun/verb", pronunciation_vi: "SÊ-wa", pronunciation_en: "SEH-wah" },
-      { word: "menyewa", en: "to rent (from)", vi: "thuê", pos: "verb (meN-)", pronunciation_vi: "me-NYÊ-wa", pronunciation_en: "muh-NYEH-wah" },
-      { word: "penyewa", en: "renter / tenant", vi: "người thuê", pos: "noun (peN-)", pronunciation_vi: "pe-NYÊ-wa", pronunciation_en: "puh-NYEH-wah" },
-      { word: "listrik", en: "electricity", vi: "điện", pos: "noun", pronunciation_vi: "LIS-trik", pronunciation_en: "LEES-trik" },
-      { word: "air", en: "water", vi: "nước", pos: "noun", pronunciation_vi: "A-ir", pronunciation_en: "AH-eer" },
-      { word: "termasuk", en: "included", vi: "bao gồm", pos: "verb (ter-)", pronunciation_vi: "ter-MA-suk", pronunciation_en: "ter-MAH-sook" },
+      { cell_id: "5c7e317c-8759-4423-a40f-6f717ef3d191", word: "rumah", en: "house", vi: "nhà", pos: "noun", pronunciation_vi: "RU-mah", pronunciation_en: "ROO-mah" },
+      { cell_id: "e91b4f69-cc87-40d7-ac12-e6177d152b35", word: "kamar", en: "room", vi: "phòng", pos: "noun", pronunciation_vi: "KA-mar", pronunciation_en: "KAH-mar" },
+      { cell_id: "fa0a40ad-3f8f-4b6f-b6f8-a38912f5193d", word: "kamar tidur", en: "bedroom", vi: "phòng ngủ", pos: "noun", pronunciation_vi: "KA-mar TI-dur", pronunciation_en: "KAH-mar TEE-door" },
+      { cell_id: "08dfe154-ba51-4611-8706-27c9d7bdac64", word: "kamar mandi", en: "bathroom", vi: "phòng tắm / nhà vệ sinh", pos: "noun", pronunciation_vi: "KA-mar MAN-di", pronunciation_en: "KAH-mar MAHN-dee" },
+      { cell_id: "d0c0a28e-0c70-46ce-9bf7-74e7d1fa9cfa", word: "sewa", en: "rent / to rent", vi: "thuê / tiền thuê", pos: "noun/verb", pronunciation_vi: "SÊ-wa", pronunciation_en: "SEH-wah" },
+      { cell_id: "6ed83405-7890-4f73-a4f0-4d58a2231af3", word: "menyewa", en: "to rent (from)", vi: "thuê", pos: "verb (meN-)", pronunciation_vi: "me-NYÊ-wa", pronunciation_en: "muh-NYEH-wah" },
+      { cell_id: "dcc055e3-1747-4c43-9444-20c85ad5b2a1", word: "penyewa", en: "renter / tenant", vi: "người thuê", pos: "noun (peN-)", pronunciation_vi: "pe-NYÊ-wa", pronunciation_en: "puh-NYEH-wah" },
+      { cell_id: "2f69fee5-cd65-4a00-85ce-f137884d8fe9", word: "listrik", en: "electricity", vi: "điện", pos: "noun", pronunciation_vi: "LIS-trik", pronunciation_en: "LEES-trik" },
+      { cell_id: "c9895f6d-6728-4d3f-9810-d510a5e31270", word: "air", en: "water", vi: "nước", pos: "noun", pronunciation_vi: "A-ir", pronunciation_en: "AH-eer" },
+      { cell_id: "394b67b4-88c6-443b-9a9a-38b325d7541e", word: "termasuk", en: "included", vi: "bao gồm", pos: "verb (ter-)", pronunciation_vi: "ter-MA-suk", pronunciation_en: "ter-MAH-sook" },
     ],
     dialogue: [
-      { speaker: "Penyewa", text: "Permisi, saya mencari kamar kos untuk disewa.", vi: "Xin lỗi, tôi đang tìm phòng trọ để thuê.", en: "Excuse me, I'm looking for a boarding room to rent." },
-      { speaker: "Pemilik", text: "Ada. Harganya satu juta per bulan.", vi: "Có. Giá một triệu mỗi tháng.", en: "I have one. It's a million per month." },
-      { speaker: "Penyewa", text: "Apakah sudah termasuk listrik dan air?", vi: "Đã bao gồm điện nước chưa?", en: "Does that include electricity and water?" },
-      { speaker: "Pemilik", text: "Air sudah termasuk, listrik pakai token. Mau lihat kamarnya?", vi: "Nước đã gồm, điện dùng token. Muốn xem phòng không?", en: "Water's included, electricity is on a token. Want to see the room?" },
+      { cell_id: "5c3e2684-c45a-4763-a762-0657e7007de1", speaker: "Penyewa", text: "Permisi, saya mencari kamar kos untuk disewa.", vi: "Xin lỗi, tôi đang tìm phòng trọ để thuê.", en: "Excuse me, I'm looking for a boarding room to rent." },
+      { cell_id: "0d454599-38af-4cac-a5ed-8ddd7dd37453", speaker: "Pemilik", text: "Ada. Harganya satu juta per bulan.", vi: "Có. Giá một triệu mỗi tháng.", en: "I have one. It's a million per month." },
+      { cell_id: "f262f8d7-74ed-46f4-b32d-22d8acd6c08e", speaker: "Penyewa", text: "Apakah sudah termasuk listrik dan air?", vi: "Đã bao gồm điện nước chưa?", en: "Does that include electricity and water?" },
+      { cell_id: "15450034-173c-40e9-bbfe-a64b9f71927f", speaker: "Pemilik", text: "Air sudah termasuk, listrik pakai token. Mau lihat kamarnya?", vi: "Nước đã gồm, điện dùng token. Muốn xem phòng không?", en: "Water's included, electricity is on a token. Want to see the room?" },
     ],
     exercises: [
       {

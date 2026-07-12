@@ -31,6 +31,7 @@ export type PunjabiLessonSentence = {
 };
 
 export type PunjabiVocabEntry = {
+  cell_id?: string;
   word: string;
   romanization: string;
   vi: string;
@@ -39,6 +40,7 @@ export type PunjabiVocabEntry = {
 };
 
 export type PunjabiDialogueLine = {
+  cell_id?: string;
   speaker: string;
   pa: string;
   romanization: string;
@@ -126,14 +128,14 @@ export const lessons: PunjabiLesson[] = [
     script_awareness_en:
       "This lesson uses Gurmukhi. Shahmukhi is also used for Punjabi in some communities, but it is not the focus here.",
     vocabulary: [
-      { word: "ਸਵੇਰੇ", romanization: "savere", vi: "buổi sáng", en: "in the morning", pos: "adverb" },
-      { word: "ਉੱਠਣਾ", romanization: "utthna", vi: "thức dậy", en: "to wake up", pos: "verb" },
-      { word: "ਨਾਸ਼ਤਾ", romanization: "nashta", vi: "bữa sáng", en: "breakfast", pos: "noun" },
-      { word: "ਕੰਮ", romanization: "kamm", vi: "công việc", en: "work", pos: "noun" },
+      { cell_id: "a48f6f6d-9ff1-4c91-b445-6efdabe31a9d", word: "ਸਵੇਰੇ", romanization: "savere", vi: "buổi sáng", en: "in the morning", pos: "adverb" },
+      { cell_id: "ba04126f-9079-4b83-8f9a-5018f69eae6c", word: "ਉੱਠਣਾ", romanization: "utthna", vi: "thức dậy", en: "to wake up", pos: "verb" },
+      { cell_id: "3f3f3346-86d4-4663-9e11-6740cd3b1756", word: "ਨਾਸ਼ਤਾ", romanization: "nashta", vi: "bữa sáng", en: "breakfast", pos: "noun" },
+      { cell_id: "49f685bb-e5c4-4ee9-a935-5b6979208f8d", word: "ਕੰਮ", romanization: "kamm", vi: "công việc", en: "work", pos: "noun" },
     ],
     dialogue: [
-      { speaker: "A", pa: "ਤੁਸੀਂ ਕਦੋਂ ਉੱਠਦੇ ਹੋ?", romanization: "tusi kadon utthde ho?", vi: "Bạn thức dậy lúc nào?", en: "When do you wake up?" },
-      { speaker: "B", pa: "ਮੈਂ ਸੱਤ ਵਜੇ ਉੱਠਦਾ ਹਾਂ।", romanization: "main satt vaje utthda haan.", vi: "Tôi dậy lúc bảy giờ.", en: "I wake up at seven." },
+      { cell_id: "384a7dd2-dfb6-421e-bbe4-29bb3dd38dba", speaker: "A", pa: "ਤੁਸੀਂ ਕਦੋਂ ਉੱਠਦੇ ਹੋ?", romanization: "tusi kadon utthde ho?", vi: "Bạn thức dậy lúc nào?", en: "When do you wake up?" },
+      { cell_id: "a63fccac-b27b-4aa3-a23c-a315b8624936", speaker: "B", pa: "ਮੈਂ ਸੱਤ ਵਜੇ ਉੱਠਦਾ ਹਾਂ।", romanization: "main satt vaje utthda haan.", vi: "Tôi dậy lúc bảy giờ.", en: "I wake up at seven." },
     ],
     exercises: [
       { type: "translate", prompt_vi: "Nói: Tôi đi làm buổi sáng.", prompt_en: "Say: I go to work in the morning.", answer: "ਮੈਂ ਸਵੇਰੇ ਕੰਮ ਤੇ ਜਾਂਦਾ ਹਾਂ।" },
@@ -189,14 +191,14 @@ export const lessons: PunjabiLesson[] = [
     script_awareness_vi: "Gurmukhi là chữ chính trong bài; Shahmukhi chỉ cần nhận biết ở mức tên gọi.",
     script_awareness_en: "Gurmukhi is the active script here; Shahmukhi is only awareness by name.",
     vocabulary: [
-      { word: "ਕਿੱਥੇ", romanization: "kitthe", vi: "ở đâu", en: "where", pos: "question word" },
-      { word: "ਸਿੱਧਾ", romanization: "siddha", vi: "thẳng", en: "straight", pos: "adverb" },
-      { word: "ਖੱਬੇ", romanization: "khabbe", vi: "bên trái", en: "left", pos: "direction" },
-      { word: "ਸੱਜੇ", romanization: "sajje", vi: "bên phải", en: "right", pos: "direction" },
+      { cell_id: "6bba3791-4218-48fd-b1cb-0fbcc4050fd9", word: "ਕਿੱਥੇ", romanization: "kitthe", vi: "ở đâu", en: "where", pos: "question word" },
+      { cell_id: "fc37aebf-d1c5-4ef8-823b-116aff6286d3", word: "ਸਿੱਧਾ", romanization: "siddha", vi: "thẳng", en: "straight", pos: "adverb" },
+      { cell_id: "737c2022-9430-4bca-89f3-a87d4cf5d171", word: "ਖੱਬੇ", romanization: "khabbe", vi: "bên trái", en: "left", pos: "direction" },
+      { cell_id: "8a744cc9-9b95-4f61-842a-cd19eebd6b8f", word: "ਸੱਜੇ", romanization: "sajje", vi: "bên phải", en: "right", pos: "direction" },
     ],
     dialogue: [
-      { speaker: "A", pa: "ਮਾਫ਼ ਕਰਨਾ, ਹਸਪਤਾਲ ਕਿੱਥੇ ਹੈ?", romanization: "maaf karna, haspatal kitthe hai?", vi: "Xin lỗi, bệnh viện ở đâu?", en: "Excuse me, where is the hospital?" },
-      { speaker: "B", pa: "ਸਿੱਧਾ ਜਾਓ, ਫਿਰ ਸੱਜੇ ਮੁੜੋ।", romanization: "siddha jao, phir sajje muro.", vi: "Đi thẳng, rồi rẽ phải.", en: "Go straight, then turn right." },
+      { cell_id: "e7627fab-aa1a-4cf5-a650-240baae9e151", speaker: "A", pa: "ਮਾਫ਼ ਕਰਨਾ, ਹਸਪਤਾਲ ਕਿੱਥੇ ਹੈ?", romanization: "maaf karna, haspatal kitthe hai?", vi: "Xin lỗi, bệnh viện ở đâu?", en: "Excuse me, where is the hospital?" },
+      { cell_id: "f8459272-b219-44ca-a115-1ce5c17094b6", speaker: "B", pa: "ਸਿੱਧਾ ਜਾਓ, ਫਿਰ ਸੱਜੇ ਮੁੜੋ।", romanization: "siddha jao, phir sajje muro.", vi: "Đi thẳng, rồi rẽ phải.", en: "Go straight, then turn right." },
     ],
     exercises: [
       { type: "fill_blank", prompt: "ਬੈਂਕ ___ ਹੈ? (where)", answer: "ਕਿੱਥੇ" },
@@ -250,14 +252,14 @@ export const lessons: PunjabiLesson[] = [
     script_awareness_vi: "Tiếp tục đọc Gurmukhi trước; Shahmukhi chỉ là thông tin nhận biết.",
     script_awareness_en: "Keep reading Gurmukhi first; Shahmukhi remains awareness only.",
     vocabulary: [
-      { word: "ਹੁਣ", romanization: "hun", vi: "bây giờ", en: "now", pos: "adverb" },
-      { word: "ਵਜੇ", romanization: "vaje", vi: "giờ", en: "o'clock", pos: "time word" },
-      { word: "ਕੱਲ੍ਹ", romanization: "kallh", vi: "hôm qua/ngày mai", en: "yesterday/tomorrow", pos: "time word" },
-      { word: "ਮਿਲਣਾ", romanization: "milna", vi: "gặp", en: "to meet", pos: "verb" },
+      { cell_id: "2ca314e7-e4a3-429b-adf5-0aaa8fff7f2a", word: "ਹੁਣ", romanization: "hun", vi: "bây giờ", en: "now", pos: "adverb" },
+      { cell_id: "356e54b6-7214-4103-84e4-9a055cbafba6", word: "ਵਜੇ", romanization: "vaje", vi: "giờ", en: "o'clock", pos: "time word" },
+      { cell_id: "19b418c3-a125-4e36-8639-1eb0437a6ead", word: "ਕੱਲ੍ਹ", romanization: "kallh", vi: "hôm qua/ngày mai", en: "yesterday/tomorrow", pos: "time word" },
+      { cell_id: "c2fd99a3-3050-4f60-a9ce-c42a9f6e9824", word: "ਮਿਲਣਾ", romanization: "milna", vi: "gặp", en: "to meet", pos: "verb" },
     ],
     dialogue: [
-      { speaker: "A", pa: "ਕੀ ਤੁਸੀਂ ਤਿੰਨ ਵਜੇ ਖਾਲੀ ਹੋ?", romanization: "ki tusi tinn vaje khali ho?", vi: "Bạn rảnh lúc ba giờ không?", en: "Are you free at three?" },
-      { speaker: "B", pa: "ਹਾਂ, ਮੈਂ ਤਿੰਨ ਵਜੇ ਆ ਸਕਦਾ ਹਾਂ।", romanization: "haan, main tinn vaje aa sakda haan.", vi: "Vâng, tôi có thể đến lúc ba giờ.", en: "Yes, I can come at three." },
+      { cell_id: "fc9e09b2-148f-4598-b162-541ce2ba5f86", speaker: "A", pa: "ਕੀ ਤੁਸੀਂ ਤਿੰਨ ਵਜੇ ਖਾਲੀ ਹੋ?", romanization: "ki tusi tinn vaje khali ho?", vi: "Bạn rảnh lúc ba giờ không?", en: "Are you free at three?" },
+      { cell_id: "973e8a9e-16ed-492d-a44d-d7cf3a1019ab", speaker: "B", pa: "ਹਾਂ, ਮੈਂ ਤਿੰਨ ਵਜੇ ਆ ਸਕਦਾ ਹਾਂ।", romanization: "haan, main tinn vaje aa sakda haan.", vi: "Vâng, tôi có thể đến lúc ba giờ.", en: "Yes, I can come at three." },
     ],
     exercises: [
       { type: "choice", prompt: "ਕਿੰਨੇ ਵਜੇ?", answer: "What time?", options: ["What time?", "Where?", "Why?"] },
@@ -311,14 +313,14 @@ export const lessons: PunjabiLesson[] = [
     script_awareness_vi: "Mục tiêu đọc/viết là Gurmukhi; Shahmukhi chỉ được nhắc để nhận biết sự tồn tại.",
     script_awareness_en: "The reading/writing target is Gurmukhi; Shahmukhi is mentioned only for awareness.",
     vocabulary: [
-      { word: "ਮੌਸਮ", romanization: "mausam", vi: "thời tiết", en: "weather", pos: "noun" },
-      { word: "ਮੀਂਹ", romanization: "meenh", vi: "mưa", en: "rain", pos: "noun" },
-      { word: "ਠੰਢ", romanization: "thand", vi: "lạnh", en: "cold", pos: "noun/adjective" },
-      { word: "ਗਰਮੀ", romanization: "garmi", vi: "nóng", en: "heat", pos: "noun" },
+      { cell_id: "bde61d93-fe2d-4a03-ba20-01f65c93e58c", word: "ਮੌਸਮ", romanization: "mausam", vi: "thời tiết", en: "weather", pos: "noun" },
+      { cell_id: "3e7113f9-c6c1-419d-a4f7-09167a9c7afa", word: "ਮੀਂਹ", romanization: "meenh", vi: "mưa", en: "rain", pos: "noun" },
+      { cell_id: "a7bc8a13-816e-4f63-b4a6-48fce95806fd", word: "ਠੰਢ", romanization: "thand", vi: "lạnh", en: "cold", pos: "noun/adjective" },
+      { cell_id: "42ca1a2b-6381-47af-b62b-834bb3646659", word: "ਗਰਮੀ", romanization: "garmi", vi: "nóng", en: "heat", pos: "noun" },
     ],
     dialogue: [
-      { speaker: "A", pa: "ਅੱਜ ਬਾਹਰ ਚੱਲੀਏ?", romanization: "ajj bahar challiye?", vi: "Hôm nay ra ngoài nhé?", en: "Shall we go outside today?" },
-      { speaker: "B", pa: "ਹਾਂ, ਮੌਸਮ ਚੰਗਾ ਹੈ।", romanization: "haan, mausam changa hai.", vi: "Ừ, thời tiết đẹp.", en: "Yes, the weather is nice." },
+      { cell_id: "cb450557-8f51-405a-bdd5-76e3f81b3e7e", speaker: "A", pa: "ਅੱਜ ਬਾਹਰ ਚੱਲੀਏ?", romanization: "ajj bahar challiye?", vi: "Hôm nay ra ngoài nhé?", en: "Shall we go outside today?" },
+      { cell_id: "cc3981c4-d4ff-4799-ab3d-2089bd568ced", speaker: "B", pa: "ਹਾਂ, ਮੌਸਮ ਚੰਗਾ ਹੈ।", romanization: "haan, mausam changa hai.", vi: "Ừ, thời tiết đẹp.", en: "Yes, the weather is nice." },
     ],
     exercises: [
       { type: "fill_blank", prompt: "ਕੱਲ੍ਹ ___ ਪਿਆ ਸੀ। (rain)", answer: "ਮੀਂਹ" },
@@ -372,14 +374,14 @@ export const lessons: PunjabiLesson[] = [
     script_awareness_vi: "Tất cả ví dụ dùng Gurmukhi; Shahmukhi không được dạy như hệ chữ thứ hai ở đây.",
     script_awareness_en: "All examples use Gurmukhi; Shahmukhi is awareness only, not taught as a second script here.",
     vocabulary: [
-      { word: "ਕੱਲ੍ਹ", romanization: "kallh", vi: "hôm qua/ngày mai", en: "yesterday/tomorrow", pos: "time word" },
-      { word: "ਬਾਜ਼ਾਰ", romanization: "bazar", vi: "chợ", en: "market", pos: "noun" },
-      { word: "ਪੀਣਾ", romanization: "pina", vi: "uống", en: "to drink", pos: "verb" },
-      { word: "ਦੇਖਣਾ", romanization: "dekhna", vi: "xem", en: "to watch/see", pos: "verb" },
+      { cell_id: "f276047a-dc77-4116-8f9e-5007a91546de", word: "ਕੱਲ੍ਹ", romanization: "kallh", vi: "hôm qua/ngày mai", en: "yesterday/tomorrow", pos: "time word" },
+      { cell_id: "bb3bcbd2-cee5-4265-bd8e-6b16def48ba2", word: "ਬਾਜ਼ਾਰ", romanization: "bazar", vi: "chợ", en: "market", pos: "noun" },
+      { cell_id: "189be9d1-7bf4-4930-931f-c8977bf67c1f", word: "ਪੀਣਾ", romanization: "pina", vi: "uống", en: "to drink", pos: "verb" },
+      { cell_id: "7665f1b7-f29b-4a2c-b4f9-c9adb4120be2", word: "ਦੇਖਣਾ", romanization: "dekhna", vi: "xem", en: "to watch/see", pos: "verb" },
     ],
     dialogue: [
-      { speaker: "A", pa: "ਤੁਸੀਂ ਕੱਲ੍ਹ ਕੀ ਕੀਤਾ?", romanization: "tusi kallh ki kita?", vi: "Hôm qua bạn đã làm gì?", en: "What did you do yesterday?" },
-      { speaker: "B", pa: "ਮੈਂ ਬਾਜ਼ਾਰ ਗਿਆ ਸੀ।", romanization: "main bazar gia si.", vi: "Tôi đã đi chợ.", en: "I went to the market." },
+      { cell_id: "8db1155f-4fd6-4806-940c-e7453d2328eb", speaker: "A", pa: "ਤੁਸੀਂ ਕੱਲ੍ਹ ਕੀ ਕੀਤਾ?", romanization: "tusi kallh ki kita?", vi: "Hôm qua bạn đã làm gì?", en: "What did you do yesterday?" },
+      { cell_id: "cac7d137-e633-4e15-844b-ea6c4f93fed6", speaker: "B", pa: "ਮੈਂ ਬਾਜ਼ਾਰ ਗਿਆ ਸੀ।", romanization: "main bazar gia si.", vi: "Tôi đã đi chợ.", en: "I went to the market." },
     ],
     exercises: [
       { type: "choice", prompt: "Female speaker: I went.", answer: "ਮੈਂ ਗਈ ਸੀ।", options: ["ਮੈਂ ਗਿਆ ਸੀ।", "ਮੈਂ ਗਈ ਸੀ।"] },
@@ -433,14 +435,14 @@ export const lessons: PunjabiLesson[] = [
     script_awareness_vi: "Gurmukhi là hệ chữ luyện tập; Shahmukhi chỉ được nhắc để người học không bất ngờ khi gặp tên này.",
     script_awareness_en: "Gurmukhi is the practice script; Shahmukhi is mentioned only so learners recognize the name.",
     vocabulary: [
-      { word: "ਫ਼ੋਨ ਕਰਨਾ", romanization: "phone karna", vi: "gọi điện", en: "to call", pos: "verb phrase" },
-      { word: "ਪੜ੍ਹਨਾ", romanization: "parhna", vi: "học/đọc", en: "to study/read", pos: "verb" },
-      { word: "ਜਲਦੀ", romanization: "jaldi", vi: "sớm/nhanh", en: "soon/quickly", pos: "adverb" },
-      { word: "ਜ਼ਰੂਰ", romanization: "zarur", vi: "chắc chắn", en: "certainly", pos: "adverb" },
+      { cell_id: "f2f60fc1-52a3-46d0-90c3-c645c9dd56a2", word: "ਫ਼ੋਨ ਕਰਨਾ", romanization: "phone karna", vi: "gọi điện", en: "to call", pos: "verb phrase" },
+      { cell_id: "67ff0b4a-6cc6-4176-b9d4-737dea11ff7e", word: "ਪੜ੍ਹਨਾ", romanization: "parhna", vi: "học/đọc", en: "to study/read", pos: "verb" },
+      { cell_id: "1d19cc0c-e3bc-4545-856d-d420542e5857", word: "ਜਲਦੀ", romanization: "jaldi", vi: "sớm/nhanh", en: "soon/quickly", pos: "adverb" },
+      { cell_id: "45f9b615-fee8-4110-8f8a-53347fa13eb0", word: "ਜ਼ਰੂਰ", romanization: "zarur", vi: "chắc chắn", en: "certainly", pos: "adverb" },
     ],
     dialogue: [
-      { speaker: "A", pa: "ਕੀ ਤੁਸੀਂ ਕੱਲ੍ਹ ਆਓਗੇ?", romanization: "ki tusi kallh aaoge?", vi: "Ngày mai bạn sẽ đến chứ?", en: "Will you come tomorrow?" },
-      { speaker: "B", pa: "ਹਾਂ, ਮੈਂ ਜ਼ਰੂਰ ਆਵਾਂਗਾ।", romanization: "haan, main zarur aavanga.", vi: "Vâng, tôi chắc chắn sẽ đến.", en: "Yes, I will certainly come." },
+      { cell_id: "fa2446b6-db57-4e23-a672-615dd7359252", speaker: "A", pa: "ਕੀ ਤੁਸੀਂ ਕੱਲ੍ਹ ਆਓਗੇ?", romanization: "ki tusi kallh aaoge?", vi: "Ngày mai bạn sẽ đến chứ?", en: "Will you come tomorrow?" },
+      { cell_id: "30586a2c-7d25-4b61-9c71-fe3a012c3b9a", speaker: "B", pa: "ਹਾਂ, ਮੈਂ ਜ਼ਰੂਰ ਆਵਾਂਗਾ।", romanization: "haan, main zarur aavanga.", vi: "Vâng, tôi chắc chắn sẽ đến.", en: "Yes, I will certainly come." },
     ],
     exercises: [
       { type: "fill_blank", prompt: "ਮੈਂ ਕੱਲ੍ਹ ਫ਼ੋਨ ___।", answer: "ਕਰਾਂਗਾ" },
@@ -494,14 +496,14 @@ export const lessons: PunjabiLesson[] = [
     script_awareness_vi: "Bài học vẫn lấy Gurmukhi làm chữ chính; Shahmukhi chỉ là nhận biết văn hóa chữ viết.",
     script_awareness_en: "The lesson remains Gurmukhi-first; Shahmukhi is only writing-system awareness.",
     vocabulary: [
-      { word: "ਕਿਰਪਾ ਕਰਕੇ", romanization: "kirpa karke", vi: "làm ơn", en: "please", pos: "phrase" },
-      { word: "ਹੌਲੀ", romanization: "hauli", vi: "chậm/nhẹ", en: "slowly/softly", pos: "adverb" },
-      { word: "ਮਦਦ", romanization: "madad", vi: "sự giúp đỡ", en: "help", pos: "noun" },
-      { word: "ਚਾਹੀਦਾ", romanization: "chahida", vi: "cần", en: "needed", pos: "modal adjective" },
+      { cell_id: "45c8c7ad-48d4-46c9-921f-c469878db194", word: "ਕਿਰਪਾ ਕਰਕੇ", romanization: "kirpa karke", vi: "làm ơn", en: "please", pos: "phrase" },
+      { cell_id: "a89b75ff-edb2-41e1-bbe8-26df5059d484", word: "ਹੌਲੀ", romanization: "hauli", vi: "chậm/nhẹ", en: "slowly/softly", pos: "adverb" },
+      { cell_id: "82979af8-f7aa-4b3c-a94f-3bc27d8310e6", word: "ਮਦਦ", romanization: "madad", vi: "sự giúp đỡ", en: "help", pos: "noun" },
+      { cell_id: "e801cc33-4624-4a07-9bd7-d3ce117133f7", word: "ਚਾਹੀਦਾ", romanization: "chahida", vi: "cần", en: "needed", pos: "modal adjective" },
     ],
     dialogue: [
-      { speaker: "A", pa: "ਕਿਰਪਾ ਕਰਕੇ ਇਹ ਲਿਖੋ।", romanization: "kirpa karke ih likho.", vi: "Làm ơn viết cái này.", en: "Please write this." },
-      { speaker: "B", pa: "ਜੀ, ਮੈਂ ਲਿਖਦਾ ਹਾਂ।", romanization: "ji, main likhda haan.", vi: "Vâng, tôi viết đây.", en: "Yes, I will write it." },
+      { cell_id: "93cb2c36-16c4-46e4-b308-7ae6068775e0", speaker: "A", pa: "ਕਿਰਪਾ ਕਰਕੇ ਇਹ ਲਿਖੋ।", romanization: "kirpa karke ih likho.", vi: "Làm ơn viết cái này.", en: "Please write this." },
+      { cell_id: "6b691527-b39f-4221-82b8-bbafcb356a0c", speaker: "B", pa: "ਜੀ, ਮੈਂ ਲਿਖਦਾ ਹਾਂ।", romanization: "ji, main likhda haan.", vi: "Vâng, tôi viết đây.", en: "Yes, I will write it." },
     ],
     exercises: [
       { type: "rewrite", prompt: "Make polite: ਹੌਲੀ ਬੋਲ.", answer: "ਕਿਰਪਾ ਕਰਕੇ ਹੌਲੀ ਬੋਲੋ।" },
@@ -555,14 +557,14 @@ export const lessons: PunjabiLesson[] = [
     script_awareness_vi: "Gurmukhi là chữ học chính; Shahmukhi chỉ được nhắc như một hệ chữ Punjabi khác.",
     script_awareness_en: "Gurmukhi is the main learning script; Shahmukhi is only noted as another Punjabi script.",
     vocabulary: [
-      { word: "ਪਸੰਦ", romanization: "pasand", vi: "thích", en: "liked/preference", pos: "noun/adjective" },
-      { word: "ਜਾਂ", romanization: "jaan", vi: "hoặc", en: "or", pos: "conjunction" },
-      { word: "ਮਸਾਲੇਦਾਰ", romanization: "masaledar", vi: "cay/nhiều gia vị", en: "spicy", pos: "adjective" },
-      { word: "ਜ਼ਿਆਦਾ", romanization: "zyada", vi: "hơn/nhiều", en: "more", pos: "adverb" },
+      { cell_id: "672bc4dc-1214-4300-b0b7-f2834ffafad8", word: "ਪਸੰਦ", romanization: "pasand", vi: "thích", en: "liked/preference", pos: "noun/adjective" },
+      { cell_id: "42b8dbd1-d223-4003-8b23-468f028173b3", word: "ਜਾਂ", romanization: "jaan", vi: "hoặc", en: "or", pos: "conjunction" },
+      { cell_id: "61e2cf09-888e-4cd3-a4f7-3f2b0edfbe89", word: "ਮਸਾਲੇਦਾਰ", romanization: "masaledar", vi: "cay/nhiều gia vị", en: "spicy", pos: "adjective" },
+      { cell_id: "ae2961ca-80e3-4ff7-b7ff-3ed0ac66bee1", word: "ਜ਼ਿਆਦਾ", romanization: "zyada", vi: "hơn/nhiều", en: "more", pos: "adverb" },
     ],
     dialogue: [
-      { speaker: "A", pa: "ਤੁਹਾਨੂੰ ਕੀ ਪਸੰਦ ਹੈ?", romanization: "tuhanu ki pasand hai?", vi: "Bạn thích gì?", en: "What do you like?" },
-      { speaker: "B", pa: "ਮੈਨੂੰ ਚਾਹ ਅਤੇ ਸੰਗੀਤ ਪਸੰਦ ਹੈ।", romanization: "mainu chah ate sangeet pasand hai.", vi: "Tôi thích trà và âm nhạc.", en: "I like tea and music." },
+      { cell_id: "09bdde18-ae50-412c-9e7a-70e7359e47c5", speaker: "A", pa: "ਤੁਹਾਨੂੰ ਕੀ ਪਸੰਦ ਹੈ?", romanization: "tuhanu ki pasand hai?", vi: "Bạn thích gì?", en: "What do you like?" },
+      { cell_id: "c13b41ed-eea5-4d1f-a342-e70c370c82fe", speaker: "B", pa: "ਮੈਨੂੰ ਚਾਹ ਅਤੇ ਸੰਗੀਤ ਪਸੰਦ ਹੈ।", romanization: "mainu chah ate sangeet pasand hai.", vi: "Tôi thích trà và âm nhạc.", en: "I like tea and music." },
     ],
     exercises: [
       { type: "translate", prompt_vi: "Tôi thích cà phê.", prompt_en: "I like coffee.", answer: "ਮੈਨੂੰ ਕਾਫ਼ੀ ਪਸੰਦ ਹੈ।" },
@@ -616,14 +618,14 @@ export const lessons: PunjabiLesson[] = [
     script_awareness_vi: "Gurmukhi là chữ cần đọc trong tình huống này; Shahmukhi chỉ là nhận biết.",
     script_awareness_en: "Gurmukhi is the script to read in this lesson; Shahmukhi is awareness only.",
     vocabulary: [
-      { word: "ਸਿਰ", romanization: "sir", vi: "đầu", en: "head", pos: "noun" },
-      { word: "ਦਰਦ", romanization: "dard", vi: "đau", en: "pain", pos: "noun" },
-      { word: "ਡਾਕਟਰ", romanization: "doctor", vi: "bác sĩ", en: "doctor", pos: "noun" },
-      { word: "ਦਵਾਈ", romanization: "davai", vi: "thuốc", en: "medicine", pos: "noun" },
+      { cell_id: "8db523fb-c12c-4a73-9dc9-45bb8743ec44", word: "ਸਿਰ", romanization: "sir", vi: "đầu", en: "head", pos: "noun" },
+      { cell_id: "752eb2fd-42d0-49fe-bbff-e7028db870e4", word: "ਦਰਦ", romanization: "dard", vi: "đau", en: "pain", pos: "noun" },
+      { cell_id: "89c4e439-cabf-4323-b389-68adecbba375", word: "ਡਾਕਟਰ", romanization: "doctor", vi: "bác sĩ", en: "doctor", pos: "noun" },
+      { cell_id: "6ff8d05d-b5aa-4cfd-a5d2-79f858982177", word: "ਦਵਾਈ", romanization: "davai", vi: "thuốc", en: "medicine", pos: "noun" },
     ],
     dialogue: [
-      { speaker: "A", pa: "ਤੁਹਾਨੂੰ ਕੀ ਸਮੱਸਿਆ ਹੈ?", romanization: "tuhanu ki samassia hai?", vi: "Bạn có vấn đề gì?", en: "What problem do you have?" },
-      { speaker: "B", pa: "ਮੇਰੇ ਸਿਰ ਵਿੱਚ ਦਰਦ ਹੈ।", romanization: "mere sir vich dard hai.", vi: "Tôi bị đau đầu.", en: "I have a headache." },
+      { cell_id: "f5ed19e4-dd80-45c6-86f0-84c0c1ec4009", speaker: "A", pa: "ਤੁਹਾਨੂੰ ਕੀ ਸਮੱਸਿਆ ਹੈ?", romanization: "tuhanu ki samassia hai?", vi: "Bạn có vấn đề gì?", en: "What problem do you have?" },
+      { cell_id: "4defb3e5-a463-4bd2-83a2-4a7d843e250b", speaker: "B", pa: "ਮੇਰੇ ਸਿਰ ਵਿੱਚ ਦਰਦ ਹੈ।", romanization: "mere sir vich dard hai.", vi: "Tôi bị đau đầu.", en: "I have a headache." },
     ],
     exercises: [
       { type: "fill_blank", prompt: "ਮੇਰੇ ਪੇਟ ਵਿੱਚ ___ ਹੈ। (pain)", answer: "ਦਰਦ" },
@@ -677,14 +679,14 @@ export const lessons: PunjabiLesson[] = [
     script_awareness_vi: "Các biểu mẫu trong bài dùng Gurmukhi; Shahmukhi chỉ được nhắc ở mức nhận biết.",
     script_awareness_en: "The forms in this lesson use Gurmukhi; Shahmukhi is only noted for awareness.",
     vocabulary: [
-      { word: "ਦਫ਼ਤਰ", romanization: "daftar", vi: "văn phòng", en: "office", pos: "noun" },
-      { word: "ਕਲਾਸ", romanization: "class", vi: "lớp học", en: "class", pos: "noun" },
-      { word: "ਈਮੇਲ", romanization: "email", vi: "email", en: "email", pos: "noun" },
-      { word: "ਭੇਜਣਾ", romanization: "bhejna", vi: "gửi", en: "to send", pos: "verb" },
+      { cell_id: "dad57a21-a0e7-4392-b9c5-2fe16bb2bbe5", word: "ਦਫ਼ਤਰ", romanization: "daftar", vi: "văn phòng", en: "office", pos: "noun" },
+      { cell_id: "2bfcfa7e-f062-46c5-b91e-17462223cdfd", word: "ਕਲਾਸ", romanization: "class", vi: "lớp học", en: "class", pos: "noun" },
+      { cell_id: "b3e1c578-a317-4375-99a3-e21d089b37be", word: "ਈਮੇਲ", romanization: "email", vi: "email", en: "email", pos: "noun" },
+      { cell_id: "73a940b5-68e4-46ef-8e3e-31b756b118e8", word: "ਭੇਜਣਾ", romanization: "bhejna", vi: "gửi", en: "to send", pos: "verb" },
     ],
     dialogue: [
-      { speaker: "A", pa: "ਤੁਹਾਡੀ ਕਲਾਸ ਕਦੋਂ ਹੈ?", romanization: "tuhadi class kadon hai?", vi: "Lớp của bạn khi nào?", en: "When is your class?" },
-      { speaker: "B", pa: "ਮੇਰੀ ਕਲਾਸ ਨੌਂ ਵਜੇ ਹੈ।", romanization: "meri class naun vaje hai.", vi: "Lớp của tôi lúc chín giờ.", en: "My class is at nine." },
+      { cell_id: "0cac8766-7375-4b43-9796-511567961591", speaker: "A", pa: "ਤੁਹਾਡੀ ਕਲਾਸ ਕਦੋਂ ਹੈ?", romanization: "tuhadi class kadon hai?", vi: "Lớp của bạn khi nào?", en: "When is your class?" },
+      { cell_id: "0fa893a2-faca-4c33-b14e-0cae81ef8b31", speaker: "B", pa: "ਮੇਰੀ ਕਲਾਸ ਨੌਂ ਵਜੇ ਹੈ।", romanization: "meri class naun vaje hai.", vi: "Lớp của tôi lúc chín giờ.", en: "My class is at nine." },
     ],
     exercises: [
       { type: "translate", prompt_vi: "Bạn có thể gửi email này không?", prompt_en: "Can you send this email?", answer: "ਕੀ ਤੁਸੀਂ ਇਹ ਈਮੇਲ ਭੇਜ ਸਕਦੇ ਹੋ?" },
@@ -738,14 +740,14 @@ export const lessons: PunjabiLesson[] = [
     script_awareness_vi: "Ôn bằng Gurmukhi; Shahmukhi chỉ là nhận biết, không phải nội dung kiểm tra.",
     script_awareness_en: "Review in Gurmukhi; Shahmukhi is awareness only, not tested content.",
     vocabulary: [
-      { word: "ਦੁਪਹਿਰ", romanization: "dupehar", vi: "buổi trưa", en: "noon/afternoon", pos: "noun" },
-      { word: "ਰਾਤ", romanization: "raat", vi: "đêm/tối", en: "night", pos: "noun" },
-      { word: "ਦੋਸਤ", romanization: "dost", vi: "bạn bè", en: "friend", pos: "noun" },
-      { word: "ਸੌਣਾ", romanization: "sauna", vi: "ngủ", en: "to sleep", pos: "verb" },
+      { cell_id: "cd9f6119-a546-44bc-9c21-8ab545b790c8", word: "ਦੁਪਹਿਰ", romanization: "dupehar", vi: "buổi trưa", en: "noon/afternoon", pos: "noun" },
+      { cell_id: "3ebd552c-919b-4b91-9e0f-c01727f8aa74", word: "ਰਾਤ", romanization: "raat", vi: "đêm/tối", en: "night", pos: "noun" },
+      { cell_id: "218f7eaf-5b1b-41ee-880d-9ce541b85dde", word: "ਦੋਸਤ", romanization: "dost", vi: "bạn bè", en: "friend", pos: "noun" },
+      { cell_id: "c466ff09-ba64-4562-a622-f2b987348ed7", word: "ਸੌਣਾ", romanization: "sauna", vi: "ngủ", en: "to sleep", pos: "verb" },
     ],
     dialogue: [
-      { speaker: "A", pa: "ਅੱਜ ਤੁਸੀਂ ਕੀ ਕਰੋਗੇ?", romanization: "ajj tusi ki karoge?", vi: "Hôm nay bạn sẽ làm gì?", en: "What will you do today?" },
-      { speaker: "B", pa: "ਮੈਂ ਪੜ੍ਹਾਂਗਾ ਅਤੇ ਕੰਮ ਤੇ ਜਾਵਾਂਗਾ।", romanization: "main parhanga ate kamm te javanga.", vi: "Tôi sẽ học và đi làm.", en: "I will study and go to work." },
+      { cell_id: "8e37c634-2c83-46a7-8cef-f05110e946cd", speaker: "A", pa: "ਅੱਜ ਤੁਸੀਂ ਕੀ ਕਰੋਗੇ?", romanization: "ajj tusi ki karoge?", vi: "Hôm nay bạn sẽ làm gì?", en: "What will you do today?" },
+      { cell_id: "4c670a52-ccf0-4dee-9cd4-029d173e9b5d", speaker: "B", pa: "ਮੈਂ ਪੜ੍ਹਾਂਗਾ ਅਤੇ ਕੰਮ ਤੇ ਜਾਵਾਂਗਾ।", romanization: "main parhanga ate kamm te javanga.", vi: "Tôi sẽ học và đi làm.", en: "I will study and go to work." },
     ],
     exercises: [
       { type: "sequence", prompt: "Order a day: ਸਵੇਰੇ / ਦੁਪਹਿਰ ਨੂੰ / ਰਾਤ ਨੂੰ", answer: ["ਸਵੇਰੇ", "ਦੁਪਹਿਰ ਨੂੰ", "ਰਾਤ ਨੂੰ"] },

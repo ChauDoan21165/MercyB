@@ -16,6 +16,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   /** Indonesian word/phrase. */
   word: string;
   /** English meaning. */
@@ -31,6 +32,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   /** Indonesian line. */
   text: string;
@@ -193,6 +195,7 @@ export const lessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: learn airport chunks in groups: `bagasi hilang`, `koper`, `klaim bagasi`, `nomor penerbangan`, `label bagasi`, `petugas bandara`, `laporan kehilangan`. Under stress, use short clear sentences: `Bagasi saya belum keluar`, `Ini label bagasi saya`, `Kapan bisa dikirim ke hotel?`.",
     vocabulary: [
       {
+        cell_id: "8c1e1e61-55f3-4440-9187-98f43ca6c7c1",
         word: "bagasi hilang",
         en: "lost baggage",
         vi: "hành lý thất lạc",
@@ -201,6 +204,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "ba-GA-si HEE-lang",
       },
       {
+        cell_id: "dd7be34f-f4d4-4376-983e-7676f669760a",
         word: "koper",
         en: "suitcase",
         vi: "va-li",
@@ -209,6 +213,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "KO-per",
       },
       {
+        cell_id: "3081bc09-4c3d-4aa1-acd7-5f130e943219",
         word: "klaim bagasi",
         en: "baggage claim/report",
         vi: "yêu cầu xử lý hành lý",
@@ -217,6 +222,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "claim ba-GA-si",
       },
       {
+        cell_id: "cc3865ce-27b2-4304-903d-380d31cf96a8",
         word: "nomor penerbangan",
         en: "flight number",
         vi: "số chuyến bay",
@@ -225,6 +231,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "NO-mor pe-ner-BA-ngan",
       },
       {
+        cell_id: "01d10ea7-d19e-4555-80a2-a2c94208332f",
         word: "label bagasi",
         en: "baggage tag",
         vi: "nhãn hành lý",
@@ -233,6 +240,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "LA-bel ba-GA-si",
       },
       {
+        cell_id: "a4209612-8813-4645-a5b7-83f7dc34a3e0",
         word: "petugas bandara",
         en: "airport staff",
         vi: "nhân viên sân bay",
@@ -241,6 +249,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "pe-TOO-gas ban-DA-ra",
       },
       {
+        cell_id: "1e0d0d08-70e7-43ce-ab15-caa6c5157278",
         word: "laporan kehilangan",
         en: "loss report",
         vi: "báo cáo thất lạc/mất đồ",
@@ -249,6 +258,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "la-PO-ran ke-hi-LANG-an",
       },
       {
+        cell_id: "891352c0-bdc7-4274-9a35-4e5918cfb023",
         word: "ciri khusus",
         en: "special identifying mark",
         vi: "đặc điểm nhận dạng riêng",
@@ -259,30 +269,35 @@ export const lessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "d58f132e-5e11-4417-8189-a186ee3607c5",
         speaker: "Penumpang",
         text: "Permisi, bagasi saya belum keluar di ban berjalan.",
         vi: "Xin phép, hành lý của tôi chưa ra ở băng chuyền.",
         en: "Excuse me, my baggage has not come out on the conveyor belt.",
       },
       {
+        cell_id: "f0830fbf-0d56-4247-9a89-196ca4996c4c",
         speaker: "Petugas bandara",
         text: "Boleh lihat boarding pass dan label bagasinya?",
         vi: "Tôi xem thẻ lên máy bay và nhãn hành lý được không?",
         en: "May I see your boarding pass and baggage tag?",
       },
       {
+        cell_id: "7e040e6b-db3e-4f49-9342-46af54ae2f0b",
         speaker: "Penumpang",
         text: "Ini nomor penerbangan dan label bagasi saya.",
         vi: "Đây là số chuyến bay và nhãn hành lý của tôi.",
         en: "Here are my flight number and baggage tag.",
       },
       {
+        cell_id: "af755916-5e49-4286-9dd4-756a48eab431",
         speaker: "Petugas bandara",
         text: "Tolong jelaskan warna, ukuran, dan ciri khusus koper Anda.",
         vi: "Xin hãy mô tả màu, kích cỡ, và đặc điểm riêng của va-li anh/chị.",
         en: "Please describe the color, size, and special marks of your suitcase.",
       },
       {
+        cell_id: "b68d8546-19c6-46fe-a40d-6307001b0713",
         speaker: "Penumpang",
         text: "Kopernya hitam besar, ada pita merah, dan alamat hotel saya ada di formulir.",
         vi: "Va-li màu đen lớn, có ruy-băng đỏ, và địa chỉ khách sạn của tôi có trong mẫu đơn.",

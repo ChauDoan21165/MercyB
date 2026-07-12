@@ -37,10 +37,10 @@ export const lessons: UrduLesson[] = [
       },
     ],
     vocabulary: [
-      { ur: "ایجنڈا", romanization: "agenda", vi: "chương trình họp", en: "agenda", pos: "noun" },
-      { ur: "نکتہ", romanization: "nukta", vi: "điểm / ý", en: "point", pos: "noun" },
-      { ur: "فیصلہ", romanization: "faisla", vi: "quyết định", en: "decision", pos: "noun" },
-      { ur: "واضح کرنا", romanization: "wazeh karna", vi: "làm rõ", en: "to clarify", pos: "verb" },
+      { cell_id: "1d2418fb-19c2-44f4-90d8-9ab7bdd2fcec", ur: "ایجنڈا", romanization: "agenda", vi: "chương trình họp", en: "agenda", pos: "noun" },
+      { cell_id: "9692f9a7-7693-41e0-80be-839c66a0a564", ur: "نکتہ", romanization: "nukta", vi: "điểm / ý", en: "point", pos: "noun" },
+      { cell_id: "ce6cd851-bfa9-4f12-b144-97bf1bb1b185", ur: "فیصلہ", romanization: "faisla", vi: "quyết định", en: "decision", pos: "noun" },
+      { cell_id: "60c195ec-3ebc-46ec-a664-9f8b98701d54", ur: "واضح کرنا", romanization: "wazeh karna", vi: "làm rõ", en: "to clarify", pos: "verb" },
     ],
     exercises: [
       {
@@ -95,10 +95,10 @@ export const lessons: UrduLesson[] = [
       },
     ],
     vocabulary: [
-      { ur: "درخواست", romanization: "darkhwast", vi: "yêu cầu/đơn đề nghị", en: "request", pos: "noun" },
-      { ur: "شکایت درج کرانا", romanization: "shikayat darj karana", vi: "đăng ký khiếu nại", en: "to file a complaint", pos: "verb phrase" },
-      { ur: "غور کرنا", romanization: "ghaur karna", vi: "xem xét", en: "to consider", pos: "verb" },
-      { ur: "فراہم فرمائیں", romanization: "faraham farmaen", vi: "xin cung cấp", en: "please provide", pos: "formal verb phrase" },
+      { cell_id: "0d595845-61d3-4f48-af0b-c1da2bd82f8e", ur: "درخواست", romanization: "darkhwast", vi: "yêu cầu/đơn đề nghị", en: "request", pos: "noun" },
+      { cell_id: "6a2945cf-77bb-4203-8094-3237c69e1b9a", ur: "شکایت درج کرانا", romanization: "shikayat darj karana", vi: "đăng ký khiếu nại", en: "to file a complaint", pos: "verb phrase" },
+      { cell_id: "cd837f7f-57be-4393-89a1-6a5cd514a793", ur: "غور کرنا", romanization: "ghaur karna", vi: "xem xét", en: "to consider", pos: "verb" },
+      { cell_id: "e912ed45-067b-469f-975c-b3d4ac6b72dc", ur: "فراہم فرمائیں", romanization: "faraham farmaen", vi: "xin cung cấp", en: "please provide", pos: "formal verb phrase" },
     ],
     exercises: [
       {
@@ -153,10 +153,10 @@ export const lessons: UrduLesson[] = [
       },
     ],
     vocabulary: [
-      { ur: "رپورٹ کے مطابق", romanization: "report ke mutabiq", vi: "theo báo cáo", en: "according to the report", pos: "frame" },
-      { ur: "بیان", romanization: "bayan", vi: "thông cáo / tuyên bố", en: "statement", pos: "noun" },
-      { ur: "تاہم", romanization: "taham", vi: "tuy nhiên", en: "however", pos: "connector" },
-      { ur: "اعداد و شمار", romanization: "a'dad-o-shumar", vi: "số liệu", en: "figures/data", pos: "noun phrase" },
+      { cell_id: "2318d902-a2b5-485e-aadf-c97be71183db", ur: "رپورٹ کے مطابق", romanization: "report ke mutabiq", vi: "theo báo cáo", en: "according to the report", pos: "frame" },
+      { cell_id: "a686e41a-cf85-497d-a3ca-346aaa58fe6b", ur: "بیان", romanization: "bayan", vi: "thông cáo / tuyên bố", en: "statement", pos: "noun" },
+      { cell_id: "87ba5a29-39dc-4176-a661-460da1e7a05d", ur: "تاہم", romanization: "taham", vi: "tuy nhiên", en: "however", pos: "connector" },
+      { cell_id: "3ba2f3f0-c4d9-470f-86ee-aec2499fd695", ur: "اعداد و شمار", romanization: "a'dad-o-shumar", vi: "số liệu", en: "figures/data", pos: "noun phrase" },
     ],
     exercises: [
       {
@@ -210,10 +210,10 @@ export const lessons: UrduLesson[] = [
       },
     ],
     vocabulary: [
-      { ur: "کسی حد تک", romanization: "kisi hadd tak", vi: "ở một mức nào đó", en: "to some extent", pos: "phrase" },
-      { ur: "پہلو", romanization: "pehlu", vi: "khía cạnh", en: "aspect", pos: "noun" },
-      { ur: "مختلف", romanization: "mukhtalif", vi: "khác", en: "different", pos: "adjective" },
-      { ur: "غور ہونا چاہیے", romanization: "ghaur hona chahiye", vi: "nên được xem xét", en: "should be considered", pos: "phrase" },
+      { cell_id: "58bab275-71bc-4e67-92f1-e6b50000b591", ur: "کسی حد تک", romanization: "kisi hadd tak", vi: "ở một mức nào đó", en: "to some extent", pos: "phrase" },
+      { cell_id: "2f897255-2655-4295-9181-8a2f2e6facb2", ur: "پہلو", romanization: "pehlu", vi: "khía cạnh", en: "aspect", pos: "noun" },
+      { cell_id: "1343a8fb-9016-439a-82f7-086be0157ac5", ur: "مختلف", romanization: "mukhtalif", vi: "khác", en: "different", pos: "adjective" },
+      { cell_id: "f4006f1e-a75a-4274-965c-274f38d13522", ur: "غور ہونا چاہیے", romanization: "ghaur hona chahiye", vi: "nên được xem xét", en: "should be considered", pos: "phrase" },
     ],
     exercises: [
       {
@@ -268,10 +268,10 @@ export const lessons: UrduLesson[] = [
       },
     ],
     vocabulary: [
-      { ur: "محترم", romanization: "muhtaram", vi: "kính thưa / đáng kính", en: "respected/dear", pos: "adjective" },
-      { ur: "توجہ", romanization: "tawajjuh", vi: "sự chú ý", en: "attention", pos: "noun" },
-      { ur: "ارسال فرمائیں", romanization: "irsal farmaen", vi: "xin gửi", en: "please send", pos: "formal verb phrase" },
-      { ur: "خیر اندیش", romanization: "khair andesh", vi: "trân trọng", en: "best regards", pos: "closing" },
+      { cell_id: "3e0e643a-9d7b-468e-aa02-1835d2a8d188", ur: "محترم", romanization: "muhtaram", vi: "kính thưa / đáng kính", en: "respected/dear", pos: "adjective" },
+      { cell_id: "de63da82-6998-4c56-8203-66bed2d3693c", ur: "توجہ", romanization: "tawajjuh", vi: "sự chú ý", en: "attention", pos: "noun" },
+      { cell_id: "1df87121-a44f-463e-a6df-b6e534a875c9", ur: "ارسال فرمائیں", romanization: "irsal farmaen", vi: "xin gửi", en: "please send", pos: "formal verb phrase" },
+      { cell_id: "0bcd9a3a-9bae-40cb-96f8-d1f0e0f737a2", ur: "خیر اندیش", romanization: "khair andesh", vi: "trân trọng", en: "best regards", pos: "closing" },
     ],
     exercises: [
       {

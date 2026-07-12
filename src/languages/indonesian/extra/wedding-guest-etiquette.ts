@@ -16,6 +16,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   /** Indonesian word/phrase. */
   word: string;
   /** English meaning. */
@@ -31,6 +32,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   /** Indonesian line. */
   text: string;
@@ -193,6 +195,7 @@ export const lessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: envelope gifts and greeting the couple feel similar to Vietnam, so the hard part is vocabulary: `resepsi`, `amplop`, `pengantin`, `pakaian sopan`, `foto bersama`, `prasmanan`, `adat keluarga`. Use `boleh... ?` for polite permission and `selamat...` for congratulations.",
     vocabulary: [
       {
+        cell_id: "48e3598d-d1d1-404c-b02f-fdfae20da23f",
         word: "resepsi",
         en: "reception",
         vi: "tiệc cưới / lễ tiếp khách",
@@ -201,6 +204,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "re-SEP-see",
       },
       {
+        cell_id: "583083f9-d3ac-4f54-bfa5-94b7d1d60fe9",
         word: "amplop",
         en: "envelope gift",
         vi: "phong bì tiền mừng",
@@ -209,6 +213,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "AM-plop",
       },
       {
+        cell_id: "3c7d9d5a-253e-4488-84fb-460ca6faa893",
         word: "pengantin",
         en: "bride and groom / newlyweds",
         vi: "cô dâu chú rể",
@@ -217,6 +222,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "pe-NGAN-tin",
       },
       {
+        cell_id: "0b7ab55b-09f4-4407-a7b2-8007cf06529c",
         word: "pakaian sopan",
         en: "modest/respectful clothing",
         vi: "trang phục lịch sự/kín đáo",
@@ -225,6 +231,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "pa-KAI-an SO-pan",
       },
       {
+        cell_id: "00164070-cabe-4d21-9d3e-d5a8c2f54dc8",
         word: "foto bersama",
         en: "photo together",
         vi: "chụp ảnh cùng nhau",
@@ -233,6 +240,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "FO-to ber-SA-ma",
       },
       {
+        cell_id: "cd9399d9-3679-48ef-8178-1a886d1609f9",
         word: "prasmanan",
         en: "buffet",
         vi: "tiệc tự chọn / buffet",
@@ -241,6 +249,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "pras-MA-nan",
       },
       {
+        cell_id: "1c997a98-56a7-496d-8e4e-ee858e856ded",
         word: "adat keluarga",
         en: "family custom",
         vi: "phong tục gia đình",
@@ -249,6 +258,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "A-dat ke-LOO-ar-ga",
       },
       {
+        cell_id: "97b791c1-f5aa-4835-aaf1-558f6054da82",
         word: "salam pengantin",
         en: "greet/congratulate the newlyweds",
         vi: "chào/chúc mừng cô dâu chú rể",
@@ -257,6 +267,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "SA-lam pe-NGAN-tin",
       },
       {
+        cell_id: "ea8e21a7-d1b8-4443-8dbb-1ae8f6d75244",
         word: "selamat menempuh hidup baru",
         en: "wedding congratulations",
         vi: "chúc mừng cuộc sống mới",
@@ -265,6 +276,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "se-LA-mat me-NEM-puh HI-dup BA-roo",
       },
       {
+        cell_id: "a860cb5d-9bb4-47cc-8383-0c50c01a76b6",
         word: "tamu undangan",
         en: "invited guest",
         vi: "khách được mời",
@@ -275,30 +287,35 @@ export const lessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "d6581cf7-2007-4c94-b5cf-de4500919eed",
         speaker: "Tamu",
         text: "Permisi, amplopnya ditaruh di mana?",
         vi: "Xin lỗi, phong bì đặt ở đâu ạ?",
         en: "Excuse me, where should the envelope be placed?",
       },
       {
+        cell_id: "74adcae7-8aa6-49b1-9a37-41855dc883ef",
         speaker: "Panitia",
         text: "Di kotak depan, lalu silakan salam pengantin.",
         vi: "Ở hộp phía trước, rồi mời chào cô dâu chú rể.",
         en: "In the box at the front, then please greet the newlyweds.",
       },
       {
+        cell_id: "b7fc779d-b0cf-4748-ba89-a6a801363477",
         speaker: "Tamu",
         text: "Boleh foto bersama setelah salam?",
         vi: "Sau khi chào có thể chụp ảnh cùng không?",
         en: "May we take a photo together after greeting them?",
       },
       {
+        cell_id: "65b0aaf2-886b-41f1-99fd-aa84c161e94f",
         speaker: "Panitia",
         text: "Boleh, tapi mohon antre sebentar.",
         vi: "Được, nhưng xin xếp hàng một chút.",
         en: "Yes, but please queue for a moment.",
       },
       {
+        cell_id: "73c9ad16-3679-436a-b466-3dcb3904d834",
         speaker: "Tamu",
         text: "Baik. Selamat menempuh hidup baru untuk pengantin.",
         vi: "Vâng. Chúc cô dâu chú rể bắt đầu cuộc sống mới hạnh phúc.",

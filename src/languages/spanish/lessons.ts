@@ -152,6 +152,7 @@ export type SpanishRegional = {
 };
 
 export type SpanishVocabEntry = {
+  cell_id?: string;
   word: string;
   english: string;
   pronunciation: string;
@@ -162,6 +163,7 @@ export type SpanishVocabEntry = {
 };
 
 export type SpanishDialogueLine = {
+  cell_id?: string;
   speaker: string;
   spanish: string;
   english: string;

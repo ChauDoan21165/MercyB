@@ -21,6 +21,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   /** Indonesian word/phrase. */
   word: string;
   /** English meaning. */
@@ -36,6 +37,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   /** Indonesian line. */
   text: string;
@@ -226,6 +228,7 @@ export const lessons: IndonesianLesson[] = [
       "Safe template: `Saya mau beli furnitur untuk kamar kos saya. Berapa ongkos kirim dan ongkos rakitnya? Kalau ada barang rusak, tolong foto dulu sebelum dibawa. Saya ingin jadwal teknisi untuk besok pagi.`",
     vocabulary: [
       {
+        cell_id: "83b370ae-7b63-4216-bd82-751143507995",
         word: "furnitur",
         en: "furniture",
         vi: "nội thất",
@@ -234,6 +237,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "foor-nee-TOOR",
       },
       {
+        cell_id: "3cc25531-edad-45e4-a9fa-15e791cfe16f",
         word: "pengiriman",
         en: "delivery/shipping",
         vi: "giao hàng/vận chuyển",
@@ -242,6 +246,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "peh-ngi-REE-man",
       },
       {
+        cell_id: "741ea7bf-b4c1-4282-8245-b4062f0130c1",
         word: "rakit lemari",
         en: "assemble a wardrobe/cabinet",
         vi: "lắp ráp tủ",
@@ -250,6 +255,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "RA-kit leh-MA-ree",
       },
       {
+        cell_id: "0847b71e-decd-4bfa-af74-d045ac104e11",
         word: "meja",
         en: "table",
         vi: "bàn",
@@ -258,6 +264,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "MEH-ja",
       },
       {
+        cell_id: "c02ea361-7c57-4635-be00-a6bb9a491221",
         word: "kursi",
         en: "chair",
         vi: "ghế",
@@ -266,6 +273,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "KOOR-see",
       },
       {
+        cell_id: "245e606c-98bb-4821-b327-08dcce731199",
         word: "ongkos kirim",
         en: "shipping fee",
         vi: "phí giao hàng",
@@ -274,6 +282,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "ONG-kos KEE-rim",
       },
       {
+        cell_id: "31bec6ad-8562-4b33-9777-b2369797e874",
         word: "barang rusak",
         en: "damaged item",
         vi: "món hàng bị hỏng",
@@ -282,6 +291,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "BA-rang ROO-sak",
       },
       {
+        cell_id: "6b0357cd-4e80-42b3-845b-3e991276edaa",
         word: "penyok",
         en: "dented; bent",
         vi: "bị móp",
@@ -290,6 +300,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "PEH-nyok",
       },
       {
+        cell_id: "c68f93b0-6488-4032-9d19-6c57906fc4b5",
         word: "jadwal teknisi",
         en: "technician schedule",
         vi: "lịch kỹ thuật viên",
@@ -298,6 +309,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "JAD-wal tek-NEE-see",
       },
       {
+        cell_id: "96edd72d-dfb2-47da-8e1a-7344bc10297e",
         word: "kurang pas",
         en: "not quite fitting",
         vi: "chưa khớp/chưa vừa",
@@ -308,36 +320,42 @@ export const lessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "27e5f5df-18b9-4622-ad71-533aab6f906e",
         speaker: "Pembeli",
         text: "Saya mau beli furnitur untuk kamar kos saya.",
         vi: "Tôi muốn mua nội thất cho phòng trọ của tôi.",
         en: "I want to buy furniture for my boarding room.",
       },
       {
+        cell_id: "483458dc-12e8-4205-9e7d-9cc1ac4b0de6",
         speaker: "Penjual",
         text: "Baik, kami bisa kirim besok sore.",
         vi: "Được, chúng tôi có thể giao vào chiều mai.",
         en: "Sure, we can deliver tomorrow afternoon.",
       },
       {
+        cell_id: "ad1b1f65-f1fc-477d-960c-c829c54711dc",
         speaker: "Pembeli",
         text: "Berapa ongkos kirim dan ongkos rakitnya?",
         vi: "Phí giao hàng và phí lắp ráp là bao nhiêu?",
         en: "How much are the shipping and assembly fees?",
       },
       {
+        cell_id: "944313bc-0e95-48eb-9592-5b4ed4585624",
         speaker: "Penjual",
         text: "Kalau ada barang rusak, tolong foto dulu sebelum dibawa.",
         vi: "Nếu có hàng bị hỏng, làm ơn chụp ảnh trước khi mang đi.",
         en: "If there is a damaged item, please take a photo first before it is taken away.",
       },
       {
+        cell_id: "da37673a-b07a-405e-854c-64325068a1cb",
         speaker: "Pembeli",
         text: "Saya ingin jadwal teknisi untuk besok pagi.",
         vi: "Tôi muốn lịch kỹ thuật viên vào sáng mai.",
         en: "I want a technician schedule for tomorrow morning.",
       },
       {
+        cell_id: "523f603c-0131-47e5-bfc4-28f6eea27f52",
         speaker: "Penjual",
         text: "Baik, kami catat nomor pesanan Anda.",
         vi: "Được, chúng tôi ghi lại số đơn hàng của bạn.",

@@ -13,6 +13,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -22,6 +23,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -221,49 +223,55 @@ export const lessons: IndonesianLesson[] = [
     tip_advice_en:
       "Tip for Vietnamese speakers: learn short phrases you can use immediately: `Saya mau tukar uang`, `Kurs hari ini berapa?`, `Biaya transfer berapa?`, `Apakah saya perlu menunjukkan paspor?`, `Mohon kirim ke rekening bank saya`, `Saya sudah menerima bukti transaksi`. For cash, say `ditukar lagi`; for transfers, use `transfer` and `bukti transaksi`.",
     vocabulary: [
-      { word: "tukar uang", en: "exchange money", vi: "đổi tiền", pos: "verb phrase", pronunciation_vi: "TU-kar U-ang", pronunciation_en: "TOO-kar OO-ang" },
-      { word: "kurs", en: "exchange rate", vi: "tỷ giá", pos: "noun", pronunciation_vi: "KURS", pronunciation_en: "KOORS" },
-      { word: "money changer", en: "money changer", vi: "quầy đổi tiền", pos: "noun phrase", pronunciation_vi: "MA-ni CHEN-ger", pronunciation_en: "MUH-nee CHAYN-jer" },
-      { word: "kirim uang", en: "send money", vi: "gửi tiền", pos: "verb phrase", pronunciation_vi: "KI-rim U-ang", pronunciation_en: "KEE-rim OO-ang" },
-      { word: "biaya transfer", en: "transfer fee", vi: "phí chuyển khoản", pos: "noun phrase", pronunciation_vi: "BI-a-ya trans-FER", pronunciation_en: "BEE-a-ya trans-FER" },
-      { word: "bukti transaksi", en: "transaction proof", vi: "chứng từ giao dịch", pos: "noun phrase", pronunciation_vi: "BUK-ti trans-AK-si", pronunciation_en: "BOOK-ti tran-SAK-see" },
-      { word: "paspor", en: "passport", vi: "hộ chiếu", pos: "noun", pronunciation_vi: "PAS-por", pronunciation_en: "PAS-por" },
-      { word: "rupiah", en: "rupiah", vi: "đồng rupiah", pos: "noun", pronunciation_vi: "ru-pi-AH", pronunciation_en: "roo-pee-AH" },
-      { word: "rekening bank", en: "bank account", vi: "tài khoản ngân hàng", pos: "noun phrase", pronunciation_vi: "re-KE-ning BANK", pronunciation_en: "reh-KEH-ning BANK" },
-      { word: "selisih kurs", en: "exchange-rate difference", vi: "chênh lệch tỷ giá", pos: "noun phrase", pronunciation_vi: "se-LI-sih KURS", pronunciation_en: "seh-LEE-seeh KOORS" },
+      { cell_id: "17e399f7-bccf-4ee0-99ec-a85d9e820bff", word: "tukar uang", en: "exchange money", vi: "đổi tiền", pos: "verb phrase", pronunciation_vi: "TU-kar U-ang", pronunciation_en: "TOO-kar OO-ang" },
+      { cell_id: "be652909-6cc3-4a8d-b43b-cbf4b3e01e0a", word: "kurs", en: "exchange rate", vi: "tỷ giá", pos: "noun", pronunciation_vi: "KURS", pronunciation_en: "KOORS" },
+      { cell_id: "d80a5c72-3b6f-459c-987c-f05727cc65ef", word: "money changer", en: "money changer", vi: "quầy đổi tiền", pos: "noun phrase", pronunciation_vi: "MA-ni CHEN-ger", pronunciation_en: "MUH-nee CHAYN-jer" },
+      { cell_id: "3b305e5a-766c-4efc-9bf7-e39bcb4df7ee", word: "kirim uang", en: "send money", vi: "gửi tiền", pos: "verb phrase", pronunciation_vi: "KI-rim U-ang", pronunciation_en: "KEE-rim OO-ang" },
+      { cell_id: "052d414e-f674-4fef-b316-8a2002e20c3b", word: "biaya transfer", en: "transfer fee", vi: "phí chuyển khoản", pos: "noun phrase", pronunciation_vi: "BI-a-ya trans-FER", pronunciation_en: "BEE-a-ya trans-FER" },
+      { cell_id: "83d43a73-4dec-4a5a-bf5e-a45edfd65d2b", word: "bukti transaksi", en: "transaction proof", vi: "chứng từ giao dịch", pos: "noun phrase", pronunciation_vi: "BUK-ti trans-AK-si", pronunciation_en: "BOOK-ti tran-SAK-see" },
+      { cell_id: "aaee19d2-ac7a-48b0-afe5-d601c24457e7", word: "paspor", en: "passport", vi: "hộ chiếu", pos: "noun", pronunciation_vi: "PAS-por", pronunciation_en: "PAS-por" },
+      { cell_id: "613257bc-c1ee-46ba-b364-4131c342263e", word: "rupiah", en: "rupiah", vi: "đồng rupiah", pos: "noun", pronunciation_vi: "ru-pi-AH", pronunciation_en: "roo-pee-AH" },
+      { cell_id: "457f8e18-acd0-4708-932d-e3879be474aa", word: "rekening bank", en: "bank account", vi: "tài khoản ngân hàng", pos: "noun phrase", pronunciation_vi: "re-KE-ning BANK", pronunciation_en: "reh-KEH-ning BANK" },
+      { cell_id: "331ff1d2-3663-4679-82ee-fe5b348d8df1", word: "selisih kurs", en: "exchange-rate difference", vi: "chênh lệch tỷ giá", pos: "noun phrase", pronunciation_vi: "se-LI-sih KURS", pronunciation_en: "seh-LEE-seeh KOORS" },
     ],
     dialogue: [
       {
+        cell_id: "72a70274-d934-4036-93b8-3d599f0d59c4",
         speaker: "Pelanggan",
         text: "Saya mau tukar uang dolar ke rupiah. Kurs hari ini berapa?",
         vi: "Tôi muốn đổi đô la sang rupiah. Tỷ giá hôm nay là bao nhiêu?",
         en: "I want to exchange dollars into rupiah. What is today's exchange rate?",
       },
       {
+        cell_id: "6d02ecff-d039-43e5-9548-1f736cf8284c",
         speaker: "Petugas",
         text: "Baik, mohon tunjukkan paspor, ya.",
         vi: "Vâng, xin vui lòng xuất trình hộ chiếu nhé.",
         en: "All right, please show your passport.",
       },
       {
+        cell_id: "873ef93e-d456-4b9d-a90e-abc27453a8c5",
         speaker: "Pelanggan",
         text: "Apakah ada biaya transfer kalau saya kirim uang ke luar negeri?",
         vi: "Có phí chuyển tiền nếu tôi gửi tiền ra nước ngoài không?",
         en: "Is there a transfer fee if I send money abroad?",
       },
       {
+        cell_id: "70b174ba-e455-40a3-b687-bcc0d33c1f98",
         speaker: "Petugas",
         text: "Ada, dan kami akan beri bukti transaksi lewat email.",
         vi: "Có, và chúng tôi sẽ gửi chứng từ giao dịch qua email.",
         en: "Yes, and we will send the transaction proof by email.",
       },
       {
+        cell_id: "0a509d12-f4be-46cb-ae6c-d46408b5eeb9",
         speaker: "Pelanggan",
         text: "Kalau ada selisih kurs, tolong jelaskan sebelum saya bayar.",
         vi: "Nếu có chênh lệch tỷ giá, làm ơn giải thích trước khi tôi thanh toán.",
         en: "If there is an exchange-rate difference, please explain it before I pay.",
       },
       {
+        cell_id: "d1400d3e-bbda-47d1-8c48-53c39cabc9a6",
         speaker: "Petugas",
         text: "Tentu, kami bisa kirim ke rekening bank Anda setelah transaksi selesai.",
         vi: "Tất nhiên, chúng tôi có thể gửi vào tài khoản ngân hàng của anh/chị sau khi giao dịch hoàn tất.",

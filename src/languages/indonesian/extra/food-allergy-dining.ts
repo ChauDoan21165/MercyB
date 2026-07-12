@@ -17,6 +17,7 @@ type LessonSentence = {
 };
 
 type VocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -28,6 +29,7 @@ type VocabEntry = {
 };
 
 type DialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -144,6 +146,7 @@ export const foodAllergyDiningLessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: 'tidak pedas' = not spicy, 'tanpa...' = without an ingredient. 'Jangan pakai kacang' is direct and natural. To ask about ingredients, use 'mengandung' for 'contains'; it is clearer than only asking 'ada kacang?'.",
     vocabulary: [
       {
+        cell_id: "5a469db3-bb0d-470e-bda4-93fe54409f0f",
         word: "alergi makanan",
         en: "food allergy",
         vi: "dị ứng thực phẩm",
@@ -152,6 +155,7 @@ export const foodAllergyDiningLessons: IndonesianLesson[] = [
         pronunciation_en: "a-LER-gee ma-KA-nan",
       },
       {
+        cell_id: "764b6d2e-e88c-45fc-9e30-5b0cc0cafaa9",
         word: "kacang",
         en: "peanut / nuts / beans",
         vi: "đậu phộng / hạt / đậu",
@@ -160,6 +164,7 @@ export const foodAllergyDiningLessons: IndonesianLesson[] = [
         pronunciation_en: "KA-chang",
       },
       {
+        cell_id: "7963eb92-ca39-4e81-99c5-ad76cc29d966",
         word: "seafood",
         en: "seafood",
         vi: "hải sản",
@@ -168,6 +173,7 @@ export const foodAllergyDiningLessons: IndonesianLesson[] = [
         pronunciation_en: "SEE-food",
       },
       {
+        cell_id: "096a3e6c-724c-4d75-83e6-7bb588fe9a01",
         word: "pedas",
         en: "spicy",
         vi: "cay",
@@ -176,6 +182,7 @@ export const foodAllergyDiningLessons: IndonesianLesson[] = [
         pronunciation_en: "pe-DAS",
       },
       {
+        cell_id: "ce458dc9-ea05-4850-829d-03d3ac84b2c7",
         word: "tanpa MSG",
         en: "without MSG",
         vi: "không MSG / không bột ngọt",
@@ -184,6 +191,7 @@ export const foodAllergyDiningLessons: IndonesianLesson[] = [
         pronunciation_en: "TAN-pa em-ess-gee",
       },
       {
+        cell_id: "7f275db0-db72-4ef1-9857-e86a66adc16a",
         word: "mengandung",
         en: "to contain",
         vi: "có chứa",
@@ -192,6 +200,7 @@ export const foodAllergyDiningLessons: IndonesianLesson[] = [
         pronunciation_en: "me-NGAN-doong",
       },
       {
+        cell_id: "537dcc2a-24d0-42ee-8bb2-f67b08a4216d",
         word: "bahan",
         en: "ingredient / material",
         vi: "nguyên liệu / thành phần",
@@ -202,24 +211,28 @@ export const foodAllergyDiningLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "a2713044-add8-4652-9c52-feab9f8a1b65",
         speaker: "Tamu",
         text: "Maaf, saya punya alergi kacang. Menu ini mengandung kacang?",
         vi: "Xin lỗi, tôi bị dị ứng hạt. Món này có chứa hạt không?",
         en: "Excuse me, I have a nut allergy. Does this dish contain nuts?",
       },
       {
+        cell_id: "d4ed71da-d900-41cf-a58d-aadc145a4b0a",
         speaker: "Pelayan",
         text: "Saya cek dulu ke dapur, ya.",
         vi: "Tôi kiểm tra với bếp trước nhé.",
         en: "I will check with the kitchen first.",
       },
       {
+        cell_id: "7c52afab-6ecf-4a70-9018-a0614a29d111",
         speaker: "Tamu",
         text: "Tolong juga dibuat tidak pedas dan tanpa MSG.",
         vi: "Làm ơn cũng làm không cay và không MSG.",
         en: "Please also make it not spicy and without MSG.",
       },
       {
+        cell_id: "b2f31a95-c7a7-4725-aa71-9a528a8fff7e",
         speaker: "Pelayan",
         text: "Baik. Kalau tidak aman, kami sarankan menu lain.",
         vi: "Vâng. Nếu không an toàn, chúng tôi đề xuất món khác.",
@@ -360,6 +373,7 @@ export const foodAllergyDiningLessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: 'aman dimakan' is the key phrase, meaning 'safe to eat'. 'Tidak yakin' is useful when staff are unsure about ingredients. For reactions, learn concrete words: 'gatal' (itchy), 'bengkak' (swollen), 'sesak napas' (shortness of breath).",
     vocabulary: [
       {
+        cell_id: "e0cc851e-13ab-4607-8334-fe53e52e3bef",
         word: "reaksi alergi",
         en: "allergic reaction",
         vi: "phản ứng dị ứng",
@@ -368,6 +382,7 @@ export const foodAllergyDiningLessons: IndonesianLesson[] = [
         pronunciation_en: "re-AK-see a-LER-gee",
       },
       {
+        cell_id: "4cd975ea-af1b-4464-8466-56f456c9c26c",
         word: "aman dimakan",
         en: "safe to eat",
         vi: "an toàn để ăn",
@@ -376,6 +391,7 @@ export const foodAllergyDiningLessons: IndonesianLesson[] = [
         pronunciation_en: "A-man dee-MA-kan",
       },
       {
+        cell_id: "28e4a4f2-9e3d-4242-a85f-b899152bdb17",
         word: "gatal",
         en: "itchy",
         vi: "ngứa",
@@ -384,6 +400,7 @@ export const foodAllergyDiningLessons: IndonesianLesson[] = [
         pronunciation_en: "GA-tal",
       },
       {
+        cell_id: "5af8c2a0-57d6-4dfe-8a5a-6aff95e96894",
         word: "bengkak",
         en: "swollen",
         vi: "sưng",
@@ -392,6 +409,7 @@ export const foodAllergyDiningLessons: IndonesianLesson[] = [
         pronunciation_en: "BENG-kak",
       },
       {
+        cell_id: "2fc08975-ebc0-4263-ab8c-5953cc3533b6",
         word: "sesak napas",
         en: "shortness of breath",
         vi: "khó thở",
@@ -400,6 +418,7 @@ export const foodAllergyDiningLessons: IndonesianLesson[] = [
         pronunciation_en: "SE-sak NA-pas",
       },
       {
+        cell_id: "dd7df475-f99c-42b9-8e34-9fc712908b16",
         word: "tidak yakin",
         en: "not sure",
         vi: "không chắc",
@@ -408,6 +427,7 @@ export const foodAllergyDiningLessons: IndonesianLesson[] = [
         pronunciation_en: "TEE-dak YA-kin",
       },
       {
+        cell_id: "3f625670-98e8-4bc7-a668-a2e006811bac",
         word: "alergi berat",
         en: "severe allergy",
         vi: "dị ứng nặng",
@@ -418,24 +438,28 @@ export const foodAllergyDiningLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "ca5bf4de-06fc-4ace-b660-d91468eeae86",
         speaker: "Tamu",
         text: "Saya alergi seafood. Kalau makan seafood, saya bisa sesak napas.",
         vi: "Tôi dị ứng hải sản. Nếu ăn hải sản, tôi có thể khó thở.",
         en: "I am allergic to seafood. If I eat seafood, I may have shortness of breath.",
       },
       {
+        cell_id: "a8e53495-c42c-4d4c-a3a9-c47a4d07612a",
         speaker: "Pelayan",
         text: "Baik, saya tanya dulu ke dapur apakah menu ini aman dimakan.",
         vi: "Vâng, tôi hỏi bếp trước xem món này có an toàn để ăn không.",
         en: "Okay, I will ask the kitchen first whether this dish is safe to eat.",
       },
       {
+        cell_id: "dd2f5e22-7fdd-4a5b-a39a-147df5f37140",
         speaker: "Tamu",
         text: "Tolong jangan pakai saus yang sama dengan seafood.",
         vi: "Làm ơn đừng dùng cùng loại sốt với hải sản.",
         en: "Please do not use the same sauce as seafood.",
       },
       {
+        cell_id: "68713569-a5b4-40d2-a2a1-48388eadea9b",
         speaker: "Pelayan",
         text: "Kalau tidak yakin, kami bisa buat nasi putih dan telur saja.",
         vi: "Nếu không chắc, chúng tôi có thể làm cơm trắng và trứng thôi.",

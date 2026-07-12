@@ -54,6 +54,7 @@ export const lessons: RussianLesson[] = [
     ],
     vocabulary: [
       {
+        cell_id: "f058f4d0-3de8-4ba3-916b-950c56d8fb4d",
         word: "обычно",
         romanization: "obychno",
         en: "usually",
@@ -63,6 +64,7 @@ export const lessons: RussianLesson[] = [
         pronunciation_en: "a-BICH-na",
       },
       {
+        cell_id: "e8f453b6-f2ad-4ac5-bb8d-7b1bebbb03bb",
         word: "иногда",
         romanization: "inogda",
         en: "sometimes",
@@ -72,6 +74,7 @@ export const lessons: RussianLesson[] = [
         pronunciation_en: "ee-nag-DA",
       },
       {
+        cell_id: "2ab9fd8f-5c41-47c1-861d-9d5479ca0a2d",
         word: "каждый день",
         romanization: "kazhdyy den",
         en: "every day",
@@ -81,6 +84,7 @@ export const lessons: RussianLesson[] = [
         pronunciation_en: "KAZH-dee dyen",
       },
       {
+        cell_id: "e3f714a0-d118-45f2-b4b8-93ee35a2baee",
         word: "изучать",
         romanization: "izuchat",
         en: "to study",
@@ -156,6 +160,7 @@ export const lessons: RussianLesson[] = [
     ],
     vocabulary: [
       {
+        cell_id: "8375d5a1-1984-450e-a9dc-4729a61371f1",
         word: "читать",
         romanization: "chitat",
         en: "to read",
@@ -165,6 +170,7 @@ export const lessons: RussianLesson[] = [
         pronunciation_en: "chee-TAT",
       },
       {
+        cell_id: "a0f26a0b-9cb9-476b-949d-2fe64e29f7d7",
         word: "покупать",
         romanization: "pokupat",
         en: "to buy",
@@ -174,6 +180,7 @@ export const lessons: RussianLesson[] = [
         pronunciation_en: "pa-koo-PAT",
       },
       {
+        cell_id: "2b39a136-aac9-4c44-a0c2-d611995d4ca8",
         word: "искать",
         romanization: "iskat",
         en: "to look for",
@@ -183,6 +190,7 @@ export const lessons: RussianLesson[] = [
         pronunciation_en: "ees-KAT",
       },
       {
+        cell_id: "b977c5b0-7682-4ddc-9202-bd8a80a69984",
         word: "хотеть",
         romanization: "khotet",
         en: "to want",
@@ -264,6 +272,7 @@ export const lessons: RussianLesson[] = [
     ],
     vocabulary: [
       {
+        cell_id: "0cc130ab-010e-4316-b4f0-19717a5cf149",
         word: "город",
         romanization: "gorod",
         en: "city",
@@ -273,6 +282,7 @@ export const lessons: RussianLesson[] = [
         pronunciation_en: "GO-rut",
       },
       {
+        cell_id: "1d7f848e-3d12-4d70-8574-485f06fab9af",
         word: "офис",
         romanization: "ofis",
         en: "office",
@@ -282,6 +292,7 @@ export const lessons: RussianLesson[] = [
         pronunciation_en: "OH-fees",
       },
       {
+        cell_id: "78cdd939-3e08-4714-9211-af766abd69a5",
         word: "работа",
         romanization: "rabota",
         en: "work",
@@ -291,6 +302,7 @@ export const lessons: RussianLesson[] = [
         pronunciation_en: "ra-BO-ta",
       },
       {
+        cell_id: "ecce5849-d463-41ca-91ea-76fa9cef2c1d",
         word: "стол",
         romanization: "stol",
         en: "table / desk",
@@ -366,6 +378,7 @@ export const lessons: RussianLesson[] = [
     ],
     vocabulary: [
       {
+        cell_id: "6bfc5e36-32f4-479e-9525-90a7469d26c5",
         word: "вчера",
         romanization: "vchera",
         en: "yesterday",
@@ -375,6 +388,7 @@ export const lessons: RussianLesson[] = [
         pronunciation_en: "vcheh-RA",
       },
       {
+        cell_id: "8f661af1-79db-4f8c-8f3d-39b46f0badac",
         word: "завтра",
         romanization: "zavtra",
         en: "tomorrow",
@@ -384,6 +398,7 @@ export const lessons: RussianLesson[] = [
         pronunciation_en: "ZAV-tra",
       },
       {
+        cell_id: "2df0d34a-8261-44ec-b546-f23d41fe4c4c",
         word: "буду",
         romanization: "budu",
         en: "I will",
@@ -393,6 +408,7 @@ export const lessons: RussianLesson[] = [
         pronunciation_en: "BOO-doo",
       },
       {
+        cell_id: "f9fd46c1-42de-4d42-8ed6-9a5e3a8e70b6",
         word: "каждый день",
         romanization: "kazhdyy den",
         en: "every day",

@@ -36,6 +36,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   /** Indonesian word/phrase. */
   word: string;
   /** English meaning. */
@@ -51,6 +52,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   /** Indonesian line. */
   text: string;
@@ -293,6 +295,7 @@ export const lessons: IndonesianLesson[] = [
     vocabulary: [
       // Type 1 — plural / full doubling
       {
+        cell_id: "09d1b63b-4b52-4c23-bccc-cc071e4dbb8c",
         word: "orang-orang",
         en: "people (plural)",
         vi: "mọi người",
@@ -301,6 +304,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "O-rang-O-rang — plural of `orang`; NOT used after a number",
       },
       {
+        cell_id: "95f873e5-81b4-4548-930c-6bbbd13ac754",
         word: "anak-anak",
         en: "children",
         vi: "bọn trẻ",
@@ -309,6 +313,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "A-nak-A-nak — plural of `anak`; release the final `k`",
       },
       {
+        cell_id: "5d51b1f0-e371-4f49-83de-fbf1d00a5239",
         word: "buku-buku",
         en: "books (various)",
         vi: "(nhiều) sách",
@@ -318,6 +323,7 @@ export const lessons: IndonesianLesson[] = [
       },
       // Type 2 — intensified adj/adverb
       {
+        cell_id: "cf190a3a-5fd4-4a0a-950c-0b740d34f443",
         word: "pelan-pelan",
         en: "slowly / gently",
         vi: "từ từ",
@@ -326,6 +332,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "pe-LAN-pe-LAN — softens/eases; not a plural",
       },
       {
+        cell_id: "02ea036f-7db9-4f09-a774-ecc7667728d2",
         word: "hati-hati",
         en: "careful / be careful",
         vi: "cẩn thận",
@@ -334,6 +341,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "HA-ti-HA-ti — fixed phrase = 'careful', not 'many hearts'",
       },
       {
+        cell_id: "6c2bcfb9-b6f8-4582-b6d7-4e513d5cf9b7",
         word: "diam-diam",
         en: "secretly / quietly",
         vi: "lén lút / âm thầm",
@@ -343,6 +351,7 @@ export const lessons: IndonesianLesson[] = [
       },
       // Type 3 — sound-changing
       {
+        cell_id: "8f340213-f0e2-4d25-9a64-1775f1183b8d",
         word: "sayur-mayur",
         en: "assorted vegetables",
         vi: "rau củ đủ loại",
@@ -351,6 +360,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "SA-yur-MA-yur — 2nd half changes sound; 'all kinds of vegetables'",
       },
       {
+        cell_id: "4157068a-e9f0-4715-b1f9-18d5460dfa0d",
         word: "bolak-balik",
         en: "back and forth",
         vi: "đi đi về về",
@@ -359,6 +369,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "BO-lak-BA-lik — root `balik` (return); to-and-fro motion",
       },
       {
+        cell_id: "8eb1b380-409f-4a70-8497-ef27abd59405",
         word: "warna-warni",
         en: "multicolored / colorful",
         vi: "nhiều màu sặc sỡ",
@@ -367,6 +378,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "WAR-na-WAR-ni — root `warna` (color); vivid, many-colored",
       },
       {
+        cell_id: "17e889e7-78b5-4f46-a0b8-2d754543c382",
         word: "lauk-pauk",
         en: "assorted side dishes",
         vi: "thức ăn (món mặn) đủ loại",
@@ -375,6 +387,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "LA-uk-PA-uk — root `lauk` (dish eaten with rice); assorted dishes",
       },
       {
+        cell_id: "c02db416-ea46-494c-a21a-826449884c8c",
         word: "gotong-royong",
         en: "communal mutual help",
         vi: "tương trợ cộng đồng",
@@ -384,6 +397,7 @@ export const lessons: IndonesianLesson[] = [
       },
       // Type 4 — affixed
       {
+        cell_id: "16d2853a-7792-4734-8781-4e2fcf7cccd7",
         word: "mobil-mobilan",
         en: "toy car",
         vi: "xe hơi đồ chơi",
@@ -392,6 +406,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "mo-BIL-mo-bi-LAN — doubling + `-an` = 'thing resembling'; a toy car",
       },
       {
+        cell_id: "156662e5-f9a5-4a73-9d46-65688162745a",
         word: "kebarat-baratan",
         en: "Westernized / Western-ish",
         vi: "hơi hướng phương Tây",
@@ -401,6 +416,7 @@ export const lessons: IndonesianLesson[] = [
       },
       // Type 5 — frozen / lexicalized (meaning-changing)
       {
+        cell_id: "d26d31bb-ac85-4f00-b3f7-478ef64c3e91",
         word: "laki-laki",
         en: "man / male",
         vi: "đàn ông / nam",
@@ -409,6 +425,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "LA-ki-LA-ki — always doubled; bare `laki` means something else (husband)",
       },
       {
+        cell_id: "b759e25d-3d2a-4bc6-8d21-7e86802ece2e",
         word: "kupu-kupu",
         en: "butterfly",
         vi: "bươm bướm",
@@ -417,6 +434,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "KU-pu-KU-pu — exists only doubled; no standalone `kupu`",
       },
       {
+        cell_id: "dabeec5b-cbf6-4d27-9e47-4b8c431bd4fa",
         word: "mata-mata",
         en: "spy / secret agent",
         vi: "gián điệp",
@@ -425,6 +443,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "MA-ta-MA-ta — meaning SHIFTS: a spy, not 'many eyes'",
       },
       {
+        cell_id: "73c0cee0-4c85-4a25-a8e2-b378fb82de6a",
         word: "tiba-tiba",
         en: "suddenly",
         vi: "đột nhiên",
@@ -433,6 +452,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "TI-ba-TI-ba — fixed phrase = 'suddenly'",
       },
       {
+        cell_id: "0b5e5137-1f2c-4a99-ac24-c752cd4a0905",
         word: "tiba-tiba / kira-kira",
         en: "suddenly / approximately",
         vi: "đột nhiên / khoảng chừng",
@@ -442,6 +462,7 @@ export const lessons: IndonesianLesson[] = [
       },
       // Type 6 — reciprocal verbs
       {
+        cell_id: "d705132e-3d1b-4016-831f-03718f100fea",
         word: "tolong-menolong",
         en: "to help one another",
         vi: "giúp đỡ lẫn nhau",
@@ -450,6 +471,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "TO-long-me-NO-long — 2nd half takes meN-; a reciprocal action",
       },
       {
+        cell_id: "78fc623c-c704-4edb-a46f-eb19a679e3e5",
         word: "kejar-kejaran",
         en: "to chase each other",
         vi: "rượt đuổi nhau",
@@ -461,42 +483,49 @@ export const lessons: IndonesianLesson[] = [
     dialogue: [
       // Two friends at a market — reduplication used naturally
       {
+        cell_id: "5d89b40f-f0ea-4ed5-b714-337cdb0031d3",
         speaker: "Mai",
         text: "Wah, pasarnya ramai sekali. Orang-orang banyak banget!",
         vi: "Ồ, chợ đông quá. Người đông ơi là đông!",
         en: "Wow, the market is so busy. There are tons of people!",
       },
       {
+        cell_id: "74de5fc0-66c3-406b-a426-7f537f58505f",
         speaker: "Sari",
         text: "Iya, hati-hati ya, dompetmu jangan sampai hilang.",
         vi: "Ừ, cẩn thận nhé, đừng để mất ví đấy.",
         en: "Yeah, be careful, don't let your wallet go missing.",
       },
       {
+        cell_id: "664cc668-9ab5-4b87-b9ef-6f5d02da5ea7",
         speaker: "Mai",
         text: "Aku mau beli sayur-mayur untuk masak nanti malam.",
         vi: "Mình muốn mua rau củ đủ loại để nấu tối nay.",
         en: "I want to buy assorted vegetables to cook tonight.",
       },
       {
+        cell_id: "aa84825f-e6ca-4532-9a09-218fa60fef10",
         speaker: "Sari",
         text: "Beli dua ikat saja, jangan banyak-banyak nanti busuk.",
         vi: "Mua hai bó thôi, đừng nhiều quá kẻo hỏng.",
         en: "Just buy two bunches, not too much or it'll spoil.",
       },
       {
+        cell_id: "6090e33e-5f23-4d55-a833-9bec20b873db",
         speaker: "Mai",
         text: "Hahaha betul. Eh, lihat baju itu, warna-warni bagus ya?",
         vi: "Haha đúng đó. Ê, nhìn cái áo kia kìa, nhiều màu đẹp nhỉ?",
         en: "Hahaha true. Hey, look at that shirt, colorful and nice, right?",
       },
       {
+        cell_id: "f208ca8d-3b36-4253-a3c5-ff0c4c6dce73",
         speaker: "Sari",
         text: "Bagus! Tapi kita sudah bolak-balik dari tadi, capek. Pelan-pelan saja.",
         vi: "Đẹp đấy! Nhưng mình đi đi lại lại nãy giờ rồi, mệt. Cứ từ từ thôi.",
         en: "Nice! But we've been going back and forth for a while, I'm tired. Let's take it slow.",
       },
       {
+        cell_id: "f4aca941-b3dd-4439-ae7c-368fe461a980",
         speaker: "Mai",
         text: "Oke. Untung ada kamu, kita memang harus tolong-menolong.",
         vi: "Được. May có cậu, đúng là tụi mình phải giúp đỡ lẫn nhau.",

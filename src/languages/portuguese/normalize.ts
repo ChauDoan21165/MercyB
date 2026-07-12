@@ -47,6 +47,7 @@ type PortugueseSentenceInput = {
 };
 
 type PortugueseVocabInput = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -56,6 +57,7 @@ type PortugueseVocabInput = {
 };
 
 type PortugueseDialogueInput = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;

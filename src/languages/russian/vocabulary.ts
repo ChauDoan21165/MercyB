@@ -24,6 +24,7 @@ export type RussianVocabTopic =
   | "technology_media";
 
 export type RussianVocabItem = {
+  cell_id?: string;
   /** Russian headword (dictionary / nominative form). */
   ru: string;
   /** Latin transliteration. */

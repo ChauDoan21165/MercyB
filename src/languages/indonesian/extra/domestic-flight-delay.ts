@@ -21,6 +21,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   /** Indonesian word/phrase. */
   word: string;
   /** English meaning. */
@@ -36,6 +37,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   /** Indonesian line. */
   text: string;
@@ -253,6 +255,7 @@ export const lessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: use `penerbangan` for the flight and `pesawat` for the aircraft; use `ke gate` when going to the gate and `di gate` when at the gate. When the new time is uncertain, ask for `perkiraan waktu`, not a guaranteed `jam pasti`.",
     vocabulary: [
       {
+        cell_id: "e50be947-74b4-4546-8451-247933118372",
         word: "penerbangan domestik",
         en: "domestic flight",
         vi: "chuyến bay nội địa",
@@ -261,6 +264,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "peh-ner-BANG-an do-MES-tik",
       },
       {
+        cell_id: "6024233a-3834-4aad-b829-c4b3f1721ec5",
         word: "delay",
         en: "delay",
         vi: "chậm/trễ chuyến",
@@ -269,6 +273,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "dee-LAY",
       },
       {
+        cell_id: "19b8277e-1c41-41e7-a234-c2b2afd530ca",
         word: "gate",
         en: "gate",
         vi: "cổng ra máy bay",
@@ -277,6 +282,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "gate",
       },
       {
+        cell_id: "460ca09d-283a-4c9d-8381-bcfd09573422",
         word: "boarding pass",
         en: "boarding pass",
         vi: "thẻ lên máy bay",
@@ -285,6 +291,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "BOR-ding pass",
       },
       {
+        cell_id: "5f67b8b7-9175-456e-a061-45ecb1f5140c",
         word: "bagasi",
         en: "checked baggage",
         vi: "hành lý ký gửi",
@@ -293,6 +300,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "ba-GA-see",
       },
       {
+        cell_id: "80e4390c-f4e5-4b23-9d9c-8ed2598349ad",
         word: "kompensasi",
         en: "compensation",
         vi: "bồi thường/hỗ trợ",
@@ -301,6 +309,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "kom-pen-SA-see",
       },
       {
+        cell_id: "55eec4a0-64fe-4d4c-80c4-b9ece6390003",
         word: "ganti jadwal",
         en: "reschedule",
         vi: "đổi lịch",
@@ -309,6 +318,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "GAN-tee JAD-wal",
       },
       {
+        cell_id: "3f00943c-89fa-4abe-918b-b096009a469f",
         word: "pengumuman bandara",
         en: "airport announcement",
         vi: "thông báo sân bay",
@@ -317,6 +327,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "peh-ngoo-MOOM-an ban-DA-ra",
       },
       {
+        cell_id: "1f55fcf3-27db-49d6-ac98-6d31a282ef81",
         word: "maskapai",
         en: "airline",
         vi: "hãng hàng không",
@@ -325,6 +336,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "mas-ka-PAI",
       },
       {
+        cell_id: "f05a7bf3-9f7d-4671-8859-d9c534f9d506",
         word: "penerbangan lanjutan",
         en: "connecting flight",
         vi: "chuyến bay nối tiếp",
@@ -335,24 +347,28 @@ export const lessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "d6d0db93-9cf6-4796-bda9-33bedf4c67fb",
         speaker: "Penumpang",
         text: "Permisi, penerbangan domestik saya ke Surabaya mengalami delay. Gate-nya masih sama?",
         vi: "Xin lỗi, chuyến bay nội địa của tôi đi Surabaya bị delay. Gate vẫn như cũ không?",
         en: "Excuse me, my domestic flight to Surabaya is delayed. Is the gate still the same?",
       },
       {
+        cell_id: "38f773c6-1f4d-4936-83aa-010a1ebb8eef",
         speaker: "Petugas Maskapai",
         text: "Gate berubah ke gate lima. Silakan tunggu pengumuman berikutnya.",
         vi: "Gate đổi sang gate 5. Vui lòng chờ thông báo tiếp theo.",
         en: "The gate has changed to gate five. Please wait for the next announcement.",
       },
       {
+        cell_id: "eac92ab2-335f-4e51-828c-f77dcd2eee21",
         speaker: "Penumpang",
         text: "Apakah saya bisa ganti jadwal? Saya takut ketinggalan penerbangan lanjutan.",
         vi: "Tôi có thể đổi lịch không? Tôi sợ lỡ chuyến bay nối tiếp.",
         en: "Can I reschedule? I am afraid of missing my connecting flight.",
       },
       {
+        cell_id: "c690b512-9bb9-48f5-b412-de4693da4e2a",
         speaker: "Petugas Maskapai",
         text: "Bisa kami cek. Tolong tunjukkan boarding pass dan nomor penerbangan.",
         vi: "Chúng tôi có thể kiểm tra. Vui lòng cho xem boarding pass và số chuyến bay.",

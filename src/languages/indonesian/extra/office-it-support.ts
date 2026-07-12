@@ -17,6 +17,7 @@ type IndonesianLessonSentence = {
 };
 
 type IndonesianVocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -26,6 +27,7 @@ type IndonesianVocabEntry = {
 };
 
 type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -212,6 +214,7 @@ export const officeItSupportLessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: use a clear issue-report frame: `Perangkatnya...`, `Masalahnya...`, `Sejak...`, `Saya sudah membuat tiket...`, `Mohon update status...`. Distinguish `lupa password`, `reset password`, `akses terkunci`, `jaringan lambat`, and `printer bermasalah`.",
     vocabulary: [
       {
+        cell_id: "a4594ee3-daa5-42d9-916f-b5e932eaf9fe",
         word: "laptop kantor",
         en: "office/company laptop",
         vi: "laptop công ty",
@@ -220,6 +223,7 @@ export const officeItSupportLessons: IndonesianLesson[] = [
         pronunciation_en: "LAP-top KAN-tor",
       },
       {
+        cell_id: "1d56bb01-a355-430b-bf2b-5d2b7dd68d2e",
         word: "lupa password",
         en: "forgot password",
         vi: "quên mật khẩu",
@@ -228,6 +232,7 @@ export const officeItSupportLessons: IndonesianLesson[] = [
         pronunciation_en: "LOO-pa PASS-word",
       },
       {
+        cell_id: "96e9e19a-f9a2-4eab-a539-9a8321464961",
         word: "printer bermasalah",
         en: "printer has a problem",
         vi: "máy in bị lỗi",
@@ -236,6 +241,7 @@ export const officeItSupportLessons: IndonesianLesson[] = [
         pronunciation_en: "PRIN-ter ber-ma-SA-lah",
       },
       {
+        cell_id: "f94819b6-ab09-4174-8fca-e77d1c3be198",
         word: "tiket IT",
         en: "IT ticket",
         vi: "ticket hỗ trợ IT",
@@ -244,6 +250,7 @@ export const officeItSupportLessons: IndonesianLesson[] = [
         pronunciation_en: "TEE-ket eye-TEE",
       },
       {
+        cell_id: "a7dccde4-e9cd-43dc-9b46-5fa28b6bfa02",
         word: "jaringan lambat",
         en: "slow network",
         vi: "mạng chậm",
@@ -252,6 +259,7 @@ export const officeItSupportLessons: IndonesianLesson[] = [
         pronunciation_en: "ja-REE-ngan LAM-bat",
       },
       {
+        cell_id: "5fe2026e-2842-4818-801a-c276cdbd0d1b",
         word: "akses email",
         en: "email access",
         vi: "quyền truy cập email",
@@ -260,6 +268,7 @@ export const officeItSupportLessons: IndonesianLesson[] = [
         pronunciation_en: "AK-ses EE-mail",
       },
       {
+        cell_id: "fbc51a21-7b2e-4051-a016-011e5fbb4a88",
         word: "instal aplikasi",
         en: "install an application",
         vi: "cài ứng dụng",
@@ -268,6 +277,7 @@ export const officeItSupportLessons: IndonesianLesson[] = [
         pronunciation_en: "IN-stal ap-lee-KA-see",
       },
       {
+        cell_id: "59b42633-994d-4351-a75d-89bb1d318d41",
         word: "akses admin",
         en: "admin access",
         vi: "quyền admin",
@@ -278,30 +288,35 @@ export const officeItSupportLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "0e45b906-372b-4474-b472-2e62271d3a2b",
         speaker: "Karyawan",
         text: "Pagi, saya sudah membuat tiket IT. Laptop kantor saya tidak bisa menyala.",
         vi: "Chào buổi sáng, tôi đã tạo ticket IT. Laptop công ty của tôi không bật lên được.",
         en: "Morning, I have created an IT ticket. My office laptop cannot turn on.",
       },
       {
+        cell_id: "c88aff29-d40e-4c72-a847-91a1dbac7fbe",
         speaker: "IT Support",
         text: "Baik. Sejak kapan masalahnya terjadi?",
         vi: "Vâng. Vấn đề xảy ra từ khi nào?",
         en: "Okay. Since when has the issue been happening?",
       },
       {
+        cell_id: "c40bea94-ed70-4fac-a10e-1903a4dc79d8",
         speaker: "Karyawan",
         text: "Sejak pagi. Selain itu, akses email saya juga terkunci.",
         vi: "Từ sáng. Ngoài ra, quyền truy cập email của tôi cũng bị khóa.",
         en: "Since this morning. Also, my email access is locked.",
       },
       {
+        cell_id: "eaf88586-e78a-49d2-b80c-e0cb51924271",
         speaker: "IT Support",
         text: "Kami reset password dulu, lalu cek laptopnya.",
         vi: "Chúng tôi đặt lại mật khẩu trước, rồi kiểm tra laptop.",
         en: "We will reset the password first, then check the laptop.",
       },
       {
+        cell_id: "45ba1379-a4e3-405c-b07d-afe5ee4b2683",
         speaker: "Karyawan",
         text: "Terima kasih. Mohon update status tiket saya kalau sudah diproses.",
         vi: "Cảm ơn. Xin cập nhật trạng thái ticket của tôi nếu đã được xử lý.",

@@ -13,6 +13,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -22,6 +23,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -235,41 +237,46 @@ export const lessons: IndonesianLesson[] = [
     tip_advice_en:
       "Tip for Vietnamese speakers: when disagreeing, use a three-step frame: acknowledge (`Saya mengerti`), soften (`mungkin`, `agak`, `kurang`), then suggest (`lebih baik kita...`). In small talk, one light question plus one positive comment is usually enough: `Akhir-akhir ini sibuk apa?` or `Makanannya enak ya.` Do not force jokes if you are unsure about closeness; if you joke, add `saya bercanda saja`.",
     vocabulary: [
-      { word: "kurang setuju", en: "do not quite agree", vi: "không hẳn đồng ý", pos: "phrase", pronunciation_vi: "KU-rang se-TU-ju", pronunciation_en: "KOO-rang se-TOO-joo" },
-      { word: "menurut saya", en: "in my opinion", vi: "theo tôi", pos: "phrase", pronunciation_vi: "me-NU-rut SA-ya", pronunciation_en: "me-NU-root SA-ya" },
-      { word: "mungkin lebih baik", en: "maybe it would be better", vi: "có lẽ tốt hơn", pos: "phrase", pronunciation_vi: "MUNG-kin LE-bih BAIK", pronunciation_en: "MOONG-kin LE-bih BAIK" },
-      { word: "obrolan ringan", en: "small talk", vi: "chuyện xã giao", pos: "noun phrase", pronunciation_vi: "ob-RO-lan RI-ngan", pronunciation_en: "ob-RO-lan RI-ngan" },
-      { word: "menjaga suasana", en: "to keep the mood pleasant", vi: "giữ bầu không khí", pos: "verb phrase", pronunciation_vi: "men-JA-ga su-A-sa-na", pronunciation_en: "men-JA-ga soo-A-sa-na" },
-      { word: "bercanda sopan", en: "to joke politely", vi: "đùa lịch sự", pos: "verb phrase", pronunciation_vi: "ber-CAN-da SO-pan", pronunciation_en: "ber-CHAN-da SO-pan" },
-      { word: "topik aman", en: "safe topic", vi: "chủ đề an toàn", pos: "noun phrase", pronunciation_vi: "TO-pik A-man", pronunciation_en: "TO-pik A-man" },
-      { word: "saling menghormati", en: "to respect each other", vi: "tôn trọng lẫn nhau", pos: "verb phrase", pronunciation_vi: "SA-ling meng-hor-MA-ti", pronunciation_en: "SA-ling meng-hor-MA-ti" },
+      { cell_id: "318995e7-cc29-4b6c-bbdb-da3d0f736632", word: "kurang setuju", en: "do not quite agree", vi: "không hẳn đồng ý", pos: "phrase", pronunciation_vi: "KU-rang se-TU-ju", pronunciation_en: "KOO-rang se-TOO-joo" },
+      { cell_id: "f47fd547-a417-4d7e-9c14-cf492de87575", word: "menurut saya", en: "in my opinion", vi: "theo tôi", pos: "phrase", pronunciation_vi: "me-NU-rut SA-ya", pronunciation_en: "me-NU-root SA-ya" },
+      { cell_id: "7326a8dd-a8b3-4ca3-b2ab-886cbf96605e", word: "mungkin lebih baik", en: "maybe it would be better", vi: "có lẽ tốt hơn", pos: "phrase", pronunciation_vi: "MUNG-kin LE-bih BAIK", pronunciation_en: "MOONG-kin LE-bih BAIK" },
+      { cell_id: "40d78a7f-3e35-462c-be74-23c5f9f54026", word: "obrolan ringan", en: "small talk", vi: "chuyện xã giao", pos: "noun phrase", pronunciation_vi: "ob-RO-lan RI-ngan", pronunciation_en: "ob-RO-lan RI-ngan" },
+      { cell_id: "83bfb159-f501-4c88-89bc-7ea2eeff7745", word: "menjaga suasana", en: "to keep the mood pleasant", vi: "giữ bầu không khí", pos: "verb phrase", pronunciation_vi: "men-JA-ga su-A-sa-na", pronunciation_en: "men-JA-ga soo-A-sa-na" },
+      { cell_id: "8645573c-81d0-474c-92a5-a7840c4cc88e", word: "bercanda sopan", en: "to joke politely", vi: "đùa lịch sự", pos: "verb phrase", pronunciation_vi: "ber-CAN-da SO-pan", pronunciation_en: "ber-CHAN-da SO-pan" },
+      { cell_id: "ff63705a-52ef-47f9-a489-ad3e62b12c1d", word: "topik aman", en: "safe topic", vi: "chủ đề an toàn", pos: "noun phrase", pronunciation_vi: "TO-pik A-man", pronunciation_en: "TO-pik A-man" },
+      { cell_id: "0a6b9ab4-06dc-446c-98ab-8d28d64b7f1c", word: "saling menghormati", en: "to respect each other", vi: "tôn trọng lẫn nhau", pos: "verb phrase", pronunciation_vi: "SA-ling meng-hor-MA-ti", pronunciation_en: "SA-ling meng-hor-MA-ti" },
     ],
     dialogue: [
       {
+        cell_id: "da8011c3-6685-4235-9712-4c0e8c10b3ff",
         speaker: "Nadia",
         text: "Menurut saya, lebih baik rapatnya dimulai jam sembilan.",
         vi: "Theo tôi, tốt hơn là cuộc họp bắt đầu lúc chín giờ.",
         en: "In my opinion, it would be better for the meeting to start at nine.",
       },
       {
+        cell_id: "a10d1e01-ce8e-4509-96ba-d1768ddc1658",
         speaker: "Bima",
         text: "Saya mengerti, tapi saya kurang setuju karena beberapa orang datang dari jauh.",
         vi: "Tôi hiểu, nhưng tôi không hẳn đồng ý vì vài người đến từ xa.",
         en: "I understand, but I do not quite agree because some people come from far away.",
       },
       {
+        cell_id: "c2563de9-2a7b-4ce7-b5f8-7a6230c6d64e",
         speaker: "Nadia",
         text: "Benar juga. Mungkin lebih baik kita mulai jam setengah sepuluh.",
         vi: "Cũng đúng. Có lẽ tốt hơn là chúng ta bắt đầu lúc chín rưỡi.",
         en: "That's true too. Maybe it is better to start at nine thirty.",
       },
       {
+        cell_id: "5f668328-3054-4b78-94e3-471139af47e9",
         speaker: "Bima",
         text: "Setuju. Yang penting suasananya tetap enak.",
         vi: "Đồng ý. Quan trọng là bầu không khí vẫn dễ chịu.",
         en: "Agreed. The important thing is that the mood stays pleasant.",
       },
       {
+        cell_id: "1d679e6d-1991-412c-8630-3c2acab8d4ea",
         speaker: "Nadia",
         text: "Ngomong-ngomong, akhir-akhir ini sibuk apa?",
         vi: "Nhân tiện, dạo này anh bận gì?",

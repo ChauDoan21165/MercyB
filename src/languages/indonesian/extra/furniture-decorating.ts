@@ -32,6 +32,7 @@ type LessonSentence = {
 };
 
 type VocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -43,6 +44,7 @@ type VocabEntry = {
 };
 
 type DialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -158,21 +160,21 @@ export const furnitureDecoratingLessons: IndonesianLesson[] = [
     tip_advice_en:
       "Tip for Vietnamese speakers: many furniture names are transparent compounds — 'tempat tidur' = 'place + sleep' = bed; 'ruang tamu' = 'room + guest' = living room. Easy to parse once split. 'Yang' = 'the one that', linking a description: 'sofa yang warna abu-abu' = the grey sofa. Reduplicated colour: abu-abu (grey). 'Terbuat dari' = made of: kayu (wood), besi (iron), plastik (plastic), kaca (glass). Ask price: 'Berapa harga…?'; request delivery: 'Tolong antar … ke rumah saya.' Adjectives always come AFTER the noun — like Vietnamese, unlike English.",
     vocabulary: [
-      { word: "mebel / furnitur", en: "furniture", vi: "nội thất / đồ gỗ", pos: "noun", pronunciation_vi: "ME-bel / fur-ni-TUR", pronunciation_en: "MEH-bel / foor-nee-TOOR" },
-      { word: "meja", en: "table", vi: "bàn", pos: "noun", pronunciation_vi: "ME-ja", pronunciation_en: "MEH-ja" },
-      { word: "kursi", en: "chair", vi: "ghế", pos: "noun", pronunciation_vi: "KUR-si", pronunciation_en: "KOOR-see" },
-      { word: "lemari", en: "cupboard / wardrobe", vi: "tủ", pos: "noun", pronunciation_vi: "le-MA-ri", pronunciation_en: "le-MA-ree" },
-      { word: "tempat tidur", en: "bed", vi: "giường", pos: "noun", pronunciation_vi: "tem-PAT TI-dur", pronunciation_en: "tem-PAT TEE-door" },
-      { word: "sofa", en: "sofa / couch", vi: "ghế sofa", pos: "noun", pronunciation_vi: "SO-fa", pronunciation_en: "SOH-fa" },
-      { word: "kayu jati", en: "teak wood", vi: "gỗ tếch", pos: "noun", pronunciation_vi: "KA-yu JA-ti", pronunciation_en: "KA-yoo JA-tee" },
-      { word: "rak", en: "shelf / rack", vi: "kệ / giá", pos: "noun", pronunciation_vi: "rak", pronunciation_en: "rak" },
-      { word: "abu-abu", en: "grey", vi: "màu xám", pos: "adj.", pronunciation_vi: "A-bu A-bu", pronunciation_en: "A-boo A-boo" },
+      { cell_id: "49f6c726-8e9d-4f99-abc1-6683798457c4", word: "mebel / furnitur", en: "furniture", vi: "nội thất / đồ gỗ", pos: "noun", pronunciation_vi: "ME-bel / fur-ni-TUR", pronunciation_en: "MEH-bel / foor-nee-TOOR" },
+      { cell_id: "f0ee096a-c0f0-4dcc-9499-ab670c663aa1", word: "meja", en: "table", vi: "bàn", pos: "noun", pronunciation_vi: "ME-ja", pronunciation_en: "MEH-ja" },
+      { cell_id: "eddf1f69-3b78-4991-a141-726dc1492475", word: "kursi", en: "chair", vi: "ghế", pos: "noun", pronunciation_vi: "KUR-si", pronunciation_en: "KOOR-see" },
+      { cell_id: "2a226152-fdac-4d8f-b4df-134f79670f66", word: "lemari", en: "cupboard / wardrobe", vi: "tủ", pos: "noun", pronunciation_vi: "le-MA-ri", pronunciation_en: "le-MA-ree" },
+      { cell_id: "e93ad7ff-c31c-4704-95c1-7ce29e797a6e", word: "tempat tidur", en: "bed", vi: "giường", pos: "noun", pronunciation_vi: "tem-PAT TI-dur", pronunciation_en: "tem-PAT TEE-door" },
+      { cell_id: "fa8dd367-71f3-4e8e-8f65-68cbb0624f58", word: "sofa", en: "sofa / couch", vi: "ghế sofa", pos: "noun", pronunciation_vi: "SO-fa", pronunciation_en: "SOH-fa" },
+      { cell_id: "0bcd6ff1-32cc-4ab3-b6b7-5aca7ceb721e", word: "kayu jati", en: "teak wood", vi: "gỗ tếch", pos: "noun", pronunciation_vi: "KA-yu JA-ti", pronunciation_en: "KA-yoo JA-tee" },
+      { cell_id: "ad7c2cff-592a-4713-a9f7-25fceae18282", word: "rak", en: "shelf / rack", vi: "kệ / giá", pos: "noun", pronunciation_vi: "rak", pronunciation_en: "rak" },
+      { cell_id: "261b7e63-ef8b-40b2-af71-458a24451933", word: "abu-abu", en: "grey", vi: "màu xám", pos: "adj.", pronunciation_vi: "A-bu A-bu", pronunciation_en: "A-boo A-boo" },
     ],
     dialogue: [
-      { speaker: "Pembeli", text: "Selamat siang. Saya mau beli meja dan kursi baru.", vi: "Chào buổi trưa. Tôi muốn mua bàn và ghế mới.", en: "Good afternoon. I'd like to buy a new table and chairs." },
-      { speaker: "Penjual", text: "Silakan. Yang ini terbuat dari kayu jati, awet sekali.", vi: "Mời anh. Cái này làm bằng gỗ tếch, rất bền.", en: "Please. This one is made of teak, very durable." },
-      { speaker: "Pembeli", text: "Bagus. Berapa harganya? Dan ada sofa warna abu-abu?", vi: "Đẹp đấy. Giá bao nhiêu? Và có ghế sofa màu xám không?", en: "Nice. How much is it? And do you have a grey sofa?" },
-      { speaker: "Penjual", text: "Ada. Nanti tolong saya antar semua ke rumah Bapak, ya.", vi: "Có ạ. Lát tôi sẽ giao tất cả đến nhà anh nhé.", en: "We do. I'll deliver everything to your house later." },
+      { cell_id: "762adb9d-6846-4cc5-adb0-0cdae9a8116c", speaker: "Pembeli", text: "Selamat siang. Saya mau beli meja dan kursi baru.", vi: "Chào buổi trưa. Tôi muốn mua bàn và ghế mới.", en: "Good afternoon. I'd like to buy a new table and chairs." },
+      { cell_id: "c92c0e2b-013c-4d32-87db-f43c225e40af", speaker: "Penjual", text: "Silakan. Yang ini terbuat dari kayu jati, awet sekali.", vi: "Mời anh. Cái này làm bằng gỗ tếch, rất bền.", en: "Please. This one is made of teak, very durable." },
+      { cell_id: "0dca9ad0-ea00-4392-ba48-094b5e600a8b", speaker: "Pembeli", text: "Bagus. Berapa harganya? Dan ada sofa warna abu-abu?", vi: "Đẹp đấy. Giá bao nhiêu? Và có ghế sofa màu xám không?", en: "Nice. How much is it? And do you have a grey sofa?" },
+      { cell_id: "7f19ac6c-7da7-4f7f-a8be-4af9c73ea0f4", speaker: "Penjual", text: "Ada. Nanti tolong saya antar semua ke rumah Bapak, ya.", vi: "Có ạ. Lát tôi sẽ giao tất cả đến nhà anh nhé.", en: "We do. I'll deliver everything to your house later." },
     ],
     exercises: [
       {
@@ -295,21 +297,21 @@ export const furnitureDecoratingLessons: IndonesianLesson[] = [
     tip_advice_en:
       "Tip for Vietnamese speakers: learn the dimension trio — panjang (length) ↔ lebar (width) ↔ tinggi (height). 'Ukuran' is the noun (size), 'ukur' the verb (measure) — with 'me-' it becomes 'mengukur'. 'Terlalu' = too (undesirably): terlalu besar (too big), terlalu mahal (too expensive). 'Muat' = to fit/hold — handy question: 'Apakah … muat?' (Does … fit?). Comparison: 'lebih suka' = prefer, 'lebih terang' = brighter. Colour pair: terang (bright) ↔ gelap (dark). 'Dulu' after a verb = do it 'first': 'ukur dulu' (measure first).",
     vocabulary: [
-      { word: "ukuran", en: "size / measurement", vi: "kích thước / cỡ", pos: "noun", pronunciation_vi: "u-KU-ran", pronunciation_en: "oo-KOO-ran" },
-      { word: "panjang", en: "long / length", vi: "dài / chiều dài", pos: "adj./noun", pronunciation_vi: "PAN-jang", pronunciation_en: "PAN-jang" },
-      { word: "lebar", en: "wide / width", vi: "rộng / chiều rộng", pos: "adj./noun", pronunciation_vi: "LE-bar", pronunciation_en: "LE-bar" },
-      { word: "tinggi", en: "tall / height", vi: "cao / chiều cao", pos: "adj./noun", pronunciation_vi: "TING-gi", pronunciation_en: "TEENG-gee" },
-      { word: "muat", en: "to fit / hold", vi: "vừa / chứa được", pos: "verb", pronunciation_vi: "MU-at", pronunciation_en: "MOO-at" },
-      { word: "ruang tamu", en: "living room", vi: "phòng khách", pos: "noun", pronunciation_vi: "RU-ang TA-mu", pronunciation_en: "ROO-ang TA-moo" },
-      { word: "kamar", en: "room / bedroom", vi: "phòng", pos: "noun", pronunciation_vi: "KA-mar", pronunciation_en: "KA-mar" },
-      { word: "warna", en: "colour", vi: "màu sắc", pos: "noun", pronunciation_vi: "WAR-na", pronunciation_en: "WAR-na" },
-      { word: "terang", en: "bright", vi: "sáng", pos: "adj.", pronunciation_vi: "te-RANG", pronunciation_en: "te-RANG" },
+      { cell_id: "e50f1567-b593-41ed-a83a-acdf80822c4d", word: "ukuran", en: "size / measurement", vi: "kích thước / cỡ", pos: "noun", pronunciation_vi: "u-KU-ran", pronunciation_en: "oo-KOO-ran" },
+      { cell_id: "4ce968e9-8128-40b7-891b-cd8a23aad7e2", word: "panjang", en: "long / length", vi: "dài / chiều dài", pos: "adj./noun", pronunciation_vi: "PAN-jang", pronunciation_en: "PAN-jang" },
+      { cell_id: "23ef9efc-d84a-474c-b73f-5595784bec7a", word: "lebar", en: "wide / width", vi: "rộng / chiều rộng", pos: "adj./noun", pronunciation_vi: "LE-bar", pronunciation_en: "LE-bar" },
+      { cell_id: "dbc7a8d1-ae1b-4acf-ba72-deae869d9a2c", word: "tinggi", en: "tall / height", vi: "cao / chiều cao", pos: "adj./noun", pronunciation_vi: "TING-gi", pronunciation_en: "TEENG-gee" },
+      { cell_id: "6892483c-8104-4309-9bd2-3a1d891b5d7b", word: "muat", en: "to fit / hold", vi: "vừa / chứa được", pos: "verb", pronunciation_vi: "MU-at", pronunciation_en: "MOO-at" },
+      { cell_id: "b1c6135c-3042-499e-b877-11b2c93733d5", word: "ruang tamu", en: "living room", vi: "phòng khách", pos: "noun", pronunciation_vi: "RU-ang TA-mu", pronunciation_en: "ROO-ang TA-moo" },
+      { cell_id: "21de6192-e513-4214-9674-27594fc67240", word: "kamar", en: "room / bedroom", vi: "phòng", pos: "noun", pronunciation_vi: "KA-mar", pronunciation_en: "KA-mar" },
+      { cell_id: "f82d9516-e3aa-4d63-a519-af530640c012", word: "warna", en: "colour", vi: "màu sắc", pos: "noun", pronunciation_vi: "WAR-na", pronunciation_en: "WAR-na" },
+      { cell_id: "96f1b909-473c-4db0-9700-ba322033a739", word: "terang", en: "bright", vi: "sáng", pos: "adj.", pronunciation_vi: "te-RANG", pronunciation_en: "te-RANG" },
     ],
     dialogue: [
-      { speaker: "Pembeli", text: "Mas, berapa ukuran lemari ini? Panjang dan lebarnya?", vi: "Anh ơi, cái tủ này kích thước bao nhiêu? Dài và rộng?", en: "Excuse me, what's the size of this cupboard? Length and width?" },
-      { speaker: "Penjual", text: "Panjang dua meter, lebar enam puluh sentimeter, Bu.", vi: "Dài hai mét, rộng sáu mươi xăng-ti-mét ạ.", en: "Two meters long, sixty centimeters wide, ma'am." },
-      { speaker: "Pembeli", text: "Wah, terlalu besar untuk kamar saya. Apakah ada yang lebih kecil?", vi: "Ồ, quá to so với phòng tôi. Có cái nào nhỏ hơn không?", en: "Oh, too big for my room. Is there a smaller one?" },
-      { speaker: "Penjual", text: "Ada, yang warna terang ini lebih kecil. Sebaiknya ukur dulu kamarnya, ya.", vi: "Có, cái màu sáng này nhỏ hơn. Tốt nhất đo phòng trước nhé.", en: "Yes, this bright-coloured one is smaller. Better measure your room first." },
+      { cell_id: "3c8efa13-8bdc-4cd8-9c5c-cf008366a388", speaker: "Pembeli", text: "Mas, berapa ukuran lemari ini? Panjang dan lebarnya?", vi: "Anh ơi, cái tủ này kích thước bao nhiêu? Dài và rộng?", en: "Excuse me, what's the size of this cupboard? Length and width?" },
+      { cell_id: "ae0b884b-eede-47f5-a29e-0e0fb4f52c7a", speaker: "Penjual", text: "Panjang dua meter, lebar enam puluh sentimeter, Bu.", vi: "Dài hai mét, rộng sáu mươi xăng-ti-mét ạ.", en: "Two meters long, sixty centimeters wide, ma'am." },
+      { cell_id: "06cbd0d2-6443-43ce-aaa5-81124f41b89c", speaker: "Pembeli", text: "Wah, terlalu besar untuk kamar saya. Apakah ada yang lebih kecil?", vi: "Ồ, quá to so với phòng tôi. Có cái nào nhỏ hơn không?", en: "Oh, too big for my room. Is there a smaller one?" },
+      { cell_id: "f3d5813f-59df-4b94-94a7-dbf15df5b90b", speaker: "Penjual", text: "Ada, yang warna terang ini lebih kecil. Sebaiknya ukur dulu kamarnya, ya.", vi: "Có, cái màu sáng này nhỏ hơn. Tốt nhất đo phòng trước nhé.", en: "Yes, this bright-coloured one is smaller. Better measure your room first." },
     ],
     exercises: [
       {
@@ -432,21 +434,21 @@ export const furnitureDecoratingLessons: IndonesianLesson[] = [
     tip_advice_en:
       "Tip for Vietnamese speakers: 'tukang + task' = the tradesman for that job — tukang cat (painter), tukang kayu (carpenter), tukang listrik (electrician). Very productive. Renovation verbs all take the 'me-' (active) prefix: cat → mengecat (paint), pasang → memasang (install), perbaiki → memperbaiki (repair). On signs/instructions you'll often see the passive 'di-' form: dicat (gets painted), dipasang (gets installed). 'Terlihat' = appears/looks (terlihat luas = looks spacious, terlihat mahal = looks expensive). 'Sebaiknya' = it's best to (polite advice). Just remember 'gaya' = style.",
     vocabulary: [
-      { word: "renovasi", en: "renovation", vi: "sửa chữa / cải tạo", pos: "noun", pronunciation_vi: "re-no-VA-si", pronunciation_en: "re-no-VA-see" },
-      { word: "mengecat", en: "to paint", vi: "sơn", pos: "verb", pronunciation_vi: "me-nge-CHAT", pronunciation_en: "me-nge-CHAT" },
-      { word: "dinding", en: "wall", vi: "tường / vách", pos: "noun", pronunciation_vi: "DIN-ding", pronunciation_en: "DEEN-deeng" },
-      { word: "memasang", en: "to install / fit", vi: "lắp / gắn", pos: "verb", pronunciation_vi: "me-ma-SANG", pronunciation_en: "me-ma-SANG" },
-      { word: "tukang", en: "tradesman / handyman", vi: "thợ", pos: "noun", pronunciation_vi: "TU-kang", pronunciation_en: "TOO-kang" },
-      { word: "memperbaiki", en: "to repair", vi: "sửa chữa", pos: "verb", pronunciation_vi: "mem-per-ba-I-ki", pronunciation_en: "mem-per-ba-EE-kee" },
-      { word: "gaya", en: "style", vi: "phong cách / kiểu", pos: "noun", pronunciation_vi: "GA-ya", pronunciation_en: "GA-ya" },
-      { word: "netral", en: "neutral", vi: "trung tính", pos: "adj.", pronunciation_vi: "NE-tral", pronunciation_en: "NE-tral" },
-      { word: "luas", en: "spacious / wide", vi: "rộng rãi", pos: "adj.", pronunciation_vi: "LU-as", pronunciation_en: "LOO-as" },
+      { cell_id: "deac9c63-db95-4c48-96aa-53a277bafee8", word: "renovasi", en: "renovation", vi: "sửa chữa / cải tạo", pos: "noun", pronunciation_vi: "re-no-VA-si", pronunciation_en: "re-no-VA-see" },
+      { cell_id: "e1de0b2b-fe28-4f80-a73c-72b1331312d2", word: "mengecat", en: "to paint", vi: "sơn", pos: "verb", pronunciation_vi: "me-nge-CHAT", pronunciation_en: "me-nge-CHAT" },
+      { cell_id: "933a4115-7956-45a6-815a-a9e4fef62f2f", word: "dinding", en: "wall", vi: "tường / vách", pos: "noun", pronunciation_vi: "DIN-ding", pronunciation_en: "DEEN-deeng" },
+      { cell_id: "ae5c83ff-8e15-4976-8c7c-5f137ab02495", word: "memasang", en: "to install / fit", vi: "lắp / gắn", pos: "verb", pronunciation_vi: "me-ma-SANG", pronunciation_en: "me-ma-SANG" },
+      { cell_id: "6eb1a2fc-d7d4-4fd5-9206-843b478ee5aa", word: "tukang", en: "tradesman / handyman", vi: "thợ", pos: "noun", pronunciation_vi: "TU-kang", pronunciation_en: "TOO-kang" },
+      { cell_id: "2e84a386-b94b-433d-894d-25693132e4fd", word: "memperbaiki", en: "to repair", vi: "sửa chữa", pos: "verb", pronunciation_vi: "mem-per-ba-I-ki", pronunciation_en: "mem-per-ba-EE-kee" },
+      { cell_id: "22bc608a-9dc4-4ed0-ad02-7f5b58a6d681", word: "gaya", en: "style", vi: "phong cách / kiểu", pos: "noun", pronunciation_vi: "GA-ya", pronunciation_en: "GA-ya" },
+      { cell_id: "4b9c20b4-9130-4e46-8d6f-598dee799761", word: "netral", en: "neutral", vi: "trung tính", pos: "adj.", pronunciation_vi: "NE-tral", pronunciation_en: "NE-tral" },
+      { cell_id: "7ee9776b-d67c-4ad4-9422-735c185ba989", word: "luas", en: "spacious / wide", vi: "rộng rãi", pos: "adj.", pronunciation_vi: "LU-as", pronunciation_en: "LOO-as" },
     ],
     dialogue: [
-      { speaker: "Pemilik rumah", text: "Saya ingin merenovasi rumah dan mengecat dinding ruang tamu.", vi: "Tôi muốn sửa lại nhà và sơn tường phòng khách.", en: "I want to renovate the house and paint the living-room walls." },
-      { speaker: "Tukang", text: "Baik, Pak. Mau warna apa? Sekarang gaya minimalis lagi populer.", vi: "Vâng anh. Anh muốn màu gì? Giờ phong cách tối giản đang thịnh.", en: "Alright, sir. What colour? Minimalist style is popular now." },
-      { speaker: "Pemilik rumah", text: "Sebaiknya warna netral supaya ruangan terlihat luas.", vi: "Tốt nhất chọn màu trung tính để phòng trông rộng rãi.", en: "Better a neutral colour so the room looks spacious." },
-      { speaker: "Tukang", text: "Setuju. Nanti saya juga pasang lampu baru dan perbaiki atap yang bocor.", vi: "Đồng ý. Lát tôi cũng lắp đèn mới và sửa mái nhà bị dột.", en: "Agreed. I'll also install new lights and fix the leaking roof." },
+      { cell_id: "70faff3d-e874-46cc-a17c-b67d9ca883ff", speaker: "Pemilik rumah", text: "Saya ingin merenovasi rumah dan mengecat dinding ruang tamu.", vi: "Tôi muốn sửa lại nhà và sơn tường phòng khách.", en: "I want to renovate the house and paint the living-room walls." },
+      { cell_id: "8e0f4ddd-899d-4045-8f48-b3e52755c2c3", speaker: "Tukang", text: "Baik, Pak. Mau warna apa? Sekarang gaya minimalis lagi populer.", vi: "Vâng anh. Anh muốn màu gì? Giờ phong cách tối giản đang thịnh.", en: "Alright, sir. What colour? Minimalist style is popular now." },
+      { cell_id: "929a0d89-0539-4f0e-ac4b-0b3e7fae3a82", speaker: "Pemilik rumah", text: "Sebaiknya warna netral supaya ruangan terlihat luas.", vi: "Tốt nhất chọn màu trung tính để phòng trông rộng rãi.", en: "Better a neutral colour so the room looks spacious." },
+      { cell_id: "de1e5f6b-224e-4089-bb5a-34021e371805", speaker: "Tukang", text: "Setuju. Nanti saya juga pasang lampu baru dan perbaiki atap yang bocor.", vi: "Đồng ý. Lát tôi cũng lắp đèn mới và sửa mái nhà bị dột.", en: "Agreed. I'll also install new lights and fix the leaking roof." },
     ],
     exercises: [
       {

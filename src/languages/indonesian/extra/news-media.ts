@@ -32,6 +32,7 @@ type LessonSentence = {
 };
 
 type VocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -43,6 +44,7 @@ type VocabEntry = {
 };
 
 type DialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -158,21 +160,21 @@ export const newsMediaLessons: IndonesianLesson[] = [
     tip_advice_en:
       "Tip for Vietnamese speakers: many media words are recognizable loanwords — televisi (TV), radio, koran (from Dutch 'krant'), redaksi (editorial desk). Active verbs take the 'me-' prefix: membaca (read), menulis (write), menonton (watch) — from roots baca, tulis, tonton. 'Tentang' = 'about', used for what the news covers ('berita tentang banjir' = news about flooding). The preposition 'di' (in/on/at) marks location, unlike 'ke' (to) — 'di koran' = in the newspaper. Ask the topic: 'Beritanya tentang apa?' (What's the news about?).",
     vocabulary: [
-      { word: "berita", en: "news", vi: "tin tức", pos: "noun", pronunciation_vi: "be-RI-ta", pronunciation_en: "be-REE-ta" },
-      { word: "koran", en: "newspaper", vi: "báo (in)", pos: "noun", pronunciation_vi: "KO-ran", pronunciation_en: "KOH-ran" },
-      { word: "televisi", en: "television", vi: "ti vi / truyền hình", pos: "noun", pronunciation_vi: "te-le-VI-si", pronunciation_en: "te-le-VEE-see" },
-      { word: "wartawan", en: "journalist / reporter", vi: "nhà báo / phóng viên", pos: "noun", pronunciation_vi: "war-ta-WAN", pronunciation_en: "war-ta-WAN" },
-      { word: "judul", en: "title / headline", vi: "tựa đề / tiêu đề", pos: "noun", pronunciation_vi: "JU-dul", pronunciation_en: "JOO-dool" },
-      { word: "membaca", en: "to read", vi: "đọc", pos: "verb", pronunciation_vi: "mem-BA-cha", pronunciation_en: "mem-BA-cha" },
-      { word: "menulis", en: "to write", vi: "viết", pos: "verb", pronunciation_vi: "me-NU-lis", pronunciation_en: "me-NOO-lees" },
-      { word: "rubrik", en: "column / section", vi: "chuyên mục", pos: "noun", pronunciation_vi: "RU-brik", pronunciation_en: "ROO-breek" },
-      { word: "tentang", en: "about / concerning", vi: "về (chủ đề)", pos: "prep.", pronunciation_vi: "ten-TANG", pronunciation_en: "ten-TANG" },
+      { cell_id: "0a4e26b4-59ff-4488-a7f6-9a89d7375b67", word: "berita", en: "news", vi: "tin tức", pos: "noun", pronunciation_vi: "be-RI-ta", pronunciation_en: "be-REE-ta" },
+      { cell_id: "229b55f3-c283-424e-8cf8-31fa42dca92f", word: "koran", en: "newspaper", vi: "báo (in)", pos: "noun", pronunciation_vi: "KO-ran", pronunciation_en: "KOH-ran" },
+      { cell_id: "27eb54ea-84d4-44d8-94ac-1fde7af74245", word: "televisi", en: "television", vi: "ti vi / truyền hình", pos: "noun", pronunciation_vi: "te-le-VI-si", pronunciation_en: "te-le-VEE-see" },
+      { cell_id: "91574ad7-26d5-4d90-9991-bd1706379a87", word: "wartawan", en: "journalist / reporter", vi: "nhà báo / phóng viên", pos: "noun", pronunciation_vi: "war-ta-WAN", pronunciation_en: "war-ta-WAN" },
+      { cell_id: "cda547e7-e572-4692-a4a2-218f993c72fd", word: "judul", en: "title / headline", vi: "tựa đề / tiêu đề", pos: "noun", pronunciation_vi: "JU-dul", pronunciation_en: "JOO-dool" },
+      { cell_id: "25b08e8a-38bc-4d6c-a3d1-a73fe81f793e", word: "membaca", en: "to read", vi: "đọc", pos: "verb", pronunciation_vi: "mem-BA-cha", pronunciation_en: "mem-BA-cha" },
+      { cell_id: "271c887e-8011-4920-8e1e-d58751366a56", word: "menulis", en: "to write", vi: "viết", pos: "verb", pronunciation_vi: "me-NU-lis", pronunciation_en: "me-NOO-lees" },
+      { cell_id: "bd335099-d75f-4637-a50d-de9ccde7d19c", word: "rubrik", en: "column / section", vi: "chuyên mục", pos: "noun", pronunciation_vi: "RU-brik", pronunciation_en: "ROO-breek" },
+      { cell_id: "ed1bc95b-4d56-42c0-8270-0e6cc62e1294", word: "tentang", en: "about / concerning", vi: "về (chủ đề)", pos: "prep.", pronunciation_vi: "ten-TANG", pronunciation_en: "ten-TANG" },
     ],
     dialogue: [
-      { speaker: "Rudi", text: "Selamat pagi. Sudah baca berita hari ini?", vi: "Chào buổi sáng. Đọc tin hôm nay chưa?", en: "Good morning. Have you read today's news?" },
-      { speaker: "Sinta", text: "Belum. Apa judul beritanya?", vi: "Chưa. Tựa đề tin là gì?", en: "Not yet. What's the headline?" },
-      { speaker: "Rudi", text: "Tentang banjir di Jakarta. Ada di Kompas dan di televisi.", vi: "Về trận lụt ở Jakarta. Có trên Kompas và trên ti vi.", en: "About the flooding in Jakarta. It's in Kompas and on TV." },
-      { speaker: "Sinta", text: "Wah, serius. Saya biasanya cuma baca rubrik olahraga.", vi: "Ồ, nghiêm trọng đấy. Tôi thường chỉ đọc mục thể thao.", en: "Wow, serious. I usually only read the sports section." },
+      { cell_id: "890ff847-cd37-4109-96f1-5814ff75b508", speaker: "Rudi", text: "Selamat pagi. Sudah baca berita hari ini?", vi: "Chào buổi sáng. Đọc tin hôm nay chưa?", en: "Good morning. Have you read today's news?" },
+      { cell_id: "b9777078-d7bf-41de-a7de-e5d57b2ebc9a", speaker: "Sinta", text: "Belum. Apa judul beritanya?", vi: "Chưa. Tựa đề tin là gì?", en: "Not yet. What's the headline?" },
+      { cell_id: "98138e45-782e-4cf0-8bc3-ced4bce8ec90", speaker: "Rudi", text: "Tentang banjir di Jakarta. Ada di Kompas dan di televisi.", vi: "Về trận lụt ở Jakarta. Có trên Kompas và trên ti vi.", en: "About the flooding in Jakarta. It's in Kompas and on TV." },
+      { cell_id: "1a3bca0a-905a-4b82-af39-6ed1bfbdf0d1", speaker: "Sinta", text: "Wah, serius. Saya biasanya cuma baca rubrik olahraga.", vi: "Ồ, nghiêm trọng đấy. Tôi thường chỉ đọc mục thể thao.", en: "Wow, serious. I usually only read the sports section." },
     ],
     exercises: [
       {
@@ -295,21 +297,21 @@ export const newsMediaLessons: IndonesianLesson[] = [
     tip_advice_en:
       "Tip for Vietnamese speakers: 'sedang' before a verb = the progressive '-ing' — 'sedang viral', 'sedang trending'. Remember Indonesian doesn't conjugate; you just add 'sedang' (now), 'sudah' (already), 'akan' (will). 'Sebaiknya' = 'it's best to / should' — a very polite advice frame ('Sebaiknya kita cek dulu'). Distinguish 'benar' (true/correct, neutral) from 'bohong' (a lie, colloquial). Many internet words are direct loans ('viral', 'trending', 'share') — pronounced close to English, easy to remember.",
     vocabulary: [
-      { word: "media sosial", en: "social media", vi: "mạng xã hội", pos: "noun", pronunciation_vi: "ME-di-a so-SI-al", pronunciation_en: "MEH-dee-a so-SEE-al" },
-      { word: "viral", en: "viral (spreading fast)", vi: "viral / lan truyền nhanh", pos: "adj.", pronunciation_vi: "VI-ral", pronunciation_en: "VEE-ral" },
-      { word: "trending", en: "trending", vi: "đang thịnh hành", pos: "adj.", pronunciation_vi: "TREN-ding", pronunciation_en: "TREN-ding" },
-      { word: "hoaks", en: "hoax / fake news", vi: "tin giả", pos: "noun", pronunciation_vi: "HO-aks", pronunciation_en: "HOH-aks" },
-      { word: "beredar", en: "to circulate / spread", vi: "lan truyền / lưu hành", pos: "verb", pronunciation_vi: "be-re-DAR", pronunciation_en: "be-re-DAR" },
-      { word: "sumber", en: "source", vi: "nguồn (tin)", pos: "noun", pronunciation_vi: "SUM-ber", pronunciation_en: "SOOM-ber" },
-      { word: "membagikan", en: "to share / distribute", vi: "chia sẻ", pos: "verb", pronunciation_vi: "mem-ba-GI-kan", pronunciation_en: "mem-ba-GEE-kan" },
-      { word: "sedang", en: "currently / -ing", vi: "đang", pos: "aspect marker", pronunciation_vi: "se-DANG", pronunciation_en: "se-DANG" },
-      { word: "bohong", en: "a lie / false", vi: "dối / xạo", pos: "adj./noun", pronunciation_vi: "BO-hong", pronunciation_en: "BOH-hong" },
+      { cell_id: "3970f2c0-a6ef-495f-a3b6-ee724444ce8c", word: "media sosial", en: "social media", vi: "mạng xã hội", pos: "noun", pronunciation_vi: "ME-di-a so-SI-al", pronunciation_en: "MEH-dee-a so-SEE-al" },
+      { cell_id: "63fcc2a6-aa7c-42c0-901b-bdb08b5d7a67", word: "viral", en: "viral (spreading fast)", vi: "viral / lan truyền nhanh", pos: "adj.", pronunciation_vi: "VI-ral", pronunciation_en: "VEE-ral" },
+      { cell_id: "d61b1ada-3cc9-411b-802e-58a04d8d881c", word: "trending", en: "trending", vi: "đang thịnh hành", pos: "adj.", pronunciation_vi: "TREN-ding", pronunciation_en: "TREN-ding" },
+      { cell_id: "a179249c-4d1e-49c3-a025-6296e5072c0b", word: "hoaks", en: "hoax / fake news", vi: "tin giả", pos: "noun", pronunciation_vi: "HO-aks", pronunciation_en: "HOH-aks" },
+      { cell_id: "9ffd6b32-b1ce-4120-a331-f95280a37fb0", word: "beredar", en: "to circulate / spread", vi: "lan truyền / lưu hành", pos: "verb", pronunciation_vi: "be-re-DAR", pronunciation_en: "be-re-DAR" },
+      { cell_id: "6e9f80fe-d2c9-40e7-a50c-4f3fd59a3427", word: "sumber", en: "source", vi: "nguồn (tin)", pos: "noun", pronunciation_vi: "SUM-ber", pronunciation_en: "SOOM-ber" },
+      { cell_id: "f63550e0-aa78-472a-8811-9d045376b76a", word: "membagikan", en: "to share / distribute", vi: "chia sẻ", pos: "verb", pronunciation_vi: "mem-ba-GI-kan", pronunciation_en: "mem-ba-GEE-kan" },
+      { cell_id: "1bfcc4a4-a040-4154-bb30-6d81d30cfea4", word: "sedang", en: "currently / -ing", vi: "đang", pos: "aspect marker", pronunciation_vi: "se-DANG", pronunciation_en: "se-DANG" },
+      { cell_id: "a6b8dc0e-54b7-4339-bb34-f7dfaa13d165", word: "bohong", en: "a lie / false", vi: "dối / xạo", pos: "adj./noun", pronunciation_vi: "BO-hong", pronunciation_en: "BOH-hong" },
     ],
     dialogue: [
-      { speaker: "Dewi", text: "Eh, kamu lihat video yang lagi viral itu? Sedang trending banget.", vi: "Này, cậu xem cái video đang viral đó chưa? Đang trending kinh khủng.", en: "Hey, did you see that viral video? It's super trending." },
-      { speaker: "Joko", text: "Lihat. Tapi menurutku itu hoaks. Sumbernya nggak jelas.", vi: "Xem rồi. Nhưng tớ thấy đó là tin giả. Nguồn không rõ ràng.", en: "I did. But I think it's a hoax. The source is unclear." },
-      { speaker: "Dewi", text: "Iya juga, ya. Sebaiknya kita cek dulu sebelum membagikan.", vi: "Ừ cũng đúng. Tốt nhất ta kiểm tra trước khi chia sẻ.", en: "True. We'd better check before sharing." },
-      { speaker: "Joko", text: "Setuju. Saring dulu sebelum sharing, biar nggak ikut menyebar bohong.", vi: "Đồng ý. Lọc trước khi chia sẻ, để khỏi góp phần lan tin xạo.", en: "Agreed. Filter before sharing, so we don't help spread lies." },
+      { cell_id: "071e9e8e-f741-4db6-bb68-45ad46f5e9f1", speaker: "Dewi", text: "Eh, kamu lihat video yang lagi viral itu? Sedang trending banget.", vi: "Này, cậu xem cái video đang viral đó chưa? Đang trending kinh khủng.", en: "Hey, did you see that viral video? It's super trending." },
+      { cell_id: "f89febc2-e649-4559-9adb-efbfbb6631b9", speaker: "Joko", text: "Lihat. Tapi menurutku itu hoaks. Sumbernya nggak jelas.", vi: "Xem rồi. Nhưng tớ thấy đó là tin giả. Nguồn không rõ ràng.", en: "I did. But I think it's a hoax. The source is unclear." },
+      { cell_id: "a1215cd6-560b-4ad8-b71d-cd6f2c7d76db", speaker: "Dewi", text: "Iya juga, ya. Sebaiknya kita cek dulu sebelum membagikan.", vi: "Ừ cũng đúng. Tốt nhất ta kiểm tra trước khi chia sẻ.", en: "True. We'd better check before sharing." },
+      { cell_id: "4fc49417-6472-4e37-a926-627abb985984", speaker: "Joko", text: "Setuju. Saring dulu sebelum sharing, biar nggak ikut menyebar bohong.", vi: "Đồng ý. Lọc trước khi chia sẻ, để khỏi góp phần lan tin xạo.", en: "Agreed. Filter before sharing, so we don't help spread lies." },
     ],
     exercises: [
       {
@@ -432,21 +434,21 @@ export const newsMediaLessons: IndonesianLesson[] = [
     tip_advice_en:
       "Tip for Vietnamese speakers: 'menurut + person' = 'according to' — 'menurut saya' (in my view), 'menurut kamu' (in yours), 'menurut ahli' (per experts). Politeness trick: use 'kurang' (less/lacking) to soften criticism — 'kurang setuju', 'kurang tepat', 'kurang jelas' sound far gentler than 'tidak'. 'Bahwa' = 'that', linking after opinion verbs: 'berpendapat bahwa…', 'mengatakan bahwa…'. Current-affairs antonyms: naik (rise) ↔ turun (fall), setuju (agree) ↔ menolak (reject). Avoid SARA topics until you're close; if you disagree, close with 'Kita lihat saja nanti'.",
     vocabulary: [
-      { word: "menurut saya", en: "in my opinion", vi: "theo tôi", pos: "phrase", pronunciation_vi: "me-NU-rut SA-ya", pronunciation_en: "me-NOO-root SA-ya" },
-      { word: "isu", en: "issue", vi: "vấn đề / sự việc", pos: "noun", pronunciation_vi: "I-su", pronunciation_en: "EE-soo" },
-      { word: "kebijakan", en: "policy", vi: "chính sách", pos: "noun", pronunciation_vi: "ke-bi-JA-kan", pronunciation_en: "ke-bee-JA-kan" },
-      { word: "berpendapat", en: "to be of the opinion", vi: "cho rằng / có ý kiến", pos: "verb", pronunciation_vi: "ber-pen-DA-pat", pronunciation_en: "ber-pen-DA-pat" },
-      { word: "setuju", en: "to agree", vi: "đồng ý", pos: "verb", pronunciation_vi: "se-TU-ju", pronunciation_en: "se-TOO-joo" },
-      { word: "dampak", en: "impact / effect", vi: "tác động", pos: "noun", pronunciation_vi: "DAM-pak", pronunciation_en: "DAM-pak" },
-      { word: "masuk akal", en: "to make sense / reasonable", vi: "hợp lý", pos: "phrase", pronunciation_vi: "MA-suk A-kal", pronunciation_en: "MA-sook A-kal" },
-      { word: "perkembangan", en: "development / how it unfolds", vi: "diễn biến", pos: "noun", pronunciation_vi: "per-kem-BANG-an", pronunciation_en: "per-kem-BANG-an" },
-      { word: "kurang", en: "less / not quite (softener)", vi: "ít / chưa lắm", pos: "adv.", pronunciation_vi: "KU-rang", pronunciation_en: "KOO-rang" },
+      { cell_id: "423c0b04-46ef-456c-a71d-d68eccea4122", word: "menurut saya", en: "in my opinion", vi: "theo tôi", pos: "phrase", pronunciation_vi: "me-NU-rut SA-ya", pronunciation_en: "me-NOO-root SA-ya" },
+      { cell_id: "874cbe48-257a-450b-ba27-29db1f85226f", word: "isu", en: "issue", vi: "vấn đề / sự việc", pos: "noun", pronunciation_vi: "I-su", pronunciation_en: "EE-soo" },
+      { cell_id: "a16b3a69-3148-4beb-9ce9-5733fda466c2", word: "kebijakan", en: "policy", vi: "chính sách", pos: "noun", pronunciation_vi: "ke-bi-JA-kan", pronunciation_en: "ke-bee-JA-kan" },
+      { cell_id: "8268d1df-c671-4b31-904b-16d8cce3e627", word: "berpendapat", en: "to be of the opinion", vi: "cho rằng / có ý kiến", pos: "verb", pronunciation_vi: "ber-pen-DA-pat", pronunciation_en: "ber-pen-DA-pat" },
+      { cell_id: "c97de7c0-8dac-427a-9850-06a0cb06d2ad", word: "setuju", en: "to agree", vi: "đồng ý", pos: "verb", pronunciation_vi: "se-TU-ju", pronunciation_en: "se-TOO-joo" },
+      { cell_id: "6ca58139-367a-4efe-8187-cbecd1c604a6", word: "dampak", en: "impact / effect", vi: "tác động", pos: "noun", pronunciation_vi: "DAM-pak", pronunciation_en: "DAM-pak" },
+      { cell_id: "1f67b0d4-2ceb-4423-b16f-40e7bf5e55b9", word: "masuk akal", en: "to make sense / reasonable", vi: "hợp lý", pos: "phrase", pronunciation_vi: "MA-suk A-kal", pronunciation_en: "MA-sook A-kal" },
+      { cell_id: "073cfa08-a1e5-4c3b-9720-98861090f2c5", word: "perkembangan", en: "development / how it unfolds", vi: "diễn biến", pos: "noun", pronunciation_vi: "per-kem-BANG-an", pronunciation_en: "per-kem-BANG-an" },
+      { cell_id: "c3f05c79-d440-4d4f-8378-02bc514ab1b2", word: "kurang", en: "less / not quite (softener)", vi: "ít / chưa lắm", pos: "adv.", pronunciation_vi: "KU-rang", pronunciation_en: "KOO-rang" },
     ],
     dialogue: [
-      { speaker: "Bayu", text: "Menurut kamu bagaimana soal kebijakan harga BBM yang baru?", vi: "Theo cậu thì chính sách giá xăng dầu mới thế nào?", en: "What do you think about the new fuel-price policy?" },
-      { speaker: "Maya", text: "Menurut saya cukup masuk akal, tapi dampaknya ke rakyat kecil belum jelas.", vi: "Theo tôi cũng khá hợp lý, nhưng tác động lên người nghèo chưa rõ.", en: "I think it's fairly reasonable, but its impact on poorer people isn't clear yet." },
-      { speaker: "Bayu", text: "Saya kurang setuju, sih. Banyak orang berpendapat harga lain ikut naik.", vi: "Tôi thì không đồng ý lắm. Nhiều người cho rằng giá khác cũng tăng theo.", en: "I don't quite agree. Many think other prices will rise too." },
-      { speaker: "Maya", text: "Bisa jadi. Ya sudah, kita lihat saja perkembangannya nanti.", vi: "Có thể lắm. Thôi vậy, cứ chờ xem diễn biến sau.", en: "Could be. Well, let's just wait and see how it develops." },
+      { cell_id: "e158b452-1394-49ef-901a-160890c7755f", speaker: "Bayu", text: "Menurut kamu bagaimana soal kebijakan harga BBM yang baru?", vi: "Theo cậu thì chính sách giá xăng dầu mới thế nào?", en: "What do you think about the new fuel-price policy?" },
+      { cell_id: "295b9d3a-1448-40c6-819f-a6e277b3a97f", speaker: "Maya", text: "Menurut saya cukup masuk akal, tapi dampaknya ke rakyat kecil belum jelas.", vi: "Theo tôi cũng khá hợp lý, nhưng tác động lên người nghèo chưa rõ.", en: "I think it's fairly reasonable, but its impact on poorer people isn't clear yet." },
+      { cell_id: "4d50b621-2d19-4956-bca1-e11595562a0d", speaker: "Bayu", text: "Saya kurang setuju, sih. Banyak orang berpendapat harga lain ikut naik.", vi: "Tôi thì không đồng ý lắm. Nhiều người cho rằng giá khác cũng tăng theo.", en: "I don't quite agree. Many think other prices will rise too." },
+      { cell_id: "91e7b61c-b792-48a9-a09a-8a925ffe4f23", speaker: "Maya", text: "Bisa jadi. Ya sudah, kita lihat saja perkembangannya nanti.", vi: "Có thể lắm. Thôi vậy, cứ chờ xem diễn biến sau.", en: "Could be. Well, let's just wait and see how it develops." },
     ],
     exercises: [
       {

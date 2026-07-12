@@ -18,6 +18,7 @@ export type PunjabiReceiptFocus =
 export type PunjabiReceiptStage = "pre_a11_receipt" | "ledger" | "archive" | "pre_integration" | "regression";
 
 export type PunjabiScriptVocabularyReceiptSample = {
+  cell_id?: string;
   id: string;
   focus: PunjabiReceiptFocus;
   stage: PunjabiReceiptStage;

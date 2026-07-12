@@ -18,6 +18,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   /** Indonesian word/phrase. */
   word: string;
   /** English meaning. */
@@ -33,6 +34,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   /** Indonesian line. */
   text: string;
@@ -243,6 +245,7 @@ export const workplaceTrainingSafetyLessons: IndonesianLesson[] = [
       "Useful lines: `Saya belum paham bagian ini` (I do not understand this part yet), `Boleh saya ulangi langkahnya?` (May I repeat the steps?), and `Apakah ini sudah sesuai SOP?` (Is this according to the SOP?). Avoid sounding overly confident when you are not sure.",
     vocabulary: [
       {
+        cell_id: "3b5845d8-345c-4288-a77c-ba97d1b50a81",
         word: "pelatihan kerja",
         en: "workplace/job training",
         vi: "đào tạo công việc",
@@ -251,6 +254,7 @@ export const workplaceTrainingSafetyLessons: IndonesianLesson[] = [
         pronunciation_en: "pe-LA-tih-an KER-ja",
       },
       {
+        cell_id: "0927ee0b-f3b7-4e8d-8859-5e13eee13f6a",
         word: "SOP",
         en: "standard operating procedure",
         vi: "quy trình thao tác chuẩn",
@@ -259,6 +263,7 @@ export const workplaceTrainingSafetyLessons: IndonesianLesson[] = [
         pronunciation_en: "ess-oh-PEE",
       },
       {
+        cell_id: "6eb97a27-6b18-4040-80c5-159acbf0cb16",
         word: "keselamatan",
         en: "safety",
         vi: "sự an toàn/an toàn lao động",
@@ -267,6 +272,7 @@ export const workplaceTrainingSafetyLessons: IndonesianLesson[] = [
         pronunciation_en: "ke-se-la-MAT-an",
       },
       {
+        cell_id: "2edcf737-fdbb-40a0-b50e-eb6b430ff874",
         word: "instruksi supervisor",
         en: "supervisor's instruction",
         vi: "chỉ dẫn của giám sát",
@@ -275,6 +281,7 @@ export const workplaceTrainingSafetyLessons: IndonesianLesson[] = [
         pronunciation_en: "in-STRUK-si su-per-VAI-sor",
       },
       {
+        cell_id: "d1b2a572-7d52-4817-ad17-18405d60bfc0",
         word: "praktik langsung",
         en: "hands-on practice",
         vi: "thực hành trực tiếp",
@@ -283,6 +290,7 @@ export const workplaceTrainingSafetyLessons: IndonesianLesson[] = [
         pronunciation_en: "PRAK-tik LANG-soong",
       },
       {
+        cell_id: "1cf5d44b-46da-4019-aa9c-a0956ff5493b",
         word: "sertifikat pelatihan",
         en: "training certificate",
         vi: "chứng chỉ đào tạo",
@@ -291,6 +299,7 @@ export const workplaceTrainingSafetyLessons: IndonesianLesson[] = [
         pronunciation_en: "SER-ti-fi-kat pe-LA-tih-an",
       },
       {
+        cell_id: "304a4dfc-8437-42c7-98f8-4d87d6e9f5f3",
         word: "evaluasi",
         en: "evaluation",
         vi: "đánh giá",
@@ -299,6 +308,7 @@ export const workplaceTrainingSafetyLessons: IndonesianLesson[] = [
         pronunciation_en: "e-va-lu-A-si",
       },
       {
+        cell_id: "bd5af869-ca8c-4b20-848a-32cf8d0de4f7",
         word: "kesalahan umum",
         en: "common mistake",
         vi: "lỗi thường gặp",
@@ -307,6 +317,7 @@ export const workplaceTrainingSafetyLessons: IndonesianLesson[] = [
         pronunciation_en: "ke-SA-lah-an OO-moom",
       },
       {
+        cell_id: "3bd3f3b7-1f35-4a5e-970c-f1996a4cc571",
         word: "pemeriksaan awal",
         en: "initial check",
         vi: "kiểm tra ban đầu",
@@ -315,6 +326,7 @@ export const workplaceTrainingSafetyLessons: IndonesianLesson[] = [
         pronunciation_en: "pe-me-RIK-sa-an A-wal",
       },
       {
+        cell_id: "d3a18abf-8789-4f3f-a59f-224f6fe828a3",
         word: "menebak prosedur",
         en: "guess the procedure",
         vi: "đoán quy trình",
@@ -325,36 +337,42 @@ export const workplaceTrainingSafetyLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "4bd08d6a-8d68-4c2b-9605-66d33e49ed7a",
         speaker: "Peserta",
         text: "Pak, saya belum paham langkah kedua dalam SOP ini.",
         vi: "Anh/chú ơi, tôi chưa hiểu bước thứ hai trong SOP này.",
         en: "Sir, I do not understand the second step in this SOP yet.",
       },
       {
+        cell_id: "b844adf4-2b57-4d76-b9cd-c6c741e0eba9",
         speaker: "Supervisor",
         text: "Tidak apa-apa. Kita ulangi pelan-pelan sebelum praktik langsung.",
         vi: "Không sao. Chúng ta lặp lại từ từ trước khi thực hành trực tiếp.",
         en: "That is okay. We will repeat it slowly before hands-on practice.",
       },
       {
+        cell_id: "a1337943-aedb-464a-96c9-158ec409fa9b",
         speaker: "Peserta",
         text: "Apakah saya boleh mencoba dengan pendamping dulu?",
         vi: "Tôi có thể thử với người kèm trước không?",
         en: "May I try with a mentor first?",
       },
       {
+        cell_id: "666a6bea-737d-43ea-b68a-c6cbaa815b81",
         speaker: "Supervisor",
         text: "Boleh. Ikuti instruksi saya dan jangan menyalakan mesin sebelum saya beri tanda.",
         vi: "Được. Hãy làm theo chỉ dẫn của tôi và đừng bật máy trước khi tôi ra hiệu.",
         en: "Yes. Follow my instructions and do not turn on the machine before I give the signal.",
       },
       {
+        cell_id: "664e3102-476c-4d41-9630-50db043faf86",
         speaker: "Peserta",
         text: "Baik, kalau saya ragu, saya akan bertanya dulu.",
         vi: "Vâng, nếu tôi không chắc, tôi sẽ hỏi trước.",
         en: "Okay, if I am unsure, I will ask first.",
       },
       {
+        cell_id: "49d6cb4e-d2e4-47c5-ad54-957cbabe6831",
         speaker: "Supervisor",
         text: "Bagus. Lebih baik bertanya daripada menebak prosedur.",
         vi: "Tốt. Hỏi thì tốt hơn là đoán quy trình.",

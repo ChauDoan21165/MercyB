@@ -17,6 +17,7 @@ type IndonesianLessonSentence = {
 };
 
 type IndonesianVocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -26,6 +27,7 @@ type IndonesianVocabEntry = {
 };
 
 type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -212,6 +214,7 @@ export const communitySportsTournamentLessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: when asking about a tournament, use practical frames like `pendaftaran tim`, `jadwal pertandingan`, `hadiah juara`, `wasit`, `panitia`, and `sponsor`. To sound friendly, add `tolong` and `harap` when requesting information.",
     vocabulary: [
       {
+        cell_id: "3e02cae6-f36f-4aa4-a879-0b9d5790a450",
         word: "turnamen kampung",
         en: "neighborhood tournament",
         vi: "giai dau khu pho",
@@ -220,6 +223,7 @@ export const communitySportsTournamentLessons: IndonesianLesson[] = [
         pronunciation_en: "tur-NAH-men KAHM-poong",
       },
       {
+        cell_id: "aa1b7931-903d-4c4e-a5b5-1fa107578a3d",
         word: "pendaftaran tim",
         en: "team registration",
         vi: "dang ky doi",
@@ -228,6 +232,7 @@ export const communitySportsTournamentLessons: IndonesianLesson[] = [
         pronunciation_en: "pen-daf-tah-RAN teem",
       },
       {
+        cell_id: "29468f0f-b9a6-4894-a892-eb443d52f024",
         word: "jadwal pertandingan",
         en: "match schedule",
         vi: "lich thi dau",
@@ -236,6 +241,7 @@ export const communitySportsTournamentLessons: IndonesianLesson[] = [
         pronunciation_en: "JAHD-wahl per-tan-DEENG-an",
       },
       {
+        cell_id: "456c0d86-07d1-40b4-a48d-e829f932c51e",
         word: "wasit",
         en: "referee",
         vi: "trong tai",
@@ -244,6 +250,7 @@ export const communitySportsTournamentLessons: IndonesianLesson[] = [
         pronunciation_en: "WAH-sit",
       },
       {
+        cell_id: "28a9083e-487c-4e41-b9f4-64e0e497e59d",
         word: "sportivitas",
         en: "sportsmanship",
         vi: "tinh than the thao",
@@ -252,6 +259,7 @@ export const communitySportsTournamentLessons: IndonesianLesson[] = [
         pronunciation_en: "spor-tee-VEE-tas",
       },
       {
+        cell_id: "5728e662-ca7b-46cd-9743-15f04077d4a4",
         word: "hadiah juara",
         en: "winner's prize",
         vi: "giai thuong cho doi nhat",
@@ -260,6 +268,7 @@ export const communitySportsTournamentLessons: IndonesianLesson[] = [
         pronunciation_en: "HAH-dee-AH JOO-ah-rah",
       },
       {
+        cell_id: "56527ee2-7bee-4c08-a0f4-a8ca90839b69",
         word: "panitia",
         en: "organizing committee",
         vi: "ban to chuc",
@@ -268,6 +277,7 @@ export const communitySportsTournamentLessons: IndonesianLesson[] = [
         pronunciation_en: "pah-NEE-tee-ah",
       },
       {
+        cell_id: "92a8aea0-1252-4b9e-be32-fd1469db663e",
         word: "sponsor",
         en: "sponsor",
         vi: "nha tai tro",
@@ -278,30 +288,35 @@ export const communitySportsTournamentLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "4751d7ff-d0f0-4b3a-a291-28f2c9d7657b",
         speaker: "Panitia",
         text: "Selamat sore, tim futsal mana yang sudah daftar?",
         vi: "Chao buoi chieu, doi futsal nao da dang ky roi?",
         en: "Good afternoon, which futsal teams have already registered?",
       },
       {
+        cell_id: "66b486ee-da4a-4fdb-87fe-051a79afd27a",
         speaker: "Kapten Tim",
         text: "Tim kami sudah daftar, dan kami ingin tahu jadwal pertandingan.",
         vi: "Doi chung toi da dang ky, va chung toi muon biet lich thi dau.",
         en: "Our team has already registered, and we want to know the match schedule.",
       },
       {
+        cell_id: "93e6df2e-ba12-417d-be7b-490262eabb56",
         speaker: "Panitia",
         text: "Baik, saya kirim jadwalnya. Wasit akan menjelaskan aturan pertandingan sebelum mulai.",
         vi: "Duoc, toi se gui lich. Trong tai se giai thich luat thi dau truoc khi bat dau.",
         en: "Alright, I will send the schedule. The referee will explain the rules before the match starts.",
       },
       {
+        cell_id: "34fcbffe-b2a1-467d-b9ad-ce139f1efc5c",
         speaker: "Kapten Tim",
         text: "Terima kasih. Kami ingin bermain dengan sportivitas tinggi.",
         vi: "Cam on. Chung toi muon thi dau voi tinh than the thao cao.",
         en: "Thank you. We want to play with strong sportsmanship.",
       },
       {
+        cell_id: "26345b67-cb8f-4e9d-9184-a016ff2d6d43",
         speaker: "Panitia",
         text: "Bagus. Kalau menang, ada hadiah juara pertama dari sponsor.",
         vi: "Tot lam. Neu thang, co giai thuong hang nhat tu nha tai tro.",

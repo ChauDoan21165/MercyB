@@ -35,6 +35,7 @@ export type ThaiSentence = {
 };
 
 export type ThaiVocab = {
+  cell_id?: string;
   word: string;
   rom: string;
   vi: string;
@@ -93,11 +94,11 @@ export const lessons: ThaiC1Lesson[] = [
       },
     ],
     vocabulary: [
-      { word: "เรียน", rom: "rian", vi: "kính thưa (mở đầu trang trọng)", en: "formal salutation 'to/dear'", pos: "v." },
-      { word: "ผู้มีเกียรติ", rom: "phûu-mii-kìat", vi: "quý vị / khách quý", en: "honored guests", pos: "n." },
-      { word: "นำเสนอ", rom: "námsànǒe", vi: "trình bày, thuyết trình", en: "to present", pos: "v." },
-      { word: "หัวข้อ", rom: "hǔa-khôo", vi: "chủ đề, đề mục", en: "topic / heading", pos: "n." },
-      { word: "แบ่งออกเป็น", rom: "bàeng òok pen", vi: "chia thành", en: "to be divided into", pos: "v." },
+      { cell_id: "625e9d93-e3d4-4174-9ae7-d5685f34da22", word: "เรียน", rom: "rian", vi: "kính thưa (mở đầu trang trọng)", en: "formal salutation 'to/dear'", pos: "v." },
+      { cell_id: "8f30a5bc-3632-4759-bfa6-6d915dcfaef6", word: "ผู้มีเกียรติ", rom: "phûu-mii-kìat", vi: "quý vị / khách quý", en: "honored guests", pos: "n." },
+      { cell_id: "b172cc45-0b85-42b0-83a2-4bd9eb194744", word: "นำเสนอ", rom: "námsànǒe", vi: "trình bày, thuyết trình", en: "to present", pos: "v." },
+      { cell_id: "67e443ef-1761-45eb-93b1-47b6e92093e1", word: "หัวข้อ", rom: "hǔa-khôo", vi: "chủ đề, đề mục", en: "topic / heading", pos: "n." },
+      { cell_id: "7b7052a5-82a8-4cdc-84f1-48e30080cf8f", word: "แบ่งออกเป็น", rom: "bàeng òok pen", vi: "chia thành", en: "to be divided into", pos: "v." },
     ],
     notes_vi:
       "Trong tiếng Thái trang trọng, người nói mở đầu bằng เรียน + đối tượng (ท่านผู้มีเกียรติ) thay vì chào suồng sã. Đại từ ngôi thứ nhất đổi theo giới: ผม (nam) / ดิฉัน (nữ). Tránh dùng ฉัน hay เรา trong bối cảnh học thuật.",
@@ -144,11 +145,11 @@ export const lessons: ThaiC1Lesson[] = [
       },
     ],
     vocabulary: [
-      { word: "ฉบับ", rom: "chà-bàp", vi: "bản (loại từ cho văn bản)", en: "classifier for documents", pos: "clf." },
-      { word: "ไตรมาส", rom: "trai-mâat", vi: "quý (3 tháng)", en: "quarter (of a year)", pos: "n." },
-      { word: "ร้อยละ", rom: "rói-lá", vi: "phần trăm", en: "percent", pos: "n." },
-      { word: "แนวโน้ม", rom: "naeo-nóom", vi: "xu hướng", en: "trend", pos: "n." },
-      { word: "ภาคผนวก", rom: "phâak-phà-nùak", vi: "phụ lục", en: "appendix", pos: "n." },
+      { cell_id: "2a065244-4548-4db7-862e-c8352d3bb7b6", word: "ฉบับ", rom: "chà-bàp", vi: "bản (loại từ cho văn bản)", en: "classifier for documents", pos: "clf." },
+      { cell_id: "4f05c053-49e6-4663-8f36-64d27fdd593a", word: "ไตรมาส", rom: "trai-mâat", vi: "quý (3 tháng)", en: "quarter (of a year)", pos: "n." },
+      { cell_id: "7b23e375-8b84-4ea7-81b6-5e5ffbcdddd7", word: "ร้อยละ", rom: "rói-lá", vi: "phần trăm", en: "percent", pos: "n." },
+      { cell_id: "7ea18072-de6e-4a7f-92af-b295ca75931d", word: "แนวโน้ม", rom: "naeo-nóom", vi: "xu hướng", en: "trend", pos: "n." },
+      { cell_id: "037f36fb-42c4-4925-8a34-654ff1a11a19", word: "ภาคผนวก", rom: "phâak-phà-nùak", vi: "phụ lục", en: "appendix", pos: "n." },
     ],
     notes_vi:
       "Văn báo cáo Thái dùng từ Hán-Khmer trang trọng: ดำเนินงาน (vận hành/hoạt động) thay cho ทำงาน, ปรากฏ (xuất hiện) thay cho มี. ร้อยละ đứng TRƯỚC con số (ร้อยละ ๑๕), khác với เปอร์เซ็นต์ đứng sau.",
@@ -195,11 +196,11 @@ export const lessons: ThaiC1Lesson[] = [
       },
     ],
     vocabulary: [
-      { word: "ผู้วิจัย", rom: "phûu-wí-jai", vi: "nhà nghiên cứu", en: "researcher", pos: "n." },
-      { word: "โต้แย้ง", rom: "tôo-yáeng", vi: "lập luận phản bác", en: "to argue / dispute", pos: "v." },
-      { word: "หลักฐาน", rom: "làk-thǎan", vi: "bằng chứng", en: "evidence", pos: "n." },
-      { word: "กล่าวอีกนัยหนึ่ง", rom: "klàao ìik nai nùeng", vi: "nói cách khác", en: "in other words", pos: "phr." },
-      { word: "วิเคราะห์", rom: "wí-khrór", vi: "phân tích", en: "to analyze", pos: "v." },
+      { cell_id: "8c106983-4bb7-45eb-93b2-6e837c99098b", word: "ผู้วิจัย", rom: "phûu-wí-jai", vi: "nhà nghiên cứu", en: "researcher", pos: "n." },
+      { cell_id: "da610fa0-3660-4865-86cf-adcf35f7fcfe", word: "โต้แย้ง", rom: "tôo-yáeng", vi: "lập luận phản bác", en: "to argue / dispute", pos: "v." },
+      { cell_id: "7daa57ee-45fc-44e4-b688-b453d5a470e9", word: "หลักฐาน", rom: "làk-thǎan", vi: "bằng chứng", en: "evidence", pos: "n." },
+      { cell_id: "945c81bd-384c-43cd-8896-ff47f8b04829", word: "กล่าวอีกนัยหนึ่ง", rom: "klàao ìik nai nùeng", vi: "nói cách khác", en: "in other words", pos: "phr." },
+      { cell_id: "f17db452-bb5a-4b27-b87e-9d74e5e55b1a", word: "วิเคราะห์", rom: "wí-khrór", vi: "phân tích", en: "to analyze", pos: "v." },
     ],
     notes_vi:
       "Khi trích dẫn, tiếng Thái học thuật dùng จากการศึกษาของ... พบว่า... (theo nghiên cứu của..., thấy rằng...). Động từ tư duy đặc trưng: โต้แย้ง (phản biện), ชี้ให้เห็น (chỉ ra), เสนอ (đề xuất). มุ่ง + động từ = 'nhằm/hướng tới'.",
@@ -246,11 +247,11 @@ export const lessons: ThaiC1Lesson[] = [
       },
     ],
     vocabulary: [
-      { word: "ที่นับถือ", rom: "thîi náp-thǔue", vi: "kính mến (sau tên)", en: "respected (after a name)", pos: "phr." },
-      { word: "สอบถาม", rom: "sòop-thǎam", vi: "hỏi, tra hỏi (lịch sự)", en: "to inquire", pos: "v." },
-      { word: "รบกวน", rom: "róp-kuan", vi: "làm phiền (mở lời nhờ vả)", en: "to trouble (softener for a request)", pos: "v." },
-      { word: "ความอนุเคราะห์", rom: "khwaam-à-nú-khrór", vi: "sự hỗ trợ, giúp đỡ (trang trọng)", en: "kind assistance", pos: "n." },
-      { word: "ขอแสดงความนับถือ", rom: "khǒo sà-daeng khwaam náp-thǔue", vi: "trân trọng (kết thư)", en: "yours sincerely", pos: "phr." },
+      { cell_id: "15a1679c-835e-4358-8ccd-cf8f70b2de2b", word: "ที่นับถือ", rom: "thîi náp-thǔue", vi: "kính mến (sau tên)", en: "respected (after a name)", pos: "phr." },
+      { cell_id: "65ca3a3b-2708-4dfa-b31b-ce2c9ac7b737", word: "สอบถาม", rom: "sòop-thǎam", vi: "hỏi, tra hỏi (lịch sự)", en: "to inquire", pos: "v." },
+      { cell_id: "1f1db1bc-a1a9-4245-88e4-cc408cda381e", word: "รบกวน", rom: "róp-kuan", vi: "làm phiền (mở lời nhờ vả)", en: "to trouble (softener for a request)", pos: "v." },
+      { cell_id: "96f1dc8e-eb9e-4355-aebb-e97809379467", word: "ความอนุเคราะห์", rom: "khwaam-à-nú-khrór", vi: "sự hỗ trợ, giúp đỡ (trang trọng)", en: "kind assistance", pos: "n." },
+      { cell_id: "e97129c3-4537-414b-91f3-2c2db019c7cf", word: "ขอแสดงความนับถือ", rom: "khǒo sà-daeng khwaam náp-thǔue", vi: "trân trọng (kết thư)", en: "yours sincerely", pos: "phr." },
     ],
     notes_vi:
       "Email công sở Thái có khung cố định: เรียน...ที่นับถือ (mở) → จึงเรียนมาเพื่อ... → ขอแสดงความนับถือ (đóng). รบกวน và ขอความอนุเคราะห์ là 'từ giảm nhẹ' bắt buộc khi nhờ vả; bỏ chúng đi nghe ra lệnh.",
@@ -297,11 +298,11 @@ export const lessons: ThaiC1Lesson[] = [
       },
     ],
     vocabulary: [
-      { word: "แม้ว่า...แต่", rom: "máe-wâa…tàe", vi: "mặc dù... nhưng", en: "although… (still)", pos: "conj." },
-      { word: "ก่อให้เกิด", rom: "kòo-hâi-kòet", vi: "gây ra, làm phát sinh", en: "to give rise to", pos: "v." },
-      { word: "ด้วยเหตุนี้", rom: "dûai hèet níi", vi: "vì lẽ đó", en: "for this reason", pos: "conj." },
-      { word: "ข้อจำกัด", rom: "khôo-jam-kàt", vi: "hạn chế, giới hạn", en: "limitation", pos: "n." },
-      { word: "สมดุล", rom: "sà-mà-dun", vi: "cân bằng", en: "balanced", pos: "adj." },
+      { cell_id: "61dae738-6259-4f81-804e-e8b4d7a39779", word: "แม้ว่า...แต่", rom: "máe-wâa…tàe", vi: "mặc dù... nhưng", en: "although… (still)", pos: "conj." },
+      { cell_id: "d88b3644-d684-441f-b454-9e30bcb03704", word: "ก่อให้เกิด", rom: "kòo-hâi-kòet", vi: "gây ra, làm phát sinh", en: "to give rise to", pos: "v." },
+      { cell_id: "093c8899-7e4a-4201-bd98-512b192f2749", word: "ด้วยเหตุนี้", rom: "dûai hèet níi", vi: "vì lẽ đó", en: "for this reason", pos: "conj." },
+      { cell_id: "2e75cbd4-2592-4e13-8d30-2469a17877d2", word: "ข้อจำกัด", rom: "khôo-jam-kàt", vi: "hạn chế, giới hạn", en: "limitation", pos: "n." },
+      { cell_id: "2bc51755-649b-4d57-b72d-d76b464672f2", word: "สมดุล", rom: "sà-mà-dun", vi: "cân bằng", en: "balanced", pos: "adj." },
     ],
     notes_vi:
       "Lập luận C1 cần bước NHƯỢNG BỘ: แม้ว่า...แต่... (mặc dù...nhưng...) cho thấy bạn thấy cả hai phía. Tiếng Thái lưu ý แต่ thường đi với ก็ (...แต่ก็...) trong câu nhượng bộ — bỏ ก็ nghe cụt.",
@@ -348,11 +349,11 @@ export const lessons: ThaiC1Lesson[] = [
       },
     ],
     vocabulary: [
-      { word: "ขออนุญาต", rom: "khǒo à-nú-yâat", vi: "xin phép", en: "may I / with your permission", pos: "phr." },
-      { word: "วาระ", rom: "waa-rá", vi: "nội dung họp, chương trình nghị sự", en: "agenda item", pos: "n." },
-      { word: "ทบทวน", rom: "tóp-thuan", vi: "rà soát, xem lại", en: "to review", pos: "v." },
-      { word: "มติ", rom: "má-tì", vi: "quyết nghị, nghị quyết", en: "resolution / decision", pos: "n." },
-      { word: "มอบหมาย", rom: "môop-mǎai", vi: "phân công, giao việc", en: "to assign", pos: "v." },
+      { cell_id: "06f30b98-07b3-4438-b712-be9acac53a27", word: "ขออนุญาต", rom: "khǒo à-nú-yâat", vi: "xin phép", en: "may I / with your permission", pos: "phr." },
+      { cell_id: "e73901b9-5332-408c-a3e2-0daaf23dc054", word: "วาระ", rom: "waa-rá", vi: "nội dung họp, chương trình nghị sự", en: "agenda item", pos: "n." },
+      { cell_id: "28800f9b-0c30-461c-9acf-81089cebbdb0", word: "ทบทวน", rom: "tóp-thuan", vi: "rà soát, xem lại", en: "to review", pos: "v." },
+      { cell_id: "c5e2b3fb-4f99-47c0-b2aa-2f1fadedad36", word: "มติ", rom: "má-tì", vi: "quyết nghị, nghị quyết", en: "resolution / decision", pos: "n." },
+      { cell_id: "ae2748b5-8eb9-431c-9d7c-0d78f2d628db", word: "มอบหมาย", rom: "môop-mǎai", vi: "phân công, giao việc", en: "to assign", pos: "v." },
     ],
     notes_vi:
       "Chủ trì họp dùng ขออนุญาต (xin phép) trước hành động để giữ phép tắc tập thể. Mời người khác phát biểu dùng ขอเชิญ + tên + แสดงความคิดเห็น — trang trọng hơn nhiều so với พูด.",
@@ -399,11 +400,11 @@ export const lessons: ThaiC1Lesson[] = [
       },
     ],
     vocabulary: [
-      { word: "แผนภูมิ", rom: "phǎen-phuum", vi: "biểu đồ", en: "chart / diagram", pos: "n." },
-      { word: "สะท้อน", rom: "sà-thóon", vi: "phản ánh", en: "to reflect", pos: "v." },
-      { word: "เชิงประจักษ์", rom: "choeng prà-jàk", vi: "thực nghiệm, dựa trên quan sát", en: "empirical", pos: "adj." },
-      { word: "ดังกล่าว", rom: "dang-klàao", vi: "nói trên, đã nêu", en: "aforementioned", pos: "det." },
-      { word: "กลุ่มตัวอย่าง", rom: "klùm-tua-yàang", vi: "mẫu (nghiên cứu)", en: "sample (group)", pos: "n." },
+      { cell_id: "4dcc9523-b55a-47bf-82ae-7c6b66cab104", word: "แผนภูมิ", rom: "phǎen-phuum", vi: "biểu đồ", en: "chart / diagram", pos: "n." },
+      { cell_id: "25765d1e-540e-47e0-bd8b-c3e8995abc86", word: "สะท้อน", rom: "sà-thóon", vi: "phản ánh", en: "to reflect", pos: "v." },
+      { cell_id: "eca5edeb-a659-45fb-918d-38044d2daa8a", word: "เชิงประจักษ์", rom: "choeng prà-jàk", vi: "thực nghiệm, dựa trên quan sát", en: "empirical", pos: "adj." },
+      { cell_id: "cc067ad7-6978-44fc-9faa-1a2d2731d18f", word: "ดังกล่าว", rom: "dang-klàao", vi: "nói trên, đã nêu", en: "aforementioned", pos: "det." },
+      { cell_id: "ab8a0987-6baa-4e87-97e7-70ab27152562", word: "กลุ่มตัวอย่าง", rom: "klùm-tua-yàang", vi: "mẫu (nghiên cứu)", en: "sample (group)", pos: "n." },
     ],
     notes_vi:
       "Dẫn dữ liệu mở bằng ตามข้อมูลที่... (theo dữ liệu...). ดังกล่าว là từ chỉ định trang trọng thay cho นี้/นั้น khi nhắc lại điều đã nêu. Cặp đôi học thuật: หลักฐานเชิงประจักษ์ (bằng chứng thực nghiệm).",
@@ -450,11 +451,11 @@ export const lessons: ThaiC1Lesson[] = [
       },
     ],
     vocabulary: [
-      { word: "เปรียบเทียบ", rom: "prìap-thîap", vi: "so sánh", en: "to compare", pos: "v." },
-      { word: "อย่างมีนัยสำคัญ", rom: "yàang mii-nai-sǎm-khan", vi: "một cách đáng kể (có ý nghĩa thống kê)", en: "significantly", pos: "adv." },
-      { word: "ในทางตรงกันข้าม", rom: "nai thaang trong-kan-khâam", vi: "ngược lại", en: "on the contrary", pos: "phr." },
-      { word: "แตกต่าง", rom: "tàek-tàang", vi: "khác biệt", en: "to differ", pos: "v." },
-      { word: "สมมติฐาน", rom: "sǒm-mút-tì-thǎan", vi: "giả thuyết", en: "hypothesis", pos: "n." },
+      { cell_id: "155c7d8b-cbd4-4e4a-a62f-c3cff5ba6801", word: "เปรียบเทียบ", rom: "prìap-thîap", vi: "so sánh", en: "to compare", pos: "v." },
+      { cell_id: "3d0b8240-c58c-4ce1-abc2-7d9b287b20d4", word: "อย่างมีนัยสำคัญ", rom: "yàang mii-nai-sǎm-khan", vi: "một cách đáng kể (có ý nghĩa thống kê)", en: "significantly", pos: "adv." },
+      { cell_id: "5c3832e6-8244-4f82-ac6d-4ef3d20b89a6", word: "ในทางตรงกันข้าม", rom: "nai thaang trong-kan-khâam", vi: "ngược lại", en: "on the contrary", pos: "phr." },
+      { cell_id: "d1cf385d-2c92-4b6c-b1e7-2578dc465cbf", word: "แตกต่าง", rom: "tàek-tàang", vi: "khác biệt", en: "to differ", pos: "v." },
+      { cell_id: "202af6a5-cf4e-4067-a185-a87ca5b3e7de", word: "สมมติฐาน", rom: "sǒm-mút-tì-thǎan", vi: "giả thuyết", en: "hypothesis", pos: "n." },
     ],
     notes_vi:
       "อย่างมีนัยสำคัญ là cụm trang trọng = 'đáng kể/có ý nghĩa', dùng nhiều trong báo cáo và nghiên cứu. Phân biệt với เยอะ/มาก (nhiều, đời thường). ในทางตรงกันข้าม mở câu đối lập toàn phần.",
@@ -501,11 +502,11 @@ export const lessons: ThaiC1Lesson[] = [
       },
     ],
     vocabulary: [
-      { word: "มุมมอง", rom: "mum-moong", vi: "quan điểm, góc nhìn", en: "perspective", pos: "n." },
-      { word: "เห็นต่าง", rom: "hěn-tàang", vi: "có ý kiến khác, bất đồng", en: "to disagree / hold a different view", pos: "v." },
-      { word: "แง่มุม", rom: "ngâe-mum", vi: "góc độ, khía cạnh", en: "angle / aspect", pos: "n." },
-      { word: "พิจารณา", rom: "phí-jaa-rá-naa", vi: "cân nhắc, xem xét", en: "to consider", pos: "v." },
-      { word: "จุดร่วม", rom: "jùt rûam", vi: "điểm chung", en: "common ground", pos: "n." },
+      { cell_id: "fcbb4abd-47eb-47e9-8bc9-0326c2c03926", word: "มุมมอง", rom: "mum-moong", vi: "quan điểm, góc nhìn", en: "perspective", pos: "n." },
+      { cell_id: "23ef0052-439e-4219-af44-71303ed2a51c", word: "เห็นต่าง", rom: "hěn-tàang", vi: "có ý kiến khác, bất đồng", en: "to disagree / hold a different view", pos: "v." },
+      { cell_id: "89fca31d-5d3c-417b-87c0-ab524d7adfbf", word: "แง่มุม", rom: "ngâe-mum", vi: "góc độ, khía cạnh", en: "angle / aspect", pos: "n." },
+      { cell_id: "395cef5f-4a1d-47fc-ad58-c3d2ea2a542d", word: "พิจารณา", rom: "phí-jaa-rá-naa", vi: "cân nhắc, xem xét", en: "to consider", pos: "v." },
+      { cell_id: "b6ebd64f-b93c-4a55-9328-bf478c3cb6d2", word: "จุดร่วม", rom: "jùt rûam", vi: "điểm chung", en: "common ground", pos: "n." },
     ],
     notes_vi:
       "Văn hóa Thái coi trọng giữ thể diện (เกรงใจ). Bất đồng phải 'gói' trong sự đồng tình trước: เข้าใจ...แต่ขออนุญาตเห็นต่าง. Tránh phủ định thẳng ไม่เห็นด้วย không có đệm — dễ làm mất mặt.",
@@ -552,11 +553,11 @@ export const lessons: ThaiC1Lesson[] = [
       },
     ],
     vocabulary: [
-      { word: "ข้าพเจ้า", rom: "khâa-phá-jâo", vi: "tôi (trang trọng, văn bản)", en: "I (very formal, written)", pos: "pron." },
-      { word: "เสนอแนะ", rom: "sà-nǒe-náe", vi: "khuyến nghị, đề xuất", en: "to recommend", pos: "v." },
-      { word: "ค่อยเป็นค่อยไป", rom: "khôi-pen-khôi-pai", vi: "từng bước, dần dần", en: "gradually / step by step", pos: "adv." },
-      { word: "อนุมัติ", rom: "à-nú-mát", vi: "phê duyệt", en: "to approve", pos: "v." },
-      { word: "ตามที่เห็นสมควร", rom: "taam thîi hěn sǒm-khuan", vi: "tùy theo xét thấy hợp lý", en: "as deemed appropriate", pos: "phr." },
+      { cell_id: "4d3d280e-2aac-4ac2-9532-25e135dcc232", word: "ข้าพเจ้า", rom: "khâa-phá-jâo", vi: "tôi (trang trọng, văn bản)", en: "I (very formal, written)", pos: "pron." },
+      { cell_id: "116fe633-b7cb-4148-83b8-67599b0a4a9f", word: "เสนอแนะ", rom: "sà-nǒe-náe", vi: "khuyến nghị, đề xuất", en: "to recommend", pos: "v." },
+      { cell_id: "31772817-9806-4aa9-b136-bccdd485d483", word: "ค่อยเป็นค่อยไป", rom: "khôi-pen-khôi-pai", vi: "từng bước, dần dần", en: "gradually / step by step", pos: "adv." },
+      { cell_id: "fb86efdf-141b-42d6-a09a-b04162050393", word: "อนุมัติ", rom: "à-nú-mát", vi: "phê duyệt", en: "to approve", pos: "v." },
+      { cell_id: "5fc2a07d-b04f-46bb-840d-362ce5ad8dda", word: "ตามที่เห็นสมควร", rom: "taam thîi hěn sǒm-khuan", vi: "tùy theo xét thấy hợp lý", en: "as deemed appropriate", pos: "phr." },
     ],
     notes_vi:
       "ข้าพเจ้า là đại từ 'tôi' trang trọng nhất, chỉ dùng trong văn bản chính thức (tờ trình, đơn). เสนอแนะ + ให้ + động từ = 'khuyến nghị làm gì'. Câu kết tờ trình cố định: จึงเรียนมาเพื่อโปรดพิจารณา.",
@@ -603,11 +604,11 @@ export const lessons: ThaiC1Lesson[] = [
       },
     ],
     vocabulary: [
-      { word: "อันเป็นผลมาจาก", rom: "an-pen-phǒn maa jàak", vi: "là hệ quả từ", en: "as a result of", pos: "phr." },
-      { word: "ส่งผลให้", rom: "sòng-phǒn hâi", vi: "dẫn đến, làm cho", en: "to result in", pos: "v." },
-      { word: "ปัจจัย", rom: "pàt-jai", vi: "yếu tố", en: "factor", pos: "n." },
-      { word: "ปราศจาก", rom: "pràat-sà-jàak", vi: "thiếu vắng, không có", en: "without / devoid of", pos: "prep." },
-      { word: "ย่อม", rom: "yôom", vi: "tất yếu, ắt hẳn", en: "inevitably / would naturally", pos: "adv." },
+      { cell_id: "8588d3d8-e798-4d39-975a-349c57703505", word: "อันเป็นผลมาจาก", rom: "an-pen-phǒn maa jàak", vi: "là hệ quả từ", en: "as a result of", pos: "phr." },
+      { cell_id: "f6a2789c-6dc5-4b7e-a02b-8dea8a67edde", word: "ส่งผลให้", rom: "sòng-phǒn hâi", vi: "dẫn đến, làm cho", en: "to result in", pos: "v." },
+      { cell_id: "c3834cd3-19b9-47d2-8202-6c26dbfccff0", word: "ปัจจัย", rom: "pàt-jai", vi: "yếu tố", en: "factor", pos: "n." },
+      { cell_id: "90ac5fe7-555c-4637-91b3-cf409f418503", word: "ปราศจาก", rom: "pràat-sà-jàak", vi: "thiếu vắng, không có", en: "without / devoid of", pos: "prep." },
+      { cell_id: "8953de00-189a-4c59-8869-3ff0c8ce794b", word: "ย่อม", rom: "yôom", vi: "tất yếu, ắt hẳn", en: "inevitably / would naturally", pos: "adv." },
     ],
     notes_vi:
       "Chuỗi nhân quả trang trọng: อันเป็นผลมาจาก (hệ quả từ — nhìn về nguyên nhân) ↔ ส่งผลให้ (dẫn đến — nhìn về kết quả). ย่อม đứng trước động từ diễn đạt tính tất yếu logic, mang sắc thái văn viết.",
@@ -654,11 +655,11 @@ export const lessons: ThaiC1Lesson[] = [
       },
     ],
     vocabulary: [
-      { word: "ดังต่อไปนี้", rom: "dang-tòo-pai-níi", vi: "như sau", en: "as follows", pos: "phr." },
-      { word: "ขั้นตอน", rom: "khân-toon", vi: "bước, công đoạn", en: "step / stage", pos: "n." },
-      { word: "เป็นรูปธรรม", rom: "pen rûup-pà-tham", vi: "cụ thể, hữu hình", en: "concrete / tangible", pos: "adj." },
-      { word: "ติดตามผล", rom: "tìt-taam phǒn", vi: "theo dõi kết quả, follow-up", en: "to follow up", pos: "v." },
-      { word: "ความคืบหน้า", rom: "khwaam-khûep-nâa", vi: "tiến độ", en: "progress", pos: "n." },
+      { cell_id: "1548a5c8-1794-4eb2-9890-5248078f1499", word: "ดังต่อไปนี้", rom: "dang-tòo-pai-níi", vi: "như sau", en: "as follows", pos: "phr." },
+      { cell_id: "bd758233-dfc1-4150-807e-311f3d7e90ab", word: "ขั้นตอน", rom: "khân-toon", vi: "bước, công đoạn", en: "step / stage", pos: "n." },
+      { cell_id: "7f35695c-16b2-45d5-afb4-4b7fdb51713e", word: "เป็นรูปธรรม", rom: "pen rûup-pà-tham", vi: "cụ thể, hữu hình", en: "concrete / tangible", pos: "adj." },
+      { cell_id: "5b406f71-893f-4ebf-bce0-1eff8da17362", word: "ติดตามผล", rom: "tìt-taam phǒn", vi: "theo dõi kết quả, follow-up", en: "to follow up", pos: "v." },
+      { cell_id: "bae1644e-b705-4450-bc2b-387c03adb3d8", word: "ความคืบหน้า", rom: "khwaam-khûep-nâa", vi: "tiến độ", en: "progress", pos: "n." },
     ],
     notes_vi:
       "Kết bài C1 không 'lặp lại' mà 'tổng hợp + chỉ đường': โดยสรุป → ขั้นตอนต่อไป → cảm ơn. ดังต่อไปนี้ báo hiệu một danh sách sắp liệt kê. เป็นรูปธรรม (cụ thể) đối lập với เป็นนามธรรม (trừu tượng).",

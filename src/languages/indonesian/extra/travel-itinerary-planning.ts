@@ -23,6 +23,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   /** Indonesian word/phrase. */
   word: string;
   /** English meaning. */
@@ -38,6 +39,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   /** Indonesian line. */
   text: string;
@@ -227,6 +229,7 @@ export const lessons: IndonesianLesson[] = [
       "Fast-learning tip: build your itinerary by the frame `pagi - siang - sore - malam` (morning - noon - afternoon - evening) and fill each block with activities. When asking about plans, prioritize these patterns: `Kita mulai dari ...`, `Setelah itu ...`, `Berapa biaya total ...?`, `Kalau ...`. For transport, remember one core word: `naik`.",
     vocabulary: [
       {
+        cell_id: "2e2d4f32-c3c0-42e9-b9fe-ff5c20c84d70",
         word: "itinerary",
         en: "itinerary",
         vi: "lịch trình",
@@ -235,6 +238,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "i-ti-NE-ra-ri — English loanword, common in travel planning",
       },
       {
+        cell_id: "51c4d125-387d-488e-ae05-59bc4b6797fd",
         word: "jadwal harian",
         en: "daily schedule",
         vi: "lịch trình hằng ngày",
@@ -243,6 +247,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "JAD-wal ha-REE-an — `harian` = daily",
       },
       {
+        cell_id: "46bb5ec9-6e29-42d8-b263-8773b9983a21",
         word: "transportasi",
         en: "transportation",
         vi: "phương tiện di chuyển",
@@ -251,6 +256,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "trans-por-TA-si — formal word; shorter in speech: `transport` or `naik apa`",
       },
       {
+        cell_id: "d409058f-5444-469c-a007-c44c8ace681f",
         word: "penginapan",
         en: "lodging / accommodation",
         vi: "chỗ ở / nhà nghỉ",
@@ -259,6 +265,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "pe-ngi-NA-pan — root `inap` = stay overnight",
       },
       {
+        cell_id: "2ca6c6d5-989d-4001-9ee0-57f4bff1fa19",
         word: "tempat wisata",
         en: "tourist spot",
         vi: "điểm tham quan",
@@ -267,6 +274,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "TEM-pat wi-SA-ta — say the full phrase when asking about places to visit",
       },
       {
+        cell_id: "2bb75f71-dbab-4683-aa9d-c8880ed618fb",
         word: "biaya",
         en: "cost / expense",
         vi: "chi phí",
@@ -275,6 +283,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "bee-AH-yah — `biaya total` = total cost",
       },
       {
+        cell_id: "a4fb519c-49a7-4b96-9456-be1c3e054493",
         word: "waktu luang",
         en: "free time",
         vi: "thời gian rảnh",
@@ -283,6 +292,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "WAK-too LOO-ang — leave some space in the schedule",
       },
       {
+        cell_id: "b2e6be57-cd18-4faf-80cc-023f3289eb49",
         word: "rencana cadangan",
         en: "backup plan",
         vi: "kế hoạch dự phòng",
@@ -291,6 +301,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "ren-CHA-na cha-DAH-ngan — used when weather or plans change",
       },
       {
+        cell_id: "57ed8346-82e5-4a83-ac9d-e191a9874e3f",
         word: "berangkat",
         en: "to depart / leave",
         vi: "xuất phát / lên đường",
@@ -299,6 +310,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "be-RANG-kat — `berangkat dari hotel` = depart from the hotel",
       },
       {
+        cell_id: "89165988-8156-4eff-b586-6bf3b5cabc29",
         word: "jam karet",
         en: "flexible / delayed time",
         vi: "giờ dây thun / giờ linh hoạt",
@@ -309,36 +321,42 @@ export const lessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "b004e69e-a7f3-4423-946b-63283a4614fd",
         speaker: "Teman",
         text: "Itinerary-nya sudah jadi?",
         vi: "Lịch trình đã xong chưa?",
         en: "Is the itinerary ready?",
       },
       {
+        cell_id: "1cff3555-2767-4ed9-a2ef-853dd29c53fc",
         speaker: "Saya",
         text: "Sudah. Kita mulai dari museum, lalu naik kereta ke kota sebelah.",
         vi: "Rồi. Mình bắt đầu từ bảo tàng, rồi đi tàu sang thành phố bên cạnh.",
         en: "Yes. We start with the museum, then take a train to the neighboring city.",
       },
       {
+        cell_id: "fe4c3d1d-cdc3-44e8-b128-c1defae31c73",
         speaker: "Teman",
         text: "Bagus. Berapa biaya total perjalanan ini?",
         vi: "Tốt. Tổng chi phí của chuyến đi này là bao nhiêu?",
         en: "Great. What is the total cost of this trip?",
       },
       {
+        cell_id: "841d9394-fd86-4742-b8e2-cdb555f66afd",
         speaker: "Saya",
         text: "Sekitar satu juta rupiah. Saya juga sisakan waktu luang di sore hari.",
         vi: "Khoảng một triệu rupiah. Tôi cũng chừa ra thời gian rảnh vào buổi chiều.",
         en: "Around one million rupiah. I also left free time in the afternoon.",
       },
       {
+        cell_id: "897ee2c0-267e-493a-8b65-4d8077ee79ca",
         speaker: "Teman",
         text: "Kalau hujan, rencana cadangannya apa?",
         vi: "Nếu mưa thì phương án dự phòng là gì?",
         en: "If it rains, what's the backup plan?",
       },
       {
+        cell_id: "5fbcdb55-9c85-4d2c-a63b-08559509ad99",
         speaker: "Saya",
         text: "Kita pindah ke museum saja, lalu saya kirim jadwal hariannya ke grup.",
         vi: "Mình chuyển sang đi bảo tàng thôi, rồi tôi gửi lịch trình hằng ngày vào nhóm.",

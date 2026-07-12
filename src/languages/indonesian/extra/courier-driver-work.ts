@@ -18,6 +18,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   /** Indonesian word/phrase. */
   word: string;
   /** English meaning. */
@@ -33,6 +34,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   /** Indonesian line. */
   text: string;
@@ -211,6 +213,7 @@ export const courierDriverWorkLessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: in delivery work, distinguish `kirim` = send, `antar` = deliver/take to the destination, `ambil` = pick up, and `bawa kembali` = bring back. Learn these chunks whole: `alamat kurang jelas`, `penerima tidak ada`, `target harian`, `aplikasi kurir`, `minta tanda tangan`, `paket gagal antar`.",
     vocabulary: [
       {
+        cell_id: "db883bcd-abb3-4c42-9cc1-98f911516ce8",
         word: "kurir paket",
         en: "parcel courier",
         vi: "người giao gói hàng / shipper",
@@ -219,6 +222,7 @@ export const courierDriverWorkLessons: IndonesianLesson[] = [
         pronunciation_en: "KOO-rir PA-ket",
       },
       {
+        cell_id: "a0bd76cf-3b32-480a-a086-5cac4d717295",
         word: "ambil paket",
         en: "pick up a package",
         vi: "lấy gói hàng",
@@ -227,6 +231,7 @@ export const courierDriverWorkLessons: IndonesianLesson[] = [
         pronunciation_en: "AM-bil PA-ket",
       },
       {
+        cell_id: "955af969-a0cc-4552-abec-d3ac00304e80",
         word: "antar barang",
         en: "deliver goods/items",
         vi: "giao hàng / đưa hàng",
@@ -235,6 +240,7 @@ export const courierDriverWorkLessons: IndonesianLesson[] = [
         pronunciation_en: "AN-tar BA-rang",
       },
       {
+        cell_id: "d44accf9-77be-451b-887d-9552b3cad823",
         word: "alamat kurang jelas",
         en: "unclear address",
         vi: "địa chỉ không rõ",
@@ -243,6 +249,7 @@ export const courierDriverWorkLessons: IndonesianLesson[] = [
         pronunciation_en: "a-LA-mat KOO-rang JE-las",
       },
       {
+        cell_id: "a0e8003d-0674-45e5-9736-9eb229d1b1c9",
         word: "penerima",
         en: "recipient",
         vi: "người nhận",
@@ -251,6 +258,7 @@ export const courierDriverWorkLessons: IndonesianLesson[] = [
         pronunciation_en: "pe-ne-REE-ma",
       },
       {
+        cell_id: "cf97b3fc-5c6a-4776-a791-c16c873dff49",
         word: "target harian",
         en: "daily target",
         vi: "chỉ tiêu hằng ngày",
@@ -259,6 +267,7 @@ export const courierDriverWorkLessons: IndonesianLesson[] = [
         pronunciation_en: "TAR-get HA-ree-an",
       },
       {
+        cell_id: "cdd91ea4-d773-4caf-a450-7b3ad09282ea",
         word: "aplikasi kurir",
         en: "courier app",
         vi: "ứng dụng giao hàng",
@@ -267,6 +276,7 @@ export const courierDriverWorkLessons: IndonesianLesson[] = [
         pronunciation_en: "ap-lee-KA-see KOO-rir",
       },
       {
+        cell_id: "48e8a8e1-0179-4bf2-8278-9b13f7c99130",
         word: "tanda tangan",
         en: "signature",
         vi: "chữ ký",
@@ -275,6 +285,7 @@ export const courierDriverWorkLessons: IndonesianLesson[] = [
         pronunciation_en: "TAN-da TA-ngan",
       },
       {
+        cell_id: "39422d3f-3dad-4bf4-ac4a-d5edd0122571",
         word: "patokan",
         en: "landmark / reference point",
         vi: "mốc chỉ đường",
@@ -283,6 +294,7 @@ export const courierDriverWorkLessons: IndonesianLesson[] = [
         pronunciation_en: "pa-TO-kan",
       },
       {
+        cell_id: "58a68c4d-99f7-4b62-b0b6-5561ab6f705d",
         word: "gagal antar",
         en: "failed delivery",
         vi: "giao không thành công",
@@ -293,24 +305,28 @@ export const courierDriverWorkLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "3eec8083-7e51-430e-a429-bdac48389701",
         speaker: "Kurir",
         text: "Halo, saya kurir paket. Alamat rumahnya nomor berapa?",
         vi: "Alo, tôi là shipper giao hàng. Số nhà là bao nhiêu ạ?",
         en: "Hello, I am the parcel courier. What is the house number?",
       },
       {
+        cell_id: "bd99e72a-13ff-4c44-ade5-a4c060393814",
         speaker: "Penerima",
         text: "Nomor 18, dekat warung hijau. Saya share lokasi sekarang.",
         vi: "Số 18, gần quán màu xanh. Tôi chia sẻ vị trí bây giờ.",
         en: "Number 18, near the green stall. I will share the location now.",
       },
       {
+        cell_id: "16ac280d-71d6-4b62-8556-db9c2c8b7816",
         speaker: "Kurir",
         text: "Baik. Setelah paket diterima, mohon tanda tangan di aplikasi.",
         vi: "Vâng. Sau khi nhận gói hàng, xin ký trong ứng dụng.",
         en: "Okay. After the package is received, please sign in the app.",
       },
       {
+        cell_id: "966c29d6-889e-4d11-b17e-af1bb6477956",
         speaker: "Penerima",
         text: "Siap, saya tunggu di depan rumah.",
         vi: "Vâng, tôi đợi trước nhà.",

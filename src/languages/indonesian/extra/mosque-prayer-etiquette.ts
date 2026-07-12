@@ -17,6 +17,7 @@ type LessonSentence = {
 };
 
 type VocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -26,6 +27,7 @@ type VocabEntry = {
 };
 
 type DialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -198,6 +200,7 @@ export const mosquePrayerEtiquetteLessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: remember four practical mosque phrases: `tempat wudu`, `pinjam mukena/sarung`, `luruskan saf`, and `titip sandal`. When unsure, use the polite frame `Maaf, apakah saya boleh ...?` or `Ada aturan khusus untuk pengunjung?`.",
     vocabulary: [
       {
+        cell_id: "bd6f3a7e-fc34-4730-b689-e2584f063669",
         word: "masjid",
         en: "mosque",
         vi: "nhà thờ Hồi giáo",
@@ -206,6 +209,7 @@ export const mosquePrayerEtiquetteLessons: IndonesianLesson[] = [
         pronunciation_en: "MAS-jid",
       },
       {
+        cell_id: "2f40b116-025b-4c4d-ac7e-6bd408679983",
         word: "wudu",
         en: "ritual washing before prayer",
         vi: "nghi thức rửa trước khi cầu nguyện",
@@ -214,6 +218,7 @@ export const mosquePrayerEtiquetteLessons: IndonesianLesson[] = [
         pronunciation_en: "woo-DOO",
       },
       {
+        cell_id: "1817da43-f163-4d9f-ad66-c28b9d28f593",
         word: "salat Jumat",
         en: "Friday prayer",
         vi: "lễ cầu nguyện thứ Sáu",
@@ -222,6 +227,7 @@ export const mosquePrayerEtiquetteLessons: IndonesianLesson[] = [
         pronunciation_en: "SA-lat JOOM-at",
       },
       {
+        cell_id: "5fab7731-bb00-48ff-8aed-8d5815c86ea8",
         word: "mukena",
         en: "women's prayer garment",
         vi: "trang phục cầu nguyện nữ",
@@ -230,6 +236,7 @@ export const mosquePrayerEtiquetteLessons: IndonesianLesson[] = [
         pronunciation_en: "moo-KEH-na",
       },
       {
+        cell_id: "b531575f-1a86-47a7-8b3d-20da689347e6",
         word: "sarung",
         en: "sarong / wrapped cloth",
         vi: "sarong / vải quấn",
@@ -238,6 +245,7 @@ export const mosquePrayerEtiquetteLessons: IndonesianLesson[] = [
         pronunciation_en: "SA-roong",
       },
       {
+        cell_id: "e570dbee-0834-43ff-87d4-e6a67073add2",
         word: "saf",
         en: "prayer row",
         vi: "hàng cầu nguyện",
@@ -246,6 +254,7 @@ export const mosquePrayerEtiquetteLessons: IndonesianLesson[] = [
         pronunciation_en: "saf",
       },
       {
+        cell_id: "0c4a302c-3c2e-4e6c-b9e5-c1fe383fe30b",
         word: "azan",
         en: "call to prayer",
         vi: "tiếng gọi cầu nguyện",
@@ -254,6 +263,7 @@ export const mosquePrayerEtiquetteLessons: IndonesianLesson[] = [
         pronunciation_en: "AH-zan",
       },
       {
+        cell_id: "cb0b1d4b-70ac-4daf-8f08-205c2fbde0df",
         word: "titip sandal",
         en: "leave sandals for safekeeping",
         vi: "gửi dép / nhờ giữ dép",
@@ -264,30 +274,35 @@ export const mosquePrayerEtiquetteLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "c2f59222-3845-4f59-8dd5-625881152284",
         speaker: "Pengunjung",
         text: "Maaf, tempat wudu ada di mana?",
         vi: "Xin lỗi, chỗ wudu ở đâu ạ?",
         en: "Excuse me, where is the wudu area?",
       },
       {
+        cell_id: "f52f375b-c23a-4a8b-8d74-d54b3e186447",
         speaker: "Petugas Masjid",
         text: "Di sebelah kanan, dekat tempat sandal.",
         vi: "Ở bên phải, gần chỗ để dép.",
         en: "On the right, near the sandal area.",
       },
       {
+        cell_id: "f16c6daf-80f7-486e-ac79-267f6dcadd27",
         speaker: "Pengunjung",
         text: "Apakah saya bisa pinjam sarung?",
         vi: "Tôi có thể mượn sarong không ạ?",
         en: "May I borrow a sarong?",
       },
       {
+        cell_id: "7157c1db-5e48-4618-8f65-8b666736eecc",
         speaker: "Petugas Masjid",
         text: "Bisa. Setelah dipakai, tolong kembalikan ke rak ini.",
         vi: "Có thể. Sau khi dùng, vui lòng trả lại kệ này.",
         en: "Yes. After using it, please return it to this shelf.",
       },
       {
+        cell_id: "704be3c4-ba87-4965-ad84-c66a45ebb0ec",
         speaker: "Pengunjung",
         text: "Baik. Kalau azan sudah mulai, saya duduk di bagian belakang saja.",
         vi: "Vâng. Nếu azan bắt đầu rồi, tôi sẽ ngồi ở khu phía sau thôi.",

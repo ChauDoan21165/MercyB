@@ -17,6 +17,7 @@ type LessonSentence = {
 };
 
 type VocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -26,6 +27,7 @@ type VocabEntry = {
 };
 
 type DialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -198,6 +200,7 @@ export const apartmentPestControlLessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: when reporting a problem, use clear frames: `Saya mau melapor...`, `Ada banyak... di...`, `Kapan jadwal...?`, `Apakah aman untuk...?`. Remember `di` for location (`di dapur`, `di basement`) and `ke` for direction (`ke lobby`, `ke kantor pengelola`).",
     vocabulary: [
       {
+        cell_id: "5f802adc-e9e6-46b5-9a42-4e978a485332",
         word: "hama",
         en: "pest",
         vi: "sinh vật gây hại",
@@ -206,6 +209,7 @@ export const apartmentPestControlLessons: IndonesianLesson[] = [
         pronunciation_en: "HA-ma",
       },
       {
+        cell_id: "6d1a015c-4ef8-4629-b4b0-80e0eadf2000",
         word: "kecoa",
         en: "cockroach",
         vi: "gián",
@@ -214,6 +218,7 @@ export const apartmentPestControlLessons: IndonesianLesson[] = [
         pronunciation_en: "keh-CHO-ah",
       },
       {
+        cell_id: "a47d8aab-35c6-4e4d-811a-50124e599294",
         word: "nyamuk",
         en: "mosquito",
         vi: "muỗi",
@@ -222,6 +227,7 @@ export const apartmentPestControlLessons: IndonesianLesson[] = [
         pronunciation_en: "NYA-mook",
       },
       {
+        cell_id: "a9eba79d-12a4-4c0d-8b7f-1f0d7bf160ab",
         word: "tikus",
         en: "rat / mouse",
         vi: "chuột",
@@ -230,6 +236,7 @@ export const apartmentPestControlLessons: IndonesianLesson[] = [
         pronunciation_en: "TEE-koos",
       },
       {
+        cell_id: "4caaffc7-d8a9-451e-8b4f-30ec987f6dc1",
         word: "semprot obat",
         en: "spray pest-control chemical",
         vi: "phun thuốc",
@@ -238,6 +245,7 @@ export const apartmentPestControlLessons: IndonesianLesson[] = [
         pronunciation_en: "SEM-prot OH-bat",
       },
       {
+        cell_id: "0778ea02-fce2-4ef2-b901-08ae2d9f25cf",
         word: "jadwal pest control",
         en: "pest-control schedule",
         vi: "lịch diệt côn trùng",
@@ -246,6 +254,7 @@ export const apartmentPestControlLessons: IndonesianLesson[] = [
         pronunciation_en: "JAD-wal pest kon-TROL",
       },
       {
+        cell_id: "03ca0c01-e395-4cd2-ac65-09c55a9819ff",
         word: "pengelola apartemen",
         en: "apartment management",
         vi: "ban quản lý căn hộ",
@@ -254,6 +263,7 @@ export const apartmentPestControlLessons: IndonesianLesson[] = [
         pronunciation_en: "pe-nge-LO-la a-par-te-MEN",
       },
       {
+        cell_id: "09001346-a8cd-4e01-b9d4-29ba8a6b4ebb",
         word: "bau obat",
         en: "chemical smell",
         vi: "mùi thuốc / mùi hóa chất",
@@ -264,30 +274,35 @@ export const apartmentPestControlLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "d76cbc66-eec8-4d1e-af26-ccbac283db7a",
         speaker: "Penghuni",
         text: "Selamat siang, saya mau melapor ada banyak kecoa di dapur unit saya.",
         vi: "Chào buổi trưa, tôi muốn báo có nhiều gián trong bếp căn hộ của tôi.",
         en: "Good afternoon, I want to report many cockroaches in my unit's kitchen.",
       },
       {
+        cell_id: "c120d173-123c-4b35-9c0b-7567b09010a8",
         speaker: "Pengelola",
         text: "Baik, Bu. Apakah kecoanya muncul setiap hari?",
         vi: "Vâng, chị. Gián xuất hiện mỗi ngày không ạ?",
         en: "Okay, ma'am. Do the cockroaches appear every day?",
       },
       {
+        cell_id: "fa0cab89-b8f8-4853-a921-ce38af0589ba",
         speaker: "Penghuni",
         text: "Iya, terutama dekat tempat sampah. Kapan jadwal pest control?",
         vi: "Có, nhất là gần thùng rác. Lịch pest control là khi nào?",
         en: "Yes, especially near the trash bin. When is the pest-control schedule?",
       },
       {
+        cell_id: "e2514507-c793-4bcb-a6d9-8fb754ec246a",
         speaker: "Pengelola",
         text: "Besok pagi petugas akan semprot obat di lantai Ibu.",
         vi: "Sáng mai nhân viên sẽ phun thuốc ở tầng của chị.",
         en: "Tomorrow morning the staff will spray pesticide on your floor.",
       },
       {
+        cell_id: "b61cb0d3-e882-4d62-b53b-f893a150c472",
         speaker: "Penghuni",
         text: "Baik. Setelah disemprot, saya akan buka jendela supaya baunya cepat hilang.",
         vi: "Vâng. Sau khi phun thuốc, tôi sẽ mở cửa sổ để mùi nhanh bay đi.",

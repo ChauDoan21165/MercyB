@@ -599,6 +599,24 @@ function checkK() {
     hits: [{ file: DEFAULT_BASELINE_PATH, line: 0 }],
     consumer_question: "Did this MR intentionally remove CELL content and update the baseline in the same MR, or did it add uncovered IPA/audio debt?",
   }));
+  if (scan.cellIds.missing > 0) {
+    findings.push(makeFinding({
+      id: "CELL-cell-id-missing",
+      severity: "HIGH",
+      evidence: `CELL item identity gate: ${scan.cellIds.missing}/${scan.cellIds.totalObjects} vocabulary/dialogue objects are missing populated cell_id.`,
+      hits: [{ file: "src/languages", line: 0 }],
+      consumer_question: "Did this MR add CELL vocabulary/dialogue items without persisted cell_id values?",
+    }));
+  }
+  if (scan.cellIds.duplicateIds > 0) {
+    findings.push(makeFinding({
+      id: "CELL-cell-id-duplicate",
+      severity: "HIGH",
+      evidence: `CELL item identity gate: ${scan.cellIds.duplicateIds} duplicate cell_id value(s) across ${scan.cellIds.duplicateObjects} objects. Samples: ${JSON.stringify(scan.cellIds.duplicateSamples)}`,
+      hits: [{ file: "src/languages", line: 0 }],
+      consumer_question: "Did this MR duplicate CELL item IDs while copying or generating content?",
+    }));
+  }
   return { status: "ok", findings, notes };
 }
 

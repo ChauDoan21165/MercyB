@@ -13,6 +13,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -22,6 +23,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -138,6 +140,7 @@ export const officeOnboardingNewJobLessons: IndonesianLesson[] = [
       "Useful first-day frames: `Saya ikut orientasi kerja`, `Di mana saya bisa ambil ID karyawan?`, `Email kantor saya belum aktif`, `Siapa mentor saya?`.",
     vocabulary: [
       {
+        cell_id: "ebfceb1f-dd64-4a77-9df8-03a4121272c7",
         word: "orientasi kerja",
         en: "work orientation / onboarding",
         vi: "định hướng công việc / onboarding",
@@ -146,6 +149,7 @@ export const officeOnboardingNewJobLessons: IndonesianLesson[] = [
         pronunciation_en: "o-ri-en-TA-si KER-ja",
       },
       {
+        cell_id: "ca7b061f-fa8f-4ba1-8687-5210a7a6b648",
         word: "hari pertama",
         en: "first day",
         vi: "ngày đầu tiên",
@@ -154,6 +158,7 @@ export const officeOnboardingNewJobLessons: IndonesianLesson[] = [
         pronunciation_en: "HA-ri per-TA-ma",
       },
       {
+        cell_id: "4beda5e2-f48c-4ce5-b8a3-1ea8533a9880",
         word: "ID karyawan",
         en: "employee ID",
         vi: "thẻ/mã nhân viên",
@@ -162,6 +167,7 @@ export const officeOnboardingNewJobLessons: IndonesianLesson[] = [
         pronunciation_en: "EE-de kar-YA-wan",
       },
       {
+        cell_id: "b16e640b-948a-428a-8bf7-86ab5417b2b5",
         word: "email kantor",
         en: "work email",
         vi: "email công ty",
@@ -170,6 +176,7 @@ export const officeOnboardingNewJobLessons: IndonesianLesson[] = [
         pronunciation_en: "E-mail KAN-tor",
       },
       {
+        cell_id: "7fefbbe1-6b47-48fc-9175-d2e0758dcd47",
         word: "mentor",
         en: "mentor",
         vi: "người hướng dẫn",
@@ -178,6 +185,7 @@ export const officeOnboardingNewJobLessons: IndonesianLesson[] = [
         pronunciation_en: "MEN-tor",
       },
       {
+        cell_id: "2c416672-cea4-4d68-9298-eccd9a703454",
         word: "aturan kantor",
         en: "office rules",
         vi: "quy định văn phòng",
@@ -188,18 +196,21 @@ export const officeOnboardingNewJobLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "cd297750-5c6c-4029-977d-0e7c4b616bfc",
         speaker: "Karyawan Baru",
         text: "Selamat pagi, Bu. Hari ini hari pertama saya.",
         vi: "Chào buổi sáng chị/cô. Hôm nay là ngày đầu tiên của tôi.",
         en: "Good morning, ma'am. Today is my first day.",
       },
       {
+        cell_id: "f24f50ff-a93e-4ede-ac16-952527bc05d9",
         speaker: "HRD",
         text: "Selamat datang. Nanti Anda ikut orientasi kerja dulu.",
         vi: "Chào mừng. Lát nữa bạn tham gia buổi định hướng công việc trước.",
         en: "Welcome. Later you will join the work orientation first.",
       },
       {
+        cell_id: "02bb9d14-2baa-417d-9f63-2d5fca768903",
         speaker: "Karyawan Baru",
         text: "Baik. Di mana saya bisa ambil ID karyawan?",
         vi: "Vâng. Tôi có thể lấy thẻ nhân viên ở đâu?",
@@ -316,6 +327,7 @@ export const officeOnboardingNewJobLessons: IndonesianLesson[] = [
       "When unsure, ask softly with `Boleh saya tanya...?`, `Saya ingin tahu...`, or `Kalau ada pertanyaan, saya bisa tanya ke siapa?`. Avoid `kamu` with HR/manager; use `Bapak/Ibu` or name + Pak/Bu.",
     vocabulary: [
       {
+        cell_id: "68fe9999-c393-4387-91ab-992950427f84",
         word: "pelatihan",
         en: "training",
         vi: "đào tạo",
@@ -324,6 +336,7 @@ export const officeOnboardingNewJobLessons: IndonesianLesson[] = [
         pronunciation_en: "pe-LA-ti-han",
       },
       {
+        cell_id: "2f9e94ee-96ac-4f7f-bb75-89d19a4ee1e3",
         word: "masa percobaan",
         en: "probation period",
         vi: "thời gian thử việc",
@@ -332,6 +345,7 @@ export const officeOnboardingNewJobLessons: IndonesianLesson[] = [
         pronunciation_en: "MA-sa per-CHO-ba-an",
       },
       {
+        cell_id: "8b8d176b-d28b-4a73-857a-a971abce4d76",
         word: "penilaian",
         en: "evaluation / assessment",
         vi: "việc đánh giá",
@@ -340,6 +354,7 @@ export const officeOnboardingNewJobLessons: IndonesianLesson[] = [
         pronunciation_en: "pe-ni-LAI-an",
       },
       {
+        cell_id: "7922ae0d-367a-405b-a87e-0f97a15e751e",
         word: "memahami",
         en: "to understand / grasp",
         vi: "hiểu / nắm được",
@@ -348,6 +363,7 @@ export const officeOnboardingNewJobLessons: IndonesianLesson[] = [
         pronunciation_en: "me-ma-HA-mi",
       },
       {
+        cell_id: "70e87d1c-13d4-4d07-97a9-11ee3b6685c9",
         word: "absensi",
         en: "attendance",
         vi: "chấm công / điểm danh",
@@ -356,6 +372,7 @@ export const officeOnboardingNewJobLessons: IndonesianLesson[] = [
         pronunciation_en: "ab-SEN-si",
       },
       {
+        cell_id: "2a3561b2-d142-41c5-984a-561cbcf2292b",
         word: "jam kerja",
         en: "working hours",
         vi: "giờ làm việc",
@@ -366,24 +383,28 @@ export const officeOnboardingNewJobLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "867160cb-4b9a-4d2f-80e6-b7663c672d11",
         speaker: "Karyawan Baru",
         text: "Pak, jadwal pelatihan saya sudah dikirim lewat email?",
         vi: "Anh/chú ơi, lịch đào tạo của tôi đã được gửi qua email chưa?",
         en: "Sir, has my training schedule been sent by email?",
       },
       {
+        cell_id: "922c73d2-c620-48b3-b4d8-7a8d7cc7fbcf",
         speaker: "Mentor",
         text: "Sudah. Tolong baca juga aturan kantor dan jam kerja.",
         vi: "Rồi. Làm ơn đọc cả quy định văn phòng và giờ làm việc.",
         en: "Yes. Please also read the office rules and working hours.",
       },
       {
+        cell_id: "c036e4b4-2046-44e0-9a63-9e6e152e61b8",
         speaker: "Karyawan Baru",
         text: "Baik. Saya juga ingin tahu penilaian selama masa percobaan.",
         vi: "Vâng. Tôi cũng muốn biết cách đánh giá trong thời gian thử việc.",
         en: "Okay. I also want to know the evaluation during the probation period.",
       },
       {
+        cell_id: "2367d196-afd3-4209-af50-8c07b28720d0",
         speaker: "Mentor",
         text: "Nanti kita bahas setelah sesi pelatihan pertama.",
         vi: "Lát nữa chúng ta bàn sau buổi đào tạo đầu tiên.",

@@ -32,6 +32,7 @@ type LessonSentence = {
 };
 
 type VocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -43,6 +44,7 @@ type VocabEntry = {
 };
 
 type DialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -159,6 +161,7 @@ export const religionTraditionsLessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: the prefix 'ber-' means 'to have/bear' — beragama (to have a religion = follow a faith), berkeluarga (to have a family). 'Saling' before a verb = 'each other': saling menghormati (respect one another), saling membantu (help one another). The golden polite line at meals: 'Maaf, saya tidak makan…' (Sorry, I don't eat…).",
     vocabulary: [
       {
+        cell_id: "d8fc56c1-9b93-406f-be7d-350b9347da9e",
         word: "agama",
         en: "religion",
         vi: "tôn giáo",
@@ -167,6 +170,7 @@ export const religionTraditionsLessons: IndonesianLesson[] = [
         pronunciation_en: "a-GA-ma",
       },
       {
+        cell_id: "338f152f-f00f-4200-ab53-ebcaacc52f4c",
         word: "Islam",
         en: "Islam",
         vi: "đạo Hồi",
@@ -175,6 +179,7 @@ export const religionTraditionsLessons: IndonesianLesson[] = [
         pronunciation_en: "IS-lam",
       },
       {
+        cell_id: "336b3fc0-8411-4283-8c76-bdd0a37c5cc7",
         word: "Kristen",
         en: "(Protestant) Christianity",
         vi: "đạo Tin Lành",
@@ -183,6 +188,7 @@ export const religionTraditionsLessons: IndonesianLesson[] = [
         pronunciation_en: "KRIS-ten",
       },
       {
+        cell_id: "82745ae3-072c-45b1-8fc4-ec186329c28a",
         word: "Katolik",
         en: "Catholicism",
         vi: "đạo Công giáo",
@@ -191,6 +197,7 @@ export const religionTraditionsLessons: IndonesianLesson[] = [
         pronunciation_en: "ka-TOH-lik",
       },
       {
+        cell_id: "1b24c43e-514b-4084-ab84-26f7d4521fce",
         word: "Hindu",
         en: "Hinduism",
         vi: "đạo Hindu",
@@ -199,6 +206,7 @@ export const religionTraditionsLessons: IndonesianLesson[] = [
         pronunciation_en: "HIN-doo",
       },
       {
+        cell_id: "84fbdb3d-d610-4b0b-bd5a-49a7afc0d753",
         word: "Buddha",
         en: "Buddhism",
         vi: "đạo Phật",
@@ -207,6 +215,7 @@ export const religionTraditionsLessons: IndonesianLesson[] = [
         pronunciation_en: "BOO-da",
       },
       {
+        cell_id: "55d74e03-1d6d-4307-837a-3719585c0c5a",
         word: "toleransi",
         en: "tolerance",
         vi: "sự khoan dung",
@@ -215,6 +224,7 @@ export const religionTraditionsLessons: IndonesianLesson[] = [
         pronunciation_en: "toh-le-RAN-see",
       },
       {
+        cell_id: "bb6b8bdc-6811-4fba-b5e2-fb2fc737bf41",
         word: "menghormati",
         en: "to respect",
         vi: "tôn trọng",
@@ -223,6 +233,7 @@ export const religionTraditionsLessons: IndonesianLesson[] = [
         pronunciation_en: "meng-hor-MA-tee",
       },
       {
+        cell_id: "6c490ea4-9b32-4761-bddc-5c6ed0e90dee",
         word: "keyakinan",
         en: "belief / faith",
         vi: "niềm tin / đức tin",
@@ -233,24 +244,28 @@ export const religionTraditionsLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "fc136424-acf4-4cc3-b600-1c06d4e93a97",
         speaker: "Andi",
         text: "Boleh tanya, kamu beragama apa?",
         vi: "Cho hỏi, bạn theo đạo gì?",
         en: "May I ask, what is your religion?",
       },
       {
+        cell_id: "2700d8b0-274b-4fee-9a34-29abd45ecae1",
         speaker: "Mai",
         text: "Saya beragama Buddha. Kalau kamu?",
         vi: "Tôi theo đạo Phật. Còn bạn?",
         en: "I'm Buddhist. And you?",
       },
       {
+        cell_id: "f688bbec-24bf-43bd-8839-c05077698d14",
         speaker: "Andi",
         text: "Saya Islam. Di sini kita saling menghormati, kok.",
         vi: "Tôi đạo Hồi. Ở đây chúng ta tôn trọng lẫn nhau mà.",
         en: "I'm Muslim. Here we respect each other, you know.",
       },
       {
+        cell_id: "727aecd2-af8f-4de0-bb19-8d553db44585",
         speaker: "Mai",
         text: "Bagus sekali. Toleransi memang penting.",
         vi: "Tuyệt vời. Khoan dung quả thật rất quan trọng.",
@@ -391,6 +406,7 @@ export const religionTraditionsLessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: Indonesian makes plurals by REDUPLICATING the noun — anak-anak (children), orang-orang (people). This feels natural to Vietnamese speakers, who also double words. Festive pair: berpuasa (to fast) ↔ berbuka (to break the fast). Learn the whole greeting 'Selamat Idul Fitri, mohon maaf lahir dan batin' as one chunk — it always lands warmly.",
     vocabulary: [
       {
+        cell_id: "800f22d4-85b4-4c2d-9835-c52e6919d9ae",
         word: "Ramadan",
         en: "Ramadan (fasting month)",
         vi: "tháng Ramadan",
@@ -399,6 +415,7 @@ export const religionTraditionsLessons: IndonesianLesson[] = [
         pronunciation_en: "ra-ma-DAN",
       },
       {
+        cell_id: "c2ac8820-dd7e-4f8b-83db-a0562b913046",
         word: "puasa",
         en: "fasting",
         vi: "sự nhịn ăn / ăn chay",
@@ -407,6 +424,7 @@ export const religionTraditionsLessons: IndonesianLesson[] = [
         pronunciation_en: "poo-A-sa",
       },
       {
+        cell_id: "ee5e1bd9-f6ab-4b12-bda9-c8bd8cd7002d",
         word: "berbuka puasa",
         en: "to break the fast",
         vi: "xả chay",
@@ -415,6 +433,7 @@ export const religionTraditionsLessons: IndonesianLesson[] = [
         pronunciation_en: "ber-BOO-ka poo-A-sa",
       },
       {
+        cell_id: "795beb0f-31ac-4601-a0c1-4723d66a0c57",
         word: "sahur",
         en: "pre-dawn meal",
         vi: "bữa ăn trước rạng sáng",
@@ -423,6 +442,7 @@ export const religionTraditionsLessons: IndonesianLesson[] = [
         pronunciation_en: "sa-HOOR",
       },
       {
+        cell_id: "88f3e60e-55bd-430f-846b-1d2601b79a3a",
         word: "Lebaran / Idul Fitri",
         en: "the festival ending Ramadan",
         vi: "đại lễ kết thúc tháng chay",
@@ -431,6 +451,7 @@ export const religionTraditionsLessons: IndonesianLesson[] = [
         pronunciation_en: "le-BA-ran / EE-dool FEE-tree",
       },
       {
+        cell_id: "92d5890a-ae9c-4da3-a2e2-a4e30031618d",
         word: "mudik",
         en: "holiday homecoming trip",
         vi: "về quê dịp lễ",
@@ -439,6 +460,7 @@ export const religionTraditionsLessons: IndonesianLesson[] = [
         pronunciation_en: "MOO-dik",
       },
       {
+        cell_id: "0e856b79-8545-4010-838d-416e35b6de1a",
         word: "kampung halaman",
         en: "hometown / native village",
         vi: "quê nhà",
@@ -447,6 +469,7 @@ export const religionTraditionsLessons: IndonesianLesson[] = [
         pronunciation_en: "KAM-poong ha-LA-man",
       },
       {
+        cell_id: "4ab12171-24c5-49ac-b088-15276d3aef9a",
         word: "kurma",
         en: "dates (fruit)",
         vi: "quả chà là",
@@ -455,6 +478,7 @@ export const religionTraditionsLessons: IndonesianLesson[] = [
         pronunciation_en: "KOOR-ma",
       },
       {
+        cell_id: "8bcc9a23-f6b4-4a14-b1b6-a284c7e9c602",
         word: "kerabat",
         en: "relatives",
         vi: "họ hàng",
@@ -465,24 +489,28 @@ export const religionTraditionsLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "e6a47a09-e998-4ad8-be84-395d501feb21",
         speaker: "Budi",
         text: "Besok mulai puasa. Kamu ikut sahur?",
         vi: "Mai bắt đầu nhịn ăn. Bạn có ăn sahur không?",
         en: "Tomorrow the fast begins. Will you join the pre-dawn meal?",
       },
       {
+        cell_id: "befbb44d-b79e-4f6c-9662-9603f7d508e1",
         speaker: "Sinta",
         text: "Iya, jam tiga pagi. Nanti buka puasa di masjid, yuk.",
         vi: "Ừ, ba giờ sáng. Lát nữa xả chay ở thánh đường nhé.",
         en: "Yes, at 3 a.m. Let's break the fast at the mosque later.",
       },
       {
+        cell_id: "cc9a33a9-9b16-40d9-a55f-53372ad1fc08",
         speaker: "Budi",
         text: "Boleh. Lebaran nanti kamu mudik ke mana?",
         vi: "Được. Lebaran tới bạn về quê ở đâu?",
         en: "Sure. Where will you travel home for Lebaran?",
       },
       {
+        cell_id: "00b1f8f0-fcb0-483d-9556-6a403a802d42",
         speaker: "Sinta",
         text: "Ke kampung halaman di Solo. Selamat Idul Fitri, ya!",
         vi: "Về quê ở Solo. Chúc mừng Idul Fitri nhé!",
@@ -623,6 +651,7 @@ export const religionTraditionsLessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: the passive uses 'di- + verb … oleh + agent' — 'Natal dirayakan oleh umat Kristen' (Christmas is celebrated by Christians). 'oleh' = 'by'. Indonesian leans on the passive far more than Vietnamese does — get comfortable with it early. Intensifying reduplicated pairs like 'sunyi senyap' (dead silent) echo Vietnamese 'từ láy'.",
     vocabulary: [
       {
+        cell_id: "2e8a841d-3323-477c-89a8-a10181bb106e",
         word: "Natal",
         en: "Christmas",
         vi: "lễ Giáng sinh",
@@ -631,6 +660,7 @@ export const religionTraditionsLessons: IndonesianLesson[] = [
         pronunciation_en: "NA-tal",
       },
       {
+        cell_id: "7d748eed-d8c2-4b1d-abf3-01f1a367084b",
         word: "Tahun Baru Imlek",
         en: "Chinese Lunar New Year",
         vi: "Tết Nguyên đán (người Hoa)",
@@ -639,6 +669,7 @@ export const religionTraditionsLessons: IndonesianLesson[] = [
         pronunciation_en: "TA-hoon BA-roo IM-lek",
       },
       {
+        cell_id: "61b61082-9872-46a7-a2c0-9b291431ee83",
         word: "Nyepi",
         en: "Balinese Hindu Day of Silence",
         vi: "Ngày Tĩnh lặng (Hindu Bali)",
@@ -647,6 +678,7 @@ export const religionTraditionsLessons: IndonesianLesson[] = [
         pronunciation_en: "NYE-pee",
       },
       {
+        cell_id: "aeb843fd-6ddf-4225-84ff-f7d3e1a27ab0",
         word: "Waisak",
         en: "Vesak (Buddhist holy day)",
         vi: "lễ Phật Đản",
@@ -655,6 +687,7 @@ export const religionTraditionsLessons: IndonesianLesson[] = [
         pronunciation_en: "WHY-sak",
       },
       {
+        cell_id: "b9bf4821-91cc-467b-bc74-f8150f0d8949",
         word: "hari raya",
         en: "festival / feast day",
         vi: "ngày đại lễ",
@@ -663,6 +696,7 @@ export const religionTraditionsLessons: IndonesianLesson[] = [
         pronunciation_en: "HA-ree RA-ya",
       },
       {
+        cell_id: "c1aa9364-3284-4792-95ae-b6e654828058",
         word: "hari libur",
         en: "holiday / day off",
         vi: "ngày nghỉ lễ",
@@ -671,6 +705,7 @@ export const religionTraditionsLessons: IndonesianLesson[] = [
         pronunciation_en: "HA-ree LEE-boor",
       },
       {
+        cell_id: "115c7ae2-02aa-40ef-8142-d46637425034",
         word: "merayakan",
         en: "to celebrate",
         vi: "tổ chức / ăn mừng",
@@ -679,6 +714,7 @@ export const religionTraditionsLessons: IndonesianLesson[] = [
         pronunciation_en: "me-ra-YA-kan",
       },
       {
+        cell_id: "7876e40a-862a-4dfc-b772-9592fd5cd9ba",
         word: "memperingati",
         en: "to commemorate",
         vi: "tưởng niệm / kỷ niệm",
@@ -687,6 +723,7 @@ export const religionTraditionsLessons: IndonesianLesson[] = [
         pronunciation_en: "mem-pe-ring-A-tee",
       },
       {
+        cell_id: "592361b9-c6fe-4e7c-a947-33344f02a38c",
         word: "oleh",
         en: "by (passive agent)",
         vi: "bởi",
@@ -697,24 +734,28 @@ export const religionTraditionsLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "252f11a4-5ae1-458f-9459-732cd0f09975",
         speaker: "Turis",
         text: "Kenapa bandara Bali tutup hari ini?",
         vi: "Tại sao sân bay Bali đóng cửa hôm nay?",
         en: "Why is Bali's airport closed today?",
       },
       {
+        cell_id: "b71d1c91-02d2-4ffa-98a1-81dd7d150084",
         speaker: "Pemandu",
         text: "Hari ini Nyepi, Hari Raya Hindu Bali. Seluruh pulau harus sunyi.",
         vi: "Hôm nay là Nyepi, đại lễ của Hindu Bali. Cả đảo phải im lặng.",
         en: "Today is Nyepi, the Balinese Hindu festival. The whole island must stay silent.",
       },
       {
+        cell_id: "ed2e393f-78fe-4ac5-bd63-def919123082",
         speaker: "Turis",
         text: "Menarik. Jadi semua agama punya hari libur nasional?",
         vi: "Thú vị. Vậy mọi tôn giáo đều có ngày nghỉ quốc gia?",
         en: "Fascinating. So every religion has a national holiday?",
       },
       {
+        cell_id: "d937e96e-face-4d78-ba0d-d0cffe546e4f",
         speaker: "Pemandu",
         text: "Betul. Natal, Imlek, Waisak — semuanya dirayakan bersama.",
         vi: "Đúng vậy. Giáng sinh, Tết người Hoa, Phật Đản — tất cả đều được mừng chung.",

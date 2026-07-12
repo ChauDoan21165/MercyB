@@ -21,6 +21,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   /** Indonesian word/phrase. */
   word: string;
   /** English meaning. */
@@ -36,6 +37,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   /** Indonesian line. */
   text: string;
@@ -225,43 +227,48 @@ export const lessons: IndonesianLesson[] = [
     tip_advice_en:
       "Tip for Vietnamese speakers: separate `kirim uang` = send money generally, `transfer` = bank transfer, `rekening` = bank account, and `bukti transfer/bukti kirim` = proof of sending. With Indonesian money, do not drop `ribu` and `juta`; `dua ratus ribu` is 200,000, not 200. To ask family whether it arrived, say naturally: `Uangnya sudah masuk?`",
     vocabulary: [
-      { word: "kirim uang", en: "send money", vi: "gửi tiền", pos: "verb phrase", pronunciation_vi: "KI-rim U-ang", pronunciation_en: "KEE-rim OO-ang" },
-      { word: "keluarga di kampung", en: "family back in the village/hometown", vi: "gia đình ở quê", pos: "noun phrase", pronunciation_vi: "ke-LU-ar-ga di KAM-pung", pronunciation_en: "ke-LOO-ar-ga di KAM-pung" },
-      { word: "transfer", en: "transfer", vi: "chuyển khoản", pos: "verb/noun", pronunciation_vi: "TRANS-fer", pronunciation_en: "TRANS-fer" },
-      { word: "bukti kirim", en: "proof of sending", vi: "bằng chứng đã gửi", pos: "noun phrase", pronunciation_vi: "BUK-ti KI-rim", pronunciation_en: "BOOK-tee KEE-rim" },
-      { word: "bukti transfer", en: "proof of transfer", vi: "bằng chứng chuyển khoản", pos: "noun phrase", pronunciation_vi: "BUK-ti TRANS-fer", pronunciation_en: "BOOK-tee TRANS-fer" },
-      { word: "biaya admin", en: "admin fee / transaction fee", vi: "phí admin/phí giao dịch", pos: "noun phrase", pronunciation_vi: "BI-a-ya AD-min", pronunciation_en: "BEE-a-ya AD-min" },
-      { word: "kebutuhan rumah", en: "household needs", vi: "nhu cầu/chi phí trong nhà", pos: "noun phrase", pronunciation_vi: "ke-BU-tuh-an RU-mah", pronunciation_en: "ke-BOO-tooh-an ROO-mah" },
-      { word: "uang bulanan", en: "monthly money / monthly support", vi: "tiền hằng tháng", pos: "noun phrase", pronunciation_vi: "U-ang bu-LA-nan", pronunciation_en: "OO-ang boo-LA-nan" },
-      { word: "uangnya masuk", en: "the money arrived in the account", vi: "tiền vào tài khoản", pos: "clause", pronunciation_vi: "U-ang-nya MA-suk", pronunciation_en: "OO-ang-nya MA-suk" },
-      { word: "gajian", en: "payday", vi: "ngày nhận lương", pos: "noun", pronunciation_vi: "GA-ji-an", pronunciation_en: "GA-jee-an" },
+      { cell_id: "7d2a98e2-408b-4b34-abd6-530fe2fea052", word: "kirim uang", en: "send money", vi: "gửi tiền", pos: "verb phrase", pronunciation_vi: "KI-rim U-ang", pronunciation_en: "KEE-rim OO-ang" },
+      { cell_id: "a1d97499-8165-434e-9912-b4b5bc55f547", word: "keluarga di kampung", en: "family back in the village/hometown", vi: "gia đình ở quê", pos: "noun phrase", pronunciation_vi: "ke-LU-ar-ga di KAM-pung", pronunciation_en: "ke-LOO-ar-ga di KAM-pung" },
+      { cell_id: "7cb7f499-fa89-4387-881d-536c83df0540", word: "transfer", en: "transfer", vi: "chuyển khoản", pos: "verb/noun", pronunciation_vi: "TRANS-fer", pronunciation_en: "TRANS-fer" },
+      { cell_id: "72a21929-e631-4236-99cb-04454398045c", word: "bukti kirim", en: "proof of sending", vi: "bằng chứng đã gửi", pos: "noun phrase", pronunciation_vi: "BUK-ti KI-rim", pronunciation_en: "BOOK-tee KEE-rim" },
+      { cell_id: "56579c46-f5b3-442e-8d21-0e549107224b", word: "bukti transfer", en: "proof of transfer", vi: "bằng chứng chuyển khoản", pos: "noun phrase", pronunciation_vi: "BUK-ti TRANS-fer", pronunciation_en: "BOOK-tee TRANS-fer" },
+      { cell_id: "37b12d4d-000a-4669-ba5e-09bbe33e6ea0", word: "biaya admin", en: "admin fee / transaction fee", vi: "phí admin/phí giao dịch", pos: "noun phrase", pronunciation_vi: "BI-a-ya AD-min", pronunciation_en: "BEE-a-ya AD-min" },
+      { cell_id: "36c16e50-4922-4ed5-b0f9-80c2737c63da", word: "kebutuhan rumah", en: "household needs", vi: "nhu cầu/chi phí trong nhà", pos: "noun phrase", pronunciation_vi: "ke-BU-tuh-an RU-mah", pronunciation_en: "ke-BOO-tooh-an ROO-mah" },
+      { cell_id: "a779591a-451a-4795-9abe-260d4ee49dc9", word: "uang bulanan", en: "monthly money / monthly support", vi: "tiền hằng tháng", pos: "noun phrase", pronunciation_vi: "U-ang bu-LA-nan", pronunciation_en: "OO-ang boo-LA-nan" },
+      { cell_id: "2adea450-b5df-4344-90ef-5ca990b61cde", word: "uangnya masuk", en: "the money arrived in the account", vi: "tiền vào tài khoản", pos: "clause", pronunciation_vi: "U-ang-nya MA-suk", pronunciation_en: "OO-ang-nya MA-suk" },
+      { cell_id: "45c01fd9-4a04-45b8-a379-e076c81c7147", word: "gajian", en: "payday", vi: "ngày nhận lương", pos: "noun", pronunciation_vi: "GA-ji-an", pronunciation_en: "GA-jee-an" },
     ],
     dialogue: [
       {
+        cell_id: "24d01eaf-aeac-409b-bb6b-8f549377821d",
         speaker: "Rina",
         text: "Bu, nomor rekening Ayah masih sama, kan?",
         vi: "Mẹ ơi, số tài khoản của bố vẫn như cũ, đúng không?",
         en: "Mom, Dad's account number is still the same, right?",
       },
       {
+        cell_id: "8bd568e2-fc5b-46f7-b80b-a964ae619511",
         speaker: "Ibu",
         text: "Iya, masih sama. Bulan ini uangnya untuk kebutuhan rumah dan obat nenek.",
         vi: "Ừ, vẫn như cũ. Tháng này tiền dùng cho nhu cầu trong nhà và thuốc của bà.",
         en: "Yes, still the same. This month the money is for household needs and Grandma's medicine.",
       },
       {
+        cell_id: "926ec6a1-7c88-4f52-a10b-831384c06a98",
         speaker: "Rina",
         text: "Baik, saya transfer sore ini. Biaya adminnya kecil kalau lewat mobile banking.",
         vi: "Được, chiều nay con chuyển khoản. Phí admin nhỏ nếu chuyển qua mobile banking.",
         en: "Okay, I will transfer this afternoon. The admin fee is small through mobile banking.",
       },
       {
+        cell_id: "995b8e28-8bb9-496c-9964-47389039d0f8",
         speaker: "Ibu",
         text: "Setelah transfer, kirim bukti transfer lewat WhatsApp, ya.",
         vi: "Sau khi chuyển khoản, gửi bằng chứng chuyển khoản qua WhatsApp nhé.",
         en: "After the transfer, send the proof of transfer via WhatsApp, okay?",
       },
       {
+        cell_id: "45268c0f-9a16-4ed2-88d0-13237efc592c",
         speaker: "Rina",
         text: "Siap, Bu. Kalau uangnya belum masuk, kabari saya lagi.",
         vi: "Dạ được mẹ. Nếu tiền chưa vào tài khoản, báo lại cho con nhé.",

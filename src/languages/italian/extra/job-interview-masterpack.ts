@@ -25,6 +25,7 @@ export type ItalianLessonSentence = {
 };
 
 export type ItalianVocabEntry = {
+  cell_id?: string;
   /** Italian word/phrase (with article where it teaches gender). */
   word: string;
   /** English meaning. */
@@ -40,6 +41,7 @@ export type ItalianVocabEntry = {
 };
 
 export type ItalianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   /** Italian line. */
   text: string;
@@ -459,6 +461,7 @@ export const lessons: ItalianLesson[] = [
       "Prepare a 5-sentence introduction and drill it as one block: name → experience → one strength → availability → one question for the employer. Don't fake fluency; the honest line `Sto migliorando il mio italiano` ('I'm improving my Italian') lands better than overclaiming. When you don't understand, don't go silent — say `Non ho capito, può ripetere?` straight away. Always use `vorrei` ('I'd like') rather than `voglio` ('I want', which sounds like an order) when asking questions.",
     vocabulary: [
       {
+        cell_id: "edca9056-060a-46d5-91d4-7f1a03711b69",
         word: "l'esperienza",
         en: "experience",
         vi: "kinh nghiệm",
@@ -467,6 +470,7 @@ export const lessons: ItalianLesson[] = [
         pronunciation_en: "le-spe-RYEN-tsa — `z` is a 'ts' sound",
       },
       {
+        cell_id: "a0136ddf-52c6-4ee8-8cc5-03a540bf4c0d",
         word: "il contratto",
         en: "contract",
         vi: "hợp đồng",
@@ -475,6 +479,7 @@ export const lessons: ItalianLesson[] = [
         pronunciation_en: "eel kon-TRAT-to — double `tt`, hold the stop",
       },
       {
+        cell_id: "fa3395c2-4553-4b02-ba7c-ebe0343f4514",
         word: "il turno",
         en: "shift",
         vi: "ca làm",
@@ -483,6 +488,7 @@ export const lessons: ItalianLesson[] = [
         pronunciation_en: "eel TOOR-no",
       },
       {
+        cell_id: "f76a20be-2c82-41da-9624-b5ee3e89bd63",
         word: "lo stipendio",
         en: "salary",
         vi: "lương",
@@ -491,6 +497,7 @@ export const lessons: ItalianLesson[] = [
         pronunciation_en: "lo stee-PEN-dyo",
       },
       {
+        cell_id: "3e32ebbc-51b0-4b33-867d-808b5d922739",
         word: "le referenze",
         en: "references",
         vi: "người/thư tham khảo",
@@ -499,6 +506,7 @@ export const lessons: ItalianLesson[] = [
         pronunciation_en: "le re-fe-REN-tse",
       },
       {
+        cell_id: "65849a9c-52ef-4831-ad89-d6a98772115f",
         word: "affidabile",
         en: "reliable",
         vi: "đáng tin cậy",
@@ -507,6 +515,7 @@ export const lessons: ItalianLesson[] = [
         pronunciation_en: "af-fee-DA-bee-le",
       },
       {
+        cell_id: "1eb71bf9-09a7-401d-93cd-def39d0683c7",
         word: "puntuale",
         en: "punctual",
         vi: "đúng giờ",
@@ -515,6 +524,7 @@ export const lessons: ItalianLesson[] = [
         pronunciation_en: "poon-too-A-le",
       },
       {
+        cell_id: "71b3ee17-77b9-4548-b3b4-f57ffb26bb6b",
         word: "disponibile",
         en: "available",
         vi: "sẵn sàng / rảnh",
@@ -523,6 +533,7 @@ export const lessons: ItalianLesson[] = [
         pronunciation_en: "dis-po-NEE-bee-le",
       },
       {
+        cell_id: "64201398-b936-42b0-a5bb-8af046ebdb17",
         word: "l'orario di lavoro",
         en: "working hours",
         vi: "giờ làm việc",
@@ -531,6 +542,7 @@ export const lessons: ItalianLesson[] = [
         pronunciation_en: "lo-RA-ree-o dee la-VO-ro",
       },
       {
+        cell_id: "761494eb-48bf-4a73-ad71-59180e134902",
         word: "il magazzino",
         en: "warehouse",
         vi: "kho hàng",
@@ -542,36 +554,42 @@ export const lessons: ItalianLesson[] = [
     dialogue: [
       // Dialogue 1 — Warehouse interview
       {
+        cell_id: "9f303e96-0953-4007-8047-9452584f0dcc",
         speaker: "Intervistatore",
         text: "Buongiorno, mi parli un po' di lei.",
         vi: "Xin chào, anh giới thiệu một chút về bản thân nhé.",
         en: "Good morning, tell me a bit about yourself.",
       },
       {
+        cell_id: "c04613fb-d9c5-4e43-8ee5-5086a3101b6f",
         speaker: "Candidato",
         text: "Buongiorno, mi chiamo Minh. Ho esperienza in magazzino e ho lavorato nella preparazione degli ordini. Sono puntuale e seguo sempre le istruzioni di sicurezza.",
         vi: "Xin chào, tôi tên Minh. Tôi có kinh nghiệm trong kho và đã làm việc ở khâu chuẩn bị đơn hàng. Tôi đúng giờ và luôn tuân thủ hướng dẫn an toàn.",
         en: "Good morning, my name is Minh. I have warehouse experience and I worked in order preparation. I'm punctual and I always follow safety instructions.",
       },
       {
+        cell_id: "85ae8a60-3f77-49fb-abd3-f82fa5963776",
         speaker: "Intervistatore",
         text: "Sa usare il muletto?",
         vi: "Anh biết dùng xe nâng không?",
         en: "Can you use a forklift?",
       },
       {
+        cell_id: "b6e556b4-a6a6-4866-aca6-81ad94548e51",
         speaker: "Candidato",
         text: "Sì, ma solo con autorizzazione. Se serve, posso portare il certificato.",
         vi: "Có, nhưng chỉ khi được phép. Nếu cần, tôi có thể mang chứng chỉ.",
         en: "Yes, but only with authorization. If needed, I can bring the certificate.",
       },
       {
+        cell_id: "1f4b93b0-5a8e-4eb6-963c-474eefe6846f",
         speaker: "Intervistatore",
         text: "Quando può iniziare?",
         vi: "Khi nào anh có thể bắt đầu?",
         en: "When can you start?",
       },
       {
+        cell_id: "7742f623-533e-408d-a000-e158fbdb734b",
         speaker: "Candidato",
         text: "Sono disponibile da subito e posso lavorare su turni.",
         vi: "Tôi có thể bắt đầu ngay và có thể làm theo ca.",
@@ -579,24 +597,28 @@ export const lessons: ItalianLesson[] = [
       },
       // Dialogue 2 — Retail interview
       {
+        cell_id: "92754da6-2bad-44fc-8145-812b033e331e",
         speaker: "Intervistatore",
         text: "Ha esperienza con i clienti?",
         vi: "Chị có kinh nghiệm với khách hàng không?",
         en: "Do you have experience with customers?",
       },
       {
+        cell_id: "04bfd637-56a3-478a-88fe-db162e12700f",
         speaker: "Candidata",
         text: "Sì, ho lavorato in un negozio. Parlavo con i clienti, controllavo i prodotti e gestivo piccoli pagamenti.",
         vi: "Có, tôi đã làm trong một cửa hàng. Tôi nói chuyện với khách, kiểm tra hàng hóa và xử lý các khoản thanh toán nhỏ.",
         en: "Yes, I worked in a shop. I talked with customers, checked the products, and handled small payments.",
       },
       {
+        cell_id: "217d9b54-081e-41aa-a8f9-274cf8e37d93",
         speaker: "Intervistatore",
         text: "Come gestisce una situazione difficile?",
         vi: "Chị xử lý một tình huống khó khăn thế nào?",
         en: "How do you handle a difficult situation?",
       },
       {
+        cell_id: "890bad20-4c58-4a23-adde-bcdf2d5013d0",
         speaker: "Candidata",
         text: "Resto calma, ascolto il cliente e chiedo aiuto al responsabile se necessario.",
         vi: "Tôi giữ bình tĩnh, lắng nghe khách hàng và nhờ quản lý giúp nếu cần.",

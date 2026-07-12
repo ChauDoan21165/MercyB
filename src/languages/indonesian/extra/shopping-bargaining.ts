@@ -33,6 +33,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   /** Indonesian word/phrase. */
   word: string;
   /** English meaning. */
@@ -48,6 +49,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   /** Indonesian line. */
   text: string;
@@ -260,6 +262,7 @@ export const lessons: IndonesianLesson[] = [
     vocabulary: [
       // Places
       {
+        cell_id: "71fd53dc-6aa5-427f-819f-34af7d8d0dd8",
         word: "pasar",
         en: "market (traditional)",
         vi: "chợ",
@@ -268,6 +271,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "PA-sar — where you haggle; `pasar tradisional` vs `pasar swalayan` (supermarket)",
       },
       {
+        cell_id: "83cdde73-bef3-4efc-acfb-e079114909bf",
         word: "toko",
         en: "shop / store",
         vi: "cửa hàng",
@@ -276,6 +280,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "TO-ko — `toko kelontong` = corner shop; `toko online` = online store",
       },
       {
+        cell_id: "05bfbb21-82b4-4da5-9efa-dada672732e9",
         word: "mall / pusat perbelanjaan",
         en: "mall / shopping center",
         vi: "trung tâm thương mại",
@@ -285,6 +290,7 @@ export const lessons: IndonesianLesson[] = [
       },
       // Money & price
       {
+        cell_id: "8eea947d-b9d6-49a5-9cb5-26fb77b892b4",
         word: "harga",
         en: "price",
         vi: "giá",
@@ -293,6 +299,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "HAR-ga — `harganya` = its price; `harga pas` = fixed price",
       },
       {
+        cell_id: "228149de-68d3-45fb-b0ee-1e5e1115cc50",
         word: "mahal",
         en: "expensive",
         vi: "đắt",
@@ -301,6 +308,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "MA-hal — `mahal sekali` = very expensive (sekali AFTER)",
       },
       {
+        cell_id: "ca60dd00-d2f4-498b-9b82-56a40d501b14",
         word: "murah",
         en: "cheap",
         vi: "rẻ",
@@ -309,6 +317,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "MOO-rah — `murah meriah` = cheap and cheerful (set phrase)",
       },
       {
+        cell_id: "3b02a811-b3f0-406e-a259-ce4ba0b2dcdf",
         word: "ribu",
         en: "thousand",
         vi: "nghìn",
@@ -317,6 +326,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "REE-boo — `lima ribu` = 5,000; slang: `goceng` = 5k, `ceban` = 10k",
       },
       {
+        cell_id: "2cacac7b-2d9a-43ed-82c2-9757ad4f4307",
         word: "diskon",
         en: "discount",
         vi: "giảm giá",
@@ -326,6 +336,7 @@ export const lessons: IndonesianLesson[] = [
       },
       // Haggling verbs
       {
+        cell_id: "2e891cc4-8da8-4927-a3a7-ae8859caa394",
         word: "menawar",
         en: "to bargain / haggle",
         vi: "trả giá / mặc cả",
@@ -334,6 +345,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "me-NA-war — the verb (meN- + `tawar`); `nawar` in casual speech",
       },
       {
+        cell_id: "93a1b9d0-a3a3-4733-b00e-03f3c9a17a40",
         word: "tawaran",
         en: "offer / bid",
         vi: "lời chào giá / mức đề nghị",
@@ -342,6 +354,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "ta-WA-ran — the noun (-an); don't use it for the verb `menawar`",
       },
       {
+        cell_id: "3d379907-0677-43c3-a5cd-2522e2c0f46b",
         word: "kurang",
         en: "less / to reduce (price)",
         vi: "bớt / ít hơn",
@@ -351,6 +364,7 @@ export const lessons: IndonesianLesson[] = [
       },
       // Paying & after-sale
       {
+        cell_id: "72c1855e-ab86-4e3a-b4ed-887b3dfa41d1",
         word: "bayar",
         en: "to pay",
         vi: "trả tiền / thanh toán",
@@ -359,6 +373,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "BA-yar — `bayar tunai` = pay cash; `bayar pakai kartu` = pay by card",
       },
       {
+        cell_id: "c2d31e8d-b22d-46a7-9d09-2ebe54620ab8",
         word: "kembalian",
         en: "change (money back)",
         vi: "tiền thối lại",
@@ -367,6 +382,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "kem-ba-LEE-an — ke-…-an from `kembali`; `kembaliannya berapa?` = how much change",
       },
       {
+        cell_id: "3d11217a-2533-448b-9809-2a2d09ae2532",
         word: "cicilan",
         en: "installments",
         vi: "trả góp",
@@ -375,6 +391,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "chi-CHIL-an — from `cicil`; `cicilan 0 persen` = 0% installments",
       },
       {
+        cell_id: "d365a452-3d18-4aa0-95a7-d34be7add5e2",
         word: "struk / nota",
         en: "receipt",
         vi: "hóa đơn / biên lai",
@@ -383,6 +400,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "strook / NO-ta — keep it for a `tukar`/`retur`",
       },
       {
+        cell_id: "71758e7c-476e-44a7-bc22-090d1985e739",
         word: "retur / tukar",
         en: "return / exchange",
         vi: "trả lại / đổi hàng",
@@ -394,36 +412,42 @@ export const lessons: IndonesianLesson[] = [
     dialogue: [
       // Dialogue A: haggling at the pasar
       {
+        cell_id: "6e853121-41a8-49bd-a257-7e6383c25bc8",
         speaker: "Pembeli",
         text: "Permisi, Bu. Baju ini berapa harganya?",
         vi: "Xin lỗi cô. Cái áo này giá bao nhiêu ạ?",
         en: "Excuse me, ma'am. How much is this shirt?",
       },
       {
+        cell_id: "699a7b21-5d19-40de-912f-5792cf564897",
         speaker: "Penjual",
         text: "Yang itu seratus lima puluh ribu, Mbak. Bahannya bagus.",
         vi: "Cái đó một trăm năm mươi nghìn cô ơi. Vải tốt lắm.",
         en: "That one is a hundred fifty thousand, miss. The fabric is good.",
       },
       {
+        cell_id: "5a3e4d06-56ab-4345-aeba-82aad176a05f",
         speaker: "Pembeli",
         text: "Wah, mahal sekali. Bisa kurang, Bu? Seratus ribu, ya?",
         vi: "Ồ, đắt quá. Bớt được không cô? Một trăm nghìn nhé?",
         en: "Wow, that's very expensive. Can it be less, ma'am? A hundred thousand, okay?",
       },
       {
+        cell_id: "49b168f5-2cd8-4055-8abd-5aefccb9553e",
         speaker: "Penjual",
         text: "Aduh, belum dapat, Mbak. Seratus tiga puluh, deh. Sudah murah itu.",
         vi: "Ôi, chưa được đâu cô. Một trăm ba mươi vậy. Rẻ lắm rồi đó.",
         en: "Oh, that won't cover it, miss. A hundred thirty then. That's already cheap.",
       },
       {
+        cell_id: "601abd87-09af-4907-a0ca-e376073963c7",
         speaker: "Pembeli",
         text: "Seratus sepuluh, ya? Saya ambil dua kalau boleh segitu.",
         vi: "Một trăm mười nhé? Tôi lấy hai cái nếu được giá đó.",
         en: "A hundred ten, okay? I'll take two if you can do that.",
       },
       {
+        cell_id: "7b454f10-0a32-4f0f-b8db-5db80b3cbad6",
         speaker: "Penjual",
         text: "Ya sudah, buat Mbak. Dua baju dua ratus dua puluh ribu. Tolong dibungkus, ya?",
         vi: "Thôi được, vì cô đó. Hai cái áo hai trăm hai mươi nghìn. Gói lại giúp nhé?",
@@ -431,24 +455,28 @@ export const lessons: IndonesianLesson[] = [
       },
       // Dialogue B: fixed-price mall counter
       {
+        cell_id: "4b057452-76b4-4c7d-ac5c-654a6499f212",
         speaker: "Pembeli",
         text: "Mas, apakah ada diskon untuk sepatu ini?",
         vi: "Anh ơi, có giảm giá cho đôi giày này không?",
         en: "Sir, is there a discount on these shoes?",
       },
       {
+        cell_id: "32c4c9f7-c184-45d0-93a5-e611a4f0e765",
         speaker: "Pramuniaga",
         text: "Ada promo, Kak. Diskon dua puluh persen kalau bayar pakai kartu tertentu.",
         vi: "Có khuyến mãi đó anh/chị. Giảm hai mươi phần trăm nếu trả bằng một số thẻ nhất định.",
         en: "There's a promo. Twenty percent off if you pay with certain cards.",
       },
       {
+        cell_id: "3c98eaf7-ac7e-42ee-a9e2-13cd5afc0eda",
         speaker: "Pembeli",
         text: "Oke. Ada cicilan tidak? Dan kalau ukurannya tidak pas, boleh ditukar?",
         vi: "Được. Có trả góp không? Và nếu cỡ không vừa thì đổi được chứ?",
         en: "Okay. Are there installments? And if the size doesn't fit, can I exchange it?",
       },
       {
+        cell_id: "273df30d-b4a2-4eac-aa02-13f643ea77eb",
         speaker: "Pramuniaga",
         text: "Bisa cicilan tiga bulan. Tukar bisa dalam tujuh hari asal struk dan labelnya masih ada.",
         vi: "Trả góp ba tháng được. Đổi được trong bảy ngày miễn còn hóa đơn và nhãn.",

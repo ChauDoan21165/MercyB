@@ -13,6 +13,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -22,6 +23,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -138,6 +140,7 @@ export const roommateCleaningScheduleLessons: IndonesianLesson[] = [
       "Useful frames: `giliran saya/kamu`, `buang sampah`, `cuci piring`, `kamar mandi harus dibersihkan`. With housemates, `kita` includes the listener; `kami` does not.",
     vocabulary: [
       {
+        cell_id: "3f8aa002-d4b7-418d-924a-8eff075c80d3",
         word: "jadwal bersih-bersih",
         en: "cleaning schedule",
         vi: "lịch dọn dẹp",
@@ -146,6 +149,7 @@ export const roommateCleaningScheduleLessons: IndonesianLesson[] = [
         pronunciation_en: "JAD-wal ber-SIH-ber-SIH",
       },
       {
+        cell_id: "ffa38fe4-2ef7-4941-b5ec-659a1c33e9ff",
         word: "teman serumah",
         en: "housemate",
         vi: "bạn cùng nhà",
@@ -154,6 +158,7 @@ export const roommateCleaningScheduleLessons: IndonesianLesson[] = [
         pronunciation_en: "te-MAN se-ROO-mah",
       },
       {
+        cell_id: "cf51bb91-9984-49d0-8590-67dd8fdb7de3",
         word: "cuci piring",
         en: "wash dishes",
         vi: "rửa chén",
@@ -162,6 +167,7 @@ export const roommateCleaningScheduleLessons: IndonesianLesson[] = [
         pronunciation_en: "CHOO-chi PEE-ring",
       },
       {
+        cell_id: "be92fe60-720c-470e-9be7-798802c4f2c6",
         word: "buang sampah",
         en: "throw out trash",
         vi: "đổ rác",
@@ -170,6 +176,7 @@ export const roommateCleaningScheduleLessons: IndonesianLesson[] = [
         pronunciation_en: "BOO-ang SAM-pah",
       },
       {
+        cell_id: "dbe4d3af-b10f-4984-94d0-08b8972c94fd",
         word: "kamar mandi",
         en: "bathroom",
         vi: "phòng tắm / nhà vệ sinh",
@@ -178,6 +185,7 @@ export const roommateCleaningScheduleLessons: IndonesianLesson[] = [
         pronunciation_en: "KA-mar MAN-di",
       },
       {
+        cell_id: "0b558a13-d34d-4c10-8885-7bc4d43df6e4",
         word: "giliran",
         en: "turn",
         vi: "lượt",
@@ -188,18 +196,21 @@ export const roommateCleaningScheduleLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "275cc0dc-6f29-4645-80de-6059ae828f52",
         speaker: "Ari",
         text: "Kita perlu buat jadwal bersih-bersih mingguan.",
         vi: "Chúng ta cần làm lịch dọn dẹp hằng tuần.",
         en: "We need to make a weekly cleaning schedule.",
       },
       {
+        cell_id: "2404b4c7-edef-4fc9-9040-dbacdeebfb7b",
         speaker: "Lina",
         text: "Setuju. Hari ini giliran saya cuci piring.",
         vi: "Đồng ý. Hôm nay đến lượt tôi rửa chén.",
         en: "Agreed. Today is my turn to wash dishes.",
       },
       {
+        cell_id: "08d20eca-9df7-44f2-a791-8868d7df0b7c",
         speaker: "Ari",
         text: "Besok saya buang sampah, lalu kamu bersihkan kamar mandi.",
         vi: "Ngày mai tôi đổ rác, rồi bạn dọn phòng tắm.",
@@ -316,6 +327,7 @@ export const roommateCleaningScheduleLessons: IndonesianLesson[] = [
       "To give feedback without escalating: avoid labels like `kamu malas`; use `Saya merasa... kalau...` and propose `Mari kita...`. This is a polite way to preserve the housemate relationship.",
     vocabulary: [
       {
+        cell_id: "413a7198-4ebd-4383-b685-74e9295cac94",
         word: "kesepakatan",
         en: "agreement",
         vi: "thỏa thuận",
@@ -324,6 +336,7 @@ export const roommateCleaningScheduleLessons: IndonesianLesson[] = [
         pronunciation_en: "ke-se-PA-ka-tan",
       },
       {
+        cell_id: "b26837de-5aa1-49f7-ba96-35b1a06b71a2",
         word: "tukar giliran",
         en: "swap turns",
         vi: "đổi lượt",
@@ -332,6 +345,7 @@ export const roommateCleaningScheduleLessons: IndonesianLesson[] = [
         pronunciation_en: "TOO-kar GI-li-ran",
       },
       {
+        cell_id: "a0de12e6-f233-428b-963c-bba32c71f48e",
         word: "tidak adil",
         en: "unfair",
         vi: "không công bằng",
@@ -340,6 +354,7 @@ export const roommateCleaningScheduleLessons: IndonesianLesson[] = [
         pronunciation_en: "TEE-dak A-dil",
       },
       {
+        cell_id: "cad8b3d9-3710-4483-950a-cf8f457121a0",
         word: "aturan sederhana",
         en: "simple rules",
         vi: "quy định đơn giản",
@@ -348,6 +363,7 @@ export const roommateCleaningScheduleLessons: IndonesianLesson[] = [
         pronunciation_en: "a-TOO-ran se-der-HA-na",
       },
       {
+        cell_id: "a6c6f469-0779-4e30-8b3d-26d8723f7376",
         word: "bicara baik-baik",
         en: "talk calmly/nicely",
         vi: "nói chuyện tử tế / êm đẹp",
@@ -356,6 +372,7 @@ export const roommateCleaningScheduleLessons: IndonesianLesson[] = [
         pronunciation_en: "bi-CHA-ra BAIK-BAIK",
       },
       {
+        cell_id: "16cc59a4-541c-4fbb-9119-ed6db50a0056",
         word: "tugas menumpuk",
         en: "tasks pile up",
         vi: "việc dồn lại",
@@ -366,24 +383,28 @@ export const roommateCleaningScheduleLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "de280fe9-1bba-4870-80dc-15b98048e58c",
         speaker: "Dina",
         text: "Aku merasa tidak adil kalau piring kotor selalu menumpuk.",
         vi: "Tôi thấy không công bằng nếu chén bẩn cứ luôn chất đống.",
         en: "I feel it is unfair when dirty dishes always pile up.",
       },
       {
+        cell_id: "801af3bc-b440-4210-aee0-a10b0dfec388",
         speaker: "Rafi",
         text: "Maaf, minggu ini aku sibuk. Bisa tukar giliran?",
         vi: "Xin lỗi, tuần này tôi bận. Có thể đổi lượt không?",
         en: "Sorry, I am busy this week. Can we swap turns?",
       },
       {
+        cell_id: "ad07f158-67b5-45df-b378-d81296622c05",
         speaker: "Dina",
         text: "Bisa, tapi mari kita tulis kesepakatan di grup chat.",
         vi: "Được, nhưng hãy viết thỏa thuận trong nhóm chat.",
         en: "Yes, but let's write the agreement in the group chat.",
       },
       {
+        cell_id: "eec595c1-c33a-4042-8247-b6124ccea7ae",
         speaker: "Rafi",
         text: "Setuju. Kalau ada masalah, kita bicara baik-baik dulu.",
         vi: "Đồng ý. Nếu có vấn đề, chúng ta nói chuyện tử tế trước.",

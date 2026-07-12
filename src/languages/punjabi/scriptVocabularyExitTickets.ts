@@ -23,6 +23,7 @@ export type PunjabiScriptVocabularyExitTicketUse =
   | "final_qa";
 
 export type PunjabiScriptVocabularyExitTicketItem = {
+  cell_id?: string;
   id: string;
   area: PunjabiScriptVocabularyExitTicketArea;
   use: PunjabiScriptVocabularyExitTicketUse;
@@ -44,6 +45,7 @@ export type PunjabiScriptVocabularyExitTicketItem = {
 };
 
 export type PunjabiScriptVocabularyExitTicketSection = {
+  cell_id?: string;
   area: PunjabiScriptVocabularyExitTicketArea;
   title_vi: string;
   title_en: string;

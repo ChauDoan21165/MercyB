@@ -17,6 +17,7 @@ export type PunjabiDryRunFocus =
 export type PunjabiDryRunUse = "dry_run" | "pre_integration" | "final_readiness" | "regression";
 
 export type PunjabiScriptVocabularyIntegrationDryRunItem = {
+  cell_id?: string;
   id: string;
   focus: PunjabiDryRunFocus;
   use: PunjabiDryRunUse;
@@ -38,6 +39,7 @@ export type PunjabiScriptVocabularyIntegrationDryRunItem = {
 };
 
 export type PunjabiScriptVocabularyIntegrationDryRunSection = {
+  cell_id?: string;
   focus: PunjabiDryRunFocus;
   title_vi: string;
   title_en: string;

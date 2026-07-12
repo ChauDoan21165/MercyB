@@ -18,6 +18,7 @@ type LessonSentence = {
 };
 
 type VocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -27,6 +28,7 @@ type VocabEntry = {
 };
 
 type DialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -200,6 +202,7 @@ export const religiousCulturalEtiquetteLessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: `sopan santun` means proper manners, close to Vietnamese ideas of lễ phép and ý tứ. `Adat` is not just generic tradition; in Indonesia it can determine clothing, seating, who may enter which area, and whether photos are allowed. When unsure, say `Maaf, saya belum tahu aturannya` (Sorry, I do not know the rules yet), then ask.",
     vocabulary: [
       {
+        cell_id: "7db4cddb-a0a3-4b7e-893b-a2b2d39fc5e3",
         word: "sopan santun",
         en: "manners / etiquette",
         vi: "lễ phép / phép lịch sự",
@@ -208,6 +211,7 @@ export const religiousCulturalEtiquetteLessons: IndonesianLesson[] = [
         pronunciation_en: "SO-pan SAN-toon",
       },
       {
+        cell_id: "355932e5-a9bf-43a6-bfce-008215d69d77",
         word: "masjid",
         en: "mosque",
         vi: "nhà thờ Hồi giáo",
@@ -216,6 +220,7 @@ export const religiousCulturalEtiquetteLessons: IndonesianLesson[] = [
         pronunciation_en: "MAS-jid",
       },
       {
+        cell_id: "4acd310d-72db-4a4c-8899-5d991241d6db",
         word: "pura",
         en: "Hindu temple",
         vi: "đền Hindu",
@@ -224,6 +229,7 @@ export const religiousCulturalEtiquetteLessons: IndonesianLesson[] = [
         pronunciation_en: "POO-ra",
       },
       {
+        cell_id: "8b5a1955-5e53-4dde-90ef-8801a1a289ff",
         word: "gereja",
         en: "church",
         vi: "nhà thờ",
@@ -232,6 +238,7 @@ export const religiousCulturalEtiquetteLessons: IndonesianLesson[] = [
         pronunciation_en: "GE-re-ja",
       },
       {
+        cell_id: "c83ac83c-2f6c-482b-853f-d53e107ffa5e",
         word: "pakaian sopan",
         en: "modest / polite clothing",
         vi: "trang phục lịch sự / kín đáo",
@@ -240,6 +247,7 @@ export const religiousCulturalEtiquetteLessons: IndonesianLesson[] = [
         pronunciation_en: "pa-KAI-an SO-pan",
       },
       {
+        cell_id: "edc876f0-df63-4c80-abfb-7ee82c2cb03f",
         word: "izin foto",
         en: "permission to take photos",
         vi: "sự cho phép chụp ảnh",
@@ -248,6 +256,7 @@ export const religiousCulturalEtiquetteLessons: IndonesianLesson[] = [
         pronunciation_en: "EE-zin FO-to",
       },
       {
+        cell_id: "662cf32b-63a1-4b3d-9d2b-887e188f6f50",
         word: "adat",
         en: "custom / customary law",
         vi: "phong tục / lệ truyền thống",
@@ -256,6 +265,7 @@ export const religiousCulturalEtiquetteLessons: IndonesianLesson[] = [
         pronunciation_en: "A-dat",
       },
       {
+        cell_id: "4350b6e5-cbec-4928-bb2a-4c125891f416",
         word: "menghormati",
         en: "to respect",
         vi: "tôn trọng",
@@ -264,6 +274,7 @@ export const religiousCulturalEtiquetteLessons: IndonesianLesson[] = [
         pronunciation_en: "meng-hor-MA-tee",
       },
       {
+        cell_id: "4a01b11c-d119-4a03-a63a-b534ebfe0cf4",
         word: "aturan khusus",
         en: "special rules",
         vi: "quy định riêng",
@@ -272,6 +283,7 @@ export const religiousCulturalEtiquetteLessons: IndonesianLesson[] = [
         pronunciation_en: "a-TOOR-an KHU-soos",
       },
       {
+        cell_id: "4e22b9cb-1cf0-419f-8e9c-60ca45b39b49",
         word: "selendang",
         en: "sash / shawl",
         vi: "khăn choàng / dải thắt",
@@ -282,24 +294,28 @@ export const religiousCulturalEtiquetteLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "c7602019-6567-4b6c-a98c-855ba0ddfa66",
         speaker: "Lan",
         text: "Maaf, apakah saya boleh masuk ke pura ini?",
         vi: "Xin lỗi, tôi có thể vào ngôi đền này không?",
         en: "Excuse me, may I enter this temple?",
       },
       {
+        cell_id: "45833254-b52e-47af-87c8-c2e345ee8ee1",
         speaker: "Petugas",
         text: "Boleh, tapi silakan memakai sarung dan selendang dulu.",
         vi: "Được, nhưng vui lòng mặc sarong và thắt khăn trước.",
         en: "Yes, but please put on a sarong and sash first.",
       },
       {
+        cell_id: "f6fd1579-375c-4a18-91e1-856836563da3",
         speaker: "Lan",
         text: "Baik. Apakah boleh mengambil foto di dalam?",
         vi: "Vâng. Có được chụp ảnh bên trong không?",
         en: "Okay. Is it allowed to take photos inside?",
       },
       {
+        cell_id: "42d96b7f-a2c9-4299-aedd-9f63a1bd7eba",
         speaker: "Petugas",
         text: "Untuk area upacara, mohon jangan foto dulu.",
         vi: "Ở khu vực nghi lễ, xin đừng chụp ảnh lúc này.",

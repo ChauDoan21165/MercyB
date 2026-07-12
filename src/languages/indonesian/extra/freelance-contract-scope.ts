@@ -17,6 +17,7 @@ type IndonesianLessonSentence = {
 };
 
 type IndonesianVocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -26,6 +27,7 @@ type IndonesianVocabEntry = {
 };
 
 type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -212,6 +214,7 @@ export const freelanceContractScopeLessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: learn contract phrases as chunks: `ruang lingkup kerja`, `di luar ruang lingkup`, `biaya tambahan`, `termin pembayaran`, `hak cipta`, `pembayaran lunas`, `tidak dapat dikembalikan`. Use `mohon konfirmasi` to close terms politely.",
     vocabulary: [
       {
+        cell_id: "c5e51490-fa4a-4ac3-81de-fa7673ca7cc3",
         word: "kontrak freelance",
         en: "freelance contract",
         vi: "hợp đồng freelance",
@@ -220,6 +223,7 @@ export const freelanceContractScopeLessons: IndonesianLesson[] = [
         pronunciation_en: "KON-trak FREE-lance",
       },
       {
+        cell_id: "1d88f10a-75eb-46e3-ada3-34ae18e8aa5b",
         word: "ruang lingkup kerja",
         en: "scope of work",
         vi: "phạm vi công việc",
@@ -228,6 +232,7 @@ export const freelanceContractScopeLessons: IndonesianLesson[] = [
         pronunciation_en: "ROO-ang LING-koop KER-ja",
       },
       {
+        cell_id: "b5538af6-61fa-49e3-bac8-c0e0cba7bc13",
         word: "revisi",
         en: "revision",
         vi: "chỉnh sửa",
@@ -236,6 +241,7 @@ export const freelanceContractScopeLessons: IndonesianLesson[] = [
         pronunciation_en: "reh-VEE-see",
       },
       {
+        cell_id: "cfa3c61f-38ce-42ba-a896-d9996d17d2a7",
         word: "DP",
         en: "down payment",
         vi: "tiền cọc / tạm ứng",
@@ -244,6 +250,7 @@ export const freelanceContractScopeLessons: IndonesianLesson[] = [
         pronunciation_en: "day-PAY",
       },
       {
+        cell_id: "08706d4b-04f1-4a10-bf12-819b9720b609",
         word: "termin pembayaran",
         en: "payment milestone/installment",
         vi: "đợt thanh toán",
@@ -252,6 +259,7 @@ export const freelanceContractScopeLessons: IndonesianLesson[] = [
         pronunciation_en: "TER-min pem-ba-YA-ran",
       },
       {
+        cell_id: "1f66fd90-b760-4d0b-9039-4a1b62ee506a",
         word: "hak cipta",
         en: "copyright",
         vi: "bản quyền",
@@ -260,6 +268,7 @@ export const freelanceContractScopeLessons: IndonesianLesson[] = [
         pronunciation_en: "hak CHIP-ta",
       },
       {
+        cell_id: "26bf5e08-0017-4fab-9d9a-839a3463bd12",
         word: "pembatalan",
         en: "cancellation",
         vi: "việc hủy bỏ",
@@ -268,6 +277,7 @@ export const freelanceContractScopeLessons: IndonesianLesson[] = [
         pronunciation_en: "pem-ba-TA-lan",
       },
       {
+        cell_id: "1cd74ca5-3f8f-43b2-add3-3a30ea6355be",
         word: "ketentuan",
         en: "terms / conditions",
         vi: "điều khoản / quy định",
@@ -278,30 +288,35 @@ export const freelanceContractScopeLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "04dcf3ad-b913-471f-8e83-6beceeb04d46",
         speaker: "Freelancer",
         text: "Sebelum mulai, saya kirim kontrak freelance dulu, ya.",
         vi: "Trước khi bắt đầu, tôi gửi hợp đồng freelance trước nhé.",
         en: "Before starting, I will send the freelance contract first.",
       },
       {
+        cell_id: "9355821c-74dc-41b6-8847-056cc9edbb8d",
         speaker: "Klien",
         text: "Baik. Apa saja yang termasuk dalam ruang lingkup kerja?",
         vi: "Được. Những gì bao gồm trong phạm vi công việc?",
         en: "Okay. What is included in the scope of work?",
       },
       {
+        cell_id: "99796943-3f7b-4466-bb78-7cd913faae7c",
         speaker: "Freelancer",
         text: "Harga sudah termasuk dua kali revisi kecil. Revisi besar ada biaya tambahan.",
         vi: "Giá đã bao gồm hai lần chỉnh sửa nhỏ. Chỉnh sửa lớn có phí bổ sung.",
         en: "The price includes two small revisions. Major revisions have an additional fee.",
       },
       {
+        cell_id: "a5171e15-ecad-4414-b34f-a82242958a24",
         speaker: "Klien",
         text: "Untuk pembayaran, apakah bisa pakai DP dan termin?",
         vi: "Về thanh toán, có thể dùng tiền cọc và các đợt thanh toán không?",
         en: "For payment, can we use a down payment and milestones?",
       },
       {
+        cell_id: "da564180-518b-48df-b2a7-3e7e1ba38b33",
         speaker: "Freelancer",
         text: "Bisa. DP tiga puluh persen, lalu termin kedua setelah draf pertama disetujui.",
         vi: "Có thể. Đặt cọc ba mươi phần trăm, rồi đợt thứ hai sau khi bản nháp đầu được duyệt.",

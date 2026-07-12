@@ -26,6 +26,7 @@ export type LessonSentence = {
 };
 
 export type VocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -35,6 +36,7 @@ export type VocabEntry = {
 };
 
 export type DialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -131,17 +133,17 @@ export const lessons: IndonesianLesson[] = [
     tip_advice_en:
       "Closeness scale: kenalan (acquaintance) < teman (friend) < sahabat (close friend). 'c' = 'ch' again: kecil = 'kuh-CHEEL'. 'nongkrong' has initial 'ng' — easy for Vietnamese. Learn the invite: 'Nongkrong yuk!' (Let's hang out!).",
     vocabulary: [
-      { word: "teman", en: "friend", vi: "bạn", pos: "noun", pronunciation_vi: "te-MAN", pronunciation_en: "tuh-MAN" },
-      { word: "sahabat", en: "best/close friend", vi: "bạn thân", pos: "noun", pronunciation_vi: "sa-HA-bat", pronunciation_en: "sah-HAH-bat" },
-      { word: "kenalan", en: "acquaintance / to get to know", vi: "người quen / làm quen", pos: "noun/verb", pronunciation_vi: "ke-NA-lan", pronunciation_en: "kuh-NAH-lan" },
-      { word: "nongkrong", en: "to hang out", vi: "tụ tập, đi chơi", pos: "verb", pronunciation_vi: "nong-KRONG", pronunciation_en: "nong-KRONG" },
-      { word: "bareng", en: "together (slang)", vi: "cùng nhau", pos: "adverb", pronunciation_vi: "BA-reng", pronunciation_en: "BAH-reng" },
-      { word: "geng", en: "friend group, gang", vi: "nhóm bạn", pos: "noun", pronunciation_vi: "GENG", pronunciation_en: "GENG" },
+      { cell_id: "fe9edd19-58ee-402d-9858-e6a5603fd5e3", word: "teman", en: "friend", vi: "bạn", pos: "noun", pronunciation_vi: "te-MAN", pronunciation_en: "tuh-MAN" },
+      { cell_id: "a3bf29cc-ad9e-4fa8-87b6-7d4f0a92bfdc", word: "sahabat", en: "best/close friend", vi: "bạn thân", pos: "noun", pronunciation_vi: "sa-HA-bat", pronunciation_en: "sah-HAH-bat" },
+      { cell_id: "0d56375f-ebcd-4942-bb52-3ba2c5ba08c6", word: "kenalan", en: "acquaintance / to get to know", vi: "người quen / làm quen", pos: "noun/verb", pronunciation_vi: "ke-NA-lan", pronunciation_en: "kuh-NAH-lan" },
+      { cell_id: "4236d8d1-b78c-4a52-9539-6b2dbe805db8", word: "nongkrong", en: "to hang out", vi: "tụ tập, đi chơi", pos: "verb", pronunciation_vi: "nong-KRONG", pronunciation_en: "nong-KRONG" },
+      { cell_id: "3442c796-2aee-45c9-8ab8-f74144eda24c", word: "bareng", en: "together (slang)", vi: "cùng nhau", pos: "adverb", pronunciation_vi: "BA-reng", pronunciation_en: "BAH-reng" },
+      { cell_id: "6d29cb94-a12d-438d-90da-316426129c14", word: "geng", en: "friend group, gang", vi: "nhóm bạn", pos: "noun", pronunciation_vi: "GENG", pronunciation_en: "GENG" },
     ],
     dialogue: [
-      { speaker: "Dewi", text: "Nanti malam nongkrong yuk, di kafe biasa.", vi: "Tối nay đi chơi đi, ở quán cà phê quen.", en: "Let's hang out tonight, at the usual café." },
-      { speaker: "Fajar", text: "Boleh! Ajak yang lain juga, ramai-ramai.", vi: "Được! Rủ mấy người khác nữa, đông cho vui.", en: "Sure! Invite the others too, the more the merrier." },
-      { speaker: "Dewi", text: "Oke, aku chat geng dulu ya.", vi: "Ok, để tớ nhắn cả nhóm trước nhé.", en: "Okay, I'll message the group first." },
+      { cell_id: "0a43f8b0-b714-4e67-9363-19804242b082", speaker: "Dewi", text: "Nanti malam nongkrong yuk, di kafe biasa.", vi: "Tối nay đi chơi đi, ở quán cà phê quen.", en: "Let's hang out tonight, at the usual café." },
+      { cell_id: "aa91810c-9fce-4e52-b3ec-b21db4947121", speaker: "Fajar", text: "Boleh! Ajak yang lain juga, ramai-ramai.", vi: "Được! Rủ mấy người khác nữa, đông cho vui.", en: "Sure! Invite the others too, the more the merrier." },
+      { cell_id: "db5a73e9-e061-47e7-8f20-b98f125188d5", speaker: "Dewi", text: "Oke, aku chat geng dulu ya.", vi: "Ok, để tớ nhắn cả nhóm trước nhé.", en: "Okay, I'll message the group first." },
     ],
     exercises: [
       {
@@ -226,17 +228,17 @@ export const lessons: IndonesianLesson[] = [
     tip_advice_en:
       "Learn the romance acronyms — they're everywhere: PDKT (pursuing), PDA (public affection), TTM (teman tapi mesra = friends with closeness). The slang 'ng-' prefix again: ngomong, ngasih. 'suka sama X' = to like X. Distinguish 'naksir' (a light crush) from 'cinta' (deep love).",
     vocabulary: [
-      { word: "PDKT (pendekatan)", en: "the pursuing/flirting phase", vi: "giai đoạn cưa cẩm", pos: "noun", pronunciation_vi: "pe-de-ka-TE", pronunciation_en: "peh-deh-kah-TEH" },
-      { word: "naksir", en: "to have a crush on", vi: "cảm nắng, để ý", pos: "verb", pronunciation_vi: "NAK-sir", pronunciation_en: "NAK-seer" },
-      { word: "gebetan", en: "crush (the person)", vi: "người mình thích", pos: "noun", pronunciation_vi: "ge-BE-tan", pronunciation_en: "guh-BUH-tan" },
-      { word: "perhatian", en: "attention, care", vi: "sự quan tâm", pos: "noun", pronunciation_vi: "per-ha-TI-an", pronunciation_en: "per-hah-TEE-an" },
-      { word: "malu", en: "shy, embarrassed", vi: "ngại, xấu hổ", pos: "adjective", pronunciation_vi: "MA-lu", pronunciation_en: "MAH-loo" },
-      { word: "suka", en: "to like", vi: "thích", pos: "verb", pronunciation_vi: "SU-ka", pronunciation_en: "SOO-kah" },
+      { cell_id: "2fa65157-7d0b-46c6-8cb0-25eac38307d8", word: "PDKT (pendekatan)", en: "the pursuing/flirting phase", vi: "giai đoạn cưa cẩm", pos: "noun", pronunciation_vi: "pe-de-ka-TE", pronunciation_en: "peh-deh-kah-TEH" },
+      { cell_id: "9453dd14-6744-4434-9de1-b364d4c9c948", word: "naksir", en: "to have a crush on", vi: "cảm nắng, để ý", pos: "verb", pronunciation_vi: "NAK-sir", pronunciation_en: "NAK-seer" },
+      { cell_id: "d68e2c68-de7d-4651-ad28-a5f8d0df39fb", word: "gebetan", en: "crush (the person)", vi: "người mình thích", pos: "noun", pronunciation_vi: "ge-BE-tan", pronunciation_en: "guh-BUH-tan" },
+      { cell_id: "fe5f590a-7b09-4dca-87ee-f0d3ff9d2d15", word: "perhatian", en: "attention, care", vi: "sự quan tâm", pos: "noun", pronunciation_vi: "per-ha-TI-an", pronunciation_en: "per-hah-TEE-an" },
+      { cell_id: "c74107b6-6b52-40d2-b7e1-56a8f26c9475", word: "malu", en: "shy, embarrassed", vi: "ngại, xấu hổ", pos: "adjective", pronunciation_vi: "MA-lu", pronunciation_en: "MAH-loo" },
+      { cell_id: "21a487d5-5825-4631-a74e-abcfb24dae66", word: "suka", en: "to like", vi: "thích", pos: "verb", pronunciation_vi: "SU-ka", pronunciation_en: "SOO-kah" },
     ],
     dialogue: [
-      { speaker: "Tya", text: "Kamu kayaknya lagi PDKT sama si Andi ya?", vi: "Hình như cậu đang cưa anh Andi đúng không?", en: "Seems like you're pursuing Andi, right?" },
-      { speaker: "Sari", text: "Hehe, ketahuan. Aku naksir dia sih, tapi malu.", vi: "Hehe, bị phát hiện. Tớ cảm nắng cậu ấy, mà ngại.", en: "Heh, busted. I do have a crush on him, but I'm shy." },
-      { speaker: "Tya", text: "Ayo dong, kasih kode aja dulu.", vi: "Cố lên nào, thả thính trước đi.", en: "Come on, just drop a hint first." },
+      { cell_id: "94198fe6-a26c-4c2c-89f8-10d1cf588b85", speaker: "Tya", text: "Kamu kayaknya lagi PDKT sama si Andi ya?", vi: "Hình như cậu đang cưa anh Andi đúng không?", en: "Seems like you're pursuing Andi, right?" },
+      { cell_id: "fcff6bf4-313c-455f-99eb-b570e63bd426", speaker: "Sari", text: "Hehe, ketahuan. Aku naksir dia sih, tapi malu.", vi: "Hehe, bị phát hiện. Tớ cảm nắng cậu ấy, mà ngại.", en: "Heh, busted. I do have a crush on him, but I'm shy." },
+      { cell_id: "28ad9611-cad7-4a2a-bea8-4a67f60aa542", speaker: "Tya", text: "Ayo dong, kasih kode aja dulu.", vi: "Cố lên nào, thả thính trước đi.", en: "Come on, just drop a hint first." },
     ],
     exercises: [
       {
@@ -319,17 +321,17 @@ export const lessons: IndonesianLesson[] = [
     tip_advice_en:
       "Same root 'jadi' (to become) → 'jadian' (to couple up). 'pacar' + possessive: pacarku (my partner), pacarmu (your partner). 'c' = 'ch' again: pacar, kencan. Distinguish 'pacaran' (dating, unmarried) from 'menikah' (to marry) and 'tunangan' (engaged).",
     vocabulary: [
-      { word: "jadian", en: "to become a couple", vi: "thành đôi", pos: "verb", pronunciation_vi: "ja-DI-an", pronunciation_en: "jah-DEE-an" },
-      { word: "pacar", en: "boyfriend/girlfriend", vi: "người yêu", pos: "noun", pronunciation_vi: "PA-car", pronunciation_en: "PAH-char" },
-      { word: "pacaran", en: "to date, be in a relationship", vi: "hẹn hò, yêu đương", pos: "verb", pronunciation_vi: "pa-CA-ran", pronunciation_en: "pah-CHAH-ran" },
-      { word: "kencan", en: "a date (outing)", vi: "buổi hẹn hò", pos: "noun", pronunciation_vi: "KEN-can", pronunciation_en: "KEN-chan" },
-      { word: "tunangan", en: "engaged / fiancé(e)", vi: "đính hôn / hôn phu/thê", pos: "noun/verb", pronunciation_vi: "tu-NA-ngan", pronunciation_en: "too-NAH-ngan" },
-      { word: "menikah", en: "to get married", vi: "kết hôn", pos: "verb", pronunciation_vi: "me-NI-kah", pronunciation_en: "muh-NEE-kah" },
+      { cell_id: "64e106df-7ee1-4533-8771-9755b335a629", word: "jadian", en: "to become a couple", vi: "thành đôi", pos: "verb", pronunciation_vi: "ja-DI-an", pronunciation_en: "jah-DEE-an" },
+      { cell_id: "5eda12de-eafc-4a65-ba5b-d7c08abc9859", word: "pacar", en: "boyfriend/girlfriend", vi: "người yêu", pos: "noun", pronunciation_vi: "PA-car", pronunciation_en: "PAH-char" },
+      { cell_id: "63f65586-e755-45e2-9aaf-2e5e3c7691a6", word: "pacaran", en: "to date, be in a relationship", vi: "hẹn hò, yêu đương", pos: "verb", pronunciation_vi: "pa-CA-ran", pronunciation_en: "pah-CHAH-ran" },
+      { cell_id: "436bb1f4-cf4a-49de-811e-f4465c79d37f", word: "kencan", en: "a date (outing)", vi: "buổi hẹn hò", pos: "noun", pronunciation_vi: "KEN-can", pronunciation_en: "KEN-chan" },
+      { cell_id: "45ad40e8-1515-4ee4-b54b-2d7547717c63", word: "tunangan", en: "engaged / fiancé(e)", vi: "đính hôn / hôn phu/thê", pos: "noun/verb", pronunciation_vi: "tu-NA-ngan", pronunciation_en: "too-NAH-ngan" },
+      { cell_id: "3c841fcc-d737-4b36-b648-9e436409e21f", word: "menikah", en: "to get married", vi: "kết hôn", pos: "verb", pronunciation_vi: "me-NI-kah", pronunciation_en: "muh-NEE-kah" },
     ],
     dialogue: [
-      { speaker: "Bayu", text: "Eh, kamu sama Sari udah jadian belum?", vi: "Ê, cậu với Sari thành đôi chưa?", en: "Hey, are you and Sari official yet?" },
-      { speaker: "Dito", text: "Udah dong! Kami pacaran dua minggu ini.", vi: "Rồi chứ! Bọn tớ yêu nhau hai tuần nay.", en: "Yeah! We've been dating for two weeks now." },
-      { speaker: "Bayu", text: "Wah selamat! Kapan kencan pertama?", vi: "Wao chúc mừng! Hẹn hò lần đầu khi nào?", en: "Wow, congrats! When's the first date?" },
+      { cell_id: "b98d748f-b9e7-4d2e-b93d-80727603e8d1", speaker: "Bayu", text: "Eh, kamu sama Sari udah jadian belum?", vi: "Ê, cậu với Sari thành đôi chưa?", en: "Hey, are you and Sari official yet?" },
+      { cell_id: "0fe6218d-2d6b-4b34-94ab-3604ecdb83a0", speaker: "Dito", text: "Udah dong! Kami pacaran dua minggu ini.", vi: "Rồi chứ! Bọn tớ yêu nhau hai tuần nay.", en: "Yeah! We've been dating for two weeks now." },
+      { cell_id: "6691f6f1-5edb-429a-89fc-257f59c8a604", speaker: "Bayu", text: "Wah selamat! Kapan kencan pertama?", vi: "Wao chúc mừng! Hẹn hò lần đầu khi nào?", en: "Wow, congrats! When's the first date?" },
     ],
     exercises: [
       {
@@ -412,17 +414,17 @@ export const lessons: IndonesianLesson[] = [
     tip_advice_en:
       "'putus' = to break up; add 'cinta' → 'putus cinta' for clarity. Key emotion words: galau (turmoil/down), patah hati (heartbroken), move on. 'cocok' (compatible) = 'CHOH-chok' — c=ch twice. 'katanya' (reportedly) is very useful for relaying gossip.",
     vocabulary: [
-      { word: "putus", en: "to break up", vi: "chia tay", pos: "verb", pronunciation_vi: "PU-tus", pronunciation_en: "POO-toos" },
-      { word: "patah hati", en: "heartbroken", vi: "thất tình", pos: "adjective phrase", pronunciation_vi: "PA-tah HA-ti", pronunciation_en: "PAH-tah HAH-tee" },
-      { word: "galau", en: "in emotional turmoil, down", vi: "rối bời, buồn bã", pos: "adjective", pronunciation_vi: "GA-lau", pronunciation_en: "GAH-lau" },
-      { word: "cocok", en: "compatible, a good match", vi: "hợp nhau", pos: "adjective", pronunciation_vi: "CO-cok", pronunciation_en: "CHOH-chok" },
-      { word: "selingkuh", en: "to cheat (in a relationship)", vi: "ngoại tình, lừa dối", pos: "verb", pronunciation_vi: "se-LING-kuh", pronunciation_en: "suh-LING-kooh" },
-      { word: "move on", en: "to move on", vi: "bước tiếp, quên đi", pos: "verb", pronunciation_vi: "mup ON", pronunciation_en: "moop ON" },
+      { cell_id: "33a5fa9d-3e19-4a6b-a51e-de64caf2a02a", word: "putus", en: "to break up", vi: "chia tay", pos: "verb", pronunciation_vi: "PU-tus", pronunciation_en: "POO-toos" },
+      { cell_id: "d168cd19-690b-4db5-b667-f5af947b474a", word: "patah hati", en: "heartbroken", vi: "thất tình", pos: "adjective phrase", pronunciation_vi: "PA-tah HA-ti", pronunciation_en: "PAH-tah HAH-tee" },
+      { cell_id: "ebc3e3a5-41c0-4762-ad51-a72b01c41119", word: "galau", en: "in emotional turmoil, down", vi: "rối bời, buồn bã", pos: "adjective", pronunciation_vi: "GA-lau", pronunciation_en: "GAH-lau" },
+      { cell_id: "5c20e9f6-3183-45b2-bacb-185b91528169", word: "cocok", en: "compatible, a good match", vi: "hợp nhau", pos: "adjective", pronunciation_vi: "CO-cok", pronunciation_en: "CHOH-chok" },
+      { cell_id: "4d9b04aa-a195-4cd3-983e-da76891b502f", word: "selingkuh", en: "to cheat (in a relationship)", vi: "ngoại tình, lừa dối", pos: "verb", pronunciation_vi: "se-LING-kuh", pronunciation_en: "suh-LING-kooh" },
+      { cell_id: "3a8d4ab4-4a59-4d13-acfe-deaea54dcd1e", word: "move on", en: "to move on", vi: "bước tiếp, quên đi", pos: "verb", pronunciation_vi: "mup ON", pronunciation_en: "moop ON" },
     ],
     dialogue: [
-      { speaker: "Rini", text: "Kamu kenapa galau gitu? Ada masalah?", vi: "Sao trông cậu buồn rối thế? Có chuyện gì à?", en: "Why do you look so down? Something wrong?" },
-      { speaker: "Sinta", text: "Aku putus sama pacarku. Lagi patah hati nih.", vi: "Tớ chia tay người yêu rồi. Đang thất tình đây.", en: "I broke up with my partner. I'm heartbroken." },
-      { speaker: "Rini", text: "Sabar ya. Masih banyak ikan di laut. Move on pelan-pelan.", vi: "Cố gắng nhé. Biển còn nhiều cá. Từ từ bước tiếp.", en: "Hang in there. Plenty more fish in the sea. Move on slowly." },
+      { cell_id: "531f8ca1-73bc-4756-bd1f-675505ad46d9", speaker: "Rini", text: "Kamu kenapa galau gitu? Ada masalah?", vi: "Sao trông cậu buồn rối thế? Có chuyện gì à?", en: "Why do you look so down? Something wrong?" },
+      { cell_id: "fad8a0d5-5209-429a-bbce-28505f1d08c4", speaker: "Sinta", text: "Aku putus sama pacarku. Lagi patah hati nih.", vi: "Tớ chia tay người yêu rồi. Đang thất tình đây.", en: "I broke up with my partner. I'm heartbroken." },
+      { cell_id: "f180ad3c-8373-4b13-bf1b-c8816447470d", speaker: "Rini", text: "Sabar ya. Masih banyak ikan di laut. Move on pelan-pelan.", vi: "Cố gắng nhé. Biển còn nhiều cá. Từ từ bước tiếp.", en: "Hang in there. Plenty more fish in the sea. Move on slowly." },
     ],
     exercises: [
       {
@@ -507,17 +509,17 @@ export const lessons: IndonesianLesson[] = [
     tip_advice_en:
       "Essential invite kit: 'Yuk!' (let's), 'ajak' (invite), 'kumpul' (gather), 'traktir' (treat), 'patungan' (split the bill). 'buat' = 'untuk' (for) in speech. The emphasis structure 'aku YANG traktir' (I'm the one treating) — 'yang' marks who. Don't decline invites too often or you'll seem 'sombong'.",
     vocabulary: [
-      { word: "yuk", en: "let's, come on", vi: "đi nào", pos: "interjection", pronunciation_vi: "YUK", pronunciation_en: "YOOK" },
-      { word: "ajak", en: "to invite along", vi: "rủ, mời đi cùng", pos: "verb", pronunciation_vi: "A-jak", pronunciation_en: "AH-jak" },
-      { word: "kumpul", en: "to gather", vi: "tụ họp", pos: "verb", pronunciation_vi: "KUM-pul", pronunciation_en: "KOOM-pool" },
-      { word: "traktir", en: "to treat (pay for)", vi: "bao, mời", pos: "verb", pronunciation_vi: "TRAK-tir", pronunciation_en: "TRAK-teer" },
-      { word: "patungan", en: "to split the bill / chip in", vi: "chia tiền, góp tiền", pos: "verb", pronunciation_vi: "pa-TU-ngan", pronunciation_en: "pah-TOO-ngan" },
-      { word: "warung kopi", en: "coffee stall", vi: "quán cà phê bình dân", pos: "noun", pronunciation_vi: "WA-rung KO-pi", pronunciation_en: "WAH-roong KOH-pee" },
+      { cell_id: "cfa9ea86-154f-403d-9b79-88bbb5322d7d", word: "yuk", en: "let's, come on", vi: "đi nào", pos: "interjection", pronunciation_vi: "YUK", pronunciation_en: "YOOK" },
+      { cell_id: "3784f1bd-d0a7-4e1b-8668-28b3a7e278e5", word: "ajak", en: "to invite along", vi: "rủ, mời đi cùng", pos: "verb", pronunciation_vi: "A-jak", pronunciation_en: "AH-jak" },
+      { cell_id: "a8f3fcfb-b763-4e61-ae41-5ece41a4227b", word: "kumpul", en: "to gather", vi: "tụ họp", pos: "verb", pronunciation_vi: "KUM-pul", pronunciation_en: "KOOM-pool" },
+      { cell_id: "dda18d22-e560-49c5-aee9-0cad4e0f9fbf", word: "traktir", en: "to treat (pay for)", vi: "bao, mời", pos: "verb", pronunciation_vi: "TRAK-tir", pronunciation_en: "TRAK-teer" },
+      { cell_id: "466ea4c8-3e60-4b6f-aac0-4cd3721151c6", word: "patungan", en: "to split the bill / chip in", vi: "chia tiền, góp tiền", pos: "verb", pronunciation_vi: "pa-TU-ngan", pronunciation_en: "pah-TOO-ngan" },
+      { cell_id: "e62e34fa-a407-467d-ac14-e68bf843675e", word: "warung kopi", en: "coffee stall", vi: "quán cà phê bình dân", pos: "noun", pronunciation_vi: "WA-rung KO-pi", pronunciation_en: "WAH-roong KOH-pee" },
     ],
     dialogue: [
-      { speaker: "Eka", text: "Yuk kumpul nanti sore, ajak anak-anak yang lain juga.", vi: "Chiều nay tụ họp đi, rủ mấy đứa kia nữa.", en: "Let's meet up this afternoon, invite the others too." },
-      { speaker: "Joko", text: "Siap! Patungan atau gimana?", vi: "Sẵn sàng! Chia tiền hay sao đây?", en: "Ready! Split the bill or what?" },
-      { speaker: "Eka", text: "Tenang, hari ini aku yang traktir. Baru gajian, hehe.", vi: "Yên tâm, hôm nay tớ bao. Mới nhận lương, hehe.", en: "Relax, I'm treating today. Just got paid, heh." },
+      { cell_id: "43833abc-6345-42f8-a21b-c57723dbae9b", speaker: "Eka", text: "Yuk kumpul nanti sore, ajak anak-anak yang lain juga.", vi: "Chiều nay tụ họp đi, rủ mấy đứa kia nữa.", en: "Let's meet up this afternoon, invite the others too." },
+      { cell_id: "3213ac4a-fd28-4136-a164-5b8b8a18d959", speaker: "Joko", text: "Siap! Patungan atau gimana?", vi: "Sẵn sàng! Chia tiền hay sao đây?", en: "Ready! Split the bill or what?" },
+      { cell_id: "2eb02b03-193b-43fd-a338-86306ed25e72", speaker: "Eka", text: "Tenang, hari ini aku yang traktir. Baru gajian, hehe.", vi: "Yên tâm, hôm nay tớ bao. Mới nhận lương, hehe.", en: "Relax, I'm treating today. Just got paid, heh." },
     ],
     exercises: [
       {

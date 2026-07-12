@@ -24,6 +24,7 @@ export type HindiSentence = {
 };
 
 export type HindiVocabEntry = {
+  cell_id?: string;
   hi: string;
   romanization: string;
   en: string;
@@ -32,6 +33,7 @@ export type HindiVocabEntry = {
 };
 
 export type HindiDialogueLine = {
+  cell_id?: string;
   speaker: string;
   hi: string;
   romanization: string;
@@ -95,11 +97,11 @@ export const lessons: HindiLesson[] = [
     intro_en:
       "Hindi is written in Devanagari from left to right. This lesson only asks you to recognize a few first letters inside familiar words.",
     vocabulary: [
-      { hi: "न", romanization: "na", vi: "chữ na", en: "letter na", pos: "letter" },
-      { hi: "म", romanization: "ma", vi: "chữ ma", en: "letter ma", pos: "letter" },
-      { hi: "स", romanization: "sa", vi: "chữ sa", en: "letter sa", pos: "letter" },
-      { hi: "ते", romanization: "te", vi: "âm te", en: "te sound", pos: "syllable" },
-      { hi: "नमस्ते", romanization: "namaste", vi: "xin chào", en: "hello", pos: "greeting" },
+      { cell_id: "7f5fb000-110d-4f60-bac6-00e158ce9ffd", hi: "न", romanization: "na", vi: "chữ na", en: "letter na", pos: "letter" },
+      { cell_id: "af46bab3-00e1-420d-a0eb-e3d9752d65e8", hi: "म", romanization: "ma", vi: "chữ ma", en: "letter ma", pos: "letter" },
+      { cell_id: "37cee61d-6104-466f-b5a6-8c132dc61d15", hi: "स", romanization: "sa", vi: "chữ sa", en: "letter sa", pos: "letter" },
+      { cell_id: "28c4d021-db93-4633-b240-60d4a64c1716", hi: "ते", romanization: "te", vi: "âm te", en: "te sound", pos: "syllable" },
+      { cell_id: "e5e09f94-7c7b-4ae0-a0a5-5cd8de1e56ea", hi: "नमस्ते", romanization: "namaste", vi: "xin chào", en: "hello", pos: "greeting" },
     ],
     sentences: [
       {
@@ -176,11 +178,11 @@ export const lessons: HindiLesson[] = [
     intro_en:
       "Learn safe beginner greetings: namaste, thank you, sorry, and a simple how-are-you exchange.",
     vocabulary: [
-      { hi: "नमस्ते", romanization: "namaste", vi: "xin chào", en: "hello", pos: "greeting" },
-      { hi: "धन्यवाद", romanization: "dhanyavaad", vi: "cảm ơn", en: "thank you", pos: "phrase" },
-      { hi: "माफ़ कीजिए", romanization: "maaf kijiye", vi: "xin lỗi / làm ơn thứ lỗi", en: "sorry / excuse me", pos: "phrase" },
-      { hi: "कृपया", romanization: "kripaya", vi: "làm ơn", en: "please", pos: "phrase" },
-      { hi: "ठीक", romanization: "theek", vi: "ổn", en: "fine / okay", pos: "adj." },
+      { cell_id: "4a1e86df-07df-41ca-a943-cc883cc7abe0", hi: "नमस्ते", romanization: "namaste", vi: "xin chào", en: "hello", pos: "greeting" },
+      { cell_id: "8946cafd-3f88-4fac-8e9e-9a6c5ad0ed99", hi: "धन्यवाद", romanization: "dhanyavaad", vi: "cảm ơn", en: "thank you", pos: "phrase" },
+      { cell_id: "7bdfaff8-a0ed-4d68-8129-8a543dc664d6", hi: "माफ़ कीजिए", romanization: "maaf kijiye", vi: "xin lỗi / làm ơn thứ lỗi", en: "sorry / excuse me", pos: "phrase" },
+      { cell_id: "20cb1ca5-6234-441a-9c8d-dfa67edc2bf2", hi: "कृपया", romanization: "kripaya", vi: "làm ơn", en: "please", pos: "phrase" },
+      { cell_id: "95ad0521-d37e-452d-b167-5bdb2ac3f051", hi: "ठीक", romanization: "theek", vi: "ổn", en: "fine / okay", pos: "adj." },
     ],
     sentences: [
       {
@@ -226,6 +228,7 @@ export const lessons: HindiLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "9db38c7a-e5d8-4e81-bc99-5cac996b1bb7",
         speaker: "A",
         hi: "नमस्ते, आप कैसे हैं?",
         romanization: "namaste, aap kaise hain?",
@@ -233,6 +236,7 @@ export const lessons: HindiLesson[] = [
         en: "Hello, how are you?",
       },
       {
+        cell_id: "7cfec155-4dad-4063-84f0-4d6cad10a929",
         speaker: "B",
         hi: "मैं ठीक हूँ, धन्यवाद।",
         romanization: "main theek hoon, dhanyavaad.",
@@ -277,11 +281,11 @@ export const lessons: HindiLesson[] = [
     intro_en:
       "Use very short sentences to say your name, country, and language. The focus is Hindi word order and polite forms.",
     vocabulary: [
-      { hi: "नाम", romanization: "naam", vi: "tên", en: "name", pos: "n.m." },
-      { hi: "मेरा", romanization: "mera", vi: "của tôi (giống đực)", en: "my (masc.)", pos: "possessive" },
-      { hi: "मैं", romanization: "main", vi: "tôi", en: "I", pos: "pronoun" },
-      { hi: "वियतनाम", romanization: "Vietnam", vi: "Việt Nam", en: "Vietnam", pos: "place" },
-      { hi: "से", romanization: "se", vi: "từ / đến từ", en: "from / by", pos: "postposition" },
+      { cell_id: "10bffca5-757c-4263-a244-f8f7d2c90d9c", hi: "नाम", romanization: "naam", vi: "tên", en: "name", pos: "n.m." },
+      { cell_id: "ed63a1fb-f96d-4d94-ac7e-a5e51b73f460", hi: "मेरा", romanization: "mera", vi: "của tôi (giống đực)", en: "my (masc.)", pos: "possessive" },
+      { cell_id: "2e0199ff-1ea5-4d52-b268-c4bbb2175171", hi: "मैं", romanization: "main", vi: "tôi", en: "I", pos: "pronoun" },
+      { cell_id: "a303c490-8bc5-40be-b320-092eb0dfcd33", hi: "वियतनाम", romanization: "Vietnam", vi: "Việt Nam", en: "Vietnam", pos: "place" },
+      { cell_id: "d73199b1-a0b8-44ba-95ff-a3d4d5bcb5fe", hi: "से", romanization: "se", vi: "từ / đến từ", en: "from / by", pos: "postposition" },
     ],
     sentences: [
       {
@@ -323,6 +327,7 @@ export const lessons: HindiLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "b26126b9-c791-4926-b73c-aea260f6dc26",
         speaker: "A",
         hi: "आपका नाम क्या है?",
         romanization: "aapka naam kya hai?",
@@ -330,6 +335,7 @@ export const lessons: HindiLesson[] = [
         en: "What is your name?",
       },
       {
+        cell_id: "55a5591d-b647-46b8-bc7e-72ee81b2e2cf",
         speaker: "B",
         hi: "मेरा नाम लान है।",
         romanization: "mera naam Lan hai.",
@@ -373,12 +379,12 @@ export const lessons: HindiLesson[] = [
     intro_en:
       "This lesson introduces basic numbers and asking prices. Devanagari digits are recognized, but Latin digits can still appear in real life.",
     vocabulary: [
-      { hi: "०", romanization: "shunya", vi: "số 0", en: "zero", pos: "digit" },
-      { hi: "१", romanization: "ek", vi: "số 1", en: "one", pos: "digit" },
-      { hi: "२", romanization: "do", vi: "số 2", en: "two", pos: "digit" },
-      { hi: "तीन", romanization: "teen", vi: "ba", en: "three", pos: "number" },
-      { hi: "दस", romanization: "das", vi: "mười", en: "ten", pos: "number" },
-      { hi: "कितना", romanization: "kitna", vi: "bao nhiêu", en: "how much", pos: "question" },
+      { cell_id: "880155a5-8b45-4c3e-a5b7-defb32b4fc89", hi: "०", romanization: "shunya", vi: "số 0", en: "zero", pos: "digit" },
+      { cell_id: "5d46bd8d-8e30-4ce0-a034-ce7fd16ae02c", hi: "१", romanization: "ek", vi: "số 1", en: "one", pos: "digit" },
+      { cell_id: "32b67576-e0d5-4402-a42b-be4eed0a5c3d", hi: "२", romanization: "do", vi: "số 2", en: "two", pos: "digit" },
+      { cell_id: "06671d8f-facb-4379-81af-6abb6ba55f18", hi: "तीन", romanization: "teen", vi: "ba", en: "three", pos: "number" },
+      { cell_id: "a4704da0-b100-4e0a-adf1-9ce11e6def2a", hi: "दस", romanization: "das", vi: "mười", en: "ten", pos: "number" },
+      { cell_id: "68c9afd7-2c3c-4b10-bd60-b96e1eba68ff", hi: "कितना", romanization: "kitna", vi: "bao nhiêu", en: "how much", pos: "question" },
     ],
     sentences: [
       {
@@ -449,11 +455,11 @@ export const lessons: HindiLesson[] = [
     intro_en:
       "Learn how to ask for water, tea, rice, and say 'I want...' with a basic polite sentence.",
     vocabulary: [
-      { hi: "पानी", romanization: "paani", vi: "nước", en: "water", pos: "n.m." },
-      { hi: "चाय", romanization: "chai", vi: "trà", en: "tea", pos: "n.f." },
-      { hi: "चावल", romanization: "chaaval", vi: "cơm/gạo", en: "rice", pos: "n.m." },
-      { hi: "रोटी", romanization: "roti", vi: "bánh mì dẹt roti", en: "roti / flatbread", pos: "n.f." },
-      { hi: "चाहिए", romanization: "chahiye", vi: "muốn/cần", en: "want/need", pos: "modal" },
+      { cell_id: "c87ca5ab-5345-4580-a4c9-2acb01308d22", hi: "पानी", romanization: "paani", vi: "nước", en: "water", pos: "n.m." },
+      { cell_id: "558c6c29-90b0-4674-9f4a-d19a2c2f43c6", hi: "चाय", romanization: "chai", vi: "trà", en: "tea", pos: "n.f." },
+      { cell_id: "63668c0e-1af1-4ed0-9899-d9b52cbdcbab", hi: "चावल", romanization: "chaaval", vi: "cơm/gạo", en: "rice", pos: "n.m." },
+      { cell_id: "617b4128-025a-4f62-b0a7-573b8c3eaf15", hi: "रोटी", romanization: "roti", vi: "bánh mì dẹt roti", en: "roti / flatbread", pos: "n.f." },
+      { cell_id: "c54b91d9-71db-4112-8056-d359245c154f", hi: "चाहिए", romanization: "chahiye", vi: "muốn/cần", en: "want/need", pos: "modal" },
     ],
     sentences: [
       {
@@ -493,6 +499,7 @@ export const lessons: HindiLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "902ece50-832c-4b9f-ad49-b91b5ff1cda4",
         speaker: "Customer",
         hi: "मुझे पानी चाहिए।",
         romanization: "mujhe paani chahiye.",
@@ -500,6 +507,7 @@ export const lessons: HindiLesson[] = [
         en: "I want water.",
       },
       {
+        cell_id: "69c7c4cc-acc9-418c-8fc1-3e1249fd5c78",
         speaker: "Server",
         hi: "जी, अभी।",
         romanization: "ji, abhi.",

@@ -63,6 +63,7 @@ export type ThaiSurvivalPhrase = {
 
 /** A single survival vocabulary item. */
 export type ThaiSurvivalVocab = {
+  cell_id?: string;
   th: string;
   rtgs: string;
   vi: string;

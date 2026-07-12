@@ -21,6 +21,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   /** Indonesian word/phrase. */
   word: string;
   /** English meaning. */
@@ -36,6 +37,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   /** Indonesian line. */
   text: string;
@@ -225,43 +227,48 @@ export const lessons: IndonesianLesson[] = [
     tip_advice_en:
       "Tip for Vietnamese speakers: `berkemah` is the verb to camp, `tenda` is tent, `senter` is flashlight, and `api unggun` is campfire. Safety/rule language often uses passive `di-`: `tenda dipasang`, `sampah dibawa turun`, `api unggun dilarang`. Ask permission with `Boleh...?` before lighting a fire or pitching a tent in an unclear area.",
     vocabulary: [
-      { word: "berkemah", en: "to camp", vi: "cắm trại", pos: "verb", pronunciation_vi: "ber-KE-mah", pronunciation_en: "ber-KE-mah" },
-      { word: "tenda", en: "tent", vi: "lều", pos: "noun", pronunciation_vi: "TEN-da", pronunciation_en: "TEN-da" },
-      { word: "sleeping bag", en: "sleeping bag", vi: "túi ngủ", pos: "noun", pronunciation_vi: "SLI-ping beg", pronunciation_en: "SLEE-ping bag" },
-      { word: "kompor portable", en: "portable stove", vi: "bếp di động", pos: "noun phrase", pronunciation_vi: "KOM-por POR-ta-bel", pronunciation_en: "KOM-por POR-ta-bel" },
-      { word: "senter", en: "flashlight / torch", vi: "đèn pin", pos: "noun", pronunciation_vi: "SEN-ter", pronunciation_en: "SEN-ter" },
-      { word: "perlengkapan hujan", en: "rain gear", vi: "đồ đi mưa", pos: "noun phrase", pronunciation_vi: "per-leng-KAP-an HU-jan", pronunciation_en: "per-leng-KAP-an HOO-jan" },
-      { word: "api unggun", en: "campfire", vi: "lửa trại", pos: "noun phrase", pronunciation_vi: "A-pi UNG-gun", pronunciation_en: "A-pee OONG-goon" },
-      { word: "sampah", en: "trash / garbage", vi: "rác", pos: "noun", pronunciation_vi: "SAM-pah", pronunciation_en: "SAM-pah" },
-      { word: "angin kencang", en: "strong wind", vi: "gió mạnh", pos: "noun phrase", pronunciation_vi: "A-ngin KEN-cang", pronunciation_en: "A-ngin KEN-chang" },
-      { word: "bawa turun sampah", en: "carry trash down/out", vi: "mang rác xuống/ra ngoài", pos: "verb phrase", pronunciation_vi: "BA-wa TU-run SAM-pah", pronunciation_en: "BA-wa TOO-run SAM-pah" },
+      { cell_id: "0e9a38ed-c69a-49df-90b4-c1b290f433f9", word: "berkemah", en: "to camp", vi: "cắm trại", pos: "verb", pronunciation_vi: "ber-KE-mah", pronunciation_en: "ber-KE-mah" },
+      { cell_id: "c01f21dd-8b4f-4965-9371-925a6fff2093", word: "tenda", en: "tent", vi: "lều", pos: "noun", pronunciation_vi: "TEN-da", pronunciation_en: "TEN-da" },
+      { cell_id: "7d2711dd-270c-4ce2-a004-54d4b8ac2695", word: "sleeping bag", en: "sleeping bag", vi: "túi ngủ", pos: "noun", pronunciation_vi: "SLI-ping beg", pronunciation_en: "SLEE-ping bag" },
+      { cell_id: "44e74a07-8efe-4c3a-a7f7-63351b22f121", word: "kompor portable", en: "portable stove", vi: "bếp di động", pos: "noun phrase", pronunciation_vi: "KOM-por POR-ta-bel", pronunciation_en: "KOM-por POR-ta-bel" },
+      { cell_id: "eb98983d-1d73-4d81-a232-4a7877c3e672", word: "senter", en: "flashlight / torch", vi: "đèn pin", pos: "noun", pronunciation_vi: "SEN-ter", pronunciation_en: "SEN-ter" },
+      { cell_id: "af12e970-74e9-4a09-a9da-1acca7ed9888", word: "perlengkapan hujan", en: "rain gear", vi: "đồ đi mưa", pos: "noun phrase", pronunciation_vi: "per-leng-KAP-an HU-jan", pronunciation_en: "per-leng-KAP-an HOO-jan" },
+      { cell_id: "9b116a2d-b3a6-4c50-b40b-44b0490ae0c9", word: "api unggun", en: "campfire", vi: "lửa trại", pos: "noun phrase", pronunciation_vi: "A-pi UNG-gun", pronunciation_en: "A-pee OONG-goon" },
+      { cell_id: "00e34f12-c0d8-4018-899e-9995b12415ef", word: "sampah", en: "trash / garbage", vi: "rác", pos: "noun", pronunciation_vi: "SAM-pah", pronunciation_en: "SAM-pah" },
+      { cell_id: "e2778b18-3be0-44cb-acf9-e73abcd10836", word: "angin kencang", en: "strong wind", vi: "gió mạnh", pos: "noun phrase", pronunciation_vi: "A-ngin KEN-cang", pronunciation_en: "A-ngin KEN-chang" },
+      { cell_id: "b6dec2e5-6724-4b75-95ba-5329307e694a", word: "bawa turun sampah", en: "carry trash down/out", vi: "mang rác xuống/ra ngoài", pos: "verb phrase", pronunciation_vi: "BA-wa TU-run SAM-pah", pronunciation_en: "BA-wa TOO-run SAM-pah" },
     ],
     dialogue: [
       {
+        cell_id: "de0e37fe-68d4-46a2-9d29-562a20f48ef2",
         speaker: "Rina",
         text: "Kita jadi berkemah akhir pekan ini?",
         vi: "Cuối tuần này mình vẫn đi cắm trại chứ?",
         en: "Are we still camping this weekend?",
       },
       {
+        cell_id: "bf74a6d4-208b-4b02-8afa-c6d80c2036a4",
         speaker: "Bima",
         text: "Jadi. Aku sudah bawa tenda, sleeping bag, dan kompor portable.",
         vi: "Đi chứ. Mình đã mang lều, túi ngủ và bếp di động.",
         en: "Yes. I have brought the tent, sleeping bag, and portable stove.",
       },
       {
+        cell_id: "f49a5b0a-a69e-4866-bae1-da245a0e9f41",
         speaker: "Rina",
         text: "Jangan lupa senter dan perlengkapan hujan.",
         vi: "Đừng quên đèn pin và đồ đi mưa.",
         en: "Do not forget the flashlight and rain gear.",
       },
       {
+        cell_id: "f4326412-364e-4a15-8cc6-1bf49b2870c4",
         speaker: "Bima",
         text: "Siap. Tapi kita harus tanya dulu apakah boleh menyalakan api unggun.",
         vi: "Được. Nhưng mình phải hỏi trước có được đốt lửa trại không.",
         en: "Got it. But we should ask first whether we may light a campfire.",
       },
       {
+        cell_id: "21692bf1-75de-49f0-85e7-0e6327065164",
         speaker: "Rina",
         text: "Setuju. Sampah juga harus kita bawa turun.",
         vi: "Đồng ý. Rác cũng phải mang xuống.",

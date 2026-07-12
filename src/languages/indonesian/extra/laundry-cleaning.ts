@@ -31,6 +31,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   /** Indonesian word/phrase. */
   word: string;
   /** English meaning. */
@@ -46,6 +47,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   /** Indonesian line. */
   text: string;
@@ -267,6 +269,7 @@ export const lessons: IndonesianLesson[] = [
       "Five golden frames for laundry & cleaning: (1) ask service/price — `Mau laundry kiloan, berapa per kilo?`; (2) request politely with the `di-` passive — `Tolong dicuci dan disetrika` / `Tolong disapu dan dipel`; (3) caution — `Jangan dikeringkan pakai mesin` / `Tolong dipisah yang putih`; (4) ask time/cost — `Kira-kira selesainya kapan?` / `Semuanya berapa?`; (5) praise + thanks — `Wangi dan rapi, makasih ya`. Two core grammar points: the causative `-kan` ('do it FOR me': `cucikan`, `setrikakan`, `bersihkan`) and the passive `di-(...-kan)`, very common in service (`dicuci`, `disetrika`, `dikeringkan`, `dibuang`). The `-an` suffix builds measure/mass nouns: `kiloan` (by the kilo), `cucian` (the wash). Don't drop the `ribu` scale on prices, and always use `tolong` + `Mbak/Bu` to stay polite.",
     vocabulary: [
       {
+        cell_id: "18c9b1f5-8ccf-47ea-b82f-35df1f195595",
         word: "laundry kiloan",
         en: "laundry charged by the kilo",
         vi: "giặt tính theo ký",
@@ -275,6 +278,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "LON-dree ki-LO-an — `kilo` + `-an`; ask `berapa per kilo?`",
       },
       {
+        cell_id: "ba93ac9f-2a16-4ef3-8544-e234c2f1a5a0",
         word: "cuci",
         en: "to wash",
         vi: "giặt / rửa",
@@ -283,6 +287,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "CHOO-chee — passive `dicuci`; the wash = `cucian`",
       },
       {
+        cell_id: "b002c3a3-f01e-4b6d-94e9-cc342d1761d0",
         word: "setrika",
         en: "to iron / an iron",
         vi: "ủi (là) / bàn ủi",
@@ -291,6 +296,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "se-TREE-kah — passive `disetrika`",
       },
       {
+        cell_id: "72b26228-00fb-4ccb-a716-b42baf0afeae",
         word: "noda",
         en: "stain",
         vi: "vết bẩn / vết ố",
@@ -299,6 +305,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "NO-dah — remove a stain = `dihilangkan`",
       },
       {
+        cell_id: "b69bc72b-2495-4ae3-abb9-deda9b779612",
         word: "bersih-bersih",
         en: "general tidying/cleaning",
         vi: "dọn dẹp lặt vặt",
@@ -307,6 +314,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "ber-sih-BER-sih — reduplication of `bersih` (clean)",
       },
       {
+        cell_id: "543722ff-45b1-45d3-ad90-a4a0e8d3e51c",
         word: "menyapu",
         en: "to sweep",
         vi: "quét",
@@ -315,6 +323,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "me-NYAH-poo — tool: `sapu` (broom)",
       },
       {
+        cell_id: "1a538d30-f7f3-4265-972c-6b934812792c",
         word: "mengepel",
         en: "to mop",
         vi: "lau sàn",
@@ -323,6 +332,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "me-nge-PEL — tool: `pel` (mop)",
       },
       {
+        cell_id: "58ddd0f3-5dce-4f92-9fb9-82c5cdf3bcbf",
         word: "membuang sampah",
         en: "to take out the trash",
         vi: "đổ rác",
@@ -331,6 +341,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "mem-BOO-ang SAM-pah — left `ke depan` for the `tukang sampah`",
       },
       {
+        cell_id: "6b4c77e0-3cbc-4498-8150-3e774b9abc23",
         word: "asisten rumah tangga (ART)",
         en: "household helper",
         vi: "người giúp việc nhà",
@@ -339,6 +350,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "ah-SIS-ten ROO-mah TAHNG-gah — addressed politely `Mbak`/`Bu`",
       },
       {
+        cell_id: "e4db672f-0aed-4229-abc7-680008396a6f",
         word: "rapi",
         en: "neat / well-pressed",
         vi: "gọn gàng / phẳng phiu",
@@ -349,36 +361,42 @@ export const lessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "1e249ad7-2bc5-4700-98ae-213d8f46337e",
         speaker: "Pelanggan",
         text: "Mbak, mau laundry kiloan. Ini ada lima kilo. Berapa per kilo?",
         vi: "Chị ơi, tôi muốn giặt tính ký. Đây có năm ký. Bao nhiêu một ký?",
         en: "Hi, laundry by the kilo. This is five kilos. How much per kilo?",
       },
       {
+        cell_id: "0fb7b828-55b0-4086-8b5a-fc6c23760945",
         speaker: "Petugas",
         text: "Tujuh ribu per kilo, Mas. Mau yang biasa atau express?",
         vi: "Bảy nghìn một ký, anh. Muốn loại thường hay lấy nhanh?",
         en: "Seven thousand per kilo. Regular or express?",
       },
       {
+        cell_id: "32e2b95a-008d-4ee1-9a6e-30acd0dba5aa",
         speaker: "Pelanggan",
         text: "Yang biasa saja. Tapi yang ini jangan dikeringkan pakai mesin, ya. Ada noda juga, bisa dihilangkan?",
         vi: "Loại thường thôi. Nhưng cái này đừng sấy máy nhé. Có vết bẩn nữa, tẩy được không?",
         en: "Regular's fine. But don't machine-dry this one. There's a stain too — can it be removed?",
       },
       {
+        cell_id: "2ae85570-19f3-413e-9d3f-0f1aaa174c89",
         speaker: "Petugas",
         text: "Bisa, kami coba hilangkan. Selesainya besok sore.",
         vi: "Được, chúng tôi sẽ thử tẩy. Mai chiều xong.",
         en: "Yes, we'll try to get it out. Ready tomorrow afternoon.",
       },
       {
+        cell_id: "8fe90e20-fd16-4aad-93ff-55708f967d25",
         speaker: "Pelanggan",
         text: "Oke. Semuanya berapa? Bisa QRIS?",
         vi: "Được. Tất cả bao nhiêu? QRIS được không?",
         en: "Okay. How much altogether? Does QRIS work?",
       },
       {
+        cell_id: "8fbca12b-fba8-44f2-b892-8ce5190f0dc3",
         speaker: "Petugas",
         text: "Tiga puluh lima ribu. Bisa QRIS atau tunai.",
         vi: "Ba lăm nghìn. QRIS hay tiền mặt đều được.",
