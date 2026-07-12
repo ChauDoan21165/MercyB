@@ -28,7 +28,7 @@ async function openCompletedResults(page: Page) {
             id: "final-consonants",
             severity: "high",
             label: { en: "Final consonants", vi: "Âm cuối" },
-            evidence: { en: "I want better job.", vi: "I want better job." },
+            evidence: { en: "The learner drops the final /t/ in next.", vi: "drops final /t/ in next" },
           },
         ],
         recommendations: [],

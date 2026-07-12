@@ -9,6 +9,7 @@ import {
   buildInterferenceProfileFindings,
   formatInterferenceProfileShareText,
   generateInterferenceProfileCardBlob,
+  INTERFERENCE_PROFILE_SITE_URL,
   type InterferenceProfileFinding,
 } from "@/lib/share/interferenceProfile";
 import type { PlacementV3Results } from "@/lib/placement/v3/types";
@@ -57,17 +58,14 @@ const COPY_LABEL: PlacementNativeSlots = {
   en: "Copy link",
 };
 
-function currentSiteUrl(): string {
-  if (typeof window === "undefined") return `https://${PRODUCT_CONFIG.domain}`;
-  return window.location.origin || `https://${PRODUCT_CONFIG.domain}`;
-}
-
 export function InterferenceProfileShare({ results }: Props) {
   const t = usePlacementT();
   const { toast } = useToast();
   const [busy, setBusy] = useState(false);
   const findings = useMemo(() => buildInterferenceProfileFindings(results), [results]);
-  const siteUrl = currentSiteUrl();
+  // Share cards are generated entirely in the client and carry only pattern labels/examples.
+  // Keep the visible URL canonical so dev and preview builds never produce localhost cards.
+  const siteUrl = INTERFERENCE_PROFILE_SITE_URL;
 
   if (!findings.length) return null;
 
@@ -193,7 +191,6 @@ function InterferenceProfileCard({
       </ol>
       <footer className="flex flex-wrap items-center justify-between gap-2 border-t border-slate-100 px-4 py-3 text-xs font-bold text-emerald-700">
         <span>{siteUrl}</span>
-        <span>client-side only</span>
       </footer>
     </article>
   );

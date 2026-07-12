@@ -1,9 +1,9 @@
 import { describe, expect, it, vi } from "vitest";
-import { render, screen, waitFor } from "@testing-library/react";
+import { render, screen, waitFor, within } from "@testing-library/react";
 import "@testing-library/jest-dom/vitest";
 
 import InterferenceProfileShare from "../InterferenceProfileShare";
-import { buildInterferenceProfileFindings } from "@/lib/share/interferenceProfile";
+import { buildInterferenceProfileFindings, INTERFERENCE_PROFILE_SITE_URL } from "@/lib/share/interferenceProfile";
 import type { PlacementV3Results } from "@/lib/placement/v3/types";
 
 const fixtureResults: PlacementV3Results = {
@@ -59,6 +59,96 @@ describe("InterferenceProfileShare", () => {
     expect(screen.queryByText("Pattern phụ")).not.toBeInTheDocument();
     expect(screen.getByText(/I want better job/i)).toBeInTheDocument();
     expect(screen.queryByText("hidden-from-card")).not.toBeInTheDocument();
+    expect(screen.getByText(INTERFERENCE_PROFILE_SITE_URL)).toBeInTheDocument();
+    expect(screen.queryByText("client-side only")).not.toBeInTheDocument();
+  });
+
+  it("keeps each rendered example structurally bound to its own pattern after severity ranking", () => {
+    render(
+      <InterferenceProfileShare
+        results={{
+          ...fixtureResults,
+          l1Flags: [
+            {
+              id: "article-omission",
+              severity: "medium",
+              label: { en: "Article omission", vi: "Thiếu mạo từ" },
+              evidence: { en: "She is teacher in Canada.", vi: "She is teacher in Canada." },
+            },
+            {
+              id: "final-consonants",
+              severity: "high",
+              label: { en: "Final consonants", vi: "Âm cuối" },
+              evidence: { en: "The learner drops the /t/ in next.", vi: "drops /t/ in next" },
+            },
+            {
+              id: "preposition-transfer",
+              severity: "low",
+              label: { en: "Preposition transfer", vi: "Dịch giới từ từ tiếng Việt" },
+              evidence: { en: "We discussed about the schedule.", vi: "We discussed about the schedule." },
+            },
+          ],
+        }}
+      />,
+    );
+
+    const rows = within(screen.getByTestId("interference-profile-card")).getAllByRole("listitem");
+    expect(rows).toHaveLength(3);
+    expect(within(rows[0]!).getByText("Final consonants")).toBeInTheDocument();
+    expect(within(rows[0]!).getByText(/drops the \/t\/ in next/i)).toBeInTheDocument();
+    expect(within(rows[0]!).queryByText(/teacher in Canada/i)).not.toBeInTheDocument();
+    expect(within(rows[1]!).getByText("Article omission")).toBeInTheDocument();
+    expect(within(rows[1]!).getByText(/teacher in Canada/i)).toBeInTheDocument();
+    expect(within(rows[1]!).queryByText(/drops the \/t\/ in next/i)).not.toBeInTheDocument();
+  });
+
+  it("collapses duplicate cause findings before selecting the top three", () => {
+    render(
+      <InterferenceProfileShare
+        results={{
+          ...fixtureResults,
+          l1Flags: [
+            {
+              id: "article-omission",
+              severity: "medium",
+              label: { en: "Article omission", vi: "Thiếu mạo từ" },
+              evidence: { en: "I want better job.", vi: "I want better job." },
+            },
+            {
+              id: "ARTICLE_OMISSION",
+              severity: "high",
+              label: { en: "Article omission", vi: "Thiếu mạo từ" },
+              evidence: { en: "She is teacher in Canada.", vi: "She is teacher in Canada." },
+            },
+            {
+              id: "final-consonants",
+              severity: "medium",
+              label: { en: "Final consonants", vi: "Âm cuối" },
+              evidence: { en: "The learner drops the /t/ in next.", vi: "drops /t/ in next" },
+            },
+            {
+              id: "preposition-transfer",
+              severity: "low",
+              label: { en: "Preposition transfer", vi: "Dịch giới từ từ tiếng Việt" },
+              evidence: { en: "We discussed about the schedule.", vi: "We discussed about the schedule." },
+            },
+            {
+              id: "word-order-transfer",
+              severity: "low",
+              label: { en: "Word order transfer", vi: "Trật tự từ theo tiếng Việt" },
+              evidence: { en: "Not rendered.", vi: "Không hiển thị." },
+            },
+          ],
+        }}
+      />,
+    );
+
+    const card = screen.getByTestId("interference-profile-card");
+    expect(within(card).getAllByText("Article omission")).toHaveLength(1);
+    expect(within(card).getByText(/She is teacher in Canada/i)).toBeInTheDocument();
+    expect(within(card).queryByText(/I want better job/i)).not.toBeInTheDocument();
+    expect(within(card).getAllByRole("listitem")).toHaveLength(3);
+    expect(within(card).queryByText("Word order transfer")).not.toBeInTheDocument();
   });
 
   it("redacts account-shaped evidence before rendering", () => {
@@ -93,6 +183,6 @@ describe("InterferenceProfileShare", () => {
     screen.getByRole("button", { name: /Copy link/i }).click();
 
     await waitFor(() => expect(writeText).toHaveBeenCalledTimes(1));
-    expect(writeText).toHaveBeenCalledWith(window.location.origin);
+    expect(writeText).toHaveBeenCalledWith(INTERFERENCE_PROFILE_SITE_URL);
   });
 });
