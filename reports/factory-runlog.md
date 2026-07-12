@@ -1,0 +1,1 @@
+- 2026-07-12T17:56:25.804Z | WP-FACTORY-RETRO; MRs=1; gate-minutes~24; oom=0; stalls=0; artifacts=host-preflight+scheduled-scan+brief-template

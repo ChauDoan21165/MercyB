@@ -172,3 +172,30 @@ they don't have today?"**
 If the answer contains the words *ledger, judge, governance, health,
 packet, wave, batch, or dashboard* — stop. That is the factory rebuilding
 itself. Point C3 back at the roadmap.
+
+---
+
+## 6. JULY 2026 OPERATING AMENDMENTS
+
+Run this first in every fresh shell:
+`source scripts/factory/factory-env.sh && node scripts/factory/host-preflight.mjs`.
+
+Every brief starts with a lane declaration. The intake test gains:
+**"Is this my lane?"** If not, stop or hand off.
+
+Every brief carries a `PREMISE FIRST` block: verify the stated surface against
+`origin/main` before building, then report the current file map and behavior.
+
+No WP closes on merge state. The done-condition is a named, observed runtime
+artifact stated in the WP up front. Merged != deployed != applied != observed.
+
+When a defect resists one diagnosis pass, the next MR is structured logging on
+that path, then resume diagnosis from observed logs.
+
+Every fix-class MR ships its scanner check in the same MR or the next MR, so
+the class is enforced instead of remembered.
+
+Accepted residual risk is written down under `ACCEPTED-RISKS` with one-line
+reasons, so future scans do not re-litigate the same verified acceptances.
+
+Use `docs/factory/BRIEF-TEMPLATE.md` as the canonical dispatch skeleton.

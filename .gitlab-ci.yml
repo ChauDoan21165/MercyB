@@ -1439,6 +1439,21 @@ check-new-orphans:shared-fallback:
   cache: {}
   script: *orphan_guard_script
 
+scheduled-hardening-scan:
+  <<: [*node_job, *local_runner]
+  stage: test
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "schedule" && $HARDENING_SCAN_SCHEDULE == "1"'
+    - when: never
+  script:
+    - export NODE_OPTIONS="${NODE_OPTIONS:-} --max-old-space-size=6144"
+    - node scripts/factory/run-scheduled-hardening-scan.mjs
+  artifacts:
+    when: always
+    expire_in: 30 days
+    paths:
+      - reports/hardening-scan-scheduled.md
+
 ci-job-tags-guard:
   <<: [*local_runner]
   image: node:24-bookworm-slim
