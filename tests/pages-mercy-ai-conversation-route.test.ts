@@ -42,6 +42,12 @@ function jsonResponse(body: unknown, status = 200): Response {
   });
 }
 
+type FetchSpy = ReturnType<typeof vi.fn<typeof fetch>>;
+
+function appFetchCalls(fetchMock: FetchSpy) {
+  return fetchMock.mock.calls.filter(([url]) => !String(url).includes("function_failure_logs"));
+}
+
 describe("Pages /api/mercy-ai AI conversation mode", () => {
   beforeEach(() => {
     vi.restoreAllMocks();
@@ -93,20 +99,21 @@ describe("Pages /api/mercy-ai AI conversation mode", () => {
       correctionGateModel: "gpt-4o",
     });
 
-    expect(fetchMock).toHaveBeenCalledTimes(3);
-    expect(String(fetchMock.mock.calls[0][0])).toBe("https://supabase.test/functions/v1/me-entitlement");
-    expect(fetchMock.mock.calls[0][1]).toMatchObject({
+    const calls = appFetchCalls(fetchMock);
+    expect(calls).toHaveLength(3);
+    expect(String(calls[0][0])).toBe("https://supabase.test/functions/v1/me-entitlement");
+    expect(calls[0][1]).toMatchObject({
       method: "GET",
       headers: {
         Authorization: "Bearer user-token",
         apikey: "anon-key",
       },
     });
-    expect(String(fetchMock.mock.calls[1][0])).toBe(
+    expect(String(calls[1][0])).toBe(
       "https://supabase.test/rest/v1/profiles?select=admin_level&id=eq.user-1&limit=1",
     );
 
-    const openAiBody = JSON.parse(String(fetchMock.mock.calls[2][1]?.body));
+    const openAiBody = JSON.parse(String(calls[2][1]?.body));
     expect(openAiBody.model).toBe("gpt-4o-mini");
     expect(openAiBody.messages[0].content).toContain("Job interview practice");
     expect(openAiBody.messages[1].content).toContain("Client grounding");
@@ -145,7 +152,7 @@ describe("Pages /api/mercy-ai AI conversation mode", () => {
     await expect(response.json()).resolves.toEqual({
       error: "OpenAI response missing generated Mercy reply",
     });
-    expect(fetchMock).toHaveBeenCalledTimes(3);
+    expect(appFetchCalls(fetchMock)).toHaveLength(3);
   });
 
   it("requires premium entitlement before calling OpenAI", async () => {
@@ -162,7 +169,7 @@ describe("Pages /api/mercy-ai AI conversation mode", () => {
 
     expect(response.status).toBe(403);
     await expect(response.json()).resolves.toEqual({ error: "Premium required" });
-    expect(fetchMock).toHaveBeenCalledTimes(2);
+    expect(appFetchCalls(fetchMock)).toHaveLength(2);
   });
 
   it("keeps learner-led conversation grounded in the user's words, not job interview fallback", async () => {
@@ -200,7 +207,7 @@ describe("Pages /api/mercy-ai AI conversation mode", () => {
       provider: "openai",
     });
 
-    const openAiBody = JSON.parse(String(fetchMock.mock.calls[2][1]?.body));
+    const openAiBody = JSON.parse(String(appFetchCalls(fetchMock)[2][1]?.body));
     const promptText = openAiBody.messages
       .map((message: { content: string }) => message.content)
       .join("\n");
@@ -242,8 +249,9 @@ describe("Pages /api/mercy-ai AI conversation mode", () => {
       reply: expect.stringContaining("customer"),
       provider: "openai",
     });
-    expect(fetchMock).toHaveBeenCalledTimes(3);
-    expect(String(fetchMock.mock.calls[2][0])).toBe("https://api.openai.com/v1/chat/completions");
+    const calls = appFetchCalls(fetchMock);
+    expect(calls).toHaveLength(3);
+    expect(String(calls[2][0])).toBe("https://api.openai.com/v1/chat/completions");
   });
 
   it("keeps premium users entitled when the admin-level profile lookup fails", async () => {
@@ -278,7 +286,7 @@ describe("Pages /api/mercy-ai AI conversation mode", () => {
       reply: expect.stringContaining("report"),
       provider: "openai",
     });
-    expect(fetchMock).toHaveBeenCalledTimes(3);
+    expect(appFetchCalls(fetchMock)).toHaveLength(3);
   });
 
   it("keeps the 50-turn cap contract before calling OpenAI", async () => {
@@ -295,7 +303,7 @@ describe("Pages /api/mercy-ai AI conversation mode", () => {
 
     expect(response.status).toBe(400);
     await expect(response.json()).resolves.toEqual({ error: "Session turn cap reached" });
-    expect(fetchMock).toHaveBeenCalledTimes(2);
+    expect(appFetchCalls(fetchMock)).toHaveLength(2);
   });
 });
 
@@ -339,9 +347,10 @@ describe("Pages /api/mercy-ai sentence-correction mode", () => {
     });
 
     // Must call OpenAI directly via raw fetch (not a Supabase or DeepSeek endpoint)
-    expect(fetchMock).toHaveBeenCalledTimes(1);
-    expect(String(fetchMock.mock.calls[0][0])).toBe("https://api.openai.com/v1/chat/completions");
-    const body = JSON.parse(String(fetchMock.mock.calls[0][1]?.body));
+    const calls = appFetchCalls(fetchMock);
+    expect(calls).toHaveLength(1);
+    expect(String(calls[0][0])).toBe("https://api.openai.com/v1/chat/completions");
+    const body = JSON.parse(String(calls[0][1]?.body));
     expect(body.model).toBe("gpt-4o-mini");
     expect(body.temperature).toBe(0.25);
     expect(body.response_format).toEqual({ type: "json_object" });
@@ -444,8 +453,9 @@ describe("Pages /api/mercy-ai sentence-correction mode", () => {
         error: "Correction timed out",
         timeout: true,
       });
-      expect(fetchMock).toHaveBeenCalledTimes(1);
-      expect(fetchMock.mock.calls[0][1]?.signal).toBeInstanceOf(AbortSignal);
+      const calls = appFetchCalls(fetchMock);
+      expect(calls).toHaveLength(1);
+      expect(calls[0][1]?.signal).toBeInstanceOf(AbortSignal);
     } finally {
       vi.useRealTimers();
     }
@@ -459,7 +469,7 @@ describe("Pages /api/mercy-ai sentence-correction mode", () => {
 
     expect(response.status).toBe(400);
     await expect(response.json()).resolves.toEqual({ error: "Missing learnerText" });
-    expect(fetchMock).not.toHaveBeenCalled();
+    expect(appFetchCalls(fetchMock)).toHaveLength(0);
   });
 
   it("returns 500 when OPENAI_API_KEY is absent", async () => {
@@ -473,6 +483,6 @@ describe("Pages /api/mercy-ai sentence-correction mode", () => {
 
     expect(response.status).toBe(500);
     await expect(response.json()).resolves.toEqual({ error: "Missing OPENAI_API_KEY" });
-    expect(fetchMock).not.toHaveBeenCalled();
+    expect(appFetchCalls(fetchMock)).toHaveLength(0);
   });
 });

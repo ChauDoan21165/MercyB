@@ -8,6 +8,9 @@ type EdgeFailureLogContext = {
   detail?: Record<string, string | number | boolean | null | undefined>;
 };
 
+type DenoEnv = { get(name: string): string | undefined };
+type EdgeRuntimeLike = { waitUntil?: (promise: Promise<unknown>) => void };
+
 function createRequestId(): string {
   try {
     return crypto.randomUUID();
@@ -43,6 +46,16 @@ export function logEdgeFunctionFailure({
     requestId,
     ...(detail ? { detail } : {}),
   }));
+  scheduleEdgeFailureLog({
+    source: "edge-fn",
+    function_name: functionNameFromRoute(route),
+    endpoint: endpointFromRequest(request, route),
+    status,
+    error_signature: errorClass,
+    message: safeMessage(errorClass, status, detail),
+    request_id: requestId,
+    detail: safeDetail(mode, detail),
+  });
   return requestId;
 }
 
@@ -72,4 +85,83 @@ export function failureJsonResponse(
       "X-Request-Id": requestId,
     },
   });
+}
+
+function scheduleEdgeFailureLog(row: Record<string, unknown>): void {
+  const denoEnv = (globalThis as { Deno?: { env?: DenoEnv } }).Deno?.env;
+  const supabaseUrl = (denoEnv?.get("SUPABASE_URL") ?? "").trim();
+  const anonKey = (denoEnv?.get("SUPABASE_ANON_KEY") ?? "").trim();
+  if (!supabaseUrl || !anonKey) return;
+
+  try {
+    const maybeTask = (fetch as (...args: Parameters<typeof fetch>) => unknown)(
+      `${supabaseUrl.replace(/\/$/, "")}/rest/v1/function_failure_logs`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          apikey: anonKey,
+          Authorization: `Bearer ${anonKey}`,
+          Prefer: "return=minimal",
+        },
+        body: JSON.stringify(row),
+      },
+    );
+    if (!maybeTask || typeof (maybeTask as { then?: unknown }).then !== "function") return;
+    const task = (maybeTask as Promise<Response>).then((response) => {
+      if (!response.ok) {
+        console.error("[edge_function_failure] function_failure_logs insert failed:", response.status);
+      }
+    }).catch((error) => {
+      console.error("[edge_function_failure] function_failure_logs background failed:", error);
+    });
+
+    const edgeRuntime = (globalThis as { EdgeRuntime?: EdgeRuntimeLike }).EdgeRuntime;
+    if (typeof edgeRuntime?.waitUntil === "function") edgeRuntime.waitUntil(task);
+    else void task;
+  } catch (error) {
+    console.error("[edge_function_failure] function_failure_logs scheduling failed:", error);
+  }
+}
+
+function endpointFromRequest(request: Request | undefined, route: string): string {
+  if (!request) return `/functions/v1/${functionNameFromRoute(route)}`;
+  try {
+    return new URL(request.url).pathname;
+  } catch {
+    return `/functions/v1/${functionNameFromRoute(route)}`;
+  }
+}
+
+function functionNameFromRoute(route: string): string {
+  const trimmed = route.trim();
+  if (!trimmed) return "unknown";
+  return trimmed.split("/").filter(Boolean).at(-1) ?? trimmed;
+}
+
+function safeMessage(
+  errorClass: string,
+  status: number,
+  detail: EdgeFailureLogContext["detail"],
+): string {
+  const safeParts = [
+    typeof detail?.errorName === "string" ? detail.errorName : null,
+    typeof detail?.provider === "string" ? `provider=${detail.provider}` : null,
+    typeof detail?.providerStatus === "number" ? `provider_status=${detail.providerStatus}` : null,
+  ].filter(Boolean);
+  return `${errorClass} status=${status}${safeParts.length ? ` ${safeParts.join(" ")}` : ""}`.slice(0, 200);
+}
+
+function safeDetail(
+  mode: string,
+  detail: EdgeFailureLogContext["detail"],
+): Record<string, string | number | boolean | null> {
+  const safe: Record<string, string | number | boolean | null> = { mode };
+  for (const key of ["provider", "providerStatus", "errorName", "timeout", "seed"] as const) {
+    const value = detail?.[key];
+    if (typeof value === "string" || typeof value === "number" || typeof value === "boolean" || value === null) {
+      safe[key] = value;
+    }
+  }
+  return safe;
 }

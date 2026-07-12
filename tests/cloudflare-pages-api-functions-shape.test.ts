@@ -32,6 +32,12 @@ function ttsContext(body: Record<string, unknown>) {
   };
 }
 
+type FetchSpy = ReturnType<typeof vi.fn<typeof fetch>>;
+
+function appFetchCalls(fetchMock: FetchSpy) {
+  return fetchMock.mock.calls.filter(([url]) => !String(url).includes("function_failure_logs"));
+}
+
 describe("Cloudflare Pages API function shape", () => {
   afterEach(() => {
     vi.restoreAllMocks();
@@ -207,7 +213,8 @@ describe("Cloudflare Pages API function shape", () => {
     }));
 
     expect(response.status).toBe(200);
-    const upstreamBody = JSON.parse(fetchMock.mock.calls[0][1]?.body as string);
+    const upstreamCalls = appFetchCalls(fetchMock);
+    const upstreamBody = JSON.parse(upstreamCalls[0][1]?.body as string);
     expect(upstreamBody).toMatchObject({
       text: "Xin chao",
       language: "vi-VN",
@@ -228,7 +235,7 @@ describe("Cloudflare Pages API function shape", () => {
       voice_id: "english-legacy-voice",
     }));
     expect(rejected.status).toBe(503);
-    expect(persistentNonAzure).toHaveBeenCalledTimes(2); // initial + one retry
+    expect(appFetchCalls(persistentNonAzure)).toHaveLength(2); // initial + one retry
     await expect(rejected.json()).resolves.toMatchObject({
       ok: false,
       retryable: true,
@@ -258,7 +265,7 @@ describe("Cloudflare Pages API function shape", () => {
     const response = await ttsOnRequestPost(ttsContext({ text: "Hello", language: "en" }));
 
     expect(response.status).toBe(503);
-    expect(failing).toHaveBeenCalledTimes(2);
+    expect(appFetchCalls(failing)).toHaveLength(2);
     await expect(response.json()).resolves.toMatchObject({ ok: false, retryable: true });
   });
 
@@ -269,7 +276,7 @@ describe("Cloudflare Pages API function shape", () => {
     const response = await ttsOnRequestPost(ttsContext({ text: "Hello", language: "en" }));
 
     expect(response.status).toBe(401);
-    expect(unauthorized).toHaveBeenCalledTimes(1); // no retry on a permanent 4xx
+    expect(appFetchCalls(unauthorized)).toHaveLength(1); // no retry on a permanent 4xx
     await expect(response.json()).resolves.toMatchObject({ ok: false, retryable: false });
   });
 });
