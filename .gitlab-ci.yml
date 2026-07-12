@@ -1938,3 +1938,32 @@ prod-synthetic-learner:
       # is runner-conditional and needs the trace.zip to confirm the anon-session
       # bootstrap race (run #3 had no trace uploaded → undiagnosable from CI).
       - test-results/
+
+# DISABLED BY DEFAULT. R3 explores production beyond R0's scripted journeys
+# using only the dedicated synthetic account and the read-only crawler policy.
+# Chau schedule: daily pipeline on main, variables R3_EXPLORER_ENABLED=1 plus
+# the existing masked PROD_SYNTH_* and RESEND_ALERT_TOKEN values. Optional:
+# DISPATCHER_URL and DISPATCHER_SECRET route alerts through Dispatcher first.
+prod-r3-explorer:
+  <<: [*node_job, *local_runner]
+  tags:
+    - local
+    - mac-c2
+  stage: verify
+  interruptible: false
+  rules:
+    - if: '$RESERVOIR == "1"'
+      when: never
+    - if: '$CI_PIPELINE_SOURCE == "schedule" && $R3_EXPLORER_ENABLED == "1"'
+    - if: '$CI_PIPELINE_SOURCE == "web" && $R3_EXPLORER_ENABLED == "1"'
+      when: manual
+    - when: never
+  script:
+    - npx playwright install --with-deps chromium
+    - npm run test:r3-explorer
+  artifacts:
+    when: always
+    expire_in: 30 days
+    paths:
+      - reports/prod-r3-explorer/
+      - test-results/
