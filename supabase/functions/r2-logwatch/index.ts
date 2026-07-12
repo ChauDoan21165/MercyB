@@ -34,6 +34,7 @@ type SourceResult = {
   count: number;
   skipped?: boolean;
   reason?: string;
+  error?: QueryError;
 };
 
 type QueryError = { code?: string; message?: string };
@@ -49,8 +50,16 @@ type QueryBuilder = PromiseLike<QueryResult> & {
 };
 type SupabaseLogClient = {
   from(table: string): QueryBuilder;
-  schema(schema: string): { from(table: string): QueryBuilder };
+  rpc(functionName: string, args?: Record<string, unknown>): PromiseLike<QueryResult>;
 };
+
+function queryErrorDetail(error: QueryError | null): QueryError | undefined {
+  if (!error) return undefined;
+  return {
+    ...(error.code ? { code: error.code } : {}),
+    ...(error.message ? { message: error.message } : {}),
+  };
+}
 
 function jsonResponse(body: unknown, status = 200): Response {
   return new Response(JSON.stringify(body), { status, headers: corsHeaders });
@@ -211,7 +220,16 @@ async function queryFunctionFailureLogs(
       };
     }
     console.error("[r2-logwatch] function_failure_logs query failed:", error.message);
-    return { result: { source: "function_failure_logs", count: 0, skipped: true, reason: "query_failed" }, events: [] };
+    return {
+      result: {
+        source: "function_failure_logs",
+        count: 0,
+        skipped: true,
+        reason: "query_failed",
+        error: queryErrorDetail(error),
+      },
+      events: [],
+    };
   }
 
   const events = (data ?? []).map((row: Record<string, unknown>): R2Event => ({
@@ -236,31 +254,35 @@ async function queryCronFailures(
   supabase: SupabaseLogClient,
   since: Date,
 ): Promise<{ result: SourceResult; events: R2Event[] }> {
-  const { data, error } = await supabase
-    .schema("cron")
-    .from("job_run_details")
-    .select("jobid,runid,job_pid,database,username,command,status,return_message,start_time,end_time")
-    .gte("start_time", since.toISOString())
-    .neq("status", "succeeded")
-    .order("start_time", { ascending: false })
-    .limit(MAX_ROWS_PER_SOURCE);
+  const { data, error } = await supabase.rpc("r2_recent_cron_failures", {
+    window_start: since.toISOString(),
+  });
 
   if (error) {
-    console.error("[r2-logwatch] cron.job_run_details query failed:", error.message);
-    return { result: { source: "cron.job_run_details", count: 0, skipped: true, reason: "query_failed" }, events: [] };
+    console.error("[r2-logwatch] r2_recent_cron_failures query failed:", error.message);
+    return {
+      result: {
+        source: "cron.job_run_details",
+        count: 0,
+        skipped: true,
+        reason: "query_failed",
+        error: queryErrorDetail(error),
+      },
+      events: [],
+    };
   }
 
   const events = (data ?? []).map((row: Record<string, unknown>): R2Event => ({
     source: "cron.job_run_details",
-    id: `${row.jobid ?? "job"}:${row.runid ?? "run"}`,
+    id: `${row.job_name ?? "job"}:${row.start_time ?? "run"}`,
     occurredAt: String(row.end_time ?? row.start_time),
     provider: "pg_cron",
-    route: String(row.command ?? "unknown").slice(0, 160),
-    mode: String(row.database ?? "postgres"),
+    route: String(row.job_name ?? "unknown").slice(0, 160),
+    mode: "postgres",
     status: null,
     errorClass: String(row.status ?? "failed"),
     message: stringOrNull(row.return_message),
-    requestId: stringOrNull(row.runid),
+    requestId: `${row.job_name ?? "job"}:${row.start_time ?? ""}`,
     userId: null,
   }));
 
@@ -271,33 +293,33 @@ async function queryNetHttpFailures(
   supabase: SupabaseLogClient,
   since: Date,
 ): Promise<{ result: SourceResult; events: R2Event[] }> {
-  const { data, error } = await supabase
-    .schema("net")
-    .from("_http_response")
-    .select("id,created,status_code,error_msg,timed_out,content")
-    .gte("created", since.toISOString())
-    .order("created", { ascending: false })
-    .limit(MAX_ROWS_PER_SOURCE);
-
-  if (error) {
-    console.error("[r2-logwatch] net._http_response query failed:", error.message);
-    return { result: { source: "net._http_response", count: 0, skipped: true, reason: "query_failed" }, events: [] };
-  }
-
-  const failures = (data ?? []).filter((row: Record<string, unknown>) => {
-    const status = numberOrNull(row.status_code);
-    return row.timed_out === true || Boolean(row.error_msg) || status === null || status < 200 || status >= 300;
+  const { data, error } = await supabase.rpc("r2_recent_http_errors", {
+    window_start: since.toISOString(),
   });
 
-  const events = failures.map((row: Record<string, unknown>): R2Event => ({
+  if (error) {
+    console.error("[r2-logwatch] r2_recent_http_errors query failed:", error.message);
+    return {
+      result: {
+        source: "net._http_response",
+        count: 0,
+        skipped: true,
+        reason: "query_failed",
+        error: queryErrorDetail(error),
+      },
+      events: [],
+    };
+  }
+
+  const events = (data ?? []).map((row: Record<string, unknown>): R2Event => ({
     source: "net._http_response",
     id: String(row.id),
     occurredAt: String(row.created),
     provider: "pg_net",
     route: null,
-    mode: row.timed_out === true ? "timeout" : "http",
+    mode: "http",
     status: numberOrNull(row.status_code),
-    errorClass: String(row.error_msg ?? (row.timed_out === true ? "timed_out" : `http_${row.status_code ?? "unknown"}`)),
+    errorClass: `http_${row.status_code ?? "unknown"}`,
     message: stringOrNull(row.content),
     requestId: String(row.id),
     userId: null,
