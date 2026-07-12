@@ -1,8 +1,8 @@
 # Vietnamese->English A1 Audio Warmup Status
 
-Started: 2026-07-12T18:18:48.472Z
+Started: 2026-07-12T18:27:10.016Z
 
-Finished: 2026-07-12T18:19:29.517Z
+Finished: 2026-07-12T19:28:53.942Z
 
 Source map: `reports/cell-inventory/audio-map-vn-en-a1.json`
 
@@ -75,13 +75,11 @@ lessonAudioKey(lesson.audioBase, {
 | Vietnamese TTS-cache tuples | 0 |
 | Addressable before warmup | 2 |
 | Missing before warmup | 625 |
-| Addressable after warmup | 2 |
-| Missing after warmup | 625 |
+| Addressable after warmup | 627 |
+| Missing after warmup | 0 |
 | Failures | 0 |
 
-Warmup skipped/stopped reason: Missing SUPABASE_ANON_KEY or VITE_SUPABASE_ANON_KEY; HEAD probes ran, but invoking the production mercy-tts endpoint requires the same anon auth the app sends.
-
-Post-run English-audio coverage replacing `0/627 addressable`: 2/627.
+Post-run English-audio coverage replacing `0/627 addressable`: 627/627.
 
 ## Failures
 
