@@ -7,6 +7,9 @@ export type AnalyticsEventName =
   | "pricing_viewed"
   | "checkout_started"
   | "checkout_completed"
+  | "price_test_variant_exposure"
+  | "price_test_checkout_start"
+  | "price_test_checkout_complete"
   | "entitlement_success"
   | "l1_hint_learn_more_clicked"
   | "register_correction_shown"
@@ -154,6 +157,18 @@ export function trackCheckoutStarted(payload?: AnalyticsPayload): void {
 
 export function trackCheckoutCompleted(payload?: AnalyticsPayload): void {
   trackEvent("checkout_completed", payload);
+}
+
+export function trackPriceTestVariantExposure(payload?: AnalyticsPayload): void {
+  trackEvent("price_test_variant_exposure", payload);
+}
+
+export function trackPriceTestCheckoutStart(payload?: AnalyticsPayload): void {
+  trackEvent("price_test_checkout_start", payload);
+}
+
+export function trackPriceTestCheckoutComplete(payload?: AnalyticsPayload): void {
+  trackEvent("price_test_checkout_complete", payload);
 }
 
 export function trackEntitlementSuccess(payload?: AnalyticsPayload): void {

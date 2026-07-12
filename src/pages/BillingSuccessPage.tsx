@@ -5,6 +5,16 @@ import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "@/providers/AuthProvider";
 import { useEntitlements } from "@/lib/useEntitlements";
 import { useUserAccess } from "@/hooks/useUserAccess";
+import {
+  trackCheckoutCompleted,
+  trackPriceTestCheckoutComplete,
+} from "@/lib/analytics";
+import {
+  getStoredPriceTestAssignment,
+  markCheckoutCompleteRecorded,
+  priceTestAnalyticsPayload,
+  recordPriceTestLearningEvent,
+} from "@/lib/pricing/priceTest";
 
 type StatusLabels = { en: string; vi: string };
 
@@ -45,6 +55,25 @@ export default function BillingSuccessPage() {
 
   useEffect(() => {
     if (!user) return;
+    const assignment = getStoredPriceTestAssignment();
+    if (assignment?.enabled && assignment.configReady) {
+      const params = new URLSearchParams(window.location.search);
+      const sessionId = params.get("session_id");
+      const eventKey = `${assignment.experimentKey}:${sessionId || user.id}`;
+      if (markCheckoutCompleteRecorded(eventKey)) {
+        const payload = priceTestAnalyticsPayload(assignment, {
+          screen: "billing_success",
+          session_id_present: Boolean(sessionId),
+        });
+        trackCheckoutCompleted(payload);
+        trackPriceTestCheckoutComplete(payload);
+        void recordPriceTestLearningEvent("price_test_checkout_complete", assignment, {
+          screen: "billing_success",
+          session_id_present: Boolean(sessionId),
+        });
+      }
+    }
+
     // V9 fix (audit-user-journey-v9 Path 4 R8): a single refresh on
     // mount can land before the Stripe webhook updates the row,
     // briefly showing "Free access" on a page that says "Your premium
