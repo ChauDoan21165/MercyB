@@ -7,6 +7,7 @@ import { createPlacementForensicLogger } from "../_shared/placementForensicLogge
 
 import { handleAction } from "./core.ts";
 import { createHttpWritingGrader } from "./graderClient.ts";
+import { isKeepaliveRequestBody } from "./keepalive.ts";
 import { createPersistence, recommendLessons } from "./persistence.ts";
 import type {
   OrchestratorResponse,
@@ -128,6 +129,11 @@ serve(
     if (req.method === "OPTIONS") return new Response("ok", { headers: corsHeaders });
     if (req.method !== "POST") return json({ ok: false, error: "method_not_allowed" }, 405);
 
+    const bodyText = await req.text();
+    if (isKeepaliveRequestBody(bodyText)) {
+      return json({ ok: true, keepalive: true });
+    }
+
     const user = await getUserFromAuthHeader(req);
     if (!user) {
       await forensicLogger.logEvent({
@@ -150,7 +156,7 @@ serve(
 
     let body: PlacementV3Request;
     try {
-      body = await req.json() as PlacementV3Request;
+      body = JSON.parse(bodyText) as PlacementV3Request;
     } catch {
       await forensicLogger.logEvent({
         sessionId: fallbackSessionId,
