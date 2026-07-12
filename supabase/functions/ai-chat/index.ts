@@ -343,57 +343,62 @@ async function logCostCapHit(params: {
   }
 }
 
-async function consumeOpenAiSseStream(
+function meterOpenAiSseStream(
   stream: ReadableStream<Uint8Array>,
-  onParsed: (parsed: any) => void,
-) {
-  const reader = stream.getReader();
+  onComplete: (usage: { promptTokens: number; completionTokens: number }) => Promise<void>,
+): ReadableStream<Uint8Array> {
   const decoder = new TextDecoder();
   let buffer = "";
+  let promptTokens = 0;
+  let completionTokens = 0;
 
-  try {
+  const parseLine = (rawLine: string) => {
+    const line = rawLine.replace(/\r$/, "").trim();
+    if (!line.startsWith("data:")) return;
+
+    const payload = line.slice(5).trim();
+    if (!payload || payload === "[DONE]") return;
+
+    try {
+      const parsed = JSON.parse(payload);
+      if (parsed?.usage) {
+        promptTokens = parsed.usage.prompt_tokens ?? 0;
+        completionTokens = parsed.usage.completion_tokens ?? 0;
+      }
+    } catch {
+      // ignore malformed/partial payloads
+    }
+  };
+
+  const drainLines = () => {
     while (true) {
-      const { done, value } = await reader.read();
-      if (done) break;
+      const newlineIndex = buffer.indexOf("\n");
+      if (newlineIndex === -1) break;
 
-      buffer += decoder.decode(value, { stream: true });
-
-      while (true) {
-        const newlineIndex = buffer.indexOf("\n");
-        if (newlineIndex === -1) break;
-
-        const rawLine = buffer.slice(0, newlineIndex);
-        buffer = buffer.slice(newlineIndex + 1);
-
-        const line = rawLine.replace(/\r$/, "").trim();
-        if (!line.startsWith("data:")) continue;
-
-        const payload = line.slice(5).trim();
-        if (!payload) continue;
-        if (payload === "[DONE]") return;
-
-        try {
-          const parsed = JSON.parse(payload);
-          onParsed(parsed);
-        } catch {
-          // ignore malformed/partial payloads
-        }
-      }
+      const rawLine = buffer.slice(0, newlineIndex);
+      buffer = buffer.slice(newlineIndex + 1);
+      parseLine(rawLine);
     }
+  };
 
-    const remaining = buffer.trim();
-    if (remaining.startsWith("data:")) {
-      const payload = remaining.slice(5).trim();
-      if (payload && payload !== "[DONE]") {
-        try {
-          const parsed = JSON.parse(payload);
-          onParsed(parsed);
-        } catch {}
+  return stream.pipeThrough(new TransformStream<Uint8Array, Uint8Array>({
+    transform(chunk, controller) {
+      controller.enqueue(chunk);
+      buffer += decoder.decode(chunk, { stream: true });
+      drainLines();
+    },
+    async flush() {
+      buffer += decoder.decode();
+      const remaining = buffer.trim();
+      if (remaining) parseLine(remaining);
+
+      try {
+        await onComplete({ promptTokens, completionTokens });
+      } catch (e) {
+        console.warn("[ai-chat] usage logging failed:", e);
       }
-    }
-  } finally {
-    reader.releaseLock();
-  }
+    },
+  }));
 }
 
 function isTrialExpired(createdAt: string | null | undefined): boolean {
@@ -811,19 +816,10 @@ serve(wrapHandler("ai-chat", async (req) => {
       `[ai-chat] provider=${streamResult.provider} attempts=[${streamResult.attempts.join(",")}]`,
     );
 
-    const [clientStream, parseStream] = streamResult.body.tee();
-
-    const backgroundTask = (async () => {
-      let promptTokens = 0;
-      let completionTokens = 0;
-
-      await consumeOpenAiSseStream(parseStream, (parsed) => {
-        if (parsed?.usage) {
-          promptTokens = parsed.usage.prompt_tokens;
-          completionTokens = parsed.usage.completion_tokens;
-        }
-      });
-
+    const meteredStream = meterOpenAiSseStream(streamResult.body, async ({
+      promptTokens,
+      completionTokens,
+    }) => {
       const estimatedCostVnd = estimateOpenAICostVnd({
         model: AI_MODEL,
         inputTokens: promptTokens,
@@ -856,11 +852,9 @@ serve(wrapHandler("ai-chat", async (req) => {
         // LLM-detected "substantively used" attribution yet).
         markFactsReferencedBatch(activeFacts.map((f) => f.id)),
       ]);
-    })();
+    });
 
-    void backgroundTask;
-
-    const response = new Response(clientStream, {
+    const response = new Response(meteredStream, {
       headers: {
         ...corsHeaders,
         "Content-Type": "text/event-stream",

@@ -268,12 +268,12 @@ export async function logAiUsageLog(params: {
 }
 
 /**
- * Fire-and-forget wrapper around logAiUsageLog for the response hot path.
+ * Best-effort wrapper around logAiUsageLog for response paths.
  *
  * - Resolves language_pair (best-effort) when not supplied, then logs.
- * - NEVER blocks or fails the caller: the whole task runs in the background via
- *   EdgeRuntime.waitUntil (falling back to a detached promise off-runtime), and
- *   every failure is swallowed with a console.warn.
+ * - NEVER fails the caller: every failure is swallowed with a console.warn.
+ * - Returns the task so Supabase Edge callers can await it before responding.
+ *   Where EdgeRuntime.waitUntil exists, it is also registered there.
  * - No fabricated numbers: callers should only invoke this when the provider
  *   returned real token usage (skip it entirely otherwise).
  */
@@ -287,9 +287,12 @@ export function logAiUsageLogBackground(params: {
   conversationId?: string | null;
   requestId?: string | null;
   meta?: Record<string, unknown>;
-}): void {
+}): Promise<void> {
   const task = (async () => {
-    if (!params.userId) return;
+    if (!params.userId) {
+      console.warn(`[${params.feature}] no user id; skipping ai_usage_logs row`);
+      return;
+    }
     const languagePair = params.languagePair ??
       (await resolveLanguagePairForUser(params.userId));
     await logAiUsageLog({ ...params, languagePair });
@@ -306,4 +309,6 @@ export function logAiUsageLogBackground(params: {
   } catch {
     void task;
   }
+
+  return task;
 }
