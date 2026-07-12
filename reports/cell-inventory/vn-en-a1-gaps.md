@@ -4,13 +4,21 @@ Source: `src/languages/vietnamese/lessons-a1.ts`
 
 Counting rule: only `CELL` layer objects count. Workpacks, events, diagnostics, organs, tissues, and resources are excluded.
 
+Audio finding: audio for this surface is runtime-generated or admin-generated. Admin generators persist files in Supabase Storage buckets (`audio/paths`, `audio/welcome`, `audio/warmth`), room playback resolves keys through the `room-audio` bucket, and tutor TTS can cache finalized Azure clips under `room-audio/tts-cache/{sha256}.mp3`. The Vietnamese A1 content schema has no per-cell audio resource keyed by lesson/phrase/dialogue cell address, so the world model should not claim replayable per-cell reference audio for this wedge; it can claim runtime TTS coverage unless a stable cell-addressed asset is added.
+
 ## Summary
 
 | Question | Count |
 | --- | ---: |
 | Total CELL-layer cells | 627 |
-| Lacking audio | 627 |
-| Lacking IPA | 627 |
+| Cells with addressable reference audio | 0 |
+| Cells covered only by runtime TTS | 627 |
+| Cells with no audio path | 0 |
+| Vocabulary items with addressable IPA in pronunciation libs | 0 |
+| Vocabulary items absent from pronunciation IPA libs | 412 |
+| Unique vocabulary word tokens with IPA | 48 |
+| Unique vocabulary word tokens absent from IPA | 444 |
+| All cells lacking IPA resource | 627 |
 | Lacking translation | 0 |
 
 ## Total Cells By Layer
@@ -26,7 +34,19 @@ Counting rule: only `CELL` layer objects count. Workpacks, events, diagnostics, 
 | Vocabulary Item | 412 |
 | Dialogue Turn | 215 |
 
-## First 20 Lacking Audio
+## Audio Status
+
+| Audio status | Count |
+| --- | ---: |
+| runtime_tts_only | 627 |
+
+## IPA Status
+
+| IPA status | Count |
+| --- | ---: |
+| absent | 627 |
+
+## First 20 Without Addressable Reference Audio
 
 1. `vi-en:A1:lesson-001:vocabulary-001` (Vocabulary Item) - Language=Vietnamese->English > Level=A1 > Lesson=001 Greetings > Sentence=Xin chào > Vocabulary=001 Hello > Pronunciation=seen chow > Audio=missing
 2. `vi-en:A1:lesson-001:vocabulary-002` (Vocabulary Item) - Language=Vietnamese->English > Level=A1 > Lesson=001 Greetings > Sentence=Chào buổi sáng > Vocabulary=002 Good morning > Pronunciation=chow boo-ee sahng > Audio=missing
