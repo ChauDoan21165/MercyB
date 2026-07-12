@@ -478,6 +478,38 @@ describe("SpeakPracticeMode pronunciation result display", () => {
     expect(screen.queryByTestId("ai-tutor-speak-follow-up")).not.toBeInTheDocument();
   });
 
+  it("renders a terminal pending state separately from the provider retry state", () => {
+    const onRetryFollowUp = vi.fn();
+    const { rerender } = render(
+      <SpeakPracticeMode
+        {...baseProps}
+        followUpPending
+        followUpProviderError
+        onRetryFollowUp={onRetryFollowUp}
+      />,
+    );
+
+    expect(screen.getByTestId("ai-tutor-speak-follow-up-pending")).toHaveTextContent(
+      "Mercy đang lấy câu hỏi tiếp theo",
+    );
+    expect(screen.queryByTestId("ai-tutor-speak-follow-up-error")).not.toBeInTheDocument();
+
+    rerender(
+      <SpeakPracticeMode
+        {...baseProps}
+        followUpPending={false}
+        followUpProviderError
+        onRetryFollowUp={onRetryFollowUp}
+      />,
+    );
+
+    expect(screen.getByTestId("ai-tutor-speak-follow-up-error")).toHaveTextContent(
+      "Mercy chưa lấy được câu hỏi tiếp theo",
+    );
+    fireEvent.click(screen.getByRole("button", { name: "Thử lại" }));
+    expect(onRetryFollowUp).toHaveBeenCalledTimes(1);
+  });
+
   it("shows Step 7 wording and detail only for Azure batch phoneme evidence", () => {
     renderSpeak({
       mode: "azure-batch",

@@ -1138,8 +1138,34 @@ describe("AiTutor four-tab seed flow", () => {
         "Mercy chưa lấy được câu hỏi tiếp theo. Bấm thử lại nhé.",
       );
     });
+    expect(screen.getByRole("button", { name: "Thử lại" })).toBeInTheDocument();
     expect(screen.queryByTestId("ai-tutor-speak-follow-up")).not.toBeInTheDocument();
     expect(screen.getByTestId("self-compare-recorder")).toBeInTheDocument();
+  });
+
+  it("does not collapse a Speak follow-up timeout into the unclear-transcript prompt", async () => {
+    useAuthMock.mockReturnValue({
+      user: { id: "user-1", user_metadata: {} },
+      session: { access_token: "session-jwt" },
+      isLoading: false,
+    });
+    vi.stubGlobal("fetch", vi.fn(async () => {
+      throw new DOMException("The operation timed out.", "TimeoutError");
+    }));
+    (window as Window & { SpeechRecognition?: unknown }).SpeechRecognition = MockSpeechRecognition;
+    renderAiTutor();
+
+    await correctHatSentence();
+    await userEvent.click(screen.getByRole("button", { name: "Đưa câu này sang Luyện nói" }));
+    await speakCurrentTarget("I like summer because it is sunny.");
+
+    await waitFor(() => {
+      expect(screen.getByTestId("ai-tutor-speak-follow-up-error")).toHaveTextContent(
+        "Mercy chưa lấy được câu hỏi tiếp theo. Bấm thử lại nhé.",
+      );
+    });
+    expect(screen.queryByTestId("ai-tutor-speak-follow-up")).not.toBeInTheDocument();
+    expect(screen.queryByText("I didn't catch that clearly. Can you say it again?")).not.toBeInTheDocument();
   });
 
   it("asks for a clearer repeat when the learner says the follow-up makes no sense", async () => {

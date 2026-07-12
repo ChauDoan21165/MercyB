@@ -71,6 +71,7 @@ type Props = {
   ttsErrorScope?: "target" | "follow-up" | null;
   followUpPrompt: BilingualText | null;
   followUpIsPivot: boolean;
+  followUpPending?: boolean;
   followUpProviderError?: boolean;
   followUpTtsSpeaking: boolean;
   followUpTtsPreparing: boolean;
@@ -115,6 +116,7 @@ export default function SpeakPracticeMode({
   ttsErrorScope,
   followUpPrompt,
   followUpIsPivot,
+  followUpPending = false,
   followUpProviderError = false,
   followUpTtsSpeaking,
   followUpTtsPreparing,
@@ -424,7 +426,19 @@ export default function SpeakPracticeMode({
             </div>
           )}
 
-          {!followUpPrompt && followUpProviderError && (
+          {!followUpPrompt && followUpPending && (
+            <div
+              data-testid="ai-tutor-speak-follow-up-pending"
+              className="mt-4 rounded-[16px] border border-indigo-100 bg-indigo-50 px-4 py-4"
+              role="status"
+            >
+              <p className="text-sm font-bold leading-6 text-indigo-900">
+                Mercy đang lấy câu hỏi tiếp theo...
+              </p>
+            </div>
+          )}
+
+          {!followUpPrompt && !followUpPending && followUpProviderError && (
             <div
               data-testid="ai-tutor-speak-follow-up-error"
               className="mt-4 rounded-[16px] border border-amber-200 bg-amber-50 px-4 py-4"
