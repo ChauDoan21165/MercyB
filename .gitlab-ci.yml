@@ -1827,6 +1827,24 @@ flywheel-mine:
       - _flywheel_out/
 
 # ── Tier-3 prod synthetic learner (SL-001) ──────────────────────────────────
+# DISABLED BY DEFAULT. Lists open MRs, comments their merge-policy tier, and
+# auto-merges only green/conflict-free Tier 1 MRs after the R0/R1 safety gates.
+# `GATEKEEPER_ENABLED` is intentionally not set globally; add it only to the
+# dedicated schedule or a manual web pipeline when Chau wants the gatekeeper on.
+tier1-gatekeeper:
+  <<: [*node_job, *local_runner]
+  stage: verify
+  interruptible: false
+  rules:
+    - if: '$RESERVOIR == "1"'
+      when: never
+    - if: '$CI_PIPELINE_SOURCE == "schedule" && $GATEKEEPER_ENABLED == "1"'
+    - if: '$CI_PIPELINE_SOURCE == "web" && $GATEKEEPER_ENABLED == "1"'
+      when: manual
+    - when: never
+  script:
+    - node scripts/gatekeeper/tier1-automerge.mjs
+
 # DISABLED BY DEFAULT. Runs journeys (a)–(f) against REAL production as the
 # dedicated synthetic account, on a schedule (or ad-hoc web run) ONLY when Chau
 # sets SYNTHETIC_LEARNER_ENABLED=1 and has provisioned the masked PROD_SYNTH_*
