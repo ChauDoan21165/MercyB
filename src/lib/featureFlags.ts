@@ -111,6 +111,14 @@ export const FEATURE_FLAGS = {
   PLACEMENT_DECISION_VISIBLE: readEnvBool("VITE_PLACEMENT_DECISION_VISIBLE", false),
 
   /**
+   * Shareable Interference Profile v1. When ON, the placement decision panel can
+   * render a client-only share card from the already-computed placement result.
+   * Default OFF; reads env `VITE_INTERFERENCE_PROFILE_SHARE`. The card is drawn
+   * in-browser only and does not persist or send new data.
+   */
+  INTERFERENCE_PROFILE_SHARE: readEnvBool("VITE_INTERFERENCE_PROFILE_SHARE", false),
+
+  /**
    * Home page "Your focus areas" card that surfaces placement-test
    * weakness tags. Off until CC3's placement-test persistence lands
    * and manual QA passes.

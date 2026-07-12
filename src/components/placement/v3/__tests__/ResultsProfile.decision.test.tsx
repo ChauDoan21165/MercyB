@@ -35,6 +35,20 @@ function validResults(): PlacementV3Results {
   };
 }
 
+function resultsWithInterferenceFlags(): PlacementV3Results {
+  return {
+    ...validResults(),
+    l1Flags: [
+      {
+        id: "article-omission",
+        severity: "high",
+        label: { en: "Article omission", vi: "Thiếu mạo từ" },
+        evidence: { en: "I want better job.", vi: "I want better job." },
+      },
+    ],
+  };
+}
+
 /**
  * Reference result — exact shape emitted by applyPlacementRuntimeDecision when
  * the listening audio was unplayable AND answers looked like rapid guessing
@@ -110,6 +124,7 @@ describe("ResultsProfile — flag OFF (default)", () => {
     expect(screen.getByText("A2 placement.")).toBeInTheDocument();
     // The new section is entirely absent — output is byte-identical to before.
     expect(container.querySelector('[data-testid="assessment-rationale"]')).toBeNull();
+    expect(container.querySelector('[data-testid="interference-profile-share"]')).toBeNull();
     expect(container.textContent).not.toMatch(/How we assessed you/i);
   });
 });
@@ -122,6 +137,14 @@ describe("ResultsProfile — flag ON", () => {
 
   async function renderWithFlagOn(results: PlacementV3Results) {
     vi.stubEnv("VITE_PLACEMENT_DECISION_VISIBLE", "true");
+    vi.resetModules();
+    const { ResultsProfile: ResultsProfileOn } = await import("../ResultsProfile");
+    return render(<ResultsProfileOn results={results} />);
+  }
+
+  async function renderWithDecisionAndShareFlagsOn(results: PlacementV3Results) {
+    vi.stubEnv("VITE_PLACEMENT_DECISION_VISIBLE", "true");
+    vi.stubEnv("VITE_INTERFERENCE_PROFILE_SHARE", "true");
     vi.resetModules();
     const { ResultsProfile: ResultsProfileOn } = await import("../ResultsProfile");
     return render(<ResultsProfileOn results={results} />);
@@ -145,5 +168,18 @@ describe("ResultsProfile — flag ON", () => {
     expect(screen.getByText("How we assessed you")).toBeInTheDocument();
     expect(screen.queryByText("Reference result")).toBeNull();
     expect(screen.getByText(/complete and reliable/i)).toBeInTheDocument();
+  });
+
+  it("keeps the share block hidden when the new share flag is off", async () => {
+    const { container } = await renderWithFlagOn(resultsWithInterferenceFlags());
+    expect(container.querySelector('[data-testid="assessment-rationale"]')).not.toBeNull();
+    expect(container.querySelector('[data-testid="interference-profile-share"]')).toBeNull();
+  });
+
+  it("shows the share block only when the decision and share flags are both on", async () => {
+    const { container } = await renderWithDecisionAndShareFlagsOn(resultsWithInterferenceFlags());
+    expect(container.querySelector('[data-testid="assessment-rationale"]')).not.toBeNull();
+    expect(container.querySelector('[data-testid="interference-profile-share"]')).not.toBeNull();
+    expect(screen.getByText("Share Interference Profile")).toBeInTheDocument();
   });
 });

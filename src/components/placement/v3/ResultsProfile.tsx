@@ -4,6 +4,7 @@ import { useChromeLanguage } from "@/lib/i18n/chromeLanguage";
 import { usePlacementT } from "@/components/placement/nativeCopy";
 import type { PlacementNativeSlots } from "@/components/placement/nativeCopy";
 import { FEATURE_FLAGS } from "@/lib/featureFlags";
+import InterferenceProfileShare from "./InterferenceProfileShare";
 
 type Props = {
   results: PlacementV3Results;
@@ -245,6 +246,7 @@ export function ResultsProfile({ results }: Props) {
                 </li>
               ))}
             </ul>
+            {FEATURE_FLAGS.INTERFERENCE_PROFILE_SHARE && <InterferenceProfileShare results={results} />}
           </div>
         );
       })()}
