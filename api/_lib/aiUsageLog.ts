@@ -15,15 +15,32 @@
 //   blocks or fails the learner's response, but failures are logged with
 //   `console.error` so Cloudflare Function logs expose the cause.
 // - NO fabricated numbers: callers invoke this only when the provider returned
-//   real OpenAI token usage. The DeepSeek path logs nothing (no multi-provider
-//   VND pricing yet).
+//   real token usage. Provider pricing is selected from published per-token
+//   rates and tagged in `meta.provider`.
 
 import { createClient } from "@supabase/supabase-js";
 import { envValue, type PagesContext } from "../../src/pages-functions/http";
 
-// USD price per 1K tokens — MUST match supabase/functions/_shared/aiUsage.ts#getPricePer1k.
-function getPricePer1k(model: string): { input: number; output: number } {
+type AiUsageProvider = "openai" | "deepseek";
+
+const DEEPSEEK_PRICING_SOURCE = "https://api-docs.deepseek.com/quick_start/pricing/";
+
+// USD price per 1K tokens — MUST match supabase/functions/_shared/aiUsage.ts#getPricePer1k
+// for OpenAI models. DeepSeek prices are from the official DeepSeek API pricing
+// page, listed per 1M tokens; these values are normalized to per 1K tokens.
+function getPricePer1k(
+  model: string,
+  provider: AiUsageProvider = "openai",
+): { input: number; output: number; source?: string } {
   const m = model.toLowerCase();
+  if (provider === "deepseek") {
+    if (m.includes("deepseek-v4-pro")) {
+      return { input: 0.000435, output: 0.00087, source: DEEPSEEK_PRICING_SOURCE };
+    }
+    // DeepSeek documents `deepseek-chat` as the non-thinking alias for
+    // deepseek-v4-flash until its listed deprecation, so price it as flash.
+    return { input: 0.00014, output: 0.00028, source: DEEPSEEK_PRICING_SOURCE };
+  }
   if (m.includes("gpt-5")) return { input: 0.005, output: 0.015 };
   if (m.includes("gpt-4.1")) return { input: 0.005, output: 0.015 };
   if (m.includes("gpt-4o-mini")) return { input: 0.00015, output: 0.0006 };
@@ -42,8 +59,9 @@ function estimateOpenAICostVnd(
   model: string,
   inputTokens: number,
   outputTokens: number,
+  provider: AiUsageProvider = "openai",
 ): number {
-  const prices = getPricePer1k(model);
+  const prices = getPricePer1k(model, provider);
   const inputUsd = (normalizeTokenCount(inputTokens) / 1000) * prices.input;
   const outputUsd = (normalizeTokenCount(outputTokens) / 1000) * prices.output;
   return Number(((inputUsd + outputUsd) * usdToVnd).toFixed(2));
@@ -79,7 +97,7 @@ function isMissingLanguagePairColumn(error: { message?: string; code?: string } 
  * `context.waitUntil` when available (so it survives past the response) and
  * otherwise detached. Never throws, never blocks the response.
  *
- * Only call this for OpenAI-provider calls that returned real token usage.
+ * Only call this for provider calls that returned real token usage.
  */
 export function logMercyAiUsage(
   context: PagesContext,
@@ -87,6 +105,7 @@ export function logMercyAiUsage(
     userId: string | null;
     feature: string; // e.g. "mercy-ai:sentence-correction"
     model: string;
+    provider?: AiUsageProvider;
     inputTokens: number;
     outputTokens: number;
     meta?: Record<string, unknown>;
@@ -129,14 +148,17 @@ export function logMercyAiUsage(
       /* best-effort: leave languagePair null */
     }
 
+    const provider = params.provider ?? "openai";
     const estimatedCostVnd = estimateOpenAICostVnd(
       usdToVnd,
       params.model,
       params.inputTokens,
       params.outputTokens,
+      provider,
     );
 
     const baseMeta = params.meta ?? {};
+    const price = getPricePer1k(params.model, provider);
     const row: AiUsageInsert = {
       user_id: params.userId,
       feature: params.feature,
@@ -145,7 +167,12 @@ export function logMercyAiUsage(
       output_tokens: normalizeTokenCount(params.outputTokens),
       estimated_cost_vnd: estimatedCostVnd,
       language_pair: languagePair,
-      meta: { ...baseMeta, ...(languagePair ? { languagePair } : {}) },
+      meta: {
+        ...baseMeta,
+        provider,
+        ...(price.source ? { pricingSource: price.source } : {}),
+        ...(languagePair ? { languagePair } : {}),
+      },
     };
     const { error } = await client.from("ai_usage_logs").insert(row);
     if (error) {

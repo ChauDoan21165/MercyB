@@ -51,8 +51,40 @@ function fallbackProcessEnv(): SpeakEnv {
 // ── Provider call helpers ─────────────────────────────────────────────────
 
 type SpeakOutcome =
-  | { kind: "ok"; raw: string }
+  | { kind: "ok"; raw: string; usage?: SpeakProviderUsage }
   | { kind: "fail" };
+
+export type SpeakProviderUsage = {
+  inputTokens: number;
+  outputTokens: number;
+  cacheHitInputTokens?: number;
+  cacheMissInputTokens?: number;
+};
+
+function normalizeUsageToken(value: unknown): number {
+  return typeof value === "number" && Number.isFinite(value) && value > 0
+    ? Math.round(value)
+    : 0;
+}
+
+function normalizeDeepSeekUsage(value: unknown): SpeakProviderUsage | undefined {
+  if (!isRecord(value)) return undefined;
+  const usage = value as {
+    prompt_tokens?: unknown;
+    completion_tokens?: unknown;
+    prompt_cache_hit_tokens?: unknown;
+    prompt_cache_miss_tokens?: unknown;
+  };
+  const inputTokens = normalizeUsageToken(usage.prompt_tokens);
+  const outputTokens = normalizeUsageToken(usage.completion_tokens);
+  if (inputTokens === 0 && outputTokens === 0) return undefined;
+  return {
+    inputTokens,
+    outputTokens,
+    cacheHitInputTokens: normalizeUsageToken(usage.prompt_cache_hit_tokens),
+    cacheMissInputTokens: normalizeUsageToken(usage.prompt_cache_miss_tokens),
+  };
+}
 
 async function callDeepSeekForSpeak(
   systemPrompt: string,
@@ -83,10 +115,11 @@ async function callDeepSeekForSpeak(
     if (!response.ok) return { kind: "fail" };
     const data = (await response.json()) as {
       choices?: Array<{ message?: { content?: string } }>;
+      usage?: unknown;
     };
     const raw = data?.choices?.[0]?.message?.content ?? "";
     if (!raw) return { kind: "fail" };
-    return { kind: "ok", raw };
+    return { kind: "ok", raw, usage: normalizeDeepSeekUsage(data.usage) };
   } catch {
     return { kind: "fail" };
   }
@@ -143,7 +176,7 @@ export async function buildDeepSeekSpeakFollowUp(input: {
    */
   avoidTokens?: string[];
   env?: SpeakEnv;
-}): Promise<{ question: string; provider: "deepseek" | "gemini"; model: string } | SpeakFollowUpError | null> {
+}): Promise<{ question: string; provider: "deepseek" | "gemini"; model: string; usage?: SpeakProviderUsage } | SpeakFollowUpError | null> {
   const env = input.env ?? fallbackProcessEnv();
   const round = Math.max(0, input.turnsOnTopic ?? 0);
 
@@ -200,7 +233,7 @@ export async function buildDeepSeekSpeakFollowUp(input: {
       const question = normalizeSpeakQuestion(outcome.raw);
       // AI returned content but it didn't parse as a valid question — genuine unclear input.
       if (!question) return null;
-      return { question, provider: "deepseek", model };
+      return { question, provider: "deepseek", model, usage: outcome.usage };
     }
     console.warn("[deepseekSpeak] deepseek failed — falling over to gemini");
   }

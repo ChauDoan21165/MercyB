@@ -15,7 +15,15 @@ const BASE_INPUT = {
   recentTurns: [] as Array<{ role: "learner" | "assistant"; text: string }>,
 };
 
-const DS_OK_BODY = JSON.stringify({ choices: [{ message: { content: "What did you buy there?" } }] });
+const DS_OK_BODY = JSON.stringify({
+  choices: [{ message: { content: "What did you buy there?" } }],
+  usage: {
+    prompt_tokens: 120,
+    completion_tokens: 12,
+    prompt_cache_hit_tokens: 40,
+    prompt_cache_miss_tokens: 80,
+  },
+});
 const GEM_OK_BODY = JSON.stringify({
   candidates: [{ content: { parts: [{ text: "Did you go alone?" }] } }],
 });
@@ -46,6 +54,14 @@ describe("buildDeepSeekSpeakFollowUp — provider fallback", () => {
       env: { DEEPSEEK_API_KEY: "sk-ds-only" },
     });
     expect(result).toMatchObject({ question: "What did you buy there?", provider: "deepseek" });
+    expect(result).toMatchObject({
+      usage: {
+        inputTokens: 120,
+        outputTokens: 12,
+        cacheHitInputTokens: 40,
+        cacheMissInputTokens: 80,
+      },
+    });
     expect(fetchMock).toHaveBeenCalledOnce();
     expect(isDeepSeekCall(fetchMock.mock.calls[0]?.[0])).toBe(true);
   });

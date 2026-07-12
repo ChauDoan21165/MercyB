@@ -189,6 +189,27 @@ export async function onRequestPost(context: PagesContext): Promise<Response> {
       turnsOnTopic,
       env,
     });
+    if (
+      result &&
+      "question" in result &&
+      result.provider === "deepseek" &&
+      result.usage &&
+      (result.usage.inputTokens > 0 || result.usage.outputTokens > 0)
+    ) {
+      logMercyAiUsage(context, {
+        userId: user.id,
+        feature: "mercy-ai:speak-follow-up",
+        provider: "deepseek",
+        model: result.model,
+        inputTokens: result.usage.inputTokens,
+        outputTokens: result.usage.outputTokens,
+        meta: {
+          provider: "deepseek",
+          cacheHitInputTokens: result.usage.cacheHitInputTokens ?? 0,
+          cacheMissInputTokens: result.usage.cacheMissInputTokens ?? 0,
+        },
+      });
+    }
     return json(result || {
       question: SPEAK_REPEAT_CLARIFICATION,
       provider: "local-fallback",
