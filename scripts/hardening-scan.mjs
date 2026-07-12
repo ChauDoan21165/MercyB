@@ -25,6 +25,13 @@ import { execFileSync } from "node:child_process";
 import fs from "node:fs";
 import path from "node:path";
 import { pathToFileURL } from "node:url";
+import {
+  DEFAULT_BASELINE_PATH,
+  compareCellCoverageToBaseline,
+  formatCellCoverageSummary,
+  readCellCoverageBaseline,
+  scanCellCoverage,
+} from "./cell-coverage-scan.mjs";
 
 const ROOT = process.cwd();
 const SRC = "src";
@@ -34,6 +41,7 @@ const CHECK_TIMEOUT_MS = {
   A: 300_000,
   B: 360_000,
   D: 90_000,
+  K: 10_000,
 };
 const rel = (p) => path.relative(ROOT, p) || p;
 
@@ -569,6 +577,31 @@ function checkJ() {
   return { status: "ok", findings };
 }
 
+// ── Check K — CELL-layer content coverage ratchet ────────────────────────
+function checkK() {
+  const scan = scanCellCoverage({ root: ROOT });
+  let baseline;
+  try {
+    baseline = readCellCoverageBaseline(ROOT, DEFAULT_BASELINE_PATH);
+  } catch (e) {
+    return {
+      status: "SKIPPED",
+      note: `CELL coverage baseline missing/unreadable at ${DEFAULT_BASELINE_PATH}: ${e?.message || e}`,
+      findings: [],
+    };
+  }
+  const baselineFindings = compareCellCoverageToBaseline(scan, baseline);
+  const notes = [formatCellCoverageSummary(scan, baselineFindings)];
+  const findings = baselineFindings.map((finding) => makeFinding({
+    id: `CELL-coverage-ratchet-${finding.type}-${finding.metric}`,
+    severity: "HIGH",
+    evidence: `CELL coverage uncovered-count ratchet exceeded for ${finding.type}.${finding.metric}: actual ${finding.actual} > baseline ${finding.baseline}. ${formatCellCoverageSummary(scan, baselineFindings)}`,
+    hits: [{ file: DEFAULT_BASELINE_PATH, line: 0 }],
+    consumer_question: "Did this MR intentionally remove CELL content and update the baseline in the same MR, or did it add uncovered IPA/audio debt?",
+  }));
+  return { status: "ok", findings, notes };
+}
+
 // ── Orchestrate ───────────────────────────────────────────────────────────
 function main() {
   const started = new Date().toISOString();
@@ -593,7 +626,7 @@ function main() {
     node: process.version,
   };
 
-  const checkFns = { A: checkA, B: checkB, C: checkC, D: checkD, E: checkE, F: checkF, G: checkG, H: checkH, I: checkI, J: checkJ };
+  const checkFns = { A: checkA, B: checkB, C: checkC, D: checkD, E: checkE, F: checkF, G: checkG, H: checkH, I: checkI, J: checkJ, K: checkK };
   const labels = {
     A: "Lint debt (eslint)",
     B: "Type safety gaps (tsc + patterns)",
@@ -605,6 +638,7 @@ function main() {
     H: "v3 network calls without timeouts",
     I: "v3 api/function env reads without missing-var handling",
     J: "v4 async UI request states without terminal failure state",
+    K: "CELL-layer IPA/audio coverage ratchet",
   };
   const requestedChecks = (process.env.HARDENING_SCAN_CHECKS || "")
     .split(",")
