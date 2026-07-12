@@ -279,9 +279,9 @@ serve(async (req: Request): Promise<Response> => {
 
       // Additive: VND-costed, language-tagged spend to ai_usage_logs (the
       // CostMonitoring table). Only when the provider returned real usage
-      // (no fabricated numbers). Fire-and-forget; never delays the reply.
+      // (no fabricated numbers).
       if (coachingResult?.usage) {
-        logAiUsageLogBackground({
+        await logAiUsageLogBackground({
           userId: authContext.userId,
           feature: "guide-pronunciation-coach",
           model: "gpt-4.1-mini",

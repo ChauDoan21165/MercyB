@@ -226,8 +226,8 @@ Remember to return valid JSON only.`;
         endpoint: 'guide-english-helper',
       });
       // Additive: also record VND-costed, language-tagged spend to ai_usage_logs
-      // (the CostMonitoring table). Fire-and-forget; never delays the reply.
-      logAiUsageLogBackground({
+      // (the CostMonitoring table).
+      await logAiUsageLogBackground({
         userId,
         feature: 'guide-english-helper',
         model: 'gpt-4o-mini',

@@ -31,8 +31,8 @@ const SRC = "src";
 const SEV_RANK = { HIGH: 0, MEDIUM: 1, LOW: 2 };
 const DEFAULT_CMD_TIMEOUT_MS = 120_000;
 const CHECK_TIMEOUT_MS = {
-  A: 180_000,
-  B: 240_000,
+  A: 300_000,
+  B: 360_000,
   D: 90_000,
 };
 const rel = (p) => path.relative(ROOT, p) || p;

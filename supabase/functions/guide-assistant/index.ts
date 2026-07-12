@@ -590,9 +590,9 @@ ${JSON.stringify(plan, null, 2)}
     });
 
     // Additive: VND-costed, language-tagged spend to ai_usage_logs. Only when the
-    // provider returned real usage (no fabricated numbers). Fire-and-forget.
+    // provider returned real usage (no fabricated numbers).
     if (first.usage) {
-      logAiUsageLogBackground({
+      await logAiUsageLogBackground({
         userId: user.id,
         feature: "guide-assistant",
         model,
@@ -665,9 +665,9 @@ ${stripMarkdownCodeFences(content1).slice(0, 6000)}
     });
 
     // Additive: VND-costed, language-tagged spend to ai_usage_logs. Only when the
-    // provider returned real usage (no fabricated numbers). Fire-and-forget.
+    // provider returned real usage (no fabricated numbers).
     if (second.usage) {
-      logAiUsageLogBackground({
+      await logAiUsageLogBackground({
         userId: user.id,
         feature: "guide-assistant",
         model,
@@ -762,6 +762,18 @@ ${stripMarkdownCodeFences(content1).slice(0, 6000)}
     tokensOutput: normal.usage?.completion_tokens ?? 0,
     endpoint: "guide-assistant",
   });
+
+  // Additive: VND-costed, language-tagged spend to ai_usage_logs. Only when the
+  // provider returned real usage (no fabricated numbers).
+  if (normal.usage) {
+    await logAiUsageLogBackground({
+      userId: user.id,
+      feature: "guide-assistant",
+      model,
+      inputTokens: normal.usage.prompt_tokens ?? 0,
+      outputTokens: normal.usage.completion_tokens ?? 0,
+    });
+  }
 
   const rawContent = normal.choices?.[0]?.message?.content ?? "";
   const { vi, en } = normalizeBilingual(safeJsonParse(rawContent), rawContent);
