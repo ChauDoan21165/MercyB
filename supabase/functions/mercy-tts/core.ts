@@ -2,6 +2,7 @@ import {
   azureVoiceFor,
   synthesizeAzureTts,
 } from "./azureProvider.ts";
+import { failureJsonResponse } from "../_shared/failureLog.ts";
 
 const ELEVENLABS_BASE = "https://api.elevenlabs.io/v1/text-to-speech";
 const PER_USER_DAILY_CAP = 50;
@@ -217,7 +218,11 @@ async function cacheAzureAudio(
 
 export async function handleMercyTtsRequest(req: Request, deps: MercyTtsDeps): Promise<Response> {
   if (req.method === "OPTIONS") return new Response("ok", { headers: corsHeaders });
-  if (req.method !== "POST") return jsonResponse({ error: "Method not allowed" }, 405);
+  if (req.method !== "POST") {
+    return failureJsonResponse(req, "mercy-tts", "tts", 405, "method_not_allowed", {
+      error: "Method not allowed",
+    }, corsHeaders);
+  }
 
   const totalStartedAt = performance.now();
   let totalStatus: LatencyStatus = "success";
@@ -247,7 +252,9 @@ export async function handleMercyTtsRequest(req: Request, deps: MercyTtsDeps): P
     try {
       body = (await req.json()) as MercyTtsRequest;
     } catch {
-      return jsonResponse({ error: "Invalid JSON body" }, 400);
+      return failureJsonResponse(req, "mercy-tts", "tts", 400, "invalid_json", {
+        error: "Invalid JSON body",
+      }, corsHeaders);
     }
 
     const text = String(body?.text ?? "").trim();
@@ -255,9 +262,15 @@ export async function handleMercyTtsRequest(req: Request, deps: MercyTtsDeps): P
     const rawVoiceId = String(body?.voice_id ?? "").trim();
     const voiceId = rawVoiceId && rawVoiceId !== "placeholder" ? rawVoiceId : "";
 
-    if (!text) return jsonResponse({ error: "text is required" }, 400);
+    if (!text) {
+      return failureJsonResponse(req, "mercy-tts", "tts", 400, "missing_text", {
+        error: "text is required",
+      }, corsHeaders);
+    }
     if (text.length > MAX_TEXT_LENGTH) {
-      return jsonResponse({ error: `text exceeds ${MAX_TEXT_LENGTH} chars` }, 400);
+      return failureJsonResponse(req, "mercy-tts", "tts", 400, "text_too_long", {
+        error: `text exceeds ${MAX_TEXT_LENGTH} chars`,
+      }, corsHeaders, { maxTextLength: MAX_TEXT_LENGTH });
     }
 
     const azureFlagOn = await isFlagOn(service, "azure_tts", userId);
@@ -292,10 +305,16 @@ export async function handleMercyTtsRequest(req: Request, deps: MercyTtsDeps): P
       countUsageSince(service, since),
     ]);
     if (userId && userCount >= PER_USER_DAILY_CAP) {
-      return jsonResponse({ error: "Daily TTS limit reached for this user", code: "cap_user" }, 429);
+      return failureJsonResponse(req, "mercy-tts", "tts", 429, "user_daily_cap", {
+        error: "Daily TTS limit reached for this user",
+        code: "cap_user",
+      }, corsHeaders);
     }
     if (globalCount >= GLOBAL_DAILY_CAP) {
-      return jsonResponse({ error: "Daily TTS limit reached globally", code: "cap_global" }, 429);
+      return failureJsonResponse(req, "mercy-tts", "tts", 429, "global_daily_cap", {
+        error: "Daily TTS limit reached globally",
+        code: "cap_global",
+      }, corsHeaders);
     }
 
     let provider: TtsProvider | null = null;
@@ -395,12 +414,12 @@ export async function handleMercyTtsRequest(req: Request, deps: MercyTtsDeps): P
         status: totalStatus,
         metadata: { cache_hit: false, fallback_reason: fallbackReason },
       });
-      return jsonResponse({
+      return failureJsonResponse(req, "mercy-tts", "tts", 502, "provider_unavailable", {
         error: "Cloud TTS unavailable",
         code: "provider_unavailable",
         provider: null,
         fallback_reason: fallbackReason,
-      }, 502);
+      }, corsHeaders, { fallbackReason });
     }
 
     const { error: usageErr } = await service.from("mercy_tts_usage").insert({
@@ -430,7 +449,6 @@ export async function handleMercyTtsRequest(req: Request, deps: MercyTtsDeps): P
       fallback_reason: fallbackReasons.length ? fallbackReasons.join(",") : undefined,
     });
   } catch (err) {
-    console.error("[mercy-tts] unexpected error", err);
     totalStatus = "error";
     trackLatency({
       operation: "mercy-tts.total",
@@ -438,9 +456,8 @@ export async function handleMercyTtsRequest(req: Request, deps: MercyTtsDeps): P
       status: totalStatus,
       metadata: { cache_hit: false },
     });
-    return jsonResponse(
-      { error: err instanceof Error ? err.message : "Unknown error" },
-      500,
-    );
+    return failureJsonResponse(req, "mercy-tts", "tts", 500, "unexpected_error", {
+      error: err instanceof Error ? err.message : "Unknown error",
+    }, corsHeaders);
   }
 }

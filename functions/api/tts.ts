@@ -7,6 +7,7 @@ import {
   readJsonBody,
   type PagesContext,
 } from "../../src/pages-functions/http";
+import { failureJson } from "../../src/pages-functions/failureLog";
 
 type TtsBody = {
   text?: string;
@@ -159,7 +160,10 @@ export async function onRequestPost(context: PagesContext): Promise<Response> {
     const supabaseUrl = envValue(env, "SUPABASE_URL") || envValue(env, "VITE_SUPABASE_URL");
     const supabaseAnonKey = envValue(env, "SUPABASE_ANON_KEY") || envValue(env, "VITE_SUPABASE_ANON_KEY");
     if (!supabaseUrl || !supabaseAnonKey) {
-      return json({ ok: false, error: "Missing Supabase environment variables" }, 503);
+      return failureJson(context, "/api/tts", "tts-proxy", 503, "missing_supabase_env", {
+        ok: false,
+        error: "Missing Supabase environment variables",
+      });
     }
 
     const body = await readJsonBody<TtsBody>(request);
@@ -168,7 +172,12 @@ export async function onRequestPost(context: PagesContext): Promise<Response> {
     const requestedVoiceId = asString(body.voice_id || body.voiceId, 100);
     const isVietnamese = isVietnameseLanguage(language);
 
-    if (!text) return json({ ok: false, error: "Missing text" }, 400);
+    if (!text) {
+      return failureJson(context, "/api/tts", "tts-proxy", 400, "missing_text", {
+        ok: false,
+        error: "Missing text",
+      });
+    }
 
     const incomingAuth = request.headers.get("authorization") || "";
     const callArgs = {
@@ -199,18 +208,27 @@ export async function onRequestPost(context: PagesContext): Promise<Response> {
     // NEVER surface a raw/hard 502. A 4xx auth/validation error passes through as
     // itself; everything else is a typed RETRYABLE 503 the client can re-press.
     if (attempt.kind === "fatal") {
-      return json({ ok: false, error: attempt.error, code: attempt.code, retryable: false }, attempt.status);
+      return failureJson(context, "/api/tts", "tts-proxy", attempt.status, "upstream_fatal", {
+        ok: false,
+        error: attempt.error,
+        code: attempt.code,
+        retryable: false,
+      }, { upstreamCode: attempt.code });
     }
-    return json({
+    return failureJson(context, "/api/tts", "tts-proxy", 503, "upstream_retryable", {
       ok: false,
       retryable: true,
       error: attempt.error,
       code: attempt.code,
       provider: attempt.provider,
       fallback_reason: attempt.fallbackReason,
-    }, 503);
+    }, { upstreamCode: attempt.code, provider: attempt.provider });
   } catch {
     // Final safety net: an unexpected throw must never become a raw platform 502.
-    return json({ ok: false, retryable: true, error: "TTS proxy failed" }, 503);
+    return failureJson(context, "/api/tts", "tts-proxy", 503, "unexpected_error", {
+      ok: false,
+      retryable: true,
+      error: "TTS proxy failed",
+    });
   }
 }

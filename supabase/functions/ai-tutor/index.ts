@@ -27,6 +27,7 @@ import {
   buildProviderRequest,
 } from "./provider.ts";
 import type { ProviderExecutionRequest } from "./provider.ts";
+import { logEdgeFunctionFailure } from "../_shared/failureLog.ts";
 
 // ─── CORS ─────────────────────────────────────────────────────────────
 
@@ -272,6 +273,14 @@ export async function handleRequest(req: Request): Promise<Response> {
 
   // Only POST is allowed for the tutor endpoint
   if (req.method !== "POST") {
+    logEdgeFunctionFailure({
+      request: req,
+      route: "ai-tutor",
+      mode: "preflight",
+      status: 405,
+      errorClass: "method_not_allowed",
+      requestId,
+    });
     return corsResponse(405, {
       ok: false,
       errorKind: "method_not_allowed",
@@ -289,12 +298,15 @@ export async function handleRequest(req: Request): Promise<Response> {
   if (!isSmokeBypass) {
     const auth = verifyAuth(req);
     if (!auth.ok) {
-      console.log(JSON.stringify({
-        ns: "[ai-tutor]",
-        event: "auth_failed",
+      logEdgeFunctionFailure({
+        request: req,
+        route: "ai-tutor",
+        mode: "auth",
+        status: 401,
+        errorClass: "unauthorized",
         requestId,
-        reason: auth.reason,
-      }));
+        detail: { reason: auth.reason },
+      });
       return corsResponse(401, {
         ok: false,
         errorKind: "unauthorized",
@@ -313,6 +325,14 @@ export async function handleRequest(req: Request): Promise<Response> {
       throw new Error("Body must be a JSON object");
     }
   } catch {
+    logEdgeFunctionFailure({
+      request: req,
+      route: "ai-tutor",
+      mode: "parse",
+      status: 400,
+      errorClass: "invalid_json",
+      requestId,
+    });
     return corsResponse(400, {
       ok: false,
       errorKind: "invalid_request",
@@ -325,16 +345,19 @@ export async function handleRequest(req: Request): Promise<Response> {
   const errors = validateBody(body);
   if (errors.length > 0) {
     // Log validation failure (metadata only — no prompt text)
-    console.log(JSON.stringify({
-      ns: "[ai-tutor]",
-      event: "validation_failed",
+    logEdgeFunctionFailure({
+      request: req,
+      route: "ai-tutor",
+      mode: typeof body.mode === "string" ? body.mode : "validation",
+      status: 400,
+      errorClass: "invalid_request",
       requestId,
-      errorCount: errors.length,
-      errorFields: errors.map((e) => e.field),
-      // Character counts only — no prompt content
-      systemPromptChars: typeof body.systemPrompt === "string" ? body.systemPrompt.length : 0,
-      userPromptChars: typeof body.userPrompt === "string" ? body.userPrompt.length : 0,
-    }));
+      detail: {
+        errorCount: errors.length,
+        systemPromptChars: typeof body.systemPrompt === "string" ? body.systemPrompt.length : 0,
+        userPromptChars: typeof body.userPrompt === "string" ? body.userPrompt.length : 0,
+      },
+    });
 
     return corsResponse(400, {
       ok: false,
@@ -348,13 +371,15 @@ export async function handleRequest(req: Request): Promise<Response> {
   const userPrompt = body.userPrompt as string;
   const safety = validateTutorPromptSafety(userPrompt);
   if (!safety.safe) {
-    console.log(JSON.stringify({
-      ns: "[ai-tutor]",
-      event: "safety_blocked",
+    logEdgeFunctionFailure({
+      request: req,
+      route: "ai-tutor",
+      mode: body.mode as string,
+      status: 400,
+      errorClass: "safety_blocked",
       requestId,
-      reason: safety.reason,
-      promptChars: userPrompt.length,
-    }));
+      detail: { reason: safety.reason, promptChars: userPrompt.length },
+    });
     return corsResponse(400, {
       ok: false,
       errorKind: "safety_blocked",
@@ -366,12 +391,15 @@ export async function handleRequest(req: Request): Promise<Response> {
   // ── Stage 3D: Input-length guard (additive to provider Gate 3) ──
   const MAX_PROMPT_CHARS = 500;
   if (userPrompt.length > MAX_PROMPT_CHARS) {
-    console.log(JSON.stringify({
-      ns: "[ai-tutor]",
-      event: "input_too_long",
+    logEdgeFunctionFailure({
+      request: req,
+      route: "ai-tutor",
+      mode: body.mode as string,
+      status: 400,
+      errorClass: "input_too_long",
       requestId,
-      promptChars: userPrompt.length,
-    }));
+      detail: { promptChars: userPrompt.length, maxPromptChars: MAX_PROMPT_CHARS },
+    });
     return corsResponse(400, {
       ok: false,
       errorKind: "input_too_long",
@@ -421,21 +449,23 @@ export async function handleRequest(req: Request): Promise<Response> {
   }
 
   // Log the event (character counts only — no prompt content)
-  console.log(JSON.stringify({
-    ns: "[ai-tutor]",
-    event: result.code === "provider_disabled" || result.code === "mode_blocked" || result.code === "smoke_token_required"
-      ? "service_disabled" : "provider_error",
-    requestId,
-    mode: body.mode,
-    errorCode: result.code,
-    // Character counts only — no prompt content
-    systemPromptChars: (body.systemPrompt as string).length,
-    userPromptChars: (body.userPrompt as string).length,
-  }));
-
-  // Map adapter result to response
   const statusCode = result.code === "provider_disabled" || result.code === "mode_blocked" || result.code === "smoke_token_required"
     ? 503 : 400;
+  logEdgeFunctionFailure({
+    request: req,
+    route: "ai-tutor",
+    mode: body.mode as string,
+    status: statusCode,
+    errorClass: result.code === "provider_disabled" || result.code === "mode_blocked" || result.code === "smoke_token_required"
+      ? "service_disabled" : String(result.code),
+    requestId,
+    detail: {
+      systemPromptChars: (body.systemPrompt as string).length,
+      userPromptChars: (body.userPrompt as string).length,
+    },
+  });
+
+  // Map adapter result to response
   return corsResponse(statusCode, {
     ok: false,
     errorKind: result.code === "provider_disabled" || result.code === "mode_blocked" || result.code === "smoke_token_required"

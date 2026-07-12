@@ -1,5 +1,6 @@
 import { createClient } from "@supabase/supabase-js";
 import { envValue, json, optionsResponse, readJsonBody, type PagesContext } from "../../src/pages-functions/http";
+import { failureJson } from "../../src/pages-functions/failureLog";
 
 type FeedbackItem = {
   v?: number;
@@ -59,12 +60,12 @@ export async function onRequestPost(context: PagesContext): Promise<Response> {
       supabaseUrl ? null : "SUPABASE_URL/VITE_SUPABASE_URL",
       serviceRoleKey ? null : "SUPABASE_SERVICE_ROLE_KEY",
     ].filter(Boolean);
-    return json({
+    return failureJson(context, "/api/mercy-feedback", "feedback", 500, "supabase_not_configured", {
       ok: false,
       acceptedCount: 0,
       error: "supabase_not_configured",
       details: `Missing ${missing.join(" and ")}`,
-    }, 500);
+    });
   }
 
   try {
@@ -110,21 +111,21 @@ export async function onRequestPost(context: PagesContext): Promise<Response> {
     });
     const { error } = await supabase.from("mercy_feedback_events").insert(rows);
     if (error) {
-      return json({
+      return failureJson(context, "/api/mercy-feedback", "feedback", 500, "supabase_insert_failed", {
         ok: false,
         acceptedCount: 0,
         error: "supabase_insert_failed",
         details: error.message,
-      }, 500);
+      });
     }
 
     return json({ ok: true, acceptedCount: rows.length });
   } catch (err) {
-    return json({
+    return failureJson(context, "/api/mercy-feedback", "feedback", 500, "internal", {
       ok: false,
       acceptedCount: 0,
       error: "internal",
       details: err instanceof Error ? err.message : "unknown_error",
-    }, 500);
+    });
   }
 }

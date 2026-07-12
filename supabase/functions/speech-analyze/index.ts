@@ -46,6 +46,7 @@ import {
   getUserFromAuthHeader,
 } from "../_shared/security.ts";
 import { rateLimit } from "../_shared/rateLimit.ts";
+import { failureJsonResponse } from "../_shared/failureLog.ts";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -120,13 +121,18 @@ serve(wrapHandler("speech-analyze", async (req) => {
   const user = await getUserFromAuthHeader(req);
   if (!user) {
     // No user_id to attach the audit row to. We still return a clean 401.
-    return json(
+    return failureJsonResponse(
+      req,
+      "speech-analyze",
+      "speech-analysis",
+      401,
+      "auth_required",
       {
         error: "auth_required",
         message: "Sign in to use speech analysis.",
         message_vi: "Vui lòng đăng nhập để dùng tính năng phân tích giọng nói.",
       },
-      401,
+      corsHeaders,
     );
   }
   const userId = user.id;
@@ -143,14 +149,19 @@ serve(wrapHandler("speech-analyze", async (req) => {
         status: "rate_limited",
         errorMsg: `>${RATE_LIMIT_MAX_CALLS} calls in ${RATE_LIMIT_WINDOW_MS / 1000}s`,
       });
-      return json(
+      return failureJsonResponse(
+        req,
+        "speech-analyze",
+        "speech-analysis",
+        429,
+        "rate_limit_exceeded",
         {
           error: "rate_limit_exceeded",
           message: "Too many speech checks in the last hour. Try again later.",
           message_vi: "Bạn đã thử kiểm tra giọng nói quá nhiều trong một giờ qua. Thử lại sau nhé.",
           retry_after_seconds: 3600,
         },
-        429,
+        corsHeaders,
       );
     }
     // Non-rate-limit error from the rate-limit subsystem itself — log
@@ -174,7 +185,9 @@ serve(wrapHandler("speech-analyze", async (req) => {
         status: "invalid_audio",
         errorMsg: "missing_audio_file",
       });
-      return json({ error: "Missing audio file" }, 400);
+      return failureJsonResponse(req, "speech-analyze", "speech-analysis", 400, "missing_audio_file", {
+        error: "Missing audio file",
+      }, corsHeaders);
     }
 
     if (!roomId || !lineId || !targetText) {
@@ -183,14 +196,18 @@ serve(wrapHandler("speech-analyze", async (req) => {
         status: "invalid_audio",
         errorMsg: "missing_metadata",
       });
-      return json({ error: "Missing roomId, lineId, or targetText" }, 400);
+      return failureJsonResponse(req, "speech-analyze", "speech-analysis", 400, "missing_metadata", {
+        error: "Missing roomId, lineId, or targetText",
+      }, corsHeaders);
     }
 
     // 5. Audio validation — pre-Whisper rejection.
     const sizeBytes = audio.size ?? 0;
     if (sizeBytes <= 0) {
       await audit({ userId, status: "invalid_audio", errorMsg: "empty_audio" });
-      return json({ error: "Empty audio file" }, 400);
+      return failureJsonResponse(req, "speech-analyze", "speech-analysis", 400, "empty_audio", {
+        error: "Empty audio file",
+      }, corsHeaders);
     }
     if (sizeBytes > MAX_BYTES) {
       await audit({
@@ -198,13 +215,19 @@ serve(wrapHandler("speech-analyze", async (req) => {
         status: "invalid_audio",
         errorMsg: `oversize:${sizeBytes}b`,
       });
-      return json(
+      return failureJsonResponse(
+        req,
+        "speech-analyze",
+        "speech-analysis",
+        413,
+        "audio_too_large",
         {
           error: "audio_too_large",
           message: "Audio file is too large. Keep it under 5 MB.",
           message_vi: "File âm thanh quá lớn. Vui lòng giữ dưới 5 MB.",
         },
-        413,
+        corsHeaders,
+        { sizeBytes, maxBytes: MAX_BYTES },
       );
     }
     if (sizeBytes > DURATION_HEURISTIC_BYTES) {
@@ -215,13 +238,19 @@ serve(wrapHandler("speech-analyze", async (req) => {
         status: "invalid_audio",
         errorMsg: `likely_over_30s:${sizeBytes}b`,
       });
-      return json(
+      return failureJsonResponse(
+        req,
+        "speech-analyze",
+        "speech-analysis",
+        413,
+        "audio_too_long",
         {
           error: "audio_too_long",
           message: "Recording is too long. Keep it under 30 seconds.",
           message_vi: "Đoạn ghi âm quá dài. Vui lòng giữ dưới 30 giây.",
         },
-        413,
+        corsHeaders,
+        { sizeBytes, durationHeuristicBytes: DURATION_HEURISTIC_BYTES },
       );
     }
 
@@ -233,12 +262,17 @@ serve(wrapHandler("speech-analyze", async (req) => {
         status: "invalid_audio",
         errorMsg: `bad_mime:${mimeType || "unknown"}`,
       });
-      return json(
+      return failureJsonResponse(
+        req,
+        "speech-analyze",
+        "speech-analysis",
+        415,
+        "unsupported_audio_format",
         {
           error: "unsupported_audio_format",
           message: "Audio format not supported. Use webm, mp3, mp4, wav, or ogg.",
         },
-        415,
+        corsHeaders,
       );
     }
 
@@ -256,13 +290,18 @@ serve(wrapHandler("speech-analyze", async (req) => {
         openaiCostUsd: estimatedCostUsd,
         errorMsg: budget.message ?? "budget_exceeded",
       });
-      return json(
+      return failureJsonResponse(
+        req,
+        "speech-analyze",
+        "speech-analysis",
+        402,
+        "budget_exceeded",
         {
           error: "budget_exceeded",
           message: budget.message ?? "Daily AI budget reached. Try again later.",
           reset_at: budget.reset_at ?? null,
         },
-        402,
+        corsHeaders,
       );
     }
 
@@ -281,7 +320,9 @@ serve(wrapHandler("speech-analyze", async (req) => {
         openaiCostUsd: estimatedCostUsd,
         errorMsg: truncate(errMsg, 500),
       });
-      return json({ error: "Speech analysis failed" }, 500);
+      return failureJsonResponse(req, "speech-analyze", "speech-analysis", 500, "whisper_error", {
+        error: "Speech analysis failed",
+      }, corsHeaders);
     }
 
     if (!transcript.trim()) {
@@ -351,7 +392,6 @@ serve(wrapHandler("speech-analyze", async (req) => {
       200,
     );
   } catch (err) {
-    console.error("speech-analyze error", err);
     const message = err instanceof Error ? err.message : "Speech analysis failed";
 
     // Best-effort audit log on the catch-all branch.
@@ -361,7 +401,9 @@ serve(wrapHandler("speech-analyze", async (req) => {
       errorMsg: truncate(message, 500),
     });
 
-    return json({ error: message }, 500);
+    return failureJsonResponse(req, "speech-analyze", "speech-analysis", 500, "unexpected_error", {
+      error: message,
+    }, corsHeaders);
   }
 }));
 
