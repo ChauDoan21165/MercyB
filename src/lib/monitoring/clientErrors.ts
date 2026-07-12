@@ -225,7 +225,13 @@ function installGlobalErrorListeners(sink: ClientErrorSink): void {
       method: null,
       durationMs: null,
       errorKind: "js",
-      errorSignature: buildJsSignature("js", event.error ?? event.message),
+      errorSignature: buildJsSignature("js", event.error ?? {
+        name: "ErrorEvent",
+        message: event.message,
+        filename: event.filename,
+        lineno: event.lineno,
+        colno: event.colno,
+      }),
     });
   }, true);
 
@@ -357,8 +363,46 @@ function buildApiSignature(method: string | null, endpoint: string, status: numb
 }
 
 function buildJsSignature(kind: "js" | "unhandledrejection", value: unknown): string {
-  const name = value instanceof Error ? value.name : kind;
-  return cleanSignature(`${kind}:${name}`);
+  const { name, message } = describeJsErrorValue(kind, value);
+  const normalizedMessage = cleanSignature(message).slice(0, 120);
+  return cleanSignature(normalizedMessage ? `${kind}:${name}: ${normalizedMessage}` : `${kind}:${name}`);
+}
+
+function describeJsErrorValue(kind: "js" | "unhandledrejection", value: unknown): { name: string; message: string } {
+  if (value instanceof Error) {
+    return {
+      name: cleanSignature(value.name || kind).slice(0, 80) || kind,
+      message: value.message || "",
+    };
+  }
+  if (typeof value === "string") {
+    return { name: kind, message: value };
+  }
+  if (value && typeof value === "object") {
+    const record = value as Record<string, unknown>;
+    const name = typeof record.name === "string" ? record.name : kind;
+    const message = appendSourceLocation(
+      typeof record.message === "string" ? record.message : "",
+      record.filename,
+      record.lineno,
+      record.colno,
+    );
+    return {
+      name: cleanSignature(name || kind).slice(0, 80) || kind,
+      message,
+    };
+  }
+  return { name: kind, message: value == null ? "" : String(value) };
+}
+
+function appendSourceLocation(message: string, filename: unknown, lineno: unknown, colno: unknown): string {
+  if (typeof filename !== "string" || filename.trim().length === 0) return message;
+  const sourcePath = filename.split(/[?#]/)[0]?.trim();
+  if (!sourcePath) return message;
+  const line = typeof lineno === "number" && Number.isFinite(lineno) && lineno > 0 ? Math.floor(lineno) : null;
+  const column = typeof colno === "number" && Number.isFinite(colno) && colno > 0 ? Math.floor(colno) : null;
+  const source = `${sourcePath}${line === null ? "" : `:${line}${column === null ? "" : `:${column}`}`}`;
+  return message ? `${message} @ ${source}` : source;
 }
 
 function normalizeEndpoint(input: RequestInfo | URL): string | null {

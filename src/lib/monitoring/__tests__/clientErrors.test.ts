@@ -156,13 +156,38 @@ describe("clientErrors", () => {
     expect(__internal.isTelemetryEndpoint("/api/mercy-ai")).toBe(false);
   });
 
-  it("does not include raw exception messages in JS signatures", () => {
+  it("includes scrubbed JS error name and message in signatures", () => {
     const signature = __internal.buildJsSignature(
       "js",
-      new Error("learner typed my private sentence and secret@example.com"),
+      new TypeError("Cannot read properties of undefined for secret@example.com"),
     );
 
-    expect(signature).toBe("js:Error");
-    expect(signature).not.toMatch(/private sentence|secret@example.com/i);
+    expect(signature).toBe("js:TypeError: Cannot read properties of undefined for [EMAIL_REDACTED]");
+    expect(signature).not.toMatch(/secret@example.com/i);
+  });
+
+  it("does not collapse string JS errors to js:js", () => {
+    expect(__internal.buildJsSignature("js", "Chunk load failed")).toBe("js:js: Chunk load failed");
+  });
+
+  it("uses ErrorEvent message and source location when event.error is absent", () => {
+    const signature = __internal.buildJsSignature("js", {
+      name: "ErrorEvent",
+      message: "Script error.",
+      filename: "https://mercyblade.com/assets/AiTutor-abc123.js?token=secret",
+      lineno: 42,
+      colno: 7,
+    });
+
+    expect(signature).toBe("js:ErrorEvent: Script error. @ https://mercyblade.com/assets/AiTutor-abc123.js:42:7");
+    expect(signature).not.toMatch(/token=secret/);
+  });
+
+  it("truncates JS error messages for stable dedupe", () => {
+    const longMessage = `prefix ${"x".repeat(200)}`;
+    const signature = __internal.buildJsSignature("unhandledrejection", { name: "ChunkLoadError", message: longMessage });
+
+    expect(signature).toBe(`unhandledrejection:ChunkLoadError: ${`prefix ${"x".repeat(113)}`}`);
+    expect(signature.length).toBe("unhandledrejection:ChunkLoadError: ".length + 120);
   });
 });
