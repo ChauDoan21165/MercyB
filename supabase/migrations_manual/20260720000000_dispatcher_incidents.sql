@@ -61,7 +61,7 @@ create table if not exists public.alert_threads (
   created_at timestamptz not null default now()
 );
 
-create table if not exists public.alert_history (
+create table if not exists public.dispatcher_alert_history (
   id uuid primary key default gen_random_uuid(),
   incident_id uuid references public.incidents(id) on delete set null,
   event_id uuid references public.error_events(id) on delete set null,
@@ -85,14 +85,14 @@ create index if not exists error_events_below_threshold_occurred_idx
 create index if not exists incidents_status_last_seen_idx
   on public.incidents (status, last_seen_at desc);
 
-create index if not exists alert_history_incident_created_idx
-  on public.alert_history (incident_id, created_at desc);
+create index if not exists dispatcher_alert_history_incident_created_idx
+  on public.dispatcher_alert_history (incident_id, created_at desc);
 
 alter table public.incidents enable row level security;
 alter table public.error_events enable row level security;
 alter table public.error_signatures enable row level security;
 alter table public.alert_threads enable row level security;
-alter table public.alert_history enable row level security;
+alter table public.dispatcher_alert_history enable row level security;
 
 drop policy if exists "dispatcher service role incidents all" on public.incidents;
 create policy "dispatcher service role incidents all"
@@ -114,13 +114,13 @@ create policy "dispatcher service role alert_threads all"
   on public.alert_threads for all to service_role
   using (true) with check (true);
 
-drop policy if exists "dispatcher service role alert_history all" on public.alert_history;
+drop policy if exists "dispatcher service role alert_history all" on public.dispatcher_alert_history;
 create policy "dispatcher service role alert_history all"
-  on public.alert_history for all to service_role
+  on public.dispatcher_alert_history for all to service_role
   using (true) with check (true);
 
 revoke all on public.incidents from anon, authenticated;
 revoke all on public.error_events from anon, authenticated;
 revoke all on public.error_signatures from anon, authenticated;
 revoke all on public.alert_threads from anon, authenticated;
-revoke all on public.alert_history from anon, authenticated;
+revoke all on public.dispatcher_alert_history from anon, authenticated;

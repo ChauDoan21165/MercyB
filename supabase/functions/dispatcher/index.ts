@@ -156,7 +156,7 @@ async function receiveAlert(
       email_sent: emailSent,
       sent_at: emailSent ? new Date().toISOString() : null,
     });
-    await supabase.from("alert_history").insert({
+    await supabase.from("dispatcher_alert_history").insert({
       incident_id: incident.id,
       event_id: eventId || null,
       alert_type: "incident",
@@ -315,7 +315,7 @@ async function sendDigest(supabase: SupabaseDispatcherClient): Promise<Response>
     email_sent: emailSent,
     sent_at: emailSent ? now.toISOString() : null,
   });
-  await supabase.from("alert_history").insert({
+  await supabase.from("dispatcher_alert_history").insert({
     incident_id: null,
     event_id: null,
     alert_type: "daily_digest",
