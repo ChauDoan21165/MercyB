@@ -197,7 +197,7 @@ async function queryFunctionFailureLogs(
 ): Promise<{ result: SourceResult; events: R2Event[] }> {
   const { data, error } = await supabase
     .from("function_failure_logs")
-    .select("id,created_at,event,route,mode,status,error_class,request_id,user_id,detail")
+    .select("id,created_at,source,function_name,endpoint,status,error_signature,message,request_id,user_id,detail")
     .gte("created_at", since.toISOString())
     .gte("status", 500)
     .order("created_at", { ascending: false })
@@ -218,12 +218,12 @@ async function queryFunctionFailureLogs(
     source: "function_failure_logs",
     id: String(row.id),
     occurredAt: String(row.created_at),
-    provider: String(row.event ?? "function_failure"),
-    route: stringOrNull(row.route),
-    mode: stringOrNull(row.mode),
+    provider: String(row.source ?? "unknown"),
+    route: stringOrNull(row.endpoint),
+    mode: stringOrNull(row.function_name),
     status: numberOrNull(row.status),
-    errorClass: String(row.error_class ?? "unknown"),
-    message: null,
+    errorClass: String(row.error_signature ?? "unknown"),
+    message: stringOrNull(row.message),
     requestId: stringOrNull(row.request_id),
     userId: stringOrNull(row.user_id),
     detail: recordOrNull(row.detail),

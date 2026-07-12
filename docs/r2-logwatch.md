@@ -32,7 +32,7 @@ R2 cannot see:
 - Cloudflare `console.error` output from `functions/api/mercy-ai.ts` unless Logpush or another log-drain writes it into a queryable table.
 - Browser-only failures. Those are R1 Sentinel territory.
 
-MR !2627 added structured `console.error` helpers in `src/pages-functions/failureLog.ts` and `supabase/functions/_shared/failureLog.ts`. In the merged code, those helpers do not write to a database table. Therefore Cloudflare Pages function failures such as `/api/mercy-ai` do not currently land in `public.function_failure_logs`; R2's Cloudflare coverage remains parked until Chau chooses Logpush or a producer that writes the safe fields into the table.
+MR !2627 added structured `console.error` helpers in `src/pages-functions/failureLog.ts` and `supabase/functions/_shared/failureLog.ts`. The failure-log producer MR extends those helpers to also write privacy-safe rows to `public.function_failure_logs`. Cloudflare runtime logs outside those helpers still remain uncovered unless Chau chooses Logpush or another log-drain.
 
 ## Environment
 
@@ -48,6 +48,10 @@ Optional:
 - `SUPABASE_PROJECT_REF` defaults to `buemdfxyhxunzpgdoqin`
 
 The optional Management API token is never logged.
+
+## Deploy Note
+
+The failure-log producer path touches `supabase/functions/_shared/**`. That means Chau should plan a full affected Edge Function redeploy for functions importing `_shared/failureLog.ts`; this MR only gives the source change and SQL. Producers insert with anon-key REST auth and rely on insert-only RLS; they do not use `SUPABASE_SERVICE_ROLE_KEY`.
 
 ## Post-Merge Steps
 

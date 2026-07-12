@@ -4,19 +4,20 @@
 create extension if not exists pgcrypto;
 
 -- Source table watched first by R2. MR !2627 currently writes structured
--- console JSON, not DB rows; this table gives R2 a durable source once a
--- producer/log-drain writes those same safe fields.
+-- console JSON; the failure-log producer MR writes those same safe fields
+-- here from both Cloudflare Pages functions and Supabase Edge Functions.
 create table if not exists public.function_failure_logs (
-  id          uuid primary key default gen_random_uuid(),
-  created_at  timestamptz not null default now(),
-  event       text not null check (event in ('function_failure', 'edge_function_failure')),
-  route       text not null,
-  mode        text null,
-  status      integer not null,
-  error_class text not null,
-  request_id  text null,
-  user_id     uuid null,
-  detail      jsonb not null default '{}'::jsonb
+  id              uuid primary key default gen_random_uuid(),
+  created_at      timestamptz not null default now(),
+  source          text not null check (source in ('cf-pages', 'edge-fn')),
+  function_name   text not null,
+  endpoint        text not null,
+  status          integer not null,
+  error_signature text not null,
+  message         text null,
+  request_id      text null,
+  user_id         uuid null,
+  detail          jsonb not null default '{}'::jsonb
 );
 
 create index if not exists function_failure_logs_created_idx
@@ -27,10 +28,25 @@ create index if not exists function_failure_logs_status_created_idx
 
 alter table public.function_failure_logs enable row level security;
 revoke all on public.function_failure_logs from anon, authenticated;
+grant insert on public.function_failure_logs to anon, authenticated;
 grant all on public.function_failure_logs to service_role;
 
+drop policy if exists function_failure_logs_anon_insert on public.function_failure_logs;
+create policy function_failure_logs_anon_insert
+  on public.function_failure_logs
+  for insert
+  to anon
+  with check (true);
+
+drop policy if exists function_failure_logs_auth_insert on public.function_failure_logs;
+create policy function_failure_logs_auth_insert
+  on public.function_failure_logs
+  for insert
+  to authenticated
+  with check (true);
+
 comment on table public.function_failure_logs is
-  'R2 LOGWATCH durable server failure source. Browser roles cannot read or write.';
+  'R2 LOGWATCH durable server failure source. Browser roles can insert only; reads/writes are service-role only.';
 
 create table if not exists public.r2_logwatch_alert_history (
   id                uuid primary key default gen_random_uuid(),

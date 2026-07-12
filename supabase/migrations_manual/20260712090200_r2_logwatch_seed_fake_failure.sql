@@ -3,20 +3,22 @@
 -- function failure that selftest/real invoke should group and alert.
 
 insert into public.function_failure_logs (
-  event,
-  route,
-  mode,
+  source,
+  function_name,
+  endpoint,
   status,
-  error_class,
+  error_signature,
+  message,
   request_id,
   user_id,
   detail
 ) values (
-  'function_failure',
+  'cf-pages',
+  'mercy-ai',
   '/api/mercy-ai',
-  'sentence-correction',
   502,
   'r2_seed_provider_failed',
+  'Seeded fake provider failure for R2 proof',
   'r2-seed-' || extract(epoch from clock_timestamp())::bigint::text,
   null,
   jsonb_build_object('seed', true, 'owner', 'r2-logwatch')

@@ -131,6 +131,7 @@ export async function onRequestPost(context: PagesContext): Promise<Response> {
               ? "Grammar service had a temporary error."
               : "Grammar service temporarily unavailable.";
       logFunctionFailure({
+        context,
         request,
         route: "/api/mercy/grammar",
         mode: "grammar",
@@ -176,6 +177,7 @@ export async function onRequestPost(context: PagesContext): Promise<Response> {
     });
   } catch (err) {
     logFunctionFailure({
+      context,
       request,
       route: "/api/mercy/grammar",
       mode: "grammar",
