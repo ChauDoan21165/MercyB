@@ -27,6 +27,7 @@ import {
 } from "./env";
 import { isDeployShaAcceptable } from "./expectedDeploy";
 import type { JourneyResult } from "./report";
+import { selectSeededCorrectionProbe } from "./seededCorrectionProbes";
 
 test.describe.configure({ mode: "default", timeout: 90_000 });
 test.skip(
@@ -36,7 +37,6 @@ test.skip(
 
 const FEEDBACK_TABLE = "learning_events";
 const SINK_WAIT_MS = 60_000; // journey (d) budget
-const SEEDED_ERROR_SENTENCE = "She go to school every day and she don't likes it.";
 
 function projectRef(url: string): string {
   return new URL(url).host.split(".")[0];
@@ -152,6 +152,7 @@ test("(a) valid credential yields a working authed session (no bounce)", async (
 // ── (b) correction renders · (c) label shows · (d) row lands in learning_events ─
 test("(b/c/d) correction → feedback tap → row lands with rule_or_detector_id", async ({ page, context }, testInfo) => {
   const { accessToken } = await seedSession(context);
+  const seededProbe = selectSeededCorrectionProbe();
 
   // (b) submit a seeded-error sentence in grammar mode and get a correction.
   const tB = Date.now();
@@ -160,7 +161,7 @@ test("(b/c/d) correction → feedback tap → row lands with rule_or_detector_id
     await page.goto(`${SYNTH_BASE_URL}/ai-tutor`, { waitUntil: "networkidle" });
     const field = page.getByRole("textbox").first();
     await field.click();
-    await field.fill(SEEDED_ERROR_SENTENCE);
+    await field.fill(seededProbe.sentence);
     // Grammar submit is <button type="button"> (CorrectionMode.tsx:140), label
     // ui.submit = "Sửa câu này" (vi) / "Correct my sentence" (en). Match the FULL
     // submit label — NOT the bare "Sửa câu", which also names the mode-switcher
@@ -174,7 +175,7 @@ test("(b/c/d) correction → feedback tap → row lands with rule_or_detector_id
     // render for a correction that carries a real rule_or_detector_id).
     await expect(page.getByTestId("correction-feedback-helpful")).toBeVisible({ timeout: 30_000 });
     bOk = true;
-    bDetail = "correction rendered with feedback buttons";
+    bDetail = `correction rendered with feedback buttons; seed=${seededProbe.id}; expectedDetector=${seededProbe.expectedDetector}; expectedShadowPath=${seededProbe.expectedShadowPath}`;
   } catch (e) {
     bDetail = redact(`no correction/buttons: ${(e as Error).message}`);
   }
@@ -223,7 +224,11 @@ test("(b/c/d) correction → feedback tap → row lands with rule_or_detector_id
         const resp = await page.request.get(url, { headers, timeout: 15_000 });
         if (!resp.ok()) throw new Error(`rest ${resp.status()}: ${(await resp.text()).slice(0, 120)}`);
         const rows = (await resp.json()) as Array<{ id: string; rule_or_detector_id: string }>;
-        if (rows.length) { dOk = true; dDetail = `row ${rows[0].id} rule=${rows[0].rule_or_detector_id}`; break; }
+        if (rows.length) {
+          dOk = true;
+          dDetail = `row ${rows[0].id} rule=${rows[0].rule_or_detector_id}; seed=${seededProbe.id}`;
+          break;
+        }
         await new Promise((r) => setTimeout(r, 3_000));
       }
       if (!dOk) dDetail = `NO row within ${SINK_WAIT_MS / 1000}s (sink flag off? — the today-bug signature)`;
