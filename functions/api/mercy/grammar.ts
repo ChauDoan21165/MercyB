@@ -2,6 +2,7 @@ import { createClient } from "@supabase/supabase-js";
 import { firstL1HintFromIssues, type L1HintPayload } from "../../../api/_lib/l1HintAdapter";
 import { chatJsonWithFailover } from "../../../src/pages-functions/aiProvider";
 import { asString, envValue, json, optionsResponse, readJsonBody, type PagesContext } from "../../../src/pages-functions/http";
+import { failureJson, logFunctionFailure } from "../../../src/pages-functions/failureLog";
 
 type GrammarBody = {
   text?: string;
@@ -87,9 +88,17 @@ export async function onRequestPost(context: PagesContext): Promise<Response> {
     const contextText = asString(body.context, 900);
     const isRevision = Boolean(body.isRevisionAttempt);
 
-    if (!text) return json({ ok: false, error: "Missing text" }, 400);
+    if (!text) {
+      return failureJson(context, "/api/mercy/grammar", "grammar", 400, "missing_text", {
+        ok: false,
+        error: "Missing text",
+      });
+    }
     if (!envValue(env, "OPENAI_API_KEY") && !envValue(env, "GEMINI_API_KEY") && !envValue(env, "DEEPSEEK_API_KEY")) {
-      return json({ ok: false, error: "Missing AI provider key" }, 503);
+      return failureJson(context, "/api/mercy/grammar", "grammar", 503, "missing_ai_provider_key", {
+        ok: false,
+        error: "Missing AI provider key",
+      });
     }
 
     const userMessage = [
@@ -121,6 +130,13 @@ export async function onRequestPost(context: PagesContext): Promise<Response> {
             : result.errorKind === "parse_error"
               ? "Grammar service had a temporary error."
               : "Grammar service temporarily unavailable.";
+      logFunctionFailure({
+        request,
+        route: "/api/mercy/grammar",
+        mode: "grammar",
+        status: 200,
+        errorClass: `provider_${result.errorKind}`,
+      });
       return json({ ok: false, correctedText: text, feedback }, 200);
     }
 
@@ -159,7 +175,14 @@ export async function onRequestPost(context: PagesContext): Promise<Response> {
       ...(l1Hint ? { l1Hint } : {}),
     });
   } catch (err) {
-    console.error("[pages:grammar] unexpected error:", err);
+    logFunctionFailure({
+      request,
+      route: "/api/mercy/grammar",
+      mode: "grammar",
+      status: 200,
+      errorClass: "unexpected_error",
+      detail: { errorName: err instanceof Error ? err.name : "unknown" },
+    });
     return json({
       ok: false,
       error: "Internal server error",

@@ -27,6 +27,7 @@ import {
   readJsonBody,
   type PagesContext,
 } from "../../src/pages-functions/http";
+import { failureJson } from "../../src/pages-functions/failureLog";
 import { logMercyAiUsage } from "../../api/_lib/aiUsageLog";
 
 type MercyAiBody = {
@@ -135,27 +136,48 @@ export async function onRequestPost(context: PagesContext): Promise<Response> {
   const supabaseUrl = envValue(env, "SUPABASE_URL") || envValue(env, "VITE_SUPABASE_URL");
   const supabaseAnonKey = envValue(env, "SUPABASE_ANON_KEY") || envValue(env, "VITE_SUPABASE_ANON_KEY");
   if (!supabaseUrl || !supabaseAnonKey) {
-    return json({ error: "Missing Supabase environment variables" }, 500);
+    return failureJson(context, "/api/mercy-ai", "preauth", 500, "missing_supabase_env", {
+      error: "Missing Supabase environment variables",
+    });
   }
 
   const accessToken = getBearerToken(request);
-  if (!accessToken) return json({ error: "Missing bearer token" }, 401);
+  if (!accessToken) {
+    return failureJson(context, "/api/mercy-ai", "preauth", 401, "missing_bearer", {
+      error: "Missing bearer token",
+    });
+  }
 
   const supabase = createClient(supabaseUrl, supabaseAnonKey, {
     auth: { persistSession: false, autoRefreshToken: false },
   });
   const { data: { user }, error: userError } = await supabase.auth.getUser(accessToken);
-  if (userError || !user) return json({ error: "Unauthorized" }, 401);
+  if (userError || !user) {
+    return failureJson(context, "/api/mercy-ai", "preauth", 401, "unauthorized", {
+      error: "Unauthorized",
+    });
+  }
 
   if (isRateLimited(user.id || getIp(request))) {
-    return json({ error: "Too many requests. Please try again later." }, 429);
+    return failureJson(context, "/api/mercy-ai", "preauth", 429, "rate_limited", {
+      error: "Too many requests. Please try again later.",
+    });
   }
 
   const body = await readJsonBody<MercyAiBody>(request);
+  const mode = norm(body.mode) || "host";
   if (norm(body.mode) === "speak-follow-up") {
     const transcript = norm(body.transcript || body.userText || body.message || body.text);
-    if (!transcript) return json({ error: "Missing transcript" }, 400);
-    if (transcript.length > 1000) return json({ error: "Input too long" }, 400);
+    if (!transcript) {
+      return failureJson(context, "/api/mercy-ai", mode, 400, "missing_transcript", {
+        error: "Missing transcript",
+      });
+    }
+    if (transcript.length > 1000) {
+      return failureJson(context, "/api/mercy-ai", mode, 400, "input_too_long", {
+        error: "Input too long",
+      });
+    }
 
     const speakContext = isRecord(body.context) ? body.context : {};
     const turnsOnTopic = typeof speakContext.turnsOnTopic === "number" ? Math.max(0, Math.floor(speakContext.turnsOnTopic)) : 0;
@@ -184,18 +206,30 @@ export async function onRequestPost(context: PagesContext): Promise<Response> {
         serviceKey: cfServiceKey,
       });
       if (!freeAccess.flagOn || !freeAccess.allowed) {
-        return json({ error: "Premium required" }, 403);
+        return failureJson(context, "/api/mercy-ai", mode, 403, "premium_required", {
+          error: "Premium required",
+        });
       }
     }
 
-    if (!openAiKey) return json({ error: "Missing OPENAI_API_KEY" }, 500);
+    if (!openAiKey) {
+      return failureJson(context, "/api/mercy-ai", mode, 500, "missing_openai_key", {
+        error: "Missing OPENAI_API_KEY",
+      });
+    }
 
     const learnerText = asString(body.learnerText || body.userText || body.message || body.text, 1200);
-    if (!learnerText) return json({ error: "Missing learnerText" }, 400);
+    if (!learnerText) {
+      return failureJson(context, "/api/mercy-ai", mode, 400, "missing_learner_text", {
+        error: "Missing learnerText",
+      });
+    }
 
     const turnCount = Number(body.turnCount ?? 0);
     if (Number.isFinite(turnCount) && turnCount >= 50) {
-      return json({ error: "Session turn cap reached" }, 400);
+      return failureJson(context, "/api/mercy-ai", mode, 400, "session_turn_cap", {
+        error: "Session turn cap reached",
+      });
     }
 
     // Bound the whole turn so a slow OpenAI subrequest returns OUR error fast
@@ -256,11 +290,14 @@ export async function onRequestPost(context: PagesContext): Promise<Response> {
         turnAbort.signal.aborted ||
         (err instanceof Error && /timed out/i.test(err.message));
       if (timedOut) {
-        return json({ error: "AI conversation timed out", timeout: true }, 504);
+        return failureJson(context, "/api/mercy-ai", mode, 504, "ai_conversation_timeout", {
+          error: "AI conversation timed out",
+          timeout: true,
+        });
       }
-      return json({
+      return failureJson(context, "/api/mercy-ai", mode, 502, "ai_conversation_failed", {
         error: err instanceof Error ? err.message : "AI conversation failed",
-      }, 502);
+      });
     } finally {
       clearTimeout(turnTimer);
     }
@@ -268,8 +305,16 @@ export async function onRequestPost(context: PagesContext): Promise<Response> {
 
   if (norm(body.mode) === "sentence-correction") {
     const learnerText = asString(body.learnerText || body.userText || body.text, 500);
-    if (!learnerText) return json({ error: "Missing learnerText" }, 400);
-    if (!openAiKey) return json({ error: "Missing OPENAI_API_KEY" }, 500);
+    if (!learnerText) {
+      return failureJson(context, "/api/mercy-ai", mode, 400, "missing_learner_text", {
+        error: "Missing learnerText",
+      });
+    }
+    if (!openAiKey) {
+      return failureJson(context, "/api/mercy-ai", mode, 500, "missing_openai_key", {
+        error: "Missing OPENAI_API_KEY",
+      });
+    }
 
     const _runOnWords = learnerText.split(/\s+/).length;
     const _runOnConjs = (learnerText.match(/\b(?:and|but|so|because|or|yet|then|after|before|when|while|since|unless|although|though|however|moreover|furthermore|therefore|thus|hence|meanwhile|otherwise|besides|also|additionally|consequently|nevertheless|nonetheless)\b/gi) || []).length;
@@ -313,7 +358,11 @@ On low-confidence: {"corrected":"","explanation":"${explainLang === "vi" ? viAbs
           response_format: { type: "json_object" },
         }),
       });
-      if (!corrResponse.ok) return json({ error: "correction_failed" }, 500);
+      if (!corrResponse.ok) {
+        return failureJson(context, "/api/mercy-ai", mode, 500, "correction_provider_failed", {
+          error: "correction_failed",
+        }, { providerStatus: corrResponse.status });
+      }
       const corrData = await corrResponse.json() as {
         choices?: Array<{ message?: { content?: string } }>;
         usage?: { prompt_tokens?: number; completion_tokens?: number };
@@ -340,15 +389,25 @@ On low-confidence: {"corrected":"","explanation":"${explainLang === "vi" ? viAbs
         confident,
       });
     } catch {
-      return json({ error: "correction_failed" }, 500);
+      return failureJson(context, "/api/mercy-ai", mode, 500, "correction_failed", {
+        error: "correction_failed",
+      });
     }
   }
 
-  if (!openAiKey) return json({ error: "Missing OPENAI_API_KEY" }, 500);
+  if (!openAiKey) {
+    return failureJson(context, "/api/mercy-ai", mode, 500, "missing_openai_key", {
+      error: "Missing OPENAI_API_KEY",
+    });
+  }
 
   const userText = asString(body.userText || body.message || body.text || body.prompt, 2000);
   const lang = body.lang === "vi" ? "vi" : "en";
-  if (!userText) return json({ error: "Missing userText" }, 400);
+  if (!userText) {
+    return failureJson(context, "/api/mercy-ai", mode, 400, "missing_user_text", {
+      error: "Missing userText",
+    });
+  }
 
   const appContext = body.context && typeof body.context === "object" ? body.context : {};
   const roomTitle = asString(appContext.roomTitle, 200);
@@ -406,7 +465,11 @@ Rules:
     }),
   });
 
-  if (!response.ok) return json({ error: `OpenAI ${response.status}` }, 502);
+  if (!response.ok) {
+    return failureJson(context, "/api/mercy-ai", mode, 502, "host_provider_failed", {
+      error: `OpenAI ${response.status}`,
+    }, { providerStatus: response.status });
+  }
   const data = await response.json() as {
     choices?: Array<{ message?: { content?: string } }>;
     usage?: { prompt_tokens?: number; completion_tokens?: number };
