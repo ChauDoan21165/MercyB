@@ -103,4 +103,35 @@ describe("edge function failure logging", () => {
     vi.unstubAllGlobals();
     errorSpy.mockRestore();
   });
+
+  it("does not throw or schedule waitUntil when fetch returns a non-thenable", async () => {
+    const errorSpy = vi.spyOn(console, "error").mockImplementation(() => undefined);
+    const fetchMock = vi.fn();
+    const waitUntil = vi.fn();
+    vi.stubGlobal("fetch", fetchMock);
+    vi.stubGlobal("Deno", {
+      env: {
+        get: (name: string) => ({
+          SUPABASE_URL: "https://project.supabase.co",
+          SUPABASE_ANON_KEY: "anon-key",
+        })[name],
+      },
+    });
+    vi.stubGlobal("EdgeRuntime", { waitUntil });
+
+    expect(() => failureJsonResponse(
+      new Request("https://project.supabase.co/functions/v1/mercy-tts"),
+      "mercy-tts",
+      "tts",
+      503,
+      "provider_unavailable",
+      { error: "Cloud TTS unavailable" },
+    )).not.toThrow();
+
+    expect(fetchMock).toHaveBeenCalledTimes(1);
+    expect(waitUntil).not.toHaveBeenCalled();
+
+    vi.unstubAllGlobals();
+    errorSpy.mockRestore();
+  });
 });

@@ -93,26 +93,35 @@ function scheduleEdgeFailureLog(row: Record<string, unknown>): void {
   const anonKey = (denoEnv?.get("SUPABASE_ANON_KEY") ?? "").trim();
   if (!supabaseUrl || !anonKey) return;
 
-  const task = fetch(`${supabaseUrl.replace(/\/$/, "")}/rest/v1/function_failure_logs`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      apikey: anonKey,
-      Authorization: `Bearer ${anonKey}`,
-      Prefer: "return=minimal",
-    },
-    body: JSON.stringify(row),
-  }).then((response) => {
-    if (!response.ok) {
-      console.error("[edge_function_failure] function_failure_logs insert failed:", response.status);
-    }
-  }).catch((error) => {
-    console.error("[edge_function_failure] function_failure_logs background failed:", error);
-  });
+  try {
+    const maybeTask = (fetch as (...args: Parameters<typeof fetch>) => unknown)(
+      `${supabaseUrl.replace(/\/$/, "")}/rest/v1/function_failure_logs`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          apikey: anonKey,
+          Authorization: `Bearer ${anonKey}`,
+          Prefer: "return=minimal",
+        },
+        body: JSON.stringify(row),
+      },
+    );
+    if (!maybeTask || typeof (maybeTask as { then?: unknown }).then !== "function") return;
+    const task = (maybeTask as Promise<Response>).then((response) => {
+      if (!response.ok) {
+        console.error("[edge_function_failure] function_failure_logs insert failed:", response.status);
+      }
+    }).catch((error) => {
+      console.error("[edge_function_failure] function_failure_logs background failed:", error);
+    });
 
-  const edgeRuntime = (globalThis as { EdgeRuntime?: EdgeRuntimeLike }).EdgeRuntime;
-  if (typeof edgeRuntime?.waitUntil === "function") edgeRuntime.waitUntil(task);
-  else void task;
+    const edgeRuntime = (globalThis as { EdgeRuntime?: EdgeRuntimeLike }).EdgeRuntime;
+    if (typeof edgeRuntime?.waitUntil === "function") edgeRuntime.waitUntil(task);
+    else void task;
+  } catch (error) {
+    console.error("[edge_function_failure] function_failure_logs scheduling failed:", error);
+  }
 }
 
 function endpointFromRequest(request: Request | undefined, route: string): string {

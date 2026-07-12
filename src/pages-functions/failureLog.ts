@@ -89,26 +89,35 @@ function schedulePagesFailureLog(
   const anonKey = (context.env.SUPABASE_ANON_KEY || context.env.VITE_SUPABASE_ANON_KEY || "").trim();
   if (!supabaseUrl || !anonKey) return;
 
-  const task = fetch(`${supabaseUrl.replace(/\/$/, "")}/rest/v1/function_failure_logs`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      apikey: anonKey,
-      Authorization: `Bearer ${anonKey}`,
-      Prefer: "return=minimal",
-    },
-    body: JSON.stringify(row),
-  }).then((response) => {
-    if (!response.ok) {
-      console.error("[function_failure] function_failure_logs insert failed:", response.status);
-    }
-  }).catch((error) => {
-    console.error("[function_failure] function_failure_logs background failed:", error);
-  });
+  try {
+    const maybeTask = (fetch as (...args: Parameters<typeof fetch>) => unknown)(
+      `${supabaseUrl.replace(/\/$/, "")}/rest/v1/function_failure_logs`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          apikey: anonKey,
+          Authorization: `Bearer ${anonKey}`,
+          Prefer: "return=minimal",
+        },
+        body: JSON.stringify(row),
+      },
+    );
+    if (!maybeTask || typeof (maybeTask as { then?: unknown }).then !== "function") return;
+    const task = (maybeTask as Promise<Response>).then((response) => {
+      if (!response.ok) {
+        console.error("[function_failure] function_failure_logs insert failed:", response.status);
+      }
+    }).catch((error) => {
+      console.error("[function_failure] function_failure_logs background failed:", error);
+    });
 
-  const waitUntil = (context as PagesContext & WithWaitUntil).waitUntil;
-  if (typeof waitUntil === "function") waitUntil(task);
-  else void task;
+    const waitUntil = (context as PagesContext & WithWaitUntil).waitUntil;
+    if (typeof waitUntil === "function") waitUntil(task);
+    else void task;
+  } catch (error) {
+    console.error("[function_failure] function_failure_logs scheduling failed:", error);
+  }
 }
 
 function functionNameFromRoute(route: string): string {

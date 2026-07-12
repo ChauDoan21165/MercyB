@@ -99,4 +99,34 @@ describe("pages function failure logging", () => {
     vi.unstubAllGlobals();
     errorSpy.mockRestore();
   });
+
+  it("does not throw or schedule waitUntil when fetch returns a non-thenable", async () => {
+    const errorSpy = vi.spyOn(console, "error").mockImplementation(() => undefined);
+    const fetchMock = vi.fn();
+    vi.stubGlobal("fetch", fetchMock);
+    const waitUntil = vi.fn();
+    const context = {
+      request: new Request("https://example.test/api/mercy-ai"),
+      env: {
+        SUPABASE_URL: "https://project.supabase.co",
+        SUPABASE_ANON_KEY: "anon-key",
+      },
+      waitUntil,
+    } as PagesContext & { waitUntil: (promise: Promise<unknown>) => void };
+
+    expect(() => failureJson(
+      context,
+      "/api/mercy-ai",
+      "sentence-correction",
+      400,
+      "bad_request",
+      { error: "bad_request" },
+    )).not.toThrow();
+
+    expect(fetchMock).toHaveBeenCalledTimes(1);
+    expect(waitUntil).not.toHaveBeenCalled();
+
+    vi.unstubAllGlobals();
+    errorSpy.mockRestore();
+  });
 });
