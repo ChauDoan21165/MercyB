@@ -318,6 +318,10 @@ const GRAMMAR_VOICE_EMPTY_MESSAGE =
   "Mercy chưa nghe rõ. Bạn thử nói lại hoặc gõ câu vào ô nhé.";
 const GRAMMAR_CORRECTION_UNAVAILABLE_MESSAGE =
   "Mercy chưa sửa chắc câu này bằng bộ quy tắc hiện tại. Bạn có thể chỉnh lại câu ngắn hơn một chút rồi bấm Sửa câu này nhé.";
+const GRAMMAR_CORRECTION_AUTH_MESSAGE =
+  "Mercy cần đăng nhập lại để kiểm tra câu này bằng AI. Bạn đăng nhập lại rồi thử Sửa câu này nhé.";
+const GRAMMAR_CORRECTION_API_MESSAGE =
+  "Mercy chưa kết nối được máy sửa câu AI. Bạn thử lại sau một chút nhé.";
 const CANNOT_CORRECT_NO_SESSION_MESSAGE =
   "Mercy cần đăng nhập để kiểm tra câu này. Bạn thử đăng nhập nhé.";
 const LPI_ERROR_DENSITY_WINDOW = 5;
@@ -352,13 +356,22 @@ type AiCorrectionResult = {
   grammarTip: string;
   confident: boolean;
 };
+type AiCorrectionFailure = {
+  ok: false;
+  reason: "auth" | "api";
+};
+type AiCorrectionResponse = AiCorrectionResult | AiCorrectionFailure | null;
+
+function isAiCorrectionFailure(value: AiCorrectionResponse): value is AiCorrectionFailure {
+  return Boolean(value && "ok" in value && value.ok === false);
+}
 
 async function callAiSentenceCorrection(
   learnerText: string,
   accessToken: string,
   explainLang: ExplainLanguage,
   tgt: TutorTarget,
-): Promise<AiCorrectionResult | null> {
+): Promise<AiCorrectionResponse> {
   try {
     const res = await fetchWithTimeout(resolveApiUrl("/api/mercy-ai"), {
       method: "POST",
@@ -366,7 +379,7 @@ async function callAiSentenceCorrection(
       body: JSON.stringify({ mode: "sentence-correction", learnerText, explainLanguage: explainLang, target: tgt }),
       timeoutMs: AI_TUTOR_FETCH_TIMEOUT_MS,
     });
-    if (!res.ok) return null;
+    if (!res.ok) return { ok: false, reason: res.status === 401 ? "auth" : "api" };
     const data = (await res.json()) as Partial<AiCorrectionResult>;
     return {
       corrected: data.corrected ?? "",
@@ -375,7 +388,7 @@ async function callAiSentenceCorrection(
       confident: data.confident !== false,
     };
   } catch {
-    return null;
+    return { ok: false, reason: "api" };
   }
 }
 
@@ -450,7 +463,13 @@ async function fetchDeepSeekSpeakFollowUp({
       }),
       timeoutMs: AI_TUTOR_FETCH_TIMEOUT_MS,
     });
-    if (!response.ok) return null;
+    if (!response.ok) {
+      return {
+        ok: false,
+        retryable: true,
+        reason: response.status === 401 ? "auth" : `http_${response.status}`,
+      };
+    }
     const data = (await response.json()) as { question?: unknown; ok?: unknown; retryable?: unknown; reason?: unknown };
     if (data.ok === false && data.retryable === true && typeof data.reason === "string") {
       return { ok: false, retryable: true, reason: data.reason };
@@ -2533,6 +2552,11 @@ export default function AiTutorPage() {
       if (accessToken) {
         const aiResult = await callAiSentenceCorrection(trimmed, accessToken, explainLanguage, target);
         setLoading(false);
+        if (isAiCorrectionFailure(aiResult)) {
+          recordLpiLearnerTurn(false);
+          setError(aiResult.reason === "auth" ? GRAMMAR_CORRECTION_AUTH_MESSAGE : GRAMMAR_CORRECTION_API_MESSAGE);
+          return;
+        }
         if (aiResult?.confident && aiResult.corrected) {
           const aiCorrected = aiResult.corrected;
           const { turn } = buildCorrectionTurn({
