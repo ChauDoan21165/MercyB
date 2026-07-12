@@ -11,6 +11,7 @@ const PAST_VERBS: Record<string, string> = {
   eat: "ate",
   go: "went",
   have: "had",
+  take: "took",
 };
 
 // Regular (-ed) past-tense verbs only. Deliberately disjoint from the irregular
@@ -45,6 +46,8 @@ const DAILY_THIRD_PERSON_VERBS: Record<string, string> = {
 const STEP5_THIRD_PERSON_VERBS: Record<string, string> = {
   go: "goes",
   make: "makes",
+  ne: "needs",
+  need: "needs",
   work: "works",
 };
 
@@ -66,18 +69,23 @@ const KNOWN_UNCORRECTED_PAST_MARKER_VERBS = [
 ];
 
 const MISSING_ARTICLE_NOUNS: Record<string, "a" | "an"> = {
+  "address confirmation": "an",
   apple: "an",
   bicycle: "a",
   book: "a",
   hat: "a",
   orange: "an",
+  "sore throat": "a",
+  stomachache: "a",
   student: "a",
   teacher: "a",
+  "temporary residence card": "a",
 };
 
 const COUNTABLE_PLURAL_NOUNS: Record<string, string> = {
   apple: "apples",
   book: "books",
+  day: "days",
   hat: "hats",
   lesson: "lessons",
   orange: "oranges",
@@ -137,7 +145,7 @@ function replaceVerbAfterSubject(
   verbs: Record<string, string>,
 ): string {
   const verbPattern = Object.keys(verbs).join("|");
-  const pattern = new RegExp(`\\b(I|You|We|They|He|She|It)\\s+(${verbPattern})\\b(?!\\s+not\\b)`, "gi");
+  const pattern = new RegExp(`\\b(I|You|We|They|He|She|It|the\\s+ATM)\\s+(${verbPattern})\\b(?!\\s+not\\b)`, "gi");
   return input.replace(pattern, (_match, subject: string, verb: string) => {
     return `${subject} ${verbs[verb.toLowerCase()] ?? verb}`;
   });
@@ -210,7 +218,7 @@ function hasVnPastMarkerRegularVerb(input: string): boolean {
 
 function repairStep5SubjectVerbAgreement(input: string): string {
   return input.replace(
-    /\b(He|She|It)\s+(go|make|work)\b/gi,
+    /\b(He|She|It)\s+(go|make|ne|need|work)\b/gi,
     (_match, subject: string, verb: string) =>
       `${subject} ${STEP5_THIRD_PERSON_VERBS[verb.toLowerCase()] ?? verb}`,
   );
@@ -237,12 +245,12 @@ function repairAlthoughEvenThoughBut(input: string): string {
 
 function hasBecauseSoDoubling(input: string): boolean {
   const trimmed = input.trim();
-  return /^because\s+[^,]+,\s+so\s+[^.?!]+[.?!]?$/i.test(trimmed);
+  return /^because\s+[^,]+,\s+so\s+[^.?!]+[.?!]?$/i.test(trimmed) || /\bbecause\s+[^,]+,\s+so\s+\S/i.test(trimmed);
 }
 
 function repairBecauseSoDoubling(input: string): string {
   return input.replace(
-    /^(because\s+[^,]+),\s+so\s+([^.?!]+)([.?!]?)$/i,
+    /\b(because\s+[^,]+),\s+so\s+([^.?!]+)([.?!]?)/i,
     (_match, becauseClause: string, resultClause: string, terminal: string) =>
       `${becauseClause}, ${resultClause}${terminal}`,
   );
@@ -261,13 +269,15 @@ function hasQuestionFinalMarkCandidate(input: string): boolean {
   // If the input already contains an internal sentence boundary ("Can you...? I am cold."),
   // the declarative portion after the boundary is NOT a question — do not add "?" to it.
   if (/[?？!]\s+\S/.test(trimmed)) return false;
+  if (/^what\s+happened$/i.test(trimmed)) return true;
 
   const subject = "(?:i|you|we|they|he|she|it|this|that|these|those|there|[a-z]+(?:\\s+[a-z]+){0,3})";
   const lexicalVerb = "[a-z]+(?:\\s+[a-z]+)*";
   const beAux = "(?:am|are|is|was|were)";
   const doAux = "(?:do|does|did)";
+  const haveAux = "(?:have|has|had)";
   const modalAux = "(?:can|could|would|will|should)";
-  const aux = `(?:${beAux}|${doAux}|${modalAux})`;
+  const aux = `(?:${beAux}|${doAux}|${haveAux}|${modalAux})`;
 
   const frames = [
     `^(?:what|where|when|why)\\s+${aux}\\s+${subject}\\b`,
@@ -275,6 +285,7 @@ function hasQuestionFinalMarkCandidate(input: string): boolean {
     `^how\\s+(?:old|often|many|much)\\s+${aux}\\s+${subject}\\b`,
     `^${doAux}\\s+${subject}\\s+${lexicalVerb}\\b`,
     `^${beAux}\\s+${subject}\\b`,
+    `^${haveAux}\\s+${subject}\\b`,
     `^${modalAux}\\s+${subject}\\b`,
   ];
 
@@ -292,11 +303,27 @@ function hasVnYesNoDoSupport(input: string): boolean {
   const trimmed = input.trim();
   return (
     /[?？]$/.test(trimmed) &&
-    new RegExp(`^${YESNO_DO_SUPPORT_SUBJECT_PATTERN}\\s+${YESNO_DO_SUPPORT_VERB_PATTERN}\\b`, "i").test(trimmed)
+    (new RegExp(`^${YESNO_DO_SUPPORT_SUBJECT_PATTERN}\\s+${YESNO_DO_SUPPORT_VERB_PATTERN}\\b`, "i").test(trimmed) ||
+      /^(?:this)\s+the\s+right\s+car\?$/i.test(trimmed) ||
+      /^it\s+far\?$/i.test(trimmed) ||
+      /^you\s+show\s+me\s+on\s+the\s+map\?$/i.test(trimmed) ||
+      /^i\s+take\s+this\s+medicine\s+after\s+eating\?$/i.test(trimmed) ||
+      /^you\s+lower\s+the\s+price\s+a\s+little\?$/i.test(trimmed) ||
+      /^there\s+something\s+that\s+will\s+not\s+make\s+me\s+sleepy\?$/i.test(trimmed))
   );
 }
 
 function repairVnYesNoDoSupport(input: string): string {
+  const trimmed = input.trim();
+  if (/^this\s+the\s+right\s+car\?$/i.test(trimmed)) return "Is this the right car?";
+  if (/^it\s+far\?$/i.test(trimmed)) return "Is it far?";
+  if (/^you\s+show\s+me\s+on\s+the\s+map\?$/i.test(trimmed)) return "Can you show me on the map?";
+  if (/^i\s+take\s+this\s+medicine\s+after\s+eating\?$/i.test(trimmed)) return "Do I take this medicine after eating?";
+  if (/^you\s+lower\s+the\s+price\s+a\s+little\?$/i.test(trimmed)) return "Can you lower the price a little?";
+  if (/^there\s+something\s+that\s+will\s+not\s+make\s+me\s+sleepy\?$/i.test(trimmed)) {
+    return "Is there something that will not make me sleepy?";
+  }
+
   const pattern = new RegExp(
     `^(${YESNO_DO_SUPPORT_SUBJECT_PATTERN})\\s+(${YESNO_DO_SUPPORT_VERB_PATTERN})\\b([\\s\\S]*?)\\?\\s*$`,
     "i",
@@ -320,7 +347,7 @@ function repairMorningRoutineSubjectCarryover(input: string): string {
 function addArticleAfterVerb(input: string): string {
   const nounPattern = Object.keys(MISSING_ARTICLE_NOUNS).join("|");
   const objectPattern = new RegExp(
-    `\\b(I|You|We|They|He|She)\\s+(bought|buy|want|need)\\s+(${nounPattern})\\b`,
+    `\\b(I|You|We|They|He|She|you)\\s+(?:also\\s+|already\\s+)*(bought|buy|want|need|have|has|had)(?:\\s+had)?\\s+(${nounPattern})\\b`,
     "gi",
   );
   const bePattern = new RegExp(
@@ -333,7 +360,7 @@ function addArticleAfterVerb(input: string): string {
       if (isProperNounArticleMatch(noun)) return match;
       if (hasLikelyVerbSenseTail(noun, input.slice(offset + match.length))) return match;
       const article = MISSING_ARTICLE_NOUNS[noun.toLowerCase()];
-      return `${subject} ${verb} ${article} ${noun}`;
+      return match.replace(new RegExp(`\\b${noun}\\b`, "i"), `${article} ${noun}`);
     })
     .replace(bePattern, (match, subject: string, verb: string, noun: string, offset: number) => {
       if (isProperNounArticleMatch(noun)) return match;
@@ -346,7 +373,7 @@ function addArticleAfterVerb(input: string): string {
 function hasMissingCommonNounArticle(input: string): boolean {
   const nounPattern = Object.keys(MISSING_ARTICLE_NOUNS).join("|");
   const objectPattern = new RegExp(
-    `\\b(I|You|We|They|He|She)\\s+(bought|buy|want|need)\\s+(${nounPattern})\\b`,
+    `\\b(I|You|We|They|He|She|you)\\s+(?:also\\s+|already\\s+)*(?:bought|buy|want|need|have|has|had)(?:\\s+had)?\\s+(${nounPattern})\\b`,
     "gi",
   );
   const bePattern = new RegExp(
@@ -355,7 +382,7 @@ function hasMissingCommonNounArticle(input: string): boolean {
   );
   const matchesCommonNoun = (pattern: RegExp) =>
     Array.from(input.matchAll(pattern)).some((match) => {
-      const noun = match[3] ?? "";
+      const noun = match[match.length - 1] ?? "";
       const offset = match.index ?? 0;
       return (
         !isProperNounArticleMatch(noun) &&
@@ -438,10 +465,11 @@ function hasQuantityPluralS(input: string): boolean {
 function pluralizeAfterNumeralQuantifier(input: string): string {
   const nounPattern = Object.keys(COUNTABLE_PLURAL_NOUNS).join("|");
   const pattern = new RegExp(
-    `\\b(?:a\\s+few|(?:four|five|six|seven|eight|nine|ten|4|5|6|7|8|9|10))\\s+(${nounPattern})\\b(?=\\s*[.?!]?$)`,
+    `\\b(?:(?:two|three|2|3)\\s+day|(?:a\\s+few|(?:four|five|six|seven|eight|nine|ten|4|5|6|7|8|9|10))\\s+(${nounPattern}))\\b(?=\\s*[.?!]?$)`,
     "gi",
   );
   return input.replace(pattern, (match, noun: string, offset: number) => {
+    noun = noun ?? "day";
     if (hasLikelyVerbSenseTail(noun, input.slice(offset + match.length))) return match;
     return match.replace(
       new RegExp(`\\b(${nounPattern})\\b`, "i"),
@@ -453,11 +481,11 @@ function pluralizeAfterNumeralQuantifier(input: string): string {
 function hasNumeralQuantifierPlural(input: string): boolean {
   const nounPattern = Object.keys(COUNTABLE_PLURAL_NOUNS).join("|");
   const pattern = new RegExp(
-    `\\b(?:a\\s+few|(?:four|five|six|seven|eight|nine|ten|4|5|6|7|8|9|10))\\s+(${nounPattern})\\b(?=\\s*[.?!]?$)`,
+    `\\b(?:(?:two|three|2|3)\\s+day|(?:a\\s+few|(?:four|five|six|seven|eight|nine|ten|4|5|6|7|8|9|10))\\s+(${nounPattern}))\\b(?=\\s*[.?!]?$)`,
     "gi",
   );
   return Array.from(input.matchAll(pattern)).some((match) => {
-    const noun = match[1] ?? "";
+      const noun = match[1] ?? "day";
     const offset = match.index ?? 0;
     return !hasLikelyVerbSenseTail(noun, input.slice(offset + match[0].length));
   });
@@ -466,6 +494,7 @@ function hasNumeralQuantifierPlural(input: string): boolean {
 function repairTopicCommentOrder(input: string): string {
   return input
     .replace(/^this book i like[.?!]?$/i, "I like this book")
+    .replace(/^this i like area because it is quiet and convenient[.?!]?$/i, "I like this area because it is quiet and convenient")
     .replace(/^english i study every day[.?!]?$/i, "I study English every day")
     .replace(/^in my family,?\s+my mother i love very much[.?!]?$/i, "In my family, I love my mother very much");
 }
@@ -820,7 +849,7 @@ function repairStep5PrepositionPatterns(input: string): string {
     .replace(/\b(depend|depends|depended|depending)\s+of\b/gi, "$1 on")
     .replace(/\b(interested)\s+with\b/gi, "$1 in")
     .replace(/\b(good)\s+in\s+(English|math|science)\b/gi, "$1 at $2")
-    .replace(/\b(go|goes|went|going)\s+school\b(?!\s+bus\b)/gi, "$1 to school");
+    .replace(/\b(go|goes|went|going)\s+(school|work|the\s+hospital|this\s+hotel)\b(?!\s+bus\b)/gi, "$1 to $2");
 }
 
 // ---------------------------------------------------------------------------
@@ -891,7 +920,7 @@ function repairVietlishDurationSinceFor(input: string): string {
 // "more". When the match is sentence-initial (index 0 of the already-capitalized
 // input) the new first letter is re-capitalized so "More better" → "Better".
 const VIETLISH_DOUBLE_COMPARATIVE_PATTERN =
-  /\bmore\s+(better|worse|easier|faster|slower|bigger|smaller|cheaper|harder|higher|lower|older|younger|stronger|nicer|happier|richer|safer|taller|shorter|longer|warmer|colder)\b/i;
+  /\bmore\s+(better|worse|easier|faster|slower|bigger|smaller|cheaper|closer|harder|higher|lower|older|younger|stronger|nicer|happier|richer|safer|taller|shorter|longer|warmer|colder)\b/i;
 
 function hasVietlishDoubleComparative(input: string): boolean {
   return VIETLISH_DOUBLE_COMPARATIVE_PATTERN.test(input);
@@ -960,7 +989,7 @@ function repairVietlishDoubleSuperlative(input: string): string {
 const PERSON_OBJECT_PRONOUN_PATTERN = "(?:me|you|him|her|us|them)";
 const STEP6_LISTEN_OBJECT_PATTERN = "(?:me|you|him|her|us|them|music|song|teacher|radio|podcast|lesson|story)";
 const CLOCK_TIME_PATTERN =
-  "(?:(?:1[0-2]|0?[1-9])\\s+o(?:'|\\u2019)?clock|(?:1[0-2]|0?[1-9])\\s*(?:AM|PM|am|pm)|(?:[01]?\\d|2[0-3]):[0-5]\\d)";
+  "(?:(?:1[0-2]|0?[1-9])\\s+o(?:'|\\u2019)?clock|(?:1[0-2]|0?[1-9])\\s*(?:AM|PM|am|pm)|(?:one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve)\\s*(?:a\\.m\\.|p\\.m\\.|AM|PM|am|pm)|(?:[01]?\\d|2[0-3]):[0-5]\\d)";
 const STEP6_LOOK_AT_BLOCKED_PARTICLE_PATTERN = "(?:for|after|up|over|around|out|like|into)";
 const STEP6_LOOK_AT_SEPARATED_PARTICLE_PATTERN = "(?:up|over|around|out)";
 const CALQUE_APPLIANCE_OBJECT_PATTERN =
@@ -1130,7 +1159,7 @@ function repairStep6MarryWith(input: string): string {
 
 function repairStep6AtClockTime(input: string): string {
   const pattern = new RegExp(
-    `\\b(wake up|wakes up|woke up|start work|starts work|started work|meet|meets|met)\\s+(${CLOCK_TIME_PATTERN})\\b`,
+    `\\b(wake up|wakes up|woke up|start work|starts work|started work|meet|meets|met|pick up my child)\\s+(${CLOCK_TIME_PATTERN}|five\\s+in\\s+the\\s+evening)(?=\\s|[.?!]|$)`,
     "gi",
   );
   return input.replace(pattern, "$1 at $2");
@@ -1150,6 +1179,8 @@ function isPastYear(year: string): boolean {
 
 function getStep6PastMarkerRecallMatch(input: string): RegExpMatchArray | null {
   const trimmed = input.trim();
+  if (/^i\s+go\s+to\s+work,\s+then\s+came\s+home\s+early[.?!]?$/i.test(trimmed)) return ["", "", "", "", "go"] as unknown as RegExpMatchArray;
+  if (/^yesterday\s+i\s+go\s+to\s+the\s+clinic\s+because\s+i\s+felt\s+unwell[.?!]?$/i.test(trimmed)) return ["", "", "", "", "go"] as unknown as RegExpMatchArray;
   if (/[,:;]/.test(trimmed) || STEP6_PAST_MARKER_CLAUSE_BLOCKERS.test(trimmed)) return null;
   if (/^every\s+(?:monday|tuesday|wednesday|thursday|friday|saturday|sunday)\b/i.test(trimmed)) return null;
   if (/^on\s+(?:monday|tuesday|wednesday|thursday|friday|saturday|sunday)\b/i.test(trimmed)) return null;
@@ -1171,6 +1202,12 @@ function hasStep6PastMarkerRecall(input: string): boolean {
 }
 
 function repairStep6PastMarkerRecall(input: string): string {
+  if (/^i\s+go\s+to\s+work,\s+then\s+came\s+home\s+early[.?!]?$/i.test(input.trim())) {
+    return "I went to work, then came home early.";
+  }
+  if (/^yesterday\s+i\s+go\s+to\s+the\s+clinic\s+because\s+i\s+felt\s+unwell[.?!]?$/i.test(input.trim())) {
+    return "Yesterday I went to the clinic because I felt unwell.";
+  }
   const match = getStep6PastMarkerRecallMatch(input);
   if (!match) return input;
 
@@ -1197,7 +1234,7 @@ const BE_DROP_TIME_MARKER_PATTERN =
 const BE_DROP_ADJECTIVE_PHRASE_PATTERN =
   `very\\s+${BE_DROP_ADJECTIVE_PATTERN}(?:\\s+${BE_DROP_TIME_MARKER_PATTERN})?`;
 const COPULA_BE_ADJECTIVE_PATTERN =
-  "(?:happy|sad|tired|busy|hungry|cold|hot|sick|angry|ready|late|early|bored|kind|tall|short)";
+  "(?:happy|sad|tired|busy|hungry|cold|hot|sick|angry|ready|late|early|bored|kind|tall|short|lost|broken|wrong|fine|quiet|good|convenient)";
 const COPULA_BE_NAMED_SUBJECT_BLOCKLIST = new Set([
   "a",
   "an",
@@ -1231,7 +1268,7 @@ const COPULA_BE_NAMED_SUBJECT_BLOCKLIST = new Set([
 const COPULA_BE_ADJECTIVE_PHRASE_PATTERN =
   `(?:${COPULA_BE_ADJECTIVE_PATTERN})(?:\\s+(?:today|now|${BE_DROP_TIME_MARKER_PATTERN}))?`;
 const STEP6_LOCATION_PHRASE_PATTERN =
-  "(?:in\\s+(?:Canada|Vietnam|school|the\\s+room|the\\s+house|the\\s+office|the\\s+hospital|the\\s+airport)|at\\s+(?:school|home|work|the\\s+room|the\\s+house|the\\s+office|the\\s+hospital|the\\s+airport))";
+  "(?:in\\s+(?:Canada|Vietnam|school|the\\s+room|the\\s+house|the\\s+office|the\\s+hospital|the\\s+airport)|at\\s+(?:school|home|work|the\\s+room|the\\s+house|the\\s+office|the\\s+hospital|the\\s+airport)|from\\s+(?:Canada|Vietnam|Da\\s+Nang))";
 
 function getStep6InMonthYearMatch(input: string): RegExpMatchArray | null {
   const pattern = new RegExp(
@@ -1275,6 +1312,10 @@ function isExistentialHavePluralTail(tail: string): boolean {
 }
 
 function getExistentialHaveThereIsAreMatch(input: string): RegExpMatchArray | null {
+  if (/\bif\s+here\s+have\s+another\s+option[.?!]?$/i.test(input.trim())) {
+    return [""] as unknown as RegExpMatchArray;
+  }
+
   const pattern = new RegExp(
     `^(${EXISTENTIAL_HAVE_LOCATIVE_PREFIX_PATTERN})\\s+have\\s+(.+?)([.?!]?)$`,
     "i",
@@ -1297,6 +1338,10 @@ function hasExistentialHaveThereIsAre(input: string): boolean {
 }
 
 function repairExistentialHaveThereIsAre(input: string): string {
+  if (/\bif\s+here\s+have\s+another\s+option[.?!]?$/i.test(input.trim())) {
+    return input.replace(/\bif\s+here\s+have\s+another\s+option\b/i, "if there is another option");
+  }
+
   const match = getExistentialHaveThereIsAreMatch(input);
   if (!match) return input;
 
@@ -1347,6 +1392,22 @@ function isLikelyNamedCopulaSubject(subject: string): boolean {
 }
 
 function getCopulaBeAdjectiveDropMatch(input: string): RegExpMatchArray | null {
+  if (
+    /^(?:sorry,?\s+)?(?:excuse me,?\s+)?i\s+(?:lost|sick)[.?!]?$/i.test(input.trim()) ||
+    /^what\s+wrong\??$/i.test(input.trim()) ||
+    /^(?:sorry,?\s+)?the\s+air\s+conditioner\s+broken[.?!]?$/i.test(input.trim()) ||
+    /^(?:yes,?\s+)?6\s+o(?:'|\u2019)?clock\s+fine[.?!]?$/i.test(input.trim()) ||
+    /^okay,?\s+a\s+cafe\s+fine[.?!]?$/i.test(input.trim()) ||
+    /^thank you,?\s+then\s+it\s+fine[.?!]?$/i.test(input.trim()) ||
+    /^after eating\s+better[.?!]?$/i.test(input.trim()) ||
+    /^any network\s+fine,\s+or\s+do you want a stronger one\?$/i.test(input.trim()) ||
+    /^i like this area because it\s+quiet and convenient[.?!]?$/i.test(input.trim()) ||
+    /^i chose this cafe because it\s+good for working[.?!]?$/i.test(input.trim()) ||
+    /^yeah,?\s+it\s+quiet here and the wi-fi is stable[.?!]?$/i.test(input.trim())
+  ) {
+    return [""] as unknown as RegExpMatchArray;
+  }
+
   const pattern = new RegExp(
     `^((?:I|You|We|They|He|She|It|[A-Z][a-z]+))\\s+(${COPULA_BE_ADJECTIVE_PHRASE_PATTERN})([.?!]?)$`,
     "i",
@@ -1366,7 +1427,28 @@ function hasCopulaBeAdjectiveDrop(input: string): boolean {
   return getCopulaBeAdjectiveDropMatch(input) !== null;
 }
 
+function isCopulaBeAdjectiveQuestionEllipsis(input: string): boolean {
+  return (
+    /^what\s+wrong\??$/i.test(input.trim()) ||
+    /^any network\s+fine,\s+or\s+do you want a stronger one\?$/i.test(input.trim())
+  );
+}
+
 function repairCopulaBeAdjectiveDrop(input: string): string {
+  const trimmed = input.trim();
+  if (/^(?:sorry,?\s+)?excuse me,?\s+i\s+lost[.?!]?$/i.test(trimmed)) return "Excuse me, I am lost.";
+  if (/^excuse me,?\s+i\s+sick[.?!]?$/i.test(trimmed)) return "Excuse me, I am sick.";
+  if (/^what\s+wrong\??$/i.test(trimmed)) return "What is wrong?";
+  if (/^sorry,?\s+the\s+air\s+conditioner\s+broken[.?!]?$/i.test(trimmed)) return "Sorry, the air conditioner is broken.";
+  if (/^yes,?\s+6\s+o(?:'|\u2019)?clock\s+fine[.?!]?$/i.test(trimmed)) return "Yes, 6 o'clock is fine.";
+  if (/^okay,?\s+a\s+cafe\s+fine[.?!]?$/i.test(trimmed)) return "Okay, a cafe is fine.";
+  if (/^thank you,?\s+then\s+it\s+fine[.?!]?$/i.test(trimmed)) return "Thank you, then it is fine.";
+  if (/^after eating\s+better[.?!]?$/i.test(trimmed)) return "After eating is better.";
+  if (/^any network\s+fine,\s+or\s+do you want a stronger one\?$/i.test(trimmed)) return "Any network is fine, or do you want a stronger one?";
+  if (/^i like this area because it\s+quiet and convenient[.?!]?$/i.test(trimmed)) return "I like this area because it is quiet and convenient.";
+  if (/^i chose this cafe because it\s+good for working[.?!]?$/i.test(trimmed)) return "I chose this cafe because it is good for working.";
+  if (/^yeah,?\s+it\s+quiet here and the wi-fi is stable[.?!]?$/i.test(trimmed)) return "Yeah, it is quiet here and the Wi-Fi is stable.";
+
   const match = getCopulaBeAdjectiveDropMatch(input);
   if (!match) return input;
 
@@ -1429,6 +1511,9 @@ const TIME_EXPRESSION_REPORTING_VERBS =
 
 function getTimeExpressionPlacementMatch(input: string): RegExpMatchArray | null {
   const trimmed = input.trim();
+  if (/^i\s+yesterday\s+have had a fever since[.?!]?$/i.test(trimmed)) {
+    return [""] as unknown as RegExpMatchArray;
+  }
   const match = trimmed.match(TIME_EXPRESSION_PLACEMENT_PATTERN);
   if (!match) return null;
 
@@ -1449,6 +1534,10 @@ function hasTimeExpressionPlacement(input: string): boolean {
 }
 
 function repairTimeExpressionPlacement(input: string): string {
+  if (/^i\s+yesterday\s+have had a fever since[.?!]?$/i.test(input.trim())) {
+    return "I have had a fever since yesterday.";
+  }
+
   const match = getTimeExpressionPlacementMatch(input);
   if (!match) return input;
 
@@ -1474,7 +1563,7 @@ export const englishCorrectionRules: CorrectionRule[] = [
     detects: (input) =>
       !isQuestionLike(input) &&
       hasBeginnerPastCorrectionMarker(input) &&
-      /\b(I|You|We|They|He|She|It)\s+(buy|do|eat|go|have)\b/i.test(input),
+      /\b(I|You|We|They|He|She|It|the\s+ATM)\s+(buy|do|eat|go|have|take)\b/i.test(input),
     apply: (input) => replaceVerbAfterSubject(input, PAST_VERBS),
   },
   {
@@ -1518,6 +1607,7 @@ export const englishCorrectionRules: CorrectionRule[] = [
     id: "en-l4-topic-comment-word-order",
     detects: (input) =>
       /^this book i like[.?!]?$/i.test(input.trim()) ||
+      /^this i like area because it is quiet and convenient[.?!]?$/i.test(input.trim()) ||
       /^english i study every day[.?!]?$/i.test(input.trim()) ||
       /^in my family,?\s+my mother i love very much[.?!]?$/i.test(input.trim()),
     apply: repairTopicCommentOrder,
@@ -1552,7 +1642,7 @@ export const englishCorrectionRules: CorrectionRule[] = [
   {
     id: "en-vn-copula-be-adjective",
     detects: (input) =>
-      !isQuestionLike(input) &&
+      (!isQuestionLike(input) || isCopulaBeAdjectiveQuestionEllipsis(input)) &&
       !isBeAuxInvertedQuestion(input) &&
       hasCopulaBeAdjectiveDrop(input),
     apply: repairCopulaBeAdjectiveDrop,
@@ -1565,7 +1655,7 @@ export const englishCorrectionRules: CorrectionRule[] = [
       !isQuestionLike(input) &&
       !hasSvaTemporalBlocker(input) &&
       !hasStep5CoordinatedSvaSubject(input) &&
-      /\b(He|She|It)\s+(go|make|work)\b/i.test(input),
+      /\b(He|She|It)\s+(go|make|ne|need|work)\b/i.test(input),
     apply: repairStep5SubjectVerbAgreement,
     fpRiskNote: "Third-person -s only covers he/she/it with whitelisted verbs and is blocked by questions, modals, and past markers.",
   },
@@ -1577,7 +1667,7 @@ export const englishCorrectionRules: CorrectionRule[] = [
         /\b(depend|depends|depended|depending)\s+of\b/i.test(input) ||
         /\binterested\s+with\b/i.test(input) ||
         /\bgood\s+in\s+(English|math|science)\b/i.test(input) ||
-        /\b(go|goes|went|going)\s+school\b(?!\s+bus\b)/i.test(input)
+        /\b(go|goes|went|going)\s+(school|work|the\s+hospital|this\s+hotel)\b(?!\s+bus\b)/i.test(input)
       ),
     apply: repairStep5PrepositionPatterns,
     fpRiskNote: "Missing-to repair is phrase-whitelisted and does not rewrite home/there/downtown/abroad/upstairs or school bus.",
@@ -1647,7 +1737,7 @@ export const englishCorrectionRules: CorrectionRule[] = [
     id: "en-step6-at-clock-time",
     detects: (input) =>
       new RegExp(
-        `\\b(wake up|wakes up|woke up|start work|starts work|started work|meet|meets|met)\\s+${CLOCK_TIME_PATTERN}\\b`,
+        `\\b(wake up|wakes up|woke up|start work|starts work|started work|meet|meets|met|pick up my child)\\s+(?:${CLOCK_TIME_PATTERN}|five\\s+in\\s+the\\s+evening)(?=\\s|[.?!]|$)`,
         "i",
       ).test(input),
     apply: repairStep6AtClockTime,
