@@ -476,7 +476,7 @@ async function fetchDeepSeekSpeakFollowUp({
     }
     return normalizeAiSpeakFollowUp(data.question);
   } catch {
-    return null;
+    return { ok: false, retryable: true, reason: "timeout_or_network" };
   }
 }
 
@@ -1373,6 +1373,7 @@ export default function AiTutorPage() {
     currentIsPivot: false,
   });
   const speakFollowUpSessionRef = useRef(speakFollowUpSession);
+  const [speakFollowUpPending, setSpeakFollowUpPending] = useState(false);
   const [speakFollowUpProviderError, setSpeakFollowUpProviderError] = useState(false);
   const lastSpeakFollowUpParamsRef = useRef<{ transcript: string; currentTopic: string; turnsOnTopic: number; askedQuestions: string[] } | null>(null);
   const [conversationMessages, setConversationMessages] = useState<ConversationMessage[]>(() => [
@@ -1580,6 +1581,7 @@ export default function AiTutorPage() {
     const { transcript, currentTopic, turnsOnTopic, askedQuestions } = lastSpeakFollowUpParamsRef.current;
     const requestId = speakFollowUpRequestRef.current + 1;
     speakFollowUpRequestRef.current = requestId;
+    setSpeakFollowUpPending(true);
     setSpeakFollowUpProviderError(false);
     applySpeakFollowUpSession({ topicId: currentTopic, turnsOnTopic, askedQuestions, currentQuestion: null, currentIsPivot: false });
     void fetchDeepSeekSpeakFollowUp({
@@ -1592,6 +1594,7 @@ export default function AiTutorPage() {
       avoidTokens: computeSpeakAvoidTokens(transcript, turnsOnTopic),
     }).then((aiQuestion) => {
       if (speakFollowUpRequestRef.current !== requestId) return;
+      setSpeakFollowUpPending(false);
       if (isSpeakFollowUpProviderError(aiQuestion)) {
         setSpeakFollowUpProviderError(true);
         return;
@@ -1614,6 +1617,10 @@ export default function AiTutorPage() {
         currentQuestion: finalQuestion,
         currentIsPivot: false,
       });
+    }).catch(() => {
+      if (speakFollowUpRequestRef.current !== requestId) return;
+      setSpeakFollowUpPending(false);
+      setSpeakFollowUpProviderError(true);
     });
   };
 
@@ -1754,6 +1761,7 @@ export default function AiTutorPage() {
     const requestId = speakFollowUpRequestRef.current + 1;
     speakFollowUpRequestRef.current = requestId;
     lastSpeakFollowUpParamsRef.current = { transcript: spoken, currentTopic: topicId, turnsOnTopic, askedQuestions };
+    setSpeakFollowUpPending(true);
     setSpeakFollowUpProviderError(false);
     applySpeakFollowUpSession({
       topicId,
@@ -1772,6 +1780,7 @@ export default function AiTutorPage() {
       avoidTokens: computeSpeakAvoidTokens(spoken, turnsOnTopic),
     }).then((aiQuestion) => {
       if (speakFollowUpRequestRef.current !== requestId) return;
+      setSpeakFollowUpPending(false);
       if (isSpeakFollowUpProviderError(aiQuestion)) {
         setSpeakFollowUpProviderError(true);
         return;
@@ -1802,6 +1811,10 @@ export default function AiTutorPage() {
         currentQuestion: finalQuestion,
         currentIsPivot: false,
       });
+    }).catch(() => {
+      if (speakFollowUpRequestRef.current !== requestId) return;
+      setSpeakFollowUpPending(false);
+      setSpeakFollowUpProviderError(true);
     });
   };
 
@@ -2213,6 +2226,8 @@ export default function AiTutorPage() {
     lastRecordedSpeakAttemptRef.current = "";
     speakPivotTurnsRef.current = [];
     speakFollowUpRequestRef.current += 1;
+    setSpeakFollowUpPending(false);
+    setSpeakFollowUpProviderError(false);
     applySpeakFollowUpSession({
       topicId: "",
       turnsOnTopic: 0,
@@ -3162,6 +3177,8 @@ export default function AiTutorPage() {
 
   const handleSpeakRepeatInputChange = (value: string) => {
     setSpeakRepeatInput(value);
+    setSpeakFollowUpPending(false);
+    setSpeakFollowUpProviderError(false);
     const current = speakFollowUpSessionRef.current;
     applySpeakFollowUpSession({
       ...current,
@@ -3458,6 +3475,7 @@ export default function AiTutorPage() {
           ttsErrorScope={speakingMessageId === "speak-follow-up" ? "follow-up" : "target"}
           followUpPrompt={speakFollowUpSession.currentQuestion}
           followUpIsPivot={speakFollowUpSession.currentIsPivot}
+          followUpPending={speakFollowUpPending}
           followUpProviderError={speakFollowUpProviderError}
           followUpTtsSpeaking={speakingMessageId === "speak-follow-up" && tts.speaking}
           followUpTtsPreparing={speakingMessageId === "speak-follow-up" && tts.preparing}
