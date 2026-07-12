@@ -361,6 +361,11 @@ Respond ONLY with valid JSON:
 {"corrected":"<corrected sentence>","explanation":"<explanation>","grammarTip":"<tip>","confident":true}
 On low-confidence: {"corrected":"","explanation":"${explainLang === "vi" ? viAbstain : enAbstain}","grammarTip":"","confident":false}`;
 
+    // Bound sentence correction below the client's 18s timeout so the UI receives
+    // our typed 504 instead of a client-side abort or opaque platform 5xx.
+    const correctionTimeoutMs = Number(envValue(env, "MERCY_AI_CORRECTION_TIMEOUT_MS")) || 12_000;
+    const correctionAbort = new AbortController();
+    const correctionTimer = setTimeout(() => correctionAbort.abort(), correctionTimeoutMs);
     try {
       const corrResponse = await fetch("https://api.openai.com/v1/chat/completions", {
         method: "POST",
@@ -378,6 +383,7 @@ On low-confidence: {"corrected":"","explanation":"${explainLang === "vi" ? viAbs
           max_tokens: isRunOn ? 400 : 220,
           response_format: { type: "json_object" },
         }),
+        signal: correctionAbort.signal,
       });
       if (!corrResponse.ok) {
         return failureJson(context, "/api/mercy-ai", mode, 500, "correction_provider_failed", {
@@ -409,10 +415,21 @@ On low-confidence: {"corrected":"","explanation":"${explainLang === "vi" ? viAbs
         grammarTip: norm(parsed.grammarTip) || "",
         confident,
       });
-    } catch {
+    } catch (err) {
+      const timedOut =
+        correctionAbort.signal.aborted ||
+        (err instanceof Error && /timed out|abort/i.test(err.message));
+      if (timedOut) {
+        return failureJson(context, "/api/mercy-ai", mode, 504, "correction_timeout", {
+          error: "Correction timed out",
+          timeout: true,
+        });
+      }
       return failureJson(context, "/api/mercy-ai", mode, 500, "correction_failed", {
         error: "correction_failed",
       });
+    } finally {
+      clearTimeout(correctionTimer);
     }
   }
 
