@@ -32,7 +32,7 @@ type QueryError = { code?: string; message?: string };
 type QueryResult<T> = { data: T | null; error: QueryError | null };
 type QueryBuilder<T = Record<string, unknown>[]> = PromiseLike<QueryResult<T>> & {
   select(columns: string): QueryBuilder<T>;
-  insert(row: Record<string, unknown>): PromiseLike<QueryResult<T>>;
+  insert(row: Record<string, unknown>): QueryBuilder<T>;
   upsert(row: Record<string, unknown>, options?: Record<string, unknown>): QueryBuilder<T>;
   update(row: Record<string, unknown>): QueryBuilder<T>;
   eq(column: string, value: unknown): QueryBuilder<T>;
