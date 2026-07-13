@@ -124,7 +124,7 @@ function findCellLessonObjects(file, sourceText) {
   function visit(node) {
     if (ts.isObjectLiteralExpression(node)) {
       const properties = objectProperties(node);
-      if (hasArrayField(properties, "vocabulary") || hasArrayField(properties, "dialogue")) {
+      if (hasArrayField(properties, "vocabulary") || hasArrayField(properties, "phrases") || hasArrayField(properties, "dialogue")) {
         lessons.push({ node, properties });
       }
     }
@@ -158,6 +158,7 @@ function audioMapAddressKey(sourceFile, type, lessonId, ordinal) {
 function collectAudioMapAddresses(root, audioMapDir = DEFAULT_AUDIO_MAP_DIR) {
   const dir = path.join(root, audioMapDir);
   const addresses = new Set();
+  const cellIds = new Set();
   let files = [];
   try {
     files = fs.readdirSync(dir, { withFileTypes: true })
@@ -165,7 +166,7 @@ function collectAudioMapAddresses(root, audioMapDir = DEFAULT_AUDIO_MAP_DIR) {
       .map((entry) => path.join(dir, entry.name))
       .sort();
   } catch {
-    return { addresses, files: 0, cells: 0 };
+    return { addresses, cellIds, files: 0, cells: 0 };
   }
 
   let cells = 0;
@@ -178,6 +179,10 @@ function collectAudioMapAddresses(root, audioMapDir = DEFAULT_AUDIO_MAP_DIR) {
     }
     for (const cell of Array.isArray(parsed?.cells) ? parsed.cells : []) {
       if (!Array.isArray(cell?.tuples) || cell.tuples.length === 0) continue;
+      cells++;
+      if (typeof cell?.cell_id === "string" && cell.cell_id.trim().length > 0) {
+        cellIds.add(cell.cell_id.trim());
+      }
       const type = audioMapType(cell.cell_type);
       const key = audioMapAddressKey(
         cell.source_file,
@@ -187,10 +192,9 @@ function collectAudioMapAddresses(root, audioMapDir = DEFAULT_AUDIO_MAP_DIR) {
       );
       if (!key) continue;
       addresses.add(key);
-      cells++;
     }
   }
-  return { addresses, files: files.length, cells };
+  return { addresses, cellIds, files: files.length, cells };
 }
 
 function audioReferences(properties) {
@@ -405,8 +409,13 @@ export function scanCellCoverage(options = {}) {
       lessonObjectCount++;
       const level = stringField(lesson.properties, "level") || "unknown";
       const lessonId = scalarField(lesson.properties, "id");
-      for (const type of ["vocabulary", "dialogue"]) {
-        const array = lesson.properties.get(type);
+      const cellArrays = [
+        { type: "vocabulary", field: "vocabulary" },
+        { type: "vocabulary", field: "phrases" },
+        { type: "dialogue", field: "dialogue" },
+      ];
+      for (const { type, field } of cellArrays) {
+        const array = lesson.properties.get(field);
         if (!array || !ts.isArrayLiteralExpression(array)) continue;
         filesWithCell.add(rel(root, file));
         let ordinal = 0;
@@ -417,7 +426,9 @@ export function scanCellCoverage(options = {}) {
           const ipaRefs = ipaReferences(properties);
           const audioRefs = audioReferences(properties);
           const checkedInReference = audioRefs.some((ref) => resolveAudioReference(ref, audioAssets));
-          const cacheMapped = audioMap.addresses.has(audioMapAddressKey(rel(root, file), type, lessonId, ordinal));
+          const cellId = populatedStringField(properties, "cell_id");
+          const cacheMapped = (cellId && audioMap.cellIds.has(cellId))
+            || audioMap.addresses.has(audioMapAddressKey(rel(root, file), type, lessonId, ordinal));
           const audioTier = checkedInReference
             ? "checked_in_reference"
             : cacheMapped
@@ -428,7 +439,7 @@ export function scanCellCoverage(options = {}) {
             type,
             level,
             text: textForObject(properties, type),
-            cellId: populatedStringField(properties, "cell_id"),
+            cellId,
             ipaCovered: ipaRefs.some((ref) => String(ref.value || "").trim().length > 0),
             audioCovered: checkedInReference,
             audioTier,

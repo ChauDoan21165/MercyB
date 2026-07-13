@@ -88,15 +88,18 @@ function buildRowsFromSource(lessons) {
       const vietnamese = pickText(phrase, "vietnamese");
       const pronunciation = pickText(phrase, "pronunciation") ?? pickText(phrase, "pronunciation_hint");
       if (!english) return;
+      const legacyCellId = `vi-en:A1:lesson-${String(lesson.id).padStart(3, "0")}:vocabulary-${String(ordinal).padStart(3, "0")}`;
 
       rows.push({
         cell_id: requireCellId(phrase, addressHash),
         address_hash: addressHash,
+        legacy_cell_id: legacyCellId,
         cell_type: "Vocabulary Item",
         source_file: SOURCE_PATH,
         source_object: {
           lesson_id: lesson.id,
           lesson_title_en: lesson.title_en,
+          array_field: "phrases",
           ordinal,
         },
         address: {
@@ -129,15 +132,18 @@ function buildRowsFromSource(lessons) {
       const vietnamese = pickText(turn, "vietnamese");
       const pronunciation = pickText(turn, "pronunciation") ?? pickText(turn, "pronunciation_hint");
       if (!english) return;
+      const legacyCellId = `vi-en:A1:lesson-${String(lesson.id).padStart(3, "0")}:dialogue-turn-${String(ordinal).padStart(3, "0")}`;
 
       rows.push({
         cell_id: requireCellId(turn, addressHash),
         address_hash: addressHash,
+        legacy_cell_id: legacyCellId,
         cell_type: "Dialogue Turn",
         source_file: SOURCE_PATH,
         source_object: {
           lesson_id: lesson.id,
           lesson_title_en: lesson.title_en,
+          array_field: "dialogue",
           ordinal,
         },
         address: {
