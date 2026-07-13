@@ -55,6 +55,7 @@ export function logFunctionFailure({
     error_signature: errorClass,
     message: safeMessage(errorClass, status, detail),
     request_id: requestId,
+    user_id: safeUserId(detail?.userId),
     detail: safeDetail(mode, detail),
   });
   return requestId;
@@ -149,6 +150,7 @@ function safeDetail(
   for (const key of [
     "provider",
     "providerStatus",
+    "upstreamStatus",
     "errorName",
     "errorMessage",
     "upstreamBody",
@@ -163,4 +165,8 @@ function safeDetail(
     }
   }
   return safe;
+}
+
+function safeUserId(value: unknown): string | null {
+  return typeof value === "string" && /^[0-9a-f-]{36}$/i.test(value) ? value : null;
 }
