@@ -40,6 +40,7 @@ test.skip(
 
 const FEEDBACK_TABLE = "learning_events";
 const SINK_WAIT_MS = 60_000; // journey (d) budget
+const DEFER_NOTICE_RE = /Đã ghi nhận · Noted|Mercy ghi nhận câu này|Got it.*share a small tip in a moment/i;
 
 function projectRef(url: string): string {
   return new URL(url).host.split(".")[0];
@@ -72,11 +73,11 @@ async function pinSyntheticLessonState(page: import("@playwright/test").Page): P
 }
 
 function expectsImmediateCorrection(probe: SeededCorrectionProbe): boolean {
-  return probe.expectedShadowPath === "target_form_correct_now";
+  return probe.expectedProductPath === "immediate_correction";
 }
 
 function expectedShadowAction(probe: SeededCorrectionProbe): "correct_now" | "defer_to_recap" {
-  return expectsImmediateCorrection(probe) ? "correct_now" : "defer_to_recap";
+  return probe.expectedShadowPath === "target_form_correct_now" ? "correct_now" : "defer_to_recap";
 }
 
 function orderedCorrectionProbes(
@@ -234,12 +235,12 @@ test("(b/c/d) correction → feedback tap → row lands with rule_or_detector_id
   const feedbackProbe = seededProbes.find(expectsImmediateCorrection);
   await pinSyntheticLessonState(page);
 
-  // (b) submit seeded-error sentences in grammar mode. Prod currently runs LPI
-  // policy in SHADOW mode: a shadow "defer_to_recap" decision is telemetry only,
-  // not UI enforcement. Therefore every seed that produces a correction must
-  // still render a correction card + feedback buttons in the UI. The true UI
-  // defer notice ("Đã ghi nhận · Noted") belongs to the legacy timing gate and
-  // is not asserted by these LPI-shadow probes.
+  // (b) submit seeded-error sentences in grammar mode. The seed contract tracks
+  // the product path, not just LPI shadow telemetry:
+  // - immediate_correction: correction card + feedback buttons
+  // - legacy_timing_defer: true UI defer notice, no feedback buttons
+  // - lpi_shadow_defer: correction card + feedback buttons; shadow defer is
+  //   telemetry only while VITE_LPI_POLICY_MODE=shadow.
   const tB = Date.now();
   let bOk = false, bDetail = "";
   let feedbackReady = false;
@@ -253,13 +254,24 @@ test("(b/c/d) correction → feedback tap → row lands with rule_or_detector_id
       try {
         await submitCorrectionProbe(page, probe);
 
+        if (probe.expectedProductPath === "legacy_timing_defer") {
+          await expect(page.getByText(DEFER_NOTICE_RE)).toBeVisible({ timeout: 30_000 });
+          await expect(page.getByTestId("correction-feedback-helpful")).toHaveCount(0);
+          details.push(
+            `${probe.id}: legacy timing defer notice rendered; no correction feedback expected; expectedDetector=${probe.expectedDetector}`,
+          );
+          continue;
+        }
+
         // The correction is "rendered" iff the feedback buttons mount (they only
         // render for a correction that carries a real rule_or_detector_id).
         await expect(page.getByTestId("correction-feedback-helpful")).toBeVisible({ timeout: 30_000 });
-        const shadowDecision = await readLatestShadowDecision(page, accessToken, probe, submittedAt)
-          .catch((e) => `shadow_unchecked: ${redact((e as Error).message)}`);
+        const shadowDecision = probe.expectedProductPath === "lpi_shadow_defer"
+          ? await readLatestShadowDecision(page, accessToken, probe, submittedAt)
+            .catch((e) => `shadow_unchecked: ${redact((e as Error).message)}`)
+          : "shadow_not_checked";
         details.push(
-          `${probe.id}: correction rendered with feedback buttons; expectedDetector=${probe.expectedDetector}; expectedShadowPath=${probe.expectedShadowPath}; ${shadowDecision}`,
+          `${probe.id}: correction rendered with feedback buttons; productPath=${probe.expectedProductPath}; expectedDetector=${probe.expectedDetector}; expectedShadowPath=${probe.expectedShadowPath}; ${shadowDecision}`,
         );
         if (probe.id === feedbackProbe.id) feedbackReady = true;
       } catch (e) {

@@ -30,6 +30,7 @@ type FixtureFamily = {
 };
 type InventoryCell = {
   id: string;
+  address_hash?: string;
   cell_type: string;
   source_object?: { lesson_id?: number; ordinal?: number; lesson_title_en?: string };
 };
@@ -51,6 +52,7 @@ type Probe = {
 };
 type CellReport = {
   cell_id: string;
+  address_hash: string;
   lesson_id: number;
   ordinal: number;
   lesson_title_en: string;
@@ -161,7 +163,7 @@ function inventoryCells(value: unknown): InventoryCell[] {
     else Object.values(record).forEach(visit);
   };
   visit(value);
-  return found.sort((a, b) => a.id.localeCompare(b.id));
+  return found.sort((a, b) => (a.address_hash ?? a.id).localeCompare(b.address_hash ?? b.id));
 }
 
 function dialogueEnglishByAddress(): Map<string, { english: string; lessonTitle: string }> {
@@ -293,6 +295,7 @@ function probeCells(families: FixtureFamily[]): CellReport[] {
     const coverage = probes.length === 0 ? "unmeasured" : ruleFamilyCorrect === probes.length ? "measured-covered" : "measured-blind";
     return {
       cell_id: cell.id,
+      address_hash: cell.address_hash ?? "",
       lesson_id: lessonId,
       ordinal,
       lesson_title_en: mapped?.lessonTitle ?? cell.source_object?.lesson_title_en ?? "",
@@ -369,10 +372,10 @@ function markdown(report: ReturnType<typeof buildReport>): string {
     });
   }
   lines.push("", "## Cell Coverage", "");
-  lines.push("| Cell | English | Probes | Caught | Rule-family-correct | Coverage |");
-  lines.push("| --- | --- | ---: | ---: | ---: | --- |");
+  lines.push("| Cell | Address hash | English | Probes | Caught | Rule-family-correct | Coverage |");
+  lines.push("| --- | --- | --- | ---: | ---: | ---: | --- |");
   for (const cell of report.cells) {
-    lines.push(`| ${cell.cell_id} | ${cell.english.replaceAll("|", "\\|")} | ${cell.probes_run} | ${cell.caught} | ${cell.rule_family_correct} | ${cell.coverage} |`);
+    lines.push(`| ${cell.cell_id} | ${cell.address_hash} | ${cell.english.replaceAll("|", "\\|")} | ${cell.probes_run} | ${cell.caught} | ${cell.rule_family_correct} | ${cell.coverage} |`);
   }
   return `${lines.join("\n")}\n`;
 }

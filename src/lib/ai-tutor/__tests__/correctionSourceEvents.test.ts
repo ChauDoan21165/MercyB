@@ -1,0 +1,67 @@
+import { describe, expect, it, vi } from "vitest";
+import {
+  classifyCorrectionSourceEvent,
+  deriveCorrectionSourceLangPair,
+  writeCorrectionSourceEvent,
+  type CorrectionSourceEventRow,
+  type CorrectionSourceEventSource,
+} from "../correctionSourceEvents";
+
+describe("correction source events", () => {
+  it.each([
+    [{ localStatus: "corrected" as const }, "local_corrected"],
+    [{ localStatus: "unchanged" as const, serverAttempted: true }, "local_unchanged_server_attempt"],
+    [{ localStatus: "needs_ai" as const, serverAttempted: true, serverSucceeded: true }, "server_corrected"],
+    [{ localStatus: "needs_ai" as const, serverAttempted: true, serverSucceeded: false }, "server_failed"],
+  ])("classifies %#", (input, expected) => {
+    expect(classifyCorrectionSourceEvent(input)).toBe(expected);
+  });
+
+  it("writes the four text-free source rows with language pair and synthetic tag", async () => {
+    const rows: CorrectionSourceEventRow[] = [];
+    const sources: CorrectionSourceEventSource[] = [
+      "local_corrected",
+      "local_unchanged_server_attempt",
+      "server_corrected",
+      "server_failed",
+    ];
+
+    for (const source of sources) {
+      await writeCorrectionSourceEvent(
+        { source, targetLanguage: "en" },
+        {
+          getUserContext: async () => ({ nativeLanguage: "vi", isSynthetic: true }),
+          insertRow: async (row) => {
+            rows.push(row);
+            return { error: null };
+          },
+        },
+      );
+    }
+
+    expect(rows).toEqual(
+      sources.map((source) => ({
+        source,
+        lang_pair: "vi-en",
+        is_synthetic: true,
+      })),
+    );
+  });
+
+  it("normalizes missing profile context without throwing", async () => {
+    const insertRow = vi.fn(async (_row: CorrectionSourceEventRow) => ({ error: null }));
+
+    await writeCorrectionSourceEvent(
+      { source: "server_failed", targetLanguage: "en" },
+      {
+        getUserContext: async () => {
+          throw new Error("profile read failed");
+        },
+        insertRow,
+      },
+    );
+
+    expect(insertRow).not.toHaveBeenCalled();
+    expect(deriveCorrectionSourceLangPair(" Vietnamese ", "en")).toBe("vietnamese-en");
+  });
+});

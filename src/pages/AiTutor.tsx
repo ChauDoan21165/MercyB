@@ -38,6 +38,7 @@ import {
   normalizeSpokenText,
   appendCleanSpeech,
 } from "@/lib/ai-tutor/tutorUiCopy";
+import { recordCorrectionSourceEvent } from "@/lib/ai-tutor/correctionSourceEvents";
 import { fetchWithTimeout } from "@/lib/networkTimeout";
 import { getTutorCopy, type TutorCopy, type TutorTarget } from "@/lib/tutor/tutorCopy";
 import { getSpeechLocale, getTtsLocale } from "@/lib/tutor/languageRegistry";
@@ -2587,9 +2588,17 @@ export default function AiTutorPage() {
       const { data: freshSessionData } = await supabase.auth.getSession();
       const accessToken = freshSessionData?.session?.access_token ?? session?.access_token;
       if (accessToken) {
+        recordCorrectionSourceEvent({
+          source: "local_unchanged_server_attempt",
+          targetLanguage: target,
+        });
         const aiResult = await callAiSentenceCorrection(trimmed, accessToken, explainLanguage, target);
         setLoading(false);
         if (isAiCorrectionFailure(aiResult)) {
+          recordCorrectionSourceEvent({
+            source: "server_failed",
+            targetLanguage: target,
+          });
           recordLpiLearnerTurn(false);
           setError(
             aiResult.reason === "auth"
@@ -2601,6 +2610,10 @@ export default function AiTutorPage() {
           return;
         }
         if (aiResult?.confident && aiResult.corrected) {
+          recordCorrectionSourceEvent({
+            source: "server_corrected",
+            targetLanguage: target,
+          });
           const aiCorrected = aiResult.corrected;
           const { turn } = buildCorrectionTurn({
             id: `corr-${Date.now()}-${Math.random().toString(16).slice(2, 8)}`,
@@ -2665,6 +2678,10 @@ export default function AiTutorPage() {
           return;
         }
         // AI also not confident — specific abstention, not a generic canned line.
+        recordCorrectionSourceEvent({
+          source: "server_failed",
+          targetLanguage: target,
+        });
         recordLpiLearnerTurn(false);
         setError(aiResult?.explanation || GRAMMAR_CORRECTION_UNAVAILABLE_MESSAGE);
         return;
@@ -2683,6 +2700,10 @@ export default function AiTutorPage() {
       recordLpiLearnerTurn(false);
       return;
     }
+    recordCorrectionSourceEvent({
+      source: "local_corrected",
+      targetLanguage: target,
+    });
     const sessionErrorDensity = recordLpiLearnerTurn(true);
     // Step 013 / WP-000 — correction timing before showing the result.
     // Flag OFF (default): original correctWithTimingAwareness path — byte-identical
