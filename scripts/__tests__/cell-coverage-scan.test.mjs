@@ -31,6 +31,11 @@ function makeFixture() {
           source_object: { lesson_id: "mock-a1", ordinal: 2 },
           tuples: [{ role: "english_target", url: "https://example.test/cache/adios.mp3" }],
         },
+        {
+          cell_id: "33333333-3333-4333-8333-333333333333",
+          cell_type: "Vocabulary Item",
+          tuples: [{ role: "english_target", url: "https://example.test/cache/phrase.mp3" }],
+        },
       ],
     }),
   );
@@ -45,6 +50,9 @@ export const lessons = [
       { cell_id: "11111111-1111-4111-8111-111111111111", word: "alpha beta", pronunciation: "/al.fa/", audio: "/audio/existing.mp3" },
       { word: "beta gamma", pronunciation: "", audio: "/audio/missing.mp3" },
       { word: "delta", pronunciation: "", audio: "/audio/missing-other.mp3" }
+    ],
+    phrases: [
+      { cell_id: "33333333-3333-4333-8333-333333333333", word: "phrase mapped", pronunciation: "", audio: "/audio/missing-phrase.mp3" }
     ],
     dialogue: [
       { cell_id: "11111111-1111-4111-8111-111111111111", speaker: "A", spanish: "hola beta", pronunciation: "OH-la", audio: "audio/existing.mp3" },
@@ -70,25 +78,25 @@ describe("cell-coverage-scan", () => {
     expect(scan.filesScanned).toBe(1);
     expect(scan.filesWithCell).toBe(1);
     expect(scan.lessonObjects).toBe(1);
-    expect(scan.cellIds.totalObjects).toBe(5);
-    expect(scan.cellIds.populated).toBe(2);
+    expect(scan.cellIds.totalObjects).toBe(6);
+    expect(scan.cellIds.populated).toBe(3);
     expect(scan.cellIds.missing).toBe(3);
-    expect(scan.cellIds.unique).toBe(1);
+    expect(scan.cellIds.unique).toBe(2);
     expect(scan.cellIds.duplicateIds).toBe(1);
     expect(scan.cellIds.duplicateObjects).toBe(2);
 
     expect(scan.audioMapFiles).toBe(1);
-    expect(scan.audioMapCells).toBe(2);
+    expect(scan.audioMapCells).toBe(3);
 
-    expect(scan.totals.vocabulary.objects).toBe(3);
+    expect(scan.totals.vocabulary.objects).toBe(4);
     expect(scan.totals.vocabulary.ipaCoveredObjects).toBe(1);
     expect(scan.totals.vocabulary.audioCoveredObjects).toBe(1);
-    expect(scan.totals.vocabulary.cacheMappedObjects).toBe(1);
+    expect(scan.totals.vocabulary.cacheMappedObjects).toBe(2);
     expect(scan.totals.vocabulary.runtimeTtsOnlyObjects).toBe(1);
-    expect(scan.totals.vocabulary.uniqueWordTokens).toBe(4);
+    expect(scan.totals.vocabulary.uniqueWordTokens).toBe(6);
     expect(scan.totals.vocabulary.ipaCoveredUniqueWordTokens).toBe(2);
     expect(scan.totals.vocabulary.audioCoveredUniqueWordTokens).toBe(2);
-    expect(scan.totals.vocabulary.cacheMappedUniqueWordTokens).toBe(1);
+    expect(scan.totals.vocabulary.cacheMappedUniqueWordTokens).toBe(3);
     expect(scan.totals.vocabulary.runtimeTtsOnlyUniqueWordTokens).toBe(1);
 
     expect(scan.totals.dialogue.objects).toBe(2);
@@ -110,9 +118,9 @@ describe("cell-coverage-scan", () => {
       totals: {
         vocabulary: {
           uncoveredIpaObjects: 0,
-          uncoveredAudioObjects: 2,
-          uncoveredIpaUniqueWordTokens: 2,
-          uncoveredAudioUniqueWordTokens: 2,
+          uncoveredAudioObjects: 3,
+          uncoveredIpaUniqueWordTokens: 4,
+          uncoveredAudioUniqueWordTokens: 4,
         },
         dialogue: {
           uncoveredIpaObjects: 1,
@@ -128,7 +136,7 @@ describe("cell-coverage-scan", () => {
           type: "vocabulary",
           metric: "uncoveredIpaObjects",
           baseline: 0,
-          actual: 2,
+          actual: 3,
         },
     ]);
   });
