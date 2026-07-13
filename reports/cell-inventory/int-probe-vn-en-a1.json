@@ -4190,7 +4190,8 @@
   ],
   "cells": [
     {
-      "cell_id": "vi-en:A1:lesson-026:dialogue-turn-001",
+      "cell_id": "3b4ed11c-b0bc-46bc-80ba-7854d2b10e5f",
+      "address_hash": "vi-en:A1:lesson-026:dialogue-turn-001",
       "lesson_id": 26,
       "ordinal": 1,
       "lesson_title_en": "Roleplay: Ordering Coffee",
@@ -4202,7 +4203,8 @@
       "probes": []
     },
     {
-      "cell_id": "vi-en:A1:lesson-026:dialogue-turn-002",
+      "cell_id": "1dd33809-3ae2-490a-b101-3935a7a05e8c",
+      "address_hash": "vi-en:A1:lesson-026:dialogue-turn-002",
       "lesson_id": 26,
       "ordinal": 2,
       "lesson_title_en": "Roleplay: Ordering Coffee",
@@ -4214,7 +4216,8 @@
       "probes": []
     },
     {
-      "cell_id": "vi-en:A1:lesson-026:dialogue-turn-003",
+      "cell_id": "60184748-140c-4a3d-8f23-0e6cb975ea31",
+      "address_hash": "vi-en:A1:lesson-026:dialogue-turn-003",
       "lesson_id": 26,
       "ordinal": 3,
       "lesson_title_en": "Roleplay: Ordering Coffee",
@@ -4226,7 +4229,8 @@
       "probes": []
     },
     {
-      "cell_id": "vi-en:A1:lesson-026:dialogue-turn-004",
+      "cell_id": "88c66b04-a3c2-4058-b1a0-f556c2e1ffb9",
+      "address_hash": "vi-en:A1:lesson-026:dialogue-turn-004",
       "lesson_id": 26,
       "ordinal": 4,
       "lesson_title_en": "Roleplay: Ordering Coffee",
@@ -4238,7 +4242,8 @@
       "probes": []
     },
     {
-      "cell_id": "vi-en:A1:lesson-026:dialogue-turn-005",
+      "cell_id": "7ddbb754-d253-4552-8132-7f8c37d125fe",
+      "address_hash": "vi-en:A1:lesson-026:dialogue-turn-005",
       "lesson_id": 26,
       "ordinal": 5,
       "lesson_title_en": "Roleplay: Ordering Coffee",
@@ -4250,7 +4255,8 @@
       "probes": []
     },
     {
-      "cell_id": "vi-en:A1:lesson-027:dialogue-turn-001",
+      "cell_id": "1dd911aa-0158-4e4f-83d5-4ddeccfdefc9",
+      "address_hash": "vi-en:A1:lesson-027:dialogue-turn-001",
       "lesson_id": 27,
       "ordinal": 1,
       "lesson_title_en": "Roleplay: Ordering Street Food",
@@ -4262,7 +4268,8 @@
       "probes": []
     },
     {
-      "cell_id": "vi-en:A1:lesson-027:dialogue-turn-002",
+      "cell_id": "ed199952-a051-4633-9ac0-05e2a37c72a2",
+      "address_hash": "vi-en:A1:lesson-027:dialogue-turn-002",
       "lesson_id": 27,
       "ordinal": 2,
       "lesson_title_en": "Roleplay: Ordering Street Food",
@@ -4274,7 +4281,8 @@
       "probes": []
     },
     {
-      "cell_id": "vi-en:A1:lesson-027:dialogue-turn-003",
+      "cell_id": "568924ab-305c-42b3-85f3-805bedf9970b",
+      "address_hash": "vi-en:A1:lesson-027:dialogue-turn-003",
       "lesson_id": 27,
       "ordinal": 3,
       "lesson_title_en": "Roleplay: Ordering Street Food",
@@ -4286,7 +4294,8 @@
       "probes": []
     },
     {
-      "cell_id": "vi-en:A1:lesson-027:dialogue-turn-004",
+      "cell_id": "d35784c7-044c-4cb7-84c9-72f09298a990",
+      "address_hash": "vi-en:A1:lesson-027:dialogue-turn-004",
       "lesson_id": 27,
       "ordinal": 4,
       "lesson_title_en": "Roleplay: Ordering Street Food",
@@ -4297,8 +4306,8 @@
       "coverage": "measured-blind",
       "probes": [
         {
-          "probe_id": "db272cb94fcf",
-          "cell_id": "vi-en:A1:lesson-027:dialogue-turn-004",
+          "probe_id": "ce88e5f15d01",
+          "cell_id": "d35784c7-044c-4cb7-84c9-72f09298a990",
           "rule_family": "en-question-form-final-mark",
           "fixture_files": [
             "question-form-final-mark.json"
@@ -4322,8 +4331,8 @@
           "rule_family_correct": true
         },
         {
-          "probe_id": "49cb5abacc3f",
-          "cell_id": "vi-en:A1:lesson-027:dialogue-turn-004",
+          "probe_id": "008b54dd3e1f",
+          "cell_id": "d35784c7-044c-4cb7-84c9-72f09298a990",
           "rule_family": "en-vn-yesno-do-support",
           "fixture_files": [
             "yesno-do-support.json"
@@ -4347,7 +4356,8 @@
       ]
     },
     {
-      "cell_id": "vi-en:A1:lesson-027:dialogue-turn-005",
+      "cell_id": "8a7d9af1-5f5d-4612-ba23-37226b61e04e",
+      "address_hash": "vi-en:A1:lesson-027:dialogue-turn-005",
       "lesson_id": 27,
       "ordinal": 5,
       "lesson_title_en": "Roleplay: Ordering Street Food",
@@ -4359,7 +4369,8 @@
       "probes": []
     },
     {
-      "cell_id": "vi-en:A1:lesson-027:dialogue-turn-006",
+      "cell_id": "1330e89e-eeac-4f14-ac7a-622cccc9dc3d",
+      "address_hash": "vi-en:A1:lesson-027:dialogue-turn-006",
       "lesson_id": 27,
       "ordinal": 6,
       "lesson_title_en": "Roleplay: Ordering Street Food",
@@ -4371,7 +4382,8 @@
       "probes": []
     },
     {
-      "cell_id": "vi-en:A1:lesson-028:dialogue-turn-001",
+      "cell_id": "d3ed7ea5-38c1-4ebd-95ee-8b16475e51d2",
+      "address_hash": "vi-en:A1:lesson-028:dialogue-turn-001",
       "lesson_id": 28,
       "ordinal": 1,
       "lesson_title_en": "Roleplay: Asking A Taxi Or Grab Driver",
@@ -4382,8 +4394,8 @@
       "coverage": "measured-blind",
       "probes": [
         {
-          "probe_id": "60b29f3a4cc3",
-          "cell_id": "vi-en:A1:lesson-028:dialogue-turn-001",
+          "probe_id": "109df3ac086a",
+          "cell_id": "d3ed7ea5-38c1-4ebd-95ee-8b16475e51d2",
           "rule_family": "en-question-form-final-mark",
           "fixture_files": [
             "question-form-final-mark.json"
@@ -4407,8 +4419,8 @@
           "rule_family_correct": true
         },
         {
-          "probe_id": "13a57154bed3",
-          "cell_id": "vi-en:A1:lesson-028:dialogue-turn-001",
+          "probe_id": "41570833003f",
+          "cell_id": "d3ed7ea5-38c1-4ebd-95ee-8b16475e51d2",
           "rule_family": "en-vn-yesno-do-support",
           "fixture_files": [
             "yesno-do-support.json"
@@ -4432,7 +4444,8 @@
       ]
     },
     {
-      "cell_id": "vi-en:A1:lesson-028:dialogue-turn-002",
+      "cell_id": "490d459d-0700-4f3a-be92-3823b1dc61ea",
+      "address_hash": "vi-en:A1:lesson-028:dialogue-turn-002",
       "lesson_id": 28,
       "ordinal": 2,
       "lesson_title_en": "Roleplay: Asking A Taxi Or Grab Driver",
@@ -4444,7 +4457,8 @@
       "probes": []
     },
     {
-      "cell_id": "vi-en:A1:lesson-028:dialogue-turn-003",
+      "cell_id": "f5e95dfb-0c45-4b8f-84cf-9f050be63932",
+      "address_hash": "vi-en:A1:lesson-028:dialogue-turn-003",
       "lesson_id": 28,
       "ordinal": 3,
       "lesson_title_en": "Roleplay: Asking A Taxi Or Grab Driver",
@@ -4456,7 +4470,8 @@
       "probes": []
     },
     {
-      "cell_id": "vi-en:A1:lesson-028:dialogue-turn-004",
+      "cell_id": "374be562-fc80-4845-8c71-c059330ea1ce",
+      "address_hash": "vi-en:A1:lesson-028:dialogue-turn-004",
       "lesson_id": 28,
       "ordinal": 4,
       "lesson_title_en": "Roleplay: Asking A Taxi Or Grab Driver",
@@ -4467,8 +4482,8 @@
       "coverage": "measured-blind",
       "probes": [
         {
-          "probe_id": "cd37582951b3",
-          "cell_id": "vi-en:A1:lesson-028:dialogue-turn-004",
+          "probe_id": "f1deafc0fa29",
+          "cell_id": "374be562-fc80-4845-8c71-c059330ea1ce",
           "rule_family": "en-question-form-final-mark",
           "fixture_files": [
             "question-form-final-mark.json"
@@ -4492,8 +4507,8 @@
           "rule_family_correct": true
         },
         {
-          "probe_id": "4bec4c7ee258",
-          "cell_id": "vi-en:A1:lesson-028:dialogue-turn-004",
+          "probe_id": "498bcd030d4c",
+          "cell_id": "374be562-fc80-4845-8c71-c059330ea1ce",
           "rule_family": "en-vn-yesno-do-support",
           "fixture_files": [
             "yesno-do-support.json"
@@ -4517,7 +4532,8 @@
       ]
     },
     {
-      "cell_id": "vi-en:A1:lesson-028:dialogue-turn-005",
+      "cell_id": "2cc0f3f9-9c74-432b-b83e-2fa1f659e6f6",
+      "address_hash": "vi-en:A1:lesson-028:dialogue-turn-005",
       "lesson_id": 28,
       "ordinal": 5,
       "lesson_title_en": "Roleplay: Asking A Taxi Or Grab Driver",
@@ -4529,7 +4545,8 @@
       "probes": []
     },
     {
-      "cell_id": "vi-en:A1:lesson-029:dialogue-turn-001",
+      "cell_id": "dfc7d721-5bd0-46e8-aefc-785e433368b4",
+      "address_hash": "vi-en:A1:lesson-029:dialogue-turn-001",
       "lesson_id": 29,
       "ordinal": 1,
       "lesson_title_en": "Roleplay: Asking Directions",
@@ -4541,7 +4558,8 @@
       "probes": []
     },
     {
-      "cell_id": "vi-en:A1:lesson-029:dialogue-turn-002",
+      "cell_id": "275a3db5-82b0-4d2b-9f60-be70fee14c5e",
+      "address_hash": "vi-en:A1:lesson-029:dialogue-turn-002",
       "lesson_id": 29,
       "ordinal": 2,
       "lesson_title_en": "Roleplay: Asking Directions",
@@ -4553,7 +4571,8 @@
       "probes": []
     },
     {
-      "cell_id": "vi-en:A1:lesson-029:dialogue-turn-003",
+      "cell_id": "ea507b08-e6bb-4279-8ecd-58c781ec49c3",
+      "address_hash": "vi-en:A1:lesson-029:dialogue-turn-003",
       "lesson_id": 29,
       "ordinal": 3,
       "lesson_title_en": "Roleplay: Asking Directions",
@@ -4564,8 +4583,8 @@
       "coverage": "measured-blind",
       "probes": [
         {
-          "probe_id": "91c2d562b038",
-          "cell_id": "vi-en:A1:lesson-029:dialogue-turn-003",
+          "probe_id": "bc3b3a653dc0",
+          "cell_id": "ea507b08-e6bb-4279-8ecd-58c781ec49c3",
           "rule_family": "en-question-form-final-mark",
           "fixture_files": [
             "question-form-final-mark.json"
@@ -4589,8 +4608,8 @@
           "rule_family_correct": true
         },
         {
-          "probe_id": "be99ce1e174e",
-          "cell_id": "vi-en:A1:lesson-029:dialogue-turn-003",
+          "probe_id": "84b083cd3d08",
+          "cell_id": "ea507b08-e6bb-4279-8ecd-58c781ec49c3",
           "rule_family": "en-vn-yesno-do-support",
           "fixture_files": [
             "yesno-do-support.json"
@@ -4614,7 +4633,8 @@
       ]
     },
     {
-      "cell_id": "vi-en:A1:lesson-029:dialogue-turn-004",
+      "cell_id": "fa001d13-e831-4287-bdd2-8d6a74ed9c97",
+      "address_hash": "vi-en:A1:lesson-029:dialogue-turn-004",
       "lesson_id": 29,
       "ordinal": 4,
       "lesson_title_en": "Roleplay: Asking Directions",
@@ -4626,7 +4646,8 @@
       "probes": []
     },
     {
-      "cell_id": "vi-en:A1:lesson-029:dialogue-turn-005",
+      "cell_id": "41835154-8d73-42fa-8a77-d0bb2cfa0a38",
+      "address_hash": "vi-en:A1:lesson-029:dialogue-turn-005",
       "lesson_id": 29,
       "ordinal": 5,
       "lesson_title_en": "Roleplay: Asking Directions",
@@ -4638,7 +4659,8 @@
       "probes": []
     },
     {
-      "cell_id": "vi-en:A1:lesson-030:dialogue-turn-001",
+      "cell_id": "2895d05b-debe-46a4-a428-1afaef45a556",
+      "address_hash": "vi-en:A1:lesson-030:dialogue-turn-001",
       "lesson_id": 30,
       "ordinal": 1,
       "lesson_title_en": "Roleplay: Shopping At A Market",
@@ -4649,8 +4671,8 @@
       "coverage": "measured-covered",
       "probes": [
         {
-          "probe_id": "2c99e03f0ddf",
-          "cell_id": "vi-en:A1:lesson-030:dialogue-turn-001",
+          "probe_id": "4550e3ba58d9",
+          "cell_id": "2895d05b-debe-46a4-a428-1afaef45a556",
           "rule_family": "en-question-form-final-mark",
           "fixture_files": [
             "question-form-final-mark.json"
@@ -4676,7 +4698,8 @@
       ]
     },
     {
-      "cell_id": "vi-en:A1:lesson-030:dialogue-turn-002",
+      "cell_id": "4db6f9af-1cc0-4380-8ebe-cc53ecfd5ce8",
+      "address_hash": "vi-en:A1:lesson-030:dialogue-turn-002",
       "lesson_id": 30,
       "ordinal": 2,
       "lesson_title_en": "Roleplay: Shopping At A Market",
@@ -4688,7 +4711,8 @@
       "probes": []
     },
     {
-      "cell_id": "vi-en:A1:lesson-030:dialogue-turn-003",
+      "cell_id": "1c42c1a6-1580-45a9-9d41-0da1e7c5f804",
+      "address_hash": "vi-en:A1:lesson-030:dialogue-turn-003",
       "lesson_id": 30,
       "ordinal": 3,
       "lesson_title_en": "Roleplay: Shopping At A Market",
@@ -4700,7 +4724,8 @@
       "probes": []
     },
     {
-      "cell_id": "vi-en:A1:lesson-030:dialogue-turn-004",
+      "cell_id": "d5d0b562-7a9c-4de0-940f-7770e4385a08",
+      "address_hash": "vi-en:A1:lesson-030:dialogue-turn-004",
       "lesson_id": 30,
       "ordinal": 4,
       "lesson_title_en": "Roleplay: Shopping At A Market",
@@ -4711,8 +4736,8 @@
       "coverage": "measured-blind",
       "probes": [
         {
-          "probe_id": "2b9a4a73b344",
-          "cell_id": "vi-en:A1:lesson-030:dialogue-turn-004",
+          "probe_id": "2b8ddd1a293d",
+          "cell_id": "d5d0b562-7a9c-4de0-940f-7770e4385a08",
           "rule_family": "en-question-form-final-mark",
           "fixture_files": [
             "question-form-final-mark.json"
@@ -4736,8 +4761,8 @@
           "rule_family_correct": true
         },
         {
-          "probe_id": "b45942ae1dae",
-          "cell_id": "vi-en:A1:lesson-030:dialogue-turn-004",
+          "probe_id": "faa01f2c7fbe",
+          "cell_id": "d5d0b562-7a9c-4de0-940f-7770e4385a08",
           "rule_family": "en-vn-yesno-do-support",
           "fixture_files": [
             "yesno-do-support.json"
@@ -4761,7 +4786,8 @@
       ]
     },
     {
-      "cell_id": "vi-en:A1:lesson-030:dialogue-turn-005",
+      "cell_id": "1ae83f36-d2e0-4747-987b-4a048377cf2a",
+      "address_hash": "vi-en:A1:lesson-030:dialogue-turn-005",
       "lesson_id": 30,
       "ordinal": 5,
       "lesson_title_en": "Roleplay: Shopping At A Market",
@@ -4773,7 +4799,8 @@
       "probes": []
     },
     {
-      "cell_id": "vi-en:A1:lesson-031:dialogue-turn-001",
+      "cell_id": "dc7e173c-aa11-4b8e-8cb1-5ba80bbbc57a",
+      "address_hash": "vi-en:A1:lesson-031:dialogue-turn-001",
       "lesson_id": 31,
       "ordinal": 1,
       "lesson_title_en": "Roleplay: Meeting A New Vietnamese Friend",
@@ -4785,7 +4812,8 @@
       "probes": []
     },
     {
-      "cell_id": "vi-en:A1:lesson-031:dialogue-turn-002",
+      "cell_id": "d3b1b957-5166-43ad-a9ec-9bfa9b9b10ed",
+      "address_hash": "vi-en:A1:lesson-031:dialogue-turn-002",
       "lesson_id": 31,
       "ordinal": 2,
       "lesson_title_en": "Roleplay: Meeting A New Vietnamese Friend",
@@ -4797,7 +4825,8 @@
       "probes": []
     },
     {
-      "cell_id": "vi-en:A1:lesson-031:dialogue-turn-003",
+      "cell_id": "ad059d97-1051-43af-98f7-130608d32419",
+      "address_hash": "vi-en:A1:lesson-031:dialogue-turn-003",
       "lesson_id": 31,
       "ordinal": 3,
       "lesson_title_en": "Roleplay: Meeting A New Vietnamese Friend",
@@ -4808,8 +4837,8 @@
       "coverage": "measured-covered",
       "probes": [
         {
-          "probe_id": "0555227aaea9",
-          "cell_id": "vi-en:A1:lesson-031:dialogue-turn-003",
+          "probe_id": "ebb2d2e903c8",
+          "cell_id": "ad059d97-1051-43af-98f7-130608d32419",
           "rule_family": "en-question-form-final-mark",
           "fixture_files": [
             "question-form-final-mark.json"
@@ -4835,7 +4864,8 @@
       ]
     },
     {
-      "cell_id": "vi-en:A1:lesson-031:dialogue-turn-004",
+      "cell_id": "55411610-ab8b-424d-a00c-640f2e132841",
+      "address_hash": "vi-en:A1:lesson-031:dialogue-turn-004",
       "lesson_id": 31,
       "ordinal": 4,
       "lesson_title_en": "Roleplay: Meeting A New Vietnamese Friend",
@@ -4847,7 +4877,8 @@
       "probes": []
     },
     {
-      "cell_id": "vi-en:A1:lesson-031:dialogue-turn-005",
+      "cell_id": "07a4e454-b154-498e-ad71-9a713d1f1e39",
+      "address_hash": "vi-en:A1:lesson-031:dialogue-turn-005",
       "lesson_id": 31,
       "ordinal": 5,
       "lesson_title_en": "Roleplay: Meeting A New Vietnamese Friend",
@@ -4858,8 +4889,8 @@
       "coverage": "measured-blind",
       "probes": [
         {
-          "probe_id": "920d779ae039",
-          "cell_id": "vi-en:A1:lesson-031:dialogue-turn-005",
+          "probe_id": "a3d7f70b82eb",
+          "cell_id": "07a4e454-b154-498e-ad71-9a713d1f1e39",
           "rule_family": "en-step6-location-be-drop",
           "fixture_files": [
             "location-be-drop.json",
@@ -4884,7 +4915,8 @@
       ]
     },
     {
-      "cell_id": "vi-en:A1:lesson-031:dialogue-turn-006",
+      "cell_id": "08e9f275-919a-4a72-9266-282afdacb713",
+      "address_hash": "vi-en:A1:lesson-031:dialogue-turn-006",
       "lesson_id": 31,
       "ordinal": 6,
       "lesson_title_en": "Roleplay: Meeting A New Vietnamese Friend",
@@ -4896,7 +4928,8 @@
       "probes": []
     },
     {
-      "cell_id": "vi-en:A1:lesson-032:dialogue-turn-001",
+      "cell_id": "61c4b73b-3e7a-4ec2-88b3-2a34d9af4bc6",
+      "address_hash": "vi-en:A1:lesson-032:dialogue-turn-001",
       "lesson_id": 32,
       "ordinal": 1,
       "lesson_title_en": "Roleplay: Landlord And Apartment Issue",
@@ -4907,8 +4940,8 @@
       "coverage": "measured-blind",
       "probes": [
         {
-          "probe_id": "44d077ac1b56",
-          "cell_id": "vi-en:A1:lesson-032:dialogue-turn-001",
+          "probe_id": "1a6128c5dae6",
+          "cell_id": "61c4b73b-3e7a-4ec2-88b3-2a34d9af4bc6",
           "rule_family": "en-vn-copula-be-adjective",
           "fixture_files": [
             "copula-be-adjective.json"
@@ -4932,7 +4965,8 @@
       ]
     },
     {
-      "cell_id": "vi-en:A1:lesson-032:dialogue-turn-002",
+      "cell_id": "17e9a995-d70f-4348-b32d-aa536372f2f8",
+      "address_hash": "vi-en:A1:lesson-032:dialogue-turn-002",
       "lesson_id": 32,
       "ordinal": 2,
       "lesson_title_en": "Roleplay: Landlord And Apartment Issue",
@@ -4944,7 +4978,8 @@
       "probes": []
     },
     {
-      "cell_id": "vi-en:A1:lesson-032:dialogue-turn-003",
+      "cell_id": "d6a65c8d-ff0f-48fc-a2f1-da916813c8ad",
+      "address_hash": "vi-en:A1:lesson-032:dialogue-turn-003",
       "lesson_id": 32,
       "ordinal": 3,
       "lesson_title_en": "Roleplay: Landlord And Apartment Issue",
@@ -4956,7 +4991,8 @@
       "probes": []
     },
     {
-      "cell_id": "vi-en:A1:lesson-032:dialogue-turn-004",
+      "cell_id": "0ed3b6c8-c047-4519-8c3d-7d6c3ed5988f",
+      "address_hash": "vi-en:A1:lesson-032:dialogue-turn-004",
       "lesson_id": 32,
       "ordinal": 4,
       "lesson_title_en": "Roleplay: Landlord And Apartment Issue",
@@ -4968,7 +5004,8 @@
       "probes": []
     },
     {
-      "cell_id": "vi-en:A1:lesson-032:dialogue-turn-005",
+      "cell_id": "484450c8-e4d7-475c-adbe-d41f6dcd6173",
+      "address_hash": "vi-en:A1:lesson-032:dialogue-turn-005",
       "lesson_id": 32,
       "ordinal": 5,
       "lesson_title_en": "Roleplay: Landlord And Apartment Issue",
@@ -4980,7 +5017,8 @@
       "probes": []
     },
     {
-      "cell_id": "vi-en:A1:lesson-033:dialogue-turn-001",
+      "cell_id": "c21429dd-ef66-4d24-bb8c-382d5c259036",
+      "address_hash": "vi-en:A1:lesson-033:dialogue-turn-001",
       "lesson_id": 33,
       "ordinal": 1,
       "lesson_title_en": "Roleplay: Asking For Help When Lost",
@@ -4991,8 +5029,8 @@
       "coverage": "measured-blind",
       "probes": [
         {
-          "probe_id": "f8f3668032f6",
-          "cell_id": "vi-en:A1:lesson-033:dialogue-turn-001",
+          "probe_id": "a1a2b793aee2",
+          "cell_id": "c21429dd-ef66-4d24-bb8c-382d5c259036",
           "rule_family": "en-vn-copula-be-adjective",
           "fixture_files": [
             "copula-be-adjective.json"
@@ -5016,7 +5054,8 @@
       ]
     },
     {
-      "cell_id": "vi-en:A1:lesson-033:dialogue-turn-002",
+      "cell_id": "95236748-1e0a-44b9-ae9c-b2b3747df0c8",
+      "address_hash": "vi-en:A1:lesson-033:dialogue-turn-002",
       "lesson_id": 33,
       "ordinal": 2,
       "lesson_title_en": "Roleplay: Asking For Help When Lost",
@@ -5027,8 +5066,8 @@
       "coverage": "measured-covered",
       "probes": [
         {
-          "probe_id": "04aaa9ee04b0",
-          "cell_id": "vi-en:A1:lesson-033:dialogue-turn-002",
+          "probe_id": "9160f27fc83b",
+          "cell_id": "95236748-1e0a-44b9-ae9c-b2b3747df0c8",
           "rule_family": "en-question-form-final-mark",
           "fixture_files": [
             "question-form-final-mark.json"
@@ -5054,7 +5093,8 @@
       ]
     },
     {
-      "cell_id": "vi-en:A1:lesson-033:dialogue-turn-003",
+      "cell_id": "d9eec056-2658-4f35-a307-e58bfea72078",
+      "address_hash": "vi-en:A1:lesson-033:dialogue-turn-003",
       "lesson_id": 33,
       "ordinal": 3,
       "lesson_title_en": "Roleplay: Asking For Help When Lost",
@@ -5065,8 +5105,8 @@
       "coverage": "measured-blind",
       "probes": [
         {
-          "probe_id": "86c6f81e8b90",
-          "cell_id": "vi-en:A1:lesson-033:dialogue-turn-003",
+          "probe_id": "c42363a3804c",
+          "cell_id": "d9eec056-2658-4f35-a307-e58bfea72078",
           "rule_family": "en-step5-preposition-pattern",
           "fixture_files": [
             "go-to-school.json",
@@ -5091,7 +5131,8 @@
       ]
     },
     {
-      "cell_id": "vi-en:A1:lesson-033:dialogue-turn-004",
+      "cell_id": "8c1af358-43a5-4f67-8657-2413ddf95951",
+      "address_hash": "vi-en:A1:lesson-033:dialogue-turn-004",
       "lesson_id": 33,
       "ordinal": 4,
       "lesson_title_en": "Roleplay: Asking For Help When Lost",
@@ -5103,7 +5144,8 @@
       "probes": []
     },
     {
-      "cell_id": "vi-en:A1:lesson-033:dialogue-turn-005",
+      "cell_id": "d9084e4e-bf1e-4f19-8e57-8da82755502e",
+      "address_hash": "vi-en:A1:lesson-033:dialogue-turn-005",
       "lesson_id": 33,
       "ordinal": 5,
       "lesson_title_en": "Roleplay: Asking For Help When Lost",
@@ -5114,8 +5156,8 @@
       "coverage": "measured-blind",
       "probes": [
         {
-          "probe_id": "a2d184d6571f",
-          "cell_id": "vi-en:A1:lesson-033:dialogue-turn-005",
+          "probe_id": "6e1793c966b6",
+          "cell_id": "d9084e4e-bf1e-4f19-8e57-8da82755502e",
           "rule_family": "en-question-form-final-mark",
           "fixture_files": [
             "question-form-final-mark.json"
@@ -5139,8 +5181,8 @@
           "rule_family_correct": true
         },
         {
-          "probe_id": "f80bc0eae1de",
-          "cell_id": "vi-en:A1:lesson-033:dialogue-turn-005",
+          "probe_id": "420b3005e502",
+          "cell_id": "d9084e4e-bf1e-4f19-8e57-8da82755502e",
           "rule_family": "en-vn-yesno-do-support",
           "fixture_files": [
             "yesno-do-support.json"
@@ -5164,7 +5206,8 @@
       ]
     },
     {
-      "cell_id": "vi-en:A1:lesson-033:dialogue-turn-006",
+      "cell_id": "4025f5d3-00a6-439a-a216-373835fa8ccf",
+      "address_hash": "vi-en:A1:lesson-033:dialogue-turn-006",
       "lesson_id": 33,
       "ordinal": 6,
       "lesson_title_en": "Roleplay: Asking For Help When Lost",
@@ -5176,7 +5219,8 @@
       "probes": []
     },
     {
-      "cell_id": "vi-en:A1:lesson-034:dialogue-turn-001",
+      "cell_id": "f538199d-a958-498e-9cef-9846a9668c95",
+      "address_hash": "vi-en:A1:lesson-034:dialogue-turn-001",
       "lesson_id": 34,
       "ordinal": 1,
       "lesson_title_en": "Roleplay: Making A Simple Plan",
@@ -5187,8 +5231,8 @@
       "coverage": "measured-blind",
       "probes": [
         {
-          "probe_id": "1c156523485a",
-          "cell_id": "vi-en:A1:lesson-034:dialogue-turn-001",
+          "probe_id": "00b3b5a24441",
+          "cell_id": "f538199d-a958-498e-9cef-9846a9668c95",
           "rule_family": "en-question-form-final-mark",
           "fixture_files": [
             "question-form-final-mark.json"
@@ -5212,8 +5256,8 @@
           "rule_family_correct": true
         },
         {
-          "probe_id": "5dace09d9c37",
-          "cell_id": "vi-en:A1:lesson-034:dialogue-turn-001",
+          "probe_id": "dd2ea94ac22e",
+          "cell_id": "f538199d-a958-498e-9cef-9846a9668c95",
           "rule_family": "en-vn-yesno-do-support",
           "fixture_files": [
             "yesno-do-support.json"
@@ -5237,7 +5281,8 @@
       ]
     },
     {
-      "cell_id": "vi-en:A1:lesson-034:dialogue-turn-002",
+      "cell_id": "895cfcdd-1548-44d3-9209-ba30c45d2af7",
+      "address_hash": "vi-en:A1:lesson-034:dialogue-turn-002",
       "lesson_id": 34,
       "ordinal": 2,
       "lesson_title_en": "Roleplay: Making A Simple Plan",
@@ -5249,7 +5294,8 @@
       "probes": []
     },
     {
-      "cell_id": "vi-en:A1:lesson-034:dialogue-turn-003",
+      "cell_id": "d88ddc66-5c21-46c4-9924-db36a6b85d6b",
+      "address_hash": "vi-en:A1:lesson-034:dialogue-turn-003",
       "lesson_id": 34,
       "ordinal": 3,
       "lesson_title_en": "Roleplay: Making A Simple Plan",
@@ -5261,7 +5307,8 @@
       "probes": []
     },
     {
-      "cell_id": "vi-en:A1:lesson-034:dialogue-turn-004",
+      "cell_id": "5e73b90f-2e81-4a4d-9405-07464f8ffc7c",
+      "address_hash": "vi-en:A1:lesson-034:dialogue-turn-004",
       "lesson_id": 34,
       "ordinal": 4,
       "lesson_title_en": "Roleplay: Making A Simple Plan",
@@ -5273,7 +5320,8 @@
       "probes": []
     },
     {
-      "cell_id": "vi-en:A1:lesson-034:dialogue-turn-005",
+      "cell_id": "84d352b5-50ac-4bc8-a2cb-50a16609037f",
+      "address_hash": "vi-en:A1:lesson-034:dialogue-turn-005",
       "lesson_id": 34,
       "ordinal": 5,
       "lesson_title_en": "Roleplay: Making A Simple Plan",
@@ -5284,8 +5332,8 @@
       "coverage": "measured-blind",
       "probes": [
         {
-          "probe_id": "7aa6ac183996",
-          "cell_id": "vi-en:A1:lesson-034:dialogue-turn-005",
+          "probe_id": "05362e5be698",
+          "cell_id": "84d352b5-50ac-4bc8-a2cb-50a16609037f",
           "rule_family": "en-question-form-final-mark",
           "fixture_files": [
             "question-form-final-mark.json"
@@ -5309,8 +5357,8 @@
           "rule_family_correct": true
         },
         {
-          "probe_id": "9b9731aa8b8e",
-          "cell_id": "vi-en:A1:lesson-034:dialogue-turn-005",
+          "probe_id": "78ab9ce3543e",
+          "cell_id": "84d352b5-50ac-4bc8-a2cb-50a16609037f",
           "rule_family": "en-vn-yesno-do-support",
           "fixture_files": [
             "yesno-do-support.json"
@@ -5334,7 +5382,8 @@
       ]
     },
     {
-      "cell_id": "vi-en:A1:lesson-034:dialogue-turn-006",
+      "cell_id": "22d5c1e7-e5fc-4dd6-a4b8-43c7f7d754be",
+      "address_hash": "vi-en:A1:lesson-034:dialogue-turn-006",
       "lesson_id": 34,
       "ordinal": 6,
       "lesson_title_en": "Roleplay: Making A Simple Plan",
@@ -5346,7 +5395,8 @@
       "probes": []
     },
     {
-      "cell_id": "vi-en:A1:lesson-035:dialogue-turn-001",
+      "cell_id": "0e782502-8836-46d2-9297-0c1638737bb5",
+      "address_hash": "vi-en:A1:lesson-035:dialogue-turn-001",
       "lesson_id": 35,
       "ordinal": 1,
       "lesson_title_en": "Roleplay: Clinic Or Pharmacy Help",
@@ -5357,8 +5407,8 @@
       "coverage": "measured-blind",
       "probes": [
         {
-          "probe_id": "088726c5fc66",
-          "cell_id": "vi-en:A1:lesson-035:dialogue-turn-001",
+          "probe_id": "befd02ad1ace",
+          "cell_id": "0e782502-8836-46d2-9297-0c1638737bb5",
           "rule_family": "en-vn-copula-be-adjective",
           "fixture_files": [
             "copula-be-adjective.json"
@@ -5382,7 +5432,8 @@
       ]
     },
     {
-      "cell_id": "vi-en:A1:lesson-035:dialogue-turn-002",
+      "cell_id": "e1868a9c-7c72-4e50-a74a-2f66e82391c5",
+      "address_hash": "vi-en:A1:lesson-035:dialogue-turn-002",
       "lesson_id": 35,
       "ordinal": 2,
       "lesson_title_en": "Roleplay: Clinic Or Pharmacy Help",
@@ -5393,8 +5444,8 @@
       "coverage": "measured-blind",
       "probes": [
         {
-          "probe_id": "136e8d3aab4c",
-          "cell_id": "vi-en:A1:lesson-035:dialogue-turn-002",
+          "probe_id": "2cf2a8f65f8d",
+          "cell_id": "e1868a9c-7c72-4e50-a74a-2f66e82391c5",
           "rule_family": "en-question-form-final-mark",
           "fixture_files": [
             "question-form-final-mark.json"
@@ -5418,8 +5469,8 @@
           "rule_family_correct": true
         },
         {
-          "probe_id": "69ea81da6722",
-          "cell_id": "vi-en:A1:lesson-035:dialogue-turn-002",
+          "probe_id": "3c2598620e7d",
+          "cell_id": "e1868a9c-7c72-4e50-a74a-2f66e82391c5",
           "rule_family": "en-vn-copula-be-adjective",
           "fixture_files": [
             "copula-be-adjective.json"
@@ -5443,7 +5494,8 @@
       ]
     },
     {
-      "cell_id": "vi-en:A1:lesson-035:dialogue-turn-003",
+      "cell_id": "9cebe835-f24e-4c06-ba25-b5eba02e0247",
+      "address_hash": "vi-en:A1:lesson-035:dialogue-turn-003",
       "lesson_id": 35,
       "ordinal": 3,
       "lesson_title_en": "Roleplay: Clinic Or Pharmacy Help",
@@ -5454,8 +5506,8 @@
       "coverage": "measured-blind",
       "probes": [
         {
-          "probe_id": "0363187dbfb7",
-          "cell_id": "vi-en:A1:lesson-035:dialogue-turn-003",
+          "probe_id": "b6a1c44d6f5c",
+          "cell_id": "9cebe835-f24e-4c06-ba25-b5eba02e0247",
           "rule_family": "en-l4-missing-singular-article",
           "fixture_files": [
             "missing-singular-article.json"
@@ -5479,7 +5531,8 @@
       ]
     },
     {
-      "cell_id": "vi-en:A1:lesson-035:dialogue-turn-004",
+      "cell_id": "47662a44-8f98-41d0-95dc-e2e198d45b36",
+      "address_hash": "vi-en:A1:lesson-035:dialogue-turn-004",
       "lesson_id": 35,
       "ordinal": 4,
       "lesson_title_en": "Roleplay: Clinic Or Pharmacy Help",
@@ -5490,8 +5543,8 @@
       "coverage": "measured-blind",
       "probes": [
         {
-          "probe_id": "21a657b983e5",
-          "cell_id": "vi-en:A1:lesson-035:dialogue-turn-004",
+          "probe_id": "f623e763b0b1",
+          "cell_id": "47662a44-8f98-41d0-95dc-e2e198d45b36",
           "rule_family": "en-question-form-final-mark",
           "fixture_files": [
             "question-form-final-mark.json"
@@ -5515,8 +5568,8 @@
           "rule_family_correct": true
         },
         {
-          "probe_id": "852b2c5000db",
-          "cell_id": "vi-en:A1:lesson-035:dialogue-turn-004",
+          "probe_id": "591ba0b77fa2",
+          "cell_id": "47662a44-8f98-41d0-95dc-e2e198d45b36",
           "rule_family": "en-vn-yesno-do-support",
           "fixture_files": [
             "yesno-do-support.json"
@@ -5540,7 +5593,8 @@
       ]
     },
     {
-      "cell_id": "vi-en:A1:lesson-035:dialogue-turn-005",
+      "cell_id": "1e03758c-14a4-446e-9e8b-5258e3b7d9f2",
+      "address_hash": "vi-en:A1:lesson-035:dialogue-turn-005",
       "lesson_id": 35,
       "ordinal": 5,
       "lesson_title_en": "Roleplay: Clinic Or Pharmacy Help",
@@ -5552,7 +5606,8 @@
       "probes": []
     },
     {
-      "cell_id": "vi-en:A1:lesson-035:dialogue-turn-006",
+      "cell_id": "342102f9-6515-451e-a4bf-e64b028013f3",
+      "address_hash": "vi-en:A1:lesson-035:dialogue-turn-006",
       "lesson_id": 35,
       "ordinal": 6,
       "lesson_title_en": "Roleplay: Clinic Or Pharmacy Help",
@@ -5563,8 +5618,8 @@
       "coverage": "measured-blind",
       "probes": [
         {
-          "probe_id": "cdb3c799dc28",
-          "cell_id": "vi-en:A1:lesson-035:dialogue-turn-006",
+          "probe_id": "9dcc669d822c",
+          "cell_id": "342102f9-6515-451e-a4bf-e64b028013f3",
           "rule_family": "en-step5-preposition-pattern",
           "fixture_files": [
             "go-to-school.json",
@@ -5589,7 +5644,8 @@
       ]
     },
     {
-      "cell_id": "vi-en:A1:lesson-048:dialogue-turn-001",
+      "cell_id": "e5680f36-94e2-483a-ae65-30793d374d82",
+      "address_hash": "vi-en:A1:lesson-048:dialogue-turn-001",
       "lesson_id": 48,
       "ordinal": 1,
       "lesson_title_en": "Telling Stories About Your Day",
@@ -5600,8 +5656,8 @@
       "coverage": "measured-covered",
       "probes": [
         {
-          "probe_id": "449d877eef70",
-          "cell_id": "vi-en:A1:lesson-048:dialogue-turn-001",
+          "probe_id": "de0ba2b5cb29",
+          "cell_id": "e5680f36-94e2-483a-ae65-30793d374d82",
           "rule_family": "en-question-form-final-mark",
           "fixture_files": [
             "question-form-final-mark.json"
@@ -5627,7 +5683,8 @@
       ]
     },
     {
-      "cell_id": "vi-en:A1:lesson-048:dialogue-turn-002",
+      "cell_id": "842eab86-1d68-4ec3-aedd-3275f8857582",
+      "address_hash": "vi-en:A1:lesson-048:dialogue-turn-002",
       "lesson_id": 48,
       "ordinal": 2,
       "lesson_title_en": "Telling Stories About Your Day",
@@ -5638,8 +5695,8 @@
       "coverage": "measured-blind",
       "probes": [
         {
-          "probe_id": "9d6d8645e5e7",
-          "cell_id": "vi-en:A1:lesson-048:dialogue-turn-002",
+          "probe_id": "8da7c46116d6",
+          "cell_id": "842eab86-1d68-4ec3-aedd-3275f8857582",
           "rule_family": "en-step5-preposition-pattern",
           "fixture_files": [
             "go-to-school.json",
@@ -5662,8 +5719,8 @@
           "rule_family_correct": false
         },
         {
-          "probe_id": "9b68fdf97b5c",
-          "cell_id": "vi-en:A1:lesson-048:dialogue-turn-002",
+          "probe_id": "3b1c6cdd1df1",
+          "cell_id": "842eab86-1d68-4ec3-aedd-3275f8857582",
           "rule_family": "en-step6-past-marker-recall",
           "fixture_files": [
             "past-marker-recall.json"
@@ -5685,8 +5742,8 @@
           "rule_family_correct": false
         },
         {
-          "probe_id": "4dac7407a401",
-          "cell_id": "vi-en:A1:lesson-048:dialogue-turn-002",
+          "probe_id": "6a92adc8716b",
+          "cell_id": "842eab86-1d68-4ec3-aedd-3275f8857582",
           "rule_family": "en-yesterday-irregular-beginner-past",
           "fixture_files": [
             "has-past-time-marker.json",
@@ -5711,7 +5768,8 @@
       ]
     },
     {
-      "cell_id": "vi-en:A1:lesson-048:dialogue-turn-003",
+      "cell_id": "65774769-49a9-4e93-ae84-5060da55c3dc",
+      "address_hash": "vi-en:A1:lesson-048:dialogue-turn-003",
       "lesson_id": 48,
       "ordinal": 3,
       "lesson_title_en": "Telling Stories About Your Day",
@@ -5723,7 +5781,8 @@
       "probes": []
     },
     {
-      "cell_id": "vi-en:A1:lesson-048:dialogue-turn-004",
+      "cell_id": "f3976002-2c2b-4cf6-8ce5-7d149a29f77c",
+      "address_hash": "vi-en:A1:lesson-048:dialogue-turn-004",
       "lesson_id": 48,
       "ordinal": 4,
       "lesson_title_en": "Telling Stories About Your Day",
@@ -5735,7 +5794,8 @@
       "probes": []
     },
     {
-      "cell_id": "vi-en:A1:lesson-049:dialogue-turn-001",
+      "cell_id": "aad5dfc3-d320-40be-837e-e3a9cc204785",
+      "address_hash": "vi-en:A1:lesson-049:dialogue-turn-001",
       "lesson_id": 49,
       "ordinal": 1,
       "lesson_title_en": "Explaining Problems",
@@ -5746,8 +5806,8 @@
       "coverage": "measured-blind",
       "probes": [
         {
-          "probe_id": "72368a491cfd",
-          "cell_id": "vi-en:A1:lesson-049:dialogue-turn-001",
+          "probe_id": "5ab00a400545",
+          "cell_id": "aad5dfc3-d320-40be-837e-e3a9cc204785",
           "rule_family": "en-question-form-final-mark",
           "fixture_files": [
             "question-form-final-mark.json"
@@ -5771,7 +5831,8 @@
       ]
     },
     {
-      "cell_id": "vi-en:A1:lesson-049:dialogue-turn-002",
+      "cell_id": "9e30c069-e634-4697-8fac-1a78e65b15fa",
+      "address_hash": "vi-en:A1:lesson-049:dialogue-turn-002",
       "lesson_id": 49,
       "ordinal": 2,
       "lesson_title_en": "Explaining Problems",
@@ -5783,7 +5844,8 @@
       "probes": []
     },
     {
-      "cell_id": "vi-en:A1:lesson-049:dialogue-turn-003",
+      "cell_id": "12bc4fee-fd14-4ce9-9cda-4249bccb133b",
+      "address_hash": "vi-en:A1:lesson-049:dialogue-turn-003",
       "lesson_id": 49,
       "ordinal": 3,
       "lesson_title_en": "Explaining Problems",
@@ -5794,8 +5856,8 @@
       "coverage": "measured-blind",
       "probes": [
         {
-          "probe_id": "34dd31d2935e",
-          "cell_id": "vi-en:A1:lesson-049:dialogue-turn-003",
+          "probe_id": "b77a8bd82d5f",
+          "cell_id": "12bc4fee-fd14-4ce9-9cda-4249bccb133b",
           "rule_family": "en-question-form-final-mark",
           "fixture_files": [
             "question-form-final-mark.json"
@@ -5817,8 +5879,8 @@
           "rule_family_correct": false
         },
         {
-          "probe_id": "ec6eedf0d9a5",
-          "cell_id": "vi-en:A1:lesson-049:dialogue-turn-003",
+          "probe_id": "94cf72fa93da",
+          "cell_id": "12bc4fee-fd14-4ce9-9cda-4249bccb133b",
           "rule_family": "en-vn-yesno-do-support",
           "fixture_files": [
             "yesno-do-support.json"
@@ -5842,7 +5904,8 @@
       ]
     },
     {
-      "cell_id": "vi-en:A1:lesson-049:dialogue-turn-004",
+      "cell_id": "b4d6b4f6-0c0d-42ab-a914-7f3f94c0bcf5",
+      "address_hash": "vi-en:A1:lesson-049:dialogue-turn-004",
       "lesson_id": 49,
       "ordinal": 4,
       "lesson_title_en": "Explaining Problems",
@@ -5854,7 +5917,8 @@
       "probes": []
     },
     {
-      "cell_id": "vi-en:A1:lesson-051:dialogue-turn-001",
+      "cell_id": "6ae7fba4-c459-4932-bd1e-0888899b8efb",
+      "address_hash": "vi-en:A1:lesson-051:dialogue-turn-001",
       "lesson_id": 51,
       "ordinal": 1,
       "lesson_title_en": "Making And Changing Plans",
@@ -5866,7 +5930,8 @@
       "probes": []
     },
     {
-      "cell_id": "vi-en:A1:lesson-051:dialogue-turn-002",
+      "cell_id": "aa0ca66b-adf5-4b55-9c30-3778ba128b87",
+      "address_hash": "vi-en:A1:lesson-051:dialogue-turn-002",
       "lesson_id": 51,
       "ordinal": 2,
       "lesson_title_en": "Making And Changing Plans",
@@ -5878,7 +5943,8 @@
       "probes": []
     },
     {
-      "cell_id": "vi-en:A1:lesson-051:dialogue-turn-003",
+      "cell_id": "8a9c8dca-34c3-4532-a9cb-82e9164616d0",
+      "address_hash": "vi-en:A1:lesson-051:dialogue-turn-003",
       "lesson_id": 51,
       "ordinal": 3,
       "lesson_title_en": "Making And Changing Plans",
@@ -5890,7 +5956,8 @@
       "probes": []
     },
     {
-      "cell_id": "vi-en:A1:lesson-051:dialogue-turn-004",
+      "cell_id": "a31a518f-1c7e-4ae4-b90f-eeac4b3ce920",
+      "address_hash": "vi-en:A1:lesson-051:dialogue-turn-004",
       "lesson_id": 51,
       "ordinal": 4,
       "lesson_title_en": "Making And Changing Plans",
@@ -5902,7 +5969,8 @@
       "probes": []
     },
     {
-      "cell_id": "vi-en:A1:lesson-052:dialogue-turn-001",
+      "cell_id": "8b2c7528-de05-4b22-8605-e0678973690d",
+      "address_hash": "vi-en:A1:lesson-052:dialogue-turn-001",
       "lesson_id": 52,
       "ordinal": 1,
       "lesson_title_en": "Talking About Work",
@@ -5913,8 +5981,8 @@
       "coverage": "measured-covered",
       "probes": [
         {
-          "probe_id": "31161900bc6e",
-          "cell_id": "vi-en:A1:lesson-052:dialogue-turn-001",
+          "probe_id": "b4b1426d7dde",
+          "cell_id": "8b2c7528-de05-4b22-8605-e0678973690d",
           "rule_family": "en-question-form-final-mark",
           "fixture_files": [
             "question-form-final-mark.json"
@@ -5940,7 +6008,8 @@
       ]
     },
     {
-      "cell_id": "vi-en:A1:lesson-052:dialogue-turn-002",
+      "cell_id": "d7732027-07e4-45d1-a9b1-cddae3fd3ccb",
+      "address_hash": "vi-en:A1:lesson-052:dialogue-turn-002",
       "lesson_id": 52,
       "ordinal": 2,
       "lesson_title_en": "Talking About Work",
@@ -5952,7 +6021,8 @@
       "probes": []
     },
     {
-      "cell_id": "vi-en:A1:lesson-052:dialogue-turn-003",
+      "cell_id": "958dbbea-8e57-41d2-b1c3-fef5295ea63d",
+      "address_hash": "vi-en:A1:lesson-052:dialogue-turn-003",
       "lesson_id": 52,
       "ordinal": 3,
       "lesson_title_en": "Talking About Work",
@@ -5963,8 +6033,8 @@
       "coverage": "measured-blind",
       "probes": [
         {
-          "probe_id": "43afde0d2575",
-          "cell_id": "vi-en:A1:lesson-052:dialogue-turn-003",
+          "probe_id": "05ed748e4c7d",
+          "cell_id": "958dbbea-8e57-41d2-b1c3-fef5295ea63d",
           "rule_family": "en-question-form-final-mark",
           "fixture_files": [
             "question-form-final-mark.json"
@@ -5988,8 +6058,8 @@
           "rule_family_correct": true
         },
         {
-          "probe_id": "b3d3b2db4015",
-          "cell_id": "vi-en:A1:lesson-052:dialogue-turn-003",
+          "probe_id": "2bb92f23d583",
+          "cell_id": "958dbbea-8e57-41d2-b1c3-fef5295ea63d",
           "rule_family": "en-vn-yesno-do-support",
           "fixture_files": [
             "yesno-do-support.json"
@@ -6013,7 +6083,8 @@
       ]
     },
     {
-      "cell_id": "vi-en:A1:lesson-052:dialogue-turn-004",
+      "cell_id": "9c43872e-5154-4c94-90c5-c8fb8e6a1ec4",
+      "address_hash": "vi-en:A1:lesson-052:dialogue-turn-004",
       "lesson_id": 52,
       "ordinal": 4,
       "lesson_title_en": "Talking About Work",
@@ -6025,7 +6096,8 @@
       "probes": []
     },
     {
-      "cell_id": "vi-en:A1:lesson-054:dialogue-turn-001",
+      "cell_id": "de20ec0f-1aa9-44fa-899f-6b0487eb9887",
+      "address_hash": "vi-en:A1:lesson-054:dialogue-turn-001",
       "lesson_id": 54,
       "ordinal": 1,
       "lesson_title_en": "Renting An Apartment",
@@ -6036,8 +6108,8 @@
       "coverage": "measured-blind",
       "probes": [
         {
-          "probe_id": "c8df7277b885",
-          "cell_id": "vi-en:A1:lesson-054:dialogue-turn-001",
+          "probe_id": "63cabae7b6ab",
+          "cell_id": "de20ec0f-1aa9-44fa-899f-6b0487eb9887",
           "rule_family": "en-question-form-final-mark",
           "fixture_files": [
             "question-form-final-mark.json"
@@ -6061,8 +6133,8 @@
           "rule_family_correct": true
         },
         {
-          "probe_id": "56a351bc0a19",
-          "cell_id": "vi-en:A1:lesson-054:dialogue-turn-001",
+          "probe_id": "eb6f5d3ed99f",
+          "cell_id": "de20ec0f-1aa9-44fa-899f-6b0487eb9887",
           "rule_family": "en-vn-yesno-do-support",
           "fixture_files": [
             "yesno-do-support.json"
@@ -6086,7 +6158,8 @@
       ]
     },
     {
-      "cell_id": "vi-en:A1:lesson-054:dialogue-turn-002",
+      "cell_id": "74e9b5b8-de49-43ed-a784-461ebee96d1a",
+      "address_hash": "vi-en:A1:lesson-054:dialogue-turn-002",
       "lesson_id": 54,
       "ordinal": 2,
       "lesson_title_en": "Renting An Apartment",
@@ -6098,7 +6171,8 @@
       "probes": []
     },
     {
-      "cell_id": "vi-en:A1:lesson-054:dialogue-turn-003",
+      "cell_id": "661e14aa-daa7-434b-b410-2b0b3aad5bc4",
+      "address_hash": "vi-en:A1:lesson-054:dialogue-turn-003",
       "lesson_id": 54,
       "ordinal": 3,
       "lesson_title_en": "Renting An Apartment",
@@ -6110,7 +6184,8 @@
       "probes": []
     },
     {
-      "cell_id": "vi-en:A1:lesson-054:dialogue-turn-004",
+      "cell_id": "13548f34-6b3d-40ea-b7ca-0d5555b1acd6",
+      "address_hash": "vi-en:A1:lesson-054:dialogue-turn-004",
       "lesson_id": 54,
       "ordinal": 4,
       "lesson_title_en": "Renting An Apartment",
@@ -6122,7 +6197,8 @@
       "probes": []
     },
     {
-      "cell_id": "vi-en:A1:lesson-055:dialogue-turn-001",
+      "cell_id": "ff050d93-9ed9-4004-9e6f-2716f7409838",
+      "address_hash": "vi-en:A1:lesson-055:dialogue-turn-001",
       "lesson_id": 55,
       "ordinal": 1,
       "lesson_title_en": "Doctor And Pharmacy Explanations",
@@ -6133,8 +6209,8 @@
       "coverage": "measured-blind",
       "probes": [
         {
-          "probe_id": "5af49721cd18",
-          "cell_id": "vi-en:A1:lesson-055:dialogue-turn-001",
+          "probe_id": "33efa7ba4604",
+          "cell_id": "ff050d93-9ed9-4004-9e6f-2716f7409838",
           "rule_family": "en-time-expression-placement",
           "fixture_files": [
             "time-expression-placement.json"
@@ -6156,8 +6232,8 @@
           "rule_family_correct": false
         },
         {
-          "probe_id": "d29b14d7ef6e",
-          "cell_id": "vi-en:A1:lesson-055:dialogue-turn-001",
+          "probe_id": "113ad6d619d5",
+          "cell_id": "ff050d93-9ed9-4004-9e6f-2716f7409838",
           "rule_family": "en-yesterday-irregular-beginner-past",
           "fixture_files": [
             "has-past-time-marker.json",
@@ -6184,7 +6260,8 @@
       ]
     },
     {
-      "cell_id": "vi-en:A1:lesson-055:dialogue-turn-002",
+      "cell_id": "8ca52c3c-b5c4-4b7c-bef0-7ca1485209f8",
+      "address_hash": "vi-en:A1:lesson-055:dialogue-turn-002",
       "lesson_id": 55,
       "ordinal": 2,
       "lesson_title_en": "Doctor And Pharmacy Explanations",
@@ -6195,8 +6272,8 @@
       "coverage": "measured-blind",
       "probes": [
         {
-          "probe_id": "4567bb8993b3",
-          "cell_id": "vi-en:A1:lesson-055:dialogue-turn-002",
+          "probe_id": "c1e3d0d5daf0",
+          "cell_id": "8ca52c3c-b5c4-4b7c-bef0-7ca1485209f8",
           "rule_family": "en-l4-missing-singular-article",
           "fixture_files": [
             "missing-singular-article.json"
@@ -6218,8 +6295,8 @@
           "rule_family_correct": false
         },
         {
-          "probe_id": "8f8c4bc14c90",
-          "cell_id": "vi-en:A1:lesson-055:dialogue-turn-002",
+          "probe_id": "a81b4408569f",
+          "cell_id": "8ca52c3c-b5c4-4b7c-bef0-7ca1485209f8",
           "rule_family": "en-question-form-final-mark",
           "fixture_files": [
             "question-form-final-mark.json"
@@ -6243,8 +6320,8 @@
           "rule_family_correct": true
         },
         {
-          "probe_id": "0e2470968f0c",
-          "cell_id": "vi-en:A1:lesson-055:dialogue-turn-002",
+          "probe_id": "ea41b975bbf0",
+          "cell_id": "8ca52c3c-b5c4-4b7c-bef0-7ca1485209f8",
           "rule_family": "en-vn-yesno-do-support",
           "fixture_files": [
             "yesno-do-support.json"
@@ -6270,7 +6347,8 @@
       ]
     },
     {
-      "cell_id": "vi-en:A1:lesson-055:dialogue-turn-003",
+      "cell_id": "17b08792-7456-47b6-81d1-4cbf12ce96c6",
+      "address_hash": "vi-en:A1:lesson-055:dialogue-turn-003",
       "lesson_id": 55,
       "ordinal": 3,
       "lesson_title_en": "Doctor And Pharmacy Explanations",
@@ -6282,7 +6360,8 @@
       "probes": []
     },
     {
-      "cell_id": "vi-en:A1:lesson-055:dialogue-turn-004",
+      "cell_id": "3a9dcffe-999e-4d4c-971b-11fca1b5a6be",
+      "address_hash": "vi-en:A1:lesson-055:dialogue-turn-004",
       "lesson_id": 55,
       "ordinal": 4,
       "lesson_title_en": "Doctor And Pharmacy Explanations",
@@ -6294,7 +6373,8 @@
       "probes": []
     },
     {
-      "cell_id": "vi-en:A1:lesson-058:dialogue-turn-001",
+      "cell_id": "76cb1d92-bba6-4e2c-8219-627d94a2a936",
+      "address_hash": "vi-en:A1:lesson-058:dialogue-turn-001",
       "lesson_id": 58,
       "ordinal": 1,
       "lesson_title_en": "Clarifying And Following Up",
@@ -6306,7 +6386,8 @@
       "probes": []
     },
     {
-      "cell_id": "vi-en:A1:lesson-058:dialogue-turn-002",
+      "cell_id": "fae88191-5f84-418b-afec-48bf5ed4fedb",
+      "address_hash": "vi-en:A1:lesson-058:dialogue-turn-002",
       "lesson_id": 58,
       "ordinal": 2,
       "lesson_title_en": "Clarifying And Following Up",
@@ -6318,7 +6399,8 @@
       "probes": []
     },
     {
-      "cell_id": "vi-en:A1:lesson-058:dialogue-turn-003",
+      "cell_id": "d5f81e2c-df05-46ca-9885-04a747ec6de5",
+      "address_hash": "vi-en:A1:lesson-058:dialogue-turn-003",
       "lesson_id": 58,
       "ordinal": 3,
       "lesson_title_en": "Clarifying And Following Up",
@@ -6330,7 +6412,8 @@
       "probes": []
     },
     {
-      "cell_id": "vi-en:A1:lesson-058:dialogue-turn-004",
+      "cell_id": "06075ee6-11be-473f-90b5-f3842bc7abb5",
+      "address_hash": "vi-en:A1:lesson-058:dialogue-turn-004",
       "lesson_id": 58,
       "ordinal": 4,
       "lesson_title_en": "Clarifying And Following Up",
@@ -6341,8 +6424,8 @@
       "coverage": "measured-blind",
       "probes": [
         {
-          "probe_id": "970e664de43f",
-          "cell_id": "vi-en:A1:lesson-058:dialogue-turn-004",
+          "probe_id": "d15535999214",
+          "cell_id": "06075ee6-11be-473f-90b5-f3842bc7abb5",
           "rule_family": "en-vn-copula-be-adjective",
           "fixture_files": [
             "copula-be-adjective.json"
@@ -6366,7 +6449,8 @@
       ]
     },
     {
-      "cell_id": "vi-en:A1:lesson-069:dialogue-turn-001",
+      "cell_id": "87673095-a5f7-4036-a1b4-9f58495b0dd8",
+      "address_hash": "vi-en:A1:lesson-069:dialogue-turn-001",
       "lesson_id": 69,
       "ordinal": 1,
       "lesson_title_en": "Visa And Immigration Office Basics",
@@ -6378,7 +6462,8 @@
       "probes": []
     },
     {
-      "cell_id": "vi-en:A1:lesson-069:dialogue-turn-002",
+      "cell_id": "b8ded783-e6bc-44eb-992d-9b0c3cfb7746",
+      "address_hash": "vi-en:A1:lesson-069:dialogue-turn-002",
       "lesson_id": 69,
       "ordinal": 2,
       "lesson_title_en": "Visa And Immigration Office Basics",
@@ -6389,8 +6474,8 @@
       "coverage": "measured-covered",
       "probes": [
         {
-          "probe_id": "04cf79960b3e",
-          "cell_id": "vi-en:A1:lesson-069:dialogue-turn-002",
+          "probe_id": "94c86a62a094",
+          "cell_id": "b8ded783-e6bc-44eb-992d-9b0c3cfb7746",
           "rule_family": "en-question-form-final-mark",
           "fixture_files": [
             "question-form-final-mark.json"
@@ -6414,8 +6499,8 @@
           "rule_family_correct": true
         },
         {
-          "probe_id": "e943a5edd351",
-          "cell_id": "vi-en:A1:lesson-069:dialogue-turn-002",
+          "probe_id": "15a5e1c5f780",
+          "cell_id": "b8ded783-e6bc-44eb-992d-9b0c3cfb7746",
           "rule_family": "en-vn-yesno-do-support",
           "fixture_files": [
             "yesno-do-support.json"
@@ -6441,7 +6526,8 @@
       ]
     },
     {
-      "cell_id": "vi-en:A1:lesson-069:dialogue-turn-003",
+      "cell_id": "f142d424-8403-4d1f-b9ed-03f63d9f1b14",
+      "address_hash": "vi-en:A1:lesson-069:dialogue-turn-003",
       "lesson_id": 69,
       "ordinal": 3,
       "lesson_title_en": "Visa And Immigration Office Basics",
@@ -6453,7 +6539,8 @@
       "probes": []
     },
     {
-      "cell_id": "vi-en:A1:lesson-069:dialogue-turn-004",
+      "cell_id": "0467abce-f7dd-4a6c-9513-aab7af4ba804",
+      "address_hash": "vi-en:A1:lesson-069:dialogue-turn-004",
       "lesson_id": 69,
       "ordinal": 4,
       "lesson_title_en": "Visa And Immigration Office Basics",
@@ -6465,7 +6552,8 @@
       "probes": []
     },
     {
-      "cell_id": "vi-en:A1:lesson-069:dialogue-turn-005",
+      "cell_id": "252a32ae-fcbb-4e98-bb5c-ad9291006d11",
+      "address_hash": "vi-en:A1:lesson-069:dialogue-turn-005",
       "lesson_id": 69,
       "ordinal": 5,
       "lesson_title_en": "Visa And Immigration Office Basics",
@@ -6477,7 +6565,8 @@
       "probes": []
     },
     {
-      "cell_id": "vi-en:A1:lesson-069:dialogue-turn-006",
+      "cell_id": "a831ef1d-af24-4c78-b9f1-ceda2088e33a",
+      "address_hash": "vi-en:A1:lesson-069:dialogue-turn-006",
       "lesson_id": 69,
       "ordinal": 6,
       "lesson_title_en": "Visa And Immigration Office Basics",
@@ -6489,7 +6578,8 @@
       "probes": []
     },
     {
-      "cell_id": "vi-en:A1:lesson-070:dialogue-turn-001",
+      "cell_id": "fbe59130-4795-47b8-8418-9684c14a9509",
+      "address_hash": "vi-en:A1:lesson-070:dialogue-turn-001",
       "lesson_id": 70,
       "ordinal": 1,
       "lesson_title_en": "Bank Account And ATM Problems",
@@ -6501,7 +6591,8 @@
       "probes": []
     },
     {
-      "cell_id": "vi-en:A1:lesson-070:dialogue-turn-002",
+      "cell_id": "edd2ec3d-5de8-40a3-9e53-ea2aaabf6688",
+      "address_hash": "vi-en:A1:lesson-070:dialogue-turn-002",
       "lesson_id": 70,
       "ordinal": 2,
       "lesson_title_en": "Bank Account And ATM Problems",
@@ -6512,8 +6603,8 @@
       "coverage": "measured-blind",
       "probes": [
         {
-          "probe_id": "4e574b9e8fa5",
-          "cell_id": "vi-en:A1:lesson-070:dialogue-turn-002",
+          "probe_id": "94015812ea07",
+          "cell_id": "edd2ec3d-5de8-40a3-9e53-ea2aaabf6688",
           "rule_family": "en-l4-missing-singular-article",
           "fixture_files": [
             "missing-singular-article.json"
@@ -6535,8 +6626,8 @@
           "rule_family_correct": false
         },
         {
-          "probe_id": "e77a98f403fe",
-          "cell_id": "vi-en:A1:lesson-070:dialogue-turn-002",
+          "probe_id": "bf20b9b1efb4",
+          "cell_id": "edd2ec3d-5de8-40a3-9e53-ea2aaabf6688",
           "rule_family": "en-question-form-final-mark",
           "fixture_files": [
             "question-form-final-mark.json"
@@ -6560,8 +6651,8 @@
           "rule_family_correct": true
         },
         {
-          "probe_id": "be50f250a9dd",
-          "cell_id": "vi-en:A1:lesson-070:dialogue-turn-002",
+          "probe_id": "e81ca121679f",
+          "cell_id": "edd2ec3d-5de8-40a3-9e53-ea2aaabf6688",
           "rule_family": "en-vn-yesno-do-support",
           "fixture_files": [
             "yesno-do-support.json"
@@ -6585,7 +6676,8 @@
       ]
     },
     {
-      "cell_id": "vi-en:A1:lesson-070:dialogue-turn-003",
+      "cell_id": "41af4c45-fb6c-4627-87e7-65b735cad8f6",
+      "address_hash": "vi-en:A1:lesson-070:dialogue-turn-003",
       "lesson_id": 70,
       "ordinal": 3,
       "lesson_title_en": "Bank Account And ATM Problems",
@@ -6597,7 +6689,8 @@
       "probes": []
     },
     {
-      "cell_id": "vi-en:A1:lesson-070:dialogue-turn-004",
+      "cell_id": "4f5942bd-be3e-438e-bc38-8345fbac59d5",
+      "address_hash": "vi-en:A1:lesson-070:dialogue-turn-004",
       "lesson_id": 70,
       "ordinal": 4,
       "lesson_title_en": "Bank Account And ATM Problems",
@@ -6608,8 +6701,8 @@
       "coverage": "measured-blind",
       "probes": [
         {
-          "probe_id": "fc791ae12611",
-          "cell_id": "vi-en:A1:lesson-070:dialogue-turn-004",
+          "probe_id": "0d73a2a28055",
+          "cell_id": "4f5942bd-be3e-438e-bc38-8345fbac59d5",
           "rule_family": "en-l4-missing-singular-article",
           "fixture_files": [
             "missing-singular-article.json"
@@ -6633,7 +6726,8 @@
       ]
     },
     {
-      "cell_id": "vi-en:A1:lesson-070:dialogue-turn-005",
+      "cell_id": "c7dc9d31-0577-4d3b-affc-597224976630",
+      "address_hash": "vi-en:A1:lesson-070:dialogue-turn-005",
       "lesson_id": 70,
       "ordinal": 5,
       "lesson_title_en": "Bank Account And ATM Problems",
@@ -6644,8 +6738,8 @@
       "coverage": "measured-blind",
       "probes": [
         {
-          "probe_id": "e5a1546ae651",
-          "cell_id": "vi-en:A1:lesson-070:dialogue-turn-005",
+          "probe_id": "7168a7ff5f8f",
+          "cell_id": "c7dc9d31-0577-4d3b-affc-597224976630",
           "rule_family": "en-yesterday-irregular-beginner-past",
           "fixture_files": [
             "has-past-time-marker.json",
@@ -6670,7 +6764,8 @@
       ]
     },
     {
-      "cell_id": "vi-en:A1:lesson-070:dialogue-turn-006",
+      "cell_id": "266fbccf-d9a7-45cb-8a56-06de16a3766c",
+      "address_hash": "vi-en:A1:lesson-070:dialogue-turn-006",
       "lesson_id": 70,
       "ordinal": 6,
       "lesson_title_en": "Bank Account And ATM Problems",
@@ -6682,7 +6777,8 @@
       "probes": []
     },
     {
-      "cell_id": "vi-en:A1:lesson-071:dialogue-turn-001",
+      "cell_id": "28c7ce81-4e12-4013-a37c-6b540965a5f6",
+      "address_hash": "vi-en:A1:lesson-071:dialogue-turn-001",
       "lesson_id": 71,
       "ordinal": 1,
       "lesson_title_en": "Phone SIM And Internet Setup",
@@ -6694,7 +6790,8 @@
       "probes": []
     },
     {
-      "cell_id": "vi-en:A1:lesson-071:dialogue-turn-002",
+      "cell_id": "a9db0d61-a9e6-4459-b2fd-2d7c881e4e9e",
+      "address_hash": "vi-en:A1:lesson-071:dialogue-turn-002",
       "lesson_id": 71,
       "ordinal": 2,
       "lesson_title_en": "Phone SIM And Internet Setup",
@@ -6705,8 +6802,8 @@
       "coverage": "measured-blind",
       "probes": [
         {
-          "probe_id": "b7cb68c77141",
-          "cell_id": "vi-en:A1:lesson-071:dialogue-turn-002",
+          "probe_id": "b12a8811e7a7",
+          "cell_id": "a9db0d61-a9e6-4459-b2fd-2d7c881e4e9e",
           "rule_family": "en-vietlish-double-comparative",
           "fixture_files": [
             "vietlish-double-comparative.json"
@@ -6730,8 +6827,8 @@
           "rule_family_correct": true
         },
         {
-          "probe_id": "bb8cc554e46a",
-          "cell_id": "vi-en:A1:lesson-071:dialogue-turn-002",
+          "probe_id": "b9bc1f61ec49",
+          "cell_id": "a9db0d61-a9e6-4459-b2fd-2d7c881e4e9e",
           "rule_family": "en-vn-copula-be-adjective",
           "fixture_files": [
             "copula-be-adjective.json"
@@ -6755,7 +6852,8 @@
       ]
     },
     {
-      "cell_id": "vi-en:A1:lesson-071:dialogue-turn-003",
+      "cell_id": "72c88c03-a875-4e34-9929-67af38c2a34b",
+      "address_hash": "vi-en:A1:lesson-071:dialogue-turn-003",
       "lesson_id": 71,
       "ordinal": 3,
       "lesson_title_en": "Phone SIM And Internet Setup",
@@ -6767,7 +6865,8 @@
       "probes": []
     },
     {
-      "cell_id": "vi-en:A1:lesson-071:dialogue-turn-004",
+      "cell_id": "d9305ba6-1457-43e1-867f-47d48acf97b8",
+      "address_hash": "vi-en:A1:lesson-071:dialogue-turn-004",
       "lesson_id": 71,
       "ordinal": 4,
       "lesson_title_en": "Phone SIM And Internet Setup",
@@ -6779,7 +6878,8 @@
       "probes": []
     },
     {
-      "cell_id": "vi-en:A1:lesson-071:dialogue-turn-005",
+      "cell_id": "b614a45c-c2d6-4df9-a05a-b3133b86cd8e",
+      "address_hash": "vi-en:A1:lesson-071:dialogue-turn-005",
       "lesson_id": 71,
       "ordinal": 5,
       "lesson_title_en": "Phone SIM And Internet Setup",
@@ -6791,7 +6891,8 @@
       "probes": []
     },
     {
-      "cell_id": "vi-en:A1:lesson-071:dialogue-turn-006",
+      "cell_id": "e494d0fb-b580-45f2-b9b5-6b1542079f30",
+      "address_hash": "vi-en:A1:lesson-071:dialogue-turn-006",
       "lesson_id": 71,
       "ordinal": 6,
       "lesson_title_en": "Phone SIM And Internet Setup",
@@ -6803,7 +6904,8 @@
       "probes": []
     },
     {
-      "cell_id": "vi-en:A1:lesson-072:dialogue-turn-001",
+      "cell_id": "322d5514-29c0-4445-aa42-775b57e2c594",
+      "address_hash": "vi-en:A1:lesson-072:dialogue-turn-001",
       "lesson_id": 72,
       "ordinal": 1,
       "lesson_title_en": "Workplace Problems And Requests",
@@ -6815,7 +6917,8 @@
       "probes": []
     },
     {
-      "cell_id": "vi-en:A1:lesson-072:dialogue-turn-002",
+      "cell_id": "64bba5c2-2a0a-4bd4-b5f2-e8230e6f724c",
+      "address_hash": "vi-en:A1:lesson-072:dialogue-turn-002",
       "lesson_id": 72,
       "ordinal": 2,
       "lesson_title_en": "Workplace Problems And Requests",
@@ -6827,7 +6930,8 @@
       "probes": []
     },
     {
-      "cell_id": "vi-en:A1:lesson-072:dialogue-turn-003",
+      "cell_id": "566cca84-2bbe-4d61-aa75-e29d3f64f303",
+      "address_hash": "vi-en:A1:lesson-072:dialogue-turn-003",
       "lesson_id": 72,
       "ordinal": 3,
       "lesson_title_en": "Workplace Problems And Requests",
@@ -6839,7 +6943,8 @@
       "probes": []
     },
     {
-      "cell_id": "vi-en:A1:lesson-072:dialogue-turn-004",
+      "cell_id": "ed068c06-296d-4f49-80f3-e16cad19c724",
+      "address_hash": "vi-en:A1:lesson-072:dialogue-turn-004",
       "lesson_id": 72,
       "ordinal": 4,
       "lesson_title_en": "Workplace Problems And Requests",
@@ -6850,8 +6955,8 @@
       "coverage": "measured-blind",
       "probes": [
         {
-          "probe_id": "255ecdd41a75",
-          "cell_id": "vi-en:A1:lesson-072:dialogue-turn-004",
+          "probe_id": "1c39053826fa",
+          "cell_id": "ed068c06-296d-4f49-80f3-e16cad19c724",
           "rule_family": "en-step5-subject-verb-agreement",
           "fixture_files": [
             "step5-subject-verb-agreement.json"
@@ -6875,7 +6980,8 @@
       ]
     },
     {
-      "cell_id": "vi-en:A1:lesson-072:dialogue-turn-005",
+      "cell_id": "01094bd6-c863-44f2-b4df-8da641bef85d",
+      "address_hash": "vi-en:A1:lesson-072:dialogue-turn-005",
       "lesson_id": 72,
       "ordinal": 5,
       "lesson_title_en": "Workplace Problems And Requests",
@@ -6887,7 +6993,8 @@
       "probes": []
     },
     {
-      "cell_id": "vi-en:A1:lesson-072:dialogue-turn-006",
+      "cell_id": "b2d2249a-01b4-4d0d-a279-115226b639b8",
+      "address_hash": "vi-en:A1:lesson-072:dialogue-turn-006",
       "lesson_id": 72,
       "ordinal": 6,
       "lesson_title_en": "Workplace Problems And Requests",
@@ -6899,7 +7006,8 @@
       "probes": []
     },
     {
-      "cell_id": "vi-en:A1:lesson-073:dialogue-turn-001",
+      "cell_id": "02bdae7c-833f-4ea5-b6e7-348cc52da182",
+      "address_hash": "vi-en:A1:lesson-073:dialogue-turn-001",
       "lesson_id": 73,
       "ordinal": 1,
       "lesson_title_en": "School Childcare And Family Schedules",
@@ -6911,7 +7019,8 @@
       "probes": []
     },
     {
-      "cell_id": "vi-en:A1:lesson-073:dialogue-turn-002",
+      "cell_id": "14de6f01-6816-454c-97ca-906763af6cc0",
+      "address_hash": "vi-en:A1:lesson-073:dialogue-turn-002",
       "lesson_id": 73,
       "ordinal": 2,
       "lesson_title_en": "School Childcare And Family Schedules",
@@ -6923,7 +7032,8 @@
       "probes": []
     },
     {
-      "cell_id": "vi-en:A1:lesson-073:dialogue-turn-003",
+      "cell_id": "7efd9058-dcb2-447b-a1cb-79d4182929f0",
+      "address_hash": "vi-en:A1:lesson-073:dialogue-turn-003",
       "lesson_id": 73,
       "ordinal": 3,
       "lesson_title_en": "School Childcare And Family Schedules",
@@ -6934,8 +7044,8 @@
       "coverage": "measured-blind",
       "probes": [
         {
-          "probe_id": "5f9c16995a0b",
-          "cell_id": "vi-en:A1:lesson-073:dialogue-turn-003",
+          "probe_id": "6acfd4736a48",
+          "cell_id": "7efd9058-dcb2-447b-a1cb-79d4182929f0",
           "rule_family": "en-step6-at-clock-time",
           "fixture_files": [
             "at-clock-time.json"
@@ -6959,7 +7069,8 @@
       ]
     },
     {
-      "cell_id": "vi-en:A1:lesson-073:dialogue-turn-004",
+      "cell_id": "1cd3851e-aa67-4497-b26e-1910a567711f",
+      "address_hash": "vi-en:A1:lesson-073:dialogue-turn-004",
       "lesson_id": 73,
       "ordinal": 4,
       "lesson_title_en": "School Childcare And Family Schedules",
@@ -6971,7 +7082,8 @@
       "probes": []
     },
     {
-      "cell_id": "vi-en:A1:lesson-073:dialogue-turn-005",
+      "cell_id": "41df4c97-611e-494b-b672-c55d0444df4b",
+      "address_hash": "vi-en:A1:lesson-073:dialogue-turn-005",
       "lesson_id": 73,
       "ordinal": 5,
       "lesson_title_en": "School Childcare And Family Schedules",
@@ -6983,7 +7095,8 @@
       "probes": []
     },
     {
-      "cell_id": "vi-en:A1:lesson-073:dialogue-turn-006",
+      "cell_id": "ffeedca8-6376-4724-9949-435d969566d9",
+      "address_hash": "vi-en:A1:lesson-073:dialogue-turn-006",
       "lesson_id": 73,
       "ordinal": 6,
       "lesson_title_en": "School Childcare And Family Schedules",
@@ -6995,7 +7108,8 @@
       "probes": []
     },
     {
-      "cell_id": "vi-en:A1:lesson-074:dialogue-turn-001",
+      "cell_id": "cfc0f9fe-d57f-4ac0-9061-6fd626f5b9d0",
+      "address_hash": "vi-en:A1:lesson-074:dialogue-turn-001",
       "lesson_id": 74,
       "ordinal": 1,
       "lesson_title_en": "Dating Social Nuance And Boundaries",
@@ -7006,8 +7120,8 @@
       "coverage": "measured-covered",
       "probes": [
         {
-          "probe_id": "9c4a364f584e",
-          "cell_id": "vi-en:A1:lesson-074:dialogue-turn-001",
+          "probe_id": "29b1435b280f",
+          "cell_id": "cfc0f9fe-d57f-4ac0-9061-6fd626f5b9d0",
           "rule_family": "en-vietlish-double-comparative",
           "fixture_files": [
             "vietlish-double-comparative.json"
@@ -7033,7 +7147,8 @@
       ]
     },
     {
-      "cell_id": "vi-en:A1:lesson-074:dialogue-turn-002",
+      "cell_id": "eee81211-f0b5-4432-94da-7192f059a08e",
+      "address_hash": "vi-en:A1:lesson-074:dialogue-turn-002",
       "lesson_id": 74,
       "ordinal": 2,
       "lesson_title_en": "Dating Social Nuance And Boundaries",
@@ -7045,7 +7160,8 @@
       "probes": []
     },
     {
-      "cell_id": "vi-en:A1:lesson-074:dialogue-turn-003",
+      "cell_id": "1c4752f0-76f2-4d31-9205-c8625db2ac6e",
+      "address_hash": "vi-en:A1:lesson-074:dialogue-turn-003",
       "lesson_id": 74,
       "ordinal": 3,
       "lesson_title_en": "Dating Social Nuance And Boundaries",
@@ -7057,7 +7173,8 @@
       "probes": []
     },
     {
-      "cell_id": "vi-en:A1:lesson-074:dialogue-turn-004",
+      "cell_id": "74056d5c-6bb6-4efc-a41f-501a83888a3e",
+      "address_hash": "vi-en:A1:lesson-074:dialogue-turn-004",
       "lesson_id": 74,
       "ordinal": 4,
       "lesson_title_en": "Dating Social Nuance And Boundaries",
@@ -7068,8 +7185,8 @@
       "coverage": "measured-blind",
       "probes": [
         {
-          "probe_id": "5e899d3c70d4",
-          "cell_id": "vi-en:A1:lesson-074:dialogue-turn-004",
+          "probe_id": "b901e1904fd2",
+          "cell_id": "74056d5c-6bb6-4efc-a41f-501a83888a3e",
           "rule_family": "en-vn-copula-be-adjective",
           "fixture_files": [
             "copula-be-adjective.json"
@@ -7093,7 +7210,8 @@
       ]
     },
     {
-      "cell_id": "vi-en:A1:lesson-074:dialogue-turn-005",
+      "cell_id": "d9cc5616-29ff-4057-851d-df352ab94e22",
+      "address_hash": "vi-en:A1:lesson-074:dialogue-turn-005",
       "lesson_id": 74,
       "ordinal": 5,
       "lesson_title_en": "Dating Social Nuance And Boundaries",
@@ -7105,7 +7223,8 @@
       "probes": []
     },
     {
-      "cell_id": "vi-en:A1:lesson-074:dialogue-turn-006",
+      "cell_id": "b22248db-2252-4227-99b6-b27a00f92b7e",
+      "address_hash": "vi-en:A1:lesson-074:dialogue-turn-006",
       "lesson_id": 74,
       "ordinal": 6,
       "lesson_title_en": "Dating Social Nuance And Boundaries",
@@ -7117,7 +7236,8 @@
       "probes": []
     },
     {
-      "cell_id": "vi-en:A1:lesson-075:dialogue-turn-001",
+      "cell_id": "e2f25b27-3f2d-4dd3-bc20-8f6699193b12",
+      "address_hash": "vi-en:A1:lesson-075:dialogue-turn-001",
       "lesson_id": 75,
       "ordinal": 1,
       "lesson_title_en": "Landlord Repairs And Complaints",
@@ -7129,7 +7249,8 @@
       "probes": []
     },
     {
-      "cell_id": "vi-en:A1:lesson-075:dialogue-turn-002",
+      "cell_id": "a1b67d65-b4bb-47cf-9c42-da43d6f80334",
+      "address_hash": "vi-en:A1:lesson-075:dialogue-turn-002",
       "lesson_id": 75,
       "ordinal": 2,
       "lesson_title_en": "Landlord Repairs And Complaints",
@@ -7141,7 +7262,8 @@
       "probes": []
     },
     {
-      "cell_id": "vi-en:A1:lesson-075:dialogue-turn-003",
+      "cell_id": "99893faa-13fa-41b9-a984-4b96e5e12322",
+      "address_hash": "vi-en:A1:lesson-075:dialogue-turn-003",
       "lesson_id": 75,
       "ordinal": 3,
       "lesson_title_en": "Landlord Repairs And Complaints",
@@ -7153,7 +7275,8 @@
       "probes": []
     },
     {
-      "cell_id": "vi-en:A1:lesson-075:dialogue-turn-004",
+      "cell_id": "32636aa3-cf17-4de9-92bd-3c2a45f48fe4",
+      "address_hash": "vi-en:A1:lesson-075:dialogue-turn-004",
       "lesson_id": 75,
       "ordinal": 4,
       "lesson_title_en": "Landlord Repairs And Complaints",
@@ -7165,7 +7288,8 @@
       "probes": []
     },
     {
-      "cell_id": "vi-en:A1:lesson-075:dialogue-turn-005",
+      "cell_id": "44debf13-e139-483c-8ff0-838639528e94",
+      "address_hash": "vi-en:A1:lesson-075:dialogue-turn-005",
       "lesson_id": 75,
       "ordinal": 5,
       "lesson_title_en": "Landlord Repairs And Complaints",
@@ -7177,7 +7301,8 @@
       "probes": []
     },
     {
-      "cell_id": "vi-en:A1:lesson-075:dialogue-turn-006",
+      "cell_id": "70c2c45a-7d7e-41d3-b556-b87c4bb723d2",
+      "address_hash": "vi-en:A1:lesson-075:dialogue-turn-006",
       "lesson_id": 75,
       "ordinal": 6,
       "lesson_title_en": "Landlord Repairs And Complaints",
@@ -7189,7 +7314,8 @@
       "probes": []
     },
     {
-      "cell_id": "vi-en:A1:lesson-076:dialogue-turn-001",
+      "cell_id": "f6ed896f-a229-45a3-9706-0d55b9781610",
+      "address_hash": "vi-en:A1:lesson-076:dialogue-turn-001",
       "lesson_id": 76,
       "ordinal": 1,
       "lesson_title_en": "Doctor Visit Symptoms And Pharmacy Details",
@@ -7200,8 +7326,8 @@
       "coverage": "measured-blind",
       "probes": [
         {
-          "probe_id": "82df5b795724",
-          "cell_id": "vi-en:A1:lesson-076:dialogue-turn-001",
+          "probe_id": "e249fea22d63",
+          "cell_id": "f6ed896f-a229-45a3-9706-0d55b9781610",
           "rule_family": "en-l4-missing-singular-article",
           "fixture_files": [
             "missing-singular-article.json"
@@ -7223,8 +7349,8 @@
           "rule_family_correct": false
         },
         {
-          "probe_id": "8fb1b88f7688",
-          "cell_id": "vi-en:A1:lesson-076:dialogue-turn-001",
+          "probe_id": "46af4c260dd3",
+          "cell_id": "f6ed896f-a229-45a3-9706-0d55b9781610",
           "rule_family": "en-l4-quantity-plural-s",
           "fixture_files": [
             "quantity-plural-s.json"
@@ -7246,8 +7372,8 @@
           "rule_family_correct": false
         },
         {
-          "probe_id": "f47035a98b66",
-          "cell_id": "vi-en:A1:lesson-076:dialogue-turn-001",
+          "probe_id": "2baebdf4e253",
+          "cell_id": "f6ed896f-a229-45a3-9706-0d55b9781610",
           "rule_family": "en-vn-numeral-quantifier-plural",
           "fixture_files": [
             "numeral-quantifier-plural.json"
@@ -7271,7 +7397,8 @@
       ]
     },
     {
-      "cell_id": "vi-en:A1:lesson-076:dialogue-turn-002",
+      "cell_id": "7fe415d8-d2c1-47ac-8739-7bdb7ef25e8d",
+      "address_hash": "vi-en:A1:lesson-076:dialogue-turn-002",
       "lesson_id": 76,
       "ordinal": 2,
       "lesson_title_en": "Doctor Visit Symptoms And Pharmacy Details",
@@ -7282,8 +7409,8 @@
       "coverage": "measured-covered",
       "probes": [
         {
-          "probe_id": "b233d3e04082",
-          "cell_id": "vi-en:A1:lesson-076:dialogue-turn-002",
+          "probe_id": "3406085befd9",
+          "cell_id": "7fe415d8-d2c1-47ac-8739-7bdb7ef25e8d",
           "rule_family": "en-question-form-final-mark",
           "fixture_files": [
             "question-form-final-mark.json"
@@ -7307,8 +7434,8 @@
           "rule_family_correct": true
         },
         {
-          "probe_id": "945dc2bf84a5",
-          "cell_id": "vi-en:A1:lesson-076:dialogue-turn-002",
+          "probe_id": "c65c57df535b",
+          "cell_id": "7fe415d8-d2c1-47ac-8739-7bdb7ef25e8d",
           "rule_family": "en-vn-yesno-do-support",
           "fixture_files": [
             "yesno-do-support.json"
@@ -7334,7 +7461,8 @@
       ]
     },
     {
-      "cell_id": "vi-en:A1:lesson-076:dialogue-turn-003",
+      "cell_id": "1ee66715-701b-41e0-a26a-a1ad43bcb665",
+      "address_hash": "vi-en:A1:lesson-076:dialogue-turn-003",
       "lesson_id": 76,
       "ordinal": 3,
       "lesson_title_en": "Doctor Visit Symptoms And Pharmacy Details",
@@ -7346,7 +7474,8 @@
       "probes": []
     },
     {
-      "cell_id": "vi-en:A1:lesson-076:dialogue-turn-004",
+      "cell_id": "6b528aae-3c23-4b14-84e0-99280ae24eb6",
+      "address_hash": "vi-en:A1:lesson-076:dialogue-turn-004",
       "lesson_id": 76,
       "ordinal": 4,
       "lesson_title_en": "Doctor Visit Symptoms And Pharmacy Details",
@@ -7358,7 +7487,8 @@
       "probes": []
     },
     {
-      "cell_id": "vi-en:A1:lesson-076:dialogue-turn-005",
+      "cell_id": "64ccffe9-a515-4a4e-a884-1be794f24286",
+      "address_hash": "vi-en:A1:lesson-076:dialogue-turn-005",
       "lesson_id": 76,
       "ordinal": 5,
       "lesson_title_en": "Doctor Visit Symptoms And Pharmacy Details",
@@ -7369,8 +7499,8 @@
       "coverage": "measured-blind",
       "probes": [
         {
-          "probe_id": "381e62471fb4",
-          "cell_id": "vi-en:A1:lesson-076:dialogue-turn-005",
+          "probe_id": "f03990cdf718",
+          "cell_id": "64ccffe9-a515-4a4e-a884-1be794f24286",
           "rule_family": "en-question-form-final-mark",
           "fixture_files": [
             "question-form-final-mark.json"
@@ -7394,8 +7524,8 @@
           "rule_family_correct": true
         },
         {
-          "probe_id": "cf123457f8ab",
-          "cell_id": "vi-en:A1:lesson-076:dialogue-turn-005",
+          "probe_id": "02ba23e9ff3d",
+          "cell_id": "64ccffe9-a515-4a4e-a884-1be794f24286",
           "rule_family": "en-vn-yesno-do-support",
           "fixture_files": [
             "yesno-do-support.json"
@@ -7419,7 +7549,8 @@
       ]
     },
     {
-      "cell_id": "vi-en:A1:lesson-076:dialogue-turn-006",
+      "cell_id": "88523acb-4b9f-475e-8dfd-d08f9e7cd8ca",
+      "address_hash": "vi-en:A1:lesson-076:dialogue-turn-006",
       "lesson_id": 76,
       "ordinal": 6,
       "lesson_title_en": "Doctor Visit Symptoms And Pharmacy Details",
@@ -7431,7 +7562,8 @@
       "probes": []
     },
     {
-      "cell_id": "vi-en:A1:lesson-077:dialogue-turn-001",
+      "cell_id": "3ee10fdb-e5ad-48ea-98c4-eb382511f881",
+      "address_hash": "vi-en:A1:lesson-077:dialogue-turn-001",
       "lesson_id": 77,
       "ordinal": 1,
       "lesson_title_en": "Negotiating Politely And Making Complaints",
@@ -7442,8 +7574,8 @@
       "coverage": "measured-blind",
       "probes": [
         {
-          "probe_id": "ee2f09711528",
-          "cell_id": "vi-en:A1:lesson-077:dialogue-turn-001",
+          "probe_id": "72fafb3daaf5",
+          "cell_id": "3ee10fdb-e5ad-48ea-98c4-eb382511f881",
           "rule_family": "en-question-form-final-mark",
           "fixture_files": [
             "question-form-final-mark.json"
@@ -7467,8 +7599,8 @@
           "rule_family_correct": true
         },
         {
-          "probe_id": "506b25ad272b",
-          "cell_id": "vi-en:A1:lesson-077:dialogue-turn-001",
+          "probe_id": "114f9187a4d4",
+          "cell_id": "3ee10fdb-e5ad-48ea-98c4-eb382511f881",
           "rule_family": "en-vn-yesno-do-support",
           "fixture_files": [
             "yesno-do-support.json"
@@ -7492,7 +7624,8 @@
       ]
     },
     {
-      "cell_id": "vi-en:A1:lesson-077:dialogue-turn-002",
+      "cell_id": "c5601376-7d20-4f2e-a93a-06bfd2798d93",
+      "address_hash": "vi-en:A1:lesson-077:dialogue-turn-002",
       "lesson_id": 77,
       "ordinal": 2,
       "lesson_title_en": "Negotiating Politely And Making Complaints",
@@ -7504,7 +7637,8 @@
       "probes": []
     },
     {
-      "cell_id": "vi-en:A1:lesson-077:dialogue-turn-003",
+      "cell_id": "fc68a29b-55c1-4386-98c2-b5522a9dc27a",
+      "address_hash": "vi-en:A1:lesson-077:dialogue-turn-003",
       "lesson_id": 77,
       "ordinal": 3,
       "lesson_title_en": "Negotiating Politely And Making Complaints",
@@ -7516,7 +7650,8 @@
       "probes": []
     },
     {
-      "cell_id": "vi-en:A1:lesson-077:dialogue-turn-004",
+      "cell_id": "5ee5d4f9-bf9d-4153-91b4-2b6b721d2e17",
+      "address_hash": "vi-en:A1:lesson-077:dialogue-turn-004",
       "lesson_id": 77,
       "ordinal": 4,
       "lesson_title_en": "Negotiating Politely And Making Complaints",
@@ -7527,8 +7662,8 @@
       "coverage": "measured-covered",
       "probes": [
         {
-          "probe_id": "75b1d45314da",
-          "cell_id": "vi-en:A1:lesson-077:dialogue-turn-004",
+          "probe_id": "3f390d1e2128",
+          "cell_id": "5ee5d4f9-bf9d-4153-91b4-2b6b721d2e17",
           "rule_family": "en-vietlish-double-comparative",
           "fixture_files": [
             "vietlish-double-comparative.json"
@@ -7554,7 +7689,8 @@
       ]
     },
     {
-      "cell_id": "vi-en:A1:lesson-077:dialogue-turn-005",
+      "cell_id": "5a020580-5a3c-43cf-83ae-65acdd72ced7",
+      "address_hash": "vi-en:A1:lesson-077:dialogue-turn-005",
       "lesson_id": 77,
       "ordinal": 5,
       "lesson_title_en": "Negotiating Politely And Making Complaints",
@@ -7566,7 +7702,8 @@
       "probes": []
     },
     {
-      "cell_id": "vi-en:A1:lesson-077:dialogue-turn-006",
+      "cell_id": "1c7f97f6-7ce8-4bc9-8fd3-972e6fe78604",
+      "address_hash": "vi-en:A1:lesson-077:dialogue-turn-006",
       "lesson_id": 77,
       "ordinal": 6,
       "lesson_title_en": "Negotiating Politely And Making Complaints",
@@ -7577,8 +7714,8 @@
       "coverage": "measured-blind",
       "probes": [
         {
-          "probe_id": "2ace3743dde0",
-          "cell_id": "vi-en:A1:lesson-077:dialogue-turn-006",
+          "probe_id": "28ccbab012b4",
+          "cell_id": "1c7f97f6-7ce8-4bc9-8fd3-972e6fe78604",
           "rule_family": "en-existential-have-there-is",
           "fixture_files": [
             "existential-have-there-is-are.json"
@@ -7602,7 +7739,8 @@
       ]
     },
     {
-      "cell_id": "vi-en:A1:lesson-079:dialogue-turn-001",
+      "cell_id": "c352f562-4aff-4299-b29a-8f5aca710208",
+      "address_hash": "vi-en:A1:lesson-079:dialogue-turn-001",
       "lesson_id": 79,
       "ordinal": 1,
       "lesson_title_en": "Apologizing And Fixing Mistakes",
@@ -7614,7 +7752,8 @@
       "probes": []
     },
     {
-      "cell_id": "vi-en:A1:lesson-079:dialogue-turn-002",
+      "cell_id": "ce3d3c81-9582-4606-abc5-5e40f9ddcfa3",
+      "address_hash": "vi-en:A1:lesson-079:dialogue-turn-002",
       "lesson_id": 79,
       "ordinal": 2,
       "lesson_title_en": "Apologizing And Fixing Mistakes",
@@ -7626,7 +7765,8 @@
       "probes": []
     },
     {
-      "cell_id": "vi-en:A1:lesson-079:dialogue-turn-003",
+      "cell_id": "d74d77ca-67aa-4082-b32e-0aa8b40754c1",
+      "address_hash": "vi-en:A1:lesson-079:dialogue-turn-003",
       "lesson_id": 79,
       "ordinal": 3,
       "lesson_title_en": "Apologizing And Fixing Mistakes",
@@ -7638,7 +7778,8 @@
       "probes": []
     },
     {
-      "cell_id": "vi-en:A1:lesson-079:dialogue-turn-004",
+      "cell_id": "a3051a0c-a83a-48ab-9b97-b0e91574e0a3",
+      "address_hash": "vi-en:A1:lesson-079:dialogue-turn-004",
       "lesson_id": 79,
       "ordinal": 4,
       "lesson_title_en": "Apologizing And Fixing Mistakes",
@@ -7649,8 +7790,8 @@
       "coverage": "measured-blind",
       "probes": [
         {
-          "probe_id": "f7624b9219dd",
-          "cell_id": "vi-en:A1:lesson-079:dialogue-turn-004",
+          "probe_id": "09f5db50e28c",
+          "cell_id": "a3051a0c-a83a-48ab-9b97-b0e91574e0a3",
           "rule_family": "en-vn-copula-be-adjective",
           "fixture_files": [
             "copula-be-adjective.json"
@@ -7674,7 +7815,8 @@
       ]
     },
     {
-      "cell_id": "vi-en:A1:lesson-079:dialogue-turn-005",
+      "cell_id": "339ce230-c175-4f3b-bc53-d12aa5cedec9",
+      "address_hash": "vi-en:A1:lesson-079:dialogue-turn-005",
       "lesson_id": 79,
       "ordinal": 5,
       "lesson_title_en": "Apologizing And Fixing Mistakes",
@@ -7686,7 +7828,8 @@
       "probes": []
     },
     {
-      "cell_id": "vi-en:A1:lesson-079:dialogue-turn-006",
+      "cell_id": "89449388-2cef-443b-9d33-1fc74630f3d3",
+      "address_hash": "vi-en:A1:lesson-079:dialogue-turn-006",
       "lesson_id": 79,
       "ordinal": 6,
       "lesson_title_en": "Apologizing And Fixing Mistakes",
@@ -7698,7 +7841,8 @@
       "probes": []
     },
     {
-      "cell_id": "vi-en:A1:lesson-081:dialogue-turn-001",
+      "cell_id": "0f462196-23fb-437f-8081-1bed413d5083",
+      "address_hash": "vi-en:A1:lesson-081:dialogue-turn-001",
       "lesson_id": 81,
       "ordinal": 1,
       "lesson_title_en": "Visa And Immigration Office Follow-Up",
@@ -7710,7 +7854,8 @@
       "probes": []
     },
     {
-      "cell_id": "vi-en:A1:lesson-081:dialogue-turn-002",
+      "cell_id": "d01331fb-019b-4c78-ae89-271bc0fb51fd",
+      "address_hash": "vi-en:A1:lesson-081:dialogue-turn-002",
       "lesson_id": 81,
       "ordinal": 2,
       "lesson_title_en": "Visa And Immigration Office Follow-Up",
@@ -7721,8 +7866,8 @@
       "coverage": "measured-blind",
       "probes": [
         {
-          "probe_id": "74021e55c83d",
-          "cell_id": "vi-en:A1:lesson-081:dialogue-turn-002",
+          "probe_id": "4986d5caf391",
+          "cell_id": "d01331fb-019b-4c78-ae89-271bc0fb51fd",
           "rule_family": "en-question-form-final-mark",
           "fixture_files": [
             "question-form-final-mark.json"
@@ -7746,8 +7891,8 @@
           "rule_family_correct": true
         },
         {
-          "probe_id": "51f2e717b719",
-          "cell_id": "vi-en:A1:lesson-081:dialogue-turn-002",
+          "probe_id": "54df029881c5",
+          "cell_id": "d01331fb-019b-4c78-ae89-271bc0fb51fd",
           "rule_family": "en-vn-yesno-do-support",
           "fixture_files": [
             "yesno-do-support.json"
@@ -7771,7 +7916,8 @@
       ]
     },
     {
-      "cell_id": "vi-en:A1:lesson-081:dialogue-turn-003",
+      "cell_id": "1b8dab05-96f8-43a0-af31-48e8781fd579",
+      "address_hash": "vi-en:A1:lesson-081:dialogue-turn-003",
       "lesson_id": 81,
       "ordinal": 3,
       "lesson_title_en": "Visa And Immigration Office Follow-Up",
@@ -7783,7 +7929,8 @@
       "probes": []
     },
     {
-      "cell_id": "vi-en:A1:lesson-081:dialogue-turn-004",
+      "cell_id": "8be1ffde-e7ed-4d38-9474-cef6b9a0fb62",
+      "address_hash": "vi-en:A1:lesson-081:dialogue-turn-004",
       "lesson_id": 81,
       "ordinal": 4,
       "lesson_title_en": "Visa And Immigration Office Follow-Up",
@@ -7795,7 +7942,8 @@
       "probes": []
     },
     {
-      "cell_id": "vi-en:A1:lesson-081:dialogue-turn-005",
+      "cell_id": "e09ec796-c87e-4a79-9de6-6c9e317800c3",
+      "address_hash": "vi-en:A1:lesson-081:dialogue-turn-005",
       "lesson_id": 81,
       "ordinal": 5,
       "lesson_title_en": "Visa And Immigration Office Follow-Up",
@@ -7807,7 +7955,8 @@
       "probes": []
     },
     {
-      "cell_id": "vi-en:A1:lesson-081:dialogue-turn-006",
+      "cell_id": "51c02a9e-fe0f-47c1-b596-25408422aa29",
+      "address_hash": "vi-en:A1:lesson-081:dialogue-turn-006",
       "lesson_id": 81,
       "ordinal": 6,
       "lesson_title_en": "Visa And Immigration Office Follow-Up",
@@ -7819,7 +7968,8 @@
       "probes": []
     },
     {
-      "cell_id": "vi-en:A1:lesson-082:dialogue-turn-001",
+      "cell_id": "d7e58766-abf5-4275-84f7-b58753a10fef",
+      "address_hash": "vi-en:A1:lesson-082:dialogue-turn-001",
       "lesson_id": 82,
       "ordinal": 1,
       "lesson_title_en": "Bank Account And ATM Problems",
@@ -7831,7 +7981,8 @@
       "probes": []
     },
     {
-      "cell_id": "vi-en:A1:lesson-082:dialogue-turn-002",
+      "cell_id": "495215f7-4141-4eec-b0d8-0952f9caec0b",
+      "address_hash": "vi-en:A1:lesson-082:dialogue-turn-002",
       "lesson_id": 82,
       "ordinal": 2,
       "lesson_title_en": "Bank Account And ATM Problems",
@@ -7842,8 +7993,8 @@
       "coverage": "measured-blind",
       "probes": [
         {
-          "probe_id": "e295f1bb9af3",
-          "cell_id": "vi-en:A1:lesson-082:dialogue-turn-002",
+          "probe_id": "1a4e76c0bb69",
+          "cell_id": "495215f7-4141-4eec-b0d8-0952f9caec0b",
           "rule_family": "en-l4-missing-singular-article",
           "fixture_files": [
             "missing-singular-article.json"
@@ -7865,8 +8016,8 @@
           "rule_family_correct": false
         },
         {
-          "probe_id": "f7b518a458c4",
-          "cell_id": "vi-en:A1:lesson-082:dialogue-turn-002",
+          "probe_id": "9987048472b7",
+          "cell_id": "495215f7-4141-4eec-b0d8-0952f9caec0b",
           "rule_family": "en-question-form-final-mark",
           "fixture_files": [
             "question-form-final-mark.json"
@@ -7890,8 +8041,8 @@
           "rule_family_correct": true
         },
         {
-          "probe_id": "da64c2b36090",
-          "cell_id": "vi-en:A1:lesson-082:dialogue-turn-002",
+          "probe_id": "873070645eed",
+          "cell_id": "495215f7-4141-4eec-b0d8-0952f9caec0b",
           "rule_family": "en-vn-yesno-do-support",
           "fixture_files": [
             "yesno-do-support.json"
@@ -7915,7 +8066,8 @@
       ]
     },
     {
-      "cell_id": "vi-en:A1:lesson-082:dialogue-turn-003",
+      "cell_id": "d03e748e-c394-4d76-b6c8-ecb351007828",
+      "address_hash": "vi-en:A1:lesson-082:dialogue-turn-003",
       "lesson_id": 82,
       "ordinal": 3,
       "lesson_title_en": "Bank Account And ATM Problems",
@@ -7927,7 +8079,8 @@
       "probes": []
     },
     {
-      "cell_id": "vi-en:A1:lesson-082:dialogue-turn-004",
+      "cell_id": "99bce15c-040a-4c73-84eb-b5cb9b17cfea",
+      "address_hash": "vi-en:A1:lesson-082:dialogue-turn-004",
       "lesson_id": 82,
       "ordinal": 4,
       "lesson_title_en": "Bank Account And ATM Problems",
@@ -7939,7 +8092,8 @@
       "probes": []
     },
     {
-      "cell_id": "vi-en:A1:lesson-082:dialogue-turn-005",
+      "cell_id": "6115b263-de41-4993-96ec-27b845236031",
+      "address_hash": "vi-en:A1:lesson-082:dialogue-turn-005",
       "lesson_id": 82,
       "ordinal": 5,
       "lesson_title_en": "Bank Account And ATM Problems",
@@ -7951,7 +8105,8 @@
       "probes": []
     },
     {
-      "cell_id": "vi-en:A1:lesson-082:dialogue-turn-006",
+      "cell_id": "f56d3641-5d02-49ff-8f9d-dd181b70c918",
+      "address_hash": "vi-en:A1:lesson-082:dialogue-turn-006",
       "lesson_id": 82,
       "ordinal": 6,
       "lesson_title_en": "Bank Account And ATM Problems",
@@ -7963,7 +8118,8 @@
       "probes": []
     },
     {
-      "cell_id": "vi-en:A1:lesson-083:dialogue-turn-001",
+      "cell_id": "12a3db34-a441-4e1e-9297-db8091ebfd9c",
+      "address_hash": "vi-en:A1:lesson-083:dialogue-turn-001",
       "lesson_id": 83,
       "ordinal": 1,
       "lesson_title_en": "Phone SIM And Internet Setup",
@@ -7975,7 +8131,8 @@
       "probes": []
     },
     {
-      "cell_id": "vi-en:A1:lesson-083:dialogue-turn-002",
+      "cell_id": "638dba94-6bd3-4f1d-9d0f-afd46db488ab",
+      "address_hash": "vi-en:A1:lesson-083:dialogue-turn-002",
       "lesson_id": 83,
       "ordinal": 2,
       "lesson_title_en": "Phone SIM And Internet Setup",
@@ -7986,8 +8143,8 @@
       "coverage": "measured-covered",
       "probes": [
         {
-          "probe_id": "cef69da97d28",
-          "cell_id": "vi-en:A1:lesson-083:dialogue-turn-002",
+          "probe_id": "2d89d2579cac",
+          "cell_id": "638dba94-6bd3-4f1d-9d0f-afd46db488ab",
           "rule_family": "en-vietlish-double-comparative",
           "fixture_files": [
             "vietlish-double-comparative.json"
@@ -8013,7 +8170,8 @@
       ]
     },
     {
-      "cell_id": "vi-en:A1:lesson-083:dialogue-turn-003",
+      "cell_id": "1571b06e-f365-494d-babc-337bcb53eee2",
+      "address_hash": "vi-en:A1:lesson-083:dialogue-turn-003",
       "lesson_id": 83,
       "ordinal": 3,
       "lesson_title_en": "Phone SIM And Internet Setup",
@@ -8025,7 +8183,8 @@
       "probes": []
     },
     {
-      "cell_id": "vi-en:A1:lesson-083:dialogue-turn-004",
+      "cell_id": "e966e4ff-9813-4db3-8922-bc978e30e3cc",
+      "address_hash": "vi-en:A1:lesson-083:dialogue-turn-004",
       "lesson_id": 83,
       "ordinal": 4,
       "lesson_title_en": "Phone SIM And Internet Setup",
@@ -8037,7 +8196,8 @@
       "probes": []
     },
     {
-      "cell_id": "vi-en:A1:lesson-083:dialogue-turn-005",
+      "cell_id": "b25e9dd8-9822-4907-9a5a-67d5f28f3d38",
+      "address_hash": "vi-en:A1:lesson-083:dialogue-turn-005",
       "lesson_id": 83,
       "ordinal": 5,
       "lesson_title_en": "Phone SIM And Internet Setup",
@@ -8049,7 +8209,8 @@
       "probes": []
     },
     {
-      "cell_id": "vi-en:A1:lesson-083:dialogue-turn-006",
+      "cell_id": "8c2e79da-07b1-4f2b-abc2-717dffcdd81e",
+      "address_hash": "vi-en:A1:lesson-083:dialogue-turn-006",
       "lesson_id": 83,
       "ordinal": 6,
       "lesson_title_en": "Phone SIM And Internet Setup",
@@ -8061,7 +8222,8 @@
       "probes": []
     },
     {
-      "cell_id": "vi-en:A1:lesson-084:dialogue-turn-001",
+      "cell_id": "c3a45880-0db3-410e-9010-12b14e9186a6",
+      "address_hash": "vi-en:A1:lesson-084:dialogue-turn-001",
       "lesson_id": 84,
       "ordinal": 1,
       "lesson_title_en": "Workplace Problems And Requests",
@@ -8073,7 +8235,8 @@
       "probes": []
     },
     {
-      "cell_id": "vi-en:A1:lesson-084:dialogue-turn-002",
+      "cell_id": "a8dba9f2-5254-4a56-877e-caf3030f9d1a",
+      "address_hash": "vi-en:A1:lesson-084:dialogue-turn-002",
       "lesson_id": 84,
       "ordinal": 2,
       "lesson_title_en": "Workplace Problems And Requests",
@@ -8085,7 +8248,8 @@
       "probes": []
     },
     {
-      "cell_id": "vi-en:A1:lesson-084:dialogue-turn-003",
+      "cell_id": "6b1ba126-11bc-4a5f-b7de-789c1dbc3ee6",
+      "address_hash": "vi-en:A1:lesson-084:dialogue-turn-003",
       "lesson_id": 84,
       "ordinal": 3,
       "lesson_title_en": "Workplace Problems And Requests",
@@ -8097,7 +8261,8 @@
       "probes": []
     },
     {
-      "cell_id": "vi-en:A1:lesson-084:dialogue-turn-004",
+      "cell_id": "bdd04b3c-0df2-4589-8ec7-7f7b2d4c8a36",
+      "address_hash": "vi-en:A1:lesson-084:dialogue-turn-004",
       "lesson_id": 84,
       "ordinal": 4,
       "lesson_title_en": "Workplace Problems And Requests",
@@ -8108,8 +8273,8 @@
       "coverage": "measured-blind",
       "probes": [
         {
-          "probe_id": "15fabdf00a96",
-          "cell_id": "vi-en:A1:lesson-084:dialogue-turn-004",
+          "probe_id": "0e0e028926de",
+          "cell_id": "bdd04b3c-0df2-4589-8ec7-7f7b2d4c8a36",
           "rule_family": "en-step5-subject-verb-agreement",
           "fixture_files": [
             "step5-subject-verb-agreement.json"
@@ -8133,7 +8298,8 @@
       ]
     },
     {
-      "cell_id": "vi-en:A1:lesson-084:dialogue-turn-005",
+      "cell_id": "c233d6a6-e66f-4316-945a-ce68a0c2ec8e",
+      "address_hash": "vi-en:A1:lesson-084:dialogue-turn-005",
       "lesson_id": 84,
       "ordinal": 5,
       "lesson_title_en": "Workplace Problems And Requests",
@@ -8145,7 +8311,8 @@
       "probes": []
     },
     {
-      "cell_id": "vi-en:A1:lesson-084:dialogue-turn-006",
+      "cell_id": "76dd1185-3b3b-4e63-bb2a-57dd4be1f984",
+      "address_hash": "vi-en:A1:lesson-084:dialogue-turn-006",
       "lesson_id": 84,
       "ordinal": 6,
       "lesson_title_en": "Workplace Problems And Requests",
@@ -8157,7 +8324,8 @@
       "probes": []
     },
     {
-      "cell_id": "vi-en:A1:lesson-085:dialogue-turn-001",
+      "cell_id": "54da9606-8365-4862-8bea-b9019b12cb1f",
+      "address_hash": "vi-en:A1:lesson-085:dialogue-turn-001",
       "lesson_id": 85,
       "ordinal": 1,
       "lesson_title_en": "School Childcare And Family Schedules",
@@ -8169,7 +8337,8 @@
       "probes": []
     },
     {
-      "cell_id": "vi-en:A1:lesson-085:dialogue-turn-002",
+      "cell_id": "b4bd8cd3-cd30-4c52-8f0c-930e49364f9f",
+      "address_hash": "vi-en:A1:lesson-085:dialogue-turn-002",
       "lesson_id": 85,
       "ordinal": 2,
       "lesson_title_en": "School Childcare And Family Schedules",
@@ -8181,7 +8350,8 @@
       "probes": []
     },
     {
-      "cell_id": "vi-en:A1:lesson-085:dialogue-turn-003",
+      "cell_id": "d4477d77-a322-4923-94b6-92bc0273761f",
+      "address_hash": "vi-en:A1:lesson-085:dialogue-turn-003",
       "lesson_id": 85,
       "ordinal": 3,
       "lesson_title_en": "School Childcare And Family Schedules",
@@ -8192,8 +8362,8 @@
       "coverage": "measured-blind",
       "probes": [
         {
-          "probe_id": "3cc8e432e7c3",
-          "cell_id": "vi-en:A1:lesson-085:dialogue-turn-003",
+          "probe_id": "5fa3299628b3",
+          "cell_id": "d4477d77-a322-4923-94b6-92bc0273761f",
           "rule_family": "en-step6-at-clock-time",
           "fixture_files": [
             "at-clock-time.json"
@@ -8217,7 +8387,8 @@
       ]
     },
     {
-      "cell_id": "vi-en:A1:lesson-085:dialogue-turn-004",
+      "cell_id": "e6115bd4-7132-4395-9ce7-f98085465850",
+      "address_hash": "vi-en:A1:lesson-085:dialogue-turn-004",
       "lesson_id": 85,
       "ordinal": 4,
       "lesson_title_en": "School Childcare And Family Schedules",
@@ -8229,7 +8400,8 @@
       "probes": []
     },
     {
-      "cell_id": "vi-en:A1:lesson-085:dialogue-turn-005",
+      "cell_id": "9b6396ec-2d6d-4935-9521-f3257d1474b8",
+      "address_hash": "vi-en:A1:lesson-085:dialogue-turn-005",
       "lesson_id": 85,
       "ordinal": 5,
       "lesson_title_en": "School Childcare And Family Schedules",
@@ -8241,7 +8413,8 @@
       "probes": []
     },
     {
-      "cell_id": "vi-en:A1:lesson-085:dialogue-turn-006",
+      "cell_id": "e4d1bb62-8815-4650-8200-63f8f77493c5",
+      "address_hash": "vi-en:A1:lesson-085:dialogue-turn-006",
       "lesson_id": 85,
       "ordinal": 6,
       "lesson_title_en": "School Childcare And Family Schedules",
@@ -8253,7 +8426,8 @@
       "probes": []
     },
     {
-      "cell_id": "vi-en:A1:lesson-086:dialogue-turn-001",
+      "cell_id": "475e533b-9c4d-46ba-9e35-3a6161864f2e",
+      "address_hash": "vi-en:A1:lesson-086:dialogue-turn-001",
       "lesson_id": 86,
       "ordinal": 1,
       "lesson_title_en": "Dating Social Nuance And Boundaries",
@@ -8264,8 +8438,8 @@
       "coverage": "measured-covered",
       "probes": [
         {
-          "probe_id": "952d748a341c",
-          "cell_id": "vi-en:A1:lesson-086:dialogue-turn-001",
+          "probe_id": "20a74d03bcaa",
+          "cell_id": "475e533b-9c4d-46ba-9e35-3a6161864f2e",
           "rule_family": "en-vietlish-double-comparative",
           "fixture_files": [
             "vietlish-double-comparative.json"
@@ -8291,7 +8465,8 @@
       ]
     },
     {
-      "cell_id": "vi-en:A1:lesson-086:dialogue-turn-002",
+      "cell_id": "106762ab-f840-4e6a-a35a-d2dedf0333c3",
+      "address_hash": "vi-en:A1:lesson-086:dialogue-turn-002",
       "lesson_id": 86,
       "ordinal": 2,
       "lesson_title_en": "Dating Social Nuance And Boundaries",
@@ -8303,7 +8478,8 @@
       "probes": []
     },
     {
-      "cell_id": "vi-en:A1:lesson-086:dialogue-turn-003",
+      "cell_id": "d2b8b89b-fb59-4f9f-b9f4-0fa1f6a3760a",
+      "address_hash": "vi-en:A1:lesson-086:dialogue-turn-003",
       "lesson_id": 86,
       "ordinal": 3,
       "lesson_title_en": "Dating Social Nuance And Boundaries",
@@ -8315,7 +8491,8 @@
       "probes": []
     },
     {
-      "cell_id": "vi-en:A1:lesson-086:dialogue-turn-004",
+      "cell_id": "8e939889-d61a-412b-a5a1-4a63c21af124",
+      "address_hash": "vi-en:A1:lesson-086:dialogue-turn-004",
       "lesson_id": 86,
       "ordinal": 4,
       "lesson_title_en": "Dating Social Nuance And Boundaries",
@@ -8326,8 +8503,8 @@
       "coverage": "measured-blind",
       "probes": [
         {
-          "probe_id": "13eeecad0af5",
-          "cell_id": "vi-en:A1:lesson-086:dialogue-turn-004",
+          "probe_id": "ca95d8fa23f8",
+          "cell_id": "8e939889-d61a-412b-a5a1-4a63c21af124",
           "rule_family": "en-vn-copula-be-adjective",
           "fixture_files": [
             "copula-be-adjective.json"
@@ -8351,7 +8528,8 @@
       ]
     },
     {
-      "cell_id": "vi-en:A1:lesson-086:dialogue-turn-005",
+      "cell_id": "5d34ea00-8bd3-4b70-93f6-9429decf38a3",
+      "address_hash": "vi-en:A1:lesson-086:dialogue-turn-005",
       "lesson_id": 86,
       "ordinal": 5,
       "lesson_title_en": "Dating Social Nuance And Boundaries",
@@ -8363,7 +8541,8 @@
       "probes": []
     },
     {
-      "cell_id": "vi-en:A1:lesson-086:dialogue-turn-006",
+      "cell_id": "dd0140d8-8eed-45df-a98b-1f85694d610b",
+      "address_hash": "vi-en:A1:lesson-086:dialogue-turn-006",
       "lesson_id": 86,
       "ordinal": 6,
       "lesson_title_en": "Dating Social Nuance And Boundaries",
@@ -8375,7 +8554,8 @@
       "probes": []
     },
     {
-      "cell_id": "vi-en:A1:lesson-087:dialogue-turn-001",
+      "cell_id": "5dabe5ee-0eec-4405-8f6c-f2cb7cd804c1",
+      "address_hash": "vi-en:A1:lesson-087:dialogue-turn-001",
       "lesson_id": 87,
       "ordinal": 1,
       "lesson_title_en": "Landlord Repairs And Complaints",
@@ -8387,7 +8567,8 @@
       "probes": []
     },
     {
-      "cell_id": "vi-en:A1:lesson-087:dialogue-turn-002",
+      "cell_id": "8128c427-fe0c-4ea0-9953-3dc404f05801",
+      "address_hash": "vi-en:A1:lesson-087:dialogue-turn-002",
       "lesson_id": 87,
       "ordinal": 2,
       "lesson_title_en": "Landlord Repairs And Complaints",
@@ -8399,7 +8580,8 @@
       "probes": []
     },
     {
-      "cell_id": "vi-en:A1:lesson-087:dialogue-turn-003",
+      "cell_id": "53664595-a65e-4719-b137-b5ac3b0ecb35",
+      "address_hash": "vi-en:A1:lesson-087:dialogue-turn-003",
       "lesson_id": 87,
       "ordinal": 3,
       "lesson_title_en": "Landlord Repairs And Complaints",
@@ -8411,7 +8593,8 @@
       "probes": []
     },
     {
-      "cell_id": "vi-en:A1:lesson-087:dialogue-turn-004",
+      "cell_id": "62788ce7-73f5-4be6-960c-45ae414c6d0f",
+      "address_hash": "vi-en:A1:lesson-087:dialogue-turn-004",
       "lesson_id": 87,
       "ordinal": 4,
       "lesson_title_en": "Landlord Repairs And Complaints",
@@ -8423,7 +8606,8 @@
       "probes": []
     },
     {
-      "cell_id": "vi-en:A1:lesson-087:dialogue-turn-005",
+      "cell_id": "9f492724-de09-47d6-91a0-314c23e85d96",
+      "address_hash": "vi-en:A1:lesson-087:dialogue-turn-005",
       "lesson_id": 87,
       "ordinal": 5,
       "lesson_title_en": "Landlord Repairs And Complaints",
@@ -8435,7 +8619,8 @@
       "probes": []
     },
     {
-      "cell_id": "vi-en:A1:lesson-087:dialogue-turn-006",
+      "cell_id": "d418879e-d72a-4a15-9c99-109e0ddbe5ed",
+      "address_hash": "vi-en:A1:lesson-087:dialogue-turn-006",
       "lesson_id": 87,
       "ordinal": 6,
       "lesson_title_en": "Landlord Repairs And Complaints",
@@ -8447,7 +8632,8 @@
       "probes": []
     },
     {
-      "cell_id": "vi-en:A1:lesson-088:dialogue-turn-001",
+      "cell_id": "33300c09-8fef-4472-a88e-a58c2d20b796",
+      "address_hash": "vi-en:A1:lesson-088:dialogue-turn-001",
       "lesson_id": 88,
       "ordinal": 1,
       "lesson_title_en": "Doctor Visit Symptoms And Pharmacy Details",
@@ -8458,8 +8644,8 @@
       "coverage": "measured-blind",
       "probes": [
         {
-          "probe_id": "7e4c3414031c",
-          "cell_id": "vi-en:A1:lesson-088:dialogue-turn-001",
+          "probe_id": "27297a62320c",
+          "cell_id": "33300c09-8fef-4472-a88e-a58c2d20b796",
           "rule_family": "en-l4-missing-singular-article",
           "fixture_files": [
             "missing-singular-article.json"
@@ -8481,8 +8667,8 @@
           "rule_family_correct": false
         },
         {
-          "probe_id": "bb1b711ea5ae",
-          "cell_id": "vi-en:A1:lesson-088:dialogue-turn-001",
+          "probe_id": "9f15554eee1b",
+          "cell_id": "33300c09-8fef-4472-a88e-a58c2d20b796",
           "rule_family": "en-l4-quantity-plural-s",
           "fixture_files": [
             "quantity-plural-s.json"
@@ -8504,8 +8690,8 @@
           "rule_family_correct": false
         },
         {
-          "probe_id": "c5c680f491e3",
-          "cell_id": "vi-en:A1:lesson-088:dialogue-turn-001",
+          "probe_id": "4874934152fe",
+          "cell_id": "33300c09-8fef-4472-a88e-a58c2d20b796",
           "rule_family": "en-vn-numeral-quantifier-plural",
           "fixture_files": [
             "numeral-quantifier-plural.json"
@@ -8529,7 +8715,8 @@
       ]
     },
     {
-      "cell_id": "vi-en:A1:lesson-088:dialogue-turn-002",
+      "cell_id": "763eb4de-b163-4641-a76f-aabd34955524",
+      "address_hash": "vi-en:A1:lesson-088:dialogue-turn-002",
       "lesson_id": 88,
       "ordinal": 2,
       "lesson_title_en": "Doctor Visit Symptoms And Pharmacy Details",
@@ -8540,8 +8727,8 @@
       "coverage": "measured-covered",
       "probes": [
         {
-          "probe_id": "67417d6d854a",
-          "cell_id": "vi-en:A1:lesson-088:dialogue-turn-002",
+          "probe_id": "b49ccba58b76",
+          "cell_id": "763eb4de-b163-4641-a76f-aabd34955524",
           "rule_family": "en-question-form-final-mark",
           "fixture_files": [
             "question-form-final-mark.json"
@@ -8565,8 +8752,8 @@
           "rule_family_correct": true
         },
         {
-          "probe_id": "9eaccc2d77c7",
-          "cell_id": "vi-en:A1:lesson-088:dialogue-turn-002",
+          "probe_id": "58e57fb68b82",
+          "cell_id": "763eb4de-b163-4641-a76f-aabd34955524",
           "rule_family": "en-vn-yesno-do-support",
           "fixture_files": [
             "yesno-do-support.json"
@@ -8592,7 +8779,8 @@
       ]
     },
     {
-      "cell_id": "vi-en:A1:lesson-088:dialogue-turn-003",
+      "cell_id": "bff1bfc5-86ab-4213-8672-d4636302b3ca",
+      "address_hash": "vi-en:A1:lesson-088:dialogue-turn-003",
       "lesson_id": 88,
       "ordinal": 3,
       "lesson_title_en": "Doctor Visit Symptoms And Pharmacy Details",
@@ -8604,7 +8792,8 @@
       "probes": []
     },
     {
-      "cell_id": "vi-en:A1:lesson-088:dialogue-turn-004",
+      "cell_id": "22682463-16f0-47f6-a59a-01dee3f677e9",
+      "address_hash": "vi-en:A1:lesson-088:dialogue-turn-004",
       "lesson_id": 88,
       "ordinal": 4,
       "lesson_title_en": "Doctor Visit Symptoms And Pharmacy Details",
@@ -8616,7 +8805,8 @@
       "probes": []
     },
     {
-      "cell_id": "vi-en:A1:lesson-088:dialogue-turn-005",
+      "cell_id": "85a301a1-2c07-4c7d-be31-cdd717e0a784",
+      "address_hash": "vi-en:A1:lesson-088:dialogue-turn-005",
       "lesson_id": 88,
       "ordinal": 5,
       "lesson_title_en": "Doctor Visit Symptoms And Pharmacy Details",
@@ -8627,8 +8817,8 @@
       "coverage": "measured-blind",
       "probes": [
         {
-          "probe_id": "341fd2dc303c",
-          "cell_id": "vi-en:A1:lesson-088:dialogue-turn-005",
+          "probe_id": "ee358448c168",
+          "cell_id": "85a301a1-2c07-4c7d-be31-cdd717e0a784",
           "rule_family": "en-question-form-final-mark",
           "fixture_files": [
             "question-form-final-mark.json"
@@ -8652,8 +8842,8 @@
           "rule_family_correct": true
         },
         {
-          "probe_id": "5a3face99972",
-          "cell_id": "vi-en:A1:lesson-088:dialogue-turn-005",
+          "probe_id": "b79f532e27ea",
+          "cell_id": "85a301a1-2c07-4c7d-be31-cdd717e0a784",
           "rule_family": "en-vn-yesno-do-support",
           "fixture_files": [
             "yesno-do-support.json"
@@ -8677,7 +8867,8 @@
       ]
     },
     {
-      "cell_id": "vi-en:A1:lesson-088:dialogue-turn-006",
+      "cell_id": "6d72cd98-8757-4f12-a617-482cc4b99926",
+      "address_hash": "vi-en:A1:lesson-088:dialogue-turn-006",
       "lesson_id": 88,
       "ordinal": 6,
       "lesson_title_en": "Doctor Visit Symptoms And Pharmacy Details",
@@ -8689,7 +8880,8 @@
       "probes": []
     },
     {
-      "cell_id": "vi-en:A1:lesson-089:dialogue-turn-001",
+      "cell_id": "fe0310e3-5bf6-42b8-982b-f054dee48efe",
+      "address_hash": "vi-en:A1:lesson-089:dialogue-turn-001",
       "lesson_id": 89,
       "ordinal": 1,
       "lesson_title_en": "Pharmacy Details And Dosage",
@@ -8701,7 +8893,8 @@
       "probes": []
     },
     {
-      "cell_id": "vi-en:A1:lesson-089:dialogue-turn-002",
+      "cell_id": "2ac0ff5b-6d45-4bf0-994f-caaa0bf90341",
+      "address_hash": "vi-en:A1:lesson-089:dialogue-turn-002",
       "lesson_id": 89,
       "ordinal": 2,
       "lesson_title_en": "Pharmacy Details And Dosage",
@@ -8713,7 +8906,8 @@
       "probes": []
     },
     {
-      "cell_id": "vi-en:A1:lesson-089:dialogue-turn-003",
+      "cell_id": "e48cc38d-56d1-4161-80b9-c3dc9ad87d79",
+      "address_hash": "vi-en:A1:lesson-089:dialogue-turn-003",
       "lesson_id": 89,
       "ordinal": 3,
       "lesson_title_en": "Pharmacy Details And Dosage",
@@ -8725,7 +8919,8 @@
       "probes": []
     },
     {
-      "cell_id": "vi-en:A1:lesson-089:dialogue-turn-004",
+      "cell_id": "a30a7825-bfe3-4363-b292-40c7f41c8b1e",
+      "address_hash": "vi-en:A1:lesson-089:dialogue-turn-004",
       "lesson_id": 89,
       "ordinal": 4,
       "lesson_title_en": "Pharmacy Details And Dosage",
@@ -8736,8 +8931,8 @@
       "coverage": "measured-blind",
       "probes": [
         {
-          "probe_id": "7455658b6434",
-          "cell_id": "vi-en:A1:lesson-089:dialogue-turn-004",
+          "probe_id": "d269a4194353",
+          "cell_id": "a30a7825-bfe3-4363-b292-40c7f41c8b1e",
           "rule_family": "en-vietlish-double-comparative",
           "fixture_files": [
             "vietlish-double-comparative.json"
@@ -8761,8 +8956,8 @@
           "rule_family_correct": true
         },
         {
-          "probe_id": "7a203cd12d11",
-          "cell_id": "vi-en:A1:lesson-089:dialogue-turn-004",
+          "probe_id": "363ebfd68eec",
+          "cell_id": "a30a7825-bfe3-4363-b292-40c7f41c8b1e",
           "rule_family": "en-vn-copula-be-adjective",
           "fixture_files": [
             "copula-be-adjective.json"
@@ -8786,7 +8981,8 @@
       ]
     },
     {
-      "cell_id": "vi-en:A1:lesson-089:dialogue-turn-005",
+      "cell_id": "6c5d6b30-f0a2-40db-a501-d0db5bac1775",
+      "address_hash": "vi-en:A1:lesson-089:dialogue-turn-005",
       "lesson_id": 89,
       "ordinal": 5,
       "lesson_title_en": "Pharmacy Details And Dosage",
@@ -8797,8 +8993,8 @@
       "coverage": "measured-blind",
       "probes": [
         {
-          "probe_id": "c1198738b748",
-          "cell_id": "vi-en:A1:lesson-089:dialogue-turn-005",
+          "probe_id": "6879be8fcd3f",
+          "cell_id": "6c5d6b30-f0a2-40db-a501-d0db5bac1775",
           "rule_family": "en-question-form-final-mark",
           "fixture_files": [
             "question-form-final-mark.json"
@@ -8822,8 +9018,8 @@
           "rule_family_correct": true
         },
         {
-          "probe_id": "f6c9cc270a3c",
-          "cell_id": "vi-en:A1:lesson-089:dialogue-turn-005",
+          "probe_id": "dbf5c4d26d07",
+          "cell_id": "6c5d6b30-f0a2-40db-a501-d0db5bac1775",
           "rule_family": "en-vn-yesno-do-support",
           "fixture_files": [
             "yesno-do-support.json"
@@ -8847,7 +9043,8 @@
       ]
     },
     {
-      "cell_id": "vi-en:A1:lesson-089:dialogue-turn-006",
+      "cell_id": "72581add-fefb-499d-bca1-9abfa1868f99",
+      "address_hash": "vi-en:A1:lesson-089:dialogue-turn-006",
       "lesson_id": 89,
       "ordinal": 6,
       "lesson_title_en": "Pharmacy Details And Dosage",
@@ -8859,7 +9056,8 @@
       "probes": []
     },
     {
-      "cell_id": "vi-en:A1:lesson-090:dialogue-turn-001",
+      "cell_id": "4bd25786-3cf9-4ae5-8d65-d4b9b7cf71ce",
+      "address_hash": "vi-en:A1:lesson-090:dialogue-turn-001",
       "lesson_id": 90,
       "ordinal": 1,
       "lesson_title_en": "Negotiating Politely",
@@ -8870,8 +9068,8 @@
       "coverage": "measured-blind",
       "probes": [
         {
-          "probe_id": "aaec3903e5a5",
-          "cell_id": "vi-en:A1:lesson-090:dialogue-turn-001",
+          "probe_id": "535edfb3b3c0",
+          "cell_id": "4bd25786-3cf9-4ae5-8d65-d4b9b7cf71ce",
           "rule_family": "en-question-form-final-mark",
           "fixture_files": [
             "question-form-final-mark.json"
@@ -8895,8 +9093,8 @@
           "rule_family_correct": true
         },
         {
-          "probe_id": "fb1e27dd35d1",
-          "cell_id": "vi-en:A1:lesson-090:dialogue-turn-001",
+          "probe_id": "3a5fdefbe8ef",
+          "cell_id": "4bd25786-3cf9-4ae5-8d65-d4b9b7cf71ce",
           "rule_family": "en-vn-yesno-do-support",
           "fixture_files": [
             "yesno-do-support.json"
@@ -8920,7 +9118,8 @@
       ]
     },
     {
-      "cell_id": "vi-en:A1:lesson-090:dialogue-turn-002",
+      "cell_id": "2b1fff38-faf3-4a0d-8ecc-d33eacadcc66",
+      "address_hash": "vi-en:A1:lesson-090:dialogue-turn-002",
       "lesson_id": 90,
       "ordinal": 2,
       "lesson_title_en": "Negotiating Politely",
@@ -8932,7 +9131,8 @@
       "probes": []
     },
     {
-      "cell_id": "vi-en:A1:lesson-090:dialogue-turn-003",
+      "cell_id": "896feca2-0078-4dd6-9343-e5037f827df5",
+      "address_hash": "vi-en:A1:lesson-090:dialogue-turn-003",
       "lesson_id": 90,
       "ordinal": 3,
       "lesson_title_en": "Negotiating Politely",
@@ -8944,7 +9144,8 @@
       "probes": []
     },
     {
-      "cell_id": "vi-en:A1:lesson-090:dialogue-turn-004",
+      "cell_id": "68a486a0-9cee-4717-a389-3f0edf5b0bd0",
+      "address_hash": "vi-en:A1:lesson-090:dialogue-turn-004",
       "lesson_id": 90,
       "ordinal": 4,
       "lesson_title_en": "Negotiating Politely",
@@ -8955,8 +9156,8 @@
       "coverage": "measured-covered",
       "probes": [
         {
-          "probe_id": "5d842a0ae314",
-          "cell_id": "vi-en:A1:lesson-090:dialogue-turn-004",
+          "probe_id": "713f46f4010c",
+          "cell_id": "68a486a0-9cee-4717-a389-3f0edf5b0bd0",
           "rule_family": "en-vietlish-double-comparative",
           "fixture_files": [
             "vietlish-double-comparative.json"
@@ -8982,7 +9183,8 @@
       ]
     },
     {
-      "cell_id": "vi-en:A1:lesson-090:dialogue-turn-005",
+      "cell_id": "be1b676f-f9cc-4aff-95a3-fbc3763a0de7",
+      "address_hash": "vi-en:A1:lesson-090:dialogue-turn-005",
       "lesson_id": 90,
       "ordinal": 5,
       "lesson_title_en": "Negotiating Politely",
@@ -8994,7 +9196,8 @@
       "probes": []
     },
     {
-      "cell_id": "vi-en:A1:lesson-090:dialogue-turn-006",
+      "cell_id": "74dcf5ef-8281-4f5d-95d5-eddb03b1d402",
+      "address_hash": "vi-en:A1:lesson-090:dialogue-turn-006",
       "lesson_id": 90,
       "ordinal": 6,
       "lesson_title_en": "Negotiating Politely",
@@ -9005,8 +9208,8 @@
       "coverage": "measured-blind",
       "probes": [
         {
-          "probe_id": "458e963bca56",
-          "cell_id": "vi-en:A1:lesson-090:dialogue-turn-006",
+          "probe_id": "67db422992cc",
+          "cell_id": "74dcf5ef-8281-4f5d-95d5-eddb03b1d402",
           "rule_family": "en-existential-have-there-is",
           "fixture_files": [
             "existential-have-there-is-are.json"
@@ -9030,7 +9233,8 @@
       ]
     },
     {
-      "cell_id": "vi-en:A1:lesson-091:dialogue-turn-001",
+      "cell_id": "41c1d6da-a315-431d-8706-2eb0dae07ad9",
+      "address_hash": "vi-en:A1:lesson-091:dialogue-turn-001",
       "lesson_id": 91,
       "ordinal": 1,
       "lesson_title_en": "Telling Longer Stories",
@@ -9041,8 +9245,8 @@
       "coverage": "measured-blind",
       "probes": [
         {
-          "probe_id": "d3353d0b7c9a",
-          "cell_id": "vi-en:A1:lesson-091:dialogue-turn-001",
+          "probe_id": "03e4798d1087",
+          "cell_id": "41c1d6da-a315-431d-8706-2eb0dae07ad9",
           "rule_family": "en-step6-past-marker-recall",
           "fixture_files": [
             "past-marker-recall.json"
@@ -9066,8 +9270,8 @@
           "rule_family_correct": false
         },
         {
-          "probe_id": "b1f3150c3940",
-          "cell_id": "vi-en:A1:lesson-091:dialogue-turn-001",
+          "probe_id": "a4f527f5cf01",
+          "cell_id": "41c1d6da-a315-431d-8706-2eb0dae07ad9",
           "rule_family": "en-vn-because-so-doubling",
           "fixture_files": [
             "because-so-doubling.json"
@@ -9089,8 +9293,8 @@
           "rule_family_correct": false
         },
         {
-          "probe_id": "227998e277b7",
-          "cell_id": "vi-en:A1:lesson-091:dialogue-turn-001",
+          "probe_id": "10040c961a66",
+          "cell_id": "41c1d6da-a315-431d-8706-2eb0dae07ad9",
           "rule_family": "en-yesterday-irregular-beginner-past",
           "fixture_files": [
             "has-past-time-marker.json",
@@ -9117,7 +9321,8 @@
       ]
     },
     {
-      "cell_id": "vi-en:A1:lesson-091:dialogue-turn-002",
+      "cell_id": "d92a9964-aee9-423d-96aa-308fb657f25b",
+      "address_hash": "vi-en:A1:lesson-091:dialogue-turn-002",
       "lesson_id": 91,
       "ordinal": 2,
       "lesson_title_en": "Telling Longer Stories",
@@ -9128,8 +9333,8 @@
       "coverage": "measured-covered",
       "probes": [
         {
-          "probe_id": "0f0a107a4805",
-          "cell_id": "vi-en:A1:lesson-091:dialogue-turn-002",
+          "probe_id": "9e9777063f27",
+          "cell_id": "d92a9964-aee9-423d-96aa-308fb657f25b",
           "rule_family": "en-question-form-final-mark",
           "fixture_files": [
             "question-form-final-mark.json"
@@ -9155,7 +9360,8 @@
       ]
     },
     {
-      "cell_id": "vi-en:A1:lesson-091:dialogue-turn-003",
+      "cell_id": "fa01b627-ba0d-47f2-ac4d-d0a2ecc582f5",
+      "address_hash": "vi-en:A1:lesson-091:dialogue-turn-003",
       "lesson_id": 91,
       "ordinal": 3,
       "lesson_title_en": "Telling Longer Stories",
@@ -9167,7 +9373,8 @@
       "probes": []
     },
     {
-      "cell_id": "vi-en:A1:lesson-091:dialogue-turn-004",
+      "cell_id": "f89cef8e-c2cb-46ef-be03-17c73f010490",
+      "address_hash": "vi-en:A1:lesson-091:dialogue-turn-004",
       "lesson_id": 91,
       "ordinal": 4,
       "lesson_title_en": "Telling Longer Stories",
@@ -9178,8 +9385,8 @@
       "coverage": "measured-covered",
       "probes": [
         {
-          "probe_id": "3b643d455fc1",
-          "cell_id": "vi-en:A1:lesson-091:dialogue-turn-004",
+          "probe_id": "a175b0b49108",
+          "cell_id": "f89cef8e-c2cb-46ef-be03-17c73f010490",
           "rule_family": "en-vietlish-double-comparative",
           "fixture_files": [
             "vietlish-double-comparative.json"
@@ -9205,7 +9412,8 @@
       ]
     },
     {
-      "cell_id": "vi-en:A1:lesson-091:dialogue-turn-005",
+      "cell_id": "2ca59059-19e1-4246-821f-34473f1bc112",
+      "address_hash": "vi-en:A1:lesson-091:dialogue-turn-005",
       "lesson_id": 91,
       "ordinal": 5,
       "lesson_title_en": "Telling Longer Stories",
@@ -9216,8 +9424,8 @@
       "coverage": "measured-covered",
       "probes": [
         {
-          "probe_id": "04d74455f040",
-          "cell_id": "vi-en:A1:lesson-091:dialogue-turn-005",
+          "probe_id": "e2cff6974133",
+          "cell_id": "2ca59059-19e1-4246-821f-34473f1bc112",
           "rule_family": "en-vietlish-double-comparative",
           "fixture_files": [
             "vietlish-double-comparative.json"
@@ -9243,7 +9451,8 @@
       ]
     },
     {
-      "cell_id": "vi-en:A1:lesson-091:dialogue-turn-006",
+      "cell_id": "89c5a5d2-d87a-4f66-8e71-5689e6fac337",
+      "address_hash": "vi-en:A1:lesson-091:dialogue-turn-006",
       "lesson_id": 91,
       "ordinal": 6,
       "lesson_title_en": "Telling Longer Stories",
@@ -9255,7 +9464,8 @@
       "probes": []
     },
     {
-      "cell_id": "vi-en:A1:lesson-092:dialogue-turn-001",
+      "cell_id": "2809d18c-426e-41ca-8bb7-3aa4621223a6",
+      "address_hash": "vi-en:A1:lesson-092:dialogue-turn-001",
       "lesson_id": 92,
       "ordinal": 1,
       "lesson_title_en": "Explaining Preferences And Reasons",
@@ -9266,8 +9476,8 @@
       "coverage": "measured-blind",
       "probes": [
         {
-          "probe_id": "9597b1abd9f2",
-          "cell_id": "vi-en:A1:lesson-092:dialogue-turn-001",
+          "probe_id": "72a78d57bc2a",
+          "cell_id": "2809d18c-426e-41ca-8bb7-3aa4621223a6",
           "rule_family": "en-l4-topic-comment-word-order",
           "fixture_files": [
             "topic-comment.json"
@@ -9289,8 +9499,8 @@
           "rule_family_correct": false
         },
         {
-          "probe_id": "5cd4365917f6",
-          "cell_id": "vi-en:A1:lesson-092:dialogue-turn-001",
+          "probe_id": "8330d1143a5e",
+          "cell_id": "2809d18c-426e-41ca-8bb7-3aa4621223a6",
           "rule_family": "en-vn-because-so-doubling",
           "fixture_files": [
             "because-so-doubling.json"
@@ -9312,8 +9522,8 @@
           "rule_family_correct": false
         },
         {
-          "probe_id": "e572bc967648",
-          "cell_id": "vi-en:A1:lesson-092:dialogue-turn-001",
+          "probe_id": "ac09df37ac99",
+          "cell_id": "2809d18c-426e-41ca-8bb7-3aa4621223a6",
           "rule_family": "en-vn-copula-be-adjective",
           "fixture_files": [
             "copula-be-adjective.json"
@@ -9337,7 +9547,8 @@
       ]
     },
     {
-      "cell_id": "vi-en:A1:lesson-092:dialogue-turn-002",
+      "cell_id": "d08f573c-a6ba-4113-a23c-5e210ba905dd",
+      "address_hash": "vi-en:A1:lesson-092:dialogue-turn-002",
       "lesson_id": 92,
       "ordinal": 2,
       "lesson_title_en": "Explaining Preferences And Reasons",
@@ -9348,8 +9559,8 @@
       "coverage": "measured-blind",
       "probes": [
         {
-          "probe_id": "2ba60e478c93",
-          "cell_id": "vi-en:A1:lesson-092:dialogue-turn-002",
+          "probe_id": "226e61d85acd",
+          "cell_id": "d08f573c-a6ba-4113-a23c-5e210ba905dd",
           "rule_family": "en-vietlish-double-comparative",
           "fixture_files": [
             "vietlish-double-comparative.json"
@@ -9373,7 +9584,8 @@
       ]
     },
     {
-      "cell_id": "vi-en:A1:lesson-092:dialogue-turn-003",
+      "cell_id": "7449448d-9f5d-4518-892c-b1311ac3724b",
+      "address_hash": "vi-en:A1:lesson-092:dialogue-turn-003",
       "lesson_id": 92,
       "ordinal": 3,
       "lesson_title_en": "Explaining Preferences And Reasons",
@@ -9384,8 +9596,8 @@
       "coverage": "measured-covered",
       "probes": [
         {
-          "probe_id": "fe913b8f869f",
-          "cell_id": "vi-en:A1:lesson-092:dialogue-turn-003",
+          "probe_id": "bbeaaf6a277d",
+          "cell_id": "7449448d-9f5d-4518-892c-b1311ac3724b",
           "rule_family": "en-vietlish-double-comparative",
           "fixture_files": [
             "vietlish-double-comparative.json"
@@ -9411,7 +9623,8 @@
       ]
     },
     {
-      "cell_id": "vi-en:A1:lesson-092:dialogue-turn-004",
+      "cell_id": "1231420c-47fc-4bcf-87ff-cf58b501e05d",
+      "address_hash": "vi-en:A1:lesson-092:dialogue-turn-004",
       "lesson_id": 92,
       "ordinal": 4,
       "lesson_title_en": "Explaining Preferences And Reasons",
@@ -9423,7 +9636,8 @@
       "probes": []
     },
     {
-      "cell_id": "vi-en:A1:lesson-092:dialogue-turn-005",
+      "cell_id": "d1d0003f-ffa1-43a0-9234-09e02394bd68",
+      "address_hash": "vi-en:A1:lesson-092:dialogue-turn-005",
       "lesson_id": 92,
       "ordinal": 5,
       "lesson_title_en": "Explaining Preferences And Reasons",
@@ -9434,8 +9648,8 @@
       "coverage": "measured-blind",
       "probes": [
         {
-          "probe_id": "adf8eabaeba3",
-          "cell_id": "vi-en:A1:lesson-092:dialogue-turn-005",
+          "probe_id": "69ec95246f35",
+          "cell_id": "d1d0003f-ffa1-43a0-9234-09e02394bd68",
           "rule_family": "en-vn-because-so-doubling",
           "fixture_files": [
             "because-so-doubling.json"
@@ -9457,8 +9671,8 @@
           "rule_family_correct": false
         },
         {
-          "probe_id": "35d9e0633d4e",
-          "cell_id": "vi-en:A1:lesson-092:dialogue-turn-005",
+          "probe_id": "c0c41ca9b9ab",
+          "cell_id": "d1d0003f-ffa1-43a0-9234-09e02394bd68",
           "rule_family": "en-vn-copula-be-adjective",
           "fixture_files": [
             "copula-be-adjective.json"
@@ -9482,7 +9696,8 @@
       ]
     },
     {
-      "cell_id": "vi-en:A1:lesson-092:dialogue-turn-006",
+      "cell_id": "e3f39d7d-d228-4c76-bf4e-5bbecbb90c09",
+      "address_hash": "vi-en:A1:lesson-092:dialogue-turn-006",
       "lesson_id": 92,
       "ordinal": 6,
       "lesson_title_en": "Explaining Preferences And Reasons",
@@ -9493,8 +9708,8 @@
       "coverage": "measured-blind",
       "probes": [
         {
-          "probe_id": "f82a86430bfa",
-          "cell_id": "vi-en:A1:lesson-092:dialogue-turn-006",
+          "probe_id": "74451222e310",
+          "cell_id": "e3f39d7d-d228-4c76-bf4e-5bbecbb90c09",
           "rule_family": "en-vn-copula-be-adjective",
           "fixture_files": [
             "copula-be-adjective.json"
