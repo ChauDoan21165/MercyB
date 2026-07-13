@@ -2588,10 +2588,6 @@ export default function AiTutorPage() {
       const { data: freshSessionData } = await supabase.auth.getSession();
       const accessToken = freshSessionData?.session?.access_token ?? session?.access_token;
       if (accessToken) {
-        recordCorrectionSourceEvent({
-          source: "local_unchanged_server_attempt",
-          targetLanguage: target,
-        });
         const aiResult = await callAiSentenceCorrection(trimmed, accessToken, explainLanguage, target);
         setLoading(false);
         if (isAiCorrectionFailure(aiResult)) {
@@ -2688,6 +2684,10 @@ export default function AiTutorPage() {
       }
       // No token — rule engine abstained: show error.
       if (!localCorrection.ok) {
+        recordCorrectionSourceEvent({
+          source: "server_failed",
+          targetLanguage: target,
+        });
         setLoading(false);
         setError(GRAMMAR_CORRECTION_UNAVAILABLE_MESSAGE);
         recordLpiLearnerTurn(false);
@@ -2695,6 +2695,10 @@ export default function AiTutorPage() {
       }
       // No token + unchanged: the sentence may be correct but AI cannot verify it.
       // Never show a correction card in this state — that would echo the input as a "correction".
+      recordCorrectionSourceEvent({
+        source: "local_unchanged_server_attempt",
+        targetLanguage: target,
+      });
       setLoading(false);
       setError(CANNOT_CORRECT_NO_SESSION_MESSAGE);
       recordLpiLearnerTurn(false);
