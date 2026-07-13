@@ -4,7 +4,7 @@
   "scan_roots": [
     "supabase/migrations"
   ],
-  "migration_files": 265,
+  "migration_files": 266,
   "tables": {
     "private.referral_leaderboard_all_time_private": {
       "created_in_migrations": true,
@@ -4469,19 +4469,19 @@
           "name": "admin_select",
           "command": "select",
           "roles": [
-            "public"
+            "authenticated"
           ],
-          "using": "public.get_admin_level() >= 9",
+          "using": "public.get_admin_level(auth.uid()) >= 9",
           "with_check": null
         },
         {
           "name": "admin_update",
           "command": "update",
           "roles": [
-            "public"
+            "authenticated"
           ],
-          "using": "public.get_admin_level() >= 9",
-          "with_check": "public.get_admin_level() >= 9"
+          "using": "public.get_admin_level(auth.uid()) >= 9",
+          "with_check": "public.get_admin_level(auth.uid()) >= 9"
         },
         {
           "name": "owner_delete_pending",
