@@ -1369,7 +1369,7 @@ migration-security-contracts:
       changes: *migration_security_changes
   script:
     - node scripts/sql-lint.mjs
-    - HARDENING_SCAN_CHECKS=L node scripts/hardening-scan.mjs
+    - HARDENING_SCAN_CHECKS=L HARDENING_SCAN_FAIL_ON_FINDINGS=1 node scripts/hardening-scan.mjs
     - npx vitest run supabase/migrations/__tests__ scripts/__tests__/rls-matrix-scan.test.mjs scripts/__tests__/sql-lint.test.mjs
 
 # `validate-rooms` — the full room-content validator. Heavier than the
