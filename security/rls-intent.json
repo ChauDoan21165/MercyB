@@ -4,7 +4,7 @@
   "scan_roots": [
     "supabase/migrations"
   ],
-  "migration_files": 264,
+  "migration_files": 265,
   "tables": {
     "private.referral_leaderboard_all_time_private": {
       "created_in_migrations": true,
@@ -5264,6 +5264,15 @@
           ],
           "using": "bucket_id = 'payment-proofs' AND EXISTS ( SELECT 1 FROM user_roles WHERE user_id = auth.uid() AND role = 'admin' )",
           "with_check": null
+        },
+        {
+          "name": "Authenticated TTS can insert generated room audio",
+          "command": "insert",
+          "roles": [
+            "authenticated"
+          ],
+          "using": null,
+          "with_check": "bucket_id = 'room-audio' AND auth.uid() IS NOT NULL AND name ~ '^[^/]+/[^/]+\\.mp3$'"
         },
         {
           "name": "Authenticated users can access room audio via signed URLs",
