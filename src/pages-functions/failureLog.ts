@@ -146,7 +146,17 @@ function safeDetail(
   detail: FailureLogContext["detail"],
 ): Record<string, string | number | boolean | null> {
   const safe: Record<string, string | number | boolean | null> = { mode };
-  for (const key of ["provider", "providerStatus", "errorName", "timeout", "seed"] as const) {
+  for (const key of [
+    "provider",
+    "providerStatus",
+    "errorName",
+    "errorMessage",
+    "upstreamBody",
+    "failureStage",
+    "trustFloorReason",
+    "timeout",
+    "seed",
+  ] as const) {
     const value = detail?.[key];
     if (typeof value === "string" || typeof value === "number" || typeof value === "boolean" || value === null) {
       safe[key] = value;

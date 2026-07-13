@@ -197,6 +197,7 @@ import { TutorTodayLessonCard } from "@/components/ai-tutor/TutorMemoryCard";
 type CorrectionResult = TutorTurn & {
   grammarTip: string;
   practicePrompt: string;
+  appliedRuleIds?: string[];
 };
 
 export type LpiSessionTracker = {
@@ -2662,6 +2663,7 @@ export default function AiTutorPage() {
             ...turn,
             grammarTip: aiResult.grammarTip,
             practicePrompt: MOCK_RESULTS_BY_TARGET[target].practicePrompt[explainLanguage],
+            appliedRuleIds: ["ai-correction"],
           };
           const sessionErrorDensity = recordLpiLearnerTurn(true);
           const registerDetection = detectRegisterError({ learnerText: turn.userText });
@@ -2820,6 +2822,7 @@ export default function AiTutorPage() {
       ...turn,
       grammarTip: buildGrammarTip(target, localCorrection, explainLanguage),
       practicePrompt: next.practicePrompt[explainLanguage],
+      appliedRuleIds: localCorrection.appliedRuleIds,
     };
     const registerDetection = detectRegisterError({ learnerText: turn.userText });
     const detectorTag = registerDetection.matched

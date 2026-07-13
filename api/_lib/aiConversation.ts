@@ -72,6 +72,37 @@ export type AiConversationResponse = {
   correctionGateModel: string;
 };
 
+export type AiConversationFailureDetail = {
+  provider?: "openai";
+  providerStatus?: number;
+  errorName?: string;
+  errorMessage?: string;
+  upstreamBody?: string;
+  failureStage?: "provider_request" | "provider_response" | "parse" | "trust_floor";
+  trustFloorReason?: "missing_generated_reply" | "canned_reply";
+};
+
+export class AiConversationError extends Error {
+  readonly detail: AiConversationFailureDetail;
+
+  constructor(message: string, detail: AiConversationFailureDetail = {}) {
+    super(message);
+    this.name = "AiConversationError";
+    this.detail = detail;
+  }
+}
+
+export function getAiConversationFailureDetail(error: unknown): AiConversationFailureDetail {
+  if (error instanceof AiConversationError) return error.detail;
+  if (error instanceof Error) {
+    return {
+      errorName: error.name,
+      errorMessage: boundedDetail(error.message),
+    };
+  }
+  return { errorMessage: boundedDetail(String(error ?? "unknown_error")) };
+}
+
 type Scenario = {
   id: string;
   title: string;
@@ -444,16 +475,41 @@ async function callOpenAiJson<T>(params: {
     if (err instanceof Error && err.name === "AbortError") {
       throw new Error("OpenAI request timed out");
     }
-    throw err;
+    throw new AiConversationError("OpenAI request failed", {
+      provider: "openai",
+      errorName: err instanceof Error ? err.name : undefined,
+      errorMessage: boundedDetail(err instanceof Error ? err.message : String(err ?? "unknown_error")),
+      failureStage: "provider_request",
+    });
   }
-  if (!response.ok) throw new Error(`OpenAI ${response.status}`);
+  if (!response.ok) {
+    const upstreamBody = await response.text().catch(() => "");
+    throw new AiConversationError(`OpenAI ${response.status}`, {
+      provider: "openai",
+      providerStatus: response.status,
+      upstreamBody: boundedDetail(upstreamBody),
+      failureStage: "provider_response",
+    });
+  }
   const data = await response.json() as {
     choices?: Array<{ message?: { content?: string } }>;
     usage?: { prompt_tokens?: number; completion_tokens?: number; total_tokens?: number };
   };
   const content = data.choices?.[0]?.message?.content || "{}";
+  let value: T;
+  try {
+    value = JSON.parse(content) as T;
+  } catch (err) {
+    throw new AiConversationError("OpenAI response parse error", {
+      provider: "openai",
+      errorName: err instanceof Error ? err.name : undefined,
+      errorMessage: boundedDetail(err instanceof Error ? err.message : String(err ?? "parse_error")),
+      upstreamBody: boundedDetail(content),
+      failureStage: "parse",
+    });
+  }
   return {
-    value: JSON.parse(content) as T,
+    value,
     usage: {
       promptTokens: data.usage?.prompt_tokens ?? 0,
       completionTokens: data.usage?.completion_tokens ?? 0,
@@ -537,10 +593,20 @@ function sanitizeReply(value: unknown): string {
 function requireGeneratedMercyReply(value: unknown): string {
   const reply = sanitizeReply(value);
   if (!reply) {
-    throw new Error("OpenAI response missing generated Mercy reply");
+    throw new AiConversationError("OpenAI response missing generated Mercy reply", {
+      provider: "openai",
+      errorMessage: "OpenAI response missing generated Mercy reply",
+      failureStage: "trust_floor",
+      trustFloorReason: "missing_generated_reply",
+    });
   }
   if (looksLikeCannedMercyReply(reply)) {
-    throw new Error("OpenAI response used canned Mercy reply");
+    throw new AiConversationError("OpenAI response used canned Mercy reply", {
+      provider: "openai",
+      errorMessage: "OpenAI response used canned Mercy reply",
+      failureStage: "trust_floor",
+      trustFloorReason: "canned_reply",
+    });
   }
   return reply;
 }
@@ -558,4 +624,8 @@ function stringValue(value: unknown, max: number): string {
 
 function isRecord(value: unknown): value is Record<string, unknown> {
   return Boolean(value && typeof value === "object" && !Array.isArray(value));
+}
+
+function boundedDetail(value: string): string {
+  return value.replace(/\s+/g, " ").trim().slice(0, 500);
 }
