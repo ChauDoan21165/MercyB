@@ -17,6 +17,9 @@ test("R3 explores production with the synthetic account and read-only action pol
     contentType: "application/json",
   });
 
+  // The explorer excludes only known CSP-blocked Sentry telemetry ingest/blob-worker
+  // signatures from result.failures; real user-facing console errors, blank renders,
+  // non-Sentry 5xxs, and the /stories 403 remain failures.
   expect(
     result.failures,
     `R3 failures:\n${result.failures.map((failure) => `- ${failure.type}: ${failure.route}: ${failure.detail}`).join("\n")}`,
