@@ -18,14 +18,17 @@ describe("prod synthetic correction seed rotation", () => {
           sentence: "She happy today.",
           expectedDetector: "en-vn-copula-be-adjective",
           expectedShadowPath: "target_form_correct_now",
+          expectedProductPath: "immediate_correction",
         }),
         expect.objectContaining({
           expectedDetector: "en-step6-discuss-about",
           expectedShadowPath: "generic_form_defer",
+          expectedProductPath: "legacy_timing_defer",
         }),
         expect.objectContaining({
           expectedDetector: "ai-correction",
           expectedShadowPath: "generic_form_defer",
+          expectedProductPath: "lpi_shadow_defer",
         }),
       ]),
     );
@@ -35,6 +38,7 @@ describe("prod synthetic correction seed rotation", () => {
   it("pins one immediate-correction seed while rotating the rest", () => {
     expect(PINNED_FEEDBACK_PROBE.id).toBe("vi-l1-missing-be-copula");
     expect(PINNED_FEEDBACK_PROBE.expectedShadowPath).toBe("target_form_correct_now");
+    expect(PINNED_FEEDBACK_PROBE.expectedProductPath).toBe("immediate_correction");
     expect(ROTATING_CORRECTION_PROBES).not.toContain(PINNED_FEEDBACK_PROBE);
   });
 
@@ -50,7 +54,38 @@ describe("prod synthetic correction seed rotation", () => {
       const probes = selectSeededCorrectionProbes(new Date(base + hour * 60 * 60 * 1000));
       expect(probes).toHaveLength(2);
       expect(probes[1]).toBe(PINNED_FEEDBACK_PROBE);
-      expect(probes.some((probe) => probe.expectedShadowPath === "target_form_correct_now")).toBe(true);
+      expect(probes.some((probe) => probe.expectedProductPath === "immediate_correction")).toBe(true);
     }
+  });
+
+  it("tags every rotating seed with the actual product UI path", () => {
+    expect(
+      SEEDED_CORRECTION_PROBES.map((probe) => ({
+        id: probe.id,
+        productPath: probe.expectedProductPath,
+        shadowPath: probe.expectedShadowPath,
+      })),
+    ).toEqual([
+      {
+        id: "vi-l1-missing-be-copula",
+        productPath: "immediate_correction",
+        shadowPath: "target_form_correct_now",
+      },
+      {
+        id: "vi-l1-past-marker",
+        productPath: "immediate_correction",
+        shadowPath: "target_form_correct_now",
+      },
+      {
+        id: "generic-local-discuss-about",
+        productPath: "legacy_timing_defer",
+        shadowPath: "generic_form_defer",
+      },
+      {
+        id: "generic-ai-comparative",
+        productPath: "lpi_shadow_defer",
+        shadowPath: "generic_form_defer",
+      },
+    ]);
   });
 });
