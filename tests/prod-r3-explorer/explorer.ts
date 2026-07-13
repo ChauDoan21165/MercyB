@@ -80,29 +80,6 @@ function isNonAsset(url: string): boolean {
   return !/\.(png|jpe?g|gif|webp|svg|ico|woff2?|css|map)(\?|$)/i.test(url);
 }
 
-function isKnownTelemetryInfraNoise(type: R3Failure["type"], detail: string): boolean {
-  if (type !== "console-error" && type !== "network-failure" && type !== "known-defect") {
-    return false;
-  }
-
-  // Known prod CSP telemetry gaps: Sentry ingest is blocked by connect-src, and
-  // Sentry's blob worker is blocked by script-src. These are tracked separately
-  // for the CSP source fix, so R3 does not count them as user-facing breakage.
-  // Keep this narrow: app console errors, blank renders, non-Sentry 5xx, and the
-  // /stories 403 still fail the run.
-  const sentryEnvelopeBlockedByCsp =
-    /\bsentry\b/i.test(detail) &&
-    /\benvelope\b/i.test(detail) &&
-    /Content Security Policy|violat(?:es|ed).*connect-src|Refused to connect|blocked.*csp|net::ERR_BLOCKED/i.test(
-      detail,
-    );
-  const sentryBlobWorkerBlockedByCsp =
-    /Creating a worker from 'blob:/i.test(detail) &&
-    /Content Security Policy|violat(?:es|ed).*script-src/i.test(detail);
-
-  return sentryEnvelopeBlockedByCsp || sentryBlobWorkerBlockedByCsp;
-}
-
 function currentPath(page: Page): string {
   return safePath(page.url());
 }
@@ -248,23 +225,15 @@ export async function runR3Explorer(page: Page): Promise<R3RunResult> {
   page.on("pageerror", (err) => failures.push(failure("js-crash", currentPath(page), `pageerror: ${err.message}`)));
   page.on("console", (msg) => {
     if (msg.type() !== "error") return;
-    const detail = msg.text();
-    if (isKnownTelemetryInfraNoise("console-error", detail)) return;
-    failures.push(failure("console-error", currentPath(page), detail));
+    failures.push(failure("console-error", currentPath(page), msg.text()));
   });
   page.on("response", (resp) => {
     const status = resp.status();
     if (status < 400 || !isNonAsset(resp.url())) return;
-    const type = status >= 500 ? "failed-api-call" : "network-failure";
-    const detail = `${status} ${resp.url()}`;
-    if (isKnownTelemetryInfraNoise(type, detail)) return;
-    failures.push(failure(type, currentPath(page), detail));
+    failures.push(failure(status >= 500 ? "failed-api-call" : "network-failure", currentPath(page), `${status} ${resp.url()}`));
   });
   page.on("requestfailed", (req) => {
-    if (!isNonAsset(req.url())) return;
-    const detail = `${req.failure()?.errorText ?? "request failed"} ${req.url()}`;
-    if (isKnownTelemetryInfraNoise("network-failure", detail)) return;
-    failures.push(failure("network-failure", currentPath(page), detail));
+    if (isNonAsset(req.url())) failures.push(failure("network-failure", currentPath(page), `${req.failure()?.errorText ?? "request failed"} ${req.url()}`));
   });
 
   while (queued.size && visited.length < R3_MAX_PAGES && actions < R3_MAX_ACTIONS && Date.now() - start < R3_MAX_DURATION_MS) {
@@ -275,9 +244,7 @@ export async function runR3Explorer(page: Page): Promise<R3RunResult> {
     assertNoDeniedRoute(path);
 
     const routeResult = await crawlRoute(page, baseURL, path, "public");
-    const routeFailures = routeResult.failures
-      .map((f) => failure(routeFailureType(f.type, f.detail), path, f.detail))
-      .filter((f) => !isKnownTelemetryInfraNoise(f.type, f.detail));
+    const routeFailures = routeResult.failures.map((f) => failure(routeFailureType(f.type, f.detail), path, f.detail));
     if (/\/signin|\/login/.test(routeResult.landedOn) && !/\/signin|\/login/.test(path)) {
       routeFailures.push(failure("unreachable-route", path, `authenticated synthetic account landed on ${routeResult.landedOn}`));
     }
