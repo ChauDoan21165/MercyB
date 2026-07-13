@@ -11,6 +11,8 @@ PROJECT_ENC="cd12536%2FmercyB"
 SYNTHETIC_SCHEDULE_ID=4336200
 PROJECT_REF="buemdfxyhxunzpgdoqin"
 DEFAULT_SUPABASE_URL="https://${PROJECT_REF}.supabase.co"
+GITLAB_API="https://gitlab.com/api/v4"
+OWNER_TOKEN_MESSAGE="R0/R3: needs owner token (GITLAB_TOKEN) - bot identity cannot start pipelines on protected main"
 
 R2_SEND=0
 for arg in "$@"; do
@@ -92,6 +94,21 @@ first_web_url() {
   sed -n 's/.*"web_url"[[:space:]]*:[[:space:]]*"\([^"]*\)".*/\1/p' | head -n 1
 }
 
+gitlab_get() {
+  local path="$1"
+  if [ -n "${GITLAB_TOKEN:-}" ]; then
+    curl -fsS -H "PRIVATE-TOKEN: ${GITLAB_TOKEN}" "${GITLAB_API}/${path}"
+  else
+    glab api "$path"
+  fi
+}
+
+is_forbidden_response() {
+  local status="$1"
+  local body="$2"
+  [ "$status" = "403" ] || grep -qi '403\|forbidden' "$body"
+}
+
 main_has_r3() {
   if git show origin/main:.gitlab-ci.yml 2>/dev/null | grep -q '^prod-r3-explorer:'; then
     return 0
@@ -103,17 +120,66 @@ main_has_r3() {
 }
 
 trigger_r0() {
-  glab api --method POST "projects/${PROJECT_ENC}/pipeline_schedules/${SYNTHETIC_SCHEDULE_ID}/play" >/dev/null
+  local body status
+  body="$(mktemp)"
+  if [ -n "${GITLAB_TOKEN:-}" ]; then
+    status="$(curl -sS -o "$body" -w '%{http_code}' -X POST \
+      -H "PRIVATE-TOKEN: ${GITLAB_TOKEN}" \
+      "${GITLAB_API}/projects/${PROJECT_ENC}/pipeline_schedules/${SYNTHETIC_SCHEDULE_ID}/play" || true)"
+  else
+    if glab api --method POST "projects/${PROJECT_ENC}/pipeline_schedules/${SYNTHETIC_SCHEDULE_ID}/play" >"$body" 2>&1; then
+      status="200"
+    else
+      status="error"
+    fi
+  fi
+  if is_forbidden_response "$status" "$body"; then
+    rm -f "$body"
+    echo "needs-owner"
+    return 0
+  fi
+  if [ "$status" != "200" ] && [ "$status" != "201" ]; then
+    printf 'error: %s\n' "$(tr '\n' ' ' < "$body" | sed 's/[[:space:]]\{1,\}/ /g')"
+    rm -f "$body"
+    return 0
+  fi
+  rm -f "$body"
   sleep 3
-  glab api "projects/${PROJECT_ENC}/pipelines?source=schedule&per_page=1" | first_web_url
+  gitlab_get "projects/${PROJECT_ENC}/pipelines?source=schedule&per_page=1" | first_web_url
 }
 
 trigger_r3() {
-  glab api --method POST "projects/${PROJECT_ENC}/pipeline" \
-    -f ref=main \
-    -f 'variables[][key]=R3_EXPLORER_ENABLED' \
-    -f 'variables[][value]=1' \
-    | first_web_url
+  local body status
+  body="$(mktemp)"
+  if [ -n "${GITLAB_TOKEN:-}" ]; then
+    status="$(curl -sS -o "$body" -w '%{http_code}' -X POST \
+      -H "PRIVATE-TOKEN: ${GITLAB_TOKEN}" \
+      --form ref=main \
+      --form 'variables[][key]=R3_EXPLORER_ENABLED' \
+      --form 'variables[][value]=1' \
+      "${GITLAB_API}/projects/${PROJECT_ENC}/pipeline" || true)"
+  else
+    if glab api --method POST "projects/${PROJECT_ENC}/pipeline" \
+      -f ref=main \
+      -f 'variables[][key]=R3_EXPLORER_ENABLED' \
+      -f 'variables[][value]=1' >"$body" 2>&1; then
+      status="200"
+    else
+      status="error"
+    fi
+  fi
+  if is_forbidden_response "$status" "$body"; then
+    rm -f "$body"
+    echo "needs-owner"
+    return 0
+  fi
+  if [ "$status" != "200" ] && [ "$status" != "201" ]; then
+    printf 'error: %s\n' "$(tr '\n' ' ' < "$body" | sed 's/[[:space:]]\{1,\}/ /g')"
+    rm -f "$body"
+    return 0
+  fi
+  first_web_url < "$body"
+  rm -f "$body"
 }
 
 invoke_r2() {
@@ -162,7 +228,7 @@ r1_status() {
 require_cmd glab
 require_cmd curl
 
-if ! glab auth status >/dev/null 2>&1; then
+if [ -z "${GITLAB_TOKEN:-}" ] && ! glab auth status >/dev/null 2>&1; then
   echo "fleet-now: glab is not authenticated. Run glab auth login first." >&2
   exit 1
 fi
@@ -177,33 +243,52 @@ ANON_KEY="${SUPABASE_ANON_KEY:-${VITE_SUPABASE_ANON_KEY:-}}"
 if [ -z "$ANON_KEY" ]; then
   ANON_KEY="$(read_env_value VITE_SUPABASE_ANON_KEY || read_env_value SUPABASE_ANON_KEY || true)"
 fi
-if [ -z "$ANON_KEY" ]; then
-  echo "fleet-now: missing anon key. Set VITE_SUPABASE_ANON_KEY or SUPABASE_ANON_KEY, or add it to .env.local." >&2
-  exit 1
+
+R0_URL="$(trigger_r0)"
+if [ "$R0_URL" = "needs-owner" ]; then
+  R0_STATUS="skipped"
+  R0_URL="$OWNER_TOKEN_MESSAGE"
+elif [[ "$R0_URL" == error:* ]]; then
+  R0_STATUS="skipped"
+else
+  R0_STATUS="triggered"
 fi
 
-R0_STATUS="triggered"
-R0_URL="$(trigger_r0)"
-
 if main_has_r3; then
-  R3_STATUS="triggered"
   R3_URL="$(trigger_r3)"
+  if [ "$R3_URL" = "needs-owner" ]; then
+    R3_STATUS="skipped"
+    R3_URL="$OWNER_TOKEN_MESSAGE"
+  elif [[ "$R3_URL" == error:* ]]; then
+    R3_STATUS="skipped"
+  else
+    R3_STATUS="triggered"
+  fi
 else
   R3_STATUS="skipped"
   R3_URL="R3 not on main yet"
 fi
 
-R2_STATUS="selftest"
-if [ "$R2_SEND" -eq 1 ]; then
-  R2_STATUS="sent"
-fi
-R2_BODY="$(invoke_r2 "$SUPABASE_URL" "$ANON_KEY")"
 R2_URL="${SUPABASE_URL%/}/functions/v1/r2-logwatch"
 if [ "$R2_SEND" -eq 0 ]; then
   R2_URL="${R2_URL}?selftest=1"
 fi
+if [ -n "$ANON_KEY" ]; then
+  R2_STATUS="selftest"
+  if [ "$R2_SEND" -eq 1 ]; then
+    R2_STATUS="sent"
+  fi
+  R2_BODY="$(invoke_r2 "$SUPABASE_URL" "$ANON_KEY" || echo "error: r2-logwatch invoke failed")"
+else
+  R2_STATUS="skipped"
+  R2_BODY="missing anon key; set VITE_SUPABASE_ANON_KEY or SUPABASE_ANON_KEY"
+fi
 
-R1_STATUS="$(r1_status "$SUPABASE_URL" "$ANON_KEY")"
+if [ -n "$ANON_KEY" ]; then
+  R1_STATUS="$(r1_status "$SUPABASE_URL" "$ANON_KEY")"
+else
+  R1_STATUS="passive, verified via R0/R3 page visits"
+fi
 
 cat <<SUMMARY
 
