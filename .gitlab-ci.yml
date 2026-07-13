@@ -436,6 +436,11 @@ variables:
   - .gitlab-ci.yml
   - scripts/ci/check-job-tags.mjs
 
+.migration_security_changes: &migration_security_changes
+  - supabase/migrations/**/*
+  - security/**/*
+  - reports/security/**/*
+
 # Reusable rules: protected branch pushes run full validation regardless
 # of changes. Merge requests use changes filters to skip heavy work for
 # docs-only or unrelated updates.
@@ -459,6 +464,8 @@ variables:
     - if: '$CI_PIPELINE_SOURCE == "push" && ($CI_COMMIT_BRANCH == "main" || $CI_COMMIT_BRANCH == "develop" || $CI_COMMIT_BRANCH =~ /^release(\/|$)/)'
     - if: '$CI_PIPELINE_SOURCE == "merge_request_event" && ($CI_MERGE_REQUEST_TARGET_BRANCH_NAME == "main" || $CI_MERGE_REQUEST_TARGET_BRANCH_NAME == "develop" || $CI_MERGE_REQUEST_TARGET_BRANCH_NAME =~ /^release(\/|$)/)'
       changes: *lint_validation_changes
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event" && ($CI_MERGE_REQUEST_TARGET_BRANCH_NAME == "main" || $CI_MERGE_REQUEST_TARGET_BRANCH_NAME == "develop" || $CI_MERGE_REQUEST_TARGET_BRANCH_NAME =~ /^release(\/|$)/)'
+      changes: *migration_security_changes
 
 .room_test_rules: &room_test_rules
   rules:
@@ -1069,6 +1076,8 @@ typecheck:ci:
     - if: '$MERCYB_SHARED_RUNNER_FALLBACK == "1"'
       when: never
     - if: '$CI_PIPELINE_SOURCE == "merge_request_event" && $CI_MERGE_REQUEST_LABELS =~ /(^|,)hotfix(,|$)/'
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event" && ($CI_MERGE_REQUEST_TARGET_BRANCH_NAME == "main" || $CI_MERGE_REQUEST_TARGET_BRANCH_NAME == "develop" || $CI_MERGE_REQUEST_TARGET_BRANCH_NAME =~ /^release(\/|$)/)'
+      changes: *migration_security_changes
   script:
     - npm run typecheck:ci
 
@@ -1344,6 +1353,24 @@ lint:shared-fallback:
   <<: [*node_job, *manual_shared_fallback, *manual_shared_lint_rules]
   stage: test
   script: *lint_script
+
+migration-security-contracts:
+  <<: [*node_job, *local_runner]
+  stage: test
+  cache:
+    <<: *npm_cache_def
+    policy: pull
+  rules:
+    - if: '$RESERVOIR == "1"'
+      when: never
+    - if: '$MERCYB_SHARED_RUNNER_FALLBACK == "1"'
+      when: never
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event" && ($CI_MERGE_REQUEST_TARGET_BRANCH_NAME == "main" || $CI_MERGE_REQUEST_TARGET_BRANCH_NAME == "develop" || $CI_MERGE_REQUEST_TARGET_BRANCH_NAME =~ /^release(\/|$)/)'
+      changes: *migration_security_changes
+  script:
+    - node scripts/sql-lint.mjs
+    - HARDENING_SCAN_CHECKS=L node scripts/hardening-scan.mjs
+    - npx vitest run supabase/migrations/__tests__ scripts/__tests__/rls-matrix-scan.test.mjs scripts/__tests__/sql-lint.test.mjs
 
 # `validate-rooms` — the full room-content validator. Heavier than the
 # build-stage validate-room-registry / validate-kids-rooms steps; runs

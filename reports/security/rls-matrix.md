@@ -3,7 +3,7 @@
 Static scan only. Source: `supabase/migrations/*.sql`; no live database probing.
 
 ## Summary
-- migration_files: 265
+- migration_files: 266
 - tables_observed: 200
 - rls_enabled: 197
 - rls_not_enabled: 3
@@ -1610,8 +1610,8 @@ Static scan only. Source: `supabase/migrations/*.sql`; no live database probing.
 
 | Policy | Command | Roles | USING | WITH CHECK | Source |
 |---|---|---|---|---|---|
-| `admin_select` | select | public | `public.get_admin_level() >= 9` |  | `supabase/migrations/20260523000000_user_stories.sql:137` |
-| `admin_update` | update | public | `public.get_admin_level() >= 9` | `public.get_admin_level() >= 9` | `supabase/migrations/20260523000000_user_stories.sql:143` |
+| `admin_select` | select | authenticated | `public.get_admin_level(auth.uid()) >= 9` |  | `supabase/migrations/20260720010000_fix_user_stories_admin_policies.sql:7` |
+| `admin_update` | update | authenticated | `public.get_admin_level(auth.uid()) >= 9` | `public.get_admin_level(auth.uid()) >= 9` | `supabase/migrations/20260720010000_fix_user_stories_admin_policies.sql:14` |
 | `owner_delete_pending` | delete | public | `auth.uid() = user_id and status = 'pending'` |  | `supabase/migrations/20260523000000_user_stories.sql:129` |
 | `owner_insert` | insert | public |  | `auth.uid() = user_id and status = 'pending'` | `supabase/migrations/20260523000000_user_stories.sql:110` |
 | `owner_select` | select | public | `auth.uid() = user_id` |  | `supabase/migrations/20260523000000_user_stories.sql:96` |
