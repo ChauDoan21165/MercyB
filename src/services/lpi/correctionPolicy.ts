@@ -16,6 +16,11 @@ export type PolicyDecision = {
 
 export type LpiPolicyMode = "off" | "shadow" | "active";
 
+export {
+  LPI_TARGET_FORM_DETECTOR_TAGS,
+  isLpiTargetFormDetectorTag,
+} from "@/lib/tutor/lpiTargetFormDetectors";
+
 export const BURST_CONSECUTIVE_ERROR_THRESHOLD = 4;
 export const LOW_SEVERITY_RECAP_RECURRENCE_THRESHOLD = 3;
 export const FORM_CORRECT_RECURRENCE_THRESHOLD = 3;

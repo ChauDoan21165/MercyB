@@ -88,6 +88,15 @@ describe("inferErrorSeverity", () => {
     expect(inferErrorSeverity(result)).toBe("lesson_target");
   });
 
+  it("infers lesson_target from Vietnamese-L1 target-form detector tags", () => {
+    const result: CorrectionEngineResult = {
+      status: "corrected",
+      corrected: "She is happy today.",
+      appliedRuleIds: ["en-vn-copula-be-adjective"],
+    };
+    expect(inferErrorSeverity(result)).toBe("lesson_target");
+  });
+
   it("infers word_choice from calque rule", () => {
     const result: CorrectionEngineResult = {
       status: "corrected",
@@ -560,6 +569,23 @@ describe("Timing integration scenario: immediate vs delayed vs suppress in a ses
     expect(result.timing.mode).toBe("IMMEDIATE");
   });
 
+  it("shows flagship Vietnamese-L1 target-form corrections even with a non-matching lesson card", () => {
+    const result = correctWithTimingAwareness(
+      defaultInput({
+        learnerText: "She happy today.",
+        isCurrentLessonTarget: false,
+        previousCorrectionsThisSession: 0,
+      }),
+    );
+
+    expect(result.correction.status).toBe("corrected");
+    expect(result.correction.corrected).toBe("She is happy today.");
+    expect(result.correction.appliedRuleIds).toContain("en-vn-copula-be-adjective");
+    expect(result.timing.mode).toBe("IMMEDIATE");
+    expect(result.shouldDefer).toBe(false);
+    expect(result.shouldShowNow).toBe(true);
+  });
+
   it("DELAYED correction is deferred to queue", () => {
     const queue = createDeferredCorrectionQueue();
 
@@ -793,9 +819,9 @@ describe("inferErrorSeverity — covers all known rule ID families", () => {
     ["en-step6-possessive-s", "grammar"],
     ["en-step6-profession-article", "grammar"],
     ["en-l4-topic-comment-word-order", "grammar"],
-    ["en-vn-yesno-do-support", "grammar"],
-    ["en-vn-although-even-though-but", "grammar"],
-    ["en-vn-because-so-doubling", "grammar"],
+    ["en-vn-yesno-do-support", "lesson_target"],
+    ["en-vn-although-even-though-but", "lesson_target"],
+    ["en-vn-because-so-doubling", "lesson_target"],
     ["en-third-person-daily-go-eat-have", "lesson_target"],
     ["en-existential-have-there-is", "fatal_meaning"],
   ];
