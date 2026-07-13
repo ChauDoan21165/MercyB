@@ -13,6 +13,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -22,6 +23,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -138,6 +140,7 @@ export const immigrationInterviewPrepLessons: IndonesianLesson[] = [
       "Safe frames: `Tujuan tinggal saya adalah...`, `Sponsor saya adalah...`, `Saya sudah menyiapkan...`. If you do not understand, say `Maaf, bisa diulang pelan-pelan?` instead of guessing.",
     vocabulary: [
       {
+        cell_id: "d4b872eb-6fc6-46a6-b8f3-e9f3cbca668b",
         word: "wawancara imigrasi",
         en: "immigration interview",
         vi: "phỏng vấn nhập cư",
@@ -146,6 +149,7 @@ export const immigrationInterviewPrepLessons: IndonesianLesson[] = [
         pronunciation_en: "wa-wan-CHA-ra i-mi-GRA-si",
       },
       {
+        cell_id: "d3b19a17-db4c-46ef-ab7c-3d41c812ceff",
         word: "tujuan tinggal",
         en: "purpose of stay",
         vi: "mục đích lưu trú",
@@ -154,6 +158,7 @@ export const immigrationInterviewPrepLessons: IndonesianLesson[] = [
         pronunciation_en: "too-JOO-an TING-gal",
       },
       {
+        cell_id: "a27e69bd-914d-4c80-9ff6-b9947386d334",
         word: "dokumen pendukung",
         en: "supporting documents",
         vi: "giấy tờ hỗ trợ/bổ sung",
@@ -162,6 +167,7 @@ export const immigrationInterviewPrepLessons: IndonesianLesson[] = [
         pronunciation_en: "do-ku-MEN pen-DOO-kung",
       },
       {
+        cell_id: "b429558a-8f14-4598-826d-c3058dd07fbe",
         word: "sponsor",
         en: "sponsor / guarantor",
         vi: "bên bảo lãnh",
@@ -170,6 +176,7 @@ export const immigrationInterviewPrepLessons: IndonesianLesson[] = [
         pronunciation_en: "SPON-sor",
       },
       {
+        cell_id: "a507966c-170b-443e-8ffa-93e38f6ca795",
         word: "jawaban singkat",
         en: "short answer",
         vi: "câu trả lời ngắn",
@@ -178,6 +185,7 @@ export const immigrationInterviewPrepLessons: IndonesianLesson[] = [
         pronunciation_en: "ja-WA-ban SING-kat",
       },
       {
+        cell_id: "218cdae6-29fe-4142-a5d0-1bc99b6331ee",
         word: "sopan",
         en: "polite",
         vi: "lịch sự",
@@ -188,24 +196,28 @@ export const immigrationInterviewPrepLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "e7d68ae0-d1fb-4064-b0cd-296301d44e3d",
         speaker: "Petugas",
         text: "Apa tujuan tinggal Anda di Indonesia?",
         vi: "Mục đích lưu trú của bạn ở Indonesia là gì?",
         en: "What is your purpose of stay in Indonesia?",
       },
       {
+        cell_id: "beb46f95-316b-4368-bb93-d7f81b103a87",
         speaker: "Pemohon",
         text: "Tujuan tinggal saya adalah bekerja di Jakarta.",
         vi: "Mục đích cư trú của tôi là làm việc ở Jakarta.",
         en: "My purpose of stay is to work in Jakarta.",
       },
       {
+        cell_id: "37a0b6e6-8728-41b8-9f70-da2d44bd8496",
         speaker: "Petugas",
         text: "Siapa sponsor Anda?",
         vi: "Ai là bên bảo lãnh của bạn?",
         en: "Who is your sponsor?",
       },
       {
+        cell_id: "61cc7dec-f679-4e5f-af55-78538717aabc",
         speaker: "Pemohon",
         text: "Sponsor saya adalah perusahaan tempat saya bekerja.",
         vi: "Bên bảo lãnh của tôi là công ty nơi tôi làm việc.",
@@ -322,6 +334,7 @@ export const immigrationInterviewPrepLessons: IndonesianLesson[] = [
       "Three rescue sentences: `Maaf, bisa diulang pelan-pelan?`, `Saya kurang paham pertanyaannya`, `Saya akan menjawab sesuai dokumen saya.`",
     vocabulary: [
       {
+        cell_id: "c3ef2f0c-db82-4021-8338-41bc8ebf08de",
         word: "riwayat perjalanan",
         en: "travel history",
         vi: "lịch sử đi lại",
@@ -330,6 +343,7 @@ export const immigrationInterviewPrepLessons: IndonesianLesson[] = [
         pronunciation_en: "ri-WA-yat per-ja-LA-nan",
       },
       {
+        cell_id: "aa6eb131-3439-47bc-b7dc-7aa1a3f6cebe",
         word: "pernah",
         en: "ever / once did",
         vi: "đã từng",
@@ -338,6 +352,7 @@ export const immigrationInterviewPrepLessons: IndonesianLesson[] = [
         pronunciation_en: "PER-nah",
       },
       {
+        cell_id: "6d1be44f-73cf-4a4e-8ae3-17294e40240a",
         word: "diulang",
         en: "repeated",
         vi: "được nhắc lại",
@@ -346,6 +361,7 @@ export const immigrationInterviewPrepLessons: IndonesianLesson[] = [
         pronunciation_en: "di-OO-lang",
       },
       {
+        cell_id: "c5eacb17-081a-4524-ae5c-db38f57f4eb4",
         word: "pelan-pelan",
         en: "slowly",
         vi: "chậm chậm",
@@ -354,6 +370,7 @@ export const immigrationInterviewPrepLessons: IndonesianLesson[] = [
         pronunciation_en: "PE-lan-PE-lan",
       },
       {
+        cell_id: "48729eb0-f0ea-42e9-b6a5-be7326b086b6",
         word: "kurang paham",
         en: "do not quite understand",
         vi: "chưa hiểu rõ",
@@ -362,6 +379,7 @@ export const immigrationInterviewPrepLessons: IndonesianLesson[] = [
         pronunciation_en: "KOO-rang PA-ham",
       },
       {
+        cell_id: "30c75830-097d-4bff-8354-18921d10fbd1",
         word: "sesuai dokumen",
         en: "according to the documents",
         vi: "theo đúng giấy tờ",
@@ -372,24 +390,28 @@ export const immigrationInterviewPrepLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "59dc6d49-379f-4986-9522-a9dd051285c7",
         speaker: "Petugas",
         text: "Apakah Anda pernah tinggal di Indonesia sebelumnya?",
         vi: "Bạn đã từng sống ở Indonesia trước đây chưa?",
         en: "Have you ever lived in Indonesia before?",
       },
       {
+        cell_id: "70e00df1-bb6b-43a5-b297-7e4fbaac44db",
         speaker: "Pemohon",
         text: "Ya, saya pernah tinggal di Indonesia selama enam bulan.",
         vi: "Có, tôi từng sống ở Indonesia trong sáu tháng.",
         en: "Yes, I once lived in Indonesia for six months.",
       },
       {
+        cell_id: "cc3f278a-2e30-4a1a-bf86-e3f8c5612390",
         speaker: "Petugas",
         text: "Riwayat perjalanan Anda ada di paspor lama?",
         vi: "Lịch sử đi lại của bạn có trong hộ chiếu cũ không?",
         en: "Is your travel history in the old passport?",
       },
       {
+        cell_id: "bf4f6ff0-257f-4351-98be-40ba82d926f2",
         speaker: "Pemohon",
         text: "Ya, riwayat perjalanan saya ada di paspor lama.",
         vi: "Vâng, lịch sử đi lại của tôi có trong hộ chiếu cũ.",

@@ -12,6 +12,7 @@ type LessonSentence = {
 };
 
 type VocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -21,6 +22,7 @@ type VocabEntry = {
 };
 
 type DialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -150,34 +152,38 @@ export const lessons: IndonesianLesson[] = [
     tip_advice_en:
       "Very useful phrases: `Saya sedang haid`, `Perut saya terasa nyeri`, `Saya perlu pemeriksaan rutin`, `Saya ingin tahu hasil tes`. Vietnamese speakers should learn to ask for an appointment with `janji temu` and remember `USG` is often spelled out letter by letter.",
     vocabulary: [
-      { word: "dokter kandungan", en: "ob-gyn / gynecologist", vi: "bác sĩ phụ khoa", pos: "noun phrase", pronunciation_vi: "dok-ter kan-DUNG-an", pronunciation_en: "dok-ter kan-DOONG-an" },
-      { word: "haid", en: "period / menstruation", vi: "kỳ kinh", pos: "noun", pronunciation_vi: "HA-id", pronunciation_en: "HA-id" },
-      { word: "nyeri", en: "painful / pain", vi: "đau", pos: "adjective / noun", pronunciation_vi: "NYE-ri", pronunciation_en: "NYE-ree" },
-      { word: "pemeriksaan rutin", en: "routine checkup", vi: "khám định kỳ", pos: "noun phrase", pronunciation_vi: "pe-me-rik-SA-an RU-tin", pronunciation_en: "pe-me-rik-SA-an ROO-tin" },
-      { word: "janji temu", en: "appointment", vi: "lịch hẹn", pos: "noun phrase", pronunciation_vi: "JAN-ji TE-mu", pronunciation_en: "JAN-jee TE-moo" },
-      { word: "USG", en: "ultrasound", vi: "siêu âm", pos: "noun", pronunciation_vi: "U-ES-GE", pronunciation_en: "U-ES-GEE" },
-      { word: "hasil tes", en: "test result", vi: "kết quả xét nghiệm", pos: "noun phrase", pronunciation_vi: "HA-sil tes", pronunciation_en: "HA-seel tes" },
+      { cell_id: "1133c837-d333-4fa9-9dc0-bda36fb08f17", word: "dokter kandungan", en: "ob-gyn / gynecologist", vi: "bác sĩ phụ khoa", pos: "noun phrase", pronunciation_vi: "dok-ter kan-DUNG-an", pronunciation_en: "dok-ter kan-DOONG-an" },
+      { cell_id: "00e27baa-766c-402d-a55a-a31c9aad8b5b", word: "haid", en: "period / menstruation", vi: "kỳ kinh", pos: "noun", pronunciation_vi: "HA-id", pronunciation_en: "HA-id" },
+      { cell_id: "0777ce24-9f7d-4a27-8902-9f2a7e625be4", word: "nyeri", en: "painful / pain", vi: "đau", pos: "adjective / noun", pronunciation_vi: "NYE-ri", pronunciation_en: "NYE-ree" },
+      { cell_id: "6539f532-134d-4650-bb6d-8d45d6b7b968", word: "pemeriksaan rutin", en: "routine checkup", vi: "khám định kỳ", pos: "noun phrase", pronunciation_vi: "pe-me-rik-SA-an RU-tin", pronunciation_en: "pe-me-rik-SA-an ROO-tin" },
+      { cell_id: "1bd7b8ae-540e-4299-bfb1-63c465d07016", word: "janji temu", en: "appointment", vi: "lịch hẹn", pos: "noun phrase", pronunciation_vi: "JAN-ji TE-mu", pronunciation_en: "JAN-jee TE-moo" },
+      { cell_id: "4f5a251b-0874-4576-a091-82f520e26a91", word: "USG", en: "ultrasound", vi: "siêu âm", pos: "noun", pronunciation_vi: "U-ES-GE", pronunciation_en: "U-ES-GEE" },
+      { cell_id: "f278235d-2514-4d3e-b01d-dabbfb755ebd", word: "hasil tes", en: "test result", vi: "kết quả xét nghiệm", pos: "noun phrase", pronunciation_vi: "HA-sil tes", pronunciation_en: "HA-seel tes" },
     ],
     dialogue: [
       {
+        cell_id: "42620944-a426-4e28-8aea-0f0e67506fe5",
         speaker: "Pasien",
         text: "Selamat pagi, saya ingin membuat janji temu dengan dokter kandungan.",
         vi: "Chào buổi sáng, tôi muốn đặt lịch hẹn với bác sĩ phụ khoa.",
         en: "Good morning, I would like to make an appointment with the gynecologist.",
       },
       {
+        cell_id: "917c7f11-1e6d-478a-a8f9-50866141db7d",
         speaker: "Petugas",
         text: "Baik. Keluhannya apa, Bu?",
         vi: "Vâng. Chị đang than phiền về triệu chứng gì ạ?",
         en: "Okay. What is the complaint, Ma'am?",
       },
       {
+        cell_id: "f05f9cdd-95b2-422b-b65c-7153483c2560",
         speaker: "Pasien",
         text: "Saya sedang haid dan perut saya terasa nyeri.",
         vi: "Tôi đang trong kỳ kinh và bụng tôi đau.",
         en: "I am on my period and my stomach feels painful.",
       },
       {
+        cell_id: "0cb185d5-61e0-4a22-acf0-9a63a294ac74",
         speaker: "Petugas",
         text: "Silakan tunggu. Dokter akan memeriksa Anda sebentar lagi.",
         vi: "Xin vui lòng chờ. Bác sĩ sẽ khám cho chị ngay sau đây.",
@@ -323,33 +329,37 @@ export const lessons: IndonesianLesson[] = [
     tip_advice_en:
       "Fast memory set: `Saya ingin membuat janji temu`, `Saya sedang haid`, `Saya ingin bicara secara pribadi`, `Mohon kirim hasil tes melalui email`. Vietnamese speakers should pay attention to passive medical forms like `dijaga`, `dijelaskan`, `dikirim`.",
     vocabulary: [
-      { word: "privasi pasien", en: "patient privacy", vi: "quyền riêng tư của bệnh nhân", pos: "noun phrase", pronunciation_vi: "pri-va-si PA-si-en", pronunciation_en: "pree-VA-see PA-see-en" },
-      { word: "hasil pemeriksaan", en: "examination result", vi: "kết quả khám", pos: "noun phrase", pronunciation_vi: "ha-SIL pe-me-rik-SA-an", pronunciation_en: "ha-SEEL pe-me-rik-SA-an" },
-      { word: "kontrol ulang", en: "follow-up checkup", vi: "tái khám", pos: "noun phrase", pronunciation_vi: "kon-TROL u-LANG", pronunciation_en: "kon-TROL oo-LANG" },
-      { word: "efek samping", en: "side effect", vi: "tác dụng phụ", pos: "noun phrase", pronunciation_vi: "e-FEK sam-PING", pronunciation_en: "eh-FEK sam-PEENG" },
-      { word: "bahasa yang sederhana", en: "simple language", vi: "ngôn ngữ đơn giản", pos: "noun phrase", pronunciation_vi: "ba-HA-sa yang se-de-HA-na", pronunciation_en: "ba-HA-sa yang se-de-HA-na" },
-      { word: "catatan", en: "record / note", vi: "bản ghi / ghi chú", pos: "noun", pronunciation_vi: "ca-TA-tan", pronunciation_en: "cha-TA-tan" },
+      { cell_id: "a0d51d0a-b743-46e8-bdfc-8aa436f02b0f", word: "privasi pasien", en: "patient privacy", vi: "quyền riêng tư của bệnh nhân", pos: "noun phrase", pronunciation_vi: "pri-va-si PA-si-en", pronunciation_en: "pree-VA-see PA-see-en" },
+      { cell_id: "496338e1-89a0-4c23-adfe-61b5cc78dfea", word: "hasil pemeriksaan", en: "examination result", vi: "kết quả khám", pos: "noun phrase", pronunciation_vi: "ha-SIL pe-me-rik-SA-an", pronunciation_en: "ha-SEEL pe-me-rik-SA-an" },
+      { cell_id: "f43295cd-10a0-4435-a90b-50538712fc72", word: "kontrol ulang", en: "follow-up checkup", vi: "tái khám", pos: "noun phrase", pronunciation_vi: "kon-TROL u-LANG", pronunciation_en: "kon-TROL oo-LANG" },
+      { cell_id: "73b75b70-6fa6-4267-9de2-c0b26182f6b7", word: "efek samping", en: "side effect", vi: "tác dụng phụ", pos: "noun phrase", pronunciation_vi: "e-FEK sam-PING", pronunciation_en: "eh-FEK sam-PEENG" },
+      { cell_id: "c7635111-26e4-4ff3-ba50-3163d9a5813f", word: "bahasa yang sederhana", en: "simple language", vi: "ngôn ngữ đơn giản", pos: "noun phrase", pronunciation_vi: "ba-HA-sa yang se-de-HA-na", pronunciation_en: "ba-HA-sa yang se-de-HA-na" },
+      { cell_id: "2b140957-389b-400e-abf5-d3aad54abd9f", word: "catatan", en: "record / note", vi: "bản ghi / ghi chú", pos: "noun", pronunciation_vi: "ca-TA-tan", pronunciation_en: "cha-TA-tan" },
     ],
     dialogue: [
       {
+        cell_id: "08c14a48-9cee-49c7-8d6a-36cdb4638c1d",
         speaker: "Pasien",
         text: "Saya ingin bicara secara pribadi tentang hasil pemeriksaan.",
         vi: "Tôi muốn nói riêng về kết quả khám.",
         en: "I would like to speak privately about the examination results.",
       },
       {
+        cell_id: "c991275d-730d-463f-9c2d-a0f8991bc8e8",
         speaker: "Petugas",
         text: "Tentu. Privasi pasien dijaga di ruangan ini.",
         vi: "Tất nhiên. Quyền riêng tư của bệnh nhân được giữ trong phòng này.",
         en: "Of course. Patient privacy is protected in this room.",
       },
       {
+        cell_id: "7d08e764-7af1-4b69-b716-f505079af906",
         speaker: "Pasien",
         text: "Mohon kirim hasil tes melalui email agar saya punya catatan.",
         vi: "Xin hãy gửi kết quả xét nghiệm qua email để tôi có bản lưu.",
         en: "Please send the test results by email so I have a record.",
       },
       {
+        cell_id: "145f48a8-c205-4eea-b02c-10f62173d61a",
         speaker: "Petugas",
         text: "Baik, dan silakan kontrol ulang minggu depan.",
         vi: "Vâng, và mời tái khám vào tuần tới.",

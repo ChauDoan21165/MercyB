@@ -13,6 +13,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -22,6 +23,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -138,6 +140,7 @@ export const familyBudgetPlanningLessons: IndonesianLesson[] = [
       "Useful frames: `membuat anggaran`, `belanja bulanan`, `uang sekolah`, `cicilan`, `tabungan`, `pengeluaran`. When talking money, always keep `ribu` and `juta` scales.",
     vocabulary: [
       {
+        cell_id: "5f1525a3-44eb-4ed5-b793-f7bba0ed6a96",
         word: "anggaran keluarga",
         en: "family budget",
         vi: "ngân sách gia đình",
@@ -146,6 +149,7 @@ export const familyBudgetPlanningLessons: IndonesianLesson[] = [
         pronunciation_en: "ang-GA-ran ke-LOO-ar-ga",
       },
       {
+        cell_id: "3a5a49fb-44b4-400f-92aa-087f799422ae",
         word: "belanja bulanan",
         en: "monthly shopping",
         vi: "mua sắm hằng tháng",
@@ -154,6 +158,7 @@ export const familyBudgetPlanningLessons: IndonesianLesson[] = [
         pronunciation_en: "be-LAN-ja boo-LA-nan",
       },
       {
+        cell_id: "a8dcafa6-106b-4dbb-b6dc-48922cdc06b7",
         word: "tabungan",
         en: "savings",
         vi: "tiền tiết kiệm",
@@ -162,6 +167,7 @@ export const familyBudgetPlanningLessons: IndonesianLesson[] = [
         pronunciation_en: "ta-BOO-ngan",
       },
       {
+        cell_id: "84f164ab-d261-4c81-83f3-fc58a9960e87",
         word: "cicilan",
         en: "installment payment",
         vi: "khoản trả góp",
@@ -170,6 +176,7 @@ export const familyBudgetPlanningLessons: IndonesianLesson[] = [
         pronunciation_en: "chi-CHEE-lan",
       },
       {
+        cell_id: "f42b2435-3547-4d73-93f4-f9b0328cad3a",
         word: "uang sekolah",
         en: "school fees",
         vi: "tiền học",
@@ -178,6 +185,7 @@ export const familyBudgetPlanningLessons: IndonesianLesson[] = [
         pronunciation_en: "OO-ang se-KO-lah",
       },
       {
+        cell_id: "3c12cec9-1b75-4101-83b7-469e0c9d1396",
         word: "pengeluaran",
         en: "expense",
         vi: "khoản chi",
@@ -188,18 +196,21 @@ export const familyBudgetPlanningLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "7a348d39-ffb9-4c86-b0c8-b6efc05b18ad",
         speaker: "Ibu",
         text: "Bulan depan kita perlu membuat anggaran keluarga.",
         vi: "Tháng tới chúng ta cần lập ngân sách gia đình.",
         en: "Next month we need to make a family budget.",
       },
       {
+        cell_id: "a933eb23-0c6b-432b-a0ea-d61ac4ff4ccf",
         speaker: "Ayah",
         text: "Setuju. Belanja bulanan jangan lebih dari tiga juta.",
         vi: "Đồng ý. Mua sắm hằng tháng đừng quá ba triệu.",
         en: "Agreed. Monthly shopping should not be more than three million.",
       },
       {
+        cell_id: "ebb9e0eb-0fb8-4354-9d4b-6e6368d1fb60",
         speaker: "Ibu",
         text: "Uang sekolah dan cicilan rumah harus dipisahkan dulu.",
         vi: "Tiền học và khoản trả góp nhà phải được tách riêng trước.",
@@ -316,6 +327,7 @@ export const familyBudgetPlanningLessons: IndonesianLesson[] = [
       "Separate three ideas: `hemat` = spend frugally, `menabung` = save/set money aside, `dana darurat` = emergency fund. These are key words for family money planning.",
     vocabulary: [
       {
+        cell_id: "14c8bb92-d5dd-473a-b8d7-5afdd19560c7",
         word: "dana darurat",
         en: "emergency fund",
         vi: "quỹ khẩn cấp",
@@ -324,6 +336,7 @@ export const familyBudgetPlanningLessons: IndonesianLesson[] = [
         pronunciation_en: "DA-na da-ROO-rat",
       },
       {
+        cell_id: "b5016a0e-bd79-48a3-bccf-f8c33becbca3",
         word: "hemat",
         en: "frugal / economical",
         vi: "tiết kiệm trong chi tiêu",
@@ -332,6 +345,7 @@ export const familyBudgetPlanningLessons: IndonesianLesson[] = [
         pronunciation_en: "HE-mat",
       },
       {
+        cell_id: "e4790a90-8c74-4489-a442-418ad196ad8f",
         word: "sisa uang",
         en: "leftover money",
         vi: "tiền dư",
@@ -340,6 +354,7 @@ export const familyBudgetPlanningLessons: IndonesianLesson[] = [
         pronunciation_en: "SEE-sa OO-ang",
       },
       {
+        cell_id: "2af1771a-5da2-4155-8a3f-868b80fab06b",
         word: "jajan",
         en: "snacks / snack spending",
         vi: "ăn vặt / tiền quà vặt",
@@ -348,6 +363,7 @@ export const familyBudgetPlanningLessons: IndonesianLesson[] = [
         pronunciation_en: "JA-jan",
       },
       {
+        cell_id: "a6ee1f59-5c7f-42fc-a140-7ae5a170b9e0",
         word: "dibatasi",
         en: "limited",
         vi: "được giới hạn",
@@ -356,6 +372,7 @@ export const familyBudgetPlanningLessons: IndonesianLesson[] = [
         pronunciation_en: "di-BA-tas-i",
       },
       {
+        cell_id: "6da76baa-dc70-4f9e-956c-66b7719d7c58",
         word: "akhir bulan",
         en: "end of the month",
         vi: "cuối tháng",
@@ -366,24 +383,28 @@ export const familyBudgetPlanningLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "5c6b2c11-9dcc-4da2-a92d-a6f9b92002e3",
         speaker: "Ayah",
         text: "Dana darurat kita belum cukup untuk tiga bulan pengeluaran.",
         vi: "Quỹ khẩn cấp của chúng ta chưa đủ cho ba tháng chi tiêu.",
         en: "Our emergency fund is not enough for three months of expenses yet.",
       },
       {
+        cell_id: "f3dd68f3-52d2-44be-8551-7e21b16a6f78",
         speaker: "Ibu",
         text: "Kalau begitu, kita harus lebih hemat bulan ini.",
         vi: "Nếu vậy, tháng này chúng ta phải tiết kiệm hơn.",
         en: "In that case, we need to be more frugal this month.",
       },
       {
+        cell_id: "d3beefab-34c3-4a14-a4cd-9a3ff7e1b45e",
         speaker: "Ayah",
         text: "Setuju. Kalau ada sisa uang, kita masukkan ke tabungan.",
         vi: "Đồng ý. Nếu còn dư tiền, chúng ta cho vào tiết kiệm.",
         en: "Agreed. If there is leftover money, we put it into savings.",
       },
       {
+        cell_id: "0b8f4ef4-f91e-4f92-8b8c-90479916cb41",
         speaker: "Ibu",
         text: "Nanti akhir bulan kita evaluasi anggarannya lagi.",
         vi: "Cuối tháng mình đánh giá lại ngân sách nhé.",

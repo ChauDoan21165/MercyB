@@ -16,6 +16,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   /** Indonesian word/phrase. */
   word: string;
   /** English meaning. */
@@ -31,6 +32,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   /** Indonesian line. */
   text: string;
@@ -193,6 +195,7 @@ export const lessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: key market lines are `berapa sekilo?`, `bisa kurang?`, `boleh diskon?`, `masih segar?`, `saya langganan di sini`. Keep apart `di pasar` (at the market) and `ke pasar` (to the market), plus `harga pas` (fixed/final price) and `harga murah` (cheap price).",
     vocabulary: [
       {
+        cell_id: "3a490420-1556-4771-bdb1-c2c72d11b1e9",
         word: "pasar tradisional",
         en: "traditional market",
         vi: "chợ truyền thống",
@@ -201,6 +204,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "PA-sar tra-di-si-o-NAL",
       },
       {
+        cell_id: "4f32b53c-5a11-4178-b0d5-f6acddd4d2c1",
         word: "tawar-menawar",
         en: "bargaining",
         vi: "mặc cả",
@@ -209,6 +213,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "TA-war me-NA-war",
       },
       {
+        cell_id: "7a355974-bdca-4314-befe-d5c0370d6b21",
         word: "harga pas",
         en: "fixed / final price",
         vi: "giá chốt / giá cố định",
@@ -217,6 +222,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "HAR-ga pas",
       },
       {
+        cell_id: "b04a7bc6-0b0c-498d-b927-6334cdedffdd",
         word: "langganan",
         en: "regular customer / to be a regular",
         vi: "khách quen / mua quen",
@@ -225,6 +231,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "lang-GA-nan",
       },
       {
+        cell_id: "a37fe734-b1ce-481d-89b5-790c2806ea49",
         word: "kiloan",
         en: "by the kilo",
         vi: "tính theo ký",
@@ -233,6 +240,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "kee-LO-an",
       },
       {
+        cell_id: "8458573f-86f2-43f1-9eaf-aa482936ed3b",
         word: "segar",
         en: "fresh",
         vi: "tươi",
@@ -241,6 +249,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "SE-gar",
       },
       {
+        cell_id: "fbdba3a8-799a-41a6-b427-7a6c0191b3e2",
         word: "diskon",
         en: "discount",
         vi: "giảm giá",
@@ -249,6 +258,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "DIS-kon",
       },
       {
+        cell_id: "36d8669a-a1f2-4749-be69-110134f4d11c",
         word: "pedagang",
         en: "vendor / trader",
         vi: "người bán / tiểu thương",
@@ -257,6 +267,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "pe-DA-gang",
       },
       {
+        cell_id: "f0a728ac-d3db-4804-b522-ccc50c82986a",
         word: "pelanggan tetap",
         en: "regular customer",
         vi: "khách quen cố định",
@@ -265,6 +276,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "pe-LANG-gan TE-tap",
       },
       {
+        cell_id: "58def8b3-5e89-46a8-a580-7e2ae2b58720",
         word: "bisa kurang?",
         en: "can it be cheaper?",
         vi: "bớt được không?",
@@ -275,30 +287,35 @@ export const lessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "787d58b1-565a-4160-95d5-cd3d8f7efb3c",
         speaker: "Pembeli",
         text: "Bu, tomat ini berapa sekilo?",
         vi: "Cô ơi, cà chua này bao nhiêu một ký?",
         en: "Ma'am, how much are these tomatoes per kilo?",
       },
       {
+        cell_id: "943a85de-8b30-4dfd-bb1f-46e97acb0450",
         speaker: "Pedagang",
         text: "Dua puluh ribu sekilo. Masih segar, baru datang pagi ini.",
         vi: "Hai mươi nghìn một ký. Vẫn tươi, mới về sáng nay.",
         en: "Twenty thousand per kilo. Still fresh, just arrived this morning.",
       },
       {
+        cell_id: "7e0021d8-3055-47fb-b6c2-035e4fba66fc",
         speaker: "Pembeli",
         text: "Kalau saya ambil dua kilo, bisa kurang?",
         vi: "Nếu tôi lấy hai ký, bớt được không?",
         en: "If I take two kilos, can it be cheaper?",
       },
       {
+        cell_id: "f8f700b9-e6f7-4546-8457-77a258f7f4fb",
         speaker: "Pedagang",
         text: "Untuk langganan, delapan belas ribu sekilo saja.",
         vi: "Cho khách quen thì mười tám nghìn một ký thôi.",
         en: "For a regular customer, just eighteen thousand per kilo.",
       },
       {
+        cell_id: "1b846e62-dc60-47e3-8b29-228ee2438777",
         speaker: "Pembeli",
         text: "Oke, saya ambil dua kilo. Tolong pilih yang segar.",
         vi: "Được, tôi lấy hai ký. Làm ơn chọn loại tươi.",

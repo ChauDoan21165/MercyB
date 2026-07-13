@@ -2,6 +2,7 @@
 // Mirrors the schema used by all 50 lessons; types derived from existing data.
 
 export type ChineseVocabEntry = {
+  cell_id?: string;
   chinese: string;
   pinyin: string;
   english: string;
@@ -18,6 +19,7 @@ export type ChineseSentence = {
 };
 
 export type ChineseDialogueLine = {
+  cell_id?: string;
   speaker: string;
   chinese: string;
   pinyin: string;
@@ -105,6 +107,7 @@ export type IdiomGloss = {
 // B2-specific dialogue line — adds Vietnamese gloss to the existing
 // {speaker, chinese, pinyin, english} shape used by lessons 1-50.
 export type ChineseB2DialogueLine = {
+  cell_id?: string;
   speaker: string;
   chinese: string;
   pinyin: string;

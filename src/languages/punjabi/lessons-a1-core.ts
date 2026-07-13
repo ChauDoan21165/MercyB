@@ -35,6 +35,7 @@ export type PunjabiLessonSentence = {
 };
 
 export type PunjabiVocabEntry = {
+  cell_id?: string;
   word: string;
   romanization: string;
   vi: string;
@@ -43,6 +44,7 @@ export type PunjabiVocabEntry = {
 };
 
 export type PunjabiDialogueLine = {
+  cell_id?: string;
   speaker: string;
   pa: string;
   romanization: string;
@@ -136,16 +138,16 @@ export const lessons: PunjabiLesson[] = [
       },
     ],
     vocabulary: [
-      { word: "ਸਤ ਸ੍ਰੀ ਅਕਾਲ", romanization: "sat sri akal", vi: "xin chào", en: "hello", pos: "phrase" },
-      { word: "ਕਿਵੇਂ", romanization: "kive", vi: "như thế nào", en: "how", pos: "adverb" },
-      { word: "ਠੀਕ", romanization: "thik", vi: "ổn, khỏe", en: "fine, okay", pos: "adjective" },
-      { word: "ਫਿਰ", romanization: "phir", vi: "lại, sau đó", en: "again, then", pos: "adverb" },
-      { word: "ਮਿਲਾਂਗੇ", romanization: "milange", vi: "sẽ gặp", en: "will meet", pos: "verb" },
+      { cell_id: "4fd48d4d-9d86-4816-865f-2a41b9f1ed43", word: "ਸਤ ਸ੍ਰੀ ਅਕਾਲ", romanization: "sat sri akal", vi: "xin chào", en: "hello", pos: "phrase" },
+      { cell_id: "25708d2e-5bf5-4a8b-9419-5c49cdfa933a", word: "ਕਿਵੇਂ", romanization: "kive", vi: "như thế nào", en: "how", pos: "adverb" },
+      { cell_id: "aa95011e-a829-413d-89e1-8e1d97b41e40", word: "ਠੀਕ", romanization: "thik", vi: "ổn, khỏe", en: "fine, okay", pos: "adjective" },
+      { cell_id: "b448ee6e-b279-4679-8d93-e59fd9593455", word: "ਫਿਰ", romanization: "phir", vi: "lại, sau đó", en: "again, then", pos: "adverb" },
+      { cell_id: "382ab3f2-9ac4-4296-a428-f23afcd2982e", word: "ਮਿਲਾਂਗੇ", romanization: "milange", vi: "sẽ gặp", en: "will meet", pos: "verb" },
     ],
     dialogue: [
-      { speaker: "A", pa: "ਸਤ ਸ੍ਰੀ ਅਕਾਲ। ਤੁਸੀਂ ਕਿਵੇਂ ਹੋ?", romanization: "sat sri akal. tusi kive ho?", vi: "Xin chào. Bạn khỏe không?", en: "Hello. How are you?" },
-      { speaker: "B", pa: "ਮੈਂ ਠੀਕ ਹਾਂ। ਧੰਨਵਾਦ।", romanization: "main thik han. dhanvad.", vi: "Tôi khỏe. Cảm ơn.", en: "I am fine. Thank you." },
-      { speaker: "A", pa: "ਫਿਰ ਮਿਲਾਂਗੇ।", romanization: "phir milange.", vi: "Hẹn gặp lại.", en: "See you again." },
+      { cell_id: "4a1341a4-3c81-4cc2-b867-636ba5cc2d96", speaker: "A", pa: "ਸਤ ਸ੍ਰੀ ਅਕਾਲ। ਤੁਸੀਂ ਕਿਵੇਂ ਹੋ?", romanization: "sat sri akal. tusi kive ho?", vi: "Xin chào. Bạn khỏe không?", en: "Hello. How are you?" },
+      { cell_id: "67292c73-9a8a-4192-94c5-8b7e98870a39", speaker: "B", pa: "ਮੈਂ ਠੀਕ ਹਾਂ। ਧੰਨਵਾਦ।", romanization: "main thik han. dhanvad.", vi: "Tôi khỏe. Cảm ơn.", en: "I am fine. Thank you." },
+      { cell_id: "291c0497-0721-48ba-b5d0-d88dd473f727", speaker: "A", pa: "ਫਿਰ ਮਿਲਾਂਗੇ।", romanization: "phir milange.", vi: "Hẹn gặp lại.", en: "See you again." },
     ],
     exercises: [
       {
@@ -214,16 +216,16 @@ export const lessons: PunjabiLesson[] = [
       },
     ],
     vocabulary: [
-      { word: "ਨਾਮ", romanization: "nam", vi: "tên", en: "name", pos: "noun" },
-      { word: "ਮੇਰਾ", romanization: "mera", vi: "của tôi", en: "my", pos: "possessive" },
-      { word: "ਤੁਹਾਡਾ", romanization: "tuhada", vi: "của bạn", en: "your", pos: "possessive" },
-      { word: "ਕੀ", romanization: "ki", vi: "gì", en: "what", pos: "question word" },
-      { word: "ਤੋਂ", romanization: "ton", vi: "từ", en: "from", pos: "postposition" },
+      { cell_id: "0a090c20-9fb6-4c6d-9b3d-509f3ffdc5eb", word: "ਨਾਮ", romanization: "nam", vi: "tên", en: "name", pos: "noun" },
+      { cell_id: "c4adde3b-6131-48b7-90af-b521cfeada8f", word: "ਮੇਰਾ", romanization: "mera", vi: "của tôi", en: "my", pos: "possessive" },
+      { cell_id: "248de169-12ad-4140-b137-05a6fd39e3bf", word: "ਤੁਹਾਡਾ", romanization: "tuhada", vi: "của bạn", en: "your", pos: "possessive" },
+      { cell_id: "79ef6a68-3527-4e08-a3dd-d014a4862497", word: "ਕੀ", romanization: "ki", vi: "gì", en: "what", pos: "question word" },
+      { cell_id: "37b2e9a9-8501-4759-ad75-9eb3b463c629", word: "ਤੋਂ", romanization: "ton", vi: "từ", en: "from", pos: "postposition" },
     ],
     dialogue: [
-      { speaker: "A", pa: "ਤੁਹਾਡਾ ਨਾਮ ਕੀ ਹੈ?", romanization: "tuhada nam ki hai?", vi: "Tên bạn là gì?", en: "What is your name?" },
-      { speaker: "B", pa: "ਮੇਰਾ ਨਾਮ ਲਾਨ ਹੈ।", romanization: "mera nam Lan hai.", vi: "Tên tôi là Lan.", en: "My name is Lan." },
-      { speaker: "A", pa: "ਤੁਹਾਨੂੰ ਮਿਲ ਕੇ ਖੁਸ਼ੀ ਹੋਈ।", romanization: "tuhanu mil ke khushi hoi.", vi: "Rất vui được gặp bạn.", en: "Nice to meet you." },
+      { cell_id: "6c3e7464-c857-4124-8303-c9684be7f0f1", speaker: "A", pa: "ਤੁਹਾਡਾ ਨਾਮ ਕੀ ਹੈ?", romanization: "tuhada nam ki hai?", vi: "Tên bạn là gì?", en: "What is your name?" },
+      { cell_id: "268c6612-cce1-4fba-8173-c0510a04025f", speaker: "B", pa: "ਮੇਰਾ ਨਾਮ ਲਾਨ ਹੈ।", romanization: "mera nam Lan hai.", vi: "Tên tôi là Lan.", en: "My name is Lan." },
+      { cell_id: "4caa76bb-0bbd-407b-af9e-cad7f1a5e830", speaker: "A", pa: "ਤੁਹਾਨੂੰ ਮਿਲ ਕੇ ਖੁਸ਼ੀ ਹੋਈ।", romanization: "tuhanu mil ke khushi hoi.", vi: "Rất vui được gặp bạn.", en: "Nice to meet you." },
     ],
     exercises: [
       {
@@ -289,16 +291,16 @@ export const lessons: PunjabiLesson[] = [
       },
     ],
     vocabulary: [
-      { word: "ਮੈਂ", romanization: "main", vi: "tôi", en: "I", pos: "pronoun" },
-      { word: "ਤੁਸੀਂ", romanization: "tusi", vi: "bạn/anh chị", en: "you", pos: "pronoun" },
-      { word: "ਉਹ", romanization: "oh", vi: "anh ấy/cô ấy/đó", en: "he/she/that", pos: "pronoun" },
-      { word: "ਅਸੀਂ", romanization: "asi", vi: "chúng tôi", en: "we", pos: "pronoun" },
-      { word: "ਵਿੱਚ", romanization: "vich", vi: "trong", en: "in", pos: "postposition" },
+      { cell_id: "423b89f6-4cf1-412b-9eb3-00ca87df6a18", word: "ਮੈਂ", romanization: "main", vi: "tôi", en: "I", pos: "pronoun" },
+      { cell_id: "868384a7-e4ca-4d40-9051-41129c123f77", word: "ਤੁਸੀਂ", romanization: "tusi", vi: "bạn/anh chị", en: "you", pos: "pronoun" },
+      { cell_id: "82ae5769-764a-4285-bae3-e05cfdbb89c3", word: "ਉਹ", romanization: "oh", vi: "anh ấy/cô ấy/đó", en: "he/she/that", pos: "pronoun" },
+      { cell_id: "1b22f88e-fea9-4b74-ae81-72f8a4136dd4", word: "ਅਸੀਂ", romanization: "asi", vi: "chúng tôi", en: "we", pos: "pronoun" },
+      { cell_id: "8d8a39c1-6906-4f08-9605-f68a1ccb73fa", word: "ਵਿੱਚ", romanization: "vich", vi: "trong", en: "in", pos: "postposition" },
     ],
     dialogue: [
-      { speaker: "A", pa: "ਤੁਸੀਂ ਵਿਦਿਆਰਥੀ ਹੋ?", romanization: "tusi vidiarthi ho?", vi: "Bạn là sinh viên à?", en: "Are you a student?" },
-      { speaker: "B", pa: "ਹਾਂ, ਮੈਂ ਵਿਦਿਆਰਥੀ ਹਾਂ।", romanization: "han, main vidiarthi han.", vi: "Vâng, tôi là sinh viên.", en: "Yes, I am a student." },
-      { speaker: "A", pa: "ਉਹ ਅਧਿਆਪਕ ਹੈ।", romanization: "oh adhiapak hai.", vi: "Cô ấy/anh ấy là giáo viên.", en: "He/she is a teacher." },
+      { cell_id: "b29d8227-e12c-478c-b33a-9ed1ad697a13", speaker: "A", pa: "ਤੁਸੀਂ ਵਿਦਿਆਰਥੀ ਹੋ?", romanization: "tusi vidiarthi ho?", vi: "Bạn là sinh viên à?", en: "Are you a student?" },
+      { cell_id: "b7f83c78-34c6-443d-8356-47f50024abf2", speaker: "B", pa: "ਹਾਂ, ਮੈਂ ਵਿਦਿਆਰਥੀ ਹਾਂ।", romanization: "han, main vidiarthi han.", vi: "Vâng, tôi là sinh viên.", en: "Yes, I am a student." },
+      { cell_id: "eea937fd-4c28-4419-ba82-2d7c4273c3dc", speaker: "A", pa: "ਉਹ ਅਧਿਆਪਕ ਹੈ।", romanization: "oh adhiapak hai.", vi: "Cô ấy/anh ấy là giáo viên.", en: "He/she is a teacher." },
     ],
     exercises: [
       {
@@ -368,16 +370,16 @@ export const lessons: PunjabiLesson[] = [
       },
     ],
     vocabulary: [
-      { word: "ਮਾਂ", romanization: "ma", vi: "mẹ", en: "mother", pos: "noun" },
-      { word: "ਪਿਤਾ ਜੀ", romanization: "pita ji", vi: "bố/cha", en: "father", pos: "noun" },
-      { word: "ਭਰਾ", romanization: "bhra", vi: "anh/em trai", en: "brother", pos: "noun" },
-      { word: "ਭੈਣ", romanization: "bhain", vi: "chị/em gái", en: "sister", pos: "noun" },
-      { word: "ਪਰਿਵਾਰ", romanization: "parivar", vi: "gia đình", en: "family", pos: "noun" },
+      { cell_id: "5c16fc1d-838a-4bd3-949e-ddab71dca60e", word: "ਮਾਂ", romanization: "ma", vi: "mẹ", en: "mother", pos: "noun" },
+      { cell_id: "d97fca86-8af2-4fa6-9c78-3151e9ca9b6c", word: "ਪਿਤਾ ਜੀ", romanization: "pita ji", vi: "bố/cha", en: "father", pos: "noun" },
+      { cell_id: "d717ad1e-412f-4f6d-a2af-65a4e5cc08f1", word: "ਭਰਾ", romanization: "bhra", vi: "anh/em trai", en: "brother", pos: "noun" },
+      { cell_id: "38b9f414-16d7-4ce9-b180-06c5bb843276", word: "ਭੈਣ", romanization: "bhain", vi: "chị/em gái", en: "sister", pos: "noun" },
+      { cell_id: "c0d5c4d4-dd63-4eb7-bd52-802674f9b085", word: "ਪਰਿਵਾਰ", romanization: "parivar", vi: "gia đình", en: "family", pos: "noun" },
     ],
     dialogue: [
-      { speaker: "A", pa: "ਇਹ ਕੌਣ ਹੈ?", romanization: "ih kaun hai?", vi: "Đây là ai?", en: "Who is this?" },
-      { speaker: "B", pa: "ਇਹ ਮੇਰੀ ਮਾਂ ਹੈ।", romanization: "ih meri ma hai.", vi: "Đây là mẹ tôi.", en: "This is my mother." },
-      { speaker: "A", pa: "ਤੁਹਾਡਾ ਪਰਿਵਾਰ ਵੱਡਾ ਹੈ?", romanization: "tuhada parivar vadda hai?", vi: "Gia đình bạn lớn không?", en: "Is your family big?" },
+      { cell_id: "5efa5f76-0b85-4b8e-a35c-06b52b81f93b", speaker: "A", pa: "ਇਹ ਕੌਣ ਹੈ?", romanization: "ih kaun hai?", vi: "Đây là ai?", en: "Who is this?" },
+      { cell_id: "c5298d7b-021c-4859-ad1a-1150dcded7f4", speaker: "B", pa: "ਇਹ ਮੇਰੀ ਮਾਂ ਹੈ।", romanization: "ih meri ma hai.", vi: "Đây là mẹ tôi.", en: "This is my mother." },
+      { cell_id: "1543efe2-7947-4baa-852f-b6956c497501", speaker: "A", pa: "ਤੁਹਾਡਾ ਪਰਿਵਾਰ ਵੱਡਾ ਹੈ?", romanization: "tuhada parivar vadda hai?", vi: "Gia đình bạn lớn không?", en: "Is your family big?" },
     ],
     exercises: [
       {
@@ -443,16 +445,16 @@ export const lessons: PunjabiLesson[] = [
       },
     ],
     vocabulary: [
-      { word: "ਸਿਫਰ", romanization: "sifar", vi: "số không", en: "zero", pos: "number" },
-      { word: "ਇੱਕ", romanization: "ik", vi: "một", en: "one", pos: "number" },
-      { word: "ਦੋ", romanization: "do", vi: "hai", en: "two", pos: "number" },
-      { word: "ਤਿੰਨ", romanization: "tinn", vi: "ba", en: "three", pos: "number" },
-      { word: "ਦਸ", romanization: "das", vi: "mười", en: "ten", pos: "number" },
+      { cell_id: "d4e9a0d5-c633-4a67-97d2-b452858148f0", word: "ਸਿਫਰ", romanization: "sifar", vi: "số không", en: "zero", pos: "number" },
+      { cell_id: "43eadd79-6b6c-4107-82ce-3525fc7bfe01", word: "ਇੱਕ", romanization: "ik", vi: "một", en: "one", pos: "number" },
+      { cell_id: "834fd419-079f-4eac-8731-75d1daba1229", word: "ਦੋ", romanization: "do", vi: "hai", en: "two", pos: "number" },
+      { cell_id: "43a8ba83-0251-41e8-b724-8263914e4681", word: "ਤਿੰਨ", romanization: "tinn", vi: "ba", en: "three", pos: "number" },
+      { cell_id: "43b2112a-6894-40a1-85b9-1ec5c0c983fb", word: "ਦਸ", romanization: "das", vi: "mười", en: "ten", pos: "number" },
     ],
     dialogue: [
-      { speaker: "A", pa: "ਕਿੰਨੇ ਟਿਕਟ?", romanization: "kinne tiket?", vi: "Bao nhiêu vé?", en: "How many tickets?" },
-      { speaker: "B", pa: "ਦੋ ਟਿਕਟਾਂ।", romanization: "do tiktan.", vi: "Hai vé.", en: "Two tickets." },
-      { speaker: "A", pa: "ਠੀਕ ਹੈ।", romanization: "thik hai.", vi: "Được rồi.", en: "Okay." },
+      { cell_id: "5901a34b-8604-4a94-8d13-88e26839df0e", speaker: "A", pa: "ਕਿੰਨੇ ਟਿਕਟ?", romanization: "kinne tiket?", vi: "Bao nhiêu vé?", en: "How many tickets?" },
+      { cell_id: "d7d3af17-ab86-4b8c-9e20-eb31101dcf36", speaker: "B", pa: "ਦੋ ਟਿਕਟਾਂ।", romanization: "do tiktan.", vi: "Hai vé.", en: "Two tickets." },
+      { cell_id: "b3b4f927-f7f2-4a6a-82b5-05bd1416e31c", speaker: "A", pa: "ਠੀਕ ਹੈ।", romanization: "thik hai.", vi: "Được rồi.", en: "Okay." },
     ],
     exercises: [
       {
@@ -522,16 +524,16 @@ export const lessons: PunjabiLesson[] = [
       },
     ],
     vocabulary: [
-      { word: "ਪਾਣੀ", romanization: "pani", vi: "nước", en: "water", pos: "noun" },
-      { word: "ਚਾਹ", romanization: "chah", vi: "trà", en: "tea", pos: "noun" },
-      { word: "ਖਾਣਾ", romanization: "khana", vi: "đồ ăn", en: "food", pos: "noun" },
-      { word: "ਚੰਗਾ", romanization: "changa", vi: "tốt, ngon", en: "good", pos: "adjective" },
-      { word: "ਘੱਟ", romanization: "ghatt", vi: "ít hơn", en: "less", pos: "adjective/adverb" },
+      { cell_id: "f236eb71-d2a7-48df-81a2-7967fbd3fcf9", word: "ਪਾਣੀ", romanization: "pani", vi: "nước", en: "water", pos: "noun" },
+      { cell_id: "9a7d4efe-2a7e-420a-a186-0a21b364bd22", word: "ਚਾਹ", romanization: "chah", vi: "trà", en: "tea", pos: "noun" },
+      { cell_id: "c8380a74-d0c5-46b4-b467-c6f09ec43692", word: "ਖਾਣਾ", romanization: "khana", vi: "đồ ăn", en: "food", pos: "noun" },
+      { cell_id: "ce1d86dc-5d84-4990-9345-b24a7a0bf6bf", word: "ਚੰਗਾ", romanization: "changa", vi: "tốt, ngon", en: "good", pos: "adjective" },
+      { cell_id: "9a766687-c7be-4ee7-94b1-eb3745d61bbc", word: "ਘੱਟ", romanization: "ghatt", vi: "ít hơn", en: "less", pos: "adjective/adverb" },
     ],
     dialogue: [
-      { speaker: "A", pa: "ਤੁਹਾਨੂੰ ਕੀ ਚਾਹੀਦਾ ਹੈ?", romanization: "tuhanu ki chahida hai?", vi: "Bạn cần gì?", en: "What would you like?" },
-      { speaker: "B", pa: "ਮੈਨੂੰ ਪਾਣੀ ਚਾਹੀਦਾ ਹੈ।", romanization: "mainu pani chahida hai.", vi: "Tôi cần nước.", en: "I would like water." },
-      { speaker: "B", pa: "ਮਸਾਲਾ ਘੱਟ ਕਰੋ ਜੀ।", romanization: "masala ghatt karo ji.", vi: "Ít cay/gia vị giúp tôi ạ.", en: "Please make it less spicy." },
+      { cell_id: "aff11cf0-004f-4247-a642-95efb64dde84", speaker: "A", pa: "ਤੁਹਾਨੂੰ ਕੀ ਚਾਹੀਦਾ ਹੈ?", romanization: "tuhanu ki chahida hai?", vi: "Bạn cần gì?", en: "What would you like?" },
+      { cell_id: "04f5663e-488f-4c62-a75c-8e350e6e4ea9", speaker: "B", pa: "ਮੈਨੂੰ ਪਾਣੀ ਚਾਹੀਦਾ ਹੈ।", romanization: "mainu pani chahida hai.", vi: "Tôi cần nước.", en: "I would like water." },
+      { cell_id: "743011bd-d3d3-435a-8f99-5f24e7aff540", speaker: "B", pa: "ਮਸਾਲਾ ਘੱਟ ਕਰੋ ਜੀ।", romanization: "masala ghatt karo ji.", vi: "Ít cay/gia vị giúp tôi ạ.", en: "Please make it less spicy." },
     ],
     exercises: [
       {
@@ -597,16 +599,16 @@ export const lessons: PunjabiLesson[] = [
       },
     ],
     vocabulary: [
-      { word: "ਕਿੰਨੇ ਦਾ", romanization: "kinne da", vi: "giá bao nhiêu", en: "how much", pos: "price phrase" },
-      { word: "ਮਹਿੰਗਾ", romanization: "mahinga", vi: "đắt", en: "expensive", pos: "adjective" },
-      { word: "ਸਸਤਾ", romanization: "sasta", vi: "rẻ", en: "cheap", pos: "adjective" },
-      { word: "ਬਹੁਤ", romanization: "bahut", vi: "rất", en: "very", pos: "adverb" },
-      { word: "ਇਹ", romanization: "ih", vi: "cái này", en: "this", pos: "pronoun" },
+      { cell_id: "8039971b-79ae-41ea-98cd-0f87ef462706", word: "ਕਿੰਨੇ ਦਾ", romanization: "kinne da", vi: "giá bao nhiêu", en: "how much", pos: "price phrase" },
+      { cell_id: "b41e225e-bc74-4162-9562-7b1aaeb53ca9", word: "ਮਹਿੰਗਾ", romanization: "mahinga", vi: "đắt", en: "expensive", pos: "adjective" },
+      { cell_id: "4c218713-7461-4ca9-9a6e-6e945dff121c", word: "ਸਸਤਾ", romanization: "sasta", vi: "rẻ", en: "cheap", pos: "adjective" },
+      { cell_id: "a7068d02-1f6d-4ea2-bd31-697ed12f2306", word: "ਬਹੁਤ", romanization: "bahut", vi: "rất", en: "very", pos: "adverb" },
+      { cell_id: "df44a5cf-7ad5-47a4-ae71-63591b544fb3", word: "ਇਹ", romanization: "ih", vi: "cái này", en: "this", pos: "pronoun" },
     ],
     dialogue: [
-      { speaker: "A", pa: "ਇਹ ਕਿੰਨੇ ਦਾ ਹੈ?", romanization: "ih kinne da hai?", vi: "Cái này giá bao nhiêu?", en: "How much is this?" },
-      { speaker: "B", pa: "ਇਹ ਦਸ ਰੁਪਏ ਦਾ ਹੈ।", romanization: "ih das rupaye da hai.", vi: "Cái này giá mười rupee.", en: "This is ten rupees." },
-      { speaker: "A", pa: "ਠੀਕ ਹੈ, ਮੈਨੂੰ ਇਹ ਚਾਹੀਦਾ ਹੈ।", romanization: "thik hai, mainu ih chahida hai.", vi: "Được, tôi muốn cái này.", en: "Okay, I want this." },
+      { cell_id: "6db08306-8fb0-4c3d-9b61-0aa11259a7d1", speaker: "A", pa: "ਇਹ ਕਿੰਨੇ ਦਾ ਹੈ?", romanization: "ih kinne da hai?", vi: "Cái này giá bao nhiêu?", en: "How much is this?" },
+      { cell_id: "f47e4d40-eef9-4117-b9f6-4e8adce59d27", speaker: "B", pa: "ਇਹ ਦਸ ਰੁਪਏ ਦਾ ਹੈ।", romanization: "ih das rupaye da hai.", vi: "Cái này giá mười rupee.", en: "This is ten rupees." },
+      { cell_id: "ec8eda02-9d05-4f33-8cb8-e9ca87a0c87b", speaker: "A", pa: "ਠੀਕ ਹੈ, ਮੈਨੂੰ ਇਹ ਚਾਹੀਦਾ ਹੈ।", romanization: "thik hai, mainu ih chahida hai.", vi: "Được, tôi muốn cái này.", en: "Okay, I want this." },
     ],
     exercises: [
       {
@@ -672,16 +674,16 @@ export const lessons: PunjabiLesson[] = [
       },
     ],
     vocabulary: [
-      { word: "ਬੱਸ", romanization: "bas", vi: "xe buýt", en: "bus", pos: "noun" },
-      { word: "ਟੈਕਸੀ", romanization: "taiksi", vi: "taxi", en: "taxi", pos: "noun" },
-      { word: "ਸਟੇਸ਼ਨ", romanization: "station", vi: "nhà ga", en: "station", pos: "noun" },
-      { word: "ਨੇੜੇ", romanization: "nere", vi: "gần", en: "near", pos: "location word" },
-      { word: "ਹਵਾਈ ਅੱਡਾ", romanization: "havai adda", vi: "sân bay", en: "airport", pos: "noun" },
+      { cell_id: "4caeea7c-b5e0-4de9-bb39-168742788fd4", word: "ਬੱਸ", romanization: "bas", vi: "xe buýt", en: "bus", pos: "noun" },
+      { cell_id: "3559f597-3592-456b-8d65-488e5ca6bc2f", word: "ਟੈਕਸੀ", romanization: "taiksi", vi: "taxi", en: "taxi", pos: "noun" },
+      { cell_id: "9422d799-9f13-49f5-91b7-a6444ae970da", word: "ਸਟੇਸ਼ਨ", romanization: "station", vi: "nhà ga", en: "station", pos: "noun" },
+      { cell_id: "3826d178-63cd-47e9-ac20-cb341d9ac5ce", word: "ਨੇੜੇ", romanization: "nere", vi: "gần", en: "near", pos: "location word" },
+      { cell_id: "d31e5cf6-5462-470b-b28c-e13ab3aaf164", word: "ਹਵਾਈ ਅੱਡਾ", romanization: "havai adda", vi: "sân bay", en: "airport", pos: "noun" },
     ],
     dialogue: [
-      { speaker: "A", pa: "ਬੱਸ ਕਿੱਥੇ ਹੈ?", romanization: "bas kithe hai?", vi: "Xe buýt ở đâu?", en: "Where is the bus?" },
-      { speaker: "B", pa: "ਸਟੇਸ਼ਨ ਨੇੜੇ ਹੈ।", romanization: "station nere hai.", vi: "Ở gần nhà ga.", en: "It is near the station." },
-      { speaker: "A", pa: "ਧੰਨਵਾਦ।", romanization: "dhanvad.", vi: "Cảm ơn.", en: "Thank you." },
+      { cell_id: "90893705-3cdc-43b0-8219-c957f384087d", speaker: "A", pa: "ਬੱਸ ਕਿੱਥੇ ਹੈ?", romanization: "bas kithe hai?", vi: "Xe buýt ở đâu?", en: "Where is the bus?" },
+      { cell_id: "e01b873f-89f6-4b1d-a43e-7cc9c4ca5b30", speaker: "B", pa: "ਸਟੇਸ਼ਨ ਨੇੜੇ ਹੈ।", romanization: "station nere hai.", vi: "Ở gần nhà ga.", en: "It is near the station." },
+      { cell_id: "fd9a1beb-767d-4904-9dab-a602d4f1c13f", speaker: "A", pa: "ਧੰਨਵਾਦ।", romanization: "dhanvad.", vi: "Cảm ơn.", en: "Thank you." },
     ],
     exercises: [
       {
@@ -747,16 +749,16 @@ export const lessons: PunjabiLesson[] = [
       },
     ],
     vocabulary: [
-      { word: "ਕੀ", romanization: "ki", vi: "gì", en: "what", pos: "question word" },
-      { word: "ਕੌਣ", romanization: "kaun", vi: "ai", en: "who", pos: "question word" },
-      { word: "ਕਿੱਥੇ", romanization: "kithe", vi: "ở đâu", en: "where", pos: "question word" },
-      { word: "ਕਦੋਂ", romanization: "kadon", vi: "khi nào", en: "when", pos: "question word" },
-      { word: "ਰਹਿੰਦੇ", romanization: "rahinde", vi: "sống/ở", en: "live", pos: "verb" },
+      { cell_id: "e6a4fd50-2705-429d-be84-015b414693ef", word: "ਕੀ", romanization: "ki", vi: "gì", en: "what", pos: "question word" },
+      { cell_id: "82fad985-ab2c-4e3b-8ac0-d269815f9617", word: "ਕੌਣ", romanization: "kaun", vi: "ai", en: "who", pos: "question word" },
+      { cell_id: "8c838bcc-ab26-40d4-8147-26e808663a82", word: "ਕਿੱਥੇ", romanization: "kithe", vi: "ở đâu", en: "where", pos: "question word" },
+      { cell_id: "13026182-a930-4bdd-b149-1b99d5cc1f2b", word: "ਕਦੋਂ", romanization: "kadon", vi: "khi nào", en: "when", pos: "question word" },
+      { cell_id: "7dfa104f-b1f2-4ab4-9a8b-656b6f563962", word: "ਰਹਿੰਦੇ", romanization: "rahinde", vi: "sống/ở", en: "live", pos: "verb" },
     ],
     dialogue: [
-      { speaker: "A", pa: "ਤੁਸੀਂ ਕਿੱਥੇ ਰਹਿੰਦੇ ਹੋ?", romanization: "tusi kithe rahinde ho?", vi: "Bạn sống ở đâu?", en: "Where do you live?" },
-      { speaker: "B", pa: "ਮੈਂ ਹੋ ਚੀ ਮਿੰਹ ਸ਼ਹਿਰ ਵਿੱਚ ਰਹਿੰਦਾ ਹਾਂ।", romanization: "main Ho Chi Minh shahir vich rahinda han.", vi: "Tôi sống ở Thành phố Hồ Chí Minh.", en: "I live in Ho Chi Minh City." },
-      { speaker: "A", pa: "ਉਹ ਕੌਣ ਹੈ?", romanization: "oh kaun hai?", vi: "Người đó là ai?", en: "Who is that?" },
+      { cell_id: "d63aa057-1184-4a44-bb4a-212ac6d178ff", speaker: "A", pa: "ਤੁਸੀਂ ਕਿੱਥੇ ਰਹਿੰਦੇ ਹੋ?", romanization: "tusi kithe rahinde ho?", vi: "Bạn sống ở đâu?", en: "Where do you live?" },
+      { cell_id: "8176656e-a925-4707-8264-6a25daef4759", speaker: "B", pa: "ਮੈਂ ਹੋ ਚੀ ਮਿੰਹ ਸ਼ਹਿਰ ਵਿੱਚ ਰਹਿੰਦਾ ਹਾਂ।", romanization: "main Ho Chi Minh shahir vich rahinda han.", vi: "Tôi sống ở Thành phố Hồ Chí Minh.", en: "I live in Ho Chi Minh City." },
+      { cell_id: "61a779ac-06d8-48c3-ac46-330e0909c58b", speaker: "A", pa: "ਉਹ ਕੌਣ ਹੈ?", romanization: "oh kaun hai?", vi: "Người đó là ai?", en: "Who is that?" },
     ],
     exercises: [
       {
@@ -826,16 +828,16 @@ export const lessons: PunjabiLesson[] = [
       },
     ],
     vocabulary: [
-      { word: "ਹਾਂ", romanization: "han", vi: "vâng/có", en: "yes", pos: "particle" },
-      { word: "ਨਹੀਂ", romanization: "nahin", vi: "không", en: "no/not", pos: "negative" },
-      { word: "ਤਿਆਰ", romanization: "tiar", vi: "sẵn sàng", en: "ready", pos: "adjective" },
-      { word: "ਠੀਕ", romanization: "thik", vi: "đúng/ổn", en: "okay/correct", pos: "adjective" },
-      { word: "ਕੀ", romanization: "ki", vi: "có phải không", en: "yes/no marker", pos: "particle" },
+      { cell_id: "65fef4d7-f0de-4d91-a42c-23a11e5e177c", word: "ਹਾਂ", romanization: "han", vi: "vâng/có", en: "yes", pos: "particle" },
+      { cell_id: "5101cba4-201f-445d-bea5-981ad9df4edd", word: "ਨਹੀਂ", romanization: "nahin", vi: "không", en: "no/not", pos: "negative" },
+      { cell_id: "992e0638-6300-4837-94af-7354dcb134f1", word: "ਤਿਆਰ", romanization: "tiar", vi: "sẵn sàng", en: "ready", pos: "adjective" },
+      { cell_id: "735c5f8d-b24a-48c4-8ee7-c39c4d38e89a", word: "ਠੀਕ", romanization: "thik", vi: "đúng/ổn", en: "okay/correct", pos: "adjective" },
+      { cell_id: "d6f2777a-8332-470b-add9-61e8878012d7", word: "ਕੀ", romanization: "ki", vi: "có phải không", en: "yes/no marker", pos: "particle" },
     ],
     dialogue: [
-      { speaker: "A", pa: "ਕੀ ਤੁਸੀਂ ਤਿਆਰ ਹੋ?", romanization: "ki tusi tiar ho?", vi: "Bạn sẵn sàng chưa?", en: "Are you ready?" },
-      { speaker: "B", pa: "ਹਾਂ, ਮੈਂ ਤਿਆਰ ਹਾਂ।", romanization: "han, main tiar han.", vi: "Vâng, tôi sẵn sàng.", en: "Yes, I am ready." },
-      { speaker: "A", pa: "ਠੀਕ ਹੈ।", romanization: "thik hai.", vi: "Được rồi.", en: "Okay." },
+      { cell_id: "b7df0985-959b-4506-a9f2-537fba3bac65", speaker: "A", pa: "ਕੀ ਤੁਸੀਂ ਤਿਆਰ ਹੋ?", romanization: "ki tusi tiar ho?", vi: "Bạn sẵn sàng chưa?", en: "Are you ready?" },
+      { cell_id: "dc636014-98bf-48cf-b238-48209c16e148", speaker: "B", pa: "ਹਾਂ, ਮੈਂ ਤਿਆਰ ਹਾਂ।", romanization: "han, main tiar han.", vi: "Vâng, tôi sẵn sàng.", en: "Yes, I am ready." },
+      { cell_id: "4459e7ac-7c2f-4400-8f31-73f36d18422e", speaker: "A", pa: "ਠੀਕ ਹੈ।", romanization: "thik hai.", vi: "Được rồi.", en: "Okay." },
     ],
     exercises: [
       {
@@ -901,17 +903,17 @@ export const lessons: PunjabiLesson[] = [
       },
     ],
     vocabulary: [
-      { word: "ਧੰਨਵਾਦ", romanization: "dhanvad", vi: "cảm ơn", en: "thank you", pos: "phrase" },
-      { word: "ਮਾਫ ਕਰਨਾ", romanization: "maf karna", vi: "xin lỗi/xin phép", en: "sorry/excuse me", pos: "phrase" },
-      { word: "ਕੋਈ", romanization: "koi", vi: "nào, bất kỳ", en: "any", pos: "determiner" },
-      { word: "ਗੱਲ", romanization: "gall", vi: "chuyện/vấn đề", en: "matter/talk", pos: "noun" },
-      { word: "ਬਹੁਤ", romanization: "bahut", vi: "rất/nhiều", en: "very/much", pos: "adverb" },
+      { cell_id: "3e7f885f-2122-4da7-892c-df125f1b9c2d", word: "ਧੰਨਵਾਦ", romanization: "dhanvad", vi: "cảm ơn", en: "thank you", pos: "phrase" },
+      { cell_id: "d3e42ca8-ff86-4844-8b7d-115e472df578", word: "ਮਾਫ ਕਰਨਾ", romanization: "maf karna", vi: "xin lỗi/xin phép", en: "sorry/excuse me", pos: "phrase" },
+      { cell_id: "d74ba1b2-8af9-4f26-8fd4-96b5e9778dd1", word: "ਕੋਈ", romanization: "koi", vi: "nào, bất kỳ", en: "any", pos: "determiner" },
+      { cell_id: "4a71df24-40b2-421c-afd3-4ee9b10300c0", word: "ਗੱਲ", romanization: "gall", vi: "chuyện/vấn đề", en: "matter/talk", pos: "noun" },
+      { cell_id: "06c52399-631f-457a-8e16-52bd1471322d", word: "ਬਹੁਤ", romanization: "bahut", vi: "rất/nhiều", en: "very/much", pos: "adverb" },
     ],
     dialogue: [
-      { speaker: "A", pa: "ਮਾਫ ਕਰਨਾ।", romanization: "maf karna.", vi: "Xin lỗi / cho tôi hỏi.", en: "Excuse me." },
-      { speaker: "B", pa: "ਹਾਂ ਜੀ?", romanization: "han ji?", vi: "Vâng ạ?", en: "Yes?" },
-      { speaker: "A", pa: "ਧੰਨਵਾਦ।", romanization: "dhanvad.", vi: "Cảm ơn.", en: "Thank you." },
-      { speaker: "B", pa: "ਕੋਈ ਗੱਲ ਨਹੀਂ।", romanization: "koi gall nahin.", vi: "Không sao.", en: "No problem." },
+      { cell_id: "e371cb59-61b3-4e7b-89f9-684a6100764d", speaker: "A", pa: "ਮਾਫ ਕਰਨਾ।", romanization: "maf karna.", vi: "Xin lỗi / cho tôi hỏi.", en: "Excuse me." },
+      { cell_id: "13ac02ea-ec73-4b25-8ce7-3ad28fd44c70", speaker: "B", pa: "ਹਾਂ ਜੀ?", romanization: "han ji?", vi: "Vâng ạ?", en: "Yes?" },
+      { cell_id: "e5b22d23-f0bd-496e-acbd-53742bddbd86", speaker: "A", pa: "ਧੰਨਵਾਦ।", romanization: "dhanvad.", vi: "Cảm ơn.", en: "Thank you." },
+      { cell_id: "f06b92bc-66c7-4fc3-8265-e3f318646bac", speaker: "B", pa: "ਕੋਈ ਗੱਲ ਨਹੀਂ।", romanization: "koi gall nahin.", vi: "Không sao.", en: "No problem." },
     ],
     exercises: [
       {
@@ -977,16 +979,16 @@ export const lessons: PunjabiLesson[] = [
       },
     ],
     vocabulary: [
-      { word: "ਜੀ", romanization: "ji", vi: "ạ/thưa (lịch sự)", en: "respect marker", pos: "particle" },
-      { word: "ਕਿਰਪਾ ਕਰਕੇ", romanization: "kirpa karke", vi: "làm ơn", en: "please", pos: "phrase" },
-      { word: "ਹੌਲੀ", romanization: "hauli", vi: "chậm", en: "slowly", pos: "adverb" },
-      { word: "ਬੋਲੋ", romanization: "bolo", vi: "hãy nói", en: "speak", pos: "verb" },
-      { word: "ਮਦਦ", romanization: "madad", vi: "sự giúp đỡ", en: "help", pos: "noun" },
+      { cell_id: "0e17b005-3bcd-430d-b216-0dd8a071d9c2", word: "ਜੀ", romanization: "ji", vi: "ạ/thưa (lịch sự)", en: "respect marker", pos: "particle" },
+      { cell_id: "d4de1777-de2e-4b53-9d50-141e5e1ba8d8", word: "ਕਿਰਪਾ ਕਰਕੇ", romanization: "kirpa karke", vi: "làm ơn", en: "please", pos: "phrase" },
+      { cell_id: "26caf0f2-8312-455d-b602-6b69132005b6", word: "ਹੌਲੀ", romanization: "hauli", vi: "chậm", en: "slowly", pos: "adverb" },
+      { cell_id: "a861e7b8-01f6-4659-99a4-be12dcd1e93d", word: "ਬੋਲੋ", romanization: "bolo", vi: "hãy nói", en: "speak", pos: "verb" },
+      { cell_id: "f7dfbb0b-3b66-4c78-8627-14faabd85636", word: "ਮਦਦ", romanization: "madad", vi: "sự giúp đỡ", en: "help", pos: "noun" },
     ],
     dialogue: [
-      { speaker: "A", pa: "ਕਿਰਪਾ ਕਰਕੇ ਹੌਲੀ ਬੋਲੋ।", romanization: "kirpa karke hauli bolo.", vi: "Làm ơn nói chậm thôi.", en: "Please speak slowly." },
-      { speaker: "B", pa: "ਹਾਂ ਜੀ।", romanization: "han ji.", vi: "Vâng ạ.", en: "Yes, respectfully." },
-      { speaker: "A", pa: "ਧੰਨਵਾਦ ਜੀ।", romanization: "dhanvad ji.", vi: "Cảm ơn ạ.", en: "Thank you." },
+      { cell_id: "61745ec1-bc1b-465b-baca-140b3a3fa71f", speaker: "A", pa: "ਕਿਰਪਾ ਕਰਕੇ ਹੌਲੀ ਬੋਲੋ।", romanization: "kirpa karke hauli bolo.", vi: "Làm ơn nói chậm thôi.", en: "Please speak slowly." },
+      { cell_id: "e22d6290-0f57-48b4-b150-3d3cceddb646", speaker: "B", pa: "ਹਾਂ ਜੀ।", romanization: "han ji.", vi: "Vâng ạ.", en: "Yes, respectfully." },
+      { cell_id: "16b9c349-8909-407e-82f8-e7c6aef8a056", speaker: "A", pa: "ਧੰਨਵਾਦ ਜੀ।", romanization: "dhanvad ji.", vi: "Cảm ơn ạ.", en: "Thank you." },
     ],
     exercises: [
       {

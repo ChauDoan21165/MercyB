@@ -45,6 +45,7 @@ export type LessonSentence = {
 };
 
 export type VocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -54,6 +55,7 @@ export type VocabEntry = {
 };
 
 export type DialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -151,6 +153,7 @@ export const lessons: IndonesianLesson[] = [
     ],
     vocabulary: [
       {
+        cell_id: "1398015e-1a60-4659-a0f8-65b2a526bc2c",
         word: "hipotesis penelitian",
         en: "research hypothesis",
         vi: "giả thuyết nghiên cứu",
@@ -159,6 +162,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "hee-po-TEH-sis pe-ne-LEE-tee-an — root 'teliti' + peN-…-an",
       },
       {
+        cell_id: "7c45b42e-1959-4e30-9a57-f39762e3ccc4",
         word: "berlandaskan",
         en: "to be grounded on / based upon",
         vi: "dựa trên (trang trọng)",
@@ -167,6 +171,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "ber-lan-DAS-kan — ber- prefix + landas + -kan; formal 'based on'",
       },
       {
+        cell_id: "23254d86-6d87-4652-bc3c-f6fb21736af0",
         word: "mengkaji",
         en: "to examine / study critically",
         vi: "khảo cứu, nghiên cứu sâu",
@@ -175,6 +180,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "meng-KA-jee — meN- + kaji; the k is retained after ng",
       },
       {
+        cell_id: "25960618-a52f-46c7-aacf-1ea982c00413",
         word: "tinjauan pustaka",
         en: "literature review",
         vi: "tổng quan tài liệu",
@@ -183,6 +189,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "tin-JOW-an poos-TA-ka — the obligatory opening section of a thesis",
       },
       {
+        cell_id: "e636e3a1-b8d5-47ed-a80a-1d27240f75c6",
         word: "kerangka teoretis",
         en: "theoretical framework",
         vi: "khung lý thuyết",
@@ -191,6 +198,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "ke-RANG-ka te-o-REH-tis — note spelling 'teoretis', not 'teoritis'",
       },
       {
+        cell_id: "ec450840-dce7-4aad-a355-43564b0c47ae",
         word: "data tersebut menunjukkan",
         en: "the said data indicates",
         vi: "dữ liệu nói trên cho thấy",
@@ -199,6 +207,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "DA-ta ter-se-BOOT me-noon-JOOK-kan — 'tersebut' = the aforementioned",
       },
       {
+        cell_id: "d288d8d9-30c1-4b77-8b21-d0dcc9a82473",
         word: "dengan demikian",
         en: "thus / accordingly",
         vi: "do đó, như vậy",
@@ -207,6 +216,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "DENG-an de-MEE-kee-an — academic connector, sentence-initial",
       },
       {
+        cell_id: "80ae2dc7-1368-4a00-9edf-376cb61053fb",
         word: "perlu digarisbawahi",
         en: "it must be underlined",
         vi: "cần được nhấn mạnh",
@@ -217,24 +227,28 @@ export const lessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "8652b1ad-f50f-49e7-8c06-c139b0d2418a",
         speaker: "Prof. Wibowo (pembimbing)",
         text: "Linh, bisakah Anda memaparkan hipotesis utama tesis Anda dalam beberapa menit?",
         vi: "Linh, em có thể trình bày giả thuyết chính của luận văn trong vài phút không?",
         en: "Linh, could you set out the main hypothesis of your thesis in a few minutes?",
       },
       {
+        cell_id: "8c1420b6-9931-4a57-8083-9477d7bfe5df",
         speaker: "Linh",
         text: "Dengan senang hati, Prof. Hipotesis saya menyatakan bahwa terdapat hubungan kausal antara pemaparan dini terhadap bahasa kedua dan fleksibilitas metalinguistik pada usia dewasa.",
         vi: "Rất sẵn lòng, thưa thầy. Giả thuyết của em cho rằng có một mối quan hệ nhân quả giữa việc tiếp xúc sớm với ngôn ngữ thứ hai và sự linh hoạt siêu ngôn ngữ ở tuổi trưởng thành.",
         en: "Gladly, Professor. My hypothesis states that there is a causal relationship between early exposure to a second language and metalinguistic flexibility in adulthood.",
       },
       {
+        cell_id: "59c93e27-f80f-4e72-aabe-bc797aa67c33",
         speaker: "Prof. Wibowo",
         text: "Korpus apa yang Anda gunakan untuk menopang intuisi tersebut?",
         vi: "Em dựa trên ngữ liệu nào để củng cố trực giác đó?",
         en: "What corpus are you drawing on to support that intuition?",
       },
       {
+        cell_id: "c6f9b1ff-a83f-4008-88f9-64fb6dcdc2d2",
         speaker: "Linh",
         text: "Korpus delapan puluh wawancara semiterstruktur, dilengkapi serangkaian uji kognitif.",
         vi: "Một ngữ liệu gồm tám mươi cuộc phỏng vấn bán cấu trúc, bổ sung bằng một loạt bài kiểm tra nhận thức.",
@@ -354,6 +368,7 @@ export const lessons: IndonesianLesson[] = [
     ],
     vocabulary: [
       {
+        cell_id: "3ef58a2d-d652-4117-b022-1ed129d7f97a",
         word: "memaparkan",
         en: "to lay out / present",
         vi: "trình bày, phơi bày (rõ ràng)",
@@ -362,6 +377,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "me-ma-PAR-kan — meN- + papar + -kan; more vivid than 'menyampaikan'",
       },
       {
+        cell_id: "fb1e88a2-b87f-48ed-943e-8bee7f967c58",
         word: "secara garis besar",
         en: "in broad strokes / in outline",
         vi: "một cách khái quát",
@@ -370,6 +386,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "se-CHA-ra GA-ris be-SAR — 'garis besar' = main lines",
       },
       {
+        cell_id: "74a74395-af33-4c5b-8bd8-33b90d57ebc8",
         word: "menggarisbawahi",
         en: "to underline / emphasize",
         vi: "nhấn mạnh",
@@ -378,6 +395,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "meng-ga-ris-ba-WA-hee — meN- + garis bawah + -i",
       },
       {
+        cell_id: "05e66388-55a9-4bfc-b524-c4430a05caa5",
         word: "tindak lanjut",
         en: "follow-up / next steps",
         vi: "bước tiếp theo, hành động tiếp",
@@ -386,6 +404,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "TIN-dak LAN-joot — the action item; 'menindaklanjuti' = to follow up",
       },
       {
+        cell_id: "e22edd76-a1f2-4dae-b1c5-b218ae072ebc",
         word: "pemangku kepentingan",
         en: "stakeholder(s)",
         vi: "các bên liên quan",
@@ -394,6 +413,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "pe-MANG-koo ke-pen-TING-an — calque of 'stakeholder'; formal register",
       },
       {
+        cell_id: "fe283db1-1c70-48c8-a96b-26a6f6770482",
         word: "menyimpulkan",
         en: "to conclude / summarize",
         vi: "kết luận, tổng kết",
@@ -402,6 +422,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "me-nyim-POOL-kan — meN- + simpul + -kan; s → ny",
       },
       {
+        cell_id: "88c45eb5-618b-4a7e-a723-d85b83e5cb0a",
         word: "izinkan saya",
         en: "allow me / permit me",
         vi: "cho phép tôi",
@@ -412,30 +433,35 @@ export const lessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "ebe1e78b-d010-4139-8355-e04209f6d960",
         speaker: "Linh (presenter)",
         text: "Selamat pagi, Bapak dan Ibu. Izinkan saya memaparkan tiga prioritas yang akan menentukan arah kita kuartal depan.",
         vi: "Chào buổi sáng quý vị. Cho phép tôi trình bày ba ưu tiên sẽ định hướng chúng ta trong quý tới.",
         en: "Good morning, everyone. Allow me to lay out the three priorities that will set our direction next quarter.",
       },
       {
+        cell_id: "7f275f9d-11aa-4118-9376-2ed74fbdf8a8",
         speaker: "Pak Surya (direktur)",
         text: "Silakan. Tapi tolong langsung ke angka — waktu kita terbatas.",
         vi: "Mời. Nhưng xin đi thẳng vào con số — thời gian của chúng ta có hạn.",
         en: "Please. But go straight to the figures — our time is limited.",
       },
       {
+        cell_id: "c92dde17-ec41-4394-b3fb-360e9c98af16",
         speaker: "Linh",
         text: "Tentu, Pak. Garis besarnya: pendapatan naik dua belas persen, namun marjin justru menipis. Inilah yang ingin saya garisbawahi hari ini.",
         vi: "Vâng thưa anh. Khái quát: doanh thu tăng mười hai phần trăm, nhưng biên lợi nhuận lại mỏng đi. Đây chính là điều tôi muốn nhấn mạnh hôm nay.",
         en: "Of course, sir. In broad strokes: revenue is up twelve percent, yet the margin is actually thinning. That is what I want to underline today.",
       },
       {
+        cell_id: "bdd9eafc-fb62-40a8-a48f-f02324d66680",
         speaker: "Bu Hartini (keuangan)",
         text: "Lalu apa usulan tindak lanjutnya?",
         vi: "Vậy đề xuất bước tiếp theo là gì?",
         en: "And what is the proposed follow-up?",
       },
       {
+        cell_id: "49db5794-32fc-49a9-a8b9-53bb39c1e6f4",
         speaker: "Linh",
         text: "Yang saya minta hari ini bukan persetujuan, melainkan satu keputusan: menunda ekspansi atau memangkas biaya. Saya sarankan yang kedua, dengan alasan berikut.",
         vi: "Điều tôi yêu cầu hôm nay không phải sự đồng thuận, mà là một quyết định: hoãn mở rộng hay cắt giảm chi phí. Tôi đề xuất phương án thứ hai, với những lý do sau.",
@@ -517,6 +543,7 @@ export const lessons: IndonesianLesson[] = [
     ],
     vocabulary: [
       {
+        cell_id: "b04dd173-a2a5-41ea-9686-5b4cba95b7d6",
         word: "senja",
         en: "dusk / twilight",
         vi: "hoàng hôn (chất thơ)",
@@ -525,6 +552,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "SEN-ja — poetic; 'sore' is the everyday word for late afternoon",
       },
       {
+        cell_id: "e88218cf-9c33-442c-8c89-e4118cb82110",
         word: "merindukan",
         en: "to long for / yearn for",
         vi: "khao khát, nhớ nhung",
@@ -533,6 +561,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "me-rin-DOO-kan — meN- + rindu + -kan; 'rindu' is itself deeply lyrical",
       },
       {
+        cell_id: "cc46fc05-5d3a-403b-9332-54ed3846d361",
         word: "kefanaan",
         en: "transience / impermanence",
         vi: "sự vô thường",
@@ -541,6 +570,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "ke-fa-NA-an — ke-…-an around 'fana' (mortal/fleeting); high literary",
       },
       {
+        cell_id: "6b40b731-2505-477f-9946-f323889f95d2",
         word: "bagai / laksana",
         en: "like / as (literary 'seperti')",
         vi: "tựa như, dường như (văn)",
@@ -549,6 +579,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "ba-GAI / lak-SA-na — literary equivalents of 'seperti'; mark the simile register",
       },
       {
+        cell_id: "f17f55f0-8206-49a7-a1ba-a4ab6a69e7f8",
         word: "menyiratkan",
         en: "to imply / hint at",
         vi: "ngụ ý, hàm ý",
@@ -557,6 +588,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "me-nyee-RAT-kan — meN- + sirat + -kan; 'tersirat' = implied/between-the-lines",
       },
       {
+        cell_id: "c3859812-488c-484f-853e-37b16f2440ba",
         word: "kesunyian",
         en: "solitude / stillness",
         vi: "sự cô tịch, vắng lặng",
@@ -669,6 +701,7 @@ export const lessons: IndonesianLesson[] = [
     ],
     vocabulary: [
       {
+        cell_id: "29168479-4e5c-4a92-b133-5bbe3dbd5112",
         word: "bahasa daerah",
         en: "regional / local language",
         vi: "tiếng địa phương, ngôn ngữ vùng",
@@ -677,6 +710,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "ba-HA-sa da-E-rah — e.g. Javanese, Sundanese, Balinese, Batak",
       },
       {
+        cell_id: "a672ae34-3c5a-48e0-bacc-2bdd38bf98a8",
         word: "logat",
         en: "accent / regional intonation",
         vi: "giọng vùng, ngữ điệu",
@@ -685,6 +719,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "LO-gat — 'logat Jawa', 'logat Batak' — the audible regional stamp",
       },
       {
+        cell_id: "51e2d772-6734-4c0c-b485-4ddef14269c7",
         word: "halus / kasar",
         en: "refined / coarse (speech level)",
         vi: "lịch sự nhã / thô (cấp độ lời nói)",
@@ -693,6 +728,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "ha-LOOS / ka-SAR — central to Javanese speech levels (krama vs ngoko)",
       },
       {
+        cell_id: "6f958820-da06-4bbe-b28f-e9e104270f7b",
         word: "sungkan",
         en: "reluctant out of deference / loath to impose",
         vi: "ngại, e dè vì nể",
@@ -701,6 +737,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "SUNG-kan — a Javanese-rooted feeling now standard Indonesian; deferential reluctance",
       },
       {
+        cell_id: "8645740a-2e95-4204-a2bf-4676748c185c",
         word: "guyub",
         en: "communal harmony / togetherness",
         vi: "đoàn kết cộng đồng, gắn bó",
@@ -709,6 +746,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "GOO-yoob — Javanese loanword for warm communal cohesion; cf. 'gotong royong'",
       },
       {
+        cell_id: "ed5880c1-5465-411d-8771-a9a614c197f7",
         word: "teteh / aa / mas / mbak",
         en: "respectful address terms (Sundanese / Javanese)",
         vi: "từ xưng hô kính (Sunda / Java): chị/anh",
@@ -719,30 +757,35 @@ export const lessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "79f44652-7855-46a7-a304-1d5d1d2dace9",
         speaker: "Pak Bambang (Jawa)",
         text: "Monggo, Mbak Linh, silakan duduk dulu. Maaf, rumah saya sederhana.",
         vi: "Mời, chị Linh, ngồi đã. Xin lỗi, nhà tôi giản dị thôi.",
         en: "Please, Mbak Linh, do sit down. Forgive me, my home is humble.",
       },
       {
+        cell_id: "27f14a7a-d499-4df4-b050-6986752182f5",
         speaker: "Linh",
         text: "Terima kasih, Pak. Rumahnya justru terasa hangat. Saya jadi sungkan merepotkan.",
         vi: "Cảm ơn anh. Nhà mình thật ấm cúng. Tôi lại thấy ngại làm phiền.",
         en: "Thank you, sir. Your home feels warm, actually. Now I feel reluctant to be a bother.",
       },
       {
+        cell_id: "a9ab7694-609e-4045-aa18-7da96cc23a1e",
         speaker: "Bu Euis (Sunda)",
         text: "Ih, teu kenging sungkan atuh, Teh. Di sini mah kita guyub, anggap rumah sendiri.",
         vi: "Ấy, đừng ngại mà chị. Ở đây mình gắn bó, cứ coi như nhà mình.",
         en: "Oh, no need to feel shy, sis. Here we're close-knit — treat it as your own home.",
       },
       {
+        cell_id: "ca91cce1-46cc-4bec-8a3c-a55a9b5dcc03",
         speaker: "Linh",
         text: "Baik, Teh. Saya perhatikan 'atuh' tadi — itu khas Sunda, ya?",
         vi: "Vâng chị. Tôi để ý chữ « atuh » lúc nãy — đó là đặc trưng Sunda phải không?",
         en: "All right, sis. I noticed the 'atuh' just now — that's distinctly Sundanese, right?",
       },
       {
+        cell_id: "6fd50dcf-f623-4b87-83a6-15d29d81a79e",
         speaker: "Bu Euis",
         text: "Pinter, Teh! 'Atuh' itu nempel di mana-mana kalau orang Sunda ngomong, walau pakai bahasa Indonesia.",
         vi: "Giỏi đó chị! « Atuh » dính khắp nơi khi người Sunda nói, dù dùng tiếng Indonesia.",
@@ -824,6 +867,7 @@ export const lessons: IndonesianLesson[] = [
     ],
     vocabulary: [
       {
+        cell_id: "fbe2c075-1e2f-42a7-b807-8ed1a928f65d",
         word: "memperdalam",
         en: "to deepen (make more X)",
         vi: "làm sâu sắc thêm",
@@ -832,6 +876,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "mem-per-DA-lam — memper- + adjective 'dalam'; the causative-intensive prefix",
       },
       {
+        cell_id: "fe859c59-61b2-4176-bf61-dc7574bf3642",
         word: "memperbaiki",
         en: "to repair / improve",
         vi: "sửa chữa, cải thiện",
@@ -840,6 +885,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "mem-per-ba-EE-kee — memper- + baik + -i; note the irregular high-frequency form",
       },
       {
+        cell_id: "54b5576b-e90c-449b-8fd1-1cdb00285b67",
         word: "mendatangi",
         en: "to come to / approach (a place/person)",
         vi: "đến chỗ ai, tới (đối tượng)",
@@ -848,6 +894,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "men-da-TANG-ee — meN- + datang + -i; contrast 'datang ke' (intransitive)",
       },
       {
+        cell_id: "3b0f1c1f-f457-4df6-8b44-071315504b66",
         word: "menanami",
         en: "to plant (a field) with",
         vi: "trồng (lên một mảnh đất)",
@@ -856,6 +903,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "me-na-NA-mee — meN- + tanam + -i; the -i marks the location being acted on",
       },
       {
+        cell_id: "6eed368c-f745-47a0-ad93-15ba5b0fd10c",
         word: "kebersamaan",
         en: "togetherness / solidarity",
         vi: "sự gắn kết, ở bên nhau",
@@ -864,6 +912,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "ke-ber-sa-MA-an — ke-…-an around 'bersama'; abstract noun",
       },
       {
+        cell_id: "c877fd67-5a66-4c5c-8bc7-6674aeef6f2e",
         word: "ketidakpastian",
         en: "uncertainty",
         vi: "sự bất định, không chắc chắn",
@@ -872,6 +921,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "ke-tee-dak-pas-TEE-an — ke-…-an nominalizing the negated 'tidak pasti'",
       },
       {
+        cell_id: "b8f84ccb-1806-419a-ae97-d65e98c07e5f",
         word: "keberlanjutan",
         en: "sustainability / continuity",
         vi: "tính bền vững, sự tiếp nối",
@@ -993,6 +1043,7 @@ export const lessons: IndonesianLesson[] = [
     ],
     vocabulary: [
       {
+        cell_id: "f6ffa16e-ac6f-410f-82c8-117c416526ed",
         word: "esai argumentatif",
         en: "argumentative essay",
         vi: "tiểu luận nghị luận",
@@ -1001,6 +1052,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "e-SAI ar-goo-men-ta-TIF — note spelling 'esai', not 'essay'",
       },
       {
+        cell_id: "99bd7ba7-a5d0-4aa6-97ac-8e62b3d29f28",
         word: "tesis / gagasan utama",
         en: "thesis / central idea",
         vi: "luận điểm / ý chính",
@@ -1009,6 +1061,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "TEH-sis / ga-GA-san oo-TA-ma — the controlling claim of the essay",
       },
       {
+        cell_id: "e3fc70ce-dee8-4d59-98b2-c2956ebcbf3e",
         word: "argumen tandingan",
         en: "counterargument",
         vi: "lập luận phản biện",
@@ -1017,6 +1070,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "ar-GOO-men tan-DING-an — 'tanding' = to oppose/match",
       },
       {
+        cell_id: "0f2b0ac1-565f-4c1a-80a8-71b9e6510fa0",
         word: "di satu sisi … di sisi lain",
         en: "on one hand … on the other",
         vi: "một mặt … mặt khác",
@@ -1025,6 +1079,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "dee SA-too SEE-see … dee SEE-see LA-in — balanced-view connector",
       },
       {
+        cell_id: "e98b5352-de84-4f0e-8119-cc0727b9f168",
         word: "oleh karena itu",
         en: "therefore / for that reason",
         vi: "vì vậy, do đó",
@@ -1033,6 +1088,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "O-leh ka-RE-na EE-too — formal conclusion connector",
       },
       {
+        cell_id: "7d85bba6-53df-43d3-a758-3b8aa88dbceb",
         word: "menyoroti",
         en: "to highlight / spotlight",
         vi: "làm nổi bật, soi rọi",
@@ -1041,6 +1097,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "me-nyo-RO-tee — meN- + sorot + -i; 'sorot' = beam of light",
       },
       {
+        cell_id: "5904c6eb-502d-40a0-8e0f-279fc4f117b5",
         word: "menyimpulkan bahwa",
         en: "to conclude that",
         vi: "kết luận rằng",

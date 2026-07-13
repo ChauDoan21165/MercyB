@@ -21,6 +21,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   /** Indonesian word/phrase. */
   word: string;
   /** English meaning. */
@@ -36,6 +37,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   /** Indonesian line. */
   text: string;
@@ -225,43 +227,48 @@ export const lessons: IndonesianLesson[] = [
     tip_advice_en:
       "Tip for Vietnamese speakers: a small-claim frame should be: `Saya mau minta refund karena...`, `Saya lampirkan bukti...`, `Batas waktunya sampai kapan?`, `Saya berharap ada solusi yang adil.` Use `mohon`, `apakah`, and `terima kasih` to soften the tone while keeping the request clear.",
     vocabulary: [
-      { word: "minta refund", en: "request a refund", vi: "yêu cầu hoàn tiền", pos: "verb phrase", pronunciation_vi: "MIN-ta RI-fan", pronunciation_en: "MIN-ta REE-fund" },
-      { word: "barang tidak sesuai", en: "item does not match", vi: "hàng không phù hợp/không đúng", pos: "phrase", pronunciation_vi: "BA-rang TI-dak se-SU-ai", pronunciation_en: "BA-rang TEE-dak se-SOO-ai" },
-      { word: "bukti pembayaran", en: "proof of payment", vi: "bằng chứng thanh toán", pos: "noun phrase", pronunciation_vi: "BUK-ti pem-ba-YAR-an", pronunciation_en: "BOOK-tee pem-ba-YAR-an" },
-      { word: "chat penjual", en: "seller chat", vi: "chat với người bán", pos: "noun phrase", pronunciation_vi: "chat pen-JU-al", pronunciation_en: "chat pen-JOO-al" },
-      { word: "batas waktu", en: "deadline / time limit", vi: "hạn chót/giới hạn thời gian", pos: "noun phrase", pronunciation_vi: "BA-tas WAK-tu", pronunciation_en: "BA-tas WAK-too" },
-      { word: "komplain sopan", en: "polite complaint", vi: "khiếu nại lịch sự", pos: "noun phrase", pronunciation_vi: "kom-PLAIN SO-pan", pronunciation_en: "kom-PLAIN SO-pan" },
-      { word: "solusi", en: "solution", vi: "giải pháp", pos: "noun", pronunciation_vi: "so-LU-si", pronunciation_en: "so-LOO-see" },
-      { word: "penggantian barang", en: "item replacement", vi: "đổi/thay hàng", pos: "noun phrase", pronunciation_vi: "peng-GAN-ti-an BA-rang", pronunciation_en: "peng-GAN-tee-an BA-rang" },
-      { word: "kepastian", en: "clear confirmation", vi: "sự xác nhận chắc chắn", pos: "noun", pronunciation_vi: "ke-PAS-ti-an", pronunciation_en: "ke-PAS-tee-an" },
-      { word: "pihak penjual", en: "seller side", vi: "phía người bán", pos: "noun phrase", pronunciation_vi: "PI-hak pen-JU-al", pronunciation_en: "PEE-hak pen-JOO-al" },
+      { cell_id: "8c8a68bb-5d0f-4072-8bfd-94a1e6e47af0", word: "minta refund", en: "request a refund", vi: "yêu cầu hoàn tiền", pos: "verb phrase", pronunciation_vi: "MIN-ta RI-fan", pronunciation_en: "MIN-ta REE-fund" },
+      { cell_id: "83fb9de5-41b0-48f3-81a0-ce5983475b90", word: "barang tidak sesuai", en: "item does not match", vi: "hàng không phù hợp/không đúng", pos: "phrase", pronunciation_vi: "BA-rang TI-dak se-SU-ai", pronunciation_en: "BA-rang TEE-dak se-SOO-ai" },
+      { cell_id: "6feb8e16-3d75-4d5c-9cd9-0cbe94984cd8", word: "bukti pembayaran", en: "proof of payment", vi: "bằng chứng thanh toán", pos: "noun phrase", pronunciation_vi: "BUK-ti pem-ba-YAR-an", pronunciation_en: "BOOK-tee pem-ba-YAR-an" },
+      { cell_id: "7a05981a-42d0-4c1c-af3b-86541e975114", word: "chat penjual", en: "seller chat", vi: "chat với người bán", pos: "noun phrase", pronunciation_vi: "chat pen-JU-al", pronunciation_en: "chat pen-JOO-al" },
+      { cell_id: "b0e36bb8-5333-49b3-86c9-e45def132924", word: "batas waktu", en: "deadline / time limit", vi: "hạn chót/giới hạn thời gian", pos: "noun phrase", pronunciation_vi: "BA-tas WAK-tu", pronunciation_en: "BA-tas WAK-too" },
+      { cell_id: "05dfc9e9-02cc-4984-b0b7-816ede80f2cf", word: "komplain sopan", en: "polite complaint", vi: "khiếu nại lịch sự", pos: "noun phrase", pronunciation_vi: "kom-PLAIN SO-pan", pronunciation_en: "kom-PLAIN SO-pan" },
+      { cell_id: "309e05f9-dadc-487a-98f3-743b473fb92f", word: "solusi", en: "solution", vi: "giải pháp", pos: "noun", pronunciation_vi: "so-LU-si", pronunciation_en: "so-LOO-see" },
+      { cell_id: "747971f1-b7a5-482b-96c2-a6861c65ad38", word: "penggantian barang", en: "item replacement", vi: "đổi/thay hàng", pos: "noun phrase", pronunciation_vi: "peng-GAN-ti-an BA-rang", pronunciation_en: "peng-GAN-tee-an BA-rang" },
+      { cell_id: "86a04e3d-8b6e-4f0d-8e2c-c81ff0e1cd11", word: "kepastian", en: "clear confirmation", vi: "sự xác nhận chắc chắn", pos: "noun", pronunciation_vi: "ke-PAS-ti-an", pronunciation_en: "ke-PAS-tee-an" },
+      { cell_id: "cb659059-ba42-48d1-9f8f-5903496d5c6b", word: "pihak penjual", en: "seller side", vi: "phía người bán", pos: "noun phrase", pronunciation_vi: "PI-hak pen-JU-al", pronunciation_en: "PEE-hak pen-JOO-al" },
     ],
     dialogue: [
       {
+        cell_id: "fb3e52cf-51a8-4fd8-8b59-2ab547f971eb",
         speaker: "Pembeli",
         text: "Halo, Kak. Saya mau minta refund karena barang tidak sesuai pesanan.",
         vi: "Chào anh/chị. Tôi muốn yêu cầu hoàn tiền vì hàng không đúng đơn.",
         en: "Hello. I want to request a refund because the item does not match the order.",
       },
       {
+        cell_id: "e52bfed6-9adf-41f7-8fb7-a74da5d476fb",
         speaker: "Penjual",
         text: "Boleh kirim bukti pembayaran dan foto barangnya?",
         vi: "Bạn có thể gửi bằng chứng thanh toán và ảnh hàng không?",
         en: "Can you send proof of payment and a photo of the item?",
       },
       {
+        cell_id: "0fc676c3-0a8f-4b24-a96e-a7bf66cd8e7f",
         speaker: "Pembeli",
         text: "Sudah saya lampirkan di chat ini. Mohon dicek kembali.",
         vi: "Tôi đã đính kèm trong chat này. Mong anh/chị kiểm tra lại.",
         en: "I have attached it in this chat. Please check it again.",
       },
       {
+        cell_id: "43829018-2d46-4eee-aa20-1772293e6802",
         speaker: "Penjual",
         text: "Kami cek dulu, ya. Batas waktu pengajuan refund masih sampai besok.",
         vi: "Chúng tôi kiểm tra trước nhé. Hạn nộp yêu cầu refund vẫn đến ngày mai.",
         en: "We will check first. The refund submission deadline is still until tomorrow.",
       },
       {
+        cell_id: "5d5fe6ca-0753-4ddd-8b2b-b2a53aaa9069",
         speaker: "Pembeli",
         text: "Baik. Saya tunggu solusi yang adil dari pihak penjual.",
         vi: "Được. Tôi chờ giải pháp công bằng từ phía người bán.",

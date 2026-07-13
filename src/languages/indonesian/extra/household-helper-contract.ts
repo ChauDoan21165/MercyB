@@ -24,6 +24,7 @@ type LessonSentence = {
 };
 
 type VocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -35,6 +36,7 @@ type VocabEntry = {
 };
 
 type DialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -164,6 +166,7 @@ export const householdHelperContractLessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: use `ART` or `asisten rumah tangga` for a respectful tone. For agreements, use clear frames: `jadwal kerjanya ...`, `gajinya dibayar ...`, `tugas utamanya ...`, `hari libur ...`.",
     vocabulary: [
       {
+        cell_id: "b0871e5f-9240-455d-a85b-cbf85e7d0e05",
         word: "ART (asisten rumah tangga)",
         en: "household helper",
         vi: "người giúp việc gia đình",
@@ -172,6 +175,7 @@ export const householdHelperContractLessons: IndonesianLesson[] = [
         pronunciation_en: "a-er-te / a-SIS-ten ROO-mah TANG-ga",
       },
       {
+        cell_id: "5d26b188-c183-4dbb-aa81-cd5650a8e3c6",
         word: "pembantu rumah tangga",
         en: "domestic helper",
         vi: "người giúp việc nhà",
@@ -180,6 +184,7 @@ export const householdHelperContractLessons: IndonesianLesson[] = [
         pronunciation_en: "pem-BAN-too ROO-mah TANG-ga",
       },
       {
+        cell_id: "1dca6009-fcf4-4465-81f3-bf4750ec7fff",
         word: "jadwal kerja",
         en: "work schedule",
         vi: "lịch làm việc",
@@ -188,6 +193,7 @@ export const householdHelperContractLessons: IndonesianLesson[] = [
         pronunciation_en: "JAD-wal KER-ja",
       },
       {
+        cell_id: "6e394cdb-2289-4eb9-a118-dd653ab5cdc6",
         word: "gaji",
         en: "salary / wage",
         vi: "lương",
@@ -196,6 +202,7 @@ export const householdHelperContractLessons: IndonesianLesson[] = [
         pronunciation_en: "GA-jee",
       },
       {
+        cell_id: "5e9d2c24-43ff-47c2-9008-bfbc2a164c61",
         word: "hari libur",
         en: "day off",
         vi: "ngày nghỉ",
@@ -204,6 +211,7 @@ export const householdHelperContractLessons: IndonesianLesson[] = [
         pronunciation_en: "HA-ree LEE-boor",
       },
       {
+        cell_id: "a048c6b4-0641-4492-9be4-c3282b2d0736",
         word: "tugas rumah",
         en: "household duties",
         vi: "việc nhà / nhiệm vụ trong nhà",
@@ -214,24 +222,28 @@ export const householdHelperContractLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "0cb5c6ae-321c-47fd-b579-3cf7c6c572a0",
         speaker: "Majikan",
         text: "Kami mencari ART untuk membantu pekerjaan rumah.",
         vi: "Chúng tôi đang tìm người giúp việc gia đình để hỗ trợ việc nhà.",
         en: "We are looking for a household helper to help with housework.",
       },
       {
+        cell_id: "5373f7d7-4994-485f-9073-a89eb3a35d03",
         speaker: "Calon ART",
         text: "Jadwal kerjanya dari hari apa sampai hari apa?",
         vi: "Lịch làm việc từ ngày nào đến ngày nào?",
         en: "What days is the work schedule from and to?",
       },
       {
+        cell_id: "6dc1f1d6-8278-465f-a6ed-d392457effcb",
         speaker: "Majikan",
         text: "Dari Senin sampai Sabtu, dan Minggu libur.",
         vi: "Từ thứ Hai đến thứ Bảy, và Chủ nhật nghỉ.",
         en: "From Monday to Saturday, and Sunday is off.",
       },
       {
+        cell_id: "151274e0-53b7-4e41-a0f3-c20e9b4926e4",
         speaker: "Calon ART",
         text: "Baik. Tugas utamanya apa saja?",
         vi: "Vâng. Nhiệm vụ chính gồm những gì?",
@@ -386,6 +398,7 @@ export const householdHelperContractLessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: `kami` = we excluding the listener; `kita` = we including the listener. For private family rules use `keluarga kami`; for solving problems together use `kita bicarakan`.",
     vocabulary: [
       {
+        cell_id: "9600e0fb-c6c4-413c-a9c6-1ee9df493bae",
         word: "izin pulang",
         en: "permission to go home",
         vi: "xin phép về nhà",
@@ -394,6 +407,7 @@ export const householdHelperContractLessons: IndonesianLesson[] = [
         pronunciation_en: "EE-zin POO-lang",
       },
       {
+        cell_id: "c6532762-b487-49f4-8261-abb054557a37",
         word: "kesepakatan",
         en: "agreement",
         vi: "thỏa thuận",
@@ -402,6 +416,7 @@ export const householdHelperContractLessons: IndonesianLesson[] = [
         pronunciation_en: "keh-seh-PA-ka-tan",
       },
       {
+        cell_id: "9586ea9f-15b2-412c-9eb8-1e515689ae50",
         word: "uang transport",
         en: "transport allowance",
         vi: "tiền đi lại",
@@ -410,6 +425,7 @@ export const householdHelperContractLessons: IndonesianLesson[] = [
         pronunciation_en: "OO-ang TRANS-port",
       },
       {
+        cell_id: "30301487-298e-403a-b675-f1c45b1f038a",
         word: "lembur",
         en: "overtime",
         vi: "tăng ca / làm thêm giờ",
@@ -418,6 +434,7 @@ export const householdHelperContractLessons: IndonesianLesson[] = [
         pronunciation_en: "LEM-boor",
       },
       {
+        cell_id: "b8731c44-e642-4aac-99e4-1e7af98bba55",
         word: "privasi",
         en: "privacy",
         vi: "sự riêng tư",
@@ -426,6 +443,7 @@ export const householdHelperContractLessons: IndonesianLesson[] = [
         pronunciation_en: "pree-VA-see",
       },
       {
+        cell_id: "7340c375-8bec-41e9-a07a-af9507179329",
         word: "baik-baik",
         en: "properly / peacefully",
         vi: "tử tế / êm đẹp",
@@ -436,24 +454,28 @@ export const householdHelperContractLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "e3195cdb-2b06-4820-80ef-feb9b675709c",
         speaker: "Calon ART",
         text: "Apakah gaji sudah termasuk makan siang dan uang transport?",
         vi: "Lương đã bao gồm bữa trưa và tiền đi lại chưa?",
         en: "Does the salary include lunch and transport allowance?",
       },
       {
+        cell_id: "2e4feac7-e5aa-4eb8-9a0d-10f5275fde7e",
         speaker: "Majikan",
         text: "Makan siang sudah termasuk, tapi uang transport dibayar terpisah.",
         vi: "Bữa trưa đã bao gồm, nhưng tiền đi lại trả riêng.",
         en: "Lunch is included, but transport allowance is paid separately.",
       },
       {
+        cell_id: "6171d012-d23e-4eee-b704-e2e908331a0a",
         speaker: "Calon ART",
         text: "Kalau saya perlu izin pulang, bagaimana aturannya?",
         vi: "Nếu tôi cần xin phép về nhà, quy định thế nào?",
         en: "If I need permission to go home, what is the rule?",
       },
       {
+        cell_id: "4d404d28-572d-47ba-850a-d7f0bdeefa5d",
         speaker: "Majikan",
         text: "Tolong beri tahu sehari sebelumnya, supaya jadwalnya jelas.",
         vi: "Vui lòng báo trước một ngày để lịch rõ ràng.",

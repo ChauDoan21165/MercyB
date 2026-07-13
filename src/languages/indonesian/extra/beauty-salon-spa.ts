@@ -13,6 +13,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -22,6 +23,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -208,6 +210,7 @@ export const lessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: `potong rambut` means haircut, `rapikan` means tidy/trim, and `perawatan kulit` means skincare/treatment. For staff requests, safe frames are `Tolong...` and `jangan terlalu...`: `Tolong rapikan`, `jangan terlalu pendek`, `jangan terlalu keras`. Remember `c` sounds like 'ch' in `cocok`.",
     vocabulary: [
       {
+        cell_id: "66831816-0738-40c2-9c82-04cf9fb49e77",
         word: "salon",
         en: "beauty salon",
         vi: "tiệm làm tóc / salon",
@@ -216,6 +219,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "SA-lon",
       },
       {
+        cell_id: "47f58c66-d787-4ecb-ad79-a78a06457cbb",
         word: "potong rambut",
         en: "haircut / cut hair",
         vi: "cắt tóc",
@@ -224,6 +228,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "PO-tong RAM-boot",
       },
       {
+        cell_id: "610c7bb0-8900-4cbf-8374-f7bd4fdd6077",
         word: "creambath",
         en: "cream hair treatment",
         vi: "ủ tóc/massage da đầu kiểu Indonesia",
@@ -232,6 +237,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "krim-baht",
       },
       {
+        cell_id: "9bc6c937-3ca7-4834-ab94-c414f90278b9",
         word: "facial",
         en: "facial treatment",
         vi: "chăm sóc da mặt",
@@ -240,6 +246,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "FEH-see-al",
       },
       {
+        cell_id: "937dbbf5-c2c5-4c96-b1b8-4e7a295b64ac",
         word: "spa",
         en: "spa",
         vi: "spa",
@@ -248,6 +255,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "spa",
       },
       {
+        cell_id: "77d92f44-92bf-4122-ae1a-29b31f313525",
         word: "booking",
         en: "booking / appointment",
         vi: "đặt lịch",
@@ -256,6 +264,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "BOO-king",
       },
       {
+        cell_id: "7a85d36d-2be7-473b-9b92-2ac06927466d",
         word: "harga paket",
         en: "package price",
         vi: "giá gói",
@@ -264,6 +273,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "HAR-ga PA-ket",
       },
       {
+        cell_id: "0bcaf909-3183-429c-a211-fa33169026a7",
         word: "perawatan kulit",
         en: "skincare treatment",
         vi: "chăm sóc da",
@@ -272,6 +282,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "pe-ra-WA-tan KOO-lit",
       },
       {
+        cell_id: "d39ba8c0-05f2-42ba-991b-8ed0a012ba24",
         word: "kulit sensitif",
         en: "sensitive skin",
         vi: "da nhạy cảm",
@@ -280,6 +291,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "KOO-lit sen-si-TIF",
       },
       {
+        cell_id: "2f73b6cd-59c8-4f5d-bc8c-a2820c6be04e",
         word: "rapikan",
         en: "tidy up / trim",
         vi: "tỉa gọn / làm gọn",
@@ -290,24 +302,28 @@ export const lessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "c97a0ac6-e37f-498b-b9ae-4aac5b84d463",
         speaker: "Pelanggan",
         text: "Mbak, saya mau booking untuk potong rambut dan creambath besok pagi.",
         vi: "Chị ơi, tôi muốn đặt lịch cắt tóc và creambath sáng mai.",
         en: "Miss, I want to book a haircut and creambath for tomorrow morning.",
       },
       {
+        cell_id: "f0d671ab-6732-4c20-9dbb-6c8a825d1914",
         speaker: "Staf salon",
         text: "Bisa. Mau tambah facial atau spa juga?",
         vi: "Được ạ. Anh/chị muốn thêm facial hoặc spa không?",
         en: "Yes. Do you also want to add a facial or spa?",
       },
       {
+        cell_id: "3aee8d8e-1d2c-441e-a4a5-d5a93abd9651",
         speaker: "Pelanggan",
         text: "Facial saja. Saya punya kulit sensitif, jadi jangan pakai produk yang keras.",
         vi: "Chỉ facial thôi. Tôi có da nhạy cảm, nên đừng dùng sản phẩm quá mạnh.",
         en: "Just a facial. I have sensitive skin, so please do not use harsh products.",
       },
       {
+        cell_id: "ba456b91-7365-4701-8836-95adade50a86",
         speaker: "Staf salon",
         text: "Baik. Harga paketnya dua ratus ribu dan selesai sekitar dua jam.",
         vi: "Vâng. Giá gói là hai trăm nghìn và xong khoảng hai tiếng.",

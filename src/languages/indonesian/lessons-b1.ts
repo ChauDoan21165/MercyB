@@ -27,6 +27,7 @@ export type LessonSentence = {
 };
 
 export type VocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -37,6 +38,7 @@ export type VocabEntry = {
 };
 
 export type DialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -149,6 +151,7 @@ export const lessons: IndonesianLesson[] = [
     "tip_advice_en": "Notice how Indonesian builds job/agent nouns: add the 'pe-' prefix to a verb. 'kerja' (to work) → 'pekerja' (worker); 'ajar' (to teach) → 'pengajar' (teacher). Add the '-an' suffix for the abstract noun: 'kerja' → 'pekerjaan' (job/occupation). The affix system is highly regular — learn the pattern once and unlock dozens of words.",
     "vocabulary": [
       {
+        cell_id: "99abb4aa-2962-404f-bbfb-fe9ae1ab1b3d",
         "word": "pekerjaan",
         "en": "job / occupation",
         "vi": "công việc",
@@ -157,6 +160,7 @@ export const lessons: IndonesianLesson[] = [
         "pronunciation_en": "puh-ker-JAH-an — pe- + kerja + -an; the abstract noun 'work/occupation'"
       },
       {
+        cell_id: "ed8ddcdc-0360-4941-b55d-ca239c1f47a5",
         "word": "kantor",
         "en": "office",
         "vi": "văn phòng",
@@ -165,6 +169,7 @@ export const lessons: IndonesianLesson[] = [
         "pronunciation_en": "KAHN-tor — 'kantor pusat' = head office, 'kantor cabang' = branch office"
       },
       {
+        cell_id: "a4e925ea-f470-4098-9e95-d60d0d193568",
         "word": "rapat",
         "en": "meeting",
         "vi": "cuộc họp",
@@ -173,6 +178,7 @@ export const lessons: IndonesianLesson[] = [
         "pronunciation_en": "RAH-paht — final 't' unreleased; 'rapat' is a formal meeting, 'ketemu' is to just meet up"
       },
       {
+        cell_id: "3a18eaec-8e25-44a2-82d8-5065c7021a8c",
         "word": "gaji",
         "en": "salary / wage",
         "vi": "lương",
@@ -181,6 +187,7 @@ export const lessons: IndonesianLesson[] = [
         "pronunciation_en": "GAH-jee — 'naik gaji' = a raise; 'gajian' = payday"
       },
       {
+        cell_id: "9289fdaa-c257-4e11-8686-c4306995b54c",
         "word": "atasan",
         "en": "boss / superior",
         "vi": "cấp trên / sếp",
@@ -189,6 +196,7 @@ export const lessons: IndonesianLesson[] = [
         "pronunciation_en": "ah-TAH-san — from 'atas' (above) + -an; opposite is 'bawahan' (subordinate)"
       },
       {
+        cell_id: "f33dcdee-4383-46cf-8702-9accd13a0913",
         "word": "rekan kerja",
         "en": "colleague",
         "vi": "đồng nghiệp",
@@ -197,6 +205,7 @@ export const lessons: IndonesianLesson[] = [
         "pronunciation_en": "REH-kahn KER-jah — also 'teman kantor' in casual speech"
       },
       {
+        cell_id: "cc0ba76d-0a17-4d1a-a712-70922eadd9df",
         "word": "melamar",
         "en": "to apply (for a job)",
         "vi": "nộp đơn / xin việc",
@@ -205,6 +214,7 @@ export const lessons: IndonesianLesson[] = [
         "pronunciation_en": "muh-LAH-mar — meN- prefix + 'lamar'; 'melamar pekerjaan' = to apply for a job (also 'melamar' = to propose marriage!)"
       },
       {
+        cell_id: "fe55b85c-c412-4a4a-8ed7-a9b8dcf8d0ac",
         "word": "wawancara",
         "en": "interview",
         "vi": "phỏng vấn",
@@ -213,6 +223,7 @@ export const lessons: IndonesianLesson[] = [
         "pronunciation_en": "wah-wahn-CHAH-rah — 'c' is always 'ch'; the job-interview word"
       },
       {
+        cell_id: "e434fb7a-eec5-4597-b610-5f781a9f4507",
         "word": "lembur",
         "en": "overtime",
         "vi": "làm thêm giờ",
@@ -221,6 +232,7 @@ export const lessons: IndonesianLesson[] = [
         "pronunciation_en": "luhm-BOOR — 'kerja lembur' = to work overtime"
       },
       {
+        cell_id: "a12569fa-66de-4255-9e82-736723007dc0",
         "word": "cuti",
         "en": "leave / time off",
         "vi": "nghỉ phép",
@@ -231,24 +243,28 @@ export const lessons: IndonesianLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "fbfd1bdc-c919-4a1c-ac9a-fba794014e30",
         "speaker": "A",
         "text": "Kamu kerja di mana sekarang?",
         "en": "Where do you work now?",
         "vi": "Bây giờ bạn làm việc ở đâu?"
       },
       {
+        cell_id: "2f7bd90b-bd7a-4f40-977d-79fa4b0b07ad",
         "speaker": "B",
         "text": "Aku kerja di perusahaan teknologi, jadi analis data. Kamu?",
         "en": "I work at a tech company as a data analyst. You?",
         "vi": "Mình làm ở một công ty công nghệ, làm chuyên viên phân tích dữ liệu. Còn bạn?"
       },
       {
+        cell_id: "d72c92ad-7ac4-4180-9bdd-83bcf7ae5c15",
         "speaker": "A",
         "text": "Aku di bidang marketing, tapi lagi cari kerjaan baru.",
         "en": "I'm in marketing, but I'm looking for a new job right now.",
         "vi": "Mình bên marketing, nhưng đang tìm việc mới."
       },
       {
+        cell_id: "7cfdfc31-4025-4f38-bede-01e08fe163a1",
         "speaker": "B",
         "text": "Oh ya? Kantorku lagi buka lowongan, kirim lamaranmu aja!",
         "en": "Oh yeah? My office has an opening, just send your application!",
@@ -371,6 +387,7 @@ export const lessons: IndonesianLesson[] = [
     "tip_advice_en": "Memorize three opinion-openers: 'Menurut saya…' (In my opinion), 'Saya pikir…' / 'Saya rasa…' (I think / I feel), and 'Bagi saya…' (For me). 'Saya rasa' is softer and more tentative than 'Saya pikir' — reach for it when you're not fully sure. A relief for Vietnamese learners: Indonesian verbs don't conjugate, so these phrases never change form.",
     "vocabulary": [
       {
+        cell_id: "bc414df2-a909-4d44-b3f1-646dba69d93b",
         "word": "menurut saya",
         "en": "in my opinion",
         "vi": "theo tôi",
@@ -379,6 +396,7 @@ export const lessons: IndonesianLesson[] = [
         "pronunciation_en": "muh-NOO-root SAH-yah — literally 'according to me'"
       },
       {
+        cell_id: "5c5aef0a-0791-4fc7-b7a9-6245f5cbe6a5",
         "word": "pendapat",
         "en": "opinion",
         "vi": "ý kiến",
@@ -387,6 +405,7 @@ export const lessons: IndonesianLesson[] = [
         "pronunciation_en": "puhn-DAH-paht — 'berpendapat' (verb) = to hold the opinion that…"
       },
       {
+        cell_id: "ae18af45-07f6-483c-b46e-45267068d5b6",
         "word": "setuju",
         "en": "to agree",
         "vi": "đồng ý",
@@ -395,6 +414,7 @@ export const lessons: IndonesianLesson[] = [
         "pronunciation_en": "suh-TOO-joo — 'setuju dengan' = agree with; 'tidak setuju' = disagree"
       },
       {
+        cell_id: "dc4457bb-cc49-440f-9342-3befe331ea42",
         "word": "benar",
         "en": "correct / right",
         "vi": "đúng",
@@ -403,6 +423,7 @@ export const lessons: IndonesianLesson[] = [
         "pronunciation_en": "buh-NAR — 'betul' is a frequent synonym; 'salah' is the opposite (wrong)"
       },
       {
+        cell_id: "ef76bb33-94ef-4a5f-a663-41354fdc0249",
         "word": "salah",
         "en": "wrong / mistaken",
         "vi": "sai",
@@ -411,6 +432,7 @@ export const lessons: IndonesianLesson[] = [
         "pronunciation_en": "SAH-lah — also 'kesalahan' = a mistake/error"
       },
       {
+        cell_id: "6184929d-0689-448b-a4b5-9d4d3d8da36a",
         "word": "jujur",
         "en": "honest(ly)",
         "vi": "thành thật",
@@ -419,6 +441,7 @@ export const lessons: IndonesianLesson[] = [
         "pronunciation_en": "JOO-joor — 'sejujurnya' = honestly/to be honest"
       },
       {
+        cell_id: "cd269e00-87c0-490b-aa44-06f755c84b30",
         "word": "mungkin",
         "en": "maybe / possibly",
         "vi": "có lẽ",
@@ -427,6 +450,7 @@ export const lessons: IndonesianLesson[] = [
         "pronunciation_en": "MOONG-kin — softens a statement; key for polite disagreement"
       },
       {
+        cell_id: "63cd4540-c257-4dc6-b95b-c4de83573ff0",
         "word": "masuk akal",
         "en": "makes sense",
         "vi": "hợp lý",
@@ -435,6 +459,7 @@ export const lessons: IndonesianLesson[] = [
         "pronunciation_en": "MAH-sook AH-kahl — idiom, 'enters reason'; 'tidak masuk akal' = doesn't make sense"
       },
       {
+        cell_id: "7a05f36b-c4f1-4985-a5bf-5c9085ea3613",
         "word": "yakin",
         "en": "sure / certain",
         "vi": "chắc chắn",
@@ -443,6 +468,7 @@ export const lessons: IndonesianLesson[] = [
         "pronunciation_en": "YAH-kin — 'saya yakin' = I'm sure; 'tidak yakin' = not sure"
       },
       {
+        cell_id: "31fc1382-fbde-4eb4-9ee0-fd88a653e610",
         "word": "alasan",
         "en": "reason",
         "vi": "lý do",
@@ -453,24 +479,28 @@ export const lessons: IndonesianLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "db91e84a-04d1-4327-908c-fbbfa745b23a",
         "speaker": "A",
         "text": "Menurutmu, ide ini bagus nggak?",
         "en": "In your opinion, is this idea good?",
         "vi": "Theo bạn, ý tưởng này có hay không?"
       },
       {
+        cell_id: "39233451-f38d-48db-b208-ffd552a96951",
         "speaker": "B",
         "text": "Saya rasa lumayan, tapi ada satu masalah.",
         "en": "I think it's pretty good, but there's one problem.",
         "vi": "Mình thấy cũng ổn, nhưng có một vấn đề."
       },
       {
+        cell_id: "061c5cbf-1ca6-45cb-b2c3-7e8fe127dd83",
         "speaker": "A",
         "text": "Masalah apa? Coba jelaskan alasanmu.",
         "en": "What problem? Try explaining your reasoning.",
         "vi": "Vấn đề gì? Thử giải thích lý do của bạn xem."
       },
       {
+        cell_id: "5dd6a3b3-4a27-43ea-9735-91cd56674eaa",
         "speaker": "B",
         "text": "Jujur, biayanya terlalu mahal. Bagi saya itu kurang masuk akal.",
         "en": "Honestly, the cost is too high. For me that doesn't quite make sense.",
@@ -586,6 +616,7 @@ export const lessons: IndonesianLesson[] = [
     "tip_advice_en": "The pair 'sudah ↔ belum' behaves just like Vietnamese 'rồi ↔ chưa'. When someone asks 'Sudah makan?' ('Have you eaten?'), you answer 'Sudah' (yes, already) or 'Belum' (not yet) — never 'tidak'. 'Tidak' is general negation ('no/not'); 'belum' means 'not yet, but it will happen'. Mixing them up is one of the most common beginner errors — drill the difference.",
     "vocabulary": [
       {
+        cell_id: "2ff933e3-97a5-4b36-b034-3a7ce483bdf9",
         "word": "sudah",
         "en": "already (completed)",
         "vi": "rồi / đã",
@@ -594,6 +625,7 @@ export const lessons: IndonesianLesson[] = [
         "pronunciation_en": "SOO-dah — completed-action marker; casual 'udah'"
       },
       {
+        cell_id: "d070a9f2-51ad-4f59-ab3d-fea75b43604f",
         "word": "belum",
         "en": "not yet",
         "vi": "chưa",
@@ -602,6 +634,7 @@ export const lessons: IndonesianLesson[] = [
         "pronunciation_en": "buh-LOOM — the partner of 'sudah'; answer to a 'sudah?' question"
       },
       {
+        cell_id: "a3985396-b346-4465-8071-47cf35d3a23c",
         "word": "akan",
         "en": "will (future)",
         "vi": "sẽ",
@@ -610,6 +643,7 @@ export const lessons: IndonesianLesson[] = [
         "pronunciation_en": "AH-kahn — future marker; casual 'bakal' / 'mau'"
       },
       {
+        cell_id: "80ecb9b9-336d-4396-a2cf-c00a59c1f4b7",
         "word": "sedang",
         "en": "currently (-ing)",
         "vi": "đang",
@@ -618,6 +652,7 @@ export const lessons: IndonesianLesson[] = [
         "pronunciation_en": "suh-DAHNG — ongoing marker; casual 'lagi'"
       },
       {
+        cell_id: "12725ecb-9d7e-42ae-b103-d0a40f4210a4",
         "word": "pernah",
         "en": "ever / have once",
         "vi": "đã từng",
@@ -626,6 +661,7 @@ export const lessons: IndonesianLesson[] = [
         "pronunciation_en": "PER-nah — experiential past; 'belum pernah' = never (yet)"
       },
       {
+        cell_id: "df4aea3d-fe5b-4a50-9857-7de57cb8ecfb",
         "word": "kemarin",
         "en": "yesterday",
         "vi": "hôm qua",
@@ -634,6 +670,7 @@ export const lessons: IndonesianLesson[] = [
         "pronunciation_en": "kuh-MAH-rin — 'kemarin' also loosely means 'the other day' in speech"
       },
       {
+        cell_id: "3071c46d-bee9-4532-b04b-baef911577e5",
         "word": "besok",
         "en": "tomorrow",
         "vi": "ngày mai",
@@ -642,6 +679,7 @@ export const lessons: IndonesianLesson[] = [
         "pronunciation_en": "BEH-sohk — 'besok pagi' = tomorrow morning; 'lusa' = the day after tomorrow"
       },
       {
+        cell_id: "de337068-677a-4af2-9713-f92ed87c5368",
         "word": "nanti",
         "en": "later (today/soon)",
         "vi": "lát nữa",
@@ -650,6 +688,7 @@ export const lessons: IndonesianLesson[] = [
         "pronunciation_en": "NAHN-tee — 'nanti' = later today; 'nanti malam' = tonight (later)"
       },
       {
+        cell_id: "55191191-d04a-44da-8ec5-687e82c2238c",
         "word": "tadi",
         "en": "earlier (just now)",
         "vi": "lúc nãy",
@@ -658,6 +697,7 @@ export const lessons: IndonesianLesson[] = [
         "pronunciation_en": "TAH-dee — recent past today; 'tadi pagi' = earlier this morning"
       },
       {
+        cell_id: "e772b2e0-3dd9-41b7-a538-d4418046fb44",
         "word": "selesai",
         "en": "finished / done",
         "vi": "xong",
@@ -668,24 +708,28 @@ export const lessons: IndonesianLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "7e0c4313-9b33-4be2-b9d1-47037e0996ad",
         "speaker": "A",
         "text": "Kamu sudah makan siang?",
         "en": "Have you had lunch yet?",
         "vi": "Bạn ăn trưa chưa?"
       },
       {
+        cell_id: "9adda1fc-a5ff-453b-90b1-797be89ef38e",
         "speaker": "B",
         "text": "Belum, masih sibuk. Nanti aja.",
         "en": "Not yet, still busy. Later.",
         "vi": "Chưa, còn bận. Lát nữa thôi."
       },
       {
+        cell_id: "c9f1dc55-28a1-43e7-ada4-1ddc3d94c49e",
         "speaker": "A",
         "text": "Kamu pernah coba nasi padang?",
         "en": "Have you ever tried nasi padang?",
         "vi": "Bạn đã từng thử cơm Padang chưa?"
       },
       {
+        cell_id: "6d3ac398-7202-4cc0-a430-77f8b67c03c0",
         "speaker": "B",
         "text": "Belum pernah, tapi besok aku akan coba.",
         "en": "Never, but I'll try it tomorrow.",
@@ -805,6 +849,7 @@ export const lessons: IndonesianLesson[] = [
     "tip_advice_en": "To say where it hurts, stack 'sakit' + body part: 'sakit kepala' (headache), 'sakit perut' (stomachache), 'sakit gigi' (toothache), 'sakit tenggorokan' (sore throat) — beautifully parallel to Vietnamese 'đau + …'. One fixed collocation: you 'minum obat' (drink/take medicine), never 'makan obat' (eat) — exactly like Vietnamese 'uống thuốc'.",
     "vocabulary": [
       {
+        cell_id: "11dde82b-db3c-4c99-9feb-19b45f2ec228",
         "word": "rumah sakit",
         "en": "hospital",
         "vi": "bệnh viện",
@@ -813,6 +858,7 @@ export const lessons: IndonesianLesson[] = [
         "pronunciation_en": "ROO-mah SAH-kit — literally 'sick house'; often abbreviated 'RS'"
       },
       {
+        cell_id: "4a0523d9-12e9-40fd-9058-41603961402e",
         "word": "dokter",
         "en": "doctor",
         "vi": "bác sĩ",
@@ -821,6 +867,7 @@ export const lessons: IndonesianLesson[] = [
         "pronunciation_en": "DOHK-ter — 'dokter gigi' = dentist, 'dokter anak' = pediatrician"
       },
       {
+        cell_id: "4da9b504-487b-4072-9b5c-967e745e85d5",
         "word": "obat",
         "en": "medicine",
         "vi": "thuốc",
@@ -829,6 +876,7 @@ export const lessons: IndonesianLesson[] = [
         "pronunciation_en": "OH-baht — 'minum obat' = to take medicine; 'obat batuk' = cough medicine"
       },
       {
+        cell_id: "445ae67e-18ad-40f3-9aa1-851646cca548",
         "word": "sakit",
         "en": "sick / painful",
         "vi": "đau / bệnh",
@@ -837,6 +885,7 @@ export const lessons: IndonesianLesson[] = [
         "pronunciation_en": "SAH-kit — both 'to be ill' and 'it hurts'; 'orang sakit' = a patient/sick person"
       },
       {
+        cell_id: "aec73af9-c94e-462c-8aad-1fe0bf03b3fd",
         "word": "demam",
         "en": "fever",
         "vi": "sốt",
@@ -845,6 +894,7 @@ export const lessons: IndonesianLesson[] = [
         "pronunciation_en": "deh-MAHM — 'demam berdarah' = dengue fever"
       },
       {
+        cell_id: "e2a88257-dc47-42d8-9217-155826d46371",
         "word": "batuk",
         "en": "cough",
         "vi": "ho",
@@ -853,6 +903,7 @@ export const lessons: IndonesianLesson[] = [
         "pronunciation_en": "BAH-took — 'batuk pilek' = cough and cold"
       },
       {
+        cell_id: "55816730-a270-4f86-b046-9911f5963012",
         "word": "apotek",
         "en": "pharmacy",
         "vi": "hiệu thuốc",
@@ -861,6 +912,7 @@ export const lessons: IndonesianLesson[] = [
         "pronunciation_en": "ah-POH-tehk — from Dutch 'apotheek'; where you buy 'obat'"
       },
       {
+        cell_id: "b6964015-3ec8-4cd8-8d31-825762424093",
         "word": "resep",
         "en": "prescription",
         "vi": "đơn thuốc",
@@ -869,6 +921,7 @@ export const lessons: IndonesianLesson[] = [
         "pronunciation_en": "REH-sehp — 'resep dokter' = doctor's prescription (also means 'recipe'!)"
       },
       {
+        cell_id: "be3f9e90-9784-4ff7-85d6-1055f39f9523",
         "word": "periksa",
         "en": "to examine / check up",
         "vi": "khám",
@@ -877,6 +930,7 @@ export const lessons: IndonesianLesson[] = [
         "pronunciation_en": "puh-REEK-sah — 'periksa ke dokter' = to get checked by a doctor"
       },
       {
+        cell_id: "6bb68563-539d-4c07-bbb9-21fb781be0a1",
         "word": "sembuh",
         "en": "to recover / heal",
         "vi": "khỏi bệnh",
@@ -887,24 +941,28 @@ export const lessons: IndonesianLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "4dc33737-6bcb-41dd-a00d-d1b32236f0a6",
         "speaker": "Dokter",
         "text": "Selamat siang, ada keluhan apa?",
         "en": "Good afternoon, what's the complaint?",
         "vi": "Chào buổi chiều, bạn có triệu chứng gì?"
       },
       {
+        cell_id: "dff0b332-1dfe-4efc-ad4f-fed23ff4404e",
         "speaker": "Pasien",
         "text": "Saya demam dan sakit kepala sejak kemarin, Dok.",
         "en": "I've had a fever and headache since yesterday, doctor.",
         "vi": "Tôi bị sốt và đau đầu từ hôm qua, thưa bác sĩ."
       },
       {
+        cell_id: "24a0c7d9-007a-4810-aaf3-f21a7592e891",
         "speaker": "Dokter",
         "text": "Baik, saya periksa dulu. Apakah ada batuk?",
         "en": "Alright, let me check first. Do you have a cough?",
         "vi": "Được, để tôi khám trước. Bạn có bị ho không?"
       },
       {
+        cell_id: "7c2dc7b0-b00d-43c8-bfb1-7e715cf2fc43",
         "speaker": "Pasien",
         "text": "Sedikit. Nanti saya tebus obatnya di apotek ya, Dok.",
         "en": "A little. I'll get the medicine filled at the pharmacy, doctor.",
@@ -1028,6 +1086,7 @@ export const lessons: IndonesianLesson[] = [
     "tip_advice_en": "The new grammar versus Vietnamese is REDUPLICATION (doubling a word). Indonesian repeats words to: (1) form plurals — 'orang' (person) → 'orang-orang' (people), 'anak' → 'anak-anak' (children); (2) soften or intensify adjectives — 'pelan-pelan' (slowly, gently); (3) make rhyming pair-words like 'sayur-mayur' (all kinds of vegetables) and 'lauk-pauk' (assorted dishes). Key rule: if a number is already present ('dua orang' = two people), do NOT reduplicate — the number marks plurality.",
     "vocabulary": [
       {
+        cell_id: "1b3b9384-876d-4c62-9f02-eb392d45c89e",
         "word": "saya",
         "en": "I (formal/neutral)",
         "vi": "tôi (trang trọng)",
@@ -1036,6 +1095,7 @@ export const lessons: IndonesianLesson[] = [
         "pronunciation_en": "SAH-yah — the safe, polite 'I' for any situation"
       },
       {
+        cell_id: "ca6961e4-ffb3-4b5f-b101-c43de107df82",
         "word": "aku",
         "en": "I (casual)",
         "vi": "mình / tao (thân mật)",
@@ -1044,6 +1104,7 @@ export const lessons: IndonesianLesson[] = [
         "pronunciation_en": "AH-koo — casual 'I'; suffix form '-ku' (bukuku = my book)"
       },
       {
+        cell_id: "aaecb6dc-3755-4635-8132-20904971de04",
         "word": "Anda",
         "en": "you (formal)",
         "vi": "ông / bà / quý vị",
@@ -1052,6 +1113,7 @@ export const lessons: IndonesianLesson[] = [
         "pronunciation_en": "AHN-dah — formal 'you', always capitalized; polite but distant"
       },
       {
+        cell_id: "2d4b4064-3108-4b84-9728-3263cc0799ed",
         "word": "kamu",
         "en": "you (casual)",
         "vi": "bạn / cậu (thân mật)",
@@ -1060,6 +1122,7 @@ export const lessons: IndonesianLesson[] = [
         "pronunciation_en": "KAH-moo — casual 'you'; suffix form '-mu' (bukumu = your book)"
       },
       {
+        cell_id: "8fe17a4d-2667-4ca5-a261-9dd913de6a26",
         "word": "Bapak / Pak",
         "en": "Sir / Mr. (older man)",
         "vi": "ông / anh (lịch sự)",
@@ -1068,6 +1131,7 @@ export const lessons: IndonesianLesson[] = [
         "pronunciation_en": "BAH-pah(k) / pah(k) — respectful address for a man; pairs with a name: 'Pak Budi'"
       },
       {
+        cell_id: "81fec0ad-0b5b-4c22-bacc-46fd30f2be55",
         "word": "Ibu / Bu",
         "en": "Ma'am / Mrs. (older woman)",
         "vi": "bà / chị (lịch sự)",
@@ -1076,6 +1140,7 @@ export const lessons: IndonesianLesson[] = [
         "pronunciation_en": "EE-boo / boo — respectful address for a woman; 'Bu Ani'"
       },
       {
+        cell_id: "f0a844c6-49ca-4733-9f28-46291f4d3f43",
         "word": "orang-orang",
         "en": "people (plural)",
         "vi": "mọi người",
@@ -1084,6 +1149,7 @@ export const lessons: IndonesianLesson[] = [
         "pronunciation_en": "OH-rahng OH-rahng — reduplicated plural of 'orang' (person)"
       },
       {
+        cell_id: "4b9f6abb-a111-4452-93d3-bb1f28c0d3c7",
         "word": "anak-anak",
         "en": "children",
         "vi": "trẻ con / bọn trẻ",
@@ -1092,6 +1158,7 @@ export const lessons: IndonesianLesson[] = [
         "pronunciation_en": "AH-nah(k) AH-nah(k) — reduplicated plural of 'anak' (child)"
       },
       {
+        cell_id: "dd7acabd-98af-4c63-9b43-83fefb10933f",
         "word": "pelan-pelan",
         "en": "slowly / gently",
         "vi": "từ từ",
@@ -1100,6 +1167,7 @@ export const lessons: IndonesianLesson[] = [
         "pronunciation_en": "puh-LAHN puh-LAHN — softened reduplication of 'pelan' (slow)"
       },
       {
+        cell_id: "2c350582-5f91-4348-a623-17e448d58b9e",
         "word": "sayur-mayur",
         "en": "all kinds of vegetables",
         "vi": "đủ loại rau",
@@ -1110,24 +1178,28 @@ export const lessons: IndonesianLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "b48ba631-9c9b-4c09-9093-4498b2621065",
         "speaker": "Karyawan",
         "text": "Selamat pagi, Pak. Apakah Bapak ada waktu sebentar?",
         "en": "Good morning, sir. Do you have a moment? (formal)",
         "vi": "Chào buổi sáng, thưa ông. Ông có chút thời gian không ạ? (trang trọng)"
       },
       {
+        cell_id: "44ff0a79-8df7-41a9-a6cc-6501f5cdb455",
         "speaker": "Atasan",
         "text": "Tentu, silakan duduk. Ada apa, Bu?",
         "en": "Of course, please sit. What is it, ma'am? (formal)",
         "vi": "Tất nhiên, mời ngồi. Có chuyện gì vậy, chị? (trang trọng)"
       },
       {
+        cell_id: "73c9457e-67af-4655-a2ab-75f22dd10b52",
         "speaker": "Teman 1",
         "text": "Eh, kamu mau ikut aku ke pasar nggak?",
         "en": "Hey, you wanna come with me to the market? (casual)",
         "vi": "Này, cậu muốn đi chợ với mình không? (thân mật)"
       },
       {
+        cell_id: "af543e40-76af-4d03-9df0-d6f4a42f41f1",
         "speaker": "Teman 2",
         "text": "Boleh! Aku lagi pengen beli sayur-mayur juga.",
         "en": "Sure! I've been wanting to buy some vegetables too. (casual)",

@@ -12,22 +12,27 @@ export const lessons: JapaneseLesson[] = [
     "level": "A1",
     "vocabulary": [
       {
+        cell_id: "fa289444-1247-40ed-9e11-98d73a99e2df",
         "japanese": "あ",
         "english": "a"
       },
       {
+        cell_id: "8f1694f8-feb8-4f10-849f-7a17bb99a95a",
         "japanese": "い",
         "english": "i"
       },
       {
+        cell_id: "bfe79df6-466a-4ebb-a412-4c8405ec4f9b",
         "japanese": "う",
         "english": "u"
       },
       {
+        cell_id: "d036aecb-ca52-4df9-8a99-cfbe2ad4f164",
         "japanese": "え",
         "english": "e"
       },
       {
+        cell_id: "bcc0cf31-ef89-40db-84d8-4eaff5789039",
         "japanese": "お",
         "english": "o"
       }
@@ -94,22 +99,27 @@ export const lessons: JapaneseLesson[] = [
     "level": "A1",
     "vocabulary": [
       {
+        cell_id: "68cc0a07-e74c-4fa7-94cf-ecfefc657dfe",
         "japanese": "カ",
         "english": "ka"
       },
       {
+        cell_id: "07c64ab3-a108-4884-9427-2cbab41900f8",
         "japanese": "キ",
         "english": "ki"
       },
       {
+        cell_id: "9eb5c3a4-c8be-4814-8286-7c0a89c06ddc",
         "japanese": "ク",
         "english": "ku"
       },
       {
+        cell_id: "f8c8af8c-997e-46a3-a020-8dad987f6c3d",
         "japanese": "ケ",
         "english": "ke"
       },
       {
+        cell_id: "d11f9cef-821e-4000-8a98-a880ec06cc4e",
         "japanese": "コ",
         "english": "ko"
       }
@@ -182,22 +192,27 @@ export const lessons: JapaneseLesson[] = [
     "level": "A1",
     "vocabulary": [
       {
+        cell_id: "daaae015-3a04-4ee1-a818-e01923a104ff",
         "japanese": "こんにちは",
         "english": "hello / good afternoon"
       },
       {
+        cell_id: "f12e1a87-e124-4cc1-9cce-189df2195e87",
         "japanese": "おはようございます",
         "english": "good morning"
       },
       {
+        cell_id: "9f5bb080-f8aa-41a8-9b6c-ff05e288493b",
         "japanese": "こんばんは",
         "english": "good evening"
       },
       {
+        cell_id: "fc96c5a4-7836-4367-a4d9-d0252c08e383",
         "japanese": "さようなら",
         "english": "goodbye"
       },
       {
+        cell_id: "69168fe9-e83c-45b9-a1ba-282fbf42436a",
         "japanese": "ありがとうございます",
         "english": "thank you"
       }
@@ -254,18 +269,22 @@ export const lessons: JapaneseLesson[] = [
     "level": "A1",
     "vocabulary": [
       {
+        cell_id: "eadcb38f-1133-467e-8708-b3cd2ad120d6",
         "japanese": "わたし",
         "english": "I"
       },
       {
+        cell_id: "0c1d06be-0a9e-4da5-940c-031f89d80553",
         "japanese": "名前 (なまえ)",
         "english": "name"
       },
       {
+        cell_id: "7b9e4a55-0680-4e3f-b20a-32a4cd20165b",
         "japanese": "出身 (しゅっしん)",
         "english": "hometown / origin"
       },
       {
+        cell_id: "1b0b204e-5478-4b62-bc5b-550680815aaf",
         "japanese": "～です",
         "english": "am / is / are"
       }
@@ -322,42 +341,52 @@ export const lessons: JapaneseLesson[] = [
     "level": "A1",
     "vocabulary": [
       {
+        cell_id: "e83eb16d-6c7e-4a02-bbca-2d397169b382",
         "japanese": "いち",
         "english": "1"
       },
       {
+        cell_id: "42a98d70-d480-4c46-934b-3bad8c4abcb7",
         "japanese": "に",
         "english": "2"
       },
       {
+        cell_id: "4ce7600a-8b3d-41ce-ab42-bb35cc3a37ac",
         "japanese": "さん",
         "english": "3"
       },
       {
+        cell_id: "89ca025a-dc9d-4558-84a0-539952154129",
         "japanese": "し / よん",
         "english": "4"
       },
       {
+        cell_id: "22d7102a-b85c-409a-b095-5ad809186e58",
         "japanese": "ご",
         "english": "5"
       },
       {
+        cell_id: "76d8d2e2-17f5-40d6-ab6d-18b237809542",
         "japanese": "ろく",
         "english": "6"
       },
       {
+        cell_id: "e5d2e943-b8c0-43ff-ae4b-13d63f758ed8",
         "japanese": "しち / なな",
         "english": "7"
       },
       {
+        cell_id: "88b5731e-8ccc-458c-bb1a-8e8513e16bdb",
         "japanese": "はち",
         "english": "8"
       },
       {
+        cell_id: "e2a564ac-1224-486b-b0bb-33a919d7c12b",
         "japanese": "きゅう / く",
         "english": "9"
       },
       {
+        cell_id: "c7c05eca-04da-4b41-bf84-82abccd7f265",
         "japanese": "じゅう",
         "english": "10"
       }
@@ -414,22 +443,27 @@ export const lessons: JapaneseLesson[] = [
     "level": "A1",
     "vocabulary": [
       {
+        cell_id: "e663126e-af51-45f7-be1a-ac3376aaa0e4",
         "japanese": "一つ (ひとつ)",
         "english": "one (general counter)"
       },
       {
+        cell_id: "25f96287-8ce2-4c29-b067-d4813f07919c",
         "japanese": "二つ (ふたつ)",
         "english": "two"
       },
       {
+        cell_id: "9c411042-8c91-4bfe-b7c0-46ffbc9debfe",
         "japanese": "三つ (みっつ)",
         "english": "three"
       },
       {
+        cell_id: "54799cee-21b8-4b17-bf0f-04122feef7aa",
         "japanese": "人 (ひと)",
         "english": "person"
       },
       {
+        cell_id: "aaa8b7d3-98d8-409c-912f-5f838d691875",
         "japanese": "〜人 (〜にん)",
         "english": "counter for people"
       }
@@ -486,30 +520,37 @@ export const lessons: JapaneseLesson[] = [
     "level": "A1",
     "vocabulary": [
       {
+        cell_id: "a5c043c6-ed4e-4e20-8662-c9206ae956a1",
         "japanese": "月曜日 (げつようび)",
         "english": "Monday"
       },
       {
+        cell_id: "0006fb14-f233-4373-9563-f7edb6da35e4",
         "japanese": "火曜日 (かようび)",
         "english": "Tuesday"
       },
       {
+        cell_id: "c9b78834-a051-450a-b19c-cfb249674441",
         "japanese": "水曜日 (すいようび)",
         "english": "Wednesday"
       },
       {
+        cell_id: "e3424893-35d6-4dfa-bf3e-fff638c7fc79",
         "japanese": "木曜日 (もくようび)",
         "english": "Thursday"
       },
       {
+        cell_id: "43f95af2-f1fa-4537-9c96-792b079f6282",
         "japanese": "金曜日 (きんようび)",
         "english": "Friday"
       },
       {
+        cell_id: "e081ceb9-3ae9-4e0e-8731-aafcf1f6ead6",
         "japanese": "土曜日 (どようび)",
         "english": "Saturday"
       },
       {
+        cell_id: "db2b4d14-618b-4341-911b-fbb960fdf22a",
         "japanese": "日曜日 (にちようび)",
         "english": "Sunday"
       }
@@ -566,50 +607,62 @@ export const lessons: JapaneseLesson[] = [
     "level": "A1",
     "vocabulary": [
       {
+        cell_id: "344e5c40-5d75-446a-9987-09b5758e3d57",
         "japanese": "一月 (いちがつ)",
         "english": "January"
       },
       {
+        cell_id: "731ef304-e6ec-46a6-aef1-63d10a32f99a",
         "japanese": "二月 (にがつ)",
         "english": "February"
       },
       {
+        cell_id: "e1158c65-a66a-43a0-8e42-341117135b2d",
         "japanese": "三月 (さんがつ)",
         "english": "March"
       },
       {
+        cell_id: "650d8529-f97f-4f32-9e6f-21045850d9c6",
         "japanese": "四月 (しがつ)",
         "english": "April"
       },
       {
+        cell_id: "b504cd97-bc3c-4125-9e16-87cc19085676",
         "japanese": "五月 (ごがつ)",
         "english": "May"
       },
       {
+        cell_id: "298f3140-4e59-4d44-9a39-b612d710c137",
         "japanese": "六月 (ろくがつ)",
         "english": "June"
       },
       {
+        cell_id: "e3d5dc00-1cdc-4aa3-a86b-5c400f84a80f",
         "japanese": "七月 (しちがつ)",
         "english": "July"
       },
       {
+        cell_id: "6b57c399-8f6a-4391-89ac-9864ca2ce990",
         "japanese": "八月 (はちがつ)",
         "english": "August"
       },
       {
+        cell_id: "2bacc95c-ab59-413d-a282-6ad0d1effd11",
         "japanese": "九月 (くがつ)",
         "english": "September"
       },
       {
+        cell_id: "3d58d98c-98f1-44ec-baf6-4ef1b15f94f8",
         "japanese": "十月 (じゅうがつ)",
         "english": "October"
       },
       {
+        cell_id: "91c9f8ec-1426-4eaa-815b-bc95c34f033f",
         "japanese": "十一月 (じゅういちがつ)",
         "english": "November"
       },
       {
+        cell_id: "0d66c725-e8c8-45f6-b51c-1bddaec68c67",
         "japanese": "十二月 (じゅうにがつ)",
         "english": "December"
       }
@@ -666,18 +719,22 @@ export const lessons: JapaneseLesson[] = [
     "level": "A1",
     "vocabulary": [
       {
+        cell_id: "2e380726-5aed-4a33-8195-31659e367350",
         "japanese": "時 (じ)",
         "english": "hour / o'clock"
       },
       {
+        cell_id: "a88c7ff3-bd07-4578-8806-8d54359cd788",
         "japanese": "分 (ふん / ぷん)",
         "english": "minute"
       },
       {
+        cell_id: "7f4e7812-4d16-4c2a-981c-f4ec1edadf6f",
         "japanese": "半 (はん)",
         "english": "half (half past)"
       },
       {
+        cell_id: "6e37b374-2b17-422d-a3c7-480e3b48cdd9",
         "japanese": "今 (いま)",
         "english": "now"
       }
@@ -734,26 +791,32 @@ export const lessons: JapaneseLesson[] = [
     "level": "A1",
     "vocabulary": [
       {
+        cell_id: "9279d91e-27cc-429d-a99a-4cf2e1dd1af7",
         "japanese": "どこ",
         "english": "where"
       },
       {
+        cell_id: "134adc2a-e957-4165-b91a-b4c4917a6de1",
         "japanese": "駅 (えき)",
         "english": "station"
       },
       {
+        cell_id: "9e747306-dd4d-4e04-a3db-8e62505cf774",
         "japanese": "交番 (こうばん)",
         "english": "police box"
       },
       {
+        cell_id: "4e48a279-fd48-4ca4-a8e0-d7e44c138bec",
         "japanese": "右 (みぎ)",
         "english": "right"
       },
       {
+        cell_id: "47ff24c4-fd83-4c48-9603-a813a2f2ef05",
         "japanese": "左 (ひだり)",
         "english": "left"
       },
       {
+        cell_id: "1dac82c8-3921-4859-9df2-06422c2445ec",
         "japanese": "まっすぐ",
         "english": "straight"
       }
@@ -810,22 +873,27 @@ export const lessons: JapaneseLesson[] = [
     "level": "A1",
     "vocabulary": [
       {
+        cell_id: "b4395a5d-4da6-4c1e-a325-e4d2e21bde44",
         "japanese": "メニュー",
         "english": "menu"
       },
       {
+        cell_id: "0d029588-5167-4854-94a8-dfab2cb2c9ec",
         "japanese": "注文 (ちゅうもん)",
         "english": "order"
       },
       {
+        cell_id: "e69704dc-742b-4f44-ab9c-4dd7370883c7",
         "japanese": "ください",
         "english": "please (give me)"
       },
       {
+        cell_id: "df8bb3c6-e527-40c2-9808-69aedfec40fd",
         "japanese": "お願いします (おねがいします)",
         "english": "please (request)"
       },
       {
+        cell_id: "5b2e7d7a-c4c0-41dc-8d80-6c9b16e3588b",
         "japanese": "お会計 (おかいけい)",
         "english": "bill / check"
       }
@@ -898,22 +966,27 @@ export const lessons: JapaneseLesson[] = [
     "level": "A1",
     "vocabulary": [
       {
+        cell_id: "05482bde-6f6b-49e5-9632-8c0c181d6f8e",
         "japanese": "いくら",
         "english": "how much"
       },
       {
+        cell_id: "3e57941f-695a-4bda-aa63-4f3574c65489",
         "japanese": "高い (たかい)",
         "english": "expensive / high"
       },
       {
+        cell_id: "223699e9-edb0-4f78-b567-420ada803fe3",
         "japanese": "安い (やすい)",
         "english": "cheap"
       },
       {
+        cell_id: "d7b46c4e-9621-4ca7-851c-33657e661e8b",
         "japanese": "これをください",
         "english": "I'll take this"
       },
       {
+        cell_id: "f158dc89-4d54-494a-9fc9-7ed286a368db",
         "japanese": "袋 (ふくろ)",
         "english": "bag"
       }
@@ -970,26 +1043,32 @@ export const lessons: JapaneseLesson[] = [
     "level": "A1",
     "vocabulary": [
       {
+        cell_id: "25f58bf4-fbcf-4dbc-8b38-b1c18c027dd5",
         "japanese": "お父さん (おとうさん)",
         "english": "father"
       },
       {
+        cell_id: "31d387a0-6361-4d56-a2fd-c2ee561e4d86",
         "japanese": "お母さん (おかあさん)",
         "english": "mother"
       },
       {
+        cell_id: "8615f514-4ef1-41b3-b4f4-c88bd2d767fd",
         "japanese": "お兄さん (おにいさん)",
         "english": "older brother"
       },
       {
+        cell_id: "59d84467-5662-41ee-b535-02be5ff0bf8e",
         "japanese": "お姉さん (おねえさん)",
         "english": "older sister"
       },
       {
+        cell_id: "f9e8ab44-3b6f-46c2-be9e-384868c1344b",
         "japanese": "弟 (おとうと)",
         "english": "younger brother"
       },
       {
+        cell_id: "e595d20a-9323-4550-8358-03fdb09c273f",
         "japanese": "妹 (いもうと)",
         "english": "younger sister"
       }
@@ -1046,26 +1125,32 @@ export const lessons: JapaneseLesson[] = [
     "level": "A1",
     "vocabulary": [
       {
+        cell_id: "26a7540a-a8e3-4fa6-89ec-4fe65921902b",
         "japanese": "赤 (あか)",
         "english": "red"
       },
       {
+        cell_id: "46cb326c-43e4-4164-bed3-df2b0ea98f0b",
         "japanese": "青 (あお)",
         "english": "blue"
       },
       {
+        cell_id: "4f0467ac-7e7f-49a2-bcd1-e31c0cba81ef",
         "japanese": "黄色 (きいろ)",
         "english": "yellow"
       },
       {
+        cell_id: "ff77b8a5-628f-43f1-816b-52abefdc05da",
         "japanese": "白 (しろ)",
         "english": "white"
       },
       {
+        cell_id: "9b6f389d-b76a-4023-affe-48a5250529f1",
         "japanese": "黒 (くろ)",
         "english": "black"
       },
       {
+        cell_id: "d1f03bae-1d8f-4219-a350-9fb21cbe33cf",
         "japanese": "緑 (みどり)",
         "english": "green"
       }
@@ -1122,22 +1207,27 @@ export const lessons: JapaneseLesson[] = [
     "level": "A1",
     "vocabulary": [
       {
+        cell_id: "4fcee055-e8c0-48c1-ba7f-96de835c364e",
         "japanese": "大きい (おおきい)",
         "english": "big"
       },
       {
+        cell_id: "c5cbc4ee-50da-4b8a-a4cc-48115e84a0d9",
         "japanese": "小さい (ちいさい)",
         "english": "small"
       },
       {
+        cell_id: "ebeb3ac9-fff2-484e-87ca-cc0c54f3083f",
         "japanese": "新しい (あたらしい)",
         "english": "new"
       },
       {
+        cell_id: "d7ee7d87-0731-40bc-a79b-64d7542faa24",
         "japanese": "古い (ふるい)",
         "english": "old"
       },
       {
+        cell_id: "8a611dd0-60e2-449a-aaff-cb761ca20bf6",
         "japanese": "美味しい (おいしい)",
         "english": "delicious"
       }

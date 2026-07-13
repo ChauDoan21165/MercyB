@@ -13,42 +13,52 @@ export const lessons: KoreanLesson[] =       [
       "intro_vi": "Dùng 조건문 cho câu điều kiện. Học các mẫu -면 và -으면.",
       "vocabulary": [
         {
+          cell_id: "0d41874c-03b1-4c4c-acd6-d1f39a1a91dc",
           "hangul": "조건",
           "meaning": "condition"
         },
         {
+          cell_id: "b07510f0-c6a6-4379-b838-a33701f834dc",
           "hangul": "가정",
           "meaning": "assumption"
         },
         {
+          cell_id: "e976a0fa-3591-49ed-87d9-14c15a79c630",
           "hangul": "결과",
           "meaning": "result"
         },
         {
+          cell_id: "cc144464-8f3d-4348-8edf-10587a462d3b",
           "hangul": "인과",
           "meaning": "causation"
         },
         {
+          cell_id: "f9ef0e23-c7b3-45c0-9348-b12f898d60dd",
           "hangul": "필요",
           "meaning": "necessity"
         },
         {
+          cell_id: "c792c0b7-4e16-4da8-8ec5-d3c47958f5cc",
           "hangul": "충족",
           "meaning": "satisfaction"
         },
         {
+          cell_id: "62ec228e-dbb3-408f-93de-68ef68edd452",
           "hangul": "만약",
           "meaning": "if"
         },
         {
+          cell_id: "0aba79c7-39a2-4f99-bd45-96f97ea852a0",
           "hangul": "그러면",
           "meaning": "then"
         },
         {
+          cell_id: "4041da97-ed07-4b26-bd75-76ca50302437",
           "hangul": "아니면",
           "meaning": "otherwise"
         },
         {
+          cell_id: "cf52df54-64a0-4c5f-bd80-8a947fa3d519",
           "hangul": "때문에",
           "meaning": "because"
         }
@@ -87,24 +97,28 @@ export const lessons: KoreanLesson[] =       [
       ],
       "dialogue": [
         {
+          cell_id: "a7b0baf7-4f5f-4f78-ae2a-15533cb779bb",
           "speaker": "A",
           "hangul": "내일 날씨가 좋으면 소풍 갈까요?",
           "meaning": "If the weather is nice tomorrow, shall we go on a picnic?",
           "text_vi": "Ngày mai trời đẹp thì mình đi dã ngoại nhé?"
         },
         {
+          cell_id: "11ecdc4f-1689-41e3-b4e9-99fd094c61aa",
           "speaker": "B",
           "hangul": "좋아요. 그런데 비가 오면 어쩌죠?",
           "meaning": "Good. But what if it rains?",
           "text_vi": "Được đấy. Nhưng nếu trời mưa thì sao?"
         },
         {
+          cell_id: "25652ce7-46ed-4aed-a3fa-bfe6bc16bc2b",
           "speaker": "A",
           "hangul": "그러면 영화관에 가요.",
           "meaning": "Then let's go to the cinema.",
           "text_vi": "Vậy thì mình đi rạp chiếu phim."
         },
         {
+          cell_id: "d0851ac4-4b0e-4d6d-9852-f28a4b7ba61c",
           "speaker": "B",
           "hangul": "좋은 생각이에요!",
           "meaning": "Good idea!",
@@ -146,42 +160,52 @@ export const lessons: KoreanLesson[] =       [
       "intro_vi": "Dùng 관용 표현 cho thành ngữ. Học các thành ngữ Hàn Quốc thông dụng.",
       "vocabulary": [
         {
+          cell_id: "a9c6da03-2724-42ce-a58d-0e2f8c8f7d23",
           "hangul": "관용 표현",
           "meaning": "idiomatic expression"
         },
         {
+          cell_id: "3a6e504f-78d2-4451-a13b-156b2eecd247",
           "hangul": "속담",
           "meaning": "proverb"
         },
         {
+          cell_id: "c77bfe1f-d0e2-45c2-b7ab-edb8f5c214fc",
           "hangul": "뜻",
           "meaning": "meaning"
         },
         {
+          cell_id: "bcad1e62-1552-4531-8318-6d8d0da79727",
           "hangul": "비유",
           "meaning": "metaphor"
         },
         {
+          cell_id: "68281c8e-9d97-4b83-af73-5c412a065fe0",
           "hangul": "눈이 높다",
           "meaning": "to have high standards (lit. eyes are high)"
         },
         {
+          cell_id: "b7545b43-c6f1-49fd-a65f-ad6bc17bb9c5",
           "hangul": "입이 짧다",
           "meaning": "to eat little (lit. mouth is short)"
         },
         {
+          cell_id: "56a40f43-84ec-47f1-8f05-56fb67030bf2",
           "hangul": "발이 넓다",
           "meaning": "to have many connections (lit. feet are wide)"
         },
         {
+          cell_id: "92eeb489-751c-46ac-b1a6-d8ac16ecadb3",
           "hangul": "손이 크다",
           "meaning": "to be generous (lit. hand is big)"
         },
         {
+          cell_id: "eed060b2-fc9d-48f9-bcc8-5fc7c0fdccc5",
           "hangul": "고생 끝에 낙이 온다",
           "meaning": "after hardship comes happiness"
         },
         {
+          cell_id: "09f94a92-2ae1-4516-93d9-2e06d2ac8678",
           "hangul": "시작이 반이다",
           "meaning": "well begun is half done"
         }
@@ -220,24 +244,28 @@ export const lessons: KoreanLesson[] =       [
       ],
       "dialogue": [
         {
+          cell_id: "460136a7-d6cf-4aee-a5bb-de92749bea7c",
           "speaker": "A",
           "hangul": "시험 준비가 너무 힘들어요.",
           "meaning": "Preparing for the exam is so hard.",
           "text_vi": "Ôn thi mệt quá đi mất."
         },
         {
+          cell_id: "252d82bf-12eb-41a8-8604-0d35b48150de",
           "speaker": "B",
           "hangul": "시작이 반이잖아요. 이미 절반은 한 거예요.",
           "meaning": "Well begun is half done. You've already done half.",
           "text_vi": "Bắt đầu được là xong một nửa rồi mà. Coi như bạn đã làm xong một nửa rồi đấy."
         },
         {
+          cell_id: "80411089-de43-4908-8d48-131d05ebb349",
           "speaker": "A",
           "hangul": "맞아요. 포기하지 말아야겠어요.",
           "meaning": "That's right. I shouldn't give up.",
           "text_vi": "Đúng vậy. Mình không được bỏ cuộc mới được."
         },
         {
+          cell_id: "e1703612-03f2-489f-bf74-ad11df3ae534",
           "speaker": "B",
           "hangul": "힘내세요! 고생 끝에 낙이 올 거예요.",
           "meaning": "Cheer up! After hardship comes happiness.",
@@ -279,42 +307,52 @@ export const lessons: KoreanLesson[] =       [
       "intro_vi": "Học tiếng lóng và khẩu ngữ Hàn Quốc. Dùng 속어 cho tiếng lóng và 구어체 cho khẩu ngữ.",
       "vocabulary": [
         {
+          cell_id: "b6ec4f3e-634a-4b18-8e57-07dff72de3b1",
           "hangul": "속어",
           "meaning": "slang"
         },
         {
+          cell_id: "d021dbf8-5d63-4480-b539-c1b2abc2ff75",
           "hangul": "구어체",
           "meaning": "colloquial style"
         },
         {
+          cell_id: "4cf43883-4816-47be-a0fc-a39cc43f88f6",
           "hangul": "대박",
           "meaning": "awesome / jackpot"
         },
         {
+          cell_id: "fa53a66e-3730-4f39-a7fb-eb28a13f9e66",
           "hangul": "헐",
           "meaning": "whoa / oh my"
         },
         {
+          cell_id: "6441ad3a-2e23-4ffd-99cd-567ed08c87c8",
           "hangul": "진짜",
           "meaning": "really"
         },
         {
+          cell_id: "01109023-2396-447b-9b15-2dd5d4cae3d9",
           "hangul": "짱",
           "meaning": "best / awesome"
         },
         {
+          cell_id: "cba22d80-53f3-4191-8ca3-914294969208",
           "hangul": "존맛",
           "meaning": "so delicious"
         },
         {
+          cell_id: "bfc0afdd-ccd1-4520-9da7-e9ae295b2f22",
           "hangul": "꿀잼",
           "meaning": "so fun"
         },
         {
+          cell_id: "616f3e31-2532-4849-9e36-3e3153f199a7",
           "hangul": "노잼",
           "meaning": "boring"
         },
         {
+          cell_id: "e092cdf5-9763-4506-ac12-e9dcdd6dc658",
           "hangul": "안녕",
           "meaning": "hi (informal)"
         }
@@ -353,24 +391,28 @@ export const lessons: KoreanLesson[] =       [
       ],
       "dialogue": [
         {
+          cell_id: "ee1c9029-807e-4707-83bc-2350fcebe715",
           "speaker": "A",
           "hangul": "어제 놀이동산 갔어? 어땠어?",
           "meaning": "Did you go to the amusement park yesterday? How was it?",
           "text_vi": "Hôm qua cậu đi công viên giải trí à? Thế nào?"
         },
         {
+          cell_id: "5c29d48b-8867-4341-945b-d142be0ff970",
           "speaker": "B",
           "hangul": "대박! 완전 꿀잼이었어.",
           "meaning": "Awesome! It was so fun.",
           "text_vi": "Đỉnh luôn! Vui khỏi phải bàn."
         },
         {
+          cell_id: "e58000a0-b1f0-4db8-8d04-823a259866df",
           "speaker": "A",
           "hangul": "진짜? 나도 가고 싶다.",
           "meaning": "Really? I want to go too.",
           "text_vi": "Thật á? Tớ cũng muốn đi quá."
         },
         {
+          cell_id: "ef1c7327-fca4-4ae7-bef8-79293068a3dc",
           "speaker": "B",
           "hangul": "다음에 같이 가자!",
           "meaning": "Let's go together next time!",
@@ -412,42 +454,52 @@ export const lessons: KoreanLesson[] =       [
       "intro_vi": "Dùng 토론 cho tranh luận. Học cách lập luận thuyết phục và phản bác.",
       "vocabulary": [
         {
+          cell_id: "7240e4c2-15f5-492a-9c07-ce1b3318f460",
           "hangul": "토론",
           "meaning": "debate"
         },
         {
+          cell_id: "ff859b3e-b17b-4768-8e9f-990a5b1e3bfd",
           "hangul": "논쟁",
           "meaning": "argument"
         },
         {
+          cell_id: "5909297e-d861-4d4f-919c-b857dc93b51b",
           "hangul": "주제",
           "meaning": "topic"
         },
         {
+          cell_id: "47e1556d-2190-4141-8ab5-c6b4864f4e93",
           "hangul": "반론",
           "meaning": "counterargument"
         },
         {
+          cell_id: "12d73838-5cc7-40fb-a1ba-b77a64effc91",
           "hangul": "증거",
           "meaning": "evidence"
         },
         {
+          cell_id: "9e91f121-8883-44ab-aa9a-9379df3e3974",
           "hangul": "논리",
           "meaning": "logic"
         },
         {
+          cell_id: "9265c87d-da1f-48d0-8d2f-502bd4528567",
           "hangul": "설득하다",
           "meaning": "to persuade"
         },
         {
+          cell_id: "cf75a6f5-ef57-4aa9-8828-937c5570f6ff",
           "hangul": "청중",
           "meaning": "audience"
         },
         {
+          cell_id: "66d9d28c-25ea-4bd9-9a85-3e3938874c4f",
           "hangul": "판사",
           "meaning": "judge"
         },
         {
+          cell_id: "a66a6885-51c6-42a3-9c6a-dc61fd13175d",
           "hangul": "승리",
           "meaning": "victory"
         }
@@ -486,24 +538,28 @@ export const lessons: KoreanLesson[] =       [
       ],
       "dialogue": [
         {
+          cell_id: "2cd27663-a5b1-4125-9e03-bb09bb4f4100",
           "speaker": "A",
           "hangul": "저는 원격 수업이 더 효율적이라고 생각합니다.",
           "meaning": "I think online classes are more efficient.",
           "text_vi": "Tôi nghĩ học trực tuyến hiệu quả hơn."
         },
         {
+          cell_id: "3b1432ce-9d2c-4583-8f8e-52d821af8578",
           "speaker": "B",
           "hangul": "하지만 집중하기 어렵다는 문제가 있어요.",
           "meaning": "But there is the problem of difficulty concentrating.",
           "text_vi": "Nhưng có vấn đề là khó tập trung."
         },
         {
+          cell_id: "84db7008-d6f2-450f-8705-ec2133b17497",
           "speaker": "A",
           "hangul": "그건 개인의 차이라고 봅니다.",
           "meaning": "I see that as an individual difference.",
           "text_vi": "Cái đó tôi cho là do khác biệt của mỗi người."
         },
         {
+          cell_id: "c0417ea8-fedc-497e-b1a9-e273ebbc639c",
           "speaker": "B",
           "hangul": "통계를 보면 오히려 학습 효과가 떨어진다는 결과가 있어요.",
           "meaning": "Statistics show that learning effectiveness actually decreases.",
@@ -545,42 +601,52 @@ export const lessons: KoreanLesson[] =       [
       "intro_vi": "Ôn tập toàn bộ ngữ pháp và từ vựng từ bài 21-49. Luyện tập kỹ năng tổng hợp.",
       "vocabulary": [
         {
+          cell_id: "03062c3a-932f-4076-be2f-359678e8b755",
           "hangul": "종합",
           "meaning": "comprehensive"
         },
         {
+          cell_id: "96caee56-0dba-4da8-88d5-2f2fb6e8d716",
           "hangul": "복습",
           "meaning": "review"
         },
         {
+          cell_id: "980489e7-1205-46ef-89e8-ac7baf80a388",
           "hangul": "확인",
           "meaning": "check"
         },
         {
+          cell_id: "f5d4f4e1-5893-4c43-889e-d51628f8ce40",
           "hangul": "평가",
           "meaning": "evaluation"
         },
         {
+          cell_id: "469a3f2a-1635-4803-8dd7-68bc2a58ce7c",
           "hangul": "정리",
           "meaning": "summary"
         },
         {
+          cell_id: "95eeb5b0-b300-4833-9fb9-5d850c0ca810",
           "hangul": "연습",
           "meaning": "practice"
         },
         {
+          cell_id: "a4c94cb3-ac4c-4c6a-ae5b-43add6a6f546",
           "hangul": "강화",
           "meaning": "reinforcement"
         },
         {
+          cell_id: "a02c6e7f-4826-4819-a5de-1b56830b7f49",
           "hangul": "자신감",
           "meaning": "confidence"
         },
         {
+          cell_id: "ea800930-c4d9-4556-833b-4d4878e0f5c0",
           "hangul": "목표",
           "meaning": "goal"
         },
         {
+          cell_id: "6eb193e9-e766-4f36-9758-553a73c93157",
           "hangul": "달성",
           "meaning": "achievement"
         }
@@ -619,24 +685,28 @@ export const lessons: KoreanLesson[] =       [
       ],
       "dialogue": [
         {
+          cell_id: "b125371b-dd12-47ad-b416-491dbd754060",
           "speaker": "A",
           "hangul": "드디어 마지막 수업이네요. 많이 배웠어요.",
           "meaning": "Finally the last lesson. I learned a lot.",
           "text_vi": "Cuối cùng cũng đến buổi học cuối rồi nhỉ. Tôi học được nhiều lắm."
         },
         {
+          cell_id: "217981d3-bfc3-4bda-95c4-d18cfe27f209",
           "speaker": "B",
           "hangul": "맞아요. 이제 한국어로 대화하는 게 더 편해졌어요.",
           "meaning": "Right. Now it's more comfortable to converse in Korean.",
           "text_vi": "Đúng vậy. Giờ trò chuyện bằng tiếng Hàn thấy thoải mái hơn nhiều rồi."
         },
         {
+          cell_id: "20e13bae-7996-467b-ac0d-9b1c894c1d44",
           "speaker": "A",
           "hangul": "앞으로도 꾸준히 공부할 거예요.",
           "meaning": "I will continue to study steadily.",
           "text_vi": "Từ giờ tôi vẫn sẽ học đều đặn."
         },
         {
+          cell_id: "913e9825-8b53-4d85-8c79-7f85f2da5fb8",
           "speaker": "B",
           "hangul": "화이팅! 함께 힘내요!",
           "meaning": "Fighting! Let's cheer together!",
@@ -678,42 +748,52 @@ export const lessons: KoreanLesson[] =       [
       "intro_vi": "Cuộc trò chuyện cao điểm áp lực với sếp Hàn Quốc khi báo nghỉ việc. Toàn bộ phải dùng 하십시오체 (cấp kính ngữ cao nhất). Tập trung vào câu mở đầu, lý do tích cực, và cam kết bàn giao chu đáo — ba yếu tố quyết định bạn ra đi 'đẹp' hay 'xấu'.",
       "vocabulary": [
         {
+          cell_id: "50969099-4c61-47b4-b739-34b861ae1de7",
           "hangul": "사직",
           "meaning": "resignation"
         },
         {
+          cell_id: "f5ba1c87-7f1f-4068-ada5-64f1416e0eef",
           "hangul": "사직서",
           "meaning": "resignation letter"
         },
         {
+          cell_id: "445a5169-58cc-4308-a0df-e07ea9107ae7",
           "hangul": "퇴사",
           "meaning": "leaving the company"
         },
         {
+          cell_id: "e56b6722-5448-4926-a195-0a96be645803",
           "hangul": "인수인계",
           "meaning": "handover (of work)"
         },
         {
+          cell_id: "48307163-7413-44af-91f5-e61b133a4355",
           "hangul": "결정",
           "meaning": "decision"
         },
         {
+          cell_id: "e47d2535-76f4-45c5-9520-0605ed07cfe8",
           "hangul": "진심으로",
           "meaning": "sincerely / from the heart"
         },
         {
+          cell_id: "2c348069-b68b-4ddc-a5cf-9c445ab44c9f",
           "hangul": "새로운 도전",
           "meaning": "new challenge"
         },
         {
+          cell_id: "f881e445-5c37-4adb-b700-82e57ebdd595",
           "hangul": "마지막 근무일",
           "meaning": "last working day"
         },
         {
+          cell_id: "e6120796-9858-49d4-a03d-a9ce7e7bb570",
           "hangul": "양해",
           "meaning": "understanding (asking for)"
         },
         {
+          cell_id: "f7638e34-a124-4899-a13f-98129517b65e",
           "hangul": "후임자",
           "meaning": "successor / replacement"
         }
@@ -752,24 +832,28 @@ export const lessons: KoreanLesson[] =       [
       ],
       "dialogue": [
         {
+          cell_id: "d31cfd55-1bb6-46ed-8209-b9a7193cbd2b",
           "speaker": "A",
           "hangul": "부장님, 잠시 시간 괜찮으십니까? 드릴 말씀이 있어서요.",
           "meaning": "Director, do you have a moment? I have something to tell you.",
           "text_vi": "Trưởng phòng ơi, anh có chút thời gian không ạ? Em có chuyện muốn thưa với anh."
         },
         {
+          cell_id: "54637b2c-70e8-4e65-8988-a66efb2f3880",
           "speaker": "B",
           "hangul": "네, 들어오세요. 무슨 일이세요?",
           "meaning": "Yes, come in. What is it?",
           "text_vi": "Ừ, vào đi. Có chuyện gì thế?"
         },
         {
+          cell_id: "01fa64ab-c338-450c-9ffc-bf5a2d7810e3",
           "speaker": "A",
           "hangul": "죄송합니다만, 사직 의사를 전해 드리고자 합니다.",
           "meaning": "I'm sorry to say, but I would like to inform you of my intent to resign.",
           "text_vi": "Em xin lỗi, nhưng em muốn trình bày nguyện vọng xin nghỉ việc ạ."
         },
         {
+          cell_id: "6b23fa9c-03b8-4870-9d2e-08b145c55f9e",
           "speaker": "B",
           "hangul": "갑작스럽군요. 자세히 이야기 좀 해 주세요.",
           "meaning": "That's sudden. Please tell me more in detail.",
@@ -983,42 +1067,52 @@ export const lessons: KoreanLesson[] =       [
       "intro_vi": "Phỏng vấn xin việc tại Samsung, LG, Hyundai (chi nhánh Việt Nam hoặc HQ Hàn Quốc). Toàn bộ dùng 하십시오체. Tập trung vào 5 chủ đề cốt lõi luôn xuất hiện: 자기소개, 지원 동기, 강점·약점, 5년 후 모습, câu hỏi cuối. Thái độ và độ chuẩn bị quyết định 70% kết quả.",
       "vocabulary": [
         {
+          cell_id: "0f553492-37d5-4548-94da-ebe7dd97ec17",
           "hangul": "면접",
           "meaning": "interview"
         },
         {
+          cell_id: "16046542-d237-450c-8b3c-bef1425ae450",
           "hangul": "자기소개",
           "meaning": "self-introduction"
         },
         {
+          cell_id: "6af4e440-92b2-430d-ac0d-e46a3ffead01",
           "hangul": "지원 동기",
           "meaning": "reason for applying"
         },
         {
+          cell_id: "908c52a8-f01f-48cb-8e33-9edc5a1b79d2",
           "hangul": "강점",
           "meaning": "strength"
         },
         {
+          cell_id: "233d2707-ae35-46b5-99f7-15ce1c3a1f0a",
           "hangul": "약점",
           "meaning": "weakness"
         },
         {
+          cell_id: "09caf91a-e2ff-4616-909c-106bed2692b7",
           "hangul": "입사",
           "meaning": "joining the company"
         },
         {
+          cell_id: "38a21a35-942e-4b42-9032-c6e3d9200e9b",
           "hangul": "포부",
           "meaning": "ambition / aspiration"
         },
         {
+          cell_id: "ebc4a44d-8ef0-4f82-9fbf-2586e1267a88",
           "hangul": "직무",
           "meaning": "job role"
         },
         {
+          cell_id: "da5da4e0-3922-4ac0-88d6-1b1bb8cec6c6",
           "hangul": "경력",
           "meaning": "career experience"
         },
         {
+          cell_id: "c5552575-30fc-45ce-9313-ae2e12f67c44",
           "hangul": "합격",
           "meaning": "passing / acceptance"
         }
@@ -1057,24 +1151,28 @@ export const lessons: KoreanLesson[] =       [
       ],
       "dialogue": [
         {
+          cell_id: "c3cd66b6-5e5a-40ee-b4ec-2773a760f94d",
           "speaker": "A",
           "hangul": "안녕하십니까. 자기소개 부탁드립니다.",
           "meaning": "Hello. Please introduce yourself.",
           "text_vi": "Xin chào. Mời anh/chị giới thiệu về bản thân ạ."
         },
         {
+          cell_id: "fcbb5ca8-56f3-4932-8005-acd8c2a8f61f",
           "speaker": "B",
           "hangul": "안녕하십니까. 응웬티란입니다. 하노이 출신이며 한국학을 전공했습니다.",
           "meaning": "Hello. I'm Nguyen Thi Lan, from Hanoi, majored in Korean Studies.",
           "text_vi": "Xin chào ạ. Em là Nguyễn Thị Lan. Em quê ở Hà Nội và đã học chuyên ngành Hàn Quốc học."
         },
         {
+          cell_id: "a1725a10-5cba-473e-aef8-44d179d3d825",
           "speaker": "A",
           "hangul": "우리 회사에 지원하신 동기가 무엇입니까?",
           "meaning": "What is your motivation for applying to our company?",
           "text_vi": "Động lực nào khiến anh/chị ứng tuyển vào công ty chúng tôi?"
         },
         {
+          cell_id: "0ac93173-9529-4dac-a1cf-b4c3f294662a",
           "speaker": "B",
           "hangul": "글로벌 시장 진출에 기여하고 싶어 지원하게 되었습니다.",
           "meaning": "I applied because I want to contribute to your global expansion.",
@@ -1288,42 +1386,52 @@ export const lessons: KoreanLesson[] =       [
       "intro_vi": "Phỏng vấn vòng đại sứ quán cho 한국정부초청장학생 (KGSP) — tỉ lệ chấp nhận ~5%. Ban giám khảo thường gồm tham tán giáo dục, cán bộ KOICA và một giáo sư Hàn. Tập trung vào 학업 계획서 (study plan), 연구 분야 (lĩnh vực nghiên cứu), và 졸업 후 진로 (định hướng sau tốt nghiệp).",
       "vocabulary": [
         {
+          cell_id: "96daeb6b-7685-4137-b090-d54111aeb868",
           "hangul": "장학금",
           "meaning": "scholarship"
         },
         {
+          cell_id: "dd78493b-7c1d-4015-9ab4-f9724e57a263",
           "hangul": "한국정부초청장학생",
           "meaning": "KGSP recipient"
         },
         {
+          cell_id: "6cb81e26-1b11-40be-96ff-734919f5ee7b",
           "hangul": "학업 계획",
           "meaning": "study plan"
         },
         {
+          cell_id: "e1c8c17c-6c97-461e-9fc2-e3c9e9ba45b6",
           "hangul": "연구 분야",
           "meaning": "research field"
         },
         {
+          cell_id: "c2dcb423-ea25-4783-8b10-bb0bcfa00058",
           "hangul": "지도 교수",
           "meaning": "academic advisor"
         },
         {
+          cell_id: "4fc21c4d-15c6-4cd3-9e9e-55052c09ac64",
           "hangul": "추천서",
           "meaning": "recommendation letter"
         },
         {
+          cell_id: "8e3a78ce-fb09-43b7-b44d-04a8cbec6c19",
           "hangul": "졸업 후 진로",
           "meaning": "post-graduation path"
         },
         {
+          cell_id: "086440ef-60c9-430a-8b3c-be1a8d1912e6",
           "hangul": "한국어 능력",
           "meaning": "Korean language ability"
         },
         {
+          cell_id: "22db8262-8593-4435-987e-cb4cce172a76",
           "hangul": "학문적 성취",
           "meaning": "academic achievement"
         },
         {
+          cell_id: "c0f72320-48c4-42f9-9ec6-4c933a4ef138",
           "hangul": "양국의 가교",
           "meaning": "bridge between two countries"
         }
@@ -1362,24 +1470,28 @@ export const lessons: KoreanLesson[] =       [
       ],
       "dialogue": [
         {
+          cell_id: "61f6d9e2-a8b5-455a-8abc-c31187a183f0",
           "speaker": "A",
           "hangul": "자기소개와 지원 동기를 말씀해 주십시오.",
           "meaning": "Please give your self-introduction and motivation.",
           "text_vi": "Mời anh/chị giới thiệu bản thân và động lực ứng tuyển."
         },
         {
+          cell_id: "58e35e78-18fa-451d-b186-345a5d6e29d9",
           "speaker": "B",
           "hangul": "응웬티엔입니다. 외교학원을 졸업했고 한·베 경제 협력을 연구하고 싶어 지원했습니다.",
           "meaning": "I'm Nguyen Thi En. I graduated from Diplomatic Academy and want to research Korea-Vietnam economics.",
           "text_vi": "Em là Nguyễn Thị Yến. Em tốt nghiệp Học viện Ngoại giao và ứng tuyển vì muốn nghiên cứu hợp tác kinh tế Hàn - Việt."
         },
         {
+          cell_id: "dd2f9b39-20a8-47fb-8fc5-f2ebe00414ab",
           "speaker": "A",
           "hangul": "어느 대학을 희망하십니까?",
           "meaning": "Which university do you hope to attend?",
           "text_vi": "Anh/chị mong muốn vào trường đại học nào?"
         },
         {
+          cell_id: "4f8e320c-fbb1-47cb-bf40-ed2006633dc3",
           "speaker": "B",
           "hangul": "서울대학교가 1순위, 연세대학교가 2순위입니다.",
           "meaning": "Seoul National is my first choice, Yonsei second.",
@@ -1593,42 +1705,52 @@ export const lessons: KoreanLesson[] =       [
       "intro_vi": "Cuộc gặp 1-1 với 지도 교수님 (giáo sư hướng dẫn) để chốt đề tài luận văn. Sinh viên Việt thường mắc 2 lỗi: đề tài quá rộng, hoặc đồng ý với mọi gợi ý của giáo sư mà không phản biện. Cuộc gặp này dạy cách thảo luận học thuật cân bằng giữa tôn trọng và đề xuất ý kiến riêng — bằng 하십시오체.",
       "vocabulary": [
         {
+          cell_id: "f6dad4d8-12b7-43f1-b820-2111df47cc43",
           "hangul": "논문",
           "meaning": "thesis / paper"
         },
         {
+          cell_id: "d111e951-8ebf-4451-bd3d-970edf7e23fd",
           "hangul": "주제",
           "meaning": "topic"
         },
         {
+          cell_id: "59d56b5c-135c-47a7-b873-9c684d091eca",
           "hangul": "범위",
           "meaning": "scope"
         },
         {
+          cell_id: "b56949a2-1729-4346-b53e-504b5f29e20d",
           "hangul": "선행 연구",
           "meaning": "prior research / literature"
         },
         {
+          cell_id: "deb112e4-f148-4611-b201-60d2a6eae9b0",
           "hangul": "연구 방법",
           "meaning": "research methodology"
         },
         {
+          cell_id: "af24c880-e97e-444a-91ee-22a15dbdf75e",
           "hangul": "사례 연구",
           "meaning": "case study"
         },
         {
+          cell_id: "cab2651c-aad3-4b26-89b1-06ef8a05d4f8",
           "hangul": "자료 수집",
           "meaning": "data collection"
         },
         {
+          cell_id: "4d436135-bcfd-46ea-841c-cb813dc2f2b6",
           "hangul": "문헌 검토",
           "meaning": "literature review"
         },
         {
+          cell_id: "a2861576-e87b-4cd0-a7fc-3be9d9830b9a",
           "hangul": "기여도",
           "meaning": "contribution / significance"
         },
         {
+          cell_id: "cbdd7a06-f70b-4978-bd1d-9bf2546e3f10",
           "hangul": "심사",
           "meaning": "review / defense"
         }
@@ -1667,24 +1789,28 @@ export const lessons: KoreanLesson[] =       [
       ],
       "dialogue": [
         {
+          cell_id: "d394b997-4a92-4491-9e7a-37dc2798358b",
           "speaker": "A",
           "hangul": "교수님, 안녕하십니까. 시간 내 주셔서 감사합니다.",
           "meaning": "Hello professor. Thank you for the time.",
           "text_vi": "Thưa giáo sư, em chào thầy ạ. Cảm ơn thầy đã dành thời gian."
         },
         {
+          cell_id: "640e5fcb-3fb1-42cd-8e95-bab1169e6af4",
           "speaker": "B",
           "hangul": "어서 오세요. 어떤 주제를 생각하고 계세요?",
           "meaning": "Come in. What topic are you thinking?",
           "text_vi": "Vào đi. Em đang nghĩ đến đề tài nào?"
         },
         {
+          cell_id: "8f1b1018-65ba-448f-811e-b56399491dcd",
           "speaker": "A",
           "hangul": "베트남에서의 K-콘텐츠 수용 양상에 대해 쓰고 싶습니다.",
           "meaning": "I'd like to write about K-content reception in Vietnam.",
           "text_vi": "Em muốn viết về cách tiếp nhận nội dung văn hóa Hàn Quốc tại Việt Nam ạ."
         },
         {
+          cell_id: "bb3d4a8d-67b9-46be-976f-4dafdb644f53",
           "speaker": "B",
           "hangul": "흥미로운 주제입니다. 다만 범위를 좁힐 필요가 있겠어요.",
           "meaning": "Interesting. But the scope needs narrowing.",
@@ -1892,42 +2018,52 @@ export const lessons: KoreanLesson[] =       [
       "intro_vi": "Cuộc gặp với HR Hàn để chốt điều khoản 인턴십: lương, giờ làm, công việc cụ thể, khả năng được tuyển chính thức (정규직 전환). Sinh viên Việt thường ngại đặt câu hỏi → bị giao việc photocopy 6 tháng. Bài này dạy cách hỏi rõ ràng, lịch sự nhưng không 'mất giá'.",
       "vocabulary": [
         {
+          cell_id: "360d2530-59f5-4bb0-a665-c2dee4a39978",
           "hangul": "인턴십",
           "meaning": "internship"
         },
         {
+          cell_id: "3b4f8201-8bbb-4c51-9499-857b58daaac7",
           "hangul": "정규직 전환",
           "meaning": "conversion to full-time"
         },
         {
+          cell_id: "b77c1ffb-6180-457e-beb8-2e61a395af69",
           "hangul": "근무 시간",
           "meaning": "working hours"
         },
         {
+          cell_id: "fd0a3daa-070d-4cc7-8b39-5b09c32f5668",
           "hangul": "급여",
           "meaning": "wages / pay"
         },
         {
+          cell_id: "1e6d4fc4-f0e5-44b2-9eb0-2fccce4171f8",
           "hangul": "업무 내용",
           "meaning": "job content"
         },
         {
+          cell_id: "f75d4a28-72f7-4fef-b35e-72da4eb2b868",
           "hangul": "수습 기간",
           "meaning": "probation period"
         },
         {
+          cell_id: "2c01ff19-0ab5-494f-92ed-9b00d84bcb72",
           "hangul": "계약서",
           "meaning": "contract"
         },
         {
+          cell_id: "77b14e70-e1d9-40ed-8c09-4fd9f237c1da",
           "hangul": "복리 후생",
           "meaning": "benefits / welfare"
         },
         {
+          cell_id: "e6d23b0f-2bc2-49f0-8638-128b9884aa1d",
           "hangul": "성과",
           "meaning": "performance / outcome"
         },
         {
+          cell_id: "859e7c8a-f698-472d-906d-2490658588c7",
           "hangul": "멘토",
           "meaning": "mentor"
         }
@@ -1966,24 +2102,28 @@ export const lessons: KoreanLesson[] =       [
       ],
       "dialogue": [
         {
+          cell_id: "66c855c7-f1fb-42e0-94c3-6b989515bf46",
           "speaker": "A",
           "hangul": "인턴십 합격 축하드립니다. 조건 안내해 드리겠습니다.",
           "meaning": "Congrats on the offer. Let me explain the terms.",
           "text_vi": "Chúc mừng bạn đã trúng tuyển thực tập. Tôi sẽ hướng dẫn về các điều kiện."
         },
         {
+          cell_id: "edead582-8690-4d57-9516-842955e80eaf",
           "speaker": "B",
           "hangul": "감사합니다. 몇 가지 여쭤봐도 될까요?",
           "meaning": "Thank you. May I ask a few things?",
           "text_vi": "Cảm ơn anh/chị. Tôi hỏi vài điều được không ạ?"
         },
         {
+          cell_id: "ad3cad09-f309-47cd-b6f6-33db40824ca3",
           "speaker": "A",
           "hangul": "물론입니다. 무엇이든 물어보세요.",
           "meaning": "Of course, ask anything.",
           "text_vi": "Tất nhiên rồi. Bạn cứ hỏi bất cứ điều gì."
         },
         {
+          cell_id: "3649e883-1763-44b9-b613-c8c3197aab7a",
           "speaker": "B",
           "hangul": "정규직 전환 가능성이 어떻게 되는지 궁금합니다.",
           "meaning": "I'm curious about full-time conversion.",
@@ -2185,42 +2325,52 @@ export const lessons: KoreanLesson[] =       [
       "intro_vi": "Email tới 국제처 (văn phòng quốc tế của trường Hàn) hỏi tài liệu visa D-2. Đây là loại email tiếng Hàn quan trọng nhất với sinh viên Việt — sai cấu trúc bị xem là không chuyên nghiệp, có thể delay nhập học. Tập trung vào: chủ đề (제목), câu mở, nội dung gọn-rõ, câu kết, chữ ký.",
       "vocabulary": [
         {
+          cell_id: "112ddae5-62ca-4181-854a-c5edbac40dfa",
           "hangul": "국제처",
           "meaning": "international office"
         },
         {
+          cell_id: "2019cdb7-7253-4fe7-af48-aadfb51143e4",
           "hangul": "유학 비자",
           "meaning": "study visa"
         },
         {
+          cell_id: "f1ed3f92-e3de-453f-b6aa-167d0048ba22",
           "hangul": "표준 입학 허가서",
           "meaning": "Certificate of Admission (visa form)"
         },
         {
+          cell_id: "f4d35714-25dc-4d19-8cbc-c8a35cb82f44",
           "hangul": "재정 보증서",
           "meaning": "financial guarantee"
         },
         {
+          cell_id: "68694d7d-5fdd-4e7c-be95-087e981499b3",
           "hangul": "입국일",
           "meaning": "date of entry"
         },
         {
+          cell_id: "b65ad6e4-2a17-49aa-8eeb-a1c9c09e71d0",
           "hangul": "비자 신청",
           "meaning": "visa application"
         },
         {
+          cell_id: "ec64cc85-be1a-497a-8c6f-f771a8f1182f",
           "hangul": "관련 서류",
           "meaning": "related documents"
         },
         {
+          cell_id: "b85efa37-4a3b-4004-b6bd-c908be5b29bd",
           "hangul": "입학 확정",
           "meaning": "admission confirmation"
         },
         {
+          cell_id: "b41e1181-caf9-45bc-b6a3-55d83e64cf7c",
           "hangul": "회신",
           "meaning": "reply"
         },
         {
+          cell_id: "93a75d53-be15-45dd-83f4-f2eabbc5e3c9",
           "hangul": "수신자",
           "meaning": "recipient"
         }
@@ -2259,24 +2409,28 @@ export const lessons: KoreanLesson[] =       [
       ],
       "dialogue": [
         {
+          cell_id: "3c3bc86f-b287-495c-95de-9a75d0f7f444",
           "speaker": "A",
           "hangul": "안녕하십니까. 합격 후 비자 서류 안내 부탁드립니다.",
           "meaning": "Hello. Post-acceptance — please advise on visa documents.",
           "text_vi": "Xin chào. Sau khi trúng tuyển, mong anh/chị hướng dẫn về hồ sơ xin visa ạ."
         },
         {
+          cell_id: "f8d185c3-bf17-4426-a7ee-2efe6806a34c",
           "speaker": "B",
           "hangul": "안녕하세요. 표준 입학 허가서는 8월 1일 발급 예정입니다.",
           "meaning": "Hello. Certificate of Admission will be issued Aug 1.",
           "text_vi": "Xin chào. Giấy phép nhập học chuẩn dự kiến được cấp vào ngày 1 tháng 8."
         },
         {
+          cell_id: "fa155829-b480-482a-9b07-26f84cf8f9e1",
           "speaker": "A",
           "hangul": "감사합니다. 재정 보증서도 학교에서 발급해 주시는지요?",
           "meaning": "Thank you. Does the school issue the financial guarantee too?",
           "text_vi": "Cảm ơn anh/chị. Giấy bảo lãnh tài chính cũng do nhà trường cấp ạ?"
         },
         {
+          cell_id: "4c99db33-c39d-4ee0-9eb3-3040d71fb30b",
           "speaker": "B",
           "hangul": "재정 보증서는 본인이 한국 영사관에 직접 제출하시면 됩니다.",
           "meaning": "The financial guarantee you submit directly to the consulate.",
@@ -2478,42 +2632,52 @@ export const lessons: KoreanLesson[] =       [
       "intro_vi": "Phỏng vấn qua điện thoại từ Việt Nam (E7 visa application) — nhà tuyển dụng Hàn không thấy mặt nên TIẾNG NÓI và sự rõ ràng của tiếng Hàn quan trọng gấp đôi phỏng vấn trực tiếp. Phổ biến cho vị trí nhân viên kỹ thuật Samsung Hai Phong, LG Display, kỹ sư phần mềm dispatch sang Seoul.",
       "vocabulary": [
         {
+          cell_id: "0615817a-d933-4d1c-b831-680c1628c568",
           "hangul": "전화 면접",
           "meaning": "phone interview"
         },
         {
+          cell_id: "c49bce34-e5f9-413f-8965-09ad66489a09",
           "hangul": "통화 품질",
           "meaning": "call quality"
         },
         {
+          cell_id: "28777776-960d-45e7-873d-5d8c1c8f8963",
           "hangul": "잘 들리시나요",
           "meaning": "Can you hear me well? (formal)"
         },
         {
+          cell_id: "c96d7873-6642-4897-89d7-7116cb7d66a7",
           "hangul": "다시 말씀해 주십시오",
           "meaning": "Please say that again (formal)"
         },
         {
+          cell_id: "cc9d317d-64dd-464b-a0a5-62430b2b658d",
           "hangul": "재직 증명서",
           "meaning": "certificate of employment"
         },
         {
+          cell_id: "bd6563a5-aa2a-4a39-9c39-cad889b559e4",
           "hangul": "지원서",
           "meaning": "application form"
         },
         {
+          cell_id: "ea9e0489-e191-4c30-8c8c-e7d05171aab1",
           "hangul": "포지션",
           "meaning": "position"
         },
         {
+          cell_id: "00cade73-96d9-4287-bb97-1d1e703ad66f",
           "hangul": "비자 후원",
           "meaning": "visa sponsorship"
         },
         {
+          cell_id: "5f041097-ff89-4701-afa7-dd09a298ba7d",
           "hangul": "예상 입사일",
           "meaning": "expected start date"
         },
         {
+          cell_id: "42a87e64-4a1f-4b7f-b719-93ccb0551609",
           "hangul": "기술 면접",
           "meaning": "technical interview"
         }
@@ -2552,24 +2716,28 @@ export const lessons: KoreanLesson[] =       [
       ],
       "dialogue": [
         {
+          cell_id: "9edd749e-ca67-4b50-96ff-bf088f066d49",
           "speaker": "A",
           "hangul": "여보세요. 응웬티란 씨이신가요?",
           "meaning": "Hello, is this Ms. Nguyen?",
           "text_vi": "Alô. Có phải chị Nguyễn Thị Lan không ạ?"
         },
         {
+          cell_id: "c0846b71-a478-4649-93c9-1d9c8dc3a02c",
           "speaker": "B",
           "hangul": "네, 안녕하십니까. 응웬티란입니다. 잘 들리시나요?",
           "meaning": "Yes, hello. Nguyen Thi Lan speaking. Can you hear me?",
           "text_vi": "Vâng, xin chào. Tôi là Nguyễn Thị Lan đây. Anh/chị nghe rõ không ạ?"
         },
         {
+          cell_id: "29a2bd15-1271-4c2b-b55d-74769de74ead",
           "speaker": "A",
           "hangul": "네, 잘 들립니다. 면접 시작해도 될까요?",
           "meaning": "Yes, well. Shall we begin?",
           "text_vi": "Vâng, tôi nghe rõ. Mình bắt đầu phỏng vấn được chưa ạ?"
         },
         {
+          cell_id: "620ae985-96d5-4a6d-9c98-e33167f22520",
           "speaker": "B",
           "hangul": "네, 준비됐습니다.",
           "meaning": "Yes, I'm ready.",
@@ -2783,42 +2951,52 @@ export const lessons: KoreanLesson[] =       [
       "intro_vi": "Sự kiện 네트워킹 행사 (Korean alumni meetup, Korea-Vietnam Business Forum, KOTRA event ở Hà Nội/Hồ Chí Minh). Mục tiêu: giới thiệu bản thân trong 60 giây, đổi 명함 (danh thiếp), follow-up sau 24-48h. Bài này dạy 'Korean elevator pitch' — formal nhưng có cá tính.",
       "vocabulary": [
         {
+          cell_id: "e612454f-5635-4275-99db-3d1ecf1c2442",
           "hangul": "네트워킹 행사",
           "meaning": "networking event"
         },
         {
+          cell_id: "f41d1f9b-fe23-4ebc-83a4-9d600fa6130a",
           "hangul": "명함",
           "meaning": "business card"
         },
         {
+          cell_id: "b47d4654-317d-4be0-90e4-1792753aac8b",
           "hangul": "인맥",
           "meaning": "personal network"
         },
         {
+          cell_id: "b6001c1d-b3ab-4664-87a0-db724f387bac",
           "hangul": "교류",
           "meaning": "exchange / interaction"
         },
         {
+          cell_id: "1da78a55-b28c-4c28-8253-1d173b0be636",
           "hangul": "분야",
           "meaning": "field / sector"
         },
         {
+          cell_id: "98dc1ed8-a4bf-43bc-967a-35e58ab1a746",
           "hangul": "동문",
           "meaning": "alumnus / fellow alumni"
         },
         {
+          cell_id: "3c412e0b-85ea-4657-b2bb-0c7c06e1dd6b",
           "hangul": "선배",
           "meaning": "senior (in school/work)"
         },
         {
+          cell_id: "3f60ec8e-b699-44d8-a047-d996a74f31d2",
           "hangul": "후배",
           "meaning": "junior (in school/work)"
         },
         {
+          cell_id: "ef6107a8-6e47-45ac-a724-25a6f62d0fc4",
           "hangul": "관계자",
           "meaning": "relevant person / stakeholder"
         },
         {
+          cell_id: "cf022578-de21-428e-99b9-52ca951a585d",
           "hangul": "후속 연락",
           "meaning": "follow-up contact"
         }
@@ -2857,24 +3035,28 @@ export const lessons: KoreanLesson[] =       [
       ],
       "dialogue": [
         {
+          cell_id: "5b5d0480-3cd7-4246-84db-f74330325a44",
           "speaker": "A",
           "hangul": "처음 뵙겠습니다. 김민수입니다.",
           "meaning": "Nice to meet you. Kim Min-su.",
           "text_vi": "Rất hân hạnh được gặp anh/chị. Tôi là Kim Minsu."
         },
         {
+          cell_id: "8f817ad9-3eb6-45d3-8a66-a7cbaa237816",
           "speaker": "B",
           "hangul": "처음 뵙겠습니다, 응웬티란입니다. 어느 회사이십니까?",
           "meaning": "Nice to meet you, Nguyen Thi Lan. Which company?",
           "text_vi": "Rất hân hạnh được gặp anh, tôi là Nguyễn Thị Lan. Anh làm ở công ty nào ạ?"
         },
         {
+          cell_id: "0217190b-3c32-4a64-8fa6-3f8be6dba014",
           "speaker": "A",
           "hangul": "삼성전자 베트남 법인 영업팀에 있습니다.",
           "meaning": "I'm in Samsung Vietnam's sales team.",
           "text_vi": "Tôi làm ở nhóm kinh doanh của pháp nhân Samsung Electronics tại Việt Nam."
         },
         {
+          cell_id: "62f0d041-42ee-4d1e-aecf-aa4bc90a89ff",
           "speaker": "B",
           "hangul": "그렇군요. 저는 KOTRA 하노이 사무소 마케팅 분야입니다.",
           "meaning": "I see. I'm at KOTRA Hanoi marketing.",
@@ -3076,42 +3258,52 @@ export const lessons: KoreanLesson[] =       [
       "intro_vi": "Email tới HR Hàn sau khi nhận thông báo 불합격 (không trúng tuyển). Mục tiêu KHÔNG phải tranh cãi — mà giữ cánh cửa cho lần sau (Hàn ngành nhỏ, hôm nay HR-này → mai HR-đó). Cấu trúc: cảm ơn cơ hội → xin feedback ngắn gọn → cam kết theo dõi tin tuyển dụng tương lai → kết bằng tone tích cực.",
       "vocabulary": [
         {
+          cell_id: "10e92b12-a7f0-447b-bcc3-d1e2f0443e05",
           "hangul": "불합격",
           "meaning": "non-selection"
         },
         {
+          cell_id: "ba93cdbe-4634-4b7c-9791-c84d25fd9d62",
           "hangul": "통보",
           "meaning": "notification"
         },
         {
+          cell_id: "4130ae3b-9e80-4c34-8d07-310ca9c373f0",
           "hangul": "검토",
           "meaning": "review / consideration"
         },
         {
+          cell_id: "3f563f9b-91a4-44c7-92de-2e12e02fff05",
           "hangul": "피드백",
           "meaning": "feedback"
         },
         {
+          cell_id: "37d16fc3-07f2-4e78-99c8-671e74f0a041",
           "hangul": "참고하다",
           "meaning": "to take as reference"
         },
         {
+          cell_id: "059aa5c1-15e5-4e66-8b52-fe674dc149ca",
           "hangul": "보완하다",
           "meaning": "to supplement / improve"
         },
         {
+          cell_id: "1d60c057-c26c-44f4-adb9-cbba225aff7a",
           "hangul": "다음 기회",
           "meaning": "next opportunity"
         },
         {
+          cell_id: "963a106f-96a5-4fcd-af85-f98ec2b86a19",
           "hangul": "결과 통보",
           "meaning": "result notification"
         },
         {
+          cell_id: "eb93c6ac-4932-489d-9334-e178b8dce69b",
           "hangul": "경험",
           "meaning": "experience"
         },
         {
+          cell_id: "08e7c47f-dfb3-4fa9-ab9e-7f40cb9133e1",
           "hangul": "성장의 기회",
           "meaning": "growth opportunity"
         }
@@ -3150,24 +3342,28 @@ export const lessons: KoreanLesson[] =       [
       ],
       "dialogue": [
         {
+          cell_id: "3aee2f00-a371-4071-b02e-456078868518",
           "speaker": "A",
           "hangul": "안녕하세요, 결과 통보 받았습니다. 검토해 주신 점 감사드립니다.",
           "meaning": "Hello, received the result. Thanks for reviewing.",
           "text_vi": "Xin chào, tôi đã nhận được thông báo kết quả. Cảm ơn anh/chị đã xem xét hồ sơ."
         },
         {
+          cell_id: "0f420884-9569-4fa8-91f1-ba2675873ef9",
           "speaker": "B",
           "hangul": "안녕하세요. 이번에 함께하지 못해 저희도 아쉬웠습니다.",
           "meaning": "Hello. We were also sorry not to bring you on.",
           "text_vi": "Xin chào. Lần này không thể đồng hành cùng anh/chị, chúng tôi cũng rất tiếc."
         },
         {
+          cell_id: "1bae08d8-6a43-478b-9ab7-8587d6f49c36",
           "speaker": "A",
           "hangul": "혹시 간단한 피드백을 받을 수 있을까요?",
           "meaning": "Could I receive brief feedback?",
           "text_vi": "Không biết tôi có thể nhận một chút phản hồi ngắn gọn được không ạ?"
         },
         {
+          cell_id: "2b7c28ab-0e2d-4fd2-b3d3-33d0d4cb3fb9",
           "speaker": "B",
           "hangul": "메일로 정리해서 보내드리겠습니다.",
           "meaning": "I'll organize and email it.",
@@ -3369,42 +3565,52 @@ export const lessons: KoreanLesson[] =       [
       "intro_vi": "Cuộc gặp xin 추천서 (thư tiến cử) cho học bổng KGSP, du học, hoặc xin việc tại Hàn. Quy tắc vàng: KHÔNG xin gấp (<2 tuần là bất lịch sự), CHUẨN BỊ HỒ SƠ đầy đủ giúp giáo sư (CV, transcript, motivation, deadlines), GỬI FOLLOW-UP đúng nhịp. Toàn bộ 하십시오체.",
       "vocabulary": [
         {
+          cell_id: "b81bb6a0-0926-47d3-a5e8-f4dd57e1a1d3",
           "hangul": "추천서",
           "meaning": "recommendation letter"
         },
         {
+          cell_id: "a395aeaf-dd5d-49c9-9bef-e2b058bcd41f",
           "hangul": "추천인",
           "meaning": "recommender"
         },
         {
+          cell_id: "fd465790-bed4-4c2a-a44e-292f1b48ac61",
           "hangul": "마감일",
           "meaning": "deadline"
         },
         {
+          cell_id: "caaeb40a-5743-4e07-8c61-39eb49699c35",
           "hangul": "지원 서류",
           "meaning": "application documents"
         },
         {
+          cell_id: "8c69504a-93db-41f0-9cbe-766d5eb0c1fa",
           "hangul": "성적 증명서",
           "meaning": "transcript"
         },
         {
+          cell_id: "b174266c-dd37-406b-825b-6105de6751b9",
           "hangul": "이력서",
           "meaning": "résumé"
         },
         {
+          cell_id: "008d7099-160e-4044-93d8-f6c30f9cdbd1",
           "hangul": "자기소개서",
           "meaning": "personal statement"
         },
         {
+          cell_id: "4164c6ea-d911-48f9-83dc-e449fdc0ef1c",
           "hangul": "지도교수",
           "meaning": "academic advisor"
         },
         {
+          cell_id: "d90f0879-0a4d-4a3c-8598-192b8a5f7f23",
           "hangul": "강조하다",
           "meaning": "to emphasize"
         },
         {
+          cell_id: "bb948e82-d2ae-4f4e-a5e4-75bf063dbed8",
           "hangul": "양식",
           "meaning": "form / template"
         }
@@ -3443,24 +3649,28 @@ export const lessons: KoreanLesson[] =       [
       ],
       "dialogue": [
         {
+          cell_id: "8b7952c2-1c95-4cd0-8508-3f9a4f87cf57",
           "speaker": "A",
           "hangul": "교수님, 추천서 부탁드릴 일이 있어서 찾아뵈었습니다.",
           "meaning": "Professor, I came to ask for a recommendation.",
           "text_vi": "Thưa giáo sư, em đến gặp thầy vì có việc muốn nhờ thầy viết thư giới thiệu ạ."
         },
         {
+          cell_id: "72b64139-cab8-42cf-a9c6-9362e553792a",
           "speaker": "B",
           "hangul": "어떤 추천서인가요? 마감은 언제예요?",
           "meaning": "What kind? When's the deadline?",
           "text_vi": "Thư giới thiệu loại nào? Hạn nộp là khi nào?"
         },
         {
+          cell_id: "ffa8c97d-35b6-446c-871f-ddfbc36605e7",
           "speaker": "A",
           "hangul": "KGSP 장학금 지원입니다. 마감일은 다음 달 15일입니다.",
           "meaning": "KGSP scholarship. Deadline next month 15th.",
           "text_vi": "Là để xin học bổng KGSP ạ. Hạn nộp là ngày 15 tháng sau."
         },
         {
+          cell_id: "7e4c8459-3ff9-4070-98b2-410d36ae0f17",
           "speaker": "B",
           "hangul": "한 달 이상 남았으니 충분합니다. 자료 정리해서 가져오세요.",
           "meaning": "Over a month — enough. Bring organized materials.",
@@ -3668,42 +3878,52 @@ export const lessons: KoreanLesson[] =       [
       "intro_vi": "Cuộc trao đổi học thuật với giáo sư hoặc senior researcher (선임 연구원) tại 학회 (conference) hoặc seminar lab. Sinh viên Việt cần biết cách trình bày 'research interest' bằng tiếng Hàn formal: nêu CHỦ ĐỀ → KHOẢNG TRỐNG nghiên cứu → ĐÓNG GÓP của bạn → ĐẶT CÂU HỎI ngược lại. Toàn bộ 하십시오체.",
       "vocabulary": [
         {
+          cell_id: "3e7ab6e9-625d-4a08-a2b5-e68ee0aec240",
           "hangul": "연구 분야",
           "meaning": "research field"
         },
         {
+          cell_id: "f1412994-556e-4124-b9a4-ad41194a42fa",
           "hangul": "연구 주제",
           "meaning": "research topic"
         },
         {
+          cell_id: "83f02f92-b95b-472b-a4ee-03a916932139",
           "hangul": "선행 연구",
           "meaning": "prior literature"
         },
         {
+          cell_id: "d4f15a0c-669a-47d5-8317-7a2f29a9ef76",
           "hangul": "연구 격차",
           "meaning": "research gap"
         },
         {
+          cell_id: "21abd379-b0c1-496f-9b62-0a85fcc8ebbb",
           "hangul": "방법론",
           "meaning": "methodology"
         },
         {
+          cell_id: "09310a1c-2fac-4f5a-aee9-6664f3f6d2d5",
           "hangul": "정성적·정량적",
           "meaning": "qualitative·quantitative"
         },
         {
+          cell_id: "a71b78e5-02db-4947-9996-e359c2f64e62",
           "hangul": "가설",
           "meaning": "hypothesis"
         },
         {
+          cell_id: "f4480d32-e3bb-4e52-9e6a-a0128652a35f",
           "hangul": "사례 분석",
           "meaning": "case analysis"
         },
         {
+          cell_id: "010009d2-53e7-4638-9191-479232bdf6ba",
           "hangul": "학술지",
           "meaning": "academic journal"
         },
         {
+          cell_id: "340c6ca7-4cf0-49e1-937b-e8dc197d0369",
           "hangul": "공동 연구",
           "meaning": "joint research"
         }
@@ -3742,24 +3962,28 @@ export const lessons: KoreanLesson[] =       [
       ],
       "dialogue": [
         {
+          cell_id: "aa63a099-e592-4f31-8fe2-4c246b4d6d5f",
           "speaker": "A",
           "hangul": "어떤 분야를 연구하고 계세요?",
           "meaning": "What field do you research?",
           "text_vi": "Anh/chị đang nghiên cứu lĩnh vực nào?"
         },
         {
+          cell_id: "9af15e59-bcc6-4d14-872a-d890ec2ace91",
           "speaker": "B",
           "hangul": "한·베 디지털 무역 분야이고, 특히 중소기업 사례에 관심이 있습니다.",
           "meaning": "Korea-Vietnam digital trade, especially SME cases.",
           "text_vi": "Là lĩnh vực thương mại số Hàn - Việt, đặc biệt tôi quan tâm đến các trường hợp doanh nghiệp vừa và nhỏ."
         },
         {
+          cell_id: "08943129-813b-4beb-82fb-8a7ba4908290",
           "speaker": "A",
           "hangul": "흥미롭네요. 어떤 방법론을 사용하고 계십니까?",
           "meaning": "Interesting. What methodology?",
           "text_vi": "Thú vị nhỉ. Anh/chị đang sử dụng phương pháp luận nào ạ?"
         },
         {
+          cell_id: "460975a9-e749-4828-afce-66c33560a577",
           "speaker": "B",
           "hangul": "심층 면담과 사례 비교를 결합한 정성적 접근입니다.",
           "meaning": "In-depth interviews combined with case comparison — qualitative.",
@@ -3961,42 +4185,52 @@ export const lessons: KoreanLesson[] =       [
       "intro_vi": "Đón 부장님 (giám đốc bộ phận) Hàn Quốc tại sân bay Nội Bài, đưa về khách sạn và giới thiệu lịch trình thăm nhà máy Samsung Hải Phòng. 의전 (lễ tân chính thức) là 'litmus test' chuyên nghiệp của nhân viên Việt làm tại tập đoàn Hàn — sai dù chỉ một chi tiết nhỏ ảnh hưởng đến đánh giá hiệu suất cuối năm.",
       "vocabulary": [
         {
+          cell_id: "52aad112-b9c4-40b2-bff7-dc0dab0597b6",
           "hangul": "출장",
           "meaning": "business trip"
         },
         {
+          cell_id: "702541a1-65c3-45c4-9486-0df68aa4cc63",
           "hangul": "영접",
           "meaning": "official reception"
         },
         {
+          cell_id: "9da581d9-fead-4f8d-b0da-51ab3c46ba7d",
           "hangul": "마중",
           "meaning": "meeting (someone arriving)"
         },
         {
+          cell_id: "935edb49-2594-4a8c-9bc8-4423d334c69f",
           "hangul": "일정",
           "meaning": "schedule / itinerary"
         },
         {
+          cell_id: "75cb03a6-31e3-4a8e-8364-d03043db2823",
           "hangul": "안내하다",
           "meaning": "to guide / show around"
         },
         {
+          cell_id: "89ba8dc3-a083-48ea-8863-29f4ff503453",
           "hangul": "본사",
           "meaning": "headquarters"
         },
         {
+          cell_id: "e350e58c-09c6-4bbf-82d7-fd3c47609dd6",
           "hangul": "법인",
           "meaning": "subsidiary / corporate entity"
         },
         {
+          cell_id: "3ee17563-ccaf-465f-8f79-c121b97692f8",
           "hangul": "시차",
           "meaning": "time difference / jet lag"
         },
         {
+          cell_id: "f3d3582a-ccae-413f-997d-0c592ed3a907",
           "hangul": "의전",
           "meaning": "official protocol / courtesy"
         },
         {
+          cell_id: "d8a46598-c229-41dc-9723-87b29ee297fb",
           "hangul": "통역",
           "meaning": "interpretation"
         }
@@ -4035,24 +4269,28 @@ export const lessons: KoreanLesson[] =       [
       ],
       "dialogue": [
         {
+          cell_id: "118f0472-b33c-4b3e-a8b3-ac2d2a6db9d4",
           "speaker": "A",
           "hangul": "부장님, 한국에서 잘 오셨습니까? 마중 나왔습니다.",
           "meaning": "Director, did you have a good flight? I came to meet you.",
           "text_vi": "Thưa trưởng phòng, anh đi đường từ Hàn Quốc về có thuận lợi không ạ? Em ra đón anh đây."
         },
         {
+          cell_id: "388e660d-7768-4035-985a-76a871319616",
           "speaker": "B",
           "hangul": "응웬 씨, 반가워요. 베트남은 처음입니다.",
           "meaning": "Ms. Nguyen, nice to meet you. First time in Vietnam.",
           "text_vi": "Chị Nguyễn, rất vui được gặp chị. Đây là lần đầu tôi đến Việt Nam."
         },
         {
+          cell_id: "148660e9-e25a-496d-8649-997ba24e4b12",
           "speaker": "A",
           "hangul": "비행은 어떠셨습니까?",
           "meaning": "How was the flight?",
           "text_vi": "Chuyến bay của anh thế nào ạ?"
         },
         {
+          cell_id: "4c922bda-404b-4421-8efe-7fdd28f3240c",
           "speaker": "B",
           "hangul": "6시간 정도 걸렸어요. 시차가 별로 없어서 다행입니다.",
           "meaning": "About 6 hours. Luckily not much jet lag.",
@@ -4260,42 +4498,52 @@ export const lessons: KoreanLesson[] =       [
       "intro_vi": "Tiếp 고객사 (đối tác khách hàng) Hàn Quốc — khác với đón sếp nội bộ. Khách hàng có quyền lực lớn, đối xử phải trang trọng hơn nhưng giữ thế cân bằng (không nịnh đến mức 'thấp giá'). Bao gồm: trao đổi quà (선물 교환), tour nhà máy, ký kết MOU, tiệc tối formal.",
       "vocabulary": [
         {
+          cell_id: "eb102d2d-79a0-44a0-9644-056a301e5211",
           "hangul": "고객사",
           "meaning": "client company"
         },
         {
+          cell_id: "cfa19fdb-f3f9-4a5a-a8d1-b4c55f8e2ca5",
           "hangul": "초청하다",
           "meaning": "to invite (formal)"
         },
         {
+          cell_id: "7b537a4c-3af7-4764-8c44-57ee01d4eebf",
           "hangul": "선물 교환",
           "meaning": "gift exchange"
         },
         {
+          cell_id: "26ec3d7c-d9a1-496f-9e0b-47bc172f5d89",
           "hangul": "공장 견학",
           "meaning": "factory tour"
         },
         {
+          cell_id: "e3b45a40-afc4-4d82-a350-e0a90e946dd3",
           "hangul": "협약식",
           "meaning": "signing ceremony"
         },
         {
+          cell_id: "50e4de91-27e9-4263-b414-7bfe5c258921",
           "hangul": "양해 각서 (MOU)",
           "meaning": "memorandum of understanding"
         },
         {
+          cell_id: "5c12b69a-7e40-412b-abb6-b944c8306e26",
           "hangul": "공식 만찬",
           "meaning": "official dinner"
         },
         {
+          cell_id: "3f90c858-3a40-4337-9586-50925dbdb905",
           "hangul": "감사 인사",
           "meaning": "expression of thanks"
         },
         {
+          cell_id: "931b2ccc-c974-4dcb-9fd1-8366010544a7",
           "hangul": "장기적 협력",
           "meaning": "long-term cooperation"
         },
         {
+          cell_id: "94722784-78f7-4819-8aef-9f9d480fe727",
           "hangul": "신뢰 관계",
           "meaning": "relationship of trust"
         }
@@ -4334,24 +4582,28 @@ export const lessons: KoreanLesson[] =       [
       ],
       "dialogue": [
         {
+          cell_id: "0912cc21-8da0-4385-aed3-52558c5187e5",
           "speaker": "A",
           "hangul": "대표님, 한국에서 잘 오셨습니까? 환영합니다.",
           "meaning": "President, welcome from Korea.",
           "text_vi": "Thưa giám đốc, anh đi đường từ Hàn Quốc về có thuận lợi không ạ? Xin chào mừng anh."
         },
         {
+          cell_id: "52ed66c3-2661-4e3a-9dcb-5f4ec9385599",
           "speaker": "B",
           "hangul": "초청해 주셔서 감사합니다. 베트남 공장이 궁금했습니다.",
           "meaning": "Thanks for the invitation — I was curious about the Vietnam plant.",
           "text_vi": "Cảm ơn anh/chị đã mời. Tôi rất tò mò về nhà máy ở Việt Nam."
         },
         {
+          cell_id: "9d6b1458-5259-4b35-9736-ebd75f4e2a2e",
           "speaker": "A",
           "hangul": "오늘 일정 안내드리고, 작은 선물부터 드리겠습니다.",
           "meaning": "I'll go through today's plan and start with a small gift.",
           "text_vi": "Hôm nay tôi sẽ hướng dẫn lịch trình, và xin tặng anh một món quà nhỏ trước ạ."
         },
         {
+          cell_id: "6acb7ea7-edd1-468a-ac92-305f2a7a3381",
           "speaker": "B",
           "hangul": "신경 써 주셔서 감사합니다.",
           "meaning": "Thanks for the thoughtfulness.",
@@ -4559,42 +4811,52 @@ export const lessons: KoreanLesson[] =       [
       "intro_vi": "Cuộc trò chuyện casual với đồng nghiệp Hàn (đã 'du' / 해요체) tại chi nhánh Samsung Vietnam — họ tò mò về văn hóa Việt: giao thông xe máy, ăn ngày lễ, quan hệ gia đình, lý do người Việt nói chuyện to tại quán. Bài này dạy cách giải thích văn hóa MÌNH bằng tiếng Hàn — không phòng thủ, không định kiến.",
       "vocabulary": [
         {
+          cell_id: "cc2fcda8-d4bf-41b8-bc95-5e1ea503177b",
           "hangul": "문화 차이",
           "meaning": "cultural difference"
         },
         {
+          cell_id: "e038cd76-7104-4bd8-ae3a-727c41b6353c",
           "hangul": "오해",
           "meaning": "misunderstanding"
         },
         {
+          cell_id: "31ffa782-e4b6-40fc-8a2f-4d1ab16ebdd2",
           "hangul": "호기심",
           "meaning": "curiosity"
         },
         {
+          cell_id: "a25a5b49-be97-49ef-ac21-1a0299ba1b43",
           "hangul": "관습",
           "meaning": "custom / convention"
         },
         {
+          cell_id: "d174c5fd-8afd-4d40-a7d9-2cb0a538c70d",
           "hangul": "전통",
           "meaning": "tradition"
         },
         {
+          cell_id: "eb1030e2-f306-4b1c-8de8-c99b9afb942e",
           "hangul": "가족 중심",
           "meaning": "family-centered"
         },
         {
+          cell_id: "50febc78-a512-46b5-9f70-91436abb342f",
           "hangul": "정서",
           "meaning": "emotional sensibility"
         },
         {
+          cell_id: "cbaab14f-872c-489a-bf2a-92496808fc6a",
           "hangul": "가치관",
           "meaning": "values / worldview"
         },
         {
+          cell_id: "5959a19b-ebb4-4614-8537-ebd3ec73aac0",
           "hangul": "동질감",
           "meaning": "sense of similarity / kinship"
         },
         {
+          cell_id: "0674183f-8257-4bdc-8e54-e0ae4a69660c",
           "hangul": "공감하다",
           "meaning": "to empathize / relate"
         }
@@ -4633,24 +4895,28 @@ export const lessons: KoreanLesson[] =       [
       ],
       "dialogue": [
         {
+          cell_id: "231a3886-a52e-46a8-b312-957daa5bcb00",
           "speaker": "A",
           "hangul": "응웬 씨, 베트남 사람들은 왜 식당에서 그렇게 크게 말해요?",
           "meaning": "Ms. Nguyen, why do Vietnamese speak so loud in restaurants?",
           "text_vi": "Chị Nguyễn này, sao người Việt Nam nói to thế trong quán ăn vậy?"
         },
         {
+          cell_id: "53b50cdd-da28-4ff2-9c27-7ca7a1803e08",
           "speaker": "B",
           "hangul": "친근함의 표현이에요. 한국과 좀 다르죠.",
           "meaning": "It's friendliness — different from Korea, right?",
           "text_vi": "Đó là cách thể hiện sự thân thiện ạ. Hơi khác Hàn Quốc nhỉ."
         },
         {
+          cell_id: "b4fb04c6-943b-4233-9fd4-73118be01dd6",
           "speaker": "A",
           "hangul": "그렇구나. 한국에선 조용히 먹는 게 매너인데.",
           "meaning": "Got it — in Korea, eating quietly is good manners.",
           "text_vi": "Ra vậy. Ở Hàn Quốc thì ăn uống yên lặng mới là lịch sự."
         },
         {
+          cell_id: "ffff7f7a-b06c-4272-87c3-001ea56294aa",
           "speaker": "B",
           "hangul": "맞아요, 그래서 한국분들이 처음엔 놀라시죠.",
           "meaning": "Right, that's why Koreans are surprised at first.",
@@ -4852,42 +5118,52 @@ export const lessons: KoreanLesson[] =       [
       "intro_vi": "Bài thực dụng nhất cho người Việt làm tại Samsung/LG/Hyundai: 회식 (tiệc công sở), 술 따르기 (rót rượu cấp trên), 호칭 (xưng hô theo tuổi). Hệ thống tuổi tác Hàn nghiêm ngặt hơn Nhật và Việt — sai 1 năm có thể đổi cách xưng hô. Đây là văn hóa GIẢI MÃ cho người Việt — sai = phá quan hệ, đúng = build quan hệ vững.",
       "vocabulary": [
         {
+          cell_id: "da2d1ce2-86e3-4d7c-a863-a5f5f5e86b13",
           "hangul": "회식",
           "meaning": "company dinner/drinks"
         },
         {
+          cell_id: "db9bb8c0-813c-45fd-ba15-4ae5d8322a35",
           "hangul": "술자리",
           "meaning": "drinking gathering"
         },
         {
+          cell_id: "ea6e9631-4f91-4a88-9212-e4201bf1c4bd",
           "hangul": "건배",
           "meaning": "cheers / toast"
         },
         {
+          cell_id: "d1b04a87-d321-4649-bd6e-21a689838016",
           "hangul": "원샷",
           "meaning": "down in one (shot)"
         },
         {
+          cell_id: "2c27d732-7c66-4567-bd91-889f9ddfb198",
           "hangul": "위계 질서",
           "meaning": "hierarchical order"
         },
         {
+          cell_id: "618bdda8-123a-460e-9fa0-91a40d070981",
           "hangul": "연장자",
           "meaning": "elder / senior in age"
         },
         {
+          cell_id: "75ecd2b4-088a-4359-9555-4bf64bdfb1e1",
           "hangul": "선배·후배",
           "meaning": "senior · junior"
         },
         {
+          cell_id: "ec909e59-86d7-4489-9973-5fa8642454eb",
           "hangul": "호칭",
           "meaning": "form of address"
         },
         {
+          cell_id: "ad8301be-8635-46c7-a3f1-db9ca9551eee",
           "hangul": "예의",
           "meaning": "etiquette / manners"
         },
         {
+          cell_id: "ca5589bf-7549-4470-8278-2c81104c5bd0",
           "hangul": "체면",
           "meaning": "face / honor"
         }
@@ -4926,24 +5202,28 @@ export const lessons: KoreanLesson[] =       [
       ],
       "dialogue": [
         {
+          cell_id: "a8969ae6-7d1c-4968-b92a-254ef54162ed",
           "speaker": "A",
           "hangul": "응웬 씨, 오늘 회식에 오는 거죠?",
           "meaning": "Ms. Nguyen, coming to tonight's company dinner?",
           "text_vi": "Chị Nguyễn ơi, tối nay chị đến buổi liên hoan công ty đúng không?"
         },
         {
+          cell_id: "e076c4fa-01d9-46cf-a73e-3f981ad72c1b",
           "speaker": "B",
           "hangul": "네, 갑니다. 처음이라 긴장돼요.",
           "meaning": "Yes, going. First time — nervous.",
           "text_vi": "Vâng, tôi đi ạ. Lần đầu nên hồi hộp quá."
         },
         {
+          cell_id: "b913ad09-d00a-4e7a-983f-85a037e72f1a",
           "speaker": "A",
           "hangul": "긴장 마세요. 술 따르는 법만 알면 돼요.",
           "meaning": "Don't worry — just know how to pour drinks.",
           "text_vi": "Đừng lo. Chỉ cần biết cách rót rượu là được."
         },
         {
+          cell_id: "a96608dc-820d-4a78-8438-60abe078dd4a",
           "speaker": "B",
           "hangul": "어떻게 따르면 돼요?",
           "meaning": "How should I pour?",
@@ -5151,42 +5431,52 @@ export const lessons: KoreanLesson[] =       [
       "intro_vi": "Bạn vô tình phạm 'lỗi văn hóa' với sếp/đồng nghiệp Hàn — phục vụ bằng một tay, gọi tên sếp không có 님, ngồi trước khi cấp trên ngồi, hoặc cụng ly cùng độ cao. Bài này dạy 사과 (xin lỗi) đúng kiểu Hàn: KHÔNG biện minh, GIẢI THÍCH lý do văn hóa Việt không có context đó, CAM KẾT không lặp lại — bằng 하십시오체.",
       "vocabulary": [
         {
+          cell_id: "96624019-daa5-459a-8d36-0f4aec281a29",
           "hangul": "사과",
           "meaning": "apology"
         },
         {
+          cell_id: "3ff28af3-4a9e-419b-8d14-480249661d0c",
           "hangul": "결례",
           "meaning": "rude / discourteous"
         },
         {
+          cell_id: "b029c256-bc11-44dc-8d48-2cc677a6463e",
           "hangul": "본의 아니게",
           "meaning": "unintentionally"
         },
         {
+          cell_id: "f770246f-fb73-4b4c-bade-056b5d4c8187",
           "hangul": "양해",
           "meaning": "understanding (asking for)"
         },
         {
+          cell_id: "67addbd4-ce52-48b5-9d71-f2ed81340bf7",
           "hangul": "실수",
           "meaning": "mistake"
         },
         {
+          cell_id: "8fbaea05-fc4d-437a-9171-d5ef66865482",
           "hangul": "문화적 배경",
           "meaning": "cultural background"
         },
         {
+          cell_id: "2e2a473f-14a2-4f3f-bbd2-d60eb666568c",
           "hangul": "의도적",
           "meaning": "intentional"
         },
         {
+          cell_id: "cb2ee9e1-3ced-4cc6-8091-16f331fa8798",
           "hangul": "재발 방지",
           "meaning": "prevention of recurrence"
         },
         {
+          cell_id: "2db36d84-3228-4285-af6e-d564b6464e3c",
           "hangul": "성찰",
           "meaning": "self-reflection"
         },
         {
+          cell_id: "5b5121e2-5e49-43b8-ba1d-7acc80b523f6",
           "hangul": "반성하다",
           "meaning": "to reflect on / regret"
         }
@@ -5225,24 +5515,28 @@ export const lessons: KoreanLesson[] =       [
       ],
       "dialogue": [
         {
+          cell_id: "73dd9b85-a775-43e6-ac25-4de260704522",
           "speaker": "A",
           "hangul": "부장님, 잠시 시간 괜찮으십니까? 사과드릴 일이 있어서요.",
           "meaning": "Director, may I have a moment? I need to apologize.",
           "text_vi": "Thưa trưởng phòng, anh có chút thời gian không ạ? Em có việc muốn xin lỗi anh."
         },
         {
+          cell_id: "d811ec08-394c-48ba-8aee-12ff7c3b1a20",
           "speaker": "B",
           "hangul": "어떤 일이세요?",
           "meaning": "What is it?",
           "text_vi": "Có chuyện gì thế?"
         },
         {
+          cell_id: "88ed7a00-15cd-4e57-b103-7061e2d55c9e",
           "speaker": "A",
           "hangul": "어제 회식에서 잔을 같은 높이로 부딪친 점 결례를 범했습니다.",
           "meaning": "At yesterday's dinner I clinked at the same height — that was rude.",
           "text_vi": "Hôm qua ở buổi liên hoan, em đã chạm ly ngang bằng độ cao, em đã thất lễ ạ."
         },
         {
+          cell_id: "9f1126fe-5a49-4a90-b6c0-e94fd2b1f194",
           "speaker": "B",
           "hangul": "아, 그거요. 괜찮아요. 신경 쓰지 마세요.",
           "meaning": "Ah, that. It's fine — don't worry.",
@@ -5444,42 +5738,52 @@ export const lessons: KoreanLesson[] =       [
       "intro_vi": "Tham dự 한·베 경제 포럼 (Korea-Vietnam Economic Forum) tại Hà Nội — speaker, panelist, hoặc attendee. Bao gồm: tự giới thiệu trên panel, đặt câu hỏi cho keynote speaker, networking giờ break với học giả/doanh nhân Hàn, trao đổi 명함 chuyên nghiệp.",
       "vocabulary": [
         {
+          cell_id: "ef8cbcda-70f8-49d6-ad97-980bca7d0c5d",
           "hangul": "국제 회의",
           "meaning": "international conference"
         },
         {
+          cell_id: "b9286d80-90c5-4d58-b2af-4b548118b651",
           "hangul": "기조 연설",
           "meaning": "keynote speech"
         },
         {
+          cell_id: "cd559dc9-d9fd-41c4-a887-33b8edcf0855",
           "hangul": "패널 토론",
           "meaning": "panel discussion"
         },
         {
+          cell_id: "9ac4bee2-b344-403c-9879-f73627137bc0",
           "hangul": "발제자",
           "meaning": "presenter"
         },
         {
+          cell_id: "b740792c-c4df-414f-8823-f5d716ba43fc",
           "hangul": "토론자",
           "meaning": "discussant"
         },
         {
+          cell_id: "2e0edc34-b313-4f92-a120-81709b3e9867",
           "hangul": "사회자",
           "meaning": "moderator"
         },
         {
+          cell_id: "8fb26794-be53-4117-a1a7-82020b7cc931",
           "hangul": "질의 응답",
           "meaning": "Q&A session"
         },
         {
+          cell_id: "412a0285-21f9-4d9a-8252-7dce032ec17a",
           "hangul": "참가자",
           "meaning": "participant / attendee"
         },
         {
+          cell_id: "ca1c11e8-c838-4218-a807-a23a0dbe1d6c",
           "hangul": "네트워킹 세션",
           "meaning": "networking session"
         },
         {
+          cell_id: "0bcdec5c-24dd-412b-9f24-bca0f8885d6e",
           "hangul": "후속 연구",
           "meaning": "follow-up research"
         }
@@ -5518,24 +5822,28 @@ export const lessons: KoreanLesson[] =       [
       ],
       "dialogue": [
         {
+          cell_id: "63e9df80-22f3-4c54-9640-c5e803ae2666",
           "speaker": "A",
           "hangul": "다음 패널은 베트남 측 응웬 박사님이십니다.",
           "meaning": "Next panelist is Dr. Nguyen from Vietnam.",
           "text_vi": "Diễn giả tiếp theo là Tiến sĩ Nguyễn phía Việt Nam."
         },
         {
+          cell_id: "3a1c2637-1e8a-485f-93c4-f82f8e52ea69",
           "speaker": "B",
           "hangul": "감사합니다. 안녕하십니까, 응웬티엔입니다.",
           "meaning": "Thanks. Hello, I'm Nguyen Thi En.",
           "text_vi": "Cảm ơn. Xin chào, tôi là Nguyễn Thị Yến."
         },
         {
+          cell_id: "da285c3d-e5f7-4dfe-9681-bd3dc68df8b2",
           "speaker": "A",
           "hangul": "한국 진출 기업의 베트남 현지화 전략에 대해 의견 부탁드립니다.",
           "meaning": "Please share views on Korean firms' localization strategy.",
           "text_vi": "Mong tiến sĩ cho ý kiến về chiến lược bản địa hóa tại Việt Nam của các doanh nghiệp Hàn Quốc."
         },
         {
+          cell_id: "f8bdb039-af01-4175-88d8-f5c331beb0a7",
           "speaker": "B",
           "hangul": "네, 세 가지 측면에서 말씀드리겠습니다.",
           "meaning": "Yes, I'll address three angles.",
@@ -5737,42 +6045,52 @@ export const lessons: KoreanLesson[] =       [
       "intro_vi": "Đưa khách Hàn (sếp/đối tác) đi ăn tối tại nhà hàng Việt Nam. Bài này dạy: chọn nhà hàng phù hợp, gọi món chia sẻ kiểu Việt + giải thích cho khách Hàn, etiquette ở bàn ăn (rót bia/rượu, cụng ly Hàn-Việt mix), cách trả tiền (Việt host = host trả; Hàn 'I-pay' culture). Toàn bộ 하십시오체.",
       "vocabulary": [
         {
+          cell_id: "bb48c87d-beec-4671-adaa-382bb5528d67",
           "hangul": "식사 자리",
           "meaning": "meal occasion"
         },
         {
+          cell_id: "cd10e956-a490-4a3c-8e34-efb439eed2cf",
           "hangul": "주문하다",
           "meaning": "to order"
         },
         {
+          cell_id: "34b478e1-6e75-4b9a-8b67-34d3b9bb02a0",
           "hangul": "추천 메뉴",
           "meaning": "recommended menu"
         },
         {
+          cell_id: "68d12796-43aa-4356-bafa-31c9506c7219",
           "hangul": "베트남 정식",
           "meaning": "Vietnamese set menu"
         },
         {
+          cell_id: "c17bdf38-e7b8-43f9-b353-a46d0ac496eb",
           "hangul": "함께 나눠 먹다",
           "meaning": "to share / eat together"
         },
         {
+          cell_id: "90bebd5c-f982-46d5-b74a-c82625004128",
           "hangul": "잘 어울리다",
           "meaning": "to go well with"
         },
         {
+          cell_id: "51fb4c8f-4b02-410c-99ff-0342e6ff1758",
           "hangul": "건배사",
           "meaning": "toast / cheers speech"
         },
         {
+          cell_id: "fdc4926f-7eb7-41bc-bed0-f3ddadb514cd",
           "hangul": "계산하다",
           "meaning": "to pay the bill"
         },
         {
+          cell_id: "d7a69640-c098-4080-a9f4-bc07bc39ea1e",
           "hangul": "더치페이",
           "meaning": "Dutch pay / split bill"
         },
         {
+          cell_id: "4655fd6d-3e04-4338-a2fe-a4e968f23954",
           "hangul": "대접하다",
           "meaning": "to treat (host)"
         }
@@ -5811,24 +6129,28 @@ export const lessons: KoreanLesson[] =       [
       ],
       "dialogue": [
         {
+          cell_id: "947523f7-8fa9-4ffc-a300-fcd8fd3efeed",
           "speaker": "A",
           "hangul": "오늘 저녁 베트남 정식 어떠세요? 분짜 맛집 예약해 두었습니다.",
           "meaning": "Vietnamese set tonight? Reserved a 'bun cha' place.",
           "text_vi": "Tối nay dùng cơm phần kiểu Việt Nam thế nào ạ? Tôi đã đặt một quán bún chả ngon rồi."
         },
         {
+          cell_id: "ff0ffa6d-388a-441c-bea2-dd0258f18653",
           "speaker": "B",
           "hangul": "좋아요. 매운 거 잘 먹습니다.",
           "meaning": "Good — I handle spicy well.",
           "text_vi": "Được đấy. Tôi ăn cay tốt lắm."
         },
         {
+          cell_id: "6e6f7c85-063c-40fd-9258-758f88cc31c5",
           "speaker": "A",
           "hangul": "분짜는 매운 게 아니라 새콤달콤한 맛이에요.",
           "meaning": "'Bun cha' isn't spicy — it's sweet-sour.",
           "text_vi": "Bún chả không phải món cay đâu, mà là vị chua chua ngọt ngọt ạ."
         },
         {
+          cell_id: "e3499d6a-adff-49bc-93d1-84132cffba14",
           "speaker": "B",
           "hangul": "기대됩니다.",
           "meaning": "Looking forward.",
@@ -6042,42 +6364,52 @@ export const lessons: KoreanLesson[] =       [
       "intro_vi": "Hàn có 설날 (Seollal) — Tết âm lịch giống Việt Nam: cùng âm lịch, cùng ngày 1/1 âm, cùng nguyên tắc 'về quê đoàn viên'. Bài này dạy giải thích Tết Việt cho người Hàn — tận dụng điểm chung để build 동질감 (đồng cảm), nêu 3-4 điểm khác biệt để mở rộng hiểu biết. Casual context — chuyển sang 해요체.",
       "vocabulary": [
         {
+          cell_id: "c9806cf3-b787-4bff-9f4e-d4cf1aa140d2",
           "hangul": "설날",
           "meaning": "Korean Lunar New Year (Seollal)"
         },
         {
+          cell_id: "55764175-53bf-4838-affe-109311328504",
           "hangul": "음력 새해",
           "meaning": "Lunar New Year"
         },
         {
+          cell_id: "a18266aa-1211-40f1-8b66-3090046777f8",
           "hangul": "고향 방문",
           "meaning": "hometown visit"
         },
         {
+          cell_id: "7685b522-b5b6-406b-aac5-b48ddac054fe",
           "hangul": "차례",
           "meaning": "ancestral rite"
         },
         {
+          cell_id: "591daa8d-abaa-4acd-b7fb-6d8a7cfb759e",
           "hangul": "세배",
           "meaning": "New Year bow (to elders)"
         },
         {
+          cell_id: "1223374b-baf8-4ab6-83dc-6ab15511dea5",
           "hangul": "세뱃돈",
           "meaning": "New Year money envelope"
         },
         {
+          cell_id: "4b948390-0399-4167-b749-e2f856fe07fb",
           "hangul": "떡국",
           "meaning": "rice cake soup (Korean)"
         },
         {
+          cell_id: "abdb2e81-76f3-47db-b067-5698309efa84",
           "hangul": "한복",
           "meaning": "Korean traditional dress"
         },
         {
+          cell_id: "24f8cf5b-2c08-48b8-833e-d274c3183cf4",
           "hangul": "친척",
           "meaning": "relatives"
         },
         {
+          cell_id: "8a68f17f-fb77-43b4-b500-e9e89d5a3368",
           "hangul": "공통점",
           "meaning": "common point / similarity"
         }
@@ -6116,24 +6448,28 @@ export const lessons: KoreanLesson[] =       [
       ],
       "dialogue": [
         {
+          cell_id: "c7bd94aa-9d64-471e-86a2-2be2241f894f",
           "speaker": "A",
           "hangul": "응웬 씨, 베트남에서도 설날 쇠는 거 맞죠?",
           "meaning": "Ms. Nguyen, you celebrate Lunar New Year in Vietnam too, right?",
           "text_vi": "Chị Nguyễn này, ở Việt Nam cũng đón Tết Âm lịch đúng không?"
         },
         {
+          cell_id: "94fc2ba6-cf3a-499f-94f4-c8c83c7fbfd5",
           "speaker": "B",
           "hangul": "맞아요! '뗏'이라고 부르고, 한국 설날과 같은 날이에요.",
           "meaning": "Yes! It's called Tết and falls the same day as Seollal.",
           "text_vi": "Đúng rồi! Gọi là Tết, và rơi vào cùng ngày với Tết Seollal của Hàn Quốc."
         },
         {
+          cell_id: "46984857-f652-431a-aaf4-4db828cdf14b",
           "speaker": "A",
           "hangul": "오, 그럼 떡국 같은 거 먹어요?",
           "meaning": "Oh — do you eat tteokguk-like food?",
           "text_vi": "Ồ, vậy có ăn món gì giống canh bánh gạo tteokguk không?"
         },
         {
+          cell_id: "fa30db2c-ae16-4b4e-92e1-808fcdeeddeb",
           "speaker": "B",
           "hangul": "비슷한 의미인데 모양은 달라요. '반쯩'이라는 사각형 떡을 먹어요.",
           "meaning": "Similar meaning, different shape — we eat 'Banh Chung' square cakes.",
@@ -6341,42 +6677,52 @@ export const lessons: KoreanLesson[] =       [
       "intro_vi": "Đồng nghiệp/khách Hàn đôi khi nêu các topic NHẠY: Bắc Triều Tiên, lịch sử Nhật-Hàn, chiến tranh Việt Nam (Hàn Quốc đã gửi quân sang miền Nam), so sánh phát triển kinh tế. Bài này dạy NAVIGATE thay vì AVOID — vì né tránh thường gây lúng túng hơn. Toàn bộ 하십시오체 với cấp trên / 해요체 với đồng nghiệp.",
       "vocabulary": [
         {
+          cell_id: "f12385e9-9d5e-42ba-bea6-bf4827b61f39",
           "hangul": "민감한 주제",
           "meaning": "sensitive topic"
         },
         {
+          cell_id: "2a7c0187-32ea-4dfa-9822-efae6da31922",
           "hangul": "역사적 배경",
           "meaning": "historical background"
         },
         {
+          cell_id: "d9407ce2-d159-4647-855f-2779460fad21",
           "hangul": "정치 견해",
           "meaning": "political views"
         },
         {
+          cell_id: "d57e4a76-c9ea-4e3a-b92b-f25f64f8014e",
           "hangul": "균형 잡힌 시각",
           "meaning": "balanced perspective"
         },
         {
+          cell_id: "f03b1481-f6c8-41df-bd4d-1557a9d67063",
           "hangul": "주제를 바꾸다",
           "meaning": "to change the subject"
         },
         {
+          cell_id: "f0b6513d-0e1b-4f7a-a561-1f32cc75f781",
           "hangul": "신중하게 답하다",
           "meaning": "to answer carefully"
         },
         {
+          cell_id: "30265475-74e7-493d-aeb5-bf2975f494aa",
           "hangul": "오해 소지",
           "meaning": "potential for misunderstanding"
         },
         {
+          cell_id: "1c881b1d-e165-40c1-82c8-a72765f3ef09",
           "hangul": "공식 입장",
           "meaning": "official stance"
         },
         {
+          cell_id: "589019ad-65c1-4326-9c47-a9a4ec44d609",
           "hangul": "개인 의견",
           "meaning": "personal opinion"
         },
         {
+          cell_id: "ceb55ef6-18d4-4625-adee-2f3e01c43f96",
           "hangul": "선을 긋다",
           "meaning": "to draw a line / set boundary"
         }
@@ -6415,24 +6761,28 @@ export const lessons: KoreanLesson[] =       [
       ],
       "dialogue": [
         {
+          cell_id: "1a2dad62-e8a8-44a7-b143-cfe1f3d9041d",
           "speaker": "A",
           "hangul": "응웬 씨, 베트남 사람들은 한국군이 베트남 전쟁에 참전한 거 어떻게 생각해요?",
           "meaning": "Ms. Nguyen, what do Vietnamese think of Korean troops in the Vietnam War?",
           "text_vi": "Chị Nguyễn ơi, người Việt Nam nghĩ thế nào về việc quân đội Hàn Quốc tham chiến trong chiến tranh Việt Nam?"
         },
         {
+          cell_id: "445c8f7f-791f-47a8-a0f8-27a9f434319f",
           "speaker": "B",
           "hangul": "민감한 주제라 신중하게 답할게요.",
           "meaning": "Sensitive topic — I'll answer carefully.",
           "text_vi": "Đây là chủ đề nhạy cảm nên tôi sẽ trả lời thận trọng."
         },
         {
+          cell_id: "6d47f207-1129-4f93-91ee-c2c69e5056c8",
           "speaker": "A",
           "hangul": "편하게 말씀해 주세요. 듣고 싶어요.",
           "meaning": "Please be candid — I want to hear.",
           "text_vi": "Chị cứ thoải mái nói nhé. Tôi muốn nghe."
         },
         {
+          cell_id: "e4c9b87c-21d8-4035-8c11-b38d2adb4871",
           "speaker": "B",
           "hangul": "역사적 배경과 현재 양국 관계는 분리해서 봐야 할 것 같아요.",
           "meaning": "Historical context and current relations should be considered separately.",
@@ -6634,42 +6984,52 @@ export const lessons: KoreanLesson[] =       [
       "intro_vi": "Sau 6-12 tháng làm việc cùng đồng nghiệp Hàn, một số trở thành bạn thật sự — không chỉ workmate. Bài này dạy: chuyển từ 하십시오체 → 해요체, được mời 회식 nhỏ, được giới thiệu vào 동아리 (câu lạc bộ Hàn ở Việt Nam), và quan trọng nhất — hiểu khái niệm 정 (jeong, đặc trưng Hàn không có tương đương thẳng tiếng Việt).",
       "vocabulary": [
         {
+          cell_id: "526cff1b-b0e5-4cb6-bcfc-97f7f82004e2",
           "hangul": "정",
           "meaning": "deep emotional bond / Korean unique concept"
         },
         {
+          cell_id: "61604b5d-3582-48af-83fb-d3a5fa757237",
           "hangul": "친구",
           "meaning": "friend"
         },
         {
+          cell_id: "eba39ea1-3d3d-4be4-aa69-c5a0eec0206d",
           "hangul": "친해지다",
           "meaning": "to become close"
         },
         {
+          cell_id: "b8213b99-2bad-474b-883b-0916d3d71ff3",
           "hangul": "말을 놓다",
           "meaning": "to drop formal speech"
         },
         {
+          cell_id: "d0487e35-ce07-4ac2-a71f-a268bf3a8d96",
           "hangul": "동아리",
           "meaning": "club / society"
         },
         {
+          cell_id: "79ebfc6d-54b8-46ac-9e56-033fbcad66eb",
           "hangul": "교류 모임",
           "meaning": "exchange gathering"
         },
         {
+          cell_id: "ee1e28a1-a752-4dbb-9019-1dbd31dd9a89",
           "hangul": "터놓고 얘기하다",
           "meaning": "to talk openly"
         },
         {
+          cell_id: "97a89fa0-0df2-44d5-b191-80a9267cbf81",
           "hangul": "마음이 맞다",
           "meaning": "to be of like mind"
         },
         {
+          cell_id: "0c6b4895-659a-42c0-b2b2-c4b087b856ff",
           "hangul": "의리",
           "meaning": "loyalty / duty in friendship"
         },
         {
+          cell_id: "6443741f-9b90-4c43-8d76-e332780e1a04",
           "hangul": "한 식구가 되다",
           "meaning": "to become like family"
         }
@@ -6708,24 +7068,28 @@ export const lessons: KoreanLesson[] =       [
       ],
       "dialogue": [
         {
+          cell_id: "6c2db467-4068-4a02-a1bb-1d4d85b18c4c",
           "speaker": "A",
           "hangul": "응웬 씨, 우리 만난 지 1년 됐어요. 이제 말 놓고 지낼까요?",
           "meaning": "Ms. Nguyen, it's been a year — drop formal speech?",
           "text_vi": "Chị Nguyễn này, chúng ta quen nhau được một năm rồi. Giờ mình nói chuyện thoải mái không khách sáo nhé?"
         },
         {
+          cell_id: "a041d5b4-4cef-49e1-baf3-37ebc8dcbbdf",
           "speaker": "B",
           "hangul": "정말요? 영광이에요. 그럼 형이라고 불러도 돼요?",
           "meaning": "Really? Honored — can I call you 'hyung' (older brother)?",
           "text_vi": "Thật ạ? Vinh dự quá. Vậy em gọi anh là 'oppa' được không?"
         },
         {
+          cell_id: "732c3799-6aa1-40f7-88f6-25bb1d85bf15",
           "speaker": "A",
           "hangul": "그럼요, 동생.",
           "meaning": "Of course, little sister.",
           "text_vi": "Tất nhiên rồi, em gái."
         },
         {
+          cell_id: "6e437a8c-2ac8-47dd-b1ce-dbc89d8a3d19",
           "speaker": "B",
           "hangul": "고마워요, 형.",
           "meaning": "Thanks, hyung.",
@@ -6933,42 +7297,52 @@ export const lessons: KoreanLesson[] =       [
       "intro_vi": "Phỏng vấn với 입국심사관 (officer nhập cảnh) khi vừa hạ cánh Incheon. 하십시오체 toàn bộ. Officer là cán bộ chính phủ — câu trả lời PHẢI ngắn, factual, có giấy tờ chứng minh (vé khứ hồi, đặt phòng khách sạn, lịch trình). Câu trả lời dài + ngập ngừng = bị nghi ngờ + chuyển sang phỏng vấn lần 2 (2차 심사).",
       "vocabulary": [
         {
+          cell_id: "651d789c-06d2-41d6-9a53-9ad0b6112c4d",
           "hangul": "입국심사",
           "meaning": "immigration inspection"
         },
         {
+          cell_id: "35cb1616-b081-4650-b796-5a97e9b748fa",
           "hangul": "여권",
           "meaning": "passport"
         },
         {
+          cell_id: "44f8bc34-d28d-4872-bef1-9040456c76b7",
           "hangul": "입국 신고서",
           "meaning": "landing card / arrival form"
         },
         {
+          cell_id: "c9ace308-5c9a-4b65-a15a-28330c87d538",
           "hangul": "방문 목적",
           "meaning": "purpose of visit"
         },
         {
+          cell_id: "c675be8c-ecc7-43b7-8b67-88266d7d6598",
           "hangul": "체류 기간",
           "meaning": "duration of stay"
         },
         {
+          cell_id: "f6eae2cd-6f6c-49f3-a64a-03ffe85adffd",
           "hangul": "숙소",
           "meaning": "accommodation"
         },
         {
+          cell_id: "bf1e7ca8-30ec-4e64-b972-40426c533068",
           "hangul": "왕복 항공권",
           "meaning": "round-trip ticket"
         },
         {
+          cell_id: "5e4328de-7da6-4b49-8269-805c8d1d7d5a",
           "hangul": "관광",
           "meaning": "tourism"
         },
         {
+          cell_id: "6c6d6654-108c-44f0-8a65-8be92e941f34",
           "hangul": "비자",
           "meaning": "visa"
         },
         {
+          cell_id: "432931da-31aa-4956-8a94-2c1d42ff5352",
           "hangul": "도장",
           "meaning": "stamp (passport stamp)"
         }
@@ -7007,24 +7381,28 @@ export const lessons: KoreanLesson[] =       [
       ],
       "dialogue": [
         {
+          cell_id: "b2187ab3-6e8c-449f-8711-9c76ac028f83",
           "speaker": "A",
           "hangul": "여권 보여 주십시오.",
           "meaning": "Please show your passport.",
           "text_vi": "Xin cho tôi xem hộ chiếu."
         },
         {
+          cell_id: "7f3b7c82-9e86-4e58-9f19-e9910b551f58",
           "speaker": "B",
           "hangul": "네, 여기 있습니다.",
           "meaning": "Yes, here it is.",
           "text_vi": "Vâng, đây ạ."
         },
         {
+          cell_id: "d81ba2d7-3168-4c7d-853e-d85174ee6b7f",
           "speaker": "A",
           "hangul": "방문 목적이 무엇입니까?",
           "meaning": "What is the purpose of your visit?",
           "text_vi": "Mục đích chuyến đi của anh/chị là gì?"
         },
         {
+          cell_id: "73b1a704-a3ed-4fdd-adec-4ed5a94f64b2",
           "speaker": "B",
           "hangul": "관광입니다. 7일간 머물 예정입니다.",
           "meaning": "Tourism. Planning to stay 7 days.",
@@ -7238,42 +7616,52 @@ export const lessons: KoreanLesson[] =       [
       "intro_vi": "Tình huống khẩn cấp: mất hộ chiếu khi đang du lịch Hàn. Quy trình: (1) báo cảnh sát Hàn lấy 분실 신고서 → (2) đến 베트남 대사관 ở Seoul (Jongno) làm 임시 여권 (giấy thông hành tạm). 하십시오체 cả với cảnh sát Hàn lẫn cán bộ Đại sứ quán Việt. KHÔNG panic — Hàn officer đánh giá calm professionalism cao.",
       "vocabulary": [
         {
+          cell_id: "425b5147-29fa-4601-ac9f-2c261b4e1ec9",
           "hangul": "분실",
           "meaning": "loss"
         },
         {
+          cell_id: "bcf02cdd-1c35-4c43-9ee8-b04799975f87",
           "hangul": "분실 신고",
           "meaning": "loss report"
         },
         {
+          cell_id: "7983528b-a18e-4253-bf4d-fb223888b712",
           "hangul": "영사관",
           "meaning": "consulate"
         },
         {
+          cell_id: "d796ba19-d44d-4b19-8475-7b878a2fe858",
           "hangul": "대사관",
           "meaning": "embassy"
         },
         {
+          cell_id: "093a5716-f46f-4938-8edc-0a7c298553e2",
           "hangul": "임시 여권",
           "meaning": "emergency / temporary passport"
         },
         {
+          cell_id: "8c2247a2-0cb5-4ac4-9891-12715d90efe7",
           "hangul": "여행 증명서",
           "meaning": "travel certificate"
         },
         {
+          cell_id: "b13204d5-92a9-4555-997f-bbc38547b4f1",
           "hangul": "분실 신고서",
           "meaning": "loss report form"
         },
         {
+          cell_id: "b392bad2-9f04-480f-b98a-fa9100bb67f2",
           "hangul": "사진",
           "meaning": "photo"
         },
         {
+          cell_id: "bac9ae06-004b-44fe-8395-d3bdc049d1ec",
           "hangul": "신원 확인",
           "meaning": "identity verification"
         },
         {
+          cell_id: "0217e4a7-a6c8-4bb1-ad7c-2063dac57b37",
           "hangul": "출국",
           "meaning": "departure"
         }
@@ -7312,24 +7700,28 @@ export const lessons: KoreanLesson[] =       [
       ],
       "dialogue": [
         {
+          cell_id: "48dcaa80-41c5-4285-8880-3034601a0a14",
           "speaker": "A",
           "hangul": "안녕하세요. 여권을 분실했어요. 도와주세요.",
           "meaning": "Hello. I lost my passport. Please help.",
           "text_vi": "Xin chào. Tôi bị mất hộ chiếu. Xin hãy giúp tôi."
         },
         {
+          cell_id: "544a2b0c-0674-4956-9e5d-9f3f1e71982e",
           "speaker": "B",
           "hangul": "어디서 분실하셨어요?",
           "meaning": "Where did you lose it?",
           "text_vi": "Anh/chị làm mất ở đâu ạ?"
         },
         {
+          cell_id: "befe9404-95a3-4d08-b859-978d83795ce2",
           "speaker": "A",
           "hangul": "어제 명동 호텔에서요. 호텔에는 없다고 합니다.",
           "meaning": "At a Myeongdong hotel yesterday. The hotel says it's not there.",
           "text_vi": "Hôm qua ở khách sạn khu Myeongdong ạ. Khách sạn bảo không có ở đó."
         },
         {
+          cell_id: "3625a611-36b3-464e-95ff-b06be5b67317",
           "speaker": "B",
           "hangul": "우선 분실 신고서 작성부터 시작하겠습니다.",
           "meaning": "Let's start with filling out the loss report.",
@@ -7543,42 +7935,52 @@ export const lessons: KoreanLesson[] =       [
       "intro_vi": "Tại quầy KTX, đổi giờ vé do thay đổi lịch trình. Phát sinh tranh chấp về 수수료 (phí). Customer service Hàn: 해요체 phù hợp (KHÔNG 하십시오체 — quá stiff cho counter staff). Pushback về policy = OK NẾU lịch sự + cushion phrases. Hàn không tolerate raised voice từ customer — bạn mất credibility.",
       "vocabulary": [
         {
+          cell_id: "5fc429cd-c1bb-4ffb-b60a-0c050a5c72df",
           "hangul": "예매",
           "meaning": "advance booking"
         },
         {
+          cell_id: "4a0da839-6008-4093-92ad-9c7b6cf5aa14",
           "hangul": "변경",
           "meaning": "change"
         },
         {
+          cell_id: "77fe03dc-eff7-49d9-ba14-0e9fa05f878e",
           "hangul": "환불",
           "meaning": "refund"
         },
         {
+          cell_id: "58f271e5-fc4d-49e4-a1d9-5212a9458cdb",
           "hangul": "수수료",
           "meaning": "fee / service charge"
         },
         {
+          cell_id: "f8df78d1-4c7d-47d6-ac7a-e6caac308b63",
           "hangul": "좌석",
           "meaning": "seat"
         },
         {
+          cell_id: "fcf96ff6-74f0-42ea-b02e-7757691ec2ae",
           "hangul": "출발 시간",
           "meaning": "departure time"
         },
         {
+          cell_id: "96418744-5ff5-4e8e-8c3b-6bc1289ef2c1",
           "hangul": "도착 시간",
           "meaning": "arrival time"
         },
         {
+          cell_id: "f073d6f2-5161-4a9d-a1fc-e26bf72fd389",
           "hangul": "매진",
           "meaning": "sold out"
         },
         {
+          cell_id: "d1064dc9-5bb4-460e-b78b-40c4ed2dbbf0",
           "hangul": "특실",
           "meaning": "premium class (KTX)"
         },
         {
+          cell_id: "3cc9cac1-9347-4183-b449-2146c1fcd072",
           "hangul": "일반석",
           "meaning": "regular seat"
         }
@@ -7617,24 +8019,28 @@ export const lessons: KoreanLesson[] =       [
       ],
       "dialogue": [
         {
+          cell_id: "f0c70c31-6d50-44de-9c36-acc06d8eb70a",
           "speaker": "A",
           "hangul": "안녕하세요. KTX 표 변경하고 싶습니다.",
           "meaning": "Hello. I'd like to change a KTX ticket.",
           "text_vi": "Xin chào. Tôi muốn đổi vé tàu KTX."
         },
         {
+          cell_id: "e6c6bebd-81f1-4f89-9783-6e9dcb1833ea",
           "speaker": "B",
           "hangul": "어떤 표이신가요? 출발 시간 보여 주세요.",
           "meaning": "Which ticket? Show me the departure time.",
           "text_vi": "Vé loại nào ạ? Anh/chị cho tôi xem giờ khởi hành."
         },
         {
+          cell_id: "98fef4ce-5ed9-45ef-a76e-e1a1a4e22472",
           "speaker": "A",
           "hangul": "오늘 오후 3시 서울→부산입니다. 5시로 변경하고 싶어요.",
           "meaning": "Today 3pm Seoul → Busan. Want to change to 5pm.",
           "text_vi": "Vé hôm nay 3 giờ chiều Seoul đi Busan ạ. Tôi muốn đổi sang 5 giờ."
         },
         {
+          cell_id: "91f0b3f5-09a6-402c-b601-6023c2cfcb8b",
           "speaker": "B",
           "hangul": "5시 좌석 확인하겠습니다.",
           "meaning": "I'll check 5pm seats.",
@@ -7848,42 +8254,52 @@ export const lessons: KoreanLesson[] =       [
       "intro_vi": "Tình huống ốm khi du lịch Hàn — đến phòng khám tả triệu chứng, hỏi bảo hiểm, lấy 처방전 (đơn thuốc) đi 약국 (nhà thuốc). 해요체 với 간호사/접수원/약사; 하십시오체 với 의사 (bác sĩ) và trong 응급실 (cấp cứu). Mô tả triệu chứng dùng past tense factual — tránh dramatic words làm mất credibility.",
       "vocabulary": [
         {
+          cell_id: "4adfed4c-789f-4850-a582-86ac4fb698f4",
           "hangul": "병원",
           "meaning": "hospital / clinic"
         },
         {
+          cell_id: "a1878122-15ef-4094-a363-4b004a4874ed",
           "hangul": "응급실",
           "meaning": "emergency room"
         },
         {
+          cell_id: "bd37390f-5706-43bd-9e44-fad8a710ece2",
           "hangul": "진료",
           "meaning": "medical examination"
         },
         {
+          cell_id: "529bff39-6e8b-48a2-ba04-ecc9a2a61cba",
           "hangul": "증상",
           "meaning": "symptoms"
         },
         {
+          cell_id: "d5b1b072-2710-46fb-96f5-3bc43087f72b",
           "hangul": "처방전",
           "meaning": "prescription"
         },
         {
+          cell_id: "c9b1ab9c-9ecc-4c53-96fe-e4df287db699",
           "hangul": "약국",
           "meaning": "pharmacy"
         },
         {
+          cell_id: "cd057c23-450b-4ecf-9844-11e4ca28d2fa",
           "hangul": "보험",
           "meaning": "insurance"
         },
         {
+          cell_id: "a1034f3f-3465-4283-8f2c-2dcdbe3d5d05",
           "hangul": "외국인 등록증",
           "meaning": "foreigner registration card (ARC)"
         },
         {
+          cell_id: "f88ca167-d546-4f86-8f60-d0272f762346",
           "hangul": "진료비",
           "meaning": "consultation fee"
         },
         {
+          cell_id: "f8d526ef-18e4-4396-811a-688457604a5b",
           "hangul": "알레르기",
           "meaning": "allergy"
         }
@@ -7922,24 +8338,28 @@ export const lessons: KoreanLesson[] =       [
       ],
       "dialogue": [
         {
+          cell_id: "9b6284e1-38fb-4c0f-a314-9ea8ed5c63ac",
           "speaker": "A",
           "hangul": "어디가 아프세요?",
           "meaning": "Where does it hurt?",
           "text_vi": "Anh/chị bị đau ở đâu ạ?"
         },
         {
+          cell_id: "e440268a-8168-4894-815f-006691bb8914",
           "speaker": "B",
           "hangul": "배가 아프고 열이 나요. 어제 회를 먹었어요.",
           "meaning": "Stomach hurts and I have a fever. Ate raw fish yesterday.",
           "text_vi": "Tôi đau bụng và bị sốt. Hôm qua tôi ăn gỏi cá sống."
         },
         {
+          cell_id: "4d9e1eba-fc2d-4d55-acc2-ecaca81d2485",
           "speaker": "A",
           "hangul": "식중독일 수 있겠네요. 의사 선생님께 진료받으세요.",
           "meaning": "Could be food poisoning. See the doctor.",
           "text_vi": "Có thể là ngộ độc thực phẩm đấy. Anh/chị nên đi khám bác sĩ."
         },
         {
+          cell_id: "572e3d4a-218c-44ee-9781-c57604b1bb00",
           "speaker": "B",
           "hangul": "외국인인데 보험 없어요. 비용이 어떻게 되나요?",
           "meaning": "I'm foreign without insurance. What's the cost?",
@@ -8153,42 +8573,52 @@ export const lessons: KoreanLesson[] =       [
       "intro_vi": "Phòng khách sạn có vấn đề (điều hòa hỏng, ồn, mùi, không sạch). Đến lễ tân yêu cầu đổi phòng. 해요체 với receptionist; 하십시오체 nếu lên gặp manager. Cấu trúc: mô tả vấn đề CỤ THỂ (không generic), đề xuất giải pháp (không chỉ phàn nàn), giữ tone calm — Hàn customer service phản ứng tốt với specific facts, kém với emotional complaints.",
       "vocabulary": [
         {
+          cell_id: "f430556a-4522-4be9-a308-e66df7ef0171",
           "hangul": "프런트",
           "meaning": "front desk"
         },
         {
+          cell_id: "6cabaa2f-bb01-4152-9283-3f89996bcb06",
           "hangul": "객실",
           "meaning": "guest room"
         },
         {
+          cell_id: "5bd8017f-cbec-44fd-ab45-1c5ea98ad266",
           "hangul": "방 변경",
           "meaning": "room change"
         },
         {
+          cell_id: "c3745602-839c-4a5c-8049-9824be20432b",
           "hangul": "에어컨",
           "meaning": "air conditioner"
         },
         {
+          cell_id: "6f0ed996-87b3-4d18-b1c9-5fbf847b8184",
           "hangul": "고장",
           "meaning": "broken / malfunction"
         },
         {
+          cell_id: "aad6368d-7037-48b3-8308-73392e21f33b",
           "hangul": "소음",
           "meaning": "noise"
         },
         {
+          cell_id: "79b57aed-afc6-4243-8fe3-1e8b40d24674",
           "hangul": "냄새",
           "meaning": "smell / odor"
         },
         {
+          cell_id: "4ccdc599-68ea-4844-abc1-9c7f451b6ece",
           "hangul": "청소",
           "meaning": "cleaning"
         },
         {
+          cell_id: "3cba256e-b365-4255-97a2-40eeb0a090c1",
           "hangul": "불편",
           "meaning": "inconvenience / discomfort"
         },
         {
+          cell_id: "43034cc2-9aab-435f-8cec-61b9ae0eae94",
           "hangul": "양해",
           "meaning": "understanding / accommodation"
         }
@@ -8227,24 +8657,28 @@ export const lessons: KoreanLesson[] =       [
       ],
       "dialogue": [
         {
+          cell_id: "8ecbe21f-d06f-41fa-a86f-16b40f0fd392",
           "speaker": "A",
           "hangul": "안녕하세요. 방에 문제가 있어서 왔어요.",
           "meaning": "Hello. Came because there's an issue with the room.",
           "text_vi": "Xin chào. Tôi đến vì phòng có vấn đề ạ."
         },
         {
+          cell_id: "6e4b9ef9-2594-4a82-b67f-60e79d3b1627",
           "speaker": "B",
           "hangul": "어떤 문제인가요?",
           "meaning": "What kind of issue?",
           "text_vi": "Vấn đề gì vậy ạ?"
         },
         {
+          cell_id: "6055830d-2d39-4726-b6eb-6c95fec7b437",
           "speaker": "A",
           "hangul": "에어컨이 작동을 안 해요. 어젯밤부터요.",
           "meaning": "AC doesn't work. Since last night.",
           "text_vi": "Máy điều hòa không hoạt động. Từ tối qua ạ."
         },
         {
+          cell_id: "5a95f097-1e87-4eeb-9b05-e9d9bdb2d6e8",
           "speaker": "B",
           "hangul": "죄송합니다. 바로 확인하겠습니다.",
           "meaning": "Sorry. We'll check immediately.",
@@ -8446,42 +8880,52 @@ export const lessons: KoreanLesson[] =       [
       "intro_vi": "Tại Incheon, hành lý không xuất hiện trên băng chuyền. Đến quầy 분실 수하물 (Lost Baggage) của hãng bay làm 분실 신고서 (PIR — Property Irregularity Report). 해요체 với staff. Mô tả CỤ THỂ: kích thước, màu, brand, ID tag, items inside. Hành lý 95% xuất hiện trong 24-72h — đừng panic.",
       "vocabulary": [
         {
+          cell_id: "76e940f8-fe01-4f15-ae9a-d2fd87052333",
           "hangul": "수하물",
           "meaning": "baggage / luggage"
         },
         {
+          cell_id: "aac24ea3-d402-4108-82ed-820789e8ee80",
           "hangul": "분실 수하물",
           "meaning": "lost baggage"
         },
         {
+          cell_id: "2c46872a-ed46-47d7-b7c2-ffe9ad4fbc55",
           "hangul": "수하물 표",
           "meaning": "baggage tag"
         },
         {
+          cell_id: "e4414603-18b4-475d-802a-afb657b9fd02",
           "hangul": "탑승권",
           "meaning": "boarding pass"
         },
         {
+          cell_id: "e4aa82c0-e2e0-4e46-b348-5b767c11b468",
           "hangul": "분실 신고서",
           "meaning": "loss report (PIR)"
         },
         {
+          cell_id: "571d904a-df40-4111-8bf9-e39c0802a2be",
           "hangul": "배송",
           "meaning": "delivery"
         },
         {
+          cell_id: "13c1f561-c415-4dd2-a61e-c85791a90910",
           "hangul": "보상",
           "meaning": "compensation"
         },
         {
+          cell_id: "13566789-77aa-4a1f-8df2-048fe368495d",
           "hangul": "추적",
           "meaning": "tracking"
         },
         {
+          cell_id: "e213927c-62be-47e7-84e1-c12b698d4633",
           "hangul": "도착",
           "meaning": "arrival"
         },
         {
+          cell_id: "e8e6db5f-ea45-444e-9ef2-dd74afe0bd34",
           "hangul": "필수품",
           "meaning": "essential items"
         }
@@ -8520,24 +8964,28 @@ export const lessons: KoreanLesson[] =       [
       ],
       "dialogue": [
         {
+          cell_id: "7e6b70cd-47cf-4a4b-bbbe-92c98a857904",
           "speaker": "A",
           "hangul": "안녕하세요. 수하물이 나오지 않았어요.",
           "meaning": "Hello. Luggage didn't come out.",
           "text_vi": "Xin chào. Hành lý của tôi không thấy ra."
         },
         {
+          cell_id: "94841e2c-9032-44d9-a97b-012aa898c7e9",
           "speaker": "B",
           "hangul": "수하물 표와 탑승권 보여 주세요.",
           "meaning": "Show me the baggage tag and boarding pass.",
           "text_vi": "Anh/chị cho tôi xem thẻ hành lý và thẻ lên máy bay."
         },
         {
+          cell_id: "550f6367-758a-424b-bef9-75eee11009f2",
           "speaker": "A",
           "hangul": "여기 있어요. 검은색 28인치 캐리어예요.",
           "meaning": "Here. Black 28-inch carrier.",
           "text_vi": "Đây ạ. Là vali màu đen 28 inch."
         },
         {
+          cell_id: "6d3793da-aa9c-48b1-8cfb-152dd2657860",
           "speaker": "B",
           "hangul": "분실 신고서 작성 도와드릴게요.",
           "meaning": "I'll help you fill out the loss report.",
@@ -8739,42 +9187,52 @@ export const lessons: KoreanLesson[] =       [
       "intro_vi": "Tại 경찰서 (đồn cảnh sát) báo cáo bị trộm cắp. Quy trình formal — 하십시오체 với cảnh sát (cán bộ chính phủ). Cấu trúc câu trả lời: WHEN + WHERE + WHAT + ESTIMATED VALUE. Tờ khai cảnh sát (도난 신고서) cần thiết cho insurance claim. Tone calm + factual = được xử lý nhanh; emotional = bị slow down để xác minh.",
       "vocabulary": [
         {
+          cell_id: "fb63b800-f5e7-4f64-9066-c1ca42dafb22",
           "hangul": "경찰서",
           "meaning": "police station"
         },
         {
+          cell_id: "59f4f1cb-822e-4ef5-a17e-cc6558cf64f8",
           "hangul": "도난",
           "meaning": "theft"
         },
         {
+          cell_id: "f9f2d06b-0d21-4aaa-ab41-ed32dae785aa",
           "hangul": "신고",
           "meaning": "report"
         },
         {
+          cell_id: "ca7647f7-49bb-471d-b1f6-67ec5c10e3a3",
           "hangul": "도난 신고서",
           "meaning": "theft report form"
         },
         {
+          cell_id: "c6c04bca-90ef-4071-8d66-740d05e838df",
           "hangul": "범인",
           "meaning": "perpetrator / suspect"
         },
         {
+          cell_id: "24155dc6-d63c-4e90-832b-103e5a99e4b4",
           "hangul": "목격자",
           "meaning": "witness"
         },
         {
+          cell_id: "8f9fa1b0-3143-4550-8fc7-18f044078256",
           "hangul": "피해 금액",
           "meaning": "amount of damage / loss value"
         },
         {
+          cell_id: "0bc9f75a-0c39-4f8e-883f-7be5a4ce1f3c",
           "hangul": "현금",
           "meaning": "cash"
         },
         {
+          cell_id: "70ca18f2-2b2a-48d4-930e-41c8526e4e0e",
           "hangul": "신용카드",
           "meaning": "credit card"
         },
         {
+          cell_id: "912a01e5-d4bd-4a27-9dc6-0b28f003a9b3",
           "hangul": "분실 시간",
           "meaning": "time of loss"
         }
@@ -8813,24 +9271,28 @@ export const lessons: KoreanLesson[] =       [
       ],
       "dialogue": [
         {
+          cell_id: "a7b55def-89f1-4483-8df2-836442eafe49",
           "speaker": "A",
           "hangul": "안녕하십니까. 도난 신고를 하러 왔습니다.",
           "meaning": "Hello. Came to file a theft report.",
           "text_vi": "Xin chào. Tôi đến để trình báo bị trộm cắp."
         },
         {
+          cell_id: "473bd931-10d4-4cb0-aa85-dd4da47f4d28",
           "speaker": "B",
           "hangul": "어떤 도난입니까?",
           "meaning": "What kind of theft?",
           "text_vi": "Bị trộm cắp như thế nào ạ?"
         },
         {
+          cell_id: "e395598f-3e9f-487d-89af-e939e4ef05b8",
           "speaker": "A",
           "hangul": "어제 명동에서 지갑을 도둑맞았습니다.",
           "meaning": "My wallet was stolen in Myeongdong yesterday.",
           "text_vi": "Hôm qua tôi bị trộm mất ví ở Myeongdong."
         },
         {
+          cell_id: "95fcb0e9-67a5-4607-96ac-1ddd2e0bc992",
           "speaker": "B",
           "hangul": "잠시만요, 신고서 양식을 가져오겠습니다.",
           "meaning": "One moment, I'll get the report form.",
@@ -9038,42 +9500,52 @@ export const lessons: KoreanLesson[] =       [
       "intro_vi": "Hỏi đường ở Seoul. Critical decision: 하십시오체 với 어른 (người lớn tuổi) hoặc người mặc đồng phục (cảnh sát, station staff); 해요체 với peer-aged passers-by; 반말 CHỈ với bạn thân biết tên. Sai register = từ rude (quá thấp) đến awkward (quá formal với peer). Bài này có 2 mini-dialogue mẫu register chuẩn.",
       "vocabulary": [
         {
+          cell_id: "fc99badd-ef14-4cc7-90fb-ad5e516d8ac3",
           "hangul": "길",
           "meaning": "road / way"
         },
         {
+          cell_id: "49e42e0e-bc88-4290-a81b-31c472130613",
           "hangul": "방향",
           "meaning": "direction"
         },
         {
+          cell_id: "4c974aad-2b12-43d5-a971-379a12e2b637",
           "hangul": "근처",
           "meaning": "nearby"
         },
         {
+          cell_id: "8b86d1cb-ac20-4769-943b-692c6861a244",
           "hangul": "건너편",
           "meaning": "across the street"
         },
         {
+          cell_id: "3dacc6e5-69c3-4a73-99ae-72a4acfc9d24",
           "hangul": "오른쪽",
           "meaning": "right"
         },
         {
+          cell_id: "85c40044-a168-4657-9485-e0d02c0546f5",
           "hangul": "왼쪽",
           "meaning": "left"
         },
         {
+          cell_id: "70e14af9-a03b-44fe-b9c9-861d6841c4de",
           "hangul": "직진",
           "meaning": "go straight"
         },
         {
+          cell_id: "509f1596-8abc-4443-b803-e607a72d3f9e",
           "hangul": "사거리",
           "meaning": "intersection"
         },
         {
+          cell_id: "d353121e-9e8f-42a5-aaaa-19f51914ed1f",
           "hangul": "지하철역",
           "meaning": "subway station"
         },
         {
+          cell_id: "7e1b094a-601e-412a-9b90-0626008aa8eb",
           "hangul": "출구",
           "meaning": "exit"
         }
@@ -9112,24 +9584,28 @@ export const lessons: KoreanLesson[] =       [
       ],
       "dialogue": [
         {
+          cell_id: "0af1d4b1-9ad8-401a-94dc-5577f3eec635",
           "speaker": "A",
           "hangul": "실례합니다, 명동역이 어느 쪽입니까?",
           "meaning": "Excuse me, which way is Myeongdong Station? (formal)",
           "text_vi": "Xin lỗi, cho hỏi ga Myeongdong đi hướng nào ạ?"
         },
         {
+          cell_id: "6350cf28-2a79-4150-a1fd-bf97513a8dde",
           "speaker": "B",
           "hangul": "저쪽으로 5분만 직진하시면 됩니다.",
           "meaning": "Just 5 minutes straight that way.",
           "text_vi": "Anh/chị cứ đi thẳng về phía kia khoảng 5 phút là tới ạ."
         },
         {
+          cell_id: "b70e2304-3e08-4658-86e3-a03b161f88bd",
           "speaker": "A",
           "hangul": "감사합니다.",
           "meaning": "Thank you.",
           "text_vi": "Cảm ơn anh/chị."
         },
         {
+          cell_id: "a44a0ea7-f8ae-4652-9991-513432d2b653",
           "speaker": "B",
           "hangul": "조심해서 가십시오.",
           "meaning": "Take care.",
@@ -9331,42 +9807,52 @@ export const lessons: KoreanLesson[] =       [
       "intro_vi": "Tại nhà hàng Hàn — món ra sai (đúng tên nhưng sai topping/level cay/portion) hoặc bill tính sai. 해요체 với phục vụ; 하십시오체 với manager nếu escalate. Hàn coi specific complaint = OK, generic 'food bad' = customer rude. Cấu trúc: chỉ vào món + nói exact mismatch + đề xuất giải pháp.",
       "vocabulary": [
         {
+          cell_id: "4bf63d8c-c26d-47e7-a2c4-ebe1b74c146d",
           "hangul": "주문",
           "meaning": "order"
         },
         {
+          cell_id: "54ba7f51-8ab2-45d9-a5fe-e787b5f70d5e",
           "hangul": "메뉴",
           "meaning": "menu item"
         },
         {
+          cell_id: "dc4098b6-a39d-4c7b-b2f1-960e86c0d66b",
           "hangul": "잘못 나오다",
           "meaning": "come out wrong"
         },
         {
+          cell_id: "6cbd8ca4-8c9c-4f07-8fc7-a4954e9e6d9f",
           "hangul": "계산서",
           "meaning": "bill / check"
         },
         {
+          cell_id: "40a53a3b-f0a0-49c1-97aa-444a958a0092",
           "hangul": "금액",
           "meaning": "amount"
         },
         {
+          cell_id: "f4af8bdd-1e69-47ab-810b-b82493a27ae1",
           "hangul": "추가",
           "meaning": "addition / extra"
         },
         {
+          cell_id: "2574ea7c-84ef-42e3-b583-f20aba9c5018",
           "hangul": "교환",
           "meaning": "exchange"
         },
         {
+          cell_id: "390c37e4-3284-4f63-8690-c40f3b47beb0",
           "hangul": "취소",
           "meaning": "cancellation"
         },
         {
+          cell_id: "98c2eb25-3918-4613-a8ca-343d190b1df7",
           "hangul": "할인",
           "meaning": "discount"
         },
         {
+          cell_id: "2e96d4cb-f5db-478e-ac10-73a7cdf77b2d",
           "hangul": "사장님",
           "meaning": "owner / manager"
         }
@@ -9405,24 +9891,28 @@ export const lessons: KoreanLesson[] =       [
       ],
       "dialogue": [
         {
+          cell_id: "e1e374fa-6864-4291-8a25-eaed6e708b03",
           "speaker": "A",
           "hangul": "저기요. 주문이 잘못 나온 것 같아요.",
           "meaning": "Excuse me. Order came out wrong.",
           "text_vi": "Anh/chị ơi. Hình như món này lên nhầm rồi."
         },
         {
+          cell_id: "c6266422-2d18-4143-9d70-0719d835d0f5",
           "speaker": "B",
           "hangul": "어떤 부분이요?",
           "meaning": "Which part?",
           "text_vi": "Phần nào ạ?"
         },
         {
+          cell_id: "991a69c7-c920-4045-b4d2-6fc074c4429f",
           "speaker": "A",
           "hangul": "저는 비빔밥 시켰는데 매운 게 나왔어요. 안 매운 거 부탁드렸거든요.",
           "meaning": "I ordered bibimbap but spicy one came. I asked for non-spicy.",
           "text_vi": "Tôi gọi cơm trộn bibimbap mà món cay lại lên. Tôi đã dặn làm món không cay mà."
         },
         {
+          cell_id: "20a9fd62-e147-44ac-a0fe-748f3a867463",
           "speaker": "B",
           "hangul": "정말 죄송해요. 바로 안 매운 걸로 다시 만들어 드릴게요.",
           "meaning": "So sorry. We'll make non-spicy right away.",
@@ -9624,42 +10114,52 @@ export const lessons: KoreanLesson[] =       [
       "intro_vi": "Vấn đề thường gặp với tourist tại Seoul: tài xế taxi đi đường vòng cố ý (특히 ở khu Myeongdong, Itaewon) hoặc tính giá sai. 해요체 với 기사님 (driver) — không 하십시오체 (mismatched register). Cấu trúc: dùng evidence (Naver Maps GPS history, meter photo) + calm escalation. Trầm trọng → Kakao Taxi report hoặc dial 120 (Seoul taxi complaint hotline).",
       "vocabulary": [
         {
+          cell_id: "6966d1f2-9ccd-44fb-8cd4-388a4448b9e7",
           "hangul": "택시",
           "meaning": "taxi"
         },
         {
+          cell_id: "65ee0608-e39b-45ad-913c-4614ffb0ca71",
           "hangul": "기사님",
           "meaning": "driver (polite)"
         },
         {
+          cell_id: "9c70f4cd-8dc3-4f5f-b261-81919c66734b",
           "hangul": "요금",
           "meaning": "fare"
         },
         {
+          cell_id: "3299291a-eec3-4bf9-9c0e-94041640e119",
           "hangul": "미터기",
           "meaning": "meter"
         },
         {
+          cell_id: "5043040d-2f92-4ef4-b9ba-84c759457a80",
           "hangul": "경로",
           "meaning": "route"
         },
         {
+          cell_id: "45a3cd86-3871-4b10-80aa-189632f7961f",
           "hangul": "돌아가다",
           "meaning": "go around / detour"
         },
         {
+          cell_id: "edec800f-f0a2-4e35-bdaa-12cca5efa095",
           "hangul": "지름길",
           "meaning": "shortcut"
         },
         {
+          cell_id: "633b020b-04a3-4c57-8e3c-ae747a08633b",
           "hangul": "영수증",
           "meaning": "receipt"
         },
         {
+          cell_id: "11d03bcb-7d2b-4684-a88e-68400651e794",
           "hangul": "신고",
           "meaning": "report / complaint"
         },
         {
+          cell_id: "b556709c-7f1b-488a-9df1-5fa973cd9453",
           "hangul": "정확하다",
           "meaning": "to be accurate"
         }
@@ -9698,24 +10198,28 @@ export const lessons: KoreanLesson[] =       [
       ],
       "dialogue": [
         {
+          cell_id: "0b100985-535f-4152-875c-7b305bca725f",
           "speaker": "A",
           "hangul": "기사님, 이 길이 맞아요? 지도에는 다른 경로가 나오는데요.",
           "meaning": "Driver, right way? Map shows different route.",
           "text_vi": "Bác tài ơi, đường này đúng không ạ? Bản đồ chỉ tuyến đường khác mà."
         },
         {
+          cell_id: "4a01cee2-aa23-4153-9723-b305a7a3872e",
           "speaker": "B",
           "hangul": "이 시간에는 이쪽이 빨라요. 우회하는 거예요.",
           "meaning": "This way is faster at this time. Going around.",
           "text_vi": "Giờ này đi đường này nhanh hơn. Tôi đi đường vòng đấy."
         },
         {
+          cell_id: "89b3e8fb-7052-413a-b903-43d1cb117cb1",
           "speaker": "A",
           "hangul": "음... 다음에는 미리 말씀해 주세요. 걱정됐어요.",
           "meaning": "Hmm... please tell me in advance next time. I was worried.",
           "text_vi": "Ừm... lần sau bác nói trước cho cháu nhé. Cháu lo quá."
         },
         {
+          cell_id: "0e582e70-b0b3-4134-acbc-df79d198defd",
           "speaker": "B",
           "hangul": "알겠습니다.",
           "meaning": "Understood.",
@@ -9917,42 +10421,52 @@ export const lessons: KoreanLesson[] =       [
       "intro_vi": "Vợ/chồng Việt với 시부모님 (bố mẹ chồng) hoặc 처부모님 (bố mẹ vợ) Hàn Quốc — navigate cultural friction về expectation lễ tết, cooking, visiting frequency. 하십시오체 BẮT BUỘC toàn bộ. Quy tắc vàng: nói chuyện với spouse TRƯỚC, agreed position, sau đó approach in-laws cùng nhau hoặc qua spouse. KHÔNG confront in-laws trực tiếp.",
       "vocabulary": [
         {
+          cell_id: "e6bf1da2-0175-4c5e-aab9-9e14810b35d4",
           "hangul": "시부모님",
           "meaning": "parents-in-law (husband's side, formal)"
         },
         {
+          cell_id: "b985ab45-c6f7-443c-8a34-2d311b276818",
           "hangul": "며느리",
           "meaning": "daughter-in-law"
         },
         {
+          cell_id: "89f247ed-983f-4114-9324-216bba24c2a1",
           "hangul": "사위",
           "meaning": "son-in-law"
         },
         {
+          cell_id: "da973153-7b3a-439a-bd08-00d0bd36fffe",
           "hangul": "명절",
           "meaning": "traditional holiday (Seollal/Chuseok)"
         },
         {
+          cell_id: "50324662-cd61-4f4d-b547-cf9beddfcc4b",
           "hangul": "차례",
           "meaning": "ancestral rite ceremony"
         },
         {
+          cell_id: "9a4c19fb-5715-47ad-829b-591cd19e241c",
           "hangul": "도리",
           "meaning": "duty / obligation (Confucian)"
         },
         {
+          cell_id: "faf59516-f157-4efb-b054-eecbceafdf77",
           "hangul": "양해",
           "meaning": "understanding (asking for accommodation)"
         },
         {
+          cell_id: "6dbab161-d25a-4182-a22c-df7fda90417f",
           "hangul": "가풍",
           "meaning": "family tradition / customs"
         },
         {
+          cell_id: "6eafa08f-5db6-43a8-b5bf-4c479d956401",
           "hangul": "격식",
           "meaning": "formality / etiquette"
         },
         {
+          cell_id: "285e7a06-cd95-4e1f-8a4c-ff6e36f86071",
           "hangul": "친정",
           "meaning": "wife's parental home"
         }
@@ -9991,24 +10505,28 @@ export const lessons: KoreanLesson[] =       [
       ],
       "dialogue": [
         {
+          cell_id: "30eea03a-4095-48a9-98bc-45ecaefb28bf",
           "speaker": "A",
           "hangul": "어머님, 잠시 시간 괜찮으세요?",
           "meaning": "Mother, do you have a moment?",
           "text_vi": "Mẹ ơi, mẹ có chút thời gian không ạ?"
         },
         {
+          cell_id: "2080c73e-cf65-4a01-8837-08e4c9996281",
           "speaker": "B",
           "hangul": "그래, 무슨 일이니?",
           "meaning": "Yes, what is it?",
           "text_vi": "Ừ, có chuyện gì thế con?"
         },
         {
+          cell_id: "368eef43-3739-460c-9379-61b2cd5a744f",
           "speaker": "A",
           "hangul": "다음 명절 일정 말씀드리고 싶어서요.",
           "meaning": "I'd like to discuss the next holiday schedule.",
           "text_vi": "Con muốn thưa với mẹ về lịch trình dịp lễ tới ạ."
         },
         {
+          cell_id: "88fc71b4-27e7-4724-a9f4-2a2dc469da7f",
           "speaker": "B",
           "hangul": "듣고 있어. 천천히 말해 봐.",
           "meaning": "I'm listening. Take your time.",
@@ -10210,42 +10728,52 @@ export const lessons: KoreanLesson[] =       [
       "intro_vi": "Bạn Hàn (peer adult) raise topic chính trị nhạy cảm — NK/SK, Trung Quốc, Nhật Bản, gender politics. Bạn (Việt Nam) có quan điểm khác. Bài này dạy NAVIGATE thay vì AVOID: 4-layer safe answer (acknowledge / disclaim / brief answer / bridge to friendship). 해요체 với peer; KHÔNG 반말 trong topic nhạy — 반말 + chính trị = sounds aggressive.",
       "vocabulary": [
         {
+          cell_id: "160bd22f-10e1-49ba-8736-e305642cb089",
           "hangul": "정치",
           "meaning": "politics"
         },
         {
+          cell_id: "c12e7ae9-a300-4639-9bc6-eb4bf8654192",
           "hangul": "의견",
           "meaning": "opinion"
         },
         {
+          cell_id: "d1397cc6-653e-46cf-af82-06d4263ac19c",
           "hangul": "견해",
           "meaning": "view / perspective"
         },
         {
+          cell_id: "3220ddbe-88c0-4378-8e0b-72d16e842787",
           "hangul": "입장",
           "meaning": "position / stance"
         },
         {
+          cell_id: "3e81a2cf-0ecb-4b8d-b3c7-04b6d5363c02",
           "hangul": "논쟁",
           "meaning": "debate / argument"
         },
         {
+          cell_id: "e17f6428-5e53-4fed-91d8-02d52e483f83",
           "hangul": "차이",
           "meaning": "difference"
         },
         {
+          cell_id: "077b8a5f-b429-4963-8352-ed4a7c4446bc",
           "hangul": "존중",
           "meaning": "respect"
         },
         {
+          cell_id: "281dc0ce-fd4c-484e-9361-8722701afd2b",
           "hangul": "동의하다",
           "meaning": "to agree"
         },
         {
+          cell_id: "53e5f440-c7e4-4c7d-803c-faac1ffb48c1",
           "hangul": "동의하지 않다",
           "meaning": "to disagree"
         },
         {
+          cell_id: "3f7942a9-1850-4cc7-8911-813aafda6311",
           "hangul": "갈등",
           "meaning": "conflict"
         }
@@ -10284,24 +10812,28 @@ export const lessons: KoreanLesson[] =       [
       ],
       "dialogue": [
         {
+          cell_id: "9accb3e2-b556-428b-841b-22d810c99634",
           "speaker": "A",
           "hangul": "응웬 씨, 베트남에서는 한국 정치 어떻게 봐요?",
           "meaning": "Linh, how do Vietnamese view Korean politics?",
           "text_vi": "Chị Nguyễn này, ở Việt Nam mọi người nhìn nhận chính trị Hàn Quốc thế nào?"
         },
         {
+          cell_id: "dfca7f23-93e2-424b-9a98-730b777868ef",
           "speaker": "B",
           "hangul": "정치 얘기는 좀 조심스러워요. 뭐가 궁금하세요?",
           "meaning": "Politics is a delicate topic. What are you curious about?",
           "text_vi": "Chuyện chính trị thì hơi tế nhị ạ. Anh/chị muốn biết điều gì?"
         },
         {
+          cell_id: "a4b9e2a6-ed26-4c0f-b406-1d342d81f90a",
           "speaker": "A",
           "hangul": "그냥 일반적인 견해요.",
           "meaning": "Just general perspective.",
           "text_vi": "Chỉ là quan điểm chung chung thôi."
         },
         {
+          cell_id: "1367b0ee-cd39-4f18-8d9c-9898a53d34d9",
           "speaker": "B",
           "hangul": "그럼 짧게 얘기할게요. 입장 차이는 분명히 있어요.",
           "meaning": "Then briefly. There are clear position differences.",
@@ -10503,42 +11035,52 @@ export const lessons: KoreanLesson[] =       [
       "intro_vi": "Bạn Hàn vừa mất người thân (ông bà, bố mẹ) hoặc thú cưng lâu năm. Đến thăm, offer condolences. 위로하다 (an ủi) — moment cảm xúc cao. EVEN close friends thường shift UP register lên 해요체 (từ 반말 thường ngày) để signal gravity. Bài này dạy timing register shift + words to use + words to AVOID.",
       "vocabulary": [
         {
+          cell_id: "7310fbba-d71e-462f-bcbf-8ee561d4d6ae",
           "hangul": "위로",
           "meaning": "comfort / consolation"
         },
         {
+          cell_id: "1bc46619-3039-4ad9-9045-89818a45cab4",
           "hangul": "슬픔",
           "meaning": "sadness / grief"
         },
         {
+          cell_id: "f280cc67-966f-4180-a9fa-611fe28cc3fe",
           "hangul": "상실",
           "meaning": "loss"
         },
         {
+          cell_id: "20c8ea10-0703-45be-9b64-c6486ea2bc16",
           "hangul": "마음",
           "meaning": "heart / feelings"
         },
         {
+          cell_id: "a998540c-f076-4649-81ff-d5095bb68c0e",
           "hangul": "함께하다",
           "meaning": "to be together with"
         },
         {
+          cell_id: "1ca1057f-26ab-4fc7-b60d-7888f17374ec",
           "hangul": "추모",
           "meaning": "commemoration / remembering"
         },
         {
+          cell_id: "a45f170a-f5cc-4204-bdef-acb3839c4d42",
           "hangul": "명복",
           "meaning": "blessing for the deceased"
         },
         {
+          cell_id: "5447104d-d0c6-439b-8c65-6bf953e09c2d",
           "hangul": "진심",
           "meaning": "sincerity"
         },
         {
+          cell_id: "a11de918-9381-4220-a5a7-164409a3c821",
           "hangul": "안타깝다",
           "meaning": "to be regrettable / sorrowful"
         },
         {
+          cell_id: "558952e9-78c1-4692-8f3e-44c7aba46468",
           "hangul": "시간이 약이다",
           "meaning": "time is the medicine (idiom)"
         }
@@ -10577,24 +11119,28 @@ export const lessons: KoreanLesson[] =       [
       ],
       "dialogue": [
         {
+          cell_id: "d4475415-f52d-4b94-b17d-5fc13e9047ba",
           "speaker": "A",
           "hangul": "안 좋은 소식 들었어요. 정말 안타까워요.",
           "meaning": "I heard the bad news. Truly sorry.",
           "text_vi": "Tôi nghe tin không vui. Tôi thật sự rất tiếc."
         },
         {
+          cell_id: "941f1fce-a4cf-4b12-9a97-e4b37db3ba4b",
           "speaker": "B",
           "hangul": "와 줘서 고마워요. 아직 실감이 안 나요.",
           "meaning": "Thanks for coming. It still doesn't feel real.",
           "text_vi": "Cảm ơn anh/chị đã đến. Tôi vẫn chưa cảm nhận được là thật."
         },
         {
+          cell_id: "8f53246c-52cf-40b3-b344-2153cef66c5f",
           "speaker": "A",
           "hangul": "마음이 어떨지 짐작도 안 가요. 옆에 있을게요.",
           "meaning": "I can't even imagine how you feel. I'll be by your side.",
           "text_vi": "Tôi không thể tưởng tượng nổi anh/chị đang cảm thấy thế nào. Tôi sẽ ở bên cạnh anh/chị."
         },
         {
+          cell_id: "57de68e4-f37c-4167-923d-99217b415a67",
           "speaker": "B",
           "hangul": "지금 옆에 있어 줘서 그게 위로예요.",
           "meaning": "Just being here now is the comfort.",
@@ -10802,42 +11348,52 @@ export const lessons: KoreanLesson[] =       [
       "intro_vi": "Bạn phạm lỗi nghiêm trọng với bạn/người yêu/đồng nghiệp Hàn — quên ngày quan trọng, lỡ lời tổn thương, fail commitment lớn. Bài này dạy LEVEL của 사과 (xin lỗi) — từ 미안해 (peer, light) đến 죄송합니다 (formal) đến 잘못했어요 (admitting fault explicitly) đến 사과드립니다 (formal apology — most serious). Register choice IS the apology.",
       "vocabulary": [
         {
+          cell_id: "ef0fa805-d90c-4bf7-831b-abd542bd0b12",
           "hangul": "사과",
           "meaning": "apology"
         },
         {
+          cell_id: "329599da-3e3b-4af1-9844-8b81c23dccf9",
           "hangul": "잘못",
           "meaning": "fault / wrongdoing"
         },
         {
+          cell_id: "e9499133-76b3-4cea-97ab-6b8159791d7f",
           "hangul": "실수",
           "meaning": "mistake"
         },
         {
+          cell_id: "689f0608-41df-4e0a-b328-e0839ee5fde0",
           "hangul": "후회",
           "meaning": "regret"
         },
         {
+          cell_id: "be86e1a5-fb41-4fe9-ae9c-fb1e4a1260c4",
           "hangul": "용서",
           "meaning": "forgiveness"
         },
         {
+          cell_id: "33df13f2-8418-4e35-bc59-b5cf929b3341",
           "hangul": "변명",
           "meaning": "excuse / justification (negative)"
         },
         {
+          cell_id: "4ba178f2-d017-41cf-af46-589bebbb182a",
           "hangul": "책임",
           "meaning": "responsibility"
         },
         {
+          cell_id: "8ad222c3-3bc5-49fc-8b79-a102d9a7ecfa",
           "hangul": "반성",
           "meaning": "self-reflection / contrition"
         },
         {
+          cell_id: "f63c5a38-7880-40a2-b97d-9fcca8a9c102",
           "hangul": "다시 한 번",
           "meaning": "once more / one more time"
         },
         {
+          cell_id: "b303f003-82d5-45ba-9678-99f3bc040973",
           "hangul": "기회",
           "meaning": "chance / opportunity"
         }
@@ -10876,24 +11432,28 @@ export const lessons: KoreanLesson[] =       [
       ],
       "dialogue": [
         {
+          cell_id: "896e900f-8412-4c64-8e67-65233e7d81a4",
           "speaker": "A",
           "hangul": "지원 씨, 잠깐 시간 좀 있어요? 사과드릴 일이 있어요.",
           "meaning": "Ji-won, do you have a moment? I need to apologize.",
           "text_vi": "Chị Jiwon ơi, chị có chút thời gian không? Tôi có việc muốn xin lỗi."
         },
         {
+          cell_id: "438adc31-e369-4565-a6cc-a99b8f5f8c45",
           "speaker": "B",
           "hangul": "네, 들어 볼게요.",
           "meaning": "Yes, I'll listen.",
           "text_vi": "Vâng, tôi nghe đây."
         },
         {
+          cell_id: "7268d1d4-4c54-4ebb-a3e2-26ec97a9c7a3",
           "speaker": "A",
           "hangul": "지난주 약속 날짜 까먹은 거 정말 잘못했어요.",
           "meaning": "I was really wrong to forget our appointment last week.",
           "text_vi": "Tuần trước tôi quên ngày hẹn của chúng ta, thật sự là tôi đã sai."
         },
         {
+          cell_id: "9a46843a-10d8-46ea-917d-5848f9082826",
           "speaker": "B",
           "hangul": "솔직하게 말해 줘서 고마워요.",
           "meaning": "Thanks for being honest.",
@@ -11101,42 +11661,52 @@ export const lessons: KoreanLesson[] =       [
       "intro_vi": "Bạn Hàn rời đi vĩnh viễn (sang nước khác), hoặc relationship kết thúc. Goodbye trong văn hóa Hàn (정-based) khó hơn các nước khác — once 정 has formed, parting có cảm giác tearing fabric. Bài này dạy emotionally honest goodbye + leaving door open cho future contact + 의리 (loyalty) commitments.",
       "vocabulary": [
         {
+          cell_id: "7376e1da-80d9-4607-bbb1-a474db2e995b",
           "hangul": "이별",
           "meaning": "parting / separation"
         },
         {
+          cell_id: "2d75be8c-9d14-44d4-90d0-4f752362cce3",
           "hangul": "이사",
           "meaning": "moving (residence)"
         },
         {
+          cell_id: "848c9526-000e-42a0-88d0-33663944924f",
           "hangul": "헤어지다",
           "meaning": "to part / break up"
         },
         {
+          cell_id: "34caae34-7fab-4fd7-a925-b02cf4e9d41f",
           "hangul": "떠나다",
           "meaning": "to leave"
         },
         {
+          cell_id: "b9bc532c-1895-45f9-95f5-fa2d64a9d990",
           "hangul": "그리워하다",
           "meaning": "to miss"
         },
         {
+          cell_id: "31f242db-608d-43ae-8cd2-6ba86c92f805",
           "hangul": "추억",
           "meaning": "memory / fond memory"
         },
         {
+          cell_id: "bdb9c5cc-a35f-4a83-8c74-bb0fa9e02133",
           "hangul": "약속",
           "meaning": "promise"
         },
         {
+          cell_id: "e14c6ed3-aa46-49c0-a3ac-d60658e0f758",
           "hangul": "연락",
           "meaning": "contact"
         },
         {
+          cell_id: "d0824437-1c49-4f79-843c-df285c501a91",
           "hangul": "재회",
           "meaning": "reunion"
         },
         {
+          cell_id: "0f24d20b-3fa9-4281-8802-3782c633172d",
           "hangul": "정",
           "meaning": "deep emotional bond (Korean concept)"
         }
@@ -11175,24 +11745,28 @@ export const lessons: KoreanLesson[] =       [
       ],
       "dialogue": [
         {
+          cell_id: "4e572c3a-4ce4-443c-91a9-3387baa8f2dc",
           "speaker": "A",
           "hangul": "지원 씨, 정말 다음 주 호주로 떠나는 거 맞아요?",
           "meaning": "Ji-won, you're really leaving for Australia next week?",
           "text_vi": "Chị Jiwon ơi, tuần sau chị đi Úc thật à?"
         },
         {
+          cell_id: "aa756ae4-ad2c-4120-84ca-4c1bd0c550f6",
           "speaker": "B",
           "hangul": "네, 다음 주 화요일 비행기예요.",
           "meaning": "Yes, Tuesday's flight.",
           "text_vi": "Vâng, là chuyến bay thứ Ba tuần sau."
         },
         {
+          cell_id: "1044fe77-b015-4f6f-ad04-72bd69d983b2",
           "speaker": "A",
           "hangul": "실감이 안 나요. 3년 너무 빨랐어요.",
           "meaning": "It doesn't feel real. 3 years went too fast.",
           "text_vi": "Tôi vẫn chưa thấy thật. Ba năm trôi nhanh quá."
         },
         {
+          cell_id: "f415b21f-8d7d-4aa4-aaac-4173920756fa",
           "speaker": "B",
           "hangul": "저도요. 정이 많이 들었어요.",
           "meaning": "Same. We've grown close.",
@@ -11400,42 +11974,52 @@ export const lessons: KoreanLesson[] =       [
       "intro_vi": "Bạn Hàn đang stress nặng — work pressure, family conflict, exhaustion, isolation. Bạn đến chỗ họ + lắng nghe + offer practical help. Bài này dạy emotional support BY VALIDATING, không bằng FIXING. Vietnamese culture có khuynh hướng give advice immediately; Hàn (như nhiều cultures) sometimes just wants to be heard. 해요체 với peer adult.",
       "vocabulary": [
         {
+          cell_id: "7fcb2a74-3626-43a0-8e93-a1008b21cbf2",
           "hangul": "힘들다",
           "meaning": "to be difficult / hard"
         },
         {
+          cell_id: "2e2db5e3-eddf-42e2-a435-2c05d5b41f34",
           "hangul": "스트레스",
           "meaning": "stress"
         },
         {
+          cell_id: "2d0e4a41-3b54-4f6a-9171-8e12c6287e0b",
           "hangul": "지치다",
           "meaning": "to be exhausted / worn out"
         },
         {
+          cell_id: "8f1077cb-0f96-4730-a453-ca9e78d56a1b",
           "hangul": "이해하다",
           "meaning": "to understand"
         },
         {
+          cell_id: "06f3db20-c4c6-4c0e-9a07-3989f76cc5aa",
           "hangul": "공감하다",
           "meaning": "to empathize"
         },
         {
+          cell_id: "b2b5c904-e456-44c4-85ca-6649f5315b1d",
           "hangul": "들어주다",
           "meaning": "to listen (to someone)"
         },
         {
+          cell_id: "b4578830-b9e0-4efc-be59-e791e4702b18",
           "hangul": "기대다",
           "meaning": "to lean on"
         },
         {
+          cell_id: "d432a61b-c7d6-4274-b4b9-24bf27df614c",
           "hangul": "혼자 짊어지다",
           "meaning": "to carry alone"
         },
         {
+          cell_id: "12695742-3d9b-4031-9120-f9dfd9a75cc3",
           "hangul": "도움",
           "meaning": "help"
         },
         {
+          cell_id: "dcca4359-787e-4c36-96d2-9bf7e684cfc4",
           "hangul": "버티다",
           "meaning": "to endure / hold on"
         }
@@ -11474,24 +12058,28 @@ export const lessons: KoreanLesson[] =       [
       ],
       "dialogue": [
         {
+          cell_id: "8ae79f99-5f28-4ebe-8a71-7d6878795c36",
           "speaker": "A",
           "hangul": "민우 씨, 요즘 좀 어때요? 얼굴이 안 좋아 보여요.",
           "meaning": "Min-woo, how are you these days? You look unwell.",
           "text_vi": "Anh Minu này, dạo này anh thế nào? Trông sắc mặt anh không tốt."
         },
         {
+          cell_id: "db6c0c62-56d4-419a-96a5-41baf1c0a368",
           "speaker": "B",
           "hangul": "솔직히 좀 지쳤어요. 일도 그렇고 집안일도 겹치고...",
           "meaning": "Honestly tired. Work and family stuff overlap...",
           "text_vi": "Thật lòng thì tôi hơi kiệt sức. Việc công ty rồi cả việc nhà chồng chất lên..."
         },
         {
+          cell_id: "9b63a7f4-5d70-45bb-8aa1-291aab39c029",
           "speaker": "A",
           "hangul": "많이 힘들겠어요. 잠깐 얘기 들어 줄게요.",
           "meaning": "Must be hard. Let me listen for a bit.",
           "text_vi": "Chắc anh vất vả lắm. Tôi nghe anh nói chuyện một lát nhé."
         },
         {
+          cell_id: "1f71654c-35a7-4aa3-9840-22845d2063b2",
           "speaker": "B",
           "hangul": "고마워요. 그냥 누구한테 말할 데가 없었어요.",
           "meaning": "Thanks. Just had nowhere to talk to anyone.",
@@ -11699,42 +12287,52 @@ export const lessons: KoreanLesson[] =       [
       "intro_vi": "Bạn cho bạn Hàn mượn tiền 6 tháng trước, họ chưa trả. Hoặc bạn được hỏi mượn, không thể giúp. Bài này dạy 2 mặt: (a) hỏi lại tiền lịch sự — Hàn cực sensitive về 돈 (money), 'awkward in friendship' default nhưng silence = tệ hơn; (b) từ chối mượn lịch sự + giữ quan hệ. 해요체 với peer; tone calm, không emotional.",
       "vocabulary": [
         {
+          cell_id: "c9903be3-8698-4af4-9ec7-6c471c3bb03d",
           "hangul": "돈",
           "meaning": "money"
         },
         {
+          cell_id: "c9dbaf83-2289-4204-b571-6090daba9fb4",
           "hangul": "빌리다",
           "meaning": "to borrow"
         },
         {
+          cell_id: "cd82b341-0607-47e3-87ee-6ed44c828d5d",
           "hangul": "빌려주다",
           "meaning": "to lend"
         },
         {
+          cell_id: "9b36940b-c6a2-4898-93ce-0e76461a7c9c",
           "hangul": "갚다",
           "meaning": "to pay back"
         },
         {
+          cell_id: "a7ce5dcc-d8a2-4e07-839e-10e935b19bc2",
           "hangul": "빚",
           "meaning": "debt"
         },
         {
+          cell_id: "9e969241-a9cd-4802-a027-0786f8a66357",
           "hangul": "이자",
           "meaning": "interest"
         },
         {
+          cell_id: "93124e38-1f93-435a-bf23-e02b5aaee92d",
           "hangul": "급하다",
           "meaning": "to be urgent"
         },
         {
+          cell_id: "90a1b4da-50d4-438a-9b5c-b6f854abae5f",
           "hangul": "사정",
           "meaning": "circumstance"
         },
         {
+          cell_id: "2e75306d-3f3e-4904-a136-2d13c682a8ed",
           "hangul": "거절하다",
           "meaning": "to decline"
         },
         {
+          cell_id: "fd3fa0a3-a60d-46d3-9e16-815715a17c3c",
           "hangul": "양해",
           "meaning": "understanding (asking for)"
         }
@@ -11773,24 +12371,28 @@ export const lessons: KoreanLesson[] =       [
       ],
       "dialogue": [
         {
+          cell_id: "68cc75b4-caf3-42a9-a7a1-211d1e7d1a1f",
           "speaker": "A",
           "hangul": "수진 씨, 잠시 시간 있어요? 좀 어색한 얘기지만...",
           "meaning": "Su-jin, do you have a moment? It's awkward but...",
           "text_vi": "Chị Sujin ơi, chị có chút thời gian không? Chuyện này hơi ngại nói nhưng mà..."
         },
         {
+          cell_id: "385f5154-1e36-4ee4-965f-88b5ba99241d",
           "speaker": "B",
           "hangul": "어떤 얘기예요? 편하게 해요.",
           "meaning": "What is it? Speak freely.",
           "text_vi": "Chuyện gì vậy ạ? Anh/chị cứ nói thoải mái."
         },
         {
+          cell_id: "25c2586a-40ee-46c0-8b5d-e8ced08d6304",
           "speaker": "A",
           "hangul": "지난 6월에 빌려드린 30만 원 얘기예요.",
           "meaning": "About the 300,000 won I lent in June.",
           "text_vi": "Là chuyện 300 nghìn won tôi cho chị mượn hồi tháng 6."
         },
         {
+          cell_id: "ed035fd7-42e0-4332-8de0-8e382d3d133f",
           "speaker": "B",
           "hangul": "아, 맞다! 정말 죄송해요. 까먹고 있었어요.",
           "meaning": "Oh right! I'm so sorry. I forgot about it.",
@@ -11992,42 +12594,52 @@ export const lessons: KoreanLesson[] =       [
       "intro_vi": "Bạn Hàn (Christian, Buddhist, hoặc 무교 — no religion) hỏi bạn (Vietnamese, có thể Buddhist, Christian, ancestor veneration, hoặc no religion) về tín ngưỡng. Korean religious landscape: ~30% Christian, ~20% Buddhist, ~50% no religion — diverse. Bài này dạy share faith respectfully + honor differences + KHÔNG proselytize.",
       "vocabulary": [
         {
+          cell_id: "b8d71de5-b99d-4c75-952c-1fb8e399073f",
           "hangul": "종교",
           "meaning": "religion"
         },
         {
+          cell_id: "3d6c7ddc-77a2-4c94-bffa-add5d4ae01d8",
           "hangul": "신앙",
           "meaning": "faith / belief"
         },
         {
+          cell_id: "fc5baa41-4546-4155-9631-d872b124fd44",
           "hangul": "기독교",
           "meaning": "Christianity"
         },
         {
+          cell_id: "78c6d2f1-cbfa-427a-a297-a5daa4158df8",
           "hangul": "불교",
           "meaning": "Buddhism"
         },
         {
+          cell_id: "17a2e4b4-c2ee-42f8-96e1-4b07330c1080",
           "hangul": "무교",
           "meaning": "no religion"
         },
         {
+          cell_id: "02b01906-2fb5-4b50-b09f-83a400d39c58",
           "hangul": "교회",
           "meaning": "church"
         },
         {
+          cell_id: "e7f0a48a-baae-409b-9f38-a7ced4188814",
           "hangul": "절",
           "meaning": "Buddhist temple"
         },
         {
+          cell_id: "92fc5dbf-1081-4d2f-80f2-44f685057cf8",
           "hangul": "조상 숭배",
           "meaning": "ancestor veneration"
         },
         {
+          cell_id: "7fa9c4c7-a62b-4e32-add4-f19943ebd074",
           "hangul": "기도",
           "meaning": "prayer"
         },
         {
+          cell_id: "5cb29486-ee50-4e87-a33f-6ad395e8fa24",
           "hangul": "다양성",
           "meaning": "diversity"
         }
@@ -12066,24 +12678,28 @@ export const lessons: KoreanLesson[] =       [
       ],
       "dialogue": [
         {
+          cell_id: "3a09f628-8873-4234-b2c6-df766dd77398",
           "speaker": "A",
           "hangul": "응웬 씨, 혹시 종교 갖고 있어요?",
           "meaning": "Linh, do you have a religion?",
           "text_vi": "Chị Nguyễn ơi, không biết chị có theo tôn giáo nào không?"
         },
         {
+          cell_id: "a113c963-3f5c-4b02-8e1c-d59f0b8cda04",
           "speaker": "B",
           "hangul": "저희 가족은 조상 숭배해요. 절에도 가끔 가요.",
           "meaning": "My family does ancestor veneration. Sometimes go to temple too.",
           "text_vi": "Gia đình tôi thờ cúng tổ tiên. Thỉnh thoảng tôi cũng đi chùa."
         },
         {
+          cell_id: "5d742be6-7100-4710-9c48-ff093b7b0665",
           "speaker": "A",
           "hangul": "베트남 문화네요. 저는 기독교인데 강요는 안 해요.",
           "meaning": "Vietnamese culture. I'm Christian but I don't pressure.",
           "text_vi": "Là văn hóa Việt Nam nhỉ. Tôi theo đạo Cơ Đốc nhưng tôi không ép buộc đâu."
         },
         {
+          cell_id: "b340857a-0bd6-4f74-b7e7-c02c78351f77",
           "speaker": "B",
           "hangul": "고마워요. 서로 다른 거 자연스러워요.",
           "meaning": "Thanks. Being different is natural.",
@@ -12287,42 +12903,52 @@ export const lessons: KoreanLesson[] =       [
       "intro_vi": "Bạn Hàn (close friend) bất ngờ chia sẻ một trải nghiệm khó từ quá khứ — khó khăn gia đình thuở nhỏ, một mất mát lâu năm, một thất bại lớn họ chưa từng kể. Đây là MOMENT TIN TƯỞNG. Bài này dạy listener skill: present-with-them, không jump-to-fix, validate without pity, honor the trust. 해요체 — even close friends shift up cho gravity.",
       "vocabulary": [
         {
+          cell_id: "9f93636d-00e6-4b72-b60b-1b19aec6d3ae",
           "hangul": "과거",
           "meaning": "past"
         },
         {
+          cell_id: "4849cafe-eb67-49eb-b265-e93c95b75141",
           "hangul": "경험",
           "meaning": "experience"
         },
         {
+          cell_id: "5e027bed-2996-481c-a30c-ed1fef1255d4",
           "hangul": "어려움",
           "meaning": "difficulty / hardship"
         },
         {
+          cell_id: "1d531eb1-bfc7-4171-8eea-0e6b542477bb",
           "hangul": "털어놓다",
           "meaning": "to open up / unburden"
         },
         {
+          cell_id: "619f1cbb-cab4-4205-99fa-80282e8fe432",
           "hangul": "비밀",
           "meaning": "secret"
         },
         {
+          cell_id: "ac81a142-1781-4d16-ad3d-1dd2331b130c",
           "hangul": "신뢰",
           "meaning": "trust"
         },
         {
+          cell_id: "609894ee-e0c9-4770-b9f2-1c482b775211",
           "hangul": "들어주다",
           "meaning": "to listen for someone"
         },
         {
+          cell_id: "fdee2db1-f458-40ef-a8ff-8327291f5898",
           "hangul": "판단하지 않다",
           "meaning": "to not judge"
         },
         {
+          cell_id: "380c8c8e-a67d-477e-8165-baf99bfbe7ee",
           "hangul": "곁에 있다",
           "meaning": "to be by one's side"
         },
         {
+          cell_id: "cba25f98-030d-4d53-8dfa-77478b0463e6",
           "hangul": "강하다",
           "meaning": "to be strong / resilient"
         }
@@ -12361,24 +12987,28 @@ export const lessons: KoreanLesson[] =       [
       ],
       "dialogue": [
         {
+          cell_id: "830b9ece-d6b2-4468-b461-3ee9d0a3f36d",
           "speaker": "A",
           "hangul": "응웬 씨, 한 가지 얘기해도 돼요? 지금까지 누구한테도 말 안 한 거예요.",
           "meaning": "Linh, can I tell you something? I haven't told anyone.",
           "text_vi": "Chị Nguyễn này, tôi kể chị nghe một chuyện được không? Từ trước đến giờ tôi chưa kể với ai cả."
         },
         {
+          cell_id: "42596e03-671e-4fd4-ad77-e8b71f050caa",
           "speaker": "B",
           "hangul": "당연히 돼요. 천천히 얘기해요.",
           "meaning": "Of course. Take your time.",
           "text_vi": "Tất nhiên là được. Anh/chị cứ từ từ kể."
         },
         {
+          cell_id: "c4d585ca-3b25-4f14-aed9-e2c196eefc82",
           "speaker": "A",
           "hangul": "어릴 때 부모님 이혼하시고 한참 힘들었어요. 친구들한테 한 번도 얘기 안 했어요.",
           "meaning": "My parents divorced when I was young, was hard for a long time. Never told friends.",
           "text_vi": "Hồi nhỏ bố mẹ tôi ly hôn nên tôi đã khổ tâm một thời gian dài. Tôi chưa từng kể với bạn bè lần nào."
         },
         {
+          cell_id: "5915654e-ae25-44a0-8318-4d8ef6dd498e",
           "speaker": "B",
           "hangul": "그 얘기 저한테 해 줘서 정말 고마워요.",
           "meaning": "Thank you so much for telling me.",
@@ -12582,42 +13212,52 @@ export const lessons: KoreanLesson[] =       [
       "intro_vi": "Bạn Hàn (close friend) đang cross line — too many demands trên thời gian bạn, intrusive personal questions, sharing too much TMI, calling at 2am với non-emergencies. Bài này dạy đặt boundaries WITHOUT rupturing relationship — Korean culture coi direct boundary-setting cứng nhắc, nên cần soft framing + reframe to 'mutual care' format. 해요체 với peer.",
       "vocabulary": [
         {
+          cell_id: "2c722477-e0dd-4eb3-ae9a-4061803e5ba7",
           "hangul": "선",
           "meaning": "line / boundary"
         },
         {
+          cell_id: "4b6d8ad6-25f2-417f-be0d-9fd7c4994f7e",
           "hangul": "거리",
           "meaning": "distance (relational)"
         },
         {
+          cell_id: "9b1f73ca-7984-4e24-8ea8-cee719e1acf1",
           "hangul": "부탁",
           "meaning": "request / favor"
         },
         {
+          cell_id: "786d45a1-ba54-4118-b89d-6c2527b761d0",
           "hangul": "부담",
           "meaning": "burden / pressure"
         },
         {
+          cell_id: "b3630a44-1d4a-4ae3-a147-518d1dfc12ac",
           "hangul": "사적인",
           "meaning": "private / personal"
         },
         {
+          cell_id: "5c6d15a2-7035-439c-9148-a01750d5b12b",
           "hangul": "공간",
           "meaning": "space"
         },
         {
+          cell_id: "d39a639b-4c20-4d79-b074-5be974b5193b",
           "hangul": "한계",
           "meaning": "limit"
         },
         {
+          cell_id: "080fb5a1-845c-4f3f-bca2-14f23f14aeab",
           "hangul": "조절하다",
           "meaning": "to adjust / regulate"
         },
         {
+          cell_id: "0d869a93-bd6f-4338-8061-d2579c52258e",
           "hangul": "관계",
           "meaning": "relationship"
         },
         {
+          cell_id: "f355e594-f5aa-4b13-8b11-12af77e852dd",
           "hangul": "솔직하다",
           "meaning": "to be honest / candid"
         }
@@ -12656,24 +13296,28 @@ export const lessons: KoreanLesson[] =       [
       ],
       "dialogue": [
         {
+          cell_id: "656b912f-40bf-4827-bd53-75c769d8bcbc",
           "speaker": "A",
           "hangul": "수진 씨, 솔직하게 말씀드릴 게 있어요.",
           "meaning": "Su-jin, I have something honest to say.",
           "text_vi": "Chị Sujin ơi, tôi có chuyện muốn nói thật lòng với chị."
         },
         {
+          cell_id: "8d2c9462-5bd4-4d7c-bc4b-688850a31671",
           "speaker": "B",
           "hangul": "어떤 거예요?",
           "meaning": "What is it?",
           "text_vi": "Chuyện gì vậy ạ?"
         },
         {
+          cell_id: "99a0fb13-3f99-42d8-8080-8d40b30a962c",
           "speaker": "A",
           "hangul": "최근에 늦은 시간 카톡 자주 오시는데, 잠을 좀 못 자요.",
           "meaning": "Lately you KaTalk late at night often, I can't sleep well.",
           "text_vi": "Gần đây anh/chị hay nhắn KakaoTalk vào lúc khuya, nên tôi hơi mất ngủ."
         },
         {
+          cell_id: "2cb6b50e-3974-4fc3-a8fc-3cfa6dacb1f6",
           "speaker": "B",
           "hangul": "아, 미안해요. 시간 신경 못 썼어요. 앞으로 11시 이후엔 안 보낼게요.",
           "meaning": "Oh, sorry. Didn't mind the time. I won't send after 11 from now.",

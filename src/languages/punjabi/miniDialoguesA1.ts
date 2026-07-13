@@ -14,6 +14,7 @@ export type PunjabiMiniDialogueTopic =
   | "workplace_greeting";
 
 export type PunjabiMiniDialogue = {
+  cell_id?: string;
   id: string;
   topic: PunjabiMiniDialogueTopic;
   title_vi: string;

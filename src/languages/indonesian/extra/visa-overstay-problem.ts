@@ -21,6 +21,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   /** Indonesian word/phrase. */
   word: string;
   /** English meaning. */
@@ -36,6 +37,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   /** Indonesian line. */
   text: string;
@@ -240,6 +242,7 @@ export const lessons: IndonesianLesson[] = [
       "Safe template: `Izin tinggal saya sudah habis. Saya ingin melapor ke kantor imigrasi dan minta arahan supaya prosesnya sesuai aturan.` If you have a sponsor, add: `Sponsor saya bisa membantu menyiapkan surat penjelasan.`",
     vocabulary: [
       {
+        cell_id: "d33deddf-d2b8-41e9-a1bd-1d41a90a8639",
         word: "overstay",
         en: "overstay; staying past permitted time",
         vi: "quá hạn lưu trú",
@@ -248,6 +251,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "O-ver-stay",
       },
       {
+        cell_id: "b3de2a96-c6a4-4fcd-badc-5f48a4e3f84b",
         word: "izin tinggal",
         en: "stay permit",
         vi: "giấy phép lưu trú",
@@ -256,6 +260,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "EE-zin TING-gal",
       },
       {
+        cell_id: "24083c10-8cbf-477c-951f-2e07e9fa311f",
         word: "denda imigrasi",
         en: "immigration fine",
         vi: "tiền phạt nhập cảnh",
@@ -264,6 +269,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "DEN-da ee-mee-GRA-see",
       },
       {
+        cell_id: "cfb61dfc-3c6c-4c32-b047-114ebfbea13d",
         word: "kantor imigrasi",
         en: "immigration office",
         vi: "văn phòng xuất nhập cảnh",
@@ -272,6 +278,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "KAN-tor ee-mee-GRA-see",
       },
       {
+        cell_id: "d48be4a6-2cf8-4a72-ac59-00744d4e32dc",
         word: "paspor",
         en: "passport",
         vi: "hộ chiếu",
@@ -280,6 +287,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "PAS-por",
       },
       {
+        cell_id: "ffa4bd4d-890d-4ba7-a668-35b94dd4ff57",
         word: "sponsor",
         en: "sponsor; guarantor",
         vi: "người bảo lãnh",
@@ -288,6 +296,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "SPON-sor",
       },
       {
+        cell_id: "54c35161-f203-4224-9757-c06174d47da3",
         word: "surat penjelasan",
         en: "explanation letter",
         vi: "thư giải trình",
@@ -296,6 +305,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "SOO-rat pen-je-LAS-an",
       },
       {
+        cell_id: "a2e99473-d07f-45a0-a505-8b1d9a60ecd8",
         word: "melapor",
         en: "to report",
         vi: "trình báo",
@@ -304,6 +314,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "me-LA-por",
       },
       {
+        cell_id: "3e4fd257-2f2a-45eb-833f-e8f451e93a7d",
         word: "masih berlaku",
         en: "still valid",
         vi: "vẫn còn hiệu lực",
@@ -312,6 +323,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "MA-sih ber-LA-koo",
       },
       {
+        cell_id: "b9a79ba4-ede4-4568-a85e-54e4195726c9",
         word: "sesuai aturan",
         en: "according to the rules",
         vi: "đúng theo quy định",
@@ -322,36 +334,42 @@ export const lessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "fc967210-498c-4f67-8162-2e72dda869a8",
         speaker: "Warga asing",
         text: "Selamat pagi, saya ingin melapor soal izin tinggal saya.",
         vi: "Chào buổi sáng, tôi muốn trình báo về giấy phép lưu trú của tôi.",
         en: "Good morning, I would like to report an issue with my stay permit.",
       },
       {
+        cell_id: "390fa255-4ef4-47c1-9341-65a7bebaf90d",
         speaker: "Petugas",
         text: "Izin tinggalnya habis kapan?",
         vi: "Giấy phép lưu trú hết hạn khi nào?",
         en: "When did the stay permit expire?",
       },
       {
+        cell_id: "de166392-5cb8-4e91-9268-4a5099d2f5ca",
         speaker: "Warga asing",
         text: "Dua hari yang lalu. Paspor saya masih berlaku.",
         vi: "Hai ngày trước. Hộ chiếu của tôi vẫn còn hiệu lực.",
         en: "Two days ago. My passport is still valid.",
       },
       {
+        cell_id: "b8b9e3c6-8e5b-437a-8986-bfd6c9b4032f",
         speaker: "Petugas",
         text: "Apakah Anda punya sponsor di Indonesia?",
         vi: "Bạn có người bảo lãnh ở Indonesia không?",
         en: "Do you have a sponsor in Indonesia?",
       },
       {
+        cell_id: "d5132ee9-2b3a-4892-8aa5-997ef982da17",
         speaker: "Warga asing",
         text: "Ada. Sponsor saya bisa membantu menyiapkan surat penjelasan.",
         vi: "Có. Người bảo lãnh của tôi có thể giúp chuẩn bị thư giải trình.",
         en: "Yes. My sponsor can help prepare an explanation letter.",
       },
       {
+        cell_id: "543130c5-51b2-40ad-b11c-7904d173886e",
         speaker: "Petugas",
         text: "Baik, siapkan paspor, bukti tiket keluar, dan surat penjelasan.",
         vi: "Được, hãy chuẩn bị hộ chiếu, bằng chứng vé rời khỏi, và thư giải trình.",

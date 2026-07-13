@@ -16,6 +16,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   /** Indonesian word/phrase. */
   word: string;
   /** English meaning. */
@@ -31,6 +32,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   /** Indonesian line. */
   text: string;
@@ -193,6 +195,7 @@ export const lessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: learn the children's-medicine chunks: `obat anak`, `sirup`, `dosis anak`, `demam`, `batuk`, `alergi obat`, `sendok takar`, `resep dokter`, `efek samping`. Always ask with patterns like `aman untuk usia...` and `dosisnya berapa?` to avoid misuse.",
     vocabulary: [
       {
+        cell_id: "caccf9e0-bcb5-46e9-a93e-04db6e7cfac7",
         word: "obat anak",
         en: "children's medicine",
         vi: "thuốc cho trẻ em",
@@ -201,6 +204,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "O-bat A-nak",
       },
       {
+        cell_id: "c9a7ee97-6e73-4b63-a7ae-c6dd6c7590aa",
         word: "sirup",
         en: "syrup / liquid medicine",
         vi: "si-rô / thuốc dạng lỏng",
@@ -209,6 +213,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "SEE-roop",
       },
       {
+        cell_id: "26b2a749-1941-4c35-b2e7-f994b45feaa8",
         word: "dosis anak",
         en: "child dose",
         vi: "liều cho trẻ em",
@@ -217,6 +222,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "DO-sis A-nak",
       },
       {
+        cell_id: "3a754512-7bce-4b59-be34-b96ef8e11baa",
         word: "demam",
         en: "fever",
         vi: "sốt",
@@ -225,6 +231,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "de-MAM",
       },
       {
+        cell_id: "da554634-1dd9-4110-ba73-a70b106d46a2",
         word: "batuk",
         en: "cough",
         vi: "ho",
@@ -233,6 +240,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "BA-took",
       },
       {
+        cell_id: "6c07116b-846d-4a8a-90b5-e9a44fe2e2ac",
         word: "alergi obat",
         en: "medicine allergy",
         vi: "dị ứng thuốc",
@@ -241,6 +249,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "a-LER-gee O-bat",
       },
       {
+        cell_id: "364c02f2-a7c0-4035-817b-a869d58b0b85",
         word: "sendok takar",
         en: "measuring spoon",
         vi: "muỗng đong",
@@ -249,6 +258,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "sen-DOK TA-kar",
       },
       {
+        cell_id: "b8c725bc-e390-4c71-9bb8-44ef7fed52be",
         word: "efek samping",
         en: "side effect",
         vi: "tác dụng phụ",
@@ -259,30 +269,35 @@ export const lessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "240d22b6-1bf7-41cb-acab-b4ea5336c404",
         speaker: "Orang tua",
         text: "Permisi, saya cari obat anak untuk demam dan batuk.",
         vi: "Xin phép, tôi tìm thuốc cho trẻ em trị sốt và ho.",
         en: "Excuse me, I am looking for children's medicine for fever and cough.",
       },
       {
+        cell_id: "3d0c118c-3b78-4b20-906c-2084f70ae421",
         speaker: "Apoteker",
         text: "Baik. Berapa usia anaknya?",
         vi: "Được. Bé bao nhiêu tuổi?",
         en: "Okay. How old is the child?",
       },
       {
+        cell_id: "94e6c4ce-10d3-4de3-aaea-bb6311a8104a",
         speaker: "Orang tua",
         text: "Usianya tiga tahun. Ada alergi obat yang harus saya sebutkan.",
         vi: "Bé ba tuổi. Có dị ứng thuốc nào tôi cần nói không.",
         en: "The child is three years old. Is there any medicine allergy I should mention?",
       },
       {
+        cell_id: "6550b4b7-d77c-4d73-a8f6-cc91570646d0",
         speaker: "Apoteker",
         text: "Ada sirup ini. Dosis anaknya pakai sendok takar dua kali sehari.",
         vi: "Có loại si-rô này. Liều cho trẻ dùng muỗng đong hai lần mỗi ngày.",
         en: "There is this syrup. The child dose uses a measuring spoon twice a day.",
       },
       {
+        cell_id: "de8b4f9f-ca9d-4f0b-ac5a-891c0117fc4c",
         speaker: "Orang tua",
         text: "Kalau demam tinggi atau ada efek samping, saya harus ke dokter dulu, ya?",
         vi: "Nếu sốt cao hoặc có tác dụng phụ, tôi phải đi bác sĩ trước, phải không?",

@@ -16,6 +16,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   /** Indonesian word/phrase. */
   word: string;
   /** English meaning. */
@@ -31,6 +32,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   /** Indonesian line. */
   text: string;
@@ -193,6 +195,7 @@ export const lessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: learn polite chunks: `menjenguk pasien`, `jam besuk`, `suara pelan`, `keluarga pasien`, `ruang rawat`, `semoga cepat sembuh`, `kami pamit dulu`. When unsure whether you may enter or bring food, use `boleh saya...?` to ask permission.",
     vocabulary: [
       {
+        cell_id: "8d288de1-89db-4bbd-8023-f46c1e4c994a",
         word: "menjenguk pasien",
         en: "visit a patient",
         vi: "thăm bệnh nhân",
@@ -201,6 +204,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "men-JE-nguk PA-sien",
       },
       {
+        cell_id: "e7b8b7ae-b987-4e94-9010-f04888154b89",
         word: "jam besuk",
         en: "visiting hours",
         vi: "giờ thăm bệnh",
@@ -209,6 +213,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "jam BE-suk",
       },
       {
+        cell_id: "92161437-cd10-4fb1-80ed-2aec54452765",
         word: "membawa buah",
         en: "bring fruit",
         vi: "mang trái cây",
@@ -217,6 +222,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "mem-BA-wa BOO-ah",
       },
       {
+        cell_id: "6dc916ad-6a23-4a9b-8b80-2d6665f78ea3",
         word: "suara pelan",
         en: "quiet voice",
         vi: "giọng nhỏ",
@@ -225,6 +231,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "SOO-a-ra pe-LAN",
       },
       {
+        cell_id: "27839dda-0152-4b20-9ef4-97f919f48daf",
         word: "keluarga pasien",
         en: "patient's family",
         vi: "người nhà bệnh nhân",
@@ -233,6 +240,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "ke-LOO-ar-ga PA-sien",
       },
       {
+        cell_id: "71d983b4-d36d-4cbc-8f51-09ace8d7263a",
         word: "ruang rawat",
         en: "ward / treatment room",
         vi: "phòng/khu điều trị",
@@ -241,6 +249,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "ROO-ang RA-wat",
       },
       {
+        cell_id: "a92d19bf-2ac2-4e36-bbd2-40e2a6e3d31c",
         word: "doa",
         en: "prayer / good wish",
         vi: "lời cầu nguyện / lời chúc",
@@ -249,6 +258,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "do-A",
       },
       {
+        cell_id: "7cf1938f-e9bd-4398-8827-e05c8ba45072",
         word: "sopan santun",
         en: "manners / etiquette",
         vi: "phép lịch sự / lễ nghĩa",
@@ -259,30 +269,35 @@ export const lessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "0873c626-545a-4bdb-989a-f7858c72da68",
         speaker: "Pengunjung",
         text: "Permisi, jam besuk untuk ruang rawat ini mulai jam berapa?",
         vi: "Xin phép, giờ thăm bệnh cho khu điều trị này bắt đầu lúc mấy giờ?",
         en: "Excuse me, what time do visiting hours for this ward start?",
       },
       {
+        cell_id: "7abea006-8c7a-4642-a795-13f12e7fa122",
         speaker: "Perawat",
         text: "Mulai jam empat sore. Tolong bicara dengan suara pelan.",
         vi: "Bắt đầu lúc bốn giờ chiều. Xin nói nhỏ.",
         en: "They start at 4 p.m. Please speak quietly.",
       },
       {
+        cell_id: "4b6271c2-ab0d-4d39-b38f-7337c3dd63ac",
         speaker: "Pengunjung",
         text: "Baik. Boleh saya membawa buah untuk pasien?",
         vi: "Vâng. Tôi có thể mang trái cây cho bệnh nhân không?",
         en: "Okay. May I bring fruit for the patient?",
       },
       {
+        cell_id: "75f6268c-2fc1-42c1-8ea0-f245e07ffab1",
         speaker: "Perawat",
         text: "Tolong tanya keluarga pasien dulu, karena pasien sedang diet khusus.",
         vi: "Xin hỏi người nhà bệnh nhân trước, vì bệnh nhân đang ăn theo chế độ đặc biệt.",
         en: "Please ask the patient's family first because the patient is on a special diet.",
       },
       {
+        cell_id: "6fa435b4-9701-418c-af7c-34b56b83df57",
         speaker: "Pengunjung",
         text: "Mengerti. Kami hanya menjenguk sebentar dan akan pamit kalau pasien lelah.",
         vi: "Tôi hiểu. Chúng tôi chỉ thăm một lát và sẽ xin phép về nếu bệnh nhân mệt.",

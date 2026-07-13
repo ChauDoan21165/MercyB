@@ -21,6 +21,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   /** Indonesian word/phrase. */
   word: string;
   /** English meaning. */
@@ -36,6 +37,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   /** Indonesian line. */
   text: string;
@@ -226,6 +228,7 @@ export const lessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: abbreviations like `KTP` and `TPS` are read with Indonesian letter names: ka-te-pe, te-pe-es. To stay neutral, use `informasi resmi`, `sumber resmi`, `secara netral`, and avoid directly asking who someone chose.",
     vocabulary: [
       {
+        cell_id: "44a09107-c934-46d1-9c65-f51b0f5fb438",
         word: "pemilu",
         en: "general election",
         vi: "bầu cử",
@@ -234,6 +237,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "peh-MEE-loo",
       },
       {
+        cell_id: "a98c37d0-e511-4334-a519-6b31abbddade",
         word: "TPS",
         en: "polling station",
         vi: "điểm bỏ phiếu",
@@ -242,6 +246,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "te-pe-es",
       },
       {
+        cell_id: "aa13a02b-c4b2-4cc4-be66-f79a4fd25472",
         word: "KTP",
         en: "Indonesian ID card",
         vi: "thẻ căn cước Indonesia",
@@ -250,6 +255,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "ka-te-pe",
       },
       {
+        cell_id: "290890cf-8726-49ed-b77f-aa0af29db1bb",
         word: "surat suara",
         en: "ballot paper",
         vi: "phiếu bầu",
@@ -258,6 +264,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "SOO-rat SOO-a-ra",
       },
       {
+        cell_id: "a219c808-7d58-4e3e-aede-0aa89aedc081",
         word: "petugas",
         en: "officer; staff on duty",
         vi: "nhân viên/cán bộ phụ trách",
@@ -266,6 +273,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "peh-TOO-gas",
       },
       {
+        cell_id: "85dc19a5-0632-4780-b41c-ece5e5645089",
         word: "netral",
         en: "neutral",
         vi: "trung lập",
@@ -274,6 +282,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "NE-tral",
       },
       {
+        cell_id: "7edeca2e-f02f-4038-805e-d40803fe6c7d",
         word: "hak warga",
         en: "resident/citizen rights",
         vi: "quyền của cư dân/công dân",
@@ -282,6 +291,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "HAK WAR-ga",
       },
       {
+        cell_id: "b558bcaa-6f37-4c2c-91d8-cbb9a2e8291e",
         word: "informasi resmi",
         en: "official information",
         vi: "thông tin chính thức",
@@ -290,6 +300,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "in-for-MA-see res-MEE",
       },
       {
+        cell_id: "94532061-9c86-43a3-9168-ab02d3c3e30d",
         word: "daftar pemilih",
         en: "voter list",
         vi: "danh sách cử tri",
@@ -298,6 +309,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "DAF-tar peh-MEE-lih",
       },
       {
+        cell_id: "c42f7277-2b45-4854-848a-c714dd1b4b45",
         word: "sumber resmi",
         en: "official source",
         vi: "nguồn chính thức",
@@ -308,36 +320,42 @@ export const lessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "6b344d42-7ca9-40c1-85d2-ec47d8027658",
         speaker: "Warga",
         text: "Pak, saya hanya ingin tahu lokasi TPS dan dokumen yang perlu dibawa.",
         vi: "Chú ơi, tôi chỉ muốn biết địa điểm TPS và giấy tờ cần mang theo.",
         en: "Sir, I only want to know the TPS location and the documents I need to bring.",
       },
       {
+        cell_id: "3d8c821e-db2a-40a8-b337-5b6ba6107a02",
         speaker: "Petugas",
         text: "Silakan cek informasi resmi di papan pengumuman kelurahan.",
         vi: "Xin hãy kiểm tra thông tin chính thức trên bảng thông báo của phường.",
         en: "Please check the official information on the kelurahan notice board.",
       },
       {
+        cell_id: "ba9bd8d2-2247-4011-8338-18ddb99d61b8",
         speaker: "Warga",
         text: "Apakah saya perlu membawa KTP asli?",
         vi: "Tôi có cần mang KTP bản gốc không?",
         en: "Do I need to bring the original KTP?",
       },
       {
+        cell_id: "9082d303-1e22-4f2c-b533-e6e83f7b32ba",
         speaker: "Petugas",
         text: "Ya, bawa KTP asli dan datang sesuai jadwal.",
         vi: "Có, hãy mang KTP bản gốc và đến đúng lịch.",
         en: "Yes, bring the original KTP and come according to the schedule.",
       },
       {
+        cell_id: "f418d109-633b-47ee-bb3a-193abaf98e71",
         speaker: "Tetangga",
         text: "Kamu pilih siapa?",
         vi: "Bạn chọn ai?",
         en: "Who are you voting for?",
       },
       {
+        cell_id: "49c234c3-b6f8-4852-b5ce-a644e8b471f1",
         speaker: "Warga",
         text: "Maaf, saya tidak mau membahas pilihan politik pribadi.",
         vi: "Xin lỗi, tôi không muốn bàn về lựa chọn chính trị cá nhân.",

@@ -17,6 +17,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   /** Indonesian word/phrase. */
   word: string;
   /** English meaning. */
@@ -32,6 +33,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   /** Indonesian line. */
   text: string;
@@ -210,6 +212,7 @@ export const clinicVaccinationAdultLessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: distinguish `vaksin` (vaccine/shot), `imunisasi` (immunization activity/schedule), `kartu vaksin` (vaccination card), and `surat keterangan vaksin` (vaccination certificate). For schedules use `Kapan jadwal ...?`; for side effects use `Apakah ... normal?`; for post-shot soreness use `lengan saya agak nyeri`.",
     vocabulary: [
       {
+        cell_id: "efe9c0e4-75b5-4483-8a7b-8c6b45e979b1",
         word: "vaksin",
         en: "vaccine / vaccination shot",
         vi: "vắc-xin / mũi tiêm",
@@ -218,6 +221,7 @@ export const clinicVaccinationAdultLessons: IndonesianLesson[] = [
         pronunciation_en: "VAK-sin",
       },
       {
+        cell_id: "1549ac29-3a05-4a47-8ff6-f49fdb2a236e",
         word: "imunisasi dewasa",
         en: "adult immunization",
         vi: "tiêm chủng cho người lớn",
@@ -226,6 +230,7 @@ export const clinicVaccinationAdultLessons: IndonesianLesson[] = [
         pronunciation_en: "ee-moo-nee-SA-see de-WA-sa",
       },
       {
+        cell_id: "128cc826-f6a1-4ea2-9096-5650d108f9dd",
         word: "kartu vaksin",
         en: "vaccination card",
         vi: "thẻ/phiếu tiêm chủng",
@@ -234,6 +239,7 @@ export const clinicVaccinationAdultLessons: IndonesianLesson[] = [
         pronunciation_en: "KAR-too VAK-sin",
       },
       {
+        cell_id: "b2587ef9-53a7-4b08-9250-4ef612811967",
         word: "efek samping",
         en: "side effect",
         vi: "tác dụng phụ",
@@ -242,6 +248,7 @@ export const clinicVaccinationAdultLessons: IndonesianLesson[] = [
         pronunciation_en: "e-FEK SAM-ping",
       },
       {
+        cell_id: "585db8ee-a7e4-4d97-8113-fdb1f9f74fc3",
         word: "Puskesmas",
         en: "community health center",
         vi: "trung tâm y tế cộng đồng",
@@ -250,6 +257,7 @@ export const clinicVaccinationAdultLessons: IndonesianLesson[] = [
         pronunciation_en: "POOS-kes-mas",
       },
       {
+        cell_id: "b7f4a201-94bd-4d16-b9ca-e54fac532645",
         word: "antrean",
         en: "queue",
         vi: "hàng chờ / lượt chờ",
@@ -258,6 +266,7 @@ export const clinicVaccinationAdultLessons: IndonesianLesson[] = [
         pronunciation_en: "AN-tre-an",
       },
       {
+        cell_id: "25039633-a602-451d-b4b6-b32b345ba684",
         word: "surat keterangan",
         en: "certificate / official letter",
         vi: "giấy xác nhận",
@@ -266,6 +275,7 @@ export const clinicVaccinationAdultLessons: IndonesianLesson[] = [
         pronunciation_en: "SOO-rat ke-te-RANG-an",
       },
       {
+        cell_id: "f59ec4ef-d0fe-4df4-8494-d7b999360d81",
         word: "demam ringan",
         en: "mild fever",
         vi: "sốt nhẹ",
@@ -274,6 +284,7 @@ export const clinicVaccinationAdultLessons: IndonesianLesson[] = [
         pronunciation_en: "de-MAM RING-an",
       },
       {
+        cell_id: "3400c6a5-597d-479c-9018-b5441fa623a5",
         word: "lengan nyeri",
         en: "sore arm",
         vi: "đau nhức cánh tay",
@@ -282,6 +293,7 @@ export const clinicVaccinationAdultLessons: IndonesianLesson[] = [
         pronunciation_en: "LEN-gan NYE-ree",
       },
       {
+        cell_id: "3e336fbc-26a8-4d99-ab35-748442e76d0e",
         word: "loket pendaftaran",
         en: "registration counter",
         vi: "quầy đăng ký",
@@ -292,24 +304,28 @@ export const clinicVaccinationAdultLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "4c054153-fa0b-42cd-b49f-1d1e08c75e1b",
         speaker: "Pasien",
         text: "Selamat pagi. Saya mau daftar vaksin dewasa.",
         vi: "Chào buổi sáng. Tôi muốn đăng ký tiêm vắc-xin cho người lớn.",
         en: "Good morning. I want to register for an adult vaccination.",
       },
       {
+        cell_id: "40ab22b3-fa1b-4471-9723-cc05808c620a",
         speaker: "Petugas",
         text: "Silakan ambil nomor antrean dan siapkan KTP.",
         vi: "Vui lòng lấy số thứ tự và chuẩn bị KTP.",
         en: "Please take a queue number and prepare your ID card.",
       },
       {
+        cell_id: "82a1f3ef-a5d1-4582-b801-53f79ef8fba4",
         speaker: "Pasien",
         text: "Setelah vaksin, apakah saya dapat kartu vaksin?",
         vi: "Sau khi tiêm, tôi có nhận thẻ tiêm chủng không?",
         en: "After vaccination, will I get a vaccination card?",
       },
       {
+        cell_id: "62162396-ff87-4392-a5ab-fdb324ba5b82",
         speaker: "Petugas",
         text: "Iya. Kalau perlu untuk perjalanan, kami juga bisa buat surat keterangan.",
         vi: "Có. Nếu cần để đi lại, chúng tôi cũng có thể làm giấy xác nhận.",

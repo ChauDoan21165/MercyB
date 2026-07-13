@@ -21,6 +21,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   /** Indonesian word/phrase. */
   word: string;
   /** English meaning. */
@@ -36,6 +37,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   /** Indonesian line. */
   text: string;
@@ -253,6 +255,7 @@ export const lessons: IndonesianLesson[] = [
       "In deposit disputes, avoid starting with accusations. Use frames like: `Bisa dijelaskan...?`, `Mohon kirim rincian...`, `Saya punya bukti foto...`, and `Saya ingin menyelesaikan masalah ini baik-baik`.",
     vocabulary: [
       {
+        cell_id: "bfdfd86e-ae21-45d4-b2af-a88861c0a409",
         word: "deposit sewa",
         en: "rental deposit",
         vi: "tiền cọc thuê",
@@ -261,6 +264,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "deh-PO-sit SEH-wa",
       },
       {
+        cell_id: "9c298074-d6a3-4075-b64b-456793cc9cb8",
         word: "kerusakan kamar",
         en: "room damage",
         vi: "hư hại phòng",
@@ -269,6 +273,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "keh-roo-SA-kan KA-mar",
       },
       {
+        cell_id: "1ef450a0-4fa0-4bf8-9342-255bdf4eb920",
         word: "pengembalian uang",
         en: "money refund",
         vi: "hoàn tiền",
@@ -277,6 +282,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "peh-ngem-BA-lee-an OO-ang",
       },
       {
+        cell_id: "ebe1f9c6-0b3b-47fa-a02c-cf6d8ab3324c",
         word: "pemilik kos",
         en: "boarding-house owner",
         vi: "chủ nhà trọ",
@@ -285,6 +291,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "peh-MEE-lik KOS",
       },
       {
+        cell_id: "ec578b55-bb6a-4ae5-900d-61246e5da0c5",
         word: "bukti foto",
         en: "photo evidence",
         vi: "bằng chứng ảnh",
@@ -293,6 +300,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "BOOK-tee FO-to",
       },
       {
+        cell_id: "1a32c2cd-655f-494f-b8f2-4f18706ab8cf",
         word: "perjanjian",
         en: "agreement",
         vi: "thỏa thuận/hợp đồng",
@@ -301,6 +309,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "per-JAN-jee-an",
       },
       {
+        cell_id: "a4b74e1f-cce7-4c29-a195-00c4bd1cfd00",
         word: "mediasi",
         en: "mediation",
         vi: "hòa giải",
@@ -309,6 +318,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "meh-dee-A-see",
       },
       {
+        cell_id: "2973d670-39a6-476b-be2f-f69324e948ef",
         word: "rincian biaya",
         en: "cost breakdown",
         vi: "chi tiết chi phí",
@@ -317,6 +327,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "rin-CHEE-an BEE-a-ya",
       },
       {
+        cell_id: "dfd6c696-c95e-4d18-8929-d67343d67a79",
         word: "dipotong",
         en: "deducted",
         vi: "bị trừ",
@@ -325,6 +336,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "dee-PO-tong",
       },
       {
+        cell_id: "945c8c73-f7d5-43a1-8015-3fe59ef47944",
         word: "kesepakatan",
         en: "agreement; settlement",
         vi: "thỏa thuận",
@@ -335,24 +347,28 @@ export const lessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "caf10d29-44ea-4221-963b-4ea0794c8975",
         speaker: "Penyewa",
         text: "Permisi, Bu. Saya ingin menanyakan pengembalian deposit sewa.",
         vi: "Xin lỗi cô. Tôi muốn hỏi về việc hoàn lại tiền cọc thuê.",
         en: "Excuse me, Ma'am. I would like to ask about the return of the rental deposit.",
       },
       {
+        cell_id: "293274ed-8730-479d-a8a1-a5be354cc852",
         speaker: "Pemilik Kos",
         text: "Deposit belum bisa dikembalikan penuh karena ada kerusakan kamar.",
         vi: "Tiền cọc chưa thể trả đủ vì có hư hại trong phòng.",
         en: "The deposit cannot be returned in full yet because there is room damage.",
       },
       {
+        cell_id: "3abfd076-8d95-46c4-96de-fe44fbb05eee",
         speaker: "Penyewa",
         text: "Bisa dijelaskan bagian mana yang rusak? Saya punya bukti foto sebelum pindah keluar.",
         vi: "Có thể giải thích phần nào hư không? Tôi có bằng chứng ảnh trước khi dọn ra.",
         en: "Could you explain which part is damaged? I have photo evidence before moving out.",
       },
       {
+        cell_id: "ecdf7d23-a5ca-421d-950e-b80c8069e489",
         speaker: "Pemilik Kos",
         text: "Baik, nanti saya kirim rincian biaya perbaikan secara tertulis.",
         vi: "Được, lát nữa tôi sẽ gửi chi tiết chi phí sửa chữa bằng văn bản.",

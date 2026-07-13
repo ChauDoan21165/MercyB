@@ -17,6 +17,7 @@ type IndonesianLessonSentence = {
 };
 
 type IndonesianVocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -26,6 +27,7 @@ type IndonesianVocabEntry = {
 };
 
 type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -212,6 +214,7 @@ export const personalBoundariesPolitenessLessons: IndonesianLesson[] = [
       "Safe formula: thanks/apology + short reason + clear boundary + relationship repair. Example: `Terima kasih sudah mengajak, tapi saya tidak bisa ikut kali ini. Semoga kita bisa bertemu lain waktu.` Avoid bare `tidak mau` if you want to stay polite.",
     vocabulary: [
       {
+        cell_id: "da03a246-caf8-411d-bf85-155e9a8f4a2a",
         word: "batas pribadi",
         en: "personal boundary",
         vi: "ranh giới cá nhân",
@@ -220,6 +223,7 @@ export const personalBoundariesPolitenessLessons: IndonesianLesson[] = [
         pronunciation_en: "BAH-tas pree-BAH-dee",
       },
       {
+        cell_id: "59f114b9-e707-4119-abbd-c7bb5b6ead8e",
         word: "kurang nyaman",
         en: "not quite comfortable",
         vi: "không thoải mái lắm",
@@ -228,6 +232,7 @@ export const personalBoundariesPolitenessLessons: IndonesianLesson[] = [
         pronunciation_en: "KOO-rang NYA-man",
       },
       {
+        cell_id: "74f05802-bdf9-406c-9538-41c17c17dde4",
         word: "menolak ajakan",
         en: "decline an invitation",
         vi: "từ chối lời mời",
@@ -236,6 +241,7 @@ export const personalBoundariesPolitenessLessons: IndonesianLesson[] = [
         pronunciation_en: "meh-NO-lak ah-JAH-kan",
       },
       {
+        cell_id: "e4b47bf7-8db7-4428-be70-0c8fe8dd3419",
         word: "tanpa izin",
         en: "without permission",
         vi: "không có phép",
@@ -244,6 +250,7 @@ export const personalBoundariesPolitenessLessons: IndonesianLesson[] = [
         pronunciation_en: "TAHN-pa EE-zin",
       },
       {
+        cell_id: "46936ee2-c433-4245-b921-2495d0966a39",
         word: "tegas tapi baik",
         en: "firm but kind",
         vi: "kiên quyết nhưng tử tế",
@@ -252,6 +259,7 @@ export const personalBoundariesPolitenessLessons: IndonesianLesson[] = [
         pronunciation_en: "TEH-gas TAH-pee BAH-ik",
       },
       {
+        cell_id: "8ef90d0b-338f-4fe6-a493-1eeb86cb3985",
         word: "menjaga hubungan",
         en: "maintain a relationship",
         vi: "giữ gìn quan hệ",
@@ -260,6 +268,7 @@ export const personalBoundariesPolitenessLessons: IndonesianLesson[] = [
         pronunciation_en: "men-JAH-ga hoo-BOONG-an",
       },
       {
+        cell_id: "2f560bfc-6233-457d-8cca-9547decd0074",
         word: "alasan halus",
         en: "gentle reason",
         vi: "lý do nhẹ nhàng",
@@ -268,6 +277,7 @@ export const personalBoundariesPolitenessLessons: IndonesianLesson[] = [
         pronunciation_en: "ah-LAH-san HAH-loos",
       },
       {
+        cell_id: "9cc0c34e-ea84-4000-97e2-9a014173dc0a",
         word: "keputusan saya",
         en: "my decision",
         vi: "quyết định của tôi",
@@ -278,30 +288,35 @@ export const personalBoundariesPolitenessLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "c3e7e67b-ab6a-48b6-9cba-a0275c87c1c1",
         speaker: "Rani",
         text: "Malam ini ikut kumpul di rumah Dika, ya?",
         vi: "Tối nay đi tụ tập ở nhà Dika nhé?",
         en: "Join the gathering at Dika's house tonight, okay?",
       },
       {
+        cell_id: "27382ad4-899f-44fb-8a4f-0cc311425e0e",
         speaker: "Linh",
         text: "Terima kasih sudah mengajak, tapi saya tidak bisa ikut kali ini.",
         vi: "Cảm ơn đã rủ, nhưng lần này tôi không thể tham gia.",
         en: "Thanks for inviting me, but I cannot join this time.",
       },
       {
+        cell_id: "2bf4c20b-0c9b-4117-af54-89dc0bba5190",
         speaker: "Rani",
         text: "Kenapa? Cuma sebentar saja.",
         vi: "Sao vậy? Chỉ một lát thôi mà.",
         en: "Why? Just for a little while.",
       },
       {
+        cell_id: "3866cabf-9afb-4872-8e62-760c3c5af81f",
         speaker: "Linh",
         text: "Saya perlu waktu sendiri malam ini. Semoga kita bisa bertemu lain waktu.",
         vi: "Tối nay tôi cần thời gian riêng. Hy vọng mình có thể gặp nhau lần khác.",
         en: "I need time alone tonight. I hope we can meet another time.",
       },
       {
+        cell_id: "490c7609-4524-4856-9f32-a57fd0903bce",
         speaker: "Rani",
         text: "Oke, aku mengerti. Istirahat dulu, ya.",
         vi: "Ừ, mình hiểu. Nghỉ ngơi trước nhé.",

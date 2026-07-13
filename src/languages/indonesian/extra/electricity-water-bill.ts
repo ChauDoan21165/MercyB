@@ -21,6 +21,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   /** Indonesian word/phrase. */
   word: string;
   /** English meaning. */
@@ -36,6 +37,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   /** Indonesian line. */
   text: string;
@@ -155,17 +157,17 @@ export const electricityWaterBillLessons: IndonesianLesson[] = [
     tip_advice_en:
       "Survival set: `bayar tagihan listrik`, `nomor pelanggan`, `beli token listrik`, `meterannya bunyi`, `ada denda?`. The big trap is `tagihan` vs `biaya`: `tagihan` is the bill/amount due; `biaya` is cost in general.",
     vocabulary: [
-      { word: "tagihan listrik", en: "electricity bill", vi: "hóa đơn/tiền điện", pos: "noun phrase", pronunciation_vi: "ta-GIH-an LIS-trik", pronunciation_en: "ta-GEE-han LIS-trik" },
-      { word: "nomor pelanggan", en: "customer number", vi: "mã khách hàng", pos: "noun phrase", pronunciation_vi: "NO-mor pe-lang-GAN", pronunciation_en: "NO-mor pe-lang-GAN" },
-      { word: "token listrik", en: "prepaid electricity token", vi: "token/mã nạp điện", pos: "noun phrase", pronunciation_vi: "TO-ken LIS-trik", pronunciation_en: "TO-ken LIS-trik" },
-      { word: "meteran", en: "meter", vi: "công tơ/đồng hồ đo", pos: "noun", pronunciation_vi: "me-TE-ran", pronunciation_en: "me-TEH-ran" },
-      { word: "denda", en: "fine/penalty", vi: "tiền phạt", pos: "noun", pronunciation_vi: "DEN-da", pronunciation_en: "DEN-da" },
-      { word: "terlambat bayar", en: "late in paying", vi: "trả trễ", pos: "phrase", pronunciation_vi: "ter-LAM-bat BA-yar", pronunciation_en: "ter-LAM-bat BA-yar" },
+      { cell_id: "728dd0f8-d0d4-4b80-8a6e-fe4833a91cc8", word: "tagihan listrik", en: "electricity bill", vi: "hóa đơn/tiền điện", pos: "noun phrase", pronunciation_vi: "ta-GIH-an LIS-trik", pronunciation_en: "ta-GEE-han LIS-trik" },
+      { cell_id: "a4b8121d-7799-4fc0-a0bd-be79dbf26f4e", word: "nomor pelanggan", en: "customer number", vi: "mã khách hàng", pos: "noun phrase", pronunciation_vi: "NO-mor pe-lang-GAN", pronunciation_en: "NO-mor pe-lang-GAN" },
+      { cell_id: "c2a1df7c-a04c-4121-b616-6d2f1753f9bf", word: "token listrik", en: "prepaid electricity token", vi: "token/mã nạp điện", pos: "noun phrase", pronunciation_vi: "TO-ken LIS-trik", pronunciation_en: "TO-ken LIS-trik" },
+      { cell_id: "67731a99-1566-445a-b03a-f4a7f8ab8b2e", word: "meteran", en: "meter", vi: "công tơ/đồng hồ đo", pos: "noun", pronunciation_vi: "me-TE-ran", pronunciation_en: "me-TEH-ran" },
+      { cell_id: "92f7d290-4499-4b3d-b01e-85b445f34226", word: "denda", en: "fine/penalty", vi: "tiền phạt", pos: "noun", pronunciation_vi: "DEN-da", pronunciation_en: "DEN-da" },
+      { cell_id: "98948d7b-05f9-4836-956f-976bfadf1f46", word: "terlambat bayar", en: "late in paying", vi: "trả trễ", pos: "phrase", pronunciation_vi: "ter-LAM-bat BA-yar", pronunciation_en: "ter-LAM-bat BA-yar" },
     ],
     dialogue: [
-      { speaker: "Penyewa", text: "Saya mau bayar tagihan listrik bulan ini. Nomor pelanggannya berapa?", vi: "Tôi muốn trả tiền điện tháng này. Mã khách hàng là bao nhiêu?", en: "I want to pay this month's electricity bill. What is the customer number?" },
-      { speaker: "Pemilik kos", text: "Ini nomornya. Kalau meteran bunyi, berarti token hampir habis.", vi: "Đây là mã. Nếu công tơ kêu, nghĩa là token gần hết.", en: "Here is the number. If the meter beeps, it means the token is almost out." },
-      { speaker: "Penyewa", text: "Baik. Kalau terlambat bayar, apakah ada denda?", vi: "Vâng. Nếu trả trễ, có bị phạt không?", en: "Okay. If payment is late, is there a fine?" },
+      { cell_id: "87e67646-bfff-4ac3-9094-7b74df3f4282", speaker: "Penyewa", text: "Saya mau bayar tagihan listrik bulan ini. Nomor pelanggannya berapa?", vi: "Tôi muốn trả tiền điện tháng này. Mã khách hàng là bao nhiêu?", en: "I want to pay this month's electricity bill. What is the customer number?" },
+      { cell_id: "c5284506-7f6a-4fd9-af4a-ee34a38d918a", speaker: "Pemilik kos", text: "Ini nomornya. Kalau meteran bunyi, berarti token hampir habis.", vi: "Đây là mã. Nếu công tơ kêu, nghĩa là token gần hết.", en: "Here is the number. If the meter beeps, it means the token is almost out." },
+      { cell_id: "b3852625-6453-460f-997a-c893ae563008", speaker: "Penyewa", text: "Baik. Kalau terlambat bayar, apakah ada denda?", vi: "Vâng. Nếu trả trễ, có bị phạt không?", en: "Okay. If payment is late, is there a fine?" },
     ],
     exercises: [
       {
@@ -277,17 +279,17 @@ export const electricityWaterBillLessons: IndonesianLesson[] = [
     tip_advice_en:
       "Water phrases to remember: `tagihan air`, `air mati`, `lapor gangguan air`, `meteran air`, `kantor layanan`. Big trap: Indonesian `air` means water, not air. Air is `udara`.",
     vocabulary: [
-      { word: "tagihan air", en: "water bill", vi: "hóa đơn/tiền nước", pos: "noun phrase", pronunciation_vi: "ta-GIH-an A-ir", pronunciation_en: "ta-GEE-han A-eer" },
-      { word: "PDAM", en: "local water utility", vi: "công ty/cơ quan nước địa phương", pos: "noun", pronunciation_vi: "pe-de-a-EM", pronunciation_en: "pe-de-a-EM" },
-      { word: "air mati", en: "water is off", vi: "nước bị cắt/không chảy", pos: "phrase", pronunciation_vi: "A-ir MA-ti", pronunciation_en: "A-eer MA-tee" },
-      { word: "gangguan air", en: "water disruption", vi: "sự cố nước", pos: "noun phrase", pronunciation_vi: "gang-GU-an A-ir", pronunciation_en: "gang-GOO-an A-eer" },
-      { word: "meteran air", en: "water meter", vi: "đồng hồ nước", pos: "noun phrase", pronunciation_vi: "me-TE-ran A-ir", pronunciation_en: "me-TEH-ran A-eer" },
-      { word: "kantor layanan", en: "service office", vi: "văn phòng dịch vụ", pos: "noun phrase", pronunciation_vi: "KAN-tor la-YA-nan", pronunciation_en: "KAN-tor la-YA-nan" },
+      { cell_id: "14d9698b-e1f2-4b8a-bdea-183e8ef25b36", word: "tagihan air", en: "water bill", vi: "hóa đơn/tiền nước", pos: "noun phrase", pronunciation_vi: "ta-GIH-an A-ir", pronunciation_en: "ta-GEE-han A-eer" },
+      { cell_id: "3981a1a2-63e4-445a-921f-e19f467d8b48", word: "PDAM", en: "local water utility", vi: "công ty/cơ quan nước địa phương", pos: "noun", pronunciation_vi: "pe-de-a-EM", pronunciation_en: "pe-de-a-EM" },
+      { cell_id: "1cca2cf6-d6fc-45a6-bd6f-82799f3adadf", word: "air mati", en: "water is off", vi: "nước bị cắt/không chảy", pos: "phrase", pronunciation_vi: "A-ir MA-ti", pronunciation_en: "A-eer MA-tee" },
+      { cell_id: "f57eaae9-b182-4b2f-9004-1272189d37c6", word: "gangguan air", en: "water disruption", vi: "sự cố nước", pos: "noun phrase", pronunciation_vi: "gang-GU-an A-ir", pronunciation_en: "gang-GOO-an A-eer" },
+      { cell_id: "87ffa770-defb-443f-9a50-d37bc5a0bc82", word: "meteran air", en: "water meter", vi: "đồng hồ nước", pos: "noun phrase", pronunciation_vi: "me-TE-ran A-ir", pronunciation_en: "me-TEH-ran A-eer" },
+      { cell_id: "8a80a3be-6a85-4177-8760-dafc933f4f85", word: "kantor layanan", en: "service office", vi: "văn phòng dịch vụ", pos: "noun phrase", pronunciation_vi: "KAN-tor la-YA-nan", pronunciation_en: "KAN-tor la-YA-nan" },
     ],
     dialogue: [
-      { speaker: "Pelanggan", text: "Selamat pagi. Air di rumah saya mati sejak pagi.", vi: "Chào buổi sáng. Nước ở nhà tôi bị cắt từ sáng.", en: "Good morning. The water at my house has been off since morning." },
-      { speaker: "Petugas PDAM", text: "Mohon sebutkan alamat dan nomor pelanggan.", vi: "Vui lòng cho biết địa chỉ và mã khách hàng.", en: "Please state the address and customer number." },
-      { speaker: "Pelanggan", text: "Baik. Meteran airnya juga mungkin bermasalah.", vi: "Vâng. Đồng hồ nước cũng có thể có vấn đề.", en: "Okay. The water meter may also have a problem." },
+      { cell_id: "07dc22aa-0797-4a45-be14-0c37044b5f4b", speaker: "Pelanggan", text: "Selamat pagi. Air di rumah saya mati sejak pagi.", vi: "Chào buổi sáng. Nước ở nhà tôi bị cắt từ sáng.", en: "Good morning. The water at my house has been off since morning." },
+      { cell_id: "c1a84bc1-ddae-4d00-8d3b-ab8655595a7b", speaker: "Petugas PDAM", text: "Mohon sebutkan alamat dan nomor pelanggan.", vi: "Vui lòng cho biết địa chỉ và mã khách hàng.", en: "Please state the address and customer number." },
+      { cell_id: "243c4c26-344f-4f4c-8a6b-1bab594c57d7", speaker: "Pelanggan", text: "Baik. Meteran airnya juga mungkin bermasalah.", vi: "Vâng. Đồng hồ nước cũng có thể có vấn đề.", en: "Okay. The water meter may also have a problem." },
     ],
     exercises: [
       {

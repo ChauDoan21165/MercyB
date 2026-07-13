@@ -21,6 +21,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   /** Indonesian word/phrase. */
   word: string;
   /** English meaning. */
@@ -36,6 +37,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   /** Indonesian line. */
   text: string;
@@ -155,17 +157,17 @@ export const bankTransferAtmLessons: IndonesianLesson[] = [
     tip_advice_en:
       "Survival set: `Nomor rekeningnya berapa?`, `Atas nama siapa?`, `Biaya admin berapa?`, `Tolong kirim bukti transfer.` The big VN-speaker trap is using `akun` instead of `rekening`; `akun` fits apps, while banking uses `rekening`.",
     vocabulary: [
-      { word: "transfer uang", en: "transfer money", vi: "chuyển tiền", pos: "verb phrase", pronunciation_vi: "TRANS-fer U-ang", pronunciation_en: "TRANS-fer OO-ang" },
-      { word: "rekening", en: "bank account", vi: "tài khoản ngân hàng", pos: "noun", pronunciation_vi: "re-KE-ning", pronunciation_en: "re-KE-ning" },
-      { word: "nomor rekening", en: "account number", vi: "số tài khoản", pos: "noun phrase", pronunciation_vi: "NO-mor re-KE-ning", pronunciation_en: "NO-mor re-KE-ning" },
-      { word: "atas nama", en: "under the name of", vi: "đứng tên", pos: "phrase", pronunciation_vi: "A-tas NA-ma", pronunciation_en: "A-tas NA-ma" },
-      { word: "biaya admin", en: "admin fee", vi: "phí admin/phí giao dịch", pos: "noun phrase", pronunciation_vi: "BI-a-ya AD-min", pronunciation_en: "BEE-a-ya AD-min" },
-      { word: "bukti transfer", en: "proof of transfer", vi: "bằng chứng chuyển khoản", pos: "noun phrase", pronunciation_vi: "BUK-ti TRANS-fer", pronunciation_en: "BOOK-tee TRANS-fer" },
+      { cell_id: "2ca96108-bfce-4e67-8d00-a8aea7165d8c", word: "transfer uang", en: "transfer money", vi: "chuyển tiền", pos: "verb phrase", pronunciation_vi: "TRANS-fer U-ang", pronunciation_en: "TRANS-fer OO-ang" },
+      { cell_id: "5e8c6098-c63f-41f0-944e-6360520892f6", word: "rekening", en: "bank account", vi: "tài khoản ngân hàng", pos: "noun", pronunciation_vi: "re-KE-ning", pronunciation_en: "re-KE-ning" },
+      { cell_id: "b41c70ba-d4f6-4191-8528-9f25b058d18d", word: "nomor rekening", en: "account number", vi: "số tài khoản", pos: "noun phrase", pronunciation_vi: "NO-mor re-KE-ning", pronunciation_en: "NO-mor re-KE-ning" },
+      { cell_id: "de05e826-23a4-432a-8148-3516434ffe36", word: "atas nama", en: "under the name of", vi: "đứng tên", pos: "phrase", pronunciation_vi: "A-tas NA-ma", pronunciation_en: "A-tas NA-ma" },
+      { cell_id: "012e7707-ac9a-496d-8d23-4e24fcab2a19", word: "biaya admin", en: "admin fee", vi: "phí admin/phí giao dịch", pos: "noun phrase", pronunciation_vi: "BI-a-ya AD-min", pronunciation_en: "BEE-a-ya AD-min" },
+      { cell_id: "2a954c53-6c0f-45a6-a1fe-f251f4ca8c41", word: "bukti transfer", en: "proof of transfer", vi: "bằng chứng chuyển khoản", pos: "noun phrase", pronunciation_vi: "BUK-ti TRANS-fer", pronunciation_en: "BOOK-tee TRANS-fer" },
     ],
     dialogue: [
-      { speaker: "Pembeli", text: "Saya mau transfer sekarang. Nomor rekeningnya berapa?", vi: "Tôi muốn chuyển khoản bây giờ. Số tài khoản là bao nhiêu?", en: "I want to transfer now. What is the account number?" },
-      { speaker: "Penjual", text: "Ini nomor rekening BCA. Atas nama Sari Wijaya.", vi: "Đây là số tài khoản BCA. Đứng tên Sari Wijaya.", en: "This is the BCA account number. It is under Sari Wijaya's name." },
-      { speaker: "Penjual", text: "Setelah transfer, tolong kirim bukti transfer, ya.", vi: "Sau khi chuyển khoản, làm ơn gửi bằng chứng chuyển khoản nhé.", en: "After transferring, please send the proof of transfer." },
+      { cell_id: "7ab6b30d-29f4-4858-bce9-1654d540e99e", speaker: "Pembeli", text: "Saya mau transfer sekarang. Nomor rekeningnya berapa?", vi: "Tôi muốn chuyển khoản bây giờ. Số tài khoản là bao nhiêu?", en: "I want to transfer now. What is the account number?" },
+      { cell_id: "ce31ccf4-cc3a-42aa-95ce-08ffa27b725c", speaker: "Penjual", text: "Ini nomor rekening BCA. Atas nama Sari Wijaya.", vi: "Đây là số tài khoản BCA. Đứng tên Sari Wijaya.", en: "This is the BCA account number. It is under Sari Wijaya's name." },
+      { cell_id: "97145ad4-fcbd-43fc-9eba-ba610f3fb025", speaker: "Penjual", text: "Setelah transfer, tolong kirim bukti transfer, ya.", vi: "Sau khi chuyển khoản, làm ơn gửi bằng chứng chuyển khoản nhé.", en: "After transferring, please send the proof of transfer." },
     ],
     exercises: [
       {
@@ -277,18 +279,18 @@ export const bankTransferAtmLessons: IndonesianLesson[] = [
     tip_advice_en:
       "Remember three short phrases: `cek saldo`, `tarik tunai`, `mobile banking`. Vietnamese speakers may use generic wording like 'money in the card'; Indonesian banking uses `saldo`. Passive `di-` also matters: `diblokir` = blocked, `dibuka` = opened.",
     vocabulary: [
-      { word: "ATM", en: "ATM", vi: "cây ATM", pos: "noun", pronunciation_vi: "A-TE-EM", pronunciation_en: "A-TE-EM" },
-      { word: "cek saldo", en: "check balance", vi: "kiểm tra số dư", pos: "verb phrase", pronunciation_vi: "CEK SAL-do", pronunciation_en: "CHEK SAL-do" },
-      { word: "saldo", en: "balance", vi: "số dư", pos: "noun", pronunciation_vi: "SAL-do", pronunciation_en: "SAL-do" },
-      { word: "mobile banking", en: "mobile banking", vi: "ngân hàng di động", pos: "noun", pronunciation_vi: "MO-bail BEN-king", pronunciation_en: "MO-bile BANK-ing" },
-      { word: "tagihan", en: "bill/amount due", vi: "hóa đơn/khoản phải trả", pos: "noun", pronunciation_vi: "ta-GIH-an", pronunciation_en: "ta-GEE-han" },
-      { word: "PIN", en: "PIN", vi: "mã PIN", pos: "noun", pronunciation_vi: "PIN", pronunciation_en: "PIN" },
-      { word: "diblokir", en: "blocked", vi: "bị khóa", pos: "passive verb", pronunciation_vi: "di-blo-KIR", pronunciation_en: "dee-blo-KEER" },
+      { cell_id: "6f98666d-8fc8-4bd9-80d6-d20ad6274150", word: "ATM", en: "ATM", vi: "cây ATM", pos: "noun", pronunciation_vi: "A-TE-EM", pronunciation_en: "A-TE-EM" },
+      { cell_id: "cbcda2ca-a35a-400f-bd86-126d7265fc3f", word: "cek saldo", en: "check balance", vi: "kiểm tra số dư", pos: "verb phrase", pronunciation_vi: "CEK SAL-do", pronunciation_en: "CHEK SAL-do" },
+      { cell_id: "2c29d07c-a131-4170-af89-95e94855f7ec", word: "saldo", en: "balance", vi: "số dư", pos: "noun", pronunciation_vi: "SAL-do", pronunciation_en: "SAL-do" },
+      { cell_id: "52c0c596-1968-4ce3-a02f-6d66f9af3f1a", word: "mobile banking", en: "mobile banking", vi: "ngân hàng di động", pos: "noun", pronunciation_vi: "MO-bail BEN-king", pronunciation_en: "MO-bile BANK-ing" },
+      { cell_id: "23366bf9-5d19-4c9e-aebf-06d0b987567d", word: "tagihan", en: "bill/amount due", vi: "hóa đơn/khoản phải trả", pos: "noun", pronunciation_vi: "ta-GIH-an", pronunciation_en: "ta-GEE-han" },
+      { cell_id: "603d6a2a-184c-4ad0-8e7f-16a9a8b907f0", word: "PIN", en: "PIN", vi: "mã PIN", pos: "noun", pronunciation_vi: "PIN", pronunciation_en: "PIN" },
+      { cell_id: "57310057-5ff3-438f-b0ff-52d56c0f9e9f", word: "diblokir", en: "blocked", vi: "bị khóa", pos: "passive verb", pronunciation_vi: "di-blo-KIR", pronunciation_en: "dee-blo-KEER" },
     ],
     dialogue: [
-      { speaker: "Nasabah", text: "Saya mau cek saldo, tapi aplikasi mobile banking belum bisa dibuka.", vi: "Tôi muốn kiểm tra số dư, nhưng ứng dụng mobile banking chưa mở được.", en: "I want to check my balance, but the mobile banking app cannot be opened yet." },
-      { speaker: "Petugas bank", text: "Bapak bisa cek saldo di ATM dulu.", vi: "Anh có thể kiểm tra số dư ở ATM trước.", en: "You can check the balance at the ATM first." },
-      { speaker: "Nasabah", text: "Baik. Kalau kartu diblokir, saya harus ke bank?", vi: "Vâng. Nếu thẻ bị khóa, tôi phải đến ngân hàng không?", en: "Okay. If the card is blocked, do I have to go to the bank?" },
+      { cell_id: "904470a7-d6f7-4b7b-a296-0b7a8b773730", speaker: "Nasabah", text: "Saya mau cek saldo, tapi aplikasi mobile banking belum bisa dibuka.", vi: "Tôi muốn kiểm tra số dư, nhưng ứng dụng mobile banking chưa mở được.", en: "I want to check my balance, but the mobile banking app cannot be opened yet." },
+      { cell_id: "f9c69431-0a08-4bfc-9373-ccf9a4cb2323", speaker: "Petugas bank", text: "Bapak bisa cek saldo di ATM dulu.", vi: "Anh có thể kiểm tra số dư ở ATM trước.", en: "You can check the balance at the ATM first." },
+      { cell_id: "1d15038c-e9a1-49ce-9e3c-b69990b7148e", speaker: "Nasabah", text: "Baik. Kalau kartu diblokir, saya harus ke bank?", vi: "Vâng. Nếu thẻ bị khóa, tôi phải đến ngân hàng không?", en: "Okay. If the card is blocked, do I have to go to the bank?" },
     ],
     exercises: [
       {
@@ -399,18 +401,18 @@ export const bankTransferAtmLessons: IndonesianLesson[] = [
     tip_advice_en:
       "A good problem report is: fact + evidence + request. Example: `Transaksi saya gagal, tetapi saldo sudah terpotong. Saya punya bukti transfer dan nomor referensi. Mohon bantu cek status transaksi ini.` It is polite and information-rich.",
     vocabulary: [
-      { word: "transaksi", en: "transaction", vi: "giao dịch", pos: "noun", pronunciation_vi: "trans-AK-si", pronunciation_en: "trans-AK-see" },
-      { word: "gagal", en: "failed", vi: "thất bại", pos: "adjective/verb", pronunciation_vi: "GA-gal", pronunciation_en: "GA-gal" },
-      { word: "terpotong", en: "deducted", vi: "bị trừ", pos: "verb", pronunciation_vi: "ter-PO-tong", pronunciation_en: "ter-PO-tong" },
-      { word: "penerima", en: "recipient", vi: "người nhận", pos: "noun", pronunciation_vi: "pe-ne-RI-ma", pronunciation_en: "pe-ne-REE-ma" },
-      { word: "nomor referensi", en: "reference number", vi: "số tham chiếu", pos: "noun phrase", pronunciation_vi: "NO-mor re-fe-REN-si", pronunciation_en: "NO-mor re-fe-REN-see" },
-      { word: "dikembalikan", en: "returned/refunded", vi: "được hoàn lại", pos: "passive verb", pronunciation_vi: "di-kem-BA-li-kan", pronunciation_en: "dee-kem-BA-lee-kan" },
-      { word: "mohon bantu", en: "please help", vi: "vui lòng giúp", pos: "polite phrase", pronunciation_vi: "MO-hon BAN-tu", pronunciation_en: "MO-hon BAN-too" },
+      { cell_id: "80a9354a-6162-4095-9980-770ef1f56424", word: "transaksi", en: "transaction", vi: "giao dịch", pos: "noun", pronunciation_vi: "trans-AK-si", pronunciation_en: "trans-AK-see" },
+      { cell_id: "97c93f2f-fa24-4e2c-a47a-6cee019a0252", word: "gagal", en: "failed", vi: "thất bại", pos: "adjective/verb", pronunciation_vi: "GA-gal", pronunciation_en: "GA-gal" },
+      { cell_id: "975924ea-1736-4b3f-9759-d0bef7a99865", word: "terpotong", en: "deducted", vi: "bị trừ", pos: "verb", pronunciation_vi: "ter-PO-tong", pronunciation_en: "ter-PO-tong" },
+      { cell_id: "667b817b-d7d0-4d4f-8863-fad637d33902", word: "penerima", en: "recipient", vi: "người nhận", pos: "noun", pronunciation_vi: "pe-ne-RI-ma", pronunciation_en: "pe-ne-REE-ma" },
+      { cell_id: "27072cc4-bce8-4a67-82ff-56000d091115", word: "nomor referensi", en: "reference number", vi: "số tham chiếu", pos: "noun phrase", pronunciation_vi: "NO-mor re-fe-REN-si", pronunciation_en: "NO-mor re-fe-REN-see" },
+      { cell_id: "7218aab9-5d7b-49f4-b1d6-c9116000588d", word: "dikembalikan", en: "returned/refunded", vi: "được hoàn lại", pos: "passive verb", pronunciation_vi: "di-kem-BA-li-kan", pronunciation_en: "dee-kem-BA-lee-kan" },
+      { cell_id: "9f929f69-508b-400d-a985-fda53928dbda", word: "mohon bantu", en: "please help", vi: "vui lòng giúp", pos: "polite phrase", pronunciation_vi: "MO-hon BAN-tu", pronunciation_en: "MO-hon BAN-too" },
     ],
     dialogue: [
-      { speaker: "Nasabah", text: "Transaksi saya gagal, tetapi saldo sudah terpotong.", vi: "Giao dịch của tôi thất bại, nhưng số dư đã bị trừ.", en: "My transaction failed, but my balance was deducted." },
-      { speaker: "Petugas bank", text: "Mohon kirim bukti transfer dan nomor referensi.", vi: "Vui lòng gửi bằng chứng chuyển khoản và số tham chiếu.", en: "Please send the proof of transfer and reference number." },
-      { speaker: "Nasabah", text: "Baik. Kapan dana akan dikembalikan?", vi: "Vâng. Khi nào tiền sẽ được hoàn lại?", en: "Okay. When will the funds be returned?" },
+      { cell_id: "f0169a5e-f1db-4859-924f-89ac0af57213", speaker: "Nasabah", text: "Transaksi saya gagal, tetapi saldo sudah terpotong.", vi: "Giao dịch của tôi thất bại, nhưng số dư đã bị trừ.", en: "My transaction failed, but my balance was deducted." },
+      { cell_id: "e33f4832-7b21-4280-bfdd-5fac4e36c563", speaker: "Petugas bank", text: "Mohon kirim bukti transfer dan nomor referensi.", vi: "Vui lòng gửi bằng chứng chuyển khoản và số tham chiếu.", en: "Please send the proof of transfer and reference number." },
+      { cell_id: "bc06d6d9-2477-4450-ac3f-46807a0900e9", speaker: "Nasabah", text: "Baik. Kapan dana akan dikembalikan?", vi: "Vâng. Khi nào tiền sẽ được hoàn lại?", en: "Okay. When will the funds be returned?" },
     ],
     exercises: [
       {

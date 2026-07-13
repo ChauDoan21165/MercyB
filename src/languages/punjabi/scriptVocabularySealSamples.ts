@@ -18,6 +18,7 @@ export type PunjabiSealFocus =
 export type PunjabiSealStage = "pre_a11_seal" | "snapshot" | "closure_packet" | "pre_integration" | "regression";
 
 export type PunjabiScriptVocabularySealSample = {
+  cell_id?: string;
   id: string;
   focus: PunjabiSealFocus;
   stage: PunjabiSealStage;
@@ -36,6 +37,7 @@ export type PunjabiScriptVocabularySealSample = {
 };
 
 export type PunjabiScriptVocabularySealSection = {
+  cell_id?: string;
   focus: PunjabiSealFocus;
   title_vi: string;
   title_en: string;

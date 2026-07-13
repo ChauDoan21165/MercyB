@@ -25,6 +25,7 @@ export type UrduSentenceInput = {
 };
 
 export type UrduVocabInput = {
+  cell_id?: string;
   ur: string;
   romanization?: string;
   en: string;
@@ -33,6 +34,7 @@ export type UrduVocabInput = {
 };
 
 export type UrduDialogueInput = {
+  cell_id?: string;
   speaker: string;
   ur: string;
   romanization?: string;

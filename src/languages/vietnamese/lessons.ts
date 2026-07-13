@@ -24,6 +24,7 @@ export type VietnamesePhrase = {
 };
 
 export type VietnameseDialogueLine = {
+  cell_id?: string;
   speaker: string;
   vietnamese: string;
   english: string;

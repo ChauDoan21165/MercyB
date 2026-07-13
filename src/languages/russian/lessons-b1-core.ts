@@ -64,11 +64,11 @@ export const lessons: RussianLesson[] = [
       },
     ],
     vocabulary: [
-      { word: "нет", romanization: "net", en: "there is no", vi: "không có", pos: "particle (+gen)", pronunciation_vi: "nhét", pronunciation_en: "nyet" },
-      { word: "много", romanization: "mnogo", en: "a lot / many", vi: "nhiều", pos: "quantifier (+gen)", pronunciation_vi: "MNÔ-ga", pronunciation_en: "MNO-ga" },
-      { word: "около", romanization: "okolo", en: "near / around", vi: "gần", pos: "preposition (+gen)", pronunciation_vi: "Ô-ka-la", pronunciation_en: "O-ka-la" },
-      { word: "без", romanization: "bez", en: "without", vi: "không có / thiếu", pos: "preposition (+gen)", pronunciation_vi: "bez", pronunciation_en: "byez" },
-      { word: "брат", romanization: "brat", en: "brother", vi: "anh/em trai", pos: "noun (m)", pronunciation_vi: "brát", pronunciation_en: "braht" },
+      { cell_id: "3fc26084-df33-414a-8000-c957d041722c", word: "нет", romanization: "net", en: "there is no", vi: "không có", pos: "particle (+gen)", pronunciation_vi: "nhét", pronunciation_en: "nyet" },
+      { cell_id: "67942996-5179-4e1b-885c-407d4644dc02", word: "много", romanization: "mnogo", en: "a lot / many", vi: "nhiều", pos: "quantifier (+gen)", pronunciation_vi: "MNÔ-ga", pronunciation_en: "MNO-ga" },
+      { cell_id: "da5f71f9-b6ce-49c2-8b1e-9922af9be60f", word: "около", romanization: "okolo", en: "near / around", vi: "gần", pos: "preposition (+gen)", pronunciation_vi: "Ô-ka-la", pronunciation_en: "O-ka-la" },
+      { cell_id: "abbfb236-3d10-4490-83ba-66e7fcb90132", word: "без", romanization: "bez", en: "without", vi: "không có / thiếu", pos: "preposition (+gen)", pronunciation_vi: "bez", pronunciation_en: "byez" },
+      { cell_id: "2420278f-85f4-4c4d-9cea-7bb869eaf9ac", word: "брат", romanization: "brat", en: "brother", vi: "anh/em trai", pos: "noun (m)", pronunciation_vi: "brát", pronunciation_en: "braht" },
     ],
     exercises: [
       {
@@ -147,11 +147,11 @@ export const lessons: RussianLesson[] = [
       },
     ],
     vocabulary: [
-      { word: "нравиться", romanization: "nravitsya", en: "to be pleasing / to like", vi: "thích", pos: "verb (+dat subject)", pronunciation_vi: "NRA-vit-sya", pronunciation_en: "NRA-veet-sya" },
-      { word: "нужно", romanization: "nuzhno", en: "need to / it is necessary", vi: "cần", pos: "predicative (+dat)", pronunciation_vi: "NÚZH-na", pronunciation_en: "NOOZH-na" },
-      { word: "помогать", romanization: "pomogat", en: "to help", vi: "giúp đỡ", pos: "verb (+dat)", pronunciation_vi: "pa-ma-GÁT", pronunciation_en: "pa-ma-GAHT" },
-      { word: "звонить", romanization: "zvonit", en: "to call", vi: "gọi điện", pos: "verb (+dat)", pronunciation_vi: "zva-NÍT", pronunciation_en: "zva-NEET" },
-      { word: "мне", romanization: "mne", en: "to me", vi: "cho tôi / với tôi", pos: "pronoun (dat)", pronunciation_vi: "mnhe", pronunciation_en: "mnye" },
+      { cell_id: "13a4c0c2-d7eb-429b-8a26-53912cde0151", word: "нравиться", romanization: "nravitsya", en: "to be pleasing / to like", vi: "thích", pos: "verb (+dat subject)", pronunciation_vi: "NRA-vit-sya", pronunciation_en: "NRA-veet-sya" },
+      { cell_id: "b3260b64-8fce-4b4c-854f-d9e7c7c1ef00", word: "нужно", romanization: "nuzhno", en: "need to / it is necessary", vi: "cần", pos: "predicative (+dat)", pronunciation_vi: "NÚZH-na", pronunciation_en: "NOOZH-na" },
+      { cell_id: "efc19170-bb25-4224-ba78-d18e41a565df", word: "помогать", romanization: "pomogat", en: "to help", vi: "giúp đỡ", pos: "verb (+dat)", pronunciation_vi: "pa-ma-GÁT", pronunciation_en: "pa-ma-GAHT" },
+      { cell_id: "500fe092-e2c4-4b05-83b1-92bb020bed49", word: "звонить", romanization: "zvonit", en: "to call", vi: "gọi điện", pos: "verb (+dat)", pronunciation_vi: "zva-NÍT", pronunciation_en: "zva-NEET" },
+      { cell_id: "aa7d7883-9dc7-46e4-8782-7486ce95b664", word: "мне", romanization: "mne", en: "to me", vi: "cho tôi / với tôi", pos: "pronoun (dat)", pronunciation_vi: "mnhe", pronunciation_en: "mnye" },
     ],
     exercises: [
       {
@@ -230,11 +230,11 @@ export const lessons: RussianLesson[] = [
       },
     ],
     vocabulary: [
-      { word: "с", romanization: "s", en: "with", vi: "với / cùng", pos: "preposition (+ins)", pronunciation_vi: "x (xờ)", pronunciation_en: "s" },
-      { word: "работать", romanization: "rabotat", en: "to work", vi: "làm việc", pos: "verb (+ins for job)", pronunciation_vi: "ra-BÔ-tat", pronunciation_en: "ra-BO-taht" },
-      { word: "ручка", romanization: "ruchka", en: "pen", vi: "bút", pos: "noun (f)", pronunciation_vi: "RÚCH-ka", pronunciation_en: "ROOCH-ka" },
-      { word: "поезд", romanization: "poyezd", en: "train", vi: "tàu hỏa", pos: "noun (m)", pronunciation_vi: "PÔ-yezd", pronunciation_en: "PO-yezd" },
-      { word: "доволен", romanization: "dovolen", en: "satisfied / pleased", vi: "hài lòng", pos: "adjective (short)", pronunciation_vi: "da-VÔ-len", pronunciation_en: "da-VO-len" },
+      { cell_id: "3be1da5f-b194-4688-bc97-df9d268f375d", word: "с", romanization: "s", en: "with", vi: "với / cùng", pos: "preposition (+ins)", pronunciation_vi: "x (xờ)", pronunciation_en: "s" },
+      { cell_id: "62ff7636-179b-4639-b395-108bab3dcec5", word: "работать", romanization: "rabotat", en: "to work", vi: "làm việc", pos: "verb (+ins for job)", pronunciation_vi: "ra-BÔ-tat", pronunciation_en: "ra-BO-taht" },
+      { cell_id: "38e08a77-8669-45a3-b030-6499d02707c1", word: "ручка", romanization: "ruchka", en: "pen", vi: "bút", pos: "noun (f)", pronunciation_vi: "RÚCH-ka", pronunciation_en: "ROOCH-ka" },
+      { cell_id: "9c64f63a-c4b5-4f07-a1af-943e6b6d8086", word: "поезд", romanization: "poyezd", en: "train", vi: "tàu hỏa", pos: "noun (m)", pronunciation_vi: "PÔ-yezd", pronunciation_en: "PO-yezd" },
+      { cell_id: "0306ab15-ec62-40b3-8831-82d799e3698f", word: "доволен", romanization: "dovolen", en: "satisfied / pleased", vi: "hài lòng", pos: "adjective (short)", pronunciation_vi: "da-VÔ-len", pronunciation_en: "da-VO-len" },
     ],
     exercises: [
       {
@@ -313,11 +313,11 @@ export const lessons: RussianLesson[] = [
       },
     ],
     vocabulary: [
-      { word: "в", romanization: "v", en: "in / at (location)", vi: "ở trong", pos: "preposition (+prep)", pronunciation_vi: "v (vờ)", pronunciation_en: "v" },
-      { word: "на", romanization: "na", en: "on / at (location)", vi: "ở trên", pos: "preposition (+prep)", pronunciation_vi: "na", pronunciation_en: "nah" },
-      { word: "о / об", romanization: "o / ob", en: "about", vi: "về", pos: "preposition (+prep)", pronunciation_vi: "ô / ôb", pronunciation_en: "o / ob" },
-      { word: "думать", romanization: "dumat", en: "to think", vi: "nghĩ", pos: "verb (думать о)", pronunciation_vi: "DU-mat", pronunciation_en: "DOO-maht" },
-      { word: "жить", romanization: "zhit", en: "to live", vi: "sống", pos: "verb (жить в)", pronunciation_vi: "zhít", pronunciation_en: "zheet" },
+      { cell_id: "ad6c0a03-383e-4385-9b72-9d272a807f7f", word: "в", romanization: "v", en: "in / at (location)", vi: "ở trong", pos: "preposition (+prep)", pronunciation_vi: "v (vờ)", pronunciation_en: "v" },
+      { cell_id: "563f3970-656a-4d66-92ae-2546ada01c60", word: "на", romanization: "na", en: "on / at (location)", vi: "ở trên", pos: "preposition (+prep)", pronunciation_vi: "na", pronunciation_en: "nah" },
+      { cell_id: "dcb02918-e3af-4e21-b3f0-8c7d2180c7b7", word: "о / об", romanization: "o / ob", en: "about", vi: "về", pos: "preposition (+prep)", pronunciation_vi: "ô / ôb", pronunciation_en: "o / ob" },
+      { cell_id: "308cddbf-27c2-44d3-b6e9-9a5796805f73", word: "думать", romanization: "dumat", en: "to think", vi: "nghĩ", pos: "verb (думать о)", pronunciation_vi: "DU-mat", pronunciation_en: "DOO-maht" },
+      { cell_id: "5cef6da9-c56b-49c9-829f-22c44a415c1c", word: "жить", romanization: "zhit", en: "to live", vi: "sống", pos: "verb (жить в)", pronunciation_vi: "zhít", pronunciation_en: "zheet" },
     ],
     exercises: [
       {
@@ -396,11 +396,11 @@ export const lessons: RussianLesson[] = [
       },
     ],
     vocabulary: [
-      { word: "видеть", romanization: "videt", en: "to see", vi: "nhìn thấy", pos: "verb (+acc)", pronunciation_vi: "VÍ-det", pronunciation_en: "VEE-det" },
-      { word: "ждать", romanization: "zhdat", en: "to wait for", vi: "đợi", pos: "verb (+acc)", pronunciation_vi: "zhdát", pronunciation_en: "zhdaht" },
-      { word: "магазин", romanization: "magazin", en: "shop", vi: "cửa hàng", pos: "noun (m)", pronunciation_vi: "ma-ga-ZÍN", pronunciation_en: "ma-ga-ZEEN" },
-      { word: "книга", romanization: "kniga", en: "book", vi: "quyển sách", pos: "noun (f)", pronunciation_vi: "KNÍ-ga", pronunciation_en: "KNEE-ga" },
-      { word: "положить", romanization: "polozhit", en: "to put / lay", vi: "đặt / để", pos: "verb (pf, +acc)", pronunciation_vi: "pa-la-ZHÍT", pronunciation_en: "pa-la-ZHEET" },
+      { cell_id: "26328808-552f-4ae1-beab-75177d2d87cb", word: "видеть", romanization: "videt", en: "to see", vi: "nhìn thấy", pos: "verb (+acc)", pronunciation_vi: "VÍ-det", pronunciation_en: "VEE-det" },
+      { cell_id: "36b50e64-53f0-4d58-8ff4-bb4bcdff16ce", word: "ждать", romanization: "zhdat", en: "to wait for", vi: "đợi", pos: "verb (+acc)", pronunciation_vi: "zhdát", pronunciation_en: "zhdaht" },
+      { cell_id: "19eb0a03-2219-4aa6-8ea8-c304ef7c82ee", word: "магазин", romanization: "magazin", en: "shop", vi: "cửa hàng", pos: "noun (m)", pronunciation_vi: "ma-ga-ZÍN", pronunciation_en: "ma-ga-ZEEN" },
+      { cell_id: "37c4eeee-33ef-4c6a-9295-aafa24671e99", word: "книга", romanization: "kniga", en: "book", vi: "quyển sách", pos: "noun (f)", pronunciation_vi: "KNÍ-ga", pronunciation_en: "KNEE-ga" },
+      { cell_id: "4ed134df-c8ca-4db7-8c6e-bf9b82cd606c", word: "положить", romanization: "polozhit", en: "to put / lay", vi: "đặt / để", pos: "verb (pf, +acc)", pronunciation_vi: "pa-la-ZHÍT", pronunciation_en: "pa-la-ZHEET" },
     ],
     exercises: [
       {
@@ -479,11 +479,11 @@ export const lessons: RussianLesson[] = [
       },
     ],
     vocabulary: [
-      { word: "проверять / проверить", romanization: "proveryat / proverit", en: "to check (impf/pf)", vi: "kiểm tra", pos: "verb pair", pronunciation_vi: "pra-ve-RIÁT / pra-VÉ-rit", pronunciation_en: "pra-ve-RYAT / pra-VE-rit" },
-      { word: "читать / прочитать", romanization: "chitat / prochitat", en: "to read (impf/pf)", vi: "đọc", pos: "verb pair", pronunciation_vi: "chi-TÁT / pra-chi-TÁT", pronunciation_en: "chi-TAHT / pra-chi-TAHT" },
-      { word: "писать / написать", romanization: "pisat / napisat", en: "to write (impf/pf)", vi: "viết", pos: "verb pair", pronunciation_vi: "pi-SÁT / na-pi-SÁT", pronunciation_en: "pee-SAHT / na-pee-SAHT" },
-      { word: "обычно", romanization: "obychno", en: "usually", vi: "thường", pos: "adverb", pronunciation_vi: "a-BÝCH-na", pronunciation_en: "a-BICH-na" },
-      { word: "отчёт", romanization: "otchyot", en: "report", vi: "báo cáo", pos: "noun (m)", pronunciation_vi: "at-CHIÓT", pronunciation_en: "at-CHYOT" },
+      { cell_id: "f62f6ec0-5218-4e3a-b586-ed7119f802eb", word: "проверять / проверить", romanization: "proveryat / proverit", en: "to check (impf/pf)", vi: "kiểm tra", pos: "verb pair", pronunciation_vi: "pra-ve-RIÁT / pra-VÉ-rit", pronunciation_en: "pra-ve-RYAT / pra-VE-rit" },
+      { cell_id: "605c973c-8328-4679-a003-73e94fb5a6d6", word: "читать / прочитать", romanization: "chitat / prochitat", en: "to read (impf/pf)", vi: "đọc", pos: "verb pair", pronunciation_vi: "chi-TÁT / pra-chi-TÁT", pronunciation_en: "chi-TAHT / pra-chi-TAHT" },
+      { cell_id: "23dad0d9-2c94-4170-a56e-d139f68cc401", word: "писать / написать", romanization: "pisat / napisat", en: "to write (impf/pf)", vi: "viết", pos: "verb pair", pronunciation_vi: "pi-SÁT / na-pi-SÁT", pronunciation_en: "pee-SAHT / na-pee-SAHT" },
+      { cell_id: "76cac10b-64c9-4cf0-a078-0c95c9f8afb6", word: "обычно", romanization: "obychno", en: "usually", vi: "thường", pos: "adverb", pronunciation_vi: "a-BÝCH-na", pronunciation_en: "a-BICH-na" },
+      { cell_id: "d24bce20-1835-4fde-8167-2d1d3eb3b46a", word: "отчёт", romanization: "otchyot", en: "report", vi: "báo cáo", pos: "noun (m)", pronunciation_vi: "at-CHIÓT", pronunciation_en: "at-CHYOT" },
     ],
     exercises: [
       {
@@ -562,11 +562,11 @@ export const lessons: RussianLesson[] = [
       },
     ],
     vocabulary: [
-      { word: "буду", romanization: "budu", en: "I will (impf future helper)", vi: "tôi sẽ (trợ động từ)", pos: "auxiliary", pronunciation_vi: "BÚ-du", pronunciation_en: "BOO-doo" },
-      { word: "сделать", romanization: "sdelat", en: "to do / get done (pf)", vi: "làm xong", pos: "verb (pf)", pronunciation_vi: "ZDÉ-lat", pronunciation_en: "ZDYE-laht" },
-      { word: "закончить", romanization: "zakonchit", en: "to finish (pf)", vi: "kết thúc / xong", pos: "verb (pf)", pronunciation_vi: "za-KÔN-chit", pronunciation_en: "za-KON-chit" },
-      { word: "искать / найти", romanization: "iskat / nayti", en: "to look for / to find (impf/pf)", vi: "tìm / thấy", pos: "verb pair", pronunciation_vi: "is-KÁT / nai-TÍ", pronunciation_en: "is-KAHT / nai-TEE" },
-      { word: "каждый день", romanization: "kazhdyy den", en: "every day", vi: "mỗi ngày", pos: "phrase", pronunciation_vi: "KÁZH-dyi den", pronunciation_en: "KAZH-diy den" },
+      { cell_id: "ee177712-e6fe-4a74-b780-f461cd5e486b", word: "буду", romanization: "budu", en: "I will (impf future helper)", vi: "tôi sẽ (trợ động từ)", pos: "auxiliary", pronunciation_vi: "BÚ-du", pronunciation_en: "BOO-doo" },
+      { cell_id: "09a6439a-d799-4253-abfa-27c13ea25848", word: "сделать", romanization: "sdelat", en: "to do / get done (pf)", vi: "làm xong", pos: "verb (pf)", pronunciation_vi: "ZDÉ-lat", pronunciation_en: "ZDYE-laht" },
+      { cell_id: "66932e85-ec1f-4150-a4c2-2ab2979f42d5", word: "закончить", romanization: "zakonchit", en: "to finish (pf)", vi: "kết thúc / xong", pos: "verb (pf)", pronunciation_vi: "za-KÔN-chit", pronunciation_en: "za-KON-chit" },
+      { cell_id: "532eedb7-8e8e-443c-bf8f-e60a15a794c7", word: "искать / найти", romanization: "iskat / nayti", en: "to look for / to find (impf/pf)", vi: "tìm / thấy", pos: "verb pair", pronunciation_vi: "is-KÁT / nai-TÍ", pronunciation_en: "is-KAHT / nai-TEE" },
+      { cell_id: "798b2630-901a-4a17-868f-d35841210fa1", word: "каждый день", romanization: "kazhdyy den", en: "every day", vi: "mỗi ngày", pos: "phrase", pronunciation_vi: "KÁZH-dyi den", pronunciation_en: "KAZH-diy den" },
     ],
     exercises: [
       {
@@ -645,11 +645,11 @@ export const lessons: RussianLesson[] = [
       },
     ],
     vocabulary: [
-      { word: "идти", romanization: "idti", en: "to go on foot (one-way/now)", vi: "đi bộ (một chiều)", pos: "verb (unidirectional)", pronunciation_vi: "it-TÍ", pronunciation_en: "it-TEE" },
-      { word: "ходить", romanization: "khodit", en: "to go on foot (habit/round trip)", vi: "đi bộ (thói quen)", pos: "verb (multidirectional)", pronunciation_vi: "kha-DÍT", pronunciation_en: "kha-DEET" },
-      { word: "ехать", romanization: "yekhat", en: "to go by vehicle (one-way/now)", vi: "đi xe (một chiều)", pos: "verb (unidirectional)", pronunciation_vi: "YÉ-khat", pronunciation_en: "YE-khat" },
-      { word: "ездить", romanization: "yezdit", en: "to go by vehicle (habit/round trip)", vi: "đi xe (thói quen)", pos: "verb (multidirectional)", pronunciation_vi: "YÉZ-dit", pronunciation_en: "YEZ-dit" },
-      { word: "куда", romanization: "kuda", en: "where to", vi: "đi đâu", pos: "adverb", pronunciation_vi: "ku-DÁ", pronunciation_en: "koo-DAH" },
+      { cell_id: "6c5c94d9-4849-4e86-898a-3557f400c43b", word: "идти", romanization: "idti", en: "to go on foot (one-way/now)", vi: "đi bộ (một chiều)", pos: "verb (unidirectional)", pronunciation_vi: "it-TÍ", pronunciation_en: "it-TEE" },
+      { cell_id: "c95e361f-1262-47c0-8015-8734e7fdaea5", word: "ходить", romanization: "khodit", en: "to go on foot (habit/round trip)", vi: "đi bộ (thói quen)", pos: "verb (multidirectional)", pronunciation_vi: "kha-DÍT", pronunciation_en: "kha-DEET" },
+      { cell_id: "045dbbc4-ac66-4950-ae29-ca15d590d043", word: "ехать", romanization: "yekhat", en: "to go by vehicle (one-way/now)", vi: "đi xe (một chiều)", pos: "verb (unidirectional)", pronunciation_vi: "YÉ-khat", pronunciation_en: "YE-khat" },
+      { cell_id: "e8491e89-99d9-443c-93bc-dcdfd027e714", word: "ездить", romanization: "yezdit", en: "to go by vehicle (habit/round trip)", vi: "đi xe (thói quen)", pos: "verb (multidirectional)", pronunciation_vi: "YÉZ-dit", pronunciation_en: "YEZ-dit" },
+      { cell_id: "37075d94-30f5-4cf3-8e6f-cc9e8d6d5fbe", word: "куда", romanization: "kuda", en: "where to", vi: "đi đâu", pos: "adverb", pronunciation_vi: "ku-DÁ", pronunciation_en: "koo-DAH" },
     ],
     exercises: [
       {
@@ -728,11 +728,11 @@ export const lessons: RussianLesson[] = [
       },
     ],
     vocabulary: [
-      { word: "прийти", romanization: "priyti", en: "to arrive (on foot)", vi: "đến (đi bộ)", pos: "verb (pf)", pronunciation_vi: "prii-TÍ", pronunciation_en: "pree-TEE" },
-      { word: "уйти", romanization: "uyti", en: "to leave (on foot)", vi: "rời đi (đi bộ)", pos: "verb (pf)", pronunciation_vi: "ui-TÍ", pronunciation_en: "oo-TEE" },
-      { word: "войти", romanization: "voyti", en: "to enter", vi: "đi vào", pos: "verb (pf)", pronunciation_vi: "vai-TÍ", pronunciation_en: "vai-TEE" },
-      { word: "уехать", romanization: "uyekhat", en: "to leave (by vehicle)", vi: "rời đi (bằng xe)", pos: "verb (pf)", pronunciation_vi: "u-YÉ-khat", pronunciation_en: "oo-YE-khat" },
-      { word: "зайти", romanization: "zayti", en: "to drop by", vi: "ghé qua", pos: "verb (pf)", pronunciation_vi: "zai-TÍ", pronunciation_en: "zai-TEE" },
+      { cell_id: "fb01e214-f629-4836-b269-4ccbd852e6e7", word: "прийти", romanization: "priyti", en: "to arrive (on foot)", vi: "đến (đi bộ)", pos: "verb (pf)", pronunciation_vi: "prii-TÍ", pronunciation_en: "pree-TEE" },
+      { cell_id: "5cef6fba-0cf0-43a6-987f-d7dcb19e8ae3", word: "уйти", romanization: "uyti", en: "to leave (on foot)", vi: "rời đi (đi bộ)", pos: "verb (pf)", pronunciation_vi: "ui-TÍ", pronunciation_en: "oo-TEE" },
+      { cell_id: "bfd37b9e-ad50-4265-8752-e5b2bcfb60cd", word: "войти", romanization: "voyti", en: "to enter", vi: "đi vào", pos: "verb (pf)", pronunciation_vi: "vai-TÍ", pronunciation_en: "vai-TEE" },
+      { cell_id: "e630c19b-f7f4-48ac-8f6c-36d84868a4d7", word: "уехать", romanization: "uyekhat", en: "to leave (by vehicle)", vi: "rời đi (bằng xe)", pos: "verb (pf)", pronunciation_vi: "u-YÉ-khat", pronunciation_en: "oo-YE-khat" },
+      { cell_id: "c65dd75b-450c-4396-b358-acc64b82f5c1", word: "зайти", romanization: "zayti", en: "to drop by", vi: "ghé qua", pos: "verb (pf)", pronunciation_vi: "zai-TÍ", pronunciation_en: "zai-TEE" },
     ],
     exercises: [
       {
@@ -816,11 +816,11 @@ export const lessons: RussianLesson[] = [
       },
     ],
     vocabulary: [
-      { word: "который", romanization: "kotoryy", en: "which / who / that", vi: "mà / người mà", pos: "relative pronoun", pronunciation_vi: "ka-TÔ-ryi", pronunciation_en: "ka-TO-riy" },
-      { word: "которую", romanization: "kotoruyu", en: "which (fem. accusative)", vi: "mà (cái 4, giống cái)", pos: "relative pronoun", pronunciation_vi: "ka-TÔ-ru-yu", pronunciation_en: "ka-TO-roo-yoo" },
-      { word: "где", romanization: "gde", en: "where", vi: "nơi mà", pos: "relative adverb", pronunciation_vi: "gđê", pronunciation_en: "gdye" },
-      { word: "человек", romanization: "chelovek", en: "person", vi: "người", pos: "noun (m)", pronunciation_vi: "che-la-VÉK", pronunciation_en: "che-la-VYEK" },
-      { word: "место", romanization: "mesto", en: "place", vi: "chỗ / nơi", pos: "noun (n)", pronunciation_vi: "MIÉS-ta", pronunciation_en: "MYES-ta" },
+      { cell_id: "263ae4d3-6585-4475-9c68-c95a73acac21", word: "который", romanization: "kotoryy", en: "which / who / that", vi: "mà / người mà", pos: "relative pronoun", pronunciation_vi: "ka-TÔ-ryi", pronunciation_en: "ka-TO-riy" },
+      { cell_id: "df4fb321-78e9-4b50-91ff-4a9804c66ffd", word: "которую", romanization: "kotoruyu", en: "which (fem. accusative)", vi: "mà (cái 4, giống cái)", pos: "relative pronoun", pronunciation_vi: "ka-TÔ-ru-yu", pronunciation_en: "ka-TO-roo-yoo" },
+      { cell_id: "029df2e6-e28b-4496-8b0a-63233e4e28ca", word: "где", romanization: "gde", en: "where", vi: "nơi mà", pos: "relative adverb", pronunciation_vi: "gđê", pronunciation_en: "gdye" },
+      { cell_id: "dbe193a2-094a-4815-b409-a2a234cb6b2c", word: "человек", romanization: "chelovek", en: "person", vi: "người", pos: "noun (m)", pronunciation_vi: "che-la-VÉK", pronunciation_en: "che-la-VYEK" },
+      { cell_id: "87d513c1-74ee-49c6-ac48-aed649024a4f", word: "место", romanization: "mesto", en: "place", vi: "chỗ / nơi", pos: "noun (n)", pronunciation_vi: "MIÉS-ta", pronunciation_en: "MYES-ta" },
     ],
     exercises: [
       {
@@ -899,11 +899,11 @@ export const lessons: RussianLesson[] = [
       },
     ],
     vocabulary: [
-      { word: "если", romanization: "yesli", en: "if", vi: "nếu", pos: "conjunction", pronunciation_vi: "YÉS-li", pronunciation_en: "YES-lee" },
-      { word: "когда", romanization: "kogda", en: "when", vi: "khi", pos: "conjunction", pronunciation_vi: "kag-DÁ", pronunciation_en: "kag-DAH" },
-      { word: "чтобы", romanization: "chtoby", en: "in order to / so that", vi: "để", pos: "conjunction", pronunciation_vi: "SHTÔ-by", pronunciation_en: "SHTO-by" },
-      { word: "хотя", romanization: "khotya", en: "although", vi: "mặc dù", pos: "conjunction", pronunciation_vi: "kha-TIÁ", pronunciation_en: "kha-TYA" },
-      { word: "готов", romanization: "gotov", en: "ready", vi: "sẵn sàng", pos: "adjective (short)", pronunciation_vi: "ga-TÔV", pronunciation_en: "ga-TOV" },
+      { cell_id: "42ed3af2-7208-40e6-b76d-27f44cda6d8f", word: "если", romanization: "yesli", en: "if", vi: "nếu", pos: "conjunction", pronunciation_vi: "YÉS-li", pronunciation_en: "YES-lee" },
+      { cell_id: "658d9fb8-7e3f-4065-a7af-3227e1f195ae", word: "когда", romanization: "kogda", en: "when", vi: "khi", pos: "conjunction", pronunciation_vi: "kag-DÁ", pronunciation_en: "kag-DAH" },
+      { cell_id: "0c84d152-8d46-4091-be1f-63c5c6991a43", word: "чтобы", romanization: "chtoby", en: "in order to / so that", vi: "để", pos: "conjunction", pronunciation_vi: "SHTÔ-by", pronunciation_en: "SHTO-by" },
+      { cell_id: "44774ef3-1e4b-4fc1-a64a-0ad13101e4cd", word: "хотя", romanization: "khotya", en: "although", vi: "mặc dù", pos: "conjunction", pronunciation_vi: "kha-TIÁ", pronunciation_en: "kha-TYA" },
+      { cell_id: "b26a9d97-4a73-4aed-8cac-96ab647fe7d6", word: "готов", romanization: "gotov", en: "ready", vi: "sẵn sàng", pos: "adjective (short)", pronunciation_vi: "ga-TÔV", pronunciation_en: "ga-TOV" },
     ],
     exercises: [
       {
@@ -982,17 +982,17 @@ export const lessons: RussianLesson[] = [
       },
     ],
     vocabulary: [
-      { word: "проблема", romanization: "problema", en: "problem", vi: "vấn đề", pos: "noun (f)", pronunciation_vi: "pra-BLÉ-ma", pronunciation_en: "pra-BLYE-ma" },
-      { word: "объяснить", romanization: "obyasnit", en: "to explain (pf)", vi: "giải thích", pos: "verb (pf)", pronunciation_vi: "ab-yas-NÍT", pronunciation_en: "ab-yas-NEET" },
-      { word: "поменять", romanization: "pomenyat", en: "to change / swap (pf)", vi: "đổi", pos: "verb (pf)", pronunciation_vi: "pa-me-NIÁT", pronunciation_en: "pa-me-NYAT" },
-      { word: "к сожалению", romanization: "k sozhaleniyu", en: "unfortunately", vi: "tiếc là", pos: "phrase", pronunciation_vi: "k sa-zha-LÉ-ni-yu", pronunciation_en: "k sa-zha-LYE-nee-yoo" },
-      { word: "помощь", romanization: "pomoshch", en: "help", vi: "sự giúp đỡ", pos: "noun (f)", pronunciation_vi: "PÔ-mashch", pronunciation_en: "PO-moshch" },
+      { cell_id: "c498716d-149e-4fff-a504-363a6ace9269", word: "проблема", romanization: "problema", en: "problem", vi: "vấn đề", pos: "noun (f)", pronunciation_vi: "pra-BLÉ-ma", pronunciation_en: "pra-BLYE-ma" },
+      { cell_id: "5922357d-a973-4260-a4eb-80f666ac734e", word: "объяснить", romanization: "obyasnit", en: "to explain (pf)", vi: "giải thích", pos: "verb (pf)", pronunciation_vi: "ab-yas-NÍT", pronunciation_en: "ab-yas-NEET" },
+      { cell_id: "89d09bb7-9204-473c-b274-c88309566f87", word: "поменять", romanization: "pomenyat", en: "to change / swap (pf)", vi: "đổi", pos: "verb (pf)", pronunciation_vi: "pa-me-NIÁT", pronunciation_en: "pa-me-NYAT" },
+      { cell_id: "31e7101c-8e43-4aba-8d44-3ac113344a27", word: "к сожалению", romanization: "k sozhaleniyu", en: "unfortunately", vi: "tiếc là", pos: "phrase", pronunciation_vi: "k sa-zha-LÉ-ni-yu", pronunciation_en: "k sa-zha-LYE-nee-yoo" },
+      { cell_id: "a7f7351a-a83b-4595-947b-206fd493fe46", word: "помощь", romanization: "pomoshch", en: "help", vi: "sự giúp đỡ", pos: "noun (f)", pronunciation_vi: "PÔ-mashch", pronunciation_en: "PO-moshch" },
     ],
     dialogue: [
-      { speaker: "Клиент", text: "Извините, у меня проблема с заказом.", romanization: "Izvinite, u menya problema s zakazom.", vi: "Xin lỗi, tôi có vấn đề với đơn hàng.", en: "Excuse me, I have a problem with my order." },
-      { speaker: "Сотрудник", text: "Конечно. Можете объяснить, что случилось?", romanization: "Konechno. Mozhete obyasnit, chto sluchilos?", vi: "Tất nhiên. Anh/chị nói rõ chuyện gì được không?", en: "Of course. Can you explain what happened?" },
-      { speaker: "Клиент", text: "Пришёл не тот размер. Я хотел бы поменять его.", romanization: "Prishyol ne tot razmer. Ya khotel by pomenyat yego.", vi: "Giao sai cỡ. Tôi muốn đổi.", en: "The wrong size arrived. I'd like to change it." },
-      { speaker: "Сотрудник", text: "Хорошо, мы поменяем сегодня.", romanization: "Khorosho, my pomenyaem segodnya.", vi: "Được, hôm nay chúng tôi sẽ đổi.", en: "All right, we'll change it today." },
+      { cell_id: "dc5df7fa-7050-473f-8696-6dff31acdd9e", speaker: "Клиент", text: "Извините, у меня проблема с заказом.", romanization: "Izvinite, u menya problema s zakazom.", vi: "Xin lỗi, tôi có vấn đề với đơn hàng.", en: "Excuse me, I have a problem with my order." },
+      { cell_id: "4129b60c-7c3a-4f23-b5d2-36545a9dac44", speaker: "Сотрудник", text: "Конечно. Можете объяснить, что случилось?", romanization: "Konechno. Mozhete obyasnit, chto sluchilos?", vi: "Tất nhiên. Anh/chị nói rõ chuyện gì được không?", en: "Of course. Can you explain what happened?" },
+      { cell_id: "9b6ba5bc-6657-4e04-87f7-8037a5d81cbb", speaker: "Клиент", text: "Пришёл не тот размер. Я хотел бы поменять его.", romanization: "Prishyol ne tot razmer. Ya khotel by pomenyat yego.", vi: "Giao sai cỡ. Tôi muốn đổi.", en: "The wrong size arrived. I'd like to change it." },
+      { cell_id: "1d645192-7df3-4b6c-b074-a3b0f0195dd6", speaker: "Сотрудник", text: "Хорошо, мы поменяем сегодня.", romanization: "Khorosho, my pomenyaem segodnya.", vi: "Được, hôm nay chúng tôi sẽ đổi.", en: "All right, we'll change it today." },
     ],
     exercises: [
       {

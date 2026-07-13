@@ -13,6 +13,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -22,6 +23,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -249,41 +251,46 @@ export const lessons: IndonesianLesson[] = [
     tip_advice_en:
       "Tip for Vietnamese speakers: do not use only `kalau` for every situation. Use `jika memungkinkan` for polite possibility, `seandainya/andaikan` for hypotheticals, `kalau saja` for regret, `asalkan` for required conditions, and `tanpa...` to warn about consequences. In planning analysis, connect all three parts: assumption -> possibility -> consequence/backup plan.",
     vocabulary: [
-      { word: "seandainya", en: "suppose, if only", vi: "giả sử, giá mà", pos: "connector", pronunciation_vi: "se-an-DAI-nya", pronunciation_en: "se-an-DAI-nya" },
-      { word: "kalau saja", en: "if only", vi: "giá như", pos: "connector", pronunciation_vi: "KA-lau SA-ja", pronunciation_en: "KA-lau SA-ja" },
-      { word: "andaikan", en: "suppose, imagine if", vi: "giả sử", pos: "connector", pronunciation_vi: "an-DAI-kan", pronunciation_en: "an-DAI-kan" },
-      { word: "jika memungkinkan", en: "if possible", vi: "nếu có thể", pos: "formal phrase", pronunciation_vi: "JI-ka me-MUNG-kin-kan", pronunciation_en: "JI-ka me-MOONG-kin-kan" },
-      { word: "kemungkinan", en: "possibility, likelihood", vi: "khả năng", pos: "noun", pronunciation_vi: "ke-mung-KIN-an", pronunciation_en: "ke-moong-KIN-an" },
-      { word: "konsekuensi", en: "consequence", vi: "hệ quả", pos: "noun", pronunciation_vi: "kon-se-KU-en-si", pronunciation_en: "kon-se-KU-en-si" },
-      { word: "rencana cadangan", en: "backup plan", vi: "kế hoạch dự phòng", pos: "noun phrase", pronunciation_vi: "ren-CA-na ca-DANG-an", pronunciation_en: "ren-CHA-na cha-DANG-an" },
-      { word: "asumsi", en: "assumption", vi: "giả định", pos: "noun", pronunciation_vi: "a-SUM-si", pronunciation_en: "a-SOOM-si" },
+      { cell_id: "cba29316-9214-4117-abc3-9d252f330198", word: "seandainya", en: "suppose, if only", vi: "giả sử, giá mà", pos: "connector", pronunciation_vi: "se-an-DAI-nya", pronunciation_en: "se-an-DAI-nya" },
+      { cell_id: "27fec797-810c-4227-9bae-7e49628cf007", word: "kalau saja", en: "if only", vi: "giá như", pos: "connector", pronunciation_vi: "KA-lau SA-ja", pronunciation_en: "KA-lau SA-ja" },
+      { cell_id: "994cca0d-6118-43f9-b270-f78d701d2c30", word: "andaikan", en: "suppose, imagine if", vi: "giả sử", pos: "connector", pronunciation_vi: "an-DAI-kan", pronunciation_en: "an-DAI-kan" },
+      { cell_id: "eb8b156b-e8e8-4c32-9d37-00d21965188a", word: "jika memungkinkan", en: "if possible", vi: "nếu có thể", pos: "formal phrase", pronunciation_vi: "JI-ka me-MUNG-kin-kan", pronunciation_en: "JI-ka me-MOONG-kin-kan" },
+      { cell_id: "1c4c3cbd-293a-4fa4-b749-dbd6138080fe", word: "kemungkinan", en: "possibility, likelihood", vi: "khả năng", pos: "noun", pronunciation_vi: "ke-mung-KIN-an", pronunciation_en: "ke-moong-KIN-an" },
+      { cell_id: "07055668-dbcf-4285-8afb-372805499ca0", word: "konsekuensi", en: "consequence", vi: "hệ quả", pos: "noun", pronunciation_vi: "kon-se-KU-en-si", pronunciation_en: "kon-se-KU-en-si" },
+      { cell_id: "f3a14f03-db2a-4b48-9f75-b994468cdcc4", word: "rencana cadangan", en: "backup plan", vi: "kế hoạch dự phòng", pos: "noun phrase", pronunciation_vi: "ren-CA-na ca-DANG-an", pronunciation_en: "ren-CHA-na cha-DANG-an" },
+      { cell_id: "76865ecf-fc25-46b1-8295-2c06f957d804", word: "asumsi", en: "assumption", vi: "giả định", pos: "noun", pronunciation_vi: "a-SUM-si", pronunciation_en: "a-SOOM-si" },
     ],
     dialogue: [
       {
+        cell_id: "0baa6888-bf54-49da-8461-435b3f94ed26",
         speaker: "Mira",
         text: "Seandainya klien meminta perubahan besar, apa rencana cadangan kita?",
         vi: "Giả sử khách hàng yêu cầu thay đổi lớn, kế hoạch dự phòng của chúng ta là gì?",
         en: "Suppose the client asks for a major change, what is our backup plan?",
       },
       {
+        cell_id: "d4e83a3a-48ea-4405-8248-d5987b490b5b",
         speaker: "Hadi",
         text: "Jika memungkinkan, kita minta tambahan waktu satu minggu.",
         vi: "Nếu có thể, chúng ta xin thêm một tuần.",
         en: "If possible, we ask for one extra week.",
       },
       {
+        cell_id: "6c3583bf-088f-457c-a3a6-e4d224429647",
         speaker: "Mira",
         text: "Kalau saja kita tahu lebih awal, konsekuensinya tidak sebesar ini.",
         vi: "Giá như chúng ta biết sớm hơn, hệ quả đã không lớn như thế này.",
         en: "If only we had known earlier, the consequences would not be this big.",
       },
       {
+        cell_id: "05cce9d7-e414-4419-b46f-bcc9a7b55a90",
         speaker: "Hadi",
         text: "Benar. Dengan asumsi semua pihak setuju, jadwal bisa kita ubah hari ini.",
         vi: "Đúng. Với giả định rằng tất cả các bên đồng ý, lịch có thể được chúng ta đổi hôm nay.",
         en: "Right. Assuming all parties agree, we can change the schedule today.",
       },
       {
+        cell_id: "34d4bd46-984f-4334-9bc9-ac9f2670a361",
         speaker: "Mira",
         text: "Baik, asalkan risikonya dijelaskan sejak awal.",
         vi: "Được, miễn là rủi ro được giải thích ngay từ đầu.",

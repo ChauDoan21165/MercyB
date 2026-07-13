@@ -28,6 +28,7 @@ export type ItalianLessonSentence = {
 };
 
 export type ItalianVocabEntry = {
+  cell_id?: string;
   /** Italian word/phrase (with article where it teaches gender). */
   word: string;
   /** English meaning. */
@@ -45,6 +46,7 @@ export type ItalianVocabEntry = {
 };
 
 export type ItalianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   /** Italian line. */
   text: string;
@@ -180,6 +182,7 @@ export const lessons: ItalianLesson[] = [
       "Don't just say `Non capisco` and stop — say exactly what you need repeated or confirmed. When you disagree, acknowledge first (`Capisco, però...`), then state the facts. To escalate, use `Forse è meglio parlarne con il responsabile` rather than escalating harshly.",
     vocabulary: [
       {
+        cell_id: "fe13eabb-0c17-49fa-89b2-58c0271e9ab6",
         word: "il turno",
         en: "shift",
         vi: "ca làm",
@@ -189,6 +192,7 @@ export const lessons: ItalianLesson[] = [
         example: "Vorrei cambiare turno.",
       },
       {
+        cell_id: "36a7da73-3070-49f8-930b-18889227bae6",
         word: "il responsabile",
         en: "the person in charge, manager",
         vi: "người phụ trách",
@@ -198,6 +202,7 @@ export const lessons: ItalianLesson[] = [
         example: "Parlo con il responsabile.",
       },
       {
+        cell_id: "284ad1c2-cf85-4357-9ebe-caeef598c2a6",
         word: "la procedura",
         en: "procedure",
         vi: "quy trình",
@@ -207,6 +212,7 @@ export const lessons: ItalianLesson[] = [
         example: "Sto imparando la procedura.",
       },
       {
+        cell_id: "ad3cd244-dfc2-497e-a51b-1714c0245b13",
         word: "la spedizione",
         en: "shipment, dispatch",
         vi: "việc gửi hàng",
@@ -216,6 +222,7 @@ export const lessons: ItalianLesson[] = [
         example: "Prima della spedizione.",
       },
       {
+        cell_id: "7641f541-5aa9-4703-b155-8df10b0c9bf2",
         word: "il registro",
         en: "logbook, register",
         vi: "sổ ghi chép",
@@ -225,6 +232,7 @@ export const lessons: ItalianLesson[] = [
         example: "Scrivo sul registro.",
       },
       {
+        cell_id: "88469a8c-a72c-4198-a813-4315604ef6a1",
         word: "il malinteso",
         en: "misunderstanding",
         vi: "sự hiểu lầm",
@@ -234,6 +242,7 @@ export const lessons: ItalianLesson[] = [
         example: "C'è stato un malinteso.",
       },
       {
+        cell_id: "ff0bdb3d-de22-4146-ad49-1a6490b3dccd",
         word: "la trattenuta",
         en: "deduction (from pay)",
         vi: "khoản khấu trừ",
@@ -243,6 +252,7 @@ export const lessons: ItalianLesson[] = [
         example: "Vorrei capire questa trattenuta.",
       },
       {
+        cell_id: "1bd64c8d-1fb3-4c12-88b5-005d4525df74",
         word: "il netto",
         en: "net (take-home pay)",
         vi: "lương thực nhận",
@@ -255,30 +265,35 @@ export const lessons: ItalianLesson[] = [
     // Dialogue 1 — Clarifying a task (featured).
     dialogue: [
       {
+        cell_id: "c7e0eec4-8570-47e8-8847-9f1acd8cefd6",
         speaker: "Capo",
         text: "Oggi devi controllare i documenti prima della spedizione.",
         vi: "Hôm nay bạn phải kiểm tra giấy tờ trước khi gửi hàng.",
         en: "Today you need to check the documents before the shipment.",
       },
       {
+        cell_id: "d2daacf0-c102-4b0b-91ec-4c65b2672cf7",
         speaker: "Lavoratore",
         text: "Va bene. Vorrei essere sicuro di aver capito: controllo nome, indirizzo e codice, giusto?",
         vi: "Được. Tôi muốn chắc là đã hiểu: kiểm tra tên, địa chỉ và mã, đúng không?",
         en: "Alright. I'd like to be sure I understood: I check name, address and code, right?",
       },
       {
+        cell_id: "8f35bb4b-0c8d-4f7c-af3d-9082f9170f5c",
         speaker: "Capo",
         text: "Esatto, e poi li metti nella cartella rossa.",
         vi: "Đúng, rồi cho vào bìa màu đỏ.",
         en: "Exactly, and then you put them in the red folder.",
       },
       {
+        cell_id: "35146034-921d-4135-a880-fd7ef87ecff6",
         speaker: "Lavoratore",
         text: "Perfetto. Se trovo un errore, a chi lo segnalo?",
         vi: "Rõ rồi. Nếu tôi thấy lỗi, tôi báo cho ai?",
         en: "Perfect. If I find an error, who do I report it to?",
       },
       {
+        cell_id: "27ad7fc7-87e7-425a-8862-0ec1a1824487",
         speaker: "Capo",
         text: "Lo segnali a me subito.",
         vi: "Báo cho tôi ngay.",

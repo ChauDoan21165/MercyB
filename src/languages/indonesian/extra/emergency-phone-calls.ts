@@ -13,6 +13,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -22,6 +23,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -235,39 +237,43 @@ export const lessons: IndonesianLesson[] = [
     tip_advice_en:
       "Tip for Vietnamese speakers: in an emergency call, do not try long sentences. Use fixed frames: `Ini keadaan darurat`, `Saya butuh ambulans`, `Lokasi kejadian di...`, `Ada korban...`, `Jangan tutup telepon`. Distinguish `panggil` (summon to the scene), `hubungi` (contact), `tutup telepon` (hang up), and `tetap di telepon` (stay on the line).",
     vocabulary: [
-      { word: "telepon darurat", en: "emergency call", vi: "cuộc gọi khẩn cấp", pos: "noun phrase", pronunciation_vi: "te-LE-pon da-RU-rat", pronunciation_en: "te-LE-pon da-ROO-rat" },
-      { word: "ambulans", en: "ambulance", vi: "xe cứu thương", pos: "noun", pronunciation_vi: "am-bu-LANS", pronunciation_en: "am-boo-LANS" },
-      { word: "pemadam kebakaran", en: "fire brigade / firefighters", vi: "lực lượng cứu hỏa", pos: "noun phrase", pronunciation_vi: "pe-MA-dam ke-ba-KA-ran", pronunciation_en: "pe-MA-dam ke-ba-KA-ran" },
-      { word: "polisi", en: "police", vi: "cảnh sát", pos: "noun", pronunciation_vi: "po-LI-si", pronunciation_en: "po-LEE-see" },
-      { word: "lokasi kejadian", en: "incident location", vi: "địa điểm xảy ra sự việc", pos: "noun phrase", pronunciation_vi: "lo-KA-si ke-JA-di-an", pronunciation_en: "lo-KA-see ke-JA-dee-an" },
-      { word: "korban", en: "victim", vi: "nạn nhân", pos: "noun", pronunciation_vi: "KOR-ban", pronunciation_en: "KOR-ban" },
-      { word: "panik", en: "panicked", vi: "hoảng", pos: "adjective", pronunciation_vi: "PA-nik", pronunciation_en: "PA-nik" },
-      { word: "minta bantuan", en: "ask for help", vi: "xin hỗ trợ", pos: "verb phrase", pronunciation_vi: "MIN-ta ban-TU-an", pronunciation_en: "MIN-ta ban-TOO-an" },
-      { word: "terluka", en: "injured", vi: "bị thương", pos: "state verb", pronunciation_vi: "ter-LU-ka", pronunciation_en: "ter-LOO-ka" },
-      { word: "tidak sadar", en: "unconscious", vi: "bất tỉnh", pos: "adjective phrase", pronunciation_vi: "ti-DAK SA-dar", pronunciation_en: "ti-DAK SA-dar" },
-      { word: "tutup telepon", en: "hang up", vi: "cúp máy", pos: "verb phrase", pronunciation_vi: "TU-tup te-LE-pon", pronunciation_en: "TOO-toop te-LE-pon" },
-      { word: "dalam perjalanan", en: "on the way", vi: "đang trên đường", pos: "phrase", pronunciation_vi: "DA-lam per-ja-LAN-an", pronunciation_en: "DA-lam per-ja-LAN-an" },
+      { cell_id: "98f4c573-7ad5-4c9d-b949-60af257bfc10", word: "telepon darurat", en: "emergency call", vi: "cuộc gọi khẩn cấp", pos: "noun phrase", pronunciation_vi: "te-LE-pon da-RU-rat", pronunciation_en: "te-LE-pon da-ROO-rat" },
+      { cell_id: "fd3d7f53-8490-4f28-8840-dd86253eb084", word: "ambulans", en: "ambulance", vi: "xe cứu thương", pos: "noun", pronunciation_vi: "am-bu-LANS", pronunciation_en: "am-boo-LANS" },
+      { cell_id: "7ccaa2d9-0e8f-4b98-9181-7ab8ef6e7035", word: "pemadam kebakaran", en: "fire brigade / firefighters", vi: "lực lượng cứu hỏa", pos: "noun phrase", pronunciation_vi: "pe-MA-dam ke-ba-KA-ran", pronunciation_en: "pe-MA-dam ke-ba-KA-ran" },
+      { cell_id: "e8be1182-8f67-4539-a76c-d39a7c04823c", word: "polisi", en: "police", vi: "cảnh sát", pos: "noun", pronunciation_vi: "po-LI-si", pronunciation_en: "po-LEE-see" },
+      { cell_id: "68c4ef41-99ef-464a-84dc-f12f1eb91b0e", word: "lokasi kejadian", en: "incident location", vi: "địa điểm xảy ra sự việc", pos: "noun phrase", pronunciation_vi: "lo-KA-si ke-JA-di-an", pronunciation_en: "lo-KA-see ke-JA-dee-an" },
+      { cell_id: "fc9befc9-cff6-4d22-8a06-993681f250c9", word: "korban", en: "victim", vi: "nạn nhân", pos: "noun", pronunciation_vi: "KOR-ban", pronunciation_en: "KOR-ban" },
+      { cell_id: "d68d44c0-dcf4-45fc-bc9a-48420bf64715", word: "panik", en: "panicked", vi: "hoảng", pos: "adjective", pronunciation_vi: "PA-nik", pronunciation_en: "PA-nik" },
+      { cell_id: "0cfd309c-b3cb-49ad-917c-8d170b3c0458", word: "minta bantuan", en: "ask for help", vi: "xin hỗ trợ", pos: "verb phrase", pronunciation_vi: "MIN-ta ban-TU-an", pronunciation_en: "MIN-ta ban-TOO-an" },
+      { cell_id: "eca78f8f-a925-4af4-be9e-be62a95188ac", word: "terluka", en: "injured", vi: "bị thương", pos: "state verb", pronunciation_vi: "ter-LU-ka", pronunciation_en: "ter-LOO-ka" },
+      { cell_id: "2f842729-af7c-4a38-ac9c-a7296e2ea4a2", word: "tidak sadar", en: "unconscious", vi: "bất tỉnh", pos: "adjective phrase", pronunciation_vi: "ti-DAK SA-dar", pronunciation_en: "ti-DAK SA-dar" },
+      { cell_id: "276881f2-9f8e-44a5-907d-0e13c57c82fb", word: "tutup telepon", en: "hang up", vi: "cúp máy", pos: "verb phrase", pronunciation_vi: "TU-tup te-LE-pon", pronunciation_en: "TOO-toop te-LE-pon" },
+      { cell_id: "43d74d00-ef1b-479d-824e-c2ab56d98d02", word: "dalam perjalanan", en: "on the way", vi: "đang trên đường", pos: "phrase", pronunciation_vi: "DA-lam per-ja-LAN-an", pronunciation_en: "DA-lam per-ja-LAN-an" },
     ],
     dialogue: [
       {
+        cell_id: "60835bcb-a049-4b51-92ed-bbdb0d43012e",
         speaker: "Penelepon",
         text: "Halo, ini keadaan darurat. Saya butuh ambulans sekarang juga.",
         vi: "A lô, đây là tình huống khẩn cấp. Tôi cần xe cứu thương ngay bây giờ.",
         en: "Hello, this is an emergency. I need an ambulance right now.",
       },
       {
+        cell_id: "db5a16e6-2f64-4453-a002-ba2ce3dbdadd",
         speaker: "Petugas",
         text: "Lokasi kejadian di mana? Ada berapa korban?",
         vi: "Địa điểm xảy ra sự việc ở đâu? Có bao nhiêu nạn nhân?",
         en: "Where is the incident location? How many victims are there?",
       },
       {
+        cell_id: "d7b45bd6-aea2-42b3-ba8e-99d61ab7da17",
         speaker: "Penelepon",
         text: "Di Jalan Melati nomor dua belas. Ada dua orang terluka.",
         vi: "Ở đường Melati số mười hai. Có hai người bị thương.",
         en: "At Jalan Melati number twelve. Two people are injured.",
       },
       {
+        cell_id: "f08677e8-3055-428b-b091-86e859ed9587",
         speaker: "Petugas",
         text: "Baik, petugas dalam perjalanan. Jangan tutup telepon.",
         vi: "Được, nhân viên cứu hộ đang trên đường. Đừng cúp máy.",

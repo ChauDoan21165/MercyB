@@ -20,6 +20,7 @@ type SwahiliSentence = {
 };
 
 type SwahiliVocabEntry = {
+  cell_id?: string;
   sw: string;
   vi: string;
   en: string;
@@ -104,11 +105,11 @@ export const lessons: SwahiliLesson[] = [
       },
     ],
     vocabulary: [
-      { sw: "kazi", vi: "công việc", en: "work", pos: "n.", ngeli: "n/n" },
-      { sw: "tarehe ya mwisho", vi: "hạn chót", en: "deadline", pos: "n.", ngeli: "n/n" },
-      { sw: "ripoti", vi: "báo cáo", en: "report", pos: "n.", ngeli: "n/n" },
-      { sw: "kumaliza", vi: "hoàn thành", en: "to finish", pos: "v." },
-      { sw: "kutuma", vi: "gửi", en: "to send", pos: "v." },
+      { cell_id: "978879ae-0687-423a-bf8b-8d01340fa925", sw: "kazi", vi: "công việc", en: "work", pos: "n.", ngeli: "n/n" },
+      { cell_id: "b2148e1e-222b-4d42-a7c3-23658aff4a77", sw: "tarehe ya mwisho", vi: "hạn chót", en: "deadline", pos: "n.", ngeli: "n/n" },
+      { cell_id: "4830084a-070d-43f7-b5be-6de3453bfc53", sw: "ripoti", vi: "báo cáo", en: "report", pos: "n.", ngeli: "n/n" },
+      { cell_id: "9098189c-1cab-4cd2-8dd2-9d158da0124e", sw: "kumaliza", vi: "hoàn thành", en: "to finish", pos: "v." },
+      { cell_id: "fd35f81b-b904-43c0-987a-dfaceb01b33d", sw: "kutuma", vi: "gửi", en: "to send", pos: "v." },
     ],
     exercises: [
       {
@@ -174,11 +175,11 @@ export const lessons: SwahiliLesson[] = [
       },
     ],
     vocabulary: [
-      { sw: "maumivu", vi: "đau, cơn đau", en: "pain", pos: "n.", ngeli: "ma-" },
-      { sw: "dawa", vi: "thuốc", en: "medicine", pos: "n.", ngeli: "n/n" },
-      { sw: "kupungua", vi: "giảm bớt", en: "to decrease", pos: "v." },
-      { sw: "mara mbili kwa siku", vi: "hai lần một ngày", en: "twice a day", pos: "phr." },
-      { sw: "usingizi", vi: "buồn ngủ, giấc ngủ", en: "sleepiness, sleep", pos: "n.", ngeli: "u-" },
+      { cell_id: "451472f3-7a63-4731-b269-e8ed540a0c5d", sw: "maumivu", vi: "đau, cơn đau", en: "pain", pos: "n.", ngeli: "ma-" },
+      { cell_id: "b2f86390-84a4-45df-be2e-95ae1a28ed49", sw: "dawa", vi: "thuốc", en: "medicine", pos: "n.", ngeli: "n/n" },
+      { cell_id: "e2899b1c-cfbe-4476-8511-1c7aebe1b390", sw: "kupungua", vi: "giảm bớt", en: "to decrease", pos: "v." },
+      { cell_id: "47b0ae59-cd94-4fa6-afa0-a35fe6f4f60d", sw: "mara mbili kwa siku", vi: "hai lần một ngày", en: "twice a day", pos: "phr." },
+      { cell_id: "f479093d-c227-4e3b-a78e-e7838811bdd7", sw: "usingizi", vi: "buồn ngủ, giấc ngủ", en: "sleepiness, sleep", pos: "n.", ngeli: "u-" },
     ],
     exercises: [
       {
@@ -239,10 +240,10 @@ export const lessons: SwahiliLesson[] = [
       },
     ],
     vocabulary: [
-      { sw: "fomu", vi: "biểu mẫu, mẫu đơn", en: "form", pos: "n.", ngeli: "n/n" },
-      { sw: "nyaraka", vi: "giấy tờ, tài liệu", en: "documents", pos: "n.", ngeli: "n/n" },
-      { sw: "orodha", vi: "danh sách", en: "list", pos: "n.", ngeli: "n/n" },
-      { sw: "kuhitajika", vi: "được yêu cầu, cần thiết", en: "to be required", pos: "v." },
+      { cell_id: "872df1bb-28c6-4964-bd41-b3a4f20c3508", sw: "fomu", vi: "biểu mẫu, mẫu đơn", en: "form", pos: "n.", ngeli: "n/n" },
+      { cell_id: "5bf0aaed-56d7-4ee8-8d1e-1a02ea0be0f4", sw: "nyaraka", vi: "giấy tờ, tài liệu", en: "documents", pos: "n.", ngeli: "n/n" },
+      { cell_id: "d71bfbc8-5043-429d-88d0-62278d16713f", sw: "orodha", vi: "danh sách", en: "list", pos: "n.", ngeli: "n/n" },
+      { cell_id: "abf9ef2c-3fe8-482f-b1c2-d78c848d62d3", sw: "kuhitajika", vi: "được yêu cầu, cần thiết", en: "to be required", pos: "v." },
     ],
     exercises: [
       {
@@ -301,11 +302,11 @@ export const lessons: SwahiliLesson[] = [
       },
     ],
     vocabulary: [
-      { sw: "nadhani", vi: "tôi nghĩ", en: "I think", pos: "v." },
-      { sw: "bora", vi: "tốt hơn, tốt nhất", en: "better, best", pos: "adj." },
-      { sw: "kwa sababu", vi: "bởi vì", en: "because", pos: "conj." },
-      { sw: "kupenda", vi: "thích, yêu", en: "to like, to love", pos: "v." },
-      { sw: "ghali", vi: "đắt", en: "expensive", pos: "adj." },
+      { cell_id: "fbc667ef-7152-4577-a11d-740105661c14", sw: "nadhani", vi: "tôi nghĩ", en: "I think", pos: "v." },
+      { cell_id: "e05bdf74-2c8e-4132-b79a-9db262bf889a", sw: "bora", vi: "tốt hơn, tốt nhất", en: "better, best", pos: "adj." },
+      { cell_id: "0bef4e05-cc02-4b56-96fd-b88cbef727d8", sw: "kwa sababu", vi: "bởi vì", en: "because", pos: "conj." },
+      { cell_id: "65c077b9-987e-423c-96b0-71d23c3f6239", sw: "kupenda", vi: "thích, yêu", en: "to like, to love", pos: "v." },
+      { cell_id: "b54a0369-a2e0-4fd2-bc37-3dca84992f1d", sw: "ghali", vi: "đắt", en: "expensive", pos: "adj." },
     ],
     exercises: [
       {
@@ -365,11 +366,11 @@ export const lessons: SwahiliLesson[] = [
       },
     ],
     vocabulary: [
-      { sw: "kuchelewa", vi: "đến trễ, bị trễ", en: "to be late", pos: "v." },
-      { sw: "kisha", vi: "sau đó, rồi thì", en: "then, afterwards", pos: "conj." },
-      { sw: "ujumbe", vi: "tin nhắn", en: "message", pos: "n.", ngeli: "u-" },
-      { sw: "hatimaye", vi: "cuối cùng", en: "finally, in the end", pos: "adv." },
-      { sw: "mtandaoni", vi: "trực tuyến, trên mạng", en: "online", pos: "adv." },
+      { cell_id: "ecbfab6f-7424-4059-b1ee-b27d11aef0f0", sw: "kuchelewa", vi: "đến trễ, bị trễ", en: "to be late", pos: "v." },
+      { cell_id: "0f6d5815-7869-496e-8cf9-ab54e051bb40", sw: "kisha", vi: "sau đó, rồi thì", en: "then, afterwards", pos: "conj." },
+      { cell_id: "f74a84c6-1b62-4a84-bb7e-cba74b818d60", sw: "ujumbe", vi: "tin nhắn", en: "message", pos: "n.", ngeli: "u-" },
+      { cell_id: "83d07683-377a-4978-b083-173deb224747", sw: "hatimaye", vi: "cuối cùng", en: "finally, in the end", pos: "adv." },
+      { cell_id: "96cc2de8-f22e-486e-8ae4-b9793bf38f78", sw: "mtandaoni", vi: "trực tuyến, trên mạng", en: "online", pos: "adv." },
     ],
     exercises: [
       {

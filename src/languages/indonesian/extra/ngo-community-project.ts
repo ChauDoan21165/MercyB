@@ -21,6 +21,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   /** Indonesian word/phrase. */
   word: string;
   /** English meaning. */
@@ -36,6 +37,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   /** Indonesian line. */
   text: string;
@@ -253,6 +255,7 @@ export const lessons: IndonesianLesson[] = [
       "Use `kami` when speaking for your organization, and `kita` when including the listener. For funding contexts, prefer clear phrases like `menyusun proposal`, `membuat laporan kegiatan`, `mencatat dana`, and `evaluasi bersama`.",
     vocabulary: [
       {
+        cell_id: "1aae5ab6-25b9-4fe2-8731-4e3ff369a2b0",
         word: "LSM",
         en: "NGO",
         vi: "tổ chức phi chính phủ",
@@ -261,6 +264,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "el-es-EM",
       },
       {
+        cell_id: "121cb422-c0fb-4888-b97e-4c8e42cd7d42",
         word: "proyek komunitas",
         en: "community project",
         vi: "dự án cộng đồng",
@@ -269,6 +273,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "PRO-yek ko-moo-nee-TAS",
       },
       {
+        cell_id: "c9e00b5d-2221-4f30-a860-a15ad3e7ff5f",
         word: "proposal",
         en: "proposal",
         vi: "đề xuất/dự án đề xuất",
@@ -277,6 +282,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "pro-PO-sal",
       },
       {
+        cell_id: "21252a96-8f89-4ccf-b0cf-108128ace7b0",
         word: "donatur",
         en: "donor",
         vi: "nhà tài trợ",
@@ -285,6 +291,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "do-NA-toor",
       },
       {
+        cell_id: "9ec6c4c9-1216-46ad-94db-0382e55ec49b",
         word: "laporan kegiatan",
         en: "activity report",
         vi: "báo cáo hoạt động",
@@ -293,6 +300,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "la-PO-ran keh-GEE-a-tan",
       },
       {
+        cell_id: "02c95ea8-f8ad-46df-880a-428fb733f9f8",
         word: "penerima manfaat",
         en: "beneficiary",
         vi: "người hưởng lợi",
@@ -301,6 +309,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "peh-neh-REE-ma MAN-fa-at",
       },
       {
+        cell_id: "9c508a0a-6fc7-4093-8ca7-53629dd0f859",
         word: "koordinasi",
         en: "coordination",
         vi: "phối hợp",
@@ -309,6 +318,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "ko-or-dee-NA-see",
       },
       {
+        cell_id: "d1f3b0f6-3ff6-4f96-a7b3-0cc5627cbd52",
         word: "relawan",
         en: "volunteer",
         vi: "tình nguyện viên",
@@ -317,6 +327,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "reh-LA-wan",
       },
       {
+        cell_id: "4bc3a3e6-1f8f-436f-b3f5-bfde88d6864a",
         word: "dana",
         en: "funds",
         vi: "quỹ/nguồn tiền",
@@ -325,6 +336,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "DA-na",
       },
       {
+        cell_id: "d0981bdc-3dee-4d4d-811c-fe31adb7590d",
         word: "laporan akhir",
         en: "final report",
         vi: "báo cáo cuối kỳ",
@@ -335,24 +347,28 @@ export const lessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "8b4e660d-2d6b-49bc-9140-f55c7701d7a4",
         speaker: "Koordinator LSM",
         text: "Kami sedang menyusun proposal untuk proyek komunitas di desa ini.",
         vi: "Chúng tôi đang soạn đề xuất cho dự án cộng đồng ở làng này.",
         en: "We are preparing a proposal for a community project in this village.",
       },
       {
+        cell_id: "21afcf9a-6d86-4c85-adf4-10e5ee338f53",
         speaker: "Donatur",
         text: "Siapa penerima manfaatnya, dan bagaimana laporan kegiatannya?",
         vi: "Ai là người hưởng lợi, và báo cáo hoạt động như thế nào?",
         en: "Who are the beneficiaries, and how will the activity report work?",
       },
       {
+        cell_id: "c97a6d10-0067-46c5-9b90-a445ab19533a",
         speaker: "Koordinator LSM",
         text: "Penerima manfaatnya adalah anak-anak sekolah. Laporan kegiatan akan kami kirim setiap bulan.",
         vi: "Người hưởng lợi là trẻ em đi học. Báo cáo hoạt động chúng tôi sẽ gửi mỗi tháng.",
         en: "The beneficiaries are school children. We will send the activity report every month.",
       },
       {
+        cell_id: "5f72f561-f91b-4ead-9e25-165183ce7301",
         speaker: "Donatur",
         text: "Baik, pastikan dana dicatat secara transparan dan ada dokumentasi kegiatan.",
         vi: "Được, hãy đảm bảo quỹ được ghi chép minh bạch và có tư liệu hoạt động.",

@@ -21,6 +21,7 @@ type LessonSentence = {
 };
 
 type VocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -32,6 +33,7 @@ type VocabEntry = {
 };
 
 type DialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -217,6 +219,7 @@ export const marketFoodSafetyLessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: `segar` = fresh, `bau` = smell, `warna` = color, `kedaluwarsa` = expired/expiration, `aman dimakan` = safe to eat. For negative instructions, use `jangan`: `jangan dimakan`, `jangan dibeli kalau baunya aneh`.",
     vocabulary: [
       {
+        cell_id: "3f1eac30-b238-4dd9-9734-b519ad592d4c",
         word: "makanan segar",
         en: "fresh food",
         vi: "thực phẩm tươi",
@@ -225,6 +228,7 @@ export const marketFoodSafetyLessons: IndonesianLesson[] = [
         pronunciation_en: "ma-KA-nan SE-gar",
       },
       {
+        cell_id: "c3663c35-323f-451d-bb9f-4e32e22daab0",
         word: "tanggal kedaluwarsa",
         en: "expiration date",
         vi: "hạn sử dụng; ngày hết hạn",
@@ -233,6 +237,7 @@ export const marketFoodSafetyLessons: IndonesianLesson[] = [
         pronunciation_en: "TANG-gal keh-da-loo-WAR-sa",
       },
       {
+        cell_id: "538b9dc3-f5d6-4479-9088-0282453269fe",
         word: "bau",
         en: "smell; odor",
         vi: "mùi",
@@ -241,6 +246,7 @@ export const marketFoodSafetyLessons: IndonesianLesson[] = [
         pronunciation_en: "BAU",
       },
       {
+        cell_id: "f92a3246-62a7-429d-84f2-8c39eb0c207d",
         word: "warna",
         en: "color",
         vi: "màu sắc",
@@ -249,6 +255,7 @@ export const marketFoodSafetyLessons: IndonesianLesson[] = [
         pronunciation_en: "WAR-na",
       },
       {
+        cell_id: "cb24036d-827a-4525-ba44-e0d54e5b1aaa",
         word: "penyimpanan",
         en: "storage",
         vi: "sự bảo quản; cách cất giữ",
@@ -257,6 +264,7 @@ export const marketFoodSafetyLessons: IndonesianLesson[] = [
         pronunciation_en: "peh-nyim-PA-nan",
       },
       {
+        cell_id: "351c5cce-3065-48eb-990e-3e649d05e86a",
         word: "keracunan makanan",
         en: "food poisoning",
         vi: "ngộ độc thực phẩm",
@@ -265,6 +273,7 @@ export const marketFoodSafetyLessons: IndonesianLesson[] = [
         pronunciation_en: "keh-ra-CHOO-nan ma-KA-nan",
       },
       {
+        cell_id: "8b0211b9-a5ea-48f2-b9ca-36d0293efa46",
         word: "tanya penjual",
         en: "ask the seller",
         vi: "hỏi người bán",
@@ -273,6 +282,7 @@ export const marketFoodSafetyLessons: IndonesianLesson[] = [
         pronunciation_en: "TA-nya pen-JOO-al",
       },
       {
+        cell_id: "58533543-5802-487b-90aa-41573e165bed",
         word: "aman dimakan",
         en: "safe to eat",
         vi: "an toàn để ăn",
@@ -281,6 +291,7 @@ export const marketFoodSafetyLessons: IndonesianLesson[] = [
         pronunciation_en: "A-man dee-MA-kan",
       },
       {
+        cell_id: "c1b74028-326d-4fcd-82f6-0eb03a529c51",
         word: "suhu ruang",
         en: "room temperature",
         vi: "nhiệt độ phòng",
@@ -289,6 +300,7 @@ export const marketFoodSafetyLessons: IndonesianLesson[] = [
         pronunciation_en: "SOO-hoo ROO-ang",
       },
       {
+        cell_id: "9a331e1f-1eff-468e-ad4d-fbd520ab4658",
         word: "baru datang",
         en: "just arrived",
         vi: "mới về; mới đến",
@@ -299,36 +311,42 @@ export const marketFoodSafetyLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "a7d9c137-7d9e-437e-beb6-6183b23a2193",
         speaker: "Pembeli",
         text: "Bu, ayam ini masih segar? Baunya agak kuat.",
         vi: "Cô ơi, gà này còn tươi không? Mùi hơi nặng.",
         en: "Ma'am, is this chicken still fresh? The smell is a bit strong.",
       },
       {
+        cell_id: "1f695715-ba94-466e-ad59-a011d36a13c5",
         speaker: "Penjual",
         text: "Masih segar, Mbak. Baru datang pagi ini.",
         vi: "Còn tươi, chị. Mới về sáng nay.",
         en: "It is still fresh, ma'am. It just arrived this morning.",
       },
       {
+        cell_id: "b04873ae-7554-4dcd-85b8-096f0d3bc292",
         speaker: "Pembeli",
         text: "Tanggal kedaluwarsanya sampai kapan?",
         vi: "Hạn sử dụng đến khi nào?",
         en: "When is the expiration date?",
       },
       {
+        cell_id: "ea1d11f8-1574-4881-8c31-1259913d7cd4",
         speaker: "Penjual",
         text: "Untuk yang kemasan, tanggalnya ada di label. Yang segar sebaiknya langsung dimasak.",
         vi: "Hàng đóng gói thì ngày có trên nhãn. Hàng tươi tốt nhất nên nấu ngay.",
         en: "For packaged items, the date is on the label. Fresh items should preferably be cooked right away.",
       },
       {
+        cell_id: "b6e4c525-f578-4056-9d47-0804a9a52e3a",
         speaker: "Pembeli",
         text: "Kalau disimpan di kulkas sampai besok, masih aman dimakan?",
         vi: "Nếu để trong tủ lạnh đến mai thì vẫn an toàn để ăn không?",
         en: "If it is stored in the refrigerator until tomorrow, is it still safe to eat?",
       },
       {
+        cell_id: "d6020700-7f82-4913-8df9-8c57de31d4dd",
         speaker: "Penjual",
         text: "Bisa, tapi kalau warna atau baunya berubah, jangan dimakan.",
         vi: "Được, nhưng nếu màu hoặc mùi thay đổi thì đừng ăn.",

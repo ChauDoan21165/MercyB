@@ -12,6 +12,7 @@ export type PunjabiScriptVocabularyStressCategory =
   | "romanization_reduction";
 
 export type PunjabiScriptVocabularyStressItem = {
+  cell_id?: string;
   id: string;
   category: PunjabiScriptVocabularyStressCategory;
   riskLevel: "stress_test" | "final_risk" | "final_qa";
@@ -29,6 +30,7 @@ export type PunjabiScriptVocabularyStressItem = {
 };
 
 export type PunjabiScriptVocabularyStressScope = {
+  cell_id?: string;
   name: string;
   scriptPolicy: string;
   reviewStatus: string;

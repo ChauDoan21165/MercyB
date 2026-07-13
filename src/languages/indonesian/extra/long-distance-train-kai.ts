@@ -21,6 +21,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   /** Indonesian word/phrase. */
   word: string;
   /** English meaning. */
@@ -36,6 +37,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   /** Indonesian line. */
   text: string;
@@ -253,6 +255,7 @@ export const lessons: IndonesianLesson[] = [
       "When asking station staff, state your booking code, station, departure schedule, car, and seat number clearly. For changes or cancellation, use `mengubah jadwal` for rescheduling and `mengajukan refund` for refunds.",
     vocabulary: [
       {
+        cell_id: "6ee9be47-79e4-4b72-a573-ba6d4859c72c",
         word: "kereta api",
         en: "train",
         vi: "tàu hỏa",
@@ -261,6 +264,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "keh-REH-ta A-pee",
       },
       {
+        cell_id: "a0e5d70f-c75e-4fd6-9971-987342347078",
         word: "KAI",
         en: "Indonesian railway company",
         vi: "công ty đường sắt Indonesia",
@@ -269,6 +273,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "KA-I",
       },
       {
+        cell_id: "0356e124-3d05-4e3c-bad3-615070bbf3b2",
         word: "tiket",
         en: "ticket",
         vi: "vé",
@@ -277,6 +282,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "TEE-ket",
       },
       {
+        cell_id: "bfee0bd1-1a47-421a-b419-8cef4f679ce5",
         word: "nomor kursi",
         en: "seat number",
         vi: "số ghế",
@@ -285,6 +291,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "NO-mor KOOR-see",
       },
       {
+        cell_id: "9b80dba3-d191-4337-9a4e-fc156349a7ed",
         word: "stasiun",
         en: "station",
         vi: "ga",
@@ -293,6 +300,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "sta-SEE-oon",
       },
       {
+        cell_id: "ab2fbb26-8979-410c-8bae-80c0569d5508",
         word: "jadwal berangkat",
         en: "departure schedule",
         vi: "lịch khởi hành",
@@ -301,6 +309,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "JAD-wal beh-RANG-kat",
       },
       {
+        cell_id: "a4ef491d-dda3-40c6-a113-84e95a375459",
         word: "refund",
         en: "refund",
         vi: "hoàn tiền",
@@ -309,6 +318,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "REE-fund",
       },
       {
+        cell_id: "d208a72b-e19f-42d9-b6f1-04f62b2de42c",
         word: "bagasi",
         en: "baggage",
         vi: "hành lý",
@@ -317,6 +327,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "ba-GA-see",
       },
       {
+        cell_id: "3d8f7f6d-709e-4f29-9682-06c3c31f218e",
         word: "gerbong",
         en: "train car",
         vi: "toa tàu",
@@ -325,6 +336,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "GER-bong",
       },
       {
+        cell_id: "9889515a-3c18-454d-bfbf-2aeebdf14b3b",
         word: "mengubah jadwal",
         en: "change the schedule",
         vi: "đổi lịch",
@@ -335,24 +347,28 @@ export const lessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "0d61b8a4-cc05-4fc7-b1df-0014b2030cf6",
         speaker: "Penumpang",
         text: "Permisi, kereta saya berangkat dari stasiun mana?",
         vi: "Xin lỗi, tàu của tôi khởi hành từ ga nào?",
         en: "Excuse me, which station does my train depart from?",
       },
       {
+        cell_id: "5c02fb20-4312-45ff-aa5e-2b9c66a36213",
         speaker: "Petugas KAI",
         text: "Tiketnya dari Stasiun Gambir. Nomor gerbong dan kursi ada di tiket elektronik.",
         vi: "Vé là từ ga Gambir. Số toa và ghế có trên vé điện tử.",
         en: "The ticket is from Gambir Station. The car and seat numbers are on the e-ticket.",
       },
       {
+        cell_id: "3082d119-39d6-4642-ad0d-0ea043c13e89",
         speaker: "Penumpang",
         text: "Kalau jadwal berubah, bagaimana cara mengajukan refund?",
         vi: "Nếu lịch thay đổi, cách yêu cầu hoàn tiền như thế nào?",
         en: "If the schedule changes, how do I request a refund?",
       },
       {
+        cell_id: "6ff4308d-3223-4aef-acb4-1ec6519df153",
         speaker: "Petugas KAI",
         text: "Bisa lewat aplikasi atau loket, tergantung jenis tiketnya.",
         vi: "Có thể qua ứng dụng hoặc quầy, tùy loại vé.",

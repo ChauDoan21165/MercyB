@@ -26,6 +26,7 @@ export type LessonSentence = {
 };
 
 export type VocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -35,6 +36,7 @@ export type VocabEntry = {
 };
 
 export type DialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -129,12 +131,12 @@ export const lessons: IndonesianLesson[] = [
     tip_advice_en:
       "Trill drill: say a fast American 'butter/ladder' or 'tara-tara-tara' — the tongue taps naturally. Read aloud daily: lari, lurus, merah, kiri, ratus, ribu, benar. Record and compare to natives. Don't let 'r' drift into 'd' or 'g'.",
     vocabulary: [
-      { word: "lari", en: "to run", vi: "chạy", pos: "verb", pronunciation_vi: "LA-ri (r rung)", pronunciation_en: "LAH-ree (trilled r)" },
-      { word: "merah", en: "red", vi: "đỏ", pos: "adjective", pronunciation_vi: "ME-rah", pronunciation_en: "MEH-rah" },
-      { word: "kiri", en: "left", vi: "trái", pos: "noun", pronunciation_vi: "KI-ri", pronunciation_en: "KEE-ree" },
-      { word: "lurus", en: "straight", vi: "thẳng", pos: "adjective", pronunciation_vi: "LU-rus", pronunciation_en: "LOO-roos" },
-      { word: "benar", en: "correct, true", vi: "đúng", pos: "adjective", pronunciation_vi: "be-NAR", pronunciation_en: "buh-NAR" },
-      { word: "ribu", en: "thousand", vi: "nghìn", pos: "number", pronunciation_vi: "RI-bu", pronunciation_en: "REE-boo" },
+      { cell_id: "8df23aa6-4f13-437d-a859-4025e1154758", word: "lari", en: "to run", vi: "chạy", pos: "verb", pronunciation_vi: "LA-ri (r rung)", pronunciation_en: "LAH-ree (trilled r)" },
+      { cell_id: "af2bafa9-6d71-4b73-a534-213cd17e358c", word: "merah", en: "red", vi: "đỏ", pos: "adjective", pronunciation_vi: "ME-rah", pronunciation_en: "MEH-rah" },
+      { cell_id: "edba29d4-beca-44a9-8b98-7ff3ab5f619b", word: "kiri", en: "left", vi: "trái", pos: "noun", pronunciation_vi: "KI-ri", pronunciation_en: "KEE-ree" },
+      { cell_id: "ac4b5d58-a625-430a-8655-64c8b350b6bb", word: "lurus", en: "straight", vi: "thẳng", pos: "adjective", pronunciation_vi: "LU-rus", pronunciation_en: "LOO-roos" },
+      { cell_id: "c89dd93b-c079-4416-8f5c-237d7c56872d", word: "benar", en: "correct, true", vi: "đúng", pos: "adjective", pronunciation_vi: "be-NAR", pronunciation_en: "buh-NAR" },
+      { cell_id: "9f0fddb4-da19-4b59-85cc-a92549f2208a", word: "ribu", en: "thousand", vi: "nghìn", pos: "number", pronunciation_vi: "RI-bu", pronunciation_en: "REE-boo" },
     ],
     exercises: [
       {
@@ -218,12 +220,12 @@ export const lessons: IndonesianLesson[] = [
     tip_advice_en:
       "Lean into the advantage: whenever you see initial 'ng', recall your native 'ng' in 'Nguyễn/ngon'. Read aloud: ngomong, ngantuk, ngapain, mengerti. Never split it into 'n-g'. Distinguish: mangga (mango, ng+g) ≠ manga.",
     vocabulary: [
-      { word: "ngomong", en: "to talk (slang)", vi: "nói chuyện", pos: "verb", pronunciation_vi: "ngo-MONG", pronunciation_en: "ngo-MONG" },
-      { word: "ngantuk", en: "sleepy", vi: "buồn ngủ", pos: "adjective", pronunciation_vi: "ngan-TUK", pronunciation_en: "ngan-TOOK" },
-      { word: "mengerti", en: "to understand", vi: "hiểu", pos: "verb", pronunciation_vi: "me-nger-TI", pronunciation_en: "muh-nger-TEE" },
-      { word: "mengambil", en: "to take", vi: "lấy", pos: "verb", pronunciation_vi: "me-ngam-BIL", pronunciation_en: "muh-ngam-BIL" },
-      { word: "mangga", en: "mango", vi: "xoài", pos: "noun", pronunciation_vi: "MANG-ga (ng+g)", pronunciation_en: "MANG-gah (ng+g)" },
-      { word: "bunga", en: "flower", vi: "hoa", pos: "noun", pronunciation_vi: "BU-nga", pronunciation_en: "BOO-ngah" },
+      { cell_id: "a8e72fae-0d0a-49e4-a9c2-2ad2b6672911", word: "ngomong", en: "to talk (slang)", vi: "nói chuyện", pos: "verb", pronunciation_vi: "ngo-MONG", pronunciation_en: "ngo-MONG" },
+      { cell_id: "2de8fca0-fa04-48ce-8767-7252a97d343e", word: "ngantuk", en: "sleepy", vi: "buồn ngủ", pos: "adjective", pronunciation_vi: "ngan-TUK", pronunciation_en: "ngan-TOOK" },
+      { cell_id: "ab904f69-36b3-4e3a-9881-ca5d6f4c2d9a", word: "mengerti", en: "to understand", vi: "hiểu", pos: "verb", pronunciation_vi: "me-nger-TI", pronunciation_en: "muh-nger-TEE" },
+      { cell_id: "287d8dc4-87b9-4573-881e-1f2fc80d2f1a", word: "mengambil", en: "to take", vi: "lấy", pos: "verb", pronunciation_vi: "me-ngam-BIL", pronunciation_en: "muh-ngam-BIL" },
+      { cell_id: "83d623ea-5157-418f-9894-4ad16533113c", word: "mangga", en: "mango", vi: "xoài", pos: "noun", pronunciation_vi: "MANG-ga (ng+g)", pronunciation_en: "MANG-gah (ng+g)" },
+      { cell_id: "d0b55b55-7000-4aa7-90a0-812d4dd8273d", word: "bunga", en: "flower", vi: "hoa", pos: "noun", pronunciation_vi: "BU-nga", pronunciation_en: "BOO-ngah" },
     ],
     exercises: [
       {
@@ -316,12 +318,12 @@ export const lessons: IndonesianLesson[] = [
     tip_advice_en:
       "Rule: for any new word with 'e', check the dictionary for schwa vs open-e and mark it. Tone-removal drill: read Indonesian flat like a robot first, then add natural intonation (stress, not tone). Split vowels: a-ir, ba-u, sa-at.",
     vocabulary: [
-      { word: "emas", en: "gold", vi: "vàng", pos: "noun", pronunciation_vi: "ə-MAS (e câm)", pronunciation_en: "uh-MAS (schwa)" },
-      { word: "enak", en: "tasty, pleasant", vi: "ngon", pos: "adjective", pronunciation_vi: "E-nak (e mở)", pronunciation_en: "EH-nak (open e)" },
-      { word: "besar", en: "big", vi: "to, lớn", pos: "adjective", pronunciation_vi: "bə-SAR (e câm)", pronunciation_en: "buh-SAR (schwa)" },
-      { word: "air", en: "water", vi: "nước", pos: "noun", pronunciation_vi: "A-ir (2 âm)", pronunciation_en: "AH-eer (2 syl.)" },
-      { word: "pulau", en: "island", vi: "đảo", pos: "noun", pronunciation_vi: "PU-lau", pronunciation_en: "POO-lau" },
-      { word: "sore", en: "afternoon", vi: "buổi chiều", pos: "noun", pronunciation_vi: "SO-re (e mở)", pronunciation_en: "SOH-reh (open e)" },
+      { cell_id: "aca343ad-776a-4bcf-a34c-9ff6285921fe", word: "emas", en: "gold", vi: "vàng", pos: "noun", pronunciation_vi: "ə-MAS (e câm)", pronunciation_en: "uh-MAS (schwa)" },
+      { cell_id: "209b9be4-685d-4b4f-a793-1b4af3400aba", word: "enak", en: "tasty, pleasant", vi: "ngon", pos: "adjective", pronunciation_vi: "E-nak (e mở)", pronunciation_en: "EH-nak (open e)" },
+      { cell_id: "3d8a995e-3b16-42bf-8d9e-4f1272d188b7", word: "besar", en: "big", vi: "to, lớn", pos: "adjective", pronunciation_vi: "bə-SAR (e câm)", pronunciation_en: "buh-SAR (schwa)" },
+      { cell_id: "0948bb8e-370e-4b84-a9b2-f381728aa5a7", word: "air", en: "water", vi: "nước", pos: "noun", pronunciation_vi: "A-ir (2 âm)", pronunciation_en: "AH-eer (2 syl.)" },
+      { cell_id: "eda1dce5-23b9-43b0-9239-682442a614ce", word: "pulau", en: "island", vi: "đảo", pos: "noun", pronunciation_vi: "PU-lau", pronunciation_en: "POO-lau" },
+      { cell_id: "71b434c0-3209-4750-aec9-6a326a04488d", word: "sore", en: "afternoon", vi: "buổi chiều", pos: "noun", pronunciation_vi: "SO-re (e mở)", pronunciation_en: "SOH-reh (open e)" },
     ],
     exercises: [
       {
@@ -405,12 +407,12 @@ export const lessons: IndonesianLesson[] = [
     tip_advice_en:
       "Drill: tap your hand on the penult syllable as you read — MA(tap)-kan, buh-LA(tap)-jar. Read Indonesian at flat pitch, varying only loudness/length on the stressed syllable. Record yourself and check you haven't slipped in a Vietnamese tone.",
     vocabulary: [
-      { word: "makan", en: "to eat", vi: "ăn", pos: "verb", pronunciation_vi: "MA-kan", pronunciation_en: "MA-kan" },
-      { word: "belajar", en: "to study", vi: "học", pos: "verb", pronunciation_vi: "be-LA-jar", pronunciation_en: "buh-LA-jar" },
-      { word: "makanan", en: "food", vi: "thức ăn", pos: "noun", pronunciation_vi: "ma-KA-nan", pronunciation_en: "mah-KA-nan" },
-      { word: "terima kasih", en: "thank you", vi: "cảm ơn", pos: "phrase", pronunciation_vi: "te-RI-ma KA-sih", pronunciation_en: "tuh-REE-mah KA-see" },
-      { word: "kemeja", en: "shirt", vi: "áo sơ mi", pos: "noun", pronunciation_vi: "ke-ME-ja", pronunciation_en: "kuh-MEH-jah" },
-      { word: "tertawa", en: "to laugh", vi: "cười", pos: "verb", pronunciation_vi: "ter-ta-WA", pronunciation_en: "ter-tah-WA" },
+      { cell_id: "95e00364-e1b7-4714-ab2b-5db9b370c96e", word: "makan", en: "to eat", vi: "ăn", pos: "verb", pronunciation_vi: "MA-kan", pronunciation_en: "MA-kan" },
+      { cell_id: "d4496b8e-bf47-4502-9efd-afbb698ab8ae", word: "belajar", en: "to study", vi: "học", pos: "verb", pronunciation_vi: "be-LA-jar", pronunciation_en: "buh-LA-jar" },
+      { cell_id: "4a219c5d-67d0-4b02-ad2c-59b37cd14c6a", word: "makanan", en: "food", vi: "thức ăn", pos: "noun", pronunciation_vi: "ma-KA-nan", pronunciation_en: "mah-KA-nan" },
+      { cell_id: "3aa88418-e163-4eb0-8cee-edc67bc42994", word: "terima kasih", en: "thank you", vi: "cảm ơn", pos: "phrase", pronunciation_vi: "te-RI-ma KA-sih", pronunciation_en: "tuh-REE-mah KA-see" },
+      { cell_id: "276676b6-a81b-455c-a8cf-90a1425d6ed2", word: "kemeja", en: "shirt", vi: "áo sơ mi", pos: "noun", pronunciation_vi: "ke-ME-ja", pronunciation_en: "kuh-MEH-jah" },
+      { cell_id: "49560821-1688-426b-9b0e-37afdea0ad03", word: "tertawa", en: "to laugh", vi: "cười", pos: "verb", pronunciation_vi: "ter-ta-WA", pronunciation_en: "ter-tah-WA" },
     ],
     exercises: [
       {
@@ -510,17 +512,17 @@ export const lessons: IndonesianLesson[] = [
     tip_advice_en:
       "Fix 'c' = 'ch' first — it's the most audible error. Read daily: cabai, cuci, baca, cinta, cantik. Then drill 'j' (jalan, juga) and hold final consonants (rumah-h, benar-r). Final 'k': think of Vietnamese 'bác' — cut off, unreleased.",
     vocabulary: [
-      { word: "cabai", en: "chili", vi: "ớt", pos: "noun", pronunciation_vi: "cha-BAI (c=ch)", pronunciation_en: "cha-BAI (c=ch)" },
-      { word: "baca", en: "to read", vi: "đọc", pos: "verb", pronunciation_vi: "BA-cha", pronunciation_en: "BAH-cha" },
-      { word: "jalan", en: "road, to walk", vi: "đường, đi bộ", pos: "noun/verb", pronunciation_vi: "JA-lan", pronunciation_en: "JAH-lan" },
-      { word: "tidak", en: "not, no", vi: "không", pos: "adverb", pronunciation_vi: "TI-da' (k câm)", pronunciation_en: "TEE-da(k)" },
-      { word: "rumah", en: "house", vi: "nhà", pos: "noun", pronunciation_vi: "RU-mah (h thở)", pronunciation_en: "ROO-mah (breathy h)" },
-      { word: "nyamuk", en: "mosquito", vi: "muỗi", pos: "noun", pronunciation_vi: "nya-MUK (ny=nh)", pronunciation_en: "nya-MOOK (ny=ñ)" },
+      { cell_id: "d4714b5b-180a-40f8-a622-de59779ce67c", word: "cabai", en: "chili", vi: "ớt", pos: "noun", pronunciation_vi: "cha-BAI (c=ch)", pronunciation_en: "cha-BAI (c=ch)" },
+      { cell_id: "ea1373cf-cbb1-4b4e-bbcd-a1d03f4d6631", word: "baca", en: "to read", vi: "đọc", pos: "verb", pronunciation_vi: "BA-cha", pronunciation_en: "BAH-cha" },
+      { cell_id: "2b5836cf-080b-4bc4-b15c-cd9b3d238385", word: "jalan", en: "road, to walk", vi: "đường, đi bộ", pos: "noun/verb", pronunciation_vi: "JA-lan", pronunciation_en: "JAH-lan" },
+      { cell_id: "0a429286-4094-4d49-964f-54511588dc9b", word: "tidak", en: "not, no", vi: "không", pos: "adverb", pronunciation_vi: "TI-da' (k câm)", pronunciation_en: "TEE-da(k)" },
+      { cell_id: "a5d860e7-e1fa-43e7-bd16-f947e4966ca0", word: "rumah", en: "house", vi: "nhà", pos: "noun", pronunciation_vi: "RU-mah (h thở)", pronunciation_en: "ROO-mah (breathy h)" },
+      { cell_id: "f64f2be8-adfd-4868-aebe-7c18a4f83df4", word: "nyamuk", en: "mosquito", vi: "muỗi", pos: "noun", pronunciation_vi: "nya-MUK (ny=nh)", pronunciation_en: "nya-MOOK (ny=ñ)" },
     ],
     dialogue: [
-      { speaker: "Guru", text: "Coba baca kata ini: 'cabai'. Bukan 'kabai' ya.", vi: "Thử đọc từ này: 'cabai'. Không phải 'kabai' nhé.", en: "Try reading this word: 'cabai'. Not 'kabai', okay." },
-      { speaker: "Murid", text: "Cha-bai. Jadi 'c' selalu 'ch'?", vi: "Cha-bai. Vậy 'c' luôn là 'ch'?", en: "Cha-bai. So 'c' is always 'ch'?" },
-      { speaker: "Guru", text: "Betul! Baca, cuci, cinta — semua 'ch'.", vi: "Đúng vậy! Baca, cuci, cinta — đều 'ch'.", en: "Correct! Baca, cuci, cinta — all 'ch'." },
+      { cell_id: "47433fb9-0f30-4287-92a0-855d92ae1946", speaker: "Guru", text: "Coba baca kata ini: 'cabai'. Bukan 'kabai' ya.", vi: "Thử đọc từ này: 'cabai'. Không phải 'kabai' nhé.", en: "Try reading this word: 'cabai'. Not 'kabai', okay." },
+      { cell_id: "94088a5b-9fa4-47e3-a174-a7b80b97e2e8", speaker: "Murid", text: "Cha-bai. Jadi 'c' selalu 'ch'?", vi: "Cha-bai. Vậy 'c' luôn là 'ch'?", en: "Cha-bai. So 'c' is always 'ch'?" },
+      { cell_id: "cff77458-dda6-4f45-865d-4672b1e81b2a", speaker: "Guru", text: "Betul! Baca, cuci, cinta — semua 'ch'.", vi: "Đúng vậy! Baca, cuci, cinta — đều 'ch'.", en: "Correct! Baca, cuci, cinta — all 'ch'." },
     ],
     exercises: [
       {

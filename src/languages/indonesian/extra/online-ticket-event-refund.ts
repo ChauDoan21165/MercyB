@@ -17,6 +17,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   /** Indonesian word/phrase. */
   word: string;
   /** English meaning. */
@@ -32,6 +33,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   /** Indonesian line. */
   text: string;
@@ -235,49 +237,55 @@ export const lessons: IndonesianLesson[] = [
     tip_advice_en:
       "Safe template: `Saya membeli tiket online untuk konser ini. Barcode tiket saya tidak bisa dipindai. Jadwal acara berubah dan saya ingin minta refund. Saya sudah mengirim bukti pembayaran melalui email. Apakah tiket saya masih berlaku?`",
     vocabulary: [
-      { word: "tiket online", en: "online ticket", vi: "vé online", pos: "noun phrase", pronunciation_vi: "TI-ket on-LAIN", pronunciation_en: "TEE-ket on-LINE" },
-      { word: "barcode", en: "barcode", vi: "mã vạch / barcode", pos: "noun", pronunciation_vi: "BAR-code", pronunciation_en: "BAR-code" },
-      { word: "dipindai", en: "scanned", vi: "được quét", pos: "verb (passive)", pronunciation_vi: "di-PIN-dai", pronunciation_en: "dee-PIN-die" },
-      { word: "jadwal acara", en: "event schedule", vi: "lịch sự kiện", pos: "noun phrase", pronunciation_vi: "JAD-wal A-ca-ra", pronunciation_en: "JAD-wal A-cha-ra" },
-      { word: "refund", en: "refund", vi: "hoàn tiền", pos: "noun / verb", pronunciation_vi: "ri-FAN", pronunciation_en: "REE-fund" },
-      { word: "bukti pembayaran", en: "proof of payment", vi: "bằng chứng thanh toán", pos: "noun phrase", pronunciation_vi: "BUK-ti pem-ba-YAR-an", pronunciation_en: "BOOK-ti pem-ba-YAR-an" },
-      { word: "customer service", en: "customer service", vi: "bộ phận chăm sóc khách hàng", pos: "noun phrase", pronunciation_vi: "cus-TOM-er ser-VIS", pronunciation_en: "CUS-toh-mer SER-vis" },
-      { word: "nomor pesanan", en: "order number", vi: "số đơn hàng", pos: "noun phrase", pronunciation_vi: "NO-mor pe-SA-nan", pronunciation_en: "NO-mor peh-SA-nan" },
-      { word: "pengembalian dana", en: "refund / fund return", vi: "hoàn tiền", pos: "noun phrase", pronunciation_vi: "pe-ngem-ba-LI-an DA-na", pronunciation_en: "peh-ngem-ba-LEE-an DA-na" },
-      { word: "masih berlaku", en: "still valid", vi: "vẫn còn hiệu lực", pos: "phrase", pronunciation_vi: "MA-sih ber-LA-ku", pronunciation_en: "MA-sih ber-LA-koo" },
+      { cell_id: "129f2de5-4364-4ce2-b283-f2b4f12f1267", word: "tiket online", en: "online ticket", vi: "vé online", pos: "noun phrase", pronunciation_vi: "TI-ket on-LAIN", pronunciation_en: "TEE-ket on-LINE" },
+      { cell_id: "cf48dcf6-55bf-4da4-a781-69c439c023b1", word: "barcode", en: "barcode", vi: "mã vạch / barcode", pos: "noun", pronunciation_vi: "BAR-code", pronunciation_en: "BAR-code" },
+      { cell_id: "13f90789-3aea-448c-b263-10b3a35fafff", word: "dipindai", en: "scanned", vi: "được quét", pos: "verb (passive)", pronunciation_vi: "di-PIN-dai", pronunciation_en: "dee-PIN-die" },
+      { cell_id: "75eb2b28-26ae-4240-bdc3-8e639259d289", word: "jadwal acara", en: "event schedule", vi: "lịch sự kiện", pos: "noun phrase", pronunciation_vi: "JAD-wal A-ca-ra", pronunciation_en: "JAD-wal A-cha-ra" },
+      { cell_id: "f1aee29d-f590-4d1a-a0e1-96836a748416", word: "refund", en: "refund", vi: "hoàn tiền", pos: "noun / verb", pronunciation_vi: "ri-FAN", pronunciation_en: "REE-fund" },
+      { cell_id: "5b8fd562-91c1-4ff7-82f1-48b2809cb00a", word: "bukti pembayaran", en: "proof of payment", vi: "bằng chứng thanh toán", pos: "noun phrase", pronunciation_vi: "BUK-ti pem-ba-YAR-an", pronunciation_en: "BOOK-ti pem-ba-YAR-an" },
+      { cell_id: "ec425cc3-bf72-44f9-9db7-fa57b53914bd", word: "customer service", en: "customer service", vi: "bộ phận chăm sóc khách hàng", pos: "noun phrase", pronunciation_vi: "cus-TOM-er ser-VIS", pronunciation_en: "CUS-toh-mer SER-vis" },
+      { cell_id: "998d31b6-95bd-4fa3-9bdd-b167dae2a4db", word: "nomor pesanan", en: "order number", vi: "số đơn hàng", pos: "noun phrase", pronunciation_vi: "NO-mor pe-SA-nan", pronunciation_en: "NO-mor peh-SA-nan" },
+      { cell_id: "ed654a48-9a89-4535-9410-34ff26b65c1c", word: "pengembalian dana", en: "refund / fund return", vi: "hoàn tiền", pos: "noun phrase", pronunciation_vi: "pe-ngem-ba-LI-an DA-na", pronunciation_en: "peh-ngem-ba-LEE-an DA-na" },
+      { cell_id: "63ee5653-aa4c-4434-9918-af5ff8daa02b", word: "masih berlaku", en: "still valid", vi: "vẫn còn hiệu lực", pos: "phrase", pronunciation_vi: "MA-sih ber-LA-ku", pronunciation_en: "MA-sih ber-LA-koo" },
     ],
     dialogue: [
       {
+        cell_id: "1c9dd6a2-3fe7-4353-be0f-90f5787f2eb8",
         speaker: "Pelanggan",
         text: "Halo, saya ingin minta refund untuk tiket konser saya.",
         vi: "Xin chào, tôi muốn xin hoàn tiền cho vé concert của tôi.",
         en: "Hello, I would like to request a refund for my concert ticket.",
       },
       {
+        cell_id: "a39dad32-9578-4a6f-9918-e91f42d35b24",
         speaker: "Customer service",
         text: "Baik, boleh kirim nomor pesanan dan bukti pembayaran?",
         vi: "Vâng, anh/chị có thể gửi số đơn hàng và bằng chứng thanh toán không?",
         en: "All right, could you send the order number and proof of payment?",
       },
       {
+        cell_id: "8f28e065-7f05-4142-8147-ddcb66f2fb02",
         speaker: "Pelanggan",
         text: "Tentu, saya sudah kirim lewat email.",
         vi: "Tất nhiên, tôi đã gửi qua email rồi.",
         en: "Of course, I have already sent it by email.",
       },
       {
+        cell_id: "ca0b72c4-0060-43a1-ae65-9cc5ee43d8f4",
         speaker: "Customer service",
         text: "Terima kasih. Jadwal event memang berubah, jadi tiket Anda masih berlaku atau bisa diproses refund.",
         vi: "Cảm ơn. Lịch sự kiện đúng là đã thay đổi, nên vé của anh/chị vẫn còn hiệu lực hoặc có thể được xử lý hoàn tiền.",
         en: "Thank you. The event schedule did change, so your ticket is still valid or the refund can be processed.",
       },
       {
+        cell_id: "f7297c39-f53d-4fc1-adfa-c9da1fe53f6a",
         speaker: "Pelanggan",
         text: "Saya memilih refund, karena saya tidak bisa datang pada tanggal baru.",
         vi: "Tôi chọn hoàn tiền vì tôi không thể đến vào ngày mới.",
         en: "I choose the refund because I cannot attend on the new date.",
       },
       {
+        cell_id: "cbda6634-e98e-4a8f-9f9f-51e0935d9b4a",
         speaker: "Customer service",
         text: "Baik, refund akan diproses dalam tujuh hari kerja.",
         vi: "Vâng, hoàn tiền sẽ được xử lý trong bảy ngày làm việc.",

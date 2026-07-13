@@ -19,6 +19,7 @@ export type PunjabiThematicVocabularyTheme =
   | "common_verbs";
 
 export type PunjabiThematicVocabularyEntry = {
+  cell_id?: string;
   id: string;
   theme: PunjabiThematicVocabularyTheme;
   gurmukhi: string;
@@ -37,6 +38,7 @@ export type PunjabiThematicVocabularyEntry = {
 };
 
 export type PunjabiThematicVocabularySection = {
+  cell_id?: string;
   theme: PunjabiThematicVocabularyTheme;
   title_vi: string;
   title_en: string;

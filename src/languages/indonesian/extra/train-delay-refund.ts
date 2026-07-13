@@ -12,6 +12,7 @@ type LessonSentence = {
 };
 
 type VocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -21,6 +22,7 @@ type VocabEntry = {
 };
 
 type DialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -150,34 +152,38 @@ export const lessons: IndonesianLesson[] = [
     tip_advice_en:
       "Useful frames: `Kereta saya terlambat`, `Saya mau minta refund tiket`, `Apakah ada formulir?`, `Nomor antrean saya berapa?`. Vietnamese speakers should remember `terlambat` = delayed, while `tertinggal` = missed because you did not make it in time.",
     vocabulary: [
-      { word: "kereta terlambat", en: "delayed train", vi: "tàu bị trễ", pos: "noun phrase", pronunciation_vi: "ke-RE-ta ter-LAM-bat", pronunciation_en: "ke-RE-ta ter-LAM-bat" },
-      { word: "refund tiket", en: "ticket refund", vi: "hoàn tiền vé", pos: "noun phrase", pronunciation_vi: "RI-fan TI-ket", pronunciation_en: "REE-fund TEE-ket" },
-      { word: "loket KAI", en: "KAI counter", vi: "quầy KAI", pos: "noun phrase", pronunciation_vi: "LO-ket KAI", pronunciation_en: "LO-ket KAI" },
-      { word: "pengumuman stasiun", en: "station announcement", vi: "thông báo ở ga", pos: "noun phrase", pronunciation_vi: "pe-ngu-MUM-an sta-SI-un", pronunciation_en: "pe-ngoo-MOOM-an sta-SEE-un" },
-      { word: "bukti pembayaran", en: "payment proof", vi: "bằng chứng thanh toán", pos: "noun phrase", pronunciation_vi: "BUK-ti pem-ba-YAR-an", pronunciation_en: "BOOK-ti pem-ba-YAR-an" },
-      { word: "nomor antrean", en: "queue number", vi: "số thứ tự", pos: "noun phrase", pronunciation_vi: "NO-mor an-TRE-an", pronunciation_en: "NO-mor an-TRE-an" },
-      { word: "pengembalian dana", en: "refund", vi: "hoàn tiền", pos: "noun phrase", pronunciation_vi: "pe-ngem-ba-LI-an DA-na", pronunciation_en: "pe-ngem-ba-LI-an DA-na" },
+      { cell_id: "ec048f36-61ce-49f8-ad7e-4bdb6977960f", word: "kereta terlambat", en: "delayed train", vi: "tàu bị trễ", pos: "noun phrase", pronunciation_vi: "ke-RE-ta ter-LAM-bat", pronunciation_en: "ke-RE-ta ter-LAM-bat" },
+      { cell_id: "277cd68e-5195-4078-8cea-5966d49b7582", word: "refund tiket", en: "ticket refund", vi: "hoàn tiền vé", pos: "noun phrase", pronunciation_vi: "RI-fan TI-ket", pronunciation_en: "REE-fund TEE-ket" },
+      { cell_id: "0d1b63c9-ae2d-459a-b044-6ff8c63ba230", word: "loket KAI", en: "KAI counter", vi: "quầy KAI", pos: "noun phrase", pronunciation_vi: "LO-ket KAI", pronunciation_en: "LO-ket KAI" },
+      { cell_id: "fbb90eee-e60b-4861-8b9e-4c38bd4b48a4", word: "pengumuman stasiun", en: "station announcement", vi: "thông báo ở ga", pos: "noun phrase", pronunciation_vi: "pe-ngu-MUM-an sta-SI-un", pronunciation_en: "pe-ngoo-MOOM-an sta-SEE-un" },
+      { cell_id: "c811320d-540a-4c4b-91a2-d3aa0ef9431d", word: "bukti pembayaran", en: "payment proof", vi: "bằng chứng thanh toán", pos: "noun phrase", pronunciation_vi: "BUK-ti pem-ba-YAR-an", pronunciation_en: "BOOK-ti pem-ba-YAR-an" },
+      { cell_id: "174e9617-143f-4cb0-84d2-0ef787208ab2", word: "nomor antrean", en: "queue number", vi: "số thứ tự", pos: "noun phrase", pronunciation_vi: "NO-mor an-TRE-an", pronunciation_en: "NO-mor an-TRE-an" },
+      { cell_id: "9dc2c510-250d-4239-9d02-4e5eeb36eb75", word: "pengembalian dana", en: "refund", vi: "hoàn tiền", pos: "noun phrase", pronunciation_vi: "pe-ngem-ba-LI-an DA-na", pronunciation_en: "pe-ngem-ba-LI-an DA-na" },
     ],
     dialogue: [
       {
+        cell_id: "9ea9615b-4b53-48ed-8611-4c7c354f1940",
         speaker: "Penumpang",
         text: "Selamat pagi, kereta saya terlambat lebih dari satu jam.",
         vi: "Chào buổi sáng, tàu của tôi bị trễ hơn một giờ.",
         en: "Good morning, my train is delayed by more than one hour.",
       },
       {
+        cell_id: "1593fda5-46c1-4c07-b8e8-76aea0fa45f9",
         speaker: "Petugas",
         text: "Baik, Pak. Silakan ke loket KAI untuk refund tiket.",
         vi: "Được ạ. Mời anh đến quầy KAI để hoàn tiền vé.",
         en: "Okay, Sir. Please go to the KAI counter for a ticket refund.",
       },
       {
+        cell_id: "d11d9e03-ebab-453d-afa0-c1f63c7eade6",
         speaker: "Penumpang",
         text: "Apakah ada formulir untuk pengembalian dana?",
         vi: "Có mẫu đơn cho việc hoàn tiền không?",
         en: "Is there a form for the refund?",
       },
       {
+        cell_id: "ce033e2c-2dec-411f-a795-9887c161ca93",
         speaker: "Petugas",
         text: "Ada. Mohon ambil nomor antrean dulu.",
         vi: "Có. Xin vui lòng lấy số thứ tự trước.",
@@ -309,34 +315,38 @@ export const lessons: IndonesianLesson[] = [
     tip_advice_en:
       "Fast memory set: `Kereta saya terlambat`, `Saya mau minta refund tiket`, `Saya ingin jadwal ulang`, `Nomor kursi saya tetap sama?`, `Apakah ada kompensasi?`. Vietnamese speakers should keep `terlambat` = delayed, `jadwal ulang` = reschedule, and `kompensasi` = compensation.",
     vocabulary: [
-      { word: "kereta terlambat", en: "delayed train", vi: "tàu bị trễ", pos: "noun phrase", pronunciation_vi: "ke-RE-ta ter-LAM-bat", pronunciation_en: "ke-RE-ta ter-LAM-bat" },
-      { word: "jadwal ulang", en: "reschedule", vi: "đổi lịch", pos: "verb phrase", pronunciation_vi: "jad-WAL u-LANG", pronunciation_en: "jad-WAL oo-LANG" },
-      { word: "nomor kursi", en: "seat number", vi: "số ghế", pos: "noun phrase", pronunciation_vi: "NO-mor KUR-si", pronunciation_en: "NO-mor KUR-see" },
-      { word: "pengumuman stasiun", en: "station announcement", vi: "thông báo ở ga", pos: "noun phrase", pronunciation_vi: "pe-ngu-MUM-an sta-SI-un", pronunciation_en: "pe-ngoo-MOOM-an sta-SEE-un" },
-      { word: "peron", en: "platform", vi: "sân ga", pos: "noun", pronunciation_vi: "PE-ron", pronunciation_en: "PE-ron" },
-      { word: "kompensasi", en: "compensation", vi: "bồi thường", pos: "noun", pronunciation_vi: "kom-pen-SA-si", pronunciation_en: "kom-pen-SA-see" },
-      { word: "aturan antrean", en: "queue rules", vi: "quy định xếp hàng", pos: "noun phrase", pronunciation_vi: "a-TUR-an an-TRE-an", pronunciation_en: "a-TOOR-an an-TRE-an" },
+      { cell_id: "4cd3b18d-f8ea-4951-87f4-d73c189a37cf", word: "kereta terlambat", en: "delayed train", vi: "tàu bị trễ", pos: "noun phrase", pronunciation_vi: "ke-RE-ta ter-LAM-bat", pronunciation_en: "ke-RE-ta ter-LAM-bat" },
+      { cell_id: "eee0ee66-71ea-4676-953e-b2269252663b", word: "jadwal ulang", en: "reschedule", vi: "đổi lịch", pos: "verb phrase", pronunciation_vi: "jad-WAL u-LANG", pronunciation_en: "jad-WAL oo-LANG" },
+      { cell_id: "19e3a581-c5cb-4fe2-8edd-6bab8740bd4d", word: "nomor kursi", en: "seat number", vi: "số ghế", pos: "noun phrase", pronunciation_vi: "NO-mor KUR-si", pronunciation_en: "NO-mor KUR-see" },
+      { cell_id: "ec86046d-15b3-4e3a-9b6f-739839da2a94", word: "pengumuman stasiun", en: "station announcement", vi: "thông báo ở ga", pos: "noun phrase", pronunciation_vi: "pe-ngu-MUM-an sta-SI-un", pronunciation_en: "pe-ngoo-MOOM-an sta-SEE-un" },
+      { cell_id: "85b7e8e1-4323-4fb8-a83c-cb0d444e713b", word: "peron", en: "platform", vi: "sân ga", pos: "noun", pronunciation_vi: "PE-ron", pronunciation_en: "PE-ron" },
+      { cell_id: "0a93fe7b-bb07-496d-8c10-78ed443aec36", word: "kompensasi", en: "compensation", vi: "bồi thường", pos: "noun", pronunciation_vi: "kom-pen-SA-si", pronunciation_en: "kom-pen-SA-see" },
+      { cell_id: "d4a006b4-2b95-4ab8-945e-60af8aa8ad9b", word: "aturan antrean", en: "queue rules", vi: "quy định xếp hàng", pos: "noun phrase", pronunciation_vi: "a-TUR-an an-TRE-an", pronunciation_en: "a-TOOR-an an-TRE-an" },
     ],
     dialogue: [
       {
+        cell_id: "6112c9ba-1105-453c-9de3-00a0a80da133",
         speaker: "Penumpang",
         text: "Saya ingin jadwal ulang ke keberangkatan berikutnya.",
         vi: "Tôi muốn đổi sang chuyến khởi hành tiếp theo.",
         en: "I would like to reschedule to the next departure.",
       },
       {
+        cell_id: "f69438c9-2e7d-4ff0-bf6c-cb73ad1232d2",
         speaker: "Petugas",
         text: "Baik. Nomor kursi Anda tetap sama atau berubah?",
         vi: "Được. Số ghế của anh/chị giữ nguyên hay thay đổi?",
         en: "Okay. Will your seat number stay the same or change?",
       },
       {
+        cell_id: "a9656dee-bf19-4515-94c7-280541c7db3d",
         speaker: "Penumpang",
         text: "Kalau bisa, saya minta nomor kursi yang sama.",
         vi: "Nếu được, tôi xin số ghế giống như cũ.",
         en: "If possible, I would like the same seat number.",
       },
       {
+        cell_id: "24a483a0-daf2-4edc-a997-c5365f4f18bd",
         speaker: "Petugas",
         text: "Silakan tunggu. Kami cek aturan antrean dan kompensasinya dulu.",
         vi: "Xin chờ. Chúng tôi kiểm tra quy định xếp hàng và bồi thường trước.",

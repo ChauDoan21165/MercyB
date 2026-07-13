@@ -59,6 +59,7 @@ export type TurkishSentenceInput = {
 };
 
 export type TurkishVocabInput = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -68,6 +69,7 @@ export type TurkishVocabInput = {
 };
 
 export type TurkishDialogueInput = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;

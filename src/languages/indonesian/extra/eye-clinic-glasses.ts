@@ -13,6 +13,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -22,6 +23,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -208,6 +210,7 @@ export const lessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: `mata` = eye, `dokter mata` = eye doctor, `optik` = optical shop, `kacamata` = eyeglasses, `lensa kontak` = contact lenses. Remember `kacamata` is one word and `c` sounds like 'ch'. For prescriptions, use patterns like `minus saya...`, `mata kiri ada silinder`, or `resep kacamata baru`.",
     vocabulary: [
       {
+        cell_id: "0fd47109-6b57-4ef9-ab05-6aa76717b787",
         word: "dokter mata",
         en: "eye doctor",
         vi: "bác sĩ mắt",
@@ -216,6 +219,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "DOK-ter MAH-ta",
       },
       {
+        cell_id: "3bb3f50e-e445-4238-a249-a2da0d90e884",
         word: "periksa mata",
         en: "eye exam / check eyes",
         vi: "khám mắt",
@@ -224,6 +228,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "pe-RIK-sa MAH-ta",
       },
       {
+        cell_id: "3cc94a3e-eeb9-4068-b1fc-2bc02eb1cddd",
         word: "minus",
         en: "myopia prescription",
         vi: "độ cận",
@@ -232,6 +237,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "MEE-nus",
       },
       {
+        cell_id: "47d64c1c-d946-44cc-91a6-b629c18328c8",
         word: "silinder",
         en: "astigmatism / cylinder",
         vi: "loạn thị / độ trụ",
@@ -240,6 +246,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "see-LIN-der",
       },
       {
+        cell_id: "0075130a-c423-484d-b3a5-60760f0dd93c",
         word: "kacamata",
         en: "eyeglasses",
         vi: "kính mắt",
@@ -248,6 +255,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "ka-cha-MA-ta",
       },
       {
+        cell_id: "f363348c-1c68-4962-9638-5b2687590ef4",
         word: "lensa kontak",
         en: "contact lenses",
         vi: "kính áp tròng",
@@ -256,6 +264,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "LEN-sa KON-tak",
       },
       {
+        cell_id: "798f8a26-c962-4ef6-864b-72467f3749a2",
         word: "resep kacamata",
         en: "glasses prescription",
         vi: "đơn kính",
@@ -264,6 +273,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "REH-sep ka-cha-MA-ta",
       },
       {
+        cell_id: "0ebc5a74-5d28-423b-bf1a-129e97ac9ef4",
         word: "optik",
         en: "optical shop",
         vi: "tiệm kính",
@@ -272,6 +282,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "OP-tik",
       },
       {
+        cell_id: "11830aac-157b-4883-aee6-88e3aa7c56f4",
         word: "lensa",
         en: "lens",
         vi: "tròng kính / thấu kính",
@@ -280,6 +291,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "LEN-sa",
       },
       {
+        cell_id: "751e04ff-374a-4bf2-bee9-7815abdea927",
         word: "bingkai",
         en: "frame",
         vi: "gọng kính",
@@ -290,30 +302,35 @@ export const lessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "aa4daf25-ea95-4b36-b8a0-49ed7ed2a0f5",
         speaker: "Pasien",
         text: "Selamat siang, saya mau periksa mata.",
         vi: "Chào buổi trưa, tôi muốn khám mắt.",
         en: "Good afternoon, I want an eye exam.",
       },
       {
+        cell_id: "f0dfc9c5-5c12-40eb-9e69-20b95a7a700e",
         speaker: "Petugas Optik",
         text: "Baik. Mata Anda kabur saat melihat jauh atau dekat?",
         vi: "Được. Mắt anh/chị mờ khi nhìn xa hay gần?",
         en: "Okay. Is your vision blurry when seeing far or near?",
       },
       {
+        cell_id: "4f8b7416-6739-4ab4-a330-7ab8910d41b3",
         speaker: "Pasien",
         text: "Melihat jauh kabur. Minus saya mungkin bertambah.",
         vi: "Nhìn xa bị mờ. Có lẽ độ cận của tôi tăng.",
         en: "Seeing far is blurry. My myopia prescription may have increased.",
       },
       {
+        cell_id: "2f2c5989-f04f-4799-bf1d-6999b474ee38",
         speaker: "Petugas Optik",
         text: "Nanti kami cek minus dan silindernya.",
         vi: "Lát nữa chúng tôi kiểm tra độ cận và độ loạn.",
         en: "We will check the myopia and cylinder prescription.",
       },
       {
+        cell_id: "08f5ac79-86b9-4275-8863-29a0e7d176ec",
         speaker: "Pasien",
         text: "Kalau sudah ada resep kacamata, saya mau buat kacamata baru.",
         vi: "Nếu đã có đơn kính, tôi muốn làm kính mới.",

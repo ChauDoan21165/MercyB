@@ -18,6 +18,7 @@ export type PunjabiSnapshotFocus =
 export type PunjabiSnapshotStage = "pre_a11_snapshot" | "pre_merge" | "closure_packet" | "pre_integration" | "sanity";
 
 export type PunjabiScriptVocabularySnapshotSample = {
+  cell_id?: string;
   id: string;
   focus: PunjabiSnapshotFocus;
   stage: PunjabiSnapshotStage;
@@ -39,6 +40,7 @@ export type PunjabiScriptVocabularySnapshotSample = {
 };
 
 export type PunjabiScriptVocabularySnapshotSection = {
+  cell_id?: string;
   focus: PunjabiSnapshotFocus;
   title_vi: string;
   title_en: string;

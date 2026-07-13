@@ -13,6 +13,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -22,6 +23,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -235,41 +237,46 @@ export const lessons: IndonesianLesson[] = [
     tip_advice_en:
       "Tip for Vietnamese speakers: Vietnamese also softens speech to preserve face, so transfer that skill into Indonesian. Safe frame: `Maaf mengganggu` + `kalau boleh` + softened main point (`mungkin bisa...`, `sepertinya...`) + relationship-preserving close. For refusal, use `untuk saat ini` and `belum bisa` instead of blunt `tidak mau/tidak bisa`. For criticism, use `masukan` and `masih bisa dibuat lebih...` instead of direct negative judgment.",
     vocabulary: [
-      { word: "maaf mengganggu", en: "sorry to bother you", vi: "xin lỗi vì làm phiền", pos: "phrase", pronunciation_vi: "ma-AF meng-GANG-gu", pronunciation_en: "ma-AF meng-GANG-goo" },
-      { word: "kalau boleh", en: "if I may", vi: "nếu được", pos: "phrase", pronunciation_vi: "KA-lau BO-leh", pronunciation_en: "KA-lau BO-leh" },
-      { word: "sepertinya", en: "it seems", vi: "có vẻ như", pos: "adverb", pronunciation_vi: "se-PER-ti-nya", pronunciation_en: "se-PER-ti-nya" },
-      { word: "mungkin bisa", en: "maybe it could", vi: "có lẽ có thể", pos: "phrase", pronunciation_vi: "MUNG-kin BI-sa", pronunciation_en: "MOONG-kin BI-sa" },
-      { word: "mohon dipertimbangkan", en: "please consider", vi: "xin vui lòng cân nhắc", pos: "formal phrase", pronunciation_vi: "MO-hon di-per-tim-BANG-kan", pronunciation_en: "MO-hon di-per-tim-BANG-kan" },
-      { word: "menolak halus", en: "to refuse gently", vi: "từ chối khéo", pos: "verb phrase", pronunciation_vi: "me-NO-lak HA-lus", pronunciation_en: "me-NO-lak HA-loos" },
-      { word: "menyampaikan kritik", en: "to give criticism", vi: "đưa ra phê bình/góp ý", pos: "verb phrase", pronunciation_vi: "me-nyam-PAI-kan KRI-tik", pronunciation_en: "me-nyam-PAI-kan KRI-tik" },
-      { word: "masukan", en: "input, feedback", vi: "góp ý", pos: "noun", pronunciation_vi: "ma-SUK-an", pronunciation_en: "ma-SOO-kan" },
+      { cell_id: "95daea23-64c1-4171-bcd9-f9f109b276ac", word: "maaf mengganggu", en: "sorry to bother you", vi: "xin lỗi vì làm phiền", pos: "phrase", pronunciation_vi: "ma-AF meng-GANG-gu", pronunciation_en: "ma-AF meng-GANG-goo" },
+      { cell_id: "7c506e1f-0997-4239-89b4-53bad483b53d", word: "kalau boleh", en: "if I may", vi: "nếu được", pos: "phrase", pronunciation_vi: "KA-lau BO-leh", pronunciation_en: "KA-lau BO-leh" },
+      { cell_id: "b68cd51d-669f-4dc0-b368-bc0e276a2e17", word: "sepertinya", en: "it seems", vi: "có vẻ như", pos: "adverb", pronunciation_vi: "se-PER-ti-nya", pronunciation_en: "se-PER-ti-nya" },
+      { cell_id: "52312a40-b2d6-47cc-8c6d-ab9f7309ab28", word: "mungkin bisa", en: "maybe it could", vi: "có lẽ có thể", pos: "phrase", pronunciation_vi: "MUNG-kin BI-sa", pronunciation_en: "MOONG-kin BI-sa" },
+      { cell_id: "f0623f7b-6136-4a50-aed5-3126db11f331", word: "mohon dipertimbangkan", en: "please consider", vi: "xin vui lòng cân nhắc", pos: "formal phrase", pronunciation_vi: "MO-hon di-per-tim-BANG-kan", pronunciation_en: "MO-hon di-per-tim-BANG-kan" },
+      { cell_id: "5786dbd6-c942-4b15-990c-a9935bbaee7e", word: "menolak halus", en: "to refuse gently", vi: "từ chối khéo", pos: "verb phrase", pronunciation_vi: "me-NO-lak HA-lus", pronunciation_en: "me-NO-lak HA-loos" },
+      { cell_id: "3ef7bce7-15ec-4be1-af58-c974ba1f5fa9", word: "menyampaikan kritik", en: "to give criticism", vi: "đưa ra phê bình/góp ý", pos: "verb phrase", pronunciation_vi: "me-nyam-PAI-kan KRI-tik", pronunciation_en: "me-nyam-PAI-kan KRI-tik" },
+      { cell_id: "108c6ed9-64fe-4340-a552-85e3c7047f83", word: "masukan", en: "input, feedback", vi: "góp ý", pos: "noun", pronunciation_vi: "ma-SUK-an", pronunciation_en: "ma-SOO-kan" },
     ],
     dialogue: [
       {
+        cell_id: "ceefb027-23bf-4dd8-b02e-f5be43ccd480",
         speaker: "Dewi",
         text: "Maaf mengganggu, Pak. Kalau boleh, saya ingin memberi masukan kecil.",
         vi: "Xin lỗi vì làm phiền, thưa anh/chú. Nếu được, tôi muốn góp ý nhỏ.",
         en: "Sorry to bother you, sir. If I may, I would like to give a small piece of feedback.",
       },
       {
+        cell_id: "dd9e766b-ed38-41fa-a687-79bf837fa4a3",
         speaker: "Pak Arif",
         text: "Silakan, Dewi. Bagian mana yang perlu dibahas?",
         vi: "Xin mời, Dewi. Phần nào cần thảo luận?",
         en: "Please, Dewi. Which part needs to be discussed?",
       },
       {
+        cell_id: "4de4c4a5-86d2-4ff1-926f-914d1389592d",
         speaker: "Dewi",
         text: "Menurut saya, bagian ini masih bisa dibuat lebih jelas.",
         vi: "Theo tôi, phần này vẫn có thể làm rõ hơn.",
         en: "In my opinion, this section could still be made clearer.",
       },
       {
+        cell_id: "8e266b8b-161a-475b-8b36-93a56c293659",
         speaker: "Pak Arif",
         text: "Baik, terima kasih. Mohon kirim catatannya setelah rapat.",
         vi: "Được, cảm ơn. Vui lòng gửi ghi chú sau cuộc họp.",
         en: "All right, thank you. Please send the notes after the meeting.",
       },
       {
+        cell_id: "0eea2d8d-0194-4086-ae41-0c8fd29c97ed",
         speaker: "Dewi",
         text: "Baik, Pak. Terima kasih atas pengertiannya.",
         vi: "Vâng, thưa anh/chú. Cảm ơn vì sự thông cảm.",

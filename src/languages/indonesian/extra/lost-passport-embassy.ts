@@ -12,6 +12,7 @@ type LessonSentence = {
 };
 
 type VocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -21,6 +22,7 @@ type VocabEntry = {
 };
 
 type DialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -137,6 +139,7 @@ export const lostPassportEmbassyLessons: IndonesianLesson[] = [
       "Survival chunks: `Paspor saya hilang`, `Saya perlu membuat laporan polisi`, `Saya punya fotokopi paspor`, `Alamat penginapan saya...`. Vietnamese speakers should remember `hilang` = lost/missing; `kehilangan` is the more formal noun/state.",
     vocabulary: [
       {
+        cell_id: "bf861956-f930-4baf-8ac0-69ede2589a32",
         word: "paspor hilang",
         en: "lost passport",
         vi: "hộ chiếu bị mất",
@@ -145,6 +148,7 @@ export const lostPassportEmbassyLessons: IndonesianLesson[] = [
         pronunciation_en: "PAS-por HEE-lang",
       },
       {
+        cell_id: "5eabff21-cffd-484c-9805-a3891bad2c70",
         word: "laporan polisi",
         en: "police report",
         vi: "biên bản / báo cáo cảnh sát",
@@ -153,6 +157,7 @@ export const lostPassportEmbassyLessons: IndonesianLesson[] = [
         pronunciation_en: "la-PO-ran po-LEE-see",
       },
       {
+        cell_id: "909154bf-fa65-4274-9e35-727e68589352",
         word: "fotokopi dokumen",
         en: "document photocopy",
         vi: "bản photo giấy tờ",
@@ -161,6 +166,7 @@ export const lostPassportEmbassyLessons: IndonesianLesson[] = [
         pronunciation_en: "fo-to-KO-pee DO-ku-men",
       },
       {
+        cell_id: "54cc491e-3ee0-4aa1-b958-81a62e22d59e",
         word: "alamat penginapan",
         en: "accommodation address",
         vi: "địa chỉ nơi lưu trú",
@@ -169,6 +175,7 @@ export const lostPassportEmbassyLessons: IndonesianLesson[] = [
         pronunciation_en: "a-LA-mat pe-ngi-NA-pan",
       },
       {
+        cell_id: "5151c0eb-9e69-4778-8096-48452a406926",
         word: "terakhir",
         en: "last / final",
         vi: "lần cuối / cuối cùng",
@@ -177,6 +184,7 @@ export const lostPassportEmbassyLessons: IndonesianLesson[] = [
         pronunciation_en: "ter-A-khir",
       },
       {
+        cell_id: "b7422d2a-53fe-4e51-8ef7-c67e568ce9f9",
         word: "ponsel",
         en: "mobile phone",
         vi: "điện thoại di động",
@@ -187,24 +195,28 @@ export const lostPassportEmbassyLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "a2fdf98e-1679-4036-8c5e-b94920317a3d",
         speaker: "Pelapor",
         text: "Permisi, Pak. Paspor saya hilang di dekat stasiun.",
         vi: "Xin lỗi anh/bác. Hộ chiếu của tôi bị mất gần nhà ga.",
         en: "Excuse me, Sir. My passport was lost near the station.",
       },
       {
+        cell_id: "b89650db-a9de-4c6c-91d9-ab3a67305c10",
         speaker: "Polisi",
         text: "Kapan terakhir Bapak melihat paspornya?",
         vi: "Lần cuối anh/bác thấy hộ chiếu là khi nào?",
         en: "When did you last see the passport?",
       },
       {
+        cell_id: "855ca9ed-07a8-4f88-90be-26a7e0324e47",
         speaker: "Pelapor",
         text: "Tadi pagi. Saya punya fotokopi paspor di ponsel.",
         vi: "Sáng nay. Tôi có bản photo hộ chiếu trong điện thoại.",
         en: "This morning. I have a passport copy on my phone.",
       },
       {
+        cell_id: "159c410b-583a-47b3-8bed-d2cef13040c0",
         speaker: "Polisi",
         text: "Baik. Kami buat laporan polisi untuk dibawa ke kedutaan.",
         vi: "Được. Chúng tôi sẽ làm biên bản cảnh sát để mang đến đại sứ quán.",
@@ -334,6 +346,7 @@ export const lostPassportEmbassyLessons: IndonesianLesson[] = [
       "Chunks to memorize: `Saya harus menghubungi kedutaan`, `Apakah perlu janji temu?`, `Saya ingin mengurus surat perjalanan darurat`, `Berapa biayanya?`, `Ini keadaan darurat karena...`. Use `ingin` and `mohon` at an embassy to keep a polite register.",
     vocabulary: [
       {
+        cell_id: "ae00df9c-c150-4e15-b133-112f4f049d75",
         word: "kedutaan",
         en: "embassy",
         vi: "đại sứ quán",
@@ -342,6 +355,7 @@ export const lostPassportEmbassyLessons: IndonesianLesson[] = [
         pronunciation_en: "ke-DOO-ta-an",
       },
       {
+        cell_id: "f00ec419-1d15-4d7d-bb2c-1954749f6c0f",
         word: "konsulat",
         en: "consulate",
         vi: "lãnh sự quán",
@@ -350,6 +364,7 @@ export const lostPassportEmbassyLessons: IndonesianLesson[] = [
         pronunciation_en: "kon-soo-LAT",
       },
       {
+        cell_id: "4a270329-8a2c-43c3-829d-3c4743d38593",
         word: "janji temu",
         en: "appointment",
         vi: "lịch hẹn / cuộc hẹn",
@@ -358,6 +373,7 @@ export const lostPassportEmbassyLessons: IndonesianLesson[] = [
         pronunciation_en: "JAN-jee TE-moo",
       },
       {
+        cell_id: "2080096d-35ef-4775-932c-13a886f81437",
         word: "surat perjalanan",
         en: "travel document",
         vi: "giấy thông hành / giấy đi đường",
@@ -366,6 +382,7 @@ export const lostPassportEmbassyLessons: IndonesianLesson[] = [
         pronunciation_en: "SOO-rat per-ja-LAN-an",
       },
       {
+        cell_id: "b0f6f6b5-f6e5-4e1a-8dec-630978fec90f",
         word: "biaya pembuatan",
         en: "issuance / processing fee",
         vi: "phí làm / phí cấp",
@@ -374,6 +391,7 @@ export const lostPassportEmbassyLessons: IndonesianLesson[] = [
         pronunciation_en: "bee-A-ya pem-boo-A-tan",
       },
       {
+        cell_id: "7086685b-66fa-4c32-a903-3ddd4f2c00d5",
         word: "keadaan darurat",
         en: "emergency situation",
         vi: "tình trạng khẩn cấp",
@@ -384,24 +402,28 @@ export const lostPassportEmbassyLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "32076a8e-6df9-43dc-9669-491f6b0b619e",
         speaker: "Pemohon",
         text: "Selamat pagi. Paspor saya hilang dan saya sudah punya laporan polisi.",
         vi: "Chào buổi sáng. Hộ chiếu của tôi bị mất và tôi đã có biên bản cảnh sát.",
         en: "Good morning. My passport is lost and I already have a police report.",
       },
       {
+        cell_id: "e0a442d7-7b5f-41d0-a3f2-8af23669618d",
         speaker: "Petugas Kedutaan",
         text: "Apakah Anda sudah membuat janji temu?",
         vi: "Anh/chị đã đặt lịch hẹn chưa?",
         en: "Have you made an appointment?",
       },
       {
+        cell_id: "578c0108-cd28-4690-9994-a374e9313617",
         speaker: "Pemohon",
         text: "Belum. Ini darurat karena penerbangan saya besok.",
         vi: "Chưa. Đây là tình huống khẩn cấp vì chuyến bay của tôi là ngày mai.",
         en: "Not yet. This is urgent because my flight is tomorrow.",
       },
       {
+        cell_id: "58e5320d-62c9-4191-b7a2-ca6dfacecc34",
         speaker: "Petugas Kedutaan",
         text: "Baik. Mohon siapkan fotokopi dokumen dan biaya pembuatan surat perjalanan.",
         vi: "Vâng. Vui lòng chuẩn bị bản photo giấy tờ và phí làm giấy thông hành.",

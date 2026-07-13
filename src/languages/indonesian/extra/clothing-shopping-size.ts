@@ -16,6 +16,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   /** Indonesian word/phrase. */
   word: string;
   /** English meaning. */
@@ -31,6 +32,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   /** Indonesian line. */
   text: string;
@@ -193,6 +195,7 @@ export const lessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: memorize clothing-shopping chunks: `ukuran baju`, `kamar pas`, `bahan kain`, `ada diskon`, `tukar barang`, `struk belanja`, `warna`, `model`. Use `boleh` for permission to try something on and `bisa` for whether exchange/return is possible.",
     vocabulary: [
       {
+        cell_id: "55bc0d02-81ec-4ffd-b517-865451f085c1",
         word: "ukuran baju",
         en: "clothing size",
         vi: "cỡ quần áo",
@@ -201,6 +204,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "u-KU-ran BA-joo",
       },
       {
+        cell_id: "a6e8466c-2505-4efb-9ecc-0ac9b937fced",
         word: "kamar pas",
         en: "fitting room",
         vi: "phòng thử đồ",
@@ -209,6 +213,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "KA-mar pas",
       },
       {
+        cell_id: "56618a64-e948-45c1-b3f2-9c0ec635345d",
         word: "bahan kain",
         en: "fabric material",
         vi: "chất vải",
@@ -217,6 +222,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "BA-han KAIN",
       },
       {
+        cell_id: "cb7e4654-2707-44c8-a53c-1b1b80cbfbb0",
         word: "diskon",
         en: "discount",
         vi: "giảm giá",
@@ -225,6 +231,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "DIS-kon",
       },
       {
+        cell_id: "caccfbab-3023-4650-92a5-c60170beadbc",
         word: "tukar barang",
         en: "exchange goods/items",
         vi: "đổi hàng",
@@ -233,6 +240,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "TOO-kar BA-rang",
       },
       {
+        cell_id: "a83840fc-e311-40fd-9f9a-7c3d95916861",
         word: "struk belanja",
         en: "shopping receipt",
         vi: "hóa đơn mua hàng",
@@ -241,6 +249,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "struk be-LAN-ja",
       },
       {
+        cell_id: "c306b696-d46b-4b9a-bf40-775846cc3880",
         word: "warna",
         en: "color",
         vi: "màu sắc",
@@ -249,6 +258,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "WAR-na",
       },
       {
+        cell_id: "1856201c-e7b4-49ad-9e3a-101e215b57a6",
         word: "model",
         en: "style / model",
         vi: "kiểu dáng / mẫu",
@@ -257,6 +267,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "MO-del",
       },
       {
+        cell_id: "bca6ee36-3893-4946-ad4f-5cd550d3f93b",
         word: "cocok",
         en: "suitable / fits well",
         vi: "hợp / vừa",
@@ -265,6 +276,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "CHO-chok",
       },
       {
+        cell_id: "6704ad48-d779-4cc4-8f95-85ace5c3a18b",
         word: "terlalu ketat",
         en: "too tight",
         vi: "quá chật",
@@ -275,30 +287,35 @@ export const lessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "cfd6e9c9-060d-439a-9672-980de8f9ba19",
         speaker: "Pembeli",
         text: "Mbak, ukuran M untuk model ini masih ada?",
         vi: "Chị ơi, mẫu này còn cỡ M không?",
         en: "Miss, is size M for this style still available?",
       },
       {
+        cell_id: "1a97c38b-ca7f-4b13-9467-041508c85bc1",
         speaker: "Penjual",
         text: "Ada. Mau coba di kamar pas?",
         vi: "Còn. Bạn muốn thử trong phòng thử đồ không?",
         en: "Yes. Would you like to try it in the fitting room?",
       },
       {
+        cell_id: "a7c9d58b-9604-4b26-a513-bfe9da814b3e",
         speaker: "Pembeli",
         text: "Boleh. Bahannya adem, tapi lengannya terlalu panjang.",
         vi: "Được. Vải mát, nhưng tay áo dài quá.",
         en: "Yes. The fabric is cool, but the sleeves are too long.",
       },
       {
+        cell_id: "edd103a5-fd99-4b6f-aecc-f9b04d7438dd",
         speaker: "Penjual",
         text: "Ada ukuran lebih kecil dan warna biru.",
         vi: "Có cỡ nhỏ hơn và màu xanh dương.",
         en: "There is a smaller size and a blue color.",
       },
       {
+        cell_id: "740743fe-1b2f-4301-bdba-9f8781c50578",
         speaker: "Pembeli",
         text: "Kalau tidak cocok, bisa tukar barang dengan struk?",
         vi: "Nếu không hợp, có thể đổi hàng bằng hóa đơn không?",

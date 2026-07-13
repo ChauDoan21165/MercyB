@@ -16,6 +16,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   /** Indonesian word/phrase. */
   word: string;
   /** English meaning. */
@@ -31,6 +32,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   /** Indonesian line. */
   text: string;
@@ -193,6 +195,7 @@ export const lessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: memorize practical chunks: `cat tembok` (paint walls), `keramik diganti` (tiles replaced), `atap bocor` (roof leaks), `bahan bangunan` (materials), `biaya renovasi` (renovation cost), `jadwal kerja` (work schedule). Indonesian has no verb conjugation, so fixed chunks help you speak quickly with workers.",
     vocabulary: [
       {
+        cell_id: "fd36c4af-535b-4b91-af40-fa0877df1530",
         word: "renovasi rumah",
         en: "home renovation",
         vi: "cải tạo nhà",
@@ -201,6 +204,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "re-no-VA-si ROO-mah",
       },
       {
+        cell_id: "5b0c4a56-dde2-4db8-889c-2004e5c8acf7",
         word: "tukang",
         en: "tradesperson / worker",
         vi: "thợ",
@@ -209,6 +213,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "TOO-kang",
       },
       {
+        cell_id: "e88a673f-feb1-4570-a6f0-ca23491a132d",
         word: "cat tembok",
         en: "wall paint / paint walls",
         vi: "sơn tường",
@@ -217,6 +222,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "chat TEM-bok",
       },
       {
+        cell_id: "d37b3b2d-9e09-435b-8baf-764c60ba03ed",
         word: "keramik",
         en: "ceramic tile",
         vi: "gạch men",
@@ -225,6 +231,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "ke-RA-mik",
       },
       {
+        cell_id: "f0e939d3-e057-40a7-af2c-4d378dd80ab9",
         word: "atap bocor",
         en: "leaking roof",
         vi: "mái dột",
@@ -233,6 +240,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "A-tap BO-chor",
       },
       {
+        cell_id: "eb4fda9c-c71a-46e1-88cb-77ac1abde2a3",
         word: "bahan bangunan",
         en: "building materials",
         vi: "vật liệu xây dựng",
@@ -241,6 +249,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "BA-han ba-NGOO-nan",
       },
       {
+        cell_id: "51071d98-0a32-4a0d-89f3-6e50eb134ffb",
         word: "biaya",
         en: "cost / fee",
         vi: "chi phí",
@@ -249,6 +258,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "bee-A-ya",
       },
       {
+        cell_id: "ac57af8e-d79a-414d-8e1a-b83374c8f215",
         word: "jadwal kerja",
         en: "work schedule",
         vi: "lịch làm việc",
@@ -257,6 +267,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "JAD-wal KER-ja",
       },
       {
+        cell_id: "e5f29c74-12ae-48a9-8059-ca7cdb1eddb4",
         word: "biaya tambahan",
         en: "additional cost",
         vi: "chi phí phát sinh",
@@ -265,6 +276,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "bee-A-ya tam-BA-han",
       },
       {
+        cell_id: "d25d628f-bc4d-41fe-8d97-b133ddb855cd",
         word: "selesai",
         en: "finished",
         vi: "xong / hoàn thành",
@@ -275,30 +287,35 @@ export const lessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "236dad1d-23e6-4826-a989-9b5f62d8bbb0",
         speaker: "Pemilik rumah",
         text: "Pak, saya mau renovasi rumah kecil-kecilan.",
         vi: "Anh ơi, tôi muốn cải tạo nhà một chút.",
         en: "Sir, I want to do a small home renovation.",
       },
       {
+        cell_id: "60ecbdc6-68fd-4c2f-bcbe-c474f56c7bea",
         speaker: "Tukang",
         text: "Bagian mana yang mau direnovasi?",
         vi: "Phần nào muốn cải tạo ạ?",
         en: "Which part do you want renovated?",
       },
       {
+        cell_id: "cee1c730-f23b-4d2f-ba14-a5339c2b7034",
         speaker: "Pemilik rumah",
         text: "Tembok mau dicat, keramik kamar mandi perlu diganti, dan atap bocor.",
         vi: "Tường cần sơn, gạch men phòng tắm cần thay, và mái bị dột.",
         en: "The walls need painting, the bathroom tiles need replacing, and the roof leaks.",
       },
       {
+        cell_id: "3c747e08-a1e7-4e81-ae25-3c454965a853",
         speaker: "Tukang",
         text: "Saya hitung dulu biaya bahan bangunan dan ongkos kerja.",
         vi: "Tôi tính trước chi phí vật liệu xây dựng và tiền công.",
         en: "I will calculate the cost of materials and labor first.",
       },
       {
+        cell_id: "df66fdee-65ab-4e2c-9367-28bb92ae8a55",
         speaker: "Pemilik rumah",
         text: "Baik, tolong kabari saya kalau ada biaya tambahan.",
         vi: "Vâng, xin báo cho tôi nếu có chi phí phát sinh.",

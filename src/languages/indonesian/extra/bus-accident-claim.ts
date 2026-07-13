@@ -21,6 +21,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   /** Indonesian word/phrase. */
   word: string;
   /** English meaning. */
@@ -36,6 +37,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   /** Indonesian line. */
   text: string;
@@ -253,6 +255,7 @@ export const lessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: use `mengalami kecelakaan` for formal accident reports, `luka ringan` for minor injury, `mengajukan klaim` for filing a claim, and `laporan polisi` for the police report document.",
     vocabulary: [
       {
+        cell_id: "b4eee2c8-07d3-442b-9856-42e7f9d07274",
         word: "kecelakaan bus",
         en: "bus accident",
         vi: "tai nạn xe buýt/xe khách",
@@ -261,6 +264,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "keh-cheh-la-KA-an bus",
       },
       {
+        cell_id: "be7125e9-4623-4f37-a75f-e8f7f30e0303",
         word: "luka ringan",
         en: "minor injury",
         vi: "vết thương nhẹ",
@@ -269,6 +273,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "LOO-ka REE-ngan",
       },
       {
+        cell_id: "d75207b6-7a10-4611-9d4b-41221482570a",
         word: "sopir",
         en: "driver",
         vi: "tài xế",
@@ -277,6 +282,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "SO-peer",
       },
       {
+        cell_id: "da4ce23b-f0b6-4e39-a944-ac9d0c3c3a22",
         word: "penumpang",
         en: "passenger",
         vi: "hành khách",
@@ -285,6 +291,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "peh-NOOM-pang",
       },
       {
+        cell_id: "aa8d762d-89f2-4feb-9410-8cccc16884df",
         word: "klaim asuransi",
         en: "insurance claim",
         vi: "yêu cầu bảo hiểm",
@@ -293,6 +300,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "claim a-soo-RAN-see",
       },
       {
+        cell_id: "8c86f64a-e403-4800-879e-b01cd7ce4be7",
         word: "laporan polisi",
         en: "police report",
         vi: "báo cáo/biên bản cảnh sát",
@@ -301,6 +309,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "la-PO-ran po-LEE-see",
       },
       {
+        cell_id: "acb27daa-0ee7-4b6b-89a0-c450103a8da7",
         word: "rumah sakit",
         en: "hospital",
         vi: "bệnh viện",
@@ -309,6 +318,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "ROO-mah SA-kit",
       },
       {
+        cell_id: "f503b635-a1ac-42cd-924f-ad2b26de1926",
         word: "saksi",
         en: "witness",
         vi: "nhân chứng",
@@ -317,6 +327,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "SAK-see",
       },
       {
+        cell_id: "afc1a2f7-a742-4e6d-9270-8fe647ed4cec",
         word: "kronologi",
         en: "chronology",
         vi: "diễn biến theo trình tự",
@@ -325,6 +336,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "kro-no-lo-GEE",
       },
       {
+        cell_id: "b3745c86-9743-48c2-abd1-59a8953253ed",
         word: "bukti biaya",
         en: "proof of costs",
         vi: "bằng chứng chi phí",
@@ -335,24 +347,28 @@ export const lessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "d4713be8-98ec-4969-9f51-1f98f8511389",
         speaker: "Penumpang",
         text: "Saya mengalami kecelakaan bus. Saya luka ringan, tetapi kepala saya pusing.",
         vi: "Tôi gặp tai nạn xe buýt. Tôi bị thương nhẹ, nhưng đầu tôi chóng mặt.",
         en: "I was in a bus accident. I have a minor injury, but my head is dizzy.",
       },
       {
+        cell_id: "6b53ea4b-1d3f-407b-98e8-fe90098bda50",
         speaker: "Petugas",
         text: "Baik, Bapak perlu diperiksa di rumah sakit. Apakah ada saksi?",
         vi: "Được, anh cần được kiểm tra ở bệnh viện. Có nhân chứng không?",
         en: "All right, sir, you need to be checked at the hospital. Are there any witnesses?",
       },
       {
+        cell_id: "b4c28f85-2eaa-4ad5-a449-e4a8fd9a1b84",
         speaker: "Penumpang",
         text: "Ada. Saya juga mencatat nomor bus dan nama perusahaan bus.",
         vi: "Có. Tôi cũng đã ghi lại số xe và tên công ty xe.",
         en: "Yes. I also recorded the bus number and the bus company name.",
       },
       {
+        cell_id: "f356ae4e-1e7d-41a3-9987-1b431202a61e",
         speaker: "Petugas",
         text: "Simpan bukti biaya rumah sakit dan minta laporan polisi untuk klaim asuransi.",
         vi: "Hãy giữ bằng chứng chi phí bệnh viện và xin báo cáo cảnh sát để làm yêu cầu bảo hiểm.",

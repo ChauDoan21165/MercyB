@@ -18,6 +18,7 @@ export type PunjabiArchiveFocus =
 export type PunjabiArchiveStage = "pre_a11_archive" | "signoff" | "seal" | "pre_integration" | "regression";
 
 export type PunjabiScriptVocabularyArchiveSample = {
+  cell_id?: string;
   id: string;
   focus: PunjabiArchiveFocus;
   stage: PunjabiArchiveStage;

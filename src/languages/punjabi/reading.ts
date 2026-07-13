@@ -17,6 +17,7 @@ export type PunjabiComprehensionQuestion = {
 };
 
 export type PunjabiReadingVocab = {
+  cell_id?: string;
   word: string;
   romanization: string;
   vi: string;

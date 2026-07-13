@@ -42,12 +42,12 @@ export const lessons = [
     id: "mock-a1",
     level: "A1",
     vocabulary: [
-      { word: "alpha beta", pronunciation: "/al.fa/", audio: "/audio/existing.mp3" },
+      { cell_id: "11111111-1111-4111-8111-111111111111", word: "alpha beta", pronunciation: "/al.fa/", audio: "/audio/existing.mp3" },
       { word: "beta gamma", pronunciation: "", audio: "/audio/missing.mp3" },
       { word: "delta", pronunciation: "", audio: "/audio/missing-other.mp3" }
     ],
     dialogue: [
-      { speaker: "A", spanish: "hola beta", pronunciation: "OH-la", audio: "audio/existing.mp3" },
+      { cell_id: "11111111-1111-4111-8111-111111111111", speaker: "A", spanish: "hola beta", pronunciation: "OH-la", audio: "audio/existing.mp3" },
       { speaker: "B", spanish: "adios", pronunciation: "", audio: "audio/missing.mp3" }
     ]
   }
@@ -70,6 +70,12 @@ describe("cell-coverage-scan", () => {
     expect(scan.filesScanned).toBe(1);
     expect(scan.filesWithCell).toBe(1);
     expect(scan.lessonObjects).toBe(1);
+    expect(scan.cellIds.totalObjects).toBe(5);
+    expect(scan.cellIds.populated).toBe(2);
+    expect(scan.cellIds.missing).toBe(3);
+    expect(scan.cellIds.unique).toBe(1);
+    expect(scan.cellIds.duplicateIds).toBe(1);
+    expect(scan.cellIds.duplicateObjects).toBe(2);
 
     expect(scan.audioMapFiles).toBe(1);
     expect(scan.audioMapCells).toBe(2);
@@ -118,12 +124,12 @@ describe("cell-coverage-scan", () => {
     };
 
     expect(compareCellCoverageToBaseline(scan, baseline)).toEqual([
-      {
-        type: "vocabulary",
-        metric: "uncoveredIpaObjects",
-        baseline: 0,
-        actual: 2,
-      },
+        {
+          type: "vocabulary",
+          metric: "uncoveredIpaObjects",
+          baseline: 0,
+          actual: 2,
+        },
     ]);
   });
 });

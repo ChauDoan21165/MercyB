@@ -13,6 +13,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -22,6 +23,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -235,39 +237,43 @@ export const lessons: IndonesianLesson[] = [
     tip_advice_en:
       "Tip for Vietnamese speakers: distinguish `panas` (hot), `gerah` (humid/stuffy), `teduh` (shaded/cool), `kabut` (fog), `kabut asap` (smoke haze), `kualitas udara` (air quality), and `peringatan cuaca` (weather warning). Official notices often use passive `di-`: `diliburkan`, `dikeluarkan`, `dianjurkan`.",
     vocabulary: [
-      { word: "cuaca panas", en: "hot weather", vi: "thời tiết nắng nóng", pos: "noun phrase", pronunciation_vi: "CU-a-ca PA-nas", pronunciation_en: "CHOO-a-cha PA-nas" },
-      { word: "gerah", en: "humid / stuffy-hot", vi: "oi bức", pos: "adjective", pronunciation_vi: "GE-rah", pronunciation_en: "GE-rah" },
-      { word: "kabut asap", en: "smoke haze", vi: "khói mù", pos: "noun phrase", pronunciation_vi: "KA-but A-sap", pronunciation_en: "KA-but A-sap" },
-      { word: "kualitas udara", en: "air quality", vi: "chất lượng không khí", pos: "noun phrase", pronunciation_vi: "ku-a-li-TAS U-da-ra", pronunciation_en: "koo-a-lee-TAS OO-da-ra" },
-      { word: "masker", en: "mask", vi: "khẩu trang", pos: "noun", pronunciation_vi: "MAS-ker", pronunciation_en: "MAS-ker" },
-      { word: "minum air", en: "drink water", vi: "uống nước", pos: "verb phrase", pronunciation_vi: "MI-num A-ir", pronunciation_en: "MI-num A-eer" },
-      { word: "hujan turun", en: "rain falls", vi: "mưa xuống", pos: "verb phrase", pronunciation_vi: "HU-jan TU-run", pronunciation_en: "HOO-jan TOO-run" },
-      { word: "peringatan cuaca", en: "weather warning", vi: "cảnh báo thời tiết", pos: "noun phrase", pronunciation_vi: "pe-ring-A-tan CU-a-ca", pronunciation_en: "pe-ring-A-tan CHOO-a-cha" },
-      { word: "jarak pandang", en: "visibility", vi: "tầm nhìn", pos: "noun phrase", pronunciation_vi: "JA-rak PAN-dang", pronunciation_en: "JA-rak PAN-dang" },
-      { word: "teduh", en: "shaded / cool", vi: "râm mát", pos: "adjective", pronunciation_vi: "te-DUH", pronunciation_en: "te-DOOH" },
-      { word: "dehidrasi", en: "dehydration", vi: "mất nước", pos: "noun", pronunciation_vi: "de-hi-DRA-si", pronunciation_en: "de-hi-DRA-see" },
-      { word: "tidak sehat", en: "unhealthy", vi: "không lành mạnh", pos: "adjective phrase", pronunciation_vi: "ti-DAK SE-hat", pronunciation_en: "ti-DAK SE-hat" },
+      { cell_id: "814c5dd7-2305-4525-ba9f-ec70792796d8", word: "cuaca panas", en: "hot weather", vi: "thời tiết nắng nóng", pos: "noun phrase", pronunciation_vi: "CU-a-ca PA-nas", pronunciation_en: "CHOO-a-cha PA-nas" },
+      { cell_id: "0080f75c-b126-4a23-ae4c-639744a90b42", word: "gerah", en: "humid / stuffy-hot", vi: "oi bức", pos: "adjective", pronunciation_vi: "GE-rah", pronunciation_en: "GE-rah" },
+      { cell_id: "cd44e345-0ceb-42d0-a3b7-1c654ad7fa68", word: "kabut asap", en: "smoke haze", vi: "khói mù", pos: "noun phrase", pronunciation_vi: "KA-but A-sap", pronunciation_en: "KA-but A-sap" },
+      { cell_id: "78c9e204-de64-4e7d-81be-ea0a967dbb5c", word: "kualitas udara", en: "air quality", vi: "chất lượng không khí", pos: "noun phrase", pronunciation_vi: "ku-a-li-TAS U-da-ra", pronunciation_en: "koo-a-lee-TAS OO-da-ra" },
+      { cell_id: "c6970eaf-8758-4dc2-be7a-d5af49511fbc", word: "masker", en: "mask", vi: "khẩu trang", pos: "noun", pronunciation_vi: "MAS-ker", pronunciation_en: "MAS-ker" },
+      { cell_id: "23297a49-3507-47e1-a9ab-fe75e4800802", word: "minum air", en: "drink water", vi: "uống nước", pos: "verb phrase", pronunciation_vi: "MI-num A-ir", pronunciation_en: "MI-num A-eer" },
+      { cell_id: "c0306735-5f3a-44ba-9212-b654d32c5f51", word: "hujan turun", en: "rain falls", vi: "mưa xuống", pos: "verb phrase", pronunciation_vi: "HU-jan TU-run", pronunciation_en: "HOO-jan TOO-run" },
+      { cell_id: "aefd0f63-0149-43dc-808c-a2fe1f1b520a", word: "peringatan cuaca", en: "weather warning", vi: "cảnh báo thời tiết", pos: "noun phrase", pronunciation_vi: "pe-ring-A-tan CU-a-ca", pronunciation_en: "pe-ring-A-tan CHOO-a-cha" },
+      { cell_id: "ee6af179-e51f-4207-87f5-ac63f9c80d5c", word: "jarak pandang", en: "visibility", vi: "tầm nhìn", pos: "noun phrase", pronunciation_vi: "JA-rak PAN-dang", pronunciation_en: "JA-rak PAN-dang" },
+      { cell_id: "4334c70d-e2bc-4308-8c85-0d731a428407", word: "teduh", en: "shaded / cool", vi: "râm mát", pos: "adjective", pronunciation_vi: "te-DUH", pronunciation_en: "te-DOOH" },
+      { cell_id: "e6a8435d-dee7-46af-9c9f-68dc19598630", word: "dehidrasi", en: "dehydration", vi: "mất nước", pos: "noun", pronunciation_vi: "de-hi-DRA-si", pronunciation_en: "de-hi-DRA-see" },
+      { cell_id: "91e7a8bd-2ffb-4217-b648-db6f5c895b39", word: "tidak sehat", en: "unhealthy", vi: "không lành mạnh", pos: "adjective phrase", pronunciation_vi: "ti-DAK SE-hat", pronunciation_en: "ti-DAK SE-hat" },
     ],
     dialogue: [
       {
+        cell_id: "a37d5895-c1e7-4452-9aa9-81b08458b551",
         speaker: "Rani",
         text: "Hari ini gerah sekali. Langit juga terlihat abu-abu.",
         vi: "Hôm nay oi bức quá. Bầu trời cũng trông xám.",
         en: "It is very humid-hot today. The sky also looks gray.",
       },
       {
+        cell_id: "ae505cbd-5482-423a-be3b-daba96b4fdd3",
         speaker: "Dimas",
         text: "Iya, ada kabut asap. Kualitas udara sedang buruk.",
         vi: "Ừ, có khói mù. Chất lượng không khí đang xấu.",
         en: "Yes, there is haze. The air quality is poor.",
       },
       {
+        cell_id: "a3ef0571-f5c2-4668-bdb7-4ea223056b14",
         speaker: "Rani",
         text: "Kalau keluar, kita pakai masker dan bawa air minum.",
         vi: "Nếu ra ngoài, chúng ta đeo khẩu trang và mang nước uống.",
         en: "If we go outside, we should wear masks and bring drinking water.",
       },
       {
+        cell_id: "20c76bf0-deb9-4ea3-b241-200ef6ee47ff",
         speaker: "Dimas",
         text: "Betul. Semoga hujan turun supaya kabut asap berkurang.",
         vi: "Đúng rồi. Hy vọng mưa xuống để khói mù giảm.",

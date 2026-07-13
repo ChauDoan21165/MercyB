@@ -34,6 +34,7 @@ type LessonSentence = {
 };
 
 type VocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -45,6 +46,7 @@ type VocabEntry = {
 };
 
 type DialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -161,6 +163,7 @@ export const motorcycleCultureLessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: 'motor' in Indonesian = the whole motorbike, not 'engine' — a common false friend. 'Naik motor' = to ride a motorbike (naik works for any vehicle). 'Pakai helm' = to wear a helmet. To express purpose, use 'supaya/agar + clause' (supaya aman = so it's safe). 'Isi bensin' = to fill up with petrol (isi = to fill).",
     vocabulary: [
       {
+        cell_id: "051f9492-37d0-481c-8c74-9d18c84f7860",
         word: "motor",
         en: "motorbike",
         vi: "xe máy",
@@ -169,6 +172,7 @@ export const motorcycleCultureLessons: IndonesianLesson[] = [
         pronunciation_en: "MOH-tor",
       },
       {
+        cell_id: "dee3b10d-fa7a-47f1-a3b1-cd24460b6daf",
         word: "helm",
         en: "helmet",
         vi: "mũ bảo hiểm",
@@ -177,6 +181,7 @@ export const motorcycleCultureLessons: IndonesianLesson[] = [
         pronunciation_en: "helm",
       },
       {
+        cell_id: "b9f06999-94b4-40df-beb3-11ba68e722d2",
         word: "bensin",
         en: "petrol / gasoline",
         vi: "xăng",
@@ -185,6 +190,7 @@ export const motorcycleCultureLessons: IndonesianLesson[] = [
         pronunciation_en: "BEN-sin",
       },
       {
+        cell_id: "12b31f92-3155-4508-8d05-77f2c04bb824",
         word: "parkir",
         en: "to park / parking",
         vi: "gửi xe / đỗ xe",
@@ -193,6 +199,7 @@ export const motorcycleCultureLessons: IndonesianLesson[] = [
         pronunciation_en: "PAR-keer",
       },
       {
+        cell_id: "4823e971-134a-45cc-bca6-b92b230d395b",
         word: "kunci",
         en: "key / to lock",
         vi: "chìa khóa / khóa",
@@ -201,6 +208,7 @@ export const motorcycleCultureLessons: IndonesianLesson[] = [
         pronunciation_en: "KOON-chee",
       },
       {
+        cell_id: "ec23ff5e-bca0-4d02-b949-ff7c467bbd7f",
         word: "isi",
         en: "to fill",
         vi: "đổ / nạp đầy",
@@ -209,6 +217,7 @@ export const motorcycleCultureLessons: IndonesianLesson[] = [
         pronunciation_en: "EE-see",
       },
       {
+        cell_id: "05d236c9-52ea-4c84-b46b-c28572d2be61",
         word: "aman",
         en: "safe / secure",
         vi: "an toàn",
@@ -217,6 +226,7 @@ export const motorcycleCultureLessons: IndonesianLesson[] = [
         pronunciation_en: "A-man",
       },
       {
+        cell_id: "06ca4803-4f9c-42be-acb6-d3de20964b5c",
         word: "habis",
         en: "used up / out of",
         vi: "hết",
@@ -227,24 +237,28 @@ export const motorcycleCultureLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "ad7c3ec3-5547-473c-87b8-91580e58271a",
         speaker: "Eko",
         text: "Mau ke pasar naik motor? Bensinnya hampir habis, lho.",
         vi: "Đi chợ bằng xe máy hả? Xăng gần hết rồi đó.",
         en: "Heading to the market by motorbike? The petrol's almost out, you know.",
       },
       {
+        cell_id: "51c28201-9fd4-40a9-ab87-736802ae72fd",
         speaker: "Wati",
         text: "Kita isi dulu di SPBU. Jangan lupa pakai helm, ya.",
         vi: "Mình ghé cây xăng đổ trước. Đừng quên đội mũ bảo hiểm nhé.",
         en: "Let's fill up at the station first. Don't forget your helmet.",
       },
       {
+        cell_id: "f9548e04-2645-429d-85da-03f102650101",
         speaker: "Eko",
         text: "Nanti di pasar, di mana saya bisa parkir motor?",
         vi: "Lát tới chợ, mình gửi xe ở đâu được?",
         en: "Later at the market, where can I park the bike?",
       },
       {
+        cell_id: "e5af2727-88ec-46f4-be5e-369d185c2624",
         speaker: "Wati",
         text: "Ada tempat parkir di depan. Tolong kunci motornya supaya aman.",
         vi: "Có chỗ gửi xe ở phía trước. Nhớ khóa xe cho an toàn nhé.",
@@ -385,6 +399,7 @@ export const motorcycleCultureLessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: the 'di-' passive is very common at the shop — 'harus ditambal' (must be patched), 'mau diservis' (wants to be serviced). 'Ganti + X' = change X (ganti oli, ganti ban). Ask the price: 'Berapa biaya servisnya?'. Address the mechanic 'Mas' to be friendly. Watch the false friend: 'mogok' = (vehicle) breaks down, not 'tired'.",
     vocabulary: [
       {
+        cell_id: "a432ee99-e281-406d-9f3c-e760484ba4e9",
         word: "bengkel",
         en: "repair shop / workshop",
         vi: "tiệm sửa xe",
@@ -393,6 +408,7 @@ export const motorcycleCultureLessons: IndonesianLesson[] = [
         pronunciation_en: "BENG-kel",
       },
       {
+        cell_id: "a8944269-509d-4525-b3e2-cffb4bc62ae7",
         word: "mogok",
         en: "to break down / stall",
         vi: "chết máy",
@@ -401,6 +417,7 @@ export const motorcycleCultureLessons: IndonesianLesson[] = [
         pronunciation_en: "MOH-gok",
       },
       {
+        cell_id: "957b4cc3-998e-4d56-a979-1fd4f7de78d7",
         word: "ban",
         en: "tire",
         vi: "lốp / vỏ xe",
@@ -409,6 +426,7 @@ export const motorcycleCultureLessons: IndonesianLesson[] = [
         pronunciation_en: "ban",
       },
       {
+        cell_id: "538fbf98-18d5-4202-9038-a74818c06387",
         word: "bocor",
         en: "punctured / leaking",
         vi: "thủng / rò",
@@ -417,6 +435,7 @@ export const motorcycleCultureLessons: IndonesianLesson[] = [
         pronunciation_en: "BOH-chor",
       },
       {
+        cell_id: "44882b54-2926-4be3-9bfd-5d1173080bdc",
         word: "ganti oli",
         en: "oil change",
         vi: "thay nhớt",
@@ -425,6 +444,7 @@ export const motorcycleCultureLessons: IndonesianLesson[] = [
         pronunciation_en: "GAN-tee OH-lee",
       },
       {
+        cell_id: "e4746e55-a11a-48b7-8c7f-e018741cb8fb",
         word: "servis",
         en: "servicing / service",
         vi: "bảo dưỡng",
@@ -433,6 +453,7 @@ export const motorcycleCultureLessons: IndonesianLesson[] = [
         pronunciation_en: "SER-vis",
       },
       {
+        cell_id: "83f78ee5-2773-4ef1-912e-698efd2a8db6",
         word: "rem",
         en: "brake",
         vi: "phanh / thắng",
@@ -441,6 +462,7 @@ export const motorcycleCultureLessons: IndonesianLesson[] = [
         pronunciation_en: "rem",
       },
       {
+        cell_id: "768a96c5-9bd4-4e33-b35b-e32140ae354f",
         word: "biaya",
         en: "cost / fee",
         vi: "chi phí",
@@ -451,24 +473,28 @@ export const motorcycleCultureLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "da7375cd-7c1e-47ed-bbd5-c44f2e3f494f",
         speaker: "Pelanggan",
         text: "Mas, motor saya mogok di jalan tadi. Tolong dicek.",
         vi: "Anh ơi, xe em chết máy ngoài đường lúc nãy. Làm ơn kiểm tra giúp.",
         en: "Bro, my bike broke down on the road earlier. Please check it.",
       },
       {
+        cell_id: "650cf1ac-b501-4b82-a3e1-c86ca75dbcef",
         speaker: "Montir",
         text: "Coba saya lihat. Wah, bannya bocor, harus ditambal.",
         vi: "Để tôi xem thử. Ồ, lốp bị thủng, phải vá lại.",
         en: "Let me take a look. Oh, the tire's punctured, it needs patching.",
       },
       {
+        cell_id: "86513457-1d08-4a1d-ab9a-fa93f2859d7e",
         speaker: "Pelanggan",
         text: "Sekalian ganti oli, ya. Berapa biaya semuanya?",
         vi: "Thay luôn nhớt nhé. Tổng cộng hết bao nhiêu?",
         en: "Change the oil too, please. How much for everything?",
       },
       {
+        cell_id: "b98eb60d-5fbc-432e-9031-47752bf4172e",
         speaker: "Montir",
         text: "Tambal ban sama oli, sekitar delapan puluh ribu. Remnya juga saya cek, ya.",
         vi: "Vá lốp với nhớt, khoảng tám mươi nghìn. Tôi kiểm tra cả phanh luôn nhé.",
@@ -609,6 +635,7 @@ export const motorcycleCultureLessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: note the 'meN-' prefix forming active verbs — langgar→melanggar (violate), laku→melakukan (carry out), modifikasi→memodifikasi (modify). VN speakers often DROP this prefix in speech; keep it in formal/written register. 'Kena + noun' = to get hit with (kena tilang = to get fined). 'Wajib' = obligatory (stronger than 'harus'). 'Demi + noun' = for the sake of.",
     vocabulary: [
       {
+        cell_id: "145aef2f-3171-470f-b13b-323a6d770741",
         word: "pengendara",
         en: "rider / driver",
         vi: "người lái",
@@ -617,6 +644,7 @@ export const motorcycleCultureLessons: IndonesianLesson[] = [
         pronunciation_en: "pe-ngen-DA-ra",
       },
       {
+        cell_id: "bc428fc1-3a32-4429-a74f-4db28188a1ea",
         word: "SIM",
         en: "driver's license",
         vi: "bằng lái xe",
@@ -625,6 +653,7 @@ export const motorcycleCultureLessons: IndonesianLesson[] = [
         pronunciation_en: "sim",
       },
       {
+        cell_id: "dcabbd6a-4572-4ace-9408-b034ce5d3493",
         word: "STNK",
         en: "vehicle registration certificate",
         vi: "giấy đăng ký xe",
@@ -633,6 +662,7 @@ export const motorcycleCultureLessons: IndonesianLesson[] = [
         pronunciation_en: "es-teh-en-ka",
       },
       {
+        cell_id: "d8f2af5f-dc39-4bdc-bd12-104b8928a42a",
         word: "tilang",
         en: "traffic ticket / fine",
         vi: "biên bản phạt giao thông",
@@ -641,6 +671,7 @@ export const motorcycleCultureLessons: IndonesianLesson[] = [
         pronunciation_en: "TEE-lang",
       },
       {
+        cell_id: "81c70702-730b-4d0e-9e53-8ce6db97fe83",
         word: "melanggar",
         en: "to violate / run (a rule)",
         vi: "vi phạm / vượt (luật)",
@@ -649,6 +680,7 @@ export const motorcycleCultureLessons: IndonesianLesson[] = [
         pronunciation_en: "me-LANG-gar",
       },
       {
+        cell_id: "b6b69705-9848-44fa-bdf3-fafab191b510",
         word: "razia",
         en: "police checkpoint / raid",
         vi: "chốt kiểm tra",
@@ -657,6 +689,7 @@ export const motorcycleCultureLessons: IndonesianLesson[] = [
         pronunciation_en: "RA-zee-a",
       },
       {
+        cell_id: "e4911a2c-6805-4941-8293-504676ef1a16",
         word: "modifikasi",
         en: "modification (of a vehicle)",
         vi: "độ xe / chỉnh sửa",
@@ -665,6 +698,7 @@ export const motorcycleCultureLessons: IndonesianLesson[] = [
         pronunciation_en: "mo-dee-fee-KA-see",
       },
       {
+        cell_id: "2a93977d-0a44-480e-84d7-ebdbab597e1f",
         word: "keselamatan",
         en: "safety",
         vi: "sự an toàn",
@@ -675,24 +709,28 @@ export const motorcycleCultureLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "c89ce1ac-6832-4768-b015-26bd17ed138d",
         speaker: "Rio",
         text: "Tadi pagi ada razia di perempatan, banyak yang kena tilang.",
         vi: "Sáng nay có chốt kiểm tra ở ngã tư, nhiều người bị phạt.",
         en: "There was a checkpoint at the intersection this morning, lots of people got fined.",
       },
       {
+        cell_id: "ccc50e4c-5078-416c-9d43-1605e6438491",
         speaker: "Dina",
         text: "Mereka melanggar apa? Lampu merah?",
         vi: "Họ vi phạm gì vậy? Vượt đèn đỏ à?",
         en: "What did they violate? Running a red light?",
       },
       {
+        cell_id: "d9af904b-b94c-451b-a291-d2a393903717",
         speaker: "Rio",
         text: "Ada yang nggak bawa STNK, ada yang motornya dimodifikasi berlebihan.",
         vi: "Có người không mang giấy đăng ký xe, có người độ xe quá đà.",
         en: "Some didn't carry the STNK, some had over-modified bikes.",
       },
       {
+        cell_id: "54e4f4d0-57fa-4802-8263-e6b1318834df",
         speaker: "Dina",
         text: "Makanya, demi keselamatan, sebaiknya jangan ngebut dan lengkapi surat.",
         vi: "Vậy đó, vì an toàn, tốt nhất đừng phóng nhanh và mang đủ giấy tờ.",

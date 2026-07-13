@@ -24,6 +24,7 @@ type LessonSentence = {
 };
 
 type VocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -33,6 +34,7 @@ type VocabEntry = {
 };
 
 type DialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -172,6 +174,7 @@ export const lessons: SwahiliLesson[] = [
       "Memory hook: 'Hujambo?' (you?) → 'Sijambo' (me). 'Hamjambo?' (you all?) → 'Hatujambo' (us). Just swap the subject prefix: hu- (you) → si- (I), ham- (you pl.) → hatu- (we). 'Habari?' is your magic word — use it anytime, answer 'Nzuri' or 'Salama'. Key sounds for Vietnamese speakers: Swahili 'j' = English 'job' (NOT like Vietnamese 'gi'). 'r' is a light tongue-tap (NOT like northern Vietnamese 'r'). Nasal combinations like 'ny', 'ng', 'ng' are frequent — similar to Vietnamese but in different positions.",
     vocabulary: [
       {
+        cell_id: "a21a4ef2-deda-4505-824c-0293fde00e7c",
         word: "Jambo",
         en: "hello",
         vi: "xin chào",
@@ -180,6 +183,7 @@ export const lessons: SwahiliLesson[] = [
         pronunciation_en: "JAM-bo — 'j' as in 'job'",
       },
       {
+        cell_id: "8c439894-ec50-485c-ac2e-762eefed832d",
         word: "Hujambo?",
         en: "how are you? (singular)",
         vi: "bạn khỏe không?",
@@ -188,6 +192,7 @@ export const lessons: SwahiliLesson[] = [
         pronunciation_en: "hoo-JAM-bo",
       },
       {
+        cell_id: "f7399b7f-2deb-45e3-815a-41644e45e60c",
         word: "Sijambo",
         en: "I'm fine (reply)",
         vi: "tôi khỏe",
@@ -196,6 +201,7 @@ export const lessons: SwahiliLesson[] = [
         pronunciation_en: "see-JAM-bo",
       },
       {
+        cell_id: "e646b8b1-cc4e-41e5-ada1-aac9f502a305",
         word: "Habari?",
         en: "what's the news? / how are things?",
         vi: "có tin gì không?",
@@ -204,6 +210,7 @@ export const lessons: SwahiliLesson[] = [
         pronunciation_en: "hah-BAH-ree",
       },
       {
+        cell_id: "fb605026-dd2e-4cc4-af5d-449a381b4077",
         word: "Nzuri",
         en: "good / fine",
         vi: "tốt / khỏe",
@@ -212,6 +219,7 @@ export const lessons: SwahiliLesson[] = [
         pronunciation_en: "n-ZOO-ree — starts with 'nz' together",
       },
       {
+        cell_id: "59333ee4-2978-4691-a9bf-9efe8b8af03f",
         word: "Salama",
         en: "peaceful / safe",
         vi: "bình an",
@@ -220,6 +228,7 @@ export const lessons: SwahiliLesson[] = [
         pronunciation_en: "sah-LAH-mah",
       },
       {
+        cell_id: "ef231256-0b5d-4938-8c16-a7c42200a981",
         word: "Asante",
         en: "thank you",
         vi: "cảm ơn",
@@ -228,6 +237,7 @@ export const lessons: SwahiliLesson[] = [
         pronunciation_en: "ah-SAHN-teh",
       },
       {
+        cell_id: "2867d40e-b37b-42c5-a2b5-695e94eeaf2d",
         word: "Asante sana",
         en: "thank you very much",
         vi: "cảm ơn nhiều",
@@ -236,6 +246,7 @@ export const lessons: SwahiliLesson[] = [
         pronunciation_en: "ah-SAHN-teh SAH-nah",
       },
       {
+        cell_id: "6b169007-607a-4ac9-8680-c96f8396c7b8",
         word: "Karibu",
         en: "you're welcome / welcome!",
         vi: "không có gì / chào mừng!",
@@ -244,6 +255,7 @@ export const lessons: SwahiliLesson[] = [
         pronunciation_en: "kah-REE-boo",
       },
       {
+        cell_id: "e1c4b23f-81b1-44cd-a708-ec163f657032",
         word: "Samahani",
         en: "excuse me / sorry",
         vi: "xin lỗi",
@@ -252,6 +264,7 @@ export const lessons: SwahiliLesson[] = [
         pronunciation_en: "sah-mah-HAH-nee",
       },
       {
+        cell_id: "a3454f8b-ff9d-4e5a-a285-f10f73221d7b",
         word: "Kwa heri",
         en: "goodbye (singular)",
         vi: "tạm biệt",
@@ -260,6 +273,7 @@ export const lessons: SwahiliLesson[] = [
         pronunciation_en: "kwah HEH-ree",
       },
       {
+        cell_id: "74eecafc-1adf-4cfa-a23b-53c281b6a4ef",
         word: "Tutaonana",
         en: "see you later",
         vi: "hẹn gặp lại",
@@ -268,6 +282,7 @@ export const lessons: SwahiliLesson[] = [
         pronunciation_en: "too-tah-oh-NAH-nah",
       },
       {
+        cell_id: "d914bee4-3d4d-46d4-be77-7d3242aef66b",
         word: "Shikamoo",
         en: "respectful greeting to elder",
         vi: "chào kính trọng (người lớn)",
@@ -278,24 +293,28 @@ export const lessons: SwahiliLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "9a821ae7-5e10-4ff0-8970-b26fc53faa1f",
         speaker: "A",
         text: "Hujambo? Habari gani?",
         vi: "Bạn khỏe không? Có tin gì mới?",
         en: "How are you? What's the news?",
       },
       {
+        cell_id: "9798bb7f-0a12-4575-9e99-723fda3c941e",
         speaker: "B",
         text: "Sijambo! Nzuri sana. Na wewe?",
         vi: "Tôi khỏe! Rất tốt. Còn bạn?",
         en: "I'm fine! Very good. And you?",
       },
       {
+        cell_id: "67aecf01-19dd-44bd-835c-e1353273ce74",
         speaker: "A",
         text: "Salama tu. Asante kwa kuuliza.",
         vi: "Bình an thôi. Cảm ơn bạn đã hỏi.",
         en: "Just peaceful. Thanks for asking.",
       },
       {
+        cell_id: "23368017-4fa7-480c-b822-872208144593",
         speaker: "B",
         text: "Karibu. Tutaonana kesho!",
         vi: "Không có gì. Hẹn gặp lại ngày mai!",
@@ -465,6 +484,7 @@ export const lessons: SwahiliLesson[] = [
       "Golden frame: 'Jina langu ni ___. Ninatoka ___. Ninafuraha kukutana na wewe.' Swap only the name and place. For Vietnamese learners: the reversed possessive (jina langu, not langu jina) is the main habit to build. The verb prefix system is extremely logical: ni- (I), u- (you), a- (he/she), tu- (we), m- (you pl.), wa- (they). -na- = present tense. Master ni- + -na- + [verb root] and you can make hundreds of sentences.",
     vocabulary: [
       {
+        cell_id: "c8a1f09c-baa3-4998-8bc0-fd574b66b502",
         word: "jina",
         en: "name",
         vi: "tên",
@@ -473,6 +493,7 @@ export const lessons: SwahiliLesson[] = [
         pronunciation_en: "JEE-nah",
       },
       {
+        cell_id: "313a1b6f-5d95-47b0-92ee-c2dba88d232c",
         word: "mimi",
         en: "I / me",
         vi: "tôi",
@@ -481,6 +502,7 @@ export const lessons: SwahiliLesson[] = [
         pronunciation_en: "MEE-mee",
       },
       {
+        cell_id: "7ba61e61-1dc9-4b9e-8b31-2601dbe2b2bc",
         word: "wewe",
         en: "you (singular)",
         vi: "bạn",
@@ -489,6 +511,7 @@ export const lessons: SwahiliLesson[] = [
         pronunciation_en: "WEH-weh",
       },
       {
+        cell_id: "5ff31e44-5c44-4820-b454-2315e330658b",
         word: "nani",
         en: "who",
         vi: "ai",
@@ -497,6 +520,7 @@ export const lessons: SwahiliLesson[] = [
         pronunciation_en: "NAH-nee",
       },
       {
+        cell_id: "24d0947f-f710-4528-b01f-5ab5bdcd3b5e",
         word: "ninatoka",
         en: "I come from",
         vi: "tôi đến từ",
@@ -505,6 +529,7 @@ export const lessons: SwahiliLesson[] = [
         pronunciation_en: "nee-nah-TOH-kah",
       },
       {
+        cell_id: "e6f760f7-bb52-4b5d-bed6-2a8e9e1ee985",
         word: "ninafuraha",
         en: "I am happy",
         vi: "tôi vui",
@@ -513,6 +538,7 @@ export const lessons: SwahiliLesson[] = [
         pronunciation_en: "nee-nah-foo-RAH-hah",
       },
       {
+        cell_id: "e6cec016-cc29-46fd-91f5-9206e3d61a55",
         word: "kukutana",
         en: "to meet each other",
         vi: "gặp nhau",
@@ -521,6 +547,7 @@ export const lessons: SwahiliLesson[] = [
         pronunciation_en: "koo-koo-TAH-nah",
       },
       {
+        cell_id: "03cfc473-1bbe-4089-b008-aa4d20f96e7c",
         word: "Kiswahili",
         en: "the Swahili language",
         vi: "tiếng Swahili",
@@ -529,6 +556,7 @@ export const lessons: SwahiliLesson[] = [
         pronunciation_en: "kee-swah-HEE-lee",
       },
       {
+        cell_id: "e84873bf-31d5-4c60-ad48-a05679b7321d",
         word: "kidogo",
         en: "a little",
         vi: "một chút",
@@ -537,6 +565,7 @@ export const lessons: SwahiliLesson[] = [
         pronunciation_en: "kee-DOH-go",
       },
       {
+        cell_id: "5d8b1e3c-0358-431f-8da7-06f2b01a63f5",
         word: "na",
         en: "and / with",
         vi: "và / với",
@@ -547,24 +576,28 @@ export const lessons: SwahiliLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "19a3c959-79a1-40a6-a3f7-0aff2b370655",
         speaker: "A",
         text: "Halo! Jina lako ni nani?",
         vi: "Xin chào! Bạn tên là gì?",
         en: "Hello! What is your name?",
       },
       {
+        cell_id: "a6bfccdf-ad51-4620-98d2-68f360687ac6",
         speaker: "B",
         text: "Jina langu ni Linh. Ninatoka Vietnam. Na wewe?",
         vi: "Tên tôi là Linh. Tôi đến từ Việt Nam. Còn bạn?",
         en: "My name is Linh. I'm from Vietnam. And you?",
       },
       {
+        cell_id: "4cf4a447-02dd-475d-9c43-baa5dc33d9cd",
         speaker: "A",
         text: "Mimi ni Juma, ninatoka Tanzania. Ninafuraha kukutana na wewe.",
         vi: "Tôi là Juma, đến từ Tanzania. Rất vui được gặp bạn.",
         en: "I'm Juma, from Tanzania. Nice to meet you.",
       },
       {
+        cell_id: "2be05d53-4602-49bc-b144-a98e4079109e",
         speaker: "B",
         text: "Ninafuraha pia! Ninaongea Kiswahili kidogo.",
         vi: "Tôi cũng rất vui! Tôi nói được một chút tiếng Swahili.",
@@ -734,6 +767,7 @@ export const lessons: SwahiliLesson[] = [
       "Master 1–10 cold; everything else is assembly. 13 = kumi na tatu (ten and three), 30 = thelathini (thirty), 33 = thelathini na tatu. Tip: the tens are Arabic-derived and sound like mutations of the digits: sita (6) → sitini (60), saba (7) → sabini (70). NUMBER AGREEMENT: at A1 you only need to know it EXISTS — for abstract counting use the bare forms. 'na' = 'and', the connector for tens + units.",
     vocabulary: [
       {
+        cell_id: "27906820-c914-4eeb-adec-7fc894b4c3c5",
         word: "moja",
         en: "one (1)",
         vi: "một",
@@ -742,6 +776,7 @@ export const lessons: SwahiliLesson[] = [
         pronunciation_en: "MOH-jah",
       },
       {
+        cell_id: "257205c8-79fb-47ec-b275-c595fcbc87fb",
         word: "tano",
         en: "five (5)",
         vi: "năm",
@@ -750,6 +785,7 @@ export const lessons: SwahiliLesson[] = [
         pronunciation_en: "TAH-noh",
       },
       {
+        cell_id: "4859f4db-159d-4fc5-99ca-9b016a015ee9",
         word: "kumi",
         en: "ten (10)",
         vi: "mười",
@@ -758,6 +794,7 @@ export const lessons: SwahiliLesson[] = [
         pronunciation_en: "KOO-mee",
       },
       {
+        cell_id: "9d042142-e387-447a-ac8e-b2b9ec6e1aa5",
         word: "kumi na moja",
         en: "eleven (11)",
         vi: "mười một",
@@ -766,6 +803,7 @@ export const lessons: SwahiliLesson[] = [
         pronunciation_en: "KOO-mee nah MOH-jah",
       },
       {
+        cell_id: "4c7a7d1c-03f1-4dd7-b636-b13115eec42b",
         word: "kumi na mbili",
         en: "twelve (12)",
         vi: "mười hai",
@@ -774,6 +812,7 @@ export const lessons: SwahiliLesson[] = [
         pronunciation_en: "KOO-mee nah m-BEE-lee",
       },
       {
+        cell_id: "517eaee2-6f73-4535-9de5-c57b75e12503",
         word: "ishirini",
         en: "twenty (20)",
         vi: "hai mươi",
@@ -782,6 +821,7 @@ export const lessons: SwahiliLesson[] = [
         pronunciation_en: "ee-shee-REE-nee",
       },
       {
+        cell_id: "99a8b6db-0303-437e-a290-139bd577a49b",
         word: "hamsini",
         en: "fifty (50)",
         vi: "năm mươi",
@@ -790,6 +830,7 @@ export const lessons: SwahiliLesson[] = [
         pronunciation_en: "hahm-SEE-nee",
       },
       {
+        cell_id: "9b08ede3-6c74-43d7-95ac-c5a49fbac431",
         word: "mia moja",
         en: "one hundred (100)",
         vi: "một trăm",
@@ -798,6 +839,7 @@ export const lessons: SwahiliLesson[] = [
         pronunciation_en: "MEE-ah MOH-jah",
       },
       {
+        cell_id: "e5fe59f0-ed55-4319-9972-3b6ddb2f3d2f",
         word: "thelathini",
         en: "thirty (30)",
         vi: "ba mươi",
@@ -806,6 +848,7 @@ export const lessons: SwahiliLesson[] = [
         pronunciation_en: "theh-lah-THEE-nee",
       },
       {
+        cell_id: "c88deb26-e7d7-43c8-ac42-3f3c0257615d",
         word: "arobaini",
         en: "forty (40)",
         vi: "bốn mươi",
@@ -816,24 +859,28 @@ export const lessons: SwahiliLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "302c14b3-8d45-4b62-91c9-0fd8d0f4bfe0",
         speaker: "A",
         text: "Una miaka mingapi?",
         vi: "Bạn bao nhiêu tuổi?",
         en: "How old are you?",
       },
       {
+        cell_id: "7697ed7d-d8d0-4320-9cce-a70d1bcfeb87",
         speaker: "B",
         text: "Nina miaka ishirini na mitano.",
         vi: "Tôi hai mươi lăm tuổi.",
         en: "I'm twenty-five years old.",
       },
       {
+        cell_id: "dd0367ba-b155-4ac7-ac4b-1d7e981b5496",
         speaker: "A",
         text: "Nambari yako ya simu ni ipi?",
         vi: "Số điện thoại của bạn là gì?",
         en: "What's your phone number?",
       },
       {
+        cell_id: "9afccc7d-939d-4f93-867f-4add6b48a8b8",
         speaker: "B",
         text: "Sifuri saba sita tano, nne tatu mbili...",
         vi: "Không bảy sáu năm, bốn ba hai...",
@@ -1003,6 +1050,7 @@ export const lessons: SwahiliLesson[] = [
       "Memory hook for the core trio: nani (who → people), nini (what → things), wapi (where → places). 'Je,' is the universal question particle: just add 'Je,' before any statement to make it a question. Distinguish: 'gani' asks about type/kind (Unakaa gani? = How are you doing?), 'ngapi' asks about count (Watu wangapi? = How many people?). 'Kwa nini' is analyzable: 'kwa' (by/for) + 'nini' (what) = 'for what' = why.",
     vocabulary: [
       {
+        cell_id: "635e9ba8-9363-4c4b-91ee-92a5db90bfde",
         word: "nini",
         en: "what",
         vi: "gì / cái gì",
@@ -1011,6 +1059,7 @@ export const lessons: SwahiliLesson[] = [
         pronunciation_en: "NEE-nee",
       },
       {
+        cell_id: "d6418fe2-df2f-4c16-8a85-a3f4cd23be22",
         word: "nani",
         en: "who",
         vi: "ai",
@@ -1019,6 +1068,7 @@ export const lessons: SwahiliLesson[] = [
         pronunciation_en: "NAH-nee",
       },
       {
+        cell_id: "a330e37d-d670-4456-b033-2ecd860c7656",
         word: "wapi",
         en: "where",
         vi: "ở đâu",
@@ -1027,6 +1077,7 @@ export const lessons: SwahiliLesson[] = [
         pronunciation_en: "WAH-pee",
       },
       {
+        cell_id: "4a25ae65-7a75-482f-af22-5a98d433781b",
         word: "lini",
         en: "when",
         vi: "khi nào",
@@ -1035,6 +1086,7 @@ export const lessons: SwahiliLesson[] = [
         pronunciation_en: "LEE-nee",
       },
       {
+        cell_id: "4400aa7c-475a-4a81-87d1-b6e5f30abe3a",
         word: "kwa nini",
         en: "why",
         vi: "tại sao",
@@ -1043,6 +1095,7 @@ export const lessons: SwahiliLesson[] = [
         pronunciation_en: "kwah NEE-nee",
       },
       {
+        cell_id: "0bd8f7c4-26d4-49ab-8c5f-045ea6ce57f3",
         word: "vipi",
         en: "how",
         vi: "như thế nào",
@@ -1051,6 +1104,7 @@ export const lessons: SwahiliLesson[] = [
         pronunciation_en: "VEE-pee",
       },
       {
+        cell_id: "dd07c161-e927-4e26-a1d9-9f4e3f4bf4e3",
         word: "gani",
         en: "which / what kind of",
         vi: "loại nào",
@@ -1059,6 +1113,7 @@ export const lessons: SwahiliLesson[] = [
         pronunciation_en: "GAH-nee",
       },
       {
+        cell_id: "beb2dc6f-23ae-4f33-90c4-282efa086b21",
         word: "ngapi",
         en: "how many",
         vi: "bao nhiêu",
@@ -1067,6 +1122,7 @@ export const lessons: SwahiliLesson[] = [
         pronunciation_en: "n-GAH-pee",
       },
       {
+        cell_id: "ddc32b90-5662-4b2b-9eec-eff75a7b6a01",
         word: "hii",
         en: "this",
         vi: "này / đây",
@@ -1075,6 +1131,7 @@ export const lessons: SwahiliLesson[] = [
         pronunciation_en: "HEE-ee",
       },
       {
+        cell_id: "6bc6b9d0-6971-45e0-9d95-15586b1f7c46",
         word: "bei",
         en: "price",
         vi: "giá",
@@ -1085,24 +1142,28 @@ export const lessons: SwahiliLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "73ff8b2d-4e4b-4648-98e7-a8bd3aaa5b42",
         speaker: "A",
         text: "Hii ni nini?",
         vi: "Đây là cái gì?",
         en: "What is this?",
       },
       {
+        cell_id: "86a6e7cf-9379-4034-b94a-f3a6ba97eacc",
         speaker: "B",
         text: "Hii ni kitabu. Ile ni begi langu.",
         vi: "Đây là quyển sách. Kia là túi của tôi.",
         en: "This is a book. That is my bag.",
       },
       {
+        cell_id: "d33fdaea-76d0-4c0d-973e-0bda2f518e6e",
         speaker: "A",
         text: "Bei gani kitabu hiki?",
         vi: "Quyển sách này giá bao nhiêu?",
         en: "How much is this book?",
       },
       {
+        cell_id: "b23bd956-fd0c-4f6c-ab67-b8bbd870b473",
         speaker: "B",
         text: "Shilingi elfu kumi.",
         vi: "Mười nghìn shilling.",
@@ -1272,6 +1333,7 @@ export const lessons: SwahiliLesson[] = [
       "Three survival lines at any eatery: 'Nataka ___' (to order), 'Bei gani?' (how much), 'Tamu sana!' (very delicious). Tip: 'sana' (very) comes AFTER the adjective — tamu sana, ghali sana (very expensive). 'Tafadhali' = please (when requesting). 'Naomba' is more polite than 'Nataka' (literally 'I pray/request', but in ordering it's just 'I'd like'). 'Chakula' (food) vs 'Mlo' (meal) — useful distinction.",
     vocabulary: [
       {
+        cell_id: "09960028-8e58-4d12-9b2e-e5e7ba18b244",
         word: "nataka",
         en: "I want",
         vi: "tôi muốn",
@@ -1280,6 +1342,7 @@ export const lessons: SwahiliLesson[] = [
         pronunciation_en: "nah-TAH-kah",
       },
       {
+        cell_id: "6943e82c-f58b-46c5-8c1c-44cdad53df95",
         word: "wali",
         en: "cooked rice",
         vi: "cơm",
@@ -1288,6 +1351,7 @@ export const lessons: SwahiliLesson[] = [
         pronunciation_en: "WAH-lee",
       },
       {
+        cell_id: "b2d3a6af-c734-468c-9bd9-dcdab2fe451a",
         word: "nyama choma",
         en: "grilled meat",
         vi: "thịt nướng",
@@ -1296,6 +1360,7 @@ export const lessons: SwahiliLesson[] = [
         pronunciation_en: "NYAH-mah CHOH-mah",
       },
       {
+        cell_id: "4d100550-573a-441b-8676-36a93ccdc43a",
         word: "samaki",
         en: "fish",
         vi: "cá",
@@ -1304,6 +1369,7 @@ export const lessons: SwahiliLesson[] = [
         pronunciation_en: "sah-MAH-kee",
       },
       {
+        cell_id: "4fde9e38-3fdc-4ee6-b0aa-2f5156fcf7e5",
         word: "chai",
         en: "tea",
         vi: "trà",
@@ -1312,6 +1378,7 @@ export const lessons: SwahiliLesson[] = [
         pronunciation_en: "CHAH-ee",
       },
       {
+        cell_id: "f6ef56f2-d260-45d4-b681-03c9af6c0829",
         word: "kahawa",
         en: "coffee",
         vi: "cà phê",
@@ -1320,6 +1387,7 @@ export const lessons: SwahiliLesson[] = [
         pronunciation_en: "kah-HAH-wah",
       },
       {
+        cell_id: "600dee8a-dcf0-4822-9b95-dd8980d0f45f",
         word: "maji",
         en: "water",
         vi: "nước",
@@ -1328,6 +1396,7 @@ export const lessons: SwahiliLesson[] = [
         pronunciation_en: "MAH-jee",
       },
       {
+        cell_id: "7b4e2505-4036-408a-a8df-98e1355e2176",
         word: "tamu",
         en: "delicious / sweet",
         vi: "ngon / ngọt",
@@ -1336,6 +1405,7 @@ export const lessons: SwahiliLesson[] = [
         pronunciation_en: "TAH-moo",
       },
       {
+        cell_id: "d1414fd2-d5fa-43ba-ab83-d09a620615c3",
         word: "pilipili",
         en: "pepper / spicy",
         vi: "ớt / cay",
@@ -1344,6 +1414,7 @@ export const lessons: SwahiliLesson[] = [
         pronunciation_en: "pee-lee-PEE-lee",
       },
       {
+        cell_id: "ded84a2a-937d-449c-9887-bb222449934f",
         word: "tafadhali",
         en: "please",
         vi: "làm ơn",
@@ -1354,24 +1425,28 @@ export const lessons: SwahiliLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "b47133ee-12d4-4231-ba5f-15802412e599",
         speaker: "Mhudumu",
         text: "Habari za mchana! Nataka nini?",
         vi: "Chào buổi trưa! Anh/chị muốn gọi gì?",
         en: "Good afternoon! What would you like?",
       },
       {
+        cell_id: "79c7043a-1d52-44ad-9de7-8f3731c9fe6f",
         speaker: "Mteja",
         text: "Nataka wali na samaki, tafadhali. Na maji pia.",
         vi: "Cho tôi cơm và cá, làm ơn. Và nước nữa.",
         en: "I'd like rice and fish, please. And water too.",
       },
       {
+        cell_id: "38abf3e5-5d55-4df1-90ed-30b9b48d4b7a",
         speaker: "Mhudumu",
         text: "Unapenda pilipili au la?",
         vi: "Bạn thích cay hay không?",
         en: "Do you like it spicy or not?",
       },
       {
+        cell_id: "9d85ebae-2ef1-49f1-a447-6244449890dc",
         speaker: "Mteja",
         text: "Pilipili kidogo tu. Jumla ni ngapi?",
         vi: "Chỉ một chút cay thôi. Tổng cộng bao nhiêu?",
@@ -1541,6 +1616,7 @@ export const lessons: SwahiliLesson[] = [
       "Direction combo: 'Samahani, ___ iko wapi?' → listen for 'moja kwa moja / kushoto / kulia'. For Vietnamese: 'Moja kwa moja' literally means 'one by one' — easy to remember. 'iko' = it is (n-class and most inanimate), 'yuko' = he/she is, 'kiko' = it is (ki-/vi- class). Learn one master pattern: '___ iko wapi?' covers most tourist situations. 'Mbele ya' and 'Nyuma ya' always take 'ya' (of) — 'front OF', 'back OF'.",
     vocabulary: [
       {
+        cell_id: "28a1f23b-ffea-4e94-a9f0-7eab713b532c",
         word: "wapi",
         en: "where",
         vi: "ở đâu",
@@ -1549,6 +1625,7 @@ export const lessons: SwahiliLesson[] = [
         pronunciation_en: "WAH-pee",
       },
       {
+        cell_id: "a15e0645-6675-4bdf-8258-b3f3498625d9",
         word: "moja kwa moja",
         en: "straight ahead",
         vi: "đi thẳng",
@@ -1557,6 +1634,7 @@ export const lessons: SwahiliLesson[] = [
         pronunciation_en: "MOH-jah kwah MOH-jah",
       },
       {
+        cell_id: "acfe327d-cc38-4e84-a31a-a69f2ece521e",
         word: "kushoto",
         en: "left",
         vi: "trái",
@@ -1565,6 +1643,7 @@ export const lessons: SwahiliLesson[] = [
         pronunciation_en: "koo-SHOH-toh",
       },
       {
+        cell_id: "3f579112-7a54-426d-8571-7cdf2c033f5b",
         word: "kulia",
         en: "right",
         vi: "phải",
@@ -1573,6 +1652,7 @@ export const lessons: SwahiliLesson[] = [
         pronunciation_en: "koo-LEE-ah",
       },
       {
+        cell_id: "f8128ce0-c35d-4974-ad7c-5004051bd60b",
         word: "karibu",
         en: "near / close",
         vi: "gần",
@@ -1581,6 +1661,7 @@ export const lessons: SwahiliLesson[] = [
         pronunciation_en: "kah-REE-boo",
       },
       {
+        cell_id: "580504f1-df54-4c41-b895-1a924517396e",
         word: "mbali",
         en: "far",
         vi: "xa",
@@ -1589,6 +1670,7 @@ export const lessons: SwahiliLesson[] = [
         pronunciation_en: "m-BAH-lee",
       },
       {
+        cell_id: "27246e33-3ef0-4675-ab46-961272fd4dca",
         word: "mbele ya",
         en: "in front of",
         vi: "phía trước",
@@ -1597,6 +1679,7 @@ export const lessons: SwahiliLesson[] = [
         pronunciation_en: "m-BEH-leh yah",
       },
       {
+        cell_id: "e0a3a513-5504-4e09-9754-63348fbca475",
         word: "nyuma ya",
         en: "behind",
         vi: "phía sau",
@@ -1605,6 +1688,7 @@ export const lessons: SwahiliLesson[] = [
         pronunciation_en: "NYOO-mah yah",
       },
       {
+        cell_id: "8aac8452-9473-4b1b-90a4-4bdedcb4bb6b",
         word: "soko",
         en: "market",
         vi: "chợ",
@@ -1613,6 +1697,7 @@ export const lessons: SwahiliLesson[] = [
         pronunciation_en: "SOH-koh",
       },
       {
+        cell_id: "03a254cf-9f9a-45d7-b3e2-4d6623571d9c",
         word: "enda",
         en: "go! (command)",
         vi: "đi!",
@@ -1623,24 +1708,28 @@ export const lessons: SwahiliLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "e5fd09e3-a8c4-4e2b-8090-0128e52e108d",
         speaker: "A",
         text: "Samahani, soko liko wapi?",
         vi: "Xin lỗi, chợ ở đâu?",
         en: "Excuse me, where is the market?",
       },
       {
+        cell_id: "e45575ba-6a6e-465d-a48e-6951a6b8d57c",
         speaker: "B",
         text: "Enda moja kwa moja, kisha pinda kulia.",
         vi: "Đi thẳng, rồi rẽ phải.",
         en: "Go straight, then turn right.",
       },
       {
+        cell_id: "72a5dd77-25df-410c-b4e0-4200521a5093",
         speaker: "A",
         text: "Ni mbali kutoka hapa?",
         vi: "Có xa đây không?",
         en: "Is it far from here?",
       },
       {
+        cell_id: "07c568fd-2744-4901-ac99-15bff42c485d",
         speaker: "B",
         text: "Hapana, ni karibu. Iko mbele ya msikiti.",
         vi: "Không, gần thôi. Ở trước nhà thờ.",
@@ -1810,6 +1899,7 @@ export const lessons: SwahiliLesson[] = [
       "Core quartet: baba (father), mama (mother), kaka (older brother), dada (older sister). For Vietnamese learners: 'kaka' and 'dada' mark both relative AGE (older) AND GENDER — unlike Indonesian 'kakak' (gender-neutral). 'Yangu' is the possessive 'my' for n-class nouns (baba yangu, mama yangu). For m-/wa- class use 'wangu' (kaka wangu). At A1, 'yangu' works for baba/mama, and using it with kaka/dada will still be understood.",
     vocabulary: [
       {
+        cell_id: "384c37a0-780d-42ef-86c4-039b7644ffe9",
         word: "familia",
         en: "family",
         vi: "gia đình",
@@ -1818,6 +1908,7 @@ export const lessons: SwahiliLesson[] = [
         pronunciation_en: "fah-MEE-lee-ah",
       },
       {
+        cell_id: "0a0dc5e2-ef80-4c65-9d58-9a314368bd38",
         word: "baba",
         en: "father",
         vi: "cha / ba",
@@ -1826,6 +1917,7 @@ export const lessons: SwahiliLesson[] = [
         pronunciation_en: "BAH-bah",
       },
       {
+        cell_id: "d1ae1fa1-dfea-47a9-9ffb-593d0f42571b",
         word: "mama",
         en: "mother",
         vi: "mẹ",
@@ -1834,6 +1926,7 @@ export const lessons: SwahiliLesson[] = [
         pronunciation_en: "MAH-mah",
       },
       {
+        cell_id: "8bc71e8e-e119-49f9-8628-6350f27ab528",
         word: "kaka",
         en: "older brother",
         vi: "anh trai",
@@ -1842,6 +1935,7 @@ export const lessons: SwahiliLesson[] = [
         pronunciation_en: "KAH-kah",
       },
       {
+        cell_id: "baf1f628-ede0-450f-b6ee-c2a769c6fc74",
         word: "dada",
         en: "older sister",
         vi: "chị gái",
@@ -1850,6 +1944,7 @@ export const lessons: SwahiliLesson[] = [
         pronunciation_en: "DAH-dah",
       },
       {
+        cell_id: "a64aa264-c7ca-4c9e-9cbf-f526d6b78717",
         word: "ndugu",
         en: "sibling / relative",
         vi: "anh chị em ruột",
@@ -1858,6 +1953,7 @@ export const lessons: SwahiliLesson[] = [
         pronunciation_en: "n-DOO-goo",
       },
       {
+        cell_id: "5a1d052b-405d-4526-aa28-f508ab8a5547",
         word: "mtoto",
         en: "child",
         vi: "con / đứa trẻ",
@@ -1866,6 +1962,7 @@ export const lessons: SwahiliLesson[] = [
         pronunciation_en: "m-TOH-toh",
       },
       {
+        cell_id: "8d80b054-d24e-4e73-9c01-5c2c7ffe9591",
         word: "babu",
         en: "grandfather",
         vi: "ông",
@@ -1874,6 +1971,7 @@ export const lessons: SwahiliLesson[] = [
         pronunciation_en: "BAH-boo",
       },
       {
+        cell_id: "baab10b6-e41b-43fb-8087-1c69e5c1bd23",
         word: "bibi",
         en: "grandmother",
         vi: "bà",
@@ -1882,6 +1980,7 @@ export const lessons: SwahiliLesson[] = [
         pronunciation_en: "BEE-bee",
       },
       {
+        cell_id: "642dee44-161d-4fd6-ae1e-51dfa7e94465",
         word: "mdogo",
         en: "younger / small",
         vi: "nhỏ hơn / em",
@@ -1892,24 +1991,28 @@ export const lessons: SwahiliLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "2327d967-5f2b-4fe5-acb8-6fcbb938edcb",
         speaker: "A",
         text: "Una ndugu wangapi?",
         vi: "Bạn có mấy anh chị em?",
         en: "How many siblings do you have?",
       },
       {
+        cell_id: "f3ee0b6e-2e99-4fbd-854e-39cddf0dceac",
         speaker: "B",
         text: "Nina kaka mmoja na dada wawili.",
         vi: "Tôi có một anh trai và hai chị gái.",
         en: "I have one older brother and two older sisters.",
       },
       {
+        cell_id: "658f8503-0098-47c8-b009-a911d2ac9aae",
         speaker: "A",
         text: "Na wewe ndio mdogo?",
         vi: "Và bạn là em út à?",
         en: "And you're the youngest?",
       },
       {
+        cell_id: "b9bf7b95-b7e2-4406-9fb5-57044c9b73b6",
         speaker: "B",
         text: "Ndiyo, mimi ni mdogo. Hii ni picha ya familia yangu.",
         vi: "Vâng, tôi là em út. Đây là ảnh gia đình tôi.",

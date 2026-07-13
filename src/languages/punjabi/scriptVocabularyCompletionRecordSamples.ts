@@ -18,6 +18,7 @@ export type PunjabiCompletionRecordFocus =
 export type PunjabiCompletionRecordStage = "pre_a11_completion_record" | "inventory_seal" | "catalog" | "pre_integration" | "sanity";
 
 export type PunjabiScriptVocabularyCompletionRecordSample = {
+  cell_id?: string;
   id: string;
   focus: PunjabiCompletionRecordFocus;
   stage: PunjabiCompletionRecordStage;
@@ -39,6 +40,7 @@ export type PunjabiScriptVocabularyCompletionRecordSample = {
 };
 
 export type PunjabiScriptVocabularyCompletionRecordSection = {
+  cell_id?: string;
   focus: PunjabiCompletionRecordFocus;
   title_vi: string;
   title_en: string;

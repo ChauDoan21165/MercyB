@@ -31,6 +31,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   /** Indonesian word/phrase. */
   word: string;
   /** English meaning. */
@@ -46,6 +47,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   /** Indonesian line. */
   text: string;
@@ -292,6 +294,7 @@ export const lessons: IndonesianLesson[] = [
     vocabulary: [
       // ── Formal email frame ──────────────────────────────────────────
       {
+        cell_id: "9a438baf-89e6-4926-9055-0f3b3c718313",
         word: "dengan hormat",
         en: "respectfully (formal opener)",
         vi: "kính thưa / trân trọng",
@@ -300,6 +303,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "DE-ngan HOR-mat — opens every formal letter",
       },
       {
+        cell_id: "876b644c-a3f5-4f75-b69a-ec260a5238d4",
         word: "surat resmi",
         en: "formal/official letter",
         vi: "thư/văn bản chính thức",
@@ -308,6 +312,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "SU-rat RES-mi — `resmi` = official",
       },
       {
+        cell_id: "59cc1a66-39a6-43aa-a204-fa58c35911cf",
         word: "perihal",
         en: "subject / re:",
         vi: "về việc / chủ đề",
@@ -316,6 +321,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "pe-ri-HAL — the 'Subject' line of a letter",
       },
       {
+        cell_id: "4778f926-89ec-4597-9e18-76242e191281",
         word: "sehubungan dengan",
         en: "with regard to",
         vi: "liên quan đến",
@@ -324,6 +330,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "se-hu-BU-ngan DE-ngan — states the reason for writing",
       },
       {
+        cell_id: "e2face67-18c2-4a22-ad4b-45e17bc95705",
         word: "mohon",
         en: "kindly request (most formal)",
         vi: "kính mong / xin",
@@ -332,6 +339,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "MO-hon — more formal than `tolong`",
       },
       {
+        cell_id: "89929f24-bf2d-4106-89d6-134febe1de34",
         word: "melampirkan",
         en: "to attach (a file)",
         vi: "đính kèm",
@@ -340,6 +348,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "me-lam-PIR-kan — `lampiran` = attachment; `terlampir` = attached",
       },
       {
+        cell_id: "3ea5f1a0-2ab6-4261-b968-97328d686d41",
         word: "balasan",
         en: "reply / response",
         vi: "phản hồi / thư trả lời",
@@ -348,6 +357,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "ba-LA-san — root `balas` + `-an`; `membalas` = to reply",
       },
       {
+        cell_id: "94187667-70b9-4ed5-a190-3fc872de80cc",
         word: "hormat saya",
         en: "respectfully yours (sign-off)",
         vi: "kính thư",
@@ -357,6 +367,7 @@ export const lessons: IndonesianLesson[] = [
       },
       // ── Work / business ─────────────────────────────────────────────
       {
+        cell_id: "d2db102c-a5bc-4844-a1e4-660a64d9b44d",
         word: "konfirmasi",
         en: "to confirm / confirmation",
         vi: "xác nhận",
@@ -365,6 +376,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "kon-fir-MA-si — `mohon konfirmasi` = please confirm",
       },
       {
+        cell_id: "fbfccd9c-93e5-489b-9828-0405646d8e29",
         word: "jadwal",
         en: "schedule",
         vi: "lịch / thời gian biểu",
@@ -373,6 +385,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "JAD-wal — `jadwal rapat` = meeting schedule",
       },
       {
+        cell_id: "d0c61bc8-2094-4957-81c8-353a96925a84",
         word: "tindak lanjut",
         en: "follow-up",
         vi: "theo dõi / xử lý tiếp",
@@ -381,6 +394,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "TIN-dak LAN-jut — `menindaklanjuti` = to follow up on",
       },
       {
+        cell_id: "67ef7461-cc6c-4e4e-af87-c5b917848218",
         word: "lowongan pekerjaan",
         en: "job vacancy",
         vi: "vị trí tuyển dụng",
@@ -390,6 +404,7 @@ export const lessons: IndonesianLesson[] = [
       },
       // ── Chat / WhatsApp ─────────────────────────────────────────────
       {
+        cell_id: "97fcc7ac-dd81-4c99-b1f0-e3d918083c67",
         word: "maaf mengganggu",
         en: "sorry to bother you",
         vi: "xin lỗi làm phiền",
@@ -398,6 +413,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "ma-AF meng-GANG-gu — polite chat opener",
       },
       {
+        cell_id: "20b9d9d8-1fe2-479c-9a2a-db270537f624",
         word: "membalas / bales",
         en: "to reply (formal / casual)",
         vi: "trả lời tin nhắn",
@@ -406,6 +422,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "mem-ba-LAS / BA-les — `bales` is chat-only",
       },
       {
+        cell_id: "c08aaba7-2581-44ce-b160-30f43057daa5",
         word: "gpp (gak apa-apa)",
         en: "no problem / it's fine",
         vi: "không sao",
@@ -414,6 +431,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "ge-pe-PE — chat abbreviation; baku: `tidak apa-apa`",
       },
       {
+        cell_id: "0f551dba-09ab-4757-a83f-962a9bcafac8",
         word: "makasih (ya)",
         en: "thanks (casual)",
         vi: "cảm ơn (thân mật)",
@@ -422,6 +440,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "ma-KA-sih — clipped from `terima kasih`; tag `ya` softens it",
       },
       {
+        cell_id: "b71c4d2e-ad21-4276-93aa-88f62ae6515b",
         word: "aja (saja)",
         en: "just / only (casual)",
         vi: "thôi / chỉ (khẩu ngữ)",
@@ -430,6 +449,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "A-ja — `santai aja` = just relax; baku: `saja`",
       },
       {
+        cell_id: "f8d79922-7633-4285-9495-43f781f090b6",
         word: "japri",
         en: "to DM / private message",
         vi: "nhắn riêng",
@@ -438,6 +458,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "JAP-ri — from `jaringan pribadi`; 'DM me'",
       },
       {
+        cell_id: "2135e37a-e698-40f9-b567-5cd2e8f1829a",
         word: "chat / WA",
         en: "to text / WhatsApp",
         vi: "nhắn tin / WhatsApp",
@@ -447,6 +468,7 @@ export const lessons: IndonesianLesson[] = [
       },
       // ── Register signposts ──────────────────────────────────────────
       {
+        cell_id: "ad224609-3471-4785-9ed4-af70d6f371a4",
         word: "Bapak/Ibu",
         en: "Sir/Madam (unknown recipient)",
         vi: "quý ông/quý bà",
@@ -455,6 +477,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "BA-pak/I-bu — use when recipient's gender is unknown",
       },
       {
+        cell_id: "9a68e85f-60fe-47b5-81f3-73019c8b1b60",
         word: "saya / aku",
         en: "I (formal / casual)",
         vi: "tôi (trang trọng / thân)",
@@ -463,6 +486,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "SA-ya / A-ku — `saya` for letters; `aku` for friends",
       },
       {
+        cell_id: "88fb6976-3d01-46bf-b594-9e4b4c6f98b9",
         word: "Anda / kamu",
         en: "you (formal / casual)",
         vi: "ông-bà / bạn",
@@ -471,6 +495,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "AN-da / KA-mu — `Anda` formal; `kamu` casual",
       },
       {
+        cell_id: "55313a3a-aad6-4821-b8d8-a6db6163d8f1",
         word: "wkwk / wkwkwk",
         en: "lol / haha (typed laugh)",
         vi: "haha (cười khi chat)",
@@ -482,12 +507,14 @@ export const lessons: IndonesianLesson[] = [
     dialogue: [
       // Dialogue A: a formal job-application email, read aloud
       {
+        cell_id: "98729949-b9bc-4ef1-9002-d98846431061",
         speaker: "Pelamar (email)",
         text: "Dengan hormat, sehubungan dengan lowongan pekerjaan, saya lampirkan CV saya. Mohon dapat dipertimbangkan. Hormat saya, Linh.",
         vi: "Kính thưa, liên quan đến vị trí tuyển dụng, tôi xin đính kèm CV. Kính mong được xem xét. Kính thư, Linh.",
         en: "Respectfully, regarding the job vacancy, I attach my CV. Please kindly consider it. Respectfully yours, Linh.",
       },
       {
+        cell_id: "b35604b3-a937-429f-aa7d-9dd28ca5d27b",
         speaker: "HRD (email)",
         text: "Terima kasih atas lamarannya. Kami akan menindaklanjuti dalam satu minggu. Salam, Tim HRD.",
         vi: "Cảm ơn đơn ứng tuyển. Chúng tôi sẽ phản hồi trong một tuần. Trân trọng, Phòng Nhân sự.",
@@ -495,24 +522,28 @@ export const lessons: IndonesianLesson[] = [
       },
       // Dialogue B: the SAME person, now on WhatsApp with a friend
       {
+        cell_id: "6426309f-988a-4a8b-bc48-bde14a595016",
         speaker: "Linh (WA)",
         text: "Halo, maaf mengganggu. Aku barusan kirim lamaran, deg-degan banget.",
         vi: "Chào, xin lỗi làm phiền. Tớ vừa gửi đơn ứng tuyển xong, hồi hộp quá.",
         en: "Hi, sorry to bother you. I just sent my application, so nervous.",
       },
       {
+        cell_id: "580aad96-ff69-4882-8353-e9b96242ba20",
         speaker: "Teman (WA)",
         text: "Wkwk santai aja. Pasti dibales kok. Semangat ya!",
         vi: "Haha cứ thoải mái. Chắc chắn họ sẽ rep mà. Cố lên nhé!",
         en: "Haha relax. They'll definitely reply. Good luck!",
       },
       {
+        cell_id: "7f68eff6-a50e-426a-9f35-0ffe6766a620",
         speaker: "Linh (WA)",
         text: "Makasih ya. Eh nanti japri aku kalau ada lowongan lain dong.",
         vi: "Cảm ơn nhé. À lát có chỗ tuyển nào khác thì nhắn riêng tớ nha.",
         en: "Thanks. Oh, DM me later if there's another opening, okay?",
       },
       {
+        cell_id: "1799c29f-018e-4101-9735-a0ba76492683",
         speaker: "Teman (WA)",
         text: "Siap! Gpp, nanti aku kabari. 👍",
         vi: "Ok luôn! Không sao, lát tớ báo. 👍",

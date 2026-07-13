@@ -35,6 +35,7 @@ type LessonSentence = {
 };
 
 type VocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -46,6 +47,7 @@ type VocabEntry = {
 };
 
 type DialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -162,6 +164,7 @@ export const cookingRecipesLessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: ordinals = 'ke-' + cardinal, except 'pertama' (1st, irregular): kedua, ketiga, keempat… Learn the step chain: pertama → kedua → ketiga → terakhir. Reduplication here marks manner/degree, NOT plural: 'potong kecil-kecil' (cut into small bits), 'aduk pelan-pelan' (stir slowly). Burn in the killer false friend: kecap = soy sauce.",
     vocabulary: [
       {
+        cell_id: "1c8289cb-9d6d-4572-8809-7d38e44129d0",
         word: "resep",
         en: "recipe",
         vi: "công thức nấu ăn",
@@ -170,6 +173,7 @@ export const cookingRecipesLessons: IndonesianLesson[] = [
         pronunciation_en: "REH-sep",
       },
       {
+        cell_id: "a082459a-e013-4687-9c57-b8d24b99e92f",
         word: "bahan",
         en: "ingredient(s)",
         vi: "nguyên liệu",
@@ -178,6 +182,7 @@ export const cookingRecipesLessons: IndonesianLesson[] = [
         pronunciation_en: "BA-han",
       },
       {
+        cell_id: "6ded7a4e-6ad5-4509-8ec6-f8e31d5db8f4",
         word: "cara membuat",
         en: "method / how to make",
         vi: "cách làm",
@@ -186,6 +191,7 @@ export const cookingRecipesLessons: IndonesianLesson[] = [
         pronunciation_en: "CHA-ra mem-BOO-at",
       },
       {
+        cell_id: "90e16ede-7ad0-4755-a1e1-6b55ed0c8b19",
         word: "langkah",
         en: "step",
         vi: "bước",
@@ -194,6 +200,7 @@ export const cookingRecipesLessons: IndonesianLesson[] = [
         pronunciation_en: "LANG-kah",
       },
       {
+        cell_id: "56846359-044a-40eb-b796-3a33b5e75aa5",
         word: "kecap",
         en: "soy sauce (NOT ketchup)",
         vi: "nước tương",
@@ -202,6 +209,7 @@ export const cookingRecipesLessons: IndonesianLesson[] = [
         pronunciation_en: "KEH-chap",
       },
       {
+        cell_id: "5cb9b520-907d-4bfd-a292-63dca9cc4953",
         word: "matang",
         en: "cooked / ripe / done",
         vi: "chín",
@@ -210,6 +218,7 @@ export const cookingRecipesLessons: IndonesianLesson[] = [
         pronunciation_en: "MA-tang",
       },
       {
+        cell_id: "c802447f-29f3-4873-809b-8730ee6c8d07",
         word: "sendok makan (sdm)",
         en: "tablespoon",
         vi: "thìa canh",
@@ -218,6 +227,7 @@ export const cookingRecipesLessons: IndonesianLesson[] = [
         pronunciation_en: "SEN-dok MA-kan",
       },
       {
+        cell_id: "581c127e-0d3b-46e3-9f40-0c68489780c5",
         word: "sajikan",
         en: "to serve",
         vi: "dọn ra / bày món",
@@ -226,6 +236,7 @@ export const cookingRecipesLessons: IndonesianLesson[] = [
         pronunciation_en: "SA-jee-kan",
       },
       {
+        cell_id: "8b083a7b-ade4-4910-9703-ce8be119a4ec",
         word: "terakhir",
         en: "last / finally",
         vi: "cuối cùng",
@@ -236,24 +247,28 @@ export const cookingRecipesLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "47493781-4650-4b19-86a5-05682ba64e8d",
         speaker: "Murid",
         text: "Bu, resep ini untuk berapa porsi?",
         vi: "Cô ơi, công thức này cho mấy phần ăn?",
         en: "Teacher, how many portions is this recipe for?",
       },
       {
+        cell_id: "b2d80ad5-a159-498b-ad5c-e552680c077f",
         speaker: "Guru masak",
         text: "Empat porsi. Pertama, siapkan semua bahan dulu.",
         vi: "Bốn phần. Đầu tiên, chuẩn bị tất cả nguyên liệu trước.",
         en: "Four portions. First, prepare all the ingredients.",
       },
       {
+        cell_id: "ccdb9f04-4ad1-4196-820a-e7b105004506",
         speaker: "Murid",
         text: "Kecap ini berapa sendok?",
         vi: "Nước tương này mấy thìa ạ?",
         en: "How many spoons of soy sauce?",
       },
       {
+        cell_id: "729695cc-9687-432b-90a5-8b541a2d0ef7",
         speaker: "Guru masak",
         text: "Dua sendok makan. Terakhir, sajikan selagi hangat.",
         vi: "Hai thìa canh. Cuối cùng, dọn ra khi còn nóng.",
@@ -394,6 +409,7 @@ export const cookingRecipesLessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: many Indonesian vegetable/spice names sit close to everyday Vietnamese cooking — kangkung (water spinach), tauge (bean sprouts), kunyit (turmeric), serai (lemongrass). Learn them once, use them in both kitchens. Frequent cooking verbs in soto/gado-gado: rebus (boil/simmer), siram (pour over), suwir (shred), taburi (sprinkle). 'yang + adjective' picks a type: 'bumbu kacang yang kental' (the thick peanut sauce).",
     vocabulary: [
       {
+        cell_id: "36c40dba-7972-470f-ac80-2a17fb41f145",
         word: "gado-gado",
         en: "vegetable salad with peanut sauce",
         vi: "gỏi rau sốt đậu phộng",
@@ -402,6 +418,7 @@ export const cookingRecipesLessons: IndonesianLesson[] = [
         pronunciation_en: "GA-do GA-do",
       },
       {
+        cell_id: "761c0784-a3a9-477c-a997-4bb4a0c6efc4",
         word: "soto ayam",
         en: "Indonesian chicken soup",
         vi: "súp gà nghệ-sả",
@@ -410,6 +427,7 @@ export const cookingRecipesLessons: IndonesianLesson[] = [
         pronunciation_en: "SOH-to A-yam",
       },
       {
+        cell_id: "236063f1-c788-4b54-999a-5996d1b92cbd",
         word: "kangkung",
         en: "water spinach",
         vi: "rau muống",
@@ -418,6 +436,7 @@ export const cookingRecipesLessons: IndonesianLesson[] = [
         pronunciation_en: "KANG-koong",
       },
       {
+        cell_id: "2ed81473-f7db-488a-b0fa-e8c5cfdf7d71",
         word: "bumbu kacang",
         en: "peanut sauce",
         vi: "sốt đậu phộng",
@@ -426,6 +445,7 @@ export const cookingRecipesLessons: IndonesianLesson[] = [
         pronunciation_en: "BOOM-boo KA-chang",
       },
       {
+        cell_id: "e247dd60-63b6-4b0f-9a0c-04c9cb565489",
         word: "kunyit",
         en: "turmeric",
         vi: "nghệ",
@@ -434,6 +454,7 @@ export const cookingRecipesLessons: IndonesianLesson[] = [
         pronunciation_en: "KOO-nyit",
       },
       {
+        cell_id: "8946d238-3a28-4108-8417-4a497d90a3fb",
         word: "serai",
         en: "lemongrass",
         vi: "sả",
@@ -442,6 +463,7 @@ export const cookingRecipesLessons: IndonesianLesson[] = [
         pronunciation_en: "SE-rai",
       },
       {
+        cell_id: "a129e3a8-5a36-4104-9c45-44455f396ad7",
         word: "suwir",
         en: "to shred (meat)",
         vi: "xé (nhỏ thịt)",
@@ -450,6 +472,7 @@ export const cookingRecipesLessons: IndonesianLesson[] = [
         pronunciation_en: "SOO-weer",
       },
       {
+        cell_id: "02d0cd6c-eb93-47b0-b41b-a381069f216f",
         word: "bawang goreng",
         en: "fried shallots",
         vi: "hành phi",
@@ -458,6 +481,7 @@ export const cookingRecipesLessons: IndonesianLesson[] = [
         pronunciation_en: "BA-wang GOH-reng",
       },
       {
+        cell_id: "3af036f2-fc39-4f3f-83a6-4a6eb07938bc",
         word: "kental",
         en: "thick (liquid)",
         vi: "sệt / đặc",
@@ -468,24 +492,28 @@ export const cookingRecipesLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "dd21bf02-4aed-4afd-bf83-852894f1ee36",
         speaker: "Mai",
         text: "Saya mau coba masak gado-gado. Sayurannya apa saja?",
         vi: "Tôi muốn thử nấu gado-gado. Có những loại rau gì?",
         en: "I want to try making gado-gado. Which vegetables go in it?",
       },
       {
+        cell_id: "a526cc2e-2faa-4924-8134-a47f40a97000",
         speaker: "Sari",
         text: "Kangkung, tauge, kentang. Rebus dulu, lalu siram bumbu kacang.",
         vi: "Rau muống, giá, khoai tây. Luộc trước, rồi rưới sốt đậu phộng.",
         en: "Water spinach, bean sprouts, potato. Boil them first, then pour peanut sauce.",
       },
       {
+        cell_id: "8af36a3b-ef4c-4209-9d30-3c65b607d47d",
         speaker: "Mai",
         text: "Kalau soto ayam, bumbunya beda?",
         vi: "Còn soto gà thì gia vị khác à?",
         en: "And for soto ayam, are the seasonings different?",
       },
       {
+        cell_id: "8396204b-bc99-4829-8008-983c1afdd014",
         speaker: "Sari",
         text: "Beda. Pakai kunyit dan serai. Ayamnya disuwir, lalu taburi bawang goreng.",
         vi: "Khác. Dùng nghệ và sả. Gà xé nhỏ, rồi rắc hành phi.",
@@ -626,6 +654,7 @@ export const cookingRecipesLessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: memorize the rice trio — padi (rice plant) → beras (raw rice) → nasi (cooked rice). You 'masak nasi' (cook rice) but 'cuci beras' (wash raw rice) — pick the word by state. Cooking verbs by method: rebus (boil), kukus (steam), goreng (fry), tumis (sauté), panggang (roast/grill). 'supaya/agar + (tidak) …' = 'so that (not) …' expresses purpose: 'aduk supaya tidak pecah'.",
     vocabulary: [
       {
+        cell_id: "45931ca7-9081-425e-b0d3-26b6f9f58e51",
         word: "nasi uduk",
         en: "Betawi coconut rice",
         vi: "cơm dừa kiểu Jakarta",
@@ -634,6 +663,7 @@ export const cookingRecipesLessons: IndonesianLesson[] = [
         pronunciation_en: "NA-see OO-dook",
       },
       {
+        cell_id: "1bc5f498-7f87-4431-8254-7c8767179a7d",
         word: "beras",
         en: "raw (uncooked) rice",
         vi: "gạo sống",
@@ -642,6 +672,7 @@ export const cookingRecipesLessons: IndonesianLesson[] = [
         pronunciation_en: "be-RAS",
       },
       {
+        cell_id: "e2c19295-1546-43fa-ae70-3275c1693bae",
         word: "nasi",
         en: "cooked rice",
         vi: "cơm",
@@ -650,6 +681,7 @@ export const cookingRecipesLessons: IndonesianLesson[] = [
         pronunciation_en: "NA-see",
       },
       {
+        cell_id: "66691431-1de2-4595-a249-d2b719867194",
         word: "santan",
         en: "coconut milk",
         vi: "nước cốt dừa",
@@ -658,6 +690,7 @@ export const cookingRecipesLessons: IndonesianLesson[] = [
         pronunciation_en: "SAN-tan",
       },
       {
+        cell_id: "6d5a327c-aa14-467a-adf2-5436e7ba69bf",
         word: "kukus",
         en: "to steam",
         vi: "hấp",
@@ -666,6 +699,7 @@ export const cookingRecipesLessons: IndonesianLesson[] = [
         pronunciation_en: "KOO-koos",
       },
       {
+        cell_id: "1c8d0f4d-5e37-4176-a709-21ad2f230797",
         word: "cuci",
         en: "to wash",
         vi: "rửa / vo",
@@ -674,6 +708,7 @@ export const cookingRecipesLessons: IndonesianLesson[] = [
         pronunciation_en: "CHOO-chee",
       },
       {
+        cell_id: "33dcbd16-9128-422d-ad49-80a20f3590f5",
         word: "lauk",
         en: "side dish (with rice)",
         vi: "món ăn kèm",
@@ -682,6 +717,7 @@ export const cookingRecipesLessons: IndonesianLesson[] = [
         pronunciation_en: "LA-ook",
       },
       {
+        cell_id: "02279efc-9b92-4120-aa70-870d9d78cff2",
         word: "ayam goreng",
         en: "fried chicken",
         vi: "gà chiên",
@@ -690,6 +726,7 @@ export const cookingRecipesLessons: IndonesianLesson[] = [
         pronunciation_en: "A-yam GOH-reng",
       },
       {
+        cell_id: "dd62fa11-92ed-4ec9-a502-b15c7dab87b5",
         word: "harum",
         en: "fragrant",
         vi: "thơm",
@@ -700,24 +737,28 @@ export const cookingRecipesLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "e86e2383-325d-4ade-af88-9fdb4c576e6c",
         speaker: "Nenek",
         text: "Cuci berasnya dulu sampai bersih, ya.",
         vi: "Vo gạo cho sạch trước nhé.",
         en: "Wash the rice clean first, okay.",
       },
       {
+        cell_id: "f8b3703d-c612-4702-a725-db5172e1f574",
         speaker: "Cucu",
         text: "Sudah, Nek. Sekarang masak dengan santan?",
         vi: "Xong rồi bà. Giờ nấu với nước cốt dừa ạ?",
         en: "Done, Grandma. Now cook it with coconut milk?",
       },
       {
+        cell_id: "903ece6d-2878-4ae5-8b7a-7ba776bbc936",
         speaker: "Nenek",
         text: "Iya, tambah daun salam dan serai. Aduk supaya santan tidak pecah.",
         vi: "Ừ, thêm lá salam và sả. Khuấy để nước cốt dừa không bị tách.",
         en: "Yes, add bay leaf and lemongrass. Stir so the coconut milk doesn't split.",
       },
       {
+        cell_id: "7f1c8bf0-2928-4d76-a2d3-20fd43639729",
         speaker: "Cucu",
         text: "Lalu dikukus sampai matang. Lauknya ayam goreng, kan?",
         vi: "Rồi hấp cho chín. Món ăn kèm là gà chiên đúng không bà?",

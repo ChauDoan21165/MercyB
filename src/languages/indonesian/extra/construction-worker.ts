@@ -30,6 +30,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   /** Indonesian word/phrase. */
   word: string;
   /** English meaning. */
@@ -45,6 +46,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   /** Indonesian line. */
   text: string;
@@ -325,6 +327,7 @@ export const lessons: IndonesianLesson[] = [
     vocabulary: [
       // People on site
       {
+        cell_id: "7de90110-6e92-4454-b902-ed5ca3eaa91e",
         word: "proyek",
         en: "project / construction site",
         vi: "dự án / công trình",
@@ -333,6 +336,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "PRO-yek — `y` as in 'yes'; sound the final `k`",
       },
       {
+        cell_id: "ea56bb25-a316-4765-9512-4ed12c435da1",
         word: "mandor",
         en: "foreman / site supervisor",
         vi: "cai / quản đốc công trường",
@@ -341,6 +345,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "MAN-dor — gives orders directly; not the English 'boss'",
       },
       {
+        cell_id: "0ca828df-6464-4c93-8800-f8a841d354bc",
         word: "tukang",
         en: "skilled tradesman / craftsman",
         vi: "thợ (lành nghề)",
@@ -349,6 +354,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "TU-kang — `tukang batu` mason, `tukang kayu` carpenter, `tukang las` welder",
       },
       {
+        cell_id: "b0df17e0-ee6d-4d3e-a09e-13824482ca1e",
         word: "material",
         en: "building materials",
         vi: "vật liệu",
@@ -358,6 +364,7 @@ export const lessons: IndonesianLesson[] = [
       },
       // Tools
       {
+        cell_id: "1ac93895-8d40-4a02-86b3-390743b28958",
         word: "palu",
         en: "hammer",
         vi: "búa",
@@ -366,6 +373,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "PA-lu — don't confuse with `paku` (nail)",
       },
       {
+        cell_id: "c2489b6a-118a-4b98-a2cc-c85b78c1d776",
         word: "bor",
         en: "drill",
         vi: "máy khoan",
@@ -374,6 +382,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "bor — one syllable; lightly trilled `r`",
       },
       {
+        cell_id: "df9e9afc-c67a-47fa-bb68-7d9f456f4c47",
         word: "tangga",
         en: "ladder / stairs",
         vi: "thang / cầu thang",
@@ -382,6 +391,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "TANG-ga — hold the `ngg`; distinct from `tangan` (hand)",
       },
       {
+        cell_id: "d6b1a0fc-ad5b-48b4-881c-db5ca188c588",
         word: "meteran",
         en: "tape measure",
         vi: "thước cuộn / thước dây",
@@ -391,6 +401,7 @@ export const lessons: IndonesianLesson[] = [
       },
       // Materials
       {
+        cell_id: "b6dd91d4-ae9b-4cd9-858e-9675156befc7",
         word: "semen",
         en: "cement",
         vi: "xi măng",
@@ -399,6 +410,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "SE-men — schwa `e`; not the English 'cement'",
       },
       {
+        cell_id: "d4d60715-316e-4782-a220-7d724c4a5662",
         word: "pasir",
         en: "sand",
         vi: "cát",
@@ -407,6 +419,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "PA-sir — sound the final `r`",
       },
       {
+        cell_id: "3d1322b3-fbdd-4dde-9548-5a4bc1c35096",
         word: "besi",
         en: "iron / steel / rebar",
         vi: "sắt / thép",
@@ -415,6 +428,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "BE-si — `besi beton` = rebar",
       },
       {
+        cell_id: "9ec169dc-7678-4757-9095-6a0c0384bbd2",
         word: "kayu",
         en: "wood / timber",
         vi: "gỗ",
@@ -423,6 +437,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "KA-yu — `y` as in 'yes'",
       },
       {
+        cell_id: "c40a7359-a797-44db-b714-856627d3e29e",
         word: "paku",
         en: "nail",
         vi: "đinh",
@@ -431,6 +446,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "PA-ku — don't confuse with `palu` (hammer)",
       },
       {
+        cell_id: "bd6b85de-1334-4172-9be6-b87b40e67f82",
         word: "sekrup",
         en: "screw",
         vi: "ốc vít",
@@ -440,6 +456,7 @@ export const lessons: IndonesianLesson[] = [
       },
       // Safety gear
       {
+        cell_id: "c5a40edc-acf6-4aa6-a25e-c6c6d65f4399",
         word: "helm",
         en: "helmet / hard hat",
         vi: "mũ bảo hộ",
@@ -448,6 +465,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "helm — one syllable; sound the final `lm`",
       },
       {
+        cell_id: "5b648a2e-1a16-4730-8816-c2b552c8da9a",
         word: "sarung tangan",
         en: "gloves",
         vi: "găng tay",
@@ -456,6 +474,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "SA-rung TA-ngan — literally 'cover + hand'",
       },
       {
+        cell_id: "3454dec4-87b6-409f-b5b9-3b7354bcd9cd",
         word: "berbahaya",
         en: "dangerous",
         vi: "nguy hiểm",
@@ -467,42 +486,49 @@ export const lessons: IndonesianLesson[] = [
     dialogue: [
       // Dialogue: Broken tool, missing part
       {
+        cell_id: "785f0ea1-28e2-4477-840e-dbcdbe70aa89",
         speaker: "Mandor",
         text: "Kamu, ke lantai dua sekarang.",
         vi: "Cậu, lên tầng hai ngay.",
         en: "You, go to the second floor now.",
       },
       {
+        cell_id: "70d2b510-3048-4fad-9094-6fe354112c7c",
         speaker: "Pekerja",
         text: "Baik, Pak. Saya harus melakukan apa di sana?",
         vi: "Vâng, anh. Tôi phải làm gì trên đó?",
         en: "Okay, sir. What should I do up there?",
       },
       {
+        cell_id: "ff8719dd-c6e6-443a-9604-76bf1c44deb2",
         speaker: "Mandor",
         text: "Pasang besi untuk dindingnya.",
         vi: "Lắp sắt cho bức tường.",
         en: "Install the rebar for the wall.",
       },
       {
+        cell_id: "057e702c-72ab-4177-b2a9-fccaab9046a9",
         speaker: "Pekerja",
         text: "Maaf, Pak. Bornya rusak dan kurang satu sekrup.",
         vi: "Xin lỗi anh. Máy khoan hỏng và thiếu một con ốc vít.",
         en: "Sorry, sir. The drill is broken and one screw is missing.",
       },
       {
+        cell_id: "d713f150-4557-4b27-83b6-d8a8d573cff8",
         speaker: "Mandor",
         text: "Tunggu sebentar, saya ambil yang baru.",
         vi: "Chờ một chút, tôi lấy cái mới.",
         en: "Wait a moment, I'll get a new one.",
       },
       {
+        cell_id: "73b65bae-7f00-4cba-a7c8-4a7158fa7c5a",
         speaker: "Pekerja",
         text: "Terima kasih. Awas, lantainya licin di sini.",
         vi: "Cảm ơn anh. Coi chừng, sàn ở đây trơn.",
         en: "Thank you. Watch out, the floor is slippery here.",
       },
       {
+        cell_id: "ef2d949b-a014-44ae-976c-9e53632cc54a",
         speaker: "Mandor",
         text: "Oke. Pakai helm dan hati-hati.",
         vi: "Được. Đội mũ vào và cẩn thận.",

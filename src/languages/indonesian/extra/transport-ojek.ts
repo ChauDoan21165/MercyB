@@ -32,6 +32,7 @@ type LessonSentence = {
 };
 
 type VocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -43,6 +44,7 @@ type VocabEntry = {
 };
 
 type DialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -159,6 +161,7 @@ export const transportOjekLessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: distinguish the two location prepositions — 'di' = static 'at' (di hotel = at the hotel), 'ke' = directional 'to' (ke bandara = to the airport). This is a common slip. Three golden ride verbs: jemput (pick up), antar (drop off), pakai (use/wear). 'Tolong + verb' is the polite way to ask the driver for something.",
     vocabulary: [
       {
+        cell_id: "fb4e6f6a-7d31-4eda-8d79-74dbd5b8b9dc",
         word: "ojek",
         en: "motorbike taxi",
         vi: "xe ôm",
@@ -167,6 +170,7 @@ export const transportOjekLessons: IndonesianLesson[] = [
         pronunciation_en: "OH-jek",
       },
       {
+        cell_id: "980dfa45-92c5-47b5-a10e-ca34bcddff08",
         word: "aplikasi",
         en: "app / application",
         vi: "ứng dụng",
@@ -175,6 +179,7 @@ export const transportOjekLessons: IndonesianLesson[] = [
         pronunciation_en: "ap-lee-KA-see",
       },
       {
+        cell_id: "63e8fc8c-7919-4e06-bb0f-1e3337b2a91c",
         word: "jemput",
         en: "to pick up",
         vi: "đón",
@@ -183,6 +188,7 @@ export const transportOjekLessons: IndonesianLesson[] = [
         pronunciation_en: "JEM-poot",
       },
       {
+        cell_id: "ae8f16ab-0845-42bb-9825-ed2a01e1efc0",
         word: "antar",
         en: "to take/drop off",
         vi: "chở đến / đưa đến",
@@ -191,6 +197,7 @@ export const transportOjekLessons: IndonesianLesson[] = [
         pronunciation_en: "AN-tar",
       },
       {
+        cell_id: "7d75a1ca-abe8-46a6-8008-c5ed0d5a5f9e",
         word: "bandara",
         en: "airport",
         vi: "sân bay",
@@ -199,6 +206,7 @@ export const transportOjekLessons: IndonesianLesson[] = [
         pronunciation_en: "ban-DA-ra",
       },
       {
+        cell_id: "7f8aead6-7ff7-42ad-a3a8-e1c328643c55",
         word: "ongkos",
         en: "fare / transport cost",
         vi: "cước phí",
@@ -207,6 +215,7 @@ export const transportOjekLessons: IndonesianLesson[] = [
         pronunciation_en: "ONG-kos",
       },
       {
+        cell_id: "df54df1d-8d85-4d7f-bf53-5cfebbd8c05c",
         word: "helm",
         en: "helmet",
         vi: "mũ bảo hiểm",
@@ -215,6 +224,7 @@ export const transportOjekLessons: IndonesianLesson[] = [
         pronunciation_en: "helm",
       },
       {
+        cell_id: "e3b60cba-b609-47d2-9014-aa92372d2656",
         word: "pakai",
         en: "to use / wear",
         vi: "dùng / đội / mặc",
@@ -223,6 +233,7 @@ export const transportOjekLessons: IndonesianLesson[] = [
         pronunciation_en: "PA-kai",
       },
       {
+        cell_id: "eea5058e-4678-4e46-8c45-f2f745fc3605",
         word: "supir / sopir",
         en: "driver",
         vi: "tài xế",
@@ -233,24 +244,28 @@ export const transportOjekLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "5d936574-dec5-4656-b968-f5cff2305be3",
         speaker: "Penumpang",
         text: "Halo, Mas. Tolong jemput saya di depan hotel, ya.",
         vi: "Chào anh. Làm ơn đón tôi trước khách sạn nhé.",
         en: "Hello. Please pick me up in front of the hotel.",
       },
       {
+        cell_id: "b325b5c6-a8b4-4f16-ad6c-7a1f874626cb",
         speaker: "Driver",
         text: "Baik, saya lima menit lagi sampai. Mau ke mana?",
         vi: "Vâng, năm phút nữa tôi tới. Đi đâu ạ?",
         en: "Okay, I'll be there in five minutes. Where to?",
       },
       {
+        cell_id: "667eca9d-f816-4941-8d20-efab96376d88",
         speaker: "Penumpang",
         text: "Antar saya ke bandara. Berapa ongkosnya?",
         vi: "Chở tôi đến sân bay. Cước bao nhiêu?",
         en: "Take me to the airport. How much is the fare?",
       },
       {
+        cell_id: "4df3f8fd-88a8-4f75-81aa-09ccf02c9306",
         speaker: "Driver",
         text: "Sudah ada di aplikasi, lima puluh ribu. Pakai helm ini, ya.",
         vi: "Đã có trong app rồi, năm mươi nghìn. Đội mũ bảo hiểm này nhé.",
@@ -391,6 +406,7 @@ export const transportOjekLessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: learn the opposite pair — 'naik' (board/ride) vs 'turun' (get off). To signal a stop on an angkot, locals shout 'Kiri!' (pull to the left) — that one word is enough. Apps (Grab/Gojek) show fares upfront, but angkot/becak stay old-school: ask 'berapa?' and haggle. 'Berhenti' = come to a stop; 'turun' = (let me) get off.",
     vocabulary: [
       {
+        cell_id: "f04a9d1a-652f-4d94-9b2d-f77108c68bda",
         word: "angkot",
         en: "shared minivan (city transport)",
         vi: "xe khách nhỏ tuyến cố định",
@@ -399,6 +415,7 @@ export const transportOjekLessons: IndonesianLesson[] = [
         pronunciation_en: "ANG-kot",
       },
       {
+        cell_id: "86091404-1f9e-4390-847e-90077626dcfd",
         word: "becak",
         en: "pedicab / cyclo",
         vi: "xích lô",
@@ -407,6 +424,7 @@ export const transportOjekLessons: IndonesianLesson[] = [
         pronunciation_en: "BEH-chak",
       },
       {
+        cell_id: "bdfd86d7-f727-4d20-8e9c-158bdf9b3ded",
         word: "bus",
         en: "bus",
         vi: "xe buýt",
@@ -415,6 +433,7 @@ export const transportOjekLessons: IndonesianLesson[] = [
         pronunciation_en: "boos",
       },
       {
+        cell_id: "cf319ca9-a354-4bfb-9582-61dbb2a27cdd",
         word: "naik",
         en: "to board / ride / go up",
         vi: "lên / đi (xe)",
@@ -423,6 +442,7 @@ export const transportOjekLessons: IndonesianLesson[] = [
         pronunciation_en: "NA-ik",
       },
       {
+        cell_id: "fc199333-47f5-42d6-a386-782c7d566397",
         word: "turun",
         en: "to get off / go down",
         vi: "xuống (xe)",
@@ -431,6 +451,7 @@ export const transportOjekLessons: IndonesianLesson[] = [
         pronunciation_en: "TOO-roon",
       },
       {
+        cell_id: "baedeae0-95ab-41a9-b1df-0636d93175ab",
         word: "berhenti",
         en: "to stop",
         vi: "dừng lại",
@@ -439,6 +460,7 @@ export const transportOjekLessons: IndonesianLesson[] = [
         pronunciation_en: "ber-HEN-tee",
       },
       {
+        cell_id: "f6a65826-5fc3-47c4-982b-3140b9d53045",
         word: "halte",
         en: "bus stop",
         vi: "trạm xe buýt",
@@ -447,6 +469,7 @@ export const transportOjekLessons: IndonesianLesson[] = [
         pronunciation_en: "HAL-teh",
       },
       {
+        cell_id: "2232d89e-e099-486e-bcd7-4bc9234b93d3",
         word: "perempatan",
         en: "intersection / crossroads",
         vi: "ngã tư",
@@ -455,6 +478,7 @@ export const transportOjekLessons: IndonesianLesson[] = [
         pronunciation_en: "pe-rem-PA-tan",
       },
       {
+        cell_id: "a180fd5d-eaaa-484e-a5a8-047a3d96fc40",
         word: "kiri",
         en: "left (also: 'stop here!' on an angkot)",
         vi: "bên trái (hô để xuống xe)",
@@ -465,24 +489,28 @@ export const transportOjekLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "f89ccd60-7596-4ca1-9bf7-1ed3a9ed5d7a",
         speaker: "Penumpang",
         text: "Pak, angkot ini lewat Pasar Baru tidak?",
         vi: "Bác ơi, xe angkot này có đi qua Chợ Mới không?",
         en: "Sir, does this angkot pass through Pasar Baru?",
       },
       {
+        cell_id: "bdba826b-b494-4af4-a97f-e730137022fd",
         speaker: "Sopir",
         text: "Lewat, Mbak. Naik saja.",
         vi: "Có đi qua, cô. Lên xe đi.",
         en: "Yes it does, miss. Hop in.",
       },
       {
+        cell_id: "31fcd489-93b6-4d5b-9496-b8c34e1b85f6",
         speaker: "Penumpang",
         text: "Saya turun di perempatan depan, ya. Kiri, Pak!",
         vi: "Tôi xuống ở ngã tư phía trước nhé. Bên trái, bác!",
         en: "I'll get off at the next intersection. Pull over (left), sir!",
       },
       {
+        cell_id: "45f61edc-02bf-4105-a18e-cfa519d91773",
         speaker: "Sopir",
         text: "Baik. Ongkosnya empat ribu.",
         vi: "Được. Cước bốn nghìn.",
@@ -623,6 +651,7 @@ export const transportOjekLessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: the 'ter-' prefix flags a passive/unintended state — tertunda (delayed), terlambat (late), tertinggal (left behind). Seeing 'ter-' at the airport means something went off-plan. Memorize the antonym pair: keberangkatan (departure) ↔ kedatangan (arrival). The future needs no verb change, just a time word: besok (tomorrow), nanti (later), minggu depan (next week).",
     vocabulary: [
       {
+        cell_id: "cf935571-3699-4763-a9e3-ada7c6ffd39a",
         word: "kereta (api)",
         en: "train",
         vi: "tàu hỏa",
@@ -631,6 +660,7 @@ export const transportOjekLessons: IndonesianLesson[] = [
         pronunciation_en: "ke-REH-ta (A-pee)",
       },
       {
+        cell_id: "7bb301b4-21b7-4387-8d5c-e28f0abc0cab",
         word: "stasiun",
         en: "station",
         vi: "nhà ga",
@@ -639,6 +669,7 @@ export const transportOjekLessons: IndonesianLesson[] = [
         pronunciation_en: "sta-see-OON",
       },
       {
+        cell_id: "803270c4-e705-42b4-a334-56bcf8fb3e0d",
         word: "tiket",
         en: "ticket",
         vi: "vé",
@@ -647,6 +678,7 @@ export const transportOjekLessons: IndonesianLesson[] = [
         pronunciation_en: "TEE-ket",
       },
       {
+        cell_id: "a94948af-ae15-47e0-ac23-7062e7180549",
         word: "berangkat",
         en: "to depart",
         vi: "khởi hành",
@@ -655,6 +687,7 @@ export const transportOjekLessons: IndonesianLesson[] = [
         pronunciation_en: "ber-ANG-kat",
       },
       {
+        cell_id: "c18c35c7-ede9-467a-88b1-0ecda587daa6",
         word: "pesawat",
         en: "airplane",
         vi: "máy bay",
@@ -663,6 +696,7 @@ export const transportOjekLessons: IndonesianLesson[] = [
         pronunciation_en: "pe-SA-wat",
       },
       {
+        cell_id: "f84ff9d5-7026-4b79-907c-ac77d0032914",
         word: "penerbangan",
         en: "flight",
         vi: "chuyến bay",
@@ -671,6 +705,7 @@ export const transportOjekLessons: IndonesianLesson[] = [
         pronunciation_en: "pe-ner-BANG-an",
       },
       {
+        cell_id: "5af8ce22-dd5b-4125-a4b0-74d8fb59a192",
         word: "tertunda",
         en: "delayed",
         vi: "bị hoãn",
@@ -679,6 +714,7 @@ export const transportOjekLessons: IndonesianLesson[] = [
         pronunciation_en: "ter-TOON-da",
       },
       {
+        cell_id: "30e77159-85bf-4092-9249-ad4c3126d19d",
         word: "keberangkatan",
         en: "departure",
         vi: "khởi hành / cổng đi",
@@ -687,6 +723,7 @@ export const transportOjekLessons: IndonesianLesson[] = [
         pronunciation_en: "ke-ber-ang-KA-tan",
       },
       {
+        cell_id: "a9c33f48-ff59-4f19-aecd-32342da37aa1",
         word: "kedatangan",
         en: "arrival",
         vi: "đến nơi / cổng đến",
@@ -697,24 +734,28 @@ export const transportOjekLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "0c5ffe97-f6d8-4ae3-a8e9-578482628921",
         speaker: "Penumpang",
         text: "Selamat pagi. Saya mau beli tiket kereta ke Yogyakarta untuk besok.",
         vi: "Chào buổi sáng. Tôi muốn mua vé tàu đi Yogyakarta cho ngày mai.",
         en: "Good morning. I'd like to buy a train ticket to Yogyakarta for tomorrow.",
       },
       {
+        cell_id: "6e14a6eb-be21-47e2-88de-b88cbf4287ee",
         speaker: "Petugas",
         text: "Mau kelas apa, Pak? Ekonomi atau eksekutif?",
         vi: "Anh muốn hạng nào ạ? Phổ thông hay hạng sang?",
         en: "Which class, sir? Economy or executive?",
       },
       {
+        cell_id: "df6fe504-0e36-4fd1-a64e-99ae213b165b",
         speaker: "Penumpang",
         text: "Eksekutif, satu tiket. Keretanya berangkat jam berapa?",
         vi: "Hạng sang, một vé. Tàu khởi hành lúc mấy giờ?",
         en: "Executive, one ticket. What time does the train depart?",
       },
       {
+        cell_id: "f9f78bfb-627a-4408-be95-e40c34cd59fa",
         speaker: "Petugas",
         text: "Jam tujuh pagi dari stasiun Gambir. Ini tiketnya.",
         vi: "Bảy giờ sáng từ ga Gambir. Đây là vé của anh.",

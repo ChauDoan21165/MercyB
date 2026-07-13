@@ -25,6 +25,7 @@ export type ItalianLessonSentence = {
 };
 
 export type ItalianVocabEntry = {
+  cell_id?: string;
   /** Italian word/phrase (with article where it teaches gender). */
   word: string;
   /** English meaning. */
@@ -40,6 +41,7 @@ export type ItalianVocabEntry = {
 };
 
 export type ItalianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   /** Italian line. */
   text: string;
@@ -318,6 +320,7 @@ export const lessons: ItalianLesson[] = [
     vocabulary: [
       // Tools and materials
       {
+        cell_id: "62e02bda-c278-466c-afaf-be503896d62b",
         word: "il martello",
         en: "hammer",
         vi: "búa",
@@ -326,6 +329,7 @@ export const lessons: ItalianLesson[] = [
         pronunciation_en: "il mar-TEL-lo — hold the double 'll'; don't drop the final 'o'",
       },
       {
+        cell_id: "81077647-100a-4bdf-bd9c-0ea7599b0f00",
         word: "il trapano",
         en: "drill",
         vi: "máy khoan",
@@ -334,6 +338,7 @@ export const lessons: ItalianLesson[] = [
         pronunciation_en: "il TRA-pa-no — stress `TRA`; don't call every tool `macchina`",
       },
       {
+        cell_id: "a79f340f-cb62-425d-a5b3-4fdf8ead7b00",
         word: "la scala",
         en: "ladder",
         vi: "thang",
@@ -342,6 +347,7 @@ export const lessons: ItalianLesson[] = [
         pronunciation_en: "la SKA-la — feminine, takes `la`",
       },
       {
+        cell_id: "fe203532-5791-4552-afdb-d92d7b2bdb1b",
         word: "il casco",
         en: "helmet / hard hat",
         vi: "mũ bảo hộ",
@@ -350,6 +356,7 @@ export const lessons: ItalianLesson[] = [
         pronunciation_en: "il KAS-ko — hard 'ka'; not like the English word",
       },
       {
+        cell_id: "4f5aa206-0fcc-4778-8bce-f4d04ac7cd41",
         word: "i guanti",
         en: "gloves",
         vi: "găng tay",
@@ -358,6 +365,7 @@ export const lessons: ItalianLesson[] = [
         pronunciation_en: "i GWAN-ti — plural; don't say the singular",
       },
       {
+        cell_id: "bd72aff7-cf9e-4c7c-b189-72cb54290f9f",
         word: "il cemento",
         en: "cement",
         vi: "xi măng",
@@ -366,6 +374,7 @@ export const lessons: ItalianLesson[] = [
         pronunciation_en: "il che-MEN-to — `ce` is 'che', NOT a hard 'ke'",
       },
       {
+        cell_id: "1c0d425b-3a7c-4c83-add4-eadec0e2b788",
         word: "il ponteggio",
         en: "scaffolding",
         vi: "giàn giáo",
@@ -374,6 +383,7 @@ export const lessons: ItalianLesson[] = [
         pronunciation_en: "il pon-TED-jo — soft `ggio`; don't avoid the word",
       },
       {
+        cell_id: "b28c3e9a-9cb5-4d6a-8f5e-103b26248edf",
         word: "le scarpe antinfortunistiche",
         en: "safety boots",
         vi: "giày bảo hộ",
@@ -383,6 +393,7 @@ export const lessons: ItalianLesson[] = [
       },
       // Materials and measurement
       {
+        cell_id: "1e5f0798-0056-4ef9-b17d-c1fe563b1e89",
         word: "il metro",
         en: "metre / tape measure",
         vi: "thước mét",
@@ -391,6 +402,7 @@ export const lessons: ItalianLesson[] = [
         pronunciation_en: "il ME-tro — measurement / tape measure",
       },
       {
+        cell_id: "3823679c-6d60-48c7-b607-2c610c0a65b0",
         word: "il chiodo",
         en: "nail",
         vi: "cái đinh",
@@ -399,6 +411,7 @@ export const lessons: ItalianLesson[] = [
         pronunciation_en: "il KYO-do — `chi` is a hard 'ki'",
       },
       {
+        cell_id: "4740a276-2b8f-4e5b-ac03-3e6d113225ac",
         word: "la vite",
         en: "screw",
         vi: "ốc vít",
@@ -407,6 +420,7 @@ export const lessons: ItalianLesson[] = [
         pronunciation_en: "la VEE-te — feminine",
       },
       {
+        cell_id: "6584d509-6f7c-498b-9f95-ba98f348511a",
         word: "la vernice",
         en: "paint",
         vi: "sơn",
@@ -415,6 +429,7 @@ export const lessons: ItalianLesson[] = [
         pronunciation_en: "la ver-NEE-che — feminine; `ce` is 'che'",
       },
       {
+        cell_id: "a8d1ddb1-952c-4ef4-892a-d27863aaedd0",
         word: "il secchio",
         en: "bucket",
         vi: "xô",
@@ -423,6 +438,7 @@ export const lessons: ItalianLesson[] = [
         pronunciation_en: "il SEK-kyo — a container; `cchio` is 'kyo'",
       },
       {
+        cell_id: "83bc1763-1411-4646-b04d-52786b180bba",
         word: "il livello",
         en: "(spirit) level",
         vi: "dụng cụ cân bằng / mức",
@@ -434,36 +450,42 @@ export const lessons: ItalianLesson[] = [
     dialogue: [
       // Dialogue: Broken Pipe
       {
+        cell_id: "69e9c94c-1710-4615-9748-5989f057f904",
         speaker: "Caposquadra",
         text: "C'è una perdita d'acqua al piano terra.",
         vi: "Có rò rỉ nước ở tầng trệt.",
         en: "There's a water leak on the ground floor.",
       },
       {
+        cell_id: "f743d5da-106e-4d78-86fa-43c3d76c0ef6",
         speaker: "Operaio",
         text: "Dove devo andare?",
         vi: "Tôi phải đi đâu?",
         en: "Where do I have to go?",
       },
       {
+        cell_id: "79bbe707-6a90-4864-b243-a2abbc586559",
         speaker: "Caposquadra",
         text: "Vai subito giù e chiudi l'acqua principale.",
         vi: "Xuống ngay và khóa van nước chính.",
         en: "Go down right away and shut off the main water.",
       },
       {
+        cell_id: "c7430783-4109-4584-93f4-812055f5d671",
         speaker: "Operaio",
         text: "Va bene. Serve anche il trapano?",
         vi: "Được. Có cần cả máy khoan không?",
         en: "Okay. Do I also need the drill?",
       },
       {
+        cell_id: "d9fcb358-9dbd-4c02-b412-bf0fd7ddea90",
         speaker: "Caposquadra",
         text: "No, prima controlla il tubo.",
         vi: "Không, kiểm tra ống nước trước đã.",
         en: "No, first check the pipe.",
       },
       {
+        cell_id: "d1b56cca-ece5-4eff-a52d-ea0bfe3dde58",
         speaker: "Operaio",
         text: "Ho capito. Se vedo il problema, ti chiamo.",
         vi: "Tôi hiểu rồi. Nếu thấy vấn đề, tôi gọi anh.",
@@ -471,30 +493,35 @@ export const lessons: ItalianLesson[] = [
       },
       // Dialogue: Missing Material
       {
+        cell_id: "2d9a0b46-f03a-4694-bb1d-2230b8c0bccd",
         speaker: "Operaio",
         text: "Mi manca un pezzo per il montaggio.",
         vi: "Tôi thiếu một bộ phận để lắp ráp.",
         en: "I'm missing a part for the assembly.",
       },
       {
+        cell_id: "98fa191b-1d29-4cd2-811a-255d018cd674",
         speaker: "Caposquadra",
         text: "Quale pezzo?",
         vi: "Bộ phận nào?",
         en: "Which part?",
       },
       {
+        cell_id: "cd9e35a1-2c4f-43d5-8acb-ee7d712f92a7",
         speaker: "Operaio",
         text: "La vite lunga per il supporto.",
         vi: "Con ốc vít dài cho giá đỡ.",
         en: "The long screw for the bracket.",
       },
       {
+        cell_id: "02d9b1bf-3475-4d94-8e5d-d51e334c2f95",
         speaker: "Caposquadra",
         text: "Aspetta un momento, la cerco nel furgone.",
         vi: "Chờ một chút, để tôi tìm trong xe tải.",
         en: "Wait a moment, I'll look for it in the van.",
       },
       {
+        cell_id: "3de79007-5a4a-4aa1-af53-57726f3907ef",
         speaker: "Operaio",
         text: "Grazie. Intanto preparo la scala.",
         vi: "Cảm ơn. Trong lúc đó tôi chuẩn bị cái thang.",

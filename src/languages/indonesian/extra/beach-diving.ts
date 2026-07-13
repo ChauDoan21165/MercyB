@@ -33,6 +33,7 @@ type LessonSentence = {
 };
 
 type VocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -44,6 +45,7 @@ type VocabEntry = {
 };
 
 type DialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -159,21 +161,21 @@ export const beachDivingLessons: IndonesianLesson[] = [
     tip_advice_en:
       "Tip for Vietnamese speakers: 'sangat' (very) goes BEFORE the adjective ('sangat panas' = very hot), while 'sekali' goes AFTER ('panas sekali' = very hot) — two emphasis options, don't use both at once. 'Matahari' = sun, a transparent compound 'mata + hari' (eye of the day). 'Berenang' (swim) uses the 'ber-' prefix on the root 'renang'. Distinguish 'di laut' (in the sea — location), 'ke laut' (to the sea — direction), 'dari laut' (from the sea). 'Jangan + verb' = don't do something. Antonym pair: tenang (calm) ↔ besar/ganas (big/fierce waves).",
     vocabulary: [
-      { word: "pantai", en: "beach", vi: "bãi biển", pos: "noun", pronunciation_vi: "PAN-tai", pronunciation_en: "PAN-tai" },
-      { word: "laut", en: "sea / ocean", vi: "biển", pos: "noun", pronunciation_vi: "LA-ut", pronunciation_en: "LA-oot" },
-      { word: "pasir", en: "sand", vi: "cát", pos: "noun", pronunciation_vi: "PA-sir", pronunciation_en: "PA-seer" },
-      { word: "ombak", en: "wave", vi: "sóng", pos: "noun", pronunciation_vi: "OM-bak", pronunciation_en: "OM-bak" },
-      { word: "berenang", en: "to swim", vi: "bơi", pos: "verb", pronunciation_vi: "be-re-NANG", pronunciation_en: "be-re-NANG" },
-      { word: "tabir surya", en: "sunscreen", vi: "kem chống nắng", pos: "noun", pronunciation_vi: "TA-bir SUR-ya", pronunciation_en: "TA-beer SOOR-ya" },
-      { word: "matahari", en: "sun", vi: "mặt trời", pos: "noun", pronunciation_vi: "ma-ta-HA-ri", pronunciation_en: "ma-ta-HA-ree" },
-      { word: "pulau", en: "island", vi: "đảo", pos: "noun", pronunciation_vi: "PU-lau", pronunciation_en: "POO-lau" },
-      { word: "tenang", en: "calm / still", vi: "êm / lặng", pos: "adj.", pronunciation_vi: "te-NANG", pronunciation_en: "te-NANG" },
+      { cell_id: "e977c7bb-519e-4d62-b1a2-caa4ba494e85", word: "pantai", en: "beach", vi: "bãi biển", pos: "noun", pronunciation_vi: "PAN-tai", pronunciation_en: "PAN-tai" },
+      { cell_id: "f28f3fb9-2c18-48f3-a84b-471c3d801f2f", word: "laut", en: "sea / ocean", vi: "biển", pos: "noun", pronunciation_vi: "LA-ut", pronunciation_en: "LA-oot" },
+      { cell_id: "2a64bd4f-0cc4-4233-82a2-650a79d1e87f", word: "pasir", en: "sand", vi: "cát", pos: "noun", pronunciation_vi: "PA-sir", pronunciation_en: "PA-seer" },
+      { cell_id: "b963dd5c-4b46-4a08-a6d8-f351c621732a", word: "ombak", en: "wave", vi: "sóng", pos: "noun", pronunciation_vi: "OM-bak", pronunciation_en: "OM-bak" },
+      { cell_id: "f6f398be-09a2-43bc-b71c-81160ef7df02", word: "berenang", en: "to swim", vi: "bơi", pos: "verb", pronunciation_vi: "be-re-NANG", pronunciation_en: "be-re-NANG" },
+      { cell_id: "819bdd0d-275c-4619-af39-dd0bc1693009", word: "tabir surya", en: "sunscreen", vi: "kem chống nắng", pos: "noun", pronunciation_vi: "TA-bir SUR-ya", pronunciation_en: "TA-beer SOOR-ya" },
+      { cell_id: "8d3baafa-58ce-4f2f-8424-963e5c81a1a0", word: "matahari", en: "sun", vi: "mặt trời", pos: "noun", pronunciation_vi: "ma-ta-HA-ri", pronunciation_en: "ma-ta-HA-ree" },
+      { cell_id: "d375b4fb-efce-4eff-989d-99b40b17da9c", word: "pulau", en: "island", vi: "đảo", pos: "noun", pronunciation_vi: "PU-lau", pronunciation_en: "POO-lau" },
+      { cell_id: "aaf8f7d8-ebfb-4b11-b4c8-168800f966ee", word: "tenang", en: "calm / still", vi: "êm / lặng", pos: "adj.", pronunciation_vi: "te-NANG", pronunciation_en: "te-NANG" },
     ],
     dialogue: [
-      { speaker: "Maya", text: "Hari ini cuaca cerah. Mau ke pantai, yuk?", vi: "Hôm nay trời nắng đẹp. Đi biển nhé?", en: "It's sunny today. Shall we go to the beach?" },
-      { speaker: "Reza", text: "Ayo! Pasirnya putih dan ombaknya tenang, cocok buat berenang.", vi: "Đi thôi! Cát trắng, sóng êm, hợp để bơi.", en: "Let's go! White sand and calm waves, perfect for swimming." },
-      { speaker: "Maya", text: "Tapi mataharinya panas sekali. Jangan lupa pakai tabir surya.", vi: "Nhưng nắng gắt lắm. Đừng quên bôi kem chống nắng.", en: "But the sun is very hot. Don't forget the sunscreen." },
-      { speaker: "Reza", text: "Sudah bawa. Nanti kita santai di pasir dulu, baru berenang.", vi: "Mang theo rồi. Lát mình thư giãn trên cát trước, rồi bơi.", en: "Already brought it. Let's relax on the sand first, then swim." },
+      { cell_id: "77b83317-7fe7-4e21-9c33-4871e334f777", speaker: "Maya", text: "Hari ini cuaca cerah. Mau ke pantai, yuk?", vi: "Hôm nay trời nắng đẹp. Đi biển nhé?", en: "It's sunny today. Shall we go to the beach?" },
+      { cell_id: "7d1d574e-926c-44da-afde-daddb8419716", speaker: "Reza", text: "Ayo! Pasirnya putih dan ombaknya tenang, cocok buat berenang.", vi: "Đi thôi! Cát trắng, sóng êm, hợp để bơi.", en: "Let's go! White sand and calm waves, perfect for swimming." },
+      { cell_id: "29652bac-f175-4e60-9299-aa21210790f1", speaker: "Maya", text: "Tapi mataharinya panas sekali. Jangan lupa pakai tabir surya.", vi: "Nhưng nắng gắt lắm. Đừng quên bôi kem chống nắng.", en: "But the sun is very hot. Don't forget the sunscreen." },
+      { cell_id: "eeb7f6ff-6087-4a68-a6b9-b2ef7310a91c", speaker: "Reza", text: "Sudah bawa. Nanti kita santai di pasir dulu, baru berenang.", vi: "Mang theo rồi. Lát mình thư giãn trên cát trước, rồi bơi.", en: "Already brought it. Let's relax on the sand first, then swim." },
     ],
     exercises: [
       {
@@ -296,21 +298,21 @@ export const beachDivingLessons: IndonesianLesson[] = [
     tip_advice_en:
       "Tip for Vietnamese speakers: distinguish 'belum' (not yet — may happen later) from 'tidak' (not — flat negation). 'Belum punya sertifikat' = don't have a certificate yet (implies you will), vs 'tidak punya' = don't have one. A very common error. 'banyak' (many) goes BEFORE the noun: 'banyak ikan' = many fish. Root verbs starting with 's' turn 's' into 'ny' under the 'me-' prefix: selam → menyelam, sentuh → menyentuh, sewa → menyewa. The '-kan' suffix adds 'do for someone': sewa (rent) → sewakan (rent out). Remember the conservation rule: 'jangan menyentuh karang'.",
     vocabulary: [
-      { word: "snorkeling", en: "snorkeling", vi: "lặn ống thở", pos: "noun/verb", pronunciation_vi: "SNOR-ke-ling", pronunciation_en: "SNOR-ke-ling" },
-      { word: "menyelam", en: "to dive (scuba)", vi: "lặn (sâu)", pos: "verb", pronunciation_vi: "me-nye-LAM", pronunciation_en: "me-nye-LAM" },
-      { word: "terumbu karang", en: "coral reef", vi: "rạn san hô", pos: "noun", pronunciation_vi: "te-RUM-bu KA-rang", pronunciation_en: "te-ROOM-boo KA-rang" },
-      { word: "alat selam", en: "diving gear", vi: "thiết bị lặn", pos: "noun", pronunciation_vi: "A-lat SE-lam", pronunciation_en: "A-lat SE-lam" },
-      { word: "pelampung", en: "float / life vest", vi: "phao / áo phao", pos: "noun", pronunciation_vi: "pe-lam-PUNG", pronunciation_en: "pe-lam-POONG" },
-      { word: "sertifikat", en: "certificate", vi: "chứng chỉ", pos: "noun", pronunciation_vi: "ser-ti-fi-KAT", pronunciation_en: "ser-tee-fee-KAT" },
-      { word: "ikan", en: "fish", vi: "cá", pos: "noun", pronunciation_vi: "I-kan", pronunciation_en: "EE-kan" },
-      { word: "penyu", en: "sea turtle", vi: "rùa biển", pos: "noun", pronunciation_vi: "pe-NYU", pronunciation_en: "pe-NYOO" },
-      { word: "rusak", en: "broken / damaged", vi: "hỏng / hư hại", pos: "adj.", pronunciation_vi: "RU-sak", pronunciation_en: "ROO-sak" },
+      { cell_id: "df2f9ab3-772e-447e-b7ac-8b7a4eb10d5d", word: "snorkeling", en: "snorkeling", vi: "lặn ống thở", pos: "noun/verb", pronunciation_vi: "SNOR-ke-ling", pronunciation_en: "SNOR-ke-ling" },
+      { cell_id: "36e92bd2-9707-4245-808a-fdb7aa724b86", word: "menyelam", en: "to dive (scuba)", vi: "lặn (sâu)", pos: "verb", pronunciation_vi: "me-nye-LAM", pronunciation_en: "me-nye-LAM" },
+      { cell_id: "13811997-675a-4a78-a280-21de2ac1bd59", word: "terumbu karang", en: "coral reef", vi: "rạn san hô", pos: "noun", pronunciation_vi: "te-RUM-bu KA-rang", pronunciation_en: "te-ROOM-boo KA-rang" },
+      { cell_id: "23625441-42bf-43e2-b23e-52cd5bac6d30", word: "alat selam", en: "diving gear", vi: "thiết bị lặn", pos: "noun", pronunciation_vi: "A-lat SE-lam", pronunciation_en: "A-lat SE-lam" },
+      { cell_id: "8ef10bdc-47ba-44c8-9d4e-123e84e4ad0b", word: "pelampung", en: "float / life vest", vi: "phao / áo phao", pos: "noun", pronunciation_vi: "pe-lam-PUNG", pronunciation_en: "pe-lam-POONG" },
+      { cell_id: "8c377a45-c019-479f-b5c9-827f228040f7", word: "sertifikat", en: "certificate", vi: "chứng chỉ", pos: "noun", pronunciation_vi: "ser-ti-fi-KAT", pronunciation_en: "ser-tee-fee-KAT" },
+      { cell_id: "ba3beac2-31c8-4ff1-8cd4-3370d3b4b116", word: "ikan", en: "fish", vi: "cá", pos: "noun", pronunciation_vi: "I-kan", pronunciation_en: "EE-kan" },
+      { cell_id: "cbb477b7-942e-4a1f-b354-b880f8c116b3", word: "penyu", en: "sea turtle", vi: "rùa biển", pos: "noun", pronunciation_vi: "pe-NYU", pronunciation_en: "pe-NYOO" },
+      { cell_id: "9d6d3b13-3d79-42a9-9ab8-efbc92052736", word: "rusak", en: "broken / damaged", vi: "hỏng / hư hại", pos: "adj.", pronunciation_vi: "RU-sak", pronunciation_en: "ROO-sak" },
     ],
     dialogue: [
-      { speaker: "Turis", text: "Saya ingin mencoba snorkeling besok. Di sini ada terumbu karang?", vi: "Tôi muốn thử lặn ống thở ngày mai. Ở đây có rạn san hô không?", en: "I'd like to try snorkeling tomorrow. Are there coral reefs here?" },
-      { speaker: "Pemandu", text: "Banyak, Bu, dan ikannya indah. Mau menyelam atau snorkeling saja?", vi: "Nhiều lắm ạ, và cá rất đẹp. Chị muốn lặn bình hay chỉ lặn ống thở?", en: "Plenty, ma'am, and the fish are beautiful. Scuba or just snorkeling?" },
-      { speaker: "Turis", text: "Snorkeling saja. Saya bisa menyelam, tapi belum punya sertifikat.", vi: "Chỉ lặn ống thở thôi. Tôi biết lặn, nhưng chưa có chứng chỉ.", en: "Just snorkeling. I can dive, but I don't have a certificate yet." },
-      { speaker: "Pemandu", text: "Baik. Saya sewakan alat dan pelampung. Ingat, jangan menyentuh karang, ya.", vi: "Được. Tôi cho thuê đồ và phao. Nhớ là đừng chạm san hô nhé.", en: "Alright. I'll rent you the gear and a float. Remember, don't touch the coral." },
+      { cell_id: "4be8f26a-21a6-45bf-9c90-3fe37d2bbfdd", speaker: "Turis", text: "Saya ingin mencoba snorkeling besok. Di sini ada terumbu karang?", vi: "Tôi muốn thử lặn ống thở ngày mai. Ở đây có rạn san hô không?", en: "I'd like to try snorkeling tomorrow. Are there coral reefs here?" },
+      { cell_id: "f303fad5-e6cf-4c3c-b40c-526245c57973", speaker: "Pemandu", text: "Banyak, Bu, dan ikannya indah. Mau menyelam atau snorkeling saja?", vi: "Nhiều lắm ạ, và cá rất đẹp. Chị muốn lặn bình hay chỉ lặn ống thở?", en: "Plenty, ma'am, and the fish are beautiful. Scuba or just snorkeling?" },
+      { cell_id: "ba1b85dc-0b21-452b-978e-e88bca52fbf7", speaker: "Turis", text: "Snorkeling saja. Saya bisa menyelam, tapi belum punya sertifikat.", vi: "Chỉ lặn ống thở thôi. Tôi biết lặn, nhưng chưa có chứng chỉ.", en: "Just snorkeling. I can dive, but I don't have a certificate yet." },
+      { cell_id: "7c940adf-5807-4e84-a10f-bd1a0500e9ab", speaker: "Pemandu", text: "Baik. Saya sewakan alat dan pelampung. Ingat, jangan menyentuh karang, ya.", vi: "Được. Tôi cho thuê đồ và phao. Nhớ là đừng chạm san hô nhé.", en: "Alright. I'll rent you the gear and a float. Remember, don't touch the coral." },
     ],
     exercises: [
       {
@@ -433,21 +435,21 @@ export const beachDivingLessons: IndonesianLesson[] = [
     tip_advice_en:
       "Tip for Vietnamese speakers: at B1 you'll meet the 'ke-...-an' circumfix forming abstract nouns: lestari (sustainable) → kelestarian (sustainability), hidup (live) → kehidupan (life), aneka ragam → keanekaragaman (diversity). Spotting this pattern helps you read environmental texts. Agent nouns use the 'pe(N)-' prefix: selam → penyelam (diver), like 'wisata → wisatawan' (tourist). 'Terkenal' (famous) uses the stative 'ter-' prefix. 'Menjaga kelestarian' = to preserve sustainability — a fixed phrase in conservation talk. 'Sebaiknya tidak…' = it's best not to… (polite advice).",
     vocabulary: [
-      { word: "terkenal", en: "famous", vi: "nổi tiếng", pos: "adj.", pronunciation_vi: "ter-ke-NAL", pronunciation_en: "ter-ke-NAL" },
-      { word: "penyelam", en: "diver", vi: "thợ lặn", pos: "noun", pronunciation_vi: "pe-nye-LAM", pronunciation_en: "pe-nye-LAM" },
-      { word: "keanekaragaman hayati", en: "biodiversity", vi: "đa dạng sinh học", pos: "noun", pronunciation_vi: "ke-a-ne-ka-ra-GA-man ha-YA-ti", pronunciation_en: "ke-a-ne-ka-ra-GA-man ha-YA-tee" },
-      { word: "kelestarian", en: "sustainability / preservation", vi: "sự bền vững / bảo tồn", pos: "noun", pronunciation_vi: "ke-les-ta-RI-an", pronunciation_en: "ke-les-ta-REE-an" },
-      { word: "konservasi", en: "conservation", vi: "bảo tồn", pos: "noun", pronunciation_vi: "kon-ser-VA-si", pronunciation_en: "kon-ser-VA-see" },
-      { word: "menjaga", en: "to protect / guard", vi: "gìn giữ / bảo vệ", pos: "verb", pronunciation_vi: "men-JA-ga", pronunciation_en: "men-JA-ga" },
-      { word: "sampah", en: "rubbish / trash", vi: "rác", pos: "noun", pronunciation_vi: "SAM-pah", pronunciation_en: "SAM-pah" },
-      { word: "mengancam", en: "to threaten", vi: "đe dọa", pos: "verb", pronunciation_vi: "me-ngan-CHAM", pronunciation_en: "me-ngan-CHAM" },
-      { word: "taman nasional", en: "national park", vi: "vườn quốc gia", pos: "noun", pronunciation_vi: "TA-man na-si-o-NAL", pronunciation_en: "TA-man na-see-o-NAL" },
+      { cell_id: "12acc119-21cb-4789-a641-d9bdc65b953d", word: "terkenal", en: "famous", vi: "nổi tiếng", pos: "adj.", pronunciation_vi: "ter-ke-NAL", pronunciation_en: "ter-ke-NAL" },
+      { cell_id: "9561327c-75bc-414c-ae26-b9891a6fcad5", word: "penyelam", en: "diver", vi: "thợ lặn", pos: "noun", pronunciation_vi: "pe-nye-LAM", pronunciation_en: "pe-nye-LAM" },
+      { cell_id: "b19a6dc1-11fa-4c95-a065-ca03afae1a1c", word: "keanekaragaman hayati", en: "biodiversity", vi: "đa dạng sinh học", pos: "noun", pronunciation_vi: "ke-a-ne-ka-ra-GA-man ha-YA-ti", pronunciation_en: "ke-a-ne-ka-ra-GA-man ha-YA-tee" },
+      { cell_id: "9a0badec-1130-47d3-ac16-c68f3aecb8cc", word: "kelestarian", en: "sustainability / preservation", vi: "sự bền vững / bảo tồn", pos: "noun", pronunciation_vi: "ke-les-ta-RI-an", pronunciation_en: "ke-les-ta-REE-an" },
+      { cell_id: "89dbb910-403b-4681-95ab-cc65ec5ea48b", word: "konservasi", en: "conservation", vi: "bảo tồn", pos: "noun", pronunciation_vi: "kon-ser-VA-si", pronunciation_en: "kon-ser-VA-see" },
+      { cell_id: "df7b030a-9895-44ab-8647-2712a11e66e6", word: "menjaga", en: "to protect / guard", vi: "gìn giữ / bảo vệ", pos: "verb", pronunciation_vi: "men-JA-ga", pronunciation_en: "men-JA-ga" },
+      { cell_id: "878111cf-2348-4613-aba3-e439c1e2e1ba", word: "sampah", en: "rubbish / trash", vi: "rác", pos: "noun", pronunciation_vi: "SAM-pah", pronunciation_en: "SAM-pah" },
+      { cell_id: "32415359-7a61-4028-9662-840b8d3ed02d", word: "mengancam", en: "to threaten", vi: "đe dọa", pos: "verb", pronunciation_vi: "me-ngan-CHAM", pronunciation_en: "me-ngan-CHAM" },
+      { cell_id: "44d5fb27-a39b-4b3d-bf76-ebc5da0db1c7", word: "taman nasional", en: "national park", vi: "vườn quốc gia", pos: "noun", pronunciation_vi: "TA-man na-si-o-NAL", pronunciation_en: "TA-man na-see-o-NAL" },
     ],
     dialogue: [
-      { speaker: "Wisatawan", text: "Saya dengar Raja Ampat terkenal sebagai surga penyelam. Benar?", vi: "Tôi nghe nói Raja Ampat nổi tiếng là thiên đường thợ lặn. Đúng không?", en: "I heard Raja Ampat is famous as a divers' paradise. Is that right?" },
-      { speaker: "Pemandu", text: "Benar sekali. Keanekaragaman hayatinya tertinggi di dunia.", vi: "Đúng quá. Đa dạng sinh học ở đó cao nhất thế giới.", en: "Absolutely. Its biodiversity is the highest in the world." },
-      { speaker: "Wisatawan", text: "Luar biasa. Tapi katanya sampah plastik mengancam terumbu karang, ya?", vi: "Tuyệt vời. Nhưng nghe nói rác nhựa đe dọa rạn san hô phải không?", en: "Amazing. But they say plastic trash threatens the reefs, right?" },
-      { speaker: "Pemandu", text: "Sayangnya iya. Karena itu kita harus menjaga kelestarian dan tidak membuang sampah ke laut.", vi: "Tiếc là đúng. Vì thế ta phải gìn giữ sự bền vững và không vứt rác xuống biển.", en: "Sadly yes. So we must preserve sustainability and not throw trash into the sea." },
+      { cell_id: "b6c75211-2ab5-49c6-a6c0-4d5b05dc5245", speaker: "Wisatawan", text: "Saya dengar Raja Ampat terkenal sebagai surga penyelam. Benar?", vi: "Tôi nghe nói Raja Ampat nổi tiếng là thiên đường thợ lặn. Đúng không?", en: "I heard Raja Ampat is famous as a divers' paradise. Is that right?" },
+      { cell_id: "a2e4ce2e-a5d1-49eb-9a29-fafa40623643", speaker: "Pemandu", text: "Benar sekali. Keanekaragaman hayatinya tertinggi di dunia.", vi: "Đúng quá. Đa dạng sinh học ở đó cao nhất thế giới.", en: "Absolutely. Its biodiversity is the highest in the world." },
+      { cell_id: "a91d7f3b-f4bd-4cba-9c34-3af625e5f372", speaker: "Wisatawan", text: "Luar biasa. Tapi katanya sampah plastik mengancam terumbu karang, ya?", vi: "Tuyệt vời. Nhưng nghe nói rác nhựa đe dọa rạn san hô phải không?", en: "Amazing. But they say plastic trash threatens the reefs, right?" },
+      { cell_id: "b284a326-06fe-4f83-a708-ff4a439be3cb", speaker: "Pemandu", text: "Sayangnya iya. Karena itu kita harus menjaga kelestarian dan tidak membuang sampah ke laut.", vi: "Tiếc là đúng. Vì thế ta phải gìn giữ sự bền vững và không vứt rác xuống biển.", en: "Sadly yes. So we must preserve sustainability and not throw trash into the sea." },
     ],
     exercises: [
       {

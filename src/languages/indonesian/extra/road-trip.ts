@@ -30,6 +30,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   /** Indonesian word/phrase. */
   word: string;
   /** English meaning. */
@@ -45,6 +46,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   /** Indonesian line. */
   text: string;
@@ -293,6 +295,7 @@ export const lessons: IndonesianLesson[] = [
     vocabulary: [
       // ── Renting & the car ───────────────────────────────────────────
       {
+        cell_id: "fd343fc6-9f64-43db-8659-e17b2bbfff6d",
         word: "sewa mobil",
         en: "to rent a car",
         vi: "thuê ô tô",
@@ -301,6 +304,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "SE-wa mo-BIL — `lepas kunci` = self-drive; `dengan sopir` = with driver",
       },
       {
+        cell_id: "716ffb65-2b32-492e-afe1-97d78ded7452",
         word: "sopir",
         en: "driver",
         vi: "tài xế",
@@ -309,6 +313,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "SO-pir — from 'chauffeur'; sound the final `r`",
       },
       {
+        cell_id: "65efff6f-49a6-45e0-872b-a6dee01dfe54",
         word: "bensin",
         en: "gasoline / fuel",
         vi: "xăng",
@@ -317,6 +322,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "BEN-sin — `bensin habis` = out of fuel",
       },
       {
+        cell_id: "771c46a1-f9f2-4353-ad26-b7aac1b94d11",
         word: "ban",
         en: "tire",
         vi: "lốp xe",
@@ -326,6 +332,7 @@ export const lessons: IndonesianLesson[] = [
       },
       // ── Roads & tolls ───────────────────────────────────────────────
       {
+        cell_id: "6e1749ba-7e64-4a24-9c78-c25305997aa5",
         word: "jalan tol",
         en: "toll highway",
         vi: "đường cao tốc thu phí",
@@ -334,6 +341,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "JA-lan tol — paid with an `e-toll` card",
       },
       {
+        cell_id: "8cc0a487-1f77-4557-8d3c-a9db98f4b46f",
         word: "e-toll",
         en: "electronic toll card",
         vi: "thẻ thu phí không dừng",
@@ -342,6 +350,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "ee-tol — tap to pay; remember to `top up` first",
       },
       {
+        cell_id: "41e78302-10a3-4f78-abf8-189edc30d6ac",
         word: "gerbang tol",
         en: "toll gate",
         vi: "trạm thu phí",
@@ -350,6 +359,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "ger-BANG tol — `gerbang` = gate",
       },
       {
+        cell_id: "16cf4101-13d0-4b87-b072-6f0fed95a3ef",
         word: "macet",
         en: "traffic jam / jammed",
         vi: "kẹt xe",
@@ -359,6 +369,7 @@ export const lessons: IndonesianLesson[] = [
       },
       // ── Stops & fuel ────────────────────────────────────────────────
       {
+        cell_id: "61b0ead6-2eb8-443e-8650-924c8c9a30a0",
         word: "SPBU",
         en: "gas station",
         vi: "trạm xăng",
@@ -367,6 +378,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "es-pe-be-OO — Stasiun Pengisian Bahan Bakar Umum; 'Pertamina'",
       },
       {
+        cell_id: "5c27c6b7-ea41-45fe-8a63-7e236432d42d",
         word: "rest area",
         en: "rest stop",
         vi: "trạm dừng nghỉ",
@@ -375,6 +387,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "rest AIR-ee-a — kept in English; has toilets, prayer room, food",
       },
       {
+        cell_id: "2867d2bb-e5c6-4697-b45f-af36a3938cca",
         word: "mampir",
         en: "to stop by / drop in",
         vi: "ghé qua",
@@ -383,6 +396,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "mam-PIR — `mampir ke SPBU` = stop by the station",
       },
       {
+        cell_id: "80046208-9f2a-487d-af37-80b7ced1ec5a",
         word: "istirahat",
         en: "to rest",
         vi: "nghỉ ngơi",
@@ -391,6 +405,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "is-ti-RA-hat — `istirahat sebentar` = rest a moment",
       },
       {
+        cell_id: "2dbefbc0-7442-4784-ab9a-959f7a4e5113",
         word: "bengkel",
         en: "repair shop / garage",
         vi: "tiệm sửa xe",
@@ -400,6 +415,7 @@ export const lessons: IndonesianLesson[] = [
       },
       // ── Directions ──────────────────────────────────────────────────
       {
+        cell_id: "509080b6-ff5c-4690-8ad2-cecd7a584eaf",
         word: "belok kiri / kanan",
         en: "turn left / right",
         vi: "rẽ trái / phải",
@@ -408,6 +424,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "BE-lok KI-ri / KA-nan — `belok` = to turn",
       },
       {
+        cell_id: "4c630aa1-8a01-4a2a-8b48-5874cdd2f572",
         word: "lurus",
         en: "straight ahead",
         vi: "đi thẳng",
@@ -416,6 +433,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "LOO-roos — `lurus saja` = just go straight",
       },
       {
+        cell_id: "ac65a549-3474-4ee2-ba6c-0ab51aae5200",
         word: "pertigaan / perempatan",
         en: "T-junction / crossroads",
         vi: "ngã ba / ngã tư",
@@ -424,6 +442,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "per-ti-GA-an / per-em-PA-tan — from `tiga` (3) / `empat` (4)",
       },
       {
+        cell_id: "030d102a-a9ab-4dc6-b6df-4a8140eb3d6b",
         word: "putar balik",
         en: "to make a U-turn",
         vi: "quay đầu xe",
@@ -433,6 +452,7 @@ export const lessons: IndonesianLesson[] = [
       },
       // ── Signs & mudik ───────────────────────────────────────────────
       {
+        cell_id: "3307b3d1-7ebb-42b9-a766-e45db822d5bb",
         word: "dilarang parkir",
         en: "no parking",
         vi: "cấm đỗ xe",
@@ -441,6 +461,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "di-la-RANG PAR-kir — `dilarang` = forbidden",
       },
       {
+        cell_id: "e893f91d-78da-41cb-8c81-efc7fff10e38",
         word: "mudik",
         en: "holiday homecoming exodus",
         vi: "về quê dịp lễ",
@@ -449,6 +470,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "MOO-dik — going home for Lebaran; reverse: `arus balik`",
       },
       {
+        cell_id: "56e0da98-4943-4fbc-891b-043ba6f8bead",
         word: "oleh-oleh khas daerah",
         en: "regional specialty souvenirs",
         vi: "đặc sản vùng miền",
@@ -457,6 +479,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "o-leh-O-leh khas da-E-rah — `khas` = characteristic",
       },
       {
+        cell_id: "3a16f829-5be4-48ce-8a80-9d13c158f761",
         word: "tilang",
         en: "traffic ticket / fine",
         vi: "phạt giao thông",
@@ -468,36 +491,42 @@ export const lessons: IndonesianLesson[] = [
     dialogue: [
       // Dialogue: two friends on a Java road trip, hitting mudik traffic
       {
+        cell_id: "c27bb404-a7e9-4afa-b0c3-1275b8da17cb",
         speaker: "Budi",
         text: "Kita berangkat pagi ya, biar tidak kena macet mudik.",
         vi: "Mình khởi hành sớm nhé, để khỏi dính kẹt xe mùa về quê.",
         en: "Let's leave early so we don't hit the mudik traffic.",
       },
       {
+        cell_id: "272d48ce-ac94-475d-8268-e8cedb4d38cf",
         speaker: "Toan",
         text: "Setuju. Mobil sewaannya sudah saya isi full tadi di SPBU.",
         vi: "Đồng ý. Xe thuê tôi đã đổ đầy bình ở cây xăng rồi.",
         en: "Agreed. I already filled up the rental car at the gas station.",
       },
       {
+        cell_id: "561abd04-05c3-4743-a212-0bacddbb6bca",
         speaker: "Budi",
         text: "Mantap. Kartu e-tollnya sudah di-top up? Kita lewat tol semua.",
         vi: "Tuyệt. Thẻ e-toll nạp tiền chưa? Mình đi cao tốc suốt.",
         en: "Great. Is the e-toll card topped up? We'll take tolls the whole way.",
       },
       {
+        cell_id: "02582a94-3309-44d2-bafd-2a1b4d38e187",
         speaker: "Toan",
         text: "Sudah. Eh, di depan macet total. Kita mampir rest area dulu saja?",
         vi: "Rồi. Ơ, phía trước kẹt cứng. Mình ghé trạm dừng nghỉ trước đã nhé?",
         en: "Done. Oh, it's gridlocked ahead. Should we just stop by the rest area first?",
       },
       {
+        cell_id: "cb783246-6756-4bfd-baec-8eb394f042fe",
         speaker: "Budi",
         text: "Boleh, saya juga mau ke toilet. Sekalian beli oleh-oleh khas sini.",
         vi: "Được, tôi cũng muốn đi vệ sinh. Tiện thể mua đặc sản ở đây.",
         en: "Sure, I need the restroom too. And let's grab some local souvenirs.",
       },
       {
+        cell_id: "ea9b697e-f4b5-444c-90bb-ffbca86f2353",
         speaker: "Toan",
         text: "Oke. Nanti setelah perempatan, belok kanan ke bengkel — bannya agak kempes.",
         vi: "Ok. Lát qua ngã tư, rẽ phải vào tiệm sửa xe — lốp hơi xẹp.",

@@ -11,42 +11,52 @@ export const lessons: JapaneseLesson[] = [
     "level": "B1",
     "vocabulary": [
       {
+        cell_id: "07e7d2be-229c-478c-8a4c-21c854724749",
         "japanese": "会議",
         "english": "meeting"
       },
       {
+        cell_id: "bcc801b6-0a3d-4507-b3f0-d9d70e4ee578",
         "japanese": "議題",
         "english": "agenda"
       },
       {
+        cell_id: "c9b12dc0-794f-40f7-98ab-82c307184a56",
         "japanese": "進行",
         "english": "facilitation"
       },
       {
+        cell_id: "f12de7b7-b5b3-4972-961b-ea2d101a34e2",
         "japanese": "発言",
         "english": "speaking / remark"
       },
       {
+        cell_id: "bd97b1b3-dbc1-4797-a3a9-a18a5543d441",
         "japanese": "賛成",
         "english": "agree"
       },
       {
+        cell_id: "854e816d-c0f4-4c54-9613-e147beda0db5",
         "japanese": "反対",
         "english": "oppose"
       },
       {
+        cell_id: "2eb07703-0dee-4d6c-8541-ea4c7d1d8944",
         "japanese": "意見",
         "english": "opinion"
       },
       {
+        cell_id: "e819d462-5db4-4ec1-b679-49239dbb8485",
         "japanese": "決める",
         "english": "to decide"
       },
       {
+        cell_id: "730b33b9-d455-4d62-8e06-de18248a9560",
         "japanese": "確認する",
         "english": "to confirm"
       },
       {
+        cell_id: "d61dccd8-aef4-4e04-b23e-046ea09884f0",
         "japanese": "資料",
         "english": "documents"
       }
@@ -149,21 +159,25 @@ export const lessons: JapaneseLesson[] = [
     "tip_advice_en": "Highest-leverage B1 pattern here: 〜たほうがいい for advice/recommendation — and note the trap, it takes the PLAIN PAST even for present advice: 確認した + ほうがいい = 'had better check' (NOT 確認するほうがいい for this 'should' sense). The 〜た is mandatory; getting it as 〜るほうがいい weakens the meaning. Pair it with 〜と思います, which at B1 genuinely softens a claim (Japanese meeting register expects the hedge — dropping it to 'just state it' reads as blunt, the inverse of American directness). Particle nuance to lock: から has two jobs — starting point 'from' (三時から, from 3:00) and 'because'; same particle, context decides, exactly like the A2 から (source/reason) note. Pronunciation watch-points: every polite ending devoices its final vowel (あります 'a-ri-mas', 思います 'o-mo-i-mas'); long 'oh' in もう/ほう/ましょう must be held two beats. Drill: give one recommendation as '[plain past]ほうがいいと思います.'",
     "dialogue": [
       {
+        cell_id: "e62aed63-d94f-40aa-b1a2-4b8280633c72",
         "speaker": "A",
         "japanese": "今日の議題は来月のプロジェクトについてです。",
         "english": "Today's agenda is about next month's project."
       },
       {
+        cell_id: "72b57812-084d-48d1-b643-f12768bb4f81",
         "speaker": "B",
         "japanese": "はい、まずスケジュールを確認しましょう。",
         "english": "Yes, let's first confirm the schedule."
       },
       {
+        cell_id: "4ae21772-19e7-4c0f-ae82-759c1919dd39",
         "speaker": "A",
         "japanese": "それでは、資料の二ページをご覧ください。",
         "english": "Then, please look at page 2 of the handout."
       },
       {
+        cell_id: "99df5b66-1cf8-4aae-a2ef-4c36878369a7",
         "speaker": "B",
         "japanese": "この計画は少し無理があると思います。",
         "english": "I think this plan is a bit unrealistic."
@@ -202,42 +216,52 @@ export const lessons: JapaneseLesson[] = [
     "level": "B1",
     "vocabulary": [
       {
+        cell_id: "617b9560-e9c7-4ab5-8387-ae535c3ebb4e",
         "japanese": "プレゼンテーション",
         "english": "presentation"
       },
       {
+        cell_id: "b338360d-30ff-425a-bd8b-c6884b8d635b",
         "japanese": "スライド",
         "english": "slide"
       },
       {
+        cell_id: "54440593-79a5-429b-83b1-5e7a3cee3d51",
         "japanese": "グラフ",
         "english": "graph"
       },
       {
+        cell_id: "2a30aa8f-11b1-46e1-a707-1704e0fcd883",
         "japanese": "データ",
         "english": "data"
       },
       {
+        cell_id: "837a9d47-160d-4b2f-9639-d4aa082c4bc1",
         "japanese": "説明する",
         "english": "to explain"
       },
       {
+        cell_id: "2de95645-8768-4290-879b-5d0e143e0181",
         "japanese": "質問",
         "english": "question"
       },
       {
+        cell_id: "e756c40b-614d-4089-9fe4-73e48d58ff2e",
         "japanese": "要約する",
         "english": "to summarize"
       },
       {
+        cell_id: "c98eb4e5-5744-44d4-84b2-0bf539571fc9",
         "japanese": "導入",
         "english": "introduction"
       },
       {
+        cell_id: "dc345963-60ce-410d-a18a-9db9867266c9",
         "japanese": "結論",
         "english": "conclusion"
       },
       {
+        cell_id: "9c3d5c81-b7a5-44b6-907b-dfcf0820c875",
         "japanese": "強調する",
         "english": "to emphasize"
       }
@@ -340,21 +364,25 @@ export const lessons: JapaneseLesson[] = [
     "tip_advice_en": "Highest-leverage recognition target: 尊敬語 vs 謙譲語 as a pair. ご覧ください raises the listener (respectful 見る); ご説明します / 発表します lower the speaker (humble) — same uchi/soto axis as the A1 family terms and A2 keigo, now in presentation set-phrases. At B1 you RECOGNIZE these in fixed expressions; free keigo production is a later level — don't fabricate honorific verbs you haven't been taught (the #491 restraint rule). Second, lock the 〜ている = resultant-state reading: グラフは…を示しています is 'the graph shows' (a standing state), not 'is in the act of showing' — mapping it to English progressive misfires, exactly the A2 ています point levelled up. Pronunciation watch-points: 市場動向 stacks three long 'oh' vowels; 推移 is two separate い beats ('su-i-i'), commonly crushed to 'sui'. Drill the audience-facing line aloud: 次の[noun]をご覧ください, holding each long vowel.",
     "dialogue": [
       {
+        cell_id: "9cabc0f0-802a-404e-8613-a719e46b47c7",
         "speaker": "A",
         "japanese": "本日はお忙しい中お集まりいただきありがとうございます。",
         "english": "Thank you for taking time to gather today."
       },
       {
+        cell_id: "1960006f-136c-4126-b03c-eaa7804ac728",
         "speaker": "B",
         "japanese": "最初に自己紹介をお願いします。",
         "english": "Please start with a self-introduction."
       },
       {
+        cell_id: "ac3d9921-a1ea-4b9f-8f3b-608530e5e697",
         "speaker": "A",
         "japanese": "はい、私は営業部の田中と申します。本日は新製品についてご説明します。",
         "english": "Yes, I'm Tanaka from Sales. Today I'll explain about the new product."
       },
       {
+        cell_id: "46886b7b-f33f-48e3-bce3-16010007ad63",
         "speaker": "B",
         "japanese": "それでは、お願いします。",
         "english": "Then, please go ahead."
@@ -393,42 +421,52 @@ export const lessons: JapaneseLesson[] = [
     "level": "B1",
     "vocabulary": [
       {
+        cell_id: "b06bed55-3718-4b4a-a60f-0b6e1d9f9f63",
         "japanese": "交渉",
         "english": "negotiation"
       },
       {
+        cell_id: "a6a6e611-579f-4eb0-b3ff-b00737334282",
         "japanese": "条件",
         "english": "condition"
       },
       {
+        cell_id: "c6c47b64-c62a-44dc-8b72-fc19b0de10fb",
         "japanese": "妥協",
         "english": "compromise"
       },
       {
+        cell_id: "3d70e452-2c81-4ac2-bc75-a2a72cbc4aaa",
         "japanese": "譲歩",
         "english": "concession"
       },
       {
+        cell_id: "38856ab3-1c99-48c7-b036-69896383b5f0",
         "japanese": "提案",
         "english": "proposal"
       },
       {
+        cell_id: "756a2dd3-e7b1-4e6b-bcb0-cb41de837728",
         "japanese": "合意",
         "english": "agreement"
       },
       {
+        cell_id: "abdeecd8-8e34-47d0-829e-780ca136c29c",
         "japanese": "値引き",
         "english": "discount"
       },
       {
+        cell_id: "209ad7d3-5221-41bb-b6ab-21b245d2c8bb",
         "japanese": "期限",
         "english": "deadline"
       },
       {
+        cell_id: "805632cb-558e-4aa2-bf9c-dff3fe76beff",
         "japanese": "見積もり",
         "english": "quotation"
       },
       {
+        cell_id: "d0e3e1e2-6e61-4687-b3bb-57397cce3e96",
         "japanese": "契約",
         "english": "contract"
       }
@@ -531,21 +569,25 @@ export const lessons: JapaneseLesson[] = [
     "tip_advice_en": "Highest-leverage receiving-side grammar: 〜ていただけませんか — the humble verb いただく (receive a favor) in a negative question = the single most polite way to request anything ('could I possibly have you ~?'). Ladder to lock: 〜てくれませんか (polite) < 〜ていただけませんか (humble, safest in negotiation/business), extending the A2 もらう/いただく point. Honest scope note (continuing the #491 flag): this is still only the RECEIVING half. The full giving/receiving trio — あげる (I give outward), くれる (someone gives toward me/my in-group), もらう (I receive) and their in-group directionality — is NOT taught with example coverage anywhere in B1 either; it appears only incidentally in dialogue/exercises. Master 〜ていただく here; the directional trio remains a flagged B2 target, not something to back-fill. Particle watch-point: 必要 takes が (〜する必要がある), not を. Pronunciation: いただけませんか is seven even mora — don't compress it; じょう/ごう long vowels held two beats. Drill: restate one demand as 〜ていただけませんか.",
     "dialogue": [
       {
+        cell_id: "f4e4bc96-e46c-4f25-afcf-1cb00cb1e034",
         "speaker": "A",
         "japanese": "この価格では厳しいです。もう少し安くできませんか。",
         "english": "This price is difficult. Can you make it a bit cheaper?"
       },
       {
+        cell_id: "0a83f56e-f7ff-49cb-a92e-40170c0bb489",
         "speaker": "B",
         "japanese": "そうですね…では、一割引きなら可能です。",
         "english": "Let's see... Well, I can offer a 10% discount."
       },
       {
+        cell_id: "16fe67b8-13e8-4d5b-812f-d709badc398b",
         "speaker": "A",
         "japanese": "一割引きではまだ厳しいです。二割はいかがですか。",
         "english": "10% is still tough. How about 20%?"
       },
       {
+        cell_id: "08232c66-3286-4766-b2fe-90def3661b12",
         "speaker": "B",
         "japanese": "二割は難しいです。一割五分でどうでしょうか。",
         "english": "20% is difficult. How about 15%?"
@@ -584,42 +626,52 @@ export const lessons: JapaneseLesson[] = [
     "level": "B1",
     "vocabulary": [
       {
+        cell_id: "d0662822-309c-48e5-8ca9-d242d563ea88",
         "japanese": "SNS",
         "english": "social media"
       },
       {
+        cell_id: "05bccba4-ae34-461d-99b9-cb18facac60c",
         "japanese": "投稿する",
         "english": "to post"
       },
       {
+        cell_id: "b7c5d292-81a0-4f57-85a6-f3d9266b1a9a",
         "japanese": "フォローする",
         "english": "to follow"
       },
       {
+        cell_id: "23e70f5d-8c73-4447-8160-859149fd4f05",
         "japanese": "いいね",
         "english": "like"
       },
       {
+        cell_id: "ef1fa809-b7eb-48c6-940e-703aac61c960",
         "japanese": "シェア",
         "english": "share"
       },
       {
+        cell_id: "5e5d6bb2-f542-4b9b-95fe-1d43906cf2ec",
         "japanese": "コメント",
         "english": "comment"
       },
       {
+        cell_id: "a88ec02d-66f5-4623-847d-0791c8321bac",
         "japanese": "プロフィール",
         "english": "profile"
       },
       {
+        cell_id: "5bf5ce63-5f2c-4d09-bcb6-4ef3a2f96c1c",
         "japanese": "ハッシュタグ",
         "english": "hashtag"
       },
       {
+        cell_id: "d6dd34ce-3cfb-4d6e-8bd4-3a5f797db57a",
         "japanese": "拡散",
         "english": "spread / viral"
       },
       {
+        cell_id: "a73dab9a-4997-4801-a5ff-f2fb8de830e8",
         "japanese": "プライバシー",
         "english": "privacy"
       }
@@ -722,21 +774,25 @@ export const lessons: JapaneseLesson[] = [
     "tip_advice_en": "Highest-leverage B1 shift introduced here: plain/casual register. Up to A2 you lived in です/ます; SNS, friends, and the dialogues from here on use plain form — plain verbs (見る, 行く), plain past (見た), and casual sentence-final particles よ ('I'm telling you'), ね ('right?'), and rising な/の. 確認したほうがいいよ is peer register; the same advice to a boss needs 〜ほうがいいですよ or softer. Don't treat plain form as 'broken polite' — it's a full register with its own social rules; the error is using casual よ/だ with someone who outranks you. Two grammar carries: 〜と (consequence conditional, つけると…) and 〜やすい ('easy to,' verb-stem + やすい → i-adjective). Also spot 拡散された — a passive (Lesson 44) embedded as a noun-modifier (Lesson 45), both previewed here in the wild. Pronunciation: clipped loans keep katakana length marks (プライバシー = シー held); the small っ in ハッシュタグ/設定 is a held beat. Drill: say one tip twice — casual 〜ほうがいいよ, then polite 〜ほうがいいですよ.",
     "dialogue": [
       {
+        cell_id: "d590632d-ed78-4fd8-912e-65262b7ebd94",
         "speaker": "A",
         "japanese": "今朝、面白いツイートを見たよ。",
         "english": "I saw an interesting tweet this morning."
       },
       {
+        cell_id: "614c59e7-575e-45c7-a89f-7fae844da5fe",
         "speaker": "B",
         "japanese": "どんな内容？シェアしてくれる？",
         "english": "What was it about? Can you share it?"
       },
       {
+        cell_id: "552baacf-1ad4-4f39-9aa6-4a9f0a508b0b",
         "speaker": "A",
         "japanese": "いいよ。このリンクを送るね。",
         "english": "Sure. I'll send you the link."
       },
       {
+        cell_id: "cad8662d-8d54-4745-84b2-780cd5fb8020",
         "speaker": "B",
         "japanese": "ありがとう。後で見てみる。",
         "english": "Thanks. I'll check it out later."
@@ -775,42 +831,52 @@ export const lessons: JapaneseLesson[] = [
     "level": "B1",
     "vocabulary": [
       {
+        cell_id: "cfa346d4-88f0-4884-bd6b-50aa77bbcaac",
         "japanese": "環境",
         "english": "environment"
       },
       {
+        cell_id: "f6cf2a81-4c54-4d55-8410-4e927723744d",
         "japanese": "問題",
         "english": "issue"
       },
       {
+        cell_id: "7d764f68-4650-4317-b7e4-c2a32e5d24e8",
         "japanese": "温暖化",
         "english": "global warming"
       },
       {
+        cell_id: "a011cc34-bbdc-4667-8f68-1b71cdf52656",
         "japanese": "リサイクル",
         "english": "recycling"
       },
       {
+        cell_id: "bcec0685-94c0-47be-a09d-75e5c4790115",
         "japanese": "省エネ",
         "english": "energy saving"
       },
       {
+        cell_id: "390e6bdf-41ae-4244-a990-27e2dc83cc4d",
         "japanese": "ごみ",
         "english": "garbage"
       },
       {
+        cell_id: "655c21cb-7131-4ec2-85fa-f6761fe15513",
         "japanese": "汚染",
         "english": "pollution"
       },
       {
+        cell_id: "4897f706-6928-45e2-aee1-0de5b7ba8843",
         "japanese": "再生可能エネルギー",
         "english": "renewable energy"
       },
       {
+        cell_id: "f49bac33-6c01-4a52-a73d-530eed98e484",
         "japanese": "自然",
         "english": "nature"
       },
       {
+        cell_id: "1c9a2553-97b6-491c-ace6-225a8cca4106",
         "japanese": "保護する",
         "english": "to protect"
       }
@@ -913,21 +979,25 @@ export const lessons: JapaneseLesson[] = [
     "tip_advice_en": "Highest-leverage obligation ladder to lock at B1: 〜たほうがいい (advice, A2) < 〜べきだ (moral should/ought) < 〜なければならない / 〜なければなりません (must, no choice). 〜べきだ carries an ethical 'ought' — using it for trivial advice over-weights the sentence; reserve it for duty. 〜なければなりません is literally 'if you don't ~, it won't do' — a double negative meaning 'must'; English speakers stall on its length, so drill the chunk 〜なければなりません as one unit. Note こと as a nominalizer (使うことは…, A2 point levelled up) turning a verb phrase into a subject. Pronunciation watch-points: small っ as a held silent beat recurs (もっと, 積極的, carried mora rule); long 'oh' in きょう/しょう/じゅう held two beats; ふ in 防ぐ is a soft bilabial, not an English 'f.' Drill one environmental claim at each obligation rung: 〜たほうがいい / 〜べきだ / 〜なければなりません.",
     "dialogue": [
       {
+        cell_id: "c8335155-0164-4da2-8a72-7871fcdf3d5a",
         "speaker": "A",
         "japanese": "最近、環境問題に関心がありますか。",
         "english": "Are you interested in environmental issues lately?"
       },
       {
+        cell_id: "7734c7fc-f379-4eae-a129-3e1cc28177d9",
         "speaker": "B",
         "japanese": "はい、特にプラスチックごみの問題について勉強しています。",
         "english": "Yes, I'm studying the plastic waste problem."
       },
       {
+        cell_id: "a748d0d7-0fb7-407b-bfef-a5626dfa4406",
         "speaker": "A",
         "japanese": "私もエコバッグを使うようにしています。",
         "english": "I also try to use eco-bags."
       },
       {
+        cell_id: "3d699ea3-5c8d-4042-bf8f-ce9f6242767a",
         "speaker": "B",
         "japanese": "それはいいですね。みんなで取り組むべきです。",
         "english": "That's great. We should all work on it."
@@ -966,42 +1036,52 @@ export const lessons: JapaneseLesson[] = [
     "level": "B1",
     "vocabulary": [
       {
+        cell_id: "1822eeda-7157-4828-bb20-1be26c2d20c5",
         "japanese": "意見",
         "english": "opinion"
       },
       {
+        cell_id: "4b85cee0-2ed2-4c0a-865e-312d11d81455",
         "japanese": "主張する",
         "english": "to assert"
       },
       {
+        cell_id: "142c51ba-7f51-4489-b4c3-b7210959590a",
         "japanese": "反論する",
         "english": "to counterargue"
       },
       {
+        cell_id: "be16ef40-e69c-4f9a-8dca-72d33ea3acdc",
         "japanese": "賛成",
         "english": "agreement"
       },
       {
+        cell_id: "91b19ba1-ed26-482b-af2e-21f4b98504fb",
         "japanese": "反対",
         "english": "opposition"
       },
       {
+        cell_id: "12941bea-fc7e-4a3c-9cca-7ef18a111daa",
         "japanese": "根拠",
         "english": "evidence"
       },
       {
+        cell_id: "7580ae7f-4c3a-4c17-95d7-3e1241de0388",
         "japanese": "観点",
         "english": "perspective"
       },
       {
+        cell_id: "edd56eff-d7db-45e2-af0f-538b8f07861b",
         "japanese": "論点",
         "english": "point of discussion"
       },
       {
+        cell_id: "252057f9-58be-479f-a8a3-0fae1702cfef",
         "japanese": "明確にする",
         "english": "to clarify"
       },
       {
+        cell_id: "43204813-eeb6-4578-be12-650f7e0dd3d0",
         "japanese": "納得する",
         "english": "to be convinced"
       }
@@ -1104,21 +1184,25 @@ export const lessons: JapaneseLesson[] = [
     "tip_advice_en": "Highest-leverage recognition target: 〜させていただきます — causative (させる, B1 priority) + humble いただく — as a fixed 'allow me to ~' frame for your own actions in formal/business speech. At B1 you RECOGNIZE and deploy it whole (述べさせていただきます, 説明させていただきます); free causative and causative-passive production (〜させる / 〜させられる across verbs) is **flagged for B2 — no B1 lesson here teaches the causative system with example coverage**, only this frozen humble idiom, so don't back-fill a paradigm the lessons don't teach (the #488/#491 restraint rule). Second, lock 〜とは言えない as soft denial ('cannot go so far as to say'), and notice 〜ば conditional riding on a humble verb (いただければ, 'if I may receive'). Pronunciation watch-points: させていただきます is six even mora — don't compress; small っ a held beat in 納得 ('na-t-to-ku'). Drill: introduce one opinion with 〜させていただきます, then soft-deny a claim with 〜とは言えません.",
     "dialogue": [
       {
+        cell_id: "a292f2b6-bbeb-4b6e-8626-0f845bac58d1",
         "speaker": "A",
         "japanese": "教育費を無料にするべきだと思います。",
         "english": "I think education should be free."
       },
       {
+        cell_id: "f52e3540-92ed-4291-8974-9bb8e774da6c",
         "speaker": "B",
         "japanese": "その意見には一部賛成ですが、財源の問題があります。",
         "english": "I partly agree, but there's the issue of funding."
       },
       {
+        cell_id: "afdec000-82e6-4b43-adda-14d60f9f6c5c",
         "speaker": "A",
         "japanese": "税金を増やせば解決できるのでは？",
         "english": "Couldn't we solve it by raising taxes?"
       },
       {
+        cell_id: "83e808aa-faac-4b2f-854b-43dc502ac686",
         "speaker": "B",
         "japanese": "しかし、国民の負担も考慮すべきです。",
         "english": "But we should also consider the burden on citizens."
@@ -1157,42 +1241,52 @@ export const lessons: JapaneseLesson[] = [
     "level": "B1",
     "vocabulary": [
       {
+        cell_id: "1b8152ca-14f7-4fc1-8b05-2f94b25dc448",
         "japanese": "提案する",
         "english": "to suggest"
       },
       {
+        cell_id: "6b4cdffd-55d0-4382-bb00-f430b56de7c9",
         "japanese": "勧める",
         "english": "to recommend"
       },
       {
+        cell_id: "58b5ae35-a4a7-422b-a5d0-7166120fa4df",
         "japanese": "選択肢",
         "english": "option"
       },
       {
+        cell_id: "fdc9d2ec-1932-4877-afd6-3a69b9035545",
         "japanese": "代替案",
         "english": "alternative"
       },
       {
+        cell_id: "e585d85f-56bb-49b3-939f-9209e5e6d6d1",
         "japanese": "考慮する",
         "english": "to consider"
       },
       {
+        cell_id: "02f1b392-8430-4d45-84ed-e8ef3dd59121",
         "japanese": "採用する",
         "english": "to adopt"
       },
       {
+        cell_id: "06f8cb04-b10a-4ee9-a547-dd132aa48dbd",
         "japanese": "メリット",
         "english": "merit"
       },
       {
+        cell_id: "0035030e-5cb5-4a20-893e-d4bb8afd26f5",
         "japanese": "デメリット",
         "english": "demerit"
       },
       {
+        cell_id: "aa9db4c1-bd8f-4d3c-9116-969f20e4eba1",
         "japanese": "優先順位",
         "english": "priority"
       },
       {
+        cell_id: "47ca086e-1f21-4bc0-a5cf-63fe723defcb",
         "japanese": "試す",
         "english": "to try"
       }
@@ -1295,21 +1389,25 @@ export const lessons: JapaneseLesson[] = [
     "tip_advice_en": "Highest-leverage suggestion ladder: 〜てはいかがですか (polite, hands the choice over) and 〜たほうがいいでしょう (soft 'you'd better,' でしょう blunts it) — both pitched below the American 'I suggest/we should' default; under-stating is the competent register here. Reuse the Lesson 31 trap: ほうがいい takes the PLAIN PAST (試した, not 試す) for the 'should' meaning. Vocabulary tip with teeth: メリット/デメリット = pros/cons (advantage/disadvantage), a 和製英語 false friend — never read them as English 'merit/demerit'; watch for more (テンション = mood/energy not 'tension,' クレーム = complaint not 'claim'). Pronunciation watch-points: long 'oh' in どう/しょう/ゆう held two beats; small っ a held silent beat in メリット ('me-ri-t-to'). Drill one proposal two ways: 〜てはいかがですか and 〜たほうがいいでしょう, feeling the deference.",
     "dialogue": [
       {
+        cell_id: "ea79de09-1091-4a20-bb2f-085b5fa2b28e",
         "speaker": "A",
         "japanese": "来月のイベント、どうしますか。",
         "english": "What shall we do about next month's event?"
       },
       {
+        cell_id: "c666b625-575d-49a0-a4a9-ec301b0308b6",
         "speaker": "B",
         "japanese": "屋外でバーベキューをしてはいかがですか。",
         "english": "How about having a BBQ outdoors?"
       },
       {
+        cell_id: "0bdfa27b-0a4f-4d5d-92b7-720a13841512",
         "speaker": "A",
         "japanese": "いいアイデアですね。でも天気が心配です。",
         "english": "Good idea. But I'm worried about the weather."
       },
       {
+        cell_id: "958c3ad1-945c-4e34-9830-b5a5aa812426",
         "speaker": "B",
         "japanese": "では、室内と室外の両方のプランを準備しましょう。",
         "english": "Then, let's prepare both indoor and outdoor plans."
@@ -1348,42 +1446,52 @@ export const lessons: JapaneseLesson[] = [
     "level": "B1",
     "vocabulary": [
       {
+        cell_id: "817606d8-5b24-4c77-99b1-95dba164c312",
         "japanese": "謝る",
         "english": "to apologize"
       },
       {
+        cell_id: "26d89483-bb38-49a0-977b-2f9a6e605b21",
         "japanese": "お詫び",
         "english": "apology (formal)"
       },
       {
+        cell_id: "f472b2ed-664f-463e-9c7d-b5abf2038860",
         "japanese": "申し訳ない",
         "english": "I'm sorry (strong)"
       },
       {
+        cell_id: "a3761fdd-44d5-4a19-9478-5c6ff08fc688",
         "japanese": "言い訳",
         "english": "excuse"
       },
       {
+        cell_id: "08a24207-3f9c-4b16-9e5f-4b65b63262ff",
         "japanese": "理由",
         "english": "reason"
       },
       {
+        cell_id: "12453de0-c992-4398-81f5-1a42b9a10237",
         "japanese": "不注意",
         "english": "carelessness"
       },
       {
+        cell_id: "b8144393-b549-4c5f-9140-ade1ff50ec23",
         "japanese": "誤解",
         "english": "misunderstanding"
       },
       {
+        cell_id: "1687a4dc-da7a-42e2-adbf-619e4b2d45a6",
         "japanese": "謝罪する",
         "english": "to apologize (formal)"
       },
       {
+        cell_id: "8a013936-4e33-4256-bcbc-4b0388e6cc2a",
         "japanese": "許す",
         "english": "to forgive"
       },
       {
+        cell_id: "4307fa19-6e41-4bf1-bd28-5f3623f6cf7c",
         "japanese": "反省する",
         "english": "to reflect / regret"
       }
@@ -1486,21 +1594,25 @@ export const lessons: JapaneseLesson[] = [
     "tip_advice_en": "Highest-leverage B1 form: 〜てしまう / 〜てしまいました — completion + regret/unintendedness. 忘れてしまいました = 'I (regrettably, unintentionally) forgot'; plain 忘れました is just 'I forgot.' In apologies the しまう is the contrition, so don't drop it. Recognize the casual contractions: 〜てしまう→〜ちゃう, 〜でしまう→〜じゃう (忘れちゃった) — you'll hear these constantly even if you produce the full form at B1. Second, the cause-particle pair: せいで = because-of (blame, bad outcome) vs おかげで = thanks-to (credit, good outcome) — they are not interchangeable; matching polarity wrong is a clear error. Reuse the apology scale (A2) and lead with the apology, not the reason — explaining first reads as 言い訳. Pronunciation watch-points: long 'oh' in どうか/ちゅう held two beats; いい in 言い訳 a held long 'ee.' Drill: apologize for one mistake using 〜てしまいました, then explicitly decline to excuse it.",
     "dialogue": [
       {
+        cell_id: "b23c7c9f-05af-43bb-8be2-a81d6381f533",
         "speaker": "A",
         "japanese": "すみません、約束の時間に遅れてしまいました。",
         "english": "I'm sorry, I was late for our appointment."
       },
       {
+        cell_id: "2593bfac-7a5e-42d8-953f-fc8033d396c2",
         "speaker": "B",
         "japanese": "どうしたんですか。",
         "english": "What happened?"
       },
       {
+        cell_id: "2b21124e-593f-48c9-a70d-1d45ec7ca125",
         "speaker": "A",
         "japanese": "電車が止まってしまって。本当に申し訳ありません。",
         "english": "The train stopped. I am truly sorry."
       },
       {
+        cell_id: "3a323059-f2c6-42fd-bc2a-7673af78c706",
         "speaker": "B",
         "japanese": "次回から気をつけてくださいね。",
         "english": "Please be careful next time."
@@ -1539,42 +1651,52 @@ export const lessons: JapaneseLesson[] = [
     "level": "B1",
     "vocabulary": [
       {
+        cell_id: "6ec84562-9875-47c1-a791-c782784c56d5",
         "japanese": "アドバイス",
         "english": "advice"
       },
       {
+        cell_id: "c1e3a09c-a9cb-40f8-8421-f5293725c22a",
         "japanese": "勧める",
         "english": "to recommend"
       },
       {
+        cell_id: "1df6108e-18a3-445b-8f9e-cc1599c65b75",
         "japanese": "忠告",
         "english": "warning / admonition"
       },
       {
+        cell_id: "9779c527-53c6-485d-aaf5-1d46e11692d6",
         "japanese": "提案",
         "english": "proposal"
       },
       {
+        cell_id: "732c8475-87da-461f-931c-4007111f2114",
         "japanese": "助言",
         "english": "suggestion"
       },
       {
+        cell_id: "6f333a48-61aa-4f71-820c-c57a908ac676",
         "japanese": "役立つ",
         "english": "useful"
       },
       {
+        cell_id: "24f729ca-b6e5-4f65-893e-fd5f06c7116e",
         "japanese": "経験談",
         "english": "story of experience"
       },
       {
+        cell_id: "5411a603-9801-4e21-bf10-2e601ccbf30e",
         "japanese": "対策",
         "english": "countermeasure"
       },
       {
+        cell_id: "6dd293c8-873e-4f19-9b29-75d07705f602",
         "japanese": "～したらどうですか",
         "english": "How about doing ~?"
       },
       {
+        cell_id: "9761a1ef-02fc-4e1f-8a9c-7c3eeeb2829b",
         "japanese": "～たほうがいい",
         "english": "You'd better ~"
       }
@@ -1677,21 +1799,25 @@ export const lessons: JapaneseLesson[] = [
     "tip_advice_en": "Highest-leverage advice patterns to lock as a graded set: 〜といいですよ (lightest 'it'd be good if') → 〜てみてはいかがですか ('how about trying') → 〜たほうがいいですよ (firmer 'you'd better') → 〜ことです ('the thing is to'). Match the rung to closeness/solicitation; over-direct advice is a face issue, not just impolite. Key carry: 〜てみる = 'do ~ and see' (te-form + みる, the verb 'see' bleached to 'try') — a B1 attempt/experiment marker; recognize it everywhere. Reuse traps: ほうがいい takes plain PAST (したほうがいい); the こと/の nominalizer turns a clause into the advice noun (しないことです). Pronunciation watch-points: friendly よ stays light (not the argumentative よ); long 'oh' in きょう/きゅう/そう held two beats; small っ a held beat in もっと. Drill one piece of advice up the ladder: 〜といいですよ → 〜たほうがいいですよ.",
     "dialogue": [
       {
+        cell_id: "b77a7200-5e5b-44e1-9f55-ef1ba5b85373",
         "speaker": "A",
         "japanese": "最近仕事が忙しくて疲れています。",
         "english": "I've been busy with work lately and I'm tired."
       },
       {
+        cell_id: "404c22ee-d18f-4b83-affc-6af18f2c4db1",
         "speaker": "B",
         "japanese": "それは大変ですね。休暇を取ったらどうですか。",
         "english": "That's tough. How about taking a vacation?"
       },
       {
+        cell_id: "8f96997e-0fcf-485b-9fe6-8221e1720253",
         "speaker": "A",
         "japanese": "でも仕事が溜まっていて…",
         "english": "But work is piling up..."
       },
       {
+        cell_id: "b523880a-78b2-4d2a-920f-2c53fe78ed1b",
         "speaker": "B",
         "japanese": "一度リセットすることも大事ですよ。",
         "english": "It's also important to reset once in a while."
@@ -1730,42 +1856,52 @@ export const lessons: JapaneseLesson[] = [
     "level": "B1",
     "vocabulary": [
       {
+        cell_id: "e36045ea-971a-48fa-94cf-9780b8e89af2",
         "japanese": "経験",
         "english": "experience"
       },
       {
+        cell_id: "3c63c109-198c-4910-9559-a8aa6f79c6df",
         "japanese": "体験",
         "english": "hands-on experience"
       },
       {
+        cell_id: "af569b39-dee9-4c33-a2b2-58f39951295d",
         "japanese": "印象",
         "english": "impression"
       },
       {
+        cell_id: "960620ed-6717-418a-9a30-e8801c43828f",
         "japanese": "感動する",
         "english": "to be moved"
       },
       {
+        cell_id: "f62020c0-5287-4ab7-9e6b-0a42acb627eb",
         "japanese": "記憶",
         "english": "memory"
       },
       {
+        cell_id: "31857805-43b7-4900-97c8-91d996108306",
         "japanese": "思い出",
         "english": "recollection"
       },
       {
+        cell_id: "3901c8ac-17ac-4422-a109-3076e1bc8389",
         "japanese": "詳細",
         "english": "details"
       },
       {
+        cell_id: "97c06656-f9e6-48c1-a860-7c1a68dd5de0",
         "japanese": "語る",
         "english": "to tell / narrate"
       },
       {
+        cell_id: "a44428ba-eed4-4aaf-9154-d22abcebcc9a",
         "japanese": "振り返る",
         "english": "to look back"
       },
       {
+        cell_id: "c18163eb-1c57-4e49-b1dd-a5d6d49614fd",
         "japanese": "貴重",
         "english": "valuable"
       }
@@ -1868,21 +2004,25 @@ export const lessons: JapaneseLesson[] = [
     "tip_advice_en": "Highest-leverage B1 frame: 〜たことがある = experiential 'have you ever / I have once,' deliberately different from plain past 'did.' Choose by meaning: a life-experience question → 〜たことがありますか; a specific past event → 〜ましたか. Second, start internalizing noun-modifying clauses now (full lesson at 45): in 留学した時 / 子どもの頃 the modifier (verb or phrase) comes BEFORE the noun with no relative pronoun — there is no Japanese word for 'when/that/which'; the position does the work. Train yourself to read right-to-left from the head noun. Third, hold the 〜ている = state reading: 覚えています = 'I remember' (state), not 'I'm memorizing.' Pronunciation watch-points: small っ a held beat (登った, にとって); long glided mora りゅう/りょ/きょ; ふ in 富士 a soft bilabial. Drill: ask one 〜たことがありますか question, then answer with a 〜た時 modifying clause.",
     "dialogue": [
       {
+        cell_id: "6b77dc8e-4b9f-4ea1-a575-06bd90485b80",
         "speaker": "A",
         "japanese": "日本に行ったことがありますか。",
         "english": "Have you ever been to Japan?"
       },
       {
+        cell_id: "cf1e44b4-4a4e-45c3-a90c-584aa096e3f8",
         "speaker": "B",
         "japanese": "はい、二年前に旅行しました。",
         "english": "Yes, I traveled there two years ago."
       },
       {
+        cell_id: "009e92f4-1b53-4822-9f73-adcf7f56fa35",
         "speaker": "A",
         "japanese": "どこが一番印象に残っていますか。",
         "english": "What left the strongest impression?"
       },
       {
+        cell_id: "3510fa83-783d-4282-b5dc-abf9561daa62",
         "speaker": "B",
         "japanese": "京都の寺院がとても美しかったです。",
         "english": "The temples in Kyoto were very beautiful."
@@ -1921,42 +2061,52 @@ export const lessons: JapaneseLesson[] = [
     "level": "B1",
     "vocabulary": [
       {
+        cell_id: "93b9e814-c7aa-4537-a948-2e0b7b2bce7a",
         "japanese": "比較する",
         "english": "to compare"
       },
       {
+        cell_id: "29aafb08-cd77-45d5-89c9-3d3b5860d6e5",
         "japanese": "選択",
         "english": "choice"
       },
       {
+        cell_id: "c5479b6d-8667-47a3-9782-ea2423e86c28",
         "japanese": "違い",
         "english": "difference"
       },
       {
+        cell_id: "d7a6c5c4-08e5-4562-9f00-6c8d0fdac3c2",
         "japanese": "共通点",
         "english": "common point"
       },
       {
+        cell_id: "970be43d-c5f0-433b-b289-bade697db401",
         "japanese": "優れている",
         "english": "superior"
       },
       {
+        cell_id: "3ceccc0f-c5bd-4e83-9677-26eb4e4769ca",
         "japanese": "劣る",
         "english": "inferior"
       },
       {
+        cell_id: "bb2d6e67-df19-49c0-8466-b78fec718623",
         "japanese": "同様に",
         "english": "similarly"
       },
       {
+        cell_id: "da1287c2-3217-40e2-9676-0e3052937e0c",
         "japanese": "一方で",
         "english": "on the other hand"
       },
       {
+        cell_id: "53632c87-ca98-42ad-90a8-029a83c95a99",
         "japanese": "どちらかと言えば",
         "english": "if I had to choose"
       },
       {
+        cell_id: "da8aba41-61ec-43ab-9239-2ea0d2f26e0c",
         "japanese": "対比",
         "english": "contrast"
       }
@@ -2059,21 +2209,25 @@ export const lessons: JapaneseLesson[] = [
     "tip_advice_en": "Highest-leverage structure: lock the comparative template 'A より B のほうが [adj] です' = 'B is more [adj] than A.' The trap is order — より ('than') attaches to the LOSER and comes first; のほうが marks the WINNER. English speakers reverse it; drill it as a fixed shape, not word-by-word. For questions: 'A と B と、どちらのほうが [adj] ですか'. Soften preferences with どちらかと言えば ('if anything') — bare 'X のほうが好き' can sound categorical. Particle carry: 好き・優れている・劣る take が for the thing liked/compared, never を; and mid-sentence が = 'but' (contrastive), distinct from subject が — context disambiguates. Pronunciation watch-points: long 'oh' stacks in ほう/りょう/きょう/つう (each held two beats); 好き drops its う ('ski'). Drill: compare two things both directions — 'A より B のほうが安い' then 'B より A のほうが高い.'",
     "dialogue": [
       {
+        cell_id: "7f16061a-0c5c-411c-988e-88bad4297fb8",
         "speaker": "A",
         "japanese": "この二つのスマホ、どちらがいいと思う？",
         "english": "These two smartphones, which one do you think is better?"
       },
       {
+        cell_id: "1f742525-a58d-4290-8a6b-d7834a3a09f5",
         "speaker": "B",
         "japanese": "カメラの性能ではこちらのほうが優れているよ。",
         "english": "In terms of camera performance, this one is superior."
       },
       {
+        cell_id: "ff3ba1e8-14d2-4977-90ff-a26a18953deb",
         "speaker": "A",
         "japanese": "でもバッテリーはあっちのほうが長持ちするね。",
         "english": "But the battery lasts longer on that one."
       },
       {
+        cell_id: "49096f13-3018-4adc-a898-6b9a15ac9d55",
         "speaker": "B",
         "japanese": "そうだね。用途によって選ぶといいね。",
         "english": "Yeah. It's good to choose based on usage."
@@ -2112,42 +2266,52 @@ export const lessons: JapaneseLesson[] = [
     "level": "B1",
     "vocabulary": [
       {
+        cell_id: "c850adab-2dbd-4aea-bf2b-f41fde2036b1",
         "japanese": "仮定",
         "english": "assumption"
       },
       {
+        cell_id: "a3a1340f-caf7-403e-9bfe-f7418d0e4098",
         "japanese": "もし",
         "english": "if"
       },
       {
+        cell_id: "d81cd7b5-7402-4e99-8a2d-eda2a77d518f",
         "japanese": "条件",
         "english": "condition"
       },
       {
+        cell_id: "768f64b2-987e-425a-b71d-fc9347dc5eac",
         "japanese": "可能性",
         "english": "possibility"
       },
       {
+        cell_id: "9f1d904b-31ac-49f0-836e-0d78f42d4747",
         "japanese": "～たら",
         "english": "if (conditional)"
       },
       {
+        cell_id: "72f2b9bf-996b-4a00-88b9-c269b3185f0d",
         "japanese": "～ば",
         "english": "if (conditional)"
       },
       {
+        cell_id: "c439a5e1-43d4-4f51-ae97-4248905fb262",
         "japanese": "～なら",
         "english": "if (conditional)"
       },
       {
+        cell_id: "2d6796c5-edf7-4057-8641-bfb6653d2a43",
         "japanese": "現実的",
         "english": "realistic"
       },
       {
+        cell_id: "04b1e8af-9efd-42c9-be45-17ae83dbb986",
         "japanese": "想像する",
         "english": "to imagine"
       },
       {
+        cell_id: "4de8f160-2fec-4bd8-a933-52b513accb83",
         "japanese": "願望",
         "english": "desire"
       }
@@ -2250,21 +2414,25 @@ export const lessons: JapaneseLesson[] = [
     "tip_advice_en": "Highest-leverage B1 lesson, full stop: the four conditionals. Lock each one's core job — 〜と: inevitable/automatic consequence (no requests/commands in the result; 'push it and it opens'); 〜たら: general all-purpose 'if/when,' the safe default and the only one comfortable with one-time future events + a request/volitional result; 〜ば: spotlights the condition, native to 'if only' wishes (〜ばいいのに) and general truths; 〜なら: conditional on a just-raised premise ('if [as for] X…'), uniquely able to precede its trigger in time. Do NOT try to make one 'if' cover all four — that is the defining English-speaker error; when unsure, default to 〜たら and learn the others by their signature uses. Pair 〜ば/〜たら + 〜のに for counterfactual regret ('if X were so, Y — but it isn't'). Pronunciation watch-points: small っ a held beat (当たったら, もっと); 来れば is irregular 'ku-re-ba'. Drill ONE wish through all usable conditionals to feel the nuance shift, then end with 〜ばいいのに.",
     "dialogue": [
       {
+        cell_id: "95c5e6a2-1547-46a5-93cd-b1ecdb7a170f",
         "speaker": "A",
         "japanese": "もし一億円あったら、何をする？",
         "english": "If you had 100 million yen, what would you do?"
       },
       {
+        cell_id: "8268e090-44a3-4c11-b2dc-d7bbd3883bda",
         "speaker": "B",
         "japanese": "家を買って、世界旅行に行くかな。",
         "english": "Maybe buy a house and travel the world."
       },
       {
+        cell_id: "bcd2fbd7-9798-4555-8a92-8617f79ff854",
         "speaker": "A",
         "japanese": "私は投資をして、将来のために使いたい。",
         "english": "I'd invest and use it for the future."
       },
       {
+        cell_id: "ebab9293-0049-4609-b561-6d43bdbb3bd0",
         "speaker": "B",
         "japanese": "現実的だね。でも夢を見るのは楽しいね。",
         "english": "You're realistic. But it's fun to dream."
@@ -2303,42 +2471,52 @@ export const lessons: JapaneseLesson[] = [
     "level": "B1",
     "vocabulary": [
       {
+        cell_id: "cfe76a69-6d6e-4f38-8c89-57cc109c96b4",
         "japanese": "伝聞",
         "english": "hearsay"
       },
       {
+        cell_id: "8ca463bf-e440-425f-a13b-f552f912fa14",
         "japanese": "引用",
         "english": "quotation"
       },
       {
+        cell_id: "27663800-6b43-45bd-9880-82c6cab91027",
         "japanese": "～そうだ",
         "english": "I heard that ~"
       },
       {
+        cell_id: "46504aba-9e1f-4f08-9b63-d580e907713e",
         "japanese": "～と言う",
         "english": "say that ~"
       },
       {
+        cell_id: "46c2b9d8-19c9-4c2c-a92c-49d9dab48b2f",
         "japanese": "～と聞く",
         "english": "hear that ~"
       },
       {
+        cell_id: "48a24691-8900-482b-afdb-0914e6962985",
         "japanese": "～と述べる",
         "english": "state that ~"
       },
       {
+        cell_id: "145e78cf-2c85-4bd1-8b08-abf65fef1185",
         "japanese": "～と説明する",
         "english": "explain that ~"
       },
       {
+        cell_id: "b90d9e87-17bf-45c0-a2e2-e89f7affd2df",
         "japanese": "～と報告する",
         "english": "report that ~"
       },
       {
+        cell_id: "3b75bcf4-5cc8-4df0-8f2d-44876ab69dd2",
         "japanese": "要約",
         "english": "summary"
       },
       {
+        cell_id: "f5257933-2fd5-4906-9a1a-0e90d4020b0f",
         "japanese": "直接話法",
         "english": "direct speech"
       }
@@ -2441,21 +2619,25 @@ export const lessons: JapaneseLesson[] = [
     "tip_advice_en": "Highest-leverage rule: NO tense backshift in Japanese reported speech. English 'she said she WAS busy' → Japanese keeps the original tense the speaker used: 「忙しい」と言いました (present 忙しい stays present). Resetting the embedded tense to match English is the defining error here — train the reflex out now. Structure to lock: [plain-form clause] + と + {言う/思う/聞く/発表する/伝える}; と is the quote boundary, the same quotative と you've met since A2 (〜と思います). Register ladder: 〜と言っていた (neutral) → 〜そうだ (hearsay, plain-form + そう) → 〜とのことだ (formal reported) → casual 〜って (= spoken 〜と, recognize it everywhere). Pronunciation watch-points: small っ a held silent beat (言って, 結婚, 発表); the quotative と is light and unstressed — don't pause before it. Drill: report one statement neutrally with 〜と言っていました, then re-report it casually with 〜って, keeping the original tense both times.",
     "dialogue": [
       {
+        cell_id: "e996eecf-48e8-4f72-80a9-7a40c2575dfe",
         "speaker": "A",
         "japanese": "山田さんが転職するって知ってる？",
         "english": "Did you know Yamada-san is changing jobs?"
       },
       {
+        cell_id: "22497994-2581-42ac-823a-9e015f2f4c75",
         "speaker": "B",
         "japanese": "えっ、本当？誰から聞いたの？",
         "english": "What? Really? Who told you?"
       },
       {
+        cell_id: "fb2270bc-749b-4359-b6a1-142dedbcc22b",
         "speaker": "A",
         "japanese": "本人から直接聞いたんだ。来月から新しい会社だって。",
         "english": "I heard it directly from him. He said he'll start at a new company next month."
       },
       {
+        cell_id: "c763b2b9-d0fe-4553-82c4-9ffc5130ebf5",
         "speaker": "B",
         "japanese": "そうなんだ。ビックリした。",
         "english": "I see. I'm surprised."
@@ -2494,42 +2676,52 @@ export const lessons: JapaneseLesson[] = [
     "level": "B1",
     "vocabulary": [
       {
+        cell_id: "9eedfd29-f32b-4602-b97a-7e9f4994de37",
         "japanese": "受身形",
         "english": "passive voice"
       },
       {
+        cell_id: "bc92f9e9-ca4d-4d7b-bd4b-9204cac5d7ee",
         "japanese": "作られる",
         "english": "is made"
       },
       {
+        cell_id: "96c05613-d6b1-4f80-9ec9-2256b95e6f55",
         "japanese": "書かれる",
         "english": "is written"
       },
       {
+        cell_id: "c40831f8-36fc-47d1-a5f0-132778f77686",
         "japanese": "食べられる",
         "english": "is eaten"
       },
       {
+        cell_id: "51e9c9f6-c854-43cc-99d4-ac8a7d792cf8",
         "japanese": "呼ばれる",
         "english": "is called"
       },
       {
+        cell_id: "3154c8c7-b17c-4c56-bb83-785ac5051139",
         "japanese": "使われる",
         "english": "is used"
       },
       {
+        cell_id: "ef764497-e0f2-47bb-ae8c-b71b7998360f",
         "japanese": "建てられる",
         "english": "is built"
       },
       {
+        cell_id: "5079664a-3ce8-4c0f-b2b0-32121f164e8b",
         "japanese": "知られる",
         "english": "is known"
       },
       {
+        cell_id: "9f20e13e-53dd-4d20-9761-d1912dc13ff2",
         "japanese": "見られる",
         "english": "is seen"
       },
       {
+        cell_id: "769e8346-96e5-4dee-9711-16345c035c31",
         "japanese": "考えられる",
         "english": "is considered"
       }
@@ -2632,21 +2824,25 @@ export const lessons: JapaneseLesson[] = [
     "tip_advice_en": "Highest-leverage formation rule: passive = Group-2 stem + られる (食べる→食べられる); Group-1 final -u → -a row + れる (読む→読まれる, 使う→使われる, NOT 使われる via られる); irregulars される (する) and 来られる (くる). The defining B1 ambiguity to internalize: 〜られる is passive OR potential OR respectful — 見られる = 'is seen' / 'can see' / '(esteemed person) sees'; let context decide, there is no English parallel for this three-way collision. Agent particle: に for ordinary agents (人に読まれる), によって for creators/formal (画家によって描かれた). Honest scope flag (the #488/#491 restraint rule): this lesson covers only the plain/objective passive — the **suffering passive (迷惑の受身, e.g. 雨に降られた, 子供に泣かれた) and causative-passive 〜させられる have no example coverage at B1 and are flagged for B2**; don't fabricate them into the notes. Pronunciation: passive endings are long (読まれています = 'yo-ma-re-te-i-mas', six mora) — don't compress. Drill: convert three actives to agentless passives, then add an に-agent.",
     "dialogue": [
       {
+        cell_id: "aef70550-468d-4c0f-8d36-40fa8aaae031",
         "speaker": "A",
         "japanese": "このお寺はいつ建てられたんですか。",
         "english": "When was this temple built?"
       },
       {
+        cell_id: "d635835c-d8c8-46e5-9942-cba37434f2e2",
         "speaker": "B",
         "japanese": "八世紀に建てられたと言われています。",
         "english": "It is said to have been built in the 8th century."
       },
       {
+        cell_id: "ad4668a7-7f52-4cbf-a191-a0915dd68f97",
         "speaker": "A",
         "japanese": "へえ、そんなに古いんですね。",
         "english": "Wow, that old, huh."
       },
       {
+        cell_id: "d1d0e5c3-472d-496c-8d50-c9e8b0023de2",
         "speaker": "B",
         "japanese": "はい、国の重要文化財に指定されています。",
         "english": "Yes, it is designated as an Important Cultural Property."
@@ -2685,42 +2881,52 @@ export const lessons: JapaneseLesson[] = [
     "level": "B1",
     "vocabulary": [
       {
+        cell_id: "7d332ba5-85f9-4847-899f-daa52089cdba",
         "japanese": "連体修飾節",
         "english": "relative clause"
       },
       {
+        cell_id: "78e2cbef-4154-44d6-a7d6-24424e69a6be",
         "japanese": "～がいる",
         "english": "there is ~"
       },
       {
+        cell_id: "be935554-8715-407f-ab3a-fb978bd98282",
         "japanese": "～という",
         "english": "called/named ~"
       },
       {
+        cell_id: "fe6f89f4-3d94-49c8-8b18-d380a68eeb98",
         "japanese": "場所",
         "english": "place"
       },
       {
+        cell_id: "4020ef06-a38a-4a45-b8ab-86e8f736729d",
         "japanese": "人",
         "english": "person"
       },
       {
+        cell_id: "770765bc-5f38-4898-9d31-9f0adec520bf",
         "japanese": "物",
         "english": "thing"
       },
       {
+        cell_id: "0a74c230-1af9-4737-813d-a5beac451d16",
         "japanese": "こと",
         "english": "event"
       },
       {
+        cell_id: "3177f617-6fd9-4d54-b085-b71f2e83baf5",
         "japanese": "～をしている",
         "english": "wearing / doing ~"
       },
       {
+        cell_id: "e022a52b-dce1-4da1-85dc-ab8335ff01f2",
         "japanese": "～だった",
         "english": "was ~"
       },
       {
+        cell_id: "1d0330c9-24aa-4ade-88e8-f0f660f160bd",
         "japanese": "～な",
         "english": "attribute (na-adj)"
       }
@@ -2823,21 +3029,25 @@ export const lessons: JapaneseLesson[] = [
     "tip_advice_en": "Highest-leverage structural skill of B1: noun-modifying (relative) clauses with NO relative pronoun. The rule: [plain-form clause] + [head noun]; the noun the clause describes is the FIRST thing after the clause, and there is no word for 'that/which/who.' Train a new parsing reflex: when you see a plain verb followed by a noun, expect 'the [noun] that [clause]' and read the modifier as attaching forward. Two signatures to lock: (1) subject が↔の inside the modifier are interchangeable (彼女が作った = 彼女の作った); (2) the modifier stays PLAIN even when the sentence is polite — politeness sits only on the final verb (作ったケーキを食べました, not 作りましたケーキ). This is the engine behind reading real Japanese, where modifiers can be long; the A2/B1 'preview' sightings (留学した時, 拡散されたニュース) were this all along. Pronunciation: small っ a held silent beat recurs (食べた is clean, but 作った/立って/おいしかった have it); plain past i-adjective is 〜かった ('o-i-shi-kat-ta'). Drill: take 'I bought a book' → 'the book I bought' → 'the book I bought is interesting,' building the modifier leftward.",
     "dialogue": [
       {
+        cell_id: "98527aef-5e4a-4902-90ca-991d20526071",
         "speaker": "A",
         "japanese": "あの赤いコートを着ている人は誰？",
         "english": "Who is that person wearing the red coat?"
       },
       {
+        cell_id: "66b5b3b7-c573-45bc-92d5-2ad200cdbafe",
         "speaker": "B",
         "japanese": "ああ、彼女は私の高校の同級生です。",
         "english": "Oh, she is my high school classmate."
       },
       {
+        cell_id: "e485705b-c3ad-45dc-ad31-04a639738536",
         "speaker": "A",
         "japanese": "そうなんだ。彼女が話していた内容は面白かった？",
         "english": "I see. Was the content she was talking about interesting?"
       },
       {
+        cell_id: "c44d51cd-d4a3-44fa-a3eb-83eb2050acdb",
         "speaker": "B",
         "japanese": "うん、旅行の話だったよ。",
         "english": "Yeah, it was about travel."

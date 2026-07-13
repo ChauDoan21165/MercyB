@@ -31,6 +31,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   /** Indonesian word/phrase. */
   word: string;
   /** English meaning. */
@@ -46,6 +47,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   /** Indonesian line. */
   text: string;
@@ -286,6 +288,7 @@ export const lessons: IndonesianLesson[] = [
     vocabulary: [
       // Places & offices
       {
+        cell_id: "8902686a-2073-4c95-9015-70c87ae288ef",
         word: "kantor pos",
         en: "post office",
         vi: "bưu điện",
@@ -294,6 +297,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "KAN-tor pos — `kantor` = office; sound the final `s` in `pos`",
       },
       {
+        cell_id: "81cfb851-5e1a-4e97-a425-504b7c08262c",
         word: "kelurahan",
         en: "urban village / ward office",
         vi: "ủy ban phường",
@@ -302,6 +306,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "ke-lu-RA-han — the admin level below `kecamatan` (district)",
       },
       {
+        cell_id: "e007fa62-0c1a-4545-aed2-4d8c781919e5",
         word: "kecamatan",
         en: "subdistrict office",
         vi: "ủy ban quận/huyện",
@@ -310,6 +315,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "ke-ca-MA-tan — `c` is 'ch': 'ke-CHA-ma-tan'; above `kelurahan`",
       },
       {
+        cell_id: "da7bffb5-dd3e-424e-b27b-866087419e9a",
         word: "perpustakaan",
         en: "library",
         vi: "thư viện",
@@ -318,6 +324,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "per-pus-ta-KA-an — root `pustaka` (books) + `per-...-an` frame",
       },
       {
+        cell_id: "a65d4fff-9d20-4963-ab09-d5d0f3a168b9",
         word: "loket",
         en: "service counter / window",
         vi: "quầy giao dịch",
@@ -327,6 +334,7 @@ export const lessons: IndonesianLesson[] = [
       },
       // Documents (the acronym wall)
       {
+        cell_id: "3fb98556-4b1f-4126-b1b3-a5426a32b50f",
         word: "KTP (Kartu Tanda Penduduk)",
         en: "national ID card",
         vi: "căn cước công dân",
@@ -335,6 +343,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "ka-te-pe — spelled in Indonesian letters; the most important ID",
       },
       {
+        cell_id: "7cacb1e4-60a7-4972-b194-9a1082d3c305",
         word: "KK (Kartu Keluarga)",
         en: "family/household card",
         vi: "sổ hộ khẩu",
@@ -343,6 +352,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "ka-ka — lists everyone in the household",
       },
       {
+        cell_id: "c5301397-a92e-4980-8517-e56e7eac4996",
         word: "surat keterangan",
         en: "letter of confirmation / certificate",
         vi: "giấy xác nhận",
@@ -351,6 +361,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "SU-rat ke-te-RANG-an — frame: `surat keterangan domisili/usaha`",
       },
       {
+        cell_id: "02c5158b-162d-4ea8-b27d-9bc5f12af372",
         word: "domisili",
         en: "place of residence",
         vi: "nơi cư trú",
@@ -359,6 +370,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "do-mi-SI-li — `surat keterangan domisili` = proof of residence",
       },
       {
+        cell_id: "d7a26147-2dea-4907-bc2e-afb9ef112a53",
         word: "akta kelahiran",
         en: "birth certificate",
         vi: "giấy khai sinh",
@@ -367,6 +379,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "AK-ta ke-la-HI-ran — `akta` = a deed/certificate; `akta nikah` = marriage certificate",
       },
       {
+        cell_id: "38c621b6-0903-4391-8378-76e4f0e70cff",
         word: "fotokopi",
         en: "photocopy",
         vi: "bản photo / bản sao",
@@ -375,6 +388,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "fo-to-KO-pi — `fotokopi KTP` = a copy of the ID; ↔ `asli` (original)",
       },
       {
+        cell_id: "5b1da437-a799-4a05-8248-06aa737f609d",
         word: "asli",
         en: "original / genuine",
         vi: "bản gốc / thật",
@@ -384,6 +398,7 @@ export const lessons: IndonesianLesson[] = [
       },
       // Actions & process
       {
+        cell_id: "698dcb06-896a-4ea0-a5d9-433f0e8946aa",
         word: "mengurus",
         en: "to handle / process (paperwork)",
         vi: "lo thủ tục / làm giấy tờ",
@@ -392,6 +407,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "me-ngu-RUS — root `urus`; `mengurus KTP` = to process an ID",
       },
       {
+        cell_id: "a3821f29-6215-4059-b846-3a8c21373d0e",
         word: "nomor antrian",
         en: "queue number",
         vi: "số thứ tự",
@@ -400,6 +416,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "NO-mor an-TRI-an — `ambil nomor antrian` = take a queue ticket",
       },
       {
+        cell_id: "a8e8a27e-db84-4625-b1c4-23f60753ae71",
         word: "persyaratan",
         en: "requirements",
         vi: "yêu cầu / điều kiện",
@@ -408,6 +425,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "per-sya-RA-tan — root `syarat` (condition); the list of needed papers",
       },
       {
+        cell_id: "669ad40e-11ac-4ce5-b96d-0e15de9169c3",
         word: "biaya administrasi",
         en: "administrative fee",
         vi: "phí hành chính",
@@ -416,6 +434,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "BI-a-ya ad-mi-nis-TRA-si — many basic documents are free (`gratis`)",
       },
       {
+        cell_id: "206268b4-f7f3-44ff-a8e8-5a83a51f2bf3",
         word: "mengembalikan",
         en: "to return (something)",
         vi: "trả lại",
@@ -424,6 +443,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "me-ngem-ba-LI-kan — root `kembali`; passive `dikembalikan`",
       },
       {
+        cell_id: "bbe47b78-19a9-49a1-a35f-4b29ed1e1700",
         word: "stempel / cap",
         en: "official stamp / seal",
         vi: "con dấu",
@@ -432,6 +452,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "STEM-pel / cap — `c` is 'ch': 'chap'; needs a stamp to be valid",
       },
       {
+        cell_id: "4448d06f-b5c7-42c2-a98a-ba30db58bc33",
         word: "RT / RW",
         en: "neighborhood unit / community unit head",
         vi: "tổ trưởng dân phố / khu phố",
@@ -440,6 +461,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "er-te / er-we — the smallest community units; often sign a referral first",
       },
       {
+        cell_id: "5c9db145-fb40-4220-b5b9-8690deffbe18",
         word: "Pak / Bu",
         en: "Sir / Ma'am (official address)",
         vi: "ông/anh / bà/chị (xưng hô lịch sự)",
@@ -451,48 +473,56 @@ export const lessons: IndonesianLesson[] = [
     dialogue: [
       // Resident at the kelurahan asking for a residence letter
       {
+        cell_id: "e2ac251d-c8ae-491f-9168-3375e60705d2",
         speaker: "Warga",
         text: "Permisi, Bu. Saya mau mengurus surat keterangan domisili.",
         vi: "Xin lỗi chị. Tôi muốn làm giấy xác nhận nơi cư trú.",
         en: "Excuse me, ma'am. I'd like to process a residence-confirmation letter.",
       },
       {
+        cell_id: "487ab6ca-9423-4b0d-86d9-8eea8f85ae90",
         speaker: "Petugas",
         text: "Baik, Pak. Sudah ada surat pengantar dari RT/RW?",
         vi: "Vâng, anh. Anh đã có giấy giới thiệu từ tổ trưởng (RT/RW) chưa?",
         en: "Alright, sir. Do you already have a referral letter from the RT/RW?",
       },
       {
+        cell_id: "b8df4ecd-34a4-4ca7-8e7f-a95d3f1fbd67",
         speaker: "Warga",
         text: "Sudah, ini suratnya. Dokumen apa saja yang harus saya bawa lagi?",
         vi: "Có rồi, đây ạ. Tôi còn phải mang theo những giấy tờ gì nữa?",
         en: "Yes, here it is. What other documents do I need to bring?",
       },
       {
+        cell_id: "dfdb22fd-9128-4b25-98f9-740c3263c48e",
         speaker: "Petugas",
         text: "Bawa KTP dan KK, asli dan fotokopinya masing-masing satu.",
         vi: "Mang theo căn cước và sổ hộ khẩu, mỗi loại một bản gốc và một bản photo.",
         en: "Bring your KTP and KK, one original and one photocopy each.",
       },
       {
+        cell_id: "c6bc47e4-9ed8-45a1-84a8-846071bcd59c",
         speaker: "Warga",
         text: "Oh, fotokopinya belum ada. Di sini bisa fotokopi, Bu?",
         vi: "Ồ, bản photo thì chưa có. Ở đây photo được không chị?",
         en: "Oh, I don't have copies yet. Can I photocopy here, ma'am?",
       },
       {
+        cell_id: "9da6e310-d6bb-4dc7-8600-9ed5da7f8cd9",
         speaker: "Petugas",
         text: "Bisa, di sebelah ada. Setelah itu ambil nomor antrian di loket dua.",
         vi: "Được, ở bên cạnh có. Sau đó lấy số thứ tự ở quầy số hai.",
         en: "Yes, there's one next door. After that, take a queue number at counter two.",
       },
       {
+        cell_id: "5c055bcd-4b3e-4a81-914a-45e3a892c560",
         speaker: "Warga",
         text: "Baik. Jadi prosesnya berapa hari, Bu?",
         vi: "Vâng. Vậy quy trình mất mấy ngày ạ?",
         en: "Okay. So how many days does the process take, ma'am?",
       },
       {
+        cell_id: "5f3e07c5-6155-4a11-85e2-eff8c62348b6",
         speaker: "Petugas",
         text: "Kalau lengkap, hari ini jadi. Gratis, tidak ada biaya.",
         vi: "Nếu đủ giấy thì hôm nay xong. Miễn phí, không mất tiền.",

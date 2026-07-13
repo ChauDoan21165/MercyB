@@ -32,6 +32,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   /** Indonesian word/phrase. */
   word: string;
   /** English meaning. */
@@ -47,6 +48,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   /** Indonesian line. */
   text: string;
@@ -301,6 +303,7 @@ export const lessons: IndonesianLesson[] = [
     vocabulary: [
       // The process
       {
+        cell_id: "39aae649-f817-4598-bb36-b2bd53522a61",
         word: "wawancara",
         en: "interview",
         vi: "cuộc phỏng vấn",
@@ -309,6 +312,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "wa-wan-CHA-ra — `c` is 'ch'",
       },
       {
+        cell_id: "85135577-7e61-447b-874c-b50718ec65dd",
         word: "melamar",
         en: "to apply (for a job)",
         vi: "ứng tuyển / nộp đơn",
@@ -317,6 +321,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "me-LA-mar — the verb (meN- + `lamar`); don't swap in `lamaran`",
       },
       {
+        cell_id: "631d63ff-304b-4d8e-9ef8-98f44057ae81",
         word: "lamaran",
         en: "application (the document/act as a noun)",
         vi: "đơn xin việc",
@@ -325,6 +330,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "la-MA-ran — the noun (suffix -an); `surat lamaran` = cover letter",
       },
       {
+        cell_id: "e6d6a268-3ab8-4b04-8bc7-421fd10bae6b",
         word: "lowongan",
         en: "job vacancy / opening",
         vi: "vị trí tuyển dụng còn trống",
@@ -333,6 +339,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "lo-WONG-an — `lowongan kerja` = job opening",
       },
       {
+        cell_id: "25989d96-ad3a-4b25-81fc-58e96c74d939",
         word: "riwayat hidup",
         en: "résumé / CV",
         vi: "sơ yếu lý lịch",
@@ -342,6 +349,7 @@ export const lessons: IndonesianLesson[] = [
       },
       // On the job
       {
+        cell_id: "572b3f8b-ca1b-4551-a6d2-82e92d9891cc",
         word: "posisi",
         en: "position / role",
         vi: "vị trí",
@@ -350,6 +358,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "po-SEE-si — English loan; `jabatan` is the native word for 'post'",
       },
       {
+        cell_id: "4bd712ac-76d5-466e-b56b-f96b52efe578",
         word: "pengalaman",
         en: "experience",
         vi: "kinh nghiệm",
@@ -358,6 +367,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "pe-nga-LA-man — peN-…-an from `alam`; never reduplicate after a number",
       },
       {
+        cell_id: "3aef10d1-c64a-4fc8-990e-49973325cbee",
         word: "keterampilan",
         en: "skills",
         vi: "kỹ năng",
@@ -366,6 +376,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "ke-te-ram-PI-lan — ke-…-an from `terampil` (adept); `keahlian` ≈ expertise",
       },
       {
+        cell_id: "2fe8c6c2-58ea-4644-afd1-fef3888e3b7e",
         word: "perusahaan",
         en: "company / firm",
         vi: "công ty",
@@ -374,6 +385,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "pe-ru-sa-HA-an — peN-…-an from `usaha` (effort/business)",
       },
       {
+        cell_id: "0d5cc205-ca62-4e07-9890-e95077504eb0",
         word: "atasan",
         en: "boss / superior",
         vi: "cấp trên / sếp",
@@ -383,6 +395,7 @@ export const lessons: IndonesianLesson[] = [
       },
       // Pay & terms
       {
+        cell_id: "c71df98a-2394-4835-b607-777cc498512c",
         word: "gaji",
         en: "salary",
         vi: "lương",
@@ -391,6 +404,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "GA-ji — `j` as in 'jam'; quoted per month",
       },
       {
+        cell_id: "7b4d36e2-4852-44c0-8af7-44a66424104a",
         word: "tunjangan",
         en: "allowance / benefit",
         vi: "phụ cấp / trợ cấp",
@@ -399,6 +413,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "tun-JA-ngan — meals, transport, BPJS; part of total pay",
       },
       {
+        cell_id: "08d62620-d0a8-4420-9753-8924908335d4",
         word: "negosiasi",
         en: "negotiation",
         vi: "thương lượng / đàm phán",
@@ -407,6 +422,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "ne-go-si-A-si — passive: `dinegosiasi` = can be negotiated",
       },
       {
+        cell_id: "23c865b6-25c6-48f1-ab7a-915de618e88b",
         word: "kontrak",
         en: "contract",
         vi: "hợp đồng",
@@ -415,6 +431,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "KON-trak — sound the final `k`; `karyawan tetap` = permanent staff",
       },
       {
+        cell_id: "18834a60-6a58-4af1-adba-ff50e36e95f4",
         word: "kelebihan",
         en: "strength / advantage",
         vi: "điểm mạnh",
@@ -423,6 +440,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "ke-le-BIH-an — ke-…-an from `lebih` (more)",
       },
       {
+        cell_id: "5a817493-2c2e-44af-9209-90fc47dd6caa",
         word: "kekurangan",
         en: "weakness / shortcoming",
         vi: "điểm yếu",
@@ -434,48 +452,56 @@ export const lessons: IndonesianLesson[] = [
     dialogue: [
       // Dialogue: a full short interview
       {
+        cell_id: "e14d513b-f436-4597-aec1-3b0a6e9c90c5",
         speaker: "Pewawancara",
         text: "Selamat pagi. Silakan duduk. Ceritakan tentang diri Anda.",
         vi: "Chào buổi sáng. Mời ngồi. Hãy kể về bản thân anh/chị.",
         en: "Good morning. Please sit. Tell me about yourself.",
       },
       {
+        cell_id: "01aa3f5f-d5fe-4b60-ab99-5a5324681378",
         speaker: "Pelamar",
         text: "Selamat pagi. Perkenalkan, nama saya Linh. Saya punya pengalaman lima tahun di bidang pemasaran.",
         vi: "Chào buổi sáng. Cho phép tôi giới thiệu, tôi tên Linh. Tôi có năm năm kinh nghiệm trong lĩnh vực marketing.",
         en: "Good morning. Let me introduce myself, my name is Linh. I have five years of experience in marketing.",
       },
       {
+        cell_id: "85d1117e-2340-482e-b4ef-f15a04d742d6",
         speaker: "Pewawancara",
         text: "Mengapa Anda ingin bekerja di perusahaan kami?",
         vi: "Tại sao anh/chị muốn làm việc ở công ty chúng tôi?",
         en: "Why do you want to work at our company?",
       },
       {
+        cell_id: "46fbb20d-2bf5-45c5-b295-ff12adc854d4",
         speaker: "Pelamar",
         text: "Karena perusahaan ini terkenal dan saya bisa belajar banyak di sini.",
         vi: "Vì công ty này nổi tiếng và tôi có thể học hỏi nhiều ở đây.",
         en: "Because this company is well known and I can learn a lot here.",
       },
       {
+        cell_id: "e1d79cd0-e93d-4ab4-a0a9-8f288aed7057",
         speaker: "Pewawancara",
         text: "Berapa gaji yang Anda harapkan?",
         vi: "Mức lương anh/chị mong muốn là bao nhiêu?",
         en: "What salary do you expect?",
       },
       {
+        cell_id: "e5171cfd-802f-43bf-9246-b01ca67a973d",
         speaker: "Pelamar",
         text: "Saya berharap sekitar sepuluh juta rupiah. Apakah gajinya masih bisa dinegosiasi?",
         vi: "Tôi mong khoảng mười triệu rupiah. Lương có còn thương lượng được không?",
         en: "I'm hoping for around ten million rupiah. Is the salary still negotiable?",
       },
       {
+        cell_id: "1869ff64-3df5-48bb-9fb3-475d09e74327",
         speaker: "Pewawancara",
         text: "Bisa kita bicarakan nanti. Apakah ada pertanyaan dari Anda?",
         vi: "Chúng ta có thể bàn sau. Anh/chị có câu hỏi nào không?",
         en: "We can discuss that later. Do you have any questions?",
       },
       {
+        cell_id: "c86c6065-794c-477a-b891-a742095720d4",
         speaker: "Pelamar",
         text: "Ya. Kapan saya akan mendapat kabar? Terima kasih atas kesempatan ini.",
         vi: "Có ạ. Khi nào tôi sẽ nhận được phản hồi? Cảm ơn vì cơ hội này.",

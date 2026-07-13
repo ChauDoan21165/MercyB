@@ -55,15 +55,15 @@ export const lessons: RussianLesson[] = [
       },
     ],
     vocabulary: [
-      { word: "привет", romanization: "privet", en: "hi", vi: "chào (thân mật)", pos: "interjection", pronunciation_vi: "pri-VYET", pronunciation_en: "pree-VYET" },
-      { word: "здравствуйте", romanization: "zdravstvuyte", en: "hello (polite)", vi: "xin chào", pos: "interjection", pronunciation_vi: "ZDRAHS-tvuy-tye", pronunciation_en: "ZDRAHST-vooy-tyeh" },
-      { word: "зовут", romanization: "zovut", en: "is named / call", vi: "gọi / tên là", pos: "verb", pronunciation_vi: "za-VOOT", pronunciation_en: "za-VOOT" },
-      { word: "до свидания", romanization: "do svidaniya", en: "goodbye", vi: "tạm biệt", pos: "phrase", pronunciation_vi: "da svi-DA-ni-ya", pronunciation_en: "da svee-DAH-nya" },
+      { cell_id: "f75b3406-3462-44cc-9a11-6e8b23f2700f", word: "привет", romanization: "privet", en: "hi", vi: "chào (thân mật)", pos: "interjection", pronunciation_vi: "pri-VYET", pronunciation_en: "pree-VYET" },
+      { cell_id: "29c0fa22-857a-40ce-9716-0e8fafb161cd", word: "здравствуйте", romanization: "zdravstvuyte", en: "hello (polite)", vi: "xin chào", pos: "interjection", pronunciation_vi: "ZDRAHS-tvuy-tye", pronunciation_en: "ZDRAHST-vooy-tyeh" },
+      { cell_id: "619c186d-45f0-446a-b4f3-fcf5634e33b7", word: "зовут", romanization: "zovut", en: "is named / call", vi: "gọi / tên là", pos: "verb", pronunciation_vi: "za-VOOT", pronunciation_en: "za-VOOT" },
+      { cell_id: "9310b9bc-5a59-452f-a2e8-d4de9b9eba1a", word: "до свидания", romanization: "do svidaniya", en: "goodbye", vi: "tạm biệt", pos: "phrase", pronunciation_vi: "da svi-DA-ni-ya", pronunciation_en: "da svee-DAH-nya" },
     ],
     dialogue: [
-      { speaker: "Ан", text: "Здравствуйте.", romanization: "Zdravstvuyte.", vi: "Xin chào.", en: "Hello." },
-      { speaker: "Ира", text: "Здравствуйте. Как вас зовут?", romanization: "Zdravstvuyte. Kak vas zovut?", vi: "Xin chào. Anh/chị tên là gì?", en: "Hello. What is your name?" },
-      { speaker: "Ан", text: "Меня зовут Ан. Очень приятно.", romanization: "Menya zovut An. Ochen priyatno.", vi: "Tôi tên là An. Rất vui được gặp.", en: "My name is An. Nice to meet you." },
+      { cell_id: "2fe1b7db-ad3f-4f45-aaf7-db3d26b731f3", speaker: "Ан", text: "Здравствуйте.", romanization: "Zdravstvuyte.", vi: "Xin chào.", en: "Hello." },
+      { cell_id: "cd76613e-ae80-4453-8dcd-c57e2356f789", speaker: "Ира", text: "Здравствуйте. Как вас зовут?", romanization: "Zdravstvuyte. Kak vas zovut?", vi: "Xin chào. Anh/chị tên là gì?", en: "Hello. What is your name?" },
+      { cell_id: "3afc6df7-46d3-4776-b04b-dabdd7e4fb2b", speaker: "Ан", text: "Меня зовут Ан. Очень приятно.", romanization: "Menya zovut An. Ochen priyatno.", vi: "Tôi tên là An. Rất vui được gặp.", en: "My name is An. Nice to meet you." },
     ],
     exercises: [
       {
@@ -129,11 +129,11 @@ export const lessons: RussianLesson[] = [
       },
     ],
     vocabulary: [
-      { word: "да", romanization: "da", en: "yes", vi: "vâng / có", pos: "particle", pronunciation_vi: "da", pronunciation_en: "dah" },
-      { word: "нет", romanization: "net", en: "no", vi: "không", pos: "particle", pronunciation_vi: "nyet", pronunciation_en: "nyet" },
-      { word: "спасибо", romanization: "spasibo", en: "thank you", vi: "cảm ơn", pos: "interjection", pronunciation_vi: "spa-SI-ba", pronunciation_en: "spa-SEE-ba" },
-      { word: "пожалуйста", romanization: "pozhaluysta", en: "please / you're welcome", vi: "làm ơn / không có gì", pos: "particle", pronunciation_vi: "pa-ZHA-lus-ta", pronunciation_en: "pa-ZHAL-sta" },
-      { word: "извините", romanization: "izvinite", en: "excuse me / sorry", vi: "xin lỗi", pos: "verb", pronunciation_vi: "iz-vi-NI-tye", pronunciation_en: "eez-vee-NEE-tyeh" },
+      { cell_id: "9633de2f-db06-4b60-8e6f-9391a70a635b", word: "да", romanization: "da", en: "yes", vi: "vâng / có", pos: "particle", pronunciation_vi: "da", pronunciation_en: "dah" },
+      { cell_id: "dfcc3abe-9eaf-4d3c-b0fe-852ef3c696aa", word: "нет", romanization: "net", en: "no", vi: "không", pos: "particle", pronunciation_vi: "nyet", pronunciation_en: "nyet" },
+      { cell_id: "352c51f0-eaeb-498f-85cd-66a88bce8062", word: "спасибо", romanization: "spasibo", en: "thank you", vi: "cảm ơn", pos: "interjection", pronunciation_vi: "spa-SI-ba", pronunciation_en: "spa-SEE-ba" },
+      { cell_id: "2d60b4ea-6398-4073-a977-cdf9275419d4", word: "пожалуйста", romanization: "pozhaluysta", en: "please / you're welcome", vi: "làm ơn / không có gì", pos: "particle", pronunciation_vi: "pa-ZHA-lus-ta", pronunciation_en: "pa-ZHAL-sta" },
+      { cell_id: "821e3bfb-4e8b-4775-adda-8bbeef87cfa7", word: "извините", romanization: "izvinite", en: "excuse me / sorry", vi: "xin lỗi", pos: "verb", pronunciation_vi: "iz-vi-NI-tye", pronunciation_en: "eez-vee-NEE-tyeh" },
     ],
     exercises: [
       {
@@ -204,11 +204,11 @@ export const lessons: RussianLesson[] = [
       },
     ],
     vocabulary: [
-      { word: "я", romanization: "ya", en: "I", vi: "tôi", pos: "pronoun", pronunciation_vi: "ya", pronunciation_en: "yah" },
-      { word: "ты", romanization: "ty", en: "you (informal)", vi: "bạn / cậu", pos: "pronoun", pronunciation_vi: "ty", pronunciation_en: "tih" },
-      { word: "он", romanization: "on", en: "he", vi: "anh ấy", pos: "pronoun", pronunciation_vi: "on", pronunciation_en: "ohn" },
-      { word: "она", romanization: "ona", en: "she", vi: "cô ấy", pos: "pronoun", pronunciation_vi: "a-NA", pronunciation_en: "ah-NAH" },
-      { word: "тоже", romanization: "tozhe", en: "also / too", vi: "cũng", pos: "adverb", pronunciation_vi: "TO-zhe", pronunciation_en: "TOH-zheh" },
+      { cell_id: "98b2571e-f461-4c98-bb84-621865fb957d", word: "я", romanization: "ya", en: "I", vi: "tôi", pos: "pronoun", pronunciation_vi: "ya", pronunciation_en: "yah" },
+      { cell_id: "d0aa68fa-930b-4a7f-9456-73558d8cf7b2", word: "ты", romanization: "ty", en: "you (informal)", vi: "bạn / cậu", pos: "pronoun", pronunciation_vi: "ty", pronunciation_en: "tih" },
+      { cell_id: "2fcea6f1-4362-4a60-b198-2a16a56dd5dd", word: "он", romanization: "on", en: "he", vi: "anh ấy", pos: "pronoun", pronunciation_vi: "on", pronunciation_en: "ohn" },
+      { cell_id: "f2eb9a5c-c87d-4ade-8f1e-ffe191e3d809", word: "она", romanization: "ona", en: "she", vi: "cô ấy", pos: "pronoun", pronunciation_vi: "a-NA", pronunciation_en: "ah-NAH" },
+      { cell_id: "a155560d-4b1b-4d6d-a7cc-98464863a742", word: "тоже", romanization: "tozhe", en: "also / too", vi: "cũng", pos: "adverb", pronunciation_vi: "TO-zhe", pronunciation_en: "TOH-zheh" },
     ],
     exercises: [
       {
@@ -274,10 +274,10 @@ export const lessons: RussianLesson[] = [
       },
     ],
     vocabulary: [
-      { word: "откуда", romanization: "otkuda", en: "where from", vi: "từ đâu", pos: "adverb", pronunciation_vi: "at-KU-da", pronunciation_en: "at-KOO-da" },
-      { word: "из", romanization: "iz", en: "from", vi: "từ", pos: "preposition", pronunciation_vi: "iz", pronunciation_en: "eez" },
-      { word: "Вьетнам", romanization: "Vyetnam", en: "Vietnam", vi: "Việt Nam", pos: "noun", pronunciation_vi: "vyet-NAM", pronunciation_en: "vyet-NAHM" },
-      { word: "Россия", romanization: "Rossiya", en: "Russia", vi: "nước Nga", pos: "noun", pronunciation_vi: "ra-SI-ya", pronunciation_en: "ra-SEE-ya" },
+      { cell_id: "3df6d42f-bedb-48b1-a9d0-a13068993a30", word: "откуда", romanization: "otkuda", en: "where from", vi: "từ đâu", pos: "adverb", pronunciation_vi: "at-KU-da", pronunciation_en: "at-KOO-da" },
+      { cell_id: "f34fbd47-e4ca-43b0-9b4e-30adc509950e", word: "из", romanization: "iz", en: "from", vi: "từ", pos: "preposition", pronunciation_vi: "iz", pronunciation_en: "eez" },
+      { cell_id: "4c8d94f8-4245-4b77-a62c-97c52c4136a0", word: "Вьетнам", romanization: "Vyetnam", en: "Vietnam", vi: "Việt Nam", pos: "noun", pronunciation_vi: "vyet-NAM", pronunciation_en: "vyet-NAHM" },
+      { cell_id: "13ab1d2b-a14a-4e3b-9398-4cfde3b0797f", word: "Россия", romanization: "Rossiya", en: "Russia", vi: "nước Nga", pos: "noun", pronunciation_vi: "ra-SI-ya", pronunciation_en: "ra-SEE-ya" },
     ],
     exercises: [
       {
@@ -348,10 +348,10 @@ export const lessons: RussianLesson[] = [
       },
     ],
     vocabulary: [
-      { word: "это", romanization: "eto", en: "this is / that is", vi: "đây là / đó là", pos: "pronoun", pronunciation_vi: "E-ta", pronunciation_en: "EH-ta" },
-      { word: "кто", romanization: "kto", en: "who", vi: "ai", pos: "pronoun", pronunciation_vi: "kto", pronunciation_en: "ktoh" },
-      { word: "что", romanization: "chto", en: "what", vi: "cái gì", pos: "pronoun", pronunciation_vi: "shto", pronunciation_en: "shtoh" },
-      { word: "книга", romanization: "kniga", en: "book", vi: "quyển sách", pos: "noun", pronunciation_vi: "KNI-ga", pronunciation_en: "KNEE-ga" },
+      { cell_id: "be10611b-2f52-44b3-a3d8-68195c46c321", word: "это", romanization: "eto", en: "this is / that is", vi: "đây là / đó là", pos: "pronoun", pronunciation_vi: "E-ta", pronunciation_en: "EH-ta" },
+      { cell_id: "07436b0c-2a36-4361-a66c-7b2d289cee73", word: "кто", romanization: "kto", en: "who", vi: "ai", pos: "pronoun", pronunciation_vi: "kto", pronunciation_en: "ktoh" },
+      { cell_id: "39c08256-44d3-496c-bb93-82607be67b78", word: "что", romanization: "chto", en: "what", vi: "cái gì", pos: "pronoun", pronunciation_vi: "shto", pronunciation_en: "shtoh" },
+      { cell_id: "e6688a66-5f3e-401a-9d5c-9859ae20bcaf", word: "книга", romanization: "kniga", en: "book", vi: "quyển sách", pos: "noun", pronunciation_vi: "KNI-ga", pronunciation_en: "KNEE-ga" },
     ],
     exercises: [
       {
@@ -417,11 +417,11 @@ export const lessons: RussianLesson[] = [
       },
     ],
     vocabulary: [
-      { word: "один", romanization: "odin", en: "one", vi: "một", pos: "numeral", pronunciation_vi: "a-DIN", pronunciation_en: "ah-DEEN" },
-      { word: "два", romanization: "dva", en: "two", vi: "hai", pos: "numeral", pronunciation_vi: "dva", pronunciation_en: "dvah" },
-      { word: "пять", romanization: "pyat", en: "five", vi: "năm", pos: "numeral", pronunciation_vi: "pyat", pronunciation_en: "pyaht" },
-      { word: "сколько", romanization: "skolko", en: "how many / how much", vi: "bao nhiêu", pos: "adverb", pronunciation_vi: "SKOL-ka", pronunciation_en: "SKOHL-ka" },
-      { word: "билет", romanization: "bilet", en: "ticket", vi: "vé", pos: "noun", pronunciation_vi: "bi-LYET", pronunciation_en: "bee-LYET" },
+      { cell_id: "91703844-b2d3-4f7d-97c5-f66205ba28ab", word: "один", romanization: "odin", en: "one", vi: "một", pos: "numeral", pronunciation_vi: "a-DIN", pronunciation_en: "ah-DEEN" },
+      { cell_id: "a6466a5b-03d4-4cef-af94-5a51f2459b41", word: "два", romanization: "dva", en: "two", vi: "hai", pos: "numeral", pronunciation_vi: "dva", pronunciation_en: "dvah" },
+      { cell_id: "0552de2a-398c-44dc-97f1-b1fb56e32bf9", word: "пять", romanization: "pyat", en: "five", vi: "năm", pos: "numeral", pronunciation_vi: "pyat", pronunciation_en: "pyaht" },
+      { cell_id: "566aba15-4237-4938-a429-6af4b80e9f24", word: "сколько", romanization: "skolko", en: "how many / how much", vi: "bao nhiêu", pos: "adverb", pronunciation_vi: "SKOL-ka", pronunciation_en: "SKOHL-ka" },
+      { cell_id: "a5da7271-259d-41b4-939e-77ad2eadef14", word: "билет", romanization: "bilet", en: "ticket", vi: "vé", pos: "noun", pronunciation_vi: "bi-LYET", pronunciation_en: "bee-LYET" },
     ],
     exercises: [
       {
@@ -487,17 +487,17 @@ export const lessons: RussianLesson[] = [
       },
     ],
     vocabulary: [
-      { word: "вода", romanization: "voda", en: "water", vi: "nước", pos: "noun", pronunciation_vi: "va-DA", pronunciation_en: "va-DAH" },
-      { word: "чай", romanization: "chay", en: "tea", vi: "trà", pos: "noun", pronunciation_vi: "chay", pronunciation_en: "chai" },
-      { word: "кофе", romanization: "kofe", en: "coffee", vi: "cà phê", pos: "noun", pronunciation_vi: "KO-fe", pronunciation_en: "KOH-feh" },
-      { word: "хлеб", romanization: "khleb", en: "bread", vi: "bánh mì", pos: "noun", pronunciation_vi: "khlep", pronunciation_en: "khlyep" },
-      { word: "без", romanization: "bez", en: "without", vi: "không có", pos: "preposition", pronunciation_vi: "byes", pronunciation_en: "byez" },
+      { cell_id: "e4b16b4d-6386-4088-936b-dd6304896586", word: "вода", romanization: "voda", en: "water", vi: "nước", pos: "noun", pronunciation_vi: "va-DA", pronunciation_en: "va-DAH" },
+      { cell_id: "204b6793-e73c-4154-8784-4bfb668d53df", word: "чай", romanization: "chay", en: "tea", vi: "trà", pos: "noun", pronunciation_vi: "chay", pronunciation_en: "chai" },
+      { cell_id: "12faaec8-b957-4e2c-a4f9-7e7857c47434", word: "кофе", romanization: "kofe", en: "coffee", vi: "cà phê", pos: "noun", pronunciation_vi: "KO-fe", pronunciation_en: "KOH-feh" },
+      { cell_id: "3cf83a06-8532-4260-98b3-be4adb444a94", word: "хлеб", romanization: "khleb", en: "bread", vi: "bánh mì", pos: "noun", pronunciation_vi: "khlep", pronunciation_en: "khlyep" },
+      { cell_id: "243468df-8a51-4117-9c29-e180246e06b8", word: "без", romanization: "bez", en: "without", vi: "không có", pos: "preposition", pronunciation_vi: "byes", pronunciation_en: "byez" },
     ],
     dialogue: [
-      { speaker: "Официант", text: "Что будете?", romanization: "Chto budete?", vi: "Anh/chị dùng gì?", en: "What will you have?" },
-      { speaker: "Лан", text: "Мне чай, пожалуйста.", romanization: "Mne chay, pozhaluysta.", vi: "Cho tôi trà, làm ơn.", en: "Tea for me, please." },
-      { speaker: "Официант", text: "С сахаром?", romanization: "S sakharom?", vi: "Có đường không?", en: "With sugar?" },
-      { speaker: "Лан", text: "Без сахара.", romanization: "Bez sakhara.", vi: "Không đường.", en: "Without sugar." },
+      { cell_id: "30408e03-5e85-4084-a4f0-b1754f5622e7", speaker: "Официант", text: "Что будете?", romanization: "Chto budete?", vi: "Anh/chị dùng gì?", en: "What will you have?" },
+      { cell_id: "291bc106-bf55-4a0d-bbf0-2da7dce1c5bb", speaker: "Лан", text: "Мне чай, пожалуйста.", romanization: "Mne chay, pozhaluysta.", vi: "Cho tôi trà, làm ơn.", en: "Tea for me, please." },
+      { cell_id: "7878d267-b9f2-4389-bd84-0f2f9358cd83", speaker: "Официант", text: "С сахаром?", romanization: "S sakharom?", vi: "Có đường không?", en: "With sugar?" },
+      { cell_id: "d6bef0df-93fb-4cfd-b103-3bf06b0fe4a4", speaker: "Лан", text: "Без сахара.", romanization: "Bez sakhara.", vi: "Không đường.", en: "Without sugar." },
     ],
     exercises: [
       {
@@ -562,16 +562,16 @@ export const lessons: RussianLesson[] = [
       },
     ],
     vocabulary: [
-      { word: "магазин", romanization: "magazin", en: "shop", vi: "cửa hàng", pos: "noun", pronunciation_vi: "ma-ga-ZIN", pronunciation_en: "ma-ga-ZEEN" },
-      { word: "стоит", romanization: "stoit", en: "costs", vi: "có giá", pos: "verb", pronunciation_vi: "STO-it", pronunciation_en: "STOH-eet" },
-      { word: "карта", romanization: "karta", en: "card", vi: "thẻ", pos: "noun", pronunciation_vi: "KAR-ta", pronunciation_en: "KAR-ta" },
-      { word: "дорого", romanization: "dorogo", en: "expensive", vi: "đắt", pos: "adverb", pronunciation_vi: "DO-ra-ga", pronunciation_en: "DOH-ra-ga" },
+      { cell_id: "4ff59e6e-e8da-4345-83a4-4cac039a1b12", word: "магазин", romanization: "magazin", en: "shop", vi: "cửa hàng", pos: "noun", pronunciation_vi: "ma-ga-ZIN", pronunciation_en: "ma-ga-ZEEN" },
+      { cell_id: "924d5969-1b68-410f-a935-5622eb864654", word: "стоит", romanization: "stoit", en: "costs", vi: "có giá", pos: "verb", pronunciation_vi: "STO-it", pronunciation_en: "STOH-eet" },
+      { cell_id: "aa924237-7c76-42bf-be43-8b4a192707ce", word: "карта", romanization: "karta", en: "card", vi: "thẻ", pos: "noun", pronunciation_vi: "KAR-ta", pronunciation_en: "KAR-ta" },
+      { cell_id: "b32dac9c-90d4-4ff2-a8c1-6361cc28d647", word: "дорого", romanization: "dorogo", en: "expensive", vi: "đắt", pos: "adverb", pronunciation_vi: "DO-ra-ga", pronunciation_en: "DOH-ra-ga" },
     ],
     dialogue: [
-      { speaker: "Покупатель", text: "Сколько стоит хлеб?", romanization: "Skolko stoit khleb?", vi: "Bánh mì bao nhiêu tiền?", en: "How much is the bread?" },
-      { speaker: "Продавец", text: "Сто рублей.", romanization: "Sto rubley.", vi: "Một trăm rúp.", en: "One hundred rubles." },
-      { speaker: "Покупатель", text: "Можно картой?", romanization: "Mozhno kartoy?", vi: "Trả bằng thẻ được không?", en: "Can I pay by card?" },
-      { speaker: "Продавец", text: "Да, можно.", romanization: "Da, mozhno.", vi: "Được.", en: "Yes, you can." },
+      { cell_id: "65e1c715-5890-4460-b6cb-1777aebbbbd7", speaker: "Покупатель", text: "Сколько стоит хлеб?", romanization: "Skolko stoit khleb?", vi: "Bánh mì bao nhiêu tiền?", en: "How much is the bread?" },
+      { cell_id: "0b01be2a-d31f-4f9f-8bb7-57a2047773c5", speaker: "Продавец", text: "Сто рублей.", romanization: "Sto rubley.", vi: "Một trăm rúp.", en: "One hundred rubles." },
+      { cell_id: "98dc37b0-7563-49d3-be09-b13e23485fbb", speaker: "Покупатель", text: "Можно картой?", romanization: "Mozhno kartoy?", vi: "Trả bằng thẻ được không?", en: "Can I pay by card?" },
+      { cell_id: "e94dbe19-b557-4675-b721-1f89dd64a83f", speaker: "Продавец", text: "Да, можно.", romanization: "Da, mozhno.", vi: "Được.", en: "Yes, you can." },
     ],
     exercises: [
       {
@@ -636,10 +636,10 @@ export const lessons: RussianLesson[] = [
       },
     ],
     vocabulary: [
-      { word: "где", romanization: "gde", en: "where", vi: "ở đâu", pos: "adverb", pronunciation_vi: "gdye", pronunciation_en: "gdyeh" },
-      { word: "дом", romanization: "dom", en: "house / home", vi: "nhà", pos: "noun", pronunciation_vi: "dom", pronunciation_en: "dohm" },
-      { word: "школа", romanization: "shkola", en: "school", vi: "trường học", pos: "noun", pronunciation_vi: "SHKO-la", pronunciation_en: "SHKOH-la" },
-      { word: "метро", romanization: "metro", en: "metro / subway", vi: "tàu điện ngầm", pos: "noun", pronunciation_vi: "mi-TRO", pronunciation_en: "mee-TROH" },
+      { cell_id: "bf6abccc-1b8f-4903-8ee9-8aed658ed835", word: "где", romanization: "gde", en: "where", vi: "ở đâu", pos: "adverb", pronunciation_vi: "gdye", pronunciation_en: "gdyeh" },
+      { cell_id: "0d6a6639-b926-4488-ba94-32f34fc98b00", word: "дом", romanization: "dom", en: "house / home", vi: "nhà", pos: "noun", pronunciation_vi: "dom", pronunciation_en: "dohm" },
+      { cell_id: "3b892329-1bee-4048-9ffb-cdaa159793e2", word: "школа", romanization: "shkola", en: "school", vi: "trường học", pos: "noun", pronunciation_vi: "SHKO-la", pronunciation_en: "SHKOH-la" },
+      { cell_id: "6a102b72-8514-4e52-9c42-37a2c3fca59e", word: "метро", romanization: "metro", en: "metro / subway", vi: "tàu điện ngầm", pos: "noun", pronunciation_vi: "mi-TRO", pronunciation_en: "mee-TROH" },
     ],
     exercises: [
       {
@@ -705,16 +705,16 @@ export const lessons: RussianLesson[] = [
       },
     ],
     vocabulary: [
-      { word: "автобус", romanization: "avtobus", en: "bus", vi: "xe buýt", pos: "noun", pronunciation_vi: "af-TO-bus", pronunciation_en: "af-TOH-boos" },
-      { word: "поезд", romanization: "poyezd", en: "train", vi: "tàu hỏa", pos: "noun", pronunciation_vi: "PO-yest", pronunciation_en: "POH-yezd" },
-      { word: "такси", romanization: "taksi", en: "taxi", vi: "taxi", pos: "noun", pronunciation_vi: "tak-SI", pronunciation_en: "tak-SEE" },
-      { word: "куда", romanization: "kuda", en: "where to", vi: "đi đâu", pos: "adverb", pronunciation_vi: "ku-DA", pronunciation_en: "koo-DAH" },
+      { cell_id: "9346eb21-2aa3-4e2b-889f-91b84afddaf0", word: "автобус", romanization: "avtobus", en: "bus", vi: "xe buýt", pos: "noun", pronunciation_vi: "af-TO-bus", pronunciation_en: "af-TOH-boos" },
+      { cell_id: "1a88b176-3d89-412c-a046-f6f932d445f8", word: "поезд", romanization: "poyezd", en: "train", vi: "tàu hỏa", pos: "noun", pronunciation_vi: "PO-yest", pronunciation_en: "POH-yezd" },
+      { cell_id: "b9bd7245-f218-4738-9c4a-4e44680292c0", word: "такси", romanization: "taksi", en: "taxi", vi: "taxi", pos: "noun", pronunciation_vi: "tak-SI", pronunciation_en: "tak-SEE" },
+      { cell_id: "78d83e8e-648a-4489-aafb-210a20eaeb36", word: "куда", romanization: "kuda", en: "where to", vi: "đi đâu", pos: "adverb", pronunciation_vi: "ku-DA", pronunciation_en: "koo-DAH" },
     ],
     dialogue: [
-      { speaker: "Пассажир", text: "Один билет, пожалуйста.", romanization: "Odin bilet, pozhaluysta.", vi: "Một vé, làm ơn.", en: "One ticket, please." },
-      { speaker: "Кассир", text: "Куда?", romanization: "Kuda?", vi: "Đi đâu?", en: "Where to?" },
-      { speaker: "Пассажир", text: "В центр.", romanization: "V tsentr.", vi: "Vào trung tâm.", en: "To the center." },
-      { speaker: "Кассир", text: "Вот билет.", romanization: "Vot bilet.", vi: "Đây là vé.", en: "Here is the ticket." },
+      { cell_id: "9fc729a9-11ff-4b41-8190-682d8498a2fa", speaker: "Пассажир", text: "Один билет, пожалуйста.", romanization: "Odin bilet, pozhaluysta.", vi: "Một vé, làm ơn.", en: "One ticket, please." },
+      { cell_id: "1a24debb-6d03-4b41-b67a-cd674215a7f9", speaker: "Кассир", text: "Куда?", romanization: "Kuda?", vi: "Đi đâu?", en: "Where to?" },
+      { cell_id: "d7946cff-b890-4866-ac36-42453d6f4d6d", speaker: "Пассажир", text: "В центр.", romanization: "V tsentr.", vi: "Vào trung tâm.", en: "To the center." },
+      { cell_id: "06df35be-8b40-4539-a6de-96d54a78dd4e", speaker: "Кассир", text: "Вот билет.", romanization: "Vot bilet.", vi: "Đây là vé.", en: "Here is the ticket." },
     ],
     exercises: [
       {
@@ -779,11 +779,11 @@ export const lessons: RussianLesson[] = [
       },
     ],
     vocabulary: [
-      { word: "когда", romanization: "kogda", en: "when", vi: "khi nào", pos: "adverb", pronunciation_vi: "kag-DA", pronunciation_en: "kag-DAH" },
-      { word: "сегодня", romanization: "segodnya", en: "today", vi: "hôm nay", pos: "adverb", pronunciation_vi: "si-VOD-nya", pronunciation_en: "see-VOHD-nya" },
-      { word: "завтра", romanization: "zavtra", en: "tomorrow", vi: "ngày mai", pos: "adverb", pronunciation_vi: "ZAV-tra", pronunciation_en: "ZAHF-tra" },
-      { word: "сейчас", romanization: "seychas", en: "now", vi: "bây giờ", pos: "adverb", pronunciation_vi: "sey-CHAS", pronunciation_en: "see-CHAHS" },
-      { word: "вечером", romanization: "vecherom", en: "in the evening", vi: "buổi tối", pos: "adverb", pronunciation_vi: "VYE-che-ram", pronunciation_en: "VYEH-che-rom" },
+      { cell_id: "9e98c81a-48f9-40d9-89ba-5c9c9314c93b", word: "когда", romanization: "kogda", en: "when", vi: "khi nào", pos: "adverb", pronunciation_vi: "kag-DA", pronunciation_en: "kag-DAH" },
+      { cell_id: "4591cb8d-a1fc-4b42-9ae0-3d2ef7e5e06a", word: "сегодня", romanization: "segodnya", en: "today", vi: "hôm nay", pos: "adverb", pronunciation_vi: "si-VOD-nya", pronunciation_en: "see-VOHD-nya" },
+      { cell_id: "433e61d9-b8b5-492f-8512-72c1cae3bce3", word: "завтра", romanization: "zavtra", en: "tomorrow", vi: "ngày mai", pos: "adverb", pronunciation_vi: "ZAV-tra", pronunciation_en: "ZAHF-tra" },
+      { cell_id: "6e735d1b-a46f-4104-a3f5-3d7c66aaf9a7", word: "сейчас", romanization: "seychas", en: "now", vi: "bây giờ", pos: "adverb", pronunciation_vi: "sey-CHAS", pronunciation_en: "see-CHAHS" },
+      { cell_id: "cc406874-4a0d-407b-8e49-97b088ba454b", word: "вечером", romanization: "vecherom", en: "in the evening", vi: "buổi tối", pos: "adverb", pronunciation_vi: "VYE-che-ram", pronunciation_en: "VYEH-che-rom" },
     ],
     exercises: [
       {
@@ -854,17 +854,17 @@ export const lessons: RussianLesson[] = [
       },
     ],
     vocabulary: [
-      { word: "говорить", romanization: "govorit", en: "to speak", vi: "nói", pos: "verb", pronunciation_vi: "ga-va-RIT", pronunciation_en: "ga-va-REET" },
-      { word: "понимать", romanization: "ponimat", en: "to understand", vi: "hiểu", pos: "verb", pronunciation_vi: "pa-ni-MAT", pronunciation_en: "pa-nee-MAHT" },
-      { word: "хотеть", romanization: "khotet", en: "to want", vi: "muốn", pos: "verb", pronunciation_vi: "kha-TYET", pronunciation_en: "kha-TYET" },
-      { word: "пить", romanization: "pit", en: "to drink", vi: "uống", pos: "verb", pronunciation_vi: "pit", pronunciation_en: "peet" },
-      { word: "есть", romanization: "yest", en: "to eat", vi: "ăn", pos: "verb", pronunciation_vi: "yest", pronunciation_en: "yest" },
+      { cell_id: "4daaf5c7-20ad-4411-b158-98f3f29015d3", word: "говорить", romanization: "govorit", en: "to speak", vi: "nói", pos: "verb", pronunciation_vi: "ga-va-RIT", pronunciation_en: "ga-va-REET" },
+      { cell_id: "bed95834-d06b-439c-a582-2b7e0560d805", word: "понимать", romanization: "ponimat", en: "to understand", vi: "hiểu", pos: "verb", pronunciation_vi: "pa-ni-MAT", pronunciation_en: "pa-nee-MAHT" },
+      { cell_id: "4c85f96e-ef32-41a4-bacb-82b172f71e23", word: "хотеть", romanization: "khotet", en: "to want", vi: "muốn", pos: "verb", pronunciation_vi: "kha-TYET", pronunciation_en: "kha-TYET" },
+      { cell_id: "595cd52d-de79-43b3-8ead-4d06259aebc1", word: "пить", romanization: "pit", en: "to drink", vi: "uống", pos: "verb", pronunciation_vi: "pit", pronunciation_en: "peet" },
+      { cell_id: "5e7cb609-e876-4df2-b33b-304c76469406", word: "есть", romanization: "yest", en: "to eat", vi: "ăn", pos: "verb", pronunciation_vi: "yest", pronunciation_en: "yest" },
     ],
     dialogue: [
-      { speaker: "Ира", text: "Ты говоришь по-русски?", romanization: "Ty govorish po-russki?", vi: "Bạn nói tiếng Nga không?", en: "Do you speak Russian?" },
-      { speaker: "Лан", text: "Немного.", romanization: "Nemnogo.", vi: "Một chút.", en: "A little." },
-      { speaker: "Ира", text: "Ты понимаешь?", romanization: "Ty ponimayesh?", vi: "Bạn hiểu không?", en: "Do you understand?" },
-      { speaker: "Лан", text: "Да, понимаю.", romanization: "Da, ponimayu.", vi: "Vâng, tôi hiểu.", en: "Yes, I understand." },
+      { cell_id: "2677627f-a8c1-4e19-b61d-cd705b6da6bf", speaker: "Ира", text: "Ты говоришь по-русски?", romanization: "Ty govorish po-russki?", vi: "Bạn nói tiếng Nga không?", en: "Do you speak Russian?" },
+      { cell_id: "96819784-d82f-471f-aa18-3ba8f3b7603f", speaker: "Лан", text: "Немного.", romanization: "Nemnogo.", vi: "Một chút.", en: "A little." },
+      { cell_id: "58949b9b-63f8-469a-bc94-12b2cdf5fcde", speaker: "Ира", text: "Ты понимаешь?", romanization: "Ty ponimayesh?", vi: "Bạn hiểu không?", en: "Do you understand?" },
+      { cell_id: "a4dac88b-7a38-4e46-8393-01bd58a49d4d", speaker: "Лан", text: "Да, понимаю.", romanization: "Da, ponimayu.", vi: "Vâng, tôi hiểu.", en: "Yes, I understand." },
     ],
     exercises: [
       {
@@ -930,16 +930,16 @@ export const lessons: RussianLesson[] = [
       },
     ],
     vocabulary: [
-      { word: "нужно", romanization: "nuzhno", en: "need / necessary", vi: "cần", pos: "predicate", pronunciation_vi: "NUZH-na", pronunciation_en: "NOOZH-na" },
-      { word: "можно", romanization: "mozhno", en: "may / allowed", vi: "được phép", pos: "predicate", pronunciation_vi: "MOZH-na", pronunciation_en: "MOZH-na" },
-      { word: "нельзя", romanization: "nelzya", en: "not allowed", vi: "không được", pos: "predicate", pronunciation_vi: "nyel-ZYA", pronunciation_en: "nyel-ZYAH" },
-      { word: "войти", romanization: "voyti", en: "to enter", vi: "đi vào", pos: "verb", pronunciation_vi: "vay-TI", pronunciation_en: "vai-TEE" },
+      { cell_id: "7fbf428a-581a-47b1-9d28-2689d30689b8", word: "нужно", romanization: "nuzhno", en: "need / necessary", vi: "cần", pos: "predicate", pronunciation_vi: "NUZH-na", pronunciation_en: "NOOZH-na" },
+      { cell_id: "c69c44ae-b6b8-419a-b653-cc31f790ac3f", word: "можно", romanization: "mozhno", en: "may / allowed", vi: "được phép", pos: "predicate", pronunciation_vi: "MOZH-na", pronunciation_en: "MOZH-na" },
+      { cell_id: "64144a4c-d45e-4958-aa47-1e1eb8d097c1", word: "нельзя", romanization: "nelzya", en: "not allowed", vi: "không được", pos: "predicate", pronunciation_vi: "nyel-ZYA", pronunciation_en: "nyel-ZYAH" },
+      { cell_id: "b60cd129-9d92-4212-aca6-af661e03d6c8", word: "войти", romanization: "voyti", en: "to enter", vi: "đi vào", pos: "verb", pronunciation_vi: "vay-TI", pronunciation_en: "vai-TEE" },
     ],
     dialogue: [
-      { speaker: "Ан", text: "Можно войти?", romanization: "Mozhno voyti?", vi: "Em vào được không?", en: "May I come in?" },
-      { speaker: "Учитель", text: "Да, можно.", romanization: "Da, mozhno.", vi: "Được.", en: "Yes, you may." },
-      { speaker: "Ан", text: "Мне нужен учебник.", romanization: "Mne nuzhen uchebnik.", vi: "Em cần sách giáo khoa.", en: "I need a textbook." },
-      { speaker: "Учитель", text: "Вот учебник.", romanization: "Vot uchebnik.", vi: "Đây là sách giáo khoa.", en: "Here is the textbook." },
+      { cell_id: "924876b5-3cde-48e3-966b-500c1a46288d", speaker: "Ан", text: "Можно войти?", romanization: "Mozhno voyti?", vi: "Em vào được không?", en: "May I come in?" },
+      { cell_id: "537542f3-499c-4c29-ad29-20857b3692f6", speaker: "Учитель", text: "Да, можно.", romanization: "Da, mozhno.", vi: "Được.", en: "Yes, you may." },
+      { cell_id: "9e84ff80-161a-4147-9ca3-97caf3fca5ea", speaker: "Ан", text: "Мне нужен учебник.", romanization: "Mne nuzhen uchebnik.", vi: "Em cần sách giáo khoa.", en: "I need a textbook." },
+      { cell_id: "d69267d1-894d-4540-8542-aa5a2493e831", speaker: "Учитель", text: "Вот учебник.", romanization: "Vot uchebnik.", vi: "Đây là sách giáo khoa.", en: "Here is the textbook." },
     ],
     exercises: [
       {

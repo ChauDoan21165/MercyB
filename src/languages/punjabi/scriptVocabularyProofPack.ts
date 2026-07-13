@@ -20,6 +20,7 @@ export type PunjabiScriptVocabularyProofArea =
 export type PunjabiScriptVocabularyProofUse = "proof_pack" | "final_owner_review" | "final_qa";
 
 export type PunjabiScriptVocabularyProofItem = {
+  cell_id?: string;
   id: string;
   area: PunjabiScriptVocabularyProofArea;
   use: PunjabiScriptVocabularyProofUse;
@@ -42,6 +43,7 @@ export type PunjabiScriptVocabularyProofItem = {
 };
 
 export type PunjabiScriptVocabularyProofPackScope = {
+  cell_id?: string;
   name: string;
   audience: string[];
   scriptPolicy: string;

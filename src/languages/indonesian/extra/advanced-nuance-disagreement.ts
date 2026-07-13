@@ -25,6 +25,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   /** Indonesian word/phrase. */
   word: string;
   /** English meaning. */
@@ -40,6 +41,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   /** Indonesian line. */
   text: string;
@@ -229,6 +231,7 @@ export const lessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: use a 4-step frame when disagreeing. (1) acknowledge: `Saya paham...`; (2) soften the shift: `namun`, `hanya saja`, `kalau boleh jujur`; (3) offer an alternative: `mungkin ada cara lain`; (4) close with respect: `saya menghargai pendapat Anda`. If you need stronger disagreement, still keep the wording light with `kurang sependapat` or `menyanggah sedikit` rather than a direct `bantah`.",
     vocabulary: [
       {
+        cell_id: "a99b66d3-29f0-49a5-add8-9f05bed45909",
         word: "saya paham",
         en: "I understand",
         vi: "tôi hiểu",
@@ -237,6 +240,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "SAH-yah pah-HAHM",
       },
       {
+        cell_id: "1bd79d2e-d789-4ce4-9a8f-33e34b0b1a01",
         word: "namun",
         en: "however",
         vi: "tuy nhiên",
@@ -245,6 +249,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "NAH-moon",
       },
       {
+        cell_id: "fb9640e0-239e-432e-81b8-dcb7110afbcd",
         word: "kurang sependapat",
         en: "not fully agree",
         vi: "không hoàn toàn đồng tình",
@@ -253,6 +258,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "KOO-rang seh-pen-DAH-pat",
       },
       {
+        cell_id: "3ade1954-e930-4e61-afc0-7c07c034f623",
         word: "menghargai pendapat",
         en: "to value an opinion",
         vi: "trân trọng ý kiến",
@@ -261,6 +267,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "me-nghar-GAI pen-DAH-pat",
       },
       {
+        cell_id: "654ae879-c5ca-40d1-890a-448570ac2180",
         word: "mungkin ada cara lain",
         en: "maybe there is another way",
         vi: "có lẽ có cách khác",
@@ -269,6 +276,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "MOONG-kin AH-dah CHA-rah LAH-een",
       },
       {
+        cell_id: "515c0275-48ee-4dd7-886e-3fd7dd5f63a2",
         word: "menyanggah",
         en: "to challenge / object lightly",
         vi: "phản biện nhẹ / cãi nhẹ",
@@ -277,6 +285,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "meh-nyang-GAH",
       },
       {
+        cell_id: "0af36264-8d57-4ad2-bbb5-19216b963997",
         word: "membantah",
         en: "to contradict / dispute",
         vi: "bác bỏ / phản bác",
@@ -285,6 +294,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "mem-BAN-tah",
       },
       {
+        cell_id: "a01b14fb-1c94-443a-a131-b13797f658eb",
         word: "diskusi profesional",
         en: "professional discussion",
         vi: "thảo luận chuyên nghiệp",
@@ -295,30 +305,35 @@ export const lessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "ff74474d-7cc0-4eaa-88e8-b0b78a03627c",
         speaker: "Sari",
         text: "Saya paham, namun ada beberapa hal yang perlu dipertimbangkan lagi.",
         vi: "Tôi hiểu, tuy nhiên có vài điều cần được cân nhắc lại.",
         en: "I understand, however there are several things that need to be considered again.",
       },
       {
+        cell_id: "20e166bc-c08a-447e-b54f-5606686f8732",
         speaker: "Andi",
         text: "Saya juga menghargai pendapat Anda, hanya saja saya kurang sependapat.",
         vi: "Tôi cũng trân trọng ý kiến của anh/chị, chỉ là tôi không hoàn toàn đồng tình.",
         en: "I also appreciate your opinion, only I do not fully agree.",
       },
       {
+        cell_id: "0cd26f65-db33-4da4-9671-23d6cf26ed6d",
         speaker: "Sari",
         text: "Baik, mungkin ada cara lain yang lebih aman.",
         vi: "Được, có lẽ có cách khác an toàn hơn.",
         en: "All right, maybe there is another way that is safer.",
       },
       {
+        cell_id: "796fabe9-850f-44e6-8e40-98bb3e285f24",
         speaker: "Andi",
         text: "Kalau saya boleh menyanggah sedikit, risikonya perlu dicek ulang.",
         vi: "Nếu tôi được phép phản biện nhẹ một chút, rủi ro cần được kiểm tra lại.",
         en: "If I may object lightly, the risks need to be checked again.",
       },
       {
+        cell_id: "ee7d18c7-7535-4740-9ff1-beab410380b2",
         speaker: "Sari",
         text: "Setuju. Yang penting, diskusi kita tetap profesional.",
         vi: "Đồng ý. Quan trọng là cuộc thảo luận của chúng ta vẫn chuyên nghiệp.",

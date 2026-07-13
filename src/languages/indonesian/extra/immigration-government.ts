@@ -29,6 +29,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   /** Indonesian word/phrase. */
   word: string;
   /** English meaning. */
@@ -44,6 +45,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   /** Indonesian line. */
   text: string;
@@ -294,6 +296,7 @@ export const lessons: IndonesianLesson[] = [
     vocabulary: [
       // Documents & permits
       {
+        cell_id: "d17e9954-9cd2-48d4-9650-3a17e9c89c2e",
         word: "KITAS",
         en: "limited-stay permit card",
         vi: "thẻ tạm trú",
@@ -302,6 +305,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "KI-tas — Kartu Izin Tinggal Terbatas; usually 6–12 months",
       },
       {
+        cell_id: "2785e169-dc62-4fc4-9bdc-2343e6104ba6",
         word: "KITAP",
         en: "permanent-stay permit card",
         vi: "thẻ thường trú",
@@ -310,6 +314,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "KI-tap — Kartu Izin Tinggal Tetap; granted after years on KITAS",
       },
       {
+        cell_id: "5a2d93d6-1122-48c4-bb5c-8a848a6a0c30",
         word: "imigrasi",
         en: "immigration (office/authority)",
         vi: "cơ quan xuất nhập cảnh",
@@ -318,6 +323,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "i-mi-GRA-si — `kantor imigrasi` = immigration office",
       },
       {
+        cell_id: "390bae24-ddc3-4a40-ac2e-424e1ed3a155",
         word: "paspor",
         en: "passport",
         vi: "hộ chiếu",
@@ -326,6 +332,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "PAS-por — sound both `s` and `r`",
       },
       {
+        cell_id: "14c37049-f60f-4dbd-ad3a-cd6f4f4cb58a",
         word: "visa",
         en: "visa",
         vi: "thị thực / visa",
@@ -334,6 +341,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "VI-sa — `visa habis` = visa expires",
       },
       {
+        cell_id: "3fbb5df1-a30c-4d6f-828a-f625208c1981",
         word: "dokumen",
         en: "document(s)",
         vi: "giấy tờ / tài liệu",
@@ -342,6 +350,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "do-ku-MEN — `dokumen lengkap` = complete documents",
       },
       {
+        cell_id: "f0f402eb-9bae-4052-953f-48084af10be3",
         word: "formulir",
         en: "form (to fill in)",
         vi: "mẫu đơn",
@@ -351,6 +360,7 @@ export const lessons: IndonesianLesson[] = [
       },
       // Office actions (full meN- forms)
       {
+        cell_id: "9124863f-0030-4d48-8caf-27cca26d5dc8",
         word: "memperpanjang",
         en: "to extend / renew",
         vi: "gia hạn",
@@ -359,6 +369,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "mem-per-pan-JANG — `memper-` frame on `panjang` (long)",
       },
       {
+        cell_id: "839da151-9b71-4510-836a-9b64600055ab",
         word: "mengisi",
         en: "to fill in (a form)",
         vi: "điền (đơn)",
@@ -367,6 +378,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "me-NGI-si — root `isi` + `meN-`; not `tulis`",
       },
       {
+        cell_id: "b39b61cc-75dc-4364-80aa-f5c0831c1935",
         word: "menyerahkan",
         en: "to submit / hand in",
         vi: "nộp / nộp lại",
@@ -375,6 +387,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "me-nye-rah-KAN — root `serah` + `meN-...-kan`",
       },
       {
+        cell_id: "2054a0c0-8a07-4bc5-8e58-a27380843428",
         word: "tanda tangan",
         en: "signature / to sign",
         vi: "chữ ký / ký tên",
@@ -384,6 +397,7 @@ export const lessons: IndonesianLesson[] = [
       },
       // Costs, time, status
       {
+        cell_id: "03c820cf-9284-4d01-a822-26959235704a",
         word: "biaya",
         en: "cost / fee",
         vi: "chi phí / lệ phí",
@@ -392,6 +406,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "bi-A-ya — `biaya resmi` = official fee; not `uang` (money)",
       },
       {
+        cell_id: "450504be-9b69-4c20-a299-e3a9366207f5",
         word: "kuitansi",
         en: "receipt",
         vi: "biên lai",
@@ -400,6 +415,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "kwi-TAN-si — always ask for the `kuitansi` after paying",
       },
       {
+        cell_id: "c65c0ce1-a03d-4e8e-b7ef-c0f7f79ca870",
         word: "penjamin",
         en: "sponsor / guarantor",
         vi: "người bảo lãnh",
@@ -408,6 +424,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "pen-JA-min — root `jamin` (guarantee); also `sponsor`",
       },
       {
+        cell_id: "ceb5214f-683c-4be8-b851-23dbccf1c2c5",
         word: "berlaku",
         en: "valid / in effect",
         vi: "có hiệu lực / còn hạn",
@@ -419,48 +436,56 @@ export const lessons: IndonesianLesson[] = [
     dialogue: [
       // Dialogue: Extending a KITAS at the immigration office
       {
+        cell_id: "e7134f40-9617-4dd9-a7f5-dd759d2d7004",
         speaker: "Petugas",
         text: "Selamat pagi. Ada yang bisa saya bantu?",
         vi: "Chào buổi sáng. Tôi có thể giúp gì ạ?",
         en: "Good morning. How can I help you?",
       },
       {
+        cell_id: "053bd586-e0a3-4641-987e-9c4edd1259b8",
         speaker: "Pemohon",
         text: "Selamat pagi, Pak. Saya mau memperpanjang KITAS saya.",
         vi: "Chào buổi sáng, anh. Tôi muốn gia hạn thẻ tạm trú của tôi.",
         en: "Good morning, sir. I'd like to extend my KITAS.",
       },
       {
+        cell_id: "7032c436-96c3-41ad-8441-a87c12d17126",
         speaker: "Petugas",
         text: "Baik. Boleh saya lihat paspor dan KITAS lama Anda?",
         vi: "Vâng. Cho tôi xem hộ chiếu và KITAS cũ của anh được không?",
         en: "Certainly. May I see your passport and old KITAS?",
       },
       {
+        cell_id: "6737ad85-91f2-474a-9804-6d1d2071ad4f",
         speaker: "Pemohon",
         text: "Ini, Pak. Dokumen apa saja yang diperlukan?",
         vi: "Đây ạ. Cần thêm những giấy tờ nào ạ?",
         en: "Here you are, sir. Which documents are required?",
       },
       {
+        cell_id: "1e51ea0d-8265-49fe-a56a-b1924bfa4135",
         speaker: "Petugas",
         text: "Surat dari penjamin, fotokopi paspor, dan formulir ini yang sudah diisi.",
         vi: "Thư của người bảo lãnh, bản phô-tô hộ chiếu, và mẫu đơn này đã điền xong.",
         en: "A letter from your sponsor, a passport photocopy, and this completed form.",
       },
       {
+        cell_id: "a400745f-28f4-449e-931d-1a53598a7058",
         speaker: "Pemohon",
         text: "Maaf, saya belum membawa fotokopinya. Bisa saya lengkapi besok?",
         vi: "Xin lỗi, tôi chưa mang theo bản phô-tô. Mai tôi bổ sung được không ạ?",
         en: "Sorry, I haven't brought the photocopy. May I complete it tomorrow?",
       },
       {
+        cell_id: "eae05240-5dce-44c9-a123-299983c936ce",
         speaker: "Petugas",
         text: "Bisa. Prosesnya sekitar lima hari kerja, biayanya tertera di brosur ini.",
         vi: "Được. Quá trình mất khoảng năm ngày làm việc, lệ phí ghi trong tờ rơi này.",
         en: "You may. The process takes about five working days; the fee is listed in this brochure.",
       },
       {
+        cell_id: "b4160fe1-87c6-4a12-9d52-029fb59181f5",
         speaker: "Pemohon",
         text: "Baik. Terima kasih atas bantuannya, Pak.",
         vi: "Vâng. Cảm ơn anh đã giúp đỡ ạ.",

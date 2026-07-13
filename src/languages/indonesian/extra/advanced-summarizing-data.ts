@@ -26,6 +26,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   /** Indonesian word/phrase. */
   word: string;
   /** English meaning. */
@@ -41,6 +42,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   /** Indonesian line. */
   text: string;
@@ -230,6 +232,7 @@ export const lessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: do not read the table like a robot. Use a 4-step frame: (1) `Secara umum...`; (2) `Angka utama...`; (3) `Dibandingkan dengan...` or `the trend is up/down...`; (4) `Namun...` if caution is needed. Then close with `kesimpulan sementara` if the data is not strong enough yet.",
     vocabulary: [
       {
+        cell_id: "2ce62b07-2fea-4306-8af8-df199b26a002",
         word: "grafik",
         en: "chart / graph",
         vi: "biểu đồ",
@@ -238,6 +241,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "GRAF-ik",
       },
       {
+        cell_id: "d207d1e2-e8d8-453e-9ec5-5bba646b0b21",
         word: "angka utama",
         en: "key number",
         vi: "con số chính",
@@ -246,6 +250,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "ANG-kah oo-TAH-mah",
       },
       {
+        cell_id: "b9cc83c6-70d2-4279-825d-3ac3c5438994",
         word: "tren naik",
         en: "upward trend",
         vi: "xu hướng tăng",
@@ -254,6 +259,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "tren NIGHK",
       },
       {
+        cell_id: "0f465450-a561-4515-a120-88139dd310a1",
         word: "tren turun",
         en: "downward trend",
         vi: "xu hướng giảm",
@@ -262,6 +268,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "tren TOOR-oon",
       },
       {
+        cell_id: "b98de252-1121-453a-8a91-092e7e0b9413",
         word: "perbandingan data",
         en: "data comparison",
         vi: "so sánh dữ liệu",
@@ -270,6 +277,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "per-ban-DING-an DAH-tah",
       },
       {
+        cell_id: "4116ec45-e832-4f64-b3e9-07017bc37456",
         word: "ringkasan temuan",
         en: "summary of findings",
         vi: "tóm tắt phát hiện",
@@ -278,6 +286,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "ring-KAH-san teh-MOO-an",
       },
       {
+        cell_id: "36552c85-d229-4b20-a543-052210642beb",
         word: "kesimpulan sementara",
         en: "preliminary conclusion",
         vi: "kết luận tạm thời",
@@ -286,6 +295,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "keh-seem-POO-lahn seh-men-tah-RAH",
       },
       {
+        cell_id: "767102ee-9005-4c9d-a485-c495d01f6f7a",
         word: "hati-hati",
         en: "careful / cautious",
         vi: "thận trọng",
@@ -296,30 +306,35 @@ export const lessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "4cb565e0-7fd5-4c81-bb63-4c8e44c2ceb5",
         speaker: "Anisa",
         text: "Secara umum, grafik ini menunjukkan tren naik yang stabil.",
         vi: "Nhìn chung, biểu đồ này cho thấy xu hướng tăng ổn định.",
         en: "In general, this chart shows a stable upward trend.",
       },
       {
+        cell_id: "c77598c4-4a44-4fd1-bb71-a44b54ea08a2",
         speaker: "Budi",
         text: "Benar, tetapi kita perlu hati-hati karena sampelnya masih kecil.",
         vi: "Đúng, nhưng chúng ta cần thận trọng vì mẫu vẫn còn nhỏ.",
         en: "True, but we need to be careful because the sample is still small.",
       },
       {
+        cell_id: "59c6b13b-9d86-435c-99e7-dabb37a31764",
         speaker: "Anisa",
         text: "Kalau datanya bertambah, kita bisa revisi kesimpulannya.",
         vi: "Nếu dữ liệu tăng thêm, chúng ta có thể sửa lại kết luận.",
         en: "If more data comes in, we can revise the conclusion.",
       },
       {
+        cell_id: "1624de8c-f3ab-4af5-8e74-2b1ba32833ce",
         speaker: "Budi",
         text: "Setuju. Untuk sekarang, ini baru kesimpulan sementara.",
         vi: "Đồng ý. Hiện tại, đây mới chỉ là kết luận tạm thời.",
         en: "Agreed. For now, this is only a preliminary conclusion.",
       },
       {
+        cell_id: "f04247ab-a21a-4edb-b54b-5df17014b2c5",
         speaker: "Anisa",
         text: "Saya akan menyebut angka utama dulu sebelum detailnya.",
         vi: "Tôi sẽ nêu con số chính trước khi vào chi tiết.",

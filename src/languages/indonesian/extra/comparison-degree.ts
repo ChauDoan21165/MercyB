@@ -28,6 +28,7 @@ export type LessonSentence = {
 };
 
 export type VocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -37,6 +38,7 @@ export type VocabEntry = {
 };
 
 export type DialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -133,17 +135,17 @@ export const lessons: IndonesianLesson[] = [
     tip_advice_en:
       "Mantra: 'lebih' goes BEFORE the adjective (lebih besar = bigger), opposite to Vietnamese order. Full formula: A lebih [adjective] daripada B. 'c' = 'ch' again: cepat. Avoid 'besar lebih'. Use 'daripada' in exams, 'dari' in casual speech.",
     vocabulary: [
-      { word: "lebih", en: "more", vi: "hơn", pos: "adverb", pronunciation_vi: "LE-bih", pronunciation_en: "LUH-bee" },
-      { word: "daripada", en: "than", vi: "hơn so với", pos: "conjunction", pronunciation_vi: "da-ri-PA-da", pronunciation_en: "dah-ree-PAH-dah" },
-      { word: "besar", en: "big", vi: "to, lớn", pos: "adjective", pronunciation_vi: "be-SAR", pronunciation_en: "buh-SAR" },
-      { word: "cepat", en: "fast", vi: "nhanh", pos: "adjective", pronunciation_vi: "ce-PAT", pronunciation_en: "cheh-PAT" },
-      { word: "kecil", en: "small", vi: "nhỏ", pos: "adjective", pronunciation_vi: "ke-CIL", pronunciation_en: "kuh-CHEEL" },
-      { word: "mahal", en: "expensive", vi: "đắt", pos: "adjective", pronunciation_vi: "MA-hal", pronunciation_en: "MAH-hal" },
+      { cell_id: "55dcf07e-64d2-401e-8019-8cd522615484", word: "lebih", en: "more", vi: "hơn", pos: "adverb", pronunciation_vi: "LE-bih", pronunciation_en: "LUH-bee" },
+      { cell_id: "52ca408b-1c90-44e8-9563-53c664cfa72b", word: "daripada", en: "than", vi: "hơn so với", pos: "conjunction", pronunciation_vi: "da-ri-PA-da", pronunciation_en: "dah-ree-PAH-dah" },
+      { cell_id: "8093f582-8f02-4b5d-a410-c7d8025541bd", word: "besar", en: "big", vi: "to, lớn", pos: "adjective", pronunciation_vi: "be-SAR", pronunciation_en: "buh-SAR" },
+      { cell_id: "29571533-3f39-41e1-9369-449983de37d4", word: "cepat", en: "fast", vi: "nhanh", pos: "adjective", pronunciation_vi: "ce-PAT", pronunciation_en: "cheh-PAT" },
+      { cell_id: "0687e83b-32fd-4c9a-b2c2-74cac020b518", word: "kecil", en: "small", vi: "nhỏ", pos: "adjective", pronunciation_vi: "ke-CIL", pronunciation_en: "kuh-CHEEL" },
+      { cell_id: "e5f126ad-00b5-41b4-aa6c-e2fc60dbbf8b", word: "mahal", en: "expensive", vi: "đắt", pos: "adjective", pronunciation_vi: "MA-hal", pronunciation_en: "MAH-hal" },
     ],
     dialogue: [
-      { speaker: "Budi", text: "Menurutmu, mana yang lebih enak, bakso atau sate?", vi: "Theo cậu, món nào ngon hơn, bakso hay sate?", en: "Which do you think is tastier, bakso or sate?" },
-      { speaker: "Wati", text: "Bagiku sate lebih enak daripada bakso.", vi: "Với tớ sate ngon hơn bakso.", en: "For me sate is tastier than bakso." },
-      { speaker: "Budi", text: "Tapi bakso lebih murah, kan?", vi: "Nhưng bakso rẻ hơn mà, đúng không?", en: "But bakso is cheaper, right?" },
+      { cell_id: "63e72e86-ee11-488d-a390-786f43baa6a1", speaker: "Budi", text: "Menurutmu, mana yang lebih enak, bakso atau sate?", vi: "Theo cậu, món nào ngon hơn, bakso hay sate?", en: "Which do you think is tastier, bakso or sate?" },
+      { cell_id: "efc3f1f5-3bf3-4c30-98a1-3335cee90c84", speaker: "Wati", text: "Bagiku sate lebih enak daripada bakso.", vi: "Với tớ sate ngon hơn bakso.", en: "For me sate is tastier than bakso." },
+      { cell_id: "93727146-36aa-47e4-9687-11037da50d76", speaker: "Budi", text: "Tapi bakso lebih murah, kan?", vi: "Nhưng bakso rẻ hơn mà, đúng không?", en: "But bakso is cheaper, right?" },
     ],
     exercises: [
       {
@@ -235,12 +237,12 @@ export const lessons: IndonesianLesson[] = [
     tip_advice_en:
       "Two options: 'paling' + adjective (casual) OR 'ter-' + adjective (formal). Both go BEFORE the adjective. Idiomatic forms: terbaik, terbesar, termurah, terakhir, tertinggi. 'yang paling' adds emphasis. Never put 'paling' after the adjective.",
     vocabulary: [
-      { word: "paling", en: "most (superlative)", vi: "nhất", pos: "adverb", pronunciation_vi: "PA-ling", pronunciation_en: "PAH-ling" },
-      { word: "terbaik", en: "best", vi: "tốt nhất", pos: "adjective", pronunciation_vi: "ter-BA-ik", pronunciation_en: "ter-BAH-ik" },
-      { word: "tertinggi", en: "tallest, highest", vi: "cao nhất", pos: "adjective", pronunciation_vi: "ter-TING-gi", pronunciation_en: "ter-TING-gee" },
-      { word: "termurah", en: "cheapest", vi: "rẻ nhất", pos: "adjective", pronunciation_vi: "ter-MU-rah", pronunciation_en: "ter-MOO-rah" },
-      { word: "terbesar", en: "biggest", vi: "to nhất", pos: "adjective", pronunciation_vi: "ter-be-SAR", pronunciation_en: "ter-buh-SAR" },
-      { word: "pandai", en: "smart, clever", vi: "giỏi, thông minh", pos: "adjective", pronunciation_vi: "pan-DAI", pronunciation_en: "pan-DAI" },
+      { cell_id: "09bbb6e0-9444-4eff-ba14-22d58fb47167", word: "paling", en: "most (superlative)", vi: "nhất", pos: "adverb", pronunciation_vi: "PA-ling", pronunciation_en: "PAH-ling" },
+      { cell_id: "b43c05d3-f383-4e7b-a06c-a6acf8069b9c", word: "terbaik", en: "best", vi: "tốt nhất", pos: "adjective", pronunciation_vi: "ter-BA-ik", pronunciation_en: "ter-BAH-ik" },
+      { cell_id: "3fdd6736-3947-404e-acf5-9435006a7b92", word: "tertinggi", en: "tallest, highest", vi: "cao nhất", pos: "adjective", pronunciation_vi: "ter-TING-gi", pronunciation_en: "ter-TING-gee" },
+      { cell_id: "4b053d10-44e9-4c82-996e-e2299240d7ae", word: "termurah", en: "cheapest", vi: "rẻ nhất", pos: "adjective", pronunciation_vi: "ter-MU-rah", pronunciation_en: "ter-MOO-rah" },
+      { cell_id: "59964d42-b1cc-4a47-b136-efde3fa99c41", word: "terbesar", en: "biggest", vi: "to nhất", pos: "adjective", pronunciation_vi: "ter-be-SAR", pronunciation_en: "ter-buh-SAR" },
+      { cell_id: "09f52aaf-5fa8-4ff8-a6e4-c469f9e91d64", word: "pandai", en: "smart, clever", vi: "giỏi, thông minh", pos: "adjective", pronunciation_vi: "pan-DAI", pronunciation_en: "pan-DAI" },
     ],
     exercises: [
       {
@@ -334,17 +336,17 @@ export const lessons: IndonesianLesson[] = [
     tip_advice_en:
       "'kurang' = the opposite of 'lebih'. kurang + adjective = not enough (kurang manis). Politeness tip: soften criticism with 'kurang enak' (not quite tasty) rather than blunt 'tidak enak'. Fixed phrase: 'kurang lebih' = approximately. Pronounce the final 'ng' in 'kurang' clearly.",
     vocabulary: [
-      { word: "kurang", en: "less, not enough, lacking", vi: "kém, thiếu, chưa đủ", pos: "adverb", pronunciation_vi: "KU-rang", pronunciation_en: "KOO-rang" },
-      { word: "manis", en: "sweet", vi: "ngọt", pos: "adjective", pronunciation_vi: "MA-nis", pronunciation_en: "MAH-nis" },
-      { word: "rajin", en: "diligent, hardworking", vi: "chăm chỉ", pos: "adjective", pronunciation_vi: "RA-jin", pronunciation_en: "RAH-jin" },
-      { word: "kurang lebih", en: "approximately, more or less", vi: "khoảng chừng, xấp xỉ", pos: "phrase", pronunciation_vi: "KU-rang LE-bih", pronunciation_en: "KOO-rang LUH-bee" },
-      { word: "cukup", en: "enough, sufficient", vi: "đủ", pos: "adjective", pronunciation_vi: "CU-kup", pronunciation_en: "CHOO-koop" },
-      { word: "tambah", en: "to add", vi: "thêm", pos: "verb", pronunciation_vi: "TAM-bah", pronunciation_en: "TAM-bah" },
+      { cell_id: "420f12da-2c92-4087-a554-ca8f06207537", word: "kurang", en: "less, not enough, lacking", vi: "kém, thiếu, chưa đủ", pos: "adverb", pronunciation_vi: "KU-rang", pronunciation_en: "KOO-rang" },
+      { cell_id: "d487ab93-d6bb-4124-a42e-00a5d9f72047", word: "manis", en: "sweet", vi: "ngọt", pos: "adjective", pronunciation_vi: "MA-nis", pronunciation_en: "MAH-nis" },
+      { cell_id: "e1b7ae33-e76a-42cc-81d5-eec2b6b22e11", word: "rajin", en: "diligent, hardworking", vi: "chăm chỉ", pos: "adjective", pronunciation_vi: "RA-jin", pronunciation_en: "RAH-jin" },
+      { cell_id: "39cc3a71-4752-4b38-9016-e3540cb6de36", word: "kurang lebih", en: "approximately, more or less", vi: "khoảng chừng, xấp xỉ", pos: "phrase", pronunciation_vi: "KU-rang LE-bih", pronunciation_en: "KOO-rang LUH-bee" },
+      { cell_id: "aa803bac-ed98-4245-8ddc-75d9511a5eef", word: "cukup", en: "enough, sufficient", vi: "đủ", pos: "adjective", pronunciation_vi: "CU-kup", pronunciation_en: "CHOO-koop" },
+      { cell_id: "e7d3f0b9-58c5-4d01-9a61-f613ec93d4d0", word: "tambah", en: "to add", vi: "thêm", pos: "verb", pronunciation_vi: "TAM-bah", pronunciation_en: "TAM-bah" },
     ],
     dialogue: [
-      { speaker: "Pembeli", text: "Maaf, tehnya kurang manis. Bisa tambah gula?", vi: "Xin lỗi, trà chưa đủ ngọt. Thêm đường được không?", en: "Sorry, the tea isn't sweet enough. Can you add sugar?" },
-      { speaker: "Penjual", text: "Tentu. Kurang manis berapa sendok lagi?", vi: "Tất nhiên. Thiếu ngọt thì thêm mấy thìa nữa?", en: "Sure. How many more spoons should I add?" },
-      { speaker: "Pembeli", text: "Satu sendok cukup. Terima kasih.", vi: "Một thìa là đủ. Cảm ơn.", en: "One spoon is enough. Thanks." },
+      { cell_id: "d55e47d3-69d9-4914-8ce4-ccd72498be32", speaker: "Pembeli", text: "Maaf, tehnya kurang manis. Bisa tambah gula?", vi: "Xin lỗi, trà chưa đủ ngọt. Thêm đường được không?", en: "Sorry, the tea isn't sweet enough. Can you add sugar?" },
+      { cell_id: "42720353-b024-4d43-9265-7e5b3e4adcd6", speaker: "Penjual", text: "Tentu. Kurang manis berapa sendok lagi?", vi: "Tất nhiên. Thiếu ngọt thì thêm mấy thìa nữa?", en: "Sure. How many more spoons should I add?" },
+      { cell_id: "b2769a4b-2959-48c0-a89b-3472cb1a2f72", speaker: "Pembeli", text: "Satu sendok cukup. Terima kasih.", vi: "Một thìa là đủ. Cảm ơn.", en: "One spoon is enough. Thanks." },
     ],
     exercises: [
       {
@@ -427,12 +429,12 @@ export const lessons: IndonesianLesson[] = [
     tip_advice_en:
       "Two equality forms: 'sama [adjective] dengan' OR 'se-' + adjective (setinggi, secepat, sebesar). Don't drop 'dengan' in form 1. Handy phrase: 'sama saja' (all the same). 'se-' attaches directly, no space. Note 'se-' has several meanings — here it's 'as ... as'.",
     vocabulary: [
-      { word: "sama", en: "same, equal", vi: "giống, bằng", pos: "adjective", pronunciation_vi: "SA-ma", pronunciation_en: "SAH-mah" },
-      { word: "dengan", en: "with", vi: "với", pos: "preposition", pronunciation_vi: "de-NGAN", pronunciation_en: "duh-NGAN" },
-      { word: "setinggi", en: "as tall as", vi: "cao bằng", pos: "adjective", pronunciation_vi: "se-TING-gi", pronunciation_en: "suh-TING-gee" },
-      { word: "sebesar", en: "as big as", vi: "to bằng", pos: "adjective", pronunciation_vi: "se-be-SAR", pronunciation_en: "suh-buh-SAR" },
-      { word: "sama saja", en: "all the same, no difference", vi: "như nhau cả", pos: "phrase", pronunciation_vi: "SA-ma SA-ja", pronunciation_en: "SAH-mah SAH-jah" },
-      { word: "mirip", en: "similar, alike", vi: "giống, na ná", pos: "adjective", pronunciation_vi: "MI-rip", pronunciation_en: "MEE-rip" },
+      { cell_id: "520407ab-ad80-4896-a935-2ca373960786", word: "sama", en: "same, equal", vi: "giống, bằng", pos: "adjective", pronunciation_vi: "SA-ma", pronunciation_en: "SAH-mah" },
+      { cell_id: "16a1b532-3685-4371-a531-16cc3863064d", word: "dengan", en: "with", vi: "với", pos: "preposition", pronunciation_vi: "de-NGAN", pronunciation_en: "duh-NGAN" },
+      { cell_id: "c865807e-ddb8-46a2-ba43-33432bb10529", word: "setinggi", en: "as tall as", vi: "cao bằng", pos: "adjective", pronunciation_vi: "se-TING-gi", pronunciation_en: "suh-TING-gee" },
+      { cell_id: "f04302f1-ad31-4afc-9ad8-4b072d5e08c9", word: "sebesar", en: "as big as", vi: "to bằng", pos: "adjective", pronunciation_vi: "se-be-SAR", pronunciation_en: "suh-buh-SAR" },
+      { cell_id: "fb1eaacc-4684-409f-ac73-7f8df9d642cf", word: "sama saja", en: "all the same, no difference", vi: "như nhau cả", pos: "phrase", pronunciation_vi: "SA-ma SA-ja", pronunciation_en: "SAH-mah SAH-jah" },
+      { cell_id: "ef80cd32-de9a-4b10-a287-e3bdbfe9657f", word: "mirip", en: "similar, alike", vi: "giống, na ná", pos: "adjective", pronunciation_vi: "MI-rip", pronunciation_en: "MEE-rip" },
     ],
     exercises: [
       {
@@ -515,17 +517,17 @@ export const lessons: IndonesianLesson[] = [
     tip_advice_en:
       "Perfect match: makin/semakin ... makin/semakin = the more ... the more. 'semakin' (formal, writing) vs 'makin' (casual, speech). Place it BEFORE the adjective. Standalone: 'semakin panas' = increasingly hot. This is the easiest grammar point — logic is 100% like Vietnamese.",
     vocabulary: [
-      { word: "semakin", en: "increasingly, the more", vi: "ngày càng, càng", pos: "adverb", pronunciation_vi: "se-MA-kin", pronunciation_en: "suh-MAH-kin" },
-      { word: "makin", en: "the more (short form)", vi: "càng (rút gọn)", pos: "adverb", pronunciation_vi: "MA-kin", pronunciation_en: "MAH-kin" },
-      { word: "lama", en: "long (in time)", vi: "lâu", pos: "adjective", pronunciation_vi: "LA-ma", pronunciation_en: "LAH-mah" },
-      { word: "pintar", en: "smart, clever", vi: "thông minh", pos: "adjective", pronunciation_vi: "pin-TAR", pronunciation_en: "pin-TAR" },
-      { word: "banyak", en: "many, much", vi: "nhiều", pos: "adjective", pronunciation_vi: "BA-nyak", pronunciation_en: "BAH-nyak" },
-      { word: "harga", en: "price", vi: "giá", pos: "noun", pronunciation_vi: "HAR-ga", pronunciation_en: "HAR-gah" },
+      { cell_id: "e2bc9db7-694f-4498-a68c-5e23db529a7d", word: "semakin", en: "increasingly, the more", vi: "ngày càng, càng", pos: "adverb", pronunciation_vi: "se-MA-kin", pronunciation_en: "suh-MAH-kin" },
+      { cell_id: "3afd4d63-4e7c-4b6c-8748-15111309378d", word: "makin", en: "the more (short form)", vi: "càng (rút gọn)", pos: "adverb", pronunciation_vi: "MA-kin", pronunciation_en: "MAH-kin" },
+      { cell_id: "2415cdc4-c231-4528-977a-00387106463d", word: "lama", en: "long (in time)", vi: "lâu", pos: "adjective", pronunciation_vi: "LA-ma", pronunciation_en: "LAH-mah" },
+      { cell_id: "448e957b-848e-4cb1-9f4e-00870b3c89f4", word: "pintar", en: "smart, clever", vi: "thông minh", pos: "adjective", pronunciation_vi: "pin-TAR", pronunciation_en: "pin-TAR" },
+      { cell_id: "aa759104-e61c-42aa-b4bf-eccaaa4cb15e", word: "banyak", en: "many, much", vi: "nhiều", pos: "adjective", pronunciation_vi: "BA-nyak", pronunciation_en: "BAH-nyak" },
+      { cell_id: "e15d273b-a4d0-4fd4-9c3f-c2691c632851", word: "harga", en: "price", vi: "giá", pos: "noun", pronunciation_vi: "HAR-ga", pronunciation_en: "HAR-gah" },
     ],
     dialogue: [
-      { speaker: "Eko", text: "Harga rumah makin lama makin mahal ya.", vi: "Giá nhà càng lâu càng đắt nhỉ.", en: "House prices get more expensive over time, don't they." },
-      { speaker: "Sri", text: "Iya, semakin sulit beli rumah di Jakarta.", vi: "Ừ, càng ngày càng khó mua nhà ở Jakarta.", en: "Yeah, it's increasingly hard to buy a house in Jakarta." },
-      { speaker: "Eko", text: "Makanya, makin cepat menabung makin baik.", vi: "Vậy nên, càng sớm tiết kiệm càng tốt.", en: "That's why, the sooner you save the better." },
+      { cell_id: "9e4b9b12-e529-4b39-9cbb-ad22c749fa99", speaker: "Eko", text: "Harga rumah makin lama makin mahal ya.", vi: "Giá nhà càng lâu càng đắt nhỉ.", en: "House prices get more expensive over time, don't they." },
+      { cell_id: "ee1910eb-ce21-4ca5-ad8e-acfedd82d9aa", speaker: "Sri", text: "Iya, semakin sulit beli rumah di Jakarta.", vi: "Ừ, càng ngày càng khó mua nhà ở Jakarta.", en: "Yeah, it's increasingly hard to buy a house in Jakarta." },
+      { cell_id: "9278736d-621a-4e08-a410-9f4d755f1c90", speaker: "Eko", text: "Makanya, makin cepat menabung makin baik.", vi: "Vậy nên, càng sớm tiết kiệm càng tốt.", en: "That's why, the sooner you save the better." },
     ],
     exercises: [
       {

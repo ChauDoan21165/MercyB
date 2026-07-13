@@ -13,6 +13,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -22,6 +23,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -235,41 +237,46 @@ export const lessons: IndonesianLesson[] = [
     tip_advice_en:
       "Tip for Vietnamese speakers: write summaries with a five-sentence frame: artikel ini membahas...; gagasan utama penulis adalah...; argumen didukung oleh...; kesimpulannya...; secara keseluruhan.... If you add evaluation, signal it with `analisis singkat` or `namun`. Avoid copying too much original wording; use `parafrasa` and only use `kutipan langsung` when needed.",
     vocabulary: [
-      { word: "merangkum artikel", en: "to summarize an article", vi: "tóm tắt bài viết", pos: "verb phrase", pronunciation_vi: "me-RANG-kum ar-TI-kel", pronunciation_en: "me-RANG-koom ar-TEE-kel" },
-      { word: "gagasan utama", en: "main idea", vi: "ý chính", pos: "noun phrase", pronunciation_vi: "ga-GAS-an u-TA-ma", pronunciation_en: "ga-GAS-an oo-TA-ma" },
-      { word: "argumen penulis", en: "author's argument", vi: "lập luận của tác giả", pos: "noun phrase", pronunciation_vi: "ar-gu-MEN pe-NU-lis", pronunciation_en: "ar-goo-MEN pe-NOO-lis" },
-      { word: "bukti", en: "evidence", vi: "bằng chứng", pos: "noun", pronunciation_vi: "BUK-ti", pronunciation_en: "BOOK-ti" },
-      { word: "kesimpulan", en: "conclusion", vi: "kết luận", pos: "noun", pronunciation_vi: "ke-sim-PUL-an", pronunciation_en: "ke-sim-POOL-an" },
-      { word: "parafrasa", en: "paraphrase", vi: "diễn giải/paraphrase", pos: "noun", pronunciation_vi: "pa-ra-FRA-sa", pronunciation_en: "pa-ra-FRA-sa" },
-      { word: "kutipan", en: "quotation", vi: "trích dẫn", pos: "noun", pronunciation_vi: "ku-TIP-an", pronunciation_en: "koo-TIP-an" },
-      { word: "analisis singkat", en: "brief analysis", vi: "phân tích ngắn", pos: "noun phrase", pronunciation_vi: "a-na-LI-sis SING-kat", pronunciation_en: "a-na-LEE-sis SING-kat" },
+      { cell_id: "19606e84-3556-483e-a95f-c2abc119eef3", word: "merangkum artikel", en: "to summarize an article", vi: "tóm tắt bài viết", pos: "verb phrase", pronunciation_vi: "me-RANG-kum ar-TI-kel", pronunciation_en: "me-RANG-koom ar-TEE-kel" },
+      { cell_id: "d194ae67-6352-4dea-a6d5-da5a170b8edb", word: "gagasan utama", en: "main idea", vi: "ý chính", pos: "noun phrase", pronunciation_vi: "ga-GAS-an u-TA-ma", pronunciation_en: "ga-GAS-an oo-TA-ma" },
+      { cell_id: "d9a15c30-c4ea-456c-9535-8d806494c5aa", word: "argumen penulis", en: "author's argument", vi: "lập luận của tác giả", pos: "noun phrase", pronunciation_vi: "ar-gu-MEN pe-NU-lis", pronunciation_en: "ar-goo-MEN pe-NOO-lis" },
+      { cell_id: "642dcb4a-f7e7-4dbf-af4e-463ba65d11b0", word: "bukti", en: "evidence", vi: "bằng chứng", pos: "noun", pronunciation_vi: "BUK-ti", pronunciation_en: "BOOK-ti" },
+      { cell_id: "620835e1-4ae6-43fa-a4d6-ec254c885167", word: "kesimpulan", en: "conclusion", vi: "kết luận", pos: "noun", pronunciation_vi: "ke-sim-PUL-an", pronunciation_en: "ke-sim-POOL-an" },
+      { cell_id: "24903fde-1bd5-4877-b227-10c1c7a184c3", word: "parafrasa", en: "paraphrase", vi: "diễn giải/paraphrase", pos: "noun", pronunciation_vi: "pa-ra-FRA-sa", pronunciation_en: "pa-ra-FRA-sa" },
+      { cell_id: "0a59433b-6944-4006-82cd-b2852e95caae", word: "kutipan", en: "quotation", vi: "trích dẫn", pos: "noun", pronunciation_vi: "ku-TIP-an", pronunciation_en: "koo-TIP-an" },
+      { cell_id: "7955e933-12a1-40f5-9deb-f2587309ebcb", word: "analisis singkat", en: "brief analysis", vi: "phân tích ngắn", pos: "noun phrase", pronunciation_vi: "a-na-LI-sis SING-kat", pronunciation_en: "a-na-LEE-sis SING-kat" },
     ],
     dialogue: [
       {
+        cell_id: "c607ba43-f319-4775-8ff4-f29d7d3172d7",
         speaker: "Dosen",
         text: "Apa gagasan utama artikel yang kamu baca?",
         vi: "Ý chính của bài viết em đọc là gì?",
         en: "What is the main idea of the article you read?",
       },
       {
+        cell_id: "cb732fd1-7171-49ec-9c5e-3ad5b6f39851",
         speaker: "Mahasiswa",
         text: "Artikel ini membahas perubahan pola belajar mahasiswa.",
         vi: "Bài viết này bàn về sự thay đổi trong mô hình học tập của sinh viên.",
         en: "This article discusses changes in students' learning patterns.",
       },
       {
+        cell_id: "d8629523-3845-4125-9dd4-f9af9fd5c66f",
         speaker: "Dosen",
         text: "Bagaimana argumen penulis didukung?",
         vi: "Lập luận của tác giả được hỗ trợ như thế nào?",
         en: "How is the author's argument supported?",
       },
       {
+        cell_id: "a4cfc8ca-ce91-4bcc-a12c-209d38aac3b8",
         speaker: "Mahasiswa",
         text: "Argumen penulis didukung oleh data survei dan beberapa kutipan wawancara.",
         vi: "Lập luận của tác giả được hỗ trợ bởi dữ liệu khảo sát và vài trích dẫn phỏng vấn.",
         en: "The author's argument is supported by survey data and several interview quotations.",
       },
       {
+        cell_id: "aeb5360d-3e1c-415f-82e6-5da38116ee27",
         speaker: "Dosen",
         text: "Baik. Jangan lupa bedakan ringkasan dan analisis singkat.",
         vi: "Tốt. Đừng quên phân biệt tóm tắt và phân tích ngắn.",

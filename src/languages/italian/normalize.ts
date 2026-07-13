@@ -45,6 +45,7 @@ type ItalianSentenceInput = {
 };
 
 type ItalianVocabInput = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -54,6 +55,7 @@ type ItalianVocabInput = {
 };
 
 type ItalianDialogueInput = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;

@@ -18,6 +18,7 @@ export type PunjabiInventorySealFocus =
 export type PunjabiInventorySealStage = "pre_a11_inventory_seal" | "catalog" | "bundle" | "pre_integration" | "sanity";
 
 export type PunjabiScriptVocabularyInventorySealSample = {
+  cell_id?: string;
   id: string;
   focus: PunjabiInventorySealFocus;
   stage: PunjabiInventorySealStage;
@@ -39,6 +40,7 @@ export type PunjabiScriptVocabularyInventorySealSample = {
 };
 
 export type PunjabiScriptVocabularyInventorySealSection = {
+  cell_id?: string;
   focus: PunjabiInventorySealFocus;
   title_vi: string;
   title_en: string;

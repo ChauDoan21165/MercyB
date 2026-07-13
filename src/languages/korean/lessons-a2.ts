@@ -13,42 +13,52 @@ export const lessons: KoreanLesson[] = [
     "intro_vi": "여기(đây), 거기(đó), 저기(kia) phân biệt theo khoảng cách.",
     "vocabulary": [
       {
+        cell_id: "76a546a9-7599-4202-b960-7b7d9b3dde03",
         "hangul": "여기",
         "meaning": "đây"
       },
       {
+        cell_id: "9b31f935-fa56-4c2d-bfab-d486043b3f7f",
         "hangul": "거기",
         "meaning": "đó"
       },
       {
+        cell_id: "0e51f913-6ee3-4634-a479-6ca00706fc99",
         "hangul": "저기",
         "meaning": "kia"
       },
       {
+        cell_id: "f27c93eb-10ce-42cd-9b75-dab914d6be22",
         "hangul": "어디",
         "meaning": "đâu"
       },
       {
+        cell_id: "532328f4-8153-419e-b114-fc71de3f8b8a",
         "hangul": "앞",
         "meaning": "trước"
       },
       {
+        cell_id: "8946a0aa-1ca1-4624-867c-23419eef7cb1",
         "hangul": "뒤",
         "meaning": "sau"
       },
       {
+        cell_id: "77675514-0341-4c99-9cef-033118c75ed2",
         "hangul": "왼쪽",
         "meaning": "trái"
       },
       {
+        cell_id: "e174a11f-5c13-4b1c-a79b-4a36591da0fb",
         "hangul": "오른쪽",
         "meaning": "phải"
       },
       {
+        cell_id: "213b1d6f-5915-4fc2-b43c-786f9c012898",
         "hangul": "위",
         "meaning": "trên"
       },
       {
+        cell_id: "9f94b7ea-d3ce-4277-aef4-35e7f4df3cb3",
         "hangul": "아래",
         "meaning": "dưới"
       }
@@ -87,24 +97,28 @@ export const lessons: KoreanLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "e0de8e5c-6381-412b-8ac7-b04c4a84812c",
         "speaker": "A",
         "hangul": "화장실 어디예요?",
         "meaning": "Bathroom?",
         "text_vi": "Nhà vệ sinh ở đâu vậy?"
       },
       {
+        cell_id: "b8ff3536-2059-4b59-89e0-d6580346dd00",
         "speaker": "B",
         "hangul": "저기 오른쪽.",
         "meaning": "Over there, right.",
         "text_vi": "Đằng kia, bên phải."
       },
       {
+        cell_id: "221597e3-e99e-4df6-bf67-9f3b8a7cb160",
         "speaker": "A",
         "hangul": "감사합니다!",
         "meaning": "Thanks!",
         "text_vi": "Cảm ơn ạ!"
       },
       {
+        cell_id: "5e5832f3-9d29-4e64-a199-95ce47f50431",
         "speaker": "B",
         "hangul": "네, 천천히.",
         "meaning": "Take your time.",
@@ -146,42 +160,52 @@ export const lessons: KoreanLesson[] = [
     "intro_vi": "뭐(cái gì), 누구(ai), 언제(khi nào), 어디(đâu), 왜(sao), 어떻게(thế nào).",
     "vocabulary": [
       {
+        cell_id: "1f6748b4-dd94-4556-80d9-591bdd0f260c",
         "hangul": "뭐/무엇",
         "meaning": "cái gì"
       },
       {
+        cell_id: "316b83e0-6e56-4947-83a0-b7351cfb28f0",
         "hangul": "누구",
         "meaning": "ai"
       },
       {
+        cell_id: "5c1be88a-2cf8-4ecb-bcfc-262272602028",
         "hangul": "언제",
         "meaning": "khi nào"
       },
       {
+        cell_id: "b5ede932-646a-4cf0-9eff-027612ad8b92",
         "hangul": "어디",
         "meaning": "ở đâu"
       },
       {
+        cell_id: "73f94779-4521-4da8-96a1-0b031edeac9b",
         "hangul": "왜",
         "meaning": "tại sao"
       },
       {
+        cell_id: "634ee7af-ad7e-4ef1-8145-8962a49cd6c1",
         "hangul": "어떻게",
         "meaning": "như thế nào"
       },
       {
+        cell_id: "f6a35a15-1817-4032-9c8b-9ab7baa36570",
         "hangul": "얼마",
         "meaning": "bao nhiêu"
       },
       {
+        cell_id: "f2e4855d-2881-4dc8-ae63-5d48c4d53785",
         "hangul": "몇",
         "meaning": "mấy"
       },
       {
+        cell_id: "b60cf4ff-c172-498c-b673-8cac0ff9e8ce",
         "hangul": "어떤",
         "meaning": "loại nào"
       },
       {
+        cell_id: "662da205-ae50-4225-aba9-398399455e7b",
         "hangul": "무슨",
         "meaning": "gì (+danh từ)"
       }
@@ -220,24 +244,28 @@ export const lessons: KoreanLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "9e93f565-569d-4b2b-aed2-a6134d3ffde8",
         "speaker": "A",
         "hangul": "한국어 왜 배워요?",
         "meaning": "Why Korean?",
         "text_vi": "Sao bạn học tiếng Hàn?"
       },
       {
+        cell_id: "0b61f122-4f7f-4989-a569-bb2b91afe9d1",
         "speaker": "B",
         "hangul": "드라마 좋아해서요.",
         "meaning": "Love dramas.",
         "text_vi": "Vì tôi thích phim Hàn."
       },
       {
+        cell_id: "14033597-f827-40dd-9186-c7716b2af7cf",
         "speaker": "A",
         "hangul": "어떤 드라마?",
         "meaning": "Which dramas?",
         "text_vi": "Phim nào vậy?"
       },
       {
+        cell_id: "05073ce6-5939-44c9-8db3-c511efb3b0df",
         "speaker": "B",
         "hangul": "로맨스 드라마!",
         "meaning": "Romance!",
@@ -279,42 +307,52 @@ export const lessons: KoreanLesson[] = [
     "intro_vi": "안 + động từ = không. 못 = không thể. 있다 → 없다 (không có).",
     "vocabulary": [
       {
+        cell_id: "b037b5c9-0e31-439b-b8d0-6006c4e5947f",
         "hangul": "안",
         "meaning": "không"
       },
       {
+        cell_id: "6d4f5a9a-d66f-4cce-896b-43a3708680a2",
         "hangul": "못",
         "meaning": "không thể"
       },
       {
+        cell_id: "37ed0d56-4903-43fa-90bb-2cad9a479a32",
         "hangul": "없다",
         "meaning": "không có"
       },
       {
+        cell_id: "cdaf7470-82f0-41c7-a126-3e7419bd7aad",
         "hangul": "안 가요",
         "meaning": "không đi"
       },
       {
+        cell_id: "1424d9c5-8da0-4f0b-a8ad-a7ead7ceb7cb",
         "hangul": "안 먹어요",
         "meaning": "không ăn"
       },
       {
+        cell_id: "c9210077-0c16-4c89-9041-4249026a98b8",
         "hangul": "안 해요",
         "meaning": "không làm"
       },
       {
+        cell_id: "fb636fa2-c805-455f-8681-0aabbfb419d5",
         "hangul": "못 가요",
         "meaning": "không thể đi"
       },
       {
+        cell_id: "4a69c7a5-8c69-4c02-a6a9-18cd6e475a75",
         "hangul": "못 먹어요",
         "meaning": "không thể ăn"
       },
       {
+        cell_id: "03a8f1e1-ab29-4327-8153-1a50934a3bf9",
         "hangul": "없어요",
         "meaning": "không có"
       },
       {
+        cell_id: "ced1949e-056c-49d3-8554-6b3f509ef248",
         "hangul": "아니에요",
         "meaning": "không phải"
       }
@@ -353,24 +391,28 @@ export const lessons: KoreanLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "1a6e6179-fa99-445f-8bcd-d0208f85dff5",
         "speaker": "A",
         "hangul": "고기 드세요?",
         "meaning": "Eat meat?",
         "text_vi": "Bạn có ăn thịt không?"
       },
       {
+        cell_id: "75ad12de-0386-4952-87ae-56951bf035f1",
         "speaker": "B",
         "hangul": "아니요, 안 먹어요.",
         "meaning": "No, I don't.",
         "text_vi": "Không, tôi không ăn."
       },
       {
+        cell_id: "ebcb7a8d-42b5-4d80-94ed-bf927ba84069",
         "speaker": "A",
         "hangul": "왜요?",
         "meaning": "Why?",
         "text_vi": "Tại sao vậy?"
       },
       {
+        cell_id: "f8c25862-12cc-4da7-a846-617508f1a8c9",
         "speaker": "B",
         "hangul": "채식주의자예요.",
         "meaning": "Vegetarian.",
@@ -412,42 +454,52 @@ export const lessons: KoreanLesson[] = [
     "intro_vi": "Thêm -았/었/했어요 vào gốc động từ. Quy tắc phụ thuộc nguyên âm cuối.",
     "vocabulary": [
       {
+        cell_id: "257626dd-20d4-4620-b576-0e499e5a2685",
         "hangul": "갔어요",
         "meaning": "đã đi"
       },
       {
+        cell_id: "17b9ba27-ebcd-4ce5-9e2f-2436b18f9931",
         "hangul": "먹었어요",
         "meaning": "đã ăn"
       },
       {
+        cell_id: "119387eb-01e2-42f2-b457-139814c539c9",
         "hangul": "했어요",
         "meaning": "đã làm"
       },
       {
+        cell_id: "877a0c1e-4f8e-45e0-8fd1-5610063453ca",
         "hangul": "봤어요",
         "meaning": "đã xem"
       },
       {
+        cell_id: "6bd96df3-eb2d-4abb-a122-d7f269ce39ec",
         "hangul": "왔어요",
         "meaning": "đã đến"
       },
       {
+        cell_id: "f883ebbb-c997-41ed-8af3-f1a9d513e498",
         "hangul": "좋았어요",
         "meaning": "đã tốt"
       },
       {
+        cell_id: "b1bf46e8-bda6-4637-86dd-1f65447408ca",
         "hangul": "읽었어요",
         "meaning": "đã đọc"
       },
       {
+        cell_id: "8475df27-1616-412c-af97-781f49ef292f",
         "hangul": "들었어요",
         "meaning": "đã nghe"
       },
       {
+        cell_id: "9ef10c2b-480c-4b3c-8922-eb86686a0e4f",
         "hangul": "만났어요",
         "meaning": "đã gặp"
       },
       {
+        cell_id: "abc9d2b8-966d-4cea-ad39-caaede8d6248",
         "hangul": "샀어요",
         "meaning": "đã mua"
       }
@@ -486,24 +538,28 @@ export const lessons: KoreanLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "d0d9a9a9-d7c7-4a83-82f7-8a21924c4667",
         "speaker": "A",
         "hangul": "주말에 뭐 했어요?",
         "meaning": "Weekend?",
         "text_vi": "Cuối tuần bạn làm gì?"
       },
       {
+        cell_id: "d67b0adb-55a0-4617-b170-7c8d8a15c033",
         "speaker": "B",
         "hangul": "영화 봤어요.",
         "meaning": "Watched movie.",
         "text_vi": "Tôi đi xem phim."
       },
       {
+        cell_id: "8c2a5142-ede1-4451-87d8-c38e77414520",
         "speaker": "A",
         "hangul": "재미있었어요?",
         "meaning": "Fun?",
         "text_vi": "Có vui không?"
       },
       {
+        cell_id: "5ebe88f4-716f-470a-ae51-d39be6d9b4ae",
         "speaker": "B",
         "hangul": "네, 아주!",
         "meaning": "Yes, very!",
@@ -545,42 +601,52 @@ export const lessons: KoreanLesson[] = [
     "intro_vi": "Chèn -시- vào sau gốc động từ để tôn trọng chủ ngữ. Rất quan trọng trong văn hóa Hàn.",
     "vocabulary": [
       {
+        cell_id: "43ae06a7-b31d-48f2-8efb-7e4efa73d216",
         "hangul": "가세요",
         "meaning": "đi (kính)"
       },
       {
+        cell_id: "c7df8fce-8797-4188-ba29-8a832b6e2e55",
         "hangul": "하세요",
         "meaning": "làm (kính)"
       },
       {
+        cell_id: "3bcd92d7-4369-447c-840a-254a987b3941",
         "hangul": "계세요",
         "meaning": "ở (kính)"
       },
       {
+        cell_id: "69a40e3a-0d82-401a-a1eb-2333496edf16",
         "hangul": "드세요",
         "meaning": "ăn (kính)"
       },
       {
+        cell_id: "f036c789-fd7f-472f-99b8-b3e8506b850b",
         "hangul": "주무세요",
         "meaning": "ngủ (kính)"
       },
       {
+        cell_id: "adaa1a99-87e2-4dbd-8b1f-bb9c67f12d70",
         "hangul": "보세요",
         "meaning": "xem (kính)"
       },
       {
+        cell_id: "70e58c09-0ced-4414-bba7-84f58631100c",
         "hangul": "읽으세요",
         "meaning": "đọc (kính)"
       },
       {
+        cell_id: "1762e924-3894-49ab-9e1c-b0fb26adf7cd",
         "hangul": "말씀하세요",
         "meaning": "nói (kính)"
       },
       {
+        cell_id: "50fd0c92-1f3a-41a0-beb9-5ccefaea834c",
         "hangul": "선생님",
         "meaning": "thầy/cô"
       },
       {
+        cell_id: "203684b7-9639-4aea-9331-f7b73719e9ec",
         "hangul": "분",
         "meaning": "người (kính)"
       }
@@ -619,24 +685,28 @@ export const lessons: KoreanLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "4396b181-30e6-49a9-adf2-dc6a35f54ce3",
         "speaker": "A",
         "hangul": "할머니, 진지 드셨어요?",
         "meaning": "Grandma, did you eat?",
         "text_vi": "Bà ơi, bà ăn cơm chưa ạ?"
       },
       {
+        cell_id: "8981f723-a7e0-46b5-8f8a-b3bc9b4b36d2",
         "speaker": "B",
         "hangul": "응, 방금 먹었어.",
         "meaning": "Yes, just ate.",
         "text_vi": "Ừ, bà vừa ăn xong."
       },
       {
+        cell_id: "a89b8a57-6d7e-4138-bb01-b6ffea595c85",
         "speaker": "A",
         "hangul": "뭐 드셨어요?",
         "meaning": "What?",
         "text_vi": "Bà ăn gì ạ?"
       },
       {
+        cell_id: "64b03822-5c0f-4562-a63a-dbe6c52de447",
         "speaker": "B",
         "hangul": "국 먹었어.",
         "meaning": "Soup.",
@@ -678,42 +748,52 @@ export const lessons: KoreanLesson[] = [
     "intro_vi": "Học cách diễn đạt khi gọi điện thoại bằng tiếng Hàn. Dùng 여보세요 để chào khi nghe điện.",
     "vocabulary": [
       {
+        cell_id: "e08a79d7-e998-4bb8-aa7d-ff06f38568ca",
         "hangul": "전화",
         "meaning": "telephone"
       },
       {
+        cell_id: "7bd26c0e-8d2c-4dd3-9bd5-a56db6a7be74",
         "hangul": "전화를 걸다",
         "meaning": "to make a call"
       },
       {
+        cell_id: "a10a8d5a-5df2-4159-9efc-a0c09258a7ea",
         "hangul": "전화를 받다",
         "meaning": "to answer the phone"
       },
       {
+        cell_id: "524d1fc2-173d-4cfb-b594-deb84b5f22d3",
         "hangul": "통화하다",
         "meaning": "to have a conversation"
       },
       {
+        cell_id: "e962a715-7fc0-428e-ab44-9f7679f920ec",
         "hangul": "여보세요",
         "meaning": "hello (on phone)"
       },
       {
+        cell_id: "149e40bd-0cb0-477c-8f51-e28d74705929",
         "hangul": "실례합니다",
         "meaning": "excuse me"
       },
       {
+        cell_id: "04ac9083-fead-49b3-945c-5b66be412c90",
         "hangul": "잠시만요",
         "meaning": "just a moment"
       },
       {
+        cell_id: "7f331d0b-9ee0-4666-a068-47b1943ff608",
         "hangul": "다시 전화하다",
         "meaning": "to call again"
       },
       {
+        cell_id: "c78eeb6b-44c3-4827-ae48-45a8c8641dd5",
         "hangul": "메시지를 남기다",
         "meaning": "to leave a message"
       },
       {
+        cell_id: "195bd53d-eea5-4486-bcfd-279b87a5442f",
         "hangul": "통화 중",
         "meaning": "busy (phone)"
       }
@@ -752,24 +832,28 @@ export const lessons: KoreanLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "54b28f01-52b7-4d03-9b28-5fb8268c0fdd",
         "speaker": "A",
         "hangul": "여보세요, 김민수 씨 계세요?",
         "meaning": "Hello, is Minsu Kim there?",
         "text_vi": "Alô, cho hỏi anh Kim Minsu có ở đó không ạ?"
       },
       {
+        cell_id: "842f52e5-3890-47ed-b7cc-dcc4e92107cb",
         "speaker": "B",
         "hangul": "제가 김민순데요. 누구세요?",
         "meaning": "This is Minsu Kim. Who is this?",
         "text_vi": "Tôi là Kim Minsu đây. Ai vậy ạ?"
       },
       {
+        cell_id: "af174d41-4345-4538-a8fe-f2a2b9871c12",
         "speaker": "A",
         "hangul": "저는 박지영이에요.",
         "meaning": "This is Jiyoung Park.",
         "text_vi": "Tôi là Park Jiyoung."
       },
       {
+        cell_id: "c01479d2-3008-4a34-9148-5ed38ad5d483",
         "speaker": "B",
         "hangul": "아, 지영 씨! 무슨 일이세요?",
         "meaning": "Ah, Jiyoung! What can I do for you?",
@@ -811,42 +895,52 @@ export const lessons: KoreanLesson[] = [
     "intro_vi": "Học các cách diễn đạt email trang trọng và thân mật. Dùng 안녕하세요 để chào và 감사합니다 để cảm ơn.",
     "vocabulary": [
       {
+        cell_id: "9fb65ed5-d526-4a4c-8704-1eeefebcfc25",
         "hangul": "이메일",
         "meaning": "email"
       },
       {
+        cell_id: "4d364489-32b9-41fa-9578-f56dca908f8e",
         "hangul": "보내다",
         "meaning": "to send"
       },
       {
+        cell_id: "74a2af5c-68b3-450c-8994-2b70cb492de3",
         "hangul": "받다",
         "meaning": "to receive"
       },
       {
+        cell_id: "444b2b69-59aa-4048-ab53-cc383e85501d",
         "hangul": "제목",
         "meaning": "subject"
       },
       {
+        cell_id: "bcb220b3-2d8e-4a29-85f7-fe8dfb07040c",
         "hangul": "내용",
         "meaning": "content"
       },
       {
+        cell_id: "4af3111d-c09a-40b7-8683-3faef0da9acd",
         "hangul": "첨부 파일",
         "meaning": "attachment"
       },
       {
+        cell_id: "af57142b-8c1d-4499-a92b-4d16f05abbb3",
         "hangul": "회신하다",
         "meaning": "to reply"
       },
       {
+        cell_id: "d3b29173-070d-4471-96fb-ce6d5e84007d",
         "hangul": "확인하다",
         "meaning": "to confirm"
       },
       {
+        cell_id: "4fa70688-9483-4f3d-8ae8-076ab0ed34bf",
         "hangul": "감사합니다",
         "meaning": "thank you"
       },
       {
+        cell_id: "c7d8b196-f0b3-410d-95ee-6804930cce27",
         "hangul": "안녕하세요",
         "meaning": "hello (formal)"
       }
@@ -885,24 +979,28 @@ export const lessons: KoreanLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "5d2204b8-ddc8-488a-889f-57359a4a3bf3",
         "speaker": "A",
         "hangul": "안녕하세요, 이메일 보냈어요?",
         "meaning": "Hello, did you send the email?",
         "text_vi": "Chào anh, đã gửi email chưa ạ?"
       },
       {
+        cell_id: "d13ecdca-c818-45bb-848e-b6685570d181",
         "speaker": "B",
         "hangul": "네, 방금 보냈어요. 첨부 파일도 넣었어요.",
         "meaning": "Yes, I just sent it. I also attached a file.",
         "text_vi": "Rồi, tôi vừa gửi xong. Tôi cũng đính kèm tệp rồi."
       },
       {
+        cell_id: "ebb0e7b7-e56d-4433-a83c-b844e44bbc3e",
         "speaker": "A",
         "hangul": "확인해 볼게요. 감사합니다.",
         "meaning": "I'll check it. Thank you.",
         "text_vi": "Tôi sẽ kiểm tra. Cảm ơn nhé."
       },
       {
+        cell_id: "847979b4-089c-4ee5-aa3b-ca75ce20745b",
         "speaker": "B",
         "hangul": "네, 수고하세요.",
         "meaning": "Okay, take care.",
@@ -944,42 +1042,52 @@ export const lessons: KoreanLesson[] = [
     "intro_vi": "Các câu hữu ích cho giao dịch ngân hàng. Dùng 통장 cho sổ ngân hàng và 계좌 cho tài khoản.",
     "vocabulary": [
       {
+        cell_id: "535856fd-54a2-40a5-ac34-cae8f1c31ca1",
         "hangul": "은행",
         "meaning": "bank"
       },
       {
+        cell_id: "4343f298-f464-4ba7-9e16-737815f14ab6",
         "hangul": "계좌",
         "meaning": "account"
       },
       {
+        cell_id: "cc7bf281-9947-477a-88f6-8d7c91d5fb98",
         "hangul": "통장",
         "meaning": "bankbook"
       },
       {
+        cell_id: "5512445d-51de-4a38-b09b-0c24b1ab5c1d",
         "hangul": "입금하다",
         "meaning": "to deposit"
       },
       {
+        cell_id: "80730b2e-c338-4683-928e-9f75e4db3f8d",
         "hangul": "출금하다",
         "meaning": "to withdraw"
       },
       {
+        cell_id: "e3f5448f-70de-4404-8db2-c7c228418f19",
         "hangul": "송금하다",
         "meaning": "to transfer"
       },
       {
+        cell_id: "d1e497ab-2969-4e2e-8aec-8ecd55e54902",
         "hangul": "이자",
         "meaning": "interest"
       },
       {
+        cell_id: "2117fc77-1833-4fb3-a4e8-c9f84cd5a012",
         "hangul": "비밀번호",
         "meaning": "password"
       },
       {
+        cell_id: "f787554f-d97e-4137-a6f0-ce2e791e4b60",
         "hangul": "통화",
         "meaning": "currency"
       },
       {
+        cell_id: "5cd2103e-0f8f-4e38-b8b0-2378a7193551",
         "hangul": "수수료",
         "meaning": "fee"
       }
@@ -1018,24 +1126,28 @@ export const lessons: KoreanLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "8af160f1-a247-4560-abc7-279ada4bc2bb",
         "speaker": "A",
         "hangul": "안녕하세요, 계좌를 개설하고 싶습니다.",
         "meaning": "Hello, I'd like to open an account.",
         "text_vi": "Xin chào, tôi muốn mở một tài khoản."
       },
       {
+        cell_id: "d5291f43-f69b-45b4-b0d5-c159453a55c4",
         "speaker": "B",
         "hangul": "네, 신분증이 필요합니다.",
         "meaning": "Yes, you need an ID.",
         "text_vi": "Vâng, quý khách cần giấy tờ tùy thân ạ."
       },
       {
+        cell_id: "84ffdd7e-91f0-4c5d-86fb-8d0a903e0c03",
         "speaker": "A",
         "hangul": "여기 있습니다.",
         "meaning": "Here it is.",
         "text_vi": "Đây ạ."
       },
       {
+        cell_id: "925b6fc8-dfd7-40ec-9549-676d2ff1fe02",
         "speaker": "B",
         "hangul": "감사합니다. 잠시만 기다려 주세요.",
         "meaning": "Thank you. Please wait a moment.",
@@ -1077,42 +1189,52 @@ export const lessons: KoreanLesson[] = [
     "intro_vi": "Câu thông dụng để gửi thư và bưu kiện. Dùng 우표 cho tem và 소포 cho bưu kiện.",
     "vocabulary": [
       {
+        cell_id: "d200364f-52d7-42b2-aa0d-b6da479e818f",
         "hangul": "우체국",
         "meaning": "post office"
       },
       {
+        cell_id: "682e0f84-e95b-4d06-b370-6d5629393d6d",
         "hangul": "우표",
         "meaning": "stamp"
       },
       {
+        cell_id: "4ae2cbe2-bb9b-42cd-8ffe-1f8806cec2d8",
         "hangul": "편지",
         "meaning": "letter"
       },
       {
+        cell_id: "c2eed5cd-19f5-4365-b0db-24b207f9c684",
         "hangul": "소포",
         "meaning": "parcel"
       },
       {
+        cell_id: "8e765d89-9704-4720-8c41-c65af3055511",
         "hangul": "등기",
         "meaning": "registered mail"
       },
       {
+        cell_id: "21155d84-8ef7-4476-9907-da376b8ab46e",
         "hangul": "빠른 우편",
         "meaning": "express mail"
       },
       {
+        cell_id: "66f7f75b-ce19-4c5c-ac0a-bfc3cf170f9b",
         "hangul": "받는 사람",
         "meaning": "recipient"
       },
       {
+        cell_id: "4a9da72a-06a0-485d-9495-7e09597ef2b6",
         "hangul": "보내는 사람",
         "meaning": "sender"
       },
       {
+        cell_id: "b1cfd63b-0871-4e74-be3f-f8257f102e85",
         "hangul": "주소",
         "meaning": "address"
       },
       {
+        cell_id: "70b3af4e-222d-451c-a4d1-906a9ecaa205",
         "hangul": "우편 번호",
         "meaning": "postal code"
       }
@@ -1151,24 +1273,28 @@ export const lessons: KoreanLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "402e2003-a495-4e81-abfc-3e93db75356d",
         "speaker": "A",
         "hangul": "이 소포를 베트남으로 보내고 싶어요.",
         "meaning": "I want to send this parcel to Vietnam.",
         "text_vi": "Tôi muốn gửi bưu kiện này đi Việt Nam."
       },
       {
+        cell_id: "8ac6c36f-4a9c-4c1d-a1cf-e4cdc948265a",
         "speaker": "B",
         "hangul": "네, 내용물은 무엇인가요?",
         "meaning": "Yes, what is the contents?",
         "text_vi": "Vâng, bên trong là gì vậy ạ?"
       },
       {
+        cell_id: "8db2c88a-c3f9-4eab-94ca-048446e241fb",
         "speaker": "A",
         "hangul": "옷과 책입니다.",
         "meaning": "Clothes and books.",
         "text_vi": "Là quần áo và sách ạ."
       },
       {
+        cell_id: "b76a2390-b225-4e80-8da5-5078a4ede06b",
         "speaker": "B",
         "hangul": "배송 방법을 선택해 주세요. 항공편이 빠릅니다.",
         "meaning": "Please choose a shipping method. Air mail is faster.",
@@ -1210,42 +1336,52 @@ export const lessons: KoreanLesson[] = [
     "intro_vi": "Từ vựng thuê căn hộ. Dùng 보증금 cho tiền đặt cọc và 월세 cho tiền thuê hàng tháng.",
     "vocabulary": [
       {
+        cell_id: "bf3f76d1-8f31-4728-af2e-72be8b362c74",
         "hangul": "아파트",
         "meaning": "apartment"
       },
       {
+        cell_id: "dc816231-7e63-49f5-8b00-9e17c1f96c78",
         "hangul": "임대",
         "meaning": "rental"
       },
       {
+        cell_id: "784240e8-30ee-45b2-9029-911ed750aa83",
         "hangul": "보증금",
         "meaning": "deposit"
       },
       {
+        cell_id: "92f85b23-c4dc-46f0-a128-976ac16c6deb",
         "hangul": "월세",
         "meaning": "monthly rent"
       },
       {
+        cell_id: "0c77b955-c0d3-4b30-86d1-cb3965f1b75a",
         "hangul": "계약",
         "meaning": "contract"
       },
       {
+        cell_id: "052debcf-83d1-48f5-ae86-762e09e844a8",
         "hangul": "방",
         "meaning": "room"
       },
       {
+        cell_id: "162879c5-e251-4d6f-ac8f-e47236ebd70e",
         "hangul": "부엌",
         "meaning": "kitchen"
       },
       {
+        cell_id: "b74dcf2d-1bc0-41c5-a0da-b852ce4286af",
         "hangul": "화장실",
         "meaning": "bathroom"
       },
       {
+        cell_id: "21edfc9a-ed18-4ed2-bb1a-469eb775e340",
         "hangul": "주차장",
         "meaning": "parking lot"
       },
       {
+        cell_id: "e21edd5e-6835-4b40-b05c-e73eb500c609",
         "hangul": "관리비",
         "meaning": "management fee"
       }
@@ -1284,24 +1420,28 @@ export const lessons: KoreanLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "f4d98aa6-5d0d-4e10-8a12-a40b2f189bb9",
         "speaker": "A",
         "hangul": "이 아파트를 보여 주시겠어요?",
         "meaning": "Could you show me this apartment?",
         "text_vi": "Anh cho tôi xem căn hộ này được không ạ?"
       },
       {
+        cell_id: "79c39a1e-4b7d-42be-8eb1-84913bcb8500",
         "speaker": "B",
         "hangul": "네, 여기 있습니다. 방이 두 개예요.",
         "meaning": "Yes, here it is. It has two rooms.",
         "text_vi": "Vâng, đây ạ. Có hai phòng."
       },
       {
+        cell_id: "0df65dab-d54d-438c-85b7-2b160760557b",
         "speaker": "A",
         "hangul": "부엌이 크네요. 마음에 들어요.",
         "meaning": "The kitchen is big. I like it.",
         "text_vi": "Bếp rộng nhỉ. Tôi thích lắm."
       },
       {
+        cell_id: "b1642d1f-9ab7-4a57-8f1e-7f58610e0cb3",
         "speaker": "B",
         "hangul": "보증금은 500만 원이고 월세는 70만 원입니다.",
         "meaning": "The deposit is 5 million won and monthly rent is 700,000 won.",
@@ -1343,42 +1483,52 @@ export const lessons: KoreanLesson[] = [
     "intro_vi": "Cách diễn đạt khiếu nại và trả hàng. Dùng 불만 cho khiếu nại và 반품 cho trả hàng.",
     "vocabulary": [
       {
+        cell_id: "75a39a7a-2613-44c3-a087-8f57d56dca54",
         "hangul": "불만",
         "meaning": "complaint"
       },
       {
+        cell_id: "1ce123f2-ff39-4c85-9bd9-037cf439d7b4",
         "hangul": "반품",
         "meaning": "return"
       },
       {
+        cell_id: "94ec9ecf-9d50-479f-9cc4-cad7870545dc",
         "hangul": "교환",
         "meaning": "exchange"
       },
       {
+        cell_id: "1a4d9d85-7bdd-4e00-a60b-45d289717cdc",
         "hangul": "환불",
         "meaning": "refund"
       },
       {
+        cell_id: "96249337-7e99-479b-847a-6d3599d499d7",
         "hangul": "하자",
         "meaning": "defect"
       },
       {
+        cell_id: "cdf16d20-5f1d-4fdd-9764-da869c33fbfc",
         "hangul": "영수증",
         "meaning": "receipt"
       },
       {
+        cell_id: "92dccee3-6298-4b15-858e-e4a32d592770",
         "hangul": "고객 센터",
         "meaning": "customer service"
       },
       {
+        cell_id: "f439fc5c-5c5e-4bf9-b28a-e176976536a7",
         "hangul": "불편하다",
         "meaning": "to be uncomfortable"
       },
       {
+        cell_id: "f32ffe1b-b189-4b41-abe2-2e3e4eb7d02c",
         "hangul": "제품",
         "meaning": "product"
       },
       {
+        cell_id: "7eeff6b8-d7ad-4295-9075-6b6435dc18b9",
         "hangul": "주문",
         "meaning": "order"
       }
@@ -1417,24 +1567,28 @@ export const lessons: KoreanLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "89a6c9be-029d-4713-b628-f8faebcffd4c",
         "speaker": "A",
         "hangul": "이 옷에 구멍이 났어요. 반품하고 싶어요.",
         "meaning": "This clothing has a hole. I want to return it.",
         "text_vi": "Cái áo này bị thủng một lỗ. Tôi muốn trả lại."
       },
       {
+        cell_id: "fc42e26f-d601-4fd8-acd1-66e8ef729c57",
         "speaker": "B",
         "hangul": "영수증 있으세요?",
         "meaning": "Do you have the receipt?",
         "text_vi": "Anh có hóa đơn không ạ?"
       },
       {
+        cell_id: "91eecdcb-c1f2-47a6-ba53-a3430d36dd6a",
         "speaker": "A",
         "hangul": "네, 여기 있어요.",
         "meaning": "Yes, here it is.",
         "text_vi": "Có, đây ạ."
       },
       {
+        cell_id: "f69a8ef5-1d28-4169-8889-931e8c8234b9",
         "speaker": "B",
         "hangul": "죄송합니다. 바로 환불해 드리겠습니다.",
         "meaning": "I'm sorry. I will refund you right away.",
@@ -1476,42 +1630,52 @@ export const lessons: KoreanLesson[] = [
     "intro_vi": "Dùng từ chỉ phương hướng như 직진 đi thẳng, 왼쪽 trái, 오른쪽 phải.",
     "vocabulary": [
       {
+        cell_id: "e07aed65-c0f0-49b9-8d2c-59754a323417",
         "hangul": "직진",
         "meaning": "straight ahead"
       },
       {
+        cell_id: "14bff6f1-afe3-4907-97af-f422da2abac4",
         "hangul": "왼쪽",
         "meaning": "left"
       },
       {
+        cell_id: "2495ad0f-4515-445b-99ed-73c2d0f61249",
         "hangul": "오른쪽",
         "meaning": "right"
       },
       {
+        cell_id: "42e2fe43-29ab-4ab6-b54e-bf930edef997",
         "hangul": "모퉁이",
         "meaning": "corner"
       },
       {
+        cell_id: "1a52888f-029b-40e3-b414-b1abdb613b19",
         "hangul": "건너편",
         "meaning": "opposite side"
       },
       {
+        cell_id: "b1651eff-6100-4e31-a8f7-f52191b84cd8",
         "hangul": "사거리",
         "meaning": "intersection"
       },
       {
+        cell_id: "b36664c0-880c-4638-83d9-0a6ac95abad9",
         "hangul": "신호등",
         "meaning": "traffic light"
       },
       {
+        cell_id: "7f590f28-822a-4423-862e-05eb93c1597f",
         "hangul": "걸어서",
         "meaning": "on foot"
       },
       {
+        cell_id: "0290ed4b-494a-452e-b58e-27b6c2ad39a7",
         "hangul": "버스 정류장",
         "meaning": "bus stop"
       },
       {
+        cell_id: "e171dcaa-9451-4411-a2df-23fba4442643",
         "hangul": "지하철 역",
         "meaning": "subway station"
       }
@@ -1550,24 +1714,28 @@ export const lessons: KoreanLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "a29abc7e-ec59-4455-9ca3-5ff58fb3d219",
         "speaker": "A",
         "hangul": "실례합니다, 시청에 어떻게 가나요?",
         "meaning": "Excuse me, how do I get to City Hall?",
         "text_vi": "Xin lỗi, tôi đến Tòa thị chính bằng cách nào ạ?"
       },
       {
+        cell_id: "90b3f935-b71b-4ec8-b4bc-6607183cce9e",
         "speaker": "B",
         "hangul": "직진하시다가 두 번째 사거리에서 오른쪽으로 가세요.",
         "meaning": "Go straight and turn right at the second intersection.",
         "text_vi": "Anh đi thẳng rồi rẽ phải ở ngã tư thứ hai ạ."
       },
       {
+        cell_id: "dde7d989-2dcf-434b-b478-b00097606378",
         "speaker": "A",
         "hangul": "네, 감사합니다. 걸어서 얼마나 걸리나요?",
         "meaning": "Okay, thank you. How long does it take on foot?",
         "text_vi": "Vâng, cảm ơn. Đi bộ mất bao lâu vậy ạ?"
       },
       {
+        cell_id: "44423749-ceda-4892-b196-5cd9304a0cf5",
         "speaker": "B",
         "hangul": "약 15분 정도 걸려요.",
         "meaning": "It takes about 15 minutes.",
@@ -1609,42 +1777,52 @@ export const lessons: KoreanLesson[] = [
     "intro_vi": "Dùng 뉴스 cho tin tức và 토론 cho thảo luận. Học cách nêu ý kiến về sự kiện thời sự.",
     "vocabulary": [
       {
+        cell_id: "a1cf3062-2c6a-44ac-95f9-3218c568eb7f",
         "hangul": "뉴스",
         "meaning": "news"
       },
       {
+        cell_id: "532c6c19-9919-4386-bd54-bd5166b468fc",
         "hangul": "토론하다",
         "meaning": "to discuss"
       },
       {
+        cell_id: "260ee1eb-6576-4c86-9beb-65f958049543",
         "hangul": "기사",
         "meaning": "article"
       },
       {
+        cell_id: "82fc6a1b-fa00-409e-85ab-157d9ec26d8c",
         "hangul": "사건",
         "meaning": "incident"
       },
       {
+        cell_id: "b529bc2a-c94c-4f84-854c-371767e4b0ac",
         "hangul": "의견",
         "meaning": "opinion"
       },
       {
+        cell_id: "b0336019-a77c-4576-bc60-7d92683356fc",
         "hangul": "동의하다",
         "meaning": "to agree"
       },
       {
+        cell_id: "f2f46940-e423-4834-9056-f2b0eda4d00a",
         "hangul": "반대하다",
         "meaning": "to oppose"
       },
       {
+        cell_id: "309b3474-98b5-4bcb-8ae8-82b48f2f158a",
         "hangul": "사실",
         "meaning": "fact"
       },
       {
+        cell_id: "8fc67106-8b30-4f56-b9e4-0368233480ca",
         "hangul": "거짓",
         "meaning": "lie / false"
       },
       {
+        cell_id: "3d48a10c-b54e-4d8a-ace4-a7785eeda1a4",
         "hangul": "분석",
         "meaning": "analysis"
       }
@@ -1683,24 +1861,28 @@ export const lessons: KoreanLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "e232988a-8e95-4c21-ab26-2a77c24fe498",
         "speaker": "A",
         "hangul": "어제 뉴스 봤어요? 경제 관련 기사가 있었어요.",
         "meaning": "Did you watch the news yesterday? There was an article about the economy.",
         "text_vi": "Hôm qua bạn xem tin tức chưa? Có một bài về kinh tế đấy."
       },
       {
+        cell_id: "2d57b89a-c547-436a-88aa-e462d3e9cee3",
         "speaker": "B",
         "hangul": "네, 봤어요. 하지만 그 분석에 동의하지 않아요.",
         "meaning": "Yes, I saw it. But I don't agree with that analysis.",
         "text_vi": "Có, tôi xem rồi. Nhưng tôi không đồng ý với phân tích đó."
       },
       {
+        cell_id: "eebbd9b6-0af8-42e0-a37f-8881f5129116",
         "speaker": "A",
         "hangul": "왜요? 저는 꽤 타당하다고 생각했는데요.",
         "meaning": "Why? I thought it was quite reasonable.",
         "text_vi": "Sao vậy? Tôi thấy nó khá hợp lý mà."
       },
       {
+        cell_id: "38fd6f74-9a27-4919-8706-afaadd6b49ae",
         "speaker": "B",
         "hangul": "몇 가지 사실이 빠져 있어요.",
         "meaning": "Some facts are missing.",
@@ -1742,42 +1924,52 @@ export const lessons: KoreanLesson[] = [
     "intro_vi": "Thảo luận chuẩn mực và sự khác biệt văn hóa. Dùng 문화 cho văn hóa và 차이 cho khác biệt.",
     "vocabulary": [
       {
+        cell_id: "e48b80a4-3282-4b28-beef-2e1fd4257b4a",
         "hangul": "문화",
         "meaning": "culture"
       },
       {
+        cell_id: "675fdcca-856f-4aea-9f41-e28bd175af6f",
         "hangul": "차이",
         "meaning": "difference"
       },
       {
+        cell_id: "45be9e72-ed6b-4ca6-8187-dea4ef94e3a9",
         "hangul": "관습",
         "meaning": "custom"
       },
       {
+        cell_id: "7c196e87-c3f0-4a8c-aa4a-6e898f1fd02e",
         "hangul": "예절",
         "meaning": "etiquette"
       },
       {
+        cell_id: "fb202fb2-c708-41be-a509-7b46543f8b03",
         "hangul": "인사",
         "meaning": "greeting"
       },
       {
+        cell_id: "37f51048-23d3-44ea-a0aa-5bb80317dfef",
         "hangul": "선물",
         "meaning": "gift"
       },
       {
+        cell_id: "00bdb7e3-6822-4397-b95d-7fa9d96dce03",
         "hangul": "식사",
         "meaning": "meal"
       },
       {
+        cell_id: "94e2af36-33fe-49a0-89bf-25e55ca6364a",
         "hangul": "금기",
         "meaning": "taboo"
       },
       {
+        cell_id: "ca498f55-213e-418e-ac52-3a7cd66da61a",
         "hangul": "이해하다",
         "meaning": "to understand"
       },
       {
+        cell_id: "b28e20d5-79f0-4da1-a635-89314db7f227",
         "hangul": "존중하다",
         "meaning": "to respect"
       }
@@ -1816,24 +2008,28 @@ export const lessons: KoreanLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "03a3ef4d-4e59-429d-856d-ca8ae93d2aaf",
         "speaker": "A",
         "hangul": "한국에서 처음으로 명절을 보냈어요.",
         "meaning": "I spent my first holiday in Korea.",
         "text_vi": "Tôi vừa đón dịp lễ Tết đầu tiên ở Hàn Quốc."
       },
       {
+        cell_id: "8f9c3d93-0910-4001-881b-41e3bbde8699",
         "speaker": "B",
         "hangul": "어땠어요? 다른 점이 많았죠?",
         "meaning": "How was it? There were many differences, right?",
         "text_vi": "Thế nào? Khác nhiều lắm phải không?"
       },
       {
+        cell_id: "7b903aa7-450c-4d7e-8593-844bad8b1ff4",
         "speaker": "A",
         "hangul": "네, 특히 음식과 인사 방식이 달랐어요.",
         "meaning": "Yes, especially the food and greeting style were different.",
         "text_vi": "Vâng, nhất là món ăn và cách chào hỏi khác hẳn."
       },
       {
+        cell_id: "ef1a8ec5-fbfe-4575-a55b-a4052d3c68cb",
         "speaker": "B",
         "hangul": "시간이 지나면 익숙해질 거예요.",
         "meaning": "You'll get used to it over time.",
@@ -1875,42 +2071,52 @@ export const lessons: KoreanLesson[] = [
     "intro_vi": "Câu quan trọng khi phỏng vấn xin việc. Dùng 자기소개 cho tự giới thiệu và 지원하다 cho ứng tuyển.",
     "vocabulary": [
       {
+        cell_id: "0b572e8f-fe15-472c-8ad7-84ea2a9d4c38",
         "hangul": "면접",
         "meaning": "interview"
       },
       {
+        cell_id: "ccc1e230-8318-41d8-ac65-0fc79c029ae3",
         "hangul": "지원하다",
         "meaning": "to apply"
       },
       {
+        cell_id: "a96497c2-caec-45ae-934d-da7487904318",
         "hangul": "자기소개",
         "meaning": "self-introduction"
       },
       {
+        cell_id: "74c50130-f7b0-443b-8615-e92d4451c5f5",
         "hangul": "경력",
         "meaning": "career / experience"
       },
       {
+        cell_id: "0d026599-de6b-404b-98f6-c63bae95f630",
         "hangul": "학력",
         "meaning": "educational background"
       },
       {
+        cell_id: "7b5dba93-b7a8-4103-9469-6b8d749b349a",
         "hangul": "강점",
         "meaning": "strength"
       },
       {
+        cell_id: "e1f43291-08de-495c-958b-78c96fdbc2b4",
         "hangul": "약점",
         "meaning": "weakness"
       },
       {
+        cell_id: "872d0d3b-87db-469b-907b-872a5fccf87f",
         "hangul": "목표",
         "meaning": "goal"
       },
       {
+        cell_id: "844e56c1-d110-463e-a867-0d284d7607da",
         "hangul": "직무",
         "meaning": "job duty"
       },
       {
+        cell_id: "279525b9-8eb5-4f1e-b360-caf5ecec55b7",
         "hangul": "합격",
         "meaning": "pass / acceptance"
       }
@@ -1949,24 +2155,28 @@ export const lessons: KoreanLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "ab8638ae-c931-4a52-a03b-09385a6320f0",
         "speaker": "A",
         "hangul": "안녕하세요. 면접관입니다. 편하게 앉으세요.",
         "meaning": "Hello. I am the interviewer. Please have a seat.",
         "text_vi": "Xin chào. Tôi là người phỏng vấn. Mời anh ngồi tự nhiên ạ."
       },
       {
+        cell_id: "5440a06d-1c89-450f-b7e7-e4a6dc29174d",
         "speaker": "B",
         "hangul": "감사합니다. 저는 김지수라고 합니다.",
         "meaning": "Thank you. My name is Jisoo Kim.",
         "text_vi": "Cảm ơn ạ. Tôi tên là Kim Jisoo."
       },
       {
+        cell_id: "e9d76d7e-8230-487d-a3da-afdaadb080cb",
         "speaker": "A",
         "hangul": "지수 씨, 자기소개 부탁드립니다.",
         "meaning": "Jisoo, please introduce yourself.",
         "text_vi": "Anh Jisoo, xin mời giới thiệu bản thân ạ."
       },
       {
+        cell_id: "5c25e16a-cca0-4845-a7c1-235960139a10",
         "speaker": "B",
         "hangul": "네. 저는 마케팅 분야에서 3년 경력이 있습니다.",
         "meaning": "Yes. I have three years of experience in marketing.",

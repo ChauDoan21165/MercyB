@@ -32,6 +32,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   /** Indonesian word/phrase. */
   word: string;
   /** English meaning. */
@@ -47,6 +48,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   /** Indonesian line. */
   text: string;
@@ -247,6 +249,7 @@ export const lessons: IndonesianLesson[] = [
     vocabulary: [
       // Places & people
       {
+        cell_id: "dff5a635-96ba-4757-a428-39745b4ad77b",
         word: "kaki lima",
         en: "street-food stall / curbside vendor",
         vi: "hàng rong / quầy vỉa hè",
@@ -255,6 +258,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "KA-ki LEE-ma — literally 'five legs'; `pedagang kaki lima` (PKL) = a street vendor",
       },
       {
+        cell_id: "d25d906f-0104-4259-b719-68bbf99b34b4",
         word: "warung",
         en: "small eatery / food shop",
         vi: "quán nhỏ",
@@ -263,6 +267,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "WA-rung — `warung makan` = food stall; `warteg` = cheap rice eatery (warung Tegal)",
       },
       {
+        cell_id: "1f4a12e3-2bda-45ae-b7c4-40d27c0669e2",
         word: "angkringan",
         en: "Javanese night food stall",
         vi: "quầy ăn đêm kiểu Java",
@@ -272,6 +277,7 @@ export const lessons: IndonesianLesson[] = [
       },
       // Star dishes
       {
+        cell_id: "a010fb04-0ef5-4532-9c8a-c27d0fd2c481",
         word: "nasi goreng",
         en: "fried rice",
         vi: "cơm rang/chiên",
@@ -280,6 +286,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "NA-si GO-reng — `goreng` = fried; the national staple, eaten dawn to midnight",
       },
       {
+        cell_id: "eacf54f6-8b9e-4150-ba88-1a683f590360",
         word: "sate",
         en: "satay (grilled skewers)",
         vi: "thịt xiên nướng (sa tế)",
@@ -288,6 +295,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "SA-te — counted in `tusuk`; `sate ayam` (chicken), `sate kambing` (goat)",
       },
       {
+        cell_id: "5c9390f1-6c7b-40e6-9fba-cac549032c27",
         word: "bakso",
         en: "meatball soup",
         vi: "bún/mì bò viên",
@@ -296,6 +304,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "BAK-so — the `bakso` cart announces itself with a bell; served with noodles + broth",
       },
       {
+        cell_id: "85e06a16-a1f3-41ae-9db8-28b3e3d87722",
         word: "martabak",
         en: "stuffed pancake (sweet or savory)",
         vi: "bánh martabak (ngọt hoặc mặn)",
@@ -304,6 +313,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "mar-TA-bak — `manis` = thick & sweet; `telur` = savory egg & meat",
       },
       {
+        cell_id: "74ced263-61a9-4de6-b2c1-85565c2979f7",
         word: "nasi padang",
         en: "Padang rice (many side dishes)",
         vi: "cơm Padang",
@@ -312,6 +322,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "NA-si PA-dang — charged per dish taken; `rendang` is the famous one",
       },
       {
+        cell_id: "a39c85ef-af13-4d84-8ea4-9ed3e5a89e80",
         word: "pecel lele",
         en: "fried catfish with sambal & rice",
         vi: "cá trê chiên + tương ớt",
@@ -320,6 +331,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "pe-CHEL LE-le — `c` = 'ch' → 'pe-CHEL'; a common evening stall",
       },
       {
+        cell_id: "49e03ca4-326c-45e0-abcd-40b5cf9eda23",
         word: "gorengan",
         en: "assorted fritters",
         vi: "đồ chiên (các loại)",
@@ -328,6 +340,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "go-RENG-an — tempe, tahu, bakwan, banana; the cheapest snack",
       },
       {
+        cell_id: "09486338-4f26-405f-b364-e87cd825d150",
         word: "es campur",
         en: "mixed iced dessert",
         vi: "chè đá thập cẩm",
@@ -337,6 +350,7 @@ export const lessons: IndonesianLesson[] = [
       },
       // Ordering & customizing
       {
+        cell_id: "09d4d60c-7b0d-407d-82c8-f8fc1dbf8775",
         word: "pesan",
         en: "to order",
         vi: "gọi món / đặt",
@@ -345,6 +359,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "pe-SAN — `pesan + dish + number`; also means 'message' by context",
       },
       {
+        cell_id: "862a77ce-0d06-4a9c-86f9-c728e6a4ffa0",
         word: "pakai",
         en: "with / using",
         vi: "có/cho thêm (cùng)",
@@ -353,6 +368,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "PA-kai — `pakai sambal` = with chili; partner of `tanpa`",
       },
       {
+        cell_id: "aa98607c-6442-4603-b442-337983bba415",
         word: "tanpa",
         en: "without",
         vi: "không có (thành phần)",
@@ -361,6 +377,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "TAN-pa — `tanpa bawang` = without onion; differs from `tidak`/`jangan`",
       },
       {
+        cell_id: "b0dd48f8-2524-456a-8460-6dba35bf80e4",
         word: "pedas",
         en: "spicy",
         vi: "cay",
@@ -369,6 +386,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "pe-DAS — `tidak pedas`/`sedikit pedas`/`level berapa?`",
       },
       {
+        cell_id: "7318bd50-2dfb-4df0-b7a5-c3e1e9076ac8",
         word: "dibungkus",
         en: "packed to go / wrapped",
         vi: "gói mang về",
@@ -377,6 +395,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "di-boong-KOOS — passive di- + `bungkus`; opposite of `makan di sini`",
       },
       {
+        cell_id: "81689686-92a1-464a-a6bc-c2675b839044",
         word: "dipisah",
         en: "kept separate",
         vi: "để riêng",
@@ -385,6 +404,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "di-PEE-sah — `sambalnya dipisah` = keep the chili on the side",
       },
       {
+        cell_id: "8c021e9a-4c6f-4c0a-866b-a9f60f9bb0e5",
         word: "es teh manis",
         en: "sweet iced tea",
         vi: "trà đá ngọt",
@@ -393,6 +413,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "es TEH MA-nis — `tawar` = unsweetened; `es jeruk` = iced orange",
       },
       {
+        cell_id: "14904587-a8d0-4fc8-96ef-67496cfd799e",
         word: "enak",
         en: "delicious / tasty",
         vi: "ngon",
@@ -404,42 +425,49 @@ export const lessons: IndonesianLesson[] = [
     dialogue: [
       // Dialogue A: ordering nasi goreng + drink at a kaki lima
       {
+        cell_id: "6ae92305-ea97-4dc0-a01c-9087bcfb8210",
         speaker: "Pembeli",
         text: "Bang, pesan nasi goreng satu, ya. Pakai telur, tapi tanpa bawang.",
         vi: "Anh ơi, cho một dĩa cơm rang nhé. Cho thêm trứng, nhưng không hành.",
         en: "Bro, one fried rice, please. With egg, but without onion.",
       },
       {
+        cell_id: "c6f78abe-b431-46b7-8168-17b0b9520333",
         speaker: "Penjual",
         text: "Siap. Pedasnya gimana? Level berapa?",
         vi: "Được ngay. Cay sao? Cấp độ mấy?",
         en: "Got it. How spicy? Which level?",
       },
       {
+        cell_id: "30a1a7a7-5091-4c9c-a8c7-98fda47b8f7d",
         speaker: "Pembeli",
         text: "Jangan terlalu pedas, ya. Saya tidak kuat pedas. Level satu saja.",
         vi: "Đừng cay quá nhé. Tôi ăn cay không giỏi. Cấp một thôi.",
         en: "Not too spicy, please. I can't handle spice. Just level one.",
       },
       {
+        cell_id: "cee2bc21-855f-445b-9d91-d927fb29903d",
         speaker: "Penjual",
         text: "Oke. Minumnya apa? Buat di sini atau dibungkus?",
         vi: "Được. Uống gì? Ăn ở đây hay gói mang về?",
         en: "Okay. Anything to drink? Dine in or take away?",
       },
       {
+        cell_id: "70bb7ef6-7cd5-43ce-a683-feb47910878c",
         speaker: "Pembeli",
         text: "Es teh manis satu. Dibungkus saja, ya, sambalnya dipisah.",
         vi: "Một trà đá ngọt. Gói mang về thôi nhé, tương ớt để riêng.",
         en: "One sweet iced tea. Pack it to go, please, with the chili separate.",
       },
       {
+        cell_id: "d1354801-5873-4eae-b08e-11e69bfc2f66",
         speaker: "Penjual",
         text: "Beres. Semuanya dua puluh lima ribu.",
         vi: "Xong. Tất cả hai mươi lăm nghìn.",
         en: "Done. That's twenty-five thousand all together.",
       },
       {
+        cell_id: "bc6be946-022e-41f1-ad72-4c4b2ba1cbb1",
         speaker: "Pembeli",
         text: "Bisa pakai QRIS, Bang? ... Enak banget tadi, nanti saya ke sini lagi.",
         vi: "Quét QRIS được không anh? ... Lúc nãy ngon cực, lần sau tôi lại đến.",
@@ -447,24 +475,28 @@ export const lessons: IndonesianLesson[] = [
       },
       // Dialogue B: nasi padang, pay per dish
       {
+        cell_id: "86756106-09db-4b05-a274-239734741270",
         speaker: "Pelayan",
         text: "Mau makan apa, Mbak? Ini ada rendang, ayam pop, sama gulai.",
         vi: "Chị muốn ăn gì? Đây có rendang, gà pop, và cà ri gulai.",
         en: "What would you like, miss? We have rendang, ayam pop, and gulai.",
       },
       {
+        cell_id: "2d78ecd6-459b-4753-940a-f81ae73e3d2f",
         speaker: "Pembeli",
         text: "Nasi putih satu, pakai rendang. Sayurnya yang ini, tapi gulainya jangan dulu.",
         vi: "Một cơm trắng, cho rendang. Rau lấy cái này, nhưng gulai khoan đã.",
         en: "One white rice with rendang. This vegetable, but hold the gulai for now.",
       },
       {
+        cell_id: "9c391cdd-b0b7-4d98-864f-3612349e1804",
         speaker: "Pelayan",
         text: "Baik. Yang tidak diambil tidak dihitung, ya. Minum es jeruk?",
         vi: "Vâng. Món không lấy thì không tính nhé. Uống cam đá không ạ?",
         en: "Sure. Whatever you don't take isn't charged. Iced orange to drink?",
       },
       {
+        cell_id: "ce26a036-a20f-42af-9502-aa90feed9266",
         speaker: "Pembeli",
         text: "Boleh, es jeruk satu. Terima kasih, ya, Mbak.",
         vi: "Được, một cam đá. Cảm ơn chị nhé.",

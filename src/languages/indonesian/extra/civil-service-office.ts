@@ -21,6 +21,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   /** Indonesian word/phrase. */
   word: string;
   /** English meaning. */
@@ -36,6 +37,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   /** Indonesian line. */
   text: string;
@@ -254,6 +256,7 @@ export const lessons: IndonesianLesson[] = [
       "Safe counter template: `Selamat pagi, saya mau mengurus dokumen ini. Apa saja persyaratannya, dan loket verifikasi ada di mana?` If documents are incomplete: `Kalau dokumen belum lengkap, saya bisa kembali besok.`",
     vocabulary: [
       {
+        cell_id: "3fb754cc-e528-4de6-93f1-9c057a088484",
         word: "kantor dinas",
         en: "government agency office",
         vi: "văn phòng cơ quan/sở",
@@ -262,6 +265,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "KAN-tor DEE-nas",
       },
       {
+        cell_id: "ab4a4ab3-2fac-4c85-81c6-45c4329be325",
         word: "pelayanan publik",
         en: "public service",
         vi: "dịch vụ công",
@@ -270,6 +274,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "pe-la-YA-nan POOB-lik",
       },
       {
+        cell_id: "cfc369dc-de33-439c-bfc5-0a8ef3f41710",
         word: "formulir",
         en: "form",
         vi: "biểu mẫu",
@@ -278,6 +283,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "for-moo-LEER",
       },
       {
+        cell_id: "201f6226-372a-4e78-8d53-58fc4bd20730",
         word: "loket",
         en: "service counter",
         vi: "quầy dịch vụ",
@@ -286,6 +292,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "LO-ket",
       },
       {
+        cell_id: "bc270f4d-599d-4097-88b9-cb868d4155d8",
         word: "nomor antrean",
         en: "queue number",
         vi: "số thứ tự xếp hàng",
@@ -294,6 +301,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "NO-mor an-TRE-an",
       },
       {
+        cell_id: "31fca17e-a1f7-4d01-b734-562d449ba694",
         word: "persyaratan",
         en: "requirements",
         vi: "yêu cầu/hồ sơ cần có",
@@ -302,6 +310,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "per-sya-RA-tan",
       },
       {
+        cell_id: "a59343ef-2d36-4075-8a74-57b3c838e4fd",
         word: "tanda tangan",
         en: "signature; to sign",
         vi: "chữ ký; ký tên",
@@ -310,6 +319,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "TAN-da TA-ngan",
       },
       {
+        cell_id: "52e3c524-6e77-4bdf-a880-3bfe955173ea",
         word: "verifikasi",
         en: "verification",
         vi: "xác minh",
@@ -318,6 +328,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "veh-ree-fee-KA-see",
       },
       {
+        cell_id: "39bd640e-3f55-4c8a-9cb9-a52505436ecc",
         word: "tanda terima",
         en: "receipt; acknowledgment slip",
         vi: "biên nhận/phiếu nhận hồ sơ",
@@ -326,6 +337,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "TAN-da te-REE-ma",
       },
       {
+        cell_id: "89bda003-061c-481a-a10e-7be0f4446472",
         word: "belum lengkap",
         en: "not complete yet",
         vi: "chưa đầy đủ",
@@ -336,36 +348,42 @@ export const lessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "85d1348d-d038-4110-9f44-afb5e75b9ed8",
         speaker: "Pemohon",
         text: "Selamat pagi, saya mau mengurus dokumen di kantor dinas ini.",
         vi: "Chào buổi sáng, tôi muốn làm thủ tục giấy tờ ở cơ quan này.",
         en: "Good morning, I would like to handle paperwork at this office.",
       },
       {
+        cell_id: "b31bd85a-6d6a-4c8a-b099-d953f9b551ab",
         speaker: "Petugas",
         text: "Silakan ambil nomor antrean dulu, lalu ke loket verifikasi.",
         vi: "Vui lòng lấy số thứ tự trước, rồi đến quầy xác minh.",
         en: "Please take a queue number first, then go to the verification counter.",
       },
       {
+        cell_id: "62cfa947-3099-4a19-b0c2-654d1366bfb1",
         speaker: "Pemohon",
         text: "Apa saja persyaratan untuk pengajuan ini?",
         vi: "Các yêu cầu/hồ sơ cần thiết cho đơn này gồm những gì?",
         en: "What are the requirements for this application?",
       },
       {
+        cell_id: "eb8d1ab6-1ad2-4b47-b0fa-15f8648885b2",
         speaker: "Petugas",
         text: "Isi formulir, lampirkan fotokopi KTP atau paspor, lalu tanda tangan di bawah.",
         vi: "Điền mẫu, đính kèm bản sao KTP hoặc hộ chiếu, rồi ký ở bên dưới.",
         en: "Fill in the form, attach a photocopy of your ID card or passport, then sign at the bottom.",
       },
       {
+        cell_id: "b83a7760-4f02-4275-a0ba-79ffaba81c5b",
         speaker: "Pemohon",
         text: "Kalau dokumen belum lengkap, apakah saya bisa kembali besok?",
         vi: "Nếu giấy tờ chưa đầy đủ, tôi có thể quay lại ngày mai không?",
         en: "If the documents are not complete yet, can I return tomorrow?",
       },
       {
+        cell_id: "3327d897-f320-4b74-8ea8-f5def529fa93",
         speaker: "Petugas",
         text: "Bisa. Setelah lengkap, kami akan memverifikasi data Anda.",
         vi: "Được. Sau khi đầy đủ, chúng tôi sẽ xác minh dữ liệu của bạn.",

@@ -6,6 +6,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   word: string;
   meaning_vi: string;
   meaning_en: string;
@@ -13,6 +14,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi: string;
@@ -148,60 +150,70 @@ export const lessons: IndonesianLesson[] = [
     ],
     vocabulary: [
       {
+        cell_id: "9c54e2ec-8e88-40bb-9364-1748fc430b8a",
         word: 'notaris',
         meaning_vi: 'công chứng viên/notary',
         meaning_en: 'notary',
         example: 'Kami bertemu notaris hari Jumat.',
       },
       {
+        cell_id: "ecd2c626-8ee6-4fa8-b096-afed77f1d38f",
         word: 'AJB',
         meaning_vi: 'hợp đồng/chứng thư mua bán, Akta Jual Beli',
         meaning_en: 'sale and purchase deed',
         example: 'AJB ditandatangani setelah dokumen lengkap.',
       },
       {
+        cell_id: "743e7d03-7191-4f23-a7ca-3cd7fa71497e",
         word: 'sertifikat tanah',
         meaning_vi: 'giấy chứng nhận đất',
         meaning_en: 'land certificate',
         example: 'Notaris memeriksa sertifikat tanah.',
       },
       {
+        cell_id: "07509a78-1339-4bd2-be40-9a892a99715d",
         word: 'balik nama',
         meaning_vi: 'sang tên',
         meaning_en: 'title transfer',
         example: 'Proses balik nama membutuhkan beberapa minggu.',
       },
       {
+        cell_id: "8b523d25-5fb5-4a0f-8947-98ca6cff2997",
         word: 'biaya notaris',
         meaning_vi: 'phí notary',
         meaning_en: 'notary fee',
         example: 'Biaya notaris dibicarakan sebelum tanda tangan.',
       },
       {
+        cell_id: "ad7391cf-4de8-4bbe-aa0a-37324de6aa71",
         word: 'pengecekan sertifikat',
         meaning_vi: 'việc kiểm tra giấy chứng nhận',
         meaning_en: 'certificate check',
         example: 'Pengecekan sertifikat penting sebelum bayar DP.',
       },
       {
+        cell_id: "049a10a1-295d-48ec-895c-24e8b5d18392",
         word: 'tanda tangan',
         meaning_vi: 'chữ ký; ký tên',
         meaning_en: 'signature; to sign',
         example: 'Jangan tanda tangan kalau belum paham.',
       },
       {
+        cell_id: "4fafdb1e-82a9-4710-a009-df05389a4970",
         word: 'pasal',
         meaning_vi: 'điều khoản',
         meaning_en: 'clause; article',
         example: 'Pasal ini menjelaskan jadwal pembayaran.',
       },
       {
+        cell_id: "ab3f0740-d5ba-45c9-a9be-6eaa4253315e",
         word: 'salinan dokumen',
         meaning_vi: 'bản sao giấy tờ',
         meaning_en: 'document copy',
         example: 'Kami perlu salinan dokumen untuk arsip.',
       },
       {
+        cell_id: "b65b8600-d007-4a54-86a2-24da1282c8dd",
         word: 'ditanggung oleh siapa',
         meaning_vi: 'do ai chịu/trả',
         meaning_en: 'borne or paid by whom',
@@ -210,24 +222,28 @@ export const lessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "0d50a9d5-077d-44cc-94e4-ca6f84e45e7d",
         speaker: 'Pembeli',
         text: 'Selamat siang, kami mau membuat janji dengan notaris untuk pembelian rumah.',
         vi: 'Chào buổi trưa, chúng tôi muốn đặt lịch với notary để mua nhà.',
         en: 'Good afternoon, we would like to make an appointment with the notary for a house purchase.',
       },
       {
+        cell_id: "11621f4f-b329-46f5-a75f-fedbd1b83928",
         speaker: 'Staf Notaris',
         text: 'Baik. Tolong siapkan KTP, NPWP, dan salinan sertifikat tanah.',
         vi: 'Được. Vui lòng chuẩn bị KTP, NPWP và bản sao giấy chứng nhận đất.',
         en: 'Sure. Please prepare your ID card, tax number, and a copy of the land certificate.',
       },
       {
+        cell_id: "50250dff-a846-496f-9407-91f2e201b356",
         speaker: 'Pembeli',
         text: 'Sebelum bayar DP, apakah bisa dilakukan pengecekan sertifikat?',
         vi: 'Trước khi trả đặt cọc, có thể kiểm tra giấy chứng nhận không?',
         en: 'Before paying the deposit, can the certificate check be done?',
       },
       {
+        cell_id: "9ab3564a-a58a-4532-8e3e-d9c1ec1dda85",
         speaker: 'Staf Notaris',
         text: 'Bisa. Setelah hasilnya jelas, kita jadwalkan tanda tangan AJB dan proses balik nama.',
         vi: 'Có thể. Sau khi kết quả rõ, chúng ta sẽ xếp lịch ký AJB và làm thủ tục sang tên.',

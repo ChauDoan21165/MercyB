@@ -32,6 +32,7 @@ type LessonSentence = {
 };
 
 type VocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -43,6 +44,7 @@ type VocabEntry = {
 };
 
 type DialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -159,6 +161,7 @@ export const foodCookingLessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: Indonesian has NO tricky classifiers (unlike Vietnamese con/cái/quả) — just 'number + noun': 'dua tomat' (two tomatoes), 'tiga cabai' (three chilies). Learn produce by its color word: bawang MERAH (red→shallot), bawang PUTIH (white→garlic). Memorize one all-purpose haggle line: 'Boleh kurang, Bu?'.",
     vocabulary: [
       {
+        cell_id: "96bfce9d-5408-4d16-9584-714569d3b9e3",
         word: "pasar",
         en: "market",
         vi: "chợ",
@@ -167,6 +170,7 @@ export const foodCookingLessons: IndonesianLesson[] = [
         pronunciation_en: "PA-sar",
       },
       {
+        cell_id: "a9892265-64b9-49ca-b241-ed58245ad868",
         word: "cabai",
         en: "chili",
         vi: "ớt",
@@ -175,6 +179,7 @@ export const foodCookingLessons: IndonesianLesson[] = [
         pronunciation_en: "cha-BYE",
       },
       {
+        cell_id: "e33c92c0-6b65-412c-b0ba-a975a3cbccc9",
         word: "bawang merah",
         en: "shallot",
         vi: "hành tím",
@@ -183,6 +188,7 @@ export const foodCookingLessons: IndonesianLesson[] = [
         pronunciation_en: "BA-wang MEH-rah",
       },
       {
+        cell_id: "ce6499a0-a1a0-41a3-829e-d0b138dfedb7",
         word: "bawang putih",
         en: "garlic",
         vi: "tỏi",
@@ -191,6 +197,7 @@ export const foodCookingLessons: IndonesianLesson[] = [
         pronunciation_en: "BA-wang POO-tih",
       },
       {
+        cell_id: "82b986ee-e1b1-40a8-b559-500025324a51",
         word: "segar",
         en: "fresh",
         vi: "tươi",
@@ -199,6 +206,7 @@ export const foodCookingLessons: IndonesianLesson[] = [
         pronunciation_en: "SEH-gar",
       },
       {
+        cell_id: "73004858-1275-4b35-8149-cd1d6e2ca7f1",
         word: "murah",
         en: "cheap",
         vi: "rẻ",
@@ -207,6 +215,7 @@ export const foodCookingLessons: IndonesianLesson[] = [
         pronunciation_en: "MOO-rah",
       },
       {
+        cell_id: "43167870-cfe2-4bb9-bc26-84336d37250a",
         word: "mahal",
         en: "expensive",
         vi: "đắt",
@@ -215,6 +224,7 @@ export const foodCookingLessons: IndonesianLesson[] = [
         pronunciation_en: "MA-hal",
       },
       {
+        cell_id: "54c0ba95-7012-4831-aed1-035be9064e06",
         word: "kilo",
         en: "kilogram",
         vi: "ký / kilôgam",
@@ -223,6 +233,7 @@ export const foodCookingLessons: IndonesianLesson[] = [
         pronunciation_en: "KEE-loh",
       },
       {
+        cell_id: "6429e5be-8edd-4561-9aa0-33a5f682660d",
         word: "sayur",
         en: "vegetable",
         vi: "rau",
@@ -233,30 +244,35 @@ export const foodCookingLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "3a7247ba-f452-4590-846b-fbb41260e506",
         speaker: "Pembeli",
         text: "Bu, berapa harga cabai satu kilo?",
         vi: "Cô ơi, ớt một ký giá bao nhiêu?",
         en: "Ma'am, how much is one kilo of chili?",
       },
       {
+        cell_id: "f76cad83-7d1d-406a-a425-ff477f6c675e",
         speaker: "Penjual",
         text: "Empat puluh ribu, Mas. Masih segar semua.",
         vi: "Bốn mươi nghìn, em. Còn tươi hết.",
         en: "Forty thousand, young man. All still fresh.",
       },
       {
+        cell_id: "787383c0-8407-41a6-a23c-59b64d80ced1",
         speaker: "Pembeli",
         text: "Boleh kurang sedikit, Bu?",
         vi: "Bớt một chút được không cô?",
         en: "Can you make it a bit less, ma'am?",
       },
       {
+        cell_id: "39bee18d-d2ea-4670-9c8f-2aebae0e80a2",
         speaker: "Penjual",
         text: "Ya sudah, tiga puluh lima ribu. Mau berapa kilo?",
         vi: "Thôi được, ba mươi lăm nghìn. Lấy mấy ký?",
         en: "Alright, thirty-five thousand. How many kilos?",
       },
       {
+        cell_id: "892ae57b-6f9b-4e0b-bdd6-c1a08d4df691",
         speaker: "Pembeli",
         text: "Setengah kilo saja. Terima kasih, Bu.",
         vi: "Nửa ký thôi. Cảm ơn cô.",
@@ -397,6 +413,7 @@ export const foodCookingLessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: the suffix '-kan' turns an adjective/verb into 'make/cause to…' — very systematic in recipes: halus→haluskan (grind fine), masuk→masukkan (put in), panas→panaskan (heat up). Learn root + '-kan' and you can read any recipe. Spice scale: tidak pedas (not spicy) → sedikit pedas → pedas → terlalu pedas (too spicy).",
     vocabulary: [
       {
+        cell_id: "7ad28696-6721-4342-9819-c4eee8e32344",
         word: "tumis",
         en: "to sauté / stir-fry",
         vi: "xào / phi",
@@ -405,6 +422,7 @@ export const foodCookingLessons: IndonesianLesson[] = [
         pronunciation_en: "TOO-mis",
       },
       {
+        cell_id: "422cddb7-ceba-42ab-a5ab-b8877ba663ea",
         word: "rebus",
         en: "to boil",
         vi: "luộc / ninh",
@@ -413,6 +431,7 @@ export const foodCookingLessons: IndonesianLesson[] = [
         pronunciation_en: "REH-boos",
       },
       {
+        cell_id: "5ff6ffca-2e09-4d94-a968-f6ae1a606197",
         word: "goreng",
         en: "to fry",
         vi: "chiên / rán",
@@ -421,6 +440,7 @@ export const foodCookingLessons: IndonesianLesson[] = [
         pronunciation_en: "GOH-reng",
       },
       {
+        cell_id: "75db3c35-7f8a-4b13-bd80-4ebc389f4c9f",
         word: "santan",
         en: "coconut milk",
         vi: "nước cốt dừa",
@@ -429,6 +449,7 @@ export const foodCookingLessons: IndonesianLesson[] = [
         pronunciation_en: "SAN-tan",
       },
       {
+        cell_id: "3cb89787-97f0-441e-aadc-d9c39d09e1b2",
         word: "bumbu",
         en: "spice paste / seasoning",
         vi: "gia vị (giã nhuyễn)",
@@ -437,6 +458,7 @@ export const foodCookingLessons: IndonesianLesson[] = [
         pronunciation_en: "BOOM-boo",
       },
       {
+        cell_id: "e4374d96-29f2-40ce-be80-cec557cc838f",
         word: "sambal",
         en: "chili relish",
         vi: "tương ớt giã",
@@ -445,6 +467,7 @@ export const foodCookingLessons: IndonesianLesson[] = [
         pronunciation_en: "SAM-bal",
       },
       {
+        cell_id: "332e51dc-f6ac-4dce-8877-a6ca1563bc55",
         word: "pedas",
         en: "spicy",
         vi: "cay",
@@ -453,6 +476,7 @@ export const foodCookingLessons: IndonesianLesson[] = [
         pronunciation_en: "pe-DAS",
       },
       {
+        cell_id: "73e36a33-c3cb-4ffc-accb-9c0e4c866929",
         word: "manis",
         en: "sweet",
         vi: "ngọt",
@@ -461,6 +485,7 @@ export const foodCookingLessons: IndonesianLesson[] = [
         pronunciation_en: "MA-nis",
       },
       {
+        cell_id: "bbd49f84-7957-49b9-a5df-72c5d6c8ad11",
         word: "aduk",
         en: "to stir",
         vi: "khuấy / đảo",
@@ -471,30 +496,35 @@ export const foodCookingLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "17c80669-4ce2-41c5-9edb-4c37821abc61",
         speaker: "Ibu",
         text: "Ayo, kita masak rendang hari ini. Sudah haluskan bumbunya?",
         vi: "Nào, hôm nay mình nấu rendang. Đã xay nhuyễn gia vị chưa?",
         en: "Come, let's cook rendang today. Have you ground the spice paste?",
       },
       {
+        cell_id: "96717b40-374e-42d9-95cd-1d6e8a420857",
         speaker: "Anak",
         text: "Sudah, Bu. Sekarang saya tumis sampai harum.",
         vi: "Rồi ạ, mẹ. Bây giờ con phi cho thơm.",
         en: "Yes, Mom. Now I'll sauté it until fragrant.",
       },
       {
+        cell_id: "f8b71988-a4a6-4e7e-9283-30672f50254d",
         speaker: "Ibu",
         text: "Bagus. Masukkan daging dan santan, masak api kecil.",
         vi: "Tốt. Cho thịt và nước cốt dừa vào, nấu lửa nhỏ.",
         en: "Good. Add the meat and coconut milk, cook on low heat.",
       },
       {
+        cell_id: "1a7e52e6-f6b6-4f5e-9ee1-45c3c322492a",
         speaker: "Anak",
         text: "Berapa lama, Bu?",
         vi: "Bao lâu vậy mẹ?",
         en: "How long, Mom?",
       },
       {
+        cell_id: "dd486f2b-7dda-4ca5-9c7a-297f5ba73035",
         speaker: "Ibu",
         text: "Tiga jam, sambil diaduk supaya tidak gosong.",
         vi: "Ba tiếng, vừa nấu vừa khuấy để không bị cháy khét.",
@@ -635,6 +665,7 @@ export const foodCookingLessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: 'sekali' AFTER an adjective means 'very' (enak sekali = very tasty), but 'sekali' alone means 'once' — mind the position. The '-nya' suffix on food/drink ('minumnya', 'makanannya') works like 'the' — very common when ordering. For negative commands use 'jangan', not 'tidak'.",
     vocabulary: [
       {
+        cell_id: "44f23603-7c53-4440-91fe-57ec2f0fe371",
         word: "pesan",
         en: "to order",
         vi: "gọi món",
@@ -643,6 +674,7 @@ export const foodCookingLessons: IndonesianLesson[] = [
         pronunciation_en: "pe-SAN",
       },
       {
+        cell_id: "d49cb8f5-ef07-42a1-bef8-0f5eb517bc46",
         word: "warung",
         en: "small eatery / food stall",
         vi: "quán ăn bình dân",
@@ -651,6 +683,7 @@ export const foodCookingLessons: IndonesianLesson[] = [
         pronunciation_en: "WA-roong",
       },
       {
+        cell_id: "e4fe58b8-82c2-4382-9c98-f7b573adc902",
         word: "nasi goreng",
         en: "fried rice",
         vi: "cơm chiên",
@@ -659,6 +692,7 @@ export const foodCookingLessons: IndonesianLesson[] = [
         pronunciation_en: "NA-see GOH-reng",
       },
       {
+        cell_id: "5eefafc4-3f01-44e4-99ac-cc30ab9549f2",
         word: "enak",
         en: "delicious / tasty",
         vi: "ngon",
@@ -667,6 +701,7 @@ export const foodCookingLessons: IndonesianLesson[] = [
         pronunciation_en: "EH-nak",
       },
       {
+        cell_id: "7589b74a-be9f-47b7-baa4-158d3b7875cc",
         word: "minum",
         en: "drink",
         vi: "đồ uống / uống",
@@ -675,6 +710,7 @@ export const foodCookingLessons: IndonesianLesson[] = [
         pronunciation_en: "MEE-noom",
       },
       {
+        cell_id: "8f54ec52-0a2c-46ff-ac5e-70985dc36196",
         word: "es teh manis",
         en: "sweet iced tea",
         vi: "trà đá ngọt",
@@ -683,6 +719,7 @@ export const foodCookingLessons: IndonesianLesson[] = [
         pronunciation_en: "ess teh MA-nis",
       },
       {
+        cell_id: "475cf50b-aba9-47f3-8998-5fa413dab742",
         word: "tambah",
         en: "to add / more",
         vi: "thêm",
@@ -691,6 +728,7 @@ export const foodCookingLessons: IndonesianLesson[] = [
         pronunciation_en: "TAM-bah",
       },
       {
+        cell_id: "363a9c49-7369-45b9-9a32-e6ad5c451345",
         word: "kenyang",
         en: "full (after eating)",
         vi: "no",
@@ -699,6 +737,7 @@ export const foodCookingLessons: IndonesianLesson[] = [
         pronunciation_en: "ke-NYANG",
       },
       {
+        cell_id: "faf2bc27-a0e5-40ec-94e3-10fa1d308e0b",
         word: "asin",
         en: "salty",
         vi: "mặn",
@@ -709,30 +748,35 @@ export const foodCookingLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "4b077fe7-81df-45df-a88f-1086dd1d9fd9",
         speaker: "Pelayan",
         text: "Mau pesan apa, Mas?",
         vi: "Anh muốn gọi gì ạ?",
         en: "What would you like to order, sir?",
       },
       {
+        cell_id: "10bd06e1-bdcc-45d3-a709-67e353e25dea",
         speaker: "Tamu",
         text: "Nasi goreng satu, jangan terlalu pedas, ya.",
         vi: "Một cơm chiên, đừng cay quá nhé.",
         en: "One fried rice, not too spicy, please.",
       },
       {
+        cell_id: "050fb39d-7371-4791-bb73-b919cc1ced2c",
         speaker: "Pelayan",
         text: "Minumnya apa?",
         vi: "Đồ uống gì ạ?",
         en: "And to drink?",
       },
       {
+        cell_id: "5f7844f6-cded-4404-94be-978307b94bf4",
         speaker: "Tamu",
         text: "Es teh manis. Oh, bisa minta tambah sambal?",
         vi: "Trà đá ngọt. À, cho xin thêm sambal được không?",
         en: "Sweet iced tea. Oh, could I have extra sambal?",
       },
       {
+        cell_id: "acf09637-aa57-4fbd-a1ac-c373a0bd4191",
         speaker: "Pelayan",
         text: "Tentu. Ditunggu, ya.",
         vi: "Tất nhiên. Anh đợi chút nhé.",

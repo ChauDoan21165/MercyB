@@ -25,6 +25,7 @@ export type ArabicSentenceInput = {
 };
 
 export type ArabicVocabInput = {
+  cell_id?: string;
   ar: string;
   romanization?: string;
   en: string;
@@ -33,6 +34,7 @@ export type ArabicVocabInput = {
 };
 
 export type ArabicDialogueInput = {
+  cell_id?: string;
   speaker: string;
   ar: string;
   romanization?: string;

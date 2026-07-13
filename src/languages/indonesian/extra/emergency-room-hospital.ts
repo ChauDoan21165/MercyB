@@ -17,6 +17,7 @@ type IndonesianLessonSentence = {
 };
 
 type IndonesianVocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -26,6 +27,7 @@ type IndonesianVocabEntry = {
 };
 
 type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -212,6 +214,7 @@ export const emergencyRoomHospitalLessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: in the ER, speak briefly and clearly with frames like: `Ini keadaan darurat`, `Pasien mengalami...`, `Saya keluarga pasien`, `Mohon jelaskan...`, `Berapa biaya awal...?`. With hospital staff, use `mohon`, `pasien`, `perawat`, `dokter jaga`, and passive forms such as `diminta`, `ditangani`, `dibayar`.",
     vocabulary: [
       {
+        cell_id: "07f72ea8-274e-4443-91e5-7976da5d4a4b",
         word: "IGD",
         en: "emergency department",
         vi: "khoa cấp cứu",
@@ -220,6 +223,7 @@ export const emergencyRoomHospitalLessons: IndonesianLesson[] = [
         pronunciation_en: "ee-geh-DEH",
       },
       {
+        cell_id: "7f07cd43-3dcc-4a12-9b00-f7e2e0237e73",
         word: "keadaan darurat",
         en: "emergency situation",
         vi: "tình trạng khẩn cấp",
@@ -228,6 +232,7 @@ export const emergencyRoomHospitalLessons: IndonesianLesson[] = [
         pronunciation_en: "keh-ah-DA-an da-ROO-rat",
       },
       {
+        cell_id: "d5effb72-6e37-424e-bce9-0f6e36436439",
         word: "pendaftaran",
         en: "registration",
         vi: "đăng ký",
@@ -236,6 +241,7 @@ export const emergencyRoomHospitalLessons: IndonesianLesson[] = [
         pronunciation_en: "pen-DAF-ta-ran",
       },
       {
+        cell_id: "3d83113e-b46f-40c2-bf67-1192957990cf",
         word: "perawat",
         en: "nurse",
         vi: "y tá / điều dưỡng",
@@ -244,6 +250,7 @@ export const emergencyRoomHospitalLessons: IndonesianLesson[] = [
         pronunciation_en: "peh-RA-wat",
       },
       {
+        cell_id: "a08c6e7d-adda-4465-a300-49d93e662eac",
         word: "dokter jaga",
         en: "doctor on duty",
         vi: "bác sĩ trực",
@@ -252,6 +259,7 @@ export const emergencyRoomHospitalLessons: IndonesianLesson[] = [
         pronunciation_en: "DOK-ter JA-ga",
       },
       {
+        cell_id: "478aa83b-9a04-48f1-8557-d662cff48423",
         word: "keluarga pasien",
         en: "patient's family",
         vi: "người nhà bệnh nhân",
@@ -260,6 +268,7 @@ export const emergencyRoomHospitalLessons: IndonesianLesson[] = [
         pronunciation_en: "keh-LOO-ar-ga PA-syen",
       },
       {
+        cell_id: "78937daa-e443-4b38-88f0-703ed2b10380",
         word: "tindakan medis",
         en: "medical procedure/action",
         vi: "thủ thuật / xử lý y tế",
@@ -268,6 +277,7 @@ export const emergencyRoomHospitalLessons: IndonesianLesson[] = [
         pronunciation_en: "TIN-da-kan MEH-dis",
       },
       {
+        cell_id: "63778187-6d17-46e7-8622-6a0e99b0f9e7",
         word: "biaya awal",
         en: "initial cost",
         vi: "chi phí ban đầu",
@@ -278,30 +288,35 @@ export const emergencyRoomHospitalLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "529cb869-1040-4d1c-bc03-db97c018856a",
         speaker: "Keluarga Pasien",
         text: "Tolong, ini keadaan darurat. Pasien sesak napas.",
         vi: "Làm ơn giúp, đây là tình trạng khẩn cấp. Bệnh nhân khó thở.",
         en: "Please help, this is an emergency. The patient has shortness of breath.",
       },
       {
+        cell_id: "f0c2bee0-4e74-4212-b995-00a28d9d80b6",
         speaker: "Perawat",
         text: "Baik, segera bawa ke ruang IGD. Saya cek tekanan darah dulu.",
         vi: "Vâng, đưa vào phòng cấp cứu ngay. Tôi kiểm tra huyết áp trước.",
         en: "Okay, bring them to the ER room immediately. I will check blood pressure first.",
       },
       {
+        cell_id: "2bb06209-c9d5-49a1-a656-5fff57012281",
         speaker: "Petugas Pendaftaran",
         text: "Keluarga pasien bisa daftar di loket ini dengan KTP pasien.",
         vi: "Người nhà bệnh nhân có thể đăng ký ở quầy này bằng KTP của bệnh nhân.",
         en: "The patient's family can register at this counter with the patient's KTP.",
       },
       {
+        cell_id: "b91fa9bb-506f-4738-b54e-6523db55c818",
         speaker: "Keluarga Pasien",
         text: "Apakah tindakan medis ini perlu persetujuan keluarga?",
         vi: "Thủ thuật/xử lý y tế này có cần sự đồng ý của gia đình không?",
         en: "Does this medical procedure require family consent?",
       },
       {
+        cell_id: "a5595e43-afa9-4826-8317-8ad720117f5e",
         speaker: "Dokter Jaga",
         text: "Ya, kami akan jelaskan prosedurnya dulu dengan bahasa yang sederhana.",
         vi: "Có, chúng tôi sẽ giải thích quy trình trước bằng ngôn ngữ đơn giản.",

@@ -22,6 +22,7 @@ export type LessonSentence = {
 };
 
 export type VocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -32,6 +33,7 @@ export type VocabEntry = {
 };
 
 export type DialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -138,6 +140,7 @@ export const lessons: PortugueseLesson[] = [
     "tip_advice_en": "For ongoing actions, Brazilian Portuguese uses 'estar + verb-ndo': 'Estou trabalhando' (I'm working), 'Estou procurando' (I'm looking). Note this differs from European Portuguese, which says 'estar a trabalhar'. Drill the -ndo ending — it's everywhere in spoken Brazil.",
     "vocabulary": [
       {
+        cell_id: "d7350f61-f9ca-4642-981a-a519fc59f931",
         "word": "o emprego",
         "en": "job / employment",
         "vi": "việc làm",
@@ -146,6 +149,7 @@ export const lessons: PortugueseLesson[] = [
         "pronunciation_en": "em-PRE-gu — final -o softens to 'u'; 'emprego' is a position, 'trabalho' is work in general"
       },
       {
+        cell_id: "3e5ed528-3c90-4749-b815-25bb5d93e84d",
         "word": "a empresa",
         "en": "company",
         "vi": "công ty",
@@ -154,6 +158,7 @@ export const lessons: PortugueseLesson[] = [
         "pronunciation_en": "em-PRE-za — the s between vowels is a 'z' sound"
       },
       {
+        cell_id: "c741ab76-80bb-42fa-8d22-cc0c2e8f7078",
         "word": "o chefe",
         "en": "boss",
         "vi": "sếp",
@@ -162,6 +167,7 @@ export const lessons: PortugueseLesson[] = [
         "pronunciation_en": "SHE-fee — opening 'ch' is 'sh'; final -e softens to 'ee'"
       },
       {
+        cell_id: "c4a05735-8d33-48f6-8339-4a54e9749f7c",
         "word": "o salário",
         "en": "salary",
         "vi": "lương",
@@ -170,6 +176,7 @@ export const lessons: PortugueseLesson[] = [
         "pronunciation_en": "sah-LAH-ree-u — stress on the second syllable"
       },
       {
+        cell_id: "c28a3303-9ac2-4a57-8550-6a07eb15f9eb",
         "word": "a reunião",
         "en": "meeting",
         "vi": "cuộc họp",
@@ -178,6 +185,7 @@ export const lessons: PortugueseLesson[] = [
         "pronunciation_en": "heh-oo-nee-OWN — '-ão' is nasal 'owng'; plural is 'reuniões' (heh-oo-nee-OYNGS)"
       },
       {
+        cell_id: "3fb08b35-72af-480b-9abd-2595f877591d",
         "word": "o currículo",
         "en": "resume / CV",
         "vi": "sơ yếu lý lịch",
@@ -186,6 +194,7 @@ export const lessons: PortugueseLesson[] = [
         "pronunciation_en": "koo-HEE-koo-lu — 'rr' is a throaty 'h' in Brazil, never rolled"
       },
       {
+        cell_id: "215b0194-51c7-411a-a111-efbbdd0565fb",
         "word": "a entrevista",
         "en": "interview",
         "vi": "phỏng vấn",
@@ -194,6 +203,7 @@ export const lessons: PortugueseLesson[] = [
         "pronunciation_en": "en-tre-VEES-ta — stress on the third syllable"
       },
       {
+        cell_id: "dddeb07a-f2ad-4bb9-b9d5-53cd2d8efb13",
         "word": "contratar",
         "en": "to hire",
         "vi": "tuyển dụng",
@@ -202,6 +212,7 @@ export const lessons: PortugueseLesson[] = [
         "pronunciation_en": "kon-tra-TAR — stress on the last syllable; opposite of 'demitir' (to fire)"
       },
       {
+        cell_id: "598258ef-5675-40c4-864e-35f3fb8e5d3c",
         "word": "demitir",
         "en": "to fire / lay off",
         "vi": "sa thải",
@@ -210,6 +221,7 @@ export const lessons: PortugueseLesson[] = [
         "pronunciation_en": "deh-mee-TCHEER — 'ti' before i palatalizes to 'tchi' in Brazil; reflexive 'demitir-se' = to resign"
       },
       {
+        cell_id: "6bd16719-f920-47a3-aa42-f6ae1a5f717a",
         "word": "o cargo",
         "en": "position / role",
         "vi": "chức vụ",
@@ -220,24 +232,28 @@ export const lessons: PortugueseLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "87ba35a6-91e5-42b2-8d01-c01a6514db8a",
         "speaker": "A",
         "text": "E aí, o que você faz da vida?",
         "en": "Hey, what do you do for a living?",
         "vi": "Này, bạn làm nghề gì vậy?"
       },
       {
+        cell_id: "a8a7d570-5414-4620-b28c-a8c8821adb0c",
         "speaker": "B",
         "text": "Sou analista de dados. E você?",
         "en": "I'm a data analyst. And you?",
         "vi": "Mình là chuyên viên phân tích dữ liệu. Còn bạn?"
       },
       {
+        cell_id: "a71afacb-b8d0-49b1-b48a-d5fb52140d54",
         "speaker": "A",
         "text": "Trabalho com marketing, mas estou procurando outra coisa.",
         "en": "I work in marketing, but I'm looking for something else.",
         "vi": "Mình làm marketing, nhưng đang tìm một việc khác."
       },
       {
+        cell_id: "c0222320-9011-492c-845a-74585f727087",
         "speaker": "B",
         "text": "Sério? Manda o currículo pra gente, estamos contratando!",
         "en": "Really? Send us your resume, we're hiring!",
@@ -353,6 +369,7 @@ export const lessons: PortugueseLesson[] = [
     "tip_advice_en": "Lock in the prepositions: 'concordar COM' (agree with), 'discordar DE' (disagree with). 'Acho que' is always followed by a clause — handy shortcuts are 'Acho que sim' (I think so) and 'Acho que não' (I don't think so).",
     "vocabulary": [
       {
+        cell_id: "e82b4b12-59b4-4bf2-b64c-66bf0985e1e7",
         "word": "a opinião",
         "en": "opinion",
         "vi": "ý kiến",
@@ -361,6 +378,7 @@ export const lessons: PortugueseLesson[] = [
         "pronunciation_en": "oh-pee-nee-OWN — '-ão' nasal; plural 'opiniões'"
       },
       {
+        cell_id: "5f030e4a-1f48-4420-b34f-d9eb7053638e",
         "word": "achar",
         "en": "to think / find",
         "vi": "nghĩ rằng",
@@ -369,6 +387,7 @@ export const lessons: PortugueseLesson[] = [
         "pronunciation_en": "ah-SHAR — 'ch' is 'sh'; 'eu acho que…' is the go-to opinion opener"
       },
       {
+        cell_id: "8f7b86bc-522c-4fa8-8749-a5f8da171165",
         "word": "concordar",
         "en": "to agree",
         "vi": "đồng ý",
@@ -377,6 +396,7 @@ export const lessons: PortugueseLesson[] = [
         "pronunciation_en": "kon-kor-DAR — always pairs with 'com' (concordar com você)"
       },
       {
+        cell_id: "58da0685-6b38-4e52-952f-ea1c7c13f7cc",
         "word": "discordar",
         "en": "to disagree",
         "vi": "không đồng tình",
@@ -385,6 +405,7 @@ export const lessons: PortugueseLesson[] = [
         "pronunciation_en": "jees-kor-DAR — 'di' → 'jee'; pairs with 'de' (discordar de algo)"
       },
       {
+        cell_id: "30274e12-b0db-497c-ac2b-9c816477ca21",
         "word": "ter razão",
         "en": "to be right",
         "vi": "nói đúng",
@@ -393,6 +414,7 @@ export const lessons: PortugueseLesson[] = [
         "pronunciation_en": "ter hah-ZOWN — literally 'to have reason'; 'você tem razão' = you're right"
       },
       {
+        cell_id: "c5e8dd3e-04b0-442c-8f61-a4f9c11a2cc8",
         "word": "o argumento",
         "en": "argument / point",
         "vi": "lập luận",
@@ -401,6 +423,7 @@ export const lessons: PortugueseLesson[] = [
         "pronunciation_en": "ar-goo-MEN-tu — a reasoned point, not a quarrel (that's 'discussão')"
       },
       {
+        cell_id: "1dc1aa03-febf-4326-8b0c-53016f3d53a9",
         "word": "duvidar",
         "en": "to doubt",
         "vi": "nghi ngờ",
@@ -409,6 +432,7 @@ export const lessons: PortugueseLesson[] = [
         "pronunciation_en": "doo-vee-DAR — pairs with 'de'; 'duvido' (I doubt it) is a common one-word reply"
       },
       {
+        cell_id: "6036b838-ad00-4517-930d-f13a9dac8da4",
         "word": "sinceramente",
         "en": "honestly / frankly",
         "vi": "thành thật mà nói",
@@ -417,6 +441,7 @@ export const lessons: PortugueseLesson[] = [
         "pronunciation_en": "seen-seh-rah-MEN-tchee — final -te → 'tchi'; flags an honest opinion is coming"
       },
       {
+        cell_id: "c4edacd7-515f-499a-bb15-ff3ccbded1e4",
         "word": "o ponto de vista",
         "en": "point of view",
         "vi": "quan điểm",
@@ -425,6 +450,7 @@ export const lessons: PortugueseLesson[] = [
         "pronunciation_en": "PON-tu jee VEES-ta — 'de' → 'jee' before the next word in fast speech"
       },
       {
+        cell_id: "ec00180e-17ef-4ad8-b28f-1c087e5f6297",
         "word": "fazer sentido",
         "en": "to make sense",
         "vi": "hợp lý",
@@ -435,24 +461,28 @@ export const lessons: PortugueseLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "9922afa6-fb48-42e4-854b-025d86d0af15",
         "speaker": "A",
         "text": "O que você acha da nova proposta?",
         "en": "What do you think of the new proposal?",
         "vi": "Bạn nghĩ sao về đề xuất mới?"
       },
       {
+        cell_id: "3d00f5a3-8b25-4f9e-b7fc-48a53114d7d7",
         "speaker": "B",
         "text": "Sinceramente, não me convenceu muito.",
         "en": "Honestly, it didn't really convince me.",
         "vi": "Thành thật thì nó chưa thuyết phục được mình lắm."
       },
       {
+        cell_id: "442ed94f-c86e-48f8-b47a-c510728d5f78",
         "speaker": "A",
         "text": "Por quê? Pra mim faz todo sentido.",
         "en": "Why? To me it makes total sense.",
         "vi": "Sao vậy? Với mình nó hoàn toàn hợp lý mà."
       },
       {
+        cell_id: "438ee805-16c9-4dba-b2ce-314b57f1e82e",
         "speaker": "B",
         "text": "Entendo seu ponto, mas ainda discordo do prazo.",
         "en": "I get your point, but I still disagree with the deadline.",
@@ -568,6 +598,7 @@ export const lessons: PortugueseLesson[] = [
     "tip_advice_en": "Quick test: if you'd say 'was -ing' or 'used to' in English, reach for the IMPERFEITO. If it's a one-time, done event, use the PERFEITO. The classic frame — 'I was sleeping when the phone rang' — is imperfeito (estava dormindo) + perfeito (tocou). Master that contrast and your past narration sounds native.",
     "vocabulary": [
       {
+        cell_id: "0f50c9ee-43c5-4a74-aeb7-66800b08a5b1",
         "word": "ontem",
         "en": "yesterday",
         "vi": "hôm qua",
@@ -576,6 +607,7 @@ export const lessons: PortugueseLesson[] = [
         "pronunciation_en": "ON-teng — the -em ending is nasal 'eyng'; signals a perfeito is likely coming"
       },
       {
+        cell_id: "d1adad58-a982-4979-972f-fab12545c3e1",
         "word": "antigamente",
         "en": "in the old days",
         "vi": "ngày xưa",
@@ -584,6 +616,7 @@ export const lessons: PortugueseLesson[] = [
         "pronunciation_en": "an-tchee-gah-MEN-tchee — cues the imperfeito (habitual past)"
       },
       {
+        cell_id: "0a4f7f03-fc65-40cf-a70d-365e17bad160",
         "word": "acordar",
         "en": "to wake up",
         "vi": "thức dậy",
@@ -592,6 +625,7 @@ export const lessons: PortugueseLesson[] = [
         "pronunciation_en": "ah-kor-DAR — past 'eu acordei' (I woke up)"
       },
       {
+        cell_id: "ff88ddf2-2b45-467e-a8d2-daa4fd99a2b5",
         "word": "morar",
         "en": "to live / reside",
         "vi": "sống / cư trú",
@@ -600,6 +634,7 @@ export const lessons: PortugueseLesson[] = [
         "pronunciation_en": "moh-RAR — imperfect 'eu morava' (I used to live); pairs with 'em' (morar em São Paulo)"
       },
       {
+        cell_id: "e0a0b926-a646-43f6-ba8c-29ae1431b2af",
         "word": "acontecer",
         "en": "to happen",
         "vi": "xảy ra",
@@ -608,6 +643,7 @@ export const lessons: PortugueseLesson[] = [
         "pronunciation_en": "ah-kon-teh-SER — 'o que aconteceu?' = what happened?"
       },
       {
+        cell_id: "38484e5b-1a1f-4a95-b23a-e76878331832",
         "word": "a lembrança",
         "en": "memory / keepsake",
         "vi": "kỷ niệm",
@@ -616,6 +652,7 @@ export const lessons: PortugueseLesson[] = [
         "pronunciation_en": "lem-BRAN-sa — 'ç' is 's'; nasal 'an'. A remembered moment or a souvenir"
       },
       {
+        cell_id: "87896ad1-d23e-40cd-ab19-ee6a8255ff35",
         "word": "a viagem",
         "en": "trip / journey",
         "vi": "chuyến đi",
@@ -624,6 +661,7 @@ export const lessons: PortugueseLesson[] = [
         "pronunciation_en": "vee-AH-zheng — 'g' before e is 'zh'; final -em nasal 'eyng'"
       },
       {
+        cell_id: "e67a53d1-a7a6-4d77-8216-a07a96d2a480",
         "word": "de repente",
         "en": "suddenly",
         "vi": "đột nhiên",
@@ -632,6 +670,7 @@ export const lessons: PortugueseLesson[] = [
         "pronunciation_en": "jee heh-PEN-tchee — 'r' is a throaty 'h'; great cue for a perfeito event"
       },
       {
+        cell_id: "1bd12a75-b966-46c6-be3a-857d1ef2b1db",
         "word": "enquanto",
         "en": "while",
         "vi": "trong khi",
@@ -640,6 +679,7 @@ export const lessons: PortugueseLesson[] = [
         "pronunciation_en": "en-KWAN-tu — links two imperfeito actions: 'enquanto eu lia…' (while I was reading)"
       },
       {
+        cell_id: "5c8c5af3-2981-41ba-af57-a07147e37c18",
         "word": "inesquecível",
         "en": "unforgettable",
         "vi": "khó quên",
@@ -650,24 +690,28 @@ export const lessons: PortugueseLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "4c1d97f2-2ccd-4bee-9c33-f85568091573",
         "speaker": "A",
         "text": "Como foi sua viagem pro Rio?",
         "en": "How was your trip to Rio?",
         "vi": "Chuyến đi Rio của bạn thế nào?"
       },
       {
+        cell_id: "3c7747af-5fbf-403c-af49-f82ad6e3dec0",
         "speaker": "B",
         "text": "Foi incrível! Todo dia a gente ia à praia.",
         "en": "It was amazing! Every day we used to go to the beach.",
         "vi": "Tuyệt vời lắm! Ngày nào bọn mình cũng ra biển."
       },
       {
+        cell_id: "30f06d92-1b37-4f72-bdb7-715151684631",
         "speaker": "A",
         "text": "E choveu muito? Tava na época das chuvas.",
         "en": "And did it rain a lot? It was the rainy season.",
         "vi": "Trời có mưa nhiều không? Lúc đó đang mùa mưa mà."
       },
       {
+        cell_id: "ba4cdcca-4891-40ce-93c2-342a34655888",
         "speaker": "B",
         "text": "Choveu um dia, mas a gente já tinha visto tudo.",
         "en": "It rained one day, but we had already seen everything.",
@@ -783,6 +827,7 @@ export const lessons: PortugueseLesson[] = [
     "tip_advice_en": "Symptoms use 'estar com', not 'ter': 'estou com febre' (I have a fever), 'estou com dor' (I'm in pain), 'estou com gripe' (I have the flu). For specific aches, use 'dor de + body part': 'dor de cabeça' (headache), 'dor de garganta' (sore throat), 'dor de barriga' (stomachache). Memorize these as fixed chunks.",
     "vocabulary": [
       {
+        cell_id: "836cfed5-a4af-4558-bf69-f575d28ca6ed",
         "word": "o médico / a médica",
         "en": "doctor",
         "vi": "bác sĩ",
@@ -791,6 +836,7 @@ export const lessons: PortugueseLesson[] = [
         "pronunciation_en": "MEH-jee-ku — 'di' → 'jee'; feminine 'a médica'"
       },
       {
+        cell_id: "a381099b-07e5-47cd-a1b8-d73e1d838d95",
         "word": "a consulta",
         "en": "appointment / visit",
         "vi": "lịch hẹn khám",
@@ -799,6 +845,7 @@ export const lessons: PortugueseLesson[] = [
         "pronunciation_en": "kon-SOOL-ta — 'marcar uma consulta' = to book an appointment"
       },
       {
+        cell_id: "c1814a30-9a67-4014-bc3e-bc1c5d7faf36",
         "word": "a dor",
         "en": "pain / ache",
         "vi": "cơn đau",
@@ -807,6 +854,7 @@ export const lessons: PortugueseLesson[] = [
         "pronunciation_en": "DOR — feminine despite the consonant ending; 'dor de cabeça' = headache"
       },
       {
+        cell_id: "8f1adcdf-0de6-4f66-9bd5-e03c9c68d999",
         "word": "a febre",
         "en": "fever",
         "vi": "sốt",
@@ -815,6 +863,7 @@ export const lessons: PortugueseLesson[] = [
         "pronunciation_en": "FEH-bree — final -re → 'ree'; 'estar com febre' = to have a fever"
       },
       {
+        cell_id: "0a1bfb5e-02a6-49c3-a8a1-d546f33246b8",
         "word": "o remédio",
         "en": "medicine",
         "vi": "thuốc",
@@ -823,6 +872,7 @@ export const lessons: PortugueseLesson[] = [
         "pronunciation_en": "heh-MEH-jyu — 'r' is 'h'; 'tomar remédio' = to take medicine"
       },
       {
+        cell_id: "dc19d79f-41f3-4645-b256-a2da6718a1bf",
         "word": "a receita",
         "en": "prescription",
         "vi": "đơn thuốc",
@@ -831,6 +881,7 @@ export const lessons: PortugueseLesson[] = [
         "pronunciation_en": "heh-SAY-ta — same word as 'recipe'! Context decides"
       },
       {
+        cell_id: "a9eef6a7-2d26-40c7-b7fa-40613c4bd117",
         "word": "a farmácia",
         "en": "pharmacy",
         "vi": "hiệu thuốc",
@@ -839,6 +890,7 @@ export const lessons: PortugueseLesson[] = [
         "pronunciation_en": "far-MAH-see-a — stress on second syllable; pharmacists give minor advice"
       },
       {
+        cell_id: "f295a275-0e93-4f67-9533-6f8bd95ae416",
         "word": "a gripe",
         "en": "the flu",
         "vi": "cúm",
@@ -847,6 +899,7 @@ export const lessons: PortugueseLesson[] = [
         "pronunciation_en": "GREE-pee — final -e → 'ee'; 'estar com gripe' = to have the flu"
       },
       {
+        cell_id: "78e689b1-705b-48a7-8ba8-f524e8543e1d",
         "word": "doer",
         "en": "to hurt / ache",
         "vi": "đau",
@@ -855,6 +908,7 @@ export const lessons: PortugueseLesson[] = [
         "pronunciation_en": "doo-ER — irregular; 'dói' (it hurts), 'doem' (they hurt)"
       },
       {
+        cell_id: "b6c6e8c0-cf2e-456f-8d32-ed5c130cc6fd",
         "word": "o sintoma",
         "en": "symptom",
         "vi": "triệu chứng",
@@ -865,24 +919,28 @@ export const lessons: PortugueseLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "4cc1ae5c-bead-4687-9e27-a911f689d2e1",
         "speaker": "Médica",
         "text": "Bom dia! O que você está sentindo?",
         "en": "Good morning! What are you feeling?",
         "vi": "Chào buổi sáng! Bạn thấy thế nào?"
       },
       {
+        cell_id: "ff178c3b-7a0a-441f-be13-f7499e6edba9",
         "speaker": "Paciente",
         "text": "Estou com dor de garganta e um pouco de febre.",
         "en": "I have a sore throat and a slight fever.",
         "vi": "Tôi bị đau họng và hơi sốt."
       },
       {
+        cell_id: "442c7255-aa67-4797-a5cf-d8b8a6868161",
         "speaker": "Médica",
         "text": "Desde quando? Vou examinar você.",
         "en": "Since when? I'll examine you.",
         "vi": "Từ khi nào vậy? Tôi sẽ khám cho bạn."
       },
       {
+        cell_id: "2da75f2b-8c80-47c5-a088-0ee506b13043",
         "speaker": "Paciente",
         "text": "Desde ontem. Preciso de remédio?",
         "en": "Since yesterday. Do I need medicine?",
@@ -998,6 +1056,7 @@ export const lessons: PortugueseLesson[] = [
     "tip_advice_en": "To report a problem, use 'estar + with a problem' or the '-ndo' continuous: 'A torneira está vazando' (the tap is leaking). For urgency, add 'com urgência' or 'o quanto antes' (as soon as possible). To call a tradesperson: 'chamar um encanador' (plumber) / 'eletricista' (electrician) / 'técnico' (repair technician).",
     "vocabulary": [
       {
+        cell_id: "593dd08e-f29f-4732-9954-ec25e3386526",
         "word": "o aluguel",
         "en": "rent",
         "vi": "tiền thuê nhà",
@@ -1006,6 +1065,7 @@ export const lessons: PortugueseLesson[] = [
         "pronunciation_en": "ah-loo-GEW — final -l → 'w'; the monthly payment"
       },
       {
+        cell_id: "e1532e14-1fd2-42be-a485-b7b2c97460d8",
         "word": "vazar",
         "en": "to leak",
         "vi": "rò rỉ",
@@ -1014,6 +1074,7 @@ export const lessons: PortugueseLesson[] = [
         "pronunciation_en": "vah-ZAR — z between vowels; 'está vazando' = it's leaking"
       },
       {
+        cell_id: "4773c7f6-1722-4385-be4d-ee51cc235dd7",
         "word": "a torneira",
         "en": "tap / faucet",
         "vi": "vòi nước",
@@ -1022,6 +1083,7 @@ export const lessons: PortugueseLesson[] = [
         "pronunciation_en": "tor-NAY-ra — '-ei-' is 'ay'"
       },
       {
+        cell_id: "ae945983-f81f-49b3-a7c0-df429326538c",
         "word": "a infiltração",
         "en": "water seepage / damp",
         "vi": "thấm nước",
@@ -1030,6 +1092,7 @@ export const lessons: PortugueseLesson[] = [
         "pronunciation_en": "een-feew-trah-SOWN — '-ção' nasal; a classic rainy-season complaint"
       },
       {
+        cell_id: "e376f0d4-9967-46f2-ae23-5d2ebc95c012",
         "word": "o encanador",
         "en": "plumber",
         "vi": "thợ ống nước",
@@ -1038,6 +1101,7 @@ export const lessons: PortugueseLesson[] = [
         "pronunciation_en": "en-ka-na-DOR — from 'cano' (pipe)"
       },
       {
+        cell_id: "8c3857a4-f643-4fa9-b8b1-83cd23a3f876",
         "word": "o eletricista",
         "en": "electrician",
         "vi": "thợ điện",
@@ -1046,6 +1110,7 @@ export const lessons: PortugueseLesson[] = [
         "pronunciation_en": "eh-leh-tree-SEES-ta — same form for men and women"
       },
       {
+        cell_id: "751beb3d-897e-4325-ad08-704c7be91d76",
         "word": "o síndico",
         "en": "building manager",
         "vi": "ban quản lý chung cư",
@@ -1054,6 +1119,7 @@ export const lessons: PortugueseLesson[] = [
         "pronunciation_en": "SEEN-jee-ku — the elected condo manager; not a 'landlord'"
       },
       {
+        cell_id: "437cb2e7-c08d-487b-9ab7-08e3ec75297b",
         "word": "o vizinho / a vizinha",
         "en": "neighbor",
         "vi": "hàng xóm",
@@ -1062,6 +1128,7 @@ export const lessons: PortugueseLesson[] = [
         "pronunciation_en": "vee-ZEE-nyu — 'nh' = 'ny'; feminine 'a vizinha'"
       },
       {
+        cell_id: "2d3a32cf-ab66-4401-acda-7fd9f2e52a3f",
         "word": "consertar",
         "en": "to fix / repair",
         "vi": "sửa chữa",
@@ -1070,6 +1137,7 @@ export const lessons: PortugueseLesson[] = [
         "pronunciation_en": "kon-ser-TAR — 'consertar' (fix) ≠ 'concertar'; the everyday repair verb"
       },
       {
+        cell_id: "2825e22b-2353-4a84-a7d7-502b7e2b326e",
         "word": "o mofo",
         "en": "mold / mildew",
         "vi": "nấm mốc",
@@ -1080,24 +1148,28 @@ export const lessons: PortugueseLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "befeb0b0-3926-4618-baed-f9182f93b3a8",
         "speaker": "Inquilino",
         "text": "Alô, síndico? A torneira do banheiro está vazando muito.",
         "en": "Hello, building manager? The bathroom tap is leaking a lot.",
         "vi": "Alô, ban quản lý à? Vòi nước nhà tắm đang rò rỉ nhiều lắm."
       },
       {
+        cell_id: "c1848d40-52fa-40f3-adb2-2334b82fdd96",
         "speaker": "Síndico",
         "text": "Desde quando? Já avisou o proprietário?",
         "en": "Since when? Have you told the owner?",
         "vi": "Từ khi nào vậy? Anh báo chủ nhà chưa?"
       },
       {
+        cell_id: "2f05737f-ed01-463a-be10-4ed739ffef53",
         "speaker": "Inquilino",
         "text": "Desde ontem. Preciso chamar um encanador com urgência.",
         "en": "Since yesterday. I need to call a plumber urgently.",
         "vi": "Từ hôm qua. Tôi cần gọi thợ sửa ống nước gấp."
       },
       {
+        cell_id: "df26baef-a782-44d3-95bf-7cf7b1d6dd85",
         "speaker": "Síndico",
         "text": "Pode chamar. O condomínio cobre o conserto.",
         "en": "Go ahead and call. The building covers the repair.",

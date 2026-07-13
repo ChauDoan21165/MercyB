@@ -18,6 +18,7 @@ export type PunjabiClosurePacketFocus =
 export type PunjabiClosurePacketStage = "pre_a11_closure" | "pre_merge" | "ci_readiness" | "pre_integration" | "sanity";
 
 export type PunjabiScriptVocabularyClosurePacketSample = {
+  cell_id?: string;
   id: string;
   focus: PunjabiClosurePacketFocus;
   stage: PunjabiClosurePacketStage;
@@ -39,6 +40,7 @@ export type PunjabiScriptVocabularyClosurePacketSample = {
 };
 
 export type PunjabiScriptVocabularyClosurePacketSection = {
+  cell_id?: string;
   focus: PunjabiClosurePacketFocus;
   title_vi: string;
   title_en: string;

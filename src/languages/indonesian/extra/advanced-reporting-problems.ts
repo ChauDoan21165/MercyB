@@ -12,6 +12,7 @@ type LessonSentence = {
 };
 
 type VocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -21,6 +22,7 @@ type VocabEntry = {
 };
 
 type DialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -151,6 +153,7 @@ export const advancedReportingProblemsLessons: IndonesianLesson[] = [
       "Fast frame to memorize: `Saya ingin melaporkan masalah` -> `Kronologinya...` -> `Saya melampirkan bukti` -> `Ada saksi` -> `Mohon nomor laporan`. Vietnamese speakers should avoid literal phrasing for 'photo proof'; natural Indonesian is `bukti foto` or `foto sebagai bukti`.",
     vocabulary: [
       {
+        cell_id: "ed12ed5c-ef8b-4473-96f5-25b37ae42ecd",
         word: "melaporkan masalah",
         en: "to report a problem",
         vi: "báo cáo vấn đề",
@@ -159,6 +162,7 @@ export const advancedReportingProblemsLessons: IndonesianLesson[] = [
         pronunciation_en: "me-la-POR-kan ma-SA-lah",
       },
       {
+        cell_id: "5aa09659-93cd-4817-a078-bf3042f32e49",
         word: "kronologi",
         en: "chronology / timeline of events",
         vi: "diễn biến theo thời gian",
@@ -167,6 +171,7 @@ export const advancedReportingProblemsLessons: IndonesianLesson[] = [
         pronunciation_en: "kro-no-LO-gi",
       },
       {
+        cell_id: "15b4f484-c55d-495e-90ea-bde6b667f762",
         word: "bukti foto",
         en: "photo evidence",
         vi: "bằng chứng hình ảnh",
@@ -175,6 +180,7 @@ export const advancedReportingProblemsLessons: IndonesianLesson[] = [
         pronunciation_en: "BOOK-ti FO-to",
       },
       {
+        cell_id: "b8cddb85-67e2-4ab0-a037-474cb9f36153",
         word: "tangkapan layar",
         en: "screenshot",
         vi: "ảnh chụp màn hình",
@@ -183,6 +189,7 @@ export const advancedReportingProblemsLessons: IndonesianLesson[] = [
         pronunciation_en: "tang-KAP-an LA-yar",
       },
       {
+        cell_id: "761c122c-1881-4e96-a138-18481f13bba7",
         word: "saksi",
         en: "witness",
         vi: "nhân chứng",
@@ -191,6 +198,7 @@ export const advancedReportingProblemsLessons: IndonesianLesson[] = [
         pronunciation_en: "SAK-si",
       },
       {
+        cell_id: "3ff890e4-bb8c-429a-9457-d7ae6e04b6d5",
         word: "nomor laporan",
         en: "report number",
         vi: "số báo cáo / mã vụ việc",
@@ -201,24 +209,28 @@ export const advancedReportingProblemsLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "e2605bb0-b634-4d27-b32b-191cf631197b",
         speaker: "Pelapor",
         text: "Selamat pagi. Saya ingin melaporkan masalah ini secara resmi.",
         vi: "Chào buổi sáng. Tôi muốn báo cáo vấn đề này một cách chính thức.",
         en: "Good morning. I would like to report this problem formally.",
       },
       {
+        cell_id: "4bfe99c9-62ed-40c3-bf9d-20b99c779802",
         speaker: "Petugas",
         text: "Baik. Bisa jelaskan kronologinya dari awal?",
         vi: "Vâng. Anh/chị có thể giải thích diễn biến từ đầu không?",
         en: "Okay. Can you explain the chronology from the beginning?",
       },
       {
+        cell_id: "3071e46d-f2d9-4684-8a5c-a70dda941915",
         speaker: "Pelapor",
         text: "Saya sudah melampirkan bukti foto dan ada dua saksi.",
         vi: "Tôi đã đính kèm bằng chứng hình ảnh và có hai nhân chứng.",
         en: "I have attached photo evidence and there are two witnesses.",
       },
       {
+        cell_id: "ef3fc5ed-0954-47c5-9344-6d5431b4bc64",
         speaker: "Petugas",
         text: "Terima kasih. Kami catat nomor laporan untuk tindak lanjut.",
         vi: "Cảm ơn. Chúng tôi ghi số báo cáo để theo dõi xử lý.",
@@ -371,6 +383,7 @@ export const advancedReportingProblemsLessons: IndonesianLesson[] = [
       "Polite escalation template: `Saya sudah menunggu...`, `Mohon jelaskan langkah penyelesaian...`, `Jika belum ada respons, saya ingin meminta eskalasi...`. Avoid opening with an accusation; provide the report number and evidence first.",
     vocabulary: [
       {
+        cell_id: "7a2f1f50-1ef6-4d3d-9a60-18f96eaea14a",
         word: "tindak lanjut",
         en: "follow-up action",
         vi: "xử lý tiếp theo",
@@ -379,6 +392,7 @@ export const advancedReportingProblemsLessons: IndonesianLesson[] = [
         pronunciation_en: "TIN-dak LAN-jut",
       },
       {
+        cell_id: "4a2e396e-1aeb-4659-80d7-e70363fe3fcb",
         word: "respons",
         en: "response",
         vi: "phản hồi",
@@ -387,6 +401,7 @@ export const advancedReportingProblemsLessons: IndonesianLesson[] = [
         pronunciation_en: "res-PONS",
       },
       {
+        cell_id: "d670b86b-0183-499e-9ac1-542fa24cab5e",
         word: "eskalasi",
         en: "escalation",
         vi: "chuyển cấp / leo thang xử lý",
@@ -395,6 +410,7 @@ export const advancedReportingProblemsLessons: IndonesianLesson[] = [
         pronunciation_en: "es-ka-LA-see",
       },
       {
+        cell_id: "1225285a-1b4e-4d8c-9ee7-d67495f43d0b",
         word: "langkah penyelesaian",
         en: "resolution steps",
         vi: "các bước giải quyết",
@@ -403,6 +419,7 @@ export const advancedReportingProblemsLessons: IndonesianLesson[] = [
         pronunciation_en: "LANG-kah pe-nye-le-SAI-an",
       },
       {
+        cell_id: "86524289-ac24-476f-807f-ec2b51a3ae9d",
         word: "pembaruan",
         en: "update",
         vi: "cập nhật",
@@ -411,6 +428,7 @@ export const advancedReportingProblemsLessons: IndonesianLesson[] = [
         pronunciation_en: "pem-ba-ROO-an",
       },
       {
+        cell_id: "345c2825-ae6b-4d08-b1bd-d8901b823bf3",
         word: "bagian terkait",
         en: "relevant department",
         vi: "bộ phận liên quan",
@@ -421,24 +439,28 @@ export const advancedReportingProblemsLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "dac6cec6-dc78-46a3-9938-77d51598969c",
         speaker: "Pelapor",
         text: "Nomor laporan saya 2418. Saya sudah menunggu tindak lanjut selama tiga hari kerja.",
         vi: "Số báo cáo của tôi là 2418. Tôi đã chờ xử lý tiếp theo trong ba ngày làm việc.",
         en: "My report number is 2418. I have waited for follow-up for three business days.",
       },
       {
+        cell_id: "106a1b84-57dc-475d-961c-bb1308eb652e",
         speaker: "Layanan Pelanggan",
         text: "Mohon tunggu sebentar. Saya cek status laporan Bapak.",
         vi: "Xin chờ một lát. Tôi kiểm tra trạng thái báo cáo của anh/chú.",
         en: "Please wait a moment. I will check the status of your report.",
       },
       {
+        cell_id: "47eb7c52-5676-4458-86d1-f796cdeaa198",
         speaker: "Pelapor",
         text: "Jika belum ada respons, saya ingin meminta eskalasi ke supervisor.",
         vi: "Nếu vẫn chưa có phản hồi, tôi muốn yêu cầu chuyển lên supervisor.",
         en: "If there is still no response, I would like to request escalation to a supervisor.",
       },
       {
+        cell_id: "2d3abc25-c178-4c39-82a9-faf7a0eedd4d",
         speaker: "Layanan Pelanggan",
         text: "Baik, laporan akan kami teruskan ke bagian terkait dan pembaruan dikirim melalui email.",
         vi: "Vâng, chúng tôi sẽ chuyển báo cáo đến bộ phận liên quan và gửi cập nhật qua email.",

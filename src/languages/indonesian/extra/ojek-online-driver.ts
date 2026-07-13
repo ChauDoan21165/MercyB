@@ -12,6 +12,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -21,6 +22,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -135,18 +137,18 @@ export const ojekOnlineDriverLessons: IndonesianLesson[] = [
     tip_advice_en:
       "Registration set: `Saya mau daftar jadi driver ...`, `Dokumen yang dibutuhkan ...`, `Akun driver saya sudah aktif`. VN-speaker trap: Indonesian `motor` usually means motorbike, while car is `mobil`. For documents, remember `SIM` = driver's license, not a phone SIM.",
     vocabulary: [
-      { word: "daftar", en: "to register", vi: "đăng ký", pos: "verb", pronunciation_vi: "DAF-tar", pronunciation_en: "DAF-tar" },
-      { word: "driver", en: "driver", vi: "tài xế", pos: "noun", pronunciation_vi: "DRAI-ver", pronunciation_en: "DRAI-ver" },
-      { word: "ojek online", en: "app-based motorbike taxi", vi: "xe ôm công nghệ", pos: "noun", pronunciation_vi: "O-jek ON-lain", pronunciation_en: "OH-jek ON-line" },
-      { word: "KTP", en: "Indonesian ID card", vi: "căn cước Indonesia", pos: "noun", pronunciation_vi: "ka-te-PE", pronunciation_en: "ka-te-PE" },
-      { word: "SIM", en: "driver's license", vi: "bằng lái", pos: "noun", pronunciation_vi: "SIM", pronunciation_en: "SIM" },
-      { word: "STNK", en: "vehicle registration", vi: "giấy đăng ký xe", pos: "noun", pronunciation_vi: "es-te-en-KA", pronunciation_en: "es-te-en-KA" },
-      { word: "akun", en: "account", vi: "tài khoản", pos: "noun", pronunciation_vi: "A-kun", pronunciation_en: "AH-koon" },
+      { cell_id: "d885dd77-1235-4bc5-8d61-18a844c5bc2f", word: "daftar", en: "to register", vi: "đăng ký", pos: "verb", pronunciation_vi: "DAF-tar", pronunciation_en: "DAF-tar" },
+      { cell_id: "7a3e88ad-680e-4a81-8b8d-b12984740021", word: "driver", en: "driver", vi: "tài xế", pos: "noun", pronunciation_vi: "DRAI-ver", pronunciation_en: "DRAI-ver" },
+      { cell_id: "dec7f346-53c1-497e-a404-c6485cc3cb52", word: "ojek online", en: "app-based motorbike taxi", vi: "xe ôm công nghệ", pos: "noun", pronunciation_vi: "O-jek ON-lain", pronunciation_en: "OH-jek ON-line" },
+      { cell_id: "deaf1da7-b917-4dda-8001-7316984c8bdf", word: "KTP", en: "Indonesian ID card", vi: "căn cước Indonesia", pos: "noun", pronunciation_vi: "ka-te-PE", pronunciation_en: "ka-te-PE" },
+      { cell_id: "8bcb0c89-845a-40c8-81fe-94633ea382e3", word: "SIM", en: "driver's license", vi: "bằng lái", pos: "noun", pronunciation_vi: "SIM", pronunciation_en: "SIM" },
+      { cell_id: "4ad85676-23ae-43d7-a46f-9cea76d1dc41", word: "STNK", en: "vehicle registration", vi: "giấy đăng ký xe", pos: "noun", pronunciation_vi: "es-te-en-KA", pronunciation_en: "es-te-en-KA" },
+      { cell_id: "cc96c400-b544-40bf-8c55-b04afea6b4fd", word: "akun", en: "account", vi: "tài khoản", pos: "noun", pronunciation_vi: "A-kun", pronunciation_en: "AH-koon" },
     ],
     dialogue: [
-      { speaker: "Calon driver", text: "Saya mau daftar jadi driver GrabBike. Dokumennya apa saja?", vi: "Tôi muốn đăng ký làm tài xế GrabBike. Cần những giấy tờ gì?", en: "I want to register as a GrabBike driver. What documents are needed?" },
-      { speaker: "Petugas", text: "Siapkan KTP, SIM, STNK, dan foto motor.", vi: "Chuẩn bị KTP, bằng lái, giấy đăng ký xe, và ảnh xe máy.", en: "Prepare your ID, driver's license, vehicle registration, and a photo of the motorbike." },
-      { speaker: "Calon driver", text: "Baik, motor saya dalam kondisi baik.", vi: "Vâng, xe máy của tôi ở trong tình trạng tốt.", en: "Okay, my motorbike is in good condition." },
+      { cell_id: "93c22b58-3cf7-432d-8a96-f2edb1a5f7d5", speaker: "Calon driver", text: "Saya mau daftar jadi driver GrabBike. Dokumennya apa saja?", vi: "Tôi muốn đăng ký làm tài xế GrabBike. Cần những giấy tờ gì?", en: "I want to register as a GrabBike driver. What documents are needed?" },
+      { cell_id: "4a7e094e-c8fc-46ca-97cd-4e059bf69679", speaker: "Petugas", text: "Siapkan KTP, SIM, STNK, dan foto motor.", vi: "Chuẩn bị KTP, bằng lái, giấy đăng ký xe, và ảnh xe máy.", en: "Prepare your ID, driver's license, vehicle registration, and a photo of the motorbike." },
+      { cell_id: "852795d4-efbd-4087-85a4-f3cd228a4089", speaker: "Calon driver", text: "Baik, motor saya dalam kondisi baik.", vi: "Vâng, xe máy của tôi ở trong tình trạng tốt.", en: "Okay, my motorbike is in good condition." },
     ],
     exercises: [
       {
@@ -262,18 +264,18 @@ export const ojekOnlineDriverLessons: IndonesianLesson[] = [
     tip_advice_en:
       "Driver phrases: `orderan masuk`, `ambil orderan`, `penumpang minta dijemput`, `rating turun`, `rating bagus`. The big grammar trap is passive `di-`: `dijemput` = be picked up, `diantar` = be taken somewhere.",
     vocabulary: [
-      { word: "orderan", en: "order/ride request", vi: "đơn/chuyến đặt", pos: "noun", pronunciation_vi: "or-DER-an", pronunciation_en: "or-DER-an" },
-      { word: "ambil orderan", en: "take an order", vi: "nhận đơn/chuyến", pos: "verb phrase", pronunciation_vi: "AM-bil or-DER-an", pronunciation_en: "AM-bil or-DER-an" },
-      { word: "penumpang", en: "passenger", vi: "hành khách", pos: "noun", pronunciation_vi: "pe-NUM-pang", pronunciation_en: "pe-NOOM-pang" },
-      { word: "dijemput", en: "picked up", vi: "được đón", pos: "passive verb", pronunciation_vi: "di-JEM-put", pronunciation_en: "dee-JEM-poot" },
-      { word: "cancel", en: "to cancel", vi: "hủy", pos: "verb", pronunciation_vi: "KEN-sel", pronunciation_en: "KAN-sel" },
-      { word: "rating turun", en: "rating drops", vi: "rating giảm", pos: "phrase", pronunciation_vi: "RA-ting TU-run", pronunciation_en: "RA-ting TOO-roon" },
-      { word: "ramah", en: "friendly", vi: "thân thiện", pos: "adjective", pronunciation_vi: "RA-mah", pronunciation_en: "RA-mah" },
+      { cell_id: "d79444a7-2e2f-4fa7-adb1-2b5ebf6d556c", word: "orderan", en: "order/ride request", vi: "đơn/chuyến đặt", pos: "noun", pronunciation_vi: "or-DER-an", pronunciation_en: "or-DER-an" },
+      { cell_id: "7a572210-709b-4624-a352-592f236f05e1", word: "ambil orderan", en: "take an order", vi: "nhận đơn/chuyến", pos: "verb phrase", pronunciation_vi: "AM-bil or-DER-an", pronunciation_en: "AM-bil or-DER-an" },
+      { cell_id: "9c8f3564-cc75-4e1f-8439-941535127102", word: "penumpang", en: "passenger", vi: "hành khách", pos: "noun", pronunciation_vi: "pe-NUM-pang", pronunciation_en: "pe-NOOM-pang" },
+      { cell_id: "613106ed-27a8-4312-b894-3608fac518fb", word: "dijemput", en: "picked up", vi: "được đón", pos: "passive verb", pronunciation_vi: "di-JEM-put", pronunciation_en: "dee-JEM-poot" },
+      { cell_id: "bd6344f4-2739-4f3a-851f-87fc62d89867", word: "cancel", en: "to cancel", vi: "hủy", pos: "verb", pronunciation_vi: "KEN-sel", pronunciation_en: "KAN-sel" },
+      { cell_id: "11be21d8-14e2-4b95-9654-e645f3a9fab1", word: "rating turun", en: "rating drops", vi: "rating giảm", pos: "phrase", pronunciation_vi: "RA-ting TU-run", pronunciation_en: "RA-ting TOO-roon" },
+      { cell_id: "109c2127-865b-456a-8d51-fda0250f85bc", word: "ramah", en: "friendly", vi: "thân thiện", pos: "adjective", pronunciation_vi: "RA-mah", pronunciation_en: "RA-mah" },
     ],
     dialogue: [
-      { speaker: "Driver A", text: "Hari ini orderan masuk terus, tapi banyak yang jauh.", vi: "Hôm nay đơn vào liên tục, nhưng nhiều đơn xa.", en: "Orders keep coming in today, but many are far away." },
-      { speaker: "Driver B", text: "Aku ambil yang dekat dulu. Rating jangan sampai turun.", vi: "Tôi nhận đơn gần trước. Đừng để rating bị giảm.", en: "I take the nearby ones first. Do not let the rating drop." },
-      { speaker: "Driver A", text: "Betul. Jangan cancel kalau tidak darurat.", vi: "Đúng. Đừng hủy nếu không khẩn cấp.", en: "Right. Do not cancel unless it is urgent." },
+      { cell_id: "5d61670f-318e-4770-93a0-3c507a580a9f", speaker: "Driver A", text: "Hari ini orderan masuk terus, tapi banyak yang jauh.", vi: "Hôm nay đơn vào liên tục, nhưng nhiều đơn xa.", en: "Orders keep coming in today, but many are far away." },
+      { cell_id: "c634a82c-f326-4276-aa8b-f965ff514e79", speaker: "Driver B", text: "Aku ambil yang dekat dulu. Rating jangan sampai turun.", vi: "Tôi nhận đơn gần trước. Đừng để rating bị giảm.", en: "I take the nearby ones first. Do not let the rating drop." },
+      { cell_id: "de44883f-02c1-4a5a-9e11-d850fb3c604c", speaker: "Driver A", text: "Betul. Jangan cancel kalau tidak darurat.", vi: "Đúng. Đừng hủy nếu không khẩn cấp.", en: "Right. Do not cancel unless it is urgent." },
     ],
     exercises: [
       {
@@ -389,19 +391,19 @@ export const ojekOnlineDriverLessons: IndonesianLesson[] = [
     tip_advice_en:
       "Distinguish `gaji` and `penghasilan`: `gaji` is usually fixed salary; `penghasilan` is earnings/income, better for app drivers. Key phrases: `tergantung jumlah orderan`, `dapat tips`, `isi bensin`, `dipotong biaya aplikasi`, `target harian`. For Indonesian money, drill `ribu` because everyday prices use thousands.",
     vocabulary: [
-      { word: "penghasilan", en: "income/earnings", vi: "thu nhập", pos: "noun", pronunciation_vi: "peng-ha-SIL-an", pronunciation_en: "peng-ha-SEEL-an" },
-      { word: "tergantung", en: "depends on", vi: "phụ thuộc", pos: "verb", pronunciation_vi: "ter-GAN-tung", pronunciation_en: "ter-GAN-toong" },
-      { word: "ramai", en: "busy/crowded", vi: "đông/nhộn nhịp", pos: "adjective", pronunciation_vi: "RA-mai", pronunciation_en: "RA-mai" },
-      { word: "tips", en: "tip/gratuity", vi: "tiền tip/tiền bo", pos: "noun", pronunciation_vi: "tips", pronunciation_en: "tips" },
-      { word: "isi bensin", en: "fill up with fuel", vi: "đổ xăng", pos: "verb phrase", pronunciation_vi: "I-si BEN-sin", pronunciation_en: "EE-see BEN-sin" },
-      { word: "dipotong", en: "deducted", vi: "bị trừ/khấu trừ", pos: "passive verb", pronunciation_vi: "di-PO-tong", pronunciation_en: "dee-PO-tong" },
-      { word: "dompet driver", en: "driver wallet", vi: "ví tài xế", pos: "noun", pronunciation_vi: "DOM-pet DRAI-ver", pronunciation_en: "DOM-pet DRAI-ver" },
-      { word: "target harian", en: "daily target", vi: "mục tiêu hằng ngày", pos: "noun", pronunciation_vi: "TAR-get ha-RI-an", pronunciation_en: "TAR-get ha-REE-an" },
+      { cell_id: "a6182223-c141-4b9f-91ca-d4fb16631449", word: "penghasilan", en: "income/earnings", vi: "thu nhập", pos: "noun", pronunciation_vi: "peng-ha-SIL-an", pronunciation_en: "peng-ha-SEEL-an" },
+      { cell_id: "5a23d770-e135-4965-850b-38e85a349be8", word: "tergantung", en: "depends on", vi: "phụ thuộc", pos: "verb", pronunciation_vi: "ter-GAN-tung", pronunciation_en: "ter-GAN-toong" },
+      { cell_id: "6aba18e2-e758-4335-8038-6eee8289ddf3", word: "ramai", en: "busy/crowded", vi: "đông/nhộn nhịp", pos: "adjective", pronunciation_vi: "RA-mai", pronunciation_en: "RA-mai" },
+      { cell_id: "64451d80-d53f-4390-ba4d-de499bf4003d", word: "tips", en: "tip/gratuity", vi: "tiền tip/tiền bo", pos: "noun", pronunciation_vi: "tips", pronunciation_en: "tips" },
+      { cell_id: "43485ce7-14fe-4c65-971e-4d2ce77d72d2", word: "isi bensin", en: "fill up with fuel", vi: "đổ xăng", pos: "verb phrase", pronunciation_vi: "I-si BEN-sin", pronunciation_en: "EE-see BEN-sin" },
+      { cell_id: "833f6f13-8640-4dbf-ac07-e74fefd4657f", word: "dipotong", en: "deducted", vi: "bị trừ/khấu trừ", pos: "passive verb", pronunciation_vi: "di-PO-tong", pronunciation_en: "dee-PO-tong" },
+      { cell_id: "22b2916b-a5d4-4c3a-9850-a64fc996c049", word: "dompet driver", en: "driver wallet", vi: "ví tài xế", pos: "noun", pronunciation_vi: "DOM-pet DRAI-ver", pronunciation_en: "DOM-pet DRAI-ver" },
+      { cell_id: "353f200f-2966-4b7b-b84c-024a48d7960f", word: "target harian", en: "daily target", vi: "mục tiêu hằng ngày", pos: "noun", pronunciation_vi: "TAR-get ha-RI-an", pronunciation_en: "TAR-get ha-REE-an" },
     ],
     dialogue: [
-      { speaker: "Driver A", text: "Hari ini ramai, penghasilan lumayan.", vi: "Hôm nay đông khách, thu nhập khá ổn.", en: "Today is busy, the income is pretty decent." },
-      { speaker: "Driver B", text: "Bagus. Aku baru isi bensin sebelum jam sibuk.", vi: "Tốt đấy. Tôi vừa đổ xăng trước giờ cao điểm.", en: "Good. I just filled up before rush hour." },
-      { speaker: "Driver A", text: "Semoga dapat tips juga. Targetku dua ratus ribu.", vi: "Hy vọng cũng được tip. Mục tiêu của tôi là hai trăm nghìn.", en: "Hopefully I get tips too. My target is two hundred thousand." },
+      { cell_id: "140fdf74-a430-4506-bd29-965d5620cc60", speaker: "Driver A", text: "Hari ini ramai, penghasilan lumayan.", vi: "Hôm nay đông khách, thu nhập khá ổn.", en: "Today is busy, the income is pretty decent." },
+      { cell_id: "4f58638a-0a17-4d36-9f1c-1d84d5985e64", speaker: "Driver B", text: "Bagus. Aku baru isi bensin sebelum jam sibuk.", vi: "Tốt đấy. Tôi vừa đổ xăng trước giờ cao điểm.", en: "Good. I just filled up before rush hour." },
+      { cell_id: "02088cf2-5835-48ed-ab03-4d504854b32a", speaker: "Driver A", text: "Semoga dapat tips juga. Targetku dua ratus ribu.", vi: "Hy vọng cũng được tip. Mục tiêu của tôi là hai trăm nghìn.", en: "Hopefully I get tips too. My target is two hundred thousand." },
     ],
     exercises: [
       {

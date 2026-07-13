@@ -33,6 +33,7 @@ type LessonSentence = {
 };
 
 type VocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -44,6 +45,7 @@ type VocabEntry = {
 };
 
 type DialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -160,6 +162,7 @@ export const pregnancyHealthLessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: 'sedang' before a verb = the progressive 'currently/-ing': 'sedang hamil' (currently pregnant), 'sedang makan' (eating). There's no tense like English, just an aspect marker. Reusable schedule question: 'Kapan jadwal … berikutnya?' (When is the next …?). Note: 'periksa' (examine) is also the verb for any medical check.",
     vocabulary: [
       {
+        cell_id: "ceaf9664-c26d-4f2e-b437-98c3596b552b",
         word: "hamil",
         en: "pregnant",
         vi: "mang thai / có bầu",
@@ -168,6 +171,7 @@ export const pregnancyHealthLessons: IndonesianLesson[] = [
         pronunciation_en: "HA-mil",
       },
       {
+        cell_id: "cd05a1a2-de53-460c-a3ac-9d652b54f2e4",
         word: "kehamilan",
         en: "pregnancy",
         vi: "thai kỳ",
@@ -176,6 +180,7 @@ export const pregnancyHealthLessons: IndonesianLesson[] = [
         pronunciation_en: "ke-ha-MEE-lan",
       },
       {
+        cell_id: "7290342f-4991-46a0-9cf6-6b9e1918f3e3",
         word: "bidan",
         en: "midwife",
         vi: "nữ hộ sinh",
@@ -184,6 +189,7 @@ export const pregnancyHealthLessons: IndonesianLesson[] = [
         pronunciation_en: "BEE-dan",
       },
       {
+        cell_id: "ca518317-f794-4585-8426-311f398882c1",
         word: "Puskesmas",
         en: "community health center",
         vi: "trạm/trung tâm y tế cộng đồng",
@@ -192,6 +198,7 @@ export const pregnancyHealthLessons: IndonesianLesson[] = [
         pronunciation_en: "POOS-kes-mas",
       },
       {
+        cell_id: "63d318dd-3cc2-4a21-a6db-5f0325a1462e",
         word: "periksa",
         en: "to examine / check",
         vi: "khám / kiểm tra",
@@ -200,6 +207,7 @@ export const pregnancyHealthLessons: IndonesianLesson[] = [
         pronunciation_en: "pe-RIK-sa",
       },
       {
+        cell_id: "9b2a48c6-0ff3-428c-a3b4-bfe6f06fa5f4",
         word: "USG",
         en: "ultrasound scan",
         vi: "siêu âm",
@@ -208,6 +216,7 @@ export const pregnancyHealthLessons: IndonesianLesson[] = [
         pronunciation_en: "oo-ess-geh",
       },
       {
+        cell_id: "9dfcaf38-194a-4837-8953-9803319eff6b",
         word: "mual",
         en: "nauseous",
         vi: "buồn nôn",
@@ -216,6 +225,7 @@ export const pregnancyHealthLessons: IndonesianLesson[] = [
         pronunciation_en: "MOO-al",
       },
       {
+        cell_id: "35a4d220-bf72-42dd-9413-545c633b9f41",
         word: "vitamin",
         en: "vitamin",
         vi: "vitamin",
@@ -224,6 +234,7 @@ export const pregnancyHealthLessons: IndonesianLesson[] = [
         pronunciation_en: "vee-ta-MIN",
       },
       {
+        cell_id: "fab4ab8f-1233-41ac-9a31-8b5d7b7f8fbe",
         word: "darah",
         en: "blood",
         vi: "máu",
@@ -234,24 +245,28 @@ export const pregnancyHealthLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "6b23db08-ef2b-4bfb-ab5d-ad181442bbc2",
         speaker: "Pasien",
         text: "Bu Bidan, saya sedang hamil dua bulan. Mau periksa.",
         vi: "Cô hộ sinh ơi, em đang mang thai hai tháng. Muốn khám ạ.",
         en: "Midwife, I'm two months pregnant. I'd like a check-up.",
       },
       {
+        cell_id: "a052d59a-3fdd-4ada-a3c5-c729789db3ca",
         speaker: "Bidan",
         text: "Selamat, ya! Ada keluhan? Sering mual?",
         vi: "Chúc mừng nhé! Có khó chịu gì không? Hay buồn nôn không?",
         en: "Congratulations! Any complaints? Often nauseous?",
       },
       {
+        cell_id: "ced53466-f6b6-4c59-ad4a-48d4d7987929",
         speaker: "Pasien",
         text: "Iya, mual di pagi hari. Apa yang harus saya minum?",
         vi: "Vâng, buồn nôn buổi sáng. Em phải uống gì ạ?",
         en: "Yes, nausea in the morning. What should I take?",
       },
       {
+        cell_id: "39d69e78-59d7-4b1c-a200-c54eb8a77253",
         speaker: "Bidan",
         text: "Minum vitamin dan tablet tambah darah. Kita jadwalkan USG bulan depan.",
         vi: "Uống vitamin và viên bổ máu. Mình hẹn siêu âm tháng sau.",
@@ -392,6 +407,7 @@ export const pregnancyHealthLessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: 'akan' = 'will' (future), 'sudah' = 'already/done' (perfect), 'sedang' = 'currently' (progressive) — learn this trio of aspect markers instead of conjugating. 'dengan + adjective' forms an adverb: 'dengan selamat' (safely), 'dengan baik' (well). Distinguish 'lahir' (to be born, about the baby) from 'melahirkan' (to give birth, about the mother).",
     vocabulary: [
       {
+        cell_id: "396dce64-a92e-4d2e-a92d-e463cabc7d39",
         word: "melahirkan",
         en: "to give birth",
         vi: "sinh con",
@@ -400,6 +416,7 @@ export const pregnancyHealthLessons: IndonesianLesson[] = [
         pronunciation_en: "me-la-HIR-kan",
       },
       {
+        cell_id: "6ff45469-e647-4b4c-995d-7935127c0cb1",
         word: "lahir",
         en: "to be born",
         vi: "ra đời / sinh ra",
@@ -408,6 +425,7 @@ export const pregnancyHealthLessons: IndonesianLesson[] = [
         pronunciation_en: "LA-hir",
       },
       {
+        cell_id: "9a0a128f-0057-4953-b1c1-94d69cd2df4c",
         word: "kontraksi",
         en: "contraction (labor)",
         vi: "cơn co (chuyển dạ)",
@@ -416,6 +434,7 @@ export const pregnancyHealthLessons: IndonesianLesson[] = [
         pronunciation_en: "kon-TRAK-see",
       },
       {
+        cell_id: "9cfeb8ad-7b5d-4232-b655-9cf47215aa1b",
         word: "operasi caesar",
         en: "caesarean section",
         vi: "mổ đẻ",
@@ -424,6 +443,7 @@ export const pregnancyHealthLessons: IndonesianLesson[] = [
         pronunciation_en: "o-pe-RA-see SEH-sar",
       },
       {
+        cell_id: "1cf28dbb-eb6b-4359-a0ef-b36cbb90c3e6",
         word: "sungsang",
         en: "breech (position)",
         vi: "ngôi ngược",
@@ -432,6 +452,7 @@ export const pregnancyHealthLessons: IndonesianLesson[] = [
         pronunciation_en: "SOONG-sang",
       },
       {
+        cell_id: "6a4f7337-e459-41e6-b7a1-6f329a34a47b",
         word: "bayi",
         en: "baby / newborn",
         vi: "em bé / trẻ sơ sinh",
@@ -440,6 +461,7 @@ export const pregnancyHealthLessons: IndonesianLesson[] = [
         pronunciation_en: "BA-yee",
       },
       {
+        cell_id: "474357e2-f23d-40aa-83b2-55d8a28bf002",
         word: "selamat",
         en: "safe / safely",
         vi: "an toàn / bình an",
@@ -448,6 +470,7 @@ export const pregnancyHealthLessons: IndonesianLesson[] = [
         pronunciation_en: "se-LA-mat",
       },
       {
+        cell_id: "332e9725-d762-4d59-888b-687750297a2a",
         word: "istirahat",
         en: "to rest",
         vi: "nghỉ ngơi",
@@ -456,6 +479,7 @@ export const pregnancyHealthLessons: IndonesianLesson[] = [
         pronunciation_en: "is-tee-RA-hat",
       },
       {
+        cell_id: "9ab08868-d824-41ef-a929-f9147aa575fe",
         word: "persalinan",
         en: "delivery / childbirth",
         vi: "cuộc sinh nở",
@@ -466,24 +490,28 @@ export const pregnancyHealthLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "19aa34c0-b5ce-4609-ad80-c5ff5748c5b6",
         speaker: "Suami",
         text: "Bu Bidan, istri saya sudah mulai kontraksi!",
         vi: "Cô hộ sinh ơi, vợ tôi đã bắt đầu co thắt rồi!",
         en: "Midwife, my wife's contractions have started!",
       },
       {
+        cell_id: "85093253-4c76-409d-87fb-10e482940e73",
         speaker: "Bidan",
         text: "Tenang, Pak. Sudah berapa menit sekali?",
         vi: "Bình tĩnh, anh. Mấy phút một lần rồi?",
         en: "Stay calm, sir. How many minutes apart?",
       },
       {
+        cell_id: "fcad293e-3cb2-484e-8b1e-aa960a7f4f86",
         speaker: "Suami",
         text: "Sekitar lima menit. Apakah harus ke rumah sakit?",
         vi: "Khoảng năm phút. Có cần đến bệnh viện không?",
         en: "About five minutes. Should we go to the hospital?",
       },
       {
+        cell_id: "9fa433cb-f311-45c4-8cdf-df6bc9fda87e",
         speaker: "Bidan",
         text: "Kita coba persalinan normal dulu. Kalau sulit, baru caesar.",
         vi: "Mình thử sinh thường trước. Nếu khó thì mới mổ.",
@@ -624,6 +652,7 @@ export const pregnancyHealthLessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: 'agar' (and 'supaya') introduce a purpose/wish clause — 'menyarankan agar saya tetap memberi ASI' (advises that I keep breastfeeding). 'tetap + verb' = 'keep on …'. The '-an' suffix turns verbs into nouns: pilih→pilihan (choice), makan→makanan (food). Learn the maternal-child health abbreviations: KB, ASI, Posyandu, Puskesmas, KIA.",
     vocabulary: [
       {
+        cell_id: "608c73e5-b562-4d8a-a0f9-bb5dcc3be3ce",
         word: "KB (Keluarga Berencana)",
         en: "family planning",
         vi: "kế hoạch hóa gia đình",
@@ -632,6 +661,7 @@ export const pregnancyHealthLessons: IndonesianLesson[] = [
         pronunciation_en: "ka-beh",
       },
       {
+        cell_id: "54fe328a-9055-4742-ad28-bc61c9a2f1b6",
         word: "kontrasepsi",
         en: "contraception",
         vi: "biện pháp tránh thai",
@@ -640,6 +670,7 @@ export const pregnancyHealthLessons: IndonesianLesson[] = [
         pronunciation_en: "kon-tra-SEP-see",
       },
       {
+        cell_id: "01cc6d6d-e2c1-4cae-a38a-64814e20a1f7",
         word: "pilihan",
         en: "choice / option",
         vi: "lựa chọn",
@@ -648,6 +679,7 @@ export const pregnancyHealthLessons: IndonesianLesson[] = [
         pronunciation_en: "pee-LEE-han",
       },
       {
+        cell_id: "1f5c291e-7902-442e-b1fd-8d0ba3c2ce84",
         word: "Posyandu",
         en: "community health post",
         vi: "trạm y tế cộng đồng",
@@ -656,6 +688,7 @@ export const pregnancyHealthLessons: IndonesianLesson[] = [
         pronunciation_en: "pos-YAN-doo",
       },
       {
+        cell_id: "169a4061-0ea7-4712-81b7-a1194495b06c",
         word: "imunisasi",
         en: "immunization",
         vi: "tiêm chủng",
@@ -664,6 +697,7 @@ export const pregnancyHealthLessons: IndonesianLesson[] = [
         pronunciation_en: "ee-moo-nee-SA-see",
       },
       {
+        cell_id: "20a16930-c3c0-4239-b837-b649d807775b",
         word: "ASI (Air Susu Ibu)",
         en: "breast milk",
         vi: "sữa mẹ",
@@ -672,6 +706,7 @@ export const pregnancyHealthLessons: IndonesianLesson[] = [
         pronunciation_en: "A-see",
       },
       {
+        cell_id: "769a283b-5fa9-4b70-bd66-0098c93ccd77",
         word: "berat badan",
         en: "body weight",
         vi: "cân nặng",
@@ -680,6 +715,7 @@ export const pregnancyHealthLessons: IndonesianLesson[] = [
         pronunciation_en: "be-RAT BA-dan",
       },
       {
+        cell_id: "ae208d94-ddb4-4ecb-9e4a-5bb985018ee2",
         word: "tetap",
         en: "to keep / remain",
         vi: "vẫn / tiếp tục",
@@ -688,6 +724,7 @@ export const pregnancyHealthLessons: IndonesianLesson[] = [
         pronunciation_en: "TE-tap",
       },
       {
+        cell_id: "954b138e-3f9d-4bcc-90b3-1db37b7d29e3",
         word: "menyusui",
         en: "to breastfeed",
         vi: "cho con bú",
@@ -698,24 +735,28 @@ export const pregnancyHealthLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "ce546305-0f31-4381-b255-90352a8dccab",
         speaker: "Ibu",
         text: "Bu Bidan, setelah melahirkan saya mau ikut KB.",
         vi: "Cô hộ sinh ơi, sau sinh em muốn tham gia KB.",
         en: "Midwife, after giving birth I'd like to join family planning.",
       },
       {
+        cell_id: "e020cc9d-ad1a-449e-8342-c9dff1101b52",
         speaker: "Bidan",
         text: "Bagus. Ada beberapa pilihan: pil, suntik, atau IUD.",
         vi: "Tốt. Có vài lựa chọn: thuốc uống, thuốc tiêm, hoặc vòng tránh thai.",
         en: "Good. There are several options: the pill, injection, or IUD.",
       },
       {
+        cell_id: "cf4849a3-6929-4602-9ec6-20ed17901260",
         speaker: "Ibu",
         text: "Saya masih menyusui. Yang mana paling aman?",
         vi: "Em vẫn đang cho bú. Cái nào an toàn nhất ạ?",
         en: "I'm still breastfeeding. Which is safest?",
       },
       {
+        cell_id: "5ec043a6-4c8b-4909-8bf5-e7f7dfb6bf36",
         speaker: "Bidan",
         text: "Suntik aman untuk ibu menyusui. Tetap bawa bayi ke Posyandu, ya.",
         vi: "Thuốc tiêm an toàn cho mẹ đang cho bú. Vẫn mang bé đến Posyandu nhé.",

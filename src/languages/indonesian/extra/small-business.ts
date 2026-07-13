@@ -29,6 +29,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   /** Indonesian word/phrase. */
   word: string;
   /** English meaning. */
@@ -44,6 +45,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   /** Indonesian line. */
   text: string;
@@ -311,6 +313,7 @@ export const lessons: IndonesianLesson[] = [
     vocabulary: [
       // Business & ownership
       {
+        cell_id: "6fb74bf5-1259-4aed-b824-7ac6ae41c8e4",
         word: "usaha",
         en: "business / enterprise (also: effort)",
         vi: "việc kinh doanh (cũng: sự nỗ lực)",
@@ -319,6 +322,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "u-SA-ha — `buka usaha` = start a business; double meaning",
       },
       {
+        cell_id: "d9d59799-f65a-49ee-a1f0-5a9ba7923965",
         word: "UMKM",
         en: "micro, small & medium enterprise",
         vi: "doanh nghiệp siêu nhỏ/nhỏ/vừa",
@@ -327,6 +331,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "u-em-ka-em — Usaha Mikro, Kecil, dan Menengah",
       },
       {
+        cell_id: "a247bcd0-29a2-44a8-812d-d2ad4aa44f76",
         word: "jualan",
         en: "selling / one's trade",
         vi: "việc buôn bán",
@@ -335,6 +340,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "ju-A-lan — root `jual` + `-an`; `jualan online` = sell online",
       },
       {
+        cell_id: "27e75fc8-bc37-47fa-98f1-91b0a8a1437f",
         word: "pelanggan",
         en: "customer / regular",
         vi: "khách hàng / khách quen",
@@ -344,6 +350,7 @@ export const lessons: IndonesianLesson[] = [
       },
       // Money triad
       {
+        cell_id: "538316c3-28e0-4d98-9812-7c19db3c9cf6",
         word: "modal",
         en: "capital",
         vi: "vốn",
@@ -352,6 +359,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "MO-dal — `modal awal` = startup capital; `modal nekat` = guts as capital",
       },
       {
+        cell_id: "38f3e66a-0608-44e7-b644-ce38f9b8c0a0",
         word: "untung",
         en: "profit",
         vi: "lãi / lời",
@@ -360,6 +368,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "UN-tung — noun `keuntungan`; slang = `cuan`",
       },
       {
+        cell_id: "97823c06-1f42-440a-9e27-21d5b5cf0d65",
         word: "rugi",
         en: "loss",
         vi: "lỗ",
@@ -368,6 +377,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "RU-gi — opposite of `untung`; `rugi besar` = big loss",
       },
       {
+        cell_id: "3d1bdb68-6eea-4fd9-8b60-f45dd65728ed",
         word: "cuan",
         en: "profit / money (slang)",
         vi: "tiền lãi (lóng)",
@@ -377,6 +387,7 @@ export const lessons: IndonesianLesson[] = [
       },
       // Bookkeeping
       {
+        cell_id: "c6d9fa80-3829-4450-be43-24d2118c10c8",
         word: "pemasukan",
         en: "income / revenue",
         vi: "khoản thu",
@@ -385,6 +396,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "pe-ma-SU-kan — root `masuk` (in) + `pe-...-an`",
       },
       {
+        cell_id: "24324a12-a8ac-4307-b9f9-5fb0272639a4",
         word: "pengeluaran",
         en: "expenses / spending",
         vi: "khoản chi",
@@ -393,6 +405,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "pe-nge-lu-A-ran — root `keluar` (out) + `pe-...-an`",
       },
       {
+        cell_id: "77660edc-b92d-4f3e-942e-fbefa3e44292",
         word: "modal nekat",
         en: "starting with guts, little money",
         vi: "vốn liều (liều mà làm)",
@@ -402,6 +415,7 @@ export const lessons: IndonesianLesson[] = [
       },
       // Operations & growth
       {
+        cell_id: "a6555e44-a0cc-4c50-9701-2a8a6c2d4fe4",
         word: "stok",
         en: "stock / inventory",
         vi: "hàng tồn / hàng có sẵn",
@@ -410,6 +424,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "stok — `stoknya habis` = out of stock",
       },
       {
+        cell_id: "8a877864-b76c-40f8-8618-8a96cc82f545",
         word: "pinjaman",
         en: "loan",
         vi: "khoản vay",
@@ -418,6 +433,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "pin-JA-man — the NOUN; the verb is `pinjam` (borrow)",
       },
       {
+        cell_id: "1f9d2233-68b2-4da7-a2c2-763919941c17",
         word: "tawar-menawar",
         en: "haggling / bargaining",
         vi: "mặc cả / trả giá",
@@ -426,6 +442,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "TA-war-me-NA-war — normal at markets, NOT at minimarkets",
       },
       {
+        cell_id: "be0f348e-698b-4fee-997e-087caada9688",
         word: "terdaftar",
         en: "registered",
         vi: "đã được đăng ký",
@@ -437,48 +454,56 @@ export const lessons: IndonesianLesson[] = [
     dialogue: [
       // Dialogue: a bulk order, a margin question, and a bit of haggling
       {
+        cell_id: "c5b99fb6-b148-44a4-be4b-36e683d4bd73",
         speaker: "Pembeli",
         text: "Mbak, ini makanan rumahan, ya? Kelihatannya enak.",
         vi: "Chị ơi, đây là đồ ăn nhà làm à? Trông ngon ghê.",
         en: "Miss, is this home-made food? It looks delicious.",
       },
       {
+        cell_id: "44fe6cc4-49cb-47d6-9741-041fc81d9126",
         speaker: "Penjual",
         text: "Iya, Pak. Saya jualan online, tapi bisa juga ambil di rumah.",
         vi: "Vâng anh. Em bán online, nhưng cũng có thể lấy tại nhà.",
         en: "Yes, sir. I sell online, but you can also pick up at my place.",
       },
       {
+        cell_id: "182ed1e9-4da5-4394-93ae-51d10bd61c66",
         speaker: "Pembeli",
         text: "Saya mau pesan dalam jumlah banyak untuk acara kantor. Lima puluh porsi.",
         vi: "Tôi muốn đặt số lượng lớn cho sự kiện công ty. Năm mươi phần.",
         en: "I'd like to order in bulk for an office event. Fifty portions.",
       },
       {
+        cell_id: "556f3edb-ae6b-404b-a94b-5c61b6af7c05",
         speaker: "Penjual",
         text: "Bisa, Pak. Harga satuannya lima belas ribu. Untuk lima puluh porsi, tujuh ratus lima puluh ribu.",
         vi: "Được ạ. Giá mỗi phần mười lăm nghìn. Năm mươi phần là bảy trăm năm mươi nghìn.",
         en: "Sure, sir. The unit price is fifteen thousand. For fifty portions, seven hundred fifty thousand.",
       },
       {
+        cell_id: "758c321f-b4bc-4ae9-9074-23d4a980be28",
         speaker: "Pembeli",
         text: "Boleh, tapi harganya bisa kurang sedikit kalau pesan banyak?",
         vi: "Được, nhưng đặt nhiều thì giá bớt một chút được không?",
         en: "Okay, but can the price come down a little for a big order?",
       },
       {
+        cell_id: "8159394d-66b3-48b7-808a-aed048b22352",
         speaker: "Penjual",
         text: "Saya kasih tiga belas ribu per porsi, ya. Untungnya tipis, tapi tidak apa-apa demi pelanggan baru.",
         vi: "Em để mười ba nghìn mỗi phần nhé. Lãi mỏng, nhưng không sao vì khách mới.",
         en: "I'll do thirteen thousand per portion. The margin is thin, but that's fine for a new customer.",
       },
       {
+        cell_id: "9c8ed3f5-3c4d-4daf-90a0-4882e767cc8a",
         speaker: "Pembeli",
         text: "Setuju. Nanti saya transfer DP-nya lewat bank.",
         vi: "Đồng ý. Lát em chuyển tiền cọc qua ngân hàng.",
         en: "Agreed. I'll transfer the deposit by bank later.",
       },
       {
+        cell_id: "c2631f2f-6ac9-4ba5-ba80-90d7593ca083",
         speaker: "Penjual",
         text: "Terima kasih, Pak. Pelan-pelan usahanya berkembang berkat pelanggan seperti Bapak.",
         vi: "Cảm ơn anh. Từ từ việc làm ăn phát triển nhờ những khách như anh.",

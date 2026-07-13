@@ -13,6 +13,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -22,6 +23,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -221,41 +223,46 @@ export const lessons: IndonesianLesson[] = [
     tip_advice_en:
       "Tip for Vietnamese speakers: describe environmental activities in a simple chain: goal -> action -> benefit -> invitation. Use `ikut kegiatan`, `menanam`, `membagikan`, `edukasi warga`, `kerja sama`, and `terima kasih sudah ikut menjaga lingkungan` to keep the speech natural. Avoid overusing English like `join`, `share`, `event`, `schedule` when clear Indonesian words already exist.",
     vocabulary: [
-      { word: "mangrove", en: "mangrove", vi: "rừng ngập mặn", pos: "noun", pronunciation_vi: "MANG-gro-ve", pronunciation_en: "MANG-grove" },
-      { word: "relawan lingkungan", en: "environmental volunteer", vi: "tình nguyện viên môi trường", pos: "noun phrase", pronunciation_vi: "re-LA-wan ling-KUNG-an", pronunciation_en: "re-LA-wan ling-KOONG-an" },
-      { word: "menanam pohon", en: "to plant trees", vi: "trồng cây", pos: "verb phrase", pronunciation_vi: "me-na-NAM PO-hon", pronunciation_en: "me-na-NAM PO-hon" },
-      { word: "pantai", en: "beach", vi: "bãi biển", pos: "noun", pronunciation_vi: "PAN-tai", pronunciation_en: "PAN-tai" },
-      { word: "sampah plastik", en: "plastic waste", vi: "rác nhựa", pos: "noun phrase", pronunciation_vi: "SAM-pah PLAS-tik", pronunciation_en: "SAM-pah PLAS-tik" },
-      { word: "edukasi warga", en: "educating residents", vi: "giáo dục người dân", pos: "noun phrase", pronunciation_vi: "e-du-KA-si WAR-ga", pronunciation_en: "e-du-KA-si WAR-ga" },
-      { word: "konservasi", en: "conservation", vi: "bảo tồn", pos: "noun", pronunciation_vi: "kon-ser-VA-si", pronunciation_en: "kon-ser-VA-si" },
-      { word: "kegiatan komunitas", en: "community activity", vi: "hoạt động cộng đồng", pos: "noun phrase", pronunciation_vi: "ke-gi-AT-an ko-mu-ni-TAS", pronunciation_en: "ke-gi-A-tan ko-moo-ni-TAS" },
+      { cell_id: "e2e0e75a-b391-4657-b908-31a9e661c38c", word: "mangrove", en: "mangrove", vi: "rừng ngập mặn", pos: "noun", pronunciation_vi: "MANG-gro-ve", pronunciation_en: "MANG-grove" },
+      { cell_id: "6dbdfe4a-bb9e-484e-a105-8c6cc8c421f2", word: "relawan lingkungan", en: "environmental volunteer", vi: "tình nguyện viên môi trường", pos: "noun phrase", pronunciation_vi: "re-LA-wan ling-KUNG-an", pronunciation_en: "re-LA-wan ling-KOONG-an" },
+      { cell_id: "5386c7fc-193d-4a8a-bf47-5f4c91e6e205", word: "menanam pohon", en: "to plant trees", vi: "trồng cây", pos: "verb phrase", pronunciation_vi: "me-na-NAM PO-hon", pronunciation_en: "me-na-NAM PO-hon" },
+      { cell_id: "9ab8cff7-8a8b-44eb-85cd-9dfe0f1f9723", word: "pantai", en: "beach", vi: "bãi biển", pos: "noun", pronunciation_vi: "PAN-tai", pronunciation_en: "PAN-tai" },
+      { cell_id: "0a63386d-18c5-4b63-a976-7d347017f7c5", word: "sampah plastik", en: "plastic waste", vi: "rác nhựa", pos: "noun phrase", pronunciation_vi: "SAM-pah PLAS-tik", pronunciation_en: "SAM-pah PLAS-tik" },
+      { cell_id: "52016fde-fa45-4e66-99fc-d0f7d165444b", word: "edukasi warga", en: "educating residents", vi: "giáo dục người dân", pos: "noun phrase", pronunciation_vi: "e-du-KA-si WAR-ga", pronunciation_en: "e-du-KA-si WAR-ga" },
+      { cell_id: "dd90885c-7171-4239-ab55-4287e7cdd253", word: "konservasi", en: "conservation", vi: "bảo tồn", pos: "noun", pronunciation_vi: "kon-ser-VA-si", pronunciation_en: "kon-ser-VA-si" },
+      { cell_id: "510772ae-9278-4646-b0a8-06756ea748c7", word: "kegiatan komunitas", en: "community activity", vi: "hoạt động cộng đồng", pos: "noun phrase", pronunciation_vi: "ke-gi-AT-an ko-mu-ni-TAS", pronunciation_en: "ke-gi-A-tan ko-moo-ni-TAS" },
     ],
     dialogue: [
       {
+        cell_id: "e7d42f21-f382-48ee-b44a-e73f3fa0dbcc",
         speaker: "Rina",
         text: "Apa kegiatan hari ini?",
         vi: "Hôm nay có hoạt động gì?",
         en: "What is today's activity?",
       },
       {
+        cell_id: "3fcf1494-18f4-4197-8b02-36d6e44f84c4",
         speaker: "Dimas",
         text: "Kita akan menanam pohon mangrove bersama warga.",
         vi: "Chúng ta sẽ trồng cây đước cùng với người dân.",
         en: "We will plant mangrove trees with the residents.",
       },
       {
+        cell_id: "3bc00cdf-e0c9-4d70-ab24-0f310540fd07",
         speaker: "Rina",
         text: "Bagus. Saya ingin ikut kegiatan relawan lingkungan ini.",
         vi: "Tốt quá. Tôi muốn tham gia hoạt động tình nguyện môi trường này.",
         en: "Great. I want to join this environmental volunteer activity.",
       },
       {
+        cell_id: "723a5e53-94bc-4430-b20d-f376cb40758e",
         speaker: "Dimas",
         text: "Tentu, titik kumpulnya di balai warga jam delapan pagi.",
         vi: "Tất nhiên, điểm tập trung là ở nhà cộng đồng lúc tám giờ sáng.",
         en: "Sure, the meeting point is at the community hall at 8 a.m.",
       },
       {
+        cell_id: "3e4910e5-4605-4de6-9d0f-73a28a58ef86",
         speaker: "Rina",
         text: "Terima kasih sudah ikut menjaga lingkungan.",
         vi: "Cảm ơn vì đã cùng bảo vệ môi trường.",

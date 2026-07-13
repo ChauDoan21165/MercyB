@@ -17,6 +17,7 @@ type IndonesianLessonSentence = {
 };
 
 type IndonesianVocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -26,6 +27,7 @@ type IndonesianVocabEntry = {
 };
 
 type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -212,6 +214,7 @@ export const neighborhoodCleanWaterLessons: IndonesianLesson[] = [
       "To report a water issue, use this frame: `Air ...`, `Bau ...`, `Sejak ...`, `Mohon diperiksa ...`, `Saya lapor ke RT`. If you want to propose community action, use `gotong royong` and `membersihkan selokan`.",
     vocabulary: [
       {
+        cell_id: "bee768b8-d01b-4628-bbd9-fa0a643bb308",
         word: "air bersih",
         en: "clean water",
         vi: "nuoc sach",
@@ -220,6 +223,7 @@ export const neighborhoodCleanWaterLessons: IndonesianLesson[] = [
         pronunciation_en: "air BEH-ris",
       },
       {
+        cell_id: "565fbb36-5699-4071-a721-1b7e810edeec",
         word: "sumur",
         en: "well",
         vi: "gieng",
@@ -228,6 +232,7 @@ export const neighborhoodCleanWaterLessons: IndonesianLesson[] = [
         pronunciation_en: "SOO-moor",
       },
       {
+        cell_id: "6ab8fb07-c06c-4761-be8f-29bbb2ecc216",
         word: "PDAM",
         en: "public water utility",
         vi: "cong ty cap nuoc cong",
@@ -236,6 +241,7 @@ export const neighborhoodCleanWaterLessons: IndonesianLesson[] = [
         pronunciation_en: "pee-dee-ay-em",
       },
       {
+        cell_id: "71e3620c-840b-4e6e-bf22-261feaef064e",
         word: "filter air",
         en: "water filter",
         vi: "bo loc nuoc",
@@ -244,6 +250,7 @@ export const neighborhoodCleanWaterLessons: IndonesianLesson[] = [
         pronunciation_en: "FIL-ter air",
       },
       {
+        cell_id: "9181244d-f456-4e8c-a487-029df7bba4e7",
         word: "gotong royong",
         en: "community mutual-help work",
         vi: "lam viec chung giup do lan nhau",
@@ -252,6 +259,7 @@ export const neighborhoodCleanWaterLessons: IndonesianLesson[] = [
         pronunciation_en: "GOH-tong roy-YONG",
       },
       {
+        cell_id: "047f7105-fbbf-40df-b829-e08005ecd475",
         word: "kualitas air",
         en: "water quality",
         vi: "chat luong nuoc",
@@ -260,6 +268,7 @@ export const neighborhoodCleanWaterLessons: IndonesianLesson[] = [
         pronunciation_en: "koo-ah-lee-TAS air",
       },
       {
+        cell_id: "c31c7700-d8eb-4d0b-a9b3-fedb599801a0",
         word: "keruh",
         en: "murky, cloudy",
         vi: "duc",
@@ -268,6 +277,7 @@ export const neighborhoodCleanWaterLessons: IndonesianLesson[] = [
         pronunciation_en: "KEH-rooh",
       },
       {
+        cell_id: "56423734-18d0-456d-a2c7-c664fbb54350",
         word: "petugas",
         en: "staff member on duty",
         vi: "nhan vien phu trach",
@@ -278,30 +288,35 @@ export const neighborhoodCleanWaterLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "908be22d-a9e9-45fc-a767-cb8a7c92f91c",
         speaker: "Warga",
         text: "Selamat pagi, Pak. Air di rumah kami berbau aneh sejak tadi malam.",
         vi: "Chao buoi sang, chu. Nuoc o nha chung toi co mui la tu toi qua.",
         en: "Good morning, sir. The water at our house has smelled strange since last night.",
       },
       {
+        cell_id: "fbfd63d5-7e98-4fe9-8271-f364bf09d560",
         speaker: "RT",
         text: "Baik, saya catat. Apakah sumurnya juga perlu diperiksa?",
         vi: "Vang, toi da ghi lai. Cai gieng co can duoc kiem tra khong?",
         en: "Alright, I will note it down. Does the well also need to be checked?",
       },
       {
+        cell_id: "6e0dcb4f-4437-4c8a-b65f-9f83fd04c108",
         speaker: "Warga",
         text: "Iya, Pak. Kami juga curiga ada masalah di saluran air.",
         vi: "Vang, chu. Chung toi cung nghi co van de o ong nuoc thoat.",
         en: "Yes, sir. We also suspect there is a problem in the drainage line.",
       },
       {
+        cell_id: "81130d63-4d94-401d-a8cd-7d92931ba499",
         speaker: "RT",
         text: "Nanti saya laporkan ke petugas PDAM dan ajak warga gotong royong.",
         vi: "Lat nua toi se bao cho nhan vien PDAM va moi nguoi lam viec chung.",
         en: "Later I will report it to the PDAM staff and invite residents to do a community cleanup.",
       },
       {
+        cell_id: "d2489792-ca53-4f8c-a06a-a4e752ffcc47",
         speaker: "Warga",
         text: "Terima kasih, Pak. Semoga air bersih bisa kembali lancar besok.",
         vi: "Cam on chu. Hy vong nuoc sach se lai chay on dinh ngay mai.",

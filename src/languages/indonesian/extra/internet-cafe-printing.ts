@@ -21,6 +21,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   /** Indonesian word/phrase. */
   word: string;
   /** English meaning. */
@@ -36,6 +37,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   /** Indonesian line. */
   text: string;
@@ -253,6 +255,7 @@ export const lessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: ask printing prices with `berapa biaya...`, ask the unit with `per lembar` or `per jam`, and on public computers use clear lines like `jangan simpan password` and `saya harus logout`.",
     vocabulary: [
       {
+        cell_id: "5e6cf908-8e52-4315-a6c8-e010e67e74ed",
         word: "warnet",
         en: "internet cafe",
         vi: "quán internet",
@@ -261,6 +264,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "WAR-net",
       },
       {
+        cell_id: "f76d4098-b3ef-44f6-8996-6e3cd0b2036d",
         word: "komputer umum",
         en: "public computer",
         vi: "máy tính công cộng",
@@ -269,6 +273,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "kom-POO-ter OO-moom",
       },
       {
+        cell_id: "d700ad5c-bbbc-4cff-89c6-186f3018f5ea",
         word: "print dokumen",
         en: "print a document",
         vi: "in tài liệu",
@@ -277,6 +282,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "print do-koo-MEN",
       },
       {
+        cell_id: "bc294e86-7933-4756-aaed-d34d7fd67b80",
         word: "scan KTP",
         en: "scan an ID card",
         vi: "scan KTP",
@@ -285,6 +291,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "scan ka-teh-PEH",
       },
       {
+        cell_id: "0255e01e-10e5-4b06-a1fc-b15cc914da15",
         word: "kirim email",
         en: "send email",
         vi: "gửi email",
@@ -293,6 +300,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "KEE-rim EE-mail",
       },
       {
+        cell_id: "fe14c653-e316-4a1c-8f3c-812e393af920",
         word: "bayar per jam",
         en: "pay by the hour",
         vi: "trả theo giờ",
@@ -301,6 +309,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "BA-yar per JAM",
       },
       {
+        cell_id: "aa788d18-6ac7-4d8e-ad43-6161e260449b",
         word: "file PDF",
         en: "PDF file",
         vi: "file PDF",
@@ -309,6 +318,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "file peh-deh-EF",
       },
       {
+        cell_id: "564a3e1c-3ac0-4512-bd3c-68431e351ccf",
         word: "keamanan akun",
         en: "account security",
         vi: "bảo mật tài khoản",
@@ -317,6 +327,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "keh-a-MA-nan A-koon",
       },
       {
+        cell_id: "f8577ead-fdaf-49fa-bff2-7aa601238fb3",
         word: "lampiran",
         en: "attachment",
         vi: "tệp đính kèm",
@@ -325,6 +336,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "lam-PEER-an",
       },
       {
+        cell_id: "dfca4b09-5a52-42a1-b92d-e70ce05fcf35",
         word: "per lembar",
         en: "per sheet",
         vi: "mỗi tờ",
@@ -335,24 +347,28 @@ export const lessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "40a1a74d-7ab9-481b-bdff-998b0b2b7e48",
         speaker: "Pelanggan",
         text: "Permisi, saya perlu pakai komputer umum dan print dokumen.",
         vi: "Xin lỗi, tôi cần dùng máy tính công cộng và in tài liệu.",
         en: "Excuse me, I need to use a public computer and print a document.",
       },
       {
+        cell_id: "92575ad7-db2d-42e8-874c-89b1357059da",
         speaker: "Petugas Warnet",
         text: "Bisa. Bayar per jam untuk komputer, dan print dihitung per lembar.",
         vi: "Được. Máy tính tính theo giờ, còn in tính theo tờ.",
         en: "Sure. The computer is paid by the hour, and printing is charged per sheet.",
       },
       {
+        cell_id: "6d580eac-ac66-4358-9a8e-938d6a060c43",
         speaker: "Pelanggan",
         text: "Saya juga mau scan KTP menjadi file PDF dan kirim email.",
         vi: "Tôi cũng muốn scan KTP thành file PDF và gửi email.",
         en: "I also want to scan my ID card into a PDF file and send an email.",
       },
       {
+        cell_id: "1c020813-f8bc-4455-a651-b49acb6aa860",
         speaker: "Petugas Warnet",
         text: "Baik. Setelah selesai, jangan lupa logout dari akun Anda.",
         vi: "Được. Sau khi xong, đừng quên đăng xuất khỏi tài khoản của anh/chị.",

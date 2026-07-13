@@ -26,6 +26,7 @@ export type ItalianLessonSentence = {
 };
 
 export type ItalianVocabEntry = {
+  cell_id?: string;
   /** Italian word/phrase (with article where it teaches gender). */
   word: string;
   /** English meaning. */
@@ -41,6 +42,7 @@ export type ItalianVocabEntry = {
 };
 
 export type ItalianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   /** Italian line. */
   text: string;
@@ -433,6 +435,7 @@ export const lessons: ItalianLesson[] = [
     vocabulary: [
       // Body parts and pain
       {
+        cell_id: "0d3085b8-ec49-48b5-bdc3-85dcca8da795",
         word: "la gola",
         en: "throat",
         vi: "cổ họng",
@@ -441,6 +444,7 @@ export const lessons: ItalianLesson[] = [
         pronunciation_en: "la GO-la — used in `mal di gola`",
       },
       {
+        cell_id: "9a52a9ae-5474-4d0d-b699-512965f7e9ce",
         word: "la pancia",
         en: "belly / tummy",
         vi: "bụng",
@@ -449,6 +453,7 @@ export const lessons: ItalianLesson[] = [
         pronunciation_en: "la PAN-cha — the common everyday word",
       },
       {
+        cell_id: "b331b146-5537-446c-9fa7-c9e7d60fc165",
         word: "la gamba",
         en: "leg",
         vi: "chân",
@@ -457,6 +462,7 @@ export const lessons: ItalianLesson[] = [
         pronunciation_en: "la GAM-ba — feminine, takes `la`; not `il gamba`",
       },
       {
+        cell_id: "bad8f3c3-3ed4-4b1c-804c-17508e9b035b",
         word: "il braccio",
         en: "arm",
         vi: "cánh tay",
@@ -465,6 +471,7 @@ export const lessons: ItalianLesson[] = [
         pronunciation_en: "il BRAT-cho — masculine, takes `il`; not `la braccio`",
       },
       {
+        cell_id: "9591db8b-c077-44a6-9ae5-d08787e877a3",
         word: "l'orecchio",
         en: "ear",
         vi: "tai",
@@ -473,6 +480,7 @@ export const lessons: ItalianLesson[] = [
         pronunciation_en: "lo-REK-kyo — apostrophe elision; `mal d'orecchio`",
       },
       {
+        cell_id: "c3390834-abb8-42d8-a4f5-05cfc31e4f9a",
         word: "il dente",
         en: "tooth",
         vi: "răng",
@@ -481,6 +489,7 @@ export const lessons: ItalianLesson[] = [
         pronunciation_en: "il DEN-te — dentist context; not `dente dolore`",
       },
       {
+        cell_id: "a22fcc7d-532c-40df-8aee-b5411537f79a",
         word: "il petto",
         en: "chest",
         vi: "ngực",
@@ -490,6 +499,7 @@ export const lessons: ItalianLesson[] = [
       },
       // Pharmacy and medicine labels
       {
+        cell_id: "ce37d663-989b-4fd6-854e-899dfbdecb5b",
         word: "una compressa",
         en: "a tablet",
         vi: "một viên nén",
@@ -498,6 +508,7 @@ export const lessons: ItalianLesson[] = [
         pronunciation_en: "OO-na kom-PRES-sa — don't use the English `tablet`",
       },
       {
+        cell_id: "af38b72a-41b5-404b-b05f-59041527c6d2",
         word: "una capsula",
         en: "a capsule",
         vi: "một viên nang",
@@ -506,6 +517,7 @@ export const lessons: ItalianLesson[] = [
         pronunciation_en: "OO-na KAP-soo-la — a capsule (not the same as a tablet)",
       },
       {
+        cell_id: "89fa16d0-9d78-47ec-8af6-c8364c95cae1",
         word: "ogni 8 ore",
         en: "every 8 hours",
         vi: "mỗi 8 giờ",
@@ -514,6 +526,7 @@ export const lessons: ItalianLesson[] = [
         pronunciation_en: "ON-yee OT-to O-re — frequency; don't confuse with `per 8 ore`",
       },
       {
+        cell_id: "592ceeb8-e741-49a2-a3a9-261765958d76",
         word: "prima dei pasti",
         en: "before meals",
         vi: "trước bữa ăn",
@@ -522,6 +535,7 @@ export const lessons: ItalianLesson[] = [
         pronunciation_en: "PREE-ma day PAS-tee — medication timing",
       },
       {
+        cell_id: "fd1f2ad9-6725-4190-b52b-f32e060bbfae",
         word: "dopo i pasti",
         en: "after meals",
         vi: "sau bữa ăn",
@@ -530,6 +544,7 @@ export const lessons: ItalianLesson[] = [
         pronunciation_en: "DO-po ee PAS-tee — medication timing",
       },
       {
+        cell_id: "46d83a3c-b146-4ab3-a2f1-78d97f8d7c67",
         word: "per 5 giorni",
         en: "for 5 days",
         vi: "trong 5 ngày",
@@ -538,6 +553,7 @@ export const lessons: ItalianLesson[] = [
         pronunciation_en: "per CHIN-kwe JOR-nee — `per` marks the duration",
       },
       {
+        cell_id: "831660f2-0a4a-4aaa-9fd7-16fbbe1923f0",
         word: "la ricetta",
         en: "prescription",
         vi: "đơn thuốc",
@@ -546,6 +562,7 @@ export const lessons: ItalianLesson[] = [
         pronunciation_en: "la ree-CHET-ta — now usually a `ricetta elettronica`",
       },
       {
+        cell_id: "4518a918-1136-46d5-b84f-561f1c3a922b",
         word: "il pronto soccorso",
         en: "emergency room (A&E/ER)",
         vi: "phòng cấp cứu",
@@ -557,36 +574,42 @@ export const lessons: ItalianLesson[] = [
     dialogue: [
       // Dialogue: At the pharmacy
       {
+        cell_id: "530776f9-561e-400c-8dee-43c9a558f122",
         speaker: "Cliente",
         text: "Buongiorno, ho la ricetta elettronica.",
         vi: "Xin chào, tôi có đơn thuốc điện tử.",
         en: "Good morning, I have the electronic prescription.",
       },
       {
+        cell_id: "54f2b601-9479-4977-b7af-80c4cb39a5ba",
         speaker: "Farmacista",
         text: "Certo, mi dice il codice fiscale?",
         vi: "Được, anh/chị cho tôi mã số thuế được không?",
         en: "Of course, can you tell me your tax code?",
       },
       {
+        cell_id: "a3188abe-c69c-4bd3-bea5-a999528555fa",
         speaker: "Cliente",
         text: "Sì, ecco. Vorrei anche sapere come si prende questa medicina.",
         vi: "Vâng, đây ạ. Tôi cũng muốn biết cách dùng thuốc này.",
         en: "Yes, here it is. I'd also like to know how to take this medicine.",
       },
       {
+        cell_id: "b4b383ad-6ba9-47af-a4e0-3fa6279abf17",
         speaker: "Farmacista",
         text: "Una compressa dopo i pasti, per 5 giorni.",
         vi: "Một viên sau bữa ăn, trong 5 ngày.",
         en: "One tablet after meals, for 5 days.",
       },
       {
+        cell_id: "f3bd9ad2-b954-4eca-857e-9a09606e4982",
         speaker: "Cliente",
         text: "Posso prenderla la sera?",
         vi: "Tôi có thể uống vào buổi tối không?",
         en: "Can I take it in the evening?",
       },
       {
+        cell_id: "779b36bb-2dd0-4b80-b0c9-27c7aced2c5b",
         speaker: "Farmacista",
         text: "Sì, ma sempre dopo cena.",
         vi: "Có, nhưng luôn sau bữa tối.",
@@ -594,36 +617,42 @@ export const lessons: ItalianLesson[] = [
       },
       // Dialogue: Medical appointment
       {
+        cell_id: "624db688-2d7a-4f4c-a08f-05fab7118776",
         speaker: "Paziente",
         text: "Buongiorno, vorrei prenotare una visita.",
         vi: "Xin chào, tôi muốn đặt lịch khám.",
         en: "Good morning, I'd like to book an appointment.",
       },
       {
+        cell_id: "368b7d91-565d-47e5-935a-bbe3b55b0c6f",
         speaker: "Segreteria",
         text: "Che tipo di visita le serve?",
         vi: "Anh/chị cần khám loại gì?",
         en: "What kind of appointment do you need?",
       },
       {
+        cell_id: "eaa61ba9-b5a0-436c-ad40-21b2a7500cc1",
         speaker: "Paziente",
         text: "Ho mal di gola e febbre da due giorni.",
         vi: "Tôi đau họng và sốt hai ngày rồi.",
         en: "I've had a sore throat and a fever for two days.",
       },
       {
+        cell_id: "a76f732f-2f2b-4e5e-8e47-d8d0a69fc658",
         speaker: "Segreteria",
         text: "Abbiamo posto domani pomeriggio.",
         vi: "Chúng tôi có chỗ vào chiều mai.",
         en: "We have a slot tomorrow afternoon.",
       },
       {
+        cell_id: "9fe32561-d17f-4bda-8522-547c72fe4b70",
         speaker: "Paziente",
         text: "Va bene. Devo portare la tessera sanitaria?",
         vi: "Được. Tôi cần mang thẻ y tế không?",
         en: "Okay. Do I need to bring my health card?",
       },
       {
+        cell_id: "864432b9-a60b-447f-af90-472311b8c2d3",
         speaker: "Segreteria",
         text: "Sì, e un documento d'identità.",
         vi: "Có, và giấy tờ tùy thân.",
@@ -631,30 +660,35 @@ export const lessons: ItalianLesson[] = [
       },
       // Dialogue: Emergency call
       {
+        cell_id: "3626d61d-f280-4869-ada3-63d90471c346",
         speaker: "Operatore",
         text: "Pronto, emergenza. Dove si trova?",
         vi: "Xin chào, cấp cứu. Anh/chị đang ở đâu?",
         en: "Hello, emergency services. Where are you?",
       },
       {
+        cell_id: "77f8ca26-2230-426f-b34b-14bd3cac2320",
         speaker: "Chiamante",
         text: "Sono in via Garibaldi 15. Ho bisogno di un'ambulanza.",
         vi: "Tôi ở số 15 đường Garibaldi. Tôi cần xe cấp cứu.",
         en: "I'm at 15 Via Garibaldi. I need an ambulance.",
       },
       {
+        cell_id: "e1ba296d-1ff0-4549-b8f8-54508701b9e0",
         speaker: "Operatore",
         text: "Che succede?",
         vi: "Có chuyện gì?",
         en: "What's happening?",
       },
       {
+        cell_id: "8f39496c-9ee7-4feb-9835-cb4ee8438bcd",
         speaker: "Chiamante",
         text: "Una persona non riesce a respirare bene.",
         vi: "Một người không thở tốt được.",
         en: "Someone can't breathe well.",
       },
       {
+        cell_id: "aa5bbc0a-534f-47c0-a4b2-57c99b739121",
         speaker: "Operatore",
         text: "Resti al telefono. L'ambulanza sta arrivando.",
         vi: "Giữ máy. Xe cấp cứu đang đến.",

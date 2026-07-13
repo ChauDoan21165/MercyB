@@ -40,11 +40,11 @@ export const lessons: ArabicLesson[] = [
       },
     ],
     vocabulary: [
-      { ar: "السرد", romanization: "as-sard", vi: "sự trần thuật", en: "narration", pos: "noun" },
-      { ar: "الراوي", romanization: "ar-raawii", vi: "người kể chuyện", en: "narrator", pos: "noun" },
-      { ar: "الصورة البلاغية", romanization: "as-suurah al-balaaghiyyah", vi: "hình ảnh tu từ", en: "rhetorical image", pos: "noun phrase" },
-      { ar: "الالتباس", romanization: "al-iltibaas", vi: "sự mơ hồ / lưỡng nghĩa", en: "ambiguity", pos: "noun" },
-      { ar: "التناص", romanization: "at-tanaass", vi: "liên văn bản", en: "intertextuality", pos: "noun" },
+      { cell_id: "f10a0a36-6237-4b3a-b691-58289bf8e8c8", ar: "السرد", romanization: "as-sard", vi: "sự trần thuật", en: "narration", pos: "noun" },
+      { cell_id: "0a87e2c4-c4d0-414b-9068-699e6a63bd7b", ar: "الراوي", romanization: "ar-raawii", vi: "người kể chuyện", en: "narrator", pos: "noun" },
+      { cell_id: "5df0c9cb-9635-4fe7-8083-a1577e7c26ce", ar: "الصورة البلاغية", romanization: "as-suurah al-balaaghiyyah", vi: "hình ảnh tu từ", en: "rhetorical image", pos: "noun phrase" },
+      { cell_id: "b3dd714d-e450-45cf-9800-b0586af82d14", ar: "الالتباس", romanization: "al-iltibaas", vi: "sự mơ hồ / lưỡng nghĩa", en: "ambiguity", pos: "noun" },
+      { cell_id: "f47f24ad-73fb-4e5b-81d2-a5b7e9acba1f", ar: "التناص", romanization: "at-tanaass", vi: "liên văn bản", en: "intertextuality", pos: "noun" },
     ],
     exercises: [
       {
@@ -122,12 +122,12 @@ export const lessons: ArabicLesson[] = [
       },
     ],
     vocabulary: [
-      { ar: "استعارة", romanization: "isti'aarah", vi: "ẩn dụ", en: "metaphor", pos: "noun" },
-      { ar: "كناية", romanization: "kinaayah", vi: "ẩn ý / hoán dụ theo ngữ cảnh", en: "metonymic implication", pos: "noun" },
-      { ar: "طباق", romanization: "tibaaq", vi: "phép đối lập", en: "antithesis", pos: "noun" },
-      { ar: "موازاة", romanization: "muwaazaah", vi: "song hành cấu trúc", en: "parallelism", pos: "noun" },
-      { ar: "حذف", romanization: "hadhf", vi: "tỉnh lược", en: "ellipsis", pos: "noun" },
-      { ar: "استفهام إنكاري", romanization: "istifhaam inkaarii", vi: "câu hỏi phủ định tu từ", en: "rhetorical negative question", pos: "noun phrase" },
+      { cell_id: "9f9ef5d2-4d21-49d3-8707-e256aaf85b75", ar: "استعارة", romanization: "isti'aarah", vi: "ẩn dụ", en: "metaphor", pos: "noun" },
+      { cell_id: "a0b935bd-0e77-4744-a566-a7be7e6e8be9", ar: "كناية", romanization: "kinaayah", vi: "ẩn ý / hoán dụ theo ngữ cảnh", en: "metonymic implication", pos: "noun" },
+      { cell_id: "08ca5530-108d-4b77-bfac-dd85c3d60328", ar: "طباق", romanization: "tibaaq", vi: "phép đối lập", en: "antithesis", pos: "noun" },
+      { cell_id: "1a8ffe80-c1f5-43ae-a17d-c6c60f9eee54", ar: "موازاة", romanization: "muwaazaah", vi: "song hành cấu trúc", en: "parallelism", pos: "noun" },
+      { cell_id: "b2a1fa7a-b863-4183-a746-b14544f02ecd", ar: "حذف", romanization: "hadhf", vi: "tỉnh lược", en: "ellipsis", pos: "noun" },
+      { cell_id: "6bf84d5c-2c8a-49f9-a969-294b063e1a03", ar: "استفهام إنكاري", romanization: "istifhaam inkaarii", vi: "câu hỏi phủ định tu từ", en: "rhetorical negative question", pos: "noun phrase" },
     ],
     exercises: [
       {
@@ -198,14 +198,15 @@ export const lessons: ArabicLesson[] = [
       },
     ],
     vocabulary: [
-      { ar: "المقدمة", romanization: "al-muqaddimah", vi: "tiền đề", en: "premise", pos: "noun" },
-      { ar: "الاستنتاج", romanization: "al-istintaaj", vi: "kết luận suy ra", en: "inference / conclusion", pos: "noun" },
-      { ar: "الافتراض", romanization: "al-iftiraad", vi: "giả định", en: "assumption", pos: "noun" },
-      { ar: "نطاق الادعاء", romanization: "nitaaq al-iddi'aa'", vi: "phạm vi của khẳng định", en: "scope of the claim", pos: "noun phrase" },
-      { ar: "عبء الإثبات", romanization: "'ib' al-ithbaat", vi: "gánh nặng chứng minh", en: "burden of proof", pos: "noun phrase" },
+      { cell_id: "16b56d58-734c-4178-aa37-1fee34662621", ar: "المقدمة", romanization: "al-muqaddimah", vi: "tiền đề", en: "premise", pos: "noun" },
+      { cell_id: "52812fae-6a63-402d-8af4-e17b358fcac8", ar: "الاستنتاج", romanization: "al-istintaaj", vi: "kết luận suy ra", en: "inference / conclusion", pos: "noun" },
+      { cell_id: "a01dbac9-1cbc-42b5-b719-2a941ce87e3a", ar: "الافتراض", romanization: "al-iftiraad", vi: "giả định", en: "assumption", pos: "noun" },
+      { cell_id: "974fd491-ab94-4bd9-94e0-1a679073513d", ar: "نطاق الادعاء", romanization: "nitaaq al-iddi'aa'", vi: "phạm vi của khẳng định", en: "scope of the claim", pos: "noun phrase" },
+      { cell_id: "d562e58c-9788-4c7d-b2f9-594ecd5fbcc3", ar: "عبء الإثبات", romanization: "'ib' al-ithbaat", vi: "gánh nặng chứng minh", en: "burden of proof", pos: "noun phrase" },
     ],
     dialogue: [
       {
+        cell_id: "83f1a67a-5b82-4c02-94aa-11aaa8f6c9e5",
         speaker: "المحاور",
         ar: "هل يعني ذلك أنكم ترفضون الفكرة بالكامل؟",
         romanization: "hal ya'nii dhaalika annakum tarfuduuna al-fikrata bilkaamil?",
@@ -213,6 +214,7 @@ export const lessons: ArabicLesson[] = [
         en: "Does that mean you reject the idea entirely?",
       },
       {
+        cell_id: "ff65e734-f8ea-4129-84f5-3de067631625",
         speaker: "الباحثة",
         ar: "لا أرفضها بالكامل، لكنني أتحفظ على التعميم الذي بُنيت عليه.",
         romanization: "laa arfuduhaa bilkaamil, lakinnii atahaffazu 'alaa at-ta'miim alladhii buniyat 'alayh.",
@@ -286,11 +288,11 @@ export const lessons: ArabicLesson[] = [
       },
     ],
     vocabulary: [
-      { ar: "بحسب", romanization: "bihasab", vi: "theo / căn cứ theo", en: "according to", pos: "preposition" },
-      { ar: "لم يتسن التحقق", romanization: "lam yatasanna at-tahaqquq", vi: "chưa thể xác minh", en: "verification was not possible", pos: "frame" },
-      { ar: "مصطلح مثير للجدل", romanization: "mustalah muthiir lil-jadal", vi: "thuật ngữ gây tranh cãi", en: "contested term", pos: "noun phrase" },
-      { ar: "التقديرات", romanization: "at-taqdiiraat", vi: "các ước tính", en: "estimates", pos: "noun" },
-      { ar: "المبني للمجهول", romanization: "al-mabnii lil-majhuul", vi: "thể bị động", en: "passive voice", pos: "noun phrase" },
+      { cell_id: "c359e7a7-f6e0-4e3f-8e98-cf96ba58d210", ar: "بحسب", romanization: "bihasab", vi: "theo / căn cứ theo", en: "according to", pos: "preposition" },
+      { cell_id: "bccd81b1-718a-4c8b-99cf-9f2a937dff89", ar: "لم يتسن التحقق", romanization: "lam yatasanna at-tahaqquq", vi: "chưa thể xác minh", en: "verification was not possible", pos: "frame" },
+      { cell_id: "dcb4d176-8b72-47a3-bb35-575049b7cf14", ar: "مصطلح مثير للجدل", romanization: "mustalah muthiir lil-jadal", vi: "thuật ngữ gây tranh cãi", en: "contested term", pos: "noun phrase" },
+      { cell_id: "8938d5d6-a343-4c10-8163-f748b9a30a77", ar: "التقديرات", romanization: "at-taqdiiraat", vi: "các ước tính", en: "estimates", pos: "noun" },
+      { cell_id: "4bb237c0-7174-440a-b9d1-efe747bad2ca", ar: "المبني للمجهول", romanization: "al-mabnii lil-majhuul", vi: "thể bị động", en: "passive voice", pos: "noun phrase" },
     ],
     exercises: [
       {

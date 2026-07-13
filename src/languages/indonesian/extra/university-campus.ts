@@ -17,6 +17,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   /** Indonesian word/phrase. */
   word: string;
   /** English meaning. */
@@ -32,6 +33,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   /** Indonesian line. */
   text: string;
@@ -210,6 +212,7 @@ export const lessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: keep three pairs straight: siswa = school pupil, mahasiswa = university student; guru = school teacher, dosen = lecturer; belajar = study in general, kuliah = study at/attend university. For campus routines, the natural chunks are `jadwal kelas`, `mengumpulkan tugas`, `ujian tengah semester`, `nilai keluar`, and `menyusun skripsi`.",
     vocabulary: [
       {
+        cell_id: "1af0a25e-f371-4437-a36d-36094a3d4dec",
         word: "kuliah",
         en: "to study at university / lecture",
         vi: "học đại học / buổi giảng",
@@ -218,6 +221,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "koo-LEE-ah",
       },
       {
+        cell_id: "b49c1fa7-8159-43b3-be1f-75f3d53f78f5",
         word: "kampus",
         en: "campus / university",
         vi: "khuôn viên trường / đại học",
@@ -226,6 +230,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "KAM-poos",
       },
       {
+        cell_id: "694e5c8a-eb2f-48cc-89be-02e803ab6952",
         word: "mahasiswa",
         en: "university student",
         vi: "sinh viên",
@@ -234,6 +239,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "ma-ha-SIS-wa",
       },
       {
+        cell_id: "6c76c568-5e60-476c-98e3-7817a1948d6e",
         word: "dosen",
         en: "university lecturer",
         vi: "giảng viên",
@@ -242,6 +248,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "DO-sen",
       },
       {
+        cell_id: "c36cf65d-a20f-4457-bb1a-7c160519b5c2",
         word: "jadwal kelas",
         en: "class schedule",
         vi: "lịch học / lịch lớp",
@@ -250,6 +257,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "JAD-wal KE-las",
       },
       {
+        cell_id: "044950fa-bad2-4f94-8819-609d53beac6e",
         word: "tugas",
         en: "assignment / task",
         vi: "bài tập / nhiệm vụ",
@@ -258,6 +266,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "TOO-gas",
       },
       {
+        cell_id: "1142123a-03d6-42ae-b7d1-eb2a365fa325",
         word: "ujian",
         en: "exam",
         vi: "kỳ thi",
@@ -266,6 +275,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "oo-JEE-an",
       },
       {
+        cell_id: "c70c7e02-50a0-4335-9c7d-b9333e173f2b",
         word: "skripsi",
         en: "undergraduate thesis",
         vi: "luận văn cử nhân",
@@ -274,6 +284,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "SKRIP-see",
       },
       {
+        cell_id: "d1e51c7f-81e2-4e87-ae58-90068d07f4ca",
         word: "organisasi mahasiswa",
         en: "student organization",
         vi: "tổ chức sinh viên",
@@ -282,6 +293,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "or-ga-nee-SA-see ma-ha-SIS-wa",
       },
       {
+        cell_id: "49e4cf1f-df8e-431a-b6f2-f561822bb4c2",
         word: "portal akademik",
         en: "academic portal",
         vi: "cổng thông tin học vụ",
@@ -292,24 +304,28 @@ export const lessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "6fb63f41-a136-4f38-9e51-ec7bb8158663",
         speaker: "Linh",
         text: "Raka, jadwal kelas semester ini sudah keluar?",
         vi: "Raka, lịch học kỳ này đã có chưa?",
         en: "Raka, has this semester's class schedule come out?",
       },
       {
+        cell_id: "f9aa997e-1bd3-4a9e-835b-5b6548493969",
         speaker: "Raka",
         text: "Sudah. Hari Senin ada kuliah jam delapan pagi.",
         vi: "Có rồi. Thứ Hai có giờ học lúc tám giờ sáng.",
         en: "Yes. On Monday there is a lecture at eight in the morning.",
       },
       {
+        cell_id: "66b74367-e606-48ca-b7bc-59ebeb9f67d3",
         speaker: "Linh",
         text: "Dosen memberi tugas kelompok juga?",
         vi: "Giảng viên cũng giao bài tập nhóm à?",
         en: "Did the lecturer also assign group work?",
       },
       {
+        cell_id: "aaefedc5-cbb1-41f0-b3bf-ed6740a4109f",
         speaker: "Raka",
         text: "Iya, dan minggu depan mulai persiapan UTS.",
         vi: "Ừ, và tuần sau bắt đầu chuẩn bị thi giữa kỳ.",

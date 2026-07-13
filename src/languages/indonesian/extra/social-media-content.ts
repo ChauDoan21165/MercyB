@@ -17,6 +17,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   /** Indonesian word/phrase. */
   word: string;
   /** English meaning. */
@@ -32,6 +33,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   /** Indonesian line. */
   text: string;
@@ -210,6 +212,7 @@ export const socialMediaContentLessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: do not force every social-media term into pure Indonesian. Many English words are already natural. But keep the Indonesian verbs and sentence frames correct: `unggah foto`, `tulis caption`, `balas komentar`, `video itu viral`, `kerja sama endorse lewat DM`. For negative comments, a safe line is `Terima kasih masukannya`, or simply do not reply emotionally.",
     vocabulary: [
       {
+        cell_id: "5d8d045d-8d04-4b96-aec1-46683b8f441a",
         word: "konten",
         en: "content",
         vi: "nội dung",
@@ -218,6 +221,7 @@ export const socialMediaContentLessons: IndonesianLesson[] = [
         pronunciation_en: "KON-ten",
       },
       {
+        cell_id: "a4f3b34b-2f75-49fd-bf9f-4251744650fc",
         word: "unggah foto",
         en: "upload/post a photo",
         vi: "đăng ảnh / tải ảnh lên",
@@ -226,6 +230,7 @@ export const socialMediaContentLessons: IndonesianLesson[] = [
         pronunciation_en: "OONG-gah FO-to",
       },
       {
+        cell_id: "aa5e3659-dace-43a3-ab7e-f50c0c5edb29",
         word: "caption",
         en: "caption",
         vi: "chú thích/caption bài đăng",
@@ -234,6 +239,7 @@ export const socialMediaContentLessons: IndonesianLesson[] = [
         pronunciation_en: "CAP-tion",
       },
       {
+        cell_id: "fd9c34c3-8880-4338-be22-894d23fa8ad1",
         word: "komentar",
         en: "comment",
         vi: "bình luận",
@@ -242,6 +248,7 @@ export const socialMediaContentLessons: IndonesianLesson[] = [
         pronunciation_en: "ko-MEN-tar",
       },
       {
+        cell_id: "952d146a-d933-4c72-a5c0-6d97a6035073",
         word: "followers",
         en: "followers",
         vi: "người theo dõi",
@@ -250,6 +257,7 @@ export const socialMediaContentLessons: IndonesianLesson[] = [
         pronunciation_en: "FOL-lo-wers",
       },
       {
+        cell_id: "52ca349d-35b9-4147-97d0-3eb4da24a995",
         word: "live streaming",
         en: "live streaming",
         vi: "phát trực tiếp / livestream",
@@ -258,6 +266,7 @@ export const socialMediaContentLessons: IndonesianLesson[] = [
         pronunciation_en: "live STREAM-ing",
       },
       {
+        cell_id: "6c7bd59a-96c6-44f6-9abe-03f5bd023d05",
         word: "viral",
         en: "viral",
         vi: "lan truyền mạnh / viral",
@@ -266,6 +275,7 @@ export const socialMediaContentLessons: IndonesianLesson[] = [
         pronunciation_en: "VEE-ral",
       },
       {
+        cell_id: "82e7bcf0-ac83-4d7b-9cf3-a9c02d366288",
         word: "endorse",
         en: "endorsement / paid promotion",
         vi: "quảng bá có tài trợ",
@@ -274,6 +284,7 @@ export const socialMediaContentLessons: IndonesianLesson[] = [
         pronunciation_en: "EN-dorse",
       },
       {
+        cell_id: "cde7f3e7-b218-4260-aeb6-0fc9769ee7ac",
         word: "netizen",
         en: "netizen / internet user",
         vi: "cư dân mạng",
@@ -282,6 +293,7 @@ export const socialMediaContentLessons: IndonesianLesson[] = [
         pronunciation_en: "NE-ti-zen",
       },
       {
+        cell_id: "2d2c2baf-a316-476a-8b26-e98c083e2700",
         word: "dibagikan",
         en: "shared",
         vi: "được chia sẻ",
@@ -292,24 +304,28 @@ export const socialMediaContentLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "0ce0eb34-1bd2-4e36-ac6a-b2235d104c0d",
         speaker: "Ayu",
         text: "Caption untuk foto ini sudah oke belum?",
         vi: "Caption cho ảnh này đã ổn chưa?",
         en: "Is the caption for this photo okay yet?",
       },
       {
+        cell_id: "bf5f9aac-d4d9-4a07-91f7-f73fa0bf8d64",
         speaker: "Linh",
         text: "Sudah bagus, tapi mungkin dibuat lebih singkat.",
         vi: "Đã tốt rồi, nhưng có lẽ nên làm ngắn hơn.",
         en: "It is good, but maybe make it shorter.",
       },
       {
+        cell_id: "d5fe65c8-d8e4-40d5-bd73-936b08f06924",
         speaker: "Ayu",
         text: "Kalau video ini viral, brand bisa tertarik endorse.",
         vi: "Nếu video này viral, nhãn hàng có thể quan tâm endorse.",
         en: "If this video goes viral, brands may be interested in endorsement.",
       },
       {
+        cell_id: "6e9900b5-9312-4d80-9e25-fd21006c6161",
         speaker: "Linh",
         text: "Iya, tapi jangan lupa balas komentar dengan sopan.",
         vi: "Ừ, nhưng đừng quên trả lời bình luận một cách lịch sự.",

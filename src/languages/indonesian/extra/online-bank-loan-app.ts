@@ -21,6 +21,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   /** Indonesian word/phrase. */
   word: string;
   /** English meaning. */
@@ -36,6 +37,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   /** Indonesian line. */
   text: string;
@@ -225,43 +227,48 @@ export const lessons: IndonesianLesson[] = [
     tip_advice_en:
       "Tip for Vietnamese speakers: `bunga` = interest, `tenor` = term, `limit` = limit, `jatuh tempo` = due date, `denda` = penalty, `melunasi` = pay off fully. In loan apps, `rekening` is the bank account, while `akun` is the app account. Survival question: `Total yang harus saya bayar berapa?`",
     vocabulary: [
-      { word: "pinjaman online", en: "online loan", vi: "khoản vay online", pos: "noun phrase", pronunciation_vi: "pin-JA-man ON-lain", pronunciation_en: "pin-JA-man ON-line" },
-      { word: "aplikasi bank", en: "bank app", vi: "ứng dụng ngân hàng", pos: "noun phrase", pronunciation_vi: "ap-li-KA-si bank", pronunciation_en: "ap-li-KA-see bank" },
-      { word: "bunga", en: "interest", vi: "lãi/lãi suất", pos: "noun", pronunciation_vi: "BUNG-a", pronunciation_en: "BOONG-a" },
-      { word: "tenor", en: "loan term", vi: "kỳ hạn vay", pos: "noun", pronunciation_vi: "TE-nor", pronunciation_en: "TE-nor" },
-      { word: "limit pinjaman", en: "loan limit", vi: "hạn mức vay", pos: "noun phrase", pronunciation_vi: "LI-mit pin-JA-man", pronunciation_en: "LEE-mit pin-JA-man" },
-      { word: "verifikasi KTP", en: "ID-card verification", vi: "xác minh KTP/căn cước", pos: "noun phrase", pronunciation_vi: "ve-ri-fi-KA-si KA-TE-PE", pronunciation_en: "ve-ree-fee-KA-see KA-TE-PE" },
-      { word: "jatuh tempo", en: "due date", vi: "đến hạn/ngày đáo hạn", pos: "noun phrase", pronunciation_vi: "ja-TUH TEM-po", pronunciation_en: "ja-TOOH TEM-po" },
-      { word: "penagihan", en: "billing / collection", vi: "nhắc/thu nợ", pos: "noun", pronunciation_vi: "pe-na-GIH-an", pronunciation_en: "pe-na-GEE-han" },
-      { word: "denda", en: "fine / penalty", vi: "tiền phạt", pos: "noun", pronunciation_vi: "DEN-da", pronunciation_en: "DEN-da" },
-      { word: "melunasi pinjaman", en: "pay off a loan", vi: "tất toán khoản vay", pos: "verb phrase", pronunciation_vi: "me-lu-NA-si pin-JA-man", pronunciation_en: "me-loo-NA-see pin-JA-man" },
+      { cell_id: "72eb82cb-a82f-47f4-b368-c8387c912f7b", word: "pinjaman online", en: "online loan", vi: "khoản vay online", pos: "noun phrase", pronunciation_vi: "pin-JA-man ON-lain", pronunciation_en: "pin-JA-man ON-line" },
+      { cell_id: "9aa8ec3d-348f-47fb-9061-7c3f29c09cbb", word: "aplikasi bank", en: "bank app", vi: "ứng dụng ngân hàng", pos: "noun phrase", pronunciation_vi: "ap-li-KA-si bank", pronunciation_en: "ap-li-KA-see bank" },
+      { cell_id: "56fa6e9f-600a-45f5-9ea1-f4082ef43bcc", word: "bunga", en: "interest", vi: "lãi/lãi suất", pos: "noun", pronunciation_vi: "BUNG-a", pronunciation_en: "BOONG-a" },
+      { cell_id: "94502829-e955-4427-86a0-71f6aa6cb694", word: "tenor", en: "loan term", vi: "kỳ hạn vay", pos: "noun", pronunciation_vi: "TE-nor", pronunciation_en: "TE-nor" },
+      { cell_id: "76dac9a7-7126-4614-81ca-8316aed54d14", word: "limit pinjaman", en: "loan limit", vi: "hạn mức vay", pos: "noun phrase", pronunciation_vi: "LI-mit pin-JA-man", pronunciation_en: "LEE-mit pin-JA-man" },
+      { cell_id: "5cdfff95-5114-4e16-8ae9-2a41bf90973b", word: "verifikasi KTP", en: "ID-card verification", vi: "xác minh KTP/căn cước", pos: "noun phrase", pronunciation_vi: "ve-ri-fi-KA-si KA-TE-PE", pronunciation_en: "ve-ree-fee-KA-see KA-TE-PE" },
+      { cell_id: "9367d3f8-4f1c-4604-b5ba-6045aa989e31", word: "jatuh tempo", en: "due date", vi: "đến hạn/ngày đáo hạn", pos: "noun phrase", pronunciation_vi: "ja-TUH TEM-po", pronunciation_en: "ja-TOOH TEM-po" },
+      { cell_id: "e6dfc4ae-665f-43cd-958c-778cd99fb8e4", word: "penagihan", en: "billing / collection", vi: "nhắc/thu nợ", pos: "noun", pronunciation_vi: "pe-na-GIH-an", pronunciation_en: "pe-na-GEE-han" },
+      { cell_id: "cf3da0ea-5fbf-4b9a-9445-b07859503c7d", word: "denda", en: "fine / penalty", vi: "tiền phạt", pos: "noun", pronunciation_vi: "DEN-da", pronunciation_en: "DEN-da" },
+      { cell_id: "b2caba40-107a-4b6d-8cfd-4b0c22ba1d1b", word: "melunasi pinjaman", en: "pay off a loan", vi: "tất toán khoản vay", pos: "verb phrase", pronunciation_vi: "me-lu-NA-si pin-JA-man", pronunciation_en: "me-loo-NA-see pin-JA-man" },
     ],
     dialogue: [
       {
+        cell_id: "d44b0d62-9717-4a7d-8dac-51f368d91eab",
         speaker: "Nasabah",
         text: "Saya mau tanya soal pinjaman online di aplikasi bank.",
         vi: "Tôi muốn hỏi về khoản vay online trong ứng dụng ngân hàng.",
         en: "I want to ask about the online loan in the bank app.",
       },
       {
+        cell_id: "be4b8cd9-ba02-4b5c-a4d1-27af2e5665b2",
         speaker: "Petugas",
         text: "Baik. Ibu mau cek limit, bunga, atau tenor pinjaman?",
         vi: "Được. Chị muốn kiểm tra hạn mức, lãi, hay kỳ hạn vay?",
         en: "Sure. Would you like to check the loan limit, interest, or term?",
       },
       {
+        cell_id: "024effb3-a90a-4355-ac99-da79171c2978",
         speaker: "Nasabah",
         text: "Saya mau tahu total yang harus saya bayar sampai lunas.",
         vi: "Tôi muốn biết tổng số tiền tôi phải trả cho đến khi tất toán.",
         en: "I want to know the total amount I must pay until it is fully paid off.",
       },
       {
+        cell_id: "0f1a28f0-0978-40f4-9f58-4ac1f3fe6f90",
         speaker: "Petugas",
         text: "Nanti aplikasi akan menampilkan bunga, biaya admin, dan tanggal jatuh tempo.",
         vi: "Lát nữa ứng dụng sẽ hiển thị lãi, phí admin và ngày đến hạn.",
         en: "The app will show the interest, admin fee, and due date.",
       },
       {
+        cell_id: "5a8c183c-a687-4b29-80b9-1874aa005e6b",
         speaker: "Nasabah",
         text: "Kalau saya melunasi lebih awal, apakah ada biaya tambahan?",
         vi: "Nếu tôi tất toán sớm, có phí thêm không?",

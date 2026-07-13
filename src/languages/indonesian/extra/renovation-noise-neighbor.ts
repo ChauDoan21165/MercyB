@@ -21,6 +21,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   /** Indonesian word/phrase. */
   word: string;
   /** English meaning. */
@@ -36,6 +37,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   /** Indonesian line. */
   text: string;
@@ -253,6 +255,7 @@ export const lessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: avoid opening with `berisik!`. Use soft frames like `Maaf...`, `Boleh tahu...?`, `Tolong jangan...`, `Sebaiknya kita...`, and `Kalau perlu...` to preserve neighbor relations.",
     vocabulary: [
       {
+        cell_id: "bcf419be-5b9a-4cae-a1aa-ef9439dadd22",
         word: "renovasi tetangga",
         en: "neighbor renovation",
         vi: "việc sửa nhà của hàng xóm",
@@ -261,6 +264,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "reh-no-VA-see te-TANG-ga",
       },
       {
+        cell_id: "eeeb66c1-9c1b-4ade-b4a1-23044b086649",
         word: "suara bor",
         en: "drill noise",
         vi: "tiếng khoan",
@@ -269,6 +273,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "SOO-a-ra BOR",
       },
       {
+        cell_id: "25336c59-7223-4904-913a-dd1eeb40f567",
         word: "jam kerja",
         en: "working hours",
         vi: "giờ làm",
@@ -277,6 +282,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "jam KER-ja",
       },
       {
+        cell_id: "d24b7f85-2f23-4b01-b57f-ec8eca6f9fe8",
         word: "izin RT",
         en: "RT permission or notice",
         vi: "phép/thông báo của RT",
@@ -285,6 +291,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "EE-zin er-TEH",
       },
       {
+        cell_id: "b6b823f8-63ed-4dfa-bfe7-abcc06430e56",
         word: "komplain sopan",
         en: "polite complaint",
         vi: "phàn nàn lịch sự",
@@ -293,6 +300,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "kom-PLAIN SO-pan",
       },
       {
+        cell_id: "70ce983d-06c4-41af-a653-63d32b19f74a",
         word: "debu",
         en: "dust",
         vi: "bụi",
@@ -301,6 +309,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "DEH-boo",
       },
       {
+        cell_id: "631237c7-4c43-4c64-a0ac-a20a098c0bff",
         word: "tukang",
         en: "worker; tradesperson",
         vi: "thợ",
@@ -309,6 +318,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "TOO-kang",
       },
       {
+        cell_id: "11da75a9-70da-440a-88aa-a15bf7e60692",
         word: "kesepakatan",
         en: "agreement",
         vi: "thỏa thuận",
@@ -317,6 +327,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "keh-seh-PA-kat-an",
       },
       {
+        cell_id: "85a71ff4-3998-4a4b-9c76-7f15151b692c",
         word: "mengebor",
         en: "to drill",
         vi: "khoan",
@@ -325,6 +336,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "meh-NGEH-bor",
       },
       {
+        cell_id: "6fbed57c-6ad1-4d1a-b356-236255530d79",
         word: "mengganggu",
         en: "to disturb",
         vi: "làm phiền",
@@ -335,24 +347,28 @@ export const lessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "2110f540-1b58-4265-8bda-e0385a0d848f",
         speaker: "Tetangga",
         text: "Maaf, suara bornya sangat keras pagi ini. Boleh tahu jam kerja tukangnya?",
         vi: "Xin lỗi, tiếng khoan sáng nay rất lớn. Cho tôi hỏi giờ làm của thợ được không?",
         en: "Sorry, the drill noise is very loud this morning. May I know the workers' hours?",
       },
       {
+        cell_id: "7b5691bc-42b2-4d33-b865-c29afef508b2",
         speaker: "Pemilik Rumah",
         text: "Maaf, Pak. Tukang biasanya bekerja sampai jam lima sore.",
         vi: "Xin lỗi anh. Thợ thường làm đến năm giờ chiều.",
         en: "Sorry, sir. The workers usually work until five in the afternoon.",
       },
       {
+        cell_id: "7f800ea6-b09e-44ee-800d-aa381c599b59",
         speaker: "Tetangga",
         text: "Anak saya tidur siang. Sebaiknya kita buat kesepakatan jam kerja.",
         vi: "Con tôi ngủ trưa. Tốt nhất là chúng ta thỏa thuận giờ làm.",
         en: "My child naps at noon. It would be best if we make an agreement about work hours.",
       },
       {
+        cell_id: "2312bc06-514e-419a-a7fb-f3b7dfa15728",
         speaker: "Pemilik Rumah",
         text: "Baik, nanti saya bicara dengan tukang supaya tidak mengebor terlalu pagi.",
         vi: "Được, lát nữa tôi sẽ nói với thợ để không khoan quá sớm.",

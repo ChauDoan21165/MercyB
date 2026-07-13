@@ -23,6 +23,7 @@ export type PunjabiVocabTopic =
   | "places";
 
 export type PunjabiVocabEntry = {
+  cell_id?: string;
   gurmukhi: string;
   romanization: string;
   vi: string;

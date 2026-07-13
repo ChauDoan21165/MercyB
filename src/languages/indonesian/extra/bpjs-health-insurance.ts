@@ -13,6 +13,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -22,6 +23,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -208,6 +210,7 @@ export const lessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: learn administrative chunks. `Pakai BPJS`, `kartu BPJS aktif`, `iuran dibayar`, `faskes tingkat pertama`, `minta rujukan`, `antrean online`, `klaim ditanggung`, `kelas perawatan`. BPJS language often uses the `di-` passive: `dibayar`, `ditanggung`, `diproses`, `didaftarkan`. Keep `BPJS Kesehatan` separate from `BPJS Ketenagakerjaan`.",
     vocabulary: [
       {
+        cell_id: "fc86040a-f092-470e-b86a-174b4fdf2cd2",
         word: "BPJS Kesehatan",
         en: "Indonesian national health insurance",
         vi: "bảo hiểm y tế quốc gia Indonesia",
@@ -216,6 +219,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "bay-pay-jay-ES ke-SEH-ha-tan",
       },
       {
+        cell_id: "ac55f769-cebf-47e4-a876-3fa91c37351f",
         word: "kartu BPJS",
         en: "BPJS card",
         vi: "thẻ BPJS",
@@ -224,6 +228,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "KAR-too bay-pay-jay-ES",
       },
       {
+        cell_id: "4c0a09f8-088a-4c18-abf8-7e7825fb0142",
         word: "iuran",
         en: "contribution / monthly premium",
         vi: "phí đóng định kỳ",
@@ -232,6 +237,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "ee-U-ran",
       },
       {
+        cell_id: "b4578944-1083-4858-97f3-76939f148c34",
         word: "faskes",
         en: "healthcare facility",
         vi: "cơ sở y tế",
@@ -240,6 +246,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "FAS-kes",
       },
       {
+        cell_id: "e39c09b8-7066-4ca6-a05d-483e89a0f8f4",
         word: "rujukan",
         en: "referral",
         vi: "giấy chuyển tuyến / giới thiệu",
@@ -248,6 +255,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "roo-JOO-kan",
       },
       {
+        cell_id: "4cd4adae-9dcc-4044-afda-20dc295dfe19",
         word: "antrean online",
         en: "online queue / appointment slot",
         vi: "hàng chờ online / lượt đăng ký online",
@@ -256,6 +264,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "an-TREH-an ON-line",
       },
       {
+        cell_id: "e22652c5-6392-4b32-99e1-2f9ef7ed9557",
         word: "klaim",
         en: "insurance claim",
         vi: "yêu cầu chi trả bảo hiểm",
@@ -264,6 +273,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "claim",
       },
       {
+        cell_id: "f42deaad-c6d3-4d26-85ac-c4ba3bf3aec8",
         word: "ditanggung",
         en: "covered",
         vi: "được bảo hiểm chi trả / bao",
@@ -272,6 +282,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "dee-TANG-goong",
       },
       {
+        cell_id: "e3bdf7cd-98c0-4775-ab65-0b24929a0dbf",
         word: "kelas perawatan",
         en: "ward/treatment class",
         vi: "hạng phòng điều trị",
@@ -280,6 +291,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "KEH-las pe-RAH-wa-tan",
       },
       {
+        cell_id: "a74e63a5-bb3e-4364-ace0-a77fc882f01c",
         word: "kepesertaan",
         en: "membership / participant status",
         vi: "tình trạng tham gia",
@@ -290,30 +302,35 @@ export const lessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "462f7af3-2fc1-474c-88aa-f36ed21c8be9",
         speaker: "Peserta",
         text: "Permisi, saya mau cek status kepesertaan BPJS saya.",
         vi: "Xin phép, tôi muốn kiểm tra tình trạng tham gia BPJS của tôi.",
         en: "Excuse me, I want to check my BPJS membership status.",
       },
       {
+        cell_id: "c01e3a2b-a03a-436b-ad8b-c6570c38c994",
         speaker: "Petugas",
         text: "Boleh. Kartu BPJS dan KTP-nya ada?",
         vi: "Được. Anh/chị có thẻ BPJS và KTP không?",
         en: "Sure. Do you have your BPJS card and ID card?",
       },
       {
+        cell_id: "358ba889-f41b-4db4-8604-caf88bba1360",
         speaker: "Peserta",
         text: "Ada. Kartu BPJS saya masih aktif, tapi antrean online penuh.",
         vi: "Có. Thẻ BPJS của tôi vẫn hoạt động, nhưng hàng chờ online đã đầy.",
         en: "Yes. My BPJS card is still active, but the online queue is full.",
       },
       {
+        cell_id: "ea4c1e3f-48d6-40fd-90c6-ba9e044c3d86",
         speaker: "Petugas",
         text: "Silakan ke faskes tingkat pertama dulu untuk minta rujukan.",
         vi: "Vui lòng đến cơ sở y tế tuyến đầu trước để xin giấy chuyển tuyến.",
         en: "Please go to the first-level healthcare facility first to ask for a referral.",
       },
       {
+        cell_id: "a2b937e3-a1b9-4086-b892-8f42c738081a",
         speaker: "Peserta",
         text: "Baik. Kalau rawat inap, kelas perawatan saya kelas berapa?",
         vi: "Được. Nếu nằm viện, hạng phòng điều trị của tôi là hạng mấy?",

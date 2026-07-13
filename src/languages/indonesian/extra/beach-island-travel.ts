@@ -24,6 +24,7 @@ type LessonSentence = {
 };
 
 type VocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -35,6 +36,7 @@ type VocabEntry = {
 };
 
 type DialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -150,6 +152,7 @@ export const beachIslandTravelLessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: when traveling to an island use `ke pulau`; when already on the island use `di pulau`. Ask price with `Berapa harga ...?`, and ask inclusion with `sudah termasuk ...?`.",
     vocabulary: [
       {
+        cell_id: "3ff340f6-7040-4892-995b-e2f77b780f96",
         word: "pantai",
         en: "beach",
         vi: "bãi biển",
@@ -158,6 +161,7 @@ export const beachIslandTravelLessons: IndonesianLesson[] = [
         pronunciation_en: "PAN-tai",
       },
       {
+        cell_id: "5a9ccc04-9c62-43c0-87a4-40e79e83aa37",
         word: "pulau",
         en: "island",
         vi: "đảo",
@@ -166,6 +170,7 @@ export const beachIslandTravelLessons: IndonesianLesson[] = [
         pronunciation_en: "POO-lau",
       },
       {
+        cell_id: "9fbc86d5-7b3c-4565-a9a6-86f8af9b73c3",
         word: "kapal",
         en: "boat / ship",
         vi: "tàu / thuyền",
@@ -174,6 +179,7 @@ export const beachIslandTravelLessons: IndonesianLesson[] = [
         pronunciation_en: "KA-pal",
       },
       {
+        cell_id: "11720ae5-cf94-48c7-98ea-b462b68f8267",
         word: "tiket masuk",
         en: "entrance ticket",
         vi: "vé vào cửa",
@@ -182,6 +188,7 @@ export const beachIslandTravelLessons: IndonesianLesson[] = [
         pronunciation_en: "TEE-ket MA-sook",
       },
       {
+        cell_id: "e968e259-b2bc-41ca-a4f8-9f80aa1e8194",
         word: "penginapan",
         en: "lodging / accommodation",
         vi: "chỗ ở / nhà nghỉ",
@@ -190,6 +197,7 @@ export const beachIslandTravelLessons: IndonesianLesson[] = [
         pronunciation_en: "peh-ngee-NA-pan",
       },
       {
+        cell_id: "1afe81d4-3221-4f3a-b244-a865a3c17285",
         word: "ombak tenang",
         en: "calm waves",
         vi: "sóng êm",
@@ -198,6 +206,7 @@ export const beachIslandTravelLessons: IndonesianLesson[] = [
         pronunciation_en: "OM-bak teh-NANG",
       },
       {
+        cell_id: "abfa37bf-cb71-4fa4-a842-4e82fa883627",
         word: "parkir",
         en: "parking",
         vi: "gửi/đỗ xe",
@@ -208,24 +217,28 @@ export const beachIslandTravelLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "b2e7fa07-0478-495c-a3f5-d2adaa2e139e",
         speaker: "Wisatawan",
         text: "Permisi, berapa harga kapal ke pulau itu?",
         vi: "Xin lỗi, giá tàu ra đảo đó bao nhiêu?",
         en: "Excuse me, how much is the boat to that island?",
       },
       {
+        cell_id: "c2c0f2df-18c7-40d3-8888-a46a2aa5da79",
         speaker: "Petugas",
         text: "Seratus lima puluh ribu pulang pergi.",
         vi: "Một trăm năm mươi nghìn khứ hồi.",
         en: "One hundred fifty thousand round trip.",
       },
       {
+        cell_id: "d8f1a8a5-7787-4a52-9486-5079df630038",
         speaker: "Wisatawan",
         text: "Apakah tiket masuk sudah termasuk parkir?",
         vi: "Vé vào cửa đã bao gồm gửi xe chưa?",
         en: "Does the entrance ticket include parking?",
       },
       {
+        cell_id: "e3f4926a-c8d8-48c1-a970-74d1c4a50f66",
         speaker: "Petugas",
         text: "Belum. Parkir dibayar terpisah di depan.",
         vi: "Chưa. Phí gửi xe trả riêng ở phía trước.",
@@ -380,6 +393,7 @@ export const beachIslandTravelLessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: `alat` = equipment, so `alat snorkeling` means snorkeling gear. When asking rental price, add `per hari`. For warnings, use `jangan + verb`: `Jangan snorkeling terlalu jauh`.",
     vocabulary: [
       {
+        cell_id: "2cdb2679-0df3-4d8d-952e-73d20b96d669",
         word: "snorkeling",
         en: "snorkeling",
         vi: "lặn ngắm san hô bằng ống thở",
@@ -388,6 +402,7 @@ export const beachIslandTravelLessons: IndonesianLesson[] = [
         pronunciation_en: "SNOR-ke-ling",
       },
       {
+        cell_id: "a7c4db5c-2131-4ddb-a176-60e86beb657b",
         word: "alat snorkeling",
         en: "snorkeling gear",
         vi: "dụng cụ snorkeling",
@@ -396,6 +411,7 @@ export const beachIslandTravelLessons: IndonesianLesson[] = [
         pronunciation_en: "A-lat SNOR-ke-ling",
       },
       {
+        cell_id: "fad90cf0-ff16-46ec-9366-293b007dbf7a",
         word: "pemandu wisata",
         en: "tour guide",
         vi: "hướng dẫn viên du lịch",
@@ -404,6 +420,7 @@ export const beachIslandTravelLessons: IndonesianLesson[] = [
         pronunciation_en: "peh-MAN-doo wee-SA-ta",
       },
       {
+        cell_id: "f0bdad84-60a6-4575-af79-c9ff5a7e21bb",
         word: "sewa motor",
         en: "rent a motorbike",
         vi: "thuê xe máy",
@@ -412,6 +429,7 @@ export const beachIslandTravelLessons: IndonesianLesson[] = [
         pronunciation_en: "SEH-wa MOH-tor",
       },
       {
+        cell_id: "01aa04a3-9523-4d51-a4a7-7bd6ad78c1fb",
         word: "per hari",
         en: "per day",
         vi: "mỗi ngày / theo ngày",
@@ -420,6 +438,7 @@ export const beachIslandTravelLessons: IndonesianLesson[] = [
         pronunciation_en: "per HA-ree",
       },
       {
+        cell_id: "bef97e78-62a1-4882-bd09-b59687dde06e",
         word: "arus kuat",
         en: "strong current",
         vi: "dòng chảy mạnh",
@@ -428,6 +447,7 @@ export const beachIslandTravelLessons: IndonesianLesson[] = [
         pronunciation_en: "A-roos KOO-at",
       },
       {
+        cell_id: "85ff7ad5-3f20-4b2c-b1f0-4f76f89248ee",
         word: "paket",
         en: "package",
         vi: "gói tour / gói dịch vụ",
@@ -438,24 +458,28 @@ export const beachIslandTravelLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "0da4ce21-d049-4bf8-b16f-5348895aa649",
         speaker: "Wisatawan",
         text: "Saya mau ikut tur snorkeling besok pagi.",
         vi: "Tôi muốn tham gia tour snorkeling sáng mai.",
         en: "I want to join a snorkeling tour tomorrow morning.",
       },
       {
+        cell_id: "33a8798b-0ad9-4918-9914-ccd18df8b69c",
         speaker: "Agen tur",
         text: "Bisa. Alat snorkeling dan pemandu wisata sudah termasuk.",
         vi: "Được. Dụng cụ snorkeling và hướng dẫn viên đã bao gồm.",
         en: "Yes. Snorkeling gear and a tour guide are included.",
       },
       {
+        cell_id: "7563c9da-ac67-451e-871a-2b39574afb45",
         speaker: "Wisatawan",
         text: "Di pulau ini bisa sewa motor per hari?",
         vi: "Trên đảo này có thể thuê xe máy theo ngày không?",
         en: "Can I rent a motorbike per day on this island?",
       },
       {
+        cell_id: "2fd10ead-293b-487b-a4bc-306faf1788f5",
         speaker: "Agen tur",
         text: "Bisa, tapi wajib pakai helm dan hati-hati kalau jalan basah.",
         vi: "Có thể, nhưng bắt buộc đội mũ bảo hiểm và cẩn thận nếu đường ướt.",

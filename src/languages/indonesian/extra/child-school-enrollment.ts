@@ -13,6 +13,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -22,6 +23,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -235,41 +237,46 @@ export const lessons: IndonesianLesson[] = [
     tip_advice_en:
       "Tip for Vietnamese speakers: in administrative settings, do not only ask `apa dokumen?`. Use the safe question set: `Apa saja persyaratannya?`, `Apakah harus membawa yang asli?`, `Kapan batas akhir pendaftaran?`, and `Kalau ada dokumen yang kurang, tolong beri tahu kami.` Keep the terms separate: `akta lahir` (birth certificate), `kartu keluarga/KK` (family card), `seragam` (uniform), and `uang pangkal` (initial enrollment fee).",
     vocabulary: [
-      { word: "daftar sekolah", en: "school enrollment", vi: "đăng ký nhập học", pos: "verb/noun phrase", pronunciation_vi: "DAF-tar se-KO-lah", pronunciation_en: "DAF-tar se-KO-lah" },
-      { word: "formulir pendaftaran", en: "registration form", vi: "mẫu đơn đăng ký", pos: "noun phrase", pronunciation_vi: "for-mu-LIR pen-DAF-tar-an", pronunciation_en: "for-moo-LIR pen-DAF-tar-an" },
-      { word: "akta lahir", en: "birth certificate", vi: "giấy khai sinh", pos: "noun phrase", pronunciation_vi: "AK-ta LA-hir", pronunciation_en: "AK-ta LA-hir" },
-      { word: "kartu keluarga", en: "family card", vi: "giấy/thẻ hộ gia đình", pos: "noun phrase", pronunciation_vi: "KAR-tu ke-LU-ar-ga", pronunciation_en: "KAR-too ke-LOO-ar-ga" },
-      { word: "seragam", en: "uniform", vi: "đồng phục", pos: "noun", pronunciation_vi: "se-RA-gam", pronunciation_en: "se-RA-gam" },
-      { word: "uang pangkal", en: "initial enrollment fee", vi: "phí nhập học ban đầu", pos: "noun phrase", pronunciation_vi: "U-ang PANG-kal", pronunciation_en: "OO-ang PANG-kal" },
-      { word: "jadwal orientasi", en: "orientation schedule", vi: "lịch định hướng", pos: "noun phrase", pronunciation_vi: "JAD-wal o-ri-en-TA-si", pronunciation_en: "JAD-wal o-ri-en-TA-si" },
-      { word: "persyaratan", en: "requirements", vi: "các yêu cầu/hồ sơ", pos: "noun", pronunciation_vi: "per-sya-RA-tan", pronunciation_en: "per-sya-RA-tan" },
+      { cell_id: "1144152b-4bbd-4f31-b0d0-69fb07fe0af1", word: "daftar sekolah", en: "school enrollment", vi: "đăng ký nhập học", pos: "verb/noun phrase", pronunciation_vi: "DAF-tar se-KO-lah", pronunciation_en: "DAF-tar se-KO-lah" },
+      { cell_id: "08efb7ba-d0b8-45ad-97e1-f434f416a680", word: "formulir pendaftaran", en: "registration form", vi: "mẫu đơn đăng ký", pos: "noun phrase", pronunciation_vi: "for-mu-LIR pen-DAF-tar-an", pronunciation_en: "for-moo-LIR pen-DAF-tar-an" },
+      { cell_id: "bd5477b3-be93-46bf-91d5-0c43b1c79f22", word: "akta lahir", en: "birth certificate", vi: "giấy khai sinh", pos: "noun phrase", pronunciation_vi: "AK-ta LA-hir", pronunciation_en: "AK-ta LA-hir" },
+      { cell_id: "5515080e-6ec5-4b63-8bd7-a8223acb04ad", word: "kartu keluarga", en: "family card", vi: "giấy/thẻ hộ gia đình", pos: "noun phrase", pronunciation_vi: "KAR-tu ke-LU-ar-ga", pronunciation_en: "KAR-too ke-LOO-ar-ga" },
+      { cell_id: "495c4b9e-09ad-4363-9a8a-bae82c99c1b6", word: "seragam", en: "uniform", vi: "đồng phục", pos: "noun", pronunciation_vi: "se-RA-gam", pronunciation_en: "se-RA-gam" },
+      { cell_id: "329fc9e2-4da4-4b03-92c3-22d7a9aa4657", word: "uang pangkal", en: "initial enrollment fee", vi: "phí nhập học ban đầu", pos: "noun phrase", pronunciation_vi: "U-ang PANG-kal", pronunciation_en: "OO-ang PANG-kal" },
+      { cell_id: "63f6ec29-a981-4602-b624-c8237b5355fd", word: "jadwal orientasi", en: "orientation schedule", vi: "lịch định hướng", pos: "noun phrase", pronunciation_vi: "JAD-wal o-ri-en-TA-si", pronunciation_en: "JAD-wal o-ri-en-TA-si" },
+      { cell_id: "607e4688-699a-492e-949f-b5bc658ace76", word: "persyaratan", en: "requirements", vi: "các yêu cầu/hồ sơ", pos: "noun", pronunciation_vi: "per-sya-RA-tan", pronunciation_en: "per-sya-RA-tan" },
     ],
     dialogue: [
       {
+        cell_id: "585e69d1-8522-4685-88ec-ebbff68796c8",
         speaker: "Ibu Maya",
         text: "Selamat pagi, saya ingin mendaftarkan anak saya ke kelas satu SD.",
         vi: "Chào buổi sáng, tôi muốn đăng ký cho con tôi vào lớp một tiểu học.",
         en: "Good morning, I would like to enroll my child in first grade.",
       },
       {
+        cell_id: "b0d9eaf5-826d-4921-9ee2-1a6961d42c3b",
         speaker: "Petugas",
         text: "Baik, Ibu. Silakan isi formulir pendaftaran ini.",
         vi: "Vâng, thưa chị. Xin vui lòng điền mẫu đơn đăng ký này.",
         en: "All right, ma'am. Please fill out this registration form.",
       },
       {
+        cell_id: "38e6df41-d80a-4130-860d-c3391b0da49c",
         speaker: "Ibu Maya",
         text: "Apakah harus membawa akta lahir asli dan fotokopi kartu keluarga?",
         vi: "Có phải mang bản gốc giấy khai sinh và bản sao thẻ gia đình không?",
         en: "Do I need to bring the original birth certificate and a copy of the family card?",
       },
       {
+        cell_id: "468fa0e5-f5a4-42aa-9258-ca282e24f172",
         speaker: "Petugas",
         text: "Betul. Biaya seragam dan uang pangkal bisa dibayar setelah dokumen lengkap.",
         vi: "Đúng vậy. Chi phí đồng phục và phí ban đầu có thể đóng sau khi hồ sơ đầy đủ.",
         en: "Correct. The uniform fee and initial enrollment fee can be paid after the documents are complete.",
       },
       {
+        cell_id: "32cd3a07-9337-4ca5-8eb2-44db247114c8",
         speaker: "Ibu Maya",
         text: "Terima kasih. Tolong beri tahu kami kalau ada dokumen yang kurang.",
         vi: "Cảm ơn. Làm ơn báo cho chúng tôi nếu còn thiếu giấy tờ.",

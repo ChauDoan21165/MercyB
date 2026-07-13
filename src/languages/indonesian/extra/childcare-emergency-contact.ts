@@ -21,6 +21,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   /** Indonesian word/phrase. */
   word: string;
   /** English meaning. */
@@ -36,6 +37,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   /** Indonesian line. */
   text: string;
@@ -240,6 +242,7 @@ export const lessons: IndonesianLesson[] = [
       "Safe template: `Tolong catat kontak darurat untuk anak saya. Kalau anak saya sakit, hubungi saya dulu. Kalau saya tidak bisa dihubungi, telepon nomor suami saya. Saya memberi izin menjemput kepada tante anak saya.`",
     vocabulary: [
       {
+        cell_id: "b3c2108d-c8c8-42ac-8159-f20e70f90fea",
         word: "kontak darurat",
         en: "emergency contact",
         vi: "liên hệ khẩn cấp",
@@ -248,6 +251,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "KON-tak da-ROO-rat",
       },
       {
+        cell_id: "1c490759-17b8-4ec4-a54d-37b446ef7205",
         word: "orang tua",
         en: "parents; guardians",
         vi: "phụ huynh/cha mẹ",
@@ -256,6 +260,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "O-rang TOO-a",
       },
       {
+        cell_id: "a5f6642f-823f-4484-98a4-8fa696f4c2e3",
         word: "guru",
         en: "teacher",
         vi: "giáo viên",
@@ -264,6 +269,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "GOO-roo",
       },
       {
+        cell_id: "b2d4dbb5-2206-4bcf-8eeb-a5c933119346",
         word: "pengasuh",
         en: "caregiver; nanny",
         vi: "người trông/chăm trẻ",
@@ -272,6 +278,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "pe-NGA-sooh",
       },
       {
+        cell_id: "139f536b-050b-4933-b47e-3ab2380c78aa",
         word: "izin menjemput",
         en: "pickup permission",
         vi: "quyền/phép đón trẻ",
@@ -280,6 +287,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "EE-zin men-JEM-poot",
       },
       {
+        cell_id: "156ae102-cf66-4f94-ba56-92b30644a96c",
         word: "anak sakit",
         en: "sick child",
         vi: "trẻ bị bệnh",
@@ -288,6 +296,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "A-nak SA-kit",
       },
       {
+        cell_id: "97a9391a-c997-4e74-992b-0fcde72e48ab",
         word: "nomor telepon",
         en: "phone number",
         vi: "số điện thoại",
@@ -296,6 +305,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "NO-mor teh-leh-PON",
       },
       {
+        cell_id: "412287e4-ba33-452f-9c01-3c6d818dbad6",
         word: "prosedur sekolah",
         en: "school procedure",
         vi: "quy trình của trường",
@@ -304,6 +314,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "pro-seh-DOOR seh-KO-lah",
       },
       {
+        cell_id: "16d2fac5-3d2d-40c4-9a4e-8ccfb49aa491",
         word: "tidak bisa dihubungi",
         en: "cannot be reached",
         vi: "không liên lạc được",
@@ -312,6 +323,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "tee-DAK BEE-sa dee-hoo-BOONG-ee",
       },
       {
+        cell_id: "f1eed579-d8b5-45cc-ac54-3b91a9d25afe",
         word: "UKS",
         en: "school health room/program",
         vi: "phòng/chương trình y tế trường",
@@ -322,36 +334,42 @@ export const lessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "ac56dd12-5fbf-4af6-91d8-c31f7d1ddaaf",
         speaker: "Orang tua",
         text: "Selamat pagi, saya mau memperbarui kontak darurat anak saya.",
         vi: "Chào buổi sáng, tôi muốn cập nhật liên hệ khẩn cấp của con tôi.",
         en: "Good morning, I would like to update my child's emergency contact.",
       },
       {
+        cell_id: "338ab73e-6c8d-4692-bd9f-0b44fc5109f7",
         speaker: "Guru",
         text: "Baik, nomor telepon orang tua yang utama nomor berapa?",
         vi: "Được, số điện thoại chính của phụ huynh là số nào?",
         en: "All right, what is the main parent phone number?",
       },
       {
+        cell_id: "2f495910-190c-4871-854d-00e99d52e8e2",
         speaker: "Orang tua",
         text: "Nomor saya yang utama. Kalau saya tidak bisa dihubungi, telepon suami saya.",
         vi: "Số của tôi là số chính. Nếu không liên lạc được với tôi, hãy gọi chồng tôi.",
         en: "My number is the main one. If I cannot be reached, call my husband.",
       },
       {
+        cell_id: "68cb8edd-dd29-4b33-940e-45322eaee840",
         speaker: "Guru",
         text: "Siapa yang boleh menjemput anak dari sekolah?",
         vi: "Ai được phép đón trẻ từ trường?",
         en: "Who is allowed to pick the child up from school?",
       },
       {
+        cell_id: "6f3f2001-6036-43fc-b858-34d1fe2fa3fd",
         speaker: "Orang tua",
         text: "Saya memberi izin menjemput kepada tante anak saya. Tolong cek KTP-nya.",
         vi: "Tôi cho phép dì/cô của bé đón bé. Làm ơn kiểm tra căn cước của cô ấy.",
         en: "I give pickup permission to my child's aunt. Please check her ID card.",
       },
       {
+        cell_id: "2c4c4ae6-6fca-426b-9c03-4be2f5939cfa",
         speaker: "Guru",
         text: "Baik, kalau anak sakit kami hubungi orang tua dulu.",
         vi: "Được, nếu trẻ bị bệnh chúng tôi sẽ liên hệ phụ huynh trước.",

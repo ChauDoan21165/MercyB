@@ -16,6 +16,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   /** Indonesian word/phrase. */
   word: string;
   /** English meaning. */
@@ -31,6 +32,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   /** Indonesian line. */
   text: string;
@@ -220,49 +222,55 @@ export const lessons: IndonesianLesson[] = [
     tip_advice_en:
       "Tip for Vietnamese speakers: avoid opening with a harsh accusation like `anak itu jahat`. Start with neutral terms: `siswa yang terlibat`, `kejadian ini`, `perundungan`, `bukti chat`, `mediasi`, `tindak lanjut tertulis`. If immediate child safety matters, the key sentence is `Mohon pastikan keamanan anak saya di kelas dan saat istirahat.`",
     vocabulary: [
-      { word: "perundungan", en: "bullying", vi: "bắt nạt", pos: "noun", pronunciation_vi: "pe-run-DUNG-an", pronunciation_en: "peh-roon-DOONG-an" },
-      { word: "melaporkan", en: "to report", vi: "báo cáo", pos: "verb", pronunciation_vi: "me-LA-por-kan", pronunciation_en: "meh-LA-por-kan" },
-      { word: "wali kelas", en: "homeroom teacher", vi: "giáo viên chủ nhiệm", pos: "noun phrase", pronunciation_vi: "WA-li KE-las", pronunciation_en: "WA-lee KEH-las" },
-      { word: "bukti chat", en: "chat evidence", vi: "bằng chứng tin nhắn", pos: "noun phrase", pronunciation_vi: "BUK-ti chat", pronunciation_en: "BOOK-tee chat" },
-      { word: "teman sekelas", en: "classmate", vi: "bạn cùng lớp", pos: "noun phrase", pronunciation_vi: "te-MAN se-KE-las", pronunciation_en: "teh-MAN seh-KEH-las" },
-      { word: "mediasi", en: "mediation", vi: "hòa giải", pos: "noun", pronunciation_vi: "me-di-A-si", pronunciation_en: "meh-dee-A-see" },
-      { word: "orang tua", en: "parent / guardian", vi: "phụ huynh / cha mẹ", pos: "noun phrase", pronunciation_vi: "O-rang TU-a", pronunciation_en: "O-rang TOO-a" },
-      { word: "keamanan anak", en: "child safety", vi: "an toàn của trẻ", pos: "noun phrase", pronunciation_vi: "ke-a-MA-nan A-nak", pronunciation_en: "keh-a-MA-nan A-nak" },
-      { word: "tindak lanjut", en: "follow-up action", vi: "xử lý tiếp / phản hồi tiếp", pos: "noun phrase", pronunciation_vi: "TIN-dak LAN-jut", pronunciation_en: "TIN-dak LAN-joot" },
-      { word: "laporan resmi", en: "official report", vi: "báo cáo chính thức", pos: "noun phrase", pronunciation_vi: "la-PO-ran res-MI", pronunciation_en: "la-PO-ran res-MEE" },
+      { cell_id: "cd434f53-8116-47aa-9e14-605e33656683", word: "perundungan", en: "bullying", vi: "bắt nạt", pos: "noun", pronunciation_vi: "pe-run-DUNG-an", pronunciation_en: "peh-roon-DOONG-an" },
+      { cell_id: "833062d6-11ab-4ac6-9d93-181fe33b5985", word: "melaporkan", en: "to report", vi: "báo cáo", pos: "verb", pronunciation_vi: "me-LA-por-kan", pronunciation_en: "meh-LA-por-kan" },
+      { cell_id: "6465b13a-c54f-4ba3-8912-47bfb75fc58a", word: "wali kelas", en: "homeroom teacher", vi: "giáo viên chủ nhiệm", pos: "noun phrase", pronunciation_vi: "WA-li KE-las", pronunciation_en: "WA-lee KEH-las" },
+      { cell_id: "ea540c3c-6595-4712-9c0c-af0966ce0ebf", word: "bukti chat", en: "chat evidence", vi: "bằng chứng tin nhắn", pos: "noun phrase", pronunciation_vi: "BUK-ti chat", pronunciation_en: "BOOK-tee chat" },
+      { cell_id: "0517698e-2988-48c4-b115-2f1e65e3e2b9", word: "teman sekelas", en: "classmate", vi: "bạn cùng lớp", pos: "noun phrase", pronunciation_vi: "te-MAN se-KE-las", pronunciation_en: "teh-MAN seh-KEH-las" },
+      { cell_id: "7ca6109a-230c-40b8-8410-9f0e1493f036", word: "mediasi", en: "mediation", vi: "hòa giải", pos: "noun", pronunciation_vi: "me-di-A-si", pronunciation_en: "meh-dee-A-see" },
+      { cell_id: "e335d4a1-f56b-49e6-a475-ebf6bcd5315f", word: "orang tua", en: "parent / guardian", vi: "phụ huynh / cha mẹ", pos: "noun phrase", pronunciation_vi: "O-rang TU-a", pronunciation_en: "O-rang TOO-a" },
+      { cell_id: "6c169a35-819c-4f8d-8a94-310f60dc6320", word: "keamanan anak", en: "child safety", vi: "an toàn của trẻ", pos: "noun phrase", pronunciation_vi: "ke-a-MA-nan A-nak", pronunciation_en: "keh-a-MA-nan A-nak" },
+      { cell_id: "e96a6d66-f5fa-44f0-90c9-ebe687d0a237", word: "tindak lanjut", en: "follow-up action", vi: "xử lý tiếp / phản hồi tiếp", pos: "noun phrase", pronunciation_vi: "TIN-dak LAN-jut", pronunciation_en: "TIN-dak LAN-joot" },
+      { cell_id: "e38e475e-4dcb-4dca-807e-6b0422889e9e", word: "laporan resmi", en: "official report", vi: "báo cáo chính thức", pos: "noun phrase", pronunciation_vi: "la-PO-ran res-MI", pronunciation_en: "la-PO-ran res-MEE" },
     ],
     dialogue: [
       {
+        cell_id: "4e335c12-9ad7-4e96-b6e1-cf706e6ea287",
         speaker: "Orang tua",
         text: "Bu, saya ingin melaporkan perundungan yang dialami anak saya.",
         vi: "Cô ơi, tôi muốn báo cáo việc bắt nạt mà con tôi đã trải qua.",
         en: "Ma'am, I would like to report bullying that my child experienced.",
       },
       {
+        cell_id: "6dd65966-0206-40e3-a7d9-ea09927ab465",
         speaker: "Wali kelas",
         text: "Baik, Pak. Apakah ada bukti atau saksi?",
         vi: "Vâng, thưa anh. Có bằng chứng hoặc nhân chứng không?",
         en: "All right, sir. Is there evidence or a witness?",
       },
       {
+        cell_id: "7a32badf-2702-4830-9caf-b6ee8c1e641f",
         speaker: "Orang tua",
         text: "Kami punya bukti chat dari grup kelas dan nama teman sekelas yang terlibat.",
         vi: "Chúng tôi có bằng chứng tin nhắn từ nhóm lớp và tên các bạn cùng lớp liên quan.",
         en: "We have chat evidence from the class group and the names of classmates involved.",
       },
       {
+        cell_id: "3cf33125-3454-4ec7-8109-1e48d58034c8",
         speaker: "Wali kelas",
         text: "Saya akan bicara dengan siswa yang terlibat dan menghubungi orang tua mereka.",
         vi: "Tôi sẽ nói chuyện với các học sinh liên quan và liên hệ phụ huynh của các em.",
         en: "I will speak with the involved students and contact their parents.",
       },
       {
+        cell_id: "8683f110-452c-4625-b3b2-f42178ae1ea9",
         speaker: "Orang tua",
         text: "Mohon pastikan keamanan anak saya di kelas dan saat istirahat.",
         vi: "Xin hãy bảo đảm an toàn cho con tôi trong lớp và lúc nghỉ giải lao.",
         en: "Please make sure my child is safe in class and during break.",
       },
       {
+        cell_id: "2b7a510c-c4da-4e62-9408-37ffc73f8ade",
         speaker: "Wali kelas",
         text: "Kami akan membuat tindak lanjut tertulis setelah mediasi.",
         vi: "Chúng tôi sẽ làm phản hồi bằng văn bản sau buổi hòa giải.",

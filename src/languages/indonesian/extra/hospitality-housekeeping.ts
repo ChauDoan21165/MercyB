@@ -17,6 +17,7 @@ type IndonesianLessonSentence = {
 };
 
 type IndonesianVocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -26,6 +27,7 @@ type IndonesianVocabEntry = {
 };
 
 type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -184,6 +186,7 @@ export const lessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: in housekeeping, remember three frames: permission (`boleh bersihkan kamar sekarang?`), status reports (`kamar sudah siap`), and complaint handling (`maaf..., kami segera...`). Use passive `di-` for room status: `dibersihkan`, `diganti`, `diisi ulang`.",
     vocabulary: [
       {
+        cell_id: "c76150f1-fcde-48e6-994c-fd4aec5d3545",
         word: "housekeeping",
         en: "housekeeping department",
         vi: "bộ phận dọn phòng",
@@ -192,6 +195,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "HOUSE-kee-ping",
       },
       {
+        cell_id: "c9ad67ce-d491-4f17-a1ea-f0a7b44b599d",
         word: "bersihkan kamar",
         en: "clean the room",
         vi: "dọn phòng",
@@ -200,6 +204,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "ber-SEEH-kan KA-mar",
       },
       {
+        cell_id: "df4fb3b9-cfee-4ded-b1ee-581e81a17426",
         word: "ganti sprei",
         en: "change the bed sheets",
         vi: "thay ga giường",
@@ -208,6 +213,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "GAN-tee SPRAY",
       },
       {
+        cell_id: "f986fe46-022e-4ba0-bf2c-4b9ef70338b0",
         word: "handuk",
         en: "towel",
         vi: "khăn tắm",
@@ -216,6 +222,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "HAN-dook",
       },
       {
+        cell_id: "3f1af30f-5bed-4b78-9bc3-822afee6f0da",
         word: "perlengkapan mandi",
         en: "bathroom amenities",
         vi: "đồ dùng phòng tắm",
@@ -224,6 +231,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "per-leng-KAP-an MAN-dee",
       },
       {
+        cell_id: "78aca1be-e23b-40c4-a2a4-f09f1ec128ff",
         word: "jadwal shift",
         en: "shift schedule",
         vi: "lịch ca",
@@ -232,6 +240,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "JAD-wal shift",
       },
       {
+        cell_id: "2a2677cd-ecea-4b62-8ca0-e44d856d7866",
         word: "tamu komplain",
         en: "the guest complains / complained",
         vi: "khách phàn nàn",
@@ -240,6 +249,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "TA-moo kom-PLAIN",
       },
       {
+        cell_id: "8d383aed-ac96-4f3b-9a1e-08d17213473a",
         word: "ketidaknyamanan",
         en: "inconvenience",
         vi: "sự bất tiện",
@@ -250,30 +260,35 @@ export const lessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "a31248fb-66b2-495e-b2e9-0577c03c19c8",
         speaker: "Housekeeping",
         text: "Selamat pagi, saya dari housekeeping. Boleh bersihkan kamar sekarang?",
         vi: "Chào buổi sáng, tôi từ bộ phận housekeeping. Bây giờ có thể dọn phòng không ạ?",
         en: "Good morning, I am from housekeeping. May I clean the room now?",
       },
       {
+        cell_id: "e8b9bf1d-e8fc-45c5-a463-e8028bf59b1e",
         speaker: "Tamu",
         text: "Boleh, tapi tolong ganti sprei dan tambah handuk.",
         vi: "Được, nhưng làm ơn thay ga giường và thêm khăn.",
         en: "Yes, but please change the sheets and add towels.",
       },
       {
+        cell_id: "57b3b0eb-c619-466d-8e55-2190af6b2f48",
         speaker: "Housekeeping",
         text: "Baik, Bapak. Perlengkapan mandi juga akan kami isi ulang.",
         vi: "Vâng, thưa anh. Đồ dùng phòng tắm chúng tôi cũng sẽ bổ sung lại.",
         en: "Certainly, sir. We will also restock the bathroom amenities.",
       },
       {
+        cell_id: "5df85e7c-c81e-4e57-9e11-8e13a7a92297",
         speaker: "Supervisor",
         text: "Kalau ada tamu komplain, segera lapor ke saya.",
         vi: "Nếu có khách phàn nàn, báo ngay cho tôi.",
         en: "If a guest complains, report to me immediately.",
       },
       {
+        cell_id: "45b059d5-07ee-44e3-8d84-f2c1f9f389fc",
         speaker: "Housekeeping",
         text: "Siap. Setelah kamar selesai, saya ubah statusnya menjadi sudah siap.",
         vi: "Rõ. Sau khi phòng xong, tôi đổi trạng thái thành đã sẵn sàng.",

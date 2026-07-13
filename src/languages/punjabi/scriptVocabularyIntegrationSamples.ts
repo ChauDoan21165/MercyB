@@ -22,6 +22,7 @@ export type PunjabiScriptVocabularyIntegrationUse =
   | "final_qa";
 
 export type PunjabiScriptVocabularyIntegrationSample = {
+  cell_id?: string;
   id: string;
   area: PunjabiScriptVocabularyIntegrationArea;
   use: PunjabiScriptVocabularyIntegrationUse;
@@ -44,6 +45,7 @@ export type PunjabiScriptVocabularyIntegrationSample = {
 };
 
 export type PunjabiScriptVocabularyIntegrationSection = {
+  cell_id?: string;
   area: PunjabiScriptVocabularyIntegrationArea;
   title_vi: string;
   title_en: string;

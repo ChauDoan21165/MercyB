@@ -21,6 +21,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   /** Indonesian word/phrase. */
   word: string;
   /** English meaning. */
@@ -36,6 +37,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   /** Indonesian line. */
   text: string;
@@ -155,17 +157,17 @@ export const taxOfficeNpwpLessons: IndonesianLesson[] = [
     tip_advice_en:
       "Survival set: `Saya mau membuat NPWP`, `Dokumen apa saja yang diperlukan?`, `Nomor NPWP saya sudah terdaftar`, `Saya ingin konsultasi pajak`. The big trap is acronyms: NPWP is en-pe-we-pe, SPT is es-pe-te.",
     vocabulary: [
-      { word: "NPWP", en: "taxpayer number", vi: "mã số thuế", pos: "noun", pronunciation_vi: "en-pe-we-PE", pronunciation_en: "en-pe-we-PE" },
-      { word: "pajak", en: "tax", vi: "thuế", pos: "noun", pronunciation_vi: "PA-jak", pronunciation_en: "PA-jak" },
-      { word: "kantor pajak", en: "tax office", vi: "cơ quan thuế", pos: "noun phrase", pronunciation_vi: "kan-TOR PA-jak", pronunciation_en: "kan-TOR PA-jak" },
-      { word: "terdaftar", en: "registered", vi: "đã đăng ký", pos: "adjective/passive state", pronunciation_vi: "ter-DAF-tar", pronunciation_en: "ter-DAF-tar" },
-      { word: "konsultasi pajak", en: "tax consultation", vi: "tư vấn thuế", pos: "noun phrase", pronunciation_vi: "kon-sul-TA-si PA-jak", pronunciation_en: "kon-sool-TA-see PA-jak" },
-      { word: "penghasilan", en: "income", vi: "thu nhập", pos: "noun", pronunciation_vi: "peng-HA-sil-an", pronunciation_en: "peng-HA-seel-an" },
+      { cell_id: "b6e04964-ad58-4b2b-8cd8-8f36d7439b33", word: "NPWP", en: "taxpayer number", vi: "mã số thuế", pos: "noun", pronunciation_vi: "en-pe-we-PE", pronunciation_en: "en-pe-we-PE" },
+      { cell_id: "627cb246-e23a-46e3-9b1b-cf5ccbbcbce1", word: "pajak", en: "tax", vi: "thuế", pos: "noun", pronunciation_vi: "PA-jak", pronunciation_en: "PA-jak" },
+      { cell_id: "d5af0c12-d9c5-4a76-bd14-e96694caaf7a", word: "kantor pajak", en: "tax office", vi: "cơ quan thuế", pos: "noun phrase", pronunciation_vi: "kan-TOR PA-jak", pronunciation_en: "kan-TOR PA-jak" },
+      { cell_id: "46ec50c0-fb54-452b-ae09-9de207b36a99", word: "terdaftar", en: "registered", vi: "đã đăng ký", pos: "adjective/passive state", pronunciation_vi: "ter-DAF-tar", pronunciation_en: "ter-DAF-tar" },
+      { cell_id: "cba70b1a-3501-4533-8210-fb552fc9e749", word: "konsultasi pajak", en: "tax consultation", vi: "tư vấn thuế", pos: "noun phrase", pronunciation_vi: "kon-sul-TA-si PA-jak", pronunciation_en: "kon-sool-TA-see PA-jak" },
+      { cell_id: "329f8d95-d5fb-4186-83a7-077fb6b33793", word: "penghasilan", en: "income", vi: "thu nhập", pos: "noun", pronunciation_vi: "peng-HA-sil-an", pronunciation_en: "peng-HA-seel-an" },
     ],
     dialogue: [
-      { speaker: "Wajib pajak", text: "Selamat pagi. Saya mau membuat NPWP di kantor pajak.", vi: "Chào buổi sáng. Tôi muốn làm NPWP ở cơ quan thuế.", en: "Good morning. I want to make an NPWP at the tax office." },
-      { speaker: "Petugas", text: "Silakan ambil nomor antrean dulu. Dokumennya sudah lengkap?", vi: "Vui lòng lấy số thứ tự trước. Giấy tờ đã đầy đủ chưa?", en: "Please take a queue number first. Are the documents complete?" },
-      { speaker: "Wajib pajak", text: "Belum yakin. Saya ingin konsultasi pajak dengan petugas.", vi: "Tôi chưa chắc. Tôi muốn tư vấn thuế với nhân viên.", en: "I am not sure yet. I want a tax consultation with an officer." },
+      { cell_id: "56a7cbfc-1376-4ade-a141-70bb40123195", speaker: "Wajib pajak", text: "Selamat pagi. Saya mau membuat NPWP di kantor pajak.", vi: "Chào buổi sáng. Tôi muốn làm NPWP ở cơ quan thuế.", en: "Good morning. I want to make an NPWP at the tax office." },
+      { cell_id: "acabf1ec-2d43-4686-a190-9c0ef9d1cbdd", speaker: "Petugas", text: "Silakan ambil nomor antrean dulu. Dokumennya sudah lengkap?", vi: "Vui lòng lấy số thứ tự trước. Giấy tờ đã đầy đủ chưa?", en: "Please take a queue number first. Are the documents complete?" },
+      { cell_id: "89c10654-2c30-4d4d-abc5-d16d22c2ada5", speaker: "Wajib pajak", text: "Belum yakin. Saya ingin konsultasi pajak dengan petugas.", vi: "Tôi chưa chắc. Tôi muốn tư vấn thuế với nhân viên.", en: "I am not sure yet. I want a tax consultation with an officer." },
     ],
     exercises: [
       {
@@ -277,17 +279,17 @@ export const taxOfficeNpwpLessons: IndonesianLesson[] = [
     tip_advice_en:
       "Distinguish `lapor` and `mengisi`: `lapor SPT` means file/report the SPT; `mengisi SPT` means fill in the form. For withholding slips, learn the fixed phrase `bukti potong`; do not translate it word by word as `bukti dipotong`.",
     vocabulary: [
-      { word: "lapor SPT", en: "file a tax return", vi: "khai/nộp SPT", pos: "verb phrase", pronunciation_vi: "LA-por es-pe-TE", pronunciation_en: "LA-por es-pe-TE" },
-      { word: "bukti potong", en: "withholding slip", vi: "chứng từ khấu trừ", pos: "noun phrase", pronunciation_vi: "BUK-ti PO-tong", pronunciation_en: "BOOK-tee PO-tong" },
-      { word: "pajak penghasilan", en: "income tax", vi: "thuế thu nhập", pos: "noun phrase", pronunciation_vi: "PA-jak peng-HA-sil-an", pronunciation_en: "PA-jak peng-HA-seel-an" },
-      { word: "dipotong", en: "deducted/withheld", vi: "bị khấu trừ", pos: "passive verb", pronunciation_vi: "di-PO-tong", pronunciation_en: "dee-PO-tong" },
-      { word: "mengisi", en: "fill in", vi: "điền", pos: "verb", pronunciation_vi: "me-NGI-si", pronunciation_en: "me-NGEE-see" },
-      { word: "bantuan", en: "assistance", vi: "sự hỗ trợ", pos: "noun", pronunciation_vi: "ban-TU-an", pronunciation_en: "ban-TOO-an" },
+      { cell_id: "3ae8f3eb-6ed0-468c-ac7a-c9e778eb6771", word: "lapor SPT", en: "file a tax return", vi: "khai/nộp SPT", pos: "verb phrase", pronunciation_vi: "LA-por es-pe-TE", pronunciation_en: "LA-por es-pe-TE" },
+      { cell_id: "aaccd07d-b5b3-4a51-b591-d0e01c322ee9", word: "bukti potong", en: "withholding slip", vi: "chứng từ khấu trừ", pos: "noun phrase", pronunciation_vi: "BUK-ti PO-tong", pronunciation_en: "BOOK-tee PO-tong" },
+      { cell_id: "0a7fd186-50bd-4144-88ee-0409ff1f082c", word: "pajak penghasilan", en: "income tax", vi: "thuế thu nhập", pos: "noun phrase", pronunciation_vi: "PA-jak peng-HA-sil-an", pronunciation_en: "PA-jak peng-HA-seel-an" },
+      { cell_id: "9b146a74-805e-4219-bf36-a70a0c53268b", word: "dipotong", en: "deducted/withheld", vi: "bị khấu trừ", pos: "passive verb", pronunciation_vi: "di-PO-tong", pronunciation_en: "dee-PO-tong" },
+      { cell_id: "1a2d9252-efee-484a-8474-658050ff6871", word: "mengisi", en: "fill in", vi: "điền", pos: "verb", pronunciation_vi: "me-NGI-si", pronunciation_en: "me-NGEE-see" },
+      { cell_id: "21e39223-51b8-457c-9567-49acd8a44dea", word: "bantuan", en: "assistance", vi: "sự hỗ trợ", pos: "noun", pronunciation_vi: "ban-TU-an", pronunciation_en: "ban-TOO-an" },
     ],
     dialogue: [
-      { speaker: "Wajib pajak", text: "Saya harus lapor SPT, tapi belum menerima bukti potong.", vi: "Tôi phải khai SPT, nhưng chưa nhận chứng từ khấu trừ.", en: "I have to file SPT, but I have not received the withholding slip yet." },
-      { speaker: "Petugas", text: "Bukti potong biasanya diberikan oleh kantor atau pemberi kerja.", vi: "Chứng từ khấu trừ thường được công ty hoặc người sử dụng lao động cung cấp.", en: "The withholding slip is usually provided by the office or employer." },
-      { speaker: "Wajib pajak", text: "Baik. Saya juga butuh bantuan untuk mengisi SPT online.", vi: "Vâng. Tôi cũng cần hỗ trợ để điền SPT online.", en: "Okay. I also need help filling in the online SPT." },
+      { cell_id: "d96b0021-6e95-4072-8dde-1fe4e78764ce", speaker: "Wajib pajak", text: "Saya harus lapor SPT, tapi belum menerima bukti potong.", vi: "Tôi phải khai SPT, nhưng chưa nhận chứng từ khấu trừ.", en: "I have to file SPT, but I have not received the withholding slip yet." },
+      { cell_id: "f0a3fdda-ca31-4e0b-ac04-d16f3848941a", speaker: "Petugas", text: "Bukti potong biasanya diberikan oleh kantor atau pemberi kerja.", vi: "Chứng từ khấu trừ thường được công ty hoặc người sử dụng lao động cung cấp.", en: "The withholding slip is usually provided by the office or employer." },
+      { cell_id: "37ea7961-7f31-462f-9785-201c0c42f4bc", speaker: "Wajib pajak", text: "Baik. Saya juga butuh bantuan untuk mengisi SPT online.", vi: "Vâng. Tôi cũng cần hỗ trợ để điền SPT online.", en: "Okay. I also need help filling in the online SPT." },
     ],
     exercises: [
       {
@@ -398,18 +400,18 @@ export const taxOfficeNpwpLessons: IndonesianLesson[] = [
     tip_advice_en:
       "Polite tax-office phrases: `mohon jelaskan`, `saya mau membuat janji`, `apakah konsultasi ini gratis atau berbayar?` When you do not understand the process, asking for `langkah-langkahnya` is clearer than a vague `bagaimana?`.",
     vocabulary: [
-      { word: "denda", en: "fine/penalty", vi: "tiền phạt", pos: "noun", pronunciation_vi: "DEN-da", pronunciation_en: "DEN-da" },
-      { word: "terlambat", en: "late", vi: "trễ/muộn", pos: "adjective", pronunciation_vi: "ter-LAM-bat", pronunciation_en: "ter-LAM-bat" },
-      { word: "membayar denda", en: "pay a fine", vi: "trả tiền phạt", pos: "verb phrase", pronunciation_vi: "mem-BA-yar DEN-da", pronunciation_en: "mem-BA-yar DEN-da" },
-      { word: "membuat janji", en: "make an appointment", vi: "đặt lịch hẹn", pos: "verb phrase", pronunciation_vi: "mem-BU-at JAN-ji", pronunciation_en: "mem-BOO-at JAN-jee" },
-      { word: "gratis", en: "free of charge", vi: "miễn phí", pos: "adjective", pronunciation_vi: "GRA-tis", pronunciation_en: "GRA-tis" },
-      { word: "berbayar", en: "paid/fee-based", vi: "có tính phí", pos: "adjective", pronunciation_vi: "ber-BA-yar", pronunciation_en: "ber-BA-yar" },
-      { word: "langkah-langkah", en: "steps", vi: "các bước", pos: "noun", pronunciation_vi: "LANG-kah LANG-kah", pronunciation_en: "LANG-kah LANG-kah" },
+      { cell_id: "99aff6ac-b43d-43d8-a5ad-ddb90f2edd8b", word: "denda", en: "fine/penalty", vi: "tiền phạt", pos: "noun", pronunciation_vi: "DEN-da", pronunciation_en: "DEN-da" },
+      { cell_id: "d0a1c08c-25cf-43af-88b3-1139735c5bc8", word: "terlambat", en: "late", vi: "trễ/muộn", pos: "adjective", pronunciation_vi: "ter-LAM-bat", pronunciation_en: "ter-LAM-bat" },
+      { cell_id: "00562f84-f32d-4756-9a6f-9491ad627ebc", word: "membayar denda", en: "pay a fine", vi: "trả tiền phạt", pos: "verb phrase", pronunciation_vi: "mem-BA-yar DEN-da", pronunciation_en: "mem-BA-yar DEN-da" },
+      { cell_id: "5ec0194f-3a58-41e8-b34a-0230b516bed7", word: "membuat janji", en: "make an appointment", vi: "đặt lịch hẹn", pos: "verb phrase", pronunciation_vi: "mem-BU-at JAN-ji", pronunciation_en: "mem-BOO-at JAN-jee" },
+      { cell_id: "0ce9fd87-b79b-4faf-9bae-addd07b0ed39", word: "gratis", en: "free of charge", vi: "miễn phí", pos: "adjective", pronunciation_vi: "GRA-tis", pronunciation_en: "GRA-tis" },
+      { cell_id: "1a83fe9e-18bd-4093-8f25-8c2f649564ff", word: "berbayar", en: "paid/fee-based", vi: "có tính phí", pos: "adjective", pronunciation_vi: "ber-BA-yar", pronunciation_en: "ber-BA-yar" },
+      { cell_id: "4e71b03d-8718-459a-9bc2-6fa1b72b2c4c", word: "langkah-langkah", en: "steps", vi: "các bước", pos: "noun", pronunciation_vi: "LANG-kah LANG-kah", pronunciation_en: "LANG-kah LANG-kah" },
     ],
     dialogue: [
-      { speaker: "Wajib pajak", text: "Saya terlambat lapor SPT, apakah ada denda?", vi: "Tôi nộp SPT trễ, có bị phạt không?", en: "I filed SPT late. Is there a fine?" },
-      { speaker: "Petugas", text: "Kami perlu cek data NPWP dan tahun pajaknya dulu.", vi: "Chúng tôi cần kiểm tra dữ liệu NPWP và năm thuế trước.", en: "We need to check the NPWP data and tax year first." },
-      { speaker: "Wajib pajak", text: "Baik. Mohon jelaskan langkah-langkahnya dengan pelan.", vi: "Vâng. Vui lòng giải thích các bước chậm thôi.", en: "Okay. Please explain the steps slowly." },
+      { cell_id: "6707be8b-12ea-42df-9aeb-c6d39035763a", speaker: "Wajib pajak", text: "Saya terlambat lapor SPT, apakah ada denda?", vi: "Tôi nộp SPT trễ, có bị phạt không?", en: "I filed SPT late. Is there a fine?" },
+      { cell_id: "e7942f10-5cf9-430c-8511-d3f000034575", speaker: "Petugas", text: "Kami perlu cek data NPWP dan tahun pajaknya dulu.", vi: "Chúng tôi cần kiểm tra dữ liệu NPWP và năm thuế trước.", en: "We need to check the NPWP data and tax year first." },
+      { cell_id: "f2ff7b18-fb55-4c46-b9d1-960eab6387e7", speaker: "Wajib pajak", text: "Baik. Mohon jelaskan langkah-langkahnya dengan pelan.", vi: "Vâng. Vui lòng giải thích các bước chậm thôi.", en: "Okay. Please explain the steps slowly." },
     ],
     exercises: [
       {

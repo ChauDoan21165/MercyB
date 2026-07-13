@@ -13,6 +13,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -22,6 +23,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -208,6 +210,7 @@ export const lessons: IndonesianLesson[] = [
       "Safe template: `Mata saya merah dan terasa sakit. Sepertinya ada kelilipan. Penglihatan saya kabur. Apakah saya perlu ke dokter mata atau rujukan segera?` If symptoms worsen quickly, do not wait too long.",
     vocabulary: [
       {
+        cell_id: "8240af4d-533c-48de-9f88-ed3298603f7a",
         word: "mata merah",
         en: "red eye",
         vi: "mắt đỏ",
@@ -216,6 +219,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "MAH-tah MEH-rah",
       },
       {
+        cell_id: "4fe413ad-2fe4-4e60-b582-7ce93e100d19",
         word: "kelilipan",
         en: "having dust/sand in the eye",
         vi: "bụi/cát bay vào mắt",
@@ -224,6 +228,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "keh-lee-LEE-pahn",
       },
       {
+        cell_id: "01555203-4905-4d99-9885-b357c1227cb2",
         word: "dokter mata",
         en: "eye doctor",
         vi: "bác sĩ mắt / bác sĩ nhãn khoa",
@@ -232,6 +237,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "DOK-ter MAH-tah",
       },
       {
+        cell_id: "fb10bd79-5e05-43f8-bc5f-311f16f4466b",
         word: "obat tetes mata",
         en: "eye drops",
         vi: "thuốc nhỏ mắt",
@@ -240,6 +246,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "OH-bat TEH-tes MAH-tah",
       },
       {
+        cell_id: "a185f03c-a8c0-4055-9cd0-49cf63eeabca",
         word: "penglihatan kabur",
         en: "blurry vision",
         vi: "thị lực bị mờ",
@@ -248,6 +255,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "peh-nglee-HAH-tan kah-BOOR",
       },
       {
+        cell_id: "ee96aefb-c60e-41e9-bccb-582f96e46d67",
         word: "rujukan",
         en: "referral",
         vi: "giấy chuyển tuyến",
@@ -256,6 +264,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "roo-JOO-kahn",
       },
       {
+        cell_id: "f9d7c5df-d7f5-4f54-b5b5-dfa6254d60f8",
         word: "darurat",
         en: "emergency",
         vi: "tình trạng khẩn cấp",
@@ -264,6 +273,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "dah-ROO-rat",
       },
       {
+        cell_id: "d715622d-08c7-433d-a3b2-7283d5bbe480",
         word: "mata terasa sakit",
         en: "the eye feels painful",
         vi: "mắt đau",
@@ -274,24 +284,28 @@ export const lessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "a7707ea4-07e3-4383-9419-45d8cf18950b",
         speaker: "Pasien",
         text: "Selamat pagi. Mata saya merah dan terasa sakit sejak pagi.",
         vi: "Chào buổi sáng. Mắt tôi đỏ và đau từ sáng nay.",
         en: "Good morning. My eye has been red and painful since this morning.",
       },
       {
+        cell_id: "c88bbee3-303e-4a85-bdf4-3cb2409269e5",
         speaker: "Petugas",
         text: "Apakah ada kelilipan atau penglihatan kabur?",
         vi: "Có bụi bay vào mắt hoặc nhìn bị mờ không?",
         en: "Is there anything in the eye, or is your vision blurry?",
       },
       {
+        cell_id: "cfaabaf1-265e-4c79-9571-4f570a969ab2",
         speaker: "Pasien",
         text: "Iya, penglihatan saya kabur. Saya mau periksa ke dokter mata.",
         vi: "Vâng, thị lực của tôi bị mờ. Tôi muốn khám với bác sĩ mắt.",
         en: "Yes, my vision is blurry. I want to be examined by an eye doctor.",
       },
       {
+        cell_id: "ebfb5afa-78b4-4b31-9423-9df2291d946f",
         speaker: "Petugas",
         text: "Baik. Kalau perlu, kami bisa buat rujukan segera.",
         vi: "Được. Nếu cần, chúng tôi có thể làm giấy chuyển tuyến ngay.",

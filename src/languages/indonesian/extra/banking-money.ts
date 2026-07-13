@@ -32,6 +32,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   /** Indonesian word/phrase. */
   word: string;
   /** English meaning. */
@@ -47,6 +48,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   /** Indonesian line. */
   text: string;
@@ -312,6 +314,7 @@ export const lessons: IndonesianLesson[] = [
       "Five backbone bank lines: (1) state your business — `Saya mau membuka rekening / menarik uang / mentransfer ___`; (2) ask minimum/fee — `Berapa setoran awal minimalnya?` / `Berapa biaya adminnya?`; (3) check — `Tolong cek saldo rekening saya.`; (4) trouble — `Kartu saya hilang, tolong diblokir.`; (5) remit to VN — `Saya mau mengirim uang ke Vietnam. Berapa kurs, biaya, dan berapa lama?`. Use the FULL verb form (`meN-`): `menarik` not `tarik`, `mengirim` not `kirim`, `mentransfer` not `transfer`; and get comfortable with the `di-` passive (`diblokir`, `ditolak`). Never drop the `ribu`/`juta` scale when saying an amount.",
     vocabulary: [
       {
+        cell_id: "e34674ae-f698-4b2f-969b-889855f23960",
         word: "rekening",
         en: "bank account",
         vi: "tài khoản ngân hàng",
@@ -320,6 +323,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "re-KE-ning — `nomor rekening` = account number",
       },
       {
+        cell_id: "feabb7fb-b9a1-4919-bdb2-3cb4f403699b",
         word: "tabungan",
         en: "savings (account)",
         vi: "(tài khoản) tiết kiệm",
@@ -328,6 +332,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "ta-BOO-ngan — from `tabung` + `-an`; to save = `menabung`",
       },
       {
+        cell_id: "52c267ce-5508-4e27-b777-1eb1f4d60d59",
         word: "menabung",
         en: "to save (money)",
         vi: "gửi tiết kiệm, để dành",
@@ -336,6 +341,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "me-NAH-boong — root `tabung`, the `t` drops: `me-nabung`",
       },
       {
+        cell_id: "a0f6e536-6aa7-499f-b078-bb13fc958b5e",
         word: "menarik tunai",
         en: "to withdraw cash",
         vi: "rút tiền mặt",
@@ -344,6 +350,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "me-NAH-rik TOO-nigh — ATM label: `tarik tunai`",
       },
       {
+        cell_id: "ed15b96e-b4f6-495d-9b61-c842e8d23f2a",
         word: "menyetor",
         en: "to deposit",
         vi: "nộp tiền vào (tài khoản)",
@@ -352,6 +359,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "me-nye-TOR — root `setor`, `s` → `meny-`; `setor tunai` = cash deposit",
       },
       {
+        cell_id: "789de4b8-9370-4b66-b60c-3862a0232eae",
         word: "mentransfer",
         en: "to transfer",
         vi: "chuyển khoản",
@@ -360,6 +368,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "men-TRANS-fer — `transfer antarbank` = interbank transfer",
       },
       {
+        cell_id: "cb058754-8423-4ab7-aa37-e62ca7536d76",
         word: "mengirim uang",
         en: "to send money",
         vi: "gửi tiền (đi)",
@@ -368,6 +377,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "me-NGEE-rim OO-ang — root `kirim`, `k` → `ng`; international = `remitansi`",
       },
       {
+        cell_id: "e3b4b0dc-a2fb-4874-a5ce-eb7575de192a",
         word: "saldo",
         en: "balance",
         vi: "số dư",
@@ -376,6 +386,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "SAHL-doh — `cek saldo` = check the balance",
       },
       {
+        cell_id: "7295723d-5286-4357-aa73-ac3f53366558",
         word: "biaya admin",
         en: "administration fee",
         vi: "phí dịch vụ/giao dịch",
@@ -384,6 +395,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "BEE-ah-yah AD-min — always ask before a transaction",
       },
       {
+        cell_id: "6f243a0e-229a-4ad9-ab2f-37579f43002c",
         word: "kredit",
         en: "credit / loan",
         vi: "tín dụng, vay",
@@ -392,6 +404,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "KREH-dit — to borrow = `mengajukan kredit/pinjaman`",
       },
       {
+        cell_id: "2932280b-14ae-42ee-8f4a-3aebc7e99f2b",
         word: "cicilan",
         en: "installment",
         vi: "khoản trả góp",
@@ -400,6 +413,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "chee-CHEE-lan — from `cicil` + `-an`; synonym `angsuran`",
       },
       {
+        cell_id: "8b44dc00-5e36-43eb-a3aa-2c3882246cb4",
         word: "bunga",
         en: "interest (rate)",
         vi: "lãi suất",
@@ -408,6 +422,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "BOO-ngah — also means 'flower'; at a bank = 'interest'",
       },
       {
+        cell_id: "fc432c41-3e7f-45e0-a31c-4caab6e9360a",
         word: "kurs",
         en: "exchange rate",
         vi: "tỷ giá hối đoái",
@@ -416,6 +431,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "koors — foreign currency = `valas` (valuta asing)",
       },
       {
+        cell_id: "641403ae-8bb5-4ccb-b745-7295f0326f10",
         word: "diblokir",
         en: "to be blocked (card)",
         vi: "bị khóa (thẻ)",
@@ -426,36 +442,42 @@ export const lessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "b792ecca-28e5-4843-ba3e-737fe1273945",
         speaker: "Nasabah",
         text: "Selamat pagi, Bu. Saya mau membuka rekening tabungan.",
         vi: "Chào buổi sáng, chị. Tôi muốn mở một tài khoản tiết kiệm.",
         en: "Good morning. I'd like to open a savings account.",
       },
       {
+        cell_id: "4f24a1d2-9f3e-43df-9f75-d27bae744130",
         speaker: "Teller",
         text: "Baik, Pak. Boleh saya lihat paspor dan KITAS-nya?",
         vi: "Vâng, anh. Cho tôi xem hộ chiếu và thẻ tạm trú (KITAS) được không ạ?",
         en: "Sure. May I see your passport and KITAS?",
       },
       {
+        cell_id: "3c23e75e-9eee-49ba-ba4b-01b3cd651ffe",
         speaker: "Nasabah",
         text: "Ini. Berapa setoran awal minimalnya?",
         vi: "Đây ạ. Số tiền gửi ban đầu tối thiểu là bao nhiêu?",
         en: "Here you go. What's the minimum initial deposit?",
       },
       {
+        cell_id: "d45afb0c-06df-4037-bec7-4c1535818248",
         speaker: "Teller",
         text: "Lima ratus ribu rupiah. Biaya admin lima belas ribu per bulan.",
         vi: "Năm trăm nghìn rupiah. Phí dịch vụ mười lăm nghìn mỗi tháng.",
         en: "Five hundred thousand rupiah. The admin fee is fifteen thousand per month.",
       },
       {
+        cell_id: "d42c78a1-1272-4086-b851-25e11f4f5d5f",
         speaker: "Nasabah",
         text: "Saya juga mau mengirim uang ke Vietnam. Berapa kurs dan biayanya?",
         vi: "Tôi cũng muốn gửi tiền về Việt Nam. Tỷ giá và phí là bao nhiêu?",
         en: "I also want to send money to Vietnam. What's the rate and the fee?",
       },
       {
+        cell_id: "c3549420-e4d0-447b-b4d1-af3f388b3941",
         speaker: "Teller",
         text: "Bisa lewat transfer SWIFT, Pak. Nanti saya jelaskan kurs dan biayanya.",
         vi: "Có thể qua chuyển khoản SWIFT, anh. Tôi sẽ giải thích tỷ giá và phí sau.",

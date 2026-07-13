@@ -35,6 +35,7 @@ type LessonSentence = {
 };
 
 type VocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -46,6 +47,7 @@ type VocabEntry = {
 };
 
 type DialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -161,21 +163,21 @@ export const drivingTransportLessons: IndonesianLesson[] = [
     tip_advice_en:
       "Tip for Vietnamese speakers: remember the category letters — SIM C = motorbike, SIM A = Auto (car). Indonesian adjectives come AFTER the noun: 'SIM baru' (new licence), 'motor lama' (old bike). The circumfix in 'diperpanjang' turns 'panjang' (long) into 'to be renewed' — an initial 'di-' signals the passive voice. 'Jangan + verb' = don't do something (a polite reminder).",
     vocabulary: [
-      { word: "SIM", en: "driver's licence", vi: "bằng lái xe", pos: "noun (abbr.)", pronunciation_vi: "sim", pronunciation_en: "sim" },
-      { word: "mengemudi", en: "to drive", vi: "lái xe", pos: "verb", pronunciation_vi: "me-nge-MU-di", pronunciation_en: "me-nge-MOO-dee" },
-      { word: "ujian", en: "exam / test", vi: "kỳ thi", pos: "noun", pronunciation_vi: "u-JI-an", pronunciation_en: "oo-JEE-an" },
-      { word: "praktik", en: "practical (test)", vi: "thực hành", pos: "noun", pronunciation_vi: "PRAK-tik", pronunciation_en: "PRAK-teek" },
-      { word: "biaya", en: "cost / fee", vi: "chi phí / lệ phí", pos: "noun", pronunciation_vi: "bi-A-ya", pronunciation_en: "bee-A-ya" },
-      { word: "perpanjang", en: "to renew / extend", vi: "gia hạn", pos: "verb", pronunciation_vi: "per-PAN-jang", pronunciation_en: "per-PAN-jang" },
-      { word: "habis", en: "used up / expired", vi: "hết / hết hạn", pos: "verb/adj.", pronunciation_vi: "HA-bis", pronunciation_en: "HA-bees" },
-      { word: "KTP", en: "national ID card", vi: "thẻ căn cước (CMND)", pos: "noun (abbr.)", pronunciation_vi: "ka-te-PE", pronunciation_en: "kah-teh-PEH" },
-      { word: "sepeda motor", en: "motorbike", vi: "xe máy", pos: "noun", pronunciation_vi: "se-PE-da MO-tor", pronunciation_en: "se-PEH-da MOH-tor" },
+      { cell_id: "7f78e0b2-12ac-4fb9-8ead-c546444712d7", word: "SIM", en: "driver's licence", vi: "bằng lái xe", pos: "noun (abbr.)", pronunciation_vi: "sim", pronunciation_en: "sim" },
+      { cell_id: "580366a2-af66-4938-a53e-fe1d98f72a67", word: "mengemudi", en: "to drive", vi: "lái xe", pos: "verb", pronunciation_vi: "me-nge-MU-di", pronunciation_en: "me-nge-MOO-dee" },
+      { cell_id: "c21ee90c-c3c4-4458-a9c9-0bfa72b58eea", word: "ujian", en: "exam / test", vi: "kỳ thi", pos: "noun", pronunciation_vi: "u-JI-an", pronunciation_en: "oo-JEE-an" },
+      { cell_id: "c2fd4369-6fec-4f15-be87-f18254d5b003", word: "praktik", en: "practical (test)", vi: "thực hành", pos: "noun", pronunciation_vi: "PRAK-tik", pronunciation_en: "PRAK-teek" },
+      { cell_id: "4eec35b0-3058-4d22-9bee-a58464b0f0fa", word: "biaya", en: "cost / fee", vi: "chi phí / lệ phí", pos: "noun", pronunciation_vi: "bi-A-ya", pronunciation_en: "bee-A-ya" },
+      { cell_id: "bea81e23-27c6-43b7-a251-e27a783a48db", word: "perpanjang", en: "to renew / extend", vi: "gia hạn", pos: "verb", pronunciation_vi: "per-PAN-jang", pronunciation_en: "per-PAN-jang" },
+      { cell_id: "819058bf-7400-4a9d-9cb8-a4e610b71ada", word: "habis", en: "used up / expired", vi: "hết / hết hạn", pos: "verb/adj.", pronunciation_vi: "HA-bis", pronunciation_en: "HA-bees" },
+      { cell_id: "9e545c36-028a-43f9-9388-08accc67dec0", word: "KTP", en: "national ID card", vi: "thẻ căn cước (CMND)", pos: "noun (abbr.)", pronunciation_vi: "ka-te-PE", pronunciation_en: "kah-teh-PEH" },
+      { cell_id: "569f9975-d746-4b8c-aedc-de585aa0247f", word: "sepeda motor", en: "motorbike", vi: "xe máy", pos: "noun", pronunciation_vi: "se-PE-da MO-tor", pronunciation_en: "se-PEH-da MOH-tor" },
     ],
     dialogue: [
-      { speaker: "Pemohon", text: "Selamat pagi, Pak. Saya mau membuat SIM C baru.", vi: "Chào buổi sáng. Tôi muốn làm bằng lái SIM C mới.", en: "Good morning. I'd like to apply for a new SIM C." },
-      { speaker: "Petugas", text: "Sudah bawa KTP dan surat keterangan sehat?", vi: "Đã mang theo CMND và giấy khám sức khỏe chưa?", en: "Did you bring your KTP and health certificate?" },
-      { speaker: "Pemohon", text: "Sudah. Ujian teori dan praktiknya hari ini juga?", vi: "Rồi ạ. Thi lý thuyết và thực hành hôm nay luôn ạ?", en: "Yes. Are the theory and practical tests today too?" },
-      { speaker: "Petugas", text: "Betul. Biayanya seratus ribu. Silakan isi formulir dulu.", vi: "Đúng vậy. Lệ phí một trăm nghìn. Mời điền mẫu đơn trước.", en: "Correct. The fee is one hundred thousand. Please fill in the form first." },
+      { cell_id: "60e3dd43-c021-441d-9451-acbb858d0a15", speaker: "Pemohon", text: "Selamat pagi, Pak. Saya mau membuat SIM C baru.", vi: "Chào buổi sáng. Tôi muốn làm bằng lái SIM C mới.", en: "Good morning. I'd like to apply for a new SIM C." },
+      { cell_id: "83f08327-9ebf-4dbc-af67-d0a5dac95c62", speaker: "Petugas", text: "Sudah bawa KTP dan surat keterangan sehat?", vi: "Đã mang theo CMND và giấy khám sức khỏe chưa?", en: "Did you bring your KTP and health certificate?" },
+      { cell_id: "4341b20b-b8bf-4ba7-96f0-a1cd35dc9c23", speaker: "Pemohon", text: "Sudah. Ujian teori dan praktiknya hari ini juga?", vi: "Rồi ạ. Thi lý thuyết và thực hành hôm nay luôn ạ?", en: "Yes. Are the theory and practical tests today too?" },
+      { cell_id: "8a8263a3-d676-4317-8680-16a089da15cb", speaker: "Petugas", text: "Betul. Biayanya seratus ribu. Silakan isi formulir dulu.", vi: "Đúng vậy. Lệ phí một trăm nghìn. Mời điền mẫu đơn trước.", en: "Correct. The fee is one hundred thousand. Please fill in the form first." },
     ],
     exercises: [
       {
@@ -298,21 +300,21 @@ export const drivingTransportLessons: IndonesianLesson[] = [
     tip_advice_en:
       "Tip for Vietnamese speakers: don't confuse the two papers — STNK = the registration you carry on you, BPKB = the ownership book kept at home. 'Jatuh tempo' (falls due) is a fixed idiom, not literal ('jatuh' = fall, 'tempo' = time). Distinguish 'asli' (original) ↔ 'fotokopi' (copy) — Samsat usually wants both. Future time needs only a time word, no verb change: 'bulan depan' (next month), 'tahun depan' (next year), 'minggu lalu' (last week).",
     vocabulary: [
-      { word: "STNK", en: "vehicle registration certificate", vi: "cà-vẹt / giấy đăng ký xe", pos: "noun (abbr.)", pronunciation_vi: "es-te-en-KA", pronunciation_en: "es-teh-en-KAH" },
-      { word: "BPKB", en: "vehicle ownership book", vi: "sổ chủ quyền xe", pos: "noun (abbr.)", pronunciation_vi: "be-pe-ka-BE", pronunciation_en: "beh-peh-kah-BEH" },
-      { word: "pajak", en: "tax", vi: "thuế", pos: "noun", pronunciation_vi: "PA-jak", pronunciation_en: "PA-jak" },
-      { word: "kendaraan", en: "vehicle", vi: "phương tiện / xe cộ", pos: "noun", pronunciation_vi: "ken-da-RA-an", pronunciation_en: "ken-da-RA-an" },
-      { word: "membayar", en: "to pay", vi: "trả / nộp", pos: "verb", pronunciation_vi: "mem-BA-yar", pronunciation_en: "mem-BA-yar" },
-      { word: "Samsat", en: "one-stop vehicle admin office", vi: "văn phòng một cửa (giấy tờ xe)", pos: "noun", pronunciation_vi: "SAM-sat", pronunciation_en: "SAM-sat" },
-      { word: "jatuh tempo", en: "to fall due / be due", vi: "đến hạn / đáo hạn", pos: "phrase", pronunciation_vi: "JA-tuh TEM-po", pronunciation_en: "JA-tooh TEM-poh" },
-      { word: "denda", en: "fine / penalty", vi: "tiền phạt", pos: "noun", pronunciation_vi: "DEN-da", pronunciation_en: "DEN-da" },
-      { word: "asli", en: "original / genuine", vi: "bản gốc / thật", pos: "adj.", pronunciation_vi: "AS-li", pronunciation_en: "AS-lee" },
+      { cell_id: "49fe0503-c170-422c-8ec6-8ff3843993ef", word: "STNK", en: "vehicle registration certificate", vi: "cà-vẹt / giấy đăng ký xe", pos: "noun (abbr.)", pronunciation_vi: "es-te-en-KA", pronunciation_en: "es-teh-en-KAH" },
+      { cell_id: "bdaed280-a8da-41cb-9bc9-6ff2880a3477", word: "BPKB", en: "vehicle ownership book", vi: "sổ chủ quyền xe", pos: "noun (abbr.)", pronunciation_vi: "be-pe-ka-BE", pronunciation_en: "beh-peh-kah-BEH" },
+      { cell_id: "575edc0c-b8c0-451c-aacf-19a7add18772", word: "pajak", en: "tax", vi: "thuế", pos: "noun", pronunciation_vi: "PA-jak", pronunciation_en: "PA-jak" },
+      { cell_id: "72919fcc-e962-49bf-a976-6b7121c42658", word: "kendaraan", en: "vehicle", vi: "phương tiện / xe cộ", pos: "noun", pronunciation_vi: "ken-da-RA-an", pronunciation_en: "ken-da-RA-an" },
+      { cell_id: "727381cd-a18c-4f3d-aa83-652eab321cf1", word: "membayar", en: "to pay", vi: "trả / nộp", pos: "verb", pronunciation_vi: "mem-BA-yar", pronunciation_en: "mem-BA-yar" },
+      { cell_id: "0b63f646-5869-41cd-ab9f-708bafc53968", word: "Samsat", en: "one-stop vehicle admin office", vi: "văn phòng một cửa (giấy tờ xe)", pos: "noun", pronunciation_vi: "SAM-sat", pronunciation_en: "SAM-sat" },
+      { cell_id: "cbf3bf1c-1a86-4dd8-aa1d-8f64ad9a8b85", word: "jatuh tempo", en: "to fall due / be due", vi: "đến hạn / đáo hạn", pos: "phrase", pronunciation_vi: "JA-tuh TEM-po", pronunciation_en: "JA-tooh TEM-poh" },
+      { cell_id: "24afac43-2f1f-4385-a75f-11b875e63d84", word: "denda", en: "fine / penalty", vi: "tiền phạt", pos: "noun", pronunciation_vi: "DEN-da", pronunciation_en: "DEN-da" },
+      { cell_id: "532fa32f-8b1b-4fe3-b32d-f3d319429d25", word: "asli", en: "original / genuine", vi: "bản gốc / thật", pos: "adj.", pronunciation_vi: "AS-li", pronunciation_en: "AS-lee" },
     ],
     dialogue: [
-      { speaker: "Wajib pajak", text: "Selamat siang. Saya mau membayar pajak kendaraan tahunan.", vi: "Chào buổi trưa. Tôi muốn nộp thuế xe hằng năm.", en: "Good afternoon. I'd like to pay the annual vehicle tax." },
-      { speaker: "Petugas Samsat", text: "Boleh saya lihat STNK dan BPKB aslinya, Pak?", vi: "Cho tôi xem STNK và BPKB bản gốc được không ạ?", en: "May I see your STNK and the original BPKB, sir?" },
-      { speaker: "Wajib pajak", text: "Ini, Bu. Pajaknya jatuh tempo minggu depan, masih sempat?", vi: "Đây ạ. Thuế đến hạn tuần sau, còn kịp không ạ?", en: "Here you are. The tax is due next week — am I still in time?" },
-      { speaker: "Petugas Samsat", text: "Masih, belum kena denda. Totalnya tiga ratus dua puluh ribu.", vi: "Còn kịp, chưa bị phạt. Tổng cộng ba trăm hai mươi nghìn.", en: "Yes, no fine yet. The total is three hundred and twenty thousand." },
+      { cell_id: "22744402-5622-4399-937f-cb7f1bd49753", speaker: "Wajib pajak", text: "Selamat siang. Saya mau membayar pajak kendaraan tahunan.", vi: "Chào buổi trưa. Tôi muốn nộp thuế xe hằng năm.", en: "Good afternoon. I'd like to pay the annual vehicle tax." },
+      { cell_id: "5cbd1865-4f09-43f6-82ab-54fe263d95fb", speaker: "Petugas Samsat", text: "Boleh saya lihat STNK dan BPKB aslinya, Pak?", vi: "Cho tôi xem STNK và BPKB bản gốc được không ạ?", en: "May I see your STNK and the original BPKB, sir?" },
+      { cell_id: "c7b3fb34-4496-4ed5-8e2c-446744358b71", speaker: "Wajib pajak", text: "Ini, Bu. Pajaknya jatuh tempo minggu depan, masih sempat?", vi: "Đây ạ. Thuế đến hạn tuần sau, còn kịp không ạ?", en: "Here you are. The tax is due next week — am I still in time?" },
+      { cell_id: "4f302c44-c12f-4290-985c-2476551d6135", speaker: "Petugas Samsat", text: "Masih, belum kena denda. Totalnya tiga ratus dua puluh ribu.", vi: "Còn kịp, chưa bị phạt. Tổng cộng ba trăm hai mươi nghìn.", en: "Yes, no fine yet. The total is three hundred and twenty thousand." },
     ],
     exercises: [
       {
@@ -435,22 +437,22 @@ export const drivingTransportLessons: IndonesianLesson[] = [
     tip_advice_en:
       "Tip for Vietnamese speakers: the golden bengkel verbs — 'cek' (check), 'ganti' (change), 'tambal' (patch), 'servis' (service). The 'di-' prefix makes them passive: ditambal (gets patched), dipesan (gets ordered), diganti (gets replaced) — you'll hear these as the mechanic describes the work. Degree scale: 'agak' (a bit) < 'cukup' (fairly) < 'sangat/banget' (very). 'Mogok' means both 'to stall/break down' and 'to go on strike' — read it from context. Ask price ('Berapa biayanya?') and time ('Berapa lama?') upfront.",
     vocabulary: [
-      { word: "bengkel", en: "repair shop / garage", vi: "tiệm sửa xe / gara", pos: "noun", pronunciation_vi: "BENG-kel", pronunciation_en: "BENG-kel" },
-      { word: "mogok", en: "to break down / stall", vi: "chết máy / hỏng", pos: "verb", pronunciation_vi: "MO-gok", pronunciation_en: "MOH-gok" },
-      { word: "mesin", en: "engine / machine", vi: "động cơ / máy", pos: "noun", pronunciation_vi: "me-SIN", pronunciation_en: "me-SEEN" },
-      { word: "ganti oli", en: "to change the oil", vi: "thay nhớt", pos: "verb phrase", pronunciation_vi: "GAN-ti O-li", pronunciation_en: "GAN-tee OH-lee" },
-      { word: "ban", en: "tyre", vi: "lốp / vỏ xe", pos: "noun", pronunciation_vi: "ban", pronunciation_en: "ban" },
-      { word: "bocor", en: "punctured / leaking", vi: "thủng / xì", pos: "adj./verb", pronunciation_vi: "BO-chor", pronunciation_en: "BOH-chor" },
-      { word: "tambal", en: "to patch (a tyre)", vi: "vá (lốp)", pos: "verb", pronunciation_vi: "TAM-bal", pronunciation_en: "TAM-bal" },
-      { word: "servis", en: "service / servicing", vi: "bảo dưỡng", pos: "noun/verb", pronunciation_vi: "SER-vis", pronunciation_en: "SER-vees" },
-      { word: "suku cadang", en: "spare part(s)", vi: "phụ tùng / linh kiện", pos: "noun", pronunciation_vi: "SU-ku CA-dang", pronunciation_en: "SOO-koo CHA-dang" },
-      { word: "rem", en: "brake(s)", vi: "phanh / thắng", pos: "noun", pronunciation_vi: "rem", pronunciation_en: "rem" },
+      { cell_id: "c04b9269-060c-41af-b4aa-b37bb945a54f", word: "bengkel", en: "repair shop / garage", vi: "tiệm sửa xe / gara", pos: "noun", pronunciation_vi: "BENG-kel", pronunciation_en: "BENG-kel" },
+      { cell_id: "8f1b5195-69a1-4579-ad51-22287fb6d6a4", word: "mogok", en: "to break down / stall", vi: "chết máy / hỏng", pos: "verb", pronunciation_vi: "MO-gok", pronunciation_en: "MOH-gok" },
+      { cell_id: "2bc4dfee-6ee4-4d83-8a0f-1dacefa4021e", word: "mesin", en: "engine / machine", vi: "động cơ / máy", pos: "noun", pronunciation_vi: "me-SIN", pronunciation_en: "me-SEEN" },
+      { cell_id: "d5c8e7f6-3581-46d1-b005-2c303eb9fe7d", word: "ganti oli", en: "to change the oil", vi: "thay nhớt", pos: "verb phrase", pronunciation_vi: "GAN-ti O-li", pronunciation_en: "GAN-tee OH-lee" },
+      { cell_id: "766da56a-f313-48cc-a9d4-f830112208ff", word: "ban", en: "tyre", vi: "lốp / vỏ xe", pos: "noun", pronunciation_vi: "ban", pronunciation_en: "ban" },
+      { cell_id: "7e20a4a4-ea17-4a96-845b-417ad0040c99", word: "bocor", en: "punctured / leaking", vi: "thủng / xì", pos: "adj./verb", pronunciation_vi: "BO-chor", pronunciation_en: "BOH-chor" },
+      { cell_id: "c1dd1bf6-1ded-44d1-9137-8d58f44fc07b", word: "tambal", en: "to patch (a tyre)", vi: "vá (lốp)", pos: "verb", pronunciation_vi: "TAM-bal", pronunciation_en: "TAM-bal" },
+      { cell_id: "9b4a5207-176c-46a3-b0e6-db68a971ffb1", word: "servis", en: "service / servicing", vi: "bảo dưỡng", pos: "noun/verb", pronunciation_vi: "SER-vis", pronunciation_en: "SER-vees" },
+      { cell_id: "e7d8156f-bb43-4259-a2c2-228895930a7c", word: "suku cadang", en: "spare part(s)", vi: "phụ tùng / linh kiện", pos: "noun", pronunciation_vi: "SU-ku CA-dang", pronunciation_en: "SOO-koo CHA-dang" },
+      { cell_id: "ca9cf6ce-59d4-46e9-b9b2-c393cf11fb6f", word: "rem", en: "brake(s)", vi: "phanh / thắng", pos: "noun", pronunciation_vi: "rem", pronunciation_en: "rem" },
     ],
     dialogue: [
-      { speaker: "Pelanggan", text: "Mas, motor saya mogok tadi pagi. Tolong cek mesinnya, ya.", vi: "Anh ơi, xe máy tôi chết máy sáng nay. Làm ơn kiểm tra động cơ giúp nhé.", en: "Hey, my bike stalled this morning. Please check the engine." },
-      { speaker: "Montir", text: "Sebentar saya periksa. Wah, olinya kering dan ban depannya bocor juga.", vi: "Để tôi xem chút. Ồ, nhớt cạn mà lốp trước cũng bị thủng nữa.", en: "Let me have a look. Ah, the oil is dry and the front tyre is punctured too." },
-      { speaker: "Pelanggan", text: "Tolong ganti oli dan tambal bannya. Berapa lama servisnya selesai?", vi: "Làm ơn thay nhớt và vá lốp. Bảo dưỡng xong trong bao lâu?", en: "Please change the oil and patch the tyre. How long until it's done?" },
-      { speaker: "Montir", text: "Sekitar satu jam. Tapi kampas remnya juga tipis, perlu diganti nanti.", vi: "Khoảng một tiếng. Nhưng má phanh cũng mòn rồi, sau cần thay.", en: "About an hour. But the brake pads are thin too — they'll need replacing later." },
+      { cell_id: "bca8efcd-3f07-4d34-8151-6571c5ea31ca", speaker: "Pelanggan", text: "Mas, motor saya mogok tadi pagi. Tolong cek mesinnya, ya.", vi: "Anh ơi, xe máy tôi chết máy sáng nay. Làm ơn kiểm tra động cơ giúp nhé.", en: "Hey, my bike stalled this morning. Please check the engine." },
+      { cell_id: "678cd742-5fe7-45e6-a8b7-3271ff15ec20", speaker: "Montir", text: "Sebentar saya periksa. Wah, olinya kering dan ban depannya bocor juga.", vi: "Để tôi xem chút. Ồ, nhớt cạn mà lốp trước cũng bị thủng nữa.", en: "Let me have a look. Ah, the oil is dry and the front tyre is punctured too." },
+      { cell_id: "4e904752-df9c-40f2-83f1-cde24aede621", speaker: "Pelanggan", text: "Tolong ganti oli dan tambal bannya. Berapa lama servisnya selesai?", vi: "Làm ơn thay nhớt và vá lốp. Bảo dưỡng xong trong bao lâu?", en: "Please change the oil and patch the tyre. How long until it's done?" },
+      { cell_id: "cc053ec5-1ef2-4ace-951f-50496fbd180a", speaker: "Montir", text: "Sekitar satu jam. Tapi kampas remnya juga tipis, perlu diganti nanti.", vi: "Khoảng một tiếng. Nhưng má phanh cũng mòn rồi, sau cần thay.", en: "About an hour. But the brake pads are thin too — they'll need replacing later." },
     ],
     exercises: [
       {

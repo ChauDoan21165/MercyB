@@ -13,6 +13,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -22,6 +23,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -235,41 +237,46 @@ export const lessons: IndonesianLesson[] = [
     tip_advice_en:
       "Tip for Vietnamese speakers: build the speech in five parts: greeting -> problem -> strong reason -> concrete example -> call to action. Do not only say `harus`; guide listeners with `mari kita`, `saya mengajak`, and `bayangkan`. A strong closing should be short, rhythmic, and name a concrete action.",
     vocabulary: [
-      { word: "pidato persuasif", en: "persuasive speech", vi: "bài phát biểu thuyết phục", pos: "noun phrase", pronunciation_vi: "pi-DA-to per-su-a-SIF", pronunciation_en: "pi-DA-to per-su-a-SIF" },
-      { word: "mengajak audiens", en: "to invite/urge the audience", vi: "kêu gọi khán giả", pos: "verb phrase", pronunciation_vi: "meng-A-jak AU-di-ens", pronunciation_en: "meng-A-jak AU-di-ens" },
-      { word: "alasan kuat", en: "strong reason", vi: "lý do mạnh", pos: "noun phrase", pronunciation_vi: "a-LA-san KU-at", pronunciation_en: "a-LA-san KOO-at" },
-      { word: "contoh nyata", en: "concrete example", vi: "ví dụ thực tế", pos: "noun phrase", pronunciation_vi: "CON-toh NYA-ta", pronunciation_en: "CHON-toh NYA-ta" },
-      { word: "ajakan bertindak", en: "call to action", vi: "lời kêu gọi hành động", pos: "noun phrase", pronunciation_vi: "a-JAK-an ber-TIN-dak", pronunciation_en: "a-JAK-an ber-TIN-dak" },
-      { word: "nada meyakinkan", en: "convincing tone", vi: "giọng điệu thuyết phục", pos: "noun phrase", pronunciation_vi: "NA-da me-ya-KIN-kan", pronunciation_en: "NA-da me-ya-KIN-kan" },
-      { word: "penutup kuat", en: "strong closing", vi: "kết bài mạnh", pos: "noun phrase", pronunciation_vi: "pe-NU-tup KU-at", pronunciation_en: "pe-NOO-toop KOO-at" },
-      { word: "langkah nyata", en: "concrete step", vi: "bước đi cụ thể", pos: "noun phrase", pronunciation_vi: "LANG-kah NYA-ta", pronunciation_en: "LANG-kah NYA-ta" },
+      { cell_id: "012d4724-3a7e-418f-9fe4-9b6cd21fd7dc", word: "pidato persuasif", en: "persuasive speech", vi: "bài phát biểu thuyết phục", pos: "noun phrase", pronunciation_vi: "pi-DA-to per-su-a-SIF", pronunciation_en: "pi-DA-to per-su-a-SIF" },
+      { cell_id: "c19ff0b0-bf31-4bed-bca1-6b5f6aabf104", word: "mengajak audiens", en: "to invite/urge the audience", vi: "kêu gọi khán giả", pos: "verb phrase", pronunciation_vi: "meng-A-jak AU-di-ens", pronunciation_en: "meng-A-jak AU-di-ens" },
+      { cell_id: "23330b60-f9c4-428d-8033-e07bb9cbca2c", word: "alasan kuat", en: "strong reason", vi: "lý do mạnh", pos: "noun phrase", pronunciation_vi: "a-LA-san KU-at", pronunciation_en: "a-LA-san KOO-at" },
+      { cell_id: "e4fa0d3a-5b95-447d-84dc-ff4fa6dde735", word: "contoh nyata", en: "concrete example", vi: "ví dụ thực tế", pos: "noun phrase", pronunciation_vi: "CON-toh NYA-ta", pronunciation_en: "CHON-toh NYA-ta" },
+      { cell_id: "74f9cfee-42c0-41f1-b1bf-6d7f3a508c47", word: "ajakan bertindak", en: "call to action", vi: "lời kêu gọi hành động", pos: "noun phrase", pronunciation_vi: "a-JAK-an ber-TIN-dak", pronunciation_en: "a-JAK-an ber-TIN-dak" },
+      { cell_id: "d9839deb-0891-4c61-aff8-4e844e561c23", word: "nada meyakinkan", en: "convincing tone", vi: "giọng điệu thuyết phục", pos: "noun phrase", pronunciation_vi: "NA-da me-ya-KIN-kan", pronunciation_en: "NA-da me-ya-KIN-kan" },
+      { cell_id: "c5c39faa-e035-4ed5-bb2f-643165f9b872", word: "penutup kuat", en: "strong closing", vi: "kết bài mạnh", pos: "noun phrase", pronunciation_vi: "pe-NU-tup KU-at", pronunciation_en: "pe-NOO-toop KOO-at" },
+      { cell_id: "65ecef60-5ffc-4599-8695-4d8bb345fa31", word: "langkah nyata", en: "concrete step", vi: "bước đi cụ thể", pos: "noun phrase", pronunciation_vi: "LANG-kah NYA-ta", pronunciation_en: "LANG-kah NYA-ta" },
     ],
     dialogue: [
       {
+        cell_id: "b109ee33-bfe1-4b3f-b24b-22b5c596cd88",
         speaker: "Pelatih",
         text: "Apa tujuan utama pidato persuasifmu?",
         vi: "Mục tiêu chính của bài phát biểu thuyết phục của em là gì?",
         en: "What is the main goal of your persuasive speech?",
       },
       {
+        cell_id: "15bc4251-f3da-4975-b38e-f9cec8429bed",
         speaker: "Siswa",
         text: "Saya ingin mengajak audiens untuk mengurangi sampah plastik.",
         vi: "Em muốn kêu gọi khán giả giảm rác thải nhựa.",
         en: "I want to urge the audience to reduce plastic waste.",
       },
       {
+        cell_id: "1d7ed2e1-2df3-4d52-bf87-15fd2770b0e3",
         speaker: "Pelatih",
         text: "Bagus. Berikan alasan kuat dan contoh nyata.",
         vi: "Tốt. Hãy đưa ra lý do mạnh và ví dụ thực tế.",
         en: "Good. Give a strong reason and a concrete example.",
       },
       {
+        cell_id: "f4847903-1fe4-4e57-b85a-8703c796268c",
         speaker: "Siswa",
         text: "Saya akan menjelaskan dampaknya pada sungai dan memberi contoh dari lingkungan sekolah.",
         vi: "Em sẽ giải thích tác động của nó lên sông và đưa ví dụ từ môi trường trường học.",
         en: "I will explain its impact on rivers and give an example from the school environment.",
       },
       {
+        cell_id: "20edfe7f-683b-4eda-9570-c297de8bd525",
         speaker: "Pelatih",
         text: "Akhiri dengan ajakan bertindak yang singkat dan jelas.",
         vi: "Hãy kết thúc bằng lời kêu gọi hành động ngắn gọn và rõ ràng.",

@@ -24,6 +24,7 @@ type LessonSentence = {
 };
 
 type VocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -35,6 +36,7 @@ type VocabEntry = {
 };
 
 type DialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -150,6 +152,7 @@ export const warungBusinessLessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: learn the money trio `modal` = capital/cost, `untung` = profit, `rugi` = loss. For prices, distinguish `harga modal` (cost price) and `harga jual` (selling price). This pair is essential for shop talk.",
     vocabulary: [
       {
+        cell_id: "fdf09d9f-ac09-4f45-82c0-b9289de112d1",
         word: "warung",
         en: "small shop / food stall",
         vi: "quán nhỏ / tiệm tạp hóa nhỏ",
@@ -158,6 +161,7 @@ export const warungBusinessLessons: IndonesianLesson[] = [
         pronunciation_en: "WA-roong",
       },
       {
+        cell_id: "fd64f506-ef18-4392-a8f5-8911e7c9ae67",
         word: "buka warung",
         en: "to open a small shop",
         vi: "mở quán/tiệm nhỏ",
@@ -166,6 +170,7 @@ export const warungBusinessLessons: IndonesianLesson[] = [
         pronunciation_en: "BOO-ka WA-roong",
       },
       {
+        cell_id: "7e01a2d5-d69c-4e03-92dd-4c49720ca6a6",
         word: "modal",
         en: "capital / cost basis",
         vi: "vốn",
@@ -174,6 +179,7 @@ export const warungBusinessLessons: IndonesianLesson[] = [
         pronunciation_en: "MO-dal",
       },
       {
+        cell_id: "408443ce-1f8a-4fa4-b0d0-5780cea6f5b0",
         word: "stok",
         en: "stock / inventory",
         vi: "hàng tồn / hàng có sẵn",
@@ -182,6 +188,7 @@ export const warungBusinessLessons: IndonesianLesson[] = [
         pronunciation_en: "stok",
       },
       {
+        cell_id: "17ca55ee-9c91-4629-a92e-997b2ae4de00",
         word: "supplier",
         en: "supplier",
         vi: "nhà cung cấp",
@@ -190,6 +197,7 @@ export const warungBusinessLessons: IndonesianLesson[] = [
         pronunciation_en: "su-PLY-er",
       },
       {
+        cell_id: "387ae93c-ae76-445b-bf02-06e34aaa8c82",
         word: "harga jual",
         en: "selling price",
         vi: "giá bán",
@@ -198,6 +206,7 @@ export const warungBusinessLessons: IndonesianLesson[] = [
         pronunciation_en: "HAR-ga JOO-al",
       },
       {
+        cell_id: "f42ff5ec-186b-4e26-a3b9-83af33f49f06",
         word: "harga modal",
         en: "cost price",
         vi: "giá vốn",
@@ -206,6 +215,7 @@ export const warungBusinessLessons: IndonesianLesson[] = [
         pronunciation_en: "HAR-ga MO-dal",
       },
       {
+        cell_id: "a0a2cac3-30c2-4f6a-842f-2479c6ee5d06",
         word: "grosir",
         en: "wholesale",
         vi: "bán sỉ / sỉ",
@@ -216,24 +226,28 @@ export const warungBusinessLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "2de85dbd-a53b-4d2a-85fc-45ff8a179f05",
         speaker: "Pemilik warung",
         text: "Saya mau buka warung kecil bulan depan.",
         vi: "Tôi muốn mở một quán nhỏ vào tháng sau.",
         en: "I want to open a small warung next month.",
       },
       {
+        cell_id: "00dffb9d-5a45-4330-a983-ee0427cbacbb",
         speaker: "Teman",
         text: "Modal awalnya berapa?",
         vi: "Vốn ban đầu bao nhiêu?",
         en: "How much is the initial capital?",
       },
       {
+        cell_id: "6119c1ca-431d-437f-8602-8f853ba5c99f",
         speaker: "Pemilik warung",
         text: "Belum besar. Saya mulai dari stok kecil dulu.",
         vi: "Chưa lớn. Tôi bắt đầu từ lượng hàng nhỏ trước.",
         en: "Not much yet. I will start with small stock first.",
       },
       {
+        cell_id: "067ea97f-a5d4-44c2-a14e-3639fa8c5f69",
         speaker: "Teman",
         text: "Cari supplier yang harganya stabil.",
         vi: "Tìm nhà cung cấp có giá ổn định.",
@@ -402,6 +416,7 @@ export const warungBusinessLessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: the pair `pemasukan`/`pengeluaran` is key. `masuk` = enter/in → money coming in is `pemasukan`; `keluar` = go out → money going out is `pengeluaran`. For profit after expenses, say `untung bersih`.",
     vocabulary: [
       {
+        cell_id: "436f7736-56f0-4544-af45-45a60341e925",
         word: "pelanggan tetap",
         en: "regular customer",
         vi: "khách quen",
@@ -410,6 +425,7 @@ export const warungBusinessLessons: IndonesianLesson[] = [
         pronunciation_en: "pe-lang-GAN TEH-tap",
       },
       {
+        cell_id: "f44a76e6-d2ed-41a9-8b65-c69ce8b2e609",
         word: "stok habis",
         en: "out of stock",
         vi: "hết hàng",
@@ -418,6 +434,7 @@ export const warungBusinessLessons: IndonesianLesson[] = [
         pronunciation_en: "stok HA-bis",
       },
       {
+        cell_id: "ccd35592-45bd-4b76-b0a8-81f38a9c1bac",
         word: "pemasukan",
         en: "income / revenue",
         vi: "khoản thu",
@@ -426,6 +443,7 @@ export const warungBusinessLessons: IndonesianLesson[] = [
         pronunciation_en: "peh-ma-SOO-kan",
       },
       {
+        cell_id: "ca525b4e-719d-429a-8d1d-ac4be2b5c30d",
         word: "pengeluaran",
         en: "expenses",
         vi: "khoản chi",
@@ -434,6 +452,7 @@ export const warungBusinessLessons: IndonesianLesson[] = [
         pronunciation_en: "peh-ngeh-loo-A-ran",
       },
       {
+        cell_id: "82d58f4a-8793-4bb9-868b-961c6aa604dd",
         word: "untung bersih",
         en: "net profit",
         vi: "lãi ròng",
@@ -442,6 +461,7 @@ export const warungBusinessLessons: IndonesianLesson[] = [
         pronunciation_en: "OON-toong BER-see",
       },
       {
+        cell_id: "b519fddc-ebb6-4c3d-8391-2da453748b9c",
         word: "izin usaha",
         en: "business permit",
         vi: "giấy phép kinh doanh",
@@ -450,6 +470,7 @@ export const warungBusinessLessons: IndonesianLesson[] = [
         pronunciation_en: "EE-zin oo-SA-ha",
       },
       {
+        cell_id: "442f8e7b-be50-4520-a76e-2cb22d74eae1",
         word: "kelurahan",
         en: "local urban village office",
         vi: "văn phòng phường/xã",
@@ -458,6 +479,7 @@ export const warungBusinessLessons: IndonesianLesson[] = [
         pronunciation_en: "keh-loo-RA-han",
       },
       {
+        cell_id: "1ebb93c9-17ca-4ef7-bf80-f4759131a7af",
         word: "utang",
         en: "debt / credit owed",
         vi: "nợ",
@@ -468,24 +490,28 @@ export const warungBusinessLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "c8c0ff6e-7889-4434-8002-abba0ee751c2",
         speaker: "Pelanggan",
         text: "Bu, kopi sachet yang biasa masih ada?",
         vi: "Cô ơi, cà phê gói loại thường mua còn không?",
         en: "Ma'am, is the usual sachet coffee still available?",
       },
       {
+        cell_id: "19b70525-6f84-47e4-8c70-bee699ff35b2",
         speaker: "Pemilik warung",
         text: "Masih ada. Mau beli berapa?",
         vi: "Vẫn còn. Muốn mua bao nhiêu?",
         en: "Still available. How many do you want?",
       },
       {
+        cell_id: "dcdc4acc-ac06-4373-8be8-be45da02d306",
         speaker: "Pelanggan",
         text: "Lima saja. Boleh utang dulu sampai besok?",
         vi: "Năm gói thôi. Có thể ghi nợ đến mai không?",
         en: "Just five. Can I owe you until tomorrow?",
       },
       {
+        cell_id: "f1c33589-b016-4d53-b57b-c9fd052a6302",
         speaker: "Pemilik warung",
         text: "Boleh, karena Ibu pelanggan tetap.",
         vi: "Được, vì cô là khách quen.",

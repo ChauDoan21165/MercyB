@@ -13,6 +13,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -22,6 +23,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -235,41 +237,46 @@ export const lessons: IndonesianLesson[] = [
     tip_advice_en:
       "Tip for Vietnamese speakers: do not turn a problem-solution essay into a loose list. Use a six-sentence frame: `Masalah utama...`, `Penyebab pertama...`, `Dampaknya...`, `Solusi utama...`, `Namun, kelemahan solusi...`, `Kesimpulannya...`. When proposing a solution, always add implementation steps and one sentence about its weakness so the essay has depth.",
     vocabulary: [
-      { word: "esai masalah-solusi", en: "problem-solution essay", vi: "bài luận vấn đề - giải pháp", pos: "noun phrase", pronunciation_vi: "e-SAI MA-sa-lah so-LU-si", pronunciation_en: "e-SAI MA-sa-lah so-LOO-si" },
-      { word: "latar belakang", en: "background", vi: "bối cảnh", pos: "noun phrase", pronunciation_vi: "LA-tar be-la-KANG", pronunciation_en: "LA-tar be-la-KANG" },
-      { word: "penyebab", en: "cause", vi: "nguyên nhân", pos: "noun", pronunciation_vi: "pe-NYE-bab", pronunciation_en: "pe-NYE-bab" },
-      { word: "dampak", en: "impact", vi: "tác động", pos: "noun", pronunciation_vi: "DAM-pak", pronunciation_en: "DAM-pak" },
-      { word: "solusi utama", en: "main solution", vi: "giải pháp chính", pos: "noun phrase", pronunciation_vi: "so-LU-si u-TA-ma", pronunciation_en: "so-LOO-si oo-TA-ma" },
-      { word: "kelemahan solusi", en: "weakness of the solution", vi: "điểm yếu của giải pháp", pos: "noun phrase", pronunciation_vi: "ke-le-MAH-an so-LU-si", pronunciation_en: "ke-le-MAH-an so-LOO-si" },
-      { word: "kesimpulan", en: "conclusion", vi: "kết luận", pos: "noun", pronunciation_vi: "ke-sim-PUL-an", pronunciation_en: "ke-sim-POOL-an" },
-      { word: "langkah pelaksanaan", en: "implementation steps", vi: "các bước thực hiện", pos: "noun phrase", pronunciation_vi: "LANG-kah pe-lak-sa-NA-an", pronunciation_en: "LANG-kah pe-lak-sa-NA-an" },
+      { cell_id: "f3bcb3db-c4be-40da-8f72-a4cae2f2eff2", word: "esai masalah-solusi", en: "problem-solution essay", vi: "bài luận vấn đề - giải pháp", pos: "noun phrase", pronunciation_vi: "e-SAI MA-sa-lah so-LU-si", pronunciation_en: "e-SAI MA-sa-lah so-LOO-si" },
+      { cell_id: "16138dad-8d4f-48d6-a08c-5303a1073876", word: "latar belakang", en: "background", vi: "bối cảnh", pos: "noun phrase", pronunciation_vi: "LA-tar be-la-KANG", pronunciation_en: "LA-tar be-la-KANG" },
+      { cell_id: "1a175c66-cc31-404d-873c-dafb038639fd", word: "penyebab", en: "cause", vi: "nguyên nhân", pos: "noun", pronunciation_vi: "pe-NYE-bab", pronunciation_en: "pe-NYE-bab" },
+      { cell_id: "305de92d-bc4c-4747-b0ea-bc0a76aba883", word: "dampak", en: "impact", vi: "tác động", pos: "noun", pronunciation_vi: "DAM-pak", pronunciation_en: "DAM-pak" },
+      { cell_id: "331143a0-934f-4a62-8239-7d128324e37e", word: "solusi utama", en: "main solution", vi: "giải pháp chính", pos: "noun phrase", pronunciation_vi: "so-LU-si u-TA-ma", pronunciation_en: "so-LOO-si oo-TA-ma" },
+      { cell_id: "13edd95d-f64f-4a35-a41e-0032f5c89d03", word: "kelemahan solusi", en: "weakness of the solution", vi: "điểm yếu của giải pháp", pos: "noun phrase", pronunciation_vi: "ke-le-MAH-an so-LU-si", pronunciation_en: "ke-le-MAH-an so-LOO-si" },
+      { cell_id: "bb5d3d26-c34e-4f43-9d87-75b4879328d5", word: "kesimpulan", en: "conclusion", vi: "kết luận", pos: "noun", pronunciation_vi: "ke-sim-PUL-an", pronunciation_en: "ke-sim-POOL-an" },
+      { cell_id: "ff5d4afa-6268-4caa-b09d-8c249bd542c2", word: "langkah pelaksanaan", en: "implementation steps", vi: "các bước thực hiện", pos: "noun phrase", pronunciation_vi: "LANG-kah pe-lak-sa-NA-an", pronunciation_en: "LANG-kah pe-lak-sa-NA-an" },
     ],
     dialogue: [
       {
+        cell_id: "5145d9b9-2641-4f08-b7fa-91165d842bc5",
         speaker: "Dosen",
         text: "Bagaimana struktur esai masalah-solusi yang kamu tulis?",
         vi: "Cấu trúc bài luận vấn đề - giải pháp em viết như thế nào?",
         en: "What is the structure of the problem-solution essay you wrote?",
       },
       {
+        cell_id: "2a622e65-cbba-4f2b-a8e2-afc597302a8e",
         speaker: "Mahasiswa",
         text: "Saya mulai dengan latar belakang, lalu menjelaskan masalah utama dan penyebabnya.",
         vi: "Em bắt đầu bằng bối cảnh, rồi giải thích vấn đề chính và nguyên nhân của nó.",
         en: "I start with the background, then explain the main problem and its causes.",
       },
       {
+        cell_id: "60560b2d-4010-420a-8d7f-308920345ecd",
         speaker: "Dosen",
         text: "Bagus. Jangan lupa membahas dampak dan kelemahan solusi.",
         vi: "Tốt. Đừng quên bàn về tác động và điểm yếu của giải pháp.",
         en: "Good. Do not forget to discuss the impact and the weakness of the solution.",
       },
       {
+        cell_id: "41498d63-2d80-47f3-9a6b-400d006a246b",
         speaker: "Mahasiswa",
         text: "Baik, saya akan menambahkan langkah pelaksanaan yang lebih realistis.",
         vi: "Vâng, em sẽ thêm các bước thực hiện thực tế hơn.",
         en: "All right, I will add more realistic implementation steps.",
       },
       {
+        cell_id: "25cea211-0e7e-4533-bef6-0397800cef5a",
         speaker: "Dosen",
         text: "Dengan begitu, kesimpulanmu akan terasa lebih logis dan meyakinkan.",
         vi: "Như vậy, kết luận của em sẽ có cảm giác logic và thuyết phục hơn.",

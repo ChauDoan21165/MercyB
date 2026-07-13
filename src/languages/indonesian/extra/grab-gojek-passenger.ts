@@ -13,6 +13,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -22,6 +23,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -236,6 +238,7 @@ export const lessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: keep three verbs separate: `pesan` (book), `jemput` (pick up), `antar` (take/drop off). Static location uses `di`: `di depan lobi`; destination uses `ke`: `ke stasiun`. The 'has it...yet?' question is `sudah...belum?`, not `sudah...tidak?`.",
     vocabulary: [
       {
+        cell_id: "8b6ff4ba-7597-4579-b261-2efcb6f109de",
         word: "pesan ojek",
         en: "book a motorbike taxi",
         vi: "đặt xe ôm công nghệ",
@@ -244,6 +247,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "PE-san OH-jek",
       },
       {
+        cell_id: "89fd69a0-b057-41e9-9c19-c6c927581474",
         word: "tujuan",
         en: "destination",
         vi: "điểm đến",
@@ -252,6 +256,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "too-JOO-an",
       },
       {
+        cell_id: "7abc8627-74db-4b0f-9219-38ad8950b604",
         word: "tarif",
         en: "fare / rate",
         vi: "giá cước",
@@ -260,6 +265,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "TA-rif",
       },
       {
+        cell_id: "4f76c0bf-d615-45ad-9caa-5e2cf7cbb527",
         word: "promo",
         en: "promotion / discount",
         vi: "khuyến mãi",
@@ -268,6 +274,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "PRO-mo",
       },
       {
+        cell_id: "b4ff6a9b-691c-4402-946b-e74b0a54fb96",
         word: "rating",
         en: "rating",
         vi: "điểm đánh giá",
@@ -276,6 +283,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "RA-ting",
       },
       {
+        cell_id: "0a15a4b2-ddff-4310-b04a-30dbe489ba14",
         word: "barang tertinggal",
         en: "item left behind",
         vi: "đồ bị bỏ quên",
@@ -284,6 +292,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "BA-rang ter-ting-GAL",
       },
       {
+        cell_id: "df7adab1-f780-45b3-b5b4-1b7ee5ef51b7",
         word: "komplain",
         en: "complaint / to complain",
         vi: "khiếu nại",
@@ -292,6 +301,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "kom-PLAIN",
       },
       {
+        cell_id: "e26a207f-b15b-494b-8254-85a7f7d4cbcf",
         word: "titik jemput",
         en: "pickup point",
         vi: "điểm đón",
@@ -300,6 +310,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "TEE-tik JEM-poot",
       },
       {
+        cell_id: "fc456f10-9e76-40f0-8fc2-00c73c598191",
         word: "driver",
         en: "driver",
         vi: "tài xế",
@@ -308,6 +319,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "DRY-ver",
       },
       {
+        cell_id: "28e26a90-21a2-4bae-b988-cbc8669bd195",
         word: "cancel",
         en: "cancel",
         vi: "hủy chuyến",
@@ -316,6 +328,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "KEN-sel",
       },
       {
+        cell_id: "bb2eb710-af46-4868-b5c5-27ee85fd36ea",
         word: "antar",
         en: "take / drop off",
         vi: "chở đến / đưa đến",
@@ -324,6 +337,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "AN-tar",
       },
       {
+        cell_id: "9338d855-1cba-411c-9c53-d4cb54cec9d4",
         word: "jemput",
         en: "pick up",
         vi: "đón",
@@ -334,24 +348,28 @@ export const lessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "aa14d812-31a4-4e61-9753-57e72b3a7f94",
         speaker: "Penumpang",
         text: "Halo, Pak. Saya tunggu di depan lobi hotel.",
         vi: "Alo anh. Tôi chờ trước sảnh khách sạn.",
         en: "Hello, sir. I am waiting in front of the hotel lobby.",
       },
       {
+        cell_id: "e4c3cb54-837c-464e-bc4c-9ddc1a5ee64c",
         speaker: "Driver",
         text: "Baik, saya sudah dekat. Tujuannya ke mana?",
         vi: "Vâng, tôi đã gần tới. Điểm đến ở đâu ạ?",
         en: "Okay, I am nearby. Where is the destination?",
       },
       {
+        cell_id: "18253e2e-1760-49c9-9c30-7894a510d08a",
         speaker: "Penumpang",
         text: "Tujuan saya stasiun. Boleh lewat jalan tol kalau lebih cepat.",
         vi: "Điểm đến của tôi là ga. Có thể đi đường cao tốc nếu nhanh hơn.",
         en: "My destination is the station. We can take the toll road if it is faster.",
       },
       {
+        cell_id: "85c322d4-d72f-48bc-989f-366bad7374ce",
         speaker: "Driver",
         text: "Siap. Nanti tolong kasih rating kalau perjalanan aman.",
         vi: "Được ạ. Lát nữa làm ơn cho đánh giá nếu chuyến đi an toàn.",

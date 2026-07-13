@@ -21,6 +21,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   /** Indonesian word/phrase. */
   word: string;
   /** English meaning. */
@@ -36,6 +37,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   /** Indonesian line. */
   text: string;
@@ -240,6 +242,7 @@ export const lessons: IndonesianLesson[] = [
       "Safe message template: `Selamat pagi, saya mau minta perbaikan. Pipa di bawah wastafel bocor sejak tadi malam. Saya sudah kirim bukti foto. Kapan tukang bisa datang, dan apakah biaya perbaikan ditanggung pemilik rumah?`",
     vocabulary: [
       {
+        cell_id: "21d4e6ca-49e6-46bb-9cb2-e9b6d4c7301b",
         word: "minta perbaikan",
         en: "request a repair",
         vi: "yêu cầu sửa chữa",
@@ -248,6 +251,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "MIN-ta per-BAI-kan",
       },
       {
+        cell_id: "fa685e0f-c1a8-4c52-bb22-a381d3942803",
         word: "pipa bocor",
         en: "leaking pipe",
         vi: "ống nước bị rò",
@@ -256,6 +260,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "PEE-pa BO-chor",
       },
       {
+        cell_id: "79053667-786e-489e-a158-444b7798ec12",
         word: "lampu mati",
         en: "light is out",
         vi: "đèn hỏng/tắt không lên",
@@ -264,6 +269,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "LAM-poo MA-tee",
       },
       {
+        cell_id: "fc26a90f-7cb8-48f7-bd14-1de4f1735987",
         word: "AC rusak",
         en: "air conditioner is broken",
         vi: "máy lạnh bị hỏng",
@@ -272,6 +278,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "A-CHE ROO-sak",
       },
       {
+        cell_id: "65afcf2b-06e2-40b9-9baa-a438ee907527",
         word: "pemilik rumah",
         en: "homeowner; landlord",
         vi: "chủ nhà",
@@ -280,6 +287,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "pe-MEE-lik ROO-mah",
       },
       {
+        cell_id: "0898d698-0849-4bb9-b130-7f2141272631",
         word: "jadwal tukang",
         en: "repair-worker schedule",
         vi: "lịch thợ đến sửa",
@@ -288,6 +296,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "JAD-wal TOO-kang",
       },
       {
+        cell_id: "64dcd627-a2fb-4f55-b66e-9623c3b5b5fe",
         word: "biaya perbaikan",
         en: "repair cost",
         vi: "chi phí sửa chữa",
@@ -296,6 +305,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "BEE-a-ya per-BAI-kan",
       },
       {
+        cell_id: "a8dc452e-a62f-45a9-a6dd-3ed49c16b94f",
         word: "bukti foto",
         en: "photo evidence",
         vi: "bằng chứng ảnh",
@@ -304,6 +314,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "BOOK-tee FO-to",
       },
       {
+        cell_id: "7076b35b-a6c8-489f-aa71-97b31adf1510",
         word: "ditanggung",
         en: "covered; borne as a responsibility",
         vi: "được chịu/trả bởi",
@@ -312,6 +323,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "dee-TANG-goong",
       },
       {
+        cell_id: "991cbc43-ee1b-4928-ba4c-983a6a3c13f7",
         word: "penyewa",
         en: "tenant",
         vi: "người thuê",
@@ -322,36 +334,42 @@ export const lessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "d2207e83-b8d4-4121-b819-fbbe93642214",
         speaker: "Penyewa",
         text: "Selamat pagi, saya mau minta perbaikan untuk kamar saya.",
         vi: "Chào buổi sáng, tôi muốn yêu cầu sửa chữa cho phòng của tôi.",
         en: "Good morning, I would like to request a repair for my room.",
       },
       {
+        cell_id: "bf3796c3-b6fa-45c1-84a9-cef1564bd13a",
         speaker: "Pemilik rumah",
         text: "Ada masalah apa?",
         vi: "Có vấn đề gì vậy?",
         en: "What is the problem?",
       },
       {
+        cell_id: "2a774b95-2c8f-4a2e-b45d-b02caf82e2de",
         speaker: "Penyewa",
         text: "Pipa di bawah wastafel bocor sejak tadi malam. Saya sudah kirim bukti foto.",
         vi: "Ống nước dưới bồn rửa bị rò từ tối qua. Tôi đã gửi bằng chứng ảnh.",
         en: "The pipe under the sink has been leaking since last night. I have sent photo evidence.",
       },
       {
+        cell_id: "5b7d33ad-64e4-46d2-8491-7ce18c72ba2b",
         speaker: "Pemilik rumah",
         text: "Baik, saya akan hubungi tukang ledeng.",
         vi: "Được, tôi sẽ liên hệ thợ ống nước.",
         en: "All right, I will contact a plumber.",
       },
       {
+        cell_id: "91301657-3aea-45cb-a6af-5379b71e93ad",
         speaker: "Penyewa",
         text: "Kapan tukang bisa datang? Saya bisa menunggu antara jam dua sampai jam empat sore.",
         vi: "Khi nào thợ có thể đến? Tôi có thể chờ từ hai giờ đến bốn giờ chiều.",
         en: "When can the repair worker come? I can wait between two and four in the afternoon.",
       },
       {
+        cell_id: "4fc29864-a40f-4206-9b5b-37c298318ac6",
         speaker: "Pemilik rumah",
         text: "Saya kabari lagi setelah jadwal tukangnya pasti.",
         vi: "Tôi sẽ báo lại sau khi lịch thợ chắc chắn.",

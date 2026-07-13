@@ -18,6 +18,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   /** Indonesian word/phrase. */
   word: string;
   /** English meaning. */
@@ -33,6 +34,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   /** Indonesian line. */
   text: string;
@@ -243,6 +245,7 @@ export const constructionSiteSafetyLessons: IndonesianLesson[] = [
       "Useful patterns: `Jangan masuk...`, `Tolong beri tanda...`, `Kami harus melapor...`, `Saya belum boleh masuk...`. For safety, use `jangan` for prohibition, `wajib` for mandatory rules, and `belum boleh` for not-yet-allowed. Do not replace everything with `tidak`.",
     vocabulary: [
       {
+        cell_id: "8e775c20-ced4-429c-9f9a-cd5c1fea4969",
         word: "helm proyek",
         en: "construction helmet / hard hat",
         vi: "mũ bảo hộ công trình",
@@ -251,6 +254,7 @@ export const constructionSiteSafetyLessons: IndonesianLesson[] = [
         pronunciation_en: "helm PRO-yek",
       },
       {
+        cell_id: "cc1ffa17-e299-4136-b5ac-7cb7b9359834",
         word: "area bahaya",
         en: "danger zone",
         vi: "khu vực nguy hiểm",
@@ -259,6 +263,7 @@ export const constructionSiteSafetyLessons: IndonesianLesson[] = [
         pronunciation_en: "AH-re-ah BAH-hah-yah",
       },
       {
+        cell_id: "152666d5-2b97-4e38-8012-e2a5471dcf26",
         word: "mandor",
         en: "foreman / site supervisor",
         vi: "quản lý công trường",
@@ -267,6 +272,7 @@ export const constructionSiteSafetyLessons: IndonesianLesson[] = [
         pronunciation_en: "MAN-dor",
       },
       {
+        cell_id: "92c6169d-af4b-4bb7-92c4-13ad3df29e2d",
         word: "pekerja",
         en: "worker",
         vi: "công nhân, người lao động",
@@ -275,6 +281,7 @@ export const constructionSiteSafetyLessons: IndonesianLesson[] = [
         pronunciation_en: "pe-KER-jah",
       },
       {
+        cell_id: "44cf6b9f-e9e0-4f78-ab3e-29a2a9e5fe9e",
         word: "material jatuh",
         en: "falling material",
         vi: "vật liệu rơi",
@@ -283,6 +290,7 @@ export const constructionSiteSafetyLessons: IndonesianLesson[] = [
         pronunciation_en: "mah-te-ree-AHL jah-TOO",
       },
       {
+        cell_id: "68337ec9-600c-449f-a9b4-0deae47d91b1",
         word: "izin masuk",
         en: "entry permission",
         vi: "giấy phép vào, quyền vào",
@@ -291,6 +299,7 @@ export const constructionSiteSafetyLessons: IndonesianLesson[] = [
         pronunciation_en: "EE-zeen MAH-sook",
       },
       {
+        cell_id: "47c07ece-fba5-499e-953d-ea155f1273c5",
         word: "laporan insiden",
         en: "incident report",
         vi: "báo cáo sự cố",
@@ -299,6 +308,7 @@ export const constructionSiteSafetyLessons: IndonesianLesson[] = [
         pronunciation_en: "la-PO-ran in-SEE-den",
       },
       {
+        cell_id: "d2200ae4-90ae-42ef-b1af-1a17c7aa2fb2",
         word: "briefing keselamatan",
         en: "safety briefing",
         vi: "buổi phổ biến an toàn",
@@ -307,6 +317,7 @@ export const constructionSiteSafetyLessons: IndonesianLesson[] = [
         pronunciation_en: "BREE-fing ke-se-la-MAT-an",
       },
       {
+        cell_id: "cefd25c6-07c8-4ba2-bbf6-4f90e6a55a2e",
         word: "izin kerja",
         en: "work permit / work authorization",
         vi: "giấy phép làm việc",
@@ -315,6 +326,7 @@ export const constructionSiteSafetyLessons: IndonesianLesson[] = [
         pronunciation_en: "EE-zeen KER-jah",
       },
       {
+        cell_id: "67d9e3d0-5cf8-4929-b327-9e57f5e9d341",
         word: "berhati-hati",
         en: "be careful",
         vi: "cẩn thận",
@@ -325,36 +337,42 @@ export const constructionSiteSafetyLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "1dfb247d-630a-496e-a1c8-3795d18e5e73",
         speaker: "Mandor",
         text: "Semua pekerja harus pakai helm proyek sebelum masuk.",
         vi: "Tất cả công nhân phải đội mũ bảo hộ trước khi vào.",
         en: "All workers must wear a hard hat before entering.",
       },
       {
+        cell_id: "3dacebe6-e660-4fbf-8200-1753f5aaf791",
         speaker: "Pekerja",
         text: "Baik, Pak. Saya belum boleh masuk sebelum izin kerja keluar, ya?",
         vi: "Vâng, anh. Tôi chưa được phép vào trước khi giấy phép làm việc được cấp, phải không ạ?",
         en: "Okay, sir. I am not allowed to enter before the work permit is issued, right?",
       },
       {
+        cell_id: "a39437a1-6c73-48f0-88b2-d997b9bc9b92",
         speaker: "Mandor",
         text: "Betul. Area itu berbahaya karena ada material jatuh dari atas.",
         vi: "Đúng vậy. Khu đó nguy hiểm vì có vật liệu rơi từ trên xuống.",
         en: "Correct. That area is dangerous because material may fall from above.",
       },
       {
+        cell_id: "d05c9474-6160-4176-a742-bad538c7c3e0",
         speaker: "Pekerja",
         text: "Kalau saya melihat masalah, apakah saya langsung melapor ke supervisor?",
         vi: "Nếu tôi thấy có vấn đề, tôi báo trực tiếp cho giám sát luôn được không?",
         en: "If I see a problem, should I report directly to the supervisor?",
       },
       {
+        cell_id: "e93f2120-09ea-4635-8565-0be3066e53c6",
         speaker: "Mandor",
         text: "Ya, segera lapor dan jangan masuk ke area bahaya tanpa izin.",
         vi: "Có, hãy báo ngay và đừng vào khu vực nguy hiểm khi chưa được phép.",
         en: "Yes, report immediately and do not enter the danger zone without permission.",
       },
       {
+        cell_id: "aa5e5f03-a964-4eae-be26-ff1709bf0793",
         speaker: "Pekerja",
         text: "Baik. Saya akan cek lagi apakah semua pekerja sudah pakai APD.",
         vi: "Vâng. Tôi sẽ kiểm tra lại xem tất cả công nhân đã dùng đồ bảo hộ chưa.",

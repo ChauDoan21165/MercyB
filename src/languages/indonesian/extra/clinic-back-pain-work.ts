@@ -13,6 +13,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -22,6 +23,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -207,49 +209,55 @@ export const lessons: IndonesianLesson[] = [
     tip_advice_en:
       "Tip for Vietnamese speakers: in the clinic, use the pattern `Saya sakit punggung karena duduk terlalu lama`, `Punggung saya terasa kaku dan nyeri`, `Apakah saya perlu fisioterapi?`, `Saya butuh surat izin kerja`, `Saya akan kontrol ulang minggu depan`. Use `kontrol ulang` for follow-up visits and `obat nyeri` for pain medicine.",
     vocabulary: [
-      { word: "sakit punggung", en: "back pain", vi: "đau lưng", pos: "noun phrase", pronunciation_vi: "SA-kit PUNG-gung", pronunciation_en: "SA-kit POONG-goong" },
-      { word: "duduk lama", en: "sit for a long time", vi: "ngồi lâu", pos: "verb phrase", pronunciation_vi: "DU-duk LA-ma", pronunciation_en: "DOO-dook LAH-ma" },
-      { word: "dokter", en: "doctor", vi: "bác sĩ", pos: "noun", pronunciation_vi: "DOK-ter", pronunciation_en: "DOK-ter" },
-      { word: "fisioterapi", en: "physiotherapy", vi: "vật lý trị liệu", pos: "noun", pronunciation_vi: "fi-si-o-te-RA-pi", pronunciation_en: "fee-see-oh-teh-RAH-pee" },
-      { word: "obat nyeri", en: "pain medicine", vi: "thuốc giảm đau", pos: "noun phrase", pronunciation_vi: "O-bat NYE-ri", pronunciation_en: "OH-bat NYEH-ree" },
-      { word: "surat izin kerja", en: "work excuse note", vi: "giấy nghỉ làm", pos: "noun phrase", pronunciation_vi: "SU-rat I-zin KER-ja", pronunciation_en: "SOO-rat EE-zin KER-jah" },
-      { word: "latihan ringan", en: "light exercise", vi: "bài tập nhẹ", pos: "noun phrase", pronunciation_vi: "LA-ti-han RING-an", pronunciation_en: "LAH-tee-han REENG-an" },
-      { word: "kontrol ulang", en: "follow-up visit", vi: "tái khám", pos: "noun phrase", pronunciation_vi: "KON-trol U-lang", pronunciation_en: "KON-trohl OO-lang" },
-      { word: "kaku", en: "stiff", vi: "cứng", pos: "adjective", pronunciation_vi: "KA-ku", pronunciation_en: "KAH-koo" },
-      { word: "nyeri", en: "pain / aching", vi: "đau / nhức", pos: "adjective / noun", pronunciation_vi: "NYE-ri", pronunciation_en: "NYEH-ree" },
+      { cell_id: "960e3db2-381c-4cbc-9488-b16eddf5da33", word: "sakit punggung", en: "back pain", vi: "đau lưng", pos: "noun phrase", pronunciation_vi: "SA-kit PUNG-gung", pronunciation_en: "SA-kit POONG-goong" },
+      { cell_id: "e855350d-7939-4dfd-881b-a35bdac157ce", word: "duduk lama", en: "sit for a long time", vi: "ngồi lâu", pos: "verb phrase", pronunciation_vi: "DU-duk LA-ma", pronunciation_en: "DOO-dook LAH-ma" },
+      { cell_id: "158d444a-93ad-4151-9c6d-0ab3584443a9", word: "dokter", en: "doctor", vi: "bác sĩ", pos: "noun", pronunciation_vi: "DOK-ter", pronunciation_en: "DOK-ter" },
+      { cell_id: "7e05aec5-d8cc-444a-9c6c-46aa1e5aa187", word: "fisioterapi", en: "physiotherapy", vi: "vật lý trị liệu", pos: "noun", pronunciation_vi: "fi-si-o-te-RA-pi", pronunciation_en: "fee-see-oh-teh-RAH-pee" },
+      { cell_id: "2047e39c-ceec-4406-b885-94d96ff8976f", word: "obat nyeri", en: "pain medicine", vi: "thuốc giảm đau", pos: "noun phrase", pronunciation_vi: "O-bat NYE-ri", pronunciation_en: "OH-bat NYEH-ree" },
+      { cell_id: "9085e9da-2543-41e4-b095-cd1fefc50cfd", word: "surat izin kerja", en: "work excuse note", vi: "giấy nghỉ làm", pos: "noun phrase", pronunciation_vi: "SU-rat I-zin KER-ja", pronunciation_en: "SOO-rat EE-zin KER-jah" },
+      { cell_id: "a1ab401b-d502-42be-be90-505cc2f105dc", word: "latihan ringan", en: "light exercise", vi: "bài tập nhẹ", pos: "noun phrase", pronunciation_vi: "LA-ti-han RING-an", pronunciation_en: "LAH-tee-han REENG-an" },
+      { cell_id: "30d25424-21b7-480e-9d16-97daaaa1efdf", word: "kontrol ulang", en: "follow-up visit", vi: "tái khám", pos: "noun phrase", pronunciation_vi: "KON-trol U-lang", pronunciation_en: "KON-trohl OO-lang" },
+      { cell_id: "9bb236ca-d503-4ac8-8112-47b5cfcbad7e", word: "kaku", en: "stiff", vi: "cứng", pos: "adjective", pronunciation_vi: "KA-ku", pronunciation_en: "KAH-koo" },
+      { cell_id: "1fd1be70-c063-433c-896b-a2e36ad323a4", word: "nyeri", en: "pain / aching", vi: "đau / nhức", pos: "adjective / noun", pronunciation_vi: "NYE-ri", pronunciation_en: "NYEH-ree" },
     ],
     dialogue: [
       {
+        cell_id: "b1a2799c-2290-40fa-96ad-54d6c9cd299e",
         speaker: "Pasien",
         text: "Dok, saya sering sakit punggung karena duduk terlalu lama.",
         vi: "Bác sĩ ơi, tôi thường bị đau lưng vì ngồi quá lâu.",
         en: "Doctor, I often have back pain because I sit too long.",
       },
       {
+        cell_id: "00aa8edb-6229-4e79-912a-12262bfd98ff",
         speaker: "Dokter",
         text: "Baik, punggungnya terasa kaku atau nyeri menjalar?",
         vi: "Được rồi, lưng có cảm thấy cứng hay đau lan không?",
         en: "Okay, does your back feel stiff or is the pain radiating?",
       },
       {
+        cell_id: "b0733b53-579c-4007-b5a7-39d63ab3ee06",
         speaker: "Pasien",
         text: "Iya, saya juga butuh surat izin kerja untuk dua hari.",
         vi: "Vâng, tôi cũng cần giấy nghỉ làm trong hai ngày.",
         en: "Yes, I also need a work excuse note for two days.",
       },
       {
+        cell_id: "223ec9e1-aec9-4e9b-8731-9f8513b258ab",
         speaker: "Dokter",
         text: "Saya sarankan fisioterapi dan obat nyeri untuk sementara.",
         vi: "Tôi khuyên vật lý trị liệu và thuốc giảm đau tạm thời.",
         en: "I recommend physiotherapy and temporary pain medicine.",
       },
       {
+        cell_id: "0fc15ddb-2ef7-440d-bf28-9f0643617b8c",
         speaker: "Pasien",
         text: "Kapan saya harus kontrol ulang?",
         vi: "Khi nào tôi nên tái khám?",
         en: "When should I come back for a follow-up?",
       },
       {
+        cell_id: "36487505-f8d4-45bc-a714-67cbbc40ebe1",
         speaker: "Dokter",
         text: "Minggu depan, lalu kita lihat apakah keluhannya membaik.",
         vi: "Tuần sau, rồi chúng ta xem triệu chứng có đỡ hơn không.",
