@@ -49,6 +49,25 @@ async function attach(testInfo: TestInfo, r: JourneyResult): Promise<void> {
   });
 }
 
+async function pinSyntheticLessonState(page: import("@playwright/test").Page): Promise<void> {
+  await page.route("**/rest/v1/conversation_events?**", async (route) => {
+    await route.fulfill({
+      status: 200,
+      contentType: "application/json",
+      headers: { "content-range": "0-0/0" },
+      body: "[]",
+    });
+  });
+  await page.route("**/rest/v1/conversations?**", async (route) => {
+    await route.fulfill({
+      status: 200,
+      contentType: "application/json",
+      headers: { "content-range": "0-0/0" },
+      body: route.request().method() === "HEAD" ? "" : "[]",
+    });
+  });
+}
+
 /**
  * Authenticate via the Supabase auth API (NOT the sign-in UI) and inject the
  * session into the browser context the way supabase-js persists it, BEFORE
@@ -153,6 +172,7 @@ test("(a) valid credential yields a working authed session (no bounce)", async (
 test("(b/c/d) correction → feedback tap → row lands with rule_or_detector_id", async ({ page, context }, testInfo) => {
   const { accessToken } = await seedSession(context);
   const seededProbe = selectSeededCorrectionProbe();
+  await pinSyntheticLessonState(page);
 
   // (b) submit a seeded-error sentence in grammar mode and get a correction.
   const tB = Date.now();
