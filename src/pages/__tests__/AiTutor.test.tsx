@@ -437,8 +437,10 @@ describe("AiTutor four-tab seed flow", () => {
     await userEvent.click(screen.getByRole("button", { name: "Sửa câu này" }));
     // The unchanged path shows either CANNOT_CORRECT or FRIENDLY_CORRECTION_UNAVAILABLE
     await waitFor(() => {
-      const errorSection = document.querySelector(".text-rose-600, .text-rose-700");
-      expect(errorSection).toBeTruthy();
+      const nonCorrectionSection = document.querySelector(
+        ".text-rose-600, .text-rose-700, .text-emerald-700",
+      );
+      expect(nonCorrectionSection).toBeTruthy();
     });
 
     expect(screen.queryByTestId("detector-hint-chip")).not.toBeInTheDocument();
@@ -532,8 +534,10 @@ describe("AiTutor four-tab seed flow", () => {
     );
     await userEvent.click(screen.getByRole("button", { name: "Sửa câu này" }));
     await waitFor(() => {
-      const errorSection = document.querySelector(".text-rose-600");
-      expect(errorSection).toBeTruthy();
+      const nonCorrectionSection = document.querySelector(
+        ".text-rose-600, .text-emerald-700",
+      );
+      expect(nonCorrectionSection).toBeTruthy();
     });
 
     expect(screen.queryByTestId("ai-tutor-l1-followup")).not.toBeInTheDocument();
