@@ -8,6 +8,7 @@ import {
 } from "../../api/_lib/deepseekSpeak";
 import {
   buildAiConversationTurn,
+  getAiConversationFailureDetail,
   normalizeAiConversationHistory,
 } from "../../api/_lib/aiConversation";
 import {
@@ -318,7 +319,7 @@ export async function onRequestPost(context: PagesContext): Promise<Response> {
       }
       return failureJson(context, "/api/mercy-ai", mode, 502, "ai_conversation_failed", {
         error: err instanceof Error ? err.message : "AI conversation failed",
-      });
+      }, getAiConversationFailureDetail(err));
     } finally {
       clearTimeout(turnTimer);
     }

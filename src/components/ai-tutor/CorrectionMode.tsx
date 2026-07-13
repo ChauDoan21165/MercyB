@@ -15,6 +15,7 @@ import { trackEvent } from "@/lib/analytics";
 type CorrectionResult = TutorTurn & {
   grammarTip: string;
   practicePrompt: string;
+  appliedRuleIds?: string[];
 };
 
 type Props = {
@@ -77,12 +78,13 @@ export default function CorrectionMode({
   const register = result ? detectRegisterError({ learnerText: result.userText }) : { matched: false as const };
   const registerTag = register.matched ? register.tag : null;
 
+  const fallbackRuleId = result?.appliedRuleIds?.find((id) => id.trim()) ?? null;
   // Provenance for the displayed correction, used to gate + attribute the
   // learner feedback thumbs. Prefer the register detector (its explanation is a
-  // dedicated correction block), fall back to the L1 pattern chip. Null when the
-  // correction carries no rule/detector id → CorrectionFeedbackButtons renders
-  // nothing (no id, no buttons).
-  const correctionRuleId = registerTag ?? detectorHint?.tag ?? null;
+  // dedicated correction block), fall back to the L1 pattern chip, then to the
+  // local/AI correction rule id carried on the rendered result. Null only when
+  // the correction truly carries no provenance.
+  const correctionRuleId = registerTag ?? detectorHint?.tag ?? fallbackRuleId;
   useEffect(() => {
     // Telemetry: emit register_correction_shown with the tag so the team can
     // measure how often each surface-detectable register pattern fires in prod.

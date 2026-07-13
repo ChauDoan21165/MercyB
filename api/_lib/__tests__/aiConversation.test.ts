@@ -3,6 +3,7 @@ import {
   buildAiConversationSystemPrompt,
   buildAiConversationTurn,
   buildAiConversationUserPrompt,
+  getAiConversationFailureDetail,
 } from "../aiConversation";
 
 const originalFetch = global.fetch;
@@ -168,6 +169,34 @@ describe("AI conversation prompt template", () => {
       history: [],
       turnCount: 0,
     })).rejects.toThrow("OpenAI response used canned Mercy reply");
+  });
+
+  it("exposes structured provider failure detail for R2 logwatch rows", async () => {
+    global.fetch = vi.fn().mockResolvedValueOnce({
+      ok: false,
+      status: 503,
+      text: async () => '{"error":{"message":"upstream overloaded"}}',
+    } as Response);
+
+    let thrown: unknown;
+    try {
+      await buildAiConversationTurn({
+        scenarioId: "job-interview",
+        learnerText: "I worked in a cafe.",
+        history: [],
+        turnCount: 0,
+      });
+    } catch (error) {
+      thrown = error;
+    }
+
+    expect(thrown).toBeTruthy();
+    expect(getAiConversationFailureDetail(thrown)).toMatchObject({
+      provider: "openai",
+      providerStatus: 503,
+      upstreamBody: '{"error":{"message":"upstream overloaded"}}',
+      failureStage: "provider_response",
+    });
   });
 
   it("rejects a request past the 50-turn cap before calling OpenAI", async () => {
