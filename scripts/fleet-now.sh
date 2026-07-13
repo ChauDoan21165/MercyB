@@ -94,6 +94,10 @@ first_web_url() {
   sed -n 's/.*"web_url"[[:space:]]*:[[:space:]]*"\([^"]*\)".*/\1/p' | head -n 1
 }
 
+pipeline_web_url() {
+  grep -o 'https://gitlab.com/[^"]*/-/pipelines/[0-9][0-9]*' | head -n 1
+}
+
 gitlab_token() {
   printf '%s' "${GITLAB_TOKEN:-${GLAB_TOKEN:-}}"
 }
@@ -162,7 +166,7 @@ trigger_r0() {
   fi
   rm -f "$body"
   sleep 3
-  gitlab_get "projects/${PROJECT_ENC}/pipelines?source=schedule&per_page=1" | first_web_url
+  gitlab_get "projects/${PROJECT_ENC}/pipelines?source=schedule&per_page=1" | pipeline_web_url
 }
 
 trigger_r3() {
@@ -192,7 +196,7 @@ trigger_r3() {
     rm -f "$body"
     return 0
   fi
-  first_web_url < "$body"
+  pipeline_web_url < "$body"
   rm -f "$body"
 }
 
