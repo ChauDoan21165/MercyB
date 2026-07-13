@@ -87,6 +87,7 @@ describe("pages function failure logging", () => {
       error_signature: "provider_failed",
       message: "provider_failed status=502 UpstreamError provider=openai provider_status=502",
       request_id: "req-test-2",
+      user_id: null,
       detail: {
         mode: "sentence-correction",
         provider: "openai",
@@ -98,6 +99,48 @@ describe("pages function failure logging", () => {
 
     vi.unstubAllGlobals();
     errorSpy.mockRestore();
+  });
+
+  it("persists a safe authenticated user id outside the detail blob", async () => {
+    vi.spyOn(console, "error").mockImplementation(() => undefined);
+    const fetchMock = vi.fn().mockResolvedValue(new Response(null, { status: 201 }));
+    vi.stubGlobal("fetch", fetchMock);
+    const waitUntil = vi.fn();
+    const context = {
+      request: new Request("https://example.test/api/mercy-ai"),
+      env: {
+        SUPABASE_URL: "https://project.supabase.co",
+        SUPABASE_ANON_KEY: "anon-key",
+      },
+      waitUntil,
+    } as PagesContext & { waitUntil: (promise: Promise<unknown>) => void };
+
+    failureJson(
+      context,
+      "/api/mercy-ai",
+      "sentence-correction",
+      500,
+      "correction_failed",
+      { error: "correction_failed" },
+      {
+        userId: "63e289e1-17db-4a60-94a2-427cccc1a849",
+        provider: "openai",
+        failureStage: "provider_request",
+      },
+    );
+
+    await waitUntil.mock.calls[0]?.[0];
+    const [, init] = fetchMock.mock.calls[0] as [string, RequestInit];
+    const body = JSON.parse(String(init.body));
+    expect(body.user_id).toBe("63e289e1-17db-4a60-94a2-427cccc1a849");
+    expect(body.detail).toEqual({
+      mode: "sentence-correction",
+      provider: "openai",
+      failureStage: "provider_request",
+    });
+
+    vi.unstubAllGlobals();
+    vi.restoreAllMocks();
   });
 
   it("does not throw or schedule waitUntil when fetch returns a non-thenable", async () => {

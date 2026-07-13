@@ -53,6 +53,20 @@ type MercyAiBody = {
 
 const requestLog = new Map<string, number[]>();
 
+function boundedDetail(value: string, max = 500): string {
+  return value.replace(/\s+/g, " ").trim().slice(0, max);
+}
+
+function errorDetail(error: unknown): Record<string, string> {
+  if (error instanceof Error) {
+    return {
+      errorName: error.name,
+      errorMessage: boundedDetail(error.message || "unknown_error"),
+    };
+  }
+  return { errorMessage: boundedDetail(String(error ?? "unknown_error")) };
+}
+
 function isRateLimited(key: string, limit = 12, windowMs = 60_000): boolean {
   const now = Date.now();
   const recent = (requestLog.get(key) ?? []).filter((ts) => ts > now - windowMs);
@@ -167,15 +181,26 @@ export async function onRequestPost(context: PagesContext): Promise<Response> {
 
   const body = await readJsonBody<MercyAiBody>(request);
   const mode = norm(body.mode) || "host";
+  const failure = (
+    failureMode: string,
+    status: number,
+    errorClass: string,
+    payload: unknown,
+    detail: Record<string, string | number | boolean | null | undefined> = {},
+  ): Response => failureJson(context, "/api/mercy-ai", failureMode, status, errorClass, payload, {
+    ...detail,
+    userId: user.id,
+  });
+
   if (norm(body.mode) === "speak-follow-up") {
     const transcript = norm(body.transcript || body.userText || body.message || body.text);
     if (!transcript) {
-      return failureJson(context, "/api/mercy-ai", mode, 400, "missing_transcript", {
+      return failure(mode, 400, "missing_transcript", {
         error: "Missing transcript",
       });
     }
     if (transcript.length > 1000) {
-      return failureJson(context, "/api/mercy-ai", mode, 400, "input_too_long", {
+      return failure(mode, 400, "input_too_long", {
         error: "Input too long",
       });
     }
@@ -228,28 +253,28 @@ export async function onRequestPost(context: PagesContext): Promise<Response> {
         serviceKey: cfServiceKey,
       });
       if (!freeAccess.flagOn || !freeAccess.allowed) {
-        return failureJson(context, "/api/mercy-ai", mode, 403, "premium_required", {
+        return failure(mode, 403, "premium_required", {
           error: "Premium required",
         });
       }
     }
 
     if (!openAiKey) {
-      return failureJson(context, "/api/mercy-ai", mode, 500, "missing_openai_key", {
+      return failure(mode, 500, "missing_openai_key", {
         error: "Missing OPENAI_API_KEY",
       });
     }
 
     const learnerText = asString(body.learnerText || body.userText || body.message || body.text, 1200);
     if (!learnerText) {
-      return failureJson(context, "/api/mercy-ai", mode, 400, "missing_learner_text", {
+      return failure(mode, 400, "missing_learner_text", {
         error: "Missing learnerText",
       });
     }
 
     const turnCount = Number(body.turnCount ?? 0);
     if (Number.isFinite(turnCount) && turnCount >= 50) {
-      return failureJson(context, "/api/mercy-ai", mode, 400, "session_turn_cap", {
+      return failure(mode, 400, "session_turn_cap", {
         error: "Session turn cap reached",
       });
     }
@@ -312,12 +337,12 @@ export async function onRequestPost(context: PagesContext): Promise<Response> {
         turnAbort.signal.aborted ||
         (err instanceof Error && /timed out/i.test(err.message));
       if (timedOut) {
-        return failureJson(context, "/api/mercy-ai", mode, 504, "ai_conversation_timeout", {
+        return failure(mode, 504, "ai_conversation_timeout", {
           error: "AI conversation timed out",
           timeout: true,
-        });
+        }, { timeout: true });
       }
-      return failureJson(context, "/api/mercy-ai", mode, 502, "ai_conversation_failed", {
+      return failure(mode, 502, "ai_conversation_failed", {
         error: err instanceof Error ? err.message : "AI conversation failed",
       }, getAiConversationFailureDetail(err));
     } finally {
@@ -328,12 +353,12 @@ export async function onRequestPost(context: PagesContext): Promise<Response> {
   if (norm(body.mode) === "sentence-correction") {
     const learnerText = asString(body.learnerText || body.userText || body.text, 500);
     if (!learnerText) {
-      return failureJson(context, "/api/mercy-ai", mode, 400, "missing_learner_text", {
+      return failure(mode, 400, "missing_learner_text", {
         error: "Missing learnerText",
       });
     }
     if (!openAiKey) {
-      return failureJson(context, "/api/mercy-ai", mode, 500, "missing_openai_key", {
+      return failure(mode, 500, "missing_openai_key", {
         error: "Missing OPENAI_API_KEY",
       });
     }
@@ -367,7 +392,9 @@ On low-confidence: {"corrected":"","explanation":"${explainLang === "vi" ? viAbs
     const correctionTimeoutMs = Number(envValue(env, "MERCY_AI_CORRECTION_TIMEOUT_MS")) || 12_000;
     const correctionAbort = new AbortController();
     const correctionTimer = setTimeout(() => correctionAbort.abort(), correctionTimeoutMs);
+    let failureStage = "provider_request";
     try {
+      failureStage = "provider_request";
       const corrResponse = await fetch("https://api.openai.com/v1/chat/completions", {
         method: "POST",
         headers: {
@@ -387,20 +414,30 @@ On low-confidence: {"corrected":"","explanation":"${explainLang === "vi" ? viAbs
         signal: correctionAbort.signal,
       });
       if (!corrResponse.ok) {
-        return failureJson(context, "/api/mercy-ai", mode, 500, "correction_provider_failed", {
+        const upstreamBody = await corrResponse.text().catch(() => "");
+        return failure(mode, 500, "correction_provider_failed", {
           error: "correction_failed",
-        }, { providerStatus: corrResponse.status });
+        }, {
+          provider: "openai",
+          providerStatus: corrResponse.status,
+          upstreamStatus: corrResponse.status,
+          upstreamBody: boundedDetail(upstreamBody),
+          failureStage: "provider_response",
+        });
       }
+      failureStage = "provider_json";
       const corrData = await corrResponse.json() as {
         choices?: Array<{ message?: { content?: string } }>;
         usage?: { prompt_tokens?: number; completion_tokens?: number };
       };
       const raw = corrData.choices?.[0]?.message?.content ?? "{}";
       let parsed: { corrected?: string; explanation?: string; grammarTip?: string; confident?: boolean } = {};
+      failureStage = "model_json";
       try { parsed = JSON.parse(raw); } catch { /* leave empty */ }
       const confident = parsed.confident !== false;
       // Additive: VND-costed spend to ai_usage_logs. Only when usage present
       // (no fabricated numbers). Fire-and-forget.
+      failureStage = "usage_logging";
       if (corrData.usage) {
         logMercyAiUsage(context, {
           userId: user.id,
@@ -421,13 +458,22 @@ On low-confidence: {"corrected":"","explanation":"${explainLang === "vi" ? viAbs
         correctionAbort.signal.aborted ||
         (err instanceof Error && /timed out|abort/i.test(err.message));
       if (timedOut) {
-        return failureJson(context, "/api/mercy-ai", mode, 504, "correction_timeout", {
+        return failure(mode, 504, "correction_timeout", {
           error: "Correction timed out",
           timeout: true,
+        }, {
+          provider: "openai",
+          failureStage,
+          timeout: true,
+          ...errorDetail(err),
         });
       }
-      return failureJson(context, "/api/mercy-ai", mode, 500, "correction_failed", {
+      return failure(mode, 500, "correction_failed", {
         error: "correction_failed",
+      }, {
+        provider: "openai",
+        failureStage,
+        ...errorDetail(err),
       });
     } finally {
       clearTimeout(correctionTimer);
@@ -435,7 +481,7 @@ On low-confidence: {"corrected":"","explanation":"${explainLang === "vi" ? viAbs
   }
 
   if (!openAiKey) {
-    return failureJson(context, "/api/mercy-ai", mode, 500, "missing_openai_key", {
+    return failure(mode, 500, "missing_openai_key", {
       error: "Missing OPENAI_API_KEY",
     });
   }
@@ -443,7 +489,7 @@ On low-confidence: {"corrected":"","explanation":"${explainLang === "vi" ? viAbs
   const userText = asString(body.userText || body.message || body.text || body.prompt, 2000);
   const lang = body.lang === "vi" ? "vi" : "en";
   if (!userText) {
-    return failureJson(context, "/api/mercy-ai", mode, 400, "missing_user_text", {
+    return failure(mode, 400, "missing_user_text", {
       error: "Missing userText",
     });
   }
@@ -505,9 +551,16 @@ Rules:
   });
 
   if (!response.ok) {
-    return failureJson(context, "/api/mercy-ai", mode, 502, "host_provider_failed", {
+    const upstreamBody = await response.text().catch(() => "");
+    return failure(mode, 502, "host_provider_failed", {
       error: `OpenAI ${response.status}`,
-    }, { providerStatus: response.status });
+    }, {
+      provider: "openai",
+      providerStatus: response.status,
+      upstreamStatus: response.status,
+      upstreamBody: boundedDetail(upstreamBody),
+      failureStage: "provider_response",
+    });
   }
   const data = await response.json() as {
     choices?: Array<{ message?: { content?: string } }>;
