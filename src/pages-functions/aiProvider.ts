@@ -9,9 +9,15 @@ export type ChatJsonResult = {
   json: Record<string, unknown>;
   raw: string;
   provider: AiProvider;
+  model?: string;
   latencyMs: number;
   attempts: AiProvider[];
   errorKind?: AiErrorKind;
+  providerErrorKind?: AiErrorKind;
+  failedProvider?: ConfiguredAiProvider;
+  providerStatus?: number;
+  upstreamBody?: string;
+  usage?: TokenUsage;
 };
 
 export type ChatJsonOpts = {
@@ -28,8 +34,14 @@ export type ChatJsonOpts = {
 };
 
 type ProviderOutcome =
-  | { kind: "ok"; raw: string }
-  | { kind: "fail"; status?: number; isAbort?: boolean; threw?: boolean };
+  | { kind: "ok"; raw: string; usage?: TokenUsage; model: string }
+  | { kind: "fail"; status?: number; isAbort?: boolean; threw?: boolean; upstreamBody?: string };
+
+export type TokenUsage = {
+  inputTokens: number;
+  outputTokens: number;
+  totalTokens: number;
+};
 
 const DEFAULT_TIMEOUT_MS = 15_000;
 const DEFAULT_OPENAI_MODEL = "gpt-4o-mini";
@@ -38,6 +50,40 @@ const DEFAULT_GEMINI_MODEL = "gemini-2.5-flash";
 const DEFAULT_TEMPERATURE = 0.15;
 const DEFAULT_MAX_TOKENS = 800;
 const DEFAULT_PROVIDER_ORDER: readonly ConfiguredAiProvider[] = ["openai", "gemini"];
+
+function extractOpenAiUsage(data: {
+  usage?: { prompt_tokens?: unknown; completion_tokens?: unknown; total_tokens?: unknown };
+}): TokenUsage | undefined {
+  const inputTokens = typeof data.usage?.prompt_tokens === "number" ? data.usage.prompt_tokens : 0;
+  const outputTokens = typeof data.usage?.completion_tokens === "number" ? data.usage.completion_tokens : 0;
+  const totalTokens = typeof data.usage?.total_tokens === "number"
+    ? data.usage.total_tokens
+    : inputTokens + outputTokens;
+  return inputTokens || outputTokens || totalTokens
+    ? { inputTokens, outputTokens, totalTokens }
+    : undefined;
+}
+
+function extractGeminiUsage(data: {
+  usageMetadata?: {
+    promptTokenCount?: unknown;
+    candidatesTokenCount?: unknown;
+    totalTokenCount?: unknown;
+  };
+}): TokenUsage | undefined {
+  const inputTokens = typeof data.usageMetadata?.promptTokenCount === "number"
+    ? data.usageMetadata.promptTokenCount
+    : 0;
+  const outputTokens = typeof data.usageMetadata?.candidatesTokenCount === "number"
+    ? data.usageMetadata.candidatesTokenCount
+    : 0;
+  const totalTokens = typeof data.usageMetadata?.totalTokenCount === "number"
+    ? data.usageMetadata.totalTokenCount
+    : inputTokens + outputTokens;
+  return inputTokens || outputTokens || totalTokens
+    ? { inputTokens, outputTokens, totalTokens }
+    : undefined;
+}
 
 function shouldFailover(reason: { status?: number; isAbort?: boolean; threw?: boolean }): boolean {
   if (reason.isAbort || reason.threw) return true;
@@ -49,6 +95,13 @@ function errorKindFor(reason: { status?: number; isAbort?: boolean; threw?: bool
   if (reason.isAbort) return "timeout";
   if (reason.status === 429) return "rate_limit";
   return "upstream_error";
+}
+
+function isAbortError(err: unknown): boolean {
+  return typeof err === "object" &&
+    err !== null &&
+    "name" in err &&
+    String((err as { name?: unknown }).name) === "AbortError";
 }
 
 async function callOpenAi(
@@ -77,14 +130,26 @@ async function callOpenAi(
       }),
       signal,
     });
-    if (!response.ok) return { kind: "fail", status: response.status };
+    if (!response.ok) {
+      return {
+        kind: "fail",
+        status: response.status,
+        upstreamBody: await response.text().catch(() => ""),
+      };
+    }
 
     const data = (await response.json()) as {
       choices?: Array<{ message?: { content?: string } }>;
+      usage?: { prompt_tokens?: unknown; completion_tokens?: unknown; total_tokens?: unknown };
     };
-    return { kind: "ok", raw: data.choices?.[0]?.message?.content ?? "" };
+    return {
+      kind: "ok",
+      raw: data.choices?.[0]?.message?.content ?? "",
+      model: opts.openaiModel ?? DEFAULT_OPENAI_MODEL,
+      usage: extractOpenAiUsage(data),
+    };
   } catch (err) {
-    const isAbort = err instanceof Error && err.name === "AbortError";
+    const isAbort = isAbortError(err);
     return { kind: "fail", isAbort, threw: !isAbort };
   }
 }
@@ -116,14 +181,26 @@ async function callDeepSeek(
       }),
       signal,
     });
-    if (!response.ok) return { kind: "fail", status: response.status };
+    if (!response.ok) {
+      return {
+        kind: "fail",
+        status: response.status,
+        upstreamBody: await response.text().catch(() => ""),
+      };
+    }
 
     const data = (await response.json()) as {
       choices?: Array<{ message?: { content?: string } }>;
+      usage?: { prompt_tokens?: unknown; completion_tokens?: unknown; total_tokens?: unknown };
     };
-    return { kind: "ok", raw: data.choices?.[0]?.message?.content ?? "" };
+    return {
+      kind: "ok",
+      raw: data.choices?.[0]?.message?.content ?? "",
+      model: opts.deepseekModel ?? DEFAULT_DEEPSEEK_MODEL,
+      usage: extractOpenAiUsage(data),
+    };
   } catch (err) {
-    const isAbort = err instanceof Error && err.name === "AbortError";
+    const isAbort = isAbortError(err);
     return { kind: "fail", isAbort, threw: !isAbort };
   }
 }
@@ -155,18 +232,31 @@ async function callGemini(
       }),
       signal,
     });
-    if (!response.ok) return { kind: "fail", status: response.status };
+    if (!response.ok) {
+      return {
+        kind: "fail",
+        status: response.status,
+        upstreamBody: await response.text().catch(() => ""),
+      };
+    }
 
     const data = (await response.json()) as {
       candidates?: Array<{ content?: { parts?: Array<{ text?: string }> } }>;
+      usageMetadata?: {
+        promptTokenCount?: unknown;
+        candidatesTokenCount?: unknown;
+        totalTokenCount?: unknown;
+      };
     };
     const parts = data.candidates?.[0]?.content?.parts;
     return {
       kind: "ok",
       raw: Array.isArray(parts) ? parts.map((part) => part.text ?? "").join("") : "",
+      model,
+      usage: extractGeminiUsage(data),
     };
   } catch (err) {
-    const isAbort = err instanceof Error && err.name === "AbortError";
+    const isAbort = isAbortError(err);
     return { kind: "fail", isAbort, threw: !isAbort };
   }
 }
@@ -249,7 +339,16 @@ export async function chatJsonWithFailover(opts: ChatJsonOpts): Promise<ChatJson
       const parsed = parseJson(outcome.raw);
       const latencyMs = Date.now() - startedAt;
       if (parsed.ok) {
-        return { ok: true, json: parsed.json, raw: outcome.raw, provider, latencyMs, attempts };
+        return {
+          ok: true,
+          json: parsed.json,
+          raw: outcome.raw,
+          provider,
+          model: outcome.model,
+          latencyMs,
+          attempts,
+          usage: outcome.usage,
+        };
       }
       return {
         ok: false,
@@ -272,10 +371,15 @@ export async function chatJsonWithFailover(opts: ChatJsonOpts): Promise<ChatJson
         latencyMs: Date.now() - startedAt,
         attempts,
         errorKind: errorKindFor(outcome),
+        providerErrorKind: errorKindFor(outcome),
+        failedProvider: provider,
+        providerStatus: outcome.status,
+        upstreamBody: outcome.upstreamBody,
       };
     }
   }
 
+  const failedProvider = attempts[attempts.length - 1] as ConfiguredAiProvider | undefined;
   return {
     ok: false,
     json: {},
@@ -284,5 +388,9 @@ export async function chatJsonWithFailover(opts: ChatJsonOpts): Promise<ChatJson
     latencyMs: Date.now() - startedAt,
     attempts,
     errorKind: lastOutcome && !missingFallbackAfterFailure ? errorKindFor(lastOutcome) : "no_key",
+    providerErrorKind: lastOutcome ? errorKindFor(lastOutcome) : undefined,
+    failedProvider,
+    providerStatus: lastOutcome?.status,
+    upstreamBody: lastOutcome?.upstreamBody,
   };
 }

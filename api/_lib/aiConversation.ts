@@ -1,3 +1,5 @@
+import { chatJsonWithFailover } from "../../src/pages-functions/aiProvider";
+
 export type AiConversationRole = "learner" | "assistant";
 
 export type AiConversationHistoryTurn = {
@@ -41,6 +43,8 @@ export type AiConversationMessage = {
 
 export type AiConversationEnv = {
   OPENAI_API_KEY?: string;
+  DEEPSEEK_API_KEY?: string;
+  GEMINI_API_KEY?: string;
 };
 
 export type AiConversationScenarioInput = {
@@ -67,13 +71,13 @@ export type AiConversationResponse = {
     totalTokens: number;
     estimatedUsd: number;
   };
-  provider: "openai";
+  provider: "openai" | "deepseek" | "gemini";
   model: string;
   correctionGateModel: string;
 };
 
 export type AiConversationFailureDetail = {
-  provider?: "openai";
+  provider?: "openai" | "deepseek" | "gemini" | "none";
   providerStatus?: number;
   errorName?: string;
   errorMessage?: string;
@@ -303,24 +307,24 @@ export function buildCorrectionGatePrompt(params: {
 }
 
 export async function buildAiConversationTurn(input: AiConversationRequest): Promise<AiConversationResponse> {
-  const apiKey = input.env?.OPENAI_API_KEY ?? fallbackProcessEnv().OPENAI_API_KEY;
-  if (!apiKey) throw new Error("Missing OPENAI_API_KEY");
+  const env = input.env ?? fallbackProcessEnv();
+  if (!env.OPENAI_API_KEY && !env.DEEPSEEK_API_KEY && !env.GEMINI_API_KEY) {
+    throw new Error("Missing AI provider key");
+  }
   if (!input.learnerText.trim()) throw new Error("Missing learnerText");
   if (input.turnCount >= MAX_TURNS) throw new Error("Session turn cap reached");
 
   const scenario = normalizeScenario(input.scenario, input.scenarioId);
   const system = buildAiConversationSystemPrompt(scenario);
   const user = buildAiConversationUserPrompt(input);
-  const draftData = await callOpenAiJson<DraftResponse>({
-    apiKey,
-    model: TURN_MODEL,
-    messages: [
-      { role: "developer", content: system },
-      { role: "user", content: user },
-    ],
+  const draftData = await callProviderJson<DraftResponse>({
+    env,
+    systemPrompt: system,
+    userMessage: user,
+    openaiModel: TURN_MODEL,
     temperature: 0.35,
     maxTokens: 380,
-    signal: input.signal,
+    timeoutMs: 12_000,
   });
 
   const draft = draftData.value;
@@ -330,27 +334,31 @@ export async function buildAiConversationTurn(input: AiConversationRequest): Pro
     : null;
 
   let gateUsage = emptyUsage();
-  if (candidate) {
-    const gateData = await callOpenAiJson<GateResponse>({
-      apiKey,
-      model: CORRECTION_GATE_MODEL,
-      messages: [
-        { role: "developer", content: "You are a strict language-correction trust floor." },
-        { role: "user", content: buildCorrectionGatePrompt({ learnerText: input.learnerText, correction: candidate }) },
-      ],
-      temperature: 0,
-      maxTokens: 80,
-      signal: input.signal,
-    });
-    gateUsage = gateData.usage;
-    if (gateData.value.accept === true) {
-      correction = {
-        original: candidate.original.trim(),
-        corrected: candidate.corrected.trim(),
-        explanationVi: candidate.explanationVi.trim(),
-        interferencePattern: candidate.interferencePattern.trim(),
-        confidence: "high",
-      };
+  if (candidate && env.OPENAI_API_KEY) {
+    try {
+      const gateData = await callOpenAiJson<GateResponse>({
+        apiKey: env.OPENAI_API_KEY,
+        model: CORRECTION_GATE_MODEL,
+        messages: [
+          { role: "developer", content: "You are a strict language-correction trust floor." },
+          { role: "user", content: buildCorrectionGatePrompt({ learnerText: input.learnerText, correction: candidate }) },
+        ],
+        temperature: 0,
+        maxTokens: 80,
+        signal: input.signal,
+      });
+      gateUsage = gateData.usage;
+      if (gateData.value.accept === true) {
+        correction = {
+          original: candidate.original.trim(),
+          corrected: candidate.corrected.trim(),
+          explanationVi: candidate.explanationVi.trim(),
+          interferencePattern: candidate.interferencePattern.trim(),
+          confidence: "high",
+        };
+      }
+    } catch (err) {
+      console.warn("[aiConversation] correction gate failed; returning turn without correction", err);
     }
   }
 
@@ -365,8 +373,8 @@ export async function buildAiConversationTurn(input: AiConversationRequest): Pro
     correction,
     summary: input.turnCount + 1 >= 4 ? buildSummary(historyWithNext, scenario) : null,
     cost: estimateCost(addUsage(draftData.usage, gateUsage)),
-    provider: "openai",
-    model: TURN_MODEL,
+    provider: draftData.provider,
+    model: draftData.model || TURN_MODEL,
     correctionGateModel: CORRECTION_GATE_MODEL,
   };
 }
@@ -514,6 +522,51 @@ async function callOpenAiJson<T>(params: {
       promptTokens: data.usage?.prompt_tokens ?? 0,
       completionTokens: data.usage?.completion_tokens ?? 0,
       totalTokens: data.usage?.total_tokens ?? 0,
+    },
+  };
+}
+
+async function callProviderJson<T>(params: {
+  env: AiConversationEnv;
+  systemPrompt: string;
+  userMessage: string;
+  openaiModel: string;
+  temperature: number;
+  maxTokens: number;
+  timeoutMs: number;
+}): Promise<{
+  value: T;
+  usage: Usage;
+  provider: "openai" | "deepseek" | "gemini";
+  model?: string;
+}> {
+  const result = await chatJsonWithFailover({
+    env: params.env,
+    systemPrompt: params.systemPrompt,
+    userMessage: params.userMessage,
+    openaiModel: params.openaiModel,
+    providerOrder: ["openai", "deepseek", "gemini"],
+    temperature: params.temperature,
+    maxTokens: params.maxTokens,
+    timeoutMs: params.timeoutMs,
+  });
+  if (!result.ok || result.provider === "none") {
+    throw new AiConversationError("AI conversation provider failed", {
+      provider: result.failedProvider ?? result.provider,
+      providerStatus: result.providerStatus,
+      errorMessage: result.errorKind ?? "unknown_provider_failure",
+      upstreamBody: boundedDetail(result.upstreamBody || result.raw),
+      failureStage: result.errorKind === "parse_error" ? "parse" : "provider_response",
+    });
+  }
+  return {
+    value: result.json as T,
+    provider: result.provider,
+    model: result.model,
+    usage: {
+      promptTokens: result.usage?.inputTokens ?? 0,
+      completionTokens: result.usage?.outputTokens ?? 0,
+      totalTokens: result.usage?.totalTokens ?? 0,
     },
   };
 }

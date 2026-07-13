@@ -356,6 +356,43 @@ describe("Pages /api/mercy-ai sentence-correction mode", () => {
     expect(body.response_format).toEqual({ type: "json_object" });
   });
 
+  it("fails over sentence correction from OpenAI to DeepSeek on provider failure", async () => {
+    const fetchMock = vi.fn<typeof fetch>()
+      .mockResolvedValueOnce(jsonResponse({ error: { message: "quota" } }, 429))
+      .mockResolvedValueOnce(jsonResponse({
+        choices: [{
+          message: {
+            content: JSON.stringify({
+              corrected: "This lesson is easier than yesterday.",
+              explanation: "Dùng 'easier' thay vì 'more easy'.",
+              grammarTip: "Mẹo: easy → easier trong so sánh hơn.",
+              confident: true,
+            }),
+          },
+        }],
+        usage: { prompt_tokens: 90, completion_tokens: 35, total_tokens: 125 },
+      }));
+    vi.stubGlobal("fetch", fetchMock);
+
+    const response = await postMercyAi(
+      {
+        mode: "sentence-correction",
+        learnerText: "This lesson is more easy than yesterday.",
+      },
+      { ...env, DEEPSEEK_API_KEY: "deepseek-key" },
+    );
+
+    expect(response.status).toBe(200);
+    await expect(response.json()).resolves.toMatchObject({
+      corrected: "This lesson is easier than yesterday.",
+      confident: true,
+    });
+    const calls = appFetchCalls(fetchMock);
+    expect(calls).toHaveLength(2);
+    expect(String(calls[0][0])).toBe("https://api.openai.com/v1/chat/completions");
+    expect(String(calls[1][0])).toBe("https://api.deepseek.com/chat/completions");
+  });
+
   it("returns confident:false with abstain message when the learner text is incomprehensible", async () => {
     const fetchMock = vi.fn<typeof fetch>().mockResolvedValueOnce(
       jsonResponse({
@@ -473,6 +510,10 @@ describe("Pages /api/mercy-ai sentence-correction mode", () => {
   });
 
   it("returns 500 when OPENAI_API_KEY is absent", async () => {
+    getUserMock.mockResolvedValueOnce({
+      data: { user: { id: "missing-openai-user" } },
+      error: null,
+    });
     const fetchMock = vi.fn<typeof fetch>();
     vi.stubGlobal("fetch", fetchMock);
 
@@ -484,5 +525,45 @@ describe("Pages /api/mercy-ai sentence-correction mode", () => {
     expect(response.status).toBe(500);
     await expect(response.json()).resolves.toEqual({ error: "Missing OPENAI_API_KEY" });
     expect(appFetchCalls(fetchMock)).toHaveLength(0);
+  });
+});
+
+describe("Pages /api/mercy-ai host mode", () => {
+  beforeEach(() => {
+    vi.restoreAllMocks();
+    getUserMock.mockResolvedValue({
+      data: { user: { id: "host-user" } },
+      error: null,
+    });
+  });
+
+  it("fails over host chat from OpenAI to DeepSeek while preserving { text } response shape", async () => {
+    const fetchMock = vi.fn<typeof fetch>()
+      .mockResolvedValueOnce(jsonResponse({ error: { message: "upstream overloaded" } }, 503))
+      .mockResolvedValueOnce(jsonResponse({
+        choices: [{
+          message: {
+            content: JSON.stringify({
+              text: "EN:\nHi. What are you practicing today?\n\nVI:\nChào bạn. Hôm nay bạn muốn luyện gì?",
+            }),
+          },
+        }],
+        usage: { prompt_tokens: 70, completion_tokens: 25, total_tokens: 95 },
+      }));
+    vi.stubGlobal("fetch", fetchMock);
+
+    const response = await postMercyAi(
+      { userText: "hi", lang: "en" },
+      { ...env, DEEPSEEK_API_KEY: "deepseek-key" },
+    );
+
+    expect(response.status).toBe(200);
+    await expect(response.json()).resolves.toEqual({
+      text: "EN:\nHi. What are you practicing today?\n\nVI:\nChào bạn. Hôm nay bạn muốn luyện gì?",
+    });
+    const calls = appFetchCalls(fetchMock);
+    expect(calls).toHaveLength(2);
+    expect(String(calls[0][0])).toBe("https://api.openai.com/v1/chat/completions");
+    expect(String(calls[1][0])).toBe("https://api.deepseek.com/chat/completions");
   });
 });

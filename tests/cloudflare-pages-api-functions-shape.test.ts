@@ -147,9 +147,11 @@ describe("Cloudflare Pages API function shape", () => {
     const mercyAi = readFromRepo("functions/api/mercy-ai.ts");
     expect(mercyAi).toContain('norm(body.mode) === "sentence-correction"');
     expect(mercyAi).not.toContain("process.env");
-    // Must use raw fetch (Workers runtime) not the OpenAI SDK
+    // Must stay Workers-compatible and route provider calls through the Pages
+    // failover helper rather than the OpenAI SDK.
     expect(mercyAi).not.toContain("new OpenAI(");
-    expect(mercyAi).toContain("api.openai.com/v1/chat/completions");
+    expect(mercyAi).toContain("chatJsonWithFailover");
+    expect(mercyAi).toContain('providerOrder: MERCY_AI_PROVIDER_ORDER');
   });
 
   it("keeps mode parity across all three API mirrors (Vercel / CF Pages / Netlify)", () => {
