@@ -4,6 +4,7 @@ import { resolve } from "node:path";
 
 const MIGRATION_DIR = resolve(process.cwd(), "supabase/migrations");
 const TIGHTEN_MIGRATION = "20260715000000_storage_audio_service_role_writes.sql";
+const CLEANUP_MIGRATION = "20260720000000_storage_room_audio_authenticated_cleanup.sql";
 
 function normalizeSql(sql: string) {
   return sql.toLowerCase().replace(/\s+/g, " ").trim();
@@ -14,6 +15,7 @@ function migrationSql(file: string) {
 }
 
 const tightenSql = normalizeSql(migrationSql(TIGHTEN_MIGRATION));
+const cleanupSql = normalizeSql(migrationSql(CLEANUP_MIGRATION));
 const chainSql = normalizeSql(
   readdirSync(MIGRATION_DIR)
     .filter((file) => file.endsWith(".sql"))
@@ -79,6 +81,7 @@ describe("storage audio RLS contract", () => {
     );
 
     expect(audioWritePolicies.map(([name]) => name).sort()).toEqual([
+      "authenticated tts can insert generated room audio",
       "service role can delete audio files",
       "service role can delete room audio uploads",
       "service role can update audio files",
@@ -87,7 +90,20 @@ describe("storage audio RLS contract", () => {
       "service role can upload room audio uploads",
     ]);
 
-    for (const [, policySql] of audioWritePolicies) {
+    const authenticatedPolicy = policies.get("authenticated tts can insert generated room audio");
+    expect(authenticatedPolicy).toContain(" for insert ");
+    expect(authenticatedPolicy).toContain(" to authenticated ");
+    expect(authenticatedPolicy).toContain("bucket_id = 'room-audio'");
+    expect(authenticatedPolicy).toContain("auth.uid() is not null");
+    expect(authenticatedPolicy).toContain("name ~ '^[^/]+/[^/]+\\.mp3$'");
+    expect(authenticatedPolicy).not.toContain(" for update ");
+    expect(authenticatedPolicy).not.toContain(" for delete ");
+
+    for (const [name, policySql] of audioWritePolicies) {
+      if (name === "authenticated tts can insert generated room audio") {
+        continue;
+      }
+
       expect(policySql).toContain(" to service_role ");
       expect(policySql).not.toContain(" to public ");
       expect(policySql).not.toContain(" to anon ");
@@ -95,5 +111,21 @@ describe("storage audio RLS contract", () => {
       expect(policySql).not.toContain("auth.uid() is not null");
       expect(policySql).not.toContain("has_role(auth.uid()");
     }
+  });
+
+  it("drops broad authenticated room-audio ALL policies without touching read policies", () => {
+    expect(cleanupSql).toContain(
+      normalizeSql('drop policy if exists "authenticated_all_room_audio" on storage.objects'),
+    );
+    expect(cleanupSql).toContain(
+      normalizeSql('drop policy if exists "authenticated_all_room_audio_uploads" on storage.objects'),
+    );
+    expect(cleanupSql).not.toContain(
+      normalizeSql('drop policy if exists "room_audio_select_anon_temp" on storage.objects'),
+    );
+    expect(cleanupSql).not.toContain(
+      normalizeSql('create policy "room_audio_select_anon_temp" on storage.objects'),
+    );
+    expect(cleanupSql).not.toContain(" for select ");
   });
 });

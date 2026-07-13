@@ -3,11 +3,11 @@
 Static scan only. Source: `supabase/migrations/*.sql`; no live database probing.
 
 ## Summary
-- migration_files: 264
+- migration_files: 265
 - tables_observed: 200
 - rls_enabled: 197
 - rls_not_enabled: 3
-- policies_observed: 479
+- policies_observed: 480
 - manifest_tables: 200
 - manifest_drift_findings: 0
 
@@ -214,7 +214,7 @@ Static scan only. Source: `supabase/migrations/*.sql`; no live database probing.
 | `public.weekly_leaderboard` | yes | yes | 3 | `supabase/migrations/20260510005000_weekly_leaderboard.sql:39` |
 | `public.writing_prompts` | yes | yes | 2 | `supabase/migrations/20260606000000_writing_practice.sql:40` |
 | `public.xp_events` | yes | yes | 1 | `supabase/migrations/20260609000000_xp_gamification.sql:57` |
-| `storage.objects` | no | no | 31 | `supabase/migrations/20251022041144_b940bfd3-f646-4320-9c19-096ca641e13a.sql:5` |
+| `storage.objects` | no | no | 32 | `supabase/migrations/20251022041144_b940bfd3-f646-4320-9c19-096ca641e13a.sql:5` |
 
 ## Policies
 
@@ -1814,6 +1814,7 @@ Static scan only. Source: `supabase/migrations/*.sql`; no live database probing.
 | `Admins can view all payment screenshots` | select | public | `bucket_id = 'payment-proofs' AND has_role(auth.uid(), 'admin')` |  | `supabase/migrations/20251022042015_1a4485ac-f103-4fb0-af94-1660036e6644.sql:21` |
 | `Admins can view all user music` | select | authenticated | `bucket_id = 'user-music' AND has_role(auth.uid(), 'admin')` |  | `supabase/migrations/20251128132923_65345f28-0f57-430e-bb28-9f85403d6e10.sql:107` |
 | `admins_view_all_payment_proofs` | select | authenticated | `bucket_id = 'payment-proofs' AND EXISTS ( SELECT 1 FROM user_roles WHERE user_id = auth.uid() AND role = 'admin' )` |  | `supabase/migrations/20251102055649_bb3bee43-5506-4531-a5a0-c9b067ecf538.sql:82` |
+| `Authenticated TTS can insert generated room audio` | insert | authenticated |  | `bucket_id = 'room-audio' AND auth.uid() IS NOT NULL AND name ~ '^[^/]+/[^/]+\.mp3$'` | `supabase/migrations/20260720000000_storage_room_audio_authenticated_cleanup.sql:13` |
 | `Authenticated users can access room audio via signed URLs` | select | public | `bucket_id = 'room-audio' AND auth.role() = 'authenticated'` |  | `supabase/migrations/20251112070827_94165dd1-6023-4afc-b019-3ed9c295f425.sql:42` |
 | `Avatar images are publicly accessible` | select | public | `bucket_id = 'avatars'` |  | `supabase/migrations/20251122024049_1d30f4b2-9931-4f76-bed2-cc92f92ffe4f.sql:10` |
 | `mercy_tts_cache_public_read` | select | public | `bucket_id = 'mercy-tts-cache'` |  | `supabase/migrations/20260511000000_elevenlabs_tts.sql:40` |
