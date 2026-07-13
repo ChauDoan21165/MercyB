@@ -7,6 +7,7 @@ export type CorrectionSourceEventSource =
   | "local_corrected"
   | "local_unchanged_server_attempt"
   | "server_corrected"
+  | "server_no_correction"
   | "server_failed";
 
 export type CorrectionSourceEventRow = {
@@ -34,7 +35,7 @@ export function classifyCorrectionSourceEvent(input: {
 }): CorrectionSourceEventSource {
   if (input.localStatus === "corrected") return "local_corrected";
   if (!input.serverAttempted || input.serverSucceeded === undefined) return "local_unchanged_server_attempt";
-  return input.serverSucceeded ? "server_corrected" : "server_failed";
+  return input.serverSucceeded ? "server_corrected" : "server_no_correction";
 }
 
 export function deriveCorrectionSourceLangPair(
