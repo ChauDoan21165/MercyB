@@ -27,7 +27,10 @@ import {
 } from "./env";
 import { isDeployShaAcceptable } from "./expectedDeploy";
 import type { JourneyResult } from "./report";
-import { selectSeededCorrectionProbe } from "./seededCorrectionProbes";
+import {
+  selectSeededCorrectionProbes,
+  type SeededCorrectionProbe,
+} from "./seededCorrectionProbes";
 
 test.describe.configure({ mode: "default", timeout: 90_000 });
 test.skip(
@@ -37,6 +40,7 @@ test.skip(
 
 const FEEDBACK_TABLE = "learning_events";
 const SINK_WAIT_MS = 60_000; // journey (d) budget
+const DEFER_MESSAGE_RE = /Mercy ghi nhận câu này|I'll share a small tip in a moment/i;
 
 function projectRef(url: string): string {
   return new URL(url).host.split(".")[0];
@@ -66,6 +70,25 @@ async function pinSyntheticLessonState(page: import("@playwright/test").Page): P
       body: route.request().method() === "HEAD" ? "" : "[]",
     });
   });
+}
+
+function expectsImmediateCorrection(probe: SeededCorrectionProbe): boolean {
+  return probe.expectedShadowPath === "target_form_correct_now";
+}
+
+async function submitCorrectionProbe(
+  page: import("@playwright/test").Page,
+  probe: SeededCorrectionProbe,
+): Promise<void> {
+  await page.goto(`${SYNTH_BASE_URL}/ai-tutor`, { waitUntil: "networkidle" });
+  const field = page.getByRole("textbox").first();
+  await field.click();
+  await field.fill(probe.sentence);
+  // Grammar submit is <button type="button"> (CorrectionMode.tsx), label
+  // ui.submit = "Sửa câu này" (vi) / "Correct my sentence" (en). Match the FULL
+  // submit label — NOT the bare "Sửa câu", which also names the mode-switcher
+  // TAB (already active on this surface).
+  await page.getByRole("button", { name: /Sửa câu này|Correct my sentence/i }).first().click();
 }
 
 /**
@@ -171,31 +194,42 @@ test("(a) valid credential yields a working authed session (no bounce)", async (
 // ── (b) correction renders · (c) label shows · (d) row lands in learning_events ─
 test("(b/c/d) correction → feedback tap → row lands with rule_or_detector_id", async ({ page, context }, testInfo) => {
   const { accessToken } = await seedSession(context);
-  const seededProbe = selectSeededCorrectionProbe();
+  const seededProbes = selectSeededCorrectionProbes();
+  const feedbackProbe = seededProbes.find(expectsImmediateCorrection);
   await pinSyntheticLessonState(page);
 
-  // (b) submit a seeded-error sentence in grammar mode and get a correction.
+  // (b) submit seeded-error sentences in grammar mode. Immediate seeds must
+  // render a correction card + feedback buttons. Defer-class seeds must render
+  // the deliberate defer notice and no correction card controls. Keep a pinned
+  // immediate seed in every run so (c)/(d) exercise feedback + durable sink.
   const tB = Date.now();
   let bOk = false, bDetail = "";
   try {
-    await page.goto(`${SYNTH_BASE_URL}/ai-tutor`, { waitUntil: "networkidle" });
-    const field = page.getByRole("textbox").first();
-    await field.click();
-    await field.fill(seededProbe.sentence);
-    // Grammar submit is <button type="button"> (CorrectionMode.tsx:140), label
-    // ui.submit = "Sửa câu này" (vi) / "Correct my sentence" (en). Match the FULL
-    // submit label — NOT the bare "Sửa câu", which also names the mode-switcher
-    // TAB (already active on this surface). `.first()` on the loose regex clicked
-    // that no-op tab, so the sentence was never submitted and the correction
-    // never rendered (run #9: output stuck at "Sẵn sàng sửa câu"). Same wrong-
-    // button class as journey (a). The unit test uses this exact name too
-    // (staleSessionGuard.test.tsx: getByRole button "Sửa câu này").
-    await page.getByRole("button", { name: /Sửa câu này|Correct my sentence/i }).first().click();
-    // The correction is "rendered" iff the feedback buttons mount (they only
-    // render for a correction that carries a real rule_or_detector_id).
-    await expect(page.getByTestId("correction-feedback-helpful")).toBeVisible({ timeout: 30_000 });
+    const details: string[] = [];
+    if (!feedbackProbe) throw new Error("seed rotation has no immediate-correction probe");
+
+    for (const probe of seededProbes) {
+      await submitCorrectionProbe(page, probe);
+
+      if (expectsImmediateCorrection(probe)) {
+        // The correction is "rendered" iff the feedback buttons mount (they only
+        // render for a correction that carries a real rule_or_detector_id).
+        await expect(page.getByTestId("correction-feedback-helpful")).toBeVisible({ timeout: 30_000 });
+        details.push(
+          `${probe.id}: correction rendered with feedback buttons; expectedDetector=${probe.expectedDetector}; expectedShadowPath=${probe.expectedShadowPath}`,
+        );
+      } else {
+        await expect(page.getByText(DEFER_MESSAGE_RE)).toBeVisible({ timeout: 30_000 });
+        await expect(page.getByTestId("correction-feedback-helpful")).toHaveCount(0);
+        await expect(page.locator('[data-testid="ai-tutor-layout"][data-expanded="false"]')).toBeVisible();
+        details.push(
+          `${probe.id}: defer notice rendered; feedback skipped by design; expectedDetector=${probe.expectedDetector}; expectedShadowPath=${probe.expectedShadowPath}`,
+        );
+      }
+    }
+
     bOk = true;
-    bDetail = `correction rendered with feedback buttons; seed=${seededProbe.id}; expectedDetector=${seededProbe.expectedDetector}; expectedShadowPath=${seededProbe.expectedShadowPath}`;
+    bDetail = details.join(" | ");
   } catch (e) {
     bDetail = redact(`no correction/buttons: ${(e as Error).message}`);
   }
@@ -210,7 +244,7 @@ test("(b/c/d) correction → feedback tap → row lands with rule_or_detector_id
       await page.getByTestId("correction-feedback-helpful").click();
       await expect(page.getByTestId("correction-feedback-thanks")).toBeVisible({ timeout: 10_000 });
       cOk = true;
-      cDetail = "Đã ghi nhận label visible";
+      cDetail = `Đã ghi nhận label visible; seed=${feedbackProbe?.id ?? "unknown"}`;
     } catch (e) {
       cDetail = redact(`no ack label: ${(e as Error).message}`);
     }
@@ -246,7 +280,7 @@ test("(b/c/d) correction → feedback tap → row lands with rule_or_detector_id
         const rows = (await resp.json()) as Array<{ id: string; rule_or_detector_id: string }>;
         if (rows.length) {
           dOk = true;
-          dDetail = `row ${rows[0].id} rule=${rows[0].rule_or_detector_id}; seed=${seededProbe.id}`;
+          dDetail = `row ${rows[0].id} rule=${rows[0].rule_or_detector_id}; seed=${feedbackProbe?.id ?? "unknown"}`;
           break;
         }
         await new Promise((r) => setTimeout(r, 3_000));

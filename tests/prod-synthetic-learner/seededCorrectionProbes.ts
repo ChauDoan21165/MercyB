@@ -39,7 +39,19 @@ export const SEEDED_CORRECTION_PROBES: readonly SeededCorrectionProbe[] = [
   },
 ] as const;
 
+export const PINNED_FEEDBACK_PROBE = SEEDED_CORRECTION_PROBES[0];
+
+export const ROTATING_CORRECTION_PROBES = SEEDED_CORRECTION_PROBES.filter(
+  (probe) => probe.id !== PINNED_FEEDBACK_PROBE.id,
+);
+
 export function selectSeededCorrectionProbe(now: Date = new Date()): SeededCorrectionProbe {
   const hourBucket = Math.floor(now.getTime() / (60 * 60 * 1000));
-  return SEEDED_CORRECTION_PROBES[hourBucket % SEEDED_CORRECTION_PROBES.length];
+  return ROTATING_CORRECTION_PROBES[hourBucket % ROTATING_CORRECTION_PROBES.length];
+}
+
+export function selectSeededCorrectionProbes(
+  now: Date = new Date(),
+): readonly SeededCorrectionProbe[] {
+  return [selectSeededCorrectionProbe(now), PINNED_FEEDBACK_PROBE];
 }
