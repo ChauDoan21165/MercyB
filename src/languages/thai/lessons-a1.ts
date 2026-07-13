@@ -31,6 +31,7 @@ const a1Lessons: ThaiLesson[] = [
       "particle depends on the SPEAKER's gender, not the listener's.",
     vocabulary: [
       {
+        cell_id: "dc0a1175-2646-4c9d-85b0-273203275c45",
         thai: "สวัสดี",
         romanization: "sàwàtdii",
         en: "hello / goodbye",
@@ -38,6 +39,7 @@ const a1Lessons: ThaiLesson[] = [
         pos: "interjection",
       },
       {
+        cell_id: "d8b98355-539c-435e-afc0-9fb31e29a96a",
         thai: "ครับ",
         romanization: "khráp",
         en: "polite final particle (male speaker)",
@@ -45,6 +47,7 @@ const a1Lessons: ThaiLesson[] = [
         pos: "particle",
       },
       {
+        cell_id: "0fda26c6-96bd-4d63-a7e4-89fab5f7e70c",
         thai: "ค่ะ",
         romanization: "khâ",
         en: "polite final particle (female speaker)",
@@ -52,6 +55,7 @@ const a1Lessons: ThaiLesson[] = [
         pos: "particle",
       },
       {
+        cell_id: "4e60844a-ada2-462a-a7f3-e6fdcf080727",
         thai: "ขอบคุณ",
         romanization: "khɔ̀ɔp khun",
         en: "thank you",
@@ -59,6 +63,7 @@ const a1Lessons: ThaiLesson[] = [
         pos: "phrase",
       },
       {
+        cell_id: "9afb4e78-cc5c-43b3-98cf-f2e233236740",
         thai: "สบายดี",
         romanization: "sàbaai dii",
         en: "fine / well",
@@ -66,6 +71,7 @@ const a1Lessons: ThaiLesson[] = [
         pos: "phrase",
       },
       {
+        cell_id: "78c23ec4-954d-4c12-a5be-36bd94fcc3dd",
         thai: "ไหม",
         romanization: "mǎi",
         en: "question particle (yes/no)",
@@ -127,6 +133,7 @@ const a1Lessons: ThaiLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "ffafa941-0884-4a27-9078-50c82e00bfc0",
         speaker: "Anong (นง)",
         thai: "สวัสดีค่ะ สบายดีไหมคะ",
         romanization: "sàwàtdii khâ, sàbaai dii mǎi khá",
@@ -134,6 +141,7 @@ const a1Lessons: ThaiLesson[] = [
         vi: "Xin chào. Bạn khỏe không?",
       },
       {
+        cell_id: "99f0f0be-e56e-482c-b797-4f0cf4f2b90c",
         speaker: "Somchai (สมชาย)",
         thai: "สบายดีครับ ขอบคุณครับ",
         romanization: "sàbaai dii khráp, khɔ̀ɔp khun khráp",

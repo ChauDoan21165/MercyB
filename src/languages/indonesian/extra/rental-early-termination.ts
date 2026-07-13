@@ -16,6 +16,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   /** Indonesian word/phrase. */
   word: string;
   /** English meaning. */
@@ -31,6 +32,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   /** Indonesian line. */
   text: string;
@@ -235,6 +237,7 @@ export const lessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: use the right chunks `keluar lebih awal`, `pemberitahuan`, `denda`, `deposit dikembalikan`, `kesepakatan tertulis`. If you want a softer tone, add `mohon` or `kalau memang ada` so the sentence does not sound confrontational.",
     vocabulary: [
       {
+        cell_id: "716508e5-1e2e-4151-8f07-fad0f81fade1",
         word: "putus kontrak",
         en: "end a contract",
         vi: "chấm dứt hợp đồng",
@@ -243,6 +246,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "POO-toos KON-trak",
       },
       {
+        cell_id: "9177ea25-6e6c-4bdb-a91d-b4310c92717f",
         word: "keluar lebih awal",
         en: "move out early",
         vi: "chuyển ra sớm",
@@ -251,6 +255,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "keh-LOO-ar leh-BEE AH-wahl",
       },
       {
+        cell_id: "1c7485de-16da-4a1e-b43b-03cbe65139c5",
         word: "pemberitahuan",
         en: "notice / notification",
         vi: "thông báo, báo trước",
@@ -259,6 +264,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "pem-be-ree-TAH-hoo-an",
       },
       {
+        cell_id: "aa46a9ba-b3b3-4e3a-9555-6bdde88f3577",
         word: "alasan pindah",
         en: "reason for moving",
         vi: "lý do chuyển đi",
@@ -267,6 +273,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "ah-LAH-san PEEN-dah",
       },
       {
+        cell_id: "997b9d81-b6d8-4783-b335-9604e32d73a2",
         word: "denda",
         en: "fine / penalty",
         vi: "tiền phạt",
@@ -275,6 +282,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "DEN-dah",
       },
       {
+        cell_id: "6ffaf499-7a21-48c7-b6e6-4113eed88ffd",
         word: "deposit",
         en: "security deposit",
         vi: "tiền cọc",
@@ -283,6 +291,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "deh-po-SIT",
       },
       {
+        cell_id: "9e90eb51-fc65-476e-88a7-f8e203d3a5a1",
         word: "kesepakatan tertulis",
         en: "written agreement",
         vi: "thỏa thuận bằng văn bản",
@@ -291,6 +300,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "keh-seh-pah-KAH-tan ter-TOO-lees",
       },
       {
+        cell_id: "1c965143-e3df-44b3-824c-1dc4a23d7829",
         word: "potongan deposit",
         en: "deduction from the deposit",
         vi: "khoản trừ từ tiền cọc",
@@ -301,30 +311,35 @@ export const lessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "9d9592c9-521f-42bf-b916-61f7e124ca75",
         speaker: "Penyewa",
         text: "Pak, saya ingin putus kontrak sewa lebih awal.",
         vi: "Anh/chú ơi, tôi muốn chấm dứt hợp đồng thuê sớm hơn.",
         en: "Sir, I want to end the rental contract early.",
       },
       {
+        cell_id: "f1ea64bb-94b4-4b62-8720-71b21a79d525",
         speaker: "Pemilik Rumah",
         text: "Boleh. Apa alasan pindahnya?",
         vi: "Được. Lý do chuyển đi là gì?",
         en: "Okay. What is the reason for moving?",
       },
       {
+        cell_id: "d8aa54e9-79f7-48d6-9e7f-7b76df49e3a3",
         speaker: "Penyewa",
         text: "Saya pindah karena kerja di kota lain.",
         vi: "Tôi chuyển đi vì làm việc ở thành phố khác.",
         en: "I am moving because I work in another city.",
       },
       {
+        cell_id: "c588a052-8d7e-47c6-9618-43b29a540298",
         speaker: "Pemilik Rumah",
         text: "Baik. Kita lihat aturan pemberitahuan dan deposit dulu.",
         vi: "Được. Chúng ta xem quy định thông báo và tiền cọc trước đã.",
         en: "Okay. Let us check the notice and deposit rules first.",
       },
       {
+        cell_id: "4b15d08b-45d4-468e-b838-6c745df9bcb3",
         speaker: "Penyewa",
         text: "Kalau ada denda, mohon kirim kesepakatan tertulisnya.",
         vi: "Nếu có tiền phạt, xin hãy gửi thỏa thuận bằng văn bản.",

@@ -18,6 +18,7 @@ export type PunjabiReleaseCandidateFocus =
 export type PunjabiReleaseCandidateStage = "release_candidate" | "final_cross_check" | "pre_integration" | "sanity";
 
 export type PunjabiScriptVocabularyReleaseCandidateSample = {
+  cell_id?: string;
   id: string;
   focus: PunjabiReleaseCandidateFocus;
   stage: PunjabiReleaseCandidateStage;
@@ -39,6 +40,7 @@ export type PunjabiScriptVocabularyReleaseCandidateSample = {
 };
 
 export type PunjabiScriptVocabularyReleaseCandidateSection = {
+  cell_id?: string;
   focus: PunjabiReleaseCandidateFocus;
   title_vi: string;
   title_en: string;

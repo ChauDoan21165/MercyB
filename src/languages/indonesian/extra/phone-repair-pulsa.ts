@@ -22,6 +22,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   /** Indonesian word/phrase. */
   word: string;
   /** English meaning. */
@@ -37,6 +38,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   /** Indonesian line. */
   text: string;
@@ -254,6 +256,7 @@ export const lessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: do not translate 'top up phone money' as `isi uang`. For phone credit use `beli pulsa` or `isi ulang pulsa`; for internet use `isi ulang paket data`. In a repair shop, golden frames are: `Saya mau servis HP ini`, `Layarnya retak`, `Baterainya cepat habis`, `Masih ada garansi?`, `Selesai kapan?`.",
     vocabulary: [
       {
+        cell_id: "6c6c4403-5992-478f-a528-467446efb03f",
         word: "servis HP",
         en: "phone repair/service",
         vi: "sửa điện thoại",
@@ -262,6 +265,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "SER-vis ha-PEH",
       },
       {
+        cell_id: "6840099a-d8f6-408e-a48b-ac455a74cbaf",
         word: "layar retak",
         en: "cracked screen",
         vi: "màn hình nứt",
@@ -270,6 +274,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "LA-yar REH-tak",
       },
       {
+        cell_id: "21fda09a-5120-4720-9791-8cfdb9b07d0b",
         word: "baterai",
         en: "battery",
         vi: "pin",
@@ -278,6 +283,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "ba-TEH-rai",
       },
       {
+        cell_id: "b0750ada-8191-453f-914c-4ff2a5802785",
         word: "garansi",
         en: "warranty",
         vi: "bảo hành",
@@ -286,6 +292,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "ga-RAN-see",
       },
       {
+        cell_id: "85c80e6a-9be8-4a6f-ba3a-86a2ab449e75",
         word: "pulsa",
         en: "prepaid phone credit",
         vi: "tiền điện thoại trả trước",
@@ -294,6 +301,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "PUL-sa",
       },
       {
+        cell_id: "a234ebc9-a693-4c3c-b7c9-0e51d0d616b9",
         word: "paket data",
         en: "data package",
         vi: "gói dữ liệu",
@@ -302,6 +310,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "PA-ket DA-ta",
       },
       {
+        cell_id: "446b1528-6e68-414f-924b-cd9840bca12b",
         word: "isi ulang",
         en: "refill / top up",
         vi: "nạp lại",
@@ -310,6 +319,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "EE-see OO-lang",
       },
       {
+        cell_id: "366c9dde-e8e8-42ba-b01a-a6a0ec4b481a",
         word: "kartu SIM",
         en: "SIM card",
         vi: "thẻ SIM",
@@ -318,6 +328,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "KAR-too SIM",
       },
       {
+        cell_id: "a6b45f2b-f610-488a-9db8-13172a43907a",
         word: "tidak terbaca",
         en: "not readable / not detected",
         vi: "không đọc được / không nhận",
@@ -326,6 +337,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "TEE-dak ter-BA-cha",
       },
       {
+        cell_id: "5ddb7145-5760-482b-86b2-b1d4e9ca634f",
         word: "dicas",
         en: "charged",
         vi: "được sạc",
@@ -334,6 +346,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "dee-CHAS",
       },
       {
+        cell_id: "db07f29f-158f-44a3-acbe-525dbe9c04c7",
         word: "nomor",
         en: "number",
         vi: "số",
@@ -342,6 +355,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "NO-mor",
       },
       {
+        cell_id: "8444442e-2437-48a4-9098-f0702c1b4633",
         word: "selesai",
         en: "finished",
         vi: "xong",
@@ -352,24 +366,28 @@ export const lessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "b0e19874-df1d-4d0a-a0eb-50b6f730a516",
         speaker: "Pelanggan",
         text: "Mas, saya mau servis HP ini. Layarnya retak dan baterainya cepat habis.",
         vi: "Anh ơi, tôi muốn sửa điện thoại này. Màn hình bị nứt và pin hết nhanh.",
         en: "Sir, I want to repair this phone. The screen is cracked and the battery drains quickly.",
       },
       {
+        cell_id: "652455dd-326c-44a9-968e-f500429fea6e",
         speaker: "Teknisi",
         text: "Bisa. Masih ada garansi?",
         vi: "Được. Còn bảo hành không?",
         en: "Yes. Is it still under warranty?",
       },
       {
+        cell_id: "29a1d2b0-05e9-477d-8646-89298125d9b2",
         speaker: "Pelanggan",
         text: "Sepertinya sudah habis. Berapa biaya ganti layar?",
         vi: "Hình như hết rồi. Thay màn hình hết bao nhiêu?",
         en: "It seems expired. How much does screen replacement cost?",
       },
       {
+        cell_id: "0cdadc21-5949-46ca-ac4f-92757b40d1da",
         speaker: "Teknisi",
         text: "Saya cek dulu. Biasanya selesai sore ini.",
         vi: "Tôi kiểm tra trước. Thường xong chiều nay.",

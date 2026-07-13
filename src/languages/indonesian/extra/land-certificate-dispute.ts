@@ -18,6 +18,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   /** Indonesian word/phrase. */
   word: string;
   /** English meaning. */
@@ -33,6 +34,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   /** Indonesian line. */
   text: string;
@@ -243,6 +245,7 @@ export const landCertificateDisputeLessons: IndonesianLesson[] = [
       "Useful lines: `Saya ingin memeriksa sertifikat tanah`, `Kami punya saksi`, `Mohon tunjukkan surat`, `Kami ingin mediasi dulu`. When talking about land, use `batas` for boundary and `kepemilikan` for ownership. If unsure, ask for documents instead of accusing immediately.",
     vocabulary: [
       {
+        cell_id: "cc50d609-8335-4c7f-baa3-68678f855d61",
         word: "sertifikat tanah",
         en: "land certificate",
         vi: "giấy chứng nhận quyền sử dụng đất",
@@ -251,6 +254,7 @@ export const landCertificateDisputeLessons: IndonesianLesson[] = [
         pronunciation_en: "ser-tee-fi-KAHT TAH-nah",
       },
       {
+        cell_id: "3996096b-24da-4a36-b6d0-0641ec014526",
         word: "batas tanah",
         en: "land boundary",
         vi: "ranh giới đất",
@@ -259,6 +263,7 @@ export const landCertificateDisputeLessons: IndonesianLesson[] = [
         pronunciation_en: "BAH-tahs TAH-nah",
       },
       {
+        cell_id: "6328f7b6-bddd-46a4-aa46-3feca0165f88",
         word: "saksi",
         en: "witness",
         vi: "nhân chứng",
@@ -267,6 +272,7 @@ export const landCertificateDisputeLessons: IndonesianLesson[] = [
         pronunciation_en: "SAK-see",
       },
       {
+        cell_id: "99e7bb25-191c-4a3e-adc8-2339946f56be",
         word: "notaris",
         en: "notary",
         vi: "công chứng viên",
@@ -275,6 +281,7 @@ export const landCertificateDisputeLessons: IndonesianLesson[] = [
         pronunciation_en: "no-TA-ris",
       },
       {
+        cell_id: "15e02f59-bc90-4282-911e-9da2341995e8",
         word: "kantor pertanahan",
         en: "land office",
         vi: "văn phòng địa chính",
@@ -283,6 +290,7 @@ export const landCertificateDisputeLessons: IndonesianLesson[] = [
         pronunciation_en: "kan-TOR per-tah-NAH-hahn",
       },
       {
+        cell_id: "becc732b-e9bd-4629-b718-03f052311049",
         word: "bukti kepemilikan",
         en: "proof of ownership",
         vi: "bằng chứng sở hữu",
@@ -291,6 +299,7 @@ export const landCertificateDisputeLessons: IndonesianLesson[] = [
         pronunciation_en: "BOOK-tee ke-pe-mee-LEE-kan",
       },
       {
+        cell_id: "31d04c1e-563d-4d11-80b2-6795d66e5f0f",
         word: "mediasi",
         en: "mediation",
         vi: "hòa giải",
@@ -299,6 +308,7 @@ export const landCertificateDisputeLessons: IndonesianLesson[] = [
         pronunciation_en: "meh-dee-AH-see",
       },
       {
+        cell_id: "d68e6f61-685d-4748-bbfa-3d2fa455111b",
         word: "giliran",
         en: "turn / queue turn",
         vi: "lượt, đến lượt",
@@ -307,6 +317,7 @@ export const landCertificateDisputeLessons: IndonesianLesson[] = [
         pronunciation_en: "gee-LEE-ran",
       },
       {
+        cell_id: "d9251187-a8dd-4398-85b5-ca65122284c7",
         word: "surat",
         en: "document / letter",
         vi: "văn bản / giấy tờ",
@@ -315,6 +326,7 @@ export const landCertificateDisputeLessons: IndonesianLesson[] = [
         pronunciation_en: "SOO-rat",
       },
       {
+        cell_id: "a6e33a3a-d79d-419f-b52b-5662f3d6d13e",
         word: "menunggu giliran",
         en: "wait your turn",
         vi: "đợi đến lượt",
@@ -325,36 +337,42 @@ export const landCertificateDisputeLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "e1a80a8b-1ff8-45a5-a99f-1b3214c3d413",
         speaker: "Pemilik tanah",
         text: "Saya ingin memeriksa sertifikat tanah ini dulu.",
         vi: "Tôi muốn kiểm tra giấy chứng nhận đất này trước.",
         en: "I want to check this land certificate first.",
       },
       {
+        cell_id: "7fd99da3-ef40-4da1-aa9f-b89225122b42",
         speaker: "Petugas",
         text: "Baik, mohon tunggu giliran dan siapkan dokumen pendukung.",
         vi: "Vâng, xin chờ đến lượt và chuẩn bị giấy tờ hỗ trợ.",
         en: "Okay, please wait your turn and prepare supporting documents.",
       },
       {
+        cell_id: "f2041649-5a7f-4773-80b6-b5f75bcbe622",
         speaker: "Pemilik tanah",
         text: "Batas tanah kami sepertinya berubah.",
         vi: "Ranh giới đất của chúng tôi có vẻ đã thay đổi.",
         en: "Our land boundary seems to have changed.",
       },
       {
+        cell_id: "71526eee-67e3-4d85-9ec0-c94f0c1089c9",
         speaker: "Petugas",
         text: "Kalau begitu, kami bisa lihat bukti kepemilikan dan saksi yang ada.",
         vi: "Nếu vậy, chúng tôi có thể xem bằng chứng sở hữu và các nhân chứng hiện có.",
         en: "In that case, we can review the proof of ownership and the witnesses available.",
       },
       {
+        cell_id: "700c7682-07a4-4618-92f3-4d9d73455d92",
         speaker: "Pemilik tanah",
         text: "Kami ingin mediasi dulu sebelum lanjut ke proses hukum.",
         vi: "Chúng tôi muốn hòa giải trước khi tiếp tục sang quá trình pháp lý.",
         en: "We want mediation first before continuing to legal proceedings.",
       },
       {
+        cell_id: "b20efa3b-3519-410d-ac75-46aac792c4cb",
         speaker: "Petugas",
         text: "Silakan. Notaris juga bisa membantu menyiapkan salinan dokumen.",
         vi: "Xin mời. Công chứng viên cũng có thể giúp chuẩn bị bản sao tài liệu.",

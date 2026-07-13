@@ -117,24 +117,28 @@ export const lessons: ChineseLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "1847ee1e-5ef6-411c-b346-20e916ed9e9d",
         "speaker": "A",
         "chinese": "你假期打算去哪里？",
         "pinyin": "nǐ jià qī dǎ suàn qù nǎ lǐ?",
         "english": "Where are you planning to go for the holiday?"
       },
       {
+        cell_id: "58fb823c-472e-4891-8aeb-0429b96c4252",
         "speaker": "B",
         "chinese": "我打算去西安旅行。",
         "pinyin": "wǒ dǎ suàn qù xī ān lǚ xíng.",
         "english": "I plan to travel to Xi'an."
       },
       {
+        cell_id: "f7016b0e-056d-42a8-ad76-5312452ff799",
         "speaker": "A",
         "chinese": "你怎么去？坐飞机还是火车？",
         "pinyin": "nǐ zěn me qù? zuò fēi jī hái shì huǒ chē?",
         "english": "How will you go? By plane or train?"
       },
       {
+        cell_id: "d2f12aa3-85f1-4a89-bed2-daefbf48b6cc",
         "speaker": "B",
         "chinese": "坐高铁，只要四个小时。",
         "pinyin": "zuò gāo tiě, zhǐ yào sì gè xiǎo shí.",
@@ -285,24 +289,28 @@ export const lessons: ChineseLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "f62ef128-4d44-460c-a5bd-af6ae5d54226",
         "speaker": "A",
         "chinese": "你好，这种苹果怎么卖？",
         "pinyin": "nǐ hǎo, zhè zhǒng píng guǒ zěn me mài?",
         "english": "Hello, how much do these apples cost?"
       },
       {
+        cell_id: "e3a016b4-c322-4c45-a3bb-5b302ee3f008",
         "speaker": "B",
         "chinese": "十元一斤。",
         "pinyin": "shí yuán yī jīn.",
         "english": "Ten yuan per jin."
       },
       {
+        cell_id: "7f360f2a-35ad-48c2-8f52-36ced7b791fb",
         "speaker": "A",
         "chinese": "能便宜一点吗？",
         "pinyin": "néng pián yi yī diǎn ma?",
         "english": "Can it be a little cheaper?"
       },
       {
+        cell_id: "dcec1699-ca88-400d-b517-2d72a2e0a02f",
         "speaker": "B",
         "chinese": "如果你买两斤，可以九元一斤。",
         "pinyin": "rú guǒ nǐ mǎi liǎng jīn, kě yǐ jiǔ yuán yī jīn.",
@@ -453,24 +461,28 @@ export const lessons: ChineseLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "bef6db70-c573-48d6-a1b4-ec0faaef0c23",
         "speaker": "A",
         "chinese": "你看起来不太开心，怎么了？",
         "pinyin": "nǐ kàn qǐ lái bù tài kāi xīn, zěn me le?",
         "english": "You don't look very happy. What's wrong?"
       },
       {
+        cell_id: "a0d07aaa-cadc-4768-a06f-47098df75d7e",
         "speaker": "B",
         "chinese": "我考试没考好，有点难过。",
         "pinyin": "wǒ kǎo shì méi kǎo hǎo, yǒu diǎn nán guò.",
         "english": "I didn't do well on the exam. I'm a bit sad."
       },
       {
+        cell_id: "e36158fd-8795-4b6f-91d6-71d9a35aa566",
         "speaker": "A",
         "chinese": "别担心，下次一定会更好。",
         "pinyin": "bié dān xīn, xià cì yī dìng huì gèng hǎo.",
         "english": "Don't worry, next time will definitely be better."
       },
       {
+        cell_id: "0ade043a-6c4c-4cb7-b6bd-ed4dc7b98662",
         "speaker": "B",
         "chinese": "谢谢你安慰我。",
         "pinyin": "xiè xiè nǐ ān wèi wǒ.",
@@ -621,24 +633,28 @@ export const lessons: ChineseLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "40bd702c-ce40-458a-be90-c07d6651f6ab",
         "speaker": "A",
         "chinese": "你每天几点起床？",
         "pinyin": "nǐ měi tiān jǐ diǎn qǐ chuáng?",
         "english": "What time do you get up every day?"
       },
       {
+        cell_id: "047f0cfa-af6b-4c45-9683-bc5b99113435",
         "speaker": "B",
         "chinese": "我六点起床，你呢？",
         "pinyin": "wǒ liù diǎn qǐ chuáng, nǐ ne?",
         "english": "I get up at six. What about you?"
       },
       {
+        cell_id: "6f052db9-cc1b-45d4-a484-8f32d1526f62",
         "speaker": "A",
         "chinese": "我七点起床。你起得真早。",
         "pinyin": "wǒ qī diǎn qǐ chuáng. nǐ qǐ de zhēn zǎo.",
         "english": "I get up at seven. You get up so early."
       },
       {
+        cell_id: "cf0f52f8-cff9-45b8-b843-977caf869e4b",
         "speaker": "B",
         "chinese": "是啊，我要先锻炼再吃早饭。",
         "pinyin": "shì a, wǒ yào xiān duàn liàn zài chī zǎo fàn.",
@@ -789,24 +805,28 @@ export const lessons: ChineseLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "e5b051f9-0803-4d44-8a00-9332d731b5f1",
         "speaker": "A",
         "chinese": "你在做什么？",
         "pinyin": "nǐ zài zuò shén me?",
         "english": "What are you doing?"
       },
       {
+        cell_id: "4656ec99-55f8-40d5-88e3-883c344a019e",
         "speaker": "B",
         "chinese": "我在看书。你喜欢看书吗？",
         "pinyin": "wǒ zài kàn shū. nǐ xǐ huān kàn shū ma?",
         "english": "I'm reading a book. Do you like reading?"
       },
       {
+        cell_id: "95646478-1e9d-4581-8392-1c502093950d",
         "speaker": "A",
         "chinese": "喜欢，但我更喜欢看电影。",
         "pinyin": "xǐ huān, dàn wǒ gèng xǐ huān kàn diàn yǐng.",
         "english": "Yes, but I prefer watching movies."
       },
       {
+        cell_id: "2f5130a5-797e-4de3-b5c1-f3e1e0e3da5c",
         "speaker": "B",
         "chinese": "那我们周末一起看电影吧。",
         "pinyin": "nà wǒ men zhōu mò yī qǐ kàn diàn yǐng ba.",
@@ -957,24 +977,28 @@ export const lessons: ChineseLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "d1e265fa-2544-4dad-9299-b79b0ee930ca",
         "speaker": "A",
         "chinese": "喂，你好。请问是李经理吗？",
         "pinyin": "wéi, nǐ hǎo. qǐng wèn shì lǐ jīng lǐ ma?",
         "english": "Hello, is this Manager Li?"
       },
       {
+        cell_id: "54779dfe-6bd4-45cf-985c-66d285ff920a",
         "speaker": "B",
         "chinese": "是的，我是。您是哪位？",
         "pinyin": "shì de, wǒ shì. nín shì nǎ wèi?",
         "english": "Yes, this is he. Who is speaking?"
       },
       {
+        cell_id: "f63d2909-0c71-4050-abba-bcb62a923f3d",
         "speaker": "A",
         "chinese": "我是张华，想跟您确认一下会议时间。",
         "pinyin": "wǒ shì zhāng huá, xiǎng gēn nín què rèn yī xià huì yì shí jiān.",
         "english": "This is Zhang Hua, I'd like to confirm the meeting time with you."
       },
       {
+        cell_id: "78e4a0e9-36b2-44b6-a671-4149201e3e5a",
         "speaker": "B",
         "chinese": "好的，你十分钟后打过来好吗？我现在有点忙。",
         "pinyin": "hǎo de, nǐ shí fēn zhōng hòu dǎ guò lái hǎo ma? wǒ xiàn zài yǒu diǎn máng.",
@@ -1125,24 +1149,28 @@ export const lessons: ChineseLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "7871113e-7fe7-4c7d-89d0-17737ba00662",
         "speaker": "A",
         "chinese": "你好，我收到了你的邮件。附件打不开。",
         "pinyin": "nǐ hǎo, wǒ shōu dào le nǐ de yóu jiàn. fù jiàn dǎ bù kāi.",
         "english": "Hello, I received your email. The attachment won't open."
       },
       {
+        cell_id: "900a3a88-8387-42fa-a061-4925e94f6b15",
         "speaker": "B",
         "chinese": "抱歉，可能是格式问题。我重新发一次PDF的。",
         "pinyin": "bào qiàn, kě néng shì gé shì wèn tí. wǒ chóng xīn fā yī cì PDF de.",
         "english": "Sorry, it might be a format issue. I'll resend it as a PDF."
       },
       {
+        cell_id: "8bcaa9eb-00bd-4701-83ad-1f6d379ca9ad",
         "speaker": "A",
         "chinese": "好的，谢谢。另外主题行好像写错了。",
         "pinyin": "hǎo de, xiè xiè. lìng wài zhǔ tí háng hǎo xiàng xiě cuò le.",
         "english": "Okay, thanks. Also, the subject line seems wrong."
       },
       {
+        cell_id: "cc19c6b7-e147-4693-8bff-0496c7de1040",
         "speaker": "B",
         "chinese": "哦，我马上修改后再发一遍。",
         "pinyin": "ò, wǒ mǎ shàng xiū gǎi hòu zài fā yī biàn.",
@@ -1293,24 +1321,28 @@ export const lessons: ChineseLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "9d1330f6-8d8a-45b1-be25-21a6c926db4e",
         "speaker": "A",
         "chinese": "你好，我想开一个银行账户。",
         "pinyin": "nǐ hǎo, wǒ xiǎng kāi yī gè yín háng zhàng hù.",
         "english": "Hello, I'd like to open a bank account."
       },
       {
+        cell_id: "6692ea11-0219-4588-91ca-1f8fc1256f57",
         "speaker": "B",
         "chinese": "好的，请问您要开什么类型的账户？",
         "pinyin": "hǎo de, qǐng wèn nín yào kāi shén me lèi xíng de zhàng hù?",
         "english": "Okay, what type of account would you like to open?"
       },
       {
+        cell_id: "3ace7382-743c-40c9-9465-351caa53a884",
         "speaker": "A",
         "chinese": "储蓄账户，可以吗？",
         "pinyin": "chǔ xù zhàng hù, kě yǐ ma?",
         "english": "A savings account, is that okay?"
       },
       {
+        cell_id: "6b8c9a06-1533-429e-8c8e-22245507f003",
         "speaker": "B",
         "chinese": "没问题。请出示您的身份证和填写这张表格。",
         "pinyin": "méi wèn tí. qǐng chū shì nín de shēn fèn zhèng hé tián xiě zhè zhāng biǎo gé.",
@@ -1461,24 +1493,28 @@ export const lessons: ChineseLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "bd13f1fe-aeb3-4483-8ab6-4447a924b79b",
         "speaker": "A",
         "chinese": "你好，我想寄一个包裹。",
         "pinyin": "nǐ hǎo, wǒ xiǎng jì yī gè bāo guǒ.",
         "english": "Hello, I want to send a parcel."
       },
       {
+        cell_id: "0492e7a3-211f-48f7-9b37-eec77b1ace6b",
         "speaker": "B",
         "chinese": "好的，请把包裹放在秤上。寄到哪里？",
         "pinyin": "hǎo de, qǐng bǎ bāo guǒ fàng zài chèng shàng. jì dào nǎ lǐ?",
         "english": "Okay, please put the parcel on the scale. Where to?"
       },
       {
+        cell_id: "79c43c03-c89b-42c0-958e-40e20487630a",
         "speaker": "A",
         "chinese": "寄到越南河内。",
         "pinyin": "jì dào yuè nán hé nèi.",
         "english": "To Hanoi, Vietnam."
       },
       {
+        cell_id: "271981d9-ac44-4e96-8864-28cf4d450ab2",
         "speaker": "B",
         "chinese": "运费是六十元。请填写这个表格。",
         "pinyin": "yùn fèi shì liù shí yuán. qǐng tián xiě zhè gè biǎo gé.",
@@ -1629,24 +1665,28 @@ export const lessons: ChineseLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "c431e5f4-b583-4173-a2a1-cb5790d3c359",
         "speaker": "A",
         "chinese": "你好，我在网上看到你有房子要出租。",
         "pinyin": "nǐ hǎo, wǒ zài wǎng shàng kàn dào nǐ yǒu fáng zi yào chū zū.",
         "english": "Hello, I saw online that you have a house for rent."
       },
       {
+        cell_id: "e7341a17-8441-498e-8309-84ee385ca453",
         "speaker": "B",
         "chinese": "是的，请问你想看哪一套？",
         "pinyin": "shì de, qǐng wèn nǐ xiǎng kàn nǎ yī tào?",
         "english": "Yes, which one would you like to see?"
       },
       {
+        cell_id: "67a7e9f5-5505-42e8-a2fb-befc7f586316",
         "speaker": "A",
         "chinese": "那个两室一厅的，月租三千的。",
         "pinyin": "nà gè liǎng shì yī tīng de, yuè zū sān qiān de.",
         "english": "The two-bedroom one with a monthly rent of 3000."
       },
       {
+        cell_id: "6e4a0d39-8d70-4cf8-b359-b61536e8edc0",
         "speaker": "B",
         "chinese": "好的，明天下午两点可以看房吗？",
         "pinyin": "hǎo de, míng tiān xià wǔ liǎng diǎn kě yǐ kàn fáng ma?",
@@ -1797,24 +1837,28 @@ export const lessons: ChineseLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "1798a6dc-5f26-4232-8d09-d729d0ca527b",
         "speaker": "A",
         "chinese": "你好，我昨天在这里买的手机有毛病。",
         "pinyin": "nǐ hǎo, wǒ zuó tiān zài zhè lǐ mǎi de shǒu jī yǒu máo bìng.",
         "english": "Hello, the phone I bought here yesterday has a problem."
       },
       {
+        cell_id: "39e70a8d-b173-4e38-bd38-14dfa575198e",
         "speaker": "B",
         "chinese": "不好意思，请问是什么问题？",
         "pinyin": "bù hǎo yì si, qǐng wèn shì shén me wèn tí?",
         "english": "I'm sorry, what is the problem?"
       },
       {
+        cell_id: "f29ff36c-7814-41ea-8b5f-83aedb626aea",
         "speaker": "A",
         "chinese": "屏幕经常黑屏，我想退款。",
         "pinyin": "píng mù jīng cháng hēi píng, wǒ xiǎng tuì kuǎn.",
         "english": "The screen goes black often, I want a refund."
       },
       {
+        cell_id: "a6c37048-94bb-4bba-8216-153ab808b4a4",
         "speaker": "B",
         "chinese": "我帮您检查一下，如果在保修期内可以免费维修或换货。",
         "pinyin": "wǒ bāng nín jiǎn chá yī xià, rú guǒ zài bǎo xiū qī nèi kě yǐ miǎn fèi wéi xiū huò huàn huò.",
@@ -1965,24 +2009,28 @@ export const lessons: ChineseLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "f50672d0-0e86-43bb-a76e-0609f2a356b3",
         "speaker": "A",
         "chinese": "你好，请问去火车站怎么走？",
         "pinyin": "nǐ hǎo, qǐng wèn qù huǒ chē zhàn zěn me zǒu?",
         "english": "Hello, how do I get to the train station?"
       },
       {
+        cell_id: "05d00f04-5d79-4193-bc46-6c6c063cb6d2",
         "speaker": "B",
         "chinese": "你直走，到那个大十字路口右转。",
         "pinyin": "nǐ zhí zǒu, dào nà gè dà shí zì lù kǒu yòu zhuǎn.",
         "english": "Go straight, turn right at the big crossroads."
       },
       {
+        cell_id: "1f4b396f-0e9a-40c1-889c-169ae3152fc5",
         "speaker": "A",
         "chinese": "然后呢？",
         "pinyin": "rán hòu ne?",
         "english": "Then what?"
       },
       {
+        cell_id: "74bfe3fd-37c8-4b80-a851-07ab080be5d3",
         "speaker": "B",
         "chinese": "再走大概五分钟，你就会看到火车站在你的左边。",
         "pinyin": "zài zǒu dà gài wǔ fēn zhōng, nǐ jiù huì kàn dào huǒ chē zhàn zài nǐ de zuǒ biān.",
@@ -2133,24 +2181,28 @@ export const lessons: ChineseLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "2ba27473-f5da-4514-ad37-604661803e1f",
         "speaker": "A",
         "chinese": "你看到今天的热点新闻了吗？",
         "pinyin": "nǐ kàn dào jīn tiān de rè diǎn xīn wén le ma?",
         "english": "Did you see today's hot news?"
       },
       {
+        cell_id: "a73e325b-e970-41da-8174-effa7f5a0e09",
         "speaker": "B",
         "chinese": "看到了，是关于气候变化大会的。",
         "pinyin": "kàn dào le, shì guān yú qì hòu biàn huà dà huì de.",
         "english": "Yes, it's about the climate change conference."
       },
       {
+        cell_id: "b94702bd-7515-4f37-839f-45433234bc24",
         "speaker": "A",
         "chinese": "我觉得政府应该采取更多措施。",
         "pinyin": "wǒ jué de zhèng fǔ yīng gāi cǎi qǔ gèng duō cuò shī.",
         "english": "I think the government should take more measures."
       },
       {
+        cell_id: "827d2b04-1ca2-47ec-8d77-ac85b98dbf67",
         "speaker": "B",
         "chinese": "是啊，每个人都应该关注这个问题。",
         "pinyin": "shì a, měi gè rén dōu yīng gāi guān zhù zhè gè wèn tí.",
@@ -2301,24 +2353,28 @@ export const lessons: ChineseLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "8cbae4a8-1641-4bb2-afd5-c8c4e7b07b13",
         "speaker": "A",
         "chinese": "我发现越南和中国有很多文化差异。",
         "pinyin": "wǒ fā xiàn yuè nán hé zhōng guó yǒu hěn duō wén huà chā yì.",
         "english": "I found that there are many cultural differences between Vietnam and China."
       },
       {
+        cell_id: "0073fa8d-f2ed-4bb2-8709-ba38d94b9994",
         "speaker": "B",
         "chinese": "是啊，比如在越南，人们见面习惯鞠躬。",
         "pinyin": "shì a, bǐ rú zài yuè nán, rén men jiàn miàn xí guàn jū gōng.",
         "english": "Yes, for example in Vietnam, people tend to bow when they meet."
       },
       {
+        cell_id: "684f332b-afbd-43f0-889f-95572b5b0932",
         "speaker": "A",
         "chinese": "在中国，点头和微笑更常见。",
         "pinyin": "zài zhōng guó, diǎn tóu hé wēi xiào gèng cháng jiàn.",
         "english": "In China, nodding and smiling are more common."
       },
       {
+        cell_id: "03bdb629-c367-4064-b931-53c3e0fcb836",
         "speaker": "B",
         "chinese": "了解这些差异能帮助我们更好地沟通。",
         "pinyin": "liǎo jiě zhè xiē chā yì néng bāng zhù wǒ men gèng hǎo dì gōu tōng.",
@@ -2469,24 +2525,28 @@ export const lessons: ChineseLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "02c1fd77-9d2f-4db6-a398-f814a54e4f84",
         "speaker": "A",
         "chinese": "你好，我是来面试市场部经理的。",
         "pinyin": "nǐ hǎo, wǒ shì lái miàn shì shì chǎng bù jīng lǐ de.",
         "english": "Hello, I'm here for the marketing manager interview."
       },
       {
+        cell_id: "adf9b7ad-a664-419f-9fa6-77b132b301e1",
         "speaker": "B",
         "chinese": "请坐。请先做个自我介绍。",
         "pinyin": "qǐng zuò. qǐng xiān zuò gè zì wǒ jiè shào.",
         "english": "Please have a seat. First, please introduce yourself."
       },
       {
+        cell_id: "8215e833-a4e2-4fd2-8419-9d9f5958a2b2",
         "speaker": "A",
         "chinese": "我叫陈明，有五年市场营销经验。",
         "pinyin": "wǒ jiào chén míng, yǒu wǔ nián shì chǎng yíng xiāo jīng yàn.",
         "english": "My name is Chen Ming, I have five years of marketing experience."
       },
       {
+        cell_id: "bd0c0e43-ee5b-45ef-a41f-cf11196edd1e",
         "speaker": "B",
         "chinese": "好的，那你能谈谈你最大的成就吗？",
         "pinyin": "hǎo de, nà nǐ néng tán tán nǐ zuì dà de chéng jiù ma?",

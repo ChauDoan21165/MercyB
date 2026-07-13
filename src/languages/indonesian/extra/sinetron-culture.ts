@@ -32,6 +32,7 @@ type LessonSentence = {
 };
 
 type VocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -43,6 +44,7 @@ type VocabEntry = {
 };
 
 type DialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -158,21 +160,21 @@ export const sinetronCultureLessons: IndonesianLesson[] = [
     tip_advice_en:
       "Tip for Vietnamese speakers: 'menonton' (watch) is for film/TV, distinct from 'melihat' (look/see) and 'membaca' (read) — all 'me-' verbs. Common sinetron antonyms: kaya (rich) ↔ miskin (poor), baik (good) ↔ jahat (evil), cantik (pretty, women) ↔ ganteng (handsome, men). 'Pemeran utama' = lead role; 'tokoh' = character. Don't confuse 'cerita' (story/plot) with 'berita' (news) — one letter apart! Negate with 'tidak' for verbs/adjectives ('tidak suka' = don't like).",
     vocabulary: [
-      { word: "sinetron", en: "TV soap opera", vi: "phim truyền hình dài tập", pos: "noun", pronunciation_vi: "si-ne-TRON", pronunciation_en: "see-ne-TRON" },
-      { word: "menonton", en: "to watch", vi: "xem", pos: "verb", pronunciation_vi: "me-NON-ton", pronunciation_en: "me-NON-ton" },
-      { word: "episode", en: "episode", vi: "tập", pos: "noun", pronunciation_vi: "e-pi-SO-de", pronunciation_en: "e-pee-SOH-de" },
-      { word: "pemeran utama", en: "lead actor / main role", vi: "vai chính / diễn viên chính", pos: "noun", pronunciation_vi: "pe-me-RAN u-TA-ma", pronunciation_en: "pe-me-RAN oo-TA-ma" },
-      { word: "tokoh", en: "character", vi: "nhân vật", pos: "noun", pronunciation_vi: "TO-koh", pronunciation_en: "TOH-koh" },
-      { word: "cerita", en: "story / plot", vi: "câu chuyện / cốt truyện", pos: "noun", pronunciation_vi: "che-RI-ta", pronunciation_en: "che-REE-ta" },
-      { word: "jahat", en: "evil / wicked", vi: "ác / xấu xa", pos: "adj.", pronunciation_vi: "JA-hat", pronunciation_en: "JA-hat" },
-      { word: "kaya", en: "rich", vi: "giàu", pos: "adj.", pronunciation_vi: "KA-ya", pronunciation_en: "KA-ya" },
-      { word: "miskin", en: "poor", vi: "nghèo", pos: "adj.", pronunciation_vi: "MIS-kin", pronunciation_en: "MEES-keen" },
+      { cell_id: "828db697-855f-4c58-bece-334d496f603e", word: "sinetron", en: "TV soap opera", vi: "phim truyền hình dài tập", pos: "noun", pronunciation_vi: "si-ne-TRON", pronunciation_en: "see-ne-TRON" },
+      { cell_id: "0a69908c-5283-48e6-bf85-ad43d9b600d6", word: "menonton", en: "to watch", vi: "xem", pos: "verb", pronunciation_vi: "me-NON-ton", pronunciation_en: "me-NON-ton" },
+      { cell_id: "441b36ab-6732-465a-ab53-84870a3a80a8", word: "episode", en: "episode", vi: "tập", pos: "noun", pronunciation_vi: "e-pi-SO-de", pronunciation_en: "e-pee-SOH-de" },
+      { cell_id: "fd7bba0a-68d6-4bc5-97b8-cb4fa54f2047", word: "pemeran utama", en: "lead actor / main role", vi: "vai chính / diễn viên chính", pos: "noun", pronunciation_vi: "pe-me-RAN u-TA-ma", pronunciation_en: "pe-me-RAN oo-TA-ma" },
+      { cell_id: "77c9cc88-df34-4fe3-b368-9d465006b9a9", word: "tokoh", en: "character", vi: "nhân vật", pos: "noun", pronunciation_vi: "TO-koh", pronunciation_en: "TOH-koh" },
+      { cell_id: "0713ba66-208b-44fa-827b-4dda662f0fed", word: "cerita", en: "story / plot", vi: "câu chuyện / cốt truyện", pos: "noun", pronunciation_vi: "che-RI-ta", pronunciation_en: "che-REE-ta" },
+      { cell_id: "68129e42-ffb5-4035-9593-2fb8d3e0ff01", word: "jahat", en: "evil / wicked", vi: "ác / xấu xa", pos: "adj.", pronunciation_vi: "JA-hat", pronunciation_en: "JA-hat" },
+      { cell_id: "09db4688-0beb-47de-bbcf-5454a1f807e1", word: "kaya", en: "rich", vi: "giàu", pos: "adj.", pronunciation_vi: "KA-ya", pronunciation_en: "KA-ya" },
+      { cell_id: "2eac5236-6dae-40dd-8afe-a6c850a90357", word: "miskin", en: "poor", vi: "nghèo", pos: "adj.", pronunciation_vi: "MIS-kin", pronunciation_en: "MEES-keen" },
     ],
     dialogue: [
-      { speaker: "Ani", text: "Tadi malam kamu menonton sinetron yang di RCTI?", vi: "Tối qua cậu có xem phim trên RCTI không?", en: "Did you watch the sinetron on RCTI last night?" },
-      { speaker: "Budi", text: "Nonton dong. Sudah sampai episode seratus, lho. Ceritanya makin seru.", vi: "Xem chứ. Đã đến tập một trăm rồi đấy. Cốt truyện càng lúc càng cuốn.", en: "Of course. It's reached episode one hundred. The plot's getting more exciting." },
-      { speaker: "Ani", text: "Iya, tapi aku tidak suka tokoh yang jahat itu. Bikin kesal.", vi: "Ừ, nhưng tớ không thích nhân vật phản diện đó. Bực mình ghê.", en: "Yeah, but I don't like that villain. So annoying." },
-      { speaker: "Budi", text: "Sama. Untung pemeran utamanya baik dan cantik.", vi: "Giống tớ. May là vai chính tốt bụng và xinh.", en: "Same. Luckily the lead is kind and pretty." },
+      { cell_id: "81609173-ceb9-4769-aa20-0162824c5634", speaker: "Ani", text: "Tadi malam kamu menonton sinetron yang di RCTI?", vi: "Tối qua cậu có xem phim trên RCTI không?", en: "Did you watch the sinetron on RCTI last night?" },
+      { cell_id: "1e0fd3d3-c187-4f7d-844c-f3f6e9591ead", speaker: "Budi", text: "Nonton dong. Sudah sampai episode seratus, lho. Ceritanya makin seru.", vi: "Xem chứ. Đã đến tập một trăm rồi đấy. Cốt truyện càng lúc càng cuốn.", en: "Of course. It's reached episode one hundred. The plot's getting more exciting." },
+      { cell_id: "c274c4b2-2d6d-439e-8cea-2a5814c0b7cd", speaker: "Ani", text: "Iya, tapi aku tidak suka tokoh yang jahat itu. Bikin kesal.", vi: "Ừ, nhưng tớ không thích nhân vật phản diện đó. Bực mình ghê.", en: "Yeah, but I don't like that villain. So annoying." },
+      { cell_id: "56b2628a-9275-4877-a794-9356d62add88", speaker: "Budi", text: "Sama. Untung pemeran utamanya baik dan cantik.", vi: "Giống tớ. May là vai chính tốt bụng và xinh.", en: "Same. Luckily the lead is kind and pretty." },
     ],
     exercises: [
       {
@@ -295,21 +297,21 @@ export const sinetronCultureLessons: IndonesianLesson[] = [
     tip_advice_en:
       "Tip for Vietnamese speakers: 'katanya' = 'they say / reportedly' — flags unverified info, used sentence-initially. The '-nya' suffix is versatile: kata (word) + nya → katanya (what people say). Relationship arc: pacaran (dating) → menikah (marry) → cerai (divorce); or putus (break up). 'Mantan' = an ex (short for 'mantan pacar'). Distinguish the negators: 'tidak' (not, for verbs/adjectives) vs 'belum' (not yet, may still happen) vs 'bukan' (not, for nouns). 'Belum tentu' = not necessarily — a handy fixed phrase.",
     vocabulary: [
-      { word: "artis", en: "celebrity / star", vi: "nghệ sĩ / ngôi sao", pos: "noun", pronunciation_vi: "AR-tis", pronunciation_en: "AR-tees" },
-      { word: "selebriti", en: "celebrity", vi: "người nổi tiếng", pos: "noun", pronunciation_vi: "se-le-BRI-ti", pronunciation_en: "se-le-BREE-tee" },
-      { word: "gosip", en: "gossip / rumor", vi: "tin đồn / chuyện tầm phào", pos: "noun", pronunciation_vi: "GO-sip", pronunciation_en: "GOH-seep" },
-      { word: "katanya", en: "they say / reportedly", vi: "nghe nói", pos: "expr.", pronunciation_vi: "KA-ta-nya", pronunciation_en: "KA-ta-nya" },
-      { word: "menikah", en: "to get married", vi: "kết hôn / cưới", pos: "verb", pronunciation_vi: "me-NI-kah", pronunciation_en: "me-NEE-kah" },
-      { word: "putus", en: "to break up", vi: "chia tay", pos: "verb", pronunciation_vi: "PU-tus", pronunciation_en: "POO-toos" },
-      { word: "mantan", en: "ex (partner)", vi: "người yêu cũ", pos: "noun", pronunciation_vi: "MAN-tan", pronunciation_en: "MAN-tan" },
-      { word: "infotainment", en: "entertainment-news show", vi: "chương trình tin giải trí", pos: "noun", pronunciation_vi: "in-fo-TEN-men", pronunciation_en: "in-fo-TAIN-ment" },
-      { word: "bukti", en: "proof / evidence", vi: "bằng chứng", pos: "noun", pronunciation_vi: "BUK-ti", pronunciation_en: "BOOK-tee" },
+      { cell_id: "df71dd15-101b-4b5b-a5eb-134f770faaa5", word: "artis", en: "celebrity / star", vi: "nghệ sĩ / ngôi sao", pos: "noun", pronunciation_vi: "AR-tis", pronunciation_en: "AR-tees" },
+      { cell_id: "2c1434e6-d776-4e32-9f48-59b5fb30ed8c", word: "selebriti", en: "celebrity", vi: "người nổi tiếng", pos: "noun", pronunciation_vi: "se-le-BRI-ti", pronunciation_en: "se-le-BREE-tee" },
+      { cell_id: "87ff95d9-2070-4173-ba26-cfe5e666d43d", word: "gosip", en: "gossip / rumor", vi: "tin đồn / chuyện tầm phào", pos: "noun", pronunciation_vi: "GO-sip", pronunciation_en: "GOH-seep" },
+      { cell_id: "ad86204d-5c23-4a26-abf7-f645c024bc78", word: "katanya", en: "they say / reportedly", vi: "nghe nói", pos: "expr.", pronunciation_vi: "KA-ta-nya", pronunciation_en: "KA-ta-nya" },
+      { cell_id: "d122ed6f-4fe7-4f64-9c38-d70a19080d40", word: "menikah", en: "to get married", vi: "kết hôn / cưới", pos: "verb", pronunciation_vi: "me-NI-kah", pronunciation_en: "me-NEE-kah" },
+      { cell_id: "e6d681bd-40e7-49cf-ba0c-5f9f65c8081c", word: "putus", en: "to break up", vi: "chia tay", pos: "verb", pronunciation_vi: "PU-tus", pronunciation_en: "POO-toos" },
+      { cell_id: "cbbe42d3-63d1-4ce4-b8a2-bc4d05103197", word: "mantan", en: "ex (partner)", vi: "người yêu cũ", pos: "noun", pronunciation_vi: "MAN-tan", pronunciation_en: "MAN-tan" },
+      { cell_id: "e7b96452-2897-447a-8699-879978099eed", word: "infotainment", en: "entertainment-news show", vi: "chương trình tin giải trí", pos: "noun", pronunciation_vi: "in-fo-TEN-men", pronunciation_en: "in-fo-TAIN-ment" },
+      { cell_id: "57131f02-7bd9-4166-84b5-f307e01e3045", word: "bukti", en: "proof / evidence", vi: "bằng chứng", pos: "noun", pronunciation_vi: "BUK-ti", pronunciation_en: "BOOK-tee" },
     ],
     dialogue: [
-      { speaker: "Lia", text: "Eh, katanya artis itu mau menikah bulan depan, lho!", vi: "Này, nghe nói nghệ sĩ đó sắp cưới tháng sau đấy!", en: "Hey, they say that celeb is getting married next month!" },
-      { speaker: "Tio", text: "Masa? Bukannya mereka sudah putus sejak tahun lalu?", vi: "Thật á? Chẳng phải họ đã chia tay từ năm ngoái rồi sao?", en: "Really? Didn't they break up last year?" },
-      { speaker: "Lia", text: "Itu kata acara infotainment tadi pagi. Tapi belum tentu benar, sih.", vi: "Đó là theo chương trình showbiz sáng nay. Nhưng chưa chắc đúng đâu.", en: "That's what the infotainment show said this morning. But it's not necessarily true." },
-      { speaker: "Tio", text: "Nah, makanya. Jangan percaya gosip kalau belum ada bukti.", vi: "Đấy, vậy mới nói. Đừng tin tin đồn khi chưa có bằng chứng.", en: "Right, exactly. Don't believe gossip without proof." },
+      { cell_id: "f02118c1-7d1c-4c97-8d64-f3c0291405fa", speaker: "Lia", text: "Eh, katanya artis itu mau menikah bulan depan, lho!", vi: "Này, nghe nói nghệ sĩ đó sắp cưới tháng sau đấy!", en: "Hey, they say that celeb is getting married next month!" },
+      { cell_id: "7d16267b-281e-48e6-a8b4-397a8a9ac330", speaker: "Tio", text: "Masa? Bukannya mereka sudah putus sejak tahun lalu?", vi: "Thật á? Chẳng phải họ đã chia tay từ năm ngoái rồi sao?", en: "Really? Didn't they break up last year?" },
+      { cell_id: "e9512bf6-4f24-4079-adc5-16235f58ac43", speaker: "Lia", text: "Itu kata acara infotainment tadi pagi. Tapi belum tentu benar, sih.", vi: "Đó là theo chương trình showbiz sáng nay. Nhưng chưa chắc đúng đâu.", en: "That's what the infotainment show said this morning. But it's not necessarily true." },
+      { cell_id: "b853864a-4de4-461c-93e2-6aabaebda384", speaker: "Tio", text: "Nah, makanya. Jangan percaya gosip kalau belum ada bukti.", vi: "Đấy, vậy mới nói. Đừng tin tin đồn khi chưa có bằng chứng.", en: "Right, exactly. Don't believe gossip without proof." },
     ],
     exercises: [
       {
@@ -432,21 +434,21 @@ export const sinetronCultureLessons: IndonesianLesson[] = [
     tip_advice_en:
       "Tip for Vietnamese speakers: the comparative is 'lebih X daripada Y' = 'more X than Y' ('lebih bagus daripada' = better than). Don't forget 'daripada' (than), distinct from 'dari' (from). The '-nya' suffix nominalizes or means 'that one's': ending → endingnya (its ending), lanjut → kelanjutannya (its continuation). 'Sebenarnya' (colloquial 'sebenernya') = actually — opens a gently candid opinion. The reduplicated passive 'di-…-kan' with a doubled root ('dipanjang-panjangkan') conveys a repeated/excessive action — very Indonesian, worth learning to sound natural.",
     vocabulary: [
-      { word: "alur cerita", en: "plot / storyline", vi: "cốt truyện / mạch truyện", pos: "noun", pronunciation_vi: "A-lur che-RI-ta", pronunciation_en: "A-loor che-REE-ta" },
-      { word: "akting", en: "acting", vi: "diễn xuất", pos: "noun", pronunciation_vi: "AK-ting", pronunciation_en: "AK-teeng" },
-      { word: "pemain", en: "actor / player", vi: "diễn viên", pos: "noun", pronunciation_vi: "pe-MAIN", pronunciation_en: "pe-MAIN" },
-      { word: "ending", en: "ending", vi: "cái kết", pos: "noun", pronunciation_vi: "EN-ding", pronunciation_en: "EN-deeng" },
-      { word: "mengecewakan", en: "disappointing", vi: "gây thất vọng", pos: "adj./verb", pronunciation_vi: "me-nge-che-WA-kan", pronunciation_en: "me-nge-che-WA-kan" },
-      { word: "penasaran", en: "curious / eager to know", vi: "tò mò", pos: "adj.", pronunciation_vi: "pe-na-SA-ran", pronunciation_en: "pe-na-SA-ran" },
-      { word: "seru", en: "exciting / gripping", vi: "cuốn / gay cấn", pos: "adj.", pronunciation_vi: "SE-ru", pronunciation_en: "SE-roo" },
-      { word: "membosankan", en: "boring", vi: "chán / nhàm", pos: "adj.", pronunciation_vi: "mem-bo-SAN-kan", pronunciation_en: "mem-bo-SAN-kan" },
-      { word: "sebenarnya", en: "actually / in fact", vi: "thật ra", pos: "adv.", pronunciation_vi: "se-be-NAR-nya", pronunciation_en: "se-be-NAR-nya" },
+      { cell_id: "acd5b0a0-ea81-4ee2-9ff8-36e28a088194", word: "alur cerita", en: "plot / storyline", vi: "cốt truyện / mạch truyện", pos: "noun", pronunciation_vi: "A-lur che-RI-ta", pronunciation_en: "A-loor che-REE-ta" },
+      { cell_id: "6b515eaa-d608-45e8-84b5-c102b56c942a", word: "akting", en: "acting", vi: "diễn xuất", pos: "noun", pronunciation_vi: "AK-ting", pronunciation_en: "AK-teeng" },
+      { cell_id: "874fb731-ce47-48b8-8256-060912aa4abb", word: "pemain", en: "actor / player", vi: "diễn viên", pos: "noun", pronunciation_vi: "pe-MAIN", pronunciation_en: "pe-MAIN" },
+      { cell_id: "b487ae85-3d77-4eab-a3c6-cf90cc4989eb", word: "ending", en: "ending", vi: "cái kết", pos: "noun", pronunciation_vi: "EN-ding", pronunciation_en: "EN-deeng" },
+      { cell_id: "a6bb1da3-d6b6-44f1-a41d-fb2c5e30713a", word: "mengecewakan", en: "disappointing", vi: "gây thất vọng", pos: "adj./verb", pronunciation_vi: "me-nge-che-WA-kan", pronunciation_en: "me-nge-che-WA-kan" },
+      { cell_id: "328dc966-3458-4e0c-823e-fd6a71fcda31", word: "penasaran", en: "curious / eager to know", vi: "tò mò", pos: "adj.", pronunciation_vi: "pe-na-SA-ran", pronunciation_en: "pe-na-SA-ran" },
+      { cell_id: "cf88d301-a01b-4c55-8ff2-7f5babc53a89", word: "seru", en: "exciting / gripping", vi: "cuốn / gay cấn", pos: "adj.", pronunciation_vi: "SE-ru", pronunciation_en: "SE-roo" },
+      { cell_id: "ee7fa07e-4e36-4380-8e2a-eacca8ea745a", word: "membosankan", en: "boring", vi: "chán / nhàm", pos: "adj.", pronunciation_vi: "mem-bo-SAN-kan", pronunciation_en: "mem-bo-SAN-kan" },
+      { cell_id: "5562ba06-b2f0-4486-b391-4f7ca564b76a", word: "sebenarnya", en: "actually / in fact", vi: "thật ra", pos: "adv.", pronunciation_vi: "se-be-NAR-nya", pronunciation_en: "se-be-NAR-nya" },
     ],
     dialogue: [
-      { speaker: "Nina", text: "Gimana menurutmu film yang kita tonton kemarin?", vi: "Cậu thấy bộ phim bọn mình xem hôm qua thế nào?", en: "What did you think of the film we watched yesterday?" },
-      { speaker: "Reza", text: "Aktingnya bagus, tapi menurutku alurnya terlalu dipanjang-panjangkan.", vi: "Diễn xuất hay, nhưng theo tớ mạch truyện bị kéo dài lê thê quá.", en: "The acting was good, but I think the plot was dragged out too much." },
-      { speaker: "Nina", text: "Setuju. Endingnya juga agak mengecewakan. Sebenarnya bisa lebih singkat.", vi: "Đồng ý. Cái kết cũng hơi thất vọng. Thật ra có thể ngắn gọn hơn.", en: "Agreed. The ending was a bit disappointing too. It could honestly be shorter." },
-      { speaker: "Reza", text: "Tapi aku penasaran sama kelanjutannya. Katanya bakal ada season dua.", vi: "Nhưng tớ tò mò phần tiếp theo. Nghe nói sẽ có mùa hai.", en: "But I'm curious about the continuation. They say there'll be a season two." },
+      { cell_id: "453ae0c1-6461-44de-a9e6-769661db8e25", speaker: "Nina", text: "Gimana menurutmu film yang kita tonton kemarin?", vi: "Cậu thấy bộ phim bọn mình xem hôm qua thế nào?", en: "What did you think of the film we watched yesterday?" },
+      { cell_id: "cf40fdee-84b2-4543-bfcc-b5d031f84d04", speaker: "Reza", text: "Aktingnya bagus, tapi menurutku alurnya terlalu dipanjang-panjangkan.", vi: "Diễn xuất hay, nhưng theo tớ mạch truyện bị kéo dài lê thê quá.", en: "The acting was good, but I think the plot was dragged out too much." },
+      { cell_id: "79a63331-af40-47fe-9ae3-e0a752ca571f", speaker: "Nina", text: "Setuju. Endingnya juga agak mengecewakan. Sebenarnya bisa lebih singkat.", vi: "Đồng ý. Cái kết cũng hơi thất vọng. Thật ra có thể ngắn gọn hơn.", en: "Agreed. The ending was a bit disappointing too. It could honestly be shorter." },
+      { cell_id: "7a408430-2ba4-4ff4-8c2d-9f11b2a315ca", speaker: "Reza", text: "Tapi aku penasaran sama kelanjutannya. Katanya bakal ada season dua.", vi: "Nhưng tớ tò mò phần tiếp theo. Nghe nói sẽ có mùa hai.", en: "But I'm curious about the continuation. They say there'll be a season two." },
     ],
     exercises: [
       {

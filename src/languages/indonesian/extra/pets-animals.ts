@@ -32,6 +32,7 @@ type LessonSentence = {
 };
 
 type VocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -43,6 +44,7 @@ type VocabEntry = {
 };
 
 type DialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -159,6 +161,7 @@ export const petsAnimalsLessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: animals take their own classifier 'ekor' (literally 'tail') — 'seekor anjing' (one dog), 'tiga ekor ayam' (three chickens). It mirrors Vietnamese 'con', so it feels familiar. The linker 'yang' = 'that/which' attaches an adjective to a noun: 'air yang bersih' (water that is clean). 'Memberi makan' (to feed) is a fixed phrase — keep it together.",
     vocabulary: [
       {
+        cell_id: "305ef525-046f-4d63-847b-b9773c783b40",
         word: "kucing",
         en: "cat",
         vi: "mèo",
@@ -167,6 +170,7 @@ export const petsAnimalsLessons: IndonesianLesson[] = [
         pronunciation_en: "KOO-ching",
       },
       {
+        cell_id: "a1b4fab0-205a-419c-a682-30db0c1d0481",
         word: "anjing",
         en: "dog",
         vi: "chó",
@@ -175,6 +179,7 @@ export const petsAnimalsLessons: IndonesianLesson[] = [
         pronunciation_en: "AN-jing",
       },
       {
+        cell_id: "bacc7f38-40b4-41de-850b-cc4c79ca13b4",
         word: "hewan peliharaan",
         en: "pet",
         vi: "thú cưng",
@@ -183,6 +188,7 @@ export const petsAnimalsLessons: IndonesianLesson[] = [
         pronunciation_en: "HEH-wan pe-lee-ha-RA-an",
       },
       {
+        cell_id: "39ac9624-1897-430d-b3ac-1b6baf2f6335",
         word: "ekor",
         en: "tail (animal classifier)",
         vi: "đuôi / con (loại từ động vật)",
@@ -191,6 +197,7 @@ export const petsAnimalsLessons: IndonesianLesson[] = [
         pronunciation_en: "EH-kor",
       },
       {
+        cell_id: "71611359-4225-46c5-a7c6-9fbe05e4162e",
         word: "memberi makan",
         en: "to feed",
         vi: "cho ăn",
@@ -199,6 +206,7 @@ export const petsAnimalsLessons: IndonesianLesson[] = [
         pronunciation_en: "mem-BEH-ree MA-kan",
       },
       {
+        cell_id: "7b9ba7a7-8404-4575-8b4a-b84d9a4daa90",
         word: "jinak",
         en: "tame / gentle",
         vi: "hiền / thuần",
@@ -207,6 +215,7 @@ export const petsAnimalsLessons: IndonesianLesson[] = [
         pronunciation_en: "JEE-nak",
       },
       {
+        cell_id: "67a7553c-dba0-4df1-8ff6-dc780420cf6a",
         word: "ramah",
         en: "friendly",
         vi: "thân thiện",
@@ -215,6 +224,7 @@ export const petsAnimalsLessons: IndonesianLesson[] = [
         pronunciation_en: "RA-mah",
       },
       {
+        cell_id: "ebdac1f1-0366-46c5-980d-89852301b3ea",
         word: "ikan",
         en: "fish",
         vi: "cá",
@@ -223,6 +233,7 @@ export const petsAnimalsLessons: IndonesianLesson[] = [
         pronunciation_en: "EE-kan",
       },
       {
+        cell_id: "812ce134-3ad4-4185-8f1d-e3f6cba3a309",
         word: "burung",
         en: "bird",
         vi: "chim",
@@ -233,24 +244,28 @@ export const petsAnimalsLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "a77d2700-af76-482f-88a5-300d5c66bb70",
         speaker: "Rina",
         text: "Kamu punya hewan peliharaan di rumah?",
         vi: "Bạn có thú cưng ở nhà không?",
         en: "Do you have a pet at home?",
       },
       {
+        cell_id: "6e5730af-a01c-48c1-b0a8-beeeaec2a36a",
         speaker: "Tono",
         text: "Iya, saya punya seekor kucing. Namanya Mimi.",
         vi: "Có, tôi có một con mèo. Tên nó là Mimi.",
         en: "Yes, I have a cat. Her name is Mimi.",
       },
       {
+        cell_id: "17aea0e1-f497-4b55-a8a8-d5741939a2fd",
         speaker: "Rina",
         text: "Lucu! Kucingnya jinak?",
         vi: "Dễ thương quá! Con mèo có hiền không?",
         en: "Cute! Is the cat tame?",
       },
       {
+        cell_id: "ce664b90-1800-44c5-bdb2-d7b7b0e439f7",
         speaker: "Tono",
         text: "Sangat jinak. Setiap pagi saya memberi makan dia.",
         vi: "Rất hiền. Mỗi sáng tôi cho nó ăn.",
@@ -391,6 +406,7 @@ export const petsAnimalsLessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: use 'atau' (or) to offer a choice — 'disuntik atau diberi obat?' (injection or oral medicine?). The passive 'di-' prefix is everywhere at the clinic: disuntik (injected), diperiksa (examined), divaksin (vaccinated). Reusable take-to frame: 'Saya mau membawa … ke dokter hewan' (I want to take … to the vet).",
     vocabulary: [
       {
+        cell_id: "614e0e47-747a-440c-a874-a795f2c12d2e",
         word: "dokter hewan",
         en: "veterinarian",
         vi: "bác sĩ thú y",
@@ -399,6 +415,7 @@ export const petsAnimalsLessons: IndonesianLesson[] = [
         pronunciation_en: "DOK-ter HEH-wan",
       },
       {
+        cell_id: "39538461-28f6-4912-b074-1bb0c3f82f4c",
         word: "vaksin",
         en: "vaccine",
         vi: "vắc-xin",
@@ -407,6 +424,7 @@ export const petsAnimalsLessons: IndonesianLesson[] = [
         pronunciation_en: "VAK-sin",
       },
       {
+        cell_id: "309339cc-7ba0-48ee-bbdb-caded2fe9123",
         word: "rabies",
         en: "rabies",
         vi: "bệnh dại",
@@ -415,6 +433,7 @@ export const petsAnimalsLessons: IndonesianLesson[] = [
         pronunciation_en: "RA-bee-es",
       },
       {
+        cell_id: "d4d5af85-764a-490b-8e38-28b2f8774124",
         word: "membawa",
         en: "to bring / take",
         vi: "mang / đưa đi",
@@ -423,6 +442,7 @@ export const petsAnimalsLessons: IndonesianLesson[] = [
         pronunciation_en: "mem-BA-wa",
       },
       {
+        cell_id: "ed6d5ea2-a183-469a-800a-74c77328321e",
         word: "sakit",
         en: "sick / it hurts",
         vi: "ốm / đau",
@@ -431,6 +451,7 @@ export const petsAnimalsLessons: IndonesianLesson[] = [
         pronunciation_en: "SA-kit",
       },
       {
+        cell_id: "0d33f22f-debc-4ada-b007-cc3f4519e076",
         word: "sterilisasi",
         en: "spaying / neutering",
         vi: "triệt sản",
@@ -439,6 +460,7 @@ export const petsAnimalsLessons: IndonesianLesson[] = [
         pronunciation_en: "ste-ree-lee-SA-see",
       },
       {
+        cell_id: "25897190-bedf-4ff2-933b-b1db4e57667c",
         word: "pemeriksaan",
         en: "examination / check-up",
         vi: "việc khám",
@@ -447,6 +469,7 @@ export const petsAnimalsLessons: IndonesianLesson[] = [
         pronunciation_en: "pe-me-rik-SA-an",
       },
       {
+        cell_id: "dd5cc218-f4fe-49ca-8cec-89de0b284400",
         word: "obat",
         en: "medicine",
         vi: "thuốc",
@@ -455,6 +478,7 @@ export const petsAnimalsLessons: IndonesianLesson[] = [
         pronunciation_en: "OH-bat",
       },
       {
+        cell_id: "f4d73cf8-5de7-4446-9b60-5c274451c917",
         word: "sehat",
         en: "healthy",
         vi: "khỏe mạnh",
@@ -465,24 +489,28 @@ export const petsAnimalsLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "6451ef16-403e-4b58-99a0-efeb4f1f7f54",
         speaker: "Pemilik",
         text: "Dok, anjing saya tidak mau makan sejak kemarin.",
         vi: "Bác sĩ ơi, con chó của tôi không chịu ăn từ hôm qua.",
         en: "Doctor, my dog won't eat since yesterday.",
       },
       {
+        cell_id: "510295d6-0ef8-4004-8e5f-0a2644c52192",
         speaker: "Dokter hewan",
         text: "Baik, kita periksa dulu. Sudah pernah divaksin?",
         vi: "Được, mình khám trước. Đã từng tiêm phòng chưa?",
         en: "Alright, let's examine it first. Has it been vaccinated?",
       },
       {
+        cell_id: "c88a3a3c-761c-496b-bcc3-222442cccfac",
         speaker: "Pemilik",
         text: "Belum tahun ini. Apakah perlu vaksin rabies?",
         vi: "Năm nay thì chưa. Có cần tiêm phòng dại không?",
         en: "Not this year. Does it need a rabies vaccine?",
       },
       {
+        cell_id: "73e0ec0f-57ce-4a6c-a433-9a5a7febaf6e",
         speaker: "Dokter hewan",
         text: "Perlu. Hari ini saya beri obat, lalu disuntik minggu depan.",
         vi: "Cần. Hôm nay tôi cho thuốc, rồi tuần sau tiêm.",
@@ -623,6 +651,7 @@ export const petsAnimalsLessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: 'rather than' uses 'daripada' — 'daripada membeli, lebih baik mengadopsi' (rather than buy, better to adopt). 'lebih + adjective' = comparative: lebih baik (better), lebih besar (bigger). Reduplicated 'baik-baik' means 'carefully' (not a plural) — note that Indonesian reduplication has several meanings, not only plurals.",
     vocabulary: [
       {
+        cell_id: "83f72b08-2308-42c2-827f-d327a8d229d3",
         word: "toko hewan",
         en: "pet shop",
         vi: "cửa hàng thú cưng",
@@ -631,6 +660,7 @@ export const petsAnimalsLessons: IndonesianLesson[] = [
         pronunciation_en: "TOH-ko HEH-wan",
       },
       {
+        cell_id: "b690ecb2-d49c-47b1-811f-25e29e974ff2",
         word: "makanan kucing",
         en: "cat food",
         vi: "thức ăn cho mèo",
@@ -639,6 +669,7 @@ export const petsAnimalsLessons: IndonesianLesson[] = [
         pronunciation_en: "ma-KA-nan KOO-ching",
       },
       {
+        cell_id: "8b7577e4-b3e6-44da-a2c6-de2555051b5f",
         word: "kandang",
         en: "cage / kennel",
         vi: "chuồng / lồng",
@@ -647,6 +678,7 @@ export const petsAnimalsLessons: IndonesianLesson[] = [
         pronunciation_en: "KAN-dang",
       },
       {
+        cell_id: "4ec81d33-2e33-4508-abbe-68e591903170",
         word: "mengadopsi",
         en: "to adopt",
         vi: "nhận nuôi",
@@ -655,6 +687,7 @@ export const petsAnimalsLessons: IndonesianLesson[] = [
         pronunciation_en: "meng-a-DOP-see",
       },
       {
+        cell_id: "515db504-bf08-4de3-ac10-bcc1f47bd16e",
         word: "terlantar",
         en: "abandoned / neglected",
         vi: "bị bỏ rơi",
@@ -663,6 +696,7 @@ export const petsAnimalsLessons: IndonesianLesson[] = [
         pronunciation_en: "ter-LAN-tar",
       },
       {
+        cell_id: "030bb6ba-ae5b-42c1-83b3-3c9ad50defb0",
         word: "kasih sayang",
         en: "love / affection",
         vi: "tình yêu thương",
@@ -671,6 +705,7 @@ export const petsAnimalsLessons: IndonesianLesson[] = [
         pronunciation_en: "KA-sih SA-yang",
       },
       {
+        cell_id: "c57ff62e-f476-4a57-95de-ce4d01de6ac2",
         word: "tanggung jawab",
         en: "responsibility",
         vi: "trách nhiệm",
@@ -679,6 +714,7 @@ export const petsAnimalsLessons: IndonesianLesson[] = [
         pronunciation_en: "tang-GOONG JA-wab",
       },
       {
+        cell_id: "a4890677-f821-46f3-ad9f-6db9ddfdc782",
         word: "merawat",
         en: "to care for / look after",
         vi: "chăm sóc",
@@ -687,6 +723,7 @@ export const petsAnimalsLessons: IndonesianLesson[] = [
         pronunciation_en: "me-RA-wat",
       },
       {
+        cell_id: "fe482a3e-b2e5-4336-898d-615cb8381fd8",
         word: "pasir kucing",
         en: "cat litter",
         vi: "cát vệ sinh cho mèo",
@@ -697,24 +734,28 @@ export const petsAnimalsLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "ce1dca03-5539-410f-a904-acbf436e5ad1",
         speaker: "Pembeli",
         text: "Mbak, saya cari makanan kucing dan pasir. Ada?",
         vi: "Chị ơi, tôi tìm thức ăn cho mèo và cát. Có không?",
         en: "Miss, I'm looking for cat food and litter. Do you have them?",
       },
       {
+        cell_id: "e246e9b8-4ce2-41db-8b99-1452696fb4ab",
         speaker: "Penjual",
         text: "Ada, di rak sebelah sana. Mau adopsi kucing juga? Ada yang terlantar.",
         vi: "Có, ở kệ phía bên kia. Có muốn nhận nuôi mèo không? Có con bị bỏ rơi.",
         en: "Yes, on the shelf over there. Want to adopt a cat too? There's an abandoned one.",
       },
       {
+        cell_id: "ed9031ea-c75b-45b6-972c-2e50c647d642",
         speaker: "Pembeli",
         text: "Boleh saya lihat? Tapi kandang saya kecil.",
         vi: "Tôi xem được không? Nhưng chuồng tôi nhỏ.",
         en: "May I see it? But my cage is small.",
       },
       {
+        cell_id: "cd40a0f0-ca4d-46dd-9362-703a7b32032c",
         speaker: "Penjual",
         text: "Tidak apa-apa. Yang penting dirawat dengan kasih sayang.",
         vi: "Không sao. Quan trọng là được chăm sóc bằng tình yêu thương.",

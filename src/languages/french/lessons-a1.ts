@@ -556,6 +556,7 @@ export const lessons: FrenchLesson[] = [
     "tip_advice_en": "When you introduce family in French, use *voici* ('here is/are') rather than *c'est* — it sounds more natural for in-person introductions. French collapses 'older/younger brother/sister' into *frère* and *sœur*; if age matters, add *grand* (older) or *petit* (younger). English speakers often want a separate word for 'older sister' — there isn't one.",
     "vocabulary": [
       {
+        cell_id: "c125af52-4247-4371-8977-33e77e5695b4",
         "word": "la mère",
         "en": "mother",
         "vi": "mẹ",
@@ -563,6 +564,7 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_vi": "la ME-rờ — 'è' đọc 'e' mở"
       },
       {
+        cell_id: "fb2688c8-2b81-47b5-9a7f-3b66ca36ae1d",
         "word": "le père",
         "en": "father",
         "vi": "bố",
@@ -570,6 +572,7 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_vi": "lơ PE-rờ — 'è' đọc 'e' mở"
       },
       {
+        cell_id: "d5e14b77-80e6-41e9-9803-2644625ebe6e",
         "word": "le frère",
         "en": "brother",
         "vi": "anh/em trai",
@@ -577,6 +580,7 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_vi": "lơ PHRE-rờ — 'fr' đọc 'phr'"
       },
       {
+        cell_id: "5f0a8b22-dcd5-4814-ad69-ae458098d87f",
         "word": "la sœur",
         "en": "sister",
         "vi": "chị/em gái",
@@ -584,6 +588,7 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_vi": "la XƠR — 'œu' đọc 'ơ'"
       },
       {
+        cell_id: "67a4d850-3c61-4f17-9b63-3150c6539901",
         "word": "le fils",
         "en": "son",
         "vi": "con trai",
@@ -591,6 +596,7 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_vi": "lơ PHÍT — 'l' đọc nhẹ, 's' cuối KHÔNG đọc"
       },
       {
+        cell_id: "0c5c6177-d714-4ed2-9e55-02318ed87e94",
         "word": "la fille",
         "en": "daughter",
         "vi": "con gái",
@@ -598,6 +604,7 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_vi": "la PHIY — 'ill' đọc 'iy'"
       },
       {
+        cell_id: "83001009-9b0e-4b12-9594-700b898138fe",
         "word": "le mari",
         "en": "husband",
         "vi": "chồng",
@@ -605,6 +612,7 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_vi": "lơ ma-RI — 'a' ngắn, nhấn cuối"
       },
       {
+        cell_id: "20fe10c8-437c-40f7-a428-be4d357a76a3",
         "word": "la femme",
         "en": "wife",
         "vi": "vợ",
@@ -612,6 +620,7 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_vi": "la PHAM — 'e' đọc 'a', 'm' mím môi"
       },
       {
+        cell_id: "7d1f6539-da2f-4a95-bb43-0dfcef03427a",
         "word": "les grands-parents",
         "en": "grandparents",
         "vi": "ông bà",
@@ -619,6 +628,7 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_vi": "lê grăn pa-RĂN — 'an' âm mũi, 's' cuối KHÔNG đọc"
       },
       {
+        cell_id: "18f08490-8e2e-4eeb-afc2-77a30a3d9e60",
         "word": "l'enfant",
         "en": "child",
         "vi": "đứa trẻ",
@@ -628,21 +638,25 @@ export const lessons: FrenchLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "3656991b-2809-4d37-b09b-117fffdf81e3",
         "speaker": "A",
         "text": "Tu as des frères et sœurs ?",
         "vi": "Bạn có anh chị em không?"
       },
       {
+        cell_id: "37736fd1-ff2e-421b-a7f8-63ab9d128d9e",
         "speaker": "B",
         "text": "Oui, j'ai une grande sœur et un petit frère.",
         "vi": "Có, tôi có một chị gái và một em trai."
       },
       {
+        cell_id: "2f9ba259-3a22-44bc-874c-2ccbe2f7f477",
         "speaker": "A",
         "text": "Ils habitent où ?",
         "vi": "Họ sống ở đâu?"
       },
       {
+        cell_id: "1fa914da-ba4b-4e78-868d-445a3bc598a3",
         "speaker": "B",
         "text": "Ma sœur est à Lyon, mon frère habite encore avec mes parents.",
         "vi": "Chị tôi ở Lyon, em trai tôi vẫn ở với bố mẹ."
@@ -840,6 +854,7 @@ export const lessons: FrenchLesson[] = [
     "tip_advice_en": "Reflexive verbs (*se réveiller*, *se laver*, *se coucher*) are the key to talking about your daily routine — English collapses these into one verb ('I wake up', 'I wash', 'I go to bed'), but French requires the 'me/te/se' pronoun. Practice in front of the mirror as a script: 'Je me réveille... je me lave... je prends...' Repetition fixes the pronoun habit faster than memorising a table.",
     "vocabulary": [
       {
+        cell_id: "cb5c37a9-3fe1-4370-8aa6-5826bc5a8d9d",
         "word": "se réveiller",
         "en": "to wake up",
         "vi": "thức dậy",
@@ -847,6 +862,7 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_vi": "xơ rê-vê-YÊ — 'ill' đọc 'y'"
       },
       {
+        cell_id: "d95c7904-0a7b-4fd0-93bb-6201db07cd65",
         "word": "se lever",
         "en": "to get up",
         "vi": "ra khỏi giường",
@@ -854,6 +870,7 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_vi": "xơ lơ-VÊ — 'er' đọc 'ê'"
       },
       {
+        cell_id: "3fd03442-6b75-492f-b9fb-ea97125709ef",
         "word": "se laver",
         "en": "to wash oneself",
         "vi": "rửa mặt / tắm",
@@ -861,6 +878,7 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_vi": "xơ la-VÊ — 'a' ngắn"
       },
       {
+        cell_id: "0585da78-0a58-42ad-97b1-9566f0b1a1ce",
         "word": "s'habiller",
         "en": "to get dressed",
         "vi": "mặc quần áo",
@@ -868,6 +886,7 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_vi": "xa-bi-YÊ — 'h' KHÔNG đọc, 'ill' đọc 'y'"
       },
       {
+        cell_id: "8b7be4d0-ab3f-4b73-99be-ffa6788063f4",
         "word": "prendre",
         "en": "to take",
         "vi": "lấy / ăn / uống",
@@ -875,6 +894,7 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_vi": "PRĂN-đrơ — 'en' âm mũi"
       },
       {
+        cell_id: "ba84639e-671c-412f-bbc6-2ab42a271edc",
         "word": "le petit-déjeuner",
         "en": "breakfast",
         "vi": "bữa sáng",
@@ -882,6 +902,7 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_vi": "pơ-ti đê-dơ-NÊ"
       },
       {
+        cell_id: "dd052f82-962d-4803-b88b-762bb05fb279",
         "word": "le déjeuner",
         "en": "lunch",
         "vi": "bữa trưa",
@@ -889,6 +910,7 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_vi": "đê-dơ-NÊ — nhấn cuối"
       },
       {
+        cell_id: "cf00dc70-111b-4743-bdab-57051d5c0e35",
         "word": "le dîner",
         "en": "dinner",
         "vi": "bữa tối",
@@ -896,6 +918,7 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_vi": "đi-NÊ — 'î' đọc 'i' dài"
       },
       {
+        cell_id: "ef4597ec-124c-46ca-b3f5-ada138305203",
         "word": "se coucher",
         "en": "to go to bed",
         "vi": "đi ngủ",
@@ -903,6 +926,7 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_vi": "xơ cu-SÊ — 'ou' đọc 'u'"
       },
       {
+        cell_id: "1dc3531e-2216-4829-9680-4300c250e8a7",
         "word": "travailler",
         "en": "to work",
         "vi": "làm việc",
@@ -912,21 +936,25 @@ export const lessons: FrenchLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "4012f8f4-47a0-4377-bafb-cf9bb5e3eb23",
         "speaker": "A",
         "text": "À quelle heure tu te lèves le matin ?",
         "vi": "Sáng bạn dậy lúc mấy giờ?"
       },
       {
+        cell_id: "f403e685-602e-4a07-be86-5701c19ab5dc",
         "speaker": "B",
         "text": "Je me lève à six heures et demie.",
         "vi": "Tôi dậy lúc sáu rưỡi."
       },
       {
+        cell_id: "6f22b4c0-ec54-4b32-afca-b4198678c293",
         "speaker": "A",
         "text": "Et tu prends le petit-déjeuner ?",
         "vi": "Bạn có ăn sáng không?"
       },
       {
+        cell_id: "9ebdb002-b6d2-4aa9-9cce-608389e6eca1",
         "speaker": "B",
         "text": "Oui, un café et une tartine, puis je pars au travail.",
         "vi": "Có, cà phê và bánh mì bơ, rồi tôi đi làm."
@@ -1104,6 +1132,7 @@ export const lessons: FrenchLesson[] = [
     "tip_advice_en": "Two patterns do most of the work for weather. *Il fait + adjective*: *il fait beau* (nice), *chaud* (hot), *froid* (cold), *gris* (grey/overcast), *doux* (mild). And *il y a + du/de la/des + noun*: *du soleil* (sun), *du vent* (wind), *des nuages* (clouds), *de la pluie* (rain). Note 'it' is *il* (literally 'he') — French has no neuter pronoun.",
     "vocabulary": [
       {
+        cell_id: "66eb35ae-e395-4f16-acc9-0c1b7cfa763c",
         "word": "le soleil",
         "en": "sun",
         "vi": "mặt trời / nắng",
@@ -1111,6 +1140,7 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_vi": "lơ xô-LAY — 'ei' đọc 'ê'"
       },
       {
+        cell_id: "5324f505-5436-4f3f-90a4-3c3ca3f91904",
         "word": "la pluie",
         "en": "rain",
         "vi": "mưa",
@@ -1118,6 +1148,7 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_vi": "la PLUY — 'ui' đọc 'uy', 'e' cuối KHÔNG đọc"
       },
       {
+        cell_id: "2907d28c-862c-4b39-a4f8-934a9941bc38",
         "word": "le vent",
         "en": "wind",
         "vi": "gió",
@@ -1125,6 +1156,7 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_vi": "lơ VĂN — 'en' âm mũi, 't' KHÔNG đọc"
       },
       {
+        cell_id: "8237fb92-16ae-4e15-a97f-8f95a9599782",
         "word": "la neige",
         "en": "snow",
         "vi": "tuyết",
@@ -1132,6 +1164,7 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_vi": "la NE-D — 'ei' đọc 'ê', 'ge' đọc 'd' mềm"
       },
       {
+        cell_id: "1c6bae38-db35-40d2-95bd-9669ab180df0",
         "word": "le nuage",
         "en": "cloud",
         "vi": "mây",
@@ -1139,6 +1172,7 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_vi": "lơ NU-A-D — 'u' đọc 'uy'"
       },
       {
+        cell_id: "89d00953-cd60-420e-bc27-d4386880c31b",
         "word": "chaud",
         "en": "hot",
         "vi": "nóng",
@@ -1146,6 +1180,7 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_vi": "SÔ — 'au' đọc 'ô', 'd' KHÔNG đọc"
       },
       {
+        cell_id: "0a170427-c6b9-44ca-b764-360221f45ef4",
         "word": "froid",
         "en": "cold",
         "vi": "lạnh",
@@ -1153,6 +1188,7 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_vi": "PHROA — 'oi' đọc 'oa', 'd' KHÔNG đọc"
       },
       {
+        cell_id: "456321a4-e643-42fa-8bef-751c2491543c",
         "word": "le printemps",
         "en": "spring",
         "vi": "mùa xuân",
@@ -1160,6 +1196,7 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_vi": "lơ PRANG-TĂM — 'in' âm mũi, 's' KHÔNG đọc"
       },
       {
+        cell_id: "8e2549be-ed39-4e32-8ecc-956e3cc4f898",
         "word": "l'été",
         "en": "summer",
         "vi": "mùa hè",
@@ -1167,6 +1204,7 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_vi": "lê-TÊ — 'é' đọc 'ê' dài"
       },
       {
+        cell_id: "7f3b6916-e757-4118-8218-c7b32db761ab",
         "word": "l'hiver",
         "en": "winter",
         "vi": "mùa đông",
@@ -1176,21 +1214,25 @@ export const lessons: FrenchLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "856ea169-d425-4f2a-900e-ab0d38f1be75",
         "speaker": "A",
         "text": "Il fait quel temps chez toi ?",
         "vi": "Thời tiết chỗ bạn thế nào?"
       },
       {
+        cell_id: "069d9115-53cf-49c3-81db-12740a3a71c5",
         "speaker": "B",
         "text": "Il pleut depuis ce matin. Et toi ?",
         "vi": "Mưa từ sáng. Còn bạn?"
       },
       {
+        cell_id: "f27041f3-dae1-48f3-bbe2-eb4ce4a9cae8",
         "speaker": "A",
         "text": "Ici, il fait beau, grand soleil !",
         "vi": "Ở đây trời đẹp, nắng to!"
       },
       {
+        cell_id: "828f038c-42a7-4d99-8a0a-e59213ef2357",
         "speaker": "B",
         "text": "Tu as de la chance ! Moi, j'en ai marre de la pluie.",
         "vi": "Bạn may mắn thật! Tôi chán mưa lắm rồi."
@@ -1370,6 +1412,7 @@ export const lessons: FrenchLesson[] = [
     "tip_advice_en": "Learn the 12-hour form first: *Il est … heures*. Layer the 24-hour version on top once that's automatic. The three phrases you'll use constantly: *et quart* (quarter past), *et demie* (half past), *moins le quart* (quarter to). Note 'half past' uses *demie* (not 'thirty') — closer to British 'half past' than to 'four thirty'.",
     "vocabulary": [
       {
+        cell_id: "12bc5d08-4e26-4efd-8e22-65f948debf62",
         "word": "l'heure",
         "en": "hour / time",
         "vi": "giờ",
@@ -1377,6 +1420,7 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_vi": "LƠR — 'h' KHÔNG đọc, 'eu' đọc 'ơ'"
       },
       {
+        cell_id: "ab19a223-e532-4de9-8c5e-86996acaddf2",
         "word": "la minute",
         "en": "minute",
         "vi": "phút",
@@ -1384,6 +1428,7 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_vi": "la mi-NUYT — 'u' đọc 'uy'"
       },
       {
+        cell_id: "64e37f0d-b7f8-4812-a851-640940964f27",
         "word": "la seconde",
         "en": "second",
         "vi": "giây",
@@ -1391,6 +1436,7 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_vi": "la xơ-GÔNGĐ — 'on' âm mũi"
       },
       {
+        cell_id: "29939948-7295-4a4d-81ef-2cf748e19f3e",
         "word": "lundi",
         "en": "Monday",
         "vi": "thứ Hai",
@@ -1398,6 +1444,7 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_vi": "lăng-ĐI — 'un' âm mũi"
       },
       {
+        cell_id: "809a9a4c-6d5d-43da-9a5f-1983ac66fa6e",
         "word": "mardi",
         "en": "Tuesday",
         "vi": "thứ Ba",
@@ -1405,6 +1452,7 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_vi": "ma-ĐI"
       },
       {
+        cell_id: "3b6e3fe8-352a-4240-8c58-1310e4aa2a36",
         "word": "mercredi",
         "en": "Wednesday",
         "vi": "thứ Tư",
@@ -1412,6 +1460,7 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_vi": "me-crơ-ĐI — 'er' đọc 'e'"
       },
       {
+        cell_id: "6f46bdce-bc13-486b-a40d-e241920840d7",
         "word": "janvier",
         "en": "January",
         "vi": "tháng Một",
@@ -1419,6 +1468,7 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_vi": "dăng-VIÊ — 'an' âm mũi"
       },
       {
+        cell_id: "363ab996-c816-4302-b384-a9b911ef850c",
         "word": "aujourd'hui",
         "en": "today",
         "vi": "hôm nay",
@@ -1426,6 +1476,7 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_vi": "ô-dua-ĐUY — nhấn 'duy'"
       },
       {
+        cell_id: "1a5745b2-0b0e-4235-8c65-753c7137e34d",
         "word": "demain",
         "en": "tomorrow",
         "vi": "ngày mai",
@@ -1433,6 +1484,7 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_vi": "đơ-MANG — 'ain' âm mũi"
       },
       {
+        cell_id: "e8ca2274-17d7-4a0b-91d6-b56b5f8bf134",
         "word": "hier",
         "en": "yesterday",
         "vi": "hôm qua",
@@ -1442,21 +1494,25 @@ export const lessons: FrenchLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "165ad1ff-1f40-4f23-b504-fa9ba0874273",
         "speaker": "A",
         "text": "Quelle heure est-il ?",
         "vi": "Mấy giờ rồi?"
       },
       {
+        cell_id: "2a3af0c7-6cef-4dc1-a896-69e1eb5a263f",
         "speaker": "B",
         "text": "Il est midi moins cinq.",
         "vi": "Mười hai giờ kém năm."
       },
       {
+        cell_id: "39edac05-19aa-4169-b25c-b300163af84a",
         "speaker": "A",
         "text": "Déjà ?! J'ai un rendez-vous à midi et quart.",
         "vi": "Rồi á?! Tôi có hẹn lúc 12h15."
       },
       {
+        cell_id: "69ae3b39-bc3d-40ff-84ac-bb16888c2230",
         "speaker": "B",
         "text": "Dépêche-toi alors !",
         "vi": "Vậy thì nhanh lên đi!"
@@ -1628,6 +1684,7 @@ export const lessons: FrenchLesson[] = [
     "tip_advice_en": "Learn the six basics first: *rouge*, *bleu*, *vert*, *jaune*, *noir*, *blanc*. Then the agreement rule: add -e for feminine, -s for plural (so *blanc* → *blanche*, *noirs* for plural). Two important exceptions that don't change form at all: *marron* (brown) and *orange* — they're invariable because they're really 'chestnut' and the fruit, used as colour names.",
     "vocabulary": [
       {
+        cell_id: "8bd9f364-21a6-493c-a8eb-bff190953852",
         "word": "rouge",
         "en": "red",
         "vi": "đỏ",
@@ -1635,6 +1692,7 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_vi": "RU-D — 'ou' đọc 'u', 'ge' đọc 'd' mềm"
       },
       {
+        cell_id: "77cdaf68-fea3-48f4-a25d-9552fbbbcb6b",
         "word": "bleu",
         "en": "blue",
         "vi": "xanh dương",
@@ -1642,6 +1700,7 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_vi": "BLƠ — 'eu' đọc 'ơ', giống 'bleh' nhưng tròn môi"
       },
       {
+        cell_id: "f5bcfdad-5a01-4a77-8861-f5a9a9502f60",
         "word": "vert",
         "en": "green",
         "vi": "xanh lá",
@@ -1649,6 +1708,7 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_vi": "VE-R — 'e' đọc 'e' mở, 't' KHÔNG đọc"
       },
       {
+        cell_id: "c7131894-1dc9-4a93-8ff0-60fcf1457b0c",
         "word": "jaune",
         "en": "yellow",
         "vi": "vàng",
@@ -1656,6 +1716,7 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_vi": "DÔN — 'au' đọc 'ô', 'ne' cuối KHÔNG đọc rõ"
       },
       {
+        cell_id: "787f3c65-6252-473c-bdfd-98f9adad1e36",
         "word": "noir",
         "en": "black",
         "vi": "đen",
@@ -1663,6 +1724,7 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_vi": "NOA — 'oi' đọc 'oa', 'r' cuối nhẹ"
       },
       {
+        cell_id: "aba7546e-31bb-4243-944e-760517e04b9e",
         "word": "blanc",
         "en": "white",
         "vi": "trắng",
@@ -1670,6 +1732,7 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_vi": "BLĂNG — 'an' âm mũi, 'c' KHÔNG đọc"
       },
       {
+        cell_id: "6cf5953e-324b-46e7-9a95-9535355a4c9b",
         "word": "rose",
         "en": "pink",
         "vi": "hồng",
@@ -1677,6 +1740,7 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_vi": "RÔ-D — 'o' đọc 'ô', 'se' đọc 'd' nhẹ"
       },
       {
+        cell_id: "57bc88c9-ad6d-4e09-aaac-3f8316c29f29",
         "word": "gris",
         "en": "grey",
         "vi": "xám",
@@ -1684,6 +1748,7 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_vi": "GRI — 'i' đọc 'i', 's' KHÔNG đọc"
       },
       {
+        cell_id: "cff995a8-b0ef-47a6-945f-d6f0a481229f",
         "word": "marron",
         "en": "brown",
         "vi": "nâu",
@@ -1691,6 +1756,7 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_vi": "ma-RÔNG — 'on' âm mũi, KHÔNG đổi giống"
       },
       {
+        cell_id: "ed453dd2-b5ce-4d6b-9b2f-ee4c0e1c56c9",
         "word": "violet",
         "en": "purple",
         "vi": "tím",
@@ -1700,21 +1766,25 @@ export const lessons: FrenchLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "79949a12-8188-4c49-8147-1b5672c1922a",
         "speaker": "A",
         "text": "Tu aimes ma nouvelle robe ?",
         "vi": "Bạn thích váy mới của tôi không?"
       },
       {
+        cell_id: "1578b009-e1e6-43f7-abd2-1205725afa3c",
         "speaker": "B",
         "text": "Oui, elle est très jolie ! Elle est de quelle couleur, bleu marine ?",
         "vi": "Có, đẹp lắm! Màu gì thế, xanh navy à?"
       },
       {
+        cell_id: "a399245b-f90d-4845-a8b9-b270db757f79",
         "speaker": "A",
         "text": "Non, c'est du violet foncé.",
         "vi": "Không, là tím đậm."
       },
       {
+        cell_id: "daffc4d0-0b63-4bcd-a1b7-6edfe07400db",
         "speaker": "B",
         "text": "Ça te va très bien.",
         "vi": "Hợp với bạn lắm."
@@ -1886,6 +1956,7 @@ export const lessons: FrenchLesson[] = [
     "tip_advice_en": "Memorise *taille* ('size') early. Three phrases do most of the work in a fitting room: *trop grand/petit* (too big/small), *ça me va* (it fits me / it suits me), *je peux essayer ?* (can I try it on?). And — same rule as everywhere else — say *bonjour* to the staff when you walk in, before you start touching anything.",
     "vocabulary": [
       {
+        cell_id: "f29aa415-a049-46c5-942e-9d963dc676f1",
         "word": "la chemise",
         "en": "shirt",
         "vi": "áo sơ mi",
@@ -1893,6 +1964,7 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_vi": "la sơ-MIZ — 'e' cuối KHÔNG đọc"
       },
       {
+        cell_id: "907edd53-2980-4bf3-9da7-24262adbc870",
         "word": "le pantalon",
         "en": "pants",
         "vi": "quần dài",
@@ -1900,6 +1972,7 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_vi": "lơ păng-ta-LÔNG — 'an' âm mũi"
       },
       {
+        cell_id: "a6a22362-5376-4481-8621-84b2cd79460d",
         "word": "la robe",
         "en": "dress",
         "vi": "váy đầm",
@@ -1907,6 +1980,7 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_vi": "la RÓP — 'o' đọc 'ô' ngắn"
       },
       {
+        cell_id: "47711a7b-5c5f-4eaf-ac61-76b74e74f557",
         "word": "le manteau",
         "en": "coat",
         "vi": "áo khoác",
@@ -1914,6 +1988,7 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_vi": "lơ măng-TÔ — 'eau' đọc 'ô'"
       },
       {
+        cell_id: "c9355dba-403c-4a3f-af93-0f5131bed8c9",
         "word": "les chaussures",
         "en": "shoes",
         "vi": "giày",
@@ -1921,6 +1996,7 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_vi": "lê sô-SUYR — 'au' đọc 'ô'"
       },
       {
+        cell_id: "0d71c7b0-9d0c-46ff-8631-4ba1acd064bf",
         "word": "le pull",
         "en": "sweater",
         "vi": "áo len",
@@ -1928,6 +2004,7 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_vi": "lơ PUYL — 'u' đọc 'uy'"
       },
       {
+        cell_id: "39fc7c8f-7634-4a51-9cd7-4c01d4618c26",
         "word": "l'écharpe",
         "en": "scarf",
         "vi": "khăn quàng",
@@ -1935,6 +2012,7 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_vi": "lê-SÁC-P — 'é' đọc 'ê'"
       },
       {
+        cell_id: "6a455236-1173-410b-82bc-8f69ef06572e",
         "word": "le chapeau",
         "en": "hat",
         "vi": "mũ",
@@ -1942,6 +2020,7 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_vi": "lơ sa-PÔ — 'eau' đọc 'ô'"
       },
       {
+        cell_id: "67c4b720-a214-46b9-a1ee-d1ea766c0b38",
         "word": "la jupe",
         "en": "skirt",
         "vi": "chân váy",
@@ -1949,6 +2028,7 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_vi": "la DUYP — 'j' đọc 'd' mềm, 'u' đọc 'uy'"
       },
       {
+        cell_id: "9cb218c5-03a9-4c5b-b48d-c5881b5b6b33",
         "word": "essayer",
         "en": "to try on",
         "vi": "thử đồ",
@@ -1958,21 +2038,25 @@ export const lessons: FrenchLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "d00542ae-a4a6-43c6-81a6-26859fd62486",
         "speaker": "A",
         "text": "Bonjour, je peux vous aider ?",
         "vi": "Chào chị, tôi giúp gì được ạ?"
       },
       {
+        cell_id: "100b9c08-9ade-4868-8f67-824ba2d58511",
         "speaker": "B",
         "text": "Oui, je cherche une veste pour l'automne.",
         "vi": "Vâng, tôi đang tìm áo khoác cho mùa thu."
       },
       {
+        cell_id: "ce706e31-626e-4a65-ad3a-e13c40eda3e4",
         "speaker": "A",
         "text": "Quelle taille faites-vous ?",
         "vi": "Chị mặc cỡ nào ạ?"
       },
       {
+        cell_id: "b67d3577-25a8-4369-9af0-d695e3fc6f3b",
         "speaker": "B",
         "text": "Du 38, je pense. Vous avez du noir ?",
         "vi": "Cỡ 38 tôi nghĩ. Có màu đen không ạ?"
@@ -2144,6 +2228,7 @@ export const lessons: FrenchLesson[] = [
     "tip_advice_en": "Three lines do most of the work: *un ticket, s'il vous plaît* (one ticket, please), *c'est direct ?* (is it direct?), *je descends à la prochaine* (I'm getting off at the next stop). Drill the numbers in French so you can recognise *ligne quarante-deux* (line 42) when a driver rattles it off at speed — they will not slow down for you.",
     "vocabulary": [
       {
+        cell_id: "bc0df514-228a-4901-b90b-de1eea32badb",
         "word": "le métro",
         "en": "subway",
         "vi": "tàu điện ngầm",
@@ -2151,6 +2236,7 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_vi": "lơ mê-TRÔ — 'é' đọc 'ê'"
       },
       {
+        cell_id: "3a5267a7-8899-4d8f-b018-e76dd6f7256f",
         "word": "le bus",
         "en": "bus",
         "vi": "xe buýt",
@@ -2158,6 +2244,7 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_vi": "lơ BUYT — 'u' đọc 'uy', 's' KHÔNG đọc"
       },
       {
+        cell_id: "96de661d-18e6-4216-ba60-e26765220c37",
         "word": "le train",
         "en": "train",
         "vi": "tàu hỏa",
@@ -2165,6 +2252,7 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_vi": "lơ TRANG — 'ain' âm mũi"
       },
       {
+        cell_id: "2e48ad5c-c1bf-4fa0-b955-ec68020bfe28",
         "word": "la gare",
         "en": "train station",
         "vi": "ga tàu",
@@ -2172,6 +2260,7 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_vi": "la GA — 'e' cuối KHÔNG đọc"
       },
       {
+        cell_id: "0cf338b4-862d-4847-90d3-5bb472bd5ed1",
         "word": "le billet",
         "en": "ticket",
         "vi": "vé",
@@ -2179,6 +2268,7 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_vi": "lơ bi-YÊ — 'ill' đọc 'y'"
       },
       {
+        cell_id: "45c42728-c156-47dc-ac27-431916402764",
         "word": "la voiture",
         "en": "car",
         "vi": "xe hơi",
@@ -2186,6 +2276,7 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_vi": "la voa-TUYR — 'oi' đọc 'oa'"
       },
       {
+        cell_id: "9c29df48-342a-4933-a80e-ae49c6c40c8c",
         "word": "l'avion",
         "en": "airplane",
         "vi": "máy bay",
@@ -2193,6 +2284,7 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_vi": "la-VI-ÔNG — 'a' ngắn, 'on' âm mũi"
       },
       {
+        cell_id: "362884f9-e828-40d5-ad20-29e6340f8a3c",
         "word": "le vélo",
         "en": "bicycle",
         "vi": "xe đạp",
@@ -2200,6 +2292,7 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_vi": "lơ vê-LÔ — 'é' đọc 'ê'"
       },
       {
+        cell_id: "e8a09504-a3aa-4f15-a01e-65d79c083007",
         "word": "à pied",
         "en": "on foot",
         "vi": "đi bộ",
@@ -2207,6 +2300,7 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_vi": "a PIÊ — 'd' KHÔNG đọc"
       },
       {
+        cell_id: "84932d89-05a8-4deb-aff8-2a5cd481ae62",
         "word": "l'arrêt",
         "en": "stop (bus/tram)",
         "vi": "trạm dừng",
@@ -2216,21 +2310,25 @@ export const lessons: FrenchLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "0281ba16-8e83-4bcd-9e4e-fb49d86bd893",
         "speaker": "A",
         "text": "Excusez-moi, pour aller à la Tour Eiffel ?",
         "vi": "Xin lỗi, đi Tháp Eiffel thế nào ạ?"
       },
       {
+        cell_id: "8f1fde5c-e231-40b3-b333-3afdf62b909b",
         "speaker": "B",
         "text": "Prenez le métro ligne 6, direction Charles de Gaulle-Étoile.",
         "vi": "Bạn đi metro tuyến 6, hướng Charles de Gaulle-Étoile."
       },
       {
+        cell_id: "6b05a232-2460-4998-8a45-1ed9acfd51a9",
         "speaker": "A",
         "text": "Je descends à quelle station ?",
         "vi": "Tôi xuống ga nào ạ?"
       },
       {
+        cell_id: "b7eecfd1-443b-4050-b5c9-49dd8708e8a4",
         "speaker": "B",
         "text": "Bir-Hakeim. C'est direct, environ quinze minutes.",
         "vi": "Bir-Hakeim. Đi thẳng, khoảng 15 phút."
@@ -2406,6 +2504,7 @@ export const lessons: FrenchLesson[] = [
     "tip_advice_en": "Describing your place uses *il y a* ('there is/are') + noun. Two distinctions worth knowing: *la salle de bain* (bathroom with a bathtub) vs *la salle d'eau* (bathroom with just a shower) — rental listings care about the difference. And *les toilettes* is always a feminine plural in French, even though there's one toilet — quirk you just memorise.",
     "vocabulary": [
       {
+        cell_id: "ba7ce471-0070-41cf-9dfd-a66030a4c4a2",
         "word": "la maison",
         "en": "house",
         "vi": "nhà",
@@ -2413,6 +2512,7 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_vi": "la me-DÔNG — 'ai' đọc 'ê', 'on' âm mũi"
       },
       {
+        cell_id: "db346cfd-030b-4902-a325-ccad2ef791d6",
         "word": "l'appartement",
         "en": "apartment",
         "vi": "căn hộ",
@@ -2420,6 +2520,7 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_vi": "la-pa-rơ-tơ-MĂN — 'en' âm mũi"
       },
       {
+        cell_id: "c69294e4-9e7b-408d-9c4e-bac013bc9960",
         "word": "la chambre",
         "en": "bedroom",
         "vi": "phòng ngủ",
@@ -2427,6 +2528,7 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_vi": "la SĂM-brơ — 'am' âm mũi"
       },
       {
+        cell_id: "61305871-39d8-421f-92a0-4d53c892e8fc",
         "word": "la cuisine",
         "en": "kitchen",
         "vi": "nhà bếp",
@@ -2434,6 +2536,7 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_vi": "la quy-DIN — 'ui' đọc 'uy'"
       },
       {
+        cell_id: "9181ccd0-dd7d-462f-be45-3050ab573984",
         "word": "le salon",
         "en": "living room",
         "vi": "phòng khách",
@@ -2441,6 +2544,7 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_vi": "lơ xa-LÔNG — 'on' âm mũi"
       },
       {
+        cell_id: "9fe76459-bf27-43ac-a435-b28715d8a8b8",
         "word": "la salle de bain",
         "en": "bathroom",
         "vi": "phòng tắm",
@@ -2448,6 +2552,7 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_vi": "la san-đơ-BANG — 'ain' âm mũi"
       },
       {
+        cell_id: "300d93ae-0dc7-40fb-9204-0802fd0e2f1c",
         "word": "la fenêtre",
         "en": "window",
         "vi": "cửa sổ",
@@ -2455,6 +2560,7 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_vi": "la phơ-NÉ-trơ — 'ê' dài"
       },
       {
+        cell_id: "29c3f8ac-4d7c-4189-a8e0-2e00e7f63c88",
         "word": "la porte",
         "en": "door",
         "vi": "cửa",
@@ -2462,6 +2568,7 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_vi": "la PO-R-T — 'r' nhẹ, 'te' KHÔNG đọc rõ"
       },
       {
+        cell_id: "ad4a296c-1a16-4fcf-a28f-5e4a03b9361d",
         "word": "le jardin",
         "en": "garden",
         "vi": "vườn",
@@ -2469,6 +2576,7 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_vi": "lơ da-ĐANG — 'in' âm mũi"
       },
       {
+        cell_id: "873d1dc1-b85b-4ae8-8d74-8486c51e319f",
         "word": "l'étage",
         "en": "floor / storey",
         "vi": "tầng",
@@ -2478,21 +2586,25 @@ export const lessons: FrenchLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "7ead7e67-2328-4a5e-80f8-07e28154ea18",
         "speaker": "A",
         "text": "Tu habites dans quel type de logement ?",
         "vi": "Bạn sống ở loại nhà nào?"
       },
       {
+        cell_id: "5df98cdd-a762-4ac4-a14f-c294cc107da5",
         "speaker": "B",
         "text": "Un appartement avec deux chambres, au deuxième étage.",
         "vi": "Căn hộ hai phòng ngủ, tầng hai."
       },
       {
+        cell_id: "70843ada-23f0-4beb-84ae-614e981e67e7",
         "speaker": "A",
         "text": "Il y a un balcon ?",
         "vi": "Có ban công không?"
       },
       {
+        cell_id: "4ceb0263-a0e3-4ab2-949e-adaa1a411c6f",
         "speaker": "B",
         "text": "Oui, un petit balcon qui donne sur la rue.",
         "vi": "Có, một ban công nhỏ nhìn ra phố."
@@ -2664,6 +2776,7 @@ export const lessons: FrenchLesson[] = [
     "tip_advice_en": "Memorise this one rule: *jouer à* + sport/game (*je joue au tennis* — I play tennis); *jouer de* + musical instrument (*je joue du piano* — I play the piano). Different prepositions for different categories. Stock a small vocabulary of intensity verbs — *aimer* (like), *adorer* (love), *détester* (hate), *préférer* (prefer) — to describe your taste without sounding flat.",
     "vocabulary": [
       {
+        cell_id: "29a94856-0cea-490f-bf13-40807f5fd45e",
         "word": "lire",
         "en": "to read",
         "vi": "đọc",
@@ -2671,6 +2784,7 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_vi": "LI-R — 'i' dài, 're' đọc nhẹ"
       },
       {
+        cell_id: "cb4c512c-b9e3-4715-9ab4-58110ebe0dec",
         "word": "la musique",
         "en": "music",
         "vi": "âm nhạc",
@@ -2678,6 +2792,7 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_vi": "la muy-DÍC — 'u' đọc 'uy'"
       },
       {
+        cell_id: "b5aad7d0-ebef-49e0-a5b4-b7d049e254d1",
         "word": "le sport",
         "en": "sport",
         "vi": "thể thao",
@@ -2685,6 +2800,7 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_vi": "lơ XPO-R — 'r' nhẹ, 't' KHÔNG đọc"
       },
       {
+        cell_id: "a939d4a0-e91b-4e9a-bbbb-e3b6f621b1a7",
         "word": "le cinéma",
         "en": "cinema / movies",
         "vi": "rạp chiếu phim",
@@ -2692,6 +2808,7 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_vi": "lơ xi-nê-MA — 'é' đọc 'ê'"
       },
       {
+        cell_id: "7e11aad6-51b8-452f-ad80-91ef8b728191",
         "word": "le voyage",
         "en": "travel / trip",
         "vi": "chuyến du lịch",
@@ -2699,6 +2816,7 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_vi": "lơ voa-YA-D — 'ge' đọc 'd' mềm"
       },
       {
+        cell_id: "4efbf626-be73-4bfe-8b8b-c0bc81c8dacf",
         "word": "la cuisine (activité)",
         "en": "cooking",
         "vi": "nấu ăn",
@@ -2706,6 +2824,7 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_vi": "la quy-DIN"
       },
       {
+        cell_id: "98b55939-829b-4d5d-863f-fbc9e3d4bfe6",
         "word": "la peinture",
         "en": "painting",
         "vi": "vẽ tranh",
@@ -2713,6 +2832,7 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_vi": "la pang-TUY-R — 'ein' âm mũi"
       },
       {
+        cell_id: "d97cda76-5959-4df0-b099-bdd363e33aac",
         "word": "la danse",
         "en": "dancing",
         "vi": "nhảy múa",
@@ -2720,6 +2840,7 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_vi": "la ĐĂNG-X — 'an' âm mũi"
       },
       {
+        cell_id: "91d6e853-4bee-4943-a291-8fc2c667308c",
         "word": "la randonnée",
         "en": "hiking",
         "vi": "đi bộ đường dài",
@@ -2727,6 +2848,7 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_vi": "la răn-đô-NÊ — 'an' âm mũi, 'nn' đọc kép"
       },
       {
+        cell_id: "38632869-c466-4227-9193-11efb293c8cb",
         "word": "jouer",
         "en": "to play",
         "vi": "chơi",
@@ -2736,21 +2858,25 @@ export const lessons: FrenchLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "b66b3178-2f5e-4182-902e-53dc65571961",
         "speaker": "A",
         "text": "Tu fais quoi le week-end ?",
         "vi": "Cuối tuần bạn làm gì?"
       },
       {
+        cell_id: "82af7aa2-509d-4291-a317-95cf39f106da",
         "speaker": "B",
         "text": "Souvent je fais du vélo ou je lis un bon livre.",
         "vi": "Thường thì tôi đạp xe hoặc đọc sách."
       },
       {
+        cell_id: "174a1197-1207-4a2b-89e1-2d93ea2e5fb5",
         "speaker": "A",
         "text": "Moi, je joue au tennis le samedi matin.",
         "vi": "Tôi thì chơi tennis sáng thứ Bảy."
       },
       {
+        cell_id: "ee4e5e6b-8985-406a-ab3a-531589ad91c0",
         "speaker": "B",
         "text": "On pourrait jouer ensemble un jour !",
         "vi": "Có hôm nào chơi cùng đi!"
@@ -2934,6 +3060,7 @@ export const lessons: FrenchLesson[] = [
     "tip_advice_en": "The key construction: *avoir mal à* + body part = 'to hurt there' / 'to have a sore X'. *J'ai mal à la tête* (headache), *au ventre* (stomach ache), *au dos* (backache), *aux dents* (toothache). Don't translate 'I have a headache' word-for-word as *J'ai un mal de tête* — that's grammatical but no native speaker says it. *J'ai mal à la tête* is the natural form.",
     "vocabulary": [
       {
+        cell_id: "79eebd84-c6f9-46e5-8715-f1ae388a56d0",
         "word": "la tête",
         "en": "head",
         "vi": "đầu",
@@ -2941,6 +3068,7 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_vi": "la TÉT — 'ê' dài, 'e' cuối KHÔNG đọc"
       },
       {
+        cell_id: "32729234-9eea-4f83-89d5-a7c17fd0b121",
         "word": "le ventre",
         "en": "stomach",
         "vi": "bụng",
@@ -2948,6 +3076,7 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_vi": "lơ VĂNG-trờ — 'en' âm mũi"
       },
       {
+        cell_id: "8813bd98-4698-4d3d-8bb0-798195e9169c",
         "word": "le dos",
         "en": "back",
         "vi": "lưng",
@@ -2955,6 +3084,7 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_vi": "lơ ĐÔ — 's' KHÔNG đọc"
       },
       {
+        cell_id: "e6c31899-bbff-4c04-a2a0-07ce65891542",
         "word": "le bras",
         "en": "arm",
         "vi": "cánh tay",
@@ -2962,6 +3092,7 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_vi": "lơ BRA — 's' KHÔNG đọc"
       },
       {
+        cell_id: "b9fc2e8b-1e65-42ee-98f9-2e5725216c0b",
         "word": "la jambe",
         "en": "leg",
         "vi": "chân",
@@ -2969,6 +3100,7 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_vi": "la DĂNG-B — 'am' âm mũi"
       },
       {
+        cell_id: "a89cc3e7-ee27-4c7f-887b-c05e156a9777",
         "word": "le médecin",
         "en": "doctor",
         "vi": "bác sĩ",
@@ -2976,6 +3108,7 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_vi": "lơ MÉT-XĂNG — 'é' đọc 'ê', 'in' âm mũi"
       },
       {
+        cell_id: "0f9bb0a4-e82d-4181-ab9d-9d4ba9d24487",
         "word": "la pharmacie",
         "en": "pharmacy",
         "vi": "nhà thuốc",
@@ -2983,6 +3116,7 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_vi": "la pha-ma-XI — 'ph' đọc 'ph'"
       },
       {
+        cell_id: "aae8440c-7b18-446e-b544-42c24d6562d5",
         "word": "le médicament",
         "en": "medicine",
         "vi": "thuốc",
@@ -2990,6 +3124,7 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_vi": "lơ mê-đi-ca-MĂN — 'en' âm mũi"
       },
       {
+        cell_id: "8b8748f8-908e-4886-a27d-634418c99685",
         "word": "malade",
         "en": "sick",
         "vi": "ốm / bệnh",
@@ -2997,6 +3132,7 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_vi": "ma-LÁT — 'a' ngắn, 'de' KHÔNG đọc rõ"
       },
       {
+        cell_id: "3278af09-191a-4173-a26c-6884acd8ad56",
         "word": "la fièvre",
         "en": "fever",
         "vi": "sốt",
@@ -3006,21 +3142,25 @@ export const lessons: FrenchLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "9ff5763a-2335-4a5c-b75d-1afbd2426c07",
         "speaker": "A",
         "text": "Bonjour docteur, je ne me sens pas bien.",
         "vi": "Chào bác sĩ, tôi thấy không khỏe."
       },
       {
+        cell_id: "49f91173-6de1-4b80-962f-853e5c34f9db",
         "speaker": "B",
         "text": "Qu'est-ce qui ne va pas ?",
         "vi": "Bị sao thế?"
       },
       {
+        cell_id: "05b0eaac-a1ef-498e-98fc-4b1dd5ddc6a3",
         "speaker": "A",
         "text": "J'ai mal à la gorge et j'ai de la fièvre.",
         "vi": "Tôi đau họng và bị sốt."
       },
       {
+        cell_id: "03e0a408-c86b-4594-bde1-be11d95c1feb",
         "speaker": "B",
         "text": "Ouvrez la bouche, je vais regarder.",
         "vi": "Há miệng ra, tôi xem nào."
@@ -3188,6 +3328,7 @@ export const lessons: FrenchLesson[] = [
     "tip_advice_en": "Distinguish *un métier* (a profession/trade — the type of work) from *un travail* (a specific job — the role you currently hold). When stating your profession, French drops the article: *Je suis médecin* (lit. 'I am doctor', not 'I am a doctor') — totally different from English. For female speakers some professions add -e: *Je suis avocate* (female lawyer).",
     "vocabulary": [
       {
+        cell_id: "7859dab0-656c-4a15-8fd1-a822014ebb37",
         "word": "le travail",
         "en": "work / job",
         "vi": "công việc",
@@ -3195,6 +3336,7 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_vi": "lơ tra-VAY — 'ail' đọc 'ay'"
       },
       {
+        cell_id: "fed6eae9-2edc-4d5a-af72-c70e050130c0",
         "word": "le métier",
         "en": "profession / trade",
         "vi": "nghề",
@@ -3202,6 +3344,7 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_vi": "lơ mê-TIÊ — 'é' đọc 'ê'"
       },
       {
+        cell_id: "458c4c2d-d911-4613-8640-fa5e2b25ba45",
         "word": "l'entreprise",
         "en": "company",
         "vi": "công ty",
@@ -3209,6 +3352,7 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_vi": "lăng-trờ-PRIZ — 'en' âm mũi"
       },
       {
+        cell_id: "e8820745-2729-4f84-84fb-5b34c410e419",
         "word": "le bureau",
         "en": "office",
         "vi": "văn phòng",
@@ -3216,6 +3360,7 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_vi": "lơ buy-RÔ — 'u' đọc 'uy'"
       },
       {
+        cell_id: "5de9f2e3-dcc4-4af8-830b-9b8137ddeb65",
         "word": "le collègue",
         "en": "colleague",
         "vi": "đồng nghiệp",
@@ -3223,6 +3368,7 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_vi": "lơ co-LÉG — 'è' đọc 'e' mở"
       },
       {
+        cell_id: "564ac4c0-680b-4b9f-8f6c-5431efd9ee6e",
         "word": "le salaire",
         "en": "salary",
         "vi": "lương",
@@ -3230,6 +3376,7 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_vi": "lơ xa-LE-R — 'ai' đọc 'ê'"
       },
       {
+        cell_id: "df7c49f0-6535-47fa-b600-4d7c4e7d50b1",
         "word": "l'entretien",
         "en": "interview",
         "vi": "phỏng vấn",
@@ -3237,6 +3384,7 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_vi": "lăng-trờ-TI-ĂNG — 'ien' âm mũi"
       },
       {
+        cell_id: "446ceaa3-099f-49df-98ff-fd21608e6e4b",
         "word": "le CV",
         "en": "resume / CV",
         "vi": "sơ yếu lý lịch",
@@ -3244,6 +3392,7 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_vi": "lơ xê-VÊ — đọc như tiếng Anh"
       },
       {
+        cell_id: "278d0d1a-dcf0-4589-b850-462ae0d80f42",
         "word": "à plein temps",
         "en": "full-time",
         "vi": "toàn thời gian",
@@ -3251,6 +3400,7 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_vi": "a plang TĂM"
       },
       {
+        cell_id: "b57c1094-df5b-4bc5-9085-86209de83723",
         "word": "embaucher",
         "en": "to hire",
         "vi": "tuyển dụng",
@@ -3260,21 +3410,25 @@ export const lessons: FrenchLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "93692fbf-c000-4f93-b16a-c3a90174075b",
         "speaker": "A",
         "text": "Alors, tu fais quoi comme travail ?",
         "vi": "Thế, bạn làm công việc gì?"
       },
       {
+        cell_id: "1f251c02-e8bb-4e5f-a576-2465d3cd6f38",
         "speaker": "B",
         "text": "Je suis comptable dans une boîte à Lyon.",
         "vi": "Tôi là kế toán ở một công ty ở Lyon."
       },
       {
+        cell_id: "1df5e94f-d658-4d19-8acf-14810e4080fa",
         "speaker": "A",
         "text": "Ça te plaît ?",
         "vi": "Bạn thích không?"
       },
       {
+        cell_id: "c2f327d9-0251-4f45-a0a3-8ff710dca72c",
         "speaker": "B",
         "text": "Oui, l'équipe est sympa et le boulot est varié.",
         "vi": "Có, đồng nghiệp vui vẻ và công việc đa dạng."
@@ -3444,6 +3598,7 @@ export const lessons: FrenchLesson[] = [
     "tip_advice_en": "When you book a room (by phone or in person), have these details ready: *date d'arrivée* (arrival), *date de départ* (departure), number of people, bed type (*un grand lit* = one double bed; *deux lits simples* = two singles). Always ask *petit-déjeuner inclus ?* (is breakfast included?) — many French hotels charge it separately and it can be €10-20 per person on top.",
     "vocabulary": [
       {
+        cell_id: "1430a478-565f-420b-9182-3e18926d4d6e",
         "word": "l'hôtel",
         "en": "hotel",
         "vi": "khách sạn",
@@ -3451,6 +3606,7 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_vi": "lô-TEN — 'ô' dài, 'l' cuối đọc nhẹ"
       },
       {
+        cell_id: "60e50013-0db5-4992-b9f5-656a4487ab42",
         "word": "la chambre",
         "en": "room",
         "vi": "phòng",
@@ -3458,6 +3614,7 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_vi": "la SĂM-brơ — 'am' âm mũi"
       },
       {
+        cell_id: "887ff317-74b7-41f8-9ea4-5fb2d8ae2a01",
         "word": "la réservation",
         "en": "reservation",
         "vi": "đặt chỗ",
@@ -3465,6 +3622,7 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_vi": "la rê-de-r-va-XI-ÔNG"
       },
       {
+        cell_id: "73e433af-97f2-4030-b143-cd4f0ddccbaf",
         "word": "l'aéroport",
         "en": "airport",
         "vi": "sân bay",
@@ -3472,6 +3630,7 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_vi": "la-ê-rô-PO-R — 'r' cuối nhẹ"
       },
       {
+        cell_id: "97cdd3c0-a627-4878-9678-e7cea7c5d51d",
         "word": "le passeport",
         "en": "passport",
         "vi": "hộ chiếu",
@@ -3479,6 +3638,7 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_vi": "lơ pát-xơ-PO-R"
       },
       {
+        cell_id: "df116dca-a95f-48a6-a615-398b125cd45b",
         "word": "la valise",
         "en": "suitcase",
         "vi": "va li",
@@ -3486,6 +3646,7 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_vi": "la va-LIZ — 'i' đọc 'i', 'se' đọc 'z'"
       },
       {
+        cell_id: "c6f976ec-41cf-4933-92ae-9ef073b244dd",
         "word": "le plan",
         "en": "map",
         "vi": "bản đồ",
@@ -3493,6 +3654,7 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_vi": "lơ PLĂN — 'an' âm mũi"
       },
       {
+        cell_id: "fd008d65-6259-4760-9fe2-68ba207a4ad0",
         "word": "la plage",
         "en": "beach",
         "vi": "bãi biển",
@@ -3500,6 +3662,7 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_vi": "la PLA-D — 'ge' đọc 'd' mềm"
       },
       {
+        cell_id: "2881b81a-586c-4daf-9cc0-870d34dbd2f2",
         "word": "le musée",
         "en": "museum",
         "vi": "bảo tàng",
@@ -3507,6 +3670,7 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_vi": "lơ muy-DÊ — 'u' đọc 'uy', 'é' đọc 'ê'"
       },
       {
+        cell_id: "6f3da4d1-12b1-45bf-be85-e92c2fae7d46",
         "word": "visiter",
         "en": "to visit",
         "vi": "tham quan",
@@ -3516,21 +3680,25 @@ export const lessons: FrenchLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "86dfaf9c-b016-4ae1-bd79-dc68821c662c",
         "speaker": "A",
         "text": "Bonjour, vous avez une chambre de libre ?",
         "vi": "Chào anh, có phòng trống không ạ?"
       },
       {
+        cell_id: "00287f0b-8055-417a-9d9b-c010743d6aa3",
         "speaker": "B",
         "text": "Oui, pour combien de nuits ?",
         "vi": "Có, cho mấy đêm ạ?"
       },
       {
+        cell_id: "4c88783f-d742-4ecf-afd0-8e6e7a0e682a",
         "speaker": "A",
         "text": "Deux nuits, avec petit-déjeuner si possible.",
         "vi": "Hai đêm, có bữa sáng nếu được."
       },
       {
+        cell_id: "af9dd2f4-012f-4c8f-adbe-c2a4f2a90d20",
         "speaker": "B",
         "text": "Très bien, je vous fais une chambre avec vue sur le parc.",
         "vi": "Rất tốt, tôi sắp phòng nhìn ra công viên cho anh."
@@ -3702,6 +3870,7 @@ export const lessons: FrenchLesson[] = [
     "tip_advice_en": "Distinguish *être* + adjective (a temporary state: *je suis fatigué* = I'm tired right now) from *être* + noun (a character trait: *je suis une personne calme* = I'm a calm person). English collapses these into 'I am'; French keeps them apart. Learn emotion pairs as opposites: *content/triste* (happy/sad), *calme/énervé* (calm/irritated), *enthousiaste/déçu* (enthusiastic/disappointed) — pairs stick in memory better than single words.",
     "vocabulary": [
       {
+        cell_id: "30972e60-9bb3-46f2-acf5-0e570d3a13e9",
         "word": "content(e)",
         "en": "happy / glad",
         "vi": "vui",
@@ -3709,6 +3878,7 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_vi": "công-TĂNG(T) — 'en' âm mũi, thêm 't' cho nữ"
       },
       {
+        cell_id: "a56f62f3-3336-4b35-9d29-3dd3f1ca88f4",
         "word": "triste",
         "en": "sad",
         "vi": "buồn",
@@ -3716,6 +3886,7 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_vi": "TRÍT-XT — 'i' ngắn, 'e' cuối KHÔNG đọc"
       },
       {
+        cell_id: "d7f10126-ba48-401b-91ca-dca7d013ba25",
         "word": "en colère",
         "en": "angry",
         "vi": "tức giận",
@@ -3723,6 +3894,7 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_vi": "ăng co-LE-R — 'è' đọc 'e' mở"
       },
       {
+        cell_id: "f4fb511f-5d16-438b-b131-81cf6410428c",
         "word": "fatigué(e)",
         "en": "tired",
         "vi": "mệt",
@@ -3730,6 +3902,7 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_vi": "pha-ti-GHÊ — 'é' đọc 'ê'"
       },
       {
+        cell_id: "358e9cfa-e68a-4006-9448-2eeb028f387c",
         "word": "stressé(e)",
         "en": "stressed",
         "vi": "căng thẳng",
@@ -3737,6 +3910,7 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_vi": "xtrê-XÊ"
       },
       {
+        cell_id: "187f68c9-0cb7-4a48-b9e3-c20516728d19",
         "word": "inquiet / inquiète",
         "en": "worried",
         "vi": "lo lắng",
@@ -3744,6 +3918,7 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_vi": "anh-KIÊ / anh-KI-ÉT"
       },
       {
+        cell_id: "102de721-7a63-4c28-ba0e-c43b34d74359",
         "word": "surpris(e)",
         "en": "surprised",
         "vi": "ngạc nhiên",
@@ -3751,6 +3926,7 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_vi": "xuy-rơ-PRI(Z) — 'u' đọc 'uy'"
       },
       {
+        cell_id: "c7fddf35-2430-4126-84ec-ccd20f7fb028",
         "word": "déçu(e)",
         "en": "disappointed",
         "vi": "thất vọng",
@@ -3758,6 +3934,7 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_vi": "đê-SUY — 'é' đọc 'ê', 'ç' đọc 'x'"
       },
       {
+        cell_id: "021d8dbf-c436-47cc-830b-e5ff5e1e7422",
         "word": "calme",
         "en": "calm",
         "vi": "bình tĩnh",
@@ -3765,6 +3942,7 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_vi": "CAN-M — 'al' đọc 'an', 'e' KHÔNG đọc"
       },
       {
+        cell_id: "a6051aa3-8d90-4dbe-8f0a-7965323be35e",
         "word": "amoureux / amoureuse",
         "en": "in love",
         "vi": "đang yêu",
@@ -3774,21 +3952,25 @@ export const lessons: FrenchLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "a722037b-e8d9-48fe-894b-60f77f0e75bf",
         "speaker": "A",
         "text": "Tu as l'air fatigué, ça va ?",
         "vi": "Trông bạn mệt thế, ổn không?"
       },
       {
+        cell_id: "5f56086b-5969-4e2e-afea-da731bdcce5d",
         "speaker": "B",
         "text": "Oui, j'ai mal dormi. Je suis un peu stressé par le boulot.",
         "vi": "Ừ, tôi ngủ không ngon. Hơi căng thẳng vì công việc."
       },
       {
+        cell_id: "f6201fc0-9fb9-4737-8256-06b8dbdbcbd1",
         "speaker": "A",
         "text": "Je comprends. Si tu veux en parler, je suis là.",
         "vi": "Tôi hiểu. Nếu muốn nói chuyện, tôi ở đây."
       },
       {
+        cell_id: "9a87174a-06f9-4def-a7d6-969b8ab742f0",
         "speaker": "B",
         "text": "Merci, c'est gentil. Ça va aller.",
         "vi": "Cảm ơn, tốt bụng quá. Sẽ ổn thôi."
@@ -3958,6 +4140,7 @@ export const lessons: FrenchLesson[] = [
     "tip_advice_en": "Formula for *passé composé*: present-tense *avoir* or *être* + past participle. The mnemonic for the 17 *être*-verbs that English speakers use is **DR MRS VANDERTRAMP** (Devenir, Revenir, Monter, Rester, Sortir, Venir, Aller, Naître, Descendre, Entrer, Rentrer, Tomber, Retourner, Arriver, Mourir, Partir). With *être*, the past participle agrees with the subject in gender/number: *il est allé* / *elle est allée* / *ils sont allés* / *elles sont allées*. With *avoir*, no agreement with the subject (different rule for direct objects).",
     "vocabulary": [
       {
+        cell_id: "3365efa3-e180-4ca6-a2ab-9ead1a97bea5",
         "word": "hier",
         "en": "yesterday",
         "vi": "hôm qua",
@@ -3965,6 +4148,7 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_vi": "Y-E — 'h' KHÔNG đọc, 'ier' đọc 'iê'"
       },
       {
+        cell_id: "fb8466c3-3b6d-41eb-af54-bdc4c8403261",
         "word": "avant-hier",
         "en": "the day before yesterday",
         "vi": "hôm kia",
@@ -3972,6 +4156,7 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_vi": "a-văng-ti-E — 'h' KHÔNG đọc"
       },
       {
+        cell_id: "3cef1a24-a60b-4cad-8cce-34758db912c0",
         "word": "la semaine dernière",
         "en": "last week",
         "vi": "tuần trước",
@@ -3979,6 +4164,7 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_vi": "la sờ-men đe-r-NI-E-R"
       },
       {
+        cell_id: "214a62ea-0278-4d72-a9d9-d1483e1d9d9e",
         "word": "déjà",
         "en": "already",
         "vi": "đã... rồi",
@@ -3986,6 +4172,7 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_vi": "đê-DA — 'é' đọc 'ê'"
       },
       {
+        cell_id: "e2b26780-76b7-410a-9819-d039fce5e7a9",
         "word": "jamais",
         "en": "never",
         "vi": "chưa bao giờ",
@@ -3993,6 +4180,7 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_vi": "da-ME — 'ai' đọc 'ê', 's' KHÔNG đọc"
       },
       {
+        cell_id: "48591906-7a00-4fea-9e1e-bee8d9b258f3",
         "word": "allé(e)",
         "en": "went (past participle)",
         "vi": "đã đi",
@@ -4000,6 +4188,7 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_vi": "a-LÊ — nhấn cuối"
       },
       {
+        cell_id: "3c9bb929-7449-4a92-8092-aab7031b4f0a",
         "word": "fait",
         "en": "did / made (pp)",
         "vi": "đã làm",
@@ -4007,6 +4196,7 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_vi": "PHE — 'ai' đọc 'ê', 't' KHÔNG đọc"
       },
       {
+        cell_id: "4fe61229-3ae6-4c5e-9a05-22608bee1303",
         "word": "vu(e)",
         "en": "saw (pp)",
         "vi": "đã thấy",
@@ -4014,6 +4204,7 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_vi": "VUY — 'u' đọc 'uy'"
       },
       {
+        cell_id: "794a02df-03b5-4c82-aa0a-01c86830981e",
         "word": "pris(e)",
         "en": "took (pp)",
         "vi": "đã lấy",
@@ -4021,6 +4212,7 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_vi": "PRI(Z) — thêm 'z' cho giống cái"
       },
       {
+        cell_id: "760a94cd-b483-407e-8c7a-5acdab3b2600",
         "word": "né(e)",
         "en": "born (pp)",
         "vi": "đã sinh ra",
@@ -4030,21 +4222,25 @@ export const lessons: FrenchLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "543df6db-164b-46e9-9891-392bcf522332",
         "speaker": "A",
         "text": "Tu as passé un bon week-end ?",
         "vi": "Cuối tuần bạn vui không?"
       },
       {
+        cell_id: "32cc6247-3b43-4e1e-a374-3bfd50286202",
         "speaker": "B",
         "text": "Oui, super ! Je suis allé à la mer avec ma famille.",
         "vi": "Có, tuyệt lắm! Tôi đã đi biển với gia đình."
       },
       {
+        cell_id: "96687e91-0f84-4878-924a-b47213d9eada",
         "speaker": "A",
         "text": "Vous avez nagé ?",
         "vi": "Các bạn có bơi không?"
       },
       {
+        cell_id: "cc985e41-e3af-414a-a433-4f3afcdab512",
         "speaker": "B",
         "text": "Oui, on a nagé et on a mangé des fruits de mer.",
         "vi": "Có, tụi tôi đã bơi và ăn hải sản."
@@ -4214,6 +4410,7 @@ export const lessons: FrenchLesson[] = [
     "tip_advice_en": "The *futur proche* formula is wonderfully simple: conjugate *aller* (to go) for your subject, then add the main verb in the infinitive — *je vais + manger* = 'I'm going to eat'. You don't have to learn a new conjugation for the main verb, which is why A1 learners reach for it for everything. Memorise the *aller* forms: *je vais, tu vas, il/elle va, nous allons, vous allez, ils/elles vont* — and you can express any near-future plan.",
     "vocabulary": [
       {
+        cell_id: "119b82ba-68f1-454f-9ade-9404a84c7c26",
         "word": "ce soir",
         "en": "tonight",
         "vi": "tối nay",
@@ -4221,6 +4418,7 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_vi": "xơ XOA — 'oi' đọc 'oa'"
       },
       {
+        cell_id: "46076b88-e874-417e-b8c6-d818c30ea60e",
         "word": "demain",
         "en": "tomorrow",
         "vi": "ngày mai",
@@ -4228,6 +4426,7 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_vi": "đơ-MANG — 'ain' âm mũi"
       },
       {
+        cell_id: "8c09e8b1-a374-4470-b166-83c9f15715cc",
         "word": "la semaine prochaine",
         "en": "next week",
         "vi": "tuần tới",
@@ -4235,6 +4434,7 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_vi": "la sờ-men prô-SEN"
       },
       {
+        cell_id: "66e2acf6-3be5-418d-a56e-9a404c85f957",
         "word": "l'année prochaine",
         "en": "next year",
         "vi": "năm tới",
@@ -4242,6 +4442,7 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_vi": "la-nê prô-SEN"
       },
       {
+        cell_id: "85286b28-7aa6-4a1d-bec2-91246d1e14e7",
         "word": "bientôt",
         "en": "soon",
         "vi": "sớm",
@@ -4249,6 +4450,7 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_vi": "bi-ăng-TÔ — 'ien' âm mũi"
       },
       {
+        cell_id: "112a248e-8d39-45e6-8460-546423aff02e",
         "word": "plus tard",
         "en": "later",
         "vi": "sau / lát nữa",
@@ -4256,6 +4458,7 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_vi": "pluy TA-R — 's' KHÔNG đọc"
       },
       {
+        cell_id: "628d3751-af67-410c-b5b1-2b8ad4823af4",
         "word": "déménager",
         "en": "to move (house)",
         "vi": "chuyển nhà",
@@ -4263,6 +4466,7 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_vi": "đê-mê-na-DÊ — 'é' đọc 'ê'"
       },
       {
+        cell_id: "127d2bbd-fa5a-4d55-8944-a8e06999aeca",
         "word": "étudier",
         "en": "to study",
         "vi": "học",
@@ -4270,6 +4474,7 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_vi": "ê-tuy-ĐI-Ê — 'u' đọc 'uy'"
       },
       {
+        cell_id: "edad27f4-5f5b-4245-bbd8-195f1ebee2b0",
         "word": "apprendre",
         "en": "to learn",
         "vi": "học / học được",
@@ -4277,6 +4482,7 @@ export const lessons: FrenchLesson[] = [
         "pronunciation_vi": "a-PRĂNG-đrơ — 'en' âm mũi"
       },
       {
+        cell_id: "a7b1d0ec-ef62-4413-8186-39585af95614",
         "word": "économiser",
         "en": "to save (money)",
         "vi": "tiết kiệm",
@@ -4286,21 +4492,25 @@ export const lessons: FrenchLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "ae5af783-b40e-48f6-babd-4e07ec653697",
         "speaker": "A",
         "text": "Tu as des projets pour les vacances ?",
         "vi": "Bạn có kế hoạch gì cho kỳ nghỉ không?"
       },
       {
+        cell_id: "9867221c-43ef-43c0-89e3-509402a13dab",
         "speaker": "B",
         "text": "Oui, je vais partir au Vietnam !",
         "vi": "Có, tôi sẽ đi Việt Nam!"
       },
       {
+        cell_id: "ad53ab19-6f17-4a45-85d7-ac8c23320db7",
         "speaker": "A",
         "text": "Super ! Tu vas rester combien de temps ?",
         "vi": "Tuyệt! Bạn sẽ ở bao lâu?"
       },
       {
+        cell_id: "5be97812-6366-494f-873b-28b9d317ff8c",
         "speaker": "B",
         "text": "Je vais y passer trois semaines, je suis trop impatient !",
         "vi": "Tôi sẽ ở đó ba tuần, nóng lòng quá!"

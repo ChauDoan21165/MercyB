@@ -13,6 +13,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -22,6 +23,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -208,6 +210,7 @@ export const lessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: keep three key terms separate. `Nikah/menikah` = get married, `akad` = the core ceremony, `resepsi` = the guest reception. `Mas kawin` is not the guest gift; guests give money in an `amplop`. When discussing culture, use `adat Jawa` and `adat Sunda` respectfully because each community has its own ceremonies.",
     vocabulary: [
       {
+        cell_id: "3aaf1694-9f65-4eef-8d98-ac31836ecc43",
         word: "nikah",
         en: "to marry / marriage",
         vi: "cưới / kết hôn",
@@ -216,6 +219,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "NEE-kah",
       },
       {
+        cell_id: "1fb213e6-188f-472b-b9e9-e65c010d877b",
         word: "akad nikah",
         en: "marriage contract ceremony",
         vi: "lễ akad / nghi thức hôn nhân",
@@ -224,6 +228,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "AH-kad NEE-kah",
       },
       {
+        cell_id: "c69244e1-8588-4b36-b521-11a534af89df",
         word: "resepsi",
         en: "wedding reception",
         vi: "tiệc cưới / tiệc tiếp khách",
@@ -232,6 +237,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "re-SEP-see",
       },
       {
+        cell_id: "9ac8f15f-553d-40e5-b49e-8dd77bf818e9",
         word: "undangan",
         en: "invitation",
         vi: "thiệp mời / lời mời",
@@ -240,6 +246,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "oon-DAH-ngan",
       },
       {
+        cell_id: "c0df0592-8f57-4bae-8e0a-8b04922f9ebe",
         word: "mas kawin",
         en: "dowry / mahr",
         vi: "sính lễ / lễ vật cưới",
@@ -248,6 +255,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "mas KAH-win",
       },
       {
+        cell_id: "6a4f2f6f-e8b1-4df9-af69-16143fed1321",
         word: "adat",
         en: "custom / tradition",
         vi: "phong tục / truyền thống",
@@ -256,6 +264,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "AH-dat",
       },
       {
+        cell_id: "e94ec53a-17a4-457f-8d71-8ade9da6e845",
         word: "pengantin",
         en: "bride and groom / newlyweds",
         vi: "cô dâu chú rể",
@@ -264,6 +273,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "pe-NGAHN-tin",
       },
       {
+        cell_id: "3fa49e1c-2146-4d9c-b2ca-bb000b314e91",
         word: "amplop",
         en: "cash envelope",
         vi: "phong bì tiền mừng",
@@ -272,6 +282,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "AM-plop",
       },
       {
+        cell_id: "67e7bbf3-7122-458d-9eb5-ebd2d0b9fd5b",
         word: "adat Jawa",
         en: "Javanese customs",
         vi: "phong tục Java",
@@ -280,6 +291,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "AH-dat JAH-wa",
       },
       {
+        cell_id: "c2582dfa-3e9f-42e6-897e-492e482799bb",
         word: "adat Sunda",
         en: "Sundanese customs",
         vi: "phong tục Sunda",
@@ -290,30 +302,35 @@ export const lessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "ede9e41e-3523-4d9a-953e-5d7620a4e04f",
         speaker: "Rina",
         text: "Kamu datang ke akad atau resepsi?",
         vi: "Bạn đến lễ akad hay tiệc cưới?",
         en: "Are you coming to the akad or the reception?",
       },
       {
+        cell_id: "6b0ce222-977b-4779-aa45-1a103256fdb0",
         speaker: "Minh",
         text: "Saya datang ke resepsi malam hari. Saya sudah dapat undangan.",
         vi: "Tôi đến tiệc cưới buổi tối. Tôi đã nhận thiệp mời rồi.",
         en: "I am coming to the evening reception. I already got the invitation.",
       },
       {
+        cell_id: "b6f6eadc-dace-4b18-bccb-06d32e093aae",
         speaker: "Rina",
         text: "Jangan lupa bawa amplop untuk pengantin.",
         vi: "Đừng quên mang phong bì cho cô dâu chú rể.",
         en: "Do not forget to bring a cash envelope for the couple.",
       },
       {
+        cell_id: "b4c239e4-0dc5-42c1-a731-d32a855d8f46",
         speaker: "Minh",
         text: "Baik. Mereka pakai adat Jawa atau adat Sunda?",
         vi: "Được. Họ dùng phong tục Java hay Sunda?",
         en: "Okay. Are they using Javanese or Sundanese customs?",
       },
       {
+        cell_id: "c3b3096a-9575-406d-ab1c-1718c0eb736b",
         speaker: "Rina",
         text: "Katanya adat Sunda, jadi mungkin ada sungkeman.",
         vi: "Nghe nói là phong tục Sunda, nên có thể có sungkeman.",

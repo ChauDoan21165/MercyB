@@ -24,6 +24,7 @@ export type LessonSentence = {
 };
 
 export type VocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -33,6 +34,7 @@ export type VocabEntry = {
 };
 
 export type DialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -129,18 +131,18 @@ export const lessons: IndonesianLesson[] = [
     tip_advice_en:
       "'musim' (season) + hujan/kemarau. 'cuaca' = weather ('choo-AH-chah', c=ch twice). 'ny' = ñ appears a lot: hanya, biasanya — easy for Vietnamese. Useful weather lines: 'Cuaca hari ini bagaimana?' (How's the weather today?), 'Sepertinya mau hujan' (Looks like rain).",
     vocabulary: [
-      { word: "musim", en: "season", vi: "mùa", pos: "noun", pronunciation_vi: "MU-sim", pronunciation_en: "MOO-sim" },
-      { word: "musim hujan", en: "rainy season", vi: "mùa mưa", pos: "noun phrase", pronunciation_vi: "MU-sim HU-jan", pronunciation_en: "MOO-sim HOO-jan" },
-      { word: "musim kemarau", en: "dry season", vi: "mùa khô", pos: "noun phrase", pronunciation_vi: "MU-sim ke-MA-rau", pronunciation_en: "MOO-sim kuh-MAH-rau" },
-      { word: "cuaca", en: "weather", vi: "thời tiết", pos: "noun", pronunciation_vi: "cu-A-ca", pronunciation_en: "choo-AH-chah" },
-      { word: "panas", en: "hot", vi: "nóng", pos: "adjective", pronunciation_vi: "PA-nas", pronunciation_en: "PAH-nas" },
-      { word: "hujan", en: "rain", vi: "mưa", pos: "noun/verb", pronunciation_vi: "HU-jan", pronunciation_en: "HOO-jan" },
-      { word: "iklim", en: "climate", vi: "khí hậu", pos: "noun", pronunciation_vi: "IK-lim", pronunciation_en: "EEK-lim" },
+      { cell_id: "fa4b3a45-09f5-4e91-a46f-60e642d80410", word: "musim", en: "season", vi: "mùa", pos: "noun", pronunciation_vi: "MU-sim", pronunciation_en: "MOO-sim" },
+      { cell_id: "9ea87dce-0aba-4849-818f-a4b91e5c38cf", word: "musim hujan", en: "rainy season", vi: "mùa mưa", pos: "noun phrase", pronunciation_vi: "MU-sim HU-jan", pronunciation_en: "MOO-sim HOO-jan" },
+      { cell_id: "477da0d2-b622-44ac-9b5d-694f41fa678f", word: "musim kemarau", en: "dry season", vi: "mùa khô", pos: "noun phrase", pronunciation_vi: "MU-sim ke-MA-rau", pronunciation_en: "MOO-sim kuh-MAH-rau" },
+      { cell_id: "bc9c5761-ac66-4d03-bb47-418bd41d3c0c", word: "cuaca", en: "weather", vi: "thời tiết", pos: "noun", pronunciation_vi: "cu-A-ca", pronunciation_en: "choo-AH-chah" },
+      { cell_id: "69fa8947-bad8-40a9-919b-258704458098", word: "panas", en: "hot", vi: "nóng", pos: "adjective", pronunciation_vi: "PA-nas", pronunciation_en: "PAH-nas" },
+      { cell_id: "d2edcdae-8bbb-4265-a0d6-8f6dd08200b5", word: "hujan", en: "rain", vi: "mưa", pos: "noun/verb", pronunciation_vi: "HU-jan", pronunciation_en: "HOO-jan" },
+      { cell_id: "67d45689-4897-4e60-b122-d6fbfe8e86a2", word: "iklim", en: "climate", vi: "khí hậu", pos: "noun", pronunciation_vi: "IK-lim", pronunciation_en: "EEK-lim" },
     ],
     dialogue: [
-      { speaker: "Tono", text: "Panas banget ya hari ini. Lagi musim kemarau sih.", vi: "Hôm nay nóng ghê. Đang mùa khô mà.", en: "So hot today. It's the dry season, after all." },
-      { speaker: "Mira", text: "Iya. Tapi bulan depan udah mulai musim hujan.", vi: "Ừ. Nhưng tháng sau là bắt đầu mùa mưa rồi.", en: "Yeah. But next month the rainy season starts." },
-      { speaker: "Tono", text: "Wah, harus siap payung dong.", vi: "Wao, phải chuẩn bị ô thôi.", en: "Ah, better get an umbrella ready then." },
+      { cell_id: "2f232d14-20e5-42ea-a303-39718af9efac", speaker: "Tono", text: "Panas banget ya hari ini. Lagi musim kemarau sih.", vi: "Hôm nay nóng ghê. Đang mùa khô mà.", en: "So hot today. It's the dry season, after all." },
+      { cell_id: "f64480ea-1951-4b21-8e21-3c19a580935f", speaker: "Mira", text: "Iya. Tapi bulan depan udah mulai musim hujan.", vi: "Ừ. Nhưng tháng sau là bắt đầu mùa mưa rồi.", en: "Yeah. But next month the rainy season starts." },
+      { cell_id: "ef4942d8-5385-4eef-bf30-3696af5a9370", speaker: "Tono", text: "Wah, harus siap payung dong.", vi: "Wao, phải chuẩn bị ô thôi.", en: "Ah, better get an umbrella ready then." },
     ],
     exercises: [
       {
@@ -225,13 +227,13 @@ export const lessons: IndonesianLesson[] = [
     tip_advice_en:
       "The ke-...-an pattern = 'to be unwillingly affected by': kehujanan, kepanasan, kedinginan. 'c' = 'ch': cerah, cuaca. Icebreakers: 'Panas ya?' (Hot, huh?), 'Mau hujan kayaknya' (Looks like rain). Don't forget 'payung' (umbrella) has a final 'ng' — pronounce it clearly.",
     vocabulary: [
-      { word: "langit", en: "sky", vi: "bầu trời", pos: "noun", pronunciation_vi: "LA-ngit", pronunciation_en: "LAH-ngit" },
-      { word: "mendung", en: "cloudy, overcast", vi: "âm u, nhiều mây", pos: "adjective", pronunciation_vi: "men-DUNG", pronunciation_en: "men-DOONG" },
-      { word: "cerah", en: "bright, sunny", vi: "quang, nắng đẹp", pos: "adjective", pronunciation_vi: "CE-rah", pronunciation_en: "CHEH-rah" },
-      { word: "payung", en: "umbrella", vi: "ô, dù", pos: "noun", pronunciation_vi: "PA-yung", pronunciation_en: "PAH-yoong" },
-      { word: "angin", en: "wind", vi: "gió", pos: "noun", pronunciation_vi: "A-ngin", pronunciation_en: "AH-ngin" },
-      { word: "kehujanan", en: "caught in the rain", vi: "bị mắc mưa", pos: "verb", pronunciation_vi: "ke-hu-JA-nan", pronunciation_en: "kuh-hoo-JAH-nan" },
-      { word: "jas hujan", en: "raincoat", vi: "áo mưa", pos: "noun", pronunciation_vi: "JAS HU-jan", pronunciation_en: "JAS HOO-jan" },
+      { cell_id: "5570a5c8-9352-48ae-b1c2-a66f35c4b333", word: "langit", en: "sky", vi: "bầu trời", pos: "noun", pronunciation_vi: "LA-ngit", pronunciation_en: "LAH-ngit" },
+      { cell_id: "039893fe-1c99-4963-9245-0c8680ceb429", word: "mendung", en: "cloudy, overcast", vi: "âm u, nhiều mây", pos: "adjective", pronunciation_vi: "men-DUNG", pronunciation_en: "men-DOONG" },
+      { cell_id: "f6d44662-2b7c-4d1b-999f-c0a474b06fcc", word: "cerah", en: "bright, sunny", vi: "quang, nắng đẹp", pos: "adjective", pronunciation_vi: "CE-rah", pronunciation_en: "CHEH-rah" },
+      { cell_id: "6c4f01ac-9d53-449c-83ec-64924642cd4d", word: "payung", en: "umbrella", vi: "ô, dù", pos: "noun", pronunciation_vi: "PA-yung", pronunciation_en: "PAH-yoong" },
+      { cell_id: "72d17b67-0052-4f88-92fc-db001e3bd2b6", word: "angin", en: "wind", vi: "gió", pos: "noun", pronunciation_vi: "A-ngin", pronunciation_en: "AH-ngin" },
+      { cell_id: "2549ab14-f4d0-47aa-b625-25729819246a", word: "kehujanan", en: "caught in the rain", vi: "bị mắc mưa", pos: "verb", pronunciation_vi: "ke-hu-JA-nan", pronunciation_en: "kuh-hoo-JAH-nan" },
+      { cell_id: "49be9f8f-4700-4d98-8005-7f14d76b3785", word: "jas hujan", en: "raincoat", vi: "áo mưa", pos: "noun", pronunciation_vi: "JAS HU-jan", pronunciation_en: "JAS HOO-jan" },
     ],
     exercises: [
       {
@@ -314,18 +316,18 @@ export const lessons: IndonesianLesson[] = [
     tip_advice_en:
       "'gunung' (mountain) + 'berapi' (with fire) = volcano. Erupt verb: 'meletus'. Lots of medial 'ng' (gunung, sangat, sekitar) — easy for Vietnamese. Distinguish 'abu' (ash) from 'debu' (dust). The top alert level 'Awas' is worth knowing when visiting volcanic areas.",
     vocabulary: [
-      { word: "gunung berapi", en: "volcano", vi: "núi lửa", pos: "noun phrase", pronunciation_vi: "GU-nung be-RA-pi", pronunciation_en: "GOO-noong buh-RAH-pee" },
-      { word: "meletus", en: "to erupt", vi: "phun trào", pos: "verb", pronunciation_vi: "me-le-TUS", pronunciation_en: "muh-luh-TOOS" },
-      { word: "abu", en: "ash", vi: "tro", pos: "noun", pronunciation_vi: "A-bu", pronunciation_en: "AH-boo" },
-      { word: "tanah", en: "soil, land", vi: "đất", pos: "noun", pronunciation_vi: "TA-nah", pronunciation_en: "TAH-nah" },
-      { word: "subur", en: "fertile", vi: "màu mỡ, phì nhiêu", pos: "adjective", pronunciation_vi: "SU-bur", pronunciation_en: "SOO-boor" },
-      { word: "bencana", en: "disaster", vi: "thảm họa", pos: "noun", pronunciation_vi: "ben-CA-na", pronunciation_en: "ben-CHAH-nah" },
-      { word: "gempa bumi", en: "earthquake", vi: "động đất", pos: "noun phrase", pronunciation_vi: "GEM-pa BU-mi", pronunciation_en: "GEM-pah BOO-mee" },
+      { cell_id: "33fdbff6-8539-4f13-a188-1d4165e25a8b", word: "gunung berapi", en: "volcano", vi: "núi lửa", pos: "noun phrase", pronunciation_vi: "GU-nung be-RA-pi", pronunciation_en: "GOO-noong buh-RAH-pee" },
+      { cell_id: "879b9301-fba5-4ff0-ab23-70ed354777f0", word: "meletus", en: "to erupt", vi: "phun trào", pos: "verb", pronunciation_vi: "me-le-TUS", pronunciation_en: "muh-luh-TOOS" },
+      { cell_id: "cab2d7af-4210-42c3-825b-3b91585265e7", word: "abu", en: "ash", vi: "tro", pos: "noun", pronunciation_vi: "A-bu", pronunciation_en: "AH-boo" },
+      { cell_id: "7f94dedd-78fa-4012-a758-28e33b862de8", word: "tanah", en: "soil, land", vi: "đất", pos: "noun", pronunciation_vi: "TA-nah", pronunciation_en: "TAH-nah" },
+      { cell_id: "38542d70-45d8-4f16-ad92-c83abcf6328a", word: "subur", en: "fertile", vi: "màu mỡ, phì nhiêu", pos: "adjective", pronunciation_vi: "SU-bur", pronunciation_en: "SOO-boor" },
+      { cell_id: "4386c2f4-66a0-4f48-917a-72e6b08c6797", word: "bencana", en: "disaster", vi: "thảm họa", pos: "noun", pronunciation_vi: "ben-CA-na", pronunciation_en: "ben-CHAH-nah" },
+      { cell_id: "fd74fad6-9055-43b7-97b0-85ed276e0f01", word: "gempa bumi", en: "earthquake", vi: "động đất", pos: "noun phrase", pronunciation_vi: "GEM-pa BU-mi", pronunciation_en: "GEM-pah BOO-mee" },
     ],
     dialogue: [
-      { speaker: "Guru", text: "Kenapa tanah di Jawa subur sekali ya?", vi: "Tại sao đất ở Java màu mỡ thế nhỉ?", en: "Why is the soil in Java so fertile?" },
-      { speaker: "Murid", text: "Karena abu gunung berapi, Pak.", vi: "Vì tro núi lửa ạ, thưa thầy.", en: "Because of volcanic ash, sir." },
-      { speaker: "Guru", text: "Betul. Gunung berapi berbahaya tapi juga bermanfaat.", vi: "Đúng. Núi lửa nguy hiểm nhưng cũng có ích.", en: "Correct. Volcanoes are dangerous but also beneficial." },
+      { cell_id: "9b8da539-a131-4d59-84d1-63085e9326c1", speaker: "Guru", text: "Kenapa tanah di Jawa subur sekali ya?", vi: "Tại sao đất ở Java màu mỡ thế nhỉ?", en: "Why is the soil in Java so fertile?" },
+      { cell_id: "98011c24-7fdd-4e04-91f9-3b244548a136", speaker: "Murid", text: "Karena abu gunung berapi, Pak.", vi: "Vì tro núi lửa ạ, thưa thầy.", en: "Because of volcanic ash, sir." },
+      { cell_id: "124a524a-9c39-4704-a7ce-378bfce38892", speaker: "Guru", text: "Betul. Gunung berapi berbahaya tapi juga bermanfaat.", vi: "Đúng. Núi lửa nguy hiểm nhưng cũng có ích.", en: "Correct. Volcanoes are dangerous but also beneficial." },
     ],
     exercises: [
       {
@@ -410,12 +412,12 @@ export const lessons: IndonesianLesson[] = [
     tip_advice_en:
       "Mnemonic: orangutan = orang (person) + hutan (forest). Verbs 'melindungi' (protect) and 'penebangan' (logging) are full of medial 'ng' — easy for Vietnamese. 'punah' = extinct; 'terancam punah' = endangered. 'liar' (wild/illegal) splits into 'li-ar' — don't merge it.",
     vocabulary: [
-      { word: "hutan", en: "forest", vi: "rừng", pos: "noun", pronunciation_vi: "HU-tan", pronunciation_en: "HOO-tan" },
-      { word: "orangutan", en: "orangutan", vi: "đười ươi", pos: "noun", pronunciation_vi: "o-rang-U-tan", pronunciation_en: "oh-rang-OO-tan" },
-      { word: "harimau", en: "tiger", vi: "hổ", pos: "noun", pronunciation_vi: "ha-ri-MAU", pronunciation_en: "hah-ree-MAU" },
-      { word: "punah", en: "extinct", vi: "tuyệt chủng", pos: "adjective", pronunciation_vi: "PU-nah", pronunciation_en: "POO-nah" },
-      { word: "melindungi", en: "to protect", vi: "bảo vệ", pos: "verb", pronunciation_vi: "me-lin-DU-ngi", pronunciation_en: "muh-lin-DOO-ngee" },
-      { word: "penebangan liar", en: "illegal logging", vi: "chặt phá trái phép", pos: "noun phrase", pronunciation_vi: "pe-ne-BA-ngan LI-ar", pronunciation_en: "puh-nuh-BAH-ngan LEE-ar" },
+      { cell_id: "8514241e-7702-414f-b93a-9f4108f8c5be", word: "hutan", en: "forest", vi: "rừng", pos: "noun", pronunciation_vi: "HU-tan", pronunciation_en: "HOO-tan" },
+      { cell_id: "695d096e-65af-4c60-938c-74f7c8a36687", word: "orangutan", en: "orangutan", vi: "đười ươi", pos: "noun", pronunciation_vi: "o-rang-U-tan", pronunciation_en: "oh-rang-OO-tan" },
+      { cell_id: "6d287016-af53-4a05-89f0-8df864ba6827", word: "harimau", en: "tiger", vi: "hổ", pos: "noun", pronunciation_vi: "ha-ri-MAU", pronunciation_en: "hah-ree-MAU" },
+      { cell_id: "dceae9e9-1087-4883-9d6e-bc7198c72139", word: "punah", en: "extinct", vi: "tuyệt chủng", pos: "adjective", pronunciation_vi: "PU-nah", pronunciation_en: "POO-nah" },
+      { cell_id: "335aa554-a1f5-4694-a967-cf3209028af8", word: "melindungi", en: "to protect", vi: "bảo vệ", pos: "verb", pronunciation_vi: "me-lin-DU-ngi", pronunciation_en: "muh-lin-DOO-ngee" },
+      { cell_id: "bb89893e-f508-4246-afa0-65379235b279", word: "penebangan liar", en: "illegal logging", vi: "chặt phá trái phép", pos: "noun phrase", pronunciation_vi: "pe-ne-BA-ngan LI-ar", pronunciation_en: "puh-nuh-BAH-ngan LEE-ar" },
     ],
     exercises: [
       {
@@ -498,18 +500,18 @@ export const lessons: IndonesianLesson[] = [
     tip_advice_en:
       "'pantai' (beach) + 'pasir' (sand) + 'ombak' (wave) + 'karang' (coral) = the core beach vocabulary. The '-nya' suffix = 'its/the': pasir putihnya = its white sand. Vowel-changing reduplication: warna-warni (colourful), bolak-balik (back and forth) — the vowel shifts rather than repeating. 'kh' in 'makhluk' is a light guttural.",
     vocabulary: [
-      { word: "pantai", en: "beach", vi: "bãi biển", pos: "noun", pronunciation_vi: "PAN-tai", pronunciation_en: "PAN-tai" },
-      { word: "pasir", en: "sand", vi: "cát", pos: "noun", pronunciation_vi: "PA-sir", pronunciation_en: "PAH-seer" },
-      { word: "terumbu karang", en: "coral reef", vi: "rạn san hô", pos: "noun phrase", pronunciation_vi: "te-RUM-bu KA-rang", pronunciation_en: "tuh-ROOM-boo KAH-rang" },
-      { word: "ikan", en: "fish", vi: "cá", pos: "noun", pronunciation_vi: "I-kan", pronunciation_en: "EE-kan" },
-      { word: "warna-warni", en: "colourful", vi: "đủ màu sắc", pos: "adjective", pronunciation_vi: "WAR-na WAR-ni", pronunciation_en: "WAR-nah WAR-nee" },
-      { word: "rapuh", en: "fragile", vi: "mong manh, dễ vỡ", pos: "adjective", pronunciation_vi: "ra-PUH", pronunciation_en: "rah-POOH" },
-      { word: "ombak", en: "wave", vi: "sóng biển", pos: "noun", pronunciation_vi: "OM-bak", pronunciation_en: "OM-bak" },
+      { cell_id: "837e0752-ddf4-4834-804a-28670fa6b5f0", word: "pantai", en: "beach", vi: "bãi biển", pos: "noun", pronunciation_vi: "PAN-tai", pronunciation_en: "PAN-tai" },
+      { cell_id: "033bd077-8622-4716-b3bf-3d8fb32a8afb", word: "pasir", en: "sand", vi: "cát", pos: "noun", pronunciation_vi: "PA-sir", pronunciation_en: "PAH-seer" },
+      { cell_id: "c0918fe6-d0e8-436e-bec7-e9e60ab96e70", word: "terumbu karang", en: "coral reef", vi: "rạn san hô", pos: "noun phrase", pronunciation_vi: "te-RUM-bu KA-rang", pronunciation_en: "tuh-ROOM-boo KAH-rang" },
+      { cell_id: "1be10b88-48cc-4f06-a17a-24642f48035b", word: "ikan", en: "fish", vi: "cá", pos: "noun", pronunciation_vi: "I-kan", pronunciation_en: "EE-kan" },
+      { cell_id: "ce87e3c7-6e47-4e11-b033-63c438903bec", word: "warna-warni", en: "colourful", vi: "đủ màu sắc", pos: "adjective", pronunciation_vi: "WAR-na WAR-ni", pronunciation_en: "WAR-nah WAR-nee" },
+      { cell_id: "bcc56f69-d9d2-4914-b607-76a365b9cce9", word: "rapuh", en: "fragile", vi: "mong manh, dễ vỡ", pos: "adjective", pronunciation_vi: "ra-PUH", pronunciation_en: "rah-POOH" },
+      { cell_id: "fc5facbe-bb9e-425f-bca6-90f8fd144abe", word: "ombak", en: "wave", vi: "sóng biển", pos: "noun", pronunciation_vi: "OM-bak", pronunciation_en: "OM-bak" },
     ],
     dialogue: [
-      { speaker: "Pemandu", text: "Airnya jernih ya. Lihat, terumbu karangnya warna-warni!", vi: "Nước trong ghê. Nhìn kìa, rạn san hô đủ màu!", en: "The water's so clear. Look, the coral reef is colourful!" },
-      { speaker: "Turis", text: "Indah sekali! Boleh pegang karangnya?", vi: "Đẹp quá! Có được sờ san hô không?", en: "So beautiful! Can I touch the coral?" },
-      { speaker: "Pemandu", text: "Jangan, ya. Karang itu makhluk hidup yang rapuh.", vi: "Đừng nhé. San hô là sinh vật sống mong manh đấy.", en: "Please don't. Coral is a fragile living creature." },
+      { cell_id: "ccff03b3-9a10-468d-9f3c-ac948276c8a1", speaker: "Pemandu", text: "Airnya jernih ya. Lihat, terumbu karangnya warna-warni!", vi: "Nước trong ghê. Nhìn kìa, rạn san hô đủ màu!", en: "The water's so clear. Look, the coral reef is colourful!" },
+      { cell_id: "dec197ed-4b1d-48bd-aa22-ae385e082718", speaker: "Turis", text: "Indah sekali! Boleh pegang karangnya?", vi: "Đẹp quá! Có được sờ san hô không?", en: "So beautiful! Can I touch the coral?" },
+      { cell_id: "7b7ca0b2-2063-49aa-8e01-dfc423d410e4", speaker: "Pemandu", text: "Jangan, ya. Karang itu makhluk hidup yang rapuh.", vi: "Đừng nhé. San hô là sinh vật sống mong manh đấy.", en: "Please don't. Coral is a fragile living creature." },
     ],
     exercises: [
       {

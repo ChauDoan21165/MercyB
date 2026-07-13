@@ -10,6 +10,7 @@
 // approximations, common mistake warnings).
 
 export type GermanVocabEntry = {
+  cell_id?: string;
   de: string;
   en: string;
   vi: string;

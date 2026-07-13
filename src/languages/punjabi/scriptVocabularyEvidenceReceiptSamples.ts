@@ -18,6 +18,7 @@ export type PunjabiEvidenceReceiptFocus =
 export type PunjabiEvidenceReceiptStage = "pre_a11_evidence_receipt" | "completion_record" | "inventory_seal" | "pre_integration" | "sanity";
 
 export type PunjabiScriptVocabularyEvidenceReceiptSample = {
+  cell_id?: string;
   id: string;
   focus: PunjabiEvidenceReceiptFocus;
   stage: PunjabiEvidenceReceiptStage;
@@ -39,6 +40,7 @@ export type PunjabiScriptVocabularyEvidenceReceiptSample = {
 };
 
 export type PunjabiScriptVocabularyEvidenceReceiptSection = {
+  cell_id?: string;
   focus: PunjabiEvidenceReceiptFocus;
   title_vi: string;
   title_en: string;

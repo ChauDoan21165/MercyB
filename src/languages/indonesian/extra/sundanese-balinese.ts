@@ -17,6 +17,7 @@ type LessonSentence = {
 };
 
 type VocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -26,6 +27,7 @@ type VocabEntry = {
 };
 
 type DialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -183,6 +185,7 @@ export const sundaneseBalineseLessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: the safest path is standard polite Indonesian, then ask if needed: 'Maaf, itu bahasa daerah apa?' Do not call every regional language 'Javanese'. Also avoid using regional words as jokes; for many people they carry family, hometown, and ceremonial identity.",
     vocabulary: [
       {
+        cell_id: "1aa848c1-4335-4b68-a53a-56197fbcb29f",
         word: "bahasa Sunda",
         en: "Sundanese language",
         vi: "tiếng Sunda",
@@ -191,6 +194,7 @@ export const sundaneseBalineseLessons: IndonesianLesson[] = [
         pronunciation_en: "ba-HA-sa SOON-da",
       },
       {
+        cell_id: "6893375c-8459-42c4-9187-5bd2e961cdf6",
         word: "bahasa Bali",
         en: "Balinese language",
         vi: "tiếng Bali",
@@ -199,6 +203,7 @@ export const sundaneseBalineseLessons: IndonesianLesson[] = [
         pronunciation_en: "ba-HA-sa BA-lee",
       },
       {
+        cell_id: "06152adb-704f-4a93-9c21-6949abefe8ea",
         word: "bahasa daerah",
         en: "regional language",
         vi: "tiếng địa phương",
@@ -207,6 +212,7 @@ export const sundaneseBalineseLessons: IndonesianLesson[] = [
         pronunciation_en: "ba-HA-sa DA-e-rah",
       },
       {
+        cell_id: "76d00dcc-e037-4c60-9335-dd172c55abfc",
         word: "punten",
         en: "excuse me / sorry (Sundanese)",
         vi: "xin phép / xin lỗi (tiếng Sunda)",
@@ -215,6 +221,7 @@ export const sundaneseBalineseLessons: IndonesianLesson[] = [
         pronunciation_en: "POON-ten",
       },
       {
+        cell_id: "8bffebfb-480e-4cee-8833-ad1e269c2305",
         word: "hatur nuhun",
         en: "thank you (Sundanese)",
         vi: "cảm ơn (tiếng Sunda)",
@@ -223,6 +230,7 @@ export const sundaneseBalineseLessons: IndonesianLesson[] = [
         pronunciation_en: "HA-toor NOO-hoon",
       },
       {
+        cell_id: "8cc87755-14a9-45ac-bd71-74be2eee2b63",
         word: "rahajeng semeng",
         en: "good morning (Balinese)",
         vi: "chào buổi sáng (tiếng Bali)",
@@ -231,6 +239,7 @@ export const sundaneseBalineseLessons: IndonesianLesson[] = [
         pronunciation_en: "ra-HA-jeng SE-meng",
       },
       {
+        cell_id: "3566ed25-d775-4e76-8215-91b8e0b3b83c",
         word: "suksma",
         en: "thank you (Balinese)",
         vi: "cảm ơn (tiếng Bali)",
@@ -239,6 +248,7 @@ export const sundaneseBalineseLessons: IndonesianLesson[] = [
         pronunciation_en: "SOOKS-ma",
       },
       {
+        cell_id: "543955bd-e5c6-49a8-bd56-7b83ff465c3e",
         word: "adat",
         en: "custom / tradition",
         vi: "phong tục / truyền thống",
@@ -247,6 +257,7 @@ export const sundaneseBalineseLessons: IndonesianLesson[] = [
         pronunciation_en: "A-dat",
       },
       {
+        cell_id: "58fe0f12-a867-4300-b9d9-44eaa110e67f",
         word: "menghargai",
         en: "to respect / appreciate",
         vi: "tôn trọng / trân trọng",
@@ -257,24 +268,28 @@ export const sundaneseBalineseLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "34d2795c-8f01-4077-940b-b70eb96096f1",
         speaker: "Lan",
         text: "Maaf, itu bahasa daerah apa? Saya dengar kata punten.",
         vi: "Xin lỗi, đó là tiếng địa phương gì vậy? Tôi nghe từ punten.",
         en: "Sorry, what regional language is that? I heard the word punten.",
       },
       {
+        cell_id: "ffb47aca-3e3b-4a1d-928b-ac5f350de2e7",
         speaker: "Dina",
         text: "Itu bahasa Sunda. Punten artinya permisi atau maaf.",
         vi: "Đó là tiếng Sunda. Punten nghĩa là xin phép hoặc xin lỗi.",
         en: "That is Sundanese. Punten means excuse me or sorry.",
       },
       {
+        cell_id: "2e61447c-448d-4311-a3f4-b9bedf0616b6",
         speaker: "Lan",
         text: "Menarik sekali. Saya pakai bahasa Indonesia dulu supaya sopan.",
         vi: "Thú vị quá. Tôi dùng tiếng Indonesia trước để lịch sự.",
         en: "Very interesting. I will use Indonesian first to stay polite.",
       },
       {
+        cell_id: "f83115cf-9d9b-4d84-b275-f30e90df9496",
         speaker: "Dina",
         text: "Bagus. Kalau mau bilang terima kasih dalam Sunda, bisa hatur nuhun.",
         vi: "Tốt. Nếu muốn nói cảm ơn bằng tiếng Sunda, có thể nói hatur nuhun.",

@@ -6,6 +6,7 @@ type IndonesianLessonSentence = {
 };
 
 type VocabEntry = {
+  cell_id?: string;
   word: string;
   meaning_vi: string;
   meaning_en: string;
@@ -14,6 +15,7 @@ type VocabEntry = {
 };
 
 type DialogueLine = {
+  cell_id?: string;
   speaker: string;
   line: string;
   vi: string;
@@ -117,6 +119,7 @@ export const lessons: IndonesianLesson[] = [
     ],
     vocabulary: [
       {
+        cell_id: "aaff15d3-71c6-4045-af09-8a1cfc1e4d08",
         word: 'agen perjalanan',
         meaning_vi: 'công ty/đại lý du lịch',
         meaning_en: 'travel agency',
@@ -124,6 +127,7 @@ export const lessons: IndonesianLesson[] = [
         example_vi: 'Công ty du lịch này có nhiều lựa chọn gói tour.',
       },
       {
+        cell_id: "0d78fa4f-57ad-4122-a799-279865036899",
         word: 'paket tur',
         meaning_vi: 'gói tour',
         meaning_en: 'tour package',
@@ -131,6 +135,7 @@ export const lessons: IndonesianLesson[] = [
         example_vi: 'Gói tour đó đã bao gồm bữa trưa.',
       },
       {
+        cell_id: "99a29090-3ce8-41ff-a48b-38d5d26bce17",
         word: 'jadwal wisata',
         meaning_vi: 'lịch tham quan',
         meaning_en: 'sightseeing schedule',
@@ -138,6 +143,7 @@ export const lessons: IndonesianLesson[] = [
         example_vi: 'Lịch tham quan sẽ được gửi qua email.',
       },
       {
+        cell_id: "dbea25b8-7357-44ac-9f73-b0d04c5b4aed",
         word: 'hotel',
         meaning_vi: 'khách sạn',
         meaning_en: 'hotel',
@@ -145,6 +151,7 @@ export const lessons: IndonesianLesson[] = [
         example_vi: 'Khách sạn trong gói này là 3 sao.',
       },
       {
+        cell_id: "b3078b6c-8680-4885-bc6c-16f296125815",
         word: 'transportasi',
         meaning_vi: 'phương tiện đi lại',
         meaning_en: 'transportation',
@@ -152,6 +159,7 @@ export const lessons: IndonesianLesson[] = [
         example_vi: 'Phương tiện từ sân bay đã được chuẩn bị.',
       },
       {
+        cell_id: "74477d82-867f-4b37-8a0a-c8f1a3a701d8",
         word: 'uang muka',
         meaning_vi: 'tiền đặt cọc, tiền trả trước',
         meaning_en: 'deposit, advance payment',
@@ -159,6 +167,7 @@ export const lessons: IndonesianLesson[] = [
         example_vi: 'Tiền cọc cần được trả hôm nay.',
       },
       {
+        cell_id: "c3da58a6-42dd-4c15-b7ab-ada80870669b",
         word: 'pembatalan',
         meaning_vi: 'việc hủy',
         meaning_en: 'cancellation',
@@ -166,6 +175,7 @@ export const lessons: IndonesianLesson[] = [
         example_vi: 'Cần đọc trước chính sách hủy.',
       },
       {
+        cell_id: "3bb022a9-7e49-4fc9-b96c-68dd54f6ae66",
         word: 'pemandu wisata',
         meaning_vi: 'hướng dẫn viên du lịch',
         meaning_en: 'tour guide',
@@ -175,36 +185,42 @@ export const lessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "677e5939-f26c-4eb2-9b7c-1c29b96463b9",
         speaker: 'Pelanggan',
         line: 'Selamat pagi, saya ingin bertanya tentang paket tur ke Bali.',
         vi: 'Chào buổi sáng, tôi muốn hỏi về gói tour đi Bali.',
         en: 'Good morning, I would like to ask about a tour package to Bali.',
       },
       {
+        cell_id: "c67339f2-5e27-47ea-b983-67a5520d1c8d",
         speaker: 'Staf Agen',
         line: 'Tentu. Apakah harga itu sudah termasuk hotel dan transportasi?',
         vi: 'Tất nhiên. Giá đó đã bao gồm khách sạn và phương tiện đi lại chưa?',
         en: 'Of course. Is that price already inclusive of hotel and transport?',
       },
       {
+        cell_id: "e9a8335f-cb48-4b6c-995e-9a8ab578922e",
         speaker: 'Pelanggan',
         line: 'Kami juga perlu jadwal wisata hariannya.',
         vi: 'Chúng tôi cũng cần lịch tham quan hằng ngày.',
         en: 'We also need the daily sightseeing schedule.',
       },
       {
+        cell_id: "e40b64bf-02b1-4fd5-bb70-0d72c7ca7e1a",
         speaker: 'Staf Agen',
         line: 'Baik. Saya kirim detail hotel, transportasi, dan pemandu wisata.',
         vi: 'Được. Tôi sẽ gửi chi tiết khách sạn, phương tiện và hướng dẫn viên du lịch.',
         en: 'All right. I will send the hotel, transport, and tour guide details.',
       },
       {
+        cell_id: "681efcb8-4981-4c5c-ac18-93552cc82de7",
         speaker: 'Pelanggan',
         line: 'Berapa uang muka yang harus dibayar?',
         vi: 'Phải trả bao nhiêu tiền cọc?',
         en: 'How much deposit do we need to pay?',
       },
       {
+        cell_id: "7ed5520b-599b-4d2b-83df-e87253daf6a6",
         speaker: 'Staf Agen',
         line: 'Uang muka lima puluh persen. Pembatalan bisa dilakukan sesuai kebijakan.',
         vi: 'Tiền cọc là 50%. Việc hủy có thể được thực hiện theo chính sách.',

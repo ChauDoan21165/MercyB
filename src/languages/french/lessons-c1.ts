@@ -99,6 +99,7 @@ export const lessons: FrenchLesson[] =           [
       "tip_advice_en": "Standard structure for presenting a research hypothesis in 3–5 minutes (seminar or defense):\n\n(1) OPENING SENTENCE ('phrase d'amorce'): 'Mon travail s'inscrit dans le champ de X et porte plus précisément sur Y.' — name the field + the specific object in one sentence. Notice the formal nominalization: 's'inscrit dans' is far more academic than 'is about'.\n\n(2) CONDENSED LITERATURE REVIEW: name THREE authors max (more clutters oral delivery), state the consensus they reached, then the precise gap: 'La littérature antérieure — notamment les travaux de A (année), B (année) et C (année) — a établi que… Cela étant, un point demeure peu exploré: Z.'\n\n(3) HYPOTHESIS FORMULATION: 'C'est précisément à cette zone d'ombre que je souhaite m'attaquer. Mon hypothèse de travail est la suivante: [statement].' The 'zone d'ombre' (blind spot) metaphor is C1-register gold; use it.\n\n(4) METHODOLOGY IN ONE SENTENCE: 'Pour la mettre à l'épreuve, j'ai constitué un corpus de N [units] que j'ai analysé sous l'angle de [framework].'\n\n(5) ANTICIPATING THE OBJECTION: 'On pourrait m'objecter que [predictable critique]. À cela je répondrais que [seed of an answer].' This single sentence catapults you to C1-academic register; skip it and the first Q&A question will be brutal.\n\nAVOID:\n- 'Je vais vous parler de…' — too casual for academic oral; use 'Mon travail porte sur…'\n- 'C'est très intéressant parce que…' — empty filler; give the concrete reason\n- 'Comme l'a dit Foucault…' — citing a name without context; give work + year + specific idea\n- Reading slides verbatim — slides are scaffolding, your voice is the product\n- Going over time — French academia penalizes méthodologie immediately, before they even hear the substance\n\nPractice at home: write all five sentences (amorce / état / hypothèse / méthodo / objection) and read them aloud until you can deliver them in three minutes without notes. This 'pitch académique' is evaluated as a distinct skill at M2 and doctoral level in France — anglophone academics with strong substance often underperform here purely because they never drilled the form.",
       "vocabulary": [
         {
+          cell_id: "09898793-d20b-47a8-8e83-095a5f2de58e",
           "word": "une hypothèse de recherche",
           "en": "a research hypothesis",
           "vi": "một giả thuyết nghiên cứu",
@@ -107,6 +108,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ee-poh-TEZ duh ruh-SHERSH — both 'h's silent; final -s of 'recherche' is silent"
         },
         {
+          cell_id: "06c8496d-9373-41d7-b408-22d688fce2ad",
           "word": "postuler que",
           "en": "to posit that",
           "vi": "đặt giả định rằng",
@@ -115,6 +117,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "pos-tyu-LAY kuh — rounded 'u' (German ü); final 'que' is a soft 'kuh'"
         },
         {
+          cell_id: "0063e879-4ca1-4f94-998a-a3ce5fb9e95b",
           "word": "la variable indépendante",
           "en": "the independent variable",
           "vi": "biến độc lập",
@@ -123,6 +126,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "vah-RYAH-bluh an-day-pahn-DAHNT — final -ante pronounced (feminine adjective), unlike -ant which would be silent"
         },
         {
+          cell_id: "5c89c0e4-d497-43b1-b016-00f650f20b56",
           "word": "s'inscrire dans la continuité de",
           "en": "to follow on from",
           "vi": "nối tiếp công trình của",
@@ -131,6 +135,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "san-SKREER dahn lah kon-tee-nyu-ee-TAY duh — nasal 'in' opening; the 'gn' would be 'ny' (canyon)"
         },
         {
+          cell_id: "cc0908d4-cb96-4075-9f42-9bc47543e133",
           "word": "se démarquer de",
           "en": "to distinguish oneself from",
           "vi": "tách khỏi / khác biệt với",
@@ -139,6 +144,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "suh day-mar-KAY duh — final -er = 'ay'; the 'qu' = hard 'k', never 'kw'"
         },
         {
+          cell_id: "daa1bdd9-6320-4ffb-8969-fbb96f72e076",
           "word": "en l'occurrence",
           "en": "in this particular case",
           "vi": "trong trường hợp cụ thể này",
@@ -147,6 +153,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ahn loh-koo-RAHNS — formal C1 connector; double-r is one French throat r, not a rolled trill"
         },
         {
+          cell_id: "a1a5ab4d-3714-4ae1-823a-dd52803b061a",
           "word": "force est de constater que",
           "en": "one cannot but observe that",
           "vi": "phải thừa nhận rằng",
@@ -155,6 +162,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "FORSS eh duh kohn-stah-TAY kuh — academic-register opener; nasal 'on' in 'constater'"
         },
         {
+          cell_id: "a620b7a1-7667-449f-8545-228f9961c1fa",
           "word": "sous réserve de",
           "en": "subject to / pending",
           "vi": "với điều kiện",
@@ -163,6 +171,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "soo ray-ZERV duh — 'ou' = 'oo' (boot); the s of 'réserve' sounds like z between vowels"
         },
         {
+          cell_id: "3f294f5b-fa59-4638-8003-da432a7a6cf6",
           "word": "nuancer une conclusion",
           "en": "to qualify a conclusion",
           "vi": "làm rõ sắc thái cho kết luận",
@@ -171,6 +180,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "nwahn-SAY oon kohn-kloo-ZYOHN — false friend: NOT 'to nuance' as in English ('shading'); means to add qualifications/caveats"
         },
         {
+          cell_id: "54a01dab-c5f9-485e-b8d5-a5ed1d93e70a",
           "word": "l'échantillon",
           "en": "the sample",
           "vi": "mẫu nghiên cứu",
@@ -181,24 +191,28 @@ export const lessons: FrenchLesson[] =           [
       ],
       "dialogue": [
         {
+          cell_id: "880ce203-5fa4-43a8-a289-a69503721ce3",
           "speaker": "Pr. Lefèvre (directeur de thèse)",
           "text": "Madame Tran, pourriez-vous nous exposer en quelques minutes l'hypothèse centrale de votre travail ?",
           "vi": "Cô Trần, cô có thể trình bày trong vài phút giả thuyết trung tâm của công trình không?",
           "en": "Ms. Tran, could you set out the central hypothesis of your work for us in a few minutes?"
         },
         {
+          cell_id: "ae86f6d3-361d-4bc3-82b0-14d44c15ddb3",
           "speaker": "Linh",
           "text": "Volontiers. Mon hypothèse postule qu'il existe un lien causal entre l'exposition précoce à une L2 et la flexibilité métalinguistique observée à l'âge adulte.",
           "vi": "Vâng. Giả thuyết của tôi đặt giả định có một mối liên hệ nhân quả giữa việc tiếp xúc sớm với ngôn ngữ thứ hai và sự linh hoạt siêu ngôn ngữ quan sát được ở tuổi trưởng thành.",
           "en": "Gladly. My hypothesis posits a causal link between early exposure to an L2 and the metalinguistic flexibility observed in adulthood."
         },
         {
+          cell_id: "de3039c1-9e22-4f11-9764-2ab9f02e6ce4",
           "speaker": "Pr. Lefèvre",
           "text": "Sur quel corpus vous appuyez-vous pour étayer cette intuition ?",
           "vi": "Cô dựa trên ngữ liệu nào để củng cố trực giác này?",
           "en": "What corpus are you drawing on to back up this intuition?"
         },
         {
+          cell_id: "9ec62bee-932c-4a17-ba58-396f0c1c2aef",
           "speaker": "Linh",
           "text": "Sur un corpus de quatre-vingts entretiens semi-directifs, complété par une batterie de tests cognitifs.",
           "vi": "Trên một ngữ liệu gồm tám mươi cuộc phỏng vấn bán cấu trúc, bổ sung bằng một loạt bài kiểm tra nhận thức.",
@@ -458,6 +472,7 @@ export const lessons: FrenchLesson[] =           [
       "tip_advice_en": "Practical workflow to prevent a 'citation accident':\n\n(1) BUILD THE BIBLIOGRAPHY IMMEDIATELY from your first reading. Software: Zotero (free, the French academic standard), or BibTeX if you use LaTeX. DO NOT leave this for the end — entries will be missing, wrong, or impossible to retrace.\n\n(2) NOTE PAGE NUMBERS ALONGSIDE EVERY IDEA. Each time you record an idea from a book, log the page. Three months later you will NOT remember which page that line came from — and hunting through a 400-page book is a time-sink.\n\n(3) DISTINGUISH AUTHOR'S IDEAS FROM YOUR OWN in your notes. Use two colors, two fonts, two symbols — anything unambiguous. Anglophone doctoral students often fall into the trap of, six months later, not remembering whether a sentence came from Bourdieu or themselves — and writing it into their thesis without attribution = unintentional plagiat.\n\n(4) USE STANDARD FORMULAS for each citation type:\n- Verbatim quote: 'Comme l'écrit X (année, p. N), \"…\"'\n- Agreement with the author: 'Dans le sillage de X (année), nous soutenons que…'\n- Critiquing an author: 'Contrairement à ce qu'avance X (année), …'\n- Nuancing an author: 'Nous nuançons ici la thèse de X (année) en montrant que…'\n- Secondary source citation: 'X (année), cité par Y (année, p. N), affirme que…' — and be transparent that you read Y, not X.\n\n(5) WHEN YOU DON'T KNOW WHO SAID IT: DO NOT WRITE 'certains chercheurs ont montré que…' — that phrase is fatal in a French thesis. Either find the source or drop the claim.\n\nAVOID:\n- Citing Wikipedia in a thesis — reads as unserious; tolerated in M1 for definitions, NOT in the literature review.\n- Quoting several consecutive sentences from one author without guillemets — patchwriting = plagiat, even with a citation at the end of the block.\n- Copying from the French translation of an English original without specifying the translator — translation-studies committees are sharp on this point.",
       "vocabulary": [
         {
+          cell_id: "cc5659a9-1b0c-45ac-a73e-c73ccf98da0b",
           "word": "comme l'a établi",
           "en": "as has established",
           "vi": "như đã xác lập",
@@ -466,6 +481,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "kom lah ay-tah-BLEE — the 'l'a' contraction flows in one beat; opener formula for direct attribution"
         },
         {
+          cell_id: "785e94af-4b95-4390-9299-beb1c2cd3834",
           "word": "selon une thèse défendue par",
           "en": "according to a thesis defended by",
           "vi": "theo một luận điểm được bảo vệ bởi",
@@ -474,6 +490,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "suh-LOHN ewn TEZ day-fahn-DEW par — nasal 'on' at the start; 'thèse' ends on sharp 'z' sound, never 's'"
         },
         {
+          cell_id: "c956d50d-8da5-4d85-a055-d95d45929c14",
           "word": "pour reprendre la formule de",
           "en": "to borrow the phrasing of",
           "vi": "mượn cách diễn đạt của",
@@ -482,6 +499,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "poor ruh-PRAHN-druh lah for-MEWL duh — opening 're' is schwa; the 'u' in 'mule' is rounded 'ew' (German ü)"
         },
         {
+          cell_id: "02749674-fff5-471d-8cef-66c651a05707",
           "word": "s'appuyer sur",
           "en": "to rely on",
           "vi": "dựa vào",
@@ -490,6 +508,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "sah-pwee-YAY sewr — the 'uy' glides into 'wee-y'; 'sur' has the rounded French 'u'"
         },
         {
+          cell_id: "72d8ed17-a7fc-4e3b-ac49-5f8aabc0e735",
           "word": "à ma connaissance",
           "en": "to my knowledge",
           "vi": "theo hiểu biết của tôi",
@@ -498,6 +517,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ah mah koh-neh-SAHNS — a key hedge in academic French; signals you're claiming limited overview, not omniscience"
         },
         {
+          cell_id: "c7f5d593-098d-432b-8237-c7f0e17b8de3",
           "word": "dans le sillage de",
           "en": "in the wake of",
           "vi": "trong mạch nối tiếp của",
@@ -506,6 +526,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "dahn luh see-YAHZH duh — 'ill' is 'ee-y'; final -age is 'ahzh'; metaphor from naval wake, used for intellectual lineage"
         },
         {
+          cell_id: "b4e7de38-2201-4cd0-baca-4acbd3e35872",
           "word": "contrairement à ce qu'avance X",
           "en": "contrary to what X argues",
           "vi": "trái với điều X đưa ra",
@@ -514,6 +535,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "kohn-trair-uh-MAHN ah suh kah-VAHNS — opens a polite disagreement; far less aggressive than English 'unlike X'"
         },
         {
+          cell_id: "bf72ae95-c139-406d-83fb-5b154db08ac1",
           "word": "un ouvrage de référence",
           "en": "a reference work",
           "vi": "một công trình quy chiếu",
@@ -522,6 +544,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ehn oo-VRAHZH duh ray-fay-RAHNS — 'ouvrage' is the formal C1 word for a published work; 'livre' is too colloquial here"
         },
         {
+          cell_id: "e13157de-10ef-4da5-8c8d-74f4d897a723",
           "word": "une note de bas de page",
           "en": "a footnote",
           "vi": "một ghi chú chân trang",
@@ -530,6 +553,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ewn NOT duh BAH duh PAHZH — literally 'note at the bottom of the page'; final -age is 'ahzh'"
         },
         {
+          cell_id: "aa54c686-9562-446e-a332-87bc85c09e4f",
           "word": "plagier",
           "en": "to plagiarize",
           "vi": "đạo văn",
@@ -540,24 +564,28 @@ export const lessons: FrenchLesson[] =           [
       ],
       "dialogue": [
         {
+          cell_id: "8b84afc4-7166-4c6d-8196-97b9be5d056a",
           "speaker": "Pr. Mercier",
           "text": "Madame Tran, vous citez Goffman page douze, mais sans donner d'édition ni de page. Pourriez-vous préciser ?",
           "vi": "Cô Trần, cô trích Goffman ở trang 12, nhưng không nêu ấn bản và số trang. Cô có thể nói rõ hơn không?",
           "en": "Ms. Tran, you cite Goffman on page twelve, but give no edition or page reference. Could you clarify?"
         },
         {
+          cell_id: "dc3f2371-40ba-404b-9ff2-8c92e201a32b",
           "speaker": "Linh",
           "text": "Bien sûr — il s'agit de Stigma, édition Penguin de 1990, page 47.",
           "vi": "Vâng — đó là Stigma, ấn bản Penguin năm 1990, trang 47.",
           "en": "Of course — it's Stigma, the 1990 Penguin edition, page 47."
         },
         {
+          cell_id: "fabad51d-8703-4f45-b995-7fd5e582b443",
           "speaker": "Pr. Mercier",
           "text": "Et vous l'avez consulté en anglais ou via la traduction française ?",
           "vi": "Cô đã đọc bản tiếng Anh hay qua bản dịch tiếng Pháp?",
           "en": "And did you read it in English or via the French translation?"
         },
         {
+          cell_id: "b46f3991-2062-425d-8bc9-c418419b8801",
           "speaker": "Linh",
           "text": "En anglais — la traduction Kihm de 1975 sera mentionnée en note pour les lecteurs qui préféreraient s'y référer.",
           "vi": "Bản tiếng Anh — bản dịch của Kihm năm 1975 sẽ được nhắc trong ghi chú cho độc giả muốn tham khảo.",
@@ -829,6 +857,7 @@ export const lessons: FrenchLesson[] =           [
       "tip_advice_en": "Four-part structure for counter-arguing in a seminar or defense:\n\n(1) RECOGNITION — acknowledge what's right in the opponent's argument. 'Je vous accorde volontiers que…', 'Il est exact que…', 'Vous avez raison de souligner que…'. The French respect interlocutors who concede before pushing back. Jumping straight to disagreement reads as stubborn.\n\n(2) NUANCE — name the limits of the opponent's reasoning. 'Cela étant, ce raisonnement présuppose que…', 'Une telle conclusion néglige toutefois que…', 'Cette analyse demeure valide tant qu'on accepte que…'\n\n(3) SUBSTANTIVE ARGUMENT — present your own position. 'De mon côté, je soutiendrais plutôt que…', 'Une autre lecture, qui me paraît plus féconde, consisterait à…'\n\n(4) OPENING — leave space for the colleague to respond. 'Cela étant, je suis preneuse de vos objections sur ce point précis.', 'Comment vous-même articulez-vous ce paradoxe ?'\n\nUSEFUL PHRASES BY INTENT:\n\nTO PARTIALLY ACCEPT:\n- 'Je vous accorde ce point.' (I'll concede that point)\n- 'C'est juste, sur ce point.' (Fair, on this point)\n- 'Votre remarque est tout à fait fondée.' (Your remark is entirely well-founded)\n\nTO PUSH BACK SOFTLY:\n- 'Permettez-moi de nuancer.' (Allow me to add nuance)\n- 'Je serais plus prudente sur ce point.' (I'd be more cautious here)\n- 'Il me semble qu'il faudrait distinguer…' (It seems to me we'd need to distinguish…)\n\nTO PUSH BACK FIRMLY:\n- 'Je ne vous suis pas sur ce point.' (I don't follow you here)\n- 'Cela me paraît contestable.' (That seems open to challenge)\n- 'L'argument ne me convainc pas.' (The argument doesn't convince me)\n- 'Je me permets de réfuter cette thèse.' (Allow me to refute this thesis)\n\nAVOID:\n- 'C'est faux.' (That's wrong) — too blunt, no nuance\n- 'Vous vous trompez.' (You're mistaken) — personal attack\n- 'N'importe quoi.' (Nonsense) — completely inappropriate\n- 'Avec tout le respect…' (anglophone calque) — sounds unnatural, the French don't use this construction\n\nWHEN YOU'RE WRONG: 'Vous avez raison, je révise ma position.' This sentence wins you MORE points than digging in. French committees value the capacity to update over rigid posture-holding.",
       "vocabulary": [
         {
+          cell_id: "8e372207-a4c1-42c1-8c8d-270aaaf57fbd",
           "word": "objecter à juste titre",
           "en": "to object rightly",
           "vi": "phản biện một cách chính đáng",
@@ -837,6 +866,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ob-zhek-TAY ah zhewst TEE-truh — 'j' is soft 'zh'; 'juste' has rounded 'u'; the formula signals fair, legitimate critique"
         },
         {
+          cell_id: "5c7e23e1-ee38-4c1e-9211-cae831c27730",
           "word": "un raisonnement",
           "en": "a line of reasoning",
           "vi": "một lập luận",
@@ -845,6 +875,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "reh-zohn-MAHN — 's' between vowels sounds like 'z'; final -ment is nasal 'mahn', t silent"
         },
         {
+          cell_id: "352145f2-3b7d-4817-9e6f-ff0c190925e1",
           "word": "soulever une difficulté",
           "en": "to raise a difficulty",
           "vi": "đặt ra một khó khăn",
@@ -853,6 +884,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "soo-luh-VAY ewn dee-fee-kewl-TAY — 'ou' is 'oo'; double 'u' rounded; final -té is 'tay'"
         },
         {
+          cell_id: "5a4f0a85-8124-49fc-ae6c-3b6f1ed33b61",
           "word": "réfuter une thèse",
           "en": "to refute a thesis",
           "vi": "bác bỏ một luận điểm",
@@ -861,6 +893,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ray-few-TAY ewn TEZ — 'u' rounded in both 'fu' and 'une'; 'thèse' ends on sharp 'z'"
         },
         {
+          cell_id: "31d430b2-24b6-41a5-adcb-37c29d0fbe2e",
           "word": "reformuler",
           "en": "to reformulate",
           "vi": "diễn đạt lại",
@@ -869,6 +902,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ruh-for-mew-LAY — opening 're' is schwa 'ruh'; 'u' is rounded 'ew'; final -er is 'ay'"
         },
         {
+          cell_id: "8599e13d-fd59-4ffa-ac1e-a79e71c6c1ab",
           "word": "un paramètre négligé",
           "en": "an overlooked parameter",
           "vi": "biến số bị bỏ qua",
@@ -877,6 +911,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ehn pah-rah-MEH-truh nay-glee-ZHAY — è with grave is 'eh'; -gé is 'zhay' (soft 'zh')"
         },
         {
+          cell_id: "d9955f73-d9f5-46da-ab94-14695a812972",
           "word": "il n'en demeure pas moins que",
           "en": "it nonetheless remains that",
           "vi": "dù sao thì",
@@ -885,6 +920,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "eel nahn duh-MUR pah MWAN kuh — long C1 connector; nasal -en; 'moins' is 'mwan'; signals contrast preserving previous point"
         },
         {
+          cell_id: "695ee175-17e9-4d07-8947-a2556e4f210b",
           "word": "je vous accorde que",
           "en": "I grant you that",
           "vi": "tôi nhường bạn rằng",
@@ -893,6 +929,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "zhuh voo-zah-KOR kuh — liaison vous→accorde makes 'voo-zah'; opener for concession before counter-argument"
         },
         {
+          cell_id: "c26337da-b64d-4b50-8f0f-7e203d379bf3",
           "word": "contestable",
           "en": "open to challenge",
           "vi": "có thể tranh luận",
@@ -901,6 +938,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "kohn-tes-TAH-bluh — nasal 'on'; final -ble is a quick 'bluh'; polite way to say 'doubtful' in academic register"
         },
         {
+          cell_id: "5d7ebee4-6902-4042-9d6f-1d851e1c4c9b",
           "word": "prendre acte de",
           "en": "to take note of",
           "vi": "ghi nhận",
@@ -911,24 +949,28 @@ export const lessons: FrenchLesson[] =           [
       ],
       "dialogue": [
         {
+          cell_id: "d999b917-3fbe-449c-825a-dc6f760d7765",
           "speaker": "Pr. Roussel",
           "text": "Madame Tran, votre conclusion me semble aller bien au-delà de ce que vos données autorisent.",
           "vi": "Cô Trần, kết luận của cô có vẻ đi xa hơn nhiều so với điều dữ liệu của cô cho phép.",
           "en": "Ms. Tran, your conclusion seems to me to go well beyond what your data permit."
         },
         {
+          cell_id: "4304850f-3451-4ba7-b1ba-f16c33bbdce9",
           "speaker": "Linh",
           "text": "Je vous accorde volontiers que la formulation actuelle prête le flanc à cette critique.",
           "vi": "Tôi sẵn sàng nhường rằng cách phát biểu hiện tại tạo cơ hội cho lời phê bình đó.",
           "en": "I'll readily grant you that the current formulation invites that critique."
         },
         {
+          cell_id: "33902e7e-5bc0-466b-ab90-a3243e43c8d0",
           "speaker": "Linh",
           "text": "Cela étant, il me semble que la conclusion, une fois reformulée en termes plus prudents, demeure défendable.",
           "vi": "Dù vậy, theo tôi khi diễn đạt lại bằng những thuật ngữ thận trọng hơn, kết luận vẫn có thể bảo vệ.",
           "en": "That said, it seems to me that the conclusion, once reformulated in more cautious terms, remains defensible."
         },
         {
+          cell_id: "0b9c8f72-907e-4d90-b29b-9a6b7e0d56da",
           "speaker": "Pr. Roussel",
           "text": "Sur ce point précis, je vous suis. Mais reformulez-la dans la version définitive.",
           "vi": "Ở điểm cụ thể này, tôi theo cô. Nhưng cô diễn đạt lại trong bản chính thức.",
@@ -1200,6 +1242,7 @@ export const lessons: FrenchLesson[] =           [
       "tip_advice_en": "A 3-level framework for matching hedge intensity to the strength of your evidence:\n\nLEVEL 1 — LIGHT HEDGE (conclusion very solid, just toning down):\n- 'De toute évidence, X est lié à Y.' (Obviously, X is linked to Y)\n- 'Selon toute vraisemblance, …' (In all likelihood)\n- 'Comme on pouvait s'y attendre, …' (As one might have expected)\n\nLEVEL 2 — MEDIUM HEDGE (well-grounded conclusion but requires conditions):\n- 'Tout porte à croire que X est lié à Y.'\n- 'Il y a de bonnes raisons de penser que…'\n- 'Les données convergent vers l'hypothèse selon laquelle…'\n\nLEVEL 3 — STRONG HEDGE (provisional conclusion, easily revisable):\n- 'Il semblerait que…'\n- 'On pourrait, sous toutes réserves, avancer que…'\n- 'À titre purement exploratoire, je proposerais…'\n\nSELECTION RULE: match level to the AMOUNT OF EVIDENCE you have. Level 1 for results replicated many times; Level 3 for an exploratory hypothesis on a small sample.\n\nCOMMON ANGLOPHONE ERRORS:\n\n(1) BLANKET HEDGING — every sentence at Level 3. Reads as having no commitment and no contribution.\n\n(2) NO HEDGE — writing everything in the assertive present indicative. Reads as a textbook, not research.\n\n(3) HEDGING WHERE UNNECESSARY — e.g. 'il semblerait que cette étude porte sur 80 entretiens' — NO. You KNOW it's 80 interviews. Hedging belongs on interpretation and generalization, NOT on descriptive facts.\n\n(4) NOT HEDGING WHERE NEEDED — writing 'cela prouve que…' on the back of three interviews. Three interviews 'prove' nothing; at most they 'suggest'.\n\nESPECIALLY POLISHED C1 PHRASES:\n- 'Sans m'engager outre mesure, je dirais que…' (Without committing beyond measure, I would say that…)\n- 'Si l'on me permet une interprétation libre…' (If I'm permitted a free interpretation…)\n- 'Je serais tentée d'avancer, à titre d'hypothèse, que…' (I would be tempted to advance, as a hypothesis, that…)\n- 'Sans trancher la question, …' (Without settling the question)\n- 'Il convient de rester prudent quant à…' (It is fitting to remain cautious regarding…)",
       "vocabulary": [
         {
+          cell_id: "989c5a20-8801-4330-8a78-f1572bdb1044",
           "word": "il semblerait que",
           "en": "it would seem that",
           "vi": "có vẻ như",
@@ -1208,6 +1251,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "eel sahn-bluh-RAY kuh — conditional of 'sembler'; one tier softer than 'il semble que' (which takes subjunctive)"
         },
         {
+          cell_id: "48987f6d-3b22-45c6-908c-e9a1e4cdb2ab",
           "word": "tout porte à croire que",
           "en": "every indication suggests that",
           "vi": "mọi dấu hiệu cho thấy",
@@ -1216,6 +1260,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "too PORT ah KRWAR kuh — final -t in 'tout' silent; throat r in 'porte' and 'croire'; medium-strength epistemic hedge"
         },
         {
+          cell_id: "c8388ac6-95dc-4b97-a2ee-b43bce0c4cc0",
           "word": "il y a tout lieu de penser que",
           "en": "there is every reason to think that",
           "vi": "có cơ sở để tin rằng",
@@ -1224,6 +1269,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "eel-yah too LYUH duh pahn-SAY kuh — 'lieu' is one syllable 'lyuh'; signals strong reason while leaving room for doubt"
         },
         {
+          cell_id: "8ec61b16-ef58-4aa4-9a60-4ee8a084abbe",
           "word": "on ne saurait affirmer que",
           "en": "one cannot affirm that",
           "vi": "không thể khẳng định",
@@ -1232,6 +1278,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ohn nuh soh-RAY ah-feer-MAY kuh — nasal 'on'; the 'ne … saurait' construction is more elegant than 'on ne peut pas affirmer'"
         },
         {
+          cell_id: "aa7d64d8-af3f-41b2-850d-6a9ae42ffdd2",
           "word": "sous réserve de",
           "en": "subject to",
           "vi": "với điều kiện",
@@ -1240,6 +1287,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "soo ray-ZERV duh — 'ou' is 'oo'; 's' between vowels sounds like 'z'; canonical scope hedge for empirical claims"
         },
         {
+          cell_id: "dc7307d9-68a5-4f99-9be9-7e7df74ff667",
           "word": "trancher une question",
           "en": "to settle a question",
           "vi": "giải quyết dứt khoát một vấn đề",
@@ -1248,6 +1296,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "trahn-SHAY ewn kes-TYOHN — 'ch' is 'sh'; nasal -an; 'trancher' literally 'to slice' — to deliver a decisive ruling"
         },
         {
+          cell_id: "5fd76fc4-d057-4a51-bae6-ab9aef69c24d",
           "word": "sans préjuger de",
           "en": "without prejudging",
           "vi": "không kết luận trước về",
@@ -1256,6 +1305,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "sahn pray-zhew-ZHAY duh — nasal -an; two 'zh' sounds (soft 'j' as in 'measure'); a key signal of intellectual humility"
         },
         {
+          cell_id: "aa7a47ea-9ab0-4664-8e2f-2394541ea2f8",
           "word": "à titre provisoire",
           "en": "on a provisional basis",
           "vi": "tạm thời",
@@ -1264,6 +1314,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ah TEE-truh proh-vee-ZWAR — temporal hedge; explicitly marks a claim as subject to later revision"
         },
         {
+          cell_id: "05d6e374-d7ff-4f4a-a15b-60cea6d64da2",
           "word": "en l'état actuel des connaissances",
           "en": "in the current state of knowledge",
           "vi": "trong tình trạng hiểu biết hiện nay",
@@ -1272,6 +1323,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ahn lay-TAH ak-TWEL day koh-neh-SAHNS — scope hedge bounding a claim to current knowledge; signals that future evidence could revise it"
         },
         {
+          cell_id: "504984d1-3c94-4ae8-8337-b06061beff2a",
           "word": "séduisant",
           "en": "appealing (but to be checked)",
           "vi": "hấp dẫn (chưa kết luận)",
@@ -1282,24 +1334,28 @@ export const lessons: FrenchLesson[] =           [
       ],
       "dialogue": [
         {
+          cell_id: "95bc47c6-644d-4f97-b5f1-b559a2b9b73e",
           "speaker": "Pr. Lefèvre",
           "text": "Madame Tran, vous écrivez « cette étude prouve que… ». N'est-ce pas un peu fort ?",
           "vi": "Cô Trần, cô viết « nghiên cứu này chứng minh rằng… ». Không phải quá mạnh sao?",
           "en": "Ms. Tran, you write 'this study proves that…'. Isn't that a touch strong?"
         },
         {
+          cell_id: "3d361568-17f0-4585-aa14-eee2b2aa9b3b",
           "speaker": "Linh",
           "text": "Vous avez raison. Avec quatre-vingts entretiens, je ne « prouve » rien — au mieux je « suggère fortement ».",
           "vi": "Thầy đúng. Với 80 cuộc phỏng vấn, tôi không « chứng minh » gì — tốt nhất là « gợi ý mạnh ».",
           "en": "You're right. With eighty interviews, I don't 'prove' anything — at most I 'strongly suggest'."
         },
         {
+          cell_id: "d184f0a4-83a8-4e57-9c65-2dbb4bcbcb45",
           "speaker": "Pr. Lefèvre",
           "text": "Bonne reformulation. Et page douze, « il est évident que… » — pareil, à éviter.",
           "vi": "Diễn đạt lại tốt. Và trang 12, « hiển nhiên rằng… » — cũng vậy, tránh.",
           "en": "Good rephrasing. And page twelve, 'it is obvious that…' — same, avoid it."
         },
         {
+          cell_id: "ada18109-409a-4c7f-bd29-dec3ce9df245",
           "speaker": "Linh",
           "text": "Je remplace par « tout porte à croire que… ». Plus juste, plus défendable.",
           "vi": "Tôi thay bằng « mọi dấu hiệu cho thấy… ». Đúng hơn, dễ bảo vệ hơn.",
@@ -1577,6 +1633,7 @@ export const lessons: FrenchLesson[] =           [
       "tip_advice_en": "Five-part frame for defining a technical term in a thesis or article:\n\n(1) ANNOUNCEMENT: 'Avant d'aller plus avant, il convient de préciser ce que j'entends par X.' (Before going further, I should specify what I mean by X.)\n\n(2) QUICK GENEALOGY: 'Cette notion, introduite par A en année1 puis reformulée par B en année2, recouvre [3-line summary of the term's history].'\n\n(3) POSITIVE DEFINITION: 'Au sens où je l'emploie, X désigne [your definition].' One single sentence — the more compact, the better.\n\n(4) NEGATIVE DEFINITION: 'X, en revanche, ne recouvre pas [Y, Z, W — possible misreadings].'\n\n(5) OPERATIONALIZATION: 'En pratique, je repère X à travers [concrete indicators].'\n\nUSEFUL PHRASES BY INTENT:\n\nTO POSITION WITHIN A TRADITION:\n- 'Au sens bourdieusien…' (in the Bourdieusian sense)\n- 'Dans la tradition de l'école de Francfort…' (in the Frankfurt School tradition)\n- 'Tel que reformulé par les études postcoloniales…' (as reformulated by postcolonial studies)\n\nTO DISTINGUISH NEIGHBORING CONCEPTS:\n- 'Cette notion ne doit pas être confondue avec…' (not to be conflated with)\n- 'À distinguer de…' (to be distinguished from)\n- 'Bien que voisine de X, la notion de Y s'en démarque par…' (though adjacent to X, the notion of Y differs in…)\n- 'Le glissement entre X et Y est fréquent et trompeur.' (The slippage between X and Y is frequent and misleading)\n\nTO OPERATIONALIZE:\n- 'Sur le plan opératoire, X se mesure par…' (Operationally, X is measured by…)\n- 'Je retiens trois critères convergents…' (I retain three converging criteria…)\n- 'En pratique, je repère X lorsque…' (In practice, I identify X when…)\n\nAVOID:\n- Definitions that just restate the main idea ('le bilinguisme, c'est le fait d'être bilingue')\n- Definitions so broad the term becomes meaningless\n- Non-operationalizable definitions in an empirical thesis\n- Copying a dictionary definition without commentary — reads as academically immature",
       "vocabulary": [
         {
+          cell_id: "e6666216-4f8f-49e2-a391-d8ec22b1a088",
           "word": "par X, j'entends",
           "en": "by X, I mean",
           "vi": "khi tôi nói X, tôi hiểu",
@@ -1585,6 +1642,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "par … zhahn-TAHN — nasal -ent; canonical formula for opening a technical definition"
         },
         {
+          cell_id: "2dc79ad4-585f-4eb7-8c6e-cca1c6b8645c",
           "word": "opérationnaliser un concept",
           "en": "to operationalize a concept",
           "vi": "thao tác hóa một khái niệm",
@@ -1593,6 +1651,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "oh-pay-rah-syoh-nah-lee-ZAY ehn kohn-SEPT — long verb, stress on final syllable; the bridge from theory to empirical method"
         },
         {
+          cell_id: "76d74266-7dbd-4519-a5dd-c2c01967dda4",
           "word": "délimiter une notion",
           "en": "to delimit a notion",
           "vi": "giới hạn một khái niệm",
@@ -1601,6 +1660,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "day-lee-mee-TAY ewn noh-SYOHN — to draw the boundaries of a concept; says what's IN and what's OUT"
         },
         {
+          cell_id: "dc471006-4917-4af4-9e55-61701bb793e6",
           "word": "un indicateur convergent",
           "en": "a converging indicator",
           "vi": "một chỉ báo hội tụ",
@@ -1609,6 +1669,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "an-dee-kah-TUR kohn-vair-ZHAHN — when multiple independent indicators point to the same concept, you have convergent validity"
         },
         {
+          cell_id: "75bea2d6-e19a-4b03-96a2-ce38f2458699",
           "word": "un glissement sémantique",
           "en": "a semantic shift",
           "vi": "một sự trượt nghĩa",
@@ -1617,6 +1678,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "glees-MAHN say-mahn-TEEK — nasal -an in both words; a key C1 term for diagnosing when an author drifts from their initial definition"
         },
         {
+          cell_id: "c2b3c8a7-29ad-40dc-bd7e-c5bb3208ce98",
           "word": "voisin mais distinct",
           "en": "adjacent but distinct",
           "vi": "gần kề nhưng riêng biệt",
@@ -1625,6 +1687,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "vwa-ZAN meh dees-TANKT — 'oi' is 'wah'; key C1 phrase for naming concept-pairs that are easily confused"
         },
         {
+          cell_id: "5d10d1b9-3b64-4ea0-b8bd-a0e7b1a0e6d5",
           "word": "sur le plan opératoire",
           "en": "at the operational level",
           "vi": "về mặt thao tác",
@@ -1633,6 +1696,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "sewr luh PLAHN oh-pay-rah-TWAR — 'sur' rounded 'u'; nasal -an in 'plan'; signals the transition from theory to method"
         },
         {
+          cell_id: "c1b8b546-ab91-4167-9e74-af5eb8e19acc",
           "word": "acception",
           "en": "sense / accepted meaning",
           "vi": "nghĩa được chấp nhận",
@@ -1641,6 +1705,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ak-sep-SYOHN — false friend: NOT English 'acceptance'! Means the accepted meaning or technical sense of a term"
         },
         {
+          cell_id: "32adf730-b298-4f96-9986-ca241f3e9251",
           "word": "recouvrir une réalité",
           "en": "to cover a reality",
           "vi": "bao trùm một thực tế",
@@ -1649,6 +1714,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ruh-koo-VREER ewn ray-ah-lee-TAY — what a concept refers to in the world; 'le terme X recouvre Y' = 'the term X covers Y'"
         },
         {
+          cell_id: "7ac9f9a0-ac88-49fc-9af9-9c7fcd573327",
           "word": "un terme polysémique",
           "en": "a polysemous term",
           "vi": "một thuật ngữ đa nghĩa",
@@ -1659,24 +1725,28 @@ export const lessons: FrenchLesson[] =           [
       ],
       "dialogue": [
         {
+          cell_id: "d5871571-fad4-489a-a7de-d5cc3974d041",
           "speaker": "Pr. Mercier",
           "text": "Madame Tran, vous utilisez le mot « identité » trente-quatre fois sans jamais le définir. C'est un problème.",
           "vi": "Cô Trần, cô dùng từ « bản sắc » 34 lần mà không bao giờ định nghĩa. Đó là một vấn đề.",
           "en": "Ms. Tran, you use the word 'identity' thirty-four times without ever defining it. That's a problem."
         },
         {
+          cell_id: "bf198b52-a2f7-4504-9f67-ea63521e6c1e",
           "speaker": "Linh",
           "text": "Vous avez raison. « Identité » est un terme polysémique — sans définition, le lecteur ne sait pas ce que je vise.",
           "vi": "Thầy đúng. « Bản sắc » là thuật ngữ đa nghĩa — không có định nghĩa, độc giả không biết tôi nhắm gì.",
           "en": "You're right. 'Identity' is a polysemous term — without a definition, the reader can't tell what I'm getting at."
         },
         {
+          cell_id: "9b7841b9-64d7-490c-80f7-c46222f8b502",
           "speaker": "Pr. Mercier",
           "text": "Précisez votre acception en cinq lignes maximum, dès l'introduction.",
           "vi": "Cô làm rõ nghĩa cô dùng trong tối đa 5 dòng, ngay phần dẫn nhập.",
           "en": "Specify your accepted sense in five lines maximum, from the introduction onwards."
         },
         {
+          cell_id: "f866c695-f488-4405-a5c8-423c2e3b6982",
           "speaker": "Linh",
           "text": "D'accord. Je délimite par rapport à Hall, j'écarte la lecture essentialiste, et j'opérationnalise par trois marqueurs.",
           "vi": "Vâng. Tôi giới hạn so với Hall, tôi loại trừ cách đọc duy bản chất, và tôi thao tác hóa qua ba dấu hiệu.",
@@ -1942,6 +2012,7 @@ export const lessons: FrenchLesson[] =           [
       "tip_advice_en": "Five-part structure for comparing two methodologies in a methods section:\n\n(1) EPISTEMOLOGICAL FOUNDATION — what does each method presuppose about reality? Quanti presupposes measurable regularities; quali presupposes reflexive meaning. DO NOT skip this step — a C1 committee reads for it specifically.\n\n(2) STRENGTHS OF EACH — neutrally. 'L'enquête statistique permet de…'; 'L'enquête ethnographique permet de…'. NEVER 'est meilleure que'.\n\n(3) LIMITS OF EACH — neutrally. Each method has a 'trou aveugle' (blind spot). State explicitly.\n\n(4) POSSIBLE ARTICULATION — mixed methods. 'En articulant les deux dans un dispositif séquentiel…'\n\n(5) JUSTIFIED CHOICE — the method you chose, WITH a reason tied to YOUR specific research question. NEVER 'j'ai choisi le qualitatif parce que c'est mieux' — that's career suicide.\n\nUSEFUL COMPARATIVE PHRASES:\n\nTO PARALLEL TWO METHODS:\n- 'Là où X permet de…, Y permet de…' (Where X allows…, Y allows…)\n- 'Tandis que X mesure l'ampleur, Y restitue la texture.' (While X measures the scale, Y renders the texture)\n- 'D'un côté…, de l'autre…' (On one hand…, on the other…)\n- 'X et Y, loin de s'opposer, se complètent.' (X and Y, far from opposing each other, complement each other)\n\nTO NAME A LIMIT:\n- 'Le risque de cette approche réside dans…' (The risk of this approach lies in…)\n- 'L'inconvénient majeur consiste en…' (The major drawback consists of…)\n- 'Cette méthode achoppe lorsque…' (This method stumbles when…)\n- 'Elle peine à saisir…' (It struggles to capture…)\n\nTO CHOOSE AND JUSTIFY:\n- 'Compte tenu de la nature de mon objet, j'opte pour…' (Given the nature of my object, I opt for…)\n- 'La spécificité de ma question oriente le choix vers…' (The specificity of my question orients the choice toward…)\n- 'Sans dénier la pertinence de X, c'est Y qui semble ici le mieux adapté.' (Without denying the relevance of X, Y seems best adapted here)\n\nAVOID:\n- 'Cette méthode est mieux que celle-là.' → too absolute, no contextualization\n- 'J'ai choisi le qualitatif parce que je n'aime pas les chiffres.' → personalizes, not scientific\n- 'Le quantitatif est dépassé.' → polemic, not argument\n- Skipping the epistemological foundation — reads B2, not C1",
       "vocabulary": [
         {
+          cell_id: "df64184b-b320-43a3-962b-114c800f6055",
           "word": "une approche méthodologique",
           "en": "a methodological approach",
           "vi": "một cách tiếp cận phương pháp luận",
@@ -1950,6 +2021,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ewn ah-PROSH may-toh-doh-loh-ZHEEK — 'gique' is 'zheek'; stress on the last syllable"
         },
         {
+          cell_id: "d736a84c-3663-49c3-a62d-0d5f459cf941",
           "word": "l'approche quantitative",
           "en": "the quantitative approach",
           "vi": "cách tiếp cận định lượng",
@@ -1958,6 +2030,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "lah-PROSH kahn-tee-tah-TEEV — nasal 'an' in 'quantitative'; final -ive is 'eev'"
         },
         {
+          cell_id: "5aad01b3-147e-4639-a8a7-80c8aba59780",
           "word": "l'approche qualitative",
           "en": "the qualitative approach",
           "vi": "cách tiếp cận định tính",
@@ -1966,6 +2039,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "lah-PROSH kah-lee-tah-TEEV — parallel construction to 'quantitative'; the qu- is always just 'k'"
         },
         {
+          cell_id: "a7a3ba3d-f638-46f3-93a1-64da83659462",
           "word": "saisir le sens",
           "en": "to grasp the meaning",
           "vi": "nắm bắt ý nghĩa",
@@ -1974,6 +2048,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "say-ZEER luh SAHNS — 's' between vowels sounds like 'z'; nasal -ens; the qualitative researcher's primary task"
         },
         {
+          cell_id: "ca6315b9-555d-4758-9ad8-cfb29fb1e77d",
           "word": "un dispositif séquentiel",
           "en": "a sequential design",
           "vi": "một thiết kế tuần tự",
@@ -1982,6 +2057,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ehn dees-poh-zee-TEEF say-kahn-SYEL — 'dispositif' is the French research-design term, used widely; -tiel is 'syel'"
         },
         {
+          cell_id: "a424dd66-9bac-4f04-b240-87f58d3f3412",
           "word": "des méthodes mixtes",
           "en": "mixed methods",
           "vi": "phương pháp hỗn hợp",
@@ -1990,6 +2066,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "day may-TOD MEEKST — anglophone import accepted into French; final -tes pronounced 'kst' (the -e silent but consonant cluster sounded)"
         },
         {
+          cell_id: "24b14781-051c-45a4-8e4d-7ec3c8adc17b",
           "word": "restituer la texture",
           "en": "to render the texture",
           "vi": "khôi phục kết cấu",
@@ -1998,6 +2075,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "res-tee-tew-AY lah teks-TEWR — 'u' rounded; key phrase for what ethnographic work delivers: not measurement, but feel"
         },
         {
+          cell_id: "a17710a9-b39c-4af4-900e-bdbad265247f",
           "word": "un échantillon restreint",
           "en": "a limited sample",
           "vi": "một mẫu hạn chế",
@@ -2006,6 +2084,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ehn ay-shahn-tee-YOHN res-TRAN — three nasals across the phrase; admitting your sample is 'restreint' protects against generalization attacks"
         },
         {
+          cell_id: "623bb4fb-f3b2-461c-a264-f765f3bcd397",
           "word": "féconde",
           "en": "productive / fruitful",
           "vi": "phong phú / sinh sản tốt",
@@ -2014,6 +2093,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "fay-KOHND — nasal -on; final -e silent but the -d sounded; the academic compliment for an approach that generates many results"
         },
         {
+          cell_id: "1bb25c2d-54ce-47ba-a01f-dba79c8a69ae",
           "word": "se compléter",
           "en": "to complement each other",
           "vi": "bổ sung lẫn nhau",
@@ -2024,24 +2104,28 @@ export const lessons: FrenchLesson[] =           [
       ],
       "dialogue": [
         {
+          cell_id: "7c465e24-f0d2-4da5-907d-837c0e2e6ae6",
           "speaker": "Pr. Lefèvre",
           "text": "Madame Tran, pourquoi avez-vous opté pour le qualitatif plutôt que le quantitatif ?",
           "vi": "Cô Trần, tại sao cô chọn định tính thay vì định lượng?",
           "en": "Ms. Tran, why did you opt for qualitative rather than quantitative?"
         },
         {
+          cell_id: "dc6cf709-aae2-40cf-b549-e3167a93bdcf",
           "speaker": "Linh",
           "text": "Compte tenu de ma question — comprendre comment les bilingues précoces vivent subjectivement leur compétence — le qualitatif me paraissait plus adapté.",
           "vi": "Xét câu hỏi của tôi — hiểu cách người song ngữ sớm sống một cách chủ quan với năng lực của họ — định tính có vẻ phù hợp hơn.",
           "en": "Given my question — understanding how early bilinguals subjectively experience their competence — qualitative seemed better adapted."
         },
         {
+          cell_id: "c20f47fc-1771-4b71-91aa-a44bab6929e6",
           "speaker": "Pr. Lefèvre",
           "text": "Bonne formulation. Mais ne risquez-vous pas une généralisation hâtive ?",
           "vi": "Diễn đạt tốt. Nhưng cô có nguy cơ khái quát hóa vội vã không?",
           "en": "Well phrased. But aren't you risking a hasty generalization?"
         },
         {
+          cell_id: "5453f9f9-19e4-4a2e-bcb9-ae8f3e9c6f0e",
           "speaker": "Linh",
           "text": "Je m'en garde. Mes conclusions seront formulées comme heuristiques, pas comme généralisations.",
           "vi": "Tôi tránh điều đó. Kết luận của tôi sẽ được phát biểu như tìm tòi, không phải khái quát hóa.",
@@ -2295,6 +2379,7 @@ export const lessons: FrenchLesson[] =           [
       "tip_advice_en": "5-PART STRUCTURE for a standard compte rendu critique:\n\n(1) PRESENTATION (15-20%): name the author, work, context, central thesis. NO critique in this section — stay neutrally descriptive.\n\n(2) RECONSTITUTION (20-25%): present the author's argument CAREFULLY, following their structure. Goal: show the reader you have READ closely and UNDERSTOOD accurately.\n\n(3) POSITIVE APPRECIATION (15-20%): name the main contribution. Specific, not empty praise. 'L'apport principal réside dans X, qui était jusqu'ici peu traité.'\n\n(4) RESERVATIONS (25-30%): the critique. Can be organized in three tiers: methodological / theoretical / textual. Each réserve WITH a specific page.\n\n(5) PERSPECTIVE (10-15%): conclusion — situate the work in the current debate; open up. NOT 'good book' / 'bad book' — that's popular-press evaluation, not academic.\n\nUSEFUL PHRASES:\n\nTO RECONSTITUTE FAITHFULLY:\n- 'L'auteur soutient que…' (The author argues that…)\n- 'La thèse centrale du livre peut se résumer ainsi: …' (The book's central thesis can be summarized thus: …)\n- 'L'argumentation se déploie en trois temps: d'abord…, ensuite…, enfin…' (The argument unfolds in three phases…)\n\nTO ACKNOWLEDGE CONTRIBUTION:\n- 'L'apport majeur du livre réside dans…' (The major contribution lies in…)\n- 'On saluera tout particulièrement…' (One must particularly commend…)\n- 'Ce travail comble un manque réel dans la littérature française.' (This work fills a real gap in the French-language literature)\n\nTO STATE A LIGHT CRITIQUE:\n- 'On aurait souhaité que…' (One would have wished that…)\n- 'Il est regrettable que…' (It's regrettable that…)\n- 'L'auteur passe rapidement sur…' (The author moves quickly past…)\n- 'Ce point aurait mérité davantage d'attention.' (This point would have warranted more attention)\n\nTO STATE A FIRM CRITIQUE:\n- 'L'argumentation, sur ce point, ne convainc pas.' (The argument, on this point, does not convince)\n- 'Le présupposé qui sous-tend cette thèse demeure problématique.' (The assumption underlying this thesis remains problematic)\n- 'L'auteur passe sous silence un pan entier de la littérature.' (The author passes over an entire strand of literature in silence)\n- 'Cette interprétation force le sens des données.' (This interpretation strains the meaning of the data)\n\nTO CLOSE WITH BALANCE:\n- 'Ces réserves n'enlèvent rien à l'importance de la contribution.' (These reservations do not detract from the contribution's importance)\n- 'En dépit de ces points discutables, le livre constitue désormais une référence.' (Despite these debatable points, the book now constitutes a reference)\n- 'Le travail ouvre plus de questions qu'il n'en clôt — ce qui, en sciences sociales, est plutôt une qualité.' (The work opens more questions than it closes — which, in social science, is rather a virtue)",
       "vocabulary": [
         {
+          cell_id: "7ddbcf47-6b83-4cd5-b696-291ae60e06b3",
           "word": "un compte rendu critique",
           "en": "a critical review",
           "vi": "một bài phê bình",
@@ -2303,6 +2388,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ehn KOHNT rahn-DEW kree-TEEK — three nasals; 'rendu' has rounded 'u'; the genre name in French academia"
         },
         {
+          cell_id: "d07cb41d-bb5a-4692-bf02-dfb012dd14de",
           "word": "l'apport d'un travail",
           "en": "the contribution of a work",
           "vi": "đóng góp của một công trình",
@@ -2311,6 +2397,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "lah-POR dan trah-VAHY — final -t of 'apport' silent; preferred academic term for 'contribution'"
         },
         {
+          cell_id: "a7681516-bbfa-4496-80ac-25f3ba5d8d1b",
           "word": "un présupposé",
           "en": "a presupposition",
           "vi": "một tiền đề ngầm",
@@ -2319,6 +2406,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "pray-sew-poh-ZAY — 'u' rounded 'ew'; the hidden assumption a critique targets; flagging one is a classic move"
         },
         {
+          cell_id: "00cf88ed-715c-42ca-860b-2a5037401001",
           "word": "passer sous silence",
           "en": "to pass over in silence",
           "vi": "im lặng về",
@@ -2327,6 +2415,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "pah-SAY soo see-LAHNS — a sharp critique formula; saying an author 'passes X in silence' implies wilful omission"
         },
         {
+          cell_id: "ce05c472-f75b-4f9f-994d-2f03ecdc2538",
           "word": "forcer le sens",
           "en": "to force the meaning",
           "vi": "ép nghĩa",
@@ -2335,6 +2424,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "for-SAY luh SAHNS — strong critique: accusing an author of distorting their data to fit a preferred interpretation"
         },
         {
+          cell_id: "94b9d10e-2d71-44ad-a6b5-2b149e5cf69b",
           "word": "des réserves",
           "en": "reservations",
           "vi": "các dè dặt",
@@ -2343,6 +2433,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "day ray-ZERV — 's' between vowels sounds like 'z'; plural -s silent; the polite frame for critique points"
         },
         {
+          cell_id: "b79fa729-d5af-49a0-993b-179230494ea9",
           "word": "une critique acerbe",
           "en": "a sharp critique",
           "vi": "một phê bình sắc",
@@ -2351,6 +2442,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ewn kree-TEEK ah-SERB — 'acerbe' is acid/cutting but respectable; distinguish from 'méchante' (malicious, rejected in French academia)"
         },
         {
+          cell_id: "63d96461-484b-40bd-b5d6-4012380604a8",
           "word": "prêter à discussion",
           "en": "to invite discussion",
           "vi": "dễ gây tranh luận",
@@ -2359,6 +2451,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "preh-TAY ah dees-kew-SYOHN — softer than 'être contestable'; signals a point is debatable without yet attacking"
         },
         {
+          cell_id: "e25c2ee0-b2ef-4e04-8711-91289c0d407b",
           "word": "combler un manque",
           "en": "to fill a gap",
           "vi": "lấp một khoảng trống",
@@ -2367,6 +2460,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "kohn-BLAY ehn MAHNK — two nasals (om + an); standard formula for praising a work that addresses an underexplored area"
         },
         {
+          cell_id: "c6b7e695-c181-4d83-90c0-5348c2d1ad64",
           "word": "un argument fragile",
           "en": "a fragile argument",
           "vi": "một lập luận yếu",
@@ -2377,24 +2471,28 @@ export const lessons: FrenchLesson[] =           [
       ],
       "dialogue": [
         {
+          cell_id: "ba3824ca-2d79-4b6f-a46a-0fc53e85731b",
           "speaker": "Pr. Roussel",
           "text": "Madame Tran, votre compte rendu du livre de Beaud est trop indulgent. Vous mentionnez les forces, jamais les faiblesses.",
           "vi": "Cô Trần, bài phê bình của cô về sách của Beaud quá nhẹ. Cô nêu các điểm mạnh, không bao giờ điểm yếu.",
           "en": "Ms. Tran, your review of Beaud's book is too indulgent. You mention the strengths, never the weaknesses."
         },
         {
+          cell_id: "487852b6-6137-4faa-9e56-db48b6a9fa01",
           "speaker": "Linh",
           "text": "Vous avez raison. Je craignais de paraître arrogante face à un auteur établi.",
           "vi": "Thầy đúng. Tôi sợ tỏ ra kiêu ngạo trước một tác giả đã khẳng định.",
           "en": "You're right. I was afraid of seeming arrogant in front of an established author."
         },
         {
+          cell_id: "e980889d-9667-4d38-87c0-c0e27e70eacf",
           "speaker": "Pr. Roussel",
           "text": "L'humilité, à votre niveau, c'est de prendre l'auteur au sérieux — donc de le critiquer sérieusement.",
           "vi": "Khiêm tốn, ở cấp độ của cô, là xem tác giả nghiêm túc — nghĩa là phê bình nghiêm túc.",
           "en": "Humility, at your level, means taking the author seriously — therefore critiquing them seriously."
         },
         {
+          cell_id: "c5d0cbd2-0860-4130-ae26-4d533ffb84b1",
           "speaker": "Linh",
           "text": "Compris. Je reprends avec deux ou trois réserves substantielles, étayées par les pages.",
           "vi": "Hiểu. Tôi viết lại với hai ba dè dặt thực chất, có chứng cứ trang.",
@@ -2654,6 +2752,7 @@ export const lessons: FrenchLesson[] =           [
       "tip_advice_en": "FOUR TYPES OF CONFERENCE QUESTIONS — learn to use the right one for the situation:\n\nTYPE 1: CLARIFICATION QUESTIONS\n- 'Pourriez-vous préciser ce que vous entendez par X ?'\n- 'Si je vous comprends bien, vous soutenez que… ?'\n- 'Sur quel corpus exactement repose votre analyse ?'\n\nUSE when: you've listened carefully but one point remained unclear. NOT weak — a good clarification question often reveals an imprecision in the speaker's framing.\n\nTYPE 2: OPENING-OUT QUESTIONS\n- 'Avez-vous envisagé de transposer votre analyse au contexte X ?'\n- 'Comment votre approche dialoguerait-elle avec les travaux de Y ?'\n- 'Cette analyse trouverait-elle un écho dans le champ Z ?'\n\nUSE when: you find the talk strong and want to extend it. The speaker will thank you — opening-out questions help them position the work in a wider field.\n\nTYPE 3: FRIENDLY CHALLENGE QUESTIONS (interpellation amicale)\n- 'Ne pensez-vous pas que cette grille fait l'impasse sur X ?'\n- 'Comment articulez-vous votre conclusion avec le constat de Y, qui semble la contredire ?'\n- 'Le présupposé sous-jacent — à savoir que X — peut-il vraiment être tenu ?'\n\nUSE when: you've spotted a concrete weakness. The 'ne pensez-vous pas…?' syntax is delicate — you do NOT assert they're wrong; you invite them to reassess.\n\nTYPE 4: FRONTAL OBJECTION QUESTIONS (firm challenge)\n- 'Je suis frappée par ce qui me paraît une contradiction entre X et Y. Comment la traitez-vous ?'\n- 'Votre interprétation me semble forcer le sens des données. Sur quoi vous appuyez-vous précisément ?'\n- 'Ce point me paraît difficilement défendable en l'état — pourriez-vous le justifier ?'\n\nUSE when: you have solid evidence and have prepared. Do NOT use impulsively — a firm question requires you to defend your objection if the speaker pushes back.\n\nSPECIALLY POLISHED C1 PHRASES:\n- 'Permettez-moi un commentaire avant ma question proprement dite.' (announces a two-part contribution — common)\n- 'Ma question rejoint celle de [Mme/M.] précédent — mais sous un angle différent.' (connects to a previous question)\n- 'Sans vouloir tomber dans la spéculation, …' (opens a hypothetical question)\n- 'Je formule cela à titre purement heuristique.' (permits a question that doesn't need a firm answer)\n\nWHEN YOU'RE BEING ASKED A HARD QUESTION — you're the speaker, not the questioner:\n- 'Question importante. Je serai prudente dans ma réponse.'\n- 'Je ne dispose pas, à cette étape, d'éléments suffisants pour trancher.'\n- 'C'est exactement la limite que je signalais en conclusion.'\n- 'Vous mettez le doigt sur une zone que je travaille encore.'\n\nDO NOT say: 'Je ne sais pas.' Replace with: 'Je n'ai pas de réponse satisfaisante à ce stade — c'est précisément un des chantiers que j'ouvre.' (I don't have a satisfactory answer at this stage — it's precisely one of the fronts I'm opening.)",
       "vocabulary": [
         {
+          cell_id: "1c8c20bb-bdef-4235-adcd-32eeb509d5e4",
           "word": "un exposé stimulant",
           "en": "a thought-provoking presentation",
           "vi": "một bài trình bày kích thích",
@@ -2662,6 +2761,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ehn eks-poh-ZAY stee-mew-LAHN — the gold-standard compliment to open a question; using anything weaker reads as faint praise"
         },
         {
+          cell_id: "0bb9ed49-64f0-473d-b7ef-e827ab39f436",
           "word": "l'oratrice / l'orateur",
           "en": "the speaker (f./m.)",
           "vi": "người phát biểu",
@@ -2670,6 +2770,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "loh-rah-TREES / loh-rah-TUR — formal terms; 'speaker' in casual register is 'le/la conférencier(ère)' or just first name+last name"
         },
         {
+          cell_id: "096fcca4-50eb-4d1d-883d-aa7789a7af81",
           "word": "évoqué en passant",
           "en": "mentioned in passing",
           "vi": "đề cập thoáng qua",
@@ -2678,6 +2779,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ay-voh-KAY ahn pah-SAHN — nasal -an in 'passant'; signals you want to return to a point the speaker didn't develop"
         },
         {
+          cell_id: "25fcb675-d127-4890-a1ca-7d4b5635313a",
           "word": "une grille de lecture",
           "en": "an interpretive framework",
           "vi": "một lưới đọc",
@@ -2686,6 +2788,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ewn GREE-yuh duh lek-TEWR — the -ille is 'y' glide; preferred academic term for an analytical framework, more neutral than 'théorie'"
         },
         {
+          cell_id: "aca81dbe-9c54-4f2c-a4ba-bf0d81a86ef3",
           "word": "faire l'impasse sur",
           "en": "to skip over / overlook",
           "vi": "bỏ qua",
@@ -2694,6 +2797,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "fair lan-PAHS sewr — nasal -im; 'sur' rounded 'u'; firmer than 'oublier' (which would sound rude); means a wilful or systematic omission"
         },
         {
+          cell_id: "e34190e9-eeb5-451d-92bd-0e82316b38dd",
           "word": "la dimension diachronique",
           "en": "the diachronic dimension",
           "vi": "chiều kích lịch đại",
@@ -2702,6 +2806,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "lah dee-mahn-SYOHN dyah-kroh-NEEK — Greek borrowing kept in French as is; refers to change over time"
         },
         {
+          cell_id: "ef681cdb-67d0-4f1a-9333-f6e4778cc34c",
           "word": "un éclaircissement",
           "en": "a clarification",
           "vi": "một sự làm rõ",
@@ -2710,6 +2815,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ehn ay-klair-sees-MAHN — long noun; final -ment nasal 'mahn'; politely asks the speaker to expand"
         },
         {
+          cell_id: "7239ff71-62e0-4135-a1a2-6c230bca9df5",
           "word": "interpeller un orateur",
           "en": "to question a speaker",
           "vi": "chất vấn người phát biểu",
@@ -2718,6 +2824,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "an-tair-peh-LAY ehn oh-rah-TUR — formal verb; stronger than 'questionner' — implies challenging engagement"
         },
         {
+          cell_id: "f1bb7435-4bb8-47de-80fd-6ac308b59381",
           "word": "un échange fécond",
           "en": "a fruitful exchange",
           "vi": "một trao đổi phong phú",
@@ -2726,6 +2833,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ehn ay-SHAHNZH fay-KOHN — final -ange is 'ahnzh'; the diplomatic close to a Q&A that genuinely advanced the discussion"
         },
         {
+          cell_id: "891a10e8-370d-4e38-81cf-4b8fc0ccc629",
           "word": "prendre la parole",
           "en": "to take the floor",
           "vi": "phát biểu",
@@ -2736,24 +2844,28 @@ export const lessons: FrenchLesson[] =           [
       ],
       "dialogue": [
         {
+          cell_id: "263a7584-bb15-4940-a95f-986da3f32671",
           "speaker": "Modérateur",
           "text": "Nous prenons les questions. Madame, vous avez la parole.",
           "vi": "Chúng tôi nhận câu hỏi. Cô, mời phát biểu.",
           "en": "We're taking questions. Madam, you have the floor."
         },
         {
+          cell_id: "619e2502-1d9d-4b34-80ba-504b72d78538",
           "speaker": "Linh",
           "text": "Merci. Linh Tran, doctorante à Paris-VIII. Permettez-moi tout d'abord de remercier l'oratrice pour cet exposé particulièrement stimulant.",
           "vi": "Cảm ơn. Linh Trần, nghiên cứu sinh tại Paris-VIII. Cho phép tôi trước hết cảm ơn người phát biểu vì bài trình bày đặc biệt kích thích này.",
           "en": "Thank you. Linh Tran, doctoral candidate at Paris-VIII. Allow me first of all to thank the speaker for this particularly stimulating presentation."
         },
         {
+          cell_id: "f3e34bb9-4c6e-435e-8329-bfe2c1f862be",
           "speaker": "Linh",
           "text": "Ma question porte sur la dimension diachronique. Ne pensez-vous pas que votre grille de lecture fait l'impasse sur l'évolution du phénomène depuis 2018 ?",
           "vi": "Câu hỏi của tôi về chiều kích lịch đại. Bạn không nghĩ lưới đọc của bạn bỏ qua tiến hóa của hiện tượng từ 2018 sao?",
           "en": "My question concerns the diachronic dimension. Don't you think your interpretive framework overlooks the evolution of the phenomenon since 2018?"
         },
         {
+          cell_id: "75aeea07-d50a-4810-931a-0e92682cd4c5",
           "speaker": "Oratrice",
           "text": "Question juste. C'est précisément une limite que je signalais en conclusion — j'y reviens.",
           "vi": "Câu hỏi đúng. Đó chính là một giới hạn tôi đã nêu ở kết luận — tôi trở lại.",
@@ -3013,6 +3125,7 @@ export const lessons: FrenchLesson[] =           [
       "tip_advice_en": "4-STEP PROCESS for a strong abstract:\n\nSTEP 1 — WRITE THE PAPER FIRST, ABSTRACT LAST. Never write the abstract before the paper, even if you think you know the conclusion. A paper always shifts during writing — an abstract drafted first won't match.\n\nSTEP 2 — DRAFT LONG (500 words), THEN COMPRESS TO 250. Compression is the critical step — it forces you to prioritize the essential.\n\nSTEP 3 — RUN 5 CHECK QUESTIONS:\n(a) Can a reader unfamiliar with the field understand the problem from the abstract alone?\n(b) Do you state CONCRETELY what you did (corpus, method)?\n(c) Do you state CLEARLY what you found (main results, specific)?\n(d) Do you position your contribution relative to the current debate?\n(e) Do your keywords cover the field broadly enough to be findable, narrowly enough to be precise?\n\nSTEP 4 — READ ALOUD. If you stumble, readers will too. Any sentence that doesn't flow naturally = a sentence to rewrite.\n\n3 ABSTRACT TYPES by genre:\n\nJOURNAL-ARTICLE ABSTRACT (200-300 words): structure above — dense, flowing prose.\n\nTHESIS / DISSERTATION ABSTRACT (500-1000 words): similar structure but with 1-2 extra sentences on the plan and 1 on the field site. Room for more methodological detail.\n\nCONFERENCE ABSTRACT (150-200 words): very short — just problématique + 1 key result + invitation. Goal: get accepted by the committee, not convey the entire content.\n\nUSEFUL PHRASES:\n\nTO OPEN:\n- 'Le présent article s'attache à…' (The present article sets out to…)\n- 'Cette étude se propose d'examiner…' (This study proposes to examine…)\n- 'Le présent travail interroge la manière dont…' (The present work interrogates the way in which…)\n- 'Nous nous proposons, dans cet article, de…' (We propose, in this article, to…)\n\nTO STATE METHOD:\n- 'À partir de [corpus / données], nous…' (Based on [corpus / data], we…)\n- 'Nous nous appuyons sur [N] entretiens / observations / cas…' (We draw on [N] interviews / observations / cases…)\n- 'Notre analyse s'appuie sur la grille proposée par X…' (Our analysis draws on the framework proposed by X…)\n\nTO STATE RESULTS:\n- 'Nous montrons que…' (We show that…)\n- 'Nos résultats font apparaître que…' (Our results bring to light that…)\n- 'L'analyse met au jour…' (The analysis reveals…)\n- 'Trois résultats principaux ressortent: …' (Three main results emerge: …)\n\nTO STATE CONTRIBUTION:\n- 'Nous nuançons / contestons / prolongeons la thèse selon laquelle…' (We qualify / contest / extend the thesis that…)\n- 'Cette analyse contribue au débat sur X en proposant…' (This analysis contributes to the debate on X by proposing…)\n- 'L'article ouvre des perspectives pour la suite des travaux sur…' (The article opens perspectives for future work on…)\n\nAVOID:\n- 'Cet article est très important.' (self-praise — wrong)\n- 'Comme tout le monde le sait…' (assumes, unscientific)\n- 'Nous avons travaillé pendant trois ans sur…' (effort — irrelevant)\n- 'Bien que de nombreuses études aient été menées…' (empty opening)",
       "vocabulary": [
         {
+          cell_id: "3f43b8db-e1df-4611-99f3-f37d7986bc61",
           "word": "un résumé / un abstract",
           "en": "a summary / an abstract",
           "vi": "một tóm tắt",
@@ -3021,6 +3134,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ehn ray-zew-MAY / ab-STRAKT — 'résumé' takes the rounded 'u'; 'abstract' is an anglicism kept as-is in French academia"
         },
         {
+          cell_id: "ed8f3612-2ec3-4a84-945b-f1f0270b152c",
           "word": "s'attacher à examiner",
           "en": "to set out to examine",
           "vi": "tập trung xem xét",
@@ -3029,6 +3143,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "sah-tah-SHAY ah eg-zah-mee-NAY — the standard formal opener for an abstract or introduction"
         },
         {
+          cell_id: "60de61fa-721e-4fa5-9afb-8bdd9e056b2f",
           "word": "à partir d'un corpus de",
           "en": "based on a corpus of",
           "vi": "từ một ngữ liệu",
@@ -3037,6 +3152,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ah par-TEER dan kor-PEWS duh — 'u' rounded in 'corpus'; the canonical phrase for opening the methodology"
         },
         {
+          cell_id: "5233c6bf-5d48-498b-be6a-4b2d833c4f1c",
           "word": "mettre au jour",
           "en": "to bring to light",
           "vi": "phơi bày",
@@ -3045,6 +3161,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "MEH-truh oh ZHOOR — 'au' is 'oh'; 'j' is soft 'zh'; literally 'to put to day'; a strong verb for what an analysis reveals"
         },
         {
+          cell_id: "dce1eb9e-bf58-4fdf-86b1-b76e6fe6eca0",
           "word": "nuancer une thèse",
           "en": "to qualify a thesis",
           "vi": "làm rõ sắc thái cho một luận điểm",
@@ -3053,6 +3170,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "new-ahn-SAY ewn TEZ — 'u' rounded; nasal -an; standard contribution verb — softer than 'contester' (refute)"
         },
         {
+          cell_id: "d48f304b-9b42-4535-858f-a82aad4360cc",
           "word": "prolonger les travaux de",
           "en": "to extend the work of",
           "vi": "kéo dài công trình của",
@@ -3061,6 +3179,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "proh-lohn-ZHAY lay trah-VOH duh — 'j' is soft 'zh'; the most respectful contribution verb (you're continuing rather than overturning)"
         },
         {
+          cell_id: "486737d4-eb77-4683-9760-76e6645fb844",
           "word": "des mots-clés",
           "en": "keywords",
           "vi": "từ khóa",
@@ -3069,6 +3188,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "day moh-KLAY — two short syllables; literally 'word-keys'; the journal-required terms for indexing"
         },
         {
+          cell_id: "d8315ede-983f-47a0-a184-673ef79d3755",
           "word": "l'enjeu théorique",
           "en": "the theoretical stake",
           "vi": "vấn đề lý thuyết",
@@ -3077,6 +3197,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "lahn-ZHUH tay-oh-REEK — nasal -en; -jeu is 'zhuh' with rounded lips; what's at stake intellectually in the analysis"
         },
         {
+          cell_id: "3002be57-20c0-4eb0-8cac-0e2b421b9c72",
           "word": "resituer dans",
           "en": "to relocate within",
           "vi": "đặt lại trong",
@@ -3085,6 +3206,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ruh-see-tew-AY dahn — schwa 're'; 'u' rounded; means 'to place back into / contextualize within'"
         },
         {
+          cell_id: "7926ff3f-6384-4483-8a7e-1c2495dbe03d",
           "word": "l'apport central",
           "en": "the core contribution",
           "vi": "đóng góp trung tâm",
@@ -3095,24 +3217,28 @@ export const lessons: FrenchLesson[] =           [
       ],
       "dialogue": [
         {
+          cell_id: "37605a7f-2065-43c1-b29e-0219af779ff1",
           "speaker": "Pr. Lefèvre",
           "text": "Madame Tran, votre abstract fait 380 mots — la revue en demande 250. Coupez.",
           "vi": "Cô Trần, abstract của cô 380 từ — tạp chí yêu cầu 250. Cô cắt.",
           "en": "Ms. Tran, your abstract is 380 words — the journal asks for 250. Cut."
         },
         {
+          cell_id: "0650399c-7ca9-48e1-8818-6fb2b4ca6798",
           "speaker": "Linh",
           "text": "Je peux couper la phrase de contextualisation et fusionner deux phrases méthodologiques.",
           "vi": "Tôi có thể cắt câu đặt ngữ cảnh và gộp hai câu phương pháp luận.",
           "en": "I can cut the contextualization sentence and merge two methodological sentences."
         },
         {
+          cell_id: "77f649a5-72d4-4285-8f53-75b93530cf8b",
           "speaker": "Pr. Lefèvre",
           "text": "Coupez aussi « comme l'a montré Bialystok » — ce nom est dans les mots-clés, pas dans l'abstract.",
           "vi": "Cô cắt cả « như Bialystok đã chứng minh » — tên này ở mots-clés, không phải abstract.",
           "en": "Also cut 'as Bialystok has shown' — that name belongs in the keywords, not the abstract."
         },
         {
+          cell_id: "9ae65b5e-5f13-4a08-a5bf-419b01a1c81c",
           "speaker": "Linh",
           "text": "Bien vu. L'abstract n'est pas le lieu de l'historiographie. J'enlève.",
           "vi": "Thầy đúng. Abstract không phải chỗ cho lịch sử nghiên cứu. Tôi bỏ.",
@@ -3402,6 +3528,7 @@ export const lessons: FrenchLesson[] =           [
       "tip_advice_en": "5-STEP PROCESS for a quality peer-review report:\n\nSTEP 1 — FIRST READ FOR OVERALL IMPRESSION. No notes; just read. Ask at the end: 'If I were a reader unfamiliar with the field, would I understand the question? Would I see the contribution?' The answers to these two questions frame the review.\n\nSTEP 2 — SECOND READ WITH DETAILED ANNOTATION. Mark every point that needs clarification ('précision?'), every unjustified assumption ('justifier'), every claim without evidence ('source?'). Don't judge yet — just note.\n\nSTEP 3 — ORGANIZE NOTES into 3 tiers:\n- THEORETICAL: framework problems, central argument\n- METHODOLOGICAL: design, corpus, analysis\n- TEXTUAL: clarity, organization, references — details\n\nSTEP 4 — WRITE THE REPORT in 3 passes:\n- Pass 1: full, possibly verbose\n- Pass 2: compress, organize into 5 parts\n- Pass 3: tone check — every sentence should be constructive feedback, NOT attack\n\nSTEP 5 — REREAD as if you were the author receiving it. If you'd feel personally attacked, fix the tone. If you'd feel no clear direction, add examples.\n\nUSEFUL PHRASES:\n\nTO OPEN A REPORT:\n- 'L'article aborde une question d'un intérêt indéniable.' (The article addresses a question of undeniable interest)\n- 'Le présent travail s'inscrit dans un débat actuellement vif sur…' (This work joins a currently lively debate on…)\n- 'L'auteur propose une lecture stimulante de…' (The author offers a stimulating reading of…)\n\nTO NAME POSITIVES:\n- 'Le dispositif empirique est solide.' (The empirical design is solid)\n- 'L'argumentation théorique est dans l'ensemble convaincante.' (The theoretical argument is, on the whole, convincing)\n- 'La maîtrise de la littérature secondaire est manifeste.' (Mastery of the secondary literature is evident)\n\nTO REQUEST MINOR REVISIONS:\n- 'Quelques précisions terminologiques amélioreraient la clarté.' (Some terminological clarifications would improve clarity)\n- 'Un développement supplémentaire sur X serait bienvenu.' (Further development on X would be welcome)\n- 'La conclusion gagnerait à être resserrée.' (The conclusion would benefit from being tightened)\n\nTO REQUEST MAJOR REVISIONS:\n- 'Le cadre théorique mérite d'être repensé en intégrant…' (The theoretical frame warrants rethinking with…)\n- 'Le dispositif méthodologique demande à être précisé sur les points suivants…' (The methodological design needs to be specified on the following points…)\n- 'L'argumentation centrale ne convainc pas en l'état; je suggère à l'auteur de…' (The central argument doesn't convince as is; I suggest the author…)\n- 'L'absence de discussion des travaux de X (année) constitue, à mon sens, une lacune significative.' (The absence of discussion of X's work (year) constitutes, in my view, a significant gap)\n\nTO RECOMMEND REJECTION:\n- 'Malgré ses qualités, l'article ne me paraît pas, en l'état, correspondre aux exigences de la revue.' (Despite its strengths, the paper does not seem to me, as it stands, to meet the journal's standards)\n- 'La problématique, telle qu'elle est posée, ne permet pas une avancée significative dans le champ.' (The problem, as posed, does not permit significant advance in the field)\n- 'Je recommande à l'auteur, plutôt que de réviser, de repenser fondamentalement le cadrage de son travail.' (I recommend the author, rather than revising, fundamentally rethink the framing of the work)\n\nTO CLOSE THE REPORT:\n- 'Sous réserve des révisions ci-dessus, l'article me paraît susceptible de constituer une contribution substantielle.' (Subject to the revisions above, the paper appears likely to constitute a substantive contribution)\n- 'Mon avis: révisions majeures, avec re-soumission attendue dans un délai de trois mois.' (My verdict: major revisions, with re-submission expected within three months)\n- 'Mon avis: rejet, sans préjudice pour une soumission ultérieure d'une version profondément remaniée.' (My verdict: reject, without prejudice for a later submission of a deeply revised version)",
       "vocabulary": [
         {
+          cell_id: "ddb2e9d4-07e3-41c2-b372-419900a0cbe5",
           "word": "l'évaluation par les pairs",
           "en": "peer review",
           "vi": "đánh giá đồng nghiệp",
@@ -3410,6 +3537,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "lay-vah-lew-ah-SYOHN par lay PAIR — 'u' rounded; -tion is 'syohn'; 'pair' literally 'peer'"
         },
         {
+          cell_id: "65ef904f-d8a7-47ff-8f2a-0b66d587c375",
           "word": "un rapport d'évaluation",
           "en": "a review report",
           "vi": "một báo cáo đánh giá",
@@ -3418,6 +3546,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ehn rah-POR day-vah-lew-ah-SYOHN — final -t of 'rapport' silent; the standard term for the written review"
         },
         {
+          cell_id: "89459684-8553-45f1-881b-1833190412bc",
           "word": "des révisions substantielles",
           "en": "substantial revisions",
           "vi": "các sửa đổi thực chất",
@@ -3426,6 +3555,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "day ray-vee-ZYOHN sewb-stahn-SYEL — 'u' rounded; -tielles is 'syel'; the canonical verdict for major revisions"
         },
         {
+          cell_id: "9e17bdec-675e-4dde-9523-e854984ad253",
           "word": "susceptible de constituer",
           "en": "likely to constitute",
           "vi": "có khả năng tạo thành",
@@ -3434,6 +3564,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "sews-sep-TEE-bluh duh kohn-stee-tew-AY — 'u' rounded throughout; the hedged endorsement formula"
         },
         {
+          cell_id: "14de71a8-d2a5-4039-8889-a723b18e96f3",
           "word": "une lacune significative",
           "en": "a significant gap",
           "vi": "một khoảng trống đáng kể",
@@ -3442,6 +3573,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ewn lah-KEWN see-nyee-fee-kah-TEEV — 'u' rounded in 'lacune'; -gn- is 'ny'; the polite term for a substantive omission"
         },
         {
+          cell_id: "7e94836a-4c9f-42de-aa17-979d84423422",
           "word": "resserrer une argumentation",
           "en": "to tighten an argument",
           "vi": "siết chặt một lập luận",
@@ -3450,6 +3582,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ruh-seh-RAY ewn ar-gew-mahn-tah-SYOHN — schwa 're'; 'u' rounded; double-r is one clean 'r'"
         },
         {
+          cell_id: "1ddc37ef-1fb5-4ce1-bd6b-cf222f89f143",
           "word": "sans préjudice pour",
           "en": "without prejudice to",
           "vi": "không phương hại đến",
@@ -3458,6 +3591,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "sahn pray-zhew-DEES poor — 'j' is soft 'zh'; 'u' rounded; legal-style formula softening a rejection"
         },
         {
+          cell_id: "b80269d1-0741-4b50-984a-d2bb716945db",
           "word": "une re-soumission",
           "en": "a re-submission",
           "vi": "một lần nộp lại",
@@ -3466,6 +3600,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ewn ruh-soo-mee-SYOHN — schwa 're'; 'ou' is 'oo'; -mission is 'mee-syohn'"
         },
         {
+          cell_id: "cc25ed9a-583e-49db-bfaf-afe02ec5acb5",
           "word": "un cadrage théorique",
           "en": "a theoretical framing",
           "vi": "một cách định khung lý thuyết",
@@ -3474,6 +3609,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ehn kah-DRAHZH tay-oh-REEK — final -age is 'ahzh'; how the author has framed the question"
         },
         {
+          cell_id: "5997f6f3-7364-4b49-acc7-29391aa7dcbf",
           "word": "un panorama théorique",
           "en": "a theoretical overview",
           "vi": "toàn cảnh lý thuyết",
@@ -3484,24 +3620,28 @@ export const lessons: FrenchLesson[] =           [
       ],
       "dialogue": [
         {
+          cell_id: "3352896d-c506-40bd-b2a5-d8cd8516a2ff",
           "speaker": "Rédacteur en chef",
           "text": "Madame Tran, vous acceptez d'évaluer cet article pour la revue ? Délai trois semaines.",
           "vi": "Cô Trần, cô đồng ý đánh giá bài này cho tạp chí chứ? Hạn 3 tuần.",
           "en": "Ms. Tran, do you accept reviewing this article for the journal? Deadline three weeks."
         },
         {
+          cell_id: "6821c2ea-6553-49f0-9ca3-9b8ef71ababd",
           "speaker": "Linh",
           "text": "Oui, je connais bien la littérature concernée. Je tiens le délai.",
           "vi": "Vâng, tôi quen với tài liệu liên quan. Tôi giữ hạn.",
           "en": "Yes, I know the relevant literature well. I'll meet the deadline."
         },
         {
+          cell_id: "fe73ce62-2c3a-4ecc-af3e-990ed8e28a98",
           "speaker": "Rédacteur",
           "text": "Le rapport doit être en français, structure standard, avec un avis explicite à la fin.",
           "vi": "Báo cáo phải bằng tiếng Pháp, cấu trúc chuẩn, kết luận rõ ràng cuối bài.",
           "en": "The report should be in French, standard structure, with an explicit verdict at the end."
         },
         {
+          cell_id: "b382873c-077f-44d4-a20a-06e6d2f666ca",
           "speaker": "Linh",
           "text": "Compris. Je vous envoie le rapport sous trois semaines.",
           "vi": "Hiểu. Tôi gửi báo cáo trong 3 tuần.",
@@ -3761,6 +3901,7 @@ export const lessons: FrenchLesson[] =           [
       "tip_advice_en": "Six-step structure for a salary negotiation meeting (typically 1 hour):\n\n(1) PREPARATION (1-2 days before): gather market data — APEC, Cadremploi, Robert Half. Define 3 figures: your FLOOR (below which you refuse), your TARGET (realistic-high), your CEILING (ideal). Prepare a written argumentaire with 3-5 quantified achievements.\n\n(2) OPENING (5 min): thank for the chance to discuss, situate the role, express commitment to the firm. DO NOT lead with the figure. Set the tone of 'partner, not petitioner'.\n\n(3) VALUE DEMONSTRATION (15 min): restate the role's responsibilities, present quantified achievements (revenue generated, savings, teams managed, projects delivered). Tie every figure to a rare or strategic competency.\n\n(4) STATING THE ASK (5 min): give the target range, justify by reference to market and responsibilities. Key sentence: 'Compte tenu de [responsibilities], et au regard de la fourchette du marché qui se situe entre X et Y, je viserais Z.'\n\n(5) NEGOTIATION (20 min): listen to the counter-proposal, do NOT react immediately. If the counter is below, ask to understand the constraints. Propose alternative levers if the fixed won't move: guaranteed bonus floor, remote-work expansion, training budget, relocation coverage, additional RTT days, sabbatical at 5 years.\n\n(6) CONCLUSION (10 min): if agreed, request written formalization by email within 48h ('Pour mémoire, voici ce que nous avons convenu…'). If disagreed, do NOT break off abruptly — propose a reflection delay ('I'll think about it, I'll come back to you Friday').\n\nUSEFUL PHRASES:\n\nTO SET THE FRAME:\n- 'Je vous remercie de me recevoir pour aborder ce point.' (Thank you for receiving me to discuss this)\n- 'Avant d'entrer dans le chiffre, j'aimerais qu'on rappelle ensemble le périmètre du poste.' (Before getting to the number, I'd like us to recall the scope of the position)\n- 'Mon souhait est qu'on parvienne à un accord équilibré pour les deux parties.' (My wish is that we reach an agreement balanced for both parties)\n\nTO JUSTIFY THE ASK:\n- 'Au regard du marché pour ce profil, la fourchette se situe entre X et Y.' (In light of the market for this profile, the range is between X and Y)\n- 'Mes douze derniers mois ont permis [quantified achievement].' (My last twelve months have produced [quantified achievement])\n- 'Le périmètre tel que défini suppose [rare competencies], qui justifient une revalorisation.' (The scope as defined assumes [rare competencies] that justify an upgrade)\n\nTO NEGOTIATE ALTERNATIVE LEVERS:\n- 'Si le fixe ne peut bouger à ce stade, seriez-vous ouvert à [alternative lever] ?'\n- 'Pourrait-on envisager une clause de revoyure à six mois ?' (Could we consider a revisit clause at six months?)\n- 'Un bonus plancher garanti permettrait de sécuriser une partie du package.' (A guaranteed bonus floor would secure part of the package)\n\nTO CONCLUDE:\n- 'Si je résume, nous serions sur [recap]. Je reviens vers vous pour confirmation.'\n- 'Pourriez-vous me formaliser l'accord par mail dans la semaine ?'\n- 'Je vous remercie pour cet échange constructif.'\n\nAVOID:\n- 'Je veux X EUR, c'est mon dernier mot' → premature ultimatum, closes the discussion\n- 'Si vous ne pouvez pas, j'ai une offre ailleurs' without proof → easily-detected bluff\n- 'C'est pas assez' → childish, no argumentaire\n- Accepting the first offer without counter-proposing → systematic 5-15% loss\n- Negotiating in front of a third party (colleague, junior HR) → prefer a bilateral exchange",
       "vocabulary": [
         {
+          cell_id: "936814ca-d50c-4167-aaa0-6a31bcb52197",
           "word": "une fourchette salariale",
           "en": "a salary range",
           "vi": "khung lương",
@@ -3769,6 +3910,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ewn foor-SHET sah-lah-RYAHL — 'ou' is 'oo'; the tool of choice for opening a salary negotiation"
         },
         {
+          cell_id: "3e1dbbc4-c7e2-49fd-84c0-cd161eae2439",
           "word": "le salaire brut annuel",
           "en": "gross annual salary",
           "vi": "lương gộp hàng năm",
@@ -3777,6 +3919,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "luh sah-LAIR BREWT ah-new-EL — 'u' rounded in 'brut' and 'annuel'; the standard reference figure in French job offers"
         },
         {
+          cell_id: "8afc1f34-43bc-4314-8657-84945f90c250",
           "word": "la part variable",
           "en": "the variable component",
           "vi": "phần biến đổi",
@@ -3785,6 +3928,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "lah par vah-RYAH-bluh — 'ia' glides to 'yah'; the performance-based portion of a French compensation package"
         },
         {
+          cell_id: "fbd28ac6-8f91-4423-9fff-c9408cf9411d",
           "word": "un bonus sur objectifs",
           "en": "a performance-based bonus",
           "vi": "thưởng theo mục tiêu",
@@ -3793,6 +3937,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ehn boh-NEWS sewr ob-zhek-TEEF — 'sur' rounded 'u'; -tif final f sounded; conditional bonus tied to KPIs"
         },
         {
+          cell_id: "05709203-49f5-4bea-a083-7d2b486662bd",
           "word": "une revalorisation",
           "en": "a salary upgrade",
           "vi": "sự tăng lương",
@@ -3801,6 +3946,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ewn ruh-vah-loh-ree-zah-SYOHN — schwa 're'; -tion is 'syohn'; signals an off-cycle raise tied to scope change"
         },
         {
+          cell_id: "ac9aced8-d8a5-4c58-a228-e8b6c80c1aab",
           "word": "le périmètre du poste",
           "en": "the scope of the position",
           "vi": "phạm vi của vị trí",
@@ -3809,6 +3955,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "luh pay-ree-MEH-truh dew POHST — è with grave opens to 'eh'; 'du' rounded 'ew'; the polite framing for what your job actually covers"
         },
         {
+          cell_id: "608e7787-90e4-4159-af52-2459d640b9be",
           "word": "une clause de revoyure",
           "en": "a revisit clause",
           "vi": "điều khoản xem xét lại",
@@ -3817,6 +3964,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ewn KLOHZ duh ruh-vwa-YEWR — 'oi' is 'wah'; final -yure rounded 'ewr'; the contractual hook for revisiting terms later"
         },
         {
+          cell_id: "cac1098e-0bd7-44be-a908-026f11e1c8ce",
           "word": "le plancher de bonus",
           "en": "guaranteed minimum bonus",
           "vi": "mức thưởng tối thiểu",
@@ -3825,6 +3973,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "luh plahn-SHAY duh boh-NEWS — nasal -an; 'ch' is 'sh'; literally 'the floor of the bonus' = guaranteed minimum"
         },
         {
+          cell_id: "9786e310-4daa-4b7e-9da2-eed21bb23840",
           "word": "un argumentaire chiffré",
           "en": "a quantified case",
           "vi": "lập luận có số liệu",
@@ -3833,6 +3982,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ehn ar-gew-mahn-TAIR shee-FRAY — 'u' rounded; nasal -an; the prepared evidence package — without it, no raise gets granted"
         },
         {
+          cell_id: "6700b0bf-b62b-4874-9e84-99449a568c83",
           "word": "des leviers alternatifs",
           "en": "alternative levers",
           "vi": "các đòn bẩy thay thế",
@@ -3843,24 +3993,28 @@ export const lessons: FrenchLesson[] =           [
       ],
       "dialogue": [
         {
+          cell_id: "c68e2d9d-abb5-4afb-ac50-ef2977fb90c8",
           "speaker": "Linh",
           "text": "Madame Lefèvre, je vous remercie de me recevoir pour aborder ma rémunération.",
           "vi": "Bà Lefèvre, tôi cảm ơn bà đã tiếp tôi để bàn về thù lao.",
           "en": "Mrs. Lefèvre, thank you for meeting with me to discuss my compensation."
         },
         {
+          cell_id: "61afe622-a6dc-478e-abda-da87cc0953dd",
           "speaker": "DRH",
           "text": "Avec plaisir. Vous avez douze mois d'ancienneté — vous souhaitez parler du dispositif de revalorisation ?",
           "vi": "Sẵn lòng. Cô có 12 tháng thâm niên — cô muốn bàn về cơ chế tăng lương?",
           "en": "With pleasure. You have twelve months of tenure — you want to discuss the raise process?"
         },
         {
+          cell_id: "a3354c11-d6ce-45a1-8593-c6bd65b5fa0f",
           "speaker": "Linh",
           "text": "C'est cela. Au regard de l'élargissement du périmètre depuis avril, je voudrais qu'on revienne sur la fourchette.",
           "vi": "Đúng vậy. Xét sự mở rộng phạm vi từ tháng tư, tôi muốn xem lại khung lương.",
           "en": "That's it. Given the scope expansion since April, I'd like us to revisit the salary range."
         },
         {
+          cell_id: "54a6e3bc-9f13-49d4-8eba-ede6704a4e9f",
           "speaker": "DRH",
           "text": "Très bien. Quels chiffres avez-vous en tête, et sur quels comparables vous appuyez-vous ?",
           "vi": "Rất tốt. Cô có những con số nào trong đầu, và dựa vào những so sánh nào?",
@@ -4132,6 +4286,7 @@ export const lessons: FrenchLesson[] =           [
       "tip_advice_en": "5-STEP PROCESS for pushing back on a contract:\n\n(1) FULL READING with three-color highlighting — GREEN (acceptable clauses), ORANGE (negotiable), RED (unacceptable as-is). Never sign a contract without this categorized read.\n\n(2) PRIORITIZATION: the 3-5 RED clauses deserve systematic push. The ORANGE clauses serve as trading currency — you can give up 1-2 of these to win on the reds.\n\n(3) PREPARE ALTERNATIVE WORDINGS: for each clause to negotiate, WRITE the exact text you want to see appear. Format: 'Where the contract says X, I propose Y.'\n\n(4) SEND IN ONE BLOCK, not drip-fed. A list of 5-10 modifications sent at once is more effective than 5 separate emails. Otherwise the other party gets tired and shuts down.\n\n(5) ITERATIVE NEGOTIATION: one, maybe two rounds of back-and-forth. Beyond that, you exhaust patience and the contract may collapse.\n\nUSEFUL PHRASES:\n\nTO INTRODUCE AN OBJECTION:\n- 'Sur ce point précis, je me permets une réserve.' (On this specific point, I allow myself a reservation)\n- 'Telle qu'elle est rédigée, cette clause me paraît [problem].' (As drafted, this clause seems to me [problem])\n- 'Il y aurait, me semble-t-il, matière à reformulation.' (There would be, it seems to me, grounds for reformulation)\n- 'Ce point appelle, à mon sens, une clarification.' (This point calls, in my view, for clarification)\n\nTO PROPOSE AN ALTERNATIVE:\n- 'Je propose la rédaction suivante: [text].'\n- 'Une formulation qui me semblerait plus équilibrée serait: [text].'\n- 'Pourrait-on remplacer X par Y, qui sécurise les deux parties ?'\n- 'Je suggère d'ajouter à cette clause un membre de phrase précisant que [protection].'\n\nTO PRESS WITHOUT BREAKING:\n- 'En l'état, je ne pourrais pas engager ma signature.' (As it stands, I couldn't commit my signature)\n- 'Cette rédaction crée un déséquilibre que je ne peux laisser passer.' (This wording creates an imbalance I can't let pass)\n- 'Je crains que cette clause, telle quelle, ne soit pas tenable juridiquement.' (I fear this clause, as is, won't hold up legally)\n- 'Je préférerais qu'on retravaille ce passage avant de finaliser.' (I'd prefer we rework this passage before finalizing)\n\nTO PROTECT A CONCESSION:\n- 'J'accepte ce point, à condition que [counterpart].' (I accept this point, provided that [counterpart])\n- 'Si vous tenez à cette rédaction, il faudrait alors qu'en regard, [other clause modified].' (If you insist on this wording, then in exchange [other clause modified])\n- 'Cette concession suppose que vous accédiez à [other demand].' (This concession assumes you grant [other demand])\n\nAVOID:\n- 'C'est inacceptable' without an alternative → dry judgment, closes discussion\n- 'My lawyer says…' → hides behind a third party, weakens your voice\n- Wholesale refusal of a clause → prefer rewriting the text yourself\n- Accepting to finish fast → you pay 5 years later",
       "vocabulary": [
         {
+          cell_id: "02baf896-1438-478c-bec0-84266c512582",
           "word": "une clause de non-concurrence",
           "en": "a non-compete clause",
           "vi": "điều khoản không cạnh tranh",
@@ -4140,6 +4295,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ewn KLOHZ duh nohn kohn-kew-RAHNS — two nasals; the most frequently negotiated clause in cadre contracts"
         },
         {
+          cell_id: "7ed4234a-f886-4bc0-8449-4cf645730544",
           "word": "une contrepartie financière",
           "en": "a financial counterpart",
           "vi": "khoản đối ứng tài chính",
@@ -4148,6 +4304,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ewn kohn-truh-par-TEE fee-nahn-SYAIR — required by French case law for non-compete to be valid; minimum 30% of monthly salary"
         },
         {
+          cell_id: "5e966a86-9589-4ab6-86ce-a183f0df2670",
           "word": "plafonner une clause",
           "en": "to cap a clause",
           "vi": "giới hạn một điều khoản",
@@ -4156,6 +4313,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "plah-foh-NAY ewn KLOHZ — literally 'to put a ceiling on'; the key verb for limiting liability exposure"
         },
         {
+          cell_id: "d62e6779-b9ca-4ba5-9642-ebd4e3edef71",
           "word": "des pénalités de retard",
           "en": "late penalties",
           "vi": "phạt chậm trễ",
@@ -4164,6 +4322,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "day pay-nah-lee-TAY duh ruh-TAR — final -d silent in 'retard'; always demand reciprocity in B2B contracts"
         },
         {
+          cell_id: "3a76369d-9502-457a-a31d-f6e05bb4a4f4",
           "word": "une clause résolutoire",
           "en": "a termination clause",
           "vi": "điều khoản chấm dứt",
@@ -4172,6 +4331,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ewn KLOHZ ray-zoh-lew-TWAR — 's' between vowels sounds like 'z'; 'oi' is 'wah'; allows unilateral termination on specified events"
         },
         {
+          cell_id: "61a3d309-4e56-4df8-80d4-7d48a7188c6d",
           "word": "la responsabilité limitée",
           "en": "limited liability",
           "vi": "trách nhiệm giới hạn",
@@ -4180,6 +4340,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "lah res-pohn-sah-bee-lee-TAY lee-mee-TAY — six syllables then four; capping liability at contract value (1x or 2x) is standard"
         },
         {
+          cell_id: "d82b30d3-ff06-4912-9b1b-9e5ad4b3574a",
           "word": "une rédaction alternative",
           "en": "an alternative wording",
           "vi": "cách viết thay thế",
@@ -4188,6 +4349,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ewn ray-dak-SYOHN al-tair-nah-TEEV — 'rédaction' means the wording itself, not the editorial board; the cornerstone of constructive pushback"
         },
         {
+          cell_id: "b9582b8c-4653-4b20-938a-2cf61c4cb46e",
           "word": "un déséquilibre contractuel",
           "en": "a contractual imbalance",
           "vi": "sự mất cân bằng hợp đồng",
@@ -4196,6 +4358,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ehn day-zay-kee-LEE-bruh kohn-trak-TWEL — five syllables; the polite term for 'this contract is rigged against me'"
         },
         {
+          cell_id: "d67877be-bf89-4732-99c6-d3b3c89c8d13",
           "word": "la clause de mobilité",
           "en": "the mobility clause",
           "vi": "điều khoản di chuyển nơi làm việc",
@@ -4204,6 +4367,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "lah KLOHZ duh moh-bee-lee-TAY — French employment-law term; lets employer geographically relocate you; always restrict scope"
         },
         {
+          cell_id: "32ea2cb5-c858-4332-b0aa-078400044276",
           "word": "un préavis",
           "en": "a notice period",
           "vi": "thời hạn báo trước",
@@ -4214,24 +4378,28 @@ export const lessons: FrenchLesson[] =           [
       ],
       "dialogue": [
         {
+          cell_id: "5bd17d0d-1a2a-4df8-bc34-124c7f87051d",
           "speaker": "Linh",
           "text": "Maître Dubois, j'ai relu le projet. Trois clauses appellent une discussion avant que je signe.",
           "vi": "Luật sư Dubois, tôi đã đọc lại dự thảo. Ba điều khoản cần thảo luận trước khi tôi ký.",
           "en": "Counsel Dubois, I've re-read the draft. Three clauses call for discussion before I sign."
         },
         {
+          cell_id: "8da42759-77b9-415f-b774-12355244cdfc",
           "speaker": "Avocat",
           "text": "Je vous écoute. Lesquelles ?",
           "vi": "Tôi nghe bạn. Những điều khoản nào?",
           "en": "I'm listening. Which ones?"
         },
         {
+          cell_id: "d98735b3-ff5d-4dac-b0d1-6b0baa77574b",
           "speaker": "Linh",
           "text": "La non-concurrence à vingt-quatre mois sans contrepartie, le plafond de responsabilité illimité, et la clause de mobilité couvrant toute la France.",
           "vi": "Điều không cạnh tranh 24 tháng không đối ứng, trần trách nhiệm vô hạn, và điều khoản di chuyển bao trùm toàn nước Pháp.",
           "en": "The twenty-four-month non-compete without counterpart, the unlimited liability cap, and the mobility clause covering all of France."
         },
         {
+          cell_id: "7cf97d11-eec1-45fd-a746-f9d39bd67c5d",
           "speaker": "Avocat",
           "text": "Trois points légitimes. Vous avez préparé des rédactions alternatives ?",
           "vi": "Ba điểm hợp lý. Bạn đã chuẩn bị các cách viết thay thế chưa?",
@@ -4509,6 +4677,7 @@ export const lessons: FrenchLesson[] =           [
       "tip_advice_en": "5-STEP PROCESS for preparing and chairing a multi-party negotiation:\n\n(1) PREPARATION (1-2 days before): draft a MINUTED agenda; identify sensitive points; pre-bilateralize with each party to understand their red lines; prepare 2-3 compromise proposals for each blocking point.\n\n(2) STAGING: room layout (round table if possible — no hostile face-to-face); paperboard or screen visible to all; water, paper, pens for each delegation.\n\n(3) ANIMATION: respect the announced timing; reformulate regularly; use the visible board; suspend when tensions rise.\n\n(4) DEADLOCK MANAGEMENT: identify the type of block (technical, political, personal); choose the appropriate technique (suspension, topic change, bilateral).\n\n(5) CLOSING: recap the gains, list points to revisit, designate who drafts the minutes and by when.\n\nUSEFUL PHRASES:\n\nTO OPEN THE SESSION:\n- 'Bonjour à tous. Je vous remercie d'être présents. Avant d'entrer dans le vif du sujet…'\n- 'Permettez-moi de rappeler le mandat qui nous réunit aujourd'hui.'\n- 'Voici l'ordre du jour proposé; y a-t-il des modifications avant que nous commencions ?'\n- 'Je propose qu'on convienne d'une règle de fonctionnement: cinq minutes par intervention, pas d'interruption.'\n\nTO GIVE THE FLOOR:\n- 'Madame Dubois, vous avez la parole.'\n- 'Je donne la parole à monsieur Martin pour exposer la position de son équipe.'\n- 'Avant de passer à la suivante, je laisse réagir madame Lefèvre.'\n\nTO REFOCUS:\n- 'Permettez-moi de recadrer: nous sortons du périmètre de l'ordre du jour.'\n- 'Je vous prie de revenir au point que nous traitons.'\n- 'Je vous propose de garder cette question pour l'AOB; revenons à notre point trois.'\n- 'Madame X, laissez monsieur Y terminer; vous aurez la parole juste après.'\n\nTO REFORMULATE A PARTIAL AGREEMENT:\n- 'Si je résume, nous serions d'accord sur les points A, B, C. Reste à arbitrer D et E.'\n- 'J'entends que tout le monde s'accorde sur le principe; le désaccord porte sur les modalités.'\n- 'Je note un point de convergence sur X; voulez-vous qu'on le formalise ?'\n\nTO SUSPEND:\n- 'Je propose qu'on suspende quinze minutes pour permettre à chaque délégation de se concerter.'\n- 'Reprenons à dix heures précises.'\n- 'La séance est suspendue.'\n\nTO CONCLUDE:\n- 'Avant de lever la séance, récapitulons.'\n- 'Voici les points actés: [list]. Voici les points à reprendre lors de la prochaine session: [list].'\n- 'Madame Tran rédige le compte-rendu et le diffuse sous quarante-huit heures.'\n\nAVOID:\n- Giving your personal opinion — loss of impartiality\n- Letting one party monopolize the floor — frustration for others\n- Going over the announced time — loss of credibility\n- Deciding in place of the parties — stepping outside the chair role",
       "vocabulary": [
         {
+          cell_id: "fee0a4fc-2bc8-4807-9cb8-fa86b557bdbd",
           "word": "animer une séance",
           "en": "to chair a meeting",
           "vi": "chủ trì phiên họp",
@@ -4517,6 +4686,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ah-nee-MAY ewn say-AHNS — 'animer' literally 'to bring to life'; the French verb for facilitating, broader than English 'chair'"
         },
         {
+          cell_id: "3bbbcc90-3680-4b81-a128-55fc756d3788",
           "word": "donner la parole à",
           "en": "to give the floor to",
           "vi": "nhường lời cho",
@@ -4525,6 +4695,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "doh-NAY lah pah-ROHL ah — literally 'to give the word to'; standard for recognizing a speaker"
         },
         {
+          cell_id: "2dc9aa38-6f82-49f1-929d-4432c00754ce",
           "word": "recadrer un débat",
           "en": "to refocus a debate",
           "vi": "định khung lại tranh luận",
@@ -4533,6 +4704,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ruh-kah-DRAY ehn day-BAH — schwa 're'; key chair verb when discussion drifts off-agenda"
         },
         {
+          cell_id: "44ec6455-f015-4e20-8985-c88c8d867da3",
           "word": "l'ordre du jour",
           "en": "the agenda",
           "vi": "chương trình nghị sự",
@@ -4541,6 +4713,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "lord-ruh dew ZHOOR — 'du' rounded 'ew'; 'j' is soft 'zh'; literally 'order of the day'"
         },
         {
+          cell_id: "bde6ccff-e252-4259-8164-fefc2f09c16f",
           "word": "un tour de table",
           "en": "a round of introductions/positions",
           "vi": "vòng phát biểu",
@@ -4549,6 +4722,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ehn TOOR duh TAH-bluh — 'ou' is 'oo'; final -ble is a quick 'bluh'; the opening sequence where each party states their position"
         },
         {
+          cell_id: "59d3ea59-fc62-417f-b698-fb3011af5ce5",
           "word": "suspendre la séance",
           "en": "to suspend the session",
           "vi": "tạm dừng phiên họp",
@@ -4557,6 +4731,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "sews-PAHN-druh lah say-AHNS — 'u' rounded; nasal -en; formal pause to let parties caucus"
         },
         {
+          cell_id: "a1c881df-2c09-4371-9f4a-018b5fd9f2b1",
           "word": "parvenir à un consensus",
           "en": "to reach consensus",
           "vi": "đạt đồng thuận",
@@ -4565,6 +4740,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "par-vuh-NEER ah ehn kohn-sahn-SEWS — three nasals; the implicit goal of any French multi-party negotiation"
         },
         {
+          cell_id: "46beaa2d-fc9d-4dd2-b043-8a9f17cbffc8",
           "word": "un compte-rendu",
           "en": "minutes of meeting",
           "vi": "biên bản",
@@ -4573,6 +4749,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ehn KOHNT rahn-DEW — 'du' rounded 'ew'; two nasals; the official record drafted post-meeting"
         },
         {
+          cell_id: "0c614ce2-9dbf-4883-a3a5-485e3b038596",
           "word": "un débat contradictoire",
           "en": "an adversarial debate",
           "vi": "tranh luận đối kháng",
@@ -4581,6 +4758,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ehn day-BAH kohn-trah-deek-TWAR — 'oi' is 'wah'; not English 'contradictory' — means 'hearing both sides'"
         },
         {
+          cell_id: "1c065bb0-7c4f-4219-993c-aa0866494e91",
           "word": "trancher un point",
           "en": "to settle a point",
           "vi": "quyết định một điểm",
@@ -4591,24 +4769,28 @@ export const lessons: FrenchLesson[] =           [
       ],
       "dialogue": [
         {
+          cell_id: "d5a47f13-8f8b-404e-a1a9-30e1973609f5",
           "speaker": "Linh (chair)",
           "text": "Bonjour à tous. Avant d'entrer dans le vif du sujet, je rappelle l'ordre du jour: trois points à traiter en deux heures.",
           "vi": "Chào tất cả. Trước khi vào trọng tâm, tôi nhắc lại chương trình nghị sự: ba điểm cần xử lý trong hai giờ.",
           "en": "Good morning, everyone. Before getting to the heart of the matter, let me recall the agenda: three points to address in two hours."
         },
         {
+          cell_id: "f91cf807-1e69-42ac-8eb2-73a179e3f11d",
           "speaker": "Délégué A",
           "text": "Je voudrais ajouter un quatrième point sur la gouvernance.",
           "vi": "Tôi muốn thêm điểm thứ tư về quản trị.",
           "en": "I'd like to add a fourth point on governance."
         },
         {
+          cell_id: "e4e0c99b-2d9e-432e-b26e-c560e49d22f8",
           "speaker": "Linh",
           "text": "Je vous propose de le porter en AOB en fin de séance, plutôt que de remanier l'ordre du jour. Êtes-vous d'accord ?",
           "vi": "Tôi đề nghị đưa lên AOB cuối phiên, hơn là tổ chức lại chương trình. Bạn đồng ý không?",
           "en": "I propose we take it under AOB at the end of the session, rather than reshuffling the agenda. Do you agree?"
         },
         {
+          cell_id: "ce966928-fd4b-45ee-bfe7-4e2ad615d68b",
           "speaker": "Délégué A",
           "text": "Acceptable. Avançons.",
           "vi": "Chấp nhận được. Mình tiến lên.",
@@ -4886,6 +5068,7 @@ export const lessons: FrenchLesson[] =           [
       "tip_advice_en": "6-STEP PROCESS for negotiating with a French vendor:\n\n(1) FINALIZE THE CAHIER DES CHARGES before any pricing exchange. Document signed by both parties.\n\n(2) REQUEST MULTIPLE QUOTES (3-5 vendors minimum) on the same CDC, same format, same deadline. Fair comparison.\n\n(3) ANALYZE IN TCO: purchase price + 3-year maintenance + operating costs + exit. Often the cheapest at purchase is the most expensive in TCO.\n\n(4) BILATERAL PRE-NEGOTIATION with the 2-3 finalists: understand each one's room for movement, constraints, customization opportunities.\n\n(5) FINAL NEGOTIATION IN ONE MEETING, ideally with the economic decision-maker on the vendor side. Prepare the leverage list: price, payment terms, contract duration, SAV, training, exclusivity.\n\n(6) FORMAL CONTRACT with a lawyer — all critical clauses (SAV, penalties, indexation, termination) written explicitly.\n\nUSEFUL PHRASES:\n\nTO START:\n- 'Avant d'entrer dans le tarifaire, je voudrais qu'on cale le cahier des charges définitif.'\n- 'Pourriez-vous nous présenter votre proposition en détail ?'\n- 'Sur quel périmètre exactement votre devis porte-t-il ?'\n\nTO PUSH ON PRICE:\n- 'Votre devis dépasse l'enveloppe que nous avions prévue.'\n- 'À périmètre équivalent, nous avons reçu des propositions à X.'\n- 'Sur quelle base avez-vous chiffré le poste Y ?'\n- 'Que pourrait-on simplifier dans le périmètre pour atteindre l'enveloppe ?'\n\nTO NEGOTIATE TERMS:\n- 'Sur les conditions de paiement, j'aimerais qu'on aligne sur le standard du marché.'\n- 'Le SAV tel que décrit ne couvre pas les pannes critiques en moins de vingt-quatre heures — point rédhibitoire.'\n- 'Pourriez-vous étendre la garantie à trois ans en standard ?'\n- 'Sur quels indicateurs de performance êtes-vous prêt à vous engager contractuellement ?'\n\nTO TRADE (concession for long-term engagement):\n- 'Si nous nous engageons sur trois ans plutôt qu'un an, qu'êtes-vous prêt à concéder ?'\n- 'Une exclusivité sur ce périmètre justifierait une remise complémentaire.'\n- 'En contrepartie d'un acompte plus important, accepteriez-vous de revoir le tarif ?'\n\nTO CONCLUDE:\n- 'Si je résume, nous serions sur [recap].'\n- 'Pourriez-vous me formaliser cette offre révisée par écrit d'ici vendredi ?'\n- 'Sous réserve de validation interne, nous sommes prêts à signer la semaine prochaine.'\n\nAVOID:\n- Negotiating only on purchase price — TCO blind spot\n- Accepting a vague CDC — guaranteed budget overrun\n- Not demanding symmetric penalties — expensive imbalance\n- Announcing your BATNA too early — loss of negotiation leverage",
       "vocabulary": [
         {
+          cell_id: "a4f0ba7c-886d-4123-944b-bfd74ceed0fb",
           "word": "un cahier des charges",
           "en": "specifications document",
           "vi": "bộ tiêu chí kỹ thuật",
@@ -4894,6 +5077,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ehn kah-YAY day SHARZH — silent h in 'cahier'; final -ges is 'zh' (soft); the sacred B2B document — finalize before pricing"
         },
         {
+          cell_id: "7bd698db-9beb-481c-822d-9761e0a0fd4d",
           "word": "un devis",
           "en": "a quote",
           "vi": "báo giá",
@@ -4902,6 +5086,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ehn duh-VEE — schwa 'de'; final -s silent; the formal pricing proposal, legally binding for a stated period"
         },
         {
+          cell_id: "7047e2f6-0cd8-46c1-a27e-94656230683c",
           "word": "le coût total de possession (TCO)",
           "en": "Total Cost of Ownership",
           "vi": "tổng chi phí sở hữu",
@@ -4910,6 +5095,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "luh KOO toh-TAHL duh poh-seh-SYOHN — 'ou' is 'oo'; the framework that exposes 'cheap-to-buy, expensive-to-own' traps"
         },
         {
+          cell_id: "23b6096a-c616-4c60-9b02-7a380ace6463",
           "word": "les conditions de paiement",
           "en": "payment terms",
           "vi": "điều kiện thanh toán",
@@ -4918,6 +5104,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "lay kohn-dee-SYOHN duh peh-MAHN — French B2B standard is 60 days end-of-month; 30 days nets favors the vendor"
         },
         {
+          cell_id: "adb0741c-73b7-45dd-85a8-0f0763db6fb3",
           "word": "le service après-vente (SAV)",
           "en": "after-sales service",
           "vi": "dịch vụ sau bán",
@@ -4926,6 +5113,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "luh sair-VEES ah-preh-VAHNT — nasal -en; literally 'after-sale service'; always demand quantified SLAs"
         },
         {
+          cell_id: "f89c8b6a-e83c-4088-b256-72e67802fa3d",
           "word": "une clause d'indexation",
           "en": "an indexation clause",
           "vi": "điều khoản chỉ số hóa",
@@ -4934,6 +5122,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ewn KLOHZ dan-dek-sah-SYOHN — nasal -in; ties pricing to inflation index (INSEE) to protect both parties"
         },
         {
+          cell_id: "370338db-37e3-4692-a1b6-e8d07d810217",
           "word": "des pénalités de retard",
           "en": "late penalties",
           "vi": "phạt chậm trễ",
@@ -4942,6 +5131,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "day pay-nah-lee-TAY duh ruh-TAR — final -d silent in 'retard'; always demand reciprocity"
         },
         {
+          cell_id: "19dbcff3-a24c-4be4-bd92-33fd09750ea0",
           "word": "le périmètre du contrat",
           "en": "contract scope",
           "vi": "phạm vi hợp đồng",
@@ -4950,6 +5140,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "luh pay-ree-MEH-truh dew kohn-TRAH — 'du' rounded; ambiguous scope = invoice padding"
         },
         {
+          cell_id: "35b88a4a-45ea-46d7-b6a6-313113a34a59",
           "word": "un appel d'offres",
           "en": "a call for tender / RFP",
           "vi": "đấu thầu",
@@ -4958,6 +5149,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ehn ah-PEL DOFR — final -e silent; the formal procurement process for strategic purchases"
         },
         {
+          cell_id: "4e9dfa4c-e898-4f87-abd1-58cc73cd6ab9",
           "word": "rédhibitoire",
           "en": "deal-breaker",
           "vi": "bất khả",
@@ -4968,24 +5160,28 @@ export const lessons: FrenchLesson[] =           [
       ],
       "dialogue": [
         {
+          cell_id: "363c36ff-7ae3-4faa-b00b-c584476e5ea5",
           "speaker": "Linh (acheteuse)",
           "text": "Monsieur Roussel, votre devis arrive à cent vingt mille euros — quinze pour cent au-dessus de notre enveloppe.",
           "vi": "Ông Roussel, báo giá của ông đến 120 nghìn euro — 15% trên ngân sách của chúng tôi.",
           "en": "Mr. Roussel, your quote comes in at one hundred twenty thousand euros — fifteen percent above our envelope."
         },
         {
+          cell_id: "5e5380e3-bb96-4b87-9de6-0c7a56b7e5cb",
           "speaker": "Fournisseur",
           "text": "Le périmètre tel que défini est dense — il y a peu de marge sur le tarif horaire.",
           "vi": "Phạm vi như định nghĩa là dày — ít margin trên giá giờ.",
           "en": "The scope as defined is dense — there's little margin on the hourly rate."
         },
         {
+          cell_id: "3085d898-f74a-4c06-b3b2-d7988d97d234",
           "speaker": "Linh",
           "text": "Plutôt que rogner sur le tarif, simplifions le périmètre. Le module reporting avancé est-il indispensable au lancement ?",
           "vi": "Hơn là cắt giá, đơn giản hóa phạm vi. Module reporting nâng cao có cần thiết khi ra mắt không?",
           "en": "Rather than shaving the rate, let's simplify the scope. Is the advanced reporting module essential at launch?"
         },
         {
+          cell_id: "76667f1a-2cb1-4fd0-9e26-adad7d3f83db",
           "speaker": "Fournisseur",
           "text": "Pas indispensable — on peut le décaler en phase 2. Cela ramène le devis à cent quatre.",
           "vi": "Không cần — mình có thể dời sang giai đoạn 2. Điều đó đưa báo giá xuống 104.",
@@ -5281,6 +5477,7 @@ export const lessons: FrenchLesson[] =           [
       "tip_advice_en": "5-STEP PROCESS for expressing constructive disagreement:\n\n(1) DIAGNOSE THE STAKE: minor (method, tactics) vs major (strategy, ethics). The format changes with the stake.\n\n(2) PREPARE THE ARGUMENTAIRE: 3 points max. Each backed by data, an example, or a quantified consequence. No subjective judgments ('I find that').\n\n(3) PREPARE AN ALTERNATIVE: never oppose without proposing. A credible, quantified alternative, with its own limits acknowledged.\n\n(4) CHOOSE THE RIGHT FRAME: bilateral, calm, before officialization. Request a short meeting ('Could you give me twenty minutes before the decision is announced?').\n\n(5) ENGAGE THE CONVERSATION: 4-part structure (recognition / problem / alternative / loyalty). Close with a commitment to apply the decision whatever it is.\n\nUSEFUL PHRASES:\n\nTO REQUEST THE MEETING:\n- 'Pourriez-vous me consacrer vingt minutes en bilatéral avant la réunion de jeudi ?'\n- 'Avant que la décision soit officialisée, j'aimerais partager un point d'analyse.'\n- 'Sur le projet X, j'ai un retour de terrain qui pourrait être utile à votre arbitrage.'\n\nTO OPEN THE EXCHANGE:\n- 'Avant de souscrire à cette orientation, je voudrais partager une réserve sérieuse.'\n- 'Je partage l'objectif; le chemin proposé soulève à mon sens des questions.'\n- 'Si je me permets ce désaccord, c'est précisément parce que je vous sais ouverte à un débat franc.'\n\nTO STATE THE PROBLEM:\n- 'Trois difficultés me préoccupent: [point 1], [point 2], [point 3].'\n- 'Le retour terrain converge vers [observation].'\n- 'Le calendrier proposé ne tient pas compte de [operational constraint].'\n\nTO PROPOSE THE ALTERNATIVE:\n- 'Une voie alternative serait de [option], qui permet d'atteindre le même objectif tout en [benefit].'\n- 'Plutôt que [proposed option], je suggérerais [other option], pour les raisons suivantes: [arguments].'\n- 'Si je devais arbitrer à votre place, je porterais [option] — mais c'est votre arbitrage.'\n\nTO CLOSE IN LOYALTY:\n- 'Ma loyauté à la décision finale est entière. Je voulais simplement m'assurer que vous ayez l'analyse complète.'\n- 'Quelle que soit votre décision, je l'appliquerai pleinement.'\n- 'Je me suis exprimée; je m'aligne désormais sur ce que vous trancherez.'\n\nTO RECORD A MAJOR STAKE (by email, for trace):\n- 'Pour mémoire de notre échange du [date]: voici les trois points que j'ai signalés et la décision que vous avez retenue.'\n- 'Conformément à votre arbitrage, je mettrai en œuvre [option] dès lundi.'\n\nAVOID:\n- 'Je ne suis pas d'accord' bare, with no alternative\n- 'Everyone says that…' → fragile collective-authority arguments\n- 'You're wrong' → personal attack, immediate loss\n- Disagreement in a public meeting → humiliation, backfire\n- Disagreement after official decision → insubordination, sanction",
       "vocabulary": [
         {
+          cell_id: "9dffe37f-778b-43dd-975c-c606a12d333c",
           "word": "souscrire à une orientation",
           "en": "to endorse a direction",
           "vi": "tán thành một định hướng",
@@ -5289,6 +5486,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "soo-SKREER ah ewn oh-ryahn-tah-SYOHN — 'ou' is 'oo'; the formal verb for endorsing a strategic direction"
         },
         {
+          cell_id: "bfa2ab7e-42ca-4cd9-a390-888c37e8138f",
           "word": "exprimer une réserve",
           "en": "to express a reservation",
           "vi": "bày tỏ dè dặt",
@@ -5297,6 +5495,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "eks-pree-MAY ewn ray-ZAIRV — 's' between vowels sounds like 'z'; softer than 's'opposer'"
         },
         {
+          cell_id: "ae66b85c-e349-4f1a-8674-ae1460704685",
           "word": "le retour terrain",
           "en": "field feedback",
           "vi": "phản hồi từ thực địa",
@@ -5305,6 +5504,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "luh ruh-TOOR teh-RAN — nasal -ain; the most credible evidence base in a French disagreement"
         },
         {
+          cell_id: "b1c3448c-d459-46ab-8463-ef5f5b9698c9",
           "word": "soumettre une analyse",
           "en": "to submit an analysis",
           "vi": "trình bày một phân tích",
@@ -5313,6 +5513,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "soo-MEH-truh ewn ah-nah-LEEZ — 'ou' is 'oo'; signals deference while presenting a counter-argument"
         },
         {
+          cell_id: "5a034d55-0c48-4cb3-8421-211a41f39bd2",
           "word": "une option alternative chiffrée",
           "en": "a quantified alternative",
           "vi": "phương án thay thế có số liệu",
@@ -5321,6 +5522,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ewn op-SYOHN al-tair-nah-TEEV shee-FRAY — required to make disagreement constructive rather than obstructive"
         },
         {
+          cell_id: "e7e634de-8ad8-495e-b813-919fdfb58d17",
           "word": "un arbitrage",
           "en": "an arbitration / decision",
           "vi": "sự phân xử / quyết định",
@@ -5329,6 +5531,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ehn ar-bee-TRAHZH — final -age is 'ahzh'; the C1 word for an executive ruling between options"
         },
         {
+          cell_id: "049d9e4c-3bdb-4609-9cb7-4fc2d2c6dffe",
           "word": "la loyauté envers une décision",
           "en": "loyalty to a decision",
           "vi": "lòng trung thành với quyết định",
@@ -5337,6 +5540,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "lah lwah-yoh-TAY ahn-VAIR ewn day-see-ZYOHN — the closing register-move after expressing disagreement"
         },
         {
+          cell_id: "5160922e-4489-469e-898b-0b925237584d",
           "word": "signaler un risque",
           "en": "to flag a risk",
           "vi": "báo hiệu một rủi ro",
@@ -5345,6 +5549,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "see-nyah-LAY ehn REESK — -gn- is 'ny'; less dramatic than 'alerter', appropriate for managerial dialogue"
         },
         {
+          cell_id: "25c7a54a-8ece-4bf7-a4b8-90701bce9392",
           "word": "une voie de remplacement",
           "en": "an alternative path",
           "vi": "một con đường thay thế",
@@ -5353,6 +5558,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ewn VWAH duh rahn-plahs-MAHN — 'oi' is 'wah'; nasal -ment"
         },
         {
+          cell_id: "ce028b9e-e034-402d-b096-0d7961045bbc",
           "word": "marquer son désaccord",
           "en": "to register one's disagreement",
           "vi": "đánh dấu sự bất đồng của mình",
@@ -5363,24 +5569,28 @@ export const lessons: FrenchLesson[] =           [
       ],
       "dialogue": [
         {
+          cell_id: "faa1369f-067b-49d2-8be1-85f36040c715",
           "speaker": "Linh",
           "text": "Madame Lefèvre, pourriez-vous me consacrer vingt minutes avant la réunion de jeudi ?",
           "vi": "Bà Lefèvre, bà có thể dành tôi 20 phút trước cuộc họp thứ năm không?",
           "en": "Mrs. Lefèvre, could you spare me twenty minutes before Thursday's meeting?"
         },
         {
+          cell_id: "879209e8-846d-4258-a6a5-1ae1ebec32c5",
           "speaker": "Directrice",
           "text": "Bien sûr. Quel est le sujet ?",
           "vi": "Tất nhiên. Chủ đề gì?",
           "en": "Of course. What's the topic?"
         },
         {
+          cell_id: "42363c06-4bda-44cf-88c8-5372b6d80747",
           "speaker": "Linh",
           "text": "Je voudrais partager une réserve sérieuse sur le projet de réorganisation, fondée sur trois retours de terrain.",
           "vi": "Tôi muốn chia sẻ một dè dặt nghiêm túc về dự án tái cấu trúc, dựa trên ba phản hồi thực địa.",
           "en": "I'd like to share a serious reservation on the reorganization project, grounded in three pieces of field feedback."
         },
         {
+          cell_id: "8d497bea-8790-4c67-ad90-89f987d7f7ed",
           "speaker": "Directrice",
           "text": "Très bien. Demain matin, neuf heures, mon bureau.",
           "vi": "Rất tốt. Mai sáng, 9 giờ, phòng tôi.",
@@ -5646,6 +5856,7 @@ export const lessons: FrenchLesson[] =           [
       "tip_advice_en": "5-STEP PROCESS for preparing a Franco-Vietnamese negotiation:\n\n(1) IDENTIFY THE DOMINANT STYLE of the partner — large traditional French firm (direct style), French startup (more flexible), large Vietnamese group (hierarchical), Vietnamese family SME (pure relational).\n\n(2) ADAPT THE TEMPO — plan 2-3x more cycles than with a mono-cultural partner. Build over several meetings with decantation pauses.\n\n(3) ORGANIZE BILATERALS in advance with each side — to hear actual positions, not displayed ones in plenary meeting.\n\n(4) FORMALIZE IN WRITING + BUILD RELATIONALLY in parallel — invest in both registers, not one at the expense of the other.\n\n(5) DESIGNATE A BICULTURAL INTERFACE — someone who understands both codes and can decode ambiguities in real time.\n\nUSEFUL PHRASES FOR FRENCH NEGOTIATING WITH VIETNAMESE:\n\nTO DECODE AN IMPLICIT NO:\n- 'Quand vous dites que c'est difficile, voulez-vous dire que c'est non, ou qu'on peut chercher comment le rendre possible ?'\n- 'Pour bien comprendre votre position: où placez-vous le seuil de l'acceptable ?'\n- 'Sans pression, juste pour ma compréhension: que faudrait-il pour qu'on aboutisse à un accord ?'\n\nTO AVOID RUSHING:\n- 'Prenons le temps de cette réflexion; il n'y a pas d'urgence.'\n- 'Je propose qu'on se donne deux semaines avant le prochain échange.'\n- 'C'est un sujet important; il mérite plusieurs cycles de discussion.'\n\nUSEFUL PHRASES FOR VIETNAMESE NEGOTIATING WITH FRENCH:\n\nTO STATE AN EXPLICIT NO WHEN NEEDED:\n- 'Sur ce point précis, je vais devoir vous dire non, et voici pourquoi.'\n- 'Cette proposition n'est pas tenable pour nous; en revanche, nous pourrions envisager X.'\n- 'Je préfère être direct: nous ne pourrons pas avancer sur cette base.'\n\nTO REQUEST TIME without blocking:\n- 'Pourriez-vous nous accorder huit jours pour consulter notre direction ? Je vous reviens avec une réponse ferme jeudi prochain.'\n- 'Je m'engage à vous donner une réponse claire d'ici le quinze.'\n\nTO FORMALIZE AN ORAL AGREEMENT in writing:\n- 'Je vous propose qu'on synthétise notre discussion par mail; cela évitera tout malentendu sur les engagements pris.'\n- 'Pourriez-vous m'envoyer un récapitulatif des points actés ?'\n\nAVOID (FRENCH SIDE):\n- Pushing for signature at the first meeting\n- Raising a delicate issue in a public meeting\n- Confusing 'we'll study it' with a yes\n- Underestimating the meal's role in trust-building\n\nAVOID (VIETNAMESE / ANGLOPHONE SIDE):\n- Multiplying avoidance formulas when the stake is serious\n- Scorning the contractual drafting ('trust is enough')\n- Refusing explanatory bilaterals (loss of real information)\n- Taking French directness for aggression",
       "vocabulary": [
         {
+          cell_id: "a9da9380-8a00-47db-9686-85d0168792e4",
           "word": "un écart culturel",
           "en": "a cultural gap",
           "vi": "khoảng cách văn hóa",
@@ -5654,6 +5865,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ehn ay-KAR kewl-tew-REL — 'u' rounded in 'cul' and 'tu'; the polite term for what divides two negotiation styles"
         },
         {
+          cell_id: "e914c8a2-d3ad-4278-9a4b-7cfb92187d9c",
           "word": "la confrontation argumentée",
           "en": "argued confrontation",
           "vi": "đối đầu có lập luận",
@@ -5662,6 +5874,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "lah kohn-frohn-tah-SYOHN ar-gew-mahn-TAY — the French negotiation default; substance + structure"
         },
         {
+          cell_id: "72079d32-6ae3-45ee-b5f3-ff595c6fa3fb",
           "word": "un consensus implicite",
           "en": "an implicit consensus",
           "vi": "đồng thuận ngầm",
@@ -5670,6 +5883,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ehn kohn-sahn-SEWS an-plee-SEET — the Vietnamese / Asian negotiation default; harmony before verbalization"
         },
         {
+          cell_id: "1a209196-d1a6-4041-ad38-a756e5e27c2b",
           "word": "la perte de face",
           "en": "loss of face",
           "vi": "mất mặt",
@@ -5678,6 +5892,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "lah PAIRT duh FAHS — direct calque from East Asian concept; underused in pure French culture but recognized in intercultural settings"
         },
         {
+          cell_id: "518df85b-e9d0-427f-865f-cf22ac5fe9bb",
           "word": "un non implicite",
           "en": "an implicit no",
           "vi": "lời từ chối ngầm",
@@ -5686,6 +5901,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ehn NOHN an-plee-SEET — the most dangerous misread for the French negotiator in Asian contexts"
         },
         {
+          cell_id: "13be7d24-c7ac-4e3f-bb46-b2e628c7386c",
           "word": "la confiance interpersonnelle",
           "en": "interpersonal trust",
           "vi": "lòng tin liên cá nhân",
@@ -5694,6 +5910,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "lah kohn-FYAHNS an-tair-pair-soh-NEL — the load-bearing element in Vietnamese B2B; built over meals and time, not just signatures"
         },
         {
+          cell_id: "3a0218b4-fa1f-45d2-8ed5-5fe068a8ceea",
           "word": "alterner les registres",
           "en": "to alternate registers",
           "vi": "xen kẽ các cấp độ",
@@ -5702,6 +5919,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "al-tair-NAY lay ruh-ZHEES-truh — the key competence of an effective intercultural negotiator"
         },
         {
+          cell_id: "76a19143-a76a-4454-8244-87c5be20d0f8",
           "word": "un bilatéral préalable",
           "en": "a preliminary bilateral",
           "vi": "buổi bilatéral chuẩn bị",
@@ -5710,6 +5928,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ehn bee-lah-tay-RAHL pray-ah-LAH-bluh — the discreet pre-meeting where actual positions emerge"
         },
         {
+          cell_id: "b53f5def-f3ca-496b-9a1f-687784b1166f",
           "word": "un interface biculturel",
           "en": "a bicultural interface",
           "vi": "người trung gian song văn hóa",
@@ -5718,6 +5937,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ehn an-tair-FAHS bee-kewl-tew-REL — a person who reads both codes; worth their weight in gold in Franco-Vietnamese deals"
         },
         {
+          cell_id: "73c6498f-70ac-47b0-8eee-75370b1b3632",
           "word": "décoder une ambiguïté",
           "en": "to decode an ambiguity",
           "vi": "giải mã một mơ hồ",
@@ -5728,24 +5948,28 @@ export const lessons: FrenchLesson[] =           [
       ],
       "dialogue": [
         {
+          cell_id: "b61f4f75-689a-4033-a6a5-f18eb2e09d05",
           "speaker": "Linh (interface biculturel)",
           "text": "Monsieur Roussel, vous avez interprété le « nous allons étudier » de monsieur Nguyen comme un accord. Ce n'en était pas un.",
           "vi": "Ông Roussel, ông đã hiểu « chúng tôi sẽ nghiên cứu » của ông Nguyễn như một sự đồng ý. Không phải vậy.",
           "en": "Mr. Roussel, you interpreted Mr. Nguyen's 'we'll study it' as agreement. It wasn't."
         },
         {
+          cell_id: "5658f254-ef51-4a38-bf7a-f1df760bb812",
           "speaker": "Roussel",
           "text": "Comment ça ? Il m'a dit qu'il étudiait sérieusement.",
           "vi": "Sao vậy? Ông ấy nói ông sẽ nghiên cứu nghiêm túc.",
           "en": "How so? He told me he was seriously studying it."
         },
         {
+          cell_id: "96e0df83-2954-4c6e-889a-2f9fe0f5ee86",
           "speaker": "Linh",
           "text": "En contexte vietnamien, « étudier » sans engagement chiffré ni date veut souvent dire « refus poli ». Il a déjà décidé non.",
           "vi": "Trong bối cảnh Việt, « nghiên cứu » không có cam kết chiffré và ngày thường có nghĩa « từ chối lịch sự ». Ông ấy đã quyết định không.",
           "en": "In Vietnamese context, 'studying' with no quantified commitment and no date often means 'polite refusal'. He's already decided no."
         },
         {
+          cell_id: "795415d2-fcf1-48d8-9963-8d087c8287e5",
           "speaker": "Roussel",
           "text": "D'accord. Comment je rouvre la discussion sans le braquer ?",
           "vi": "Được rồi. Tôi mở lại thảo luận thế nào mà không làm ông ấy phản ứng?",
@@ -6023,6 +6247,7 @@ export const lessons: FrenchLesson[] =           [
       "tip_advice_en": "6-STEP PROCESS for managing a formal workplace conflict:\n\n(1) DOCUMENT the facts from the moment they occur — dated journal, writings preserved, witnesses identified.\n\n(2) ATTEMPT DIRECT EXCHANGE in bilateral, calmly, in a formal frame. Request a meeting by email, give the precise topic, plan 30 minutes.\n\n(3) ESCALATE TO N+1 if direct exchange fails or the situation recurs. Formal email describing facts, what was tried, what's requested.\n\n(4) REFER TO HR OR CSE if the hierarchy doesn't resolve, or if the conflict involves the N+1 themselves. The CSE can be referred confidentially; HR must act formally.\n\n(5) CONSULT A LABOR LAWYER as soon as a formal procedure is considered. Check statute of limitations, success odds, options.\n\n(6) PRESERVE THE PROFESSIONAL LINK during the procedure — perform your duties normally, avoid provocative behavior, don't comment publicly.\n\nUSEFUL PHRASES:\n\nTO REQUEST A BILATERAL MEETING:\n- 'Pourriez-vous me consacrer trente minutes pour qu'on revienne sur l'échange de mardi ?'\n- 'Je voudrais qu'on aborde, à froid, ce qui s'est passé en réunion.'\n- 'Je souhaite qu'on clarifie le périmètre de chacun.'\n\nTO STATE AN INFORMAL COMPLAINT:\n- 'Sur le fond, je ne saurais cautionner les propos tenus.'\n- 'Sur la forme, j'attendais davantage de retenue.'\n- 'Je vous demande de retirer ou reformuler ce qui a été dit.'\n\nTO ESCALATE:\n- 'Je porte cette situation à votre connaissance, conformément au règlement intérieur.'\n- 'Je sollicite votre intervention en tant que médiateur.'\n- 'Je saisis le CSE pour droit d'alerte.'\n\nTO FORMALIZE IN WRITING:\n- 'Pour mémoire de notre entretien du [date]…'\n- 'Je consigne par écrit l'échange de ce jour, conformément aux usages.'\n- 'Copie de ce mail sera transmise aux ressources humaines.'\n\nTO REQUEST A MEASURE:\n- 'Je demande qu'une médiation formelle soit organisée.'\n- 'Je sollicite la mise en place d'une procédure d'enquête interne.'\n- 'Je requiers un entretien avec la DRH dans les huit jours.'\n\nTO PRESERVE THE LINK:\n- 'Mon objectif n'est pas la sanction, mais la clarification.'\n- 'Je reste disponible pour tout échange constructif.'\n- 'Je continuerai à exécuter mes missions normalement pendant la procédure.'\n\nAVOID:\n- Reacting in the heat — always let 24-48h pass\n- Exchanging on WhatsApp or private messaging — prefer professional email (trace)\n- Insulting, threatening, raising your voice — backfires\n- Resigning under emotion — loss of rights\n- Ignoring a pre-disciplinary hearing summons — maximum risk",
       "vocabulary": [
         {
+          cell_id: "05153b4d-d066-4367-9b7a-5c89913d4e30",
           "word": "le règlement intérieur",
           "en": "the internal regulations",
           "vi": "nội quy",
@@ -6031,6 +6256,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "luh reh-gluh-MAHN an-tay-RYUR — the internal company document; mandatory for firms >50 employees and legally binding"
         },
         {
+          cell_id: "e69861c1-a540-42aa-a147-2f890d50f147",
           "word": "une médiation formelle",
           "en": "a formal mediation",
           "vi": "hòa giải chính thức",
@@ -6039,6 +6265,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ewn may-dyah-SYOHN for-MEL — distinct from English 'mediation' in being formally documented and procedurally bounded"
         },
         {
+          cell_id: "ff233693-687f-48ba-9da9-87ac7a0a2de2",
           "word": "consigner par écrit",
           "en": "to record in writing",
           "vi": "ghi lại bằng văn bản",
@@ -6047,6 +6274,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "kohn-see-NYAY par ay-KREE — -gn- is 'ny'; the formal verb for putting facts on the legally-protected record"
         },
         {
+          cell_id: "e97d52b5-ac4c-4145-a443-eb38fd451f5a",
           "word": "le CSE (Comité Social et Économique)",
           "en": "Social and Economic Committee",
           "vi": "ủy ban xã hội và kinh tế",
@@ -6055,6 +6283,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "luh say-ess-UH — letters pronounced separately in French; the mandatory employee-representation body in firms 11+"
         },
         {
+          cell_id: "95d0b9b5-2931-4b2a-b0b5-98ceda685bd6",
           "word": "le harcèlement moral",
           "en": "moral harassment",
           "vi": "quấy rối tinh thần",
@@ -6063,6 +6292,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "luh ar-sel-MAHN moh-RAHL — silent h; defined in L1152-1 of the Labor Code; not the same as English 'mobbing' or 'bullying'"
         },
         {
+          cell_id: "63812708-59a1-4770-a8a6-07480c33fb44",
           "word": "saisir une instance",
           "en": "to refer to a body",
           "vi": "đệ trình cơ quan",
@@ -6071,6 +6301,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "say-ZEER ewn an-STAHNS — 's' between vowels = 'z'; the formal verb for filing with an institutional body"
         },
         {
+          cell_id: "33421539-e36f-4513-b637-0888e69d3a43",
           "word": "un entretien préalable",
           "en": "a pre-disciplinary hearing",
           "vi": "buổi nghe trước kỷ luật",
@@ -6079,6 +6310,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ehn ahn-truh-TYAN pray-ah-LAH-bluh — mandatory step before any disciplinary sanction; the employee may be accompanied"
         },
         {
+          cell_id: "c40bee30-cd7a-4db6-8ebd-df6b83c3357a",
           "word": "une procédure disciplinaire",
           "en": "a disciplinary procedure",
           "vi": "quy trình kỷ luật",
@@ -6087,6 +6319,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ewn proh-say-DEWR dee-see-plee-NAIR — the formal sequence: written notice, pre-hearing, sanction notification"
         },
         {
+          cell_id: "799c1db0-9434-4d53-a2a2-0d50b5ea63c1",
           "word": "un mail de synthèse",
           "en": "a summary email",
           "vi": "email tóm tắt",
@@ -6095,6 +6328,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ehn MEL duh san-TEZ — the protective writing-trace habit after every oral exchange in a sensitive context"
         },
         {
+          cell_id: "172c9c71-a168-49bc-9708-d51f6d667783",
           "word": "préserver ses droits",
           "en": "to preserve one's rights",
           "vi": "bảo vệ quyền của mình",
@@ -6105,24 +6339,28 @@ export const lessons: FrenchLesson[] =           [
       ],
       "dialogue": [
         {
+          cell_id: "ab08ce25-ae02-467a-bf71-53bce6e21c72",
           "speaker": "Linh",
           "text": "Madame Lefèvre, je porte à votre connaissance l'incident de mardi entre monsieur Bernard et moi.",
           "vi": "Bà Lefèvre, tôi báo bà về sự cố thứ ba giữa ông Bernard và tôi.",
           "en": "Mrs. Lefèvre, I'm formally notifying you of Tuesday's incident between Mr. Bernard and me."
         },
         {
+          cell_id: "14b11204-a4dd-4af8-9c76-b3710b37ba01",
           "speaker": "DRH",
           "text": "Je vous écoute. Avez-vous des éléments écrits ?",
           "vi": "Tôi nghe bà. Bà có yếu tố văn bản không?",
           "en": "I'm listening. Do you have written evidence?"
         },
         {
+          cell_id: "ef495f45-d252-4055-bc5f-29222992802f",
           "speaker": "Linh",
           "text": "Oui — un compte-rendu de réunion validé, plus deux mails échangés depuis. Je vous transmets le tout.",
           "vi": "Có — biên bản cuộc họp đã duyệt, cộng hai email trao đổi từ đó. Tôi gửi tất cả.",
           "en": "Yes — a validated meeting record, plus two emails exchanged since. I'll forward everything to you."
         },
         {
+          cell_id: "5dd6a50c-00d8-4797-9cab-7249aa4c7905",
           "speaker": "DRH",
           "text": "Je convoque les deux parties dans les huit jours pour une médiation formelle.",
           "vi": "Tôi triệu tập hai bên trong 8 ngày cho hòa giải chính thức.",
@@ -6388,6 +6626,7 @@ export const lessons: FrenchLesson[] =           [
       "tip_advice_en": "5-STEP PROCESS for using MESORE and walk away effectively:\n\n(1) DEFINE THE MESORE BEFORE the negotiation begins. Write it in black and white: if I don't sign with X, here's what I'll concretely do, on what timeline, at what cost, with what quality.\n\n(2) IMPROVE THE MESORE in parallel with the main negotiation. If you're negotiating with an employer, apply elsewhere in parallel. If with a vendor, keep 2 finalists.\n\n(3) IDENTIFY THE WALK-AWAY THRESHOLD — the value below which you leave. Share it internally with your team; NEVER reveal it to the other side during negotiation.\n\n(4) DECODE THE OTHER'S MESORE — open questions, observation of hesitations, indirect information gathering (competitors, market, timeline).\n\n(5) WALK AWAY WITH ART when the proposed deal stays below threshold — formally, courteously, door open.\n\nUSEFUL PHRASES:\n\nTO BUILD YOUR MESORE internally:\n- 'Si nous n'aboutissons pas avec X, voici notre option B: [quantified scenario].'\n- 'Notre seuil de rupture est de [value]; en dessous, on sort.'\n- 'Avant le rendez-vous, sécurisons une alternative crédible.'\n\nTO DECODE THE OTHER'S MESORE:\n- 'Quelles sont les autres pistes que vous explorez en parallèle ?'\n- 'Quel calendrier vous contraint, de votre côté ?'\n- 'Que ferez-vous si nous n'aboutissons pas ?'\n\nTO SIGNAL A THRESHOLD IS NEAR:\n- 'Cette proposition se rapproche de la limite de ce que nous pouvons accepter.'\n- 'Au-delà de ce seuil, l'équation économique ne tient plus pour nous.'\n- 'Je serai contraint de revoir mon arbitrage si nous n'avançons pas sur ce point.'\n\nTO TACTICAL WALK AWAY (door open):\n- 'Je crains que nous ne puissions aboutir aux conditions actuellement proposées.'\n- 'En l'état, je ne pourrai pas engager ma signature.'\n- 'Je préfère sortir de table plutôt que signer un accord intenable.'\n- 'Si vos contraintes évoluent, nous restons disponibles.'\n\nTO DEFINITIVE WALK AWAY:\n- 'Nous avons étudié votre dernière proposition; elle ne correspond pas à nos besoins stratégiques.'\n- 'Je vous remercie pour la qualité des échanges, mais nous renonçons à cette opportunité.'\n- 'Nous ne donnerons pas suite. Bonne continuation.'\n\nTO FORMALIZE A CLOSURE:\n- 'Si je résume, nous sommes d'accord sur [points]. Je vous propose de formaliser par écrit dans les 48h.'\n- 'L'accord me convient; pourriez-vous me transmettre le projet de contrat révisé ?'\n- 'C'est acté de mon côté. Je vous laisse rédiger; je signe la semaine prochaine.'\n\nAVOID:\n- Walk away without MESORE — dangerous bluff\n- Continuing to negotiate past the closure point — can break the dynamic\n- Brutal walk away without written formalization — damages reputation\n- Announcing your walk-away threshold to the other side — loss of leverage\n- Confusing walk away with relationship rupture — the door stays open except in extreme cases",
       "vocabulary": [
         {
+          cell_id: "b383730b-8eb3-45a8-a226-97d8c61f16cb",
           "word": "la MESORE",
           "en": "Best Alternative (BATNA)",
           "vi": "giải pháp dự phòng tốt nhất",
@@ -6396,6 +6635,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "lah meh-ZOR — French acronym for MEilleure SOlution de REpli; equivalent to English BATNA; the strategic foundation of any serious negotiation"
         },
         {
+          cell_id: "bb56f36e-3b4c-41f6-9acf-8bd0ffe81442",
           "word": "le seuil de rupture",
           "en": "the walk-away threshold",
           "vi": "ngưỡng đoạn tuyệt",
@@ -6404,6 +6644,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "luh SUH-y duh rewp-TEWR — the value below which you must walk; share internally, never with the other side"
         },
         {
+          cell_id: "d5cf0be5-b2e9-4427-b968-016435d7687a",
           "word": "sortir de table",
           "en": "to walk away from the table",
           "vi": "rời bàn",
@@ -6412,6 +6653,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "sor-TEER duh TAH-bluh — colloquial but business-acceptable French for the walk-away act"
         },
         {
+          cell_id: "000da4ea-489d-4e13-ab46-e4019d27360a",
           "word": "un accord intenable",
           "en": "an unsustainable agreement",
           "vi": "thỏa thuận không thể giữ",
@@ -6420,6 +6662,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ehn ah-KOR an-tuh-NAH-bluh — one you cannot honor over its duration; better not to sign"
         },
         {
+          cell_id: "eb6e6fd2-1a35-40f2-a83b-9d4899a08a00",
           "word": "laisser la porte ouverte",
           "en": "to leave the door open",
           "vi": "để cánh cửa mở",
@@ -6428,6 +6671,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "leh-SAY lah PORT oo-VAIRT — direct English equivalent; the courteous-but-firm walk-away formula"
         },
         {
+          cell_id: "cf8280a2-b335-4245-9247-0f984fc0e20b",
           "word": "le coût d'opportunité",
           "en": "opportunity cost",
           "vi": "chi phí cơ hội",
@@ -6436,6 +6680,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "luh KOO doh-por-tew-nee-TAY — what you lose by not pursuing the alternative; central to MESORE evaluation"
         },
         {
+          cell_id: "32da1903-070c-496a-88dc-326276485c77",
           "word": "fermer un accord",
           "en": "to close a deal",
           "vi": "chốt thỏa thuận",
@@ -6444,6 +6689,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "fair-MAY ehn ah-KOR — the canonical verb for completing a negotiation; literally 'to close'"
         },
         {
+          cell_id: "7d5cf736-f463-4c67-86b6-a8d089534b9b",
           "word": "un walk away tactique",
           "en": "a tactical walk-away",
           "vi": "rời bàn chiến thuật",
@@ -6452,6 +6698,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ehn WOK ah-WAY tak-TEEK — anglicism kept in French; the move that leaves the door open"
         },
         {
+          cell_id: "791723bd-3ee0-4275-8683-d32102043baf",
           "word": "un point de non-retour",
           "en": "a point of no return",
           "vi": "điểm không quay lại",
@@ -6460,6 +6707,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ehn PWAN duh nohn ruh-TOOR — direct English equivalent; rarely reached if you signal threshold approach"
         },
         {
+          cell_id: "5216089e-268b-4807-af26-e8c0da2afd30",
           "word": "céder sous la pression",
           "en": "to yield under pressure",
           "vi": "nhân nhượng dưới áp lực",
@@ -6470,24 +6718,28 @@ export const lessons: FrenchLesson[] =           [
       ],
       "dialogue": [
         {
+          cell_id: "394afb6c-e51f-4b6f-8eda-c16551cf3849",
           "speaker": "Linh",
           "text": "Monsieur Roussel, votre dernière proposition reste à dix pour cent en dessous de notre seuil. Je crains que nous ne puissions aboutir.",
           "vi": "Ông Roussel, đề xuất cuối của ông vẫn dưới ngưỡng của chúng tôi 10%. Tôi e mình không thể đến được.",
           "en": "Mr. Roussel, your latest proposal stays ten percent below our threshold. I fear we can't reach an agreement."
         },
         {
+          cell_id: "079c3812-d34c-4b7b-a3f3-c2510d5ba309",
           "speaker": "Roussel",
           "text": "C'est vraiment notre dernier mot — au-delà, le projet n'est plus rentable pour nous.",
           "vi": "Thật sự là lời cuối của chúng tôi — vượt qua, dự án không còn sinh lời cho chúng tôi.",
           "en": "It's truly our final word — beyond that, the project is no longer profitable for us."
         },
         {
+          cell_id: "8bc5b6e4-8e9a-4bf5-af19-212b5c77c612",
           "speaker": "Linh",
           "text": "Je comprends. Dans ce cas, je préfère sortir de table proprement plutôt que signer un accord intenable des deux côtés.",
           "vi": "Tôi hiểu. Trong trường hợp này, tôi thích rời bàn gọn gàng hơn là ký thỏa thuận không giữ được cả hai bên.",
           "en": "I understand. In that case, I prefer to walk away cleanly rather than sign an unsustainable agreement for both sides."
         },
         {
+          cell_id: "02f5922e-c35b-4e57-b31b-129656633844",
           "speaker": "Roussel",
           "text": "Je respecte votre position. Si nos contraintes évoluent dans les six mois, je peux vous recontacter ?",
           "vi": "Tôi tôn trọng lập trường của bà. Nếu các ràng buộc thay đổi trong 6 tháng, tôi có thể liên lạc lại bà chứ?",
@@ -6759,6 +7011,7 @@ export const lessons: FrenchLesson[] =           [
       "tip_advice_en": "5-STEP PROCESS facing a lowball:\n\n(1) DIAGNOSE THE TYPE — tactical, budget, provocation. The response changes.\n\n(2) DON'T REACT EMOTIONALLY — minimum 5-second pause before answering. Breathe.\n\n(3) REFUSE THE ANCHOR — don't reply with a counter-figure in the low frame. Reposition on value, scope, or request the justification.\n\n(4) ASK TO UNDERSTAND — open questions to get the other to speak. 'Can you help me understand how you arrived at this number?'\n\n(5) DECIDE — based on what you gathered: continue (tactical or budget), or close (provocation, no flexibility).\n\nUSEFUL PHRASES:\n\nTO REFUSE THE ANCHOR without rupturing:\n- 'Cette offre se situe nettement en deçà de la fourchette du marché.'\n- 'Je suppose que vous ouvrez la discussion plutôt que vous proposez votre prix réel.'\n- 'À ce niveau, je dois supposer une contrainte que je n'ai pas comprise.'\n\nTO ASK TO UNDERSTAND:\n- 'Pouvez-vous m'expliquer le raisonnement qui sous-tend ce chiffre ?'\n- 'Sur quels comparables vous appuyez-vous ?'\n- 'Quelle est l'enveloppe budgétaire que vous avez à disposition ?'\n\nTO REPOSITION ON VALUE:\n- 'Plutôt que de partir du chiffre, parlons de la valeur créée par la prestation.'\n- 'Quels sont les résultats que vous attendez de cette mission ?'\n- 'Comment mesurez-vous le retour sur investissement de ce projet ?'\n\nTO PROPOSE ALTERNATIVES (if real budget constraint):\n- 'Si l'enveloppe est limitée, nous pouvons réduire le périmètre — délivrer X au lieu de Z.'\n- 'Une approche en phases pourrait s'inscrire dans votre budget annuel.'\n- 'Je peux vous proposer une formule modulaire qui vous laisse choisir l'étendue.'\n\nTO REFRAME FACING PROVOCATION:\n- 'Je suis ouverte à négocier; je le suis moins à des comparaisons désobligeantes.'\n- 'Recentrons sur le périmètre, plutôt que sur les comparaisons interpersonnelles.'\n- 'Si vos contraintes ne nous permettent pas de converger, restons-en là courtoisement.'\n\nTO CLOSE FACING A NON-NEGOTIABLE LOWBALL:\n- 'À ce niveau, je ne peux pas vous être utile — ma structure de coûts ne le permet pas.'\n- 'Je vous remercie pour cet échange; il me semble que nos attentes sont trop éloignées.'\n- 'Je préfère ne pas donner suite plutôt que m'engager à perte.'\n\nAVOID:\n- Reacting in the heat ('that's outrageous!')\n- Immediate capitulation (loss of margin AND respect)\n- Symmetric counter-offer in the low frame (anchor validated)\n- Brutal exit without clarification (perhaps repairable)\n- Lengthy self-justification (validates the lowball frame)",
       "vocabulary": [
         {
+          cell_id: "4f1f33b8-a18a-4d13-b3bc-b4c342131a70",
           "word": "une offre lowball",
           "en": "a lowball offer",
           "vi": "đề nghị thấp xa giá trị",
@@ -6767,6 +7020,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ewn OFR loh-BAHL — English loanword kept in French business; the strategically-low opening offer"
         },
         {
+          cell_id: "74bac8df-55b6-435d-b3ea-ce1975ee8f8b",
           "word": "l'effet d'ancrage",
           "en": "anchoring effect",
           "vi": "hiệu ứng neo",
@@ -6775,6 +7029,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "lay-FEH dahn-KRAHZH — Kahneman/Tversky concept naturalized in French business; the cognitive distortion lowballs exploit"
         },
         {
+          cell_id: "fe5f4cfb-fee3-40b0-828b-16df67c14ac6",
           "word": "se situer en deçà",
           "en": "to lie below",
           "vi": "nằm thấp hơn",
@@ -6783,6 +7038,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "suh see-tew-AY ahn duh-SAH — 'u' rounded; ç forces 's' before 'a'; the polite diagnostic for 'too low'"
         },
         {
+          cell_id: "02838a56-53d4-4398-ad8c-21e61d206096",
           "word": "se braquer",
           "en": "to react defensively",
           "vi": "phản ứng phòng thủ",
@@ -6791,6 +7047,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "suh brah-KAY — reflexive; what you must NOT do facing a lowball"
         },
         {
+          cell_id: "d54df241-5fab-424b-9203-0a7efffd937c",
           "word": "repositionner la discussion",
           "en": "to refocus the discussion",
           "vi": "định vị lại thảo luận",
@@ -6799,6 +7056,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ruh-poh-zee-syoh-NAY lah dees-kew-SYOHN — the key strategic move: refuse the frame, change the conversation"
         },
         {
+          cell_id: "d9564c91-0fd7-42c3-be16-1f229634b4d1",
           "word": "garder son sang-froid",
           "en": "to keep one's cool",
           "vi": "giữ bình tĩnh",
@@ -6807,6 +7065,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "gar-DAY sohn sahn FRWAH — literally 'cold blood'; the prerequisite for handling provocation"
         },
         {
+          cell_id: "20f39873-9de3-4e92-b630-1bcd804dc067",
           "word": "une contrainte budgétaire",
           "en": "a budget constraint",
           "vi": "ràng buộc ngân sách",
@@ -6815,6 +7074,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ewn kohn-TRANT bewd-zhay-TAIR — distinguishes 'real budget' lowballs from 'tactical' or 'provocation' ones"
         },
         {
+          cell_id: "842ddb45-e736-4c39-bee4-5e4be6ebc41d",
           "word": "la valeur créée par la prestation",
           "en": "value created by the service",
           "vi": "giá trị do dịch vụ tạo ra",
@@ -6823,6 +7083,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "lah vah-LUR kray-AY par lah pres-tah-SYOHN — the reframe move: shift conversation from price to value"
         },
         {
+          cell_id: "d1309ec4-fd4c-4699-9c54-b2c34b5af9a4",
           "word": "une formule modulaire",
           "en": "a modular offering",
           "vi": "công thức theo module",
@@ -6831,6 +7092,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ewn for-MEWL moh-dew-LAIR — 'u' rounded; the budget-flex alternative: smaller scope, same rate"
         },
         {
+          cell_id: "052a920a-2958-4d69-bba0-bfe6baceb652",
           "word": "le retour sur investissement",
           "en": "return on investment (ROI)",
           "vi": "tỷ suất hoàn vốn",
@@ -6841,24 +7103,28 @@ export const lessons: FrenchLesson[] =           [
       ],
       "dialogue": [
         {
+          cell_id: "ecf9ed0d-d67b-41b8-8a96-63a363398f65",
           "speaker": "Client",
           "text": "Pour ce projet, notre budget est de quinze mille euros — fixé par la direction.",
           "vi": "Cho dự án này, ngân sách của chúng tôi là 15 nghìn euro — giám đốc đặt.",
           "en": "For this project, our budget is fifteen thousand euros — set by management."
         },
         {
+          cell_id: "a8246542-12f9-4269-8e4e-34e8cef5ca4e",
           "speaker": "Linh",
           "text": "Quinze mille pour le périmètre tel que décrit dans votre brief — c'est nettement en deçà du marché. Je suppose qu'on ouvre la discussion ?",
           "vi": "15 nghìn cho phạm vi như trong brief — thấp rõ rệt so với thị trường. Tôi giả định mình mở thảo luận?",
           "en": "Fifteen thousand for the scope as described in your brief — that's clearly below market. I'm assuming we're opening the discussion?"
         },
         {
+          cell_id: "a149a1e9-884e-45f1-841a-4eab11a54c89",
           "speaker": "Client",
           "text": "C'est notre enveloppe. Soit vous acceptez, soit nous prenons un freelance.",
           "vi": "Là ngân sách. Hoặc bạn chấp nhận, hoặc chúng tôi lấy freelance.",
           "en": "That's our envelope. Either you accept, or we'll take a freelancer."
         },
         {
+          cell_id: "1ee94cc2-82bf-41d5-bc8c-300b086f9f78",
           "speaker": "Linh",
           "text": "À cette enveloppe, je ne peux pas délivrer le périmètre demandé. En revanche, je peux vous proposer un périmètre réduit — phase pilote, deux mois — pour valider l'approche avant un investissement complet.",
           "vi": "Ở ngân sách này, tôi không thể giao phạm vi yêu cầu. Ngược lại, tôi có thể đề xuất phạm vi thu hẹp — pha pilot, 2 tháng — để xác thực cách tiếp cận trước đầu tư đầy đủ.",
@@ -7130,6 +7396,7 @@ export const lessons: FrenchLesson[] =           [
       "tip_advice_en": "5-STEP PROCESS facing a hostile interlocutor:\n\n(1) DIAGNOSE THE TYPE — tactical vs personal, intensity, recurrence vs one-off.\n\n(2) KEEP YOUR COMPOSURE — 5-10 second pause before each response, breathe, calm tone.\n\n(3) DO NOT RESPOND ON THE PROPOSED GROUND — refuse emotional escalation, refuse long justification, refuse symmetric counter-attack.\n\n(4) APPLY THE APPROPRIATE RESPONSE LEVEL: ignore-refocus (light), name-reframe (medium), suspend-walk away (strong).\n\n(5) DOCUMENT IN WRITING after the exchange — for traceability, for potential follow-up (HR, mediator, justice).\n\nUSEFUL PHRASES:\n\nTO IGNORE AND REFOCUS (level 1):\n- 'Revenons au point que nous traitions.'\n- 'Je note. Reprenons sur le fond.'\n- 'Sur le périmètre proprement dit…'\n\nTO NAME AND REFRAME (level 2):\n- 'Le ton de cet échange m'amène à m'interroger.'\n- 'Restons sur les faits, pas sur les personnes.'\n- 'Je n'entrerai pas dans la confrontation personnelle.'\n- 'L'agressivité ne change rien à la solidité du dossier — j'évalue les arguments.'\n- 'Avant de poursuivre, je voudrais qu'on convienne d'un cadre de respect mutuel.'\n\nTO SUSPEND (level 3):\n- 'Je propose qu'on suspende vingt minutes.'\n- 'L'échange ne progresse pas dans le climat actuel; reprenons à froid.'\n- 'Je préfère qu'on reporte cette discussion à demain.'\n\nFOR FORMAL WALK AWAY:\n- 'Dans ces conditions, je ne peux pas poursuivre la négociation aujourd'hui.'\n- 'Je vous propose qu'on reprenne par écrit, ou avec un tiers médiateur.'\n- 'Je me retire de cette discussion. Je vous ferai parvenir mes commentaires par mail.'\n\nTO CONFRONT CONDESCENSION:\n- 'Le terme « ma petite » n'est pas approprié dans un échange professionnel.'\n- 'Je vous demande de me parler comme à un interlocuteur professionnel.'\n- 'L'allusion à mon âge / mon sexe / mon origine n'a pas sa place dans cet échange.'\n\nTO DECONSTRUCT MANIPULATION:\n- 'Pourriez-vous me citer le passage exact qui vous fait dire cela ?'\n- 'Si je comprends votre interprétation, vous dites X. Or, le document dit Y.'\n- 'Cette présentation ne correspond pas aux faits tels que je les connais.'\n\nTO COUNTER ARTIFICIAL TIME PRESSURE:\n- 'Pour bien comprendre: que se passe-t-il concrètement si nous ne signons pas ce soir ?'\n- 'Vingt-quatre heures de réflexion ne devraient pas compromettre votre projet.'\n- 'L'urgence dans laquelle vous me mettez m'amène à supposer que votre alternative est plus fragile que vous ne le dites.'\n\nAVOID:\n- Raising your tone in response — guaranteed escalation\n- Lengthy justification of your legitimacy — validates the hostile frame\n- Insulting or threatening — total loss, backfires\n- Slamming the door — loses access to formal recourse\n- Accepting to finish quickly — you pay 2 years later",
       "vocabulary": [
         {
+          cell_id: "cb51a9fe-24af-4c9d-bf71-7ec5fed3559b",
           "word": "un cadre de respect mutuel",
           "en": "a frame of mutual respect",
           "vi": "khung tôn trọng lẫn nhau",
@@ -7138,6 +7405,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ehn KAH-druh duh res-PEH mew-TWEL — the explicit frame requested before continuing a hostile exchange"
         },
         {
+          cell_id: "28a8b996-c0f4-4935-b7da-916f710d2545",
           "word": "une confrontation personnelle",
           "en": "a personal confrontation",
           "vi": "đối đầu cá nhân",
@@ -7146,6 +7414,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ewn kohn-frohn-tah-SYOHN pair-soh-NEL — what to refuse: 'je n'entrerai pas dans la confrontation personnelle'"
         },
         {
+          cell_id: "01a33423-c7d0-47f0-8ed1-fcd59727a00b",
           "word": "se ressaisir",
           "en": "to compose oneself",
           "vi": "tự kiểm soát lại",
@@ -7154,6 +7423,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "suh ruh-seh-ZEER — 's' between vowels = 'z'; reflexive: regain composure during a suspension"
         },
         {
+          cell_id: "8862ef2e-1b82-4f95-865d-2332a4c27ee3",
           "word": "sur des bases assainies",
           "en": "on cleansed bases",
           "vi": "trên cơ sở lành mạnh hóa",
@@ -7162,6 +7432,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "sewr day BAHZ ah-seh-NEE — the formal phrase for resuming after a hostile-tone suspension"
         },
         {
+          cell_id: "b3c0190d-36cd-48db-86e5-3dbd5e63c8ed",
           "word": "l'agressivité verbale",
           "en": "verbal aggressiveness",
           "vi": "tính hung hăng bằng lời",
@@ -7170,6 +7441,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "lah-greh-see-vee-TAY vair-BAHL — naming this is the level-2 reframe move"
         },
         {
+          cell_id: "7059b19f-4176-49da-bacf-4a00c3470337",
           "word": "la condescendance",
           "en": "condescension",
           "vi": "thái độ kẻ cả",
@@ -7178,6 +7450,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "lah kohn-deh-sahn-DAHNS — masked-as-protection contempt; particularly aimed at women and intercultural profiles"
         },
         {
+          cell_id: "17fc080c-2f93-4ca0-9bf0-dd48e959890b",
           "word": "une attaque ad hominem",
           "en": "an ad hominem attack",
           "vi": "tấn công cá nhân",
@@ -7186,6 +7459,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ewn ah-TAK ad oh-mee-NEM — Latin loanword pronounced French-style; the classical fallacy of attacking the person not the argument"
         },
         {
+          cell_id: "dfee20e7-8833-47d1-81c4-94f3bde5bf6b",
           "word": "désamorcer une attaque",
           "en": "to defuse an attack",
           "vi": "vô hiệu hóa một sự tấn công",
@@ -7194,6 +7468,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "day-zah-mor-SAY ewn ah-TAK — the explicit-bomb metaphor for neutralizing hostility without escalating"
         },
         {
+          cell_id: "f12df46f-8cc5-4595-94a5-f93f9d86cdd8",
           "word": "une pression artificielle",
           "en": "artificial pressure",
           "vi": "áp lực giả tạo",
@@ -7202,6 +7477,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ewn preh-SYOHN ar-tee-fee-SYEL — manufactured urgency designed to force capitulation"
         },
         {
+          cell_id: "ea00337a-2a61-48be-8ca1-2b6b5dc3fab7",
           "word": "un tiers médiateur",
           "en": "a third-party mediator",
           "vi": "người trung gian thứ ba",
@@ -7212,24 +7488,28 @@ export const lessons: FrenchLesson[] =           [
       ],
       "dialogue": [
         {
+          cell_id: "596a526e-9e7e-434d-b52e-8315439a5a5b",
           "speaker": "Adversaire",
           "text": "Vous êtes nouveau dans ce métier. Vous ne réalisez pas dans quoi vous vous engagez.",
           "vi": "Bạn mới trong nghề này. Bạn không nhận ra mình đang dấn vào cái gì.",
           "en": "You're new to this profession. You don't realize what you're getting into."
         },
         {
+          cell_id: "c9a5fdbb-46af-47c2-be11-0b658c69401e",
           "speaker": "Linh",
           "text": "Restons sur les faits du dossier, plutôt que sur les jugements de personne. Sur le périmètre, j'avais une question précise…",
           "vi": "Mình ở trên sự kiện của hồ sơ, hơn là phán xét cá nhân. Về phạm vi, tôi có câu hỏi cụ thể…",
           "en": "Let's stay on the facts of the case, rather than on personal judgments. On the scope, I had a precise question…"
         },
         {
+          cell_id: "cd68dc3d-aa06-4f9b-8d1d-ad1e103c37fd",
           "speaker": "Adversaire",
           "text": "Vous voyez bien, vous éludez ma remarque. C'est exactement ce que je dénonce.",
           "vi": "Bạn thấy rõ, bạn lảng tránh nhận xét. Chính là điều tôi tố cáo.",
           "en": "You see — you're dodging my remark. That's exactly what I'm calling out."
         },
         {
+          cell_id: "4f1228f4-e3fa-457c-93b2-33a001437684",
           "speaker": "Linh",
           "text": "Je n'élude rien. Votre remarque sur mon expérience n'est pas un argument du dossier; je lui réponds en revenant au fond. Question précise: pouvez-vous me confirmer la date de livraison ?",
           "vi": "Tôi không lảng tránh. Nhận xét về kinh nghiệm của tôi không phải lập luận của hồ sơ; tôi đáp bằng cách quay về nội dung. Câu hỏi cụ thể: ông có thể xác nhận ngày giao không?",
@@ -7511,6 +7791,7 @@ export const lessons: FrenchLesson[] =           [
       "tip_advice_vi": "CHUẨN BỊ MỞ ĐẦU SOUTENANCE — checklist 7 bước:\n\n(1) ÉCRIRE LES REMERCIEMENTS D'USAGE — 90 giây maximum. Cấu trúc đề xuất: jury → directeur → laboratoire → financeurs (ANR, bourse Eiffel, CIFRE…) → famille (1 câu cuối, ngắn). Đừng dài; người nghe không tới để nghe lời cảm ơn.\n\n(2) PHRASE D'OUVERTURE — chuẩn formule: « Monsieur le Président, Mesdames et Messieurs les membres du jury, [direct address spécifique aux rapporteurs si politesse l'exige]... » Tránh « Bonjour à tous » — quá thân mật.\n\n(3) ÉTABLIR LE PLAN — sau remerciements, một câu rõ: « Mon exposé s'organisera en trois temps: d'abord X, ensuite Y, et enfin Z. » — Jury cần biết bạn đi đâu.\n\n(4) RÉPÉTER LA PROBLÉMATIQUE en deux temps: lần đầu dài ở đầu thèse + lần thứ hai ngắn (1–2 câu) ở cuối exposé. « Je rappelle la question centrale: ... »\n\n(5) GÉRER LE TEMPS — tập với chronomètre. Vượt 5 phút = bị cắt = mất phần trọng yếu. Thiếu 5 phút = jury hoài nghi sự đầy đủ. Đúng giờ là kỹ năng C2 institutionnel.\n\n(6) PRÉPARER UNE PHRASE DE CLÔTURE — không kết thúc bằng « voilà, c'est tout » hay « j'ai fini ». Dùng « Voici les principaux résultats que je soumets à votre appréciation. Je vous remercie pour votre attention et reste à votre disposition pour vos questions. »\n\n(7) CONNAÎTRE SES SOURCES PAR CŒUR — jury sẽ hỏi « Vous citez Bourdieu page 47 — quel ouvrage exactement ? » Không nhớ = chấn động uy tín. Mang một cuốn thèse đã in để tra cứu trong soutenance được phép.\n\nTRÁNH:\n- Đọc slide nguyên xi (jury đã đọc thèse — bạn diễn giải, không tóm tắt).\n- Câu mở đầu là « Je vais vous parler de... » → trẻ con. Dùng « Mon exposé porte sur... »\n- « Nous » modestie ngẫu nhiên (« nous avons trouvé... ») nếu thèse là individual: dùng « j'ai trouvé / j'ai retenu... ».\n- Phong thái xin lỗi: « Je sais que mon travail comporte des limites... » — limites sẽ được jury nhắc; bạn không cần dẫn dắt.\n\n⚠️ Lưu ý: Không phải lời khuyên pháp lý hay nghề nghiệp. Règlement của école doctorale có thể thay đổi format (durée, ordre, mention). Vérifier en amont auprès de votre direction.",
       "vocabulary": [
         {
+          cell_id: "c443da52-b6da-4c1c-be2a-96a0f25fe3aa",
           "word": "une soutenance de thèse",
           "en": "a thesis defense",
           "vi": "buổi bảo vệ luận án",
@@ -7519,6 +7800,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ün soo-tuh-NAHNSS duh TEZ — 'une soutenance de thèse' = a thesis defense"
         },
         {
+          cell_id: "a42ed97e-29d9-4a52-bb47-8a7b67f32b54",
           "word": "le jury de thèse",
           "en": "the thesis jury",
           "vi": "hội đồng bảo vệ",
@@ -7527,6 +7809,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "luh zhu-REE duh TEZ — 'le jury de thèse'; 'j' = 'zh'"
         },
         {
+          cell_id: "58e81c87-6c48-4773-b218-52dbaadadf04",
           "word": "un rapporteur, une rapporteure",
           "en": "external thesis reviewer",
           "vi": "rapporteur — báo cáo viên ngoài",
@@ -7535,6 +7818,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "UN rah-por-TUR / ün rah-por-TUR — m./f. external reviewer; '-eur(e)' rounded"
         },
         {
+          cell_id: "8bd3dafc-f74d-43d1-969b-84bfc81082fb",
           "word": "le directeur de thèse",
           "en": "the thesis director / supervisor",
           "vi": "giáo sư hướng dẫn",
@@ -7543,6 +7827,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "luh dee-rek-TUR duh TEZ — 'le directeur de thèse' = the supervisor"
         },
         {
+          cell_id: "803fab2f-3245-4145-80ca-39ab34398db0",
           "word": "Monsieur le Président du jury",
           "en": "Mr. President of the jury",
           "vi": "Thưa Chủ tịch hội đồng",
@@ -7551,6 +7836,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "muh-SYUH luh pray-zee-DAHN du zhu-REE — full vocative; 'Mr President of the jury'"
         },
         {
+          cell_id: "757de70c-b95e-4f06-a0a5-5c5a253999c0",
           "word": "soutenir une thèse",
           "en": "to defend a thesis",
           "vi": "bảo vệ luận án",
@@ -7559,6 +7845,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "soo-tuh-NEER ün TEZ — 'soutenir une thèse' = to defend a thesis"
         },
         {
+          cell_id: "1bbe501f-9133-42e3-8bb1-1e7c07eb5132",
           "word": "porter sur",
           "en": "to deal with / to be about",
           "vi": "nghiên cứu về / xoay quanh",
@@ -7567,6 +7854,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "por-TAY sur — 'porter sur' = to deal with / be about; final 'r' lightly rolled"
         },
         {
+          cell_id: "bc0a3d35-1aa6-43d2-b898-190351624394",
           "word": "les remerciements d'usage",
           "en": "customary acknowledgments",
           "vi": "lời cảm ơn theo thông lệ",
@@ -7575,6 +7863,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "lay ruh-mehr-syuh-MAHN du-ZAHZH — 'remerciements d'usage' = customary acknowledgments"
         },
         {
+          cell_id: "87b3033a-8296-4c40-a2c3-ab49fe61de09",
           "word": "qu'il me soit permis de",
           "en": "may I be permitted to (formal)",
           "vi": "xin cho phép tôi (subjunctif littéraire)",
@@ -7583,6 +7872,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "keel muh swah pehr-MEE duh — 'qu'il me soit permis de' = may I be permitted to (literary subjunctive)"
         },
         {
+          cell_id: "f04453cd-4f7d-4322-ac67-ca5e97ef901e",
           "word": "voir le jour",
           "en": "to come into being / to be born",
           "vi": "ra đời",
@@ -7593,24 +7883,28 @@ export const lessons: FrenchLesson[] =           [
       ],
       "dialogue": [
         {
+          cell_id: "1b442c1a-0f6e-4f6c-81a2-ceb0e64de4fa",
           "speaker": "Pr. Garnier (Présidente du jury)",
           "text": "Madame Tran, le jury est constitué. Vous avez la parole pour quarante minutes.",
           "en": "Ms. Tran, the jury is constituted. You have the floor for forty minutes.",
           "vi": "Cô Trần, hội đồng đã được thành lập. Cô có quyền phát biểu trong bốn mươi phút."
         },
         {
+          cell_id: "3964b83a-b8b9-44e6-89e4-e35005fefe8d",
           "speaker": "Linh",
           "text": "Je vous remercie, Madame la Présidente. Permettez-moi tout d'abord d'exprimer ma gratitude au jury, et en particulier à Madame Boucher et Monsieur Schmitt, qui ont accepté la charge de rapporteurs.",
           "en": "Thank you, Madame President. Allow me first to express my gratitude to the jury, and in particular to Ms. Boucher and Mr. Schmitt, who accepted the role of rapporteurs.",
           "vi": "Tôi xin cảm ơn quý Chủ tịch. Trước tiên cho phép tôi bày tỏ lòng biết ơn đến hội đồng, và đặc biệt đến Cô Boucher và Thầy Schmitt, đã nhận trách nhiệm rapporteur."
         },
         {
+          cell_id: "0e409cde-58e8-41b9-beed-c523cb84fd6a",
           "speaker": "Pr. Garnier",
           "text": "Je vous prie d'aller à l'essentiel — le temps des questions viendra ensuite, et il sera ample.",
           "en": "I ask you to get to the essentials — the time for questions will come later, and it will be ample.",
           "vi": "Tôi xin cô đi vào trọng tâm — thời gian hỏi đáp sẽ đến sau, và sẽ rất rộng."
         },
         {
+          cell_id: "03301369-b556-4410-ba58-6b5096840c91",
           "speaker": "Linh",
           "text": "Volontiers. Mon exposé s'organisera en trois temps: la genèse de la problématique, la méthodologie retenue, et les principaux résultats que je soumets à votre appréciation.",
           "en": "Gladly. My presentation will be organized in three stages: the genesis of the research question, the chosen methodology, and the main results I submit for your appraisal.",
@@ -7868,6 +8162,7 @@ export const lessons: FrenchLesson[] =           [
       "tip_advice_vi": "PROTOCOLE 7 BƯỚC để réfuter une critique sévère de rapporteur:\n\n(1) NE PAS RÉPONDRE TROP VITE — pause 2 secondes obligatoire. « Permettez-moi un instant pour vous répondre. » Câu này ÉCLAIRCIT cho jury là bạn écoute sérieusement, không défensif.\n\n(2) RECONNAÎTRE LA LÉGITIMITÉ — « Votre objection est légitime sur le principe », « La rigueur de votre lecture m'oblige à préciser ». Đây KHÔNG phải concession — đây là báo hiệu rằng bạn ENTENDU.\n\n(3) DISTINGUER ce với quoi bạn agree và disagree — quan trọng nhất bước. Hiếm khi rapporteur sai HOÀN TOÀN; thường họ sai về một aspect trong khi raison về aspect khác. « Sur le point méthodologique, je vous donne raison. Sur la conclusion qu'on en tire, je conteste. »\n\n(4) FORMULER LA CONTESTATION DIRECTEMENT — không hedge, không bóng gió. « Je conteste l'idée que ... soit ». Subjunctif sau « contester l'idée que », « ne pas partager que », « refuser que » — bắt buộc.\n\n(5) DONNER L'ARGUMENT — un, parfois deux. KHÔNG ba: ba luận điểm = jury mất tập trung. Cấu trúc: « ...pour la raison suivante: [Argument 1]. Et corollairement, [Argument 2 nếu cần]. »\n\n(6) ANTICIPER LA CONTRE-OBJECTION — nếu bạn biết rapporteur sẽ phản bác argument của bạn, đặt câu hỏi đó vào miệng họ trước: « On pourrait à juste titre m'objecter ici que... À cela je répondrais que... » → cho thấy bạn đã nghĩ tới luận điểm cao hơn họ.\n\n(7) ROUVRIR L'ÉCHANGE — kết thúc bằng câu cho thấy bạn không cố « gagner » mà tiếp tục dialoguer. « Je laisse cela à votre appréciation. » / « Je serai bien sûr heureuse d'échanger plus avant si vous le souhaitez. »\n\nTRÁNH:\n- Im lặng vì bối rối → jury nghĩ bạn không có response.\n- Phản công cá nhân (« vous n'avez pas lu attentivement »): même si vrai, INACCEPTABLE.\n- Apologetic excessif (« Vous avez peut-être raison, je n'avais pas pensé à ça... ») trong khi bạn vẫn tin là mình đúng → bị xem là không có conviction.\n- Recourir à l'anglais ou langage non-académique en frustrant.\n\nLUYỆN Ở NHÀ: viết ra 5 critiques mà bạn nghĩ rapporteur có thể đưa ra, và viết phản hồi mỗi cái theo cấu trúc 7 bước. Đọc to. Recorder và nghe lại — bạn sẽ thấy chỗ nào tone xuống thành défensif, chỗ nào sang aggressif. Mục tiêu: « calme, ferme, argumenté » — đó là tonus học thuật Pháp chuẩn.",
       "vocabulary": [
         {
+          cell_id: "7dffa722-f87f-45d1-a234-e03d2374c9cc",
           "word": "porter à faux",
           "en": "to miss the mark / to be off-target",
           "vi": "bắn lệch / không trúng đích",
@@ -7876,6 +8171,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "por-TAY ah FOH — 'porter à faux' = to miss the mark / be off-target"
         },
         {
+          cell_id: "f5bdd5ec-f0e3-4ceb-8af2-a314f2ac9903",
           "word": "sciemment",
           "en": "knowingly / deliberately",
           "vi": "có chủ ý / cố ý",
@@ -7884,6 +8180,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "syah-MAHN — 'sciemment' = knowingly/deliberately; irregular '-emment' → 'ah-mahn'"
         },
         {
+          cell_id: "0ed0f94c-928c-404c-9349-281d2a2999bd",
           "word": "relever d'un cadre",
           "en": "to belong to a framework",
           "vi": "thuộc về một khung",
@@ -7892,6 +8189,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ruh-luh-VAY DUN KAH-druh — 'relever d'un cadre' = to belong to a framework"
         },
         {
+          cell_id: "38c151cf-8e53-4313-9835-247d3265c292",
           "word": "l'épistémologie",
           "en": "epistemology",
           "vi": "tri thức luận",
@@ -7900,6 +8198,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "lay-pees-tay-moh-loh-ZHEE — 'l'épistémologie' = epistemology; 'g' = 'zh'"
         },
         {
+          cell_id: "d5755b5f-dd40-40a1-aa65-2b8e0d9a94dc",
           "word": "avec netteté",
           "en": "with firmness / with clarity",
           "vi": "một cách dứt khoát",
@@ -7908,6 +8207,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ah-vek net-TAY — 'avec netteté' = with firmness/clarity"
         },
         {
+          cell_id: "1162ef77-175e-4515-b6e8-10b6f537e435",
           "word": "sans détour",
           "en": "without circumlocution / directly",
           "vi": "không quanh co",
@@ -7916,6 +8216,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "sahn day-TOOR — 'sans détour' = without circumlocution / directly"
         },
         {
+          cell_id: "cfd981b5-611a-46bf-acfc-77321dbc9826",
           "word": "déplacé(e)",
           "en": "out of place / inappropriate",
           "vi": "không đúng chỗ",
@@ -7924,6 +8225,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "day-plah-SAY — 'déplacé(e)' = out of place / inappropriate; false friend (NOT 'displaced')"
         },
         {
+          cell_id: "c093cb4e-2532-4428-a9af-eecdc387b86e",
           "word": "contester l'idée que (+ subj.)",
           "en": "to contest the idea that",
           "vi": "phản bác ý kiến cho rằng",
@@ -7932,6 +8234,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "kohn-tes-TAY lee-DAY kuh — 'contester l'idée que' (+ subjunctive)"
         },
         {
+          cell_id: "aac801f2-741b-433b-aab6-a445737db687",
           "word": "s'inscrire en faux contre",
           "en": "to firmly disagree with",
           "vi": "phản bác mạnh mẽ",
@@ -7940,6 +8243,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "san-SKREER ahn FOH kohn-truh — 's'inscrire en faux contre' = to firmly disagree with"
         },
         {
+          cell_id: "e145b3b3-d4dd-421b-b8a6-cab72a479cf7",
           "word": "tenir à dire que",
           "en": "to insist on saying that",
           "vi": "muốn nói rõ rằng",
@@ -7950,24 +8254,28 @@ export const lessons: FrenchLesson[] =           [
       ],
       "dialogue": [
         {
+          cell_id: "868f5afd-8c29-4e9b-b2d3-e7b024cc10cb",
           "speaker": "Pr. Boucher (rapporteure)",
           "text": "Madame Tran, vous écartez Foucault sans justification convaincante, ce qui me paraît un point faible majeur de votre architecture théorique.",
           "en": "Ms. Tran, you set Foucault aside without a convincing justification, which seems to me a major weak point of your theoretical architecture.",
           "vi": "Cô Trần, cô gạt Foucault mà không có lý do thuyết phục, điều này theo tôi là một điểm yếu lớn của kiến trúc lý thuyết của cô."
         },
         {
+          cell_id: "351ad79d-6998-411e-956b-05309a03e950",
           "speaker": "Linh",
           "text": "Permettez-moi un instant. Je vous remercie pour la rigueur de cette objection. Je vous répondrai, sans détour, que cet écartement n'est nullement un oubli, mais un choix raisonné.",
           "en": "Allow me a moment. Thank you for the rigor of this objection. I'll answer you, without circumlocution, that this setting-aside is by no means an oversight, but a reasoned choice.",
           "vi": "Cho tôi xin một khoảnh khắc. Tôi cảm ơn về sự chặt chẽ của phản biện này. Tôi xin đáp, không quanh co, rằng việc gạt Foucault không hề là một sự bỏ sót, mà là một lựa chọn có lý."
         },
         {
+          cell_id: "b950b382-5d4e-4474-b24b-df6843f42c76",
           "speaker": "Pr. Boucher",
           "text": "Je vous écoute.",
           "en": "I'm listening.",
           "vi": "Tôi đang nghe."
         },
         {
+          cell_id: "e074cc4f-2861-4a89-ae56-b7b7ead65dab",
           "speaker": "Linh",
           "text": "Foucault travaille dans un cadre archéologique qui présuppose la rupture épistémique entre épistémès. Mon objet — la transmission pédagogique sur quatre décennies — appelle au contraire un cadre processuel: je conteste l'idée que la rupture soit l'outil pertinent ici.",
           "en": "Foucault works within an archaeological frame that presupposes the epistemic rupture between epistemes. My object — pedagogical transmission over four decades — calls instead for a processual frame: I contest the idea that rupture is the relevant tool here.",
@@ -8225,6 +8533,7 @@ export const lessons: FrenchLesson[] =           [
       "tip_advice_vi": "PROTOCOLE 8 BƯỚC để bảo vệ một projet ANR oralement (audition):\n\n(1) STRUCTURE DE L'EXPOSÉ — 15 minutes max:\n- Slide 1: Titre, acronyme, axe, durée, budget.\n- Slide 2-3: Question scientifique, état de l'art, verrou.\n- Slide 4: Hypothèse principale en une phrase.\n- Slide 5-7: Méthodologie + WP.\n- Slide 8: Consortium (qui fait quoi).\n- Slide 9: Calendrier + jalons.\n- Slide 10: Livrables.\n- Slide 11: Budget ventilé.\n- Slide 12: Pourquoi MAINTENANT, pourquoi NOUS.\n\n(2) NHẤN « LE VERROU SCIENTIFIQUE » — comité ANR đánh giá theo critères: scientifique (40%), méthodologique (25%), organisation (20%), impact (15%) — varies. Verrou scientifique = obstacle conceptuel mà projet sẽ phá. Một câu rõ ràng: « Le verrou que nous nous proposons de lever est le suivant: ... »\n\n(3) DÉFENDRE LA COMPOSITION DU CONSORTIUM — comité hỏi « pourquoi ce partenaire ? ». Phải có lý do scientifique (compétence complémentaire), không pas seulement pratique. « Le partenaire 2 apporte la maîtrise des archives vietnamiennes, indispensable au volet historique. »\n\n(4) JUSTIFIER LE BUDGET LIGNE PAR LIGNE — không nói « budget standard ». Mỗi poste: « Quinze mille euros de mission correspondent à six déplacements à Hanoi sur quarante-deux mois, soit deux mille cinq cents euros par mission incluant transport et hébergement. »\n\n(5) ANTICIPER LES OBJECTIONS RÉCURRENTES:\n- « Pourquoi ne pas un projet H2020/Horizon Europe ? » — Phải có réponse: scope national (sources françaises), maturité du consortium, calendrier.\n- « Quel est le risque que vous abandonniez ? » — répondre avec plan B sur les WP.\n- « Y a-t-il déjà un projet équivalent ? » — connaître le paysage français/européen.\n\n(6) PRÉSENTER L'ENVIRONNEMENT SCIENTIFIQUE — école doctorale, laboratoire, infrastructures. ANR finance ≠ équipements lourds; pour ceux-ci, il faut démontrer accès via labo.\n\n(7) ENGAGEMENT INSTITUTIONNEL — confirmer que la direction du laboratoire et l'établissement appuient. Lettre de soutien souvent demandée.\n\n(8) PROTOCOLE EN CAS DE QUESTION DIFFICILE:\n- Reformuler la question pour montrer compréhension.\n- Si on ne sait pas: « C'est une question pertinente. À ce stade, je n'ai pas la réponse complète. Je propose d'y revenir avec mon partenaire X qui maîtrise le point. » → Honnêteté est valorisée.\n- Si question hostile: garder la calme, reformuler en termes scientifiques.\n\nTRÁNH:\n- Slides surchargées (jury lit slide → ne vous écoute pas).\n- Vocabulaire flou: « innovant, prometteur, à la pointe » → vide; nominaliser: « la nouveauté méthodologique réside en X ».\n- Promettre trop de livrables — ANR demande FAISABILITÉ, pas ambition démesurée.\n- Mépriser les commentaires des évaluateurs en cas de rejet — souvent le projet est resoumis avec succès l'année suivante après prise en compte des remarques.\n\n⚠️ Lưu ý: Không phải tư vấn nghề nghiệp. Modalités d'audition ANR thay đổi annuellement; vérifier le règlement de l'année concernée et consulter le service de soutien à la recherche de l'établissement.",
       "vocabulary": [
         {
+          cell_id: "a91e2449-c916-48a8-acf0-0db0de7bf6df",
           "word": "l'ANR (Agence Nationale de la Recherche)",
           "en": "the French National Research Agency",
           "vi": "Cơ quan Quốc gia Pháp về Nghiên cứu",
@@ -8233,6 +8542,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "lah-EN-AIR — 'l'ANR'; letters spelled (A-N-R) = 'ah-en-air'"
         },
         {
+          cell_id: "83c5a571-a660-41e0-b67d-9a861f665426",
           "word": "un appel à projets (AAP)",
           "en": "a call for proposals",
           "vi": "lời gọi đệ trình dự án",
@@ -8241,6 +8551,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "UN ah-PEL ah pro-ZHEH — 'un appel à projets (AAP)' = a call for proposals"
         },
         {
+          cell_id: "3dfc4fc3-164d-44a6-a6b9-d1715408834d",
           "word": "le coordinateur, la coordinatrice",
           "en": "the project coordinator (lead PI)",
           "vi": "điều phối viên dự án",
@@ -8249,6 +8560,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "luh kor-dee-nah-TUR / lah kor-dee-nah-TREESS — m./f. project coordinator (lead PI)"
         },
         {
+          cell_id: "39d4e317-3ec9-4870-a727-713b7fafa24b",
           "word": "le verrou scientifique",
           "en": "the scientific bottleneck",
           "vi": "nút thắt khoa học",
@@ -8257,6 +8569,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "luh veh-ROO syahn-tee-FEEK — 'le verrou scientifique' = the scientific bottleneck"
         },
         {
+          cell_id: "11cf5a7b-c716-49b6-ab40-23e1b569db5c",
           "word": "un livrable",
           "en": "a deliverable",
           "vi": "sản phẩm phải nộp",
@@ -8265,6 +8578,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "UN lee-VRAH-bluh — 'un livrable' = a deliverable; final '-le' barely voiced"
         },
         {
+          cell_id: "e30afecf-7638-473e-9712-6bf118c283bc",
           "word": "un jalon",
           "en": "a milestone",
           "vi": "mốc dự án",
@@ -8273,6 +8587,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "UN zhah-LON — 'un jalon' = a milestone; 'j' = 'zh'; nasal '-on'"
         },
         {
+          cell_id: "d99782cf-a162-4521-91c6-47b693189f39",
           "word": "un work package (WP)",
           "en": "a work package",
           "vi": "gói công việc",
@@ -8281,6 +8596,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "UN wurk-PAH-kedzh — 'un work package (WP)'; established English term, kept"
         },
         {
+          cell_id: "81d690e7-6e5e-4bb3-a31f-d792999a4a06",
           "word": "une unité de recherche (UMR, EA)",
           "en": "a research unit",
           "vi": "đơn vị nghiên cứu",
@@ -8289,6 +8605,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ün u-nee-TAY duh ruh-SHEHRSH — 'une unité de recherche (UMR, EA)'"
         },
         {
+          cell_id: "39cd0954-c8cb-47cf-b57d-0997a3a787c9",
           "word": "ventiler un budget",
           "en": "to break down a budget",
           "vi": "phân bổ kinh phí",
@@ -8297,6 +8614,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "vahn-tee-LAY UN bu-ZHEH — 'ventiler un budget' = to break down a budget"
         },
         {
+          cell_id: "3ab1485b-f03d-4d5a-a97f-89ffa60d23b7",
           "word": "le frais d'environnement (FE)",
           "en": "indirect overhead costs",
           "vi": "chi phí gián tiếp",
@@ -8307,24 +8625,28 @@ export const lessons: FrenchLesson[] =           [
       ],
       "dialogue": [
         {
+          cell_id: "f011b4b1-67da-4dd7-835d-d7cb7711ffa9",
           "speaker": "Pr. Dubois (président du comité d'évaluation)",
           "text": "Madame Tran, vous coordonnez ce projet. En une phrase: quel est le verrou scientifique que vous prétendez lever ?",
           "en": "Ms. Tran, you coordinate this project. In one sentence: what is the scientific bottleneck you claim to break?",
           "vi": "Cô Trần, cô điều phối dự án này. Trong một câu: nút thắt khoa học cô tuyên bố sẽ phá là gì?"
         },
         {
+          cell_id: "9f82be4f-cdee-49ea-be73-9702578acc28",
           "speaker": "Linh",
           "text": "Le verrou est le suivant: les modèles existants traitent la circulation pédagogique comme une diffusion top-down depuis la France ; aucun ne rend compte des médiateurs humains qui transforment, en pratique, ces modèles. Notre projet construit un cadre processuel pour modéliser cette transformation.",
           "en": "The bottleneck is this: existing models treat pedagogical circulation as a top-down diffusion from France; none accounts for the human mediators who transform these models in practice. Our project builds a processual framework to model that transformation.",
           "vi": "Nút thắt là: các mô hình hiện có xem sự lưu chuyển sư phạm như một sự lan tỏa top-down từ Pháp; chưa mô hình nào tính tới các trung gian con người trên thực tế đã biến đổi các mô hình ấy. Dự án xây một khung quá trình để mô hình hóa sự biến đổi đó."
         },
         {
+          cell_id: "d6f913e9-62ed-452a-bfb8-d40344f2b0fe",
           "speaker": "Pr. Dubois",
           "text": "Pourquoi un consortium tripartite — Paris, Hanoi, EFEO — plutôt qu'un projet purement français ?",
           "en": "Why a tripartite consortium — Paris, Hanoi, EFEO — rather than a purely French project?",
           "vi": "Vì sao một consortium ba bên — Paris, Hà Nội, EFEO — chứ không phải một dự án thuần Pháp?"
         },
         {
+          cell_id: "17091d69-6eae-4bf8-bd8b-cfc4211ecfa0",
           "speaker": "Linh",
           "text": "Pour une raison méthodologique précise: la circulation suppose un terrain symétrique. Étudier sa moitié française sans accès direct aux archives vietnamiennes produirait un biais structurel. Le partenaire de Hanoi n'est pas optionnel: il est constitutif de l'objet.",
           "en": "For a precise methodological reason: circulation presupposes a symmetric field. Studying its French half without direct access to Vietnamese archives would produce a structural bias. The Hanoi partner is not optional: it is constitutive of the object.",
@@ -8588,6 +8910,7 @@ export const lessons: FrenchLesson[] =           [
       "tip_advice_vi": "PROTOCOLE 8 BƯỚC pour le directeur d'unité face au comité HCERES:\n\n(1) PRÉPARER UNE PRÉSENTATION DE 30 MIN — pas plus. Le comité a déjà lu le rapport ; vous donnez le souffle, pas le détail. Structure standard:\n- 5 min: contexte de l'unité (effectifs, tutelles, gouvernance)\n- 8 min: bilan des axes scientifiques (PRIORISER 2-3 réussites majeures, ne pas tout couvrir)\n- 5 min: bilan financier et ressources humaines\n- 5 min: forces et FAIBLESSES (un nombre équivalent — la lucidité est valorisée)\n- 7 min: projet pour le contrat suivant — articulation avec le bilan\n\n(2) DÉSIGNER QUI PARLE EN ENTRETIENS:\n- Direction (vous + adjoints): parler du collectif, jamais nominalement d'un chercheur sauf accord préalable.\n- Chercheurs: parler en leur nom propre, pas pour l'unité.\n- Doctorants: invités à parler franchement de l'encadrement; insister auprès d'eux qu'ils peuvent dire ce qu'ils pensent (c'est protégé).\n- Personnels d'appui: souvent traités en moins; les briefer comme tout le monde.\n\n(3) ANTICIPER LES QUESTIONS RÉCURRENTES:\n- « Quel est, selon vous, le point d'identité scientifique fort de l'unité ? » — préparer une phrase.\n- « Quelle est votre stratégie de signature ? » — règles de signature des publications.\n- « Comment intégrez-vous les jeunes chercheurs ? » — politique d'accueil.\n- « Politique science ouverte ? » — depuis 2020 obligatoire.\n- « Parité dans l'encadrement doctoral ? » — chiffres précis demandés.\n- « Plan en cas de départ massif à la retraite ? » — pyramide des âges.\n\n(4) ASSUMER LES FAIBLESSES — règle d'or:\n- Annoncer 2-3 faiblesses RÉELLES dans la présentation.\n- Pour chacune: cause + plan d'action dans le projet suivant.\n- Faiblesses possibles: déséquilibre disciplinaire, retard science ouverte, taille critique d'un axe, tension RH, dépendance à un chercheur partant…\n\n(5) NE JAMAIS DIRE « TOUT VA BIEN »:\n- Trahit autoévaluation superficielle.\n- Préférer: « Le bilan est globalement positif, mais nous identifions trois zones d'amélioration que voici. »\n\n(6) PROTOCOLE EN CAS DE CRITIQUE PENDANT VISITE:\n- Reconnaître la légitimité de la remarque.\n- Apporter UN élément factuel complémentaire que le comité n'a pas vu.\n- Ne PAS contester en bloc: le comité a passé des semaines sur le dossier.\n\n(7) SIGNALER LES CONFLITS INTERNES — avec doigté:\n- Si l'unité traverse une crise (départ d'un axe, conflit interne), MIEUX VAUT le dire que le cacher.\n- Formule: « L'unité a connu en 2022 une période de tension autour de l'axe X qui s'est résolue par Y. »\n\n(8) APRÈS LA VISITE:\n- Phase contradictoire: lire le rapport préliminaire avec attention; signaler les ERREURS FACTUELLES (pas les désaccords d'appréciation).\n- Préparer la suite avec les tutelles indépendamment du rapport.\n\nTRÁNH:\n- Présenter l'unité comme une somme d'individus brillants (le comité évalue le COLLECTIF).\n- Nommément critiquer un chercheur de l'unité (faute managériale grave).\n- Comparer publiquement avec une unité concurrente (le comité décide la comparaison).\n- Promettre des choses non-tenables dans le projet (le comité saura).\n\n⚠️ Lưu ý: KHÔNG phải tư vấn pháp lý hay nghề nghiệp. Référentiels HCERES thay đổi qua từng vague; toujours s'appuyer sur le référentiel officiel de la vague concernée et consulter la direction de votre unité avant tout préparatif.",
       "vocabulary": [
         {
+          cell_id: "c6dd5e1e-490b-402e-92fd-e72a7882ab04",
           "word": "l'HCERES",
           "en": "the French research and higher education evaluation authority",
           "vi": "Hội đồng cao cấp đánh giá nghiên cứu và đại học",
@@ -8596,6 +8919,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "lash-say-RESS — 'l'HCERES'; 'H' silent, read as one word 'asseres'"
         },
         {
+          cell_id: "8f3f6856-6bba-41bc-83eb-5eabd08f3f5c",
           "word": "une unité de recherche",
           "en": "a research unit",
           "vi": "đơn vị nghiên cứu",
@@ -8604,6 +8928,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ün u-nee-TAY duh ruh-SHEHRSH — 'une unité de recherche' = a research unit"
         },
         {
+          cell_id: "22ed1c28-9085-454a-b82c-4ec5217eca0e",
           "word": "l'autoévaluation",
           "en": "self-assessment",
           "vi": "tự đánh giá",
@@ -8612,6 +8937,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "loh-toh-ay-vah-lu-ah-SYON — 'l'autoévaluation' = self-assessment"
         },
         {
+          cell_id: "56ac5174-d674-49b8-94e7-98f1e3da3c44",
           "word": "le bilan quinquennal",
           "en": "the five-year assessment",
           "vi": "tổng kết năm năm",
@@ -8620,6 +8946,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "luh bee-LAHN kan-keh-NAL — 'le bilan quinquennal' = the five-year assessment"
         },
         {
+          cell_id: "ace44e2e-ba68-43c1-b4b2-a17d3df30619",
           "word": "le contrat venant à échéance",
           "en": "the contract reaching its end",
           "vi": "hợp đồng đến hạn",
@@ -8628,6 +8955,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "luh kohn-TRAH vuh-NAHN ah ay-shay-AHNSS — 'the contract reaching its end'"
         },
         {
+          cell_id: "4c7bd336-7d0d-4f7e-bb8c-de66ac6d6960",
           "word": "un axe scientifique",
           "en": "a scientific axis / theme",
           "vi": "trục khoa học",
@@ -8636,6 +8964,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "UN AKS syahn-tee-FEEK — 'un axe scientifique' = a scientific axis/theme"
         },
         {
+          cell_id: "77b5ed69-7606-4e08-8eaf-429cbd71db1a",
           "word": "les indicateurs bibliométriques",
           "en": "bibliometric indicators",
           "vi": "chỉ báo bibliométrique",
@@ -8644,6 +8973,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "lay zan-dee-kah-TUR bee-blee-oh-may-TREEK — 'bibliometric indicators'"
         },
         {
+          cell_id: "0f2e1c72-cbd4-4e14-b465-5f8a65e8c1e6",
           "word": "la science ouverte",
           "en": "open science",
           "vi": "khoa học mở",
@@ -8652,6 +8982,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "lah SYAHNSS oo-VEHRT — 'la science ouverte' = open science"
         },
         {
+          cell_id: "f75f4898-e05a-4ebf-a288-9ab44a3febc5",
           "word": "les tutelles",
           "en": "the supervising authorities (CNRS, university…)",
           "vi": "cơ quan giám hộ (CNRS, đại học…)",
@@ -8660,6 +8991,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "lay tu-TEL — 'les tutelles' = the supervising authorities (CNRS, university)"
         },
         {
+          cell_id: "67760e71-e85d-45f1-a86f-39c531cbbe1b",
           "word": "la phase contradictoire",
           "en": "the right-of-reply phase",
           "vi": "giai đoạn phản biện chính thức",
@@ -8670,24 +9002,28 @@ export const lessons: FrenchLesson[] =           [
       ],
       "dialogue": [
         {
+          cell_id: "762fb0b4-5392-4495-aaf9-4e6228d6e632",
           "speaker": "Pr. Müller (présidente du comité HCERES)",
           "text": "Madame Tran, vous dirigez l'unité depuis quatre ans. Quel est, à vos yeux, son point d'identité scientifique fort, et quelle est sa principale faiblesse ?",
           "en": "Ms. Tran, you've directed the unit for four years. In your eyes, what is its strong scientific identity point, and what is its main weakness?",
           "vi": "Cô Trần, cô chỉ đạo đơn vị bốn năm rồi. Trong mắt cô, điểm nhận diện khoa học mạnh là gì, và điểm yếu chính là gì?"
         },
         {
+          cell_id: "a6d2a025-20a6-4358-a1f2-7d699298a7bc",
           "speaker": "Linh (directrice d'unité)",
           "text": "Le point fort, je le formule ainsi: une expertise singulière sur la circulation des savoirs entre l'Asie et l'Europe, articulée par cinq chercheurs cœur autour d'un terrain commun. Ce n'est pas l'addition d'individus brillants — c'est un objet partagé.",
           "en": "The strong point, I'd put it this way: a singular expertise on the circulation of knowledge between Asia and Europe, articulated by five core researchers around a common field. It is not the sum of brilliant individuals — it is a shared object.",
           "vi": "Điểm mạnh, tôi diễn đạt thế này: một chuyên môn riêng biệt về sự lưu chuyển tri thức giữa châu Á và châu Âu, được khớp nối bởi năm nghiên cứu viên cốt lõi quanh một terrain chung. Đây không phải phép cộng các cá nhân xuất sắc — đó là một đối tượng chia sẻ."
         },
         {
+          cell_id: "df5a97f5-98ed-4862-bdae-73364cd95164",
           "speaker": "Pr. Müller",
           "text": "Et la principale faiblesse ?",
           "en": "And the main weakness?",
           "vi": "Còn điểm yếu chính?"
         },
         {
+          cell_id: "08394f4b-e231-4701-9fef-cf29a15acc0d",
           "speaker": "Linh",
           "text": "Bien que le bilan global soit positif, je tiens à le signaler franchement: notre politique de science ouverte accuse un retard de deux à trois ans par rapport aux unités comparables. Le projet pour le contrat suivant prévoit un poste d'IGR data steward et un protocole de dépôt en HAL d'ici à dix-huit mois.",
           "en": "Although the overall assessment is positive, I want to flag it frankly: our open-science policy lags two to three years behind comparable units. The next contract's project includes an IGR data-steward post and a HAL-deposit protocol within eighteen months.",
@@ -8951,6 +9287,7 @@ export const lessons: FrenchLesson[] =           [
       "tip_advice_vi": "PROTOCOLE 8 BƯỚC pour rédiger un rapport sur les travaux qui passe la qualification:\n\n(1) IDENTIFIER LE FIL CONDUCTEUR — première phrase du rapport. PAS « j'ai travaillé sur X puis sur Y », MAIS « mon parcours s'organise autour d'une question unique: ... ». Le fil doit relier thèse + post-thèse + projet futur. Si pas de fil clair, en construire un — c'est l'exercice du rapport.\n\n(2) STRUCTURE EN TROIS TEMPS:\n- Temps 1: la thèse — méthodologie + résultats principaux + réception (cite réception positive ET critique en gardant équilibre).\n- Temps 2: l'après-thèse — comment vos publications POURSUIVENT et NUANCENT le travail de thèse (jamais « répétition »).\n- Temps 3: le projet — comment l'avenir s'inscrit dans le fil + en marque l'évolution.\n\n(3) MENTIONNER LES RAPPORTEURS DE THÈSE et leur réception — surtout s'ils sont reconnus dans la section. KHÔNG par flatterie, mais parce que leur jugement est lisible par les rapporteurs CNU.\n\n(4) ASSUMER LES MOBILITÉS — pour le candidat international (Vietnamiens souvent dans ce cas):\n- Présenter les mobilités comme contribution scientifique, pas comme parcours chaotique.\n- « Cette mobilité Hanoi-Paris-Aix m'a permis d'accéder à des terrains complémentaires. »\n- KHÔNG « j'ai dû déménager pour des raisons personnelles ».\n\n(5) DONNER LES NUMÉROS:\n- N publications, dont X dans revues classées.\n- N communications, dont X invitées.\n- N HEQ TD enseignées, dans X universités.\n- N étudiants encadrés (mémoires de master, co-encadrement de thèse).\n- N participations à jury de thèse en qualité d'examinateur.\n\n(6) RECONNAÎTRE LES LIMITES:\n- « Mon corpus de publications est encore limité en revues anglophones » — si vrai, le dire et expliquer le projet de redressement.\n- « Mon expérience d'enseignement reste à diversifier » — si vrai, plan d'action.\n→ Lucidité = signe de maturité.\n\n(7) PROJET DE RECHERCHE — DOIT être réaliste. Pas un programme pour 20 ans. Trois axes, calendrier sur 4 ans, articulation avec un laboratoire identifié (vérifier accord informel avant dépôt).\n\n(8) FORME — règles à suivre:\n- 15-25 pages (varies; ne pas dépasser format demandé par section).\n- Police standard (Times 11 ou équivalent).\n- Pagination, table des matières.\n- Bibliographie complète à la fin OU intégrée selon section.\n\nTRÁNH:\n- Ton hagiographique sur soi-même.\n- Liste de publications sans interprétation.\n- Critique de collègues ou de courants concurrents.\n- Promesses irréalistes pour le projet.\n- Confusion HDR vs qualification (HDR vient APRÈS).\n- Photo (interdit — anonymisation discriminations).\n\n⚠️ Lưu ý: Không phải tư vấn pháp lý hay nghề nghiệp. Le format et les exigences précises VARIENT par section CNU. Toujours consulter le « rapport CNU » de votre section pour la campagne de l'année concernée + l'avis informel d'au moins deux collègues récemment qualifiés.",
       "vocabulary": [
         {
+          cell_id: "79081b31-ccd4-4bb5-b967-86f6f845b2f3",
           "word": "le CNU (Conseil National des Universités)",
           "en": "the National Council of Universities",
           "vi": "Hội đồng Quốc gia các Đại học",
@@ -8959,6 +9296,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "luh say-en-U — 'le CNU'; letters spelled (C-N-U) = 'say-en-u'"
         },
         {
+          cell_id: "06ba360e-6ff1-45fb-b91c-26373f3def46",
           "word": "la qualification",
           "en": "the qualification (CNU)",
           "vi": "qualification — chứng nhận điều kiện",
@@ -8967,6 +9305,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "lah kah-lee-fee-kah-SYON — 'la qualification' (CNU); '-tion' = 'syon'"
         },
         {
+          cell_id: "5e0a78ce-538d-4182-a512-8743d98056b1",
           "word": "une section disciplinaire",
           "en": "a disciplinary section",
           "vi": "section chuyên ngành",
@@ -8975,6 +9314,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ün sek-SYON dee-see-plee-NEHR — 'une section disciplinaire'"
         },
         {
+          cell_id: "02e3df60-39a5-472c-be2f-d4915fd97138",
           "word": "le rapport sur les travaux",
           "en": "the report on works (qualification dossier)",
           "vi": "báo cáo về các công trình",
@@ -8983,6 +9323,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "luh rah-POR sur lay trah-VOH — 'le rapport sur les travaux' = the report on works"
         },
         {
+          cell_id: "a3e1f5be-4a66-492b-a221-c1b569c6c98d",
           "word": "Maître de Conférences (MCF)",
           "en": "Associate Professor (French rank)",
           "vi": "Maître de Conférences — phó giáo sư",
@@ -8991,6 +9332,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "MEH-truh duh kohn-fay-RAHNSS — 'Maître de Conférences (MCF)' = Associate Professor"
         },
         {
+          cell_id: "4b51cff2-72df-4db2-81de-b76d6b2ec82a",
           "word": "Professeur des Universités (PR)",
           "en": "Full Professor (French rank)",
           "vi": "Professeur des Universités — giáo sư",
@@ -8999,6 +9341,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "pro-feh-SUR day zu-nee-vehr-see-TAY — 'Professeur des Universités (PR)' = Full Professor"
         },
         {
+          cell_id: "b474b6c8-a2f6-45ab-9a0e-7f804d9f0503",
           "word": "ATER (Attaché Temporaire d'Enseignement et de Recherche)",
           "en": "Temporary Teaching and Research Attaché",
           "vi": "ATER — vị trí giảng dạy và nghiên cứu tạm thời",
@@ -9007,6 +9350,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ah-TEHR — 'ATER'; read as one word; Temporary Teaching & Research Attaché"
         },
         {
+          cell_id: "a143d04c-99cb-4b4a-9db2-d8fd5e1394bc",
           "word": "HEQ TD (heure équivalent travaux dirigés)",
           "en": "tutorial-equivalent hour",
           "vi": "giờ tương đương TD",
@@ -9015,6 +9359,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ash-uh-ku tay-DAY — 'HEQ TD'; letters/abbrev; tutorial-equivalent hour"
         },
         {
+          cell_id: "cfabce30-a573-4795-bcaf-b3f1851c5672",
           "word": "le fil conducteur",
           "en": "the unifying thread",
           "vi": "sợi chỉ đỏ",
@@ -9023,6 +9368,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "luh FEEL kohn-duk-TUR — 'le fil conducteur' = the unifying thread"
         },
         {
+          cell_id: "066ff572-5aab-4f07-b19d-ac19fb8d1dae",
           "word": "se démarquer de",
           "en": "to distinguish oneself from",
           "vi": "tách khỏi / khác biệt với",
@@ -9033,24 +9379,28 @@ export const lessons: FrenchLesson[] =           [
       ],
       "dialogue": [
         {
+          cell_id: "fc5fd686-1e86-4703-8452-84ff3ab38b99",
           "speaker": "Pr. Lambert (rapporteur CNU section 14)",
           "text": "Madame Tran, votre rapport mentionne sept articles. Combien dans des revues classées par la section quatorze ?",
           "en": "Ms. Tran, your report mentions seven articles. How many in journals ranked by section fourteen?",
           "vi": "Cô Trần, báo cáo có nhắc bảy bài báo. Trong đó bao nhiêu thuộc tạp chí xếp hạng bởi section 14?"
         },
         {
+          cell_id: "df1e084e-1f31-4042-aa79-db8fb4f710d6",
           "speaker": "Linh",
           "text": "Quatre, dont deux dans la liste A. Les trois autres relèvent de revues à comité de lecture non classées par la section, mais dont la légitimité disciplinaire est attestée — je pense notamment à la Revue française de pédagogie.",
           "en": "Four, of which two on list A. The other three are in peer-reviewed journals not ranked by the section, but whose disciplinary legitimacy is attested — I'm thinking notably of the Revue française de pédagogie.",
           "vi": "Bốn, trong đó hai thuộc danh sách A. Ba bài còn lại thuộc tạp chí có comité de lecture không xếp hạng bởi section, nhưng tính hợp pháp ngành đã được khẳng định — tôi nghĩ tới Revue française de pédagogie."
         },
         {
+          cell_id: "f9a7d179-f046-49f5-a203-9a5d66b821cb",
           "speaker": "Pr. Lambert",
           "text": "Et votre projet de recherche prévoit-il une internationalisation des supports de publication ?",
           "en": "And does your research project plan an internationalization of the publication outlets?",
           "vi": "Còn dự án nghiên cứu có dự định quốc tế hóa kênh xuất bản?"
         },
         {
+          cell_id: "44f64774-2ed3-418b-958b-135da08bf5c4",
           "speaker": "Linh",
           "text": "Oui, explicitement. Le projet prévoit deux articles en anglais sur quatre ans, dans Comparative Education et International Review of Education. Je reconnais que mon corpus actuel est encore majoritairement francophone — c'est une faiblesse identifiée à laquelle le projet répond.",
           "en": "Yes, explicitly. The project plans two English-language articles over four years, in Comparative Education and International Review of Education. I acknowledge that my current corpus is still predominantly French-language — it's an identified weakness the project addresses.",
@@ -9314,6 +9664,7 @@ export const lessons: FrenchLesson[] =           [
       "tip_advice_vi": "PROTOCOLE 9 BƯỚC pour réussir une audition MCF:\n\n(1) ANALYSER LA FICHE DE POSTE LIGNE PAR LIGNE — avant tout. Identifier:\n- La section CNU principale + secondaire.\n- Le profil recherche: axes, laboratoire d'accueil, mots-clés.\n- Le profil enseignement: UE listées, niveau (L/M), volumes éventuels.\n- Les contraintes spécifiques.\n→ Votre exposé doit ANSWER POINT-PAR-POINT à la fiche.\n\n(2) PRÉPARER UN EXPOSÉ DE 18 MIN (avec marge pour 20):\n- 2 min: parcours en une phrase + fil conducteur.\n- 5 min: programme de recherche — ARTICULÉ AU LABO D'ACCUEIL.\n- 6 min: programme d'enseignement — UE listées dans fiche, plus 1-2 ajouts.\n- 3 min: insertion dans le collectif (collaborations, axes communs).\n- 2 min: conclusion synthétique.\n\n(3) NE PAS RACONTER VOTRE THÈSE — le COS l'a lue. Synthèse en deux phrases. Le temps doit aller au PROJET.\n\n(4) CONNAÎTRE LE LABO ET SES MEMBRES — y compris les NOMS:\n- Lire 3-4 publications récentes des membres clés.\n- Repérer 2 axes où vous pouvez collaborer.\n- Le COS vous demandera: « avec qui dans le labo collaboreriez-vous? » Réponse PRÉCISE attendue.\n\n(5) PROJET D'ENSEIGNEMENT — détaillé, pas générique:\n- UE listées: prendre en charge avec PROGRAMMES PROPOSÉS (titre des séances, méthodes, évaluations).\n- 1-2 UE NOUVELLES proposées en lien avec votre recherche.\n- Mention de niveau L et M équilibrée.\n- Encadrement de mémoires: thématiques que vous pouvez encadrer.\n\n(6) ANTICIPER LES QUESTIONS RÉCURRENTES:\n- « Pourquoi notre établissement / notre poste précisément ? » — Préparer une réponse FACTUELLE (collaboration possible avec X, accès à archives Y, complémentarité avec axe Z).\n- « Avec qui dans le labo collaboreriez-vous ? »\n- « Quelles UE prendrez-vous dès septembre ? »\n- « Quels articles publierez-vous dans les deux ans ? »\n- « Si vous ne réussissez pas ce concours, que ferez-vous ? » — réponse: « je continuerai à candidater l'année suivante avec un dossier renforcé ; entretemps, je poursuivrai mes activités en X. » (jamais « je quitterai la recherche »).\n- Question sur la mobilité (étrangère pour candidats étrangers): cf. lesson cnu_qualification, cấu trúc 7 bước.\n\n(7) CODE VESTIMENTAIRE ET FORMAT — codes implicites:\n- Tenue formelle (costume / tailleur classique, pas obligatoirement strict mais propre, sobre).\n- Arriver 30 min avant.\n- Apporter copies du CV + projet pour chaque membre du COS (8-12 copies).\n- Slides: numérotées, lisibles, pas surchargées.\n\n(8) COMPORTEMENT EN AUDITION:\n- Vouvoiement à TOUS les membres, même si vous en connaissez certains.\n- Saluer chaque membre en entrant, en commençant par la Présidente.\n- Ne pas regarder uniquement la Présidente — balayer le COS du regard.\n- Pour question hostile: rester calme, reformuler, répondre en cédant un terrain factuel + tenir le terrain principal.\n\n(9) APRÈS L'AUDITION:\n- Envoyer un email de remerciement à la Présidente du COS le soir même (sobre, court).\n- Préparer le suivi: si classé, étapes administratives; si non classé, demander un retour informel auprès d'un membre, et capitaliser pour la campagne suivante.\n\nTRÁNH:\n- Mémoriser un texte appris par cœur (paraît mécanique).\n- Comparer ostensiblement avec un autre candidat.\n- Critiquer une institution ou un collègue.\n- Promettre des choses non tenables (« je publierai cinq articles par an »).\n- Confondre audition de recrutement et soutenance de thèse (registres différents).\n\n⚠️ Lưu ý: Không phải tư vấn pháp lý hay nghề nghiệp. Modalités d'audition varient selon établissements et selon réformes. Toujours s'appuyer sur la procédure officielle de l'établissement concerné et solliciter le retour de mentors récemment recrutés.",
       "vocabulary": [
         {
+          cell_id: "662ea26d-76e6-41b2-91bd-738ed6128d4b",
           "word": "une audition de recrutement",
           "en": "a recruitment audition",
           "vi": "phiên audition tuyển dụng",
@@ -9322,6 +9673,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ün oh-dee-SYON duh ruh-kru-tuh-MAHN — 'une audition de recrutement'"
         },
         {
+          cell_id: "ccaac9a9-b2a1-4dcf-80f9-9ccd583da14f",
           "word": "le comité de sélection (COS)",
           "en": "the selection committee",
           "vi": "comité tuyển chọn",
@@ -9330,6 +9682,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "luh koh-mee-TAY duh say-lek-SYON — 'le comité de sélection (COS)'"
         },
         {
+          cell_id: "5ca254e3-42b8-46a1-b70f-6d747eaa79e3",
           "word": "la fiche de poste",
           "en": "the position description",
           "vi": "mô tả vị trí",
@@ -9338,6 +9691,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "lah FEESH duh POHST — 'la fiche de poste' = the position description"
         },
         {
+          cell_id: "5854536d-781d-4307-adbd-e8a9f404b636",
           "word": "fléché en (un domaine)",
           "en": "earmarked for (a domain)",
           "vi": "fléché về (một lĩnh vực)",
@@ -9346,6 +9700,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "flay-SHAY ahn — 'fléché en (un domaine)' = earmarked for (a domain)"
         },
         {
+          cell_id: "2246d450-8cdf-457f-8b67-cd563f032d91",
           "word": "le profil du poste",
           "en": "the profile of the position",
           "vi": "profil vị trí",
@@ -9354,6 +9709,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "luh pro-FEEL du POHST — 'le profil du poste' = the profile of the position"
         },
         {
+          cell_id: "03c6e66c-ac36-461a-aeb4-1477264b52dc",
           "word": "le laboratoire d'accueil",
           "en": "the host laboratory",
           "vi": "laboratoire d'accueil",
@@ -9362,6 +9718,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "luh lah-boh-rah-TWAR dah-KUH-yuh — 'le laboratoire d'accueil' = the host lab"
         },
         {
+          cell_id: "00f03402-1e91-421a-a7dd-898596a67e21",
           "word": "l'insertion dans un collectif",
           "en": "insertion into a collective",
           "vi": "hội nhập vào tập thể",
@@ -9370,6 +9727,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "lan-sehr-SYON dahn ZUN koh-lek-TEEF — 'l'insertion dans un collectif'"
         },
         {
+          cell_id: "1150aa7d-bf0e-447b-8253-439a3182be00",
           "word": "un parachutage",
           "en": "a parachute drop (forced insertion)",
           "vi": "parachutage — ngã từ trên xuống",
@@ -9378,6 +9736,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "UN pah-rah-shu-TAHZH — 'un parachutage' = a forced/external insertion"
         },
         {
+          cell_id: "5feb7b99-c943-456f-9d23-3e6164765e02",
           "word": "le service annuel d'enseignement",
           "en": "the annual teaching service",
           "vi": "service năm về giảng dạy",
@@ -9386,6 +9745,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "luh sehr-VEESS ah-nu-EL dahn-sen-yuh-MAHN — 'le service annuel d'enseignement'"
         },
         {
+          cell_id: "87fc709c-ea85-4a3a-865b-77b31784ebf9",
           "word": "un classement",
           "en": "a ranking",
           "vi": "xếp hạng",
@@ -9396,24 +9756,28 @@ export const lessons: FrenchLesson[] =           [
       ],
       "dialogue": [
         {
+          cell_id: "22b3c981-298a-4aaf-89ed-82048434325e",
           "speaker": "Pr. Garcia (Présidente du COS)",
           "text": "Madame Tran, vous disposez de vingt minutes. À vous.",
           "en": "Ms. Tran, you have twenty minutes. Go ahead.",
           "vi": "Cô Trần, cô có hai mươi phút. Mời cô."
         },
         {
+          cell_id: "2387d995-6952-4b86-b3eb-7e49c94978f8",
           "speaker": "Linh",
           "text": "Madame la Présidente, Mesdames et Messieurs les membres du comité, je vous remercie d'avoir retenu mon dossier. Mon exposé s'articulera en trois temps: la cohérence de mon parcours au regard du profil du poste, mon projet d'enseignement pour les UE listées, et mon insertion projetée dans le laboratoire LSO.",
           "en": "Madame President, ladies and gentlemen of the committee, thank you for having retained my dossier. My presentation will be structured in three stages: the coherence of my path with regard to the post profile, my teaching project for the listed courses, and my projected insertion into the LSO laboratory.",
           "vi": "Thưa Chủ tịch, thưa quý Cô quý Thầy, tôi cảm ơn đã chọn hồ sơ. Bài trình bày gồm ba phần: nhất quán hành trình so với profil vị trí, dự án giảng dạy cho các UE, và hội nhập dự kiến vào laboratoire LSO."
         },
         {
+          cell_id: "0976bb29-b32b-4dca-af43-55952fbdf558",
           "speaker": "Pr. Garcia",
           "text": "Question d'ouverture: pourquoi notre établissement plutôt qu'un autre ?",
           "en": "Opening question: why our institution rather than another?",
           "vi": "Câu hỏi mở đầu: vì sao đơn vị chúng tôi chứ không phải một nơi khác?"
         },
         {
+          cell_id: "bacc5a89-89b1-464d-a531-01f23c267eb0",
           "speaker": "Linh",
           "text": "Trois raisons précises. Un: le laboratoire LSO est l'un des deux en France à articuler sociolinguistique du bilinguisme et politiques linguistiques transnationales — c'est exactement mon objet. Deux: l'archive Aix-Sud, accessible dans votre établissement, conditionne l'extension de mes corpus. Trois: les UE listées correspondent à mes domaines d'enseignement antérieurs, ce qui assure une prise de fonction sans rupture pédagogique.",
           "en": "Three precise reasons. One: the LSO laboratory is one of two in France that articulates sociolinguistics of bilingualism with transnational language policies — exactly my object. Two: the Aix-Sud archive, accessible at your institution, conditions the extension of my corpora. Three: the listed courses match my prior teaching domains, ensuring a take-up of duties without pedagogical rupture.",
@@ -9695,6 +10059,7 @@ export const lessons: FrenchLesson[] =           [
       "tip_advice_vi": "PROTOCOLE 8 BƯỚC pour animer un séminaire de recherche:\n\n(1) PRÉPARATION AVANT LA SÉANCE:\n- Lire au moins 3 publications récentes de l'invité(e).\n- Identifier 2 zones de tension dans son œuvre — points où il/elle est en débat avec d'autres.\n- Préparer 4-5 questions, dont 1 « première question » difficile et 3-4 « questions de relance ».\n- Briefer brièvement l'invité(e) sur la composition du séminaire (qui sera là).\n\n(2) OUVERTURE — 5 minutes maximum:\n- « Bonjour à tous, je suis heureuse d'ouvrir cette séance du séminaire... »\n- Présenter l'invité(e): trajectoire, publications-clés, lien avec le thème annuel.\n- Esquisser la question qui réunit le séminaire ce jour.\n- Céder la parole avec timing précis: « Vous disposez de quarante-cinq minutes, le temps de la discussion sera ensuite ouvert pour quarante-cinq minutes. »\n\n(3) ÉCOUTE PENDANT L'EXPOSÉ — actif:\n- Ne pas faire l'appel sur le téléphone.\n- Noter 3-5 points qui méritent discussion.\n- Repérer 1 affirmation qui ouvre une question forte pour la première question.\n\n(4) PREMIÈRE QUESTION — moment-clé du séminaire:\n- Précise, pas générique.\n- Adressée DIRECTEMENT à l'invité(e), pas au public.\n- Touche au cœur, pas à la périphérie.\n- Formule type: « Vous avez avancé que [X]. Avant que nous n'ouvrions au public, je voudrais qu'on revienne précisément sur ce point: comment articulez-vous [X] avec [Y, qui semble en tension] ? »\n\n(5) GESTION DE LA DISCUSSION — distribution de parole:\n- « Madame Lemaire, vous aviez levé la main en premier. »\n- Garder une LISTE mentale (ou écrite) des intervenants.\n- ÉQUILIBRER seniors / juniors / doctorants. Ne pas laisser les seniors monopoliser.\n- Si une question est confuse, REFORMULER pour l'invité(e): « Si je comprends bien, vous demandez si... ».\n- Si un échange devient un duel entre deux personnes au détriment du collectif, intervenir: « Permettez-moi de rouvrir au reste de la salle. »\n\n(6) PROVOQUER QUAND NÉCESSAIRE:\n- Si l'invité(e) élude une question, redemander avec netteté: « Pour que ce soit clair: vous me dites donc que... ? »\n- Si un consensus s'installe trop vite, jouer l'avocat du diable: « Je formule une objection, à titre de débat: ... »\n- Cette directité est ATTENDUE de l'animateur, pas perçue comme rudesse.\n\n(7) GESTION DU TEMPS:\n- Surveiller la pendule.\n- À 15 min de la fin, signaler: « Nous avons une dizaine de minutes pour deux dernières questions. »\n- Refuser de prolonger au-delà du temps annoncé (respect du collectif et de l'invité(e)).\n\n(8) CLÔTURE — synthèse en 3-5 min:\n- « Trois points me semblent ressortir de notre discussion: ... »\n- Indiquer ce qui reste ouvert: « Ce qui n'est pas tranché, c'est X — ce sera l'objet d'une séance ultérieure. »\n- Annoncer la séance suivante: « Le quinze mai, nous accueillerons Monsieur Y, dont le travail prolonge précisément ces questions. »\n- Remercier l'invité(e) chaleureusement mais brièvement.\n\nTRÁNH:\n- Monopoliser la parole en tant qu'animateur — l'invité(e) doit avoir 50%+ du temps total.\n- Présenter l'invité(e) en hyperboles (« sommité internationale », « référence incontournable ») — paraît courtisan.\n- Éviter les questions difficiles par politesse — perd la respect de l'invité(e) et du collectif.\n- Laisser un échange devenir personnel ou hostile — intervenir avant la dérive.\n- Conclure en synthétisant à votre place ce que l'invité(e) a dit (« vous avez en somme dit que... ») si vous n'êtes pas d'accord — laisser l'invité(e) corriger.\n\nGỢI Ý CHO NGƯỜI VIỆT NAM:\nKhi animer cho lần đầu, lo lắng phổ biến: « tôi sẽ trông thiếu tôn trọng nếu hỏi câu khó ». Đó là sai lầm: trong văn hóa séminaire Pháp, sự tôn trọng được thể hiện QUA câu hỏi khó. Một animateur không hỏi gì khó được hiểu là chưa đọc invité hoặc không quan tâm đủ.",
       "vocabulary": [
         {
+          cell_id: "d9b00b82-28f1-4f99-8b90-c018c3cb755d",
           "word": "un séminaire de recherche",
           "en": "a research seminar",
           "vi": "séminaire nghiên cứu",
@@ -9703,6 +10068,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "UN say-mee-NEHR duh ruh-SHEHRSH — 'un séminaire de recherche' = a research seminar"
         },
         {
+          cell_id: "f15a0873-9daa-47b2-828e-6d95f0f5a5a9",
           "word": "animer un séminaire",
           "en": "to animate / chair a seminar",
           "vi": "điều phối một séminaire",
@@ -9711,6 +10077,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ah-nee-MAY UN say-mee-NEHR — 'animer un séminaire' = to chair a seminar"
         },
         {
+          cell_id: "0e1c534f-7c84-4a82-a950-5384b8bf57f0",
           "word": "céder la parole",
           "en": "to give the floor",
           "vi": "nhường lời",
@@ -9719,6 +10086,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "say-DAY lah pah-ROL — 'céder la parole' = to give the floor"
         },
         {
+          cell_id: "f0f000ad-5422-4bf2-8491-217c36c910e2",
           "word": "esquisser une question",
           "en": "to sketch a question",
           "vi": "phác thảo một câu hỏi",
@@ -9727,6 +10095,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "es-kee-SAY ün kes-TYON — 'esquisser une question' = to sketch a question"
         },
         {
+          cell_id: "72fc22ec-e37f-41b2-93ef-0092606bdf0c",
           "word": "le temps imparti",
           "en": "the allotted time",
           "vi": "thời gian quy định",
@@ -9735,6 +10104,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "luh TAHN an-par-TEE — 'le temps imparti' = the allotted time"
         },
         {
+          cell_id: "c9ca16f7-5613-430f-b8da-41bf7fb161a0",
           "word": "soulever un point",
           "en": "to raise a point",
           "vi": "nêu một điểm",
@@ -9743,6 +10113,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "sool-VAY UN PWAN — 'soulever un point' = to raise a point; 'oi'... 'oin' = 'wan'"
         },
         {
+          cell_id: "b9bd64bd-1ea0-4d95-bba5-97e865ddc02c",
           "word": "l'avocat du diable",
           "en": "the devil's advocate",
           "vi": "luật sư của quỷ",
@@ -9751,6 +10122,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "lah-voh-KAH du DYAH-bluh — 'l'avocat du diable' = the devil's advocate"
         },
         {
+          cell_id: "9cec6249-ed92-4585-8d4c-60264333accc",
           "word": "trancher une question",
           "en": "to settle a question",
           "vi": "phân định một câu hỏi",
@@ -9759,6 +10131,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "trahn-SHAY ün kes-TYON — 'trancher une question' = to settle a question"
         },
         {
+          cell_id: "8393d14a-f2ac-4c9a-bd98-d288c793fca5",
           "word": "clore la séance",
           "en": "to close the session",
           "vi": "kết thúc phiên",
@@ -9767,6 +10140,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "KLOR lah say-AHNSS — 'clore la séance' = to close the session"
         },
         {
+          cell_id: "6dc174ed-4bce-4be2-8405-41782468502e",
           "word": "une synthèse en trois points",
           "en": "a three-point synthesis",
           "vi": "tổng hợp ba điểm",
@@ -9777,24 +10151,28 @@ export const lessons: FrenchLesson[] =           [
       ],
       "dialogue": [
         {
+          cell_id: "96ee1802-281e-4eda-98a2-676abe7494af",
           "speaker": "Linh (animatrice du séminaire)",
           "text": "Avant de céder la parole à notre invitée, je voudrais l'introduire brièvement. Madame Sapiro est directrice de recherche au CNRS, elle a publié notamment La Sociologie de la littérature en 2014. Aujourd'hui, elle nous parle de la circulation transnationale des œuvres.",
           "en": "Before I give the floor to our guest, I'd like to introduce her briefly. Ms. Sapiro is a research director at the CNRS; she has published notably La Sociologie de la littérature in 2014. Today she speaks to us about the transnational circulation of works.",
           "vi": "Trước khi nhường lời cho khách mời, tôi muốn giới thiệu ngắn gọn. Cô Sapiro là directrice de recherche tại CNRS, đã xuất bản đáng chú ý cuốn La Sociologie de la littérature năm 2014. Hôm nay, cô nói với chúng ta về sự lưu chuyển xuyên quốc gia của các tác phẩm."
         },
         {
+          cell_id: "74908e29-4337-4f07-8fe7-81d969be7245",
           "speaker": "Linh",
           "text": "Madame, je vous cède la parole. Vous disposez de quarante-cinq minutes, et nous aurons ensuite quarante-cinq minutes de discussion.",
           "en": "Madame, I give you the floor. You have forty-five minutes, and we'll then have forty-five minutes of discussion.",
           "vi": "Cô Sapiro, tôi nhường lời. Cô có 45 phút, sau đó chúng ta có 45 phút thảo luận."
         },
         {
+          cell_id: "3fcc5857-dc5f-4917-89c8-164994760abf",
           "speaker": "Pr. Sapiro (après son exposé)",
           "text": "Je vous remercie. Je suis maintenant à votre disposition pour les questions.",
           "en": "Thank you. I am now at your disposal for questions.",
           "vi": "Cảm ơn quý vị. Tôi xin sẵn sàng nhận câu hỏi."
         },
         {
+          cell_id: "cd41dedb-f352-44f4-9ffb-b5c085cbe522",
           "speaker": "Linh",
           "text": "Je me permets d'ouvrir la discussion par une question. Vous avez avancé que la circulation se fait par des médiateurs institutionnels. Comment articulez-vous cela avec le rôle des médiateurs informels — traducteurs indépendants, agents littéraires — qui semble passer au second plan dans votre exposé ?",
           "en": "Let me open the discussion with a question. You argued that circulation happens through institutional mediators. How do you articulate that with the role of informal mediators — independent translators, literary agents — which seems to recede into the background in your talk?",
@@ -10058,6 +10436,7 @@ export const lessons: FrenchLesson[] =           [
       "tip_advice_vi": "PROTOCOLE 9 BƯỚC pour intervenir publiquement comme intellectuel sans perdre la rigueur:\n\n(1) DÉCIDER QUAND INTERVENIR:\n- Avez-vous un APPORT que d'autres ne peuvent pas faire (fondé sur votre recherche, votre terrain, votre langue) ?\n- Le sujet rejoint-il votre champ d'expertise ? Si non, abstenir — vous ne défendez pas mieux qu'un autre intellectuel sur ce sujet.\n- Le timing: trop tôt = on n'a pas les éléments; trop tard = la conversation est passée.\n\n(2) CHOISIR LE BON FORMAT:\n- Tribune presse: pour une thèse argumentée stable.\n- Lettre ouverte signée collectivement: pour un appel à action institutionnelle.\n- Entretien presse: pour un sujet de fond demandant développement.\n- Plateau TV: à éviter sauf maîtrise du sujet ET maîtrise du format (formation préalable utile).\n\n(3) RÉDIGER UNE TRIBUNE — règles:\n- Une thèse claire en première phrase.\n- Argumentation en 4-6 paragraphes.\n- Position personnelle assumée (ne pas s'abriter derrière « les chercheurs disent que... »).\n- Référencer le travail scientifique (note de bas ou phrase « disponible en accès libre sur HAL »).\n- Conclusion qui ouvre, ne ferme pas.\n- Format respecté: 3000-5000 signes selon journal.\n\n(4) NE PAS CONFONDRE TRIBUNE ET MANIFESTE:\n- TRIBUNE: argumentation à partir de votre travail.\n- MANIFESTE: prise de position politique collective.\n→ Un intellectuel peut signer un manifeste mais doit reconnaître que c'est un acte différent.\n\n(5) DÉFENDRE LA NUANCE EN ÉMISSION:\n- Si on simplifie votre propos, intervenir: « Permettez-moi de préciser, parce que la formulation que vous me prêtez n'est pas exactement la mienne. »\n- Si on vous coupe systématiquement: « Monsieur le présentateur, je vous demande de me permettre de finir cet argument. »\n- Si une question est piégée: la reformuler avant de répondre. « Si je comprends bien, vous me demandez si... ? »\n- Refuser les questions hors sujet: « Cette question relève d'un autre champ, je ne suis pas légitime pour y répondre. »\n\n(6) DISTINGUER DÉBAT ET POLÉMIQUE:\n- Si l'échange dérape vers la polémique, NE PAS suivre.\n- Refuser le ad hominem: « Mon contradicteur peut me reprocher [X], mais c'est l'argument qu'il faut discuter, pas la personne. »\n- Si étiqueté « polémiste »: « Je ne polémique pas — je débats sur des arguments. La distinction est essentielle. »\n\n(7) PROTÉGER LE TRAVAIL SCIENTIFIQUE:\n- L'intervention publique ne DOIT PAS dégrader la recherche.\n- Garder une fréquence raisonnable: 2-3 tribunes / an, pas 2-3 / mois.\n- Ne pas accepter toute sollicitation TV — épuisement, simplification, instrumentalisation.\n\n(8) ASSUMER LA RÉCEPTION:\n- Tribune publiée = vous serez critiqué publiquement. Préparer mentalement.\n- Twitter / réseaux sociaux: parfois violent, parfois pertinent. Distinguer.\n- Réponse: répondre seulement si l'objection est argumentée. Ignorer le bruit.\n\n(9) PROTOCOLE EN CAS DE CONTROVERSE PROLONGÉE:\n- Réponse écrite courte sur les arguments factuels.\n- Pas de réponse sur les attaques personnelles.\n- Si nécessaire, communiqué via votre institution (université, laboratoire) — collectivise.\n- Documenter pour archives.\n\nTRÁNH:\n- Devenir « personnage médiatique » sans nouvelle production.\n- Accepter le format télévisuel sans préparation.\n- Confondre votre statut d'expert et votre statut citoyen — préciser à chaque intervention.\n- Soumettre une tribune en zone hors expertise.\n- Ad hominem (même si l'autre commence).\n- Refuser tout débat — refuser le débat = refuser le statut d'intellectuel.\n\n⚠️ Lưu ý: Không phải tư vấn pháp lý hay nghề nghiệp. La participation au débat public a des conséquences professionnelles (financement, promotion, relations institutionnelles). Toujours en discuter en amont avec votre direction d'unité et votre service de communication.",
       "vocabulary": [
         {
+          cell_id: "1caa3457-903b-43f3-9df4-575b299353a1",
           "word": "une tribune (presse)",
           "en": "an op-ed",
           "vi": "bài tribune báo chí",
@@ -10066,6 +10445,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ün tree-BUN — 'une tribune (presse)' = an op-ed; 'u' rounded"
         },
         {
+          cell_id: "c593bd9a-dafd-4237-ad93-bcc6368179b1",
           "word": "un billet d'humeur",
           "en": "a column / brief opinion piece",
           "vi": "billet d'humeur",
@@ -10074,6 +10454,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "UN bee-YEH du-MUR — 'un billet d'humeur' = a brief opinion column"
         },
         {
+          cell_id: "7225d246-0152-4788-bd53-4082dc703238",
           "word": "une lettre ouverte",
           "en": "an open letter",
           "vi": "thư ngỏ",
@@ -10082,6 +10463,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ün LET-truh oo-VEHRT — 'une lettre ouverte' = an open letter"
         },
         {
+          cell_id: "38c6a82b-7a0b-4a43-8fca-7faa1cd7ff83",
           "word": "le débat d'idées",
           "en": "the debate of ideas",
           "vi": "tranh luận tư tưởng",
@@ -10090,6 +10472,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "luh day-BAH dee-DAY — 'le débat d'idées' = the debate of ideas"
         },
         {
+          cell_id: "965bbe48-60e8-4460-b2f5-bdf517aba67a",
           "word": "un polémiste",
           "en": "a polemicist",
           "vi": "polémiste — người gây tranh cãi",
@@ -10098,6 +10481,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "UN poh-lay-MEEST — 'un polémiste' = a polemicist (pejorative)"
         },
         {
+          cell_id: "e19cc9e8-10cf-4a91-b9ed-bfc3c42506f3",
           "word": "disqualifier l'adversaire",
           "en": "to disqualify the opponent",
           "vi": "hạ uy tín đối thủ",
@@ -10106,6 +10490,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "dees-kah-lee-FYAY lad-vehr-SEHR — 'disqualifier l'adversaire' = to disqualify the opponent"
         },
         {
+          cell_id: "cc2b3157-c3e5-4e66-9e7a-8462f5806a89",
           "word": "préciser une divergence",
           "en": "to clarify a divergence",
           "vi": "làm rõ một sự khác biệt",
@@ -10114,6 +10499,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "pray-see-ZAY ün dee-vehr-ZHAHNSS — 'préciser une divergence' = to clarify a divergence"
         },
         {
+          cell_id: "c2ed0d44-ff05-4e0f-8ce9-c4305aca5822",
           "word": "le format télévisuel",
           "en": "the TV format",
           "vi": "format truyền hình",
@@ -10122,6 +10508,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "luh for-MAH tay-lay-vee-zu-EL — 'le format télévisuel' = the TV format"
         },
         {
+          cell_id: "ff8dc1fe-6ce8-41dc-8c44-5eedea21a7aa",
           "word": "la simplification",
           "en": "simplification",
           "vi": "sự đơn giản hóa",
@@ -10130,6 +10517,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "lah san-plee-fee-kah-SYON — 'la simplification'; '-tion' = 'syon'"
         },
         {
+          cell_id: "1f612ade-7bef-4240-baf3-3e7a74ef353c",
           "word": "l'instrumentalisation",
           "en": "instrumentalization",
           "vi": "sự công cụ hóa",
@@ -10140,24 +10528,28 @@ export const lessons: FrenchLesson[] =           [
       ],
       "dialogue": [
         {
+          cell_id: "3d4530be-4464-40d4-873c-c637ed685345",
           "speaker": "M. Lefranc (présentateur radio, France Culture)",
           "text": "Madame Tran, vous signez ce matin une tribune dans Le Monde. Avec votre tribune vous êtes-vous transformée en militante ?",
           "en": "Ms. Tran, you sign an op-ed in Le Monde this morning. Has your op-ed turned you into an activist?",
           "vi": "Cô Trần, sáng nay cô ký một tribune trên Le Monde. Với bài tribune đó cô có biến thành nhà hoạt động không?"
         },
         {
+          cell_id: "23188411-8e3d-484c-9081-ce37c39e3323",
           "speaker": "Linh",
           "text": "Je tiens à distinguer d'emblée. La tribune que je signe n'est pas un manifeste politique: c'est une intervention de scientifique, fondée sur les conclusions de mon travail de recherche, dont les références sont disponibles en accès libre sur HAL. Je ne deviens pas militante en publiant cette tribune — j'apporte au débat public un savoir construit méthodologiquement.",
           "en": "I want to distinguish at the outset. The op-ed I sign is not a political manifesto: it's a scientist's intervention, grounded in the conclusions of my research, whose references are openly available on HAL. I don't become an activist by publishing this op-ed — I bring to public debate a methodologically constructed knowledge.",
           "vi": "Tôi muốn phân biệt ngay. Bài tribune tôi ký không phải tuyên ngôn chính trị: là một can thiệp của nhà khoa học, dựa trên kết luận công trình nghiên cứu, tài liệu tham khảo có thể truy cập tự do trên HAL. Tôi không trở thành nhà hoạt động khi xuất bản bài này — tôi đưa vào débat công một tri thức được xây dựng có phương pháp."
         },
         {
+          cell_id: "79a8f7bf-90e7-417c-8349-127a4153fe27",
           "speaker": "M. Lefranc",
           "text": "Mais votre prise de position pourra être instrumentalisée par tel ou tel parti politique. Comment l'évitez-vous ?",
           "en": "But your stance could be instrumentalized by some political party. How do you avoid that?",
           "vi": "Nhưng quan điểm của cô có thể bị partisan này nọ instrumentaliser. Cô tránh thế nào?"
         },
         {
+          cell_id: "e52e9420-4e0c-4f82-9b6b-fdd5cd380b64",
           "speaker": "Linh",
           "text": "Je ne peux pas l'éviter complètement — c'est inhérent à toute prise de parole publique. Ce que je peux faire: ancrer rigoureusement mon argument dans le travail scientifique, refuser les amalgames, et répondre aux objections argumentées sans suivre les disqualifications personnelles.",
           "en": "I can't avoid it completely — it's inherent to any public statement. What I can do: rigorously anchor my argument in scientific work, refuse the amalgams, and respond to argued objections without following the personal disqualifications.",
@@ -10421,6 +10813,7 @@ export const lessons: FrenchLesson[] =           [
       "tip_advice_vi": "PROTOCOLE 8 BƯỚC pour réussir une intervention en table ronde scientifique:\n\n(1) PRÉPARATION AVANT:\n- Connaître les CO-INTERVENANTS: lire au moins 2 publications récentes de chacun.\n- Identifier ce qui DISTINGUE votre approche de chaque autre.\n- Choisir UN ANGLE D'ATTAQUE — l'entrée spécifique qui ne sera prise par personne d'autre.\n- Préparer une intervention liminaire CHRONOMÉTRÉE — pas plus de 7 min même si on vous donne 10 (laisser du temps à la discussion).\n\n(2) STRUCTURE DE L'INTERVENTION LIMINAIRE — 7 min maximum:\n- 30 sec: salutations + remerciement + situer co-intervenants.\n- 1 min: votre angle d'attaque + thèse en une phrase.\n- 4 min: argumentation par UN cas concret (pas trois cas — un seul, déployé).\n- 1 min: positionnement par rapport aux co-intervenants — « Je rejoins X sur Y mais je m'en sépare sur Z ».\n- 30 sec: question ouverte que vous laissez à la table.\n\n(3) FORMULES STANDARD D'OUVERTURE:\n- « Je remercie le modérateur de m'avoir associée à cette table ronde. »\n- « Je salue les autres intervenants dont les travaux nourrissent depuis longtemps ma réflexion. »\n- « L'intervention liminaire que je vais livrer ne prétend nullement épuiser la question. »\n- « Je propose une entrée par un cas précis. »\n\n(4) CITER LES CO-INTERVENANTS — règle:\n- Citer NOMINALEMENT au moins une fois chacun, par leur ouvrage avec année.\n- Citer ce qui CONVERGE et ce qui DIVERGE — pas seulement ce qui vous oppose.\n- Formule type: « Madame Sapiro, dans La Sociologie de la littérature, a magistralement établi X. Je me sépare cependant de cette thèse sur Y. »\n\n(5) GESTION DE LA DISCUSSION CROISÉE:\n- Préparer 2-3 RÉPONSES POSSIBLES aux interventions des co-intervenants.\n- Si on vous interpelle directement, répondre brièvement (1-2 min) puis rendre la balle.\n- Si vous interpellez quelqu'un, NOMMER explicitement: « À Monsieur Schmitt qui défend la thèse opposée, je voudrais... »\n- Refuser le silence si on vous attaque, refuser la longueur excessive si on vous donne raison.\n\n(6) FORMULES DE POSITIONNEMENT — typiques des tables rondes:\n- « Je rejoins X sur Y mais je m'en sépare sur Z. »\n- « Sur le constat, nous convergeons; sur l'interprétation, nous divergeons. »\n- « Quoique je rejoigne X, je voudrais nuancer... »\n- « Je m'inscris en faux contre la thèse défendue à l'instant par X. »\n- « Le cadre que défend X ne tient pas l'épreuve des données que je vais évoquer. »\n\n(7) GESTION DU MODÉRATEUR:\n- Si modérateur vous coupe: ne pas insister, finir la phrase puis céder.\n- Si modérateur reformule mal votre propos: corriger gentiment. « Si je peux préciser: ce que je dis n'est pas exactement... ».\n- Si modérateur sollicite votre réaction à un autre intervenant: répondre brièvement avec respect (« Je remercie X de cette intervention; mon désaccord porte sur... »).\n\n(8) Q&A AVEC PUBLIC:\n- Même règles qu'en séminaire (cf. lesson lresearch_seminar_animation): écouter, reformuler si nécessaire, répondre directement.\n- Si la question est adressée à un autre intervenant, attendre. Si elle est adressée à plusieurs, brève intervention en complément.\n\nTRÁNH:\n- Répéter les propos d'un co-intervenant déjà passé (le public le remarque immédiatement).\n- Lire un texte écrit (en table ronde, le format demande oral plus libre qu'en colloque).\n- Monopolisation: dépasser systématiquement le temps imparti.\n- Ignorer les co-intervenants (votre intervention isolée = manque la table ronde).\n- Désaccord ad hominem (« Madame X est mal informée ») au lieu de désaccord intellectuel.\n- Esquiver les questions difficiles du modérateur ou du public.\n\n⚠️ Lưu ý: Les conventions varient selon institutions. Format de la table ronde, public attendu, durée, modalités de discussion croisée — tous demandent confirmation préalable avec organisateur. Ne pas hésiter à demander en amont.",
       "vocabulary": [
         {
+          cell_id: "adfe4ac2-2937-42f1-8fe9-dbcdf6fe5a9b",
           "word": "une table ronde",
           "en": "a roundtable",
           "vi": "bàn tròn",
@@ -10429,6 +10822,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ün TAH-bluh ROHND — 'une table ronde' = a roundtable; final '-e' silent"
         },
         {
+          cell_id: "27d3c4a1-543e-4fb2-a38b-ae61dd3a53ad",
           "word": "une intervention liminaire",
           "en": "an opening intervention",
           "vi": "phát biểu mở đầu",
@@ -10437,6 +10831,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ün an-tehr-vahn-SYON lee-mee-NEHR — 'une intervention liminaire' = an opening intervention"
         },
         {
+          cell_id: "66322b40-715f-4579-9ab5-caac83a1a9e3",
           "word": "le modérateur, la modératrice",
           "en": "the moderator",
           "vi": "người điều phối",
@@ -10445,6 +10840,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "luh moh-day-rah-TUR / lah moh-day-rah-TREESS — m./f. moderator"
         },
         {
+          cell_id: "1a3181b8-7c1c-4735-a3cd-f851bc30d1b3",
           "word": "rejoindre quelqu'un sur",
           "en": "to agree with someone on",
           "vi": "đồng ý với ai về",
@@ -10453,6 +10849,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ruh-ZHWAN-druh kel-KAN sur — 'rejoindre quelqu'un sur' = to agree with someone on"
         },
         {
+          cell_id: "5fe7b258-4212-4945-a074-adee65259443",
           "word": "se séparer de quelqu'un sur",
           "en": "to disagree with someone on",
           "vi": "tách khỏi ai về",
@@ -10461,6 +10858,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "suh say-pah-RAY duh kel-KAN sur — 'se séparer de quelqu'un sur' = to disagree with someone on"
         },
         {
+          cell_id: "8081d5aa-2e07-4d41-97cb-f57b6a43a9b1",
           "word": "l'angle d'attaque",
           "en": "the angle of attack",
           "vi": "góc tiếp cận",
@@ -10469,6 +10867,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "LAHN-gluh dah-TAK — 'l'angle d'attaque' = the angle of attack/entry point"
         },
         {
+          cell_id: "d3108047-95fe-4c6f-893a-e0c4979eb3b4",
           "word": "la discussion croisée",
           "en": "the cross-discussion",
           "vi": "thảo luận chéo",
@@ -10477,6 +10876,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "lah dees-ku-SYON krwah-ZAY — 'la discussion croisée' = the cross-discussion"
         },
         {
+          cell_id: "e3700e15-363a-488c-aee5-ab7185cd3d23",
           "word": "tenir l'épreuve de",
           "en": "to withstand the test of",
           "vi": "trụ được trước",
@@ -10485,6 +10885,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "tuh-NEER lay-PRUHV duh — 'tenir l'épreuve de' = to withstand the test of"
         },
         {
+          cell_id: "3975d3c3-5f70-4263-889d-dd7319eedcd7",
           "word": "le capital symbolique",
           "en": "symbolic capital",
           "vi": "vốn tượng trưng",
@@ -10493,6 +10894,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "luh kah-pee-TAL san-boh-LEEK — 'le capital symbolique' = symbolic capital (Bourdieu)"
         },
         {
+          cell_id: "6271a845-577b-47ec-a049-780b78093685",
           "word": "l'asymétrie structurelle",
           "en": "structural asymmetry",
           "vi": "bất đối xứng cấu trúc",
@@ -10503,24 +10905,28 @@ export const lessons: FrenchLesson[] =           [
       ],
       "dialogue": [
         {
+          cell_id: "570d7e10-aa55-4123-a11f-9184b0b9a500",
           "speaker": "Pr. Garnier (modérateur de la table ronde)",
           "text": "Madame Tran, vous êtes la troisième à intervenir, vous disposez de huit minutes. Vous avez la parole.",
           "en": "Ms. Tran, you're the third to speak; you have eight minutes. You have the floor.",
           "vi": "Cô Trần, cô là người thứ ba phát biểu, cô có 8 phút. Mời cô."
         },
         {
+          cell_id: "f08af073-e005-4864-8389-54b6376690d8",
           "speaker": "Linh",
           "text": "Je remercie le modérateur, et je salue Madame Sapiro et Monsieur Schmitt dont les interventions précédentes ont magnifiquement posé le décor — quoique sur des bases que je vais discuter. Mon angle d'attaque sera spécifique: la circulation des manuels scolaires français au Vietnam, qui me paraît permettre de trancher entre les deux thèses qui viennent d'être défendues.",
           "en": "I thank the moderator, and I greet Ms. Sapiro and Mr. Schmitt, whose previous interventions magnificently set the scene — though on bases I'm going to discuss. My angle of attack will be specific: the circulation of French textbooks in Vietnam, which seems to me to allow us to adjudicate between the two theses just defended.",
           "vi": "Tôi cảm ơn người điều phối, và xin chào Cô Sapiro và Thầy Schmitt mà các phát biểu trước đã đặt khung tuyệt đẹp — mặc dù trên cơ sở tôi sắp bàn luận. Góc tiếp cận của tôi sẽ cụ thể: lưu chuyển sách giáo khoa Pháp ở Việt Nam, theo tôi cho phép phân định giữa hai luận điểm vừa được bảo vệ."
         },
         {
+          cell_id: "3f444074-aa7d-4eab-9839-33e97b98ddc4",
           "speaker": "Pr. Garnier",
           "text": "Vous suggérez donc que l'un de vos co-intervenants se trompe ?",
           "en": "So you're suggesting that one of your co-speakers is mistaken?",
           "vi": "Vậy cô gợi ý rằng một trong các đồng diễn giả sai?"
         },
         {
+          cell_id: "83965dbe-1f59-4c94-a6c7-bf8dc36cd99c",
           "speaker": "Linh",
           "text": "Je ne dirais pas qu'ils se trompent. Je dirais que leurs cadres respectifs, valides dans leurs domaines, ne tiennent pas l'épreuve d'un cas particulier — ce qui est précisément ce que la table ronde cherche à faire émerger. Je rejoins Madame Sapiro sur le constat de l'inégalité; je m'en sépare sur l'interprétation.",
           "en": "I wouldn't say they're mistaken. I'd say their respective frameworks, valid in their domains, don't withstand the test of a particular case — which is precisely what the roundtable seeks to bring out. I agree with Ms. Sapiro on the observation of inequality; I diverge from her on the interpretation.",
@@ -10784,6 +11190,7 @@ export const lessons: FrenchLesson[] =           [
       "tip_advice_vi": "PROTOCOLE 9 BƯỚC pour défendre une position académique controversée:\n\n(1) DIAGNOSTIC PRÉALABLE — êtes-vous vraiment hétérodoxe ?\n- Votre position contredit-elle le consensus du champ ? (vérifier en lisant 5-10 publications de référence récentes).\n- Si oui: l'hétérodoxie est-elle DÉJÀ représentée par d'autres ? (S'inscrire dans une lignée).\n- Quelle est la SOURCE de votre divergence: méthodologie ? Données ? Cadre théorique ?\n→ Si vous ne pouvez pas répondre précisément, vous êtes peut-être en désaccord local, pas hétérodoxe.\n\n(2) S'INSCRIRE DANS UNE TRADITION — règle d'or:\n- Citer 2-3 prédécesseurs hétérodoxes de votre champ.\n- Formules: « Je m'inscris dans une tradition... », « Cette position prolonge celle de... », « Lordon avait formulé un point analogue en X. »\n- Cela signale lecture, humilité, ancrage.\n\n(3) DÉMONTRER LA RIGUEUR — pas seulement affirmer:\n- Votre position doit s'appuyer sur méthodologie EXPLICITE, pas seulement sur intuition.\n- Données empiriques privilégiées si possible.\n- Comparaison avec position orthodoxe sur ce point précis: en quoi vous êtes plus précis(e), pas seulement différent(e).\n\n(4) DISTINCTIONS CLÉS — éviter les amalgames:\n- HÉTÉRODOXIE ≠ POLÉMIQUE (cf. lesson 8): hétérodoxie argumente, polémique disqualifie.\n- HÉTÉRODOXIE ≠ PROVOCATION GRATUITE: hétérodoxie construit, provocation transgresse.\n- HÉTÉRODOXIE ≠ DOCTRINE INVERSE: hétérodoxie reconnaît la légitimité de l'orthodoxie sur d'autres points.\n→ Faire ces distinctions explicites dans l'intervention montre maturité.\n\n(5) ANTICIPER LES OBJECTIONS — préparer 3-5:\n- « Vous êtes isolé(e), c'est un signe de faiblesse. » → Réponse: lignée + tradition.\n- « Votre position est idéologique, pas scientifique. » → Réponse: méthodologie explicite + données.\n- « Vous transgressez pour transgresser. » → Réponse: distinction hétérodoxie / provocation.\n- « Vous mépriserez l'orthodoxie. » → Réponse: reconnaître ses raisons.\n- « Votre position ne tient pas la critique. » → Réponse: invitez critique, listez les contre-arguments traités.\n\n(6) STRUCTURE TYPIQUE D'UNE INTERVENTION HÉTÉRODOXE:\n- 1. Reconnaître l'orthodoxie et sa légitimité partielle.\n- 2. Identifier UN POINT PRÉCIS de divergence.\n- 3. Argumenter par UN cas concret + UNE méthodologie explicite.\n- 4. S'inscrire dans une lignée hétérodoxe identifiée.\n- 5. Anticiper UNE objection majeure et y répondre.\n- 6. Rouvrir au dialogue — votre position est argumentée, pas absolue.\n\n(7) GESTION DES COÛTS PROFESSIONNELS:\n- Ne pas demander de pitié.\n- Ne pas se plaindre de la marginalité — assumer.\n- Diversifier les voies de carrière: si l'hétérodoxie ralentit la voie académique, considérer voies alternatives (presses universitaires, médias, ONG, expertise publique).\n- Cultiver une niche — d'autres hétérodoxes du champ — où le débat est intense.\n\n(8) GARDER L'OUVERTURE:\n- Votre position N'EST PAS définitive. Elle peut évoluer si les arguments sont concluants.\n- Lire en priorité les meilleurs adversaires, pas les plus faibles.\n- Discuter régulièrement avec orthodoxes — l'isolement ferme.\n\n(9) DÉFENDRE LE DROIT À L'HÉTÉRODOXIE — au-delà de votre position propre:\n- Argument méta: la vitalité scientifique requiert l'existence d'hétérodoxies, indépendamment de qui a raison.\n- C'est un argument de PRINCIPE qui dépasse votre cas individuel.\n- Cela protège aussi les autres hétérodoxes du champ.\n\nTRÁNH:\n- Se présenter comme un génie isolé (« je suis le seul à voir »).\n- Mépriser l'orthodoxie — confondre désaccord et délégitimation.\n- Glisser vers la polémique sous prétexte de « directité ».\n- S'enfermer dans cercle d'hétérodoxes uniquement.\n- Adopter l'identité de marginal — devient cliché.\n- Confondre courage scientifique et provocation gratuite.\n- Refuser tout dialogue avec orthodoxie.\n- Promettre que votre position « va bouleverser le champ » — laissez le champ juger.\n\n⚠️ Lưu ý: KHÔNG phải tư vấn nghề nghiệp. Adopter une position hétérodoxe a des conséquences professionnelles RÉELLES — financement, recrutement, promotions. Discutez avec un mentor partageant cette tradition AVANT de prendre une position publique forte. Le courage scientifique ne se confond pas avec l'imprudence stratégique.",
       "vocabulary": [
         {
+          cell_id: "67b03564-cdf4-4979-a9e7-8080d887d55e",
           "word": "une position controversée",
           "en": "a controversial position",
           "vi": "vị trí gây tranh cãi",
@@ -10792,6 +11199,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ün poh-zee-SYON kohn-troh-vehr-SAY — 'une position controversée'"
         },
         {
+          cell_id: "98fda4b0-6e38-4c23-a806-9f4c248cafb1",
           "word": "l'hétérodoxie",
           "en": "heterodoxy",
           "vi": "sự hétérodoxie / không chính thống",
@@ -10800,6 +11208,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "lay-tay-roh-dok-SEE — 'l'hétérodoxie' = heterodoxy; final '-ie' = 'ee'"
         },
         {
+          cell_id: "c50ed5e4-4baf-446c-b829-3b0b88122bab",
           "word": "minoritaire dans le champ",
           "en": "minoritarian in the field",
           "vi": "thiểu số trong lĩnh vực",
@@ -10808,6 +11217,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "mee-noh-ree-TEHR dahn luh SHAHN — 'minoritaire dans le champ' = minority in the field"
         },
         {
+          cell_id: "cc518a73-a591-4123-b780-e71ea3e37e39",
           "word": "s'inscrire dans une tradition",
           "en": "to inscribe oneself in a tradition",
           "vi": "đăng ký vào một truyền thống",
@@ -10816,6 +11226,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "san-SKREER dahn ZUN trah-dee-SYON — 's'inscrire dans une tradition'"
         },
         {
+          cell_id: "476e8488-ad80-4c3a-88a2-c9ab197502c2",
           "word": "le ralentissement de carrière",
           "en": "career slowdown",
           "vi": "chậm tiến độ sự nghiệp",
@@ -10824,6 +11235,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "luh rah-lahn-tees-MAHN duh kah-RYEHR — 'le ralentissement de carrière' = career slowdown"
         },
         {
+          cell_id: "4991a30b-291c-4651-b65c-d5fc22f3d915",
           "word": "l'isolement institutionnel",
           "en": "institutional isolation",
           "vi": "cô lập thiết chế",
@@ -10832,6 +11244,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "lee-zol-MAHN an-stee-tu-syo-NEL — 'l'isolement institutionnel' = institutional isolation"
         },
         {
+          cell_id: "416f4101-dbb1-4d09-9e30-d2f5219de6da",
           "word": "la posture provocatrice gratuite",
           "en": "the gratuitous provocative posture",
           "vi": "thái độ khiêu khích vô bổ",
@@ -10840,6 +11253,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "lah pos-TUR pro-voh-kah-TREESS grah-TWEET — 'la posture provocatrice gratuite'"
         },
         {
+          cell_id: "9d4a6a4a-7e3c-491c-bba5-700783669d76",
           "word": "le droit à l'hétérodoxie",
           "en": "the right to heterodoxy",
           "vi": "quyền hétérodoxie",
@@ -10848,6 +11262,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "luh DRWAH ah lay-tay-roh-dok-SEE — 'le droit à l'hétérodoxie' = the right to heterodoxy"
         },
         {
+          cell_id: "322629f1-af1d-42c1-91fe-ed785696e75a",
           "word": "la doctrine",
           "en": "doctrine",
           "vi": "giáo điều",
@@ -10856,6 +11271,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "lah dok-TREEN — 'la doctrine' = doctrine; final '-e' silent"
         },
         {
+          cell_id: "505a33c8-18a2-49ca-82d7-cb4e1f1e8ba0",
           "word": "le mépris symétrique",
           "en": "the symmetrical contempt",
           "vi": "sự khinh thị đối xứng",
@@ -10866,24 +11282,28 @@ export const lessons: FrenchLesson[] =           [
       ],
       "dialogue": [
         {
+          cell_id: "c96d0ea5-d76c-4015-9d51-81231fba752b",
           "speaker": "Pr. Garnier (séminaire de l'EHESS)",
           "text": "Madame Tran, votre exposé contredit le consensus disciplinaire récent. Êtes-vous consciente du coût intellectuel d'une telle position ?",
           "en": "Ms. Tran, your talk contradicts the recent disciplinary consensus. Are you aware of the intellectual cost of such a position?",
           "vi": "Cô Trần, bài trình bày của cô mâu thuẫn với consensus ngành gần đây. Cô có ý thức về chi phí trí thức của một vị trí như vậy không?"
         },
         {
+          cell_id: "bcb942d9-419a-492b-886b-c3b1be328e03",
           "speaker": "Linh",
           "text": "J'en suis pleinement consciente. La position que je défends est minoritaire dans le champ — et l'objet précis de mon intervention est de montrer en quoi cette minorité tient méthodologiquement, malgré l'inconfort institutionnel qu'elle produit. Je m'inscris explicitement dans une tradition hétérodoxe — celle de Lordon, de Lahire, de Quemada-Diez —, qui n'est ni isolée ni récente.",
           "en": "I am fully aware of it. The position I defend is a minority one in the field — and the precise object of my intervention is to show how that minority holds methodologically, despite the institutional discomfort it produces. I explicitly inscribe myself in a heterodox tradition — that of Lordon, Lahire, Quemada-Diez — which is neither isolated nor recent.",
           "vi": "Tôi ý thức đầy đủ. Vị trí tôi bảo vệ là thiểu số trong lĩnh vực — và mục đích cụ thể của bài can thiệp là cho thấy thiểu số đó vẫn vững về phương pháp luận, dù sự khó chịu thiết chế nó tạo ra. Tôi đăng ký rõ ràng trong truyền thống hétérodoxe — của Lordon, Lahire, Quemada-Diez —, không cô lập cũng không gần đây."
         },
         {
+          cell_id: "059bb607-de9d-447b-ad7c-3503c294bc13",
           "speaker": "Pr. Garnier",
           "text": "Mais à quoi bon l'hétérodoxie si elle vous coûte ?",
           "en": "But what's the point of heterodoxy if it costs you?",
           "vi": "Nhưng hétérodoxie để làm gì nếu nó tốn kém cho cô?"
         },
         {
+          cell_id: "17384127-21c6-4fba-8b9f-8ac7bcc39156",
           "speaker": "Linh",
           "text": "Je distingue radicalement l'hétérodoxie scientifique — fondée sur des arguments méthodologiques — de la posture provocatrice gratuite. Je ne pratique pas la marginalité comme identité. Je revendique le droit à l'hétérodoxie comme condition de la vitalité scientifique du champ. Sans hétérodoxies internes, un champ se transforme en doctrine — et c'est cela qui m'importe au-delà de ma position propre.",
           "en": "I radically distinguish scientific heterodoxy — grounded in methodological arguments — from the gratuitous provocative posture. I don't practice marginality as an identity. I claim the right to heterodoxy as a condition of the field's scientific vitality. Without internal heterodoxies, a field turns into doctrine — and that is what matters to me beyond my own position.",
@@ -11081,6 +11501,7 @@ export const lessons: FrenchLesson[] =           [
       ],
       "vocabulary": [
         {
+          cell_id: "ba8b4aaa-8100-4e8c-9fbb-cec062cdd53c",
           "word": "les faits établis",
           "en": "established facts",
           "vi": "sự kiện đã xác lập",
@@ -11089,6 +11510,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "lay feh zay-tah-BLEE — the liaison 'fe-za' is mandatory; plural -s of faits is silent except in this liaison context"
         },
         {
+          cell_id: "a1a43422-aadd-492e-9c3e-fea8dea2d4cd",
           "word": "une conférence de presse",
           "en": "press conference",
           "vi": "họp báo",
@@ -11099,12 +11521,14 @@ export const lessons: FrenchLesson[] =           [
       ],
       "dialogue": [
         {
+          cell_id: "568db538-b4f2-43f4-ad7b-e21d4f38a6d5",
           "speaker": "Porte-parole",
           "text": "Je ferai d'abord une déclaration liminaire de quatre minutes, puis nous ouvrirons les questions.",
           "vi": "Tôi sẽ phát biểu mở đầu bốn phút, rồi chúng ta mở phần câu hỏi.",
           "en": "I'll first give a four-minute opening statement, then we'll open the floor to questions."
         },
         {
+          cell_id: "fe0dd0c1-9956-4a53-a2b0-e5ce3ae2316e",
           "speaker": "Journaliste",
           "text": "La direction répondra-t-elle aussi aux questions techniques ?",
           "vi": "Ban lãnh đạo cũng sẽ trả lời các câu hỏi kỹ thuật chứ?",
@@ -11156,6 +11580,7 @@ export const lessons: FrenchLesson[] =           [
       ],
       "vocabulary": [
         {
+          cell_id: "0a42c72a-98d0-4754-bfc5-b44b8d38833d",
           "word": "un communiqué",
           "en": "press release",
           "vi": "thông cáo",
@@ -11164,6 +11589,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "uhn koh-myu-nee-KAY — rounded 'u' (German ü); final -é = sharp 'ay'"
         },
         {
+          cell_id: "f209c246-817e-432e-8b8f-45b6c38b2c21",
           "word": "une citation",
           "en": "quote",
           "vi": "trích dẫn",
@@ -11174,12 +11600,14 @@ export const lessons: FrenchLesson[] =           [
       ],
       "dialogue": [
         {
+          cell_id: "6060c1e4-9bf9-4ed4-b5f1-755975f78eaa",
           "speaker": "Rédactrice",
           "text": "Le titre promet trop. Donnons plutôt l'information concrète dès la première ligne.",
           "vi": "Tiêu đề hứa quá nhiều. Hãy đưa thông tin cụ thể ngay dòng đầu.",
           "en": "The headline promises too much. Let's lead with the concrete information from the first line."
         },
         {
+          cell_id: "e77ef821-ee1a-480e-9b00-0ab12a11bcf9",
           "speaker": "Responsable communication",
           "text": "D'accord, je retire « révolutionnaire » et j'ajoute le chiffre d'usage réel.",
           "vi": "Đồng ý, tôi bỏ từ 'mang tính cách mạng' và thêm số liệu sử dụng thực tế.",
@@ -11231,6 +11659,7 @@ export const lessons: FrenchLesson[] =           [
       ],
       "vocabulary": [
         {
+          cell_id: "d3e0e326-c48f-4505-8025-2bf72761a716",
           "word": "une tribune",
           "en": "op-ed",
           "vi": "bài quan điểm / tribune",
@@ -11239,6 +11668,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "oon tree-BYUN — false friend: NOT the speaker's stand; means an argued op-ed in a newspaper"
         },
         {
+          cell_id: "def82015-26f2-424c-90d6-deda82eb6b62",
           "word": "une objection",
           "en": "objection",
           "vi": "phản bác",
@@ -11249,12 +11679,14 @@ export const lessons: FrenchLesson[] =           [
       ],
       "dialogue": [
         {
+          cell_id: "d9b3bfae-6b08-4666-939d-5f2e91471c30",
           "speaker": "Éditorialiste",
           "text": "Votre angle est fort, mais il manque l'objection que le lecteur formulera spontanément.",
           "vi": "Góc nhìn của bạn mạnh, nhưng còn thiếu phản bác mà độc giả sẽ tự nêu ra.",
           "en": "Your angle is strong, but you're missing the objection the reader will form on their own."
         },
         {
+          cell_id: "17447ef3-3d07-444a-a097-48adc47e0cfc",
           "speaker": "Autrice",
           "text": "Je vais l'intégrer dès le troisième paragraphe, afin que la thèse ne paraisse pas fermée.",
           "vi": "Tôi sẽ đưa nó vào ngay đoạn ba để luận điểm không có vẻ đóng kín.",
@@ -11306,6 +11738,7 @@ export const lessons: FrenchLesson[] =           [
       ],
       "vocabulary": [
         {
+          cell_id: "ae40d969-4f08-4666-ae9a-332fe0718ea7",
           "word": "conversationnel",
           "en": "conversational",
           "vi": "có tính trò chuyện",
@@ -11314,6 +11747,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "kohn-vair-sah-syoh-NEL — five syllables; final -el like 'bell'"
         },
         {
+          cell_id: "adee041f-d87a-4bd4-83b6-e78baf945531",
           "word": "supposer",
           "en": "to suppose",
           "vi": "giả định",
@@ -11324,12 +11758,14 @@ export const lessons: FrenchLesson[] =           [
       ],
       "dialogue": [
         {
+          cell_id: "75cb97bd-da63-471e-9867-49ecc1e47690",
           "speaker": "Animateur",
           "text": "En clair, vous saviez que le problème existait ?",
           "vi": "Nói thẳng ra, các anh chị biết vấn đề tồn tại rồi?",
           "en": "Plainly put — you knew the problem existed?"
         },
         {
+          cell_id: "4809878f-3c79-4639-b30f-e9cda486616c",
           "speaker": "Invitée",
           "text": "Je comprends la formulation, mais elle va plus loin que les faits. Ce que nous savions, c'était l'existence d'un signal faible.",
           "vi": "Tôi hiểu cách đặt câu, nhưng nó đi xa hơn sự kiện. Điều chúng tôi biết là có một tín hiệu yếu.",
@@ -11381,6 +11817,7 @@ export const lessons: FrenchLesson[] =           [
       ],
       "vocabulary": [
         {
+          cell_id: "a5952297-339a-465e-9b78-adf07fa9eac6",
           "word": "en direct",
           "en": "live",
           "vi": "trực tiếp",
@@ -11389,6 +11826,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ahn dee-REKT — the -ct cluster IS pronounced (rare in French)"
         },
         {
+          cell_id: "693d8662-1dba-4959-84bf-c7bc1fd565e3",
           "word": "un plateau",
           "en": "TV studio set",
           "vi": "trường quay",
@@ -11399,12 +11837,14 @@ export const lessons: FrenchLesson[] =           [
       ],
       "dialogue": [
         {
+          cell_id: "bbbbfdc8-d183-4d9a-8654-0e8d051162f8",
           "speaker": "Présentateur",
           "text": "Pouvez-vous promettre ce soir que cela ne se reproduira pas ?",
           "vi": "Tối nay ông/bà có thể hứa rằng việc này sẽ không lặp lại không?",
           "en": "Can you promise tonight that this won't happen again?"
         },
         {
+          cell_id: "43210859-b8a6-4db9-9052-a5e1f5fb1853",
           "speaker": "Porte-parole",
           "text": "Je ne ferai pas une promesse de plateau. Je peux vous dire que l'audit sera publié vendredi.",
           "vi": "Tôi sẽ không hứa cho đẹp trên sóng. Tôi có thể nói rằng báo cáo rà soát sẽ được công bố thứ Sáu.",
@@ -11456,6 +11896,7 @@ export const lessons: FrenchLesson[] =           [
       ],
       "vocabulary": [
         {
+          cell_id: "129212fc-73c8-48d5-a500-6408c00e7bbf",
           "word": "présenter ses excuses",
           "en": "to apologize",
           "vi": "xin lỗi",
@@ -11464,6 +11905,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "pray-zahn-TAY say zek-SKYUZ — formal-register apology; literally 'present one's excuses'"
         },
         {
+          cell_id: "c4b46ffd-9e7a-4ee7-9be8-bb4964d9a483",
           "word": "assumer",
           "en": "to take responsibility",
           "vi": "nhận trách nhiệm",
@@ -11474,12 +11916,14 @@ export const lessons: FrenchLesson[] =           [
       ],
       "dialogue": [
         {
+          cell_id: "b52baf5a-c9ec-4f23-860e-ea2ad351f0d1",
           "speaker": "Directrice générale",
           "text": "Je veux être claire: nous ne sommes pas ici pour minimiser l'erreur, mais pour l'assumer et la réparer.",
           "vi": "Tôi muốn nói rõ: chúng tôi không ở đây để giảm nhẹ sai sót, mà để nhận và sửa nó.",
           "en": "Let me be clear: we're not here to minimize the error, but to own it and put it right."
         },
         {
+          cell_id: "01efd0c6-61fb-44a0-968b-0339812989dd",
           "speaker": "Journaliste",
           "text": "Qui, précisément, portera la responsabilité de cette défaillance ?",
           "vi": "Chính xác thì ai sẽ chịu trách nhiệm về sự cố này?",
@@ -11531,6 +11975,7 @@ export const lessons: FrenchLesson[] =           [
       ],
       "vocabulary": [
         {
+          cell_id: "cccc1c28-2678-4a4c-953c-de06d4fe3b6b",
           "word": "non attribuable",
           "en": "not attributable",
           "vi": "không gán nguồn trực tiếp",
@@ -11539,6 +11984,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "nohn nah-tree-byu-AH-bluh — press-relations term meaning the source must remain unidentified"
         },
         {
+          cell_id: "32d20fc0-574d-4eba-b313-d547a2f1bad3",
           "word": "le contexte",
           "en": "context",
           "vi": "bối cảnh",
@@ -11549,12 +11995,14 @@ export const lessons: FrenchLesson[] =           [
       ],
       "dialogue": [
         {
+          cell_id: "416347cd-4114-4f95-8c8b-3af3bb600230",
           "speaker": "Conseiller presse",
           "text": "Cette partie peut éclairer votre papier, mais elle ne doit pas être citée comme déclaration officielle.",
           "vi": "Phần này có thể giúp bài viết sáng rõ hơn, nhưng không được trích như tuyên bố chính thức.",
           "en": "This part can inform your piece, but it mustn't be quoted as an official statement."
         },
         {
+          cell_id: "f09ab98e-91c9-4d8f-8e08-fd67c5095fe5",
           "speaker": "Journaliste",
           "text": "Je peux donc utiliser le raisonnement, mais pas vous l'attribuer nommément.",
           "vi": "Vậy tôi có thể dùng logic lập luận, nhưng không gán tên ông/bà.",
@@ -11606,6 +12054,7 @@ export const lessons: FrenchLesson[] =           [
       ],
       "vocabulary": [
         {
+          cell_id: "077cacc6-248e-47e1-a6e7-ba8e5e51ca78",
           "word": "contester une prémisse",
           "en": "to challenge a premise",
           "vi": "phản đối một tiền đề",
@@ -11614,6 +12063,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "kohn-tes-TAY oon pray-MEESS — formal-register pushback; less aggressive than 'rejeter'"
         },
         {
+          cell_id: "bd3f0b7a-f0f1-43bb-9572-5c911a12a249",
           "word": "la langue de bois",
           "en": "evasive bureaucratic language",
           "vi": "ngôn ngữ sáo rỗng né tránh",
@@ -11624,12 +12074,14 @@ export const lessons: FrenchLesson[] =           [
       ],
       "dialogue": [
         {
+          cell_id: "bf620be8-9786-4555-a736-08066fea154c",
           "speaker": "Journaliste",
           "text": "Vous avez attendu que l'affaire explose pour admettre l'échec, c'est bien cela ?",
           "vi": "Các ông/bà đợi vụ việc bùng lên mới thừa nhận thất bại, đúng không?",
           "en": "You waited for the affair to blow up before admitting the failure — is that right?"
         },
         {
+          cell_id: "6e01598f-780a-4da1-a4cc-84df6ad3be6a",
           "speaker": "Porte-parole",
           "text": "Non, je conteste cette prémisse. En revanche, vous avez raison sur un point: notre communication initiale a été insuffisante.",
           "vi": "Không, tôi phản đối tiền đề đó. Ngược lại, anh/chị đúng ở một điểm: truyền thông ban đầu của chúng tôi chưa đủ.",
@@ -11681,6 +12133,7 @@ export const lessons: FrenchLesson[] =           [
       ],
       "vocabulary": [
         {
+          cell_id: "23ca81b2-7d71-415c-8a09-5e0993235342",
           "word": "un porte-parole",
           "en": "spokesperson",
           "vi": "người phát ngôn",
@@ -11689,6 +12142,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "uhn PORT-pah-ROHL — invariant in gender; same form for male and female spokesperson"
         },
         {
+          cell_id: "04a690c5-408e-4043-9e88-e53794296d17",
           "word": "une mise à jour",
           "en": "update",
           "vi": "cập nhật",
@@ -11699,12 +12153,14 @@ export const lessons: FrenchLesson[] =           [
       ],
       "dialogue": [
         {
+          cell_id: "fd089f0e-9525-4ce9-ade5-29d5ae2e3657",
           "speaker": "Porte-parole",
           "text": "Je vous propose de commencer par les trois mises à jour confirmées cette semaine.",
           "vi": "Tôi đề nghị bắt đầu bằng ba cập nhật đã xác nhận trong tuần này.",
           "en": "I suggest we start with the three updates confirmed this week."
         },
         {
+          cell_id: "18dd3c97-ac30-4065-a278-6ec73479f432",
           "speaker": "Journaliste",
           "text": "Pourquoi refusez-vous de répondre sur le dossier encore ouvert ?",
           "vi": "Vì sao ông/bà từ chối trả lời về hồ sơ còn mở?",
@@ -11756,6 +12212,7 @@ export const lessons: FrenchLesson[] =           [
       ],
       "vocabulary": [
         {
+          cell_id: "120633fd-5fdc-4971-91ac-85ba40ce2ba3",
           "word": "les réseaux sociaux",
           "en": "social media",
           "vi": "mạng xã hội",
@@ -11764,6 +12221,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "lay ray-ZOH soh-SYOH — standard French; 'social media' is sometimes borrowed but 'réseaux sociaux' is preferred in institutional copy"
         },
         {
+          cell_id: "a859c34e-4b58-48aa-8e9c-f959a0cf17ee",
           "word": "improvisé",
           "en": "improvised",
           "vi": "ứng biến tùy tiện",
@@ -11774,12 +12232,14 @@ export const lessons: FrenchLesson[] =           [
       ],
       "dialogue": [
         {
+          cell_id: "a1d28f83-2c65-4506-993a-6aaf4bc6291b",
           "speaker": "Community manager",
           "text": "Cette réponse est trop familière pour un compte officiel.",
           "vi": "Câu trả lời này quá thân mật đối với tài khoản chính thức.",
           "en": "This reply is too informal for an official account."
         },
         {
+          cell_id: "64ff9784-e4ff-4ffa-8c44-6a434053dc4f",
           "speaker": "Directrice communication",
           "text": "Gardons trois phrases: position, action, lien vers la mise à jour complète.",
           "vi": "Giữ ba câu: lập trường, hành động, link tới bản cập nhật đầy đủ.",

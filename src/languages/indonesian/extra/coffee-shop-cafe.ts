@@ -16,6 +16,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   /** Indonesian word/phrase. */
   word: string;
   /** English meaning. */
@@ -31,6 +32,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   /** Indonesian line. */
   text: string;
@@ -193,6 +195,7 @@ export const lessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: separate `pesan kopi` (order coffee), `nongkrong` (hang out), `meja kosong` (empty table), `password Wi-Fi`, and `bayar di kasir` (pay at the cashier). Indonesian has no verb conjugation, so cafe sentences stay compact: `Saya mau pesan...`, `Ada meja kosong?`, `Password Wi-Fi-nya apa?`",
     vocabulary: [
       {
+        cell_id: "c0ab7b83-1f00-49e6-a2a9-0b07e6a2b519",
         word: "kedai kopi",
         en: "coffee shop",
         vi: "quán cà phê",
@@ -201,6 +204,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "ke-DAI KO-pi",
       },
       {
+        cell_id: "d98c4341-0f64-445d-9604-e4e85fb1e053",
         word: "pesan kopi",
         en: "order coffee",
         vi: "gọi cà phê",
@@ -209,6 +213,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "PE-san KO-pi",
       },
       {
+        cell_id: "1ffce0c0-fbdd-4188-a652-e6fd5e9ee994",
         word: "es kopi susu",
         en: "iced milk coffee",
         vi: "cà phê sữa đá",
@@ -217,6 +222,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "es KO-pi SOO-soo",
       },
       {
+        cell_id: "7c0c5312-3d44-4aed-9bb8-23bf373d3456",
         word: "barista",
         en: "barista",
         vi: "barista / người pha cà phê",
@@ -225,6 +231,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "ba-RIS-ta",
       },
       {
+        cell_id: "c5c579a8-4bb0-47c8-b151-7f434f6b0c14",
         word: "nongkrong",
         en: "hang out",
         vi: "ngồi chơi / tụ tập",
@@ -233,6 +240,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "NONG-krong",
       },
       {
+        cell_id: "344cb4f4-66ed-47af-8058-3b9046e35381",
         word: "Wi-Fi",
         en: "Wi-Fi",
         vi: "Wi-Fi",
@@ -241,6 +249,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "WAI-fai",
       },
       {
+        cell_id: "39e6178c-bd18-43bf-9ce8-75a0a50dcb77",
         word: "meja kosong",
         en: "empty table",
         vi: "bàn trống",
@@ -249,6 +258,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "ME-ja KO-song",
       },
       {
+        cell_id: "a0b1c0b6-e312-4d7c-ac2c-9d2402ef6563",
         word: "bayar di kasir",
         en: "pay at the cashier",
         vi: "trả tiền ở quầy thu ngân",
@@ -257,6 +267,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "BA-yar di KA-sir",
       },
       {
+        cell_id: "af664970-bef1-4286-8239-1f2b23f7aa9e",
         word: "jangan terlalu manis",
         en: "not too sweet",
         vi: "đừng ngọt quá",
@@ -265,6 +276,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "JA-ngan ter-LA-loo MA-nis",
       },
       {
+        cell_id: "5454e197-0631-4b9d-abe8-e926e6c1e15e",
         word: "pesan lagi",
         en: "order again / order more",
         vi: "gọi thêm",
@@ -275,30 +287,35 @@ export const lessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "63209fb3-b3b8-4ea9-839f-a9dcacd4d488",
         speaker: "Pelanggan",
         text: "Mas, saya mau pesan es kopi susu satu.",
         vi: "Anh ơi, tôi muốn gọi một ly cà phê sữa đá.",
         en: "Sir, I want to order one iced milk coffee.",
       },
       {
+        cell_id: "4b7fe2d8-608d-453d-b718-3a98fdc916ab",
         speaker: "Barista",
         text: "Mau gula normal atau tidak terlalu manis?",
         vi: "Muốn đường bình thường hay không quá ngọt?",
         en: "Do you want normal sugar or not too sweet?",
       },
       {
+        cell_id: "8ac98a12-a5cc-442d-8c8d-eda388fe93b3",
         speaker: "Pelanggan",
         text: "Jangan terlalu manis, ya. Password Wi-Fi-nya apa?",
         vi: "Đừng ngọt quá nhé. Mật khẩu Wi-Fi là gì?",
         en: "Not too sweet, please. What is the Wi-Fi password?",
       },
       {
+        cell_id: "fb6b8ff1-cad5-4089-b11f-86bc24428bbd",
         speaker: "Barista",
         text: "Password-nya ada di struk. Bayar di kasir dulu, ya.",
         vi: "Mật khẩu ở trên hóa đơn. Trả tiền ở quầy trước nhé.",
         en: "The password is on the receipt. Please pay at the cashier first.",
       },
       {
+        cell_id: "04db353e-9733-45d7-956f-1a42ada3d166",
         speaker: "Pelanggan",
         text: "Baik. Ada meja kosong dekat colokan?",
         vi: "Vâng. Có bàn trống gần ổ cắm không?",

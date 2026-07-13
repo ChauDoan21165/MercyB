@@ -12,6 +12,7 @@ type LessonSentence = {
 };
 
 type VocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -21,6 +22,7 @@ type VocabEntry = {
 };
 
 type DialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -150,34 +152,38 @@ export const discussingSalaryBenefitsLessons: IndonesianLesson[] = [
     tip_advice_en:
       "Useful HR question frames: `Saya ingin memastikan rincian...`, `Apakah ... termasuk atau terpisah?`, `Berapa jatah...?`. Vietnamese speakers should distinguish `gaji pokok` (base salary), `tunjangan` (allowance/benefit), and `bonus` (bonus).",
     vocabulary: [
-      { word: "gaji", en: "salary", vi: "lương", pos: "noun", pronunciation_vi: "GA-ji", pronunciation_en: "GA-jee" },
-      { word: "slip gaji", en: "payslip", vi: "phiếu lương", pos: "noun phrase", pronunciation_vi: "SLIP GA-ji", pronunciation_en: "SLIP GA-jee" },
-      { word: "tunjangan", en: "allowance / benefit", vi: "phụ cấp / phúc lợi", pos: "noun", pronunciation_vi: "tun-JANG-an", pronunciation_en: "toon-JANG-an" },
-      { word: "gaji pokok", en: "base salary", vi: "lương cơ bản", pos: "noun phrase", pronunciation_vi: "GA-ji PO-kok", pronunciation_en: "GA-jee PO-kok" },
-      { word: "BPJS", en: "Indonesian social security program", vi: "chương trình bảo hiểm xã hội Indonesia", pos: "noun", pronunciation_vi: "be-pe-je-ES", pronunciation_en: "be-pe-je-ES" },
-      { word: "cuti tahunan", en: "annual leave", vi: "nghỉ phép năm", pos: "noun phrase", pronunciation_vi: "CU-ti ta-HU-nan", pronunciation_en: "CHOO-ti ta-HOO-nan" },
-      { word: "bonus tahunan", en: "annual bonus", vi: "thưởng hằng năm", pos: "noun phrase", pronunciation_vi: "BO-nus ta-HU-nan", pronunciation_en: "BO-nus ta-HOO-nan" },
+      { cell_id: "ddd715d5-ba0d-4b2e-a2fc-3c3f44ebc52d", word: "gaji", en: "salary", vi: "lương", pos: "noun", pronunciation_vi: "GA-ji", pronunciation_en: "GA-jee" },
+      { cell_id: "73f59ad2-2cba-44dd-abdc-7c8cdfe8329a", word: "slip gaji", en: "payslip", vi: "phiếu lương", pos: "noun phrase", pronunciation_vi: "SLIP GA-ji", pronunciation_en: "SLIP GA-jee" },
+      { cell_id: "1f04b94c-a0cb-4b4e-8e0f-c260642d87a7", word: "tunjangan", en: "allowance / benefit", vi: "phụ cấp / phúc lợi", pos: "noun", pronunciation_vi: "tun-JANG-an", pronunciation_en: "toon-JANG-an" },
+      { cell_id: "59bbfed2-fbf1-45aa-b4b3-1fe5b42e023e", word: "gaji pokok", en: "base salary", vi: "lương cơ bản", pos: "noun phrase", pronunciation_vi: "GA-ji PO-kok", pronunciation_en: "GA-jee PO-kok" },
+      { cell_id: "a46a98e5-559b-48f3-baa4-02c3a061ca20", word: "BPJS", en: "Indonesian social security program", vi: "chương trình bảo hiểm xã hội Indonesia", pos: "noun", pronunciation_vi: "be-pe-je-ES", pronunciation_en: "be-pe-je-ES" },
+      { cell_id: "4cf540d3-0beb-469b-a9b1-fa0b5f479673", word: "cuti tahunan", en: "annual leave", vi: "nghỉ phép năm", pos: "noun phrase", pronunciation_vi: "CU-ti ta-HU-nan", pronunciation_en: "CHOO-ti ta-HOO-nan" },
+      { cell_id: "1bb910dd-e69a-4398-b402-1a3f3635abec", word: "bonus tahunan", en: "annual bonus", vi: "thưởng hằng năm", pos: "noun phrase", pronunciation_vi: "BO-nus ta-HU-nan", pronunciation_en: "BO-nus ta-HOO-nan" },
     ],
     dialogue: [
       {
+        cell_id: "c5c60e84-6ad4-4612-be0a-e98d3f0618b5",
         speaker: "Karyawan",
         text: "Bu, saya ingin memastikan rincian gaji bulanan saya.",
         vi: "Chị ơi, tôi muốn xác nhận chi tiết lương hằng tháng của tôi.",
         en: "Ma'am, I would like to confirm the details of my monthly salary.",
       },
       {
+        cell_id: "13935aca-ac28-4ed6-94d3-4171e12708bc",
         speaker: "HRD",
         text: "Silakan. Rinciannya ada di slip gaji setiap akhir bulan.",
         vi: "Mời anh/chị. Chi tiết có trong phiếu lương mỗi cuối tháng.",
         en: "Sure. The details are in the payslip at the end of each month.",
       },
       {
+        cell_id: "d7059e42-9918-4601-b522-f71c118c8ee8",
         speaker: "Karyawan",
         text: "Apakah tunjangan transportasi termasuk dalam gaji pokok?",
         vi: "Phụ cấp đi lại có bao gồm trong lương cơ bản không?",
         en: "Is the transportation allowance included in the base salary?",
       },
       {
+        cell_id: "731880f0-9922-4021-8d15-59a639b21b26",
         speaker: "HRD",
         text: "Tidak, tunjangan itu terpisah dan tertulis di kontrak kerja.",
         vi: "Không, phụ cấp đó tách riêng và được ghi trong hợp đồng lao động.",
@@ -308,34 +314,38 @@ export const discussingSalaryBenefitsLessons: IndonesianLesson[] = [
     tip_advice_en:
       "Polite templates: `Apakah masih ada ruang untuk negosiasi gaji?`, `Berdasarkan pengalaman saya...`, `Bolehkah saya meminta waktu...?`. Avoid blunt lines like `Gajinya kurang`; use `ekspektasi gaji` and a concrete reason.",
     vocabulary: [
-      { word: "negosiasi gaji", en: "salary negotiation", vi: "thương lượng lương", pos: "noun phrase", pronunciation_vi: "ne-go-si-A-si GA-ji", pronunciation_en: "ne-go-si-A-si GA-jee" },
-      { word: "ekspektasi gaji", en: "salary expectation", vi: "mức lương kỳ vọng", pos: "noun phrase", pronunciation_vi: "eks-pek-TA-si GA-ji", pronunciation_en: "eks-pek-TA-si GA-jee" },
-      { word: "kontrak kerja", en: "employment contract", vi: "hợp đồng lao động", pos: "noun phrase", pronunciation_vi: "KON-trak KER-ja", pronunciation_en: "KON-trak KER-ja" },
-      { word: "masa percobaan", en: "probation period", vi: "thời gian thử việc", pos: "noun phrase", pronunciation_vi: "MA-sa per-CO-ba-an", pronunciation_en: "MA-sa per-CHO-ba-an" },
-      { word: "kenaikan gaji", en: "salary increase", vi: "tăng lương", pos: "noun phrase", pronunciation_vi: "ke-NAI-kan GA-ji", pronunciation_en: "ke-NAI-kan GA-jee" },
-      { word: "lembur", en: "overtime", vi: "làm thêm giờ", pos: "noun / verb", pronunciation_vi: "LEM-bur", pronunciation_en: "LEM-boor" },
-      { word: "tawaran", en: "offer", vi: "đề nghị / offer", pos: "noun", pronunciation_vi: "TA-war-an", pronunciation_en: "TA-war-an" },
+      { cell_id: "33af3625-7674-4ffe-b1d5-fd1b5b644dff", word: "negosiasi gaji", en: "salary negotiation", vi: "thương lượng lương", pos: "noun phrase", pronunciation_vi: "ne-go-si-A-si GA-ji", pronunciation_en: "ne-go-si-A-si GA-jee" },
+      { cell_id: "38287d5c-acdb-420f-bacc-a19d5dc481b1", word: "ekspektasi gaji", en: "salary expectation", vi: "mức lương kỳ vọng", pos: "noun phrase", pronunciation_vi: "eks-pek-TA-si GA-ji", pronunciation_en: "eks-pek-TA-si GA-jee" },
+      { cell_id: "1cfec9ab-98cb-4479-8d7a-a4bfd3815e88", word: "kontrak kerja", en: "employment contract", vi: "hợp đồng lao động", pos: "noun phrase", pronunciation_vi: "KON-trak KER-ja", pronunciation_en: "KON-trak KER-ja" },
+      { cell_id: "1fdc6a96-1c70-41c7-ac8c-a1c46982e060", word: "masa percobaan", en: "probation period", vi: "thời gian thử việc", pos: "noun phrase", pronunciation_vi: "MA-sa per-CO-ba-an", pronunciation_en: "MA-sa per-CHO-ba-an" },
+      { cell_id: "ec08ba8a-2374-41fa-bfba-09f4a56ec119", word: "kenaikan gaji", en: "salary increase", vi: "tăng lương", pos: "noun phrase", pronunciation_vi: "ke-NAI-kan GA-ji", pronunciation_en: "ke-NAI-kan GA-jee" },
+      { cell_id: "bcf1adef-f5a3-4e90-8838-cadf6175309b", word: "lembur", en: "overtime", vi: "làm thêm giờ", pos: "noun / verb", pronunciation_vi: "LEM-bur", pronunciation_en: "LEM-boor" },
+      { cell_id: "1c73d0e7-c43d-4341-9fe8-416fcec53c8e", word: "tawaran", en: "offer", vi: "đề nghị / offer", pos: "noun", pronunciation_vi: "TA-war-an", pronunciation_en: "TA-war-an" },
     ],
     dialogue: [
       {
+        cell_id: "dd4b4fda-650d-45f4-84d5-036bf70c61f7",
         speaker: "Kandidat",
         text: "Terima kasih atas tawarannya. Apakah masih ada ruang untuk negosiasi gaji?",
         vi: "Cảm ơn về lời đề nghị. Vẫn còn dư địa để thương lượng lương không?",
         en: "Thank you for the offer. Is there still room for salary negotiation?",
       },
       {
+        cell_id: "3ed71b63-687b-48b1-bd5e-31061b69c48c",
         speaker: "HRD",
         text: "Boleh. Berapa ekspektasi gaji Anda?",
         vi: "Được. Mức lương kỳ vọng của anh/chị là bao nhiêu?",
         en: "Sure. What is your salary expectation?",
       },
       {
+        cell_id: "6d499612-edf8-4ddc-a7d4-faed6fe91bf8",
         speaker: "Kandidat",
         text: "Berdasarkan pengalaman saya, ekspektasi gaji saya sekitar delapan juta rupiah.",
         vi: "Dựa trên kinh nghiệm của tôi, mức lương kỳ vọng của tôi khoảng tám triệu rupiah.",
         en: "Based on my experience, my salary expectation is around eight million rupiah.",
       },
       {
+        cell_id: "d0ed7102-a8e8-4137-9c63-0d3411252c2a",
         speaker: "HRD",
         text: "Baik, kami akan meninjau kembali tawaran dan isi kontrak kerja.",
         vi: "Vâng, chúng tôi sẽ xem xét lại offer và nội dung hợp đồng lao động.",

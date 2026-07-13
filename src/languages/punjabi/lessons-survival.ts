@@ -37,6 +37,7 @@ export type PunjabiSurvivalPhrase = {
 };
 
 export type PunjabiSurvivalVocab = {
+  cell_id?: string;
   pa: string;
   roman: string;
   vi: string;

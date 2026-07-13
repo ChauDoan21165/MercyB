@@ -21,6 +21,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   /** Indonesian word/phrase. */
   word: string;
   /** English meaning. */
@@ -36,6 +37,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   /** Indonesian line. */
   text: string;
@@ -226,6 +228,7 @@ export const lessons: IndonesianLesson[] = [
       "Useful patterns: `Saya ingin memahami risikonya dulu`, `Apakah ada biaya tambahan?`, and `Produk ini cocok untuk tujuan jangka pendek atau panjang?` In Indonesian, adjectives usually follow nouns: `investasi kecil`, `jangka pendek`, `risiko tinggi`.",
     vocabulary: [
       {
+        cell_id: "de38f78d-053b-4425-9701-0ede53d1ee72",
         word: "tabungan",
         en: "savings; savings account",
         vi: "tiền tiết kiệm; tài khoản tiết kiệm",
@@ -234,6 +237,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "ta-BOO-ngan",
       },
       {
+        cell_id: "f2713313-fda4-46f2-ad67-510dafb8995d",
         word: "deposito",
         en: "time deposit",
         vi: "tiền gửi kỳ hạn",
@@ -242,6 +246,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "deh-po-SEE-to",
       },
       {
+        cell_id: "ffa18a1c-fe62-4f53-9a71-78743f781834",
         word: "reksa dana",
         en: "mutual fund; investment fund",
         vi: "quỹ tương hỗ; quỹ đầu tư",
@@ -250,6 +255,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "REK-sa DA-na",
       },
       {
+        cell_id: "0d719bdf-5f29-41f8-bc63-0720e7a0cda6",
         word: "risiko",
         en: "risk",
         vi: "rủi ro",
@@ -258,6 +264,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "REE-see-ko",
       },
       {
+        cell_id: "d0e3dd0c-9a9c-45b2-a115-a1d749996439",
         word: "bunga",
         en: "interest",
         vi: "lãi; lãi suất",
@@ -266,6 +273,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "BOONG-a",
       },
       {
+        cell_id: "4f9e83e1-fec3-48a0-b25c-50e94b99a810",
         word: "investasi kecil",
         en: "small investment",
         vi: "khoản đầu tư nhỏ",
@@ -274,6 +282,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "in-ves-TA-see KEH-chil",
       },
       {
+        cell_id: "c8c0cae0-f32e-40da-a77d-7f59dceefd07",
         word: "tujuan keuangan",
         en: "financial goal",
         vi: "mục tiêu tài chính",
@@ -282,6 +291,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "too-JOO-an keh-OO-ang-an",
       },
       {
+        cell_id: "f489597e-e809-4767-a5f0-e73bc347c787",
         word: "konsultasi bank",
         en: "bank consultation",
         vi: "tư vấn với ngân hàng",
@@ -290,6 +300,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "kon-sool-TA-see bank",
       },
       {
+        cell_id: "f437263d-2a8d-4dda-9fea-11abf79a5a3f",
         word: "jatuh tempo",
         en: "maturity date; due date",
         vi: "ngày đáo hạn; đến hạn",
@@ -298,6 +309,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "ja-TOOH TEM-po",
       },
       {
+        cell_id: "478023d4-6ef6-43fb-ada5-d251aa803dab",
         word: "jangka pendek",
         en: "short term",
         vi: "ngắn hạn",
@@ -308,36 +320,42 @@ export const lessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "f303219e-0261-490f-9fcb-1c15d2e553d3",
         speaker: "Nasabah",
         text: "Selamat pagi. Saya ingin konsultasi tentang tabungan dan investasi kecil.",
         vi: "Chào buổi sáng. Tôi muốn tư vấn về tiết kiệm và đầu tư nhỏ.",
         en: "Good morning. I would like to consult about savings and small investments.",
       },
       {
+        cell_id: "5c07bce8-39d4-4f45-9cb8-fb7cffa9d37f",
         speaker: "Petugas bank",
         text: "Baik. Apa tujuan keuangan Bapak/Ibu?",
         vi: "Vâng. Mục tiêu tài chính của anh/chị là gì?",
         en: "Sure. What is your financial goal?",
       },
       {
+        cell_id: "2b5dd0dd-35f4-45a5-9229-b0108e0896d1",
         speaker: "Nasabah",
         text: "Saya ingin menyiapkan dana darurat dan mulai investasi kecil setiap bulan.",
         vi: "Tôi muốn chuẩn bị quỹ khẩn cấp và bắt đầu đầu tư nhỏ mỗi tháng.",
         en: "I want to prepare an emergency fund and start a small investment every month.",
       },
       {
+        cell_id: "12905191-4b96-485b-9195-79853fc3f457",
         speaker: "Petugas bank",
         text: "Untuk dana darurat, tabungan lebih fleksibel daripada deposito.",
         vi: "Đối với quỹ khẩn cấp, tài khoản tiết kiệm linh hoạt hơn tiền gửi kỳ hạn.",
         en: "For an emergency fund, savings are more flexible than a time deposit.",
       },
       {
+        cell_id: "b7d03a18-e184-484c-87db-1d7d84b1db6b",
         speaker: "Nasabah",
         text: "Kalau reksa dana, bagaimana risiko dan biayanya?",
         vi: "Nếu là quỹ tương hỗ, rủi ro và chi phí như thế nào?",
         en: "For mutual funds, what are the risks and fees like?",
       },
       {
+        cell_id: "98d3acbc-7c2b-4739-8671-d8100149888a",
         speaker: "Petugas bank",
         text: "Kita bisa lihat profil risiko dulu sebelum memilih produk.",
         vi: "Chúng ta có thể xem hồ sơ rủi ro trước khi chọn sản phẩm.",

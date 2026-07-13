@@ -31,6 +31,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   /** Indonesian word/phrase. */
   word: string;
   /** English meaning. */
@@ -46,6 +47,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   /** Indonesian line. */
   text: string;
@@ -286,6 +288,7 @@ export const lessons: IndonesianLesson[] = [
     vocabulary: [
       // Core call actions
       {
+        cell_id: "68febb81-5b48-407d-981b-7409f24a05f4",
         word: "telepon",
         en: "telephone / to call",
         vi: "điện thoại / gọi điện",
@@ -294,6 +297,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "te-LE-pon — clear `p`, not 'phone'; casual spelling `telpon`",
       },
       {
+        cell_id: "7a33c5bb-763a-4afd-9873-fb5d7986bdac",
         word: "menelepon",
         en: "to make a call",
         vi: "gọi điện (cho ai)",
@@ -302,6 +306,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "me-ne-LE-pon — meN- + telepon; `menelepon teman` = to call a friend",
       },
       {
+        cell_id: "8068bbca-cdf7-431b-908e-eb804e446430",
         word: "menghubungi",
         en: "to contact / reach",
         vi: "liên lạc / liên hệ",
@@ -310,6 +315,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "meng-hu-BU-ngi — root `hubung` (to connect)",
       },
       {
+        cell_id: "68928a53-52c7-475f-80b1-68010a1362b5",
         word: "halo",
         en: "hello (on the phone)",
         vi: "alô",
@@ -318,6 +324,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "HA-lo — the same as English 'hello'",
       },
       {
+        cell_id: "0eff8e64-763c-430e-8877-52aa8d2fbb36",
         word: "pesan",
         en: "message",
         vi: "lời nhắn / tin nhắn",
@@ -326,6 +333,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "PE-san — `meninggalkan pesan` = leave a message; also means 'to order'",
       },
       {
+        cell_id: "f412d1e1-8c4d-497e-a5a2-b85f92add5dd",
         word: "menyambungkan",
         en: "to put through / connect",
         vi: "nối máy / chuyển máy",
@@ -334,6 +342,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "me-nyam-BUNG-kan — root `sambung` (to join)",
       },
       {
+        cell_id: "87fe8e9f-9c8c-4cb8-a199-db7a29d07032",
         word: "sebentar",
         en: "a moment / briefly",
         vi: "một lát",
@@ -342,6 +351,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "se-ben-TAR — `tunggu sebentar` = wait a moment; casual `bentar`",
       },
       {
+        cell_id: "6a71ae3b-914b-4601-85e1-9833f4baffeb",
         word: "beliau",
         en: "he/she (respectful)",
         vi: "ông/bà ấy (kính trọng)",
@@ -351,6 +361,7 @@ export const lessons: IndonesianLesson[] = [
       },
       // Customer service & phone admin
       {
+        cell_id: "c4b8cf64-49ed-446c-9a53-4fea4693687e",
         word: "pelanggan",
         en: "customer / subscriber",
         vi: "khách hàng / thuê bao",
@@ -359,6 +370,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "pe-LANG-gan — `nomor pelanggan` = customer number",
       },
       {
+        cell_id: "65812555-a4b4-413c-aa47-9ed51d0901d6",
         word: "layanan pelanggan",
         en: "customer service",
         vi: "dịch vụ khách hàng",
@@ -367,6 +379,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "la-YA-nan pe-LANG-gan — root `layan` (to serve)",
       },
       {
+        cell_id: "bc19831f-d43b-4fcf-b8af-dd2fa87f24cf",
         word: "komplain / keluhan",
         en: "complaint",
         vi: "khiếu nại / phàn nàn",
@@ -375,6 +388,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "kom-PLAIN / ke-LU-han — `komplain` is casual, `keluhan` formal",
       },
       {
+        cell_id: "9a46c099-ce69-41de-9b5e-f80299364c41",
         word: "pulsa",
         en: "phone credit / airtime",
         vi: "tiền/thẻ điện thoại",
@@ -383,6 +397,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "PUL-sa — `beli pulsa` = top up; different from `kuota` (data)",
       },
       {
+        cell_id: "82eb911d-1a87-4f05-98ca-0bfc09a2d8fc",
         word: "kuota",
         en: "data quota",
         vi: "dung lượng data",
@@ -391,6 +406,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "ku-O-ta — internet data; `kuota habis` = out of data",
       },
       {
+        cell_id: "ed01f3b1-2499-4f47-9f1d-6c3e8e2ae6cb",
         word: "sinyal",
         en: "signal / reception",
         vi: "sóng",
@@ -399,6 +415,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "si-NYAL — `ny` like Vietnamese 'nh'; `sinyal jelek` = bad signal",
       },
       {
+        cell_id: "741e6f1f-827e-4ff5-9c62-42cf098f1ce0",
         word: "nomor",
         en: "number",
         vi: "số",
@@ -407,6 +424,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "NO-mor — `salah nomor` = wrong number; casual `nomer`",
       },
       {
+        cell_id: "e2e40588-0e7b-45e1-a39b-b0a7cec21461",
         word: "kosong",
         en: "zero (in phone numbers) / empty",
         vi: "số 0 / trống",
@@ -416,6 +434,7 @@ export const lessons: IndonesianLesson[] = [
       },
       // Providers & connection
       {
+        cell_id: "bfa193dc-f5c4-4139-8761-6c887c42dc8e",
         word: "Telkomsel",
         en: "Telkomsel (largest mobile carrier)",
         vi: "Telkomsel (nhà mạng lớn nhất)",
@@ -424,6 +443,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "TEL-kom-sel — Indonesia's widest-coverage carrier",
       },
       {
+        cell_id: "d7b34e5e-c356-4262-9679-056eb6604a7d",
         word: "operator / provider",
         en: "mobile network operator",
         vi: "nhà mạng",
@@ -432,6 +452,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "o-pe-RA-tor — Telkomsel, Indosat, XL, Tri are the main carriers",
       },
       {
+        cell_id: "685fc364-82b1-4b71-9704-e13b5e4262a5",
         word: "salah sambung",
         en: "wrong number (mis-connected)",
         vi: "gọi nhầm máy",
@@ -440,6 +461,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "SA-lah SAM-bung — say it when you've dialed the wrong line",
       },
       {
+        cell_id: "2f40c552-954a-4af7-9ff4-877508e377f7",
         word: "putus",
         en: "cut off / disconnected",
         vi: "đứt / mất kết nối",
@@ -451,48 +473,56 @@ export const lessons: IndonesianLesson[] = [
     dialogue: [
       // Calling a company, the person is out, leaving a message
       {
+        cell_id: "0a13e753-1e3b-4de1-9ac6-553e0c9fdf5f",
         speaker: "Penerima",
         text: "Halo, PT Maju Jaya, selamat pagi. Ada yang bisa dibantu?",
         vi: "Alô, công ty Maju Jaya, chào buổi sáng. Tôi có thể giúp gì ạ?",
         en: "Hello, PT Maju Jaya, good morning. How can I help?",
       },
       {
+        cell_id: "578f3946-d942-4a9d-afdf-901028c91f91",
         speaker: "Penelepon",
         text: "Selamat pagi. Bisa bicara dengan Ibu Sari?",
         vi: "Chào buổi sáng. Cho tôi nói chuyện với chị Sari được không?",
         en: "Good morning. May I speak with Ms. Sari?",
       },
       {
+        cell_id: "91abfe1d-1dde-4c3a-8e9a-ba401cb95b47",
         speaker: "Penerima",
         text: "Maaf, ini dengan siapa, ya?",
         vi: "Xin lỗi, cho hỏi đây là ai ạ?",
         en: "Sorry, who's calling, please?",
       },
       {
+        cell_id: "59c52bbc-58d1-4417-8048-2b4e532912f9",
         speaker: "Penelepon",
         text: "Saya Hùng dari Vietnam, rekan kerja Bu Sari.",
         vi: "Tôi là Hùng từ Việt Nam, đồng nghiệp của chị Sari.",
         en: "This is Hung from Vietnam, Ms. Sari's colleague.",
       },
       {
+        cell_id: "8a5f2da5-3e71-4a2f-84e6-020448b5b761",
         speaker: "Penerima",
         text: "Mohon tunggu sebentar... Maaf, beliau sedang rapat.",
         vi: "Xin chờ một lát... Xin lỗi, chị ấy đang họp.",
         en: "One moment please... Sorry, she's in a meeting.",
       },
       {
+        cell_id: "ece083c6-1f01-4820-84aa-0418d8b497b3",
         speaker: "Penelepon",
         text: "Apakah saya bisa meninggalkan pesan?",
         vi: "Tôi có thể để lại lời nhắn được không?",
         en: "May I leave a message?",
       },
       {
+        cell_id: "3569c2c9-1771-4e58-94ee-e038bd2edaad",
         speaker: "Penerima",
         text: "Tentu. Silakan, nanti saya sampaikan.",
         vi: "Tất nhiên. Anh nói đi, lát nữa tôi chuyển lời.",
         en: "Of course. Go ahead, I'll pass it on.",
       },
       {
+        cell_id: "a4ec14eb-a749-4ea2-b803-a39eb6bf0013",
         speaker: "Penelepon",
         text: "Tolong sampaikan, nanti saya telepon lagi jam dua. Terima kasih atas waktunya.",
         vi: "Làm ơn nhắn lại, hai giờ chiều tôi gọi lại. Cảm ơn anh đã dành thời gian.",

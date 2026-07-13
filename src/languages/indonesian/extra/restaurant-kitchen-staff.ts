@@ -16,6 +16,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   /** Indonesian word/phrase. */
   word: string;
   /** English meaning. */
@@ -31,6 +32,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   /** Indonesian line. */
   text: string;
@@ -193,6 +195,7 @@ export const lessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: in the kitchen, learn fixed chunks instead of word-by-word translation. For example: `pesanan masuk`, `stok bahan`, `prep bahan`, `shift malam`, `komplain pelanggan`. Use short sentences with the team: `cek dulu`, `kasih tahu supervisor`, `bantu plating`, `bersihkan area kerja`. Short and efficient is the kitchen style.",
     vocabulary: [
       {
+        cell_id: "a3a030fd-f852-4665-bc47-a3ef76d4a919",
         word: "dapur restoran",
         en: "restaurant kitchen",
         vi: "bếp nhà hàng",
@@ -201,6 +204,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "DAH-poor res-to-RAHN",
       },
       {
+        cell_id: "b275d5a2-4d69-4df2-99d6-e76ffc55af15",
         word: "koki",
         en: "chef / cook",
         vi: "đầu bếp",
@@ -209,6 +213,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "KO-kee",
       },
       {
+        cell_id: "7747f0c7-6bb9-4cb1-ae1c-562fc6b2669e",
         word: "prep bahan",
         en: "prep ingredients",
         vi: "sơ chế nguyên liệu",
@@ -217,6 +222,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "prep BAH-hahn",
       },
       {
+        cell_id: "a741cca6-ed59-46bb-8fdb-0b9eda628362",
         word: "pesanan masuk",
         en: "incoming orders",
         vi: "đơn vào",
@@ -225,6 +231,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "pe-sah-NAHN MAH-sook",
       },
       {
+        cell_id: "eb9a9dd5-e9e1-46e4-8716-1a0b40b51dc4",
         word: "stok bahan",
         en: "ingredient stock",
         vi: "tồn nguyên liệu",
@@ -233,6 +240,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "stok BAH-hahn",
       },
       {
+        cell_id: "d6a0da3b-286a-4587-ac91-93d5a7cc8023",
         word: "shift malam",
         en: "night shift",
         vi: "ca đêm",
@@ -241,6 +249,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "SHIFT MAH-lahm",
       },
       {
+        cell_id: "695820a8-976a-4009-91b6-a8d8731f0ee2",
         word: "komplain pelanggan",
         en: "customer complaint",
         vi: "phàn nàn của khách",
@@ -249,6 +258,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "kom-PLINE pe-LAHNG-gahn",
       },
       {
+        cell_id: "aa1fc5b1-2b12-4eda-a31b-5351cbc3d962",
         word: "bersih dan rapi",
         en: "clean and tidy",
         vi: "sạch và gọn gàng",
@@ -259,24 +269,28 @@ export const lessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "134ed568-7b65-46a6-8d64-b1117d5f48c6",
         speaker: "Supervisor",
         text: "Pesanan masuk banyak. Tolong cek stok bahan dulu.",
         vi: "Đơn vào nhiều lắm. Làm ơn kiểm tra tồn nguyên liệu trước.",
         en: "A lot of orders are coming in. Please check the ingredient stock first.",
       },
       {
+        cell_id: "aa68b357-6b28-493d-bd6c-e0385d4962e6",
         speaker: "Koki",
         text: "Siap. Saya juga mulai prep bahan untuk menu malam.",
         vi: "Rõ. Tôi cũng bắt đầu sơ chế nguyên liệu cho menu tối.",
         en: "Ready. I will also start prepping ingredients for the evening menu.",
       },
       {
+        cell_id: "7040a5ef-1f12-4635-92de-a30f140e47cc",
         speaker: "Server",
         text: "Ada komplain pelanggan karena makanannya terlalu asin.",
         vi: "Có khách phàn nàn vì món ăn quá mặn.",
         en: "A customer complained because the food is too salty.",
       },
       {
+        cell_id: "8dc73228-6054-4405-844d-6bd9ca332203",
         speaker: "Supervisor",
         text: "Baik, kasih tahu koki dan jangan lupa bersihkan area kerja.",
         vi: "Được, báo cho đầu bếp và đừng quên dọn sạch khu vực làm việc.",

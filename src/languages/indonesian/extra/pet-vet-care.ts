@@ -17,6 +17,7 @@ type LessonSentence = {
 };
 
 type VocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -28,6 +29,7 @@ type VocabEntry = {
 };
 
 type DialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -144,6 +146,7 @@ export const petVetCareLessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: animals use the classifier 'ekor': 'seekor kucing', 'dua ekor anjing'. At the vet, describe symptoms with patterns like 'tidak mau makan', 'muntah', 'lemas', 'sejak kemarin' instead of only saying 'sick'. 'Belum' = not yet, useful for vaccine schedules: 'belum vaksin', 'belum steril'.",
     vocabulary: [
       {
+        cell_id: "87acc09c-d7aa-473b-a6ab-ad10db572af6",
         word: "dokter hewan",
         en: "veterinarian",
         vi: "bác sĩ thú y",
@@ -152,6 +155,7 @@ export const petVetCareLessons: IndonesianLesson[] = [
         pronunciation_en: "DOK-ter HEH-wan",
       },
       {
+        cell_id: "b7a15f58-c911-4de9-a51b-65126b7360a6",
         word: "kucing",
         en: "cat",
         vi: "mèo",
@@ -160,6 +164,7 @@ export const petVetCareLessons: IndonesianLesson[] = [
         pronunciation_en: "KOO-ching",
       },
       {
+        cell_id: "05eef3ca-82d7-4749-a9b0-9b399332aff4",
         word: "anjing",
         en: "dog",
         vi: "chó",
@@ -168,6 +173,7 @@ export const petVetCareLessons: IndonesianLesson[] = [
         pronunciation_en: "AN-jing",
       },
       {
+        cell_id: "ce9a807e-a571-4c44-806e-a9db9a2cebcf",
         word: "vaksin",
         en: "vaccine / to vaccinate",
         vi: "vắc xin / tiêm vắc xin",
@@ -176,6 +182,7 @@ export const petVetCareLessons: IndonesianLesson[] = [
         pronunciation_en: "VAK-seen",
       },
       {
+        cell_id: "8e987b1e-91f9-487c-a31e-4913aacfe2fd",
         word: "steril",
         en: "spay/neuter / sterile",
         vi: "triệt sản / vô trùng",
@@ -184,6 +191,7 @@ export const petVetCareLessons: IndonesianLesson[] = [
         pronunciation_en: "ste-REEL",
       },
       {
+        cell_id: "1c50b483-b753-4684-afce-9827c7150128",
         word: "sakit",
         en: "sick / painful",
         vi: "ốm / đau",
@@ -192,6 +200,7 @@ export const petVetCareLessons: IndonesianLesson[] = [
         pronunciation_en: "SA-kit",
       },
       {
+        cell_id: "65cc3d2b-e21c-4896-9ce0-87ed1dbd980f",
         word: "obat",
         en: "medicine",
         vi: "thuốc",
@@ -202,24 +211,28 @@ export const petVetCareLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "0ac25be3-e0dd-43e5-9f85-1b1ad740cfbc",
         speaker: "Pemilik",
         text: "Dok, saya mau bawa kucing saya periksa.",
         vi: "Bác sĩ ơi, tôi muốn đưa mèo của tôi đi khám.",
         en: "Doctor, I want to bring my cat for a check-up.",
       },
       {
+        cell_id: "aaebc4ab-e6fe-4e4e-ada8-43c68f6aac41",
         speaker: "Dokter Hewan",
         text: "Keluhannya apa? Sudah vaksin rabies?",
         vi: "Triệu chứng là gì? Đã tiêm vắc xin dại chưa?",
         en: "What is the complaint? Has it had the rabies vaccine?",
       },
       {
+        cell_id: "e3388d55-cb09-4233-8be0-5ac92ade91ee",
         speaker: "Pemilik",
         text: "Belum vaksin. Sejak kemarin dia tidak mau makan.",
         vi: "Chưa tiêm. Từ hôm qua nó không chịu ăn.",
         en: "Not vaccinated yet. Since yesterday it has refused to eat.",
       },
       {
+        cell_id: "331be494-bc4c-4d96-8dbf-65bdb0747a50",
         speaker: "Dokter Hewan",
         text: "Baik, kita periksa dulu. Nanti saya jelaskan obatnya.",
         vi: "Được, mình khám trước. Lát nữa tôi giải thích thuốc.",
@@ -360,6 +373,7 @@ export const petVetCareLessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: 'kandang' can mean dog kennel, cat cage, bird cage, or enclosure - broader than one specific cage type. 'Makanan hewan' is neutral; in shops you will also hear 'makanan kucing' and 'makanan anjing'. For services, both 'booking' and 'pesan jadwal' sound natural.",
     vocabulary: [
       {
+        cell_id: "be16152c-3c86-4866-b393-f036afd17095",
         word: "makanan hewan",
         en: "pet/animal food",
         vi: "đồ ăn thú cưng",
@@ -368,6 +382,7 @@ export const petVetCareLessons: IndonesianLesson[] = [
         pronunciation_en: "ma-KA-nan HEH-wan",
       },
       {
+        cell_id: "b9f3b96e-ffed-4bd8-949b-db4c01067f5e",
         word: "kandang",
         en: "cage / kennel / enclosure",
         vi: "chuồng / lồng",
@@ -376,6 +391,7 @@ export const petVetCareLessons: IndonesianLesson[] = [
         pronunciation_en: "KAN-dang",
       },
       {
+        cell_id: "00fabec8-5785-43be-a21f-cd200602e2d4",
         word: "grooming",
         en: "pet grooming",
         vi: "tắm/cắt/tỉa lông thú cưng",
@@ -384,6 +400,7 @@ export const petVetCareLessons: IndonesianLesson[] = [
         pronunciation_en: "GROO-ming",
       },
       {
+        cell_id: "1cbf286a-bec9-4e18-b120-9d825c66502a",
         word: "potong kuku",
         en: "trim nails",
         vi: "cắt móng",
@@ -392,6 +409,7 @@ export const petVetCareLessons: IndonesianLesson[] = [
         pronunciation_en: "POH-tong KOO-koo",
       },
       {
+        cell_id: "69198b3a-46a6-4f77-a87d-58c08ff76d81",
         word: "bersihkan telinga",
         en: "clean ears",
         vi: "vệ sinh tai",
@@ -400,6 +418,7 @@ export const petVetCareLessons: IndonesianLesson[] = [
         pronunciation_en: "ber-SEE-kan te-LEE-nga",
       },
       {
+        cell_id: "33442770-6a1c-4f99-9649-5b2a9b2e31ce",
         word: "penitipan hewan",
         en: "pet boarding",
         vi: "dịch vụ gửi thú cưng",
@@ -408,6 +427,7 @@ export const petVetCareLessons: IndonesianLesson[] = [
         pronunciation_en: "pe-nee-TEE-pan HEH-wan",
       },
       {
+        cell_id: "d4b998be-7c17-4dfd-8fa6-053c0330af49",
         word: "pasir kucing",
         en: "cat litter",
         vi: "cát vệ sinh mèo",
@@ -418,24 +438,28 @@ export const petVetCareLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "6dcabffe-5ba2-4b31-aa11-acf343c5f3ac",
         speaker: "Pemilik",
         text: "Mbak, saya mau booking grooming untuk kucing saya hari Sabtu.",
         vi: "Chị ơi, tôi muốn đặt lịch grooming cho mèo của tôi vào thứ Bảy.",
         en: "Miss, I want to book grooming for my cat on Saturday.",
       },
       {
+        cell_id: "f64e38ce-eed5-41b3-b1b7-556579d00c87",
         speaker: "Pet Shop",
         text: "Bisa. Mau mandi saja atau sekalian potong kuku?",
         vi: "Được. Chỉ tắm thôi hay cắt móng luôn?",
         en: "Sure. Bath only, or nail trimming too?",
       },
       {
+        cell_id: "f8d28400-03eb-4a85-8b9f-204e2df9c5de",
         speaker: "Pemilik",
         text: "Sekalian potong kuku dan bersihkan telinganya, ya.",
         vi: "Cắt móng và vệ sinh tai luôn nhé.",
         en: "Please trim the nails and clean the ears too.",
       },
       {
+        cell_id: "c31933c4-41b0-463f-8cf3-5db0b1bbb8ee",
         speaker: "Pet Shop",
         text: "Baik. Kalau perlu penitipan hewan saat mudik, kami juga ada.",
         vi: "Vâng. Nếu cần gửi thú cưng khi về quê dịp lễ, bên em cũng có.",

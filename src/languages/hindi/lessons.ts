@@ -70,6 +70,7 @@ export type HindiSentence = {
 };
 
 export type HindiVocabEntry = {
+  cell_id?: string;
   hi: string;
   romanization: string;
   en: string;
@@ -78,6 +79,7 @@ export type HindiVocabEntry = {
 };
 
 export type HindiDialogueLine = {
+  cell_id?: string;
   speaker: string;
   hi: string;
   romanization: string;

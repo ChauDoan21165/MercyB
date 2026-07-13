@@ -18,6 +18,7 @@ export type PunjabiPreA11ChecksumFocus =
 export type PunjabiPreA11ChecksumStage = "pre_a11_checksum" | "pipeline_readiness" | "ci_readiness" | "pre_integration" | "sanity";
 
 export type PunjabiScriptVocabularyPreA11ChecksumSample = {
+  cell_id?: string;
   id: string;
   focus: PunjabiPreA11ChecksumFocus;
   stage: PunjabiPreA11ChecksumStage;
@@ -39,6 +40,7 @@ export type PunjabiScriptVocabularyPreA11ChecksumSample = {
 };
 
 export type PunjabiScriptVocabularyPreA11ChecksumSection = {
+  cell_id?: string;
   focus: PunjabiPreA11ChecksumFocus;
   title_vi: string;
   title_en: string;

@@ -26,6 +26,7 @@ export type LessonSentence = {
 };
 
 export type VocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -37,6 +38,7 @@ export type VocabEntry = {
 };
 
 export type DialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -182,6 +184,7 @@ export const lesson: ItalianLesson = {
 
   vocabulary: [
     {
+      cell_id: "addf6547-eafb-4018-9e7f-7d9b3b5c60e1",
       word: "lavoro",
       en: "work / job",
       vi: "công việc",
@@ -190,6 +193,7 @@ export const lesson: ItalianLesson = {
       pronunciation_en: "la-VO-ro — keep the final -o",
     },
     {
+      cell_id: "876518e0-17b4-4493-84a9-add511f1c060",
       word: "casa",
       en: "house / home",
       vi: "nhà",
@@ -198,6 +202,7 @@ export const lesson: ItalianLesson = {
       pronunciation_en: "CA-sa — intervocalic 's' softens to 'z'",
     },
     {
+      cell_id: "42b406a6-2652-4508-a60e-b64dd0e6c419",
       word: "grazie",
       en: "thank you",
       vi: "cảm ơn",
@@ -206,6 +211,7 @@ export const lesson: ItalianLesson = {
       pronunciation_en: "GRA-tsee-eh — sound the final -e",
     },
     {
+      cell_id: "28d7a9ef-6b1e-4d74-9096-5b067f9ed355",
       word: "documento",
       en: "document",
       vi: "giấy tờ",
@@ -214,6 +220,7 @@ export const lesson: ItalianLesson = {
       pronunciation_en: "do-cu-MEN-to — stress 'MEN', keep final -o",
     },
     {
+      cell_id: "984145fe-c7f4-4e26-a502-47187528a92f",
       word: "appuntamento",
       en: "appointment",
       vi: "cuộc hẹn",
@@ -222,6 +229,7 @@ export const lesson: ItalianLesson = {
       pronunciation_en: "ap-pun-ta-MEN-to — hold the 'pp', stress 'MEN'",
     },
     {
+      cell_id: "fcc65d1b-a28c-4b2f-a195-73999080e0e0",
       word: "permesso",
       en: "permit / permission",
       vi: "giấy phép",
@@ -230,6 +238,7 @@ export const lesson: ItalianLesson = {
       pronunciation_en: "per-MES-so — hold the double 'ss'",
     },
     {
+      cell_id: "ddea323f-58b9-46aa-bb17-ce9d8b974630",
       word: "telefono",
       en: "telephone",
       vi: "điện thoại",
@@ -238,6 +247,7 @@ export const lesson: ItalianLesson = {
       pronunciation_en: "te-LE-fo-no — stress on 'LE' (antepenultimate)",
     },
     {
+      cell_id: "48e2c69d-5118-404d-b09a-edb38b464dc8",
       word: "università",
       en: "university",
       vi: "đại học",
@@ -246,6 +256,7 @@ export const lesson: ItalianLesson = {
       pronunciation_en: "u-ni-ver-si-TÀ — the grave accent marks final stress",
     },
     {
+      cell_id: "5f50876d-2fcd-4c54-9eaf-dee5be10e2af",
       word: "famiglia",
       en: "family",
       vi: "gia đình",
@@ -254,6 +265,7 @@ export const lesson: ItalianLesson = {
       pronunciation_en: "fa-MEE-lya — soft palatal 'gli', no hard 'g'",
     },
     {
+      cell_id: "eb19dcf6-d5e6-4522-b72f-33f5336975d8",
       word: "bisogno",
       en: "need",
       vi: "nhu cầu / sự cần",
@@ -265,24 +277,28 @@ export const lesson: ItalianLesson = {
 
   dialogue: [
     {
+      cell_id: "0c23a0a7-4f4b-4dab-9f28-26e2ce189ccf",
       speaker: "Maestro",
       text: "Oggi lavoriamo su una sola difficoltà: le doppie.",
       vi: "Hôm nay ta luyện đúng một khó khăn thôi: phụ âm đôi.",
       en: "Today we work on just one difficulty: the double consonants.",
     },
     {
+      cell_id: "7aafea1f-0149-42ef-93a6-baab3f52471f",
       speaker: "Linh",
       text: "Ho fatto il lavoro. Ho fato il lavoro?",
       vi: "Tôi đã làm xong việc. (so với) 'fato' nghĩa là số phận?",
       en: "I have done the work. ('fato' would mean 'fate' instead.)",
     },
     {
+      cell_id: "e1280016-383b-4253-85db-e7cedfac3f00",
       speaker: "Maestro",
       text: "Bene. 'Fatto' con due T: tieni la consonante più a lungo.",
       vi: "Tốt. 'Fatto' có hai chữ T: giữ phụ âm lâu hơn.",
       en: "Good. 'Fatto' with two T's: hold the consonant longer.",
     },
     {
+      cell_id: "acabc04b-c1e0-42fd-9dd3-2bb48df85e9d",
       speaker: "Linh",
       text: "Ho sette euro, non sete.",
       vi: "Tôi có bảy euro, không phải 'khát'.",

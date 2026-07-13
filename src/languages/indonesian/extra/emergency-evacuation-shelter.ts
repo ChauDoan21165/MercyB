@@ -6,6 +6,7 @@ type IndonesianLessonSentence = {
 };
 
 type VocabEntry = {
+  cell_id?: string;
   word: string;
   meaning_vi: string;
   meaning_en: string;
@@ -14,6 +15,7 @@ type VocabEntry = {
 };
 
 type DialogueLine = {
+  cell_id?: string;
   speaker: string;
   line: string;
   vi: string;
@@ -117,6 +119,7 @@ export const lessons: IndonesianLesson[] = [
     ],
     vocabulary: [
       {
+        cell_id: "b47e9060-4e2a-4565-a075-c5d4fd89b245",
         word: 'tempat evakuasi',
         meaning_vi: 'nơi/điểm sơ tán',
         meaning_en: 'evacuation shelter or place',
@@ -124,6 +127,7 @@ export const lessons: IndonesianLesson[] = [
         example_vi: 'Nơi sơ tán được mở tại tòa nhà trường học.',
       },
       {
+        cell_id: "68a7f926-d701-4c5f-8ba4-a8973fe0e23c",
         word: 'posko',
         meaning_vi: 'điểm chỉ huy/hỗ trợ khẩn cấp',
         meaning_en: 'command or emergency support post',
@@ -131,6 +135,7 @@ export const lessons: IndonesianLesson[] = [
         example_vi: 'Tình nguyện viên tập trung ở điểm hỗ trợ chính.',
       },
       {
+        cell_id: "d333b9a9-1723-4d7f-b264-f7a25859f657",
         word: 'pengungsi',
         meaning_vi: 'người sơ tán, người lánh nạn',
         meaning_en: 'evacuee or displaced person',
@@ -138,6 +143,7 @@ export const lessons: IndonesianLesson[] = [
         example_vi: 'Người sơ tán cần nước sạch và chăn.',
       },
       {
+        cell_id: "7d393f4e-a50f-461e-885a-890ef9f6bf0c",
         word: 'logistik',
         meaning_vi: 'hàng hậu cần/cứu trợ thiết yếu',
         meaning_en: 'relief supplies or logistics',
@@ -145,6 +151,7 @@ export const lessons: IndonesianLesson[] = [
         example_vi: 'Hàng cứu trợ thực phẩm đến chiều nay.',
       },
       {
+        cell_id: "b0bccd3a-c921-48ac-841a-ec343100eba2",
         word: 'daftar keluarga',
         meaning_vi: 'danh sách gia đình',
         meaning_en: 'family list',
@@ -152,6 +159,7 @@ export const lessons: IndonesianLesson[] = [
         example_vi: 'Danh sách gia đình được dùng để phân phát hỗ trợ.',
       },
       {
+        cell_id: "50137df9-7488-4e55-a476-bfd6b7507277",
         word: 'bantuan makanan',
         meaning_vi: 'hỗ trợ thực phẩm',
         meaning_en: 'food aid',
@@ -159,6 +167,7 @@ export const lessons: IndonesianLesson[] = [
         example_vi: 'Hỗ trợ thực phẩm được phát hai lần mỗi ngày.',
       },
       {
+        cell_id: "3ec4bcc8-c7d3-4491-854b-d1aed0d0f759",
         word: 'keamanan',
         meaning_vi: 'an ninh, sự an toàn',
         meaning_en: 'security or safety',
@@ -166,6 +175,7 @@ export const lessons: IndonesianLesson[] = [
         example_vi: 'An ninh điểm hỗ trợ được bảo vệ suốt đêm.',
       },
       {
+        cell_id: "d746e34b-d122-4c2f-9ab2-55d974ace97d",
         word: 'informasi resmi',
         meaning_vi: 'thông tin chính thức',
         meaning_en: 'official information',
@@ -175,36 +185,42 @@ export const lessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "d490e1e0-11ef-46ec-97dc-9f7e26e6682b",
         speaker: 'Warga',
         line: 'Pak, di mana tempat evakuasi yang terdekat?',
         vi: 'Anh/chú ơi, nơi sơ tán gần nhất ở đâu?',
         en: 'Sir, where is the nearest evacuation shelter?',
       },
       {
+        cell_id: "3983b4f1-5259-4049-b95b-d276382f6032",
         speaker: 'Petugas',
         line: 'Silakan menuju posko pengungsian di balai desa.',
         vi: 'Vui lòng đi đến điểm trú tạm ở balai desa.',
         en: 'Please go to the evacuation post at the village hall.',
       },
       {
+        cell_id: "229e7d94-8f72-4afe-b07b-63da92e9d34c",
         speaker: 'Warga',
         line: 'Apakah kami harus mengisi daftar keluarga?',
         vi: 'Chúng tôi có phải điền danh sách gia đình không?',
         en: 'Do we need to fill in a family list?',
       },
       {
+        cell_id: "905beba4-4336-431d-8603-82694674a4e3",
         speaker: 'Petugas',
         line: 'Iya, data keluarga harus dicatat sebelum logistik dibagikan.',
         vi: 'Có, dữ liệu gia đình phải được ghi lại trước khi hàng cứu trợ được phát.',
         en: 'Yes, family data must be recorded before supplies are distributed.',
       },
       {
+        cell_id: "d7a262d8-d9a4-4fc7-bcde-139802735d5f",
         speaker: 'Warga',
         line: 'Anak saya butuh bantuan makanan dan obat.',
         vi: 'Con tôi cần hỗ trợ thực phẩm và thuốc.',
         en: 'My child needs food aid and medicine.',
       },
       {
+        cell_id: "fdde54b3-9b4a-4f52-9cc2-c941188764d6",
         speaker: 'Petugas',
         line: 'Baik, nanti lapor ke meja logistik. Ikuti informasi resmi dari posko.',
         vi: 'Vâng, lát nữa báo ở bàn hậu cần. Hãy theo dõi thông tin chính thức từ điểm hỗ trợ.',

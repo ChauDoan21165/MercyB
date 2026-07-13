@@ -18,6 +18,7 @@ export type PunjabiImportReadinessFocus =
 export type PunjabiImportReadinessStage = "import_readiness" | "final_regression" | "pre_integration" | "sanity";
 
 export type PunjabiScriptVocabularyImportReadinessSample = {
+  cell_id?: string;
   id: string;
   focus: PunjabiImportReadinessFocus;
   stage: PunjabiImportReadinessStage;
@@ -39,6 +40,7 @@ export type PunjabiScriptVocabularyImportReadinessSample = {
 };
 
 export type PunjabiScriptVocabularyImportReadinessSection = {
+  cell_id?: string;
   focus: PunjabiImportReadinessFocus;
   title_vi: string;
   title_en: string;

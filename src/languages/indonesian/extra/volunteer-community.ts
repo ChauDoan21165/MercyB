@@ -32,6 +32,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   /** Indonesian word/phrase. */
   word: string;
   /** English meaning. */
@@ -47,6 +48,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   /** Indonesian line. */
   text: string;
@@ -230,6 +232,7 @@ export const lessons: IndonesianLesson[] = [
     vocabulary: [
       // People & roles
       {
+        cell_id: "255421cd-1870-42d0-829e-fc134b4f9375",
         word: "relawan",
         en: "volunteer",
         vi: "tình nguyện viên",
@@ -238,6 +241,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "re-LA-wan — from `rela` (willing) + -wan; `sukarelawan` is the longer form",
       },
       {
+        cell_id: "53b82bb3-9e1f-4f0b-b485-cbc82f2349b5",
         word: "warga",
         en: "resident / citizen / member",
         vi: "cư dân / thành viên cộng đồng",
@@ -246,6 +250,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "WAR-ga — `warga setempat` = locals; `warga negara` = citizen (of a state)",
       },
       {
+        cell_id: "7a7cbe26-c7e1-4139-9f9b-6e031e8d5573",
         word: "panitia",
         en: "committee / organizing team",
         vi: "ban tổ chức",
@@ -255,6 +260,7 @@ export const lessons: IndonesianLesson[] = [
       },
       // Activities
       {
+        cell_id: "5ca2a83a-6707-4233-81fd-eb242e7b69fe",
         word: "gotong royong",
         en: "communal mutual aid",
         vi: "tương trợ cộng đồng",
@@ -263,6 +269,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "GO-tong RO-yong — a national value; close to communal neighbourliness",
       },
       {
+        cell_id: "50c35035-40cf-4698-8ae7-b36ab6d243a9",
         word: "kerja bakti",
         en: "communal volunteer labour",
         vi: "lao động công ích chung",
@@ -271,6 +278,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "KER-ja BAK-ti — collective neighbourhood clean-up, usually weekends",
       },
       {
+        cell_id: "538cd5d2-988e-4f2e-89f7-bbaf61a868d8",
         word: "bakti sosial (baksos)",
         en: "social service / charity drive",
         vi: "công tác thiện nguyện",
@@ -279,6 +287,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "BAK-ti so-si-AL (BAK-sos) — aid distribution, free clinics, relief",
       },
       {
+        cell_id: "d753e460-5516-4119-b403-da1d0d0f8bf0",
         word: "donor darah",
         en: "blood donation",
         vi: "hiến máu",
@@ -288,6 +297,7 @@ export const lessons: IndonesianLesson[] = [
       },
       // Verbs
       {
+        cell_id: "c4bbc61b-c056-4a03-8f5e-6e1b013215b3",
         word: "mendaftar",
         en: "to register / sign up",
         vi: "đăng ký",
@@ -296,6 +306,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "men-DAF-tar — the verb (meN- + `daftar`); the noun is `pendaftaran`",
       },
       {
+        cell_id: "f65d8875-d997-4c0d-b735-6cd859432d81",
         word: "bergabung",
         en: "to join (a group)",
         vi: "tham gia / gia nhập",
@@ -304,6 +315,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "ber-ga-BOONG — always takes `dengan`: `bergabung dengan …`",
       },
       {
+        cell_id: "d9229f28-c2fc-4f4d-9cc7-979e252f81e3",
         word: "menyumbang",
         en: "to donate / contribute",
         vi: "quyên góp / đóng góp",
@@ -312,6 +324,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "me-nyoom-BANG — the verb (meN- + `sumbang`); the noun is `sumbangan`",
       },
       {
+        cell_id: "eafaccee-10de-4c2d-8346-f526e2e727d8",
         word: "membantu",
         en: "to help / assist",
         vi: "giúp đỡ",
@@ -320,6 +333,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "mem-BAN-too — the standard verb (meN- + `bantu`); noun `bantuan`",
       },
       {
+        cell_id: "74591716-db64-45a5-a951-1e8cbda74c69",
         word: "mengadakan",
         en: "to hold / organize (an event)",
         vi: "tổ chức (sự kiện)",
@@ -329,6 +343,7 @@ export const lessons: IndonesianLesson[] = [
       },
       // Organizations & places
       {
+        cell_id: "42517bdf-dcb3-4847-a496-059d4edaafba",
         word: "PMI",
         en: "Indonesian Red Cross",
         vi: "Hội Chữ thập đỏ Indonesia",
@@ -337,6 +352,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "pe-em-EE — Palang Merah Indonesia; runs blood donation & relief",
       },
       {
+        cell_id: "596a8d88-7094-49db-9fc8-60cd6eda5041",
         word: "posko",
         en: "command / relief / intake post",
         vi: "trạm chỉ huy / tiếp nhận",
@@ -345,6 +361,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "POS-ko — short for `pos komando`; the sign-up/relief point",
       },
       {
+        cell_id: "80fdc6d6-b46c-4b07-bb70-2eff7c8a5e7a",
         word: "yayasan",
         en: "foundation / charity (org)",
         vi: "quỹ từ thiện / tổ chức phi lợi nhuận",
@@ -353,6 +370,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "ya-YA-san — `yayasan sosial`; many recruit `relawan`",
       },
       {
+        cell_id: "5a0306da-56cc-46c6-b609-82e1b628225c",
         word: "sumbangan / donasi",
         en: "donation / contribution",
         vi: "khoản quyên góp",
@@ -364,36 +382,42 @@ export const lessons: IndonesianLesson[] = [
     dialogue: [
       // Dialogue A: signing up as a volunteer at a yayasan
       {
+        cell_id: "0852d8cb-5f1a-4aa7-9696-5c13422519e8",
         speaker: "Linh",
         text: "Selamat siang. Saya ingin menjadi relawan. Bagaimana cara mendaftar?",
         vi: "Chào buổi trưa. Tôi muốn làm tình nguyện viên. Đăng ký bằng cách nào ạ?",
         en: "Good afternoon. I'd like to become a volunteer. How do I register?",
       },
       {
+        cell_id: "77f3ba0f-257c-4186-9ea6-d5b5e9b5cc16",
         speaker: "Koordinator",
         text: "Bagus sekali! Isi formulir ini dulu. Kamu mau bergabung dengan kegiatan apa?",
         vi: "Tuyệt quá! Điền mẫu này trước nhé. Bạn muốn tham gia hoạt động nào?",
         en: "Wonderful! Fill out this form first. Which activity do you want to join?",
       },
       {
+        cell_id: "40d5bbd9-1ef9-4743-aea3-9f62a5048f42",
         speaker: "Linh",
         text: "Saya tertarik dengan bakti sosial dan donor darah. Saya siap membantu apa saja.",
         vi: "Tôi quan tâm đến công tác thiện nguyện và hiến máu. Tôi sẵn sàng giúp bất cứ việc gì.",
         en: "I'm interested in social service and blood donation. I'm ready to help with anything.",
       },
       {
+        cell_id: "d950370f-d1f2-4689-89b6-fce48ce81ff5",
         speaker: "Koordinator",
         text: "Kapan kamu biasanya luang?",
         vi: "Bạn thường rảnh khi nào?",
         en: "When are you usually free?",
       },
       {
+        cell_id: "e923232d-dbc2-4b28-ad21-7855c00f87c3",
         speaker: "Linh",
         text: "Saya bisa ikut hari Sabtu, dari pagi sampai sore.",
         vi: "Tôi có thể tham gia thứ Bảy, từ sáng đến chiều.",
         en: "I can join on Saturdays, from morning to afternoon.",
       },
       {
+        cell_id: "7565e8da-6867-4743-938c-f025df6969a8",
         speaker: "Koordinator",
         text: "Sempurna. Sabtu depan ada baksos untuk korban banjir di posko RW 04. Sampai jumpa di sana, ya. Terima kasih atas partisipasinya!",
         vi: "Hoàn hảo. Thứ Bảy tới có đợt thiện nguyện cho nạn nhân lũ lụt tại trạm khu phố 04. Hẹn gặp ở đó nhé. Cảm ơn vì sự tham gia của bạn!",
@@ -401,18 +425,21 @@ export const lessons: IndonesianLesson[] = [
       },
       // Dialogue B: neighbourhood kerja bakti
       {
+        cell_id: "f8cdf78f-d704-4530-88d2-284290d23841",
         speaker: "Pak RT",
         text: "Mbak Linh, besok pagi ada kerja bakti membersihkan selokan. Bisa ikut?",
         vi: "Chị Linh, sáng mai có buổi lao động chung dọn cống. Tham gia được không?",
         en: "Mbak Linh, tomorrow morning there's a clean-up to clear the drainage. Can you join?",
       },
       {
+        cell_id: "0fc01316-5479-419a-a2ff-6a48cf31dd98",
         speaker: "Linh",
         text: "Tentu, Pak. Ada yang bisa saya bantu? Saya bawa sapu dan air minum untuk semua.",
         vi: "Chắc chắn rồi anh. Có gì tôi giúp được không? Tôi mang chổi và nước uống cho mọi người.",
         en: "Of course, sir. Is there anything I can help with? I'll bring a broom and drinking water for everyone.",
       },
       {
+        cell_id: "7a59deec-b786-460b-9e5a-1f8d98b9d134",
         speaker: "Pak RT",
         text: "Wah, guyub sekali. Nanti setelah selesai kita makan bareng, ya.",
         vi: "Ồ, gắn bó quá. Lát xong mình ăn chung nhé.",

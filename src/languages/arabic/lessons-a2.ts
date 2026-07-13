@@ -21,12 +21,12 @@ export const lessons: ArabicLesson[] = [
     intro_en:
       "This A2 lesson lets you describe a daily schedule in short Modern Standard Arabic sentences. The focus is first-person present verbs and time phrases; unlike English, Arabic marks the person inside the verb form.",
     vocabulary: [
-      { ar: "أستيقظ", romanization: "astayqiz", vi: "tôi thức dậy", en: "I wake up", pos: "verb" },
-      { ar: "أدرس", romanization: "adrus", vi: "tôi học", en: "I study", pos: "verb" },
-      { ar: "أعمل", romanization: "a'mal", vi: "tôi làm việc", en: "I work", pos: "verb" },
-      { ar: "أذهب", romanization: "adhhab", vi: "tôi đi", en: "I go", pos: "verb" },
-      { ar: "في الصباح", romanization: "fi as-sabaah", vi: "vào buổi sáng", en: "in the morning", pos: "phrase" },
-      { ar: "ثم", romanization: "thumma", vi: "sau đó", en: "then", pos: "connector" },
+      { cell_id: "5aa018cf-9529-4ca7-a628-5498bde9aac9", ar: "أستيقظ", romanization: "astayqiz", vi: "tôi thức dậy", en: "I wake up", pos: "verb" },
+      { cell_id: "408a65ca-63cc-4160-b01b-f9ef56139f85", ar: "أدرس", romanization: "adrus", vi: "tôi học", en: "I study", pos: "verb" },
+      { cell_id: "9a5ec25e-c2db-4e35-9a3e-6bbb8fda89c1", ar: "أعمل", romanization: "a'mal", vi: "tôi làm việc", en: "I work", pos: "verb" },
+      { cell_id: "8a46d737-1dfe-4c45-ab4f-ca1ff5181c02", ar: "أذهب", romanization: "adhhab", vi: "tôi đi", en: "I go", pos: "verb" },
+      { cell_id: "c3dae8c0-3761-49a6-9f6c-e8144e7b36ae", ar: "في الصباح", romanization: "fi as-sabaah", vi: "vào buổi sáng", en: "in the morning", pos: "phrase" },
+      { cell_id: "8865293e-8914-4170-87fe-b58db2d027cf", ar: "ثم", romanization: "thumma", vi: "sau đó", en: "then", pos: "connector" },
     ],
     sentences: [
       {
@@ -76,6 +76,7 @@ export const lessons: ArabicLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "cb8635e2-bfba-4451-b14f-654a7d36745b",
         speaker: "ليلى",
         ar: "متى تستيقظ يا سامي؟",
         romanization: "mataa tastayqiz yaa Saami?",
@@ -83,6 +84,7 @@ export const lessons: ArabicLesson[] = [
         en: "When do you wake up, Sami?",
       },
       {
+        cell_id: "411ce770-dcc7-443d-bb50-6ae11698441a",
         speaker: "سامي",
         ar: "أستيقظ في الساعة السابعة، ثم أدرس العربية.",
         romanization: "astayqiz fii as-saa'a as-saabi'a, thumma adrus al-'arabiyya",
@@ -126,12 +128,12 @@ export const lessons: ArabicLesson[] = [
     intro_en:
       "This lesson practices asking prices, sizes, and colors in practical MSA. English speakers should watch that adjectives follow nouns and usually agree in gender.",
     vocabulary: [
-      { ar: "السعر", romanization: "as-si'r", vi: "giá", en: "price", pos: "noun" },
-      { ar: "كم؟", romanization: "kam?", vi: "bao nhiêu?", en: "how much? / how many?", pos: "question" },
-      { ar: "غالي", romanization: "ghaalii", vi: "đắt", en: "expensive", pos: "adjective" },
-      { ar: "رخيص", romanization: "rakhiis", vi: "rẻ", en: "cheap", pos: "adjective" },
-      { ar: "أريد", romanization: "uriid", vi: "tôi muốn", en: "I want", pos: "verb" },
-      { ar: "المقاس", romanization: "al-maqaas", vi: "kích cỡ", en: "size", pos: "noun" },
+      { cell_id: "30380acf-e5f7-440a-91af-7a7c35cf6dec", ar: "السعر", romanization: "as-si'r", vi: "giá", en: "price", pos: "noun" },
+      { cell_id: "f8416dd2-9445-4b02-b61e-e1388da2d7cc", ar: "كم؟", romanization: "kam?", vi: "bao nhiêu?", en: "how much? / how many?", pos: "question" },
+      { cell_id: "e1f3f120-924d-411c-8300-7f72f4719bc7", ar: "غالي", romanization: "ghaalii", vi: "đắt", en: "expensive", pos: "adjective" },
+      { cell_id: "93e7fc56-7baf-444a-95bd-f251337eeb91", ar: "رخيص", romanization: "rakhiis", vi: "rẻ", en: "cheap", pos: "adjective" },
+      { cell_id: "9b32b381-c39a-4072-9d9d-3367aec4cac4", ar: "أريد", romanization: "uriid", vi: "tôi muốn", en: "I want", pos: "verb" },
+      { cell_id: "750342b1-0a2d-4e1a-af11-ae1368bea82c", ar: "المقاس", romanization: "al-maqaas", vi: "kích cỡ", en: "size", pos: "noun" },
     ],
     sentences: [
       {
@@ -173,6 +175,7 @@ export const lessons: ArabicLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "f26dd1b3-d0fa-428d-a505-14648bb138a0",
         speaker: "الزبون",
         ar: "من فضلك، كم سعر هذا القميص؟",
         romanization: "min fadlik, kam si'r haadhaa al-qamiis?",
@@ -180,6 +183,7 @@ export const lessons: ArabicLesson[] = [
         en: "Please, how much is this shirt?",
       },
       {
+        cell_id: "2a9da094-14b6-40ec-9774-fa6380cd2270",
         speaker: "البائع",
         ar: "السعر خمسة وعشرون دينارا.",
         romanization: "as-si'r khamsa wa-'ishruun diinaaran",
@@ -226,12 +230,12 @@ export const lessons: ArabicLesson[] = [
     intro_en:
       "This lesson helps you ask for directions, name transport options, and understand short route instructions. The focus is `إلى`, `من`, `قريب من`, and `بعيد عن`.",
     vocabulary: [
-      { ar: "الحافلة", romanization: "al-haafila", vi: "xe buýt", en: "bus", pos: "noun" },
-      { ar: "القطار", romanization: "al-qitaar", vi: "tàu hỏa", en: "train", pos: "noun" },
-      { ar: "سيارة أجرة", romanization: "sayyaarat ujra", vi: "taxi", en: "taxi", pos: "noun phrase" },
-      { ar: "المحطة", romanization: "al-mahatta", vi: "nhà ga / trạm", en: "station", pos: "noun" },
-      { ar: "قريب من", romanization: "qariib min", vi: "gần", en: "near", pos: "phrase" },
-      { ar: "بعيد عن", romanization: "ba'iid 'an", vi: "xa", en: "far from", pos: "phrase" },
+      { cell_id: "355b893b-fa06-4969-a4f7-962c9b5ee67e", ar: "الحافلة", romanization: "al-haafila", vi: "xe buýt", en: "bus", pos: "noun" },
+      { cell_id: "4997bb82-76cd-4c21-8d3c-487d5d2335a9", ar: "القطار", romanization: "al-qitaar", vi: "tàu hỏa", en: "train", pos: "noun" },
+      { cell_id: "14342c1a-418a-4d4d-8977-49b25b799e01", ar: "سيارة أجرة", romanization: "sayyaarat ujra", vi: "taxi", en: "taxi", pos: "noun phrase" },
+      { cell_id: "069a73e6-16ab-45f8-ac9a-201f76b39fae", ar: "المحطة", romanization: "al-mahatta", vi: "nhà ga / trạm", en: "station", pos: "noun" },
+      { cell_id: "5c07ea29-6083-451e-bc9b-f25068de32c7", ar: "قريب من", romanization: "qariib min", vi: "gần", en: "near", pos: "phrase" },
+      { cell_id: "3daf7bac-6a0e-4527-b574-633f31a0a315", ar: "بعيد عن", romanization: "ba'iid 'an", vi: "xa", en: "far from", pos: "phrase" },
     ],
     sentences: [
       {
@@ -273,6 +277,7 @@ export const lessons: ArabicLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "a2e50561-369e-4cb0-885c-8ef486a4ef9f",
         speaker: "المسافر",
         ar: "عفوا، أين محطة القطار؟",
         romanization: "'afwan, ayna mahattat al-qitaar?",
@@ -280,6 +285,7 @@ export const lessons: ArabicLesson[] = [
         en: "Excuse me, where is the train station?",
       },
       {
+        cell_id: "3919f74d-7e11-4818-aaf9-45eac46be636",
         speaker: "الموظف",
         ar: "هي قريبة من الفندق. اذهب يمينا ثم يسارا.",
         romanization: "hiya qariiba min al-funduq. idhhab yamiinan thumma yasaaran",
@@ -324,12 +330,12 @@ export const lessons: ArabicLesson[] = [
     intro_en:
       "This lesson practices making and changing appointments politely. English speakers should treat `عندي موعد` as the practical equivalent of 'I have an appointment', not a literal possession phrase.",
     vocabulary: [
-      { ar: "موعد", romanization: "maw'id", vi: "lịch hẹn", en: "appointment", pos: "noun" },
-      { ar: "اليوم", romanization: "al-yawm", vi: "hôm nay", en: "today", pos: "adverb" },
-      { ar: "غدا", romanization: "ghadan", vi: "ngày mai", en: "tomorrow", pos: "adverb" },
-      { ar: "الأسبوع القادم", romanization: "al-usbuu' al-qaadim", vi: "tuần tới", en: "next week", pos: "phrase" },
-      { ar: "أؤجل", romanization: "u'ajjil", vi: "tôi hoãn", en: "I postpone", pos: "verb" },
-      { ar: "مناسب", romanization: "munaasib", vi: "phù hợp / tiện", en: "suitable", pos: "adjective" },
+      { cell_id: "784642e5-9c45-44ee-8e27-717f3fb645a5", ar: "موعد", romanization: "maw'id", vi: "lịch hẹn", en: "appointment", pos: "noun" },
+      { cell_id: "2edf90b8-b707-4aee-bf93-a44f2296a4fd", ar: "اليوم", romanization: "al-yawm", vi: "hôm nay", en: "today", pos: "adverb" },
+      { cell_id: "6825614b-e70d-413d-881d-94e1d351c995", ar: "غدا", romanization: "ghadan", vi: "ngày mai", en: "tomorrow", pos: "adverb" },
+      { cell_id: "7bf26cbd-a5b4-4727-a96f-a39cde04c74e", ar: "الأسبوع القادم", romanization: "al-usbuu' al-qaadim", vi: "tuần tới", en: "next week", pos: "phrase" },
+      { cell_id: "1ffcaa12-49f0-44c6-be6b-54262e5d8e3b", ar: "أؤجل", romanization: "u'ajjil", vi: "tôi hoãn", en: "I postpone", pos: "verb" },
+      { cell_id: "9773e721-aabe-4f08-b4f5-0b744976f9d1", ar: "مناسب", romanization: "munaasib", vi: "phù hợp / tiện", en: "suitable", pos: "adjective" },
     ],
     sentences: [
       {
@@ -371,6 +377,7 @@ export const lessons: ArabicLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "b052e424-d08a-4cee-8a67-b89d8e1e4ee6",
         speaker: "المريض",
         ar: "عندي موعد اليوم، ولكن أريد أن أؤجله.",
         romanization: "'indii maw'id al-yawm, walaakin uriid an u'ajjilahu",
@@ -378,6 +385,7 @@ export const lessons: ArabicLesson[] = [
         en: "I have an appointment today, but I want to postpone it.",
       },
       {
+        cell_id: "59edcb37-f3e4-4326-8fb2-242e31d6c8fe",
         speaker: "الموظفة",
         ar: "هل يوم الخميس في الساعة العاشرة مناسب؟",
         romanization: "hal yawm al-khamiis fii as-saa'a al-'aashira munaasib?",
@@ -424,14 +432,14 @@ export const lessons: ArabicLesson[] = [
     intro_en:
       "This lesson helps you discuss an apartment, rent, neighborhood, and a simple document request at a service counter. The focus is simple idafa phrases such as `باب البيت` and the polite frame `أحتاج إلى...`.",
     vocabulary: [
-      { ar: "شقة", romanization: "shaqqa", vi: "căn hộ", en: "apartment", pos: "noun" },
-      { ar: "غرفة", romanization: "ghurfa", vi: "phòng", en: "room", pos: "noun" },
-      { ar: "الإيجار", romanization: "al-iijaar", vi: "tiền thuê", en: "rent", pos: "noun" },
-      { ar: "الحي", romanization: "al-hayy", vi: "khu phố", en: "neighborhood", pos: "noun" },
-      { ar: "استمارة", romanization: "istimaara", vi: "mẫu đơn", en: "form", pos: "noun" },
-      { ar: "وثيقة", romanization: "wathiiqa", vi: "giấy tờ / tài liệu", en: "document", pos: "noun" },
-      { ar: "نظيف", romanization: "naziif", vi: "sạch", en: "clean", pos: "adjective" },
-      { ar: "هادئ", romanization: "haadi'", vi: "yên tĩnh", en: "quiet", pos: "adjective" },
+      { cell_id: "e46d2659-070e-4605-b829-e3f0dc3faf01", ar: "شقة", romanization: "shaqqa", vi: "căn hộ", en: "apartment", pos: "noun" },
+      { cell_id: "bf15426c-459f-47a0-b20f-863060c969a3", ar: "غرفة", romanization: "ghurfa", vi: "phòng", en: "room", pos: "noun" },
+      { cell_id: "e1c425f9-65cf-4d92-a76e-11ac4d6b1548", ar: "الإيجار", romanization: "al-iijaar", vi: "tiền thuê", en: "rent", pos: "noun" },
+      { cell_id: "699e9486-6d34-458a-a631-ac9226f5071e", ar: "الحي", romanization: "al-hayy", vi: "khu phố", en: "neighborhood", pos: "noun" },
+      { cell_id: "7cd0140b-b268-4afd-8953-da27aab0844e", ar: "استمارة", romanization: "istimaara", vi: "mẫu đơn", en: "form", pos: "noun" },
+      { cell_id: "8a346740-0b28-4075-87db-9d9e5c6b2c8c", ar: "وثيقة", romanization: "wathiiqa", vi: "giấy tờ / tài liệu", en: "document", pos: "noun" },
+      { cell_id: "c4a785bc-da8d-43bc-bd3b-00a33e332d62", ar: "نظيف", romanization: "naziif", vi: "sạch", en: "clean", pos: "adjective" },
+      { cell_id: "866aff03-e474-458a-aa61-ecb914e4b874", ar: "هادئ", romanization: "haadi'", vi: "yên tĩnh", en: "quiet", pos: "adjective" },
     ],
     sentences: [
       {
@@ -473,6 +481,7 @@ export const lessons: ArabicLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "fe9000f5-e66a-4268-94af-0598461664be",
         speaker: "المستأجر",
         ar: "أبحث عن شقة قريبة من العمل.",
         romanization: "abhath 'an shaqqa qariiba min al-'amal",
@@ -480,6 +489,7 @@ export const lessons: ArabicLesson[] = [
         en: "I am looking for an apartment near work.",
       },
       {
+        cell_id: "0c69ffce-0cb2-430b-ad6c-c7c3490f824b",
         speaker: "الموظف",
         ar: "خذ هذه الاستمارة واكتب العنوان.",
         romanization: "khudh haadhihi al-istimaara waktub al-'unwaan",

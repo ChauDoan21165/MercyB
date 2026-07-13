@@ -39,6 +39,7 @@ export type LessonSentence = {
 };
 
 export type VocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -48,6 +49,7 @@ export type VocabEntry = {
 };
 
 export type DialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -189,6 +191,7 @@ export const lessons: PortugueseLesson[] = [
       "Standard structure for presenting a research hypothesis in 3–5 minutes (seminar or defense):\n\n(1) OPENING SENTENCE: 'Este trabalho se insere no campo de X e tem como objeto, mais precisamente, Y.' — name the field + the specific object in one sentence. The reflexive 'se insere' is far more academic than 'é sobre'.\n\n(2) CONDENSED REVIEW: name THREE authors max (more clutters oral delivery), state the consensus, then the precise gap: 'A literatura anterior — sobretudo os trabalhos de A (ano), B (ano) e C (ano) — estabeleceu que… No entanto, um ponto permanece pouco explorado: Z.'\n\n(3) HYPOTHESIS FORMULATION: 'É precisamente essa lacuna que pretendo abordar. Minha hipótese de trabalho é a seguinte: [statement].' The 'lacuna' (gap/blind spot) framing is C1-register gold.\n\n(4) METHODOLOGY IN ONE SENTENCE: 'Para testá-la, constituí um corpus de N [units] que analisei sob a ótica de [framework].'\n\n(5) ANTICIPATING THE OBJECTION: 'Poder-se-ia objetar que [predictable critique]. A isso eu responderia que [seed of an answer].' This single sentence lifts you to C1-academic register; skip it and the first question will be brutal. (Note: 'poder-se-ia' is mesoclisis — pronoun inside the verb — and is itself a marker of formal written register; in speech you may prefer 'alguém poderia objetar que'.)\n\nAVOID:\n- 'Vou falar sobre…' — too casual; use 'Este trabalho trata de…'\n- 'É muito interessante porque…' — empty filler; give the concrete reason\n- 'Como disse Foucault…' — name-dropping without context; give work + year + specific idea\n- Reading slides verbatim — slides are scaffolding, your voice is the product\n- Going over time — penalized immediately\n\nPractice at home: write all five sentences (abertura / revisão / hipótese / metodologia / objeção) and read them aloud until you can deliver them in three minutes without notes.",
     vocabulary: [
       {
+        cell_id: "4f7e0f73-533f-42e8-a810-34b0f7b0125f",
         word: "a hipótese de pesquisa",
         en: "the research hypothesis",
         vi: "giả thuyết nghiên cứu",
@@ -197,6 +200,7 @@ export const lessons: PortugueseLesson[] = [
         pronunciation_en: "ee-PO-teh-zee jee pes-KEE-zah — silent h; 'de' palatalizes to 'jee'; pesquisa s = 'z' between vowels",
       },
       {
+        cell_id: "f7c1a75f-2bd4-4b23-89a9-4e2e50fb7123",
         word: "postular que",
         en: "to posit that",
         vi: "đặt giả định rằng",
@@ -205,6 +209,7 @@ export const lessons: PortugueseLesson[] = [
         pronunciation_en: "pos-too-LAH kee — final -r softens/drops; 'que' = 'kee'",
       },
       {
+        cell_id: "786518ee-6c05-485d-a5b7-60b077fed2ba",
         word: "a variável independente",
         en: "the independent variable",
         vi: "biến độc lập",
@@ -213,6 +218,7 @@ export const lessons: PortugueseLesson[] = [
         pronunciation_en: "vah-ree-AH-vew een-deh-pen-DEN-chee — final -l = 'w' glide; final -te = 'chee'",
       },
       {
+        cell_id: "5e8ccbcc-6996-4c58-9d68-1f6183ff675c",
         word: "inserir-se no campo de",
         en: "to sit within the field of",
         vi: "nằm trong lĩnh vực của",
@@ -221,6 +227,7 @@ export const lessons: PortugueseLesson[] = [
         pronunciation_en: "een-seh-HEER-see noo KAHM-poo jee — reflexive 'se'; campo is nasalized 'KAHM'",
       },
       {
+        cell_id: "a13ca5b6-ea36-49de-8572-2aade627cf9e",
         word: "afastar-se de",
         en: "to distinguish oneself from / depart from",
         vi: "tách khỏi / khác biệt với",
@@ -229,6 +236,7 @@ export const lessons: PortugueseLesson[] = [
         pronunciation_en: "ah-fas-TAH-see jee — keep the s before t; final -r soft",
       },
       {
+        cell_id: "20d4e36f-7151-443e-bfca-a25815c3133e",
         word: "no caso em questão",
         en: "in the case at hand",
         vi: "trong trường hợp cụ thể này",
@@ -237,6 +245,7 @@ export const lessons: PortugueseLesson[] = [
         pronunciation_en: "noo KAH-zoo eng kes-TOWNG — formal connector; -ão = nasal 'owng'",
       },
       {
+        cell_id: "ef425a17-e00f-42c9-a2f0-617e4f36415a",
         word: "cumpre reconhecer que",
         en: "one cannot but acknowledge that",
         vi: "phải thừa nhận rằng",
@@ -245,6 +254,7 @@ export const lessons: PortugueseLesson[] = [
         pronunciation_en: "KOOM-pree heh-koh-nyeh-SEH kee — academic opener; nh = 'ny'; initial r = 'h'",
       },
       {
+        cell_id: "4439d91d-4996-487b-9704-81146bfe9649",
         word: "sob reserva de",
         en: "subject to / pending",
         vi: "với điều kiện",
@@ -253,6 +263,7 @@ export const lessons: PortugueseLesson[] = [
         pronunciation_en: "sob heh-ZEH-vah jee — 're' of reserva = 'heh'; s = 'z' between vowels",
       },
       {
+        cell_id: "404127ac-f6c8-4dd6-8690-21ad80a66944",
         word: "ressalvar uma conclusão",
         en: "to qualify a conclusion",
         vi: "làm rõ sắc thái cho kết luận",
@@ -261,6 +272,7 @@ export const lessons: PortugueseLesson[] = [
         pronunciation_en: "heh-saw-VAH oo-mah kon-kloo-ZOWNG — rr = strong 'h'; -ão = 'owng'",
       },
       {
+        cell_id: "187a13c3-c2f2-4c72-8740-be569f286495",
         word: "a amostra",
         en: "the sample",
         vi: "mẫu nghiên cứu",
@@ -271,24 +283,28 @@ export const lessons: PortugueseLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "150c8cb8-e4cd-4572-abfd-186e406e186b",
         speaker: "Profa. Ribeiro (orientadora)",
         text: "Linh, você poderia nos expor em alguns minutos a hipótese central do seu trabalho?",
         vi: "Linh, em có thể trình bày trong vài phút giả thuyết trung tâm của công trình không?",
         en: "Linh, could you set out the central hypothesis of your work for us in a few minutes?",
       },
       {
+        cell_id: "9f0dfcbd-c30a-4900-98c2-636e3ea6e67d",
         speaker: "Linh",
         text: "Com prazer. Minha hipótese postula que existe um vínculo causal entre a exposição precoce a uma L2 e a flexibilidade metalinguística observada na vida adulta.",
         vi: "Rất sẵn lòng. Giả thuyết của em đặt giả định có một mối liên hệ nhân quả giữa việc tiếp xúc sớm với ngôn ngữ thứ hai và sự linh hoạt siêu ngôn ngữ quan sát được ở tuổi trưởng thành.",
         en: "Gladly. My hypothesis posits a causal link between early exposure to an L2 and the metalinguistic flexibility observed in adulthood.",
       },
       {
+        cell_id: "58bde2c5-3829-4765-8a4e-817711aeb2e6",
         speaker: "Profa. Ribeiro",
         text: "Em que corpus você se apoia para sustentar essa intuição?",
         vi: "Em dựa trên ngữ liệu nào để củng cố trực giác này?",
         en: "What corpus are you drawing on to back up this intuition?",
       },
       {
+        cell_id: "4ce25f2c-9b35-4899-bb81-af1dc2602ad6",
         speaker: "Linh",
         text: "Em um corpus de oitenta entrevistas semiestruturadas, complementado por uma bateria de testes cognitivos.",
         vi: "Trên một ngữ liệu gồm tám mươi cuộc phỏng vấn bán cấu trúc, bổ sung bằng một loạt bài kiểm tra nhận thức.",
@@ -446,6 +462,7 @@ export const lessons: PortugueseLesson[] = [
       "A four-step frame for a critical-analysis paragraph (spoken or written):\n\n(1) RECONSTRUCT: 'Se bem entendo, o autor sustenta que…' (If I understand correctly, the author holds that…) — a charitable summary.\n\n(2) ACKNOWLEDGE THE MERIT: 'É inegável o mérito de…' / 'O ponto forte da análise reside em…' — name a genuine strength, not empty politeness.\n\n(3) FORMULATE THE OBJECTION WITH CONCESSION: 'Dito isso, parece-me que a argumentação peca por…' / 'Embora X, convém notar que Y.' — note 'embora' triggers the subjunctive (Embora seja…, not Embora é…).\n\n(4) QUALIFY: 'Isso não invalida o conjunto da obra, mas convida a relativizar suas conclusões.' — close with nuance, not demolition.\n\nCommon FALLACIES, named in Portuguese:\n- 'generalização apressada' (hasty generalization)\n- 'falso dilema' (false dilemma: only A or B)\n- 'ad hominem' (attacking the person, not the argument)\n- 'petição de princípio' (begging the question / circular)\n- 'espantalho' (straw man: distort the opponent's claim, then attack it)\n\nSAFE TEMPLATES:\n- 'A inferência me parece frágil porque…'\n- 'Caberia perguntar se…'\n- 'Esse argumento pressupõe que…, o que não é evidente.'\n\nAVOID: 'está errado', 'isso não faz sentido', 'qualquer um sabe que…' — each instantly drops you from C1 to B1.",
     vocabulary: [
       {
+        cell_id: "6dabc4b7-c7ce-4deb-926c-7cf028037138",
         word: "a premissa implícita",
         en: "the implicit premise",
         vi: "tiền đề ngầm",
@@ -454,6 +471,7 @@ export const lessons: PortugueseLesson[] = [
         pronunciation_en: "ah preh-MEES-sah eem-PLEE-see-tah — double s held; x of -plíci- = 's'",
       },
       {
+        cell_id: "aebb6095-b9f4-462b-9469-c7b1952d1324",
         word: "a inferência",
         en: "the inference",
         vi: "suy luận / suy diễn",
@@ -462,6 +480,7 @@ export const lessons: PortugueseLesson[] = [
         pronunciation_en: "ah een-feh-REN-see-ah — nasal 'in' onset; closed ê",
       },
       {
+        cell_id: "b2b034cb-3793-4f3b-a4d8-385b1d1ddc3b",
         word: "discutível",
         en: "debatable / open to question",
         vi: "đáng tranh cãi",
@@ -470,6 +489,7 @@ export const lessons: PortugueseLesson[] = [
         pronunciation_en: "dees-koo-TEE-vew — final -vel = 'vew' glide",
       },
       {
+        cell_id: "18c16909-d852-4497-b0b7-a20003260576",
         word: "a generalização apressada",
         en: "the hasty generalization",
         vi: "khái quát hóa vội",
@@ -478,6 +498,7 @@ export const lessons: PortugueseLesson[] = [
         pronunciation_en: "ah zheh-neh-rah-lee-zah-SOWNG ah-preh-SAH-dah — g = 'zh'; nasal -ção",
       },
       {
+        cell_id: "a2751f58-6fe2-4bda-b70b-f74beaf8bea1",
         word: "o espantalho (falácia)",
         en: "the straw man (fallacy)",
         vi: "ngụy biện người rơm",
@@ -486,6 +507,7 @@ export const lessons: PortugueseLesson[] = [
         pronunciation_en: "oo es-pan-TAH-lyoo — lh = 'ly' as in million; final -o = 'oo'",
       },
       {
+        cell_id: "19549c9b-e5bf-49c8-a74c-e7d5f23e602a",
         word: "matizar",
         en: "to nuance / to qualify",
         vi: "làm rõ sắc thái",
@@ -494,6 +516,7 @@ export const lessons: PortugueseLesson[] = [
         pronunciation_en: "mah-tee-ZAH — z = 'z'; final -r soft",
       },
       {
+        cell_id: "6df2e079-7141-4610-b1f4-a45cc69d33c1",
         word: "peca por (de pecar)",
         en: "falls short on / errs by",
         vi: "mắc lỗi ở / thiếu sót ở",
@@ -502,6 +525,7 @@ export const lessons: PortugueseLesson[] = [
         pronunciation_en: "PEH-kah poor — open è in pecar; 'por' = 'poor'",
       },
       {
+        cell_id: "0cdcd3a2-0dd2-430a-89e8-da7b4f1298a1",
         word: "convém distinguir",
         en: "it is worth distinguishing",
         vi: "đáng để phân biệt",
@@ -510,6 +534,7 @@ export const lessons: PortugueseLesson[] = [
         pronunciation_en: "kon-VENG dees-teen-GEER — nasal -ém; gu = hard g before i",
       },
       {
+        cell_id: "64b884ce-91ce-4e47-846e-0734f08a3c3b",
         word: "o princípio de caridade",
         en: "the principle of charity",
         vi: "nguyên tắc thiện chí",
@@ -518,6 +543,7 @@ export const lessons: PortugueseLesson[] = [
         pronunciation_en: "oo preen-SEE-pee-oo jee kah-ree-DAH-jee — final -de = 'jee'",
       },
       {
+        cell_id: "a905b508-2904-4b2c-8ec0-d67356f27586",
         word: "relativizar",
         en: "to put into perspective / relativize",
         vi: "đặt lại trong tương quan",
@@ -528,24 +554,28 @@ export const lessons: PortugueseLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "2e13bf92-eaf5-4d57-b640-ebd074239c47",
         speaker: "Mediador (mesa-redonda)",
         text: "Você leu o artigo de Mendes sobre meritocracia. Qual é a sua avaliação crítica?",
         vi: "Bạn đã đọc bài của Mendes về chủ nghĩa nhân tài. Đánh giá phản biện của bạn ra sao?",
         en: "You've read Mendes's article on meritocracy. What's your critical assessment?",
       },
       {
+        cell_id: "1537e5b8-8478-4129-b5fc-68db2c45545d",
         speaker: "Linh",
         text: "Se bem entendo, Mendes sustenta que o sucesso reflete sobretudo o esforço individual. É inegável o rigor com que ele organiza os dados. Dito isso, o argumento me parece repousar sobre uma premissa implícita: a de que todos partem das mesmas condições.",
         vi: "Nếu tôi hiểu đúng, Mendes khẳng định rằng thành công phản ánh chủ yếu nỗ lực cá nhân. Không thể phủ nhận sự chặt chẽ trong cách ông tổ chức dữ liệu. Dù vậy, lập luận với tôi có vẻ dựa trên một tiền đề ngầm: rằng mọi người xuất phát từ cùng điều kiện.",
         en: "If I understand correctly, Mendes holds that success mainly reflects individual effort. The rigor with which he organizes the data is undeniable. That said, the argument seems to me to rest on an implicit premise: that everyone starts from the same conditions.",
       },
       {
+        cell_id: "519d4ded-0411-45b0-8b68-538a0bcc6cb5",
         speaker: "Mediador",
         text: "E essa premissa, no seu entender, se sustenta?",
         vi: "Và tiền đề đó, theo bạn, có đứng vững không?",
         en: "And that premise, in your view, holds up?",
       },
       {
+        cell_id: "17ae2d50-0f72-4fc1-86d4-43ef87550c26",
         speaker: "Linh",
         text: "Parece-me frágil. Ela ignora as desigualdades de partida, o que aproxima o raciocínio de uma generalização apressada. Isso não invalida o conjunto do artigo, mas convida a relativizar sua conclusão.",
         vi: "Với tôi nó mong manh. Nó bỏ qua bất bình đẳng xuất phát, khiến lập luận gần với một khái quát hóa vội. Điều đó không phủ định toàn bộ bài viết, nhưng mời ta đặt lại kết luận trong tương quan.",
@@ -703,6 +733,7 @@ export const lessons: PortugueseLesson[] = [
       "A five-part frame for a 5–7 minute results presentation:\n\n(1) OPENING (15 sec): greeting + one connecting line + announce the structure. 'Bom dia a todos. Obrigada pelo tempo. Vou estruturar em três pontos: resultados, desafios e o pedido.'\n\n(2) RESULTS: lead with your strongest number FIRST. 'Os números falam por si: superamos a meta em 12%.' One idea per slide — don't cram.\n\n(3) ONE HEADLINE NUMBER: pick ONE figure that tells a story. 'Gostaria de chamar a atenção para um dado em especial…' The audience remembers one number, not ten.\n\n(4) DIFFICULTIES (proactive concession): 'Não vou esconder que enfrentamos X. Nossa resposta foi Y.' Always pair problem + response.\n\n(5) THE ASK (clear request): 'Em resumo, peço ao conselho a aprovação de Z, à luz do retorno demonstrado.'\n\nLANGUAGE TOOLS:\n- Transition: 'Passo agora ao segundo ponto.'\n- Emphasis: 'O ponto crucial é o seguinte: …'\n- Invite questions: 'Fico à disposição para perguntas.'\n\nAVOID:\n- 'Acho que talvez…' (undercuts credibility) → 'Os dados mostram que…'\n- Reading slides verbatim → look at people; slides are backdrop\n- Closing on a vague 'é isso' / 'obrigado' → always end on a 'pedido'\n- Going over time → rehearse until it fits",
     vocabulary: [
       {
+        cell_id: "4280dce9-f3f7-4e0b-9422-ba45c3c5a74b",
         word: "a apresentação para a diretoria",
         en: "the presentation to the board",
         vi: "buổi trình bày trước ban giám đốc",
@@ -711,6 +742,7 @@ export const lessons: PortugueseLesson[] = [
         pronunciation_en: "ah ah-preh-zen-tah-SOWNG pah-rah ah jee-reh-toh-REE-ah — s = 'z' in apresentação; nasal -ção",
       },
       {
+        cell_id: "b8ebc21b-46ff-4c35-b332-55438ea966c4",
         word: "superar a meta",
         en: "to exceed the target",
         vi: "vượt chỉ tiêu",
@@ -719,6 +751,7 @@ export const lessons: PortugueseLesson[] = [
         pronunciation_en: "soo-peh-RAH ah MEH-tah — open è in meta; final -r soft",
       },
       {
+        cell_id: "1dd53cb8-5bd0-485c-b45b-3b7285889ebc",
         word: "chamar a atenção para",
         en: "to draw attention to",
         vi: "lưu ý đến / hướng sự chú ý vào",
@@ -727,6 +760,7 @@ export const lessons: PortugueseLesson[] = [
         pronunciation_en: "shah-MAH ah ah-ten-SOWNG pah-rah — ch = 'sh'; nasal -ção",
       },
       {
+        cell_id: "efeaf52f-745d-4184-89a0-85bd10c1cfa6",
         word: "um dado revelador",
         en: "a telling figure / data point",
         vi: "một con số có ý nghĩa",
@@ -735,6 +769,7 @@ export const lessons: PortugueseLesson[] = [
         pronunciation_en: "oong DAH-doo heh-veh-lah-DOH — initial r = 'h'; closed ô at end",
       },
       {
+        cell_id: "4ab4fbd3-f7d0-43b8-bf51-ae2fa58a386f",
         word: "não vou esconder que",
         en: "I won't hide that",
         vi: "tôi không giấu rằng",
@@ -743,6 +778,7 @@ export const lessons: PortugueseLesson[] = [
         pronunciation_en: "nowng voh es-kon-DEH kee — não = 'nowng'; 'que' = 'kee'",
       },
       {
+        cell_id: "4ebeb48b-38c0-4569-81b3-5828f7e2facd",
         word: "encarar de frente",
         en: "to address head-on",
         vi: "đối diện thẳng",
@@ -751,6 +787,7 @@ export const lessons: PortugueseLesson[] = [
         pronunciation_en: "en-kah-HAH jee FREN-chee — final -te = 'chee'; 'de' = 'jee'",
       },
       {
+        cell_id: "aa4e27ba-d9a9-4678-9ca4-cf404bccf95c",
         word: "o retorno (sobre o investimento)",
         en: "the return (on investment)",
         vi: "hiệu quả / lợi tức (trên vốn đầu tư)",
@@ -759,6 +796,7 @@ export const lessons: PortugueseLesson[] = [
         pronunciation_en: "oo heh-TOR-noo — initial r = 'h'; closed ô",
       },
       {
+        cell_id: "01b34a76-12be-481f-9ba3-25c1bb240839",
         word: "à luz de",
         en: "in light of",
         vi: "trước / dưới ánh sáng của",
@@ -767,6 +805,7 @@ export const lessons: PortugueseLesson[] = [
         pronunciation_en: "ah LOOS jee — crasis à = 'ah'; 'de' = 'jee'",
       },
       {
+        cell_id: "4ad9dd3c-fc50-4bb9-9aa4-e76ece94df2e",
         word: "fico à disposição",
         en: "I remain at your disposal",
         vi: "tôi sẵn sàng (trả lời/hỗ trợ)",
@@ -775,6 +814,7 @@ export const lessons: PortugueseLesson[] = [
         pronunciation_en: "FEE-koo ah dees-poh-zee-SOWNG — s = 'z' in disposição; nasal -ção",
       },
       {
+        cell_id: "f873cb2d-2bc7-4485-9c9d-12bb32a12e61",
         word: "o pedido",
         en: "the request / the ask",
         vi: "lời đề nghị / yêu cầu",
@@ -785,30 +825,35 @@ export const lessons: PortugueseLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "f37ed346-67b5-40ee-a225-c2965f638343",
         speaker: "Diretora financeira",
         text: "Linh, o conselho tem vinte minutos. Pode começar quando quiser.",
         vi: "Linh, hội đồng có 20 phút. Em có thể bắt đầu khi nào sẵn sàng.",
         en: "Linh, the board has twenty minutes. You can begin whenever you're ready.",
       },
       {
+        cell_id: "3b0d1b2c-34b6-4ce5-926c-8504de05ac16",
         speaker: "Linh",
         text: "Obrigada pelo tempo. Vou estruturar em três pontos: os resultados do trimestre, os desafios que enfrentamos e o pedido que trago ao conselho.",
         vi: "Cảm ơn quý vị đã dành thời gian. Tôi sẽ chia làm ba phần: kết quả của quý, những thách thức chúng tôi gặp, và lời đề nghị tôi mang đến hội đồng.",
         en: "Thank you for your time. I'll structure this in three points: the quarter's results, the challenges we faced, and the request I bring to the board.",
       },
       {
+        cell_id: "568d748a-47cb-46d0-bae7-b15669775628",
         speaker: "Linh",
         text: "Começo pelos números, que falam por si: superamos a meta em 12%, apesar de um mercado visivelmente mais apertado.",
         vi: "Tôi bắt đầu bằng con số, vốn tự nói lên điều đó: chúng tôi vượt chỉ tiêu 12%, dù thị trường thắt chặt rõ rệt.",
         en: "I'll start with the figures, which speak for themselves: we exceeded the target by 12%, despite a noticeably tighter market.",
       },
       {
+        cell_id: "ec99b669-7e09-4b5e-85fe-985a7d32e692",
         speaker: "Diretora financeira",
         text: "Excelente. E os desafios que mencionou?",
         vi: "Tuyệt vời. Còn những thách thức em vừa nhắc?",
         en: "Excellent. And the challenges you mentioned?",
       },
       {
+        cell_id: "1a1d316a-2f80-460f-be5d-77f5997a1f64",
         speaker: "Linh",
         text: "Não vou esconder que a rotatividade da equipe nos custou caro. Encaramos isso de frente com um novo plano de retenção, cujos primeiros efeitos já aparecem nos dados de maio.",
         vi: "Tôi không giấu rằng tỉ lệ nghỉ việc của đội đã khiến chúng tôi tốn kém. Chúng tôi đã đối diện thẳng bằng một kế hoạch giữ chân mới, mà tác động đầu tiên đã xuất hiện trong dữ liệu tháng Năm.",
@@ -966,6 +1011,7 @@ export const lessons: PortugueseLesson[] = [
       "A disagreement-intensity ladder — pick the rung that fits the context:\n\nAGREEMENT WITH A RESERVATION:\n- 'Concordo em grande parte, com uma ressalva.' (I largely agree, with one reservation.)\n- 'Tendo a concordar, embora…' (I tend to agree, although…)\n\nMILD DISAGREEMENT (the polite default):\n- 'Há algo de verdade nisso, mas…'\n- 'Vejo de outra forma.' (I see it differently.)\n- 'Eu colocaria a questão de modo diferente.'\n\nMODERATE DISAGREEMENT:\n- 'Não tenho tanta certeza. A comparação me parece frágil.'\n- 'Com todo o respeito, não sei se isso procede.'\n\nSTRONG DISAGREEMENT (still polite):\n- 'Aí eu já discordo.' (There I do disagree.) — marks a clear boundary.\n- 'Permita-me discordar firmemente, e explico por quê.'\n\nCONVERGENCE TOOLS (graceful close):\n- 'No fundo, talvez não estejamos tão distantes.'\n- 'Acho que concordamos no essencial e divergimos no detalhe.'\n\nPRONUNCIATION TIP: the conditional (-ria) is the politeness key. 'diria' (jee-REE-ah), 'seria' (seh-REE-ah), 'colocaria' (koh-loh-kah-REE-ah) — stress the -REE-. Using it instead of the present tense instantly softens a sentence.\n\nAVOID: a bare 'não' to open a reply; 'você está errado'; silence or 'let me think about it' when you actually do have a position — Brazilians need to be able to read what you think.",
     vocabulary: [
       {
+        cell_id: "08688d20-fa56-4313-ad6e-390659927958",
         word: "com uma ressalva",
         en: "with one reservation",
         vi: "với một điều dè dặt",
@@ -974,6 +1020,7 @@ export const lessons: PortugueseLesson[] = [
         pronunciation_en: "kong oo-mah heh-SAHW-vah — rr = 'h'; -al = 'aw' glide",
       },
       {
+        cell_id: "6ccc4eb3-cc04-49e4-b69b-ed1cd96f3103",
         word: "tender a concordar",
         en: "to tend to agree",
         vi: "nghiêng về đồng tình",
@@ -982,6 +1029,7 @@ export const lessons: PortugueseLesson[] = [
         pronunciation_en: "ten-DEH ah kon-kor-DAH — closed ê; final -r soft",
       },
       {
+        cell_id: "396c49cd-ddef-445e-a550-b4f11b824dd1",
         word: "há algo de verdade nisso",
         en: "there's some truth in that",
         vi: "có phần đúng trong đó",
@@ -990,6 +1038,7 @@ export const lessons: PortugueseLesson[] = [
         pronunciation_en: "ah AHW-goo jee ver-DAH-jee NEE-soo — algo -l = 'w'; final -de = 'jee'",
       },
       {
+        cell_id: "a1c39744-1506-4183-b0ad-2c51ce25a998",
         word: "ver de outra forma",
         en: "to see it differently",
         vi: "nhìn theo cách khác",
@@ -998,6 +1047,7 @@ export const lessons: PortugueseLesson[] = [
         pronunciation_en: "ver jee OH-trah FOR-mah — 'de' = 'jee'; outra has closed ô",
       },
       {
+        cell_id: "c2653caf-215e-49b1-a872-f09924b858fd",
         word: "colocar a questão de outro modo",
         en: "to put the matter differently",
         vi: "đặt vấn đề theo cách khác",
@@ -1006,6 +1056,7 @@ export const lessons: PortugueseLesson[] = [
         pronunciation_en: "koh-loh-KAH ah kes-TOWNG jee OH-troo MO-doo — nasal -ão; open MO in modo",
       },
       {
+        cell_id: "b667e591-6310-4092-8004-5cc216b05b4f",
         word: "com todo o respeito",
         en: "with all due respect",
         vi: "với tất cả sự tôn trọng",
@@ -1014,6 +1065,7 @@ export const lessons: PortugueseLesson[] = [
         pronunciation_en: "kong TOH-doo oo hes-PAY-too — respeito r = 'h'; final -to = 'too'",
       },
       {
+        cell_id: "dd05bd87-8904-4236-b164-ab6561deecc7",
         word: "não sei se isso procede",
         en: "I'm not sure that holds",
         vi: "tôi không chắc điều đó đứng vững",
@@ -1022,6 +1074,7 @@ export const lessons: PortugueseLesson[] = [
         pronunciation_en: "nowng say see EE-soo proh-SEH-jee — não = 'nowng'; final -de = 'jee'",
       },
       {
+        cell_id: "b53336ea-abe4-41cc-9e25-0fcdcc2f6c80",
         word: "aí eu já discordo",
         en: "there I do disagree",
         vi: "đến đây thì tôi không đồng ý",
@@ -1030,6 +1083,7 @@ export const lessons: PortugueseLesson[] = [
         pronunciation_en: "ah-EE eh-oo zhah dees-KOR-doo — já = 'zhah'; open KO",
       },
       {
+        cell_id: "b3104f11-e232-4e5a-857a-81a682d041b3",
         word: "no fundo",
         en: "at bottom / when it comes down to it",
         vi: "suy cho cùng",
@@ -1038,6 +1092,7 @@ export const lessons: PortugueseLesson[] = [
         pronunciation_en: "noo FOON-doo — nasal 'un'; final -o = 'doo'",
       },
       {
+        cell_id: "03bdf5d4-0a26-4b5d-b282-cf482446d20b",
         word: "divergir no detalhe",
         en: "to differ on the detail",
         vi: "khác nhau ở chi tiết",
@@ -1048,24 +1103,28 @@ export const lessons: PortugueseLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "b3cfbdad-d7bf-4752-8b94-df4c5c388522",
         speaker: "Colega (Rafael)",
         text: "Para mim, trabalho remoto é sempre mais produtivo. Ponto final.",
         vi: "Với mình, làm việc từ xa luôn năng suất hơn. Chấm hết.",
         en: "For me, remote work is always more productive. Full stop.",
       },
       {
+        cell_id: "a7c79e85-ae28-424f-892f-e908b6c643ff",
         speaker: "Linh",
         text: "Há algo de verdade nisso — para tarefas que exigem concentração, concordo plenamente. Dito isso, eu colocaria a questão de modo um pouco diferente: a produtividade depende menos do local e mais do tipo de tarefa.",
         vi: "Có phần đúng trong đó — với các việc cần tập trung, mình hoàn toàn đồng ý. Dù vậy, mình sẽ đặt vấn đề hơi khác: năng suất phụ thuộc vào loại công việc nhiều hơn là nơi làm.",
         en: "There's some truth in that — for tasks requiring concentration, I fully agree. That said, I'd put it a bit differently: productivity depends less on location and more on the type of task.",
       },
       {
+        cell_id: "87cac6fa-be80-4069-a408-94240e56b6d4",
         speaker: "Rafael",
         text: "Mas reuniões por vídeo funcionam tão bem quanto presenciais, não acha?",
         vi: "Nhưng họp qua video cũng hiệu quả như họp trực tiếp mà, bạn không thấy vậy à?",
         en: "But video meetings work just as well as in-person ones, don't you think?",
       },
       {
+        cell_id: "30bd32ca-01ec-4ad5-b505-79d4428d8693",
         speaker: "Linh",
         text: "Aí eu já teria minhas dúvidas, com todo o respeito. Para alinhamento rápido, sim; para resolver um conflito delicado, não tenho tanta certeza. No fundo, talvez não estejamos tão distantes: concordamos que o remoto ajuda, divergimos só sobre os limites.",
         vi: "Đến đây thì mình có chút nghi ngờ, với tất cả sự tôn trọng. Để căn chỉnh nhanh thì được; để giải quyết một xung đột tế nhị thì mình không chắc lắm. Suy cho cùng, có lẽ ta không xa nhau lắm: ta đồng ý làm từ xa có ích, chỉ khác nhau về giới hạn.",

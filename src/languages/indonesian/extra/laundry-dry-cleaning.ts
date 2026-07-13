@@ -17,6 +17,7 @@ type LessonSentence = {
 };
 
 type VocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -28,6 +29,7 @@ type VocabEntry = {
 };
 
 type DialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -144,6 +146,7 @@ export const laundryDryCleaningLessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: laundry-service requests often use passive di-: 'dicuci', 'disetrika', 'jangan dicuci biasa'. 'Kiloan' uses the -an suffix from 'kilo', meaning charged by the kilo. To request light fragrance, say 'parfumnya sedikit saja' or 'jangan terlalu kuat'.",
     vocabulary: [
       {
+        cell_id: "f2ee3817-dc63-4b98-bf3d-ead90fafd06a",
         word: "laundry kiloan",
         en: "laundry by the kilo",
         vi: "giặt tính ký",
@@ -152,6 +155,7 @@ export const laundryDryCleaningLessons: IndonesianLesson[] = [
         pronunciation_en: "LON-dree kee-LO-an",
       },
       {
+        cell_id: "33d6bd76-eb86-4a88-a554-d1ab8f8facbe",
         word: "cuci setrika",
         en: "wash and iron",
         vi: "giặt ủi",
@@ -160,6 +164,7 @@ export const laundryDryCleaningLessons: IndonesianLesson[] = [
         pronunciation_en: "CHOO-chee se-TREE-ka",
       },
       {
+        cell_id: "8e33780c-8c59-4e1e-beca-d06e892c9e4d",
         word: "dry clean",
         en: "dry cleaning",
         vi: "giặt khô",
@@ -168,6 +173,7 @@ export const laundryDryCleaningLessons: IndonesianLesson[] = [
         pronunciation_en: "DRY kleen",
       },
       {
+        cell_id: "42731e7a-a3fe-4a4d-b226-cfcbaee717c7",
         word: "noda",
         en: "stain",
         vi: "vết bẩn / vết ố",
@@ -176,6 +182,7 @@ export const laundryDryCleaningLessons: IndonesianLesson[] = [
         pronunciation_en: "NO-da",
       },
       {
+        cell_id: "e74bc1b6-b305-4617-9862-d1447c69efee",
         word: "parfum",
         en: "fragrance / perfume",
         vi: "nước thơm / mùi thơm",
@@ -184,6 +191,7 @@ export const laundryDryCleaningLessons: IndonesianLesson[] = [
         pronunciation_en: "par-FOOM",
       },
       {
+        cell_id: "037ee63d-c368-4c0c-ade8-b4757d41b9af",
         word: "setrika",
         en: "iron / to iron",
         vi: "bàn ủi / ủi",
@@ -192,6 +200,7 @@ export const laundryDryCleaningLessons: IndonesianLesson[] = [
         pronunciation_en: "se-TREE-ka",
       },
       {
+        cell_id: "a3f94dd0-9dfe-4773-a600-58ab87e1672d",
         word: "jas",
         en: "suit jacket / blazer",
         vi: "áo vest / áo com-lê",
@@ -202,24 +211,28 @@ export const laundryDryCleaningLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "cf62f7a2-c6f5-49c1-ba62-de1964b98b5e",
         speaker: "Pelanggan",
         text: "Mbak, saya mau laundry kiloan. Berapa per kilo?",
         vi: "Chị ơi, tôi muốn giặt tính ký. Bao nhiêu một ký?",
         en: "Miss, I want laundry by the kilo. How much per kilo?",
       },
       {
+        cell_id: "2c9363ab-9d8d-4cc1-9db2-57eebe7c7820",
         speaker: "Laundry",
         text: "Cuci setrika delapan ribu per kilo, selesai besok sore.",
         vi: "Giặt ủi tám nghìn một ký, xong chiều mai.",
         en: "Wash and iron is eight thousand per kilo, ready tomorrow afternoon.",
       },
       {
+        cell_id: "eed6d068-f11a-4594-be1a-662fcfc7d1b4",
         speaker: "Pelanggan",
         text: "Jas ini dry clean, ya. Ada noda kopi di kemeja putih.",
         vi: "Áo vest này dry clean nhé. Có vết cà phê trên áo sơ mi trắng.",
         en: "Dry clean this suit jacket, please. There is a coffee stain on the white shirt.",
       },
       {
+        cell_id: "8fdb1414-2b72-4263-9c1e-5daf0be6b8ed",
         speaker: "Laundry",
         text: "Baik. Parfumnya mau biasa atau sedikit saja?",
         vi: "Vâng. Mùi thơm muốn bình thường hay chỉ một chút thôi?",
@@ -374,6 +387,7 @@ export const laundryDryCleaningLessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: in service complaints, open with 'Maaf' to sound polite but firm. 'Hilang' = missing/lost; 'tertukar' = swapped with someone else's item; 'rusak' = damaged. For compensation, 'bagaimana ganti ruginya?' is more natural than a literal 'pay back'.",
     vocabulary: [
       {
+        cell_id: "6fec72b3-1664-4298-a12e-cac0a082cd7a",
         word: "jemput antar",
         en: "pickup and delivery",
         vi: "lấy và giao tận nơi",
@@ -382,6 +396,7 @@ export const laundryDryCleaningLessons: IndonesianLesson[] = [
         pronunciation_en: "JEM-poot AN-tar",
       },
       {
+        cell_id: "05a0289e-2a48-4100-9879-6714b76204f4",
         word: "nota",
         en: "receipt / service slip",
         vi: "phiếu / biên nhận",
@@ -390,6 +405,7 @@ export const laundryDryCleaningLessons: IndonesianLesson[] = [
         pronunciation_en: "NO-ta",
       },
       {
+        cell_id: "86ddb2ed-62e7-4d6f-8e3c-d360e8784a54",
         word: "pakaian",
         en: "clothes",
         vi: "quần áo",
@@ -398,6 +414,7 @@ export const laundryDryCleaningLessons: IndonesianLesson[] = [
         pronunciation_en: "pa-KAI-an",
       },
       {
+        cell_id: "67455830-9c65-4f82-92ce-d419fa739337",
         word: "hilang",
         en: "missing / lost",
         vi: "mất / thất lạc",
@@ -406,6 +423,7 @@ export const laundryDryCleaningLessons: IndonesianLesson[] = [
         pronunciation_en: "HEE-lang",
       },
       {
+        cell_id: "a3b3fa37-983f-4050-bb1d-0073cbe0785a",
         word: "tertukar",
         en: "swapped by mistake",
         vi: "bị nhầm / bị đổi lẫn",
@@ -414,6 +432,7 @@ export const laundryDryCleaningLessons: IndonesianLesson[] = [
         pronunciation_en: "ter-TOO-kar",
       },
       {
+        cell_id: "1deb2506-6267-4dd8-9ad5-9b9ab706c921",
         word: "ganti rugi",
         en: "compensation",
         vi: "bồi thường",
@@ -422,6 +441,7 @@ export const laundryDryCleaningLessons: IndonesianLesson[] = [
         pronunciation_en: "GAN-tee ROO-gee",
       },
       {
+        cell_id: "fc48c8c7-2ab0-481f-b83f-d96fedef8399",
         word: "dicek lagi",
         en: "checked again",
         vi: "được kiểm tra lại",
@@ -432,24 +452,28 @@ export const laundryDryCleaningLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "e1f79535-780c-41b1-9e6d-0f52107bcadb",
         speaker: "Pelanggan",
         text: "Halo, apakah ada layanan jemput antar?",
         vi: "Xin chào, có dịch vụ lấy và giao tận nơi không?",
         en: "Hello, is there pickup and delivery service?",
       },
       {
+        cell_id: "bbb77f43-3719-4c8b-aaf1-65df38c07f7f",
         speaker: "Laundry",
         text: "Ada, Kak. Tolong kirim alamat dan foto nota.",
         vi: "Có bạn nhé. Làm ơn gửi địa chỉ và ảnh phiếu.",
         en: "Yes. Please send the address and a photo of the receipt.",
       },
       {
+        cell_id: "ba235a9e-58e8-4776-9a25-2e9df9dcd62f",
         speaker: "Pelanggan",
         text: "Saya sudah terima laundry, tapi satu kemeja belum kembali.",
         vi: "Tôi đã nhận đồ giặt, nhưng một áo sơ mi chưa được trả lại.",
         en: "I received the laundry, but one shirt has not come back.",
       },
       {
+        cell_id: "7f8b80a3-4b04-494e-9cf0-6430ab1f9724",
         speaker: "Laundry",
         text: "Maaf, Kak. Kami cek lagi dulu. Kalau hilang, ada ganti rugi.",
         vi: "Xin lỗi bạn. Bên tôi kiểm tra lại trước. Nếu mất, có bồi thường.",

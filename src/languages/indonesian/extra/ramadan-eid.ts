@@ -17,6 +17,7 @@ type LessonSentence = {
 };
 
 type VocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -28,6 +29,7 @@ type VocabEntry = {
 };
 
 type DialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -144,6 +146,7 @@ export const ramadanEidLessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: Ramadan 'puasa' means abstaining from food and drink from dawn to sunset, not vegetarian eating. Remember the two anchors: 'sahur' = pre-dawn meal, 'buka puasa/berbuka' = breaking the fast at sunset. 'Selama' marks a duration; 'sampai' marks the endpoint.",
     vocabulary: [
       {
+        cell_id: "96cfccd5-8fbe-432e-bdc6-e8109c9ca2f5",
         word: "puasa",
         en: "fasting",
         vi: "nhịn chay",
@@ -152,6 +155,7 @@ export const ramadanEidLessons: IndonesianLesson[] = [
         pronunciation_en: "poo-A-sa",
       },
       {
+        cell_id: "4f23514a-842b-4f83-806f-bde05482c412",
         word: "sahur",
         en: "pre-dawn meal",
         vi: "bữa ăn trước rạng đông",
@@ -160,6 +164,7 @@ export const ramadanEidLessons: IndonesianLesson[] = [
         pronunciation_en: "sa-HOOR",
       },
       {
+        cell_id: "2509dc3e-13f0-4628-b202-2a75dc0eb41c",
         word: "buka puasa",
         en: "to break the fast",
         vi: "mở chay",
@@ -168,6 +173,7 @@ export const ramadanEidLessons: IndonesianLesson[] = [
         pronunciation_en: "BOO-ka poo-A-sa",
       },
       {
+        cell_id: "8da93023-0d4d-4cbb-9d73-d506ccc137ac",
         word: "tarawih",
         en: "nightly Ramadan prayer",
         vi: "lễ cầu nguyện tarawih buổi tối",
@@ -176,6 +182,7 @@ export const ramadanEidLessons: IndonesianLesson[] = [
         pronunciation_en: "ta-ra-WEEH",
       },
       {
+        cell_id: "5e37ba92-b20b-4103-af2d-9b506893c45f",
         word: "magrib",
         en: "sunset prayer time",
         vi: "giờ cầu nguyện hoàng hôn",
@@ -184,6 +191,7 @@ export const ramadanEidLessons: IndonesianLesson[] = [
         pronunciation_en: "MAG-rib",
       },
       {
+        cell_id: "e4b91127-8912-43c0-83ee-e6d14ff3836c",
         word: "takjil",
         en: "snacks for breaking the fast",
         vi: "đồ ăn nhẹ để mở chay",
@@ -192,6 +200,7 @@ export const ramadanEidLessons: IndonesianLesson[] = [
         pronunciation_en: "TAK-jil",
       },
       {
+        cell_id: "24f8bdd1-bf28-4680-af12-22954d714f6b",
         word: "air putih",
         en: "plain water",
         vi: "nước lọc",
@@ -202,24 +211,28 @@ export const ramadanEidLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "35f0b272-330c-4a8e-8bd9-7cc2d390b111",
         speaker: "Linh",
         text: "Kamu sahur jam berapa tadi pagi?",
         vi: "Sáng nay bạn ăn sahur lúc mấy giờ?",
         en: "What time did you have sahur this morning?",
       },
       {
+        cell_id: "6fd2c97c-cfbd-4f24-b362-954b25fede0b",
         speaker: "Raka",
         text: "Jam empat. Sekarang saya puasa sampai magrib.",
         vi: "Bốn giờ. Bây giờ tôi nhịn chay đến giờ magrib.",
         en: "At four. Now I am fasting until sunset prayer time.",
       },
       {
+        cell_id: "c4b16fae-8414-4732-8854-79f23bd8f1ef",
         speaker: "Linh",
         text: "Nanti buka puasa di rumah atau di masjid?",
         vi: "Lát nữa bạn mở chay ở nhà hay ở nhà thờ Hồi giáo?",
         en: "Later will you break the fast at home or at the mosque?",
       },
       {
+        cell_id: "1e34fb07-3e74-4d76-8209-e34abb7a0fb7",
         speaker: "Raka",
         text: "Di rumah dulu, lalu salat tarawih di masjid.",
         vi: "Ở nhà trước, rồi cầu nguyện tarawih ở nhà thờ Hồi giáo.",
@@ -360,6 +373,7 @@ export const ramadanEidLessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: the formal greeting is 'Selamat Idul Fitri, mohon maaf lahir dan batin' - asking forgiveness outwardly and inwardly. In everyday speech, 'Lebaran' often sounds more natural than 'Idul Fitri'. 'Mudik' is not just ordinary 'pulang kampung'; it is culturally loaded holiday homecoming.",
     vocabulary: [
       {
+        cell_id: "791bceae-8b25-42d9-a36e-32e945d4172e",
         word: "Lebaran",
         en: "Eid al-Fitr holiday in Indonesian usage",
         vi: "lễ kết thúc Ramadan ở Indonesia",
@@ -368,6 +382,7 @@ export const ramadanEidLessons: IndonesianLesson[] = [
         pronunciation_en: "le-BA-ran",
       },
       {
+        cell_id: "888834cf-20b7-4abe-9e8e-cde4ee220c1b",
         word: "mudik",
         en: "holiday homecoming",
         vi: "về quê dịp lễ",
@@ -376,6 +391,7 @@ export const ramadanEidLessons: IndonesianLesson[] = [
         pronunciation_en: "MOO-dik",
       },
       {
+        cell_id: "a699c170-f4e9-4ff4-8de4-43089b04340d",
         word: "THR",
         en: "holiday allowance",
         vi: "tiền thưởng lễ",
@@ -384,6 +400,7 @@ export const ramadanEidLessons: IndonesianLesson[] = [
         pronunciation_en: "teh-ha-er",
       },
       {
+        cell_id: "ffffd22e-7acb-4f6d-84f5-861ba6ab9f45",
         word: "ketupat",
         en: "rice cake in woven coconut leaves",
         vi: "bánh gạo gói lá dừa",
@@ -392,6 +409,7 @@ export const ramadanEidLessons: IndonesianLesson[] = [
         pronunciation_en: "ke-TOO-pat",
       },
       {
+        cell_id: "049c9981-e4a5-4803-ae76-584bef78f1be",
         word: "halal bihalal",
         en: "post-Eid gathering for greetings and forgiveness",
         vi: "buổi gặp mặt sau Lebaran để chúc mừng/xin lỗi",
@@ -400,6 +418,7 @@ export const ramadanEidLessons: IndonesianLesson[] = [
         pronunciation_en: "ha-LAL bee-ha-LAL",
       },
       {
+        cell_id: "5d24e1aa-32fc-4cd1-9d5e-85b9c6a2394e",
         word: "bersilaturahmi",
         en: "to visit and maintain social/family ties",
         vi: "thăm hỏi/giữ tình thân",
@@ -408,6 +427,7 @@ export const ramadanEidLessons: IndonesianLesson[] = [
         pronunciation_en: "ber-see-la-too-RAH-mee",
       },
       {
+        cell_id: "1bc9ff75-8aa7-4166-a12d-d4dfec5da9e0",
         word: "mohon maaf lahir dan batin",
         en: "please forgive me outwardly and inwardly",
         vi: "xin tha lỗi cả ngoài mặt lẫn trong lòng",
@@ -418,24 +438,28 @@ export const ramadanEidLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "08c12d68-216c-4438-bbe9-37b6d5ad9d47",
         speaker: "Sari",
         text: "Kamu mudik ke mana tahun ini?",
         vi: "Năm nay bạn về quê ở đâu?",
         en: "Where are you going for mudik this year?",
       },
       {
+        cell_id: "4014655c-03df-4505-9007-3a0ba06b5f31",
         speaker: "Dimas",
         text: "Saya mudik ke Solo. Tiket kereta sudah habis cepat sekali.",
         vi: "Tôi về Solo. Vé tàu đã hết rất nhanh.",
         en: "I'm going home to Solo. Train tickets sold out very quickly.",
       },
       {
+        cell_id: "e1fa5383-e2cb-49d1-ba07-2196bb5c34ad",
         speaker: "Sari",
         text: "Semoga THR segera cair sebelum Lebaran.",
         vi: "Mong là THR sớm được trả trước Lebaran.",
         en: "Hopefully the THR is paid out soon before Lebaran.",
       },
       {
+        cell_id: "50dc16ef-b63f-4576-9c1e-61f7dbd0478b",
         speaker: "Dimas",
         text: "Amin. Setelah Lebaran, kantor ada halal bihalal.",
         vi: "Amin. Sau Lebaran, văn phòng có buổi halal bihalal.",

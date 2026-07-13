@@ -29,6 +29,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   /** Indonesian word/phrase. */
   word: string;
   /** English meaning. */
@@ -44,6 +45,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   /** Indonesian line. */
   text: string;
@@ -309,6 +311,7 @@ export const lessons: IndonesianLesson[] = [
     vocabulary: [
       // Contract & wage
       {
+        cell_id: "ace14337-f93a-418a-bc59-ec77302100b4",
         word: "kontrak kerja",
         en: "employment contract",
         vi: "hợp đồng lao động",
@@ -317,6 +320,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "KON-trak KER-ja — `tetap` (permanent) vs `sementara` (temporary)",
       },
       {
+        cell_id: "05454f23-ac80-4189-a1cf-e8aa0d29860b",
         word: "UMR / UMP / UMK",
         en: "regional / provincial / city minimum wage",
         vi: "lương tối thiểu vùng/tỉnh/thành",
@@ -325,6 +329,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "u-em-er — paying below it is a violation",
       },
       {
+        cell_id: "1b04c784-479f-43d6-88ec-74499e2898ed",
         word: "gaji",
         en: "wage / salary",
         vi: "lương",
@@ -333,6 +338,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "GA-ji — `slip gaji` = payslip",
       },
       {
+        cell_id: "646bc354-fd5a-4fd0-8b29-c46e344fdbc1",
         word: "lembur",
         en: "overtime",
         vi: "tăng ca / làm thêm giờ",
@@ -342,6 +348,7 @@ export const lessons: IndonesianLesson[] = [
       },
       // Benefits & rights
       {
+        cell_id: "fb3c20dc-3f3a-426b-be45-dd86a684c585",
         word: "berhak atas",
         en: "entitled to",
         vi: "có quyền hưởng",
@@ -350,6 +357,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "ber-HAK A-tas — `berhak atas cuti` = entitled to leave",
       },
       {
+        cell_id: "694983b6-d520-4093-abe5-f991a26d8afc",
         word: "cuti",
         en: "leave (time off)",
         vi: "nghỉ phép",
@@ -358,6 +366,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "CHU-ti — `c`='ch'; `cuti tahunan` = annual leave",
       },
       {
+        cell_id: "b01e13e2-f3f0-4559-808f-820a00aab9bb",
         word: "THR",
         en: "religious-holiday bonus",
         vi: "thưởng dịp lễ (bắt buộc)",
@@ -366,6 +375,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "te-ha-er — Tunjangan Hari Raya; usually one month's wage",
       },
       {
+        cell_id: "acf595a9-863f-4fb5-91b1-c78adc2123c0",
         word: "BPJS Ketenagakerjaan",
         en: "labor social-security fund",
         vi: "BHXH lao động",
@@ -375,6 +385,7 @@ export const lessons: IndonesianLesson[] = [
       },
       // Termination
       {
+        cell_id: "d262eb58-0243-48a6-a24f-3a2746cd1a5b",
         word: "PHK",
         en: "employment termination / layoff",
         vi: "chấm dứt HĐLĐ / cho thôi việc",
@@ -383,6 +394,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "pe-ha-ka — `di-PHK` (passive); NOT `dipecat` (fired)",
       },
       {
+        cell_id: "9cdad050-6369-46b8-9c4e-744f76127675",
         word: "pesangon",
         en: "severance pay",
         vi: "trợ cấp thôi việc",
@@ -391,6 +403,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "pe-SA-ngon — `sesuai aturan` = per the rules",
       },
       {
+        cell_id: "8cc0634a-fb0e-47a7-883f-b79195ba5875",
         word: "pemberitahuan",
         en: "notice / notification",
         vi: "sự thông báo (trước)",
@@ -400,6 +413,7 @@ export const lessons: IndonesianLesson[] = [
       },
       // Dispute & enforcement
       {
+        cell_id: "2b73ba82-83a3-4f25-815e-47c2913cfd0d",
         word: "serikat pekerja",
         en: "labor union",
         vi: "công đoàn",
@@ -408,6 +422,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "se-ri-KAT pe-KER-ja — also `serikat buruh`; don't say `union`",
       },
       {
+        cell_id: "b4c17016-9287-453a-a0b2-c5ef41f6391c",
         word: "Disnaker",
         en: "local labor office (Dinas Tenaga Kerja)",
         vi: "Sở Lao động",
@@ -416,6 +431,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "dis-NA-ker — `lapor ke Disnaker` = file with the office",
       },
       {
+        cell_id: "9822620b-0968-4aaf-8314-b0b71658059d",
         word: "menuntut",
         en: "to claim / demand (a right)",
         vi: "đòi / yêu cầu (quyền)",
@@ -424,6 +440,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "me-NUN-tut — stronger than `minta` (ask); `menuntut hak`",
       },
       {
+        cell_id: "9d73b131-825b-4e9a-91f9-c83f5e70194c",
         word: "musyawarah",
         en: "consensus deliberation",
         vi: "thương lượng / đối thoại đồng thuận",
@@ -435,48 +452,56 @@ export const lessons: IndonesianLesson[] = [
     dialogue: [
       // Dialogue: a worker raises unpaid overtime, a PHK without notice, and severance
       {
+        cell_id: "85578827-dfc3-445c-9095-75db954cf9d7",
         speaker: "Pekerja",
         text: "Pak, saya ingin bicara soal hak saya. Lembur saya belum dibayar bulan ini.",
         vi: "Anh ơi, em muốn nói về quyền lợi của em. Tiền tăng ca tháng này chưa được trả.",
         en: "Sir, I'd like to talk about my rights. My overtime hasn't been paid this month.",
       },
       {
+        cell_id: "c22e30b4-854d-43fc-9252-3817123a54fa",
         speaker: "HRD",
         text: "Oh, akan kami cek. Ada hal lain?",
         vi: "À, để bên tôi kiểm tra. Còn việc gì khác không?",
         en: "Oh, we'll check that. Anything else?",
       },
       {
+        cell_id: "e4c24eed-b1f9-4931-9006-657b97c817c4",
         speaker: "Pekerja",
         text: "Iya. Saya dengar saya akan di-PHK, tapi tanpa pemberitahuan tertulis.",
         vi: "Có ạ. Em nghe nói em sẽ bị cho thôi việc, nhưng không có thông báo bằng văn bản.",
         en: "Yes. I heard I'll be laid off, but without written notice.",
       },
       {
+        cell_id: "3cf2cdd8-2e57-48f0-9b90-f34ae1aca3aa",
         speaker: "HRD",
         text: "Memang ada efisiensi, tapi kami akan ikuti prosedur.",
         vi: "Đúng là có cắt giảm, nhưng bên tôi sẽ theo đúng quy trình.",
         en: "There is downsizing, but we'll follow procedure.",
       },
       {
+        cell_id: "f178a2f0-ff7d-4752-8812-e5cdf74f9dd8",
         speaker: "Pekerja",
         text: "Kalau di-PHK, saya berhak mendapat pesangon sesuai aturan. Berapa besar yang seharusnya saya terima?",
         vi: "Nếu bị thôi việc, em có quyền nhận trợ cấp theo quy định. Khoản em đáng lẽ nhận là bao nhiêu?",
         en: "If I'm laid off, I'm entitled to severance per the rules. How much should I rightfully receive?",
       },
       {
+        cell_id: "39140dec-de47-4a42-896c-897a9824236f",
         speaker: "HRD",
         text: "Akan kami hitung sesuai masa kerja. Nanti kami berikan rinciannya.",
         vi: "Bên tôi sẽ tính theo thâm niên. Sẽ đưa anh bảng chi tiết sau.",
         en: "We'll calculate it by length of service. We'll give you the breakdown.",
       },
       {
+        cell_id: "94a8185d-a9b5-4ffd-bbca-1694a18cbec2",
         speaker: "Pekerja",
         text: "Tolong berikan bukti tertulis, ya, Pak. Saya hanya menuntut yang menjadi hak saya. Mari kita selesaikan secara musyawarah.",
         vi: "Làm ơn cho em bằng chứng bằng văn bản ạ. Em chỉ đòi những gì thuộc quyền của em. Mình giải quyết bằng đối thoại nhé.",
         en: "Please provide written evidence, sir. I only claim what's rightfully mine. Let's settle this through dialogue.",
       },
       {
+        cell_id: "9a342031-b5b1-49b9-8842-c4f102602651",
         speaker: "HRD",
         text: "Baik. Kalau perlu, silakan juga berkonsultasi dengan serikat pekerja.",
         vi: "Được. Nếu cần, anh cứ tham khảo cả công đoàn.",

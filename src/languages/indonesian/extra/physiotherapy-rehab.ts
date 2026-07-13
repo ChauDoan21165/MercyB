@@ -21,6 +21,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   /** Indonesian word/phrase. */
   word: string;
   /** English meaning. */
@@ -36,6 +37,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   /** Indonesian line. */
   text: string;
@@ -225,43 +227,48 @@ export const lessons: IndonesianLesson[] = [
     tip_advice_en:
       "Tip for Vietnamese speakers: `sakit` broadly means sick/hurts, while `nyeri` is more specific aching pain. Body parts come before possession: `punggung saya`, `lutut saya`, `bahu saya`. For therapy schedules, use `Jadwal terapi saya kapan?`, `dua kali seminggu`, and `Kapan kontrol lagi?`.",
     vocabulary: [
-      { word: "fisioterapi", en: "physiotherapy", vi: "vật lý trị liệu", pos: "noun", pronunciation_vi: "fi-si-o-te-RA-pi", pronunciation_en: "fee-see-o-te-RA-pee" },
-      { word: "fisioterapis", en: "physiotherapist", vi: "chuyên viên vật lý trị liệu", pos: "noun", pronunciation_vi: "fi-si-o-te-RA-pis", pronunciation_en: "fee-see-o-te-RA-pis" },
-      { word: "cedera", en: "injury", vi: "chấn thương", pos: "noun/verb", pronunciation_vi: "ce-DE-ra", pronunciation_en: "che-DE-ra" },
-      { word: "nyeri punggung", en: "back pain", vi: "đau lưng", pos: "noun phrase", pronunciation_vi: "NYE-ri PUNG-gung", pronunciation_en: "NYE-ree POONG-goong" },
-      { word: "latihan pemulihan", en: "rehab exercise", vi: "bài tập phục hồi", pos: "noun phrase", pronunciation_vi: "LA-tih-an pe-MU-lih-an", pronunciation_en: "LA-tih-an pe-MOO-lih-an" },
-      { word: "jadwal terapi", en: "therapy schedule", vi: "lịch trị liệu", pos: "noun phrase", pronunciation_vi: "JAD-wal te-RA-pi", pronunciation_en: "JAD-wal te-RA-pee" },
-      { word: "alat bantu", en: "assistive device", vi: "dụng cụ hỗ trợ", pos: "noun phrase", pronunciation_vi: "A-lat BAN-tu", pronunciation_en: "A-lat BAN-too" },
-      { word: "rujukan dokter", en: "doctor referral", vi: "giấy chuyển tuyến của bác sĩ", pos: "noun phrase", pronunciation_vi: "ru-JU-kan DOK-ter", pronunciation_en: "roo-JOO-kan DOK-ter" },
-      { word: "gerakan", en: "movement", vi: "cử động/động tác", pos: "noun", pronunciation_vi: "ge-RA-kan", pronunciation_en: "ge-RA-kan" },
-      { word: "kontrol lagi", en: "follow up again", vi: "tái khám lại", pos: "verb phrase", pronunciation_vi: "kon-TROL la-GI", pronunciation_en: "kon-TROL la-GEE" },
+      { cell_id: "462ecd93-35e8-4cdb-ae82-e8b8e33e0262", word: "fisioterapi", en: "physiotherapy", vi: "vật lý trị liệu", pos: "noun", pronunciation_vi: "fi-si-o-te-RA-pi", pronunciation_en: "fee-see-o-te-RA-pee" },
+      { cell_id: "c8ccb3e5-c3bf-4938-8aca-b6a366b11180", word: "fisioterapis", en: "physiotherapist", vi: "chuyên viên vật lý trị liệu", pos: "noun", pronunciation_vi: "fi-si-o-te-RA-pis", pronunciation_en: "fee-see-o-te-RA-pis" },
+      { cell_id: "9ef418b2-3aeb-4466-9369-14150134740c", word: "cedera", en: "injury", vi: "chấn thương", pos: "noun/verb", pronunciation_vi: "ce-DE-ra", pronunciation_en: "che-DE-ra" },
+      { cell_id: "ba121a27-9025-4272-9e01-bcd43a38c1d7", word: "nyeri punggung", en: "back pain", vi: "đau lưng", pos: "noun phrase", pronunciation_vi: "NYE-ri PUNG-gung", pronunciation_en: "NYE-ree POONG-goong" },
+      { cell_id: "21c611e7-c34d-4f23-8432-be063c360560", word: "latihan pemulihan", en: "rehab exercise", vi: "bài tập phục hồi", pos: "noun phrase", pronunciation_vi: "LA-tih-an pe-MU-lih-an", pronunciation_en: "LA-tih-an pe-MOO-lih-an" },
+      { cell_id: "bbd75e6a-a8f2-47ed-a124-bd99d9e2a3d7", word: "jadwal terapi", en: "therapy schedule", vi: "lịch trị liệu", pos: "noun phrase", pronunciation_vi: "JAD-wal te-RA-pi", pronunciation_en: "JAD-wal te-RA-pee" },
+      { cell_id: "d1ae2573-b916-40de-8b5e-db5a4a9a6f71", word: "alat bantu", en: "assistive device", vi: "dụng cụ hỗ trợ", pos: "noun phrase", pronunciation_vi: "A-lat BAN-tu", pronunciation_en: "A-lat BAN-too" },
+      { cell_id: "9294aa34-8604-4960-894c-21ef57a10acc", word: "rujukan dokter", en: "doctor referral", vi: "giấy chuyển tuyến của bác sĩ", pos: "noun phrase", pronunciation_vi: "ru-JU-kan DOK-ter", pronunciation_en: "roo-JOO-kan DOK-ter" },
+      { cell_id: "8e6fe7c3-57f2-47ff-be7e-75da9a8ee062", word: "gerakan", en: "movement", vi: "cử động/động tác", pos: "noun", pronunciation_vi: "ge-RA-kan", pronunciation_en: "ge-RA-kan" },
+      { cell_id: "0ca55ffd-4976-4633-9068-7a8a61a6d2c5", word: "kontrol lagi", en: "follow up again", vi: "tái khám lại", pos: "verb phrase", pronunciation_vi: "kon-TROL la-GI", pronunciation_en: "kon-TROL la-GEE" },
     ],
     dialogue: [
       {
+        cell_id: "ed112647-ae43-4551-a775-b73584ab5a38",
         speaker: "Pasien",
         text: "Saya punya rujukan dokter untuk fisioterapi.",
         vi: "Tôi có giấy chuyển tuyến của bác sĩ để đi vật lý trị liệu.",
         en: "I have a doctor's referral for physiotherapy.",
       },
       {
+        cell_id: "8e8aca0d-cfc8-4837-ac1f-32b531bf87af",
         speaker: "Staf",
         text: "Baik. Keluhannya cedera lutut atau nyeri punggung?",
         vi: "Vâng. Triệu chứng là chấn thương đầu gối hay đau lưng?",
         en: "Okay. Is the complaint a knee injury or back pain?",
       },
       {
+        cell_id: "7f5719c7-3ba8-4dee-b2ed-6c0543bb5e71",
         speaker: "Pasien",
         text: "Nyeri punggung saya terasa lebih parah saat duduk lama.",
         vi: "Đau lưng của tôi thấy nặng hơn khi ngồi lâu.",
         en: "My back pain feels worse when I sit for a long time.",
       },
       {
+        cell_id: "935798a5-3032-42ee-8c80-5d00934be592",
         speaker: "Fisioterapis",
         text: "Kita mulai dengan latihan pemulihan ringan dulu.",
         vi: "Chúng ta bắt đầu với bài tập phục hồi nhẹ trước đã.",
         en: "We will start with light rehab exercises first.",
       },
       {
+        cell_id: "da930983-5b05-4b34-947f-27f93ee6ca63",
         speaker: "Pasien",
         text: "Kalau gerakan ini terasa sakit, boleh saya berhenti dulu?",
         vi: "Nếu động tác này thấy đau, tôi có thể dừng trước được không?",

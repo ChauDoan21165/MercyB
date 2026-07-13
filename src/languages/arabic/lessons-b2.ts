@@ -25,6 +25,7 @@ export type ArabicSentence = {
 };
 
 export type ArabicVocabEntry = {
+  cell_id?: string;
   ar: string;
   romanization: string;
   vi: string;
@@ -33,6 +34,7 @@ export type ArabicVocabEntry = {
 };
 
 export type ArabicDialogueLine = {
+  cell_id?: string;
   speaker: string;
   ar: string;
   romanization: string;
@@ -133,14 +135,15 @@ export const lessons: ArabicB2Lesson[] = [
       },
     ],
     vocabulary: [
-      { ar: "جدول الأعمال", romanization: "jadwal al-a'maal", vi: "chương trình làm việc", en: "agenda", pos: "n." },
-      { ar: "محضر الاجتماع", romanization: "mahdar al-ijtimaa'", vi: "biên bản cuộc họp", en: "meeting minutes", pos: "n." },
-      { ar: "توصية", romanization: "tawsiyah", vi: "khuyến nghị", en: "recommendation", pos: "n." },
-      { ar: "اتخاذ القرار", romanization: "ittikhaadh al-qaraar", vi: "việc đưa ra quyết định", en: "decision-making", pos: "n." },
-      { ar: "النقطة التالية", romanization: "an-nuqtah at-taaliyah", vi: "điểm tiếp theo", en: "the next point", pos: "phr." },
+      { cell_id: "02c7bdb3-e908-465e-ae43-ef2cc196cfea", ar: "جدول الأعمال", romanization: "jadwal al-a'maal", vi: "chương trình làm việc", en: "agenda", pos: "n." },
+      { cell_id: "e55611be-a7dc-4c4a-8562-6b3885711274", ar: "محضر الاجتماع", romanization: "mahdar al-ijtimaa'", vi: "biên bản cuộc họp", en: "meeting minutes", pos: "n." },
+      { cell_id: "e0ca2e4f-1306-4211-ad9c-f5e5464bb9b3", ar: "توصية", romanization: "tawsiyah", vi: "khuyến nghị", en: "recommendation", pos: "n." },
+      { cell_id: "c4c6e563-cbe3-49b8-a48b-67f89ffd3994", ar: "اتخاذ القرار", romanization: "ittikhaadh al-qaraar", vi: "việc đưa ra quyết định", en: "decision-making", pos: "n." },
+      { cell_id: "e4de338f-9f7a-4514-8c10-8a9d70a4ad9f", ar: "النقطة التالية", romanization: "an-nuqtah at-taaliyah", vi: "điểm tiếp theo", en: "the next point", pos: "phr." },
     ],
     dialogue: [
       {
+        cell_id: "943e37d6-d11d-4831-b9dd-60dcc132cbff",
         speaker: "مدير الاجتماع",
         ar: "أقترح أن نبدأ بمراجعة جدول الأعمال.",
         romanization: "aqtaridu an nabda'a bi-muraaja'at jadwal al-a'maal",
@@ -149,6 +152,7 @@ export const lessons: ArabicB2Lesson[] = [
         register: "formal",
       },
       {
+        cell_id: "73e23c71-3295-4fab-911a-db373d34a639",
         speaker: "عضو الفريق",
         ar: "هل يمكن إضافة نقطة عن الميزانية؟",
         romanization: "hal yumkin idaafat nuqtah 'an al-miizaaniyyah?",
@@ -157,6 +161,7 @@ export const lessons: ArabicB2Lesson[] = [
         register: "polite",
       },
       {
+        cell_id: "f6d3eaff-4aed-4456-ac1d-06900b1cc4b4",
         speaker: "مدير الاجتماع",
         ar: "نعم، سنناقشها قبل اتخاذ القرار النهائي.",
         romanization: "na'am, sanunaaqishuhaa qabla ittikhaadh al-qaraar an-nihaa'ii",
@@ -232,14 +237,15 @@ export const lessons: ArabicB2Lesson[] = [
       },
     ],
     vocabulary: [
-      { ar: "شكوى", romanization: "shakwaa", vi: "khiếu nại", en: "complaint", pos: "n." },
-      { ar: "تأخير", romanization: "ta'khiir", vi: "sự chậm trễ", en: "delay", pos: "n." },
-      { ar: "فاتورة", romanization: "faaturah", vi: "hóa đơn", en: "invoice", pos: "n." },
-      { ar: "معالجة الموضوع", romanization: "mu'aalajat al-mawduu'", vi: "xử lý vấn đề", en: "handling the matter", pos: "phr." },
-      { ar: "أرفق", romanization: "urfiq", vi: "tôi đính kèm", en: "I attach", pos: "v." },
+      { cell_id: "b30ea5f1-998b-413d-a185-849de3b3a04d", ar: "شكوى", romanization: "shakwaa", vi: "khiếu nại", en: "complaint", pos: "n." },
+      { cell_id: "e480597d-da31-4aa6-9884-31d02b93ff97", ar: "تأخير", romanization: "ta'khiir", vi: "sự chậm trễ", en: "delay", pos: "n." },
+      { cell_id: "939be933-34d1-4e15-9c5b-0839f4b1303f", ar: "فاتورة", romanization: "faaturah", vi: "hóa đơn", en: "invoice", pos: "n." },
+      { cell_id: "b1754caf-dba2-4008-886c-9bbbeeee2e6d", ar: "معالجة الموضوع", romanization: "mu'aalajat al-mawduu'", vi: "xử lý vấn đề", en: "handling the matter", pos: "phr." },
+      { cell_id: "5604e2e4-6a60-4aab-b106-55fe93126e75", ar: "أرفق", romanization: "urfiq", vi: "tôi đính kèm", en: "I attach", pos: "v." },
     ],
     dialogue: [
       {
+        cell_id: "8e578416-db2b-406e-a65e-441b2b7a240d",
         speaker: "العميل",
         ar: "أود أن أقدم شكوى بخصوص التأخير في تسليم الطلب.",
         romanization: "awaddu an uqaddima shakwaa bi-khusuus at-ta'khiir fii tasliim at-talab",
@@ -248,6 +254,7 @@ export const lessons: ArabicB2Lesson[] = [
         register: "formal",
       },
       {
+        cell_id: "52f2db4b-940f-453d-9c4c-559f79561ffc",
         speaker: "الموظف",
         ar: "نعتذر عن ذلك. هل يمكن أن ترسلوا رقم الطلب؟",
         romanization: "na'tadhir 'an dhaalik. hal yumkin an tursiluu raqm at-talab?",
@@ -327,11 +334,11 @@ export const lessons: ArabicB2Lesson[] = [
       },
     ],
     vocabulary: [
-      { ar: "مستجدات", romanization: "mustajaddaat", vi: "cập nhật, diễn biến mới", en: "updates, developments", pos: "n.pl." },
-      { ar: "الجدول الزمني", romanization: "al-jadwal az-zamanii", vi: "lịch trình", en: "timeline", pos: "n." },
-      { ar: "تعديل", romanization: "ta'diil", vi: "điều chỉnh", en: "adjustment", pos: "n." },
-      { ar: "الموافقة", romanization: "al-muwaafaqah", vi: "sự đồng ý/phê duyệt", en: "approval", pos: "n." },
-      { ar: "فور", romanization: "fawra", vi: "ngay khi", en: "immediately upon", pos: "prep." },
+      { cell_id: "f962e26e-0c2f-4ea1-b9c0-c311fa164e93", ar: "مستجدات", romanization: "mustajaddaat", vi: "cập nhật, diễn biến mới", en: "updates, developments", pos: "n.pl." },
+      { cell_id: "6e67823d-c451-4774-81c0-7cbdab79cff3", ar: "الجدول الزمني", romanization: "al-jadwal az-zamanii", vi: "lịch trình", en: "timeline", pos: "n." },
+      { cell_id: "1324a56c-3482-4337-8e61-e4f44e10766e", ar: "تعديل", romanization: "ta'diil", vi: "điều chỉnh", en: "adjustment", pos: "n." },
+      { cell_id: "90bc04f6-b838-4a82-b887-f34f1bdd9098", ar: "الموافقة", romanization: "al-muwaafaqah", vi: "sự đồng ý/phê duyệt", en: "approval", pos: "n." },
+      { cell_id: "3f96a1b4-f075-43a6-830c-db26785f51b8", ar: "فور", romanization: "fawra", vi: "ngay khi", en: "immediately upon", pos: "prep." },
     ],
     exercises: [
       {
@@ -409,14 +416,15 @@ export const lessons: ArabicB2Lesson[] = [
       },
     ],
     vocabulary: [
-      { ar: "وجهة نظر", romanization: "wijhat nazar", vi: "quan điểm", en: "point of view", pos: "n." },
-      { ar: "لا أتفق تمامًا", romanization: "laa attafiq tamaaman", vi: "tôi không hoàn toàn đồng ý", en: "I do not fully agree", pos: "phr." },
-      { ar: "غير أن", romanization: "ghayra anna", vi: "tuy nhiên, nhưng", en: "however, but", pos: "conj." },
-      { ar: "الاعتراض", romanization: "al-i'tiraad", vi: "sự phản đối", en: "objection", pos: "n." },
-      { ar: "توضيح", romanization: "tawdiih", vi: "làm rõ", en: "clarification", pos: "n." },
+      { cell_id: "0c544177-a2d2-4a2d-acb2-71582b756d42", ar: "وجهة نظر", romanization: "wijhat nazar", vi: "quan điểm", en: "point of view", pos: "n." },
+      { cell_id: "1825aae8-93cc-492f-98a5-567a871c32bd", ar: "لا أتفق تمامًا", romanization: "laa attafiq tamaaman", vi: "tôi không hoàn toàn đồng ý", en: "I do not fully agree", pos: "phr." },
+      { cell_id: "6affd902-58e4-4b5b-b9d3-cbc28b55066b", ar: "غير أن", romanization: "ghayra anna", vi: "tuy nhiên, nhưng", en: "however, but", pos: "conj." },
+      { cell_id: "1320cbd4-a199-433c-99a5-c4a4709c33ab", ar: "الاعتراض", romanization: "al-i'tiraad", vi: "sự phản đối", en: "objection", pos: "n." },
+      { cell_id: "db6421f3-3433-4fad-aebc-e5162901a835", ar: "توضيح", romanization: "tawdiih", vi: "làm rõ", en: "clarification", pos: "n." },
     ],
     dialogue: [
       {
+        cell_id: "ab2740f8-fd10-44bd-9c28-1c8efb2f5929",
         speaker: "أ",
         ar: "أعتقد أن علينا إلغاء الخطة الحالية.",
         romanization: "a'taqidu anna 'alaynaa ilghaa' al-khuttah al-haaliyyah",
@@ -425,6 +433,7 @@ export const lessons: ArabicB2Lesson[] = [
         register: "neutral",
       },
       {
+        cell_id: "d7f3933e-e366-4c09-902d-25912990280e",
         speaker: "ب",
         ar: "أفهم وجهة نظرك، لكنني لا أتفق تمامًا.",
         romanization: "afhamu wijhat nazarik, lakinnanii laa attafiq tamaaman",
@@ -433,6 +442,7 @@ export const lessons: ArabicB2Lesson[] = [
         register: "polite",
       },
       {
+        cell_id: "2933712c-58e9-4d59-88aa-7b59310c9857",
         speaker: "ب",
         ar: "ربما نحتاج إلى مقارنة الخيارات أولًا.",
         romanization: "rubbamaa nahtaaju ilaa muqaaranat al-khiyaaraat awwalan",
@@ -508,11 +518,11 @@ export const lessons: ArabicB2Lesson[] = [
       },
     ],
     vocabulary: [
-      { ar: "إذا", romanization: "idhaa", vi: "nếu, khi", en: "if, when", pos: "conj." },
-      { ar: "لو", romanization: "law", vi: "nếu giả định/trái thực tế", en: "if, hypothetically", pos: "conj." },
-      { ar: "رغم أن", romanization: "raghma anna", vi: "mặc dù", en: "although", pos: "conj." },
-      { ar: "من ناحية أخرى", romanization: "min naahiyah ukhraa", vi: "mặt khác", en: "on the other hand", pos: "phr." },
-      { ar: "الموافقة المشروطة", romanization: "al-muwaafaqah al-mashruutah", vi: "phê duyệt có điều kiện", en: "conditional approval", pos: "n." },
+      { cell_id: "cbbf6dd5-9158-48de-8438-2880d216b808", ar: "إذا", romanization: "idhaa", vi: "nếu, khi", en: "if, when", pos: "conj." },
+      { cell_id: "19fbb6b8-00bf-4a41-82a5-2d37cb9e7f81", ar: "لو", romanization: "law", vi: "nếu giả định/trái thực tế", en: "if, hypothetically", pos: "conj." },
+      { cell_id: "c330d00e-464e-4ce7-8212-7e475e8b6457", ar: "رغم أن", romanization: "raghma anna", vi: "mặc dù", en: "although", pos: "conj." },
+      { cell_id: "36de8908-bc90-497d-a363-06ef05902188", ar: "من ناحية أخرى", romanization: "min naahiyah ukhraa", vi: "mặt khác", en: "on the other hand", pos: "phr." },
+      { cell_id: "ca5595ef-24cd-4882-830f-71c2c8b1c375", ar: "الموافقة المشروطة", romanization: "al-muwaafaqah al-mashruutah", vi: "phê duyệt có điều kiện", en: "conditional approval", pos: "n." },
     ],
     exercises: [
       {

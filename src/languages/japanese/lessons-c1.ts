@@ -14,42 +14,52 @@ export const lessons: JapaneseLesson[] = [
     "level": "C1",
     "vocabulary": [
       {
+        cell_id: "bd4dd366-d944-4c44-9c2a-a9f347787f70",
         "japanese": "仮説 (かせつ)",
         "english": "hypothesis"
       },
       {
+        cell_id: "d382968c-e928-401b-8bfa-19364ddc0d78",
         "japanese": "主張 (しゅちょう)",
         "english": "claim / assertion"
       },
       {
+        cell_id: "d2ef8ac0-5391-474d-874d-944e2788fa26",
         "japanese": "論旨 (ろんし)",
         "english": "thesis / line of argument"
       },
       {
+        cell_id: "0c8c19a7-9e1c-44de-95e6-68711312f0d9",
         "japanese": "立場 (たちば)",
         "english": "position / stance"
       },
       {
+        cell_id: "7ae213ec-2c82-4c21-bfa6-32ec65cb44d6",
         "japanese": "前提 (ぜんてい)",
         "english": "premise"
       },
       {
+        cell_id: "567fda46-0a9f-4e19-95d1-76b4c7331049",
         "japanese": "検証 (けんしょう)",
         "english": "verification"
       },
       {
+        cell_id: "a7fe8731-f0cd-413d-99e5-90786c3786af",
         "japanese": "妥当性 (だとうせい)",
         "english": "validity"
       },
       {
+        cell_id: "8b7b5745-0c15-4cbf-ae6d-c8d7e4016e31",
         "japanese": "提唱する (ていしょうする)",
         "english": "to advocate / propose"
       },
       {
+        cell_id: "3fb7e7e8-3df9-46f5-b5fe-106ee46271c6",
         "japanese": "暫定的 (ざんていてき)",
         "english": "tentative / provisional"
       },
       {
+        cell_id: "95d2f227-f940-4b2c-9869-f9a64c23bda8",
         "japanese": "蓋然性 (がいぜんせい)",
         "english": "probability / likelihood (formal)"
       }
@@ -82,21 +92,25 @@ export const lessons: JapaneseLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "6b05b19b-20da-4b91-a7d8-a046641b5f22",
         "speaker": "院生",
         "japanese": "本日は、修士論文の中間報告として、仮説の枠組みについてご説明させていただきます。",
         "english": "Today, as an interim report on my master's thesis, I would like to explain the framework of my hypothesis."
       },
       {
+        cell_id: "a42734a6-8c32-45a8-af42-9bdbd3b8a3a9",
         "speaker": "指導教員",
         "japanese": "では、まず提唱されている仮説の核心からお願いできますか。",
         "english": "Then, could you start with the core of the hypothesis you are advocating?"
       },
       {
+        cell_id: "11fd5349-baaa-4c32-8fc1-ce6d406d005f",
         "speaker": "院生",
         "japanese": "はい。本研究は、ベトナム人日本語学習者の語用論的能力が、滞在期間よりも対話量に依存するという仮説を提示するものでございます。",
         "english": "Yes. This study presents the hypothesis that the pragmatic competence of Vietnamese learners of Japanese depends on volume of interaction rather than length of residence."
       },
       {
+        cell_id: "b5b3f176-3db3-4803-9e7f-82836739d064",
         "speaker": "指導教員",
         "japanese": "なるほど。先行研究との差異は、どの点に求められるのでしょうか。",
         "english": "I see. In what respect would you locate the difference from prior research?"
@@ -262,42 +276,52 @@ export const lessons: JapaneseLesson[] = [
     "level": "C1",
     "vocabulary": [
       {
+        cell_id: "8ec9a244-f085-49e2-aba8-59ffebba96ac",
         "japanese": "引用 (いんよう)",
         "english": "citation / quotation"
       },
       {
+        cell_id: "8d0d16af-7f9f-402c-b2cc-6b89c4599ff7",
         "japanese": "出典 (しゅってん)",
         "english": "source / attribution"
       },
       {
+        cell_id: "51074911-9bdf-4380-8132-7736682f904b",
         "japanese": "先行研究 (せんこうけんきゅう)",
         "english": "prior research / literature"
       },
       {
+        cell_id: "448fc542-13f3-4d16-aa3f-2acffc4b610e",
         "japanese": "脚注 (きゃくちゅう)",
         "english": "footnote"
       },
       {
+        cell_id: "d1dbb953-5ddc-4547-a56d-c41745427b82",
         "japanese": "参考文献 (さんこうぶんけん)",
         "english": "references / bibliography"
       },
       {
+        cell_id: "2f154c59-c3ea-4191-907a-0eeffb70b4e7",
         "japanese": "孫引き (まごびき)",
         "english": "secondary citation (citing a citation)"
       },
       {
+        cell_id: "19b94cf8-c2d5-4a84-b51e-5915e9cec49b",
         "japanese": "盗用 (とうよう)",
         "english": "plagiarism"
       },
       {
+        cell_id: "da16ddf7-09d1-4edf-9991-a99741eba8c5",
         "japanese": "踏まえる (ふまえる)",
         "english": "to build upon / take into account"
       },
       {
+        cell_id: "39b792f4-470d-4dbf-a623-95de1a9de100",
         "japanese": "依拠する (いきょする)",
         "english": "to rely on / draw upon (formal)"
       },
       {
+        cell_id: "445a3dc6-c666-4846-a04e-2d9f5c4c2665",
         "japanese": "改変 (かいへん)",
         "english": "alteration (of cited text)"
       }
@@ -330,21 +354,25 @@ export const lessons: JapaneseLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "d362136f-2448-4412-86b8-a82dd098c253",
         "speaker": "院生",
         "japanese": "先生、引用形式について一点ご相談がございます。",
         "english": "Professor, I have one matter to consult about citation format."
       },
       {
+        cell_id: "16e2859b-eb0f-452c-8db1-911363a23d50",
         "speaker": "指導教員",
         "japanese": "どうぞ。何でしょう。",
         "english": "Go ahead. What is it?"
       },
       {
+        cell_id: "b467bc12-1dfd-4182-b1c8-8b5ade13b1c9",
         "speaker": "院生",
         "japanese": "原典が入手できない場合、孫引きをしてもよろしいでしょうか。",
         "english": "If the original source cannot be obtained, would secondary citation be acceptable?"
       },
       {
+        cell_id: "307591f2-e43d-4307-9360-f4b71c525ba2",
         "speaker": "指導教員",
         "japanese": "原則として避けるべきですが、やむを得ない場合は『〜による』と明記する必要があります。",
         "english": "In principle it should be avoided, but in unavoidable cases, you must clearly state 'as cited in〜.'"
@@ -510,42 +538,52 @@ export const lessons: JapaneseLesson[] = [
     "level": "C1",
     "vocabulary": [
       {
+        cell_id: "fe739f53-bf52-435c-a5dd-0ab550dc07c4",
         "japanese": "論証 (ろんしょう)",
         "english": "argumentation / proof"
       },
       {
+        cell_id: "eaf791d3-477f-4f21-a139-29693da2efa4",
         "japanese": "反論 (はんろん)",
         "english": "counter-argument"
       },
       {
+        cell_id: "6b7b093a-6360-4801-b081-e2c6c1a45b8c",
         "japanese": "反駁 (はんばく)",
         "english": "rebuttal (formal)"
       },
       {
+        cell_id: "0dfcbec1-0372-4c69-a31a-e83f5f7aa2e7",
         "japanese": "異論 (いろん)",
         "english": "dissenting view"
       },
       {
+        cell_id: "07c34965-a7bc-4180-8cac-a5c8044f1e98",
         "japanese": "根拠 (こんきょ)",
         "english": "grounds / basis"
       },
       {
+        cell_id: "a6349c25-1b59-4c5c-b747-27fc733941cf",
         "japanese": "論拠 (ろんきょ)",
         "english": "warrant for an argument"
       },
       {
+        cell_id: "56f273e4-c9bb-4773-944d-5bc5f6508dfd",
         "japanese": "誤謬 (ごびゅう)",
         "english": "fallacy / error in reasoning"
       },
       {
+        cell_id: "e6ae2200-bc9a-4c9e-adb2-cf0f56376797",
         "japanese": "妥当 (だとう)",
         "english": "valid / appropriate"
       },
       {
+        cell_id: "802b66d7-1663-40c4-a07d-f8cec3ffcc62",
         "japanese": "前提条件 (ぜんていじょうけん)",
         "english": "precondition"
       },
       {
+        cell_id: "88cc32fc-f39b-4a6a-a661-7bdf17b5b3fd",
         "japanese": "覆す (くつがえす)",
         "english": "to overturn / refute"
       }
@@ -578,21 +616,25 @@ export const lessons: JapaneseLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "6f269021-6260-4336-a970-34c5e4830f88",
         "speaker": "発表者",
         "japanese": "本稿の主張に対しては、当然ながら反論も予想されるところでございます。",
         "english": "Naturally, counter-arguments to this paper's claim are to be anticipated."
       },
       {
+        cell_id: "7e09c96e-f05b-42e1-be7e-cb94a972dcca",
         "speaker": "討論者",
         "japanese": "そうですね。最も強い反論は、サンプルの偏りに関するものではないでしょうか。",
         "english": "Indeed. The strongest counter-argument would seem to be one concerning sample bias, would it not?"
       },
       {
+        cell_id: "79d7bfad-bb7b-4ba3-9a0c-f9cd8f68a877",
         "speaker": "発表者",
         "japanese": "ご指摘の点は、本稿でも限界として明示しております。ただし、結論の頑健性は別途検討いたしました。",
         "english": "The point you raise is one I have made explicit as a limitation in the paper. However, the robustness of the conclusion has been examined separately."
       },
       {
+        cell_id: "c05602b4-ce3c-4b38-83c9-b738d67286b1",
         "speaker": "討論者",
         "japanese": "なるほど。その検討の結果が、本稿の核心的な強みとなっているわけですね。",
         "english": "I see. So the result of that examination forms the core strength of this paper."
@@ -758,42 +800,52 @@ export const lessons: JapaneseLesson[] = [
     "level": "C1",
     "vocabulary": [
       {
+        cell_id: "02878522-e655-4956-99c4-309fd72f526b",
         "japanese": "推測 (すいそく)",
         "english": "inference / conjecture"
       },
       {
+        cell_id: "7e1da7c6-e535-430e-944e-db2dfc975b28",
         "japanese": "示唆 (しさ)",
         "english": "suggestion / implication"
       },
       {
+        cell_id: "904d7ed8-7b62-4b43-a7c7-ecd6e9b0836e",
         "japanese": "可能性 (かのうせい)",
         "english": "possibility"
       },
       {
+        cell_id: "204699ec-26d7-424f-a782-00dfbb8bc6e5",
         "japanese": "蓋然性 (がいぜんせい)",
         "english": "probability (formal)"
       },
       {
+        cell_id: "62ca50a1-e073-4d76-8aac-6f315fb4b27c",
         "japanese": "断定 (だんてい)",
         "english": "definitive assertion"
       },
       {
+        cell_id: "1a556845-94c2-4556-af60-6d2c481332d6",
         "japanese": "限定的 (げんていてき)",
         "english": "limited / restricted"
       },
       {
+        cell_id: "6396699d-e5ee-4d3c-be19-5d0aac04c482",
         "japanese": "傾向 (けいこう)",
         "english": "tendency"
       },
       {
+        cell_id: "3dc9cc59-e181-4398-872d-277f8f5ee801",
         "japanese": "留保 (りゅうほ)",
         "english": "reservation / caveat"
       },
       {
+        cell_id: "ff21b6aa-16a0-4716-b5ce-e609f00b1388",
         "japanese": "概ね (おおむね)",
         "english": "broadly / on the whole"
       },
       {
+        cell_id: "154b4067-f9c2-45e7-bc86-6a59e5a32ee0",
         "japanese": "厳密に言えば (げんみつにいえば)",
         "english": "strictly speaking"
       }
@@ -826,21 +878,25 @@ export const lessons: JapaneseLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "e90f403d-c585-440a-88b0-4a86a46d61d9",
         "speaker": "編集者",
         "japanese": "結論部の表現が、やや断定的に過ぎるという査読意見が寄せられました。",
         "english": "We received a peer-review comment that the wording in the conclusion is somewhat overly definitive."
       },
       {
+        cell_id: "303e258c-3527-455e-94ec-2e29bf18a7b8",
         "speaker": "著者",
         "japanese": "ご指摘を踏まえ、「証明する」を「示唆する」に改め、留保の一文を加える所存でございます。",
         "english": "In light of the comment, I intend to revise 'prove' to 'suggest' and add a sentence of reservation."
       },
       {
+        cell_id: "82e401dd-7770-470c-b7e6-dcc7b7e9fa9e",
         "speaker": "編集者",
         "japanese": "結構です。あわせて、適用範囲についても明示していただけますと助かります。",
         "english": "That will do. It would also be helpful if you could make the scope of applicability explicit."
       },
       {
+        cell_id: "2b505cdb-16d1-4dfa-bacb-457479e61ff2",
         "speaker": "著者",
         "japanese": "承知いたしました。「本知見は調査対象群に限定される可能性がある」という一文を加筆いたします。",
         "english": "Understood. I will add the sentence 'this finding may be limited to the surveyed group.'"
@@ -1006,42 +1062,52 @@ export const lessons: JapaneseLesson[] = [
     "level": "C1",
     "vocabulary": [
       {
+        cell_id: "7f46853b-4811-4ddf-b4c7-b78dcef95d37",
         "japanese": "定義 (ていぎ)",
         "english": "definition"
       },
       {
+        cell_id: "9baacbe2-9425-4943-87e3-e0ce725c8508",
         "japanese": "概念 (がいねん)",
         "english": "concept"
       },
       {
+        cell_id: "152eba23-a28d-4b11-b296-2ecee70017ec",
         "japanese": "用語 (ようご)",
         "english": "term / terminology"
       },
       {
+        cell_id: "c994ecea-3e57-49c6-87d4-bb0b1a51a3b4",
         "japanese": "操作的定義 (そうさてきていぎ)",
         "english": "operational definition"
       },
       {
+        cell_id: "17ab54bf-4771-443b-9bc8-2d044b1bb869",
         "japanese": "外延 (がいえん)",
         "english": "extension (of a concept)"
       },
       {
+        cell_id: "39b40de5-f7a7-4022-bf20-71e6d05b1394",
         "japanese": "内包 (ないほう)",
         "english": "intension (of a concept)"
       },
       {
+        cell_id: "e91df74f-c067-481c-97e5-dc8af2038bd0",
         "japanese": "区別する (くべつする)",
         "english": "to distinguish"
       },
       {
+        cell_id: "42e5a99d-9910-42a5-9f0e-4abb5fd2dfc7",
         "japanese": "厳密化 (げんみつか)",
         "english": "operationalization / making strict"
       },
       {
+        cell_id: "f5096ce6-a428-4e79-92c9-d06811e3f8d4",
         "japanese": "曖昧さ (あいまいさ)",
         "english": "ambiguity"
       },
       {
+        cell_id: "2d22fb55-393b-479d-a59d-7d49868a583a",
         "japanese": "便宜上 (べんぎじょう)",
         "english": "for convenience / pro tem"
       }
@@ -1074,21 +1140,25 @@ export const lessons: JapaneseLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "e3ad865c-ae8f-4d1d-9c9f-e6d0fa09aa8b",
         "speaker": "院生",
         "japanese": "「成功」という語の定義について、ご相談させていただきたく存じます。",
         "english": "I would like to consult you regarding the definition of the word 'success.'"
       },
       {
+        cell_id: "07b54490-946c-4e4a-92c0-7859c5ce9d97",
         "speaker": "指導教員",
         "japanese": "どのような曖昧さが生じていますか。",
         "english": "What kind of ambiguity has arisen?"
       },
       {
+        cell_id: "70f7d6f0-6daa-4bc5-bcd0-f609ce256b4f",
         "speaker": "院生",
         "japanese": "テスト得点を基準とすべきか、自己評価を基準とすべきか、定まらずにおります。",
         "english": "Whether to take test scores as the criterion or self-evaluation — I have not settled this."
       },
       {
+        cell_id: "4908ee8f-1453-40d2-b674-3a437fe94c7a",
         "speaker": "指導教員",
         "japanese": "両立は困難です。本稿では便宜上いずれか一方に限定し、その旨を明記するのが筋でしょう。",
         "english": "Reconciling both is difficult. In this paper, restricting it to one for convenience and stating that explicitly would be the proper course."
@@ -1264,42 +1334,52 @@ export const lessons: JapaneseLesson[] = [
     "level": "C1",
     "vocabulary": [
       {
+        cell_id: "ab49d56c-e77f-47a1-a0db-aee4adb7f872",
         "japanese": "方法論 (ほうほうろん)",
         "english": "methodology"
       },
       {
+        cell_id: "ed62ba6b-df6a-448e-a34f-5d4ea3490552",
         "japanese": "手法 (しゅほう)",
         "english": "method / technique"
       },
       {
+        cell_id: "29eb3a6d-ad45-42d7-92ab-22085f968d95",
         "japanese": "質的 (しつてき)",
         "english": "qualitative"
       },
       {
+        cell_id: "111cb5d0-005c-4c73-b13c-5a4d733e802c",
         "japanese": "量的 (りょうてき)",
         "english": "quantitative"
       },
       {
+        cell_id: "7b878075-845e-4701-bbaa-586b32c3d9e4",
         "japanese": "実証的 (じっしょうてき)",
         "english": "empirical"
       },
       {
+        cell_id: "72a54edd-85af-4fbd-984b-965e79ab8382",
         "japanese": "比較対照 (ひかくたいしょう)",
         "english": "comparative contrast"
       },
       {
+        cell_id: "52f1aedd-a695-4d5f-b422-e2918e97083c",
         "japanese": "長所 (ちょうしょ)",
         "english": "strength / merit"
       },
       {
+        cell_id: "dd1a8cd8-b46a-4540-8f79-8052544aa321",
         "japanese": "短所 (たんしょ)",
         "english": "weakness / drawback"
       },
       {
+        cell_id: "de58a1eb-ea85-48e0-b16b-7f32a9ca0519",
         "japanese": "適合性 (てきごうせい)",
         "english": "suitability / fit"
       },
       {
+        cell_id: "da3725b2-7b4a-4c99-87d1-8a06cea0253c",
         "japanese": "相補的 (そうほてき)",
         "english": "complementary"
       }
@@ -1332,21 +1412,25 @@ export const lessons: JapaneseLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "1bbca4d5-e2e6-497e-8f3c-e171fa6f70d2",
         "speaker": "院生",
         "japanese": "本研究の方法論について、量的か質的か、決めかねております。",
         "english": "Regarding the methodology of this study, I am unable to decide between quantitative and qualitative."
       },
       {
+        cell_id: "0886ac01-54fc-4d46-a138-868233235466",
         "speaker": "指導教員",
         "japanese": "問いの性質に立ち返ってみてください。何を明らかにしたいのですか。",
         "english": "Try returning to the nature of the question. What do you wish to clarify?"
       },
       {
+        cell_id: "42c505b5-bf99-44e8-b389-91f281744895",
         "speaker": "院生",
         "japanese": "学習者がどのような過程を経て表現を習得するのか、その内的プロセスを捉えたいと考えております。",
         "english": "I wish to capture the internal process — what kind of process learners go through to acquire expressions."
       },
       {
+        cell_id: "609c5102-c5ee-4b98-9474-6fef7748cf7c",
         "speaker": "指導教員",
         "japanese": "プロセスの解明であれば、質的手法に分があります。量的データは補強として位置づけてはいかがですか。",
         "english": "For elucidating processes, qualitative methods have the advantage. How about positioning quantitative data as reinforcement?"
@@ -1517,42 +1601,52 @@ export const lessons: JapaneseLesson[] = [
     "level": "C1",
     "vocabulary": [
       {
+        cell_id: "9d22b6e7-3d76-4110-aa3b-eb0b4b3c99b0",
         "japanese": "批評 (ひひょう)",
         "english": "critique"
       },
       {
+        cell_id: "64668aa3-5b8a-4497-9a37-349f86992975",
         "japanese": "評価 (ひょうか)",
         "english": "evaluation"
       },
       {
+        cell_id: "98fe8661-aafe-4c5e-827f-38d28473d7be",
         "japanese": "限界 (げんかい)",
         "english": "limitation"
       },
       {
+        cell_id: "679f1ad7-0705-4127-a887-f7c873927e28",
         "japanese": "課題 (かだい)",
         "english": "issue / outstanding task"
       },
       {
+        cell_id: "d543bc7d-57f3-41a5-9417-1fd1b798d546",
         "japanese": "示唆に富む (しさにとむ)",
         "english": "rich in implications"
       },
       {
+        cell_id: "603b86b5-7ab9-45d4-a0be-4b58451c13b0",
         "japanese": "不備 (ふび)",
         "english": "deficiency / shortcoming"
       },
       {
+        cell_id: "e4706e8c-a528-4de0-a048-2d5a47b76d3e",
         "japanese": "再現性 (さいげんせい)",
         "english": "reproducibility"
       },
       {
+        cell_id: "31780662-be70-4f8e-b327-2a749200f3b0",
         "japanese": "意義 (いぎ)",
         "english": "significance"
       },
       {
+        cell_id: "6735ecf4-5ad1-4238-a87b-9f42594d118f",
         "japanese": "貢献 (こうけん)",
         "english": "contribution"
       },
       {
+        cell_id: "059f4a00-e595-434b-a03d-a41eafac1d03",
         "japanese": "改善の余地 (かいぜんのよち)",
         "english": "room for improvement"
       }
@@ -1585,21 +1679,25 @@ export const lessons: JapaneseLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "d600d9c2-a44d-4592-84ba-ac79f159516e",
         "speaker": "編集者",
         "japanese": "次号の書評欄に、田中氏の新著の批評をお願いできますでしょうか。",
         "english": "Could we ask you for a critique of Mr. Tanaka's new book for the next issue's book review section?"
       },
       {
+        cell_id: "9f7c821e-b092-4e63-a136-3aeb15f6ac3b",
         "speaker": "評者",
         "japanese": "謹んでお引き受けいたします。意義と課題を併せて論じる方向でよろしいでしょうか。",
         "english": "I will respectfully accept. Would the direction of discussing both significance and issues be acceptable?"
       },
       {
+        cell_id: "6e769e9e-07ae-4e61-9d3d-c5c18560c6f7",
         "speaker": "編集者",
         "japanese": "結構です。批判は建設的にお願いいたします。当該分野の発展に資する形で。",
         "english": "That will do. Please make the criticism constructive — in a form that contributes to the development of the field."
       },
       {
+        cell_id: "2dff1051-61c0-4059-a547-252827060f95",
         "speaker": "評者",
         "japanese": "承知いたしました。長所を十分に評価したうえで、改善の余地を指摘するよう心がけます。",
         "english": "Understood. I will take care to fully evaluate the strengths first, then point out room for improvement."
@@ -1770,42 +1868,52 @@ export const lessons: JapaneseLesson[] = [
     "level": "C1",
     "vocabulary": [
       {
+        cell_id: "0d706ef9-eb28-4843-b6c6-c450211efa5e",
         "japanese": "質疑応答 (しつぎおうとう)",
         "english": "Q&A session"
       },
       {
+        cell_id: "185b3bc0-46fb-401e-8b6c-62defa701177",
         "japanese": "発表者 (はっぴょうしゃ)",
         "english": "presenter"
       },
       {
+        cell_id: "8742811e-6a40-4b1c-b950-efe6dc9e4622",
         "japanese": "司会者 (しかいしゃ)",
         "english": "chair / moderator"
       },
       {
+        cell_id: "bdf06e77-ca14-42fc-b165-a501f4cac0f5",
         "japanese": "フロア",
         "english": "floor (audience)"
       },
       {
+        cell_id: "cea6eeac-238f-4bfa-81e0-aa2f4f0fece9",
         "japanese": "ご教示 (ごきょうじ)",
         "english": "instruction / enlightenment (humble)"
       },
       {
+        cell_id: "e6814162-aed3-42fc-a9ac-84afb74f8811",
         "japanese": "ご清聴 (ごせいちょう)",
         "english": "kind attention (closing phrase)"
       },
       {
+        cell_id: "7f859a63-c09a-46d8-a3e4-c58f3b6a8152",
         "japanese": "差し支えなければ (さしつかえなければ)",
         "english": "if it does not inconvenience you"
       },
       {
+        cell_id: "0312d75b-667d-4da7-a298-48aea6d2dfe2",
         "japanese": "失礼ながら (しつれいながら)",
         "english": "if I may be so impolite"
       },
       {
+        cell_id: "6fc652bb-3957-415b-958c-5f72908f5bc4",
         "japanese": "持ち時間 (もちじかん)",
         "english": "allotted time"
       },
       {
+        cell_id: "5d0ebbcf-c8ef-4898-a55f-b3d00cd8c65d",
         "japanese": "趣旨 (しゅし)",
         "english": "intent / gist"
       }
@@ -1838,21 +1946,25 @@ export const lessons: JapaneseLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "73ab48c4-60f2-4ad2-8ecd-ccec0faebfbd",
         "speaker": "司会者",
         "japanese": "それでは、フロアからご質問を承ります。挙手にてお願いいたします。",
         "english": "Now then, we will receive questions from the floor. Please raise your hand."
       },
       {
+        cell_id: "f127d975-b8a3-4c7e-af47-4ae0736a487d",
         "speaker": "質問者",
         "japanese": "貴重なご発表、ありがとうございました。所属は〇〇大学の田中と申します。一点、ご教示いただきたく存じます。",
         "english": "Thank you for the valuable presentation. I am Tanaka from XX University. I would like to receive instruction on one point."
       },
       {
+        cell_id: "0537e891-091c-46e0-9898-0c801524fdb9",
         "speaker": "発表者",
         "japanese": "田中先生、ご質問ありがとうございます。どうぞお願いいたします。",
         "english": "Professor Tanaka, thank you for the question. Please go ahead."
       },
       {
+        cell_id: "c87291fa-04b9-4071-9215-d5e7a7f21aea",
         "speaker": "質問者",
         "japanese": "サンプル選定の基準について、もう少し詳しくご説明いただけますでしょうか。",
         "english": "Regarding the criteria for sample selection, could you explain in a little more detail?"
@@ -2023,42 +2135,52 @@ export const lessons: JapaneseLesson[] = [
     "level": "C1",
     "vocabulary": [
       {
+        cell_id: "93a27513-62f5-4f81-a34c-1d8590aaa8de",
         "japanese": "抄録 (しょうろく)",
         "english": "abstract"
       },
       {
+        cell_id: "ac1b79b5-7ed9-4fcc-b993-3d8972f6e532",
         "japanese": "要旨 (ようし)",
         "english": "summary / gist"
       },
       {
+        cell_id: "b1cc31b8-4235-4566-aeb7-880b204f7f76",
         "japanese": "概要 (がいよう)",
         "english": "overview"
       },
       {
+        cell_id: "592a71f5-dc5a-49f5-abea-eeadc7baf30f",
         "japanese": "目的 (もくてき)",
         "english": "purpose"
       },
       {
+        cell_id: "eb8aa4a1-7898-45d4-bc64-268cd0abca3b",
         "japanese": "方法 (ほうほう)",
         "english": "method"
       },
       {
+        cell_id: "16824c76-170b-4e56-a591-fdbb870ed4d1",
         "japanese": "結果 (けっか)",
         "english": "result"
       },
       {
+        cell_id: "49cbf950-3486-41af-aceb-b0d54df1c70c",
         "japanese": "結論 (けつろん)",
         "english": "conclusion"
       },
       {
+        cell_id: "e2205afd-b5c3-4af9-a479-c91b9b7d6e6c",
         "japanese": "字数制限 (じすうせいげん)",
         "english": "word/character limit"
       },
       {
+        cell_id: "e7a70d32-e8b6-4af2-8091-4bf92c0fd3c9",
         "japanese": "キーワード",
         "english": "keywords"
       },
       {
+        cell_id: "b7ecb126-4b37-45f4-8cf9-4d977bfbe374",
         "japanese": "簡潔 (かんけつ)",
         "english": "concise"
       }
@@ -2091,21 +2213,25 @@ export const lessons: JapaneseLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "6a0c6ca3-ad51-45a3-9bb8-f54dc5904966",
         "speaker": "院生",
         "japanese": "抄録の字数制限が四百字でございますが、現状で六百字に達しております。",
         "english": "The character limit for the abstract is four hundred, but I have currently reached six hundred."
       },
       {
+        cell_id: "2796cd01-b4ef-46a4-90e3-68860a666a8d",
         "speaker": "指導教員",
         "japanese": "削るべきは背景の記述です。本研究の目的・方法・結果・結論の四要素に絞ってください。",
         "english": "What should be cut is the background description. Restrict yourself to the four elements: purpose, method, results, and conclusion of this study."
       },
       {
+        cell_id: "b425a1fd-e906-4f70-9403-e3e25f9b6dac",
         "speaker": "院生",
         "japanese": "背景を一文に圧縮し、各要素を百字程度に収める方針でよろしいでしょうか。",
         "english": "Would the policy of compressing the background into one sentence and fitting each element into around one hundred characters be acceptable?"
       },
       {
+        cell_id: "cb0aa52b-0bb4-4357-b27d-392bef5afc64",
         "speaker": "指導教員",
         "japanese": "結構です。抄録は本文の地図ですから、無駄を削ぎ落とすほど読まれます。",
         "english": "Very well. An abstract is a map of the body, so the more waste you trim, the more it gets read."
@@ -2281,42 +2407,52 @@ export const lessons: JapaneseLesson[] = [
     "level": "C1",
     "vocabulary": [
       {
+        cell_id: "45ba06f4-d630-40a5-b916-489ca2575de7",
         "japanese": "査読 (さどく)",
         "english": "peer review"
       },
       {
+        cell_id: "b23893b5-c535-47b1-99d5-c46fa542060c",
         "japanese": "査読者 (さどくしゃ)",
         "english": "peer reviewer"
       },
       {
+        cell_id: "7211b261-1483-45ea-a7d6-45ca94e10f1a",
         "japanese": "コメント",
         "english": "comment"
       },
       {
+        cell_id: "a58302e3-1e15-4bf4-a6d2-c055c2a22030",
         "japanese": "修正 (しゅうせい)",
         "english": "revision"
       },
       {
+        cell_id: "e1ad3ed9-f8e4-4413-9b9b-0575df59aa03",
         "japanese": "対応 (たいおう)",
         "english": "response / handling"
       },
       {
+        cell_id: "a84096c3-84a0-4cf1-b54d-4ca94225d299",
         "japanese": "再投稿 (さいとうこう)",
         "english": "resubmission"
       },
       {
+        cell_id: "8ee81c33-2845-4346-bf1d-a0217f3a7624",
         "japanese": "採択 (さいたく)",
         "english": "acceptance"
       },
       {
+        cell_id: "a8c2bba9-46b6-41ae-8a59-e7b180b5e80e",
         "japanese": "不採択 (ふさいたく)",
         "english": "rejection"
       },
       {
+        cell_id: "7742e79c-e430-49f8-849e-810ca467d074",
         "japanese": "条件付き採択 (じょうけんつきさいたく)",
         "english": "conditional acceptance"
       },
       {
+        cell_id: "327d5c3e-e8d1-415d-af09-fe1296e9b896",
         "japanese": "応答書 (おうとうしょ)",
         "english": "response letter"
       }
@@ -2349,21 +2485,25 @@ export const lessons: JapaneseLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "ce04c6dd-9fba-4882-808c-62b77773c921",
         "speaker": "著者",
         "japanese": "査読結果を拝見いたしました。条件付き採択とのことで、応答書の作成に取り掛かっております。",
         "english": "I have reviewed the peer review result. As it is conditional acceptance, I am beginning preparation of the response letter."
       },
       {
+        cell_id: "59fffdaf-fd35-41ac-b88c-432a6ab4081a",
         "speaker": "共著者",
         "japanese": "査読者AとBで指摘が一部対立していますが、どう対応しましょうか。",
         "english": "Reviewers A and B have partially conflicting indications — how shall we handle that?"
       },
       {
+        cell_id: "708f3354-3813-4f6f-a0ce-3aa50b8fa623",
         "speaker": "著者",
         "japanese": "対立点については、両者の指摘を併記したうえで、本稿の立場を改めて説明する方針でよろしいかと存じます。",
         "english": "Regarding points of conflict, I think the policy of presenting both indications side by side and then re-explaining this paper's position would be acceptable."
       },
       {
+        cell_id: "2b5cefce-4d45-40b2-8406-0bf162086d79",
         "speaker": "共著者",
         "japanese": "それが穏当かと存じます。応答書の草稿、私のほうでも目を通します。",
         "english": "That seems sound. I will also look over the draft of the response letter."
@@ -2533,16 +2673,16 @@ export const lessons: JapaneseLesson[] = [
     "category": "professional-negotiation",
     "level": "C1",
     "vocabulary": [
-      { "japanese": "給与 (きゅうよ)", "english": "salary (formal)" },
-      { "japanese": "待遇 (たいぐう)", "english": "treatment / compensation package" },
-      { "japanese": "査定 (さてい)", "english": "performance evaluation" },
-      { "japanese": "昇給 (しょうきゅう)", "english": "pay raise" },
-      { "japanese": "業績 (ぎょうせき)", "english": "performance / track record" },
-      { "japanese": "貢献 (こうけん)", "english": "contribution" },
-      { "japanese": "ご相談 (ごそうだん)", "english": "humble 'consultation' (frame for negotiation)" },
-      { "japanese": "評価 (ひょうか)", "english": "evaluation" },
-      { "japanese": "配慮 (はいりょ)", "english": "consideration / accommodation" },
-      { "japanese": "妥当 (だとう)", "english": "appropriate / fair" }
+      { cell_id: "6bd88df4-a50c-4d0b-ada0-8101c39d23bc", "japanese": "給与 (きゅうよ)", "english": "salary (formal)" },
+      { cell_id: "acb1ee93-82bc-47d7-b4f3-aec3dddb665f", "japanese": "待遇 (たいぐう)", "english": "treatment / compensation package" },
+      { cell_id: "f3889d82-7a5a-436a-9b3a-3fbf54d89716", "japanese": "査定 (さてい)", "english": "performance evaluation" },
+      { cell_id: "b32435a2-aa59-4d8c-ac1e-bdff9a0f37f0", "japanese": "昇給 (しょうきゅう)", "english": "pay raise" },
+      { cell_id: "ff527052-54e0-4b5f-8b79-88ab4e28585a", "japanese": "業績 (ぎょうせき)", "english": "performance / track record" },
+      { cell_id: "f9abf2dc-7694-45df-85e9-6979e18af807", "japanese": "貢献 (こうけん)", "english": "contribution" },
+      { cell_id: "83e2d5da-ee0b-47c6-9927-c2d141693444", "japanese": "ご相談 (ごそうだん)", "english": "humble 'consultation' (frame for negotiation)" },
+      { cell_id: "0261ef0c-1eb4-4f26-9c72-a3c895d16f56", "japanese": "評価 (ひょうか)", "english": "evaluation" },
+      { cell_id: "49f4e081-2c10-409a-91f3-c80727abfaae", "japanese": "配慮 (はいりょ)", "english": "consideration / accommodation" },
+      { cell_id: "07e01ebb-3645-4dd8-8c29-2fbc9e50b4e3", "japanese": "妥当 (だとう)", "english": "appropriate / fair" }
     ],
     "examples": [
       { "japanese": "平素より格別のご配慮を賜り、誠にありがとうございます。", "english": "I am sincerely grateful for the special consideration you have shown me as a matter of routine." },
@@ -2554,10 +2694,10 @@ export const lessons: JapaneseLesson[] = [
       { "japanese": "ご多用のところ恐縮ですが、何卒ご検討のほどよろしくお願い申し上げます。", "english": "I am sorry to trouble you in your busy schedule, but I respectfully request your consideration." }
     ],
     "dialogue": [
-      { "speaker": "社員", "japanese": "部長、お忙しいところ恐縮ですが、少々お時間頂戴できますでしょうか。", "english": "Director, I'm sorry to interrupt, but could you spare a few moments?" },
-      { "speaker": "部長", "japanese": "ええ、どうぞ。何か。", "english": "Yes, please. What is it?" },
-      { "speaker": "社員", "japanese": "給与の件で、ご相談させていただきたく存じます。", "english": "I would like to consult with you regarding my salary." },
-      { "speaker": "部長", "japanese": "なるほど。具体的には。", "english": "I see. Specifically?" }
+      { cell_id: "8ffe6eec-b417-41d8-8a2f-cd825d033bad", "speaker": "社員", "japanese": "部長、お忙しいところ恐縮ですが、少々お時間頂戴できますでしょうか。", "english": "Director, I'm sorry to interrupt, but could you spare a few moments?" },
+      { cell_id: "0ed6b571-c50c-414e-adad-676786f2fc8d", "speaker": "部長", "japanese": "ええ、どうぞ。何か。", "english": "Yes, please. What is it?" },
+      { cell_id: "76198e23-7058-4dfc-a0ef-922e90ba46df", "speaker": "社員", "japanese": "給与の件で、ご相談させていただきたく存じます。", "english": "I would like to consult with you regarding my salary." },
+      { cell_id: "b19bcc0e-27c3-4cb6-ba71-f93e4d5ab448", "speaker": "部長", "japanese": "なるほど。具体的には。", "english": "I see. Specifically?" }
     ],
     "dialogue_long": [
       { "speaker": "社員", "japanese": "部長、お忙しいところ恐縮ですが、十分ほどお時間頂戴できますでしょうか。", "english": "Director, sorry to trouble you in your busy schedule — could I have about ten minutes?" },
@@ -2617,16 +2757,16 @@ export const lessons: JapaneseLesson[] = [
     "category": "professional-negotiation",
     "level": "C1",
     "vocabulary": [
-      { "japanese": "契約 (けいやく)", "english": "contract" },
-      { "japanese": "条件 (じょうけん)", "english": "terms / conditions" },
-      { "japanese": "見直し (みなおし)", "english": "review / reconsideration" },
-      { "japanese": "依頼 (いらい)", "english": "request" },
-      { "japanese": "合意事項 (ごういじこう)", "english": "agreed items" },
-      { "japanese": "調整 (ちょうせい)", "english": "adjustment" },
-      { "japanese": "弾力的 (だんりょくてき)", "english": "flexible" },
-      { "japanese": "数量 (すうりょう)", "english": "quantity" },
-      { "japanese": "単価 (たんか)", "english": "unit price" },
-      { "japanese": "供給 (きょうきゅう)", "english": "supply" }
+      { cell_id: "93128fa1-dff6-41c4-b77f-1bb31e01c228", "japanese": "契約 (けいやく)", "english": "contract" },
+      { cell_id: "a05cdf93-71da-437f-aa47-3b24d82a1843", "japanese": "条件 (じょうけん)", "english": "terms / conditions" },
+      { cell_id: "171f19b0-6084-4bee-8495-b4c48edf9870", "japanese": "見直し (みなおし)", "english": "review / reconsideration" },
+      { cell_id: "3dde3c9f-c309-48f4-95ea-2963fc412c2d", "japanese": "依頼 (いらい)", "english": "request" },
+      { cell_id: "0160249f-1f82-49da-9f30-612ca15f1f2c", "japanese": "合意事項 (ごういじこう)", "english": "agreed items" },
+      { cell_id: "f054aae2-7223-41cf-93bc-465e2cfb1cfe", "japanese": "調整 (ちょうせい)", "english": "adjustment" },
+      { cell_id: "2d06794a-c1e4-4e76-b521-25e95cd9aef6", "japanese": "弾力的 (だんりょくてき)", "english": "flexible" },
+      { cell_id: "87080138-c1e7-4f54-a380-bd89a9d1f659", "japanese": "数量 (すうりょう)", "english": "quantity" },
+      { cell_id: "2dbe2837-1899-4294-800a-bd66595bca0d", "japanese": "単価 (たんか)", "english": "unit price" },
+      { cell_id: "fcafb59b-49ca-4620-aa0f-73157bae7f2e", "japanese": "供給 (きょうきゅう)", "english": "supply" }
     ],
     "examples": [
       { "japanese": "既存契約の条件につきまして、見直しのご相談をさせていただきたく、ご連絡差し上げました。", "english": "I am reaching out to consult about a review of the terms of our existing contract." },
@@ -2638,10 +2778,10 @@ export const lessons: JapaneseLesson[] = [
       { "japanese": "ご多忙のところ恐縮ですが、ご検討のほどよろしくお願い申し上げます。", "english": "I am sorry to impose during your busy time, but I respectfully ask for your consideration." }
     ],
     "dialogue": [
-      { "speaker": "営業", "japanese": "田中部長、契約条件の件でご相談がございます。", "english": "Director Tanaka, I have a consultation regarding contract terms." },
-      { "speaker": "顧客", "japanese": "ああ、納期の件でしたか。", "english": "Ah, the delivery-date matter?" },
-      { "speaker": "営業", "japanese": "はい、現状の納期を二週間延長いただけませんでしょうか。", "english": "Yes — could the current delivery date be extended by two weeks?" },
-      { "speaker": "顧客", "japanese": "理由を伺ってもよろしいでしょうか。", "english": "May I ask the reason?" }
+      { cell_id: "ab122b13-e528-4932-b166-f042ee475af7", "speaker": "営業", "japanese": "田中部長、契約条件の件でご相談がございます。", "english": "Director Tanaka, I have a consultation regarding contract terms." },
+      { cell_id: "77e0c011-7f61-484d-81e8-88f8a0b734a4", "speaker": "顧客", "japanese": "ああ、納期の件でしたか。", "english": "Ah, the delivery-date matter?" },
+      { cell_id: "f2574729-1c37-4456-8fd4-c29e06d2eb80", "speaker": "営業", "japanese": "はい、現状の納期を二週間延長いただけませんでしょうか。", "english": "Yes — could the current delivery date be extended by two weeks?" },
+      { cell_id: "7e91e750-1d87-4d61-9056-0a22be9d3c3b", "speaker": "顧客", "japanese": "理由を伺ってもよろしいでしょうか。", "english": "May I ask the reason?" }
     ],
     "dialogue_long": [
       { "speaker": "営業", "japanese": "田中部長、お忙しいところ恐縮でございます。先日締結いたしました契約条件につきまして、若干のご相談をさせていただきたく参りました。", "english": "Director Tanaka, sorry to trouble you in your busy schedule. I came to consult slightly about the contract terms we concluded recently." },
@@ -2701,16 +2841,16 @@ export const lessons: JapaneseLesson[] = [
     "category": "professional-negotiation",
     "level": "C1",
     "vocabulary": [
-      { "japanese": "議長 (ぎちょう)", "english": "chair / chairperson" },
-      { "japanese": "議事 (ぎじ)", "english": "agenda / proceedings" },
-      { "japanese": "進行 (しんこう)", "english": "proceeding / facilitation" },
-      { "japanese": "発言 (はつげん)", "english": "remarks / utterance" },
-      { "japanese": "採決 (さいけつ)", "english": "voting / decision-taking" },
-      { "japanese": "合意 (ごうい)", "english": "consensus / agreement" },
-      { "japanese": "議題 (ぎだい)", "english": "agenda topic" },
-      { "japanese": "中立 (ちゅうりつ)", "english": "neutrality" },
-      { "japanese": "取りまとめ (とりまとめ)", "english": "summarizing / consolidating" },
-      { "japanese": "異議 (いぎ)", "english": "objection" }
+      { cell_id: "4fb42316-50fa-4eca-84f6-eb434778bf0c", "japanese": "議長 (ぎちょう)", "english": "chair / chairperson" },
+      { cell_id: "5ae941dc-a889-495a-adc1-a4243e04c8e0", "japanese": "議事 (ぎじ)", "english": "agenda / proceedings" },
+      { cell_id: "efc2f1e1-0973-427d-92f2-5b9a3a86623f", "japanese": "進行 (しんこう)", "english": "proceeding / facilitation" },
+      { cell_id: "55f5a702-ef0b-425b-9dd5-d927691a573d", "japanese": "発言 (はつげん)", "english": "remarks / utterance" },
+      { cell_id: "9e44311b-3242-4be6-9223-15d898cf2004", "japanese": "採決 (さいけつ)", "english": "voting / decision-taking" },
+      { cell_id: "708ec71c-8a55-4faf-aa84-035c2543eb4f", "japanese": "合意 (ごうい)", "english": "consensus / agreement" },
+      { cell_id: "30eda8c7-8d79-45e8-ad8c-37a784f212e4", "japanese": "議題 (ぎだい)", "english": "agenda topic" },
+      { cell_id: "07c77ce3-e0a6-4f09-a223-3fde6db89a2f", "japanese": "中立 (ちゅうりつ)", "english": "neutrality" },
+      { cell_id: "b4146836-6078-4f2c-add7-a794eab4fe9b", "japanese": "取りまとめ (とりまとめ)", "english": "summarizing / consolidating" },
+      { cell_id: "e3e83cc1-9147-4ffb-a3aa-0968fc1cd359", "japanese": "異議 (いぎ)", "english": "objection" }
     ],
     "examples": [
       { "japanese": "それでは、定刻となりましたので、本日の会議を開始させていただきます。", "english": "It being the appointed time, we will now open today's meeting." },
@@ -2722,10 +2862,10 @@ export const lessons: JapaneseLesson[] = [
       { "japanese": "本日の議論は以上をもちまして終了とさせていただきます。", "english": "The discussion today will be concluded with this." }
     ],
     "dialogue": [
-      { "speaker": "議長", "japanese": "それでは、議題1番、来期予算案について、財務部からご説明をお願いいたします。", "english": "Now then, agenda item 1 — please have Finance present on the next-period budget proposal." },
-      { "speaker": "財務", "japanese": "はい。お配りした資料の通り、本予算案は売上目標を10%上乗せした想定でございます。", "english": "Yes. As in the materials, this proposal assumes a 10% increase to the sales target." },
-      { "speaker": "議長", "japanese": "ご説明ありがとうございました。質疑応答に移らせていただきます。", "english": "Thank you for the explanation. We will move to Q&A." },
-      { "speaker": "営業", "japanese": "一点よろしいでしょうか。", "english": "May I raise one point?" }
+      { cell_id: "eafe8eaa-7c70-40bf-a0d6-5d02e06b397c", "speaker": "議長", "japanese": "それでは、議題1番、来期予算案について、財務部からご説明をお願いいたします。", "english": "Now then, agenda item 1 — please have Finance present on the next-period budget proposal." },
+      { cell_id: "145d4c34-ae5e-4ea9-b8ff-8a67deba703d", "speaker": "財務", "japanese": "はい。お配りした資料の通り、本予算案は売上目標を10%上乗せした想定でございます。", "english": "Yes. As in the materials, this proposal assumes a 10% increase to the sales target." },
+      { cell_id: "8639bafa-ac1c-48cc-ba53-4d638b9bfb5b", "speaker": "議長", "japanese": "ご説明ありがとうございました。質疑応答に移らせていただきます。", "english": "Thank you for the explanation. We will move to Q&A." },
+      { cell_id: "5348d655-19b7-4fc2-880f-b0ddd50420d2", "speaker": "営業", "japanese": "一点よろしいでしょうか。", "english": "May I raise one point?" }
     ],
     "dialogue_long": [
       { "speaker": "議長", "japanese": "それでは、定刻でございますので、本日の経営会議を開始させていただきます。本日は5つの議題がございます。お配りした次第表のとおり、進めさせていただければと存じます。", "english": "It being the appointed time, we will now open today's executive meeting. There are five items on the agenda. We hope to proceed in accordance with the schedule distributed." },
@@ -2787,16 +2927,16 @@ export const lessons: JapaneseLesson[] = [
     "category": "professional-negotiation",
     "level": "C1",
     "vocabulary": [
-      { "japanese": "仕入れ (しいれ)", "english": "purchasing / sourcing" },
-      { "japanese": "単価 (たんか)", "english": "unit price" },
-      { "japanese": "値引き (ねびき)", "english": "discount" },
-      { "japanese": "取引量 (とりひきりょう)", "english": "transaction volume" },
-      { "japanese": "量産 (りょうさん)", "english": "mass production" },
-      { "japanese": "納入 (のうにゅう)", "english": "delivery to buyer" },
-      { "japanese": "競合他社 (きょうごうたしゃ)", "english": "competitor / competing firm" },
-      { "japanese": "見積もり (みつもり)", "english": "quote / estimate" },
-      { "japanese": "値下げ (ねさげ)", "english": "price reduction" },
-      { "japanese": "ボリュームディスカウント", "english": "volume discount" }
+      { cell_id: "26680113-4911-45ca-9d09-2cbe1f7db7d4", "japanese": "仕入れ (しいれ)", "english": "purchasing / sourcing" },
+      { cell_id: "a6ad7843-dc75-4a53-bfd4-6319298e87f1", "japanese": "単価 (たんか)", "english": "unit price" },
+      { cell_id: "5bbeb802-164b-40a0-b91b-48cd7707710a", "japanese": "値引き (ねびき)", "english": "discount" },
+      { cell_id: "22ff513e-7da2-4b49-af84-06436ddf5bc9", "japanese": "取引量 (とりひきりょう)", "english": "transaction volume" },
+      { cell_id: "9de73e5d-6bee-4d2e-93af-6e4d2b6c993c", "japanese": "量産 (りょうさん)", "english": "mass production" },
+      { cell_id: "c9b4b0c5-54f1-4eee-addb-925128fbfad8", "japanese": "納入 (のうにゅう)", "english": "delivery to buyer" },
+      { cell_id: "14af771e-bedf-4208-b7b4-85462bfa63c9", "japanese": "競合他社 (きょうごうたしゃ)", "english": "competitor / competing firm" },
+      { cell_id: "e440b117-892c-4f10-b42d-d3abf74f4c2f", "japanese": "見積もり (みつもり)", "english": "quote / estimate" },
+      { cell_id: "4102db33-3498-409a-9333-8f742de3f118", "japanese": "値下げ (ねさげ)", "english": "price reduction" },
+      { cell_id: "60a65939-8edc-45ff-874e-4e8c4b29f1ae", "japanese": "ボリュームディスカウント", "english": "volume discount" }
     ],
     "examples": [
       { "japanese": "お見積もり拝見いたしました。単価につきまして、若干の見直しをご検討いただけませんでしょうか。", "english": "I have reviewed the quote. Could you consider a slight revision of the unit price?" },
@@ -2808,10 +2948,10 @@ export const lessons: JapaneseLesson[] = [
       { "japanese": "御社のご事情も踏まえ、納期や数量で柔軟にご対応いたす所存でございます。", "english": "Bearing your circumstances in mind as well, we intend to respond flexibly on delivery and volume." }
     ],
     "dialogue": [
-      { "speaker": "購買", "japanese": "鈴木課長、新規発注の単価について、ご相談がございます。", "english": "Manager Suzuki, I have a consultation about the unit price on the new order." },
-      { "speaker": "納品", "japanese": "はい、お聞きいたします。", "english": "Yes, please tell me." },
-      { "speaker": "購買", "japanese": "競合他社さんのお見積もりが、御社よりも5%ほど低くなっております。", "english": "A competitor's quote is about 5% lower than yours." },
-      { "speaker": "納品", "japanese": "なるほど、状況は把握いたしました。", "english": "I see — I understand the situation." }
+      { cell_id: "9c606334-7897-423a-81ce-c8a97a1b57ab", "speaker": "購買", "japanese": "鈴木課長、新規発注の単価について、ご相談がございます。", "english": "Manager Suzuki, I have a consultation about the unit price on the new order." },
+      { cell_id: "b8011b70-31da-4221-ac31-0569ea92e681", "speaker": "納品", "japanese": "はい、お聞きいたします。", "english": "Yes, please tell me." },
+      { cell_id: "dd80cbe4-2209-4234-9166-278da6eeff64", "speaker": "購買", "japanese": "競合他社さんのお見積もりが、御社よりも5%ほど低くなっております。", "english": "A competitor's quote is about 5% lower than yours." },
+      { cell_id: "e9d0e1d7-8f77-47b2-9672-72c137904736", "speaker": "納品", "japanese": "なるほど、状況は把握いたしました。", "english": "I see — I understand the situation." }
     ],
     "dialogue_long": [
       { "speaker": "購買 (Linh)", "japanese": "鈴木課長、お忙しいところお時間頂戴し恐縮でございます。来期の量産部品発注の単価につきまして、ご相談がございます。", "english": "Manager Suzuki, sorry to take your time in your busy schedule. I have a consultation about the unit price for next-period mass-production parts." },
@@ -2871,16 +3011,16 @@ export const lessons: JapaneseLesson[] = [
     "category": "professional-negotiation",
     "level": "C1",
     "vocabulary": [
-      { "japanese": "異議 (いぎ)", "english": "objection" },
-      { "japanese": "異論 (いろん)", "english": "different opinion" },
-      { "japanese": "申し上げる (もうしあげる)", "english": "to humbly say (謙譲語)" },
-      { "japanese": "失礼ながら (しつれいながら)", "english": "with respect / forgive my forwardness" },
-      { "japanese": "拝見する (はいけんする)", "english": "to humbly look at" },
-      { "japanese": "私見 (しけん)", "english": "personal opinion (humble)" },
-      { "japanese": "検討の余地 (けんとうのよち)", "english": "room for consideration" },
-      { "japanese": "誠に恐縮 (まことにきょうしゅく)", "english": "truly sorry / apologetic" },
-      { "japanese": "補足 (ほそく)", "english": "supplement / additional input" },
-      { "japanese": "別の角度 (べつのかくど)", "english": "different angle" }
+      { cell_id: "add5a426-fd20-4270-ab7d-ca9455e119d9", "japanese": "異議 (いぎ)", "english": "objection" },
+      { cell_id: "39dc4b68-7380-4a22-8025-0d523323ecca", "japanese": "異論 (いろん)", "english": "different opinion" },
+      { cell_id: "495e4ac2-c280-4eac-8296-f7c00f908ac4", "japanese": "申し上げる (もうしあげる)", "english": "to humbly say (謙譲語)" },
+      { cell_id: "e4162ce4-4850-488d-b97f-5e92bd755b3f", "japanese": "失礼ながら (しつれいながら)", "english": "with respect / forgive my forwardness" },
+      { cell_id: "bd65386d-bf22-4256-b0c7-c29ee7a8d018", "japanese": "拝見する (はいけんする)", "english": "to humbly look at" },
+      { cell_id: "643541aa-5184-48be-80e4-6b9c4a426a90", "japanese": "私見 (しけん)", "english": "personal opinion (humble)" },
+      { cell_id: "5b64d323-1a47-4177-b2b4-89fa7ae29dd6", "japanese": "検討の余地 (けんとうのよち)", "english": "room for consideration" },
+      { cell_id: "d11e994f-72ed-4b0b-b16b-6b6c8663c2b2", "japanese": "誠に恐縮 (まことにきょうしゅく)", "english": "truly sorry / apologetic" },
+      { cell_id: "0fa2cd66-56e5-4690-ad2d-9d2b4ac9239f", "japanese": "補足 (ほそく)", "english": "supplement / additional input" },
+      { cell_id: "7e8f1c44-4600-4318-b8e4-0fa985d849b8", "japanese": "別の角度 (べつのかくど)", "english": "different angle" }
     ],
     "examples": [
       { "japanese": "失礼ながら、私見を申し上げてもよろしいでしょうか。", "english": "With respect, may I humbly state my personal view?" },
@@ -2892,10 +3032,10 @@ export const lessons: JapaneseLesson[] = [
       { "japanese": "改めて精査のうえ、明日午前中にご相談に上がってもよろしいでしょうか。", "english": "After scrutinizing again, may I come to consult tomorrow morning?" }
     ],
     "dialogue": [
-      { "speaker": "社員", "japanese": "部長、お時間よろしいでしょうか。先ほどのご方針について、少々補足させていただきたく。", "english": "Director, is your time available? I would like to supplement the direction discussed earlier." },
-      { "speaker": "部長", "japanese": "ええ、何でしょうか。", "english": "Yes, what is it?" },
-      { "speaker": "社員", "japanese": "失礼ながら、一点だけ気になる点が。", "english": "With respect, just one point of concern." },
-      { "speaker": "部長", "japanese": "言ってみてください。", "english": "Please go ahead." }
+      { cell_id: "ad4d8167-da8b-4130-97ac-fa557c668597", "speaker": "社員", "japanese": "部長、お時間よろしいでしょうか。先ほどのご方針について、少々補足させていただきたく。", "english": "Director, is your time available? I would like to supplement the direction discussed earlier." },
+      { cell_id: "2919224d-b583-4bc2-9e1c-7098446017ab", "speaker": "部長", "japanese": "ええ、何でしょうか。", "english": "Yes, what is it?" },
+      { cell_id: "40329610-0ddc-467b-8b6c-fe6153610b3f", "speaker": "社員", "japanese": "失礼ながら、一点だけ気になる点が。", "english": "With respect, just one point of concern." },
+      { cell_id: "1da5dfe5-e557-4a29-9839-6db7e3976ae4", "speaker": "部長", "japanese": "言ってみてください。", "english": "Please go ahead." }
     ],
     "dialogue_long": [
       { "speaker": "社員", "japanese": "部長、お時間少々頂戴できますでしょうか。先ほどの会議でご指示いただきましたX社向けの提案書の件、補足させていただきたく参りました。", "english": "Director, may I have a few minutes? I came to supplement the X-Company proposal direction you gave in the meeting earlier." },
@@ -2956,16 +3096,16 @@ export const lessons: JapaneseLesson[] = [
     "category": "professional-negotiation",
     "level": "C1",
     "vocabulary": [
-      { "japanese": "異文化 (いぶんか)", "english": "different culture" },
-      { "japanese": "文化的差異 (ぶんかてきさい)", "english": "cultural difference" },
-      { "japanese": "相互理解 (そうごりかい)", "english": "mutual understanding" },
-      { "japanese": "商習慣 (しょうしゅうかん)", "english": "business custom / commercial practice" },
-      { "japanese": "暗黙の了解 (あんもくのりょうかい)", "english": "tacit understanding" },
-      { "japanese": "摺り合わせ (すりあわせ)", "english": "alignment / harmonization" },
-      { "japanese": "配慮 (はいりょ)", "english": "consideration" },
-      { "japanese": "共通項 (きょうつうこう)", "english": "common ground" },
-      { "japanese": "補完関係 (ほかんかんけい)", "english": "complementary relationship" },
-      { "japanese": "根回し (ねまわし)", "english": "pre-meeting consensus building" }
+      { cell_id: "f4be6de5-f108-42ec-a4b5-c2a89d8b6ef7", "japanese": "異文化 (いぶんか)", "english": "different culture" },
+      { cell_id: "96454569-2ecb-4d2e-9064-9e4783f76dfb", "japanese": "文化的差異 (ぶんかてきさい)", "english": "cultural difference" },
+      { cell_id: "0a5c5ab2-0733-461a-8753-01454493f556", "japanese": "相互理解 (そうごりかい)", "english": "mutual understanding" },
+      { cell_id: "e4870072-acfd-46bc-ab85-e00e260c3fdb", "japanese": "商習慣 (しょうしゅうかん)", "english": "business custom / commercial practice" },
+      { cell_id: "4d57ef92-bd39-43f7-a630-cccdd34fb17d", "japanese": "暗黙の了解 (あんもくのりょうかい)", "english": "tacit understanding" },
+      { cell_id: "0dde3387-3733-451e-97b1-1e6565bcd667", "japanese": "摺り合わせ (すりあわせ)", "english": "alignment / harmonization" },
+      { cell_id: "5672a5eb-ad76-4f10-a430-0abc2d75c752", "japanese": "配慮 (はいりょ)", "english": "consideration" },
+      { cell_id: "5a142d4f-7b86-42e3-86a3-6b07832015b7", "japanese": "共通項 (きょうつうこう)", "english": "common ground" },
+      { cell_id: "84ded513-ad54-492f-a66f-92f98163ae79", "japanese": "補完関係 (ほかんかんけい)", "english": "complementary relationship" },
+      { cell_id: "6e2733d7-f07c-4aa7-a71c-977a2dcaedee", "japanese": "根回し (ねまわし)", "english": "pre-meeting consensus building" }
     ],
     "examples": [
       { "japanese": "日越両国の商習慣の違いを踏まえ、慎重に進めてまいりたく存じます。", "english": "Bearing in mind business-custom differences between Japan and Vietnam, we wish to proceed cautiously." },
@@ -2977,10 +3117,10 @@ export const lessons: JapaneseLesson[] = [
       { "japanese": "当初は摩擦が生じる場面もございますが、長期的には双方の利益に資すると確信しております。", "english": "Initially there may be moments of friction, but in the long run we are confident this will serve both parties' interests." }
     ],
     "dialogue": [
-      { "speaker": "日本側", "japanese": "ベトナム側のスピード感には、毎度感心しております。", "english": "We are always impressed by the Vietnamese side's pace." },
-      { "speaker": "ベトナム側", "japanese": "ありがとうございます。日本側の細やかさからは、いつも学ばされております。", "english": "Thank you. We always learn from the Japanese side's attention to detail." },
-      { "speaker": "日本側", "japanese": "双方の強みを活かす形で、合意点を探りたいと存じます。", "english": "I would like to seek points of agreement that draw on both sides' strengths." },
-      { "speaker": "ベトナム側", "japanese": "同感でございます。", "english": "I share that view." }
+      { cell_id: "d0906383-bd68-4a77-9700-846ea6d460e7", "speaker": "日本側", "japanese": "ベトナム側のスピード感には、毎度感心しております。", "english": "We are always impressed by the Vietnamese side's pace." },
+      { cell_id: "b179cb30-41e8-4394-8ed4-5722c9c5ad05", "speaker": "ベトナム側", "japanese": "ありがとうございます。日本側の細やかさからは、いつも学ばされております。", "english": "Thank you. We always learn from the Japanese side's attention to detail." },
+      { cell_id: "0e5a78f6-6be1-4221-9c56-78b66b5a444d", "speaker": "日本側", "japanese": "双方の強みを活かす形で、合意点を探りたいと存じます。", "english": "I would like to seek points of agreement that draw on both sides' strengths." },
+      { cell_id: "78146467-a4c9-4496-a40e-9ce3318924b1", "speaker": "ベトナム側", "japanese": "同感でございます。", "english": "I share that view." }
     ],
     "dialogue_long": [
       { "speaker": "日本側 (山田)", "japanese": "本日はお忙しい中、お時間頂戴し誠にありがとうございます。", "english": "Thank you sincerely for taking time today amid your busy schedule." },
@@ -3041,16 +3181,16 @@ export const lessons: JapaneseLesson[] = [
     "category": "professional-negotiation",
     "level": "C1",
     "vocabulary": [
-      { "japanese": "紛争 (ふんそう)", "english": "dispute" },
-      { "japanese": "解決 (かいけつ)", "english": "resolution" },
-      { "japanese": "仲裁 (ちゅうさい)", "english": "arbitration / mediation" },
-      { "japanese": "調停 (ちょうてい)", "english": "mediation" },
-      { "japanese": "苦情 (くじょう)", "english": "complaint" },
-      { "japanese": "申し立て (もうしたて)", "english": "formal complaint / filing" },
-      { "japanese": "面談 (めんだん)", "english": "interview / meeting" },
-      { "japanese": "中立的 (ちゅうりつてき)", "english": "neutral" },
-      { "japanese": "事実関係 (じじつかんけい)", "english": "facts of the matter" },
-      { "japanese": "是正 (ぜせい)", "english": "rectification" }
+      { cell_id: "4d391355-75f5-42b0-9bd7-ab4836c82252", "japanese": "紛争 (ふんそう)", "english": "dispute" },
+      { cell_id: "da48dc45-04ba-4a3a-bfe3-5f9908f94fbb", "japanese": "解決 (かいけつ)", "english": "resolution" },
+      { cell_id: "f916dd60-977d-431a-a4d8-ac97738ad999", "japanese": "仲裁 (ちゅうさい)", "english": "arbitration / mediation" },
+      { cell_id: "bfb69a39-e455-46f7-a5da-743858be76ff", "japanese": "調停 (ちょうてい)", "english": "mediation" },
+      { cell_id: "0f6bc445-0d83-4f93-a999-5bc1510ecfc4", "japanese": "苦情 (くじょう)", "english": "complaint" },
+      { cell_id: "2ef1b25d-8a6d-4412-a8fa-a0c6b090bd97", "japanese": "申し立て (もうしたて)", "english": "formal complaint / filing" },
+      { cell_id: "e5b80a74-d7fe-4b40-bd4f-2ed2719e7c23", "japanese": "面談 (めんだん)", "english": "interview / meeting" },
+      { cell_id: "66f3cb32-6a74-404e-87a9-11c2571265fe", "japanese": "中立的 (ちゅうりつてき)", "english": "neutral" },
+      { cell_id: "fd8733fe-dbfb-4e5f-9e2a-ce63ef504908", "japanese": "事実関係 (じじつかんけい)", "english": "facts of the matter" },
+      { cell_id: "cff6e040-9e44-4648-83dc-a1326df226a3", "japanese": "是正 (ぜせい)", "english": "rectification" }
     ],
     "examples": [
       { "japanese": "弊社の人事部として、中立的立場から事実関係の確認をさせていただきます。", "english": "As the company's HR, we will verify the facts from a neutral standpoint." },
@@ -3062,10 +3202,10 @@ export const lessons: JapaneseLesson[] = [
       { "japanese": "本日のご面談で得た情報は、社内規程に基づき適切に取り扱います。", "english": "Information obtained in today's meeting will be handled appropriately under internal rules." }
     ],
     "dialogue": [
-      { "speaker": "HR", "japanese": "田中さん、本日はお時間頂戴し誠にありがとうございます。", "english": "Mr. Tanaka, thank you sincerely for your time today." },
-      { "speaker": "社員", "japanese": "いえ、こちらこそ。", "english": "No, on the contrary." },
-      { "speaker": "HR", "japanese": "先日ご提出いただいた申し立てについて、事実関係を確認させていただきたく。", "english": "I'd like to verify the facts regarding the filing you submitted recently." },
-      { "speaker": "社員", "japanese": "はい、お願いいたします。", "english": "Yes, please proceed." }
+      { cell_id: "2d545a47-22bb-4c22-94fe-8fbb4007caf6", "speaker": "HR", "japanese": "田中さん、本日はお時間頂戴し誠にありがとうございます。", "english": "Mr. Tanaka, thank you sincerely for your time today." },
+      { cell_id: "0c7a4649-d2e1-42d1-b069-cce37603ffbb", "speaker": "社員", "japanese": "いえ、こちらこそ。", "english": "No, on the contrary." },
+      { cell_id: "9f80026e-326a-40fc-824f-51ce5ce41e6a", "speaker": "HR", "japanese": "先日ご提出いただいた申し立てについて、事実関係を確認させていただきたく。", "english": "I'd like to verify the facts regarding the filing you submitted recently." },
+      { cell_id: "e6ef265a-d004-4a0e-a627-f304edf6b571", "speaker": "社員", "japanese": "はい、お願いいたします。", "english": "Yes, please proceed." }
     ],
     "dialogue_long": [
       { "speaker": "HR (人事)", "japanese": "田中さん、お忙しい中お時間頂戴し恐縮でございます。本日は、先日ご提出いただいた申し立てに関するご面談でございます。本件は内密に取り扱いますので、ご安心ください。", "english": "Mr. Tanaka, sorry to take your time in your busy schedule. Today is the meeting concerning the filing you submitted recently. This matter is handled in confidence, so please be assured." },
@@ -3125,16 +3265,16 @@ export const lessons: JapaneseLesson[] = [
     "category": "professional-negotiation",
     "level": "C1",
     "vocabulary": [
-      { "japanese": "取引終結 (とりひきしゅうけつ)", "english": "closing transaction" },
-      { "japanese": "撤退 (てったい)", "english": "withdrawal / pullout" },
-      { "japanese": "終了 (しゅうりょう)", "english": "termination / end" },
-      { "japanese": "契約解除 (けいやくかいじょ)", "english": "contract termination" },
-      { "japanese": "円満 (えんまん)", "english": "amicable" },
-      { "japanese": "見送り (みおくり)", "english": "passing on / declining" },
-      { "japanese": "一旦保留 (いったんほりゅう)", "english": "putting on hold" },
-      { "japanese": "後日改めて (ごじつあらためて)", "english": "at a later date" },
-      { "japanese": "ご縁 (ごえん)", "english": "connection / opportunity" },
-      { "japanese": "苦渋 (くじゅう)", "english": "agony / bitter (decision)" }
+      { cell_id: "bd9f88f3-dcfe-40cc-be55-0e9ca4f98ced", "japanese": "取引終結 (とりひきしゅうけつ)", "english": "closing transaction" },
+      { cell_id: "fbf4035a-1d72-4cae-a1b7-144f0b9eb5d7", "japanese": "撤退 (てったい)", "english": "withdrawal / pullout" },
+      { cell_id: "4f3bf6dd-e9f2-48e0-b40a-822d0e9a0240", "japanese": "終了 (しゅうりょう)", "english": "termination / end" },
+      { cell_id: "3215b0a2-f722-40cb-a617-267d75bb9f6c", "japanese": "契約解除 (けいやくかいじょ)", "english": "contract termination" },
+      { cell_id: "37e04cf7-8246-48b6-b090-c030dcf3bc20", "japanese": "円満 (えんまん)", "english": "amicable" },
+      { cell_id: "ee6a4f84-7aea-4962-b4fa-09f508ccf117", "japanese": "見送り (みおくり)", "english": "passing on / declining" },
+      { cell_id: "259f6c2f-cafa-4c0a-98f1-f7b58c5d3d2c", "japanese": "一旦保留 (いったんほりゅう)", "english": "putting on hold" },
+      { cell_id: "84a3394a-baeb-43b6-8467-c773a6cdee4a", "japanese": "後日改めて (ごじつあらためて)", "english": "at a later date" },
+      { cell_id: "daa8e143-0e77-43b5-8333-591c3bfbf80c", "japanese": "ご縁 (ごえん)", "english": "connection / opportunity" },
+      { cell_id: "6d4d4a1d-6ade-42ae-8c87-1e1311d1d0a5", "japanese": "苦渋 (くじゅう)", "english": "agony / bitter (decision)" }
     ],
     "examples": [
       { "japanese": "諸般の事情を勘案いたしまして、本件の見送りを決定いたしました。", "english": "Taking various circumstances into account, we have decided to pass on this matter." },
@@ -3146,10 +3286,10 @@ export const lessons: JapaneseLesson[] = [
       { "japanese": "本件は一旦保留とし、状況の変化に応じて改めてご相談させていただければと存じます。", "english": "We will place this on hold for now, and consult again should circumstances change." }
     ],
     "dialogue": [
-      { "speaker": "A", "japanese": "ご提案いただきました件、社内で慎重に検討してまいりましたが。", "english": "Regarding the proposal you submitted, we have carefully considered it internally." },
-      { "speaker": "B", "japanese": "お返事をお待ちしておりました。", "english": "We have been awaiting your reply." },
-      { "speaker": "A", "japanese": "誠に申し訳ございませんが、今回はお見送りとさせていただきたく。", "english": "We are truly sorry, but we would like to pass this time." },
-      { "speaker": "B", "japanese": "そうですか。理由を伺ってもよろしいでしょうか。", "english": "I see. May I ask the reason?" }
+      { cell_id: "4d849835-78af-49ec-8f38-a991eb5c350d", "speaker": "A", "japanese": "ご提案いただきました件、社内で慎重に検討してまいりましたが。", "english": "Regarding the proposal you submitted, we have carefully considered it internally." },
+      { cell_id: "ae5c5367-76d6-4ad2-b1ad-fddfb2b117a0", "speaker": "B", "japanese": "お返事をお待ちしておりました。", "english": "We have been awaiting your reply." },
+      { cell_id: "ed7ab972-fe1b-4fcb-a9b2-2d24b4d5564e", "speaker": "A", "japanese": "誠に申し訳ございませんが、今回はお見送りとさせていただきたく。", "english": "We are truly sorry, but we would like to pass this time." },
+      { cell_id: "90ae5c44-a4d1-46c8-ad31-a54180981383", "speaker": "B", "japanese": "そうですか。理由を伺ってもよろしいでしょうか。", "english": "I see. May I ask the reason?" }
     ],
     "dialogue_long": [
       { "speaker": "A (vendor)", "japanese": "いつもお世話になっております。先日のお打ち合わせの件で、お伺いいたしました。", "english": "Thank you for your continued business. I came regarding our recent meeting." },
@@ -3210,16 +3350,16 @@ export const lessons: JapaneseLesson[] = [
     "category": "professional-negotiation",
     "level": "C1",
     "vocabulary": [
-      { "japanese": "提示額 (ていじがく)", "english": "offered amount" },
-      { "japanese": "想定外 (そうていがい)", "english": "outside expectations" },
-      { "japanese": "妥当性 (だとうせい)", "english": "appropriateness / validity" },
-      { "japanese": "根拠 (こんきょ)", "english": "basis / grounds" },
-      { "japanese": "再考 (さいこう)", "english": "reconsideration" },
-      { "japanese": "隔たり (へだたり)", "english": "gap / disparity" },
-      { "japanese": "譲歩 (じょうほ)", "english": "concession" },
-      { "japanese": "接点 (せってん)", "english": "common ground" },
-      { "japanese": "値ごろ感 (ねごろかん)", "english": "sense of fair price" },
-      { "japanese": "市場水準 (しじょうすいじゅん)", "english": "market level" }
+      { cell_id: "ece51a71-dbd9-470b-a9dd-c9b76f5cecec", "japanese": "提示額 (ていじがく)", "english": "offered amount" },
+      { cell_id: "001e3bda-dc76-480f-ae1e-15412303a151", "japanese": "想定外 (そうていがい)", "english": "outside expectations" },
+      { cell_id: "011f6ee3-0a00-4e25-9bb0-f9ebc39a2ce9", "japanese": "妥当性 (だとうせい)", "english": "appropriateness / validity" },
+      { cell_id: "e1cb2b94-cf48-4711-a544-90b8f5574699", "japanese": "根拠 (こんきょ)", "english": "basis / grounds" },
+      { cell_id: "2dfbc888-1509-4b15-99b0-6188b1b662f9", "japanese": "再考 (さいこう)", "english": "reconsideration" },
+      { cell_id: "f0148896-3cc3-4a78-88de-0bb98d4c9e8a", "japanese": "隔たり (へだたり)", "english": "gap / disparity" },
+      { cell_id: "2e171b41-0228-4a10-bb11-b6ad089b9103", "japanese": "譲歩 (じょうほ)", "english": "concession" },
+      { cell_id: "ab34aa6f-2381-4404-93a8-677b260f1307", "japanese": "接点 (せってん)", "english": "common ground" },
+      { cell_id: "750058b1-df55-4a74-8615-c0caa74a5a69", "japanese": "値ごろ感 (ねごろかん)", "english": "sense of fair price" },
+      { cell_id: "efc0e15c-1564-4985-8a2e-be9918366ff4", "japanese": "市場水準 (しじょうすいじゅん)", "english": "market level" }
     ],
     "examples": [
       { "japanese": "ご提示いただきました金額は、弊社の想定とは少々隔たりがあるように感じております。", "english": "The amount you presented seems to have a slight gap from our expectations." },
@@ -3231,10 +3371,10 @@ export const lessons: JapaneseLesson[] = [
       { "japanese": "価格以外の側面、例えば納期や支払い条件など、柔軟性を持って検討する余地はございますでしょうか。", "english": "Are there aspects beyond price — for example delivery timing or payment terms — where there is room for flexible consideration?" }
     ],
     "dialogue": [
-      { "speaker": "A", "japanese": "ご提示いただいた金額について、率直に申し上げてもよろしいでしょうか。", "english": "Regarding the amount you presented, may I speak frankly?" },
-      { "speaker": "B", "japanese": "もちろんでございます。", "english": "Of course." },
-      { "speaker": "A", "japanese": "弊社の想定とは少々隔たりがあるように感じております。", "english": "It seems to have a slight gap from our expectations." },
-      { "speaker": "B", "japanese": "なるほど。具体的にはどの程度の差異とお考えでしょうか。", "english": "I see. Specifically, what degree of gap do you have in mind?" }
+      { cell_id: "ba88b3c5-c646-4915-a304-45fe41fa852b", "speaker": "A", "japanese": "ご提示いただいた金額について、率直に申し上げてもよろしいでしょうか。", "english": "Regarding the amount you presented, may I speak frankly?" },
+      { cell_id: "6da84151-c88a-4f1a-b4aa-e9f88ac9b9e7", "speaker": "B", "japanese": "もちろんでございます。", "english": "Of course." },
+      { cell_id: "28077351-e5fe-4b01-a41d-cd87de568ea4", "speaker": "A", "japanese": "弊社の想定とは少々隔たりがあるように感じております。", "english": "It seems to have a slight gap from our expectations." },
+      { cell_id: "95c80ff2-94f4-4a34-93a5-1557f46be9e2", "speaker": "B", "japanese": "なるほど。具体的にはどの程度の差異とお考えでしょうか。", "english": "I see. Specifically, what degree of gap do you have in mind?" }
     ],
     "dialogue_long": [
       { "speaker": "A (vendor Mercy)", "japanese": "先日ご提示いただきました金額の件で、お時間頂戴できますでしょうか。", "english": "Could I have your time regarding the amount you presented recently?" },
@@ -3295,16 +3435,16 @@ export const lessons: JapaneseLesson[] = [
     "category": "professional-negotiation",
     "level": "C1",
     "vocabulary": [
-      { "japanese": "敵対的 (てきたいてき)", "english": "hostile / antagonistic" },
-      { "japanese": "対立 (たいりつ)", "english": "opposition / confrontation" },
-      { "japanese": "緊張 (きんちょう)", "english": "tension" },
-      { "japanese": "高圧的 (こうあつてき)", "english": "high-handed / intimidating" },
-      { "japanese": "冷静 (れいせい)", "english": "composed / calm" },
-      { "japanese": "毅然 (きぜん)", "english": "resolute / unwavering" },
-      { "japanese": "反論 (はんろん)", "english": "counterargument" },
-      { "japanese": "中断 (ちゅうだん)", "english": "interruption / pause" },
-      { "japanese": "賠償 (ばいしょう)", "english": "compensation / damages" },
-      { "japanese": "一線 (いっせん)", "english": "line / limit" }
+      { cell_id: "86d37f4f-c00d-4b65-ad1a-cbf1508bc3b9", "japanese": "敵対的 (てきたいてき)", "english": "hostile / antagonistic" },
+      { cell_id: "79847c06-d2bc-4bf5-afb0-30543786ecd4", "japanese": "対立 (たいりつ)", "english": "opposition / confrontation" },
+      { cell_id: "cde125be-af03-4cba-b1d9-79c5448d2404", "japanese": "緊張 (きんちょう)", "english": "tension" },
+      { cell_id: "7f687c32-5680-4b6e-a91a-1b3b4c6d18d7", "japanese": "高圧的 (こうあつてき)", "english": "high-handed / intimidating" },
+      { cell_id: "d773dd34-ba27-428a-bb60-3164b98aa8e5", "japanese": "冷静 (れいせい)", "english": "composed / calm" },
+      { cell_id: "6123eef4-776e-41d9-a01e-1c6b8f3ccb23", "japanese": "毅然 (きぜん)", "english": "resolute / unwavering" },
+      { cell_id: "8caba7ae-7861-421a-b1fe-de582e343638", "japanese": "反論 (はんろん)", "english": "counterargument" },
+      { cell_id: "bfa9b09b-a12c-4e15-86d9-e3b2acde8fd8", "japanese": "中断 (ちゅうだん)", "english": "interruption / pause" },
+      { cell_id: "fcaa4f72-ce37-47c1-8742-4a7f106aaea8", "japanese": "賠償 (ばいしょう)", "english": "compensation / damages" },
+      { cell_id: "fb32f492-d236-4454-8c7d-e8039e39aa79", "japanese": "一線 (いっせん)", "english": "line / limit" }
     ],
     "examples": [
       { "japanese": "ご意見は承りましたが、弊社といたしましても譲れない一線がございます。", "english": "Your opinion is heard, but our company too has a line that cannot be conceded." },
@@ -3316,10 +3456,10 @@ export const lessons: JapaneseLesson[] = [
       { "japanese": "ご批判の点については承知いたしましたが、その前提が正確であるかにつき、改めて確認させてください。", "english": "We acknowledge the points of criticism, but please let us confirm again whether the premise is accurate." }
     ],
     "dialogue": [
-      { "speaker": "A (hostile)", "japanese": "御社の対応は到底容認できません。即時の改善を要求します。", "english": "Your company's handling is by no means acceptable. We demand immediate improvement." },
-      { "speaker": "B", "japanese": "ご懸念は承りました。事実関係について、改めて整理させていただいてもよろしいでしょうか。", "english": "Your concern is heard. May we re-organize the facts of the matter?" },
-      { "speaker": "A", "japanese": "言い訳は結構です。", "english": "Excuses are not needed." },
-      { "speaker": "B", "japanese": "言い訳ではなく、共通の認識から議論を進めるためのご確認でございます。", "english": "Not excuses — confirmation in order to proceed from shared recognition." }
+      { cell_id: "a9e6753f-187a-4067-9430-6fbc3118123c", "speaker": "A (hostile)", "japanese": "御社の対応は到底容認できません。即時の改善を要求します。", "english": "Your company's handling is by no means acceptable. We demand immediate improvement." },
+      { cell_id: "00a3bfd5-e068-4843-8d0b-b6ea03838f6d", "speaker": "B", "japanese": "ご懸念は承りました。事実関係について、改めて整理させていただいてもよろしいでしょうか。", "english": "Your concern is heard. May we re-organize the facts of the matter?" },
+      { cell_id: "3e214f54-692a-4a82-a2d0-4c25b72dc854", "speaker": "A", "japanese": "言い訳は結構です。", "english": "Excuses are not needed." },
+      { cell_id: "4718fb56-01fb-4e58-b8fd-9bc2e103d33d", "speaker": "B", "japanese": "言い訳ではなく、共通の認識から議論を進めるためのご確認でございます。", "english": "Not excuses — confirmation in order to proceed from shared recognition." }
     ],
     "dialogue_long": [
       { "speaker": "A (hostile client Tran)", "japanese": "御社の対応は到底容認できるものではありません。今回の遅延、誰の責任ですか。即時の改善と賠償を要求します。", "english": "Your company's handling is by no means acceptable. Whose responsibility is this delay? We demand immediate improvement and compensation." },
@@ -3380,14 +3520,14 @@ export const lessons: JapaneseLesson[] = [
     "category": "academic-discourse",
     "level": "C1",
     "vocabulary": [
-      { "japanese": "博士論文審査 (はくしろんぶんしんさ)", "english": "doctoral dissertation defense / examination" },
-      { "japanese": "審査委員 (しんさいいん)", "english": "examining committee member" },
-      { "japanese": "学位論文 (がくいろんぶん)", "english": "degree dissertation" },
-      { "japanese": "研究課題 (けんきゅうかだい)", "english": "research question / research topic" },
-      { "japanese": "独自性 (どくじせい)", "english": "originality" },
-      { "japanese": "貢献 (こうけん)", "english": "contribution" },
-      { "japanese": "射程 (しゃてい)", "english": "scope / reach" },
-      { "japanese": "ご審査 (ごしんさ)", "english": "your examination / review (honorific)" }
+      { cell_id: "e03addad-d99e-4ae5-86dd-e33f9bf81982", "japanese": "博士論文審査 (はくしろんぶんしんさ)", "english": "doctoral dissertation defense / examination" },
+      { cell_id: "84149ccc-3be1-41b8-99d6-03c9eb8e7d49", "japanese": "審査委員 (しんさいいん)", "english": "examining committee member" },
+      { cell_id: "5f69a485-7335-4d5f-b0d1-3088a1b1fb1b", "japanese": "学位論文 (がくいろんぶん)", "english": "degree dissertation" },
+      { cell_id: "d3017bb4-bf3b-4f9f-8a1c-47a58425c4d1", "japanese": "研究課題 (けんきゅうかだい)", "english": "research question / research topic" },
+      { cell_id: "2e12d08d-0581-4a78-9e04-b37ab8d0b3b1", "japanese": "独自性 (どくじせい)", "english": "originality" },
+      { cell_id: "13223a72-a4d1-4174-be0b-78882af86fec", "japanese": "貢献 (こうけん)", "english": "contribution" },
+      { cell_id: "3d209a12-a158-44c1-b808-67f6bd327861", "japanese": "射程 (しゃてい)", "english": "scope / reach" },
+      { cell_id: "e5c65f7a-766d-441f-991f-47b30e399496", "japanese": "ご審査 (ごしんさ)", "english": "your examination / review (honorific)" }
     ],
     "examples": [
       { "japanese": "本日はご多用のところ、本博士論文のご審査を賜り、誠にありがとうございます。", "english": "Thank you sincerely for examining this doctoral dissertation despite your busy schedules.", "pronunciation_focus": ["ご多用: ごたよう", "賜り: たまわり", "formal opening intonation"] },
@@ -3396,10 +3536,10 @@ export const lessons: JapaneseLesson[] = [
       { "japanese": "発表では、研究課題、方法、主要な知見、そして本論文の限界の順にご説明いたします。", "english": "In the presentation, I will explain the research question, method, major findings, and limitations of the dissertation in that order.", "pronunciation_focus": ["主要: しゅよう", "限界: げんかい", "list rhythm"] }
     ],
     "dialogue": [
-      { "speaker": "申請者", "japanese": "本日はご審査の機会を賜り、誠にありがとうございます。", "english": "Thank you sincerely for the opportunity to be examined today." },
-      { "speaker": "主査", "japanese": "それでは、まず論文全体の問題意識からご説明ください。", "english": "Then please begin by explaining the overall problem awareness of the dissertation." },
-      { "speaker": "申請者", "japanese": "はい。本論文の出発点は、学習者を単なる制度の受け手として捉える枠組みへの疑問にございます。", "english": "Yes. The starting point of this dissertation lies in questioning the framework that treats learners merely as recipients of institutions." },
-      { "speaker": "主査", "japanese": "承知しました。貢献の位置づけも併せて示してください。", "english": "Understood. Please also indicate how you position the contribution." }
+      { cell_id: "05c49d8f-bb20-426e-87e6-d2f2942d1d2b", "speaker": "申請者", "japanese": "本日はご審査の機会を賜り、誠にありがとうございます。", "english": "Thank you sincerely for the opportunity to be examined today." },
+      { cell_id: "44c59b75-7680-499b-bd55-dd7db2d47db2", "speaker": "主査", "japanese": "それでは、まず論文全体の問題意識からご説明ください。", "english": "Then please begin by explaining the overall problem awareness of the dissertation." },
+      { cell_id: "caed7625-ecdd-4232-b441-98b4c6cf3918", "speaker": "申請者", "japanese": "はい。本論文の出発点は、学習者を単なる制度の受け手として捉える枠組みへの疑問にございます。", "english": "Yes. The starting point of this dissertation lies in questioning the framework that treats learners merely as recipients of institutions." },
+      { cell_id: "ddf017f0-3a7c-4118-b4e9-7a15f274ee3b", "speaker": "主査", "japanese": "承知しました。貢献の位置づけも併せて示してください。", "english": "Understood. Please also indicate how you position the contribution." }
     ],
     "dialogue_long": [
       { "speaker": "申請者", "japanese": "本日は、博士論文『近代日本語教育史における学習者主体の形成』について、概要をご説明申し上げます。", "english": "Today I will present an overview of my doctoral dissertation, 'The Formation of Learner Agency in Modern Japanese-Language Education History.'" },
@@ -3448,14 +3588,14 @@ export const lessons: JapaneseLesson[] = [
     "category": "academic-discourse",
     "level": "C1",
     "vocabulary": [
-      { "japanese": "根本的 (こんぽんてき)", "english": "fundamental" },
-      { "japanese": "方法論上 (ほうほうろんじょう)", "english": "methodologically" },
-      { "japanese": "制約 (せいやく)", "english": "constraint" },
-      { "japanese": "反証可能性 (はんしょうかのうせい)", "english": "falsifiability" },
-      { "japanese": "再分析 (さいぶんせき)", "english": "reanlysis" },
-      { "japanese": "再考 (さいこう)", "english": "reconsideration" },
-      { "japanese": "留保 (りゅうほ)", "english": "reservation / qualification" },
-      { "japanese": "今後の課題 (こんごのかだい)", "english": "future task / future research issue" }
+      { cell_id: "769288aa-99c9-44a9-9945-f1c5b9430f38", "japanese": "根本的 (こんぽんてき)", "english": "fundamental" },
+      { cell_id: "5c0e0e4d-24f2-4899-a9e5-3443d526d7f5", "japanese": "方法論上 (ほうほうろんじょう)", "english": "methodologically" },
+      { cell_id: "eda3af25-7ca0-45f5-8fd6-b3a37ba35722", "japanese": "制約 (せいやく)", "english": "constraint" },
+      { cell_id: "f1bbd13c-716b-48cf-991b-bc0ebd54cbdc", "japanese": "反証可能性 (はんしょうかのうせい)", "english": "falsifiability" },
+      { cell_id: "ac59c79a-8ff6-44f4-9db7-e2f736e626f0", "japanese": "再分析 (さいぶんせき)", "english": "reanlysis" },
+      { cell_id: "80754c06-062f-4a9e-9dd6-e8e73b4c4197", "japanese": "再考 (さいこう)", "english": "reconsideration" },
+      { cell_id: "b6e18455-d55d-490a-a9b3-a689bc230688", "japanese": "留保 (りゅうほ)", "english": "reservation / qualification" },
+      { cell_id: "e61edd40-fbe7-47ba-85f2-130b4cc54948", "japanese": "今後の課題 (こんごのかだい)", "english": "future task / future research issue" }
     ],
     "examples": [
       { "japanese": "ご指摘の点は、本論文の方法論上の制約に深く関わるものと受け止めております。", "english": "I understand that your point is deeply related to a methodological constraint of this dissertation.", "pronunciation_focus": ["方法論上: ほうほうろんじょう", "受け止める: うけとめる", "soft concession tone"] },
@@ -3464,10 +3604,10 @@ export const lessons: JapaneseLesson[] = [
       { "japanese": "先生のご指摘を踏まえ、補論にて再分析の可能性を示したく存じます。", "english": "Building on your comment, I would like to indicate the possibility of reanalysis in an appendix.", "pronunciation_focus": ["補論: ほろん", "再分析: さいぶんせき", "存じます politeness"] }
     ],
     "dialogue": [
-      { "speaker": "副査", "japanese": "資料選定に偏りがあるという批判に、どのように答えますか。", "english": "How do you respond to the criticism that your material selection is biased?" },
-      { "speaker": "申請者", "japanese": "ご指摘の通り、資料の偏在は本論文の重要な制約でございます。", "english": "As you point out, uneven distribution of materials is an important constraint of this dissertation." },
-      { "speaker": "副査", "japanese": "では、結論の強さを弱める必要があるのではありませんか。", "english": "Then is it not necessary to weaken the strength of the conclusion?" },
-      { "speaker": "申請者", "japanese": "はい。その点は、結論部でより明示的に留保を加えるべきだと考えております。", "english": "Yes. I believe that point should be qualified more explicitly in the conclusion." }
+      { cell_id: "26cd33db-4512-4a77-8aa7-206bb0e55f59", "speaker": "副査", "japanese": "資料選定に偏りがあるという批判に、どのように答えますか。", "english": "How do you respond to the criticism that your material selection is biased?" },
+      { cell_id: "c8abc200-1320-4b79-bbb1-72928bc3abd3", "speaker": "申請者", "japanese": "ご指摘の通り、資料の偏在は本論文の重要な制約でございます。", "english": "As you point out, uneven distribution of materials is an important constraint of this dissertation." },
+      { cell_id: "2e9274d5-ed4c-4f5c-95be-10c1e6186350", "speaker": "副査", "japanese": "では、結論の強さを弱める必要があるのではありませんか。", "english": "Then is it not necessary to weaken the strength of the conclusion?" },
+      { cell_id: "9348214f-d478-4af9-af01-1dddf431d9c6", "speaker": "申請者", "japanese": "はい。その点は、結論部でより明示的に留保を加えるべきだと考えております。", "english": "Yes. I believe that point should be qualified more explicitly in the conclusion." }
     ],
     "dialogue_long": [
       { "speaker": "副査", "japanese": "本論文は興味深い一方で、資料の偏りが結論に与える影響を軽く見ているように読めました。", "english": "While the dissertation is interesting, it read as though it underestimated the effect of source bias on the conclusion." },
@@ -3520,14 +3660,14 @@ export const lessons: JapaneseLesson[] = [
     "category": "academic-discourse",
     "level": "C1",
     "vocabulary": [
-      { "japanese": "学会発表 (がっかいはっぴょう)", "english": "conference presentation" },
-      { "japanese": "質疑応答 (しつぎおうとう)", "english": "Q&A session" },
-      { "japanese": "座長 (ざちょう)", "english": "session chair" },
-      { "japanese": "フロア", "english": "the floor / audience" },
-      { "japanese": "補足 (ほそく)", "english": "supplementary comment" },
-      { "japanese": "射程外 (しゃていがい)", "english": "outside the scope" },
-      { "japanese": "示唆 (しさ)", "english": "suggestion / implication" },
-      { "japanese": "検討課題 (けんとうかだい)", "english": "issue for examination" }
+      { cell_id: "d0b62fcf-b4de-4ab3-b93f-9a2031ea659f", "japanese": "学会発表 (がっかいはっぴょう)", "english": "conference presentation" },
+      { cell_id: "25be5b15-1c9c-416f-81a8-790077f230ac", "japanese": "質疑応答 (しつぎおうとう)", "english": "Q&A session" },
+      { cell_id: "f54d3eb2-04d2-4063-823a-7c6bef224229", "japanese": "座長 (ざちょう)", "english": "session chair" },
+      { cell_id: "1febd200-3b55-44c2-ac2f-3016bb8206f2", "japanese": "フロア", "english": "the floor / audience" },
+      { cell_id: "e6857ca6-3677-4edd-ac52-337a91594bed", "japanese": "補足 (ほそく)", "english": "supplementary comment" },
+      { cell_id: "0a16aaaf-adaa-41b4-8910-25d99a718d29", "japanese": "射程外 (しゃていがい)", "english": "outside the scope" },
+      { cell_id: "d91e5a4b-49ac-407f-b744-4b19a653f6be", "japanese": "示唆 (しさ)", "english": "suggestion / implication" },
+      { cell_id: "97fd5b94-a175-4a1c-8ae3-e9be6a43f7e5", "japanese": "検討課題 (けんとうかだい)", "english": "issue for examination" }
     ],
     "examples": [
       { "japanese": "ご質問ありがとうございます。まず一点目につきまして、補足してご説明いたします。", "english": "Thank you for the question. Regarding the first point, I will add a supplementary explanation.", "pronunciation_focus": ["ご質問: ごしつもん", "一点目: いってんめ", "Q&A opening"] },
@@ -3536,10 +3676,10 @@ export const lessons: JapaneseLesson[] = [
       { "japanese": "時間の関係上、詳細は発表後に改めてご相談させていただければ幸いです。", "english": "Due to time, I would be grateful if we could discuss the details after the presentation.", "pronunciation_focus": ["時間の関係上", "改めて: あらためて", "polite deferral"] }
     ],
     "dialogue": [
-      { "speaker": "座長", "japanese": "それでは、フロアからご質問をお願いいたします。", "english": "Now, questions from the floor, please." },
-      { "speaker": "質問者", "japanese": "大変興味深いご発表でした。分析単位について一点伺います。", "english": "It was a very interesting presentation. I have one question about the unit of analysis." },
-      { "speaker": "発表者", "japanese": "ご質問ありがとうございます。分析単位の設定は、本研究でも慎重に検討した点でございます。", "english": "Thank you for the question. The setting of the unit of analysis is something this study also examined carefully." },
-      { "speaker": "座長", "japanese": "時間が限られておりますので、簡潔にお願いいたします。", "english": "Time is limited, so please keep it concise." }
+      { cell_id: "b46704d5-1bee-472f-a9fa-35544002dcfe", "speaker": "座長", "japanese": "それでは、フロアからご質問をお願いいたします。", "english": "Now, questions from the floor, please." },
+      { cell_id: "bb87d720-09cd-4ec6-8bea-be83a3e0c8c9", "speaker": "質問者", "japanese": "大変興味深いご発表でした。分析単位について一点伺います。", "english": "It was a very interesting presentation. I have one question about the unit of analysis." },
+      { cell_id: "8cb19098-beca-402c-b01b-89d9978980b8", "speaker": "発表者", "japanese": "ご質問ありがとうございます。分析単位の設定は、本研究でも慎重に検討した点でございます。", "english": "Thank you for the question. The setting of the unit of analysis is something this study also examined carefully." },
+      { cell_id: "69fc9ed0-7406-47ff-b90c-d0ba03353fbd", "speaker": "座長", "japanese": "時間が限られておりますので、簡潔にお願いいたします。", "english": "Time is limited, so please keep it concise." }
     ],
     "dialogue_long": [
       { "speaker": "質問者", "japanese": "サンプル数が限られている点について、結果の一般化可能性をどのようにお考えでしょうか。", "english": "Regarding the limited sample size, how do you view the generalizability of the results?" },
@@ -3588,14 +3728,14 @@ export const lessons: JapaneseLesson[] = [
     "category": "academic-discourse",
     "level": "C1",
     "vocabulary": [
-      { "japanese": "なるほど", "english": "I see / that is a fair point" },
-      { "japanese": "ただ", "english": "however / that said" },
-      { "japanese": "一理ある (いちりある)", "english": "to have a point" },
-      { "japanese": "別解釈 (べつかいしゃく)", "english": "alternative interpretation" },
-      { "japanese": "慎重に (しんちょうに)", "english": "carefully / cautiously" },
-      { "japanese": "必ずしも (かならずしも)", "english": "not necessarily" },
-      { "japanese": "成立する (せいりつする)", "english": "to hold / be valid" },
-      { "japanese": "前提 (ぜんてい)", "english": "premise" }
+      { cell_id: "78c81eb9-a4e4-4cd8-8441-3b688dca4658", "japanese": "なるほど", "english": "I see / that is a fair point" },
+      { cell_id: "9684844e-2b62-4b35-ab96-1c48a0677f77", "japanese": "ただ", "english": "however / that said" },
+      { cell_id: "e88a3685-1298-4c64-9dfa-fe5c51aa215a", "japanese": "一理ある (いちりある)", "english": "to have a point" },
+      { cell_id: "93f166e8-fe90-4c60-914d-b4d8b5e4cde6", "japanese": "別解釈 (べつかいしゃく)", "english": "alternative interpretation" },
+      { cell_id: "6a953b41-b1f6-4e97-9f1f-832382c660f5", "japanese": "慎重に (しんちょうに)", "english": "carefully / cautiously" },
+      { cell_id: "3983d5b2-1cb9-48de-93c3-474b4727d4b9", "japanese": "必ずしも (かならずしも)", "english": "not necessarily" },
+      { cell_id: "eb5204db-c7d1-4ef6-bf9f-380de3543eab", "japanese": "成立する (せいりつする)", "english": "to hold / be valid" },
+      { cell_id: "dcab87f3-16d8-47d6-87fa-21ac9b130523", "japanese": "前提 (ぜんてい)", "english": "premise" }
     ],
     "examples": [
       { "japanese": "なるほど、その解釈にも一理あります。ただ、資料の年代差を考慮すると、別解釈の余地もあるかと存じます。", "english": "I see; that interpretation has a point. However, considering the chronological difference in the materials, there may also be room for another interpretation.", "pronunciation_focus": ["なるほど pause", "一理: いちり", "ただ soft pivot"] },
@@ -3604,10 +3744,10 @@ export const lessons: JapaneseLesson[] = [
       { "japanese": "先生のお考えを踏まえますと、結論の表現をやや弱めることが適切かもしれません。", "english": "In light of your view, it may be appropriate to slightly weaken the wording of the conclusion.", "pronunciation_focus": ["踏まえますと", "弱める: よわめる", "かもしれません hedge"] }
     ],
     "dialogue": [
-      { "speaker": "同期", "japanese": "このデータなら、結論はもっと強く言ってもよくない？", "english": "With this data, couldn't you state the conclusion more strongly?" },
-      { "speaker": "院生", "japanese": "なるほど、たしかにその見方もある。ただ、サンプルが限定的だから少し怖いんだよね。", "english": "I see, that view makes sense. But the sample is limited, so I am a little cautious." },
-      { "speaker": "先生", "japanese": "結論の強さについては、もう少し慎重でよいかもしれません。", "english": "Regarding the strength of the conclusion, a little more caution may be appropriate." },
-      { "speaker": "院生", "japanese": "ご指摘の通りです。表現を調整いたします。", "english": "As you point out. I will adjust the wording." }
+      { cell_id: "50d99f50-9cee-4e81-8d00-6fd47497281f", "speaker": "同期", "japanese": "このデータなら、結論はもっと強く言ってもよくない？", "english": "With this data, couldn't you state the conclusion more strongly?" },
+      { cell_id: "2aec28a8-1bb0-4233-ac44-20b803303de0", "speaker": "院生", "japanese": "なるほど、たしかにその見方もある。ただ、サンプルが限定的だから少し怖いんだよね。", "english": "I see, that view makes sense. But the sample is limited, so I am a little cautious." },
+      { cell_id: "955b05e2-f94a-47ec-b6a4-1f127adaff30", "speaker": "先生", "japanese": "結論の強さについては、もう少し慎重でよいかもしれません。", "english": "Regarding the strength of the conclusion, a little more caution may be appropriate." },
+      { cell_id: "4bf9aeb7-aee9-4eef-8053-fb049848e1db", "speaker": "院生", "japanese": "ご指摘の通りです。表現を調整いたします。", "english": "As you point out. I will adjust the wording." }
     ],
     "dialogue_long": [
       { "speaker": "研究会参加者", "japanese": "この事例は、むしろ制度の影響が弱かったことを示しているのではないでしょうか。", "english": "Doesn't this case rather show that institutional influence was weak?" },
@@ -3656,14 +3796,14 @@ export const lessons: JapaneseLesson[] = [
     "category": "academic-discourse",
     "level": "C1",
     "vocabulary": [
-      { "japanese": "ご指摘 (ごしてき)", "english": "your comment / criticism" },
-      { "japanese": "ご教示 (ごきょうじ)", "english": "your instruction / guidance" },
-      { "japanese": "趣旨 (しゅし)", "english": "main point / intent" },
-      { "japanese": "補足説明 (ほそくせつめい)", "english": "supplementary explanation" },
-      { "japanese": "論点 (ろんてん)", "english": "point at issue" },
-      { "japanese": "整理 (せいり)", "english": "organization / clarification" },
-      { "japanese": "修正案 (しゅうせいあん)", "english": "revision proposal" },
-      { "japanese": "反映する (はんえいする)", "english": "to reflect / incorporate" }
+      { cell_id: "80bf5785-d80c-4d08-9c8e-811db5617247", "japanese": "ご指摘 (ごしてき)", "english": "your comment / criticism" },
+      { cell_id: "02a9e648-3b96-435e-bba5-aeb6e0f990aa", "japanese": "ご教示 (ごきょうじ)", "english": "your instruction / guidance" },
+      { cell_id: "7839aea3-6bac-463b-8dcf-b9cd516f1bcb", "japanese": "趣旨 (しゅし)", "english": "main point / intent" },
+      { cell_id: "9372af69-1231-49d6-a7a9-98e1dbab9895", "japanese": "補足説明 (ほそくせつめい)", "english": "supplementary explanation" },
+      { cell_id: "dfc24114-8084-4d7b-9f7e-86e466604d47", "japanese": "論点 (ろんてん)", "english": "point at issue" },
+      { cell_id: "3c1dcc6f-ef39-4663-b061-05c52f897cc8", "japanese": "整理 (せいり)", "english": "organization / clarification" },
+      { cell_id: "bfa0e52d-4947-47a2-8ce1-057f253ac9c8", "japanese": "修正案 (しゅうせいあん)", "english": "revision proposal" },
+      { cell_id: "623a5d28-e9be-449d-8608-e1d62aba90d8", "japanese": "反映する (はんえいする)", "english": "to reflect / incorporate" }
     ],
     "examples": [
       { "japanese": "ご指摘の通り、現行の記述では論点の整理が十分ではございません。", "english": "As you point out, the current description does not sufficiently organize the points at issue.", "pronunciation_focus": ["ご指摘: ごしてき", "現行: げんこう", "humble admission"] },
@@ -3672,10 +3812,10 @@ export const lessons: JapaneseLesson[] = [
       { "japanese": "ご趣旨を誤解しておりましたら恐縮ですが、論点は比較対象の妥当性にあるという理解でよろしいでしょうか。", "english": "Apologies if I have misunderstood your intent, but may I understand that the issue lies in the validity of the comparison target?", "pronunciation_focus": ["誤解: ごかい", "恐縮: きょうしゅく", "clarifying question rise"] }
     ],
     "dialogue": [
-      { "speaker": "先生", "japanese": "第二章の議論は少し飛躍しているように見えます。", "english": "The argument in Chapter 2 seems to make a slight leap." },
-      { "speaker": "院生", "japanese": "ご指摘の通り、説明が不足しておりました。", "english": "As you point out, the explanation was insufficient." },
-      { "speaker": "先生", "japanese": "結論を変える必要があるかもしれませんね。", "english": "It may be necessary to change the conclusion." },
-      { "speaker": "院生", "japanese": "ただ、結論そのものより、そこに至る論拠を補強する方向で修正できるかと存じます。", "english": "However, rather than the conclusion itself, I think it may be possible to revise by strengthening the warrant leading to it." }
+      { cell_id: "569d9376-84ea-4749-a5fa-ff0f18eae583", "speaker": "先生", "japanese": "第二章の議論は少し飛躍しているように見えます。", "english": "The argument in Chapter 2 seems to make a slight leap." },
+      { cell_id: "99b9f936-010f-4deb-b82b-c231da17bfaa", "speaker": "院生", "japanese": "ご指摘の通り、説明が不足しておりました。", "english": "As you point out, the explanation was insufficient." },
+      { cell_id: "4e994b87-f5e2-4b19-b9c8-63bd72a9a467", "speaker": "先生", "japanese": "結論を変える必要があるかもしれませんね。", "english": "It may be necessary to change the conclusion." },
+      { cell_id: "9e7f4fa2-1bc3-4f42-872a-776fc64a8533", "speaker": "院生", "japanese": "ただ、結論そのものより、そこに至る論拠を補強する方向で修正できるかと存じます。", "english": "However, rather than the conclusion itself, I think it may be possible to revise by strengthening the warrant leading to it." }
     ],
     "dialogue_long": [
       { "speaker": "先生", "japanese": "この節では、先行研究との関係がやや見えにくいですね。", "english": "In this section, the relationship with prior research is somewhat hard to see." },
@@ -3724,14 +3864,14 @@ export const lessons: JapaneseLesson[] = [
     "category": "academic-discourse",
     "level": "C1",
     "vocabulary": [
-      { "japanese": "先生 (せんせい)", "english": "professor / teacher" },
-      { "japanese": "先輩 (せんぱい)", "english": "senior student / senior colleague" },
-      { "japanese": "同期 (どうき)", "english": "same cohort / peer" },
-      { "japanese": "敬語 (けいご)", "english": "honorific language" },
-      { "japanese": "丁寧体 (ていねいたい)", "english": "polite style" },
-      { "japanese": "普通体 (ふつうたい)", "english": "plain style" },
-      { "japanese": "距離感 (きょりかん)", "english": "sense of social distance" },
-      { "japanese": "失礼 (しつれい)", "english": "rudeness / discourtesy" }
+      { cell_id: "ac880637-51c2-491c-b99f-5cc6d6ad60a1", "japanese": "先生 (せんせい)", "english": "professor / teacher" },
+      { cell_id: "689637e8-3076-488b-ab81-a8a209ce48ed", "japanese": "先輩 (せんぱい)", "english": "senior student / senior colleague" },
+      { cell_id: "54f0d114-bf58-419e-9b33-37461a0aa627", "japanese": "同期 (どうき)", "english": "same cohort / peer" },
+      { cell_id: "fe3b9d72-b4e6-4fa4-9b28-ccff3e4cc7e3", "japanese": "敬語 (けいご)", "english": "honorific language" },
+      { cell_id: "805731f1-94b3-46e2-beaa-e35b64781244", "japanese": "丁寧体 (ていねいたい)", "english": "polite style" },
+      { cell_id: "d0641f5e-2767-45cf-875b-cfe9fe94968e", "japanese": "普通体 (ふつうたい)", "english": "plain style" },
+      { cell_id: "dd4d0dc3-8248-4b68-b4d2-2e926e3c8ef5", "japanese": "距離感 (きょりかん)", "english": "sense of social distance" },
+      { cell_id: "e730cb2d-7e90-43c1-a5ea-b4b879309421", "japanese": "失礼 (しつれい)", "english": "rudeness / discourtesy" }
     ],
     "examples": [
       { "japanese": "先生、先ほどのご指摘について、一点確認させていただいてもよろしいでしょうか。", "english": "Professor, may I confirm one point about your comment earlier?", "pronunciation_focus": ["確認: かくにん", "させていただく", "rising permission question"] },
@@ -3740,10 +3880,10 @@ export const lessons: JapaneseLesson[] = [
       { "japanese": "同じ内容でも、相手との関係によって語尾と依頼表現を調整する必要がある。", "english": "Even with the same content, it is necessary to adjust sentence endings and request expressions according to the relationship with the other person.", "pronunciation_focus": ["語尾: ごび", "依頼表現: いらいひょうげん", "metalinguistic terms"] }
     ],
     "dialogue": [
-      { "speaker": "同期A", "japanese": "先生にこのまま『見てください』って送って大丈夫かな。", "english": "Is it okay to send 'please look at this' to the professor as-is?" },
-      { "speaker": "同期B", "japanese": "先生なら『ご確認いただけますでしょうか』のほうが安全だと思う。", "english": "For a professor, I think 'could you please check it' in honorific form is safer." },
-      { "speaker": "同期A", "japanese": "先輩には？", "english": "What about to a senpai?" },
-      { "speaker": "同期B", "japanese": "『見ていただけませんか』くらいでいいんじゃないかな。", "english": "Something like 'could you look at it' should be fine." }
+      { cell_id: "3eafbecf-50b1-405f-8e57-64e7c42eb01f", "speaker": "同期A", "japanese": "先生にこのまま『見てください』って送って大丈夫かな。", "english": "Is it okay to send 'please look at this' to the professor as-is?" },
+      { cell_id: "27f32665-9808-4402-89ef-e2424b82748e", "speaker": "同期B", "japanese": "先生なら『ご確認いただけますでしょうか』のほうが安全だと思う。", "english": "For a professor, I think 'could you please check it' in honorific form is safer." },
+      { cell_id: "b2ba18b7-90db-46bf-9808-588930058512", "speaker": "同期A", "japanese": "先輩には？", "english": "What about to a senpai?" },
+      { cell_id: "16d2fa41-6e6b-4121-90aa-f34a04a16e39", "speaker": "同期B", "japanese": "『見ていただけませんか』くらいでいいんじゃないかな。", "english": "Something like 'could you look at it' should be fine." }
     ],
     "dialogue_long": [
       { "speaker": "院生", "japanese": "先生へのメール、敬語が重すぎても変ですか。", "english": "Is it strange if the honorifics in an email to a professor are too heavy?" },
@@ -3796,14 +3936,14 @@ export const lessons: JapaneseLesson[] = [
     "category": "academic-discourse",
     "level": "C1",
     "vocabulary": [
-      { "japanese": "科研費 (かけんひ)", "english": "KAKENHI / Grants-in-Aid for Scientific Research" },
-      { "japanese": "研究目的 (けんきゅうもくてき)", "english": "research objective" },
-      { "japanese": "学術的意義 (がくじゅつてきいぎ)", "english": "academic significance" },
-      { "japanese": "社会的意義 (しゃかいてきいぎ)", "english": "social significance" },
-      { "japanese": "波及効果 (はきゅうこうか)", "english": "ripple effect / broader impact" },
-      { "japanese": "独創性 (どくそうせい)", "english": "originality / creativity" },
-      { "japanese": "萌芽的 (ほうがてき)", "english": "emerging / exploratory" },
-      { "japanese": "研究構想 (けんきゅうこうそう)", "english": "research concept / design" }
+      { cell_id: "53a09548-d009-4266-8f74-2aced5dbaa44", "japanese": "科研費 (かけんひ)", "english": "KAKENHI / Grants-in-Aid for Scientific Research" },
+      { cell_id: "25378ec5-a706-450c-a72f-c564779c4b80", "japanese": "研究目的 (けんきゅうもくてき)", "english": "research objective" },
+      { cell_id: "45f77a1f-a048-4695-ae61-34e956592c1b", "japanese": "学術的意義 (がくじゅつてきいぎ)", "english": "academic significance" },
+      { cell_id: "7523e7f4-69b2-4e03-af3a-6bc64c127d91", "japanese": "社会的意義 (しゃかいてきいぎ)", "english": "social significance" },
+      { cell_id: "0c64550b-e7a1-4a56-b179-8dfa611c1e34", "japanese": "波及効果 (はきゅうこうか)", "english": "ripple effect / broader impact" },
+      { cell_id: "8bb7ae64-60c0-41a2-be70-fc758395bb71", "japanese": "独創性 (どくそうせい)", "english": "originality / creativity" },
+      { cell_id: "2e5ee301-2fc2-49ef-a12e-f05b8b8bfe80", "japanese": "萌芽的 (ほうがてき)", "english": "emerging / exploratory" },
+      { cell_id: "e3358cca-1db9-4052-b0e8-15b4bdab3303", "japanese": "研究構想 (けんきゅうこうそう)", "english": "research concept / design" }
     ],
     "examples": [
       { "japanese": "本研究の学術的意義は、移民言語教育を制度史と生活史の接点から捉え直す点にある。", "english": "The academic significance of this study lies in reexamining immigrant language education at the intersection of institutional history and life history.", "pronunciation_focus": ["学術的意義", "生活史: せいかつし", "である-style prose"] },
@@ -3812,10 +3952,10 @@ export const lessons: JapaneseLesson[] = [
       { "japanese": "採択可能性を高めるには、研究目的と意義の接続を一文で示す必要がある。", "english": "To raise the chance of adoption, it is necessary to show the connection between research objective and significance in one sentence.", "pronunciation_focus": ["採択: さいたく", "可能性: かのうせい", "proposal-writing rhythm"] }
     ],
     "dialogue": [
-      { "speaker": "若手研究者", "japanese": "科研費の意義の書き方が、どうしても抽象的になってしまいます。", "english": "My writing of the significance section for KAKENHI keeps becoming abstract." },
-      { "speaker": "先輩研究者", "japanese": "学術的意義と社会的意義を分けて、一文ずつで核を書いてみてください。", "english": "Separate academic and social significance, and try writing the core of each in one sentence." },
-      { "speaker": "若手研究者", "japanese": "波及効果も入れたほうがよいでしょうか。", "english": "Should I include broader impact as well?" },
-      { "speaker": "先輩研究者", "japanese": "はい。ただし大きく言い過ぎず、具体的な読者や現場を想定するとよいです。", "english": "Yes. But do not overstate it; it is good to imagine concrete readers or fields of practice." }
+      { cell_id: "43c766ff-b1be-4322-9d73-645821aa3601", "speaker": "若手研究者", "japanese": "科研費の意義の書き方が、どうしても抽象的になってしまいます。", "english": "My writing of the significance section for KAKENHI keeps becoming abstract." },
+      { cell_id: "cf378d61-c57a-4451-b0c1-9f73cf7ceeac", "speaker": "先輩研究者", "japanese": "学術的意義と社会的意義を分けて、一文ずつで核を書いてみてください。", "english": "Separate academic and social significance, and try writing the core of each in one sentence." },
+      { cell_id: "b907dc70-99d0-4108-aff1-eb3e8814a653", "speaker": "若手研究者", "japanese": "波及効果も入れたほうがよいでしょうか。", "english": "Should I include broader impact as well?" },
+      { cell_id: "b67ee732-5c8d-4e59-ac40-b0ec346f3b45", "speaker": "先輩研究者", "japanese": "はい。ただし大きく言い過ぎず、具体的な読者や現場を想定するとよいです。", "english": "Yes. But do not overstate it; it is good to imagine concrete readers or fields of practice." }
     ],
     "dialogue_long": [
       { "speaker": "若手研究者", "japanese": "研究目的は書けるのですが、意義がどうしても『重要である』で止まってしまいます。", "english": "I can write the objective, but the significance always stops at 'it is important.'" },
@@ -3864,14 +4004,14 @@ export const lessons: JapaneseLesson[] = [
     "category": "academic-discourse",
     "level": "C1",
     "vocabulary": [
-      { "japanese": "実現可能性 (じつげんかのうせい)", "english": "feasibility" },
-      { "japanese": "予備調査 (よびちょうさ)", "english": "preliminary survey / pilot study" },
-      { "japanese": "研究体制 (けんきゅうたいせい)", "english": "research organization / team structure" },
-      { "japanese": "年次計画 (ねんじけいかく)", "english": "annual plan" },
-      { "japanese": "遂行能力 (すいこうのうりょく)", "english": "capacity to execute" },
-      { "japanese": "新規性 (しんきせい)", "english": "novelty" },
-      { "japanese": "蓄積 (ちくせき)", "english": "accumulation / track record" },
-      { "japanese": "リスク管理 (りすくかんり)", "english": "risk management" }
+      { cell_id: "ee8d2f3b-d1df-4803-ae9c-ac8e353b597b", "japanese": "実現可能性 (じつげんかのうせい)", "english": "feasibility" },
+      { cell_id: "31ee2d00-034e-4cec-820d-4e7bfbb6a88e", "japanese": "予備調査 (よびちょうさ)", "english": "preliminary survey / pilot study" },
+      { cell_id: "567b829c-cca7-4eab-953c-3e192835c731", "japanese": "研究体制 (けんきゅうたいせい)", "english": "research organization / team structure" },
+      { cell_id: "3f279329-f899-4dad-8856-496347ae04ac", "japanese": "年次計画 (ねんじけいかく)", "english": "annual plan" },
+      { cell_id: "b5ff732e-50df-4394-997b-4fa67b103a6e", "japanese": "遂行能力 (すいこうのうりょく)", "english": "capacity to execute" },
+      { cell_id: "32149bf0-bb7d-4339-a771-0dd11bee860b", "japanese": "新規性 (しんきせい)", "english": "novelty" },
+      { cell_id: "cd9de039-758e-4469-b29a-209130203afc", "japanese": "蓄積 (ちくせき)", "english": "accumulation / track record" },
+      { cell_id: "2cf60d17-f7e7-4a78-b0af-63a4825ab2c4", "japanese": "リスク管理 (りすくかんり)", "english": "risk management" }
     ],
     "examples": [
       { "japanese": "本研究の実現可能性は、予備調査で得られた資料群と既存の研究協力体制によって担保される。", "english": "The feasibility of this study is secured by the materials obtained in the preliminary survey and the existing research collaboration structure.", "pronunciation_focus": ["実現可能性", "予備調査", "担保: たんぽ"] },
@@ -3880,10 +4020,10 @@ export const lessons: JapaneseLesson[] = [
       { "japanese": "調査協力が得られない場合に備え、代替資料の収集経路も確保している。", "english": "In preparation for cases where research cooperation cannot be obtained, alternative routes for collecting materials have also been secured.", "pronunciation_focus": ["代替資料: だいたいしりょう", "収集経路", "risk clause"] }
     ],
     "dialogue": [
-      { "speaker": "若手研究者", "japanese": "新規性を書くと、どうしても大げさに見えてしまいます。", "english": "When I write novelty, it ends up looking exaggerated." },
-      { "speaker": "先輩研究者", "japanese": "対象の新しさだけでなく、組み合わせの新しさとして書くと安定します。", "english": "It becomes stable if you write not only object novelty but novelty in the combination." },
-      { "speaker": "若手研究者", "japanese": "実現可能性は予備調査で示せますか。", "english": "Can I show feasibility through the pilot study?" },
-      { "speaker": "先輩研究者", "japanese": "はい。資料の所在と協力者の見通しが書ければ強いです。", "english": "Yes. It is strong if you can write where the materials are and prospects for collaborators." }
+      { cell_id: "f269942a-c5ea-4c89-aba1-4ef814985a4c", "speaker": "若手研究者", "japanese": "新規性を書くと、どうしても大げさに見えてしまいます。", "english": "When I write novelty, it ends up looking exaggerated." },
+      { cell_id: "7b5736ff-165c-4c9b-a0f9-a1c8def1aae5", "speaker": "先輩研究者", "japanese": "対象の新しさだけでなく、組み合わせの新しさとして書くと安定します。", "english": "It becomes stable if you write not only object novelty but novelty in the combination." },
+      { cell_id: "0887d73f-f202-461b-a110-d91b798271b8", "speaker": "若手研究者", "japanese": "実現可能性は予備調査で示せますか。", "english": "Can I show feasibility through the pilot study?" },
+      { cell_id: "a724bce8-4dfa-4e13-ad69-2f492bfef7ac", "speaker": "先輩研究者", "japanese": "はい。資料の所在と協力者の見通しが書ければ強いです。", "english": "Yes. It is strong if you can write where the materials are and prospects for collaborators." }
     ],
     "dialogue_long": [
       { "speaker": "研究代表者", "japanese": "審査では、独創性と実現可能性のどちらが重視されるのでしょうか。", "english": "In review, which is emphasized more, originality or feasibility?" },
@@ -3932,14 +4072,14 @@ export const lessons: JapaneseLesson[] = [
     "category": "academic-discourse",
     "level": "C1",
     "vocabulary": [
-      { "japanese": "査読 (さどく)", "english": "peer review" },
-      { "japanese": "査読者 (さどくしゃ)", "english": "reviewer" },
-      { "japanese": "修正稿 (しゅうせいこう)", "english": "revised manuscript" },
-      { "japanese": "回答書 (かいとうしょ)", "english": "response letter" },
-      { "japanese": "該当箇所 (がいとうかしょ)", "english": "relevant section" },
-      { "japanese": "反映 (はんえい)", "english": "reflection / incorporation" },
-      { "japanese": "再投稿 (さいとうこう)", "english": "resubmission" },
-      { "japanese": "ご懸念 (ごけねん)", "english": "your concern" }
+      { cell_id: "671a7ddc-ab8d-4ac7-8357-ce786d97d6d6", "japanese": "査読 (さどく)", "english": "peer review" },
+      { cell_id: "72695e58-1514-4d6c-9fb5-1374c86b28b4", "japanese": "査読者 (さどくしゃ)", "english": "reviewer" },
+      { cell_id: "c51ee9c6-5bd8-4968-8d2b-e6d2abb5f5c6", "japanese": "修正稿 (しゅうせいこう)", "english": "revised manuscript" },
+      { cell_id: "2db2e0dc-5c28-4395-9dfa-5d4e28118284", "japanese": "回答書 (かいとうしょ)", "english": "response letter" },
+      { cell_id: "505f22e6-1567-48cc-9b91-823e198362df", "japanese": "該当箇所 (がいとうかしょ)", "english": "relevant section" },
+      { cell_id: "05683023-2b3f-4d94-810b-0f85de4a61a2", "japanese": "反映 (はんえい)", "english": "reflection / incorporation" },
+      { cell_id: "decc9afa-7a9e-4922-b5a8-4f8cff174473", "japanese": "再投稿 (さいとうこう)", "english": "resubmission" },
+      { cell_id: "edf4f7cd-5981-4303-94bd-4ddfc05914cf", "japanese": "ご懸念 (ごけねん)", "english": "your concern" }
     ],
     "examples": [
       { "japanese": "査読者の先生方には、貴重なご指摘を賜り、心より御礼申し上げます。", "english": "We sincerely thank the reviewers for their valuable comments.", "pronunciation_focus": ["査読者: さどくしゃ", "賜り", "formal gratitude"] },
@@ -3948,10 +4088,10 @@ export const lessons: JapaneseLesson[] = [
       { "japanese": "なお、ご提案の分析を全面的に追加することは紙幅の都合上困難であるため、今後の課題として明記いたしました。", "english": "However, because fully adding the analysis you suggested is difficult due to space limitations, we explicitly noted it as a future task.", "pronunciation_focus": ["全面的: ぜんめんてき", "紙幅: しふく", "なお transition"] }
     ],
     "dialogue": [
-      { "speaker": "著者A", "japanese": "査読コメント2番、かなり厳しいですね。", "english": "Reviewer comment 2 is quite severe." },
-      { "speaker": "著者B", "japanese": "まず感謝を書いて、対応できる部分とできない部分を分けましょう。", "english": "First write gratitude, then separate what we can address and what we cannot." },
-      { "speaker": "著者A", "japanese": "反論しても大丈夫でしょうか。", "english": "Is it okay to rebut?" },
-      { "speaker": "著者B", "japanese": "反論というより、対応方針の説明として書いたほうが安全です。", "english": "Rather than rebuttal, it is safer to write it as an explanation of our response policy." }
+      { cell_id: "a7228a45-631e-46e4-98b8-5744928980e1", "speaker": "著者A", "japanese": "査読コメント2番、かなり厳しいですね。", "english": "Reviewer comment 2 is quite severe." },
+      { cell_id: "cb32c495-d8c0-4411-8213-960196b7d867", "speaker": "著者B", "japanese": "まず感謝を書いて、対応できる部分とできない部分を分けましょう。", "english": "First write gratitude, then separate what we can address and what we cannot." },
+      { cell_id: "8c7c4b7b-2cd2-4029-a846-295fede18cec", "speaker": "著者A", "japanese": "反論しても大丈夫でしょうか。", "english": "Is it okay to rebut?" },
+      { cell_id: "b0678aac-6aaa-43e7-bdf8-ba75987dc3d9", "speaker": "著者B", "japanese": "反論というより、対応方針の説明として書いたほうが安全です。", "english": "Rather than rebuttal, it is safer to write it as an explanation of our response policy." }
     ],
     "dialogue_long": [
       { "speaker": "著者A", "japanese": "査読者は、対象を中級学習者まで広げるべきだと書いています。", "english": "The reviewer writes that we should expand the target to intermediate learners." },
@@ -4000,14 +4140,14 @@ export const lessons: JapaneseLesson[] = [
     "category": "academic-discourse",
     "level": "C1",
     "vocabulary": [
-      { "japanese": "座談会 (ざだんかい)", "english": "roundtable discussion" },
-      { "japanese": "領域横断 (りょういきおうだん)", "english": "cross-disciplinary" },
-      { "japanese": "問題系 (もんだいけい)", "english": "problematic / constellation of issues" },
-      { "japanese": "接点 (せってん)", "english": "point of contact" },
-      { "japanese": "対話可能性 (たいわかのうせい)", "english": "possibility of dialogue" },
-      { "japanese": "理論的射程 (りろんてきしゃてい)", "english": "theoretical reach" },
-      { "japanese": "翻訳可能性 (ほんやくかのうせい)", "english": "translatability" },
-      { "japanese": "知的生産 (ちてきせいさん)", "english": "intellectual production" }
+      { cell_id: "32d49f7b-73f5-4551-9622-5277ce281ac5", "japanese": "座談会 (ざだんかい)", "english": "roundtable discussion" },
+      { cell_id: "ea08489f-d9c7-4fcc-83f3-856b8360f722", "japanese": "領域横断 (りょういきおうだん)", "english": "cross-disciplinary" },
+      { cell_id: "21ebcd84-a146-4e12-a0ae-85e5378fbb3e", "japanese": "問題系 (もんだいけい)", "english": "problematic / constellation of issues" },
+      { cell_id: "b0a25e80-3261-478c-bd55-83b8a4aa2638", "japanese": "接点 (せってん)", "english": "point of contact" },
+      { cell_id: "f0dc000d-b1b4-4aab-b640-495301d83613", "japanese": "対話可能性 (たいわかのうせい)", "english": "possibility of dialogue" },
+      { cell_id: "b8d17d99-5aef-4cb2-93d8-48f2d8f07c74", "japanese": "理論的射程 (りろんてきしゃてい)", "english": "theoretical reach" },
+      { cell_id: "bcd79c23-55af-4622-91e8-2c74d0fc5372", "japanese": "翻訳可能性 (ほんやくかのうせい)", "english": "translatability" },
+      { cell_id: "2a4fc69a-f212-41fd-8916-0d00f06b810a", "japanese": "知的生産 (ちてきせいさん)", "english": "intellectual production" }
     ],
     "examples": [
       { "japanese": "本日の座談会では、教育学、社会学、言語学の接点からこの問題系を考えてみたいと思います。", "english": "In today's roundtable, I would like to consider this constellation of issues from the points of contact among education, sociology, and linguistics.", "pronunciation_focus": ["座談会: ざだんかい", "問題系: もんだいけい", "field list rhythm"] },
@@ -4016,10 +4156,10 @@ export const lessons: JapaneseLesson[] = [
       { "japanese": "異なる領域の知見を接続する際には、安易な一般化ではなく、概念の移植可能性を慎重に見極める必要があります。", "english": "When connecting findings from different fields, it is necessary to carefully assess the portability of concepts rather than make easy generalizations.", "pronunciation_focus": ["移植可能性", "見極める", "long sentence breath"] }
     ],
     "dialogue": [
-      { "speaker": "司会", "japanese": "本日は、領域横断的な視点から議論を深めたいと思います。", "english": "Today I would like to deepen the discussion from a cross-disciplinary perspective." },
-      { "speaker": "教育学者", "japanese": "社会学の議論と接続することで、学習者をめぐる問題系がより立体的に見えるように思います。", "english": "By connecting with sociological debates, the constellation of issues around learners seems to appear more three-dimensional." },
-      { "speaker": "社会学者", "japanese": "ただ、概念をそのまま移すことには慎重であるべきでしょう。", "english": "However, we should be cautious about transferring concepts as-is." },
-      { "speaker": "言語学者", "japanese": "その点こそ、今日の対話の核心かもしれません。", "english": "That point may be the core of today's dialogue." }
+      { cell_id: "b2bc8c5f-171b-4b27-8005-129b76a03c1d", "speaker": "司会", "japanese": "本日は、領域横断的な視点から議論を深めたいと思います。", "english": "Today I would like to deepen the discussion from a cross-disciplinary perspective." },
+      { cell_id: "1835f63a-5638-4fcb-b178-2ea5825f819f", "speaker": "教育学者", "japanese": "社会学の議論と接続することで、学習者をめぐる問題系がより立体的に見えるように思います。", "english": "By connecting with sociological debates, the constellation of issues around learners seems to appear more three-dimensional." },
+      { cell_id: "ccf67a0b-0971-4370-bc1b-2ad97b1723e6", "speaker": "社会学者", "japanese": "ただ、概念をそのまま移すことには慎重であるべきでしょう。", "english": "However, we should be cautious about transferring concepts as-is." },
+      { cell_id: "b54eee84-d198-4610-a0c0-fd38cbe1b6c3", "speaker": "言語学者", "japanese": "その点こそ、今日の対話の核心かもしれません。", "english": "That point may be the core of today's dialogue." }
     ],
     "dialogue_long": [
       { "speaker": "司会", "japanese": "まず、各分野で共有できる問いは何か、というところから始めたいと思います。", "english": "First, I would like to begin with what questions can be shared across fields." },
@@ -4068,18 +4208,18 @@ export const lessons: JapaneseLesson[] = [
     "category": "public-communication",
     "level": "C1",
     "vocabulary": [
-      { "japanese": "記者会見 (きしゃかいけん)", "english": "press conference" },
-      { "japanese": "冒頭発言 (ぼうとうはつげん)", "english": "opening statement" },
-      { "japanese": "事実関係 (じじつかんけい)", "english": "factual circumstances" },
-      { "japanese": "質疑応答 (しつぎおうとう)", "english": "Q&A" }
+      { cell_id: "0148c8d1-42a9-4799-8c29-fee41e6c5f42", "japanese": "記者会見 (きしゃかいけん)", "english": "press conference" },
+      { cell_id: "f10333aa-ee83-4cae-a1c5-052303bbe0b6", "japanese": "冒頭発言 (ぼうとうはつげん)", "english": "opening statement" },
+      { cell_id: "41ddb796-fc7a-4f2a-af6c-c97e9cff6e1b", "japanese": "事実関係 (じじつかんけい)", "english": "factual circumstances" },
+      { cell_id: "398409ad-b7fc-4a7d-889c-cd921f2c063f", "japanese": "質疑応答 (しつぎおうとう)", "english": "Q&A" }
     ],
     "examples": [
       { "japanese": "本日はお忙しいところお集まりいただき、誠にありがとうございます。まず、現時点で確認できている事実関係をご説明いたします。", "english": "Thank you very much for gathering here despite your busy schedules. First, I will explain the facts that can be confirmed at this point.", "pronunciation_focus": ["丁寧語 opening", "お集まりいただき", "現時点で"] },
       { "japanese": "未確認の情報については推測で申し上げることを控え、確認が取れ次第、速やかに共有いたします。", "english": "Regarding unconfirmed information, we will refrain from speaking speculatively and will share it promptly once confirmed.", "pronunciation_focus": ["控え", "確認が取れ次第", "共有いたします"] }
     ],
     "dialogue": [
-      { "speaker": "広報責任者", "japanese": "冒頭で三点だけ申し上げ、その後、質疑応答に入らせていただきます。", "english": "I will make three points at the beginning, then we will move into Q&A." },
-      { "speaker": "記者", "japanese": "本日の会見では、原因についても説明されますか。", "english": "Will today's press conference also explain the cause?" }
+      { cell_id: "45816d19-ae9a-4fe0-8e71-be67a4fda863", "speaker": "広報責任者", "japanese": "冒頭で三点だけ申し上げ、その後、質疑応答に入らせていただきます。", "english": "I will make three points at the beginning, then we will move into Q&A." },
+      { cell_id: "58d33779-e292-4e33-84fe-608a1f3e99a7", "speaker": "記者", "japanese": "本日の会見では、原因についても説明されますか。", "english": "Will today's press conference also explain the cause?" }
     ],
     "roleplay_prompts": [
       "Open a Japanese press conference in 丁寧語: gratitude, confirmed facts, Q&A structure.",
@@ -4099,18 +4239,18 @@ export const lessons: JapaneseLesson[] = [
     "category": "public-communication",
     "level": "C1",
     "vocabulary": [
-      { "japanese": "プレスリリース", "english": "press release" },
-      { "japanese": "発表資料 (はっぴょうしりょう)", "english": "announcement material" },
-      { "japanese": "引用コメント (いんようコメント)", "english": "quoted comment" },
-      { "japanese": "過度な表現 (かどなひょうげん)", "english": "excessive wording" }
+      { cell_id: "503659d8-2153-4f03-9a65-edc5bf0452a7", "japanese": "プレスリリース", "english": "press release" },
+      { cell_id: "46cb2bf7-6ec9-4785-9421-3b2f7b871b0b", "japanese": "発表資料 (はっぴょうしりょう)", "english": "announcement material" },
+      { cell_id: "9108fe78-498e-4798-8e5d-8c18c7efb4c2", "japanese": "引用コメント (いんようコメント)", "english": "quoted comment" },
+      { cell_id: "862cabd2-88e0-41c6-8f46-fe57a074362d", "japanese": "過度な表現 (かどなひょうげん)", "english": "excessive wording" }
     ],
     "examples": [
       { "japanese": "プレスリリースの第一段落では、誰が、いつ、何を発表したのかを簡潔に示す必要があります。", "english": "The first paragraph of a press release needs to state concisely who announced what, and when.", "pronunciation_focus": ["誰が、いつ、何を", "簡潔に示す", "press rhythm"] },
       { "japanese": "『画期的』や『業界初』といった表現は、根拠が示せる場合に限って用いるべきです。", "english": "Expressions like 'groundbreaking' or 'industry-first' should be used only when evidence can be shown.", "pronunciation_focus": ["画期的", "業界初", "根拠が示せる場合"] }
     ],
     "dialogue": [
-      { "speaker": "編集者", "japanese": "見出しは少し強すぎますね。根拠を本文で示せる表現にしましょう。", "english": "The headline is a bit too strong. Let us use wording that can be supported in the body." },
-      { "speaker": "広報担当", "japanese": "承知しました。第一段落を事実中心に直し、コメントは第二段落に移します。", "english": "Understood. I will revise the first paragraph around facts and move the comment to the second paragraph." }
+      { cell_id: "78dbdd72-6a06-4383-a175-87d93ec49cc9", "speaker": "編集者", "japanese": "見出しは少し強すぎますね。根拠を本文で示せる表現にしましょう。", "english": "The headline is a bit too strong. Let us use wording that can be supported in the body." },
+      { cell_id: "4284c560-e26b-419c-b10b-845c78cf29c9", "speaker": "広報担当", "japanese": "承知しました。第一段落を事実中心に直し、コメントは第二段落に移します。", "english": "Understood. I will revise the first paragraph around facts and move the comment to the second paragraph." }
     ],
     "register_notes": "Japanese press releases prefer clean fact order over promotional intensity. If using strong claims, attach measurable evidence.",
     "cultural_notes_vi": "Thông cáo báo chí tiếng Nhật không nên giống quảng cáo. Từ mạnh phải có căn cứ.",
@@ -4126,18 +4266,18 @@ export const lessons: JapaneseLesson[] = [
     "category": "public-communication",
     "level": "C1",
     "vocabulary": [
-      { "japanese": "寄稿 (きこう)", "english": "contributed article" },
-      { "japanese": "論点 (ろんてん)", "english": "point at issue" },
-      { "japanese": "社説的文体 (しゃせつてきぶんたい)", "english": "editorial style" },
-      { "japanese": "読者層 (どくしゃそう)", "english": "readership" }
+      { cell_id: "402ffb58-9943-465f-86d7-00621547ecd0", "japanese": "寄稿 (きこう)", "english": "contributed article" },
+      { cell_id: "2c320df7-fddc-4d92-86f6-5ef5120dc5b0", "japanese": "論点 (ろんてん)", "english": "point at issue" },
+      { cell_id: "a7de7ffb-e665-42e2-8377-e555714e3b61", "japanese": "社説的文体 (しゃせつてきぶんたい)", "english": "editorial style" },
+      { cell_id: "78197f31-a188-47af-8688-b8432c3e22d2", "japanese": "読者層 (どくしゃそう)", "english": "readership" }
     ],
     "examples": [
       { "japanese": "朝日新聞や日本経済新聞への寄稿では、個人的な経験を公共的な論点へ接続する構成が求められます。", "english": "For contributed articles to papers such as Asahi Shimbun or Nikkei, a structure that connects personal experience to a public issue is required.", "pronunciation_focus": ["寄稿", "公共的な論点", "接続する"] },
       { "japanese": "ただし、主張を急ぎすぎると説得力を失うため、反対意見が生じる余地も先に示しておきます。", "english": "However, if the claim is rushed, persuasiveness is lost, so room for opposing views should also be shown first.", "pronunciation_focus": ["ただし", "説得力", "反対意見"] }
     ],
     "dialogue": [
-      { "speaker": "編集委員", "japanese": "この原稿は視点が面白いですが、読者がなぜ今読むべきかがまだ弱いです。", "english": "This draft has an interesting perspective, but it is still weak on why readers should read it now." },
-      { "speaker": "筆者", "japanese": "なるほど。冒頭で社会的な背景を示し、その後に自分の経験を置きます。", "english": "I see. I will show the social background at the beginning, then place my own experience after that." }
+      { cell_id: "39c2884d-73c0-4775-94ad-3d1f9b743bb7", "speaker": "編集委員", "japanese": "この原稿は視点が面白いですが、読者がなぜ今読むべきかがまだ弱いです。", "english": "This draft has an interesting perspective, but it is still weak on why readers should read it now." },
+      { cell_id: "6bcbaf52-b5df-4f82-a549-7672f482adb6", "speaker": "筆者", "japanese": "なるほど。冒頭で社会的な背景を示し、その後に自分の経験を置きます。", "english": "I see. I will show the social background at the beginning, then place my own experience after that." }
     ],
     "register_notes": "Japanese op-ed style is measured: state a public issue, show awareness of counterarguments, then offer a clear but not theatrical position.",
     "cultural_notes_vi": "Op-ed Nhật hay có giọng cân bằng, tránh tuyên bố quá nhanh. Truyền thống 寄稿 coi trọng trách nhiệm với độc giả.",
@@ -4153,18 +4293,18 @@ export const lessons: JapaneseLesson[] = [
     "category": "public-communication",
     "level": "C1",
     "vocabulary": [
-      { "japanese": "ポッドキャスト", "english": "podcast" },
-      { "japanese": "聞き手 (ききて)", "english": "interviewer / listener" },
-      { "japanese": "補足する (ほそくする)", "english": "to add context" },
-      { "japanese": "言い換える (いいかえる)", "english": "to rephrase" }
+      { cell_id: "27075645-478b-4666-92b8-c1a1f99cc0ce", "japanese": "ポッドキャスト", "english": "podcast" },
+      { cell_id: "b18e6b41-ded8-423e-861b-4b189853dd64", "japanese": "聞き手 (ききて)", "english": "interviewer / listener" },
+      { cell_id: "522c5018-fb7c-43e1-8dc7-43b86d17205d", "japanese": "補足する (ほそくする)", "english": "to add context" },
+      { cell_id: "fffdc617-3f34-4406-afbd-35f63a9814c1", "japanese": "言い換える (いいかえる)", "english": "to rephrase" }
     ],
     "examples": [
       { "japanese": "ポッドキャストでは、記者会見より柔らかく話して構いませんが、事実確認の線は崩さないことが大切です。", "english": "On a podcast, it is fine to speak more softly than in a press conference, but it is important not to loosen the boundary around verified facts.", "pronunciation_focus": ["柔らかく話して", "構いません", "線は崩さない"] },
       { "japanese": "なるほど、ただ、その点については少し補足させてください。", "english": "I see. However, please let me add a little context on that point.", "pronunciation_focus": ["なるほど、ただ", "補足させてください", "soft disagreement"] }
     ],
     "dialogue": [
-      { "speaker": "司会", "japanese": "社内では、かなり早い段階で問題を把握していたのでしょうか。", "english": "Did the company understand the issue internally at a fairly early stage?" },
-      { "speaker": "ゲスト", "japanese": "なるほど、ただ、その表現だと少し広く聞こえるかもしれません。確認できたのは先週の技術レビュー後です。", "english": "I see, though that wording may sound a little broad. What we could confirm was after last week's technical review." }
+      { cell_id: "51ce46cd-7ffd-433b-ac67-37ea01563516", "speaker": "司会", "japanese": "社内では、かなり早い段階で問題を把握していたのでしょうか。", "english": "Did the company understand the issue internally at a fairly early stage?" },
+      { cell_id: "b6676a65-a008-4037-9e20-6c7a4cce4be4", "speaker": "ゲスト", "japanese": "なるほど、ただ、その表現だと少し広く聞こえるかもしれません。確認できたのは先週の技術レビュー後です。", "english": "I see, though that wording may sound a little broad. What we could confirm was after last week's technical review." }
     ],
     "register_notes": "Podcast register can be less formal but should remain 丁寧. Use なるほど、ただ... to disagree without sounding combative.",
     "cultural_notes_vi": "Podcast tiếng Nhật không quá cứng, nhưng khách mời đại diện tổ chức vẫn phải giữ 丁寧語 và ranh giới sự thật.",
@@ -4179,18 +4319,18 @@ export const lessons: JapaneseLesson[] = [
     "category": "public-communication",
     "level": "C1",
     "vocabulary": [
-      { "japanese": "生放送 (なまほうそう)", "english": "live broadcast" },
-      { "japanese": "キャスター", "english": "news anchor" },
-      { "japanese": "即答する (そくとうする)", "english": "to answer immediately" },
-      { "japanese": "確認済み (かくにんずみ)", "english": "confirmed / verified" }
+      { cell_id: "9ef1af17-40e9-4a79-86e3-0ae5323f97a0", "japanese": "生放送 (なまほうそう)", "english": "live broadcast" },
+      { cell_id: "54771596-15bf-4043-bef0-b55fb99fa234", "japanese": "キャスター", "english": "news anchor" },
+      { cell_id: "8535a5fa-585a-40ce-8757-994626f48eba", "japanese": "即答する (そくとうする)", "english": "to answer immediately" },
+      { cell_id: "47062503-5e68-4e85-a36b-79f63049533a", "japanese": "確認済み (かくにんずみ)", "english": "confirmed / verified" }
     ],
     "examples": [
       { "japanese": "生放送では、長い説明よりも、確認済みの事実を短く区切って答えるほうが伝わります。", "english": "On live television, confirmed facts delivered in short units come across better than long explanations.", "pronunciation_focus": ["生放送", "短く区切って", "伝わります"] },
       { "japanese": "ご指摘の通り重要な点ですが、現時点では確認済みの情報に限ってお答えします。", "english": "As you point out, that is an important point, but at this stage I will answer only with confirmed information.", "pronunciation_focus": ["ご指摘の通り", "現時点では", "限って"] }
     ],
     "dialogue": [
-      { "speaker": "キャスター", "japanese": "再発防止を今この場で約束できますか。", "english": "Can you promise prevention of recurrence here and now?" },
-      { "speaker": "広報責任者", "japanese": "空約束は避けたいと思います。確認済みの対応として、本日中に一次報告を公表いたします。", "english": "I would like to avoid an empty promise. As a confirmed response, we will publish an initial report today." }
+      { cell_id: "0fc4b978-71f6-4aa2-a4d7-efdc5695abff", "speaker": "キャスター", "japanese": "再発防止を今この場で約束できますか。", "english": "Can you promise prevention of recurrence here and now?" },
+      { cell_id: "68f63200-cd95-42ee-a5c0-cb3b62732777", "speaker": "広報責任者", "japanese": "空約束は避けたいと思います。確認済みの対応として、本日中に一次報告を公表いたします。", "english": "I would like to avoid an empty promise. As a confirmed response, we will publish an initial report today." }
     ],
     "register_notes": "Live TV Japanese needs compact, quotable 丁寧語. Do not fight the anchor; acknowledge, narrow, answer.",
     "cultural_notes_vi": "Trên TV trực tiếp, câu Nhật phải ngắn hơn văn họp báo. Dùng ご指摘の通りですが... để giữ phép lịch sự khi thu hẹp câu hỏi.",
@@ -4205,18 +4345,18 @@ export const lessons: JapaneseLesson[] = [
     "category": "public-communication",
     "level": "C1",
     "vocabulary": [
-      { "japanese": "お詫び申し上げます (おわびもうしあげます)", "english": "we sincerely apologize" },
-      { "japanese": "再発防止策 (さいはつぼうしさく)", "english": "measures to prevent recurrence" },
-      { "japanese": "責任の所在 (せきにんのしょざい)", "english": "where responsibility lies" },
-      { "japanese": "深く受け止める (ふかくうけとめる)", "english": "to take seriously" }
+      { cell_id: "ea919598-f41b-4f9b-9377-49275cef069e", "japanese": "お詫び申し上げます (おわびもうしあげます)", "english": "we sincerely apologize" },
+      { cell_id: "a6c83d8a-1082-45bb-9d73-3855d0cc0d6e", "japanese": "再発防止策 (さいはつぼうしさく)", "english": "measures to prevent recurrence" },
+      { cell_id: "de039b9f-764e-4736-a2f2-32fb2926a677", "japanese": "責任の所在 (せきにんのしょざい)", "english": "where responsibility lies" },
+      { cell_id: "5131b031-3fb2-49b7-a44c-090f2e426bae", "japanese": "深く受け止める (ふかくうけとめる)", "english": "to take seriously" }
     ],
     "examples": [
       { "japanese": "このたびは、多大なるご迷惑とご不安をおかけしましたことを、心よりお詫び申し上げます。", "english": "We sincerely apologize for causing significant inconvenience and anxiety.", "pronunciation_focus": ["謙譲語", "おかけしましたこと", "お詫び申し上げます"] },
       { "japanese": "謝罪の後には、責任の所在、補償方針、再発防止策を順に説明する必要があります。", "english": "After the apology, it is necessary to explain where responsibility lies, the compensation policy, and recurrence-prevention measures in order.", "pronunciation_focus": ["責任の所在", "補償方針", "再発防止策"] }
     ],
     "dialogue": [
-      { "speaker": "代表取締役", "japanese": "本日は、まず私からお詫びを申し上げます。原因説明はその後、担当役員より行います。", "english": "Today, I will first offer our apology. The explanation of causes will then be given by the responsible executive." },
-      { "speaker": "記者", "japanese": "謝罪だけではなく、補償についても本日説明されますか。", "english": "Will compensation also be explained today, not only the apology?" }
+      { cell_id: "a3808f87-7641-481f-8ddb-f13388b81633", "speaker": "代表取締役", "japanese": "本日は、まず私からお詫びを申し上げます。原因説明はその後、担当役員より行います。", "english": "Today, I will first offer our apology. The explanation of causes will then be given by the responsible executive." },
+      { cell_id: "c8d772e7-2e90-4d82-ab95-c83d1c74f9a1", "speaker": "記者", "japanese": "謝罪だけではなく、補償についても本日説明されますか。", "english": "Will compensation also be explained today, not only the apology?" }
     ],
     "roleplay_prompts": [
       "Deliver a Japanese institutional apology using 謙譲語.",
@@ -4235,18 +4375,18 @@ export const lessons: JapaneseLesson[] = [
     "category": "public-communication",
     "level": "C1",
     "vocabulary": [
-      { "japanese": "背景説明 (はいけいせつめい)", "english": "background explanation" },
-      { "japanese": "オフレコ", "english": "off the record" },
-      { "japanese": "引用不可 (いんようふか)", "english": "not for quotation" },
-      { "japanese": "取材メモ (しゅざいメモ)", "english": "reporting notes" }
+      { cell_id: "2cef2119-30bc-4ef8-bddd-8eda2207cbab", "japanese": "背景説明 (はいけいせつめい)", "english": "background explanation" },
+      { cell_id: "b5e8109d-9d22-4c20-959c-01cf9320995b", "japanese": "オフレコ", "english": "off the record" },
+      { cell_id: "334ce854-f9d0-433f-a259-91e73a3c9422", "japanese": "引用不可 (いんようふか)", "english": "not for quotation" },
+      { cell_id: "f46fba55-506f-44f9-8a16-af3add250b53", "japanese": "取材メモ (しゅざいメモ)", "english": "reporting notes" }
     ],
     "examples": [
       { "japanese": "ここから先は背景説明であり、直接の引用はお控えいただけますでしょうか。", "english": "From this point onward, this is background explanation; could you please refrain from direct quotation?", "pronunciation_focus": ["背景説明", "お控えいただけますでしょうか", "direct rule"] },
       { "japanese": "オフレコの範囲を曖昧にしたまま話すと、後で信頼関係を損なうことがあります。", "english": "If you speak while leaving the scope of off-the-record unclear, trust may be damaged later.", "pronunciation_focus": ["範囲を曖昧に", "信頼関係", "損なう"] }
     ],
     "dialogue": [
-      { "speaker": "広報担当", "japanese": "この数字は背景理解のためで、紙面での直接引用は避けてください。", "english": "This figure is for background understanding, so please avoid direct quotation in print." },
-      { "speaker": "記者", "japanese": "承知しました。『関係者によると』という形でも不可でしょうか。", "english": "Understood. Would it also be unacceptable in the form 'according to a person involved'?" }
+      { cell_id: "f84f5c89-e474-4168-80a7-cf5d6ae132e6", "speaker": "広報担当", "japanese": "この数字は背景理解のためで、紙面での直接引用は避けてください。", "english": "This figure is for background understanding, so please avoid direct quotation in print." },
+      { cell_id: "40e1bf54-2853-4087-9a95-42893ab2c7ac", "speaker": "記者", "japanese": "承知しました。『関係者によると』という形でも不可でしょうか。", "english": "Understood. Would it also be unacceptable in the form 'according to a person involved'?" }
     ],
     "register_notes": "Japanese media relations require explicit attribution rules. Say what is on record, background, or off record before the sensitive information.",
     "cultural_notes_vi": "Đừng mặc định mọi người hiểu オフレコ giống nhau. Nói rõ 引用可/引用不可 trước.",
@@ -4261,18 +4401,18 @@ export const lessons: JapaneseLesson[] = [
     "category": "public-communication",
     "level": "C1",
     "vocabulary": [
-      { "japanese": "厳しいご質問 (きびしいごしつもん)", "english": "tough question" },
-      { "japanese": "前提 (ぜんてい)", "english": "premise" },
-      { "japanese": "受け止める (うけとめる)", "english": "to receive / take seriously" },
-      { "japanese": "事実と異なる (じじつとことなる)", "english": "differs from the facts" }
+      { cell_id: "9ef9ce26-eb0b-4803-9ea0-c2e22e591d1a", "japanese": "厳しいご質問 (きびしいごしつもん)", "english": "tough question" },
+      { cell_id: "6cee3f54-32bf-422b-8689-5b89b2597b06", "japanese": "前提 (ぜんてい)", "english": "premise" },
+      { cell_id: "b81ec809-7478-406b-bc81-aa7ff249c1f1", "japanese": "受け止める (うけとめる)", "english": "to receive / take seriously" },
+      { cell_id: "ca174ae3-4f53-4730-90ab-b96a8af95dac", "japanese": "事実と異なる (じじつとことなる)", "english": "differs from the facts" }
     ],
     "examples": [
       { "japanese": "ご指摘の通り、厳しいご批判があることは重く受け止めております。", "english": "As you point out, we take seriously the fact that there is strong criticism.", "pronunciation_focus": ["ご指摘の通り", "重く受け止めております", "deferential acknowledgment"] },
       { "japanese": "ただ、その前提の一部は事実と異なりますので、確認できている範囲で整理してお答えします。", "english": "However, part of that premise differs from the facts, so I will organize and answer within what can be confirmed.", "pronunciation_focus": ["ただ", "前提の一部", "整理してお答えします"] }
     ],
     "dialogue": [
-      { "speaker": "記者", "japanese": "世論が批判しなければ、御社は隠し続けたのではありませんか。", "english": "If public opinion had not criticized you, wouldn't your company have continued hiding this?" },
-      { "speaker": "広報責任者", "japanese": "ご指摘の通り、不信感が生じていることは重く受け止めます。ただ、『隠し続けた』という前提は事実と異なります。", "english": "As you point out, we take seriously that distrust has arisen. However, the premise that we 'continued hiding it' differs from the facts." }
+      { cell_id: "f0b8771f-6c9c-44bc-8b92-a0d880c4c394", "speaker": "記者", "japanese": "世論が批判しなければ、御社は隠し続けたのではありませんか。", "english": "If public opinion had not criticized you, wouldn't your company have continued hiding this?" },
+      { cell_id: "1498a6da-bc38-4639-abc1-da43a81ded2d", "speaker": "広報責任者", "japanese": "ご指摘の通り、不信感が生じていることは重く受け止めます。ただ、『隠し続けた』という前提は事実と異なります。", "english": "As you point out, we take seriously that distrust has arisen. However, the premise that we 'continued hiding it' differs from the facts." }
     ],
     "register_notes": "For hostile Q&A, Japanese indirect disagreement protects face while correcting the frame. Use ご指摘の通りですが... / ただ... rather than direct confrontation.",
     "cultural_notes_vi": "Khi phóng viên gay gắt, đừng nói thẳng '違います' đầu câu. Acknowledge trước, sau đó chỉnh tiền đề.",
@@ -4287,18 +4427,18 @@ export const lessons: JapaneseLesson[] = [
     "category": "public-communication",
     "level": "C1",
     "vocabulary": [
-      { "japanese": "報道官 (ほうどうかん)", "english": "spokesperson" },
-      { "japanese": "定例会見 (ていれいかいけん)", "english": "regular press briefing" },
-      { "japanese": "更新事項 (こうしんじこう)", "english": "updates" },
-      { "japanese": "現時点ではコメントを控える", "english": "to refrain from comment at this stage" }
+      { cell_id: "4afef85b-5557-4fbc-bc8f-8142a6f5fd60", "japanese": "報道官 (ほうどうかん)", "english": "spokesperson" },
+      { cell_id: "db4c99df-3003-479e-9673-f28b05da9310", "japanese": "定例会見 (ていれいかいけん)", "english": "regular press briefing" },
+      { cell_id: "12ba8cec-98f9-4796-935b-05c872245074", "japanese": "更新事項 (こうしんじこう)", "english": "updates" },
+      { cell_id: "b8714d59-0c2f-471b-b198-75ee494aa8f1", "japanese": "現時点ではコメントを控える", "english": "to refrain from comment at this stage" }
     ],
     "examples": [
       { "japanese": "本日の定例会見では、三件の更新事項をご報告し、その後ご質問をお受けします。", "english": "At today's regular briefing, I will report three updates and then take your questions.", "pronunciation_focus": ["定例会見", "更新事項", "ご質問をお受けします"] },
       { "japanese": "その件につきましては、関係者への確認が続いておりますので、現時点ではコメントを控えます。", "english": "Regarding that matter, confirmation with relevant parties is still ongoing, so we will refrain from comment at this stage.", "pronunciation_focus": ["その件につきましては", "確認が続いております", "コメントを控えます"] }
     ],
     "dialogue": [
-      { "speaker": "報道官", "japanese": "まず、今週の更新事項を三点ご説明します。未確定の案件については、確認後に書面でお知らせします。", "english": "First, I will explain three updates this week. For unconfirmed matters, we will notify you in writing after confirmation." },
-      { "speaker": "記者", "japanese": "未確定というのは、発表が遅れているという意味ですか。", "english": "Does 'unconfirmed' mean that the announcement is delayed?" }
+      { cell_id: "9d0b4f12-24c5-4552-b979-52714bca55a2", "speaker": "報道官", "japanese": "まず、今週の更新事項を三点ご説明します。未確定の案件については、確認後に書面でお知らせします。", "english": "First, I will explain three updates this week. For unconfirmed matters, we will notify you in writing after confirmation." },
+      { cell_id: "7e6eec29-47fc-48d8-a873-39ebd2bf0ba0", "speaker": "記者", "japanese": "未確定というのは、発表が遅れているという意味ですか。", "english": "Does 'unconfirmed' mean that the announcement is delayed?" }
     ],
     "register_notes": "A Japanese spokesperson must be predictable. Weekly briefings use stable wording: updates, pending confirmations, written follow-up.",
     "cultural_notes_vi": "報道官 không phải trả lời hết mọi thứ. Điều quan trọng là giữ nhịp cập nhật rõ ràng và nhất quán.",
@@ -4313,18 +4453,18 @@ export const lessons: JapaneseLesson[] = [
     "category": "public-communication",
     "level": "C1",
     "vocabulary": [
-      { "japanese": "公式アカウント", "english": "official account" },
-      { "japanese": "固定投稿 (こていとうこう)", "english": "pinned post" },
-      { "japanese": "スクリーンショット", "english": "screenshot" },
-      { "japanese": "続報 (ぞくほう)", "english": "follow-up report" }
+      { cell_id: "d7f36c1d-3a73-4623-ba58-095bf1b875fe", "japanese": "公式アカウント", "english": "official account" },
+      { cell_id: "7a528f5b-0b99-4946-8945-8a95c574ab31", "japanese": "固定投稿 (こていとうこう)", "english": "pinned post" },
+      { cell_id: "8068f4d1-05ab-4ab6-bf95-ee9d425017fd", "japanese": "スクリーンショット", "english": "screenshot" },
+      { cell_id: "f9e8ffc0-30f5-4308-8830-2179b81bef19", "japanese": "続報 (ぞくほう)", "english": "follow-up report" }
     ],
     "examples": [
       { "japanese": "公式アカウントでの声明は短くても、謝罪、対応、続報の場所を明確に示す必要があります。", "english": "Even if a statement on an official account is short, it must clearly state the apology, response, and where follow-up updates will appear.", "pronunciation_focus": ["公式アカウント", "続報", "明確に示す"] },
       { "japanese": "感情的な返信を重ねるより、固定投稿で確認済みの情報を整理するほうが安全です。", "english": "Rather than stacking emotional replies, it is safer to organize confirmed information in a pinned post.", "pronunciation_focus": ["感情的な返信", "固定投稿", "確認済みの情報"] }
     ],
     "dialogue": [
-      { "speaker": "SNS担当", "japanese": "この文面は少し軽く見えます。公式声明としては、謝罪と対応を先に出しましょう。", "english": "This wording looks a little too casual. As an official statement, let us put the apology and response first." },
-      { "speaker": "広報責任者", "japanese": "はい。固定投稿にして、続報は同じスレッドで更新します。", "english": "Yes. We will pin it and update follow-up information in the same thread." }
+      { cell_id: "545d8f47-0a2c-4440-ba3f-f14dd98fe2bb", "speaker": "SNS担当", "japanese": "この文面は少し軽く見えます。公式声明としては、謝罪と対応を先に出しましょう。", "english": "This wording looks a little too casual. As an official statement, let us put the apology and response first." },
+      { cell_id: "6b2a1055-ba3f-4eb2-ac43-b6d3c208345d", "speaker": "広報責任者", "japanese": "はい。固定投稿にして、続報は同じスレッドで更新します。", "english": "Yes. We will pin it and update follow-up information in the same thread." }
     ],
     "register_notes": "Official Japanese social statements should not sound like customer-service chat. Keep it short, formal enough, and screenshot-safe.",
     "cultural_notes_vi": "SNS tiếng Nhật có thể ngắn, nhưng tuyên bố chính thức vẫn phải giữ phẩm chất tổ chức.",

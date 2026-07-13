@@ -31,6 +31,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   /** Indonesian word/phrase. */
   word: string;
   /** English meaning. */
@@ -46,6 +47,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   /** Indonesian line. */
   text: string;
@@ -290,6 +292,7 @@ export const lessons: IndonesianLesson[] = [
     vocabulary: [
       // Prefixes
       {
+        cell_id: "281f8c8a-6435-4dda-808f-7edb5be179e3",
         word: "meN-",
         en: "active transitive verb prefix",
         vi: "tiền tố động từ chủ động",
@@ -298,6 +301,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "me-/mem-/men-/meng-/meny- — varies by initial; t/p/s/k drop",
       },
       {
+        cell_id: "7202f698-c3fd-46f0-babd-56f2798d8020",
         word: "ber-",
         en: "intransitive / have / wear prefix",
         vi: "tiền tố tự thân / có-mang",
@@ -306,6 +310,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "ber- — `bekerja` (work), `berbaju` (wear a shirt); no object needed",
       },
       {
+        cell_id: "9dac77fd-55d0-4934-8f7b-656d71c4a809",
         word: "di-",
         en: "deliberate passive prefix",
         vi: "tiền tố bị động (có chủ ý)",
@@ -314,6 +319,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "di- — JOINED to verb: `dibaca` (is read); agent after `oleh`",
       },
       {
+        cell_id: "148e15e1-7936-4c13-adb7-753e00495bd0",
         word: "ter-",
         en: "accidental / stative / superlative prefix",
         vi: "tiền tố vô tình / trạng thái / cực cấp",
@@ -322,6 +328,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "ter- — `tertidur` (fell asleep), `terbuka` (is open), `terbaik` (best)",
       },
       {
+        cell_id: "351ff46b-8e36-4aa2-acb4-3c40e7292f95",
         word: "peN-",
         en: "agent / doer noun prefix",
         vi: "tiền tố danh từ chỉ người làm",
@@ -330,6 +337,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "pe-/pem-/pen-/peng-/peny- — `penulis` (writer), `pekerja` (worker)",
       },
       {
+        cell_id: "c82f1adc-de78-45c5-8f9b-718f54c355d8",
         word: "per-",
         en: "causative verb prefix (make…)",
         vi: "tiền tố khiến (làm cho…)",
@@ -338,6 +346,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "per- — `perbaiki` (fix), `perpanjang` (extend), `perbesar` (enlarge)",
       },
       {
+        cell_id: "89103b44-5f1b-436a-a7a9-c53b63e2cb6a",
         word: "se-",
         en: "one / same / as…as prefix",
         vi: "tiền tố một / cùng / bằng",
@@ -347,6 +356,7 @@ export const lessons: IndonesianLesson[] = [
       },
       // Suffixes
       {
+        cell_id: "207f0dec-8fc9-4c77-85e6-c2f7617af402",
         word: "-kan",
         en: "causative / benefactive suffix",
         vi: "hậu tố khiến / vì người khác",
@@ -355,6 +365,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "-kan — `bersihkan` (make clean), `bukakan` (open for), `memberikan` (give to)",
       },
       {
+        cell_id: "10969a29-7e32-4f76-9a56-11d8750a9031",
         word: "-an",
         en: "noun-forming suffix (thing/result)",
         vi: "hậu tố tạo danh từ (vật/kết quả)",
@@ -363,6 +374,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "-an — `makanan` (food), `tulisan` (a writing), `bulanan` (monthly)",
       },
       {
+        cell_id: "9b72d942-5ff8-4e53-9248-4451fc711474",
         word: "-i",
         en: "transitive / locative / repetitive suffix",
         vi: "hậu tố gắn đối tượng / nơi chốn / lặp",
@@ -371,6 +383,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "-i — `menemani` (accompany), `mendekati` (approach), `mengulangi` (repeat)",
       },
       {
+        cell_id: "e76ac10a-338f-4de0-b7d7-b615a00331a7",
         word: "ke-…-an",
         en: "abstract-noun / adversative circumfix",
         vi: "khung danh từ trừu tượng / bị động không mong muốn",
@@ -380,6 +393,7 @@ export const lessons: IndonesianLesson[] = [
       },
       // The root concept + a worked family
       {
+        cell_id: "95dffc68-030a-4bc0-a7a3-ccf24c8d0ea1",
         word: "akar kata",
         en: "root word",
         vi: "từ gốc",
@@ -388,6 +402,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "A-kar KA-ta — the bare root affixes attach to; e.g. `ajar`, `masak`, `tulis`",
       },
       {
+        cell_id: "242bedd7-91f7-41ef-bb48-2445a0066ecf",
         word: "mengajar / belajar",
         en: "to teach / to study (same root `ajar`)",
         vi: "dạy / học (cùng gốc `ajar`)",
@@ -396,6 +411,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "me-nga-JAR / be-la-JAR — meN- = teach (active), ber- = study (intransitive)",
       },
       {
+        cell_id: "03b12803-c838-4eae-b9f4-b2d6966d9f44",
         word: "pelajar / pelajaran",
         en: "student / lesson (root `ajar`)",
         vi: "học sinh / bài học (gốc `ajar`)",
@@ -407,36 +423,42 @@ export const lessons: IndonesianLesson[] = [
     dialogue: [
       // Dialogue: a study session building a 'word family' from one root
       {
+        cell_id: "6e187011-e683-4faa-afa7-7c5aeec4f564",
         speaker: "Guru",
         text: "Hari ini kita belajar akar kata `masak`. Apa artinya?",
         vi: "Hôm nay chúng ta học từ gốc `masak`. Nghĩa là gì?",
         en: "Today we study the root `masak`. What does it mean?",
       },
       {
+        cell_id: "852c5061-0064-426d-8bba-86da05a725d1",
         speaker: "Murid",
         text: "`Masak` artinya nấu. Jadi `memasak` adalah nấu, ya, Bu?",
         vi: "`Masak` nghĩa là nấu. Vậy `memasak` là nấu phải không cô?",
         en: "`Masak` means to cook. So `memasak` is 'to cook', right ma'am?",
       },
       {
+        cell_id: "9962e7e0-f78e-4e01-8306-77f456eeff4a",
         speaker: "Guru",
         text: "Betul! Dan kalau nasi yang nasinya dimasak orang lain?",
         vi: "Đúng! Còn nếu là cơm được người khác nấu thì sao?",
         en: "Correct! And if it's rice that someone else cooks?",
       },
       {
+        cell_id: "e9a71183-ebf4-4693-b7fd-f86244add63d",
         speaker: "Murid",
         text: "Nasi itu dimasak — pakai `di-` untuk pasif. Lalu makanannya disebut `masakan`.",
         vi: "Cơm đó `dimasak` — dùng `di-` cho bị động. Rồi món ăn gọi là `masakan`.",
         en: "The rice is `dimasak` — `di-` for passive. Then the dish is called `masakan`.",
       },
       {
+        cell_id: "d74c0b33-b3f0-404a-82ff-85ebb9cc710f",
         speaker: "Guru",
         text: "Hebat! Kamu sudah mengerti satu keluarga kata. Ingat: t/p/s/k luluh setelah meN-.",
         vi: "Tuyệt! Em đã hiểu một họ từ. Nhớ: t/p/s/k rụng sau meN-.",
         en: "Excellent! You've grasped one word family. Remember: t/p/s/k drop after meN-.",
       },
       {
+        cell_id: "f748c20e-1c1c-4d99-86ee-731ea128d16e",
         speaker: "Murid",
         text: "Iya, jadi `tulis` jadi `menulis`, bukan `mentulis`. Terima kasih, Bu!",
         vi: "Vâng, nên `tulis` thành `menulis`, không phải `mentulis`. Cảm ơn cô!",

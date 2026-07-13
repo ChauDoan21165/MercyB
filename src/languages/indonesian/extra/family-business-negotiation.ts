@@ -16,6 +16,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   /** Indonesian word/phrase. */
   word: string;
   /** English meaning. */
@@ -31,6 +32,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   /** Indonesian line. */
   text: string;
@@ -223,6 +225,7 @@ export const lessons: IndonesianLesson[] = [
       "Useful frames: `membagi tugas`, `modal bersama`, `keuntungan dibagi adil`, `musyawarah dulu`, `konflik kecil`, `jalan tengah`. In family discussions, start with appreciation before making requests, and you are more likely to get agreement.",
     vocabulary: [
       {
+        cell_id: "3a992d78-874f-41bd-8f21-99ce21080ddf",
         word: "usaha keluarga",
         en: "family business",
         vi: "kinh doanh gia đình",
@@ -231,6 +234,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "oo-SAH-hah keh-LOO-ar-gah",
       },
       {
+        cell_id: "036ef3e3-c64f-4bb7-b777-0a1223b6853f",
         word: "pembagian tugas",
         en: "task division",
         vi: "phân chia nhiệm vụ",
@@ -239,6 +243,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "pem-BAH-gee-an TOO-gahs",
       },
       {
+        cell_id: "e367869d-0995-4eb1-ade1-3532dc6cb0df",
         word: "modal bersama",
         en: "shared capital",
         vi: "vốn chung",
@@ -247,6 +252,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "MOH-dahl ber-SAH-mah",
       },
       {
+        cell_id: "6c0fe938-7a17-42da-b494-539f93ac9210",
         word: "keuntungan",
         en: "profit",
         vi: "lợi nhuận",
@@ -255,6 +261,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "keh-oon-TOONG-an",
       },
       {
+        cell_id: "c6a85599-a3ef-41e4-8399-9b8535a81ef3",
         word: "musyawarah",
         en: "consensus discussion",
         vi: "bàn bạc, thảo luận để đồng thuận",
@@ -263,6 +270,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "moo-syah-WAH-rah",
       },
       {
+        cell_id: "e6726a97-633d-4a64-87d8-d041f53efd1a",
         word: "konflik kecil",
         en: "small conflict",
         vi: "mâu thuẫn nhỏ",
@@ -271,6 +279,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "kon-FLEEK KE-chil",
       },
       {
+        cell_id: "87a60e3e-0a9a-4a1b-95a8-d45c0a370f86",
         word: "jalan tengah",
         en: "middle ground / compromise",
         vi: "giải pháp trung dung / thỏa hiệp",
@@ -279,6 +288,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "JAH-lan TEN-gah",
       },
       {
+        cell_id: "a3f3a559-c3c8-4ead-b481-911b2383de64",
         word: "keputusan keluarga",
         en: "family decision",
         vi: "quyết định của gia đình",
@@ -289,30 +299,35 @@ export const lessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "55cb84bb-f59a-411c-b6bf-cb6beabbb3e6",
         speaker: "Ibu",
         text: "Kita perlu musyawarah dulu soal usaha keluarga ini.",
         vi: "Chúng ta cần bàn bạc trước về việc kinh doanh gia đình này.",
         en: "We need to discuss this family business first.",
       },
       {
+        cell_id: "05eefe09-3b1e-49f8-82e8-8ae843d86df8",
         speaker: "Anak",
         text: "Setuju. Saya mau membagi tugas dengan lebih jelas.",
         vi: "Đồng ý. Tôi muốn chia nhiệm vụ rõ ràng hơn.",
         en: "Agreed. I want to divide the tasks more clearly.",
       },
       {
+        cell_id: "99cf7412-ee34-4508-9b3e-bb438965e2bf",
         speaker: "Ayah",
         text: "Bagus. Siapa yang pegang modal bersama bulan ini?",
         vi: "Tốt. Ai là người giữ vốn chung trong tháng này?",
         en: "Good. Who is handling the shared capital this month?",
       },
       {
+        cell_id: "224a7af8-4ff0-41c3-bf6d-381d54563b49",
         speaker: "Ibu",
         text: "Keuntungan usaha harus dibagi adil supaya tidak ada konflik kecil.",
         vi: "Lợi nhuận của việc kinh doanh phải được chia công bằng để không có mâu thuẫn nhỏ.",
         en: "The business profit must be divided fairly so there are no small conflicts.",
       },
       {
+        cell_id: "95012816-f203-416f-bc9e-0a543ea05749",
         speaker: "Anak",
         text: "Kalau begitu, saya ambil bagian penjualan dan kakak urus pembelian bahan.",
         vi: "Vậy thì tôi phụ phần bán hàng và anh/chị lo việc mua nguyên liệu.",

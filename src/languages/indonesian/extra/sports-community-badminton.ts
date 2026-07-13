@@ -21,6 +21,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   /** Indonesian word/phrase. */
   word: string;
   /** English meaning. */
@@ -36,6 +37,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   /** Indonesian line. */
   text: string;
@@ -225,43 +227,48 @@ export const lessons: IndonesianLesson[] = [
     tip_advice_en:
       "Tip for Vietnamese speakers: `bulu tangkis` is Indonesian for badminton; `raket` is racket; `kok` is shuttlecock; `lapangan` is court; `ganda` is doubles. To join, say gently: `Boleh saya ikut main?` To ask costs, use `sewa lapangannya berapa?` and `iuran klubnya berapa?`",
     vocabulary: [
-      { word: "bulu tangkis", en: "badminton", vi: "cầu lông", pos: "noun", pronunciation_vi: "BU-lu TANG-kis", pronunciation_en: "BOO-loo TANG-kis" },
-      { word: "sewa lapangan", en: "rent a court", vi: "thuê sân", pos: "verb/noun phrase", pronunciation_vi: "SE-wa la-PANG-an", pronunciation_en: "SE-wa la-PANG-an" },
-      { word: "raket", en: "racket", vi: "vợt", pos: "noun", pronunciation_vi: "RA-ket", pronunciation_en: "RA-ket" },
-      { word: "kok", en: "shuttlecock", vi: "quả cầu lông", pos: "noun", pronunciation_vi: "kok", pronunciation_en: "kok" },
-      { word: "pasangan main", en: "playing partner", vi: "bạn đánh cặp", pos: "noun phrase", pronunciation_vi: "pa-SA-ngan MA-in", pronunciation_en: "pa-SA-ngan MA-in" },
-      { word: "latihan", en: "practice / training", vi: "buổi tập/bài tập", pos: "noun", pronunciation_vi: "LA-tih-an", pronunciation_en: "LA-tih-an" },
-      { word: "turnamen kecil", en: "small tournament", vi: "giải đấu nhỏ", pos: "noun phrase", pronunciation_vi: "tur-na-MEN KE-cil", pronunciation_en: "toor-na-MEN KE-chil" },
-      { word: "iuran klub", en: "club dues", vi: "phí/quỹ câu lạc bộ", pos: "noun phrase", pronunciation_vi: "I-u-ran klub", pronunciation_en: "EE-oo-ran klub" },
-      { word: "ganda campuran", en: "mixed doubles", vi: "đôi nam nữ", pos: "noun phrase", pronunciation_vi: "GAN-da cam-PU-ran", pronunciation_en: "GAN-da cham-POO-ran" },
-      { word: "GOR", en: "sports hall", vi: "nhà thi đấu", pos: "noun", pronunciation_vi: "ge-o-er", pronunciation_en: "geh-oh-er" },
+      { cell_id: "77f7b529-6f87-4aa4-85d3-a7e65fa95664", word: "bulu tangkis", en: "badminton", vi: "cầu lông", pos: "noun", pronunciation_vi: "BU-lu TANG-kis", pronunciation_en: "BOO-loo TANG-kis" },
+      { cell_id: "8fd214db-b82a-4d24-b08e-f4afc492df2c", word: "sewa lapangan", en: "rent a court", vi: "thuê sân", pos: "verb/noun phrase", pronunciation_vi: "SE-wa la-PANG-an", pronunciation_en: "SE-wa la-PANG-an" },
+      { cell_id: "228c1b1f-4c65-4fae-852e-4bdffad94c2c", word: "raket", en: "racket", vi: "vợt", pos: "noun", pronunciation_vi: "RA-ket", pronunciation_en: "RA-ket" },
+      { cell_id: "f3bb251f-6c82-4131-bd33-384e6616a789", word: "kok", en: "shuttlecock", vi: "quả cầu lông", pos: "noun", pronunciation_vi: "kok", pronunciation_en: "kok" },
+      { cell_id: "4c42b360-656a-43fb-b706-b38326979fff", word: "pasangan main", en: "playing partner", vi: "bạn đánh cặp", pos: "noun phrase", pronunciation_vi: "pa-SA-ngan MA-in", pronunciation_en: "pa-SA-ngan MA-in" },
+      { cell_id: "7b57a218-856a-4c3d-b53d-5e402a9964da", word: "latihan", en: "practice / training", vi: "buổi tập/bài tập", pos: "noun", pronunciation_vi: "LA-tih-an", pronunciation_en: "LA-tih-an" },
+      { cell_id: "38c58f3e-2ead-4a7c-b7d8-70cfb5fc4a89", word: "turnamen kecil", en: "small tournament", vi: "giải đấu nhỏ", pos: "noun phrase", pronunciation_vi: "tur-na-MEN KE-cil", pronunciation_en: "toor-na-MEN KE-chil" },
+      { cell_id: "d4f92f0b-5944-4dd1-b20f-5c8ad70cc384", word: "iuran klub", en: "club dues", vi: "phí/quỹ câu lạc bộ", pos: "noun phrase", pronunciation_vi: "I-u-ran klub", pronunciation_en: "EE-oo-ran klub" },
+      { cell_id: "3c4fa988-23e2-4845-ac4b-e5566a999484", word: "ganda campuran", en: "mixed doubles", vi: "đôi nam nữ", pos: "noun phrase", pronunciation_vi: "GAN-da cam-PU-ran", pronunciation_en: "GAN-da cham-POO-ran" },
+      { cell_id: "9fc5d24b-ce94-420a-974a-2341fd0beba2", word: "GOR", en: "sports hall", vi: "nhà thi đấu", pos: "noun", pronunciation_vi: "ge-o-er", pronunciation_en: "geh-oh-er" },
     ],
     dialogue: [
       {
+        cell_id: "638af3e6-2eaa-4508-a101-0ed7e1c7171f",
         speaker: "Dina",
         text: "Malam ini ada jadwal bulu tangkis di GOR?",
         vi: "Tối nay có lịch cầu lông ở nhà thi đấu không?",
         en: "Is there a badminton schedule at the sports hall tonight?",
       },
       {
+        cell_id: "5e74d913-c95c-4aee-b2bd-27bb57432ef5",
         speaker: "Rafi",
         text: "Ada. Kita sewa lapangan dari jam tujuh sampai jam sembilan.",
         vi: "Có. Chúng ta thuê sân từ bảy giờ đến chín giờ.",
         en: "Yes. We rent the court from seven to nine.",
       },
       {
+        cell_id: "3e0e0734-0eaf-46f6-a22e-1971144e0544",
         speaker: "Dina",
         text: "Saya bawa raket sendiri. Perlu bawa kok juga?",
         vi: "Tôi mang vợt riêng. Có cần mang quả cầu nữa không?",
         en: "I will bring my own racket. Should I bring shuttlecocks too?",
       },
       {
+        cell_id: "573a95e8-adcd-473c-b7ff-2ae702796b83",
         speaker: "Rafi",
         text: "Kok sudah ada. Nanti biaya lapangan dibagi rata.",
         vi: "Quả cầu có rồi. Lát nữa tiền sân chia đều.",
         en: "We already have shuttlecocks. Later the court fee will be split evenly.",
       },
       {
+        cell_id: "76c11e04-dfce-4bec-b9b1-7887d9a6dbaf",
         speaker: "Dina",
         text: "Baik. Kalau ada pasangan main untuk ganda campuran, saya ikut.",
         vi: "Được. Nếu có bạn đánh cặp cho đôi nam nữ, tôi tham gia.",

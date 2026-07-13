@@ -9,6 +9,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   term: string;
   meaning_vi: string;
   meaning_en: string;
@@ -16,6 +17,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   indonesian: string;
   vietnamese: string;
@@ -128,60 +130,70 @@ export const lessons: IndonesianLesson[] = [
     ],
     vocabulary: [
       {
+        cell_id: "0a68ee55-b3d3-4ae4-ab16-49d0398818f6",
         term: "kebakaran",
         meaning_vi: "vu chay, hoa hoan",
         meaning_en: "fire incident",
         example: "Ada kebakaran di gang belakang.",
       },
       {
+        cell_id: "43b29f32-9e3f-4be9-a044-354905db1c54",
         term: "tabung gas",
         meaning_vi: "binh gas",
         meaning_en: "gas cylinder",
         example: "Jauhkan tabung gas dari sumber api.",
       },
       {
+        cell_id: "1172bb87-c6cf-4db0-a767-7adb3d6d7c02",
         term: "alarm",
         meaning_vi: "chuong bao dong",
         meaning_en: "alarm",
         example: "Alarm berbunyi saat ada asap.",
       },
       {
+        cell_id: "0afbf520-2610-43a9-92a0-7513b2f75ce2",
         term: "evakuasi",
         meaning_vi: "so tan",
         meaning_en: "evacuation",
         example: "Ikuti jalur evakuasi dengan tenang.",
       },
       {
+        cell_id: "5c9eb5b5-ac08-478e-8b2d-63992991fdb7",
         term: "pemadam kebakaran",
         meaning_vi: "cuu hoa, luc luong cuu hoa",
         meaning_en: "firefighters; fire department",
         example: "Pemadam kebakaran datang setelah warga menelepon.",
       },
       {
+        cell_id: "a3b5a7b9-52d7-49f7-9893-30d2186d4f62",
         term: "titik kumpul",
         meaning_vi: "diem tap ket",
         meaning_en: "assembly point",
         example: "Titik kumpul ada di lapangan kecil.",
       },
       {
+        cell_id: "cc52159d-ed17-43cb-a97c-45b69e3e10f4",
         term: "warga",
         meaning_vi: "cu dan, nguoi dan trong khu",
         meaning_en: "residents; community members",
         example: "Warga membantu memindahkan sepeda motor.",
       },
       {
+        cell_id: "ce60062b-20c6-4bbe-b521-e18926363d1b",
         term: "pencegahan",
         meaning_vi: "su phong ngua",
         meaning_en: "prevention",
         example: "Pencegahan lebih baik daripada panik saat darurat.",
       },
       {
+        cell_id: "ffe930fd-d88a-45b4-8c8f-fb38b1b2fdd3",
         term: "jalur evakuasi",
         meaning_vi: "loi/duong so tan",
         meaning_en: "evacuation route",
         example: "Jangan parkir di jalur evakuasi.",
       },
       {
+        cell_id: "72387dc1-8049-4140-90db-961509703f85",
         term: "tempat aman",
         meaning_vi: "noi an toan",
         meaning_en: "safe place",
@@ -190,36 +202,42 @@ export const lessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "1f0f40f9-aa50-4112-ad28-a8d9bcf90240",
         speaker: "Rina",
         indonesian: "Pak, ada asap dari rumah sebelah. Sepertinya ada kebakaran.",
         vietnamese: "Chu oi, co khoi tu nha ben canh. Co ve co chay.",
         english: "Sir, there is smoke from the house next door. It looks like there is a fire.",
       },
       {
+        cell_id: "2bab0d2a-2f69-449d-a0d7-5de43a2766e8",
         speaker: "Pak Agus",
         indonesian: "Baik, bunyikan alarm dan minta warga keluar lewat jalur evakuasi.",
         vietnamese: "Duoc, bat bao dong va bao cu dan ra ngoai theo duong so tan.",
         english: "Okay, sound the alarm and ask residents to leave through the evacuation route.",
       },
       {
+        cell_id: "c7e902bf-5f0d-4285-9b2f-ada637dd130e",
         speaker: "Rina",
         indonesian: "Saya akan hubungi pemadam kebakaran dan sebutkan alamat lengkap.",
         vietnamese: "Toi se goi cuu hoa va noi dia chi day du.",
         english: "I will contact the fire department and give the full address.",
       },
       {
+        cell_id: "1499d437-00fe-4474-a2fe-4bb0ac8d802b",
         speaker: "Pak Agus",
         indonesian: "Tolong cek tabung gas, tapi jangan masuk kalau api sudah besar.",
         vietnamese: "Lam on kiem tra binh gas, nhung dung vao neu lua da lon.",
         english: "Please check the gas cylinder, but do not go in if the fire is already big.",
       },
       {
+        cell_id: "1783f911-ad73-445f-a8c5-64f3bb13a42f",
         speaker: "Rina",
         indonesian: "Warga sudah membantu anak-anak dan lansia ke titik kumpul.",
         vietnamese: "Cu dan da giup dua tre em va nguoi cao tuoi den diem tap ket.",
         english: "Residents have helped children and elderly people to the assembly point.",
       },
       {
+        cell_id: "d942d04e-5e41-44f7-8861-08c2ccd205bc",
         speaker: "Pak Agus",
         indonesian: "Bagus. Tidak ada yang boleh masuk lagi sebelum petugas bilang aman.",
         vietnamese: "Tot. Khong ai duoc vao lai truoc khi nhan vien chuc nang noi la an toan.",

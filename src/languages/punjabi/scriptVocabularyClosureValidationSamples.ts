@@ -18,6 +18,7 @@ export type PunjabiClosureValidationFocus =
 export type PunjabiClosureValidationStage = "closure_validation" | "final_cross_check" | "pre_integration" | "sanity";
 
 export type PunjabiScriptVocabularyClosureValidationSample = {
+  cell_id?: string;
   id: string;
   focus: PunjabiClosureValidationFocus;
   stage: PunjabiClosureValidationStage;
@@ -39,6 +40,7 @@ export type PunjabiScriptVocabularyClosureValidationSample = {
 };
 
 export type PunjabiScriptVocabularyClosureValidationSection = {
+  cell_id?: string;
   focus: PunjabiClosureValidationFocus;
   title_vi: string;
   title_en: string;

@@ -12,6 +12,7 @@ interface LessonSentence {
 }
 
 interface VocabEntry {
+  cell_id?: string;
   word: string;
   meaning_vi: string;
   meaning_en: string;
@@ -20,6 +21,7 @@ interface VocabEntry {
 }
 
 interface DialogueLine {
+  cell_id?: string;
   speaker: string;
   line: string;
   vi: string;
@@ -143,6 +145,7 @@ export const festivalNightMarketLessons: IndonesianLesson[] = [
     ],
     vocabulary: [
       {
+        cell_id: "3f8e3d6f-39f4-4b69-a8be-0a73602d5482",
         word: "pasar malam",
         meaning_vi: "chợ đêm, hội chợ đêm",
         meaning_en: "night market",
@@ -150,6 +153,7 @@ export const festivalNightMarketLessons: IndonesianLesson[] = [
         example_vi: "Chợ đêm đó mở đến mười một giờ.",
       },
       {
+        cell_id: "1e95ff84-328e-4a53-b251-28cade7e95a8",
         word: "festival",
         meaning_vi: "lễ hội",
         meaning_en: "festival",
@@ -157,6 +161,7 @@ export const festivalNightMarketLessons: IndonesianLesson[] = [
         example_vi: "Lễ hội ẩm thực này đông vào mỗi cuối tuần.",
       },
       {
+        cell_id: "37787741-22d6-4a71-a684-5000086e8ef3",
         word: "tiket masuk",
         meaning_vi: "vé vào cổng",
         meaning_en: "entrance ticket",
@@ -164,6 +169,7 @@ export const festivalNightMarketLessons: IndonesianLesson[] = [
         example_vi: "Vé vào cổng là mười lăm nghìn rupiah.",
       },
       {
+        cell_id: "0cfa7741-00f4-43a2-8467-458b3d187f4f",
         word: "ramai",
         meaning_vi: "đông, nhộn nhịp",
         meaning_en: "crowded, lively",
@@ -171,6 +177,7 @@ export const festivalNightMarketLessons: IndonesianLesson[] = [
         example_vi: "Nếu đông quá, chúng ta chờ bên ngoài trước.",
       },
       {
+        cell_id: "4f6c75a2-b9bc-4e95-8126-9a0039f9a077",
         word: "panggung hiburan",
         meaning_vi: "sân khấu giải trí",
         meaning_en: "entertainment stage",
@@ -180,24 +187,28 @@ export const festivalNightMarketLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "aae4d601-3e83-4244-9d12-58b7909d89cd",
         speaker: "Lina",
         line: "Kita beli tiket masuk dulu atau langsung cari makanan?",
         vi: "Mình mua vé vào cổng trước hay đi tìm đồ ăn luôn?",
         en: "Should we buy the entrance ticket first or go straight to find food?",
       },
       {
+        cell_id: "f93c2bf9-3681-41eb-9465-e5350043576b",
         speaker: "Rafi",
         line: "Beli tiket masuk dulu. Setelah itu kita lihat stan makanan.",
         vi: "Mua vé vào cổng trước. Sau đó mình xem gian đồ ăn.",
         en: "Let's buy the entrance ticket first. After that we can look at the food stalls.",
       },
       {
+        cell_id: "f5374c78-04d8-4e02-acac-5c6afc753925",
         speaker: "Lina",
         line: "Tempatnya ramai sekali. Aku simpan tas di depan ya.",
         vi: "Chỗ này đông quá. Mình để túi phía trước nhé.",
         en: "This place is very crowded. I'll keep my bag in front.",
       },
       {
+        cell_id: "7c9050f4-afbc-4d0d-a0ea-60b018e1639c",
         speaker: "Rafi",
         line: "Iya, nanti kita bertemu di dekat panggung hiburan.",
         vi: "Ừ, lát nữa mình gặp nhau gần sân khấu giải trí.",
@@ -343,6 +354,7 @@ export const festivalNightMarketLessons: IndonesianLesson[] = [
     ],
     vocabulary: [
       {
+        cell_id: "205e7f7f-7f68-4d0e-abaf-5c26e1bfda16",
         word: "wahana",
         meaning_vi: "trò chơi, điểm vui chơi",
         meaning_en: "ride, attraction",
@@ -350,6 +362,7 @@ export const festivalNightMarketLessons: IndonesianLesson[] = [
         example_vi: "Khu trò chơi trẻ em ở bên phải.",
       },
       {
+        cell_id: "53d91405-98f1-4a0b-b2cf-d4dbd66a154f",
         word: "antrean",
         meaning_vi: "hàng chờ",
         meaning_en: "queue, line",
@@ -357,6 +370,7 @@ export const festivalNightMarketLessons: IndonesianLesson[] = [
         example_vi: "Hàng chờ vé trò chơi bắt đầu dài.",
       },
       {
+        cell_id: "ea23ea22-7a3b-4b6f-b62a-dfb9229735c0",
         word: "pulang larut",
         meaning_vi: "về khuya",
         meaning_en: "return late at night",
@@ -364,6 +378,7 @@ export const festivalNightMarketLessons: IndonesianLesson[] = [
         example_vi: "Tôi không muốn về quá khuya.",
       },
       {
+        cell_id: "6c3e8b18-084c-40bb-9bb6-dd3392127e7a",
         word: "titik kumpul",
         meaning_vi: "điểm tập trung, điểm hẹn",
         meaning_en: "meeting point",
@@ -371,6 +386,7 @@ export const festivalNightMarketLessons: IndonesianLesson[] = [
         example_vi: "Điểm hẹn của chúng ta ở gần lối ra.",
       },
       {
+        cell_id: "527affe8-b848-4ea5-b9b4-27b228b3f04b",
         word: "rombongan",
         meaning_vi: "nhóm đi cùng, đoàn",
         meaning_en: "group, party",
@@ -380,24 +396,28 @@ export const festivalNightMarketLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "6575350f-8ab7-4d62-944c-7b894ae297e9",
         speaker: "Dewi",
         line: "Antrean wahana itu panjang sekali. Kita coba wahana lain?",
         vi: "Hàng chờ trò chơi đó dài quá. Mình thử trò khác không?",
         en: "The queue for that ride is very long. Should we try another ride?",
       },
       {
+        cell_id: "4c4f21c4-4d95-435e-b8f7-c756c4da1971",
         speaker: "Nando",
         line: "Boleh. Tapi simpan tiketnya dulu, mungkin bisa dipakai nanti.",
         vi: "Được. Nhưng giữ vé trước đã, có thể lát nữa dùng được.",
         en: "Sure. But keep the ticket first, maybe we can use it later.",
       },
       {
+        cell_id: "bb4eee6d-3167-4375-bb6f-4be61e00a15b",
         speaker: "Dewi",
         line: "Kalau acara selesai jam sebelas, kita pulang larut.",
         vi: "Nếu chương trình kết thúc lúc mười một giờ, mình sẽ về khuya.",
         en: "If the event ends at eleven, we will return late at night.",
       },
       {
+        cell_id: "3835fb6f-d4e1-4d2e-a588-5ab088a9bd9f",
         speaker: "Nando",
         line: "Setuju. Kita bertemu di titik kumpul, lalu pesan ojek online.",
         vi: "Đồng ý. Mình gặp ở điểm hẹn, rồi đặt xe ôm công nghệ.",

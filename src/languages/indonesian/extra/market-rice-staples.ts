@@ -16,6 +16,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   /** Indonesian word/phrase. */
   word: string;
   /** English meaning. */
@@ -31,6 +32,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   /** Indonesian line. */
   text: string;
@@ -207,6 +209,7 @@ export const lessons: IndonesianLesson[] = [
       "Useful frames: `belanja bulanan`, `berapa per kilo?`, `naik harga`, `stok habis`, `potongan harga`, `merek`, `kiloan`. When shopping at the market, direct but polite questions work better than long sentences.",
     vocabulary: [
       {
+        cell_id: "f127fbd8-3e51-4ea1-9173-55161633aafc",
         word: "sembako",
         en: "basic necessities / staple goods",
         vi: "nhu yếu phẩm",
@@ -215,6 +218,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "sem-BAH-koh",
       },
       {
+        cell_id: "9dad19de-66be-420d-996d-5a87e5e039cf",
         word: "beras",
         en: "uncooked rice",
         vi: "gạo sống",
@@ -223,6 +227,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "beh-RAS",
       },
       {
+        cell_id: "f9c8ea1b-770e-4f57-9b8d-a9ad154e151c",
         word: "minyak goreng",
         en: "cooking oil",
         vi: "dầu ăn",
@@ -231,6 +236,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "MIN-yahk GOH-reng",
       },
       {
+        cell_id: "a693dde3-8a5f-4d5f-beb6-ee7ac9268b3a",
         word: "telur",
         en: "egg",
         vi: "trứng",
@@ -239,6 +245,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "te-LOOR",
       },
       {
+        cell_id: "c98eb824-e456-4812-b2f2-5c20a65f421f",
         word: "gula",
         en: "sugar",
         vi: "đường",
@@ -247,6 +254,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "GOO-lah",
       },
       {
+        cell_id: "345da733-5d3b-4489-a1a9-0932ab5bd3c0",
         word: "kiloan",
         en: "sold by the kilogram",
         vi: "bán theo ký",
@@ -255,6 +263,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "kee-LOH-an",
       },
       {
+        cell_id: "bbe948e4-1cfb-4258-9e08-8cc0e1d656cf",
         word: "stok habis",
         en: "out of stock",
         vi: "hết hàng",
@@ -263,6 +272,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "stok HA-bees",
       },
       {
+        cell_id: "9c1201c6-a31b-4060-bc36-13dd1c0d893b",
         word: "belanja bulanan",
         en: "monthly shopping",
         vi: "mua sắm hằng tháng",
@@ -273,24 +283,28 @@ export const lessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "246a229f-0535-4b85-a7d0-5fa5b581f94b",
         speaker: "Pembeli",
         text: "Pak, berasnya berapa per kilo?",
         vi: "Chú ơi, gạo tính bao nhiêu một ký?",
         en: "Sir, how much is the rice per kilo?",
       },
       {
+        cell_id: "818e76f9-f059-4a7e-a7fd-9ee9cd807ce7",
         speaker: "Penjual",
         text: "Hari ini harganya naik sedikit, tapi masih ada potongan harga kalau beli dua kilo.",
         vi: "Hôm nay giá tăng một chút, nhưng vẫn có giảm giá nếu mua hai ký.",
         en: "The price went up a little today, but there is still a discount if you buy two kilos.",
       },
       {
+        cell_id: "f65855f9-5dc3-41aa-85f2-5821813a80c9",
         speaker: "Pembeli",
         text: "Baik, saya ambil beras, minyak goreng, telur, dan gula.",
         vi: "Được, tôi lấy gạo, dầu ăn, trứng và đường.",
         en: "Okay, I’ll take rice, cooking oil, eggs, and sugar.",
       },
       {
+        cell_id: "0341a90b-cb42-4971-81ec-a11513447e47",
         speaker: "Penjual",
         text: "Silakan. Untuk belanja bulanan, stok kami masih aman.",
         vi: "Mời anh/chị. Với mua sắm hằng tháng, hàng của chúng tôi vẫn còn đủ.",

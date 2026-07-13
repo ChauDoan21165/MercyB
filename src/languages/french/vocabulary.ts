@@ -10,6 +10,7 @@
 // approximations, common mistake warnings).
 
 export type FrenchVocabEntry = {
+  cell_id?: string;
   fr: string;
   en: string;
   vi: string;

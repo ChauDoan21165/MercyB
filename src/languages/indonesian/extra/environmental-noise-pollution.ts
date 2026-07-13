@@ -13,6 +13,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -22,6 +23,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -138,6 +140,7 @@ export const environmentalNoisePollutionLessons: IndonesianLesson[] = [
       "Key phrases: `polusi suara`, `bau tidak sedap`, `limbah`, `komplain warga`, `mencari solusi`. Avoid literal Vietnamese-style phrases like `suara besar` or `bau jelek`.",
     vocabulary: [
       {
+        cell_id: "a24a1583-0943-4fa5-a8fb-0ac4ed1c90ef",
         word: "polusi suara",
         en: "noise pollution",
         vi: "ô nhiễm tiếng ồn",
@@ -146,6 +149,7 @@ export const environmentalNoisePollutionLessons: IndonesianLesson[] = [
         pronunciation_en: "po-LOO-si SOO-a-ra",
       },
       {
+        cell_id: "ecbe23e3-d0c9-4365-98da-81cd8c3f3c35",
         word: "limbah",
         en: "waste",
         vi: "chất thải",
@@ -154,6 +158,7 @@ export const environmentalNoisePollutionLessons: IndonesianLesson[] = [
         pronunciation_en: "LIM-bah",
       },
       {
+        cell_id: "6233aab8-f462-43b5-8195-4f29e52adb72",
         word: "bau tidak sedap",
         en: "unpleasant smell",
         vi: "mùi khó chịu",
@@ -162,6 +167,7 @@ export const environmentalNoisePollutionLessons: IndonesianLesson[] = [
         pronunciation_en: "bau TEE-dak SE-dap",
       },
       {
+        cell_id: "982b0a8b-95df-42fc-82cf-89fb85d8c114",
         word: "warga",
         en: "residents",
         vi: "cư dân / người dân",
@@ -170,6 +176,7 @@ export const environmentalNoisePollutionLessons: IndonesianLesson[] = [
         pronunciation_en: "WAR-ga",
       },
       {
+        cell_id: "dadc46a2-d1a2-4691-9fa0-011bf6c64e36",
         word: "komplain",
         en: "complaint / complain",
         vi: "phàn nàn / khiếu nại",
@@ -178,6 +185,7 @@ export const environmentalNoisePollutionLessons: IndonesianLesson[] = [
         pronunciation_en: "kom-PLAIN",
       },
       {
+        cell_id: "15f08e3b-9504-4a5f-9d94-7863f7c42b38",
         word: "solusi",
         en: "solution",
         vi: "giải pháp",
@@ -188,18 +196,21 @@ export const environmentalNoisePollutionLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "58b46f10-08f9-4ec4-bce0-61cd095f9885",
         speaker: "Warga",
         text: "Pak, suara mesin dari proyek terlalu keras setiap malam.",
         vi: "Chú ơi, tiếng máy từ công trình quá to mỗi tối.",
         en: "Sir, the machine noise from the project is too loud every night.",
       },
       {
+        cell_id: "53c9ab45-d96d-4efe-a47b-a6c0ba4acbc0",
         speaker: "Pengelola",
         text: "Baik, apakah sudah ada laporan dari warga lain?",
         vi: "Được, đã có báo cáo từ cư dân khác chưa?",
         en: "Okay, have there been reports from other residents?",
       },
       {
+        cell_id: "674b497e-81fd-453e-9178-be5cf0a81d0a",
         speaker: "Warga",
         text: "Sudah. Kami ingin mencari solusi supaya tidak mengganggu.",
         vi: "Có rồi. Chúng tôi muốn tìm giải pháp để không gây phiền.",
@@ -316,6 +327,7 @@ export const environmentalNoisePollutionLessons: IndonesianLesson[] = [
       "In formal writing, choose clear and neutral terms: `membuat laporan`, `bukti berupa foto`, `pemeriksaan`, `tindak lanjut`. Avoid strong accusations if you do not yet have evidence.",
     vocabulary: [
       {
+        cell_id: "1ef36d5d-1815-46f8-af22-fa71792b79fa",
         word: "dinas lingkungan",
         en: "environmental agency",
         vi: "cơ quan/sở môi trường",
@@ -324,6 +336,7 @@ export const environmentalNoisePollutionLessons: IndonesianLesson[] = [
         pronunciation_en: "DEE-nas ling-KOONG-an",
       },
       {
+        cell_id: "33e53ad5-7290-40fc-bf1c-275e9b0574d9",
         word: "bukti laporan",
         en: "report evidence",
         vi: "bằng chứng cho báo cáo",
@@ -332,6 +345,7 @@ export const environmentalNoisePollutionLessons: IndonesianLesson[] = [
         pronunciation_en: "BOOK-ti la-PO-ran",
       },
       {
+        cell_id: "6902478b-eb31-4869-a2c1-aee9489f72e6",
         word: "kejadian",
         en: "incident / event",
         vi: "sự việc",
@@ -340,6 +354,7 @@ export const environmentalNoisePollutionLessons: IndonesianLesson[] = [
         pronunciation_en: "ke-JA-di-an",
       },
       {
+        cell_id: "ee0a59f0-ec95-4708-9e08-7cd3536e6b6e",
         word: "pemeriksaan",
         en: "inspection / check",
         vi: "việc kiểm tra",
@@ -348,6 +363,7 @@ export const environmentalNoisePollutionLessons: IndonesianLesson[] = [
         pronunciation_en: "pe-me-RIK-sa-an",
       },
       {
+        cell_id: "db940f22-b92b-4f32-af83-83bcdbc76a47",
         word: "tindak lanjut",
         en: "follow-up action",
         vi: "xử lý tiếp / bước tiếp theo",
@@ -356,6 +372,7 @@ export const environmentalNoisePollutionLessons: IndonesianLesson[] = [
         pronunciation_en: "TIN-dak LAN-jut",
       },
       {
+        cell_id: "8d933160-f7c4-430f-a815-58089a5eec69",
         word: "terdampak",
         en: "affected",
         vi: "bị ảnh hưởng",
@@ -366,24 +383,28 @@ export const environmentalNoisePollutionLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "7785b646-11df-4db9-91c6-c7016f2055c0",
         speaker: "Warga",
         text: "Kami mau membuat laporan tentang limbah dan bau tidak sedap.",
         vi: "Chúng tôi muốn lập báo cáo về chất thải và mùi khó chịu.",
         en: "We want to file a report about waste and unpleasant smells.",
       },
       {
+        cell_id: "ed3752a0-ef8f-49ac-bb96-c538038aaa7a",
         speaker: "Petugas",
         text: "Apakah ada bukti berupa foto atau video?",
         vi: "Có bằng chứng dưới dạng ảnh hoặc video không?",
         en: "Is there evidence in the form of photos or videos?",
       },
       {
+        cell_id: "a4ca6d57-df0d-416d-8844-f092e2a43b8d",
         speaker: "Warga",
         text: "Ada, dan kejadian ini berulang hampir setiap hari.",
         vi: "Có, và việc này lặp lại gần như mỗi ngày.",
         en: "Yes, and this incident recurs almost every day.",
       },
       {
+        cell_id: "1022954c-21a2-4688-9961-9474c1bf53f2",
         speaker: "Petugas",
         text: "Baik, kami catat untuk pemeriksaan dan tindak lanjut.",
         vi: "Được, chúng tôi ghi nhận để kiểm tra và xử lý tiếp.",

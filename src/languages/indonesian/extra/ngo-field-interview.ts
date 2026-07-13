@@ -16,6 +16,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   /** Indonesian word/phrase. */
   word: string;
   /** English meaning. */
@@ -31,6 +32,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   /** Indonesian line. */
   text: string;
@@ -193,6 +195,7 @@ export const lessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: do not translate too literally. For fieldwork, use the pattern: `saya dari tim...`, `apakah Bapak/Ibu bersedia...`, `kami ingin meminta izin...`, `Anda boleh tidak menjawab`. This sequence makes you sound professional and safe. When talking about data, always emphasize `hanya untuk laporan` and `nama tidak dicantumkan`.",
     vocabulary: [
       {
+        cell_id: "7b852841-4af3-4ad1-b5cd-8f6d61fdf365",
         word: "wawancara lapangan",
         en: "field interview",
         vi: "phỏng vấn thực địa",
@@ -201,6 +204,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "WAH-wahn-CHAH-rah la-PAHNG-an",
       },
       {
+        cell_id: "cfabe542-6d12-4fad-92d4-3bb45a97f5bb",
         word: "responden",
         en: "respondent",
         vi: "người trả lời khảo sát",
@@ -209,6 +213,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "res-pon-DEN",
       },
       {
+        cell_id: "e4005d9b-eb4e-4830-ab21-f1d4a0fc8a2f",
         word: "izin rekaman",
         en: "recording permission",
         vi: "sự cho phép ghi âm",
@@ -217,6 +222,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "EE-zin reh-KAH-mahn",
       },
       {
+        cell_id: "fce38d59-b9c2-4639-82d0-875dc590ecaf",
         word: "pertanyaan sensitif",
         en: "sensitive question",
         vi: "câu hỏi nhạy cảm",
@@ -225,6 +231,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "per-tah-NYAH-ahn sen-see-TEEF",
       },
       {
+        cell_id: "34cffd47-6083-4aaa-a106-35acc290b685",
         word: "data warga",
         en: "residents' data",
         vi: "dữ liệu người dân",
@@ -233,6 +240,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "DAH-tah WAR-gah",
       },
       {
+        cell_id: "0377a294-2356-480d-b835-d244c5472346",
         word: "laporan survei",
         en: "survey report",
         vi: "báo cáo khảo sát",
@@ -241,6 +249,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "la-POH-rahn soor-VAY",
       },
       {
+        cell_id: "e81b22b4-d1b1-4a0f-9125-457209e505d8",
         word: "sopan santun",
         en: "politeness / etiquette",
         vi: "sự lịch sự",
@@ -249,6 +258,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "SOH-pahn SAHN-toon",
       },
       {
+        cell_id: "dbe09554-145b-4206-acd6-4927f1d206f9",
         word: "tidak menjawab",
         en: "not to answer",
         vi: "không trả lời",
@@ -259,24 +269,28 @@ export const lessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "5a468a16-e646-46eb-9f1b-8d34835de18a",
         speaker: "Petugas",
         text: "Selamat siang, kami dari tim survei lapangan.",
         vi: "Chào buổi trưa, chúng tôi từ nhóm khảo sát thực địa.",
         en: "Good afternoon, we are from the field survey team.",
       },
       {
+        cell_id: "9c2760ee-e0f3-49bf-8337-6eef0f5be824",
         speaker: "Responden",
         text: "Iya, silakan. Ada apa ya?",
         vi: "Vâng, mời. Có việc gì vậy?",
         en: "Yes, please go ahead. What is this about?",
       },
       {
+        cell_id: "69a38eb0-714a-4db8-9e99-a536761d7e7a",
         speaker: "Petugas",
         text: "Kami ingin meminta izin untuk merekam percakapan ini.",
         vi: "Chúng tôi muốn xin phép ghi âm cuộc trò chuyện này.",
         en: "We would like to ask permission to record this conversation.",
       },
       {
+        cell_id: "e69b9d9c-9327-4e09-982d-b1cfe05024f4",
         speaker: "Responden",
         text: "Boleh, asal data saya dijaga kerahasiaannya.",
         vi: "Được, miễn là dữ liệu của tôi được giữ bí mật.",

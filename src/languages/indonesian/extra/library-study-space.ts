@@ -21,6 +21,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   /** Indonesian word/phrase. */
   word: string;
   /** English meaning. */
@@ -36,6 +37,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   /** Indonesian line. */
   text: string;
@@ -253,6 +255,7 @@ export const lessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: memorize three useful frames: `Saya mau membuat kartu anggota`, `Saya ingin pinjam buku ini`, `Kapan batas pengembalian?`. For study spaces, distinguish `tenang` = quiet/calm from `diam` = be quiet, which can sound blunt.",
     vocabulary: [
       {
+        cell_id: "77893260-397b-4071-b4eb-2d30edd6518f",
         word: "perpustakaan",
         en: "library",
         vi: "thư viện",
@@ -261,6 +264,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "per-poos-ta-KA-an",
       },
       {
+        cell_id: "7cad9c70-602e-40ae-a0ee-a5c81a2280da",
         word: "kartu anggota",
         en: "membership card",
         vi: "thẻ thành viên",
@@ -269,6 +273,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "KAR-too ang-GO-ta",
       },
       {
+        cell_id: "95ef8c02-8794-4739-89d9-b42d5e46d844",
         word: "pinjam buku",
         en: "borrow a book",
         vi: "mượn sách",
@@ -277,6 +282,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "PIN-jam BOO-koo",
       },
       {
+        cell_id: "38f6ad23-9da5-40ed-9acb-56f9e8794a4f",
         word: "ruang belajar",
         en: "study room",
         vi: "phòng học / không gian học",
@@ -285,6 +291,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "ROO-ang be-LA-jar",
       },
       {
+        cell_id: "637f0fe7-1c34-4b6f-8daf-be8fbdd3cb09",
         word: "Wi-Fi",
         en: "Wi-Fi",
         vi: "Wi-Fi",
@@ -293,6 +300,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "WAI-fai",
       },
       {
+        cell_id: "64dd5098-a79a-4623-8418-857f1d4a762a",
         word: "tenang",
         en: "quiet / calm",
         vi: "yên lặng / bình tĩnh",
@@ -301,6 +309,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "TEH-nang",
       },
       {
+        cell_id: "3d2a9d94-039d-4ab5-b732-4b8461909332",
         word: "denda buku",
         en: "book fine",
         vi: "tiền phạt sách",
@@ -309,6 +318,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "DEN-da BOO-koo",
       },
       {
+        cell_id: "18148512-a0bc-4e64-b238-dc9844ca5e9e",
         word: "jam buka",
         en: "opening hours",
         vi: "giờ mở cửa",
@@ -317,6 +327,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "jam BOO-ka",
       },
       {
+        cell_id: "f215aa69-1919-483a-b6ad-cc4ea435d7bf",
         word: "batas pengembalian",
         en: "return deadline",
         vi: "hạn trả",
@@ -325,6 +336,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "BA-tas pe-ngem-BA-lee-an",
       },
       {
+        cell_id: "8623abc8-20df-441b-8f8f-0bc40011853f",
         word: "perpanjang masa pinjam",
         en: "extend the loan period",
         vi: "gia hạn thời gian mượn",
@@ -333,6 +345,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "per-PAN-jang MA-sa PIN-jam",
       },
       {
+        cell_id: "f539b4ae-141d-410c-9094-a92d4334c88e",
         word: "ruang baca",
         en: "reading room",
         vi: "phòng đọc",
@@ -341,6 +354,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "ROO-ang BA-cha",
       },
       {
+        cell_id: "1c37b037-1e38-465f-a2d9-1243d0bd86ef",
         word: "petugas perpustakaan",
         en: "library staff",
         vi: "nhân viên thư viện",
@@ -351,24 +365,28 @@ export const lessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "0f840182-7b26-43a3-8c89-f792a844d635",
         speaker: "Pengunjung",
         text: "Permisi, saya mau membuat kartu anggota perpustakaan.",
         vi: "Xin phép, tôi muốn làm thẻ thành viên thư viện.",
         en: "Excuse me, I want to make a library membership card.",
       },
       {
+        cell_id: "e100d034-bade-4859-b28b-7bc59621ddc6",
         speaker: "Petugas",
         text: "Boleh. Tolong isi formulir ini dan tunjukkan kartu identitas.",
         vi: "Được. Làm ơn điền mẫu này và xuất trình giấy tờ tùy thân.",
         en: "Sure. Please fill in this form and show an ID card.",
       },
       {
+        cell_id: "f1075ca1-95d2-41a3-8985-189f600031c6",
         speaker: "Pengunjung",
         text: "Setelah itu, saya bisa pinjam buku hari ini?",
         vi: "Sau đó, hôm nay tôi có thể mượn sách không?",
         en: "After that, can I borrow books today?",
       },
       {
+        cell_id: "1bdeb639-ab5a-4df4-93ba-2926ff8d2484",
         speaker: "Petugas",
         text: "Bisa. Batas pengembalian dua minggu, dan ada denda kalau terlambat.",
         vi: "Có thể. Hạn trả là hai tuần, và có phạt nếu trễ.",

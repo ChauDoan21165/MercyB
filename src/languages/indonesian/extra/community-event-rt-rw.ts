@@ -6,6 +6,7 @@ type IndonesianLessonSentence = {
 };
 
 type VocabEntry = {
+  cell_id?: string;
   word: string;
   meaning_vi: string;
   meaning_en: string;
@@ -14,6 +15,7 @@ type VocabEntry = {
 };
 
 type DialogueLine = {
+  cell_id?: string;
   speaker: string;
   line: string;
   vi: string;
@@ -117,6 +119,7 @@ export const lessons: IndonesianLesson[] = [
     ],
     vocabulary: [
       {
+        cell_id: "b0981ad8-bb47-47c1-9565-1fa1a3789961",
         word: 'rapat RT',
         meaning_vi: 'cuộc họp RT/khu dân cư',
         meaning_en: 'neighborhood RT meeting',
@@ -124,6 +127,7 @@ export const lessons: IndonesianLesson[] = [
         example_vi: 'Cuộc họp RT bắt đầu lúc tám giờ tối.',
       },
       {
+        cell_id: "fc162039-695c-4c31-afc3-63c7842cf081",
         word: 'iuran warga',
         meaning_vi: 'khoản đóng góp/phí của cư dân',
         meaning_en: 'resident dues or neighborhood contribution',
@@ -131,6 +135,7 @@ export const lessons: IndonesianLesson[] = [
         example_vi: 'Khoản phí cư dân được dùng cho vệ sinh và an ninh.',
       },
       {
+        cell_id: "2b289bc3-1d5d-4199-bb71-ad427dffeba5",
         word: 'kerja bakti',
         meaning_vi: 'lao động/dọn dẹp chung vì cộng đồng',
         meaning_en: 'community cleanup or communal service',
@@ -138,6 +143,7 @@ export const lessons: IndonesianLesson[] = [
         example_vi: 'Chủ nhật có hoạt động dọn dẹp chung để làm sạch cống rãnh.',
       },
       {
+        cell_id: "271196a2-602f-4e8d-9435-0b6e22822f5a",
         word: 'pengumuman',
         meaning_vi: 'thông báo',
         meaning_en: 'announcement',
@@ -145,6 +151,7 @@ export const lessons: IndonesianLesson[] = [
         example_vi: 'Thông báo được dán trên bảng thông tin.',
       },
       {
+        cell_id: "14f362c5-fd84-488c-b2a9-543031090e60",
         word: 'keamanan lingkungan',
         meaning_vi: 'an ninh khu dân cư',
         meaning_en: 'neighborhood security',
@@ -152,6 +159,7 @@ export const lessons: IndonesianLesson[] = [
         example_vi: 'An ninh khu dân cư được thảo luận trong cuộc họp RW.',
       },
       {
+        cell_id: "c3da6749-3fa8-4e5f-ac89-b37cd670f649",
         word: 'acara 17 Agustus',
         meaning_vi: 'sự kiện ngày 17 tháng 8, Quốc khánh Indonesia',
         meaning_en: 'August 17 Independence Day event',
@@ -159,6 +167,7 @@ export const lessons: IndonesianLesson[] = [
         example_vi: 'Trẻ em tham gia cuộc thi trong sự kiện 17 tháng 8.',
       },
       {
+        cell_id: "865d6317-4e48-4308-858d-f3f63de8a013",
         word: 'daftar hadir',
         meaning_vi: 'danh sách điểm danh/ký tên',
         meaning_en: 'attendance list or sign-in sheet',
@@ -166,6 +175,7 @@ export const lessons: IndonesianLesson[] = [
         example_vi: 'Danh sách điểm danh ở bàn phía trước.',
       },
       {
+        cell_id: "1bceca80-db1d-4adc-8f5d-430180e5d9ae",
         word: 'pengurus RT',
         meaning_vi: 'ban quản lý/người phụ trách RT',
         meaning_en: 'RT neighborhood committee or officers',
@@ -175,36 +185,42 @@ export const lessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "3ba357ae-88cd-4c58-b417-2fa18f1447f6",
         speaker: 'Warga Baru',
         line: 'Selamat malam, Pak. Saya warga baru di RT ini.',
         vi: 'Chào buổi tối bác/anh. Tôi là cư dân mới ở RT này.',
         en: 'Good evening, Sir. I am a new resident in this RT.',
       },
       {
+        cell_id: "bb945afc-1e0d-4084-82ea-eac53b2947af",
         speaker: 'Pak RT',
         line: 'Selamat malam. Silakan isi daftar hadir dulu.',
         vi: 'Chào buổi tối. Mời điền danh sách điểm danh trước.',
         en: 'Good evening. Please fill in the attendance list first.',
       },
       {
+        cell_id: "2d78ced7-b426-4b0e-9ee4-358407657ffb",
         speaker: 'Warga Baru',
         line: 'Baik, Pak. Berapa iuran warga per bulan?',
         vi: 'Vâng. Khoản phí cư dân mỗi tháng là bao nhiêu?',
         en: 'All right. How much are the neighborhood dues per month?',
       },
       {
+        cell_id: "19fa0f58-8e4d-4b00-b5f9-dc02d1ca91ee",
         speaker: 'Pak RT',
         line: 'Iuran bulan ini lima puluh ribu rupiah untuk kebersihan dan keamanan.',
         vi: 'Khoản phí tháng này là năm mươi nghìn rupiah cho vệ sinh và an ninh.',
         en: 'This month’s dues are fifty thousand rupiah for cleanliness and security.',
       },
       {
+        cell_id: "39bcbe97-0473-4806-a3f9-0e2cdc88ecaa",
         speaker: 'Warga Baru',
         line: 'Apakah minggu ini ada kerja bakti?',
         vi: 'Tuần này có lao động/dọn dẹp chung không?',
         en: 'Is there a community cleanup this week?',
       },
       {
+        cell_id: "4f8cfb53-7ccc-46f2-b655-a61466adad24",
         speaker: 'Pak RT',
         line: 'Ada. Hari Minggu pagi, sekaligus persiapan acara 17 Agustus.',
         vi: 'Có. Sáng Chủ nhật, đồng thời chuẩn bị cho sự kiện 17 tháng 8.',

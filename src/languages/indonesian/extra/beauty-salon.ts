@@ -31,6 +31,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   /** Indonesian word/phrase. */
   word: string;
   /** English meaning. */
@@ -46,6 +47,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   /** Indonesian line. */
   text: string;
@@ -297,6 +299,7 @@ export const lessons: IndonesianLesson[] = [
       "Five golden salon frames: (1) book — `Saya mau membuat janji untuk ___`; (2) request a cut (use `-kan`) — `Tolong potongkan ___` / `Tolong rapikan ___`; (3) degree — `agak ___`, `jangan terlalu ___`, `lebih ___ sedikit`; (4) ask price + time — `Berapa harganya?` / `Kira-kira berapa lama?` / `Sudah termasuk ___?`; (5) feedback — `Hasilnya bagus, makasih ya`. Key grammar: the causative `-kan` ('do it FOR me') — `potong` → `potongkan`, `rapi` → `rapikan`, `kering` → `keringkan`; and the passive `di-...-kan`, very common here (`dirapikan`, `dikeringkan`, `dipotong`). Describe skin with `ber-`: `kulit berminyak` (oily skin). Don't forget the `ribu` scale on prices.",
     vocabulary: [
       {
+        cell_id: "b3b18dd2-270f-4f80-8aca-27d0707c2f64",
         word: "salon",
         en: "beauty salon",
         vi: "tiệm làm đẹp / salon",
@@ -305,6 +308,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "SAH-lon — `klinik kecantikan` = beauty clinic",
       },
       {
+        cell_id: "f8cd20dc-f3f1-4d40-a386-64ca9520ceb8",
         word: "potong rambut",
         en: "haircut",
         vi: "cắt tóc",
@@ -313,6 +317,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "PO-tong RAM-boot — 'cut it for me' = `potongkan`",
       },
       {
+        cell_id: "3d6e7199-a97e-4f01-bb7c-301730334edd",
         word: "keramas",
         en: "to shampoo / wash hair",
         vi: "gội đầu",
@@ -321,6 +326,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "ke-RAH-mas — NOT `cuci` (laundry/dishes)",
       },
       {
+        cell_id: "a9e5b239-6216-437d-b3e8-7da141566e77",
         word: "semir rambut",
         en: "hair dye / coloring",
         vi: "nhuộm tóc",
@@ -329,6 +335,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "se-MIR RAM-boot — synonym `cat rambut`",
       },
       {
+        cell_id: "1754f7ba-3bf0-4308-8a8d-96c5d2750d90",
         word: "creambath",
         en: "cream + scalp-massage treatment",
         vi: "ủ và massage da đầu",
@@ -337,6 +344,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "krim-baht — said 'krim-baht', not full English",
       },
       {
+        cell_id: "315a03a7-86e3-4eb5-a6c7-6d7209fba78f",
         word: "facial",
         en: "facial / skincare treatment",
         vi: "chăm sóc da mặt",
@@ -345,6 +353,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "FEH-see-al — `kulit berminyak/kering/sensitif`",
       },
       {
+        cell_id: "ce4f60d6-8c2b-4eeb-be53-e252890eda58",
         word: "manikur / pedikur",
         en: "manicure / pedicure",
         vi: "làm móng tay / móng chân",
@@ -353,6 +362,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "ma-nee-KUR / pe-dee-KUR — nail = `kuku`; polish = `cat kuku`",
       },
       {
+        cell_id: "c414e081-a69b-4655-a4b7-fa80af5541b3",
         word: "pijat",
         en: "massage",
         vi: "massage / bấm huyệt",
@@ -361,6 +371,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "pee-JAHT — pressure: `keras` (hard) / `pelan` (gentle)",
       },
       {
+        cell_id: "f1844329-578c-4883-a60e-3a1ad7d7b8d0",
         word: "agak",
         en: "a bit / somewhat",
         vi: "hơi, một chút",
@@ -369,6 +380,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "AH-gak — `agak pendek` = a bit short",
       },
       {
+        cell_id: "a37bbc89-0d7a-4661-9c46-1a1e652e9b29",
         word: "jangan terlalu",
         en: "not too (much)",
         vi: "đừng quá",
@@ -377,6 +389,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "JAH-ngan ter-LAH-loo — `jangan terlalu pendek` = not too short",
       },
       {
+        cell_id: "e0a7abcd-e282-4998-97fc-5d6d2226ac3f",
         word: "membuat janji",
         en: "to make an appointment",
         vi: "đặt lịch hẹn",
@@ -385,6 +398,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "mem-BOO-at JAN-jee — not English `booking`",
       },
       {
+        cell_id: "faad65cf-1d48-4754-b8b9-614963a7ee2d",
         word: "sudah termasuk",
         en: "already included",
         vi: "đã bao gồm",
@@ -395,36 +409,42 @@ export const lessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "2397b055-71e5-480a-b2d0-ec00d17c1a72",
         speaker: "Pelanggan",
         text: "Mbak, saya mau membuat janji untuk potong rambut. Ada slot sore ini?",
         vi: "Chị ơi, tôi muốn đặt hẹn cắt tóc. Chiều nay còn chỗ không?",
         en: "Hi, I'd like to book a haircut. Any slot this afternoon?",
       },
       {
+        cell_id: "b36760f9-cab4-4659-b7e5-fc34fd9775d7",
         speaker: "Staf",
         text: "Ada, jam empat. Mau model seperti apa, Mbak?",
         vi: "Có, bốn giờ. Chị muốn kiểu như thế nào ạ?",
         en: "Yes, at four. What style would you like?",
       },
       {
+        cell_id: "28f5aee6-b309-49f6-adbc-ec20830c2eee",
         speaker: "Pelanggan",
         text: "Seperti di foto ini. Tolong potongkan agak pendek, tapi jangan terlalu pendek.",
         vi: "Giống trong ảnh này. Làm ơn cắt hơi ngắn, nhưng đừng quá ngắn.",
         en: "Like this photo. Cut it a bit short, but not too short.",
       },
       {
+        cell_id: "376c8f1b-4d07-4538-a9ed-14a263c95080",
         speaker: "Staf",
         text: "Baik. Sekalian keramas dan blow? Sudah termasuk vitamin rambut.",
         vi: "Vâng. Gội và sấy tạo kiểu luôn nhé? Đã gồm dưỡng tóc.",
         en: "Sure. Shampoo and blow-dry too? Hair treatment is included.",
       },
       {
+        cell_id: "b9b5cba7-ead2-412a-81ca-9ebf92d6e615",
         speaker: "Pelanggan",
         text: "Boleh. Kira-kira berapa lama dan berapa semuanya?",
         vi: "Được. Khoảng bao lâu và tất cả bao nhiêu?",
         en: "Okay. About how long, and how much altogether?",
       },
       {
+        cell_id: "8454a13d-9e0d-4f4c-bfe5-db3442bb68b0",
         speaker: "Staf",
         text: "Sekitar satu jam, semuanya seratus lima puluh ribu. Bisa QRIS.",
         vi: "Khoảng một tiếng, tất cả một trăm năm mươi nghìn. Có thể QRIS.",

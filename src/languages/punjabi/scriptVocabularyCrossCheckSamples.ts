@@ -18,6 +18,7 @@ export type PunjabiCrossCheckFocus =
 export type PunjabiCrossCheckStage = "cross_check" | "verification" | "pre_integration" | "sanity";
 
 export type PunjabiScriptVocabularyCrossCheckSample = {
+  cell_id?: string;
   id: string;
   focus: PunjabiCrossCheckFocus;
   stage: PunjabiCrossCheckStage;
@@ -39,6 +40,7 @@ export type PunjabiScriptVocabularyCrossCheckSample = {
 };
 
 export type PunjabiScriptVocabularyCrossCheckSection = {
+  cell_id?: string;
   focus: PunjabiCrossCheckFocus;
   title_vi: string;
   title_en: string;

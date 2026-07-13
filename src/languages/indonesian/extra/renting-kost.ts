@@ -16,6 +16,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   /** Indonesian word/phrase. */
   word: string;
   /** English meaning. */
@@ -31,6 +32,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   /** Indonesian line. */
   text: string;
@@ -193,6 +195,7 @@ export const lessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: learn fixed chunks rather than isolated words: `sewa per bulan`, `uang deposit`, `sudah termasuk listrik`, `peraturan rumah`, `ibu kost`, `pindah kamar`. When asking the owner, add `Bu/Pak` and use soft question frames like `Apakah... ?` or `Boleh... ?` to sound polite.",
     vocabulary: [
       {
+        cell_id: "6b001778-23df-4d23-8014-c53c03fd18c5",
         word: "kost",
         en: "rented room / boarding house",
         vi: "phòng trọ / nhà trọ",
@@ -201,6 +204,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "kost",
       },
       {
+        cell_id: "77237ae5-917e-4772-b061-9ffe80a71240",
         word: "kontrakan",
         en: "rental house",
         vi: "nhà thuê",
@@ -209,6 +213,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "kon-TRA-kan",
       },
       {
+        cell_id: "923f2a9f-1d6b-4987-94a8-ae930eed20a3",
         word: "uang sewa",
         en: "rent money",
         vi: "tiền thuê",
@@ -217,6 +222,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "OO-ang SE-wa",
       },
       {
+        cell_id: "4a02b3ef-a9dd-4b62-854a-44bd9a3d91bc",
         word: "deposit",
         en: "deposit",
         vi: "tiền cọc",
@@ -225,6 +231,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "de-PO-sit",
       },
       {
+        cell_id: "5fcee79b-ce59-4778-891c-ea117fcd3eb9",
         word: "listrik",
         en: "electricity",
         vi: "điện",
@@ -233,6 +240,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "LIS-trik",
       },
       {
+        cell_id: "afe76ef8-bbad-4c67-8e08-93dcb8b53a29",
         word: "air",
         en: "water",
         vi: "nước",
@@ -241,6 +249,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "A-ir",
       },
       {
+        cell_id: "da9c6bcb-85af-484c-9e31-b17306718499",
         word: "peraturan rumah",
         en: "house rules",
         vi: "nội quy nhà",
@@ -249,6 +258,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "pe-ra-TU-ran ROO-mah",
       },
       {
+        cell_id: "0b6026bb-a87e-4479-b7ad-5b478e129c35",
         word: "ibu kost",
         en: "boarding-house landlady",
         vi: "cô/chủ nhà trọ",
@@ -257,6 +267,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "EE-boo kost",
       },
       {
+        cell_id: "f6fcf387-1a69-4338-8012-6317b865cba8",
         word: "pindah kamar",
         en: "move rooms",
         vi: "chuyển phòng",
@@ -265,6 +276,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "PIN-dah KA-mar",
       },
       {
+        cell_id: "ba12a85c-2d12-4b7f-88e0-c5ae4b946ec0",
         word: "tamu",
         en: "guest",
         vi: "khách",
@@ -275,30 +287,35 @@ export const lessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "55b01672-b309-48ee-875c-86eb4e2d5eb3",
         speaker: "Penyewa",
         text: "Permisi, Bu. Masih ada kamar kost yang kosong?",
         vi: "Xin lỗi cô. Còn phòng trọ nào trống không ạ?",
         en: "Excuse me, ma'am. Is there still a vacant kost room?",
       },
       {
+        cell_id: "488475af-fe9d-4548-9965-c4524081d6de",
         speaker: "Ibu kost",
         text: "Ada. Sewa per bulan satu juta dua ratus ribu.",
         vi: "Có. Tiền thuê mỗi tháng một triệu hai trăm nghìn.",
         en: "Yes. The monthly rent is one million two hundred thousand.",
       },
       {
+        cell_id: "b087920e-1a59-4d97-9b33-2ba61f5838cd",
         speaker: "Penyewa",
         text: "Listrik dan air sudah termasuk?",
         vi: "Điện và nước đã bao gồm chưa ạ?",
         en: "Are electricity and water included?",
       },
       {
+        cell_id: "6785848d-a8c2-4ba6-a93c-6b5e2789d453",
         speaker: "Ibu kost",
         text: "Air termasuk, tapi listrik bayar sendiri.",
         vi: "Nước bao gồm, nhưng điện tự trả.",
         en: "Water is included, but electricity is paid separately.",
       },
       {
+        cell_id: "822cc70c-2e3c-4426-affb-440570eb08f4",
         speaker: "Penyewa",
         text: "Kalau nanti saya mau pindah kamar, boleh?",
         vi: "Nếu sau này tôi muốn chuyển phòng thì được không ạ?",

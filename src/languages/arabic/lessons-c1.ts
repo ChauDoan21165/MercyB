@@ -19,6 +19,7 @@ export const lessons: ArabicLesson[] = [
       "This lesson practices opening an academic presentation in MSA: topic, scope, structure, timing, and Q&A control without sounding ceremonial.",
     vocabulary: [
       {
+        cell_id: "68746a54-1481-4dd5-ac6a-ee63fc718749",
         ar: "محور",
         romanization: "mihwar",
         en: "axis; main section",
@@ -26,6 +27,7 @@ export const lessons: ArabicLesson[] = [
         pos: "noun",
       },
       {
+        cell_id: "e03f0100-4ed2-4fc5-971b-ba84856f99ba",
         ar: "إطار عام",
         romanization: "itar aam",
         en: "general framework",
@@ -33,6 +35,7 @@ export const lessons: ArabicLesson[] = [
         pos: "phrase",
       },
       {
+        cell_id: "cfa1813e-3264-41c1-9b80-ffd30e9d3ece",
         ar: "سأقسم العرض إلى",
         romanization: "sa-uqassim al-ard ila",
         en: "I will divide the presentation into",
@@ -40,6 +43,7 @@ export const lessons: ArabicLesson[] = [
         pos: "frame",
       },
       {
+        cell_id: "04649657-b1a1-4e39-a0f0-ff2dfe8e652b",
         ar: "أنتقل الآن إلى",
         romanization: "antaqilu al-aan ila",
         en: "I now move to",
@@ -84,6 +88,7 @@ export const lessons: ArabicLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "50d7da85-6925-4885-a73f-f79a6a7a4309",
         speaker: "Presenter",
         ar: "في البداية، أود أن أوضح سؤال البحث وحدود المادة المدروسة.",
         romanization:
@@ -93,6 +98,7 @@ export const lessons: ArabicLesson[] = [
         register: "formal",
       },
       {
+        cell_id: "4c3afd76-82f5-4d6a-a1f0-6c0028de79ac",
         speaker: "Chair",
         ar: "هل ستتناول الجانب التطبيقي أيضا؟",
         romanization: "hal satatanawalu al-janib at-tatbiqi aydan",
@@ -101,6 +107,7 @@ export const lessons: ArabicLesson[] = [
         register: "formal",
       },
       {
+        cell_id: "8fd28c51-3b49-45c9-abc6-736ff707ae28",
         speaker: "Presenter",
         ar: "نعم، سأعود إليه في المحور الثالث بعد عرض المنهج.",
         romanization:
@@ -152,6 +159,7 @@ export const lessons: ArabicLesson[] = [
       "This lesson practices partial agreement, scope control, and polite rebuttal in MSA. Examples are neutral and avoid political or religious conclusions.",
     vocabulary: [
       {
+        cell_id: "64c28e78-12e1-453e-a6ad-d17f58e0c67d",
         ar: "مع التسليم بـ",
         romanization: "maa at-taslim bi",
         en: "while conceding",
@@ -159,6 +167,7 @@ export const lessons: ArabicLesson[] = [
         pos: "frame",
       },
       {
+        cell_id: "166fe413-c619-49bd-8c85-c8c9113dc3a2",
         ar: "غير أن",
         romanization: "ghayra anna",
         en: "however; yet",
@@ -166,6 +175,7 @@ export const lessons: ArabicLesson[] = [
         pos: "connector",
       },
       {
+        cell_id: "f27c80ff-504c-400f-b9a4-8357c9bb7834",
         ar: "لا يترتب على ذلك أن",
         romanization: "la yatarattabu ala dhalika anna",
         en: "it does not follow that",
@@ -173,6 +183,7 @@ export const lessons: ArabicLesson[] = [
         pos: "frame",
       },
       {
+        cell_id: "dd4c2b9a-4746-4720-ada5-8ca4a37c3b6d",
         ar: "إلى حد ما",
         romanization: "ila haddin ma",
         en: "to some extent",
@@ -205,6 +216,7 @@ export const lessons: ArabicLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "731f2582-7182-4914-80d9-56a47bc193b3",
         speaker: "A",
         ar: "ألا ترى أن الحل المقترح مكلف جدا؟",
         romanization: "ala tara anna al-hall al-muqtarah muklif jiddan",
@@ -213,6 +225,7 @@ export const lessons: ArabicLesson[] = [
         register: "formal",
       },
       {
+        cell_id: "e954237d-c68e-421b-8f95-52561028b205",
         speaker: "B",
         ar: "هذا صحيح إلى حد ما، لكن الكلفة وحدها لا تكفي للحكم على الجدوى.",
         romanization:
@@ -274,6 +287,7 @@ export const lessons: ArabicLesson[] = [
       "This lesson practices reading and summarizing news in neutral MSA: who said what, how certain it is, and what has not been verified.",
     vocabulary: [
       {
+        cell_id: "2e172c03-5a90-4594-9e2e-baa127905842",
         ar: "بحسب البيان",
         romanization: "bi-hasab al-bayan",
         en: "according to the statement",
@@ -281,6 +295,7 @@ export const lessons: ArabicLesson[] = [
         pos: "frame",
       },
       {
+        cell_id: "3b357455-e7e7-4eae-a77e-97a36e337993",
         ar: "لم يتسن التحقق من",
         romanization: "lam yatasanna at-tahaqquq min",
         en: "it was not possible to verify",
@@ -288,6 +303,7 @@ export const lessons: ArabicLesson[] = [
         pos: "frame",
       },
       {
+        cell_id: "8f61aa31-e5c2-47ed-a8f8-0f1d4ba650cb",
         ar: "مصادر مطلعة",
         romanization: "masadir muttalia",
         en: "informed sources",
@@ -295,6 +311,7 @@ export const lessons: ArabicLesson[] = [
         pos: "noun phrase",
       },
       {
+        cell_id: "a78c16b3-a672-45e5-b591-3b8a7b5ae422",
         ar: "في السياق نفسه",
         romanization: "fi as-siyaq nafsihi",
         en: "in the same context",
@@ -327,6 +344,7 @@ export const lessons: ArabicLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "a84bf775-9353-40f9-be55-3f9e27238207",
         speaker: "Editor",
         ar: "هل ذكرت المقالة مصدر هذه الأرقام؟",
         romanization: "hal dhakarat al-maqala masdar hadhihi al-arqam",
@@ -335,6 +353,7 @@ export const lessons: ArabicLesson[] = [
         register: "formal",
       },
       {
+        cell_id: "645e7a04-1164-40f2-b711-49a430f197f4",
         speaker: "Analyst",
         ar: "ذكرت مصدرا عاما، لكنها لم تقدم رابطا إلى البيانات الأصلية.",
         romanization:
@@ -387,6 +406,7 @@ export const lessons: ArabicLesson[] = [
       "This lesson practices shifting the same idea between neutral, polite, and formal register in workplace or institutional settings.",
     vocabulary: [
       {
+        cell_id: "a5976f0a-0b32-402f-8179-f53984e6c49b",
         ar: "أود الاستفسار عن",
         romanization: "awaddu al-istifsar an",
         en: "I would like to inquire about",
@@ -394,6 +414,7 @@ export const lessons: ArabicLesson[] = [
         pos: "polite frame",
       },
       {
+        cell_id: "4e5fb11d-0a63-4542-9b88-3c6132ef3f49",
         ar: "يرجى التكرم بـ",
         romanization: "yurja at-takarrum bi",
         en: "kindly please",
@@ -401,6 +422,7 @@ export const lessons: ArabicLesson[] = [
         pos: "formal frame",
       },
       {
+        cell_id: "0ac20e37-d878-4c25-8658-68796638e51a",
         ar: "في أقرب وقت ممكن",
         romanization: "fi aqrab waqt mumkin",
         en: "as soon as possible",
@@ -408,6 +430,7 @@ export const lessons: ArabicLesson[] = [
         pos: "phrase",
       },
       {
+        cell_id: "322a96b2-0229-435b-af98-b3d4806c4a7e",
         ar: "وتفضلوا بقبول فائق الاحترام",
         romanization: "wa-tafaddalu bi-qabul faiq al-ihtiram",
         en: "please accept my highest respect",
@@ -439,6 +462,7 @@ export const lessons: ArabicLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "13c4d315-546a-47b8-ab03-743a3f446839",
         speaker: "Employee",
         ar: "هل يمكن أن ترسل الملف اليوم؟",
         romanization: "hal yumkin an tursila al-malaf al-yawm",
@@ -447,6 +471,7 @@ export const lessons: ArabicLesson[] = [
         register: "neutral",
       },
       {
+        cell_id: "20b3be21-af8f-4b3f-b9d4-c907772d32a9",
         speaker: "Manager",
         ar: "في رسالة رسمية، قل: يرجى التكرم بإرسال الملف اليوم إن أمكن.",
         romanization:

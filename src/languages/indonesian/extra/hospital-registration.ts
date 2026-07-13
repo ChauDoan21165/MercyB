@@ -13,6 +13,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -22,6 +23,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -208,6 +210,7 @@ export const lessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: separate `pendaftaran` = registration, `antrean` = queue, `rujukan` = referral, `rawat jalan` = outpatient, `rawat inap` = inpatient. Ask location with `di mana`; use `ke` when going to a doctor or department. Hospital speech often uses formal `mohon`, `Anda`, and passive forms like `dipanggil`, `diambil`.",
     vocabulary: [
       {
+        cell_id: "e5576250-80fa-49d3-9edd-3c1347216ab5",
         word: "rumah sakit",
         en: "hospital",
         vi: "bệnh viện",
@@ -216,6 +219,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "ROO-mah SAH-kit",
       },
       {
+        cell_id: "7e904ce2-daaa-4c4b-be64-db721c48e3c5",
         word: "pendaftaran",
         en: "registration",
         vi: "đăng ký",
@@ -224,6 +228,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "pen-DAF-ta-ran",
       },
       {
+        cell_id: "96e7744c-5813-4fa3-8875-1a2c51858014",
         word: "nomor antrean",
         en: "queue number",
         vi: "số thứ tự",
@@ -232,6 +237,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "NOH-mor an-TREH-an",
       },
       {
+        cell_id: "72cf31e4-d663-4cf3-a68d-f105b1b922df",
         word: "BPJS Kesehatan",
         en: "Indonesian national health insurance",
         vi: "bảo hiểm y tế quốc gia Indonesia",
@@ -240,6 +246,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "bay-pay-jay-es ke-SEH-ha-tan",
       },
       {
+        cell_id: "83158ba4-ec70-453d-aa61-771068680948",
         word: "dokter spesialis",
         en: "specialist doctor",
         vi: "bác sĩ chuyên khoa",
@@ -248,6 +255,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "DOK-ter spe-see-ah-LIS",
       },
       {
+        cell_id: "273464fd-6d65-4275-915b-c72a27f85a18",
         word: "rawat jalan",
         en: "outpatient care",
         vi: "khám/điều trị ngoại trú",
@@ -256,6 +264,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "RAH-wat JAH-lan",
       },
       {
+        cell_id: "f7c8a831-1a48-45ee-bdfa-3e9f18aa9312",
         word: "rawat inap",
         en: "inpatient care",
         vi: "điều trị nội trú / nằm viện",
@@ -264,6 +273,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "RAH-wat EE-nap",
       },
       {
+        cell_id: "0406cb43-5079-47e9-adf2-777a7332a4c7",
         word: "hasil lab",
         en: "lab results",
         vi: "kết quả xét nghiệm",
@@ -272,6 +282,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "HAH-sil lab",
       },
       {
+        cell_id: "d610eb8f-3cc8-4dcb-b78b-384f1bf8b7cb",
         word: "rujukan",
         en: "referral",
         vi: "giấy chuyển tuyến / giấy giới thiệu",
@@ -280,6 +291,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "roo-JOO-kan",
       },
       {
+        cell_id: "2bb9204f-5c43-4074-80c8-22f09863ee83",
         word: "ruang tunggu",
         en: "waiting room",
         vi: "phòng chờ",
@@ -290,30 +302,35 @@ export const lessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "0663bc41-c6cf-4c28-8d73-72dc19c34e9c",
         speaker: "Pasien",
         text: "Selamat pagi, saya mau daftar rawat jalan.",
         vi: "Chào buổi sáng, tôi muốn đăng ký khám ngoại trú.",
         en: "Good morning, I want to register for outpatient care.",
       },
       {
+        cell_id: "f6e122e8-7676-4d0a-b7b5-c4ba7be4d343",
         speaker: "Petugas",
         text: "Silakan ambil nomor antrean dulu. Pakai BPJS atau umum?",
         vi: "Vui lòng lấy số thứ tự trước. Dùng BPJS hay khám dịch vụ tự trả?",
         en: "Please take a queue number first. Are you using BPJS or paying privately?",
       },
       {
+        cell_id: "c89aa800-9057-46d4-95e8-617d16663960",
         speaker: "Pasien",
         text: "Saya pakai BPJS. Ini KTP dan surat rujukan saya.",
         vi: "Tôi dùng BPJS. Đây là KTP và giấy chuyển tuyến của tôi.",
         en: "I use BPJS. Here are my ID card and referral letter.",
       },
       {
+        cell_id: "6714ac28-523f-4987-a1ac-04051efaec20",
         speaker: "Petugas",
         text: "Baik. Mau ke dokter spesialis apa?",
         vi: "Được. Anh/chị muốn gặp bác sĩ chuyên khoa nào?",
         en: "Okay. Which specialist do you want to see?",
       },
       {
+        cell_id: "23e6c3e8-43f3-45c8-869a-ea573dd0774c",
         speaker: "Pasien",
         text: "Dokter spesialis penyakit dalam. Kapan hasil lab bisa diambil?",
         vi: "Bác sĩ chuyên khoa nội. Khi nào có thể lấy kết quả xét nghiệm?",

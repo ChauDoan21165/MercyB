@@ -21,6 +21,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   /** Indonesian word/phrase. */
   word: string;
   /** English meaning. */
@@ -36,6 +37,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   /** Indonesian line. */
   text: string;
@@ -253,6 +255,7 @@ export const lessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: when complaining, do not start with accusations. Use soft frames: `Maaf, ... agak berisik`, `Tolong jangan ...`, `Sebaiknya kita ...`, `Saya tidak ingin memperbesar masalah`. For land, parking, or rental-rule issues, involve the `pemilik rumah` and ask `RT/RW` to mediate.",
     vocabulary: [
       {
+        cell_id: "ab2fd365-592f-4ee0-b2b3-71fb47f3f0f3",
         word: "tetangga",
         en: "neighbor",
         vi: "hàng xóm",
@@ -261,6 +264,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "te-TANG-ga",
       },
       {
+        cell_id: "e55565ac-dc0d-4b12-a1ba-aa4fd1a63201",
         word: "pemilik rumah",
         en: "homeowner / landlord",
         vi: "chủ nhà",
@@ -269,6 +273,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "pe-MEE-lik ROO-mah",
       },
       {
+        cell_id: "24156bda-9def-4a39-958c-9dda708edfc7",
         word: "ribut",
         en: "noisy / arguing",
         vi: "ồn ào / cãi nhau",
@@ -277,6 +282,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "REE-boot",
       },
       {
+        cell_id: "063eb510-5837-4707-aefe-f8856f9b4816",
         word: "suara berisik",
         en: "noisy sound",
         vi: "tiếng ồn",
@@ -285,6 +291,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "SOO-a-ra be-REE-sik",
       },
       {
+        cell_id: "65cfd256-4fd4-40ee-abd7-558922f7184a",
         word: "parkir",
         en: "to park / parking",
         vi: "đỗ xe / gửi xe",
@@ -293,6 +300,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "PAR-keer",
       },
       {
+        cell_id: "bbf01e95-5c3d-4bf2-bcc2-0f2fa3762596",
         word: "batas tanah",
         en: "land boundary",
         vi: "ranh giới đất",
@@ -301,6 +309,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "BA-tas TA-nah",
       },
       {
+        cell_id: "1c7d4da2-0c9b-43a7-a209-87520a743781",
         word: "mediasi",
         en: "mediation",
         vi: "hòa giải",
@@ -309,6 +318,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "meh-dee-A-see",
       },
       {
+        cell_id: "2de57d00-7ab7-45cf-9f7e-54b166ed781e",
         word: "RT/RW",
         en: "neighborhood/community units",
         vi: "tổ/khu dân cư địa phương",
@@ -317,6 +327,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "er-TEH / er-WEH",
       },
       {
+        cell_id: "11fcf19c-4288-4921-9b30-e329e68a5287",
         word: "kelurahan",
         en: "local administrative office",
         vi: "phường/xã hành chính",
@@ -325,6 +336,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "ke-loo-RA-han",
       },
       {
+        cell_id: "a38e5b41-2514-47cb-9f91-cab9876b43a3",
         word: "kesepakatan tertulis",
         en: "written agreement",
         vi: "thỏa thuận bằng văn bản",
@@ -333,6 +345,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "ke-se-PA-kat-an ter-TOO-lis",
       },
       {
+        cell_id: "2a54f4e2-48e0-47b8-ab3f-dc4cb89c575e",
         word: "jam tenang",
         en: "quiet hours",
         vi: "giờ yên tĩnh",
@@ -341,6 +354,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "jam TEH-nang",
       },
       {
+        cell_id: "783b99aa-45fc-4386-82fd-b36df335359d",
         word: "memperbesar masalah",
         en: "to escalate the problem",
         vi: "làm vấn đề lớn thêm",
@@ -351,24 +365,28 @@ export const lessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "727eab83-4caa-4310-83e9-57d10a74130b",
         speaker: "Penyewa",
         text: "Pak, saya ingin bicara baik-baik. Suara musik dari sebelah agak berisik malam ini.",
         vi: "Chú ơi, tôi muốn nói chuyện nhẹ nhàng. Tiếng nhạc từ bên cạnh tối nay hơi ồn.",
         en: "Sir, I want to speak calmly. The music from next door is a bit noisy tonight.",
       },
       {
+        cell_id: "a6719d42-34c7-4418-b993-918868e8d30f",
         speaker: "Pemilik Rumah",
         text: "Baik, nanti saya hubungi tetangga itu dulu.",
         vi: "Được, lát nữa tôi sẽ liên hệ hàng xóm đó trước.",
         en: "Okay, I will contact that neighbor first.",
       },
       {
+        cell_id: "385a0376-6d18-4557-b72c-7bd8384a9acd",
         speaker: "Penyewa",
         text: "Kalau belum selesai, sebaiknya kita minta mediasi Pak RT.",
         vi: "Nếu chưa giải quyết xong, tốt nhất chúng ta nhờ ông RT hòa giải.",
         en: "If it is not resolved, it would be best to ask Pak RT for mediation.",
       },
       {
+        cell_id: "2e0605b5-b6ae-435b-99e2-76382742b28a",
         speaker: "Pemilik Rumah",
         text: "Setuju. Kita cari solusi tanpa memperbesar masalah.",
         vi: "Đồng ý. Chúng ta tìm giải pháp mà không làm vấn đề lớn thêm.",

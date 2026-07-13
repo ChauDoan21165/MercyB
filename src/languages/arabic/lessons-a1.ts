@@ -25,6 +25,7 @@ export type ArabicSentence = {
 };
 
 export type ArabicVocabEntry = {
+  cell_id?: string;
   ar: string;
   romanization: string;
   en: string;
@@ -33,6 +34,7 @@ export type ArabicVocabEntry = {
 };
 
 export type ArabicDialogueLine = {
+  cell_id?: string;
   speaker: string;
   ar: string;
   romanization: string;
@@ -96,12 +98,12 @@ export const lessons: ArabicLesson[] = [
     intro_en:
       "Arabic is written from right to left. This lesson only asks you to recognize a few letters inside greetings, not master the full alphabet yet.",
     vocabulary: [
-      { ar: "ا", romanization: "alif", en: "alif / long aa carrier", vi: "chu alif / ky hieu am aa dai", pos: "letter" },
-      { ar: "م", romanization: "miim", en: "letter miim", vi: "chu miim", pos: "letter" },
-      { ar: "ل", romanization: "laam", en: "letter laam", vi: "chu laam", pos: "letter" },
-      { ar: "س", romanization: "siin", en: "letter siin", vi: "chu siin", pos: "letter" },
-      { ar: "سلام", romanization: "salaam", en: "peace / greeting", vi: "binh an / loi chao", pos: "noun" },
-      { ar: "اسم", romanization: "ism", en: "name", vi: "ten", pos: "noun" },
+      { cell_id: "93f9b774-63f7-466f-9369-857249302705", ar: "ا", romanization: "alif", en: "alif / long aa carrier", vi: "chu alif / ky hieu am aa dai", pos: "letter" },
+      { cell_id: "bd60b467-2255-4585-8a32-b08518b31b46", ar: "م", romanization: "miim", en: "letter miim", vi: "chu miim", pos: "letter" },
+      { cell_id: "1289edf5-51bc-41a2-9335-5d0df84d5898", ar: "ل", romanization: "laam", en: "letter laam", vi: "chu laam", pos: "letter" },
+      { cell_id: "110b9ccc-5717-4d57-beb3-3b42a325e327", ar: "س", romanization: "siin", en: "letter siin", vi: "chu siin", pos: "letter" },
+      { cell_id: "83d1af5d-386f-4dba-bcc6-312fc28c3be6", ar: "سلام", romanization: "salaam", en: "peace / greeting", vi: "binh an / loi chao", pos: "noun" },
+      { cell_id: "637c0067-11e3-4316-ba52-b93a5bcaf904", ar: "اسم", romanization: "ism", en: "name", vi: "ten", pos: "noun" },
     ],
     sentences: [
       {
@@ -166,12 +168,12 @@ export const lessons: ArabicLesson[] = [
     intro_en:
       "Learn common MSA greeting formulas. The priority is using the right greeting-reply pair before analyzing every word.",
     vocabulary: [
-      { ar: "السلام عليكم", romanization: "as-salaamu 'alaykum", en: "peace be upon you / hello", vi: "xin chao trang trong", pos: "greeting" },
-      { ar: "وعليكم السلام", romanization: "wa-'alaykum as-salaam", en: "and peace be upon you", vi: "loi dap chao", pos: "reply" },
-      { ar: "مرحبا", romanization: "marhaban", en: "hello", vi: "xin chao", pos: "greeting" },
-      { ar: "صباح الخير", romanization: "sabaah al-khayr", en: "good morning", vi: "chao buoi sang", pos: "greeting" },
-      { ar: "شكرا", romanization: "shukran", en: "thank you", vi: "cam on", pos: "phrase" },
-      { ar: "عفوا", romanization: "'afwan", en: "you are welcome / pardon", vi: "khong co gi / xin loi nhe", pos: "phrase" },
+      { cell_id: "21948039-dfc1-419f-a069-b40b9003f4e3", ar: "السلام عليكم", romanization: "as-salaamu 'alaykum", en: "peace be upon you / hello", vi: "xin chao trang trong", pos: "greeting" },
+      { cell_id: "0cf670d8-50fa-4e12-ac8d-e98086c3637c", ar: "وعليكم السلام", romanization: "wa-'alaykum as-salaam", en: "and peace be upon you", vi: "loi dap chao", pos: "reply" },
+      { cell_id: "a8b01c46-c944-4bfc-b72e-6194c0c18836", ar: "مرحبا", romanization: "marhaban", en: "hello", vi: "xin chao", pos: "greeting" },
+      { cell_id: "a13b28e8-21e6-4423-a0bd-1a8e695af7da", ar: "صباح الخير", romanization: "sabaah al-khayr", en: "good morning", vi: "chao buoi sang", pos: "greeting" },
+      { cell_id: "ed78393e-e26c-4571-a020-2069f83a4aa7", ar: "شكرا", romanization: "shukran", en: "thank you", vi: "cam on", pos: "phrase" },
+      { cell_id: "dd831d25-d8a5-48d0-a3aa-ba2a399c19e7", ar: "عفوا", romanization: "'afwan", en: "you are welcome / pardon", vi: "khong co gi / xin loi nhe", pos: "phrase" },
     ],
     sentences: [
       {
@@ -205,6 +207,7 @@ export const lessons: ArabicLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "6bbdc718-82a4-4eeb-9b43-73b6fe0d3d93",
         speaker: "Mariam",
         ar: "السلام عليكم.",
         romanization: "as-salaamu 'alaykum.",
@@ -212,6 +215,7 @@ export const lessons: ArabicLesson[] = [
         vi: "Xin chao.",
       },
       {
+        cell_id: "1f2fc0b8-2190-4928-9b82-f976368e758d",
         speaker: "Omar",
         ar: "وعليكم السلام. كيف حالك؟",
         romanization: "wa-'alaykum as-salaam. kayfa haaluka?",
@@ -219,6 +223,7 @@ export const lessons: ArabicLesson[] = [
         vi: "Chao lai. Ban khoe khong?",
       },
       {
+        cell_id: "7d11d6ba-55a6-48e9-b88d-67ecb2b8424d",
         speaker: "Mariam",
         ar: "أنا بخير، شكرا.",
         romanization: "anaa bikhayr, shukran.",
@@ -263,12 +268,12 @@ export const lessons: ArabicLesson[] = [
     intro_en:
       "This lesson uses simple nominal sentences: Arabic MSA does not need a present-tense verb 'to be' in sentences like 'I am...'.",
     vocabulary: [
-      { ar: "أنا", romanization: "anaa", en: "I", vi: "toi", pos: "pronoun" },
-      { ar: "اسمي", romanization: "ismii", en: "my name", vi: "ten cua toi", pos: "phrase" },
-      { ar: "من", romanization: "min", en: "from", vi: "tu", pos: "preposition" },
-      { ar: "فيتنام", romanization: "Fiitnaam", en: "Vietnam", vi: "Viet Nam", pos: "place name" },
-      { ar: "طالب", romanization: "taalib", en: "male student", vi: "hoc sinh/sinh vien nam", pos: "noun" },
-      { ar: "طالبة", romanization: "taaliba", en: "female student", vi: "hoc sinh/sinh vien nu", pos: "noun" },
+      { cell_id: "c13bd0d4-ec39-4710-a32d-483d5d488f7b", ar: "أنا", romanization: "anaa", en: "I", vi: "toi", pos: "pronoun" },
+      { cell_id: "df493ebf-0112-4426-9ecd-cddccf2b3f14", ar: "اسمي", romanization: "ismii", en: "my name", vi: "ten cua toi", pos: "phrase" },
+      { cell_id: "1ad5b957-a4a0-4b63-8095-cad2862e94c8", ar: "من", romanization: "min", en: "from", vi: "tu", pos: "preposition" },
+      { cell_id: "4ba1083f-3e8d-48b8-ba09-e50f186e2c9e", ar: "فيتنام", romanization: "Fiitnaam", en: "Vietnam", vi: "Viet Nam", pos: "place name" },
+      { cell_id: "e4019d78-74a8-4c6d-b81a-f720754d765c", ar: "طالب", romanization: "taalib", en: "male student", vi: "hoc sinh/sinh vien nam", pos: "noun" },
+      { cell_id: "72ddf71b-42d9-4b60-92ad-383628563366", ar: "طالبة", romanization: "taaliba", en: "female student", vi: "hoc sinh/sinh vien nu", pos: "noun" },
     ],
     sentences: [
       {
@@ -306,6 +311,7 @@ export const lessons: ArabicLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "44b52060-522d-4f4c-ba4e-9b4ae2fcaa95",
         speaker: "Teacher",
         ar: "ما اسمك؟",
         romanization: "maa ismuka?",
@@ -313,6 +319,7 @@ export const lessons: ArabicLesson[] = [
         vi: "Ten ban la gi?",
       },
       {
+        cell_id: "6198db4c-7abd-4d65-ad70-5a405dbec95d",
         speaker: "Student",
         ar: "اسمي لinh. أنا من فيتنام.",
         romanization: "ismii Linh. anaa min Fiitnaam.",
@@ -356,12 +363,12 @@ export const lessons: ArabicLesson[] = [
     intro_en:
       "This lesson gives beginners the language to say they do not understand, ask for slower speech, and ask what something means.",
     vocabulary: [
-      { ar: "لا", romanization: "laa", en: "no / not", vi: "khong", pos: "particle" },
-      { ar: "أفهم", romanization: "afham", en: "I understand", vi: "toi hieu", pos: "verb" },
-      { ar: "من فضلك", romanization: "min fadlik", en: "please", vi: "lam on", pos: "phrase" },
-      { ar: "ببطء", romanization: "bibuT'", en: "slowly", vi: "cham lai", pos: "adverb" },
-      { ar: "كرر", romanization: "karrir", en: "repeat", vi: "lap lai", pos: "imperative" },
-      { ar: "يعني", romanization: "ya'nii", en: "means", vi: "co nghia la", pos: "verb" },
+      { cell_id: "696499da-4f31-4335-98eb-349eb4cdd815", ar: "لا", romanization: "laa", en: "no / not", vi: "khong", pos: "particle" },
+      { cell_id: "39c63932-f7de-4ef1-ac29-783e7dba4dc9", ar: "أفهم", romanization: "afham", en: "I understand", vi: "toi hieu", pos: "verb" },
+      { cell_id: "67532ef9-ffec-4fc6-9a49-93d412495610", ar: "من فضلك", romanization: "min fadlik", en: "please", vi: "lam on", pos: "phrase" },
+      { cell_id: "0ca6180f-fb05-473d-8b65-cf0e6a6d0c18", ar: "ببطء", romanization: "bibuT'", en: "slowly", vi: "cham lai", pos: "adverb" },
+      { cell_id: "5fa8f3bd-0958-4dde-b4a9-7f6680bf3f7b", ar: "كرر", romanization: "karrir", en: "repeat", vi: "lap lai", pos: "imperative" },
+      { cell_id: "3dcaf64d-3978-48a5-a6d2-37817b460271", ar: "يعني", romanization: "ya'nii", en: "means", vi: "co nghia la", pos: "verb" },
     ],
     sentences: [
       {
@@ -395,6 +402,7 @@ export const lessons: ArabicLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "ed09fd76-0e30-4207-b1ab-48a1bccfb4e7",
         speaker: "Student",
         ar: "لا أفهم. كرر من فضلك.",
         romanization: "laa afham. karrir min fadlik.",
@@ -402,6 +410,7 @@ export const lessons: ArabicLesson[] = [
         vi: "Toi khong hieu. Lam on lap lai.",
       },
       {
+        cell_id: "7e023613-8df1-415d-a2e7-e13107d6caae",
         speaker: "Teacher",
         ar: "نعم، ببطء.",
         romanization: "na'am, bibuT'.",
@@ -446,15 +455,15 @@ export const lessons: ArabicLesson[] = [
     intro_en:
       "This lesson recognizes basic numbers and today/tomorrow/yesterday. Arabic number grammar is complex, so A1 uses practical chunks only.",
     vocabulary: [
-      { ar: "صفر", romanization: "Sifr", en: "zero", vi: "so khong", pos: "number" },
-      { ar: "واحد", romanization: "waahid", en: "one", vi: "mot", pos: "number" },
-      { ar: "اثنان", romanization: "ithnaan", en: "two", vi: "hai", pos: "number" },
-      { ar: "ثلاثة", romanization: "thalaatha", en: "three", vi: "ba", pos: "number" },
-      { ar: "أربعة", romanization: "arba'a", en: "four", vi: "bon", pos: "number" },
-      { ar: "خمسة", romanization: "khamsa", en: "five", vi: "nam", pos: "number" },
-      { ar: "اليوم", romanization: "al-yawm", en: "today", vi: "hom nay", pos: "time word" },
-      { ar: "غدا", romanization: "ghadan", en: "tomorrow", vi: "ngay mai", pos: "time word" },
-      { ar: "أمس", romanization: "ams", en: "yesterday", vi: "hom qua", pos: "time word" },
+      { cell_id: "e052311c-831c-49ac-b5a2-1194025f37f5", ar: "صفر", romanization: "Sifr", en: "zero", vi: "so khong", pos: "number" },
+      { cell_id: "b9360261-741e-459a-8285-74cce80475aa", ar: "واحد", romanization: "waahid", en: "one", vi: "mot", pos: "number" },
+      { cell_id: "e65c74a3-af40-4f0c-ada5-daed2ce8b2a0", ar: "اثنان", romanization: "ithnaan", en: "two", vi: "hai", pos: "number" },
+      { cell_id: "254df36f-0ab9-44a0-8487-a18cb6a4157a", ar: "ثلاثة", romanization: "thalaatha", en: "three", vi: "ba", pos: "number" },
+      { cell_id: "c2c90859-c015-4933-822b-5eda1038b828", ar: "أربعة", romanization: "arba'a", en: "four", vi: "bon", pos: "number" },
+      { cell_id: "d87bf419-cef6-4839-9857-353d7292c5ef", ar: "خمسة", romanization: "khamsa", en: "five", vi: "nam", pos: "number" },
+      { cell_id: "ab6ebfdf-2c58-4975-8a46-9b5b9470d570", ar: "اليوم", romanization: "al-yawm", en: "today", vi: "hom nay", pos: "time word" },
+      { cell_id: "1817a21d-2bb1-40ac-af9d-b2414e0656ad", ar: "غدا", romanization: "ghadan", en: "tomorrow", vi: "ngay mai", pos: "time word" },
+      { cell_id: "c920ad0c-cb69-4667-84dc-4bdf609dea36", ar: "أمس", romanization: "ams", en: "yesterday", vi: "hom qua", pos: "time word" },
     ],
     sentences: [
       {

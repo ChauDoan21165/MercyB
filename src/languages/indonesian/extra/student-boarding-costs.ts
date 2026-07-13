@@ -21,6 +21,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   /** Indonesian word/phrase. */
   word: string;
   /** English meaning. */
@@ -36,6 +37,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   /** Indonesian line. */
   text: string;
@@ -240,6 +242,7 @@ export const lessons: IndonesianLesson[] = [
       "Practical template: `Uang bulanan saya harus cukup sampai akhir bulan. Saya bayar kos sebelum tanggal lima, makan hemat di warteg, dan sisihkan sedikit uang untuk tabungan.`",
     vocabulary: [
       {
+        cell_id: "5e47cc4f-4677-494e-b86d-3687ff3344a3",
         word: "anak kos",
         en: "boarding-house resident; student renter",
         vi: "dân ở trọ/sinh viên ở kos",
@@ -248,6 +251,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "A-nak KOS",
       },
       {
+        cell_id: "7f863cb3-38b9-436a-9189-f0ff1ac83800",
         word: "uang bulanan",
         en: "monthly allowance",
         vi: "tiền sinh hoạt hằng tháng",
@@ -256,6 +260,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "OO-ang boo-LA-nan",
       },
       {
+        cell_id: "12bb59d9-f721-4a6a-8f2d-74a7aabe127e",
         word: "makan hemat",
         en: "eat frugally",
         vi: "ăn tiết kiệm",
@@ -264,6 +269,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "MA-kan HEH-mat",
       },
       {
+        cell_id: "d30fca78-f6cf-4e53-b84c-a9057f9187da",
         word: "bayar kos",
         en: "pay boarding-room rent",
         vi: "trả tiền phòng trọ",
@@ -272,6 +278,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "BA-yar KOS",
       },
       {
+        cell_id: "078a2f25-c742-4653-87c7-882d3c35fd0b",
         word: "laundry kiloan",
         en: "laundry by the kilogram",
         vi: "giặt ủi tính ký",
@@ -280,6 +287,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "LAUN-dry kee-LO-an",
       },
       {
+        cell_id: "ddf02cb7-84c3-4bb4-a339-cac1dd1724e9",
         word: "transport kampus",
         en: "campus transport",
         vi: "phương tiện đi lại đến/trong trường",
@@ -288,6 +296,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "trans-PORT KAM-poos",
       },
       {
+        cell_id: "54710fbd-d352-480d-a25b-494b64670343",
         word: "kiriman orang tua",
         en: "money/items sent by parents",
         vi: "tiền/đồ bố mẹ gửi",
@@ -296,6 +305,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "kee-REE-man O-rang TOO-a",
       },
       {
+        cell_id: "8859ce18-d6f5-45ac-9be4-a5ba008d6b82",
         word: "tabungan",
         en: "savings",
         vi: "tiền tiết kiệm",
@@ -304,6 +314,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "ta-BOO-ngan",
       },
       {
+        cell_id: "2e0b033a-f3d2-4d3e-9761-89633d7b6169",
         word: "pengeluaran harian",
         en: "daily expenses",
         vi: "chi tiêu hằng ngày",
@@ -312,6 +323,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "peh-ngeh-LOO-ar-an ha-REE-an",
       },
       {
+        cell_id: "18785de0-bab1-4b3e-9591-373f889f78e6",
         word: "mengurangi jajan",
         en: "reduce snacks/small spending",
         vi: "giảm ăn vặt/chi tiêu vặt",
@@ -322,36 +334,42 @@ export const lessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "ed561484-4bf1-41a0-83a4-89a581ac7fb8",
         speaker: "Mahasiswa",
         text: "Bulan ini uang bulanan saya agak ketat.",
         vi: "Tháng này tiền sinh hoạt của tôi hơi eo hẹp.",
         en: "This month my allowance is a bit tight.",
       },
       {
+        cell_id: "1f929b75-c077-4299-bcdf-77e6cfb01e62",
         speaker: "Teman kos",
         text: "Kamu sudah bayar kos?",
         vi: "Bạn đã trả tiền phòng trọ chưa?",
         en: "Have you paid the boarding rent?",
       },
       {
+        cell_id: "e395ae59-9ec3-4988-9bf0-41054d49cae9",
         speaker: "Mahasiswa",
         text: "Sudah, sebelum tanggal lima. Sekarang saya harus makan hemat.",
         vi: "Rồi, trước ngày mùng năm. Bây giờ tôi phải ăn tiết kiệm.",
         en: "Yes, before the fifth. Now I have to eat frugally.",
       },
       {
+        cell_id: "dedb3404-639a-462b-972d-fdee1186b12c",
         speaker: "Teman kos",
         text: "Warteg dekat kampus lumayan murah.",
         vi: "Quán warteg gần trường khá rẻ.",
         en: "The warteg near campus is fairly cheap.",
       },
       {
+        cell_id: "76c7f142-9a0a-43eb-88ea-2e43335e0dd2",
         speaker: "Mahasiswa",
         text: "Iya, saya juga mau mengurangi jajan dan catat pengeluaran harian.",
         vi: "Ừ, tôi cũng muốn giảm ăn vặt/chi tiêu vặt và ghi lại chi tiêu hằng ngày.",
         en: "Yes, I also want to reduce small spending and record daily expenses.",
       },
       {
+        cell_id: "83a43f5b-ecb7-4639-8159-f1a424402e02",
         speaker: "Teman kos",
         text: "Kalau bisa, sisihkan sedikit untuk tabungan.",
         vi: "Nếu được, hãy để riêng một ít để tiết kiệm.",

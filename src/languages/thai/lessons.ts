@@ -35,6 +35,7 @@ export type ThaiSentence = {
 };
 
 export type ThaiVocabEntry = {
+  cell_id?: string;
   /** The word/phrase in Thai script. */
   thai: string;
   /** Readable Latin transliteration with tone marks. */
@@ -48,6 +49,7 @@ export type ThaiVocabEntry = {
 };
 
 export type ThaiDialogueLine = {
+  cell_id?: string;
   speaker: string;
   /** The line in Thai script. */
   thai: string;

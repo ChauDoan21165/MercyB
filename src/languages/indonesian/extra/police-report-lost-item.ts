@@ -17,6 +17,7 @@ type IndonesianLessonSentence = {
 };
 
 type IndonesianVocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -26,6 +27,7 @@ type IndonesianVocabEntry = {
 };
 
 type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -184,6 +186,7 @@ export const lessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: remember the pair `hilang` and `kehilangan`. `Dompet saya hilang` = my wallet is lost; `Saya kehilangan dompet` = I lost my wallet. In police/office settings, use `saya`, `Pak/Bu`, `tolong`, and full phrases like `membuat laporan polisi`, `surat kehilangan`, `nomor laporan`.",
     vocabulary: [
       {
+        cell_id: "749e955a-cfe9-4941-b506-ae44e7c29732",
         word: "kehilangan barang",
         en: "lost item / losing an item",
         vi: "mất đồ",
@@ -192,6 +195,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "ke-hi-LANG-an BA-rang",
       },
       {
+        cell_id: "e28bdaee-b7bc-4d63-85a2-a41fbae89329",
         word: "laporan polisi",
         en: "police report",
         vi: "trình báo/báo cáo cảnh sát",
@@ -200,6 +204,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "la-PO-ran po-LEE-see",
       },
       {
+        cell_id: "2cefdcde-2952-4053-ac18-894a2171f16b",
         word: "KTP",
         en: "Indonesian ID card",
         vi: "thẻ căn cước Indonesia",
@@ -208,6 +213,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "ka-te-peh",
       },
       {
+        cell_id: "b8047576-9935-4213-9018-35b414033e18",
         word: "dompet",
         en: "wallet",
         vi: "ví",
@@ -216,6 +222,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "DOM-pet",
       },
       {
+        cell_id: "cc61667c-5d99-4a54-a2bb-29c07f200ca9",
         word: "surat kehilangan",
         en: "loss certificate / lost-item letter",
         vi: "giấy xác nhận mất đồ",
@@ -224,6 +231,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "SOO-rat ke-hi-LANG-an",
       },
       {
+        cell_id: "5d35b013-0e7e-4476-90d8-12584925629f",
         word: "kronologi",
         en: "chronology / account of events",
         vi: "diễn biến sự việc",
@@ -232,6 +240,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "kro-no-lo-GEE",
       },
       {
+        cell_id: "33e7ac7b-244e-47ed-8f0c-deb8a802ba6a",
         word: "nomor laporan",
         en: "report number / reference number",
         vi: "số báo cáo / số hồ sơ",
@@ -240,6 +249,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "NO-mor la-PO-ran",
       },
       {
+        cell_id: "03cffa56-1e0e-4778-b147-b74c3bb0d4b5",
         word: "ditemukan",
         en: "found / be found",
         vi: "được tìm thấy",
@@ -250,36 +260,42 @@ export const lessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "6dfd1912-a11a-4cf4-b8a0-d832b72541d9",
         speaker: "Pelapor",
         text: "Selamat pagi, Pak. Saya ingin membuat laporan kehilangan.",
         vi: "Chào buổi sáng anh. Tôi muốn làm trình báo mất đồ.",
         en: "Good morning, officer. I would like to file a lost-item report.",
       },
       {
+        cell_id: "bee96d65-78a1-4a11-835f-afd6c987d51d",
         speaker: "Polisi",
         text: "Barang apa yang hilang?",
         vi: "Đồ gì bị mất?",
         en: "What item was lost?",
       },
       {
+        cell_id: "f5db4785-929e-41dd-a444-b6238881b1ea",
         speaker: "Pelapor",
         text: "Dompet saya hilang. Di dalamnya ada KTP dan kartu bank.",
         vi: "Ví của tôi bị mất. Bên trong có KTP và thẻ ngân hàng.",
         en: "My wallet is lost. Inside it are my KTP and bank card.",
       },
       {
+        cell_id: "b05f9e5c-557d-4846-a4b0-1a7f7c318d33",
         speaker: "Polisi",
         text: "Tolong jelaskan kronologinya pelan-pelan.",
         vi: "Làm ơn giải thích diễn biến từ từ.",
         en: "Please explain the chronology slowly.",
       },
       {
+        cell_id: "c7caf848-7a79-40e7-923b-25683a7979ec",
         speaker: "Pelapor",
         text: "Kejadiannya tadi malam sekitar jam delapan di dekat stasiun.",
         vi: "Sự việc xảy ra tối qua khoảng tám giờ gần nhà ga.",
         en: "It happened last night around eight near the station.",
       },
       {
+        cell_id: "1b6f07fd-130c-4a41-b6a8-4e7fa08b48ac",
         speaker: "Polisi",
         text: "Baik, nanti kami berikan surat kehilangan dan nomor laporan.",
         vi: "Được, lát nữa chúng tôi sẽ cấp giấy xác nhận mất đồ và số báo cáo.",

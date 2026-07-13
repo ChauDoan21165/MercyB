@@ -24,6 +24,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   /** Indonesian word/phrase. */
   word: string;
   /** English meaning. */
@@ -39,6 +40,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   /** Indonesian line. */
   text: string;
@@ -242,6 +244,7 @@ export const lessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: think of register like a volume knob. When you first meet someone, start at `netral`. With close friends, turn it down to `santai`. With a boss, turn it up to `rapi` and `sopan`. If you want to sound softer, add `mohon`, `mungkin`, `sepertinya`, or `sedikit`. If you want to sound friendlier, use `ya`, `deh`, `sih`, or short structures, but do not overuse them with strangers.",
     vocabulary: [
       {
+        cell_id: "17ad63ca-2c68-4edf-b55b-f897a97b1923",
         word: "formal",
         en: "formal",
         vi: "trang trọng",
@@ -250,6 +253,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "for-MAL — English loanword, very common",
       },
       {
+        cell_id: "adad35d0-ad8f-4259-a0b7-16f1beb7265a",
         word: "informal",
         en: "informal",
         vi: "thân mật / không trang trọng",
@@ -258,6 +262,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "in-for-MAL — English loanword",
       },
       {
+        cell_id: "1a6557e8-069e-40ac-a150-8a8745e6201f",
         word: "santai",
         en: "relaxed / casual",
         vi: "thoải mái / xuề xòa",
@@ -266,6 +271,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "san-TIE — used with close friends",
       },
       {
+        cell_id: "3ae0f4af-e63f-4f84-b1d7-93f55b7b99f6",
         word: "rapi",
         en: "neat / tidy / polished",
         vi: "chỉnh chu / gọn gàng",
@@ -274,6 +280,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "RA-pee — `bahasa rapi` = polished wording",
       },
       {
+        cell_id: "b65fd9f4-659f-4ec5-be57-338b70d1e823",
         word: "netral",
         en: "neutral",
         vi: "trung tính",
@@ -282,6 +289,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "NE-tral — a safe choice when unsure",
       },
       {
+        cell_id: "708f7775-d731-4329-9a6b-65cca4166d84",
         word: "atasan",
         en: "superior / boss",
         vi: "cấp trên",
@@ -290,6 +298,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "a-TAH-san — use a polite tone with a superior",
       },
       {
+        cell_id: "de177e46-898d-431d-b877-ac582a2da4f5",
         word: "pilihan kata",
         en: "word choice",
         vi: "lựa chọn từ ngữ",
@@ -298,6 +307,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "pee-LEE-han KAH-tah — a core part of register shifting",
       },
       {
+        cell_id: "f73b23c9-2e78-4008-ae76-ddda98bee97d",
         word: "menyesuaikan",
         en: "to adjust / adapt",
         vi: "điều chỉnh cho phù hợp",
@@ -306,6 +316,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "meh-nyoo-ah-ee-kahn — adapt to the situation",
       },
       {
+        cell_id: "4d667097-a906-4e02-abca-134b06f26365",
         word: "kasar",
         en: "rough / blunt / rude",
         vi: "thô / cộc / sỗ sàng",
@@ -314,6 +325,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "KA-sar — terdengar kasar = sounds blunt",
       },
       {
+        cell_id: "e074be2d-b4d1-4b2a-a8b6-54385dbcb717",
         word: "halus",
         en: "soft / gentle / subtle",
         vi: "mềm / tinh tế",
@@ -324,30 +336,35 @@ export const lessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "2385e432-7583-459a-a168-fd2154d061a5",
         speaker: "Rina",
         text: "Kalau chat ke teman, kamu biasanya pakai bahasa santai ya?",
         vi: "Khi nhắn cho bạn bè, bạn thường dùng ngôn ngữ thoải mái phải không?",
         en: "When you chat with friends, do you usually use casual language?",
       },
       {
+        cell_id: "042253f6-5415-4222-80d3-577fcdd9d0dc",
         speaker: "Dimas",
         text: "Iya. Tapi kalau ke atasan, saya pilih kata yang lebih rapi.",
         vi: "Ừ. Nhưng khi nói với cấp trên, tôi chọn từ ngữ chỉn chu hơn.",
         en: "Yes. But when I talk to a boss, I choose more polished wording.",
       },
       {
+        cell_id: "af0937c8-73db-416b-a08d-a5032f957422",
         speaker: "Rina",
         text: "Kalau ragu, mulai netral dulu saja?",
         vi: "Nếu phân vân thì cứ bắt đầu trung tính trước thôi à?",
         en: "If you are unsure, do you just start neutral first?",
       },
       {
+        cell_id: "5765dd38-78d8-4a70-b384-f7eab365c520",
         speaker: "Dimas",
         text: "Betul. Setelah itu baru saya sesuaikan dengan situasinya.",
         vi: "Đúng rồi. Sau đó tôi mới điều chỉnh theo tình huống.",
         en: "Exactly. After that I adjust it to the situation.",
       },
       {
+        cell_id: "17e70eca-0325-4a84-9512-a4052eaf3779",
         speaker: "Rina",
         text: "Masuk akal. Yang penting, jangan terdengar terlalu kasar.",
         vi: "Hợp lý. Quan trọng là đừng nghe quá cộc lốc.",

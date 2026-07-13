@@ -16,6 +16,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   /** Indonesian word/phrase. */
   word: string;
   /** English meaning. */
@@ -31,6 +32,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   /** Indonesian line. */
   text: string;
@@ -193,6 +195,7 @@ export const lessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: learn shopping chunks: `beli HP`, `spesifikasi`, `RAM-nya berapa`, `memori 256 GB`, `garansi resmi`, `bayar cicilan`, `tukar tambah`, `nego harga`. For price and specs, use `berapa`; for options, use `ada pilihan... ?`; for accessories, use `sudah termasuk... ?`.",
     vocabulary: [
       {
+        cell_id: "9768503e-dde2-4488-9da6-edffc28c75c1",
         word: "beli HP",
         en: "buy a phone",
         vi: "mua điện thoại",
@@ -201,6 +204,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "BE-li HA-pe",
       },
       {
+        cell_id: "fedff12d-13ae-4e40-b729-622517758723",
         word: "spesifikasi",
         en: "specifications",
         vi: "thông số kỹ thuật",
@@ -209,6 +213,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "spe-si-fi-KA-see",
       },
       {
+        cell_id: "9776e11c-eaef-4d81-91a1-7ee96b060552",
         word: "RAM",
         en: "RAM",
         vi: "RAM",
@@ -217,6 +222,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "RAM",
       },
       {
+        cell_id: "f31be826-28a1-488f-b77e-31591a757504",
         word: "memori",
         en: "memory / storage",
         vi: "bộ nhớ / dung lượng lưu trữ",
@@ -225,6 +231,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "me-MO-ree",
       },
       {
+        cell_id: "6fc62c6b-5187-4125-b25f-ec2e79448054",
         word: "garansi resmi",
         en: "official warranty",
         vi: "bảo hành chính hãng",
@@ -233,6 +240,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "ga-RAN-see res-MEE",
       },
       {
+        cell_id: "12fffa92-3669-42a0-a084-f98f6e0f0fbd",
         word: "cicilan",
         en: "installments",
         vi: "trả góp",
@@ -241,6 +249,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "chi-CHIL-an",
       },
       {
+        cell_id: "42433528-6e88-41ba-a753-9538aa7842ed",
         word: "tukar tambah",
         en: "trade-in",
         vi: "đổi cũ bù tiền lấy mới",
@@ -249,6 +258,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "TOO-kar TAM-bah",
       },
       {
+        cell_id: "3e934559-0b52-47b1-aa03-a426ed42b238",
         word: "nego harga",
         en: "negotiate the price",
         vi: "thương lượng giá",
@@ -259,30 +269,35 @@ export const lessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "b66757fe-075e-43bf-b02c-c501f580a547",
         speaker: "Pembeli",
         text: "Permisi, saya mau beli HP baru dengan garansi resmi.",
         vi: "Xin phép, tôi muốn mua điện thoại mới có bảo hành chính hãng.",
         en: "Excuse me, I want to buy a new phone with official warranty.",
       },
       {
+        cell_id: "8146b83b-927a-4fb4-a21a-22befbfc4d81",
         speaker: "Penjual",
         text: "Boleh. Mau RAM berapa dan memori berapa?",
         vi: "Được. Anh/chị muốn RAM bao nhiêu và bộ nhớ bao nhiêu?",
         en: "Sure. How much RAM and storage do you want?",
       },
       {
+        cell_id: "b2a6b2e6-076a-42df-b1a1-c1faa631f580",
         speaker: "Pembeli",
         text: "Saya cari yang RAM 8 GB dan memori 256 GB.",
         vi: "Tôi tìm loại RAM 8 GB và bộ nhớ 256 GB.",
         en: "I am looking for one with 8 GB RAM and 256 GB storage.",
       },
       {
+        cell_id: "ce204575-b66c-4a7d-a0c4-ed128f51c479",
         speaker: "Penjual",
         text: "Model ini ada cicilan, tapi ada biaya admin.",
         vi: "Mẫu này có trả góp, nhưng có phí admin.",
         en: "This model has installment payment, but there is an admin fee.",
       },
       {
+        cell_id: "78e01a79-dff2-497f-8fd3-39c83e87dd24",
         speaker: "Pembeli",
         text: "Kalau HP lama saya tukar tambah, bisa nego harga sedikit?",
         vi: "Nếu tôi đổi máy cũ bù tiền, có thể thương lượng giá một chút không?",

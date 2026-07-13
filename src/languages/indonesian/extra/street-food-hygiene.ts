@@ -24,6 +24,7 @@ type LessonSentence = {
 };
 
 type VocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -35,6 +36,7 @@ type VocabEntry = {
 };
 
 type DialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -150,6 +152,7 @@ export const streetFoodHygieneLessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: three survival frames at street stalls are `jangan terlalu pedas`, `sausnya dipisah`, and `dibungkus saja`. To be polite, address the vendor as `Mas`, `Mbak`, `Bang`, `Bu`, or `Pak`.",
     vocabulary: [
       {
+        cell_id: "33359cc0-5d6e-4e08-a606-3da9e2986667",
         word: "jajanan kaki lima",
         en: "street snacks / street food",
         vi: "đồ ăn vỉa hè",
@@ -158,6 +161,7 @@ export const streetFoodHygieneLessons: IndonesianLesson[] = [
         pronunciation_en: "ja-JA-nan KA-kee LEE-ma",
       },
       {
+        cell_id: "7d4f8cea-92f4-4bb4-941b-e5a1e7700dad",
         word: "gerobak",
         en: "food cart",
         vi: "xe đẩy/quầy hàng rong",
@@ -166,6 +170,7 @@ export const streetFoodHygieneLessons: IndonesianLesson[] = [
         pronunciation_en: "geh-RO-bak",
       },
       {
+        cell_id: "baacd593-b840-4634-b687-afd529b19ca5",
         word: "bersih",
         en: "clean",
         vi: "sạch",
@@ -174,6 +179,7 @@ export const streetFoodHygieneLessons: IndonesianLesson[] = [
         pronunciation_en: "BER-see",
       },
       {
+        cell_id: "c8406692-9920-4bda-9bb9-3906d5b62bae",
         word: "pedas",
         en: "spicy",
         vi: "cay",
@@ -182,6 +188,7 @@ export const streetFoodHygieneLessons: IndonesianLesson[] = [
         pronunciation_en: "peh-DAS",
       },
       {
+        cell_id: "cc8f6edb-e7ff-4bd1-8db9-68bf1a782c0a",
         word: "saus",
         en: "sauce",
         vi: "sốt",
@@ -190,6 +197,7 @@ export const streetFoodHygieneLessons: IndonesianLesson[] = [
         pronunciation_en: "sauce",
       },
       {
+        cell_id: "582066b5-9a1b-48c6-aef5-cde842e84452",
         word: "dibungkus",
         en: "packed to go",
         vi: "gói mang về",
@@ -198,6 +206,7 @@ export const streetFoodHygieneLessons: IndonesianLesson[] = [
         pronunciation_en: "dee-boong-KOOS",
       },
       {
+        cell_id: "ca65698b-45de-4899-8c58-d78ab014c489",
         word: "makan di tempat",
         en: "eat on site / dine in",
         vi: "ăn tại chỗ",
@@ -208,24 +217,28 @@ export const streetFoodHygieneLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "793aa91a-6942-4bca-b4ac-0568b7ccabf4",
         speaker: "Pembeli",
         text: "Mas, jajanan ini pedas tidak?",
         vi: "Anh ơi, món này có cay không?",
         en: "Sir, is this snack spicy?",
       },
       {
+        cell_id: "4b968823-6052-4b75-b86e-c56acb3c4e14",
         speaker: "Penjual",
         text: "Agak pedas, tapi sausnya bisa dipisah.",
         vi: "Hơi cay, nhưng sốt có thể để riêng.",
         en: "A little spicy, but the sauce can be separated.",
       },
       {
+        cell_id: "d5bd60b0-c097-4827-93d5-d00ff8a0826a",
         speaker: "Pembeli",
         text: "Kalau begitu, dibungkus saja dan sambalnya sedikit.",
         vi: "Vậy thì gói mang về thôi và cho ít sambal.",
         en: "In that case, takeaway only and just a little sambal.",
       },
       {
+        cell_id: "c0c2a525-31fd-4dfb-9a5e-cd8563420c65",
         speaker: "Penjual",
         text: "Baik. Mau makan di tempat atau langsung bawa pulang?",
         vi: "Vâng. Muốn ăn tại chỗ hay mang về luôn?",
@@ -380,6 +393,7 @@ export const streetFoodHygieneLessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: `air` = water, `angin` = wind/air. To comment gently about hygiene, use `kurang bersih` instead of accusatory `kotor`. If you suspect poisoning, say `Sepertinya saya keracunan makanan`.",
     vocabulary: [
       {
+        cell_id: "02d69a5b-cda6-4a01-8949-f8ca7a65d1b2",
         word: "kurang bersih",
         en: "not clean enough",
         vi: "không đủ sạch",
@@ -388,6 +402,7 @@ export const streetFoodHygieneLessons: IndonesianLesson[] = [
         pronunciation_en: "KOO-rang BER-see",
       },
       {
+        cell_id: "ed3161d1-be96-44e2-abf4-9cd659e9eadb",
         word: "es batu",
         en: "ice cubes",
         vi: "đá viên",
@@ -396,6 +411,7 @@ export const streetFoodHygieneLessons: IndonesianLesson[] = [
         pronunciation_en: "ess BA-too",
       },
       {
+        cell_id: "72a7436f-e16e-433b-b84f-d2ba9a7e94f7",
         word: "air matang",
         en: "boiled water",
         vi: "nước đun sôi",
@@ -404,6 +420,7 @@ export const streetFoodHygieneLessons: IndonesianLesson[] = [
         pronunciation_en: "A-eer MA-tang",
       },
       {
+        cell_id: "b9f7936c-f1f5-4f9c-bed5-3b9106734784",
         word: "air mentah",
         en: "raw / untreated water",
         vi: "nước sống",
@@ -412,6 +429,7 @@ export const streetFoodHygieneLessons: IndonesianLesson[] = [
         pronunciation_en: "A-eer MEN-tah",
       },
       {
+        cell_id: "b88456af-674d-4923-9806-52cc7b035706",
         word: "sakit perut",
         en: "stomachache",
         vi: "đau bụng",
@@ -420,6 +438,7 @@ export const streetFoodHygieneLessons: IndonesianLesson[] = [
         pronunciation_en: "SA-kit PEH-root",
       },
       {
+        cell_id: "1b76526f-9b17-4b25-8323-2cd657785c63",
         word: "keracunan makanan",
         en: "food poisoning",
         vi: "ngộ độc thực phẩm",
@@ -428,6 +447,7 @@ export const streetFoodHygieneLessons: IndonesianLesson[] = [
         pronunciation_en: "keh-ra-CHOO-nan ma-KA-nan",
       },
       {
+        cell_id: "de3429b7-925e-4bf3-afba-d703a866973a",
         word: "rasanya aneh",
         en: "it tastes strange",
         vi: "vị lạ",
@@ -438,24 +458,28 @@ export const streetFoodHygieneLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "247289be-0528-4c82-8814-566c48d67d56",
         speaker: "Turis",
         text: "Maaf, es batunya dari air matang?",
         vi: "Xin lỗi, đá viên làm từ nước đun sôi không?",
         en: "Excuse me, are the ice cubes from boiled water?",
       },
       {
+        cell_id: "ee1b3d95-3d67-416a-80bd-3f08e12be1fd",
         speaker: "Penjual",
         text: "Iya, dari air galon. Aman, Kak.",
         vi: "Đúng, từ nước bình. An toàn ạ.",
         en: "Yes, from bottled-gallon water. It is safe.",
       },
       {
+        cell_id: "833740bc-b685-4525-8b6c-432d44399915",
         speaker: "Turis",
         text: "Tolong jangan pakai saus yang sudah lama terbuka.",
         vi: "Làm ơn đừng dùng sốt đã mở lâu rồi.",
         en: "Please do not use sauce that has been open for a long time.",
       },
       {
+        cell_id: "73feb2f2-fc6c-4fa4-8bf5-3f4081df5805",
         speaker: "Penjual",
         text: "Baik, saya pakai saus baru saja.",
         vi: "Vâng, tôi dùng sốt mới thôi.",

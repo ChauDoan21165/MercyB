@@ -21,6 +21,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   /** Indonesian word/phrase. */
   word: string;
   /** English meaning. */
@@ -36,6 +37,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   /** Indonesian line. */
   text: string;
@@ -240,6 +242,7 @@ export const lessons: IndonesianLesson[] = [
       "Safe template: `Saya mau sewa sepeda selama dua jam. Apakah helm sudah termasuk? Saya perlu meninggalkan deposit berapa? Tolong cek kerusakan sebelum saya pakai, dan pengembaliannya di mana?`",
     vocabulary: [
       {
+        cell_id: "8e27436f-4f95-4317-aea0-8dffe2b37e19",
         word: "sewa sepeda",
         en: "rent a bicycle",
         vi: "thuê xe đạp",
@@ -248,6 +251,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "SEH-wa seh-PEH-da",
       },
       {
+        cell_id: "fcffa5f8-aec5-463e-be02-c839971493fd",
         word: "sewa skuter",
         en: "rent a scooter",
         vi: "thuê skuter",
@@ -256,6 +260,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "SEH-wa SKOO-ter",
       },
       {
+        cell_id: "b507c248-3437-4a64-8436-50e77484994d",
         word: "helm",
         en: "helmet",
         vi: "mũ bảo hiểm",
@@ -264,6 +269,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "helm",
       },
       {
+        cell_id: "6031a3ad-8324-4b4a-b8a3-51859615c6b3",
         word: "deposit",
         en: "deposit",
         vi: "tiền đặt cọc",
@@ -272,6 +278,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "deh-PO-sit",
       },
       {
+        cell_id: "ebcbcf00-12c2-46e2-aed8-c42f3163c866",
         word: "kerusakan",
         en: "damage",
         vi: "hư hỏng/thiệt hại",
@@ -280,6 +287,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "keh-roo-SA-kan",
       },
       {
+        cell_id: "16d6a200-40f2-4a73-8154-b10cb2886d86",
         word: "durasi sewa",
         en: "rental duration",
         vi: "thời lượng thuê",
@@ -288,6 +296,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "doo-RA-see SEH-wa",
       },
       {
+        cell_id: "e5b98d29-7369-47b0-9886-1dbec448839a",
         word: "jalur aman",
         en: "safe route/lane",
         vi: "tuyến/làn đường an toàn",
@@ -296,6 +305,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "JA-loor A-man",
       },
       {
+        cell_id: "b0818612-8e19-4d4e-a37d-321a5ef57b28",
         word: "pengembalian",
         en: "return process",
         vi: "việc trả lại",
@@ -304,6 +314,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "peh-ngem-BA-lee-an",
       },
       {
+        cell_id: "6c759e63-7935-4e01-a987-4ef3a99b9b7a",
         word: "rem depan",
         en: "front brake",
         vi: "phanh trước",
@@ -312,6 +323,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "rem DEH-pan",
       },
       {
+        cell_id: "a9e68e0c-cc74-49fc-9f10-dc25efc0912f",
         word: "baterai habis",
         en: "battery is empty",
         vi: "hết pin",
@@ -322,36 +334,42 @@ export const lessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "a895e89a-c200-4a86-85bb-7a949c136151",
         speaker: "Penyewa",
         text: "Selamat pagi, saya mau sewa sepeda selama dua jam.",
         vi: "Chào buổi sáng, tôi muốn thuê xe đạp trong hai giờ.",
         en: "Good morning, I would like to rent a bicycle for two hours.",
       },
       {
+        cell_id: "da2af63c-199f-4087-ac04-a680945e1ec8",
         speaker: "Petugas rental",
         text: "Bisa. Harga sewanya lima puluh ribu, dan deposit seratus ribu.",
         vi: "Được. Giá thuê là năm mươi nghìn, và tiền cọc một trăm nghìn.",
         en: "Sure. The rental price is fifty thousand, and the deposit is one hundred thousand.",
       },
       {
+        cell_id: "fdfde8ac-48dd-40af-9c6d-66254d5a0719",
         speaker: "Penyewa",
         text: "Apakah helm sudah termasuk dalam harga sewa?",
         vi: "Mũ bảo hiểm đã bao gồm trong giá thuê chưa?",
         en: "Is the helmet included in the rental price?",
       },
       {
+        cell_id: "9e0af530-4136-41a2-815b-f9c857fb7800",
         speaker: "Petugas rental",
         text: "Sudah termasuk. Tolong cek kondisi sepeda sebelum berangkat.",
         vi: "Đã bao gồm. Vui lòng kiểm tra tình trạng xe đạp trước khi đi.",
         en: "It is included. Please check the bike's condition before leaving.",
       },
       {
+        cell_id: "53b01832-7442-45d6-9b7a-d7951da28c00",
         speaker: "Penyewa",
         text: "Rem depan agak longgar. Apakah masih aman?",
         vi: "Phanh trước hơi lỏng. Còn an toàn không?",
         en: "The front brake is a bit loose. Is it still safe?",
       },
       {
+        cell_id: "d74bc451-ea7d-4f10-8eea-8e6e6cb8cf61",
         speaker: "Petugas rental",
         text: "Saya ganti dengan sepeda lain. Pengembaliannya di tempat yang sama.",
         vi: "Tôi đổi sang xe đạp khác. Việc trả xe ở cùng một chỗ.",

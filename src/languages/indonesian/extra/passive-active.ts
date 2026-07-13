@@ -34,6 +34,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   /** Indonesian word/phrase. */
   word: string;
   /** English meaning. */
@@ -49,6 +50,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   /** Indonesian line. */
   text: string;
@@ -298,6 +300,7 @@ export const lessons: IndonesianLesson[] = [
     vocabulary: [
       // ── meN- active ─────────────────────────────────────────────────
       {
+        cell_id: "13d9ff1c-ea13-4b28-b7f2-7949a46e6b98",
         word: "meN- (membaca)",
         en: "active prefix (to read)",
         vi: "tiền tố chủ động (đọc)",
@@ -306,6 +309,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "muh-eN — assimilates: mem-/men-/meng-/meny-/me-; `membaca`, `menulis`",
       },
       {
+        cell_id: "118cf3d0-4567-4982-a7a0-42ba17a7ad81",
         word: "membaca",
         en: "to read (active)",
         vi: "đọc",
@@ -314,6 +318,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "mem-BA-ca — root `baca`; subject is the reader",
       },
       {
+        cell_id: "f1fb8569-9107-499b-bd63-9e79b3a1cb40",
         word: "menulis",
         en: "to write (active)",
         vi: "viết",
@@ -322,6 +327,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "me-NU-lis — root `tulis`; `t` drops (not mentulis)",
       },
       {
+        cell_id: "e465f4d7-c677-4bbf-8f23-ea4459665676",
         word: "mengirim",
         en: "to send (active)",
         vi: "gửi",
@@ -331,6 +337,7 @@ export const lessons: IndonesianLesson[] = [
       },
       // ── di- passive ─────────────────────────────────────────────────
       {
+        cell_id: "616ba6ac-2e2b-437c-807e-95bc6a0eaea4",
         word: "di- (dibaca)",
         en: "passive prefix, 3rd-person agent",
         vi: "tiền tố bị động (ngôi 3)",
@@ -339,6 +346,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "dee — `di-` + BARE root; `dibaca`, `dikirim`",
       },
       {
+        cell_id: "762b2ae0-39a7-4d10-aff6-7da53771b7b6",
         word: "oleh",
         en: "by (agent marker)",
         vi: "bởi / do",
@@ -347,6 +355,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "OH-leh — `dibaca oleh dia`; `oleh` can be dropped",
       },
       {
+        cell_id: "3ae2fc3f-864f-4fe0-b298-2cbf2aa1ccd1",
         word: "dikirim",
         en: "(is/was) sent",
         vi: "được gửi",
@@ -355,6 +364,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "dee-KEE-rim — 3rd-person passive of `kirim`",
       },
       {
+        cell_id: "41a1b48c-3f71-44d4-afe0-02c5f904161f",
         word: "diperiksa",
         en: "(is/was) checked",
         vi: "được kiểm tra",
@@ -364,6 +374,7 @@ export const lessons: IndonesianLesson[] = [
       },
       // ── Bare passive (1st/2nd) ──────────────────────────────────────
       {
+        cell_id: "6acfc87a-7d6e-4921-a5b5-3109211b295e",
         word: "saya baca",
         en: "read by me (bare passive)",
         vi: "(cái đó) tôi đọc",
@@ -372,6 +383,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "SAH-ya BA-ca — 1st person: pronoun + BARE root, NO `di-`",
       },
       {
+        cell_id: "c6f52d2e-a340-4fc2-a537-98ddfe7c7e65",
         word: "kamu baca",
         en: "read by you (bare passive)",
         vi: "(cái đó) bạn đọc",
@@ -381,6 +393,7 @@ export const lessons: IndonesianLesson[] = [
       },
       // ── ter- accidental/stative ─────────────────────────────────────
       {
+        cell_id: "7d4b8276-74e9-4ace-9fe8-a1336c5ee35b",
         word: "ter- (terkirim)",
         en: "accidental / stative prefix",
         vi: "tiền tố vô ý / trạng thái",
@@ -389,6 +402,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "ter — accidental: `terkirim`, `terjatuh`; state: `terbuka`",
       },
       {
+        cell_id: "2f814997-b113-4f48-8152-dde9d53af65c",
         word: "terbuka",
         en: "(is) open (state)",
         vi: "đang mở (trạng thái)",
@@ -397,6 +411,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "ter-BU-ka — a state, ≠ `dibuka` (the act of opening)",
       },
       {
+        cell_id: "4801519f-f77e-4694-9195-2e3e90222961",
         word: "terjatuh",
         en: "to fall accidentally",
         vi: "lỡ ngã / rơi",
@@ -405,6 +420,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "ter-JA-tooh — unintended; ≠ `menjatuhkan` (drop on purpose)",
       },
       {
+        cell_id: "88d404e9-76ec-47fe-9282-34f4d127c821",
         word: "tertinggal",
         en: "left behind (accidentally)",
         vi: "bỏ quên",
@@ -414,6 +430,7 @@ export const lessons: IndonesianLesson[] = [
       },
       // ── ke-...-an adversative ───────────────────────────────────────
       {
+        cell_id: "0592daf4-28ea-4b27-af1a-d899d6a96777",
         word: "ke-…-an (kehujanan)",
         en: "adversative 'suffering' passive",
         vi: "bị 'lãnh đủ'",
@@ -422,6 +439,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "ke-…-an — `kehujanan`, `kedinginan`, `ketiduran`",
       },
       {
+        cell_id: "4bff8e85-23fc-4459-b185-7c4c952d02fe",
         word: "kehujanan",
         en: "to get caught in the rain",
         vi: "bị dính mưa",
@@ -430,6 +448,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "ke-hu-JA-nan — root `hujan` (rain); no agent",
       },
       {
+        cell_id: "c027de31-a390-471b-981a-d1a3878be1f2",
         word: "ketiduran",
         en: "to fall asleep unintentionally",
         vi: "ngủ quên",
@@ -438,6 +457,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "ke-ti-DU-ran — root `tidur` (sleep); dozed off",
       },
       {
+        cell_id: "b3e9c29d-ffda-4ed0-a153-7e93f849cbe2",
         word: "kedinginan",
         en: "to be (adversely) cold",
         vi: "bị lạnh cóng",
@@ -447,6 +467,7 @@ export const lessons: IndonesianLesson[] = [
       },
       // ── Contrast roots ──────────────────────────────────────────────
       {
+        cell_id: "8c3d4ed5-4477-4a20-8098-a8775b680dbd",
         word: "memecahkan / terpecah",
         en: "to break (on purpose) / break (by itself)",
         vi: "làm vỡ / tự vỡ",
@@ -455,6 +476,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "me-me-CAH-kan / ter-PE-cah — same root `pecah`; different intent",
       },
       {
+        cell_id: "8f5162a7-6de5-4a46-9cac-f8fd6986f03c",
         word: "menyelesaikan / diselesaikan",
         en: "to finish (active / passive)",
         vi: "hoàn thành (chủ động / bị động)",
@@ -466,36 +488,42 @@ export const lessons: IndonesianLesson[] = [
     dialogue: [
       // Dialogue: two coworkers untangle who did what — every voice appears
       {
+        cell_id: "fc5e31e6-8789-42b0-bef4-76b484a0f5fd",
         speaker: "Rudi",
         text: "Laporan bulanan sudah kamu kirim ke Bu Sari?",
         vi: "Báo cáo tháng bạn đã gửi cho cô Sari chưa? (bị động trần ngôi 2)",
         en: "Have you sent the monthly report to Bu Sari? (2nd-person bare passive)",
       },
       {
+        cell_id: "dd9e33f4-d107-4dde-b76e-5203314f58a7",
         speaker: "Dewi",
         text: "Sudah saya kirim tadi pagi, lalu langsung diperiksa oleh beliau.",
         vi: "Tôi đã gửi sáng nay, rồi được cô ấy kiểm tra ngay. (bị động trần + `di-`)",
         en: "I sent it this morning, and it was checked by her right away. (bare passive + `di-`)",
       },
       {
+        cell_id: "99c3f6ee-3c9b-4696-ac76-e60385f703c9",
         speaker: "Rudi",
         text: "Oh ya? Maaf, kemarin filenya terkirim dua kali gara-gara sinyal jelek.",
         vi: "Ồ vậy à? Xin lỗi, hôm qua file bị gửi nhầm hai lần vì sóng yếu. (`ter-` vô ý)",
         en: "Oh really? Sorry, yesterday the file got sent twice because of bad signal. (`ter-` accidental)",
       },
       {
+        cell_id: "3d64a93d-e455-4b68-9fe3-6f1f6e3cbc6c",
         speaker: "Dewi",
         text: "Tidak apa-apa. Kemarin aku juga kehujanan pulang kantor, lalu ketiduran di rumah.",
         vi: "Không sao. Hôm qua tôi cũng dính mưa lúc về, rồi ngủ quên ở nhà. (`ke-…-an`)",
         en: "No problem. Yesterday I got rained on heading home, then dozed off at home. (`ke-…-an`)",
       },
       {
+        cell_id: "028baf23-dc04-4094-9c2f-cb55c3f4346c",
         speaker: "Rudi",
         text: "Hahaha. Nanti sisa datanya aku yang masukkan, kamu istirahat saja.",
         vi: "Haha. Lát dữ liệu còn lại để tôi nhập, bạn cứ nghỉ đi. (bị động trần ngôi 1)",
         en: "Haha. I'll enter the rest of the data, you just rest. (1st-person bare passive)",
       },
       {
+        cell_id: "3e0a4b26-cd3b-48b1-8133-29a198fc5b7f",
         speaker: "Dewi",
         text: "Makasih ya. Pintu ruang arsipnya sudah terbuka, datanya ada di sana.",
         vi: "Cảm ơn nhé. Cửa phòng lưu trữ đang mở sẵn, dữ liệu ở trong đó. (`ter-` trạng thái)",

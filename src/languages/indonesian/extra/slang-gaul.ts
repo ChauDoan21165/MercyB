@@ -27,6 +27,7 @@ export type LessonSentence = {
 };
 
 export type VocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -36,6 +37,7 @@ export type VocabEntry = {
 };
 
 export type DialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -132,17 +134,17 @@ export const lessons: IndonesianLesson[] = [
     tip_advice_en:
       "Learn the three politeness tiers: (1) gue/lu = very casual (close friends, social media); (2) aku/kamu = friendly-polite (friends, partner, equal colleagues); (3) saya/Anda = formal (strangers, boss, work). When in doubt, always pick tier 3. The slang suffix '-in' replaces standard '-kan/-i': bikinin = buatkan, tungguin = tunggu.",
     vocabulary: [
-      { word: "gue / gw", en: "I, me (casual)", vi: "tao, tớ", pos: "pronoun", pronunciation_vi: "GU-e", pronunciation_en: "GOO-eh" },
-      { word: "lu / lo", en: "you (casual)", vi: "mày, cậu", pos: "pronoun", pronunciation_vi: "LU", pronunciation_en: "LOO" },
-      { word: "aku", en: "I, me (intimate-polite)", vi: "anh/em/tớ", pos: "pronoun", pronunciation_vi: "A-ku", pronunciation_en: "AH-koo" },
-      { word: "kamu", en: "you (intimate-polite)", vi: "bạn, em", pos: "pronoun", pronunciation_vi: "KA-mu", pronunciation_en: "KAH-moo" },
-      { word: "saya", en: "I, me (formal)", vi: "tôi", pos: "pronoun", pronunciation_vi: "SA-ya", pronunciation_en: "SAH-yah" },
-      { word: "Anda", en: "you (formal)", vi: "anh/chị/ông/bà", pos: "pronoun", pronunciation_vi: "AN-da", pronunciation_en: "AHN-dah" },
+      { cell_id: "4608c434-ee51-4197-88ae-26e2b26b6d01", word: "gue / gw", en: "I, me (casual)", vi: "tao, tớ", pos: "pronoun", pronunciation_vi: "GU-e", pronunciation_en: "GOO-eh" },
+      { cell_id: "0456a034-e0ad-4c51-8c99-1d83becc9773", word: "lu / lo", en: "you (casual)", vi: "mày, cậu", pos: "pronoun", pronunciation_vi: "LU", pronunciation_en: "LOO" },
+      { cell_id: "686a1832-4365-47f8-a3bd-c78e72f36717", word: "aku", en: "I, me (intimate-polite)", vi: "anh/em/tớ", pos: "pronoun", pronunciation_vi: "A-ku", pronunciation_en: "AH-koo" },
+      { cell_id: "cd72b72e-b725-4bbd-923f-d227b780566d", word: "kamu", en: "you (intimate-polite)", vi: "bạn, em", pos: "pronoun", pronunciation_vi: "KA-mu", pronunciation_en: "KAH-moo" },
+      { cell_id: "96b4729b-7d00-49ee-8a5d-1c34229e5859", word: "saya", en: "I, me (formal)", vi: "tôi", pos: "pronoun", pronunciation_vi: "SA-ya", pronunciation_en: "SAH-yah" },
+      { cell_id: "5c4268e9-f255-42e2-a01f-bdb4e83f1aea", word: "Anda", en: "you (formal)", vi: "anh/chị/ông/bà", pos: "pronoun", pronunciation_vi: "AN-da", pronunciation_en: "AHN-dah" },
     ],
     dialogue: [
-      { speaker: "Dito (bạn)", text: "Eh, lu udah makan belum? Gue laper nih.", vi: "Ê, mày ăn chưa? Tao đói rồi đây.", en: "Hey, have you eaten yet? I'm hungry." },
-      { speaker: "Bagas", text: "Belum. Yuk, gue ikut. Mau makan apa?", vi: "Chưa. Đi, tao đi cùng. Ăn gì đây?", en: "Not yet. Come on, I'll join. What do you want to eat?" },
-      { speaker: "Dito", text: "Bebas. Lu yang pilih deh.", vi: "Tùy. Mày chọn đi.", en: "Whatever. You choose." },
+      { cell_id: "ec08dd69-d70b-4b1b-8089-999033924e05", speaker: "Dito (bạn)", text: "Eh, lu udah makan belum? Gue laper nih.", vi: "Ê, mày ăn chưa? Tao đói rồi đây.", en: "Hey, have you eaten yet? I'm hungry." },
+      { cell_id: "5ccbf26e-472d-41b9-b9bd-52aeb4c5e058", speaker: "Bagas", text: "Belum. Yuk, gue ikut. Mau makan apa?", vi: "Chưa. Đi, tao đi cùng. Ăn gì đây?", en: "Not yet. Come on, I'll join. What do you want to eat?" },
+      { cell_id: "d9fda28a-c2c0-460b-9491-e2e218530bc0", speaker: "Dito", text: "Bebas. Lu yang pilih deh.", vi: "Tùy. Mày chọn đi.", en: "Whatever. You choose." },
     ],
     exercises: [
       {
@@ -252,13 +254,13 @@ export const lessons: IndonesianLesson[] = [
     tip_advice_en:
       "Trick for Vietnamese speakers: pair each Indonesian particle with its Vietnamese twin — dong ≈ 'đi mà', deh ≈ 'thôi vậy', kan ≈ 'đúng không', sih ≈ 'thế'. Don't translate them; feel them. Note 'nggak/gak' = 'tidak' (not) is the single most-heard slang word.",
     vocabulary: [
-      { word: "sih", en: "emphasis / curiosity particle", vi: "thế, vậy (nhấn mạnh)", pos: "particle", pronunciation_vi: "SIH", pronunciation_en: "SEE" },
-      { word: "dong", en: "coaxing particle ('come on')", vi: "đi mà (nài nỉ)", pos: "particle", pronunciation_vi: "DONG", pronunciation_en: "DONG" },
-      { word: "deh", en: "concession particle ('fine then')", vi: "thôi vậy", pos: "particle", pronunciation_vi: "DEH", pronunciation_en: "DEH" },
-      { word: "kok", en: "surprise particle ('how come')", vi: "ủa sao", pos: "particle", pronunciation_vi: "KOK", pronunciation_en: "KOK" },
-      { word: "kan", en: "tag particle ('right?')", vi: "đúng không, phải không", pos: "particle", pronunciation_vi: "KAN", pronunciation_en: "KAN" },
-      { word: "nggak / gak", en: "not (slang for tidak)", vi: "không", pos: "adverb", pronunciation_vi: "ng-GAK / GAK", pronunciation_en: "NG-gak / GAK" },
-      { word: "nih", en: "this/here (pointing)", vi: "này, đây", pos: "particle", pronunciation_vi: "NIH", pronunciation_en: "NEE" },
+      { cell_id: "6759467f-e4b2-4a42-8072-25a728a609a9", word: "sih", en: "emphasis / curiosity particle", vi: "thế, vậy (nhấn mạnh)", pos: "particle", pronunciation_vi: "SIH", pronunciation_en: "SEE" },
+      { cell_id: "ba57a220-fccb-496a-91b4-73e14a5a903a", word: "dong", en: "coaxing particle ('come on')", vi: "đi mà (nài nỉ)", pos: "particle", pronunciation_vi: "DONG", pronunciation_en: "DONG" },
+      { cell_id: "a2cb4924-39f1-4474-91ec-ff12bcdbb342", word: "deh", en: "concession particle ('fine then')", vi: "thôi vậy", pos: "particle", pronunciation_vi: "DEH", pronunciation_en: "DEH" },
+      { cell_id: "87993500-36b8-41da-8b72-4f2f9a4cc82d", word: "kok", en: "surprise particle ('how come')", vi: "ủa sao", pos: "particle", pronunciation_vi: "KOK", pronunciation_en: "KOK" },
+      { cell_id: "55c347b0-ae3c-4cd4-972c-15a89461bea6", word: "kan", en: "tag particle ('right?')", vi: "đúng không, phải không", pos: "particle", pronunciation_vi: "KAN", pronunciation_en: "KAN" },
+      { cell_id: "2e43df86-5050-4c12-9cd1-6346a8d9acf5", word: "nggak / gak", en: "not (slang for tidak)", vi: "không", pos: "adverb", pronunciation_vi: "ng-GAK / GAK", pronunciation_en: "NG-gak / GAK" },
+      { cell_id: "eef71bf8-c5a2-4a04-a06d-4d62a9f4b0ea", word: "nih", en: "this/here (pointing)", vi: "này, đây", pos: "particle", pronunciation_vi: "NIH", pronunciation_en: "NEE" },
     ],
     exercises: [
       {
@@ -352,17 +354,17 @@ export const lessons: IndonesianLesson[] = [
     tip_advice_en:
       "Strategy: SPEAK in baku when unsure (always safe), but train your EAR for gaul from day one (because people speak it). Keep a personal baku↔gaul table for your 20 most-used words. Don't use bokap/nyokap or gue/lu with people you aren't close to — it reads as rude.",
     vocabulary: [
-      { word: "baku", en: "standard/formal (language)", vi: "chuẩn, trang trọng", pos: "adjective", pronunciation_vi: "BA-ku", pronunciation_en: "BAH-koo" },
-      { word: "gaul", en: "slang, hip, sociable", vi: "lóng, sành điệu", pos: "adjective", pronunciation_vi: "GA-ul", pronunciation_en: "GAH-ool" },
-      { word: "udah", en: "already (slang of sudah)", vi: "rồi, đã xong", pos: "adverb", pronunciation_vi: "u-DAH", pronunciation_en: "oo-DAH" },
-      { word: "aja", en: "just/only (slang of saja)", vi: "thôi, chỉ", pos: "adverb", pronunciation_vi: "A-ja", pronunciation_en: "AH-jah" },
-      { word: "bokap", en: "dad (slang)", vi: "bố (lóng)", pos: "noun", pronunciation_vi: "BO-kap", pronunciation_en: "BOH-kap" },
-      { word: "nyokap", en: "mum (slang)", vi: "mẹ (lóng)", pos: "noun", pronunciation_vi: "NYO-kap", pronunciation_en: "NYOH-kap" },
-      { word: "banget", en: "very (slang of sangat)", vi: "rất, lắm", pos: "adverb", pronunciation_vi: "BA-nget", pronunciation_en: "BAH-nget" },
+      { cell_id: "7fc70a82-6e28-4f3d-9e29-97fc98417d5f", word: "baku", en: "standard/formal (language)", vi: "chuẩn, trang trọng", pos: "adjective", pronunciation_vi: "BA-ku", pronunciation_en: "BAH-koo" },
+      { cell_id: "8aa94efb-7d67-4182-809b-8df45516fd55", word: "gaul", en: "slang, hip, sociable", vi: "lóng, sành điệu", pos: "adjective", pronunciation_vi: "GA-ul", pronunciation_en: "GAH-ool" },
+      { cell_id: "512aa1fc-cbd0-4899-b4c4-e76e64c9d535", word: "udah", en: "already (slang of sudah)", vi: "rồi, đã xong", pos: "adverb", pronunciation_vi: "u-DAH", pronunciation_en: "oo-DAH" },
+      { cell_id: "302f55be-aed5-4dfb-903e-3dcf25705879", word: "aja", en: "just/only (slang of saja)", vi: "thôi, chỉ", pos: "adverb", pronunciation_vi: "A-ja", pronunciation_en: "AH-jah" },
+      { cell_id: "20564bfd-e45e-45bf-ad65-70542cb9955d", word: "bokap", en: "dad (slang)", vi: "bố (lóng)", pos: "noun", pronunciation_vi: "BO-kap", pronunciation_en: "BOH-kap" },
+      { cell_id: "a15281ee-745f-45cc-9ded-98c1a28f2baa", word: "nyokap", en: "mum (slang)", vi: "mẹ (lóng)", pos: "noun", pronunciation_vi: "NYO-kap", pronunciation_en: "NYOH-kap" },
+      { cell_id: "def8d90b-79b2-4c0a-a6da-d377fa932009", word: "banget", en: "very (slang of sangat)", vi: "rất, lắm", pos: "adverb", pronunciation_vi: "BA-nget", pronunciation_en: "BAH-nget" },
     ],
     dialogue: [
-      { speaker: "Gaul", text: "Eh, lu udah ngerjain PR belum? Gue belum sama sekali.", vi: "Ê, mày làm bài tập chưa? Tao chưa làm gì cả.", en: "Hey, have you done the homework? I haven't done any." },
-      { speaker: "Baku", text: "(setara) Apakah Anda sudah mengerjakan PR? Saya belum sama sekali.", vi: "(tương đương) Bạn đã làm bài tập chưa? Tôi chưa làm gì cả.", en: "(equivalent) Have you done the homework? I haven't done any at all." },
+      { cell_id: "9ab4e625-9860-42df-9e80-6376f6e3d028", speaker: "Gaul", text: "Eh, lu udah ngerjain PR belum? Gue belum sama sekali.", vi: "Ê, mày làm bài tập chưa? Tao chưa làm gì cả.", en: "Hey, have you done the homework? I haven't done any." },
+      { cell_id: "d9fb7528-bddc-4089-9484-48e743b30c17", speaker: "Baku", text: "(setara) Apakah Anda sudah mengerjakan PR? Saya belum sama sekali.", vi: "(tương đương) Bạn đã làm bài tập chưa? Tôi chưa làm gì cả.", en: "(equivalent) Have you done the homework? I haven't done any at all." },
     ],
     exercises: [
       {
@@ -473,19 +475,19 @@ export const lessons: IndonesianLesson[] = [
     tip_advice_en:
       "Treat the abbreviation table like a cipher — learn it once and you read chat fluently. Vowel-drop trick: look at the consonants and guess (dgn→dengan, krn→karena). But SPEAKING and FORMAL writing always use full words. 'makasih' (thanks) and 'otw' are sayable since they've become established slang.",
     vocabulary: [
-      { word: "yg", en: "= yang (which/that)", vi: "= yang (cái mà)", pos: "abbrev.", pronunciation_vi: "đọc: yang", pronunciation_en: "read: yang" },
-      { word: "dgn", en: "= dengan (with)", vi: "= dengan (với)", pos: "abbrev.", pronunciation_vi: "đọc: dengan", pronunciation_en: "read: dengan" },
-      { word: "tdk", en: "= tidak (not)", vi: "= tidak (không)", pos: "abbrev.", pronunciation_vi: "đọc: tidak", pronunciation_en: "read: tidak" },
-      { word: "blm", en: "= belum (not yet)", vi: "= belum (chưa)", pos: "abbrev.", pronunciation_vi: "đọc: belum", pronunciation_en: "read: belum" },
-      { word: "sdh", en: "= sudah (already)", vi: "= sudah (rồi)", pos: "abbrev.", pronunciation_vi: "đọc: sudah", pronunciation_en: "read: sudah" },
-      { word: "dll", en: "= dan lain-lain (etc.)", vi: "= v.v.", pos: "abbrev.", pronunciation_vi: "đọc: dan lain-lain", pronunciation_en: "read: dan lain-lain" },
-      { word: "otw", en: "on the way", vi: "đang trên đường", pos: "abbrev.", pronunciation_vi: "o-te-we", pronunciation_en: "oh-teh-weh" },
-      { word: "makasih", en: "thanks (casual)", vi: "cảm ơn (thân mật)", pos: "interjection", pronunciation_vi: "ma-KA-sih", pronunciation_en: "mah-KAH-see" },
+      { cell_id: "5cc23409-d799-4190-995c-927c7fdc3d86", word: "yg", en: "= yang (which/that)", vi: "= yang (cái mà)", pos: "abbrev.", pronunciation_vi: "đọc: yang", pronunciation_en: "read: yang" },
+      { cell_id: "36480a3a-9d1b-4aaf-9fb6-9d91712f120e", word: "dgn", en: "= dengan (with)", vi: "= dengan (với)", pos: "abbrev.", pronunciation_vi: "đọc: dengan", pronunciation_en: "read: dengan" },
+      { cell_id: "58b19877-c502-4496-8a0f-26fb4de940aa", word: "tdk", en: "= tidak (not)", vi: "= tidak (không)", pos: "abbrev.", pronunciation_vi: "đọc: tidak", pronunciation_en: "read: tidak" },
+      { cell_id: "e67ed63c-0158-45f3-8a67-14deb5e16f44", word: "blm", en: "= belum (not yet)", vi: "= belum (chưa)", pos: "abbrev.", pronunciation_vi: "đọc: belum", pronunciation_en: "read: belum" },
+      { cell_id: "d6ab8291-248c-47b8-9adf-3e26fdfff7e5", word: "sdh", en: "= sudah (already)", vi: "= sudah (rồi)", pos: "abbrev.", pronunciation_vi: "đọc: sudah", pronunciation_en: "read: sudah" },
+      { cell_id: "b1a2aede-9fba-4118-91ad-e821813264a1", word: "dll", en: "= dan lain-lain (etc.)", vi: "= v.v.", pos: "abbrev.", pronunciation_vi: "đọc: dan lain-lain", pronunciation_en: "read: dan lain-lain" },
+      { cell_id: "082e4927-7fd3-4722-ab8d-31eb67978243", word: "otw", en: "on the way", vi: "đang trên đường", pos: "abbrev.", pronunciation_vi: "o-te-we", pronunciation_en: "oh-teh-weh" },
+      { cell_id: "9f6e68fe-d087-4c5a-ac3e-43a291bf05a1", word: "makasih", en: "thanks (casual)", vi: "cảm ơn (thân mật)", pos: "interjection", pronunciation_vi: "ma-KA-sih", pronunciation_en: "mah-KAH-see" },
     ],
     dialogue: [
-      { speaker: "A (chat)", text: "Km dmn? Aku udh sampe nih.", vi: "Bạn ở đâu? Tôi tới rồi nè.", en: "Where are you? I've already arrived." },
-      { speaker: "B (chat)", text: "Otw! Maaf telat. Tunggu 5 mnt yaa.", vi: "Đang tới! Xin lỗi trễ. Đợi 5 phút nhé.", en: "On the way! Sorry I'm late. Wait 5 minutes." },
-      { speaker: "A (chat)", text: "Oke, gpp. Makasih.", vi: "Ok, không sao. Cảm ơn.", en: "Okay, no problem. Thanks." },
+      { cell_id: "e792d3ec-eb7e-4928-be7a-2cc6c0a6d278", speaker: "A (chat)", text: "Km dmn? Aku udh sampe nih.", vi: "Bạn ở đâu? Tôi tới rồi nè.", en: "Where are you? I've already arrived." },
+      { cell_id: "958f969e-f2c2-4bf4-b10b-ccc605635515", speaker: "B (chat)", text: "Otw! Maaf telat. Tunggu 5 mnt yaa.", vi: "Đang tới! Xin lỗi trễ. Đợi 5 phút nhé.", en: "On the way! Sorry I'm late. Wait 5 minutes." },
+      { cell_id: "184321ea-45af-4fde-b6d5-31832d739567", speaker: "A (chat)", text: "Oke, gpp. Makasih.", vi: "Ok, không sao. Cảm ơn.", en: "Okay, no problem. Thanks." },
     ],
     exercises: [
       {
@@ -580,19 +582,19 @@ export const lessons: IndonesianLesson[] = [
     tip_advice_en:
       "Don't cram every slang term — learn to UNDERSTAND first, use only once you know the scene. Misused slang sounds worse than plain standard speech. Safest: comprehend it when heard, but speak baku yourself until genuinely confident. Avoid anjir/bucin with new acquaintances.",
     vocabulary: [
-      { word: "baper", en: "oversensitive (bawa perasaan)", vi: "dễ xúc động/tự ái", pos: "adjective", pronunciation_vi: "BA-per", pronunciation_en: "BAH-per" },
-      { word: "mager", en: "too lazy to move (malas gerak)", vi: "lười nhúc nhích", pos: "adjective", pronunciation_vi: "MA-ger", pronunciation_en: "MAH-ger" },
-      { word: "gabut", en: "idle and bored (gaji buta)", vi: "rảnh chán", pos: "adjective", pronunciation_vi: "GA-but", pronunciation_en: "GAH-boot" },
-      { word: "kepo", en: "nosy, overly curious", vi: "tò mò chuyện người", pos: "adjective", pronunciation_vi: "KE-po", pronunciation_en: "KEH-poh" },
-      { word: "gokil", en: "crazy, awesome", vi: "điên rồ, đỉnh", pos: "adjective", pronunciation_vi: "GO-kil", pronunciation_en: "GOH-kil" },
-      { word: "bucin", en: "love-obsessed (budak cinta)", vi: "nô lệ tình yêu", pos: "noun", pronunciation_vi: "BU-cin", pronunciation_en: "BOO-chin" },
-      { word: "kuy", en: "let's go (yuk reversed)", vi: "đi thôi", pos: "interjection", pronunciation_vi: "KUY", pronunciation_en: "KOO-ee" },
-      { word: "santai", en: "relax, chill", vi: "thư giãn, bình tĩnh", pos: "adjective", pronunciation_vi: "san-TAI", pronunciation_en: "san-TAI" },
+      { cell_id: "1eb723dc-0f85-4c3a-adc3-b5ad7d35b87a", word: "baper", en: "oversensitive (bawa perasaan)", vi: "dễ xúc động/tự ái", pos: "adjective", pronunciation_vi: "BA-per", pronunciation_en: "BAH-per" },
+      { cell_id: "44709300-1d79-46be-9769-d81c66499596", word: "mager", en: "too lazy to move (malas gerak)", vi: "lười nhúc nhích", pos: "adjective", pronunciation_vi: "MA-ger", pronunciation_en: "MAH-ger" },
+      { cell_id: "275c1d61-6269-472d-9d68-36c3a787b7bb", word: "gabut", en: "idle and bored (gaji buta)", vi: "rảnh chán", pos: "adjective", pronunciation_vi: "GA-but", pronunciation_en: "GAH-boot" },
+      { cell_id: "a58c48b5-63d4-43b6-9044-faff8e045695", word: "kepo", en: "nosy, overly curious", vi: "tò mò chuyện người", pos: "adjective", pronunciation_vi: "KE-po", pronunciation_en: "KEH-poh" },
+      { cell_id: "8841e2c8-2805-4cdc-b8c7-51718096be66", word: "gokil", en: "crazy, awesome", vi: "điên rồ, đỉnh", pos: "adjective", pronunciation_vi: "GO-kil", pronunciation_en: "GOH-kil" },
+      { cell_id: "bd3166e9-1dfc-47d3-aeb0-9efdc9fbad47", word: "bucin", en: "love-obsessed (budak cinta)", vi: "nô lệ tình yêu", pos: "noun", pronunciation_vi: "BU-cin", pronunciation_en: "BOO-chin" },
+      { cell_id: "40321ae4-df11-40a1-9daa-849c596ffda4", word: "kuy", en: "let's go (yuk reversed)", vi: "đi thôi", pos: "interjection", pronunciation_vi: "KUY", pronunciation_en: "KOO-ee" },
+      { cell_id: "3e1202f2-f6ab-4a78-9651-a0e8d2adf927", word: "santai", en: "relax, chill", vi: "thư giãn, bình tĩnh", pos: "adjective", pronunciation_vi: "san-TAI", pronunciation_en: "san-TAI" },
     ],
     dialogue: [
-      { speaker: "Sari", text: "Gabut banget nih, mager keluar. Lu ngapain?", vi: "Rảnh chán quá, lười ra ngoài. Mày làm gì đó?", en: "So bored, too lazy to go out. What're you up to?" },
-      { speaker: "Tia", text: "Sama. Kuy nonton aja di rumah gue.", vi: "Giống vậy. Đi, qua nhà tao xem phim thôi.", en: "Same. Let's just watch something at my place." },
-      { speaker: "Sari", text: "Gokil, gercep dong. Otw!", vi: "Đỉnh, nhanh lên nào. Đang tới!", en: "Awesome, quick then. On the way!" },
+      { cell_id: "83a83611-7d67-4a24-b94b-47e3a8a21655", speaker: "Sari", text: "Gabut banget nih, mager keluar. Lu ngapain?", vi: "Rảnh chán quá, lười ra ngoài. Mày làm gì đó?", en: "So bored, too lazy to go out. What're you up to?" },
+      { cell_id: "7d98fe6e-e714-4fd6-b43e-32514c0c940e", speaker: "Tia", text: "Sama. Kuy nonton aja di rumah gue.", vi: "Giống vậy. Đi, qua nhà tao xem phim thôi.", en: "Same. Let's just watch something at my place." },
+      { cell_id: "014307ef-167f-438e-a241-395472139b1c", speaker: "Sari", text: "Gokil, gercep dong. Otw!", vi: "Đỉnh, nhanh lên nào. Đang tới!", en: "Awesome, quick then. On the way!" },
     ],
     exercises: [
       {

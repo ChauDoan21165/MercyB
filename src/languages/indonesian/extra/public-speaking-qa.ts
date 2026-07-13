@@ -17,6 +17,7 @@ type IndonesianLessonSentence = {
 };
 
 type IndonesianVocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -26,6 +27,7 @@ type IndonesianVocabEntry = {
 };
 
 type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -212,6 +214,7 @@ export const publicSpeakingQaLessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: learn three safe frames - `Terima kasih atas pertanyaannya`, `Saya belum tahu jawabannya, saya akan cek dulu`, and `Izinkan saya memberi contoh`. When a question is hard, use `boleh saya minta pertanyaannya diulang?` instead of staying silent or guessing.",
     vocabulary: [
       {
+        cell_id: "e1f08b01-5600-49ff-8ab1-c23d4180e613",
         word: "pertanyaan",
         en: "question",
         vi: "cau hoi",
@@ -220,6 +223,7 @@ export const publicSpeakingQaLessons: IndonesianLesson[] = [
         pronunciation_en: "per-tah-NYAH-an",
       },
       {
+        cell_id: "910d877b-3bd9-45f5-950a-406ddc3259f5",
         word: "menjawab singkat",
         en: "to answer briefly",
         vi: "tra loi ngan gon",
@@ -228,6 +232,7 @@ export const publicSpeakingQaLessons: IndonesianLesson[] = [
         pronunciation_en: "men-JAH-wab SING-kat",
       },
       {
+        cell_id: "89075485-084f-486d-b9b7-65a0bde269dc",
         word: "konteks",
         en: "context",
         vi: "boi canh",
@@ -236,6 +241,7 @@ export const publicSpeakingQaLessons: IndonesianLesson[] = [
         pronunciation_en: "KON-teks",
       },
       {
+        cell_id: "6cc5d40c-0056-4aaa-a546-7ee5bf1e34fc",
         word: "boleh saya minta",
         en: "may I ask / may I request",
         vi: "toi co the xin",
@@ -244,6 +250,7 @@ export const publicSpeakingQaLessons: IndonesianLesson[] = [
         pronunciation_en: "BOH-leh SAH-yah MEEN-tah",
       },
       {
+        cell_id: "20ebe904-3b03-4f9b-bb84-bf66ac59c250",
         word: "menghargai",
         en: "to appreciate, to respect",
         vi: "tran trong, coi trong",
@@ -252,6 +259,7 @@ export const publicSpeakingQaLessons: IndonesianLesson[] = [
         pronunciation_en: "meng-har-GUY",
       },
       {
+        cell_id: "91c7a4bb-2fe0-42cc-b811-4f34aa91de9c",
         word: "moderator",
         en: "moderator / host",
         vi: "nguoi dieu phoi",
@@ -260,6 +268,7 @@ export const publicSpeakingQaLessons: IndonesianLesson[] = [
         pronunciation_en: "MOH-duh-ray-ter",
       },
       {
+        cell_id: "43599eda-8822-4534-846f-5c91a4c5198b",
         word: "klarifikasi",
         en: "clarification",
         vi: "lam ro",
@@ -268,6 +277,7 @@ export const publicSpeakingQaLessons: IndonesianLesson[] = [
         pronunciation_en: "klah-ree-fee-KAH-see",
       },
       {
+        cell_id: "8f522ea3-4069-436a-9b91-f28f984e3214",
         word: "siap menerima",
         en: "ready to receive",
         vi: "san sang tiep nhan",
@@ -278,30 +288,35 @@ export const publicSpeakingQaLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "b315d018-e910-4e42-a2b1-6fd133f364fb",
         speaker: "Moderator",
         text: "Baik, kita buka sesi tanya jawab.",
         vi: "Duoc, chung ta bat dau phien hoi dap.",
         en: "Alright, we are opening the Q&A session.",
       },
       {
+        cell_id: "7f68df59-50ff-46f4-900f-651d09260c60",
         speaker: "Peserta",
         text: "Terima kasih atas pertanyaannya, saya akan menjawab singkat dulu.",
         vi: "Cam on vi cau hoi cua ban, toi se tra loi ngan gon truoc.",
         en: "Thank you for your question, I will answer briefly first.",
       },
       {
+        cell_id: "b0bd6aa8-a61b-4d1c-b730-45cdf568e903",
         speaker: "Moderator",
         text: "Silakan, kalau perlu bisa diberi contoh.",
         vi: "Xin moi, neu can co the dua ra vi du.",
         en: "Go ahead, if needed you can give an example.",
       },
       {
+        cell_id: "534d9f6c-2aa6-40f1-b9a9-290ed59b8158",
         speaker: "Peserta",
         text: "Izinkan saya memberi contoh supaya lebih jelas.",
         vi: "Cho phep toi dua ra vi du de ro hon.",
         en: "Allow me to give an example so it is clearer.",
       },
       {
+        cell_id: "42fb3b87-4537-4622-9488-dc143cc236a9",
         speaker: "Moderator",
         text: "Terima kasih. Kita lanjut ke pertanyaan berikutnya.",
         vi: "Cam on. Chung ta chuyen sang cau hoi tiep theo.",

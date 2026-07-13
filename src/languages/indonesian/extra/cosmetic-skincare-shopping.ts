@@ -13,6 +13,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -22,6 +23,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -138,6 +140,7 @@ export const cosmeticSkincareShoppingLessons: IndonesianLesson[] = [
       "Useful frames: `Saya cari...`, `Ada pelembap...?`, `Cocok untuk kulit...?`, `Bisa rekomendasi produk...?`. `Cocok` is key for whether something suits your skin.",
     vocabulary: [
       {
+        cell_id: "168a12d9-fb8a-4b72-987e-d5a4637fa973",
         word: "skincare",
         en: "skincare",
         vi: "sản phẩm chăm sóc da",
@@ -146,6 +149,7 @@ export const cosmeticSkincareShoppingLessons: IndonesianLesson[] = [
         pronunciation_en: "skin-care",
       },
       {
+        cell_id: "6ca4680a-422b-4cc7-bc76-9aae99299722",
         word: "pelembap",
         en: "moisturizer",
         vi: "kem dưỡng ẩm",
@@ -154,6 +158,7 @@ export const cosmeticSkincareShoppingLessons: IndonesianLesson[] = [
         pronunciation_en: "pe-LEM-bap",
       },
       {
+        cell_id: "95907a03-03c3-4ecf-9075-ab0aab7b204e",
         word: "sunscreen",
         en: "sunscreen",
         vi: "kem chống nắng",
@@ -162,6 +167,7 @@ export const cosmeticSkincareShoppingLessons: IndonesianLesson[] = [
         pronunciation_en: "SUN-screen",
       },
       {
+        cell_id: "e4fd962d-258b-4b04-baee-97a7d7482d8b",
         word: "cocok kulit",
         en: "suits the skin",
         vi: "hợp da",
@@ -170,6 +176,7 @@ export const cosmeticSkincareShoppingLessons: IndonesianLesson[] = [
         pronunciation_en: "CHO-chok KU-lit",
       },
       {
+        cell_id: "5a48ffff-ffb5-4587-a735-02de750e2266",
         word: "iritasi",
         en: "irritation",
         vi: "kích ứng",
@@ -178,6 +185,7 @@ export const cosmeticSkincareShoppingLessons: IndonesianLesson[] = [
         pronunciation_en: "i-ri-TA-si",
       },
       {
+        cell_id: "46af61cf-e125-4677-829c-fbf7ee432148",
         word: "toko kosmetik",
         en: "cosmetics store",
         vi: "cửa hàng mỹ phẩm",
@@ -188,24 +196,28 @@ export const cosmeticSkincareShoppingLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "1fe46599-97d7-4cbd-94bd-d56e076efd32",
         speaker: "Pelanggan",
         text: "Mbak, saya cari pelembap untuk kulit sensitif.",
         vi: "Chị ơi, tôi tìm kem dưỡng ẩm cho da nhạy cảm.",
         en: "Miss, I am looking for a moisturizer for sensitive skin.",
       },
       {
+        cell_id: "b5dbc47a-90b6-4708-ad96-4672687f67d9",
         speaker: "Staf Toko",
         text: "Kulitnya berminyak atau kering?",
         vi: "Da của bạn dầu hay khô?",
         en: "Is your skin oily or dry?",
       },
       {
+        cell_id: "e74a1685-27ce-4b56-be3f-46f5561d3c85",
         speaker: "Pelanggan",
         text: "Berminyak, dan saya mudah iritasi.",
         vi: "Da dầu, và tôi dễ bị kích ứng.",
         en: "Oily, and I get irritated easily.",
       },
       {
+        cell_id: "0bdf71da-10e9-47d7-86aa-0a0e67b7ffa5",
         speaker: "Staf Toko",
         text: "Kalau begitu, coba yang ringan dan tanpa parfum.",
         vi: "Nếu vậy, thử loại nhẹ và không hương liệu.",
@@ -322,6 +334,7 @@ export const cosmeticSkincareShoppingLessons: IndonesianLesson[] = [
       "When you have a skin reaction, be specific: `merah`, `perih`, `gatal`, `iritasi`, `tidak cocok`. Avoid only saying `sakit`, because staff need to know what kind of reaction happened.",
     vocabulary: [
       {
+        cell_id: "8dfc0762-5a0e-4e85-b883-21bfc677ca7c",
         word: "tanggal kedaluwarsa",
         en: "expiry date",
         vi: "ngày hết hạn",
@@ -330,6 +343,7 @@ export const cosmeticSkincareShoppingLessons: IndonesianLesson[] = [
         pronunciation_en: "TANG-gal ke-da-loo-WAR-sa",
       },
       {
+        cell_id: "3d834622-5c0e-4b27-a610-e5bb84eabada",
         word: "hampir kedaluwarsa",
         en: "almost expired",
         vi: "sắp hết hạn",
@@ -338,6 +352,7 @@ export const cosmeticSkincareShoppingLessons: IndonesianLesson[] = [
         pronunciation_en: "HAM-pir ke-da-loo-WAR-sa",
       },
       {
+        cell_id: "c3a4e9b7-3013-4a07-82a7-a75ba9b0cd3c",
         word: "perih",
         en: "stinging / sore",
         vi: "rát / xót",
@@ -346,6 +361,7 @@ export const cosmeticSkincareShoppingLessons: IndonesianLesson[] = [
         pronunciation_en: "PE-rih",
       },
       {
+        cell_id: "70b5ee51-8410-4c64-bb7c-0cced26da02f",
         word: "kandungan",
         en: "ingredients / contents",
         vi: "thành phần / hàm lượng",
@@ -354,6 +370,7 @@ export const cosmeticSkincareShoppingLessons: IndonesianLesson[] = [
         pronunciation_en: "kan-DOONG-an",
       },
       {
+        cell_id: "9f680fa0-c8b7-4552-af01-624f7c1aa545",
         word: "sudah dibuka",
         en: "already opened",
         vi: "đã mở",
@@ -362,6 +379,7 @@ export const cosmeticSkincareShoppingLessons: IndonesianLesson[] = [
         pronunciation_en: "SOO-dah di-BOO-ka",
       },
       {
+        cell_id: "c2d3c53d-231a-40e6-93b6-8bc10c4625c1",
         word: "ditukar",
         en: "exchanged",
         vi: "được đổi",
@@ -372,24 +390,28 @@ export const cosmeticSkincareShoppingLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "5bcbd01d-e985-40ce-8924-8719c3582a0b",
         speaker: "Pelanggan",
         text: "Maaf, tanggal kedaluwarsa produk ini di mana?",
         vi: "Xin lỗi, ngày hết hạn của sản phẩm này ở đâu?",
         en: "Excuse me, where is the expiry date on this product?",
       },
       {
+        cell_id: "92f030b9-8f50-4985-ba06-a1773a54850e",
         speaker: "Staf Toko",
         text: "Ada di bagian bawah botol, Kak.",
         vi: "Ở phần đáy chai đó bạn.",
         en: "It is on the bottom of the bottle.",
       },
       {
+        cell_id: "a6777114-d9ca-48b5-99a3-2319248c5706",
         speaker: "Pelanggan",
         text: "Kalau produk sudah dibuka dan bikin iritasi, bisa ditukar?",
         vi: "Nếu sản phẩm đã mở và gây kích ứng, có đổi được không?",
         en: "If the product is opened and causes irritation, can it be exchanged?",
       },
       {
+        cell_id: "4aba24ba-c96b-46e1-b53f-8fccccdb4f3d",
         speaker: "Staf Toko",
         text: "Tergantung kondisi produk dan struk pembelian.",
         vi: "Tùy tình trạng sản phẩm và hóa đơn mua hàng.",

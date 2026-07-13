@@ -37,6 +37,7 @@ export type ThaiVocabCategory =
   | "function";
 
 export type ThaiVocabEntry = {
+  cell_id?: string;
   th: string;
   rom: string;
   vi: string;

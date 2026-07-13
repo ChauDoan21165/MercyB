@@ -38,6 +38,7 @@ type LessonSentence = {
 };
 
 type VocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -49,6 +50,7 @@ type VocabEntry = {
 };
 
 type DialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -165,6 +167,7 @@ export const negationPatternsLessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: ask 'what word-class am I negating?' — Noun? → bukan. Verb/adjective? → tidak. e.g. bukan guru (not a teacher), tidak pergi (doesn't go), tidak mahal (not expensive). Memory hook: BUkan ↔ Benda/noun. The contrastive frame 'A bukan …, melainkan B' (not A, but rather B) always takes bukan.",
     vocabulary: [
       {
+        cell_id: "35e3aa4a-b5d1-4987-afbe-5c20a5dd7094",
         word: "tidak",
         en: "not (verbs & adjectives)",
         vi: "không (cho động từ/tính từ)",
@@ -173,6 +176,7 @@ export const negationPatternsLessons: IndonesianLesson[] = [
         pronunciation_en: "TEE-dak",
       },
       {
+        cell_id: "eedbce6a-252e-4d84-9757-42236bd4809a",
         word: "bukan",
         en: "not (a) … (nouns / contrast)",
         vi: "không phải (cho danh từ)",
@@ -181,6 +185,7 @@ export const negationPatternsLessons: IndonesianLesson[] = [
         pronunciation_en: "BOO-kan",
       },
       {
+        cell_id: "9adb811b-8260-46cd-81a2-6ba83305405d",
         word: "nggak / gak",
         en: "not (informal 'tidak')",
         vi: "không (khẩu ngữ)",
@@ -189,6 +194,7 @@ export const negationPatternsLessons: IndonesianLesson[] = [
         pronunciation_en: "ng-GAK / gak",
       },
       {
+        cell_id: "b645d104-a049-44da-9e4a-57e74d56d56b",
         word: "mengerti",
         en: "to understand",
         vi: "hiểu",
@@ -197,6 +203,7 @@ export const negationPatternsLessons: IndonesianLesson[] = [
         pronunciation_en: "meng-er-TEE",
       },
       {
+        cell_id: "b92133f7-3676-4c6f-a968-3b6788dae874",
         word: "masalah",
         en: "problem",
         vi: "vấn đề",
@@ -205,6 +212,7 @@ export const negationPatternsLessons: IndonesianLesson[] = [
         pronunciation_en: "ma-SA-lah",
       },
       {
+        cell_id: "2a903a5c-1453-47d3-89ba-ce40a65f554a",
         word: "berarti",
         en: "to mean",
         vi: "có nghĩa là",
@@ -213,6 +221,7 @@ export const negationPatternsLessons: IndonesianLesson[] = [
         pronunciation_en: "ber-AR-tee",
       },
       {
+        cell_id: "94c68153-1627-449c-89cc-24cd69835a99",
         word: "suka",
         en: "to like",
         vi: "thích",
@@ -221,6 +230,7 @@ export const negationPatternsLessons: IndonesianLesson[] = [
         pronunciation_en: "SOO-ka",
       },
       {
+        cell_id: "c2607d47-07b5-417a-97b5-998cb4ad0c17",
         word: "perawat",
         en: "nurse",
         vi: "y tá",
@@ -231,24 +241,28 @@ export const negationPatternsLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "525c9a26-a722-4c88-afae-a2b2ef17dd4e",
         speaker: "Andi",
         text: "Kamu suka durian?",
         vi: "Bạn thích sầu riêng không?",
         en: "Do you like durian?",
       },
       {
+        cell_id: "7c8714ed-cc95-40cc-90b3-d9b8307391f4",
         speaker: "Lan",
         text: "Tidak, saya tidak suka baunya.",
         vi: "Không, tôi không thích mùi của nó.",
         en: "No, I don't like the smell.",
       },
       {
+        cell_id: "04490f15-95e9-48a2-915f-f03c46597016",
         speaker: "Andi",
         text: "Itu bukan masalah. Coba yang manis ini.",
         vi: "Đó không phải vấn đề. Thử quả ngọt này xem.",
         en: "That's not a problem. Try this sweet one.",
       },
       {
+        cell_id: "55cd05fb-34d7-498f-a392-079da989a69c",
         speaker: "Lan",
         text: "Ini bukan durian, kan? Ini nangka!",
         vi: "Đây không phải sầu riêng đúng không? Đây là mít!",
@@ -394,6 +408,7 @@ export const negationPatternsLessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: translate directly — 'belum' = 'chưa', 'sudah' = 'đã/rồi', 'tidak' = 'không'. When a question contains 'sudah', reflexively answer 'Sudah/Belum', not 'tidak'. Feel the nuance: 'belum menikah' (not married yet — still possible) vs 'tidak menikah' (does not marry — decided). Pick 'belum' whenever the outcome is still open.",
     vocabulary: [
       {
+        cell_id: "67e62009-9451-4ea1-a260-86ddf8bf1111",
         word: "belum",
         en: "not yet",
         vi: "chưa",
@@ -402,6 +417,7 @@ export const negationPatternsLessons: IndonesianLesson[] = [
         pronunciation_en: "be-LOOM",
       },
       {
+        cell_id: "2c70c44f-a5d9-4ec1-93db-5a2267bf1f9b",
         word: "sudah",
         en: "already / done",
         vi: "đã / rồi",
@@ -410,6 +426,7 @@ export const negationPatternsLessons: IndonesianLesson[] = [
         pronunciation_en: "SOO-dah",
       },
       {
+        cell_id: "3e66b82e-e599-403f-b053-cd3bfed1562b",
         word: "selesai",
         en: "finished / done",
         vi: "xong / hoàn thành",
@@ -418,6 +435,7 @@ export const negationPatternsLessons: IndonesianLesson[] = [
         pronunciation_en: "se-le-SIGH",
       },
       {
+        cell_id: "93e6fcf9-c078-4579-8f33-dc390207827e",
         word: "menikah",
         en: "to marry",
         vi: "kết hôn",
@@ -426,6 +444,7 @@ export const negationPatternsLessons: IndonesianLesson[] = [
         pronunciation_en: "me-NEE-kah",
       },
       {
+        cell_id: "438cfd06-89b1-4739-8426-74c48e05b782",
         word: "lancar",
         en: "fluent / smooth",
         vi: "trôi chảy / lưu loát",
@@ -434,6 +453,7 @@ export const negationPatternsLessons: IndonesianLesson[] = [
         pronunciation_en: "LAN-char",
       },
       {
+        cell_id: "59d7b746-9c69-4961-9651-b5c2cb802440",
         word: "mengantuk",
         en: "sleepy",
         vi: "buồn ngủ",
@@ -442,6 +462,7 @@ export const negationPatternsLessons: IndonesianLesson[] = [
         pronunciation_en: "meng-AN-took",
       },
       {
+        cell_id: "67596974-922c-4fd6-b756-6ec76468e0f5",
         word: "pacar",
         en: "boyfriend / girlfriend",
         vi: "người yêu",
@@ -450,6 +471,7 @@ export const negationPatternsLessons: IndonesianLesson[] = [
         pronunciation_en: "PA-char",
       },
       {
+        cell_id: "25a08068-2d55-462a-bee0-ca3ec7370858",
         word: "bisa",
         en: "can / able to",
         vi: "có thể / được",
@@ -460,24 +482,28 @@ export const negationPatternsLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "9a08bda2-4e06-473d-8027-433816426c3c",
         speaker: "Bos",
         text: "Laporannya sudah selesai?",
         vi: "Báo cáo xong chưa?",
         en: "Is the report finished?",
       },
       {
+        cell_id: "6d9fd6ff-800c-4784-bf20-20750f159e69",
         speaker: "Karyawan",
         text: "Belum, Pak. Saya butuh satu jam lagi.",
         vi: "Chưa ạ. Tôi cần thêm một tiếng.",
         en: "Not yet, sir. I need one more hour.",
       },
       {
+        cell_id: "a55633ad-6efd-4408-bfe1-33003a86f212",
         speaker: "Bos",
         text: "Kamu sudah makan siang?",
         vi: "Cậu ăn trưa chưa?",
         en: "Have you had lunch?",
       },
       {
+        cell_id: "ac41cb9b-f9e4-436b-bfd4-b8af1104882b",
         speaker: "Karyawan",
         text: "Belum sempat. Nanti setelah laporan selesai.",
         vi: "Chưa kịp. Lát nữa sau khi xong báo cáo.",
@@ -618,6 +644,7 @@ export const negationPatternsLessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: want a negative command? → ALWAYS 'jangan', never 'tidak'. 'Jangan + verb' = 'Don't + verb'. Want 'lacking / without a thing'? → 'tanpa + noun'. The full set of five negators: tidak (verb/adj), bukan (noun), belum (not yet), jangan (don't), tanpa (without). Ask the right question and the right negator follows.",
     vocabulary: [
       {
+        cell_id: "15895c21-5a9a-455d-bed9-d6feb8590272",
         word: "jangan",
         en: "don't (negative command)",
         vi: "đừng",
@@ -626,6 +653,7 @@ export const negationPatternsLessons: IndonesianLesson[] = [
         pronunciation_en: "JANG-an",
       },
       {
+        cell_id: "27b2842d-d25a-44a0-9856-e1ca7e9990da",
         word: "tanpa",
         en: "without",
         vi: "không có / thiếu",
@@ -634,6 +662,7 @@ export const negationPatternsLessons: IndonesianLesson[] = [
         pronunciation_en: "TAN-pa",
       },
       {
+        cell_id: "882e5007-8c2c-4cf0-b302-94a654d9825e",
         word: "lupa",
         en: "to forget",
         vi: "quên",
@@ -642,6 +671,7 @@ export const negationPatternsLessons: IndonesianLesson[] = [
         pronunciation_en: "LOO-pa",
       },
       {
+        cell_id: "f5223fc4-8227-4d19-b5f2-ed20a014601a",
         word: "khawatir",
         en: "worried",
         vi: "lo lắng",
@@ -650,6 +680,7 @@ export const negationPatternsLessons: IndonesianLesson[] = [
         pronunciation_en: "kha-WA-teer",
       },
       {
+        cell_id: "3fe425d0-887a-4246-b872-578403b74e2b",
         word: "merokok",
         en: "to smoke",
         vi: "hút thuốc",
@@ -658,6 +689,7 @@ export const negationPatternsLessons: IndonesianLesson[] = [
         pronunciation_en: "me-ROH-kok",
       },
       {
+        cell_id: "7e77ac35-c2ba-4552-9999-ef17bed7ee4c",
         word: "payung",
         en: "umbrella",
         vi: "cái ô / dù",
@@ -666,6 +698,7 @@ export const negationPatternsLessons: IndonesianLesson[] = [
         pronunciation_en: "PA-yoong",
       },
       {
+        cell_id: "b16855b1-527c-4548-aa2a-703a4e470538",
         word: "gula",
         en: "sugar",
         vi: "đường",
@@ -674,6 +707,7 @@ export const negationPatternsLessons: IndonesianLesson[] = [
         pronunciation_en: "GOO-la",
       },
       {
+        cell_id: "31e23789-cea6-4488-a6ac-b5da9d3c2493",
         word: "selamat tinggal",
         en: "goodbye (to the one staying)",
         vi: "tạm biệt",
@@ -684,24 +718,28 @@ export const negationPatternsLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "3c33271f-dce8-40e2-acb7-433bca3d43ea",
         speaker: "Ibu",
         text: "Mau pergi? Jangan lupa bawa payung, hari mau hujan.",
         vi: "Định đi à? Đừng quên mang ô, trời sắp mưa.",
         en: "Going out? Don't forget the umbrella, it's about to rain.",
       },
       {
+        cell_id: "d2c79083-ae31-410e-97b1-489dd5e71066",
         speaker: "Anak",
         text: "Iya, Bu. Tolong buatkan kopi tanpa gula, ya.",
         vi: "Vâng mẹ. Làm ơn pha cà phê không đường giúp con nhé.",
         en: "Okay, Mom. Please make me coffee without sugar.",
       },
       {
+        cell_id: "44e9f17b-0cb4-4bae-92ef-c7f90ffb40bb",
         speaker: "Ibu",
         text: "Jangan minum kopi terlalu banyak. Tidak baik untuk lambung.",
         vi: "Đừng uống cà phê quá nhiều. Không tốt cho dạ dày.",
         en: "Don't drink too much coffee. It's not good for your stomach.",
       },
       {
+        cell_id: "fedb0940-fa8e-40b2-8ae7-d9fc515f42e5",
         speaker: "Anak",
         text: "Jangan khawatir, Bu. Cuma satu cangkir.",
         vi: "Đừng lo mẹ. Chỉ một cốc thôi.",

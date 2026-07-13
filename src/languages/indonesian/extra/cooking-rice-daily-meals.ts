@@ -16,6 +16,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   /** Indonesian word/phrase. */
   word: string;
   /** English meaning. */
@@ -31,6 +32,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   /** Indonesian line. */
   text: string;
@@ -193,6 +195,7 @@ export const lessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: separate `beras` (uncooked rice), `nasi` (cooked rice), `lauk` (dish eaten with rice), `sayur` (vegetables/vegetable soup), `sambal` (chili paste), and `bekal` (packed meal). Cooking sentences stay compact because Indonesian has no verb conjugation: `Saya masak nasi`, `Saya siapkan bekal`, `Saya tidak kuat pedas`.",
     vocabulary: [
       {
+        cell_id: "f7d61622-bb12-4c9f-9778-2f9b4db0ec62",
         word: "nasi",
         en: "cooked rice",
         vi: "cơm chín",
@@ -201,6 +204,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "NA-see",
       },
       {
+        cell_id: "e90fe5dc-e94e-4016-b5e0-e9f7ad654a5a",
         word: "beras",
         en: "uncooked rice",
         vi: "gạo sống",
@@ -209,6 +213,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "BE-ras",
       },
       {
+        cell_id: "d18e3de6-8521-4d47-8ec8-04238d0d9b88",
         word: "lauk",
         en: "side dish eaten with rice",
         vi: "món ăn kèm cơm",
@@ -217,6 +222,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "LA-ook",
       },
       {
+        cell_id: "b9fb5a43-b4a5-4a5f-86b2-56c1f737df16",
         word: "sayur",
         en: "vegetables / vegetable dish",
         vi: "rau / món rau",
@@ -225,6 +231,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "SA-yur",
       },
       {
+        cell_id: "28d75715-be1f-4150-a889-0541a9dd11d1",
         word: "sambal",
         en: "chili paste",
         vi: "tương ớt sambal",
@@ -233,6 +240,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "SAM-bal",
       },
       {
+        cell_id: "d1085de1-0827-4167-8d21-0a6b70399021",
         word: "rice cooker",
         en: "rice cooker",
         vi: "nồi cơm điện",
@@ -241,6 +249,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "rice COO-ker",
       },
       {
+        cell_id: "01270a69-101d-4dc7-8511-ded7a2e53198",
         word: "bekal",
         en: "packed meal",
         vi: "cơm/đồ ăn mang theo",
@@ -249,6 +258,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "BE-kal",
       },
       {
+        cell_id: "473ef13c-9b36-4242-b0d3-16dbd81e0cc2",
         word: "makan siang",
         en: "lunch",
         vi: "bữa trưa / ăn trưa",
@@ -257,6 +267,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "MA-kan see-ANG",
       },
       {
+        cell_id: "52952c1b-f43e-4bd6-a164-e279bcd1f9b5",
         word: "masakan rumahan",
         en: "home cooking",
         vi: "món nhà nấu",
@@ -265,6 +276,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "ma-SA-kan roo-MA-han",
       },
       {
+        cell_id: "be7c6c4e-02e7-4cdb-b1dd-2a569a4b3c4d",
         word: "tidak kuat pedas",
         en: "cannot handle spicy food",
         vi: "không chịu cay được",
@@ -275,30 +287,35 @@ export const lessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "5dfe6a42-77c0-4d17-84eb-f98ea189b60b",
         speaker: "Ibu",
         text: "Nasinya sudah matang di rice cooker?",
         vi: "Cơm trong nồi cơm điện đã chín chưa?",
         en: "Is the rice already cooked in the rice cooker?",
       },
       {
+        cell_id: "daa1e082-a787-4fc0-b7bf-5cf0db1da1a0",
         speaker: "Anak",
         text: "Sudah, Bu. Lauknya apa untuk makan siang?",
         vi: "Rồi mẹ. Món ăn kèm cho bữa trưa là gì?",
         en: "Yes, Mom. What side dish is for lunch?",
       },
       {
+        cell_id: "82a5a2f2-c3ba-4985-af05-1c0b1ad2277a",
         speaker: "Ibu",
         text: "Ada ayam goreng, sayur bening, dan sambal sedikit.",
         vi: "Có gà chiên, canh rau trong, và một chút sambal.",
         en: "There is fried chicken, clear vegetable soup, and a little sambal.",
       },
       {
+        cell_id: "b67709e9-140e-48fa-ac79-a63e7f787dfe",
         speaker: "Anak",
         text: "Tolong sambalnya sedikit saja. Saya tidak kuat pedas.",
         vi: "Làm ơn cho sambal ít thôi. Con không chịu cay được.",
         en: "Please only a little sambal. I cannot handle spicy food.",
       },
       {
+        cell_id: "f033a2b4-0884-4e5b-842f-60b91ae2f3a9",
         speaker: "Ibu",
         text: "Baik. Bekalnya juga sudah saya siapkan.",
         vi: "Được. Cơm hộp cũng mẹ chuẩn bị rồi.",

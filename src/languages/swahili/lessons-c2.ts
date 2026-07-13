@@ -79,6 +79,7 @@ export const lessons: SwahiliLesson[] = [
       "DAILY C2 DRILL: Read a paragraph of taarifa (report) from a Tanzanian gazeti (newspaper) like Mwananchi or HabariLeo, underline every Arabic-origin word, and look them up in Kamusi ya Kiswahili Sanifu (TUKI). Rewrite the paragraph in simpler Swahili, then upgrade it back to C2.\n\nACADEMIC PARAGRAPH TEMPLATE:\n1. Open: Uchunguzi huu unachunguza… (this study examines…)\n2. Gap: …pengo ambalo halijashughulikiwa… (a gap not yet addressed)\n3. Method: Kwa kutumia mbinu za… (using methods of…)\n4. Results: Matokeo yanaonyesha kwamba… (results show that…)\n5. Limits: Hata hivyo, uchunguzi huu una mapungufu kadhaa… (however, this study has several limitations…)\n6. Contribution: Pamoja na mapungufu hayo, utafiti huu unachangia… (despite those limitations, this research contributes…)",
     vocabulary: [
       {
+        cell_id: "c34c93d4-d95e-4f0b-808e-dd3355bb87d3",
         word: "uchunguzi",
         en: "investigation / study",
         vi: "nghiên cứu / khảo sát",
@@ -87,6 +88,7 @@ export const lessons: SwahiliLesson[] = [
         pronunciation_en: "oo-choo-NGOO-zee",
       },
       {
+        cell_id: "9d994792-00f1-46f6-877f-78968d29daa0",
         word: "pengo",
         en: "gap / lacuna",
         vi: "khoảng trống",
@@ -95,6 +97,7 @@ export const lessons: SwahiliLesson[] = [
         pronunciation_en: "PEH-ngoh (mapengo = gaps)",
       },
       {
+        cell_id: "a467af20-60e2-4ca0-851e-6debe6544447",
         word: "fasihi",
         en: "literature (scholarly)",
         vi: "tài liệu học thuật",
@@ -103,6 +106,7 @@ export const lessons: SwahiliLesson[] = [
         pronunciation_en: "fah-SEE-hee (Arabic loan)",
       },
       {
+        cell_id: "9c0b6dfe-2bdb-45d5-a695-f6bdce22020e",
         word: "kuhusiana",
         en: "in relation to / regarding",
         vi: "liên quan đến",
@@ -111,6 +115,7 @@ export const lessons: SwahiliLesson[] = [
         pronunciation_en: "koo-hoo-see-AH-nah (reciprocal -ana)",
       },
       {
+        cell_id: "9373dc85-0648-4656-85f5-8f17fd6ae161",
         word: "mapungufu",
         en: "shortcomings / limitations",
         vi: "thiếu sót / hạn chế",
@@ -208,6 +213,7 @@ export const lessons: SwahiliLesson[] = [
       "C2 READING DRILL: Read a short story by Shaaban Robert (''Adili na Nduguze'' is the ideal entry point) — underline every tashbihi (metaphor) and write out both literal and figurative meanings. Then move on to Kezilahabi (''Rosa Mistika'' or ''Kichwamaji'') for the modern, existential register.\n\nC2 WRITING EXERCISE: read a shairi (poem), identify vina (rhyme) and mizani (meter); rewrite a prose passage as mashairi; distinguish the narrator's sauti from character voice; identify mafumbo — what the author does NOT say explicitly; compose an original C2 paragraph using at least three original tashbihi (not translated from English/Vietnamese).",
     vocabulary: [
       {
+        cell_id: "c788f8ca-4ab9-49fb-a262-cf32b6d6b253",
         word: "tashbihi",
         en: "metaphor / simile",
         vi: "ẩn dụ",
@@ -216,6 +222,7 @@ export const lessons: SwahiliLesson[] = [
         pronunciation_en: "tah-SHBEE-hee (Arabic تَشْبِيه)",
       },
       {
+        cell_id: "151a8ca1-f9a0-4d95-aec0-5cdda765eed5",
         word: "msimulizi",
         en: "narrator",
         vi: "người kể chuyện",
@@ -224,6 +231,7 @@ export const lessons: SwahiliLesson[] = [
         pronunciation_en: "m-see-moo-LEE-zee",
       },
       {
+        cell_id: "d86289c0-50ec-45fd-9c58-102279c6a7e0",
         word: "mafumbo",
         en: "riddles / implicatures / subtext",
         vi: "hàm ngôn / ẩn ý",
@@ -232,6 +240,7 @@ export const lessons: SwahiliLesson[] = [
         pronunciation_en: "mah-FOOM-boh (sing. fumbo = puzzle)",
       },
       {
+        cell_id: "4f532489-205d-4938-812a-920ee9b48451",
         word: "sauti",
         en: "voice / tone",
         vi: "giọng điệu",
@@ -240,6 +249,7 @@ export const lessons: SwahiliLesson[] = [
         pronunciation_en: "sah-OO-tee (Arabic صَوْت)",
       },
       {
+        cell_id: "dd2c69d5-050f-4da8-a8b3-f3adb85075d3",
         word: "kukata tamaa",
         en: "to despair (lit. 'to cut hope')",
         vi: "tuyệt vọng (nghĩa đen: cắt hy vọng)",
@@ -330,6 +340,7 @@ export const lessons: SwahiliLesson[] = [
       "C2 POLITICAL DRILL: Read a taarifa ya pamoja (joint communiqué) from the AU website (au.int/sw) or EAC. Compare the Swahili version with the English one — notice where the Swahili is deliberately vaguer (this is diplomatic skill, not translation error).\n\nWRITING EXERCISE: Draft a short azimio (resolution) in three parts: (1) utangulizi (preamble — note the situation), (2) maazimio (operative clauses — use ''inaazimia kwamba…''), (3) wito (call to action — use ''inatoa wito kwa…'').\n\nCORE DIPLOMATIC LEXICON: baraza (council), bunge (parliament), azimio (resolution), taarifa (communiqué), mkataba (treaty), kura (vote), ridhaa (consensus), upinzani (opposition).",
     vocabulary: [
       {
+        cell_id: "f68e1384-c4e5-44e7-9b82-da0791d42948",
         word: "baraza",
         en: "council / assembly",
         vi: "hội đồng",
@@ -338,6 +349,7 @@ export const lessons: SwahiliLesson[] = [
         pronunciation_en: "bah-RAH-zah (Arabic origin, 'open court')",
       },
       {
+        cell_id: "8aba6311-ce8d-412b-9433-cb3fd0bc7424",
         word: "azimio",
         en: "resolution (formal decision)",
         vi: "nghị quyết",
@@ -346,6 +358,7 @@ export const lessons: SwahiliLesson[] = [
         pronunciation_en: "ah-zee-MEE-oh (from -azimia 'resolve')",
       },
       {
+        cell_id: "c8f196f9-ad44-446e-bf9b-b41fd5061cc3",
         word: "upinzani",
         en: "opposition",
         vi: "phe đối lập",
@@ -354,6 +367,7 @@ export const lessons: SwahiliLesson[] = [
         pronunciation_en: "oo-pee-NZAH-nee",
       },
       {
+        cell_id: "022ab50e-5df2-4d4e-8e2e-215962174bc7",
         word: "kukabiliana",
         en: "to confront / address (together)",
         vi: "đối phó (cùng nhau)",
@@ -362,6 +376,7 @@ export const lessons: SwahiliLesson[] = [
         pronunciation_en: "koo-kah-bee-lee-AH-nah",
       },
       {
+        cell_id: "db147350-50ac-4128-9ff3-8022953d6afb",
         word: "mkataba",
         en: "treaty / agreement",
         vi: "hiệp định",
@@ -452,6 +467,7 @@ export const lessons: SwahiliLesson[] = [
       "LEGAL TRANSLATION DRILL: Take a short article from a Vietnamese law (e.g. Labor Code), translate it into Swahili, then check whether the legal obligation level survived. Common error: using lazima where inapasa suffices (too rigid), or vice versa (too weak for a command). In C2 legal texts, every word carries legal force. Key structures: ''Kwa mujibu wa kifungu cha…'' (pursuant to article…), ''isipokuwa kama itakavyoelezwa vinginevyo'' (unless otherwise provided), ''bila ya kuathiri…'' (without prejudice to…).",
     vocabulary: [
       {
+        cell_id: "55d41ef0-0d6d-455c-bd7c-be237a610a1b",
         word: "sheria",
         en: "law",
         vi: "luật",
@@ -460,6 +476,7 @@ export const lessons: SwahiliLesson[] = [
         pronunciation_en: "SHEH-ree-ah (Arabic شَرِيعَة)",
       },
       {
+        cell_id: "41f8b39b-9fe3-4fde-ae0e-2aa22fcbd7e8",
         word: "kifungu",
         en: "article / clause / section (of law)",
         vi: "điều khoản",
@@ -468,6 +485,7 @@ export const lessons: SwahiliLesson[] = [
         pronunciation_en: "kee-FOON-goo (ki- diminutive: 'small section')",
       },
       {
+        cell_id: "57a5058f-5922-47b4-ae79-3d9ac2304456",
         word: "mkataba",
         en: "contract / agreement",
         vi: "hợp đồng / thỏa thuận",
@@ -476,6 +494,7 @@ export const lessons: SwahiliLesson[] = [
         pronunciation_en: "m-kah-TAH-bah",
       },
       {
+        cell_id: "3c30fa18-6ce5-4642-a7f6-d5eaaf75fccb",
         word: "wajibu",
         en: "obligation / duty",
         vi: "nghĩa vụ",
@@ -484,6 +503,7 @@ export const lessons: SwahiliLesson[] = [
         pronunciation_en: "wah-JEE-boo (Arabic وَاجِب)",
       },
       {
+        cell_id: "ed01135e-6e18-475e-8f5e-a1e13094a56a",
         word: "iwapo",
         en: "if / in the event that",
         vi: "nếu / trong trường hợp",
@@ -575,6 +595,7 @@ export const lessons: SwahiliLesson[] = [
       "C2 NEWS READING DRILL: Every day, read one uhariri (editorial) on Mwananchi or HabariLeo. Make a two-column table: neutral verbs (alisema, alitangaza) vs. charged ones (alidai, alikiri, alidokeza). After a week, you'll see each paper's editorial line.\n\nWRITING EXERCISE: Pick a current East African event — write one habari (objective news) paragraph and one uhariri (editorial) paragraph about the same event. Compare the word choices.",
     vocabulary: [
       {
+        cell_id: "23d446a0-8a87-4025-95bc-b346588bf6af",
         word: "uhariri",
         en: "editorial",
         vi: "xã luận",
@@ -583,6 +604,7 @@ export const lessons: SwahiliLesson[] = [
         pronunciation_en: "oo-hah-REE-ree (Arabic تَحْرِير)",
       },
       {
+        cell_id: "b93c9d54-4332-4d09-8034-602cff2d5c50",
         word: "kudai",
         en: "to claim / allege (unverified nuance)",
         vi: "tuyên bố / cáo buộc",
@@ -591,6 +613,7 @@ export const lessons: SwahiliLesson[] = [
         pronunciation_en: "koo-DAH-ee (Arabic اِدَّعَى)",
       },
       {
+        cell_id: "90726774-0bc6-4f4c-8f3a-c4a320d3b26a",
         word: "kukanusha",
         en: "to deny / refute",
         vi: "phủ nhận / bác bỏ",
@@ -599,6 +622,7 @@ export const lessons: SwahiliLesson[] = [
         pronunciation_en: "koo-kah-NOO-shah (-kan- = deny; -sha = causative)",
       },
       {
+        cell_id: "87664639-8ee0-44bd-8794-0feb6a928cb8",
         word: "mgogoro",
         en: "crisis / conflict / standoff",
         vi: "khủng hoảng / xung đột",
@@ -607,6 +631,7 @@ export const lessons: SwahiliLesson[] = [
         pronunciation_en: "m-goh-GOH-roh",
       },
       {
+        cell_id: "b0e67898-946b-4b34-b9d5-1831f58f4ee1",
         word: "wachambuzi",
         en: "analysts / commentators",
         vi: "nhà phân tích",
@@ -697,6 +722,7 @@ export const lessons: SwahiliLesson[] = [
       "C2 AGREEMENT CHAIN DRILL:\n\nEXERCISE 1 — PARSE: Take a long Swahili sentence (~20 words), underline EVERY agreement prefix. Draw an arrow from each prefix to its head noun. If you can't draw a clear arrow, you don't truly understand the sentence.\n\nEXERCISE 2 — COMPOSE: Pick a random noun and a different random class. Write a sentence with at least 5 agreement points — all correct. Example: pair kitabu (class 7) with wanafunzi (class 2).\n\nEXERCISE 3 — ERROR SPOT: Deliberately mis-agree one prefix in a chain. A C2 learner must spot it INSTANTLY — the way a native Vietnamese speaker instantly hears ''cái bàn này là đẹp quá'' as wrong.\n\nTIP: Memorize the full agreement table for the 8 core class pairs. Put it on your wall. Read it aloud every day for two weeks.",
     vocabulary: [
       {
+        cell_id: "e3787919-fe69-472f-8242-9f42a8c028cf",
         word: "ngeli",
         en: "noun class",
         vi: "lớp danh từ",
@@ -705,6 +731,7 @@ export const lessons: SwahiliLesson[] = [
         pronunciation_en: "NGEH-lee",
       },
       {
+        cell_id: "ddd2bdcc-2076-4ea0-beb4-39bc43b39820",
         word: "ambacho",
         en: "which (class 7 relative pronoun)",
         vi: "cái mà (đại từ quan hệ lớp 7)",
@@ -713,6 +740,7 @@ export const lessons: SwahiliLesson[] = [
         pronunciation_en: "ah-mbah-CHOH (amba- + -cho class 7)",
       },
       {
+        cell_id: "0afda240-152e-47f5-84e7-fd38393609ee",
         word: "hii",
         en: "these (class 4, 9, 10 demonstrative)",
         vi: "những… này (chỉ định từ)",
@@ -721,6 +749,7 @@ export const lessons: SwahiliLesson[] = [
         pronunciation_en: "HEE-ee",
       },
       {
+        cell_id: "2bd73db6-89d6-471a-8bd4-a1d702cb717b",
         word: "waliofaulu",
         en: "who succeeded (class 2 past relative)",
         vi: "những người đã thành công",
@@ -729,6 +758,7 @@ export const lessons: SwahiliLesson[] = [
         pronunciation_en: "wah-lee-oh-fah-OO-loo",
       },
       {
+        cell_id: "3feafbde-6b13-4f5b-b820-059a5e5e9dd7",
         word: "vilivyochaguliwa",
         en: "which were selected (class 8 past relative passive)",
         vi: "những cái đã được chọn (lớp 8)",
@@ -829,6 +859,7 @@ export const lessons: SwahiliLesson[] = [
       "C2 METHALI DRILL:\n\nSTEP 1 — Memorize 10 core methali (Swahili text + literal meaning + figurative meaning — all three): see the Vietnamese list above for the core set.\n\nSTEP 2 — Each day, pick one methali and write a ~100-word paragraph where the methali appears NATURALLY (not forced, not explained).\n\nSTEP 3 — Watch hotuba (speech) videos by Tanzanian politicians on YouTube — note every methali they use and analyze WHY they chose that particular proverb at that particular moment.",
     vocabulary: [
       {
+        cell_id: "9c56f5b7-800a-48eb-9999-34ebf6a396e6",
         word: "methali",
         en: "proverb",
         vi: "tục ngữ",
@@ -837,6 +868,7 @@ export const lessons: SwahiliLesson[] = [
         pronunciation_en: "meh-THAH-lee (Arabic مَثَل)",
       },
       {
+        cell_id: "5418a2ff-e26e-4eda-8038-d0f676bed2fa",
         word: "nahau",
         en: "idiom",
         vi: "thành ngữ",
@@ -845,6 +877,7 @@ export const lessons: SwahiliLesson[] = [
         pronunciation_en: "nah-HAH-oo (Arabic نَحْو)",
       },
       {
+        cell_id: "f2b3c5dd-6360-4b33-8ad9-c5bc0be4cbd9",
         word: "kunukuu",
         en: "to quote / cite",
         vi: "trích dẫn",
@@ -853,6 +886,7 @@ export const lessons: SwahiliLesson[] = [
         pronunciation_en: "koo-noo-KOO-oo (Arabic نَقَلَ)",
       },
       {
+        cell_id: "e0abfbd5-bac1-4cc6-9c4e-e68b264bb5c8",
         word: "msamba",
         en: "crotch / inner thigh (in proverb)",
         vi: "háng (trong tục ngữ)",
@@ -861,6 +895,7 @@ export const lessons: SwahiliLesson[] = [
         pronunciation_en: "m-SAHM-bah",
       },
       {
+        cell_id: "91d32afb-e3df-49f7-ae45-2e9193b4c3e4",
         word: "farasi",
         en: "horse",
         vi: "ngựa",
@@ -971,6 +1006,7 @@ export const lessons: SwahiliLesson[] = [
       "C2 HONORIFIC DRILL: (1) Write the SAME request ('I'd like to ask you something') at 5 different respect levels, from intimate to ultra-formal. (2) Read the Tanzanian parliamentary Hansard (parliament.go.tz) and underline every honorific — mheshimiwa often appears 2-3 times in a SINGLE sentence. (3) Find a Kenyan political speech and a Tanzanian one; compare honorific usage. Vietnamese-speaker traps: using ndugu with Kenyans (sounds 'too Tanzanian'); using mheshimiwa outside political contexts (sounds comically over-formal); defaulting to wewe where an honorific is expected.",
     vocabulary: [
       {
+        cell_id: "04c70193-7431-4b60-9bf5-d9d8acea3266",
         word: "mheshimiwa",
         en: "honorable (formal address)",
         vi: "ngài / quý ngài (kính ngữ chính trị)",
@@ -979,6 +1015,7 @@ export const lessons: SwahiliLesson[] = [
         pronunciation_en: "m-heh-shee-MEE-wah (passive of -heshimu 'honor')",
       },
       {
+        cell_id: "43449e6e-1330-4650-bd1c-e26ca361d963",
         word: "ndugu",
         en: "comrade / sibling / brother/sister",
         vi: "đồng chí / anh / chị",
@@ -987,6 +1024,7 @@ export const lessons: SwahiliLesson[] = [
         pronunciation_en: "NDOO-goo",
       },
       {
+        cell_id: "8065f16b-52fc-4636-b636-8ed90feb7aad",
         word: "mzee",
         en: "elder / respected older person",
         vi: "bậc trưởng lão",
@@ -995,6 +1033,7 @@ export const lessons: SwahiliLesson[] = [
         pronunciation_en: "m-ZEH-eh (two syllables)",
       },
       {
+        cell_id: "6476e6c3-a676-4a71-b970-90a8de1b2449",
         word: "ruhusa",
         en: "permission",
         vi: "sự cho phép",
@@ -1003,6 +1042,7 @@ export const lessons: SwahiliLesson[] = [
         pronunciation_en: "roo-HOO-sah (Arabic رُخْصَة)",
       },
       {
+        cell_id: "6d409602-0c6c-4161-a003-5f285a26fe48",
         word: "mwenyekiti",
         en: "chairperson",
         vi: "chủ tịch (ủy ban/hội đồng)",
@@ -1092,6 +1132,7 @@ export const lessons: SwahiliLesson[] = [
       "C2 PHILOSOPHICAL DRILL: READ the Arusha Declaration (free PDF) — it's the perfect C2 text because it was THOUGHT IN SWAHILI (not translated from English). Analyze: which Bantu words replace Arabic loans? (Nyerere deliberately preferred Bantu.) What repetition structures create emphasis? How does it blend political and philosophical registers? WRITE: Pick one concept (uhuru, haki, utu, hekima) and write 150 words explaining it in Swahili using NO English borrowings.",
     vocabulary: [
       {
+        cell_id: "c1293e9a-9295-4645-9515-3dc6170b5b9a",
         word: "utu",
         en: "humanity / humanness",
         vi: "nhân tính",
@@ -1100,6 +1141,7 @@ export const lessons: SwahiliLesson[] = [
         pronunciation_en: "OO-too (Bantu; cf. Ubuntu)",
       },
       {
+        cell_id: "3fb20eef-a49c-4e7d-8334-dfa9be33c056",
         word: "uhuru",
         en: "freedom / independence",
         vi: "tự do",
@@ -1108,6 +1150,7 @@ export const lessons: SwahiliLesson[] = [
         pronunciation_en: "oo-HOO-roo",
       },
       {
+        cell_id: "6ec9085e-e84a-4e81-956f-4e8151cf5dbe",
         word: "dhamira",
         en: "intention / consciousness / conscience",
         vi: "ý thức / ý định",
@@ -1116,6 +1159,7 @@ export const lessons: SwahiliLesson[] = [
         pronunciation_en: "dhah-MEE-rah (Arabic ضَمِير)",
       },
       {
+        cell_id: "a050b5f9-3b74-48b1-99f8-adedec48b53a",
         word: "kujitegemea",
         en: "self-reliance",
         vi: "tự lực",
@@ -1124,6 +1168,7 @@ export const lessons: SwahiliLesson[] = [
         pronunciation_en: "koo-jee-teh-geh-MEH-ah",
       },
       {
+        cell_id: "7650c97d-e76e-42b5-9112-8343954ce830",
         word: "falsafa",
         en: "philosophy",
         vi: "triết học",
@@ -1214,6 +1259,7 @@ export const lessons: SwahiliLesson[] = [
       "C2 DEBATE DRILL: (1) WATCH Tanzanian ''Mjadala wa Bunge'' (Parliamentary Debate) on YouTube — observe the structure: mheshimiwa → concession → statistics → optional methali → conclusion. (2) WRITE: pick a hot East African topic (e.g. ivory poaching). Write two paragraphs: pro-intervention and anti-intervention. Each MUST concede before rebutting. (3) MASTER C2 SENTENCE TEMPLATES: concede (''Ninakubali kwamba… hata hivyo…''), evidence (''Kulingana na takwimu za…''), rhetorical question (''Je, inawezekana kweli kwamba…?''), rebut (''Hoja hii ina mapungufu kadhaa. Kwanza…''), conclude (''Kwa kumalizia, ninasisitiza kwamba…'').",
     vocabulary: [
       {
+        cell_id: "8f73c145-f302-492b-a855-281531d83def",
         word: "mjadala",
         en: "debate / deliberation",
         vi: "tranh luận",
@@ -1222,6 +1268,7 @@ export const lessons: SwahiliLesson[] = [
         pronunciation_en: "m-jah-DAH-lah (Arabic جَدَل)",
       },
       {
+        cell_id: "899ee0f8-6cd9-4655-aa6f-9d60a5e904d8",
         word: "hoja",
         en: "argument / point / motion",
         vi: "luận điểm / lập luận",
@@ -1230,6 +1277,7 @@ export const lessons: SwahiliLesson[] = [
         pronunciation_en: "HOH-jah (Arabic حُجَّة)",
       },
       {
+        cell_id: "649459f1-f032-4191-abc9-c3878a5b96c6",
         word: "takwimu",
         en: "statistics / data",
         vi: "số liệu thống kê",
@@ -1238,6 +1286,7 @@ export const lessons: SwahiliLesson[] = [
         pronunciation_en: "tah-KWEE-moo (Arabic تَقْوِيم)",
       },
       {
+        cell_id: "bfa00949-bb70-4474-b4fd-490b0f3ee6fb",
         word: "ushahidi",
         en: "evidence / testimony",
         vi: "bằng chứng",
@@ -1246,6 +1295,7 @@ export const lessons: SwahiliLesson[] = [
         pronunciation_en: "oo-shah-HEE-dee (Arabic شَهِيد)",
       },
       {
+        cell_id: "27bc0f05-be84-4f7b-aaf0-a8026bb05100",
         word: "kukanusha",
         en: "to refute / deny",
         vi: "bác bỏ / phủ nhận",

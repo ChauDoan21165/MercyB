@@ -6,6 +6,7 @@ type IndonesianLessonSentence = {
 };
 
 type VocabEntry = {
+  cell_id?: string;
   word: string;
   meaning_vi: string;
   meaning_en: string;
@@ -14,6 +15,7 @@ type VocabEntry = {
 };
 
 type DialogueLine = {
+  cell_id?: string;
   speaker: string;
   line: string;
   vi: string;
@@ -117,6 +119,7 @@ export const lessons: IndonesianLesson[] = [
     ],
     vocabulary: [
       {
+        cell_id: "652b2936-0483-4b36-9c7a-446129449944",
         word: 'simulasi bencana',
         meaning_vi: 'diễn tập bão lũ / mô phỏng bencana',
         meaning_en: 'disaster drill',
@@ -124,6 +127,7 @@ export const lessons: IndonesianLesson[] = [
         example_vi: 'Diễn tập bão lũ được thực hiện mỗi năm.',
       },
       {
+        cell_id: "f3cc5c8f-63ad-4ee4-9461-ee0b57b63fc9",
         word: 'latihan evakuasi',
         meaning_vi: 'luyện sơ tán',
         meaning_en: 'evacuation practice',
@@ -131,6 +135,7 @@ export const lessons: IndonesianLesson[] = [
         example_vi: 'Luyện sơ tán giúp cư dân sẵn sàng hơn.',
       },
       {
+        cell_id: "5d86e4fc-4b03-4ef3-9585-e7587bece5dd",
         word: 'sirene',
         meaning_vi: 'còi báo động',
         meaning_en: 'siren',
@@ -138,6 +143,7 @@ export const lessons: IndonesianLesson[] = [
         example_vi: 'Còi báo động được bật lên như dấu hiệu bắt đầu.',
       },
       {
+        cell_id: "d6dfd45b-7914-4ec5-a2b0-5fe8a124f914",
         word: 'titik kumpul',
         meaning_vi: 'điểm tập trung',
         meaning_en: 'assembly point',
@@ -145,6 +151,7 @@ export const lessons: IndonesianLesson[] = [
         example_vi: 'Điểm tập trung ở sân trường.',
       },
       {
+        cell_id: "05f88fea-b58c-4e42-a15e-ee728ae52164",
         word: 'relawan',
         meaning_vi: 'tình nguyện viên',
         meaning_en: 'volunteer',
@@ -152,6 +159,7 @@ export const lessons: IndonesianLesson[] = [
         example_vi: 'Tình nguyện viên giúp người cao tuổi.',
       },
       {
+        cell_id: "abc6f26a-0dd7-4182-bd6a-5f1dce0fe5e2",
         word: 'daftar hadir',
         meaning_vi: 'danh sách điểm danh',
         meaning_en: 'attendance list',
@@ -159,6 +167,7 @@ export const lessons: IndonesianLesson[] = [
         example_vi: 'Danh sách điểm danh phải được tất cả người tham gia điền.',
       },
       {
+        cell_id: "40f340cf-b969-4046-b3f5-3da3b78c8018",
         word: 'instruksi petugas',
         meaning_vi: 'hướng dẫn của nhân viên/cán bộ',
         meaning_en: 'staff instructions',
@@ -166,6 +175,7 @@ export const lessons: IndonesianLesson[] = [
         example_vi: 'Hãy theo hướng dẫn của nhân viên cho đến khi kết thúc.',
       },
       {
+        cell_id: "2f8eeea4-9550-41f3-806e-ccdd1895d37d",
         word: 'area aman',
         meaning_vi: 'khu vực an toàn',
         meaning_en: 'safe area',
@@ -175,36 +185,42 @@ export const lessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "0b0ea09f-f87e-47dc-b242-cbbd3ccfa99f",
         speaker: 'Petugas',
         line: 'Selamat pagi, hari ini ada simulasi bencana.',
         vi: 'Chào buổi sáng, hôm nay có diễn tập bão lũ.',
         en: 'Good morning, today we have a disaster drill.',
       },
       {
+        cell_id: "4dda1dab-b66a-4ca9-b42c-c9ebbf9d0093",
         speaker: 'Warga',
         line: 'Baik, kami akan ikut latihan evakuasi.',
         vi: 'Được, chúng tôi sẽ tham gia luyện sơ tán.',
         en: 'All right, we will join the evacuation practice.',
       },
       {
+        cell_id: "4d3543c9-d648-442d-bf0d-abf49a20eaf2",
         speaker: 'Petugas',
         line: 'Tolong dengarkan instruksi petugas dan jangan panik.',
         vi: 'Vui lòng nghe hướng dẫn của nhân viên và đừng hoảng loạn.',
         en: 'Please listen to the staff instructions and do not panic.',
       },
       {
+        cell_id: "27d148b3-7cf0-4f3c-8f42-8495323c2cf5",
         speaker: 'Warga',
         line: 'Kami berkumpul di titik kumpul utama, ya.',
         vi: 'Chúng tôi tập trung ở điểm tập trung chính nhé.',
         en: 'We gather at the main assembly point, okay.',
       },
       {
+        cell_id: "ff64efe4-df1b-464d-8ec2-ad0c94cd585c",
         speaker: 'Relawan',
         line: 'Silakan isi daftar hadir sebelum masuk ke area aman.',
         vi: 'Vui lòng điền danh sách điểm danh trước khi vào khu vực an toàn.',
         en: 'Please fill in the attendance list before entering the safe area.',
       },
       {
+        cell_id: "a54b049a-3936-4194-9a1a-57f330ee4ddc",
         speaker: 'Petugas',
         line: 'Terima kasih. Setelah selesai, semua peserta boleh pulang.',
         vi: 'Cảm ơn. Sau khi kết thúc, tất cả người tham gia có thể về.',

@@ -32,6 +32,7 @@ type LessonSentence = {
 };
 
 type VocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -43,6 +44,7 @@ type VocabEntry = {
 };
 
 type DialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -158,20 +160,20 @@ export const conjunctionsConnectorsLessons: IndonesianLesson[] = [
     tip_advice_en:
       "Tip for Vietnamese speakers: Vietnamese uses 'nhưng' for almost everything, so learners over-use 'tapi'. Distinguish: 'tapi/tetapi' MID-sentence, 'namun' to START a new sentence. 'Meskipun' always pairs with another clause (never stands alone) — and don't double up: Vietnamese says 'Mặc dù… NHƯNG…' with both words, but Indonesian needs only ONE: 'Meskipun hujan, dia tetap pergi' (do NOT add 'tetapi'). This is a very common Vietnamese-speaker error. 'Sedangkan' contrasts two sides, glossed 'whereas/while'.",
     vocabulary: [
-      { word: "tetapi / tapi", en: "but", vi: "nhưng", pos: "conj.", pronunciation_vi: "te-TA-pi / TA-pi", pronunciation_en: "te-TA-pee / TA-pee" },
-      { word: "namun", en: "however", vi: "tuy nhiên", pos: "conj.", pronunciation_vi: "NA-mun", pronunciation_en: "NA-moon" },
-      { word: "meskipun", en: "although", vi: "mặc dù", pos: "conj.", pronunciation_vi: "mes-ki-PUN", pronunciation_en: "mes-kee-POON" },
-      { word: "walaupun", en: "even though", vi: "dẫu / dù rằng", pos: "conj.", pronunciation_vi: "wa-lau-PUN", pronunciation_en: "wa-lau-POON" },
-      { word: "sedangkan", en: "whereas / while", vi: "còn / trong khi đó", pos: "conj.", pronunciation_vi: "se-DANG-kan", pronunciation_en: "se-DANG-kan" },
-      { word: "tetap", en: "still / nonetheless", vi: "vẫn", pos: "adv.", pronunciation_vi: "te-TAP", pronunciation_en: "te-TAP" },
-      { word: "mahal", en: "expensive", vi: "đắt", pos: "adj.", pronunciation_vi: "MA-hal", pronunciation_en: "MA-hal" },
-      { word: "sombong", en: "arrogant", vi: "kiêu ngạo", pos: "adj.", pronunciation_vi: "SOM-bong", pronunciation_en: "SOM-bong" },
+      { cell_id: "07c753cb-62a7-4c72-8616-336cd1da0b40", word: "tetapi / tapi", en: "but", vi: "nhưng", pos: "conj.", pronunciation_vi: "te-TA-pi / TA-pi", pronunciation_en: "te-TA-pee / TA-pee" },
+      { cell_id: "2037378b-ede3-4b0b-92f7-3d070a418d4f", word: "namun", en: "however", vi: "tuy nhiên", pos: "conj.", pronunciation_vi: "NA-mun", pronunciation_en: "NA-moon" },
+      { cell_id: "e8088015-7617-46c5-bb43-cb2be299d85b", word: "meskipun", en: "although", vi: "mặc dù", pos: "conj.", pronunciation_vi: "mes-ki-PUN", pronunciation_en: "mes-kee-POON" },
+      { cell_id: "a96dfaa1-7863-4bf2-acaa-e2e8d7b84fb9", word: "walaupun", en: "even though", vi: "dẫu / dù rằng", pos: "conj.", pronunciation_vi: "wa-lau-PUN", pronunciation_en: "wa-lau-POON" },
+      { cell_id: "b79777db-e037-4d2d-9e85-ac5d4915eab9", word: "sedangkan", en: "whereas / while", vi: "còn / trong khi đó", pos: "conj.", pronunciation_vi: "se-DANG-kan", pronunciation_en: "se-DANG-kan" },
+      { cell_id: "fddbc374-ff32-4b47-b925-5850509f303c", word: "tetap", en: "still / nonetheless", vi: "vẫn", pos: "adv.", pronunciation_vi: "te-TAP", pronunciation_en: "te-TAP" },
+      { cell_id: "2ae2a01b-d344-41b5-9f96-31a0985f7ace", word: "mahal", en: "expensive", vi: "đắt", pos: "adj.", pronunciation_vi: "MA-hal", pronunciation_en: "MA-hal" },
+      { cell_id: "07637daf-6748-4f01-a6a2-c28584790e97", word: "sombong", en: "arrogant", vi: "kiêu ngạo", pos: "adj.", pronunciation_vi: "SOM-bong", pronunciation_en: "SOM-bong" },
     ],
     dialogue: [
-      { speaker: "Tina", text: "Aku mau beli baju itu, tapi harganya mahal sekali.", vi: "Tớ muốn mua cái áo đó, nhưng giá đắt quá.", en: "I want to buy that shirt, but it's very expensive." },
-      { speaker: "Doni", text: "Meskipun mahal, kualitasnya bagus, lho.", vi: "Mặc dù đắt, nhưng chất lượng tốt đấy.", en: "Even though it's pricey, the quality is good." },
-      { speaker: "Tina", text: "Iya sih. Namun, uangku belum cukup bulan ini.", vi: "Ừ thì. Tuy nhiên, tiền của tớ tháng này chưa đủ.", en: "True. However, I don't have enough money this month." },
-      { speaker: "Doni", text: "Ya sudah, tunggu gajian. Aku tetap di sini, sedangkan kamu cari yang lain dulu.", vi: "Thôi vậy, chờ lương đi. Tớ vẫn ở đây, còn cậu tìm cái khác trước.", en: "Alright, wait for payday. I'll stay here, while you look at others first." },
+      { cell_id: "3404fac9-5229-48ea-a235-be591ffdfbcf", speaker: "Tina", text: "Aku mau beli baju itu, tapi harganya mahal sekali.", vi: "Tớ muốn mua cái áo đó, nhưng giá đắt quá.", en: "I want to buy that shirt, but it's very expensive." },
+      { cell_id: "568dea3a-e4d6-4ec8-86f2-a36f360069dc", speaker: "Doni", text: "Meskipun mahal, kualitasnya bagus, lho.", vi: "Mặc dù đắt, nhưng chất lượng tốt đấy.", en: "Even though it's pricey, the quality is good." },
+      { cell_id: "336410e7-7c29-42cb-a335-5dbf9b718df1", speaker: "Tina", text: "Iya sih. Namun, uangku belum cukup bulan ini.", vi: "Ừ thì. Tuy nhiên, tiền của tớ tháng này chưa đủ.", en: "True. However, I don't have enough money this month." },
+      { cell_id: "0ee6430e-dfdc-4715-ac75-3555f2462593", speaker: "Doni", text: "Ya sudah, tunggu gajian. Aku tetap di sini, sedangkan kamu cari yang lain dulu.", vi: "Thôi vậy, chờ lương đi. Tớ vẫn ở đây, còn cậu tìm cái khác trước.", en: "Alright, wait for payday. I'll stay here, while you look at others first." },
     ],
     exercises: [
       {
@@ -294,20 +296,20 @@ export const conjunctionsConnectorsLessons: IndonesianLesson[] = [
     tip_advice_en:
       "Tip for Vietnamese speakers: Vietnamese separates 'vì' (cause) and 'nên' (result) — Indonesian does too: 'karena' = because, 'sehingga/jadi' = so. Don't use 'karena' for both. Common error: rendering 'Vì… nên…' with both 'karena' and 'sehingga' in one sentence — usually you need only ONE: 'Karena sakit, saya tidak datang' (enough; don't add 'jadi/sehingga'). Watch 'jadi': as a connector it means 'so/therefore', but 'jadi' also means 'to become', and 'tidak jadi' means 'to call off / not happen'. 'Oleh karena itu' is very formal — use it in essays and presentations, not casual chat.",
     vocabulary: [
-      { word: "karena", en: "because", vi: "vì / bởi vì", pos: "conj.", pronunciation_vi: "KA-re-na", pronunciation_en: "KA-re-na" },
-      { word: "sebab", en: "because / the reason", vi: "vì / lý do", pos: "conj./noun", pronunciation_vi: "SE-bab", pronunciation_en: "SE-bab" },
-      { word: "sehingga", en: "so that / resulting in", vi: "nên / dẫn đến", pos: "conj.", pronunciation_vi: "se-HING-ga", pronunciation_en: "se-HING-ga" },
-      { word: "jadi", en: "so / therefore", vi: "nên / vì vậy", pos: "conj.", pronunciation_vi: "JA-di", pronunciation_en: "JA-dee" },
-      { word: "maka", en: "then / thus", vi: "thì / cho nên", pos: "conj.", pronunciation_vi: "MA-ka", pronunciation_en: "MA-ka" },
-      { word: "oleh karena itu", en: "therefore", vi: "vì thế / do đó", pos: "conj.", pronunciation_vi: "O-leh KA-re-na I-tu", pronunciation_en: "OH-leh KA-re-na EE-too" },
-      { word: "lulus", en: "to pass (an exam)", vi: "đậu / qua", pos: "verb", pronunciation_vi: "LU-lus", pronunciation_en: "LOO-loos" },
-      { word: "deras", en: "heavy / pouring (rain)", vi: "xối xả / to", pos: "adj.", pronunciation_vi: "DE-ras", pronunciation_en: "DE-ras" },
+      { cell_id: "42c6aa08-0a51-4c2f-9e98-d7a3bbf96ba0", word: "karena", en: "because", vi: "vì / bởi vì", pos: "conj.", pronunciation_vi: "KA-re-na", pronunciation_en: "KA-re-na" },
+      { cell_id: "ef75e750-b85d-4a71-8732-b9827d06047d", word: "sebab", en: "because / the reason", vi: "vì / lý do", pos: "conj./noun", pronunciation_vi: "SE-bab", pronunciation_en: "SE-bab" },
+      { cell_id: "5cdf8f74-43d1-4521-8471-20dd97a71c95", word: "sehingga", en: "so that / resulting in", vi: "nên / dẫn đến", pos: "conj.", pronunciation_vi: "se-HING-ga", pronunciation_en: "se-HING-ga" },
+      { cell_id: "1201bc75-93de-4026-8eda-dfc87e223bd8", word: "jadi", en: "so / therefore", vi: "nên / vì vậy", pos: "conj.", pronunciation_vi: "JA-di", pronunciation_en: "JA-dee" },
+      { cell_id: "291ba0ab-6e3f-4d5d-bfd4-ef64492f218e", word: "maka", en: "then / thus", vi: "thì / cho nên", pos: "conj.", pronunciation_vi: "MA-ka", pronunciation_en: "MA-ka" },
+      { cell_id: "9c98efb0-d793-41a8-b8f0-d991c47382fb", word: "oleh karena itu", en: "therefore", vi: "vì thế / do đó", pos: "conj.", pronunciation_vi: "O-leh KA-re-na I-tu", pronunciation_en: "OH-leh KA-re-na EE-too" },
+      { cell_id: "c8ae983b-ac89-4671-a6bf-9f8b8fe3d805", word: "lulus", en: "to pass (an exam)", vi: "đậu / qua", pos: "verb", pronunciation_vi: "LU-lus", pronunciation_en: "LOO-loos" },
+      { cell_id: "80e195b9-b841-4401-a5f4-b382670dec98", word: "deras", en: "heavy / pouring (rain)", vi: "xối xả / to", pos: "adj.", pronunciation_vi: "DE-ras", pronunciation_en: "DE-ras" },
     ],
     dialogue: [
-      { speaker: "Sari", text: "Kenapa kamu terlambat tadi pagi?", vi: "Sao sáng nay cậu đến muộn vậy?", en: "Why were you late this morning?" },
-      { speaker: "Adi", text: "Karena macet parah. Hujan deras, jadi semua kendaraan pelan.", vi: "Vì kẹt xe nặng. Mưa to, nên mọi xe đều chậm.", en: "Because of bad traffic. It was pouring, so all the vehicles were slow." },
-      { speaker: "Sari", text: "Oh pantas. Oleh karena itu, lain kali berangkat lebih awal, ya.", vi: "À thảo nào. Vì thế, lần sau đi sớm hơn nhé.", en: "Oh, no wonder. Therefore, next time leave earlier." },
-      { speaker: "Adi", text: "Iya, aku akan bangun lebih pagi sehingga tidak telat lagi.", vi: "Ừ, tớ sẽ dậy sớm hơn để không trễ nữa.", en: "Yes, I'll wake up earlier so I won't be late again." },
+      { cell_id: "5606b63a-188a-4634-89ed-4d7452cc7ab6", speaker: "Sari", text: "Kenapa kamu terlambat tadi pagi?", vi: "Sao sáng nay cậu đến muộn vậy?", en: "Why were you late this morning?" },
+      { cell_id: "8cede96b-3518-4f07-b323-0c0a764e5056", speaker: "Adi", text: "Karena macet parah. Hujan deras, jadi semua kendaraan pelan.", vi: "Vì kẹt xe nặng. Mưa to, nên mọi xe đều chậm.", en: "Because of bad traffic. It was pouring, so all the vehicles were slow." },
+      { cell_id: "a2dcecbe-21fc-4219-821b-f42a73c358b6", speaker: "Sari", text: "Oh pantas. Oleh karena itu, lain kali berangkat lebih awal, ya.", vi: "À thảo nào. Vì thế, lần sau đi sớm hơn nhé.", en: "Oh, no wonder. Therefore, next time leave earlier." },
+      { cell_id: "74497436-8405-4137-bfcf-e3541bc66878", speaker: "Adi", text: "Iya, aku akan bangun lebih pagi sehingga tidak telat lagi.", vi: "Ừ, tớ sẽ dậy sớm hơn để không trễ nữa.", en: "Yes, I'll wake up earlier so I won't be late again." },
     ],
     exercises: [
       {
@@ -430,21 +432,21 @@ export const conjunctionsConnectorsLessons: IndonesianLesson[] = [
     tip_advice_en:
       "Tip for Vietnamese speakers: 'untuk' + a VERB ('untuk belajar' = to study), but 'agar/supaya' + a CLAUSE with a subject ('agar saya lulus' = so that I pass). Common error: using 'untuk' where a clause is needed. Conditional formality scale: kalau (casual) < jika < bila < apabila (legal). Sequence: 'lalu' and 'kemudian' both mean 'then' — 'kemudian' is more formal, fitting writing. 'Selain itu' opens a sentence to ADD a point, very useful in essays. Remember: 'agar/supaya' = purpose (not necessarily achieved), 'sehingga' = an actual result (achieved) — don't mix them.",
     vocabulary: [
-      { word: "agar", en: "so that / in order to", vi: "để / để mà", pos: "conj.", pronunciation_vi: "A-gar", pronunciation_en: "A-gar" },
-      { word: "supaya", en: "so that", vi: "để (cho)", pos: "conj.", pronunciation_vi: "su-PA-ya", pronunciation_en: "soo-PA-ya" },
-      { word: "kalau", en: "if", vi: "nếu", pos: "conj.", pronunciation_vi: "KA-lau", pronunciation_en: "KA-lau" },
-      { word: "jika", en: "if (formal)", vi: "nếu (trang trọng)", pos: "conj.", pronunciation_vi: "JI-ka", pronunciation_en: "JEE-ka" },
-      { word: "lalu", en: "then / after that", vi: "rồi / sau đó", pos: "conj.", pronunciation_vi: "LA-lu", pronunciation_en: "LA-loo" },
-      { word: "kemudian", en: "then / afterwards", vi: "sau đó", pos: "conj.", pronunciation_vi: "ke-mu-DI-an", pronunciation_en: "ke-moo-DEE-an" },
-      { word: "selain itu", en: "besides / in addition", vi: "ngoài ra", pos: "conj.", pronunciation_vi: "se-LA-in I-tu", pronunciation_en: "se-LA-een EE-too" },
-      { word: "rajin", en: "diligent / hardworking", vi: "siêng năng", pos: "adj.", pronunciation_vi: "RA-jin", pronunciation_en: "RA-jeen" },
-      { word: "berisik", en: "noisy", vi: "ồn ào", pos: "adj.", pronunciation_vi: "be-RI-sik", pronunciation_en: "be-REE-seek" },
+      { cell_id: "278dc1db-a750-42d5-b449-49c4715a629c", word: "agar", en: "so that / in order to", vi: "để / để mà", pos: "conj.", pronunciation_vi: "A-gar", pronunciation_en: "A-gar" },
+      { cell_id: "63319f30-85f2-4867-a0f2-9152e83f187a", word: "supaya", en: "so that", vi: "để (cho)", pos: "conj.", pronunciation_vi: "su-PA-ya", pronunciation_en: "soo-PA-ya" },
+      { cell_id: "ac5b6f10-5709-41b7-be85-821393b55816", word: "kalau", en: "if", vi: "nếu", pos: "conj.", pronunciation_vi: "KA-lau", pronunciation_en: "KA-lau" },
+      { cell_id: "cbdc0447-3243-49b7-9c70-8b76bc686184", word: "jika", en: "if (formal)", vi: "nếu (trang trọng)", pos: "conj.", pronunciation_vi: "JI-ka", pronunciation_en: "JEE-ka" },
+      { cell_id: "2240bd0d-a0d4-492a-8500-26f3ba1c1f12", word: "lalu", en: "then / after that", vi: "rồi / sau đó", pos: "conj.", pronunciation_vi: "LA-lu", pronunciation_en: "LA-loo" },
+      { cell_id: "20269b15-d12b-478d-a5db-6ee8683677d4", word: "kemudian", en: "then / afterwards", vi: "sau đó", pos: "conj.", pronunciation_vi: "ke-mu-DI-an", pronunciation_en: "ke-moo-DEE-an" },
+      { cell_id: "95c8deaf-e8a4-4b4d-adeb-e61db1bb22e7", word: "selain itu", en: "besides / in addition", vi: "ngoài ra", pos: "conj.", pronunciation_vi: "se-LA-in I-tu", pronunciation_en: "se-LA-een EE-too" },
+      { cell_id: "64047e76-e2d9-41af-91fb-5a9e7df0a864", word: "rajin", en: "diligent / hardworking", vi: "siêng năng", pos: "adj.", pronunciation_vi: "RA-jin", pronunciation_en: "RA-jeen" },
+      { cell_id: "1941f03a-a1ab-49c8-81dc-5b65a2fb12f9", word: "berisik", en: "noisy", vi: "ồn ào", pos: "adj.", pronunciation_vi: "be-RI-sik", pronunciation_en: "be-REE-seek" },
     ],
     dialogue: [
-      { speaker: "Guru", text: "Kalau kamu ingin lulus, kamu harus belajar lebih rajin.", vi: "Nếu em muốn đậu, em phải học chăm hơn.", en: "If you want to pass, you have to study harder." },
-      { speaker: "Murid", text: "Baik, Bu. Saya akan buat jadwal agar belajar lebih teratur.", vi: "Vâng ạ. Em sẽ lập thời khóa biểu để học có nề nếp hơn.", en: "Yes, ma'am. I'll make a schedule so I study more regularly." },
-      { speaker: "Guru", text: "Bagus. Selain itu, jangan lupa istirahat supaya tidak kelelahan.", vi: "Tốt. Ngoài ra, đừng quên nghỉ ngơi để khỏi kiệt sức.", en: "Good. Besides, don't forget to rest so you don't get exhausted." },
-      { speaker: "Murid", text: "Siap. Saya akan belajar dulu, lalu istirahat, kemudian mengulang lagi.", vi: "Rõ ạ. Em sẽ học trước, rồi nghỉ, sau đó ôn lại.", en: "Got it. I'll study first, then rest, then review again." },
+      { cell_id: "ba6b03fd-fe59-4186-830f-2fb1852dc0e0", speaker: "Guru", text: "Kalau kamu ingin lulus, kamu harus belajar lebih rajin.", vi: "Nếu em muốn đậu, em phải học chăm hơn.", en: "If you want to pass, you have to study harder." },
+      { cell_id: "4f3d5b8d-6724-4ae7-8de1-3f3d7503a178", speaker: "Murid", text: "Baik, Bu. Saya akan buat jadwal agar belajar lebih teratur.", vi: "Vâng ạ. Em sẽ lập thời khóa biểu để học có nề nếp hơn.", en: "Yes, ma'am. I'll make a schedule so I study more regularly." },
+      { cell_id: "1e93820b-49cb-4016-a3d0-85ed4d9fd99f", speaker: "Guru", text: "Bagus. Selain itu, jangan lupa istirahat supaya tidak kelelahan.", vi: "Tốt. Ngoài ra, đừng quên nghỉ ngơi để khỏi kiệt sức.", en: "Good. Besides, don't forget to rest so you don't get exhausted." },
+      { cell_id: "da3a4f5b-f83b-4353-bcfd-0b49dc18900b", speaker: "Murid", text: "Siap. Saya akan belajar dulu, lalu istirahat, kemudian mengulang lagi.", vi: "Rõ ạ. Em sẽ học trước, rồi nghỉ, sau đó ôn lại.", en: "Got it. I'll study first, then rest, then review again." },
     ],
     exercises: [
       {

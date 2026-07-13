@@ -52,6 +52,7 @@ export type ThaiLessonSentence = {
 };
 
 export type ThaiVocabEntry = {
+  cell_id?: string;
   /** Thai word. */
   word: string;
   rtgs: string;
@@ -61,6 +62,7 @@ export type ThaiVocabEntry = {
 };
 
 export type ThaiDialogueLine = {
+  cell_id?: string;
   speaker: string;
   th: string;
   rtgs: string;
@@ -157,16 +159,16 @@ export const lessons: ThaiLesson[] = [
       },
     ],
     vocabulary: [
-      { word: "สวัสดี", rtgs: "sà-wàt-dii", vi: "xin chào", en: "hello", pos: "interjection" },
-      { word: "สบายดี", rtgs: "sà-baai-dii", vi: "khỏe / ổn", en: "fine, well", pos: "adjective" },
-      { word: "ไหม", rtgs: "mǎi", vi: "không? (từ hỏi)", en: "yes/no question word", pos: "particle" },
-      { word: "ขอบคุณ", rtgs: "khɔ̀ɔp-khun", vi: "cảm ơn", en: "thank you", pos: "phrase" },
-      { word: "ลาก่อน", rtgs: "laa-gɔ̀ɔn", vi: "tạm biệt", en: "goodbye", pos: "phrase" },
+      { cell_id: "eeebb791-d989-496e-9261-72af7bb9f3cf", word: "สวัสดี", rtgs: "sà-wàt-dii", vi: "xin chào", en: "hello", pos: "interjection" },
+      { cell_id: "38192dac-684f-4b08-9d4d-5835241926a6", word: "สบายดี", rtgs: "sà-baai-dii", vi: "khỏe / ổn", en: "fine, well", pos: "adjective" },
+      { cell_id: "e9412485-952a-4eba-b721-9b9d6c16633d", word: "ไหม", rtgs: "mǎi", vi: "không? (từ hỏi)", en: "yes/no question word", pos: "particle" },
+      { cell_id: "a20b25b9-2eb9-41c4-967f-9da875ae12d7", word: "ขอบคุณ", rtgs: "khɔ̀ɔp-khun", vi: "cảm ơn", en: "thank you", pos: "phrase" },
+      { cell_id: "ef35aa7f-5e76-481d-bace-d7cc4e4535e5", word: "ลาก่อน", rtgs: "laa-gɔ̀ɔn", vi: "tạm biệt", en: "goodbye", pos: "phrase" },
     ],
     dialogue: [
-      { speaker: "A", th: "สวัสดีครับ สบายดีไหมครับ", rtgs: "sà-wàt-dii khráp, sà-baai-dii mǎi khráp", vi: "Xin chào, bạn khỏe không?", en: "Hello, how are you?" },
-      { speaker: "B", th: "สบายดีค่ะ ขอบคุณค่ะ แล้วคุณล่ะคะ", rtgs: "sà-baai-dii khâ, khɔ̀ɔp-khun khâ, lɛ́ɛo khun lâ khá", vi: "Khỏe, cảm ơn. Còn bạn?", en: "I'm fine, thank you. And you?" },
-      { speaker: "A", th: "สบายดีครับ", rtgs: "sà-baai-dii khráp", vi: "Tôi khỏe.", en: "I'm fine." },
+      { cell_id: "70672dd6-5c3b-469f-bd8f-112055edd5a5", speaker: "A", th: "สวัสดีครับ สบายดีไหมครับ", rtgs: "sà-wàt-dii khráp, sà-baai-dii mǎi khráp", vi: "Xin chào, bạn khỏe không?", en: "Hello, how are you?" },
+      { cell_id: "b86c8a35-db8f-41b8-b548-3e72e833bf69", speaker: "B", th: "สบายดีค่ะ ขอบคุณค่ะ แล้วคุณล่ะคะ", rtgs: "sà-baai-dii khâ, khɔ̀ɔp-khun khâ, lɛ́ɛo khun lâ khá", vi: "Khỏe, cảm ơn. Còn bạn?", en: "I'm fine, thank you. And you?" },
+      { cell_id: "1717d59f-934b-46fd-b2ad-4ef4d3d57f2e", speaker: "A", th: "สบายดีครับ", rtgs: "sà-baai-dii khráp", vi: "Tôi khỏe.", en: "I'm fine." },
     ],
     exercises: [
       {
@@ -233,16 +235,16 @@ export const lessons: ThaiLesson[] = [
       },
     ],
     vocabulary: [
-      { word: "ครับ", rtgs: "khráp", vi: "tiểu từ lịch sự (nam)", en: "polite particle (male)", pos: "particle" },
-      { word: "ค่ะ", rtgs: "khâ", vi: "tiểu từ lịch sự (nữ, câu kể)", en: "polite particle (female, statement)", pos: "particle" },
-      { word: "คะ", rtgs: "khá", vi: "tiểu từ lịch sự (nữ, câu hỏi)", en: "polite particle (female, question)", pos: "particle" },
-      { word: "ขอโทษ", rtgs: "khɔ̌ɔ-thôot", vi: "xin lỗi / xin phép", en: "sorry / excuse me", pos: "phrase" },
-      { word: "ไม่เป็นไร", rtgs: "mâi pen rai", vi: "không sao", en: "no problem", pos: "phrase" },
+      { cell_id: "8bf51176-6255-449f-8c4a-6804eab471e5", word: "ครับ", rtgs: "khráp", vi: "tiểu từ lịch sự (nam)", en: "polite particle (male)", pos: "particle" },
+      { cell_id: "2ee3d629-35a6-4180-8d5f-0ce6ae3c2cee", word: "ค่ะ", rtgs: "khâ", vi: "tiểu từ lịch sự (nữ, câu kể)", en: "polite particle (female, statement)", pos: "particle" },
+      { cell_id: "fbeb5341-87dc-4274-b77b-9a8f9986e7cc", word: "คะ", rtgs: "khá", vi: "tiểu từ lịch sự (nữ, câu hỏi)", en: "polite particle (female, question)", pos: "particle" },
+      { cell_id: "9bba0a12-cbfb-427d-b62e-6303c677fe0c", word: "ขอโทษ", rtgs: "khɔ̌ɔ-thôot", vi: "xin lỗi / xin phép", en: "sorry / excuse me", pos: "phrase" },
+      { cell_id: "4cb379af-08e1-4d26-ad40-6c7a77be7c4f", word: "ไม่เป็นไร", rtgs: "mâi pen rai", vi: "không sao", en: "no problem", pos: "phrase" },
     ],
     dialogue: [
-      { speaker: "A", th: "ขอโทษค่ะ", rtgs: "khɔ̌ɔ-thôot khâ", vi: "Xin lỗi.", en: "Sorry / Excuse me." },
-      { speaker: "B", th: "ไม่เป็นไรครับ", rtgs: "mâi pen rai khráp", vi: "Không sao.", en: "No problem." },
-      { speaker: "A", th: "ขอบคุณค่ะ", rtgs: "khɔ̀ɔp-khun khâ", vi: "Cảm ơn.", en: "Thank you." },
+      { cell_id: "51a69cb1-82c2-482c-acb4-b240abc62590", speaker: "A", th: "ขอโทษค่ะ", rtgs: "khɔ̌ɔ-thôot khâ", vi: "Xin lỗi.", en: "Sorry / Excuse me." },
+      { cell_id: "e07ed48a-e1ac-422d-a4c5-3ce6b1ceb379", speaker: "B", th: "ไม่เป็นไรครับ", rtgs: "mâi pen rai khráp", vi: "Không sao.", en: "No problem." },
+      { cell_id: "4db929dd-7d15-47b3-a5b1-05a466c3babc", speaker: "A", th: "ขอบคุณค่ะ", rtgs: "khɔ̀ɔp-khun khâ", vi: "Cảm ơn.", en: "Thank you." },
     ],
     l1_notes_vi: [
       {
@@ -304,16 +306,16 @@ export const lessons: ThaiLesson[] = [
       },
     ],
     vocabulary: [
-      { word: "ผม", rtgs: "phǒm", vi: "tôi (nam)", en: "I (male)", pos: "pronoun" },
-      { word: "ดิฉัน", rtgs: "dì-chǎn", vi: "tôi (nữ, trang trọng)", en: "I (female, formal)", pos: "pronoun" },
-      { word: "คุณ", rtgs: "khun", vi: "bạn (lịch sự)", en: "you (polite)", pos: "pronoun" },
-      { word: "เขา", rtgs: "kháo", vi: "anh ấy / cô ấy", en: "he / she", pos: "pronoun" },
-      { word: "เรา", rtgs: "rao", vi: "chúng tôi / chúng ta", en: "we", pos: "pronoun" },
-      { word: "พวกเขา", rtgs: "phûak-kháo", vi: "họ", en: "they", pos: "pronoun" },
+      { cell_id: "af8fb049-2483-44a1-983c-7e1fbd2d4bf5", word: "ผม", rtgs: "phǒm", vi: "tôi (nam)", en: "I (male)", pos: "pronoun" },
+      { cell_id: "aca7a551-7ac3-4818-a979-334723c76a8e", word: "ดิฉัน", rtgs: "dì-chǎn", vi: "tôi (nữ, trang trọng)", en: "I (female, formal)", pos: "pronoun" },
+      { cell_id: "4a1d7444-8305-4c5e-9d27-3355dc550730", word: "คุณ", rtgs: "khun", vi: "bạn (lịch sự)", en: "you (polite)", pos: "pronoun" },
+      { cell_id: "4b56142e-4e67-4d39-a720-efc697c6d073", word: "เขา", rtgs: "kháo", vi: "anh ấy / cô ấy", en: "he / she", pos: "pronoun" },
+      { cell_id: "20e3fed6-49cd-4aa9-9d0f-bc09d7516b82", word: "เรา", rtgs: "rao", vi: "chúng tôi / chúng ta", en: "we", pos: "pronoun" },
+      { cell_id: "5535c8e5-e076-4ad1-85bf-0d550b74877f", word: "พวกเขา", rtgs: "phûak-kháo", vi: "họ", en: "they", pos: "pronoun" },
     ],
     dialogue: [
-      { speaker: "A", th: "คุณสบายดีไหมครับ", rtgs: "khun sà-baai-dii mǎi khráp", vi: "Bạn khỏe không?", en: "Are you well?" },
-      { speaker: "B", th: "ผมสบายดีครับ เขาก็สบายดี", rtgs: "phǒm sà-baai-dii khráp, kháo gɔ̂ɔ sà-baai-dii", vi: "Tôi khỏe. Anh ấy cũng khỏe.", en: "I'm fine. He's fine too." },
+      { cell_id: "fd3e077e-0d05-4d8c-afdc-5ee66610ccbc", speaker: "A", th: "คุณสบายดีไหมครับ", rtgs: "khun sà-baai-dii mǎi khráp", vi: "Bạn khỏe không?", en: "Are you well?" },
+      { cell_id: "bc018928-12c5-4a16-8cd2-c049926a6e1c", speaker: "B", th: "ผมสบายดีครับ เขาก็สบายดี", rtgs: "phǒm sà-baai-dii khráp, kháo gɔ̂ɔ sà-baai-dii", vi: "Tôi khỏe. Anh ấy cũng khỏe.", en: "I'm fine. He's fine too." },
     ],
     l1_notes_vi: [
       {
@@ -371,17 +373,17 @@ export const lessons: ThaiLesson[] = [
       },
     ],
     vocabulary: [
-      { word: "ใช่", rtgs: "châi", vi: "đúng / phải", en: "yes, correct", pos: "verb" },
-      { word: "ไม่ใช่", rtgs: "mâi châi", vi: "không phải", en: "no, not correct", pos: "phrase" },
-      { word: "มี", rtgs: "mii", vi: "có", en: "to have", pos: "verb" },
-      { word: "ไม่", rtgs: "mâi", vi: "không (phủ định)", en: "not (negator)", pos: "adverb" },
-      { word: "ใช่ไหม", rtgs: "châi mǎi", vi: "đúng không?", en: "right? (tag)", pos: "phrase" },
+      { cell_id: "5674bc8f-aab7-4f12-8a62-86d546109770", word: "ใช่", rtgs: "châi", vi: "đúng / phải", en: "yes, correct", pos: "verb" },
+      { cell_id: "12eeeb1c-d5fd-4006-9beb-77abba489e03", word: "ไม่ใช่", rtgs: "mâi châi", vi: "không phải", en: "no, not correct", pos: "phrase" },
+      { cell_id: "43c82c45-998f-48da-86da-6ef37d625963", word: "มี", rtgs: "mii", vi: "có", en: "to have", pos: "verb" },
+      { cell_id: "e71efef0-d097-4624-9cf8-6d7181da8622", word: "ไม่", rtgs: "mâi", vi: "không (phủ định)", en: "not (negator)", pos: "adverb" },
+      { cell_id: "34d007af-e9f8-4ec0-b7fb-f251271d44f0", word: "ใช่ไหม", rtgs: "châi mǎi", vi: "đúng không?", en: "right? (tag)", pos: "phrase" },
     ],
     dialogue: [
-      { speaker: "A", th: "คุณมีน้ำไหมครับ", rtgs: "khun mii náam mǎi khráp", vi: "Bạn có nước không?", en: "Do you have water?" },
-      { speaker: "B", th: "มีค่ะ", rtgs: "mii khâ", vi: "Có.", en: "Yes, I do." },
-      { speaker: "A", th: "คุณเป็นคนไทยใช่ไหมครับ", rtgs: "khun pen khon thai châi mǎi khráp", vi: "Bạn là người Thái đúng không?", en: "You're Thai, right?" },
-      { speaker: "B", th: "ไม่ใช่ค่ะ ดิฉันเป็นคนเวียดนาม", rtgs: "mâi châi khâ, dì-chǎn pen khon wîat-naam", vi: "Không, tôi là người Việt Nam.", en: "No, I'm Vietnamese." },
+      { cell_id: "39971d4b-9fcd-4555-b780-5102f20093b9", speaker: "A", th: "คุณมีน้ำไหมครับ", rtgs: "khun mii náam mǎi khráp", vi: "Bạn có nước không?", en: "Do you have water?" },
+      { cell_id: "6f20d552-e70b-4695-941e-b695571b38e9", speaker: "B", th: "มีค่ะ", rtgs: "mii khâ", vi: "Có.", en: "Yes, I do." },
+      { cell_id: "ef7de70d-def5-43e6-a582-1b41e368bb8e", speaker: "A", th: "คุณเป็นคนไทยใช่ไหมครับ", rtgs: "khun pen khon thai châi mǎi khráp", vi: "Bạn là người Thái đúng không?", en: "You're Thai, right?" },
+      { cell_id: "96093e53-08df-4152-9e51-df7957899b0f", speaker: "B", th: "ไม่ใช่ค่ะ ดิฉันเป็นคนเวียดนาม", rtgs: "mâi châi khâ, dì-chǎn pen khon wîat-naam", vi: "Không, tôi là người Việt Nam.", en: "No, I'm Vietnamese." },
     ],
     l1_notes_vi: [
       {
@@ -444,16 +446,16 @@ export const lessons: ThaiLesson[] = [
       },
     ],
     vocabulary: [
-      { word: "หนึ่ง", rtgs: "nʉ̀ng", vi: "một", en: "one", pos: "number" },
-      { word: "ห้า", rtgs: "hâa", vi: "năm", en: "five", pos: "number" },
-      { word: "สิบ", rtgs: "sìp", vi: "mười", en: "ten", pos: "number" },
-      { word: "ยี่สิบ", rtgs: "yîi-sìp", vi: "hai mươi", en: "twenty", pos: "number" },
-      { word: "ร้อย", rtgs: "rɔ́ɔy", vi: "trăm", en: "hundred", pos: "number" },
-      { word: "เอ็ด", rtgs: "èt", vi: "một (ở hàng đơn vị)", en: "one (in the ones place)", pos: "number" },
+      { cell_id: "4c0e1b08-2b22-44c1-8bb2-b05eac7f068f", word: "หนึ่ง", rtgs: "nʉ̀ng", vi: "một", en: "one", pos: "number" },
+      { cell_id: "579933c2-0882-40fe-b315-b0197665d3aa", word: "ห้า", rtgs: "hâa", vi: "năm", en: "five", pos: "number" },
+      { cell_id: "c6e92c6d-e2fc-4a3f-96be-f2e8e9b98aa7", word: "สิบ", rtgs: "sìp", vi: "mười", en: "ten", pos: "number" },
+      { cell_id: "f2153f92-e58a-4a3b-943d-6a9dce849e1e", word: "ยี่สิบ", rtgs: "yîi-sìp", vi: "hai mươi", en: "twenty", pos: "number" },
+      { cell_id: "bc5a52ae-835a-4223-8f74-97ebee5ed074", word: "ร้อย", rtgs: "rɔ́ɔy", vi: "trăm", en: "hundred", pos: "number" },
+      { cell_id: "8a7b4e34-bc03-4bcc-bfba-b320c311f712", word: "เอ็ด", rtgs: "èt", vi: "một (ở hàng đơn vị)", en: "one (in the ones place)", pos: "number" },
     ],
     dialogue: [
-      { speaker: "A", th: "อันนี้เท่าไหร่ครับ", rtgs: "an-níi thâo-rài khráp", vi: "Cái này bao nhiêu?", en: "How much is this?" },
-      { speaker: "B", th: "ยี่สิบห้าบาทค่ะ", rtgs: "yîi-sìp-hâa bàat khâ", vi: "Hai mươi lăm baht.", en: "Twenty-five baht." },
+      { cell_id: "31a50c82-8151-4f5e-9694-87751ca4bdff", speaker: "A", th: "อันนี้เท่าไหร่ครับ", rtgs: "an-níi thâo-rài khráp", vi: "Cái này bao nhiêu?", en: "How much is this?" },
+      { cell_id: "eb680c9d-5e5c-4210-8e8f-87831d72a18d", speaker: "B", th: "ยี่สิบห้าบาทค่ะ", rtgs: "yîi-sìp-hâa bàat khâ", vi: "Hai mươi lăm baht.", en: "Twenty-five baht." },
     ],
     exercises: [
       {
@@ -511,17 +513,17 @@ export const lessons: ThaiLesson[] = [
       },
     ],
     vocabulary: [
-      { word: "ข้าว", rtgs: "khâao", vi: "cơm", en: "rice", pos: "noun" },
-      { word: "น้ำ", rtgs: "náam", vi: "nước", en: "water", pos: "noun" },
-      { word: "กาแฟ", rtgs: "gaa-fɛɛ", vi: "cà phê", en: "coffee", pos: "noun" },
-      { word: "เผ็ด", rtgs: "phèt", vi: "cay", en: "spicy", pos: "adjective" },
-      { word: "อร่อย", rtgs: "à-rɔ̀i", vi: "ngon", en: "delicious", pos: "adjective" },
-      { word: "หิว", rtgs: "hǐu", vi: "đói", en: "hungry", pos: "adjective" },
+      { cell_id: "4a5536b6-d507-46ec-a80f-1fd83b48c24a", word: "ข้าว", rtgs: "khâao", vi: "cơm", en: "rice", pos: "noun" },
+      { cell_id: "21dbdbc8-8712-455b-ab42-bc18629d9639", word: "น้ำ", rtgs: "náam", vi: "nước", en: "water", pos: "noun" },
+      { cell_id: "37ed7c38-c518-4ec8-823b-51b3bc641f6d", word: "กาแฟ", rtgs: "gaa-fɛɛ", vi: "cà phê", en: "coffee", pos: "noun" },
+      { cell_id: "2231effe-28f4-4bc3-9072-04e827dd5f2d", word: "เผ็ด", rtgs: "phèt", vi: "cay", en: "spicy", pos: "adjective" },
+      { cell_id: "b0187cf6-5f3f-4780-bb5c-44196f59a329", word: "อร่อย", rtgs: "à-rɔ̀i", vi: "ngon", en: "delicious", pos: "adjective" },
+      { cell_id: "3c0185eb-f0fd-4327-86ab-85fd8e1b4607", word: "หิว", rtgs: "hǐu", vi: "đói", en: "hungry", pos: "adjective" },
     ],
     dialogue: [
-      { speaker: "ลูกค้า / Khách", th: "ขอผัดไทยหนึ่งจาน ไม่เผ็ดค่ะ", rtgs: "khɔ̌ɔ phàt-thai nʉ̀ng jaan, mâi phèt khâ", vi: "Cho một đĩa pad thai, không cay.", en: "One pad thai, not spicy please." },
-      { speaker: "พนักงาน / Nhân viên", th: "ได้ค่ะ ดื่มอะไรไหมคะ", rtgs: "dâi khâ, dʉ̀ʉm à-rai mǎi khá", vi: "Được. Uống gì không?", en: "Sure. Anything to drink?" },
-      { speaker: "ลูกค้า / Khách", th: "ขอน้ำเปล่าค่ะ", rtgs: "khɔ̌ɔ náam-plàao khâ", vi: "Cho nước lọc.", en: "Just plain water, please." },
+      { cell_id: "532beec2-f152-4e4a-85af-4f70e52b1506", speaker: "ลูกค้า / Khách", th: "ขอผัดไทยหนึ่งจาน ไม่เผ็ดค่ะ", rtgs: "khɔ̌ɔ phàt-thai nʉ̀ng jaan, mâi phèt khâ", vi: "Cho một đĩa pad thai, không cay.", en: "One pad thai, not spicy please." },
+      { cell_id: "8e5c324f-73ef-4c9e-934a-ce7366b85342", speaker: "พนักงาน / Nhân viên", th: "ได้ค่ะ ดื่มอะไรไหมคะ", rtgs: "dâi khâ, dʉ̀ʉm à-rai mǎi khá", vi: "Được. Uống gì không?", en: "Sure. Anything to drink?" },
+      { cell_id: "a2970804-535f-4ad0-8c0d-def53679ee49", speaker: "ลูกค้า / Khách", th: "ขอน้ำเปล่าค่ะ", rtgs: "khɔ̌ɔ náam-plàao khâ", vi: "Cho nước lọc.", en: "Just plain water, please." },
     ],
     exercises: [
       {
@@ -571,18 +573,18 @@ export const lessons: ThaiLesson[] = [
       },
     ],
     vocabulary: [
-      { word: "เท่าไหร่", rtgs: "thâo-rài", vi: "bao nhiêu", en: "how much", pos: "phrase" },
-      { word: "บาท", rtgs: "bàat", vi: "baht (tiền Thái)", en: "baht (Thai currency)", pos: "noun" },
-      { word: "แพง", rtgs: "phɛɛng", vi: "đắt", en: "expensive", pos: "adjective" },
-      { word: "ถูก", rtgs: "thùuk", vi: "rẻ", en: "cheap", pos: "adjective" },
-      { word: "ลด", rtgs: "lót", vi: "giảm (giá)", en: "to reduce (price)", pos: "verb" },
-      { word: "เอา", rtgs: "ao", vi: "lấy / muốn", en: "to take / want", pos: "verb" },
+      { cell_id: "3e7184ff-c69b-4ea8-9dca-751d88d6bc75", word: "เท่าไหร่", rtgs: "thâo-rài", vi: "bao nhiêu", en: "how much", pos: "phrase" },
+      { cell_id: "290ea0ad-2327-40a9-82ad-ccc9a027b313", word: "บาท", rtgs: "bàat", vi: "baht (tiền Thái)", en: "baht (Thai currency)", pos: "noun" },
+      { cell_id: "e09f1fff-b106-4e28-b4a0-62b0613691b7", word: "แพง", rtgs: "phɛɛng", vi: "đắt", en: "expensive", pos: "adjective" },
+      { cell_id: "105029fa-b6bb-4952-b2f8-93cd0ada1034", word: "ถูก", rtgs: "thùuk", vi: "rẻ", en: "cheap", pos: "adjective" },
+      { cell_id: "827016bf-0d8f-4687-a480-af34fae900f3", word: "ลด", rtgs: "lót", vi: "giảm (giá)", en: "to reduce (price)", pos: "verb" },
+      { cell_id: "2786c7e7-a9ae-4afe-ae2d-e9f493aab7af", word: "เอา", rtgs: "ao", vi: "lấy / muốn", en: "to take / want", pos: "verb" },
     ],
     dialogue: [
-      { speaker: "A", th: "เสื้อตัวนี้เท่าไหร่คะ", rtgs: "sʉ̂a tua-níi thâo-rài khá", vi: "Cái áo này bao nhiêu?", en: "How much is this shirt?" },
-      { speaker: "B", th: "สามร้อยบาทครับ", rtgs: "sǎam-rɔ́ɔy bàat khráp", vi: "Ba trăm baht.", en: "Three hundred baht." },
-      { speaker: "A", th: "แพงไป ลดได้ไหมคะ", rtgs: "phɛɛng pai, lót dâi mǎi khá", vi: "Đắt quá, giảm được không?", en: "Too expensive, can you lower it?" },
-      { speaker: "B", th: "สองร้อยห้าสิบ เอาไหมครับ", rtgs: "sɔ̌ɔng-rɔ́ɔy-hâa-sìp, ao mǎi khráp", vi: "Hai trăm năm mươi, lấy không?", en: "Two hundred fifty, will you take it?" },
+      { cell_id: "da666b53-205a-4756-9f64-3534686e0001", speaker: "A", th: "เสื้อตัวนี้เท่าไหร่คะ", rtgs: "sʉ̂a tua-níi thâo-rài khá", vi: "Cái áo này bao nhiêu?", en: "How much is this shirt?" },
+      { cell_id: "a7b0a8dc-0822-49ff-b596-9fd3fcb43b67", speaker: "B", th: "สามร้อยบาทครับ", rtgs: "sǎam-rɔ́ɔy bàat khráp", vi: "Ba trăm baht.", en: "Three hundred baht." },
+      { cell_id: "e44603d4-08e8-4680-8806-c6af690c353b", speaker: "A", th: "แพงไป ลดได้ไหมคะ", rtgs: "phɛɛng pai, lót dâi mǎi khá", vi: "Đắt quá, giảm được không?", en: "Too expensive, can you lower it?" },
+      { cell_id: "c9b07508-f03c-447c-a942-9f42af5d6d77", speaker: "B", th: "สองร้อยห้าสิบ เอาไหมครับ", rtgs: "sɔ̌ɔng-rɔ́ɔy-hâa-sìp, ao mǎi khráp", vi: "Hai trăm năm mươi, lấy không?", en: "Two hundred fifty, will you take it?" },
     ],
     exercises: [
       {
@@ -632,17 +634,17 @@ export const lessons: ThaiLesson[] = [
       },
     ],
     vocabulary: [
-      { word: "ที่ไหน", rtgs: "thîi-nǎi", vi: "ở đâu", en: "where", pos: "phrase" },
-      { word: "ซ้าย", rtgs: "sáai", vi: "trái", en: "left", pos: "noun" },
-      { word: "ขวา", rtgs: "khwǎa", vi: "phải", en: "right", pos: "noun" },
-      { word: "ตรงไป", rtgs: "trong-pai", vi: "đi thẳng", en: "go straight", pos: "verb phrase" },
-      { word: "ใกล้", rtgs: "glâi", vi: "gần", en: "near", pos: "adjective" },
-      { word: "ไกล", rtgs: "glai", vi: "xa", en: "far", pos: "adjective" },
+      { cell_id: "e12dfe8f-44a5-458b-8131-6c5e241893ed", word: "ที่ไหน", rtgs: "thîi-nǎi", vi: "ở đâu", en: "where", pos: "phrase" },
+      { cell_id: "a2992172-4de0-44d7-9f76-c05f37e1b1c3", word: "ซ้าย", rtgs: "sáai", vi: "trái", en: "left", pos: "noun" },
+      { cell_id: "8f53c55b-8710-4994-a572-a40c48fcb28b", word: "ขวา", rtgs: "khwǎa", vi: "phải", en: "right", pos: "noun" },
+      { cell_id: "eb425465-218e-47ef-bc0f-bd4a6af9b4e3", word: "ตรงไป", rtgs: "trong-pai", vi: "đi thẳng", en: "go straight", pos: "verb phrase" },
+      { cell_id: "5730a7ce-a1b9-49ba-996f-187def189827", word: "ใกล้", rtgs: "glâi", vi: "gần", en: "near", pos: "adjective" },
+      { cell_id: "c56518d5-0d11-47c3-a75b-57d69802d42e", word: "ไกล", rtgs: "glai", vi: "xa", en: "far", pos: "adjective" },
     ],
     dialogue: [
-      { speaker: "A", th: "ขอโทษครับ สถานีรถไฟอยู่ที่ไหนครับ", rtgs: "khɔ̌ɔ-thôot khráp, sà-thǎa-nii rót-fai yùu thîi-nǎi khráp", vi: "Xin lỗi, ga tàu ở đâu?", en: "Excuse me, where is the train station?" },
-      { speaker: "B", th: "ตรงไปแล้วเลี้ยวขวาค่ะ ใกล้ๆ", rtgs: "trong-pai lɛ́ɛo líao khwǎa khâ, glâi-glâi", vi: "Đi thẳng rồi rẽ phải. Gần thôi.", en: "Go straight then turn right. It's nearby." },
-      { speaker: "A", th: "ขอบคุณครับ", rtgs: "khɔ̀ɔp-khun khráp", vi: "Cảm ơn.", en: "Thank you." },
+      { cell_id: "38ec29e3-0a49-4660-9373-cb32aeeec8bb", speaker: "A", th: "ขอโทษครับ สถานีรถไฟอยู่ที่ไหนครับ", rtgs: "khɔ̌ɔ-thôot khráp, sà-thǎa-nii rót-fai yùu thîi-nǎi khráp", vi: "Xin lỗi, ga tàu ở đâu?", en: "Excuse me, where is the train station?" },
+      { cell_id: "83ce2cbf-01bb-4147-8d54-0a1ecb1d5a38", speaker: "B", th: "ตรงไปแล้วเลี้ยวขวาค่ะ ใกล้ๆ", rtgs: "trong-pai lɛ́ɛo líao khwǎa khâ, glâi-glâi", vi: "Đi thẳng rồi rẽ phải. Gần thôi.", en: "Go straight then turn right. It's nearby." },
+      { cell_id: "efbb7805-3347-469d-a806-89f1b7a9ce9e", speaker: "A", th: "ขอบคุณครับ", rtgs: "khɔ̀ɔp-khun khráp", vi: "Cảm ơn.", en: "Thank you." },
     ],
     l1_notes_vi: [
       {
@@ -707,18 +709,18 @@ export const lessons: ThaiLesson[] = [
       },
     ],
     vocabulary: [
-      { word: "กี่โมง", rtgs: "gìi moong", vi: "mấy giờ", en: "what time", pos: "phrase" },
-      { word: "ตอนเช้า", rtgs: "tɔɔn-cháao", vi: "buổi sáng", en: "morning", pos: "noun" },
-      { word: "วันนี้", rtgs: "wan-níi", vi: "hôm nay", en: "today", pos: "noun" },
-      { word: "พรุ่งนี้", rtgs: "phrûng-níi", vi: "ngày mai", en: "tomorrow", pos: "noun" },
-      { word: "เมื่อวาน", rtgs: "mʉ̂a-waan", vi: "hôm qua", en: "yesterday", pos: "noun" },
-      { word: "วันจันทร์", rtgs: "wan-jan", vi: "thứ Hai", en: "Monday", pos: "noun" },
+      { cell_id: "a32912ab-5f61-43e6-8f8e-644456a4f7c0", word: "กี่โมง", rtgs: "gìi moong", vi: "mấy giờ", en: "what time", pos: "phrase" },
+      { cell_id: "cc7af348-6061-4c72-9c31-2e02d56509c3", word: "ตอนเช้า", rtgs: "tɔɔn-cháao", vi: "buổi sáng", en: "morning", pos: "noun" },
+      { cell_id: "ec80b07c-1ef4-48a8-bd42-e38416bf00c6", word: "วันนี้", rtgs: "wan-níi", vi: "hôm nay", en: "today", pos: "noun" },
+      { cell_id: "f0ee64ed-a9ab-47e1-bf34-b00c3c0e31e9", word: "พรุ่งนี้", rtgs: "phrûng-níi", vi: "ngày mai", en: "tomorrow", pos: "noun" },
+      { cell_id: "1a0d144d-9212-4408-ab06-d9b5e4c215f8", word: "เมื่อวาน", rtgs: "mʉ̂a-waan", vi: "hôm qua", en: "yesterday", pos: "noun" },
+      { cell_id: "cc2d50fa-1897-4856-8ad8-9ca9572afb0b", word: "วันจันทร์", rtgs: "wan-jan", vi: "thứ Hai", en: "Monday", pos: "noun" },
     ],
     dialogue: [
-      { speaker: "A", th: "วันนี้วันอะไรครับ", rtgs: "wan-níi wan à-rai khráp", vi: "Hôm nay là thứ mấy?", en: "What day is it today?" },
-      { speaker: "B", th: "วันจันทร์ค่ะ", rtgs: "wan-jan khâ", vi: "Thứ Hai.", en: "Monday." },
-      { speaker: "A", th: "ตอนนี้กี่โมงครับ", rtgs: "tɔɔn-níi gìi moong khráp", vi: "Bây giờ mấy giờ?", en: "What time is it now?" },
-      { speaker: "B", th: "บ่ายสองค่ะ", rtgs: "bàai sɔ̌ɔng khâ", vi: "Hai giờ chiều.", en: "Two in the afternoon." },
+      { cell_id: "4bf4e5b7-77d8-44d0-9200-56e34e1bf3be", speaker: "A", th: "วันนี้วันอะไรครับ", rtgs: "wan-níi wan à-rai khráp", vi: "Hôm nay là thứ mấy?", en: "What day is it today?" },
+      { cell_id: "92584f0c-d7d0-4695-8680-f2d8bce1f259", speaker: "B", th: "วันจันทร์ค่ะ", rtgs: "wan-jan khâ", vi: "Thứ Hai.", en: "Monday." },
+      { cell_id: "7f3bc32a-55f7-487c-8db1-f5bc659b41bc", speaker: "A", th: "ตอนนี้กี่โมงครับ", rtgs: "tɔɔn-níi gìi moong khráp", vi: "Bây giờ mấy giờ?", en: "What time is it now?" },
+      { cell_id: "aecffed7-00f5-447d-b88a-d36f8d9d5269", speaker: "B", th: "บ่ายสองค่ะ", rtgs: "bàai sɔ̌ɔng khâ", vi: "Hai giờ chiều.", en: "Two in the afternoon." },
     ],
     exercises: [
       {
@@ -769,18 +771,18 @@ export const lessons: ThaiLesson[] = [
       },
     ],
     vocabulary: [
-      { word: "กิน", rtgs: "gin", vi: "ăn", en: "to eat", pos: "verb" },
-      { word: "ดื่ม", rtgs: "dʉ̀ʉm", vi: "uống", en: "to drink", pos: "verb" },
-      { word: "ไป", rtgs: "pai", vi: "đi", en: "to go", pos: "verb" },
-      { word: "มา", rtgs: "maa", vi: "đến / lại", en: "to come", pos: "verb" },
-      { word: "พูด", rtgs: "phûut", vi: "nói", en: "to speak", pos: "verb" },
-      { word: "เข้าใจ", rtgs: "khâo-jai", vi: "hiểu", en: "to understand", pos: "verb" },
-      { word: "ชอบ", rtgs: "chɔ̂ɔp", vi: "thích", en: "to like", pos: "verb" },
+      { cell_id: "8c23fe03-d762-4731-b41f-cf4374f9edb5", word: "กิน", rtgs: "gin", vi: "ăn", en: "to eat", pos: "verb" },
+      { cell_id: "12acb1e4-1992-4f76-9f70-7c2160460960", word: "ดื่ม", rtgs: "dʉ̀ʉm", vi: "uống", en: "to drink", pos: "verb" },
+      { cell_id: "05127e2e-3d14-400b-adf2-a5a5bc011043", word: "ไป", rtgs: "pai", vi: "đi", en: "to go", pos: "verb" },
+      { cell_id: "9286daa7-7b6a-4846-ad81-c2177c880c02", word: "มา", rtgs: "maa", vi: "đến / lại", en: "to come", pos: "verb" },
+      { cell_id: "29003445-f90d-4c19-9fed-5cc857b19fd1", word: "พูด", rtgs: "phûut", vi: "nói", en: "to speak", pos: "verb" },
+      { cell_id: "94a27fe8-6f3a-43fe-bb50-01a0734f88de", word: "เข้าใจ", rtgs: "khâo-jai", vi: "hiểu", en: "to understand", pos: "verb" },
+      { cell_id: "916ee1a2-48e4-472d-803e-425d1c689fbe", word: "ชอบ", rtgs: "chɔ̂ɔp", vi: "thích", en: "to like", pos: "verb" },
     ],
     dialogue: [
-      { speaker: "A", th: "คุณชอบกินอะไรครับ", rtgs: "khun chɔ̂ɔp gin à-rai khráp", vi: "Bạn thích ăn gì?", en: "What do you like to eat?" },
-      { speaker: "B", th: "ฉันชอบกินผัดไทยค่ะ", rtgs: "chǎn chɔ̂ɔp gin phàt-thai khâ", vi: "Tôi thích ăn pad thai.", en: "I like to eat pad thai." },
-      { speaker: "A", th: "ไปกินด้วยกันไหมครับ", rtgs: "pai gin dûay-gan mǎi khráp", vi: "Đi ăn cùng nhau không?", en: "Shall we go eat together?" },
+      { cell_id: "1be03c1c-6920-488d-b3fd-bb1d3b8ef5af", speaker: "A", th: "คุณชอบกินอะไรครับ", rtgs: "khun chɔ̂ɔp gin à-rai khráp", vi: "Bạn thích ăn gì?", en: "What do you like to eat?" },
+      { cell_id: "12bf3b32-8ea9-47ac-b6e8-2948ed3c8a37", speaker: "B", th: "ฉันชอบกินผัดไทยค่ะ", rtgs: "chǎn chɔ̂ɔp gin phàt-thai khâ", vi: "Tôi thích ăn pad thai.", en: "I like to eat pad thai." },
+      { cell_id: "42b145f5-e3d3-43e1-8c20-3087ac0ac164", speaker: "A", th: "ไปกินด้วยกันไหมครับ", rtgs: "pai gin dûay-gan mǎi khráp", vi: "Đi ăn cùng nhau không?", en: "Shall we go eat together?" },
     ],
     l1_notes_vi: [
       {
@@ -837,16 +839,16 @@ export const lessons: ThaiLesson[] = [
       },
     ],
     vocabulary: [
-      { word: "ขอ", rtgs: "khɔ̌ɔ", vi: "xin / cho (yêu cầu vật)", en: "may I have (request a thing)", pos: "verb" },
-      { word: "ช่วย", rtgs: "chûay", vi: "giúp (nhờ làm việc)", en: "help / please (request an action)", pos: "verb" },
-      { word: "หน่อย", rtgs: "nɔ̀i", vi: "một chút (làm mềm yêu cầu)", en: "a bit (softener)", pos: "particle" },
-      { word: "ได้ไหม", rtgs: "dâi mǎi", vi: "được không?", en: "can you? / may I?", pos: "phrase" },
-      { word: "กรุณา", rtgs: "gà-rú-naa", vi: "xin vui lòng (trang trọng)", en: "please (formal)", pos: "adverb" },
+      { cell_id: "96213b76-e488-4151-bf4b-7f9c881b7f27", word: "ขอ", rtgs: "khɔ̌ɔ", vi: "xin / cho (yêu cầu vật)", en: "may I have (request a thing)", pos: "verb" },
+      { cell_id: "4bd4e6e9-e870-41c1-b650-1f021584b930", word: "ช่วย", rtgs: "chûay", vi: "giúp (nhờ làm việc)", en: "help / please (request an action)", pos: "verb" },
+      { cell_id: "c7738c8b-fdf2-4dd1-8473-751c23060330", word: "หน่อย", rtgs: "nɔ̀i", vi: "một chút (làm mềm yêu cầu)", en: "a bit (softener)", pos: "particle" },
+      { cell_id: "98a2bf6e-9a18-446c-816b-d63626f22511", word: "ได้ไหม", rtgs: "dâi mǎi", vi: "được không?", en: "can you? / may I?", pos: "phrase" },
+      { cell_id: "b701b78f-9cb5-4661-9591-25e282746f9e", word: "กรุณา", rtgs: "gà-rú-naa", vi: "xin vui lòng (trang trọng)", en: "please (formal)", pos: "adverb" },
     ],
     dialogue: [
-      { speaker: "A", th: "ขอเมนูหน่อยครับ", rtgs: "khɔ̌ɔ mee-nuu nɔ̀i khráp", vi: "Cho tôi xin thực đơn.", en: "May I have the menu, please." },
-      { speaker: "B", th: "ได้ค่ะ สักครู่นะคะ", rtgs: "dâi khâ, sàk-khrûu ná khá", vi: "Được. Đợi một chút nhé.", en: "Sure. One moment, please." },
-      { speaker: "A", th: "ช่วยคิดเงินด้วยครับ", rtgs: "chûay khít-ngən dûay khráp", vi: "Tính tiền giúp tôi với.", en: "Please bring the bill." },
+      { cell_id: "494efdaa-87cd-477f-8b90-01606eb0b86a", speaker: "A", th: "ขอเมนูหน่อยครับ", rtgs: "khɔ̌ɔ mee-nuu nɔ̀i khráp", vi: "Cho tôi xin thực đơn.", en: "May I have the menu, please." },
+      { cell_id: "947876ba-8634-44da-b869-72ec5d19e25f", speaker: "B", th: "ได้ค่ะ สักครู่นะคะ", rtgs: "dâi khâ, sàk-khrûu ná khá", vi: "Được. Đợi một chút nhé.", en: "Sure. One moment, please." },
+      { cell_id: "d8905d89-e6a9-482d-9f62-4b6d546f48cb", speaker: "A", th: "ช่วยคิดเงินด้วยครับ", rtgs: "chûay khít-ngən dûay khráp", vi: "Tính tiền giúp tôi với.", en: "Please bring the bill." },
     ],
     l1_notes_vi: [
       {
@@ -911,16 +913,16 @@ export const lessons: ThaiLesson[] = [
       },
     ],
     vocabulary: [
-      { word: "ชื่อ", rtgs: "chʉ̂ʉ", vi: "tên", en: "name", pos: "noun" },
-      { word: "อะไร", rtgs: "à-rai", vi: "gì / cái gì", en: "what", pos: "pronoun" },
-      { word: "มาจาก", rtgs: "maa jàak", vi: "đến từ", en: "to come from", pos: "verb phrase" },
-      { word: "เวียดนาม", rtgs: "wîat-naam", vi: "Việt Nam", en: "Vietnam", pos: "noun" },
-      { word: "ยินดีที่ได้รู้จัก", rtgs: "yin-dii thîi dâi rúu-jàk", vi: "rất vui được làm quen", en: "nice to meet you", pos: "phrase" },
+      { cell_id: "f546a079-f632-417f-8572-69eb2e6b96df", word: "ชื่อ", rtgs: "chʉ̂ʉ", vi: "tên", en: "name", pos: "noun" },
+      { cell_id: "d1475707-7a6c-4312-9377-43c569385fb9", word: "อะไร", rtgs: "à-rai", vi: "gì / cái gì", en: "what", pos: "pronoun" },
+      { cell_id: "e543a354-2730-407e-88ca-bef57dace8a5", word: "มาจาก", rtgs: "maa jàak", vi: "đến từ", en: "to come from", pos: "verb phrase" },
+      { cell_id: "4006b8f2-9d03-4d05-89ab-a4662f354621", word: "เวียดนาม", rtgs: "wîat-naam", vi: "Việt Nam", en: "Vietnam", pos: "noun" },
+      { cell_id: "dd749e13-341c-4ac7-a2a6-e305911aa2c2", word: "ยินดีที่ได้รู้จัก", rtgs: "yin-dii thîi dâi rúu-jàk", vi: "rất vui được làm quen", en: "nice to meet you", pos: "phrase" },
     ],
     dialogue: [
-      { speaker: "A", th: "สวัสดีครับ ผมชื่อนาม คุณชื่ออะไรครับ", rtgs: "sà-wàt-dii khráp, phǒm chʉ̂ʉ Naam, khun chʉ̂ʉ à-rai khráp", vi: "Xin chào, tôi tên Nam. Bạn tên gì?", en: "Hello, my name is Nam. What's your name?" },
-      { speaker: "B", th: "ดิฉันชื่อมาลีค่ะ ยินดีที่ได้รู้จักค่ะ", rtgs: "dì-chǎn chʉ̂ʉ Maalii khâ, yin-dii thîi dâi rúu-jàk khâ", vi: "Tôi tên Mali. Rất vui được làm quen.", en: "My name is Mali. Nice to meet you." },
-      { speaker: "A", th: "ผมมาจากเวียดนามครับ", rtgs: "phǒm maa jàak wîat-naam khráp", vi: "Tôi đến từ Việt Nam.", en: "I'm from Vietnam." },
+      { cell_id: "2b74b9fc-3fce-49d0-9812-e2cdd86f8302", speaker: "A", th: "สวัสดีครับ ผมชื่อนาม คุณชื่ออะไรครับ", rtgs: "sà-wàt-dii khráp, phǒm chʉ̂ʉ Naam, khun chʉ̂ʉ à-rai khráp", vi: "Xin chào, tôi tên Nam. Bạn tên gì?", en: "Hello, my name is Nam. What's your name?" },
+      { cell_id: "9c2c61c8-aa23-4a1e-8fd5-2fd4349beaeb", speaker: "B", th: "ดิฉันชื่อมาลีค่ะ ยินดีที่ได้รู้จักค่ะ", rtgs: "dì-chǎn chʉ̂ʉ Maalii khâ, yin-dii thîi dâi rúu-jàk khâ", vi: "Tôi tên Mali. Rất vui được làm quen.", en: "My name is Mali. Nice to meet you." },
+      { cell_id: "6e320ec2-a7c2-4558-b28a-aec0aba27e96", speaker: "A", th: "ผมมาจากเวียดนามครับ", rtgs: "phǒm maa jàak wîat-naam khráp", vi: "Tôi đến từ Việt Nam.", en: "I'm from Vietnam." },
     ],
     exercises: [
       {

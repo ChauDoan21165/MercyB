@@ -39,6 +39,7 @@ type LessonSentence = {
 };
 
 type VocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -50,6 +51,7 @@ type VocabEntry = {
 };
 
 type DialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -166,6 +168,7 @@ export const timeExpressionsLessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: direct mapping — tadi ≈ 'just now', nanti ≈ 'later', kemarin = 'yesterday', besok = 'tomorrow', lusa = 'day after tomorrow'. Since verbs don't conjugate, 'Saya makan' alone is tense-ambiguous — always add a time word when you need precision. Don't mix up 'tadi' (past, within today) with 'nanti' (upcoming). Position: the time word usually goes at the START of the sentence or right before the verb.",
     vocabulary: [
       {
+        cell_id: "8bbf5a4b-80a7-4f6e-b289-d131ee5d1495",
         word: "tadi",
         en: "earlier (today) / just now",
         vi: "lúc nãy / hồi nãy",
@@ -174,6 +177,7 @@ export const timeExpressionsLessons: IndonesianLesson[] = [
         pronunciation_en: "TA-dee",
       },
       {
+        cell_id: "bc8ea4e1-4649-471c-8cd3-22dd3be05396",
         word: "nanti",
         en: "later (today)",
         vi: "lát nữa / sau này",
@@ -182,6 +186,7 @@ export const timeExpressionsLessons: IndonesianLesson[] = [
         pronunciation_en: "NAN-tee",
       },
       {
+        cell_id: "a0567f6b-4482-4b2e-8f36-e3669097927d",
         word: "kemarin",
         en: "yesterday",
         vi: "hôm qua",
@@ -190,6 +195,7 @@ export const timeExpressionsLessons: IndonesianLesson[] = [
         pronunciation_en: "ke-MA-rin",
       },
       {
+        cell_id: "ee27ed1f-ae47-41f1-b665-42cc12a6eebc",
         word: "besok",
         en: "tomorrow",
         vi: "ngày mai",
@@ -198,6 +204,7 @@ export const timeExpressionsLessons: IndonesianLesson[] = [
         pronunciation_en: "BEH-sok",
       },
       {
+        cell_id: "b489e23a-8f65-4ef4-ba37-4e4df7c300a6",
         word: "lusa",
         en: "day after tomorrow",
         vi: "ngày kia",
@@ -206,6 +213,7 @@ export const timeExpressionsLessons: IndonesianLesson[] = [
         pronunciation_en: "LOO-sa",
       },
       {
+        cell_id: "467d7ae8-586d-4a6c-9bf4-0673c98461b4",
         word: "sekarang",
         en: "now",
         vi: "bây giờ",
@@ -214,6 +222,7 @@ export const timeExpressionsLessons: IndonesianLesson[] = [
         pronunciation_en: "se-KA-rang",
       },
       {
+        cell_id: "d404ce04-cbf7-4f62-a49b-b93cd41b9747",
         word: "hari ini",
         en: "today",
         vi: "hôm nay",
@@ -224,24 +233,28 @@ export const timeExpressionsLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "bac5bf91-47ce-4a03-bc91-8237918fcbae",
         speaker: "Lia",
         text: "Tadi pagi kamu ke mana? Saya cari kamu.",
         vi: "Sáng nãy bạn đi đâu vậy? Mình tìm bạn.",
         en: "Where did you go this morning? I was looking for you.",
       },
       {
+        cell_id: "8a56d2de-06b7-4e30-a391-db92d91fb99d",
         speaker: "Tono",
         text: "Tadi saya ke pasar. Nanti sore saya ada di rumah.",
         vi: "Lúc nãy mình ra chợ. Chiều nay mình sẽ ở nhà.",
         en: "I went to the market earlier. I'll be home this afternoon.",
       },
       {
+        cell_id: "8aad7a5e-34e4-46e2-bae2-3fd8500229ed",
         speaker: "Lia",
         text: "Oke. Kemarin kamu juga sibuk, ya?",
         vi: "Được. Hôm qua bạn cũng bận à?",
         en: "Okay. You were busy yesterday too, right?",
       },
       {
+        cell_id: "100d3c14-fe41-4080-87a3-e5ecc6c0e7c9",
         speaker: "Tono",
         text: "Iya. Besok dan lusa juga, saya akan ke luar kota.",
         vi: "Ừ. Ngày mai và ngày kia nữa, mình sẽ đi ra ngoại tỉnh.",
@@ -382,6 +395,7 @@ export const timeExpressionsLessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: learn the VN–Indo pairs — đã/rồi=sudah, chưa=belum, đang=sedang(/lagi), sẽ=akan, vẫn=masih, vừa mới=baru. Fixed slot: [subject] + [marker] + [verb]. CLASSIC ERROR: answering 'Sudah…?' with 'tidak' — it must be 'Belum'. 'lagi' (currently) is speech-only; formal/written uses 'sedang'. 'baru' has two senses: 'just' (time) and 'new (≠ old)' — context disambiguates.",
     vocabulary: [
       {
+        cell_id: "e5f18343-5fdb-4773-86eb-1b29ac6f2718",
         word: "sudah",
         en: "already / done",
         vi: "đã / rồi",
@@ -390,6 +404,7 @@ export const timeExpressionsLessons: IndonesianLesson[] = [
         pronunciation_en: "SOO-dah",
       },
       {
+        cell_id: "8d754c5b-c09d-416c-b005-aad5af49ce5d",
         word: "belum",
         en: "not yet",
         vi: "chưa",
@@ -398,6 +413,7 @@ export const timeExpressionsLessons: IndonesianLesson[] = [
         pronunciation_en: "be-LOOM",
       },
       {
+        cell_id: "7db760c0-fed1-434c-b675-289d8b0430ef",
         word: "sedang",
         en: "in the middle of / -ing",
         vi: "đang",
@@ -406,6 +422,7 @@ export const timeExpressionsLessons: IndonesianLesson[] = [
         pronunciation_en: "SE-dang",
       },
       {
+        cell_id: "8c638c23-8a77-4826-b060-2635983395e3",
         word: "akan",
         en: "will (future)",
         vi: "sẽ",
@@ -414,6 +431,7 @@ export const timeExpressionsLessons: IndonesianLesson[] = [
         pronunciation_en: "A-kan",
       },
       {
+        cell_id: "72494607-5bc5-4b2f-8f05-982086441d17",
         word: "masih",
         en: "still",
         vi: "vẫn còn",
@@ -422,6 +440,7 @@ export const timeExpressionsLessons: IndonesianLesson[] = [
         pronunciation_en: "MA-seeh",
       },
       {
+        cell_id: "514f3061-27d4-4695-a920-60c68cbafad9",
         word: "baru",
         en: "just (recently) / new",
         vi: "vừa mới / mới",
@@ -430,6 +449,7 @@ export const timeExpressionsLessons: IndonesianLesson[] = [
         pronunciation_en: "BA-roo",
       },
       {
+        cell_id: "86e0b4ba-e9c9-43bc-b547-cfc99d167e1f",
         word: "lagi",
         en: "currently (casual = sedang) / again",
         vi: "đang (đời thường) / lại",
@@ -440,24 +460,28 @@ export const timeExpressionsLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "f0bc4f19-70a2-44d4-aec4-c620a1cf29aa",
         speaker: "Ibu",
         text: "Kamu sudah makan siang?",
         vi: "Con ăn trưa chưa?",
         en: "Have you had lunch?",
       },
       {
+        cell_id: "2ad512fe-7f37-4386-9c6a-fe8f76543347",
         speaker: "Anak",
         text: "Belum, Bu. Saya masih mengerjakan tugas.",
         vi: "Chưa ạ. Con vẫn còn làm bài tập.",
         en: "Not yet, Mom. I'm still doing my homework.",
       },
       {
+        cell_id: "74ac7fa8-681a-4d19-8194-18d0b3711694",
         speaker: "Ibu",
         text: "Adikmu sedang apa?",
         vi: "Em con đang làm gì?",
         en: "What's your little sibling doing?",
       },
       {
+        cell_id: "54fe96c3-14ac-45d8-85af-bcf21c8c60eb",
         speaker: "Anak",
         text: "Dia lagi tidur. Nanti saya akan makan setelah selesai. Eh, Ayah baru pulang.",
         vi: "Em đang ngủ. Lát nữa làm xong con sẽ ăn. À, bố vừa về.",
@@ -598,6 +622,7 @@ export const timeExpressionsLessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: keep three golden distinctions — telah (formal) ≥ sudah (everyday); belum (not yet, still possible) ≠ tidak (not, definitive); 'baru saja' emphasizes 'just now', 'sebentar lagi' = 'shortly'. Direct-mapping combos: masih belum = vẫn chưa (still not yet), sudah tidak = không còn (no longer), belum pernah = chưa từng (never yet). In exams/formal writing, prefer 'telah' and proper 'tidak/belum'; avoid casual 'lagi' and slang 'gak'.",
     vocabulary: [
       {
+        cell_id: "77d3e4e7-3e3f-4cc2-a3c0-0370ea5f25f2",
         word: "telah",
         en: "have/has (formal 'already')",
         vi: "đã (trang trọng)",
@@ -606,6 +631,7 @@ export const timeExpressionsLessons: IndonesianLesson[] = [
         pronunciation_en: "TE-lah",
       },
       {
+        cell_id: "14e842da-bd6c-4201-b916-e85cecc68de1",
         word: "tidak",
         en: "not (flat negative)",
         vi: "không",
@@ -614,6 +640,7 @@ export const timeExpressionsLessons: IndonesianLesson[] = [
         pronunciation_en: "TEE-dak",
       },
       {
+        cell_id: "b7119c1c-819d-4ac4-9a59-39138157e7b0",
         word: "baru saja",
         en: "just now (a moment ago)",
         vi: "vừa mới (ngay lúc nãy)",
@@ -622,6 +649,7 @@ export const timeExpressionsLessons: IndonesianLesson[] = [
         pronunciation_en: "BA-roo SA-ja",
       },
       {
+        cell_id: "d4e1bb87-9451-4063-8035-fd6dcd6ab3dc",
         word: "sebentar lagi",
         en: "shortly / in a moment",
         vi: "lát nữa thôi / chốc nữa",
@@ -630,6 +658,7 @@ export const timeExpressionsLessons: IndonesianLesson[] = [
         pronunciation_en: "se-ben-TAR LA-gee",
       },
       {
+        cell_id: "e3e7f67e-09c8-4e74-9b6e-cf90de4b7f35",
         word: "masih belum",
         en: "still not yet",
         vi: "vẫn chưa",
@@ -638,6 +667,7 @@ export const timeExpressionsLessons: IndonesianLesson[] = [
         pronunciation_en: "MA-seeh be-LOOM",
       },
       {
+        cell_id: "ce140d26-5444-4b96-aba1-88f7062f7497",
         word: "selesai",
         en: "finished / done",
         vi: "xong / kết thúc",
@@ -646,6 +676,7 @@ export const timeExpressionsLessons: IndonesianLesson[] = [
         pronunciation_en: "se-le-SAI",
       },
       {
+        cell_id: "1f6a943d-79d1-4be5-87d4-d74f68d06c73",
         word: "belum pernah",
         en: "never (yet) / not once",
         vi: "chưa từng",
@@ -656,24 +687,28 @@ export const timeExpressionsLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "4e784c6c-dbe9-49cf-8a08-fbd86b7c842b",
         speaker: "Wartawan",
         text: "Acara peresmian sudah dimulai?",
         vi: "Lễ khánh thành đã bắt đầu chưa?",
         en: "Has the inauguration ceremony started?",
       },
       {
+        cell_id: "ce7f49de-cdae-4310-babf-6c9d5d3d6b45",
         speaker: "Panitia",
         text: "Sudah. Telah dimulai pukul sembilan tadi. Sebentar lagi akan selesai.",
         vi: "Rồi. Đã bắt đầu lúc chín giờ sáng nãy. Lát nữa sẽ kết thúc.",
         en: "Yes. It started at nine this morning. It'll finish shortly.",
       },
       {
+        cell_id: "c39aa17c-69c1-4ceb-90b6-9d22b8c3c251",
         speaker: "Wartawan",
         text: "Tamu utamanya sudah datang?",
         vi: "Khách mời chính đã đến chưa?",
         en: "Has the guest of honor arrived?",
       },
       {
+        cell_id: "b1180e5c-ec23-4a16-b4ef-daf9b407d928",
         speaker: "Panitia",
         text: "Walaupun sudah siang, beliau masih belum tiba. Tapi bukan berarti tidak datang.",
         vi: "Mặc dù đã trưa, ông ấy vẫn chưa tới. Nhưng không có nghĩa là không đến.",

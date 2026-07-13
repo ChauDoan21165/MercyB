@@ -23,6 +23,7 @@ export type UrduSentence = {
 };
 
 export type UrduVocabEntry = {
+  cell_id?: string;
   ur: string;
   romanization: string;
   en: string;
@@ -31,6 +32,7 @@ export type UrduVocabEntry = {
 };
 
 export type UrduDialogueLine = {
+  cell_id?: string;
   speaker: string;
   ur: string;
   romanization: string;
@@ -95,12 +97,12 @@ export const lessons: UrduLesson[] = [
     intro_en:
       "This lesson practices daily habits with present habitual forms and simple sequencing words.",
     vocabulary: [
-      { ur: "صبح", romanization: "subah", en: "morning", vi: "buổi sáng", pos: "noun" },
-      { ur: "دوپہر", romanization: "dopahar", en: "afternoon", vi: "buổi trưa/chiều", pos: "noun" },
-      { ur: "شام", romanization: "shaam", en: "evening", vi: "buổi tối", pos: "noun" },
-      { ur: "پھر", romanization: "phir", en: "then", vi: "sau đó", pos: "connector" },
-      { ur: "کام", romanization: "kaam", en: "work", vi: "công việc", pos: "noun" },
-      { ur: "پڑھتا ہوں", romanization: "parhta hoon", en: "I study/read, male speaker", vi: "tôi học/đọc, người nói nam", pos: "verb phrase" },
+      { cell_id: "a1080056-25e9-4b2b-9184-0547d39a65e4", ur: "صبح", romanization: "subah", en: "morning", vi: "buổi sáng", pos: "noun" },
+      { cell_id: "cfa4eb58-f191-418b-bb12-7bc6f233b432", ur: "دوپہر", romanization: "dopahar", en: "afternoon", vi: "buổi trưa/chiều", pos: "noun" },
+      { cell_id: "e8d9e4e7-bf9f-428e-ab69-824b52210e14", ur: "شام", romanization: "shaam", en: "evening", vi: "buổi tối", pos: "noun" },
+      { cell_id: "75182f3e-0b28-4057-9871-9184483fcf80", ur: "پھر", romanization: "phir", en: "then", vi: "sau đó", pos: "connector" },
+      { cell_id: "773cf27a-0e2f-41d4-914f-6a73f1f41960", ur: "کام", romanization: "kaam", en: "work", vi: "công việc", pos: "noun" },
+      { cell_id: "4167e68f-36bb-46c0-80d2-62e45a7ca18d", ur: "پڑھتا ہوں", romanization: "parhta hoon", en: "I study/read, male speaker", vi: "tôi học/đọc, người nói nam", pos: "verb phrase" },
     ],
     sentences: [
       {
@@ -161,12 +163,12 @@ export const lessons: UrduLesson[] = [
     intro_en:
       "This lesson practices family words, possession, and describing home in short polite sentences.",
     vocabulary: [
-      { ur: "والد", romanization: "walid", en: "father", vi: "cha", pos: "noun" },
-      { ur: "والدہ", romanization: "walida", en: "mother", vi: "mẹ", pos: "noun" },
-      { ur: "بھائی", romanization: "bhai", en: "brother", vi: "anh/em trai", pos: "noun" },
-      { ur: "بہن", romanization: "behen", en: "sister", vi: "chị/em gái", pos: "noun" },
-      { ur: "گھر", romanization: "ghar", en: "home/house", vi: "nhà", pos: "noun" },
-      { ur: "کے پاس", romanization: "ke paas", en: "to have / near", vi: "có / ở gần", pos: "postposition phrase" },
+      { cell_id: "b739f804-0ba9-42d5-8eae-ce5f219dd44f", ur: "والد", romanization: "walid", en: "father", vi: "cha", pos: "noun" },
+      { cell_id: "f891decf-a516-4833-9d42-e00c7d0dae4f", ur: "والدہ", romanization: "walida", en: "mother", vi: "mẹ", pos: "noun" },
+      { cell_id: "507c899b-c414-492c-84d1-a56a9e71542c", ur: "بھائی", romanization: "bhai", en: "brother", vi: "anh/em trai", pos: "noun" },
+      { cell_id: "77bebddd-93db-4f57-9f94-71e0edcf207a", ur: "بہن", romanization: "behen", en: "sister", vi: "chị/em gái", pos: "noun" },
+      { cell_id: "f4fdfbeb-fd0d-4c65-b5b4-71820d3f32af", ur: "گھر", romanization: "ghar", en: "home/house", vi: "nhà", pos: "noun" },
+      { cell_id: "9f3dffda-5f89-4348-9668-0deb80d6e0c1", ur: "کے پاس", romanization: "ke paas", en: "to have / near", vi: "có / ở gần", pos: "postposition phrase" },
     ],
     sentences: [
       {
@@ -192,6 +194,7 @@ export const lessons: UrduLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "6e20f136-a1db-40db-8fdc-8c153606968b",
         speaker: "A",
         ur: "آپ کا گھر کہاں ہے؟",
         romanization: "aap ka ghar kahan hai?",
@@ -200,6 +203,7 @@ export const lessons: UrduLesson[] = [
         register: "polite",
       },
       {
+        cell_id: "e715f866-59ed-4e27-81e0-6f94a5823d80",
         speaker: "B",
         ur: "ہمارا گھر بازار کے پاس ہے۔",
         romanization: "hamara ghar bazaar ke paas hai.",
@@ -247,12 +251,12 @@ export const lessons: UrduLesson[] = [
     intro_en:
       "This lesson practices ordering, asking prices, and requesting quantities in everyday polite Urdu.",
     vocabulary: [
-      { ur: "چائے", romanization: "chai", en: "tea", vi: "trà", pos: "noun" },
-      { ur: "روٹی", romanization: "roti", en: "bread / flatbread", vi: "bánh mì dẹt", pos: "noun" },
-      { ur: "تازہ", romanization: "taaza", en: "fresh", vi: "tươi", pos: "adjective" },
-      { ur: "چاہیے", romanization: "chahiye", en: "is needed / would like", vi: "cần / muốn", pos: "verb-like expression" },
-      { ur: "کپ", romanization: "cup", en: "cup", vi: "cốc/tách", pos: "measure" },
-      { ur: "روپے", romanization: "rupaye", en: "rupees", vi: "rupee", pos: "currency" },
+      { cell_id: "b1c79701-51c2-421a-a5a8-15d64b09806c", ur: "چائے", romanization: "chai", en: "tea", vi: "trà", pos: "noun" },
+      { cell_id: "5c18fb41-ac28-4797-9825-54037b98c4fe", ur: "روٹی", romanization: "roti", en: "bread / flatbread", vi: "bánh mì dẹt", pos: "noun" },
+      { cell_id: "9ef1248a-e4c5-4fbb-b94d-ab50dd9f0767", ur: "تازہ", romanization: "taaza", en: "fresh", vi: "tươi", pos: "adjective" },
+      { cell_id: "3d84c99d-347e-4a6c-ad5d-c6a9efddc16e", ur: "چاہیے", romanization: "chahiye", en: "is needed / would like", vi: "cần / muốn", pos: "verb-like expression" },
+      { cell_id: "5ab60c0e-a941-466d-aa3f-eeee1974f60f", ur: "کپ", romanization: "cup", en: "cup", vi: "cốc/tách", pos: "measure" },
+      { cell_id: "49ae8480-5337-4340-8516-751d2ef76bb8", ur: "روپے", romanization: "rupaye", en: "rupees", vi: "rupee", pos: "currency" },
     ],
     sentences: [
       {
@@ -276,6 +280,7 @@ export const lessons: UrduLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "344febd4-f197-4345-9972-d5f7962aaa4e",
         speaker: "Customer",
         ur: "مجھے دو روٹیاں چاہیے۔",
         romanization: "mujhe do rotiyan chahiye.",
@@ -284,6 +289,7 @@ export const lessons: UrduLesson[] = [
         register: "polite",
       },
       {
+        cell_id: "97b349b1-7772-4674-a7b5-08e3396bdb5c",
         speaker: "Seller",
         ur: "جی، اور کچھ؟",
         romanization: "ji, aur kuch?",
@@ -329,12 +335,12 @@ export const lessons: UrduLesson[] = [
     intro_en:
       "This lesson practices asking for buses, turning right/left, and going straight. Physical direction is separate from writing direction.",
     vocabulary: [
-      { ur: "بس", romanization: "bus", en: "bus", vi: "xe buýt", pos: "noun" },
-      { ur: "رکشہ", romanization: "riksha", en: "rickshaw", vi: "xe kéo/xe tuk-tuk", pos: "noun" },
-      { ur: "دائیں", romanization: "dain", en: "right", vi: "bên phải", pos: "direction" },
-      { ur: "بائیں", romanization: "bain", en: "left", vi: "bên trái", pos: "direction" },
-      { ur: "سیدھا", romanization: "seedha", en: "straight", vi: "thẳng", pos: "direction" },
-      { ur: "اسٹیشن", romanization: "station", en: "station", vi: "nhà ga/trạm", pos: "noun" },
+      { cell_id: "1934cb9e-f0b0-403e-bad2-d922d08c9ee7", ur: "بس", romanization: "bus", en: "bus", vi: "xe buýt", pos: "noun" },
+      { cell_id: "5b71f3e5-ecca-42f3-8807-b978d262be25", ur: "رکشہ", romanization: "riksha", en: "rickshaw", vi: "xe kéo/xe tuk-tuk", pos: "noun" },
+      { cell_id: "9417a9d0-884a-4243-8713-65078d72b851", ur: "دائیں", romanization: "dain", en: "right", vi: "bên phải", pos: "direction" },
+      { cell_id: "688643b0-f08c-4e9b-8cff-4a45b833dee4", ur: "بائیں", romanization: "bain", en: "left", vi: "bên trái", pos: "direction" },
+      { cell_id: "3e5eb743-8ae1-472b-aac8-e28817445772", ur: "سیدھا", romanization: "seedha", en: "straight", vi: "thẳng", pos: "direction" },
+      { cell_id: "0adbf47a-0895-45d7-8d7e-00177dbc5be8", ur: "اسٹیشن", romanization: "station", en: "station", vi: "nhà ga/trạm", pos: "noun" },
     ],
     sentences: [
       {
@@ -395,12 +401,12 @@ export const lessons: UrduLesson[] = [
     intro_en:
       "This lesson practices making appointments and naming simple symptoms. It is language practice, not medical advice.",
     vocabulary: [
-      { ur: "وقت", romanization: "waqt", en: "time / appointment slot", vi: "thời gian / lịch hẹn", pos: "noun" },
-      { ur: "لینا", romanization: "lena", en: "to take", vi: "lấy", pos: "verb" },
-      { ur: "بخار", romanization: "bukhar", en: "fever", vi: "sốt", pos: "noun" },
-      { ur: "درد", romanization: "dard", en: "pain", vi: "đau", pos: "noun" },
-      { ur: "کل", romanization: "kal", en: "tomorrow / yesterday by context", vi: "ngày mai / hôm qua theo ngữ cảnh", pos: "time word" },
-      { ur: "آ سکتا ہوں", romanization: "aa sakta hoon", en: "I can come, male speaker", vi: "tôi có thể đến, người nói nam", pos: "modal phrase" },
+      { cell_id: "f2e65c53-ad3d-43b2-9094-48ff2c75eb59", ur: "وقت", romanization: "waqt", en: "time / appointment slot", vi: "thời gian / lịch hẹn", pos: "noun" },
+      { cell_id: "40a3cbc0-d8a3-4e88-b742-61e4a0e169ea", ur: "لینا", romanization: "lena", en: "to take", vi: "lấy", pos: "verb" },
+      { cell_id: "33f336be-1520-4187-bb65-5866fb703f81", ur: "بخار", romanization: "bukhar", en: "fever", vi: "sốt", pos: "noun" },
+      { cell_id: "3779f402-531e-42a6-aff3-a6eb82551d15", ur: "درد", romanization: "dard", en: "pain", vi: "đau", pos: "noun" },
+      { cell_id: "84453e6f-3368-4f0e-935f-afec031865b1", ur: "کل", romanization: "kal", en: "tomorrow / yesterday by context", vi: "ngày mai / hôm qua theo ngữ cảnh", pos: "time word" },
+      { cell_id: "277113c2-0da5-46c7-ae3d-1b755667dd3c", ur: "آ سکتا ہوں", romanization: "aa sakta hoon", en: "I can come, male speaker", vi: "tôi có thể đến, người nói nam", pos: "modal phrase" },
     ],
     sentences: [
       {
@@ -424,6 +430,7 @@ export const lessons: UrduLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "91c05fe7-05e1-4190-9c4d-33dd98f6e7e9",
         speaker: "Patient",
         ur: "مجھے وقت لینا ہے۔",
         romanization: "mujhe waqt lena hai.",
@@ -432,6 +439,7 @@ export const lessons: UrduLesson[] = [
         register: "polite",
       },
       {
+        cell_id: "f9a6e469-4613-4702-9385-1cdeb628f97c",
         speaker: "Reception",
         ur: "آپ کل آ سکتے ہیں؟",
         romanization: "aap kal aa sakte hain?",
@@ -477,12 +485,12 @@ export const lessons: UrduLesson[] = [
     intro_en:
       "This lesson practices asking where to submit documents, rent, and receipts in simple Urdu, without legal content.",
     vocabulary: [
-      { ur: "فارم", romanization: "form", en: "form", vi: "mẫu đơn", pos: "noun" },
-      { ur: "جمع کرنا", romanization: "jama karna", en: "to submit", vi: "nộp", pos: "verb phrase" },
-      { ur: "کرایہ", romanization: "kiraya", en: "rent / fare", vi: "tiền thuê / cước", pos: "noun" },
-      { ur: "شناختی کارڈ", romanization: "shinakhti card", en: "identity card", vi: "thẻ căn cước", pos: "noun" },
-      { ur: "رسید", romanization: "raseed", en: "receipt", vi: "biên nhận", pos: "noun" },
-      { ur: "دفتر", romanization: "daftar", en: "office", vi: "văn phòng", pos: "noun" },
+      { cell_id: "227b609f-c77f-4cff-b2a8-26456a534bd4", ur: "فارم", romanization: "form", en: "form", vi: "mẫu đơn", pos: "noun" },
+      { cell_id: "70c98e6e-7a16-4c80-bd6f-08957f87a447", ur: "جمع کرنا", romanization: "jama karna", en: "to submit", vi: "nộp", pos: "verb phrase" },
+      { cell_id: "ac1b9424-f1a4-474c-943a-f4b53bec1cbb", ur: "کرایہ", romanization: "kiraya", en: "rent / fare", vi: "tiền thuê / cước", pos: "noun" },
+      { cell_id: "d0b6670f-9e99-46fe-b2b4-f1a285087a18", ur: "شناختی کارڈ", romanization: "shinakhti card", en: "identity card", vi: "thẻ căn cước", pos: "noun" },
+      { cell_id: "ff016ebf-c060-444c-a38c-3aa5e1bb4455", ur: "رسید", romanization: "raseed", en: "receipt", vi: "biên nhận", pos: "noun" },
+      { cell_id: "8c0af1c6-a82a-4fd4-be6d-7851cad55797", ur: "دفتر", romanization: "daftar", en: "office", vi: "văn phòng", pos: "noun" },
     ],
     sentences: [
       {
@@ -506,6 +514,7 @@ export const lessons: UrduLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "ba08d9f5-5774-42bd-9829-698badd68733",
         speaker: "Visitor",
         ur: "فارم کہاں جمع کرنا ہے؟",
         romanization: "form kahan jama karna hai?",
@@ -514,6 +523,7 @@ export const lessons: UrduLesson[] = [
         register: "polite",
       },
       {
+        cell_id: "0f676f26-8d50-4ecc-9b77-cac84d0829e4",
         speaker: "Clerk",
         ur: "براہ کرم دفتر نمبر دو میں جمع کریں۔",
         romanization: "baraah-e karam daftar number do mein jama karen.",

@@ -12,6 +12,7 @@ type LessonSentence = {
 };
 
 type VocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -21,6 +22,7 @@ type VocabEntry = {
 };
 
 type DialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -207,6 +209,7 @@ export const lessons: IndonesianLesson[] = [
       "Very useful patterns: `aturan rumah`, `harus dimatikan`, `konten aman`, `kurang tidur`, `tanpa HP`, `beri contoh`. In advice to children, use `supaya` to express purpose: `Supaya bisa tidur lebih cepat`.",
     vocabulary: [
       {
+        cell_id: "548b4b86-28b4-4eae-8abc-ee9ba61fa791",
         word: "waktu layar",
         en: "screen time",
         vi: "thời gian màn hình",
@@ -215,6 +218,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "WAK-too LAH-yar",
       },
       {
+        cell_id: "e058cac4-9861-4aa4-afdc-88415024c9fb",
         word: "aturan rumah",
         en: "house rules",
         vi: "quy tắc trong nhà",
@@ -223,6 +227,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "a-TOO-ran ROO-mah",
       },
       {
+        cell_id: "40f18299-943b-465b-b703-b8f0f73886ae",
         word: "main HP",
         en: "use the phone; play on the phone",
         vi: "dùng điện thoại",
@@ -231,6 +236,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "main AYCH-PEE",
       },
       {
+        cell_id: "39abdb17-0ca6-4953-88b8-6a3188d063b3",
         word: "konten aman",
         en: "safe content",
         vi: "nội dung an toàn",
@@ -239,6 +245,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "KON-ten A-man",
       },
       {
+        cell_id: "f77ed016-b427-4c73-93b6-23f6a3e1415d",
         word: "kurang tidur",
         en: "sleep deprivation / not enough sleep",
         vi: "ngủ thiếu",
@@ -247,6 +254,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "KOO-rang TEE-door",
       },
       {
+        cell_id: "a7b1ce31-8920-405b-a3cf-bce66fcadab3",
         word: "tanpa HP",
         en: "without a phone",
         vi: "không dùng điện thoại",
@@ -255,6 +263,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "TAN-pa AYCH-PEE",
       },
       {
+        cell_id: "a810a0dd-9f81-4763-84bf-ffa6710add02",
         word: "beri contoh",
         en: "set an example",
         vi: "làm gương",
@@ -263,6 +272,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "BEH-ree CON-toh",
       },
       {
+        cell_id: "b008718e-2e35-4b31-8869-e8cafd8889f6",
         word: "memarahi",
         en: "to scold",
         vi: "la mắng",
@@ -271,6 +281,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "meh-ma-RAH-hee",
       },
       {
+        cell_id: "a1d09a8e-7045-419f-baf3-4e52fe70ca1c",
         word: "belajar online",
         en: "online learning",
         vi: "học online",
@@ -279,6 +290,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "beh-la-JAHR ON-line",
       },
       {
+        cell_id: "5ad5e84e-7723-4eae-90ac-5a4337a2c1a1",
         word: "supaya",
         en: "so that",
         vi: "để",
@@ -289,36 +301,42 @@ export const lessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "2743d0e8-6243-4caf-87f2-25a49008e941",
         speaker: "Ibu",
         text: "Anak saya main HP terlalu lama hari ini.",
         vi: "Con tôi dùng điện thoại quá lâu hôm nay.",
         en: "My child used the phone for too long today.",
       },
       {
+        cell_id: "e1c38331-ea70-4be8-b5ab-b4bab6eb2282",
         speaker: "Ayah",
         text: "Kita punya aturan rumah tentang waktu layar, kan?",
         vi: "Nhà mình có quy định về thời gian màn hình mà, đúng không?",
         en: "We have house rules about screen time, right?",
       },
       {
+        cell_id: "c74f6e00-87b1-4a66-8d26-fc7966a7dcf6",
         speaker: "Ibu",
         text: "Iya, saya minta dia belajar dulu sebelum nonton.",
         vi: "Ừ, tôi bảo con học trước rồi mới xem.",
         en: "Yes, I ask them to study first before watching.",
       },
       {
+        cell_id: "240eab9c-f3b6-4d3b-b55e-9352241a53b4",
         speaker: "Ayah",
         text: "Malam ini HP harus dimatikan supaya bisa tidur lebih cepat.",
         vi: "Tối nay điện thoại phải tắt để có thể ngủ nhanh hơn.",
         en: "Tonight the phone has to be turned off so they can sleep faster.",
       },
       {
+        cell_id: "afe6ee3b-06f4-4ead-9004-dbbe1a2637b7",
         speaker: "Ibu",
         text: "Baik, kita beri contoh juga, supaya anak lebih mudah mengikuti aturan.",
         vi: "Được, mình cũng làm gương để con dễ làm theo quy định hơn.",
         en: "Okay, we should also set an example so the child can follow the rules more easily.",
       },
       {
+        cell_id: "270998a2-b68f-4294-b991-fd4e4cf9877a",
         speaker: "Ayah",
         text: "Setuju. Kita buat jadwal tanpa HP satu jam sebelum tidur.",
         vi: "Đồng ý. Mình đặt lịch một giờ không dùng điện thoại trước khi ngủ.",

@@ -54,6 +54,7 @@ export const lessons: RussianLesson[] = [
     ],
     vocabulary: [
       {
+        cell_id: "c178efc5-498d-41aa-8049-fd9b5fb4b978",
         word: "что",
         romanization: "chto",
         en: "that / what",
@@ -63,6 +64,7 @@ export const lessons: RussianLesson[] = [
         pronunciation_en: "shto",
       },
       {
+        cell_id: "8fa3c810-c95e-467b-a012-ff90a6df1764",
         word: "потому что",
         romanization: "potomu chto",
         en: "because",
@@ -72,6 +74,7 @@ export const lessons: RussianLesson[] = [
         pronunciation_en: "pa-ta-MOO shto",
       },
       {
+        cell_id: "59a9fd39-82d4-4e83-a1a5-977cfbc0c3a4",
         word: "поэтому",
         romanization: "poetomu",
         en: "therefore",
@@ -81,6 +84,7 @@ export const lessons: RussianLesson[] = [
         pronunciation_en: "pa-EH-ta-moo",
       },
       {
+        cell_id: "2883a19a-02dd-4c5a-8087-eb7b17f64a4c",
         word: "подготовиться",
         romanization: "podgotovitsya",
         en: "to prepare",
@@ -162,6 +166,7 @@ export const lessons: RussianLesson[] = [
     ],
     vocabulary: [
       {
+        cell_id: "7483f5dd-0ccb-4d72-bd0a-e1b06c6f227e",
         word: "по-моему",
         romanization: "po-moyemu",
         en: "in my opinion",
@@ -171,6 +176,7 @@ export const lessons: RussianLesson[] = [
         pronunciation_en: "pa-MO-yeh-moo",
       },
       {
+        cell_id: "13f688c2-c1b2-44d9-9302-0124e6f1b910",
         word: "считать",
         romanization: "schitat",
         en: "to consider / believe",
@@ -180,6 +186,7 @@ export const lessons: RussianLesson[] = [
         pronunciation_en: "shchee-TAT",
       },
       {
+        cell_id: "e699ab6a-1510-419c-8a19-02261f518849",
         word: "точка зрения",
         romanization: "tochka zreniya",
         en: "point of view",
@@ -189,6 +196,7 @@ export const lessons: RussianLesson[] = [
         pronunciation_en: "TOCH-ka ZRYE-nee-ya",
       },
       {
+        cell_id: "3e46f78f-bf46-4319-ad2f-44870a7a8fac",
         word: "мнение",
         romanization: "mneniye",
         en: "opinion",
@@ -270,6 +278,7 @@ export const lessons: RussianLesson[] = [
     ],
     vocabulary: [
       {
+        cell_id: "5631014c-cd7b-46b2-8c6b-a669ed4b6423",
         word: "отвечать за",
         romanization: "otvechat za",
         en: "to be responsible for",
@@ -279,6 +288,7 @@ export const lessons: RussianLesson[] = [
         pronunciation_en: "at-vyeh-CHAT za",
       },
       {
+        cell_id: "ff7b47c7-22aa-4901-b4ba-4301169a5942",
         word: "уточнить",
         romanization: "utochnit",
         en: "to clarify",
@@ -288,6 +298,7 @@ export const lessons: RussianLesson[] = [
         pronunciation_en: "oo-toch-NEET",
       },
       {
+        cell_id: "3c1363ed-4724-48bd-9457-5a9946e6959b",
         word: "задача",
         romanization: "zadacha",
         en: "task",
@@ -297,6 +308,7 @@ export const lessons: RussianLesson[] = [
         pronunciation_en: "za-DA-cha",
       },
       {
+        cell_id: "65713134-deef-4f5a-b1ed-765896f2d258",
         word: "готово",
         romanization: "gotovo",
         en: "ready",
@@ -308,6 +320,7 @@ export const lessons: RussianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "1df98de4-89ac-4c98-8dc0-6517376f48c0",
         speaker: "Менеджер",
         text: "Вы отвечаете за этот проект?",
         romanization: "Vy otvechayete za etot proyekt?",
@@ -315,6 +328,7 @@ export const lessons: RussianLesson[] = [
         en: "Are you responsible for this project?",
       },
       {
+        cell_id: "e2784c53-b48d-4f76-9640-73321d9b4557",
         speaker: "Нам",
         text: "Да, но мне нужно уточнить задачу.",
         romanization: "Da, no mne nuzhno utochnit zadachu.",
@@ -322,6 +336,7 @@ export const lessons: RussianLesson[] = [
         en: "Yes, but I need to clarify the task.",
       },
       {
+        cell_id: "6dbc7111-5dc1-485b-a9c7-dd9e476e7a62",
         speaker: "Менеджер",
         text: "Хорошо. Сообщите, когда всё будет готово.",
         romanization: "Khorosho. Soobshchite, kogda vsyo budet gotovo.",
@@ -395,6 +410,7 @@ export const lessons: RussianLesson[] = [
     ],
     vocabulary: [
       {
+        cell_id: "8ef5dd19-3a58-46cc-aca3-e54cbe7a9b5b",
         word: "в тексте говорится",
         romanization: "v tekste govoritsya",
         en: "the text says / talks about",
@@ -404,6 +420,7 @@ export const lessons: RussianLesson[] = [
         pronunciation_en: "f TEK-stye ga-va-REET-sya",
       },
       {
+        cell_id: "a4ac0a49-5e54-429f-9a14-3cb9bc27cf59",
         word: "главная проблема",
         romanization: "glavnaya problema",
         en: "main problem",
@@ -413,6 +430,7 @@ export const lessons: RussianLesson[] = [
         pronunciation_en: "GLAHV-na-ya pra-BLYEH-ma",
       },
       {
+        cell_id: "e21e1b19-06a4-4b66-b4e0-90ba38a1fedd",
         word: "советовать",
         romanization: "sovetovat",
         en: "to advise",
@@ -422,6 +440,7 @@ export const lessons: RussianLesson[] = [
         pronunciation_en: "sa-VYE-ta-vat",
       },
       {
+        cell_id: "a471bf49-30e3-4818-a467-53da348fe68b",
         word: "ошибка",
         romanization: "oshibka",
         en: "mistake",

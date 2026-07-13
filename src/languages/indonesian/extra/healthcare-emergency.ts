@@ -32,6 +32,7 @@ type LessonSentence = {
 };
 
 type VocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -43,6 +44,7 @@ type VocabEntry = {
 };
 
 type DialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -159,6 +161,7 @@ export const healthcareEmergencyLessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: Indonesian has NO verb conjugation and NO tense, so emergency phrases stay short — learn the bare verb and you're done. 'Tolong' is the magic word: it means both 'help!' and 'please'. Just say 'Tolong + the action': Tolong panggil… (please call), Tolong bantu… (please help).",
     vocabulary: [
       {
+        cell_id: "fcd33560-0226-4a12-b2b8-5c54b43aec19",
         word: "tolong",
         en: "help! / please",
         vi: "cứu với / làm ơn",
@@ -167,6 +170,7 @@ export const healthcareEmergencyLessons: IndonesianLesson[] = [
         pronunciation_en: "TOH-long",
       },
       {
+        cell_id: "466a1bce-1321-46fe-bab8-5bbd9e95a987",
         word: "darurat",
         en: "emergency",
         vi: "khẩn cấp",
@@ -175,6 +179,7 @@ export const healthcareEmergencyLessons: IndonesianLesson[] = [
         pronunciation_en: "da-ROO-rat",
       },
       {
+        cell_id: "06ed9f7d-26fb-40c4-936b-b32c00117dab",
         word: "ambulans",
         en: "ambulance",
         vi: "xe cứu thương",
@@ -183,6 +188,7 @@ export const healthcareEmergencyLessons: IndonesianLesson[] = [
         pronunciation_en: "AM-boo-lans",
       },
       {
+        cell_id: "b87dd1a7-bb18-429a-88d2-fa1cd9a08596",
         word: "dokter",
         en: "doctor",
         vi: "bác sĩ",
@@ -191,6 +197,7 @@ export const healthcareEmergencyLessons: IndonesianLesson[] = [
         pronunciation_en: "DOK-ter",
       },
       {
+        cell_id: "8188a595-2b61-4eac-8088-bd126df59c55",
         word: "IGD (gawat darurat)",
         en: "emergency room (ER)",
         vi: "phòng cấp cứu",
@@ -199,6 +206,7 @@ export const healthcareEmergencyLessons: IndonesianLesson[] = [
         pronunciation_en: "ee-jay-DAY / GAH-wat da-ROO-rat",
       },
       {
+        cell_id: "5883f402-3fc9-4f05-9648-234c3990f235",
         word: "sadar",
         en: "conscious / aware",
         vi: "tỉnh táo",
@@ -207,6 +215,7 @@ export const healthcareEmergencyLessons: IndonesianLesson[] = [
         pronunciation_en: "SAH-dar",
       },
       {
+        cell_id: "b63849cc-6229-4d61-88ac-3e27845d29e6",
         word: "bernapas",
         en: "to breathe",
         vi: "thở",
@@ -215,6 +224,7 @@ export const healthcareEmergencyLessons: IndonesianLesson[] = [
         pronunciation_en: "ber-NA-pas",
       },
       {
+        cell_id: "955df065-57a0-48d7-a4c6-6ea9ef14c775",
         word: "cepat",
         en: "fast / quick",
         vi: "nhanh",
@@ -223,6 +233,7 @@ export const healthcareEmergencyLessons: IndonesianLesson[] = [
         pronunciation_en: "che-PAT",
       },
       {
+        cell_id: "ccde221a-d844-4b44-bf46-3cbaf6dc63fa",
         word: "kecelakaan",
         en: "accident",
         vi: "tai nạn",
@@ -233,24 +244,28 @@ export const healthcareEmergencyLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "7ba84eaa-8189-44c0-90a0-d73516003c81",
         speaker: "Penelepon",
         text: "Halo, ini darurat! Ada kecelakaan motor!",
         vi: "Alô, đây là cấp cứu! Có tai nạn xe máy!",
         en: "Hello, this is an emergency! There's a motorbike accident!",
       },
       {
+        cell_id: "b54cc5ea-6fbe-42f4-bd97-4710f8094ec8",
         speaker: "Operator",
         text: "Di mana lokasinya, Pak?",
         vi: "Vị trí ở đâu, anh?",
         en: "Where is the location, sir?",
       },
       {
+        cell_id: "80cdfded-db5a-47d2-8cbe-e2277ef93c4f",
         speaker: "Penelepon",
         text: "Di Jalan Sudirman, depan bank. Tolong cepat!",
         vi: "Trên đường Sudirman, trước ngân hàng. Làm ơn nhanh lên!",
         en: "On Sudirman Street, in front of the bank. Please hurry!",
       },
       {
+        cell_id: "1c11a336-0019-415a-9080-6f122e73def3",
         speaker: "Operator",
         text: "Tenang, Pak. Ambulans segera datang.",
         vi: "Bình tĩnh, anh. Xe cứu thương sẽ đến ngay.",
@@ -391,6 +406,7 @@ export const healthcareEmergencyLessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: the possessor goes AFTER the noun — 'kepala saya' (head my) maps neatly onto Vietnamese 'đầu của tôi'. Memorize one frame: '… saya sakit' and swap the body part: perut (stomach), gigi (tooth), tenggorokan (throat), dada (chest).",
     vocabulary: [
       {
+        cell_id: "138ff182-0ec4-49da-86c1-c8f8ac92ba77",
         word: "sakit",
         en: "sick / it hurts",
         vi: "ốm / đau",
@@ -399,6 +415,7 @@ export const healthcareEmergencyLessons: IndonesianLesson[] = [
         pronunciation_en: "SA-kit",
       },
       {
+        cell_id: "56049b05-ae5c-46c9-bae9-59bd7b1de34f",
         word: "demam",
         en: "fever",
         vi: "sốt",
@@ -407,6 +424,7 @@ export const healthcareEmergencyLessons: IndonesianLesson[] = [
         pronunciation_en: "DEH-mam",
       },
       {
+        cell_id: "43174365-6c43-4f1e-8bfe-a6e966631a3a",
         word: "batuk",
         en: "cough",
         vi: "ho",
@@ -415,6 +433,7 @@ export const healthcareEmergencyLessons: IndonesianLesson[] = [
         pronunciation_en: "BA-took",
       },
       {
+        cell_id: "0e36bdea-f842-4190-b04f-d7c32460f39d",
         word: "pusing",
         en: "dizzy / headache",
         vi: "chóng mặt / nhức đầu",
@@ -423,6 +442,7 @@ export const healthcareEmergencyLessons: IndonesianLesson[] = [
         pronunciation_en: "POO-sing",
       },
       {
+        cell_id: "d48cf118-32f5-4416-929a-0d8d382a7bb0",
         word: "perut",
         en: "stomach / belly",
         vi: "bụng",
@@ -431,6 +451,7 @@ export const healthcareEmergencyLessons: IndonesianLesson[] = [
         pronunciation_en: "pe-ROOT",
       },
       {
+        cell_id: "d10583fb-c0bf-413c-9c38-9c9af274fc3e",
         word: "alergi",
         en: "allergy / allergic",
         vi: "dị ứng",
@@ -439,6 +460,7 @@ export const healthcareEmergencyLessons: IndonesianLesson[] = [
         pronunciation_en: "a-LER-gee",
       },
       {
+        cell_id: "b4199a5f-80e1-4c88-86df-c0fe1aaf8612",
         word: "rumah sakit",
         en: "hospital",
         vi: "bệnh viện",
@@ -447,6 +469,7 @@ export const healthcareEmergencyLessons: IndonesianLesson[] = [
         pronunciation_en: "ROO-mah SA-kit",
       },
       {
+        cell_id: "314e7b1f-af0f-4d2f-b2f3-300315857330",
         word: "dirawat",
         en: "to be hospitalized / treated",
         vi: "nhập viện / được điều trị",
@@ -455,6 +478,7 @@ export const healthcareEmergencyLessons: IndonesianLesson[] = [
         pronunciation_en: "dee-RA-wat",
       },
       {
+        cell_id: "8c56521a-2269-44de-8c51-fdb2d047963a",
         word: "gejala",
         en: "symptom",
         vi: "triệu chứng",
@@ -465,30 +489,35 @@ export const healthcareEmergencyLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "ef2cc79f-75d4-406d-8288-6083763dddbf",
         speaker: "Dokter",
         text: "Selamat siang. Apa keluhan Anda?",
         vi: "Chào buổi trưa. Anh/chị bị làm sao?",
         en: "Good afternoon. What is your complaint?",
       },
       {
+        cell_id: "f7da434a-0d50-438d-b1c8-2e9d3b12233a",
         speaker: "Pasien",
         text: "Saya demam dan kepala saya sakit sejak kemarin.",
         vi: "Tôi bị sốt và đau đầu từ hôm qua.",
         en: "I have a fever and my head hurts since yesterday.",
       },
       {
+        cell_id: "6582f5ff-9cba-4b7e-95ac-3e646eae0ef7",
         speaker: "Dokter",
         text: "Apakah Anda batuk juga?",
         vi: "Anh/chị có ho không?",
         en: "Are you coughing as well?",
       },
       {
+        cell_id: "cd98a822-3ec2-4224-a171-d08dabc890ed",
         speaker: "Pasien",
         text: "Ya, sedikit. Saya juga merasa pusing.",
         vi: "Vâng, một chút. Tôi cũng thấy chóng mặt.",
         en: "Yes, a little. I also feel dizzy.",
       },
       {
+        cell_id: "5933525f-2e67-48f7-9061-0434a194bf4c",
         speaker: "Dokter",
         text: "Baik. Anda perlu istirahat dan minum obat ini.",
         vi: "Được rồi. Anh/chị cần nghỉ ngơi và uống thuốc này.",
@@ -629,6 +658,7 @@ export const healthcareEmergencyLessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: watch for the passive 'di-' prefix on medicine labels — 'diminum' (to be taken), 'dioleskan' (to be applied), 'ditelan' (to be swallowed). Once you parse 'di- + root' you can read dosage instructions. Dosage = number + 'kali sehari' (times a day): 'dua kali sehari' = twice daily.",
     vocabulary: [
       {
+        cell_id: "cbead17b-98e6-454b-a165-5f9c93f563d3",
         word: "apotek",
         en: "pharmacy / drugstore",
         vi: "hiệu thuốc",
@@ -637,6 +667,7 @@ export const healthcareEmergencyLessons: IndonesianLesson[] = [
         pronunciation_en: "a-poh-TEK",
       },
       {
+        cell_id: "5067de69-7e9e-42a6-b59c-a27b4cb64050",
         word: "obat",
         en: "medicine",
         vi: "thuốc",
@@ -645,6 +676,7 @@ export const healthcareEmergencyLessons: IndonesianLesson[] = [
         pronunciation_en: "OH-bat",
       },
       {
+        cell_id: "492e7d80-f19d-44e9-aa8d-4a20dcebfe43",
         word: "resep",
         en: "prescription (also recipe)",
         vi: "đơn thuốc",
@@ -653,6 +685,7 @@ export const healthcareEmergencyLessons: IndonesianLesson[] = [
         pronunciation_en: "REH-sep",
       },
       {
+        cell_id: "0719c4f2-1d5c-4019-aed3-971f5e9f8c37",
         word: "apoteker",
         en: "pharmacist",
         vi: "dược sĩ",
@@ -661,6 +694,7 @@ export const healthcareEmergencyLessons: IndonesianLesson[] = [
         pronunciation_en: "a-poh-TEH-ker",
       },
       {
+        cell_id: "364adcb4-4315-419d-95ff-d2337065f412",
         word: "BPJS Kesehatan",
         en: "national health insurance",
         vi: "bảo hiểm y tế quốc gia",
@@ -669,6 +703,7 @@ export const healthcareEmergencyLessons: IndonesianLesson[] = [
         pronunciation_en: "beh-peh-jeh-ess ke-se-HA-tan",
       },
       {
+        cell_id: "adc37648-7372-4462-baa2-f2cdcce971e2",
         word: "ditanggung",
         en: "to be covered (by insurance)",
         vi: "được chi trả",
@@ -677,6 +712,7 @@ export const healthcareEmergencyLessons: IndonesianLesson[] = [
         pronunciation_en: "dee-tang-GOONG",
       },
       {
+        cell_id: "d99db77e-c4f2-4e15-b951-62ab452a49a3",
         word: "minum",
         en: "to drink / take (medicine)",
         vi: "uống",
@@ -685,6 +721,7 @@ export const healthcareEmergencyLessons: IndonesianLesson[] = [
         pronunciation_en: "MEE-noom",
       },
       {
+        cell_id: "1ab34db8-909f-4b1a-889c-65398659d622",
         word: "tanpa",
         en: "without",
         vi: "không có",
@@ -693,6 +730,7 @@ export const healthcareEmergencyLessons: IndonesianLesson[] = [
         pronunciation_en: "TAN-pa",
       },
       {
+        cell_id: "6dab3681-fb59-40de-a197-5894aeb8632e",
         word: "harga",
         en: "price",
         vi: "giá",
@@ -703,30 +741,35 @@ export const healthcareEmergencyLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "aae36eae-fae0-4d36-8809-10f5cbd6b820",
         speaker: "Pasien",
         text: "Selamat sore. Saya mau menebus resep ini.",
         vi: "Chào buổi chiều. Tôi muốn lấy thuốc theo đơn này.",
         en: "Good evening. I'd like to fill this prescription.",
       },
       {
+        cell_id: "be65fecf-299b-4c61-8767-5fbc97aed2e2",
         speaker: "Apoteker",
         text: "Baik. Anda pakai BPJS atau bayar sendiri?",
         vi: "Được. Anh/chị dùng BPJS hay tự trả?",
         en: "Sure. Are you using BPJS or paying yourself?",
       },
       {
+        cell_id: "b0064ec1-97c1-47f5-8fec-e65dc7544b96",
         speaker: "Pasien",
         text: "Pakai BPJS. Apakah obat ini ditanggung?",
         vi: "Dùng BPJS. Thuốc này có được chi trả không?",
         en: "BPJS. Is this medicine covered?",
       },
       {
+        cell_id: "6bedde8e-94ec-42d9-ade7-6924376cb4e1",
         speaker: "Apoteker",
         text: "Ya, ditanggung. Diminum tiga kali sehari setelah makan.",
         vi: "Vâng, được chi trả. Uống ba lần một ngày sau khi ăn.",
         en: "Yes, it's covered. Take it three times a day after meals.",
       },
       {
+        cell_id: "cecb7914-6728-428e-a5f5-4541ad7f27e1",
         speaker: "Pasien",
         text: "Terima kasih banyak.",
         vi: "Cảm ơn nhiều.",

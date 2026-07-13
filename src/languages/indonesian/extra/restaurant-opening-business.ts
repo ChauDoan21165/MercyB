@@ -6,6 +6,7 @@ type IndonesianLessonSentence = {
 };
 
 type VocabEntry = {
+  cell_id?: string;
   word: string;
   meaning_vi: string;
   meaning_en: string;
@@ -14,6 +15,7 @@ type VocabEntry = {
 };
 
 type DialogueLine = {
+  cell_id?: string;
   speaker: string;
   line: string;
   vi: string;
@@ -117,6 +119,7 @@ export const lessons: IndonesianLesson[] = [
     ],
     vocabulary: [
       {
+        cell_id: "67e890a4-cfa5-45eb-9950-c7c5b79f42c6",
         word: 'buka restoran',
         meaning_vi: 'mở nhà hàng',
         meaning_en: 'open a restaurant',
@@ -124,6 +127,7 @@ export const lessons: IndonesianLesson[] = [
         example_vi: 'Họ muốn mở nhà hàng gần trường đại học.',
       },
       {
+        cell_id: "70a79d0f-7552-4d08-85cc-8b347c0203dc",
         word: 'menu',
         meaning_vi: 'thực đơn',
         meaning_en: 'menu',
@@ -131,6 +135,7 @@ export const lessons: IndonesianLesson[] = [
         example_vi: 'Thực đơn mới của chúng tôi tập trung vào món ăn gia đình.',
       },
       {
+        cell_id: "18d8314f-0812-4de0-91ce-683c0dc65854",
         word: 'koki',
         meaning_vi: 'đầu bếp',
         meaning_en: 'cook or chef',
@@ -138,6 +143,7 @@ export const lessons: IndonesianLesson[] = [
         example_vi: 'Đầu bếp chính đến lúc bảy giờ sáng.',
       },
       {
+        cell_id: "6784c149-df8d-457b-8bf2-9b55e45e56ae",
         word: 'izin usaha',
         meaning_vi: 'giấy phép kinh doanh',
         meaning_en: 'business permit',
@@ -145,6 +151,7 @@ export const lessons: IndonesianLesson[] = [
         example_vi: 'Chủ nhà hàng đang làm giấy phép kinh doanh.',
       },
       {
+        cell_id: "ee8cf778-deaf-43cd-a791-d7d67ead89b1",
         word: 'supplier bahan',
         meaning_vi: 'nhà cung cấp nguyên liệu',
         meaning_en: 'ingredient supplier',
@@ -152,6 +159,7 @@ export const lessons: IndonesianLesson[] = [
         example_vi: 'Nhà cung cấp nguyên liệu giao rau mỗi sáng.',
       },
       {
+        cell_id: "e33a3319-09c4-4ae4-92b4-ca2de8db4fae",
         word: 'promosi',
         meaning_vi: 'khuyến mãi, quảng bá',
         meaning_en: 'promotion',
@@ -159,6 +167,7 @@ export const lessons: IndonesianLesson[] = [
         example_vi: 'Khuyến mãi khai trương áp dụng trong ba ngày.',
       },
       {
+        cell_id: "471ce7fb-1c10-4a78-8355-b0c0230079ea",
         word: 'pelanggan',
         meaning_vi: 'khách hàng',
         meaning_en: 'customer',
@@ -166,6 +175,7 @@ export const lessons: IndonesianLesson[] = [
         example_vi: 'Khách quen thường gọi cùng một món.',
       },
       {
+        cell_id: "68f1c117-61f3-4e9f-b06c-99e5e56d1f64",
         word: 'ulasan online',
         meaning_vi: 'đánh giá online',
         meaning_en: 'online review',
@@ -175,36 +185,42 @@ export const lessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "8e84b108-a5e3-43da-b0c4-8ebc0818adcf",
         speaker: 'Pemilik',
         line: 'Saya mau buka restoran kecil bulan depan.',
         vi: 'Tôi muốn mở một nhà hàng nhỏ vào tháng tới.',
         en: 'I want to open a small restaurant next month.',
       },
       {
+        cell_id: "74730a56-327e-4fd6-b146-6bab9bb886f9",
         speaker: 'Konsultan',
         line: 'Menu sudah siap? Izin usaha juga perlu diurus.',
         vi: 'Thực đơn đã sẵn sàng chưa? Giấy phép kinh doanh cũng cần được làm.',
         en: 'Is the menu ready? The business permit also needs to be handled.',
       },
       {
+        cell_id: "1f7155d2-227d-4396-a862-1330fa5482f5",
         speaker: 'Pemilik',
         line: 'Menu hampir siap, tapi kami masih mencari koki utama.',
         vi: 'Thực đơn gần xong, nhưng chúng tôi vẫn đang tìm đầu bếp chính.',
         en: 'The menu is almost ready, but we are still looking for a head cook.',
       },
       {
+        cell_id: "958319f2-ef1c-4df4-8541-95675d93dd3c",
         speaker: 'Konsultan',
         line: 'Bagaimana dengan supplier bahan?',
         vi: 'Còn nhà cung cấp nguyên liệu thì sao?',
         en: 'How about the ingredient supplier?',
       },
       {
+        cell_id: "d4613b84-939e-4f60-84a7-285927783ee5",
         speaker: 'Pemilik',
         line: 'Kami sudah punya supplier sayur, daging, dan bumbu.',
         vi: 'Chúng tôi đã có nhà cung cấp rau, thịt và gia vị.',
         en: 'We already have suppliers for vegetables, meat, and spices.',
       },
       {
+        cell_id: "bd435b68-e373-42bb-b021-92ca860a64bf",
         speaker: 'Konsultan',
         line: 'Bagus. Jangan lupa promosi pembukaan dan pantau ulasan online.',
         vi: 'Tốt. Đừng quên khuyến mãi khai trương và theo dõi đánh giá online.',

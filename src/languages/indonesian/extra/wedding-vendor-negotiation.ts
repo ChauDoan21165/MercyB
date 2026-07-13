@@ -16,6 +16,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   /** Indonesian word/phrase. */
   word: string;
   /** English meaning. */
@@ -31,6 +32,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   /** Indonesian line. */
   text: string;
@@ -221,6 +223,7 @@ export const lessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: when asking about price, use `Apakah ada diskon?`, `Kami ingin paket lengkap`, `Berapa DP-nya?`, and `Kapan revisi pesanan terakhir?` `Bisa` asks about ability, while `boleh` asks permission, so `Boleh revisi pesanan?` sounds natural in negotiation.",
     vocabulary: [
       {
+        cell_id: "d864ca22-ee9b-4d08-b880-4ab8380454a9",
         word: "vendor",
         en: "vendor; service provider",
         vi: "nhà cung cấp dịch vụ",
@@ -229,6 +232,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "VEN-dor",
       },
       {
+        cell_id: "d1a2df04-b04d-41ea-8081-67ca3fdfe9f9",
         word: "katering",
         en: "catering",
         vi: "dịch vụ ăn uống",
@@ -237,6 +241,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "ka-TER-ing",
       },
       {
+        cell_id: "769b2a25-3558-4712-8d76-babed1597e89",
         word: "dekorasi",
         en: "decoration",
         vi: "trang trí",
@@ -245,6 +250,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "deh-ko-RA-see",
       },
       {
+        cell_id: "8a755dcb-aa06-4148-b9e3-19dfb580bf35",
         word: "fotografer",
         en: "photographer",
         vi: "nhiếp ảnh gia",
@@ -253,6 +259,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "fo-to-GRA-fer",
       },
       {
+        cell_id: "df17e8dc-dcdc-457e-9310-3684297f4ec2",
         word: "paket harga",
         en: "price package",
         vi: "gói giá",
@@ -261,6 +268,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "PA-ket HAR-ga",
       },
       {
+        cell_id: "b369cf72-9152-4ae1-a8fc-e119b28600a3",
         word: "DP",
         en: "down payment; deposit",
         vi: "khoản đặt cọc",
@@ -269,6 +277,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "dee-PEE",
       },
       {
+        cell_id: "4d733091-36f8-4a39-ab4d-d382e1a8d42c",
         word: "revisi pesanan",
         en: "order revision",
         vi: "sửa đơn hàng",
@@ -277,6 +286,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "reh-vee-SEE peh-SA-nan",
       },
       {
+        cell_id: "fb775a0a-e1f4-4c5f-9d90-e2a6b5f6d039",
         word: "jadwal acara",
         en: "event schedule",
         vi: "lịch trình sự kiện",
@@ -285,6 +295,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "JAD-wal A-cha-ra",
       },
       {
+        cell_id: "20863db4-09a8-4068-a740-bf2a57fed109",
         word: "diskon",
         en: "discount",
         vi: "giảm giá",
@@ -293,6 +304,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "DIS-kon",
       },
       {
+        cell_id: "d3b440c9-3d72-4a79-b349-014b73bfb3ae",
         word: "isi paket",
         en: "package contents",
         vi: "nội dung gói",
@@ -303,36 +315,42 @@ export const lessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "bf1ae62d-c79e-49be-a684-c94d291713b1",
         speaker: "Calon Pengantin",
         text: "Kami sedang membandingkan paket harga dari beberapa vendor.",
         vi: "Chúng tôi đang so sánh gói giá từ vài nhà cung cấp.",
         en: "We are comparing the price packages from several vendors.",
       },
       {
+        cell_id: "7135257d-cfe3-45ef-b55f-3f51ef786e30",
         speaker: "Vendor",
         text: "Baik. Paket ini sudah termasuk katering, dekorasi, dan fotografer.",
         vi: "Vâng. Gói này đã bao gồm catering, trang trí, và nhiếp ảnh gia.",
         en: "Sure. This package already includes catering, decoration, and a photographer.",
       },
       {
+        cell_id: "32b430b9-2f3a-4404-b216-70a70cd057a1",
         speaker: "Calon Pengantin",
         text: "Kalau kami ambil paket lengkap, apakah ada diskon?",
         vi: "Nếu chúng tôi lấy gói trọn bộ, có giảm giá không?",
         en: "If we take the full package, is there a discount?",
       },
       {
+        cell_id: "25a80797-294b-45c5-8032-d75af1cfb7fa",
         speaker: "Vendor",
         text: "Ada, dan DP-nya bisa dibayar dua tahap.",
         vi: "Có, và tiền đặt cọc có thể trả làm hai đợt.",
         en: "Yes, and the down payment can be paid in two stages.",
       },
       {
+        cell_id: "bc294f9e-e019-4239-9388-49e7c08dfd0f",
         speaker: "Calon Pengantin",
         text: "Kami ingin revisi pesanan warna bunga sebelum jadwal acara final.",
         vi: "Chúng tôi muốn sửa đơn về màu hoa trước lịch trình cuối cùng.",
         en: "We want to revise the flower color order before the final event schedule.",
       },
       {
+        cell_id: "d5f7cd91-cfce-4d5e-9f73-2cae28241a0e",
         speaker: "Vendor",
         text: "Tentu, silakan kirim revisinya secepatnya supaya kami bisa menyesuaikan.",
         vi: "Dĩ nhiên, vui lòng gửi bản sửa sớm để chúng tôi có thể điều chỉnh.",

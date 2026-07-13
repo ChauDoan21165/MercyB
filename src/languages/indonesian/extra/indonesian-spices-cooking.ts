@@ -17,6 +17,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   /** Indonesian word/phrase. */
   word: string;
   /** English meaning. */
@@ -32,6 +33,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   /** Indonesian line. */
   text: string;
@@ -210,6 +212,7 @@ export const indonesianSpicesCookingLessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: do not reduce `bumbu` to dry 'spices'. In Indonesian kitchens, `bumbu` is often a ground/chopped flavor base of shallot, garlic, chili, turmeric, ginger, and more. Keep `tumis` = saute/stir-fry in a little oil, while `goreng/menggoreng` = fry. `Santan` is rich coconut milk; `air kelapa` is drinkable coconut water.",
     vocabulary: [
       {
+        cell_id: "d9365f45-b3d6-4ba9-b526-5a1b149a5b06",
         word: "bumbu dapur",
         en: "kitchen spices / seasoning base",
         vi: "gia vị bếp / nền nêm",
@@ -218,6 +221,7 @@ export const indonesianSpicesCookingLessons: IndonesianLesson[] = [
         pronunciation_en: "BUM-boo DA-poor",
       },
       {
+        cell_id: "01ec85e9-a0cb-4d29-a4d9-05b66919ce1f",
         word: "bawang merah",
         en: "shallot",
         vi: "hành tím",
@@ -226,6 +230,7 @@ export const indonesianSpicesCookingLessons: IndonesianLesson[] = [
         pronunciation_en: "BA-wang ME-rah",
       },
       {
+        cell_id: "371d4dae-0725-46ea-9900-80bc91fbb1a0",
         word: "bawang putih",
         en: "garlic",
         vi: "tỏi",
@@ -234,6 +239,7 @@ export const indonesianSpicesCookingLessons: IndonesianLesson[] = [
         pronunciation_en: "BA-wang POO-tih",
       },
       {
+        cell_id: "0304d32d-8fb9-418c-863a-1a7c96d24494",
         word: "cabai",
         en: "chili",
         vi: "ớt",
@@ -242,6 +248,7 @@ export const indonesianSpicesCookingLessons: IndonesianLesson[] = [
         pronunciation_en: "cha-BAI",
       },
       {
+        cell_id: "7092de8a-2c45-41bb-97db-a3bede87de6d",
         word: "kunyit",
         en: "turmeric",
         vi: "nghệ",
@@ -250,6 +257,7 @@ export const indonesianSpicesCookingLessons: IndonesianLesson[] = [
         pronunciation_en: "KOO-nyit",
       },
       {
+        cell_id: "6db6e495-7b99-4b0c-b71c-369121a3f181",
         word: "jahe",
         en: "ginger",
         vi: "gừng",
@@ -258,6 +266,7 @@ export const indonesianSpicesCookingLessons: IndonesianLesson[] = [
         pronunciation_en: "JA-he",
       },
       {
+        cell_id: "aed0322b-2adc-4f64-af08-09ec387b5810",
         word: "santan",
         en: "coconut milk",
         vi: "nước cốt dừa",
@@ -266,6 +275,7 @@ export const indonesianSpicesCookingLessons: IndonesianLesson[] = [
         pronunciation_en: "SAN-tan",
       },
       {
+        cell_id: "3763b948-d290-4889-8996-01c9af88f9f5",
         word: "tumis",
         en: "to saute / stir-fry lightly",
         vi: "xào / phi ít dầu",
@@ -274,6 +284,7 @@ export const indonesianSpicesCookingLessons: IndonesianLesson[] = [
         pronunciation_en: "TOO-mis",
       },
       {
+        cell_id: "8aeb954e-fd9e-46d2-897c-cb0097073efb",
         word: "goreng",
         en: "fried / fry",
         vi: "chiên / rán",
@@ -282,6 +293,7 @@ export const indonesianSpicesCookingLessons: IndonesianLesson[] = [
         pronunciation_en: "GO-reng",
       },
       {
+        cell_id: "072606bc-a1fa-4b8a-b3c4-26ef3338bcb3",
         word: "resep rumahan",
         en: "home-style recipe",
         vi: "công thức/món nhà nấu",
@@ -292,24 +304,28 @@ export const indonesianSpicesCookingLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "1b94c5f7-51e6-4996-8ae0-e2cb15af7b8b",
         speaker: "Mai",
         text: "Bu, bumbu untuk ayam goreng ini apa saja?",
         vi: "Cô ơi, gia vị cho món gà chiên này gồm những gì?",
         en: "Ma'am, what spices are used for this fried chicken?",
       },
       {
+        cell_id: "b88f6c1a-d8a4-4c8b-a10e-c3c0395e2d08",
         speaker: "Ibu Sari",
         text: "Pakai bawang putih, kunyit, jahe, garam, dan sedikit cabai.",
         vi: "Dùng tỏi, nghệ, gừng, muối và một ít ớt.",
         en: "Use garlic, turmeric, ginger, salt, and a little chili.",
       },
       {
+        cell_id: "d6b5342b-1a90-455f-ab50-664b03ad0eaa",
         speaker: "Mai",
         text: "Bumbunya ditumis dulu atau langsung digoreng?",
         vi: "Gia vị được xào trước hay chiên luôn?",
         en: "Should the spice base be sauteed first or fried directly?",
       },
       {
+        cell_id: "0d09c2dc-e16b-485e-a17a-77f968dd4bbb",
         speaker: "Ibu Sari",
         text: "Tumis dulu sampai harum, baru masukkan ayam.",
         vi: "Xào trước cho thơm, rồi mới cho gà vào.",

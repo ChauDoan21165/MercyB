@@ -21,6 +21,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   /** Indonesian word/phrase. */
   word: string;
   /** English meaning. */
@@ -36,6 +37,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   /** Indonesian line. */
   text: string;
@@ -225,43 +227,48 @@ export const lessons: IndonesianLesson[] = [
     tip_advice_en:
       "Tip for Vietnamese speakers: separate `bidan` = midwife, `perawat` = nurse, and `dokter` = doctor. `Berobat` means seek treatment generally; `periksa` means examine/check. Survival lines at a Puskesmas: `Saya ambil nomor antrean dulu`, `Jam pelayanan sampai jam berapa?`, `Apakah perlu rujukan?`",
     vocabulary: [
-      { word: "puskesmas desa", en: "rural community health center", vi: "trạm/trung tâm y tế xã/làng", pos: "noun phrase", pronunciation_vi: "PUS-kes-mas DE-sa", pronunciation_en: "POOS-kes-mas DE-sa" },
-      { word: "bidan", en: "midwife", vi: "nữ hộ sinh", pos: "noun", pronunciation_vi: "BI-dan", pronunciation_en: "BEE-dan" },
-      { word: "perawat", en: "nurse", vi: "y tá/điều dưỡng", pos: "noun", pronunciation_vi: "pe-RA-wat", pronunciation_en: "pe-RA-wat" },
-      { word: "antrean", en: "queue", vi: "hàng chờ/số thứ tự", pos: "noun", pronunciation_vi: "AN-tre-an", pronunciation_en: "AN-tre-an" },
-      { word: "kartu berobat", en: "patient card", vi: "thẻ khám/chữa bệnh", pos: "noun phrase", pronunciation_vi: "KAR-tu ber-O-bat", pronunciation_en: "KAR-too ber-O-bat" },
-      { word: "obat generik", en: "generic medicine", vi: "thuốc generic", pos: "noun phrase", pronunciation_vi: "O-bat ge-NE-rik", pronunciation_en: "O-bat ge-NE-rik" },
-      { word: "rujukan", en: "referral", vi: "giấy chuyển tuyến/giới thiệu", pos: "noun", pronunciation_vi: "ru-JU-kan", pronunciation_en: "roo-JOO-kan" },
-      { word: "jam pelayanan", en: "service hours", vi: "giờ phục vụ/làm việc", pos: "noun phrase", pronunciation_vi: "jam pe-la-YA-nan", pronunciation_en: "jam pe-la-YA-nan" },
-      { word: "loket pendaftaran", en: "registration counter", vi: "quầy đăng ký", pos: "noun phrase", pronunciation_vi: "LO-ket pen-DAF-tar-an", pronunciation_en: "LO-ket pen-DAF-tar-an" },
-      { word: "aturan minum obat", en: "medicine-taking instructions", vi: "hướng dẫn uống thuốc", pos: "noun phrase", pronunciation_vi: "a-TU-ran MI-num O-bat", pronunciation_en: "a-TOO-ran MEE-noom O-bat" },
+      { cell_id: "da1414ef-1cf5-4297-bc19-5eac4702510a", word: "puskesmas desa", en: "rural community health center", vi: "trạm/trung tâm y tế xã/làng", pos: "noun phrase", pronunciation_vi: "PUS-kes-mas DE-sa", pronunciation_en: "POOS-kes-mas DE-sa" },
+      { cell_id: "3b122fb1-e7fc-4fef-baa7-f49eafd76524", word: "bidan", en: "midwife", vi: "nữ hộ sinh", pos: "noun", pronunciation_vi: "BI-dan", pronunciation_en: "BEE-dan" },
+      { cell_id: "9bd9cd59-54d1-4aed-b648-ee597602a35f", word: "perawat", en: "nurse", vi: "y tá/điều dưỡng", pos: "noun", pronunciation_vi: "pe-RA-wat", pronunciation_en: "pe-RA-wat" },
+      { cell_id: "1f52d357-2e0b-4db4-9013-2ca5e4e71388", word: "antrean", en: "queue", vi: "hàng chờ/số thứ tự", pos: "noun", pronunciation_vi: "AN-tre-an", pronunciation_en: "AN-tre-an" },
+      { cell_id: "6c1bfd16-3002-4dc2-9752-5cb66114f63d", word: "kartu berobat", en: "patient card", vi: "thẻ khám/chữa bệnh", pos: "noun phrase", pronunciation_vi: "KAR-tu ber-O-bat", pronunciation_en: "KAR-too ber-O-bat" },
+      { cell_id: "dbeaacbf-d7ea-4525-9808-469f8ae21304", word: "obat generik", en: "generic medicine", vi: "thuốc generic", pos: "noun phrase", pronunciation_vi: "O-bat ge-NE-rik", pronunciation_en: "O-bat ge-NE-rik" },
+      { cell_id: "ea1dabb7-08ce-45cc-b9e5-f204dd15b0f4", word: "rujukan", en: "referral", vi: "giấy chuyển tuyến/giới thiệu", pos: "noun", pronunciation_vi: "ru-JU-kan", pronunciation_en: "roo-JOO-kan" },
+      { cell_id: "b4a66cae-2e17-497e-8667-3ec975c0a8bf", word: "jam pelayanan", en: "service hours", vi: "giờ phục vụ/làm việc", pos: "noun phrase", pronunciation_vi: "jam pe-la-YA-nan", pronunciation_en: "jam pe-la-YA-nan" },
+      { cell_id: "c2ccc196-87f9-401d-b204-6600b69a4248", word: "loket pendaftaran", en: "registration counter", vi: "quầy đăng ký", pos: "noun phrase", pronunciation_vi: "LO-ket pen-DAF-tar-an", pronunciation_en: "LO-ket pen-DAF-tar-an" },
+      { cell_id: "f49ae457-3827-4fb5-8e7e-9be3edbb52cb", word: "aturan minum obat", en: "medicine-taking instructions", vi: "hướng dẫn uống thuốc", pos: "noun phrase", pronunciation_vi: "a-TU-ran MI-num O-bat", pronunciation_en: "a-TOO-ran MEE-noom O-bat" },
     ],
     dialogue: [
       {
+        cell_id: "f53e1658-046a-4b8a-a71b-5924d6042c44",
         speaker: "Pasien",
         text: "Selamat pagi, saya mau berobat di puskesmas desa ini.",
         vi: "Chào buổi sáng, tôi muốn đi khám ở Puskesmas làng này.",
         en: "Good morning, I want to seek treatment at this rural Puskesmas.",
       },
       {
+        cell_id: "7c9f7cf5-f6d4-4c39-976c-4960ebf705bc",
         speaker: "Petugas",
         text: "Silakan ambil nomor antrean dulu di loket pendaftaran.",
         vi: "Vui lòng lấy số thứ tự trước ở quầy đăng ký.",
         en: "Please take a queue number first at the registration counter.",
       },
       {
+        cell_id: "eaf62c7f-99ff-4c65-be5f-cfecafc39865",
         speaker: "Pasien",
         text: "Apakah saya perlu membawa kartu berobat dan BPJS?",
         vi: "Tôi có cần mang thẻ khám bệnh và BPJS không?",
         en: "Do I need to bring my patient card and BPJS?",
       },
       {
+        cell_id: "796ab993-4b2a-4bbf-8b8c-be883b0aa57b",
         speaker: "Petugas",
         text: "Iya. Nanti perawat akan mengecek tekanan darah dulu.",
         vi: "Có. Lát nữa y tá sẽ kiểm tra huyết áp trước.",
         en: "Yes. Later the nurse will check your blood pressure first.",
       },
       {
+        cell_id: "bea182ec-6560-4f77-a59b-4d680c0257ac",
         speaker: "Pasien",
         text: "Kalau keluhan belum membaik, apakah saya perlu rujukan?",
         vi: "Nếu triệu chứng chưa đỡ, tôi có cần giấy chuyển tuyến không?",

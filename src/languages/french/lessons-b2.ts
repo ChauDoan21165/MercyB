@@ -57,6 +57,7 @@ export const lessons: FrenchLesson[] =           [
       "tip_advice_vi": "Subjonctif: 'pour que', 'avant que', 'bien que', 'à condition que'. 'Pourvu que' = miễn là.",
       "vocabulary": [
         {
+          cell_id: "e25892f7-4f96-4bdb-a89a-bfa0c60c3818",
           "word": "au cas où",
           "en": "in case",
           "vi": "phòng khi",
@@ -64,6 +65,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_vi": "ô ca u"
         },
         {
+          cell_id: "f62b96a6-8959-4d3c-9514-521da2d860bc",
           "word": "même si",
           "en": "even if",
           "vi": "ngay cả khi",
@@ -71,6 +73,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_vi": "mê-mơ xi"
         },
         {
+          cell_id: "bca355aa-ad0c-4827-aa83-b647ceb1d2ff",
           "word": "pourvu que",
           "en": "provided that",
           "vi": "miễn là",
@@ -78,6 +81,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_vi": "pua-vu cơ"
         },
         {
+          cell_id: "1a0a747e-f34c-4322-af11-fa72d84105c5",
           "word": "à condition que",
           "en": "on condition that",
           "vi": "với điều kiện",
@@ -85,6 +89,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_vi": "a côn-đi-xi-on cơ"
         },
         {
+          cell_id: "93f65547-80aa-439a-a3ea-9ada268f92de",
           "word": "le subjonctif",
           "en": "subjunctive",
           "vi": "thể giả định",
@@ -92,6 +97,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_vi": "xup-giônc-tif"
         },
         {
+          cell_id: "6cf639ce-2638-4a7c-92ad-02393422dc3e",
           "word": "l'irréel",
           "en": "unreal",
           "vi": "phi thực",
@@ -99,6 +105,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_vi": "li-rê-en"
         },
         {
+          cell_id: "104add53-d8f4-4dba-8e83-1157c206559f",
           "word": "la conséquence",
           "en": "consequence",
           "vi": "hậu quả",
@@ -106,6 +113,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_vi": "côn-xê-căng"
         },
         {
+          cell_id: "d8bd8f5b-fdbf-44bb-9214-f4ae2b574bde",
           "word": "entraîner",
           "en": "to entail",
           "vi": "dẫn đến",
@@ -113,6 +121,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_vi": "ăng-tre-nê"
         },
         {
+          cell_id: "9e8c4a69-d0b4-4c6e-836a-5c5424964f41",
           "word": "supposer",
           "en": "to suppose",
           "vi": "giả sử",
@@ -120,6 +129,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_vi": "xu-pô-dê"
         },
         {
+          cell_id: "b25dbcaa-bf57-4307-936d-e55ce600100d",
           "word": "à moins que",
           "en": "unless",
           "vi": "trừ khi",
@@ -129,21 +139,25 @@ export const lessons: FrenchLesson[] =           [
       ],
       "dialogue": [
         {
+          cell_id: "e168099d-3bd9-42f4-b91d-a905d4922aff",
           "speaker": "A",
           "text": "Si tu avais su pour la grève, tu aurais fait quoi ?",
           "en": "If you'd known about the strike, what would you have done?"
         },
         {
+          cell_id: "6199969a-e30e-4ec3-ad08-03f18b86daf2",
           "speaker": "B",
           "text": "J'aurais pris la voiture ou reporté le voyage.",
           "en": "I'd have taken the car or postponed."
         },
         {
+          cell_id: "7a95d4fc-cf80-46fb-b44a-03f0ca4021a4",
           "speaker": "A",
           "text": "C'est dur de changer ses plans à la dernière minute.",
           "en": "It's hard to change plans last minute."
         },
         {
+          cell_id: "9a138d41-33ef-4942-9660-146017f4d1c0",
           "speaker": "B",
           "text": "Oui. Au cas où, préviens-moi et je t'aiderai.",
           "en": "Yes. In case, let me know and I'll help."
@@ -232,6 +246,7 @@ export const lessons: FrenchLesson[] =           [
       "tip_advice_vi": "Học 2-3 thành ngữ mỗi tuần. Đừng dịch từng từ. 'Appeler un chat un chat' = nói thẳng.",
       "vocabulary": [
         {
+          cell_id: "876c083f-fdfb-484b-bbf2-b28ffd5dbf70",
           "word": "l'expression",
           "en": "expression",
           "vi": "thành ngữ",
@@ -239,6 +254,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_vi": "léc-xpre-xi-on"
         },
         {
+          cell_id: "c0f78303-e75d-4904-81cc-58c29f5661bb",
           "word": "le proverbe",
           "en": "proverb",
           "vi": "tục ngữ",
@@ -246,6 +262,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_vi": "prô-ve-bơ"
         },
         {
+          cell_id: "4bc11236-37f5-452a-9764-6448facbfc06",
           "word": "coûter les yeux de la tête",
           "en": "cost a fortune",
           "vi": "đắt cắt cổ",
@@ -253,6 +270,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_vi": "cu-tê lê-di-ơ đơ la tét"
         },
         {
+          cell_id: "e30af770-b5ac-4177-90e9-a22ed9f3006e",
           "word": "avoir le cafard",
           "en": "feel down",
           "vi": "buồn chán",
@@ -260,6 +278,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_vi": "a-voa lơ ca-pha"
         },
         {
+          cell_id: "2c9ce2b8-6fbe-45ff-8d3e-4ba00650ad86",
           "word": "poser un lapin",
           "en": "stand up",
           "vi": "cho leo cây",
@@ -267,6 +286,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_vi": "pô-dê ưnh la-panh"
         },
         {
+          cell_id: "15d24911-68ad-4859-a179-ef90295d57ce",
           "word": "donner sa langue au chat",
           "en": "give up guessing",
           "vi": "chịu thua",
@@ -274,6 +294,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_vi": "đô-nê xa lăng-gơ ô sa"
         },
         {
+          cell_id: "b4c6cc08-5a98-4db2-8aff-5bb985dd47c2",
           "word": "appeler un chat un chat",
           "en": "call a spade a spade",
           "vi": "nói thẳng",
@@ -281,6 +302,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_vi": "a-pơ-lê ưnh sa"
         },
         {
+          cell_id: "29457cd6-b1fd-40a4-8884-e05836c38122",
           "word": "métaphorique",
           "en": "metaphorical",
           "vi": "nghĩa bóng",
@@ -288,6 +310,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_vi": "mê-ta-phô-ríc"
         },
         {
+          cell_id: "7fd61cdc-dd35-4dff-a983-96e4e0f9d87b",
           "word": "le sens figuré",
           "en": "figurative meaning",
           "vi": "nghĩa bóng",
@@ -295,6 +318,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_vi": "săng fi-gu-rê"
         },
         {
+          cell_id: "33d44290-fd84-4538-87b0-9699b4076393",
           "word": "courant",
           "en": "common",
           "vi": "thông dụng",
@@ -304,21 +328,25 @@ export const lessons: FrenchLesson[] =           [
       ],
       "dialogue": [
         {
+          cell_id: "83481cee-c702-43fd-8ba8-e3854f06e9b8",
           "speaker": "A",
           "text": "Alors, ton rendez-vous hier soir ?",
           "en": "So, your date last night?"
         },
         {
+          cell_id: "10055087-6a4c-4718-9354-5096c52b53cf",
           "speaker": "B",
           "text": "Elle m'a posé un lapin ! J'ai attendu une heure.",
           "en": "She stood me up! I waited an hour."
         },
         {
+          cell_id: "ec787e29-b3ba-45f1-8a4a-ba5a30866574",
           "speaker": "A",
           "text": "Oh non. Tu as le cafard ?",
           "en": "Oh no. Are you feeling down?"
         },
         {
+          cell_id: "9a3da1e1-081b-4bd9-ba42-a179274424ea",
           "speaker": "B",
           "text": "Un peu, mais ce n'est pas la mer à boire !",
           "en": "A bit, but it's not the end of the world!"
@@ -407,6 +435,7 @@ export const lessons: FrenchLesson[] =           [
       "tip_advice_vi": "Học để hiểu nhưng cẩn thận khi dùng. Với sếp dùng tiếng chuẩn. 'Mec' vs 'homme', 'bouquin' vs 'livre'.",
       "vocabulary": [
         {
+          cell_id: "dee365ef-702f-4353-bb78-ac2777bf88bd",
           "word": "le verlan",
           "en": "backward slang",
           "vi": "tiếng lóng ngược",
@@ -414,6 +443,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_vi": "ve-lăng"
         },
         {
+          cell_id: "b462f003-d088-4e31-b438-d6ee8ba45691",
           "word": "ouf",
           "en": "crazy",
           "vi": "điên",
@@ -421,6 +451,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_vi": "úf"
         },
         {
+          cell_id: "8113fdca-932d-4f4e-8799-222a842c6969",
           "word": "meuf",
           "en": "woman (verlan)",
           "vi": "phụ nữ",
@@ -428,6 +459,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_vi": "mơf"
         },
         {
+          cell_id: "f88f4e3e-57f8-470e-8cc3-baacecc48b64",
           "word": "crevé",
           "en": "exhausted",
           "vi": "kiệt sức",
@@ -435,6 +467,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_vi": "crơ-vê"
         },
         {
+          cell_id: "fe4df077-3aff-41a3-82cb-d6fae261a9ff",
           "word": "le boulot",
           "en": "job",
           "vi": "công việc",
@@ -442,6 +475,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_vi": "bu-lô"
         },
         {
+          cell_id: "02478ecf-db46-4661-b7e5-2a366a949732",
           "word": "le fric",
           "en": "cash",
           "vi": "tiền",
@@ -449,6 +483,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_vi": "fríc"
         },
         {
+          cell_id: "08c4c726-e113-47a6-b9bc-f8238929e80b",
           "word": "la bouffe",
           "en": "food",
           "vi": "đồ ăn",
@@ -456,6 +491,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_vi": "buf"
         },
         {
+          cell_id: "7e214e7e-1865-44fd-b049-842adeea7d3a",
           "word": "sympa",
           "en": "nice",
           "vi": "dễ thương",
@@ -463,6 +499,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_vi": "xanh-pa"
         },
         {
+          cell_id: "769d0449-557b-4539-bde2-61b5aef34a8d",
           "word": "laisse tomber",
           "en": "forget it",
           "vi": "bỏ đi",
@@ -470,6 +507,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_vi": "lét tôn-bê"
         },
         {
+          cell_id: "af880db4-8738-4d1a-9b9b-de86155ea18d",
           "word": "le truc",
           "en": "thing",
           "vi": "cái/thứ",
@@ -479,21 +517,25 @@ export const lessons: FrenchLesson[] =           [
       ],
       "dialogue": [
         {
+          cell_id: "7f8ce629-7869-468f-8f76-4236a48abc0c",
           "speaker": "A",
           "text": "T'as vu ce film ? Il est ouf !",
           "en": "Did you see that movie? It's crazy!"
         },
         {
+          cell_id: "891396a0-8de9-4497-bab6-5f0490ae1931",
           "speaker": "B",
           "text": "Non, j'ai trop de boulot. Je suis crevé.",
           "en": "No, too much work. I'm exhausted."
         },
         {
+          cell_id: "2f09ed2a-bf9a-477b-a8aa-b8c75f126d16",
           "speaker": "A",
           "text": "Laisse tomber le boulot, on va au ciné !",
           "en": "Forget work, let's go to the movies!"
         },
         {
+          cell_id: "f7f5126e-ab8b-4b6b-bfab-0539f4b166b5",
           "speaker": "B",
           "text": "OK, t'as raison. Rendez-vous à 20h.",
           "en": "OK, you're right. Meet at 8pm."
@@ -582,6 +624,7 @@ export const lessons: FrenchLesson[] =           [
       "tip_advice_vi": "Cụm hữu ích: 'Je vois ce que vous voulez dire, mais…', 'Permettez-moi de nuancer', 'Pour résumer', 'En conclusion'.",
       "vocabulary": [
         {
+          cell_id: "18a4af8c-d5a9-4f5e-8010-28c7be033763",
           "word": "débattre",
           "en": "to debate",
           "vi": "tranh luận",
@@ -589,6 +632,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_vi": "đê-bát-trơ"
         },
         {
+          cell_id: "ff0f0334-7e47-44fb-89e0-90ad31f60a62",
           "word": "l'argument",
           "en": "argument",
           "vi": "lập luận",
@@ -596,6 +640,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_vi": "la-ghu-măng"
         },
         {
+          cell_id: "f47c06fe-90ed-4e51-a4ad-ad4fae029b44",
           "word": "le contre-argument",
           "en": "counter-argument",
           "vi": "phản luận",
@@ -603,6 +648,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_vi": "côn-trơ-a-ghu-măng"
         },
         {
+          cell_id: "f3f403d6-7c35-45df-b841-c7cc3e4b942d",
           "word": "cependant",
           "en": "however",
           "vi": "tuy nhiên",
@@ -610,6 +656,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_vi": "xơ-păng-đăng"
         },
         {
+          cell_id: "b54f0107-4a70-4355-b06a-339635db5ee7",
           "word": "néanmoins",
           "en": "nevertheless",
           "vi": "dù sao",
@@ -617,6 +664,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_vi": "nê-anh-moanh"
         },
         {
+          cell_id: "5b2c9613-d2c4-40b4-99c8-1ca4960c69b9",
           "word": "certes…mais",
           "en": "admittedly…but",
           "vi": "đúng là…nhưng",
@@ -624,6 +672,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_vi": "xéc-tơ…me"
         },
         {
+          cell_id: "3a86bcfd-7edd-4c98-bb2f-8154d1bbb31f",
           "word": "la thèse",
           "en": "thesis",
           "vi": "luận điểm",
@@ -631,6 +680,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_vi": "té-dơ"
         },
         {
+          cell_id: "e5fd2259-2743-41d2-9ae2-dc53c883fd20",
           "word": "l'antithèse",
           "en": "counter-thesis",
           "vi": "phản đề",
@@ -638,6 +688,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_vi": "lăng-ti-té-dơ"
         },
         {
+          cell_id: "d8e9dcb3-1bb8-4180-9743-fa3f947936cb",
           "word": "la synthèse",
           "en": "synthesis",
           "vi": "tổng hợp",
@@ -645,6 +696,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_vi": "xanh-té-dơ"
         },
         {
+          cell_id: "dcd63471-fb7d-49cc-914d-10308bebfa0d",
           "word": "nuancer",
           "en": "to qualify",
           "vi": "nói giảm nhẹ",
@@ -654,21 +706,25 @@ export const lessons: FrenchLesson[] =           [
       ],
       "dialogue": [
         {
+          cell_id: "be646a3a-bc68-4adf-b61d-6aecefd24961",
           "speaker": "A",
           "text": "Les réseaux sociaux sont mauvais pour la société.",
           "en": "Social media is bad for society."
         },
         {
+          cell_id: "2b827205-02d4-4c4b-bae0-dcea6d6570fe",
           "speaker": "B",
           "text": "Certes, mais ils permettent aussi de connecter les gens.",
           "en": "Admittedly, but they also connect people."
         },
         {
+          cell_id: "d2af2912-31b8-4b7b-8c3c-c6a28cee63f9",
           "speaker": "A",
           "text": "Je vois, cependant la désinformation est un problème.",
           "en": "I see, however misinformation is a problem."
         },
         {
+          cell_id: "e5ab6112-7f54-40b2-840e-dbb34df8ef1f",
           "speaker": "B",
           "text": "La solution serait de mieux éduquer les utilisateurs.",
           "en": "The solution would be to better educate users."
@@ -757,6 +813,7 @@ export const lessons: FrenchLesson[] =           [
       "tip_advice_vi": "(1) 30 phút mỗi ngày. (2) Đừng sợ sai. (3) Tìm 'correspondant' để thực hành. Bon courage !",
       "vocabulary": [
         {
+          cell_id: "e6e44e23-12c5-44da-bbbd-ede2bf999627",
           "word": "la confiance",
           "en": "confidence",
           "vi": "tự tin",
@@ -764,6 +821,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_vi": "côn-fi-ăng"
         },
         {
+          cell_id: "d5b81fa7-aeea-4f62-828f-fb2ed607eddd",
           "word": "progresser",
           "en": "to progress",
           "vi": "tiến bộ",
@@ -771,6 +829,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_vi": "prô-gre-xê"
         },
         {
+          cell_id: "167d5cb7-1823-472a-8e3a-6774d6eaab88",
           "word": "la nuance",
           "en": "nuance",
           "vi": "sắc thái",
@@ -778,6 +837,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_vi": "nu-ăng"
         },
         {
+          cell_id: "2a9c149d-2d80-4f3c-a43d-e9ffb14f7d5d",
           "word": "l'erreur",
           "en": "mistake",
           "vi": "lỗi",
@@ -785,6 +845,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_vi": "lê-rơ"
         },
         {
+          cell_id: "6cbfeb49-c113-436b-879a-1b952c5aade5",
           "word": "s'améliorer",
           "en": "to improve",
           "vi": "cải thiện",
@@ -792,6 +853,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_vi": "xa-mê-li-ô-rê"
         },
         {
+          cell_id: "e084eb35-4607-486d-a2ec-4ef9513c5322",
           "word": "la pratique",
           "en": "practice",
           "vi": "luyện tập",
@@ -799,6 +861,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_vi": "pra-tíc"
         },
         {
+          cell_id: "defafb28-fbbe-40ef-a700-1deac80a4689",
           "word": "le parcours",
           "en": "journey",
           "vi": "hành trình",
@@ -806,6 +869,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_vi": "pa-cua"
         },
         {
+          cell_id: "80a03c9d-54d6-4e7d-9486-8cb7ffdcc0d4",
           "word": "l'immersion",
           "en": "immersion",
           "vi": "đắm mình",
@@ -813,6 +877,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_vi": "li-me-xi-on"
         },
         {
+          cell_id: "adac74b9-18de-487a-86e5-9cd4788fa2a2",
           "word": "le correspondant",
           "en": "language partner",
           "vi": "bạn trao đổi",
@@ -820,6 +885,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_vi": "cô-rét-pon-đăng"
         },
         {
+          cell_id: "6a850525-85e1-4409-ba9c-63710084a5b9",
           "word": "la réussite",
           "en": "success",
           "vi": "thành công",
@@ -829,21 +895,25 @@ export const lessons: FrenchLesson[] =           [
       ],
       "dialogue": [
         {
+          cell_id: "03d92114-2bce-4e56-bc48-97610b9fbf46",
           "speaker": "A",
           "text": "Après toutes ces leçons, comment tu te sens en français ?",
           "en": "After all these lessons, how do you feel in French?"
         },
         {
+          cell_id: "d6a8e6ed-de69-4d25-9bcc-54cd0043d5ae",
           "speaker": "B",
           "text": "Beaucoup plus à l'aise ! Je peux tenir une conversation.",
           "en": "Much more comfortable! I can hold a conversation."
         },
         {
+          cell_id: "aeae97ab-3d72-4c33-8ff4-faa59fbfca32",
           "speaker": "A",
           "text": "Quel conseil aux débutants ?",
           "en": "What advice for beginners?"
         },
         {
+          cell_id: "ba99377d-2a7f-4606-9c78-bdb1df3c367d",
           "speaker": "B",
           "text": "N'ayez pas peur des erreurs. Pratiquez chaque jour.",
           "en": "Don't fear mistakes. Practice every day."
@@ -942,6 +1012,7 @@ export const lessons: FrenchLesson[] =           [
       "tip_advice_vi": "Trước buổi họp: viết ra ba con số (mức lương hiện tại, mức bạn muốn, mức tối thiểu bạn chấp nhận) và ba bằng chứng cụ thể (dự án, kết quả đo được, trách nhiệm mới). Trong buổi họp: nói số tiền cụ thể bằng tiếng Pháp, đừng dùng « around » hay « plus or less » — sự mơ hồ bị đọc là thiếu chuẩn bị. Khi gặp pushback, đừng phản pháo ngay; dùng cụm « j'entends cette contrainte, mais… » để công nhận hạn chế của sếp rồi đưa ra hướng đi khác (lộ trình, đào tạo, thưởng). Sau buổi họp: luôn xin xác nhận bằng văn bản — không phải vì không tin sếp, mà vì phòng Nhân sự cần giấy tờ để xử lý.",
       "vocabulary": [
         {
+          cell_id: "2c2806f8-ef05-45f5-a506-9eba0cf2d108",
           "word": "une augmentation",
           "en": "a (pay) raise",
           "vi": "sự tăng lương",
@@ -949,6 +1020,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_vi": "ô-găn-tă-sion (nasal)"
         },
         {
+          cell_id: "b372a532-14c8-4ade-98b6-85eef5821767",
           "word": "l'entretien annuel",
           "en": "annual review",
           "vi": "buổi đánh giá hàng năm",
@@ -956,6 +1028,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_vi": "ăn-trơ-tiang a-nu-el"
         },
         {
+          cell_id: "fccfc790-8e25-474e-965e-6b8a8acebbeb",
           "word": "la rémunération",
           "en": "compensation, pay package",
           "vi": "thu nhập, lương thưởng",
@@ -963,6 +1036,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_vi": "ré-mu-né-ra-sion"
         },
         {
+          cell_id: "c2393ba7-a897-421e-8fd5-49b8b67061af",
           "word": "les contraintes budgétaires",
           "en": "budget constraints",
           "vi": "hạn chế ngân sách",
@@ -970,6 +1044,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_vi": "kon-trant bu-jé-ter"
         },
         {
+          cell_id: "c7fc8fe2-794e-4691-997b-72e72a46ec7b",
           "word": "une contre-proposition",
           "en": "counter-offer",
           "vi": "đề nghị ngược lại",
@@ -977,6 +1052,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_vi": "kontr-pro-po-zi-sion"
         },
         {
+          cell_id: "1539b54e-4153-4991-92a0-f32b3dd9b9eb",
           "word": "valoriser",
           "en": "to recognize the value of",
           "vi": "ghi nhận, đánh giá cao",
@@ -984,6 +1060,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_vi": "va-lo-ri-zê"
         },
         {
+          cell_id: "0f03e19b-c45e-4d89-b363-a09e39be4a8d",
           "word": "envisager",
           "en": "to consider, contemplate",
           "vi": "cân nhắc, tính đến",
@@ -991,6 +1068,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_vi": "ăn-vi-za-jê"
         },
         {
+          cell_id: "0a07060d-7f77-40e6-acbc-5fc9abbee2e7",
           "word": "la marge de manœuvre",
           "en": "room to maneuver",
           "vi": "khoảng linh hoạt, dư địa",
@@ -998,6 +1076,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_vi": "marj-dơ-ma-nơ-vrơ"
         },
         {
+          cell_id: "18706bbc-7c70-4a3c-a8af-9d896377c833",
           "word": "revaloriser",
           "en": "to raise (a salary), revalue",
           "vi": "nâng (lương), điều chỉnh tăng",
@@ -1005,6 +1084,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_vi": "rơ-va-lo-ri-zê"
         },
         {
+          cell_id: "1104031e-2c6f-4fa1-804a-f79fe04e1d20",
           "word": "un engagement (formel)",
           "en": "a (formal) commitment",
           "vi": "cam kết (chính thức)",
@@ -1014,21 +1094,25 @@ export const lessons: FrenchLesson[] =           [
       ],
       "dialogue": [
         {
+          cell_id: "46424935-128d-4e75-9a1e-18a97d0e4fc6",
           "speaker": "Linh",
           "text": "Madame Laurent, pourrions-nous parler de mon évolution salariale ?",
           "vi": "Bà Laurent ơi, mình có thể nói về lộ trình lương của em được không?"
         },
         {
+          cell_id: "49f0be05-e0f0-471f-a445-4e75fe37a239",
           "speaker": "Mme Laurent",
           "text": "Bien sûr, Linh. Qu'est-ce qui vous amène à le demander maintenant ?",
           "vi": "Tất nhiên rồi, Linh. Điều gì khiến em đặt vấn đề lúc này?"
         },
         {
+          cell_id: "b72e2e77-c209-466d-88b0-6fba9f24c33d",
           "speaker": "Linh",
           "text": "Mes responsabilités ont sensiblement évolué cette année.",
           "vi": "Trách nhiệm của em đã thay đổi đáng kể trong năm nay."
         },
         {
+          cell_id: "ad790f5e-63e9-4ce3-b67d-a7a104a81575",
           "speaker": "Mme Laurent",
           "text": "C'est un point juste. Posons les chiffres ensemble.",
           "vi": "Đó là một điểm hợp lý. Mình cùng đưa ra các con số nhé."
@@ -1294,6 +1378,7 @@ export const lessons: FrenchLesson[] =           [
       "tip_advice_vi": "Chuẩn bị 3 câu chuyện ngắn (mỗi câu 90 giây) theo cấu trúc STAR — Situation, Tâche, Action, Résultat — minh họa các kỹ năng cốt lõi. Tập kể tự nhiên, không đọc thuộc lòng. Khi được hỏi điểm yếu, trả lời thật kèm hành động khắc phục cụ thể. Nói số tiền lương rõ ràng — không « around 40k » mà « 42 000 euros bruts annuels ». Cuối phỏng vấn, hỏi 2-3 câu thực sự về vai trò và đội nhóm; tránh câu mà website đã trả lời.",
       "vocabulary": [
         {
+          cell_id: "93bb5d1e-299a-4681-9220-ea531b590299",
           "word": "un entretien d'embauche",
           "en": "a job interview",
           "vi": "buổi phỏng vấn việc làm",
@@ -1301,6 +1386,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_vi": "ăn-trơ-tiang dăm-bôsh"
         },
         {
+          cell_id: "e0306efd-0c92-4bd5-9104-df688c5c297f",
           "word": "le parcours",
           "en": "career path",
           "vi": "hành trình nghề nghiệp",
@@ -1308,6 +1394,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_vi": "par-kur"
         },
         {
+          cell_id: "ed6f0daa-a4b3-4653-9fbd-2e6f2ac19664",
           "word": "mes attentes",
           "en": "my expectations",
           "vi": "kỳ vọng của tôi",
@@ -1315,6 +1402,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_vi": "mê-z-a-tăn-tơ"
         },
         {
+          cell_id: "d393491a-193d-4fb5-be9d-6807a5c6d6ab",
           "word": "la fourchette salariale",
           "en": "salary range",
           "vi": "khoảng lương",
@@ -1322,6 +1410,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_vi": "fur-shét sa-la-ri-al"
         },
         {
+          cell_id: "912c110b-daa8-4519-9a3b-02a8ba9c6909",
           "word": "se situer dans",
           "en": "to fall within",
           "vi": "nằm trong",
@@ -1329,6 +1418,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_vi": "sơ si-tu-ê dăn"
         },
         {
+          cell_id: "68de71fa-cf31-4d7d-b646-64b366a92f22",
           "word": "la responsabilisation",
           "en": "empowerment culture",
           "vi": "văn hóa trao quyền",
@@ -1336,6 +1426,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_vi": "res-pon-sa-bi-li-za-sion"
         },
         {
+          cell_id: "f632329a-5152-486d-a975-10cecc965b0a",
           "word": "l'esprit critique",
           "en": "critical thinking",
           "vi": "tư duy phản biện",
@@ -1343,6 +1434,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_vi": "les-pri kri-tik"
         },
         {
+          cell_id: "02a91e0a-8c75-460c-a7ba-be6c496ffaa4",
           "word": "être à l'aise dans",
           "en": "to be comfortable in",
           "vi": "thoải mái trong",
@@ -1350,6 +1442,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_vi": "é-trơ a-lèz dăn"
         },
         {
+          cell_id: "8603ba70-ac7d-418a-b7b7-0e1e4eb33239",
           "word": "un environnement exigeant",
           "en": "a demanding environment",
           "vi": "môi trường đòi hỏi cao",
@@ -1357,6 +1450,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_vi": "ăn-vi-ron-mã eg-zi-jăn"
         },
         {
+          cell_id: "63158ed1-3779-46e3-9121-771620da1fad",
           "word": "argumenter",
           "en": "to build a case",
           "vi": "lập luận có dẫn chứng",
@@ -1366,21 +1460,25 @@ export const lessons: FrenchLesson[] =           [
       ],
       "dialogue": [
         {
+          cell_id: "a78affe9-43b3-46fa-9766-34e411847a61",
           "speaker": "M. Dupont",
           "text": "Bonjour. Pourquoi avoir candidaté chez nous précisément ?",
           "vi": "Chào em. Vì sao em ứng tuyển chính xác là ở chỗ chúng tôi?"
         },
         {
+          cell_id: "9749723f-d864-4d5a-b546-cc31fe7c4cf1",
           "speaker": "Linh",
           "text": "Votre approche du conseil sur l'Asie du Sud-Est correspond exactement à ce que je veux développer.",
           "vi": "Cách tiếp cận của công ty về tư vấn Đông Nam Á chính là điều em muốn phát triển."
         },
         {
+          cell_id: "ada60b7b-1371-4b1a-b2c7-56097b1a1a8f",
           "speaker": "M. Dupont",
           "text": "Précisez. Qu'est-ce qui vous distingue d'un autre candidat parisien ?",
           "vi": "Cụ thể đi. Điều gì khiến em khác với một ứng viên Paris?"
         },
         {
+          cell_id: "a3e0e4d1-e869-461b-9b98-03c329b68311",
           "speaker": "Linh",
           "text": "Mon double regard franco-vietnamien et trois ans de terrain à Hanoï.",
           "vi": "Cái nhìn song song Pháp-Việt và ba năm thực địa ở Hà Nội."
@@ -1622,6 +1720,7 @@ export const lessons: FrenchLesson[] =           [
       "tip_advice_vi": "Chuẩn bị một « projet de retour » cụ thể trên một trang A4: nơi làm việc dự kiến (trường đại học, viện nghiên cứu, công ty), vai trò, các cộng tác Pháp-Việt bạn sẽ duy trì. Trả lời câu « Pourquoi la France ? » bằng tên cụ thể (giáo sư, lab, sách, hội nghị bạn đã tham dự) — không phải « tôi yêu văn hóa Pháp ». Khi nói tiền, hãy nói rằng học bổng cho phép tập trung vào học thuật, không phải « em thiếu tiền ». Trong phỏng vấn nhóm Campus France, đến trước 15 phút và mặc trang phục business smart — không quá trang trọng nhưng không jeans-tshirt.",
       "vocabulary": [
         {
+          cell_id: "385ab74c-b401-4ba4-b6e3-4effb4057a41",
           "word": "une bourse d'études",
           "en": "a study scholarship",
           "vi": "học bổng học tập",
@@ -1629,6 +1728,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_vi": "burs dé-tyud"
         },
         {
+          cell_id: "44f4d398-2816-4485-901e-e768215ac503",
           "word": "le projet de retour",
           "en": "return project (post-degree plan)",
           "vi": "dự án trở về sau tốt nghiệp",
@@ -1636,6 +1736,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_vi": "pro-jé dơ rơ-tur"
         },
         {
+          cell_id: "c9becd50-267e-4353-8f84-4f8f2fa5bfa7",
           "word": "un volet (de recherche)",
           "en": "a (research) component",
           "vi": "phần (nghiên cứu)",
@@ -1643,6 +1744,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_vi": "vo-lè"
         },
         {
+          cell_id: "2864c7a1-21df-4127-8dde-2c7a7d02acf3",
           "word": "co-encadrer",
           "en": "to co-supervise",
           "vi": "đồng hướng dẫn",
@@ -1650,6 +1752,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_vi": "ko-an-ka-dré"
         },
         {
+          cell_id: "71de40e6-81cd-485f-97d4-4982d9a003e3",
           "word": "la stabilité matérielle",
           "en": "financial stability",
           "vi": "sự ổn định vật chất",
@@ -1657,6 +1760,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_vi": "sta-bi-li-té ma-té-riel"
         },
         {
+          cell_id: "51e0e551-b4c6-4445-881c-02206d1ab809",
           "word": "un laboratoire d'accueil",
           "en": "host laboratory",
           "vi": "phòng lab tiếp nhận",
@@ -1664,6 +1768,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_vi": "la-bo-ra-twar da-kơy"
         },
         {
+          cell_id: "e168545d-f3eb-4098-8865-17ee8b9f4283",
           "word": "s'engager à",
           "en": "to commit to",
           "vi": "cam kết",
@@ -1671,6 +1776,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_vi": "sãn-ga-jé a"
         },
         {
+          cell_id: "b0ba8aba-ab88-4978-ae94-c7ae6a8e9886",
           "word": "un dossier de candidature",
           "en": "an application file",
           "vi": "hồ sơ ứng tuyển",
@@ -1678,6 +1784,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_vi": "do-sié dơ kan-di-da-tur"
         },
         {
+          cell_id: "588452b8-db07-4e7a-abce-7571f2838796",
           "word": "être éligible à",
           "en": "to be eligible for",
           "vi": "đủ điều kiện cho",
@@ -1685,6 +1792,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_vi": "é-trơ é-li-jib a"
         },
         {
+          cell_id: "c7238470-e89c-4eac-9acf-c3e5859986ef",
           "word": "valoriser ses acquis",
           "en": "to highlight one's achievements",
           "vi": "làm nổi bật thành tựu",
@@ -1694,21 +1802,25 @@ export const lessons: FrenchLesson[] =           [
       ],
       "dialogue": [
         {
+          cell_id: "7d1e1484-9c79-4ecf-bf4f-47bb5e457050",
           "speaker": "Mme Roy",
           "text": "Bonjour. Pourquoi la France et pas un autre pays ?",
           "vi": "Chào em. Vì sao là Pháp mà không phải nước khác?"
         },
         {
+          cell_id: "14432093-d69e-4aab-be62-aab0d4603385",
           "speaker": "Mai",
           "text": "Le programme du Pr Lefèvre à Paris-Saclay est unique en Europe sur l'IA explicable.",
           "vi": "Chương trình của giáo sư Lefèvre ở Paris-Saclay là độc đáo ở châu Âu về AI có thể giải thích."
         },
         {
+          cell_id: "eab17a84-464b-4a11-ae4c-024a06ce508f",
           "speaker": "Mme Roy",
           "text": "Et après le master, qu'envisagez-vous concrètement ?",
           "vi": "Và sau master, em cụ thể tính làm gì?"
         },
         {
+          cell_id: "3652b3cf-0a09-4b9e-a04f-ac0b5a910461",
           "speaker": "Mai",
           "text": "Rentrer à Hanoï pour rejoindre le laboratoire d'IA de l'USTH, où mon ancienne directrice m'attend.",
           "vi": "Trở về Hà Nội tham gia phòng AI của USTH, nơi nguyên giáo sư hướng dẫn của em đang chờ."
@@ -1956,6 +2068,7 @@ export const lessons: FrenchLesson[] =           [
       "tip_advice_vi": "Mang theo một bản giấy hai trang in ra, kể cả khi đã gửi PDF — giáo sư Pháp thích viết lên giấy. Mở đầu bằng câu hỏi cụ thể bạn cần thầy/cô trả lời (« J'ai trois doutes : 1, 2, 3 »), không phải kể lể về bối cảnh. Khi giáo sư đề xuất tài liệu, ghi ngay tên tác giả và năm — đừng tin trí nhớ. Cuối buổi, tóm tắt ba điểm hành động trong ba câu, và hỏi giáo sư có chỉnh không. Sau buổi họp, gửi email cảm ơn kèm ba điểm hành động đó trong vòng 24 giờ — không phải vì lễ phép, mà để có vết bằng văn bản về cam kết hai bên.",
       "vocabulary": [
         {
+          cell_id: "572206c1-5cec-4e0b-9726-68379c25af30",
           "word": "affiner",
           "en": "to refine",
           "vi": "tinh chỉnh",
@@ -1963,6 +2076,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_vi": "a-fi-né"
         },
         {
+          cell_id: "73fc1a30-9838-4e72-b53f-5d6a5e4ba078",
           "word": "une problématique",
           "en": "a research question",
           "vi": "câu hỏi nghiên cứu",
@@ -1970,6 +2084,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_vi": "pro-blé-ma-tik"
         },
         {
+          cell_id: "373f24b5-4c01-4076-9eac-3dd6a028255f",
           "word": "l'angle d'attaque",
           "en": "angle of approach",
           "vi": "hướng tiếp cận",
@@ -1977,6 +2092,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_vi": "ãgl da-tak"
         },
         {
+          cell_id: "27b85746-9bc2-48f8-ac17-9c45c3b829bb",
           "word": "s'appuyer sur",
           "en": "to rely / build upon",
           "vi": "dựa trên",
@@ -1984,6 +2100,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_vi": "sa-pyu-i-é syur"
         },
         {
+          cell_id: "8d1edeb6-4400-49fe-be64-a27649f52670",
           "word": "un entretien semi-directif",
           "en": "semi-structured interview",
           "vi": "phỏng vấn bán cấu trúc",
@@ -1991,6 +2108,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_vi": "ãn-trơ-tian sơ-mi-di-rek-tif"
         },
         {
+          cell_id: "9dc8bd8f-aa3a-4415-aac4-3b57999210f4",
           "word": "la faisabilité",
           "en": "feasibility",
           "vi": "tính khả thi",
@@ -1998,6 +2116,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_vi": "fơ-za-bi-li-té"
         },
         {
+          cell_id: "1df7abab-70c5-4d43-a3df-b8411535abdc",
           "word": "un calendrier prévisionnel",
           "en": "projected timeline",
           "vi": "lịch trình dự kiến",
@@ -2005,6 +2124,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_vi": "ka-lăn-dri-é pré-vi-zio-nèl"
         },
         {
+          cell_id: "ee9ea18b-bdcb-4214-b9eb-0156ba61cc55",
           "word": "un cadre théorique",
           "en": "theoretical framework",
           "vi": "khung lý thuyết",
@@ -2012,6 +2132,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_vi": "kadr té-o-rik"
         },
         {
+          cell_id: "aa599bc0-b768-45e5-86ea-1f0628315780",
           "word": "la revue de littérature",
           "en": "literature review",
           "vi": "tổng quan tài liệu",
@@ -2019,6 +2140,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_vi": "rơ-vyu dơ li-té-ra-tur"
         },
         {
+          cell_id: "c349bdc1-14ec-4edf-a05e-37f91e5b551a",
           "word": "un livrable intermédiaire",
           "en": "interim deliverable",
           "vi": "sản phẩm trung gian",
@@ -2028,21 +2150,25 @@ export const lessons: FrenchLesson[] =           [
       ],
       "dialogue": [
         {
+          cell_id: "2646a08d-e30d-454f-8884-9620c4c09ff7",
           "speaker": "Pr Lefèvre",
           "text": "Bonjour. Vous m'apportez quoi aujourd'hui ?",
           "vi": "Chào em. Hôm nay em mang gì đến?"
         },
         {
+          cell_id: "1d1c6f6c-f633-45f8-af3a-d33a7dd15815",
           "speaker": "Tâm",
           "text": "Une note de deux pages avec ma problématique et trois doutes méthodologiques.",
           "vi": "Một bản hai trang với câu hỏi nghiên cứu và ba điểm còn nghi ngờ về phương pháp."
         },
         {
+          cell_id: "107a6c03-8096-4ae9-a940-67827a2a4571",
           "speaker": "Pr Lefèvre",
           "text": "Bien. Lisez-moi votre problématique en une phrase.",
           "vi": "Tốt. Đọc cho tôi câu hỏi nghiên cứu trong một câu."
         },
         {
+          cell_id: "5baf4178-c56c-4765-ab5a-4b5460d45720",
           "speaker": "Tâm",
           "text": "Comment les politiques migratoires françaises et vietnamiennes structurent-elles différemment les parcours des travailleurs qualifiés ?",
           "vi": "Chính sách di cư Pháp và Việt cấu trúc khác nhau như thế nào hành trình của người lao động có trình độ?"
@@ -2298,6 +2424,7 @@ export const lessons: FrenchLesson[] =           [
       "tip_advice_vi": "Trước khi ký, đọc kỹ ba điểm: (1) horaires — số giờ/tuần và linh hoạt; (2) gratification — phải bằng hoặc trên mức tối thiểu, ghi rõ tính theo tháng hay theo giờ; (3) télétravail — bao nhiêu ngày, có ghi văn bản không. Đừng đàm phán bằng tiếng Anh nếu công ty Pháp — họ đánh giá việc bạn dùng tiếng Pháp đúng chỗ. Khi không chắc một điều khoản, nói « Pourriez-vous m'expliquer la clause sur X ? » thay vì gật đầu giả vờ hiểu. Sau khi đồng ý miệng, gửi email tóm tắt các điểm để có vết bằng văn bản trước khi convention được soạn chính thức.",
       "vocabulary": [
         {
+          cell_id: "911b0a97-d4be-44c6-b01b-44037dd87833",
           "word": "une convention de stage",
           "en": "internship agreement",
           "vi": "thỏa thuận thực tập",
@@ -2305,6 +2432,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_vi": "kon-vãn-sion dơ staj"
         },
         {
+          cell_id: "7e28c738-a9ca-43b3-bc5b-7724aa0c4e44",
           "word": "la gratification",
           "en": "internship stipend",
           "vi": "trợ cấp thực tập",
@@ -2312,6 +2440,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_vi": "gra-ti-fi-ka-sion"
         },
         {
+          cell_id: "51da6390-ec96-405c-ae74-f6f06959c85c",
           "word": "un avenant",
           "en": "amendment / addendum",
           "vi": "phụ lục sửa đổi",
@@ -2319,6 +2448,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_vi": "av-nã"
         },
         {
+          cell_id: "59891944-d1d2-48bb-bd23-5e93ae68885b",
           "word": "le télétravail",
           "en": "remote work",
           "vi": "làm việc từ xa",
@@ -2326,6 +2456,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_vi": "té-lé-tra-vay"
         },
         {
+          cell_id: "09220eb7-91f2-40b2-95e2-bf43faca55be",
           "word": "un tuteur",
           "en": "company supervisor",
           "vi": "người hướng dẫn tại công ty",
@@ -2333,6 +2464,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_vi": "tu-tơr"
         },
         {
+          cell_id: "4df40a56-de20-4f2b-95b7-b368402b977d",
           "word": "un référent pédagogique",
           "en": "academic advisor",
           "vi": "người phụ trách phía trường",
@@ -2340,6 +2472,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_vi": "ré-fé-rã pé-da-go-jik"
         },
         {
+          cell_id: "9a3fd5fa-d7a6-4104-b317-706c276720df",
           "word": "les horaires de travail",
           "en": "working hours",
           "vi": "giờ làm việc",
@@ -2347,6 +2480,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_vi": "o-rer dơ tra-vay"
         },
         {
+          cell_id: "ea51ba25-47d4-4640-a900-9b83ebbd02fc",
           "word": "prendre acte de",
           "en": "to take note of (formally)",
           "vi": "ghi nhận chính thức",
@@ -2354,6 +2488,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_vi": "prãndr akt dơ"
         },
         {
+          cell_id: "e2e2665f-4b18-47f0-9b3e-d0034da22466",
           "word": "être soutenable financièrement",
           "en": "to be financially sustainable",
           "vi": "duy trì được về tài chính",
@@ -2361,6 +2496,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_vi": "é-trơ su-tơ-nabl fi-nãn-sièr-mã"
         },
         {
+          cell_id: "4f0663c3-68e2-4dd0-b4fc-872329b5b955",
           "word": "signer en l'état",
           "en": "to sign as-is",
           "vi": "ký nguyên trạng",
@@ -2370,21 +2506,25 @@ export const lessons: FrenchLesson[] =           [
       ],
       "dialogue": [
         {
+          cell_id: "2e19a553-3239-484c-ac49-7aef2e527051",
           "speaker": "Mme Petit",
           "text": "Bonjour Hà, voici la convention. Vous pouvez la signer aujourd'hui ?",
           "vi": "Chào Hà, đây là thỏa thuận. Em có thể ký hôm nay không?"
         },
         {
+          cell_id: "c745152e-fc54-4cef-a938-7f07ca2b6c97",
           "speaker": "Hà",
           "text": "Bonjour. Avant de signer, j'aimerais clarifier deux points.",
           "vi": "Chào chị. Trước khi ký, em muốn làm rõ hai điểm."
         },
         {
+          cell_id: "04c22ea3-c2c4-419c-8fa4-8c9a0fcabba5",
           "speaker": "Mme Petit",
           "text": "Allez-y.",
           "vi": "Em nói đi."
         },
         {
+          cell_id: "b0dc4cdd-435f-4de9-9574-75ccaf6bb394",
           "speaker": "Hà",
           "text": "Le montant de la gratification et la possibilité de deux jours de télétravail par semaine.",
           "vi": "Mức trợ cấp và khả năng có hai ngày làm việc từ xa mỗi tuần."
@@ -2658,6 +2798,7 @@ export const lessons: FrenchLesson[] =           [
       "tip_advice_vi": "Cấu trúc bắt buộc: (1) Objet rõ ràng — bao gồm loại visa và năm học. (2) Salutation « Madame, Monsieur, » với dấu phẩy. (3) Thân email — viết theo nguyên tắc một câu một ý: tự giới thiệu, lý do email, tình trạng hiện tại, đề xuất giải pháp. (4) Câu chốt « Je vous prie d'agréer, Madame, Monsieur, l'expression de mes salutations distinguées. ». (5) Chữ ký họ tên đầy đủ, mã số dossier Études en France nếu có. Tránh : emoji, dấu chấm than, viết tắt, đoạn dài quá 4 dòng. Đính kèm chỉ những gì cần — đừng spam đính kèm. Gửi từ một địa chỉ email professionnelle (họ.tên@) chứ không phải tieucongchua99@.",
       "vocabulary": [
         {
+          cell_id: "dc5e8518-ed56-453f-b11b-f6465d933e45",
           "word": "un dossier de visa",
           "en": "a visa file",
           "vi": "hồ sơ visa",
@@ -2666,6 +2807,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "UN doh-SYAY duh vee-ZAH — masculine 'un'; 'dossier' = 'doh-SYAY'"
         },
         {
+          cell_id: "2ae59bb6-91d0-4ed9-b536-03bbc5cc42fc",
           "word": "une attestation Campus France",
           "en": "Campus France attestation",
           "vi": "giấy chứng nhận Campus France",
@@ -2674,6 +2816,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "UN ah-tes-tah-SYON kahn-PYUSS FRAHNSS — formal phrase; 'Campus' kept close to source"
         },
         {
+          cell_id: "77e1a4c4-0291-41d1-bb7a-1cda3dbe5de7",
           "word": "un créneau (de rendez-vous)",
           "en": "appointment slot",
           "vi": "khung giờ hẹn",
@@ -2682,6 +2825,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "UN kray-NOH — masc.; '-eau' = 'oh'; final 'x' would be silent in plural"
         },
         {
+          cell_id: "d4dc44c4-5ba4-4950-bd2c-bdf68628c22d",
           "word": "se permettre de",
           "en": "to take the liberty of",
           "vi": "xin phép",
@@ -2690,6 +2834,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "suh pehr-MEH-truh duh — reflexive 'se'; '-re' barely voiced"
         },
         {
+          cell_id: "17d680a5-c709-45a1-9456-9a3a95fa4f92",
           "word": "solliciter",
           "en": "to formally request",
           "vi": "liên hệ chính thức",
@@ -2698,6 +2843,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "so-lee-see-TAY — double 'll' is one 'l'; '-er' = 'ay'"
         },
         {
+          cell_id: "c98d251e-0c5f-42e4-b853-a693426949cf",
           "word": "une plateforme de prise de rendez-vous",
           "en": "appointment booking platform",
           "vi": "trang đặt lịch hẹn",
@@ -2706,6 +2852,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ün plat-FORM duh PREEZ duh rahn-day-VOO — feminine 'une'; multi-syllable phrase"
         },
         {
+          cell_id: "6c99a581-4c7c-4b21-8cc2-5cfde08f372d",
           "word": "la rentrée universitaire",
           "en": "academic start (September)",
           "vi": "kỳ nhập học",
@@ -2714,6 +2861,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "lah rahn-TRAY oo-nee-vehr-see-TEHR — 'rentrée' = academic year start (September)"
         },
         {
+          cell_id: "04cf53f9-7136-42bb-9a95-846079cd398a",
           "word": "sous huitaine",
           "en": "within a week",
           "vi": "trong vòng tám ngày",
@@ -2722,6 +2870,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "soo wee-TEN — admin phrase 'within a week'; literally 'within eight days'"
         },
         {
+          cell_id: "1e7e1e65-edc3-489e-b4ba-c4f5b9096225",
           "word": "agréer",
           "en": "to accept (formal)",
           "vi": "chấp nhận (lịch thiệp)",
@@ -2730,6 +2879,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ah-gray-AY — '-éer' has two distinct vowels; final 'r' lightly rolled"
         },
         {
+          cell_id: "364c588b-c9b2-4da2-8ad5-123856c37f12",
           "word": "l'expression de mes salutations distinguées",
           "en": "my distinguished salutations (closing)",
           "vi": "lời chào trân trọng",
@@ -2740,24 +2890,28 @@ export const lessons: FrenchLesson[] =           [
       ],
       "dialogue": [
         {
+          cell_id: "f486a306-6f88-4cc3-b2d9-f6d8ca15993a",
           "speaker": "Em (gọi điện hotline)",
           "text": "Bonjour, j'ai envoyé un email il y a dix jours sans réponse.",
           "en": "Hello, I sent an email ten days ago and got no reply.",
           "vi": "Chào, em đã gửi email mười ngày trước không có phản hồi."
         },
         {
+          cell_id: "568039c5-917f-4321-804b-cf69cc673e9f",
           "speaker": "Agent",
           "text": "Quel est l'objet précis et la date d'envoi ?",
           "en": "What's the exact subject line, and when did you send it?",
           "vi": "Tiêu đề chính xác và ngày gửi?"
         },
         {
+          cell_id: "e426ab9b-c57c-4044-bd9c-383749ac7340",
           "speaker": "Em",
           "text": "« Demande de rendez-vous visa étudiant rentrée 2026 », envoyé le 5 mai.",
           "en": "« Appointment request — student visa, fall 2026 intake », sent May 5.",
           "vi": "« Xin lịch hẹn visa du học kỳ 2026 », gửi ngày 5 tháng 5."
         },
         {
+          cell_id: "d7112b39-f10a-4502-8a8c-e9df523b6697",
           "speaker": "Agent",
           "text": "Je vois votre dossier. Un créneau s'est libéré pour le 22 mai à 9h30.",
           "en": "I see your file. A slot has just opened up for May 22 at 9:30 a.m.",
@@ -3040,6 +3194,7 @@ export const lessons: FrenchLesson[] =           [
       "tip_advice_vi": "Trước cuộc gọi: kiểm tra mạng (tải tốc độ ≥ 50 Mbps), tai nghe có mic, chọn phòng yên tĩnh có ánh sáng phía trước (nếu video). Tắt thông báo điện thoại + máy tính. Đặt một cốc nước. Đầu cuộc gọi 30 giây đầu là « audio test » — nói rõ và đợi xác nhận « je vous entends bien ». Trong cuộc gọi: chú ý không nói chồng (« diaphone ») — đợi thêm nửa giây sau khi nhà tuyển dụng dứt câu. Nếu mất kết nối, gọi lại bằng số đã thống nhất, kèm tin nhắn ngắn « Désolée pour la coupure, je vous rappelle ». Sau cuộc gọi: gửi email cảm ơn trong 24 giờ kèm 2-3 điểm chính đã trao đổi.",
       "vocabulary": [
         {
+          cell_id: "bdda0827-6c19-4271-b50f-ddbb43c8c585",
           "word": "le décalage horaire",
           "en": "time zone difference",
           "vi": "chênh lệch múi giờ",
@@ -3048,6 +3203,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "luh day-kah-LAHZH oh-REHR — masc.; final '-age' = 'ahzh'"
         },
         {
+          cell_id: "cda1361b-49f8-41bb-98c6-80375f08ce67",
           "word": "la liaison",
           "en": "connection (audio/video)",
           "vi": "kết nối",
@@ -3056,6 +3212,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "lah lyay-ZON — fem.; nasal '-on'"
         },
         {
+          cell_id: "697a768b-7021-4e2a-a8a4-5779b152e367",
           "word": "se couper",
           "en": "to cut out / drop",
           "vi": "bị ngắt",
@@ -3064,6 +3221,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "suh koo-PAY — reflexive 'se'; 'ou' = 'oo'; '-er' = 'ay'"
         },
         {
+          cell_id: "ca310123-ad29-48a5-8a58-236cb3048ee6",
           "word": "haché",
           "en": "choppy (audio)",
           "vi": "ngắt quãng",
@@ -3072,6 +3230,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ah-SHAY — silent 'h'; 'ch' = 'sh'; '-é' = 'ay'"
         },
         {
+          cell_id: "53fa4a9b-6e13-46ed-ac5c-d20f3e76a738",
           "word": "rappeler",
           "en": "to call back",
           "vi": "gọi lại",
@@ -3080,6 +3239,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "rah-puh-LAY — '-eler' has a schwa drop in conjugation"
         },
         {
+          cell_id: "63ad3ac2-3668-48a7-9175-00b25f973b97",
           "word": "un casque audio",
           "en": "headset",
           "vi": "tai nghe có mic",
@@ -3088,6 +3248,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "UN KASK oh-DYOH — 'casque' = headset (literally helmet)"
         },
         {
+          cell_id: "04b3376f-d577-4ade-b107-a3418e4ec62e",
           "word": "un fond sonore",
           "en": "background noise",
           "vi": "tiếng nền",
@@ -3096,6 +3257,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "UN fohn soh-NOHR — nasal 'on'; 'sonore' = 'soh-NOHR'"
         },
         {
+          cell_id: "ab28fa03-da70-4c06-82fe-237641ad6e1d",
           "word": "être en visio",
           "en": "to be on video call",
           "vi": "đang gọi video",
@@ -3104,6 +3266,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "EH-truh ahn vee-ZYOH — 'visio' = video call (shortened from visioconférence)"
         },
         {
+          cell_id: "9cfb78e9-8d3d-42be-a216-e04ebddd12ef",
           "word": "figer",
           "en": "to freeze (screen)",
           "vi": "đứng hình",
@@ -3112,6 +3275,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "fee-ZHAY — 'g' before 'er' = 'zh'; '-er' = 'ay'"
         },
         {
+          cell_id: "a1ad8dca-2439-40c0-a509-09f5b8ba33e9",
           "word": "le débit",
           "en": "bandwidth / speed",
           "vi": "tốc độ mạng",
@@ -3122,24 +3286,28 @@ export const lessons: FrenchLesson[] =           [
       ],
       "dialogue": [
         {
+          cell_id: "59a069ad-7cb5-4425-a333-9e3c06b5adba",
           "speaker": "Mme Roux",
           "text": "Bonjour, vous m'entendez ?",
           "en": "Hello, can you hear me?",
           "vi": "Chào em, em nghe rõ chứ?"
         },
         {
+          cell_id: "b58b2c65-32e7-4f61-9cf3-de1c5a84148e",
           "speaker": "Linh",
           "text": "Oui parfaitement, et vous ?",
           "en": "Yes, perfectly, and you?",
           "vi": "Vâng rất rõ, còn chị thì sao?"
         },
         {
+          cell_id: "84ed1cda-c922-4b9d-bb71-94a311f71f07",
           "speaker": "Mme Roux",
           "text": "Très bien. Le son hache un peu, mais ça va.",
           "en": "Very well. The audio is a little choppy, but it's okay.",
           "vi": "Rất tốt. Âm hơi ngắt quãng, nhưng ổn."
         },
         {
+          cell_id: "1cf46346-9288-454f-bf0b-805684c782a8",
           "speaker": "Linh",
           "text": "Si jamais ça se coupe, je vous rappelle dans les deux minutes.",
           "en": "If it cuts out, I'll call you back within two minutes.",
@@ -3442,6 +3610,7 @@ export const lessons: FrenchLesson[] =           [
       "tip_advice_vi": "Trước sự kiện: nghiên cứu danh sách diễn giả và 3 người bạn muốn gặp — không phải để stalker mà để có chủ đề mở thoại. Trang phục business smart, không quá trang trọng (suit + tie cho hội nghị tech là sai chỗ). Trong sự kiện: cầm cốc nước/rượu bằng tay trái (để tay phải bắt). Mở thoại bằng câu hỏi mở về sự kiện. Lắng nghe gấp đôi nói. Ghi note nhanh sau mỗi cuộc gặp (2 từ khóa giúp nhớ). Sau sự kiện 24-48 giờ: gửi email LinkedIn cá nhân hóa — nhắc cụ thể chủ đề đã trao đổi, không phải mẫu copy-paste. Đề xuất một bước tiếp theo cụ thể (cà phê 30 phút, tài liệu chia sẻ, giới thiệu người thứ ba).",
       "vocabulary": [
         {
+          cell_id: "bc789309-427e-444a-9720-5c08dfb2b0cb",
           "word": "le réseautage",
           "en": "networking",
           "vi": "kết nối nghề nghiệp",
@@ -3450,6 +3619,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "luh ray-zoh-TAHZH — masc.; '-age' = 'ahzh'"
         },
         {
+          cell_id: "ecfbd42d-e749-448b-8b6c-0f8a15495fb7",
           "word": "une conférence",
           "en": "a conference",
           "vi": "hội nghị",
@@ -3458,6 +3628,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ün kohn-fay-RAHNSS — fem.; nasal '-ence'"
         },
         {
+          cell_id: "2e8a7723-9506-452c-98a6-35b0c9454b62",
           "word": "un intervenant",
           "en": "a speaker (panelist)",
           "vi": "diễn giả",
@@ -3466,6 +3637,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "UN an-tehr-vuh-NAHN — nasal final 'an'; final 't' silent"
         },
         {
+          cell_id: "63a2233a-5b88-4cd1-b8b1-f19cf332e702",
           "word": "une carte de visite",
           "en": "business card",
           "vi": "name card",
@@ -3474,6 +3646,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ün KART duh vee-ZEET — fem.; final '-e' on each word silent"
         },
         {
+          cell_id: "37d7f905-b0b2-4eb7-878b-015ad4870c76",
           "word": "reprendre contact",
           "en": "to reconnect",
           "vi": "liên lạc lại",
@@ -3482,6 +3655,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ruh-PRAHN-druh kohn-TAKT — 'reprendre' = 'take back', here 'reconnect'"
         },
         {
+          cell_id: "c61ca885-9489-4ee1-9c22-63c8febdd7d0",
           "word": "un cocktail dînatoire",
           "en": "standing dinner reception",
           "vi": "tiệc đứng",
@@ -3490,6 +3664,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "UN kok-TEL dee-nah-TWAR — borrowing from English 'cocktail'; 'oi' = 'wah'"
         },
         {
+          cell_id: "3eeb4b59-2a9f-437f-a480-386dbf6f0dbb",
           "word": "un sponsor",
           "en": "sponsor",
           "vi": "nhà tài trợ",
@@ -3498,6 +3673,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "UN spohn-SOR — borrowing; nasal 'on'"
         },
         {
+          cell_id: "92824086-d5d8-49b3-83a8-ed678e043011",
           "word": "l'écosystème",
           "en": "ecosystem",
           "vi": "hệ sinh thái",
@@ -3506,6 +3682,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "lay-koh-sees-TEM — final '-e' silent; 'è' opens"
         },
         {
+          cell_id: "da7695eb-5cb6-46fc-895d-8b8f8f2decb8",
           "word": "se présenter",
           "en": "to introduce oneself",
           "vi": "giới thiệu bản thân",
@@ -3514,6 +3691,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "suh pray-zahn-TAY — reflexive 'se'; '-er' = 'ay'"
         },
         {
+          cell_id: "47f2b33c-ba0b-446b-9e7c-b8251d329b16",
           "word": "trouver un terrain d'entente",
           "en": "to find common ground",
           "vi": "tìm điểm chung",
@@ -3524,24 +3702,28 @@ export const lessons: FrenchLesson[] =           [
       ],
       "dialogue": [
         {
+          cell_id: "9886b25e-0b85-44cd-9162-9fc2d66f1505",
           "speaker": "Mai",
           "text": "Bonsoir, je vois que vous étiez à la table ronde sur l'hydrogène vert.",
           "en": "Good evening, I see you were at the round table on green hydrogen.",
           "vi": "Chào tối, em thấy anh/chị có mặt ở bàn tròn về hydrogen xanh."
         },
         {
+          cell_id: "5b172f1a-9877-4078-b11c-63f543081b18",
           "speaker": "M. Garnier",
           "text": "Oui, intervenant. Vous travaillez dans le secteur ?",
           "en": "Yes, I was on the panel. Do you work in the sector?",
           "vi": "Vâng, tôi là diễn giả. Cô làm trong lĩnh vực này à?"
         },
         {
+          cell_id: "c6cefdf3-67fb-4527-9fe2-e4e1e8e83106",
           "speaker": "Mai",
           "text": "Côté Asie du Sud-Est, sur l'accompagnement des PME vietnamiennes.",
           "en": "On the Southeast Asia side, supporting Vietnamese SMEs.",
           "vi": "Phía Đông Nam Á, hỗ trợ doanh nghiệp vừa và nhỏ Việt Nam."
         },
         {
+          cell_id: "c59370e7-0a69-46d7-aac1-794b7841aa33",
           "speaker": "M. Garnier",
           "text": "Intéressant, on devrait reprendre contact — vous avez une carte ?",
           "en": "Interesting — we should stay in touch. Do you have a card?",
@@ -3844,6 +4026,7 @@ export const lessons: FrenchLesson[] =           [
       "tip_advice_vi": "Cấu trúc email 4 dòng ngắn: (1) Cảm ơn — không cay đắng, không van xin; (2) Đề nghị feedback — một câu hỏi mở; (3) Khẳng định quan tâm dài hạn — gợi ý cơ hội tương lai; (4) Câu chốt lịch sự. Tránh: nói lý do từ chối là « unfair », so sánh với người được chọn, ám chỉ họ « bỏ lỡ talent », emoji, dấu chấm than. Gửi email trong 24-48 giờ sau khi nhận tin từ chối — không quá lâu (họ quên), không quá nhanh (cảm xúc còn nóng). Nếu họ trả lời với feedback — cảm ơn ngay, ghi nhận, không tranh luận. Nếu không trả lời — không gửi tiếp; chấp nhận im lặng là câu trả lời. Lưu trữ contact và follow-up một lần nữa sau 6 tháng nếu thấy có cơ hội tương tự xuất hiện.",
       "vocabulary": [
         {
+          cell_id: "1eaff574-73ef-438a-90c0-ece5fed1f097",
           "word": "un retour (négatif)",
           "en": "a (negative) reply",
           "vi": "phản hồi (không mong đợi)",
@@ -3852,6 +4035,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "UN ruh-TOOR nay-gah-TEEF — masc.; 'a (negative) reply'"
         },
         {
+          cell_id: "e34b99f8-75c9-4ba8-ac34-d3785a931252",
           "word": "des points d'amélioration",
           "en": "areas for improvement",
           "vi": "điểm cần cải thiện",
@@ -3860,6 +4044,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "DAY pwan dah-may-lyoh-rah-SYON — 'd'amélioration' contracted"
         },
         {
+          cell_id: "68fd5bff-a83e-4dfb-b916-6decd0d33e96",
           "word": "une candidature",
           "en": "an application",
           "vi": "hồ sơ ứng tuyển",
@@ -3868,6 +4053,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ün kahn-dee-dah-TOOR — fem.; '-ure' rounded final 'u'"
         },
         {
+          cell_id: "eb0fa93a-0b83-4631-8b10-50e0021f712b",
           "word": "un poste similaire",
           "en": "a similar position",
           "vi": "vị trí tương tự",
@@ -3876,6 +4062,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "UN POHST see-mee-LEHR — masc.; final '-e' silent on 'poste'"
         },
         {
+          cell_id: "55a9be1f-5ce2-4563-9599-0aceee66a334",
           "word": "être considérée à nouveau",
           "en": "to be reconsidered",
           "vi": "được xét duyệt lại",
@@ -3884,6 +4071,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "EH-truh kohn-see-day-RAY ah noo-VOH — feminine past participle; 'à nouveau' = again"
         },
         {
+          cell_id: "b27f86c9-337d-4986-892a-88ec35df4ad1",
           "word": "garder la porte ouverte",
           "en": "to keep the door open",
           "vi": "giữ cửa mở (cho cơ hội sau)",
@@ -3892,6 +4080,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "gar-DAY lah PORT oo-VEHRT — feminine 'la porte'"
         },
         {
+          cell_id: "fcc6af63-d51e-40be-8c63-78bde9f7efc1",
           "word": "un retour constructif",
           "en": "constructive feedback",
           "vi": "phản hồi xây dựng",
@@ -3900,6 +4089,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "UN ruh-TOOR kohn-stryuk-TEEF — masc.; 'constructive feedback'"
         },
         {
+          cell_id: "d9c89b18-66ec-40a5-95c5-87a8c23853d3",
           "word": "sans rancune",
           "en": "no hard feelings",
           "vi": "không thù hằn",
@@ -3908,6 +4098,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "sahn rahn-KOON — 'sans rancune' = no hard feelings"
         },
         {
+          cell_id: "64332d00-bb70-41ea-9b74-8febf710bb0d",
           "word": "rebondir",
           "en": "to bounce back",
           "vi": "vực dậy",
@@ -3916,6 +4107,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ruh-bohn-DEER — 'rebondir' = to bounce back; '-ir' verb"
         },
         {
+          cell_id: "c799c689-cade-40b1-8aa0-a9a62addf3d1",
           "word": "l'humilité professionnelle",
           "en": "professional humility",
           "vi": "sự khiêm tốn chuyên nghiệp",
@@ -3926,24 +4118,28 @@ export const lessons: FrenchLesson[] =           [
       ],
       "dialogue": [
         {
+          cell_id: "33dde7c2-7c40-431c-bdab-fba726caf8c4",
           "speaker": "Linh (email envoyé)",
           "text": "Madame Roy, je vous remercie pour votre retour, même s'il n'a pas été en ma faveur.",
           "en": "Ms. Roy, thank you for your reply, even though it wasn't in my favor.",
           "vi": "Chị Roy, em cảm ơn về phản hồi, dù không theo hướng có lợi cho em."
         },
         {
+          cell_id: "aef579df-80ee-4799-9674-9e11980d7262",
           "speaker": "Mme Roy (réponse)",
           "text": "Bonjour Linh, votre démarche est appréciée. Avez-vous quinze minutes mardi pour un debrief ?",
           "en": "Hello Linh, your approach is appreciated. Do you have fifteen minutes Tuesday for a debrief?",
           "vi": "Chào Linh, cách em làm rất đáng quý. Em có 15 phút thứ ba để debrief không?"
         },
         {
+          cell_id: "5c848478-cdad-469c-9abf-313dac5efe60",
           "speaker": "Linh",
           "text": "Avec grand plaisir. Mardi 15h heure de Paris ?",
           "en": "With great pleasure. Tuesday 3:00 p.m. Paris time?",
           "vi": "Rất sẵn lòng. Thứ ba 15h giờ Paris được không?"
         },
         {
+          cell_id: "b5d25488-8a3d-4d7d-bcbb-9367812d4514",
           "speaker": "Mme Roy",
           "text": "C'est noté. Je vous envoie l'invitation.",
           "en": "Noted. I'll send the invitation.",
@@ -4226,6 +4422,7 @@ export const lessons: FrenchLesson[] =           [
       "tip_advice_vi": "Gửi yêu cầu sớm 4-6 tuần trước deadline — gửi 5 ngày trước là thiếu tôn trọng. Trong email, đính kèm 4 thứ: CV cập nhật, relevé de notes, résumé một trang về projet, và 2-3 câu nhắc nhở giáo sư về điểm nổi bật của bạn trong khóa học (« mon mémoire sur X qui a obtenu Y »). Ghi rõ deadline và format submission (jury, email trực tiếp, link platform). Nếu giáo sư đồng ý, gửi lời cảm ơn và một file đính kèm tóm tắt 1 trang để giáo sư « cá nhân hóa » thư. Sau khi gửi nộp, gửi email báo cáo thư đã được sử dụng và cảm ơn lần nữa. Nếu kết quả tích cực 2 tháng sau, gửi email báo tin — giáo sư sẽ nhớ bạn cho lần tiếp theo.",
       "vocabulary": [
         {
+          cell_id: "602eb9d8-1a6d-4c30-9ec2-5041b15332b5",
           "word": "une lettre de recommandation",
           "en": "letter of recommendation",
           "vi": "thư giới thiệu",
@@ -4234,6 +4431,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ün LET-truh duh ruh-koh-mahn-dah-SYON — fem.; long noun phrase"
         },
         {
+          cell_id: "2d4b489e-ca10-432a-b900-08e67381650f",
           "word": "un référent",
           "en": "a referrer",
           "vi": "người giới thiệu",
@@ -4242,6 +4440,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "UN ray-fay-RAHN — masc.; nasal final 'an'; final 't' silent"
         },
         {
+          cell_id: "21759d52-876a-4465-9b50-173e60d1b725",
           "word": "un relevé de notes",
           "en": "transcript",
           "vi": "bảng điểm",
@@ -4250,6 +4449,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "UN ruh-luh-VAY duh NOHT — masc.; 'relevé de notes' = transcript"
         },
         {
+          cell_id: "691b3e86-311e-44c9-9264-518c13d9f41c",
           "word": "une candidature spontanée",
           "en": "unsolicited application",
           "vi": "ứng tuyển tự phát",
@@ -4258,6 +4458,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ün kahn-dee-dah-TOOR spohn-tah-NAY — 'unsolicited application'"
         },
         {
+          cell_id: "82121e7e-7632-43f0-ada5-856bb8115652",
           "word": "une deadline",
           "en": "deadline (anglicism)",
           "vi": "hạn nộp",
@@ -4266,6 +4467,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ün DED-lahyn — anglicism; fem."
         },
         {
+          cell_id: "14bc5197-bdc9-4eb9-a45b-23f178c83a8a",
           "word": "un délai serré",
           "en": "a tight deadline",
           "vi": "hạn gấp",
@@ -4274,6 +4476,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "UN day-LEH seh-RAY — 'délai serré' = tight deadline"
         },
         {
+          cell_id: "fa49b61b-c4b8-4a66-ab31-6a46b6864ce0",
           "word": "personnaliser",
           "en": "to personalize",
           "vi": "cá nhân hóa",
@@ -4282,6 +4485,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "pehr-so-nah-lee-ZAY — '-er' = 'ay'"
         },
         {
+          cell_id: "8d1cb7ca-f025-40cc-bb23-f85e8d112872",
           "word": "être en mesure de",
           "en": "to be in a position to",
           "vi": "ở vị trí có thể",
@@ -4290,6 +4494,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "EH-truh ahn muh-ZOOR duh — 'être en mesure de' = to be in a position to"
         },
         {
+          cell_id: "6a331d51-7bc1-49aa-9489-24a5a661d8fd",
           "word": "appuyer une candidature",
           "en": "to support an application",
           "vi": "ủng hộ một hồ sơ",
@@ -4298,6 +4503,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ah-pwee-YAY ün kahn-dee-dah-TOOR — 'appuyer' = to support; '-yer' = 'yay'"
         },
         {
+          cell_id: "6e22adb2-1e6e-42ff-b85e-1cd470deafe3",
           "word": "un jury de sélection",
           "en": "selection jury",
           "vi": "hội đồng xét tuyển",
@@ -4308,24 +4514,28 @@ export const lessons: FrenchLesson[] =           [
       ],
       "dialogue": [
         {
+          cell_id: "b3a1d8a0-ee5d-4cea-853a-c2f7dcbfabe8",
           "speaker": "Étudiant",
           "text": "Cher Professeur, je me permets de vous solliciter pour une lettre.",
           "en": "Dear Professor, I'm taking the liberty of asking you for a letter of recommendation.",
           "vi": "Kính thưa thầy, em xin phép liên hệ nhờ thầy viết thư giới thiệu."
         },
         {
+          cell_id: "f70fdbc3-b1d9-4552-b671-bffde86cc909",
           "speaker": "Pr Martin",
           "text": "Bonjour, oui je me souviens de vous. Pour quelle candidature ?",
           "en": "Hello, yes I remember you. For which application?",
           "vi": "Chào em, có nhớ em chứ. Cho hồ sơ nào?"
         },
         {
+          cell_id: "afa8719f-3517-46a2-bd43-accea79ff3d0",
           "speaker": "Étudiant",
           "text": "Master à ETH Zürich, deadline le 30 mai.",
           "en": "Master's at ETH Zürich, deadline May 30.",
           "vi": "Master ở ETH Zürich, hạn 30 tháng 5."
         },
         {
+          cell_id: "7aac0b8e-32f2-47de-9714-242613657ebc",
           "speaker": "Pr Martin",
           "text": "D'accord. Envoyez-moi vos pièces et un résumé d'une page.",
           "en": "Alright. Send me your documents and a one-page summary.",
@@ -4628,6 +4838,7 @@ export const lessons: FrenchLesson[] =           [
       "tip_advice_vi": "Email lần đầu cho giáo sư phụ trách lab phải dưới 350 từ. Cấu trúc: (1) ngữ cảnh ngắn (em là ai, tốt nghiệp gì); (2) câu hỏi nghiên cứu của bạn trong 1-2 câu; (3) lý do chọn lab họ với 1-2 dẫn chứng cụ thể (bài báo họ đã viết, phương pháp họ phát triển); (4) đề xuất gặp 30 phút online; (5) đính kèm CV + 1 trang research statement. Đến cuộc gặp với (a) câu hỏi nghiên cứu hẹp đến mức được, (b) câu hỏi cho giáo sư về trial họ, (c) tên 3-4 bài báo nền tảng bạn đã đọc. Khi giáo sư phản biện rằng dự án « bao gồm hai luận án », chọn ngay tại chỗ — không câu giờ. Sau gặp, gửi email cảm ơn trong 24 giờ tóm tắt 3 điểm hành động.",
       "vocabulary": [
         {
+          cell_id: "548da2ec-555c-4141-8145-b8a7094d8178",
           "word": "s'inscrire dans la continuité de",
           "en": "to follow on from",
           "vi": "nối tiếp",
@@ -4636,6 +4847,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "san-SKREER dahn lah kohn-tee-noo-ee-TAY duh — long phrase; idiom 'to follow on from'"
         },
         {
+          cell_id: "1c7e663f-d879-4780-8c78-8f07f0bf0222",
           "word": "l'intersection (entre)",
           "en": "intersection between",
           "vi": "vùng giao thoa",
@@ -4644,6 +4856,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "lan-tehr-sek-SYON ahn-truh — fem.; 'between' = 'entre'"
         },
         {
+          cell_id: "18f51260-4563-4cea-93c9-5e964ad8c2d0",
           "word": "une thèse en cotutelle",
           "en": "jointly-supervised PhD",
           "vi": "luận án đồng hướng dẫn",
@@ -4652,6 +4865,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ün TEZ ahn koh-too-TEL — fem.; 'thèse en cotutelle' = jointly-supervised PhD"
         },
         {
+          cell_id: "becdbcf9-b8d3-4189-84ee-2091d5d731fb",
           "word": "l'IA explicable",
           "en": "explainable AI",
           "vi": "AI có thể giải thích",
@@ -4660,6 +4874,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "lyah ek-splee-KAH-bluh — 'IA' = 'i-a' (letter names); 'explainable AI'"
         },
         {
+          cell_id: "6fdba456-54da-44a2-adbd-43fd4e165330",
           "word": "à terme",
           "en": "ultimately",
           "vi": "về lâu dài",
@@ -4668,6 +4883,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ah TEHRM — 'à terme' = ultimately; short phrase"
         },
         {
+          cell_id: "e4eb6562-d53b-4fb2-8603-f09ae542eb61",
           "word": "un poste mixte",
           "en": "hybrid position",
           "vi": "vị trí kết hợp",
@@ -4676,6 +4892,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "UN POHST MIKST — masc.; 'hybrid position'"
         },
         {
+          cell_id: "578302a7-3b1b-40d0-ac46-eb81fefa8027",
           "word": "une problématique",
           "en": "research question",
           "vi": "câu hỏi nghiên cứu",
@@ -4684,6 +4901,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ün proh-blay-mah-TEEK — fem.; key academic term; 'research question'"
         },
         {
+          cell_id: "ab9cf00a-b27c-4df4-bd49-0f369f0bc3db",
           "word": "la faisabilité",
           "en": "feasibility",
           "vi": "tính khả thi",
@@ -4692,6 +4910,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "lah feh-zah-bee-lee-TAY — 'faisabilité' = feasibility"
         },
         {
+          cell_id: "b1f65bd5-36a0-4859-88a5-c423418a77ae",
           "word": "un appel à candidatures",
           "en": "call for applications",
           "vi": "thông báo tuyển ứng viên",
@@ -4700,6 +4919,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "UN ah-PEL ah kahn-dee-dah-TOOR — 'call for applications'"
         },
         {
+          cell_id: "f8c059bd-65b5-44d0-b32f-fb15e4a802be",
           "word": "un financement doctoral",
           "en": "doctoral funding",
           "vi": "kinh phí tiến sĩ",
@@ -4710,24 +4930,28 @@ export const lessons: FrenchLesson[] =           [
       ],
       "dialogue": [
         {
+          cell_id: "cbf2a974-820b-42e4-8eb3-f1aba56ff1ea",
           "speaker": "Candidat",
           "text": "Bonjour Professeur, merci de m'accorder ce premier entretien.",
           "en": "Hello Professor, thank you for granting me this first interview.",
           "vi": "Chào cô, em cảm ơn cô đã dành cho em buổi đầu này."
         },
         {
+          cell_id: "d901c327-1cb1-457b-a5ae-0a749ff437a4",
           "speaker": "Pr Lefèvre",
           "text": "Présentez-moi en cinq minutes votre projet et pourquoi mon labo.",
           "en": "Present your project and why you've chosen my lab in five minutes.",
           "vi": "Em trình bày trong 5 phút dự án và lý do chọn lab của tôi."
         },
         {
+          cell_id: "aa1d23ae-7e08-4be4-83c7-dd11770a59e1",
           "speaker": "Candidat",
           "text": "Mon projet porte sur l'IA explicable appliquée aux dossiers patients vietnamiens.",
           "en": "My project is on explainable AI applied to Vietnamese patient records.",
           "vi": "Dự án của em về AI có thể giải thích áp dụng cho hồ sơ bệnh nhân Việt Nam."
         },
         {
+          cell_id: "32476e8f-dcd6-4446-b225-20fa3ad32deb",
           "speaker": "Pr Lefèvre",
           "text": "Quelle est votre problématique précise ?",
           "en": "What's your precise research question?",
@@ -5024,6 +5248,7 @@ export const lessons: FrenchLesson[] =           [
       "tip_advice_vi": "Trước chuyến thăm: gửi email cho sếp trước 7 ngày kèm lịch trình dạng PDF (giờ, địa điểm, dress code, người dự), kèm câu hỏi mở « Y a-t-il des contraintes alimentaires ou des préférences à intégrer ? ». Trong ngày đầu: đón ở sân bay nếu khoảng cách dưới 30 km và sếp ở cấp đáng đón (giám đốc trở lên); cấp thấp hơn thì xe taxi/Grab công ty đặt sẵn là đủ. Khi vào văn phòng: giới thiệu từng thành viên đội bằng tên + vai trò, không chỉ tên. Trong các bữa ăn: bạn order trước hoặc đề xuất món, không bắt sếp tự chọn từ menu tiếng Việt. Cuối chuyến: hỏi sếp một câu phản hồi cụ thể về gì có thể làm tốt hơn cho lần sau — đừng chờ phản hồi tự đến.",
       "vocabulary": [
         {
+          cell_id: "b9f92a34-3265-4d00-940c-b4a59b183664",
           "word": "un séjour professionnel",
           "en": "a business stay",
           "vi": "chuyến công tác",
@@ -5032,6 +5257,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "UN say-ZHOOR pro-feh-syo-NEL — masc.; 'business stay'"
         },
         {
+          cell_id: "10362cca-b86b-43f0-b306-b00211caa638",
           "word": "un programme de visite",
           "en": "a visit program",
           "vi": "lịch trình thăm",
@@ -5040,6 +5266,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "UN pro-GRAHM duh vee-ZEET — masc.; final '-e' silent on 'visite'"
         },
         {
+          cell_id: "b80fa47b-cd7b-47c2-aa41-f95bc13f7bbe",
           "word": "être à votre disposition",
           "en": "to be at your service",
           "vi": "luôn sẵn sàng phục vụ",
@@ -5048,6 +5275,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "EH-truh ah voh-truh dees-poh-zee-SYON — 'at your disposal/service'"
         },
         {
+          cell_id: "669df067-c0c3-48c9-81f7-f1caa9dd5077",
           "word": "un hôte",
           "en": "a host",
           "vi": "chủ nhà / người đón tiếp",
@@ -5056,6 +5284,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "UN OHT — masc.; circumflex 'ô' = 'oh'; silent final '-e'"
         },
         {
+          cell_id: "8b8a5c6b-e6c8-4be1-a77c-097b0af273a8",
           "word": "des contraintes alimentaires",
           "en": "dietary restrictions",
           "vi": "hạn chế ăn uống",
@@ -5064,6 +5293,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "DAY kohn-TRANT ah-lee-mahn-TEHR — fem. pl.; '-aire' = 'air'"
         },
         {
+          cell_id: "0d3a152d-bcc7-446e-b0f7-f6c2b5979304",
           "word": "le décalage horaire",
           "en": "jet lag / time difference",
           "vi": "chênh lệch múi giờ",
@@ -5072,6 +5302,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "luh day-kah-LAHZH oh-REHR — masc.; 'jet lag'"
         },
         {
+          cell_id: "fa128fd3-1b8c-4772-9dfb-6379fee1fb05",
           "word": "un point d'étape",
           "en": "a check-in point",
           "vi": "điểm kiểm tra giữa lịch trình",
@@ -5080,6 +5311,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "UN pwan day-TAHP — 'point d'étape' = checkpoint"
         },
         {
+          cell_id: "8e45a17d-9b82-4679-b2f6-747d74df40dc",
           "word": "ajuster le rythme",
           "en": "to adjust the pace",
           "vi": "điều chỉnh tốc độ chương trình",
@@ -5088,6 +5320,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ah-zhoo-STAY luh REE-tuh-muh — 'ajuster le rythme'; 'th' = 't'"
         },
         {
+          cell_id: "bae47735-2804-4277-8d2c-b8003b5d77ac",
           "word": "se mettre à la disposition de",
           "en": "to make oneself available to",
           "vi": "sẵn sàng phục vụ ai",
@@ -5096,6 +5329,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "suh MET-truh ah lah dees-poh-zee-SYON duh — long phrase; 'make oneself available to'"
         },
         {
+          cell_id: "f1966dfa-5420-4f7b-9f01-1fc444b71e53",
           "word": "un point récapitulatif",
           "en": "a wrap-up summary",
           "vi": "buổi tóm lược cuối",
@@ -5106,24 +5340,28 @@ export const lessons: FrenchLesson[] =           [
       ],
       "dialogue": [
         {
+          cell_id: "d2bfed6a-3358-40f2-904c-094c2b1695ba",
           "speaker": "Mme Laurent",
           "text": "Quel accueil chaleureux ! Le bureau a beaucoup changé depuis ma dernière visite.",
           "en": "What a warm welcome! The office has changed a lot since my last visit.",
           "vi": "Đón tiếp ấm áp quá! Văn phòng thay đổi nhiều so với lần ghé trước."
         },
         {
+          cell_id: "dab33198-2b89-4c03-9026-5e3baa979f8f",
           "speaker": "Linh",
           "text": "Merci. Nous avons réaménagé l'espace en novembre dernier pour accueillir l'équipe data.",
           "en": "Thank you. We reorganized the space last November to host the data team.",
           "vi": "Cảm ơn bà. Chúng em sắp xếp lại không gian từ tháng 11 năm ngoái để đón đội data."
         },
         {
+          cell_id: "aeb6d0d4-4e0a-4a9c-b103-ea3fdbb0e049",
           "speaker": "Mme Laurent",
           "text": "Très bien pensé. Et le programme de cette semaine ?",
           "en": "Very well thought out. And the program for this week?",
           "vi": "Suy nghĩ rất kỹ. Và lịch trình tuần này thế nào?"
         },
         {
+          cell_id: "6723f52e-e862-479f-8a00-8d046d334dd2",
           "speaker": "Linh",
           "text": "Trois jours : visite des équipes lundi, déplacement à l'usine de Bình Dương mardi, et atelier stratégie mercredi matin.",
           "en": "Three days: team visits Monday, Bình Dương factory trip Tuesday, and strategy workshop Wednesday morning.",
@@ -5430,6 +5668,7 @@ export const lessons: FrenchLesson[] =           [
       "tip_advice_vi": "Trước khi khách đến: gửi PDF safety briefing nếu có thăm nhà máy (Pháp rất chặt về OHS); hỏi rõ về dietary restrictions và dị ứng (Pháp hay có dị ứng gluten/lactose/hải sản); đặt khách sạn 4-5 sao có lift, không phải boutique. Trong ngày: đến đón đúng giờ, không sớm hơn 10 phút (Pháp coi sớm quá là làm phiền họ chuẩn bị); cầm theo nước đóng chai, ô (mưa Sài Gòn), wet wipes. Khi giới thiệu nhà máy: nói số liệu cụ thể (sản lượng/tháng, số lao động, chứng chỉ ISO), không kể chuyện. Bữa ăn: order trước cho khách, đề xuất 3 món, không bắt khách chọn từ menu tiếng Việt; không ép rượu (« cạn ly » sai văn hóa Pháp lớn — họ uống chậm, một ly có thể kéo dài cả tối). Cuối ngày: gửi email tóm tắt 3 bullet points đã thống nhất — không phải lễ phép, mà để có vết.",
       "vocabulary": [
         {
+          cell_id: "d05ab86c-fa0e-4ad3-ab4f-78c4131ca11f",
           "word": "un client",
           "en": "a client",
           "vi": "khách hàng",
@@ -5438,6 +5677,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "UN klee-AHN — masc.; nasal final 'an'; final 't' silent"
         },
         {
+          cell_id: "41376c13-e157-449e-8c72-ca3bf039e7f5",
           "word": "une visite d'usine",
           "en": "a factory tour",
           "vi": "buổi thăm nhà máy",
@@ -5446,6 +5686,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ün vee-ZEET doo-ZEEN — fem.; 'd'usine' contracted"
         },
         {
+          cell_id: "429dc5af-eeaf-4e79-91ab-56488a3f6c88",
           "word": "un atelier de production",
           "en": "production workshop",
           "vi": "xưởng sản xuất",
@@ -5454,6 +5695,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "UN ah-tuh-LYAY duh pro-dook-SYON — 'atelier' = workshop"
         },
         {
+          cell_id: "fc462fd2-7422-4f69-9b77-647aaf0410cb",
           "word": "des règles de sécurité",
           "en": "safety rules",
           "vi": "quy định an toàn",
@@ -5462,6 +5704,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "DAY REH-gluh duh say-koo-ree-TAY — 'règles de sécurité' = safety rules"
         },
         {
+          cell_id: "32d951a6-6397-4b1d-9d83-1533cbd88916",
           "word": "un gilet de sécurité",
           "en": "safety vest",
           "vi": "áo bảo hộ",
@@ -5470,6 +5713,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "UN zhee-LEH duh say-koo-ree-TAY — 'gilet de sécurité' = safety vest"
         },
         {
+          cell_id: "662a5887-be65-49a2-bc6c-65b735e45bcb",
           "word": "un cahier des charges",
           "en": "specifications brief",
           "vi": "bản đặc tả yêu cầu",
@@ -5478,6 +5722,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "UN kah-YAY day SHARZH — 'cahier des charges' = specifications brief; 'des' liaison"
         },
         {
+          cell_id: "fe87bdcf-0034-4e81-a3e6-5fe7392bff58",
           "word": "la traçabilité",
           "en": "traceability",
           "vi": "khả năng truy xuất nguồn gốc",
@@ -5486,6 +5731,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "lah trah-sah-bee-lee-TAY — fem.; 'traceability'"
         },
         {
+          cell_id: "878383c2-52a3-462a-9345-9f18be27651d",
           "word": "un audit qualité",
           "en": "quality audit",
           "vi": "đợt kiểm tra chất lượng",
@@ -5494,6 +5740,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "UN oh-DEET kah-lee-TAY — 'audit qualité'; 'audit' kept close to source"
         },
         {
+          cell_id: "8ed003c3-83ee-432f-a8ba-9f5e9ab49e9c",
           "word": "un dîner d'affaires",
           "en": "business dinner",
           "vi": "bữa tối làm việc",
@@ -5502,6 +5749,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "UN dee-NAY dah-FEHR — 'dîner d'affaires' = business dinner"
         },
         {
+          cell_id: "f8891797-529b-469e-b660-217191da75d2",
           "word": "un compte rendu",
           "en": "a meeting report",
           "vi": "biên bản tổng kết",
@@ -5512,24 +5760,28 @@ export const lessons: FrenchLesson[] =           [
       ],
       "dialogue": [
         {
+          cell_id: "141af25e-5321-4ffb-a063-d4d479339b3a",
           "speaker": "M. Mercier",
           "text": "Bonjour, le voyage entre l'hôtel et l'usine s'est très bien passé.",
           "en": "Good morning, the trip from the hotel to the factory went very smoothly.",
           "vi": "Chào em, chuyến từ khách sạn đến nhà máy rất êm ả."
         },
         {
+          cell_id: "50cf17eb-fde5-4272-816e-12f50c1c03c4",
           "speaker": "Phú",
           "text": "Tant mieux. Avant la visite, voici quelques règles de sécurité.",
           "en": "Great. Before the tour, here are a few safety rules.",
           "vi": "Tốt quá. Trước khi vào, đây là một vài quy định an toàn."
         },
         {
+          cell_id: "25bf37b3-d4c5-4acc-a7d4-002bd9cb0791",
           "speaker": "M. Mercier",
           "text": "Bien sûr. C'est exactement ce que j'attends d'un fournisseur sérieux.",
           "en": "Of course. That's exactly what I expect from a serious supplier.",
           "vi": "Tất nhiên. Đó chính là điều tôi mong đợi từ một nhà cung cấp nghiêm túc."
         },
         {
+          cell_id: "05b6f8df-c903-487a-a6c4-5b4edf5bbd27",
           "speaker": "Phú",
           "text": "Notre directeur d'exploitation vous accompagnera tout au long de l'atelier.",
           "en": "Our operations director will accompany you throughout the workshop.",
@@ -5842,6 +6094,7 @@ export const lessons: FrenchLesson[] =           [
       "tip_advice_vi": "Bốn nguyên tắc khi giải thích: (1) Cho mental model trước khi đi vào chi tiết — luôn bắt đầu bằng « C'est un peu comme… mais… »; (2) Dùng câu chuyện cụ thể, không phải định nghĩa từ điển — « ma grand-mère me racontait que… » mạnh hơn « le confucianisme dit que… »; (3) Đừng phòng thủ — nếu người Pháp nói « ah, c'est étrange / dépassé / contradictoire », đừng bảo vệ ngay; hỏi « qu'est-ce qui vous paraît étrange ? » để hiểu họ nhìn từ đâu rồi mới phản hồi; (4) Cho phép sự phức tạp — không phải tất cả người Việt làm cùng cách; nhiều người trẻ ở Việt Nam cũng không thắp hương hàng ngày. Nói thật về sự đa dạng nội bộ giúp người Pháp tin lời bạn hơn là nghe « toàn bộ Việt Nam đều như vầy ».",
       "vocabulary": [
         {
+          cell_id: "6281a258-4199-4d02-a371-316f2a0de95b",
           "word": "l'autel des ancêtres",
           "en": "ancestor altar",
           "vi": "bàn thờ tổ tiên",
@@ -5850,6 +6103,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "loh-TEL day-zahn-SET-truh — 'l'autel des ancêtres'; 'des' liaison"
         },
         {
+          cell_id: "ea1dd7a8-f1cf-46d1-9f0d-9392b9c99536",
           "word": "la mémoire familiale",
           "en": "family memory",
           "vi": "ký ức gia đình",
@@ -5858,6 +6112,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "lah may-MWAR fah-mee-LYAL — 'familiale' = adj. form; 'oi' = 'wah'"
         },
         {
+          cell_id: "78a24b69-c719-43da-a157-6206605ddc76",
           "word": "un repère identitaire",
           "en": "an identity anchor",
           "vi": "điểm neo bản sắc",
@@ -5866,6 +6121,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "UN ruh-PEHR ee-dahn-tee-TEHR — 'identitaire' = identity-related"
         },
         {
+          cell_id: "10b1693f-20ae-48f7-8c34-6d5252c1b525",
           "word": "la cohabitation intergénérationnelle",
           "en": "multigenerational living",
           "vi": "sống chung nhiều thế hệ",
@@ -5874,6 +6130,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "lah koh-ah-bee-tah-SYON an-tehr-zhay-nay-rah-syo-NEL — very long; 'co-' = 'koh'"
         },
         {
+          cell_id: "5c48a53e-7322-40b9-bc7a-7b9b9042070c",
           "word": "un repas partagé",
           "en": "a shared meal",
           "vi": "bữa ăn chung",
@@ -5882,6 +6139,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "UN ruh-PAH par-tah-ZHAY — 'shared meal'"
         },
         {
+          cell_id: "4481181f-740a-4bd8-8cfb-efa33263938d",
           "word": "la piété filiale",
           "en": "filial piety",
           "vi": "chữ hiếu",
@@ -5890,6 +6148,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "lah pyay-TAY fee-LYAL — 'piété filiale' = filial piety"
         },
         {
+          cell_id: "25f35da1-447c-4b1e-b4f4-31eb6a5536b0",
           "word": "un repère",
           "en": "a reference point",
           "vi": "điểm tựa / mốc",
@@ -5898,6 +6157,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "UN ruh-PEHR — masc.; 'reference point'"
         },
         {
+          cell_id: "72d634c7-e73e-4322-afad-8d2779c7baa0",
           "word": "un malentendu culturel",
           "en": "cultural misunderstanding",
           "vi": "hiểu lầm văn hóa",
@@ -5906,6 +6166,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "UN mah-lahn-tahn-DOO kool-too-REL — 'cultural misunderstanding'"
         },
         {
+          cell_id: "1562456b-9380-4481-8f3c-9bd984fa6c05",
           "word": "être enraciné dans",
           "en": "to be rooted in",
           "vi": "bắt nguồn từ",
@@ -5914,6 +6175,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "EH-truh ahn-rah-see-NAY dahn — 'to be rooted in'"
         },
         {
+          cell_id: "1fa2aee2-8dc0-4d7a-88ab-7f5a29a6f9fd",
           "word": "transmettre",
           "en": "to pass down",
           "vi": "truyền lại",
@@ -5924,24 +6186,28 @@ export const lessons: FrenchLesson[] =           [
       ],
       "dialogue": [
         {
+          cell_id: "1433ebca-dcd1-4739-8cda-f7ae01dd0ba6",
           "speaker": "Camille",
           "text": "J'ai vu un autel chez tes parents — c'est religieux, donc ?",
           "en": "I saw an altar at your parents' place — so it's religious, then?",
           "vi": "Anh thấy bàn thờ ở nhà bố mẹ em — vậy đó là tôn giáo à?"
         },
         {
+          cell_id: "bf329963-dd94-4a94-8552-3234bc516caf",
           "speaker": "Hà",
           "text": "Pas exactement. C'est plus un lien quotidien avec la mémoire familiale.",
           "en": "Not exactly. It's more a daily link with family memory.",
           "vi": "Không hẳn. Đúng hơn là sự gắn kết hàng ngày với ký ức gia đình."
         },
         {
+          cell_id: "8a172256-3039-44e8-8db7-970a9f02b4b7",
           "speaker": "Camille",
           "text": "Comme une photo sur la cheminée chez nous, alors ?",
           "en": "Like a photo on the mantelpiece at our place, then?",
           "vi": "Vậy giống bức ảnh trên lò sưởi nhà các anh à?"
         },
         {
+          cell_id: "f08ea267-808b-4bc2-a07e-4e348bf4302e",
           "speaker": "Hà",
           "text": "Oui, sauf qu'on y parle, on y allume de l'encens. C'est une présence active.",
           "en": "Yes, except we talk to them, we light incense. It's an active presence.",
@@ -6252,6 +6518,7 @@ export const lessons: FrenchLesson[] =           [
       "tip_advice_vi": "Khi mô tả khác biệt etiquette với đồng nghiệp Pháp, tránh ba bẫy: (1) « ranking » các văn hóa (cái nào « đúng » hơn) — không có; (2) generalize cho toàn dân tộc (« tous les Vietnamiens sont… ») — luôn nói « beaucoup », « souvent », « la plupart »; (3) « apologize » cho văn hóa của mình — không cần. Kỹ thuật hữu ích: cho ví dụ song song « Khi sếp Pháp nói X, ý là Y; khi sếp Việt nói X, ý có thể là Z hoặc W tùy bối cảnh ». Khi làm việc trong môi trường hỗn hợp, hãy hỏi sếp/đồng nghiệp Pháp một câu thẳng « Comment tu préfères qu'on te dise quand on n'est pas d'accord — en réunion publique ou en aparté ? » — câu này khiến cả hai bên cùng tham gia thiết kế protocol giao tiếp, thay vì giả định.",
       "vocabulary": [
         {
+          cell_id: "137c4d4f-103e-4c62-b03a-30636d567464",
           "word": "l'étiquette professionnelle",
           "en": "business etiquette",
           "vi": "phép xã giao công sở",
@@ -6260,6 +6527,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "lay-tee-KET pro-feh-syo-NEL — 'l'étiquette professionnelle'"
         },
         {
+          cell_id: "0ae4388b-2eeb-4498-bdcd-b28aa9987fd9",
           "word": "le franc-parler",
           "en": "directness in speech",
           "vi": "phong cách nói thẳng",
@@ -6268,6 +6536,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "luh frahn par-LAY — masc.; nasal 'an'; 'directness in speech'"
         },
         {
+          cell_id: "446dea2e-ca2b-4137-86b2-563439af36c7",
           "word": "la culture du consensus",
           "en": "consensus culture",
           "vi": "văn hóa đồng thuận",
@@ -6276,6 +6545,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "lah kool-TOOR doo kohn-sahn-SYUS — 'consensus' kept close to source"
         },
         {
+          cell_id: "b3fd07af-9def-412c-a042-11fcea46edcb",
           "word": "le rapport hiérarchique",
           "en": "hierarchical relation",
           "vi": "quan hệ cấp bậc",
@@ -6284,6 +6554,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "luh rah-POR ee-ay-rar-SHEEK — masc.; 'hiérarchique' silent 'h'"
         },
         {
+          cell_id: "7af0d55e-3734-49d4-adb1-a183f8d30f08",
           "word": "un aparté",
           "en": "a private aside",
           "vi": "trao đổi riêng",
@@ -6292,6 +6563,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "UN ah-par-TAY — 'aparté' = a private aside"
         },
         {
+          cell_id: "e3af2b86-5ff4-4b9c-98a9-29d583075054",
           "word": "sauver la face",
           "en": "to save face",
           "vi": "giữ thể diện",
@@ -6300,6 +6572,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "soh-VAY lah FAHSS — 'sauver la face' = save face"
         },
         {
+          cell_id: "f12cc969-e95d-4a0b-8678-91ce8b818573",
           "word": "un débat contradictoire",
           "en": "adversarial debate",
           "vi": "tranh luận trái chiều",
@@ -6308,6 +6581,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "UN day-BAH kohn-trah-deek-TWAR — 'adversarial debate'"
         },
         {
+          cell_id: "10753b0a-9a06-4166-b4ba-d56887a51d92",
           "word": "une harmonie de groupe",
           "en": "group harmony",
           "vi": "hoà khí tập thể",
@@ -6316,6 +6590,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ün ar-mo-NEE duh GROOP — 'harmonie de groupe'"
         },
         {
+          cell_id: "b8ec390f-4227-4556-8a6b-8df2a69b244d",
           "word": "prendre la parole",
           "en": "to speak up",
           "vi": "phát biểu",
@@ -6324,6 +6599,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "PRAHN-druh lah pah-ROL — 'prendre la parole' = to take the floor"
         },
         {
+          cell_id: "9cf1b9f0-1fa1-4688-b215-ab74fa0553fa",
           "word": "un code implicite",
           "en": "implicit code",
           "vi": "luật ngầm",
@@ -6334,24 +6610,28 @@ export const lessons: FrenchLesson[] =           [
       ],
       "dialogue": [
         {
+          cell_id: "839281e0-b7c6-484c-8665-658f11cea7ae",
           "speaker": "Sophie",
           "text": "En réunion ce matin, personne n'a contredit le directeur. C'était volontaire ?",
           "en": "Nobody contradicted the director in this morning's meeting. Was that intentional?",
           "vi": "Họp sáng nay không ai phản biện sếp. Đó là chủ ý à?"
         },
         {
+          cell_id: "32f6ac0a-6e65-4668-b5a5-2985892dc9d9",
           "speaker": "Tâm",
           "text": "Pas vraiment. Au Vietnam, on préfère un aparté après la réunion.",
           "en": "Not exactly. In Vietnam, we prefer a private chat after the meeting.",
           "vi": "Không hẳn. Ở Việt Nam, mình thích trao đổi riêng sau họp."
         },
         {
+          cell_id: "e8d01c93-c8e7-4e57-a93f-004cde5ad9d6",
           "speaker": "Sophie",
           "text": "Donc le silence ne veut pas dire accord ?",
           "en": "So silence doesn't mean agreement?",
           "vi": "Vậy im lặng không có nghĩa đồng ý?"
         },
         {
+          cell_id: "b10ca4bd-0d45-41f4-a619-1220ed9ad4a8",
           "speaker": "Tâm",
           "text": "Exactement. C'est un code implicite que beaucoup de Français mettent du temps à lire.",
           "en": "Exactly. It's an implicit code that many French speakers take time to read.",
@@ -6656,6 +6936,7 @@ export const lessons: FrenchLesson[] =           [
       "tip_advice_en": "Use the four-line French apology frame: (1) Name the specific mistake — 'I misread the invitation', not 'I was a mess yesterday'. (2) Give the cause in one short clause — 'I took it for a polite formula' — and stop; don't keep explaining, because that reads as self-justification, not contrition. (3) Take personal ownership — 'I should have asked, and I didn't' — without melodrama. (4) Propose a concrete next step — 'if the offer still stands, I'm free next Saturday' — which signals you actually want to repair, not just close the topic. Avoid three-paragraph apology texts (reads as performative), handwritten apology notes for minor blunders (French people reserve those for serious events like funerals or weddings — overkill here), and 'sorry gifts' (in French professional life, a bottle of wine after a no-show can look like a small bribe). One four-line message or one two-minute phone call clears it. Critically: after the apology lands, do not bring it up again in subsequent meetings — looping back to it forces your French interlocutor to keep reassuring you, and the awkwardness compounds. One clean acknowledgment, one proposed fix, then move on as if it never happened.",
       "vocabulary": [
         {
+          cell_id: "f69c68a6-30b7-4250-a514-08d47263e0ca",
           "word": "un quiproquo",
           "en": "a misunderstanding (humorous)",
           "vi": "hiểu lầm (nhẹ, có thể buồn cười)",
@@ -6664,6 +6945,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "kee-proh-KOH (three short syllables, final 'o' like English 'go')"
         },
         {
+          cell_id: "93154e55-8625-44c2-b293-252621554841",
           "word": "un malentendu",
           "en": "a misunderstanding (serious)",
           "vi": "hiểu lầm (nghiêm trọng)",
@@ -6672,6 +6954,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ma-lah(n)-tah(n)-DOO (two nasal middle syllables; final 'du' = English 'doo' but with pursed lips)"
         },
         {
+          cell_id: "082b71d0-9ef5-4843-832d-51be1c34a216",
           "word": "une formule de politesse",
           "en": "a polite formula",
           "vi": "câu xã giao",
@@ -6680,6 +6963,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "for-MEWL duh poh-lee-TESS (final 'esse' = English 'tess'; 'mule' has the rounded French 'u')"
         },
         {
+          cell_id: "76c85230-39ea-4b90-afdb-b5e36c79084a",
           "word": "une maladresse",
           "en": "a clumsy mistake",
           "vi": "sự vụng về",
@@ -6688,6 +6972,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ma-la-DRESS (three syllables, final 'esse' rhymes with English 'dress')"
         },
         {
+          cell_id: "f83e1ff4-620e-46f4-8927-3f6829dd1a67",
           "word": "présenter ses excuses",
           "en": "to offer an apology",
           "vi": "đưa lời xin lỗi",
@@ -6696,6 +6981,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "pray-zah(n)-TAY say-zek-SKEWZ (note the liaison 'sé-z-èk' — the 's' attaches to the next vowel)"
         },
         {
+          cell_id: "3b280639-d9f9-430e-81e3-fa5d378963d2",
           "word": "reconnaître ses torts",
           "en": "to admit fault",
           "vi": "thừa nhận sai",
@@ -6704,6 +6990,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ruh-koh-NEH-truh say TOR (final 's' on 'torts' is silent — rhymes with English 'tore')"
         },
         {
+          cell_id: "7facb08b-d218-4763-8b8e-444d41148b5c",
           "word": "un faux pas",
           "en": "a social blunder",
           "vi": "sai sót xã giao",
@@ -6712,6 +6999,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "FOH PAH (same as the English borrowing — final 'x' and 's' are silent)"
         },
         {
+          cell_id: "4882d530-3d20-42a2-bd4e-f511c3b797b7",
           "word": "se rattraper",
           "en": "to make amends / catch up",
           "vi": "sửa lỗi / bù",
@@ -6720,6 +7008,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "suh ra-tra-PAY (final '-er' ending rhymes with English 'pay')"
         },
         {
+          cell_id: "375eb94b-b791-487c-b370-16b217b3bf31",
           "word": "un geste réparateur",
           "en": "a repair gesture",
           "vi": "hành động sửa lỗi",
@@ -6728,6 +7017,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ZHEST ray-pa-ra-TUHR ('zh' = the 's' in 'measure'; final 'eur' = uh+r, lips rounded)"
         },
         {
+          cell_id: "ecb701a6-2145-455c-b0cb-df7b7b9272d4",
           "word": "sans arrière-pensée",
           "en": "without hidden motive",
           "vi": "không có ý đồ ẩn",
@@ -6738,24 +7028,28 @@ export const lessons: FrenchLesson[] =           [
       ],
       "dialogue": [
         {
+          cell_id: "89c20528-3e0e-4b85-b305-ec265d62cb70",
           "speaker": "Linh (au téléphone)",
           "text": "Salut Camille, je voulais revenir sur l'invitation de samedi — j'ai compris trop tard que c'était sérieux.",
           "en": "Hi Camille — I wanted to circle back about Saturday's invitation. I realized too late that you actually meant it.",
           "vi": "Chào Camille, em muốn nói lại về lời mời thứ bảy — em hiểu quá muộn rằng đó là thật."
         },
         {
+          cell_id: "6bc845ba-9ab4-4d65-becf-141937053be9",
           "speaker": "Camille",
           "text": "Ah ! J'ai cru que tu avais simplement oublié.",
           "en": "Oh! I assumed you'd just forgotten.",
           "vi": "À! Anh tưởng em chỉ quên thôi."
         },
         {
+          cell_id: "b1b7e74d-94b6-4a0b-8bfe-a152e18074ac",
           "speaker": "Linh",
           "text": "Non, j'ai pris ça pour une formule de politesse, à la vietnamienne. Je m'en excuse.",
           "en": "No — I took it as a polite formula, the Vietnamese way. I'm sorry about that.",
           "vi": "Không, em nghĩ là câu xã giao kiểu Việt. Em xin lỗi."
         },
         {
+          cell_id: "05052449-bd24-43d2-bc1c-46093db3ad49",
           "speaker": "Camille",
           "text": "Pas de souci, maintenant je comprends. Samedi prochain, ça marche pour toi ?",
           "en": "No worries — I get it now. Does next Saturday work for you?",
@@ -7087,6 +7381,7 @@ export const lessons: FrenchLesson[] =           [
       "tip_advice_en": "Before the conference: read the full program, flag 5–7 people you specifically want to meet, and prepare three versions of your self-introduction (15-second elevator, 60-second standard, 3-minute deep-dive). At the event: arrive 15 minutes before the opening — that's the golden window for unforced introductions before sessions begin. Bring physical business cards printed in French and English (skip Vietnamese for an international audience — it makes the card feel inward-facing). Take quick post-conversation notes — not full notes, just two keywords per person that will help you write a useful follow-up email later. Within 24–48 hours of the conference, send personalized emails to the 5–7 contacts you had real exchanges with — not a bulk newsletter, only people for whom you have something specific to send (a document you mentioned, an offer of coffee when they next pass through Hanoi, a report you promised). In Q&A sessions, if you take the floor on behalf of your delegation, open with 'Au nom de la délégation vietnamienne…' (on behalf of the Vietnamese delegation) — this establishes standing immediately. One US/UK-specific calibration note: in French conference culture, asking a panelist a precise critical question is a sign of respect, not a challenge — anglophones used to gentler 'thank-you-for-your-talk' questions can lean in here.",
       "vocabulary": [
         {
+          cell_id: "de320699-53ce-4473-8362-9d320329e9b3",
           "word": "une délégation",
           "en": "a delegation",
           "vi": "đoàn đại biểu",
@@ -7095,6 +7390,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "day-lay-gah-SYO(n) (four syllables, nasal final; rhymes with 'on' said through the nose)"
         },
         {
+          cell_id: "6bdffd94-b173-4612-9f4b-ec1318327117",
           "word": "un attaché commercial",
           "en": "trade attaché",
           "vi": "tham tán thương mại",
@@ -7103,6 +7399,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ah-tah-SHAY koh-mair-SYAL (the 'attaché' is the same as the English borrowing — final syllables stressed)"
         },
         {
+          cell_id: "0d9039c4-d81b-4c8f-9aed-8345e8b1df8e",
           "word": "une intervention",
           "en": "a (panel) intervention",
           "vi": "bài phát biểu",
@@ -7111,6 +7408,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ah(n)-tair-vah(n)-SYO(n) (three nasal vowels; in French conference context this means a panel contribution, not an interruption)"
         },
         {
+          cell_id: "e22c2b16-987a-486d-bbb2-a00540218de0",
           "word": "un panel d'experts",
           "en": "expert panel",
           "vi": "phiên chuyên gia",
@@ -7119,6 +7417,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "pah-NEL dek-SPAIR (final 's' on 'experts' silent; 'expert' rhymes with English 'air')"
         },
         {
+          cell_id: "76d51924-b26d-46f7-8a0b-6b904acd1cab",
           "word": "prendre la parole",
           "en": "to take the floor",
           "vi": "phát biểu",
@@ -7127,6 +7426,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "PRAH(n)-druh lah pah-ROHL (nasal first syllable; final 'le' silent on 'parole')"
         },
         {
+          cell_id: "84bdc425-27e4-44bf-8d0f-a84325fb523f",
           "word": "la francophonie",
           "en": "the French-speaking world",
           "vi": "khối Pháp ngữ",
@@ -7135,6 +7435,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "frah(n)-koh-foh-NEE (four syllables; ends with stressed 'NEE' like English 'knee')"
         },
         {
+          cell_id: "7417b7fd-adb7-4354-b542-235034f88141",
           "word": "un partenariat bilatéral",
           "en": "bilateral partnership",
           "vi": "quan hệ đối tác song phương",
@@ -7143,6 +7444,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "par-tuh-nah-RYAH bee-lah-tay-RAL (formal diplomatic register; 'partenariat' is a heavy word — slow it down)"
         },
         {
+          cell_id: "7e80c8ea-903c-464d-a9bd-f48184f3e9ef",
           "word": "à titre personnel",
           "en": "in a personal capacity",
           "vi": "với tư cách cá nhân",
@@ -7151,6 +7453,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ah TEE-truh pair-so-NEL (signal phrase: switches you from official-position mode to personal-opinion mode — a key B2 register move)"
         },
         {
+          cell_id: "3fa393b4-5908-4da6-aa12-ac44482d2a05",
           "word": "une note diplomatique",
           "en": "a diplomatic note",
           "vi": "công hàm",
@@ -7159,6 +7462,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "NOHT dee-ploh-mah-TEEK (formal written diplomatic communication between governments — heavier than 'a letter')"
         },
         {
+          cell_id: "ab52a387-7234-465a-9cd0-269fed1e2d71",
           "word": "une feuille de route",
           "en": "a roadmap",
           "vi": "lộ trình hành động",
@@ -7169,24 +7473,28 @@ export const lessons: FrenchLesson[] =           [
       ],
       "dialogue": [
         {
+          cell_id: "01465771-b7ae-4b14-9cd5-5c22f8215c98",
           "speaker": "M. Diop",
           "text": "Vous représentez quel pays exactement ?",
           "en": "Which country do you represent, exactly?",
           "vi": "Anh đại diện nước nào cụ thể?"
         },
         {
+          cell_id: "a12d2c6c-c78e-4024-8f17-ca4fb7ef8d15",
           "speaker": "Quân",
           "text": "Le Vietnam — délégation du ministère du Plan. Votre intervention de ce matin m'a beaucoup intéressé.",
           "en": "Vietnam — Ministry of Planning delegation. I found your panel contribution this morning very interesting.",
           "vi": "Việt Nam — đoàn Bộ Kế hoạch. Bài phát biểu sáng nay của ngài rất khiến em quan tâm."
         },
         {
+          cell_id: "4be1ddbb-03e1-4d5c-a3f8-80c22df6ae30",
           "speaker": "M. Diop",
           "text": "Merci. Quel point en particulier ?",
           "en": "Thank you. Which point in particular?",
           "vi": "Cảm ơn. Điểm cụ thể nào?"
         },
         {
+          cell_id: "efb30144-a4c2-4d1b-a4fb-a7644bcffcb8",
           "speaker": "Quân",
           "text": "Votre lecture du financement vert pour les pays à revenu intermédiaire — applicable au Vietnam.",
           "en": "Your reading of green financing for middle-income countries — directly applicable to Vietnam.",
@@ -7506,6 +7814,7 @@ export const lessons: FrenchLesson[] =           [
       "tip_advice_en": "Before the meal: ask about allergies, vegetarian preferences, and spice tolerance ('Hanoi pho mild' vs 'Hue beef noodle fiery'). Plan 4–6 varied dishes (soup, savory main, stir-fry, salad, dessert) instead of 10–12, which pressure-eats your guest. Seating: place the French guest opposite or adjacent to the main host — not at the 'end seat' where they can't follow conversation. During the meal: serve a small portion onto their plate in the first minute to break the 'is it OK to take from the middle?' freeze ('je vous mets un peu de chả giò pour commencer'); explain each dish in 1–2 sentences ('le bún chả est un plat hanoïen — grilled pork in a sweet-savory fish broth'); check in mid-meal ('vous aimez ? trop épicé ?'). After the meal: don't push dessert — Vietnamese chè can be too sweet for French palates; fresh fruit (mango, lychee, longan) is the safe call. Don't send leftovers home on a first visit — the French read this as a 'doggy bag' and it makes a formal first dinner feel like a casual restaurant. A US/UK calibration note: in Vietnamese homes, refilling a guest's bowl is a constant expression of warmth; for French guests, ask once before refilling ('je vous en remets?') and respect 'non merci, ça va bien' the first time — don't repeat the offer three times the way you might with Vietnamese family.",
       "vocabulary": [
         {
+          cell_id: "f9e1e287-20b3-48a7-942b-9143848b34a9",
           "word": "un repas vietnamien",
           "en": "a Vietnamese meal",
           "vi": "bữa cơm Việt",
@@ -7514,6 +7823,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ruh-PAH vyet-nah-MYA(n) (the 'mien' suffix is nasal — like English 'myan' through the nose)"
         },
         {
+          cell_id: "27fdc130-3bc1-42f0-aa4b-090f4b41edaa",
           "word": "un plat à partager",
           "en": "a shared dish",
           "vi": "món ăn chung",
@@ -7522,6 +7832,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "PLAH ah par-tah-ZHAY ('plat' = 'PLAH', final 't' silent; final 'ger' = 'zhay')"
         },
         {
+          cell_id: "01e7fd4e-86b7-423d-a7a6-ef926c42ece9",
           "word": "la sauce nuoc-cham",
           "en": "nuoc-cham sauce",
           "vi": "nước chấm",
@@ -7530,6 +7841,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "SOHS nwok-SHAH(m) (French speakers approximate Vietnamese 'nước chấm' as 'nwok-shahm' — final nasal)"
         },
         {
+          cell_id: "1b158bbd-25e2-4462-8103-82efb147d20d",
           "word": "le piment",
           "en": "chili",
           "vi": "ớt",
@@ -7538,6 +7850,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "pee-MAH(n) (nasal final, no 't' sound; very different from English 'pigment')"
         },
         {
+          cell_id: "4848501f-0351-44e7-840e-a753f5bdc653",
           "word": "des herbes fraîches",
           "en": "fresh herbs",
           "vi": "rau thơm",
@@ -7546,6 +7859,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "DEZ-airb FRESH (liaison: 'des' becomes 'dez' before vowel; 'h' of 'herbes' is silent)"
         },
         {
+          cell_id: "472401d7-b958-4871-860c-55aa50536ef1",
           "word": "la convivialité",
           "en": "conviviality / shared joy",
           "vi": "không khí ấm cúng",
@@ -7554,6 +7868,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ko(n)-vee-vyah-lee-TAY (a culturally weighted French word: the warmth of sharing a meal, not just 'conviviality')"
         },
         {
+          cell_id: "37f2fb46-833f-45d4-820c-2f442a98a5b9",
           "word": "trinquer",
           "en": "to clink glasses",
           "vi": "chạm ly",
@@ -7562,6 +7877,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "tra(n)-KAY (nasal first syllable; specifically the gesture of clinking glasses with eye contact — important French custom)"
         },
         {
+          cell_id: "bfa465b3-94bb-482f-b68a-466ea6d4ea92",
           "word": "se resservir",
           "en": "to help oneself again",
           "vi": "lấy thêm",
@@ -7570,6 +7886,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "suh ruh-sair-VEER (reflexive 'se' = 'suh'; rolled 'r' on '-vir')"
         },
         {
+          cell_id: "4413dca2-c9d8-4c08-95f0-ecec8c6990ae",
           "word": "un dessert traditionnel",
           "en": "traditional dessert",
           "vi": "tráng miệng truyền thống",
@@ -7578,6 +7895,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "deh-SAIR trah-dee-syo-NEL (note: 'dessert' has stress on 2nd syllable in French, unlike English 'DESSert')"
         },
         {
+          cell_id: "fbb7a87f-034f-435b-bfaa-4a9f1ac0e8e9",
           "word": "l'art de recevoir",
           "en": "the art of hosting",
           "vi": "nghệ thuật đón tiếp",
@@ -7588,24 +7906,28 @@ export const lessons: FrenchLesson[] =           [
       ],
       "dialogue": [
         {
+          cell_id: "72534da0-74fe-4934-bcd2-a68e93b38f6b",
           "speaker": "M. Bertrand",
           "text": "Tout sent merveilleusement bon ! Comment je commence ?",
           "en": "Everything smells wonderful! How do I start?",
           "vi": "Mọi thứ thơm tuyệt vời! Em bắt đầu thế nào?"
         },
         {
+          cell_id: "d3e252e6-dfab-4002-aac2-c387884e8ac1",
           "speaker": "Linh",
           "text": "On commence par la soupe. Ensuite, prenez ce que vous voulez au centre — c'est à partager.",
           "en": "We start with the soup. After that, take whatever you'd like from the center — it's all to share.",
           "vi": "Bắt đầu bằng canh. Sau đó, anh lấy gì tùy ý ở giữa — là để chia sẻ."
         },
         {
+          cell_id: "c07dd05e-b9e4-460a-9515-23f24b7bf7c6",
           "speaker": "M. Bertrand",
           "text": "Je peux servir directement avec mes baguettes ?",
           "en": "Can I serve myself directly with my chopsticks?",
           "vi": "Anh có thể gắp trực tiếp bằng đũa của mình không?"
         },
         {
+          cell_id: "801dab3e-9d9d-4b8c-8bd8-9d222d35f083",
           "speaker": "Linh",
           "text": "Oui, c'est tout à fait normal chez nous. Je vous mets un peu de chả giò pour commencer.",
           "en": "Yes — completely normal here. Let me put a bit of chả giò on your plate to get you started.",
@@ -7955,6 +8277,7 @@ export const lessons: FrenchLesson[] =           [
       "tip_advice_en": "The 3-minute Tết explanation format that works on both French and anglophone audiences: (1) Nearest Western equivalent ('Christmas + Independence Day + All Saints' Day' for French; 'Christmas + Thanksgiving + Memorial Day' for US listeners — adjust the mental anchor to the listener's calendar). (2) One key difference ('but we do it together as an extended family, not each at our own house'). (3) One personal anecdote ('when I was 7, my grandmother explained that…') — anecdotes carry more weight than generalizations. (4) A specific invitation if appropriate ('if you're in Hanoi in February, come over on day two or three').\n\nWhat to avoid: dumping 10 customs at once (overwhelms the listener and they remember none), and using 'c'est notre culture' or 'it's our culture' to end a discussion (sounds defensive, reads as 'don't ask further'). When a French or anglophone interlocutor asks a slightly aggressive question ('do you really give kids money? isn't that weird?'), don't get defensive — ask back 'qu'est-ce qui te paraît étrange?' (what strikes you as strange about it?) before answering. This shifts you from 'cultural ambassador on defense' to 'two adults comparing notes'.\n\nOn family structure: use 'many Vietnamese' ('beaucoup de Vietnamiens') instead of 'the Vietnamese' ('les Vietnamiens') to avoid generalizing — this is also good practice when talking about anglophone cultures back the other way. A US/UK-specific calibration: anglophones often expect a 'colorful traditions' tone when asking about Asian holidays; resist matching it. The right register is matter-of-fact, the way a Frenchman explains Christmas to a Vietnamese friend — without exoticism in either direction.",
       "vocabulary": [
         {
+          cell_id: "bc42a578-5eba-4560-899f-e90aeb6c4762",
           "word": "le Tết (nouvel an lunaire)",
           "en": "Tết (Lunar New Year)",
           "vi": "Tết Nguyên Đán",
@@ -7963,6 +8286,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "TET (Vietnamese loanword; short flat 'e', rhymes with English 'pet')"
         },
         {
+          cell_id: "c9461a6d-0c2e-4180-8a9f-002799b470c6",
           "word": "un village natal",
           "en": "hometown",
           "vi": "quê",
@@ -7971,6 +8295,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "vee-LAHZH nah-TAL ('the village where one was born' — closer to English 'hometown' than 'birthplace'; carries weight in both French and Vietnamese culture)"
         },
         {
+          cell_id: "c7ddb88f-1566-4233-b28d-bb966c6e450e",
           "word": "l'enveloppe rouge / lì xì",
           "en": "red envelope (lucky money)",
           "vi": "lì xì",
@@ -7979,6 +8304,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "lah(n)v-LOHP ROOZH (nasal first; final 'rouge' = 'roozh' with the 'measure' s-sound)"
         },
         {
+          cell_id: "902a1541-3731-4cc3-bcf0-6748b9f6c0d1",
           "word": "le culte des ancêtres",
           "en": "ancestor veneration",
           "vi": "thờ cúng tổ tiên",
@@ -7987,6 +8313,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "luh KULT day-zah(n)-SEH-truh (liaison 'des ancêtres' = 'day-zah(n)'; final '-tre' = soft 'truh')"
         },
         {
+          cell_id: "ac6b1875-429e-4e12-95fa-903f3f6f6348",
           "word": "la famille élargie",
           "en": "extended family",
           "vi": "đại gia đình",
@@ -7995,6 +8322,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "fah-MEE-yuh ay-lar-ZHEE (final '-mille' = 'mee-yuh', a key tricky French ending; 'élargie' ends with 'zhee')"
         },
         {
+          cell_id: "70f17005-a100-410e-b51e-d4c42cd4cede",
           "word": "un repas réunion",
           "en": "a reunion meal",
           "vi": "bữa cơm sum họp",
@@ -8003,6 +8331,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ruh-PAH ray-yoo-NYO(n) (final '-nion' = 'nyo(n)' with nasal; weighty word, used for the central Tết family meal)"
         },
         {
+          cell_id: "147c57ab-d35e-4bbd-9736-a7de66899026",
           "word": "un rituel",
           "en": "a ritual",
           "vi": "nghi thức",
@@ -8011,6 +8340,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ree-too-EL (three syllables; the 'u' is the French rounded 'u'; rhymes with English 'ell')"
         },
         {
+          cell_id: "070447a5-5244-4ff5-9c3e-ae4b65e64034",
           "word": "la piété filiale",
           "en": "filial piety",
           "vi": "chữ hiếu",
@@ -8019,6 +8349,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "pyay-TAY fee-LYAL (the Confucian concept of filial piety — central to Vietnamese family structure; French has the term but it's used much less in everyday French than Vietnamese 'chữ hiếu')"
         },
         {
+          cell_id: "abc1508d-6dd4-46d8-b47d-a6805a444cab",
           "word": "la cohésion familiale",
           "en": "family cohesion",
           "vi": "sự gắn kết gia đình",
@@ -8027,6 +8358,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "koh-ay-ZYO(n) fah-mee-LYAL (nasal '-sion'; useful neutral phrasing when discussing Vietnamese family structure with French speakers — less loaded than 'piété filiale')"
         },
         {
+          cell_id: "8d2e56fb-6eed-4aeb-b239-32d3d5b6cc3c",
           "word": "la fête traditionnelle",
           "en": "traditional holiday",
           "vi": "lễ truyền thống",
@@ -8037,24 +8369,28 @@ export const lessons: FrenchLesson[] =           [
       ],
       "dialogue": [
         {
+          cell_id: "dbdbdfd9-ed4a-4433-b528-217c3037e1db",
           "speaker": "Julien",
           "text": "Le Tết, c'est comme le nouvel an chinois, c'est ça ?",
           "en": "Tết — that's like Chinese New Year, right?",
           "vi": "Tết giống Tết Trung Quốc đúng không?"
         },
         {
+          cell_id: "24e4bd67-20c9-45aa-bf52-333d52bc9c47",
           "speaker": "Mai",
           "text": "Pas tout à fait — même calendrier lunaire, mais traditions et plats différents.",
           "en": "Not quite — same lunar calendar, but different traditions and foods.",
           "vi": "Không hẳn — cùng âm lịch, nhưng truyền thống và món khác."
         },
         {
+          cell_id: "b71d1e42-ba17-4866-aa45-214621219e9a",
           "speaker": "Julien",
           "text": "Ah, désolé, je faisais le raccourci. Qu'est-ce qui distingue le Tết ?",
           "en": "Ah, sorry — I was taking a shortcut. What makes Tết distinct?",
           "vi": "À, xin lỗi, anh nói tắt. Điều gì làm Tết khác biệt?"
         },
         {
+          cell_id: "6ca9d0e8-12db-4216-898a-b927e616425c",
           "speaker": "Mai",
           "text": "Le bánh chưng — un gâteau de riz carré qui symbolise la terre. Très vietnamien.",
           "en": "Bánh chưng — a square sticky-rice cake that symbolizes the earth. Very Vietnamese.",
@@ -8406,6 +8742,7 @@ export const lessons: FrenchLesson[] =           [
       "tip_advice_en": "The five-step frame for a French difficult conversation: (1) Book a private slot — never the hallway, never Slack. Schedule 30 minutes in a real room, stated topic. (2) Open with stated intent: 'Je voudrais qu'on parle franchement de X. Mon objectif n'est pas de te culpabiliser, mais de trouver une façon de travailler ensemble qui marche pour les deux.' This is the single most important sentence in your kit — it defines the conversation as joint problem-solving, not blame. (3) State fact + impact: 'When you do X, it creates Y for my team.' Don't impute motive ('you did this because you don't respect us'); stay on observable behavior and concrete impact. The French 'fait/impact' frame maps directly onto US/UK 'SBI' (Situation/Behavior/Impact) — same skill, slightly different vocabulary. (4) Invite response: 'Comment tu vois ça, toi?' Never monologue past three sentences before pausing. (5) Propose a concrete experiment: 'For the next two weeks, what if we tried Z?' Time-boxed experiments work because they reduce the perceived stakes of any individual change.\n\nThings to avoid: angry 'tu' (you sound out of control), dragging up the past ('and six months ago you also…' — irrelevant and weakens your current point), generalizations ('les Français always…' / 'in France you people…'), and tears (genuinely a problem in French professional contexts — they freeze the other person and stall the conversation rather than evoking sympathy). After the meeting: send a short note 'Merci pour cet échange — on refait un point dans deux semaines?' Then drop the topic in everyday interactions. Looping back to it forces the other person to keep defending themselves, which erases the goodwill the conversation built.",
       "vocabulary": [
         {
+          cell_id: "495aa0bb-c13a-41d2-bef7-8bc261f7e05d",
           "word": "un malentendu culturel",
           "en": "cultural misunderstanding",
           "vi": "hiểu lầm văn hóa",
@@ -8414,6 +8751,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ma-lah(n)-tah(n)-DOO kuhl-too-REL (the 'u' in 'culturel' is rounded French 'u'; weighty diplomatic term)"
         },
         {
+          cell_id: "40fae578-c1a6-4223-9876-1debba28b65f",
           "word": "un choc culturel",
           "en": "culture shock",
           "vi": "sốc văn hóa",
@@ -8422,6 +8760,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "SHOK kuhl-too-REL ('choc' = SHOK, one syllable, like English 'shock')"
         },
         {
+          cell_id: "005c936d-4c05-4c12-b57f-44534999848d",
           "word": "une critique frontale",
           "en": "direct criticism",
           "vi": "phê bình trực diện",
@@ -8430,6 +8769,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "kree-TEEK fro(n)-TAL (direct, head-on criticism — the French default in professional settings)"
         },
         {
+          cell_id: "1515a6e4-c2a7-4c6f-9d12-c0a46fec405f",
           "word": "un cadre hiérarchique",
           "en": "hierarchical framework",
           "vi": "khung cấp bậc",
@@ -8438,6 +8778,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "KAH-druh yay-rar-SHEEK ('cadre' = soft 'kah-druh'; the 'h' in 'hiérarchique' is silent)"
         },
         {
+          cell_id: "d22f9abe-7390-40c6-99e2-262cdb39fd49",
           "word": "un équilibre vie pro / vie perso",
           "en": "work-life balance",
           "vi": "cân bằng công việc-đời sống",
@@ -8446,6 +8787,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ay-kee-LEE-bruh vee proh vee pair-SOH (very common French workplace term; 'pro' and 'perso' are casual shortenings of 'professionnelle' and 'personnelle')"
         },
         {
+          cell_id: "d65ec728-5903-4fda-8a08-d77b3d3f11b5",
           "word": "poser un cadre",
           "en": "to set boundaries",
           "vi": "đặt khung / ranh giới",
@@ -8454,6 +8796,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "poh-ZAY uh(n) KAH-druh (literally 'to lay down a frame'; French equivalent of US/UK 'to set boundaries')"
         },
         {
+          cell_id: "abfec6c9-54ae-455c-82f5-7bfa3976ce08",
           "word": "désamorcer",
           "en": "to defuse",
           "vi": "hạ nhiệt",
@@ -8462,6 +8805,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "day-zah-mor-SAY (literally 'to remove the primer from (a bomb)'; used for defusing tense situations)"
         },
         {
+          cell_id: "1f7c9136-b9ab-4239-a129-d46e798b124e",
           "word": "un point de friction",
           "en": "point of friction",
           "vi": "điểm va chạm",
@@ -8470,6 +8814,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "PWA(n) duh freek-SYO(n) ('point' = nasal 'PWA(n)'; useful neutral term for naming a conflict without escalating)"
         },
         {
+          cell_id: "aa3cc89f-e76d-4328-8ed6-f9a63449234a",
           "word": "être sur la même longueur d'onde",
           "en": "to be on the same wavelength",
           "vi": "cùng tần số",
@@ -8478,6 +8823,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ETR sur lah MEM lo(n)-GUHR DOH(n)D (same metaphor as English 'on the same wavelength' — radio reference)"
         },
         {
+          cell_id: "c10bf718-7dbf-4dd4-b76e-cc64b0b2327a",
           "word": "trouver un terrain d'entente",
           "en": "to find common ground",
           "vi": "tìm điểm chung",
@@ -8488,24 +8834,28 @@ export const lessons: FrenchLesson[] =           [
       ],
       "dialogue": [
         {
+          cell_id: "d64c8bb8-cce3-4e7f-aa36-3e3e352d655c",
           "speaker": "Tâm",
           "text": "Sophie, je peux te demander 30 minutes en aparté cet après-midi ?",
           "en": "Sophie, can I ask for 30 minutes in private this afternoon?",
           "vi": "Sophie, em có thể xin chị 30 phút nói riêng chiều nay không?"
         },
         {
+          cell_id: "3a077609-7f19-4c42-b9c2-21fab41913b8",
           "speaker": "Sophie",
           "text": "Bien sûr. Quel est le sujet ?",
           "en": "Of course. What's the topic?",
           "vi": "Tất nhiên. Chủ đề gì?"
         },
         {
+          cell_id: "54154648-357d-4825-82a3-7676737f43ce",
           "speaker": "Tâm",
           "text": "Quelque chose qui me gêne dans nos réunions — je veux qu'on en parle franchement.",
           "en": "Something that's been bothering me in our meetings — I'd like us to talk about it frankly.",
           "vi": "Một điều khiến em không thoải mái trong các cuộc họp — em muốn mình nói thẳng."
         },
         {
+          cell_id: "b4af6a10-0e22-4983-ae58-61b733b880df",
           "speaker": "Sophie",
           "text": "D'accord. 15h30 dans la salle Versailles ?",
           "en": "Got it. 3:30 PM in the Versailles room?",
@@ -8849,6 +9199,7 @@ export const lessons: FrenchLesson[] =           [
       "tip_advice_en": "Five practical moves to build real friendship with a French expat in Vietnam: (1) Propose the second meeting within two weeks of the first — wait longer and they read it as polite disinterest. The French (and US/UK) tempo expects regular recontact; long silences signal 'we're not really doing this'. (2) Invite them to your home sooner than you'd invite a Vietnamese friend — after 3–4 outside meetings is fine. In French culture, a home invitation is a significant friendship marker, and they will reciprocate. Anglophone parallel: same calibration works for British and American expats — the home invite is the inflection point. (3) Proactively ask about personal life — family, the reason they came to Vietnam, what comes next. Don't wait for them to open; French and anglophone expats often appreciate the curiosity. Don't make it an interview, though; share equivalently about yourself. (4) Accept that they will leave in 2–5 years and right-size your investment accordingly. Don't see them as a permanent local friend; see them as a bridge to a long-term Paris/London/Brussels network. Real friendships survive the move home if you build them properly before they go. (5) Bring them into your Vietnamese friend network — it's hard for an expat to enter Vietnamese social circles alone, and they'll be enormously grateful.\n\nThings to avoid: expecting them to drop every French habit upon arriving in Vietnam (they won't, and asking them to is condescending); treating them as your 'cultural informant' to practice your French (you'll feel like a teacher to them, which kills equality); waiting for them to make every move (the French expect you to be proactive — they'll read passivity as disinterest). The single biggest mismatch I see: Vietnamese learners assume the slow-tempo move is more respectful, but to a French or anglophone friend it can read as 'you're not really into this' — counter it by initiating more often than your Vietnamese instincts suggest.",
       "vocabulary": [
         {
+          cell_id: "d7bebd5c-c1be-49ac-8a16-01a3ea7b32cf",
           "word": "un expatrié",
           "en": "an expat",
           "vi": "người nước ngoài sinh sống lâu dài",
@@ -8857,6 +9208,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ek-spah-tree-AY (final '-é' = 'ay'; specifically a long-term foreign resident, not a tourist)"
         },
         {
+          cell_id: "578ff556-45c9-412d-bd69-f1beff74a6b8",
           "word": "l'amitié",
           "en": "friendship",
           "vi": "tình bạn",
@@ -8865,6 +9217,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "lah-mee-TYAY (the 'l' attaches; final 'tié' = 'tyay'; rhymes with English 'pay')"
         },
         {
+          cell_id: "931548a2-7973-4154-a568-9169ead94410",
           "word": "un cercle d'amis",
           "en": "a circle of friends",
           "vi": "vòng bạn bè",
@@ -8873,6 +9226,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "SAIR-kluh dah-MEE (final 'cle' = soft 'kluh'; closer to English 'social circle' than 'friend group')"
         },
         {
+          cell_id: "89a1db13-f2b4-4fd4-b1cb-55da13fa24be",
           "word": "se voir régulièrement",
           "en": "to meet regularly",
           "vi": "gặp đều đặn",
@@ -8881,6 +9235,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "suh VWAR ray-gyoo-LYAIR-mah(n) (the '-ment' adverb ending is nasal 'mah(n)'; 'régulièrement' is a long word — slow it down)"
         },
         {
+          cell_id: "b4f54a50-39c5-4502-9d44-e80252422bd0",
           "word": "un cadre informel",
           "en": "an informal setting",
           "vi": "khung không chính thức",
@@ -8889,6 +9244,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "KAH-druh a(n)-for-MEL (nasal middle on 'informel'; useful for proposing low-stakes hangouts)"
         },
         {
+          cell_id: "4811c50f-5c46-4d17-ac0a-3d158efdec7c",
           "word": "être au feeling",
           "en": "to play it by ear (anglicism)",
           "vi": "theo cảm xúc / tự nhiên",
@@ -8897,6 +9253,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ETR oh FEE-ling (English loanword 'feeling' kept; means 'play it by ear / go with the vibe' — very common in casual French)"
         },
         {
+          cell_id: "78cb86ab-3980-446f-a758-7cfa3651fbf8",
           "word": "un coup de cœur",
           "en": "a sudden affinity",
           "vi": "cảm tình tự phát",
@@ -8905,6 +9262,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "KOO duh KUHR (final 'cœur' has the 'eu' sound — no English equivalent, round lips and say 'er'; means a spontaneous emotional pull)"
         },
         {
+          cell_id: "e2c3e648-3060-442b-ba0d-152e76e9033b",
           "word": "un point d'ancrage",
           "en": "an anchor point",
           "vi": "điểm neo",
@@ -8913,6 +9271,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "PWA(n) dah(n)-KRAHZH (two nasals; 'ancrage' literally an anchor — used metaphorically for a stable person/place in your life)"
         },
         {
+          cell_id: "acac4300-e30e-464e-aff1-a601866f248f",
           "word": "avoir des affinités",
           "en": "to have things in common",
           "vi": "có điểm chung",
@@ -8921,6 +9280,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ah-VWAR day-zah-fee-nee-TAY (liaison 'des affinités' = 'day-zah'; means clicking on shared interests/values)"
         },
         {
+          cell_id: "3ed17136-f6a2-467c-9e98-a3e229833b78",
           "word": "tutoyer / vouvoyer",
           "en": "to use tu / vous",
           "vi": "dùng tu / vous",
@@ -8931,24 +9291,28 @@ export const lessons: FrenchLesson[] =           [
       ],
       "dialogue": [
         {
+          cell_id: "2ccbc796-98e3-4a7d-9e84-130c4914611c",
           "speaker": "Antoine",
           "text": "Mai, ça fait trois fois qu'on se voit en café — on passe au tu ?",
           "en": "Mai, this is the third time we've met for coffee — should we switch to tu?",
           "vi": "Mai, mình gặp ba lần ở quán — chuyển sang « tu » nhé?"
         },
         {
+          cell_id: "9e4f4ac6-00e5-463c-9973-457b59a3f7b6",
           "speaker": "Mai",
           "text": "Volontiers. Au Vietnam aussi on tutoie les amis, mais souvent plus tard que vous.",
           "en": "Gladly. In Vietnam we also use tu with friends, but usually later than you do.",
           "vi": "Sẵn lòng. Ở Việt Nam mình cũng « tu » với bạn, nhưng thường muộn hơn các anh."
         },
         {
+          cell_id: "c854483f-903c-404a-a5c0-85a04fa99264",
           "speaker": "Antoine",
           "text": "Ah, intéressant. Du coup, je n'ai pas trop précipité ?",
           "en": "Ah, interesting. So I haven't rushed it too much?",
           "vi": "À, thú vị. Vậy anh không vội quá chứ?"
         },
         {
+          cell_id: "88c287d6-fe67-49b6-9ad8-a1356d066ca2",
           "speaker": "Mai",
           "text": "Non, pas du tout. C'est même plus simple comme ça pour la suite.",
           "en": "No, not at all. It's actually simpler this way going forward.",
@@ -9280,6 +9644,7 @@ export const lessons: FrenchLesson[] =           [
       "tip_advice_en": "Before you land: print your documents on actual paper. Don't rely on your phone alone — batteries die, airport WiFi is inconsistent, and PDFs on a phone screen are harder for the officer to flick through. Have ready in your hand: passport, visa, attestation d'inscription or work contract, proof of accommodation (hotel booking or university housing letter), return ticket, bank statements or a sponsorship letter (lettre de prise en charge). When you reach the booth: greet 'Bonjour' (this matters — skipping the greeting is rude in French culture and registers immediately), place your documents on the counter rather than pushing them into the officer's hand, and answer one question at a time. If you didn't hear: 'Pourriez-vous répéter, s'il vous plaît?' If your French is too thin: state it cleanly: 'Mon français est limité, pourrions-nous parler en anglais?' — they almost always accept.\n\nAnglophone-specific calibration: don't smile nervously and don't extend your hand for a handshake — neither is expected at a French border. The Asian instinct to bow slightly or hand over documents with two hands also reads as odd in French/Quebec context; one hand placing on the counter is the norm. Don't say 'yes yes' repeatedly — it sounds anxious; 'oui' once is sufficient. Don't apologize for the questions ('I'm sorry, of course') — the officer is doing their job, no apology required. If they ask a question you can answer crisply, answer crisply and stop — silence is fine while they read your documents. Treat it like a US CBP interview: polite, brief, accurate, and no improvisation.",
       "vocabulary": [
         {
+          cell_id: "0848f990-6168-4537-8530-c20ecbcd9bc8",
           "word": "un douanier",
           "en": "customs officer",
           "vi": "nhân viên hải quan",
@@ -9288,6 +9653,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "doo-ah-NYAY (final '-ier' = 'NYAY'; the customs officer at a French port of entry)"
         },
         {
+          cell_id: "e4ff779e-43fb-43fe-9d99-7c2340b9c806",
           "word": "la PAF (Police aux Frontières)",
           "en": "border police",
           "vi": "cảnh sát biên giới (Pháp)",
@@ -9296,6 +9662,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "PAHF (acronym, pronounced as one syllable; the French border police — equivalent to US CBP)"
         },
         {
+          cell_id: "05896976-7833-46b5-acb0-86791cfb559e",
           "word": "un visa long séjour",
           "en": "long-stay visa",
           "vi": "visa dài hạn",
@@ -9304,6 +9671,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "vee-ZAH LO(n) say-ZHOOR ('long séjour' = stays over 90 days; the visa type for student or work residence)"
         },
         {
+          cell_id: "4231a144-476b-4c1e-b1b8-3dee11170b97",
           "word": "une attestation d'inscription",
           "en": "enrolment certificate",
           "vi": "giấy xác nhận nhập học",
@@ -9312,6 +9680,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ah-tes-tah-SYO(n) da(n)-skreep-SYO(n) (the official enrolment certificate from your French university — keep a printed copy)"
         },
         {
+          cell_id: "5dba2ef0-eab7-4dcd-b359-7f647077a7ab",
           "word": "un justificatif de logement",
           "en": "proof of accommodation",
           "vi": "giấy chứng minh chỗ ở",
@@ -9320,6 +9689,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "zhoos-tee-fee-kah-TEEF duh lozh-MAH(n) (proof of where you'll be living — university residence, signed lease, or hotel booking)"
         },
         {
+          cell_id: "9048ef14-f107-4b9a-8b14-3d9a04257088",
           "word": "un billet retour",
           "en": "return ticket",
           "vi": "vé khứ hồi",
@@ -9328,6 +9698,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "bee-YEH ruh-TOOR (the 'billet' has the silent final 't'; the return ticket proves you intend to leave)"
         },
         {
+          cell_id: "3bdfdae3-be9b-4596-aad7-ef6f21286e45",
           "word": "justifier ses ressources",
           "en": "to prove one's resources",
           "vi": "chứng minh tài chính",
@@ -9336,6 +9707,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "zhoos-tee-FYAY say ruh-SOORS (the standard phrase officers use to ask for financial proof)"
         },
         {
+          cell_id: "daa4c3fd-2988-48ac-87fd-b658e57fd2dd",
           "word": "un séjour de courte/longue durée",
           "en": "short/long stay",
           "vi": "lưu trú ngắn/dài hạn",
@@ -9344,6 +9716,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "say-ZHOOR duh KORT / LO(n)G doo-RAY ('court' final 't' silent; 'longue' has nasal 'o(n)g'; key visa distinction)"
         },
         {
+          cell_id: "9952b649-ce7b-498e-b4f5-831bf2ce1888",
           "word": "être refoulé",
           "en": "to be denied entry",
           "vi": "bị từ chối nhập cảnh",
@@ -9352,6 +9725,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ETR ruh-foo-LAY (the 'u' is rounded French 'u'; literally 'to be pushed back' — denied entry and sent home)"
         },
         {
+          cell_id: "d9946806-d9d8-4c60-b739-3d7606f1e425",
           "word": "présenter ses papiers",
           "en": "to show one's papers",
           "vi": "trình giấy tờ",
@@ -9362,24 +9736,28 @@ export const lessons: FrenchLesson[] =           [
       ],
       "dialogue": [
         {
+          cell_id: "12d570ef-5375-4a99-98ec-7671c529a555",
           "speaker": "Douanier",
           "text": "Bonjour, le motif de votre séjour ?",
           "en": "Hello — the purpose of your stay?",
           "vi": "Chào, mục đích lưu trú của anh/chị?"
         },
         {
+          cell_id: "a2d77942-09f5-4eee-90cb-0e030c5de958",
           "speaker": "Linh",
           "text": "Bonjour, je viens étudier — master à Paris-Saclay.",
           "en": "Hello — I'm here to study. A master's program at Paris-Saclay.",
           "vi": "Chào ông, em đến học — master ở Paris-Saclay."
         },
         {
+          cell_id: "9d25bdb2-3d68-4a5d-8710-3936119d90eb",
           "speaker": "Douanier",
           "text": "Combien de temps ?",
           "en": "For how long?",
           "vi": "Bao lâu?"
         },
         {
+          cell_id: "8495d198-bd88-4c57-b2c2-0adb86b16800",
           "speaker": "Linh",
           "text": "Deux ans. Voici mon attestation et mon visa long séjour.",
           "en": "Two years. Here's my enrolment certificate and my long-stay visa.",
@@ -9686,6 +10064,7 @@ export const lessons: FrenchLesson[] =           [
       "tip_advice_en": "Prevention (do this before you travel): scan or photograph your passport's main page and store it in Google Drive plus email it to yourself. This is enormously valuable when the original is gone. Also leave a physical photocopy at your apartment, separate from your wallet — never carry both originals together. When you discover the loss: stay calm. Don't waste time retracing your steps in hopeless searches at the métro lost-and-found while the clock ticks down. Prioritize the police station immediately, because the police receipt is the gating document for everything else.\n\nAt the consulate: dress neatly (no shorts, no flip-flops — French and Vietnamese diplomatic offices both expect business-casual minimum). Bring: a photocopy of your Vietnamese national ID (CMND/CCCD), your expired passport if you happen to have it, your flight ticket (which proves urgency), and 2–3 ID photos to Schengen standard (4x6cm, white background — Photomaton machines in any Paris métro station produce these for €5). Fees: check the embassy website — typically €50–100 for an emergency laissez-passer. Pay by card or exact-cash euros at the counter. Avoid: calling the embassy multiple times (it clogs the line for someone else with a worse emergency); crying at the counter (it does not change the procedure, and makes the staff uncomfortable); asking someone with 'a connection inside' to intervene (this is abuse of process and the staff will recognize it instantly). Treat the staff with the same respect you'd want as a public servant yourself — they're solving real problems for real people, and a calm, prepared applicant is the easiest case of their day. Anglophone calibration: the same rules apply at the US or UK embassy in Paris if you're traveling on those passports — bring documents, dress neatly, no envelopes, no friends-of-friends.",
       "vocabulary": [
         {
+          cell_id: "8b12e851-ccad-43a4-ad85-1104a4a1830d",
           "word": "déclarer la perte",
           "en": "to report a loss",
           "vi": "khai báo mất",
@@ -9694,6 +10073,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "day-klah-RAY lah PAIRT (the formal verb for filing a loss report at a police station)"
         },
         {
+          cell_id: "fa55e1d7-58f1-45b1-9b40-276fdd23cfc1",
           "word": "un récépissé",
           "en": "a receipt / official acknowledgement",
           "vi": "biên nhận chính thức",
@@ -9702,6 +10082,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ray-say-pee-SAY (the official acknowledgement document issued by police — keep it carefully, it's the gating proof for the consulate)"
         },
         {
+          cell_id: "5ac062cd-01aa-4a70-b595-188e69abcb13",
           "word": "un laissez-passer",
           "en": "emergency travel document",
           "vi": "giấy thông hành khẩn",
@@ -9710,6 +10091,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "leh-say-pah-SAY (literally 'let-pass'; an emergency travel document used in place of a passport for a single return trip — the US/UK equivalent is an 'Emergency Travel Document')"
         },
         {
+          cell_id: "7e26b916-23f7-4208-a59a-d1094a442c40",
           "word": "le commissariat",
           "en": "police station",
           "vi": "đồn cảnh sát",
@@ -9718,6 +10100,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "koh-mee-sah-RYAH (the French police station; final 't' silent — different from English 'commissariat')"
         },
         {
+          cell_id: "9dfcc580-f02f-4c22-9582-a7b77915d543",
           "word": "l'ambassade",
           "en": "embassy",
           "vi": "đại sứ quán",
@@ -9726,6 +10109,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "lah(n)-bah-SAHD (nasal first syllable; final 'e' silent; rhymes with English 'sad')"
         },
         {
+          cell_id: "07ea2d9b-b0ca-48cd-9d24-db02807283c0",
           "word": "le consulat",
           "en": "consulate",
           "vi": "lãnh sự",
@@ -9734,6 +10118,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ko(n)-soo-LAH (final 't' silent; the smaller administrative office distinct from the embassy)"
         },
         {
+          cell_id: "6a424b62-dd33-4bc3-ba48-092422b11bf1",
           "word": "un dossier complet",
           "en": "a complete file",
           "vi": "hồ sơ đầy đủ",
@@ -9742,6 +10127,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "doh-SYAY ko(n)-PLEH (a 'complete file' — all required documents; the bureaucratic standard you must hit)"
         },
         {
+          cell_id: "756eb07d-c21c-44a9-bbec-753c7a50579d",
           "word": "un délai d'urgence",
           "en": "emergency processing time",
           "vi": "thời hạn khẩn cấp",
@@ -9750,6 +10136,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "day-LEH duhr-ZHAH(n)SS (final '-ence' has nasal middle + hissed final 's'; means 'emergency turnaround')"
         },
         {
+          cell_id: "a59dd781-fdf0-462e-9a2f-a422f765558c",
           "word": "un justificatif de voyage",
           "en": "travel proof",
           "vi": "chứng từ chuyến đi",
@@ -9758,6 +10145,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "zhoos-tee-fee-kah-TEEF duh vwah-YAHZH (proof of travel — flight ticket, train booking, etc.)"
         },
         {
+          cell_id: "8496be39-a007-431e-9df8-b406325efbb1",
           "word": "se faire voler",
           "en": "to be robbed",
           "vi": "bị trộm",
@@ -9768,24 +10156,28 @@ export const lessons: FrenchLesson[] =           [
       ],
       "dialogue": [
         {
+          cell_id: "e34b27c0-37b7-4dd7-90c0-238cec3b6fdf",
           "speaker": "Linh",
           "text": "Bonjour, je viens déclarer la perte de mon passeport.",
           "en": "Hello, I'm here to report the loss of my passport.",
           "vi": "Chào, em đến khai báo mất hộ chiếu."
         },
         {
+          cell_id: "1e04e6db-c568-4f2b-b8d9-da729ca0c2ea",
           "speaker": "Agent",
           "text": "Vous avez fait une déclaration au commissariat ?",
           "en": "Have you filed a report at the police station?",
           "vi": "Anh/chị đã khai báo tại đồn cảnh sát chưa?"
         },
         {
+          cell_id: "13cb13cc-3d9d-4168-9a28-441853d7cbc6",
           "speaker": "Linh",
           "text": "Oui, voici le récépissé. Mon vol est dans cinq jours.",
           "en": "Yes — here's the receipt. My flight is in five days.",
           "vi": "Rồi, đây là biên nhận. Chuyến bay của em sau 5 ngày."
         },
         {
+          cell_id: "d8936675-7269-40dd-84c7-b600fce163d6",
           "speaker": "Agent",
           "text": "Dans ce cas, on traite en urgence — laissez-passer dans 48 heures.",
           "en": "In that case we process it as an emergency — emergency travel document in 48 hours.",
@@ -10082,6 +10474,7 @@ export const lessons: FrenchLesson[] =           [
       "tip_advice_en": "Before you contact the counter or call center: check your original booking confirmation email to identify the exact tariff tier (Prem's, Loisir, Pro, Liberté, OuiGo). Knowing your ticket class lets you negotiate from the right starting point — and prevents agents from claiming restrictions that don't apply to your tier. Have ready: booking reference (PNR), confirmation email, and proof of reason for changing — hospital letter if medical, work email if professional. The phrasing you use matters enormously in French customer service: open politely with 'Bonjour, je voudrais modifier mon billet — j'ai un imprévu' before any details. The 'Bonjour' is not optional; skipping it marks you as rude immediately, and Vietnamese learners especially miss this because in Vietnamese customer-service interactions you often jump straight to the request.\n\nAvoid these phrasings: 'je veux changer' (sounds demanding, 'I want to change'), 'c'est trop cher' (emotional, 'it's too expensive'), 'ce n'est pas juste' (moral framing, 'it's not fair' — never works in French commercial contexts, despite working sometimes in US contexts). Replace with: 'pourriez-vous vérifier…' (could you check…), 'est-ce qu'un geste commercial est possible vu…' (is a goodwill gesture possible given…). If the agent refuses: ask for the agent's name ('puis-je avoir votre nom, s'il vous plaît?') and the claim reference. Don't say this as a threat — say it because you may need to call back later, and the record matters. After the change is made: ask for email confirmation on the spot — don't trust verbal agreement. If your ticket was a higher tier (Pro or Liberté), you have a legal right to a refund or free change — don't accept being negotiated. Don't confuse ticket tiers; the SNCF mobile app shows your exact one.",
       "vocabulary": [
         {
+          cell_id: "7a4150a6-e16d-4514-8ebb-5f6c7b054982",
           "word": "un billet non échangeable",
           "en": "a non-changeable ticket",
           "vi": "vé không đổi được",
@@ -10090,6 +10483,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "bee-YEH no(n) ay-shah(n)-ZHAH-bluh (the 'non' is nasal; literally 'non-exchangeable' — but a 'geste commercial' is often still possible)"
         },
         {
+          cell_id: "a436f58a-5f00-4d42-a2a2-ac1ee55a73e8",
           "word": "des frais de modification",
           "en": "change fees",
           "vi": "phí đổi vé",
@@ -10098,6 +10492,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "FREH duh moh-dee-fee-kah-SYO(n) (the headline cost when you change a booking)"
         },
         {
+          cell_id: "0c11a9be-1183-44bc-bc1c-2d4f4382e70a",
           "word": "un avoir",
           "en": "a credit voucher",
           "vi": "phiếu tín dụng",
@@ -10106,6 +10501,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ah-VWAR (a store credit / voucher; useful when refund isn't possible but you'll travel again — common French/Vietnamese consumer term)"
         },
         {
+          cell_id: "e68d38ad-9b1a-4705-bc17-b9b7c8bc9085",
           "word": "un geste commercial",
           "en": "a goodwill gesture",
           "vi": "cử chỉ thương mại / ưu đãi đặc biệt",
@@ -10114,6 +10510,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ZHEST koh-mair-SYAL (THE key phrase for negotiating fee reductions in French customer service — closer to 'discretionary goodwill' than 'gesture')"
         },
         {
+          cell_id: "9b9954ba-f5f4-4f2c-9c4b-ec9fbe3a9abc",
           "word": "une politique tarifaire",
           "en": "pricing policy",
           "vi": "chính sách giá",
@@ -10122,6 +10519,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "poh-lee-TEEK tah-ree-FAIR (the company's pricing policy — useful when asking for the rule in writing)"
         },
         {
+          cell_id: "5c9ad98a-8d86-4688-adc8-6ab7e58ed881",
           "word": "un imprévu",
           "en": "an unforeseen event",
           "vi": "việc đột xuất",
@@ -10130,6 +10528,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "a(n)-pray-VYOO (an unforeseen event; the standard reason given for needing a change)"
         },
         {
+          cell_id: "c7fa083c-6021-421c-817e-44b5db100360",
           "word": "un justificatif",
           "en": "a supporting document",
           "vi": "giấy chứng minh",
@@ -10138,6 +10537,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "zhoos-tee-fee-kah-TEEF (any supporting document — letter, email, certificate — that backs up your reason)"
         },
         {
+          cell_id: "551f5671-a313-43c4-81ce-299d441586fb",
           "word": "contester une facture",
           "en": "to contest a bill",
           "vi": "phản đối hóa đơn",
@@ -10146,6 +10546,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ko(n)-tes-TAY oon fak-TOOR (formal verb 'to dispute / contest' — used in writing more than in person)"
         },
         {
+          cell_id: "4ce0bf73-6768-4aee-af77-7599f7430349",
           "word": "un dédommagement",
           "en": "compensation",
           "vi": "đền bù",
@@ -10154,6 +10555,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "day-doh-mahzh-MAH(n) (final '-ment' nasal; formal compensation, often used in legal/insurance contexts)"
         },
         {
+          cell_id: "dbc3e3b8-643b-4ec5-85e8-b631c4084536",
           "word": "escalader la demande",
           "en": "to escalate the request",
           "vi": "chuyển yêu cầu lên cấp cao hơn",
@@ -10164,24 +10566,28 @@ export const lessons: FrenchLesson[] =           [
       ],
       "dialogue": [
         {
+          cell_id: "6e48927e-4e15-4ae3-b40a-170bac6a8e8d",
           "speaker": "Linh",
           "text": "Bonjour, je voudrais modifier mon billet TGV.",
           "en": "Hello, I'd like to modify my TGV ticket.",
           "vi": "Chào, em muốn đổi vé TGV."
         },
         {
+          cell_id: "8ecc2d54-d476-4100-85c3-4e53d22d85fb",
           "speaker": "Agent",
           "text": "C'est un Prem's — non échangeable. Frais de 110 euros minimum.",
           "en": "It's a Prem's — non-exchangeable. Minimum 110-euro fee.",
           "vi": "Vé Prem's — không đổi được. Phí tối thiểu 110 euro."
         },
         {
+          cell_id: "d1c6befd-5792-4cb7-9372-edfbb2c75a44",
           "speaker": "Linh",
           "text": "J'ai un imprévu professionnel — un geste commercial est-il possible ?",
           "en": "I have an unforeseen work conflict — would a goodwill gesture be possible?",
           "vi": "Em có việc đột xuất — có thể có ưu đãi không?"
         },
         {
+          cell_id: "22626195-8eaf-4a08-bd62-059476b21f02",
           "speaker": "Agent",
           "text": "Avec un justificatif employeur, je peux ramener à 30 euros.",
           "en": "With an employer letter, I can bring it down to 30 euros.",
@@ -10486,6 +10892,7 @@ export const lessons: FrenchLesson[] =           [
       "tip_advice_en": "Before your trip: buy real travel insurance (Mondial Assistance, Allianz Travel, World Nomads) that includes medical emergencies — don't rely on credit-card visa coverage, which usually caps at low amounts and excludes anything 'serious'. Save the emergency numbers: 15 (SAMU — medical emergency in France), 17 (police), 112 (Europe-wide, any emergency type — also works on a phone with no SIM). Memorize the symptom phrases in French ahead of time: 'j'ai mal à…' (I have pain in…), 'j'ai de la fièvre' (I have a fever), 'j'ai vomi / j'ai des nausées' (I vomited / I'm nauseous), 'j'ai une éruption cutanée' (I have a rash). Pain location vocabulary: ventre (belly), tête (head), poitrine (chest), dos (back), gorge (throat).\n\nWhen you arrive at the hospital, have ready: passport + insurance card + a list of medications you currently take + a list of known allergies (write these on a small piece of paper in French — much easier than improvising in French while in pain). After the consultation, ASK for three things explicitly: 'un certificat médical' (medical certificate), 'ordonnance imprimée' (printed prescription), 'facture détaillée' (itemized bill). All three are required for insurance reimbursement; if you walk out without them, you'll spend weeks getting them mailed. Photograph everything to Google Drive before leaving — don't wait until you get back to the hotel. If you're seriously ill and your visa is about to expire, contact both your embassy AND your insurance to extend your stay on medical grounds — this is a recognized process, not a favor.\n\nAnglophone-specific note: in the US, you'd often skip the ER over cost concerns. In France, the cost calculation is very different and skipping the ER is the wrong call. The French ER is closer in cost to a UK NHS A&E (free for residents, modest for tourists) than to a US emergency room. If something feels seriously wrong, GO.",
       "vocabulary": [
         {
+          cell_id: "da45bb93-1760-4d61-8f4e-22fdc97498ad",
           "word": "les urgences",
           "en": "emergency room",
           "vi": "khoa cấp cứu",
@@ -10494,6 +10901,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "lay-zoor-ZHAH(n)SS (liaison 'les urgences' = 'lay-zoor'; the French ER — always plural in French)"
         },
         {
+          cell_id: "60533618-2367-4874-9df7-a4ea54a4105a",
           "word": "un urgentiste",
           "en": "emergency doctor",
           "vi": "bác sĩ cấp cứu",
@@ -10502,6 +10910,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "oor-zhah(n)-TEEST (the ER doctor; specialized title, different from 'généraliste' / GP)"
         },
         {
+          cell_id: "0b490422-f844-49a0-91ba-de28e454034a",
           "word": "une assurance voyage",
           "en": "travel insurance",
           "vi": "bảo hiểm du lịch",
@@ -10510,6 +10919,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ah-soo-RAH(n)SS vwah-YAHZH (the document you produce at the ER counter — buy it before traveling)"
         },
         {
+          cell_id: "09c0895a-fa64-47d2-9493-70e83b260f2b",
           "word": "être allergique à",
           "en": "to be allergic to",
           "vi": "dị ứng với",
@@ -10518,6 +10928,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ETR ah-lair-ZHEEK ah (note the preposition 'à' (to) — not the English 'of'; the key safety phrase before any prescription)"
         },
         {
+          cell_id: "aa1c846d-5b9f-4838-9dad-d70d4cb83dd4",
           "word": "une ordonnance",
           "en": "a prescription",
           "vi": "đơn thuốc",
@@ -10526,6 +10937,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "oor-doh-NAH(n)SS (final '-ance' has nasal middle + hissed 's'; the formal French word for prescription)"
         },
         {
+          cell_id: "2ac429d5-3061-4adb-bbd0-c4e7913bce9e",
           "word": "un certificat médical",
           "en": "medical certificate",
           "vi": "giấy chứng nhận y tế",
@@ -10534,6 +10946,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "sair-tee-fee-KAH may-dee-KAL (the doctor's signed letter — required for insurance and for sick leave from work/school)"
         },
         {
+          cell_id: "df43e897-710f-4b37-ba82-194fbbe8dcc3",
           "word": "une facture détaillée",
           "en": "itemized bill",
           "vi": "hóa đơn chi tiết",
@@ -10542,6 +10955,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "fak-TOOR day-tah-YAY (itemized invoice — required for insurance reimbursement; not a simple receipt)"
         },
         {
+          cell_id: "d6b5952d-dc7d-4442-83be-74d0008eb20c",
           "word": "le remboursement",
           "en": "reimbursement",
           "vi": "hoàn tiền",
@@ -10550,6 +10964,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "rah(n)-boors-MAH(n) (two nasals; reimbursement of out-of-pocket medical costs by your insurance)"
         },
         {
+          cell_id: "7e4eda96-4f77-4590-a66c-ddc5a4ce61a7",
           "word": "la carte vitale",
           "en": "French health card",
           "vi": "thẻ y tế Pháp",
@@ -10558,6 +10973,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "KART vee-TAL (the French national health card — residents only; if you're a tourist, you use travel insurance instead)"
         },
         {
+          cell_id: "298d2b6c-78ce-433f-b312-8a3dc7870e18",
           "word": "se faire ausculter",
           "en": "to be examined",
           "vi": "được khám",
@@ -10568,24 +10984,28 @@ export const lessons: FrenchLesson[] =           [
       ],
       "dialogue": [
         {
+          cell_id: "b5e5099e-9c11-4d0d-adef-5c8be1e24b9c",
           "speaker": "Linh",
           "text": "Bonjour, j'ai très mal au ventre depuis hier soir.",
           "en": "Hello — I've had bad abdominal pain since last night.",
           "vi": "Chào, em đau bụng nhiều từ tối qua."
         },
         {
+          cell_id: "84c42e10-83b9-462c-8513-31a93b676c96",
           "speaker": "Infirmier",
           "text": "Vous avez de la fièvre ? Avez-vous une assurance ?",
           "en": "Do you have a fever? Do you have insurance?",
           "vi": "Anh/chị có sốt không? Có bảo hiểm không?"
         },
         {
+          cell_id: "fe481575-b0a7-454c-8980-e739798fe747",
           "speaker": "Linh",
           "text": "39°C ce matin. Voici ma carte d'assurance voyage.",
           "en": "39°C (102°F) this morning. Here's my travel insurance card.",
           "vi": "39°C sáng nay. Đây là thẻ bảo hiểm du lịch của em."
         },
         {
+          cell_id: "34c91498-90ee-4e1e-b29c-eb7fa533699b",
           "speaker": "Infirmier",
           "text": "Je vous installe en salle d'attente — l'urgentiste vous voit dans 20 minutes.",
           "en": "I'll put you in the waiting room — the ER doctor will see you in 20 minutes.",
@@ -10914,6 +11334,7 @@ export const lessons: FrenchLesson[] =           [
       "tip_advice_en": "Before booking: read Booking.com/Google reviews and look specifically for recurring complaints (air-con, cleanliness, noise). A one-off bad review is noise; the same problem reported five times means a systemic fault you'll likely hit too. At check-in: do a 5-minute room test immediately — door lock, hot water, AC/heating, wifi, power outlets. Problems caught in the first 5 minutes are much easier to get a room change for than problems raised on night two. During the stay: photograph every issue with a visible timestamp (stains, broken fixtures) — this is your evidence if it comes to a dispute. When complaining: go to the front desk IN PERSON, don't call the internal line (a phone request is easy for staff to 'forget' with no paper trail). Ask for the issue to be logged and request a 'rapport écrit' (written report) of the problem. If it isn't resolved, ask to speak to the 'directeur' or the 'responsable de garde' (duty manager). The effective final lever is 'Je vais devoir contester via Booking.com et la chambre de tourisme' (I'll have to dispute this via Booking.com and the tourism board) — this works in France because hotels are genuinely accountable to both, unlike a vague 'I'll leave a bad review' which French staff hear constantly and discount. Anglophone calibration: this is the same escalation ladder you'd use at a US/UK hotel — front desk → duty manager → booking platform dispute — but in France keep every rung calm and factual; the moment you raise your voice, you lose the room.",
       "vocabulary": [
         {
+          cell_id: "2f871aa2-f408-464f-b21a-6010d4d9f30f",
           "word": "un défaut de chambre",
           "en": "a room defect",
           "vi": "lỗi phòng",
@@ -10922,6 +11343,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "day-FOH duh SHAH(n)-bruh ('défaut' final 't' silent — rhymes with English 'foe'; 'chambre' nasal)"
         },
         {
+          cell_id: "5f4a7268-82a2-4c00-a7d5-bf1fa2a97e99",
           "word": "la climatisation",
           "en": "air conditioning",
           "vi": "máy lạnh",
@@ -10930,6 +11352,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "klee-mah-tee-zah-SYO(n) (commonly shortened to 'la clim' /klEEM/ in speech)"
         },
         {
+          cell_id: "f0e5390e-a028-4487-9951-cb5f110509bd",
           "word": "un dédommagement",
           "en": "compensation",
           "vi": "đền bù",
@@ -10938,6 +11361,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "day-doh-mahzh-MAH(n) (final '-ment' nasal; the formal word for monetary compensation for a wrong)"
         },
         {
+          cell_id: "4125bf51-82a9-41c1-bda3-e1ed47589159",
           "word": "un surclassement",
           "en": "upgrade",
           "vi": "nâng hạng phòng",
@@ -10946,6 +11370,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "soor-klahs-MAH(n) (the 'sur' has the rounded French 'u'; final '-ment' nasal; means a free room upgrade)"
         },
         {
+          cell_id: "637730e2-8d9d-42dd-80e0-b2b229947274",
           "word": "un remboursement partiel",
           "en": "partial refund",
           "vi": "hoàn tiền một phần",
@@ -10954,6 +11379,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "rah(n)-boors-MAH(n) par-SYEL (two nasals in 'remboursement'; 'partiel' = 'par-syel', not English 'par-shul')"
         },
         {
+          cell_id: "ddb819ed-7052-4743-9b7c-c2c6090ab5af",
           "word": "signaler un incident",
           "en": "to report an incident",
           "vi": "báo sự cố",
@@ -10962,6 +11388,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "see-nyah-LAY uh(n) a(n)-see-DAH(n) ('gn' = 'ny'; 'incident' has two nasals, final 't' silent)"
         },
         {
+          cell_id: "b0ad050e-88be-4a5d-b7eb-4d2245fad0ce",
           "word": "un rapport écrit",
           "en": "written report",
           "vi": "báo cáo viết",
@@ -10970,6 +11397,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "rah-POR ay-KREE (both final consonants silent — 'rapport' ends 'POR', 'écrit' ends 'KREE')"
         },
         {
+          cell_id: "3d97c773-401d-486e-bc5a-a823b552a47a",
           "word": "le directeur d'hôtel",
           "en": "hotel manager",
           "vi": "giám đốc khách sạn",
@@ -10978,6 +11406,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "dee-rek-TUHR doh-TEL (final 'eur' = 'UHR' with rounded lips; the one who can authorize refunds, unlike night staff)"
         },
         {
+          cell_id: "dd43efd7-34b4-41ea-877a-855cfc0a1ef2",
           "word": "la chambre de tourisme",
           "en": "tourism board",
           "vi": "hội du lịch",
@@ -10986,6 +11415,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "SHAH(n)-bruh duh too-REESM (the regional tourism authority — a real accountability body in France, not just a slogan)"
         },
         {
+          cell_id: "01b526a1-2fc7-4e96-a8e3-aae6aeeb29bb",
           "word": "contester sur Booking",
           "en": "to dispute via Booking",
           "vi": "khiếu nại qua Booking",
@@ -10996,24 +11426,28 @@ export const lessons: FrenchLesson[] =           [
       ],
       "dialogue": [
         {
+          cell_id: "0556cc7f-65d1-4c14-8c07-28507079ede1",
           "speaker": "Linh",
           "text": "Bonjour, je suis dans la 412. La clim ne fonctionne pas.",
           "en": "Hello, I'm in room 412. The air conditioning isn't working.",
           "vi": "Chào, em ở phòng 412. Máy lạnh không chạy."
         },
         {
+          cell_id: "b8fd85bb-7c7f-4f0e-a810-2119806a2c92",
           "speaker": "Réceptionniste",
           "text": "Je suis désolée. Vous l'avez signalé quand ?",
           "en": "I'm sorry. When did you report it?",
           "vi": "Tôi xin lỗi. Cô đã báo lúc nào?"
         },
         {
+          cell_id: "575b40e1-13a6-43da-96ae-0707d0cdda36",
           "speaker": "Linh",
           "text": "Ce matin à 9 heures. Il fait 30°C dans la chambre.",
           "en": "This morning at 9. It's 30°C (86°F) in the room.",
           "vi": "Sáng nay 9 giờ. Phòng đang 30°C."
         },
         {
+          cell_id: "d9233984-769f-40c8-995b-c3de4fc572eb",
           "speaker": "Réceptionniste",
           "text": "J'envoie immédiatement un technicien — sinon on vous change de chambre.",
           "en": "I'll send a technician right away — otherwise we'll move you to another room.",
@@ -11310,6 +11744,7 @@ export const lessons: FrenchLesson[] =           [
       "tip_advice_en": "Prevention (do this before you fly): photograph the contents of your suitcase before check-in (this proves contents if you ever claim); put a name + phone + email tag BOTH inside and outside the bag (the external tag can tear off); and never put valuables — laptop, passport, medication, camera — in checked luggage; carry-on only. When you reach the airport and find the bag missing: DON'T leave the terminal — go straight to the airline's counter (Air France: terminal 2E at CDG, 'Lost Baggage' desk). Bring: your ticket, the baggage tag (the sticker applied at check-in), and your passport. Ask for the PIR immediately — do not leave without the paper reference. Ask specifically: estimated time to locate, how they'll contact you (SMS, email), and the online tracker name (e.g. AF Bagages). Request the allowance with a precise question: 'Quel est le montant de l'indemnité de première nécessité, et comment puis-je l'obtenir?' (What's the amount of the basic-necessities allowance, and how do I claim it?) — not the vague 'est-ce qu'il y a un dédommagement?' which invites a vague answer. Then keep ALL receipts for clothing/toiletries you buy (up to ~€100/person/day); submit the reimbursement claim with the original suitcase-contents photos. If the bag is found, the airline delivers it to your address — you do NOT have to go back to the airport; explicitly ask for home/hotel delivery. Anglophone note: this exact playbook works at any US/UK airline counter — the PIR, the interim-expenses receipts, the home delivery — so it's worth memorizing once and reusing everywhere.",
       "vocabulary": [
         {
+          cell_id: "3b5d4043-a060-488d-ba93-be62253eb18f",
           "word": "un bagage en soute",
           "en": "checked luggage",
           "vi": "hành lý ký gửi",
@@ -11318,6 +11753,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "bah-GAHZH ah(n) SOOT ('en soute' = in the hold, i.e. checked — opposed to 'en cabine')"
         },
         {
+          cell_id: "6b8af7dd-e3d7-4214-9491-d46bc046844c",
           "word": "le tapis (à bagages)",
           "en": "baggage carousel",
           "vi": "băng chuyền hành lý",
@@ -11326,6 +11762,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "luh tah-PEE (literally 'the carpet/belt'; the rotating baggage claim carousel)"
         },
         {
+          cell_id: "11684b8b-13d1-4b72-a3a7-63383830774c",
           "word": "une étiquette de bagage",
           "en": "baggage tag",
           "vi": "tem hành lý",
@@ -11334,6 +11771,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ay-tee-KET duh bah-GAHZH (the sticker/receipt stub given at check-in — keep it; it's the claim key)"
         },
         {
+          cell_id: "8765e452-70f4-4c0b-b225-19408baaf315",
           "word": "un PIR (Property Irregularity Report)",
           "en": "PIR — official lost luggage report",
           "vi": "báo cáo hành lý mất chính thức",
@@ -11342,6 +11780,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "PEE-EE-AIR (spell the three letters in French; the official airline form — ask for it by name)"
         },
         {
+          cell_id: "a38466a8-a003-4867-802e-ed03a3c2b117",
           "word": "une indemnité",
           "en": "compensation allowance",
           "vi": "trợ cấp đền bù",
@@ -11350,6 +11789,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "a(n)-dem-nee-TAY (nasal first; a regulated allowance you're entitled to, not a negotiated favor)"
         },
         {
+          cell_id: "f20e88d7-c963-4977-901c-b3fec170d69a",
           "word": "de première nécessité",
           "en": "basic necessities",
           "vi": "đồ cần thiết cơ bản",
@@ -11358,6 +11798,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "duh pruh-MYAIR nay-seh-see-TAY (set phrase; 'achats de première nécessité' = essential purchases)"
         },
         {
+          cell_id: "a9438964-7dc6-4c90-8613-d27bd6c1767c",
           "word": "déposer un dossier",
           "en": "to file a claim",
           "vi": "nộp hồ sơ",
@@ -11366,6 +11807,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "day-poh-ZAY uh(n) doh-SYAY ('dossier' = a case file, broader than English 'dossier'; here = a claim file)"
         },
         {
+          cell_id: "43d46044-d38b-4e1a-aa3b-831fd1a4e5af",
           "word": "être livré à domicile",
           "en": "to be delivered to address",
           "vi": "được giao tận nơi",
@@ -11374,6 +11816,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ETR lee-VRAY ah doh-mee-SEEL ('à domicile' = to your home/hotel — the bag comes to you, you don't return for it)"
         },
         {
+          cell_id: "c39fa0ab-4eff-4898-8fa1-9baf96696b77",
           "word": "un préjudice",
           "en": "damage / loss",
           "vi": "thiệt hại",
@@ -11382,6 +11825,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "pray-zhoo-DEES ('j' = 'zh'; a legal/formal term for harm or loss suffered — heavier than English 'damage')"
         },
         {
+          cell_id: "34079ece-25fd-4a0a-b107-808f1c0f7a08",
           "word": "une réclamation",
           "en": "a formal complaint",
           "vi": "đơn khiếu nại",
@@ -11392,24 +11836,28 @@ export const lessons: FrenchLesson[] =           [
       ],
       "dialogue": [
         {
+          cell_id: "8c3aa6e4-d350-4b7a-8aee-55ba200bed36",
           "speaker": "Linh",
           "text": "Bonjour, mon bagage n'est pas arrivé sur le tapis.",
           "en": "Hello, my luggage didn't come out on the carousel.",
           "vi": "Chào, hành lý của em không đến băng chuyền."
         },
         {
+          cell_id: "2ca175ee-510c-4b99-a053-c6c8e479cf08",
           "speaker": "Agent",
           "text": "Bonjour. Votre étiquette de bagage et votre billet, s'il vous plaît.",
           "en": "Hello. Your baggage tag and your ticket, please.",
           "vi": "Chào. Tem hành lý và vé của cô."
         },
         {
+          cell_id: "366248b6-bda4-44fc-b57c-6a56634215e4",
           "speaker": "Linh",
           "text": "Voici. Vol AF1734 de Hô-Chi-Minh-Ville, arrivée 6h.",
           "en": "Here. Flight AF1734 from Ho Chi Minh City, arrived 6 AM.",
           "vi": "Đây ạ. Chuyến AF1734 từ TP.HCM, đến 6 giờ."
         },
         {
+          cell_id: "b146611d-f296-4956-9646-d69409d4140e",
           "speaker": "Agent",
           "text": "Je vais ouvrir un PIR. Décrivez-moi la valise précisément.",
           "en": "I'll open a PIR. Describe the suitcase to me precisely.",
@@ -11736,6 +12184,7 @@ export const lessons: FrenchLesson[] =           [
       "tip_advice_en": "Before going to the commissariat: do the 'pré-plainte en ligne' (online pre-complaint) on service-public.fr — you enter the details online and then only sign and collect the paper at the station, saving 1–2 hours of queueing. This online step has no US/UK equivalent and is genuinely worth doing. At the commissariat, bring: passport, carte de séjour (if you have one), a French phone number (or Vietnamese on roaming), the serial numbers of stolen items (a phone's IMEI — find it on the original box, or dial *#06# before it's lost and save it somewhere), and the account number you already blocked. If you have no stable French address, use your hotel address and tell them your checkout date so they have a way to reach you. When recounting the incident: chronological, specific, no irrelevant backstory. The officer will ask: exact location, time, description of the thief (if seen), what was lost, and estimated value. Don't inflate — report exactly. After the PV is drafted: read it (or have it read to you) two or three times before signing — if you spot an error, ask for it to be corrected IMMEDIATELY, because after signing it is very hard to change. The récépissé is your insurance-claim document — photograph it and save to cloud on the spot, before you even leave the station. If your passport was stolen, go to the Vietnamese embassy as soon as you have this récépissé (the embassy requires it). Anglophone calibration: a US/UK citizen follows the identical path — same pré-plainte option, same récépissé, then your own embassy — so the procedure transfers directly.",
       "vocabulary": [
         {
+          cell_id: "87c513fb-7e9a-46f0-ad62-57668ae3d884",
           "word": "déposer plainte",
           "en": "to file a complaint",
           "vi": "trình báo / nộp đơn tố giác",
@@ -11744,6 +12193,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "day-poh-ZAY PLA(n)T (the fixed phrase for formally filing a criminal complaint — note: no article, 'déposer plainte' not 'déposer une plainte' in this set form)"
         },
         {
+          cell_id: "2662ac07-2ac5-47e3-88e7-b287697672dd",
           "word": "un commissariat",
           "en": "police station",
           "vi": "đồn cảnh sát",
@@ -11752,6 +12202,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "koh-mee-sah-RYAH (final 't' silent; the urban police station — go to the one covering where the crime happened)"
         },
         {
+          cell_id: "3eda5974-99c9-4bd2-a71e-77789fabea82",
           "word": "un procès-verbal (PV)",
           "en": "police report",
           "vi": "biên bản ghi lời khai",
@@ -11760,6 +12211,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "proh-SEH vair-BAL (often just 'le PV', say 'luh pay-VAY'; legally a signed statement, like a deposition — not a casual incident note)"
         },
         {
+          cell_id: "41de4eac-7e77-4929-9ba3-e05977ef7c93",
           "word": "un récépissé",
           "en": "receipt of complaint",
           "vi": "biên nhận trình báo",
@@ -11768,6 +12220,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ray-say-pee-SAY (the free official receipt — your insurance and the préfecture both require this exact document)"
         },
         {
+          cell_id: "88c10a2c-84d9-4bc9-91b3-d06b02303deb",
           "word": "faire opposition",
           "en": "to block (a card)",
           "vi": "chặn thẻ",
@@ -11776,6 +12229,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "FAIR oh-poh-zee-SYO(n) (the fixed banking term for stopping a stolen card — say 'j'ai fait opposition', not 'j'ai bloqué')"
         },
         {
+          cell_id: "5fcb97be-56a7-49d3-a0e1-ecab8661b511",
           "word": "un vol à la tire",
           "en": "pickpocketing",
           "vi": "móc túi",
@@ -11784,6 +12238,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "VOL ah lah TEER (specifically pickpocketing — quiet theft from a pocket/bag, no force; the metro classic)"
         },
         {
+          cell_id: "11d66bd6-ce29-4692-a598-ec457674e61f",
           "word": "un vol à l'arraché",
           "en": "snatch theft",
           "vi": "giật đồ",
@@ -11792,6 +12247,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "VOL ah lah-rah-SHAY (theft WITH a snatch/grab — phone or bag yanked from your hand; legally more serious than 'à la tire')"
         },
         {
+          cell_id: "9fa3bd42-ff06-401d-986e-026ad876cb33",
           "word": "une carte de séjour",
           "en": "residence permit",
           "vi": "thẻ cư trú",
@@ -11800,6 +12256,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "KART duh say-ZHOOR (the residence permit; if stolen, you must report it separately and re-apply at the préfecture)"
         },
         {
+          cell_id: "f9da0efa-b72d-40bb-ab6d-7aac62cd2b3b",
           "word": "un interprète assermenté",
           "en": "sworn interpreter",
           "vi": "thông dịch tuyên thệ",
@@ -11808,6 +12265,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "a(n)-tair-PRET ah-sair-mah(n)-TAY (a court-sworn interpreter — free for crime victims; ask for one rather than struggling in French)"
         },
         {
+          cell_id: "0526f2bc-0a00-4d43-8cc7-1f0a334f9e9c",
           "word": "signaler à l'assurance",
           "en": "to report to insurance",
           "vi": "báo bảo hiểm",
@@ -11818,24 +12276,28 @@ export const lessons: FrenchLesson[] =           [
       ],
       "dialogue": [
         {
+          cell_id: "d52c3695-415c-4b2d-b1c6-03ce1213408f",
           "speaker": "Linh",
           "text": "Bonjour, je viens déposer plainte pour vol.",
           "en": "Hello, I'm here to file a complaint for theft.",
           "vi": "Chào, em đến trình báo vụ trộm."
         },
         {
+          cell_id: "084e48d5-34d1-42fd-9120-dd1ab7125924",
           "speaker": "Officier",
           "text": "Bonjour. Vol de quoi exactement, et où ?",
           "en": "Hello. Theft of what exactly, and where?",
           "vi": "Chào. Trộm gì cụ thể, và ở đâu?"
         },
         {
+          cell_id: "4b4178b1-5805-4267-8a7e-e5b79d47b9eb",
           "speaker": "Linh",
           "text": "Mon portefeuille, hier soir dans le métro ligne 4.",
           "en": "My wallet, last night on metro line 4.",
           "vi": "Ví của em, tối qua trong métro tuyến 4."
         },
         {
+          cell_id: "21a217ab-3eed-4b5b-9f6a-a7bf19c707ba",
           "speaker": "Officier",
           "text": "Avez-vous fait opposition à votre carte bancaire ?",
           "en": "Have you blocked your bank card?",
@@ -12172,6 +12634,7 @@ export const lessons: FrenchLesson[] =           [
       "tip_advice_en": "When approaching a stranger: open with 'Excusez-moi, Madame/Monsieur' + a short pause to let them respond (a nod, looking up) BEFORE launching the question. Skipping the opener and diving straight into 'where is the metro?' reads as rude in France in a way it might not in a fast US city. Approach someone walking fast = ignored; approach someone standing or sitting = much better response. Avoid: chasing someone who already declined; asking someone wearing earbuds (disrespectful — they have to remove them); asking someone standing outside a shop or hotel (they're a customer like you — go inside and ask staff, far more reliable). Best people to ask: shop staff (boulangerie, tabac), uniformed station/metro staff, or a relaxed local eating a baguette on a bench (not rushing). While being given directions, take notes or repeat back to confirm: 'Donc, deuxième à droite, puis le pont, c'est ça?' (So, second right, then the bridge, is that it?) — the read-back is good practice in any language and the French appreciate the precision. If you didn't understand: 'Pourriez-vous parler un peu plus lentement?' (Could you speak a little more slowly?) — no shame in this; it's a normal request, not an admission of failure. Always close with thanks AND a sign-off: 'Merci beaucoup, bonne journée!' — the 'bonne journée' is not optional politeness padding in France, it's the structural close of the interaction; omitting it leaves the exchange feeling abruptly cut. If you get lost again after their directions, ask a NEW person rather than going back to the first — returning makes them feel their directions failed, which is socially awkward for both of you.",
       "vocabulary": [
         {
+          cell_id: "3a79dfe0-04d8-4866-8339-b509a007afc2",
           "word": "indiquer",
           "en": "to point out / show",
           "vi": "chỉ",
@@ -12180,6 +12643,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "a(n)-dee-KAY (nasal first; 'm'indiquer le chemin' = show me the way — more precise than 'montrer')"
         },
         {
+          cell_id: "9194f1d1-a28e-49e5-be63-ca391ad9640f",
           "word": "tout droit",
           "en": "straight ahead",
           "vi": "đi thẳng",
@@ -12188,6 +12652,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "TOO DRWAH (the 't' of 'droit' is silent; CAUTION: 'tout droit' = straight ahead, 'à droite' = to the right — easy to confuse)"
         },
         {
+          cell_id: "9938c49c-5b73-46b4-a1fc-2f1c3d0c680b",
           "word": "à droite / à gauche",
           "en": "to the right / left",
           "vi": "bên phải / trái",
@@ -12196,6 +12661,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ah DRWAT / ah GOHSH ('droite' rhymes with 'wat'; 'gauche' = 'gohsh' with the 'measure' sh)"
         },
         {
+          cell_id: "2153f578-0054-4d39-bf81-32d152f6c933",
           "word": "un rond-point",
           "en": "a roundabout",
           "vi": "bùng binh",
@@ -12204,6 +12670,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "RO(n) PWA(n) (both syllables nasal; US English equivalent: 'traffic circle' / 'rotary')"
         },
         {
+          cell_id: "572e0360-a7af-4903-acfd-39165d829a7a",
           "word": "un feu (de circulation)",
           "en": "a traffic light",
           "vi": "đèn giao thông",
@@ -12212,6 +12679,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "FUH (the 'eu' has no English equivalent — round lips, say 'uh'; 'au feu' = at the traffic light)"
         },
         {
+          cell_id: "268f5894-76f3-4494-a129-336c37b71a5e",
           "word": "un pont",
           "en": "a bridge",
           "vi": "cây cầu",
@@ -12220,6 +12688,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "PO(n) (one nasal syllable; no 't' or 'n' sound — just a nasalized 'oh')"
         },
         {
+          cell_id: "60ff35aa-0048-4776-b153-6d0c58d0c83c",
           "word": "un carrefour",
           "en": "a crossroads / intersection",
           "vi": "ngã tư",
@@ -12228,6 +12697,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "kar-FOOR (rolled 'r's; a crossroads/intersection — also the name of a supermarket chain, context disambiguates)"
         },
         {
+          cell_id: "47b8e34b-85f8-42e4-9e0f-0a02ec8d4249",
           "word": "être perdu(e)",
           "en": "to be lost",
           "vi": "bị lạc",
@@ -12236,6 +12706,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ETR pair-DOO (the 'u' is rounded; add a silent 'e' for a female speaker: 'je suis perdue')"
         },
         {
+          cell_id: "acd6ddc8-d340-469e-b51f-0024d4fbba6f",
           "word": "se repérer",
           "en": "to find one's bearings",
           "vi": "định hướng",
@@ -12244,6 +12715,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "suh ruh-pay-RAY (reflexive; 'j'ai du mal à me repérer' = I'm having trouble getting my bearings)"
         },
         {
+          cell_id: "3819aeda-5d34-4b50-8ec6-45dc3fe2b3a8",
           "word": "un quartier",
           "en": "a neighborhood",
           "vi": "khu phố",
@@ -12254,24 +12726,28 @@ export const lessons: FrenchLesson[] =           [
       ],
       "dialogue": [
         {
+          cell_id: "90ab164f-9465-4b0b-a2a1-d028d346c38f",
           "speaker": "Linh (à une dame de 60 ans)",
           "text": "Excusez-moi, Madame, je cherche la rue de Rivoli.",
           "en": "Excuse me, ma'am, I'm looking for Rue de Rivoli. [vouvoiement — older stranger]",
           "vi": "Xin lỗi bà, em tìm đường Rivoli."
         },
         {
+          cell_id: "dd2ae8f7-6d18-4a0f-ba35-48f0f45f8422",
           "speaker": "Dame",
           "text": "C'est tout proche — vous prenez à gauche au feu, puis tout droit.",
           "en": "It's very close — take a left at the traffic light, then straight ahead.",
           "vi": "Rất gần — cô rẽ trái ở đèn, rồi đi thẳng."
         },
         {
+          cell_id: "388cc6e9-281e-470d-8eec-4bfb51212988",
           "speaker": "Linh (à un étudiant de son âge)",
           "text": "Salut, tu sais où est le café Le Procope ?",
           "en": "Hi, do you know where the Café Le Procope is? [tutoiement — same-age peer, relaxed setting]",
           "vi": "Chào, bạn biết quán Le Procope ở đâu không?"
         },
         {
+          cell_id: "77ce4f54-dd76-4725-a725-44993499fe22",
           "speaker": "Étudiant",
           "text": "Ouais, c'est rue de l'Ancienne-Comédie, à 5 minutes — je te montre, je vais dans la même direction.",
           "en": "Yeah, it's on Rue de l'Ancienne-Comédie, 5 minutes away — I'll show you, I'm going the same way.",
@@ -12574,6 +13050,7 @@ export const lessons: FrenchLesson[] =           [
       "tip_advice_en": "Choosing a restaurant: check Tripadvisor/Google reviews and pay attention to recent 1–2 star reviews specifically, not just the average — a high average with a cluster of recent bad reviews means a place that's slipping. Arriving: if you didn't book, ask 'Avez-vous une table libre pour deux?' (Do you have a free table for two?). Ordering: point at the menu and say 'Je prendrai…' (I'll have…) — never the calque 'Je veux…' (I want…), which sounds blunt and childish in French. If a dish is unfamiliar, ask 'Qu'est-ce qu'il y a dans le plat du jour?' (What's in the dish of the day?). If the wrong dish arrives: call the server immediately — do NOT eat it first and complain after, which forfeits your standing. Useful line: 'Excusez-moi, ce n'est pas ce que j'avais commandé — j'avais demandé X.' Staff usually swap it free. If a dish is cold: 'C'est froid — pourriez-vous le rapporter en cuisine?' — most good restaurants will remake it free. With the bill: check EVERY line (item, unit price, quantity); check whether 'Service' is already included (it almost always is — so don't add a US-style 20% on top out of habit); if there's an item you didn't order, point to it specifically rather than vaguely saying 'ça doit être une erreur'. Payment: card is more common than cash; the terminal is often brought to the table or at the counter; chip-and-PIN, no signing (this surprises Americans used to signing). If you hit tip pressure (common in tourist zones — Paris hotspots, the Riviera): decline politely with 'Le service est compris, je m'en tiendrai à ça' (Service is included, I'll stick with that) and leave — you are on solid ground, the law is on your side, and you owe no apology for it.",
       "vocabulary": [
         {
+          cell_id: "ae583c32-e720-4656-a180-c0fe6a63749e",
           "word": "l'addition",
           "en": "the bill / check",
           "vi": "hóa đơn",
@@ -12582,6 +13059,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "lah-dee-SYO(n) (false friend — in a restaurant it means 'the bill/check', NOT a math 'addition'; ask 'l'addition, s'il vous plaît')"
         },
         {
+          cell_id: "fdc9f7fc-1981-43e6-a983-6d187f225c20",
           "word": "une commande",
           "en": "an order",
           "vi": "đơn gọi món",
@@ -12590,6 +13068,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "koh-MAH(n)D (nasal final; the order you placed — 'prendre la commande' = to take an order)"
         },
         {
+          cell_id: "37d3020b-2e15-4911-89ad-a489227e7be2",
           "word": "un serveur / une serveuse",
           "en": "waiter / waitress",
           "vi": "phục vụ nam/nữ",
@@ -12598,6 +13077,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "sair-VUHR / sair-VUHZ (the 'eu' is rounded; address them as 'Monsieur/Madame' or 'Excusez-moi', never 'serveur!')"
         },
         {
+          cell_id: "88102e95-c44c-4d8b-a471-677d6de20ba3",
           "word": "un plat froid",
           "en": "a cold dish",
           "vi": "món nguội",
@@ -12606,6 +13086,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "PLAH FRWAH (both final consonants silent; the specific complaint 'le plat est froid' = the dish is cold)"
         },
         {
+          cell_id: "a08821bf-5b87-4fe3-8ecc-641ccf578228",
           "word": "un service compris",
           "en": "service included",
           "vi": "phí dịch vụ đã tính",
@@ -12614,6 +13095,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "sair-VEES ko(n)-PREE (the key phrase: service charge is already in the price — no US-style 20% expected on top)"
         },
         {
+          cell_id: "d546e0f5-010b-4344-9d2c-7ef7d63d16f1",
           "word": "un pourboire",
           "en": "a tip",
           "vi": "tiền tip",
@@ -12622,6 +13104,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "poor-BWAR (literally 'for-drink'; an optional extra in France, NOT the socially-mandatory US tip)"
         },
         {
+          cell_id: "987f4b85-8c28-4c30-ab34-e835fc656836",
           "word": "rapporter en cuisine",
           "en": "to send back to kitchen",
           "vi": "mang lại bếp",
@@ -12630,6 +13113,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "rah-por-TAY ah(n) kwee-ZEEN (the polite way to ask for a dish to be returned/redone)"
         },
         {
+          cell_id: "e279b818-287a-4856-b123-d049aa6273b2",
           "word": "une note erronée",
           "en": "an erroneous bill",
           "vi": "hóa đơn sai",
@@ -12638,6 +13122,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "NOT ay-roh-NAY ('note' = a bill/tab, esp. in a hotel/bar; 'erronée' = mistaken — neutral, doesn't imply fraud)"
         },
         {
+          cell_id: "33577651-aa1d-4229-ab5a-53ba0e07c9e4",
           "word": "déduire un plat",
           "en": "to deduct an item",
           "vi": "trừ một món",
@@ -12646,6 +13131,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "day-DWEER uh(n) PLAH (the action you ask for: 'pourriez-vous déduire ce plat?' = could you take this item off?)"
         },
         {
+          cell_id: "fc178d27-02da-4a89-b692-5497adc38a5f",
           "word": "refaire un plat",
           "en": "to remake a dish",
           "vi": "làm lại một món",
@@ -12656,24 +13142,28 @@ export const lessons: FrenchLesson[] =           [
       ],
       "dialogue": [
         {
+          cell_id: "754449de-df0e-4f74-aaea-17ad9e65d3b2",
           "speaker": "Linh",
           "text": "Excusez-moi, ce n'est pas ce que j'avais commandé.",
           "en": "Excuse me, this isn't what I'd ordered.",
           "vi": "Xin lỗi, đây không phải món em gọi."
         },
         {
+          cell_id: "21907609-6928-4e52-a3be-0d039f3e9206",
           "speaker": "Serveur",
           "text": "Pardon ? Vous aviez pris quoi ?",
           "en": "Sorry? What had you ordered?",
           "vi": "Xin lỗi? Cô gọi gì?"
         },
         {
+          cell_id: "3fcab979-1552-484f-834c-28ea2364e686",
           "speaker": "Linh",
           "text": "Le filet de bar — celui-ci est du saumon.",
           "en": "The sea bass fillet — this one is salmon.",
           "vi": "Cá vược — món này là cá hồi."
         },
         {
+          cell_id: "67daa731-6569-417b-a36d-78006f5816ba",
           "speaker": "Serveur",
           "text": "Toutes mes excuses, je rapporte en cuisine immédiatement.",
           "en": "My apologies, I'll take it back to the kitchen immediately.",
@@ -12978,6 +13468,7 @@ export const lessons: FrenchLesson[] =           [
       "tip_advice_en": "Prevention: prefer Uber/Bolt over a random taxi — the app tracks the route, locks the price up front, and removes the cash-handling friction. If you must take a taxi: only one with a working taximètre and a roof 'TAXI' sign; avoid 'pirate' cars (no sign, no meter — especially at CDG/Orly where someone approaches you with 'Taxi Madame?' right at the Arrivals door; that is an illegal unlicensed VTC, never take it — walk to the official taxi rank). Before getting in: ask for an estimate and check the license plate/number is clearly displayed. In the car: run Google Maps on your phone along the route; if the driver goes wrong (padding), say gently 'Excusez-moi, mais Google indique un itinéraire plus court par X — pourriez-vous le prendre?' If the driver refuses citing 'embouteillage' (traffic jam) — accept it if your map confirms congestion, push back if it clearly doesn't. On arrival: request the itemized receipt ('un reçu détaillé avec numéro de licence et trajet') — it's a legal right on request. Pay exactly what the meter shows — do NOT add a 'pourboire pour la peine' (tip for the trouble) if the service was bad; a tip on top of a padded fare just rewards the behavior, and there is zero social obligation to tip a French taxi (unlike a US cab). If the driver becomes threatening or abusive: leave immediately, go to the nearest police station, and bring your receipt and the photos you took as evidence. The anglophone calibration: in the US your instinct is 'dispute it in the app later'; in France, document at the moment (photo of meter + license) because the after-the-fact complaint to the préfecture only works if you have that evidence in hand.",
       "vocabulary": [
         {
+          cell_id: "3ce1c911-4bf5-4cd6-ac6b-df40e2c435e8",
           "word": "un taximètre",
           "en": "taxi meter",
           "vi": "đồng hồ taxi",
@@ -12986,6 +13477,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "tak-see-MEH-truh (final 'tre' = soft 'truh'; insist it's running: 'pourriez-vous démarrer le taximètre?')"
         },
         {
+          cell_id: "03d3a33d-8ff0-48a8-877f-4d55d72437aa",
           "word": "un itinéraire",
           "en": "a route",
           "vi": "lộ trình / tuyến đường",
@@ -12994,6 +13486,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ee-tee-nay-RAIR (route/itinerary — broader than English 'itinerary', covers the driving path too)"
         },
         {
+          cell_id: "1b5a6fcf-0f23-4159-9b9c-73b2681a20dd",
           "word": "un détour",
           "en": "a detour",
           "vi": "đường vòng",
@@ -13002,6 +13495,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "day-TOOR ('faire un détour' = to take a longer way round — the polite word for what a scamming driver does)"
         },
         {
+          cell_id: "4864564e-7514-4135-a4fa-b5009272d662",
           "word": "un tarif de jour / de nuit",
           "en": "day / night fare",
           "vi": "giá ngày / đêm",
@@ -13010,6 +13504,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "tah-REEF duh ZHOOR / duh NWEE (Paris meters show tarif A/B/C; night rate by day is a classic illegal overcharge)"
         },
         {
+          cell_id: "90ad1568-639d-434a-8822-a24c3428a968",
           "word": "un reçu détaillé",
           "en": "itemized receipt",
           "vi": "hóa đơn chi tiết",
@@ -13018,6 +13513,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ruh-SOO day-tah-YAY (an itemized receipt — a legal right on request; insist on it even if they offer only the standard ticket)"
         },
         {
+          cell_id: "f9ee7fa9-9e82-4c01-81a8-5d25155d6e91",
           "word": "une licence taxi",
           "en": "taxi license",
           "vi": "giấy phép taxi",
@@ -13026,6 +13522,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "lee-SAH(n)SS tak-SEE (the official license number — note it down; the préfecture needs it to act on a complaint)"
         },
         {
+          cell_id: "6a05624e-4cd0-4f87-af1e-5eb725cf2410",
           "word": "refuser le paiement par carte",
           "en": "to refuse card payment",
           "vi": "từ chối thanh toán thẻ",
@@ -13034,6 +13531,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ruh-foo-ZAY luh pay-MAH(n) par KART (illegal in France above €10 — 'le terminal est en panne' is the usual false excuse)"
         },
         {
+          cell_id: "a3ba15ae-f56c-43fb-93dd-1e4f06a75401",
           "word": "déposer une réclamation",
           "en": "to file a complaint",
           "vi": "nộp đơn khiếu nại",
@@ -13042,6 +13540,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "day-poh-ZAY oon ray-klah-mah-SYO(n) (to file a consumer complaint — to a company/préfecture, not the police 'plainte')"
         },
         {
+          cell_id: "cae3e0ec-5218-4a9c-b5f4-1619e5ff26d5",
           "word": "un VTC (Voiture de Tourisme avec Chauffeur)",
           "en": "app-based ride (Uber/Bolt)",
           "vi": "xe Uber/Bolt",
@@ -13050,6 +13549,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "VAY-TAY-SAY (spell the three letters; a licensed private-hire car booked via app — legal, unlike a 'pirate' car)"
         },
         {
+          cell_id: "14c4a1aa-b94f-4847-8b28-cdb537d5c385",
           "word": "facturer abusivement",
           "en": "to overcharge",
           "vi": "tính phí quá mức",
@@ -13060,24 +13560,28 @@ export const lessons: FrenchLesson[] =           [
       ],
       "dialogue": [
         {
+          cell_id: "58d589d8-6c0c-47d7-8722-005c67bd47ee",
           "speaker": "Linh",
           "text": "Excusez-moi, vous prenez un itinéraire plus long.",
           "en": "Excuse me, you're taking a longer route.",
           "vi": "Xin lỗi, anh/chị đang đi đường dài hơn."
         },
         {
+          cell_id: "b503e09e-9aea-43e1-8a58-4455ea56c7bb",
           "speaker": "Chauffeur",
           "text": "Il y a un embouteillage sur l'autre route.",
           "en": "There's a traffic jam on the other route.",
           "vi": "Đường kia kẹt xe."
         },
         {
+          cell_id: "6fd2623a-803c-4bf3-966a-7e3af1cce9a7",
           "speaker": "Linh",
           "text": "Mon Google Maps n'indique aucun embouteillage. Pourriez-vous prendre la rue de Rivoli ?",
           "en": "My Google Maps shows no traffic jam. Could you take Rue de Rivoli?",
           "vi": "Google Maps không báo kẹt nào. Anh/chị đi đường Rivoli được không?"
         },
         {
+          cell_id: "e51c1d2b-c194-452a-a803-697fa85e485c",
           "speaker": "Chauffeur",
           "text": "D'accord, je vais y aller.",
           "en": "OK, I'll go that way.",
@@ -13418,6 +13922,7 @@ export const lessons: FrenchLesson[] =           [
       "tip_advice_en": "The four-step frame for a difficult conversation with French in-laws (it mirrors the workplace 'conversation difficile' frame — same skill, family context): (1) Schedule a specific meeting, don't 'pop in' — text 'Maman, j'aimerais qu'on prenne un café cette semaine, juste vous et moi' so she has psychological prep time. An ambushed in-law gets defensive in any culture; the French specifically expect the scheduled, deliberate version. (2) Open with intent, not the grievance: 'je veux qu'on se comprenne mieux pour les prochains repas' (I want us to understand each other better for the future meals). (3) State fact + impact, not accusation: 'Quand vous avez dit X, j'ai ressenti Y' (when you said X, I felt Y) — never 'vous m'avez blessée' (you hurt me), which assigns blame and triggers defense. This is exactly the US 'I-statement' technique, just in French — lead with the effect on you, not the indictment of them. (4) Invite their side: 'De votre côté, qu'est-ce qui vous a paru déplacé?' (From your side, what struck you as inappropriate?) — an open question that lets the in-law be honest too, which is what actually resolves cultural friction (it's mutual, not one-sided).\n\nAvoid: spiraling apologies ('je suis vraiment désolée pour tout' — the Vietnamese over-apology reflex; the French read it as immature, not humble); cultural generalizations ('vous les Français…' — 'you French people…', the mirror of 'you Vietnamese always…'); and tears (they fluster a French interlocutor and stall the resolution rather than evoking sympathy). After the conversation: send a short thank-you message ('Merci d'avoir pris ce temps, ça compte pour moi'), then drop it in everyday interactions — resolved is resolved; relitigating it forces the in-law to keep reassuring you, which erodes the goodwill the conversation built. If your spouse asks, share the outcome briefly ('on s'est expliquées' — we talked it through) without the detail; keeping the spouse out of the content is precisely what prevents the triangulation that damages both relationships.",
       "vocabulary": [
         {
+          cell_id: "494d5016-c6d7-4eb8-9d89-a46fc7c030e6",
           "word": "les beaux-parents",
           "en": "in-laws",
           "vi": "bố mẹ chồng/vợ",
@@ -13426,6 +13931,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "boh-pah-RA(n) (the 'x' of 'beaux' is silent; final '-ents' nasal; covers both parents-in-law)"
         },
         {
+          cell_id: "200d5aab-e082-46cd-b8c4-9599ca5266cf",
           "word": "la belle-mère",
           "en": "mother-in-law",
           "vi": "mẹ chồng/vợ",
@@ -13434,6 +13940,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "bel-MAIR (note: 'belle-mère' also means 'stepmother' — context disambiguates; here = mother-in-law)"
         },
         {
+          cell_id: "f7ed6fe8-dd35-494a-870f-977134d713ef",
           "word": "un malentendu culturel",
           "en": "cultural misunderstanding",
           "vi": "hiểu lầm văn hóa",
@@ -13442,6 +13949,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ma-lah(n)-tah(n)-DOO kuhl-too-REL (two nasals in 'malentendu'; the 'u's are rounded)"
         },
         {
+          cell_id: "d43c16c3-f010-48d5-83af-73ccf166c0b8",
           "word": "se sentir touché(e)",
           "en": "to feel hurt",
           "vi": "cảm thấy tổn thương",
@@ -13450,6 +13958,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "suh sah(n)-TEER too-SHAY ('ça m'a touchée' = that affected/hurt me — softer and less accusatory than 'blessée')"
         },
         {
+          cell_id: "a6a2fe56-dfa4-4168-8b46-35007b861d88",
           "word": "trouver un équilibre",
           "en": "to find a balance",
           "vi": "tìm sự cân bằng",
@@ -13458,6 +13967,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "troo-VAY uh(n) ay-kee-LEE-bruh (the collaborative-framing phrase — a balance found together, not imposed)"
         },
         {
+          cell_id: "59f7967f-99a8-405a-b002-00af86b96c53",
           "word": "poser un cadre",
           "en": "to set boundaries",
           "vi": "đặt khung / ranh giới",
@@ -13466,6 +13976,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "poh-ZAY uh(n) KAH-druh (literally 'to lay a frame'; the French equivalent of US 'to set boundaries')"
         },
         {
+          cell_id: "a35150f6-41e1-4338-8fc6-d371308a3b17",
           "word": "un repas de famille",
           "en": "a family meal",
           "vi": "bữa cơm gia đình",
@@ -13474,6 +13985,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ruh-PAH duh fah-MEE-yuh ('famille' = 'fah-mee-yuh', the tricky '-mille' ending; the recurring Sunday-lunch institution in France)"
         },
         {
+          cell_id: "5b30c39c-efac-4f3d-8268-15ca3480ef02",
           "word": "se comprendre mieux",
           "en": "to understand each other better",
           "vi": "hiểu nhau hơn",
@@ -13482,6 +13994,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "suh ko(n)-PRAH(n)-druh MYUH (reflexive 'se comprendre' = understand EACH OTHER — mutual, the key reframing)"
         },
         {
+          cell_id: "3183d349-a473-40de-88b5-20256f750e3b",
           "word": "un comportement déplacé",
           "en": "inappropriate behavior",
           "vi": "cách cư xử không phù hợp",
@@ -13490,6 +14003,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ko(n)-por-tuh-MAH(n) day-plah-SAY ('déplacé' = out of place/inappropriate — neutral, not as harsh as 'offensant')"
         },
         {
+          cell_id: "31d54502-202d-44af-aa19-17d0048ed1b7",
           "word": "crever l'abcès",
           "en": "to clear the air",
           "vi": "giải quyết bằng nói thẳng",
@@ -13500,24 +14014,28 @@ export const lessons: FrenchLesson[] =           [
       ],
       "dialogue": [
         {
+          cell_id: "5ce957bb-897c-403f-b89e-6231b7a19df3",
           "speaker": "Linh",
           "text": "Maman, j'aimerais qu'on prenne un café — juste vous et moi.",
           "en": "Maman, I'd like us to get a coffee — just you and me. [note: still vouvoiement ('vous'), even with 'Maman']",
           "vi": "Mẹ ơi, em muốn mình uống cà phê — chỉ mẹ và em."
         },
         {
+          cell_id: "fe8ec45a-6b12-4ec6-ae5a-91a163adedb2",
           "speaker": "Belle-mère",
           "text": "Bien sûr. Quelque chose te préoccupe ?",
           "en": "Of course. Is something on your mind? [the mother-in-law uses 'tu' downward; the daughter-in-law still uses 'vous' upward — asymmetric is normal early on]",
           "vi": "Tất nhiên. Có điều gì làm em băn khoăn không?"
         },
         {
+          cell_id: "79395098-156f-4cde-b2e9-d3a184a36e0e",
           "speaker": "Linh",
           "text": "Oui — je voudrais qu'on parle de dimanche, calmement.",
           "en": "Yes — I'd like us to talk about Sunday, calmly.",
           "vi": "Vâng — em muốn mình nói về chủ nhật, bình tĩnh."
         },
         {
+          cell_id: "6af0afd7-b29f-4849-8c61-ac65df58eeac",
           "speaker": "Belle-mère",
           "text": "D'accord, je t'écoute. C'est mieux qu'on en parle.",
           "en": "All right, I'm listening. It's better that we talk about it.",
@@ -13812,6 +14330,7 @@ export const lessons: FrenchLesson[] =           [
       "tip_advice_en": "Five principles for political disagreement that preserves the friendship: (1) Listen first, don't interrupt — even when you deeply disagree. Let the French friend finish their sentence; cutting in is read as 'I'm not actually listening, I'm waiting to attack'. (2) Respond with substance, not emotion: 'Je vois ta logique, mais voici ce qu'elle ne prend pas en compte…' (I see your logic, but here's what it doesn't account for…) rather than 'Tu ne comprends rien!' (You understand nothing!). (3) Use 'je', not 'tu': 'je vois autrement' (I see it differently) rather than 'tu te trompes' (you're wrong) — the same I-statement discipline as in English, and just as load-bearing here. (4) Use 'expérience vécue' as evidence — a concrete story about your own family in Vietnam outweighs citing a news source, because it's the one thing your French friend cannot counter with their own reading. (5) Know when to stop: 'On va pas se mettre d'accord ce soir, et c'est ok' (We're not going to agree tonight, and that's fine) — this closes the debate with both sides' dignity intact, and is itself a respected move, not a retreat.\n\nAvoid: caving at the end out of fatigue ('en fait, tu as peut-être raison' — actually, maybe you're right) — the French friend remembers it and reads you as someone who doesn't really hold positions, which lowers their respect for you (this is the single most common Vietnamese error here, driven by the harmony instinct, and it backfires in France); debating once alcohol is involved (it escalates level-1 to level-2 fast); and bringing politics into a family WhatsApp group chat (text strips tone, so a level-1 discussion reads as a level-2 attack — keep political disagreement face-to-face). Anglophone calibration: if you're American and used to either avoiding politics entirely or going scorched-earth, the French middle path — engage hard, stay warm, hold your ground, close cleanly — is the skill to build here.",
       "vocabulary": [
         {
+          cell_id: "689da193-ac90-4308-b39f-9916fd94dd10",
           "word": "un débat",
           "en": "a debate",
           "vi": "cuộc tranh luận",
@@ -13820,6 +14339,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "day-BAH (final 't' silent; in France a positive word — debate is respected, not avoided)"
         },
         {
+          cell_id: "22e69060-0530-4a21-b816-b28bda9e66d3",
           "word": "un désaccord",
           "en": "a disagreement",
           "vi": "sự bất đồng",
@@ -13828,6 +14348,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "day-zah-KOR (final 'd' silent; a disagreement — in French, not inherently relationship-threatening)"
         },
         {
+          cell_id: "66f71f44-89eb-4448-b69a-ef98e56c9714",
           "word": "tenir sa position",
           "en": "to hold one's ground",
           "vi": "giữ vững quan điểm",
@@ -13836,6 +14357,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "tuh-NEER sah poh-zee-SYO(n) (to hold your stance under pressure — the French RESPECT this, unlike caving)"
         },
         {
+          cell_id: "f2cf759b-6fad-4b89-8e3f-b1e571692cb6",
           "word": "l'expérience vécue",
           "en": "lived experience",
           "vi": "trải nghiệm thực",
@@ -13844,6 +14366,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "leks-pay-RYAH(n)SS vay-KOO (your strongest evidence — a personal account the other side cannot counter with theirs)"
         },
         {
+          cell_id: "d96c277d-352d-464f-8f97-a1f40d1099c9",
           "word": "un point de vue",
           "en": "a point of view",
           "vi": "góc nhìn",
@@ -13852,6 +14375,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "PWA(n) duh VOO (nasal first; 'point' = nasal 'pwa(n)'; same concept as English 'point of view')"
         },
         {
+          cell_id: "a99bf729-b5ed-467d-a00b-8dac95682dc8",
           "word": "nuancer",
           "en": "to qualify / add nuance",
           "vi": "thêm sắc thái / không đen-trắng",
@@ -13860,6 +14384,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "noo-ah(n)-SAY (the 'u' rounded; nasal middle; a prized French intellectual move — to complicate a black-and-white claim)"
         },
         {
+          cell_id: "60a53e37-c455-4c4b-bf15-fb8d19f77a6c",
           "word": "un parti pris",
           "en": "a prejudgment / bias",
           "vi": "thiên kiến",
@@ -13868,6 +14393,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "par-TEE PREE (a preconceived bias; 'sans parti pris' = without bias — a useful claim to make about your own view)"
         },
         {
+          cell_id: "b0cb0700-909b-4595-9f45-49dcdd20069c",
           "word": "prendre du recul",
           "en": "to step back",
           "vi": "lùi lại nhìn",
@@ -13876,6 +14402,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "PRAH(n)-druh doo ruh-KOOL (the 'u' rounded; to gain perspective / take a step back from the heat of it)"
         },
         {
+          cell_id: "5889da65-5fae-4b6b-bbcc-9be3f4380ed7",
           "word": "convaincre",
           "en": "to convince",
           "vi": "thuyết phục",
@@ -13884,6 +14411,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ko(n)-VA(n)-kruh (two nasals; 'sans chercher à te convaincre' = without trying to convince you — the disarming opener)"
         },
         {
+          cell_id: "6b612c4c-4324-4108-bedb-4560b31a872e",
           "word": "agree to disagree (« être en désaccord et l'accepter »)",
           "en": "agree to disagree",
           "vi": "chấp nhận khác biệt",
@@ -13894,24 +14422,28 @@ export const lessons: FrenchLesson[] =           [
       ],
       "dialogue": [
         {
+          cell_id: "575a48fc-94d7-4073-aace-f90f803e1061",
           "speaker": "Pierre",
           "text": "Franchement, le régime au Vietnam — c'est un problème.",
           "en": "Honestly, the regime in Vietnam — it's a problem.",
           "vi": "Thật lòng, chế độ ở Việt Nam — là vấn đề."
         },
         {
+          cell_id: "5795856e-f261-4359-9a6f-0b73aeee3b77",
           "speaker": "Linh",
           "text": "Je vois ce que tu lis dans la presse française. Ma vie là-bas est plus nuancée.",
           "en": "I see what you read in the French press. My life there is more nuanced. [acknowledges his source before differing — doesn't dismiss it]",
           "vi": "Em thấy điều bạn đọc trong báo Pháp. Cuộc sống của em ở đó có nhiều sắc thái hơn."
         },
         {
+          cell_id: "c126974e-64bf-4802-bcf2-24e17c762196",
           "speaker": "Pierre",
           "text": "Tu peux m'expliquer ?",
           "en": "Can you explain?",
           "vi": "Bạn giải thích được không?"
         },
         {
+          cell_id: "ef88e2aa-0bae-4170-a0c4-e0f0bda3e7e1",
           "speaker": "Linh",
           "text": "Volontiers — mais juste mon angle, sans essayer de te convaincre.",
           "en": "Gladly — but just my angle, without trying to convince you. [the disarming frame: I'm sharing, not winning]",
@@ -14216,6 +14748,7 @@ export const lessons: FrenchLesson[] =           [
       "tip_advice_en": "Distinguish four phrases that all mean roughly 'I'm sorry for your loss' but sit at different registers — getting the register wrong is the main anglophone error, because English flattens them all into 'so sorry for your loss':\n- 'Toutes mes condoléances' — formal/distant; use when you first hear the news, especially with a family you're not close to; this is what you write on a standard sympathy card.\n- 'Je suis désolé(e)' — neutral; works spoken or written; fine with a close friend.\n- 'Je pense à toi' — warm/intimate; emphasizes emotional presence; for a very close friend or by personal text.\n- 'Mes pensées vont vers toi/vous' — gentle; use when you don't know their religious stance (and avoid 'je prie pour toi' / I'm praying for you unless you're sure they'd welcome it — a key difference from much of the US, where 'praying for you' is a near-default; in secular France it can land wrong).\n\nAvoid these (they feel supportive but aren't): 'Je sais ce que tu ressens' (I know how you feel — you don't, and it's heard that way); 'il/elle est dans un meilleur endroit' (he/she is in a better place — assumes religion); 'le temps guérit tout' (time heals all — cliched and dismissive); 'pense aux bons côtés' (look on the bright side — strips them of the right to grieve). For the loss of a pet: do NOT say 'ce n'est qu'un chien' (it's only a dog) — the French treat pets as family members, often more openly than in some cultures. Use the same comforting register as for a person, just slightly lighter ('condoléances' is a touch formal for a pet) — and crucially, use the pet's name: 'je suis désolée pour Loulou, je sais combien tu l'aimais' (I'm sorry about Loulou, I know how much you loved him). Naming the pet is what proves you actually registered the loss rather than offering a script.",
       "vocabulary": [
         {
+          cell_id: "a6bac13d-5fa4-4241-84cb-05fbd0c26864",
           "word": "présenter ses condoléances",
           "en": "to offer condolences",
           "vi": "đưa lời chia buồn",
@@ -14224,6 +14757,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "pray-zah(n)-TAY say ko(n)-doh-lay-AH(n)SS (the formal action; what you do at the funeral when you greet the family)"
         },
         {
+          cell_id: "481986cd-d7bc-428a-9159-45bab066283e",
           "word": "un deuil",
           "en": "grief / mourning",
           "vi": "sự tang tóc",
@@ -14232,6 +14766,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "DUH-yuh (one syllable; the 'euil' = 'uh-yuh', a hard French sound; means grief AND the formal state of mourning)"
         },
         {
+          cell_id: "9284065b-d34a-4e38-8468-9de516a48b56",
           "word": "être en deuil",
           "en": "to be grieving",
           "vi": "đang chịu tang",
@@ -14240,6 +14775,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ETR ah(n) DUH-yuh ('en deuil' = in mourning — a recognized state, often with workplace bereavement leave attached)"
         },
         {
+          cell_id: "4d06eb4d-0369-4076-87a0-ef8ae1c2393c",
           "word": "perdre un proche",
           "en": "to lose a loved one",
           "vi": "mất người thân",
@@ -14248,6 +14784,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "PAIR-druh uh(n) PROSH ('un proche' = a close/loved one — broader than 'family', includes close friends)"
         },
         {
+          cell_id: "7259797d-bb18-4d40-aebb-f9d1df3c86b5",
           "word": "un enterrement",
           "en": "a funeral",
           "vi": "đám tang",
@@ -14256,6 +14793,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ah(n)-tair-MAH(n) (two nasals; the burial funeral specifically; 'obsèques' is the more formal general term)"
         },
         {
+          cell_id: "3b9e6d8a-03aa-456f-a624-4837060535d1",
           "word": "une cérémonie d'adieu",
           "en": "a farewell ceremony",
           "vi": "lễ tiễn biệt",
@@ -14264,6 +14802,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "say-ray-moh-NEE dah-DYUH (a secular/civil farewell ceremony — increasingly common in secular France, not religious)"
         },
         {
+          cell_id: "022e26e2-0054-499d-96ca-10f35f84532e",
           "word": "être présent(e) pour quelqu'un",
           "en": "to be there for someone",
           "vi": "có mặt vì ai đó",
@@ -14272,6 +14811,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ETR pray-ZAH(n) poor kel-KUH(n) (the core French comforting value — physical/emotional presence over words)"
         },
         {
+          cell_id: "fc0cde7e-b8b3-4d31-aa64-b107f660ba68",
           "word": "prendre des nouvelles",
           "en": "to check in",
           "vi": "hỏi thăm",
@@ -14280,6 +14820,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "PRAH(n)-druh day noo-VEL ('prendre des nouvelles' = to check in on someone — the delayed 2-week one matters most)"
         },
         {
+          cell_id: "fed6affc-0923-4bee-a048-1fa6e9dd9eca",
           "word": "traverser une épreuve",
           "en": "to go through a hardship",
           "vi": "vượt qua thử thách",
@@ -14288,6 +14829,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "trah-vair-SAY oon ay-PRUHV ('une épreuve' = a trial/ordeal; the dignified word for what they're going through)"
         },
         {
+          cell_id: "c219ab95-4b68-4a10-a2ea-013b1a3c3585",
           "word": "laisser le temps",
           "en": "to give time",
           "vi": "cho thời gian",
@@ -14298,24 +14840,28 @@ export const lessons: FrenchLesson[] =           [
       ],
       "dialogue": [
         {
+          cell_id: "b00c1cd7-21fa-4a39-8f79-aa7cc21fd5c1",
           "speaker": "Linh (texto à 9h, le lendemain)",
           "text": "Camille, je viens d'apprendre pour ton père. Toutes mes condoléances. Je pense à toi.",
           "en": "Camille, I just heard about your father. My deepest condolences. I'm thinking of you. [short + warm — sent within 24h, no long paragraph]",
           "vi": "Camille, em vừa nghe tin về bố bạn. Em xin chia buồn. Em nghĩ đến bạn."
         },
         {
+          cell_id: "44f74551-1cef-4bff-a547-5ed9216f36a0",
           "speaker": "Camille",
           "text": "Merci Linh. C'est dur.",
           "en": "Thank you, Linh. It's hard.",
           "vi": "Cảm ơn Linh. Khó quá."
         },
         {
+          cell_id: "034610b2-95c5-4a62-8bba-e5f6dbcc5f7b",
           "speaker": "Linh",
           "text": "Je passe te voir samedi si tu veux. Pas obligée de parler — juste être là.",
           "en": "I'll come see you Saturday if you want. No need to talk — just to be there. [a CONCRETE offer, not vague 'let me know if you need anything']",
           "vi": "Em ghé bạn thứ bảy nếu bạn muốn. Không cần nói — chỉ ở đó."
         },
         {
+          cell_id: "c05831cb-4bc4-4353-a18b-51b8650b1b5e",
           "speaker": "Camille",
           "text": "Oui — viens, ça me fera du bien.",
           "en": "Yes — come, it'll do me good.",
@@ -14614,6 +15160,7 @@ export const lessons: FrenchLesson[] =           [
       "tip_advice_en": "The four-part frame for a serious apology:\n(1) OPEN without justifying: 'Je voudrais te parler de X — pas pour me justifier' (I want to talk to you about X — not to justify myself). Critically, this opening must NOT contain a 'mais' ('je suis désolée mais…') — ANY 'but' after an apology cancels the apology. This is the single highest-frequency apology error in every language; the French are simply less forgiving of it.\n(2) NAME the specific wrong + its impact: 'Quand j'ai dit X devant les autres, ça t'a humiliée. Je le sais.' (When I said X in front of the others, it humiliated you. I know that.) Do NOT say 'si je t'ai blessée' (IF I hurt you) — the conditional 'si' is evasive and reads as a non-apology in French exactly as 'if I offended anyone' does in English. Use the indicative: 'ce que j'ai fait t'a blessée' (what I did hurt you).\n(3) CONCRETE repair: 'Voici ce que je change : [action 1], [action 2]'. Not 'je vais essayer' (I'll try) — too weak; the French want a mechanism, not an intention.\n(4) RESPECT their timing: 'Je ne te demande pas de me pardonner aujourd'hui' (I'm not asking you to forgive me today). Explicitly grant them the right not to forgive yet.\n\nFormat hierarchy: in person > phone > long text > email. Avoid: long voice/audio messages (intrusive — they can't skim or pause it); a public apology (an Instagram comment) — this humiliates the other person by making the wrong public; and using a mutual friend as a go-between ('go tell her I'm sorry') — it widens the circle of people who know, which compounds the original harm. After apologizing: do NOT follow up within 1–2 weeks ('tu m'en veux toujours?' — do you still hold it against me?) — that re-centers your need for relief over their need for time. If forgiveness is refused on the day: thank them for listening ('merci de m'avoir écoutée'), do not argue, withdraw gracefully, and let your actions over the following months do the proving. Anglophone calibration: the US 'can we just move past this?' is precisely the move to avoid — it asks for closure on your schedule, not theirs.",
       "vocabulary": [
         {
+          cell_id: "10679158-c261-4f58-9292-17f2da386f9c",
           "word": "reconnaître ses torts",
           "en": "to acknowledge fault",
           "vi": "thừa nhận sai",
@@ -14622,6 +15169,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ruh-koh-NEH-truh say TOR (final 's' of 'torts' silent; the structural OPPOSITE of 'se justifier' — the core of a real apology)"
         },
         {
+          cell_id: "2617eab6-2acf-440f-970a-1fe907869340",
           "word": "présenter des excuses",
           "en": "to present apologies",
           "vi": "đưa lời xin lỗi",
@@ -14630,6 +15178,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "pray-zah(n)-TAY day-zek-SKUZ (liaison 'des excuses' = 'day-zek'; the formal phrase for offering an apology)"
         },
         {
+          cell_id: "635b58ea-5c08-4ae2-8ad2-cc886c6295e8",
           "word": "se justifier",
           "en": "to justify oneself",
           "vi": "tự biện minh",
@@ -14638,6 +15187,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "suh zhoos-tee-FYAY (the 'u' rounded; what you must explicitly say you're NOT doing — 'pas pour me justifier')"
         },
         {
+          cell_id: "63938f70-529b-42fd-a27c-ce93533d7681",
           "word": "blesser",
           "en": "to hurt",
           "vi": "làm tổn thương",
@@ -14646,6 +15196,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "bleh-SAY (to wound emotionally; use the indicative 'je t'ai blessée', NOT the evasive conditional 'si je t'ai blessée')"
         },
         {
+          cell_id: "f388bb45-135f-4159-aecf-9abed66f94df",
           "word": "un geste réparateur",
           "en": "a repair gesture",
           "vi": "hành động sửa lỗi",
@@ -14654,6 +15205,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ZHEST ray-pah-rah-TUHR ('zh' = 's' in 'measure'; a concrete reparative action — NOT a make-up gift, which reads as buying forgiveness)"
         },
         {
+          cell_id: "cef90eb8-817c-4090-96af-a97554150173",
           "word": "un acte manqué",
           "en": "a slip / failed act",
           "vi": "hành vi vô thức",
@@ -14662,6 +15214,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "AKT mah(n)-KAY (a Freudian-slip / unconscious failed act; do NOT use this to excuse a serious wrong — it reads as evasion)"
         },
         {
+          cell_id: "6cee4319-815f-4f4f-a821-4ec4d7df5655",
           "word": "laisser le temps",
           "en": "to give time",
           "vi": "cho thời gian",
@@ -14670,6 +15223,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "leh-SAY luh TAH(n) (to allow time — forgiveness is a process; you grant the time, you don't request it back)"
         },
         {
+          cell_id: "c1d72a75-efb7-47ed-b100-2f83e9d607a8",
           "word": "changer concrètement",
           "en": "to change concretely",
           "vi": "thay đổi cụ thể",
@@ -14678,6 +15232,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "shah(n)-ZHAY ko(n)-kret-MAH(n) ('concrètement' is the load-bearing word — separates a real apology from 'je vais essayer')"
         },
         {
+          cell_id: "3d191f87-75cc-418c-a1cf-863d14b7e089",
           "word": "un repentir sincère",
           "en": "sincere remorse",
           "vi": "sự ăn năn chân thành",
@@ -14686,6 +15241,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ruh-pah(n)-TEER sa(n)-SAIR (nasal in both words; sincere remorse — shown through action over time, not stated repeatedly)"
         },
         {
+          cell_id: "18cc276e-3778-4b33-97c9-4cdf55d2ab79",
           "word": "ne pas se reproduire",
           "en": "not to recur",
           "vi": "không lặp lại",
@@ -14696,24 +15252,28 @@ export const lessons: FrenchLesson[] =           [
       ],
       "dialogue": [
         {
+          cell_id: "75a95016-7ee4-443e-943e-d9cbf115bd04",
           "speaker": "Linh",
           "text": "Camille, est-ce que tu peux m'écouter cinq minutes ?",
           "en": "Camille, can you listen to me for five minutes?",
           "vi": "Camille, bạn nghe em năm phút được không?"
         },
         {
+          cell_id: "54178904-34f6-457b-b8e8-fba97994dd8c",
           "speaker": "Camille",
           "text": "Vas-y.",
           "en": "Go ahead.",
           "vi": "Em nói đi."
         },
         {
+          cell_id: "dd117c59-a989-425b-bb8d-3f8d7270d744",
           "speaker": "Linh",
           "text": "Ce que j'ai fait jeudi — révéler ce que tu m'avais dit en privé — c'était inacceptable. Je l'ai fait, je le sais, et tu avais le droit d'être en colère.",
           "en": "What I did Thursday — revealing what you'd told me in private — was unacceptable. I did it, I know it, and you had every right to be angry. [names the wrong + owns it + validates her anger, no 'but']",
           "vi": "Điều em làm thứ năm — tiết lộ điều bạn đã nói riêng với em — không thể chấp nhận. Em đã làm, em biết, và bạn có quyền giận."
         },
         {
+          cell_id: "56d05ae8-b612-404d-857c-990bcee38b50",
           "speaker": "Camille",
           "text": "OK. Je t'écoute.",
           "en": "OK. I'm listening.",
@@ -15004,6 +15564,7 @@ export const lessons: FrenchLesson[] =           [
       "tip_advice_en": "Four principles for a graceful 'adieu':\n(1) INVEST IN THE FORM. Don't let 'we'll keep in touch on WhatsApp' substitute for an actual goodbye. Without a ritual, closure doesn't happen — you'll carry an unfinished feeling for months. (Resist the very American move of reducing the goodbye to logistics: 'I'll DM you, we'll figure out a visit.')\n(2) SAY WHAT YOU ACTUALLY THINK. Don't let the 'next trip' framing crowd out the real content: 'tu as compté' (you mattered), one or two specific moments, what you learned from them. Concrete, not generic — 'you've been an amazing friend' lands as filler here; a precise memory does not.\n(3) ACKNOWLEDGE THE GRIEF. The French don't sob at goodbyes the way Vietnamese culture often does — but letting your eyes go is normal, not weakness. 'C'est normal d'être triste — c'est la mesure de ce qu'on perd' (it's normal to be sad — that's the measure of what we're losing).\n(4) DON'T OVER-PROMISE. 'On se reverra c'est sûr !' sounds warm but is often an empty promise. Better: 'Si la vie nous remet sur le même chemin un jour, on saura. Et sinon, ce qu'on a vécu reste vrai' (if life puts us on the same path again one day, we'll know; and if not, what we lived stays true).\n\nFor a romantic ending: face to face, not by text; one unambiguous sentence ('je ne peux plus continuer' — I can't continue any more), no hedging; don't drag the conversation past an hour (after that it only multiplies the pain); in the first two weeks, no contact at all (no 'comment ça va ?' check-in texts) — give real space; return their belongings through a mutual friend or by post — do NOT use them as a pretext to meet again. Anglophone calibration: the US instinct to 'stay friends right away' or 'leave the door open' reads, to the French, as a way of not actually ending it — the clean cut is the kinder one.",
       "vocabulary": [
         {
+          cell_id: "0591a777-e19f-4ca5-b4df-16afeeddf9a3",
           "word": "un adieu",
           "en": "a final farewell",
           "vi": "lời chia tay vĩnh viễn",
@@ -15012,6 +15573,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ah-DYUH (the heavy word — from 'à Dieu'; reserve it for a truly final parting, NOT an everyday goodbye)"
         },
         {
+          cell_id: "ec9f4551-be05-4fa2-8159-7a9d178a9c9e",
           "word": "un pot de départ",
           "en": "a farewell drink/party",
           "vi": "tiệc chia tay",
@@ -15020,6 +15582,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "POH duh day-PAR (literally 'a leaving drink'; the public group send-off — distinct from the private one-on-one goodbye)"
         },
         {
+          cell_id: "d7978b93-b7ef-415f-8516-b439d0ecc2ad",
           "word": "se quitter",
           "en": "to part / break up",
           "vi": "chia tay",
@@ -15028,6 +15591,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "suh kee-TAY (reflexive; 'on se quitte' = we part ways — also the standard verb for ending a romantic relationship)"
         },
         {
+          cell_id: "4ead772c-a85f-4ead-a093-e1e421285e21",
           "word": "clore un chapitre",
           "en": "to close a chapter",
           "vi": "khép lại một chương",
@@ -15036,6 +15600,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "KLOR uh(n) shah-PEE-truh ('clore' is more literary/final than 'fermer'; same image as English 'close a chapter')"
         },
         {
+          cell_id: "34e7db41-92dd-441f-9eda-fc9846667c22",
           "word": "laisser une trace",
           "en": "to leave a mark",
           "vi": "để lại dấu ấn",
@@ -15044,6 +15609,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "leh-SAY oon TRAHSS (final 'ce' = soft 'ss'; 'tu as laissé une trace' = you left a mark — a strong, non-sappy thing to say)"
         },
         {
+          cell_id: "fd87d9ec-7bd2-46f5-8abe-e7b9d7802083",
           "word": "compter pour quelqu'un",
           "en": "to matter to someone",
           "vi": "quan trọng với ai đó",
@@ -15052,6 +15618,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ko(n)-TAY poor kel-KUH(n) ('compter' here = to count/matter, not to count numbers; 'tu as compté pour moi' = you mattered to me)"
         },
         {
+          cell_id: "1e77e4a1-b0da-4508-9120-58a0f6a4e559",
           "word": "garder le contact",
           "en": "to stay in touch",
           "vi": "giữ liên lạc",
@@ -15060,6 +15627,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "gar-DAY luh ko(n)-TAKT (final 'ct' both pronounced; say it only if you mean it — an empty 'on garde le contact' is heard as a non-promise)"
         },
         {
+          cell_id: "ec1a9a45-6104-41ec-9a86-8b0ab65b3dd0",
           "word": "un cadeau symbolique",
           "en": "a symbolic gift",
           "vi": "món quà tượng trưng",
@@ -15068,6 +15636,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "kah-DOH sa(n)-boh-LEEK (a meaningful, NOT expensive, gift — an expensive one creates an obligation to reciprocate)"
         },
         {
+          cell_id: "a55d08d2-9982-422e-9f73-feee461d83d3",
           "word": "du fond du cœur",
           "en": "from the bottom of my heart",
           "vi": "từ tận đáy lòng",
@@ -15076,6 +15645,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "doo FO(n) doo KUR ('œu' = English 'her' vowel with rounded lips; the sincere closing thank-you — not a cliche in French)"
         },
         {
+          cell_id: "6d8577e6-0340-42d6-8c8f-9fc92b1487ef",
           "word": "se quitter proprement",
           "en": "to part cleanly",
           "vi": "chia tay sạch",
@@ -15086,24 +15656,28 @@ export const lessons: FrenchLesson[] =           [
       ],
       "dialogue": [
         {
+          cell_id: "c76d8f65-7121-48ba-bdc5-e3e37468f94f",
           "speaker": "Linh",
           "text": "Camille, je voulais qu'on se voie avant ton départ — pas en groupe.",
           "en": "Camille, I wanted us to see each other before you leave — not in a group. [the deliberate private goodbye, separate from the public send-off]",
           "vi": "Camille, em muốn mình gặp trước khi bạn đi — không phải nhóm."
         },
         {
+          cell_id: "10a93d0b-9469-4850-92f8-02d8eaec59ff",
           "speaker": "Camille",
           "text": "J'attendais que tu me le proposes. Quand ?",
           "en": "I was waiting for you to suggest it. When?",
           "vi": "Em chờ bạn đề xuất. Khi nào?"
         },
         {
+          cell_id: "63a1bbdf-271d-440b-9fe4-e8705c230db7",
           "speaker": "Linh",
           "text": "Demain soir, dîner chez moi. Juste nous deux.",
           "en": "Tomorrow evening, dinner at my place. Just the two of us.",
           "vi": "Tối mai, ăn tối nhà em. Chỉ hai mình."
         },
         {
+          cell_id: "26a1413e-2e95-4e24-b9a2-9152ff6c96e6",
           "speaker": "Camille",
           "text": "Parfait. Je viens.",
           "en": "Perfect. I'll come.",
@@ -15412,6 +15986,7 @@ export const lessons: FrenchLesson[] =           [
       "tip_advice_en": "Five practical ways to support, without lecturing:\n(1) MAKE A CONCRETE OFFER instead of 'dis-moi si tu as besoin' (let me know if you need anything). A person in crisis has no energy to think up a request AND ask for it. 'Je passe samedi à 15h avec une lasagne, ça t'oblige à rien' (I'll come by Saturday at 3 with a lasagne, it commits you to nothing) → concrete, asks nothing of them. This is the single biggest fix for anglophones: 'let me know if you need anything' feels generous but quietly puts the labor on the person who has none.\n(2) SMALL ACTIONS. Bring a cooked meal (the French treat this as a real gift, not a cliche); offer a specific chore ('je peux faire tes courses cette semaine', 'je peux garder ton chien jeudi'); send a book with a short note.\n(3) HOLD SPACE WITHOUT PRESSURE. When you see them, don't require them to talk; accept silence; don't repeat 'comment tu vas vraiment ?' — they'll speak when ready.\n(4) CHECK IN STEADILY, WITHOUT PRESSURE. Short texts twice a week ('je pense à toi', 'pas obligée de répondre'), no expectation of a reply. Still check in at one month and three months — that's when most other friends have moved on, and it's the most remembered.\n(5) NAME PROFESSIONAL RESOURCES GENTLY. 'Si tu veux parler à un psy, je peux t'aider à en trouver un' — NOT 'tu devrais voir un psy' (that's a lecture).\n\nAVOID:\n- Unrequested advice ('il faut que tu…'): if you're not a therapist, don't lecture.\n- 'Tout va s'arranger' / 'ça va aller' / 'look on the bright side' / 'everything happens for a reason': forced positivity pushes them out of a feeling they're entitled to.\n- Probing for detail about the money/job/family situation: respect pudeur.\n- Comparing it to your own story: shifts the focus.\n- Telling a mutual friend ('je m'inquiète pour Camille'): breaks trust, even when well-meant.",
       "vocabulary": [
         {
+          cell_id: "e48993ed-d571-4bb3-8b8a-217915db9dbd",
           "word": "traverser une épreuve",
           "en": "to go through a hardship",
           "vi": "vượt qua thử thách",
@@ -15420,6 +15995,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "trah-vehr-SAY oon ay-PRUHV ('épreuve' = a trial/ordeal; the neutral, dignified way to name a hard period without prying)"
         },
         {
+          cell_id: "c309e660-f7bb-4841-8778-9287fc293fd0",
           "word": "un coup dur",
           "en": "a hard blow",
           "vi": "cú đánh nặng",
@@ -15428,6 +16004,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "KOO DOOR (literally 'a hard hit'; English equivalent: 'a hard knock' / 'a rough blow')"
         },
         {
+          cell_id: "d2d2e730-7461-498d-aa81-1c093df17470",
           "word": "être épuisé(e)",
           "en": "to be exhausted",
           "vi": "kiệt sức",
@@ -15436,6 +16013,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "EH-truh ay-pwee-ZAY (deeper than 'tired/fatigué' — it's 'drained, depleted'; add a silent 'e' sound is unchanged for the feminine)"
         },
         {
+          cell_id: "d5d8393b-e7c4-4938-9ed2-794f40c63fc5",
           "word": "une période creuse",
           "en": "a low period",
           "vi": "giai đoạn xuống dốc",
@@ -15444,6 +16022,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "pay-RYOD KRUHZ ('creuse' = hollow/empty; a flat, low stretch — gentler and less clinical than 'depression')"
         },
         {
+          cell_id: "a1c865dc-39a6-4fcb-9ba9-12dc9fb4c2e8",
           "word": "être présent(e)",
           "en": "to be present",
           "vi": "có mặt",
@@ -15452,6 +16031,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "EH-truh pray-ZAH(n) (nasal final; 'être présent en arrière-plan' = to be present in the background — the French support ideal)"
         },
         {
+          cell_id: "454dcfd0-b6ec-4f1c-b53a-617262b04038",
           "word": "prêter une oreille",
           "en": "to lend an ear",
           "vi": "cho mượn cái tai",
@@ -15460,6 +16040,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "preh-TAY oon oh-RAY (idiom; exactly the English 'to lend an ear' — to listen without fixing)"
         },
         {
+          cell_id: "8e53933e-70ed-4b7a-96c4-ff4a0630a303",
           "word": "laisser respirer",
           "en": "to give space",
           "vi": "cho thở",
@@ -15468,6 +16049,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "leh-SAY res-pee-RAY (literally 'to let breathe'; English equivalent: 'to give someone space / room to breathe')"
         },
         {
+          cell_id: "eb963c15-bb45-4576-848b-6d0acc535383",
           "word": "un confident / une confidente",
           "en": "a trusted confidant",
           "vi": "người tâm sự",
@@ -15476,6 +16058,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ko(n)-fee-DAH(n) / ko(n)-fee-DAH(n)T (the masc. ends nasal, the fem. adds a sounded 't'; the one or two people who actually get told — pudeur means it's a short list)"
         },
         {
+          cell_id: "cf8e3842-362d-49f0-a459-86130e8a3cbd",
           "word": "aller voir un psy",
           "en": "to see a therapist",
           "vi": "đi gặp nhà tâm lý",
@@ -15484,6 +16067,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ah-LAY VWAR uh(n) PSEE ('psy' = casual for psychologue/psy; in France far less stigmatized than the word 'therapist' can feel — frame it as mature, not last-resort)"
         },
         {
+          cell_id: "5887628d-69ff-46f1-83ef-a7a275b33ada",
           "word": "être à l'écoute",
           "en": "to be available to listen",
           "vi": "sẵn sàng lắng nghe",
@@ -15494,24 +16078,28 @@ export const lessons: FrenchLesson[] =           [
       ],
       "dialogue": [
         {
+          cell_id: "046e1780-f533-4d02-ab0d-5e8091e5b28c",
           "speaker": "Linh (texto)",
           "text": "Camille, je pense à toi. Je sais que ces semaines sont dures.",
           "en": "Camille, I'm thinking of you. I know these weeks are hard. [a short check-in text, no question to answer — note it does NOT demand a reply]",
           "vi": "Camille, em nghĩ đến bạn. Em biết những tuần này khó."
         },
         {
+          cell_id: "fb15eee1-4b02-4eaa-8e1b-562b859afccb",
           "speaker": "Camille",
           "text": "Merci. Je tiens, mais je suis épuisée.",
           "en": "Thanks. I'm holding on, but I'm exhausted.",
           "vi": "Cảm ơn. Em chịu, nhưng em kiệt sức."
         },
         {
+          cell_id: "a783a0d0-5e62-422d-893c-d7051a791e08",
           "speaker": "Linh",
           "text": "Je passe samedi à 15h avec une soupe. Pas obligée de parler — juste être là.",
           "en": "I'll come by Saturday at 3 with a soup. No need to talk — just being there. [a concrete offer, not 'let me know if you need anything']",
           "vi": "Em ghé thứ bảy 15h với canh. Không bắt buộc nói — chỉ ở đó."
         },
         {
+          cell_id: "c42e7b44-c6b2-4ed5-83c9-1e18c52b87ba",
           "speaker": "Camille",
           "text": "OK. Sonne pas fort, je dors peut-être.",
           "en": "OK. Don't ring loudly, I might be asleep.",
@@ -15814,6 +16402,7 @@ export const lessons: FrenchLesson[] =           [
       "tip_advice_en": "Four-part frame for asking a friend to pay you back:\n(1) OPEN WITHOUT ACCUSING: 'Je voulais te parler de X — pas pour mettre la pression' (I wanted to talk to you about X — not to put pressure on you). This pre-empts their defensiveness.\n(2) ASSUME GOOD FAITH: 'Je sais que tu n'as pas oublié' (I know you haven't forgotten) → don't imply they're dodging.\n(3) OFFER FLEXIBILITY: 'Si tu peux maintenant — parfait. Sinon, un calendrier réaliste qui marche pour toi' → give options, put control on their side, don't demand.\n(4) RESPECT THE FRIENDSHIP: 'Notre amitié vaut plus que cette somme' → puts the money in proportion.\n\nFORMAT: in person > phone > long text. For a first reminder, a short text is fine ('Camille, petit rappel — les 300 EUR de mars, on règle ça ?'). If two texts go unanswered, move to in person.\n\nWHEN YOU'RE THE ONE ASKED:\n(1) Reply within 24h, even with no solution yet.\n(2) Propose a concrete plan, not 'je vais essayer' (I'll try).\n(3) If you genuinely don't remember, ask to confirm ('j'ai un doute — c'était les 300 quand on est allées à Lyon ?') — ask before assuming the worst.\n(4) If you can't repay: say so plainly ('je ne peux pas te rembourser dans les 3 prochains mois — préfères-tu attendre, ou veux-tu que je te rende un service à la place ?').\n\nAVOID:\n- Silence / ghosting → permanently damages the friendship (the single worst move; the American 'I'll just avoid it until it blows over' does NOT blow over here).\n- A gift instead of money ('je t'ai apporté du vin pour me racheter') → read as trying to dodge.\n- Asking in public (a WhatsApp group with mutual friends) → humiliating.\n- Dragging the money into an unrelated argument ('et en plus tu me dois 300 euros !') → muddies both issues.",
       "vocabulary": [
         {
+          cell_id: "351b3c5c-97e8-4787-aa1f-218f4d24f442",
           "word": "prêter de l'argent",
           "en": "to lend money",
           "vi": "cho mượn tiền",
@@ -15822,6 +16411,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "preh-TAY duh lar-ZHAH(n) ('prêter' = to LEND — the lender's verb; don't confuse with 'emprunter' = to borrow)"
         },
         {
+          cell_id: "b6d9d3e5-2f64-4836-b44e-237f69e07816",
           "word": "emprunter de l'argent",
           "en": "to borrow money",
           "vi": "mượn tiền",
@@ -15830,6 +16420,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ah(n)-pruh(n)-TAY duh lar-ZHAH(n) ('emprunter' = to BORROW — the borrower's verb; the prêter/emprunter pair is the classic English-speaker mix-up)"
         },
         {
+          cell_id: "88a35a0e-f67b-41c6-a835-3909b4eb3fc0",
           "word": "rembourser",
           "en": "to pay back",
           "vi": "trả lại",
@@ -15838,6 +16429,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "rah(n)-boor-SAY (final '-er' = 'SAY'; 'te rembourser' = to pay you back — the verb to use, plainly, not euphemized)"
         },
         {
+          cell_id: "bd69c107-cc8c-488e-a19e-53b0c6c714f6",
           "word": "une dette",
           "en": "a debt",
           "vi": "khoản nợ",
@@ -15846,6 +16438,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "DET (the 'b' is silent, unlike English 'debt' where it's also silent — same; rhymes with English 'debt')"
         },
         {
+          cell_id: "75c29299-f49a-4661-a318-fd439aaf7592",
           "word": "un échéancier",
           "en": "a payment schedule",
           "vi": "lịch trả",
@@ -15854,6 +16447,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ay-shay-ah(n)-SYAY (a formal repayment schedule; for friends 'un calendrier' is warmer — keep 'échéancier' for the structured/written version)"
         },
         {
+          cell_id: "ee6bdec1-0c09-4100-82e2-2ee6c19a4acf",
           "word": "régler",
           "en": "to settle",
           "vi": "giải quyết / thanh toán",
@@ -15862,6 +16456,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ray-GLAY ('régler ça' = to settle this — neutral and constructive, not 'collect a debt')"
         },
         {
+          cell_id: "7577a972-f1b7-432f-8f1b-db5db7e1c22b",
           "word": "un non-dit",
           "en": "the unspoken",
           "vi": "điều không nói ra",
@@ -15870,6 +16465,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "NO(n)-DEE (an unspoken thing left to fester; the cultural keyword — the French believe a 'non-dit' damages a friendship more than the awkward conversation would)"
         },
         {
+          cell_id: "1a09adc1-4dbd-42f4-af4e-63752fc95ef0",
           "word": "mettre la pression",
           "en": "to put pressure",
           "vi": "gây áp lực",
@@ -15878,6 +16474,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "MEH-truh lah preh-SYO(n) ('pas pour mettre la pression' = not to put pressure on you — the disclaimer that unlocks a non-defensive talk)"
         },
         {
+          cell_id: "f22f572f-c2ab-437d-8971-c8bf94e829a9",
           "word": "un calendrier réaliste",
           "en": "a realistic timeline",
           "vi": "lịch thực tế",
@@ -15886,6 +16483,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "kah-lah(n)-dree-AY ray-ah-LEEST (a realistic repayment timeline; asking for one hands control to the other person — the respectful move)"
         },
         {
+          cell_id: "19c03a44-b8f8-4c06-a887-52323a207eea",
           "word": "être au point sur ses comptes",
           "en": "to be clear on accounts",
           "vi": "sòng phẳng",
@@ -15896,24 +16494,28 @@ export const lessons: FrenchLesson[] =           [
       ],
       "dialogue": [
         {
+          cell_id: "5a7af7b3-a140-4ee0-abfa-01894082ef22",
           "speaker": "Linh",
           "text": "Camille, petit rappel — les 300 euros de mars. On règle ça quand?",
           "en": "Camille, a quick reminder — the 300 euros from March. When do we settle that? [a short, light text reminder — the acceptable first step for this amount]",
           "vi": "Camille, nhắc nhẹ — 300 euro tháng 3. Mình giải quyết khi nào?"
         },
         {
+          cell_id: "df2d25b0-c040-41ab-a194-5c199cd40574",
           "speaker": "Camille",
           "text": "Tu as raison, j'avais en tête mais j'avais pas relancé. Je peux te rendre 200 ce week-end et 100 dans un mois.",
           "en": "You're right, I had it in mind but I hadn't followed up. I can give you back 200 this weekend and 100 in a month. [the correct response when asked: reply fast, propose a concrete plan]",
           "vi": "Bạn đúng, em có nghĩ đến mà chưa nhắc lại. Em có thể trả bạn 200 cuối tuần và 100 trong tháng."
         },
         {
+          cell_id: "e4337855-c948-433d-aa0e-d7eb3c195c68",
           "speaker": "Linh",
           "text": "Ça me convient parfaitement. Tu m'envoies via Lydia ?",
           "en": "That works perfectly for me. Will you send it via Lydia? [naming a concrete payment method makes it real — Lydia is a common friend-to-friend app in France]",
           "vi": "Phù hợp với em. Bạn gửi qua Lydia?"
         },
         {
+          cell_id: "211ae0f0-a4fa-4dc2-a613-732da4c43d8a",
           "speaker": "Camille",
           "text": "Oui, samedi matin.",
           "en": "Yes, Saturday morning.",
@@ -16208,6 +16810,7 @@ export const lessons: FrenchLesson[] =           [
       "tip_advice_en": "Four principles for a religion conversation with a French friend of a different faith:\n(1) OPEN WITH 'BACKGROUND', NOT 'CURRENT BELIEF'. 'Je viens d'une famille X —' gives neutral information without demanding they react. They can then share their own background in turn.\n(2) USE THE PERSONAL 'JE'. 'Pour moi, le bouddhisme c'est…' (for me, Buddhism is…) instead of 'Le bouddhisme dit que…' (Buddhism says that…). The second turns you into a spokesperson for a religion; the first keeps you an individual.\n(3) ASK WITH REAL CURIOSITY. 'Comment tu vis ta foi au quotidien ?' (how do you live your faith day to day?), 'Qu'est-ce qui t'a amenée vers ça ?' (what led you to it?) → open questions that invite sharing. Avoid test questions: 'Tu crois VRAIMENT que… ?' (do you REALLY believe that…?).\n(4) ACCEPT DISAGREEMENT WITHOUT RESOLVING IT. A conversation about the metaphysical does NOT end with 'who's right'. It ends with 'j'ai mieux compris d'où tu parles' (I understand better where you're coming from) — that is the success condition. This is the hardest one for anglophones from debate-friendly or evangelizing cultures, where a discussion is supposed to reach a conclusion.\n\nSPECIFIC TRAPS for Vietnamese speakers:\n- 'I believe ancestors have souls' translated literally into French can sound like primitive spiritualism. Better: 'Pour moi, c'est moins une croyance qu'une façon de garder un lien avec ma famille étendue, vivants et morts' (for me it's less a belief than a way of keeping a link with my extended family, living and dead).\n- 'I don't follow a religion' followed by 'I light incense' is a paradox for the French. Resolve it: 'C'est culturel, pas religieux au sens occidental' (it's cultural, not religious in the Western sense).\n- A practicing Catholic French friend invites you to Christmas mass: accept with respect, NOT as a conversion; you don't need to 'explain' that you don't believe so as not to feel like a hypocrite — attending is a gesture of friendship, not a profession of faith. (Same the other way: they'd be welcome at your family's Tết.)",
       "vocabulary": [
         {
+          cell_id: "01869881-10cf-4044-8df3-0952995a5dec",
           "word": "la foi",
           "en": "faith",
           "vi": "đức tin",
@@ -16216,6 +16819,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "FWAH (one syllable; 'la foi' = faith — a near-homophone of 'la fois'/the time/occasion; context disambiguates)"
         },
         {
+          cell_id: "fc4cca83-2d07-463f-84e2-e0cffc52f97a",
           "word": "croyant(e)",
           "en": "believer",
           "vi": "người có đức tin",
@@ -16224,6 +16828,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "krwah-YAH(n) / krwah-YAH(n)T (masc. ends nasal, fem. adds a sounded 't'; 'tu es croyante ?' = are you a believer? — a common but personal question)"
         },
         {
+          cell_id: "d547f0ae-0bbe-482f-afd9-7cf07d72ed87",
           "word": "pratiquant(e)",
           "en": "practicing (a religion)",
           "vi": "hành lễ thường xuyên",
@@ -16232,6 +16837,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "prah-tee-KAH(n) / prah-tee-KAH(n)T (the key distinction: a 'catholique non pratiquant' believes-by-culture but doesn't attend — there's no neat one-word English equivalent)"
         },
         {
+          cell_id: "3f2f6bc8-67d3-49d8-a991-b23027f4ad32",
           "word": "athée",
           "en": "atheist",
           "vi": "vô thần",
@@ -16240,6 +16846,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ah-TAY (two clean syllables, NOT English 'AY-thee-ist'; in France a common, unremarkable self-description)"
         },
         {
+          cell_id: "c4c98b98-9f52-4dc4-88ed-8f0903eba93d",
           "word": "agnostique",
           "en": "agnostic",
           "vi": "bất khả tri",
@@ -16248,6 +16855,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ah-gnoss-TEEK (the 'gn' = a hard 'g' + 'n', not the 'ny' of 'agneau'; stress the last syllable)"
         },
         {
+          cell_id: "4f647a88-c769-45d5-99ee-f95bb7adea69",
           "word": "laïque",
           "en": "secular",
           "vi": "thế tục",
@@ -16256,6 +16864,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "lah-EEK (two syllables; the loaded French civic value of secularism — stronger and more state-level than US 'secular')"
         },
         {
+          cell_id: "ac301318-5c81-4113-8d34-36064a955656",
           "word": "la spiritualité",
           "en": "spirituality",
           "vi": "tâm linh",
@@ -16264,6 +16873,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "spee-ree-tew-ah-lee-TAY (five beats, final stress; near-cognate of English 'spirituality' — useful for describing practice without claiming 'religion')"
         },
         {
+          cell_id: "c039480a-05ef-4372-aeba-b8fb71d255bf",
           "word": "un rituel",
           "en": "a ritual",
           "vi": "nghi thức",
@@ -16272,6 +16882,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ree-tew-EL (three syllables; 'un rituel' = a ritual/observance — the neutral word for incense, the altar, Tết, etc.)"
         },
         {
+          cell_id: "ddfbc7bf-eff2-4b4c-b328-c7323f375a77",
           "word": "un parcours spirituel",
           "en": "a spiritual journey",
           "vi": "hành trình tâm linh",
@@ -16280,6 +16891,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "par-KOOR spee-ree-tew-EL ('parcours' = path/journey; English equivalent: 'a spiritual path' — frames belief as personal and evolving, not fixed)"
         },
         {
+          cell_id: "1f2ab0c7-9763-4589-bab0-1a3941d81bde",
           "word": "respecter sa pratique",
           "en": "to respect one's practice",
           "vi": "tôn trọng cách thực hành",
@@ -16290,24 +16902,28 @@ export const lessons: FrenchLesson[] =           [
       ],
       "dialogue": [
         {
+          cell_id: "7fb3fe85-838c-4b60-8264-d813540272bc",
           "speaker": "Camille",
           "text": "Tu m'as dit que tu allais à la pagode dimanche — tu es bouddhiste, alors ?",
           "en": "You told me you were going to the pagoda Sunday — so you're Buddhist? [the classic French puzzlement: to them, the practice = religion]",
           "vi": "Bạn nói chủ nhật bạn đến chùa — bạn theo đạo Phật à?"
         },
         {
+          cell_id: "41ca7538-052e-4de7-9502-b6c5122f3006",
           "speaker": "Linh",
           "text": "Pas vraiment au sens occidental. C'est plus culturel — un lien avec ma famille.",
           "en": "Not really in the Western sense. It's more cultural — a link with my family. [the clean answer to the paradox: cultural, not religious in the sense they mean]",
           "vi": "Không hẳn theo nghĩa phương Tây. Là văn hóa nhiều hơn — liên kết với gia đình."
         },
         {
+          cell_id: "7eea8d87-6dc6-4895-860e-b5b3d98d280b",
           "speaker": "Camille",
           "text": "Intéressant. Tu peux m'expliquer la nuance ?",
           "en": "Interesting. Can you explain the nuance to me? [genuine curiosity, an open question — not a test]",
           "vi": "Thú vị. Bạn giải thích sắc thái cho em được không?"
         },
         {
+          cell_id: "fa126187-097d-4bb1-8e76-f4705e08f683",
           "speaker": "Linh",
           "text": "Volontiers. Et toi, tu viens d'où côté foi ?",
           "en": "Gladly. And you, where do you come from on the faith side? [returns the 'd'où tu parles' question — keeps it mutual, not one-sided]",
@@ -16606,6 +17222,7 @@ export const lessons: FrenchLesson[] =           [
       "tip_advice_en": "Five opening lines that help a French friend feel safe sharing:\n(1) 'Tu n'as pas à me dire plus que tu ne veux.' (You don't have to tell me more than you want to.) → removes the pressure to tell everything.\n(2) 'Prends ton temps — il n'y a pas de hâte.' (Take your time — there's no rush.) → permits silence mid-sentence.\n(3) 'Si tu as besoin de pause, on s'arrête.' (If you need a break, we stop.) → limits are OK.\n(4) 'Je t'entends.' (I hear you.) → a simple acknowledgment, stronger than advice.\n(5) 'Ce que tu as traversé est dur.' (What you went through is hard.) → fact-based validation, not 'you poor thing'.\n\nWHAT TO AVOID:\n- Asking for detail ('how did it happen? what did he do?'): intrusive.\n- 'At least you survived / learned something / are stronger': pushes positivity.\n- 'Je sais ce que tu ressens' / 'I know exactly how you feel': a presumption.\n- Crying loudly: shifts the focus.\n- Long silence + a faraway look: makes them feel unheard.\n- 'Tu devrais voir un psy' / 'you should get therapy': a lecture.\n- Bringing it up later in another conversation: breaks trust.\n\nBODY LANGUAGE: turn toward them; meet their eyes without staring; if you're very close, a hand on theirs if it fits; do NOT check your phone; do NOT glance at the time.\n\nAFTER THE CONVERSATION:\n- A short text 24h later: 'Merci pour ce que tu m'as confié. Je pense à toi.' → acknowledges it.\n- Do NOT reference the content by text.\n- Do NOT ask 'comment tu vas avec ce qu'on s'est dit ?' the following week.\n- 2–3 weeks later: meet normally, no 'how are you with X' — they'll raise it if they want.\n- Confidentiality: NEVER tell anyone, including a spouse.\n\nFOR VIETNAMESE SPEAKERS SPECIFICALLY: you may be shocked yourself if a French friend shares something very hard (family rupture, abuse, a miscarriage) — topics less openly discussed in Vietnam. Don't let your own shock interrupt the listener role. Afterward you can process your own feelings (talk to a spouse about the EMOTION you felt, NOT the specific content you heard; or journal it). Anglophone calibration: the American instinct to immediately problem-solve or to share a 'me too' story is exactly what to suppress — bearing witness is the whole job.",
       "vocabulary": [
         {
+          cell_id: "3370435a-1aae-4179-8f26-57b8c68f8681",
           "word": "se confier à quelqu'un",
           "en": "to confide in someone",
           "vi": "tâm sự với ai",
@@ -16614,6 +17231,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "suh ko(n)-fee-AY ah kel-KUH(n) ('se confier' = to confide; 'me faire confiance' is the trust, 'se confier' is the act of telling)"
         },
         {
+          cell_id: "011c2cd1-33a4-4507-92b6-562f719fcb30",
           "word": "être à l'écoute",
           "en": "to be available to listen",
           "vi": "sẵn sàng lắng nghe",
@@ -16622,6 +17240,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "EH-truh ah lay-KOOT (the key concept of this lesson — being attentively available, NOT just 'écouter'/to hear)"
         },
         {
+          cell_id: "fa4aa5c4-0c54-489a-83e9-5597531e5a60",
           "word": "un espace de confiance",
           "en": "a space of trust",
           "vi": "không gian tin cậy",
@@ -16630,6 +17249,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "uh(n)-ess-PASS duh ko(n)-fee-AH(n)SS ('un espace de confiance' = a safe space — what your presence creates, before any words)"
         },
         {
+          cell_id: "dbd98ada-301a-42bc-8e68-10fff82027b0",
           "word": "un non-jugement",
           "en": "non-judgment",
           "vi": "không phán xét",
@@ -16638,6 +17258,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "uh(n) no(n)-zhoozh-MAH(n) ('zh' = 's' in 'measure', two nasals; the explicit posture: no verdict on what they tell you)"
         },
         {
+          cell_id: "90690f62-8968-4430-b5c4-47446bce2529",
           "word": "respecter le silence",
           "en": "to respect silence",
           "vi": "tôn trọng im lặng",
@@ -16646,6 +17267,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "res-pek-TAY luh see-LAH(n)SS (letting a pause sit instead of rushing to fill it — a learned skill for anglophones)"
         },
         {
+          cell_id: "ec2ed5ed-ec8f-412c-b1c2-70c903bada2e",
           "word": "laisser quelqu'un parler",
           "en": "to let someone speak",
           "vi": "để ai nói",
@@ -16654,6 +17276,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "leh-SAY kel-KUH(n) par-LAY (to let someone speak without interrupting or steering — the core action)"
         },
         {
+          cell_id: "fc7f6cfb-9a88-466f-92d9-cc1a8b3d36dd",
           "word": "un secret partagé",
           "en": "a shared secret",
           "vi": "bí mật chia sẻ",
@@ -16662,6 +17285,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "uh(n) suh-KREH par-tah-ZHAY (final 't' of 'secret' silent; once shared, it is yours to guard absolutely — never repeat it)"
         },
         {
+          cell_id: "a6122f6d-0b4f-48b1-806e-8aa80f13a84e",
           "word": "poser des questions intrusives",
           "en": "to ask intrusive questions",
           "vi": "hỏi xâm phạm",
@@ -16670,6 +17294,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "poh-ZAY day kes-TYO(n) a(n)-trew-ZEEV (exactly what NOT to do — 'how did it happen? what did he do?' pries instead of holding space)"
         },
         {
+          cell_id: "afb3faa1-2c78-4186-991a-fb525ef90825",
           "word": "valider un ressenti",
           "en": "to validate a feeling",
           "vi": "công nhận cảm xúc",
@@ -16678,6 +17303,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "vah-lee-DAY uh(n) ruh-sah(n)-TEE ('un ressenti' = a felt experience; 'je t'entends' validates it without analyzing it)"
         },
         {
+          cell_id: "d54c8234-bebe-410f-816c-61ea84c9dec4",
           "word": "garder pour soi",
           "en": "to keep to oneself",
           "vi": "giữ riêng",
@@ -16688,24 +17314,28 @@ export const lessons: FrenchLesson[] =           [
       ],
       "dialogue": [
         {
+          cell_id: "4047b1ea-007c-492a-85e5-ba92ed0dbeaa",
           "speaker": "Camille",
           "text": "Linh, je peux te dire quelque chose que j'ai jamais dit à personne ?",
           "en": "Linh, can I tell you something I've never told anyone?",
           "vi": "Linh, em nói bạn nghe điều em chưa bao giờ nói với ai được không?"
         },
         {
+          cell_id: "734a0cc0-aed4-41dd-a815-cca7da6ffc12",
           "speaker": "Linh",
           "text": "Bien sûr. Tu n'as pas à me dire plus que tu ne veux — je t'écoute.",
           "en": "Of course. You don't have to tell me more than you want — I'm listening. [opens the safe space and removes the pressure to tell everything, in one line]",
           "vi": "Tất nhiên. Bạn không phải nói nhiều hơn điều bạn muốn — em nghe."
         },
         {
+          cell_id: "2c0c9cea-fea9-4418-b926-0090dcc5042e",
           "speaker": "Camille",
           "text": "C'est sur ma sœur. Quelque chose qui s'est passé il y a longtemps.",
           "en": "It's about my sister. Something that happened a long time ago.",
           "vi": "Là về chị em. Điều xảy ra lâu rồi."
         },
         {
+          cell_id: "34f571ca-04f8-4e9b-9c45-9f4b71cadb48",
           "speaker": "Linh",
           "text": "Prends ton temps. Pas de hâte.",
           "en": "Take your time. No rush. [permits silence — doesn't fill it with a question]",
@@ -17020,6 +17650,7 @@ export const lessons: FrenchLesson[] =           [
       "tip_advice_en": "Five-part frame for the boundary conversation:\n(1) SCHEDULE A SPECIFIC MEETING, don't 'pop it out' mid-random-conversation. 'Tu peux me garder une heure samedi ? Je veux qu'on discute calmement.' (Can you set aside an hour Saturday? I'd like us to talk calmly.)\n(2) OPEN WITH AN INTENT that affirms the friendship: 'Notre amitié compte beaucoup pour moi — c'est pour ça que je préfère qu'on en parle.'\n(3) FACT + IMPACT: 'Quand tu fais X, ça me crée Y.' Specific, not 'tu fais toujours…'.\n(4) PROPOSE AN ALTERNATIVE: 'Voici ce que je propose : A pour les vraies urgences, B pour le reste.' Give options, don't demand.\n(5) INVITE THEIR SIDE: 'De ton côté, qu'est-ce qui t'embête dans la dynamique actuelle ?' Open the door for them to have boundaries too.\n\nEVEN WITH THE RIGHT TONE, IT MUST BE A TWO-WAY NEGOTIATION: you may also be unintentionally bothering them. A boundary conversation is an OPPORTUNITY to renegotiate the friendship for both — not you unilaterally banning them.\n\nAVOID:\n- Generalizing ('tu m'épuises tout le temps') → escalation.\n- Comparing to other friends ('mes autres amies n'agissent pas comme ça') → makes it personal.\n- Over-promising ('on continue comme avant !') → voids the whole conversation.\n- Setting a boundary by long text → not human enough; it must be face to face.\n- Setting a boundary while angry → the tone will escalate.\n\nAFTER THE CONVERSATION: thank them for hearing it; send a short text 24h later ('merci pour la discussion d'hier — j'ai apprécié'); don't bring it up again for 2–3 weeks, to give space.\nIF THEY DON'T ACCEPT the boundary: that's information about the friendship. A friend who won't respect a specific, polite, reasonable boundary is not a true close friend. You have the right to gradually reduce contact. Anglophone calibration: the goal is not to 'win' the conversation or extract an apology — it's a calm renegotiation; pushing for them to admit they were wrong defeats it.",
       "vocabulary": [
         {
+          cell_id: "2d47e590-b3a0-465a-8d91-21fd674f186b",
           "word": "poser un cadre",
           "en": "to set a framework",
           "vi": "đặt khung",
@@ -17028,6 +17659,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "poh-ZAY uh(n) KAH-druh ('poser un cadre' = to set a framework — the core French move; in France a sign of maturity, not coldness)"
         },
         {
+          cell_id: "45ca1031-4ad9-4e72-8b52-2e8e735bf5a1",
           "word": "mettre des limites",
           "en": "to set limits",
           "vi": "đặt giới hạn",
@@ -17036,6 +17668,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "MEH-truh day lee-MEET (final 'tes' = soft 't'; 'mettre des limites' = to set limits/boundaries)"
         },
         {
+          cell_id: "eaf5b53c-0797-492f-bb4a-c516d4865009",
           "word": "des limites saines",
           "en": "healthy boundaries",
           "vi": "giới hạn lành mạnh",
@@ -17044,6 +17677,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "lee-MEET SEN ('saines' = healthy, fem. pl.; a now-mainstream French phrase from popular psychology — directly maps to English 'healthy boundaries')"
         },
         {
+          cell_id: "155171f6-35d9-4e09-b4d1-022864847cba",
           "word": "prendre sans rendre",
           "en": "to take without giving back",
           "vi": "lấy không trả",
@@ -17052,6 +17686,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "PRAH(n)-druh sah(n) RAH(n)-druh (a near-rhyme pair, both nasal; describes the imbalance — but say it as a fact, not as the accusation 'tu prends sans rendre')"
         },
         {
+          cell_id: "f60096c8-6075-40bb-9992-c54a0a350b17",
           "word": "un déséquilibre",
           "en": "an imbalance",
           "vi": "sự mất cân bằng",
@@ -17060,6 +17695,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "day-zay-kee-LEE-bruh (five beats; 'un déséquilibre dans l'amitié' = an imbalance in the friendship — neutral, structural language)"
         },
         {
+          cell_id: "c33f4a04-a942-4527-be05-58348b172443",
           "word": "être épuisé(e) par",
           "en": "to be drained by",
           "vi": "kiệt sức vì",
@@ -17068,6 +17704,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "EH-truh ay-pwee-ZAY par (describe being drained as your own state — say it before you reach the explosion point, not at it)"
         },
         {
+          cell_id: "05b3d78c-61b3-41ea-8026-b7ddc3f8a4cc",
           "word": "un comportement envahissant",
           "en": "intrusive behavior",
           "vi": "cách cư xử xâm lấn",
@@ -17076,6 +17713,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ko(n)-por-tuh-MAH(n) ah(n)-vah-ee-SAH(n) (three nasals; 'envahissant' = invasive/overstepping — name the BEHAVIOR, never label the person)"
         },
         {
+          cell_id: "d3b494b3-a453-4ede-b8c0-9b5c47f558c5",
           "word": "une amitié toxique",
           "en": "a toxic friendship",
           "vi": "tình bạn độc hại",
@@ -17084,6 +17722,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ah-mee-TYAY tok-SEEK (a strong term — use it in your own head/analysis, NOT as a label thrown at the friend in the conversation)"
         },
         {
+          cell_id: "3f42707e-8f93-435b-81a9-408bc5d2ec11",
           "word": "se préserver",
           "en": "to protect oneself",
           "vi": "tự bảo vệ",
@@ -17092,6 +17731,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "suh pray-zer-VAY ('se préserver' = to protect/look after oneself; the French frame the boundary as this, not as selfishness)"
         },
         {
+          cell_id: "4b424d8b-0bd4-4de3-8408-9e9e77541726",
           "word": "renégocier le cadre",
           "en": "to renegotiate the framework",
           "vi": "tái thương lượng khung",
@@ -17102,24 +17742,28 @@ export const lessons: FrenchLesson[] =           [
       ],
       "dialogue": [
         {
+          cell_id: "4ecb2beb-b132-4b3d-8294-21bc359954af",
           "speaker": "Linh",
           "text": "Camille, tu as une heure samedi ? Je voudrais qu'on parle, calmement.",
           "en": "Camille, do you have an hour Saturday? I'd like us to talk, calmly. [schedules a specific meeting — does NOT 'pop it out' mid-conversation]",
           "vi": "Camille, bạn có một tiếng thứ bảy không? Em muốn mình nói chuyện, bình tĩnh."
         },
         {
+          cell_id: "64c09796-0e64-4363-a4a2-bff57ce5843a",
           "speaker": "Camille",
           "text": "Oui, qu'est-ce qui se passe ?",
           "en": "Yes, what's going on?",
           "vi": "Có, có chuyện gì?"
         },
         {
+          cell_id: "f791adce-f4c3-4853-83d2-a1e80a5393ae",
           "speaker": "Linh",
           "text": "Rien de grave. Notre amitié compte pour moi, et c'est pour ça que je préfère en parler avant que ça pèse.",
           "en": "Nothing serious. Our friendship matters to me, and that's why I'd rather talk about it before it weighs on things. [pre-frames it as preserving the friendship + raising it EARLY, before resentment]",
           "vi": "Không có gì nghiêm trọng. Tình bạn của mình quan trọng với em, và vì thế em thích nói trước khi nó đè."
         },
         {
+          cell_id: "ce9787e0-e057-4bc0-8b02-e0425cab8def",
           "speaker": "Camille",
           "text": "OK, samedi 15h chez toi.",
           "en": "OK, Saturday 3 p.m. at your place.",

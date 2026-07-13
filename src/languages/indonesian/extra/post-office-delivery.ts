@@ -13,6 +13,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -22,6 +23,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -208,6 +210,7 @@ export const lessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: separate `kirim` = send, `terima` = receive, `penerima` = recipient, `pengirim` = sender. Ask prices with `berapa`: `Berapa ongkirnya?` Ask tracking with `nomor resi`: `Nomor resinya berapa?` In delivery notices, learn to recognize passive `di-`: `dikirim`, `diterima`, `dikembalikan`.",
     vocabulary: [
       {
+        cell_id: "aa3e3e32-daff-4782-bc0f-20f4e7988050",
         word: "kantor pos",
         en: "post office",
         vi: "bưu điện",
@@ -216,6 +219,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "KAN-tor pos",
       },
       {
+        cell_id: "809d3c1b-fbdf-4f3c-8eeb-6a32c5b2a638",
         word: "kirim paket",
         en: "send a parcel",
         vi: "gửi gói hàng",
@@ -224,6 +228,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "KI-rim PA-ket",
       },
       {
+        cell_id: "bbd638f3-daa1-4e10-96da-d8fc29e37290",
         word: "resi",
         en: "tracking number / receipt",
         vi: "mã vận đơn / biên nhận",
@@ -232,6 +237,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "REH-see",
       },
       {
+        cell_id: "5eb98fec-9a85-4182-8c26-e5ec87dc02de",
         word: "ongkir",
         en: "shipping fee",
         vi: "phí gửi hàng / phí ship",
@@ -240,6 +246,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "ONG-keer",
       },
       {
+        cell_id: "cf09df04-6ab0-4ed1-99f7-6f4bf94b1e13",
         word: "alamat lengkap",
         en: "full address",
         vi: "địa chỉ đầy đủ",
@@ -248,6 +255,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "a-LA-mat LENG-kap",
       },
       {
+        cell_id: "718781e2-2cc9-4403-ac7f-351db72ef89e",
         word: "kurir",
         en: "courier",
         vi: "người giao hàng / shipper",
@@ -256,6 +264,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "KOO-rir",
       },
       {
+        cell_id: "73fca811-5ea1-490d-b601-b2a67499e5aa",
         word: "paket terlambat",
         en: "delayed parcel",
         vi: "gói hàng bị trễ",
@@ -264,6 +273,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "PA-ket ter-LAM-bat",
       },
       {
+        cell_id: "7d701f26-932d-429d-a7dd-0d544a24b755",
         word: "tanda tangan",
         en: "signature",
         vi: "chữ ký",
@@ -272,6 +282,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "TAN-da TA-ngan",
       },
       {
+        cell_id: "46d9510a-56bf-4434-aaba-6c2a22f7303d",
         word: "penerima",
         en: "recipient",
         vi: "người nhận",
@@ -280,6 +291,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "pe-ne-REE-ma",
       },
       {
+        cell_id: "7355054b-31af-4211-820d-deca17cf8769",
         word: "pengirim",
         en: "sender",
         vi: "người gửi",
@@ -290,24 +302,28 @@ export const lessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "26e0f05b-6de8-4a78-9d91-05ed7523a3b5",
         speaker: "Pelanggan",
         text: "Pak, saya mau kirim paket ini ke Surabaya.",
         vi: "Anh ơi, tôi muốn gửi gói này đi Surabaya.",
         en: "Sir, I want to send this parcel to Surabaya.",
       },
       {
+        cell_id: "a5fc5dc6-3859-4c2f-9f62-a0adf16d187b",
         speaker: "Petugas pos",
         text: "Boleh. Tolong tulis alamat lengkap penerima dan nomor teleponnya.",
         vi: "Được ạ. Làm ơn viết địa chỉ đầy đủ của người nhận và số điện thoại.",
         en: "Sure. Please write the recipient's full address and phone number.",
       },
       {
+        cell_id: "48d53710-fe57-4e5d-9e9b-41d84bd69b98",
         speaker: "Pelanggan",
         text: "Berapa ongkirnya, dan kapan paket sampai?",
         vi: "Phí gửi bao nhiêu, và khi nào gói tới?",
         en: "How much is the shipping fee, and when will the parcel arrive?",
       },
       {
+        cell_id: "632cd4fe-481a-406c-9284-d46ade2265c5",
         speaker: "Petugas pos",
         text: "Ongkirnya tiga puluh ribu. Ini nomor resinya untuk cek paket.",
         vi: "Phí gửi là ba mươi nghìn. Đây là mã vận đơn để kiểm tra gói hàng.",

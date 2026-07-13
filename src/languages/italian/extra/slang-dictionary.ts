@@ -30,6 +30,7 @@ export type LessonSentence = {
 };
 
 export type VocabEntry = {
+  cell_id?: string;
   // Slang or informal Italian term.
   word: string;
   en: string;
@@ -49,6 +50,7 @@ export type VocabEntry = {
 };
 
 export type DialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -184,6 +186,7 @@ export const lesson: ItalianLesson = {
 
   vocabulary: [
     {
+      cell_id: "43587109-71aa-4345-8c32-1eb0b763219b",
       word: "Boh",
       en: "I dunno / no idea",
       vi: "không biết",
@@ -195,6 +198,7 @@ export const lesson: ItalianLesson = {
       l1_note_en: "Don't overuse 'boh' — it sounds uninterested; prefer 'Non lo so ancora.'",
     },
     {
+      cell_id: "995114fb-d25c-4e21-826f-a19e47ea5226",
       word: "Dai!",
       en: "Come on! / let's go!",
       vi: "thôi nào / cố lên",
@@ -204,6 +208,7 @@ export const lesson: ItalianLesson = {
       pronunciation_en: "Friendly — used to urge or encourage.",
     },
     {
+      cell_id: "8154b0f3-200c-4aef-8113-c488433b2c99",
       word: "Che figata!",
       en: "How cool! / awesome!",
       vi: "hay quá / đỉnh quá",
@@ -213,6 +218,7 @@ export const lesson: ItalianLesson = {
       pronunciation_en: "Very informal. Avoid with elders or in formal settings.",
     },
     {
+      cell_id: "7517eef3-308d-4ef3-b5ba-b00191cfc34c",
       word: "Un casino",
       en: "a mess / chaos",
       vi: "một mớ hỗn độn",
@@ -224,6 +230,7 @@ export const lesson: ItalianLesson = {
       l1_note_en: "In an interview don't say 'un casino' (unprofessional) → 'una situazione complessa.'",
     },
     {
+      cell_id: "8eb1fb21-e0c2-47be-9924-8486b4d571c5",
       word: "Tipo",
       en: "like / for example (filler)",
       vi: "kiểu như",
@@ -233,6 +240,7 @@ export const lesson: ItalianLesson = {
       pronunciation_en: "Filler in youth speech.",
     },
     {
+      cell_id: "97a5f52f-a2ce-4fc5-9aec-4fb199fd19dd",
       word: "Magari",
       en: "maybe / I wish",
       vi: "có lẽ / ước gì",
@@ -242,6 +250,7 @@ export const lesson: ItalianLesson = {
       pronunciation_en: "Common — not always slang.",
     },
     {
+      cell_id: "7ca034c5-bc10-446b-9397-90f7cdb750c3",
       word: "Beccare",
       en: "to meet / catch / run into",
       vi: "gặp / bắt gặp",
@@ -251,6 +260,7 @@ export const lesson: ItalianLesson = {
       pronunciation_en: "Informal.",
     },
     {
+      cell_id: "00ba4454-fd3d-4b38-a1e9-8f8158766479",
       word: "Fregarsene",
       en: "to not care",
       vi: "không quan tâm",
@@ -260,6 +270,7 @@ export const lesson: ItalianLesson = {
       pronunciation_en: "Can be rude — mind where you use it.",
     },
     {
+      cell_id: "44d48d43-31a7-447b-8bda-b6b8a6e10390",
       word: "Cavolo",
       en: "darn / shoot (mild)",
       vi: "trời ơi / chết thật",
@@ -269,6 +280,7 @@ export const lesson: ItalianLesson = {
       pronunciation_en: "Mild (a euphemism for a stronger word).",
     },
     {
+      cell_id: "307e1401-7e80-4ad0-8e4c-ace8967a5a01",
       word: "Meno male",
       en: "thank goodness",
       vi: "may quá",
@@ -278,6 +290,7 @@ export const lesson: ItalianLesson = {
       pronunciation_en: "Safe and common.",
     },
     {
+      cell_id: "3ffbfed1-da28-4a47-afbb-d067dc87aa70",
       word: "Figurati",
       en: "don't mention it / no problem",
       vi: "không có gì",
@@ -287,6 +300,7 @@ export const lesson: ItalianLesson = {
       pronunciation_en: "Informal-friendly.",
     },
     {
+      cell_id: "848d2475-2f19-4766-8e2e-ac3eccd021a4",
       word: "Tranqui",
       en: "chill / no worries",
       vi: "yên tâm",
@@ -297,6 +311,7 @@ export const lesson: ItalianLesson = {
     },
     // ── Youth / text abbreviations (chỉ dùng với bạn bè) ──
     {
+      cell_id: "56c09187-fb4a-4214-81d3-31d6dcec3f02",
       word: "cmq",
       en: "anyway",
       vi: "dù sao",
@@ -306,6 +321,7 @@ export const lesson: ItalianLesson = {
       pronunciation_en: "Texting with friends only.",
     },
     {
+      cell_id: "29bab7c7-9134-464e-8419-4b375eca2d7c",
       word: "xché / perché",
       en: "why / because",
       vi: "tại sao / bởi vì",
@@ -315,6 +331,7 @@ export const lesson: ItalianLesson = {
       pronunciation_en: "'x' stands in for 'per' in texting.",
     },
     {
+      cell_id: "86450ad4-18a1-4703-b3c4-cbbd26d9e61e",
       word: "qnd",
       en: "when",
       vi: "khi nào",
@@ -324,6 +341,7 @@ export const lesson: ItalianLesson = {
       pronunciation_en: "Texting shorthand.",
     },
     {
+      cell_id: "a56a1c1f-c3dd-4303-bd62-f482966af546",
       word: "nn",
       en: "not",
       vi: "không",
@@ -335,6 +353,7 @@ export const lesson: ItalianLesson = {
       l1_note_en: "Don't write 'nn posso' to a landlord (looks careless) → 'Purtroppo non posso.'",
     },
     {
+      cell_id: "ea4326ff-b5cc-4c80-8687-47f1e7423203",
       word: "tvb",
       en: "I care about you / love ya",
       vi: "thương bạn / quý bạn",
@@ -344,6 +363,7 @@ export const lesson: ItalianLesson = {
       pronunciation_en: "Affectionate — close friends/family only.",
     },
     {
+      cell_id: "40733e2b-02a8-4c98-9c6f-ccf6f7c1089f",
       word: "raga",
       en: "guys / folks",
       vi: "các bạn",
@@ -353,6 +373,7 @@ export const lesson: ItalianLesson = {
       pronunciation_en: "Addressing a group of friends, casual.",
     },
     {
+      cell_id: "d35dee6e-1583-4d75-84b9-2dda1074a0a7",
       word: "ok, ci sta",
       en: "okay / that makes sense",
       vi: "được / hợp lý",
@@ -366,21 +387,25 @@ export const lesson: ItalianLesson = {
   dialogue: [
     // Bối cảnh thân mật (bạn bè) — tiếng lóng được chấp nhận.
     {
+      cell_id: "000cdd09-0b89-4ec4-b23a-29d1b6ccf25a",
       speaker: "Friend",
       text: "Vieni stasera?",
       vi: "Tối nay bạn đến không?",
     },
     {
+      cell_id: "cae6af81-7ce8-47d0-82ea-f2401d052f18",
       speaker: "Learner",
       text: "Boh, forse arrivo tardi dal lavoro.",
       vi: "Không biết nữa, có lẽ tôi đi làm về muộn.",
     },
     {
+      cell_id: "733dd244-77de-4f58-9f4d-ca7778f6ee0e",
       speaker: "Friend",
       text: "Dai, vieni anche solo per un'ora.",
       vi: "Thôi mà, đến một tiếng thôi cũng được.",
     },
     {
+      cell_id: "c1bf446d-ec5c-4d15-8932-98deb26a598c",
       speaker: "Learner",
       text: "Va bene, ci becchiamo alle nove.",
       vi: "Được, gặp nhau lúc 9 giờ.",

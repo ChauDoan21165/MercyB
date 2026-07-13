@@ -12,6 +12,7 @@ type LessonSentence = {
 };
 
 type VocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -21,6 +22,7 @@ type VocabEntry = {
 };
 
 type DialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -207,6 +209,7 @@ export const lessons: IndonesianLesson[] = [
       "Very useful patterns: `Keputusan sudah disepakati`, `Siapa penanggung jawab?`, `Tenggat waktunya kapan?`, `Mohon dicek lagi`, `Daftar hadir sudah dikirim`. In meeting minutes, passive forms like `disepakati`, `ditindaklanjuti`, `dicatat`, and `dikirim` are very common.",
     vocabulary: [
       {
+        cell_id: "3f2d84b0-b6f5-4876-a4db-b9cf91454a8f",
         word: "notulen rapat",
         en: "meeting minutes",
         vi: "biên bản cuộc họp",
@@ -215,6 +218,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "no-TOO-len ra-PAT",
       },
       {
+        cell_id: "6fba193d-9607-4e88-a38f-2d9ab401f68d",
         word: "keputusan",
         en: "decision",
         vi: "quyết định",
@@ -223,6 +227,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "keh-POO-toos-an",
       },
       {
+        cell_id: "bf1ee5e5-8c9e-4bee-92f9-a0529ebd1dd2",
         word: "tindak lanjut",
         en: "follow-up action",
         vi: "việc cần làm tiếp theo",
@@ -231,6 +236,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "TEEN-dak lan-JOOT",
       },
       {
+        cell_id: "45af6cfe-8480-4614-a15c-81fda7b77e6a",
         word: "penanggung jawab",
         en: "person responsible",
         vi: "người chịu trách nhiệm",
@@ -239,6 +245,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "pe-nang-GOONG ja-WAB",
       },
       {
+        cell_id: "88b15458-2a01-4f35-b3c2-29398a74b4af",
         word: "tenggat waktu",
         en: "deadline",
         vi: "hạn chót",
@@ -247,6 +254,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "TENG-gat WAK-too",
       },
       {
+        cell_id: "0bb2e99d-ce8d-4e47-b176-0b3dff8bacf6",
         word: "ringkasan",
         en: "summary",
         vi: "bản tóm tắt",
@@ -255,6 +263,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "ring-KAH-san",
       },
       {
+        cell_id: "aa69a7ea-d856-4be0-8ada-0731340ab58e",
         word: "daftar hadir",
         en: "attendance list",
         vi: "danh sách người tham dự",
@@ -263,6 +272,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "DAF-tar ha-DEER",
       },
       {
+        cell_id: "812d99a8-ae33-4163-9e47-eda6dc84aa61",
         word: "disepakati",
         en: "agreed upon",
         vi: "được thống nhất",
@@ -271,6 +281,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "di-se-pa-KA-tee",
       },
       {
+        cell_id: "eb9db2ae-fc06-4e48-823e-41053c4d41d8",
         word: "ditindaklanjuti",
         en: "to be followed up",
         vi: "được tiếp tục xử lý",
@@ -279,6 +290,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "di-TEEN-dak-lan-JOO-tee",
       },
       {
+        cell_id: "dabec734-d2e7-4c25-afe1-5250828e58c4",
         word: "rapat koordinasi",
         en: "coordination meeting",
         vi: "cuộc họp phối hợp",
@@ -289,36 +301,42 @@ export const lessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "c4b08067-97ed-4662-9471-e9deb7975e80",
         speaker: "Ketua Tim",
         text: "Saya sedang menulis notulen rapat hari ini.",
         vi: "Tôi đang viết biên bản cuộc họp hôm nay.",
         en: "I am writing today's meeting minutes.",
       },
       {
+        cell_id: "98c77082-3f54-46d9-b9f8-0197ca46f621",
         speaker: "Anggota",
         text: "Keputusan utamanya apa saja?",
         vi: "Những quyết định chính là gì?",
         en: "What are the main decisions?",
       },
       {
+        cell_id: "dec63816-f77c-4098-bd41-7903f8b7d551",
         speaker: "Ketua Tim",
         text: "Tolong catat tindak lanjut untuk masing-masing poin.",
         vi: "Làm ơn ghi lại các việc tiếp theo cho từng mục.",
         en: "Please note the follow-up for each point.",
       },
       {
+        cell_id: "c496debc-fb44-4f0d-a2e1-36255c2a5140",
         speaker: "Anggota",
         text: "Siapa penanggung jawab dan tenggat waktunya?",
         vi: "Ai là người phụ trách và hạn chót là khi nào?",
         en: "Who is responsible and what is the deadline?",
       },
       {
+        cell_id: "29fbb8d4-f86b-461f-8e8b-3e15ad6a2000",
         speaker: "Ketua Tim",
         text: "Daftar hadir sudah saya kirim ke grup.",
         vi: "Tôi đã gửi danh sách người tham dự vào nhóm.",
         en: "I have sent the attendance list to the group.",
       },
       {
+        cell_id: "83bb2180-512c-4e9d-80df-958af506350e",
         speaker: "Anggota",
         text: "Baik, saya akan cek ringkasannya lagi sebelum dikirim.",
         vi: "Được, tôi sẽ kiểm tra lại bản tóm tắt trước khi gửi.",

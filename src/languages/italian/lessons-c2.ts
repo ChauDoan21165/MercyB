@@ -31,6 +31,7 @@ export type LessonSentence = {
 };
 
 export type VocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -40,6 +41,7 @@ export type VocabEntry = {
 };
 
 export type DialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -191,6 +193,7 @@ export const lessons: ItalianLesson[] = [
       "Memorize the register ladder — five levels for the same idea 'I disagree', from neutral to conciliatory: 'Non condivido pienamente…' / 'Capisco il punto, ma introdurrei una distinzione.' / 'Questa argomentazione non mi sembra sostenibile.' / 'La questione merita una valutazione più cauta.' / 'Possiamo trovare un punto di equilibrio.' Then run the 8-step procedure on any C2 text: explicit message → hidden assumption → tag the register → extract two collocations → rewrite once in plain Italian → rewrite at C2 → explain in Vietnamese without flattening nuance → produce one original sentence in the same register. Lift flat sentences with modulators ('in parte', 'tendenzialmente', 'non necessariamente', 'a mio avviso'). The five recurring Vietnamese-speaker errors: correct-but-flat (add modulators); too direct in disagreement (concede first); Vietnamese rhythm in Italian (split into clauses); mechanical idioms (use only when the tone fits); over-formality (choose register by relationship, not by default).",
     vocabulary: [
       {
+        cell_id: "d556dfab-68b4-4a2b-9097-4df0b6ff02a7",
         word: "la sfumatura",
         en: "the nuance / shade of meaning",
         vi: "sắc thái",
@@ -199,6 +202,7 @@ export const lessons: ItalianLesson[] = [
         pronunciation_en: "lah sfoo-mah-TOO-rah — distinguishing tone from intention; literally a 'shading'",
       },
       {
+        cell_id: "ebc50d1b-c278-4423-b098-955ef06df000",
         word: "il sottinteso",
         en: "the implied meaning",
         vi: "điều ngầm hiểu",
@@ -207,6 +211,7 @@ export const lessons: ItalianLesson[] = [
         pronunciation_en: "eel sot-teen-TEH-zo — what is meant but not said; double t held",
       },
       {
+        cell_id: "5ec3fd2f-d331-497f-b748-8df842f13166",
         word: "il registro",
         en: "the register / level of language",
         vi: "văn phong / cấp độ ngôn ngữ",
@@ -215,6 +220,7 @@ export const lessons: ItalianLesson[] = [
         pronunciation_en: "eel reh-JEES-tro — choosing formal, neutral, or colloquial; soft -gi-",
       },
       {
+        cell_id: "a3a2f246-90e6-4f16-a797-f8c1a9d8f0a0",
         word: "incisivo",
         en: "incisive / forceful",
         vi: "sắc bén, mạnh",
@@ -223,6 +229,7 @@ export const lessons: ItalianLesson[] = [
         pronunciation_en: "een-chee-ZEE-vo — speaking or writing with force; -ci- = 'chee', s = 'z'",
       },
       {
+        cell_id: "f61be951-ca5b-42f3-9d69-d4629911c0c2",
         word: "prolisso",
         en: "long-winded / verbose",
         vi: "dài dòng",
@@ -231,6 +238,7 @@ export const lessons: ItalianLesson[] = [
         pronunciation_en: "pro-LEES-so — hold the double s; said of text that should be cut",
       },
       {
+        cell_id: "530b7e94-4910-4c2a-a839-eeebada659b7",
         word: "fuorviante",
         en: "misleading",
         vi: "gây hiểu sai",
@@ -239,6 +247,7 @@ export const lessons: ItalianLesson[] = [
         pronunciation_en: "fwor-VYAHN-teh — used to criticize a misleading formulation",
       },
       {
+        cell_id: "81f51746-d1fa-4f11-8001-5d782245de69",
         word: "plausibile",
         en: "plausible",
         vi: "hợp lý, có cơ sở",
@@ -247,6 +256,7 @@ export const lessons: ItalianLesson[] = [
         pronunciation_en: "plow-ZEE-bee-leh — used to weigh a hypothesis; s = 'z'",
       },
       {
+        cell_id: "66b0aa22-c241-4122-be47-7bc2594c69da",
         word: "controproducente",
         en: "counterproductive",
         vi: "phản tác dụng",
@@ -255,6 +265,7 @@ export const lessons: ItalianLesson[] = [
         pronunciation_en: "kon-tro-pro-doo-CHEN-teh — describing negative effects; -cen- = 'chen'",
       },
       {
+        cell_id: "1be54631-d7b5-47b6-87bb-a4224e25b03b",
         word: "ridimensionare",
         en: "to scale down / put in proportion",
         vi: "đặt vấn đề đúng mức",
@@ -263,6 +274,7 @@ export const lessons: ItalianLesson[] = [
         pronunciation_en: "ree-dee-men-syo-NAH-reh — to right-size an alarm without ignoring it",
       },
       {
+        cell_id: "d107b68a-fe49-452c-ab3c-1d6fd11aa8d9",
         word: "prendere le distanze",
         en: "to distance oneself (from a view)",
         vi: "giữ khoảng cách quan điểm",
@@ -273,21 +285,25 @@ export const lessons: ItalianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "4433689a-6e42-4b5a-8eb0-ee408ea8fe60",
         speaker: "Relatrice",
         text: "Lei sostiene che la digitalizzazione vada accelerata. Non condivido pienamente: introdurrei una distinzione tra efficienza e accessibilità.",
         vi: "Cô cho rằng cần đẩy nhanh số hóa. Tôi không hoàn toàn đồng ý: tôi muốn phân biệt giữa hiệu quả và khả năng tiếp cận.",
       },
       {
+        cell_id: "b838268b-8fc2-4085-9900-a8e5cf04ea4f",
         speaker: "Linh",
         text: "Capisco il punto e in parte lo condivido. Tuttavia, mi sembra che si rischi di ridimensionare un problema reale.",
         vi: "Tôi hiểu ý và phần nào đồng ý. Tuy nhiên, tôi e rằng ta có nguy cơ xem nhẹ một vấn đề có thật.",
       },
       {
+        cell_id: "7ea59987-9565-4e42-890c-5a90fe812358",
         speaker: "Relatrice",
         text: "Diciamo che la sua formulazione, così com'è, risulta un po' fuorviante.",
         vi: "Nói đúng hơn, cách diễn đạt của cô, như hiện tại, có hơi gây hiểu sai.",
       },
       {
+        cell_id: "d02a9dee-3d50-4bfe-b7ce-cce6b9bd2b93",
         speaker: "Linh",
         text: "Accetto il rilievo. Allora prendo le distanze da una lettura troppo ottimistica e propongo criteri verificabili.",
         vi: "Tôi chấp nhận nhận xét đó. Vậy tôi giữ khoảng cách với một cách đọc quá lạc quan và đề xuất các tiêu chí kiểm chứng được.",
@@ -475,6 +491,7 @@ export const lessons: ItalianLesson[] = [
       "Drill 'plain → C2' as pairs, always knowing the plain version first: 'Abbiamo un problema.' → 'C'è un nodo da sciogliere.'; 'Dobbiamo riassumere.' → 'Facciamo il punto.'; 'Questa idea non funziona.' → 'Questa ipotesi non sta in piedi.'; 'Questo dato preoccupa.' → 'Questo dato è un campanello d'allarme.' Keep formal fallbacks ready for when you're unsure of the register: 'non sta in piedi' → 'risulta poco sostenibile'; 'fare il punto' → 'riassumere la situazione'. A good C2 model uses ONE idiom with clear context and correct register: 'Direi che il vero nodo da sciogliere non è la tecnologia in sé, ma il modo in cui viene introdotta.' Six Vietnamese-speaker rules: don't translate Vietnamese idioms word-for-word; learn each idiom's register; get the verb form and article right; don't stack metaphors; avoid idioms when angry; master the plain version before the idiomatic one.",
     vocabulary: [
       {
+        cell_id: "14395e9f-f21a-4225-afc8-de64d51c3d7f",
         word: "fare il punto",
         en: "to take stock / sum up the situation",
         vi: "tổng kết tình hình",
@@ -483,6 +500,7 @@ export const lessons: ItalianLesson[] = [
         pronunciation_en: "FAH-reh eel POON-to — professional register; common in meetings",
       },
       {
+        cell_id: "9a1e44ac-0d01-4b3d-9cba-bf457208d62c",
         word: "andare al sodo",
         en: "to get to the point",
         vi: "đi vào trọng tâm",
@@ -491,6 +509,7 @@ export const lessons: ItalianLesson[] = [
         pronunciation_en: "ahn-DAH-reh ahl SOH-do — informal-neutral; cut the preamble",
       },
       {
+        cell_id: "e51ed476-e054-4afb-9f21-bd090ff22d07",
         word: "non stare in piedi",
         en: "to not hold up / make no sense",
         vi: "không vững, không hợp lý",
@@ -499,6 +518,7 @@ export const lessons: ItalianLesson[] = [
         pronunciation_en: "non STAH-reh een PYEH-dee — soften upward; formal = 'risulta poco sostenibile'",
       },
       {
+        cell_id: "758be70c-c7a6-40e9-b2e7-018a242bd086",
         word: "un nodo da sciogliere",
         en: "a knot to untie / an unresolved issue",
         vi: "nút thắt cần tháo",
@@ -507,6 +527,7 @@ export const lessons: ItalianLesson[] = [
         pronunciation_en: "oon NOH-do dah SHOH-lyeh-reh — metaphor for an unresolved problem",
       },
       {
+        cell_id: "bd84c350-90dd-48cb-8143-2fe4a12a0f90",
         word: "una zona grigia",
         en: "a grey area",
         vi: "vùng xám",
@@ -515,6 +536,7 @@ export const lessons: ItalianLesson[] = [
         pronunciation_en: "OO-nah TSOH-nah GREE-jah — where rule or ethics are unclear",
       },
       {
+        cell_id: "a447ed2d-6fcc-49fb-b30d-5a97790209fe",
         word: "un campanello d'allarme",
         en: "an alarm bell / warning sign",
         vi: "tín hiệu cảnh báo",
@@ -523,6 +545,7 @@ export const lessons: ItalianLesson[] = [
         pronunciation_en: "kam-pah-NEL-lo dahl-LAR-meh — metaphor for risk; double l twice",
       },
       {
+        cell_id: "7a55f23b-2684-4f4f-a23b-2a2e833ad0e3",
         word: "uno spartiacque",
         en: "a watershed / turning point",
         vi: "bước ngoặt",
@@ -531,6 +554,7 @@ export const lessons: ItalianLesson[] = [
         pronunciation_en: "oo-no spar-TYAHK-kweh — historical/social turning point; -cque = 'kkweh'",
       },
       {
+        cell_id: "57055900-87f9-4ad4-a5ea-d09b8080d49d",
         word: "gettare luce su",
         en: "to shed light on",
         vi: "làm sáng tỏ",
@@ -539,6 +563,7 @@ export const lessons: ItalianLesson[] = [
         pronunciation_en: "jet-TAH-reh LOO-cheh soo — formal; heavy in casual speech",
       },
       {
+        cell_id: "add00f3c-5bd6-4b3a-9111-ac16f428102e",
         word: "sollevare una questione",
         en: "to raise an issue",
         vi: "nêu một vấn đề",
@@ -547,6 +572,7 @@ export const lessons: ItalianLesson[] = [
         pronunciation_en: "sol-leh-VAH-reh oo-nah kweh-STYOH-neh — low-risk collocation, use freely",
       },
       {
+        cell_id: "772681a0-877a-4f90-ad08-f5791e184b1a",
         word: "nutrire dubbi",
         en: "to harbour doubts",
         vi: "có nghi ngờ",
@@ -557,21 +583,25 @@ export const lessons: ItalianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "99b3e597-ff89-4f4c-a255-c5eb50623022",
         speaker: "Direttore",
         text: "Prima di tutto, facciamo il punto. La proposta, così com'è, non sta in piedi.",
         vi: "Trước hết, hãy tổng kết tình hình. Đề xuất, như hiện tại, không vững.",
       },
       {
+        cell_id: "8fddd8b2-c109-40c0-a884-09f9b26c4406",
         speaker: "Linh",
         text: "Concordo. Il vero nodo da sciogliere non è il budget, ma la formazione del personale.",
         vi: "Tôi đồng ý. Nút thắt thật sự không phải là ngân sách, mà là việc đào tạo nhân sự.",
       },
       {
+        cell_id: "95b4564a-fed2-45e1-8562-a8aaa31413cf",
         speaker: "Direttore",
         text: "Su questo nutro qualche dubbio. Però è giusto sollevare la questione adesso.",
         vi: "Về điểm này tôi có chút nghi ngờ. Nhưng nêu vấn đề ngay bây giờ là đúng.",
       },
       {
+        cell_id: "b7a325d1-dee0-44cf-933d-a13a6745dc9d",
         speaker: "Linh",
         text: "Senza formazione, l'intero progetto rischia di fare acqua da tutte le parti — ma questo, fra noi, non lo scriverei nel verbale.",
         vi: "Nếu không đào tạo, cả dự án có nguy cơ lủng củng nhiều chỗ — nhưng điều này, giữa chúng ta, tôi sẽ không ghi vào biên bản.",
@@ -782,6 +812,7 @@ export const lessons: ItalianLesson[] = [
       "A full C2 model answer (topic: 'Should all public services be digitized?'): 'In linea di principio, la digitalizzazione è auspicabile… Tuttavia, confondere l'efficienza tecnica con l'accessibilità reale sarebbe un errore… Per questo difenderei una transizione ibrida: digitale dove semplifica, assistita dove rischia di creare nuove barriere.' Memorize five rebuttal patterns: 'Capisco l'obiezione, ma non la trovo decisiva.'; 'Il dato è rilevante, ma va interpretato con cautela.'; 'Non nego il problema; contesto la soluzione proposta.'; 'La premessa è condivisibile, la conclusione meno.'; 'Il rischio esiste, ma può essere mitigato.' Six drills: defend a thesis in 90 seconds; give the strongest counterargument to YOUR OWN view; rebut without repeating the opponent's exact words; summarize both sides fairly; end with a practical compromise; turn an emotional reaction into analytic language. A 5/5 answer frames, argues, concedes, rebuts, and synthesizes with controlled tone. Final check: record an answer and ask whether your concession is REAL or merely DECORATIVE — a decorative concession is a C1 marker, not C2.",
     vocabulary: [
       {
+        cell_id: "fb33a48f-a486-4a0a-a14e-ece1be197f62",
         word: "il presupposto",
         en: "the underlying assumption / premise",
         vi: "giả định nền",
@@ -790,6 +821,7 @@ export const lessons: ItalianLesson[] = [
         pronunciation_en: "preh-soop-POS-to — the hidden premise of an argument; double p held",
       },
       {
+        cell_id: "d7b87d89-f2c4-4664-ad2d-246588469d52",
         word: "l'obiezione",
         en: "the objection",
         vi: "phản bác",
@@ -798,6 +830,7 @@ export const lessons: ItalianLesson[] = [
         pronunciation_en: "lo-byeh-TSYOH-neh — a counterpoint raised in debate",
       },
       {
+        cell_id: "03e1135d-aa8d-4c5d-99f2-cc80e112b449",
         word: "confutare",
         en: "to refute",
         vi: "bác bỏ",
@@ -806,6 +839,7 @@ export const lessons: ItalianLesson[] = [
         pronunciation_en: "kon-foo-TAH-reh — to demonstrate a claim is false",
       },
       {
+        cell_id: "caa4fb52-893c-4254-a480-870997e89f25",
         word: "mitigare",
         en: "to mitigate",
         vi: "giảm nhẹ",
@@ -814,6 +848,7 @@ export const lessons: ItalianLesson[] = [
         pronunciation_en: "mee-tee-GAH-reh — to lessen a risk rather than deny it",
       },
       {
+        cell_id: "27595da3-2ffa-484f-91d3-3b62f40617a4",
         word: "dirimente",
         en: "decisive / settling the matter",
         vi: "mang tính quyết định",
@@ -822,6 +857,7 @@ export const lessons: ItalianLesson[] = [
         pronunciation_en: "dee-ree-MEN-teh — an argument that decides the question",
       },
       {
+        cell_id: "a9be212b-6a48-490f-abed-6da565fda46c",
         word: "parziale",
         en: "partial / one-sided",
         vi: "phiến diện, một phần",
@@ -830,6 +866,7 @@ export const lessons: ItalianLesson[] = [
         pronunciation_en: "par-TSYAH-leh — based on partial evidence; -zia- = 'tsya'",
       },
       {
+        cell_id: "2258fba9-c48e-4b4d-a908-f34c1271b23b",
         word: "auspicabile",
         en: "desirable / to be hoped for",
         vi: "đáng mong muốn",
@@ -838,6 +875,7 @@ export const lessons: ItalianLesson[] = [
         pronunciation_en: "ow-spee-KAH-bee-leh — 'au' diphthong; stress -KAH-",
       },
       {
+        cell_id: "8b7f2991-892c-4cf3-8ce7-4e7dda429b78",
         word: "la transizione ibrida",
         en: "the hybrid transition",
         vi: "chuyển đổi lai",
@@ -846,6 +884,7 @@ export const lessons: ItalianLesson[] = [
         pronunciation_en: "tran-zee-TSYOH-neh EE-bree-dah — mixing digital and assisted approaches",
       },
       {
+        cell_id: "34e97990-ffeb-4bdb-9f2c-0df277b98dee",
         word: "ridimensionare",
         en: "to scale down / put in proportion",
         vi: "đặt vấn đề đúng mức",
@@ -854,6 +893,7 @@ export const lessons: ItalianLesson[] = [
         pronunciation_en: "ree-dee-men-syo-NAH-reh — to right-size without ignoring",
       },
       {
+        cell_id: "811576dc-b77a-4a9d-a33e-9a04ead787b7",
         word: "in linea di principio",
         en: "in principle",
         vi: "về nguyên tắc",
@@ -864,21 +904,25 @@ export const lessons: ItalianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "08b37dc4-a47d-46a1-8940-4490f37a7a13",
         speaker: "Moderatore",
         text: "I servizi pubblici dovrebbero diventare tutti digitali. Lei è d'accordo?",
         vi: "Mọi dịch vụ công nên trở thành kỹ thuật số hết. Cô có đồng ý không?",
       },
       {
+        cell_id: "c7f5b63a-781f-4bd7-adb4-c35af3b3b7a3",
         speaker: "Linh",
         text: "In linea di principio, la digitalizzazione è auspicabile. Tuttavia, confondere l'efficienza con l'accessibilità sarebbe un errore.",
         vi: "Về nguyên tắc, số hóa là điều đáng mong muốn. Tuy nhiên, nhầm hiệu quả với khả năng tiếp cận sẽ là sai lầm.",
       },
       {
+        cell_id: "9cf4b6f3-c020-43d4-8e33-a555df37b255",
         speaker: "Contraddittore",
         text: "Ma il digitale riduce i costi. Questo è dirimente.",
         vi: "Nhưng số hóa giảm chi phí. Đây là điều quyết định.",
       },
       {
+        cell_id: "dea6f6c2-dde6-4c8e-be8c-ea90f7f8adfb",
         speaker: "Linh",
         text: "Capisco l'obiezione, ma non la trovo decisiva. Il risparmio è reale, però va interpretato con cautela: esclude chi non ha competenze digitali.",
         vi: "Tôi hiểu phản bác, nhưng không thấy nó quyết định. Khoản tiết kiệm là có thật, nhưng cần diễn giải thận trọng: nó loại trừ người không có kỹ năng số.",
@@ -1056,6 +1100,7 @@ export const lessons: ItalianLesson[] = [
       "Rewrite sarcasm as neutral criticism to learn the mechanism: 'Geniale, proprio.' → 'Questa scelta non mi sembra efficace.'; 'Che sorpresa.' → 'Purtroppo succede spesso.'; 'Ottimo lavoro…' → 'Ci sono alcuni aspetti da correggere.'; 'Auguri.' → 'Potrebbe essere complicato.' Keep a safe-response bank by situation: unsure if it was a joke ('Non so se era una battuta, ma…'); light irony ('Eh, in effetti…'); professional setting ('Capisco la frustrazione.'); too sharp ('Preferirei restare sul punto pratico.'); self-irony ('Almeno ci provo.'); missed the joke ('Scusa, non l'ho colta subito.'). Six rules: don't answer irony only literally; sarcasm is socially risky — avoid it upward; 'Che sorpresa' may mean the opposite; understatement is common ('non male', 'non proprio ideale'); when unsure, respond neutrally; humor depends heavily on relationship and tone. Crucially, when angry, AVOID irony — it escalates conflict and is hard to take back.",
     vocabulary: [
       {
+        cell_id: "495ce764-b0aa-4363-bcc8-cc0b9920f209",
         word: "l'ironia",
         en: "irony (subtle, often not personal)",
         vi: "mỉa mai nhẹ, thông minh",
@@ -1064,6 +1109,7 @@ export const lessons: ItalianLesson[] = [
         pronunciation_en: "lee-ro-NEE-ah — clever, subtle; final-stressed -NÌ-a",
       },
       {
+        cell_id: "7c74a938-9e7a-48dd-9fd6-a5c32c4fb4d1",
         word: "il sarcasmo",
         en: "sarcasm (sharper, aimed at someone)",
         vi: "châm biếm sắc hơn",
@@ -1072,6 +1118,7 @@ export const lessons: ItalianLesson[] = [
         pronunciation_en: "sar-KAHS-mo — sharper and socially risky; stress -KAHS-",
       },
       {
+        cell_id: "a77532eb-2f1b-497b-abcd-c7069903191c",
         word: "la battuta",
         en: "the joke / quip",
         vi: "câu đùa",
@@ -1080,6 +1127,7 @@ export const lessons: ItalianLesson[] = [
         pronunciation_en: "baht-TOO-tah — a quip; double t held",
       },
       {
+        cell_id: "e4df68d2-9cd7-4e90-887e-5217298c9f2c",
         word: "il sottinteso",
         en: "the implication / unspoken meaning",
         vi: "hàm ý",
@@ -1088,6 +1136,7 @@ export const lessons: ItalianLesson[] = [
         pronunciation_en: "sot-teen-TEH-zo — what is meant but not said; double t",
       },
       {
+        cell_id: "fafbdeda-1f91-4c7a-976d-e52d77b77c83",
         word: "l'allusione",
         en: "the allusion",
         vi: "ám chỉ",
@@ -1096,6 +1145,7 @@ export const lessons: ItalianLesson[] = [
         pronunciation_en: "lahl-loo-ZYOH-neh — an indirect reference; double l; -sione = 'ZYOH-neh'",
       },
       {
+        cell_id: "1b198069-f832-4c4c-9006-d1593493887c",
         word: "l'autoironia",
         en: "self-irony",
         vi: "tự mỉa",
@@ -1104,6 +1154,7 @@ export const lessons: ItalianLesson[] = [
         pronunciation_en: "ow-to-ee-ro-NEE-ah — irony directed at oneself; socially safe",
       },
       {
+        cell_id: "2f9c1974-81e6-4aae-9087-6f934aaccfe4",
         word: "la presa in giro",
         en: "the teasing / mockery",
         vi: "trêu, chọc",
@@ -1112,6 +1163,7 @@ export const lessons: ItalianLesson[] = [
         pronunciation_en: "PREH-zah een JEE-ro — light teasing; -gi- = 'jee'",
       },
       {
+        cell_id: "5b697154-69fc-4c2b-9899-f885488400d8",
         word: "il tono pungente",
         en: "the cutting / barbed tone",
         vi: "giọng sắc, châm chích",
@@ -1120,6 +1172,7 @@ export const lessons: ItalianLesson[] = [
         pronunciation_en: "TOH-no poon-JEN-teh — a sharp tone; -gen- = 'jen'",
       },
       {
+        cell_id: "98061340-384e-4203-8fb8-1b23e452ebef",
         word: "attenuare una critica",
         en: "to soften a criticism",
         vi: "làm mềm một lời phê bình",
@@ -1128,6 +1181,7 @@ export const lessons: ItalianLesson[] = [
         pronunciation_en: "aht-teh-noo-AH-reh oo-nah KREE-tee-kah — to cushion a critique",
       },
       {
+        cell_id: "469406b4-5e02-480b-9e96-3458b6cfd7fa",
         word: "cogliere una battuta",
         en: "to catch / get a joke",
         vi: "bắt được câu đùa",
@@ -1138,21 +1192,25 @@ export const lessons: ItalianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "d936e9f4-1882-495f-a101-c11f7b33a442",
         speaker: "Collega",
         text: "Il sito dell'ufficio si è bloccato di nuovo.",
         vi: "Trang web của cơ quan lại sập rồi.",
       },
       {
+        cell_id: "b895508c-0732-46e5-b9bc-0f6773ab3d70",
         speaker: "Linh",
         text: "Che sorpresa.",
         vi: "Thật bất ngờ. (mỉa mai: chẳng bất ngờ chút nào)",
       },
       {
+        cell_id: "e2ab4820-9f99-4f68-9071-5688f91e7ff5",
         speaker: "Collega",
         text: "Eh, in effetti succede ogni lunedì. Almeno noi ci proviamo a lavorare.",
         vi: "Ờ, thật ra thứ Hai nào cũng vậy. Ít nhất thì bọn mình cũng cố làm việc. (tự mỉa)",
       },
       {
+        cell_id: "85f11b18-5c40-46c4-82f4-554741c45c43",
         speaker: "Linh",
         text: "Capisco la frustrazione. Però preferirei restare sul punto pratico: a chi scriviamo per segnalarlo?",
         vi: "Tôi hiểu sự bực bội. Nhưng tôi muốn giữ ở điểm thực tế hơn: ta viết cho ai để báo việc này?",

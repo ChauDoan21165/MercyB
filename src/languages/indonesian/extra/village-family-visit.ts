@@ -18,6 +18,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   /** Indonesian word/phrase. */
   word: string;
   /** English meaning. */
@@ -33,6 +34,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   /** Indonesian line. */
   text: string;
@@ -243,6 +245,7 @@ export const villageFamilyVisitLessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: Vietnamese elder-respect instincts transfer well into Indonesian. Use `Pak`, `Bu`, `Mbah`, `beliau`, `pamit`, `permisi`, `terima kasih`, and avoid bare first names with elders. When offered food but you do not want much, avoid a blunt refusal; `Terima kasih, saya ambil sedikit dulu` is soft and safe.",
     vocabulary: [
       {
+        cell_id: "b28dd5d8-5742-4850-a525-3df2babdfd8a",
         word: "pulang kampung",
         en: "go back to one's hometown/village",
         vi: "về quê",
@@ -251,6 +254,7 @@ export const villageFamilyVisitLessons: IndonesianLesson[] = [
         pronunciation_en: "POO-lang KAM-poong",
       },
       {
+        cell_id: "fe619a9e-5913-4533-8d2f-ae86cf740edd",
         word: "rumah saudara",
         en: "relative's house",
         vi: "nhà họ hàng",
@@ -259,6 +263,7 @@ export const villageFamilyVisitLessons: IndonesianLesson[] = [
         pronunciation_en: "ROO-mah sau-DA-ra",
       },
       {
+        cell_id: "2700c582-2363-481d-ae86-e39d26e5cd62",
         word: "oleh-oleh",
         en: "souvenir / gift brought back",
         vi: "quà mang về",
@@ -267,6 +272,7 @@ export const villageFamilyVisitLessons: IndonesianLesson[] = [
         pronunciation_en: "O-leh O-leh",
       },
       {
+        cell_id: "5b763055-b4e1-4ae7-98fb-7d88fe8d2ef7",
         word: "sopan santun keluarga",
         en: "family manners",
         vi: "phép lịch sự trong gia đình",
@@ -275,6 +281,7 @@ export const villageFamilyVisitLessons: IndonesianLesson[] = [
         pronunciation_en: "SO-pan SAN-toon ke-LOO-ar-ga",
       },
       {
+        cell_id: "ced0ede8-a338-4fbf-802c-761fba98d91b",
         word: "tetua",
         en: "elder",
         vi: "bậc cao niên / người lớn tuổi",
@@ -283,6 +290,7 @@ export const villageFamilyVisitLessons: IndonesianLesson[] = [
         pronunciation_en: "TE-too-a",
       },
       {
+        cell_id: "048fa300-43a1-469a-8eeb-2ed29e3357ba",
         word: "ngobrol",
         en: "chat casually",
         vi: "trò chuyện",
@@ -291,6 +299,7 @@ export const villageFamilyVisitLessons: IndonesianLesson[] = [
         pronunciation_en: "NGO-brol",
       },
       {
+        cell_id: "660c118e-a0c6-4cf8-ae81-0ad4803f8d1c",
         word: "makan bersama",
         en: "eat together",
         vi: "ăn cùng nhau",
@@ -299,6 +308,7 @@ export const villageFamilyVisitLessons: IndonesianLesson[] = [
         pronunciation_en: "MA-kan ber-SA-ma",
       },
       {
+        cell_id: "4f763eac-d46c-4396-a7b9-7a28bb854174",
         word: "salim",
         en: "respectful hand greeting to elders",
         vi: "chào kính người lớn bằng tay",
@@ -307,6 +317,7 @@ export const villageFamilyVisitLessons: IndonesianLesson[] = [
         pronunciation_en: "SA-lim",
       },
       {
+        cell_id: "b11c1d92-e4d4-45a9-b751-80a405b917f6",
         word: "tuan rumah",
         en: "host",
         vi: "chủ nhà / người tiếp đón",
@@ -315,6 +326,7 @@ export const villageFamilyVisitLessons: IndonesianLesson[] = [
         pronunciation_en: "TOO-an ROO-mah",
       },
       {
+        cell_id: "70a18115-0174-4ebb-9253-1dc4e4a4d08e",
         word: "pamit",
         en: "take leave respectfully",
         vi: "chào xin phép trước khi đi",
@@ -325,30 +337,35 @@ export const villageFamilyVisitLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "fe16df8d-0201-42d6-b1a4-b620b1632de7",
         speaker: "Tamu",
         text: "Assalamualaikum, Bu. Kami baru sampai dari kota.",
         vi: "Chào cô. Chúng cháu vừa đến từ thành phố.",
         en: "Peace be upon you, ma'am. We just arrived from the city.",
       },
       {
+        cell_id: "96c013b4-540c-46c2-99bf-bf06a9b922df",
         speaker: "Tuan Rumah",
         text: "Waalaikumsalam. Silakan masuk, Nak. Sudah lama tidak pulang kampung.",
         vi: "Chào cháu. Mời vào, con. Lâu rồi không về quê.",
         en: "And peace be upon you. Please come in, child. It has been a long time since you came home to the village.",
       },
       {
+        cell_id: "fe64d87f-98ae-403b-b17e-e24ae4ec39e0",
         speaker: "Tamu",
         text: "Ini ada oleh-oleh sedikit untuk keluarga.",
         vi: "Đây có chút quà mang về cho gia đình.",
         en: "Here are some small gifts for the family.",
       },
       {
+        cell_id: "5bb29068-3881-4278-b127-9a8d09cec2fa",
         speaker: "Tuan Rumah",
         text: "Terima kasih. Nanti kita makan bersama setelah semua saudara datang.",
         vi: "Cảm ơn. Lát nữa chúng ta ăn cùng nhau sau khi họ hàng đến đủ.",
         en: "Thank you. Later we will eat together after all the relatives arrive.",
       },
       {
+        cell_id: "7b1b702b-85cc-4b20-83be-e51445a782ea",
         speaker: "Tamu",
         text: "Baik, Bu. Sebelum pulang nanti, kami pamit dulu kepada tetua keluarga.",
         vi: "Vâng cô. Trước khi về lát nữa, chúng cháu sẽ chào xin phép các bậc cao niên trước.",

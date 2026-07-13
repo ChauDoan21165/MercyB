@@ -23,6 +23,7 @@ export type UrduSentence = {
 };
 
 export type UrduVocabEntry = {
+  cell_id?: string;
   ur: string;
   romanization: string;
   en: string;
@@ -31,6 +32,7 @@ export type UrduVocabEntry = {
 };
 
 export type UrduDialogueLine = {
+  cell_id?: string;
   speaker: string;
   ur: string;
   romanization: string;
@@ -95,12 +97,12 @@ export const lessons: UrduLesson[] = [
     intro_en:
       "Urdu is written from right to left. This lesson builds recognition of a few short word shapes before the full alphabet.",
     vocabulary: [
-      { ur: "ا", romanization: "alif", en: "alif", vi: "chữ alif", pos: "letter" },
-      { ur: "ب", romanization: "be", en: "be", vi: "chữ be", pos: "letter" },
-      { ur: "م", romanization: "miim", en: "miim", vi: "chữ miim", pos: "letter" },
-      { ur: "ن", romanization: "nuun", en: "nuun", vi: "chữ nuun", pos: "letter" },
-      { ur: "سلام", romanization: "salaam", en: "peace / hello", vi: "bình an / xin chào", pos: "noun" },
-      { ur: "نام", romanization: "naam", en: "name", vi: "tên", pos: "noun" },
+      { cell_id: "466aa3a2-f26f-49a0-8376-bc864a17055a", ur: "ا", romanization: "alif", en: "alif", vi: "chữ alif", pos: "letter" },
+      { cell_id: "153be2ac-64e1-48e0-9a72-7de355eff44c", ur: "ب", romanization: "be", en: "be", vi: "chữ be", pos: "letter" },
+      { cell_id: "44fc2782-72f4-4021-865f-c416ce637a12", ur: "م", romanization: "miim", en: "miim", vi: "chữ miim", pos: "letter" },
+      { cell_id: "a98e6129-2501-45d7-8c5f-fab91c8d28d3", ur: "ن", romanization: "nuun", en: "nuun", vi: "chữ nuun", pos: "letter" },
+      { cell_id: "d334e2ef-956d-46f0-8ad5-8c6f51d4792c", ur: "سلام", romanization: "salaam", en: "peace / hello", vi: "bình an / xin chào", pos: "noun" },
+      { cell_id: "73dabe53-fa5f-43a2-8694-b3352366f40d", ur: "نام", romanization: "naam", en: "name", vi: "tên", pos: "noun" },
     ],
     sentences: [
       {
@@ -174,11 +176,11 @@ export const lessons: UrduLesson[] = [
     intro_en:
       "This lesson uses آپ as the default polite pronoun for greetings. It does not make تم the beginner default.",
     vocabulary: [
-      { ur: "السلام علیکم", romanization: "as-salaam alaikum", en: "hello / peace be upon you", vi: "xin chào trang trọng", pos: "greeting" },
-      { ur: "وعلیکم السلام", romanization: "wa-alaikum as-salaam", en: "reply to the greeting", vi: "lời đáp chào", pos: "reply" },
-      { ur: "آپ", romanization: "aap", en: "you, polite", vi: "bạn/quý vị lịch sự", pos: "pronoun" },
-      { ur: "کیسے", romanization: "kaise", en: "how", vi: "như thế nào", pos: "question word" },
-      { ur: "ٹھیک", romanization: "theek", en: "fine / okay", vi: "ổn", pos: "adjective" },
+      { cell_id: "2beee3d8-9e8a-49bd-9a16-a5b9c35b981f", ur: "السلام علیکم", romanization: "as-salaam alaikum", en: "hello / peace be upon you", vi: "xin chào trang trọng", pos: "greeting" },
+      { cell_id: "86169753-3408-431b-8b79-f199d7eb91b3", ur: "وعلیکم السلام", romanization: "wa-alaikum as-salaam", en: "reply to the greeting", vi: "lời đáp chào", pos: "reply" },
+      { cell_id: "6aee500b-cac7-46e0-980d-a62b5b158db1", ur: "آپ", romanization: "aap", en: "you, polite", vi: "bạn/quý vị lịch sự", pos: "pronoun" },
+      { cell_id: "b636fb29-38e4-432f-8595-520edb2fab4c", ur: "کیسے", romanization: "kaise", en: "how", vi: "như thế nào", pos: "question word" },
+      { cell_id: "0c5f35b2-3546-4be1-9ab7-533bf3333758", ur: "ٹھیک", romanization: "theek", en: "fine / okay", vi: "ổn", pos: "adjective" },
     ],
     sentences: [
       {
@@ -212,6 +214,7 @@ export const lessons: UrduLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "6f45f4d1-de00-43c8-9104-03e92c0a1306",
         speaker: "Sara",
         ur: "السلام علیکم۔",
         romanization: "as-salaam alaikum.",
@@ -220,6 +223,7 @@ export const lessons: UrduLesson[] = [
         register: "polite",
       },
       {
+        cell_id: "97f539aa-5a36-425b-9670-0e8e703847b1",
         speaker: "Ali",
         ur: "وعلیکم السلام۔ آپ کیسے ہیں؟",
         romanization: "wa-alaikum as-salaam. aap kaise hain?",
@@ -228,6 +232,7 @@ export const lessons: UrduLesson[] = [
         register: "polite",
       },
       {
+        cell_id: "47db532d-d429-49cc-9f47-32a09728a088",
         speaker: "Sara",
         ur: "میں ٹھیک ہوں، شکریہ۔",
         romanization: "main theek hoon, shukriya.",
@@ -277,12 +282,12 @@ export const lessons: UrduLesson[] = [
     intro_en:
       "This lesson practices basic self-introduction: name, origin, and learning Urdu.",
     vocabulary: [
-      { ur: "میرا", romanization: "mera", en: "my, masculine/default", vi: "của tôi", pos: "possessive" },
-      { ur: "نام", romanization: "naam", en: "name", vi: "tên", pos: "noun" },
-      { ur: "ویت نام", romanization: "vietnam", en: "Vietnam", vi: "Việt Nam", pos: "place" },
-      { ur: "سے", romanization: "se", en: "from", vi: "từ", pos: "postposition" },
-      { ur: "سیکھ رہا ہوں", romanization: "seekh raha hoon", en: "I am learning, male speaker", vi: "tôi đang học, người nói nam", pos: "phrase" },
-      { ur: "سیکھ رہی ہوں", romanization: "seekh rahi hoon", en: "I am learning, female speaker", vi: "tôi đang học, người nói nữ", pos: "phrase" },
+      { cell_id: "c08e95fb-ecdc-4daf-9b8f-0fbdaa55b255", ur: "میرا", romanization: "mera", en: "my, masculine/default", vi: "của tôi", pos: "possessive" },
+      { cell_id: "8bcc1f82-9fa2-40f1-bd84-b25b72b5e0de", ur: "نام", romanization: "naam", en: "name", vi: "tên", pos: "noun" },
+      { cell_id: "c97d577f-bdf3-4029-99a5-ffcd1be664b9", ur: "ویت نام", romanization: "vietnam", en: "Vietnam", vi: "Việt Nam", pos: "place" },
+      { cell_id: "8276e036-124b-4fab-90e0-41904b540c65", ur: "سے", romanization: "se", en: "from", vi: "từ", pos: "postposition" },
+      { cell_id: "947ff6cc-7f66-4886-ac3a-6a104532d7b1", ur: "سیکھ رہا ہوں", romanization: "seekh raha hoon", en: "I am learning, male speaker", vi: "tôi đang học, người nói nam", pos: "phrase" },
+      { cell_id: "c4e0f4b8-0c67-40a6-bbb7-9459f13ec6bc", ur: "سیکھ رہی ہوں", romanization: "seekh rahi hoon", en: "I am learning, female speaker", vi: "tôi đang học, người nói nữ", pos: "phrase" },
     ],
     sentences: [
       {
@@ -345,12 +350,12 @@ export const lessons: UrduLesson[] = [
     intro_en:
       "This lesson teaches how to ask for repetition, slower speech, meaning, and written form politely.",
     vocabulary: [
-      { ur: "براہ کرم", romanization: "baraah-e karam", en: "please", vi: "làm ơn / xin vui lòng", pos: "polite phrase" },
-      { ur: "آہستہ", romanization: "aahista", en: "slowly", vi: "chậm", pos: "adverb" },
-      { ur: "بولیے", romanization: "boliye", en: "please speak", vi: "xin hãy nói", pos: "polite imperative" },
-      { ur: "دوبارہ", romanization: "dobara", en: "again", vi: "lại / lần nữa", pos: "adverb" },
-      { ur: "مطلب", romanization: "matlab", en: "meaning", vi: "nghĩa", pos: "noun" },
-      { ur: "لکھ دیجیے", romanization: "likh dijiye", en: "please write it", vi: "xin hãy viết ra", pos: "polite imperative" },
+      { cell_id: "a435f9b1-e713-46b7-9b33-5d1249ee35cc", ur: "براہ کرم", romanization: "baraah-e karam", en: "please", vi: "làm ơn / xin vui lòng", pos: "polite phrase" },
+      { cell_id: "09655611-58f5-446b-8d3d-6bed9b87d00a", ur: "آہستہ", romanization: "aahista", en: "slowly", vi: "chậm", pos: "adverb" },
+      { cell_id: "a8ac7901-e0f9-46b4-87ae-777a60ad8af8", ur: "بولیے", romanization: "boliye", en: "please speak", vi: "xin hãy nói", pos: "polite imperative" },
+      { cell_id: "ae10b432-0faa-49e8-bef1-7ab21ea886d9", ur: "دوبارہ", romanization: "dobara", en: "again", vi: "lại / lần nữa", pos: "adverb" },
+      { cell_id: "7c4a53dd-6891-40a5-b808-6c500c29bf45", ur: "مطلب", romanization: "matlab", en: "meaning", vi: "nghĩa", pos: "noun" },
+      { cell_id: "daa4f53c-6a3c-4aef-9b69-9369b546ebbd", ur: "لکھ دیجیے", romanization: "likh dijiye", en: "please write it", vi: "xin hãy viết ra", pos: "polite imperative" },
     ],
     sentences: [
       {
@@ -380,6 +385,7 @@ export const lessons: UrduLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "2bc229f6-fa85-4edb-a404-6807923f90ed",
         speaker: "Student",
         ur: "براہ کرم آہستہ بولیے۔",
         romanization: "baraah-e karam aahista boliye.",
@@ -388,6 +394,7 @@ export const lessons: UrduLesson[] = [
         register: "polite",
       },
       {
+        cell_id: "b690a479-755f-4b0f-ba0e-d62b69a92ba3",
         speaker: "Teacher",
         ur: "جی، میں دوبارہ کہتا ہوں۔",
         romanization: "ji, main dobara kehta hoon.",
@@ -435,12 +442,12 @@ export const lessons: UrduLesson[] = [
     intro_en:
       "This lesson uses numbers for prices and time. Display keeps the authored digit style; answer matching can fold digit variants later.",
     vocabulary: [
-      { ur: "ایک", romanization: "ek", en: "one", vi: "một", pos: "number" },
-      { ur: "دو", romanization: "do", en: "two", vi: "hai", pos: "number" },
-      { ur: "تین", romanization: "tiin", en: "three", vi: "ba", pos: "number" },
-      { ur: "کتنے", romanization: "kitne", en: "how many / how much", vi: "bao nhiêu", pos: "question word" },
-      { ur: "قیمت", romanization: "qiimat", en: "price", vi: "giá", pos: "noun" },
-      { ur: "بجے", romanization: "baje", en: "o'clock", vi: "giờ", pos: "time word" },
+      { cell_id: "cf214cb0-11bd-417a-96f5-3f67a2a961fd", ur: "ایک", romanization: "ek", en: "one", vi: "một", pos: "number" },
+      { cell_id: "41648b75-5ebd-4438-a627-85e6b3ccede1", ur: "دو", romanization: "do", en: "two", vi: "hai", pos: "number" },
+      { cell_id: "dee9f7f9-843d-4f38-89b3-ee754b1de411", ur: "تین", romanization: "tiin", en: "three", vi: "ba", pos: "number" },
+      { cell_id: "95daee3a-75c0-495f-89a9-45db6e60202f", ur: "کتنے", romanization: "kitne", en: "how many / how much", vi: "bao nhiêu", pos: "question word" },
+      { cell_id: "28dc30a5-09f8-4bda-a790-0430cfd28f10", ur: "قیمت", romanization: "qiimat", en: "price", vi: "giá", pos: "noun" },
+      { cell_id: "7c18e763-cbea-42c8-969e-bc24a8efa8c8", ur: "بجے", romanization: "baje", en: "o'clock", vi: "giờ", pos: "time word" },
     ],
     sentences: [
       {

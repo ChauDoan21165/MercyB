@@ -37,6 +37,7 @@ type LessonSentence = {
 };
 
 type VocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -48,6 +49,7 @@ type VocabEntry = {
 };
 
 type DialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -164,6 +166,7 @@ export const bahasaGaulAdvancedLessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: many slang words are ACRONYMS of a standard phrase — learn the source phrase and the meaning clicks: gaje = gak jelas, gak = tidak. Casual swaps: 'banget' for 'sangat' (very), 'cuma' for 'hanya' (only), 'bikin' for 'membuat' (to make), 'ketawa' for 'tertawa' (to laugh). The sentence-final particles 'deh/sih/dong/kok' only tweak tone and are nearly untranslatable — feel them from context.",
     vocabulary: [
       {
+        cell_id: "2f12ffb8-5a71-46f0-b348-6c47c799663c",
         word: "wkwk",
         en: "haha (chat laughter)",
         vi: "haha (cười khi chat)",
@@ -172,6 +175,7 @@ export const bahasaGaulAdvancedLessons: IndonesianLesson[] = [
         pronunciation_en: "wak-wak",
       },
       {
+        cell_id: "06f21a2c-3e81-4c2d-8d70-77e07d4d3844",
         word: "gaje",
         en: "pointless / makes no sense (← gak jelas)",
         vi: "vô nghĩa / chả rõ (← gak jelas)",
@@ -180,6 +184,7 @@ export const bahasaGaulAdvancedLessons: IndonesianLesson[] = [
         pronunciation_en: "ga-JEH",
       },
       {
+        cell_id: "4f69d7e1-c66a-44ae-a0df-d206df02c0a2",
         word: "lebay",
         en: "over-dramatic / exaggerating",
         vi: "làm quá / cường điệu",
@@ -188,6 +193,7 @@ export const bahasaGaulAdvancedLessons: IndonesianLesson[] = [
         pronunciation_en: "LEH-bai",
       },
       {
+        cell_id: "01be6c1e-e947-42d8-a201-1f2bfe3e4aed",
         word: "alay",
         en: "tacky / cringey / try-hard",
         vi: "sến / màu mè / lố",
@@ -196,6 +202,7 @@ export const bahasaGaulAdvancedLessons: IndonesianLesson[] = [
         pronunciation_en: "A-lai",
       },
       {
+        cell_id: "da78d6d3-4994-4569-bdc8-bdb6e787b77f",
         word: "receh",
         en: "corny / cheap (joke)",
         vi: "nhảm / rẻ tiền (câu đùa)",
@@ -204,6 +211,7 @@ export const bahasaGaulAdvancedLessons: IndonesianLesson[] = [
         pronunciation_en: "REH-cheh",
       },
       {
+        cell_id: "9deb5d81-70af-4193-8497-038b3981abb5",
         word: "banget",
         en: "very / super (casual)",
         vi: "cực kỳ / lắm",
@@ -212,6 +220,7 @@ export const bahasaGaulAdvancedLessons: IndonesianLesson[] = [
         pronunciation_en: "BA-nget",
       },
       {
+        cell_id: "5161c1fa-7588-4d90-8c10-a165e05d2b9c",
         word: "bikin",
         en: "to make (casual = membuat)",
         vi: "làm cho",
@@ -220,6 +229,7 @@ export const bahasaGaulAdvancedLessons: IndonesianLesson[] = [
         pronunciation_en: "BEE-kin",
       },
       {
+        cell_id: "bcb0f7a4-32d3-477e-9c64-b7f5ed7b52f6",
         word: "ketawa",
         en: "to laugh (casual = tertawa)",
         vi: "cười",
@@ -230,24 +240,28 @@ export const bahasaGaulAdvancedLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "20ddcffb-15ae-41f8-94a3-edd1925f1e54",
         speaker: "Rani",
         text: "Wkwkwk, liat meme ini deh, receh banget!",
         vi: "Haha, xem cái meme này đi, nhảm thật sự!",
         en: "Hahaha, look at this meme, it's so corny!",
       },
       {
+        cell_id: "683e88e5-d3cd-4f64-94de-35c723300e2c",
         speaker: "Doni",
         text: "Gaje sih sebenarnya, tapi tetap bikin ketawa.",
         vi: "Thật ra cũng chả rõ ý gì, nhưng vẫn buồn cười.",
         en: "It's kind of pointless really, but it still makes me laugh.",
       },
       {
+        cell_id: "37295dc9-0f2a-403f-ae2b-f4fb06cf1c1c",
         speaker: "Rani",
         text: "Eh, caption-nya alay banget ya, huruf gede-kecil campur.",
         vi: "Ê, cái caption sến ghê, chữ hoa chữ thường lẫn lộn.",
         en: "Hey, the caption is so tacky, mixed upper- and lowercase.",
       },
       {
+        cell_id: "b16a1f81-250f-4b6c-8035-8dbac4227cd2",
         speaker: "Doni",
         text: "Iya, jangan lebay ngetiknya. Susah dibaca.",
         vi: "Ừ, gõ chữ đừng làm quá lên. Khó đọc lắm.",
@@ -388,6 +402,7 @@ export const bahasaGaulAdvancedLessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: the 'gaul' acronym pattern takes the first syllable of each word — malas+gerak→mager, bawa+perasaan→baper, gerak+cepat→gercep. Learn the pattern and you can decode new ones. 'Lagi + verb' = currently doing (casual present continuous). Pronoun tiers: formal saya/Anda → casual gue/lu (Jakarta) or aku/kamu (general). Using gue/lu with a boss is quite rude.",
     vocabulary: [
       {
+        cell_id: "bb07ed19-40a9-4cf5-aead-98310265e2db",
         word: "mager",
         en: "too lazy to move (← malas gerak)",
         vi: "lười nhúc nhích (← malas gerak)",
@@ -396,6 +411,7 @@ export const bahasaGaulAdvancedLessons: IndonesianLesson[] = [
         pronunciation_en: "MA-ger",
       },
       {
+        cell_id: "815ddebb-a000-46f3-82ec-b6056776c969",
         word: "gabut",
         en: "idle & bored (← gaji buta)",
         vi: "rảnh đến phát chán (← gaji buta)",
@@ -404,6 +420,7 @@ export const bahasaGaulAdvancedLessons: IndonesianLesson[] = [
         pronunciation_en: "GA-boot",
       },
       {
+        cell_id: "85a370cf-41ab-406e-a6c4-ad3fc2596765",
         word: "baper",
         en: "overly sensitive (← bawa perasaan)",
         vi: "dễ tự ái / để bụng (← bawa perasaan)",
@@ -412,6 +429,7 @@ export const bahasaGaulAdvancedLessons: IndonesianLesson[] = [
         pronunciation_en: "BA-per",
       },
       {
+        cell_id: "7f665367-4caf-4d4a-939f-336f52dff3e0",
         word: "gercep",
         en: "quick to act (← gerak cepat)",
         vi: "nhanh tay (← gerak cepat)",
@@ -420,6 +438,7 @@ export const bahasaGaulAdvancedLessons: IndonesianLesson[] = [
         pronunciation_en: "GER-chep",
       },
       {
+        cell_id: "170dafd0-e589-4530-93f9-b7fe48ab3092",
         word: "kepo",
         en: "nosy / overly curious",
         vi: "tò mò / nhiều chuyện",
@@ -428,6 +447,7 @@ export const bahasaGaulAdvancedLessons: IndonesianLesson[] = [
         pronunciation_en: "KEH-po",
       },
       {
+        cell_id: "b738b6a5-67e5-4775-b924-e2eba4f3f7d7",
         word: "gue",
         en: "I / me (Jakarta slang = saya)",
         vi: "tôi / mình (lóng Jakarta)",
@@ -436,6 +456,7 @@ export const bahasaGaulAdvancedLessons: IndonesianLesson[] = [
         pronunciation_en: "goo-EH",
       },
       {
+        cell_id: "3ee2dd34-2509-403a-8997-09caae6d0afc",
         word: "lu",
         en: "you (Jakarta slang = kamu)",
         vi: "bạn / mày (lóng Jakarta)",
@@ -444,6 +465,7 @@ export const bahasaGaulAdvancedLessons: IndonesianLesson[] = [
         pronunciation_en: "loo",
       },
       {
+        cell_id: "56cf17e1-cf37-45c7-9682-a0b9c9c4fb26",
         word: "bales",
         en: "to reply (casual = membalas)",
         vi: "trả lời / hồi đáp",
@@ -454,24 +476,28 @@ export const bahasaGaulAdvancedLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "b6ec3534-9866-4e29-8cad-81b1db27b4be",
         speaker: "Tio",
         text: "Lagi ngapain? Gue gabut nih di rumah.",
         vi: "Đang làm gì đó? Mình đang rảnh chán ở nhà nè.",
         en: "What are you up to? I'm bored at home.",
       },
       {
+        cell_id: "6faad98e-e4bf-48d0-a79e-f7da23d97c88",
         speaker: "Sasa",
         text: "Sama, mager keluar. Hujan terus dari pagi.",
         vi: "Giống mình, lười ra ngoài. Mưa suốt từ sáng.",
         en: "Same, too lazy to go out. It's been raining since morning.",
       },
       {
+        cell_id: "3ef3170f-6db7-4d4e-9943-90d10bbd1fdb",
         speaker: "Tio",
         text: "Yaudah nonton bareng online aja yuk. Eh, jangan baper kalau gue kalah ya.",
         vi: "Vậy xem chung online luôn đi. À, mình mà thua thì đừng dỗi nhé.",
         en: "Then let's watch together online. Hey, don't get butthurt if I lose.",
       },
       {
+        cell_id: "37a77ad6-0b51-478e-9e4b-42986c8e5402",
         speaker: "Sasa",
         text: "Wkwk santai. Lu gercep banget sih bales chat, gue suka.",
         vi: "Haha bình tĩnh. Bạn trả lời tin nhanh ghê, mình thích.",
@@ -612,6 +638,7 @@ export const bahasaGaulAdvancedLessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: watch the casual passive 'di-[X]-in' — distinct from the textbook 'di-[X]'. 'Di-PHP-in' = to get PHP-ed, 'ditraktir-in' = to get treated (to a meal). Learn the dating-stage chain (PDKT → jadian → pacaran → putus) to follow the conversation. Many terms are English loans (spill, move on, ghosting) — pronounced almost as in English. Mind the word-initial 'ng-' (ngobrol, nge-spill): VN speakers tend to drop it — keep it crisp.",
     vocabulary: [
       {
+        cell_id: "3f54514c-e163-44d3-9221-367340f2bb23",
         word: "bucin",
         en: "love-slave / simp (← budak cinta)",
         vi: "nô lệ tình yêu (← budak cinta)",
@@ -620,6 +647,7 @@ export const bahasaGaulAdvancedLessons: IndonesianLesson[] = [
         pronunciation_en: "BOO-chin",
       },
       {
+        cell_id: "7f649471-670c-4140-b1d8-76aaec28fd94",
         word: "PHP",
         en: "giver of false hope (← pemberi harapan palsu)",
         vi: "kẻ cho hy vọng hão (← pemberi harapan palsu)",
@@ -628,6 +656,7 @@ export const bahasaGaulAdvancedLessons: IndonesianLesson[] = [
         pronunciation_en: "peh-ha-peh",
       },
       {
+        cell_id: "974f6f47-24b4-45f6-bd82-eae7f36fe215",
         word: "japri",
         en: "private message / DM (← jalur pribadi)",
         vi: "nhắn tin riêng (← jalur pribadi)",
@@ -636,6 +665,7 @@ export const bahasaGaulAdvancedLessons: IndonesianLesson[] = [
         pronunciation_en: "JAP-ree",
       },
       {
+        cell_id: "68c6e9c0-d03b-4112-8025-32896fa4b8d4",
         word: "spill",
         en: "to tell all / share the tea",
         vi: "kể hết / tiết lộ",
@@ -644,6 +674,7 @@ export const bahasaGaulAdvancedLessons: IndonesianLesson[] = [
         pronunciation_en: "spill",
       },
       {
+        cell_id: "e95c19b0-679c-4f2c-ac37-71776996ca51",
         word: "jadian",
         en: "to become an official couple",
         vi: "chính thức yêu nhau",
@@ -652,6 +683,7 @@ export const bahasaGaulAdvancedLessons: IndonesianLesson[] = [
         pronunciation_en: "ja-DEE-an",
       },
       {
+        cell_id: "c6a8c450-b60a-4e81-8a1b-b46a33b07d21",
         word: "pacaran",
         en: "to date / be in a relationship",
         vi: "yêu nhau / hẹn hò",
@@ -660,6 +692,7 @@ export const bahasaGaulAdvancedLessons: IndonesianLesson[] = [
         pronunciation_en: "pa-cha-RAN",
       },
       {
+        cell_id: "e79f5acf-922e-4104-9e21-2ebd7e527b10",
         word: "putus",
         en: "to break up",
         vi: "chia tay",
@@ -668,6 +701,7 @@ export const bahasaGaulAdvancedLessons: IndonesianLesson[] = [
         pronunciation_en: "POO-toos",
       },
       {
+        cell_id: "3278ae45-e95e-4954-9432-fe778d5e83b8",
         word: "PDKT",
         en: "making moves / courting phase (← pendekatan)",
         vi: "giai đoạn cưa cẩm (← pendekatan)",
@@ -678,24 +712,28 @@ export const bahasaGaulAdvancedLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "3257e8d8-ddce-4395-a828-8a8a625004b0",
         speaker: "Mira",
         text: "Eh, spill dong! Gimana ceritanya kalian bisa jadian?",
         vi: "Ê, kể nghe đi! Sao hai người yêu nhau được vậy?",
         en: "Hey, spill! How did you two end up together?",
       },
       {
+        cell_id: "534c2440-ded3-4211-ac8a-2ca61f389c21",
         speaker: "Dewi",
         text: "PDKT-nya lama, dia gercep banget tiap gue japri.",
         vi: "Giai đoạn cưa cẩm lâu lắm, mỗi lần mình nhắn riêng là anh ấy trả lời ngay.",
         en: "The courting phase was long; he replied super fast every time I DM'd him.",
       },
       {
+        cell_id: "d8c8ed3d-44a5-4123-971c-b2219257caf3",
         speaker: "Mira",
         text: "Untung gak di-PHP-in kayak yang dulu ya, wkwk.",
         vi: "May là không bị thả thính hụt như lần trước nhỉ, haha.",
         en: "Lucky you didn't get led on like last time, haha.",
       },
       {
+        cell_id: "4d94ea0b-459b-4dd6-91bf-9fb7b73a1df9",
         speaker: "Dewi",
         text: "Iya. Sekarang gue malah jadi bucin, parah deh.",
         vi: "Ừ. Giờ mình lại thành 'nô lệ tình yêu', hết thuốc chữa luôn.",

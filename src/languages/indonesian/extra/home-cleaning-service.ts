@@ -14,6 +14,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -23,6 +24,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -251,6 +253,7 @@ export const homeCleaningServiceLessons: IndonesianLesson[] = [
       "Quick frames to remember: `biaya per jam`, `alat kebersihan`, `jadwal cleaning`, `fokus ke kamar mandi`, `sapu dan pel`, `komplain hasil`. If the result is not good enough, name the specific problem first, then ask for `diperbaiki lagi`.",
     vocabulary: [
       {
+        cell_id: "b66e93a6-1181-493d-a32b-701541055cfb",
         word: "jasa bersih rumah",
         en: "home cleaning service",
         vi: "dịch vụ dọn nhà",
@@ -259,6 +262,7 @@ export const homeCleaningServiceLessons: IndonesianLesson[] = [
         pronunciation_en: "JA-sa ber-SEEH ROO-mah",
       },
       {
+        cell_id: "d72c2c69-4bfd-4fb3-b583-bd48f724bf81",
         word: "biaya per jam",
         en: "hourly rate",
         vi: "chi phí mỗi giờ",
@@ -267,6 +271,7 @@ export const homeCleaningServiceLessons: IndonesianLesson[] = [
         pronunciation_en: "BEE-a-ya per JAHM",
       },
       {
+        cell_id: "caaa154d-98a6-490a-a6fc-5ff6fc1568a0",
         word: "alat kebersihan",
         en: "cleaning tools",
         vi: "dụng cụ vệ sinh",
@@ -275,6 +280,7 @@ export const homeCleaningServiceLessons: IndonesianLesson[] = [
         pronunciation_en: "a-LAHT keh-BER-see-han",
       },
       {
+        cell_id: "b9a96418-2596-4a93-81e1-f60c3dafd9d1",
         word: "jadwal cleaning",
         en: "cleaning schedule",
         vi: "lịch dọn dẹp",
@@ -283,6 +289,7 @@ export const homeCleaningServiceLessons: IndonesianLesson[] = [
         pronunciation_en: "JAD-wahl KLEE-ning",
       },
       {
+        cell_id: "44d416b6-6896-4f78-b38c-acf7ef0862a1",
         word: "sapu",
         en: "sweep",
         vi: "quét",
@@ -291,6 +298,7 @@ export const homeCleaningServiceLessons: IndonesianLesson[] = [
         pronunciation_en: "SAH-poo",
       },
       {
+        cell_id: "d5b6d32f-0883-4934-895c-4e1522a282b3",
         word: "pel",
         en: "mop",
         vi: "lau sàn",
@@ -299,6 +307,7 @@ export const homeCleaningServiceLessons: IndonesianLesson[] = [
         pronunciation_en: "PEL",
       },
       {
+        cell_id: "b7dc4763-c49e-4258-8dde-c2b9171bfdcc",
         word: "komplain",
         en: "complain; file a complaint",
         vi: "phàn nàn; khiếu nại",
@@ -309,30 +318,35 @@ export const homeCleaningServiceLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "81fa5d8c-1253-46f1-b5a2-e6ac10047df8",
         speaker: "Pelanggan",
         text: "Halo, saya mau pesan jasa bersih rumah untuk sore ini.",
         vi: "Xin chào, tôi muốn đặt dịch vụ dọn nhà cho chiều nay.",
         en: "Hello, I want to book a home cleaning service for this afternoon.",
       },
       {
+        cell_id: "2b40195b-412a-49e1-84ea-1bce16ef5b0d",
         speaker: "Admin",
         text: "Baik. Berapa biaya per jam yang Anda cari?",
         vi: "Vâng. Anh/chị đang tìm mức giá bao nhiêu mỗi giờ?",
         en: "Okay. What hourly rate are you looking for?",
       },
       {
+        cell_id: "140b0f3a-c397-446d-8a6d-4b1bbde61a17",
         speaker: "Pelanggan",
         text: "Saya perlu fokus ke kamar mandi dan dapur.",
         vi: "Tôi cần tập trung vào phòng tắm và nhà bếp.",
         en: "I need the bathroom and kitchen to be the focus.",
       },
       {
+        cell_id: "3b77cc78-bc12-4ce5-a6e8-e261f4e534e1",
         speaker: "Admin",
         text: "Bisa. Alat kebersihan dibawa sendiri atau disediakan?",
         vi: "Được. Dụng cụ vệ sinh tự mang theo hay chúng tôi chuẩn bị?",
         en: "Sure. Are the cleaning tools brought by you or provided?",
       },
       {
+        cell_id: "4dd215bf-fd3c-4f22-bbc5-4e3f36ea065a",
         speaker: "Pelanggan",
         text: "Kalau hasilnya kurang rapi, saya boleh minta diperbaiki lagi?",
         vi: "Nếu kết quả chưa gọn gàng, tôi có thể nhờ sửa/dọn lại không?",

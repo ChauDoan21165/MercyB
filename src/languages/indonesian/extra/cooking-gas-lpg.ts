@@ -16,6 +16,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   /** Indonesian word/phrase. */
   word: string;
   /** English meaning. */
@@ -31,6 +32,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   /** Indonesian line. */
   text: string;
@@ -193,6 +195,7 @@ export const lessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: learn object-and-risk chunks: `tabung gas`, `regulator`, `selang gas`, `kompor`, `bocor gas`, `bau gas`, `tukar tabung`, `bahaya kebakaran`. Distinguish `habis` (gas is used up), `bocor` (leaking), and `rusak` (equipment is broken).",
     vocabulary: [
       {
+        cell_id: "51949989-ac0f-436c-84a4-57d3751def98",
         word: "gas LPG",
         en: "LPG gas",
         vi: "gas LPG",
@@ -201,6 +204,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "gas el-pee-GEE",
       },
       {
+        cell_id: "b1e746b4-a557-46db-ad54-c63d6ad2dda2",
         word: "tabung gas",
         en: "gas cylinder",
         vi: "bình gas",
@@ -209,6 +213,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "TA-boong gas",
       },
       {
+        cell_id: "f4620df6-1337-4be5-a339-bacdeeb60778",
         word: "regulator",
         en: "regulator",
         vi: "bộ điều áp",
@@ -217,6 +222,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "re-gu-LA-tor",
       },
       {
+        cell_id: "a5fc8552-e589-4daa-ad04-801b246ffa58",
         word: "bocor gas",
         en: "gas leak",
         vi: "rò rỉ gas",
@@ -225,6 +231,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "BO-chor gas",
       },
       {
+        cell_id: "aedfae31-6564-4683-83d2-5cdbb753fcc6",
         word: "kompor",
         en: "stove",
         vi: "bếp",
@@ -233,6 +240,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "KOM-por",
       },
       {
+        cell_id: "e59c8967-2d25-40ac-b432-35ad5f4071b7",
         word: "tukar tabung",
         en: "exchange a gas cylinder",
         vi: "đổi bình gas",
@@ -241,6 +249,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "TOO-kar TA-boong",
       },
       {
+        cell_id: "978d7154-cccd-4413-81a4-b0cfc09fc38c",
         word: "warung gas",
         en: "small gas shop",
         vi: "cửa hàng/điểm bán gas nhỏ",
@@ -249,6 +258,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "WA-roong gas",
       },
       {
+        cell_id: "ff4dc12b-2441-48f2-9b0a-ccc446d5e76c",
         word: "bahaya kebakaran",
         en: "fire hazard",
         vi: "nguy cơ hỏa hoạn",
@@ -259,30 +269,35 @@ export const lessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "9dc8b9b2-8935-4a2d-9ae1-d1ca1fe117f0",
         speaker: "Penyewa",
         text: "Pak, gas LPG di dapur sudah hampir habis.",
         vi: "Chú ơi, gas LPG trong bếp sắp hết rồi.",
         en: "Sir, the LPG gas in the kitchen is almost finished.",
       },
       {
+        cell_id: "163013a0-f844-4ff1-b62b-5374a8aece1b",
         speaker: "Pemilik rumah",
         text: "Baik, nanti saya minta warung gas antar tabung baru.",
         vi: "Được, lát nữa tôi nhờ cửa hàng gas giao bình mới.",
         en: "Okay, I will ask the gas shop to deliver a new cylinder later.",
       },
       {
+        cell_id: "ffe805be-d21b-4c76-bae5-49156192a4da",
         speaker: "Penyewa",
         text: "Regulatornya juga agak longgar, saya takut ada bocor gas.",
         vi: "Bộ điều áp cũng hơi lỏng, tôi sợ có rò rỉ gas.",
         en: "The regulator is also a bit loose; I am afraid there may be a gas leak.",
       },
       {
+        cell_id: "d5a1666c-040f-45a4-90e8-c03578fa6857",
         speaker: "Pemilik rumah",
         text: "Jangan nyalakan kompor dulu. Buka jendela dan tunggu saya datang.",
         vi: "Đừng bật bếp trước. Mở cửa sổ và chờ tôi đến.",
         en: "Do not turn on the stove yet. Open the window and wait for me to come.",
       },
       {
+        cell_id: "7197dae6-a8e4-4ca3-b53a-39ddfee4ce31",
         speaker: "Penyewa",
         text: "Baik, saya juga akan cek selang gas dari jauh.",
         vi: "Vâng, tôi cũng sẽ kiểm tra ống gas từ xa.",

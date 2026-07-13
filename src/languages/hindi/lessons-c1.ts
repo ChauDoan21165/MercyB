@@ -20,6 +20,7 @@ export type HindiSentence = {
 };
 
 export type HindiVocabEntry = {
+  cell_id?: string;
   hi: string;
   romanization: string;
   vi: string;
@@ -77,10 +78,10 @@ export const lessons: HindiLesson[] = [
       },
     ],
     vocabulary: [
-      { hi: "प्रस्तुति", romanization: "prastuti", vi: "bài thuyết trình", en: "presentation", pos: "n." },
-      { hi: "उद्देश्य", romanization: "uddeshya", vi: "mục tiêu", en: "aim", pos: "n." },
-      { hi: "तर्क", romanization: "tark", vi: "lập luận", en: "argument", pos: "n." },
-      { hi: "सीमा", romanization: "siimaa", vi: "giới hạn", en: "limitation", pos: "n." },
+      { cell_id: "fe8dafaa-8a35-4c67-bab5-f112919fa9a6", hi: "प्रस्तुति", romanization: "prastuti", vi: "bài thuyết trình", en: "presentation", pos: "n." },
+      { cell_id: "33a77263-fa18-4e60-ba03-5db02f44da91", hi: "उद्देश्य", romanization: "uddeshya", vi: "mục tiêu", en: "aim", pos: "n." },
+      { cell_id: "debc4b91-21f2-46aa-b6b8-f0538c02784e", hi: "तर्क", romanization: "tark", vi: "lập luận", en: "argument", pos: "n." },
+      { cell_id: "c59bd995-ad85-4cf9-a2a5-69a67fee3f5c", hi: "सीमा", romanization: "siimaa", vi: "giới hạn", en: "limitation", pos: "n." },
     ],
     cultural_notes_vi:
       "Hindi học thuật dùng nhiều danh từ trừu tượng. Đừng cố Sanskrit hóa mọi từ; câu rõ ràng quan trọng hơn độ trang trọng.",
@@ -122,10 +123,10 @@ export const lessons: HindiLesson[] = [
       },
     ],
     vocabulary: [
-      { hi: "निष्कर्ष", romanization: "nishkarsh", vi: "kết luận, phát hiện", en: "finding, conclusion", pos: "n." },
-      { hi: "प्रशिक्षण", romanization: "prashikshan", vi: "đào tạo", en: "training", pos: "n." },
-      { hi: "समीक्षा", romanization: "samiikshaa", vi: "rà soát, đánh giá", en: "review", pos: "n." },
-      { hi: "सिफारिश", romanization: "sifaarish", vi: "khuyến nghị", en: "recommendation", pos: "n." },
+      { cell_id: "5b97cc33-6285-4f25-9988-daa932781bf6", hi: "निष्कर्ष", romanization: "nishkarsh", vi: "kết luận, phát hiện", en: "finding, conclusion", pos: "n." },
+      { cell_id: "919460b8-a9ba-4d68-9cfc-4b024735a906", hi: "प्रशिक्षण", romanization: "prashikshan", vi: "đào tạo", en: "training", pos: "n." },
+      { cell_id: "168f206f-e8fa-46b6-826e-c21acc7cad04", hi: "समीक्षा", romanization: "samiikshaa", vi: "rà soát, đánh giá", en: "review", pos: "n." },
+      { cell_id: "c465fe96-b06c-4725-a166-b7a2e8877b9e", hi: "सिफारिश", romanization: "sifaarish", vi: "khuyến nghị", en: "recommendation", pos: "n." },
     ],
     cultural_notes_vi:
       "Báo cáo Hindi chính thức hay dùng thể bị động như सिफारिश की जाती है. Hãy nhận diện nó như giọng văn tổ chức.",
@@ -167,10 +168,10 @@ export const lessons: HindiLesson[] = [
       },
     ],
     vocabulary: [
-      { hi: "उचित", romanization: "uchit", vi: "phù hợp, hợp lý", en: "appropriate, reasonable", pos: "adj." },
-      { hi: "प्रभाव", romanization: "prabhaav", vi: "tác động", en: "effect", pos: "n." },
-      { hi: "मिश्रित", romanization: "mishrit", vi: "hỗn hợp", en: "mixed", pos: "adj." },
-      { hi: "प्रमाण", romanization: "pramaan", vi: "bằng chứng", en: "evidence", pos: "n." },
+      { cell_id: "1a6f7fd8-f186-4aee-9ff4-e89deb0cebb8", hi: "उचित", romanization: "uchit", vi: "phù hợp, hợp lý", en: "appropriate, reasonable", pos: "adj." },
+      { cell_id: "c441b539-494c-4404-b8e3-05ef15ba5b3b", hi: "प्रभाव", romanization: "prabhaav", vi: "tác động", en: "effect", pos: "n." },
+      { cell_id: "3deea74d-6027-4580-8a0a-6461afd48d68", hi: "मिश्रित", romanization: "mishrit", vi: "hỗn hợp", en: "mixed", pos: "adj." },
+      { cell_id: "0c2d11e0-26ff-4177-9387-67d30c5989fa", hi: "प्रमाण", romanization: "pramaan", vi: "bằng chứng", en: "evidence", pos: "n." },
     ],
     cultural_notes_vi:
       "Ở C1, Hindi trang trọng đánh giá mức độ chắc chắn bằng cụm như उचित होगा, शायद, संभव है. Đây là kỹ năng lập luận, không phải né tránh.",
@@ -212,10 +213,10 @@ export const lessons: HindiLesson[] = [
       },
     ],
     vocabulary: [
-      { hi: "सूत्र", romanization: "suutra", vi: "nguồn tin", en: "source", pos: "n." },
-      { hi: "दावा", romanization: "daavaa", vi: "tuyên bố, lời khẳng định", en: "claim", pos: "n." },
-      { hi: "पुष्टि", romanization: "pushti", vi: "xác nhận", en: "confirmation", pos: "n." },
-      { hi: "शब्द-चयन", romanization: "shabd-chayan", vi: "cách chọn từ", en: "word choice", pos: "n." },
+      { cell_id: "fca011cf-138c-4e39-bd6b-18f4b05e2589", hi: "सूत्र", romanization: "suutra", vi: "nguồn tin", en: "source", pos: "n." },
+      { cell_id: "b38b5806-ef2e-45e7-a4d4-dd579d154003", hi: "दावा", romanization: "daavaa", vi: "tuyên bố, lời khẳng định", en: "claim", pos: "n." },
+      { cell_id: "20bcb999-516c-41b9-91bf-dc3cead50134", hi: "पुष्टि", romanization: "pushti", vi: "xác nhận", en: "confirmation", pos: "n." },
+      { cell_id: "060d2f32-fb82-495f-8d8a-69edad944b7d", hi: "शब्द-चयन", romanization: "shabd-chayan", vi: "cách chọn từ", en: "word choice", pos: "n." },
     ],
     cultural_notes_vi:
       "Bài này dạy cơ chế ngôn ngữ truyền thông, không đánh giá sự kiện thật. Khi ví dụ nhạy cảm, hãy dùng chủ đề trung lập.",
@@ -259,10 +260,10 @@ export const lessons: HindiLesson[] = [
       },
     ],
     vocabulary: [
-      { hi: "बताना", romanization: "bataanaa", vi: "nói, cho biết", en: "to tell", pos: "v." },
-      { hi: "सूचित करना", romanization: "suuchit karnaa", vi: "thông báo", en: "to inform", pos: "v." },
-      { hi: "उपलब्ध कराना", romanization: "uplabdh karaanaa", vi: "cung cấp", en: "to provide", pos: "v." },
-      { hi: "आवश्यक", romanization: "aavashyak", vi: "cần thiết", en: "required", pos: "adj." },
+      { cell_id: "09ff6954-b8c3-49c1-ab3f-619afd0c2699", hi: "बताना", romanization: "bataanaa", vi: "nói, cho biết", en: "to tell", pos: "v." },
+      { cell_id: "b30f028a-2caa-4bdd-854f-47bc20daa7ba", hi: "सूचित करना", romanization: "suuchit karnaa", vi: "thông báo", en: "to inform", pos: "v." },
+      { cell_id: "b7cb71df-e4da-456c-bab0-1f216b3c8af7", hi: "उपलब्ध कराना", romanization: "uplabdh karaanaa", vi: "cung cấp", en: "to provide", pos: "v." },
+      { cell_id: "c0efb7eb-dddd-4a01-9637-a7527304c39a", hi: "आवश्यक", romanization: "aavashyak", vi: "cần thiết", en: "required", pos: "adj." },
     ],
     cultural_notes_vi:
       "Hindi trang trọng không phải lúc nào cũng tốt hơn. Công sở thường cần rõ ràng, lịch sự và ngắn gọn.",

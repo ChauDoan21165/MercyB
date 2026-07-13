@@ -33,6 +33,7 @@ type LessonSentence = {
 };
 
 type VocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -44,6 +45,7 @@ type VocabEntry = {
 };
 
 type DialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -160,6 +162,7 @@ export const indonesianIslandsLessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: learn the four directions to place an island — utara (north), selatan (south), barat (west), timur (east). Indonesian verbs don't inflect for tense, so 'Saya pergi' can mean go/went/will go — context and time words ('besok', 'suatu hari') decide. The word 'pulau' always comes BEFORE the island name: Pulau Jawa, Pulau Bali (just like Vietnamese 'đảo' + name).",
     vocabulary: [
       {
+        cell_id: "41b2a194-bc17-4819-acb0-702cd6c897b9",
         word: "pulau",
         en: "island",
         vi: "hòn đảo",
@@ -168,6 +171,7 @@ export const indonesianIslandsLessons: IndonesianLesson[] = [
         pronunciation_en: "POO-lau",
       },
       {
+        cell_id: "8882f83a-9513-42a2-927f-b9b70a9ddf26",
         word: "negara",
         en: "country / nation",
         vi: "quốc gia",
@@ -176,6 +180,7 @@ export const indonesianIslandsLessons: IndonesianLesson[] = [
         pronunciation_en: "ne-GA-ra",
       },
       {
+        cell_id: "a5f25ac3-f802-437f-b3b7-3601955b5c29",
         word: "pantai",
         en: "beach",
         vi: "bãi biển",
@@ -184,6 +189,7 @@ export const indonesianIslandsLessons: IndonesianLesson[] = [
         pronunciation_en: "PAN-tai",
       },
       {
+        cell_id: "14cc2ac1-4ee2-45df-93bc-deda5c789eed",
         word: "laut",
         en: "sea",
         vi: "biển",
@@ -192,6 +198,7 @@ export const indonesianIslandsLessons: IndonesianLesson[] = [
         pronunciation_en: "LA-oot",
       },
       {
+        cell_id: "39151c80-3c79-4305-b5de-56942a3b7fcf",
         word: "gunung",
         en: "mountain",
         vi: "núi",
@@ -200,6 +207,7 @@ export const indonesianIslandsLessons: IndonesianLesson[] = [
         pronunciation_en: "GOO-noong",
       },
       {
+        cell_id: "38208165-9ad4-4671-a6de-3a58a45d2f6d",
         word: "barat",
         en: "west",
         vi: "phía tây",
@@ -208,6 +216,7 @@ export const indonesianIslandsLessons: IndonesianLesson[] = [
         pronunciation_en: "BA-rat",
       },
       {
+        cell_id: "2368ed3a-5991-46f8-8359-0971fd7619df",
         word: "timur",
         en: "east",
         vi: "phía đông",
@@ -216,6 +225,7 @@ export const indonesianIslandsLessons: IndonesianLesson[] = [
         pronunciation_en: "TEE-moor",
       },
       {
+        cell_id: "3db0a99b-6425-4b25-b288-ace869112768",
         word: "terkenal",
         en: "famous",
         vi: "nổi tiếng",
@@ -226,24 +236,28 @@ export const indonesianIslandsLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "5fe21bb9-5ee6-4694-b53b-5dfb0569b1f6",
         speaker: "Wisatawan",
         text: "Pulau apa yang paling ramai di Indonesia?",
         vi: "Hòn đảo nào đông dân nhất Indonesia?",
         en: "Which island is the most crowded in Indonesia?",
       },
       {
+        cell_id: "fdb73877-8359-424e-a44d-0b8a667fba41",
         speaker: "Pemandu",
         text: "Pulau Jawa. Jakarta, ibu kota, ada di sana.",
         vi: "Đảo Java. Jakarta, thủ đô, nằm ở đó.",
         en: "Java. Jakarta, the capital, is there.",
       },
       {
+        cell_id: "551ebda0-dcf0-4e47-ab4b-d41a4361db46",
         speaker: "Wisatawan",
         text: "Kalau mau ke pantai yang indah, ke mana?",
         vi: "Nếu muốn đến bãi biển đẹp thì đi đâu?",
         en: "If I want to go to a beautiful beach, where should I go?",
       },
       {
+        cell_id: "a9bb6f82-f410-409a-9481-c3edb13c6f55",
         speaker: "Pemandu",
         text: "Ke Bali, tentu saja. Pantainya terkenal di seluruh dunia.",
         vi: "Đến Bali, dĩ nhiên rồi. Bãi biển ở đó nổi tiếng khắp thế giới.",
@@ -384,6 +398,7 @@ export const indonesianIslandsLessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: 'oleh-oleh' is a reduplication — Indonesian often doubles a word to make a new meaning or a plural (jalan-jalan = to stroll, pulau-pulau = islands). To ask how to do something, use 'Bagaimana cara + verb?'. Note 'atau' = 'or' in statements/questions — don't confuse it with the yes/no marker 'apakah'. 'Jangan + verb' = don't do something.",
     vocabulary: [
       {
+        cell_id: "c1f76332-d6ea-495a-8ec1-c869cb8e9147",
         word: "kapal",
         en: "ship / boat",
         vi: "tàu thủy",
@@ -392,6 +407,7 @@ export const indonesianIslandsLessons: IndonesianLesson[] = [
         pronunciation_en: "KA-pal",
       },
       {
+        cell_id: "41a014e9-61a1-41a2-acf9-65523fb45678",
         word: "feri",
         en: "ferry",
         vi: "phà",
@@ -400,6 +416,7 @@ export const indonesianIslandsLessons: IndonesianLesson[] = [
         pronunciation_en: "FEH-ree",
       },
       {
+        cell_id: "1134f16e-6bf0-4225-abf5-ff02321c8aa4",
         word: "perjalanan",
         en: "journey / trip",
         vi: "chuyến đi",
@@ -408,6 +425,7 @@ export const indonesianIslandsLessons: IndonesianLesson[] = [
         pronunciation_en: "per-ja-LA-nan",
       },
       {
+        cell_id: "712a2d13-39cc-498a-968c-a620821dd586",
         word: "wisata",
         en: "tourism / sightseeing",
         vi: "du lịch",
@@ -416,6 +434,7 @@ export const indonesianIslandsLessons: IndonesianLesson[] = [
         pronunciation_en: "wee-SA-ta",
       },
       {
+        cell_id: "cf402ada-2818-4b5d-b751-01840fff58d6",
         word: "oleh-oleh",
         en: "souvenir / regional gift",
         vi: "quà đặc sản mang về",
@@ -424,6 +443,7 @@ export const indonesianIslandsLessons: IndonesianLesson[] = [
         pronunciation_en: "OH-leh-OH-leh",
       },
       {
+        cell_id: "074275ea-61e1-49e8-b6fd-605096e5f082",
         word: "cara",
         en: "way / method",
         vi: "cách thức",
@@ -432,6 +452,7 @@ export const indonesianIslandsLessons: IndonesianLesson[] = [
         pronunciation_en: "CHA-ra",
       },
       {
+        cell_id: "e0766add-9081-40b1-8b9e-7a3956a41625",
         word: "atau",
         en: "or",
         vi: "hoặc / hay",
@@ -440,6 +461,7 @@ export const indonesianIslandsLessons: IndonesianLesson[] = [
         pronunciation_en: "A-tau",
       },
       {
+        cell_id: "f20ae5e3-93b6-4465-97b6-c328cf7b4351",
         word: "jangan",
         en: "don't (prohibition)",
         vi: "đừng",
@@ -450,24 +472,28 @@ export const indonesianIslandsLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "2338dfa4-3097-4e41-b532-9b4fb334060f",
         speaker: "Wisatawan",
         text: "Bagaimana cara pergi dari Jawa ke Bali?",
         vi: "Đi từ Java sang Bali bằng cách nào?",
         en: "How do I get from Java to Bali?",
       },
       {
+        cell_id: "5796e19e-40f2-4763-bebd-df9bb3c4b575",
         speaker: "Petugas",
         text: "Bisa naik feri atau pesawat. Feri lebih murah.",
         vi: "Có thể đi phà hoặc máy bay. Phà rẻ hơn.",
         en: "You can take a ferry or a plane. The ferry is cheaper.",
       },
       {
+        cell_id: "31dc2efe-5cf6-48c8-baef-25d8e0eafdea",
         speaker: "Wisatawan",
         text: "Perjalanan dengan kapal berapa lama?",
         vi: "Chuyến đi bằng tàu mất bao lâu?",
         en: "How long is the journey by ship?",
       },
       {
+        cell_id: "b64c4e38-ea52-4b41-b88f-03617434b3cc",
         speaker: "Petugas",
         text: "Sekitar satu jam. Jangan lupa beli oleh-oleh, ya!",
         vi: "Khoảng một tiếng. Đừng quên mua quà nhé!",
@@ -608,6 +634,7 @@ export const indonesianIslandsLessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: distinguish 'bahasa Indonesia' (the national language everyone learns) from 'bahasa daerah' (regional languages like Javanese, Sundanese). The 'ber-' prefix turns a noun into 'to have/do': bicara → berbicara (to converse), beda → berbeda (to differ). The reduplication 'berbeda-beda' stresses diversity (≠ just 'different'). A handy contrast frame: 'walaupun … tetap …' = 'although … still …'.",
     vocabulary: [
       {
+        cell_id: "f498eefc-f20c-45f4-a5b8-35703b8deedb",
         word: "suku",
         en: "ethnic group",
         vi: "dân tộc / tộc người",
@@ -616,6 +643,7 @@ export const indonesianIslandsLessons: IndonesianLesson[] = [
         pronunciation_en: "SOO-koo",
       },
       {
+        cell_id: "28062ada-33d2-44e3-9406-4fb262503730",
         word: "budaya",
         en: "culture",
         vi: "văn hóa",
@@ -624,6 +652,7 @@ export const indonesianIslandsLessons: IndonesianLesson[] = [
         pronunciation_en: "boo-DA-ya",
       },
       {
+        cell_id: "436f8af7-4e0a-459f-9677-159217c01ebe",
         word: "bahasa daerah",
         en: "regional language",
         vi: "tiếng địa phương",
@@ -632,6 +661,7 @@ export const indonesianIslandsLessons: IndonesianLesson[] = [
         pronunciation_en: "ba-HA-sa DA-e-rah",
       },
       {
+        cell_id: "a42c2016-067e-4ae1-b161-a6f2e187921f",
         word: "berbeda",
         en: "to be different",
         vi: "khác nhau",
@@ -640,6 +670,7 @@ export const indonesianIslandsLessons: IndonesianLesson[] = [
         pronunciation_en: "ber-BEH-da",
       },
       {
+        cell_id: "34823be5-2a82-4585-a6eb-69db1ebe1e48",
         word: "adat istiadat",
         en: "customs and traditions",
         vi: "phong tục tập quán",
@@ -648,6 +679,7 @@ export const indonesianIslandsLessons: IndonesianLesson[] = [
         pronunciation_en: "A-dat ees-tee-A-dat",
       },
       {
+        cell_id: "ec500c18-d580-474f-bfd1-954fae2d2851",
         word: "persatuan",
         en: "unity",
         vi: "sự đoàn kết / thống nhất",
@@ -656,6 +688,7 @@ export const indonesianIslandsLessons: IndonesianLesson[] = [
         pronunciation_en: "per-sa-TOO-an",
       },
       {
+        cell_id: "96cf5d3d-4ba6-4c12-ae8f-d388cf425b60",
         word: "bangsa",
         en: "nation / people",
         vi: "dân tộc / quốc gia",
@@ -664,6 +697,7 @@ export const indonesianIslandsLessons: IndonesianLesson[] = [
         pronunciation_en: "BANG-sa",
       },
       {
+        cell_id: "02049137-7fb3-4ba7-b349-3cf49cbea013",
         word: "walaupun",
         en: "although",
         vi: "mặc dù",
@@ -674,24 +708,28 @@ export const indonesianIslandsLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "815f5ce6-8f7f-4c07-acb2-e6412e5fa436",
         speaker: "Turis",
         text: "Apakah semua orang Indonesia berbicara bahasa yang sama?",
         vi: "Có phải tất cả người Indonesia đều nói cùng một thứ tiếng không?",
         en: "Do all Indonesians speak the same language?",
       },
       {
+        cell_id: "74851457-1f89-4750-8b8b-99be1c6959a7",
         speaker: "Warga",
         text: "Bahasa Indonesia, ya. Tapi di rumah, banyak yang pakai bahasa daerah.",
         vi: "Tiếng Indonesia thì có. Nhưng ở nhà, nhiều người dùng tiếng địa phương.",
         en: "Indonesian, yes. But at home, many use their regional language.",
       },
       {
+        cell_id: "177559af-8476-44d9-a8db-f13144858a7b",
         speaker: "Turis",
         text: "Jadi setiap suku punya budaya sendiri?",
         vi: "Vậy mỗi dân tộc có văn hóa riêng à?",
         en: "So each ethnic group has its own culture?",
       },
       {
+        cell_id: "9d68abc2-bacf-460f-a402-b489b60fcd86",
         speaker: "Warga",
         text: "Betul. Walaupun berbeda-beda, kita tetap satu bangsa.",
         vi: "Đúng vậy. Dù khác biệt, chúng ta vẫn là một dân tộc.",

@@ -33,6 +33,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   /** Indonesian word/phrase. */
   word: string;
   /** English meaning. */
@@ -48,6 +49,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   /** Indonesian line. */
   text: string;
@@ -287,6 +289,7 @@ export const lessons: IndonesianLesson[] = [
     vocabulary: [
       // Core documents
       {
+        cell_id: "ed45e3d0-598b-4691-92a3-599854919485",
         word: "KITAS",
         en: "limited-stay permit card",
         vi: "thẻ tạm trú có thời hạn",
@@ -295,6 +298,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "KEE-tas — said as a word; `-S` = Sementara (temporary)",
       },
       {
+        cell_id: "9d8d7909-35ff-475c-b8e5-a8d9be523067",
         word: "KITAP",
         en: "permanent-stay permit card",
         vi: "thẻ định cư lâu dài",
@@ -303,6 +307,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "KEE-tap — said as a word; `-P` = Permanen; apply after ~5 years",
       },
       {
+        cell_id: "b24c39de-e528-405e-b3a8-b94caac5ac72",
         word: "IMTA",
         en: "foreign-worker employment permit",
         vi: "giấy phép sử dụng lao động nước ngoài",
@@ -311,6 +316,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "i-em-te-A — spell each letter; paired with `RPTKA`",
       },
       {
+        cell_id: "ff371338-74f5-4499-aa32-d1d547d43393",
         word: "paspor",
         en: "passport",
         vi: "hộ chiếu",
@@ -319,6 +325,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "PAS-por — `masih berlaku` = still valid; `habis masa berlaku` = expired",
       },
       {
+        cell_id: "f3548d55-8d56-47c6-be5b-deb3eeb473b9",
         word: "izin tinggal",
         en: "stay permit",
         vi: "giấy phép cư trú",
@@ -328,6 +335,7 @@ export const lessons: IndonesianLesson[] = [
       },
       // People & process
       {
+        cell_id: "e4d8cc18-1aeb-4aeb-853b-35b0f8ee6007",
         word: "sponsor",
         en: "sponsor (the sponsoring party)",
         vi: "bên bảo lãnh",
@@ -336,6 +344,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "SPON-sor — usually the company that hires you; not a 'donor'",
       },
       {
+        cell_id: "c281ec7a-200a-4c73-8832-2cebe2198256",
         word: "agen",
         en: "agent / broker",
         vi: "đại lý / môi giới",
@@ -344,6 +353,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "A-gen — hard `g`; `jasa agen` = agent services",
       },
       {
+        cell_id: "8585bbfe-3feb-463e-9e84-f72c4a9e9348",
         word: "mengurus",
         en: "to handle / process (paperwork)",
         vi: "lo / làm thủ tục",
@@ -352,6 +362,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "me-ngu-RUS — meN- + `urus`; `mengurus visa` = to process a visa",
       },
       {
+        cell_id: "a7eddc49-b4e3-4b26-b62a-373d65c7ea68",
         word: "memperpanjang",
         en: "to extend / renew (verb)",
         vi: "gia hạn (động từ)",
@@ -360,6 +371,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "mem-per-PAN-jang — the verb; not the noun `perpanjangan`",
       },
       {
+        cell_id: "08000f97-2fb3-4b16-89fb-560f3015374e",
         word: "perpanjangan",
         en: "extension / renewal (noun)",
         vi: "sự gia hạn (danh từ)",
@@ -369,6 +381,7 @@ export const lessons: IndonesianLesson[] = [
       },
       // Problems
       {
+        cell_id: "1a21dfe5-2b22-4358-abe8-f58899afbd48",
         word: "overstay",
         en: "overstay (past the permit limit)",
         vi: "ở quá hạn lưu trú",
@@ -377,6 +390,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "O-ver-stay — English loan; fined (`denda`) per day",
       },
       {
+        cell_id: "dad4ab3a-2bd5-435d-9c1f-423d3596efed",
         word: "denda",
         en: "fine / penalty",
         vi: "tiền phạt",
@@ -385,6 +399,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "DEN-da — `kena denda` = to get fined; `bayar denda` = to pay the fine",
       },
       {
+        cell_id: "bbf7fc54-96d2-4ebb-8d28-41f6e70bece2",
         word: "ditolak",
         en: "rejected (passive)",
         vi: "bị từ chối",
@@ -393,6 +408,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "di-TO-lak — passive `di-`; opposite `disetujui` (approved)",
       },
       {
+        cell_id: "00e24e36-2c92-4dd0-82a4-32cc4a9968a8",
         word: "deportasi",
         en: "deportation",
         vi: "trục xuất",
@@ -401,6 +417,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "de-por-TA-si — passive verb `dideportasi` = to be deported",
       },
       {
+        cell_id: "09cd68c2-6700-448e-8482-16778c9ff03d",
         word: "imigrasi",
         en: "immigration (office/authority)",
         vi: "(cục) xuất nhập cảnh",
@@ -412,42 +429,49 @@ export const lessons: IndonesianLesson[] = [
     dialogue: [
       // Dialogue: at the immigration counter
       {
+        cell_id: "60155bc2-78c3-4153-8c86-851c3e4ebea5",
         speaker: "Petugas",
         text: "Selamat pagi. Ada yang bisa saya bantu?",
         vi: "Chào buổi sáng. Tôi có thể giúp gì ạ?",
         en: "Good morning. How can I help you?",
       },
       {
+        cell_id: "448fe581-aeae-4581-a0b9-5b7d88bc9842",
         speaker: "Pemohon",
         text: "Selamat pagi, Pak. Saya mau mengurus perpanjangan KITAS saya.",
         vi: "Chào buổi sáng. Tôi muốn làm thủ tục gia hạn KITAS.",
         en: "Good morning, sir. I'd like to process the renewal of my KITAS.",
       },
       {
+        cell_id: "5ed2f543-ac66-4923-8295-4c5e0aa7f266",
         speaker: "Petugas",
         text: "Baik. Apakah paspor Anda masih berlaku? Siapa sponsor Anda?",
         vi: "Được. Hộ chiếu của anh còn hạn không? Ai là người bảo lãnh?",
         en: "Okay. Is your passport still valid? Who is your sponsor?",
       },
       {
+        cell_id: "42a8b59d-4ca3-49b1-a428-7614cdc5f18c",
         speaker: "Pemohon",
         text: "Masih berlaku dua tahun lagi. Perusahaan saya menjadi sponsor saya.",
         vi: "Còn hạn hai năm nữa. Công ty tôi là người bảo lãnh.",
         en: "It's valid for two more years. My company is my sponsor.",
       },
       {
+        cell_id: "767ca344-b75d-4061-a4be-4b2d88c3d7c6",
         speaker: "Petugas",
         text: "Bagus. Ini dokumen yang diperlukan. Prosesnya sekitar dua minggu.",
         vi: "Tốt. Đây là giấy tờ cần nộp. Quá trình mất khoảng hai tuần.",
         en: "Good. Here are the required documents. The process takes about two weeks.",
       },
       {
+        cell_id: "a07daee7-9507-4e3b-9481-ca5d45ec7a57",
         speaker: "Pemohon",
         text: "Terima kasih. Saya tidak mau overstay dan kena denda.",
         vi: "Cảm ơn. Tôi không muốn quá hạn rồi bị phạt.",
         en: "Thank you. I don't want to overstay and get fined.",
       },
       {
+        cell_id: "02856485-3187-4dc1-859a-9f012496f5cb",
         speaker: "Petugas",
         text: "Tepat. Urus sebelum habis masa berlaku, ya. Semoga lancar.",
         vi: "Chính xác. Hãy lo trước khi hết hạn nhé. Chúc thuận lợi.",

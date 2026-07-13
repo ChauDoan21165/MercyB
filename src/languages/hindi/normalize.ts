@@ -25,6 +25,7 @@ export type HindiSentenceInput = {
 };
 
 export type HindiVocabInput = {
+  cell_id?: string;
   hi: string;
   romanization?: string;
   en: string;
@@ -33,6 +34,7 @@ export type HindiVocabInput = {
 };
 
 export type HindiDialogueInput = {
+  cell_id?: string;
   speaker: string;
   hi: string;
   romanization?: string;

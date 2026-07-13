@@ -17,6 +17,7 @@ type LessonSentence = {
 };
 
 type VocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -26,6 +27,7 @@ type VocabEntry = {
 };
 
 type DialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -182,36 +184,40 @@ export const babyToddlerLessons: IndonesianLesson[] = [
     tip_advice_en:
       "Tip for Vietnamese speakers: `bayi` = baby/infant, `balita` = under-five child, and `anak` = child in general. In child-health settings, learn the abbreviations ASI, MPASI, and KIA because Indonesians use them often. For schedules, use `Kapan jadwal ... berikutnya?`.",
     vocabulary: [
-      { word: "bayi", en: "baby / infant", vi: "em bé / trẻ sơ sinh", pos: "noun", pronunciation_vi: "BA-yi", pronunciation_en: "BA-yee" },
-      { word: "balita", en: "child under five", vi: "trẻ dưới 5 tuổi", pos: "noun", pronunciation_vi: "ba-LI-ta", pronunciation_en: "ba-LEE-ta" },
-      { word: "ASI", en: "breast milk", vi: "sữa mẹ", pos: "noun", pronunciation_vi: "a-es-I", pronunciation_en: "ah-ess-EE" },
-      { word: "MPASI", en: "complementary baby food", vi: "ăn dặm / thức ăn bổ sung", pos: "noun", pronunciation_vi: "em-pe-a-es-I", pronunciation_en: "em-peh-ah-ess-EE" },
-      { word: "tumbuh kembang", en: "growth and development", vi: "tăng trưởng và phát triển", pos: "noun phrase", pronunciation_vi: "TUM-buh KEM-bang", pronunciation_en: "TOOM-booh KEM-bang" },
-      { word: "imunisasi", en: "immunization", vi: "tiêm chủng", pos: "noun", pronunciation_vi: "i-mu-ni-SA-si", pronunciation_en: "i-mu-ni-SA-see" },
-      { word: "Posyandu", en: "community health post", vi: "điểm y tế cộng đồng", pos: "noun (proper)", pronunciation_vi: "po-SYAN-du", pronunciation_en: "po-SYAN-doo" },
-      { word: "popok", en: "diaper", vi: "tã", pos: "noun", pronunciation_vi: "PO-pok", pronunciation_en: "PO-pok" },
-      { word: "demam", en: "fever", vi: "sốt", pos: "noun / adjective", pronunciation_vi: "de-MAM", pronunciation_en: "de-MAM" },
+      { cell_id: "bd870e60-1b18-4e95-913c-bd855a5a77ab", word: "bayi", en: "baby / infant", vi: "em bé / trẻ sơ sinh", pos: "noun", pronunciation_vi: "BA-yi", pronunciation_en: "BA-yee" },
+      { cell_id: "e6da8ed9-7fe4-4503-9df7-165e021b5be6", word: "balita", en: "child under five", vi: "trẻ dưới 5 tuổi", pos: "noun", pronunciation_vi: "ba-LI-ta", pronunciation_en: "ba-LEE-ta" },
+      { cell_id: "62e889d4-4fc0-4942-b8d4-f98914185348", word: "ASI", en: "breast milk", vi: "sữa mẹ", pos: "noun", pronunciation_vi: "a-es-I", pronunciation_en: "ah-ess-EE" },
+      { cell_id: "6873fc92-ad04-4b20-a5f0-1273aa4c8740", word: "MPASI", en: "complementary baby food", vi: "ăn dặm / thức ăn bổ sung", pos: "noun", pronunciation_vi: "em-pe-a-es-I", pronunciation_en: "em-peh-ah-ess-EE" },
+      { cell_id: "17847c29-59cd-43ca-97bd-e296940ecb5a", word: "tumbuh kembang", en: "growth and development", vi: "tăng trưởng và phát triển", pos: "noun phrase", pronunciation_vi: "TUM-buh KEM-bang", pronunciation_en: "TOOM-booh KEM-bang" },
+      { cell_id: "34e6e5ed-91a2-4ad8-bcf4-777d24266085", word: "imunisasi", en: "immunization", vi: "tiêm chủng", pos: "noun", pronunciation_vi: "i-mu-ni-SA-si", pronunciation_en: "i-mu-ni-SA-see" },
+      { cell_id: "86762315-9ebf-470b-8f19-fe8ad73b4cc0", word: "Posyandu", en: "community health post", vi: "điểm y tế cộng đồng", pos: "noun (proper)", pronunciation_vi: "po-SYAN-du", pronunciation_en: "po-SYAN-doo" },
+      { cell_id: "8d3dc46f-1231-4a6d-bda3-123ce3e507a6", word: "popok", en: "diaper", vi: "tã", pos: "noun", pronunciation_vi: "PO-pok", pronunciation_en: "PO-pok" },
+      { cell_id: "e7d7cb60-cce2-49b0-af9a-8c7109912532", word: "demam", en: "fever", vi: "sốt", pos: "noun / adjective", pronunciation_vi: "de-MAM", pronunciation_en: "de-MAM" },
     ],
     dialogue: [
       {
+        cell_id: "342f3c03-a3cf-4451-b3e2-5081f9cc3a16",
         speaker: "Orang tua",
         text: "Selamat pagi, Bu. Saya mau timbang bayi saya.",
         vi: "Chào buổi sáng cô. Tôi muốn cân em bé của tôi.",
         en: "Good morning, ma'am. I want to weigh my baby.",
       },
       {
+        cell_id: "3d0b39c8-bf16-4e34-99c4-f1fafabca954",
         speaker: "Kader Posyandu",
         text: "Baik. Tolong bawa buku KIA dan kartu imunisasi.",
         vi: "Vâng. Làm ơn mang sổ KIA và thẻ tiêm chủng.",
         en: "Okay. Please bring the KIA book and immunization card.",
       },
       {
+        cell_id: "2349635a-ab1a-4a11-b3c3-bc635a82313b",
         speaker: "Orang tua",
         text: "Kapan jadwal imunisasi berikutnya?",
         vi: "Lịch tiêm chủng tiếp theo là khi nào?",
         en: "When is the next immunization schedule?",
       },
       {
+        cell_id: "2de2a1b1-6b9f-4e81-8fc2-f98b0f6baf93",
         speaker: "Kader Posyandu",
         text: "Bulan depan. Kalau demam tinggi, segera periksa ke Puskesmas.",
         vi: "Tháng sau. Nếu sốt cao, hãy đi khám ở Puskesmas ngay.",

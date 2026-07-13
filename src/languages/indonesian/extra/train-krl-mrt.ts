@@ -24,6 +24,7 @@ type LessonSentence = {
 };
 
 type VocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -35,6 +36,7 @@ type VocabEntry = {
 };
 
 type DialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -150,6 +152,7 @@ export const trainKrlMrtLessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: separate `di` and `ke` for train travel. `di stasiun` = at the station; `ke stasiun` = to the station. For vehicles, use `naik KRL/MRT`; for getting off, use `turun di ...`.",
     vocabulary: [
       {
+        cell_id: "e0921e17-4681-4c67-b02f-fa94f4804794",
         word: "KRL",
         en: "commuter rail",
         vi: "tàu điện commuter",
@@ -158,6 +161,7 @@ export const trainKrlMrtLessons: IndonesianLesson[] = [
         pronunciation_en: "kah-er-el",
       },
       {
+        cell_id: "f504faf1-c027-419d-a6fb-ea57c6765f33",
         word: "MRT",
         en: "metro / MRT",
         vi: "tàu MRT / metro",
@@ -166,6 +170,7 @@ export const trainKrlMrtLessons: IndonesianLesson[] = [
         pronunciation_en: "em-er-teh",
       },
       {
+        cell_id: "55f86cfc-de2d-4dda-9847-d6939cc408a3",
         word: "stasiun",
         en: "station",
         vi: "nhà ga",
@@ -174,6 +179,7 @@ export const trainKrlMrtLessons: IndonesianLesson[] = [
         pronunciation_en: "sta-see-OON",
       },
       {
+        cell_id: "883cf9a7-344a-4fbd-9d75-3db4aeec2b21",
         word: "kartu transportasi",
         en: "transport card",
         vi: "thẻ giao thông",
@@ -182,6 +188,7 @@ export const trainKrlMrtLessons: IndonesianLesson[] = [
         pronunciation_en: "KAR-too trans-por-TA-see",
       },
       {
+        cell_id: "a74c8114-62b8-4348-bd47-7112f966c5f5",
         word: "tap in",
         en: "tap in / enter with card",
         vi: "chạm thẻ vào cửa",
@@ -190,6 +197,7 @@ export const trainKrlMrtLessons: IndonesianLesson[] = [
         pronunciation_en: "tap in",
       },
       {
+        cell_id: "bcecc287-652f-420d-9eb0-78be937054f5",
         word: "tap out",
         en: "tap out / exit with card",
         vi: "chạm thẻ ra cửa",
@@ -198,6 +206,7 @@ export const trainKrlMrtLessons: IndonesianLesson[] = [
         pronunciation_en: "tap out",
       },
       {
+        cell_id: "f7723ad3-b49b-41e3-aff1-a614d18fcf68",
         word: "saldo",
         en: "balance",
         vi: "số dư",
@@ -206,6 +215,7 @@ export const trainKrlMrtLessons: IndonesianLesson[] = [
         pronunciation_en: "SAL-do",
       },
       {
+        cell_id: "6eea73bd-4bc5-413e-b6be-e144778f3106",
         word: "isi ulang",
         en: "top up / refill",
         vi: "nạp lại",
@@ -216,24 +226,28 @@ export const trainKrlMrtLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "27a5346b-9696-4d32-9a8f-6bf0238aa862",
         speaker: "Penumpang",
         text: "Permisi, stasiun MRT terdekat di mana?",
         vi: "Xin lỗi, ga MRT gần nhất ở đâu?",
         en: "Excuse me, where is the nearest MRT station?",
       },
       {
+        cell_id: "3baf908f-2837-4402-a525-c433c9762835",
         speaker: "Petugas",
         text: "Di sebelah mal. Ibu punya kartu transportasi?",
         vi: "Bên cạnh trung tâm thương mại. Chị có thẻ giao thông không?",
         en: "Next to the mall. Do you have a transport card?",
       },
       {
+        cell_id: "4fab6f20-f1ae-4bc8-a719-532062d66e9d",
         speaker: "Penumpang",
         text: "Punya, tapi saldo kartu saya kurang.",
         vi: "Có, nhưng số dư thẻ của tôi không đủ.",
         en: "Yes, but my card balance is not enough.",
       },
       {
+        cell_id: "35cdc66c-de0e-4812-b692-be43eaf00595",
         speaker: "Petugas",
         text: "Silakan isi ulang dulu di mesin itu, lalu tap in.",
         vi: "Vui lòng nạp trước ở máy đó, rồi tap in.",
@@ -388,6 +402,7 @@ export const trainKrlMrtLessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: the three key train words are `arah` (direction), `turun` (get off), and `transit` (transfer). Ask the direction before boarding: `Kereta ini arah ...?` In a crowded train, use `permisi` and `tolong geser sedikit`.",
     vocabulary: [
       {
+        cell_id: "840cdac5-642d-49fd-b78a-feb903704abc",
         word: "turun",
         en: "to get off / go down",
         vi: "xuống",
@@ -396,6 +411,7 @@ export const trainKrlMrtLessons: IndonesianLesson[] = [
         pronunciation_en: "TOO-roon",
       },
       {
+        cell_id: "eb85e0a0-f1c5-4c36-aacf-ccebbf660867",
         word: "arah",
         en: "direction",
         vi: "hướng",
@@ -404,6 +420,7 @@ export const trainKrlMrtLessons: IndonesianLesson[] = [
         pronunciation_en: "A-rah",
       },
       {
+        cell_id: "ca08cd9c-01b1-4d02-b2f9-851224941a1c",
         word: "gerbong",
         en: "train carriage",
         vi: "toa tàu",
@@ -412,6 +429,7 @@ export const trainKrlMrtLessons: IndonesianLesson[] = [
         pronunciation_en: "GER-bong",
       },
       {
+        cell_id: "554a609b-063b-43d6-b7c6-0bf6d64355ff",
         word: "jam sibuk",
         en: "rush hour",
         vi: "giờ cao điểm",
@@ -420,6 +438,7 @@ export const trainKrlMrtLessons: IndonesianLesson[] = [
         pronunciation_en: "jam SEE-book",
       },
       {
+        cell_id: "c5e3b093-f9ba-4db3-b315-45287b048eea",
         word: "padat",
         en: "crowded / dense",
         vi: "đông / chật",
@@ -428,6 +447,7 @@ export const trainKrlMrtLessons: IndonesianLesson[] = [
         pronunciation_en: "PA-dat",
       },
       {
+        cell_id: "544d50f3-5850-4a0e-a7a3-bbc3e082bf40",
         word: "geser",
         en: "to shift / move over",
         vi: "nhích qua",
@@ -436,6 +456,7 @@ export const trainKrlMrtLessons: IndonesianLesson[] = [
         pronunciation_en: "GEH-ser",
       },
       {
+        cell_id: "87d2bd8c-300b-43bb-8f1b-a89bf903e2a3",
         word: "transit",
         en: "transfer",
         vi: "chuyển tuyến",
@@ -444,6 +465,7 @@ export const trainKrlMrtLessons: IndonesianLesson[] = [
         pronunciation_en: "TRAN-sit",
       },
       {
+        cell_id: "dd3d73c1-0819-4c8c-ba36-dc0435a66779",
         word: "pindah jalur",
         en: "change line / track",
         vi: "đổi tuyến",
@@ -454,24 +476,28 @@ export const trainKrlMrtLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "1dab4048-c41c-48de-a66f-4703cf0ea559",
         speaker: "Penumpang",
         text: "Maaf, kereta ini arah Bundaran HI?",
         vi: "Xin lỗi, tàu này hướng Bundaran HI phải không?",
         en: "Excuse me, is this train going toward Bundaran HI?",
       },
       {
+        cell_id: "0a995693-bd9a-4c26-80ca-05f2097f2128",
         speaker: "Petugas",
         text: "Betul. Ibu turun di stasiun apa?",
         vi: "Đúng. Chị xuống ở ga nào?",
         en: "Correct. Which station are you getting off at?",
       },
       {
+        cell_id: "4d8c0937-0a26-457b-9739-ec645271e1da",
         speaker: "Penumpang",
         text: "Saya turun di Dukuh Atas, lalu transit ke KRL.",
         vi: "Tôi xuống ở Dukuh Atas, rồi chuyển sang KRL.",
         en: "I get off at Dukuh Atas, then transfer to KRL.",
       },
       {
+        cell_id: "fe80c7b5-04a1-4122-842c-9ad1cc79e947",
         speaker: "Petugas",
         text: "Baik. Saat jam sibuk, gerbong tengah biasanya padat.",
         vi: "Vâng. Vào giờ cao điểm, toa giữa thường đông.",

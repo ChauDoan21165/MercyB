@@ -32,6 +32,7 @@ type LessonSentence = {
 };
 
 type VocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -43,6 +44,7 @@ type VocabEntry = {
 };
 
 type DialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -159,6 +161,7 @@ export const ramadanLebaranLessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: 'puasa' = fasting; 'berpuasa' (with the 'ber-' prefix) = to be fasting. Two fixed anchors: 'sahur' (eat before dawn) and 'berbuka' (break the fast at sunset). Familiar time frames: 'sebelum + …' (before), 'setelah + …' (after), 'selama + …' (during). A polite greeting at the start of the month: 'Selamat menunaikan ibadah puasa' (Have a blessed fast).",
     vocabulary: [
       {
+        cell_id: "fb4ec56f-4712-47b0-9543-a76cacca0795",
         word: "puasa",
         en: "fasting",
         vi: "nhịn chay",
@@ -167,6 +170,7 @@ export const ramadanLebaranLessons: IndonesianLesson[] = [
         pronunciation_en: "poo-A-sa",
       },
       {
+        cell_id: "4f17841a-9f8d-44b7-ba8a-b18bcbf20d5f",
         word: "sahur",
         en: "pre-dawn meal",
         vi: "bữa ăn trước rạng đông",
@@ -175,6 +179,7 @@ export const ramadanLebaranLessons: IndonesianLesson[] = [
         pronunciation_en: "sa-HOOR",
       },
       {
+        cell_id: "f9b59601-59d3-41b1-8bc8-a82e754eecec",
         word: "berbuka puasa",
         en: "to break the fast",
         vi: "mở chay",
@@ -183,6 +188,7 @@ export const ramadanLebaranLessons: IndonesianLesson[] = [
         pronunciation_en: "ber-BOO-ka poo-A-sa",
       },
       {
+        cell_id: "54dc22ed-2a15-4f69-8585-ffe52b1ac78d",
         word: "bulan",
         en: "month / moon",
         vi: "tháng / mặt trăng",
@@ -191,6 +197,7 @@ export const ramadanLebaranLessons: IndonesianLesson[] = [
         pronunciation_en: "BOO-lan",
       },
       {
+        cell_id: "16dc58b5-04d8-4259-a301-a55f8621eace",
         word: "salat",
         en: "(Islamic) prayer",
         vi: "lễ cầu nguyện",
@@ -199,6 +206,7 @@ export const ramadanLebaranLessons: IndonesianLesson[] = [
         pronunciation_en: "SA-lat",
       },
       {
+        cell_id: "91b205e7-d347-44d1-ab93-efbed875fd14",
         word: "bangun",
         en: "to wake up",
         vi: "thức dậy",
@@ -207,6 +215,7 @@ export const ramadanLebaranLessons: IndonesianLesson[] = [
         pronunciation_en: "BA-ngoon",
       },
       {
+        cell_id: "2349ffe6-0c42-4582-ac9f-d8cd45d64fed",
         word: "siang hari",
         en: "daytime",
         vi: "ban ngày",
@@ -217,24 +226,28 @@ export const ramadanLebaranLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "2820a8fc-6ff2-48ff-a712-70e602b023ae",
         speaker: "Budi",
         text: "Kamu sudah makan sahur tadi pagi?",
         vi: "Sáng nay bạn đã ăn sahur chưa?",
         en: "Did you have your sahur meal this morning?",
       },
       {
+        cell_id: "f8a21466-b635-42d6-8460-3c4d641cc369",
         speaker: "Sinta",
         text: "Sudah. Saya bangun jam tiga untuk sahur.",
         vi: "Rồi. Mình dậy lúc ba giờ để ăn sahur.",
         en: "Yes. I woke up at three for sahur.",
       },
       {
+        cell_id: "c96bf75f-4350-488d-92e9-1e6ea476d0e0",
         speaker: "Budi",
         text: "Kita berbuka puasa bareng nanti, yuk. Saat azan magrib.",
         vi: "Lát nữa mình mở chay chung nhé. Lúc nghe azan chiều.",
         en: "Let's break the fast together later. At the sunset call to prayer.",
       },
       {
+        cell_id: "884bdc33-d912-4765-92ba-3be1d7ffba5e",
         speaker: "Sinta",
         text: "Boleh! Setelah berbuka, saya mau salat tarawih di masjid.",
         vi: "Được! Sau khi mở chay, mình muốn cầu nguyện tarawih ở nhà thờ Hồi giáo.",
@@ -375,6 +388,7 @@ export const ramadanLebaranLessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: use your own Tết experience as a memory hook — 'mudik' = going home for the new year, 'THR' = holiday bonus, 'baju baru' = new clothes, the cash gift = 'uang Lebaran'. The 'meN-…(-kan)' prefix forms verbs: raya→merayakan (celebrate), pakai→memakai (wear), dapat→mendapat (receive). 'se- + noun' = one (sebulan = one month, seminggu = one week). Reduplicated 'anak-anak' = plural (children).",
     vocabulary: [
       {
+        cell_id: "88dfcb8e-bd57-454f-bf58-2c71cfad69bf",
         word: "Lebaran",
         en: "Idul Fitri holiday",
         vi: "lễ Lebaran",
@@ -383,6 +397,7 @@ export const ramadanLebaranLessons: IndonesianLesson[] = [
         pronunciation_en: "le-BA-ran",
       },
       {
+        cell_id: "e1a37d56-3440-421d-abaa-ab2a70f60266",
         word: "mudik",
         en: "to travel home for the holiday",
         vi: "về quê dịp lễ",
@@ -391,6 +406,7 @@ export const ramadanLebaranLessons: IndonesianLesson[] = [
         pronunciation_en: "MOO-deek",
       },
       {
+        cell_id: "85cce20f-1aa1-4805-8465-b9d4afb1d5a5",
         word: "kampung halaman",
         en: "hometown / native village",
         vi: "quê hương",
@@ -399,6 +415,7 @@ export const ramadanLebaranLessons: IndonesianLesson[] = [
         pronunciation_en: "KAM-poong ha-LA-man",
       },
       {
+        cell_id: "3624ee11-b975-4d06-83d3-c9ef546e2514",
         word: "THR",
         en: "holiday bonus (Tunjangan Hari Raya)",
         vi: "thưởng lễ (như thưởng Tết)",
@@ -407,6 +424,7 @@ export const ramadanLebaranLessons: IndonesianLesson[] = [
         pronunciation_en: "teh-ha-er",
       },
       {
+        cell_id: "0b267798-a955-4d4d-b558-2e41f0e4390c",
         word: "ketupat",
         en: "woven-leaf rice cake (Lebaran dish)",
         vi: "bánh gạo gói lá dừa",
@@ -415,6 +433,7 @@ export const ramadanLebaranLessons: IndonesianLesson[] = [
         pronunciation_en: "ke-TOO-pat",
       },
       {
+        cell_id: "bf430166-f375-4691-92d4-d73474c5f03d",
         word: "merayakan",
         en: "to celebrate",
         vi: "ăn mừng / tổ chức (lễ)",
@@ -423,6 +442,7 @@ export const ramadanLebaranLessons: IndonesianLesson[] = [
         pronunciation_en: "me-ra-YA-kan",
       },
       {
+        cell_id: "a5d817cf-3ac3-4d22-9b69-270c49136247",
         word: "baju baru",
         en: "new clothes",
         vi: "quần áo mới",
@@ -433,24 +453,28 @@ export const ramadanLebaranLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "197c1736-11e2-4754-b99f-b8afac8cd456",
         speaker: "Dewi",
         text: "Lebaran ini kamu mudik ke mana?",
         vi: "Lebaran này bạn về quê ở đâu?",
         en: "Where are you traveling home to for Lebaran?",
       },
       {
+        cell_id: "2aba5f07-27ef-47f3-a2e4-b1f2c9251bab",
         speaker: "Arif",
         text: "Ke kampung halaman di Solo. Untung sudah dapat THR untuk tiket.",
         vi: "Về quê ở Solo. May là đã nhận thưởng lễ để mua vé.",
         en: "To my hometown in Solo. Lucky I already got my THR for the tickets.",
       },
       {
+        cell_id: "a15e98ef-49f7-4fdf-ad1b-8de83b42f222",
         speaker: "Dewi",
         text: "Di sana nanti makan ketupat dan opor ayam, kan?",
         vi: "Ở đó sẽ ăn ketupat với gà nước cốt dừa nhỉ?",
         en: "You'll have ketupat and opor ayam there, right?",
       },
       {
+        cell_id: "b7ec25d4-d486-4c16-a840-743adb65dcdd",
         speaker: "Arif",
         text: "Pasti! Keponakan-keponakan juga pakai baju baru, ramai sekali.",
         vi: "Chắc chắn rồi! Mấy đứa cháu cũng mặc đồ mới, vui lắm.",
@@ -591,6 +615,7 @@ export const ramadanLebaranLessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: memorize the whole line 'Mohon maaf lahir dan batin' — usable with anyone during the holiday. 'mohon' is politer than 'minta'; 'meminta maaf kepada + person' = to apologize to someone. The preposition 'kepada' marks a person recipient (vs 'ke' for places). 'yang + adjective' nominalizes it: yang muda (the young), yang tua (the elders). Open a blessing with 'Semoga + clause' (May…). Tie it to your Tết-visiting custom to remember 'silaturahmi'.",
     vocabulary: [
       {
+        cell_id: "ceb64eed-0286-4f2e-8052-a03216897924",
         word: "mohon maaf",
         en: "to beg forgiveness / sorry",
         vi: "xin tha lỗi",
@@ -599,6 +624,7 @@ export const ramadanLebaranLessons: IndonesianLesson[] = [
         pronunciation_en: "MOH-hon MA-af",
       },
       {
+        cell_id: "4c3b6c59-b503-4eea-ba02-f879c3abae50",
         word: "lahir dan batin",
         en: "in body and spirit (fully)",
         vi: "cả phần xác lẫn phần tâm",
@@ -607,6 +633,7 @@ export const ramadanLebaranLessons: IndonesianLesson[] = [
         pronunciation_en: "LA-heer dan BA-teen",
       },
       {
+        cell_id: "96b7b85b-c63f-47f6-9cd9-fd6a1628048b",
         word: "silaturahmi",
         en: "strengthening family/social ties (visiting)",
         vi: "thăm hỏi gắn kết tình thân",
@@ -615,6 +642,7 @@ export const ramadanLebaranLessons: IndonesianLesson[] = [
         pronunciation_en: "see-la-too-RAH-mee",
       },
       {
+        cell_id: "a3975a4f-1339-4070-a3f3-f9a29f0e2b44",
         word: "meminta maaf",
         en: "to apologize",
         vi: "xin lỗi",
@@ -623,6 +651,7 @@ export const ramadanLebaranLessons: IndonesianLesson[] = [
         pronunciation_en: "me-MIN-ta MA-af",
       },
       {
+        cell_id: "9c23ad37-43b5-4060-9064-68b5b952ba5f",
         word: "halal bihalal",
         en: "post-holiday mutual-forgiveness gathering",
         vi: "buổi gặp mặt tha thứ sau lễ",
@@ -631,6 +660,7 @@ export const ramadanLebaranLessons: IndonesianLesson[] = [
         pronunciation_en: "ha-LAL bee-ha-LAL",
       },
       {
+        cell_id: "25ff2aae-bb0a-46aa-bb5b-2f98e89b2ceb",
         word: "saudara",
         en: "relative / sibling",
         vi: "họ hàng / anh chị em",
@@ -639,6 +669,7 @@ export const ramadanLebaranLessons: IndonesianLesson[] = [
         pronunciation_en: "sau-DA-ra",
       },
       {
+        cell_id: "20ae0db2-f58c-45ee-8f08-5bc9707e2ff3",
         word: "semoga",
         en: "may / hopefully (blessing)",
         vi: "mong rằng / cầu chúc",
@@ -649,24 +680,28 @@ export const ramadanLebaranLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "a2186ae8-4021-4261-9c71-68e08231bd80",
         speaker: "Tamu",
         text: "Selamat Idul Fitri, Pak. Mohon maaf lahir dan batin.",
         vi: "Chúc mừng Idul Fitri, bác. Xin tha thứ mọi lỗi lầm.",
         en: "Happy Idul Fitri, sir. Please forgive my every wrong.",
       },
       {
+        cell_id: "3007a5e8-4113-4c58-98a7-411314c87967",
         speaker: "Tuan rumah",
         text: "Sama-sama, saya juga minta maaf. Ayo masuk, kita silaturahmi.",
         vi: "Tôi cũng vậy, tôi cũng xin lỗi. Vào đi, mình hàn huyên (gắn kết tình thân).",
         en: "Likewise, I ask your pardon too. Come in, let's catch up.",
       },
       {
+        cell_id: "cc5372e5-5e9e-4284-9c20-0013aa86a3da",
         speaker: "Tamu",
         text: "Terima kasih. Semoga kita semua kembali suci seperti bayi.",
         vi: "Cảm ơn bác. Mong tất cả chúng ta trở lại thanh khiết như trẻ sơ sinh.",
         en: "Thank you. May we all return as pure as newborns.",
       },
       {
+        cell_id: "08c8945c-0182-407d-b3d1-810a67606dcf",
         speaker: "Tuan rumah",
         text: "Aamiin. Minggu depan kantor juga mengadakan halal bihalal, lho.",
         vi: "A-min. Tuần sau công ty cũng tổ chức halal bihalal đó.",

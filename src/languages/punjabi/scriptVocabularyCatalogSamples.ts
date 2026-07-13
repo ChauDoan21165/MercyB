@@ -18,6 +18,7 @@ export type PunjabiCatalogFocus =
 export type PunjabiCatalogStage = "pre_a11_catalog" | "bundle" | "receipt" | "pre_integration" | "sanity";
 
 export type PunjabiScriptVocabularyCatalogSample = {
+  cell_id?: string;
   id: string;
   focus: PunjabiCatalogFocus;
   stage: PunjabiCatalogStage;
@@ -39,6 +40,7 @@ export type PunjabiScriptVocabularyCatalogSample = {
 };
 
 export type PunjabiScriptVocabularyCatalogSection = {
+  cell_id?: string;
   focus: PunjabiCatalogFocus;
   title_vi: string;
   title_en: string;

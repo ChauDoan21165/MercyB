@@ -13,6 +13,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -22,6 +23,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -208,6 +210,7 @@ export const lessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: `kurir` is the delivery person; `pengirim` is the sender; `penerima` is the recipient. `Ongkir` = shipping fee, so ask with `berapa`, not `apa`. For delivery complaints, use a safe frame: issue (`paket belum sampai`) + code (`nomor resi`) + request (`mohon follow up`).",
     vocabulary: [
       {
+        cell_id: "e99f9f7b-9fe7-4084-bf07-cf01fde18339",
         word: "kurir",
         en: "courier",
         vi: "người giao hàng / shipper",
@@ -216,6 +219,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "KOO-rir",
       },
       {
+        cell_id: "f8ef414f-bdc2-4142-bbea-dae677a9be5b",
         word: "COD",
         en: "cash on delivery",
         vi: "trả tiền khi nhận hàng",
@@ -224,6 +228,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "see-oh-dee",
       },
       {
+        cell_id: "64228208-c3f5-42f6-9a04-4fdacc8d8807",
         word: "paket belum sampai",
         en: "parcel has not arrived",
         vi: "gói hàng chưa tới",
@@ -232,6 +237,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "PA-ket be-LOOM SAM-pai",
       },
       {
+        cell_id: "1733ba67-c602-4644-a625-f1249cf5ca43",
         word: "resi",
         en: "tracking number / receipt",
         vi: "mã vận đơn / biên nhận",
@@ -240,6 +246,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "REH-see",
       },
       {
+        cell_id: "da6db88c-6dec-490e-8215-ed181437adae",
         word: "alamat salah",
         en: "wrong address",
         vi: "địa chỉ sai",
@@ -248,6 +255,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "a-LA-mat SA-lah",
       },
       {
+        cell_id: "5aede165-b5f2-4bac-b5f9-5ae41ee34383",
         word: "penerima",
         en: "recipient",
         vi: "người nhận",
@@ -256,6 +264,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "pe-ne-REE-ma",
       },
       {
+        cell_id: "58982817-c201-4558-a2db-459378f751c0",
         word: "ongkir",
         en: "shipping fee",
         vi: "phí ship / phí gửi",
@@ -264,6 +273,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "ONG-keer",
       },
       {
+        cell_id: "21e066f9-c6c9-456a-b9b7-441f1c4327da",
         word: "komplain pengiriman",
         en: "delivery complaint",
         vi: "khiếu nại giao hàng",
@@ -272,6 +282,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "kom-PLAIN pe-NGEE-rim-an",
       },
       {
+        cell_id: "24c4a383-e041-4811-b80d-b211a8f6e6aa",
         word: "follow up",
         en: "follow up",
         vi: "theo dõi xử lý",
@@ -280,6 +291,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "FO-low up",
       },
       {
+        cell_id: "9cf76883-80c5-48b5-a22e-95dbeb5a5448",
         word: "ditemukan",
         en: "found",
         vi: "được tìm thấy",
@@ -290,24 +302,28 @@ export const lessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "c9e01352-73ae-4e30-b91e-a8789189df23",
         speaker: "Pembeli",
         text: "Halo, Kak. Paket saya belum sampai, padahal statusnya sudah dikirim.",
         vi: "Chào anh/chị. Gói hàng của tôi chưa tới, mặc dù trạng thái đã gửi.",
         en: "Hello. My parcel has not arrived, even though the status says it was sent.",
       },
       {
+        cell_id: "74c4afda-b6b3-49d6-8586-6500191dc830",
         speaker: "Customer Service",
         text: "Boleh kirim nomor resinya?",
         vi: "Anh/chị có thể gửi mã vận đơn không?",
         en: "Can you send the tracking number?",
       },
       {
+        cell_id: "25fb0a7a-97e7-46d4-8571-f3a649d539ce",
         speaker: "Pembeli",
         text: "Ini resinya. Kurir bilang alamatnya tidak ditemukan.",
         vi: "Đây là mã vận đơn. Shipper nói không tìm thấy địa chỉ.",
         en: "Here is the tracking number. The courier said the address was not found.",
       },
       {
+        cell_id: "16f8acd8-99ce-4505-9930-216f9556b59b",
         speaker: "Customer Service",
         text: "Baik, kami follow up komplain pengiriman ini hari ini.",
         vi: "Vâng, chúng tôi sẽ theo dõi xử lý khiếu nại giao hàng này hôm nay.",

@@ -21,6 +21,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   /** Indonesian word/phrase. */
   word: string;
   /** English meaning. */
@@ -36,6 +37,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   /** Indonesian line. */
   text: string;
@@ -254,6 +256,7 @@ export const lessons: IndonesianLesson[] = [
       "Safe template: `Saya mau tebus resep dokter. Apakah obatnya tersedia? Tolong jelaskan dosis, aturan minum, efek samping, dan apakah ada obat generik yang lebih murah.`",
     vocabulary: [
       {
+        cell_id: "8d8be894-2ff8-4099-84f4-67aef18be74e",
         word: "resep dokter",
         en: "doctor's prescription",
         vi: "đơn thuốc bác sĩ",
@@ -262,6 +265,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "REH-sep DOK-ter",
       },
       {
+        cell_id: "c591a155-6c32-4f9b-af07-ec58daff4987",
         word: "tebus obat",
         en: "fill/redeem medicine from a prescription",
         vi: "lấy thuốc theo đơn",
@@ -270,6 +274,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "TEH-boos O-bat",
       },
       {
+        cell_id: "2257f2fb-2aa4-4533-a0b7-dd05ba1c6217",
         word: "apotek",
         en: "pharmacy",
         vi: "nhà thuốc",
@@ -278,6 +283,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "a-PO-tek",
       },
       {
+        cell_id: "1b097366-ac54-4ba7-9af7-a5c15eca967c",
         word: "dosis",
         en: "dose",
         vi: "liều",
@@ -286,6 +292,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "DO-sis",
       },
       {
+        cell_id: "be8593b8-ecbe-49b3-b578-5ac98f94d4e3",
         word: "aturan minum",
         en: "medicine-taking directions",
         vi: "cách uống thuốc",
@@ -294,6 +301,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "a-TOO-ran MEE-noom",
       },
       {
+        cell_id: "d299e164-5e23-45f7-953f-1b4a302df0cf",
         word: "obat generik",
         en: "generic medicine",
         vi: "thuốc generic",
@@ -302,6 +310,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "O-bat geh-NEH-rik",
       },
       {
+        cell_id: "a5130e24-dd54-4cce-a9ab-1d56991a7b76",
         word: "efek samping",
         en: "side effect",
         vi: "tác dụng phụ",
@@ -310,6 +319,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "E-fek SAM-ping",
       },
       {
+        cell_id: "58273e21-237e-4cd6-906b-c49a099695b5",
         word: "stok kosong",
         en: "out of stock",
         vi: "hết hàng",
@@ -318,6 +328,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "stok KO-song",
       },
       {
+        cell_id: "7227dd7c-76eb-40bf-a316-bf9958397d05",
         word: "pengganti",
         en: "substitute; replacement",
         vi: "thuốc/thứ thay thế",
@@ -326,6 +337,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "peng-GAN-tee",
       },
       {
+        cell_id: "a9cece5c-a625-425e-bf88-f5c9bcc7577a",
         word: "tidak cocok",
         en: "not suitable; does not agree with someone",
         vi: "không hợp",
@@ -336,36 +348,42 @@ export const lessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "7e700e5c-199c-4b8a-9612-624998610cb6",
         speaker: "Pasien",
         text: "Selamat siang, saya mau tebus resep dokter dari klinik.",
         vi: "Chào buổi trưa, tôi muốn lấy thuốc theo đơn bác sĩ từ phòng khám.",
         en: "Good afternoon, I would like to fill a doctor's prescription from the clinic.",
       },
       {
+        cell_id: "d425d785-627d-49be-ae39-265dbaaf0de7",
         speaker: "Apoteker",
         text: "Boleh saya lihat resepnya?",
         vi: "Tôi xem đơn thuốc được không?",
         en: "May I see the prescription?",
       },
       {
+        cell_id: "e982ef1d-bc8e-4a38-a372-7ff7abcee25e",
         speaker: "Pasien",
         text: "Ini resep digitalnya. Apakah semua obat masih tersedia?",
         vi: "Đây là đơn thuốc điện tử. Tất cả thuốc vẫn còn có sẵn không?",
         en: "Here is the digital prescription. Are all the medicines still available?",
       },
       {
+        cell_id: "c3b64b4a-c358-447b-aa7b-9139a4d6c7d5",
         speaker: "Apoteker",
         text: "Satu obat stoknya kosong, tapi ada obat generik pengganti.",
         vi: "Một thuốc hết hàng, nhưng có thuốc generic thay thế.",
         en: "One medicine is out of stock, but there is a generic substitute.",
       },
       {
+        cell_id: "138e4b1d-d2c6-4a74-9994-e1ce7decb085",
         speaker: "Pasien",
         text: "Tolong jelaskan dosis, aturan minum, dan efek sampingnya.",
         vi: "Làm ơn giải thích liều, cách uống, và tác dụng phụ.",
         en: "Please explain the dose, directions, and side effects.",
       },
       {
+        cell_id: "da600b0d-2d46-4b80-818b-51bd850a562a",
         speaker: "Apoteker",
         text: "Baik, saya tuliskan aturan minumnya di kemasan.",
         vi: "Được, tôi sẽ viết cách uống lên bao bì.",

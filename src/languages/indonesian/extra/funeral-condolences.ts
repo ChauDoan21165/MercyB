@@ -13,6 +13,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -22,6 +23,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -208,6 +210,7 @@ export const lessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: avoid blunt wording like `mati` when giving condolences. Use `meninggal dunia`, `almarhum/almarhumah`, `keluarga duka`, `kabar duka`, and `turut berduka cita`. The safest line is: `Saya turut berduka cita. Semoga keluarga yang ditinggalkan diberi kekuatan.`",
     vocabulary: [
       {
+        cell_id: "22380ae7-6b75-4b9b-b652-7a0a233d2c0a",
         word: "meninggal dunia",
         en: "to pass away",
         vi: "qua đời",
@@ -216,6 +219,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "me-NING-gal DOO-nia",
       },
       {
+        cell_id: "8fb6b1b8-f7fd-423f-ac5e-a18857279c61",
         word: "belasungkawa",
         en: "condolence",
         vi: "lời chia buồn",
@@ -224,6 +228,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "be-la-soong-KA-wa",
       },
       {
+        cell_id: "395eb2f1-567b-43f4-8fba-f41c4c55a6f5",
         word: "takziah",
         en: "condolence visit",
         vi: "đi viếng / thăm chia buồn",
@@ -232,6 +237,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "tak-ZEE-ah",
       },
       {
+        cell_id: "2435a6eb-fbb3-4d2c-b25a-8e3ce1bb7ed2",
         word: "pemakaman",
         en: "funeral / burial",
         vi: "lễ an táng / chôn cất",
@@ -240,6 +246,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "pe-MA-kam-an",
       },
       {
+        cell_id: "37a23413-5584-41b9-abfb-8215c076bee4",
         word: "keluarga duka",
         en: "bereaved family",
         vi: "tang quyến",
@@ -248,6 +255,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "ke-LOO-ar-ga DOO-ka",
       },
       {
+        cell_id: "66fcac11-ddc8-4834-a853-330067f0898d",
         word: "doa",
         en: "prayer",
         vi: "lời cầu nguyện",
@@ -256,6 +264,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "do-A",
       },
       {
+        cell_id: "8fc2925c-8741-440f-8447-fe775e4a63fe",
         word: "ucapan halus",
         en: "gentle wording",
         vi: "lời nói nhẹ nhàng",
@@ -264,6 +273,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "u-CHA-pan HA-loos",
       },
       {
+        cell_id: "9c8e19fb-5567-4f1e-865e-8fb1ae527df2",
         word: "almarhum",
         en: "late/deceased man",
         vi: "người nam quá cố",
@@ -272,6 +282,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "al-MAR-hoom",
       },
       {
+        cell_id: "afc8909d-e76c-4369-8940-8e48ea0b4066",
         word: "almarhumah",
         en: "late/deceased woman",
         vi: "người nữ quá cố",
@@ -280,6 +291,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "al-mar-HOO-mah",
       },
       {
+        cell_id: "9c75e08b-41a0-4f82-9cb5-4ceadc0b4a92",
         word: "pakaian sopan",
         en: "modest/respectful clothing",
         vi: "trang phục lịch sự/kín đáo",
@@ -290,24 +302,28 @@ export const lessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "cf31565d-69ca-46cb-a4df-ff9cb5a4266d",
         speaker: "Rina",
         text: "Saya baru mendengar kabar duka tentang ayahmu. Saya turut berduka cita.",
         vi: "Tôi vừa nghe tin buồn về bố bạn. Tôi xin chia buồn.",
         en: "I just heard the sad news about your father. My condolences.",
       },
       {
+        cell_id: "afe8ec45-bc61-4c6e-a68b-84fdc38a3760",
         speaker: "Dian",
         text: "Terima kasih, Rina. Pemakamannya besok pagi.",
         vi: "Cảm ơn Rina. Lễ an táng vào sáng mai.",
         en: "Thank you, Rina. The funeral is tomorrow morning.",
       },
       {
+        cell_id: "ac5a0296-b39d-4bfb-b65a-b57c9db41bed",
         speaker: "Rina",
         text: "Kami mau takziah malam ini. Boleh saya membantu menyiapkan kursi?",
         vi: "Tối nay chúng tôi muốn đến viếng. Tôi có thể giúp chuẩn bị ghế không?",
         en: "We want to visit tonight. May I help prepare chairs?",
       },
       {
+        cell_id: "481e62da-7052-4a74-8a0a-95e672c0b325",
         speaker: "Dian",
         text: "Boleh. Terima kasih atas doa dan bantuannya.",
         vi: "Được. Cảm ơn vì lời cầu nguyện và sự giúp đỡ.",

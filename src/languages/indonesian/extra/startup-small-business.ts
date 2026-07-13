@@ -17,6 +17,7 @@ type IndonesianLessonSentence = {
 };
 
 type IndonesianVocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -26,6 +27,7 @@ type IndonesianVocabEntry = {
 };
 
 type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -184,6 +186,7 @@ export const lessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: distinguish `omzet` (revenue) from `untung` (profit), and `modal` (capital) from `investor` (investor). For pitching, use short frames: `Kami membantu ...`, `Pelanggan kami ...`, `Omzet kami ...`, `Kami mencari investor ...`.",
     vocabulary: [
       {
+        cell_id: "c44fe0d5-82e1-4d08-814c-fbf43ae0d48f",
         word: "startup",
         en: "startup",
         vi: "startup / công ty khởi nghiệp",
@@ -192,6 +195,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "STAR-tup",
       },
       {
+        cell_id: "0f998c49-be24-4554-8026-1293547e3c3a",
         word: "usaha kecil",
         en: "small business",
         vi: "kinh doanh nhỏ",
@@ -200,6 +204,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "u-SA-ha ke-CHIL",
       },
       {
+        cell_id: "45e202cf-af44-4f75-b59c-7d21dc17200e",
         word: "pelanggan",
         en: "customer",
         vi: "khách hàng",
@@ -208,6 +213,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "pe-LANG-gan",
       },
       {
+        cell_id: "3369358f-355d-430d-ada4-500a7b9558de",
         word: "pemasaran online",
         en: "online marketing",
         vi: "tiếp thị online",
@@ -216,6 +222,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "pe-ma-SA-ran ON-line",
       },
       {
+        cell_id: "f0693b66-96c3-47e8-8fe8-89c06d4583a6",
         word: "modal awal",
         en: "initial capital",
         vi: "vốn ban đầu",
@@ -224,6 +231,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "MO-dal A-wal",
       },
       {
+        cell_id: "4f397d72-6580-4dec-9376-ee6f2d1f879a",
         word: "omzet",
         en: "revenue / turnover",
         vi: "doanh thu",
@@ -232,6 +240,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "OM-zet",
       },
       {
+        cell_id: "3ff126e5-a42a-419b-a66e-2b102e53c233",
         word: "investor",
         en: "investor",
         vi: "nhà đầu tư",
@@ -240,6 +249,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "in-VES-tor",
       },
       {
+        cell_id: "4881030a-767d-4222-b6b3-5806cefec292",
         word: "rencana bisnis",
         en: "business plan",
         vi: "kế hoạch kinh doanh",
@@ -248,6 +258,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "ren-CHA-na BIS-nis",
       },
       {
+        cell_id: "14a736c3-337f-49e7-a9ee-94a6a83f6551",
         word: "validasi pasar",
         en: "market validation",
         vi: "kiểm chứng thị trường",
@@ -258,30 +269,35 @@ export const lessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "8c510f48-a0d9-483c-ac32-832e48349faa",
         speaker: "Pendiri",
         text: "Kami sedang membangun startup kecil untuk membantu warung lokal.",
         vi: "Chúng tôi đang xây dựng một startup nhỏ để giúp các warung địa phương.",
         en: "We are building a small startup to help local warung.",
       },
       {
+        cell_id: "a5cf3a68-78a5-49d9-b8f1-0e1cf371ad7e",
         speaker: "Investor",
         text: "Siapa pelanggan utama kalian?",
         vi: "Khách hàng chính của các bạn là ai?",
         en: "Who are your main customers?",
       },
       {
+        cell_id: "fd86a4a1-ed4c-4aca-b23e-d4dc8067f9c9",
         speaker: "Pendiri",
         text: "Pelanggan kami pemilik usaha kecil. Pemasaran online kami lewat Instagram dan TikTok.",
         vi: "Khách hàng của chúng tôi là chủ kinh doanh nhỏ. Tiếp thị online của chúng tôi qua Instagram và TikTok.",
         en: "Our customers are small-business owners. Our online marketing is through Instagram and TikTok.",
       },
       {
+        cell_id: "2b1686b1-2091-4220-b9b0-55baac07beaa",
         speaker: "Investor",
         text: "Bagaimana omzet dan rencana bisnisnya?",
         vi: "Doanh thu và kế hoạch kinh doanh thế nào?",
         en: "How are the revenue and business plan?",
       },
       {
+        cell_id: "7d0eecc9-df2e-4fc5-8647-744d006d02cc",
         speaker: "Pendiri",
         text: "Omzet bulan ini naik, dan kami sedang mencari investor untuk tahap berikutnya.",
         vi: "Doanh thu tháng này tăng, và chúng tôi đang tìm nhà đầu tư cho giai đoạn tiếp theo.",

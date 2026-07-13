@@ -23,6 +23,7 @@ export type LessonSentence = {
 };
 
 export type VocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -32,6 +33,7 @@ export type VocabEntry = {
 };
 
 export type DialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -128,17 +130,17 @@ export const lessons: IndonesianLesson[] = [
     tip_advice_en:
       "Two tiers: 'kangen' (casual, daily) vs 'rindu' (formal, poetic). Structure 'kangen sama X' = to miss X. Lots of medial/final 'ng' (kangen, pulang, kampung) — a Vietnamese advantage. Gold phrase: 'kangen kampung halaman' (missing one's hometown). Distinguish 'pulang' (go home) from 'kembali' (return, general).",
     vocabulary: [
-      { word: "rindu", en: "to miss, long for (formal)", vi: "nhớ (trang trọng)", pos: "verb/adjective", pronunciation_vi: "RIN-du", pronunciation_en: "RIN-doo" },
-      { word: "kangen", en: "to miss (casual)", vi: "nhớ (thân mật)", pos: "verb", pronunciation_vi: "KA-ngen", pronunciation_en: "KAH-ngen" },
-      { word: "pulang", en: "to go home", vi: "về nhà, về quê", pos: "verb", pronunciation_vi: "pu-LANG", pronunciation_en: "poo-LANG" },
-      { word: "kampung halaman", en: "hometown", vi: "quê hương", pos: "noun phrase", pronunciation_vi: "kam-PUNG ha-LA-man", pronunciation_en: "kam-POONG hah-LAH-man" },
-      { word: "merantau", en: "to leave home to seek a living", vi: "tha hương lập nghiệp", pos: "verb", pronunciation_vi: "me-ran-TAU", pronunciation_en: "muh-ran-TAU" },
-      { word: "masakan", en: "cooking, home dishes", vi: "món ăn (nhà nấu)", pos: "noun", pronunciation_vi: "ma-SA-kan", pronunciation_en: "mah-SAH-kan" },
+      { cell_id: "b7dc4c05-1a70-48f2-8b77-27afcad97965", word: "rindu", en: "to miss, long for (formal)", vi: "nhớ (trang trọng)", pos: "verb/adjective", pronunciation_vi: "RIN-du", pronunciation_en: "RIN-doo" },
+      { cell_id: "b54be5b3-f2c2-497f-b2d6-a47f5ef23784", word: "kangen", en: "to miss (casual)", vi: "nhớ (thân mật)", pos: "verb", pronunciation_vi: "KA-ngen", pronunciation_en: "KAH-ngen" },
+      { cell_id: "e28f74ce-cf65-4e9c-827a-b051aadb640c", word: "pulang", en: "to go home", vi: "về nhà, về quê", pos: "verb", pronunciation_vi: "pu-LANG", pronunciation_en: "poo-LANG" },
+      { cell_id: "8f351fcd-3bf6-4e48-b2e7-cbb91a64a11f", word: "kampung halaman", en: "hometown", vi: "quê hương", pos: "noun phrase", pronunciation_vi: "kam-PUNG ha-LA-man", pronunciation_en: "kam-POONG hah-LAH-man" },
+      { cell_id: "7582af2a-0fd0-4177-88d0-dfd6f8f248c5", word: "merantau", en: "to leave home to seek a living", vi: "tha hương lập nghiệp", pos: "verb", pronunciation_vi: "me-ran-TAU", pronunciation_en: "muh-ran-TAU" },
+      { cell_id: "a6d618ba-eed0-441f-8412-95a888b31951", word: "masakan", en: "cooking, home dishes", vi: "món ăn (nhà nấu)", pos: "noun", pronunciation_vi: "ma-SA-kan", pronunciation_en: "mah-SAH-kan" },
     ],
     dialogue: [
-      { speaker: "Linh", text: "Kamu kelihatan sedih. Kenapa?", vi: "Trông cậu buồn. Sao thế?", en: "You look sad. What's wrong?" },
-      { speaker: "Putri", text: "Aku kangen rumah. Sudah setahun nggak pulang.", vi: "Tớ nhớ nhà. Cả năm rồi chưa về.", en: "I miss home. I haven't gone back in a year." },
-      { speaker: "Linh", text: "Aku ngerti banget. Aku juga kangen kampung halaman.", vi: "Tớ hiểu lắm. Tớ cũng nhớ quê hương.", en: "I totally understand. I miss my hometown too." },
+      { cell_id: "e436a1c1-708b-47d7-b7cb-36fbbd13128c", speaker: "Linh", text: "Kamu kelihatan sedih. Kenapa?", vi: "Trông cậu buồn. Sao thế?", en: "You look sad. What's wrong?" },
+      { cell_id: "3cff4a5d-7896-4525-85fa-69dc55145932", speaker: "Putri", text: "Aku kangen rumah. Sudah setahun nggak pulang.", vi: "Tớ nhớ nhà. Cả năm rồi chưa về.", en: "I miss home. I haven't gone back in a year." },
+      { cell_id: "9959b996-7fce-4946-a972-8b1dc3e76ba2", speaker: "Linh", text: "Aku ngerti banget. Aku juga kangen kampung halaman.", vi: "Tớ hiểu lắm. Tớ cũng nhớ quê hương.", en: "I totally understand. I miss my hometown too." },
     ],
     exercises: [
       {
@@ -223,17 +225,17 @@ export const lessons: IndonesianLesson[] = [
     tip_advice_en:
       "'mudik' = the holiday homecoming (no English equivalent). Quick map for Vietnamese: mudik = going home for Tết. Transport verb 'naik' (to ride/take): naik bus, naik kereta, naik pesawat. 'berkumpul' (gather) is the central emotion. Icebreaker: 'Mudik ke mana?'.",
     vocabulary: [
-      { word: "mudik", en: "holiday homecoming", vi: "về quê dịp lễ", pos: "verb/noun", pronunciation_vi: "MU-dik", pronunciation_en: "MOO-dik" },
-      { word: "Lebaran", en: "Eid al-Fitr festival", vi: "lễ Idul Fitri", pos: "noun", pronunciation_vi: "le-BA-ran", pronunciation_en: "luh-BAH-ran" },
-      { word: "tiket", en: "ticket", vi: "vé", pos: "noun", pronunciation_vi: "TI-ket", pronunciation_en: "TEE-ket" },
-      { word: "kereta", en: "train", vi: "tàu hỏa", pos: "noun", pronunciation_vi: "ke-RE-ta", pronunciation_en: "kuh-REH-tah" },
-      { word: "berkumpul", en: "to gather", vi: "tụ họp", pos: "verb", pronunciation_vi: "ber-KUM-pul", pronunciation_en: "ber-KOOM-pool" },
-      { word: "senang", en: "happy, glad", vi: "vui", pos: "adjective", pronunciation_vi: "se-NANG", pronunciation_en: "suh-NANG" },
+      { cell_id: "f1f91dc9-eea2-42ca-8e6b-b696657074bf", word: "mudik", en: "holiday homecoming", vi: "về quê dịp lễ", pos: "verb/noun", pronunciation_vi: "MU-dik", pronunciation_en: "MOO-dik" },
+      { cell_id: "e9c7b2fb-d41a-4355-bbb2-639d386f33af", word: "Lebaran", en: "Eid al-Fitr festival", vi: "lễ Idul Fitri", pos: "noun", pronunciation_vi: "le-BA-ran", pronunciation_en: "luh-BAH-ran" },
+      { cell_id: "68df24e1-4996-4aa2-aeae-077e3164888b", word: "tiket", en: "ticket", vi: "vé", pos: "noun", pronunciation_vi: "TI-ket", pronunciation_en: "TEE-ket" },
+      { cell_id: "cbef3e6b-1a6b-46e1-9688-bdf6c9bbf027", word: "kereta", en: "train", vi: "tàu hỏa", pos: "noun", pronunciation_vi: "ke-RE-ta", pronunciation_en: "kuh-REH-tah" },
+      { cell_id: "5f68af3c-1a2f-47ce-b90f-a7ab8d7c7d13", word: "berkumpul", en: "to gather", vi: "tụ họp", pos: "verb", pronunciation_vi: "ber-KUM-pul", pronunciation_en: "ber-KOOM-pool" },
+      { cell_id: "4db157d9-fcc6-4f60-a303-393aa672ef6f", word: "senang", en: "happy, glad", vi: "vui", pos: "adjective", pronunciation_vi: "se-NANG", pronunciation_en: "suh-NANG" },
     ],
     dialogue: [
-      { speaker: "Rudi", text: "Lebaran ini mudik nggak?", vi: "Lebaran này về quê không?", en: "Are you heading home this Eid?" },
-      { speaker: "Sani", text: "Mudik dong! Tapi tiket kereta udah habis, naik bus deh.", vi: "Về chứ! Nhưng vé tàu hết rồi, đi xe buýt vậy.", en: "Of course! But the train's sold out, so I'll take the bus." },
-      { speaker: "Rudi", text: "Hati-hati ya. Salam buat keluarga!", vi: "Cẩn thận nhé. Cho gửi lời chào gia đình!", en: "Take care. Say hi to your family!" },
+      { cell_id: "8bcc740e-1ab2-4ce8-a204-a02c93a92558", speaker: "Rudi", text: "Lebaran ini mudik nggak?", vi: "Lebaran này về quê không?", en: "Are you heading home this Eid?" },
+      { cell_id: "3a91f635-4432-44e0-8d70-8bba6a2f4be7", speaker: "Sani", text: "Mudik dong! Tapi tiket kereta udah habis, naik bus deh.", vi: "Về chứ! Nhưng vé tàu hết rồi, đi xe buýt vậy.", en: "Of course! But the train's sold out, so I'll take the bus." },
+      { cell_id: "8e6b7abe-19dd-4949-9b23-ff63c842018e", speaker: "Rudi", text: "Hati-hati ya. Salam buat keluarga!", vi: "Cẩn thận nhé. Cho gửi lời chào gia đình!", en: "Take care. Say hi to your family!" },
     ],
     exercises: [
       {
@@ -316,17 +318,17 @@ export const lessons: IndonesianLesson[] = [
     tip_advice_en:
       "'orang tua' = parents (don't translate literally as 'old people'). 'langsung' (right away) has two 'ng' — pronounce them clearly. 'biar' = 'supaya/agar' (so that) in speech. WhatsApp is shortened to 'WA' (weh-ah). Useful line: 'Aku video call orang tua tiap minggu'.",
     vocabulary: [
-      { word: "video call", en: "video call", vi: "gọi video", pos: "noun/verb", pronunciation_vi: "VI-de-o KOL", pronunciation_en: "VEE-deh-oh KOL" },
-      { word: "telepon", en: "to phone / telephone", vi: "gọi điện / điện thoại", pos: "verb/noun", pronunciation_vi: "te-le-PON", pronunciation_en: "tuh-luh-PON" },
-      { word: "kirim", en: "to send", vi: "gửi", pos: "verb", pronunciation_vi: "KI-rim", pronunciation_en: "KEE-rim" },
-      { word: "orang tua", en: "parents", vi: "bố mẹ", pos: "noun phrase", pronunciation_vi: "O-rang TU-a", pronunciation_en: "OH-rang TOO-ah" },
-      { word: "kabar", en: "news, how one is", vi: "tin tức, tình hình", pos: "noun", pronunciation_vi: "KA-bar", pronunciation_en: "KAH-bar" },
-      { word: "tetap dekat", en: "to stay close", vi: "vẫn gần gũi", pos: "verb phrase", pronunciation_vi: "te-TAP DE-kat", pronunciation_en: "tuh-TAP DUH-kat" },
+      { cell_id: "a0687056-4fba-4df1-b74e-0bb09cf5546a", word: "video call", en: "video call", vi: "gọi video", pos: "noun/verb", pronunciation_vi: "VI-de-o KOL", pronunciation_en: "VEE-deh-oh KOL" },
+      { cell_id: "c86ad842-bb17-4ac4-94be-327cbb3559e6", word: "telepon", en: "to phone / telephone", vi: "gọi điện / điện thoại", pos: "verb/noun", pronunciation_vi: "te-le-PON", pronunciation_en: "tuh-luh-PON" },
+      { cell_id: "2d270e2f-3331-476b-ab8b-defb0972fca7", word: "kirim", en: "to send", vi: "gửi", pos: "verb", pronunciation_vi: "KI-rim", pronunciation_en: "KEE-rim" },
+      { cell_id: "2fc2bb24-00ff-454e-965a-aacb3d9b2009", word: "orang tua", en: "parents", vi: "bố mẹ", pos: "noun phrase", pronunciation_vi: "O-rang TU-a", pronunciation_en: "OH-rang TOO-ah" },
+      { cell_id: "fb4928d0-2ba7-4b4c-9584-2dfa54575420", word: "kabar", en: "news, how one is", vi: "tin tức, tình hình", pos: "noun", pronunciation_vi: "KA-bar", pronunciation_en: "KAH-bar" },
+      { cell_id: "d646ac30-5f4b-4fe4-9a5b-f2d1756b7aed", word: "tetap dekat", en: "to stay close", vi: "vẫn gần gũi", pos: "verb phrase", pronunciation_vi: "te-TAP DE-kat", pronunciation_en: "tuh-TAP DUH-kat" },
     ],
     dialogue: [
-      { speaker: "Mama", text: "Halo Nak, apa kabar? Sehat di sana?", vi: "Alô con, khỏe không? Ở đó ổn chứ?", en: "Hi dear, how are you? Keeping well there?" },
-      { speaker: "Anak", text: "Sehat, Ma. Aku kangen masakan Mama. Video call gini bikin lega.", vi: "Khỏe ạ, mẹ. Con nhớ món mẹ nấu. Gọi video thế này thấy đỡ hẳn.", en: "I'm well, Mum. I miss your cooking. This video call makes me feel better." },
-      { speaker: "Mama", text: "Iya, biar tetap dekat ya. Jaga diri baik-baik.", vi: "Ừ, để vẫn gần gũi nhé. Giữ gìn sức khỏe.", en: "Yes, to stay close. Take good care of yourself." },
+      { cell_id: "a2d6dafb-fa37-4b4e-805e-06fa3948f83d", speaker: "Mama", text: "Halo Nak, apa kabar? Sehat di sana?", vi: "Alô con, khỏe không? Ở đó ổn chứ?", en: "Hi dear, how are you? Keeping well there?" },
+      { cell_id: "fe1581e4-f0b3-4352-9523-e0dde2dee184", speaker: "Anak", text: "Sehat, Ma. Aku kangen masakan Mama. Video call gini bikin lega.", vi: "Khỏe ạ, mẹ. Con nhớ món mẹ nấu. Gọi video thế này thấy đỡ hẳn.", en: "I'm well, Mum. I miss your cooking. This video call makes me feel better." },
+      { cell_id: "fe0227c5-b3a8-498e-826a-091b00e277d9", speaker: "Mama", text: "Iya, biar tetap dekat ya. Jaga diri baik-baik.", vi: "Ừ, để vẫn gần gũi nhé. Giữ gìn sức khỏe.", en: "Yes, to stay close. Take good care of yourself." },
     ],
     exercises: [
       {
@@ -409,17 +411,17 @@ export const lessons: IndonesianLesson[] = [
     tip_advice_en:
       "GOLDEN rule: 'selamat tinggal' = said by the one LEAVING; 'selamat jalan' = said by those STAYING. Don't mix them! Casual: 'sampai jumpa', 'dah'. The '-mu' suffix = 'you/your': merindukanmu (miss you). 'ny' = ñ: semuanya. 'akan' = will (future).",
     vocabulary: [
-      { word: "selamat tinggal", en: "goodbye (said by the leaver)", vi: "tạm biệt (người đi nói)", pos: "phrase", pronunciation_vi: "se-LA-mat TING-gal", pronunciation_en: "suh-LAH-mat TING-gal" },
-      { word: "selamat jalan", en: "safe journey (said to the leaver)", vi: "thượng lộ bình an", pos: "phrase", pronunciation_vi: "se-LA-mat JA-lan", pronunciation_en: "suh-LAH-mat JAH-lan" },
-      { word: "sampai jumpa", en: "see you again", vi: "hẹn gặp lại", pos: "phrase", pronunciation_vi: "sam-PAI JUM-pa", pronunciation_en: "sam-PAI JOOM-pah" },
-      { word: "jaga diri", en: "take care of yourself", vi: "giữ gìn sức khỏe", pos: "phrase", pronunciation_vi: "JA-ga DI-ri", pronunciation_en: "JAH-gah DEE-ree" },
-      { word: "semoga", en: "hopefully, may", vi: "mong rằng, cầu chúc", pos: "adverb", pronunciation_vi: "se-MO-ga", pronunciation_en: "suh-MOH-gah" },
-      { word: "merindukan", en: "to miss (formal, transitive)", vi: "nhớ (trang trọng)", pos: "verb", pronunciation_vi: "me-rin-DU-kan", pronunciation_en: "muh-rin-DOO-kan" },
+      { cell_id: "f34d1f22-619b-483d-af84-559f0796e554", word: "selamat tinggal", en: "goodbye (said by the leaver)", vi: "tạm biệt (người đi nói)", pos: "phrase", pronunciation_vi: "se-LA-mat TING-gal", pronunciation_en: "suh-LAH-mat TING-gal" },
+      { cell_id: "0e6b34ed-587f-4720-b52f-8ec23f915a53", word: "selamat jalan", en: "safe journey (said to the leaver)", vi: "thượng lộ bình an", pos: "phrase", pronunciation_vi: "se-LA-mat JA-lan", pronunciation_en: "suh-LAH-mat JAH-lan" },
+      { cell_id: "f2d703f1-b444-4149-9665-7d43c370927c", word: "sampai jumpa", en: "see you again", vi: "hẹn gặp lại", pos: "phrase", pronunciation_vi: "sam-PAI JUM-pa", pronunciation_en: "sam-PAI JOOM-pah" },
+      { cell_id: "77c214d8-2eb7-458d-8dde-9f751da822a8", word: "jaga diri", en: "take care of yourself", vi: "giữ gìn sức khỏe", pos: "phrase", pronunciation_vi: "JA-ga DI-ri", pronunciation_en: "JAH-gah DEE-ree" },
+      { cell_id: "f6f75a12-9942-4321-90f8-f4b5ab2ce870", word: "semoga", en: "hopefully, may", vi: "mong rằng, cầu chúc", pos: "adverb", pronunciation_vi: "se-MO-ga", pronunciation_en: "suh-MOH-gah" },
+      { cell_id: "3b312bb9-9465-4c45-99de-d9981c56ae71", word: "merindukan", en: "to miss (formal, transitive)", vi: "nhớ (trang trọng)", pos: "verb", pronunciation_vi: "me-rin-DU-kan", pronunciation_en: "muh-rin-DOO-kan" },
     ],
     dialogue: [
-      { speaker: "Teman", text: "Besok kamu balik ke Vietnam ya? Selamat jalan.", vi: "Mai cậu về Việt Nam à? Thượng lộ bình an.", en: "You're flying back to Vietnam tomorrow? Safe journey." },
-      { speaker: "Kamu", text: "Iya. Selamat tinggal, terima kasih untuk semuanya.", vi: "Ừ. Tạm biệt nhé, cảm ơn vì tất cả.", en: "Yes. Goodbye, thank you for everything." },
-      { speaker: "Teman", text: "Sampai jumpa lagi! Jaga diri baik-baik.", vi: "Hẹn gặp lại! Giữ gìn sức khỏe.", en: "See you again! Take good care." },
+      { cell_id: "9ed315d1-1ec8-450b-ae6e-c3dc3d31c28b", speaker: "Teman", text: "Besok kamu balik ke Vietnam ya? Selamat jalan.", vi: "Mai cậu về Việt Nam à? Thượng lộ bình an.", en: "You're flying back to Vietnam tomorrow? Safe journey." },
+      { cell_id: "a63c3b32-63ce-4d3c-bca6-bc73474768b2", speaker: "Kamu", text: "Iya. Selamat tinggal, terima kasih untuk semuanya.", vi: "Ừ. Tạm biệt nhé, cảm ơn vì tất cả.", en: "Yes. Goodbye, thank you for everything." },
+      { cell_id: "2fd1d72d-ab91-45f7-a6a0-ec14ed9b07f8", speaker: "Teman", text: "Sampai jumpa lagi! Jaga diri baik-baik.", vi: "Hẹn gặp lại! Giữ gìn sức khỏe.", en: "See you again! Take good care." },
     ],
     exercises: [
       {
@@ -502,19 +504,19 @@ export const lessons: IndonesianLesson[] = [
     tip_advice_en:
       "How to explain Tết to Indonesians: 'Tet itu tahun baru Vietnam, mirip Imlek' (Tết is Vietnam's new year, like Imlek). 'merayakan' (to celebrate) + the occasion. 'suasana' (atmosphere) is a valuable emotion word. 'untungnya' (luckily) opens a positive anecdote. Don't forget 'kh' in 'khas' (typical) is a light guttural.",
     vocabulary: [
-      { word: "merayakan", en: "to celebrate", vi: "đón mừng, ăn mừng", pos: "verb", pronunciation_vi: "me-ra-YA-kan", pronunciation_en: "muh-rah-YAH-kan" },
-      { word: "Imlek", en: "Lunar/Chinese New Year", vi: "Tết Nguyên Đán (người Hoa)", pos: "noun", pronunciation_vi: "IM-lek", pronunciation_en: "IM-lek" },
-      { word: "suasana", en: "atmosphere", vi: "không khí", pos: "noun", pronunciation_vi: "su-a-SA-na", pronunciation_en: "soo-ah-SAH-nah" },
-      { word: "lampion", en: "lantern", vi: "đèn lồng", pos: "noun", pronunciation_vi: "lam-PI-on", pronunciation_en: "lam-PEE-on" },
-      { word: "mengundang", en: "to invite", vi: "mời", pos: "verb", pronunciation_vi: "me-ngun-DANG", pronunciation_en: "muh-ngoon-DANG" },
-      { word: "makanan khas", en: "signature/typical food", vi: "món đặc trưng", pos: "noun phrase", pronunciation_vi: "ma-KA-nan KHAS", pronunciation_en: "mah-KAH-nan KHAS" },
-      { word: "untungnya", en: "luckily", vi: "may là, may mắn thay", pos: "adverb", pronunciation_vi: "un-TUNG-nya", pronunciation_en: "oon-TOONG-nyah" },
+      { cell_id: "77074ec6-1188-4f62-9f5c-179039d99fb1", word: "merayakan", en: "to celebrate", vi: "đón mừng, ăn mừng", pos: "verb", pronunciation_vi: "me-ra-YA-kan", pronunciation_en: "muh-rah-YAH-kan" },
+      { cell_id: "59f94e6c-9d55-4ca7-86e6-7968c882b51e", word: "Imlek", en: "Lunar/Chinese New Year", vi: "Tết Nguyên Đán (người Hoa)", pos: "noun", pronunciation_vi: "IM-lek", pronunciation_en: "IM-lek" },
+      { cell_id: "fac5e8d1-81f1-4a94-907a-60a62264d7f6", word: "suasana", en: "atmosphere", vi: "không khí", pos: "noun", pronunciation_vi: "su-a-SA-na", pronunciation_en: "soo-ah-SAH-nah" },
+      { cell_id: "968dbdad-541b-4261-ae25-0e75456e849b", word: "lampion", en: "lantern", vi: "đèn lồng", pos: "noun", pronunciation_vi: "lam-PI-on", pronunciation_en: "lam-PEE-on" },
+      { cell_id: "82f26235-b327-41e4-8f05-f4141a8f45e5", word: "mengundang", en: "to invite", vi: "mời", pos: "verb", pronunciation_vi: "me-ngun-DANG", pronunciation_en: "muh-ngoon-DANG" },
+      { cell_id: "15bf7930-e46e-436b-850c-c9c4d5d8412c", word: "makanan khas", en: "signature/typical food", vi: "món đặc trưng", pos: "noun phrase", pronunciation_vi: "ma-KA-nan KHAS", pronunciation_en: "mah-KAH-nan KHAS" },
+      { cell_id: "25b2bfa0-1d8a-4fe7-a421-68f2cd62ae15", word: "untungnya", en: "luckily", vi: "may là, may mắn thay", pos: "adverb", pronunciation_vi: "un-TUNG-nya", pronunciation_en: "oon-TOONG-nyah" },
     ],
     dialogue: [
-      { speaker: "Andi", text: "Katanya orang Vietnam juga punya tahun baru ya?", vi: "Nghe nói người Việt cũng có năm mới hả?", en: "I heard Vietnamese people have their own new year too?" },
-      { speaker: "Mai", text: "Iya, namanya Tet. Mirip Imlek, tahun baru menurut kalender bulan.", vi: "Ừ, gọi là Tết. Giống Imlek, năm mới theo lịch âm.", en: "Yes, it's called Tết. Like Imlek, the lunar-calendar new year." },
-      { speaker: "Andi", text: "Wah seru! Ayo rayakan bareng, aku undang kamu makan di rumah.", vi: "Wao hay đó! Mình đón cùng nhau đi, tớ mời cậu ăn ở nhà.", en: "Cool! Let's celebrate together, I'll invite you to eat at my place." },
-      { speaker: "Mai", text: "Makasih banyak. Jadi nggak terlalu kangen rumah deh.", vi: "Cảm ơn nhiều. Vậy là đỡ nhớ nhà hẳn.", en: "Thank you so much. Now I won't be too homesick." },
+      { cell_id: "7b3d0503-d6dd-424d-974a-2d6d3fc39fe0", speaker: "Andi", text: "Katanya orang Vietnam juga punya tahun baru ya?", vi: "Nghe nói người Việt cũng có năm mới hả?", en: "I heard Vietnamese people have their own new year too?" },
+      { cell_id: "3a2769e1-4b61-43a5-8368-8c12d6961e18", speaker: "Mai", text: "Iya, namanya Tet. Mirip Imlek, tahun baru menurut kalender bulan.", vi: "Ừ, gọi là Tết. Giống Imlek, năm mới theo lịch âm.", en: "Yes, it's called Tết. Like Imlek, the lunar-calendar new year." },
+      { cell_id: "0612b269-95fc-415e-85e1-76fefeb1dfba", speaker: "Andi", text: "Wah seru! Ayo rayakan bareng, aku undang kamu makan di rumah.", vi: "Wao hay đó! Mình đón cùng nhau đi, tớ mời cậu ăn ở nhà.", en: "Cool! Let's celebrate together, I'll invite you to eat at my place." },
+      { cell_id: "9f45e00b-7c7a-4d33-b2bf-5a1eb6cbe9b4", speaker: "Mai", text: "Makasih banyak. Jadi nggak terlalu kangen rumah deh.", vi: "Cảm ơn nhiều. Vậy là đỡ nhớ nhà hẳn.", en: "Thank you so much. Now I won't be too homesick." },
     ],
     exercises: [
       {

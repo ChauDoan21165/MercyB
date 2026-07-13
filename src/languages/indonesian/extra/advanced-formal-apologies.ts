@@ -6,6 +6,7 @@ type IndonesianLessonSentence = {
 };
 
 type VocabEntry = {
+  cell_id?: string;
   word: string;
   meaning_vi: string;
   meaning_en: string;
@@ -14,6 +15,7 @@ type VocabEntry = {
 };
 
 type DialogueLine = {
+  cell_id?: string;
   speaker: string;
   line: string;
   vi: string;
@@ -117,6 +119,7 @@ export const lessons: IndonesianLesson[] = [
     ],
     vocabulary: [
       {
+        cell_id: "3879df63-044a-4d16-9628-63ffc01ada6d",
         word: 'mohon maaf',
         meaning_vi: 'xin lỗi trang trọng',
         meaning_en: 'please accept my apologies',
@@ -124,6 +127,7 @@ export const lessons: IndonesianLesson[] = [
         example_vi: 'Xin lỗi vì sự phiền toái này.',
       },
       {
+        cell_id: "213ba9a1-e044-4026-bfc9-7554f6fb4178",
         word: 'kekeliruan',
         meaning_vi: 'sai sót, nhầm lẫn',
         meaning_en: 'mistake, error',
@@ -131,6 +135,7 @@ export const lessons: IndonesianLesson[] = [
         example_vi: 'Có sai sót trong email trước đó.',
       },
       {
+        cell_id: "751b0f5e-4c4d-4eab-bc33-0ab4759f4e60",
         word: 'keterlambatan',
         meaning_vi: 'sự chậm trễ',
         meaning_en: 'delay, lateness',
@@ -138,6 +143,7 @@ export const lessons: IndonesianLesson[] = [
         example_vi: 'Sự chậm trễ xảy ra do thời tiết xấu.',
       },
       {
+        cell_id: "e02a2e7d-2c1c-46f8-a842-6cd7a03125d3",
         word: 'tanggung jawab',
         meaning_vi: 'trách nhiệm',
         meaning_en: 'responsibility',
@@ -145,6 +151,7 @@ export const lessons: IndonesianLesson[] = [
         example_vi: 'Chúng tôi nhận hoàn toàn trách nhiệm.',
       },
       {
+        cell_id: "0f031fc6-4df8-4970-a54a-53a117e08bbc",
         word: 'tindak lanjut',
         meaning_vi: 'bước xử lý tiếp theo',
         meaning_en: 'follow-up action',
@@ -152,6 +159,7 @@ export const lessons: IndonesianLesson[] = [
         example_vi: 'Bước xử lý tiếp theo sẽ được bàn sáng mai.',
       },
       {
+        cell_id: "7d7de044-4534-4556-8979-fcf432c8d0a6",
         word: 'surat penjelasan',
         meaning_vi: 'thư giải thích',
         meaning_en: 'explanatory letter',
@@ -159,6 +167,7 @@ export const lessons: IndonesianLesson[] = [
         example_vi: 'Chúng tôi đã chuẩn bị thư giải thích chính thức.',
       },
       {
+        cell_id: "09e559c5-4625-4163-9323-1547f194035a",
         word: 'kompensasi',
         meaning_vi: 'bồi thường, đền bù',
         meaning_en: 'compensation',
@@ -166,6 +175,7 @@ export const lessons: IndonesianLesson[] = [
         example_vi: 'Công ty đề nghị mức bồi thường hợp lý.',
       },
       {
+        cell_id: "54f56958-8d20-4bdc-ad4e-8195e68f56df",
         word: 'hubungan baik',
         meaning_vi: 'quan hệ tốt',
         meaning_en: 'good relationship',
@@ -175,36 +185,42 @@ export const lessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "cd8d2cb1-fe17-43d5-936b-1cc43e49e036",
         speaker: 'Karyawan',
         line: 'Mohon maaf atas keterlambatan respons saya.',
         vi: 'Xin lỗi vì sự chậm trễ trong phản hồi của tôi.',
         en: 'Please accept my apologies for the delay in my response.',
       },
       {
+        cell_id: "b0be352b-603a-4e0c-b947-779f4df910a3",
         speaker: 'Manajer',
         line: 'Tidak apa-apa. Apa ada kekeliruan dalam data yang dikirim?',
         vi: 'Không sao. Có sai sót nào trong dữ liệu đã gửi không?',
         en: 'No problem. Was there any mistake in the data sent?',
       },
       {
+        cell_id: "7384def9-09fd-4514-8223-e83c7f5975f8",
         speaker: 'Karyawan',
         line: 'Ya, kami menemukan kekeliruan dan sudah menyiapkan tindak lanjut.',
         vi: 'Vâng, chúng tôi đã phát hiện sai sót và đã chuẩn bị bước xử lý tiếp theo.',
         en: 'Yes, we found an error and have already prepared the follow-up action.',
       },
       {
+        cell_id: "ba8dab18-43fc-4666-adf2-794aeeb65c3e",
         speaker: 'Manajer',
         line: 'Baik. Tolong kirim surat penjelasan resmi hari ini.',
         vi: 'Được. Vui lòng gửi thư giải thích chính thức hôm nay.',
         en: 'All right. Please send an official explanatory letter today.',
       },
       {
+        cell_id: "f09d0564-eef4-4777-a30b-3e71ce0a8cc4",
         speaker: 'Karyawan',
         line: 'Tentu. Kami bertanggung jawab penuh atas kesalahan ini.',
         vi: 'Chắc chắn rồi. Chúng tôi chịu hoàn toàn trách nhiệm về lỗi này.',
         en: 'Certainly. We take full responsibility for this mistake.',
       },
       {
+        cell_id: "66759b96-4a3b-4a23-a375-7798a77069a0",
         speaker: 'Manajer',
         line: 'Terima kasih. Yang penting, hubungan baik tetap terjaga.',
         vi: 'Cảm ơn. Điều quan trọng là vẫn giữ được quan hệ tốt.',

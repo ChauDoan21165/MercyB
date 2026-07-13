@@ -62,11 +62,11 @@ export const lessons: RussianLesson[] = [
       },
     ],
     vocabulary: [
-      { word: "проверяемая гипотеза", romanization: "proveryayemaya gipoteza", en: "testable hypothesis", vi: "giả thuyết có thể kiểm chứng", pos: "noun phrase", pronunciation_vi: "pra-vye-RYA-ye-ma-ya gi-PO-te-za", pronunciation_en: "pra-vye-RYA-ye-ma-ya gee-PO-te-za" },
-      { word: "ограничения метода", romanization: "ogranicheniya metoda", en: "limits of the method", vi: "giới hạn của phương pháp", pos: "noun phrase", pronunciation_vi: "a-gra-ni-CHE-ni-ya ME-ta-da", pronunciation_en: "a-gra-nee-CHE-nee-ya ME-ta-da" },
-      { word: "доказательства", romanization: "dokazatelstva", en: "evidence / proof", vi: "bằng chứng", pos: "noun (pl.)", pronunciation_vi: "da-ka-ZA-tel-stva", pronunciation_en: "da-ka-ZA-tel-stva" },
-      { word: "однако", romanization: "odnako", en: "however", vi: "tuy nhiên", pos: "discourse marker", pronunciation_vi: "ad-NA-ka", pronunciation_en: "ad-NA-ka" },
-      { word: "из этого следует", romanization: "iz etogo sleduyet", en: "from this it follows", vi: "từ đó suy ra", pos: "phrase", pronunciation_vi: "iz E-ta-va SLE-du-yet", pronunciation_en: "iz E-ta-va SLE-doo-yet" },
+      { cell_id: "7591cb60-151f-47a0-b983-5bc380771722", word: "проверяемая гипотеза", romanization: "proveryayemaya gipoteza", en: "testable hypothesis", vi: "giả thuyết có thể kiểm chứng", pos: "noun phrase", pronunciation_vi: "pra-vye-RYA-ye-ma-ya gi-PO-te-za", pronunciation_en: "pra-vye-RYA-ye-ma-ya gee-PO-te-za" },
+      { cell_id: "81f9de84-1247-40a4-a146-a0720af845bd", word: "ограничения метода", romanization: "ogranicheniya metoda", en: "limits of the method", vi: "giới hạn của phương pháp", pos: "noun phrase", pronunciation_vi: "a-gra-ni-CHE-ni-ya ME-ta-da", pronunciation_en: "a-gra-nee-CHE-nee-ya ME-ta-da" },
+      { cell_id: "07ded539-458b-42f1-a2de-f28e09a7e518", word: "доказательства", romanization: "dokazatelstva", en: "evidence / proof", vi: "bằng chứng", pos: "noun (pl.)", pronunciation_vi: "da-ka-ZA-tel-stva", pronunciation_en: "da-ka-ZA-tel-stva" },
+      { cell_id: "b510d818-2dc2-4397-b265-ea147f42e017", word: "однако", romanization: "odnako", en: "however", vi: "tuy nhiên", pos: "discourse marker", pronunciation_vi: "ad-NA-ka", pronunciation_en: "ad-NA-ka" },
+      { cell_id: "1fa7eef5-e9b8-4394-b1d4-e27601b84dd4", word: "из этого следует", romanization: "iz etogo sleduyet", en: "from this it follows", vi: "từ đó suy ra", pos: "phrase", pronunciation_vi: "iz E-ta-va SLE-du-yet", pronunciation_en: "iz E-ta-va SLE-doo-yet" },
     ],
     exercises: [
       {
@@ -141,11 +141,11 @@ export const lessons: RussianLesson[] = [
       },
     ],
     vocabulary: [
-      { word: "долгосрочные наблюдения", romanization: "dolgosrochnye nablyudeniya", en: "long-term observation", vi: "quan sát dài hạn", pos: "noun phrase", pronunciation_vi: "dal-ga-SROCH-nye nab-lyu-DE-ni-ya", pronunciation_en: "dal-ga-SROCH-nye nab-lyoo-DE-nee-ya" },
-      { word: "тенденция", romanization: "tendentsiya", en: "trend", vi: "xu hướng", pos: "noun", pronunciation_vi: "ten-DEN-tsi-ya", pronunciation_en: "ten-DEN-tsee-ya" },
-      { word: "устойчивые изменения", romanization: "ustoychivye izmeneniya", en: "stable changes", vi: "thay đổi bền vững", pos: "noun phrase", pronunciation_vi: "us-TOY-chi-vye iz-me-NE-ni-ya", pronunciation_en: "us-TOY-chee-vye iz-me-NE-nee-ya" },
-      { word: "различать", romanization: "razlichat", en: "to distinguish", vi: "phân biệt", pos: "verb", pronunciation_vi: "raz-li-CHAT", pronunciation_en: "raz-lee-CHAT" },
-      { word: "поэтому", romanization: "poetomu", en: "therefore", vi: "vì vậy", pos: "discourse marker", pronunciation_vi: "pa-E-ta-mu", pronunciation_en: "pa-E-ta-moo" },
+      { cell_id: "c4e074e1-d31e-40bc-822c-792dba6d9141", word: "долгосрочные наблюдения", romanization: "dolgosrochnye nablyudeniya", en: "long-term observation", vi: "quan sát dài hạn", pos: "noun phrase", pronunciation_vi: "dal-ga-SROCH-nye nab-lyu-DE-ni-ya", pronunciation_en: "dal-ga-SROCH-nye nab-lyoo-DE-nee-ya" },
+      { cell_id: "1c303e7c-e4f6-4eda-b711-8294d3e38012", word: "тенденция", romanization: "tendentsiya", en: "trend", vi: "xu hướng", pos: "noun", pronunciation_vi: "ten-DEN-tsi-ya", pronunciation_en: "ten-DEN-tsee-ya" },
+      { cell_id: "0f1c819b-acce-449e-8447-0bd5e9184e87", word: "устойчивые изменения", romanization: "ustoychivye izmeneniya", en: "stable changes", vi: "thay đổi bền vững", pos: "noun phrase", pronunciation_vi: "us-TOY-chi-vye iz-me-NE-ni-ya", pronunciation_en: "us-TOY-chee-vye iz-me-NE-nee-ya" },
+      { cell_id: "9baae525-628b-4461-a396-c0ce679967fd", word: "различать", romanization: "razlichat", en: "to distinguish", vi: "phân biệt", pos: "verb", pronunciation_vi: "raz-li-CHAT", pronunciation_en: "raz-lee-CHAT" },
+      { cell_id: "9dfbc4df-bd7a-4abe-b1df-426f74ab9b25", word: "поэтому", romanization: "poetomu", en: "therefore", vi: "vì vậy", pos: "discourse marker", pronunciation_vi: "pa-E-ta-mu", pronunciation_en: "pa-E-ta-moo" },
     ],
     exercises: [
       {
@@ -217,10 +217,10 @@ export const lessons: RussianLesson[] = [
       },
     ],
     vocabulary: [
-      { word: "покупательная способность", romanization: "pokupatelnaya sposobnost", en: "purchasing power", vi: "sức mua", pos: "noun phrase", pronunciation_vi: "pa-ku-PA-tel-na-ya spa-SOB-nast", pronunciation_en: "pa-ku-PA-tel-na-ya spa-SOB-nast" },
-      { word: "домохозяйство", romanization: "domokhozyaystvo", en: "household", vi: "hộ gia đình", pos: "noun", pronunciation_vi: "da-ma-kha-ZYAY-stva", pronunciation_en: "da-ma-kha-ZYAY-stva" },
-      { word: "ограничение спроса", romanization: "ogranicheniye sprosa", en: "restraining demand", vi: "hạn chế nhu cầu", pos: "noun phrase", pronunciation_vi: "a-gra-ni-CHE-ni-ye SPRO-sa", pronunciation_en: "a-gra-nee-CHE-nee-ye SPRO-sa" },
-      { word: "уровень цен", romanization: "uroven tsen", en: "price level", vi: "mặt bằng giá", pos: "noun phrase", pronunciation_vi: "U-ra-ven tsen", pronunciation_en: "OO-ra-ven tsen" },
+      { cell_id: "2e97b89e-83c2-4b25-acc1-85d6c7befb3b", word: "покупательная способность", romanization: "pokupatelnaya sposobnost", en: "purchasing power", vi: "sức mua", pos: "noun phrase", pronunciation_vi: "pa-ku-PA-tel-na-ya spa-SOB-nast", pronunciation_en: "pa-ku-PA-tel-na-ya spa-SOB-nast" },
+      { cell_id: "1de4bf16-958e-4d4a-8b3c-597d8be5573f", word: "домохозяйство", romanization: "domokhozyaystvo", en: "household", vi: "hộ gia đình", pos: "noun", pronunciation_vi: "da-ma-kha-ZYAY-stva", pronunciation_en: "da-ma-kha-ZYAY-stva" },
+      { cell_id: "a6176a1d-b515-4f44-a4a9-183bcafd22d7", word: "ограничение спроса", romanization: "ogranicheniye sprosa", en: "restraining demand", vi: "hạn chế nhu cầu", pos: "noun phrase", pronunciation_vi: "a-gra-ni-CHE-ni-ye SPRO-sa", pronunciation_en: "a-gra-nee-CHE-nee-ye SPRO-sa" },
+      { cell_id: "1839ecce-80b3-43f3-83c2-c2ec04d9e4a0", word: "уровень цен", romanization: "uroven tsen", en: "price level", vi: "mặt bằng giá", pos: "noun phrase", pronunciation_vi: "U-ra-ven tsen", pronunciation_en: "OO-ra-ven tsen" },
     ],
     exercises: [
       {
@@ -295,10 +295,10 @@ export const lessons: RussianLesson[] = [
       },
     ],
     vocabulary: [
-      { word: "качество занятости", romanization: "kachestvo zanyatosti", en: "quality of employment", vi: "chất lượng việc làm", pos: "noun phrase", pronunciation_vi: "KA-che-stva za-NYA-ta-sti", pronunciation_en: "KA-che-stva za-NYA-ta-stee" },
-      { word: "нестабильный контракт", romanization: "nestabilny kontrakt", en: "unstable contract", vi: "hợp đồng bấp bênh", pos: "noun phrase", pronunciation_vi: "ne-sta-BIL-ny kan-TRAKT", pronunciation_en: "ne-sta-BEEL-ny kan-TRAKT" },
-      { word: "устойчивость", romanization: "ustoychivost", en: "stability / resilience", vi: "tính bền vững", pos: "noun", pronunciation_vi: "us-TOY-chi-vast", pronunciation_en: "us-TOY-chee-vast" },
-      { word: "иными словами", romanization: "inymi slovami", en: "in other words", vi: "nói cách khác", pos: "discourse marker", pronunciation_vi: "I-ny-mi sla-VA-mi", pronunciation_en: "EE-ny-mee sla-VA-mee" },
+      { cell_id: "9a447c0e-d2b7-41b2-b5f1-32009f2f72ad", word: "качество занятости", romanization: "kachestvo zanyatosti", en: "quality of employment", vi: "chất lượng việc làm", pos: "noun phrase", pronunciation_vi: "KA-che-stva za-NYA-ta-sti", pronunciation_en: "KA-che-stva za-NYA-ta-stee" },
+      { cell_id: "26ed77e4-ca65-44ff-a851-0abdeb411182", word: "нестабильный контракт", romanization: "nestabilny kontrakt", en: "unstable contract", vi: "hợp đồng bấp bênh", pos: "noun phrase", pronunciation_vi: "ne-sta-BIL-ny kan-TRAKT", pronunciation_en: "ne-sta-BEEL-ny kan-TRAKT" },
+      { cell_id: "368a2f89-2eb2-4468-9dbb-f1487c328aba", word: "устойчивость", romanization: "ustoychivost", en: "stability / resilience", vi: "tính bền vững", pos: "noun", pronunciation_vi: "us-TOY-chi-vast", pronunciation_en: "us-TOY-chee-vast" },
+      { cell_id: "379b9a7a-bc1c-43a5-82d7-2d7bcf96eb05", word: "иными словами", romanization: "inymi slovami", en: "in other words", vi: "nói cách khác", pos: "discourse marker", pronunciation_vi: "I-ny-mi sla-VA-mi", pronunciation_en: "EE-ny-mee sla-VA-mee" },
     ],
     exercises: [
       {
@@ -370,10 +370,10 @@ export const lessons: RussianLesson[] = [
       },
     ],
     vocabulary: [
-      { word: "неравенство", romanization: "neravenstvo", en: "inequality", vi: "bất bình đẳng", pos: "noun", pronunciation_vi: "ne-RA-ven-stva", pronunciation_en: "ne-RA-ven-stva" },
-      { word: "общественная мобильность", romanization: "obshchestvennaya mobilnost", en: "social mobility", vi: "dịch chuyển xã hội", pos: "noun phrase", pronunciation_vi: "ab-shchest-VEN-na-ya ma-BIL-nast", pronunciation_en: "ab-shchest-VEN-na-ya ma-BEEL-nast" },
-      { word: "доверие к институтам", romanization: "doverie k institutam", en: "trust in institutions", vi: "niềm tin vào thiết chế", pos: "noun phrase", pronunciation_vi: "da-VE-ri-ye k in-sti-TU-tam", pronunciation_en: "da-VE-ree-ye k in-stee-TOO-tam" },
-      { word: "в результате", romanization: "v rezultate", en: "as a result", vi: "kết quả là", pos: "discourse marker", pronunciation_vi: "v re-zul-TA-te", pronunciation_en: "v re-zool-TA-te" },
+      { cell_id: "2703740d-7ded-42de-8296-53715a6bbb16", word: "неравенство", romanization: "neravenstvo", en: "inequality", vi: "bất bình đẳng", pos: "noun", pronunciation_vi: "ne-RA-ven-stva", pronunciation_en: "ne-RA-ven-stva" },
+      { cell_id: "3baa645a-94be-4c7c-b6c5-6a9b8a4eaa00", word: "общественная мобильность", romanization: "obshchestvennaya mobilnost", en: "social mobility", vi: "dịch chuyển xã hội", pos: "noun phrase", pronunciation_vi: "ab-shchest-VEN-na-ya ma-BIL-nast", pronunciation_en: "ab-shchest-VEN-na-ya ma-BEEL-nast" },
+      { cell_id: "15ec6606-af51-4be6-933c-35606151b239", word: "доверие к институтам", romanization: "doverie k institutam", en: "trust in institutions", vi: "niềm tin vào thiết chế", pos: "noun phrase", pronunciation_vi: "da-VE-ri-ye k in-sti-TU-tam", pronunciation_en: "da-VE-ree-ye k in-stee-TOO-tam" },
+      { cell_id: "5863b331-1fc8-4ccc-87e1-474cf06ab41e", word: "в результате", romanization: "v rezultate", en: "as a result", vi: "kết quả là", pos: "discourse marker", pronunciation_vi: "v re-zul-TA-te", pronunciation_en: "v re-zool-TA-te" },
     ],
     exercises: [
       {
@@ -447,10 +447,10 @@ export const lessons: RussianLesson[] = [
       },
     ],
     vocabulary: [
-      { word: "в данной статье рассматривается", romanization: "v dannoy state rassmatrivayetsya", en: "this article examines", vi: "bài viết này xem xét", pos: "phrase", pronunciation_vi: "v DAN-noy sta-TYE ras-MA-tri-va-yet-sya", pronunciation_en: "v DAN-noy sta-TYE ras-MA-tree-va-yet-sya" },
-      { word: "исходить из предположения", romanization: "iskhodit iz predpolozheniya", en: "to proceed from an assumption", vi: "xuất phát từ giả định", pos: "verb phrase", pronunciation_vi: "is-kha-DIT iz pred-pa-la-ZHE-ni-ya", pronunciation_en: "is-kha-DEET iz pred-pa-la-ZHE-nee-ya" },
-      { word: "главный вывод", romanization: "glavny vyvod", en: "main conclusion", vi: "kết luận chính", pos: "noun phrase", pronunciation_vi: "GLAV-ny VY-vad", pronunciation_en: "GLAV-ny VY-vad" },
-      { word: "недостаточный", romanization: "nedostatochny", en: "insufficient", vi: "không đủ", pos: "adjective", pronunciation_vi: "ne-da-STA-tach-ny", pronunciation_en: "ne-da-STA-tach-ny" },
+      { cell_id: "a9303aec-602c-43ae-a577-c1a795811869", word: "в данной статье рассматривается", romanization: "v dannoy state rassmatrivayetsya", en: "this article examines", vi: "bài viết này xem xét", pos: "phrase", pronunciation_vi: "v DAN-noy sta-TYE ras-MA-tri-va-yet-sya", pronunciation_en: "v DAN-noy sta-TYE ras-MA-tree-va-yet-sya" },
+      { cell_id: "31721f1a-e269-4441-a462-7cbf5f44bfac", word: "исходить из предположения", romanization: "iskhodit iz predpolozheniya", en: "to proceed from an assumption", vi: "xuất phát từ giả định", pos: "verb phrase", pronunciation_vi: "is-kha-DIT iz pred-pa-la-ZHE-ni-ya", pronunciation_en: "is-kha-DEET iz pred-pa-la-ZHE-nee-ya" },
+      { cell_id: "26c37851-38d0-453d-9508-6ec6aa818441", word: "главный вывод", romanization: "glavny vyvod", en: "main conclusion", vi: "kết luận chính", pos: "noun phrase", pronunciation_vi: "GLAV-ny VY-vad", pronunciation_en: "GLAV-ny VY-vad" },
+      { cell_id: "eff0272d-3c0e-4638-9ac1-78c9b504295b", word: "недостаточный", romanization: "nedostatochny", en: "insufficient", vi: "không đủ", pos: "adjective", pronunciation_vi: "ne-da-STA-tach-ny", pronunciation_en: "ne-da-STA-tach-ny" },
     ],
     exercises: [
       {
@@ -527,10 +527,10 @@ export const lessons: RussianLesson[] = [
       },
     ],
     vocabulary: [
-      { word: "транспортная реформа", romanization: "transportnaya reforma", en: "transport reform", vi: "cải cách giao thông", pos: "noun phrase", pronunciation_vi: "trans-PORT-na-ya re-FOR-ma", pronunciation_en: "trans-PORT-na-ya re-FOR-ma" },
-      { word: "сократить", romanization: "sokratit", en: "to reduce / cut", vi: "rút ngắn / giảm", pos: "verb", pronunciation_vi: "sa-kra-TIT", pronunciation_en: "sa-kra-TEET" },
-      { word: "критики указывают", romanization: "kritiki ukazyvayut", en: "critics point out", vi: "giới phê phán chỉ ra", pos: "phrase", pronunciation_vi: "KRI-ti-ki u-KA-zy-va-yut", pronunciation_en: "KREE-tee-kee oo-KA-zy-va-yoot" },
-      { word: "представители мэрии", romanization: "predstaviteli merii", en: "city-hall representatives", vi: "đại diện tòa thị chính", pos: "noun phrase", pronunciation_vi: "pred-sta-VI-te-li ME-ri-i", pronunciation_en: "pred-sta-VEE-te-lee ME-ree-ee" },
+      { cell_id: "e0616fa7-5bac-4b03-815c-50e17cfb6be0", word: "транспортная реформа", romanization: "transportnaya reforma", en: "transport reform", vi: "cải cách giao thông", pos: "noun phrase", pronunciation_vi: "trans-PORT-na-ya re-FOR-ma", pronunciation_en: "trans-PORT-na-ya re-FOR-ma" },
+      { cell_id: "618a5de0-e55f-4ba9-b4dc-610ba516da1c", word: "сократить", romanization: "sokratit", en: "to reduce / cut", vi: "rút ngắn / giảm", pos: "verb", pronunciation_vi: "sa-kra-TIT", pronunciation_en: "sa-kra-TEET" },
+      { cell_id: "a274599e-6b4c-42ec-9ec3-22a61f5237cb", word: "критики указывают", romanization: "kritiki ukazyvayut", en: "critics point out", vi: "giới phê phán chỉ ra", pos: "phrase", pronunciation_vi: "KRI-ti-ki u-KA-zy-va-yut", pronunciation_en: "KREE-tee-kee oo-KA-zy-va-yoot" },
+      { cell_id: "73f65ec7-0587-4973-8039-777cfe4dca70", word: "представители мэрии", romanization: "predstaviteli merii", en: "city-hall representatives", vi: "đại diện tòa thị chính", pos: "noun phrase", pronunciation_vi: "pred-sta-VI-te-li ME-ri-i", pronunciation_en: "pred-sta-VEE-te-lee ME-ree-ee" },
     ],
     exercises: [
       {
@@ -604,10 +604,10 @@ export const lessons: RussianLesson[] = [
       },
     ],
     vocabulary: [
-      { word: "удалённая работа", romanization: "udalyonnaya rabota", en: "remote work", vi: "làm việc từ xa", pos: "noun phrase", pronunciation_vi: "u-da-LYON-na-ya ra-BO-ta", pronunciation_en: "oo-da-LYON-na-ya ra-BO-ta" },
-      { word: "производительность", romanization: "proizvoditelnost", en: "productivity", vi: "năng suất", pos: "noun", pronunciation_vi: "pra-iz-va-DI-tel-nast", pronunciation_en: "pra-eez-va-DEE-tel-nast" },
-      { word: "командная динамика", romanization: "komandnaya dinamika", en: "team dynamics", vi: "động lực nhóm", pos: "noun phrase", pronunciation_vi: "ka-MAND-na-ya di-NA-mi-ka", pronunciation_en: "ka-MAND-na-ya dee-NA-mee-ka" },
-      { word: "гибридная модель", romanization: "gibridnaya model", en: "hybrid model", vi: "mô hình lai", pos: "noun phrase", pronunciation_vi: "gi-BRID-na-ya ma-DEL", pronunciation_en: "gee-BREED-na-ya ma-DEL" },
+      { cell_id: "6442885f-271a-43ef-a52e-afbf2cd45823", word: "удалённая работа", romanization: "udalyonnaya rabota", en: "remote work", vi: "làm việc từ xa", pos: "noun phrase", pronunciation_vi: "u-da-LYON-na-ya ra-BO-ta", pronunciation_en: "oo-da-LYON-na-ya ra-BO-ta" },
+      { cell_id: "7cbcaf7c-ee3b-4757-9635-020ca47efe98", word: "производительность", romanization: "proizvoditelnost", en: "productivity", vi: "năng suất", pos: "noun", pronunciation_vi: "pra-iz-va-DI-tel-nast", pronunciation_en: "pra-eez-va-DEE-tel-nast" },
+      { cell_id: "3e727503-9e3c-4282-be0b-88fe02656417", word: "командная динамика", romanization: "komandnaya dinamika", en: "team dynamics", vi: "động lực nhóm", pos: "noun phrase", pronunciation_vi: "ka-MAND-na-ya di-NA-mi-ka", pronunciation_en: "ka-MAND-na-ya dee-NA-mee-ka" },
+      { cell_id: "057ad8e1-523c-41eb-a629-2e1775078043", word: "гибридная модель", romanization: "gibridnaya model", en: "hybrid model", vi: "mô hình lai", pos: "noun phrase", pronunciation_vi: "gi-BRID-na-ya ma-DEL", pronunciation_en: "gee-BREED-na-ya ma-DEL" },
     ],
     exercises: [
       {
@@ -627,6 +627,7 @@ export const lessons: RussianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "b279acd2-3b02-480e-8c5b-c6586a1bf9f4",
         speaker: "Журналист",
         text: "Почему часть работодателей снова требует возвращения в офис?",
         romanization: "Pochemu chast rabotodateley snova trebuyet vozvrashcheniya v ofis?",
@@ -634,6 +635,7 @@ export const lessons: RussianLesson[] = [
         en: "Why are some employers again demanding a return to the office?",
       },
       {
+        cell_id: "27af9596-2761-4486-b14c-1cde51111658",
         speaker: "Эксперт",
         text: "Не потому что упала производительность, а из-за слабой командной динамики.",
         romanization: "Ne potomu chto upala proizvoditelnost, a iz-za slaboy komandnoy dinamiki.",
@@ -695,10 +697,10 @@ export const lessons: RussianLesson[] = [
       },
     ],
     vocabulary: [
-      { word: "смягчение", romanization: "smyagcheniye", en: "mitigation", vi: "giảm thiểu", pos: "noun", pronunciation_vi: "smyag-CHE-ni-ye", pronunciation_en: "smyag-CHE-nee-ye" },
-      { word: "адаптация", romanization: "adaptatsiya", en: "adaptation", vi: "thích ứng", pos: "noun", pronunciation_vi: "a-dap-TA-tsi-ya", pronunciation_en: "a-dap-TA-tsee-ya" },
-      { word: "неизбежный", romanization: "neizbezhny", en: "unavoidable", vi: "không thể tránh", pos: "adjective", pronunciation_vi: "ne-iz-BEZH-ny", pronunciation_en: "ne-eez-BEZH-ny" },
-      { word: "на самом деле", romanization: "na samom dele", en: "in fact / actually", vi: "thực ra", pos: "discourse marker", pronunciation_vi: "na SA-mom DE-le", pronunciation_en: "na SA-mom DE-le" },
+      { cell_id: "080b688d-b518-4915-b7ce-6a3c36ec11d1", word: "смягчение", romanization: "smyagcheniye", en: "mitigation", vi: "giảm thiểu", pos: "noun", pronunciation_vi: "smyag-CHE-ni-ye", pronunciation_en: "smyag-CHE-nee-ye" },
+      { cell_id: "6c03f300-147e-45e4-a391-3b12e40a98c1", word: "адаптация", romanization: "adaptatsiya", en: "adaptation", vi: "thích ứng", pos: "noun", pronunciation_vi: "a-dap-TA-tsi-ya", pronunciation_en: "a-dap-TA-tsee-ya" },
+      { cell_id: "804381a1-927a-48cf-a6b0-620f5fdbc1a6", word: "неизбежный", romanization: "neizbezhny", en: "unavoidable", vi: "không thể tránh", pos: "adjective", pronunciation_vi: "ne-iz-BEZH-ny", pronunciation_en: "ne-eez-BEZH-ny" },
+      { cell_id: "46aa1b71-4ad5-48c0-92d2-29a23b940015", word: "на самом деле", romanization: "na samom dele", en: "in fact / actually", vi: "thực ra", pos: "discourse marker", pronunciation_vi: "na SA-mom DE-le", pronunciation_en: "na SA-mom DE-le" },
     ],
     exercises: [
       {
@@ -771,10 +773,10 @@ export const lessons: RussianLesson[] = [
       },
     ],
     vocabulary: [
-      { word: "медиаграмотность", romanization: "mediagramotnost", en: "media literacy", vi: "năng lực truyền thông", pos: "noun", pronunciation_vi: "me-di-a-GRA-mat-nast", pronunciation_en: "me-dee-a-GRA-mat-nast" },
-      { word: "источник", romanization: "istochnik", en: "source", vi: "nguồn (tin)", pos: "noun", pronunciation_vi: "is-TOCH-nik", pronunciation_en: "ees-TOCH-neek" },
-      { word: "степень доказанности", romanization: "stepen dokazannosti", en: "degree of proof", vi: "mức độ được chứng minh", pos: "noun phrase", pronunciation_vi: "STE-pen da-ka-ZAN-nas-ti", pronunciation_en: "STE-pen da-ka-ZAN-nas-tee" },
-      { word: "за кадром", romanization: "za kadrom", en: "off-screen / left out", vi: "ngoài khung / bị bỏ sót", pos: "phrase", pronunciation_vi: "za KAD-ram", pronunciation_en: "za KAD-ram" },
+      { cell_id: "a39f3f48-45be-4510-8985-93f9b0f09019", word: "медиаграмотность", romanization: "mediagramotnost", en: "media literacy", vi: "năng lực truyền thông", pos: "noun", pronunciation_vi: "me-di-a-GRA-mat-nast", pronunciation_en: "me-dee-a-GRA-mat-nast" },
+      { cell_id: "9011b8a9-f22c-42ed-b36d-76abc2077d7b", word: "источник", romanization: "istochnik", en: "source", vi: "nguồn (tin)", pos: "noun", pronunciation_vi: "is-TOCH-nik", pronunciation_en: "ees-TOCH-neek" },
+      { cell_id: "36a7aa21-efe9-4f63-b2ba-488a7b591587", word: "степень доказанности", romanization: "stepen dokazannosti", en: "degree of proof", vi: "mức độ được chứng minh", pos: "noun phrase", pronunciation_vi: "STE-pen da-ka-ZAN-nas-ti", pronunciation_en: "STE-pen da-ka-ZAN-nas-tee" },
+      { cell_id: "8dfc91d7-7659-4750-be03-2898bd6ae24d", word: "за кадром", romanization: "za kadrom", en: "off-screen / left out", vi: "ngoài khung / bị bỏ sót", pos: "phrase", pronunciation_vi: "za KAD-ram", pronunciation_en: "za KAD-ram" },
     ],
     exercises: [
       {
@@ -849,10 +851,10 @@ export const lessons: RussianLesson[] = [
       },
     ],
     vocabulary: [
-      { word: "позиция", romanization: "pozitsiya", en: "position / stance", vi: "quan điểm", pos: "noun", pronunciation_vi: "pa-ZI-tsi-ya", pronunciation_en: "pa-ZEE-tsee-ya" },
-      { word: "аргумент", romanization: "argument", en: "argument", vi: "lập luận", pos: "noun", pronunciation_vi: "ar-gu-MENT", pronunciation_en: "ar-goo-MENT" },
-      { word: "основание", romanization: "osnovaniye", en: "grounds / basis", vi: "căn cứ", pos: "noun", pronunciation_vi: "as-na-VA-ni-ye", pronunciation_en: "as-na-VA-nee-ye" },
-      { word: "возражение", romanization: "vozrazheniye", en: "objection", vi: "phản bác", pos: "noun", pronunciation_vi: "va-zra-ZHE-ni-ye", pronunciation_en: "va-zra-ZHE-nee-ye" },
+      { cell_id: "d2584404-ef1b-4086-949f-b9aadf5212e6", word: "позиция", romanization: "pozitsiya", en: "position / stance", vi: "quan điểm", pos: "noun", pronunciation_vi: "pa-ZI-tsi-ya", pronunciation_en: "pa-ZEE-tsee-ya" },
+      { cell_id: "c8584bd8-12cb-4833-8247-6f46cc7e87fe", word: "аргумент", romanization: "argument", en: "argument", vi: "lập luận", pos: "noun", pronunciation_vi: "ar-gu-MENT", pronunciation_en: "ar-goo-MENT" },
+      { cell_id: "6cd8fe9b-bf78-4c82-aa0a-713fdffe04ed", word: "основание", romanization: "osnovaniye", en: "grounds / basis", vi: "căn cứ", pos: "noun", pronunciation_vi: "as-na-VA-ni-ye", pronunciation_en: "as-na-VA-nee-ye" },
+      { cell_id: "330773ad-796f-429d-897e-cd3810809af5", word: "возражение", romanization: "vozrazheniye", en: "objection", vi: "phản bác", pos: "noun", pronunciation_vi: "va-zra-ZHE-ni-ye", pronunciation_en: "va-zra-ZHE-nee-ye" },
     ],
     exercises: [
       {
@@ -925,11 +927,11 @@ export const lessons: RussianLesson[] = [
       },
     ],
     vocabulary: [
-      { word: "однако", romanization: "odnako", en: "however", vi: "tuy nhiên", pos: "discourse marker", pronunciation_vi: "ad-NA-ka", pronunciation_en: "ad-NA-ka" },
-      { word: "при этом", romanization: "pri etom", en: "at the same time / yet", vi: "đồng thời / dù vậy", pos: "discourse marker", pronunciation_vi: "pri E-tam", pronunciation_en: "pree E-tam" },
-      { word: "по сути", romanization: "po suti", en: "in essence", vi: "về bản chất", pos: "discourse marker", pronunciation_vi: "pa SU-ti", pronunciation_en: "pa SOO-tee" },
-      { word: "в целом", romanization: "v tselom", en: "overall / on the whole", vi: "nhìn chung", pos: "discourse marker", pronunciation_vi: "v TSE-lam", pronunciation_en: "v TSE-lam" },
-      { word: "хотя", romanization: "khotya", en: "although", vi: "mặc dù", pos: "conjunction", pronunciation_vi: "kha-TYA", pronunciation_en: "kha-TYA" },
+      { cell_id: "70f0e9c1-3eb2-46c8-b490-0d6c56fa9db8", word: "однако", romanization: "odnako", en: "however", vi: "tuy nhiên", pos: "discourse marker", pronunciation_vi: "ad-NA-ka", pronunciation_en: "ad-NA-ka" },
+      { cell_id: "762a5ef1-1ef4-4312-b2b8-bdfc75213b00", word: "при этом", romanization: "pri etom", en: "at the same time / yet", vi: "đồng thời / dù vậy", pos: "discourse marker", pronunciation_vi: "pri E-tam", pronunciation_en: "pree E-tam" },
+      { cell_id: "b342f42c-0e52-4a82-83c1-8948d477ef17", word: "по сути", romanization: "po suti", en: "in essence", vi: "về bản chất", pos: "discourse marker", pronunciation_vi: "pa SU-ti", pronunciation_en: "pa SOO-tee" },
+      { cell_id: "e0471d9f-4ff5-4b3a-b473-f2214839a2f0", word: "в целом", romanization: "v tselom", en: "overall / on the whole", vi: "nhìn chung", pos: "discourse marker", pronunciation_vi: "v TSE-lam", pronunciation_en: "v TSE-lam" },
+      { cell_id: "35514c8f-b606-466a-b637-c0ed3b472c37", word: "хотя", romanization: "khotya", en: "although", vi: "mặc dù", pos: "conjunction", pronunciation_vi: "kha-TYA", pronunciation_en: "kha-TYA" },
     ],
     exercises: [
       {

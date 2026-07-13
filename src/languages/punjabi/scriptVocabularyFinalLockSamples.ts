@@ -18,6 +18,7 @@ export type PunjabiFinalLockFocus =
 export type PunjabiFinalLockStage = "final_lock" | "owner_acceptance" | "final_acceptance" | "pre_integration" | "sanity";
 
 export type PunjabiScriptVocabularyFinalLockSample = {
+  cell_id?: string;
   id: string;
   focus: PunjabiFinalLockFocus;
   stage: PunjabiFinalLockStage;
@@ -39,6 +40,7 @@ export type PunjabiScriptVocabularyFinalLockSample = {
 };
 
 export type PunjabiScriptVocabularyFinalLockSection = {
+  cell_id?: string;
   focus: PunjabiFinalLockFocus;
   title_vi: string;
   title_en: string;

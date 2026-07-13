@@ -28,6 +28,7 @@ export type LessonSentence = {
 };
 
 export type VocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -39,6 +40,7 @@ export type VocabEntry = {
 };
 
 export type DialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -184,6 +186,7 @@ export const lesson: ItalianLesson = {
 
   vocabulary: [
     {
+      cell_id: "33cb1bbb-9349-4634-bba8-1a3b2099ceb8",
       word: "un appuntamento",
       en: "an appointment",
       vi: "một cuộc hẹn",
@@ -192,6 +195,7 @@ export const lesson: ItalianLesson = {
       pronunciation_en: "un ap-pun-ta-MEN-to — never drop the 'un'",
     },
     {
+      cell_id: "98b4314c-31e8-46bf-af94-6c9ee25aba77",
       word: "il documento",
       en: "the document",
       vi: "giấy tờ",
@@ -200,6 +204,7 @@ export const lesson: ItalianLesson = {
       pronunciation_en: "il do-cu-MEN-to — 'Ho bisogno DEL documento'",
     },
     {
+      cell_id: "4f616def-9363-4267-bf63-9e75bc2dd99f",
       word: "il problema",
       en: "the problem",
       vi: "vấn đề",
@@ -208,6 +213,7 @@ export const lesson: ItalianLesson = {
       pronunciation_en: "il pro-BLE-ma — MASCULINE despite the -a ending",
     },
     {
+      cell_id: "54f1e3c7-f3c8-4a36-b0b0-fe7057451459",
       word: "il sistema",
       en: "the system",
       vi: "hệ thống",
@@ -216,6 +222,7 @@ export const lesson: ItalianLesson = {
       pronunciation_en: "il si-STE-ma — masculine: 'IL sistema', not 'la sistema'",
     },
     {
+      cell_id: "3d3cbdf9-130f-4333-a5f3-543a0d1ed92e",
       word: "le informazioni",
       en: "the information / details",
       vi: "thông tin",
@@ -224,6 +231,7 @@ export const lesson: ItalianLesson = {
       pronunciation_en: "le in-for-ma-TSYO-nee — feminine plural: 'informazioni importanti'",
     },
     {
+      cell_id: "e2a0cac5-f80c-442f-9651-7758669adeb5",
       word: "avere bisogno di",
       en: "to need",
       vi: "cần",
@@ -232,6 +240,7 @@ export const lesson: ItalianLesson = {
       pronunciation_en: "a-VE-re bi-SO-nyo DEE — always with 'di': 'ho bisogno DI aiuto'",
     },
     {
+      cell_id: "3afea46a-4495-4a62-8351-bb4720226e4e",
       word: "partecipare a",
       en: "to take part in / attend",
       vi: "tham gia",
@@ -240,6 +249,7 @@ export const lesson: ItalianLesson = {
       pronunciation_en: "par-te-chee-PA-re AH — needs 'a/alla': 'partecipo ALLA lezione'",
     },
     {
+      cell_id: "8f06fe9d-e4af-4e58-a948-df499f35aded",
       word: "andare",
       en: "to go",
       vi: "đi",
@@ -248,6 +258,7 @@ export const lesson: ItalianLesson = {
       pronunciation_en: "an-DA-re — past with essere: 'sono andato/a'",
     },
     {
+      cell_id: "ccb7bb9c-4aae-490e-bd7b-26bb60d8d6a3",
       word: "vorrei",
       en: "I'd like (polite)",
       vi: "tôi muốn xin (lịch sự)",
@@ -256,6 +267,7 @@ export const lesson: ItalianLesson = {
       pronunciation_en: "vor-RAY — softer than 'voglio'; use for requests",
     },
     {
+      cell_id: "d5f7ef70-b997-461f-b7b3-a815f9e55cb4",
       word: "il malinteso",
       en: "the misunderstanding",
       vi: "sự hiểu lầm",
@@ -267,24 +279,28 @@ export const lesson: ItalianLesson = {
 
   dialogue: [
     {
+      cell_id: "3cd8dbd2-f58b-4bc7-880b-ab1be034f326",
       speaker: "Linh",
       text: "Ho appuntamento domani. Voglio risposta.",
       vi: "(SAI) Ngày mai tôi có hẹn. Tôi muốn câu trả lời.",
       en: "(WRONG) I have appointment tomorrow. I want answer.",
     },
     {
+      cell_id: "d257b15b-8a8a-4d57-80a0-68d52fb0453a",
       speaker: "Insegnante",
       text: "Quasi. Aggiungi gli articoli e ammorbidisci il tono.",
       vi: "Gần đúng. Thêm mạo từ và làm mềm giọng điệu.",
       en: "Almost. Add the articles and soften the tone.",
     },
     {
+      cell_id: "1d71242b-17e9-413a-be4a-e7853d2c65d4",
       speaker: "Linh",
       text: "Ho un appuntamento domani. Vorrei una risposta, per favore.",
       vi: "(ĐÚNG) Ngày mai tôi có một cuộc hẹn. Tôi muốn xin một câu trả lời ạ.",
       en: "(RIGHT) I have an appointment tomorrow. I'd like an answer, please.",
     },
     {
+      cell_id: "28e3b244-0783-4823-8d74-dea87d7ef97f",
       speaker: "Insegnante",
       text: "Perfetto. Articoli, condizionale, 'per favore': suona naturale.",
       vi: "Hoàn hảo. Mạo từ, thể điều kiện, 'per favore': nghe tự nhiên.",

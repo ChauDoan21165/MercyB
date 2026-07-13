@@ -13,6 +13,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -22,6 +23,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -235,41 +237,46 @@ export const lessons: IndonesianLesson[] = [
     tip_advice_en:
       "Tip for Vietnamese speakers: Vietnamese also softens difficult conversations, so transfer that habit into Indonesian. Use a four-step frame: acknowledge (`Saya paham maksud Anda`), name the feeling (`saya agak kecewa/khawatir`), invite calm discussion (`mari bicara baik-baik`), and preserve the relationship (`terima kasih sudah mendengarkan`). Avoid opening with `Kamu salah` or `Saya marah` if your goal is to solve the issue.",
     vocabulary: [
-      { word: "senang", en: "happy, pleased", vi: "vui", pos: "adjective", pronunciation_vi: "se-NANG", pronunciation_en: "se-NANG" },
-      { word: "kecewa", en: "disappointed", vi: "thất vọng", pos: "adjective", pronunciation_vi: "ke-CE-wa", pronunciation_en: "ke-CHE-wa" },
-      { word: "khawatir", en: "worried, concerned", vi: "lo lắng", pos: "adjective", pronunciation_vi: "kha-WA-tir", pronunciation_en: "kha-WA-teer" },
-      { word: "tersinggung", en: "offended, hurt", vi: "bị xúc phạm, chạm tự ái", pos: "adjective/passive verb", pronunciation_vi: "ter-SING-gung", pronunciation_en: "ter-SING-goong" },
-      { word: "malu", en: "embarrassed, shy", vi: "ngại, xấu hổ", pos: "adjective", pronunciation_vi: "MA-lu", pronunciation_en: "MA-loo" },
-      { word: "perasaan", en: "feeling", vi: "cảm xúc", pos: "noun", pronunciation_vi: "pe-RA-sa-an", pronunciation_en: "pe-RA-sa-an" },
-      { word: "menenangkan diri", en: "to calm oneself down", vi: "tự bình tĩnh lại", pos: "verb phrase", pronunciation_vi: "me-ne-NANG-kan DI-ri", pronunciation_en: "me-ne-NANG-kan DEE-ri" },
-      { word: "bicara baik-baik", en: "to talk calmly and respectfully", vi: "nói chuyện tử tế/bình tĩnh", pos: "verb phrase", pronunciation_vi: "bi-CA-ra BAIK-BAIK", pronunciation_en: "bi-CHA-ra BAIK-BAIK" },
+      { cell_id: "304f6426-5c8f-4f4b-9cf2-f5a8b414eb84", word: "senang", en: "happy, pleased", vi: "vui", pos: "adjective", pronunciation_vi: "se-NANG", pronunciation_en: "se-NANG" },
+      { cell_id: "354bdeb9-8a68-4e68-b6bb-a0e9c34c030d", word: "kecewa", en: "disappointed", vi: "thất vọng", pos: "adjective", pronunciation_vi: "ke-CE-wa", pronunciation_en: "ke-CHE-wa" },
+      { cell_id: "e647b46e-dce0-49fb-ad85-27b1aa14e1f9", word: "khawatir", en: "worried, concerned", vi: "lo lắng", pos: "adjective", pronunciation_vi: "kha-WA-tir", pronunciation_en: "kha-WA-teer" },
+      { cell_id: "14d0f847-eebe-4e5f-9b8f-87fb8e17754e", word: "tersinggung", en: "offended, hurt", vi: "bị xúc phạm, chạm tự ái", pos: "adjective/passive verb", pronunciation_vi: "ter-SING-gung", pronunciation_en: "ter-SING-goong" },
+      { cell_id: "4ba3f0c9-2361-49dc-8c22-b7f2cd671247", word: "malu", en: "embarrassed, shy", vi: "ngại, xấu hổ", pos: "adjective", pronunciation_vi: "MA-lu", pronunciation_en: "MA-loo" },
+      { cell_id: "66aa8e8d-6e35-4537-a57b-ca84315aca39", word: "perasaan", en: "feeling", vi: "cảm xúc", pos: "noun", pronunciation_vi: "pe-RA-sa-an", pronunciation_en: "pe-RA-sa-an" },
+      { cell_id: "6b8229d9-4d02-491b-9760-065b4d848648", word: "menenangkan diri", en: "to calm oneself down", vi: "tự bình tĩnh lại", pos: "verb phrase", pronunciation_vi: "me-ne-NANG-kan DI-ri", pronunciation_en: "me-ne-NANG-kan DEE-ri" },
+      { cell_id: "32d17cd4-13a2-4c37-a3da-a0e2879ca455", word: "bicara baik-baik", en: "to talk calmly and respectfully", vi: "nói chuyện tử tế/bình tĩnh", pos: "verb phrase", pronunciation_vi: "bi-CA-ra BAIK-BAIK", pronunciation_en: "bi-CHA-ra BAIK-BAIK" },
     ],
     dialogue: [
       {
+        cell_id: "d1c0ef79-ee09-431d-b867-dfb7a2942ce8",
         speaker: "Rani",
         text: "Boleh saya menyampaikan perasaan saya sebentar?",
         vi: "Tôi có thể nói cảm xúc của mình một chút được không?",
         en: "May I express how I feel for a moment?",
       },
       {
+        cell_id: "d51f3ac2-5d96-4e20-b022-9a6855eb098e",
         speaker: "Dimas",
         text: "Boleh, silakan. Saya akan mendengarkan.",
         vi: "Được, xin mời. Tôi sẽ lắng nghe.",
         en: "Yes, please. I will listen.",
       },
       {
+        cell_id: "17aa45e4-150d-4198-9112-49b7b2803c4b",
         speaker: "Rani",
         text: "Terus terang, saya agak kecewa dan sedikit tersinggung dengan ucapan tadi.",
         vi: "Thành thật mà nói, tôi hơi thất vọng và hơi chạm tự ái vì lời nói lúc nãy.",
         en: "Frankly, I felt a bit disappointed and a little hurt by what was said earlier.",
       },
       {
+        cell_id: "45a5c641-f568-46bb-a674-53d5a86cea90",
         speaker: "Dimas",
         text: "Maaf, saya tidak bermaksud menyakiti perasaan kamu.",
         vi: "Xin lỗi, tôi không có ý làm tổn thương cảm xúc của bạn.",
         en: "Sorry, I did not mean to hurt your feelings.",
       },
       {
+        cell_id: "be38ac82-31bb-4e80-834f-0b72b707e933",
         speaker: "Rani",
         text: "Tidak apa-apa. Mari kita bicara baik-baik supaya tidak salah paham.",
         vi: "Không sao. Chúng ta hãy nói chuyện bình tĩnh để không hiểu lầm.",

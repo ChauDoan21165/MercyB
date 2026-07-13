@@ -16,6 +16,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   /** Indonesian word/phrase. */
   word: string;
   /** English meaning. */
@@ -31,6 +32,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   /** Indonesian line. */
   text: string;
@@ -193,6 +195,7 @@ export const lessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: learn the frame `Maaf, kamar saya...`, `Saya sudah melapor...`, `Bisa pindah kamar?`, `Saya mau minta refund`. Distinguish `kotor` (dirty), `rusak` (broken), `tidak dingin` (not cold), and `tidak menyala` (does not turn on/work).",
     vocabulary: [
       {
+        cell_id: "4e7b57c0-8886-46e5-91b3-02318ed65c9b",
         word: "kamar kotor",
         en: "dirty room",
         vi: "phòng bẩn",
@@ -201,6 +204,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "KA-mar KO-tor",
       },
       {
+        cell_id: "f2335299-a970-41e6-8db9-2aaef8b1e795",
         word: "AC rusak",
         en: "broken air conditioner",
         vi: "máy lạnh hỏng",
@@ -209,6 +213,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "A-C ROO-sak",
       },
       {
+        cell_id: "4f1499cf-8d0f-45a9-a799-1b1c041e0481",
         word: "air panas",
         en: "hot water",
         vi: "nước nóng",
@@ -217,6 +222,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "A-ir PA-nas",
       },
       {
+        cell_id: "174400d7-910d-40f9-b658-ac6138684978",
         word: "pindah kamar",
         en: "move rooms",
         vi: "chuyển phòng",
@@ -225,6 +231,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "PIN-dah KA-mar",
       },
       {
+        cell_id: "50fdc765-7b11-4ef5-b1fb-e5a1bba06a2f",
         word: "refund hotel",
         en: "hotel refund",
         vi: "hoàn tiền khách sạn",
@@ -233,6 +240,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "RE-fund ho-TEL",
       },
       {
+        cell_id: "454004b9-e233-494e-be7e-f1c486429afa",
         word: "resepsionis",
         en: "receptionist",
         vi: "lễ tân",
@@ -241,6 +249,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "re-sep-si-O-nis",
       },
       {
+        cell_id: "6631ac9b-083e-49f0-94f0-23a7588180a5",
         word: "manajer",
         en: "manager",
         vi: "quản lý",
@@ -249,6 +258,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "ma-NA-jer",
       },
       {
+        cell_id: "d36a4ea2-ef03-4a68-b3a3-8dfdfd3f6cc6",
         word: "ulasan online",
         en: "online review",
         vi: "đánh giá online",
@@ -259,30 +269,35 @@ export const lessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "8a7f989a-d7f3-4a2e-8a99-6d8fd3b798e6",
         speaker: "Tamu",
         text: "Maaf, kamar saya kotor dan AC-nya tidak dingin sejak check-in.",
         vi: "Xin lỗi, phòng của tôi bẩn và máy lạnh không mát từ lúc nhận phòng.",
         en: "Sorry, my room is dirty and the AC has not been cold since check-in.",
       },
       {
+        cell_id: "7d2a4b7a-d7ca-4caf-8d71-f48f7d57255c",
         speaker: "Resepsionis",
         text: "Mohon maaf, Bapak/Ibu. Apakah ada foto kondisinya?",
         vi: "Chúng tôi xin lỗi. Quý khách có ảnh tình trạng đó không?",
         en: "We apologize, Sir/Madam. Do you have a photo of the condition?",
       },
       {
+        cell_id: "b9379a69-fd9a-4c8c-bbac-d59146567411",
         speaker: "Tamu",
         text: "Ada. Saya juga sudah melapor tadi malam, tapi belum ada perbaikan.",
         vi: "Có. Tối qua tôi cũng đã báo rồi, nhưng vẫn chưa có sửa chữa.",
         en: "Yes. I also reported it last night, but there has been no repair yet.",
       },
       {
+        cell_id: "6fddd9c3-a097-43e1-a781-2be4c1ea2f3d",
         speaker: "Tamu",
         text: "Kalau bisa, saya ingin pindah kamar yang lebih bersih.",
         vi: "Nếu được, tôi muốn chuyển sang phòng sạch hơn.",
         en: "If possible, I would like to move to a cleaner room.",
       },
       {
+        cell_id: "980cf988-4fea-402d-a15f-5d68787bca2c",
         speaker: "Resepsionis",
         text: "Saya cek ketersediaan kamar dulu, atau saya panggil manajer.",
         vi: "Tôi kiểm tra tình trạng phòng trước, hoặc tôi gọi quản lý.",

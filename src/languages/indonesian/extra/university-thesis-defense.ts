@@ -13,6 +13,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -22,6 +23,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -221,49 +223,55 @@ export const lessons: IndonesianLesson[] = [
     tip_advice_en:
       "Tip for Vietnamese speakers: in a thesis defense, avoid overly casual speech like `aku`, `nggak tau`, or `ini slide saya aja`. Keep the register formal: `dosen pembimbing`, `penguji`, `revisi`, `pertanyaan akademik`, `nilai akhir`, `wisuda`. When unsure, start with `Terima kasih atas pertanyaannya, saya akan menjelaskan...`.",
     vocabulary: [
-      { word: "sidang skripsi", en: "thesis defense", vi: "buoi bao ve luan van", pos: "noun phrase", pronunciation_vi: "SI-dang SKRI-psi", pronunciation_en: "SEE-dang SKREE-psi" },
-      { word: "dosen pembimbing", en: "thesis supervisor", vi: "giang vien huong dan", pos: "noun phrase", pronunciation_vi: "DO-sen pem-BIM-bing", pronunciation_en: "DOH-sen pem-BEEM-bing" },
-      { word: "penguji", en: "examiner", vi: "giam khao", pos: "noun", pronunciation_vi: "pe-NGU-ji", pronunciation_en: "peh-NGOO-jee" },
-      { word: "revisi", en: "revision / correction", vi: "chinh sua", pos: "noun", pronunciation_vi: "re-VI-si", pronunciation_en: "reh-VEE-see" },
-      { word: "presentasi", en: "presentation", vi: "bai trinh bay", pos: "noun", pronunciation_vi: "pre-sen-TA-si", pronunciation_en: "pre-sen-TA-see" },
-      { word: "pertanyaan akademik", en: "academic question", vi: "cau hoi hoc thuat", pos: "noun phrase", pronunciation_vi: "per-ta-NYA-an a-ka-DE-mik", pronunciation_en: "per-tah-NYAH-an ah-kah-DEH-meek" },
-      { word: "nilai akhir", en: "final grade", vi: "diem cuoi cung", pos: "noun phrase", pronunciation_vi: "NI-lai A-khir", pronunciation_en: "NEE-lie AH-kheer" },
-      { word: "wisuda", en: "graduation ceremony", vi: "le tot nghiep", pos: "noun", pronunciation_vi: "wi-SU-da", pronunciation_en: "wee-SOO-dah" },
-      { word: "berkas revisi", en: "revision documents", vi: "ho so chinh sua", pos: "noun phrase", pronunciation_vi: "BER-kas re-VI-si", pronunciation_en: "BER-kas reh-VEE-see" },
-      { word: "bimbingan", en: "guidance / supervision", vi: "su huong dan", pos: "noun", pronunciation_vi: "bim-BIN-gan", pronunciation_en: "beem-BEENG-an" },
+      { cell_id: "99b87989-a1c4-4a2a-b3dc-e882baaabb5a", word: "sidang skripsi", en: "thesis defense", vi: "buoi bao ve luan van", pos: "noun phrase", pronunciation_vi: "SI-dang SKRI-psi", pronunciation_en: "SEE-dang SKREE-psi" },
+      { cell_id: "8d77c689-b5e0-4def-9992-30bae97ea62e", word: "dosen pembimbing", en: "thesis supervisor", vi: "giang vien huong dan", pos: "noun phrase", pronunciation_vi: "DO-sen pem-BIM-bing", pronunciation_en: "DOH-sen pem-BEEM-bing" },
+      { cell_id: "d3ff1995-6863-4533-81db-cd1ad7128e30", word: "penguji", en: "examiner", vi: "giam khao", pos: "noun", pronunciation_vi: "pe-NGU-ji", pronunciation_en: "peh-NGOO-jee" },
+      { cell_id: "1fafe53b-4d59-455d-acdb-823134d7e507", word: "revisi", en: "revision / correction", vi: "chinh sua", pos: "noun", pronunciation_vi: "re-VI-si", pronunciation_en: "reh-VEE-see" },
+      { cell_id: "94d313d6-5a62-42a3-beff-fd2af489d38e", word: "presentasi", en: "presentation", vi: "bai trinh bay", pos: "noun", pronunciation_vi: "pre-sen-TA-si", pronunciation_en: "pre-sen-TA-see" },
+      { cell_id: "28aeb5a1-9b68-4b65-9d48-3884dfc86b38", word: "pertanyaan akademik", en: "academic question", vi: "cau hoi hoc thuat", pos: "noun phrase", pronunciation_vi: "per-ta-NYA-an a-ka-DE-mik", pronunciation_en: "per-tah-NYAH-an ah-kah-DEH-meek" },
+      { cell_id: "7b24ac14-51cd-40bc-b4e1-a175fe20eba0", word: "nilai akhir", en: "final grade", vi: "diem cuoi cung", pos: "noun phrase", pronunciation_vi: "NI-lai A-khir", pronunciation_en: "NEE-lie AH-kheer" },
+      { cell_id: "514e6c2c-c37d-4fb5-bc78-75764e550158", word: "wisuda", en: "graduation ceremony", vi: "le tot nghiep", pos: "noun", pronunciation_vi: "wi-SU-da", pronunciation_en: "wee-SOO-dah" },
+      { cell_id: "be821207-7d66-46d3-90d0-8f349b938ec8", word: "berkas revisi", en: "revision documents", vi: "ho so chinh sua", pos: "noun phrase", pronunciation_vi: "BER-kas re-VI-si", pronunciation_en: "BER-kas reh-VEE-see" },
+      { cell_id: "9f61e739-541d-4e5f-8c3b-f85b37638ea0", word: "bimbingan", en: "guidance / supervision", vi: "su huong dan", pos: "noun", pronunciation_vi: "bim-BIN-gan", pronunciation_en: "beem-BEENG-an" },
     ],
     dialogue: [
       {
+        cell_id: "24d3470d-91c7-4786-bc88-b76c87e18000",
         speaker: "Mahasiswa",
         text: "Selamat pagi, terima kasih atas waktunya. Saya siap mempresentasikan skripsi saya.",
         vi: "Chào buổi sáng, cảm ơn vì thời gian của thầy/cô. Tôi sẵn sàng trình bày luận văn của mình.",
         en: "Good morning, thank you for your time. I am ready to present my thesis.",
       },
       {
+        cell_id: "e1fdfaad-70d5-46f0-9724-a953ec49871f",
         speaker: "Dosen pembimbing",
         text: "Silakan mulai dengan latar belakang penelitian.",
         vi: "Mời bắt đầu với phần bối cảnh nghiên cứu.",
         en: "Please begin with the research background.",
       },
       {
+        cell_id: "01e95953-cb1e-45cb-a1a5-fc63b7d3f234",
         speaker: "Mahasiswa",
         text: "Terima kasih, Pak. Penelitian ini terdiri dari tiga bagian utama.",
         vi: "Cảm ơn thầy. Nghiên cứu này gồm ba phần chính.",
         en: "Thank you, sir. This research consists of three main parts.",
       },
       {
+        cell_id: "27879de9-b03e-4ef6-aba7-e9cca461eadc",
         speaker: "Penguji",
         text: "Apa perbedaan utama antara hasil awal dan hasil revisi?",
         vi: "Điểm khác biệt chính giữa kết quả ban đầu và kết quả đã chỉnh sửa là gì?",
         en: "What is the main difference between the initial results and the revised results?",
       },
       {
+        cell_id: "b1e3c177-6ba9-4f46-a122-5183bdbdbbac",
         speaker: "Mahasiswa",
         text: "Saya sudah memperbaiki bagian metode penelitian dan menambahkan data pendukung.",
         vi: "Tôi đã chỉnh sửa phần phương pháp nghiên cứu và bổ sung dữ liệu hỗ trợ.",
         en: "I have improved the research method section and added supporting data.",
       },
       {
+        cell_id: "24cf00c8-de65-4e3a-87ae-25417c45bc33",
         speaker: "Penguji",
         text: "Baik. Kami akan menyampaikan nilai akhir setelah semua revisi selesai.",
         vi: "Được rồi. Chúng tôi sẽ công bố điểm cuối cùng sau khi mọi chỉnh sửa hoàn tất.",

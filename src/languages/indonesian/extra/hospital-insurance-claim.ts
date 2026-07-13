@@ -16,6 +16,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   /** Indonesian word/phrase. */
   word: string;
   /** English meaning. */
@@ -31,6 +32,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   /** Indonesian line. */
   text: string;
@@ -193,6 +195,7 @@ export const lessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: learn paperwork chunks: `klaim asuransi`, `rawat inap`, `kuitansi asli`, `surat dokter`, `plafon`, `direimburs`, `klaim ditolak`, `dokumen pendukung`. Insurance language uses many `di-` passives: `ditanggung`, `direimburs`, `ditolak`, `dilengkapi`.",
     vocabulary: [
       {
+        cell_id: "d3da941e-f0a9-4949-b955-62ba1774e75f",
         word: "klaim asuransi",
         en: "insurance claim",
         vi: "yêu cầu bồi thường bảo hiểm",
@@ -201,6 +204,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "claim a-su-RAN-see",
       },
       {
+        cell_id: "45a92cb6-b07f-411f-aa05-3d11700df40f",
         word: "rawat inap",
         en: "inpatient care",
         vi: "điều trị nội trú / nằm viện",
@@ -209,6 +213,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "RA-wat EE-nap",
       },
       {
+        cell_id: "a9d8d11e-eb8c-4ee0-8dc3-1b364131c5a4",
         word: "kuitansi",
         en: "receipt",
         vi: "biên lai",
@@ -217,6 +222,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "kwee-TAN-see",
       },
       {
+        cell_id: "1d877909-50bb-43e4-9bfe-bbcaeb86319c",
         word: "surat dokter",
         en: "doctor's letter",
         vi: "giấy/chứng nhận của bác sĩ",
@@ -225,6 +231,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "SOO-rat DOK-ter",
       },
       {
+        cell_id: "d6efa544-861d-48b1-9044-1b9fc8616e2b",
         word: "plafon",
         en: "coverage limit",
         vi: "hạn mức chi trả",
@@ -233,6 +240,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "pla-FON",
       },
       {
+        cell_id: "69183f82-926a-4afa-8d40-ad15466a42c3",
         word: "reimburs",
         en: "reimburse",
         vi: "hoàn tiền / hoàn phí",
@@ -241,6 +249,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "re-im-BURS",
       },
       {
+        cell_id: "1866fafa-a1fb-4e85-9580-b52c40921506",
         word: "penolakan klaim",
         en: "claim rejection",
         vi: "việc từ chối klaim",
@@ -249,6 +258,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "pe-no-LAK-an claim",
       },
       {
+        cell_id: "2276735f-ba8e-4db9-b674-72e8bb24a552",
         word: "dokumen pendukung",
         en: "supporting documents",
         vi: "tài liệu hỗ trợ hồ sơ",
@@ -257,6 +267,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "DO-ku-men pen-DOO-kung",
       },
       {
+        cell_id: "e0d542b7-f854-4540-8c5d-8ebafcf732f1",
         word: "ditanggung",
         en: "covered",
         vi: "được bảo hiểm chi trả",
@@ -265,6 +276,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "di-TANG-goong",
       },
       {
+        cell_id: "e2c8beb7-385f-4a95-b955-162e315341b8",
         word: "ditolak",
         en: "rejected",
         vi: "bị từ chối",
@@ -275,30 +287,35 @@ export const lessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "ac212d50-2975-4b58-b679-d6da2157648d",
         speaker: "Pasien",
         text: "Saya mau mengajukan klaim asuransi untuk rawat inap.",
         vi: "Tôi muốn nộp klaim bảo hiểm cho điều trị nội trú.",
         en: "I want to file an insurance claim for inpatient care.",
       },
       {
+        cell_id: "68d7c4c9-bf20-4408-8b0e-c3e88839df76",
         speaker: "Petugas",
         text: "Mohon siapkan kuitansi asli, surat dokter, dan dokumen pendukung.",
         vi: "Vui lòng chuẩn bị biên lai gốc, giấy bác sĩ, và tài liệu hỗ trợ.",
         en: "Please prepare the original receipt, doctor's letter, and supporting documents.",
       },
       {
+        cell_id: "c9856094-983b-4587-9a50-1d9edbaf2e09",
         speaker: "Pasien",
         text: "Apakah biaya obat bisa direimburs?",
         vi: "Chi phí thuốc có thể được hoàn lại không?",
         en: "Can the medicine cost be reimbursed?",
       },
       {
+        cell_id: "bd98161d-1992-44bf-bc5c-c63ca380573e",
         speaker: "Petugas",
         text: "Bisa, kalau masih masuk plafon polis.",
         vi: "Có thể, nếu vẫn nằm trong hạn mức hợp đồng bảo hiểm.",
         en: "Yes, if it is still within the policy coverage limit.",
       },
       {
+        cell_id: "6640a64f-5624-4f4a-b17c-1f3b4cbaa971",
         speaker: "Pasien",
         text: "Kalau klaim ditolak, saya harus melengkapi apa?",
         vi: "Nếu klaim bị từ chối, tôi phải bổ sung gì?",

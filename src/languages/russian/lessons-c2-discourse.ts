@@ -60,10 +60,10 @@ export const lessons: RussianLesson[] = [
       },
     ],
     vocabulary: [
-      { word: "прежде всего", romanization: "prezhde vsego", en: "first of all", vi: "trước hết", pos: "phrase", pronunciation_vi: "PRYEZH-de vsye-VO", pronunciation_en: "PRYEZH-dye vsye-VO" },
-      { word: "под … понимать", romanization: "pod … ponimat", en: "to mean by …", vi: "hiểu … là", pos: "verb phrase", pronunciation_vi: "pad … pa-ni-MAT", pronunciation_en: "pod … pa-nee-MAT" },
-      { word: "иными словами", romanization: "inymi slovami", en: "in other words", vi: "nói cách khác", pos: "phrase", pronunciation_vi: "I-ny-mi sla-VA-mi", pronunciation_en: "EE-ny-mee sla-VA-mee" },
-      { word: "довести до конца", romanization: "dovesti do kontsa", en: "to see through / finish", vi: "hoàn thành đến cùng", pos: "verb phrase", pronunciation_vi: "da-ve-STI da kan-TSA", pronunciation_en: "da-vye-STEE da kon-TSA" },
+      { cell_id: "90d4eead-c5ca-4aa4-b260-488badd1c5f0", word: "прежде всего", romanization: "prezhde vsego", en: "first of all", vi: "trước hết", pos: "phrase", pronunciation_vi: "PRYEZH-de vsye-VO", pronunciation_en: "PRYEZH-dye vsye-VO" },
+      { cell_id: "603f02c7-4edf-4319-92e1-3aa279f4f02d", word: "под … понимать", romanization: "pod … ponimat", en: "to mean by …", vi: "hiểu … là", pos: "verb phrase", pronunciation_vi: "pad … pa-ni-MAT", pronunciation_en: "pod … pa-nee-MAT" },
+      { cell_id: "9fa1deb8-9df0-461b-b811-bd1cb9c80a43", word: "иными словами", romanization: "inymi slovami", en: "in other words", vi: "nói cách khác", pos: "phrase", pronunciation_vi: "I-ny-mi sla-VA-mi", pronunciation_en: "EE-ny-mee sla-VA-mee" },
+      { cell_id: "e71eb68f-aa3a-45c3-a264-4ff999d3f450", word: "довести до конца", romanization: "dovesti do kontsa", en: "to see through / finish", vi: "hoàn thành đến cùng", pos: "verb phrase", pronunciation_vi: "da-ve-STI da kan-TSA", pronunciation_en: "da-vye-STEE da kon-TSA" },
     ],
     exercises: [
       {
@@ -136,10 +136,10 @@ export const lessons: RussianLesson[] = [
       },
     ],
     vocabulary: [
-      { word: "рассматривать в целом", romanization: "rassmatrivat v tselom", en: "to consider as a whole", vi: "xem xét toàn bộ", pos: "verb phrase", pronunciation_vi: "ras-MA-tri-vat f TSE-lam", pronunciation_en: "ras-MA-tree-vat f TSE-lom" },
-      { word: "заключаться в том, что", romanization: "zaklyuchatsya v tom, chto", en: "to consist in the fact that", vi: "nằm ở chỗ là", pos: "verb phrase", pronunciation_vi: "za-klyu-CHAT-sya f tom shto", pronunciation_en: "za-klyoo-CHAT-sya f tom shto" },
-      { word: "напрямую связано с", romanization: "napryamuyu svyazano s", en: "directly connected to", vi: "liên quan trực tiếp đến", pos: "phrase", pronunciation_vi: "na-prya-MU-yu SVYA-za-na s", pronunciation_en: "na-prya-MOO-yu SVYA-za-no s" },
-      { word: "из этого следует", romanization: "iz etogo sleduyet", en: "it follows from this", vi: "từ đó suy ra", pos: "phrase", pronunciation_vi: "iz E-ta-va SLYE-du-yet", pronunciation_en: "eez EH-ta-va SLYE-doo-yet" },
+      { cell_id: "167b83a0-4773-4c55-80ba-36504daac676", word: "рассматривать в целом", romanization: "rassmatrivat v tselom", en: "to consider as a whole", vi: "xem xét toàn bộ", pos: "verb phrase", pronunciation_vi: "ras-MA-tri-vat f TSE-lam", pronunciation_en: "ras-MA-tree-vat f TSE-lom" },
+      { cell_id: "132ce351-fd6e-4330-95c8-b8cf80dfe0ca", word: "заключаться в том, что", romanization: "zaklyuchatsya v tom, chto", en: "to consist in the fact that", vi: "nằm ở chỗ là", pos: "verb phrase", pronunciation_vi: "za-klyu-CHAT-sya f tom shto", pronunciation_en: "za-klyoo-CHAT-sya f tom shto" },
+      { cell_id: "39c0c9e6-6043-4d0b-8d7c-2d82f0e8709e", word: "напрямую связано с", romanization: "napryamuyu svyazano s", en: "directly connected to", vi: "liên quan trực tiếp đến", pos: "phrase", pronunciation_vi: "na-prya-MU-yu SVYA-za-na s", pronunciation_en: "na-prya-MOO-yu SVYA-za-no s" },
+      { cell_id: "e52ef231-e024-4641-8d63-1c528d610ada", word: "из этого следует", romanization: "iz etogo sleduyet", en: "it follows from this", vi: "từ đó suy ra", pos: "phrase", pronunciation_vi: "iz E-ta-va SLYE-du-yet", pronunciation_en: "eez EH-ta-va SLYE-doo-yet" },
     ],
     exercises: [
       {
@@ -206,10 +206,10 @@ export const lessons: RussianLesson[] = [
       },
     ],
     vocabulary: [
-      { word: "я бы не сказал, что", romanization: "ya by ne skazal, chto", en: "I wouldn't say that", vi: "tôi sẽ không nói rằng", pos: "phrase", pronunciation_vi: "ya by ne ska-ZAL shto", pronunciation_en: "ya by nye ska-ZAL shto" },
-      { word: "не учитывать", romanization: "ne uchityvat", en: "to not take into account", vi: "không tính đến", pos: "verb", pronunciation_vi: "ne u-CHI-ty-vat", pronunciation_en: "nye oo-CHEE-ty-vat" },
-      { word: "в том случае, если", romanization: "v tom sluchaye, yesli", en: "in the case that / only if", vi: "trong trường hợp / chỉ khi", pos: "phrase", pronunciation_vi: "f tom SLU-cha-ye YES-li", pronunciation_en: "f tom SLOO-cha-ye YES-lee" },
-      { word: "более убедительным было бы", romanization: "boleye ubeditelnym bylo by", en: "it would be more convincing", vi: "thuyết phục hơn sẽ là", pos: "phrase", pronunciation_vi: "BO-le-ye u-be-DI-tel-nym BY-la by", pronunciation_en: "BO-lye-ye oo-bye-DEE-tyel-nym BY-lo by" },
+      { cell_id: "544aebff-eaea-4f7d-8ee9-a3b4d4188711", word: "я бы не сказал, что", romanization: "ya by ne skazal, chto", en: "I wouldn't say that", vi: "tôi sẽ không nói rằng", pos: "phrase", pronunciation_vi: "ya by ne ska-ZAL shto", pronunciation_en: "ya by nye ska-ZAL shto" },
+      { cell_id: "82d8f3cb-f10b-4560-84e8-ac3ba4f210ff", word: "не учитывать", romanization: "ne uchityvat", en: "to not take into account", vi: "không tính đến", pos: "verb", pronunciation_vi: "ne u-CHI-ty-vat", pronunciation_en: "nye oo-CHEE-ty-vat" },
+      { cell_id: "e892d706-7daf-4044-818f-8ced1c2ff619", word: "в том случае, если", romanization: "v tom sluchaye, yesli", en: "in the case that / only if", vi: "trong trường hợp / chỉ khi", pos: "phrase", pronunciation_vi: "f tom SLU-cha-ye YES-li", pronunciation_en: "f tom SLOO-cha-ye YES-lee" },
+      { cell_id: "806b675f-3f0a-4f61-a4e1-864c52a63dd1", word: "более убедительным было бы", romanization: "boleye ubeditelnym bylo by", en: "it would be more convincing", vi: "thuyết phục hơn sẽ là", pos: "phrase", pronunciation_vi: "BO-le-ye u-be-DI-tel-nym BY-la by", pronunciation_en: "BO-lye-ye oo-bye-DEE-tyel-nym BY-lo by" },
     ],
     exercises: [
       {
@@ -276,10 +276,10 @@ export const lessons: RussianLesson[] = [
       },
     ],
     vocabulary: [
-      { word: "при этом важно учитывать", romanization: "pri etom vazhno uchityvat", en: "at the same time it is important to consider", vi: "đồng thời cần tính đến", pos: "phrase", pronunciation_vi: "pri E-tam VAZH-na u-CHI-ty-vat", pronunciation_en: "pree EH-tom VAZH-no oo-CHEE-ty-vat" },
-      { word: "вести к", romanization: "vesti k", en: "to lead to", vi: "dẫn đến", pos: "verb", pronunciation_vi: "ve-STI k", pronunciation_en: "vye-STEE k" },
-      { word: "избавить от", romanization: "izbavit ot", en: "to save / spare from", vi: "giúp tránh khỏi", pos: "verb", pronunciation_vi: "iz-BA-vit at", pronunciation_en: "eez-BA-veet ot" },
-      { word: "на мой взгляд", romanization: "na moy vzglyad", en: "in my view", vi: "theo tôi", pos: "phrase", pronunciation_vi: "na moy VZGLYAT", pronunciation_en: "na moy VZGLYAD" },
+      { cell_id: "d621bb31-4cab-4537-bf0a-8e93e0a81907", word: "при этом важно учитывать", romanization: "pri etom vazhno uchityvat", en: "at the same time it is important to consider", vi: "đồng thời cần tính đến", pos: "phrase", pronunciation_vi: "pri E-tam VAZH-na u-CHI-ty-vat", pronunciation_en: "pree EH-tom VAZH-no oo-CHEE-ty-vat" },
+      { cell_id: "4eac09b5-d53e-41b6-85dd-4c7b178f0b73", word: "вести к", romanization: "vesti k", en: "to lead to", vi: "dẫn đến", pos: "verb", pronunciation_vi: "ve-STI k", pronunciation_en: "vye-STEE k" },
+      { cell_id: "6130b800-cc0b-494e-9b02-2dff3a363449", word: "избавить от", romanization: "izbavit ot", en: "to save / spare from", vi: "giúp tránh khỏi", pos: "verb", pronunciation_vi: "iz-BA-vit at", pronunciation_en: "eez-BA-veet ot" },
+      { cell_id: "59432cbc-c91c-4394-8414-2e6c0d8e2f72", word: "на мой взгляд", romanization: "na moy vzglyad", en: "in my view", vi: "theo tôi", pos: "phrase", pronunciation_vi: "na moy VZGLYAT", pronunciation_en: "na moy VZGLYAD" },
     ],
     exercises: [
       {
@@ -346,10 +346,10 @@ export const lessons: RussianLesson[] = [
       },
     ],
     vocabulary: [
-      { word: "обе стороны", romanization: "obe storony", en: "both sides", vi: "cả hai bên", pos: "noun phrase", pronunciation_vi: "O-be STO-ra-ny", pronunciation_en: "O-bye STO-ra-ny" },
-      { word: "расхождение", romanization: "raskhozhdeniye", en: "divergence / disagreement", vi: "sự khác biệt / bất đồng", pos: "noun", pronunciation_vi: "ras-khazh-DYE-ni-ye", pronunciation_en: "ras-khozh-DYE-nee-ye" },
-      { word: "промежуточный вариант", romanization: "promezhutochnyy variant", en: "intermediate option", vi: "phương án trung gian", pos: "noun phrase", pronunciation_vi: "pra-me-ZHU-tach-ny va-ri-ANT", pronunciation_en: "pra-mye-ZHOO-toch-ny va-ree-ANT" },
-      { word: "сохранить", romanization: "sokhranit", en: "to preserve / keep", vi: "giữ được", pos: "verb", pronunciation_vi: "sa-khra-NIT", pronunciation_en: "sa-khra-NEET" },
+      { cell_id: "b36c86e2-7a4b-4907-8676-a85f314ca683", word: "обе стороны", romanization: "obe storony", en: "both sides", vi: "cả hai bên", pos: "noun phrase", pronunciation_vi: "O-be STO-ra-ny", pronunciation_en: "O-bye STO-ra-ny" },
+      { cell_id: "1a35292e-62ea-49ba-b4fe-7c75339f065c", word: "расхождение", romanization: "raskhozhdeniye", en: "divergence / disagreement", vi: "sự khác biệt / bất đồng", pos: "noun", pronunciation_vi: "ras-khazh-DYE-ni-ye", pronunciation_en: "ras-khozh-DYE-nee-ye" },
+      { cell_id: "bceddc5f-5f69-46e6-9ff8-d2ef54d2f028", word: "промежуточный вариант", romanization: "promezhutochnyy variant", en: "intermediate option", vi: "phương án trung gian", pos: "noun phrase", pronunciation_vi: "pra-me-ZHU-tach-ny va-ri-ANT", pronunciation_en: "pra-mye-ZHOO-toch-ny va-ree-ANT" },
+      { cell_id: "1d9e9338-b516-4b75-8978-d75576f54de1", word: "сохранить", romanization: "sokhranit", en: "to preserve / keep", vi: "giữ được", pos: "verb", pronunciation_vi: "sa-khra-NIT", pronunciation_en: "sa-khra-NEET" },
     ],
     exercises: [
       {
@@ -416,10 +416,10 @@ export const lessons: RussianLesson[] = [
       },
     ],
     vocabulary: [
-      { word: "ну отлично", romanization: "nu otlichno", en: "well, great (often ironic)", vi: "hay thật (thường mỉa)", pos: "phrase", pronunciation_vi: "nu at-LICH-na", pronunciation_en: "noo at-LEECH-no" },
-      { word: "кто бы мог подумать", romanization: "kto by mog podumat", en: "who'd have thought (ironic)", vi: "ai mà ngờ được", pos: "phrase", pronunciation_vi: "kto by mok pa-DU-mat", pronunciation_en: "kto by mog pa-DOO-mat" },
-      { word: "формально", romanization: "formalno", en: "formally / on paper", vi: "trên giấy / về mặt hình thức", pos: "adverb", pronunciation_vi: "for-MAL-na", pronunciation_en: "for-MAL-no" },
-      { word: "слишком гладко", romanization: "slishkom gladko", en: "too smooth", vi: "quá mượt", pos: "phrase", pronunciation_vi: "SLISH-kam GLAT-ka", pronunciation_en: "SLEESH-kom GLAD-ko" },
+      { cell_id: "8cf75846-3c19-41de-a281-c020bd98bf1f", word: "ну отлично", romanization: "nu otlichno", en: "well, great (often ironic)", vi: "hay thật (thường mỉa)", pos: "phrase", pronunciation_vi: "nu at-LICH-na", pronunciation_en: "noo at-LEECH-no" },
+      { cell_id: "583a16dc-0a28-44ac-9f69-b7885f073532", word: "кто бы мог подумать", romanization: "kto by mog podumat", en: "who'd have thought (ironic)", vi: "ai mà ngờ được", pos: "phrase", pronunciation_vi: "kto by mok pa-DU-mat", pronunciation_en: "kto by mog pa-DOO-mat" },
+      { cell_id: "8c70902b-3321-4d38-9e38-0e08396e6e56", word: "формально", romanization: "formalno", en: "formally / on paper", vi: "trên giấy / về mặt hình thức", pos: "adverb", pronunciation_vi: "for-MAL-na", pronunciation_en: "for-MAL-no" },
+      { cell_id: "0dd810ef-0e9f-4704-b2d0-1893fc6d1b43", word: "слишком гладко", romanization: "slishkom gladko", en: "too smooth", vi: "quá mượt", pos: "phrase", pronunciation_vi: "SLISH-kam GLAT-ka", pronunciation_en: "SLEESH-kom GLAD-ko" },
     ],
     exercises: [
       {
@@ -491,10 +491,10 @@ export const lessons: RussianLesson[] = [
       },
     ],
     vocabulary: [
-      { word: "я вас услышал", romanization: "ya vas uslyshal", en: "I've heard you (may end the topic)", vi: "tôi đã nghe (có thể khép chủ đề)", pos: "phrase", pronunciation_vi: "ya vas u-SLY-shal", pronunciation_en: "ya vas oo-SLY-shal" },
-      { word: "есть нюансы", romanization: "yest nyuansy", en: "there are nuances (= problems)", vi: "có điểm tế nhị (= vấn đề)", pos: "phrase", pronunciation_vi: "yest nyu-AN-sy", pronunciation_en: "yest nyoo-AN-sy" },
-      { word: "недопонимание", romanization: "nedoponimaniye", en: "misunderstanding", vi: "sự hiểu nhầm", pos: "noun", pronunciation_vi: "ne-da-pa-ni-MA-ni-ye", pronunciation_en: "nye-da-pa-nee-MA-nee-ye" },
-      { word: "уточнить", romanization: "utochnit", en: "to clarify", vi: "làm rõ", pos: "verb", pronunciation_vi: "u-tach-NIT", pronunciation_en: "oo-toch-NEET" },
+      { cell_id: "d80556fd-e68e-4f0a-8944-006f0743f544", word: "я вас услышал", romanization: "ya vas uslyshal", en: "I've heard you (may end the topic)", vi: "tôi đã nghe (có thể khép chủ đề)", pos: "phrase", pronunciation_vi: "ya vas u-SLY-shal", pronunciation_en: "ya vas oo-SLY-shal" },
+      { cell_id: "87247640-2830-4fe7-9c85-91239eb8ba9a", word: "есть нюансы", romanization: "yest nyuansy", en: "there are nuances (= problems)", vi: "có điểm tế nhị (= vấn đề)", pos: "phrase", pronunciation_vi: "yest nyu-AN-sy", pronunciation_en: "yest nyoo-AN-sy" },
+      { cell_id: "b6002963-4446-49f9-8e3e-54003dea0b85", word: "недопонимание", romanization: "nedoponimaniye", en: "misunderstanding", vi: "sự hiểu nhầm", pos: "noun", pronunciation_vi: "ne-da-pa-ni-MA-ni-ye", pronunciation_en: "nye-da-pa-nee-MA-nee-ye" },
+      { cell_id: "d115b7e6-02a7-4402-ba3d-2349811de1ce", word: "уточнить", romanization: "utochnit", en: "to clarify", vi: "làm rõ", pos: "verb", pronunciation_vi: "u-tach-NIT", pronunciation_en: "oo-toch-NEET" },
     ],
     exercises: [
       {
@@ -566,10 +566,10 @@ export const lessons: RussianLesson[] = [
       },
     ],
     vocabulary: [
-      { word: "данная позиция", romanization: "dannaya pozitsiya", en: "this position (formal)", vi: "quan điểm này (trang trọng)", pos: "noun phrase", pronunciation_vi: "DAN-na-ya pa-ZI-tsi-ya", pronunciation_en: "DAN-na-ya pa-ZEE-tsee-ya" },
-      { word: "да нет", romanization: "da net", en: "nah / not really (colloquial)", vi: "ờ không (khẩu ngữ)", pos: "phrase", pronunciation_vi: "da NYET", pronunciation_en: "da NYET" },
-      { word: "тезис", romanization: "tezis", en: "thesis / claim", vi: "luận đề", pos: "noun", pronunciation_vi: "TYE-zis", pronunciation_en: "TYE-zees" },
-      { word: "требовать уточнения", romanization: "trebovat utochneniya", en: "to require qualification", vi: "cần được làm rõ", pos: "verb phrase", pronunciation_vi: "TRYE-ba-vat u-tach-NYE-ni-ya", pronunciation_en: "TRYE-ba-vat oo-toch-NYE-nee-ya" },
+      { cell_id: "c1410542-15b9-4645-92f9-0daeae2ec2ea", word: "данная позиция", romanization: "dannaya pozitsiya", en: "this position (formal)", vi: "quan điểm này (trang trọng)", pos: "noun phrase", pronunciation_vi: "DAN-na-ya pa-ZI-tsi-ya", pronunciation_en: "DAN-na-ya pa-ZEE-tsee-ya" },
+      { cell_id: "15a2549c-a642-480b-b18d-ce453201bd51", word: "да нет", romanization: "da net", en: "nah / not really (colloquial)", vi: "ờ không (khẩu ngữ)", pos: "phrase", pronunciation_vi: "da NYET", pronunciation_en: "da NYET" },
+      { cell_id: "92044811-15fb-46fc-8bc0-1f06d93f6ae1", word: "тезис", romanization: "tezis", en: "thesis / claim", vi: "luận đề", pos: "noun", pronunciation_vi: "TYE-zis", pronunciation_en: "TYE-zees" },
+      { cell_id: "3e487d61-246f-4dd3-8493-1df815839f6b", word: "требовать уточнения", romanization: "trebovat utochneniya", en: "to require qualification", vi: "cần được làm rõ", pos: "verb phrase", pronunciation_vi: "TRYE-ba-vat u-tach-NYE-ni-ya", pronunciation_en: "TRYE-ba-vat oo-toch-NYE-nee-ya" },
     ],
     exercises: [
       {
@@ -643,10 +643,10 @@ export const lessons: RussianLesson[] = [
       },
     ],
     vocabulary: [
-      { word: "в связи с", romanization: "v svyazi s", en: "due to / in connection with", vi: "do / liên quan đến", pos: "preposition phrase", pronunciation_vi: "f svya-ZI s", pronunciation_en: "f svya-ZEE s" },
-      { word: "прошу", romanization: "proshu", en: "I request / I ask (formal)", vi: "tôi đề nghị (trang trọng)", pos: "verb", pronunciation_vi: "pra-SHU", pronunciation_en: "pra-SHOO" },
-      { word: "на основании", romanization: "na osnovanii", en: "on the basis of", vi: "trên cơ sở", pos: "preposition phrase", pronunciation_vi: "na as-na-VA-ni-i", pronunciation_en: "na as-na-VA-nee-ee" },
-      { word: "необходимо", romanization: "neobkhodimo", en: "it is necessary (bureaucratic)", vi: "cần (hành chính)", pos: "predicative", pronunciation_vi: "ne-ab-kha-DI-ma", pronunciation_en: "nye-ob-kha-DEE-mo" },
+      { cell_id: "c69a536d-0fea-491d-b55b-9d3682d1fcad", word: "в связи с", romanization: "v svyazi s", en: "due to / in connection with", vi: "do / liên quan đến", pos: "preposition phrase", pronunciation_vi: "f svya-ZI s", pronunciation_en: "f svya-ZEE s" },
+      { cell_id: "a8763cf4-78fc-4290-96d6-8edd6bf3ffd7", word: "прошу", romanization: "proshu", en: "I request / I ask (formal)", vi: "tôi đề nghị (trang trọng)", pos: "verb", pronunciation_vi: "pra-SHU", pronunciation_en: "pra-SHOO" },
+      { cell_id: "bdf303b9-cb1a-4357-8492-cbbba372fc48", word: "на основании", romanization: "na osnovanii", en: "on the basis of", vi: "trên cơ sở", pos: "preposition phrase", pronunciation_vi: "na as-na-VA-ni-i", pronunciation_en: "na as-na-VA-nee-ee" },
+      { cell_id: "19a68ae9-b8ed-43c4-baba-4d87dc4aa0e3", word: "необходимо", romanization: "neobkhodimo", en: "it is necessary (bureaucratic)", vi: "cần (hành chính)", pos: "predicative", pronunciation_vi: "ne-ab-kha-DI-ma", pronunciation_en: "nye-ob-kha-DEE-mo" },
     ],
     exercises: [
       {
@@ -713,10 +713,10 @@ export const lessons: RussianLesson[] = [
       },
     ],
     vocabulary: [
-      { word: "тезис", romanization: "tezis", en: "thesis", vi: "luận đề", pos: "noun", pronunciation_vi: "TYE-zis", pronunciation_en: "TYE-zees" },
-      { word: "контраргумент", romanization: "kontrargument", en: "counterargument", vi: "phản biện", pos: "noun", pronunciation_vi: "kon-tr-ar-gu-MYENT", pronunciation_en: "kon-tr-ar-goo-MYENT" },
-      { word: "при определённых условиях", romanization: "pri opredelyonnykh usloviyakh", en: "under certain conditions", vi: "trong điều kiện nhất định", pos: "phrase", pronunciation_vi: "pri a-pre-de-LYON-nykh us-LO-vi-yakh", pronunciation_en: "pree a-pre-dye-LYON-nykh oos-LO-vee-yakh" },
-      { word: "обобщать", romanization: "obobshchat", en: "to generalize", vi: "khái quát hóa", pos: "verb", pronunciation_vi: "a-bab-SHCHAT", pronunciation_en: "a-bob-SHCHAT" },
+      { cell_id: "292caf33-450a-46bf-9f4b-e5d39f995566", word: "тезис", romanization: "tezis", en: "thesis", vi: "luận đề", pos: "noun", pronunciation_vi: "TYE-zis", pronunciation_en: "TYE-zees" },
+      { cell_id: "e36fb1d8-e31e-4a9a-82d1-3c15cf0a81b4", word: "контраргумент", romanization: "kontrargument", en: "counterargument", vi: "phản biện", pos: "noun", pronunciation_vi: "kon-tr-ar-gu-MYENT", pronunciation_en: "kon-tr-ar-goo-MYENT" },
+      { cell_id: "20fba979-5b44-4aaa-a3ce-e9e3484b9657", word: "при определённых условиях", romanization: "pri opredelyonnykh usloviyakh", en: "under certain conditions", vi: "trong điều kiện nhất định", pos: "phrase", pronunciation_vi: "pri a-pre-de-LYON-nykh us-LO-vi-yakh", pronunciation_en: "pree a-pre-dye-LYON-nykh oos-LO-vee-yakh" },
+      { cell_id: "b3723bc9-67b6-4615-9da7-d347c202b18d", word: "обобщать", romanization: "obobshchat", en: "to generalize", vi: "khái quát hóa", pos: "verb", pronunciation_vi: "a-bab-SHCHAT", pronunciation_en: "a-bob-SHCHAT" },
     ],
     exercises: [
       {
@@ -789,10 +789,10 @@ export const lessons: RussianLesson[] = [
       },
     ],
     vocabulary: [
-      { word: "следует", romanization: "sleduyet", en: "one should / it is appropriate", vi: "nên", pos: "predicative verb", pronunciation_vi: "SLYE-du-yet", pronunciation_en: "SLYE-doo-yet" },
-      { word: "однако", romanization: "odnako", en: "however", vi: "tuy nhiên", pos: "conjunction", pronunciation_vi: "ad-NA-ka", pronunciation_en: "ad-NA-ko" },
-      { word: "с одной стороны … с другой стороны", romanization: "s odnoy storony … s drugoy storony", en: "on one hand … on the other hand", vi: "một mặt … mặt khác", pos: "phrase", pronunciation_vi: "s ad-NOY sta-ra-NY … s dru-GOY sta-ra-NY", pronunciation_en: "s ad-NOY sta-ra-NY … s droo-GOY sta-ra-NY" },
-      { word: "следовательно", romanization: "sledovatelno", en: "therefore / consequently", vi: "do đó", pos: "connector", pronunciation_vi: "sle-da-VA-tel-na", pronunciation_en: "sle-da-VA-tyel-no" },
+      { cell_id: "b2071867-0add-48fc-8f79-f566d6300fa3", word: "следует", romanization: "sleduyet", en: "one should / it is appropriate", vi: "nên", pos: "predicative verb", pronunciation_vi: "SLYE-du-yet", pronunciation_en: "SLYE-doo-yet" },
+      { cell_id: "b8c0d045-4cdc-41de-aab9-395a9106ae94", word: "однако", romanization: "odnako", en: "however", vi: "tuy nhiên", pos: "conjunction", pronunciation_vi: "ad-NA-ka", pronunciation_en: "ad-NA-ko" },
+      { cell_id: "97e64e65-d22d-4816-826a-f920f9ae4803", word: "с одной стороны … с другой стороны", romanization: "s odnoy storony … s drugoy storony", en: "on one hand … on the other hand", vi: "một mặt … mặt khác", pos: "phrase", pronunciation_vi: "s ad-NOY sta-ra-NY … s dru-GOY sta-ra-NY", pronunciation_en: "s ad-NOY sta-ra-NY … s droo-GOY sta-ra-NY" },
+      { cell_id: "91cba1ca-66f5-42c0-a312-7ae129069efa", word: "следовательно", romanization: "sledovatelno", en: "therefore / consequently", vi: "do đó", pos: "connector", pronunciation_vi: "sle-da-VA-tel-na", pronunciation_en: "sle-da-VA-tyel-no" },
     ],
     exercises: [
       {
@@ -865,10 +865,10 @@ export const lessons: RussianLesson[] = [
       },
     ],
     vocabulary: [
-      { word: "стабильность", romanization: "stabilnost", en: "stability (often politically loaded)", vi: "ổn định (thường mang hàm ý chính trị)", pos: "noun", pronunciation_vi: "sta-BIL-nast", pronunciation_en: "sta-BEEL-nost" },
-      { word: "легитимность", romanization: "legitimnost", en: "legitimacy", vi: "tính chính danh", pos: "noun", pronunciation_vi: "le-gi-TIM-nast", pronunciation_en: "le-gee-TEEM-nost" },
-      { word: "сводиться к", romanization: "svoditsya k", en: "to reduce to", vi: "quy về", pos: "verb", pronunciation_vi: "SVO-dit-sya k", pronunciation_en: "SVO-deet-sya k" },
-      { word: "несоответствие", romanization: "nesootvetstviye", en: "inconsistency / mismatch", vi: "sự lệch lạc / không khớp", pos: "noun", pronunciation_vi: "ne-sa-at-VYET-stvi-ye", pronunciation_en: "nye-sa-at-VYET-stvee-ye" },
+      { cell_id: "2a26db08-aafd-4c94-a0a3-0c660b1169d9", word: "стабильность", romanization: "stabilnost", en: "stability (often politically loaded)", vi: "ổn định (thường mang hàm ý chính trị)", pos: "noun", pronunciation_vi: "sta-BIL-nast", pronunciation_en: "sta-BEEL-nost" },
+      { cell_id: "769bfc21-5e73-4679-a848-466e6725a96a", word: "легитимность", romanization: "legitimnost", en: "legitimacy", vi: "tính chính danh", pos: "noun", pronunciation_vi: "le-gi-TIM-nast", pronunciation_en: "le-gee-TEEM-nost" },
+      { cell_id: "f1a398e8-dad7-418d-89df-4be08d69006e", word: "сводиться к", romanization: "svoditsya k", en: "to reduce to", vi: "quy về", pos: "verb", pronunciation_vi: "SVO-dit-sya k", pronunciation_en: "SVO-deet-sya k" },
+      { cell_id: "f3032214-ec0d-4df2-bd8f-3a359b7c3234", word: "несоответствие", romanization: "nesootvetstviye", en: "inconsistency / mismatch", vi: "sự lệch lạc / không khớp", pos: "noun", pronunciation_vi: "ne-sa-at-VYET-stvi-ye", pronunciation_en: "nye-sa-at-VYET-stvee-ye" },
     ],
     exercises: [
       {
@@ -935,10 +935,10 @@ export const lessons: RussianLesson[] = [
       },
     ],
     vocabulary: [
-      { word: "вопрос не в том, … а в том", romanization: "vopros ne v tom, … a v tom", en: "the question is not …, but …", vi: "vấn đề không phải là …, mà là …", pos: "phrase", pronunciation_vi: "va-PROS ne f tom … a f tom", pronunciation_en: "va-PROS nye f tom … a f tom" },
-      { word: "различать", romanization: "razlichat", en: "to distinguish", vi: "phân biệt", pos: "verb", pronunciation_vi: "raz-li-CHAT", pronunciation_en: "raz-lee-CHAT" },
-      { word: "скорее всего", romanization: "skoreye vsego", en: "most likely (hedge)", vi: "nhiều khả năng", pos: "phrase", pronunciation_vi: "ska-RYE-ye vsye-VO", pronunciation_en: "ska-RYE-ye vsye-VO" },
-      { word: "не столько …, сколько …", romanization: "ne stolko …, skolko …", en: "not so much … as …", vi: "không … cho bằng …", pos: "phrase", pronunciation_vi: "ne STOL-ka … SKOL-ka", pronunciation_en: "nye STOL-ko … SKOL-ko" },
+      { cell_id: "38ac5086-05f3-4d54-83aa-073ab2874ff4", word: "вопрос не в том, … а в том", romanization: "vopros ne v tom, … a v tom", en: "the question is not …, but …", vi: "vấn đề không phải là …, mà là …", pos: "phrase", pronunciation_vi: "va-PROS ne f tom … a f tom", pronunciation_en: "va-PROS nye f tom … a f tom" },
+      { cell_id: "5207f031-f1c9-44a3-9829-eaaed9dac6df", word: "различать", romanization: "razlichat", en: "to distinguish", vi: "phân biệt", pos: "verb", pronunciation_vi: "raz-li-CHAT", pronunciation_en: "raz-lee-CHAT" },
+      { cell_id: "9b12c37d-c9b0-4a4f-baac-98417fd2d177", word: "скорее всего", romanization: "skoreye vsego", en: "most likely (hedge)", vi: "nhiều khả năng", pos: "phrase", pronunciation_vi: "ska-RYE-ye vsye-VO", pronunciation_en: "ska-RYE-ye vsye-VO" },
+      { cell_id: "c14dcf9b-feef-4f22-8e03-c37be0e9963e", word: "не столько …, сколько …", romanization: "ne stolko …, skolko …", en: "not so much … as …", vi: "không … cho bằng …", pos: "phrase", pronunciation_vi: "ne STOL-ka … SKOL-ka", pronunciation_en: "nye STOL-ko … SKOL-ko" },
     ],
     exercises: [
       {
@@ -1011,10 +1011,10 @@ export const lessons: RussianLesson[] = [
       },
     ],
     vocabulary: [
-      { word: "обозначить рамки", romanization: "oboznachit ramki", en: "to define the scope", vi: "xác định phạm vi", pos: "verb phrase", pronunciation_vi: "a-baz-NA-chit RAM-ki", pronunciation_en: "a-boz-NA-cheet RAM-kee" },
-      { word: "я частично согласен", romanization: "ya chastichno soglasen", en: "I partly agree", vi: "tôi đồng ý một phần", pos: "phrase", pronunciation_vi: "ya chas-TICH-na sa-GLA-sen", pronunciation_en: "ya chas-TEECH-no sa-GLA-syen" },
-      { word: "из этого не следует, что", romanization: "iz etogo ne sleduyet, chto", en: "it does not follow that", vi: "từ đó không suy ra rằng", pos: "phrase", pronunciation_vi: "iz E-ta-va ne SLYE-du-yet shto", pronunciation_en: "eez EH-ta-va nye SLYE-doo-yet shto" },
-      { word: "разумный компромисс", romanization: "razumnyy kompromiss", en: "reasonable compromise", vi: "thỏa hiệp hợp lý", pos: "noun phrase", pronunciation_vi: "ra-ZUM-ny kam-pra-MISS", pronunciation_en: "ra-ZOOM-ny kom-pro-MEESS" },
+      { cell_id: "4893149e-33da-4c82-b64a-b804d153a6bc", word: "обозначить рамки", romanization: "oboznachit ramki", en: "to define the scope", vi: "xác định phạm vi", pos: "verb phrase", pronunciation_vi: "a-baz-NA-chit RAM-ki", pronunciation_en: "a-boz-NA-cheet RAM-kee" },
+      { cell_id: "b90c9f89-22a5-476c-87d4-895f0f86e587", word: "я частично согласен", romanization: "ya chastichno soglasen", en: "I partly agree", vi: "tôi đồng ý một phần", pos: "phrase", pronunciation_vi: "ya chas-TICH-na sa-GLA-sen", pronunciation_en: "ya chas-TEECH-no sa-GLA-syen" },
+      { cell_id: "b025ac02-c73d-40cf-9080-7c5f87d4520e", word: "из этого не следует, что", romanization: "iz etogo ne sleduyet, chto", en: "it does not follow that", vi: "từ đó không suy ra rằng", pos: "phrase", pronunciation_vi: "iz E-ta-va ne SLYE-du-yet shto", pronunciation_en: "eez EH-ta-va nye SLYE-doo-yet shto" },
+      { cell_id: "d33f52e7-5072-4871-ad89-1f9f349eb216", word: "разумный компромисс", romanization: "razumnyy kompromiss", en: "reasonable compromise", vi: "thỏa hiệp hợp lý", pos: "noun phrase", pronunciation_vi: "ra-ZUM-ny kam-pra-MISS", pronunciation_en: "ra-ZOOM-ny kom-pro-MEESS" },
     ],
     exercises: [
       {

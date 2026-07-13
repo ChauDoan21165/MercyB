@@ -17,6 +17,7 @@ export type PunjabiFinalSelectorFocus =
 export type PunjabiFinalSelectorUse = "selector" | "pre_integration" | "final_readiness" | "regression";
 
 export type PunjabiScriptVocabularyFinalSelector = {
+  cell_id?: string;
   id: string;
   focus: PunjabiFinalSelectorFocus;
   use: PunjabiFinalSelectorUse;
@@ -38,6 +39,7 @@ export type PunjabiScriptVocabularyFinalSelector = {
 };
 
 export type PunjabiScriptVocabularyFinalSelectorSection = {
+  cell_id?: string;
   focus: PunjabiFinalSelectorFocus;
   title_vi: string;
   title_en: string;

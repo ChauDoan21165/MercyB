@@ -13,6 +13,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -22,6 +23,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -208,6 +210,7 @@ export const lessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: learn museum chunks: `tiket masuk`, `cagar budaya`, `pameran sejarah lokal`, `aturan foto`, `rombongan`, `pemandu`. For permission, use `boleh`: `Apakah boleh mengambil foto?`. For location, `di dalam museum` = inside the museum; for movement, use `ke museum`.",
     vocabulary: [
       {
+        cell_id: "336cf9d8-8014-48a8-87e3-1aaa9b746c22",
         word: "museum",
         en: "museum",
         vi: "bảo tàng",
@@ -216,6 +219,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "moo-SEH-um",
       },
       {
+        cell_id: "1572ba3b-d9f5-4ee1-b024-3a281edffe69",
         word: "cagar budaya",
         en: "protected cultural heritage",
         vi: "di sản văn hóa được bảo tồn",
@@ -224,6 +228,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "CHA-gar boo-DA-ya",
       },
       {
+        cell_id: "b2341326-045a-4e2c-b360-f5cc2ce99091",
         word: "pemandu",
         en: "guide",
         vi: "hướng dẫn viên",
@@ -232,6 +237,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "pe-MAN-doo",
       },
       {
+        cell_id: "8b4dc6e2-29e6-4004-9054-a6c69f188619",
         word: "tiket masuk",
         en: "entrance ticket",
         vi: "vé vào cửa",
@@ -240,6 +246,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "TEE-ket MAH-sook",
       },
       {
+        cell_id: "d24aa62e-1539-494f-b1d9-f0958d852332",
         word: "pameran",
         en: "exhibition",
         vi: "triển lãm",
@@ -248,6 +255,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "pa-MEH-ran",
       },
       {
+        cell_id: "6bc06a8a-78d8-4809-9661-7db57ad326c6",
         word: "sejarah lokal",
         en: "local history",
         vi: "lịch sử địa phương",
@@ -256,6 +264,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "se-JAH-rah LO-kal",
       },
       {
+        cell_id: "54a25624-a02e-4e2e-a379-1135d6e23c58",
         word: "aturan foto",
         en: "photo rules",
         vi: "quy định chụp ảnh",
@@ -264,6 +273,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "a-TOO-ran FO-to",
       },
       {
+        cell_id: "71bb6db7-bc74-4156-9cee-a61e10c47729",
         word: "rombongan",
         en: "group",
         vi: "đoàn / nhóm đi chung",
@@ -272,6 +282,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "rom-BONG-an",
       },
       {
+        cell_id: "41277ccd-187f-4de0-82f5-87a5f0344958",
         word: "benda bersejarah",
         en: "historical artifact/object",
         vi: "hiện vật lịch sử",
@@ -280,6 +291,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "BEN-da ber-se-JAH-rah",
       },
       {
+        cell_id: "963bc673-e084-474a-9be3-a5c5fbe550b1",
         word: "koleksi museum",
         en: "museum collection",
         vi: "bộ sưu tập/hiện vật bảo tàng",
@@ -290,30 +302,35 @@ export const lessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "dcffbaf8-f4c6-4d9c-a287-4c834085f993",
         speaker: "Pengunjung",
         text: "Selamat pagi. Berapa harga tiket masuk untuk rombongan?",
         vi: "Chào buổi sáng. Giá vé vào cửa cho đoàn là bao nhiêu?",
         en: "Good morning. How much is the entrance ticket for a group?",
       },
       {
+        cell_id: "2b34e698-3d63-47fe-ab6a-f4d33e529b95",
         speaker: "Petugas",
         text: "Untuk rombongan, ada diskon. Mau ikut tur dengan pemandu?",
         vi: "Với đoàn thì có giảm giá. Có muốn tham gia tour với hướng dẫn viên không?",
         en: "For a group, there is a discount. Do you want to join a guided tour?",
       },
       {
+        cell_id: "477621f6-0b1c-451d-ab7b-db52edc14172",
         speaker: "Pengunjung",
         text: "Iya, kami ingin belajar tentang sejarah lokal.",
         vi: "Vâng, chúng tôi muốn học về lịch sử địa phương.",
         en: "Yes, we want to learn about local history.",
       },
       {
+        cell_id: "6515fccc-c23f-4c3e-84f4-0a3228ffbcc6",
         speaker: "Petugas",
         text: "Baik. Di beberapa ruangan, foto tidak boleh pakai flash.",
         vi: "Được. Ở một số phòng, chụp ảnh không được dùng flash.",
         en: "Okay. In some rooms, photos may not use flash.",
       },
       {
+        cell_id: "577dd400-cb12-402a-978c-726b5467fc28",
         speaker: "Pengunjung",
         text: "Baik, kami akan mengikuti aturan museum.",
         vi: "Vâng, chúng tôi sẽ tuân theo quy định của bảo tàng.",

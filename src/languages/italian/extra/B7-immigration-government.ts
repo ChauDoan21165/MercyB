@@ -26,6 +26,7 @@ export type ItalianLessonSentence = {
 };
 
 export type ItalianVocabEntry = {
+  cell_id?: string;
   /** Italian word/phrase (with article where it teaches gender). */
   word: string;
   /** English meaning. */
@@ -41,6 +42,7 @@ export type ItalianVocabEntry = {
 };
 
 export type ItalianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   /** Italian line. */
   text: string;
@@ -405,6 +407,7 @@ export const lessons: ItalianLesson[] = [
     vocabulary: [
       // Offices and places
       {
+        cell_id: "b0b707f8-b069-4bb3-993f-6c88521466ef",
         word: "il comune",
         en: "town/city hall",
         vi: "ủy ban / đô thị",
@@ -413,6 +416,7 @@ export const lessons: ItalianLesson[] = [
         pronunciation_en: "il ko-MOO-ne — where you do `residenza` and civil records",
       },
       {
+        cell_id: "1c8007d8-871b-4ef5-b34d-efc8d2acf231",
         word: "la questura",
         en: "police headquarters (immigration office)",
         vi: "sở cảnh sát / phòng quản lý nhập cư",
@@ -421,6 +425,7 @@ export const lessons: ItalianLesson[] = [
         pronunciation_en: "la kwes-TOO-ra — where you handle the `permesso di soggiorno`",
       },
       {
+        cell_id: "8bce5ac0-af32-4094-8d1f-c2ce6fd5f61e",
         word: "lo sportello",
         en: "counter / service window",
         vi: "quầy giao dịch",
@@ -429,6 +434,7 @@ export const lessons: ItalianLesson[] = [
         pronunciation_en: "lo spor-TEL-lo — takes `lo` before `sp-`; grab a ticket and wait",
       },
       {
+        cell_id: "506650a1-a6cd-45d2-8f40-98f8b1e89ed3",
         word: "l'ufficio",
         en: "office (public office)",
         vi: "văn phòng",
@@ -437,6 +443,7 @@ export const lessons: ItalianLesson[] = [
         pronunciation_en: "loof-FEE-cho — double `ff`",
       },
       {
+        cell_id: "ebb10f44-553e-4b97-af05-e7a99c3bc2e8",
         word: "il funzionario",
         en: "official / clerk handling paperwork",
         vi: "công chức",
@@ -446,6 +453,7 @@ export const lessons: ItalianLesson[] = [
       },
       // Documents and items
       {
+        cell_id: "83ed51c6-f389-494a-b427-0dd4387227cd",
         word: "il codice fiscale",
         en: "tax code (personal ID number)",
         vi: "mã số thuế",
@@ -454,6 +462,7 @@ export const lessons: ItalianLesson[] = [
         pronunciation_en: "il KO-dee-che fee-SKA-le — not `codice tassa`",
       },
       {
+        cell_id: "2b92eb7a-0fad-440c-9b60-e00f90d6d597",
         word: "il permesso di soggiorno",
         en: "residence permit",
         vi: "giấy phép cư trú",
@@ -462,6 +471,7 @@ export const lessons: ItalianLesson[] = [
         pronunciation_en: "il per-MES-so dee sod-JOR-no — never clip it to `permesso`",
       },
       {
+        cell_id: "62904b43-4642-4b49-ad2a-67a96ecfa65c",
         word: "la residenza",
         en: "(registered) residence",
         vi: "đăng ký cư trú",
@@ -470,6 +480,7 @@ export const lessons: ItalianLesson[] = [
         pronunciation_en: "la re-zee-DEN-tsa — formal context uses `richiedere`",
       },
       {
+        cell_id: "5c1b176c-aa22-4324-8e24-e537008232df",
         word: "una marca da bollo",
         en: "revenue stamp",
         vi: "tem thuế",
@@ -478,6 +489,7 @@ export const lessons: ItalianLesson[] = [
         pronunciation_en: "OO-na MAR-ka da BOL-lo — bought at a `tabaccheria`",
       },
       {
+        cell_id: "f341281b-9e89-4b4c-a28d-f208640d026a",
         word: "il modulo",
         en: "form",
         vi: "mẫu đơn",
@@ -486,6 +498,7 @@ export const lessons: ItalianLesson[] = [
         pronunciation_en: "il MO-doo-lo — `compilare il modulo` = fill in the form",
       },
       {
+        cell_id: "5882011b-5f68-46d8-a7ad-352108313e1d",
         word: "la pratica",
         en: "case / file / procedure",
         vi: "hồ sơ / thủ tục",
@@ -494,6 +507,7 @@ export const lessons: ItalianLesson[] = [
         pronunciation_en: "la PRA-tee-ka — `Sono qui per la pratica della…`",
       },
       {
+        cell_id: "e92f5d8c-b36d-4b36-8099-70ff3c2655e8",
         word: "la ricevuta",
         en: "receipt / proof of submission",
         vi: "biên nhận",
@@ -502,6 +516,7 @@ export const lessons: ItalianLesson[] = [
         pronunciation_en: "la ree-che-VOO-ta — ALWAYS ask for it and keep it",
       },
       {
+        cell_id: "9461ea39-8ad7-4680-acb0-418eafc72611",
         word: "la firma",
         en: "signature",
         vi: "chữ ký",
@@ -510,6 +525,7 @@ export const lessons: ItalianLesson[] = [
         pronunciation_en: "la FEER-ma — the verb is `firmare`",
       },
       {
+        cell_id: "a980b712-e618-4649-a61e-714f2f37fde0",
         word: "la copia",
         en: "copy",
         vi: "bản sao",
@@ -518,6 +534,7 @@ export const lessons: ItalianLesson[] = [
         pronunciation_en: "la KO-pya — also `la fotocopia` (a photocopy)",
       },
       {
+        cell_id: "2b4a3a73-0cd0-4d3a-9018-cf9b8b852e21",
         word: "l'originale",
         en: "original",
         vi: "bản gốc",
@@ -526,6 +543,7 @@ export const lessons: ItalianLesson[] = [
         pronunciation_en: "lo-ree-jee-NA-le — usually brought WITH the copy",
       },
       {
+        cell_id: "72ca1825-86d9-4026-a19e-9b9e3b8bbb14",
         word: "l'autocertificazione",
         en: "self-declaration",
         vi: "giấy tự khai",
@@ -535,6 +553,7 @@ export const lessons: ItalianLesson[] = [
       },
       // Action verbs
       {
+        cell_id: "c5085c4f-edaa-4b3a-a738-b01bbd2b291a",
         word: "compilare",
         en: "to fill in (a form)",
         vi: "điền đơn",
@@ -543,6 +562,7 @@ export const lessons: ItalianLesson[] = [
         pronunciation_en: "kom-pee-LA-re — `compilare il modulo`",
       },
       {
+        cell_id: "56895589-93f4-489d-8af9-28c4f1c66f99",
         word: "allegare",
         en: "to attach (a file)",
         vi: "đính kèm",
@@ -551,6 +571,7 @@ export const lessons: ItalianLesson[] = [
         pronunciation_en: "al-le-GA-re — past `ho allegato`",
       },
       {
+        cell_id: "57bb85c8-3b5c-4888-9052-23a2b87f1d0a",
         word: "presentare",
         en: "to submit / present",
         vi: "nộp / trình",
@@ -559,6 +580,7 @@ export const lessons: ItalianLesson[] = [
         pronunciation_en: "pre-zen-TA-re — `presentare la pratica` = submit the file",
       },
       {
+        cell_id: "666c18fd-540e-4225-b8d8-5b99b67dabd0",
         word: "rinnovare",
         en: "to renew",
         vi: "gia hạn",
@@ -567,6 +589,7 @@ export const lessons: ItalianLesson[] = [
         pronunciation_en: "reen-no-VA-re — `rinnovare il permesso di soggiorno`",
       },
       {
+        cell_id: "cf4d1cd4-fecd-4feb-8c35-f6319170dcea",
         word: "firmare",
         en: "to sign",
         vi: "ký tên",
@@ -578,24 +601,28 @@ export const lessons: ItalianLesson[] = [
     dialogue: [
       // Dialogue: At the comune
       {
+        cell_id: "98238d9c-6113-4954-b634-be6d03c1c6d0",
         speaker: "Cittadino",
         text: "Buongiorno, sono qui per la pratica della residenza.",
         vi: "Xin chào, tôi đến đây vì hồ sơ cư trú.",
         en: "Good morning, I'm here for the residence file.",
       },
       {
+        cell_id: "39ff3c10-0cef-4776-855a-84efcc269458",
         speaker: "Funzionario",
         text: "Ha prenotato un appuntamento?",
         vi: "Anh/chị đã đặt lịch hẹn chưa?",
         en: "Did you book an appointment?",
       },
       {
+        cell_id: "f338db02-8aa8-43f1-b444-dcfd3f3f708d",
         speaker: "Cittadino",
         text: "Sì, alle nove. Ho anche il codice fiscale.",
         vi: "Có, lúc chín giờ. Tôi cũng có mã số thuế.",
         en: "Yes, at nine. I also have my tax code.",
       },
       {
+        cell_id: "d81db303-1038-48ee-b556-21e76d99d86c",
         speaker: "Funzionario",
         text: "Perfetto, mi dia la documentazione.",
         vi: "Tốt, hãy đưa tôi giấy tờ.",
@@ -603,24 +630,28 @@ export const lessons: ItalianLesson[] = [
       },
       // Dialogue: Missing document
       {
+        cell_id: "0c66da92-d6c3-4c58-8d85-6c3fa2415bcb",
         speaker: "Cittadino",
         text: "Mi manca una copia del contratto di affitto.",
         vi: "Tôi thiếu một bản sao hợp đồng thuê nhà.",
         en: "I'm missing a copy of the rental contract.",
       },
       {
+        cell_id: "13ed6fcb-19dc-406c-ba3c-d2bb6ce3c350",
         speaker: "Funzionario",
         text: "Può inviarla via email oggi?",
         vi: "Anh/chị có thể gửi qua email hôm nay không?",
         en: "Can you send it by email today?",
       },
       {
+        cell_id: "503d2458-1c44-482d-985f-543997d7bdf9",
         speaker: "Cittadino",
         text: "Sì, certo. Ho già allegato il file.",
         vi: "Vâng, chắc chắn. Tôi đã đính kèm tệp rồi.",
         en: "Yes, of course. I've already attached the file.",
       },
       {
+        cell_id: "7b91f7cc-a825-4b98-a48c-99ad1bdaab98",
         speaker: "Funzionario",
         text: "Bene, allora aspetti la conferma.",
         vi: "Tốt, vậy hãy chờ xác nhận.",
@@ -628,30 +659,35 @@ export const lessons: ItalianLesson[] = [
       },
       // Dialogue: Renewing the permit
       {
+        cell_id: "e59ed38c-8453-459d-9ef6-d894b3e26297",
         speaker: "Funzionario",
         text: "Buongiorno, mi dica.",
         vi: "Xin chào, anh/chị cần gì?",
         en: "Good morning, how can I help?",
       },
       {
+        cell_id: "50fa725e-895e-48c8-98c8-13f14ed7cc5e",
         speaker: "Cittadino",
         text: "Devo rinnovare il permesso di soggiorno.",
         vi: "Tôi phải gia hạn giấy phép cư trú.",
         en: "I need to renew my residence permit.",
       },
       {
+        cell_id: "462e7f8d-db7c-424a-8631-1fdc0b40cee0",
         speaker: "Funzionario",
         text: "Ha portato il passaporto e la fotocopia?",
         vi: "Anh/chị đã mang hộ chiếu và bản sao chưa?",
         en: "Did you bring your passport and the photocopy?",
       },
       {
+        cell_id: "920a3dc9-b87a-410a-a866-13fd3afed338",
         speaker: "Cittadino",
         text: "Sì, ma mi manca la ricevuta.",
         vi: "Có, nhưng tôi còn thiếu biên nhận.",
         en: "Yes, but I'm missing the receipt.",
       },
       {
+        cell_id: "1c2c5931-85a4-4ad2-bc22-0621d7052f15",
         speaker: "Funzionario",
         text: "Può tornare con il documento mancante?",
         vi: "Anh/chị có thể quay lại với giấy tờ còn thiếu không?",

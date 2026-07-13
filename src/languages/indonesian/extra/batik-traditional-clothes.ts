@@ -13,6 +13,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -22,6 +23,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -208,6 +210,7 @@ export const lessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: `baju` is a broad everyday word for clothes/shirt, `pakaian` is more formal, and `pakaian adat` means region-specific traditional dress. `Sopan` for clothing is not just polite; it means modest and appropriate. Remember `c` sounds like 'ch': `cocok`, `cap`, `acara`.",
     vocabulary: [
       {
+        cell_id: "81f4e1c0-2d12-44a3-9d90-4411b755f796",
         word: "batik",
         en: "batik cloth/clothing",
         vi: "vải/áo batik",
@@ -216,6 +219,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "BA-tik",
       },
       {
+        cell_id: "5e5ba54f-f35c-421d-97e8-108810d7ed8d",
         word: "kebaya",
         en: "traditional women's blouse",
         vi: "áo kebaya truyền thống",
@@ -224,6 +228,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "ke-BA-ya",
       },
       {
+        cell_id: "e00fb6a8-931c-4057-b155-9e4dc03ce505",
         word: "sarung",
         en: "sarong",
         vi: "sarong / váy quấn",
@@ -232,6 +237,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "SA-roong",
       },
       {
+        cell_id: "fd69bf6d-eff0-47a9-b3d1-f9178543924b",
         word: "pakaian adat",
         en: "traditional clothing",
         vi: "trang phục truyền thống",
@@ -240,6 +246,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "pa-KAI-an A-dat",
       },
       {
+        cell_id: "b1c09f33-74b6-4a13-8735-d63923c8d634",
         word: "motif",
         en: "pattern / motif",
         vi: "họa tiết",
@@ -248,6 +255,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "MO-tif",
       },
       {
+        cell_id: "7caa4844-2a06-4215-8427-59ab2276829f",
         word: "acara resmi",
         en: "formal event",
         vi: "sự kiện trang trọng",
@@ -256,6 +264,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "a-CHA-ra res-MI",
       },
       {
+        cell_id: "83cebc78-4cc0-4000-89be-d16b176ee354",
         word: "sopan",
         en: "polite / modest / appropriate",
         vi: "lịch sự / kín đáo / phù hợp",
@@ -264,6 +273,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "SO-pan",
       },
       {
+        cell_id: "e01d8dd3-cfe7-4451-80e2-8a9d2a066dc0",
         word: "ukuran",
         en: "size",
         vi: "kích cỡ",
@@ -272,6 +282,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "oo-KOO-ran",
       },
       {
+        cell_id: "eb0028d0-378b-48ca-ba35-fb54cbde09d4",
         word: "penjahit",
         en: "tailor",
         vi: "thợ may",
@@ -280,6 +291,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "pen-JA-hit",
       },
       {
+        cell_id: "3c651bb6-ee27-4c28-a3f0-f37494717493",
         word: "cocok",
         en: "suitable / matches",
         vi: "hợp / phù hợp",
@@ -290,24 +302,28 @@ export const lessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "72e6a5e6-edbe-4239-be37-2471c85fd28d",
         speaker: "Pembeli",
         text: "Mbak, saya cari kemeja batik untuk acara kantor.",
         vi: "Chị ơi, tôi tìm áo sơ mi batik cho sự kiện công ty.",
         en: "Miss, I am looking for a batik shirt for an office event.",
       },
       {
+        cell_id: "da0a1f87-a79e-4fef-bffd-c5f963432adc",
         speaker: "Penjual",
         text: "Boleh. Mau lengan panjang atau pendek?",
         vi: "Được ạ. Anh/chị muốn tay dài hay tay ngắn?",
         en: "Sure. Do you want long sleeves or short sleeves?",
       },
       {
+        cell_id: "d1fe1a10-918e-4738-92b8-17faffd2092a",
         speaker: "Pembeli",
         text: "Lengan panjang lebih aman. Ukuran M masih ada?",
         vi: "Tay dài chắc phù hợp hơn. Cỡ M còn không?",
         en: "Long sleeves are a safer choice. Is size M still available?",
       },
       {
+        cell_id: "87adf488-b7d5-48b8-af42-4a637f203dec",
         speaker: "Penjual",
         text: "Masih ada. Motif ini sopan dan cocok untuk acara resmi.",
         vi: "Vẫn còn. Họa tiết này lịch sự và hợp cho sự kiện trang trọng.",

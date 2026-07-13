@@ -17,6 +17,7 @@ type LessonSentence = {
 };
 
 type VocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -28,6 +29,7 @@ type VocabEntry = {
 };
 
 type DialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -144,6 +146,7 @@ export const marketplaceSellerBusinessLessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: the pair 'jual' and 'beli' is essential. 'Penjual' = seller, 'pembeli' = buyer. In seller chat, use 'kami' for your shop, not 'kita', because 'kita' includes the buyer.",
     vocabulary: [
       {
+        cell_id: "bddb4486-5d17-4ec7-8bcf-47e45d3b4abb",
         word: "jualan online",
         en: "online selling",
         vi: "bán hàng online",
@@ -152,6 +155,7 @@ export const marketplaceSellerBusinessLessons: IndonesianLesson[] = [
         pronunciation_en: "JOO-al-an ON-line",
       },
       {
+        cell_id: "a1c6b4f3-f2e7-4ec1-930d-8b9220f6ebb9",
         word: "toko marketplace",
         en: "marketplace store",
         vi: "shop trên sàn",
@@ -160,6 +164,7 @@ export const marketplaceSellerBusinessLessons: IndonesianLesson[] = [
         pronunciation_en: "TO-ko MAR-ket-place",
       },
       {
+        cell_id: "b7ca518a-046a-4891-8936-052c0fa021f0",
         word: "stok produk",
         en: "product stock",
         vi: "tồn kho sản phẩm",
@@ -168,6 +173,7 @@ export const marketplaceSellerBusinessLessons: IndonesianLesson[] = [
         pronunciation_en: "stok PRO-duk",
       },
       {
+        cell_id: "6bed19cc-31b1-49d9-b989-fbe85a369389",
         word: "pembeli",
         en: "buyer",
         vi: "người mua",
@@ -176,6 +182,7 @@ export const marketplaceSellerBusinessLessons: IndonesianLesson[] = [
         pronunciation_en: "pem-BEH-lee",
       },
       {
+        cell_id: "508ae3a3-7db4-4060-93d6-ae23cc479bf2",
         word: "pesanan",
         en: "order",
         vi: "đơn hàng",
@@ -184,6 +191,7 @@ export const marketplaceSellerBusinessLessons: IndonesianLesson[] = [
         pronunciation_en: "pe-SA-nan",
       },
       {
+        cell_id: "311ede6a-1781-4d2e-8b63-325a37569a5b",
         word: "dikirim",
         en: "sent / shipped",
         vi: "được gửi / được giao",
@@ -192,6 +200,7 @@ export const marketplaceSellerBusinessLessons: IndonesianLesson[] = [
         pronunciation_en: "dee-KEE-rim",
       },
       {
+        cell_id: "f5643769-adc0-4241-b6ab-12200076c717",
         word: "dibatalkan",
         en: "canceled",
         vi: "bị hủy",
@@ -202,24 +211,28 @@ export const marketplaceSellerBusinessLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "cbcdffbf-39c7-4c7e-801f-567a2ae2d897",
         speaker: "Pembeli",
         text: "Kak, barang ini ready? Bisa dikirim hari ini?",
         vi: "Bạn ơi, hàng này có sẵn không? Có thể gửi hôm nay không?",
         en: "Hi, is this item in stock? Can it be shipped today?",
       },
       {
+        cell_id: "6b558bab-0884-4724-bb83-cf31b70ec5a0",
         speaker: "Penjual",
         text: "Ready, Kak. Stok masih ada dan bisa dikirim sore ini.",
         vi: "Còn hàng bạn nhé. Vẫn còn tồn kho và có thể gửi chiều nay.",
         en: "In stock. We still have stock and it can be shipped this afternoon.",
       },
       {
+        cell_id: "1ec82fcb-2289-440a-afcc-f0ffa561d6a6",
         speaker: "Pembeli",
         text: "Kalau saya checkout sekarang, kapan sampai?",
         vi: "Nếu tôi checkout bây giờ, khi nào tới?",
         en: "If I check out now, when will it arrive?",
       },
       {
+        cell_id: "10fcba10-787b-4460-a824-0de7de50d73f",
         speaker: "Penjual",
         text: "Estimasi dua sampai tiga hari, tergantung kurir.",
         vi: "Dự kiến hai đến ba ngày, tùy bên giao hàng.",
@@ -374,6 +387,7 @@ export const marketplaceSellerBusinessLessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: when handling complaints, use a soft but clear tone: 'Mohon kirim foto sebagai bukti', 'Kami cek dulu', 'Kami bantu proses retur'. 'Rating toko' is not just a score; it is store trust.",
     vocabulary: [
       {
+        cell_id: "d0ca1cf7-a720-4b89-b223-257486dafa7c",
         word: "pengiriman",
         en: "shipping / delivery",
         vi: "giao hàng / vận chuyển",
@@ -382,6 +396,7 @@ export const marketplaceSellerBusinessLessons: IndonesianLesson[] = [
         pronunciation_en: "pe-ngee-REE-man",
       },
       {
+        cell_id: "e38e6979-be28-40ea-bbc2-3058445bd022",
         word: "rating toko",
         en: "store rating",
         vi: "điểm đánh giá shop",
@@ -390,6 +405,7 @@ export const marketplaceSellerBusinessLessons: IndonesianLesson[] = [
         pronunciation_en: "REH-ting TO-ko",
       },
       {
+        cell_id: "61d3b98b-890f-4d4a-95b1-084986ed63f4",
         word: "komplain",
         en: "complaint",
         vi: "khiếu nại",
@@ -398,6 +414,7 @@ export const marketplaceSellerBusinessLessons: IndonesianLesson[] = [
         pronunciation_en: "kom-PLAIN",
       },
       {
+        cell_id: "cc0986ae-0396-4352-9ecd-7faf315472d4",
         word: "promosi",
         en: "promotion",
         vi: "khuyến mãi / quảng bá",
@@ -406,6 +423,7 @@ export const marketplaceSellerBusinessLessons: IndonesianLesson[] = [
         pronunciation_en: "pro-MOH-see",
       },
       {
+        cell_id: "bee8b3d6-12a3-4197-95b7-f4852ba38fc2",
         word: "gratis ongkir",
         en: "free shipping",
         vi: "miễn phí ship",
@@ -414,6 +432,7 @@ export const marketplaceSellerBusinessLessons: IndonesianLesson[] = [
         pronunciation_en: "GRA-tis ONG-keer",
       },
       {
+        cell_id: "9be99ede-9697-4217-b6dd-a9f3e88b952e",
         word: "bukti",
         en: "evidence / proof",
         vi: "bằng chứng",
@@ -422,6 +441,7 @@ export const marketplaceSellerBusinessLessons: IndonesianLesson[] = [
         pronunciation_en: "BOOK-tee",
       },
       {
+        cell_id: "60005cdd-17f5-42a8-b3b2-192461fc9a67",
         word: "ulasan",
         en: "review",
         vi: "đánh giá / nhận xét",
@@ -432,24 +452,28 @@ export const marketplaceSellerBusinessLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "f1a94235-35f8-4c04-955e-435bc4642384",
         speaker: "Admin Toko",
         text: "Maaf, Kak. Pengiriman terlambat karena kurir sedang penuh.",
         vi: "Xin lỗi bạn. Giao hàng trễ vì bên vận chuyển đang quá tải.",
         en: "Sorry. Shipping is late because the courier is currently overloaded.",
       },
       {
+        cell_id: "88a2d705-3acc-485a-95e7-59bf7b6ed78b",
         speaker: "Pembeli",
         text: "Kalau barang rusak saat sampai, bagaimana?",
         vi: "Nếu hàng bị hỏng khi tới nơi thì sao?",
         en: "What if the item is damaged when it arrives?",
       },
       {
+        cell_id: "470dda9e-2d50-4174-b58e-690879164b00",
         speaker: "Admin Toko",
         text: "Mohon kirim foto sebagai bukti, nanti kami bantu proses komplain.",
         vi: "Vui lòng gửi ảnh làm bằng chứng, lát nữa bên tôi hỗ trợ xử lý khiếu nại.",
         en: "Please send photos as evidence, then we will help process the complaint.",
       },
       {
+        cell_id: "ecf31f05-0f6f-4270-9d3d-79490de93da5",
         speaker: "Pembeli",
         text: "Baik. Kalau selesai, saya update ulasan.",
         vi: "Được. Nếu xong, tôi cập nhật đánh giá.",

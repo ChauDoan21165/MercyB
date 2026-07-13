@@ -35,6 +35,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   /** Indonesian word/phrase. */
   word: string;
   /** English meaning. */
@@ -50,6 +51,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   /** Indonesian line. */
   text: string;
@@ -256,6 +258,7 @@ export const lessons: IndonesianLesson[] = [
     vocabulary: [
       // The disasters
       {
+        cell_id: "56d50d25-f7f7-4a33-b9f8-31dd17ddda4d",
         word: "gempa (bumi)",
         en: "earthquake",
         vi: "động đất",
@@ -264,6 +267,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "GEM-pa (BOO-mi) — hard `g` as in 'go'; `gempa susulan` = aftershock",
       },
       {
+        cell_id: "d9dcbe63-a5b1-4221-8ede-a6d507d0cd7d",
         word: "tsunami",
         en: "tsunami",
         vi: "sóng thần",
@@ -272,6 +276,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "tsu-NA-mi — sound the 'ts'; `peringatan tsunami` = tsunami warning",
       },
       {
+        cell_id: "9d335efd-b83b-49c1-8a16-453541d6ad1d",
         word: "banjir",
         en: "flood",
         vi: "lũ lụt",
@@ -280,6 +285,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "BAN-jir — `j` as in 'jam'; `banjir bandang` = flash flood",
       },
       {
+        cell_id: "31c02367-0abd-4987-a130-06a708a4299d",
         word: "kebakaran",
         en: "fire (the blaze/event)",
         vi: "đám cháy / vụ cháy",
@@ -288,6 +294,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "ke-ba-KA-ran — ke-…-an from `bakar`; differs from `membakar` (to burn) and `api` (fire/flame)",
       },
       {
+        cell_id: "3d69914f-ce60-4195-acd1-ad89cc18ef94",
         word: "gunung meletus",
         en: "volcanic eruption",
         vi: "núi lửa phun trào",
@@ -296,6 +303,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "GU-nung me-LE-tus — `gunung berapi` = volcano; `letusan` = an eruption (noun)",
       },
       {
+        cell_id: "10f83967-0d05-4ed9-af1e-a8b0fb34c321",
         word: "tanah longsor",
         en: "landslide",
         vi: "sạt lở đất",
@@ -305,6 +313,7 @@ export const lessons: IndonesianLesson[] = [
       },
       // Actions & states
       {
+        cell_id: "81ec277d-d356-4700-b494-53578ba1da60",
         word: "mengungsi",
         en: "to evacuate (oneself), take refuge",
         vi: "tự đi sơ tán / lánh nạn",
@@ -313,6 +322,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "me-ngoong-SI — meN- + `ungsi`; differs from `mengungsikan` (to evacuate someone)",
       },
       {
+        cell_id: "18496e22-02c1-4506-817f-de497179b82d",
         word: "evakuasi",
         en: "evacuation",
         vi: "sự sơ tán",
@@ -321,6 +331,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "e-va-koo-A-si — `jalur evakuasi` = evacuation route; `tempat evakuasi` = evacuation point",
       },
       {
+        cell_id: "371a1d68-7d87-44c9-99a7-da5cf5af9536",
         word: "terjebak",
         en: "trapped / stuck",
         vi: "bị kẹt / mắc kẹt",
@@ -329,6 +340,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "ter-JE-bak — ter- (stative) + `jebak`; differs from `menjebak` (to set a trap)",
       },
       {
+        cell_id: "9db88015-86a4-4d11-8fcb-c2aaab30f22c",
         word: "terluka",
         en: "injured / hurt",
         vi: "bị thương",
@@ -337,6 +349,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "ter-LOO-ka — ter- + `luka` (a wound); `korban luka` = the injured",
       },
       {
+        cell_id: "ecc403fb-dc8b-403d-94b2-669192dc33b9",
         word: "selamat",
         en: "safe / to survive",
         vi: "an toàn / sống sót",
@@ -346,6 +359,7 @@ export const lessons: IndonesianLesson[] = [
       },
       // People, places, agencies
       {
+        cell_id: "788282d1-0207-423c-b557-21c791ab6c08",
         word: "korban",
         en: "victim / casualty",
         vi: "nạn nhân",
@@ -354,6 +368,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "KOR-ban — `korban jiwa` = fatalities; `korban luka` = the injured",
       },
       {
+        cell_id: "8bcb4418-5cb3-412e-9e95-6fadece72524",
         word: "pengungsi",
         en: "refugee / evacuee",
         vi: "người lánh nạn / sơ tán",
@@ -362,6 +377,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "pe-ngoong-SI — peN- from `ungsi`; sheltered at a `tempat pengungsian`/`posko`",
       },
       {
+        cell_id: "6b9ea2eb-601a-4d54-9378-5f92f3f2f763",
         word: "petugas",
         en: "officer / responder / staff",
         vi: "nhân viên / cán bộ cứu hộ",
@@ -370,6 +386,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "pe-TU-gas — `petugas penyelamat` = rescue worker; `tim SAR` = search-and-rescue team",
       },
       {
+        cell_id: "94a85696-de64-4bc8-af6a-a0a20988e70d",
         word: "BMKG",
         en: "Meteorology, Climatology & Geophysics Agency",
         vi: "Cơ quan Khí tượng & Địa vật lý",
@@ -378,6 +395,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "be-em-ka-GE — spell it; issues earthquake/tsunami `peringatan dini`",
       },
       {
+        cell_id: "fbf17fb2-f90c-4dc8-ab1c-33136ad0f509",
         word: "pemadam kebakaran",
         en: "fire brigade / firefighters",
         vi: "lính cứu hỏa",
@@ -386,6 +404,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "pe-ma-DAM ke-ba-KA-ran — short `Damkar`; number `113`",
       },
       {
+        cell_id: "be6c9844-8661-40a7-8ead-84e86b669638",
         word: "darurat",
         en: "emergency",
         vi: "khẩn cấp / tình huống nguy cấp",
@@ -397,30 +416,35 @@ export const lessons: IndonesianLesson[] = [
     dialogue: [
       // Dialogue A: phoning the emergency line during a fire
       {
+        cell_id: "a500772d-2228-479a-9d3b-90dd792e0537",
         speaker: "Operator (112)",
         text: "Halo, layanan darurat. Ada keadaan apa?",
         vi: "A lô, dịch vụ khẩn cấp. Có chuyện gì ạ?",
         en: "Hello, emergency services. What's the situation?",
       },
       {
+        cell_id: "adac3de8-51df-4c3e-a103-028cbae8daa5",
         speaker: "Penelepon",
         text: "Tolong! Ada kebakaran di rumah saya. Ada orang terjebak di dalam!",
         vi: "Cứu với! Có cháy ở nhà tôi. Có người bị kẹt bên trong!",
         en: "Help! There's a fire at my house. Someone is trapped inside!",
       },
       {
+        cell_id: "ed2e61a9-07c9-43c8-8c45-7d5bc4ef6cbb",
         speaker: "Operator (112)",
         text: "Tetap tenang. Alamatnya di mana?",
         vi: "Hãy bình tĩnh. Địa chỉ ở đâu?",
         en: "Stay calm. What's the address?",
       },
       {
+        cell_id: "8fe9c1f2-6891-471e-928f-82c84128dc72",
         speaker: "Penelepon",
         text: "Jalan Mawar nomor lima, dekat pasar. Cepat, tolong! Ada juga yang terluka.",
         vi: "Đường Mawar số năm, gần chợ. Nhanh lên, làm ơn! Cũng có người bị thương.",
         en: "Jalan Mawar number five, near the market. Hurry, please! There's an injured person too.",
       },
       {
+        cell_id: "13496518-874e-4906-83f2-3fcdb4c52b35",
         speaker: "Operator (112)",
         text: "Pemadam dan ambulans segera meluncur. Keluar dari rumah dan jangan kembali masuk.",
         vi: "Xe cứu hỏa và xe cứu thương đang xuất phát ngay. Hãy ra khỏi nhà và đừng quay vào lại.",
@@ -428,30 +452,35 @@ export const lessons: IndonesianLesson[] = [
       },
       // Dialogue B: an earthquake and evacuation
       {
+        cell_id: "eda30fff-0c4b-41d7-9916-dd043964cb31",
         speaker: "Tetangga",
         text: "Awas! Gempa! Merunduk dan berlindung di bawah meja!",
         vi: "Coi chừng! Động đất! Cúi xuống và nấp dưới bàn!",
         en: "Watch out! Earthquake! Get down and shelter under the table!",
       },
       {
+        cell_id: "d1c3b45f-413b-4bb8-aa76-3ab5da9c3846",
         speaker: "Linh",
         text: "Sudah berhenti. Kita harus mengungsi sekarang. Di mana tempat evakuasi yang terdekat?",
         vi: "Đã ngừng rồi. Chúng ta phải đi sơ tán ngay. Điểm sơ tán gần nhất ở đâu?",
         en: "It's stopped. We have to evacuate now. Where's the nearest evacuation point?",
       },
       {
+        cell_id: "f9e05da8-89e2-4828-a903-b23a04fb7206",
         speaker: "Tetangga",
         text: "Ikuti jalur evakuasi ke bukit. Apakah ada peringatan tsunami dari BMKG?",
         vi: "Theo đường sơ tán lên đồi. Có cảnh báo sóng thần từ BMKG không?",
         en: "Follow the evacuation route to the hill. Is there a tsunami warning from BMKG?",
       },
       {
+        cell_id: "ae3f5cdf-e0c3-4e72-ac21-b20958634aa6",
         speaker: "Linh",
         text: "Belum ada kabar, tapi kita dekat pantai. Jangan tunggu sirene — naik ke tempat tinggi sekarang.",
         vi: "Chưa có tin, nhưng mình gần biển. Đừng chờ còi — lên chỗ cao ngay bây giờ.",
         en: "No word yet, but we're near the coast. Don't wait for the siren — get to high ground now.",
       },
       {
+        cell_id: "062bf7ba-e867-463e-9214-263776bf4156",
         speaker: "Tetangga",
         text: "Jangan panik. Bawa air dan dokumen penting. Tolong bantu Bu Ani, dia kesulitan berjalan.",
         vi: "Đừng hoảng. Mang theo nước và giấy tờ quan trọng. Làm ơn giúp bà Ani, bà ấy đi lại khó khăn.",

@@ -16,6 +16,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   /** Indonesian word/phrase. */
   word: string;
   /** English meaning. */
@@ -31,6 +32,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   /** Indonesian line. */
   text: string;
@@ -193,6 +195,7 @@ export const lessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: learn the negotiation chunks `kenaikan sewa`, `kontrak lama`, `perpanjang sewa`, `dinegosiasikan`, `harga lama`, `pindah rumah`, `kesepakatan`. When explaining financial difficulty, use `saya masih punya cicilan` or `perlu atur uang sewa` instead of sounding too harsh.",
     vocabulary: [
       {
+        cell_id: "5781652e-50e1-4c4b-8140-d70300b5b419",
         word: "kenaikan sewa",
         en: "rent increase",
         vi: "tăng tiền thuê",
@@ -201,6 +204,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "ke-NA-ik-an SE-wa",
       },
       {
+        cell_id: "439ab951-5383-4e44-82d2-bf2b626c0d91",
         word: "negosiasi",
         en: "negotiation",
         vi: "thương lượng",
@@ -209,6 +213,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "ne-go-si-A-shun",
       },
       {
+        cell_id: "4b84a95f-2f7c-48b4-a73c-cd21c10f8ed3",
         word: "kontrak lama",
         en: "old contract",
         vi: "hợp đồng cũ",
@@ -217,6 +222,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "KON-trak LA-ma",
       },
       {
+        cell_id: "e76a8c18-b3a0-4bfb-86bd-3a0094a56d69",
         word: "perpanjang sewa",
         en: "extend the lease",
         vi: "gia hạn thuê",
@@ -225,6 +231,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "per-PAN-jang SE-wa",
       },
       {
+        cell_id: "e8a8a2b6-e47d-49be-83dc-eb3e2b9901c9",
         word: "alasan kenaikan",
         en: "reason for increase",
         vi: "lý do tăng giá",
@@ -233,6 +240,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "A-la-san ke-NA-ik-an",
       },
       {
+        cell_id: "eed5ad96-dfbf-47b7-9995-363540aecd96",
         word: "cicilan",
         en: "installment payment",
         vi: "trả góp",
@@ -241,6 +249,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "chi-CHIL-an",
       },
       {
+        cell_id: "791f4c48-11ec-44af-a2ef-7a4f8b8c6837",
         word: "pindah rumah",
         en: "move house",
         vi: "chuyển nhà",
@@ -249,6 +258,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "PIN-dah ROO-mah",
       },
       {
+        cell_id: "9c95efa2-bbd6-40e5-8b8b-72d6d467bef4",
         word: "kesepakatan",
         en: "agreement",
         vi: "thỏa thuận",
@@ -259,30 +269,35 @@ export const lessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "317b8bf8-d618-473e-9e3b-e2c0109057fb",
         speaker: "Penyewa",
         text: "Bu, saya mau tanya soal kenaikan sewa bulan depan.",
         vi: "Cô ơi, tôi muốn hỏi về việc tăng tiền thuê vào tháng sau.",
         en: "Ma'am, I want to ask about the rent increase next month.",
       },
       {
+        cell_id: "7d528c39-d5d9-4ae0-a949-3de6382b1de3",
         speaker: "Pemilik rumah",
         text: "Iya, biaya perawatan naik, jadi sewanya perlu disesuaikan.",
         vi: "Vâng, chi phí bảo trì tăng, nên tiền thuê cần được điều chỉnh.",
         en: "Yes, maintenance costs have gone up, so the rent needs to be adjusted.",
       },
       {
+        cell_id: "32e941a9-88bd-4c15-a65e-8bc4c4ad0f1e",
         speaker: "Penyewa",
         text: "Kontrak lama saya masih berlaku, jadi apakah bisa dinegosiasikan?",
         vi: "Hợp đồng cũ của tôi vẫn còn hiệu lực, nên có thể thương lượng được không?",
         en: "My old contract is still valid, so can it be negotiated?",
       },
       {
+        cell_id: "358ed396-3d75-408f-a08d-a0a0658ea597",
         speaker: "Pemilik rumah",
         text: "Kalau Anda mau perpanjang sewa, kita bisa cari kesepakatan yang baik.",
         vi: "Nếu anh/chị muốn gia hạn thuê, chúng ta có thể tìm một thỏa thuận tốt.",
         en: "If you want to renew the lease, we can find a good agreement.",
       },
       {
+        cell_id: "48dfabdb-cd86-4602-a9f6-72f14b538d4c",
         speaker: "Penyewa",
         text: "Terima kasih. Saya masih punya cicilan, jadi saya perlu atur uang sewa dulu.",
         vi: "Cảm ơn. Tôi vẫn còn trả góp, nên tôi cần sắp xếp tiền thuê trước.",

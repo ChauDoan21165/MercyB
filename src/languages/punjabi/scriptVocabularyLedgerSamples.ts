@@ -18,6 +18,7 @@ export type PunjabiLedgerFocus =
 export type PunjabiLedgerStage = "pre_a11_ledger" | "archive" | "signoff" | "pre_integration" | "regression";
 
 export type PunjabiScriptVocabularyLedgerSample = {
+  cell_id?: string;
   id: string;
   focus: PunjabiLedgerFocus;
   stage: PunjabiLedgerStage;

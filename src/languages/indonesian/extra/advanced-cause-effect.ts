@@ -13,6 +13,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -22,6 +23,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -235,41 +237,46 @@ export const lessons: IndonesianLesson[] = [
     tip_advice_en:
       "Tip for Vietnamese speakers: do not translate every `vì/nên` as `karena`. Choose by sentence role: open a cause with `penyebabnya`, a consequence with `akibatnya`, an impact with `dampaknya`, an explanation with `alasan utamanya`, and a relationship with `berhubungan dengan`. For longer analysis, use the frame: main cause -> secondary factor -> direct consequence -> long-term impact -> solution.",
     vocabulary: [
-      { word: "karena itu", en: "for that reason", vi: "vì vậy", pos: "connector", pronunciation_vi: "ka-RE-na I-tu", pronunciation_en: "ka-RE-na I-too" },
-      { word: "akibatnya", en: "as a result", vi: "hậu quả là/kết quả là", pos: "connector", pronunciation_vi: "a-KI-bat-nya", pronunciation_en: "a-KEE-bat-nya" },
-      { word: "penyebabnya", en: "the cause", vi: "nguyên nhân", pos: "noun", pronunciation_vi: "pe-NYE-bab-nya", pronunciation_en: "pe-NYE-bab-nya" },
-      { word: "dampaknya", en: "the impact", vi: "tác động", pos: "noun", pronunciation_vi: "DAM-pak-nya", pronunciation_en: "DAM-pak-nya" },
-      { word: "berhubungan dengan", en: "related to", vi: "liên quan đến", pos: "verb phrase", pronunciation_vi: "ber-hu-BUNG-an de-NGAN", pronunciation_en: "ber-hoo-BOONG-an de-NGAN" },
-      { word: "menjelaskan alasan", en: "to explain the reason", vi: "giải thích lý do", pos: "verb phrase", pronunciation_vi: "men-JE-las-kan a-LA-san", pronunciation_en: "men-JE-las-kan a-LA-san" },
-      { word: "analisis sebab-akibat", en: "cause-effect analysis", vi: "phân tích nhân quả", pos: "noun phrase", pronunciation_vi: "a-na-LI-sis se-BAB a-KI-bat", pronunciation_en: "a-na-LI-sis se-BAB a-KEE-bat" },
-      { word: "saling berkaitan", en: "interrelated", vi: "liên quan lẫn nhau", pos: "phrase", pronunciation_vi: "SA-ling ber-ka-I-tan", pronunciation_en: "SA-ling ber-ka-I-tan" },
+      { cell_id: "025cd926-b213-4ac5-a725-b293fe93d9e2", word: "karena itu", en: "for that reason", vi: "vì vậy", pos: "connector", pronunciation_vi: "ka-RE-na I-tu", pronunciation_en: "ka-RE-na I-too" },
+      { cell_id: "a41051fb-57a9-42b0-9c71-262414228fbd", word: "akibatnya", en: "as a result", vi: "hậu quả là/kết quả là", pos: "connector", pronunciation_vi: "a-KI-bat-nya", pronunciation_en: "a-KEE-bat-nya" },
+      { cell_id: "a36d2c8f-9b02-4c64-a826-078f8d69364d", word: "penyebabnya", en: "the cause", vi: "nguyên nhân", pos: "noun", pronunciation_vi: "pe-NYE-bab-nya", pronunciation_en: "pe-NYE-bab-nya" },
+      { cell_id: "9f4679d0-0a52-4e57-a128-fec1fa276810", word: "dampaknya", en: "the impact", vi: "tác động", pos: "noun", pronunciation_vi: "DAM-pak-nya", pronunciation_en: "DAM-pak-nya" },
+      { cell_id: "d0a58344-9203-405c-a99c-514f8c22abce", word: "berhubungan dengan", en: "related to", vi: "liên quan đến", pos: "verb phrase", pronunciation_vi: "ber-hu-BUNG-an de-NGAN", pronunciation_en: "ber-hoo-BOONG-an de-NGAN" },
+      { cell_id: "092ec811-e7fe-46e6-a748-f12db9caf3ef", word: "menjelaskan alasan", en: "to explain the reason", vi: "giải thích lý do", pos: "verb phrase", pronunciation_vi: "men-JE-las-kan a-LA-san", pronunciation_en: "men-JE-las-kan a-LA-san" },
+      { cell_id: "28618dae-5528-41e4-b2ac-98c232893a86", word: "analisis sebab-akibat", en: "cause-effect analysis", vi: "phân tích nhân quả", pos: "noun phrase", pronunciation_vi: "a-na-LI-sis se-BAB a-KI-bat", pronunciation_en: "a-na-LI-sis se-BAB a-KEE-bat" },
+      { cell_id: "41662af9-f1ff-4df8-89e9-8da4a91e6b32", word: "saling berkaitan", en: "interrelated", vi: "liên quan lẫn nhau", pos: "phrase", pronunciation_vi: "SA-ling ber-ka-I-tan", pronunciation_en: "SA-ling ber-ka-I-tan" },
     ],
     dialogue: [
       {
+        cell_id: "7f80060b-a1cf-4b10-b499-2fbe2f56bf02",
         speaker: "Rina",
         text: "Mengapa antrean di loket semakin panjang?",
         vi: "Vì sao hàng chờ ở quầy ngày càng dài?",
         en: "Why is the queue at the counter getting longer?",
       },
       {
+        cell_id: "ff016440-03f1-4e38-8540-55da6369ffd0",
         speaker: "Fajar",
         text: "Penyebabnya bukan hanya jumlah petugas, tetapi juga sistem pendaftaran yang lambat.",
         vi: "Nguyên nhân không chỉ là số lượng nhân viên, mà còn là hệ thống đăng ký chậm.",
         en: "The cause is not only the number of staff, but also the slow registration system.",
       },
       {
+        cell_id: "8a750099-a9bb-47fa-a462-6bca97c8d558",
         speaker: "Rina",
         text: "Akibatnya, warga harus menunggu lebih lama.",
         vi: "Hậu quả là người dân phải chờ lâu hơn.",
         en: "As a result, residents have to wait longer.",
       },
       {
+        cell_id: "a6780c61-57f5-4538-9bf5-0f58e9725a45",
         speaker: "Fajar",
         text: "Dampaknya juga terasa pada kepuasan layanan.",
         vi: "Tác động của nó cũng được cảm nhận ở mức độ hài lòng với dịch vụ.",
         en: "The impact is also felt in service satisfaction.",
       },
       {
+        cell_id: "51fecfec-be62-4fed-a20f-dfb15ff30e23",
         speaker: "Rina",
         text: "Karena itu, solusinya harus menangani penyebab utama dulu.",
         vi: "Vì vậy, giải pháp phải xử lý nguyên nhân chính trước.",

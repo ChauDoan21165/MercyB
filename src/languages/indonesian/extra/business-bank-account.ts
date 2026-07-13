@@ -17,6 +17,7 @@ type IndonesianLessonSentence = {
 };
 
 type IndonesianVocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -26,6 +27,7 @@ type IndonesianVocabEntry = {
 };
 
 type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -212,6 +214,7 @@ export const businessBankAccountLessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: use practical banking question frames: `Saya ingin membuka rekening bisnis`, `Dokumen apa yang diperlukan?`, `Setoran awal berapa?`, `Biaya admin per bulan berapa?`, `Apakah internet banking bisa diaktifkan?`. Remember that `rekening koran` means bank statement and `tanda tangan ulang` means sign again.",
     vocabulary: [
       {
+        cell_id: "62881082-2719-4d3e-ace7-8cc1f81d7550",
         word: "rekening bisnis",
         en: "business account",
         vi: "tai khoan doanh nghiep",
@@ -220,6 +223,7 @@ export const businessBankAccountLessons: IndonesianLesson[] = [
         pronunciation_en: "reh-keh-NEENG BIZ-nis",
       },
       {
+        cell_id: "8b910f6f-fa88-4675-ae3f-49f3d4e68865",
         word: "nama usaha",
         en: "business name",
         vi: "ten doanh nghiep/cua hang",
@@ -228,6 +232,7 @@ export const businessBankAccountLessons: IndonesianLesson[] = [
         pronunciation_en: "NAH-mah oo-SAH-hah",
       },
       {
+        cell_id: "59f76e00-9e6f-42c9-8ec7-b15e122b24cb",
         word: "dokumen perusahaan",
         en: "company documents",
         vi: "giay to cong ty",
@@ -236,6 +241,7 @@ export const businessBankAccountLessons: IndonesianLesson[] = [
         pronunciation_en: "do-KOO-men per-oo-sah-HAH-an",
       },
       {
+        cell_id: "f422ce6e-aa44-484a-9732-cdd31401e8be",
         word: "setoran awal",
         en: "initial deposit",
         vi: "so tien nap ban dau",
@@ -244,6 +250,7 @@ export const businessBankAccountLessons: IndonesianLesson[] = [
         pronunciation_en: "seh-TOH-ran AH-wal",
       },
       {
+        cell_id: "bb4c7ac9-e7b6-416a-93c2-b9e611930ba3",
         word: "internet banking",
         en: "internet banking",
         vi: "ngan hang truc tuyen",
@@ -252,6 +259,7 @@ export const businessBankAccountLessons: IndonesianLesson[] = [
         pronunciation_en: "IN-ter-net BAN-king",
       },
       {
+        cell_id: "6501aa4f-89d8-4a46-938f-179ca02e3d81",
         word: "rekening koran",
         en: "bank statement",
         vi: "sao ke tai khoan",
@@ -260,6 +268,7 @@ export const businessBankAccountLessons: IndonesianLesson[] = [
         pronunciation_en: "reh-keh-NEENG KOH-ran",
       },
       {
+        cell_id: "66beef70-ff3a-4693-a017-3a708bc672f6",
         word: "biaya admin",
         en: "service fee",
         vi: "phi dich vu",
@@ -268,6 +277,7 @@ export const businessBankAccountLessons: IndonesianLesson[] = [
         pronunciation_en: "bee-AH-yah AHD-min",
       },
       {
+        cell_id: "eedb8160-2413-4f33-8273-06a581591e24",
         word: "tanda tangan",
         en: "signature",
         vi: "chu ky",
@@ -278,30 +288,35 @@ export const businessBankAccountLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "29ff775b-988a-4423-bd9c-4ba6f09f8af8",
         speaker: "Nasabah",
         text: "Selamat pagi, saya ingin membuka rekening bisnis atas nama usaha saya.",
         vi: "Chao buoi sang, toi muon mo tai khoan doanh nghiep dung ten co so kinh doanh cua toi.",
         en: "Good morning, I would like to open a business account under my business name.",
       },
       {
+        cell_id: "eb7e59f6-32c9-4fe6-b1f8-60fe25a43055",
         speaker: "Petugas Bank",
         text: "Tentu. Apakah Bapak sudah membawa dokumen perusahaan dan identitas pemilik?",
         vi: "Tat nhien. Anh da mang giay to cong ty va giay to cua chu so huu chua?",
         en: "Of course. Have you brought the company documents and the owner's ID?",
       },
       {
+        cell_id: "f62e96ef-f714-454a-81da-6882642786e7",
         speaker: "Nasabah",
         text: "Sudah, dan saya juga ingin tahu biaya admin per bulan.",
         vi: "Roi, va toi cung muon biet phi quan ly moi thang.",
         en: "Yes, and I also want to know the monthly admin fee.",
       },
       {
+        cell_id: "10bc6b30-18c4-48f1-8d3b-422c3e516e57",
         speaker: "Petugas Bank",
         text: "Baik, rekening ini bisa dipakai untuk transaksi online dan internet banking.",
         vi: "Duoc, tai khoan nay co the dung cho giao dich online va internet banking.",
         en: "Alright, this account can be used for online transactions and internet banking.",
       },
       {
+        cell_id: "f0d36292-e135-4668-8107-2ae776a80355",
         speaker: "Nasabah",
         text: "Kalau ada perubahan data, apakah saya perlu tanda tangan ulang?",
         vi: "Neu co thay doi thong tin, toi co can ky lai khong?",

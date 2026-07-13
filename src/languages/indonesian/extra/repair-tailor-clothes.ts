@@ -16,6 +16,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   /** Indonesian word/phrase. */
   word: string;
   /** English meaning. */
@@ -31,6 +32,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   /** Indonesian line. */
   text: string;
@@ -193,6 +195,7 @@ export const lessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: learn service chunks: `permak baju`, `ukur badan`, `celana kepanjangan`, `jahit kancing`, `bahan kain`, `ongkos jahit`. Indonesian often uses passive `di-` when requesting alterations: `dipendekkan`, `dijahit`, `dikecilkan`, `diganti`.",
     vocabulary: [
       {
+        cell_id: "af72ea4e-39fb-4f4d-aa98-9dc7bbe7fa5a",
         word: "permak baju",
         en: "alter/fix clothes",
         vi: "sửa quần áo",
@@ -201,6 +204,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "PER-mak BA-joo",
       },
       {
+        cell_id: "04d3dcfc-2ee4-4617-971a-3d6bc6c6ae34",
         word: "penjahit",
         en: "tailor",
         vi: "thợ may",
@@ -209,6 +213,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "pen-JA-hit",
       },
       {
+        cell_id: "dc0352e7-0b43-4f3a-b74e-d7baf9dd5f67",
         word: "ukur badan",
         en: "take body measurements",
         vi: "đo người / lấy số đo",
@@ -217,6 +222,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "OO-kur BA-dan",
       },
       {
+        cell_id: "bf81f450-3ea9-4f1b-ba1a-ff8759602342",
         word: "celana kepanjangan",
         en: "pants are too long",
         vi: "quần dài quá",
@@ -225,6 +231,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "che-LA-na ke-pan-JANG-an",
       },
       {
+        cell_id: "095a13bc-32e4-40ba-88ef-6c17a4c08683",
         word: "jahit kancing",
         en: "sew a button",
         vi: "may nút áo",
@@ -233,6 +240,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "JA-hit KAN-ching",
       },
       {
+        cell_id: "72ab9697-b417-45cd-bf05-af4c71647245",
         word: "bahan kain",
         en: "fabric material",
         vi: "chất vải / vật liệu vải",
@@ -241,6 +249,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "BA-han KAIN",
       },
       {
+        cell_id: "f4dd8c2a-cfdb-4902-ade8-62e2460bbfa4",
         word: "ongkos jahit",
         en: "sewing fee",
         vi: "tiền công may",
@@ -249,6 +258,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "ONG-kos JA-hit",
       },
       {
+        cell_id: "d2ee1899-e78f-4a84-bf3d-180013baea5b",
         word: "dipendekkan",
         en: "shortened",
         vi: "được làm ngắn lại",
@@ -257,6 +267,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "di-pen-DEK-kan",
       },
       {
+        cell_id: "d90df783-9d8a-4483-9eec-0d84fe420a24",
         word: "dikecilkan",
         en: "made smaller / taken in",
         vi: "được sửa nhỏ lại",
@@ -265,6 +276,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "di-ke-CHIL-kan",
       },
       {
+        cell_id: "cb13dcec-85d9-445d-a86e-011fe8b3ed09",
         word: "ambil",
         en: "pick up / take",
         vi: "lấy / nhận lại",
@@ -275,30 +287,35 @@ export const lessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "758a2287-eb8a-4734-97f3-bd4e8c485cfa",
         speaker: "Pelanggan",
         text: "Mbak, saya mau permak celana ini.",
         vi: "Chị ơi, tôi muốn sửa cái quần này.",
         en: "Miss, I want to alter these pants.",
       },
       {
+        cell_id: "aacecc77-bf3c-4f35-afcc-70aa9c8ac7b4",
         speaker: "Penjahit",
         text: "Bagian mana yang mau dipermak?",
         vi: "Phần nào muốn sửa ạ?",
         en: "Which part do you want altered?",
       },
       {
+        cell_id: "4104cd51-4069-4842-be46-2eae24108480",
         speaker: "Pelanggan",
         text: "Celananya kepanjangan. Tolong dipendekkan sedikit.",
         vi: "Quần dài quá. Làm ơn sửa ngắn lại một chút.",
         en: "The pants are too long. Please shorten them a little.",
       },
       {
+        cell_id: "e559a799-488a-4163-b38b-dae229283266",
         speaker: "Penjahit",
         text: "Baik. Ongkos jahitnya tiga puluh ribu.",
         vi: "Được. Tiền công may là ba mươi nghìn.",
         en: "Okay. The sewing fee is thirty thousand.",
       },
       {
+        cell_id: "524a939b-1c89-42f9-bd53-8785fe191755",
         speaker: "Pelanggan",
         text: "Bisa selesai besok sore? Saya ambil setelah kerja.",
         vi: "Có thể xong chiều mai không? Tôi lấy sau giờ làm.",

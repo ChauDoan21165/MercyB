@@ -17,6 +17,7 @@ type IndonesianLessonSentence = {
 };
 
 type IndonesianVocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -26,6 +27,7 @@ type IndonesianVocabEntry = {
 };
 
 type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -212,6 +214,7 @@ export const freightShippingCargoLessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: in logistics, learn pairs: `berat barang` and `volume`, `packing kayu` and `biaya tambahan`, `asuransi pengiriman` and `klaim`, `nomor resi` and `cek status`. Ask amounts with `berapa`; ask availability/status with `sudah ... belum?`.",
     vocabulary: [
       {
+        cell_id: "b9a2dc5a-bef7-48ba-96a3-30b3ad90be7f",
         word: "kargo",
         en: "cargo / freight",
         vi: "hàng kargo / vận tải hàng",
@@ -220,6 +223,7 @@ export const freightShippingCargoLessons: IndonesianLesson[] = [
         pronunciation_en: "KAR-go",
       },
       {
+        cell_id: "1de273b7-44ea-4e0d-9934-b033af831036",
         word: "ekspedisi",
         en: "shipping/logistics company",
         vi: "công ty vận chuyển / giao nhận",
@@ -228,6 +232,7 @@ export const freightShippingCargoLessons: IndonesianLesson[] = [
         pronunciation_en: "eks-pe-DEE-see",
       },
       {
+        cell_id: "3ffd2668-532f-438f-bb3e-3f6222960343",
         word: "berat barang",
         en: "goods weight",
         vi: "trọng lượng hàng",
@@ -236,6 +241,7 @@ export const freightShippingCargoLessons: IndonesianLesson[] = [
         pronunciation_en: "BEH-rat BA-rang",
       },
       {
+        cell_id: "7b29e1c0-a2bb-4520-a547-da0057a6c701",
         word: "volume",
         en: "volume / dimensional size",
         vi: "thể tích / kích thước khối",
@@ -244,6 +250,7 @@ export const freightShippingCargoLessons: IndonesianLesson[] = [
         pronunciation_en: "VO-loo-meh",
       },
       {
+        cell_id: "1621cdd3-086c-43bd-be4a-c78817f67013",
         word: "packing kayu",
         en: "wooden packing / crating",
         vi: "đóng kiện gỗ",
@@ -252,6 +259,7 @@ export const freightShippingCargoLessons: IndonesianLesson[] = [
         pronunciation_en: "PAK-ing KA-yoo",
       },
       {
+        cell_id: "cf52df0e-89a2-44ba-be6f-354491a843ae",
         word: "asuransi pengiriman",
         en: "shipping insurance",
         vi: "bảo hiểm vận chuyển",
@@ -260,6 +268,7 @@ export const freightShippingCargoLessons: IndonesianLesson[] = [
         pronunciation_en: "a-soo-RAN-see pe-ngi-REE-man",
       },
       {
+        cell_id: "7d8ac8b6-44bf-4898-8b88-233c5b375862",
         word: "nomor resi",
         en: "tracking number",
         vi: "số vận đơn",
@@ -268,6 +277,7 @@ export const freightShippingCargoLessons: IndonesianLesson[] = [
         pronunciation_en: "NO-mor REH-see",
       },
       {
+        cell_id: "4c5c1289-aaa0-4e63-91fb-fec9409f156d",
         word: "biaya kirim",
         en: "shipping cost",
         vi: "phí vận chuyển",
@@ -278,30 +288,35 @@ export const freightShippingCargoLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "621195db-c5dd-4f3d-bb2b-b7c5f7a69c85",
         speaker: "Pengirim",
         text: "Saya mau kirim barang lewat kargo ke Surabaya.",
         vi: "Tôi muốn gửi hàng bằng kargo đến Surabaya.",
         en: "I want to send goods by cargo to Surabaya.",
       },
       {
+        cell_id: "44023e8c-d1aa-4f77-b3ac-9e523e8889d7",
         speaker: "Petugas Ekspedisi",
         text: "Berat barangnya berapa kilo, dan volumenya kira-kira berapa?",
         vi: "Trọng lượng hàng bao nhiêu ký, và thể tích khoảng bao nhiêu?",
         en: "How many kilograms is the item, and roughly what is the volume?",
       },
       {
+        cell_id: "8682428e-9e8e-4f67-ad8a-c92800ada642",
         speaker: "Pengirim",
         text: "Beratnya dua puluh lima kilo. Barangnya pecah belah, jadi perlu packing kayu.",
         vi: "Nặng hai mươi lăm ký. Hàng dễ vỡ, nên cần đóng kiện gỗ.",
         en: "It weighs twenty-five kilos. It is fragile, so it needs wooden packing.",
       },
       {
+        cell_id: "b383043a-c30b-43e0-9356-66c230401f59",
         speaker: "Petugas Ekspedisi",
         text: "Bisa. Packing kayu ada biaya tambahan. Mau tambah asuransi pengiriman juga?",
         vi: "Được. Đóng kiện gỗ có phụ phí. Anh/chị có muốn thêm bảo hiểm vận chuyển không?",
         en: "Yes. Wooden packing has an additional fee. Would you also like to add shipping insurance?",
       },
       {
+        cell_id: "507a93a3-a3aa-4a0a-a313-1ae882649d68",
         speaker: "Pengirim",
         text: "Iya, tambah asuransi. Setelah bayar, nomor resinya keluar kapan?",
         vi: "Có, thêm bảo hiểm. Sau khi thanh toán, khi nào có số vận đơn?",

@@ -31,6 +31,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   /** Indonesian word/phrase. */
   word: string;
   /** English meaning. */
@@ -46,6 +47,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   /** Indonesian line. */
   text: string;
@@ -293,6 +295,7 @@ export const lessons: IndonesianLesson[] = [
     vocabulary: [
       // ── Lodging ─────────────────────────────────────────────────────
       {
+        cell_id: "92ef9614-35fd-44bd-9b2a-3132a0fbcc5f",
         word: "hotel",
         en: "hotel",
         vi: "khách sạn",
@@ -301,6 +304,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "ho-TEL — sound the final `l`; English loanword",
       },
       {
+        cell_id: "fb5d2787-3e6c-4813-9254-ddcd3bf16ae3",
         word: "penginapan",
         en: "guesthouse / lodging",
         vi: "nhà nghỉ / chỗ trọ",
@@ -309,6 +313,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "pe-ngi-NA-pan — root `inap` (stay overnight) + `peN-…-an`",
       },
       {
+        cell_id: "c6f49a75-8f25-4e3e-813b-c542a3ca9eeb",
         word: "kamar",
         en: "room",
         vi: "phòng",
@@ -317,6 +322,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "KA-mar — `kamar mandi` = bathroom; `kamar kosong` = vacant room",
       },
       {
+        cell_id: "e20f3eef-ed4d-4bb7-b467-d5acee9fa5d8",
         word: "memesan / pesan",
         en: "to book / order",
         vi: "đặt (phòng/vé)",
@@ -325,6 +331,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "me-me-SAN / pe-SAN — `pesan kamar`, `pesan tiket`",
       },
       {
+        cell_id: "4b947067-7627-44db-aa06-d04bb9c22258",
         word: "sarapan",
         en: "breakfast",
         vi: "bữa sáng",
@@ -333,6 +340,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "sa-RA-pan — `sudah termasuk sarapan?` = is breakfast included?",
       },
       {
+        cell_id: "5c04769c-19f0-45dd-821d-943d12785e59",
         word: "termasuk",
         en: "included",
         vi: "bao gồm",
@@ -342,6 +350,7 @@ export const lessons: IndonesianLesson[] = [
       },
       // ── Flights & tickets ───────────────────────────────────────────
       {
+        cell_id: "9d6a0c5c-ebd1-494d-9467-42f66812fd42",
         word: "tiket pesawat",
         en: "plane ticket",
         vi: "vé máy bay",
@@ -350,6 +359,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "TI-ket pe-SA-wat — `pesawat` = airplane",
       },
       {
+        cell_id: "8d94a7ad-d479-4ffb-8fd5-255b39a11915",
         word: "penerbangan",
         en: "flight",
         vi: "chuyến bay",
@@ -358,6 +368,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "pe-ner-BA-ngan — root `terbang` (to fly)",
       },
       {
+        cell_id: "6cd137f2-ea9a-44ca-a680-24b64c086feb",
         word: "bandara",
         en: "airport",
         vi: "sân bay",
@@ -366,6 +377,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "ban-DA-ra — short for `bandar udara`",
       },
       {
+        cell_id: "ed94593b-8a7f-4bc5-997c-be67f5dd32da",
         word: "visa on arrival",
         en: "visa on arrival (VOA)",
         vi: "visa cấp tại sân bay",
@@ -374,6 +386,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "VEE-sa on arrival — kept in English; abbreviated `VOA`",
       },
       {
+        cell_id: "0783570a-5c48-4ead-ba58-1214df0eeda6",
         word: "ditunda",
         en: "delayed (passive)",
         vi: "bị hoãn",
@@ -383,6 +396,7 @@ export const lessons: IndonesianLesson[] = [
       },
       // ── Sightseeing ─────────────────────────────────────────────────
       {
+        cell_id: "baf6fb85-31fa-4843-867b-53072791b0d2",
         word: "wisata",
         en: "tourism / sightseeing",
         vi: "du lịch / tham quan",
@@ -391,6 +405,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "WI-sa-ta — `tempat wisata` = tourist spot; `wisatawan` = tourist",
       },
       {
+        cell_id: "c74d104d-41fa-41e9-85f6-782321408d3c",
         word: "pantai",
         en: "beach",
         vi: "bãi biển",
@@ -399,6 +414,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "PAN-tai — `tai` as in 'tie'; `ke pantai` = to the beach",
       },
       {
+        cell_id: "252576cf-43c9-482d-84ca-51928b86469f",
         word: "gunung",
         en: "mountain",
         vi: "núi",
@@ -407,6 +423,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "GU-nung — `gunung berapi` = volcano; `naik gunung` = to hike",
       },
       {
+        cell_id: "5cf9a4d0-80e5-4c90-ae1e-01f6378a5967",
         word: "pemandangan",
         en: "scenery / view",
         vi: "phong cảnh",
@@ -415,6 +432,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "pe-man-DA-ngan — root `pandang` (to look)",
       },
       {
+        cell_id: "43ec2b18-7e7b-4f7e-b7f0-a01cfe8aec70",
         word: "oleh-oleh",
         en: "souvenir (esp. local food)",
         vi: "quà đặc sản",
@@ -424,6 +442,7 @@ export const lessons: IndonesianLesson[] = [
       },
       // ── Getting around & problems ───────────────────────────────────
       {
+        cell_id: "e225223a-255c-4d53-bf50-92133d1ea912",
         word: "naik",
         en: "to go by / board (transport)",
         vi: "đi bằng / lên (xe)",
@@ -432,6 +451,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "na-IK — `naik bus`, `naik ojek`, `naik pesawat`",
       },
       {
+        cell_id: "0af80f22-4d05-4352-8ba1-538631b6cc60",
         word: "tersesat",
         en: "to be lost",
         vi: "bị lạc",
@@ -440,6 +460,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "ter-se-SAT — `ter-` = accidental; `Saya tersesat` = I'm lost",
       },
       {
+        cell_id: "7865d5e0-1475-4ae8-949a-bc656e23885a",
         word: "peta",
         en: "map",
         vi: "bản đồ",
@@ -448,6 +469,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "PE-ta — `lihat peta` = look at the map",
       },
       {
+        cell_id: "138bd547-0950-4a46-ade0-1fa523b3adea",
         word: "tunjukkan jalan",
         en: "to show the way",
         vi: "chỉ đường",
@@ -456,6 +478,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "tun-JUK-kan JA-lan — `jalan` = road / to walk",
       },
       {
+        cell_id: "52b6080f-8202-41ea-99a2-8c79cc39778f",
         word: "memperbaiki / diperbaiki",
         en: "to repair / be repaired",
         vi: "sửa / được sửa",
@@ -467,42 +490,49 @@ export const lessons: IndonesianLesson[] = [
     dialogue: [
       // Dialogue: checking in at a guesthouse, then asking about the beach
       {
+        cell_id: "af287805-eee0-41ae-8a58-ee4b7ca1ea1d",
         speaker: "Tamu",
         text: "Selamat sore. Apakah masih ada kamar kosong untuk dua malam?",
         vi: "Chào buổi chiều. Còn phòng trống cho hai đêm không ạ?",
         en: "Good afternoon. Do you still have a vacant room for two nights?",
       },
       {
+        cell_id: "d9929a94-8124-4110-9f68-b12cce798c67",
         speaker: "Resepsionis",
         text: "Ada, Pak. Berapa orang? Kamar standar atau yang ada pemandangan pantai?",
         vi: "Còn ạ. Mấy người ạ? Phòng tiêu chuẩn hay phòng có view biển?",
         en: "Yes, sir. How many people? A standard room or one with a beach view?",
       },
       {
+        cell_id: "87729b9b-7f93-4dbb-a28e-e3e24aa0897e",
         speaker: "Tamu",
         text: "Dua orang. Yang ada pemandangan, berapa harga per malam? Sudah termasuk sarapan?",
         vi: "Hai người. Phòng có view, giá mỗi đêm bao nhiêu? Đã gồm bữa sáng chưa?",
         en: "Two people. The one with a view — how much per night? Is breakfast included?",
       },
       {
+        cell_id: "18c20f6e-aeef-4678-a874-17f78e3c2f53",
         speaker: "Resepsionis",
         text: "Lima ratus ribu per malam, sudah termasuk sarapan. Check-out jam dua belas siang.",
         vi: "Năm trăm nghìn mỗi đêm, đã gồm bữa sáng. Trả phòng lúc mười hai giờ trưa.",
         en: "Five hundred thousand per night, breakfast included. Check-out is at twelve noon.",
       },
       {
+        cell_id: "fb271ec4-2819-43ba-a9b2-451c4cf9a210",
         speaker: "Tamu",
         text: "Baik, saya pesan. Oh ya, saya mau ke pantai, naik apa ya?",
         vi: "Được, tôi đặt phòng. À, tôi muốn ra biển, đi bằng gì nhỉ?",
         en: "Okay, I'll book it. Oh, I want to go to the beach — how do I get there?",
       },
       {
+        cell_id: "30ce545d-45b1-4783-a00a-2da75ff70a01",
         speaker: "Resepsionis",
         text: "Dekat kok, naik ojek lima menit. Nanti saya tunjukkan jalannya di peta.",
         vi: "Gần mà, đi ojek năm phút. Lát tôi chỉ đường trên bản đồ cho.",
         en: "It's close — a five-minute ojek ride. I'll show you the way on the map.",
       },
       {
+        cell_id: "37a546ed-0281-489a-9a5b-e59a9a494ac4",
         speaker: "Tamu",
         text: "Terima kasih banyak. Pemandangan di sini indah sekali!",
         vi: "Cảm ơn rất nhiều. Phong cảnh ở đây đẹp tuyệt!",

@@ -18,6 +18,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   /** Indonesian word/phrase. */
   word: string;
   /** English meaning. */
@@ -33,6 +34,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   /** Indonesian line. */
   text: string;
@@ -243,6 +245,7 @@ export const clinicNutritionDietLessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: Indonesian `diet` does not only mean weight loss; it can mean a health eating plan. Use concrete chunks: `pola makan`, `diet sehat`, `berat badan naik/turun`, `gula darah`, `kolesterol`, `mengurangi gorengan`, `rencana makan`. When asking advice, `sebaiknya saya... ?` sounds soft and polite.",
     vocabulary: [
       {
+        cell_id: "9121f7ee-1d3e-4084-a52f-669692a028ad",
         word: "ahli gizi",
         en: "dietitian / nutritionist",
         vi: "chuyên gia dinh dưỡng",
@@ -251,6 +254,7 @@ export const clinicNutritionDietLessons: IndonesianLesson[] = [
         pronunciation_en: "AH-li GEE-zee",
       },
       {
+        cell_id: "151176d4-890d-4a7c-9dfc-59d689b6206e",
         word: "pola makan",
         en: "eating pattern",
         vi: "chế độ/thói quen ăn uống",
@@ -259,6 +263,7 @@ export const clinicNutritionDietLessons: IndonesianLesson[] = [
         pronunciation_en: "PO-la MA-kan",
       },
       {
+        cell_id: "b99db4fd-e8a3-4e2c-89fc-c290b91b8418",
         word: "diet sehat",
         en: "healthy diet",
         vi: "chế độ ăn lành mạnh",
@@ -267,6 +272,7 @@ export const clinicNutritionDietLessons: IndonesianLesson[] = [
         pronunciation_en: "di-ET SE-hat",
       },
       {
+        cell_id: "f3cecd90-3cb4-48c7-a5e6-a077f4878a93",
         word: "kalori",
         en: "calories",
         vi: "calo",
@@ -275,6 +281,7 @@ export const clinicNutritionDietLessons: IndonesianLesson[] = [
         pronunciation_en: "KA-lo-ree",
       },
       {
+        cell_id: "ddfdfb8c-cf5a-4e17-8a3a-22148fbe7e8d",
         word: "berat badan",
         en: "body weight",
         vi: "cân nặng",
@@ -283,6 +290,7 @@ export const clinicNutritionDietLessons: IndonesianLesson[] = [
         pronunciation_en: "BE-rat BA-dan",
       },
       {
+        cell_id: "59699bb1-c27c-4d68-a9bb-a1bdeef90530",
         word: "gula darah",
         en: "blood sugar",
         vi: "đường huyết",
@@ -291,6 +299,7 @@ export const clinicNutritionDietLessons: IndonesianLesson[] = [
         pronunciation_en: "GOO-la DA-rah",
       },
       {
+        cell_id: "06e48500-229a-4db6-b871-791066f1c07f",
         word: "diabetes",
         en: "diabetes",
         vi: "tiểu đường",
@@ -299,6 +308,7 @@ export const clinicNutritionDietLessons: IndonesianLesson[] = [
         pronunciation_en: "dee-a-BE-tes",
       },
       {
+        cell_id: "f00bcb3f-558c-49e1-947a-00fe4cabcc5f",
         word: "kolesterol",
         en: "cholesterol",
         vi: "cholesterol",
@@ -307,6 +317,7 @@ export const clinicNutritionDietLessons: IndonesianLesson[] = [
         pronunciation_en: "ko-les-te-ROL",
       },
       {
+        cell_id: "4391fd78-059e-4c00-b2af-7c13acfe5ba3",
         word: "rencana makan",
         en: "meal plan",
         vi: "kế hoạch ăn uống",
@@ -315,6 +326,7 @@ export const clinicNutritionDietLessons: IndonesianLesson[] = [
         pronunciation_en: "ren-CHA-na MA-kan",
       },
       {
+        cell_id: "c4ad8b43-5e6c-42c6-bbff-694a7957d04e",
         word: "gorengan",
         en: "fried snacks / fried foods",
         vi: "đồ chiên",
@@ -325,30 +337,35 @@ export const clinicNutritionDietLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "096ab7ca-a324-47f6-93a0-5401f4818f64",
         speaker: "Pasien",
         text: "Selamat pagi. Saya mau konsultasi dengan ahli gizi.",
         vi: "Chào buổi sáng. Tôi muốn tư vấn với chuyên gia dinh dưỡng.",
         en: "Good morning. I would like to consult with a dietitian.",
       },
       {
+        cell_id: "4d014d8d-b1ed-4d01-b46b-daacf0eff638",
         speaker: "Ahli Gizi",
         text: "Baik. Apa tujuan utama Anda, menurunkan berat badan atau mengatur gula darah?",
         vi: "Được. Mục tiêu chính của anh/chị là giảm cân hay kiểm soát đường huyết?",
         en: "All right. What is your main goal, losing weight or managing blood sugar?",
       },
       {
+        cell_id: "cec4a8c0-8572-46e5-95da-58493b12f693",
         speaker: "Pasien",
         text: "Berat badan saya naik, dan dokter bilang kolesterol saya tinggi.",
         vi: "Cân nặng của tôi tăng, và bác sĩ nói cholesterol của tôi cao.",
         en: "My weight has gone up, and the doctor said my cholesterol is high.",
       },
       {
+        cell_id: "173dff69-ba86-4d70-84aa-0950407ded9a",
         speaker: "Ahli Gizi",
         text: "Kita bisa mulai dari pola makan teratur dan mengurangi gorengan.",
         vi: "Chúng ta có thể bắt đầu từ chế độ ăn đều đặn và giảm đồ chiên.",
         en: "We can start with a regular eating pattern and reducing fried foods.",
       },
       {
+        cell_id: "d976600f-4d28-40f8-b512-ced2ea3ab4db",
         speaker: "Pasien",
         text: "Tolong bantu buatkan rencana makan selama satu minggu.",
         vi: "Xin giúp tôi lập kế hoạch ăn uống trong một tuần.",
