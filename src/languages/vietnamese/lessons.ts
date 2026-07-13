@@ -17,7 +17,9 @@ import { lessons as vietnameseLessonsC2 } from "./lessons-c2";
 export type VietnameseCefrLevel = "A1" | "A1+" | "A2" | "B1" | "B2" | "C1" | "C2";
 
 export type VietnamesePhrase = {
+  cell_id?: string;
   english: string;
+  ipa_en?: string | null;
   vietnamese: string;
   pronunciation: string;
   context: string;
@@ -28,6 +30,7 @@ export type VietnameseDialogueLine = {
   speaker: string;
   vietnamese: string;
   english: string;
+  ipa_en?: string | null;
   pronunciation: string;
 };
 

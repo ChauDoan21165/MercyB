@@ -19,6 +19,7 @@ export type NormalizedSentence = {
   native: string;
   romanization?: string;
   en?: string;
+  ipa_en?: string | null;
   vi?: string;
   /** Japanese explanation/gloss for Japanese-native English learners. */
   ja?: string;
@@ -53,6 +54,7 @@ export type NormalizedDialogueLine = {
   native: string;
   romanization?: string;
   en?: string;
+  ipa_en?: string | null;
   vi?: string;
   /** Japanese gloss for Japanese-native English learners. */
   ja?: string;

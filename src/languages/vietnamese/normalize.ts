@@ -27,6 +27,7 @@ export function normalizeVietnameseLesson(
       native: phrase.vietnamese,
       romanization: phrase.pronunciation,
       en: phrase.english,
+      ipa_en: phrase.ipa_en,
       note: phrase.context,
     })),
     dialogue: lesson.dialogue?.map((line) => ({
@@ -34,6 +35,7 @@ export function normalizeVietnameseLesson(
       native: line.vietnamese,
       romanization: line.pronunciation,
       en: line.english,
+      ipa_en: line.ipa_en,
     })),
     culturalNotesVi: lesson.cultural_note,
     tipAdviceVi: lesson.tip,
