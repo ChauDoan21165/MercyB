@@ -59,8 +59,11 @@ const ROUTE_CHUNK_RATCHETS = [
   {
     label: 'VietnameseLessonsPage',
     prefix: 'VietnameseLessonsPage-',
-    budgetGzipBytes: Number(process.env.BUNDLE_RATCHET_VIETNAMESE_LESSONS_GZIP_BYTES) || 417_093,
-    baselineGzipBytes: 379_175,
+    // WP-IPA-APPLY embeds in-object ipa_en and persisted WP-CELL-ID-1 UUIDs
+    // for VN->EN A1 cells. This intentional lesson-data expansion resets the
+    // route baseline while preserving the +10% ratchet.
+    budgetGzipBytes: Number(process.env.BUNDLE_RATCHET_VIETNAMESE_LESSONS_GZIP_BYTES) || 487_096,
+    baselineGzipBytes: 442_814,
   },
 ];
 
