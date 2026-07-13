@@ -66,7 +66,14 @@ describe("pages function failure logging", () => {
       502,
       "provider_failed",
       { error: "provider_failed" },
-      { provider: "openai", providerStatus: 502, errorName: "UpstreamError" },
+      {
+        provider: "openai",
+        providerStatus: 502,
+        upstreamStatus: 502,
+        model: "gpt-4o-mini",
+        subcall: "draft",
+        errorName: "UpstreamError",
+      },
     );
 
     expect(response.status).toBe(502);
@@ -92,6 +99,9 @@ describe("pages function failure logging", () => {
         mode: "sentence-correction",
         provider: "openai",
         providerStatus: 502,
+        upstreamStatus: 502,
+        model: "gpt-4o-mini",
+        subcall: "draft",
         errorName: "UpstreamError",
       },
     });

@@ -77,6 +77,18 @@ function hasAnyAiProviderKey(env: PagesContext["env"]): boolean {
   );
 }
 
+function aiConversationFailureDetail(
+  error: unknown,
+  fallbackStage: string,
+): Record<string, string | number | boolean | null | undefined> {
+  const detail = getAiConversationFailureDetail(error);
+  return {
+    failureStage: detail.failureStage || fallbackStage,
+    ...detail,
+    ...(detail.errorName || detail.errorMessage ? {} : errorDetail(error)),
+  };
+}
+
 function isRateLimited(key: string, limit = 12, windowMs = 60_000): boolean {
   const now = Date.now();
   const recent = (requestLog.get(key) ?? []).filter((ts) => ts > now - windowMs);
@@ -253,50 +265,55 @@ export async function onRequestPost(context: PagesContext): Promise<Response> {
   }
 
   if (norm(body.mode) === "ai-conversation-turn") {
-    const hasPremium = await hasPremiumAiConversationAccess(env, accessToken, user.id);
-    if (!hasPremium) {
-      const cfSupabaseUrl = envValue(env, "SUPABASE_URL") || envValue(env, "VITE_SUPABASE_URL") || "";
-      const cfServiceKey = envValue(env, "SUPABASE_SERVICE_ROLE_KEY") || "";
-      const freeAccess = await checkFreeConversationTurns(user.id, {
-        supabaseUrl: cfSupabaseUrl,
-        serviceKey: cfServiceKey,
-      });
-      if (!freeAccess.flagOn || !freeAccess.allowed) {
-        return failure(mode, 403, "premium_required", {
-          error: "Premium required",
-        });
-      }
-    }
-
-    if (!hasAnyAiProviderKey(env)) {
-      return failure(mode, 500, "missing_openai_key", {
-        error: "Missing OPENAI_API_KEY",
-      });
-    }
-
-    const learnerText = asString(body.learnerText || body.userText || body.message || body.text, 1200);
-    if (!learnerText) {
-      return failure(mode, 400, "missing_learner_text", {
-        error: "Missing learnerText",
-      });
-    }
-
-    const turnCount = Number(body.turnCount ?? 0);
-    if (Number.isFinite(turnCount) && turnCount >= 50) {
-      return failure(mode, 400, "session_turn_cap", {
-        error: "Session turn cap reached",
-      });
-    }
-
-    // Bound the whole turn so a slow OpenAI subrequest returns OUR error fast
-    // instead of the Cloudflare Pages Worker being killed at its platform
-    // time/CPU limit (which serves an opaque HTML 502 the app can't observe —
-    // see reports/mercy-ai-502-trace.md). MERCY_AI_TURN_TIMEOUT_MS is kept
-    // safely under Cloudflare's limit; tune via env if needed.
-    const turnTimeoutMs = Number(envValue(env, "MERCY_AI_TURN_TIMEOUT_MS")) || 22_000;
-    const turnAbort = new AbortController();
-    const turnTimer = setTimeout(() => turnAbort.abort(), turnTimeoutMs);
+    let turnAbort: AbortController | null = null;
+    let turnTimer: ReturnType<typeof setTimeout> | null = null;
+    let failureStage = "entitlement";
     try {
+      const hasPremium = await hasPremiumAiConversationAccess(env, accessToken, user.id);
+      if (!hasPremium) {
+        const cfSupabaseUrl = envValue(env, "SUPABASE_URL") || envValue(env, "VITE_SUPABASE_URL") || "";
+        const cfServiceKey = envValue(env, "SUPABASE_SERVICE_ROLE_KEY") || "";
+        const freeAccess = await checkFreeConversationTurns(user.id, {
+          supabaseUrl: cfSupabaseUrl,
+          serviceKey: cfServiceKey,
+        });
+        if (!freeAccess.flagOn || !freeAccess.allowed) {
+          return failure(mode, 403, "premium_required", {
+            error: "Premium required",
+          }, { failureStage });
+        }
+      }
+
+      failureStage = "preflight";
+      if (!hasAnyAiProviderKey(env)) {
+        return failure(mode, 500, "missing_openai_key", {
+          error: "Missing OPENAI_API_KEY",
+        }, { failureStage });
+      }
+
+      const learnerText = asString(body.learnerText || body.userText || body.message || body.text, 1200);
+      if (!learnerText) {
+        return failure(mode, 400, "missing_learner_text", {
+          error: "Missing learnerText",
+        }, { failureStage });
+      }
+
+      const turnCount = Number(body.turnCount ?? 0);
+      if (Number.isFinite(turnCount) && turnCount >= 50) {
+        return failure(mode, 400, "session_turn_cap", {
+          error: "Session turn cap reached",
+        }, { failureStage });
+      }
+
+      // Bound the whole turn so a slow OpenAI subrequest returns OUR error fast
+      // instead of the Cloudflare Pages Worker being killed at its platform
+      // time/CPU limit (which serves an opaque HTML 502 the app can't observe —
+      // see reports/mercy-ai-502-trace.md). MERCY_AI_TURN_TIMEOUT_MS is kept
+      // safely under Cloudflare's limit; tune via env if needed.
+      const turnTimeoutMs = Number(envValue(env, "MERCY_AI_TURN_TIMEOUT_MS")) || 22_000;
+      turnAbort = new AbortController();
+      turnTimer = setTimeout(() => turnAbort?.abort(), turnTimeoutMs);
+      failureStage = "build_turn";
       const result = await buildAiConversationTurn({
         scenarioId: asString(body.scenarioId, 100) || "job-interview",
         learnerText,
@@ -311,6 +328,7 @@ export async function onRequestPost(context: PagesContext): Promise<Response> {
       });
 
       // Cost telemetry: log every turn for cost-per-session accounting.
+      failureStage = "cost_logging";
       const cfSupabaseUrl = envValue(env, "SUPABASE_URL") || envValue(env, "VITE_SUPABASE_URL") || "";
       const cfServiceKey = envValue(env, "SUPABASE_SERVICE_ROLE_KEY") || "";
       console.log(
@@ -330,6 +348,7 @@ export async function onRequestPost(context: PagesContext): Promise<Response> {
 
       // Additive: VND-costed, language-tagged spend to ai_usage_logs (the
       // CostMonitoring table). OpenAI-provider only; fire-and-forget.
+      failureStage = "usage_logging";
       logMercyAiUsage(context, {
         userId: user.id,
         feature: "mercy-ai:ai-conversation-turn",
@@ -342,20 +361,25 @@ export async function onRequestPost(context: PagesContext): Promise<Response> {
     } catch (err) {
       // Timed out on our own deadline → 504 (an observable, app-owned response)
       // rather than letting Cloudflare kill the Worker and serve its HTML 502.
+      const detail = aiConversationFailureDetail(err, failureStage);
       const timedOut =
-        turnAbort.signal.aborted ||
+        turnAbort?.signal.aborted ||
+        detail.timeout === true ||
         (err instanceof Error && /timed out/i.test(err.message));
       if (timedOut) {
         return failure(mode, 504, "ai_conversation_timeout", {
           error: "AI conversation timed out",
           timeout: true,
-        }, { timeout: true });
+        }, {
+          ...detail,
+          timeout: true,
+        });
       }
       return failure(mode, 502, "ai_conversation_failed", {
         error: err instanceof Error ? err.message : "AI conversation failed",
-      }, getAiConversationFailureDetail(err));
+      }, detail);
     } finally {
-      clearTimeout(turnTimer);
+      if (turnTimer) clearTimeout(turnTimer);
     }
   }
 

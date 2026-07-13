@@ -18,16 +18,21 @@ const env = {
   OPENAI_API_KEY: "openai-key",
 };
 
+let testRequestIndex = 0;
+let testUserIndex = 0;
+
 function postMercyAi(
   body: Record<string, unknown>,
   envOverride?: Record<string, string>,
 ): Promise<Response> {
+  testRequestIndex += 1;
   return onRequestPost({
     request: new Request("https://example.test/api/mercy-ai", {
       method: "POST",
       headers: {
         Authorization: "Bearer user-token",
         "Content-Type": "application/json",
+        "x-real-ip": `192.0.2.${testRequestIndex}`,
       },
       body: JSON.stringify(body),
     }),
@@ -51,8 +56,9 @@ function appFetchCalls(fetchMock: FetchSpy) {
 describe("Pages /api/mercy-ai AI conversation mode", () => {
   beforeEach(() => {
     vi.restoreAllMocks();
+    testUserIndex += 1;
     getUserMock.mockResolvedValue({
-      data: { user: { id: "user-1" } },
+      data: { user: { id: `00000000-0000-4000-8000-${String(testUserIndex).padStart(12, "0")}` } },
       error: null,
     });
   });
@@ -109,8 +115,8 @@ describe("Pages /api/mercy-ai AI conversation mode", () => {
         apikey: "anon-key",
       },
     });
-    expect(String(calls[1][0])).toBe(
-      "https://supabase.test/rest/v1/profiles?select=admin_level&id=eq.user-1&limit=1",
+    expect(String(calls[1][0])).toMatch(
+      /^https:\/\/supabase\.test\/rest\/v1\/profiles\?select=admin_level&id=eq\.[0-9a-f-]+&limit=1$/,
     );
 
     const openAiBody = JSON.parse(String(calls[2][1]?.body));
@@ -153,6 +159,98 @@ describe("Pages /api/mercy-ai AI conversation mode", () => {
       error: "OpenAI response missing generated Mercy reply",
     });
     expect(appFetchCalls(fetchMock)).toHaveLength(3);
+  });
+
+  it("logs OpenAI provider failures with the failing subcall and model", async () => {
+    const fetchMock = vi.fn<typeof fetch>()
+      .mockResolvedValue(new Response(null, { status: 201 }))
+      .mockResolvedValueOnce(jsonResponse({ is_premium: true, status: "active" }))
+      .mockResolvedValueOnce(jsonResponse([{ admin_level: 0 }]))
+      .mockResolvedValueOnce(new Response(
+        JSON.stringify({ error: { message: "model unavailable" } }),
+        { status: 403, headers: { "Content-Type": "application/json" } },
+      ));
+    vi.stubGlobal("fetch", fetchMock);
+
+    const response = await postMercyAi({
+      mode: "ai-conversation-turn",
+      scenarioId: "learner-led",
+      learnerText: "I need to call my landlord.",
+      turnCount: 0,
+    });
+
+    expect(response.status).toBe(502);
+    await expect(response.json()).resolves.toEqual({ error: "OpenAI 403" });
+
+    const failureLogCall = fetchMock.mock.calls.find(([url]) =>
+      String(url).includes("function_failure_logs"),
+    );
+    expect(failureLogCall).toBeTruthy();
+    const row = JSON.parse(String(failureLogCall?.[1]?.body));
+    expect(row).toMatchObject({
+      status: 502,
+      error_signature: "ai_conversation_failed",
+      detail: {
+        mode: "ai-conversation-turn",
+        provider: "openai",
+        providerStatus: 403,
+        upstreamStatus: 403,
+        model: "gpt-4o-mini",
+        subcall: "draft",
+        failureStage: "provider_response",
+        upstreamBody: '{"error":{"message":"model unavailable"}}',
+      },
+    });
+  });
+
+  it("logs unexpected post-turn handler throws with typed JSON and stage detail", async () => {
+    const fetchMock = vi.fn<typeof fetch>()
+      .mockResolvedValue(new Response(null, { status: 201 }))
+      .mockResolvedValueOnce(jsonResponse({ is_premium: true, status: "active" }))
+      .mockResolvedValueOnce(jsonResponse([{ admin_level: 0 }]))
+      .mockResolvedValueOnce(jsonResponse({
+        choices: [{
+          message: {
+            content: JSON.stringify({
+              reply: "You need to call your landlord. What do you want to ask first?",
+              correctionCandidate: null,
+            }),
+          },
+        }],
+        usage: { prompt_tokens: 90, completion_tokens: 20, total_tokens: 110 },
+      }));
+    vi.stubGlobal("fetch", fetchMock);
+
+    const response = await postMercyAi({
+      mode: "ai-conversation-turn",
+      scenarioId: "learner-led",
+      learnerText: "I need to call my landlord.",
+      turnCount: 0,
+    }, {
+      ...env,
+      SUPABASE_SERVICE_ROLE_KEY: "service-role-key",
+    });
+
+    expect(response.status).toBe(502);
+    await expect(response.json()).resolves.toEqual({
+      error: "client.from is not a function",
+    });
+
+    const failureLogCall = fetchMock.mock.calls.find(([url]) =>
+      String(url).includes("function_failure_logs"),
+    );
+    expect(failureLogCall).toBeTruthy();
+    const row = JSON.parse(String(failureLogCall?.[1]?.body));
+    expect(row).toMatchObject({
+      status: 502,
+      error_signature: "ai_conversation_failed",
+      detail: {
+        mode: "ai-conversation-turn",
+        failureStage: "cost_logging",
+        errorName: "TypeError",
+        errorMessage: "client.from is not a function",
+      },
+    });
   });
 
   it("requires premium entitlement before calling OpenAI", async () => {
@@ -310,8 +408,9 @@ describe("Pages /api/mercy-ai AI conversation mode", () => {
 describe("Pages /api/mercy-ai sentence-correction mode", () => {
   beforeEach(() => {
     vi.restoreAllMocks();
+    testUserIndex += 1;
     getUserMock.mockResolvedValue({
-      data: { user: { id: "user-1" } },
+      data: { user: { id: `00000000-0000-4000-8000-${String(testUserIndex).padStart(12, "0")}` } },
       error: null,
     });
   });

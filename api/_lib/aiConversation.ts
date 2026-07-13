@@ -79,11 +79,15 @@ export type AiConversationResponse = {
 export type AiConversationFailureDetail = {
   provider?: "openai" | "deepseek" | "gemini" | "none";
   providerStatus?: number;
+  upstreamStatus?: number;
+  model?: string;
+  subcall?: "draft" | "correction_gate";
   errorName?: string;
   errorMessage?: string;
   upstreamBody?: string;
-  failureStage?: "provider_request" | "provider_response" | "parse" | "trust_floor";
+  failureStage?: "provider_request" | "provider_response" | "provider_json" | "parse" | "trust_floor";
   trustFloorReason?: "missing_generated_reply" | "canned_reply";
+  timeout?: boolean;
 };
 
 export class AiConversationError extends Error {
@@ -319,6 +323,7 @@ export async function buildAiConversationTurn(input: AiConversationRequest): Pro
   const user = buildAiConversationUserPrompt(input);
   const draftData = await callProviderJson<DraftResponse>({
     env,
+    subcall: "draft",
     systemPrompt: system,
     userMessage: user,
     openaiModel: TURN_MODEL,
@@ -339,6 +344,7 @@ export async function buildAiConversationTurn(input: AiConversationRequest): Pro
       const gateData = await callOpenAiJson<GateResponse>({
         apiKey: env.OPENAI_API_KEY,
         model: CORRECTION_GATE_MODEL,
+        subcall: "correction_gate",
         messages: [
           { role: "developer", content: "You are a strict language-correction trust floor." },
           { role: "user", content: buildCorrectionGatePrompt({ learnerText: input.learnerText, correction: candidate }) },
@@ -454,6 +460,7 @@ function normalizeDeveloperGrounding(messages: AiConversationMessage[] | undefin
 async function callOpenAiJson<T>(params: {
   apiKey: string;
   model: string;
+  subcall: NonNullable<AiConversationFailureDetail["subcall"]>;
   messages: Array<{ role: "developer" | "user"; content: string }>;
   temperature: number;
   maxTokens: number;
@@ -481,10 +488,20 @@ async function callOpenAiJson<T>(params: {
     // message so the handler can return its own fast 5xx instead of hanging until
     // Cloudflare kills the Worker.
     if (err instanceof Error && err.name === "AbortError") {
-      throw new Error("OpenAI request timed out");
+      throw new AiConversationError("OpenAI request timed out", {
+        provider: "openai",
+        model: params.model,
+        subcall: params.subcall,
+        errorName: err.name,
+        errorMessage: "OpenAI request timed out",
+        failureStage: "provider_request",
+        timeout: true,
+      });
     }
     throw new AiConversationError("OpenAI request failed", {
       provider: "openai",
+      model: params.model,
+      subcall: params.subcall,
       errorName: err instanceof Error ? err.name : undefined,
       errorMessage: boundedDetail(err instanceof Error ? err.message : String(err ?? "unknown_error")),
       failureStage: "provider_request",
@@ -495,14 +512,29 @@ async function callOpenAiJson<T>(params: {
     throw new AiConversationError(`OpenAI ${response.status}`, {
       provider: "openai",
       providerStatus: response.status,
+      upstreamStatus: response.status,
+      model: params.model,
+      subcall: params.subcall,
       upstreamBody: boundedDetail(upstreamBody),
       failureStage: "provider_response",
     });
   }
-  const data = await response.json() as {
+  let data: {
     choices?: Array<{ message?: { content?: string } }>;
     usage?: { prompt_tokens?: number; completion_tokens?: number; total_tokens?: number };
   };
+  try {
+    data = await response.json() as typeof data;
+  } catch (err) {
+    throw new AiConversationError("OpenAI response JSON error", {
+      provider: "openai",
+      model: params.model,
+      subcall: params.subcall,
+      errorName: err instanceof Error ? err.name : undefined,
+      errorMessage: boundedDetail(err instanceof Error ? err.message : String(err ?? "json_error")),
+      failureStage: "provider_json",
+    });
+  }
   const content = data.choices?.[0]?.message?.content || "{}";
   let value: T;
   try {
@@ -510,6 +542,8 @@ async function callOpenAiJson<T>(params: {
   } catch (err) {
     throw new AiConversationError("OpenAI response parse error", {
       provider: "openai",
+      model: params.model,
+      subcall: params.subcall,
       errorName: err instanceof Error ? err.name : undefined,
       errorMessage: boundedDetail(err instanceof Error ? err.message : String(err ?? "parse_error")),
       upstreamBody: boundedDetail(content),
@@ -528,6 +562,7 @@ async function callOpenAiJson<T>(params: {
 
 async function callProviderJson<T>(params: {
   env: AiConversationEnv;
+  subcall: NonNullable<AiConversationFailureDetail["subcall"]>;
   systemPrompt: string;
   userMessage: string;
   openaiModel: string;
@@ -551,12 +586,27 @@ async function callProviderJson<T>(params: {
     timeoutMs: params.timeoutMs,
   });
   if (!result.ok || result.provider === "none") {
-    throw new AiConversationError("AI conversation provider failed", {
-      provider: result.failedProvider ?? result.provider,
+    const failedProvider = result.failedProvider ?? result.provider;
+    const providerLabel = failedProvider === "openai"
+      ? "OpenAI"
+      : failedProvider === "deepseek"
+        ? "DeepSeek"
+        : failedProvider === "gemini"
+          ? "Gemini"
+          : "AI provider";
+    const message = result.providerStatus
+      ? `${providerLabel} ${result.providerStatus}`
+      : "AI conversation provider failed";
+    throw new AiConversationError(message, {
+      provider: failedProvider,
       providerStatus: result.providerStatus,
+      upstreamStatus: result.providerStatus,
+      model: result.model || params.openaiModel,
+      subcall: params.subcall,
       errorMessage: result.errorKind ?? "unknown_provider_failure",
       upstreamBody: boundedDetail(result.upstreamBody || result.raw),
       failureStage: result.errorKind === "parse_error" ? "parse" : "provider_response",
+      timeout: result.providerErrorKind === "timeout",
     });
   }
   return {
@@ -648,6 +698,8 @@ function requireGeneratedMercyReply(value: unknown): string {
   if (!reply) {
     throw new AiConversationError("OpenAI response missing generated Mercy reply", {
       provider: "openai",
+      model: TURN_MODEL,
+      subcall: "draft",
       errorMessage: "OpenAI response missing generated Mercy reply",
       failureStage: "trust_floor",
       trustFloorReason: "missing_generated_reply",
@@ -656,6 +708,8 @@ function requireGeneratedMercyReply(value: unknown): string {
   if (looksLikeCannedMercyReply(reply)) {
     throw new AiConversationError("OpenAI response used canned Mercy reply", {
       provider: "openai",
+      model: TURN_MODEL,
+      subcall: "draft",
       errorMessage: "OpenAI response used canned Mercy reply",
       failureStage: "trust_floor",
       trustFloorReason: "canned_reply",

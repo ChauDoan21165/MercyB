@@ -151,6 +151,8 @@ function safeDetail(
     "provider",
     "providerStatus",
     "upstreamStatus",
+    "model",
+    "subcall",
     "errorName",
     "errorMessage",
     "upstreamBody",
