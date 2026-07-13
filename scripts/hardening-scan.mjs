@@ -32,6 +32,11 @@ import {
   readCellCoverageBaseline,
   scanCellCoverage,
 } from "./cell-coverage-scan.mjs";
+import {
+  DEFAULT_INTENT_PATH as DEFAULT_RLS_INTENT_PATH,
+  compareRlsIntent,
+  scanRlsMigrations,
+} from "./security/rls-matrix-scan.mjs";
 
 const ROOT = process.cwd();
 const SRC = "src";
@@ -42,6 +47,7 @@ const CHECK_TIMEOUT_MS = {
   B: 360_000,
   D: 90_000,
   K: 10_000,
+  L: 10_000,
 };
 const rel = (p) => path.relative(ROOT, p) || p;
 
@@ -620,6 +626,53 @@ function checkK() {
   return { status: "ok", findings, notes };
 }
 
+// ── Check L — Supabase migration RLS intent drift ────────────────────────
+function checkL() {
+  const scan = scanRlsMigrations({ root: ROOT });
+  let intent;
+  try {
+    intent = JSON.parse(fs.readFileSync(path.join(ROOT, DEFAULT_RLS_INTENT_PATH), "utf8"));
+  } catch (e) {
+    return {
+      status: "SKIPPED",
+      note: `RLS intent manifest missing/unreadable at ${DEFAULT_RLS_INTENT_PATH}: ${e?.message || e}`,
+      findings: [],
+    };
+  }
+
+  const drift = compareRlsIntent(scan, intent);
+  const noRls = scan.tables.filter((table) => !table.rls_enabled);
+  const policyCount = scan.tables.reduce((sum, table) => sum + table.policies.length, 0);
+  const notes = [
+    `RLS matrix: migration_files=${scan.migration_files}; tables=${scan.tables.length}; rls_enabled=${scan.tables.length - noRls.length}; rls_not_enabled=${noRls.length}; policies=${policyCount}; manifest_drift=${drift.length}`,
+  ];
+  const newNoRls = drift.filter((item) => item.type === "new_table_without_rls");
+  const otherDrift = drift.filter((item) => item.type !== "new_table_without_rls");
+  const findings = [];
+
+  if (newNoRls.length) {
+    findings.push(makeFinding({
+      id: "RLS-new-table-without-rls",
+      severity: "HIGH",
+      evidence: `Supabase migration RLS intent drift: ${newNoRls.length} table(s) exist in migrations without RLS and without ${DEFAULT_RLS_INTENT_PATH}. ${newNoRls.map((item) => `${item.table} @ ${item.file}:${item.line}`).join("; ")}`,
+      hits: newNoRls.map((item) => ({ file: item.file, line: item.line })),
+      consumer_question: "Did this MR add a table without enabling RLS and without an explicit manifest update documenting the intent?",
+    }));
+  }
+
+  if (otherDrift.length) {
+    findings.push(makeFinding({
+      id: "RLS-intent-drift",
+      severity: "HIGH",
+      evidence: `Supabase migration RLS intent drift: ${otherDrift.length} table/policy state difference(s) from ${DEFAULT_RLS_INTENT_PATH}. ${otherDrift.map((item) => `${item.type}:${item.table} @ ${item.file}:${item.line}`).join("; ")}`,
+      hits: otherDrift.map((item) => ({ file: item.file, line: item.line })),
+      consumer_question: "Did this MR intentionally change table RLS or policies, and was security/rls-intent.json updated in the same MR?",
+    }));
+  }
+
+  return { status: "ok", findings, notes };
+}
+
 // ── Orchestrate ───────────────────────────────────────────────────────────
 function main() {
   const started = new Date().toISOString();
@@ -644,7 +697,7 @@ function main() {
     node: process.version,
   };
 
-  const checkFns = { A: checkA, B: checkB, C: checkC, D: checkD, E: checkE, F: checkF, G: checkG, H: checkH, I: checkI, J: checkJ, K: checkK };
+  const checkFns = { A: checkA, B: checkB, C: checkC, D: checkD, E: checkE, F: checkF, G: checkG, H: checkH, I: checkI, J: checkJ, K: checkK, L: checkL };
   const labels = {
     A: "Lint debt (eslint)",
     B: "Type safety gaps (tsc + patterns)",
@@ -657,6 +710,7 @@ function main() {
     I: "v3 api/function env reads without missing-var handling",
     J: "v4 async UI request states without terminal failure state",
     K: "CELL-layer IPA/audio coverage ratchet",
+    L: "Supabase migration RLS intent drift",
   };
   const requestedChecks = (process.env.HARDENING_SCAN_CHECKS || "")
     .split(",")

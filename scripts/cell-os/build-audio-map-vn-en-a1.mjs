@@ -42,6 +42,14 @@ function pickText(object, key) {
   return hasText(value) ? value.trim() : null;
 }
 
+function requireCellId(object, addressHash) {
+  const cellId = pickText(object, "cell_id");
+  if (!cellId) {
+    throw new Error(`Missing persisted cell_id for ${addressHash}`);
+  }
+  return cellId;
+}
+
 function lessonLabel(lesson) {
   return `${String(lesson.id).padStart(3, "0")} ${lesson.title_en}`;
 }
@@ -68,12 +76,6 @@ function azureTuple({ role, text, sourceField }) {
   };
 }
 
-function uuidOrThrow(object, syntheticId) {
-  const value = object?.cell_id;
-  if (typeof value === "string" && value.trim().length > 0) return value.trim();
-  throw new Error(`Missing persisted WP-CELL-ID-1 cell_id for ${syntheticId}`);
-}
-
 function buildRowsFromSource(lessons) {
   const rows = [];
 
@@ -81,6 +83,7 @@ function buildRowsFromSource(lessons) {
     const phrases = Array.isArray(lesson.phrases) ? lesson.phrases : [];
     phrases.forEach((phrase, index) => {
       const ordinal = index + 1;
+      const addressHash = `vi-en:A1:lesson-${String(lesson.id).padStart(3, "0")}:vocabulary-${String(ordinal).padStart(3, "0")}`;
       const english = pickText(phrase, "english");
       const vietnamese = pickText(phrase, "vietnamese");
       const pronunciation = pickText(phrase, "pronunciation") ?? pickText(phrase, "pronunciation_hint");
@@ -88,7 +91,8 @@ function buildRowsFromSource(lessons) {
       const legacyCellId = `vi-en:A1:lesson-${String(lesson.id).padStart(3, "0")}:vocabulary-${String(ordinal).padStart(3, "0")}`;
 
       rows.push({
-        cell_id: uuidOrThrow(phrase, legacyCellId),
+        cell_id: requireCellId(phrase, addressHash),
+        address_hash: addressHash,
         legacy_cell_id: legacyCellId,
         cell_type: "Vocabulary Item",
         source_file: SOURCE_PATH,
@@ -122,6 +126,7 @@ function buildRowsFromSource(lessons) {
     const dialogue = Array.isArray(lesson.dialogue) ? lesson.dialogue : [];
     dialogue.forEach((turn, index) => {
       const ordinal = index + 1;
+      const addressHash = `vi-en:A1:lesson-${String(lesson.id).padStart(3, "0")}:dialogue-turn-${String(ordinal).padStart(3, "0")}`;
       const speaker = pickText(turn, "speaker") ?? "Unknown";
       const english = pickText(turn, "english");
       const vietnamese = pickText(turn, "vietnamese");
@@ -130,7 +135,8 @@ function buildRowsFromSource(lessons) {
       const legacyCellId = `vi-en:A1:lesson-${String(lesson.id).padStart(3, "0")}:dialogue-turn-${String(ordinal).padStart(3, "0")}`;
 
       rows.push({
-        cell_id: uuidOrThrow(turn, legacyCellId),
+        cell_id: requireCellId(turn, addressHash),
+        address_hash: addressHash,
         legacy_cell_id: legacyCellId,
         cell_type: "Dialogue Turn",
         source_file: SOURCE_PATH,
@@ -162,7 +168,7 @@ function buildRowsFromSource(lessons) {
     });
   }
 
-  return rows.sort((a, b) => a.legacy_cell_id.localeCompare(b.legacy_cell_id));
+  return rows.sort((a, b) => a.address_hash.localeCompare(b.address_hash));
 }
 
 function assertInventoryAlignment(rows) {
@@ -172,7 +178,7 @@ function assertInventoryAlignment(rows) {
     cell?.cell_type === "Vocabulary Item" || cell?.cell_type === "Dialogue Turn"
   );
   const inventoryIds = relevantCells.map((cell) => cell.id).sort();
-  const rowIds = rows.map((row) => row.legacy_cell_id).sort();
+  const rowIds = rows.map((row) => row.cell_id).sort();
 
   if (inventoryIds.length !== rowIds.length) {
     throw new Error(`Audio map row count ${rowIds.length} does not match inventory count ${inventoryIds.length}`);
@@ -181,6 +187,13 @@ function assertInventoryAlignment(rows) {
   for (let index = 0; index < inventoryIds.length; index += 1) {
     if (inventoryIds[index] !== rowIds[index]) {
       throw new Error(`Audio map cell mismatch at ${index}: ${rowIds[index]} !== ${inventoryIds[index]}`);
+    }
+  }
+
+  const inventoryLineage = new Map(relevantCells.map((cell) => [cell.id, cell.address_hash]));
+  for (const row of rows) {
+    if (inventoryLineage.get(row.cell_id) !== row.address_hash) {
+      throw new Error(`Audio map lineage mismatch for ${row.cell_id}: ${row.address_hash} !== ${inventoryLineage.get(row.cell_id)}`);
     }
   }
 }

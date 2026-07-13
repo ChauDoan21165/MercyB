@@ -270,4 +270,47 @@ describe("placement v3 core actions", () => {
     expect(grade).not.toHaveBeenCalled();
     expect(h.responses.get(start.session.id)).toHaveLength(0);
   });
+
+  it("retries transient completion persistence failure on final submit", async () => {
+    const h = createHarness({ writeProfileSnapshotFailures: 1 });
+    let current = await h.run({ action: "start" });
+    if (!current.ok || !current.prompt) throw new Error("start failed");
+
+    let submittedModality = current.prompt.modality;
+    for (let i = 0; i < 20; i++) {
+      const prompt = current.prompt;
+      if (!prompt) throw new Error("missing active prompt before completion");
+      submittedModality = prompt.modality;
+
+      const next = await h.run({
+        action: "respond",
+        response: {
+          sessionId: current.session.id,
+          taskIndex: current.session.current_task_index,
+          promptId: prompt.id,
+          responseText: prompt.expectedResponse === "audio" ? "" : USER_RESPONSES.medium,
+          audioStoragePath: prompt.expectedResponse === "audio" ? "mock-audio.webm" : undefined,
+          responseDurationMs: 1200,
+        },
+      });
+      if (!next.ok) throw new Error(next.error);
+      current = next;
+
+      if (current.profile) {
+        expect(submittedModality).toBe("listening");
+        expect(current.session.flow_state).toBe("completed");
+        expect(h.profileSnapshots).toHaveLength(1);
+        expect(h.deps.log).toHaveBeenCalledWith(
+          "placement_v3.completion_retry",
+          expect.objectContaining({
+            operation: "completion.finalizeProfile",
+            attempt: 1,
+          }),
+        );
+        return;
+      }
+    }
+
+    throw new Error("placement did not complete");
+  });
 });

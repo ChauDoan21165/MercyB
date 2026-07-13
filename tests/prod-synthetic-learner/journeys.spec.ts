@@ -40,7 +40,6 @@ test.skip(
 
 const FEEDBACK_TABLE = "learning_events";
 const SINK_WAIT_MS = 60_000; // journey (d) budget
-const DEFER_MESSAGE_RE = /Mercy ghi nhận câu này|I'll share a small tip in a moment/i;
 
 function projectRef(url: string): string {
   return new URL(url).host.split(".")[0];
@@ -76,6 +75,17 @@ function expectsImmediateCorrection(probe: SeededCorrectionProbe): boolean {
   return probe.expectedShadowPath === "target_form_correct_now";
 }
 
+function expectedShadowAction(probe: SeededCorrectionProbe): "correct_now" | "defer_to_recap" {
+  return expectsImmediateCorrection(probe) ? "correct_now" : "defer_to_recap";
+}
+
+function orderedCorrectionProbes(
+  probes: readonly SeededCorrectionProbe[],
+  feedbackProbe: SeededCorrectionProbe,
+): readonly SeededCorrectionProbe[] {
+  return [...probes.filter((probe) => probe.id !== feedbackProbe.id), feedbackProbe];
+}
+
 async function submitCorrectionProbe(
   page: import("@playwright/test").Page,
   probe: SeededCorrectionProbe,
@@ -89,6 +99,32 @@ async function submitCorrectionProbe(
   // submit label — NOT the bare "Sửa câu", which also names the mode-switcher
   // TAB (already active on this surface).
   await page.getByRole("button", { name: /Sửa câu này|Correct my sentence/i }).first().click();
+}
+
+async function readLatestShadowDecision(
+  page: import("@playwright/test").Page,
+  accessToken: string,
+  probe: SeededCorrectionProbe,
+  since: Date,
+): Promise<string> {
+  const base = SYNTH_SUPABASE_URL.replace(/\/$/, "");
+  const params = new URLSearchParams({
+    select: "event_type,rule_or_detector_id,payload,created_at",
+    event_type: "eq.lpi_policy_decision",
+    rule_or_detector_id: `eq.${probe.expectedDetector}`,
+    created_at: `gte.${since.toISOString()}`,
+    order: "created_at.desc",
+    limit: "1",
+  });
+  const resp = await page.request.get(`${base}/rest/v1/${FEEDBACK_TABLE}?${params.toString()}`, {
+    headers: { apikey: SYNTH_SUPABASE_ANON_KEY, Authorization: `Bearer ${accessToken}` },
+    timeout: 15_000,
+  });
+  if (!resp.ok()) return `shadow_unchecked: rest ${resp.status()}`;
+  const rows = (await resp.json()) as Array<{ payload?: { action?: string; reason?: string } | null }>;
+  const row = rows[0];
+  if (!row) return `shadow_missing: expected ${expectedShadowAction(probe)}`;
+  return `shadow=${row.payload?.action ?? "unknown"} reason=${row.payload?.reason ?? "unknown"} expected=${expectedShadowAction(probe)}`;
 }
 
 /**
@@ -198,48 +234,48 @@ test("(b/c/d) correction → feedback tap → row lands with rule_or_detector_id
   const feedbackProbe = seededProbes.find(expectsImmediateCorrection);
   await pinSyntheticLessonState(page);
 
-  // (b) submit seeded-error sentences in grammar mode. Immediate seeds must
-  // render a correction card + feedback buttons. Defer-class seeds must render
-  // the deliberate defer notice and no correction card controls. Keep a pinned
-  // immediate seed in every run so (c)/(d) exercise feedback + durable sink.
+  // (b) submit seeded-error sentences in grammar mode. Prod currently runs LPI
+  // policy in SHADOW mode: a shadow "defer_to_recap" decision is telemetry only,
+  // not UI enforcement. Therefore every seed that produces a correction must
+  // still render a correction card + feedback buttons in the UI. The true UI
+  // defer notice ("Đã ghi nhận · Noted") belongs to the legacy timing gate and
+  // is not asserted by these LPI-shadow probes.
   const tB = Date.now();
   let bOk = false, bDetail = "";
-  try {
-    const details: string[] = [];
-    if (!feedbackProbe) throw new Error("seed rotation has no immediate-correction probe");
+  let feedbackReady = false;
+  const details: string[] = [];
+  const failures: string[] = [];
+  if (!feedbackProbe) {
+    failures.push("seed rotation has no immediate-correction probe");
+  } else {
+    for (const probe of orderedCorrectionProbes(seededProbes, feedbackProbe)) {
+      const submittedAt = new Date();
+      try {
+        await submitCorrectionProbe(page, probe);
 
-    for (const probe of seededProbes) {
-      await submitCorrectionProbe(page, probe);
-
-      if (expectsImmediateCorrection(probe)) {
         // The correction is "rendered" iff the feedback buttons mount (they only
         // render for a correction that carries a real rule_or_detector_id).
         await expect(page.getByTestId("correction-feedback-helpful")).toBeVisible({ timeout: 30_000 });
+        const shadowDecision = await readLatestShadowDecision(page, accessToken, probe, submittedAt)
+          .catch((e) => `shadow_unchecked: ${redact((e as Error).message)}`);
         details.push(
-          `${probe.id}: correction rendered with feedback buttons; expectedDetector=${probe.expectedDetector}; expectedShadowPath=${probe.expectedShadowPath}`,
+          `${probe.id}: correction rendered with feedback buttons; expectedDetector=${probe.expectedDetector}; expectedShadowPath=${probe.expectedShadowPath}; ${shadowDecision}`,
         );
-      } else {
-        await expect(page.getByText(DEFER_MESSAGE_RE)).toBeVisible({ timeout: 30_000 });
-        await expect(page.getByTestId("correction-feedback-helpful")).toHaveCount(0);
-        await expect(page.locator('[data-testid="ai-tutor-layout"][data-expanded="false"]')).toBeVisible();
-        details.push(
-          `${probe.id}: defer notice rendered; feedback skipped by design; expectedDetector=${probe.expectedDetector}; expectedShadowPath=${probe.expectedShadowPath}`,
-        );
+        if (probe.id === feedbackProbe.id) feedbackReady = true;
+      } catch (e) {
+        failures.push(`${probe.id}: ${redact((e as Error).message)}`);
       }
     }
-
-    bOk = true;
-    bDetail = details.join(" | ");
-  } catch (e) {
-    bDetail = redact(`no correction/buttons: ${(e as Error).message}`);
   }
+  bOk = failures.length === 0 && feedbackReady;
+  bDetail = [...details, ...failures.map((failure) => `FAIL ${failure}`)].join(" | ");
   await attach(testInfo, { id: "b", name: "Sửa câu renders a correction", ok: bOk, detail: bDetail, ms: Date.now() - tB });
 
   // (c) tap helpful → visible "✓ Đã ghi nhận · Recorded".
   const tC = Date.now();
   let cOk = false, cDetail = "";
   const tapAt = new Date();
-  if (bOk) {
+  if (feedbackReady) {
     try {
       await page.getByTestId("correction-feedback-helpful").click();
       await expect(page.getByTestId("correction-feedback-thanks")).toBeVisible({ timeout: 10_000 });

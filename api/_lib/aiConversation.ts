@@ -1,3 +1,5 @@
+import { chatJsonWithFailover } from "../../src/pages-functions/aiProvider";
+
 export type AiConversationRole = "learner" | "assistant";
 
 export type AiConversationHistoryTurn = {
@@ -41,6 +43,8 @@ export type AiConversationMessage = {
 
 export type AiConversationEnv = {
   OPENAI_API_KEY?: string;
+  DEEPSEEK_API_KEY?: string;
+  GEMINI_API_KEY?: string;
 };
 
 export type AiConversationScenarioInput = {
@@ -67,19 +71,23 @@ export type AiConversationResponse = {
     totalTokens: number;
     estimatedUsd: number;
   };
-  provider: "openai";
+  provider: "openai" | "deepseek" | "gemini";
   model: string;
   correctionGateModel: string;
 };
 
 export type AiConversationFailureDetail = {
-  provider?: "openai";
+  provider?: "openai" | "deepseek" | "gemini" | "none";
   providerStatus?: number;
+  upstreamStatus?: number;
+  model?: string;
+  subcall?: "draft" | "correction_gate";
   errorName?: string;
   errorMessage?: string;
   upstreamBody?: string;
-  failureStage?: "provider_request" | "provider_response" | "parse" | "trust_floor";
+  failureStage?: "provider_request" | "provider_response" | "provider_json" | "parse" | "trust_floor";
   trustFloorReason?: "missing_generated_reply" | "canned_reply";
+  timeout?: boolean;
 };
 
 export class AiConversationError extends Error {
@@ -303,24 +311,25 @@ export function buildCorrectionGatePrompt(params: {
 }
 
 export async function buildAiConversationTurn(input: AiConversationRequest): Promise<AiConversationResponse> {
-  const apiKey = input.env?.OPENAI_API_KEY ?? fallbackProcessEnv().OPENAI_API_KEY;
-  if (!apiKey) throw new Error("Missing OPENAI_API_KEY");
+  const env = input.env ?? fallbackProcessEnv();
+  if (!env.OPENAI_API_KEY && !env.DEEPSEEK_API_KEY && !env.GEMINI_API_KEY) {
+    throw new Error("Missing AI provider key");
+  }
   if (!input.learnerText.trim()) throw new Error("Missing learnerText");
   if (input.turnCount >= MAX_TURNS) throw new Error("Session turn cap reached");
 
   const scenario = normalizeScenario(input.scenario, input.scenarioId);
   const system = buildAiConversationSystemPrompt(scenario);
   const user = buildAiConversationUserPrompt(input);
-  const draftData = await callOpenAiJson<DraftResponse>({
-    apiKey,
-    model: TURN_MODEL,
-    messages: [
-      { role: "developer", content: system },
-      { role: "user", content: user },
-    ],
+  const draftData = await callProviderJson<DraftResponse>({
+    env,
+    subcall: "draft",
+    systemPrompt: system,
+    userMessage: user,
+    openaiModel: TURN_MODEL,
     temperature: 0.35,
     maxTokens: 380,
-    signal: input.signal,
+    timeoutMs: 12_000,
   });
 
   const draft = draftData.value;
@@ -330,27 +339,32 @@ export async function buildAiConversationTurn(input: AiConversationRequest): Pro
     : null;
 
   let gateUsage = emptyUsage();
-  if (candidate) {
-    const gateData = await callOpenAiJson<GateResponse>({
-      apiKey,
-      model: CORRECTION_GATE_MODEL,
-      messages: [
-        { role: "developer", content: "You are a strict language-correction trust floor." },
-        { role: "user", content: buildCorrectionGatePrompt({ learnerText: input.learnerText, correction: candidate }) },
-      ],
-      temperature: 0,
-      maxTokens: 80,
-      signal: input.signal,
-    });
-    gateUsage = gateData.usage;
-    if (gateData.value.accept === true) {
-      correction = {
-        original: candidate.original.trim(),
-        corrected: candidate.corrected.trim(),
-        explanationVi: candidate.explanationVi.trim(),
-        interferencePattern: candidate.interferencePattern.trim(),
-        confidence: "high",
-      };
+  if (candidate && env.OPENAI_API_KEY) {
+    try {
+      const gateData = await callOpenAiJson<GateResponse>({
+        apiKey: env.OPENAI_API_KEY,
+        model: CORRECTION_GATE_MODEL,
+        subcall: "correction_gate",
+        messages: [
+          { role: "developer", content: "You are a strict language-correction trust floor." },
+          { role: "user", content: buildCorrectionGatePrompt({ learnerText: input.learnerText, correction: candidate }) },
+        ],
+        temperature: 0,
+        maxTokens: 80,
+        signal: input.signal,
+      });
+      gateUsage = gateData.usage;
+      if (gateData.value.accept === true) {
+        correction = {
+          original: candidate.original.trim(),
+          corrected: candidate.corrected.trim(),
+          explanationVi: candidate.explanationVi.trim(),
+          interferencePattern: candidate.interferencePattern.trim(),
+          confidence: "high",
+        };
+      }
+    } catch (err) {
+      console.warn("[aiConversation] correction gate failed; returning turn without correction", err);
     }
   }
 
@@ -365,8 +379,8 @@ export async function buildAiConversationTurn(input: AiConversationRequest): Pro
     correction,
     summary: input.turnCount + 1 >= 4 ? buildSummary(historyWithNext, scenario) : null,
     cost: estimateCost(addUsage(draftData.usage, gateUsage)),
-    provider: "openai",
-    model: TURN_MODEL,
+    provider: draftData.provider,
+    model: draftData.model || TURN_MODEL,
     correctionGateModel: CORRECTION_GATE_MODEL,
   };
 }
@@ -446,6 +460,7 @@ function normalizeDeveloperGrounding(messages: AiConversationMessage[] | undefin
 async function callOpenAiJson<T>(params: {
   apiKey: string;
   model: string;
+  subcall: NonNullable<AiConversationFailureDetail["subcall"]>;
   messages: Array<{ role: "developer" | "user"; content: string }>;
   temperature: number;
   maxTokens: number;
@@ -473,10 +488,20 @@ async function callOpenAiJson<T>(params: {
     // message so the handler can return its own fast 5xx instead of hanging until
     // Cloudflare kills the Worker.
     if (err instanceof Error && err.name === "AbortError") {
-      throw new Error("OpenAI request timed out");
+      throw new AiConversationError("OpenAI request timed out", {
+        provider: "openai",
+        model: params.model,
+        subcall: params.subcall,
+        errorName: err.name,
+        errorMessage: "OpenAI request timed out",
+        failureStage: "provider_request",
+        timeout: true,
+      });
     }
     throw new AiConversationError("OpenAI request failed", {
       provider: "openai",
+      model: params.model,
+      subcall: params.subcall,
       errorName: err instanceof Error ? err.name : undefined,
       errorMessage: boundedDetail(err instanceof Error ? err.message : String(err ?? "unknown_error")),
       failureStage: "provider_request",
@@ -487,14 +512,29 @@ async function callOpenAiJson<T>(params: {
     throw new AiConversationError(`OpenAI ${response.status}`, {
       provider: "openai",
       providerStatus: response.status,
+      upstreamStatus: response.status,
+      model: params.model,
+      subcall: params.subcall,
       upstreamBody: boundedDetail(upstreamBody),
       failureStage: "provider_response",
     });
   }
-  const data = await response.json() as {
+  let data: {
     choices?: Array<{ message?: { content?: string } }>;
     usage?: { prompt_tokens?: number; completion_tokens?: number; total_tokens?: number };
   };
+  try {
+    data = await response.json() as typeof data;
+  } catch (err) {
+    throw new AiConversationError("OpenAI response JSON error", {
+      provider: "openai",
+      model: params.model,
+      subcall: params.subcall,
+      errorName: err instanceof Error ? err.name : undefined,
+      errorMessage: boundedDetail(err instanceof Error ? err.message : String(err ?? "json_error")),
+      failureStage: "provider_json",
+    });
+  }
   const content = data.choices?.[0]?.message?.content || "{}";
   let value: T;
   try {
@@ -502,6 +542,8 @@ async function callOpenAiJson<T>(params: {
   } catch (err) {
     throw new AiConversationError("OpenAI response parse error", {
       provider: "openai",
+      model: params.model,
+      subcall: params.subcall,
       errorName: err instanceof Error ? err.name : undefined,
       errorMessage: boundedDetail(err instanceof Error ? err.message : String(err ?? "parse_error")),
       upstreamBody: boundedDetail(content),
@@ -514,6 +556,67 @@ async function callOpenAiJson<T>(params: {
       promptTokens: data.usage?.prompt_tokens ?? 0,
       completionTokens: data.usage?.completion_tokens ?? 0,
       totalTokens: data.usage?.total_tokens ?? 0,
+    },
+  };
+}
+
+async function callProviderJson<T>(params: {
+  env: AiConversationEnv;
+  subcall: NonNullable<AiConversationFailureDetail["subcall"]>;
+  systemPrompt: string;
+  userMessage: string;
+  openaiModel: string;
+  temperature: number;
+  maxTokens: number;
+  timeoutMs: number;
+}): Promise<{
+  value: T;
+  usage: Usage;
+  provider: "openai" | "deepseek" | "gemini";
+  model?: string;
+}> {
+  const result = await chatJsonWithFailover({
+    env: params.env,
+    systemPrompt: params.systemPrompt,
+    userMessage: params.userMessage,
+    openaiModel: params.openaiModel,
+    providerOrder: ["openai", "deepseek", "gemini"],
+    temperature: params.temperature,
+    maxTokens: params.maxTokens,
+    timeoutMs: params.timeoutMs,
+  });
+  if (!result.ok || result.provider === "none") {
+    const failedProvider = result.failedProvider ?? result.provider;
+    const providerLabel = failedProvider === "openai"
+      ? "OpenAI"
+      : failedProvider === "deepseek"
+        ? "DeepSeek"
+        : failedProvider === "gemini"
+          ? "Gemini"
+          : "AI provider";
+    const message = result.providerStatus
+      ? `${providerLabel} ${result.providerStatus}`
+      : "AI conversation provider failed";
+    throw new AiConversationError(message, {
+      provider: failedProvider,
+      providerStatus: result.providerStatus,
+      upstreamStatus: result.providerStatus,
+      model: result.model || params.openaiModel,
+      subcall: params.subcall,
+      errorMessage: result.errorKind ?? "unknown_provider_failure",
+      upstreamBody: boundedDetail(result.upstreamBody || result.raw),
+      failureStage: result.errorKind === "parse_error" ? "parse" : "provider_response",
+      timeout: result.providerErrorKind === "timeout",
+    });
+  }
+  return {
+    value: result.json as T,
+    provider: result.provider,
+    model: result.model,
+    usage: {
+      promptTokens: result.usage?.inputTokens ?? 0,
+      completionTokens: result.usage?.outputTokens ?? 0,
+      totalTokens: result.usage?.totalTokens ?? 0,
     },
   };
 }
@@ -595,6 +698,8 @@ function requireGeneratedMercyReply(value: unknown): string {
   if (!reply) {
     throw new AiConversationError("OpenAI response missing generated Mercy reply", {
       provider: "openai",
+      model: TURN_MODEL,
+      subcall: "draft",
       errorMessage: "OpenAI response missing generated Mercy reply",
       failureStage: "trust_floor",
       trustFloorReason: "missing_generated_reply",
@@ -603,6 +708,8 @@ function requireGeneratedMercyReply(value: unknown): string {
   if (looksLikeCannedMercyReply(reply)) {
     throw new AiConversationError("OpenAI response used canned Mercy reply", {
       provider: "openai",
+      model: TURN_MODEL,
+      subcall: "draft",
       errorMessage: "OpenAI response used canned Mercy reply",
       failureStage: "trust_floor",
       trustFloorReason: "canned_reply",

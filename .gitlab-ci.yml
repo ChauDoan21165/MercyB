@@ -1170,6 +1170,8 @@ production-placement-smoke:
       when: never
     - if: '$MERCYB_SHARED_RUNNER_FALLBACK == "1"'
       when: never
+    - if: '$CI_PIPELINE_SOURCE == "schedule" && $NIGHTLY_MAINTENANCE_ENABLED == "1"'
+      when: never
     - if: '$RUN_PROD_PLACEMENT_SMOKE == "true"'
       when: manual
     - if: '$CI_PIPELINE_SOURCE == "schedule"'
@@ -1623,6 +1625,8 @@ golden-flows-prod:
       when: never
     - if: '$MERCYB_SHARED_RUNNER_FALLBACK == "1"'
       when: never
+    - if: '$CI_PIPELINE_SOURCE == "schedule" && $NIGHTLY_MAINTENANCE_ENABLED == "1"'
+      when: never
     - if: '$CI_PIPELINE_SOURCE == "schedule" && $CI_COMMIT_BRANCH == "main"'
     - if: '$CI_PIPELINE_SOURCE == "push" && $CI_COMMIT_BRANCH == "main"'
       when: manual
@@ -1920,6 +1924,8 @@ prod-synthetic-learner:
   interruptible: false
   rules:
     - if: '$RESERVOIR == "1"'
+      when: never
+    - if: '$CI_PIPELINE_SOURCE == "schedule" && $NIGHTLY_MAINTENANCE_ENABLED == "1"'
       when: never
     - if: '$CI_PIPELINE_SOURCE == "schedule" && $SYNTHETIC_LEARNER_ENABLED == "1"'
     - if: '$CI_PIPELINE_SOURCE == "web" && $SYNTHETIC_LEARNER_ENABLED == "1"'

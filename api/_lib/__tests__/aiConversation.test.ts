@@ -126,6 +126,48 @@ describe("AI conversation prompt template", () => {
     expect(result.reply).toContain("teamwork");
   });
 
+  it("soft-fails the GPT-4o trust gate and keeps the generated turn", async () => {
+    const warnSpy = vi.spyOn(console, "warn").mockImplementation(() => undefined);
+    global.fetch = vi.fn()
+      .mockResolvedValueOnce(jsonResponse({
+        choices: [{
+          message: {
+            content: JSON.stringify({
+              reply: "You mentioned reports. What kind of reports do you prepare?",
+              correctionCandidate: {
+                original: "I responsible for",
+                corrected: "I am responsible for",
+                explanationVi: "Tiếng Anh cần 'am' trước responsible.",
+                interferencePattern: "missing be from Vietnamese transfer",
+                evidence: "The learner wrote 'I responsible for'.",
+              },
+            }),
+          },
+        }],
+        usage: { prompt_tokens: 100, completion_tokens: 80, total_tokens: 180 },
+      }))
+      .mockResolvedValueOnce({
+        ok: false,
+        status: 503,
+        text: async () => '{"error":{"message":"gate unavailable"}}',
+      } as Response);
+
+    const result = await buildAiConversationTurn({
+      scenarioId: "job-interview",
+      learnerText: "I responsible for reports.",
+      history: [],
+      turnCount: 0,
+      env: { OPENAI_API_KEY: "test-key" },
+    });
+
+    expect(result.reply).toContain("reports");
+    expect(result.correction).toBeNull();
+    expect(warnSpy).toHaveBeenCalledWith(
+      "[aiConversation] correction gate failed; returning turn without correction",
+      expect.any(Error),
+    );
+  });
+
   it("rejects empty OpenAI turn output instead of using a canned Mercy fallback", async () => {
     const fetchMock = vi.fn().mockResolvedValueOnce(jsonResponse({
       choices: [{
@@ -185,6 +227,7 @@ describe("AI conversation prompt template", () => {
         learnerText: "I worked in a cafe.",
         history: [],
         turnCount: 0,
+        env: { OPENAI_API_KEY: "test-key" },
       });
     } catch (error) {
       thrown = error;
@@ -194,7 +237,100 @@ describe("AI conversation prompt template", () => {
     expect(getAiConversationFailureDetail(thrown)).toMatchObject({
       provider: "openai",
       providerStatus: 503,
+      upstreamStatus: 503,
+      model: "gpt-4o-mini",
+      subcall: "draft",
       upstreamBody: '{"error":{"message":"upstream overloaded"}}',
+      failureStage: "provider_response",
+    });
+  });
+
+  it("fails over from OpenAI to DeepSeek for the generated turn", async () => {
+    const fetchMock = vi.fn()
+      .mockResolvedValueOnce({
+        ok: false,
+        status: 503,
+        text: async () => '{"error":{"message":"quota"}}',
+      } as Response)
+      .mockResolvedValueOnce(jsonResponse({
+        choices: [{
+          message: {
+            content: JSON.stringify({
+              reply: "You mentioned cafe work. What did you do for customers there?",
+              correctionCandidate: null,
+            }),
+          },
+        }],
+        usage: { prompt_tokens: 90, completion_tokens: 30, total_tokens: 120 },
+      }));
+    global.fetch = fetchMock;
+
+    const result = await buildAiConversationTurn({
+      scenarioId: "job-interview",
+      learnerText: "I worked in a cafe.",
+      history: [],
+      turnCount: 0,
+      env: {
+        OPENAI_API_KEY: "openai-key",
+        DEEPSEEK_API_KEY: "deepseek-key",
+      },
+    });
+
+    expect(result.provider).toBe("deepseek");
+    expect(result.model).toBe("deepseek-chat");
+    expect(result.reply).toContain("cafe");
+    expect(fetchMock).toHaveBeenCalledTimes(2);
+    expect(String(fetchMock.mock.calls[0][0])).toBe("https://api.openai.com/v1/chat/completions");
+    expect(String(fetchMock.mock.calls[1][0])).toBe("https://api.deepseek.com/chat/completions");
+  });
+
+  it("marks GPT-4o correction gate failures separately from draft failures", async () => {
+    const warnSpy = vi.spyOn(console, "warn").mockImplementation(() => undefined);
+    global.fetch = vi.fn()
+      .mockResolvedValueOnce(jsonResponse({
+        choices: [{
+          message: {
+            content: JSON.stringify({
+              reply: "You mentioned reports. What reports do you prepare?",
+              correctionCandidate: {
+                original: "I responsible for",
+                corrected: "I am responsible for",
+                explanationVi: "Tiếng Anh cần 'am' trước responsible.",
+                interferencePattern: "missing be from Vietnamese transfer",
+                evidence: "The learner wrote 'I responsible for'.",
+              },
+            }),
+          },
+        }],
+        usage: { prompt_tokens: 100, completion_tokens: 80, total_tokens: 180 },
+      }))
+      .mockResolvedValueOnce({
+        ok: false,
+        status: 404,
+        text: async () => '{"error":{"message":"model not found"}}',
+      } as Response);
+
+    const result = await buildAiConversationTurn({
+      scenarioId: "job-interview",
+      learnerText: "I responsible for reports.",
+      history: [],
+      turnCount: 0,
+      env: { OPENAI_API_KEY: "test-key" },
+    });
+
+    expect(result.correction).toBeNull();
+    expect(warnSpy).toHaveBeenCalledWith(
+      "[aiConversation] correction gate failed; returning turn without correction",
+      expect.any(Error),
+    );
+    const warnedError = warnSpy.mock.calls[0]?.[1];
+    expect(getAiConversationFailureDetail(warnedError)).toMatchObject({
+      provider: "openai",
+      providerStatus: 404,
+      upstreamStatus: 404,
+      model: "gpt-4o",
+      subcall: "correction_gate",
+      upstreamBody: '{"error":{"message":"model not found"}}',
       failureStage: "provider_response",
     });
   });
