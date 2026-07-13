@@ -1955,6 +1955,7 @@ prod-r3-explorer:
     - if: '$RESERVOIR == "1"'
       when: never
     - if: '$CI_PIPELINE_SOURCE == "schedule" && $R3_EXPLORER_ENABLED == "1"'
+    - if: '$CI_PIPELINE_SOURCE == "api" && $R3_EXPLORER_ENABLED == "1"'
     - if: '$CI_PIPELINE_SOURCE == "web" && $R3_EXPLORER_ENABLED == "1"'
       when: manual
     - when: never
