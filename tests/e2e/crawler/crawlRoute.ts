@@ -43,9 +43,15 @@ export interface RouteResult {
 
 const NAV_TIMEOUT = 15_000;
 const SETTLE_MS = 1_200;
+const MEANINGFUL_STATIC_BODY_MIN_CHARS = 80;
 
 function reproFor(baseURL: string, path: string, detail: string): string {
   return `Open ${baseURL}${path} in a logged-out browser and observe: ${detail}`;
+}
+
+function bodyHasMeaningfulContent(text: string): boolean {
+  const normalized = text.replace(/\s+/g, " ").trim();
+  return normalized.length >= MEANINGFUL_STATIC_BODY_MIN_CHARS;
 }
 
 /**
@@ -61,6 +67,7 @@ export async function crawlRoute(
 ): Promise<RouteResult> {
   const failures: Failure[] = [];
   const knownDefectsHit = new Set<string>();
+  let pageErrorCount = 0;
 
   const onConsoleOrError = (text: string) => {
     if (isIgnorableNoise(text)) return;
@@ -85,6 +92,7 @@ export async function crawlRoute(
 
   page.on("console", (m) => m.type() === "error" && onConsoleOrError(m.text()));
   page.on("pageerror", (e) => {
+    pageErrorCount++;
     failures.push({
       type: "js-crash",
       detail: `pageerror: ${e.message}`,
@@ -128,7 +136,9 @@ export async function crawlRoute(
     .locator("#root")
     .isVisible()
     .catch(() => false);
-  if (!rootVisible && !gated) {
+  const body = (await page.locator("body").innerText().catch(() => "")) || "";
+  const meaningfulStaticPage = !rootVisible && bodyHasMeaningfulContent(body) && pageErrorCount === 0;
+  if (!rootVisible && !gated && !meaningfulStaticPage) {
     failures.push({
       type: "blank-render",
       detail: "#root did not render any content",
@@ -137,7 +147,6 @@ export async function crawlRoute(
   }
 
   // Unexpected client 404 (AppRouter's NotFound: "404" + "Không tìm thấy trang.").
-  const body = (await page.locator("body").innerText().catch(() => "")) || "";
   const is404 = /Không tìm thấy trang\./.test(body) || /^\s*404\s*$/m.test(body);
   if (is404 && !gated) {
     failures.push({

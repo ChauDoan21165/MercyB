@@ -1175,6 +1175,9 @@ export default function AppRouter() {
           <Route path="/languages"
             element={<LazyPage><LanguagesIndexPage /></LazyPage>}
           />
+          <Route path="/thai-english"
+            element={<LazyPage><ThaiLessonsPage /></LazyPage>}
+          />
           <Route path="/languages/french"
             element={<LazyPage><FrenchLessonsPage /></LazyPage>}
           />
