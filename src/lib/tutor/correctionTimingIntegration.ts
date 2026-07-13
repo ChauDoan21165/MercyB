@@ -26,7 +26,7 @@ import {
   type ErrorSeverity,
 } from "./teacherMercyCorrectionTiming";
 import { enrichCorrectionExperience, type EnrichedCorrectionContext } from "./correctionExperienceEnricher";
-import { isLpiTargetFormDetectorTag } from "@/services/lpi/correctionPolicy";
+import { isLpiTargetFormDetectorTag } from "./lpiTargetFormDetectors";
 
 // ─── Severity Inference ────────────────────────────────────────────────────
 

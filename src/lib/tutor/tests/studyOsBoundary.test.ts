@@ -134,6 +134,7 @@ describe("Study OS static boundary", () => {
       "src/lib/tutor/lessonRecommendationIntelligence.ts",
       "src/lib/tutor/lessonSequenceGenerator.ts",
       "src/lib/tutor/localUiSmokeChecklist.ts",
+      "src/lib/tutor/lpiTargetFormDetectors.ts",
       "src/lib/tutor/masteryGraph.ts",
       "src/lib/tutor/nextLessonRecommender.ts",
       "src/lib/tutor/overclaimGuard.ts",
