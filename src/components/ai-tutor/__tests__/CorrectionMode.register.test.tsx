@@ -10,7 +10,11 @@ vi.mock("@/components/ai-tutor/DetectorHintChip", () => ({ default: () => null }
 
 afterEach(() => trackEvent.mockClear());
 
-function renderWith(userText: string, appliedRuleIds: string[] = []) {
+function renderWith(
+  userText: string,
+  appliedRuleIds: string[] = [],
+  error: string | null = null,
+) {
   const result = {
     id: "turn-1",
     userText,
@@ -25,8 +29,8 @@ function renderWith(userText: string, appliedRuleIds: string[] = []) {
       input=""
       setInput={() => {}}
       loading={false}
-      result={result as never}
-      error={null}
+      result={error ? null : result as never}
+      error={error}
       micSupported={false}
       micListening={false}
       voiceDraft=""
@@ -69,5 +73,12 @@ describe("CorrectionMode — Step-18 register explanation", () => {
       "en-step6-discuss-about",
     );
     expect(screen.getByTestId("correction-feedback-helpful")).toBeInTheDocument();
+  });
+
+  it("renders deliberate deferred correction copy as a notice, not an error", () => {
+    renderWith("", [], "Mercy ghi nhận câu này và sẽ gợi ý sau nhé.");
+
+    expect(screen.getByText("Đã ghi nhận · Noted")).toBeInTheDocument();
+    expect(screen.queryByText("Lỗi · Error")).not.toBeInTheDocument();
   });
 });
