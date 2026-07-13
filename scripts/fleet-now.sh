@@ -94,10 +94,16 @@ first_web_url() {
   sed -n 's/.*"web_url"[[:space:]]*:[[:space:]]*"\([^"]*\)".*/\1/p' | head -n 1
 }
 
+gitlab_token() {
+  printf '%s' "${GITLAB_TOKEN:-${GLAB_TOKEN:-}}"
+}
+
 gitlab_get() {
   local path="$1"
-  if [ -n "${GITLAB_TOKEN:-}" ]; then
-    curl -fsS -H "PRIVATE-TOKEN: ${GITLAB_TOKEN}" "${GITLAB_API}/${path}"
+  local token
+  token="$(gitlab_token)"
+  if [ -n "$token" ]; then
+    curl -fsS -H "PRIVATE-TOKEN: ${token}" "${GITLAB_API}/${path}"
   else
     glab api "$path"
   fi
@@ -106,7 +112,21 @@ gitlab_get() {
 is_forbidden_response() {
   local status="$1"
   local body="$2"
-  [ "$status" = "403" ] || grep -qi '403\|forbidden' "$body"
+  [ "$status" = "403" ] || grep -qi '403\|forbidden\|permission denied' "$body"
+}
+
+classify_gitlab_post() {
+  local status="$1"
+  local body="$2"
+  if is_forbidden_response "$status" "$body"; then
+    echo "needs-owner"
+    return 0
+  fi
+  if [ "$status" != "200" ] && [ "$status" != "201" ]; then
+    printf 'error: %s\n' "$(tr '\n' ' ' < "$body" | sed 's/[[:space:]]\{1,\}/ /g')"
+    return 0
+  fi
+  echo "ok"
 }
 
 main_has_r3() {
@@ -120,11 +140,12 @@ main_has_r3() {
 }
 
 trigger_r0() {
-  local body status
+  local body status token verdict
   body="$(mktemp)"
-  if [ -n "${GITLAB_TOKEN:-}" ]; then
+  token="$(gitlab_token)"
+  if [ -n "$token" ]; then
     status="$(curl -sS -o "$body" -w '%{http_code}' -X POST \
-      -H "PRIVATE-TOKEN: ${GITLAB_TOKEN}" \
+      -H "PRIVATE-TOKEN: ${token}" \
       "${GITLAB_API}/projects/${PROJECT_ENC}/pipeline_schedules/${SYNTHETIC_SCHEDULE_ID}/play" || true)"
   else
     if glab api --method POST "projects/${PROJECT_ENC}/pipeline_schedules/${SYNTHETIC_SCHEDULE_ID}/play" >"$body" 2>&1; then
@@ -133,13 +154,9 @@ trigger_r0() {
       status="error"
     fi
   fi
-  if is_forbidden_response "$status" "$body"; then
-    rm -f "$body"
-    echo "needs-owner"
-    return 0
-  fi
-  if [ "$status" != "200" ] && [ "$status" != "201" ]; then
-    printf 'error: %s\n' "$(tr '\n' ' ' < "$body" | sed 's/[[:space:]]\{1,\}/ /g')"
+  verdict="$(classify_gitlab_post "$status" "$body")"
+  if [ "$verdict" != "ok" ]; then
+    printf '%s\n' "$verdict"
     rm -f "$body"
     return 0
   fi
@@ -149,11 +166,12 @@ trigger_r0() {
 }
 
 trigger_r3() {
-  local body status
+  local body status token verdict
   body="$(mktemp)"
-  if [ -n "${GITLAB_TOKEN:-}" ]; then
+  token="$(gitlab_token)"
+  if [ -n "$token" ]; then
     status="$(curl -sS -o "$body" -w '%{http_code}' -X POST \
-      -H "PRIVATE-TOKEN: ${GITLAB_TOKEN}" \
+      -H "PRIVATE-TOKEN: ${token}" \
       --form ref=main \
       --form 'variables[][key]=R3_EXPLORER_ENABLED' \
       --form 'variables[][value]=1' \
@@ -168,13 +186,9 @@ trigger_r3() {
       status="error"
     fi
   fi
-  if is_forbidden_response "$status" "$body"; then
-    rm -f "$body"
-    echo "needs-owner"
-    return 0
-  fi
-  if [ "$status" != "200" ] && [ "$status" != "201" ]; then
-    printf 'error: %s\n' "$(tr '\n' ' ' < "$body" | sed 's/[[:space:]]\{1,\}/ /g')"
+  verdict="$(classify_gitlab_post "$status" "$body")"
+  if [ "$verdict" != "ok" ]; then
+    printf '%s\n' "$verdict"
     rm -f "$body"
     return 0
   fi
@@ -228,7 +242,7 @@ r1_status() {
 require_cmd glab
 require_cmd curl
 
-if [ -z "${GITLAB_TOKEN:-}" ] && ! glab auth status >/dev/null 2>&1; then
+if [ -z "$(gitlab_token)" ] && ! glab auth status >/dev/null 2>&1; then
   echo "fleet-now: glab is not authenticated. Run glab auth login first." >&2
   exit 1
 fi
