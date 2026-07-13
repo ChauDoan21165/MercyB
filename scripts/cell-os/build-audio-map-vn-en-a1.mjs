@@ -42,6 +42,14 @@ function pickText(object, key) {
   return hasText(value) ? value.trim() : null;
 }
 
+function requireCellId(object, addressHash) {
+  const cellId = pickText(object, "cell_id");
+  if (!cellId) {
+    throw new Error(`Missing persisted cell_id for ${addressHash}`);
+  }
+  return cellId;
+}
+
 function lessonLabel(lesson) {
   return `${String(lesson.id).padStart(3, "0")} ${lesson.title_en}`;
 }
@@ -75,13 +83,15 @@ function buildRowsFromSource(lessons) {
     const phrases = Array.isArray(lesson.phrases) ? lesson.phrases : [];
     phrases.forEach((phrase, index) => {
       const ordinal = index + 1;
+      const addressHash = `vi-en:A1:lesson-${String(lesson.id).padStart(3, "0")}:vocabulary-${String(ordinal).padStart(3, "0")}`;
       const english = pickText(phrase, "english");
       const vietnamese = pickText(phrase, "vietnamese");
       const pronunciation = pickText(phrase, "pronunciation") ?? pickText(phrase, "pronunciation_hint");
       if (!english) return;
 
       rows.push({
-        cell_id: `vi-en:A1:lesson-${String(lesson.id).padStart(3, "0")}:vocabulary-${String(ordinal).padStart(3, "0")}`,
+        cell_id: requireCellId(phrase, addressHash),
+        address_hash: addressHash,
         cell_type: "Vocabulary Item",
         source_file: SOURCE_PATH,
         source_object: {
@@ -113,6 +123,7 @@ function buildRowsFromSource(lessons) {
     const dialogue = Array.isArray(lesson.dialogue) ? lesson.dialogue : [];
     dialogue.forEach((turn, index) => {
       const ordinal = index + 1;
+      const addressHash = `vi-en:A1:lesson-${String(lesson.id).padStart(3, "0")}:dialogue-turn-${String(ordinal).padStart(3, "0")}`;
       const speaker = pickText(turn, "speaker") ?? "Unknown";
       const english = pickText(turn, "english");
       const vietnamese = pickText(turn, "vietnamese");
@@ -120,7 +131,8 @@ function buildRowsFromSource(lessons) {
       if (!english) return;
 
       rows.push({
-        cell_id: `vi-en:A1:lesson-${String(lesson.id).padStart(3, "0")}:dialogue-turn-${String(ordinal).padStart(3, "0")}`,
+        cell_id: requireCellId(turn, addressHash),
+        address_hash: addressHash,
         cell_type: "Dialogue Turn",
         source_file: SOURCE_PATH,
         source_object: {
@@ -150,7 +162,7 @@ function buildRowsFromSource(lessons) {
     });
   }
 
-  return rows.sort((a, b) => a.cell_id.localeCompare(b.cell_id));
+  return rows.sort((a, b) => a.address_hash.localeCompare(b.address_hash));
 }
 
 function assertInventoryAlignment(rows) {
@@ -169,6 +181,13 @@ function assertInventoryAlignment(rows) {
   for (let index = 0; index < inventoryIds.length; index += 1) {
     if (inventoryIds[index] !== rowIds[index]) {
       throw new Error(`Audio map cell mismatch at ${index}: ${rowIds[index]} !== ${inventoryIds[index]}`);
+    }
+  }
+
+  const inventoryLineage = new Map(relevantCells.map((cell) => [cell.id, cell.address_hash]));
+  for (const row of rows) {
+    if (inventoryLineage.get(row.cell_id) !== row.address_hash) {
+      throw new Error(`Audio map lineage mismatch for ${row.cell_id}: ${row.address_hash} !== ${inventoryLineage.get(row.cell_id)}`);
     }
   }
 }

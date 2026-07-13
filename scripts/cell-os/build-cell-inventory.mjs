@@ -95,6 +95,14 @@ function pickText(object, keys) {
   return null;
 }
 
+function requireCellId(object, addressHash) {
+  const cellId = pickText(object, ["cell_id"]);
+  if (!cellId) {
+    throw new Error(`Missing persisted cell_id for ${addressHash}`);
+  }
+  return cellId;
+}
+
 function hasAnyText(object, keys) {
   return pickText(object, keys) !== null;
 }
@@ -120,7 +128,7 @@ function makeAddressText(address) {
     .join(" > ");
 }
 
-function baseCell({ id, cellType, lesson, ordinal, object, address }) {
+function baseCell({ id, addressHash, cellType, lesson, ordinal, object, address }) {
   const audio = pickText(object, ["audio", "audioPath", "audio_path", "audioUrl", "audio_url", "tts_audio"]);
   const ipaReference = object?.ipa_reference ?? null;
   const translation = hasAnyText(object, ["english", "translation", "translation_en"]) && hasAnyText(object, ["vietnamese", "text", "sentence"]);
@@ -141,6 +149,7 @@ function baseCell({ id, cellType, lesson, ordinal, object, address }) {
 
   return {
     id,
+    address_hash: addressHash,
     layer: "CELL",
     cell_type: cellType,
     source_file: SOURCE_PATH,
@@ -168,7 +177,8 @@ function buildCells(lessons, ipaLexicon) {
     const phrases = Array.isArray(lesson.phrases) ? lesson.phrases : [];
     phrases.forEach((phrase, index) => {
       const ordinal = index + 1;
-      const id = `vi-en:A1:lesson-${String(lesson.id).padStart(3, "0")}:vocabulary-${String(ordinal).padStart(3, "0")}`;
+      const addressHash = `vi-en:A1:lesson-${String(lesson.id).padStart(3, "0")}:vocabulary-${String(ordinal).padStart(3, "0")}`;
+      const id = requireCellId(phrase, addressHash);
       const english = pickText(phrase, ["english"]);
       const vietnamese = pickText(phrase, ["vietnamese"]);
       const pronunciation = pickText(phrase, ["pronunciation", "pronunciation_hint"]);
@@ -177,6 +187,7 @@ function buildCells(lessons, ipaLexicon) {
       cells.push(
         baseCell({
           id,
+          addressHash,
           cellType: "Vocabulary Item",
           lesson,
           ordinal,
@@ -193,7 +204,8 @@ function buildCells(lessons, ipaLexicon) {
     const dialogue = Array.isArray(lesson.dialogue) ? lesson.dialogue : [];
     dialogue.forEach((turn, index) => {
       const ordinal = index + 1;
-      const id = `vi-en:A1:lesson-${String(lesson.id).padStart(3, "0")}:dialogue-turn-${String(ordinal).padStart(3, "0")}`;
+      const addressHash = `vi-en:A1:lesson-${String(lesson.id).padStart(3, "0")}:dialogue-turn-${String(ordinal).padStart(3, "0")}`;
+      const id = requireCellId(turn, addressHash);
       const speaker = pickText(turn, ["speaker"]) ?? "Unknown";
       const vietnamese = pickText(turn, ["vietnamese"]);
       const pronunciation = pickText(turn, ["pronunciation", "pronunciation_hint"]);
@@ -201,6 +213,7 @@ function buildCells(lessons, ipaLexicon) {
       cells.push(
         baseCell({
           id,
+          addressHash,
           cellType: "Dialogue Turn",
           lesson,
           ordinal,
@@ -233,6 +246,7 @@ function gapExamples(cells, key) {
     .slice(0, 20)
     .map((cell) => ({
       id: cell.id,
+      address_hash: cell.address_hash,
       cell_type: cell.cell_type,
       address_text: cell.address_text,
     }));
@@ -244,6 +258,7 @@ function statusExamples(cells, predicate) {
     .slice(0, 20)
     .map((cell) => ({
       id: cell.id,
+      address_hash: cell.address_hash,
       cell_type: cell.cell_type,
       address_text: cell.address_text,
     }));
