@@ -20,6 +20,7 @@ create table if not exists public.correction_source_events (
       'local_corrected',
       'local_unchanged_server_attempt',
       'server_corrected',
+      'server_no_correction',
       'server_failed'
     )),
   constraint correction_source_events_lang_pair_chk

@@ -1,4 +1,4 @@
-// Supabase migrations fingerprint: 45d5a0037410e724f6c9539ad80b245d967e1387d68c627f328740ff7c58f8b3
+// Supabase migrations fingerprint: df198072c67ff2a660034e5a55aa660471fb7106b8d83c4cdbec67e1e0afc34b
 export type Json =
   | string
   | number

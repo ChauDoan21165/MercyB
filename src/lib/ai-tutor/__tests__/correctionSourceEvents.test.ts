@@ -12,7 +12,7 @@ describe("correction source events", () => {
     [{ localStatus: "corrected" as const }, "local_corrected"],
     [{ localStatus: "unchanged" as const, serverAttempted: true }, "local_unchanged_server_attempt"],
     [{ localStatus: "needs_ai" as const, serverAttempted: true, serverSucceeded: true }, "server_corrected"],
-    [{ localStatus: "needs_ai" as const, serverAttempted: true, serverSucceeded: false }, "server_failed"],
+    [{ localStatus: "needs_ai" as const, serverAttempted: true, serverSucceeded: false }, "server_no_correction"],
   ])("classifies %#", (input, expected) => {
     expect(classifyCorrectionSourceEvent(input)).toBe(expected);
   });
@@ -23,6 +23,7 @@ describe("correction source events", () => {
       "local_corrected",
       "local_unchanged_server_attempt",
       "server_corrected",
+      "server_no_correction",
       "server_failed",
     ];
 

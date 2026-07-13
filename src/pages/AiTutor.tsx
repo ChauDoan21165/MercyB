@@ -2679,7 +2679,7 @@ export default function AiTutorPage() {
         }
         // AI also not confident — specific abstention, not a generic canned line.
         recordCorrectionSourceEvent({
-          source: "server_failed",
+          source: "server_no_correction",
           targetLanguage: target,
         });
         recordLpiLearnerTurn(false);
