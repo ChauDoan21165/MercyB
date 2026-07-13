@@ -301,6 +301,48 @@ variables:
         while [ ! -d "$TARGET" ] && [ "$TARGET" != "/" ]; do
           TARGET="$(dirname "$TARGET")"
         done
+        # Pressure-mode safe-cache prune. This runs before DISK_GATE and only
+        # touches known rebuildable cache state outside active pipeline dirs:
+        #   - $HOME/.cache/mercyb-node-modules/.lock-* and .tmp-* older than
+        #     MERCYB_PRESSURE_LOCK_AGE_MIN (default 360min)
+        #   - immutable lockfile-keyed node_modules cache entries beyond the
+        #     newest MERCYB_PRESSURE_NODE_MODULES_CACHE_KEEP entries (default 2)
+        #     and older than MERCYB_PRESSURE_NODE_MODULES_CACHE_AGE_MIN
+        #     (default 360min)
+        # It never touches Playwright/browser caches or anything inside the
+        # current/active pipeline build dirs.
+        _pre_gate_free_kb="$(df -Pk "$TARGET" 2>/dev/null | awk 'NR==2 {print $4}')"
+        if [ -n "$_pre_gate_free_kb" ] && [ "$_pre_gate_free_kb" -lt "$DISK_FLOOR_KB" ]; then
+          echo "[disk-pressure-prune] free=${_pre_gate_free_kb}KB < floor=${DISK_FLOOR_KB}KB — pruning known-safe rebuildable caches before DISK_GATE"
+          _cache_root="${MERCYB_NODE_MODULES_CACHE_ROOT:-${HOME:-}/.cache/mercyb-node-modules}"
+          _cache_keep="${MERCYB_PRESSURE_NODE_MODULES_CACHE_KEEP:-2}"
+          _cache_age_min="${MERCYB_PRESSURE_NODE_MODULES_CACHE_AGE_MIN:-360}"
+          _lock_age_min="${MERCYB_PRESSURE_LOCK_AGE_MIN:-360}"
+          if [ -n "$_cache_root" ] && [ -d "$_cache_root" ]; then
+            echo "[disk-pressure-prune] node_modules_cache_root=$_cache_root keep=$_cache_keep cache_age_min=$_cache_age_min lock_age_min=$_lock_age_min"
+            find "$_cache_root" -mindepth 1 -maxdepth 1 -type d \( -name ".lock-*" -o -name ".tmp-*" \) -mmin "+${_lock_age_min}" -print 2>/dev/null |
+              while IFS= read -r d; do
+                [ -n "$d" ] || continue
+                echo "[disk-pressure-prune] REMOVE stale-cache-workdir path=$d age>${_lock_age_min}min"
+                rm -rf -- "$d" || echo "[disk-pressure-prune] WARN remove-failed path=$d"
+              done
+            find "$_cache_root" -mindepth 1 -maxdepth 1 -type d ! -name ".lock-*" ! -name ".tmp-*" -mmin "+${_cache_age_min}" -print 2>/dev/null |
+              while IFS= read -r d; do
+                printf '%s\t%s\n' "$(stat -f '%m' "$d" 2>/dev/null || echo 0)" "$d"
+              done |
+              sort -rn |
+              awk -v keep="$_cache_keep" 'NR > keep {print $2}' |
+              while IFS= read -r d; do
+                [ -n "$d" ] || continue
+                echo "[disk-pressure-prune] REMOVE stale-node-modules-cache path=$d keep=$_cache_keep age>${_cache_age_min}min"
+                rm -rf -- "$d" || echo "[disk-pressure-prune] WARN remove-failed path=$d"
+              done
+          else
+            echo "[disk-pressure-prune] SKIP node_modules cache root missing path=$_cache_root"
+          fi
+          _post_prune_free_kb="$(df -Pk "$TARGET" 2>/dev/null | awk 'NR==2 {print $4}')"
+          echo "[disk-pressure-prune] after free=${_post_prune_free_kb:-unknown}KB"
+        fi
         FREE_KB="$(df -Pk "$TARGET" 2>/dev/null | awk 'NR==2 {print $4}')"
         if [ -z "$FREE_KB" ]; then
           echo "DISK_GATE: unknownGB < 14GB floor — job refused (could not read build volume target '$TARGET')" >&2
@@ -308,6 +350,13 @@ variables:
         fi
         FREE_GB="$(awk "BEGIN {printf \"%.2f\", $FREE_KB/1048576}")"
         if [ "$FREE_KB" -lt "$DISK_FLOOR_KB" ]; then
+          _diag_root="${MERCYB_DISK_DIAG_ROOT:-${HOME:-/Users/admin}}"
+          echo "[disk-pressure-diagnostic] top-level disk usage for $_diag_root (top 10; Playwright cache is report-only, never pruned here)" >&2
+          if [ -d "$_diag_root" ]; then
+            du -sh "$_diag_root"/* "$_diag_root"/.[!.]* "$_diag_root"/..?* 2>/dev/null | sort -hr | head -10 | sed 's/^/[disk-pressure-diagnostic] /' >&2 || true
+          else
+            echo "[disk-pressure-diagnostic] SKIP missing diag root path=$_diag_root" >&2
+          fi
           echo "DISK_GATE: ${FREE_GB}GB < 14GB floor — job refused (target=$TARGET runner=${CI_RUNNER_DESCRIPTION:-unknown})" >&2
           exit 1
         fi
