@@ -1,6 +1,7 @@
 import type { BrowserContext } from "@playwright/test";
 import { GoTrueClient } from "@supabase/auth-js";
 
+import { CORRECTION_SOURCE_SYNTHETIC_MARKER_KEY } from "../../src/lib/ai-tutor/correctionSourceSyntheticMarker";
 import {
   SYNTH_EMAIL,
   SYNTH_PASSWORD,
@@ -42,10 +43,11 @@ export async function seedSyntheticSession(context: BrowserContext): Promise<voi
   const blob = captured[key];
   if (!blob) throw new Error("R3 synthetic auth persisted no session blob");
   await context.addInitScript(
-    ([sessionKey, sessionValue, pairKey, pairValue, nativeKey, nativeValue]) => {
+    ([sessionKey, sessionValue, pairKey, pairValue, nativeKey, nativeValue, syntheticMarkerKey]) => {
       window.localStorage.setItem(sessionKey, sessionValue);
       window.localStorage.setItem(pairKey, pairValue);
       window.localStorage.setItem(nativeKey, nativeValue);
+      window.localStorage.setItem(syntheticMarkerKey, "1");
     },
     [
       key,
@@ -54,7 +56,7 @@ export async function seedSyntheticSession(context: BrowserContext): Promise<voi
       JSON.stringify({ native: "vi", targets: ["en"] }),
       "mercyblade.nativeLang",
       "vi",
+      CORRECTION_SOURCE_SYNTHETIC_MARKER_KEY,
     ] as const,
   );
 }
-
