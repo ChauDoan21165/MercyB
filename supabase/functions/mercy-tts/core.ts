@@ -82,6 +82,16 @@ async function sha256Hex(input: string): Promise<string> {
     .join("");
 }
 
+export interface AzureTtsCacheReference {
+  provider: "azure";
+  language: string;
+  voice: string;
+  text: string;
+  hash_input: string;
+  sha256: string;
+  storage_key: string;
+}
+
 function bytesToBase64(bytes: Uint8Array): string {
   let binary = "";
   const chunkSize = 0x8000;
@@ -172,6 +182,26 @@ async function withTimeout<T>(
 
 function cachePathFor(hash: string): string {
   return `${TTS_CACHE_PREFIX}/${hash}.mp3`;
+}
+
+export async function buildAzureTtsCacheReference(input: {
+  text: unknown;
+  language?: unknown;
+}): Promise<AzureTtsCacheReference> {
+  const text = String(input.text ?? "").trim();
+  const language = normalizeLanguage(input.language);
+  const voice = azureVoiceFor(language).name;
+  const hashInput = `azure|${voice}|${language}|${text}`;
+  const sha256 = await sha256Hex(hashInput);
+  return {
+    provider: "azure",
+    language,
+    voice,
+    text,
+    hash_input: hashInput,
+    sha256,
+    storage_key: cachePathFor(sha256),
+  };
 }
 
 // Returns a public URL if finalized Azure audio for this hash is already cached.
