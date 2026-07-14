@@ -38,6 +38,7 @@ export type ThaiDiscourseFocus =
 
 // A reusable discourse marker / phrase with bilingual nuance notes.
 export type DiscoursePhrase = {
+  cell_id?: string;
   thai: string;
   rtgs: string;
   literal_en: string;
@@ -92,6 +93,7 @@ export const lessons: ThaiC2DiscourseLesson[] = [
       "At C2, speakers rarely state opinions bare. They frame them with markers like 'in my view', 'one could say', 'personally I hold that', which assert a position while leaving room to retreat. The framing you choose signals how much certainty you commit to.",
     phrases: [
       {
+        cell_id: "dbc3f5de-358d-4ddd-8460-fa0205be17d2",
         thai: "ในความเห็นของผม/ดิฉัน",
         rtgs: "nai khwaam-hen khong phom / di-chan",
         literal_en: "in the opinion of me",
@@ -100,6 +102,7 @@ export const lessons: ThaiC2DiscourseLesson[] = [
         register: "formal",
       },
       {
+        cell_id: "cba73342-08c1-406d-ad33-197a4a8890eb",
         thai: "ส่วนตัวแล้ว ผมมองว่า",
         rtgs: "suan-tua laeo, phom mong waa",
         literal_en: "personally then, I see that",
@@ -108,6 +111,7 @@ export const lessons: ThaiC2DiscourseLesson[] = [
         register: "neutral",
       },
       {
+        cell_id: "d6ad7ed8-0d18-4875-a3ea-42dd6685390e",
         thai: "พูดได้ว่า",
         rtgs: "phuut dai waa",
         literal_en: "can say that",
@@ -116,6 +120,7 @@ export const lessons: ThaiC2DiscourseLesson[] = [
         register: "neutral",
       },
       {
+        cell_id: "6aa504db-fed4-4a96-8311-a8161385ef88",
         thai: "ยืนยันได้เลยว่า",
         rtgs: "yuen-yan dai loei waa",
         literal_en: "can affirm right-away that",
@@ -157,6 +162,7 @@ export const lessons: ThaiC2DiscourseLesson[] = [
       "Thai prizes 'speaking around' a point (พูดอ้อม). A C2 user must read the นัย (implied sense) — what the speaker gestures at without stating. Learn the cues that flag 'there is subtext here'.",
     phrases: [
       {
+        cell_id: "ee3c2062-f399-4dc9-acd0-7d925f480545",
         thai: "พูดอ้อม ๆ",
         rtgs: "phuut om-om",
         literal_en: "speak round-round",
@@ -165,6 +171,7 @@ export const lessons: ThaiC2DiscourseLesson[] = [
         register: "colloquial",
       },
       {
+        cell_id: "cc7847a3-43ac-4279-8c48-2f0962e7f357",
         thai: "มีนัยแฝง",
         rtgs: "mii nai faeng",
         literal_en: "have hidden implication",
@@ -173,6 +180,7 @@ export const lessons: ThaiC2DiscourseLesson[] = [
         register: "formal",
       },
       {
+        cell_id: "f66edaa1-6dc4-4547-9a02-8a3a3ad921c6",
         thai: "เข้าใจตรงกันนะ",
         rtgs: "khao-jai trong kan na",
         literal_en: "understand mutually, yeah",
@@ -181,6 +189,7 @@ export const lessons: ThaiC2DiscourseLesson[] = [
         register: "colloquial",
       },
       {
+        cell_id: "20c47ce3-9447-4bdc-86ad-f8d67c79feba",
         thai: "ก็แล้วแต่จะคิด",
         rtgs: "kaw laeo-tae ja khit",
         literal_en: "well, depends-on how (you) think",
@@ -222,6 +231,7 @@ export const lessons: ThaiC2DiscourseLesson[] = [
       "Blunt contradiction risks loss of face and reads as rude. C2 speakers use a 'concede-then-pivot' structure: acknowledge what's right (ก็จริง), then gently redirect (แต่…).",
     phrases: [
       {
+        cell_id: "4a5518a8-d667-4dde-adf4-2d3616a2de66",
         thai: "ก็จริงอยู่ แต่ว่า",
         rtgs: "kaw jing yuu, tae waa",
         literal_en: "(it) is true indeed, but that",
@@ -230,6 +240,7 @@ export const lessons: ThaiC2DiscourseLesson[] = [
         register: "neutral",
       },
       {
+        cell_id: "533b2c38-16bd-454e-a75a-c640553ab2f7",
         thai: "อาจจะไม่เชิงนะ",
         rtgs: "aat-ja mai choeng na",
         literal_en: "maybe not-quite, yeah",
@@ -238,6 +249,7 @@ export const lessons: ThaiC2DiscourseLesson[] = [
         register: "colloquial",
       },
       {
+        cell_id: "7b558cb2-8a5f-4a2f-a152-ff3fc66b5d80",
         thai: "เห็นด้วยบางส่วน",
         rtgs: "hen-duai baang-suan",
         literal_en: "agree some-part",
@@ -246,6 +258,7 @@ export const lessons: ThaiC2DiscourseLesson[] = [
         register: "neutral",
       },
       {
+        cell_id: "ab74aa90-a85b-40cb-a751-e54730cec313",
         thai: "ขอเห็นต่างนิดนึงได้ไหม",
         rtgs: "khaw hen-taang nit-nueng dai mai",
         literal_en: "may (I) see-differently a-little, okay?",
@@ -287,6 +300,7 @@ export const lessons: ThaiC2DiscourseLesson[] = [
       "Thai has parallel vocabulary tiers: everyday (กิน 'eat'), polite/formal (รับประทาน), and royal/deferential. A C2 user shifts tiers smoothly depending on audience and situation.",
     phrases: [
       {
+        cell_id: "f849e8f2-b018-4daf-82fe-839cbadf7a38",
         thai: "กิน → ทาน → รับประทาน",
         rtgs: "kin → thaan → rap-pra-thaan",
         literal_en: "eat (plain → polite → formal)",
@@ -295,6 +309,7 @@ export const lessons: ThaiC2DiscourseLesson[] = [
         register: "neutral",
       },
       {
+        cell_id: "8df13cff-2886-4be1-9312-fcd803c2d9d5",
         thai: "เมีย → ภรรยา → คู่สมรส",
         rtgs: "mia → phan-ra-yaa → khuu-som-rot",
         literal_en: "wife (colloquial → formal → legal/official)",
@@ -303,6 +318,7 @@ export const lessons: ThaiC2DiscourseLesson[] = [
         register: "neutral",
       },
       {
+        cell_id: "f4fa7644-6342-4222-9edc-ecb60be55a6c",
         thai: "หิวจัง → ดิฉันรู้สึกหิวแล้วค่ะ",
         rtgs: "hiu jang → di-chan ruu-suek hiu laeo kha",
         literal_en: "so hungry → I feel hungry already (polite-F)",
@@ -311,6 +327,7 @@ export const lessons: ThaiC2DiscourseLesson[] = [
         register: "formal",
       },
       {
+        cell_id: "9103f19c-8956-4b07-aa93-321648aaf3c4",
         thai: "เอกสารฉบับนี้",
         rtgs: "ek-ka-saan cha-bap nii",
         literal_en: "document classifier this",
@@ -352,6 +369,7 @@ export const lessons: ThaiC2DiscourseLesson[] = [
       "Thai pronouns encode power and intimacy. The wrong pronoun can offend or sound presumptuous. A C2 user tunes pronouns to the interlocutor's age, status, and closeness.",
     phrases: [
       {
+        cell_id: "ded1f051-c3d8-436c-a1bd-a2c3718eb800",
         thai: "ผม / ดิฉัน / กระผม",
         rtgs: "phom / di-chan / kra-phom",
         literal_en: "I (male / female-formal / male-very-formal)",
@@ -360,6 +378,7 @@ export const lessons: ThaiC2DiscourseLesson[] = [
         register: "formal",
       },
       {
+        cell_id: "6cc5a37d-2a6e-47e9-8265-c892b33a58c2",
         thai: "ท่าน",
         rtgs: "thaan",
         literal_en: "you/he (honorific)",
@@ -368,6 +387,7 @@ export const lessons: ThaiC2DiscourseLesson[] = [
         register: "formal",
       },
       {
+        cell_id: "6194ccff-1cc5-4157-80f9-b0bb7a58ae69",
         thai: "พี่ / น้อง",
         rtgs: "phii / nong",
         literal_en: "elder-sibling / younger-sibling",
@@ -376,6 +396,7 @@ export const lessons: ThaiC2DiscourseLesson[] = [
         register: "neutral",
       },
       {
+        cell_id: "d08722fa-3e1d-491a-a11c-4e7bb8bd81c3",
         thai: "กู / มึง",
         rtgs: "kuu / mueng",
         literal_en: "I / you (intimate-vulgar)",
@@ -417,6 +438,7 @@ export const lessons: ThaiC2DiscourseLesson[] = [
       "C2 speakers rarely speak in absolutes. They attach epistemic markers (น่าจะ, คงจะ, ราว ๆ) to signal confidence and avoid being pinned down. Each hedge has a different 'temperature' of certainty.",
     phrases: [
       {
+        cell_id: "ee190483-3817-4416-b5a9-ca4294be8eb9",
         thai: "น่าจะ",
         rtgs: "naa-ja",
         literal_en: "ought-to / likely",
@@ -425,6 +447,7 @@ export const lessons: ThaiC2DiscourseLesson[] = [
         register: "neutral",
       },
       {
+        cell_id: "643f1288-13ad-413f-8286-38c29c03665c",
         thai: "คงจะ",
         rtgs: "khong ja",
         literal_en: "presumably will",
@@ -433,6 +456,7 @@ export const lessons: ThaiC2DiscourseLesson[] = [
         register: "neutral",
       },
       {
+        cell_id: "cb7b0368-2f20-480a-97c5-a2c0b1d40e1f",
         thai: "ราว ๆ / ประมาณ",
         rtgs: "raao-raao / pra-maan",
         literal_en: "around / approximately",
@@ -441,6 +465,7 @@ export const lessons: ThaiC2DiscourseLesson[] = [
         register: "neutral",
       },
       {
+        cell_id: "f15c9508-d529-41f2-ba4b-e4821ad06025",
         thai: "เท่าที่ทราบ",
         rtgs: "thao-thii saap",
         literal_en: "as-much-as (I) know",
@@ -482,6 +507,7 @@ export const lessons: ThaiC2DiscourseLesson[] = [
       "เกรงใจ (kreng-jai) — deference and reluctance to impose — drives much of Thai indirectness. C2 speakers use it to make requests, refuse, or ask favours without pressuring the listener.",
     phrases: [
       {
+        cell_id: "83bbc924-e9a7-4654-9c3b-563d55615a23",
         thai: "เกรงใจ",
         rtgs: "kreng-jai",
         literal_en: "awe-heart",
@@ -490,6 +516,7 @@ export const lessons: ThaiC2DiscourseLesson[] = [
         register: "neutral",
       },
       {
+        cell_id: "44197a2c-8b1b-49a1-a0f9-091234cb51c9",
         thai: "ถ้าไม่เป็นการรบกวนเกินไป",
         rtgs: "thaa mai pen kaan-rop-kuan koen-pai",
         literal_en: "if (it) is not too much of a disturbance",
@@ -498,6 +525,7 @@ export const lessons: ThaiC2DiscourseLesson[] = [
         register: "formal",
       },
       {
+        cell_id: "033930ec-4f6b-465c-b7f3-0a178488e67e",
         thai: "ไม่อยากรบกวน",
         rtgs: "mai yaak rop-kuan",
         literal_en: "not want to disturb",
@@ -506,6 +534,7 @@ export const lessons: ThaiC2DiscourseLesson[] = [
         register: "neutral",
       },
       {
+        cell_id: "b9657482-e61b-4972-a96c-13e2dadd0ffc",
         thai: "แล้วแต่สะดวกเลยนะ",
         rtgs: "laeo-tae sa-duak loei na",
         literal_en: "depends-on (your) convenience, yeah",
@@ -547,6 +576,7 @@ export const lessons: ThaiC2DiscourseLesson[] = [
       "Formal writing and speech rely on a distinct set of connectives, quite unlike casual speech. C2 users deploy them to steer an argument: cause, concession, contrast, and conclusion.",
     phrases: [
       {
+        cell_id: "9aac14e2-0d7d-4ec1-a974-35fcd0e90a7a",
         thai: "เนื่องจาก",
         rtgs: "nueang-jaak",
         literal_en: "owing to",
@@ -555,6 +585,7 @@ export const lessons: ThaiC2DiscourseLesson[] = [
         register: "formal",
       },
       {
+        cell_id: "4e6b5e26-3872-4f42-a8bc-cfd195c88bf5",
         thai: "อย่างไรก็ตาม",
         rtgs: "yaang-rai kaw taam",
         literal_en: "however it may be",
@@ -563,6 +594,7 @@ export const lessons: ThaiC2DiscourseLesson[] = [
         register: "formal",
       },
       {
+        cell_id: "715f00bf-648d-41e7-ae4c-ac7a620c8f26",
         thai: "กล่าวคือ",
         rtgs: "klaao khue",
         literal_en: "to-say is",
@@ -571,6 +603,7 @@ export const lessons: ThaiC2DiscourseLesson[] = [
         register: "formal",
       },
       {
+        cell_id: "84981552-9ac9-486a-b2ec-a1648376aaeb",
         thai: "ในทางกลับกัน",
         rtgs: "nai thaang klap-kan",
         literal_en: "in the reverse direction",
@@ -612,6 +645,7 @@ export const lessons: ThaiC2DiscourseLesson[] = [
       "Sentence-final particles (นะ, สิ, ล่ะ, หรอก, เถอะ, แหละ) are nearly untranslatable yet set a sentence's entire attitude: coaxing, urging, rebutting, or emphatic. This is one of the hardest C2 layers.",
     phrases: [
       {
+        cell_id: "290240c6-204a-4f53-8d81-4ef85618cc69",
         thai: "นะ",
         rtgs: "na",
         literal_en: "(softening particle)",
@@ -620,6 +654,7 @@ export const lessons: ThaiC2DiscourseLesson[] = [
         register: "colloquial",
       },
       {
+        cell_id: "90a336f8-c03d-40c6-abe5-5ef713cbd430",
         thai: "สิ",
         rtgs: "si",
         literal_en: "(urging/assertive particle)",
@@ -628,6 +663,7 @@ export const lessons: ThaiC2DiscourseLesson[] = [
         register: "colloquial",
       },
       {
+        cell_id: "725bc1cb-c581-4de6-8d1f-40e88c919210",
         thai: "หรอก",
         rtgs: "rok",
         literal_en: "(corrective/reassuring particle)",
@@ -636,6 +672,7 @@ export const lessons: ThaiC2DiscourseLesson[] = [
         register: "colloquial",
       },
       {
+        cell_id: "7ade022a-e2c7-4bdc-be98-772bba50ee4a",
         thai: "เถอะ",
         rtgs: "thoe",
         literal_en: "(let's / go-ahead particle)",
@@ -679,6 +716,7 @@ export const lessons: ThaiC2DiscourseLesson[] = [
       "Bare imperatives sound harsh in Thai. C2 speakers wrap requests in ช่วย ('help'), หน่อย ('a little'), and the tag ได้ไหม ('is that okay?') to turn a command into a favour.",
     phrases: [
       {
+        cell_id: "c08f6ada-fbc8-4874-966b-b19c794ddf33",
         thai: "ช่วย...หน่อย",
         rtgs: "chuai … noi",
         literal_en: "help … a little",
@@ -687,6 +725,7 @@ export const lessons: ThaiC2DiscourseLesson[] = [
         register: "neutral",
       },
       {
+        cell_id: "029f5666-2949-4a8b-a64f-6ac3689c9073",
         thai: "...ได้ไหม / ...ได้หรือเปล่า",
         rtgs: "… dai mai / … dai rue plao",
         literal_en: "… can (you)? / … can or not?",
@@ -695,6 +734,7 @@ export const lessons: ThaiC2DiscourseLesson[] = [
         register: "neutral",
       },
       {
+        cell_id: "47b3f4fc-d4cd-4e1d-ab18-b7f317ff4129",
         thai: "รบกวน...",
         rtgs: "rop-kuan …",
         literal_en: "trouble (you to) …",
@@ -703,6 +743,7 @@ export const lessons: ThaiC2DiscourseLesson[] = [
         register: "formal",
       },
       {
+        cell_id: "56124a6e-c51d-4960-92d1-7c84325dc457",
         thai: "ถ้าสะดวก...",
         rtgs: "thaa sa-duak …",
         literal_en: "if (it's) convenient …",
@@ -744,6 +785,7 @@ export const lessons: ThaiC2DiscourseLesson[] = [
       "Mature argument concedes the other side before rebutting. C2 users deploy ถึงแม้ว่า ('although'), แม้กระทั่ง ('even'), ทั้งนี้ ('that said / accordingly') to concede in a controlled way, then hold the line.",
     phrases: [
       {
+        cell_id: "9908635d-f403-474f-a559-6b30d0b63a1d",
         thai: "ถึงแม้ว่า...ก็ตาม",
         rtgs: "thueng-mae waa … kaw taam",
         literal_en: "although … (it) may be",
@@ -752,6 +794,7 @@ export const lessons: ThaiC2DiscourseLesson[] = [
         register: "formal",
       },
       {
+        cell_id: "ffa72553-5d4a-4cbc-afc8-52893f4a6fbc",
         thai: "แม้กระทั่ง",
         rtgs: "mae kra-thang",
         literal_en: "even up-to",
@@ -760,6 +803,7 @@ export const lessons: ThaiC2DiscourseLesson[] = [
         register: "formal",
       },
       {
+        cell_id: "60f1113e-d330-42c4-8e65-7bf813ef9eac",
         thai: "ทั้งนี้",
         rtgs: "thang-nii",
         literal_en: "all this / accordingly",
@@ -768,6 +812,7 @@ export const lessons: ThaiC2DiscourseLesson[] = [
         register: "formal",
       },
       {
+        cell_id: "855ed9a3-6152-4887-9d43-58dbc5cfbbe1",
         thai: "ในระดับหนึ่ง",
         rtgs: "nai ra-dap nueng",
         literal_en: "at one level",
@@ -809,6 +854,7 @@ export const lessons: ThaiC2DiscourseLesson[] = [
       "ประชด (sarcasm) and understatement are subtle tools. A C2 user recognises when praise is really criticism, and when a mild sentence masks a heavy judgement. Misjudge the tone and irony tips into insult.",
     phrases: [
       {
+        cell_id: "ac3568a0-9651-4c06-834a-918341ce6129",
         thai: "ประชด",
         rtgs: "pra-chot",
         literal_en: "to be sarcastic",
@@ -817,6 +863,7 @@ export const lessons: ThaiC2DiscourseLesson[] = [
         register: "colloquial",
       },
       {
+        cell_id: "88edcbe6-ed70-436b-aa80-9a56b72cc4c8",
         thai: "เก่งจังเลยนะ",
         rtgs: "keng jang loei na",
         literal_en: "so clever, huh",
@@ -825,6 +872,7 @@ export const lessons: ThaiC2DiscourseLesson[] = [
         register: "colloquial",
       },
       {
+        cell_id: "ee9cb3d0-086b-4a1b-931f-1e29bfa24084",
         thai: "ก็ดีนะ... (น้ำเสียงประชด)",
         rtgs: "kaw dii na … (nam-siang pra-chot)",
         literal_en: "well, (it's) good … (sarcastic tone)",
@@ -833,6 +881,7 @@ export const lessons: ThaiC2DiscourseLesson[] = [
         register: "colloquial",
       },
       {
+        cell_id: "31ea056b-2f98-4305-bd85-da45b68b105e",
         thai: "ก็พอได้อยู่",
         rtgs: "kaw phaw dai yuu",
         literal_en: "well, just about works",

@@ -21,6 +21,7 @@ export type PunjabiDiscourseFocus =
 export type PunjabiRegister = "formal" | "neutral" | "colloquial" | "respectful";
 
 export type PunjabiDiscoursePhrase = {
+  cell_id?: string;
   gurmukhi: string;
   romanization: string;
   literal_en: string;
@@ -70,6 +71,7 @@ export const lessons: PunjabiC2DiscourseLesson[] = [
       "At C2, the issue is not just saying 'I think'. Punjabi speakers grade commitment with frames like ਮੇਰੇ ਖ਼ਿਆਲ ਵਿੱਚ, ਜਿੱਥੋਂ ਤੱਕ ਮੇਰੀ ਸਮਝ ਹੈ, and ਮੈਂ ਇਹ ਨਹੀਂ ਕਹਿ ਰਿਹਾ ਕਿ. These mark a viewpoint without closing discussion.",
     phrases: [
       {
+        cell_id: "f369db65-7f11-4799-ae70-1bdf300f670b",
         gurmukhi: "ਮੇਰੇ ਖ਼ਿਆਲ ਵਿੱਚ",
         romanization: "mere khiaal vich",
         literal_en: "in my thought",
@@ -78,6 +80,7 @@ export const lessons: PunjabiC2DiscourseLesson[] = [
         register: "neutral",
       },
       {
+        cell_id: "0adbc05e-89ac-475a-b6f6-28fd9050f710",
         gurmukhi: "ਜਿੱਥੋਂ ਤੱਕ ਮੇਰੀ ਸਮਝ ਹੈ",
         romanization: "jitthon takk meri samajh hai",
         literal_en: "as far as my understanding goes",
@@ -86,6 +89,7 @@ export const lessons: PunjabiC2DiscourseLesson[] = [
         register: "respectful",
       },
       {
+        cell_id: "65484e9a-4783-4a60-b62b-1acc60358b58",
         gurmukhi: "ਮੈਂ ਇਹ ਨਹੀਂ ਕਹਿ ਰਿਹਾ ਕਿ",
         romanization: "main ih nahin kahi riha ki",
         literal_en: "I am not saying that",
@@ -127,6 +131,7 @@ export const lessons: PunjabiC2DiscourseLesson[] = [
       "Punjabi offers multiple ways to say similar things. C2 is not always being formal; it is knowing when to use ਗੱਲ ਕਰਨੀ, ਚਰਚਾ ਕਰਨੀ, or ਵਿਚਾਰ-ਵਟਾਂਦਰਾ ਕਰਨਾ.",
     phrases: [
       {
+        cell_id: "8eff85ff-59ca-4367-9e7b-d0e77fcea9ef",
         gurmukhi: "ਗੱਲ ਕਰਨੀ",
         romanization: "gall karni",
         literal_en: "to do talk",
@@ -135,6 +140,7 @@ export const lessons: PunjabiC2DiscourseLesson[] = [
         register: "colloquial",
       },
       {
+        cell_id: "fd3b91c5-aa55-4379-a5d1-721a9ac798e4",
         gurmukhi: "ਚਰਚਾ ਕਰਨੀ",
         romanization: "charcha karni",
         literal_en: "to conduct discussion",
@@ -143,6 +149,7 @@ export const lessons: PunjabiC2DiscourseLesson[] = [
         register: "neutral",
       },
       {
+        cell_id: "e808b497-5de7-42a3-8142-5004b18e8dd6",
         gurmukhi: "ਵਿਚਾਰ-ਵਟਾਂਦਰਾ ਕਰਨਾ",
         romanization: "vichaar-vataandara karna",
         literal_en: "to exchange thoughts",
@@ -184,6 +191,7 @@ export const lessons: PunjabiC2DiscourseLesson[] = [
       "C2 Punjabi uses softeners such as ਜ਼ਰਾ, ਸ਼ਾਇਦ, ਹੋ ਸਕੇ ਤਾਂ, and ਥੋੜ੍ਹਾ. They are not just 'polite'; they change how much pressure the listener feels.",
     phrases: [
       {
+        cell_id: "f8b03cea-bff5-4bae-a4ec-c19290791f82",
         gurmukhi: "ਜ਼ਰਾ",
         romanization: "zara",
         literal_en: "a little",
@@ -192,6 +200,7 @@ export const lessons: PunjabiC2DiscourseLesson[] = [
         register: "neutral",
       },
       {
+        cell_id: "b22bd096-280d-49f2-aa85-8994d3745512",
         gurmukhi: "ਹੋ ਸਕੇ ਤਾਂ",
         romanization: "ho sake taan",
         literal_en: "if it can happen, then",
@@ -200,6 +209,7 @@ export const lessons: PunjabiC2DiscourseLesson[] = [
         register: "respectful",
       },
       {
+        cell_id: "573760a5-5e82-4f87-b210-141cc0cfaab0",
         gurmukhi: "ਮੇਰੀ ਇੱਕ ਛੋਟੀ ਜਿਹੀ ਬੇਨਤੀ ਹੈ",
         romanization: "meri ikk chhoti jihi benti hai",
         literal_en: "I have one small request",
@@ -241,6 +251,7 @@ export const lessons: PunjabiC2DiscourseLesson[] = [
       "A direct ਨਹੀਂ may be necessary, but in relational or community contexts speakers often use ਔਖਾ ਹੋਵੇਗਾ, ਵੇਖਦੇ ਹਾਂ, or ਇਸ ਵਾਰੀ ਮੁਸ਼ਕਲ ਹੈ. C2 means recognizing when 'we will see' effectively means 'no'.",
     phrases: [
       {
+        cell_id: "ac4a5957-e4b7-4810-a108-6690fec6f208",
         gurmukhi: "ਇਸ ਵਾਰੀ ਮੁਸ਼ਕਲ ਹੈ",
         romanization: "is vaari mushkal hai",
         literal_en: "this time it is difficult",
@@ -249,6 +260,7 @@ export const lessons: PunjabiC2DiscourseLesson[] = [
         register: "neutral",
       },
       {
+        cell_id: "d87fb050-52d4-4b49-a87c-1ac0479176e5",
         gurmukhi: "ਵੇਖਦੇ ਹਾਂ",
         romanization: "vekhde haan",
         literal_en: "we will see",
@@ -257,6 +269,7 @@ export const lessons: PunjabiC2DiscourseLesson[] = [
         register: "colloquial",
       },
       {
+        cell_id: "d0280a28-4d84-46c3-91ca-0c16fe292b4c",
         gurmukhi: "ਮੈਂ ਵਾਅਦਾ ਨਹੀਂ ਕਰ ਸਕਦਾ/ਸਕਦੀ",
         romanization: "main vaada nahin kar sakda/sakdi",
         literal_en: "I cannot make a promise",
@@ -298,6 +311,7 @@ export const lessons: PunjabiC2DiscourseLesson[] = [
       "A tactful disagreement often starts with ਮੰਨਦਾ/ਮੰਨਦੀ ਹਾਂ or ਤੁਹਾਡੀ ਗੱਲ ਵਿੱਚ ਵਜ਼ਨ ਹੈ before moving to ਪਰ. This preserves the previous speaker's dignity while protecting your argument.",
     phrases: [
       {
+        cell_id: "05177ada-bec3-4017-bb12-06082261a80f",
         gurmukhi: "ਤੁਹਾਡੀ ਗੱਲ ਵਿੱਚ ਵਜ਼ਨ ਹੈ",
         romanization: "tuhadi gall vich vazan hai",
         literal_en: "there is weight in your point",
@@ -306,6 +320,7 @@ export const lessons: PunjabiC2DiscourseLesson[] = [
         register: "respectful",
       },
       {
+        cell_id: "3828cdeb-88b2-44f6-a3fe-956d1a1cc2a1",
         gurmukhi: "ਮੈਂ ਇਸ ਗੱਲ ਨਾਲ ਪੂਰੀ ਤਰ੍ਹਾਂ ਸਹਿਮਤ ਨਹੀਂ",
         romanization: "main is gall naal poori tarhan sahimat nahin",
         literal_en: "I do not fully agree with this point",
@@ -314,6 +329,7 @@ export const lessons: PunjabiC2DiscourseLesson[] = [
         register: "neutral",
       },
       {
+        cell_id: "1d5207d7-0ddf-45c7-a781-2f5a130c33ea",
         gurmukhi: "ਫਿਰ ਵੀ ਇੱਕ ਪਾਸਾ ਹੋਰ ਵੀ ਹੈ",
         romanization: "fir vi ikk paasa hor vi hai",
         literal_en: "still, there is another side too",
@@ -353,6 +369,7 @@ export const lessons: PunjabiC2DiscourseLesson[] = [
       "Punjabi idioms add depth, but too many can sound theatrical or misplaced. At C2, the goal is to understand the rhetorical force of ਮੁੱਦੇ ਦੀ ਗੱਲ, ਗੱਲ ਨੂੰ ਘੁਮਾ ਫਿਰਾ ਕੇ, and ਦਿਲ ਦੀ ਗੱਲ.",
     phrases: [
       {
+        cell_id: "3e6ef6a5-3f4f-4394-a78c-b3e05286292d",
         gurmukhi: "ਮੁੱਦੇ ਦੀ ਗੱਲ",
         romanization: "mudde di gall",
         literal_en: "the matter's point",
@@ -361,6 +378,7 @@ export const lessons: PunjabiC2DiscourseLesson[] = [
         register: "neutral",
       },
       {
+        cell_id: "651c2b7f-99ed-4321-ac07-4fec4e0b1811",
         gurmukhi: "ਗੱਲ ਨੂੰ ਘੁਮਾ ਫਿਰਾ ਕੇ ਕਹਿਣਾ",
         romanization: "gall nu ghuma fira ke kahina",
         literal_en: "to say the point by turning it around",
@@ -369,6 +387,7 @@ export const lessons: PunjabiC2DiscourseLesson[] = [
         register: "colloquial",
       },
       {
+        cell_id: "09af1018-7833-4535-8ca6-50c4556e3687",
         gurmukhi: "ਦਿਲ ਦੀ ਗੱਲ",
         romanization: "dil di gall",
         literal_en: "the heart's word",
@@ -410,6 +429,7 @@ export const lessons: PunjabiC2DiscourseLesson[] = [
       "In family meetings, community councils, or religious-social gatherings, speech often balances clarity with shared dignity. Phrases like ਸਾਂਝੀ ਰਾਏ, ਬਜ਼ੁਰਗਾਂ ਦੀ ਸਲਾਹ, and ਸਭ ਦੀ ਸਹਿਮਤੀ signal that a decision is not only individual.",
     phrases: [
       {
+        cell_id: "c9b61c7a-4430-4790-a6ac-92d01c319cb4",
         gurmukhi: "ਸਾਂਝੀ ਰਾਏ",
         romanization: "sanjhi rae",
         literal_en: "shared opinion",
@@ -418,6 +438,7 @@ export const lessons: PunjabiC2DiscourseLesson[] = [
         register: "neutral",
       },
       {
+        cell_id: "617808cc-7e99-43fe-8d4a-b75817193bb0",
         gurmukhi: "ਬਜ਼ੁਰਗਾਂ ਦੀ ਸਲਾਹ",
         romanization: "bazurgan di salah",
         literal_en: "elders' advice",
@@ -426,6 +447,7 @@ export const lessons: PunjabiC2DiscourseLesson[] = [
         register: "respectful",
       },
       {
+        cell_id: "1758e4fc-3b48-4423-a145-130e2c986958",
         gurmukhi: "ਸਭ ਦੀ ਸਹਿਮਤੀ ਨਾਲ",
         romanization: "sabh di sahimati naal",
         literal_en: "with everyone's agreement",
@@ -465,6 +487,7 @@ export const lessons: PunjabiC2DiscourseLesson[] = [
       "Formal Punjabi often uses ਬੇਨਤੀ, ਸੂਚਿਤ ਕਰਨਾ, ਵਿਚਾਰ ਅਧੀਨ, and ਫ਼ੈਸਲਾ ਕੀਤਾ ਗਿਆ. This layer makes the sentence less personal and more suitable for documents or formal meetings.",
     phrases: [
       {
+        cell_id: "82aaf55a-3a9a-42d9-b5de-891a8b653385",
         gurmukhi: "ਬੇਨਤੀ ਹੈ ਕਿ",
         romanization: "benti hai ki",
         literal_en: "there is a request that",
@@ -473,6 +496,7 @@ export const lessons: PunjabiC2DiscourseLesson[] = [
         register: "formal",
       },
       {
+        cell_id: "a9757148-ddf9-422a-b666-6fbda3f66c95",
         gurmukhi: "ਸੂਚਿਤ ਕੀਤਾ ਜਾਂਦਾ ਹੈ",
         romanization: "suchit kita janda hai",
         literal_en: "it is informed",
@@ -481,6 +505,7 @@ export const lessons: PunjabiC2DiscourseLesson[] = [
         register: "formal",
       },
       {
+        cell_id: "e2ee4fb2-47af-4d1d-b776-ac8189cbf848",
         gurmukhi: "ਵਿਚਾਰ ਅਧੀਨ ਹੈ",
         romanization: "vichaar adhin hai",
         literal_en: "is under consideration",
@@ -520,6 +545,7 @@ export const lessons: PunjabiC2DiscourseLesson[] = [
       "C2 speakers do not merely list reasons; they arrange argument with ਇੱਕ ਪਾਸੇ..., ਦੂਜੇ ਪਾਸੇ..., ਮੂਲ ਸਵਾਲ ਇਹ ਹੈ ਕਿ, and ਇਸ ਕਰਕੇ. These frames let the listener see the structure of the thought.",
     phrases: [
       {
+        cell_id: "f6f60bd9-115f-4c03-811a-096ca106ffe4",
         gurmukhi: "ਇੱਕ ਪਾਸੇ... ਦੂਜੇ ਪਾਸੇ...",
         romanization: "ikk paase... duje paase...",
         literal_en: "on one side... on the other side...",
@@ -528,6 +554,7 @@ export const lessons: PunjabiC2DiscourseLesson[] = [
         register: "neutral",
       },
       {
+        cell_id: "092f4411-8381-4fbf-a8bd-c26dee4979b8",
         gurmukhi: "ਮੂਲ ਸਵਾਲ ਇਹ ਹੈ ਕਿ",
         romanization: "mool sawaal ih hai ki",
         literal_en: "the root question is that",
@@ -536,6 +563,7 @@ export const lessons: PunjabiC2DiscourseLesson[] = [
         register: "formal",
       },
       {
+        cell_id: "8d078be8-a264-4bba-ba46-ae530dde9d9e",
         gurmukhi: "ਇਸ ਕਰਕੇ",
         romanization: "is karke",
         literal_en: "because of this",
@@ -575,6 +603,7 @@ export const lessons: PunjabiC2DiscourseLesson[] = [
       "Direct correction can be necessary, but C2 speech often uses ਸ਼ਾਇਦ, ਮੇਰਾ ਖ਼ਿਆਲ ਹੈ, and ਹੋ ਸਕਦਾ ਹੈ. They give the other person room to adjust rather than feel caught out.",
     phrases: [
       {
+        cell_id: "dd95c736-52fb-4d42-8672-698d3686939d",
         gurmukhi: "ਸ਼ਾਇਦ ਇੱਥੇ...",
         romanization: "shayad itthe...",
         literal_en: "perhaps here...",
@@ -583,6 +612,7 @@ export const lessons: PunjabiC2DiscourseLesson[] = [
         register: "neutral",
       },
       {
+        cell_id: "4cf6bede-e846-4a73-8618-b80becefb68c",
         gurmukhi: "ਮੇਰਾ ਖ਼ਿਆਲ ਹੈ ਕਿ ਇਹ...",
         romanization: "mera khiaal hai ki ih...",
         literal_en: "my thought is that this...",
@@ -591,6 +621,7 @@ export const lessons: PunjabiC2DiscourseLesson[] = [
         register: "neutral",
       },
       {
+        cell_id: "cdacc16e-0cbd-4efc-8616-6931306a72d3",
         gurmukhi: "ਹੋ ਸਕਦਾ ਹੈ ਕਿ ਅਸੀਂ ਇਸ ਨੂੰ ਹੋਰ ਤਰ੍ਹਾਂ ਵੇਖੀਏ",
         romanization: "ho sakda hai ki asin is nu hor tarhan vekhiye",
         literal_en: "it may be that we see it another way",
@@ -630,6 +661,7 @@ export const lessons: PunjabiC2DiscourseLesson[] = [
       "This course uses Gurmukhi as primary. C2 learners should know that Punjabi is also written in Shahmukhi in some communities and contexts, but this lesson notes it only for awareness and does not teach Shahmukhi as a full system.",
     phrases: [
       {
+        cell_id: "9c519428-875e-44dd-8822-62e0ec83036c",
         gurmukhi: "ਗੁਰਮੁਖੀ ਲਿਪੀ",
         romanization: "gurmukhi lipi",
         literal_en: "Gurmukhi script",
@@ -638,6 +670,7 @@ export const lessons: PunjabiC2DiscourseLesson[] = [
         register: "neutral",
       },
       {
+        cell_id: "cd34e299-4ce7-4eab-9258-74770a2ad6b3",
         gurmukhi: "ਸ਼ਾਹਮੁਖੀ ਬਾਰੇ ਜਾਣਕਾਰੀ",
         romanization: "shahmukhi bare jaankari",
         literal_en: "information about Shahmukhi",
@@ -646,6 +679,7 @@ export const lessons: PunjabiC2DiscourseLesson[] = [
         register: "neutral",
       },
       {
+        cell_id: "8d0a54ec-b027-40d5-b2fb-ec25fc7a74ff",
         gurmukhi: "ਲਿਪੀ ਅਤੇ ਰਜਿਸਟਰ ਵੱਖ ਗੱਲਾਂ ਹਨ",
         romanization: "lipi ate register vakh gallan han",
         literal_en: "script and register are different matters",
