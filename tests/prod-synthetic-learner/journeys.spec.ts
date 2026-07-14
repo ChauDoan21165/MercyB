@@ -41,7 +41,7 @@ test.skip(
 
 const FEEDBACK_TABLE = "learning_events";
 const SINK_WAIT_MS = 60_000; // journey (d) budget
-const DEFER_NOTICE_RE = /Đã ghi nhận · Noted|Mercy ghi nhận câu này|Got it.*share a small tip in a moment/i;
+const DEFER_NOTICE_TITLE = "Đã ghi nhận · Noted";
 
 function projectRef(url: string): string {
   return new URL(url).host.split(".")[0];
@@ -258,7 +258,7 @@ test("(b/c/d) correction → feedback tap → row lands with rule_or_detector_id
         await submitCorrectionProbe(page, probe);
 
         if (probe.expectedProductPath === "legacy_timing_defer") {
-          await expect(page.getByText(DEFER_NOTICE_RE)).toBeVisible({ timeout: 30_000 });
+          await expect(page.getByText(DEFER_NOTICE_TITLE, { exact: true })).toBeVisible({ timeout: 30_000 });
           await expect(page.getByTestId("correction-feedback-helpful")).toHaveCount(0);
           details.push(
             `${probe.id}: legacy timing defer notice rendered; no correction feedback expected; expectedDetector=${probe.expectedDetector}`,
