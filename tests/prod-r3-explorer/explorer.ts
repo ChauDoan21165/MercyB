@@ -1,6 +1,7 @@
 import type { Locator, Page } from "@playwright/test";
 
 import { buildRouteManifest } from "../../scripts/generate-route-manifest";
+import { CORRECTION_SOURCE_SYNTHETIC_MARKER_KEY } from "../../src/lib/ai-tutor/correctionSourceSyntheticMarker";
 import { crawlRoute } from "../e2e/crawler/crawlRoute";
 import {
   R3_MAX_ACTIONS,
@@ -188,6 +189,13 @@ async function fillSafeInputs(page: Page, visited: R3VisitedRoute): Promise<numb
 
 async function exploreActions(page: Page, baseURL: string, visited: R3VisitedRoute): Promise<string[]> {
   let actions = 0;
+  // R3 can land on /ai-tutor and exercise text inputs. Re-assert the marker in
+  // the current origin immediately before any action that could emit telemetry.
+  await page.evaluate((key) => {
+    window.localStorage.setItem(key, "1");
+  }, CORRECTION_SOURCE_SYNTHETIC_MARKER_KEY).catch((err) => {
+    visited.failures.push(failure("js-crash", visited.path, `synthetic marker seed failed: ${(err as Error).message}`));
+  });
   actions += await clickSafeRole(page, visited, "tab");
   if (actions < R3_MAX_ACTIONS_PER_PAGE) actions += await clickSafeRole(page, visited, "menuitem");
   if (actions < R3_MAX_ACTIONS_PER_PAGE) actions += await fillSafeInputs(page, visited);

@@ -88,11 +88,22 @@ function orderedCorrectionProbes(
   return [...probes.filter((probe) => probe.id !== feedbackProbe.id), feedbackProbe];
 }
 
+async function assertSyntheticMarkerOnCurrentOrigin(
+  page: import("@playwright/test").Page,
+): Promise<void> {
+  const marker = await page.evaluate((key) => {
+    window.localStorage.setItem(key, "1");
+    return window.localStorage.getItem(key);
+  }, CORRECTION_SOURCE_SYNTHETIC_MARKER_KEY);
+  expect(marker).toBe("1");
+}
+
 async function submitCorrectionProbe(
   page: import("@playwright/test").Page,
   probe: SeededCorrectionProbe,
 ): Promise<void> {
   await page.goto(`${SYNTH_BASE_URL}/ai-tutor`, { waitUntil: "networkidle" });
+  await assertSyntheticMarkerOnCurrentOrigin(page);
   const field = page.getByRole("textbox").first();
   await field.click();
   await field.fill(probe.sentence);
