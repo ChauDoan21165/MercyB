@@ -1,5 +1,6 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { createRetryLoader } from "@/lib/lazyWithRetry";
+import { ChunkLoadRecoveryError } from "@/lib/chunkLoadError";
 
 const RELOAD_KEY = "__mb_chunk_reload_once__";
 
@@ -84,14 +85,17 @@ describe("createRetryLoader", () => {
     expect(sessionStorage.getItem(RELOAD_KEY)).toBeNull();
   });
 
-  it("does not recover a second time within the same session — rethrows instead", async () => {
+  it("does not recover a second time within the same session — throws typed chunk recovery error", async () => {
     sessionStorage.setItem(RELOAD_KEY, "1");
     const importer = vi.fn(async () => {
       throw makeStaleChunkError();
     });
     const loader = createRetryLoader(importer);
 
-    await expect(loader()).rejects.toThrow(/Failed to fetch dynamically/i);
+    await expect(loader()).rejects.toMatchObject({
+      name: "ChunkLoadRecoveryError",
+      cause: expect.any(TypeError),
+    });
     expect(importer).toHaveBeenCalledTimes(2);
     expect(replaceSpy).not.toHaveBeenCalled();
   });

@@ -3,6 +3,7 @@ import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { render, screen } from "@testing-library/react";
 
 import { ErrorBoundary } from "../ErrorBoundary";
+import { ChunkLoadRecoveryError } from "@/lib/chunkLoadError";
 
 const Bomb = (): ReactElement => {
   throw new Error("kaboom");
@@ -155,6 +156,27 @@ describe("<ErrorBoundary />", () => {
       expect(screen.getByText("Chưa cập nhật được")).toBeInTheDocument();
       await vi.runAllTimersAsync();
       expect(replaceSpy).not.toHaveBeenCalled();
+    });
+
+    it("renders the reload UI for typed exhausted lazy chunk errors", async () => {
+      const TypedChunkBomb = (): ReactElement => {
+        throw new ChunkLoadRecoveryError(
+          "Mercy Blade could not load a route chunk after retrying the current deploy.",
+          new TypeError("Failed to fetch dynamically imported module: https://mercyblade.com/assets/Home-BadHash.js"),
+        );
+      };
+
+      render(
+        <ErrorBoundary>
+          <TypedChunkBomb />
+        </ErrorBoundary>,
+      );
+
+      expect(screen.getByText("Đang cập nhật Mercy Blade")).toBeInTheDocument();
+      expect(screen.getByRole("button", { name: "Tải lại" })).toBeInTheDocument();
+      expect(screen.queryByText("Đã xảy ra lỗi")).not.toBeInTheDocument();
+      await vi.runAllTimersAsync();
+      expect(replaceSpy).toHaveBeenCalledTimes(1);
     });
   });
 });

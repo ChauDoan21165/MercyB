@@ -8,6 +8,7 @@
 // when a chunk hash 404s after a deploy.
 
 export function looksLikeChunkLoadFailure(err: unknown): boolean {
+  if (isChunkLoadRecoveryError(err)) return true;
   const message = errorMessage(err).toLowerCase();
   return (
     message.includes("failed to fetch dynamically imported module") ||
@@ -22,6 +23,24 @@ export function looksLikeChunkLoadFailure(err: unknown): boolean {
     // variants ("'text/html'" and the bare phrase), so match the core
     // substring rather than the full sentence.
     message.includes("is not a valid javascript mime type")
+  );
+}
+
+export class ChunkLoadRecoveryError extends Error {
+  readonly cause: unknown;
+
+  constructor(message: string, cause: unknown) {
+    super(message);
+    this.name = "ChunkLoadRecoveryError";
+    this.cause = cause;
+  }
+}
+
+export function isChunkLoadRecoveryError(err: unknown): err is ChunkLoadRecoveryError {
+  return err instanceof ChunkLoadRecoveryError || (
+    Boolean(err) &&
+    typeof err === "object" &&
+    (err as { name?: unknown }).name === "ChunkLoadRecoveryError"
   );
 }
 
