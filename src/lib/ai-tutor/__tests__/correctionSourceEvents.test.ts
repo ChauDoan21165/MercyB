@@ -161,7 +161,7 @@ describe("correction source events", () => {
     ]);
   });
 
-  it("uses the durable insert path with local synthetic context before profile lookup", async () => {
+  it("uses the durable insert path with synchronously resolved synthetic context", async () => {
     const durableInsertRow = vi.fn(async (_row: CorrectionSourceEventRow) => ({ error: null }));
     const getUserContext = vi.fn(async () => ({ nativeLanguage: "remote", isSynthetic: false }));
 
@@ -180,6 +180,42 @@ describe("correction source events", () => {
       is_synthetic: true,
     });
     expect(getUserContext).not.toHaveBeenCalled();
+  });
+
+  it("holds the keepalive insert until a cold profile synthetic cache resolves", async () => {
+    let cachedSynthetic = false;
+    let cacheCold = true;
+    let resolveCache!: () => void;
+    const durableInsertRow = vi.fn(async (_row: CorrectionSourceEventRow) => ({ error: null }));
+    const cacheResolution = new Promise<void>((resolve) => {
+      resolveCache = () => {
+        cachedSynthetic = true;
+        cacheCold = false;
+        resolve();
+      };
+    });
+
+    const pendingWrite = writeCorrectionSourceEvent(
+      { source: "local_corrected", targetLanguage: "en" },
+      {
+        getLocalContext: () => ({ nativeLanguage: "vi", isSynthetic: cachedSynthetic }),
+        isProfileSyntheticCacheCold: () => cacheCold,
+        ensureProfileSyntheticResolved: () => cacheResolution,
+        durableInsertRow,
+      },
+    );
+
+    await Promise.resolve();
+    expect(durableInsertRow).not.toHaveBeenCalled();
+
+    resolveCache();
+    await pendingWrite;
+
+    expect(durableInsertRow).toHaveBeenCalledWith({
+      source: "local_corrected",
+      lang_pair: "vi-en",
+      is_synthetic: true,
+    });
   });
 
   it("logs keepalive failures and falls back to the client insert", async () => {

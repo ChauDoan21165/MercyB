@@ -30,11 +30,14 @@ type InsertResult = { error: unknown | null };
 type CorrectionSourceEventDeps = {
   getUserContext?: () => Promise<UserContext>;
   getLocalContext?: () => UserContext;
+  isProfileSyntheticCacheCold?: () => boolean;
+  ensureProfileSyntheticResolved?: () => Promise<void>;
   durableInsertRow?: (row: CorrectionSourceEventRow) => Promise<InsertResult>;
   insertRow?: (row: CorrectionSourceEventRow) => Promise<InsertResult>;
 };
 
 const LOG_PREFIX = "[correction_source_events]";
+const PROFILE_SYNTHETIC_CACHE_KEY = "mercyblade.correctionSourceProfileSynthetic.v1";
 
 const LANGUAGE_CODE_BY_NAME: Record<string, string> = {
   chinese: "zh",
@@ -84,7 +87,7 @@ export async function writeCorrectionSourceEvent(
   deps: CorrectionSourceEventDeps = {},
 ): Promise<void> {
   try {
-    const localContext = deps.getLocalContext?.() ?? defaultGetLocalContext();
+    let localContext = deps.getLocalContext?.() ?? defaultGetLocalContext();
     const usesLegacyTestPath = !deps.durableInsertRow && (deps.getUserContext || deps.insertRow);
 
     if (usesLegacyTestPath) {
@@ -97,6 +100,14 @@ export async function writeCorrectionSourceEvent(
       );
       await insertWithLogging("client_insert", row, insertRow);
       return;
+    }
+
+    const isProfileSyntheticCacheCold = deps.isProfileSyntheticCacheCold ?? defaultIsProfileSyntheticCacheCold;
+    if (!localContext.isSynthetic && isProfileSyntheticCacheCold()) {
+      const ensureProfileSyntheticResolved =
+        deps.ensureProfileSyntheticResolved ?? defaultEnsureProfileSyntheticResolved;
+      await ensureProfileSyntheticResolved();
+      localContext = deps.getLocalContext?.() ?? defaultGetLocalContext();
     }
 
     const localRow = buildCorrectionSourceEventRow(input, localContext);
@@ -159,7 +170,7 @@ function defaultGetLocalContext(): UserContext {
 
   return {
     nativeLanguage: readNativeLanguageFromLocalStorage(),
-    isSynthetic: readSyntheticMarkerFromLocalStorage(),
+    isSynthetic: readSyntheticMarkerFromLocalStorage() || readCachedProfileSyntheticFromLocalStorage(),
   };
 }
 
@@ -190,6 +201,69 @@ function readSyntheticMarkerFromLocalStorage(): boolean {
     );
   } catch {
     return false;
+  }
+}
+
+let profileSyntheticResolutionPromise: Promise<void> | null = null;
+
+function defaultIsProfileSyntheticCacheCold(): boolean {
+  if (typeof window === "undefined") return false;
+  if (readSyntheticMarkerFromLocalStorage()) return false;
+
+  const { storageKey } = getSupabaseEnvSnapshot();
+  const sessionKey = readSessionKeyFromLocalStorage(storageKey);
+  if (!sessionKey) return false;
+
+  const cached = readJsonObject(PROFILE_SYNTHETIC_CACHE_KEY);
+  return cached?.sessionKey !== sessionKey || typeof cached.isSynthetic !== "boolean";
+}
+
+async function defaultEnsureProfileSyntheticResolved(): Promise<void> {
+  if (!defaultIsProfileSyntheticCacheCold()) return;
+  profileSyntheticResolutionPromise ??= resolveProfileSyntheticCache().finally(() => {
+    profileSyntheticResolutionPromise = null;
+  });
+  await profileSyntheticResolutionPromise;
+}
+
+async function resolveProfileSyntheticCache(): Promise<void> {
+  if (typeof window === "undefined") return;
+
+  const { storageKey } = getSupabaseEnvSnapshot();
+  const sessionKey = readSessionKeyFromLocalStorage(storageKey);
+  if (!sessionKey) return;
+
+  const context = await defaultGetUserContext();
+  writeProfileSyntheticCache(sessionKey, context.isSynthetic);
+}
+
+function readCachedProfileSyntheticFromLocalStorage(): boolean {
+  if (typeof window === "undefined") return false;
+
+  try {
+    const { storageKey } = getSupabaseEnvSnapshot();
+    const sessionKey = readSessionKeyFromLocalStorage(storageKey);
+    if (!sessionKey) return false;
+
+    const cached = readJsonObject(PROFILE_SYNTHETIC_CACHE_KEY);
+    return cached?.sessionKey === sessionKey && cached.isSynthetic === true;
+  } catch {
+    return false;
+  }
+}
+
+function writeProfileSyntheticCache(sessionKey: string, isSynthetic: boolean): void {
+  try {
+    window.localStorage.setItem(
+      PROFILE_SYNTHETIC_CACHE_KEY,
+      JSON.stringify({
+        sessionKey,
+        isSynthetic,
+        resolvedAt: new Date().toISOString(),
+      }),
+    );
+  } catch {
+    // Cache failures should not block correction UX; the writer will fall back to local marker state.
   }
 }
 
@@ -311,6 +385,37 @@ function readNestedAccessToken(value: unknown): string | null {
   return null;
 }
 
+function readSessionKeyFromLocalStorage(storageKey: string): string | null {
+  if (typeof window === "undefined") return null;
+  try {
+    const raw = window.localStorage.getItem(storageKey);
+    if (!raw) return null;
+    const parsed: unknown = JSON.parse(raw);
+    const userId = readNestedUserId(parsed);
+    if (userId) return `user:${userId}`;
+    const accessToken = readNestedAccessToken(parsed);
+    return accessToken ? `token:${accessToken.slice(0, 32)}` : null;
+  } catch {
+    return null;
+  }
+}
+
+function readNestedUserId(value: unknown): string | null {
+  if (!value || typeof value !== "object") return null;
+  const record = value as Record<string, unknown>;
+  const id = readStringField(record, "id");
+  if (id) return id;
+
+  const user = readNestedUserId(record.user);
+  if (user) return user;
+
+  for (const key of ["currentSession", "session"]) {
+    const nested = readNestedUserId(record[key]);
+    if (nested) return nested;
+  }
+  return null;
+}
+
 function logInsertFailure(stage: string, error: unknown): void {
   console.warn(LOG_PREFIX, stage, describeError(error));
 }
@@ -324,3 +429,26 @@ function describeError(error: unknown): string {
     return String(error);
   }
 }
+
+function startProfileSyntheticCacheWarmup(): void {
+  if (typeof window === "undefined") return;
+  const mode = String(import.meta.env.MODE ?? "");
+  const isVitest = Boolean(import.meta.env.VITEST) || mode === "test";
+  if (isVitest) return;
+
+  void defaultEnsureProfileSyntheticResolved().catch((error: unknown) => {
+    logInsertFailure("profile_synthetic_cache_warmup_failed", error);
+  });
+
+  try {
+    supabase.auth.onAuthStateChange(() => {
+      void defaultEnsureProfileSyntheticResolved().catch((error: unknown) => {
+        logInsertFailure("profile_synthetic_cache_warmup_failed", error);
+      });
+    });
+  } catch {
+    // Auth listeners are best-effort; a cold first telemetry event will still wait for resolution.
+  }
+}
+
+startProfileSyntheticCacheWarmup();
