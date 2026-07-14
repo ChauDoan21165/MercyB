@@ -81,6 +81,7 @@
     "audio:tts": "tsx scripts/generate-missing-audio.ts",
     "audio:census": "tsx scripts/audio-census/build-audio-census.ts",
     "audio:en-reconcile": "tsx scripts/audio-census/reconcile-english-audio.ts",
+    "audio:en-unit-breakdown": "tsx scripts/audio-census/build-en-unit-breakdown.ts",
     "typecheck": "npm run typecheck:app",
     "typecheck:app": "node --max-old-space-size=12288 ./node_modules/typescript/bin/tsc -p tsconfig.typecheck.json --noEmit",
     "typecheck:ci:sharded": "node scripts/diagnostics/typecheck-ci-sharded.mjs",
