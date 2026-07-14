@@ -312,6 +312,15 @@ serve(async (req) => {
     return new Response("Method not allowed", { status: 405 });
   }
 
+  const expected = Deno.env.get("ADMIN_CRON_SECRET") ?? "";
+  const provided = req.headers.get("x-cron-secret") ?? "";
+  if (!expected || provided !== expected) {
+    return new Response(JSON.stringify({ error: "unauthorized" }), {
+      status: 401,
+      headers: { "Content-Type": "application/json" },
+    });
+  }
+
   try {
     const body = await req.json().catch(() => ({}));
     const roomId: string | undefined = body.room_id;
