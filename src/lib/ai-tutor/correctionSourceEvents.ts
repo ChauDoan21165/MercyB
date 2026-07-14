@@ -25,7 +25,19 @@ type InsertResult = { error: unknown | null };
 
 type CorrectionSourceEventDeps = {
   getUserContext?: () => Promise<UserContext>;
+  getLocalContext?: () => UserContext;
   insertRow?: (row: CorrectionSourceEventRow) => Promise<InsertResult>;
+};
+
+const LANGUAGE_CODE_BY_NAME: Record<string, string> = {
+  chinese: "zh",
+  english: "en",
+  french: "fr",
+  german: "de",
+  japanese: "ja",
+  korean: "ko",
+  spanish: "es",
+  vietnamese: "vi",
 };
 
 export function classifyCorrectionSourceEvent(input: {
@@ -42,8 +54,8 @@ export function deriveCorrectionSourceLangPair(
   nativeLanguage: string | null,
   targetLanguage: TutorTarget,
 ): string | null {
-  const native = String(nativeLanguage ?? "").trim().toLowerCase().replace(/[^a-z-]/g, "");
-  const target = String(targetLanguage ?? "").trim().toLowerCase().replace(/[^a-z-]/g, "");
+  const native = normalizeLanguageCode(nativeLanguage);
+  const target = normalizeLanguageCode(targetLanguage);
   if (!native || !target) return null;
   return `${native}-${target}`.slice(0, 17);
 }
@@ -63,9 +75,11 @@ export async function writeCorrectionSourceEvent(
   deps: CorrectionSourceEventDeps = {},
 ): Promise<void> {
   try {
+    const localContext = deps.getLocalContext?.() ?? defaultGetLocalContext();
     const getUserContext = deps.getUserContext ?? defaultGetUserContext;
     const insertRow = deps.insertRow ?? defaultInsertRow;
-    const context = await getUserContext();
+    const remoteContext = await getUserContext().catch(() => localContext);
+    const context = mergeUserContext(localContext, remoteContext);
     const row: CorrectionSourceEventRow = {
       source: input.source,
       lang_pair: deriveCorrectionSourceLangPair(context.nativeLanguage, input.targetLanguage),
@@ -75,6 +89,61 @@ export async function writeCorrectionSourceEvent(
   } catch {
     // Best-effort telemetry only; correction UX must never depend on this row.
   }
+}
+
+function normalizeLanguageCode(language: string | null | undefined): string {
+  const value = String(language ?? "").trim().toLowerCase().replace(/[^a-z-]/g, "");
+  return LANGUAGE_CODE_BY_NAME[value] ?? value;
+}
+
+function mergeUserContext(localContext: UserContext, remoteContext: UserContext): UserContext {
+  return {
+    nativeLanguage: remoteContext.nativeLanguage ?? localContext.nativeLanguage,
+    isSynthetic: remoteContext.isSynthetic || localContext.isSynthetic,
+  };
+}
+
+function defaultGetLocalContext(): UserContext {
+  if (typeof window === "undefined") return { nativeLanguage: null, isSynthetic: false };
+
+  return {
+    nativeLanguage: readNativeLanguageFromLocalStorage(),
+    isSynthetic: false,
+  };
+}
+
+function readNativeLanguageFromLocalStorage(): string | null {
+  try {
+    const direct = window.localStorage.getItem("mercyb:nativeLanguage");
+    if (direct) return direct;
+
+    const legacyPair = readJsonObject("mercyb:languagePair") ?? readJsonObject("mercyb:selectedPair");
+    const legacyNative = readStringField(legacyPair, "native");
+    if (legacyNative) return legacyNative;
+
+    const anonymousPair = readJsonObject("mercyblade.languagePair");
+    return readStringField(anonymousPair, "native");
+  } catch {
+    return null;
+  }
+}
+
+function readJsonObject(key: string): Record<string, unknown> | null {
+  const raw = window.localStorage.getItem(key);
+  if (!raw) return null;
+  try {
+    const parsed: unknown = JSON.parse(raw);
+    return parsed && typeof parsed === "object" && !Array.isArray(parsed)
+      ? parsed as Record<string, unknown>
+      : null;
+  } catch {
+    return null;
+  }
+}
+
+function readStringField(object: Record<string, unknown> | null, key: string): string | null {
+  const value = object?.[key];
+  return typeof value === "string" && value.trim() ? value : null;
 }
 
 async function defaultGetUserContext(): Promise<UserContext> {
