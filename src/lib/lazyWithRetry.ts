@@ -1,5 +1,5 @@
 import { lazy, type LazyExoticComponent } from "react";
-import { looksLikeChunkLoadFailure } from "@/lib/chunkLoadError";
+import { ChunkLoadRecoveryError, looksLikeChunkLoadFailure } from "@/lib/chunkLoadError";
 import {
   CHUNK_RELOAD_KEY,
   cacheBustingReload,
@@ -93,7 +93,10 @@ export function createRetryLoader<T extends LazyComponent>(
           // showing the fallback; React never sees the error.
           return new Promise<{ default: T }>(() => {});
         }
-        throw retryError;
+        throw new ChunkLoadRecoveryError(
+          "Mercy Blade could not load a route chunk after retrying the current deploy.",
+          retryError,
+        );
       }
     }
   };
