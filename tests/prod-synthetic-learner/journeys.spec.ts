@@ -16,6 +16,7 @@
 import { test, expect, type TestInfo } from "@playwright/test";
 import { GoTrueClient } from "@supabase/auth-js";
 
+import { CORRECTION_SOURCE_SYNTHETIC_MARKER_KEY } from "../../src/lib/ai-tutor/correctionSourceSyntheticMarker";
 import {
   SYNTH_BASE_URL,
   SYNTH_EMAIL,
@@ -179,7 +180,7 @@ async function seedSession(
   const blob = captured[key];
   if (!blob) throw new Error("GoTrueClient persisted no session blob under the storage key");
   await context.addInitScript(
-    ([k, v, pairKey, pairVal, nativeKey, nativeVal]) => {
+    ([k, v, pairKey, pairVal, nativeKey, nativeVal, syntheticMarkerKey]) => {
       window.localStorage.setItem(k, v);
       // The synthetic account authenticates via API injection and never runs the
       // /ai-tutor language picker, so it has no stored pair. Bare /ai-tutor gates
@@ -189,6 +190,7 @@ async function seedSession(
       // (readAnonymousPair shape {native, targets[]} + the nativeLang mirror).
       window.localStorage.setItem(pairKey, pairVal);
       window.localStorage.setItem(nativeKey, nativeVal);
+      window.localStorage.setItem(syntheticMarkerKey, "1");
     },
     [
       key,
@@ -197,6 +199,7 @@ async function seedSession(
       JSON.stringify({ native: "vi", targets: ["en"] }),
       "mercyblade.nativeLang",
       "vi",
+      CORRECTION_SOURCE_SYNTHETIC_MARKER_KEY,
     ] as const,
   );
   return { accessToken: data.session.access_token };
