@@ -11,6 +11,7 @@
 //   - the happy path issues exactly one request (success path unchanged).
 
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
+import { CORRECTION_SOURCE_SYNTHETIC_MARKER_KEY } from "@/lib/ai-tutor/correctionSourceSyntheticMarker";
 
 const getSession = vi.fn();
 vi.mock("@/lib/supabaseClient", () => ({
@@ -98,6 +99,20 @@ describe("placement-v3 client — cold-start retry hardening", () => {
     await startSession();
 
     expect(fetchMock).toHaveBeenCalledTimes(1);
+  });
+
+  it("forwards the existing synthetic monitoring marker on placement start", async () => {
+    window.localStorage.setItem(CORRECTION_SOURCE_SYNTHETIC_MARKER_KEY, "1");
+    const fetchMock = vi.fn().mockResolvedValue(jsonResponse(START_OK));
+    vi.stubGlobal("fetch", fetchMock);
+
+    await startSession();
+
+    const request = fetchMock.mock.calls[0]?.[1] as RequestInit;
+    expect(JSON.parse(String(request.body))).toMatchObject({
+      action: "start",
+      syntheticMonitoring: "1",
+    });
   });
 
   it("gives up after exhausting attempts on a persistent non-response", async () => {

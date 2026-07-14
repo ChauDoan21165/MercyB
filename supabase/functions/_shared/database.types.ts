@@ -1,4 +1,4 @@
-// Supabase migrations fingerprint: 81bcc423a68098c1e48ac0ede39423e886e825fbe44aa21abbf74babcc2f395d
+// Supabase migrations fingerprint: de299c421f39a3c288f7548e32776050e6134bf24d2ea176b4ac6d0689c2a3ff
 export type Json =
   | string
   | number
@@ -5808,6 +5808,7 @@ export type Database = {
           current_task_index: number
           flow_state: string
           id: string
+          is_synthetic: boolean
           language_pair: Json
           metadata: Json
           started_at: string
@@ -5823,6 +5824,7 @@ export type Database = {
           current_task_index?: number
           flow_state?: string
           id?: string
+          is_synthetic?: boolean
           language_pair: Json
           metadata?: Json
           started_at?: string
@@ -5838,6 +5840,7 @@ export type Database = {
           current_task_index?: number
           flow_state?: string
           id?: string
+          is_synthetic?: boolean
           language_pair?: Json
           metadata?: Json
           started_at?: string
