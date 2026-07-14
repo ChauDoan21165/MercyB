@@ -1,4 +1,4 @@
-import { describe, expect, it, vi } from "vitest";
+import { beforeEach, describe, expect, it, vi } from "vitest";
 import {
   classifyCorrectionSourceEvent,
   deriveCorrectionSourceLangPair,
@@ -10,6 +10,11 @@ import {
 import { CORRECTION_SOURCE_SYNTHETIC_MARKER_KEY } from "../correctionSourceSyntheticMarker";
 
 describe("correction source events", () => {
+  beforeEach(() => {
+    window.localStorage.clear();
+    vi.restoreAllMocks();
+  });
+
   it.each([
     [{ localStatus: "corrected" as const }, "local_corrected"],
     [{ localStatus: "unchanged" as const, serverAttempted: true }, "local_unchanged_server_attempt"],
@@ -154,5 +159,55 @@ describe("correction source events", () => {
         is_synthetic: true,
       },
     ]);
+  });
+
+  it("uses the durable insert path with local synthetic context before profile lookup", async () => {
+    const durableInsertRow = vi.fn(async (_row: CorrectionSourceEventRow) => ({ error: null }));
+    const getUserContext = vi.fn(async () => ({ nativeLanguage: "remote", isSynthetic: false }));
+
+    await writeCorrectionSourceEvent(
+      { source: "local_corrected", targetLanguage: "en" },
+      {
+        getLocalContext: () => ({ nativeLanguage: "vi", isSynthetic: true }),
+        getUserContext,
+        durableInsertRow,
+      },
+    );
+
+    expect(durableInsertRow).toHaveBeenCalledWith({
+      source: "local_corrected",
+      lang_pair: "vi-en",
+      is_synthetic: true,
+    });
+    expect(getUserContext).not.toHaveBeenCalled();
+  });
+
+  it("logs keepalive failures and falls back to the client insert", async () => {
+    const warn = vi.spyOn(console, "warn").mockImplementation(() => undefined);
+    const durableInsertRow = vi.fn(async (_row: CorrectionSourceEventRow) => ({
+      error: new Error("keepalive failed"),
+    }));
+    const insertRow = vi.fn(async (_row: CorrectionSourceEventRow) => ({ error: null }));
+
+    await writeCorrectionSourceEvent(
+      { source: "server_failed", targetLanguage: "en" },
+      {
+        getLocalContext: () => ({ nativeLanguage: "vi", isSynthetic: true }),
+        durableInsertRow,
+        insertRow,
+      },
+    );
+
+    expect(insertRow).toHaveBeenCalledWith({
+      source: "server_failed",
+      lang_pair: "vi-en",
+      is_synthetic: true,
+    });
+    expect(warn).toHaveBeenCalledWith(
+      "[correction_source_events]",
+      "keepalive_insert_failed",
+      "keepalive failed",
+    );
+    warn.mockRestore();
   });
 });

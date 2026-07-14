@@ -1,4 +1,4 @@
-import { supabase } from "@/lib/supabaseClient";
+import { getSupabaseEnvSnapshot, supabase } from "@/lib/supabaseClient";
 import type { TutorTarget } from "@/lib/tutor/tutorCopy";
 import {
   CORRECTION_SOURCE_SYNTHETIC_MARKER_KEY,
@@ -30,8 +30,11 @@ type InsertResult = { error: unknown | null };
 type CorrectionSourceEventDeps = {
   getUserContext?: () => Promise<UserContext>;
   getLocalContext?: () => UserContext;
+  durableInsertRow?: (row: CorrectionSourceEventRow) => Promise<InsertResult>;
   insertRow?: (row: CorrectionSourceEventRow) => Promise<InsertResult>;
 };
+
+const LOG_PREFIX = "[correction_source_events]";
 
 const LANGUAGE_CODE_BY_NAME: Record<string, string> = {
   chinese: "zh",
@@ -68,7 +71,9 @@ export function recordCorrectionSourceEvent(input: {
   source: CorrectionSourceEventSource;
   targetLanguage: TutorTarget;
 }): void {
-  void writeCorrectionSourceEvent(input).catch(() => undefined);
+  void writeCorrectionSourceEvent(input).catch((error: unknown) => {
+    logInsertFailure("unexpected_throw", error);
+  });
 }
 
 export async function writeCorrectionSourceEvent(
@@ -80,18 +85,60 @@ export async function writeCorrectionSourceEvent(
 ): Promise<void> {
   try {
     const localContext = deps.getLocalContext?.() ?? defaultGetLocalContext();
-    const getUserContext = deps.getUserContext ?? defaultGetUserContext;
-    const insertRow = deps.insertRow ?? defaultInsertRow;
-    const remoteContext = await getUserContext().catch(() => localContext);
-    const context = mergeUserContext(localContext, remoteContext);
-    const row: CorrectionSourceEventRow = {
-      source: input.source,
-      lang_pair: deriveCorrectionSourceLangPair(context.nativeLanguage, input.targetLanguage),
-      is_synthetic: context.isSynthetic,
-    };
-    await insertRow(row);
-  } catch {
-    // Best-effort telemetry only; correction UX must never depend on this row.
+    const usesLegacyTestPath = !deps.durableInsertRow && (deps.getUserContext || deps.insertRow);
+
+    if (usesLegacyTestPath) {
+      const getUserContext = deps.getUserContext ?? defaultGetUserContext;
+      const insertRow = deps.insertRow ?? defaultInsertRow;
+      const remoteContext = await getUserContext().catch(() => localContext);
+      const row = buildCorrectionSourceEventRow(
+        input,
+        mergeUserContext(localContext, remoteContext),
+      );
+      await insertWithLogging("client_insert", row, insertRow);
+      return;
+    }
+
+    const localRow = buildCorrectionSourceEventRow(input, localContext);
+    const durableInsertRow = deps.durableInsertRow ?? defaultDurableInsertRow;
+    const durableResult = await durableInsertRow(localRow);
+    if (!durableResult.error) return;
+
+    logInsertFailure("keepalive_insert_failed", durableResult.error);
+
+    const remoteContext = await defaultGetUserContext().catch(() => localContext);
+    const fallbackRow = buildCorrectionSourceEventRow(
+      input,
+      mergeUserContext(localContext, remoteContext),
+    );
+    await insertWithLogging("client_fallback_insert", fallbackRow, deps.insertRow ?? defaultInsertRow);
+  } catch (error: unknown) {
+    logInsertFailure("write_failed", error);
+  }
+}
+
+function buildCorrectionSourceEventRow(
+  input: {
+    source: CorrectionSourceEventSource;
+    targetLanguage: TutorTarget;
+  },
+  context: UserContext,
+): CorrectionSourceEventRow {
+  return {
+    source: input.source,
+    lang_pair: deriveCorrectionSourceLangPair(context.nativeLanguage, input.targetLanguage),
+    is_synthetic: context.isSynthetic,
+  };
+}
+
+async function insertWithLogging(
+  stage: string,
+  row: CorrectionSourceEventRow,
+  insertRow: (row: CorrectionSourceEventRow) => Promise<InsertResult>,
+): Promise<void> {
+  const result = await insertRow(row);
+  if (result.error) {
+    logInsertFailure(stage, result.error);
   }
 }
 
@@ -190,4 +237,90 @@ async function defaultGetUserContext(): Promise<UserContext> {
 async function defaultInsertRow(row: CorrectionSourceEventRow): Promise<InsertResult> {
   const { error } = await supabase.from(CORRECTION_SOURCE_EVENTS_TABLE).insert(row);
   return { error };
+}
+
+async function defaultDurableInsertRow(row: CorrectionSourceEventRow): Promise<InsertResult> {
+  if (typeof fetch !== "function") {
+    return { error: new Error("fetch_unavailable") };
+  }
+
+  try {
+    const { supabaseUrl, hasAnonKey, storageKey } = getSupabaseEnvSnapshot();
+    const anonKey = String(import.meta.env.VITE_SUPABASE_ANON_KEY ?? "").trim();
+    if (!supabaseUrl || !hasAnonKey || !anonKey) {
+      return { error: new Error("supabase_env_unavailable") };
+    }
+
+    const accessToken = readAccessTokenFromLocalStorage(storageKey) ?? await readAccessTokenFromClient();
+    const response = await fetch(
+      `${supabaseUrl.replace(/\/$/, "")}/rest/v1/${CORRECTION_SOURCE_EVENTS_TABLE}`,
+      {
+        method: "POST",
+        keepalive: true,
+        headers: {
+          apikey: anonKey,
+          Authorization: `Bearer ${accessToken ?? anonKey}`,
+          "Content-Type": "application/json",
+          Prefer: "return=minimal",
+        },
+        body: JSON.stringify(row),
+      },
+    );
+
+    if (!response.ok) {
+      return {
+        error: new Error(`rest_${response.status}: ${(await response.text()).slice(0, 200)}`),
+      };
+    }
+
+    return { error: null };
+  } catch (error: unknown) {
+    return { error };
+  }
+}
+
+function readAccessTokenFromLocalStorage(storageKey: string): string | null {
+  if (typeof window === "undefined") return null;
+  try {
+    const raw = window.localStorage.getItem(storageKey);
+    if (!raw) return null;
+    const parsed: unknown = JSON.parse(raw);
+    return readNestedAccessToken(parsed);
+  } catch {
+    return null;
+  }
+}
+
+async function readAccessTokenFromClient(): Promise<string | null> {
+  try {
+    const { data } = await supabase.auth.getSession();
+    return data.session?.access_token ?? null;
+  } catch {
+    return null;
+  }
+}
+
+function readNestedAccessToken(value: unknown): string | null {
+  if (!value || typeof value !== "object") return null;
+  const record = value as Record<string, unknown>;
+  if (typeof record.access_token === "string" && record.access_token) return record.access_token;
+  for (const key of ["currentSession", "session"]) {
+    const nested = readNestedAccessToken(record[key]);
+    if (nested) return nested;
+  }
+  return null;
+}
+
+function logInsertFailure(stage: string, error: unknown): void {
+  console.warn(LOG_PREFIX, stage, describeError(error));
+}
+
+function describeError(error: unknown): string {
+  if (error instanceof Error) return error.message;
+  if (typeof error === "string") return error;
+  try {
+    return JSON.stringify(error);
+  } catch {
+    return String(error);
+  }
 }
