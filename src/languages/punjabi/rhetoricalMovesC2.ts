@@ -25,6 +25,7 @@ export type PunjabiRhetoricalMoveContext =
   | "formal_public";
 
 export type PunjabiRhetoricalMovePhrase = {
+  cell_id?: string;
   gurmukhi: string;
   romanization: string;
   vi: string;
@@ -75,12 +76,14 @@ export const rhetoricalMovesC2Entries: PunjabiRhetoricalMoveEntry[] = [
     rhetorical_pattern_en: "Not whether X; rather how X, and under what conditions.",
     phrases: [
       {
+        cell_id: "f3cc6ebb-9f50-44f9-ab0c-b99e1d798b3a",
         gurmukhi: "ਸਵਾਲ ਇਹ ਨਹੀਂ ਕਿ",
         romanization: "savaal ih nahin ki",
         vi: "Câu hỏi không phải là...",
         en: "The question is not whether...",
       },
       {
+        cell_id: "638b2b6c-61be-4d39-809a-e5eb963885e7",
         gurmukhi: "ਸਵਾਲ ਇਹ ਹੈ ਕਿ",
         romanization: "savaal ih hai ki",
         vi: "Câu hỏi là...",
@@ -110,12 +113,14 @@ export const rhetoricalMovesC2Entries: PunjabiRhetoricalMoveEntry[] = [
     rhetorical_pattern_en: "A is true; however A is not enough to conclude B.",
     phrases: [
       {
+        cell_id: "1a687dbc-eb64-40a0-80f4-a9545a205304",
         gurmukhi: "ਇਹ ਗੱਲ ਸਹੀ ਹੈ ਕਿ",
         romanization: "ih gall sahi hai ki",
         vi: "Điều này đúng là...",
         en: "It is true that...",
       },
       {
+        cell_id: "c572dbc0-e1ca-4d0b-8766-ee039b4ed6b4",
         gurmukhi: "ਪਰ ਇਸ ਨਾਲ ਪੂਰਾ ਨਤੀਜਾ ਨਹੀਂ ਨਿਕਲਦਾ",
         romanization: "par is naal pura natija nahin nikalda",
         vi: "Nhưng từ đó chưa ra toàn bộ kết luận.",
@@ -145,12 +150,14 @@ export const rhetoricalMovesC2Entries: PunjabiRhetoricalMoveEntry[] = [
     rhetorical_pattern_en: "Do not call the person wrong; say the process needs review.",
     phrases: [
       {
+        cell_id: "032a0cde-1a00-4c03-a9ac-d6de058e6b07",
         gurmukhi: "ਮੁੱਦਾ ਵਿਅਕਤੀ ਦਾ ਨਹੀਂ",
         romanization: "mudda viakti da nahin",
         vi: "Vấn đề không phải ở cá nhân.",
         en: "The issue is not the individual.",
       },
       {
+        cell_id: "09ed4032-9d35-4622-90b9-f9e3abf83adf",
         gurmukhi: "ਪ੍ਰਕਿਰਿਆ ਨੂੰ ਮੁੜ ਵੇਖਣ ਦੀ ਲੋੜ ਹੈ",
         romanization: "prakiria nu mur vekhan di lor hai",
         vi: "Quy trình cần được xem lại.",
@@ -180,12 +187,14 @@ export const rhetoricalMovesC2Entries: PunjabiRhetoricalMoveEntry[] = [
     rhetorical_pattern_en: "Excuse me opener + if possible + specific request.",
     phrases: [
       {
+        cell_id: "c46cb983-7faf-4aa6-b894-f45273cc38ea",
         gurmukhi: "ਮਾਫ਼ ਕਰਨਾ ਜੀ",
         romanization: "maaf karna ji",
         vi: "Xin lỗi / làm phiền ạ.",
         en: "Excuse me.",
       },
       {
+        cell_id: "3c53238f-2d2e-431a-91f2-6c7bd82f63e0",
         gurmukhi: "ਜੇ ਸੰਭਵ ਹੋਵੇ",
         romanization: "je sambhav hove",
         vi: "Nếu có thể.",
@@ -210,12 +219,14 @@ export const rhetoricalMovesC2Entries: PunjabiRhetoricalMoveEntry[] = [
     rhetorical_pattern_en: "Importance level + reason + concrete action.",
     phrases: [
       {
+        cell_id: "5caeda64-336d-4179-a82c-1b464e040258",
         gurmukhi: "ਇਹ ਗੱਲ ਖ਼ਾਸ ਧਿਆਨ ਦੀ ਹੈ",
         romanization: "ih gall khaas dhiaan di hai",
         vi: "Điều này cần chú ý đặc biệt.",
         en: "This needs special attention.",
       },
       {
+        cell_id: "5ae4507f-1744-4b74-9918-265bdb47bc7d",
         gurmukhi: "ਕਿਰਪਾ ਕਰਕੇ ਪੁਸ਼ਟੀ ਕਰ ਦਿਓ",
         romanization: "kirpa karke pushti kar dio",
         vi: "Vui lòng xác nhận.",
@@ -245,12 +256,14 @@ export const rhetoricalMovesC2Entries: PunjabiRhetoricalMoveEntry[] = [
     rhetorical_pattern_en: "For a broad group: clearer, fewer idioms, more context.",
     phrases: [
       {
+        cell_id: "d69a383c-72df-4273-aaac-8c353037f89d",
         gurmukhi: "ਸਭ ਦੀ ਸਹੂਲਤ ਲਈ",
         romanization: "sabh di sahulat lai",
         vi: "Để thuận tiện cho mọi người.",
         en: "For everyone's convenience.",
       },
       {
+        cell_id: "d10fbcc7-3a5d-44f1-b18a-b50aea1e8064",
         gurmukhi: "ਸੌਖੇ ਸ਼ਬਦਾਂ ਵਿੱਚ",
         romanization: "saukhe shabdan vich",
         vi: "Nói bằng lời đơn giản.",
@@ -274,12 +287,14 @@ export const rhetoricalMovesC2Entries: PunjabiRhetoricalMoveEntry[] = [
     rhetorical_pattern_en: "Thanks + shared value + next step.",
     phrases: [
       {
+        cell_id: "95311b9b-8d16-4d6a-9224-faadd854db48",
         gurmukhi: "ਸਭ ਦੇ ਸਹਿਯੋਗ ਲਈ ਧੰਨਵਾਦ",
         romanization: "sabh de sahiyog lai dhannvaad",
         vi: "Cảm ơn sự hợp tác của mọi người.",
         en: "Thank you for everyone's cooperation.",
       },
       {
+        cell_id: "960d0dec-8afc-4f9b-aff3-937075903944",
         gurmukhi: "ਅਗਲਾ ਕਦਮ ਸਾਂਝੇ ਤੌਰ ਤੇ ਚੁੱਕੀਏ",
         romanization: "agla kadam sanjhe taur te chukie",
         vi: "Ta hãy cùng thực hiện bước tiếp theo.",
@@ -303,12 +318,14 @@ export const rhetoricalMovesC2Entries: PunjabiRhetoricalMoveEntry[] = [
     rhetorical_pattern_en: "Issue -> impact -> option -> feedback.",
     phrases: [
       {
+        cell_id: "c540f8af-5d03-4b93-b084-87ccd83dc223",
         gurmukhi: "ਮੁੱਦਾ ਇਹ ਹੈ ਕਿ",
         romanization: "mudda ih hai ki",
         vi: "Vấn đề là...",
         en: "The issue is that...",
       },
       {
+        cell_id: "86e5ea8f-b516-4102-af26-be0ea516bd50",
         gurmukhi: "ਤੁਹਾਡੀ ਰਾਏ ਸੁਣਨੀ ਚਾਹਾਂਗੇ",
         romanization: "tuhadi rai sunni chahange",
         vi: "Chúng tôi muốn nghe ý kiến của anh/chị.",
@@ -338,12 +355,14 @@ export const rhetoricalMovesC2Entries: PunjabiRhetoricalMoveEntry[] = [
     rhetorical_pattern_en: "Acknowledge instruction + ask unclear point + request confirmation.",
     phrases: [
       {
+        cell_id: "cf01b5da-537d-4f78-be02-c5e36a4c07ba",
         gurmukhi: "ਤੁਹਾਡੀ ਹਦਾਇਤ ਸਮਝ ਆ ਗਈ",
         romanization: "tuhadi hadaayat samajh aa gayi",
         vi: "Tôi đã hiểu hướng dẫn của anh/chị.",
         en: "I understood your instruction.",
       },
       {
+        cell_id: "2b46452e-ec12-48ee-8eec-a800578dd79f",
         gurmukhi: "ਸਿਰਫ਼ ਇਹ ਪੁਸ਼ਟੀ ਕਰਨੀ ਸੀ",
         romanization: "sirf ih pushti karni si",
         vi: "Tôi chỉ muốn xác nhận điều này.",
@@ -368,12 +387,14 @@ export const rhetoricalMovesC2Entries: PunjabiRhetoricalMoveEntry[] = [
     rhetorical_pattern_en: "State focus + note awareness + limit scope.",
     phrases: [
       {
+        cell_id: "c5215559-e01a-4031-9eab-fad1d41dcf18",
         gurmukhi: "ਗੁਰਮੁਖੀ ਇੱਥੇ ਮੁੱਖ ਲਿਪੀ ਹੈ",
         romanization: "Gurmukhi ithe mukh lipi hai",
         vi: "Gurmukhi là hệ chữ chính ở đây.",
         en: "Gurmukhi is the main script here.",
       },
       {
+        cell_id: "7099c39a-394e-463e-b303-da19afbc98a1",
         gurmukhi: "ਸ਼ਾਹਮੁਖੀ ਦਾ ਜ਼ਿਕਰ ਸਿਰਫ਼ ਜਾਣਕਾਰੀ ਲਈ ਹੈ",
         romanization: "Shahmukhi da zikar sirf jaankaari lai hai",
         vi: "Shahmukhi chỉ được nhắc để nhận biết.",

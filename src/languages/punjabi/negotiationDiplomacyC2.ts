@@ -24,6 +24,7 @@ export type PunjabiNegotiationSetting =
   | "canada_service";
 
 export type PunjabiNegotiationPhrase = {
+  cell_id?: string;
   gurmukhi: string;
   romanization: string;
   vi: string;
@@ -74,12 +75,14 @@ export const negotiationDiplomacyC2Entries: PunjabiNegotiationDiplomacyEntry[] =
     diplomacy_strategy_en: "Give a shared reason, use if possible, then state the deadline clearly.",
     phrases: [
       {
+        cell_id: "9c6370fe-9b4a-4848-8be6-9d6529e2794d",
         gurmukhi: "ਰਿਪੋਰਟ ਪੂਰੀ ਕਰਨ ਲਈ",
         romanization: "report puri karan lai",
         vi: "Để hoàn tất báo cáo.",
         en: "To complete the report.",
       },
       {
+        cell_id: "1bdbe660-3eed-4a9f-8b5d-a7b692461492",
         gurmukhi: "ਹੋ ਸਕੇ ਤਾਂ ਅੱਜ ਭੇਜ ਦਿਓ",
         romanization: "ho sake taan ajj bhej dio",
         vi: "Nếu được thì gửi hôm nay giúp tôi.",
@@ -109,12 +112,14 @@ export const negotiationDiplomacyC2Entries: PunjabiNegotiationDiplomacyEntry[] =
     diplomacy_strategy_en: "Acknowledge the effort first, then raise the resource question.",
     phrases: [
       {
+        cell_id: "36a742e4-0c96-4a27-bdab-3fe2cf611268",
         gurmukhi: "ਤੁਹਾਡੀ ਮਿਹਨਤ ਸਾਫ਼ ਦਿਖਦੀ ਹੈ",
         romanization: "tuhadi mehnat saaf dikhdi hai",
         vi: "Công sức của anh/chị rất rõ.",
         en: "Your effort is clearly visible.",
       },
       {
+        cell_id: "9a3c543c-b971-4776-86f1-6b96e03dca0e",
         gurmukhi: "ਸਰੋਤਾਂ ਬਾਰੇ ਇੱਕ ਸਵਾਲ ਹੈ",
         romanization: "sarotan bare ikk savaal hai",
         vi: "Tôi có một câu hỏi về nguồn lực.",
@@ -144,12 +149,14 @@ export const negotiationDiplomacyC2Entries: PunjabiNegotiationDiplomacyEntry[] =
     diplomacy_strategy_en: "Do not say who is wrong; name two competing priorities.",
     phrases: [
       {
+        cell_id: "75e35042-8e27-4860-9dba-6d41258f5622",
         gurmukhi: "ਲੱਗਦਾ ਹੈ ਸਾਡੀਆਂ ਤਰਜੀਹਾਂ ਵੱਖਰੀਆਂ ਹਨ",
         romanization: "laggda hai sadian tarjihan vakhrian han",
         vi: "Có vẻ ưu tiên của chúng ta khác nhau.",
         en: "It seems our priorities differ.",
       },
       {
+        cell_id: "806989ff-790d-4032-a3dc-c55fa5d69e58",
         gurmukhi: "ਆਓ ਸਾਂਝੀ ਤਰਜੀਹ ਲੱਭੀਏ",
         romanization: "aao sanjhi tarjih labhie",
         vi: "Ta hãy tìm ưu tiên chung.",
@@ -179,12 +186,14 @@ export const negotiationDiplomacyC2Entries: PunjabiNegotiationDiplomacyEntry[] =
     diplomacy_strategy_en: "Offer a middle option and invite feedback.",
     phrases: [
       {
+        cell_id: "180e9e71-9880-4d2b-b781-6216ca2de4b5",
         gurmukhi: "ਇੱਕ ਵਿਚਕਾਰਲਾ ਹੱਲ ਇਹ ਹੋ ਸਕਦਾ ਹੈ",
         romanization: "ikk vichkarla hall ih ho sakda hai",
         vi: "Một giải pháp trung gian có thể là...",
         en: "One middle-ground solution could be...",
       },
       {
+        cell_id: "b78e938e-1c3e-4547-90fb-a41941163976",
         gurmukhi: "ਤੁਹਾਡੀ ਰਾਏ ਕੀ ਹੈ?",
         romanization: "tuhadi rai ki hai?",
         vi: "Ý kiến của anh/chị thế nào?",
@@ -208,12 +217,14 @@ export const negotiationDiplomacyC2Entries: PunjabiNegotiationDiplomacyEntry[] =
     diplomacy_strategy_en: "Separate the core point from the tense tone, then return to the shared goal.",
     phrases: [
       {
+        cell_id: "ffa651db-9b3c-4b19-963d-102ba49b4a4e",
         gurmukhi: "ਸ਼ਾਇਦ ਲਹਿਜ਼ਾ ਥੋੜ੍ਹਾ ਸਖ਼ਤ ਹੋ ਗਿਆ",
         romanization: "shayad lahija thorrha sakht ho gia",
         vi: "Có lẽ giọng điệu hơi cứng.",
         en: "Perhaps the tone became a little strong.",
       },
       {
+        cell_id: "ba116dfd-b334-4c2e-b408-2503cd18dc74",
         gurmukhi: "ਮਕਸਦ ਹੱਲ ਲੱਭਣਾ ਹੈ",
         romanization: "maqsad hall labhna hai",
         vi: "Mục tiêu là tìm giải pháp.",
@@ -243,12 +254,14 @@ export const negotiationDiplomacyC2Entries: PunjabiNegotiationDiplomacyEntry[] =
     diplomacy_strategy_en: "Use facts and impact, avoid assigning blame.",
     phrases: [
       {
+        cell_id: "47044e78-f59d-4f24-8673-12d94f9c663e",
         gurmukhi: "ਕੰਮ ਦਾ ਬੋਝ ਵੱਧ ਰਿਹਾ ਹੈ",
         romanization: "kamm da bojh vadh riha hai",
         vi: "Khối lượng công việc đang tăng.",
         en: "The workload is increasing.",
       },
       {
+        cell_id: "f1e7844a-bdb9-42cf-a5d6-e98cdb65181d",
         gurmukhi: "ਗੁਣਵੱਤਾ ਪ੍ਰਭਾਵਿਤ ਹੋ ਸਕਦੀ ਹੈ",
         romanization: "gunvatta prabhavit ho sakdi hai",
         vi: "Chất lượng có thể bị ảnh hưởng.",
@@ -278,12 +291,14 @@ export const negotiationDiplomacyC2Entries: PunjabiNegotiationDiplomacyEntry[] =
     diplomacy_strategy_en: "Ask about capacity and preference instead of assigning roles.",
     phrases: [
       {
+        cell_id: "3def47e2-359c-4882-a657-d90899788c7b",
         gurmukhi: "ਕੌਣ ਇਸ ਕੰਮ ਲਈ ਸੁਵਿਧਾ ਮਹਿਸੂਸ ਕਰਦਾ ਹੈ?",
         romanization: "kaun is kamm lai suvidha mahisus karda hai?",
         vi: "Ai cảm thấy tiện/thoải mái với việc này?",
         en: "Who feels comfortable with this task?",
       },
       {
+        cell_id: "a6a7e409-60e5-4a00-8f4d-6bdf1ba20e68",
         gurmukhi: "ਅਸੀਂ ਰੁਚੀ ਅਤੇ ਸਮੇਂ ਦੇ ਅਨੁਸਾਰ ਵੰਡ ਕਰ ਸਕਦੇ ਹਾਂ",
         romanization: "asin ruchi ate same de anusaar vand kar sakde haan",
         vi: "Chúng ta có thể phân chia theo sở thích và thời gian.",
@@ -307,12 +322,14 @@ export const negotiationDiplomacyC2Entries: PunjabiNegotiationDiplomacyEntry[] =
     diplomacy_strategy_en: "Acknowledge the requirement, state the situation, ask about alternatives.",
     phrases: [
       {
+        cell_id: "317b0ee4-7320-4b6d-a452-7c62419d24bd",
         gurmukhi: "ਮੈਨੂੰ ਲੋੜੀਂਦੇ ਦਸਤਾਵੇਜ਼ ਦੀ ਸਮਝ ਹੈ",
         romanization: "mainu lorinde dastavez di samajh hai",
         vi: "Tôi hiểu giấy tờ cần thiết.",
         en: "I understand the required document.",
       },
       {
+        cell_id: "25faddf0-87a2-456a-9ef1-ea523121230a",
         gurmukhi: "ਕੀ ਕੋਈ ਹੋਰ ਵਿਕਲਪ ਹੋ ਸਕਦਾ ਹੈ?",
         romanization: "ki koi hor vikalp ho sakda hai?",
         vi: "Có lựa chọn thay thế nào không?",
@@ -343,12 +360,14 @@ export const negotiationDiplomacyC2Entries: PunjabiNegotiationDiplomacyEntry[] =
     diplomacy_strategy_en: "State the practical need, propose a concrete option, leave decision space.",
     phrases: [
       {
+        cell_id: "159f8e17-85c2-4d79-bb9e-4bca6c1723c7",
         gurmukhi: "ਮੇਰੀ ਸਥਿਤੀ ਇਹ ਹੈ ਕਿ",
         romanization: "meri sthiti ih hai ki",
         vi: "Tình huống của tôi là...",
         en: "My situation is that...",
       },
       {
+        cell_id: "3ed8850d-fcc3-4505-9cfb-5447eef03393",
         gurmukhi: "ਜੇ ਇਹ ਸੰਭਵ ਹੋਵੇ",
         romanization: "je ih sambhav hove",
         vi: "Nếu điều này có thể.",
@@ -373,12 +392,14 @@ export const negotiationDiplomacyC2Entries: PunjabiNegotiationDiplomacyEntry[] =
     diplomacy_strategy_en: "State learning scope without comparing right/wrong.",
     phrases: [
       {
+        cell_id: "89c422ab-90a1-42be-a9a0-546fe9465a95",
         gurmukhi: "ਇਸ ਸਮੱਗਰੀ ਵਿੱਚ ਗੁਰਮੁਖੀ ਮੁੱਖ ਹੈ",
         romanization: "is samagri vich Gurmukhi mukh hai",
         vi: "Trong tài liệu này Gurmukhi là chính.",
         en: "In this material, Gurmukhi is primary.",
       },
       {
+        cell_id: "03e378f8-d64a-472e-9ba2-25c1d82fd061",
         gurmukhi: "ਸ਼ਾਹਮੁਖੀ ਸਿਰਫ਼ ਜਾਣਕਾਰੀ ਲਈ ਜ਼ਿਕਰ ਹੈ",
         romanization: "Shahmukhi sirf jaankaari lai zikar hai",
         vi: "Shahmukhi chỉ được nhắc để nhận biết.",

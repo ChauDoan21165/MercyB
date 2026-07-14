@@ -14,12 +14,14 @@ export const lessons: VietnameseLesson[] = [
       "These lines help when you want to check in with someone without sounding nosy or controlling.",
     phrases: [
       {
+        cell_id: "5485fd94-7b91-4f61-91f3-179a95c3dfa3",
         english: "I do want to ask, but if it is uncomfortable, you do not have to answer.",
         vietnamese: "Tôi cũng muốn hỏi, nhưng nếu bạn không thoải mái thì không cần trả lời đâu.",
         pronunciation: "toy kung mwon hoy, nyung new ban khong thoai mai thi khong kun cha loy dau",
         context: "Use before asking about a private family matter.",
       },
       {
+        cell_id: "0efe44d6-e32a-47fc-8003-5f23a908eef6",
         english: "I am asking because I care, not because I want to pressure you.",
         vietnamese: "Tôi hỏi vì quan tâm thôi, chứ không phải muốn gây áp lực cho bạn.",
         pronunciation: "toy hoy vi quan tam thoy, chu khong phai mwon gay ap look cho ban",
@@ -70,12 +72,14 @@ export const lessons: VietnameseLesson[] = [
       "These lines help heritage speakers and adult learners talk about comparison, shame, and expectations calmly.",
     phrases: [
       {
+        cell_id: "34903899-a03d-4634-ad44-c82d59a69728",
         english: "I know you want me to do well, but comparison makes me feel small.",
         vietnamese: "Con biết ba mẹ muốn con tốt hơn, nhưng bị so sánh làm con thấy mình nhỏ lại.",
         pronunciation: "kon biet ba me mwon kon tot hon, nyung bi so sanh lam kon thay minh nyo lai",
         context: "Use with parents when comparison hurts but you still want respect.",
       },
       {
+        cell_id: "47d8fdde-8fa9-4091-a826-0290b25ba9ec",
         english: "Can we talk about my path without bringing up other people's children?",
         vietnamese: "Mình nói chuyện về đường đi của con thôi, đừng nhắc con nhà người ta được không?",
         pronunciation: "minh noy chuyen ve duong di kua kon thoy, dung nyak kon nha nguoi ta duoc khong",
@@ -126,12 +130,14 @@ export const lessons: VietnameseLesson[] = [
       "Use these lines when relatives ask about marriage and you need a calm, adult answer.",
     phrases: [
       {
+        cell_id: "0de04afd-ee5e-4e63-a8b0-2d5a3ad5315c",
         english: "I am not avoiding marriage; I just want to be ready emotionally and financially.",
         vietnamese: "Con không né chuyện cưới hỏi, chỉ là con muốn sẵn sàng hơn về cảm xúc và tài chính.",
         pronunciation: "kon khong ne chuyen kuoi hoy, chi la kon mwon san sang hon ve kam xuk va tai chinh",
         context: "Use with family when they think you are delaying without reason.",
       },
       {
+        cell_id: "a4f363f2-50c9-450c-a0cf-c2f366271c1c",
         english: "I would rather marry later than rush and make both people suffer.",
         vietnamese: "Con thà cưới trễ còn hơn vội vàng rồi làm khổ cả hai người.",
         pronunciation: "kon tha kuoi tre kon hon voy vang roy lam kho ka hai nguoi",
@@ -182,12 +188,14 @@ export const lessons: VietnameseLesson[] = [
       "These phrases are for real family support when someone is tired, ashamed, or overwhelmed.",
     phrases: [
       {
+        cell_id: "77117b53-0c62-4ae8-ac94-5ba673c37a21",
         english: "You do not have to be strong with me all the time.",
         vietnamese: "Ở với tôi, bạn không cần lúc nào cũng phải mạnh mẽ đâu.",
         pronunciation: "uh voi toy, ban khong kun luk nao kung phai manh me dau",
         context: "Use when someone always hides their exhaustion.",
       },
       {
+        cell_id: "eb589f78-1dcc-454a-a338-6945cac7888c",
         english: "Resting is not failure; it means your body has been carrying too much.",
         vietnamese: "Nghỉ không phải là thất bại, mà là cơ thể bạn đã gồng quá lâu rồi.",
         pronunciation: "ngi khong phai la that bai, ma la ko the ban da gong qua lau roy",
@@ -238,12 +246,14 @@ export const lessons: VietnameseLesson[] = [
       "These lines help you name resentment early without making the conversation dramatic.",
     phrases: [
       {
+        cell_id: "ba5207ec-c15a-485b-96f3-59a47ea4d0c4",
         english: "I am not angry right now, but I can feel resentment building up.",
         vietnamese: "Bây giờ tôi không giận, nhưng tôi thấy trong lòng bắt đầu có sự ấm ức.",
         pronunciation: "bay gio toy khong zan, nyung toy thay trong long bat dau ko su am uk",
         context: "Use when you want to prevent a bigger conflict.",
       },
       {
+        cell_id: "341b7e04-f02b-4b31-a16b-3d6801508b8f",
         english: "I do not want to pretend everything is fine and then become cold later.",
         vietnamese: "Tôi không muốn giả vờ ổn rồi sau đó lại lạnh nhạt.",
         pronunciation: "toy khong mwon za vo on roy sau do lai lanh nhat",
@@ -294,12 +304,14 @@ export const lessons: VietnameseLesson[] = [
       "Use these phrases when money, support, debt, or family obligation feels emotionally loaded.",
     phrases: [
       {
+        cell_id: "751cb6ef-f744-434f-b0ab-9dbf46eef293",
         english: "I want to help, but I need to be honest about what I can actually afford.",
         vietnamese: "Con muốn giúp, nhưng con cần nói thật về khả năng tài chính của con.",
         pronunciation: "kon mwon zup, nyung kon kun noy that ve kha nang tai chinh kua kon",
         context: "Use when setting a realistic family support limit.",
       },
       {
+        cell_id: "d5cabd58-a7ba-4a0b-a27f-8dfdbd3d4da3",
         english: "If I say yes to everything, later I may become resentful, and I do not want that.",
         vietnamese: "Nếu con cái gì cũng nhận, sau này con dễ ấm ức, mà con không muốn vậy.",
         pronunciation: "new kon kai zi kung nhan, sau nai kon ze am uk, ma kon khong mwon vay",
@@ -350,12 +362,14 @@ export const lessons: VietnameseLesson[] = [
       "These lines help you separate respect from obedience when you need to speak honestly.",
     phrases: [
       {
+        cell_id: "237004c0-20fb-47e1-bbb9-f381d94bf44f",
         english: "I respect your experience, but this part of my life is different now.",
         vietnamese: "Con tôn trọng kinh nghiệm của ba mẹ, nhưng phần này trong đời con bây giờ khác rồi.",
         pronunciation: "kon ton trong kinh nghiem kua ba me, nyung phan nai trong doi kon bay gio khak roy",
         context: "Use when older advice does not fit your current situation.",
       },
       {
+        cell_id: "3fbaf3d6-c6c6-43a5-92cd-5f83c8a9dbda",
         english: "I am not trying to win; I just want you to understand why I choose this.",
         vietnamese: "Con không cố thắng đâu, con chỉ muốn ba mẹ hiểu vì sao con chọn như vậy.",
         pronunciation: "kon khong ko thang dau, kon chi mwon ba me hieu vi sao kon chon nhu vay",
@@ -406,12 +420,14 @@ export const lessons: VietnameseLesson[] = [
       "Use these lines when discussing parenting choices that differ from the older generation.",
     phrases: [
       {
+        cell_id: "59c93ccd-1075-4250-b407-c76ab9fa7380",
         english: "I want my child to respect adults, but I also want them to feel safe speaking honestly.",
         vietnamese: "Tôi muốn con biết tôn trọng người lớn, nhưng cũng muốn con thấy an toàn khi nói thật.",
         pronunciation: "toy mwon kon biet ton trong nguoi lon, nyung kung mwon kon thay an toan khi noy that",
         context: "Use when explaining a balanced parenting value.",
       },
       {
+        cell_id: "3b445294-4f22-4496-8e8a-246bfb438b60",
         english: "Being strict is not the same as making a child afraid.",
         vietnamese: "Nghiêm không có nghĩa là làm cho con sợ.",
         pronunciation: "nghiem khong ko nghia la lam cho kon so",
@@ -462,12 +478,14 @@ export const lessons: VietnameseLesson[] = [
       "These phrases help you repair trust after you hurt someone or handled something poorly.",
     phrases: [
       {
+        cell_id: "6f4b6a43-e9d4-41c7-af50-02d90114c337",
         english: "I understand why that hurt you, and I should not have brushed it off.",
         vietnamese: "Tôi hiểu vì sao chuyện đó làm bạn đau, và lẽ ra tôi không nên xem nhẹ như vậy.",
         pronunciation: "toy hieu vi sao chuyen do lam ban dau, va le ra toy khong nen xem nhe nhu vay",
         context: "Use when apologizing for minimizing someone's feelings.",
       },
       {
+        cell_id: "0ad69928-8f07-42c3-af9e-101f55190a29",
         english: "I do not want to use my stress as an excuse for treating you badly.",
         vietnamese: "Tôi không muốn lấy chuyện tôi căng thẳng làm cớ để đối xử tệ với bạn.",
         pronunciation: "toy khong mwon lay chuyen toy kang thang lam ko de doi xu te voi ban",
@@ -518,12 +536,14 @@ export const lessons: VietnameseLesson[] = [
       "Use these lines when you cannot accept an invitation, favor, or request but want to stay warm.",
     phrases: [
       {
+        cell_id: "baf479d3-c8ba-4bc7-a306-bd597d45ab83",
         english: "I really appreciate you thinking of me, but I cannot take this on right now.",
         vietnamese: "Tôi rất quý việc bạn nghĩ tới tôi, nhưng lúc này tôi không nhận thêm được.",
         pronunciation: "toy rat quy viec ban nghi toi toy, nyung luk nai toy khong nhan them duoc",
         context: "Use for a warm but clear refusal.",
       },
       {
+        cell_id: "de2c9741-dc07-4176-87e4-848ad18a6822",
         english: "I do not want to say yes and then do it carelessly.",
         vietnamese: "Tôi không muốn nhận lời rồi làm qua loa.",
         pronunciation: "toy khong mwon nhan loy roy lam qua loa",
@@ -574,12 +594,14 @@ export const lessons: VietnameseLesson[] = [
       "These phrases help with modern dating conversations where signals are mixed or vague.",
     phrases: [
       {
+        cell_id: "dafa85f4-f4f1-4d94-aae4-5a6cba0a34f1",
         english: "I like spending time with you, but I am a little unsure what you are looking for.",
         vietnamese: "Tôi thích đi chơi với bạn, nhưng tôi hơi không rõ bạn đang tìm điều gì.",
         pronunciation: "toy thik di choi voi ban, nyung toy hoy khong ro ban dang tim dieu zi",
         context: "Use when dating feels warm but undefined.",
       },
       {
+        cell_id: "c7623678-a2de-414f-bba7-285bd343dc77",
         english: "I do not need an answer immediately, but I do need honesty.",
         vietnamese: "Tôi không cần câu trả lời ngay, nhưng tôi cần sự thật lòng.",
         pronunciation: "toy khong kun kau tra loy ngay, nyung toy kun su that long",
@@ -630,12 +652,14 @@ export const lessons: VietnameseLesson[] = [
       "These lines help when dating is not only between two people but also tied to family timing and approval.",
     phrases: [
       {
+        cell_id: "8f6b427e-f412-4e94-a559-af3e0316c6dc",
         english: "I like you, but I also need to move carefully because my family gets involved quickly.",
         vietnamese: "Tôi thích bạn, nhưng tôi cũng cần đi chậm vì gia đình tôi hay xen vào khá sớm.",
         pronunciation: "toy thik ban, nyung toy kung kun di cham vi gia dinh toy hay xen vao kha som",
         context: "Use when family pressure affects dating pace.",
       },
       {
+        cell_id: "d99d34d7-10bb-44fd-9d03-d568b4dd9f09",
         english: "I do not want us to rush just because people are asking questions.",
         vietnamese: "Tôi không muốn tụi mình vội chỉ vì người khác hỏi nhiều.",
         pronunciation: "toy khong mwon tui minh voi chi vi nguoi khak hoy nhieu",
@@ -686,12 +710,14 @@ export const lessons: VietnameseLesson[] = [
       "Use these phrases when you need quiet time but do not want the other person to feel abandoned.",
     phrases: [
       {
+        cell_id: "a2e78c2e-976e-48b1-8cac-06b19a73dda8",
         english: "I need some space, but I am not trying to punish you.",
         vietnamese: "Tôi cần một chút không gian, nhưng không phải để phạt bạn.",
         pronunciation: "toy kun mot chut khong gian, nyung khong phai de fat ban",
         context: "Use when asking for space after tension.",
       },
       {
+        cell_id: "e09f24fb-1b8b-410b-ae7b-bedeaa08bc96",
         english: "Can we pause tonight and talk again when both of us are calmer?",
         vietnamese: "Tối nay mình tạm dừng nha, khi cả hai bình tĩnh hơn rồi nói tiếp được không?",
         pronunciation: "toi nai minh tam dung nha, khi ka hai binh tinh hon roy noy tiep duoc khong",
@@ -742,12 +768,14 @@ export const lessons: VietnameseLesson[] = [
       "These lines help you close a dating conversation honestly without being cruel.",
     phrases: [
       {
+        cell_id: "af43f663-1c8b-4cd9-a4de-88a52f05409d",
         english: "I had a good time, but I did not feel the kind of connection I am looking for.",
         vietnamese: "Tôi đã có một buổi đi chơi vui, nhưng tôi không cảm thấy kiểu kết nối mình đang tìm.",
         pronunciation: "toy da ko mot buoi di choi vui, nyung toy khong kam thay kieu ket noi minh dang tim",
         context: "Use when declining a second date kindly.",
       },
       {
+        cell_id: "4afc8041-62c5-4efa-8105-d066cab6ed50",
         english: "I do not want to keep talking if I already know my heart is not there.",
         vietnamese: "Tôi không muốn tiếp tục nhắn nếu trong lòng tôi đã biết là không tới.",
         pronunciation: "toy khong mwon tiep tuc nhan new trong long toy da biet la khong toi",
@@ -798,12 +826,14 @@ export const lessons: VietnameseLesson[] = [
       "These phrases help you talk about burnout in a practical workplace tone.",
     phrases: [
       {
+        cell_id: "68228738-85f4-4f0e-b2f3-be9ce627aa74",
         english: "I can still handle my work, but my current pace is not sustainable.",
         vietnamese: "Tôi vẫn xử lý được công việc, nhưng nhịp hiện tại không bền được.",
         pronunciation: "toy van xu ly duoc kong viec, nyung nhip hien tai khong ben duoc",
         context: "Use with a manager when you need a realistic pace.",
       },
       {
+        cell_id: "6e452556-76c6-4cfc-ab9a-56e55a3b5a45",
         english: "I need to adjust priorities before the quality starts dropping.",
         vietnamese: "Tôi cần điều chỉnh ưu tiên trước khi chất lượng bắt đầu đi xuống.",
         pronunciation: "toy kun dieu chinh uu tien truoc khi chat luong bat dau di xuong",
@@ -854,12 +884,14 @@ export const lessons: VietnameseLesson[] = [
       "Use these lines when a deadline is too tight and you need to negotiate scope or time.",
     phrases: [
       {
+        cell_id: "db3fe1d5-7319-4779-abd5-f31db0f232e1",
         english: "With the current scope, this deadline is risky.",
         vietnamese: "Với phạm vi hiện tại, hạn này khá rủi ro.",
         pronunciation: "voi fam vi hien tai, han nai kha rui ro",
         context: "Use when the timeline may create quality or delivery risk.",
       },
       {
+        cell_id: "ae04ca6e-c760-443f-bdbe-51aabb91ad9a",
         english: "If we need it by Friday, we should reduce the scope clearly.",
         vietnamese: "Nếu cần xong trước thứ Sáu, mình nên giảm phạm vi cho rõ.",
         pronunciation: "new kun xong truoc thu sau, minh nen zam fam vi cho ro",
@@ -910,12 +942,14 @@ export const lessons: VietnameseLesson[] = [
       "These phrases help you raise concerns without sounding negative or defensive.",
     phrases: [
       {
+        cell_id: "8e8c5ab9-af4f-47d0-80ff-e3569a6cbf75",
         english: "I understand the direction, but I am worried about one part.",
         vietnamese: "Tôi hiểu hướng đó, nhưng tôi hơi lo một phần.",
         pronunciation: "toy hieu huong do, nyung toy hoy lo mot phan",
         context: "Use before giving a concern in a meeting.",
       },
       {
+        cell_id: "8680e4d3-bbd9-469c-bfa3-1a2db3feea6b",
         english: "Can I suggest a safer version of this idea?",
         vietnamese: "Tôi đề xuất một phiên bản an toàn hơn của ý này được không?",
         pronunciation: "toy de xuat mot fien ban an toan hon kua y nai duoc khong",
@@ -966,12 +1000,14 @@ export const lessons: VietnameseLesson[] = [
       "Use these lines when a coworker relationship feels cold, unclear, or passive-aggressive.",
     phrases: [
       {
+        cell_id: "7ce7b877-fad9-4ba3-a6a0-8d012f9302bf",
         english: "I feel some tension between us, and I would rather clear it up directly.",
         vietnamese: "Tôi thấy giữa mình có chút căng, nên tôi muốn nói rõ thay vì để vậy.",
         pronunciation: "toy thay zua minh ko chut kang, nen toy mwon noy ro thay vi de vay",
         context: "Use when you want to address awkwardness early.",
       },
       {
+        cell_id: "94b6ec51-fb3a-43f3-a2f7-02339a9446ee",
         english: "If I missed something, please tell me. I do not want to guess.",
         vietnamese: "Nếu tôi có sót gì thì bạn nói giúp tôi, tôi không muốn đoán mò.",
         pronunciation: "new toy ko sot zi thi ban noy zup toy, toy khong mwon doan mo",
@@ -1022,12 +1058,14 @@ export const lessons: VietnameseLesson[] = [
       "These phrases help you ask for guidance, review, or backup in a mature way.",
     phrases: [
       {
+        cell_id: "aa94f23c-776b-4755-aa3d-8f05ff551290",
         english: "I have tried two approaches, but I am still stuck at this point.",
         vietnamese: "Tôi đã thử hai cách, nhưng vẫn bị kẹt ở chỗ này.",
         pronunciation: "toy da thu hai kach, nyung van bi ket uh cho nai",
         context: "Use when asking for help after showing effort.",
       },
       {
+        cell_id: "f39c6861-999f-4e98-91e4-77d27461365f",
         english: "Could you help me check my thinking, not solve the whole thing for me?",
         vietnamese: "Bạn giúp tôi kiểm tra hướng nghĩ thôi, không cần làm hết giúp tôi đâu.",
         pronunciation: "ban zup toy kiem tra huong nghi thoy, khong kun lam het zup toy dau",
@@ -1078,12 +1116,14 @@ export const lessons: VietnameseLesson[] = [
       "Use these lines when you need to resign, transition work, and keep the relationship respectful.",
     phrases: [
       {
+        cell_id: "82315a7b-718f-407e-88f4-8527fb9924d4",
         english: "This was not an easy decision, and I am grateful for what I learned here.",
         vietnamese: "Đây không phải quyết định dễ dàng, và tôi biết ơn những gì đã học được ở đây.",
         pronunciation: "day khong phai quyet dinh ze zang, va toy biet un nhung zi da hoc duoc uh day",
         context: "Use when opening a resignation conversation.",
       },
       {
+        cell_id: "7ffb198c-dae6-40ff-9932-ea0b8d58b6a6",
         english: "I want to hand things over clearly so the team is not left struggling.",
         vietnamese: "Tôi muốn bàn giao rõ ràng để team không bị chới với.",
         pronunciation: "toy mwon ban giao ro rang de team khong bi choi voi",
@@ -1134,12 +1174,14 @@ export const lessons: VietnameseLesson[] = [
       "These lines help couples discuss money when both love and fear are present.",
     phrases: [
       {
+        cell_id: "a0deef1f-a1e3-4af6-b8f1-1878f5502dc3",
         english: "When money gets tight, I get quiet, but that does not mean I blame you.",
         vietnamese: "Khi tiền bạc căng, tôi hay im lặng, nhưng không có nghĩa là tôi trách bạn.",
         pronunciation: "khi tien bak kang, toy hay im lang, nyung khong ko nghia la toy trach ban",
         context: "Use when your stress response looks like distance.",
       },
       {
+        cell_id: "62c8b14b-b037-4f8f-98ec-bded03a5f0b0",
         english: "Can we look at the numbers together before both of us panic separately?",
         vietnamese: "Mình xem số liệu cùng nhau trước khi mỗi người tự hoảng được không?",
         pronunciation: "minh xem so lieu kung nhau truoc khi moi nguoi tu hoang duoc khong",
@@ -1160,12 +1202,14 @@ export const lessons: VietnameseLesson[] = [
       "Use these phrases when paying, splitting, or treating someone needs a little tact.",
     phrases: [
       {
+        cell_id: "61dc79e3-4249-422a-8938-0dbfdd4367dc",
         english: "Let us split this one; next time one of us can treat if it feels natural.",
         vietnamese: "Bữa này mình chia nha, lần sau ai mời cũng được nếu thấy tự nhiên.",
         pronunciation: "bua nai minh chia nha, lan sau ai moi kung duoc new thay tu nhien",
         context: "Use on dates or with friends when you want low pressure.",
       },
       {
+        cell_id: "58251a77-1f78-4e1b-a556-c64730d23d28",
         english: "I appreciate the offer, but I feel more comfortable paying my part.",
         vietnamese: "Tôi rất quý ý tốt của bạn, nhưng tôi thấy thoải mái hơn khi trả phần của mình.",
         pronunciation: "toy rat quy y tot kua ban, nyung toy thay thoai mai hon khi tra phan kua minh",
@@ -1186,12 +1230,14 @@ export const lessons: VietnameseLesson[] = [
       "These lines help you say yes, no, or not that much without damaging trust.",
     phrases: [
       {
+        cell_id: "7f5ea6b7-a2b7-4fdf-acb2-11c6d13f9f86",
         english: "I care about you, but lending money is difficult for me right now.",
         vietnamese: "Tôi thương bạn, nhưng chuyện cho mượn tiền lúc này hơi khó với tôi.",
         pronunciation: "toy thuong ban, nyung chuyen cho muon tien luk nai hoy kho voi toy",
         context: "Use when refusing a loan but keeping warmth.",
       },
       {
+        cell_id: "1d8139ce-9cf3-4ed7-aa3b-cf0d2eefae3f",
         english: "I can help a smaller amount, and I need us to be clear about repayment.",
         vietnamese: "Tôi giúp được một khoản nhỏ hơn, và mình cần rõ chuyện trả lại.",
         pronunciation: "toy zup duoc mot khoan nyo hon, va minh kun ro chuyen tra lai",
@@ -1212,12 +1258,14 @@ export const lessons: VietnameseLesson[] = [
       "Use these phrases when a friend or relative is job hunting and feeling judged.",
     phrases: [
       {
+        cell_id: "6bb18ea7-eabb-4d59-8485-7a519add58d5",
         english: "Not having a job right now does not erase your value.",
         vietnamese: "Hiện tại chưa có việc không có nghĩa là giá trị của bạn mất đi.",
         pronunciation: "hien tai chua ko viec khong ko nghia la gia tri kua ban mat di",
         context: "Use when someone feels ashamed about unemployment.",
       },
       {
+        cell_id: "a6ef4fbb-708c-42da-a1f0-5b4f250ce861",
         english: "If you want, I can help you think through next steps, not pressure you.",
         vietnamese: "Nếu bạn muốn, tôi có thể cùng bạn nghĩ bước tiếp theo, chứ không ép bạn.",
         pronunciation: "new ban mwon, toy ko the kung ban nghi buoc tiep theo, chu khong ep ban",
@@ -1238,12 +1286,14 @@ export const lessons: VietnameseLesson[] = [
       "These lines are for heritage speakers who feel Vietnamese and not Vietnamese enough at the same time.",
     phrases: [
       {
+        cell_id: "9c2b095b-283d-414b-8965-fcac6a22e4b3",
         english: "Sometimes I feel too Vietnamese in one place and not Vietnamese enough in another.",
         vietnamese: "Đôi khi tôi thấy mình quá Việt ở một nơi, mà lại không đủ Việt ở nơi khác.",
         pronunciation: "doi khi toy thay minh qua viet uh mot noi, ma lai khong du viet uh noi khak",
         context: "Use when describing in-between identity.",
       },
       {
+        cell_id: "0dfd6133-8fa6-4d7f-b4d6-be27b3f4a1e6",
         english: "I am trying to reconnect without pretending I grew up the same way.",
         vietnamese: "Tôi đang cố kết nối lại, nhưng không muốn giả vờ là mình lớn lên giống mọi người.",
         pronunciation: "toy dang ko ket noi lai, nyung khong mwon za vo la minh lon len zong moi nguoi",
@@ -1264,12 +1314,14 @@ export const lessons: VietnameseLesson[] = [
       "Use these lines when you want to practice Vietnamese with family but feel nervous.",
     phrases: [
       {
+        cell_id: "9647a8af-c2d2-4a38-9ce7-b80f7f261fa2",
         english: "Please correct me gently; I want to learn, but I get embarrassed easily.",
         vietnamese: "Mọi người sửa nhẹ giúp con nha, con muốn học nhưng dễ ngại lắm.",
         pronunciation: "moi nguoi sua nhe zup kon nha, kon mwon hoc nyung ze ngai lam",
         context: "Use before speaking Vietnamese with relatives.",
       },
       {
+        cell_id: "f5c54d28-af8c-4c29-b576-2fe7653288e8",
         english: "I understand more than I can say, so please give me a little time.",
         vietnamese: "Con hiểu nhiều hơn con nói được, nên cho con thêm chút thời gian nha.",
         pronunciation: "kon hieu nhieu hon kon noy duoc, nen cho kon them chut thoi gian nha",
@@ -1290,12 +1342,14 @@ export const lessons: VietnameseLesson[] = [
       "These phrases help when community gatherings feel warm and stressful at the same time.",
     phrases: [
       {
+        cell_id: "6eab14f3-4f65-40a3-8b99-77809fd771dd",
         english: "I like seeing everyone, but sometimes I feel like I am being evaluated.",
         vietnamese: "Tôi thích gặp mọi người, nhưng đôi khi có cảm giác mình đang bị đánh giá.",
         pronunciation: "toy thik gap moi nguoi, nyung doi khi ko kam ziak minh dang bi danh zia",
         context: "Use when explaining discomfort at community events.",
       },
       {
+        cell_id: "a3e8eb49-edca-489b-b109-cb36249d620d",
         english: "I know people may not mean harm, but the questions still feel heavy.",
         vietnamese: "Tôi biết mọi người có thể không có ý xấu, nhưng mấy câu hỏi đó vẫn nặng.",
         pronunciation: "toy biet moi nguoi ko the khong ko y xau, nyung may kau hoy do van nang",
@@ -1316,12 +1370,14 @@ export const lessons: VietnameseLesson[] = [
       "Use these lines when accent, mistakes, or laughter make speaking Vietnamese feel vulnerable.",
     phrases: [
       {
+        cell_id: "3ec27889-af0e-4398-8d89-8e9fed800604",
         english: "When people laugh at my pronunciation, even kindly, I freeze.",
         vietnamese: "Khi người ta cười cách tôi phát âm, dù là cười vui, tôi vẫn bị khựng lại.",
         pronunciation: "khi nguoi ta kuoi kach toy fat am, du la kuoi vui, toy van bi khung lai",
         context: "Use when explaining why correction needs care.",
       },
       {
+        cell_id: "f9b38c67-2180-4fcb-a97c-c8c23cf216f9",
         english: "I am not ashamed of Vietnamese; I am ashamed of not sounding like I belong.",
         vietnamese: "Tôi không xấu hổ vì tiếng Việt, tôi xấu hổ vì nghe như mình không thuộc về.",
         pronunciation: "toy khong xau ho vi tieng viet, toy xau ho vi nghe nhu minh khong thuoc ve",
@@ -1342,12 +1398,14 @@ export const lessons: VietnameseLesson[] = [
       "These phrases help you handle jokes, slang, and teasing in group chats without sounding stiff.",
     phrases: [
       {
+        cell_id: "16f43d24-3777-4996-8f17-83722f6df183",
         english: "Are you teasing me or being serious? I cannot read the tone.",
         vietnamese: "Bạn đang chọc tôi hay nói nghiêm túc vậy? Tôi đọc giọng không ra.",
         pronunciation: "ban dang chok toy hay noy nghiem tuk vay, toy dok zong khong ra",
         context: "Use in chat when tone is unclear.",
       },
       {
+        cell_id: "b49f971f-74ae-4ab9-8d1d-2eb7f70827a7",
         english: "That sounded a little harsh in text, but maybe I am reading it wrong.",
         vietnamese: "Nhắn vậy nghe hơi gắt, nhưng chắc tôi hiểu sai giọng cũng nên.",
         pronunciation: "nhan vay nghe hoy gat, nyung chak toy hieu sai zong kung nen",
@@ -1368,12 +1426,14 @@ export const lessons: VietnameseLesson[] = [
       "Use these lines when a quick message causes awkwardness in a family, friend, or work chat.",
     phrases: [
       {
+        cell_id: "a612c744-77b4-46bc-8ac1-86d7d1a89f98",
         english: "I reread my message and realized it sounded colder than I meant.",
         vietnamese: "Tôi đọc lại tin nhắn mới thấy nó lạnh hơn ý tôi nhiều.",
         pronunciation: "toy dok lai tin nhan moi thay no lanh hon y toy nhieu",
         context: "Use when repairing a text tone mistake.",
       },
       {
+        cell_id: "674d9704-3fa7-481e-8a9b-502b1d448f4b",
         english: "I meant to be brief, not dismissive.",
         vietnamese: "Ý tôi là nói cho gọn, chứ không phải xem nhẹ bạn.",
         pronunciation: "y toy la noy cho gon, chu khong phai xem nhe ban",
@@ -1394,12 +1454,14 @@ export const lessons: VietnameseLesson[] = [
       "These phrases help you keep boundaries around gossip while preserving the social mood.",
     phrases: [
       {
+        cell_id: "47b9310f-8180-4dc9-8315-de9e7a3d6cf4",
         english: "I do not know the full story, so I do not want to judge too quickly.",
         vietnamese: "Tôi không biết hết câu chuyện, nên không muốn phán xét vội.",
         pronunciation: "toy khong biet het kau chuyen, nen khong mwon fan zet voi",
         context: "Use when people ask for your opinion about someone else.",
       },
       {
+        cell_id: "c3bd680a-0bc1-473b-b0d3-d93b051451d1",
         english: "Let us leave that part aside; I do not want to talk behind their back too much.",
         vietnamese: "Mình bỏ qua phần đó đi, tôi không muốn nói sau lưng người ta nhiều quá.",
         pronunciation: "minh bo qua phan do di, toy khong mwon noy sau lung nguoi ta nhieu qua",
@@ -1420,12 +1482,14 @@ export const lessons: VietnameseLesson[] = [
       "Use these lines when Vietnamese communication is indirect and the real answer is probably no.",
     phrases: [
       {
+        cell_id: "44d7a6ae-ca45-4264-ae41-8b0772129911",
         english: "Let me see first usually means the answer is not certain.",
         vietnamese: "\"Để tôi xem đã\" thường có nghĩa là chưa chắc được.",
         pronunciation: "de toy xem da thuong ko nghia la chua chak duoc",
         context: "Use when explaining a soft Vietnamese refusal.",
       },
       {
+        cell_id: "ff98efd1-a2e1-40ac-b8e8-0fa82220101b",
         english: "I do not want to say no too bluntly, but I probably cannot make it.",
         vietnamese: "Tôi không muốn từ chối thẳng quá, nhưng chắc tôi không đi được.",
         pronunciation: "toy khong mwon tu choi thang qua, nyung chak toy khong di duoc",
@@ -1446,12 +1510,14 @@ export const lessons: VietnameseLesson[] = [
       "These lines help you respond when someone says they are okay but does not seem okay.",
     phrases: [
       {
+        cell_id: "74a67775-d836-4731-a093-5b91301474ab",
         english: "You say you are okay, but your voice sounds tired.",
         vietnamese: "Bạn nói là ổn, nhưng giọng bạn nghe mệt lắm.",
         pronunciation: "ban noy la on, nyung zong ban nghe met lam",
         context: "Use gently when someone's tone says more than their words.",
       },
       {
+        cell_id: "1d804b89-7c69-4dc2-be0d-fc0165e5c40b",
         english: "I will not push, but I am here if you want to say the real version.",
         vietnamese: "Tôi không ép đâu, nhưng nếu bạn muốn nói bản thật hơn thì tôi ở đây.",
         pronunciation: "toy khong ep dau, nyung new ban mwon noy ban that hon thi toy uh day",
@@ -1472,12 +1538,14 @@ export const lessons: VietnameseLesson[] = [
       "Use these phrases when a friend is grieving a relationship and needs dignity.",
     phrases: [
       {
+        cell_id: "2e276f49-fc35-409a-807c-288132d9c948",
         english: "You can miss someone and still know leaving was the right choice.",
         vietnamese: "Bạn có thể nhớ một người mà vẫn biết rời đi là đúng.",
         pronunciation: "ban ko the nho mot nguoi ma van biet roi di la dung",
         context: "Use when someone doubts themselves after a breakup.",
       },
       {
+        cell_id: "79f3edaa-7e3a-4112-909b-44f14f322d44",
         english: "I will not force you to be okay faster than you are.",
         vietnamese: "Tôi không bắt bạn phải ổn nhanh hơn nhịp của bạn.",
         pronunciation: "toy khong bat ban phai on nhanh hon nhip kua ban",
@@ -1498,12 +1566,14 @@ export const lessons: VietnameseLesson[] = [
       "These lines help you give hard advice while keeping the other person respected.",
     phrases: [
       {
+        cell_id: "7043d14c-fe45-43d3-9115-97e9d4e3aa95",
         english: "I may be wrong, but from the outside, this pattern looks painful for you.",
         vietnamese: "Có thể tôi sai, nhưng nhìn từ ngoài thì kiểu này đang làm bạn đau.",
         pronunciation: "ko the toy sai, nyung nhin tu ngoai thi kieu nai dang lam ban dau",
         context: "Use before giving a difficult observation.",
       },
       {
+        cell_id: "c8e5fd28-d16c-452d-bcbf-8e20e93cde3f",
         english: "I am saying this because I care, not because I think I know better than you.",
         vietnamese: "Tôi nói vì thương bạn, không phải vì nghĩ mình biết hơn bạn.",
         pronunciation: "toy noy vi thuong ban, khong phai vi nghi minh biet hon ban",
@@ -1524,12 +1594,14 @@ export const lessons: VietnameseLesson[] = [
       "Use these phrases when a friendship or family relationship went quiet after conflict.",
     phrases: [
       {
+        cell_id: "a48880df-ab44-4d05-b282-17985e5539dc",
         english: "I know I went quiet, and that probably hurt you.",
         vietnamese: "Tôi biết tôi đã im lặng, và chắc điều đó làm bạn buồn.",
         pronunciation: "toy biet toy da im lang, va chak dieu do lam ban buon",
         context: "Use when re-opening after withdrawal.",
       },
       {
+        cell_id: "32dfecec-ba22-42db-b37f-26a4bf5ba018",
         english: "I needed time, but I should have told you instead of disappearing.",
         vietnamese: "Tôi cần thời gian, nhưng lẽ ra tôi nên nói thay vì biến mất.",
         pronunciation: "toy kun thoi gian, nyung le ra toy nen noy thay vi bien mat",
@@ -1550,12 +1622,14 @@ export const lessons: VietnameseLesson[] = [
       "These phrases help you tell stories with setting, feeling, and reflection.",
     phrases: [
       {
+        cell_id: "c5179acf-555d-41a9-8055-92525e8877d8",
         english: "When I was little, I did not understand it, but now I see why my parents were worried.",
         vietnamese: "Hồi nhỏ tôi không hiểu, nhưng bây giờ mới thấy vì sao ba mẹ lo.",
         pronunciation: "hoi nyo toy khong hieu, nyung bay gio moi thay vi sao ba me lo",
         context: "Use when telling a reflective childhood story.",
       },
       {
+        cell_id: "1b9d818c-e2f5-48bf-83f4-19f2aa0c7cf2",
         english: "That memory is small, but it stayed with me for a long time.",
         vietnamese: "Kỷ niệm đó nhỏ thôi, nhưng nó ở lại trong tôi rất lâu.",
         pronunciation: "ky niem do nyo thoy, nyung no uh lai trong toy rat lau",
@@ -1576,12 +1650,14 @@ export const lessons: VietnameseLesson[] = [
       "Use these lines when you want to share a view without sounding rigid.",
     phrases: [
       {
+        cell_id: "991d4872-585c-48a1-bf29-6466cf7efc03",
         english: "I see both sides, but I lean a little toward this option.",
         vietnamese: "Tôi thấy cả hai phía đều có lý, nhưng tôi hơi nghiêng về phương án này.",
         pronunciation: "toy thay ka hai fia deu ko ly, nyung toy hoy nghieng ve fuong an nai",
         context: "Use in group discussion when your opinion is nuanced.",
       },
       {
+        cell_id: "ea4b3d12-7b38-46e9-b182-1dc91eebe41c",
         english: "My concern is not the idea itself, but how we will carry it out.",
         vietnamese: "Điều tôi lo không phải là ý tưởng, mà là cách mình thực hiện.",
         pronunciation: "dieu toy lo khong phai la y tuong, ma la kach minh thuc hien",
@@ -1602,12 +1678,14 @@ export const lessons: VietnameseLesson[] = [
       "These phrases help when a dinner conversation gets tense, personal, or repetitive.",
     phrases: [
       {
+        cell_id: "379d53c3-6d96-4a54-81ef-65d2121adf43",
         english: "I think we see this differently, but I do not want dinner to turn into a fight.",
         vietnamese: "Con nghĩ mình nhìn chuyện này khác nhau, nhưng con không muốn bữa ăn thành cuộc cãi nhau.",
         pronunciation: "kon nghi minh nhin chuyen nai khak nhau, nyung kon khong mwon bua an thanh kuoc kai nhau",
         context: "Use to de-escalate a family meal.",
       },
       {
+        cell_id: "e61dde46-d99f-4b05-bf22-1a9692fe0000",
         english: "Can we leave this topic for another time and eat peacefully today?",
         vietnamese: "Mình để chuyện này lúc khác nói, hôm nay ăn cho yên được không?",
         pronunciation: "minh de chuyen nai luk khak noy, hom nay an cho yen duoc khong",
@@ -1628,12 +1706,14 @@ export const lessons: VietnameseLesson[] = [
       "Use these lines when caregiving is loving but emotionally heavy.",
     phrases: [
       {
+        cell_id: "59db93a8-9996-46e6-afae-064c20e572a8",
         english: "I love my parent, but caregiving still makes me tired sometimes.",
         vietnamese: "Tôi thương ba mẹ, nhưng chăm sóc lâu ngày vẫn có lúc tôi kiệt sức.",
         pronunciation: "toy thuong ba me, nyung cham sok lau ngay van ko luk toy kiet suc",
         context: "Use when admitting caregiver fatigue without guilt.",
       },
       {
+        cell_id: "1fde79b9-ec5d-48fe-a0bf-aa393b7138e6",
         english: "I need help not because I do not care, but because I cannot do everything alone.",
         vietnamese: "Tôi cần người phụ không phải vì tôi không thương, mà vì tôi không thể làm hết một mình.",
         pronunciation: "toy kun nguoi phu khong phai vi toy khong thuong, ma vi toy khong the lam het mot minh",
@@ -1654,12 +1734,14 @@ export const lessons: VietnameseLesson[] = [
       "These phrases help when one sibling carries more family work or emotional labor than others.",
     phrases: [
       {
+        cell_id: "f94ade7d-5887-4650-92bc-f7d354582248",
         english: "I do not mind helping, but I am starting to feel like the default person for everything.",
         vietnamese: "Tôi không ngại giúp, nhưng tôi bắt đầu thấy mình thành người mặc định cho mọi việc.",
         pronunciation: "toy khong ngai zup, nyung toy bat dau thay minh thanh nguoi mak dinh cho moi viec",
         context: "Use when family labor feels unequal.",
       },
       {
+        cell_id: "7c3307f7-44ad-4ce7-826f-14f7fd23ca3d",
         english: "Can we divide this more clearly so it does not all fall on one person?",
         vietnamese: "Mình chia rõ hơn được không, để đừng dồn hết lên một người?",
         pronunciation: "minh chia ro hon duoc khong, de dung zon het len mot nguoi",
@@ -1680,12 +1762,14 @@ export const lessons: VietnameseLesson[] = [
       "These lines help parents discuss Vietnamese language learning without turning it into shame.",
     phrases: [
       {
+        cell_id: "4a4e5e2f-139e-4e03-beb6-6feedcea86b4",
         english: "I want Vietnamese to feel like connection, not punishment.",
         vietnamese: "Tôi muốn tiếng Việt là sự kết nối, chứ không phải hình phạt.",
         pronunciation: "toy mwon tieng viet la su ket noi, chu khong phai hinh fat",
         context: "Use when discussing how to teach a child Vietnamese.",
       },
       {
+        cell_id: "04b311c3-0652-4a87-b77f-2567ef4b578b",
         english: "If we shame the child every time they make a mistake, they will stop trying.",
         vietnamese: "Nếu lần nào con sai mình cũng làm con xấu hổ, con sẽ ngừng cố gắng.",
         pronunciation: "new lan nao kon sai minh kung lam kon xau ho, kon se ngung ko gang",
@@ -1706,12 +1790,14 @@ export const lessons: VietnameseLesson[] = [
       "Use these phrases when discussing divorce, dating again, or fear of judgment.",
     phrases: [
       {
+        cell_id: "34af81f0-27a2-436b-903e-f55eceb0734b",
         english: "That chapter was painful, but I do not want it to define my whole life.",
         vietnamese: "Giai đoạn đó rất đau, nhưng tôi không muốn nó định nghĩa cả đời mình.",
         pronunciation: "zai doan do rat dau, nyung toy khong mwon no dinh nghia ka doi minh",
         context: "Use when talking about divorce or a difficult past.",
       },
       {
+        cell_id: "afac2576-c6da-40aa-a56a-a2461cf55cf1",
         english: "I am open to loving again, but I move more carefully now.",
         vietnamese: "Tôi vẫn mở lòng để yêu lại, nhưng bây giờ tôi đi cẩn thận hơn.",
         pronunciation: "toy van mo long de yeu lai, nyung bay gio toy di kan than hon",
@@ -1732,12 +1818,14 @@ export const lessons: VietnameseLesson[] = [
       "These lines help you talk about reliability, disappointment, and changing expectations.",
     phrases: [
       {
+        cell_id: "77703764-d265-4e66-bb92-2d33412567de",
         english: "I know things come up, but when plans change often, I start feeling unimportant.",
         vietnamese: "Tôi biết ai cũng có việc đột xuất, nhưng khi kế hoạch đổi hoài, tôi bắt đầu thấy mình không quan trọng.",
         pronunciation: "toy biet ai kung ko viec dot xuat, nyung khi ke hoach doi hoai, toy bat dau thay minh khong quan trong",
         context: "Use when repeated cancellations hurt.",
       },
       {
+        cell_id: "0251d38e-1fd9-4fb2-9cdc-7c24e8eae868",
         english: "If you are too busy these days, we can plan less often but more realistically.",
         vietnamese: "Nếu dạo này bạn quá bận, mình hẹn ít lại nhưng thực tế hơn cũng được.",
         pronunciation: "new zao nai ban qua ban, minh hen it lai nyung thuc te hon kung duoc",
@@ -1758,12 +1846,14 @@ export const lessons: VietnameseLesson[] = [
       "Use these phrases when cleanliness, noise, guests, or schedules are creating stress.",
     phrases: [
       {
+        cell_id: "6a661ecf-26e7-4b0a-8d34-809c9d4d021d",
         english: "I do not want to make this bigger than it is, but the shared space has been hard for me.",
         vietnamese: "Tôi không muốn làm lớn chuyện, nhưng phần không gian chung dạo này hơi khó chịu với tôi.",
         pronunciation: "toy khong mwon lam lon chuyen, nyung phan khong gian chung zao nai hoy kho chiu voi toy",
         context: "Use to open a roommate conversation gently.",
       },
       {
+        cell_id: "c4076281-aac1-408e-88e3-5889ee28feb5",
         english: "Can we agree on a small rule that both of us can actually keep?",
         vietnamese: "Mình thống nhất một quy định nhỏ mà cả hai thật sự làm được nha?",
         pronunciation: "minh thong nhat mot quy dinh nyo ma ka hai that su lam duoc nha",
@@ -1784,12 +1874,14 @@ export const lessons: VietnameseLesson[] = [
       "Use these lines when you need to complain about noise without escalating the relationship.",
     phrases: [
       {
+        cell_id: "2613d630-90bc-4931-8045-d73acc9834a8",
         english: "I am sorry to bother you, but the noise after midnight has been hard for my family.",
         vietnamese: "Xin lỗi vì làm phiền, nhưng tiếng ồn sau nửa đêm làm nhà tôi rất khó nghỉ.",
         pronunciation: "xin loy vi lam fien, nyung tieng on sau nua dem lam nha toy rat kho ngi",
         context: "Use when approaching a neighbor respectfully.",
       },
       {
+        cell_id: "24718af4-5c81-40b4-a076-232485d88a0a",
         english: "Could we keep it quieter after this hour? I would really appreciate it.",
         vietnamese: "Sau giờ này mình giữ yên hơn một chút được không? Tôi cảm ơn nhiều lắm.",
         pronunciation: "sau gio nai minh zu yen hon mot chut duoc khong, toy kam un nhieu lam",
@@ -1810,12 +1902,14 @@ export const lessons: VietnameseLesson[] = [
       "These phrases help you talk about stress, sleep, appetite, and emotional strain in practical Vietnamese.",
     phrases: [
       {
+        cell_id: "7a84c5e7-38ee-4a88-bd66-86e527a9024f",
         english: "Lately I have been tired even after sleeping, and my chest feels tight when I am stressed.",
         vietnamese: "Dạo này tôi ngủ dậy vẫn mệt, và khi căng thẳng thì ngực hay bị nặng.",
         pronunciation: "zao nai toy ngu zay van met, va khi kang thang thi nguc hay bi nang",
         context: "Use when describing stress symptoms to a doctor.",
       },
       {
+        cell_id: "8fbca8a1-2551-4be5-96aa-8453110df949",
         english: "I am not sure if this is physical or stress-related, so I wanted to check.",
         vietnamese: "Tôi không chắc đây là vấn đề cơ thể hay do căng thẳng, nên muốn đi kiểm tra.",
         pronunciation: "toy khong chak day la van de ko the hay zo kang thang, nen mwon di kiem tra",
@@ -1836,12 +1930,14 @@ export const lessons: VietnameseLesson[] = [
       "Use these phrases when you want to explain counseling, support, or emotional care in everyday language.",
     phrases: [
       {
+        cell_id: "aff92682-2393-4ab4-a345-33203d790af7",
         english: "I am not going because I am broken; I am going because I want to understand myself better.",
         vietnamese: "Tôi không đi vì tôi hư hỏng gì, tôi đi vì muốn hiểu mình hơn.",
         pronunciation: "toy khong di vi toy hu hong zi, toy di vi mwon hieu minh hon",
         context: "Use when explaining therapy to someone skeptical.",
       },
       {
+        cell_id: "2bd8ede6-c80a-4af7-a97b-c8933a853dcb",
         english: "Talking to someone neutral helps me sort out what is really happening.",
         vietnamese: "Nói chuyện với một người trung lập giúp tôi gỡ rối chuyện trong đầu.",
         pronunciation: "noy chuyen voi mot nguoi trung lap zup toy go roi chuyen trong dau",
@@ -1862,12 +1958,14 @@ export const lessons: VietnameseLesson[] = [
       "Use these lines when someone is grieving and you need words that are simple, respectful, and not too much.",
     phrases: [
       {
+        cell_id: "4f772be0-397f-4ff6-9fd8-fe2077e925b4",
         english: "I do not know what to say, but I am very sorry for your loss.",
         vietnamese: "Tôi không biết nói gì cho đủ, nhưng tôi rất tiếc vì mất mát của gia đình bạn.",
         pronunciation: "toy khong biet noy zi cho du, nyung toy rat tiek vi mat mat kua gia dinh ban",
         context: "Use when offering condolences sincerely.",
       },
       {
+        cell_id: "68fb8cfb-1ea0-4513-b283-d69741413885",
         english: "If your family needs anything practical, please tell me.",
         vietnamese: "Nếu gia đình cần gì cụ thể, bạn cứ nói tôi biết nha.",
         pronunciation: "new gia dinh kun zi ku the, ban ku noy toy biet nha",
@@ -1888,12 +1986,14 @@ export const lessons: VietnameseLesson[] = [
       "These phrases help you move through greetings, small questions, and soft exits with older Vietnamese speakers.",
     phrases: [
       {
+        cell_id: "b7359dab-e4bc-438e-ba5f-132e971e1861",
         english: "Yes, I have been well. I have just been a bit busy with work lately.",
         vietnamese: "Dạ, con vẫn khỏe. Dạo này con chỉ hơi bận công việc một chút.",
         pronunciation: "ya, kon van khoe, zao nai kon chi hoy ban kong viec mot chut",
         context: "Use when an elder asks how you have been.",
       },
       {
+        cell_id: "20ac32e7-24c5-4042-a8af-d3c22846ffe7",
         english: "I will let you rest now. I will visit again when I have a chance.",
         vietnamese: "Thôi con để cô chú nghỉ nha. Có dịp con ghé lại thăm.",
         pronunciation: "thoy kon de ko chu nghi nha, ko dip kon ghe lai tham",
@@ -1914,24 +2014,28 @@ export const lessons: VietnameseLesson[] = [
       "Use these lines when a parent keeps asking when you'll settle down. Stay warm, stay vague, do not over-explain.",
     phrases: [
       {
+        cell_id: "6bdeccc8-0d24-4f03-892f-6d09614badce",
         english: "Mom, I get it, but I really am not ready yet.",
         vietnamese: "Mẹ ơi, con biết mà, nhưng thật sự con chưa sẵn sàng đâu.",
         pronunciation: "may oi, kon biet ma, nyung that su kon chua san sang dau",
         context: "Use when your mom asks again about marriage.",
       },
       {
+        cell_id: "e9acabf3-18b7-47e9-9f9f-f5746793436e",
         english: "If something happens, I will tell you, I promise.",
         vietnamese: "Có gì con kể mẹ liền, con hứa.",
         pronunciation: "ko zi kon ke may lien, kon hua",
         context: "Use to reassure her without giving a timeline.",
       },
       {
+        cell_id: "be170947-c9de-4e91-af9b-287dfe0de101",
         english: "Please do not compare me with your friends' kids, okay?",
         vietnamese: "Mẹ đừng so con với con người ta nha mẹ.",
         pronunciation: "may dung so kon voi kon nguoi ta nha may",
         context: "Use to set a soft limit on comparisons.",
       },
       {
+        cell_id: "ae6901fe-9139-44dc-8d67-012ae7912771",
         english: "I love you, but this part of my life I want to handle quietly.",
         vietnamese: "Con thương mẹ, nhưng chuyện này con muốn tự lo một mình trước đã.",
         pronunciation: "kon thuong may, nyung chuyen nay kon mwon tu lo mot minh truoc da",
@@ -1952,24 +2056,28 @@ export const lessons: VietnameseLesson[] = [
       "Use these lines when your parents wanted a stable job and you chose something different. Do not argue facts; protect the relationship.",
     phrases: [
       {
+        cell_id: "b23572df-d9cc-46bd-bd4e-2c5ca0df47a8",
         english: "I know it is not what you imagined for me.",
         vietnamese: "Con biết đây không phải là cái mà ba mẹ hình dung cho con đâu.",
         pronunciation: "kon biet day khong phai la kai ma ba may hinh zung cho kon dau",
         context: "Use to acknowledge their disappointment without arguing.",
       },
       {
+        cell_id: "efa70f5f-b70f-46c8-9929-2209624aa373",
         english: "I am not asking you to agree, I am asking you to trust me a little.",
         vietnamese: "Con không cần ba mẹ đồng ý, chỉ xin ba mẹ tin con một chút thôi.",
         pronunciation: "kon khong kun ba may dong y, chi xin ba may tin kon mot chut thoy",
         context: "Use when explaining a path they cannot fully accept.",
       },
       {
+        cell_id: "fde1a057-5185-4423-b3b7-cb791e446993",
         english: "If I fail, I will come home, but please let me try first.",
         vietnamese: "Nếu con thất bại, con sẽ về, nhưng xin ba mẹ để con thử trước đã.",
         pronunciation: "new kon that bai, kon se ve, nyung xin ba may de kon thu truoc da",
         context: "Use to reassure them you have an honest fallback plan.",
       },
       {
+        cell_id: "e192e7bf-90e5-4ad9-be9a-d085609fd146",
         english: "It is not that I do not listen, it is that I have to live this myself.",
         vietnamese: "Không phải con không nghe, mà là chuyện này con phải tự sống mới hiểu.",
         pronunciation: "khong phai kon khong nghe, ma la chuyen nay kon phai tu song moi hieu",
@@ -1990,24 +2098,28 @@ export const lessons: VietnameseLesson[] = [
       "Use these phrases when an aunt, uncle, or cousin asks for money and you cannot or do not want to give it.",
     phrases: [
       {
+        cell_id: "522966ea-3e5a-46eb-9544-55d6b6e8814d",
         english: "Right now I am also tight, but let me see what I can do.",
         vietnamese: "Dạo này con cũng kẹt mà, để con tính lại xem sao đã.",
         pronunciation: "zao nay kon kung ket ma, de kon tinh lai xem sao da",
         context: "Use to soften a likely no without refusing on the spot.",
       },
       {
+        cell_id: "f3754f53-43ee-479f-8d10-ad7e0df40d00",
         english: "I can help a small amount, but not the full thing.",
         vietnamese: "Con phụ một ít được, chứ con không lo nổi hết đâu cô ơi.",
         pronunciation: "kon phu mot it duoc, chu kon khong lo noi het dau ko oi",
         context: "Use to set a partial limit without rejecting outright.",
       },
       {
+        cell_id: "1bf99502-15e4-481f-bd54-447dd5255103",
         english: "I will let you know by Sunday so you can plan.",
         vietnamese: "Con trả lời cô trước Chủ Nhật để cô tính trước nha.",
         pronunciation: "kon tra loi ko truoc chu nhat de ko tinh truoc nha",
         context: "Use to buy time and signal you are taking it seriously.",
       },
       {
+        cell_id: "3ed70543-d569-4acc-b306-591a3ccc4162",
         english: "I am sorry, this time I really cannot.",
         vietnamese: "Lần này con xin lỗi cô, thật sự con không lo được.",
         pronunciation: "lan nay kon xin loi ko, that su kon khong lo duoc",
@@ -2028,24 +2140,28 @@ export const lessons: VietnameseLesson[] = [
       "Use these phrases as a parent setting a limit your child does not want to hear.",
     phrases: [
       {
+        cell_id: "319965f5-490f-4f3d-b929-5adc222c7fab",
         english: "Mom is not angry, but the rule today is the rule today.",
         vietnamese: "Mẹ không có giận, nhưng luật hôm nay là vậy đó con.",
         pronunciation: "may khong ko zan, nyung luat hom nay la vay do kon",
         context: "Use to hold a limit without escalating.",
       },
       {
+        cell_id: "dcb97cb1-c786-4750-bf3a-e787268aed90",
         english: "Five more minutes, then we put the iPad away together.",
         vietnamese: "Năm phút nữa thôi, rồi mình cùng cất iPad nha con.",
         pronunciation: "nam phut nua thoy, roy minh kung kat iPad nha kon",
         context: "Use to land a limit with a small soft warning.",
       },
       {
+        cell_id: "a8afad2b-7b7b-4246-a1c9-ceda1673694d",
         english: "Crying is okay, but the answer is still no for now.",
         vietnamese: "Con khóc cũng được, nhưng giờ vẫn là không nha con.",
         pronunciation: "kon khok kung duoc, nyung gio van la khong nha kon",
         context: "Use to validate emotion while keeping the limit.",
       },
       {
+        cell_id: "7b5a6bb3-afda-4b67-8b07-b17a19c2eea8",
         english: "Tomorrow we can play again. Tonight body needs to rest.",
         vietnamese: "Mai mình chơi tiếp, tối nay cơ thể con phải nghỉ rồi.",
         pronunciation: "mai minh choi tiep, toi nay ko the kon phai nghi roy",
@@ -2066,24 +2182,28 @@ export const lessons: VietnameseLesson[] = [
       "Use these phrases when a grandparent gives the child something you said no to.",
     phrases: [
       {
+        cell_id: "87597370-b54d-445e-8706-618d7bca8471",
         english: "Mom, I love that you spoil her, but please stop the candy at night.",
         vietnamese: "Mẹ thương cháu thì con biết, nhưng tối mẹ đừng cho kẹo nha mẹ.",
         pronunciation: "may thuong chau thi kon biet, nyung toi may dung cho keo nha may",
         context: "Use to ask grandma to stop a specific habit.",
       },
       {
+        cell_id: "dcec0100-2d72-4dab-82f3-a164aaa086a2",
         english: "When you said yes after I said no, it makes me look weak in front of her.",
         vietnamese: "Mẹ đồng ý sau khi con đã nói không, làm con khó nói chuyện với cháu.",
         pronunciation: "may dong y sau khi kon da noy khong, lam kon kho noy chuyen voi chau",
         context: "Use to name the impact without blaming.",
       },
       {
+        cell_id: "5abfa3dc-f979-46e4-9128-769af528df4b",
         english: "If you disagree with my rule, please tell me first, not her.",
         vietnamese: "Nếu mẹ không đồng ý với luật của con, mẹ nói riêng với con trước, đừng nói với cháu nha.",
         pronunciation: "new may khong dong y voi luat kua kon, may noy rieng voi kon truoc, dung noy voi chau nha",
         context: "Use to redirect disagreements away from the child.",
       },
       {
+        cell_id: "77be3a1e-bee5-462d-900e-e3919e47e8e6",
         english: "I really need us to be one team in front of the kid.",
         vietnamese: "Con thật sự cần nhà mình thống nhất trước mặt cháu.",
         pronunciation: "kon that su kun nha minh thong nhat truoc mat chau",
@@ -2104,24 +2224,28 @@ export const lessons: VietnameseLesson[] = [
       "Use these lines when a manager or older colleague says something you disagree with in front of others.",
     phrases: [
       {
+        cell_id: "44b222f2-da6d-4138-9064-4b4405c0060f",
         english: "Anh, I see your point, but I want to add one angle.",
         vietnamese: "Dạ anh, em hiểu ý anh, nhưng em xin bổ sung thêm một góc nữa.",
         pronunciation: "ya anh, em hieu y anh, nyung em xin bo sung them mot gok nua",
         context: "Use to start a polite disagreement with a senior.",
       },
       {
+        cell_id: "cd5e952e-d5b3-4939-861d-2f6d4ae07409",
         english: "Maybe I am missing something, but the data we saw last week showed differently.",
         vietnamese: "Có thể em hiểu thiếu, nhưng số liệu tuần trước thấy khác một chút.",
         pronunciation: "ko the em hieu thieu, nyung so lieu tuan truoc thay khak mot chut",
         context: "Use to introduce a counter-fact without confrontation.",
       },
       {
+        cell_id: "38c88793-2f1e-4982-ad60-d7ce4fe2455e",
         english: "Can we look at this part again before we decide?",
         vietnamese: "Mình xem lại đoạn này một lần nữa trước khi chốt được không anh?",
         pronunciation: "minh xem lai doan nay mot lan nua truoc khi chot duoc khong anh",
         context: "Use to slow down a decision without blocking it.",
       },
       {
+        cell_id: "e350c8ca-90a5-4ee6-bb5c-200df006466d",
         english: "I just do not want us to commit too fast.",
         vietnamese: "Em chỉ sợ mình quyết hơi vội thôi anh.",
         pronunciation: "em chi so minh kwet hoi voi thoy anh",
@@ -2142,24 +2266,28 @@ export const lessons: VietnameseLesson[] = [
       "Use these lines when you cannot keep absorbing more without breaking.",
     phrases: [
       {
+        cell_id: "d6caa174-cf68-4b76-8c4d-531917a726c4",
         english: "Anh, can I be honest with you for two minutes?",
         vietnamese: "Anh ơi, em xin nói thật với anh hai phút thôi được không.",
         pronunciation: "anh oi, em xin noy that voi anh hai phut thoy duoc khong",
         context: "Use to open a serious workload conversation.",
       },
       {
+        cell_id: "cf778a94-a87a-464c-83a4-03ca5cff0da6",
         english: "Right now I am juggling four things, and the quality is starting to slip.",
         vietnamese: "Hiện tại em đang gánh bốn việc cùng lúc, chất lượng bắt đầu đuối rồi anh.",
         pronunciation: "hien tai em dang ganh bon viec kung luk, chat luong bat dau duoy roy anh",
         context: "Use to name the impact, not just the load.",
       },
       {
+        cell_id: "c88fdc6d-3dd2-4232-9861-7a3c61d95017",
         english: "Could we move one to next sprint, or get a hand from someone?",
         vietnamese: "Mình dời một việc qua sprint sau, hay nhờ ai phụ một tay được không anh?",
         pronunciation: "minh zoi mot viec kwa sprint sau, hai nho ai phu mot tai duoc khong anh",
         context: "Use to suggest a solution, not just complain.",
       },
       {
+        cell_id: "72c5d94c-370f-4968-98db-eaa985b56154",
         english: "I do not want to drop the ball; that is why I am saying this early.",
         vietnamese: "Em không muốn để rớt việc, nên em nói sớm cho anh biết.",
         pronunciation: "em khong mwon de rot viec, nen em noy som cho anh biet",
@@ -2180,24 +2308,28 @@ export const lessons: VietnameseLesson[] = [
       "Use these phrases when you need to admit to a friend that you are running on empty.",
     phrases: [
       {
+        cell_id: "60bcbb1f-4f91-4443-917c-b24ab9bd7463",
         english: "I am okay, but I am tired in a way sleep does not fix.",
         vietnamese: "Tôi ổn, nhưng kiểu mệt này ngủ bao nhiêu cũng không hết.",
         pronunciation: "toy on, nyung kieu met nay ngu bao nhieu kung khong het",
         context: "Use to describe burnout in a way that sounds honest, not dramatic.",
       },
       {
+        cell_id: "10e6f043-cd11-4c49-a593-109a7427a620",
         english: "Lately I do everything on autopilot, and I do not feel anything.",
         vietnamese: "Dạo này tôi làm gì cũng như cái máy, không thấy gì hết.",
         pronunciation: "zao nay toy lam zi kung nhu kai may, khong thay zi het",
         context: "Use when emotion has gone flat from exhaustion.",
       },
       {
+        cell_id: "43cb0326-1f4e-4a1b-83a0-2d208c692787",
         english: "I think I need to slow down before something breaks.",
         vietnamese: "Chắc tôi phải chậm lại trước khi gãy luôn.",
         pronunciation: "chak toy phai cham lai truoc khi gay luon",
         context: "Use when you are pre-empting a real crash.",
       },
       {
+        cell_id: "bd6e37d7-ef31-4af9-b3c1-459802571aba",
         english: "Thanks for asking. Most people do not, and I do not blame them.",
         vietnamese: "Cảm ơn bạn đã hỏi nha. Đa phần người ta không hỏi, mà tôi cũng không trách.",
         pronunciation: "kam un ban da hoi nha, da phan nguoi ta khong hoi, ma toy kung khong trach",
@@ -2218,24 +2350,28 @@ export const lessons: VietnameseLesson[] = [
       "Use these phrases when work asks for your weekend and you need to protect it.",
     phrases: [
       {
+        cell_id: "48d29c84-462b-4d6c-b54a-f7892245ddfe",
         english: "Anh, this weekend I really cannot, I have something with family.",
         vietnamese: "Anh ơi, cuối tuần này em kẹt việc gia đình, không lên được anh.",
         pronunciation: "anh oi, kuoy tuan nay em ket viec gia dinh, khong len duoc anh",
         context: "Use to refuse weekend overtime with a soft reason.",
       },
       {
+        cell_id: "7025db5f-10ab-4228-b37c-099ded3d0129",
         english: "Monday morning early I will be in and finish it first thing.",
         vietnamese: "Sáng thứ Hai sớm em vào làm liền cho anh.",
         pronunciation: "sang thu hai som em vao lam lien cho anh",
         context: "Use to offer an alternative that respects the deadline.",
       },
       {
+        cell_id: "9158991b-484d-41ae-b72f-0158d5aa1b6d",
         english: "If it is really an emergency, please tell me what is on fire.",
         vietnamese: "Nếu có gì gấp lắm anh nói thẳng, em coi xem sắp xếp được không.",
         pronunciation: "new ko zi gap lam anh noy thang, em koy xem sap xep duoc khong",
         context: "Use to keep a small door open for true emergencies.",
       },
       {
+        cell_id: "0a1ead71-679c-44a8-9f45-1b1d8bb99d8f",
         english: "I am not going to disappear, just need this weekend off.",
         vietnamese: "Em không bỏ việc đâu, chỉ là cuối tuần này em xin nghỉ thôi.",
         pronunciation: "em khong bo viec dau, chi la kuoy tuan nay em xin nghi thoy",
@@ -2256,24 +2392,28 @@ export const lessons: VietnameseLesson[] = [
       "Use these lines when texting someone the day after meeting them. Casual register, no over-explanation.",
     phrases: [
       {
+        cell_id: "fd5af379-723e-4de3-a9bd-ead45a41b1bc",
         english: "Hey, last night was fun. I had a good time with you.",
         vietnamese: "Ê, tối qua vui ghê, đi với bạn xong tâm trạng tốt hẳn.",
         pronunciation: "eh, toy kwa vui ghe, di voi ban xong tam trang tot han",
         context: "Use as an opener the day after a first date.",
       },
       {
+        cell_id: "409748fc-0e8e-46e0-b93b-8a25846b09f6",
         english: "If you are free this week, want to grab coffee?",
         vietnamese: "Tuần này rảnh không, đi cà phê không?",
         pronunciation: "tuan nay ranh khong, di cafe khong",
         context: "Use to suggest a low-pressure second meeting.",
       },
       {
+        cell_id: "433f4107-010a-4d6d-8f16-f5bb2fda5b07",
         english: "No pressure if you are busy, just thought I would ask.",
         vietnamese: "Không sao nếu bận nha, mình hỏi cho biết thôi.",
         pronunciation: "khong sao new ban nha, minh hoi cho biet thoy",
         context: "Use to soften the ask and protect both sides.",
       },
       {
+        cell_id: "3f122128-2f1b-4655-bcba-e1f71d1a2474",
         english: "Either way, ride home safe last night?",
         vietnamese: "Mà tối qua về tới nhà an toàn chứ?",
         pronunciation: "ma toy kwa ve toy nha an toan chu",
@@ -2294,24 +2434,28 @@ export const lessons: VietnameseLesson[] = [
       "Use these phrases when you need clarity about whether this is casual, exclusive, or going somewhere.",
     phrases: [
       {
+        cell_id: "268c1fc3-fc0e-4132-a668-e3493aab4c0c",
         english: "I do not want to make this heavy, but I want to be clear.",
         vietnamese: "Mình không muốn làm nặng nề, mà mình muốn nói rõ một chút.",
         pronunciation: "minh khong mwon lam nang ne, ma minh mwon noy ro mot chut",
         context: "Use to open a defining conversation without pressure.",
       },
       {
+        cell_id: "21b420bc-4d2e-4ecd-a66d-3cde83161fea",
         english: "For me, I think I want this to be just us.",
         vietnamese: "Phần mình thì mình muốn chỉ có hai đứa thôi.",
         pronunciation: "phan minh thi minh mwon chi ko hai dua thoy",
         context: "Use to ask for exclusivity in plain words.",
       },
       {
+        cell_id: "fab83ec7-fc0d-428d-881a-7b17e93958f5",
         english: "If you are not there yet, I want to know honestly.",
         vietnamese: "Nếu bạn chưa nghĩ tới đó, bạn cứ nói thật với mình nha.",
         pronunciation: "new ban chua nghi toi do, ban ku noy that voi minh nha",
         context: "Use to invite honesty without ambushing.",
       },
       {
+        cell_id: "326b3d7a-b971-4cf6-a39d-e5f8e91e140a",
         english: "Whatever you say, I am not going to be weird about it.",
         vietnamese: "Bạn trả lời sao mình cũng không có làm khó đâu.",
         pronunciation: "ban tra loi sao minh kung khong ko lam kho dau",
@@ -2332,24 +2476,28 @@ export const lessons: VietnameseLesson[] = [
       "Use these phrases when someone has feelings for you and you do not feel the same.",
     phrases: [
       {
+        cell_id: "a6b26198-fa4c-4a61-9def-07b9870ef03e",
         english: "I really appreciate you telling me; that took courage.",
         vietnamese: "Cảm ơn bạn đã nói thật với mình, mình biết để nói được vậy không dễ.",
         pronunciation: "kam un ban da noy that voi minh, minh biet de noy duoc vay khong de",
         context: "Use to honor the courage of someone confessing feelings.",
       },
       {
+        cell_id: "7f73378e-6983-4e27-b6d8-89c4308cdebd",
         english: "I do not feel the same, and I do not want to lie to you.",
         vietnamese: "Mình không có cùng cảm giác, và mình không muốn nói dối bạn.",
         pronunciation: "minh khong ko kung kam giak, va minh khong mwon noy zoy ban",
         context: "Use to be clear without harshness.",
       },
       {
+        cell_id: "34828bb1-bc59-45a1-be80-ea8e28aa5a58",
         english: "I value our friendship, but I do not want to keep it just to be polite.",
         vietnamese: "Mình quý tình bạn này, nhưng mình không muốn giữ chỉ vì lịch sự.",
         pronunciation: "minh kwy tinh ban nay, nyung minh khong mwon giu chi vi lich su",
         context: "Use to be honest about whether the friendship can continue.",
       },
       {
+        cell_id: "1e56dc10-e065-4b85-aeed-9367361a2871",
         english: "Take time. If you need space, I will not push you.",
         vietnamese: "Bạn cứ từ từ, nếu cần khoảng cách thì mình không ép.",
         pronunciation: "ban ku tu tu, new kun khoang kak thi minh khong ep",
@@ -2370,24 +2518,28 @@ export const lessons: VietnameseLesson[] = [
       "Use these phrases when you said something that landed wrong and you can see the other person flinch.",
     phrases: [
       {
+        cell_id: "c5f82be6-4715-44f5-afba-bac7a13a8b5c",
         english: "Hold on, I think what I said came out wrong.",
         vietnamese: "Khoan, mình nói câu đó nghe hơi sai sai rồi.",
         pronunciation: "khoan, minh noy kau do nghe hoi sai sai roy",
         context: "Use to catch yourself in real time.",
       },
       {
+        cell_id: "de8abb51-0b8b-4635-a8ad-6f502ac8851e",
         english: "I did not mean it the way it sounded, sorry.",
         vietnamese: "Mình không có ý nói kiểu đó đâu, xin lỗi nha.",
         pronunciation: "minh khong ko y noy kieu do dau, xin loi nha",
         context: "Use to apologize for tone without overexplaining.",
       },
       {
+        cell_id: "b7579138-5e72-46ac-be5e-a18a9dab1a1b",
         english: "Did that hurt you? Be honest with me.",
         vietnamese: "Câu đó có làm bạn tổn thương không, nói thật mình nghe.",
         pronunciation: "kau do ko lam ban ton thuong khong, noy that minh nghe",
         context: "Use to invite the other person to name the hurt.",
       },
       {
+        cell_id: "57991d7f-5a60-41e7-985d-0604d012637b",
         english: "Thanks for telling me. I will try to say it better next time.",
         vietnamese: "Cảm ơn bạn nói cho mình biết, lần sau mình diễn đạt khác đi.",
         pronunciation: "kam un ban noy cho minh biet, lan sau minh dien dat khak di",
@@ -2408,24 +2560,28 @@ export const lessons: VietnameseLesson[] = [
       "Use these lines when you missed a friend's wedding, funeral, birthday, or major moment.",
     phrases: [
       {
+        cell_id: "15ba0232-d5e4-408a-a69d-e0fcc699f6ee",
         english: "I missed it, and I do not want to wrap it in excuses.",
         vietnamese: "Mình vắng mặt hôm đó, và mình không muốn lấy lý do để bao biện.",
         pronunciation: "minh vang mat hom do, va minh khong mwon lay ly zo de bao bien",
         context: "Use to open a real apology with ownership.",
       },
       {
+        cell_id: "9885cf17-2a06-43b8-a2bd-6dd5aed98615",
         english: "I know an apology does not return that day.",
         vietnamese: "Mình biết xin lỗi cũng không lấy lại được ngày đó cho bạn.",
         pronunciation: "minh biet xin loi kung khong lay lai duoc ngay do cho ban",
         context: "Use to acknowledge that words do not undo absence.",
       },
       {
+        cell_id: "632e69a7-e47c-47be-83a1-e7a44d6678b0",
         english: "Tell me how you actually felt that day, I will listen.",
         vietnamese: "Bạn cứ kể mình nghe hôm đó bạn thật sự thấy thế nào, mình ngồi nghe.",
         pronunciation: "ban ku ke minh nghe hom do ban that su thay the nao, minh ngoy nghe",
         context: "Use to invite the friend to name the hurt fully.",
       },
       {
+        cell_id: "4555d722-b5a4-47cb-98e3-c2a853d91543",
         english: "I want to be there better from now on, not just say so.",
         vietnamese: "Từ nay mình muốn có mặt thật sự, không chỉ nói thôi.",
         pronunciation: "tu nay minh mwon ko mat that su, khong chi noy thoy",
@@ -2446,24 +2602,28 @@ export const lessons: VietnameseLesson[] = [
       "Use these lines when your friend's parent is hospitalized or seriously ill.",
     phrases: [
       {
+        cell_id: "4a6261a7-283a-45d5-a052-466cb907e8ae",
         english: "I do not have words, but I am here for whatever you need.",
         vietnamese: "Mình không biết nói gì cho phải, nhưng có gì cần thì bạn cứ nói nha.",
         pronunciation: "minh khong biet noy zi cho phai, nyung ko zi kun thi ban ku noy nha",
         context: "Use when you do not want to fake comfort.",
       },
       {
+        cell_id: "42d30128-fad0-4b62-91ec-4328cac7a49c",
         english: "Are you eating? Sleeping a little? Just checking on you, not the patient.",
         vietnamese: "Bạn ăn uống được không, ngủ chút nào không, mình hỏi bạn nha chứ không phải hỏi bệnh.",
         pronunciation: "ban an uong duoc khong, ngu chut nao khong, minh hoi ban nha chu khong phai hoi benh",
         context: "Use to direct care toward the caregiver, not just the patient.",
       },
       {
+        cell_id: "62e0dbbd-81e5-4434-b8bf-c77f032e718d",
         english: "If you want company at the hospital, I can sit with you.",
         vietnamese: "Cần người ngồi cùng ở viện thì kêu mình, mình tới ngồi chung.",
         pronunciation: "kun nguoi ngoy kung u vien thi keu minh, minh toi ngoy chung",
         context: "Use to offer presence without forcing conversation.",
       },
       {
+        cell_id: "c0bcb363-ca78-422d-8662-6b8bcab871fa",
         english: "Whatever happens, you are not going through this alone.",
         vietnamese: "Dù chuyện ra sao, bạn không phải gánh một mình đâu.",
         pronunciation: "zu chuyen ra sao, ban khong phai ganh mot minh dau",
@@ -2484,24 +2644,28 @@ export const lessons: VietnameseLesson[] = [
       "Use these phrases when a friend has just been laid off or let go.",
     phrases: [
       {
+        cell_id: "cf9518d1-4085-4d2e-ad17-63f78c87e34c",
         english: "That is brutal. You did not deserve this.",
         vietnamese: "Vụ này đau thật, bạn đâu có đáng bị vậy.",
         pronunciation: "vu nay dau that, ban dau ko dang bi vay",
         context: "Use to validate the unfairness first.",
       },
       {
+        cell_id: "d905e272-b55e-40be-80c2-7aa48248ca4f",
         english: "Take a few days before you start applying. You are tired.",
         vietnamese: "Mấy hôm đầu cứ nghỉ đi, đừng vội apply, bạn mệt thật rồi.",
         pronunciation: "may hom dau ku nghi di, dung voi apply, ban met that roy",
         context: "Use to slow them down from frantic recovery.",
       },
       {
+        cell_id: "39a49555-0142-4454-a80a-03b26cef5d33",
         english: "If you want to vent, I will not jump in with advice.",
         vietnamese: "Bạn cần xả thì cứ xả, mình không chen lời khuyên đâu.",
         pronunciation: "ban kun xa thi ku xa, minh khong chen loi khuyen dau",
         context: "Use to offer ear without unsolicited fixes.",
       },
       {
+        cell_id: "a461f38f-6dc0-409e-83dd-5504af914b01",
         english: "Money-wise, if it ever gets bad, just ask. I will figure it out.",
         vietnamese: "Tiền bạc nếu có lúc bí quá, bạn cứ nói mình, mình tính được.",
         pronunciation: "tien bak new ko luk bi qua, ban ku noy minh, minh tinh duoc",
@@ -2522,24 +2686,28 @@ export const lessons: VietnameseLesson[] = [
       "Use these phrases when a friend's relationship is harming them and they have not asked for advice.",
     phrases: [
       {
+        cell_id: "28341621-118e-4840-88d5-f0900be8150d",
         english: "I have something to say, but only if you want to hear it.",
         vietnamese: "Mình có chuyện muốn nói, nhưng chỉ nói nếu bạn muốn nghe.",
         pronunciation: "minh ko chuyen mwon noy, nyung chi noy new ban mwon nghe",
         context: "Use to ask permission before giving hard feedback.",
       },
       {
+        cell_id: "56d8285e-d192-46e1-943f-6dfddac9a547",
         english: "When you are with this person, you are quieter, smaller.",
         vietnamese: "Lúc bạn ở bên người đó, bạn im hơn, nhỏ lại.",
         pronunciation: "luk ban u ben nguoi do, ban im hon, nho lai",
         context: "Use to describe a behavioral change you have observed.",
       },
       {
+        cell_id: "7e6b2fec-aa1e-4b45-921d-0698bbc96002",
         english: "I am not asking you to leave. I am asking you to notice.",
         vietnamese: "Mình không bắt bạn rời đi, mình chỉ xin bạn để ý.",
         pronunciation: "minh khong bat ban roi di, minh chi xin ban de y",
         context: "Use to give awareness, not orders.",
       },
       {
+        cell_id: "1ad799a5-92aa-4ddb-8227-1e3add40d867",
         english: "Whatever you decide, I am not going anywhere.",
         vietnamese: "Bạn quyết sao cũng được, mình vẫn ở đây.",
         pronunciation: "ban kwet sao kung duoc, minh van u day",
@@ -2560,24 +2728,28 @@ export const lessons: VietnameseLesson[] = [
       "Use these phrases to recount a difficult week to a close friend in natural connected speech.",
     phrases: [
       {
+        cell_id: "6fd6a348-828a-4596-bb51-6082a9c8ba7b",
         english: "Wait, let me start from the beginning, because the whole week was a lot.",
         vietnamese: "Khoan, để mình kể từ đầu, tại nguyên tuần rồi đúng kiểu hơi nhiều chuyện.",
         pronunciation: "khoan, de minh ke tu dau, tai nguyen tuan roy dung kieu hoi nhieu chuyen",
         context: "Use to set up a longer story with a friend.",
       },
       {
+        cell_id: "a67aea3f-ace9-4c62-8f61-0d388b20ec5c",
         english: "So Monday, I already came in tired, and then the boss dropped a new project on me.",
         vietnamese: "Thì thứ Hai, đi làm mình đã mệt sẵn rồi, xong sếp lại quăng cho cái dự án mới.",
         pronunciation: "thi thu hai, di lam minh da met san roy, xong sep lai kwang cho kai zu an moi",
         context: "Use to begin the body of a real-life weekly story.",
       },
       {
+        cell_id: "57feee1b-99b6-4e0b-aab5-ec9a47d1f101",
         english: "By Wednesday I was crying in the bathroom, not even sure why.",
         vietnamese: "Tới thứ Tư mình ngồi khóc trong nhà vệ sinh luôn, mà cũng không hiểu sao khóc nữa.",
         pronunciation: "toi thu tu minh ngoy khok trong nha ve sinh luon, ma kung khong hieu sao khok nua",
         context: "Use to describe an emotional low point.",
       },
       {
+        cell_id: "524be430-0cd5-4084-a379-8f50927f3e9a",
         english: "Honestly, telling you this now, I already feel a bit lighter.",
         vietnamese: "Mà nói thật, kể bạn nghe vầy là mình cũng nhẹ ra một chút rồi.",
         pronunciation: "ma noy that, ke ban nghe vay la minh kung nhe ra mot chut roy",
@@ -2598,24 +2770,28 @@ export const lessons: VietnameseLesson[] = [
       "Use these expressions in casual texting, group chats, and informal voice messages with peers.",
     phrases: [
       {
+        cell_id: "ca491f74-477d-4c68-94dc-b1d53cad6422",
         english: "OMG, no way, are you serious?",
         vietnamese: "Trời ơi, gì vậy trời, thiệt hả?",
         pronunciation: "troi oi, zi vay troi, thiet ha",
         context: "Use as a casual reaction to surprising news.",
       },
       {
+        cell_id: "443f7b72-9d7f-4f54-bf7c-40c07ffe79fd",
         english: "lol same, I was just thinking that.",
         vietnamese: "kkk same nha, tui cũng vừa nghĩ đúng cái đó.",
         pronunciation: "ka ka ka same nha, tui kung vua nghi dung kai do",
         context: "Use in chat to show you are on the same page.",
       },
       {
+        cell_id: "8aad08bf-7bc8-4afb-af2c-cd4de45c993a",
         english: "Brb, putting kid to bed, will call you back in 15.",
         vietnamese: "Khoan nha, cho con đi ngủ cái đã, 15 phút nữa gọi lại bạn.",
         pronunciation: "khoan nha, cho kon di ngu kai da, muoi lam phut nua goi lai ban",
         context: "Use as a quick pause-and-return message.",
       },
       {
+        cell_id: "5d39048a-f000-42d9-9d7d-4d25ce70588e",
         english: "Honestly, I just need to vent for five minutes.",
         vietnamese: "Thật ra tui chỉ cần xả năm phút thôi á.",
         pronunciation: "that ra tui chi kun xa nam phut thoy a",
@@ -2636,24 +2812,28 @@ export const lessons: VietnameseLesson[] = [
       "Use these phrases when you cannot attend a wedding, engagement, or major family event.",
     phrases: [
       {
+        cell_id: "30d52880-2e22-4487-9797-b77b27f9986e",
         english: "Congrats already; sorry, I genuinely cannot make that day.",
         vietnamese: "Chúc mừng bạn trước nha, mà ngày đó mình thật sự không sắp xếp được.",
         pronunciation: "chuk mung ban truoc nha, ma ngay do minh that su khong sap xep duoc",
         context: "Use to lead with congratulations before the no.",
       },
       {
+        cell_id: "41995277-9780-4ed4-893f-804778c878c8",
         english: "I would not miss it for a small reason; it is a real conflict.",
         vietnamese: "Không phải mình lười đâu, kẹt thật sự, không thì mình đã đi rồi.",
         pronunciation: "khong phai minh luoi dau, ket that su, khong thi minh da di roy",
         context: "Use to defuse the suspicion that you are blowing them off.",
       },
       {
+        cell_id: "4cc34a3e-075a-4025-9363-4cac0298161c",
         english: "I will send a gift through your sister; I do not want it to feel empty.",
         vietnamese: "Mình gửi quà qua chị bạn nha, không thì mình thấy kỳ lắm.",
         pronunciation: "minh gui kwa kwa chi ban nha, khong thi minh thay ki lam",
         context: "Use to show care even though you cannot show up.",
       },
       {
+        cell_id: "041fd0b2-2f4d-47e0-a78e-887157122449",
         english: "Let me take you out properly the week after, just us.",
         vietnamese: "Tuần sau mình hẹn bạn đi ăn riêng cho đàng hoàng, chỉ hai đứa thôi.",
         pronunciation: "tuan sau minh hen ban di an rieng cho dang hoang, chi hai dua thoy",
@@ -3442,24 +3622,28 @@ export const lessons: VietnameseLesson[] = [
       "Use these phrases when your teenager pushes back hard against a rule or expectation.",
     phrases: [
       {
+        cell_id: "3a805146-7538-4014-9709-35d6bcfbf611",
         english: "I hear you. The rule still stands tonight.",
         vietnamese: "Mẹ nghe rồi. Tối nay luật vẫn vậy.",
         pronunciation: "may nghe roy, toi nay luat van vay",
       context: "Use to validate the pushback without folding.",
       },
       {
+        cell_id: "7f9e73e2-b393-4678-93d6-c0492a05963e",
         english: "Tomorrow we can talk about whether the rule should change.",
         vietnamese: "Mai mình ngồi nói chuyện coi luật này có nên đổi không.",
         pronunciation: "mai minh ngoy noy chuyen koy luat nay ko nen doi khong",
         context: "Use to offer real renegotiation, not just shutdown.",
       },
       {
+        cell_id: "dfa59509-5692-47a7-b389-fcefaaec3991",
         english: "I am not your enemy. I am your mom.",
         vietnamese: "Mẹ không phải kẻ thù của con đâu. Mẹ là mẹ con thôi.",
         pronunciation: "may khong phai ke thu kua kon dau, may la may kon thoy",
         context: "Use to reset the emotional frame when it gets adversarial.",
       },
       {
+        cell_id: "bbcfb046-636e-4bed-9bec-0ffb8215c89f",
         english: "If you slam the door, that is fine. We will still finish this tomorrow.",
         vietnamese: "Con đóng cửa cái rầm cũng được, mai mình vẫn nói tiếp.",
         pronunciation: "kon dong kua kai ram kung duoc, mai minh van noy tiep",
@@ -3480,24 +3664,28 @@ export const lessons: VietnameseLesson[] = [
       "Use these phrases when someone took credit for your idea or work in front of others.",
     phrases: [
       {
+        cell_id: "8fb2ab31-be8a-4bb3-9cb7-224a369245e2",
         english: "Quick clarification: that part actually came from me last week.",
         vietnamese: "Cho em làm rõ một chút: phần đó tuần trước em đề xuất.",
         pronunciation: "cho em lam ro mot chut, phan do tuan truoc em de xuat",
         context: "Use to correct in real time, dispassionately.",
       },
       {
+        cell_id: "a3fc0a19-31f5-458e-9446-921dcee0dc50",
         english: "I am not making a big deal, but I do want it on record.",
         vietnamese: "Em không có làm to chuyện đâu, mà em muốn nó được ghi nhận đúng.",
         pronunciation: "em khong ko lam to chuyen dau, ma em mwon no duoc ghi nhan dung",
         context: "Use to lower temperature while still claiming credit.",
       },
       {
+        cell_id: "12904ff3-6941-4e59-b481-6ad2b0df4593",
         english: "Anh, can we talk privately for two minutes?",
         vietnamese: "Anh ơi, mình nói riêng hai phút được không.",
         pronunciation: "anh oi, minh noy rieng hai phut duoc khong",
         context: "Use when you want to escalate to a one-on-one with a manager.",
       },
       {
+        cell_id: "80eaeb3d-429b-4e77-9278-9d63a61b5923",
         english: "I am not asking for praise; I am asking for accuracy.",
         vietnamese: "Em không xin khen đâu, em chỉ xin nói cho đúng người làm.",
         pronunciation: "em khong xin khen dau, em chi xin noy cho dung nguoi lam",
@@ -3646,24 +3834,28 @@ export const lessons: VietnameseLesson[] = [
       "Use these lines when someone has invited you out and you do not want to go.",
     phrases: [
       {
+        cell_id: "96886e51-858a-4e70-a132-5def584fbacb",
         english: "Thanks for the invite, but honestly I do not feel that spark.",
         vietnamese: "Cảm ơn bạn rủ, mà thật lòng mình chưa thấy gì đặc biệt.",
         pronunciation: "kam un ban ru, ma that long minh chua thay zi dak biet",
         context: "Use to refuse a romantic invitation without hiding behind busy.",
       },
       {
+        cell_id: "a9dd23ed-929d-4b2f-9fe1-7813fcf2eb29",
         english: "I do not want to keep texting like nothing was said.",
         vietnamese: "Mình không muốn nhắn tới nhắn lui như chưa có chuyện gì.",
         pronunciation: "minh khong mwon nhan toi nhan lui nhu chua ko chuyen zi",
         context: "Use to explain why you are being clear instead of vague.",
       },
       {
+        cell_id: "681e2ba1-b1bb-442e-87b8-ff8990c7ff5d",
         english: "I respect you, that is why I am telling you straight.",
         vietnamese: "Mình tôn trọng bạn, nên mình mới nói thẳng với bạn vầy.",
         pronunciation: "minh ton trong ban, nen minh moi noy thang voi ban vay",
         context: "Use to frame directness as care, not coldness.",
       },
       {
+        cell_id: "9bd498f6-0508-4dd6-ad3e-db3e0041472c",
         english: "Wishing you the kind of person who really matches you.",
         vietnamese: "Chúc bạn gặp được người hợp với bạn thật sự nha.",
         pronunciation: "chuk ban gap duoc nguoi hop voi ban that su nha",
@@ -3684,24 +3876,28 @@ export const lessons: VietnameseLesson[] = [
       "Use these phrases when you want to describe your bicultural identity to a Vietnamese-speaking friend or relative.",
     phrases: [
       {
+        cell_id: "4646273d-7ac5-4567-adbf-726ae03ab5f9",
         english: "I grew up there, but I was raised inside a Vietnamese house.",
         vietnamese: "Mình lớn lên bên đó, mà nhà thì vẫn là kiểu Việt Nam.",
         pronunciation: "minh lon len ben do, ma nha thi van la kieu viet nam",
         context: "Use to begin describing a heritage childhood.",
       },
       {
+        cell_id: "09841081-929d-4dfd-b98d-ad7a7069dcd7",
         english: "Honestly, I do not feel fully one or the other.",
         vietnamese: "Thật ra mình không thấy mình thuộc hẳn về bên nào.",
         pronunciation: "that ra minh khong thay minh thuoc han ve ben nao",
         context: "Use to name the in-between feeling without apologizing for it.",
       },
       {
+        cell_id: "61763c9f-97d4-45d1-af8c-c6053c2a6c21",
         english: "When I am there, people see me as Vietnamese; when I am here, people see me as foreign.",
         vietnamese: "Bên đó người ta thấy mình là Việt, mà về đây người ta lại nghĩ mình là người ngoài.",
         pronunciation: "ben do nguoi ta thay minh la viet, ma ve day nguoi ta lai nghi minh la nguoi ngoai",
         context: "Use to describe the dual displacement of heritage life.",
       },
       {
+        cell_id: "2065a44e-27b8-4961-afb8-d8e129c93bf1",
         english: "Coming back is not always sweet; sometimes it is heavy too.",
         vietnamese: "Về lại không phải lúc nào cũng vui, có lúc nặng lòng lắm.",
         pronunciation: "ve lai khong phai luk nao kung vui, ko luk nang long lam",
@@ -3722,24 +3918,28 @@ export const lessons: VietnameseLesson[] = [
       "Use these phrases in active group chats with peers — they sound natural and current.",
     phrases: [
       {
+        cell_id: "1907a8a1-f7ef-45fb-be13-3e48019aad0e",
         english: "Bro, did you see the news this morning?",
         vietnamese: "Ê ông, sáng nay có thấy tin đó chưa?",
         pronunciation: "eh ong, sang nay ko thay tin do chua",
         context: "Use to open a casual chat with male friends.",
       },
       {
+        cell_id: "fabfdad6-a122-40b5-bad7-bcc427f7ad38",
         english: "Sis, today I am too tired to function.",
         vietnamese: "Bà ơi, nay tui đuối luôn không nói nổi.",
         pronunciation: "ba oi, nay tui duoy luon khong noy noi",
         context: "Use to vent quickly in a female peer chat.",
       },
       {
+        cell_id: "d377d2a7-709a-4d9b-8818-4a2ecd3fa01a",
         english: "Lol, that is so chaotic.",
         vietnamese: "kkk loạn nhỉ.",
         pronunciation: "ka ka ka loan nhi",
         context: "Use as a casual reaction in messages.",
       },
       {
+        cell_id: "79b28618-3e50-4902-a835-a7271ecf2f36",
         english: "Ok ok, on my way, traffic is dying.",
         vietnamese: "Ok ok đang đi rồi, kẹt xe muốn xỉu.",
         pronunciation: "ok ok dang di roy, ket xe mwon xiu",
@@ -3760,24 +3960,28 @@ export const lessons: VietnameseLesson[] = [
       "Use these phrases when you are not being seen at work and you need to tell someone.",
     phrases: [
       {
+        cell_id: "36b8aad8-ca9e-466a-885f-52f8181eb365",
         english: "It is not that something bad is happening; it is that nothing is happening.",
         vietnamese: "Không phải có chuyện xấu, mà là không có chuyện gì hết.",
         pronunciation: "khong phai ko chuyen xau, ma la khong ko chuyen zi het",
         context: "Use to describe being overlooked rather than mistreated.",
       },
       {
+        cell_id: "f2b8b11b-a704-4eeb-9425-6e01eddf2034",
         english: "I am there every day, but I feel like I do not exist there.",
         vietnamese: "Mình đi làm đủ ngày, mà không thấy mình tồn tại trong đó.",
         pronunciation: "minh di lam du ngay, ma khong thay minh ton tai trong do",
         context: "Use to name a deeper version of feeling unseen.",
       },
       {
+        cell_id: "28f67946-3759-48a0-a580-4ff28141e905",
         english: "I do not want praise; I just want to be in the conversation.",
         vietnamese: "Mình không cần khen, mình chỉ muốn được tham gia thật sự.",
         pronunciation: "minh khong kun khen, minh chi mwon duoc tham gia that su",
         context: "Use to name what you are actually missing.",
       },
       {
+        cell_id: "a2f8b9b8-be71-4b40-92f2-68f9748b8d35",
         english: "I might need to look elsewhere if this stays the same.",
         vietnamese: "Nếu chỗ này vẫn vầy hoài, chắc mình phải tìm chỗ khác.",
         pronunciation: "new cho nay van vay hoai, chak minh phai tim cho khak",
@@ -3862,24 +4066,28 @@ export const lessons: VietnameseLesson[] = [
       "Use these phrases as memory loss begins to show in a parent and the family is not sure how to respond yet.",
     phrases: [
       {
+        cell_id: "913a866a-860b-4a1e-a124-e65a1c426ac1",
         english: "Mom, no rush. Tell me again whenever you need to.",
         vietnamese: "Mẹ, không gấp đâu. Có gì mẹ kể con lại lần nữa cũng được.",
         pronunciation: "may, khong gap dau, ko zi may ke kon lai lan nua kung duoc",
         context: "Use to receive a repeated story without correction.",
       },
       {
+        cell_id: "5207b724-be72-4512-8f77-f839e42a74bf",
         english: "It is okay to forget. We will go through it together.",
         vietnamese: "Quên cũng được mẹ ơi. Mình từ từ đi qua chuyện đó với nhau.",
         pronunciation: "kwen kung duoc may oi, minh tu tu di kwa chuyen do voi nhau",
         context: "Use to remove shame from the moment.",
       },
       {
+        cell_id: "2e109b0c-1ce5-4983-a165-49c0095daff2",
         english: "Mom, want me to write the appointment on the fridge so it is easier?",
         vietnamese: "Mẹ ơi, để con ghi lịch hẹn lên tủ lạnh cho mẹ dễ thấy nha.",
         pronunciation: "may oi, de kon ghi lich hen len tu lanh cho may ze thay nha",
         context: "Use to introduce a tool for support, not surveillance.",
       },
       {
+        cell_id: "50482fb1-f166-4641-a23a-c2b9ba584cf9",
         english: "I love you the same as before, mom.",
         vietnamese: "Con vẫn thương mẹ y như xưa, mẹ ơi.",
         pronunciation: "kon van thuong may i nhu xua, may oi",
@@ -3900,24 +4108,28 @@ export const lessons: VietnameseLesson[] = [
       "Use these phrases when you really cannot make plans you previously agreed to.",
     phrases: [
       {
+        cell_id: "b1227b7d-a8ab-44b7-b8c3-27eab27eec77",
         english: "Hey, can I cancel tonight? I feel terrible but I am completely drained.",
         vietnamese: "Bạn ơi, mình huỷ tối nay được không, tệ thật mà mình đuối quá.",
         pronunciation: "ban oi, minh huy toi nay duoc khong, te that ma minh duoy qua",
         context: "Use as an honest, last-minute bail.",
       },
       {
+        cell_id: "6ba578e9-236f-4875-8371-83e2732c3ba0",
         english: "I know it is short notice; that is on me.",
         vietnamese: "Mình biết báo trễ, lỗi mình.",
         pronunciation: "minh biet bao tre, loi minh",
         context: "Use to take ownership without overexplaining.",
       },
       {
+        cell_id: "99654332-8251-4890-bbeb-a8b89096c7e5",
         english: "Can we move it to Friday? I will lock it in firmly.",
         vietnamese: "Mình dời qua thứ Sáu được không, mình chốt chắc luôn.",
         pronunciation: "minh zoi kwa thu sau duoc khong, minh chot chak luon",
         context: "Use to propose a real reschedule, not just an apology.",
       },
       {
+        cell_id: "24e898f1-535e-497d-94cd-3f3d6fd87c25",
         english: "Either way, sorry I let you down today.",
         vietnamese: "Sao cũng được, mà bữa nay mình thất hứa với bạn, xin lỗi nha.",
         pronunciation: "sao kung duoc, ma bua nay minh that hua voi ban, xin loi nha",
@@ -3938,24 +4150,28 @@ export const lessons: VietnameseLesson[] = [
       "Use these phrases when you want to message someone after months or years of no contact.",
     phrases: [
       {
+        cell_id: "762bf838-fcef-40f7-9a4d-bc12699f39ab",
         english: "Hey, sudden message, but you crossed my mind today.",
         vietnamese: "Ê, tự dưng nhắn, mà nay tự nhiên nghĩ tới bạn.",
         pronunciation: "eh, tu zung nhan, ma nay tu nhien nghi toi ban",
         context: "Use as a low-pressure reopening line.",
       },
       {
+        cell_id: "10324b07-9b83-42c0-9c2f-d540e9868be4",
         english: "I am not going to pretend nothing happened or that no time passed.",
         vietnamese: "Mình không định giả vờ như chưa có gì hay chưa xa nhau lâu vậy đâu.",
         pronunciation: "minh khong dinh za vo nhu chua ko zi hai chua xa nhau lau vay dau",
         context: "Use to acknowledge the gap honestly.",
       },
       {
+        cell_id: "c2fcdbce-aaaa-41b5-ab17-1c2557082bb4",
         english: "If you are open, I would love to catch up sometime soon.",
         vietnamese: "Nếu bạn mở lòng, mình muốn ngồi với bạn một bữa sắp tới.",
         pronunciation: "new ban mo long, minh mwon ngoy voi ban mot bua sap toi",
         context: "Use to invite a real meet-up rather than chat.",
       },
       {
+        cell_id: "4228f77e-4318-4175-8e1b-9ffa8c8e463f",
         english: "If you are not ready, I respect that too.",
         vietnamese: "Còn nếu bạn chưa sẵn sàng, mình tôn trọng nha.",
         pronunciation: "kon new ban chua san sang, minh ton trong nha",
@@ -4168,24 +4384,28 @@ export const lessons: VietnameseLesson[] = [
       "Use these phrases for a longer narrative when you want to tell someone a real childhood memory.",
     phrases: [
       {
+        cell_id: "709b95f7-c8a4-4139-8aec-54a7780c6a54",
         english: "When I was little, our house was near a small market.",
         vietnamese: "Hồi nhỏ, nhà mình ở gần một cái chợ nhỏ.",
         pronunciation: "hoi nho, nha minh u gan mot kai cho nho",
         context: "Use as a typical Vietnamese opener for childhood memory.",
       },
       {
+        cell_id: "78a6fca7-e086-4444-ba4f-8e78e5a2ad91",
         english: "Every morning my mom took me with her, one hand holding the basket, the other holding mine.",
         vietnamese: "Sáng nào mẹ cũng dắt mình đi, một tay xách giỏ, một tay nắm mình.",
         pronunciation: "sang nao may kung zat minh di, mot tai xak zo, mot tai nam minh",
         context: "Use as a sensory detail mid-story.",
       },
       {
+        cell_id: "ab097086-0dc4-48c1-9170-06aaad5be3d9",
         english: "One time I got lost and stood in the middle of the market crying loudly.",
         vietnamese: "Có một lần mình bị lạc, đứng giữa chợ khóc um sùm.",
         pronunciation: "ko mot lan minh bi lak, dung giua cho khok um sum",
         context: "Use to introduce a turning point in the memory.",
       },
       {
+        cell_id: "a85f96ad-6f54-42db-ac61-8844282510fb",
         english: "Even now I remember I was not scared of being lost; I was scared of making my mom sad.",
         vietnamese: "Tới giờ mình nhớ là mình không sợ đi lạc, mình sợ làm mẹ buồn.",
         pronunciation: "toi gio minh nho la minh khong so di lak, minh so lam may buon",
@@ -4206,24 +4426,28 @@ export const lessons: VietnameseLesson[] = [
       "Use these phrases when you need to correct a peer or junior in front of others, without humiliating them.",
     phrases: [
       {
+        cell_id: "846736af-d3d3-42ce-9aa9-027f58b9c262",
         english: "Sorry, just one quick clarification before we go on.",
         vietnamese: "Cho mình chen một câu nhỏ trước khi mình đi tiếp nha.",
         pronunciation: "cho minh chen mot kau nho truoc khi minh di tiep nha",
         context: "Use to insert a correction without freezing the conversation.",
       },
       {
+        cell_id: "7e43deca-d713-42db-b94f-ca524f67eb39",
         english: "I think there might be one part that needs adjusting.",
         vietnamese: "Mình thấy có một chỗ cần điều chỉnh chút.",
         pronunciation: "minh thay ko mot cho kun dieu chinh chut",
         context: "Use as a soft entry to the actual correction.",
       },
       {
+        cell_id: "cc6f8c88-cd7b-49a2-a70c-a0e29c630d55",
         english: "Maybe I am wrong, but the original number was different.",
         vietnamese: "Có thể mình sai, mà con số gốc mình nhớ là khác.",
         pronunciation: "ko the minh sai, ma kon so gok minh nho la khak",
         context: "Use a face-saving frame even when you are confident.",
       },
       {
+        cell_id: "d2d2f41a-9ea7-4e57-b71f-18a321f6ea03",
         english: "Let us double check together later, no rush.",
         vietnamese: "Lát mình kiểm tra lại với nhau, không có gấp đâu.",
         pronunciation: "lat minh kiem tra lai voi nhau, khong ko gap dau",
@@ -5652,24 +5876,28 @@ export const lessons: VietnameseLesson[] = [
       "Use these phrases when you finally got the thing you wanted and the feeling did not arrive.",
     phrases: [
       {
+        cell_id: "a24902bb-0161-4b07-b30f-4f9b7a2e564b",
         english: "I got promoted but I do not feel anything, and that scares me.",
         vietnamese: "Mình lên chức rồi mà không thấy gì, hơi sợ luôn.",
         pronunciation: "minh len chuk roy ma khong thay zi, hoi so luon",
         context: "Use when admitting the absence of expected joy.",
       },
       {
+        cell_id: "43578ef2-f148-44f2-8a8f-6764bc8f80d2",
         english: "I thought reaching this would make me settle; instead, I am unsettled.",
         vietnamese: "Mình tưởng tới đây là yên, mà ngược lại, mình thấy chông chênh hơn.",
         pronunciation: "minh tuong toi day la yen, ma nguoc lai, minh thay chong chenh hon",
         context: "Use to name the post-success disorientation.",
       },
       {
+        cell_id: "9da414b9-d67d-4939-ade5-ead0acf99c68",
         english: "Maybe I was running toward this because running was the comfort.",
         vietnamese: "Hay là mình chạy về phía đó vì chạy là thứ làm mình thấy quen.",
         pronunciation: "hai la minh chay ve phia do vi chay la thu lam minh thay kwen",
         context: "Use to question whether the goal was the real goal.",
       },
       {
+        cell_id: "51b63559-82c4-43cc-ba22-95d01672f908",
         english: "I do not need to know the answer tonight. I just want to say it out loud.",
         vietnamese: "Mình không cần biết câu trả lời tối nay. Mình chỉ muốn nói ra thôi.",
         pronunciation: "minh khong kun biet kau tra loi toi nay, minh chi mwon noy ra thoy",
@@ -5690,24 +5918,28 @@ export const lessons: VietnameseLesson[] = [
       "Use these phrases to flag and respond when someone is being polite-on-the-surface but cold underneath.",
     phrases: [
       {
+        cell_id: "63ce82ff-553d-4934-8941-c7282d5e1036",
         english: "She sounds polite, but her eyes say something else.",
         vietnamese: "Bạn nói nghe lễ phép, mà ánh mắt nói khác.",
         pronunciation: "ban noy nghe le phep, ma anh mat noy khak",
         context: "Use when describing a fake-polite encounter to someone else.",
       },
       {
+        cell_id: "8cbbf299-09eb-4fcc-94c9-1edd1bf9ceda",
         english: "I am not going to call it out now, but I noticed.",
         vietnamese: "Mình không nói ra liền đâu, mà mình có để ý.",
         pronunciation: "minh khong noy ra lien dau, ma minh ko de y",
         context: "Use to internally acknowledge what someone is doing.",
       },
       {
+        cell_id: "ba81df69-df4a-4d80-9958-b58e524251f4",
         english: "If you actually had a problem with me, I would rather you say it.",
         vietnamese: "Nếu bạn có vấn đề với mình thật, mình thà bạn nói thẳng.",
         pronunciation: "new ban ko van de voi minh that, minh tha ban noy thang",
         context: "Use one-on-one to invite directness.",
       },
       {
+        cell_id: "c9530a9b-7a34-4e2d-bd28-c3248fbd92b7",
         english: "Surface kindness without warmth is its own kind of distance.",
         vietnamese: "Tử tế bề ngoài mà không có ấm áp, cũng là một kiểu xa cách.",
         pronunciation: "tu te be ngoai ma khong ko am ap, kung la mot kieu xa kak",
@@ -5728,24 +5960,28 @@ export const lessons: VietnameseLesson[] = [
       "Use these phrases when a friend or colleague has visibly fumbled and you can help cover.",
     phrases: [
       {
+        cell_id: "21578bcd-b2cf-4042-9e22-8a08ac1bf361",
         english: "Wait, I think I asked the question wrong, let me ask again.",
         vietnamese: "Khoan, hình như mình hỏi không rõ, để mình hỏi lại nha.",
         pronunciation: "khoan, hinh nhu minh hoi khong ro, de minh hoi lai nha",
         context: "Use to take blame for confusion that was not yours.",
       },
       {
+        cell_id: "c27afd2b-da3a-4335-9e03-4ba82e38027a",
         english: "I think the slide had a typo; it is not his fault.",
         vietnamese: "Mình nghĩ slide bị lỗi đánh máy thôi, không phải lỗi của ảnh.",
         pronunciation: "minh nghi slide bi loi danh mai thoy, khong phai loi kua anh",
         context: "Use to redirect blame from a person to a thing.",
       },
       {
+        cell_id: "6f57be92-441c-4a5f-bece-03f0256770fb",
         english: "Let us move on and come back to this part later.",
         vietnamese: "Mình đi tiếp, lát nữa quay lại chỗ này sau cho rõ.",
         pronunciation: "minh di tiep, lat nua kway lai cho nay sau cho ro",
         context: "Use to spare someone in real time.",
       },
       {
+        cell_id: "4a6f7a33-289c-4d19-a08f-20de772a11f1",
         english: "After the meeting I will tell you the trick I used; it saved me last year.",
         vietnamese: "Họp xong mình kể bạn nghe cái mẹo mình từng dùng, nó cứu mình năm ngoái.",
         pronunciation: "hop xong minh ke ban nghe kai meo minh tung zung, no kuu minh nam ngoai",
@@ -5766,24 +6002,28 @@ export const lessons: VietnameseLesson[] = [
       "Use these phrases when something has just made you visibly red and you need to keep the moment small.",
     phrases: [
       {
+        cell_id: "d8bf1d90-dd5e-4b70-9272-b8292e5c1fad",
         english: "Okay, that one is on me. Let me try that again.",
         vietnamese: "Ok, cái này mình sai, để mình thử lại.",
         pronunciation: "ok, kai nay minh sai, de minh thu lai",
         context: "Use to claim the slip without amplifying.",
       },
       {
+        cell_id: "4cb53c27-6818-43c6-98ad-7eeb8a8531ab",
         english: "Wait, my mind blanked, give me a second.",
         vietnamese: "Khoan, mình đứng hình tí, cho mình một giây.",
         pronunciation: "khoan, minh dung hinh ti, cho minh mot zay",
         context: "Use to buy time without pretending nothing happened.",
       },
       {
+        cell_id: "a47effc9-06d4-42ad-abe9-575acc030ba8",
         english: "Honestly, that was awkward, but we can move past it.",
         vietnamese: "Thiệt là hơi quê, mà mình đi tiếp đi cho lẹ.",
         pronunciation: "thiet la hoi kwe, ma minh di tiep di cho le",
         context: "Use to disarm an awkward moment with humor.",
       },
       {
+        cell_id: "7518dfd4-e565-4be1-be49-df5ae7ef80c3",
         english: "Thanks for not making a big thing out of that.",
         vietnamese: "Cảm ơn mọi người không làm to chuyện cái đó.",
         pronunciation: "kam un moi nguoi khong lam to chuyen kai do",
@@ -5804,24 +6044,28 @@ export const lessons: VietnameseLesson[] = [
       "Use these phrases when an event sounds too much and you want to be honest, not invent fake reasons.",
     phrases: [
       {
+        cell_id: "aa68872c-841a-4d67-9200-22c4493b2423",
         english: "I want to come, but my anxiety with crowds is acting up these days.",
         vietnamese: "Mình muốn đi, mà dạo này đám đông làm mình ngộp.",
         pronunciation: "minh mwon di, ma zao nay dam dong lam minh ngop",
         context: "Use when honestly turning down a noisy event.",
       },
       {
+        cell_id: "e0c3c3b8-6f5c-43ca-9fae-28a53cc21476",
         english: "It is not that I do not love you all, my body just shuts down halfway.",
         vietnamese: "Không phải mình không thương mọi người, mà tới giữa chừng cơ thể mình tự tắt máy.",
         pronunciation: "khong phai minh khong thuong moi nguoi, ma toi giua chung ko the minh tu tat mai",
         context: "Use to make somatic anxiety legible without medicalizing.",
       },
       {
+        cell_id: "9283d972-9350-4738-acbd-3bc71708a153",
         english: "Could we do something smaller, just three people, low light?",
         vietnamese: "Mình làm cái gì nhỏ hơn không, ba người thôi, chỗ nào yên yên.",
         pronunciation: "minh lam kai zi nho hon khong, ba nguoi thoy, cho nao yen yen",
         context: "Use to negotiate a manageable alternative.",
       },
       {
+        cell_id: "0997d7b7-59f2-4f25-ae94-c4c8a0bca9f6",
         english: "Please do not push me; gentle invites land better with me lately.",
         vietnamese: "Đừng ép mình nha, dạo này lời mời nhẹ nhẹ mình mới nhận được.",
         pronunciation: "dung ep minh nha, zao nay loi moi nhe nhe minh moi nhan duoc",
@@ -5842,24 +6086,28 @@ export const lessons: VietnameseLesson[] = [
       "Use these phrases to talk to a friend you can feel slipping away.",
     phrases: [
       {
+        cell_id: "036669fc-c9fa-4853-8236-8c998789234b",
         english: "I do not know if you noticed, but we have been kind of distant lately.",
         vietnamese: "Không biết bạn có để ý không, mà mình thấy hai đứa dạo này xa xa.",
         pronunciation: "khong biet ban ko de y khong, ma minh thay hai dua zao nay xa xa",
         context: "Use to softly open the topic.",
       },
       {
+        cell_id: "16d6ca29-d090-4d82-8417-ad1668ec4c30",
         english: "I am not asking for an explanation; I just wanted to name it.",
         vietnamese: "Mình không hỏi lý do, mình chỉ muốn nói ra cho hai đứa cùng biết.",
         pronunciation: "minh khong hoi ly zo, minh chi mwon noy ra cho hai dua kung biet",
         context: "Use to lower the pressure before they answer.",
       },
       {
+        cell_id: "b9b00368-e891-4f14-a174-8c3d59e00af8",
         english: "If life is just busy, that is fine; I just do not want it to drift by accident.",
         vietnamese: "Nếu chỉ là cuộc sống bận, mình ok; mình chỉ không muốn xa nhau vì lười.",
         pronunciation: "new chi la kuok song ban, minh ok, minh chi khong mwon xa nhau vi luoi",
         context: "Use to differentiate busy-drift from real-drift.",
       },
       {
+        cell_id: "8c3c4efb-b8ee-4b5a-9d06-34d6ba5f8686",
         english: "If we still want this friendship, we have to put it on the calendar like real things.",
         vietnamese: "Nếu hai đứa vẫn muốn giữ tình bạn này, phải đặt lịch đàng hoàng như mọi việc khác.",
         pronunciation: "new hai dua van mwon giu tinh ban nay, phai dat lich dang hoang nhu moi viec khak",
@@ -5880,24 +6128,28 @@ export const lessons: VietnameseLesson[] = [
       "Use these phrases when you are deliberately not addressing something and you want a friend to know you chose this.",
     phrases: [
       {
+        cell_id: "448e0d6b-3427-4888-acb9-e6d600cf7911",
         english: "I know you are waiting for me to push back. I decided not to this time.",
         vietnamese: "Mình biết bạn đợi mình lên tiếng. Mà lần này mình quyết im đi.",
         pronunciation: "minh biet ban doi minh len tieng, ma lan nay minh kwet im di",
         context: "Use to tell a friend you are choosing silence consciously.",
       },
       {
+        cell_id: "7247dac2-9845-4e8a-95dc-e3084a29c5bd",
         english: "It is not that I cannot fight, it is that I am tired of every battle being mine.",
         vietnamese: "Không phải mình không cãi được, là mình mệt vì trận nào cũng tới phiên mình.",
         pronunciation: "khong phai minh khong kai duoc, la minh met vi tran nao kung toi phien minh",
         context: "Use to name the cost of being the always-direct one.",
       },
       {
+        cell_id: "5f7c6f99-12ab-4f00-882c-7ee7f19bb8ec",
         english: "If they bring it up, I will deal with it. I just refuse to start it.",
         vietnamese: "Nếu họ mở lời, mình sẽ xử. Mình chỉ không chịu mở trước.",
         pronunciation: "new ho mo loi, minh se xu, minh chi khong chiu mo truoc",
         context: "Use to set the limit of your own engagement.",
       },
       {
+        cell_id: "b283d538-3e57-424a-8c38-c4d9f32e7db1",
         english: "Tell me later if you think I am avoiding too much; I trust your read.",
         vietnamese: "Sau này bạn thấy mình né nhiều quá thì nói mình nghe, mình tin bạn đánh giá đúng.",
         pronunciation: "sau nay ban thay minh ne nhieu kwa thi noy minh nghe, minh tin ban danh gia dung",
@@ -5918,24 +6170,28 @@ export const lessons: VietnameseLesson[] = [
       "Use these short text phrases when you message someone after a long silence.",
     phrases: [
       {
+        cell_id: "e57d47b8-14e0-4891-951f-917daa03a37a",
         english: "Hey, sudden message — you crossed my mind today.",
         vietnamese: "Ê, tự dưng nhắn nha, hôm nay tự nhiên nghĩ tới bạn.",
         pronunciation: "eh, tu zung nhan nha, hom nay tu nhien nghi toi ban",
         context: "Use as the casual opener after long silence.",
       },
       {
+        cell_id: "5296ea0f-d68b-4f43-99e7-073f96bcc8a2",
         english: "I was thinking about that thing you used to say. It still helps me.",
         vietnamese: "Mình nhớ câu mà bạn hay nói hồi đó. Tới giờ nó vẫn giúp mình.",
         pronunciation: "minh nho kau ma ban hai noy hoi do, toi gio no van zup minh",
         context: "Use to give the reconnection a concrete anchor.",
       },
       {
+        cell_id: "e1b4721c-28b5-4951-965b-5115bb6e80fa",
         english: "I am not going to pretend nothing happened; just want to say hi.",
         vietnamese: "Mình không định giả vờ như chưa có chuyện gì, chỉ là muốn chào bạn thôi.",
         pronunciation: "minh khong dinh za vo nhu chua ko chuyen zi, chi la mwon chao ban thoy",
         context: "Use to acknowledge the gap without diving into it.",
       },
       {
+        cell_id: "590c709a-a058-43d4-a0a3-306968409c35",
         english: "If you want quiet, I will take quiet. No hurt feelings.",
         vietnamese: "Nếu bạn muốn im, mình tôn trọng. Mình không giận đâu.",
         pronunciation: "new ban mwon im, minh ton trong, minh khong zan dau",
@@ -5956,24 +6212,28 @@ export const lessons: VietnameseLesson[] = [
       "Use these phrases to describe a long stretch where nothing pulls at you.",
     phrases: [
       {
+        cell_id: "97d34bf3-3089-40ff-b22d-fe35d3099168",
         english: "I am not sad exactly. I just cannot feel pull toward anything.",
         vietnamese: "Mình không hẳn buồn đâu, mà mình không thấy bị cuốn vào cái gì hết.",
         pronunciation: "minh khong han buon dau, ma minh khong thay bi kuon vao kai zi het",
         context: "Use to differentiate apathy from sadness.",
       },
       {
+        cell_id: "abced685-779e-4b77-9759-2d80f1e72029",
         english: "Every morning is a meh. Not bad. Not anything.",
         vietnamese: "Sáng nào cũng nhợt nhạt. Không tệ. Mà cũng không có gì.",
         pronunciation: "sang nao kung nhot nhat, khong te, ma kung khong ko zi",
         context: "Use to capture the quality of low-grade flatness.",
       },
       {
+        cell_id: "b2912e5e-7073-4d70-a9f7-0be0a332cfca",
         english: "I think I need a slower few weeks before I can want anything again.",
         vietnamese: "Chắc mình cần vài tuần chậm lại trước khi mình muốn cái gì trở lại.",
         pronunciation: "chak minh kun vai tuan cham lai truoc khi minh mwon kai zi tro lai",
         context: "Use to ask permission for a low season.",
       },
       {
+        cell_id: "b583406f-933b-4874-b51a-3b5a9dd5a030",
         english: "Please do not pep-talk me. Just sit with me a bit.",
         vietnamese: "Đừng cổ vũ mình ráng lên nha. Ngồi với mình một xíu là được.",
         pronunciation: "dung ko vu minh rang len nha, ngoy voi minh mot xiu la duoc",
@@ -5994,24 +6254,28 @@ export const lessons: VietnameseLesson[] = [
       "Use these phrases when you want to navigate office dynamics without becoming part of the manipulation.",
     phrases: [
       {
+        cell_id: "b02ac3d1-2c39-49b8-a1d6-8b3be34dfcca",
         english: "I will not weigh in until I have seen it from two sides.",
         vietnamese: "Mình chưa lên tiếng đâu, đợi mình nghe đủ hai phía đã.",
         pronunciation: "minh chua len tieng dau, doi minh nghe du hai phia da",
         context: "Use to protect your judgment from one-sided input.",
       },
       {
+        cell_id: "7a28bbe5-fb74-4b61-a8ae-2fd2353b803a",
         english: "I am not going to be on a team against another team here.",
         vietnamese: "Mình không tham gia việc lập phe đối phe ở đây nha.",
         pronunciation: "minh khong tham gia viec lap fe doi fe u day nha",
         context: "Use to opt out of office faction wars.",
       },
       {
+        cell_id: "24c1dd40-64a7-4ddc-a066-1969a78f0baf",
         english: "If something is real, please tell HR, not the lunch table.",
         vietnamese: "Có chuyện thật thì báo HR đi, đừng kể bàn ăn trưa.",
         pronunciation: "ko chuyen that thi bao HR di, dung ke ban an trua",
         context: "Use to redirect serious issues to proper channels.",
       },
       {
+        cell_id: "a884806a-e49b-4d46-a968-8bd4ba45ee72",
         english: "I would rather be useful than influential here.",
         vietnamese: "Mình thà có ích hơn là có ảnh hưởng ở chỗ này.",
         pronunciation: "minh tha ko ik hon la ko anh huong u cho nay",
@@ -6032,24 +6296,28 @@ export const lessons: VietnameseLesson[] = [
       "Use these phrases when a friend romanticizes startup life and you want to be real with them.",
     phrases: [
       {
+        cell_id: "4602b03e-16dd-4aa8-993a-8c8f7e90484c",
         english: "Honestly, most days I am just keeping the thing alive, not building it.",
         vietnamese: "Thật ra đa số ngày mình chỉ giữ cho nó còn sống, chứ không phải xây.",
         pronunciation: "that ra da phan ngay minh chi giu cho no kon song, chu khong phai xai",
         context: "Use to puncture the build-the-future romanticism.",
       },
       {
+        cell_id: "c97b9950-3c34-4230-a849-9fd8dba60ee5",
         english: "I sleep, but I do not rest. There is a difference.",
         vietnamese: "Mình có ngủ, mà không có nghỉ. Hai cái đó khác nhau.",
         pronunciation: "minh ko ngu, ma khong ko nghi, hai kai do khak nhau",
         context: "Use to describe the perpetual low-grade stress.",
       },
       {
+        cell_id: "419dd9b3-0d17-4269-b2b0-71a1794b39ef",
         english: "If I succeed, the credit will be loud. If I fail, the failure will be loud too.",
         vietnamese: "Thành công thì nó nổi, mà thất bại nó cũng nổi.",
         pronunciation: "thanh kong thi no noi, ma that bai no kung noi",
         context: "Use to name the visibility cost of startup work.",
       },
       {
+        cell_id: "fc1d0eb2-5810-40ac-8a84-6deabf2ee383",
         english: "Some days I do this because I love it. Some days because I am too in to leave.",
         vietnamese: "Có ngày mình làm vì mình thương nó. Có ngày làm vì lỡ rồi không lùi được.",
         pronunciation: "ko ngay minh lam vi minh thuong no, ko ngay lam vi lo roy khong lui duoc",
@@ -6070,24 +6338,28 @@ export const lessons: VietnameseLesson[] = [
       "Use these phrases when you talk honestly with a close friend about a career path you did not pick.",
     phrases: [
       {
+        cell_id: "b1f478cd-7869-4e9c-a551-04ea30fef647",
         english: "Sometimes I wonder what I would be if I had stayed with that other field.",
         vietnamese: "Có lúc mình nghĩ, nếu hồi đó mình ở lại bên kia, giờ mình ra sao.",
         pronunciation: "ko luk minh nghi, new hoi do minh u lai ben kia, gio minh ra sao",
         context: "Use to admit a quiet what-if.",
       },
       {
+        cell_id: "4f4043a5-f90d-49ee-9a40-1f126087bd1a",
         english: "It is not regret exactly, more like curiosity I cannot answer.",
         vietnamese: "Cũng không hẳn tiếc, mà là tò mò mình không trả lời được.",
         pronunciation: "kung khong han tiek, ma la to mo minh khong tra loi duoc",
         context: "Use to be precise about what the feeling actually is.",
       },
       {
+        cell_id: "8026a6e4-7f9e-4d57-8c76-38fa9b4994db",
         english: "I do not want to redo it; I just want to acknowledge it existed.",
         vietnamese: "Mình không muốn làm lại, chỉ muốn công nhận là từng có.",
         pronunciation: "minh khong mwon lam lai, chi mwon kong nhan la tung ko",
         context: "Use to give the past its due without inviting it back.",
       },
       {
+        cell_id: "ba3816ec-672e-409e-aa66-5310dac9a6e3",
         english: "Maybe naming it out loud is the only way to put it down.",
         vietnamese: "Có khi nói ra với bạn là cách duy nhất để mình đặt nó xuống.",
         pronunciation: "ko khi noy ra voi ban la kak zui nhat de minh dat no xuong",
@@ -6108,24 +6380,28 @@ export const lessons: VietnameseLesson[] = [
       "Use these phrases when you are explaining to family or peers why you are leaving the field you spent years in.",
     phrases: [
       {
+        cell_id: "3502b31a-6cad-404e-82da-d60c5c10c1a5",
         english: "I am not throwing the past away; I am taking it into a new shape.",
         vietnamese: "Mình không vứt quá khứ đâu, mình mang nó qua một hình dạng mới.",
         pronunciation: "minh khong vut kwa khu dau, minh mang no kwa mot hinh zang moi",
         context: "Use to reframe a career switch as continuity.",
       },
       {
+        cell_id: "363f9e2d-cf8c-4afe-8826-7a89336ad0b3",
         english: "Yes, I will start a level lower. That part I have made peace with.",
         vietnamese: "Đúng là mình sẽ bắt đầu thấp hơn một bậc. Cái đó mình đã chấp nhận rồi.",
         pronunciation: "dung la minh se bat dau thap hon mot bak, kai do minh da chap nhan roy",
         context: "Use to preempt the obvious follow-up question.",
       },
       {
+        cell_id: "66d62ba4-4350-4245-b0f5-87d2b8757e04",
         english: "I am switching because the days were starting to feel borrowed.",
         vietnamese: "Mình chuyển vì những ngày đó bắt đầu nghe như mình đi mượn cuộc sống.",
         pronunciation: "minh chuyen vi nhung ngay do bat dau nghe nhu minh di muon kuok song",
         context: "Use to express the existential level of the choice.",
       },
       {
+        cell_id: "2357857c-a8eb-4228-bf26-25a4437098f3",
         english: "If I fail, I fail in something I chose. That is enough.",
         vietnamese: "Lỡ thất bại, mình thất bại ở thứ mình chọn. Vậy là đủ.",
         pronunciation: "lo that bai, minh that bai u thu minh chon, vay la du",
@@ -6146,24 +6422,28 @@ export const lessons: VietnameseLesson[] = [
       "Use these phrases to admit you are afraid before a big move.",
     phrases: [
       {
+        cell_id: "210cbc91-c42b-422b-9ccf-92bfed9b8ee2",
         english: "I am scared, and I am still going to do it.",
         vietnamese: "Mình sợ, mà mình vẫn đi.",
         pronunciation: "minh so, ma minh van di",
         context: "Use as a clean self-statement before the leap.",
       },
       {
+        cell_id: "05217a6a-1ca8-4670-a2de-ea392a092dab",
         english: "If I wait until the fear leaves, I never start.",
         vietnamese: "Nếu mình chờ hết sợ rồi mới đi, mình không bao giờ bắt đầu.",
         pronunciation: "new minh cho het so roy moi di, minh khong bao zo bat dau",
         context: "Use to undercut the wait-til-confident trap.",
       },
       {
+        cell_id: "bb8be889-e115-4b58-bd23-07caab5320a1",
         english: "What I am scared of is not the fall; it is the looking dumb after.",
         vietnamese: "Cái mình sợ không phải là ngã, mà là sau khi ngã, người ta nhìn thấy mình.",
         pronunciation: "kai minh so khong phai la nga, ma la sau khi nga, nguoi ta nhin thay minh",
         context: "Use to be precise about the shape of the fear.",
       },
       {
+        cell_id: "14705b81-87c4-4916-bf0c-756b1d0f9045",
         english: "Help me by not asking me how it is going every week.",
         vietnamese: "Bạn giúp mình bằng cách đừng hỏi tuần nào cũng hỏi tới đâu rồi.",
         pronunciation: "ban zup minh bang kak dung hoi tuan nao kung hoi toi dau roy",
@@ -6184,24 +6464,28 @@ export const lessons: VietnameseLesson[] = [
       "Use these phrases when someone has been hot and cold and you need to ask without spiraling.",
     phrases: [
       {
+        cell_id: "db29af4e-7b5d-4110-a02c-39532fe29495",
         english: "I am getting different signals from you this week.",
         vietnamese: "Mình thấy bạn tuần này gửi cho mình tín hiệu hơi khác nhau.",
         pronunciation: "minh thay ban tuan nay gui cho minh tin hieu hoi khak nhau",
         context: "Use to name the inconsistency without accusing.",
       },
       {
+        cell_id: "fc69d07e-9b58-4fd7-aae2-b314cabdbd92",
         english: "I do not need a definition; I just need consistency.",
         vietnamese: "Mình không cần đặt tên cho mình hai đứa, mình chỉ cần ổn định một chút.",
         pronunciation: "minh khong kun dat ten cho minh hai dua, minh chi kun on dinh mot chut",
         context: "Use to lower the conversation pressure while still asking.",
       },
       {
+        cell_id: "7df65bb9-30d5-4f8f-85e5-23ded25ec5ca",
         english: "If you are not sure, say not sure. That is also an answer.",
         vietnamese: "Nếu bạn chưa chắc, nói chưa chắc cũng được, đó cũng là câu trả lời.",
         pronunciation: "new ban chua chak, noy chua chak kung duoc, do kung la kau tra loi",
         context: "Use to give the other person permission to admit uncertainty.",
       },
       {
+        cell_id: "cdceaa21-065b-422e-bada-b7932508c0b3",
         english: "I would rather know now than read patterns alone at night.",
         vietnamese: "Mình thà biết bây giờ còn hơn ngồi tối tự đoán mò.",
         pronunciation: "minh tha biet bay zo kon hon ngoy toi tu doan mo",
@@ -6222,24 +6506,28 @@ export const lessons: VietnameseLesson[] = [
       "Use these phrases when a partner or close friend is consistently distant when you are vulnerable.",
     phrases: [
       {
+        cell_id: "e4e7e0f6-e20c-49e5-885e-3e342701fa70",
         english: "When I share something hard, you go quiet, and I read that as not safe.",
         vietnamese: "Lúc mình chia sẻ chuyện khó, bạn im, mình đọc cái đó là không an toàn.",
         pronunciation: "luk minh chia se chuyen kho, ban im, minh dok kai do la khong an toan",
         context: "Use to name a specific behavior and its impact.",
       },
       {
+        cell_id: "ac1f454c-98af-4fe4-91bb-8f8c1f810985",
         english: "I am not asking you to fix anything; I am asking you to stay in the room.",
         vietnamese: "Mình không xin bạn sửa, mình xin bạn ngồi lại đây với mình.",
         pronunciation: "minh khong xin ban sua, minh xin ban ngoy lai day voi minh",
         context: "Use to redefine the request away from solutions.",
       },
       {
+        cell_id: "4c471f02-d170-4bca-97de-e159a92c647d",
         english: "Even one sentence back tells me you are still here.",
         vietnamese: "Một câu thôi cũng được, để mình biết bạn còn ở đây.",
         pronunciation: "mot kau thoy kung duoc, de minh biet ban kon u day",
         context: "Use to name the minimum version of what works.",
       },
       {
+        cell_id: "2d0bbb3b-85ac-4f02-9fda-45ccea0f2cd9",
         english: "If this is not in your vocabulary, please tell me, so I do not keep waiting.",
         vietnamese: "Nếu chuyện này không có trong khả năng của bạn, nói thẳng giùm mình, để mình khỏi chờ.",
         pronunciation: "new chuyen nay khong ko trong kha nang kua ban, noy thang zum minh, de minh khoi cho",
@@ -6260,24 +6548,28 @@ export const lessons: VietnameseLesson[] = [
       "Use these phrases when a year-old wound is still affecting how you treat someone and you finally need to say it.",
     phrases: [
       {
+        cell_id: "ecf17262-f253-42c2-97ce-b5cba0c585da",
         english: "I have been carrying this since last year. I want to put it down with you.",
         vietnamese: "Mình giữ chuyện này từ năm ngoái tới giờ. Mình muốn bỏ nó xuống với bạn.",
         pronunciation: "minh giu chuyen nay tu nam ngoai toi gio, minh mwon bo no xuong voi ban",
         context: "Use to introduce an old hurt with intention to release.",
       },
       {
+        cell_id: "17b9d76d-69b0-461d-92d8-adbce8bfa895",
         english: "I am not asking for an apology, I am asking to be heard once.",
         vietnamese: "Mình không xin lời xin lỗi, mình chỉ xin được kể một lần thôi.",
         pronunciation: "minh khong xin loi xin loi, minh chi xin duoc ke mot lan thoy",
         context: "Use to lower the threat for the other person.",
       },
       {
+        cell_id: "2cbe58a8-452d-43bf-94ec-d5e09a315e8d",
         english: "I do not want this to keep showing up sideways in our conversations.",
         vietnamese: "Mình không muốn chuyện đó cứ hiện ra ngang ngang trong câu chuyện hai đứa.",
         pronunciation: "minh khong mwon chuyen do ku hien ra ngang ngang trong kau chuyen hai dua",
         context: "Use to explain why the surfacing is necessary.",
       },
       {
+        cell_id: "0967193d-16ac-4a43-af26-75d3b47ff30d",
         english: "After today, I am letting it go, whatever you say.",
         vietnamese: "Sau hôm nay, mình thả ra rồi, bạn nói gì cũng được.",
         pronunciation: "sau hom nay, minh tha ra roy, ban noy zi kung duoc",
@@ -6298,24 +6590,28 @@ export const lessons: VietnameseLesson[] = [
       "Use these phrases when a friend or family member crosses a limit and you want to draw the line warmly.",
     phrases: [
       {
+        cell_id: "a21a0082-ce41-4ea4-9550-96fb9960db40",
         english: "I love you. This thing, I cannot do.",
         vietnamese: "Mình thương bạn. Mà chuyện này, mình không làm được.",
         pronunciation: "minh thuong ban, ma chuyen nay, minh khong lam duoc",
         context: "Use as a warmth-first refusal.",
       },
       {
+        cell_id: "dc37a077-370e-4234-b4a0-56f5a9773b26",
         english: "I am saying no to the thing, not no to you.",
         vietnamese: "Mình từ chối chuyện này, không phải từ chối bạn.",
         pronunciation: "minh tu choi chuyen nay, khong phai tu choi ban",
         context: "Use to separate behavior from relationship.",
       },
       {
+        cell_id: "963cd80f-9225-4d0a-a8e1-b629aba3a1b3",
         english: "I will say it once and not get into a debate about it.",
         vietnamese: "Mình nói một lần thôi nha, không tranh luận chuyện này.",
         pronunciation: "minh noy mot lan thoy nha, khong tranh luan chuyen nay",
         context: "Use to set the meta-rule of the conversation.",
       },
       {
+        cell_id: "2d8df052-d3f5-484f-89bf-81b52b19be0e",
         english: "If this becomes a recurring ask, my answer will not change.",
         vietnamese: "Nếu chuyện này hỏi đi hỏi lại, câu trả lời của mình vẫn vậy.",
         pronunciation: "new chuyen nay hoi di hoi lai, kau tra loi kua minh van vay",
@@ -6336,24 +6632,28 @@ export const lessons: VietnameseLesson[] = [
       "Use these phrases when someone asks what it is really like living abroad as a Vietnamese.",
     phrases: [
       {
+        cell_id: "254228a0-ad3b-4356-b1b6-4deeed7f5512",
         english: "Day-to-day is fine. It is the holidays that hit different.",
         vietnamese: "Ngày thường ổn lắm. Mấy ngày lễ là mới khác hẳn.",
         pronunciation: "ngay thuong on lam, may ngay le la moi khak han",
         context: "Use to describe the asymmetric pull of diaspora life.",
       },
       {
+        cell_id: "b9402fea-4d29-4063-84c9-ece0e0f64c93",
         english: "I am there long enough that I forget; I am still foreign enough to remember.",
         vietnamese: "Mình ở đủ lâu để quên, mà cũng còn đủ lạ để nhớ.",
         pronunciation: "minh u du lau de kwen, ma kung kon du la de nho",
         context: "Use to capture the in-between of diaspora life.",
       },
       {
+        cell_id: "6b0b36ff-c321-4451-a890-4dada6d5df58",
         english: "I miss small things, more than big things.",
         vietnamese: "Mình nhớ mấy chuyện nhỏ, hơn là chuyện to.",
         pronunciation: "minh nho may chuyen nho, hon la chuyen to",
         context: "Use to make the missing legible.",
       },
       {
+        cell_id: "8a23e83e-c697-4326-8d0d-38faaa5b04fa",
         english: "Going back is not a vacation; it is something deeper.",
         vietnamese: "Về Việt Nam không phải đi chơi đâu, nó là cái gì sâu hơn.",
         pronunciation: "ve viet nam khong phai di choi dau, no la kai zi sau hon",
@@ -6374,24 +6674,28 @@ export const lessons: VietnameseLesson[] = [
       "Use these phrases when you are self-conscious about how you sound speaking Vietnamese.",
     phrases: [
       {
+        cell_id: "23988112-df02-4fff-b7e5-6d16ecabd810",
         english: "Be patient with my Vietnamese, the words come out a beat late.",
         vietnamese: "Bạn kiên nhẫn với tiếng Việt của mình nha, mình nói chậm hơn một nhịp.",
         pronunciation: "ban kien nhan voi tieng viet kua minh nha, minh noy cham hon mot nhip",
         context: "Use to ask for grace upfront.",
       },
       {
+        cell_id: "1744b76c-5516-459f-a1d2-d4d9a19e49ce",
         english: "When I get the tone wrong, just tell me; I will not be hurt.",
         vietnamese: "Mình sai dấu, bạn cứ chỉ mình, mình không buồn đâu.",
         pronunciation: "minh sai zau, ban ku chi minh, minh khong buon dau",
         context: "Use to invite correction warmly.",
       },
       {
+        cell_id: "74e540c9-791a-410d-8c1d-9c87a44fce42",
         english: "I know my accent gives me away. I am still going to keep speaking.",
         vietnamese: "Mình biết giọng mình lộ ra liền, mà mình vẫn cứ nói.",
         pronunciation: "minh biet zong minh lo ra lien, ma minh van ku noy",
         context: "Use to hold the choice to keep speaking despite shame.",
       },
       {
+        cell_id: "3dd5df9d-278c-4740-a9b5-d7ec96f654a4",
         english: "If I just stop trying, it disappears completely. So I will keep stumbling.",
         vietnamese: "Nếu mình ngưng tập, nó mất hẳn luôn. Nên mình cứ vấp đi.",
         pronunciation: "new minh ngung tap, no mat han luon, nen minh ku vap di",
@@ -6412,24 +6716,28 @@ export const lessons: VietnameseLesson[] = [
       "Use these phrases when you can feel your Vietnamese eroding and you need to name it before it disappears.",
     phrases: [
       {
+        cell_id: "ff5f8633-f4a3-454e-afde-4ff479ea4f99",
         english: "I notice the words drop one by one over the years.",
         vietnamese: "Mình thấy mấy năm gần đây từ vựng rớt từ từ trong đầu mình.",
         pronunciation: "minh thay may nam gan day tu vung rot tu tu trong dau minh",
         context: "Use to describe gradual language loss honestly.",
       },
       {
+        cell_id: "2313d12a-15b1-4f3a-909e-2955b5867cce",
         english: "It is not that I do not want to remember; it is that the language needs use.",
         vietnamese: "Không phải mình không muốn nhớ, mà là tiếng cần được xài.",
         pronunciation: "khong phai minh khong mwon nho, ma la tieng kun duoc xai",
         context: "Use to defend yourself from the lazy assumption.",
       },
       {
+        cell_id: "7d4f44d5-d636-4e9f-9943-d627e7284a8f",
         english: "Could we have a Vietnamese-only call once a week?",
         vietnamese: "Mình gọi nhau một lần một tuần, chỉ nói tiếng Việt thôi, được không?",
         pronunciation: "minh goi nhau mot lan mot tuan, chi noy tieng viet thoy, duoc khong",
         context: "Use to propose a concrete preservation routine.",
       },
       {
+        cell_id: "29214f51-f1f9-46c0-9133-75dd96e209ee",
         english: "I would rather sound clumsy with you than fluent only in English.",
         vietnamese: "Mình thà nói tiếng Việt vụng về với mẹ còn hơn chỉ giỏi tiếng Anh thôi.",
         pronunciation: "minh tha noy tieng viet vung ve voi may kon hon chi zoi tieng anh thoy",
@@ -6450,24 +6758,28 @@ export const lessons: VietnameseLesson[] = [
       "Use these short phrases to interrupt politely or naturally in real Vietnamese conversation.",
     phrases: [
       {
+        cell_id: "d58075c2-2a3e-407c-ad46-9ff31497193c",
         english: "Wait wait, I just want to add one thing.",
         vietnamese: "Khoan khoan, cho mình bổ sung một câu nha.",
         pronunciation: "khoan khoan, cho minh bo sung mot kau nha",
         context: "Use to insert a quick addition to a conversation.",
       },
       {
+        cell_id: "d5a5374d-6560-44c4-905c-47f5be4633ca",
         english: "Hold on — back up, I lost you at the part about your boss.",
         vietnamese: "Khoan đã, lùi lại đoạn sếp bạn cái đi, mình rớt khúc đó rồi.",
         pronunciation: "khoan da, lui lai doan sep ban kai di, minh rot khuk do roy",
         context: "Use to ask the speaker to back up.",
       },
       {
+        cell_id: "97f68aa1-a4da-4eae-a080-db4075f1f0d0",
         english: "Sorry, can I jump in really quick?",
         vietnamese: "Xin lỗi cắt ngang nha, mình chen nhanh một câu được không.",
         pronunciation: "xin loi kat ngang nha, minh chen nhanh mot kau duoc khong",
         context: "Use as a polite interruption marker.",
       },
       {
+        cell_id: "a57b6d0e-3eca-414d-8cf3-d61c59389816",
         english: "Continue continue, I will not interrupt again.",
         vietnamese: "Bạn cứ kể tiếp, mình không chen nữa đâu.",
         pronunciation: "ban ku ke tiep, minh khong chen nua dau",
@@ -6488,24 +6800,28 @@ export const lessons: VietnameseLesson[] = [
       "Use these phrases to verbally name a sub-text you have picked up so the conversation can move forward.",
     phrases: [
       {
+        cell_id: "2287d888-ddda-4e68-b023-336130284c66",
         english: "When you said busy three times, I read it as not interested.",
         vietnamese: "Bạn nói bận tới ba lần, mình hiểu ngầm là không hứng thú.",
         pronunciation: "ban noy ban toi ba lan, minh hieu ngam la khong hung thu",
         context: "Use to name a polite refusal you decoded.",
       },
       {
+        cell_id: "b62d08e3-7b1c-488d-8460-1bf828610943",
         english: "Tell me if I am wrong, but it sounds like you do not want to talk about her.",
         vietnamese: "Nói mình sai cũng được, mà nghe kiểu bạn không muốn nói về chỉ.",
         pronunciation: "noy minh sai kung duoc, ma nghe kieu ban khong mwon noy ve chi",
         context: "Use to invite correction while naming what you heard.",
       },
       {
+        cell_id: "838bdf3c-23b4-46f2-bf4b-c8cbcd8d0475",
         english: "What I heard was not the words; it was the pause before them.",
         vietnamese: "Cái mình nghe không phải là chữ, mà là khoảng lặng trước cái chữ đó.",
         pronunciation: "kai minh nghe khong phai la chu, ma la khoang lang truoc kai chu do",
         context: "Use to describe an emotionally precise read.",
       },
       {
+        cell_id: "efa6b333-c158-43b0-b6a3-6324b39d78d9",
         english: "If I am projecting, please correct me.",
         vietnamese: "Nếu mình suy diễn, bạn cứ điều chỉnh mình lại nha.",
         pronunciation: "new minh suy zien, ban ku dieu chinh minh lai nha",
@@ -6526,24 +6842,28 @@ export const lessons: VietnameseLesson[] = [
       "Use these as quick, real reactions rather than full sentences. They make you sound native.",
     phrases: [
       {
+        cell_id: "56f1e2b1-b1fb-44d6-8162-7a102cea59a0",
         english: "For real?",
         vietnamese: "Thiệt á?",
         pronunciation: "thiet a",
         context: "Use as a quick reaction to surprising news.",
       },
       {
+        cell_id: "f8e56bbc-73e9-4576-8328-8c5216d37b18",
         english: "Mmm yeah, makes sense.",
         vietnamese: "Ờ ha, hợp lý nha.",
         pronunciation: "uh ha, hop ly nha",
         context: "Use as a calm acknowledgment of a point.",
       },
       {
+        cell_id: "706a9170-ad06-4b0d-9fd7-103517103ebe",
         english: "Phew, I thought worse.",
         vietnamese: "Ủa, mình tưởng tệ hơn.",
         pronunciation: "ua, minh tuong te hon",
         context: "Use for relief after hearing news.",
       },
       {
+        cell_id: "a6850409-50ad-4204-b435-e149595ba7cb",
         english: "Got it, no need to explain more.",
         vietnamese: "Hiểu rồi, không cần giải thích thêm.",
         pronunciation: "hieu roy, khong kun giai thik them",
@@ -6564,24 +6884,28 @@ export const lessons: VietnameseLesson[] = [
       "Use these phrases when a request needs to feel polite enough to land but firm enough to be real.",
     phrases: [
       {
+        cell_id: "215c88cc-1be7-461a-b7f1-2efc6188e02d",
         english: "Anh, just one small thing I want to ask.",
         vietnamese: "Anh cho em xin một chuyện nhỏ thôi.",
         pronunciation: "anh cho em xin mot chuyen nho thoy",
         context: "Use to introduce a request softly.",
       },
       {
+        cell_id: "49d94d6f-0a79-48e0-8bc4-8ae1147495ec",
         english: "I do not mean to be heavy, but I am asking you to consider it for me.",
         vietnamese: "Em không dám nói nặng đâu, mà em xin anh cân nhắc giúp em.",
         pronunciation: "em khong zam noy nang dau, ma em xin anh kan nhak zup em",
         context: "Use to add a humility layer before the request.",
       },
       {
+        cell_id: "6ac520d9-6078-4fa1-a68e-4c0a4468bde0",
         english: "Please understand for me, just this once.",
         vietnamese: "Anh thông cảm cho em một lần này nha.",
         pronunciation: "anh thong kam cho em mot lan nay nha",
         context: "Use to bookend the ask with a request for understanding.",
       },
       {
+        cell_id: "503c6745-4d5c-4ac8-ae18-8325b4656bf5",
         english: "Thanks in advance, whichever way you decide.",
         vietnamese: "Em cảm ơn anh trước, cho dù anh quyết sao cũng được.",
         pronunciation: "em kam un anh truoc, cho zu anh kwet sao kung duoc",
@@ -6602,24 +6926,28 @@ export const lessons: VietnameseLesson[] = [
       "Use these phrases to push back politely without ever saying I disagree.",
     phrases: [
       {
+        cell_id: "a00e9c8e-7d50-4a16-90a1-ab2821400db3",
         english: "Hmm, that is one way to look at it.",
         vietnamese: "Hơm, cũng là một cách nhìn nha.",
         pronunciation: "hum, kung la mot kak nhin nha",
         context: "Use to neither agree nor commit.",
       },
       {
+        cell_id: "46cbd7ca-ae43-43ff-9c22-892d71ef4172",
         english: "There might be another angle worth considering too.",
         vietnamese: "Có khi mình cũng nên xem qua một góc khác nữa.",
         pronunciation: "ko khi minh kung nen xem kwa mot gok khak nua",
         context: "Use to add an alternative without rejecting.",
       },
       {
+        cell_id: "079c261a-a585-402e-9e56-1d5fc8c3a443",
         english: "Let me think about that one again before I respond.",
         vietnamese: "Để mình suy nghĩ lại cái này trước rồi mình trả lời.",
         pronunciation: "de minh suy nghi lai kai nay truoc roy minh tra loi",
         context: "Use to buy time when you do not want to commit.",
       },
       {
+        cell_id: "ae70108c-8390-4a6e-9bd4-a9ee9b91b584",
         english: "I get the logic, but somehow I am not fully convinced.",
         vietnamese: "Mình hiểu logic, mà sao mình chưa thấy thuyết phục hẳn.",
         pronunciation: "minh hieu logic, ma sao minh chua thay thuyet phuk han",
@@ -6640,24 +6968,28 @@ export const lessons: VietnameseLesson[] = [
       "Use these phrases when you are mid-thought, working it out, and need conversational space.",
     phrases: [
       {
+        cell_id: "b73295e0-09d0-4dae-8803-19b388c8f6d7",
         english: "How should I put this... hmm.",
         vietnamese: "Sao mình nói nhỉ... ờm.",
         pronunciation: "sao minh noy nhi um",
         context: "Use as a thoughtful pause that buys time.",
       },
       {
+        cell_id: "87ef698b-c9db-48e2-a72b-3f7597a28021",
         english: "I am not sure yet, but maybe...",
         vietnamese: "Mình chưa chắc, mà có thể là...",
         pronunciation: "minh chua chak, ma ko the la",
         context: "Use to flag that an idea is forming, not finished.",
       },
       {
+        cell_id: "e24a0051-f2d2-4b74-a331-d776d8ae7ee7",
         english: "Wait, let me retract that and say it better.",
         vietnamese: "Khoan, để mình rút lại câu đó nói lại cho gọn.",
         pronunciation: "khoan, de minh rut lai kau do noy lai cho gon",
         context: "Use to revise on the fly.",
       },
       {
+        cell_id: "bb917472-976a-400e-a04d-031a297fe53f",
         english: "I am thinking out loud, do not lock me in yet.",
         vietnamese: "Mình đang nghĩ ra tiếng thôi, đừng chốt sớm nha.",
         pronunciation: "minh dang nghi ra tieng thoy, dung chot som nha",
@@ -6678,24 +7010,28 @@ export const lessons: VietnameseLesson[] = [
       "Use these short connectors and fillers to make casual speech feel native.",
     phrases: [
       {
+        cell_id: "fa16017d-57d8-4dcc-9fc5-77f2bf20bfa2",
         english: "And then like, the whole thing went weird.",
         vietnamese: "Xong á, kiểu cả vụ đó thành lạ luôn.",
         pronunciation: "xong a, kieu ka vu do thanh la luon",
         context: "Use as a casual story connector.",
       },
       {
+        cell_id: "0546c186-bc38-40f8-93a1-b0acf30be140",
         english: "Anyway, what about you?",
         vietnamese: "Mà nói hoài chuyện mình, còn bạn sao rồi?",
         pronunciation: "ma noy hoai chuyen minh, kon ban sao roy",
         context: "Use to flip the conversation back.",
       },
       {
+        cell_id: "a4b1d73e-b08b-46d4-bcf4-b1ad001505c5",
         english: "So, like, that is kind of how it ended.",
         vietnamese: "Thì, đại khái nó kết thúc kiểu đó á.",
         pronunciation: "thi, dai khai no ket thuk kieu do a",
         context: "Use to close a story casually.",
       },
       {
+        cell_id: "d0486efe-8042-4892-81a4-b910be3e8b1a",
         english: "Hmm wait, what was I saying again?",
         vietnamese: "Ơ khoan, mình đang nói tới đâu rồi nhỉ.",
         pronunciation: "uh khoan, minh dang noy toi dau roy nhi",
@@ -6817,38 +7153,38 @@ export const lessons: VietnameseLesson[] = [
     ], cultural_note: "Vietnamese breakups often avoid the word chia tay until the very end; the pre-breakup vocabulary is richer and more useful to learn.", tip: "Use mất dấu mình — losing your own trail — a poetic and precise phrase for identity drift inside a relationship." },
   {
     id: 248, level: "B1", title_en: "Reading Between The Lines", subtitle: "What Vietnamese people actually mean vs what they say.", intro: "Use these phrases when you need to decode indirect Vietnamese communication without asking for translation.", phrases: [
-      { english: "\"Để mai tính\" often means \"I don't want to, but I won't say no to your face.\"", vietnamese: "\"Để mai tính\" thường có nghĩa là \"tôi không muốn, mà không nỡ nói không trước mặt bạn.\"", pronunciation: "de mai ting thuong ko ngia la toy khong muon, ma khong no noy khong chuok mat ban", context: "Use to decode a common delaying phrase." },
-      { english: "\"Cũng được\" often means \"it's barely acceptable, but I won't complain.\"", vietnamese: "\"Cũng được\" thường là \"tạm chấp nhận, nhưng không hài lòng.\"", pronunciation: "kung duoc thuong la tam chap nhan, nhung khong hai long", context: "Use to understand lukewarm agreement." },
-      { english: "\"Để coi\" means \"I am not committing yet, and that is intentional.\"", vietnamese: "\"Để coi\" nghĩa là \"tôi chưa hứa gì hết, và đó là cố ý.\"", pronunciation: "de koy ngia la toy chua hua zi het, va do la ko y", context: "Use to recognize non-commitment." },
-      { english: "\"Thôi kệ\" means \"I have given up caring, but I do not want to explain why.\"", vietnamese: "\"Thôi kệ\" nghĩa là \"tôi bỏ qua rồi, mà không muốn giải thích tại sao.\"", pronunciation: "thoy ke ngia la toy bo kwa roy, ma khong muon giai thik tai sao", context: "Use to recognize emotional withdrawal masked as indifference." },
+      { cell_id: "d2979fa4-8482-42a7-be71-8ef514dbb7d9", english: "\"Để mai tính\" often means \"I don't want to, but I won't say no to your face.\"", vietnamese: "\"Để mai tính\" thường có nghĩa là \"tôi không muốn, mà không nỡ nói không trước mặt bạn.\"", pronunciation: "de mai ting thuong ko ngia la toy khong muon, ma khong no noy khong chuok mat ban", context: "Use to decode a common delaying phrase." },
+      { cell_id: "9bd34955-e545-4e89-b9af-8768d4f02b08", english: "\"Cũng được\" often means \"it's barely acceptable, but I won't complain.\"", vietnamese: "\"Cũng được\" thường là \"tạm chấp nhận, nhưng không hài lòng.\"", pronunciation: "kung duoc thuong la tam chap nhan, nhung khong hai long", context: "Use to understand lukewarm agreement." },
+      { cell_id: "d2e5f029-6f31-4c11-b3eb-7a0e0e13522e", english: "\"Để coi\" means \"I am not committing yet, and that is intentional.\"", vietnamese: "\"Để coi\" nghĩa là \"tôi chưa hứa gì hết, và đó là cố ý.\"", pronunciation: "de koy ngia la toy chua hua zi het, va do la ko y", context: "Use to recognize non-commitment." },
+      { cell_id: "a9472d56-941f-471a-a301-e3e47e66e493", english: "\"Thôi kệ\" means \"I have given up caring, but I do not want to explain why.\"", vietnamese: "\"Thôi kệ\" nghĩa là \"tôi bỏ qua rồi, mà không muốn giải thích tại sao.\"", pronunciation: "thoy ke ngia la toy bo kwa roy, ma khong muon giai thik tai sao", context: "Use to recognize emotional withdrawal masked as indifference." },
     ], cultural_note: "Indirectness in Vietnamese is not passive-aggressive by default — it is often face-saving for you, not hiding from you.", tip: "When you hear để mai tính or để coi, do not push. Ask one follow-up next week instead." },
   {
     id: 249, level: "B1", title_en: "When Someone Says 'Để Từ Từ'", subtitle: "Decoding procrastination as a soft no.", intro: "Use these phrases to recognize when Vietnamese delay language is actually refusal, and how to respond without cornering anyone.", phrases: [
-      { english: "\"Để từ từ\" on something small means \"I will do it when I feel like it.\"", vietnamese: "\"Để từ từ\" với việc nhỏ nghĩa là \"khi nào rảnh tôi làm.\"", pronunciation: "de tu tu voi viek nho ngia la khi nao ranh toy lam", context: "Use to recognize casual delay." },
-      { english: "\"Để từ từ\" on something important often means \"I do not want to do this.\"", vietnamese: "\"Để từ từ\" với việc quan trọng thường là \"tôi không muốn làm việc này.\"", pronunciation: "de tu tu voi viek kwan trong thuong la toy khong muon lam viek nay", context: "Use to read refusal behind delay." },
-      { english: "Instead of pushing, ask: \"Is there a part of this that feels too heavy right now?\"", vietnamese: "Thay vì thúc, hãy hỏi: \"Có phần nào trong này khiến bạn thấy nặng không?\"", pronunciation: "thay vi thuk, hay hoi: ko fun nao trong nay khien ban thay nang khong", context: "Use to open a door without demanding entry." },
-      { english: "\"Khi nào bạn sẵn sàng thì mình bàn tiếp, mình không hối.\"", vietnamese: "\"Khi nào bạn sẵn sàng thì mình bàn tiếp, mình không hối.\"", pronunciation: "khi nao ban sang sang thi minh ban tiep, minh khong hoy", context: "Use to withdraw pressure while keeping the door open." },
+      { cell_id: "3b939c4e-bc02-42e8-8fb7-5f435341fe12", english: "\"Để từ từ\" on something small means \"I will do it when I feel like it.\"", vietnamese: "\"Để từ từ\" với việc nhỏ nghĩa là \"khi nào rảnh tôi làm.\"", pronunciation: "de tu tu voi viek nho ngia la khi nao ranh toy lam", context: "Use to recognize casual delay." },
+      { cell_id: "93a4d827-e854-4029-93b2-a8f08729d008", english: "\"Để từ từ\" on something important often means \"I do not want to do this.\"", vietnamese: "\"Để từ từ\" với việc quan trọng thường là \"tôi không muốn làm việc này.\"", pronunciation: "de tu tu voi viek kwan trong thuong la toy khong muon lam viek nay", context: "Use to read refusal behind delay." },
+      { cell_id: "f24079bb-2912-4090-9efb-eb5bffd60dde", english: "Instead of pushing, ask: \"Is there a part of this that feels too heavy right now?\"", vietnamese: "Thay vì thúc, hãy hỏi: \"Có phần nào trong này khiến bạn thấy nặng không?\"", pronunciation: "thay vi thuk, hay hoi: ko fun nao trong nay khien ban thay nang khong", context: "Use to open a door without demanding entry." },
+      { cell_id: "eac281d3-2102-4dfe-a23a-f8fe8792c9bf", english: "\"Khi nào bạn sẵn sàng thì mình bàn tiếp, mình không hối.\"", vietnamese: "\"Khi nào bạn sẵn sàng thì mình bàn tiếp, mình không hối.\"", pronunciation: "khi nao ban sang sang thi minh ban tiep, minh khong hoy", context: "Use to withdraw pressure while keeping the door open." },
     ], cultural_note: "Từ từ is a core Vietnamese pace word — it can mean patience, reluctance, or resistance depending on tone and context.", tip: "Pair từ từ with the topic to gauge how heavy the resistance is: để từ từ on a coffee invitation vs để từ từ on a marriage conversation are entirely different signals." },
   {
     id: 250, level: "B1", title_en: "The Art Of The Half-Yes", subtitle: "Partial agreements that buy time without lying.", intro: "Use these phrases when you need to neither commit nor refuse, in the Vietnamese style of graceful non-answer.", phrases: [
-      { english: "\"Cũng có lý\" — you have a point, but I am not fully convinced.", vietnamese: "\"Cũng có lý\" — bạn nói có lý, mà tôi chưa hoàn toàn đồng ý.", pronunciation: "kung ko lee — ban noy ko lee, ma toy chua hwan toan dong y", context: "Use to acknowledge without agreeing." },
-      { english: "\"Vậy hả\" — I heard you, and I am processing.", vietnamese: "\"Vậy hả\" — tôi nghe rồi, đang xử lý.", pronunciation: "vay ha — toy nghe roi, dang xu ly", context: "Use to acknowledge receipt without taking a position." },
-      { english: "\"Ừa, mà...\" — yes, but...", vietnamese: "\"Ừa, mà...\" — đồng ý phần đầu, mà phần sau mới là chính.", pronunciation: "ua, ma — dong y fun dau, ma fun sau moi la chinh", context: "Use to give a soft yes that leads to your real objection." },
-      { english: "\"Chắc vậy\" — probably, and I am not ready to say more.", vietnamese: "\"Chắc vậy\" — có lẽ đúng, mà tôi chưa sẵn sàng nói thêm.", pronunciation: "chak vay — ko le dung, ma toy chua sang sang noy them", context: "Use to end a topic without confirming or denying." },
+      { cell_id: "466bd34e-cd74-4d31-8f56-e54ec418bfcc", english: "\"Cũng có lý\" — you have a point, but I am not fully convinced.", vietnamese: "\"Cũng có lý\" — bạn nói có lý, mà tôi chưa hoàn toàn đồng ý.", pronunciation: "kung ko lee — ban noy ko lee, ma toy chua hwan toan dong y", context: "Use to acknowledge without agreeing." },
+      { cell_id: "5d321ba6-6959-48e7-82d6-d095c917125a", english: "\"Vậy hả\" — I heard you, and I am processing.", vietnamese: "\"Vậy hả\" — tôi nghe rồi, đang xử lý.", pronunciation: "vay ha — toy nghe roi, dang xu ly", context: "Use to acknowledge receipt without taking a position." },
+      { cell_id: "f8baaccc-3c3b-4b9c-9c53-0556e18dd82f", english: "\"Ừa, mà...\" — yes, but...", vietnamese: "\"Ừa, mà...\" — đồng ý phần đầu, mà phần sau mới là chính.", pronunciation: "ua, ma — dong y fun dau, ma fun sau moi la chinh", context: "Use to give a soft yes that leads to your real objection." },
+      { cell_id: "bc725349-8dec-4928-9b9f-2f7ff7948ffd", english: "\"Chắc vậy\" — probably, and I am not ready to say more.", vietnamese: "\"Chắc vậy\" — có lẽ đúng, mà tôi chưa sẵn sàng nói thêm.", pronunciation: "chak vay — ko le dung, ma toy chua sang sang noy them", context: "Use to end a topic without confirming or denying." },
     ], cultural_note: "The half-yes is a social lubricant in Vietnam; it preserves harmony while leaving room to change position later without losing face.", tip: "When you hear chắc vậy or vậy hả, do not treat them as answers. Treat them as the conversation equivalent of a yellow light." },
   {
     id: 251, level: "B1", title_en: "When Your Partner Stops Talking", subtitle: "Silence as communication in Vietnamese relationships.", intro: "Use these phrases to name silence without attacking, and to gently reopen a conversation that has gone quiet.", phrases: [
-      { english: "\"Em không giận, em chỉ không biết nói sao cho anh hiểu.\"", vietnamese: "\"Em không giận, em chỉ không biết nói sao cho anh hiểu.\"", pronunciation: "em khong zan, em chi khong biet noy sao cho anh hiew", context: "Use when the silence is frustration, not withdrawal." },
-      { english: "\"Im lặng của anh to hơn câu trả lời anh không nói.\"", vietnamese: "\"Im lặng của anh to hơn câu trả lời anh không nói.\"", pronunciation: "im lang kua anh to hon kau tra loi anh khong noy", context: "Use to name what the silence is communicating." },
-      { english: "\"Khi nào anh sẵn sàng nói, em vẫn ở đây. Không đi đâu hết.\"", vietnamese: "\"Khi nào anh sẵn sàng nói, em vẫn ở đây. Không đi đâu hết.\"", pronunciation: "khi nao anh sang sang noy, em van u day, khong di dau het", context: "Use to leave the door open without demanding speech." },
-      { english: "\"Em cần biết là mình đang im lặng cùng nhau, hay im lặng một mình.\"", vietnamese: "\"Em cần biết là mình đang im lặng cùng nhau, hay im lặng một mình.\"", pronunciation: "em kun biet la minh dang im lang kung nhau, hay im lang mot minh", context: "Use to distinguish shared quiet from isolation." },
+      { cell_id: "29553f27-7910-4675-b17d-0f03a3444692", english: "\"Em không giận, em chỉ không biết nói sao cho anh hiểu.\"", vietnamese: "\"Em không giận, em chỉ không biết nói sao cho anh hiểu.\"", pronunciation: "em khong zan, em chi khong biet noy sao cho anh hiew", context: "Use when the silence is frustration, not withdrawal." },
+      { cell_id: "023058c8-c93f-4536-aeba-7795b3f23afc", english: "\"Im lặng của anh to hơn câu trả lời anh không nói.\"", vietnamese: "\"Im lặng của anh to hơn câu trả lời anh không nói.\"", pronunciation: "im lang kua anh to hon kau tra loi anh khong noy", context: "Use to name what the silence is communicating." },
+      { cell_id: "0481db2d-5523-4fcf-b56a-8da3f70429ee", english: "\"Khi nào anh sẵn sàng nói, em vẫn ở đây. Không đi đâu hết.\"", vietnamese: "\"Khi nào anh sẵn sàng nói, em vẫn ở đây. Không đi đâu hết.\"", pronunciation: "khi nao anh sang sang noy, em van u day, khong di dau het", context: "Use to leave the door open without demanding speech." },
+      { cell_id: "7561694a-2398-4066-9e95-d2774b09f319", english: "\"Em cần biết là mình đang im lặng cùng nhau, hay im lặng một mình.\"", vietnamese: "\"Em cần biết là mình đang im lặng cùng nhau, hay im lặng một mình.\"", pronunciation: "em kun biet la minh dang im lang kung nhau, hay im lang mot minh", context: "Use to distinguish shared quiet from isolation." },
     ], cultural_note: "Vietnamese silence inside relationships can be conflict avoidance, emotional overload, or the cultural habit of processing alone before speaking; it is not always punishment.", tip: "Use im lặng của anh/chị to hơn câu trả lời — it names the weight without blaming the person." },
   {
     id: 252, level: "B1", title_en: "Dating A Co-Worker Quietly", subtitle: "Office romance in Vietnamese workplace culture.", intro: "Use these phrases when you are dating someone at work and need to navigate it without office gossip consuming your relationship.", phrases: [
-      { english: "\"Tụi mình giữ kín chuyện này ở công ty nha. Không phải vì xấu hổ, mà vì đỡ phiền.\"", vietnamese: "\"Tụi mình giữ kín chuyện này ở công ty nha. Không phải vì xấu hổ, mà vì đỡ phiền.\"", pronunciation: "tui minh ziu kin chuyen nay u kong ty nha, khong phai vi xau ho, ma vi do fien", context: "Use to set the boundary without making it sound shameful." },
-      { english: "\"Nếu ai hỏi, tụi mình nói là bạn. Không cần giải thích thêm.\"", vietnamese: "\"Nếu ai hỏi, tụi mình nói là bạn. Không cần giải thích thêm.\"", pronunciation: "new ai hoy, tui minh noy la ban, khong kun giai thik them", context: "Use to align on the public story." },
-      { english: "\"Ở văn phòng mình chuyên nghiệp. Chuyện tình cảm để ở ngoài.\"", vietnamese: "\"Ở văn phòng mình chuyên nghiệp. Chuyện tình cảm để ở ngoài.\"", pronunciation: "u van fong minh chuyen ngiep, chuyen tinh kam de u ngoai", context: "Use to agree on workplace behavior." },
-      { english: "\"Nếu chuyện mình lộ, ai sẽ bị ảnh hưởng nhiều nhất? Mình tính trước đi.\"", vietnamese: "\"Nếu chuyện mình lộ, ai sẽ bị ảnh hưởng nhiều nhất? Mình tính trước đi.\"", pronunciation: "new chuyen minh lo, ai se bi anh huong nhieu nhat, minh tinh chuok di", context: "Use to do the hard thinking before it becomes necessary." },
+      { cell_id: "367838a5-08f4-4e39-bf02-b7e068314381", english: "\"Tụi mình giữ kín chuyện này ở công ty nha. Không phải vì xấu hổ, mà vì đỡ phiền.\"", vietnamese: "\"Tụi mình giữ kín chuyện này ở công ty nha. Không phải vì xấu hổ, mà vì đỡ phiền.\"", pronunciation: "tui minh ziu kin chuyen nay u kong ty nha, khong phai vi xau ho, ma vi do fien", context: "Use to set the boundary without making it sound shameful." },
+      { cell_id: "6110e727-f7ac-464a-a96a-be087ad9b286", english: "\"Nếu ai hỏi, tụi mình nói là bạn. Không cần giải thích thêm.\"", vietnamese: "\"Nếu ai hỏi, tụi mình nói là bạn. Không cần giải thích thêm.\"", pronunciation: "new ai hoy, tui minh noy la ban, khong kun giai thik them", context: "Use to align on the public story." },
+      { cell_id: "4e42f876-caa8-44b8-854a-dcca28ced0e8", english: "\"Ở văn phòng mình chuyên nghiệp. Chuyện tình cảm để ở ngoài.\"", vietnamese: "\"Ở văn phòng mình chuyên nghiệp. Chuyện tình cảm để ở ngoài.\"", pronunciation: "u van fong minh chuyen ngiep, chuyen tinh kam de u ngoai", context: "Use to agree on workplace behavior." },
+      { cell_id: "a304b29f-9017-4a83-978e-58e5e4a2ca5d", english: "\"Nếu chuyện mình lộ, ai sẽ bị ảnh hưởng nhiều nhất? Mình tính trước đi.\"", vietnamese: "\"Nếu chuyện mình lộ, ai sẽ bị ảnh hưởng nhiều nhất? Mình tính trước đi.\"", pronunciation: "new chuyen minh lo, ai se bi anh huong nhieu nhat, minh tinh chuok di", context: "Use to do the hard thinking before it becomes necessary." },
     ], cultural_note: "Vietnamese offices gossip heavily; a quiet workplace relationship that stays quiet earns respect; one that leaks becomes the month's entertainment.", tip: "Use đỡ phiền — less hassle — it frames privacy as practical, not secretive." },
   {
     id: 253, level: "B1", title_en: "Roleplay: The 'We Need To Talk' Conversation", subtitle: "In Vietnamese, this conversation has a different shape.", intro: "Use this dialogue when you need to have a serious relationship check-in without the coldness that 'we need to talk' can carry in English.", phrases: [], dialogue: [
@@ -6861,59 +7197,59 @@ export const lessons: VietnameseLesson[] = [
     ], cultural_note: "Vietnamese serious conversations are often softened with time buffers (cuối tuần, not now) and reassurance, which reduces defensiveness before the talk even starts.", tip: "Opening with không phải chia tay is powerful — it removes the worst fear immediately and lets the real topic breathe." },
   {
     id: 254, level: "B1", title_en: "Jealousy Without Accusation", subtitle: "Naming insecurity softly in Vietnamese.", intro: "Use these phrases when you feel jealous but do not want to control, accuse, or sound weak.", phrases: [
-      { english: "\"Không phải là em không tin anh. Là em không tin cái cảm giác này trong bụng em.\"", vietnamese: "\"Không phải là em không tin anh. Là em không tin cái cảm giác này trong bụng em.\"", pronunciation: "khong phai la em khong tin anh, la em khong tin kai kam zak nay trong bung em", context: "Use to own the feeling without projecting it." },
-      { english: "\"Em biết anh không làm gì sai. Mà em vẫn thấy khó chịu, và em muốn nói ra thay vì để nó tự lớn.\"", vietnamese: "\"Em biết anh không làm gì sai. Mà em vẫn thấy khó chịu, và em muốn nói ra thay vì để nó tự lớn.\"", pronunciation: "em biet anh khong lam zi sai, ma em van thay kho chiu, va em muon noy ra thay vi de no tu lon", context: "Use to share jealousy as information, not accusation." },
-      { english: "\"Em chỉ cần anh biết, chứ không cần anh sửa gì hết.\"", vietnamese: "\"Em chỉ cần anh biết, chứ không cần anh sửa gì hết.\"", pronunciation: "em chi kun anh biet, chu khong kun anh sua zi het", context: "Use to ask for acknowledgment, not action." },
-      { english: "\"Có khi em ghen với khoảng thời gian anh vui mà không có em trong đó.\"", vietnamese: "\"Có khi em ghen với khoảng thời gian anh vui mà không có em trong đó.\"", pronunciation: "ko khi em gen voi khwang thoi zan anh vui ma khong ko em trong do", context: "Use to name a specific, non-territorial jealousy." },
+      { cell_id: "5b5c69c5-313d-4e14-a6f4-ef5d662e0084", english: "\"Không phải là em không tin anh. Là em không tin cái cảm giác này trong bụng em.\"", vietnamese: "\"Không phải là em không tin anh. Là em không tin cái cảm giác này trong bụng em.\"", pronunciation: "khong phai la em khong tin anh, la em khong tin kai kam zak nay trong bung em", context: "Use to own the feeling without projecting it." },
+      { cell_id: "9e02700d-2f30-40db-bdb3-8c401e030395", english: "\"Em biết anh không làm gì sai. Mà em vẫn thấy khó chịu, và em muốn nói ra thay vì để nó tự lớn.\"", vietnamese: "\"Em biết anh không làm gì sai. Mà em vẫn thấy khó chịu, và em muốn nói ra thay vì để nó tự lớn.\"", pronunciation: "em biet anh khong lam zi sai, ma em van thay kho chiu, va em muon noy ra thay vi de no tu lon", context: "Use to share jealousy as information, not accusation." },
+      { cell_id: "90bc76cd-68af-4ade-bf82-1207b869cca5", english: "\"Em chỉ cần anh biết, chứ không cần anh sửa gì hết.\"", vietnamese: "\"Em chỉ cần anh biết, chứ không cần anh sửa gì hết.\"", pronunciation: "em chi kun anh biet, chu khong kun anh sua zi het", context: "Use to ask for acknowledgment, not action." },
+      { cell_id: "83f7b6ff-3dc3-4559-a1f5-9387a05f62b2", english: "\"Có khi em ghen với khoảng thời gian anh vui mà không có em trong đó.\"", vietnamese: "\"Có khi em ghen với khoảng thời gian anh vui mà không có em trong đó.\"", pronunciation: "ko khi em gen voi khwang thoi zan anh vui ma khong ko em trong do", context: "Use to name a specific, non-territorial jealousy." },
     ], cultural_note: "Vietnamese jealousy talk often defaults to drama or silence; the middle path — naming it softly as your own feeling — is rare and usually deepens trust.", tip: "Use cái cảm giác này trong bụng em — your body, not their behavior — to own jealousy without handing them a problem to solve." },
   {
     id: 255, level: "B1", title_en: "When They Introduce You To Friends Slowly", subtitle: "Reading the pace of social integration.", intro: "Use these phrases when you are dating a Vietnamese person and wondering why you have not met their friends yet.", phrases: [
-      { english: "\"Bạn bè của anh có biết tụi mình quen nhau không?\" — a soft check-in.", vietnamese: "\"Bạn bè của anh có biết tụi mình quen nhau không?\"", pronunciation: "ban be kua anh ko biet tui minh kwen nhau khong", context: "Use to ask directly but gently." },
-      { english: "\"Em không hối, chỉ muốn hiểu nhịp của anh thôi.\"", vietnamese: "\"Em không hối, chỉ muốn hiểu nhịp của anh thôi.\"", pronunciation: "em khong hoy, chi muon hiew nhip kua anh thoy", context: "Use to ask about pace without pressure." },
-      { english: "\"Ở Việt Nam, giới thiệu bạn gái với bạn thân là chuyện lớn phải không anh?\"", vietnamese: "\"Ở Việt Nam, giới thiệu bạn gái với bạn thân là chuyện lớn phải không anh?\"", pronunciation: "u vyet nam, zoi thieu ban gai voi ban than la chuyen lon fai khong anh", context: "Use to acknowledge the cultural weight." },
-      { english: "\"Em chỉ cần biết là có lý do, chứ không phải anh giấu em.\"", vietnamese: "\"Em chỉ cần biết là có lý do, chứ không phải anh giấu em.\"", pronunciation: "em chi kun biet la ko li do, chu khong phai anh zau em", context: "Use to ask for transparency about the timeline." },
+      { cell_id: "192b84e0-ce2a-415c-958b-0b0188da7e98", english: "\"Bạn bè của anh có biết tụi mình quen nhau không?\" — a soft check-in.", vietnamese: "\"Bạn bè của anh có biết tụi mình quen nhau không?\"", pronunciation: "ban be kua anh ko biet tui minh kwen nhau khong", context: "Use to ask directly but gently." },
+      { cell_id: "ef81115d-5ee0-40ea-93b3-0bb05001e8d1", english: "\"Em không hối, chỉ muốn hiểu nhịp của anh thôi.\"", vietnamese: "\"Em không hối, chỉ muốn hiểu nhịp của anh thôi.\"", pronunciation: "em khong hoy, chi muon hiew nhip kua anh thoy", context: "Use to ask about pace without pressure." },
+      { cell_id: "c9f490b3-739f-42ed-be02-b7deb8ec2a30", english: "\"Ở Việt Nam, giới thiệu bạn gái với bạn thân là chuyện lớn phải không anh?\"", vietnamese: "\"Ở Việt Nam, giới thiệu bạn gái với bạn thân là chuyện lớn phải không anh?\"", pronunciation: "u vyet nam, zoi thieu ban gai voi ban than la chuyen lon fai khong anh", context: "Use to acknowledge the cultural weight." },
+      { cell_id: "fc6a4213-1c20-4b7a-9f23-0dc84f9d9aef", english: "\"Em chỉ cần biết là có lý do, chứ không phải anh giấu em.\"", vietnamese: "\"Em chỉ cần biết là có lý do, chứ không phải anh giấu em.\"", pronunciation: "em chi kun biet la ko li do, chu khong phai anh zau em", context: "Use to ask for transparency about the timeline." },
     ], cultural_note: "Introducing a partner to Vietnamese friends is a significant step — it signals seriousness and opens the relationship to social scrutiny, so many people delay it even when they are committed.", tip: "Asking với bạn thân specifically is more precise than với bạn bè; the inner circle matters most." },
   {
     id: 256, level: "B1", title_en: "The Ex Who Is Still In The Group Chat", subtitle: "Navigating social overlap after a Vietnamese breakup.", intro: "Use these phrases when you or your partner's ex is still in the shared social circle and you need to handle it without asking anyone to choose sides.", phrases: [
-      { english: "\"Em không bắt anh bỏ bạn. Em chỉ cần anh hiểu là có mặt người đó, em hơi căng.\"", vietnamese: "\"Em không bắt anh bỏ bạn. Em chỉ cần anh hiểu là có mặt người đó, em hơi căng.\"", pronunciation: "em khong bat anh bo ban, em chi kun anh hiew la ko mat nguoi do, em hoi kang", context: "Use to name discomfort without demanding exclusion." },
-      { english: "\"Tụi mình có cần nói trước với nhau trước mỗi lần gặp nhóm không?\"", vietnamese: "\"Tụi mình có cần nói trước với nhau trước mỗi lần gặp nhóm không?\"", pronunciation: "tui minh ko kun noy chuok voi nhau chuok moi lan gap nhom khong", context: "Use to propose a practical system." },
-      { english: "\"Em không muốn ai trong nhóm thấy khó xử vì chuyện cũ của anh.\"", vietnamese: "\"Em không muốn ai trong nhóm thấy khó xử vì chuyện cũ của anh.\"", pronunciation: "em khong muon ai trong nhom thay kho xu vi chuyen ku kua anh", context: "Use to show you care about the group's comfort." },
-      { english: "\"Nếu có buổi nào em không muốn đi, em sẽ nói. Và em mong anh hiểu, không phải em giận anh.\"", vietnamese: "\"Nếu có buổi nào em không muốn đi, em sẽ nói. Và em mong anh hiểu, không phải em giận anh.\"", pronunciation: "new ko buoi nao em khong muon di, em se noy, va em mong anh hiew, khong phai em zan anh", context: "Use to set your own boundary cleanly." },
+      { cell_id: "1b325a35-4fb5-47ab-a9a0-6f27af6113c8", english: "\"Em không bắt anh bỏ bạn. Em chỉ cần anh hiểu là có mặt người đó, em hơi căng.\"", vietnamese: "\"Em không bắt anh bỏ bạn. Em chỉ cần anh hiểu là có mặt người đó, em hơi căng.\"", pronunciation: "em khong bat anh bo ban, em chi kun anh hiew la ko mat nguoi do, em hoi kang", context: "Use to name discomfort without demanding exclusion." },
+      { cell_id: "23ffa9a3-2791-489c-aab0-7eb0d8021a7e", english: "\"Tụi mình có cần nói trước với nhau trước mỗi lần gặp nhóm không?\"", vietnamese: "\"Tụi mình có cần nói trước với nhau trước mỗi lần gặp nhóm không?\"", pronunciation: "tui minh ko kun noy chuok voi nhau chuok moi lan gap nhom khong", context: "Use to propose a practical system." },
+      { cell_id: "5852d20e-f4f0-42d9-b09d-278a88100d60", english: "\"Em không muốn ai trong nhóm thấy khó xử vì chuyện cũ của anh.\"", vietnamese: "\"Em không muốn ai trong nhóm thấy khó xử vì chuyện cũ của anh.\"", pronunciation: "em khong muon ai trong nhom thay kho xu vi chuyen ku kua anh", context: "Use to show you care about the group's comfort." },
+      { cell_id: "046af987-1274-4981-afc8-19e93609b54b", english: "\"Nếu có buổi nào em không muốn đi, em sẽ nói. Và em mong anh hiểu, không phải em giận anh.\"", vietnamese: "\"Nếu có buổi nào em không muốn đi, em sẽ nói. Và em mong anh hiểu, không phải em giận anh.\"", pronunciation: "new ko buoi nao em khong muon di, em se noy, va em mong anh hiew, khong phai em zan anh", context: "Use to set your own boundary cleanly." },
     ], cultural_note: "Vietnamese friend groups are tight and long-lasting; asking someone to cut off an ex who shares the same nhóm bạn can backfire — it is often better to manage your own exposure than control theirs.", tip: "Use hơi căng instead of khó chịu — it signals tension without accusation." },
   {
     id: 257, level: "B1", title_en: "Long-Distance: The Hard Check-In", subtitle: "Not the sweet one, the real one.", intro: "Use these phrases when the long-distance sweetness has worn thin and you need to talk about what is actually hard.", phrases: [
-      { english: "\"Em không thấy cô đơn vì thiếu anh. Em thấy cô đơn vì cuộc sống của em không có chỗ cho anh tự nhiên nữa.\"", vietnamese: "\"Em không thấy cô đơn vì thiếu anh. Em thấy cô đơn vì cuộc sống của em không có chỗ cho anh tự nhiên nữa.\"", pronunciation: "em khong thay ko don vi thieu anh, em thay ko don vi kuok song kua em khong ko cho cho anh tu nhien nua", context: "Use to name the structural loneliness of long-distance." },
-      { english: "\"Em không đòi anh về. Em chỉ muốn mình nói thật là chuyện này nặng.\"", vietnamese: "\"Em không đòi anh về. Em chỉ muốn mình nói thật là chuyện này nặng.\"", pronunciation: "em khong doi anh ve, em chi muon minh noy that la chuyen nay nang", context: "Use to name the weight without making a demand." },
-      { english: "\"Mình còn muốn cái đích chung không, hay mỗi người đang đi một hướng mà chưa dám nói?\"", vietnamese: "\"Mình còn muốn cái đích chung không, hay mỗi người đang đi một hướng mà chưa dám nói?\"", pronunciation: "minh kon muon kai dik chung khong, hay moi nguoi dang di mot huong ma chua zam noy", context: "Use to ask the hardest question without accusation." },
-      { english: "\"Mỗi lần gọi video, em cảm thấy mình đang tóm lấy chút hơi ấm cũ, không phải sống chung hiện tại.\"", vietnamese: "\"Mỗi lần gọi video, em cảm thấy mình đang tóm lấy chút hơi ấm cũ, không phải sống chung hiện tại.\"", pronunciation: "moi lan goy video, em kam thay minh dang tom lay chut hoi am ku, khong phai song chung hien tai", context: "Use to describe the nostalgia trap of long-distance calls." },
+      { cell_id: "2f0b8e86-9c73-4026-96b1-c7f9f0051c13", english: "\"Em không thấy cô đơn vì thiếu anh. Em thấy cô đơn vì cuộc sống của em không có chỗ cho anh tự nhiên nữa.\"", vietnamese: "\"Em không thấy cô đơn vì thiếu anh. Em thấy cô đơn vì cuộc sống của em không có chỗ cho anh tự nhiên nữa.\"", pronunciation: "em khong thay ko don vi thieu anh, em thay ko don vi kuok song kua em khong ko cho cho anh tu nhien nua", context: "Use to name the structural loneliness of long-distance." },
+      { cell_id: "765f4ea7-e3b4-4975-a090-b5d6f4997379", english: "\"Em không đòi anh về. Em chỉ muốn mình nói thật là chuyện này nặng.\"", vietnamese: "\"Em không đòi anh về. Em chỉ muốn mình nói thật là chuyện này nặng.\"", pronunciation: "em khong doi anh ve, em chi muon minh noy that la chuyen nay nang", context: "Use to name the weight without making a demand." },
+      { cell_id: "a6de339e-bd8d-4b1e-ab2e-5808eee2d5ce", english: "\"Mình còn muốn cái đích chung không, hay mỗi người đang đi một hướng mà chưa dám nói?\"", vietnamese: "\"Mình còn muốn cái đích chung không, hay mỗi người đang đi một hướng mà chưa dám nói?\"", pronunciation: "minh kon muon kai dik chung khong, hay moi nguoi dang di mot huong ma chua zam noy", context: "Use to ask the hardest question without accusation." },
+      { cell_id: "09a6d420-4c3b-4bf8-a56c-3b5aab7bd91f", english: "\"Mỗi lần gọi video, em cảm thấy mình đang tóm lấy chút hơi ấm cũ, không phải sống chung hiện tại.\"", vietnamese: "\"Mỗi lần gọi video, em cảm thấy mình đang tóm lấy chút hơi ấm cũ, không phải sống chung hiện tại.\"", pronunciation: "moi lan goy video, em kam thay minh dang tom lay chut hoi am ku, khong phai song chung hien tai", context: "Use to describe the nostalgia trap of long-distance calls." },
     ], cultural_note: "Vietnamese long-distance couples often perform sweetness on video calls while avoiding the accumulating reality gap; the partner who opens the hard check-in is often the one who cares more.", tip: "Use tóm lấy chút hơi ấm cũ — grabbing at old warmth — it captures the exact dynamic of calls that replay the past instead of building the present." },
   {
     id: 258, level: "B1", title_en: "When Your Partner's Family Disapproves Quietly", subtitle: "Reading silent resistance from Vietnamese in-laws.", intro: "Use these phrases when you can feel the disapproval but nobody is saying it out loud.", phrases: [
-      { english: "\"Em cảm thấy mẹ anh không nói gì, mà em biết mẹ không đồng ý.\"", vietnamese: "\"Em cảm thấy mẹ anh không nói gì, mà em biết mẹ không đồng ý.\"", pronunciation: "em kam thay me anh khong noy zi, ma em biet me khong dong y", context: "Use to name the silent disapproval." },
-      { english: "\"Em không cần mẹ anh thương em liền. Em chỉ cần anh không lơ chuyện đó.\"", vietnamese: "\"Em không cần mẹ anh thương em liền. Em chỉ cần anh không lơ chuyện đó.\"", pronunciation: "em khong kun me anh thuong em lien, em chi kun anh khong luh chuyen do", context: "Use to ask your partner to acknowledge the tension." },
-      { english: "\"Em tôn trọng ý kiến của gia đình anh. Nhưng em cũng cần anh đứng về phía em khi cần.\"", vietnamese: "\"Em tôn trọng ý kiến của gia đình anh. Nhưng em cũng cần anh đứng về phía em khi cần.\"", pronunciation: "em ton trong y kien kua za dinh anh, nhung em kung kun anh dung ve fia em khi kun", context: "Use to ask for loyalty without demanding a fight." },
-      { english: "\"Có khi mẹ anh cần thời gian. Mà em cũng cần anh nói với mẹ là anh chọn em.\"", vietnamese: "\"Có khi mẹ anh cần thời gian. Mà em cũng cần anh nói với mẹ là anh chọn em.\"", pronunciation: "ko khi me anh kun thoi zan, ma em kung kun anh noy voi me la anh chon em", context: "Use to give the parent time while asking for a clear signal." },
+      { cell_id: "94446a97-4549-41a0-8102-ade7e944218f", english: "\"Em cảm thấy mẹ anh không nói gì, mà em biết mẹ không đồng ý.\"", vietnamese: "\"Em cảm thấy mẹ anh không nói gì, mà em biết mẹ không đồng ý.\"", pronunciation: "em kam thay me anh khong noy zi, ma em biet me khong dong y", context: "Use to name the silent disapproval." },
+      { cell_id: "a1bddb8d-6768-4baf-b41e-99514ea3a7a3", english: "\"Em không cần mẹ anh thương em liền. Em chỉ cần anh không lơ chuyện đó.\"", vietnamese: "\"Em không cần mẹ anh thương em liền. Em chỉ cần anh không lơ chuyện đó.\"", pronunciation: "em khong kun me anh thuong em lien, em chi kun anh khong luh chuyen do", context: "Use to ask your partner to acknowledge the tension." },
+      { cell_id: "1c384d0a-29b7-4107-ab28-bd99c14a4456", english: "\"Em tôn trọng ý kiến của gia đình anh. Nhưng em cũng cần anh đứng về phía em khi cần.\"", vietnamese: "\"Em tôn trọng ý kiến của gia đình anh. Nhưng em cũng cần anh đứng về phía em khi cần.\"", pronunciation: "em ton trong y kien kua za dinh anh, nhung em kung kun anh dung ve fia em khi kun", context: "Use to ask for loyalty without demanding a fight." },
+      { cell_id: "095bbe47-082f-4788-b4db-ab0d52cdcf14", english: "\"Có khi mẹ anh cần thời gian. Mà em cũng cần anh nói với mẹ là anh chọn em.\"", vietnamese: "\"Có khi mẹ anh cần thời gian. Mà em cũng cần anh nói với mẹ là anh chọn em.\"", pronunciation: "ko khi me anh kun thoi zan, ma em kung kun anh noy voi me la anh chon em", context: "Use to give the parent time while asking for a clear signal." },
     ], cultural_note: "Vietnamese parental disapproval is often expressed through silence, formality, and subtle exclusion rather than direct confrontation; the partner in the middle holds the key.", tip: "Use lơ chuyện đó — to dismiss or ignore the matter — it names the partner's avoidance without calling them disloyal." },
   {
     id: 259, level: "B1", title_en: "Apologizing For Something You Don't Regret", subtitle: "Complex apologies when you still think you were right.", intro: "Use these phrases when you need to apologize for the impact, not the intention, in Vietnamese.", phrases: [
-      { english: "\"Anh xin lỗi vì em buồn. Không phải xin lỗi vì anh nói sai.\"", vietnamese: "\"Anh xin lỗi vì em buồn. Không phải xin lỗi vì anh nói sai.\"", pronunciation: "anh sin loi vi em buon, khong phai sin loi vi anh noy sai", context: "Use to apologize for impact while standing by your words." },
-      { english: "\"Anh vẫn nghĩ điều anh nói là đúng. Nhưng cách anh nói làm em đau, cái đó anh sai.\"", vietnamese: "\"Anh vẫn nghĩ điều anh nói là đúng. Nhưng cách anh nói làm em đau, cái đó anh sai.\"", pronunciation: "anh van nghi dieu anh noy la dung, nhung kak anh noy lam em dau, kai do anh sai", context: "Use to separate message from delivery." },
-      { english: "\"Anh không hối hận vì đã nói ra. Anh hối hận vì đã không nói sớm hơn và nhẹ hơn.\"", vietnamese: "\"Anh không hối hận vì đã nói ra. Anh hối hận vì đã không nói sớm hơn và nhẹ hơn.\"", pronunciation: "anh khong hoy han vi da noy ra, anh hoy han vi da khong noy som hon va nhe hon", context: "Use to reframe the regret toward timing and tone." },
-      { english: "\"Em không cần đồng ý với anh. Anh chỉ cần em biết anh không cố ý làm em đau.\"", vietnamese: "\"Em không cần đồng ý với anh. Anh chỉ cần em biết anh không cố ý làm em đau.\"", pronunciation: "em khong kun dong y voi anh, anh chi kun em biet anh khong ko y lam em dau", context: "Use to close the apology loop without demanding forgiveness." },
+      { cell_id: "e9bac32f-a4ea-4acc-aa66-143a90ce2daf", english: "\"Anh xin lỗi vì em buồn. Không phải xin lỗi vì anh nói sai.\"", vietnamese: "\"Anh xin lỗi vì em buồn. Không phải xin lỗi vì anh nói sai.\"", pronunciation: "anh sin loi vi em buon, khong phai sin loi vi anh noy sai", context: "Use to apologize for impact while standing by your words." },
+      { cell_id: "d0c375d0-226d-41ee-b322-36f8813afcaa", english: "\"Anh vẫn nghĩ điều anh nói là đúng. Nhưng cách anh nói làm em đau, cái đó anh sai.\"", vietnamese: "\"Anh vẫn nghĩ điều anh nói là đúng. Nhưng cách anh nói làm em đau, cái đó anh sai.\"", pronunciation: "anh van nghi dieu anh noy la dung, nhung kak anh noy lam em dau, kai do anh sai", context: "Use to separate message from delivery." },
+      { cell_id: "6b236362-4707-4a3e-aed8-7086295916b0", english: "\"Anh không hối hận vì đã nói ra. Anh hối hận vì đã không nói sớm hơn và nhẹ hơn.\"", vietnamese: "\"Anh không hối hận vì đã nói ra. Anh hối hận vì đã không nói sớm hơn và nhẹ hơn.\"", pronunciation: "anh khong hoy han vi da noy ra, anh hoy han vi da khong noy som hon va nhe hon", context: "Use to reframe the regret toward timing and tone." },
+      { cell_id: "2d1bce50-ddd5-4589-96a9-bfa3605a673c", english: "\"Em không cần đồng ý với anh. Anh chỉ cần em biết anh không cố ý làm em đau.\"", vietnamese: "\"Em không cần đồng ý với anh. Anh chỉ cần em biết anh không cố ý làm em đau.\"", pronunciation: "em khong kun dong y voi anh, anh chi kun em biet anh khong ko y lam em dau", context: "Use to close the apology loop without demanding forgiveness." },
     ], cultural_note: "Vietnamese apologies often collapse into total surrender; a partial apology that holds its ground while owning the hurt is less common and shows emotional sophistication.", tip: "Use cách anh nói làm em đau — it separates the delivery from the content, which is the key distinction in a non-regret apology." },
   {
     id: 260, level: "B1", title_en: "When Love Languages Clash Across Cultures", subtitle: "Vietnamese and Western expressions of care that miss each other.", intro: "Use these phrases when you and your Vietnamese partner show love differently and it causes friction.", phrases: [
-      { english: "\"Anh nói 'anh thương em' một lần là em nhớ cả tuần. Em không cần anh nói mỗi ngày.\"", vietnamese: "\"Anh nói 'anh thương em' một lần là em nhớ cả tuần. Em không cần anh nói mỗi ngày.\"", pronunciation: "anh noy anh thuong em mot lan la em nho ka tuan, em khong kun anh noy moi ngay", context: "Explain that Vietnamese love can absorb one deep statement for a long time." },
-      { english: "\"Hồi xưa ba em không nói thương, mà sáng nào cũng đi chợ nấu đồ ăn sáng. Đó là thương.\"", vietnamese: "\"Hồi xưa ba em không nói thương, mà sáng nào cũng đi chợ nấu đồ ăn sáng. Đó là thương.\"", pronunciation: "hoi xua ba em khong noy thuong, ma sang nao kung di chuh nau do an sang, do la thuong", context: "Explain the Vietnamese acts-of-service love language through family example." },
-      { english: "\"Em không cần quà. Em cần anh thấy khi em mệt và pha cho em ly trà.\"", vietnamese: "\"Em không cần quà. Em cần anh thấy khi em mệt và pha cho em ly trà.\"", pronunciation: "em khong kun kwa, em kun anh thay khi em met va fa cho em li tra", context: "Name what care looks like to you." },
-      { english: "\"Anh nói 'I love you' em hiểu, mà 'để anh chở em đi' mới là câu em cảm nhận được.\"", vietnamese: "\"Anh nói 'I love you' em hiểu, mà 'để anh chở em đi' mới là câu em cảm nhận được.\"", pronunciation: "anh noy I love you em hiew, ma de anh chuh em di moi la kau em kam nhan duoc", context: "Translate between words and actions across cultures." },
+      { cell_id: "ac6e31a3-f4c9-40f7-8fba-384c825e34f9", english: "\"Anh nói 'anh thương em' một lần là em nhớ cả tuần. Em không cần anh nói mỗi ngày.\"", vietnamese: "\"Anh nói 'anh thương em' một lần là em nhớ cả tuần. Em không cần anh nói mỗi ngày.\"", pronunciation: "anh noy anh thuong em mot lan la em nho ka tuan, em khong kun anh noy moi ngay", context: "Explain that Vietnamese love can absorb one deep statement for a long time." },
+      { cell_id: "d0c4f8c1-2f8c-41a3-9f8f-9972658b42d0", english: "\"Hồi xưa ba em không nói thương, mà sáng nào cũng đi chợ nấu đồ ăn sáng. Đó là thương.\"", vietnamese: "\"Hồi xưa ba em không nói thương, mà sáng nào cũng đi chợ nấu đồ ăn sáng. Đó là thương.\"", pronunciation: "hoi xua ba em khong noy thuong, ma sang nao kung di chuh nau do an sang, do la thuong", context: "Explain the Vietnamese acts-of-service love language through family example." },
+      { cell_id: "7cd63a99-b485-42e0-89da-a64a4f4d220f", english: "\"Em không cần quà. Em cần anh thấy khi em mệt và pha cho em ly trà.\"", vietnamese: "\"Em không cần quà. Em cần anh thấy khi em mệt và pha cho em ly trà.\"", pronunciation: "em khong kun kwa, em kun anh thay khi em met va fa cho em li tra", context: "Name what care looks like to you." },
+      { cell_id: "bb01710b-24c9-4079-a692-a8cf13c58382", english: "\"Anh nói 'I love you' em hiểu, mà 'để anh chở em đi' mới là câu em cảm nhận được.\"", vietnamese: "\"Anh nói 'I love you' em hiểu, mà 'để anh chở em đi' mới là câu em cảm nhận được.\"", pronunciation: "anh noy I love you em hiew, ma de anh chuh em di moi la kau em kam nhan duoc", context: "Translate between words and actions across cultures." },
     ], cultural_note: "Many Vietnamese people express love through feeding, driving, fixing things, and showing up — the verbal declaration is often secondary or even absent in older generations.", tip: "Use để anh chở em đi — let me take you (on my motorbike) — one of the most practical daily love sentences in Vietnamese." },
   {
     id: 261, level: "B1", title_en: "Financial Secrets In A Relationship", subtitle: "Discovering hidden spending, debt, or money habits.", intro: "Use these phrases when you discover your partner has been hiding financial information.", phrases: [
-      { english: "\"Em không giận vì anh tiêu tiền. Em giận vì anh không nói với em.\"", vietnamese: "\"Em không giận vì anh tiêu tiền. Em giận vì anh không nói với em.\"", pronunciation: "em khong zan vi anh tieu tien, em zan vi anh khong noy voi em", context: "Separate the spending from the secrecy." },
-      { english: "\"Tụi mình là một đội. Nếu một người đang có lỗ, người kia phải biết.\"", vietnamese: "\"Tụi mình là một đội. Nếu một người đang có lỗ, người kia phải biết.\"", pronunciation: "tui minh la mot doi, new mot nguoi dang ko lo, nguoi kia fai biet", context: "Reframe finances as a team matter." },
-      { english: "\"Em không muốn kiểm soát tiền của anh. Em muốn mình cùng thấy bức tranh chung.\"", vietnamese: "\"Em không muốn kiểm soát tiền của anh. Em muốn mình cùng thấy bức tranh chung.\"", pronunciation: "em khong muon kiem soat tien kua anh, em muon minh kung thay buk tranh chung", context: "Propose transparency without control." },
-      { english: "\"Cái em sợ không phải là con số. Là thói quen giấu.\"", vietnamese: "\"Cái em sợ không phải là con số. Là thói quen giấu.\"", pronunciation: "kai em so khong phai la kon so, la thoy kwen zau", context: "Name the underlying trust issue." },
+      { cell_id: "47ab1ade-db99-43b4-aba7-5d7b02055ec8", english: "\"Em không giận vì anh tiêu tiền. Em giận vì anh không nói với em.\"", vietnamese: "\"Em không giận vì anh tiêu tiền. Em giận vì anh không nói với em.\"", pronunciation: "em khong zan vi anh tieu tien, em zan vi anh khong noy voi em", context: "Separate the spending from the secrecy." },
+      { cell_id: "b5e679f0-268c-4b8e-bd85-8f7bbbf14ca7", english: "\"Tụi mình là một đội. Nếu một người đang có lỗ, người kia phải biết.\"", vietnamese: "\"Tụi mình là một đội. Nếu một người đang có lỗ, người kia phải biết.\"", pronunciation: "tui minh la mot doi, new mot nguoi dang ko lo, nguoi kia fai biet", context: "Reframe finances as a team matter." },
+      { cell_id: "740897a1-9fd1-4644-be11-90f1c58df265", english: "\"Em không muốn kiểm soát tiền của anh. Em muốn mình cùng thấy bức tranh chung.\"", vietnamese: "\"Em không muốn kiểm soát tiền của anh. Em muốn mình cùng thấy bức tranh chung.\"", pronunciation: "em khong muon kiem soat tien kua anh, em muon minh kung thay buk tranh chung", context: "Propose transparency without control." },
+      { cell_id: "3e233871-ae76-4534-bfb8-0ef373b00065", english: "\"Cái em sợ không phải là con số. Là thói quen giấu.\"", vietnamese: "\"Cái em sợ không phải là con số. Là thói quen giấu.\"", pronunciation: "kai em so khong phai la kon so, la thoy kwen zau", context: "Name the underlying trust issue." },
     ], cultural_note: "Money secrecy in Vietnamese couples often starts from the cultural habit of keeping private financial buffers even inside marriage; the goal is not to eliminate privacy but to name what is being hidden.", tip: "Use bức tranh chung — the shared picture — a constructive metaphor for financial visibility that does not sound like an audit." },
   {
     id: 262, level: "B1", title_en: "Roleplay: Telling Your Partner You Want To Move Cities", subtitle: "When your future might not include their city.", intro: "Use this dialogue when you need to tell your Vietnamese partner that you are considering moving away.", phrases: [], dialogue: [
@@ -6926,31 +7262,31 @@ export const lessons: VietnameseLesson[] = [
     ], cultural_note: "In Vietnamese couples, a relocation decision often triggers the question of sacrifice (hy sinh) — who gives up what; acknowledge both people's lives instead of framing it as one person's win.", tip: "Use không ai phải hy sinh hết phần mình — nobody has to sacrifice their whole share." },
   {
     id: 263, level: "B1", title_en: "The Friend Who Always Brings Drama", subtitle: "Setting a limit warmly in Vietnamese.", intro: "Use these phrases when a friend constantly brings chaos into your life and you need to draw a line without ending the friendship.", phrases: [
-      { english: "\"Mình thương bạn, mà có những ngày mình không đủ sức gánh chuyện của bạn.\"", vietnamese: "\"Mình thương bạn, mà có những ngày mình không đủ sức gánh chuyện của bạn.\"", pronunciation: "minh thuong ban, ma ko nhung ngay minh khong du suk ganh chuyen kua ban", context: "Name your own capacity, not their fault." },
-      { english: "\"Bạn kể mình nghe được, mà kể xong mình cũng cần bạn tự lo phần bạn.\"", vietnamese: "\"Bạn kể mình nghe được, mà kể xong mình cũng cần bạn tự lo phần bạn.\"", pronunciation: "ban ke minh nghe duoc, ma ke xong minh kung kun ban tu lo fun ban", context: "Separate listening from rescuing." },
-      { english: "\"Có những chuyện bạn cần người nghe, có những chuyện bạn cần người chuyên môn.\"", vietnamese: "\"Có những chuyện bạn cần người nghe, có những chuyện bạn cần người chuyên môn.\"", pronunciation: "ko nhung chuyen ban kun nguoi nghe, ko nhung chuyen ban kun nguoi chuyen mon", context: "Suggest therapy or counseling gently." },
-      { english: "\"Mình không bỏ bạn. Mình chỉ không thể là người duy nhất bạn gọi khi có chuyện.\"", vietnamese: "\"Mình không bỏ bạn. Mình chỉ không thể là người duy nhất bạn gọi khi có chuyện.\"", pronunciation: "minh khong bo ban, minh chi khong the la nguoi zui nhat ban goy khi ko chuyen", context: "Set the boundary while affirming the friendship." },
+      { cell_id: "89c44424-f460-470d-8b35-1dbb8c6505f9", english: "\"Mình thương bạn, mà có những ngày mình không đủ sức gánh chuyện của bạn.\"", vietnamese: "\"Mình thương bạn, mà có những ngày mình không đủ sức gánh chuyện của bạn.\"", pronunciation: "minh thuong ban, ma ko nhung ngay minh khong du suk ganh chuyen kua ban", context: "Name your own capacity, not their fault." },
+      { cell_id: "7a9f8c20-0e1c-4f79-b4c0-b1b11ab624fa", english: "\"Bạn kể mình nghe được, mà kể xong mình cũng cần bạn tự lo phần bạn.\"", vietnamese: "\"Bạn kể mình nghe được, mà kể xong mình cũng cần bạn tự lo phần bạn.\"", pronunciation: "ban ke minh nghe duoc, ma ke xong minh kung kun ban tu lo fun ban", context: "Separate listening from rescuing." },
+      { cell_id: "44430118-e5a0-4d9f-8660-57efedb93c38", english: "\"Có những chuyện bạn cần người nghe, có những chuyện bạn cần người chuyên môn.\"", vietnamese: "\"Có những chuyện bạn cần người nghe, có những chuyện bạn cần người chuyên môn.\"", pronunciation: "ko nhung chuyen ban kun nguoi nghe, ko nhung chuyen ban kun nguoi chuyen mon", context: "Suggest therapy or counseling gently." },
+      { cell_id: "01495834-a03a-4f91-9a70-c72b0f764198", english: "\"Mình không bỏ bạn. Mình chỉ không thể là người duy nhất bạn gọi khi có chuyện.\"", vietnamese: "\"Mình không bỏ bạn. Mình chỉ không thể là người duy nhất bạn gọi khi có chuyện.\"", pronunciation: "minh khong bo ban, minh chi khong the la nguoi zui nhat ban goy khi ko chuyen", context: "Set the boundary while affirming the friendship." },
     ], cultural_note: "Vietnamese friendships often involve heavy emotional labor without the Western vocabulary of boundaries; saying mình không đủ sức gánh is a culturally legible way to name your limit.", tip: "Use gánh — to carry on your shoulder — it is a deeply Vietnamese metaphor for emotional burden that everyone understands." },
   {
     id: 264, level: "B1", title_en: "When You Are The Problem And You Know It", subtitle: "Owning your patterns out loud in Vietnamese.", intro: "Use these phrases when you realize you are the one causing the issue, and you want to say it before someone else does.", phrases: [
-      { english: "\"Em biết em là người khó. Em không tự hào về chuyện đó.\"", vietnamese: "\"Em biết em là người khó. Em không tự hào về chuyện đó.\"", pronunciation: "em biet em la nguoi kho, em khong tu hao ve chuyen do", context: "Open with self-awareness." },
-      { english: "\"Cái kiểu em im rồi nổ — em biết nó mệt cho anh. Em đang tập sửa.\"", vietnamese: "\"Cái kiểu em im rồi nổ — em biết nó mệt cho anh. Em đang tập sửa.\"", pronunciation: "kai kiew em im roy no, em biet no met cho anh, em dang tap sua", context: "Name a specific behavior pattern." },
-      { english: "\"Anh không cần tha thứ liền. Em chỉ cần anh biết là em thấy được.\"", vietnamese: "\"Anh không cần tha thứ liền. Em chỉ cần anh biết là em thấy được.\"", pronunciation: "anh khong kun tha thu lien, em chi kun anh biet la em thay duoc", context: "Ask for acknowledgment, not immediate forgiveness." },
-      { english: "\"Em không hứa sẽ hết liền. Em hứa sẽ không làm như chưa từng có.\"", vietnamese: "\"Em không hứa sẽ hết liền. Em hứa sẽ không làm như chưa từng có.\"", pronunciation: "em khong hua se het lien, em hua se khong lam nhu chua tung ko", context: "Promise awareness over instant change." },
+      { cell_id: "dc9c3232-6894-438d-8090-1f7869e5606b", english: "\"Em biết em là người khó. Em không tự hào về chuyện đó.\"", vietnamese: "\"Em biết em là người khó. Em không tự hào về chuyện đó.\"", pronunciation: "em biet em la nguoi kho, em khong tu hao ve chuyen do", context: "Open with self-awareness." },
+      { cell_id: "0757de55-0dde-4baf-b44a-e1d706e4b797", english: "\"Cái kiểu em im rồi nổ — em biết nó mệt cho anh. Em đang tập sửa.\"", vietnamese: "\"Cái kiểu em im rồi nổ — em biết nó mệt cho anh. Em đang tập sửa.\"", pronunciation: "kai kiew em im roy no, em biet no met cho anh, em dang tap sua", context: "Name a specific behavior pattern." },
+      { cell_id: "7077d820-9e58-42ee-b1b0-1d122f5ab8c5", english: "\"Anh không cần tha thứ liền. Em chỉ cần anh biết là em thấy được.\"", vietnamese: "\"Anh không cần tha thứ liền. Em chỉ cần anh biết là em thấy được.\"", pronunciation: "anh khong kun tha thu lien, em chi kun anh biet la em thay duoc", context: "Ask for acknowledgment, not immediate forgiveness." },
+      { cell_id: "893c3692-bc2b-4b72-8e1a-961cfa3c3d34", english: "\"Em không hứa sẽ hết liền. Em hứa sẽ không làm như chưa từng có.\"", vietnamese: "\"Em không hứa sẽ hết liền. Em hứa sẽ không làm như chưa từng có.\"", pronunciation: "em khong hua se het lien, em hua se khong lam nhu chua tung ko", context: "Promise awareness over instant change." },
     ], cultural_note: "Admitting you are the problem without collapsing into self-pity is rare in Vietnamese relationship culture; doing it cleanly often earns more respect than a dramatic apology.", tip: "Use em đang tập sửa — I am practicing fixing it — the word tập (practice) implies process, not perfection." },
   {
     id: 265, level: "B1", title_en: "Comforting Without Solutions", subtitle: "Just being there, Vietnamese style.", intro: "Use these phrases when someone you care about is hurting and you want to comfort them without trying to fix anything.", phrases: [
-      { english: "\"Mình không biết nói gì cho bạn đỡ. Mà mình ở đây.\"", vietnamese: "\"Mình không biết nói gì cho bạn đỡ. Mà mình ở đây.\"", pronunciation: "minh khong biet noy zi cho ban duh, ma minh u day", context: "Use when you have no words but want to show presence." },
-      { english: "\"Bạn không cần mạnh trước mặt mình. Mình không chấm điểm.\"", vietnamese: "\"Bạn không cần mạnh trước mặt mình. Mình không chấm điểm.\"", pronunciation: "ban khong kun manh chuok mat minh, minh khong cham diem", context: "Give permission to be weak." },
-      { english: "\"Khóc đi. Mình không kể ai hết.\"", vietnamese: "\"Khóc đi. Mình không kể ai hết.\"", pronunciation: "khok di, minh khong ke ai het", context: "Give permission and promise safety." },
-      { english: "\"Bữa nay mình không cần nói gì hết. Ngồi đây uống nước cũng được.\"", vietnamese: "\"Bữa nay mình không cần nói gì hết. Ngồi đây uống nước cũng được.\"", pronunciation: "bua nay minh khong kun noy zi het, ngoy day uong nuoc kung duoc", context: "Offer low-pressure companionship." },
+      { cell_id: "ca49c708-8d42-4209-813f-be941659a058", english: "\"Mình không biết nói gì cho bạn đỡ. Mà mình ở đây.\"", vietnamese: "\"Mình không biết nói gì cho bạn đỡ. Mà mình ở đây.\"", pronunciation: "minh khong biet noy zi cho ban duh, ma minh u day", context: "Use when you have no words but want to show presence." },
+      { cell_id: "abc49115-7929-4145-9885-86c073200d9f", english: "\"Bạn không cần mạnh trước mặt mình. Mình không chấm điểm.\"", vietnamese: "\"Bạn không cần mạnh trước mặt mình. Mình không chấm điểm.\"", pronunciation: "ban khong kun manh chuok mat minh, minh khong cham diem", context: "Give permission to be weak." },
+      { cell_id: "3e4b7df8-c7ae-4547-b4b1-09eb91442eff", english: "\"Khóc đi. Mình không kể ai hết.\"", vietnamese: "\"Khóc đi. Mình không kể ai hết.\"", pronunciation: "khok di, minh khong ke ai het", context: "Give permission and promise safety." },
+      { cell_id: "be38bebc-e7d0-4ca5-94f8-daf026d5066b", english: "\"Bữa nay mình không cần nói gì hết. Ngồi đây uống nước cũng được.\"", vietnamese: "\"Bữa nay mình không cần nói gì hết. Ngồi đây uống nước cũng được.\"", pronunciation: "bua nay minh khong kun noy zi het, ngoy day uong nuoc kung duoc", context: "Offer low-pressure companionship." },
     ], cultural_note: "Vietnamese comfort often defaults to giving advice or minimizing the problem; offering presence without solutions is a learned skill that deepens trust.", tip: "Use mình không chấm điểm — I am not grading you — it releases the person from the pressure to perform strength." },
   {
     id: 266, level: "B1", title_en: "Naming Dissatisfaction Without Blaming", subtitle: "When something is wrong but nobody is at fault.", intro: "Use these phrases when you are unhappy in your relationship and need to name it without making your partner the villain.", phrases: [
-      { english: "\"Em không nói là anh làm gì sai. Em nói là em không vui, và em không biết tại sao.\"", vietnamese: "\"Em không nói là anh làm gì sai. Em nói là em không vui, và em không biết tại sao.\"", pronunciation: "em khong noy la anh lam zi sai, em noy la em khong vui, va em khong biet tai sao", context: "Name the feeling without finding a culprit." },
-      { english: "\"Có khi không phải tại mình. Có khi là tại giai đoạn này của tụi mình.\"", vietnamese: "\"Có khi không phải tại mình. Có khi là tại giai đoạn này của tụi mình.\"", pronunciation: "ko khi khong phai tai minh, ko khi la tai zai doan nay kua tui minh", context: "Attribute dissatisfaction to the phase, not the person." },
-      { english: "\"Em không muốn bỏ. Em muốn sửa. Mà em cần anh thấy là có gì đó đang không đúng.\"", vietnamese: "\"Em không muốn bỏ. Em muốn sửa. Mà em cần anh thấy là có gì đó đang không đúng.\"", pronunciation: "em khong muon bo, em muon sua, ma em kun anh thay la ko zi do dang khong dung", context: "Commit to fixing while insisting on acknowledgment." },
-      { english: "\"Câu hỏi không phải là 'ai làm sai.' Câu hỏi là 'mình muốn đi đâu từ đây.'\"", vietnamese: "\"Câu hỏi không phải là 'ai làm sai.' Câu hỏi là 'mình muốn đi đâu từ đây.'\"", pronunciation: "kau hoy khong phai la ai lam sai, kau hoy la minh muon di dau tu day", context: "Shift from blame to direction." },
+      { cell_id: "65cdb9c3-f54e-43a6-9b0a-16040dd2f42b", english: "\"Em không nói là anh làm gì sai. Em nói là em không vui, và em không biết tại sao.\"", vietnamese: "\"Em không nói là anh làm gì sai. Em nói là em không vui, và em không biết tại sao.\"", pronunciation: "em khong noy la anh lam zi sai, em noy la em khong vui, va em khong biet tai sao", context: "Name the feeling without finding a culprit." },
+      { cell_id: "0a482a46-f4c3-4b32-b4dc-8211a2f2ddad", english: "\"Có khi không phải tại mình. Có khi là tại giai đoạn này của tụi mình.\"", vietnamese: "\"Có khi không phải tại mình. Có khi là tại giai đoạn này của tụi mình.\"", pronunciation: "ko khi khong phai tai minh, ko khi la tai zai doan nay kua tui minh", context: "Attribute dissatisfaction to the phase, not the person." },
+      { cell_id: "18689b9b-b209-4575-bb25-0cd569570aa5", english: "\"Em không muốn bỏ. Em muốn sửa. Mà em cần anh thấy là có gì đó đang không đúng.\"", vietnamese: "\"Em không muốn bỏ. Em muốn sửa. Mà em cần anh thấy là có gì đó đang không đúng.\"", pronunciation: "em khong muon bo, em muon sua, ma em kun anh thay la ko zi do dang khong dung", context: "Commit to fixing while insisting on acknowledgment." },
+      { cell_id: "68c68e24-1c34-492b-b771-c08a0b4baed0", english: "\"Câu hỏi không phải là 'ai làm sai.' Câu hỏi là 'mình muốn đi đâu từ đây.'\"", vietnamese: "\"Câu hỏi không phải là 'ai làm sai.' Câu hỏi là 'mình muốn đi đâu từ đây.'\"", pronunciation: "kau hoy khong phai la ai lam sai, kau hoy la minh muon di dau tu day", context: "Shift from blame to direction." },
     ], cultural_note: "Vietnamese couples often rush to find whodunnit when something feels wrong; the skill is to name dissatisfaction as a shared condition rather than an individual failure.", tip: "Use tại giai đoạn này — this phase — it externalizes the problem just enough to talk about it without defensiveness." },
   {
     id: 267,
@@ -6959,10 +7295,10 @@ export const lessons: VietnameseLesson[] = [
     subtitle: "Handling it without self-destructing at the office.",
     intro: "Use these phrases when your manager presents your work as their own and you need to respond in a way that protects your reputation without burning bridges.",
     phrases: [
-      { english: "\"Em rất vui là anh thấy dự án đó giá trị. Nếu lần sau có dịp trình bày, anh cho em đứng chung nha.\"", vietnamese: "\"Em rất vui là anh thấy dự án đó giá trị. Nếu lần sau có dịp trình bày, anh cho em đứng chung nha.\"", pronunciation: "em zut vui la anh thay du an do za tri, new lan sau ko zip trinh bay, anh cho em dung chung nha", context: "Use to reclaim visibility without accusation." },
-      { english: "\"Phần đó em làm, nên nếu có câu hỏi kỹ thuật, anh để em trả lời cho chính xác.\"", vietnamese: "\"Phần đó em làm, nên nếu có câu hỏi kỹ thuật, anh để em trả lời cho chính xác.\"", pronunciation: "fun do em lam, nen new ko kau hoy ky thuat, anh de em tra loi cho chinh xak", context: "Use to politely reinsert yourself into the conversation." },
-      { english: "\"Em không cần credit công khai. Em chỉ cần sếp lớn biết là em có đóng góp.\"", vietnamese: "\"Em không cần credit công khai. Em chỉ cần sếp lớn biết là em có đóng góp.\"", pronunciation: "em khong kun credit kong khai, em chi kun sep lon biet la em ko dong gop", context: "Use to clarify what you actually need." },
-      { english: "\"Lần sau em gửi bản draft cho anh trước. Khi trình bày, mình cùng đứng.\"", vietnamese: "\"Lần sau em gửi bản draft cho anh trước. Khi trình bày, mình cùng đứng.\"", pronunciation: "lan sau em goi ban draft cho anh chuok, khi trinh bay, minh kung dung", context: "Use to propose a system that prevents future credit-taking." },
+      { cell_id: "202ea3a8-b093-4a82-84b7-3e7f26fc2875", english: "\"Em rất vui là anh thấy dự án đó giá trị. Nếu lần sau có dịp trình bày, anh cho em đứng chung nha.\"", vietnamese: "\"Em rất vui là anh thấy dự án đó giá trị. Nếu lần sau có dịp trình bày, anh cho em đứng chung nha.\"", pronunciation: "em zut vui la anh thay du an do za tri, new lan sau ko zip trinh bay, anh cho em dung chung nha", context: "Use to reclaim visibility without accusation." },
+      { cell_id: "91acea1e-9b0c-4d66-8027-9c6853d96f8e", english: "\"Phần đó em làm, nên nếu có câu hỏi kỹ thuật, anh để em trả lời cho chính xác.\"", vietnamese: "\"Phần đó em làm, nên nếu có câu hỏi kỹ thuật, anh để em trả lời cho chính xác.\"", pronunciation: "fun do em lam, nen new ko kau hoy ky thuat, anh de em tra loi cho chinh xak", context: "Use to politely reinsert yourself into the conversation." },
+      { cell_id: "5da72b8d-607b-4ff9-8d29-714471a83500", english: "\"Em không cần credit công khai. Em chỉ cần sếp lớn biết là em có đóng góp.\"", vietnamese: "\"Em không cần credit công khai. Em chỉ cần sếp lớn biết là em có đóng góp.\"", pronunciation: "em khong kun credit kong khai, em chi kun sep lon biet la em ko dong gop", context: "Use to clarify what you actually need." },
+      { cell_id: "5326b449-caeb-468b-a069-ac274481646f", english: "\"Lần sau em gửi bản draft cho anh trước. Khi trình bày, mình cùng đứng.\"", vietnamese: "\"Lần sau em gửi bản draft cho anh trước. Khi trình bày, mình cùng đứng.\"", pronunciation: "lan sau em goi ban draft cho anh chuok, khi trinh bay, minh kung dung", context: "Use to propose a system that prevents future credit-taking." },
     ],
     cultural_note: "In Vietnamese hierarchical workplaces, direct accusations against a boss rarely succeed; the better path is to make your contribution visible through offers to explain technical details or by creating systems that include you.",
     tip: "Use anh cho em đứng chung — let me stand with you — it frames visibility as collaboration, not confrontation.",
@@ -6974,10 +7310,10 @@ export const lessons: VietnameseLesson[] = [
     subtitle: "Vietnamese workplace shadow dynamics.",
     intro: "Use these phrases to understand and navigate the informal conversations that happen after the official meeting ends — where decisions often actually get made.",
     phrases: [
-      { english: "\"Trong phòng họp ai cũng gật. Ra ngoài mới nghe ai thật sự đồng ý.\"", vietnamese: "\"Trong phòng họp ai cũng gật. Ra ngoài mới nghe ai thật sự đồng ý.\"", pronunciation: "trong fong hop ai kung gut, ra ngoai moi nghe ai that su dong y", context: "Use to acknowledge the gap between meeting room and hallway." },
-      { english: "\"Ăn trưa với chị Hương xong em mới hiểu tại sao dự án bị kẹt.\"", vietnamese: "\"Ăn trưa với chị Hương xong em mới hiểu tại sao dự án bị kẹt.\"", pronunciation: "an trua voi chi Huong xong em moi hiew tai sao du an bi ket", context: "Use to describe learning the real situation at lunch." },
-      { english: "\"Có những quyết định không nằm trong biên bản. Nằm ở quán cà phê góc đường.\"", vietnamese: "\"Có những quyết định không nằm trong biên bản. Nằm ở quán cà phê góc đường.\"", pronunciation: "ko nhung kwyet dinh khong nam trong bien ban, nam u kwan cafe gok duong", context: "Use to describe informal decision-making." },
-      { english: "\"Em không tham gia mấy buổi cà phê đó, nên giờ em bị lạc thông tin.\"", vietnamese: "\"Em không tham gia mấy buổi cà phê đó, nên giờ em bị lạc thông tin.\"", pronunciation: "em khong tham zia may buoi cafe do, nen zo em bi lak thong tin", context: "Use to name the cost of missing informal gatherings." },
+      { cell_id: "e04664c2-5842-46e3-9dab-8af92bb4ae33", english: "\"Trong phòng họp ai cũng gật. Ra ngoài mới nghe ai thật sự đồng ý.\"", vietnamese: "\"Trong phòng họp ai cũng gật. Ra ngoài mới nghe ai thật sự đồng ý.\"", pronunciation: "trong fong hop ai kung gut, ra ngoai moi nghe ai that su dong y", context: "Use to acknowledge the gap between meeting room and hallway." },
+      { cell_id: "2aa8783f-0668-47d8-a0cb-64d1de5b88c3", english: "\"Ăn trưa với chị Hương xong em mới hiểu tại sao dự án bị kẹt.\"", vietnamese: "\"Ăn trưa với chị Hương xong em mới hiểu tại sao dự án bị kẹt.\"", pronunciation: "an trua voi chi Huong xong em moi hiew tai sao du an bi ket", context: "Use to describe learning the real situation at lunch." },
+      { cell_id: "04fd364a-ea03-4a5a-8e85-8e3bca90a2b3", english: "\"Có những quyết định không nằm trong biên bản. Nằm ở quán cà phê góc đường.\"", vietnamese: "\"Có những quyết định không nằm trong biên bản. Nằm ở quán cà phê góc đường.\"", pronunciation: "ko nhung kwyet dinh khong nam trong bien ban, nam u kwan cafe gok duong", context: "Use to describe informal decision-making." },
+      { cell_id: "f12432d8-e38d-4d09-a1fe-a09373e45352", english: "\"Em không tham gia mấy buổi cà phê đó, nên giờ em bị lạc thông tin.\"", vietnamese: "\"Em không tham gia mấy buổi cà phê đó, nên giờ em bị lạc thông tin.\"", pronunciation: "em khong tham zia may buoi cafe do, nen zo em bi lak thong tin", context: "Use to name the cost of missing informal gatherings." },
     ],
     cultural_note: "In Vietnamese companies, the post-meeting coffee or lunch is where objections surface and consensus is actually tested; skipping these means missing the real conversation.",
     tip: "If you cannot attend informal gatherings, ask a trusted colleague to brief you afterward using cập nhật giùm — a low-effort favor most people will do.",
@@ -7007,10 +7343,10 @@ export const lessons: VietnameseLesson[] = [
     subtitle: "Bureaucracy language for real situations.",
     intro: "Use these phrases when you are at a Vietnamese government office — visa, registration, permits — and need to get through the process.",
     phrases: [
-      { english: "\"Chị ơi, em hỏi chút, em lấy số ở đâu ạ?\"", vietnamese: "\"Chị ơi, em hỏi chút, em lấy số ở đâu ạ?\"", pronunciation: "chi oi, em hoy chut, em lay so u dau a", context: "Use to ask where to get a queue number." },
-      { english: "\"Hồ sơ của em còn thiếu giấy tờ gì không chị?\"", vietnamese: "\"Hồ sơ của em còn thiếu giấy tờ gì không chị?\"", pronunciation: "ho suh kua em kon thieu zay to zi khong chi", context: "Use to check if your documents are complete." },
-      { english: "\"Dạ em đợi cũng được, chị cho em biết khoảng bao lâu để em sắp xếp.\"", vietnamese: "\"Dạ em đợi cũng được, chị cho em biết khoảng bao lâu để em sắp xếp.\"", pronunciation: "da em doi kung duoc, chi cho em biet khwang bao lau de em sap xep", context: "Use to ask about wait time politely." },
-      { english: "\"Lần trước chị kia nói vầy, mà lần này chị nói khác. Dạ cho em hỏi lại cho chắc.\"", vietnamese: "\"Lần trước chị kia nói vầy, mà lần này chị nói khác. Dạ cho em hỏi lại cho chắc.\"", pronunciation: "lan chuok chi kia noy vay, ma lan nay chi noy khak, da cho em hoy lai cho chak", context: "Use when different officers give contradictory instructions." },
+      { cell_id: "640d2f43-0243-4e47-9f7d-4b56ee4cb021", english: "\"Chị ơi, em hỏi chút, em lấy số ở đâu ạ?\"", vietnamese: "\"Chị ơi, em hỏi chút, em lấy số ở đâu ạ?\"", pronunciation: "chi oi, em hoy chut, em lay so u dau a", context: "Use to ask where to get a queue number." },
+      { cell_id: "7874d327-b14c-4bee-94fe-7706de9112db", english: "\"Hồ sơ của em còn thiếu giấy tờ gì không chị?\"", vietnamese: "\"Hồ sơ của em còn thiếu giấy tờ gì không chị?\"", pronunciation: "ho suh kua em kon thieu zay to zi khong chi", context: "Use to check if your documents are complete." },
+      { cell_id: "381ca570-1c75-47f1-9099-ad4b96a63881", english: "\"Dạ em đợi cũng được, chị cho em biết khoảng bao lâu để em sắp xếp.\"", vietnamese: "\"Dạ em đợi cũng được, chị cho em biết khoảng bao lâu để em sắp xếp.\"", pronunciation: "da em doi kung duoc, chi cho em biet khwang bao lau de em sap xep", context: "Use to ask about wait time politely." },
+      { cell_id: "51872655-966a-4aea-b928-0cc7f3b253f8", english: "\"Lần trước chị kia nói vầy, mà lần này chị nói khác. Dạ cho em hỏi lại cho chắc.\"", vietnamese: "\"Lần trước chị kia nói vầy, mà lần này chị nói khác. Dạ cho em hỏi lại cho chắc.\"", pronunciation: "lan chuok chi kia noy vay, ma lan nay chi noy khak, da cho em hoy lai cho chak", context: "Use when different officers give contradictory instructions." },
     ],
     cultural_note: "Vietnamese bureaucracy rewards patience and politeness; chị ơi, em hỏi chút is the universal opener that softens any request at a government window.",
     tip: "Always bring multiple copies and address female staff as chị, male as anh — wrong pronouns at a government window can add friction.",
@@ -7022,10 +7358,10 @@ export const lessons: VietnameseLesson[] = [
     subtitle: "Practical bureaucratic phrases for a stressful moment.",
     intro: "Use these phrases if you are in a traffic accident and need to file a report at a Vietnamese police station.",
     phrases: [
-      { english: "\"Tôi cần làm biên bản tai nạn giao thông.\"", vietnamese: "\"Tôi cần làm biên bản tai nạn giao thông.\"", pronunciation: "toy kun lam bien ban tai nan ziao thong", context: "Use to request an accident report." },
-      { english: "\"Xe của tôi bị hư phần này. Xe kia bị hư phần kia.\"", vietnamese: "\"Xe của tôi bị hư phần này. Xe kia bị hư phần kia.\"", pronunciation: "seh kua toy bi hu fun nay, seh kia bi hu fun kia", context: "Use to describe the damage clearly." },
-      { english: "\"Có camera ở đây không ạ? Tôi muốn xin trích xuất.\"", vietnamese: "\"Có camera ở đây không ạ? Tôi muốn xin trích xuất.\"", pronunciation: "ko camera u day khong a, toy muon sin trich xuat", context: "Use to ask for camera footage." },
-      { english: "\"Tôi là người nước ngoài. Tôi cần phiên dịch không ạ?\"", vietnamese: "\"Tôi là người nước ngoài. Tôi cần phiên dịch không ạ?\"", pronunciation: "toy la nguoi nuoc ngoai, toy kun fien dik khong a", context: "Use to ask whether you need an interpreter." },
+      { cell_id: "1717e92c-6170-403c-84bf-68b31f4dc5b4", english: "\"Tôi cần làm biên bản tai nạn giao thông.\"", vietnamese: "\"Tôi cần làm biên bản tai nạn giao thông.\"", pronunciation: "toy kun lam bien ban tai nan ziao thong", context: "Use to request an accident report." },
+      { cell_id: "0cc18138-4078-47b7-85d2-9c7f2084413f", english: "\"Xe của tôi bị hư phần này. Xe kia bị hư phần kia.\"", vietnamese: "\"Xe của tôi bị hư phần này. Xe kia bị hư phần kia.\"", pronunciation: "seh kua toy bi hu fun nay, seh kia bi hu fun kia", context: "Use to describe the damage clearly." },
+      { cell_id: "91c322fc-48c6-4737-8aaf-302dd2a465a6", english: "\"Có camera ở đây không ạ? Tôi muốn xin trích xuất.\"", vietnamese: "\"Có camera ở đây không ạ? Tôi muốn xin trích xuất.\"", pronunciation: "ko camera u day khong a, toy muon sin trich xuat", context: "Use to ask for camera footage." },
+      { cell_id: "e617c9de-76cd-48ed-b97c-6eb4cf600112", english: "\"Tôi là người nước ngoài. Tôi cần phiên dịch không ạ?\"", vietnamese: "\"Tôi là người nước ngoài. Tôi cần phiên dịch không ạ?\"", pronunciation: "toy la nguoi nuoc ngoai, toy kun fien dik khong a", context: "Use to ask whether you need an interpreter." },
     ],
     cultural_note: "Police stations in Vietnam may not have English-speaking staff; bringing a Vietnamese-speaking friend or having key phrases ready significantly reduces stress and processing time.",
     tip: "Take photos of both vehicles, the location, and any visible injuries before going to the station — Vietnamese police will ask for them.",
@@ -7037,10 +7373,10 @@ export const lessons: VietnameseLesson[] = [
     subtitle: "Công an phường — registration, visits, and check-ins.",
     intro: "Use these phrases when interacting with local ward police for residence registration, temporary stay reporting, or routine visits.",
     phrases: [
-      { english: "\"Tôi đến đăng ký tạm trú.\"", vietnamese: "\"Tôi đến đăng ký tạm trú.\"", pronunciation: "toy den dang ky tam chu", context: "Use when registering temporary residence." },
-      { english: "\"Chủ nhà tôi đã khai báo trên app chưa ạ?\"", vietnamese: "\"Chủ nhà tôi đã khai báo trên app chưa ạ?\"", pronunciation: "chu nha toy da khai bao tren app chua a", context: "Use to check if your landlord already registered you." },
-      { english: "\"Tôi cần gia hạn visa. Bên này có làm được không ạ?\"", vietnamese: "\"Tôi cần gia hạn visa. Bên này có làm được không ạ?\"", pronunciation: "toy kun za han visa, ben nay ko lam duoc khong a", context: "Use to ask about visa extension at the ward level." },
-      { english: "\"Công an tới kiểm tra thì tôi cần đưa giấy tờ gì ạ?\"", vietnamese: "\"Công an tới kiểm tra thì tôi cần đưa giấy tờ gì ạ?\"", pronunciation: "kong an toi kiem tra thi toy kun dua zay to zi a", context: "Use to ask what documents to prepare for a visit." },
+      { cell_id: "c807ba79-5834-4328-960c-2889d489143f", english: "\"Tôi đến đăng ký tạm trú.\"", vietnamese: "\"Tôi đến đăng ký tạm trú.\"", pronunciation: "toy den dang ky tam chu", context: "Use when registering temporary residence." },
+      { cell_id: "8efcbe9a-2921-4f3e-89c2-302f3a2cb168", english: "\"Chủ nhà tôi đã khai báo trên app chưa ạ?\"", vietnamese: "\"Chủ nhà tôi đã khai báo trên app chưa ạ?\"", pronunciation: "chu nha toy da khai bao tren app chua a", context: "Use to check if your landlord already registered you." },
+      { cell_id: "da8f994b-7c50-47df-b64c-27d905f5bc35", english: "\"Tôi cần gia hạn visa. Bên này có làm được không ạ?\"", vietnamese: "\"Tôi cần gia hạn visa. Bên này có làm được không ạ?\"", pronunciation: "toy kun za han visa, ben nay ko lam duoc khong a", context: "Use to ask about visa extension at the ward level." },
+      { cell_id: "d52f7d5d-3f61-473c-8682-2c798aa053ce", english: "\"Công an tới kiểm tra thì tôi cần đưa giấy tờ gì ạ?\"", vietnamese: "\"Công an tới kiểm tra thì tôi cần đưa giấy tờ gì ạ?\"", pronunciation: "kong an toi kiem tra thi toy kun dua zay to zi a", context: "Use to ask what documents to prepare for a visit." },
     ],
     cultural_note: "The ward police (công an phường) handle local registration and may visit your residence; cooperation and politeness are expected, and having your landlord present or on call helps greatly.",
     tip: "Keep a photocopy of your passport, visa, and lease at your door — it speeds up any công an visit from a 20-minute process to a 2-minute one.",
@@ -7052,10 +7388,10 @@ export const lessons: VietnameseLesson[] = [
     subtitle: "Medical bureaucracy when you are alone.",
     intro: "Use these phrases when you need hospital care and do not have family nearby to handle the paperwork.",
     phrases: [
-      { english: "\"Tôi đi một mình. Không có người nhà ở đây. Tôi tự ký giấy được không?\"", vietnamese: "\"Tôi đi một mình. Không có người nhà ở đây. Tôi tự ký giấy được không?\"", pronunciation: "toy di mot minh, khong ko nguoi nha u day, toy tu ky zay duoc khong", context: "Use to explain you have no family present." },
-      { english: "\"Bảo hiểm của tôi là bảo hiểm quốc tế. Bệnh viện chấp nhận không ạ?\"", vietnamese: "\"Bảo hiểm của tôi là bảo hiểm quốc tế. Bệnh viện chấp nhận không ạ?\"", pronunciation: "bao hiem kua toy la bao hiem kuok te, benh vien chap nhan khong a", context: "Use to ask about international insurance acceptance." },
-      { english: "\"Tôi cần phòng riêng. Có phòng nào trống không ạ?\"", vietnamese: "\"Tôi cần phòng riêng. Có phòng nào trống không ạ?\"", pronunciation: "toy kun fong rieng, ko fong nao trong khong a", context: "Use to request a private room." },
-      { english: "\"Khi nào có kết quả xét nghiệm, chị gọi số này giùm tôi. Đây là bạn tôi.\"", vietnamese: "\"Khi nào có kết quả xét nghiệm, chị gọi số này giùm tôi. Đây là bạn tôi.\"", pronunciation: "khi nao ko ket kwa xet ngiem, chi goy so nay zum toy, day la ban toy", context: "Use to designate an emergency contact." },
+      { cell_id: "65cb7224-5ea8-4456-8e53-d032a93e1211", english: "\"Tôi đi một mình. Không có người nhà ở đây. Tôi tự ký giấy được không?\"", vietnamese: "\"Tôi đi một mình. Không có người nhà ở đây. Tôi tự ký giấy được không?\"", pronunciation: "toy di mot minh, khong ko nguoi nha u day, toy tu ky zay duoc khong", context: "Use to explain you have no family present." },
+      { cell_id: "3b54d4a1-a1e8-491d-92a9-8b65fe001bf0", english: "\"Bảo hiểm của tôi là bảo hiểm quốc tế. Bệnh viện chấp nhận không ạ?\"", vietnamese: "\"Bảo hiểm của tôi là bảo hiểm quốc tế. Bệnh viện chấp nhận không ạ?\"", pronunciation: "bao hiem kua toy la bao hiem kuok te, benh vien chap nhan khong a", context: "Use to ask about international insurance acceptance." },
+      { cell_id: "fde5740b-175f-4b7c-b349-cf46447c7c32", english: "\"Tôi cần phòng riêng. Có phòng nào trống không ạ?\"", vietnamese: "\"Tôi cần phòng riêng. Có phòng nào trống không ạ?\"", pronunciation: "toy kun fong rieng, ko fong nao trong khong a", context: "Use to request a private room." },
+      { cell_id: "2427926f-67a0-414c-b316-9b5f4bf00e2d", english: "\"Khi nào có kết quả xét nghiệm, chị gọi số này giùm tôi. Đây là bạn tôi.\"", vietnamese: "\"Khi nào có kết quả xét nghiệm, chị gọi số này giùm tôi. Đây là bạn tôi.\"", pronunciation: "khi nao ko ket kwa xet ngiem, chi goy so nay zum toy, day la ban toy", context: "Use to designate an emergency contact." },
     ],
     cultural_note: "Vietnamese hospitals expect a người nhà (family member) to handle logistics; being alone is unusual and you should proactively explain your situation to the nursing staff.",
     tip: "Have your insurance card, passport, and a local friend's phone number in one envelope ready to hand over — it reduces the bureaucratic back-and-forth significantly.",
@@ -7067,10 +7403,10 @@ export const lessons: VietnameseLesson[] = [
     subtitle: "Escalating a workplace problem carefully.",
     intro: "Use these phrases when you have reported a problem to HR and received no meaningful response.",
     phrases: [
-      { english: "\"Em đã gửi email cho HR hai tuần trước. Chưa có hồi âm.\"", vietnamese: "\"Em đã gửi email cho HR hai tuần trước. Chưa có hồi âm.\"", pronunciation: "em da goi email cho HR hai tuan chuok, chua ko hoi am", context: "Use to document the silence." },
-      { english: "\"Em không muốn làm lớn chuyện. Nhưng nếu HR không trả lời, bước tiếp theo em nên làm gì?\"", vietnamese: "\"Em không muốn làm lớn chuyện. Nhưng nếu HR không trả lời, bước tiếp theo em nên làm gì?\"", pronunciation: "em khong muon lam lon chuyen, nhung new HR khong tra loi, buok tiep theo em nen lam zi", context: "Use to ask about escalation paths without threatening." },
-      { english: "\"Em cần biết là công ty có chính sách bảo vệ người báo cáo không.\"", vietnamese: "\"Em cần biết là công ty có chính sách bảo vệ người báo cáo không.\"", pronunciation: "em kun biet la kong ty ko chinh sach bao ve nguoi bao kao khong", context: "Use to ask about whistleblower protection." },
-      { english: "\"Nếu chị không phải người giải quyết, chị cho em biết ai là người phụ trách.\"", vietnamese: "\"Nếu chị không phải người giải quyết, chị cho em biết ai là người phụ trách.\"", pronunciation: "new chi khong fai nguoi giai kyet, chi cho em biet ai la nguoi fu trach", context: "Use to find the right person when you are being passed around." },
+      { cell_id: "a0f3f894-f931-4e20-98ef-5167fa1653a8", english: "\"Em đã gửi email cho HR hai tuần trước. Chưa có hồi âm.\"", vietnamese: "\"Em đã gửi email cho HR hai tuần trước. Chưa có hồi âm.\"", pronunciation: "em da goi email cho HR hai tuan chuok, chua ko hoi am", context: "Use to document the silence." },
+      { cell_id: "0e1c887a-213b-4de5-a3fd-a1dab3ede452", english: "\"Em không muốn làm lớn chuyện. Nhưng nếu HR không trả lời, bước tiếp theo em nên làm gì?\"", vietnamese: "\"Em không muốn làm lớn chuyện. Nhưng nếu HR không trả lời, bước tiếp theo em nên làm gì?\"", pronunciation: "em khong muon lam lon chuyen, nhung new HR khong tra loi, buok tiep theo em nen lam zi", context: "Use to ask about escalation paths without threatening." },
+      { cell_id: "57e160d7-d58f-4f3a-8658-0d417bd31866", english: "\"Em cần biết là công ty có chính sách bảo vệ người báo cáo không.\"", vietnamese: "\"Em cần biết là công ty có chính sách bảo vệ người báo cáo không.\"", pronunciation: "em kun biet la kong ty ko chinh sach bao ve nguoi bao kao khong", context: "Use to ask about whistleblower protection." },
+      { cell_id: "807b002c-a63f-42bc-a1e6-0af55804832d", english: "\"Nếu chị không phải người giải quyết, chị cho em biết ai là người phụ trách.\"", vietnamese: "\"Nếu chị không phải người giải quyết, chị cho em biết ai là người phụ trách.\"", pronunciation: "new chi khong fai nguoi giai kyet, chi cho em biet ai la nguoi fu trach", context: "Use to find the right person when you are being passed around." },
     ],
     cultural_note: "Vietnamese HR departments can be passive or protective of management; documenting every step and asking chị cho em biết ai là người phụ trách forces accountability through the chain of command.",
     tip: "Always follow up in writing. A phone call does not exist in a Vietnamese workplace dispute unless it is followed by a Zalo or email summary.",
@@ -7082,10 +7418,10 @@ export const lessons: VietnameseLesson[] = [
     subtitle: "Language sabotage — when they use Vietnamese to exclude you.",
     intro: "Use these phrases when a colleague intentionally speaks Vietnamese to cut you out of conversations that involve you.",
     phrases: [
-      { english: "\"Mình nói tiếng Anh được không, để em theo kịp?\"", vietnamese: "\"Mình nói tiếng Anh được không, để em theo kịp?\"", pronunciation: "minh noy tieng Anh duoc khong, de em theo kip", context: "Use to request English politely but directly." },
-      { english: "\"Em thấy mọi người đang nói về dự án của em. Cho em tham gia với.\"", vietnamese: "\"Em thấy mọi người đang nói về dự án của em. Cho em tham gia với.\"", pronunciation: "em thay moi nguoi dang noy ve du an kua em, cho em tham za voi", context: "Use to insert yourself when excluded." },
-      { english: "\"Chị tóm tắt lại cho em nội dung chính bằng tiếng Anh được không?\"", vietnamese: "\"Chị tóm tắt lại cho em nội dung chính bằng tiếng Anh được không?\"", pronunciation: "chi tom tat lai cho em noi dung chinh bang tieng Anh duoc khong", context: "Use to ask for a summary without accusing." },
-      { english: "\"Em đang học tiếng Việt, nên nếu mọi người nói chậm lại một chút, em sẽ hiểu.\"", vietnamese: "\"Em đang học tiếng Việt, nên nếu mọi người nói chậm lại một chút, em sẽ hiểu.\"", pronunciation: "em dang hok tieng Viet, nen new moi nguoi noy cham lai mot chut, em se hiew", context: "Use to bridge the gap without making it a conflict." },
+      { cell_id: "5a1a73f2-6769-4944-bca4-942454f74a14", english: "\"Mình nói tiếng Anh được không, để em theo kịp?\"", vietnamese: "\"Mình nói tiếng Anh được không, để em theo kịp?\"", pronunciation: "minh noy tieng Anh duoc khong, de em theo kip", context: "Use to request English politely but directly." },
+      { cell_id: "03fecb40-fc03-46aa-b86d-f7808b8cd2aa", english: "\"Em thấy mọi người đang nói về dự án của em. Cho em tham gia với.\"", vietnamese: "\"Em thấy mọi người đang nói về dự án của em. Cho em tham gia với.\"", pronunciation: "em thay moi nguoi dang noy ve du an kua em, cho em tham za voi", context: "Use to insert yourself when excluded." },
+      { cell_id: "cee85998-84c6-4069-b851-cd2bd84d18af", english: "\"Chị tóm tắt lại cho em nội dung chính bằng tiếng Anh được không?\"", vietnamese: "\"Chị tóm tắt lại cho em nội dung chính bằng tiếng Anh được không?\"", pronunciation: "chi tom tat lai cho em noi dung chinh bang tieng Anh duoc khong", context: "Use to ask for a summary without accusing." },
+      { cell_id: "a5878922-d80c-4eba-a751-bd86bc1e76ba", english: "\"Em đang học tiếng Việt, nên nếu mọi người nói chậm lại một chút, em sẽ hiểu.\"", vietnamese: "\"Em đang học tiếng Việt, nên nếu mọi người nói chậm lại một chút, em sẽ hiểu.\"", pronunciation: "em dang hok tieng Viet, nen new moi nguoi noy cham lai mot chut, em se hiew", context: "Use to bridge the gap without making it a conflict." },
     ],
     cultural_note: "Some Vietnamese colleagues switch to Vietnamese as a passive-aggressive move; calling it out politely by requesting inclusion in English usually works — the person loses face if they refuse a reasonable request in front of others.",
     tip: "Use cho em tham gia với — let me join — it is friendly and frames the request as inclusion, not accusation.",
@@ -7115,10 +7451,10 @@ export const lessons: VietnameseLesson[] = [
     subtitle: "Navigating being visibly different at a Vietnamese workplace.",
     intro: "Use these phrases when you are the only non-Vietnamese person in your office and need to handle the dynamics that come with that.",
     phrases: [
-      { english: "\"Em biết mọi người tò mò về em. Có gì mọi người cứ hỏi, em không ngại.\"", vietnamese: "\"Em biết mọi người tò mò về em. Có gì mọi người cứ hỏi, em không ngại.\"", pronunciation: "em biet moi nguoi to mo ve em, ko zi moi nguoi ku hoy, em khong ngai", context: "Use to invite questions instead of stares." },
-      { english: "\"Đôi khi em không hiểu hết tiếng Việt, nhưng em hiểu ý. Mọi người đừng ngại nói.\"", vietnamese: "\"Đôi khi em không hiểu hết tiếng Việt, nhưng em hiểu ý. Mọi người đừng ngại nói.\"", pronunciation: "doi khi em khong hiew het tieng Viet, nhung em hiew y, moi nguoi dung ngai noy", context: "Use to keep communication flowing even when imperfect." },
-      { english: "\"Em muốn hòa nhập, mà không muốn giả vờ là người Việt. Có ranh giới đó em mong mọi người hiểu.\"", vietnamese: "\"Em muốn hòa nhập, mà không muốn giả vờ là người Việt. Có ranh giới đó em mong mọi người hiểu.\"", pronunciation: "em muon hoa nhap, ma khong muon za vo la nguoi Viet, ko ranh zoi do em mong moi nguoi hiew", context: "Use to set a boundary between integration and erasure." },
-      { english: "\"Tết này mọi người có việc gì em làm được, cho em tham gia với.\"", vietnamese: "\"Tết này mọi người có việc gì em làm được, cho em tham gia với.\"", pronunciation: "Tet nay moi nguoi ko viek zi em lam duoc, cho em tham za voi", context: "Use to proactively ask to join cultural activities." },
+      { cell_id: "b7e478e1-bf89-4dd2-8ee9-8c539ef9076a", english: "\"Em biết mọi người tò mò về em. Có gì mọi người cứ hỏi, em không ngại.\"", vietnamese: "\"Em biết mọi người tò mò về em. Có gì mọi người cứ hỏi, em không ngại.\"", pronunciation: "em biet moi nguoi to mo ve em, ko zi moi nguoi ku hoy, em khong ngai", context: "Use to invite questions instead of stares." },
+      { cell_id: "0d8f7814-a5d6-4a49-9f82-afdbffc9c9de", english: "\"Đôi khi em không hiểu hết tiếng Việt, nhưng em hiểu ý. Mọi người đừng ngại nói.\"", vietnamese: "\"Đôi khi em không hiểu hết tiếng Việt, nhưng em hiểu ý. Mọi người đừng ngại nói.\"", pronunciation: "doi khi em khong hiew het tieng Viet, nhung em hiew y, moi nguoi dung ngai noy", context: "Use to keep communication flowing even when imperfect." },
+      { cell_id: "f4532b0e-ec26-45d5-b5d0-8b96ce1f2871", english: "\"Em muốn hòa nhập, mà không muốn giả vờ là người Việt. Có ranh giới đó em mong mọi người hiểu.\"", vietnamese: "\"Em muốn hòa nhập, mà không muốn giả vờ là người Việt. Có ranh giới đó em mong mọi người hiểu.\"", pronunciation: "em muon hoa nhap, ma khong muon za vo la nguoi Viet, ko ranh zoi do em mong moi nguoi hiew", context: "Use to set a boundary between integration and erasure." },
+      { cell_id: "cd42e226-29df-4832-9f4c-c98a5bb08ad0", english: "\"Tết này mọi người có việc gì em làm được, cho em tham gia với.\"", vietnamese: "\"Tết này mọi người có việc gì em làm được, cho em tham gia với.\"", pronunciation: "Tet nay moi nguoi ko viek zi em lam duoc, cho em tham za voi", context: "Use to proactively ask to join cultural activities." },
     ],
     cultural_note: "Being the only foreigner in a Vietnamese office means you will be watched, discussed, and sometimes treated as a novelty; leaning into openness with boundaries earns more respect than either total withdrawal or total assimilation.",
     tip: "Use cho em tham gia với — let me join — a phrase that works in every social setting for foreigners who want to participate without entitlement.",
@@ -7130,10 +7466,10 @@ export const lessons: VietnameseLesson[] = [
     subtitle: "Navigating nhậu professionally.",
     intro: "Use these phrases when work events involve drinking and you need to manage your participation without offending anyone.",
     phrases: [
-      { english: "\"Em không uống được rượu, mà em muốn ngồi chung. Cho em uống trà đá với mọi người.\"", vietnamese: "\"Em không uống được rượu, mà em muốn ngồi chung. Cho em uống trà đá với mọi người.\"", pronunciation: "em khong uong duoc ruou, ma em muon ngoy chung, cho em uong tra da voi moi nguoi", context: "Use to opt out of alcohol while staying present." },
-      { english: "\"Em uống một lon thôi. Xong em chuyển qua nước ngọt.\"", vietnamese: "\"Em uống một lon thôi. Xong em chuyển qua nước ngọt.\"", pronunciation: "em uong mot lon thoy, xong em chuyen kwa nuok ngot", context: "Use to set a clear limit early." },
-      { english: "\"Sếp, em rót cho sếp, mà em không uống thêm đâu. Mai em có ca sớm.\"", vietnamese: "\"Sếp, em rót cho sếp, mà em không uống thêm đâu. Mai em có ca sớm.\"", pronunciation: "sep, em zot cho sep, ma em khong uong them dau, mai em ko ka som", context: "Use to show respect through pouring while refusing to drink more." },
-      { english: "\"Em tham gia cho vui, chứ em say là em ngủ gục, xấu hổ lắm.\"", vietnamese: "\"Em tham gia cho vui, chứ em say là em ngủ gục, xấu hổ lắm.\"", pronunciation: "em tham za cho vui, chu em say la em ngu guk, xau ho lam", context: "Use self-deprecation to refuse more alcohol." },
+      { cell_id: "165f1c6b-c8ab-4c98-a55c-153d43618276", english: "\"Em không uống được rượu, mà em muốn ngồi chung. Cho em uống trà đá với mọi người.\"", vietnamese: "\"Em không uống được rượu, mà em muốn ngồi chung. Cho em uống trà đá với mọi người.\"", pronunciation: "em khong uong duoc ruou, ma em muon ngoy chung, cho em uong tra da voi moi nguoi", context: "Use to opt out of alcohol while staying present." },
+      { cell_id: "1ff21c66-3a52-4fe2-9bb8-cb72416faa61", english: "\"Em uống một lon thôi. Xong em chuyển qua nước ngọt.\"", vietnamese: "\"Em uống một lon thôi. Xong em chuyển qua nước ngọt.\"", pronunciation: "em uong mot lon thoy, xong em chuyen kwa nuok ngot", context: "Use to set a clear limit early." },
+      { cell_id: "5404856f-44f1-4b05-a87e-31a969355e83", english: "\"Sếp, em rót cho sếp, mà em không uống thêm đâu. Mai em có ca sớm.\"", vietnamese: "\"Sếp, em rót cho sếp, mà em không uống thêm đâu. Mai em có ca sớm.\"", pronunciation: "sep, em zot cho sep, ma em khong uong them dau, mai em ko ka som", context: "Use to show respect through pouring while refusing to drink more." },
+      { cell_id: "aa4798e2-fbf6-4618-b864-81f29e96d4a8", english: "\"Em tham gia cho vui, chứ em say là em ngủ gục, xấu hổ lắm.\"", vietnamese: "\"Em tham gia cho vui, chứ em say là em ngủ gục, xấu hổ lắm.\"", pronunciation: "em tham za cho vui, chu em say la em ngu guk, xau ho lam", context: "Use self-deprecation to refuse more alcohol." },
     ],
     cultural_note: "Nhậu (drinking together) is a bonding ritual in Vietnamese workplaces; refusing to participate entirely can create distance, but refusing more drinks while staying at the table is almost always accepted.",
     tip: "Pouring drinks for others (especially seniors) while keeping your own glass full of tea or water is the classic Vietnamese move — you participate in the ritual without the alcohol.",
@@ -7145,10 +7481,10 @@ export const lessons: VietnameseLesson[] = [
     subtitle: "Checking in without embarrassing them.",
     intro: "Use these phrases when you are a manager or senior colleague and notice a junior staff member is overwhelmed but not speaking up.",
     phrases: [
-      { english: "\"Dạo này em thấy bạn có vẻ nặng đầu. Có gì bạn muốn nói không, mình đi uống nước một chút?\"", vietnamese: "\"Dạo này em thấy bạn có vẻ nặng đầu. Có gì bạn muốn nói không, mình đi uống nước một chút?\"", pronunciation: "zao nay em thay ban ko ve nang dau, ko zi ban muon noy khong, minh di uong nuoc mot chut", context: "Use to open a gentle private check-in." },
-      { english: "\"Không phải họp. Không phải đánh giá. Là mình ngồi nói chuyện người với người thôi.\"", vietnamese: "\"Không phải họp. Không phải đánh giá. Là mình ngồi nói chuyện người với người thôi.\"", pronunciation: "khong fai hop, khong fai danh za, la minh ngoy noy chuyen nguoi voi nguoi thoy", context: "Use to remove the formal pressure." },
-      { english: "\"Có những thứ bạn không cần giải quyết một mình. Tụi mình là một nhóm.\"", vietnamese: "\"Có những thứ bạn không cần giải quyết một mình. Tụi mình là một nhóm.\"", pronunciation: "ko nhung thu ban khong kun giai kyet mot minh, tui minh la mot nhom", context: "Use to normalize asking for help." },
-      { english: "\"Bạn cứ nói thật. Mình không phạt người đang cố gắng.\"", vietnamese: "\"Bạn cứ nói thật. Mình không phạt người đang cố gắng.\"", pronunciation: "ban ku noy that, minh khong fat nguoi dang ko gang", context: "Use to create safety for honesty." },
+      { cell_id: "569220fb-3c68-4520-8cf1-052badc81eb4", english: "\"Dạo này em thấy bạn có vẻ nặng đầu. Có gì bạn muốn nói không, mình đi uống nước một chút?\"", vietnamese: "\"Dạo này em thấy bạn có vẻ nặng đầu. Có gì bạn muốn nói không, mình đi uống nước một chút?\"", pronunciation: "zao nay em thay ban ko ve nang dau, ko zi ban muon noy khong, minh di uong nuoc mot chut", context: "Use to open a gentle private check-in." },
+      { cell_id: "0c330806-71a1-4daa-9ed1-151193dae719", english: "\"Không phải họp. Không phải đánh giá. Là mình ngồi nói chuyện người với người thôi.\"", vietnamese: "\"Không phải họp. Không phải đánh giá. Là mình ngồi nói chuyện người với người thôi.\"", pronunciation: "khong fai hop, khong fai danh za, la minh ngoy noy chuyen nguoi voi nguoi thoy", context: "Use to remove the formal pressure." },
+      { cell_id: "68a5c65d-ab4b-4d04-be75-de419b3f84c0", english: "\"Có những thứ bạn không cần giải quyết một mình. Tụi mình là một nhóm.\"", vietnamese: "\"Có những thứ bạn không cần giải quyết một mình. Tụi mình là một nhóm.\"", pronunciation: "ko nhung thu ban khong kun giai kyet mot minh, tui minh la mot nhom", context: "Use to normalize asking for help." },
+      { cell_id: "ab41099b-1aaa-4ca2-a8f3-37af46840be3", english: "\"Bạn cứ nói thật. Mình không phạt người đang cố gắng.\"", vietnamese: "\"Bạn cứ nói thật. Mình không phạt người đang cố gắng.\"", pronunciation: "ban ku noy that, minh khong fat nguoi dang ko gang", context: "Use to create safety for honesty." },
     ],
     cultural_note: "Junior Vietnamese staff often hide struggle to avoid losing face; the best check-ins happen outside the office, one-on-one, with explicit reassurance that honesty will not be punished.",
     tip: "Use mình không phạt người đang cố gắng — I do not punish people who are trying — it directly addresses the fear behind the silence.",
@@ -7160,10 +7496,10 @@ export const lessons: VietnameseLesson[] = [
     subtitle: "Reading the room and protecting yourself.",
     intro: "Use these phrases when layoff rumors are circulating at your Vietnamese company and you need information without panicking.",
     phrases: [
-      { english: "\"Chị nghe gì về chuyện tái cơ cấu chưa? Em chỉ hỏi để chuẩn bị tinh thần thôi.\"", vietnamese: "\"Chị nghe gì về chuyện tái cơ cấu chưa? Em chỉ hỏi để chuẩn bị tinh thần thôi.\"", pronunciation: "chi nghe zi ve chuyen tai kuh kau chua, em chi hoy de chuan bi tinh than thoy", context: "Use to ask a trusted colleague for information." },
-      { english: "\"Em không muốn tin đồn. Mà em cũng không muốn bị bất ngờ.\"", vietnamese: "\"Em không muốn tin đồn. Mà em cũng không muốn bị bất ngờ.\"", pronunciation: "em khong muon tin don, ma em kung khong muon bi bat ngo", context: "Use to explain why you are asking." },
-      { english: "\"Nếu có chuyện, em nên nói chuyện với ai trong HR trước?\"", vietnamese: "\"Nếu có chuyện, em nên nói chuyện với ai trong HR trước?\"", pronunciation: "new ko chuyen, em nen noy chuyen voi ai trong HR chuok", context: "Use to identify your point of contact proactively." },
-      { english: "\"Em muốn biết là mình có nằm trong diện rủi ro không. Để em tính bước tiếp.\"", vietnamese: "\"Em muốn biết là mình có nằm trong diện rủi ro không. Để em tính bước tiếp.\"", pronunciation: "em muon biet la minh ko nam trong dien rui ro khong, de em tinh buok tiep", context: "Use to ask directly about your own position." },
+      { cell_id: "9d13e0c4-e04e-4915-afc7-89aacfee451a", english: "\"Chị nghe gì về chuyện tái cơ cấu chưa? Em chỉ hỏi để chuẩn bị tinh thần thôi.\"", vietnamese: "\"Chị nghe gì về chuyện tái cơ cấu chưa? Em chỉ hỏi để chuẩn bị tinh thần thôi.\"", pronunciation: "chi nghe zi ve chuyen tai kuh kau chua, em chi hoy de chuan bi tinh than thoy", context: "Use to ask a trusted colleague for information." },
+      { cell_id: "65e4b9e3-6008-421a-bcaf-6cfb6aa1b467", english: "\"Em không muốn tin đồn. Mà em cũng không muốn bị bất ngờ.\"", vietnamese: "\"Em không muốn tin đồn. Mà em cũng không muốn bị bất ngờ.\"", pronunciation: "em khong muon tin don, ma em kung khong muon bi bat ngo", context: "Use to explain why you are asking." },
+      { cell_id: "35e58651-6d52-413c-83d5-5b529e595ee2", english: "\"Nếu có chuyện, em nên nói chuyện với ai trong HR trước?\"", vietnamese: "\"Nếu có chuyện, em nên nói chuyện với ai trong HR trước?\"", pronunciation: "new ko chuyen, em nen noy chuyen voi ai trong HR chuok", context: "Use to identify your point of contact proactively." },
+      { cell_id: "51919d29-4049-41df-8945-b3d7bfe2e257", english: "\"Em muốn biết là mình có nằm trong diện rủi ro không. Để em tính bước tiếp.\"", vietnamese: "\"Em muốn biết là mình có nằm trong diện rủi ro không. Để em tính bước tiếp.\"", pronunciation: "em muon biet la minh ko nam trong dien rui ro khong, de em tinh buok tiep", context: "Use to ask directly about your own position." },
     ],
     cultural_note: "Layoff information in Vietnamese companies travels through trusted individuals, not official channels; the person who tells you the truth is often a peer, not a manager.",
     tip: "The phrase chuẩn bị tinh thần — prepare mentally — signals you are not panicking, just planning, which makes people more willing to share information.",
@@ -7193,10 +7529,10 @@ export const lessons: VietnameseLesson[] = [
     subtitle: "Handling criticism of your language skills professionally.",
     intro: "Use these phrases when colleagues or clients judge your Vietnamese ability instead of your work.",
     phrases: [
-      { english: "\"Tiếng Việt của em chưa hoàn hảo, mà chuyên môn của em thì có.\"", vietnamese: "\"Tiếng Việt của em chưa hoàn hảo, mà chuyên môn của em thì có.\"", pronunciation: "tieng Viet kua em chua hwan hao, ma chuyen mon kua em thi ko", context: "Use to redirect focus from language to competence." },
-      { english: "\"Em đang học mỗi ngày. Nếu em nói sai, anh chị sửa giùm em.\"", vietnamese: "\"Em đang học mỗi ngày. Nếu em nói sai, anh chị sửa giùm em.\"", pronunciation: "em dang hok moi ngay, new em noy sai, anh chi sua zum em", context: "Use to invite correction instead of judgment." },
-      { english: "\"Em hiểu là em nói chưa hay. Nhưng em hiểu nội dung công việc 100%.\"", vietnamese: "\"Em hiểu là em nói chưa hay. Nhưng em hiểu nội dung công việc 100%.\"", pronunciation: "em hiew la em noy chua hay, nhung em hiew noi dung kong viek mot tram fan tram", context: "Use to separate language skill from job understanding." },
-      { english: "\"Em dùng tiếng Anh cho phần chuyên môn, tiếng Việt cho phần giao tiếp. Vậy được không ạ?\"", vietnamese: "\"Em dùng tiếng Anh cho phần chuyên môn, tiếng Việt cho phần giao tiếp. Vậy được không ạ?\"", pronunciation: "em zung tieng Anh cho fun chuyen mon, tieng Viet cho fun ziao tiep, vay duoc khong a", context: "Use to propose a practical bilingual arrangement." },
+      { cell_id: "bddbfbaf-f4b7-4eeb-91b8-4cbcf42da51d", english: "\"Tiếng Việt của em chưa hoàn hảo, mà chuyên môn của em thì có.\"", vietnamese: "\"Tiếng Việt của em chưa hoàn hảo, mà chuyên môn của em thì có.\"", pronunciation: "tieng Viet kua em chua hwan hao, ma chuyen mon kua em thi ko", context: "Use to redirect focus from language to competence." },
+      { cell_id: "48476b05-f4e7-449e-ae58-a58f0fe1b905", english: "\"Em đang học mỗi ngày. Nếu em nói sai, anh chị sửa giùm em.\"", vietnamese: "\"Em đang học mỗi ngày. Nếu em nói sai, anh chị sửa giùm em.\"", pronunciation: "em dang hok moi ngay, new em noy sai, anh chi sua zum em", context: "Use to invite correction instead of judgment." },
+      { cell_id: "5518618f-81a2-40ed-8395-1f78c525b71b", english: "\"Em hiểu là em nói chưa hay. Nhưng em hiểu nội dung công việc 100%.\"", vietnamese: "\"Em hiểu là em nói chưa hay. Nhưng em hiểu nội dung công việc 100%.\"", pronunciation: "em hiew la em noy chua hay, nhung em hiew noi dung kong viek mot tram fan tram", context: "Use to separate language skill from job understanding." },
+      { cell_id: "8f044d17-3ec2-471c-8a9b-968ccb1b7ba4", english: "\"Em dùng tiếng Anh cho phần chuyên môn, tiếng Việt cho phần giao tiếp. Vậy được không ạ?\"", vietnamese: "\"Em dùng tiếng Anh cho phần chuyên môn, tiếng Việt cho phần giao tiếp. Vậy được không ạ?\"", pronunciation: "em zung tieng Anh cho fun chuyen mon, tieng Viet cho fun ziao tiep, vay duoc khong a", context: "Use to propose a practical bilingual arrangement." },
     ],
     cultural_note: "Vietnamese colleagues may equate language fluency with competence; calmly separating the two — and inviting correction — often turns a critic into an ally.",
     tip: "Use sửa giùm em — correct it for me — this turns judgment into a favor, which is culturally easier for Vietnamese people to give.",
@@ -7208,10 +7544,10 @@ export const lessons: VietnameseLesson[] = [
     subtitle: "Deflecting nosy coworkers gracefully.",
     intro: "Use these phrases when a Vietnamese colleague keeps asking about your salary, relationship status, or family plans.",
     phrases: [
-      { english: "\"Chuyện đó em kể sau nha. Giờ mình lo công việc trước.\"", vietnamese: "\"Chuyện đó em kể sau nha. Giờ mình lo công việc trước.\"", pronunciation: "chuyen do em ke sau nha, zo minh lo kong viek chuok", context: "Use to defer without refusing." },
-      { english: "\"Em thấy câu hỏi đó hơi cá nhân. Mình nói chuyện khác được không chị?\"", vietnamese: "\"Em thấy câu hỏi đó hơi cá nhân. Mình nói chuyện khác được không chị?\"", pronunciation: "em thay kau hoy do hoi ka nhan, minh noy chuyen khak duoc khong chi", context: "Use to name the boundary while staying polite." },
-      { english: "\"Em có nguyên tắc là không nói chuyện cá nhân ở văn phòng. Không phải riêng chị đâu.\"", vietnamese: "\"Em có nguyên tắc là không nói chuyện cá nhân ở văn phòng. Không phải riêng chị đâu.\"", pronunciation: "em ko nguyen tak la khong noy chuyen ka nhan u van fong, khong fai rieng chi dau", context: "Use to make it a general rule, not a personal rejection." },
-      { english: "\"Chị cho em giữ chút bí mật nha. Em kỹ tính vụ đó.\"", vietnamese: "\"Chị cho em giữ chút bí mật nha. Em kỹ tính vụ đó.\"", pronunciation: "chi cho em ziu chut bi mat nha, em ky tinh vu do", context: "Use to friendly-deflect with charm." },
+      { cell_id: "d633c65c-cb1a-46e9-bf36-df4fe1802549", english: "\"Chuyện đó em kể sau nha. Giờ mình lo công việc trước.\"", vietnamese: "\"Chuyện đó em kể sau nha. Giờ mình lo công việc trước.\"", pronunciation: "chuyen do em ke sau nha, zo minh lo kong viek chuok", context: "Use to defer without refusing." },
+      { cell_id: "1a9487ef-5ec9-4a07-b3c3-1427bb3b1c1c", english: "\"Em thấy câu hỏi đó hơi cá nhân. Mình nói chuyện khác được không chị?\"", vietnamese: "\"Em thấy câu hỏi đó hơi cá nhân. Mình nói chuyện khác được không chị?\"", pronunciation: "em thay kau hoy do hoi ka nhan, minh noy chuyen khak duoc khong chi", context: "Use to name the boundary while staying polite." },
+      { cell_id: "5d7e45d9-9240-469e-8da2-1dec7a08881e", english: "\"Em có nguyên tắc là không nói chuyện cá nhân ở văn phòng. Không phải riêng chị đâu.\"", vietnamese: "\"Em có nguyên tắc là không nói chuyện cá nhân ở văn phòng. Không phải riêng chị đâu.\"", pronunciation: "em ko nguyen tak la khong noy chuyen ka nhan u van fong, khong fai rieng chi dau", context: "Use to make it a general rule, not a personal rejection." },
+      { cell_id: "deceb740-7949-42dd-b961-5f80f7c1493a", english: "\"Chị cho em giữ chút bí mật nha. Em kỹ tính vụ đó.\"", vietnamese: "\"Chị cho em giữ chút bí mật nha. Em kỹ tính vụ đó.\"", pronunciation: "chi cho em ziu chut bi mat nha, em ky tinh vu do", context: "Use to friendly-deflect with charm." },
     ],
     cultural_note: "Personal questions in Vietnamese workplaces are often a form of bonding, not intrusion; having a standard friendly deflection preserves relationships while protecting your privacy.",
     tip: "Use nguyên tắc — principle — it sounds firm but impersonal, which helps Vietnamese colleagues accept the boundary without taking offense.",
@@ -7223,10 +7559,10 @@ export const lessons: VietnameseLesson[] = [
     subtitle: "Soft leverage phrases for business deals.",
     intro: "Use these phrases when negotiating a contract, price, or terms with Vietnamese business partners.",
     phrases: [
-      { english: "\"Em hiểu giá của anh. Cho em về suy nghĩ thêm một chút.\"", vietnamese: "\"Em hiểu giá của anh. Cho em về suy nghĩ thêm một chút.\"", pronunciation: "em hiew za kua anh, cho em ve suy nghi them mot chut", context: "Use to pause without rejecting." },
-      { english: "\"Bên em có ngân sách giới hạn. Anh coi có cách nào linh hoạt không?\"", vietnamese: "\"Bên em có ngân sách giới hạn. Anh coi có cách nào linh hoạt không?\"", pronunciation: "ben em ko ngan sach zoi han, anh koy ko kak nao linh hoat khong", context: "Use to ask for flexibility without naming a number." },
-      { english: "\"Nếu mình làm lâu dài, anh có mức khác không?\"", vietnamese: "\"Nếu mình làm lâu dài, anh có mức khác không?\"", pronunciation: "new minh lam lau dai, anh ko muk khak khong", context: "Use to explore long-term pricing." },
-      { english: "\"Em tin là mình tìm được điểm chung. Để em gửi đề xuất qua email cho rõ ràng.\"", vietnamese: "\"Em tin là mình tìm được điểm chung. Để em gửi đề xuất qua email cho rõ ràng.\"", pronunciation: "em tin la minh tim duoc diem chung, de em goi de xuat kwa email cho ro rang", context: "Use to move from verbal to written without pressure." },
+      { cell_id: "20ae6733-e90f-407a-83b0-ae844ce83e61", english: "\"Em hiểu giá của anh. Cho em về suy nghĩ thêm một chút.\"", vietnamese: "\"Em hiểu giá của anh. Cho em về suy nghĩ thêm một chút.\"", pronunciation: "em hiew za kua anh, cho em ve suy nghi them mot chut", context: "Use to pause without rejecting." },
+      { cell_id: "876b5c9c-dd0a-4b4c-a83c-2e11adb46e50", english: "\"Bên em có ngân sách giới hạn. Anh coi có cách nào linh hoạt không?\"", vietnamese: "\"Bên em có ngân sách giới hạn. Anh coi có cách nào linh hoạt không?\"", pronunciation: "ben em ko ngan sach zoi han, anh koy ko kak nao linh hoat khong", context: "Use to ask for flexibility without naming a number." },
+      { cell_id: "2d709a1a-3471-4ac0-81b2-81e3a35b7af3", english: "\"Nếu mình làm lâu dài, anh có mức khác không?\"", vietnamese: "\"Nếu mình làm lâu dài, anh có mức khác không?\"", pronunciation: "new minh lam lau dai, anh ko muk khak khong", context: "Use to explore long-term pricing." },
+      { cell_id: "9a3cf7aa-a262-44a7-b96e-fe891c4b151e", english: "\"Em tin là mình tìm được điểm chung. Để em gửi đề xuất qua email cho rõ ràng.\"", vietnamese: "\"Em tin là mình tìm được điểm chung. Để em gửi đề xuất qua email cho rõ ràng.\"", pronunciation: "em tin la minh tim duoc diem chung, de em goi de xuat kwa email cho ro rang", context: "Use to move from verbal to written without pressure." },
     ],
     cultural_note: "Vietnamese business negotiations value relationship over terms; the phrase cho em về suy nghĩ thêm respects the pace while signaling you are still interested.",
     tip: "Never give an immediate yes or no in a Vietnamese negotiation — even if you know your answer, letting it breathe overnight shows respect for the process.",
@@ -7238,10 +7574,10 @@ export const lessons: VietnameseLesson[] = [
     subtitle: "Legal vocabulary basics for expats in Vietnam.",
     intro: "Use these phrases when you need legal help — contracts, disputes, or understanding your rights.",
     phrases: [
-      { english: "\"Tôi cần luật sư nói được tiếng Anh.\"", vietnamese: "\"Tôi cần luật sư nói được tiếng Anh.\"", pronunciation: "toy kun luat su noy duoc tieng Anh", context: "Use to request an English-speaking lawyer." },
-      { english: "\"Trước khi tôi ký, tôi muốn người hiểu luật đọc qua.\"", vietnamese: "\"Trước khi tôi ký, tôi muốn người hiểu luật đọc qua.\"", pronunciation: "chuok khi toy ky, toy muon nguoi hiew luat dok kwa", context: "Use to insist on legal review before signing." },
-      { english: "\"Hợp đồng này có điều khoản nào bất lợi cho tôi không?\"", vietnamese: "\"Hợp đồng này có điều khoản nào bất lợi cho tôi không?\"", pronunciation: "hup dong nay ko dieu khwan nao bat loi cho toy khong", context: "Use to ask about unfavorable terms." },
-      { english: "\"Tôi muốn giữ bản sao hợp đồng có chữ ký hai bên.\"", vietnamese: "\"Tôi muốn giữ bản sao hợp đồng có chữ ký hai bên.\"", pronunciation: "toy muon ziu ban sao hup dong ko chu ky hai ben", context: "Use to request a signed copy of the contract." },
+      { cell_id: "d2a89536-95ac-4bff-9dad-79faca42d2c9", english: "\"Tôi cần luật sư nói được tiếng Anh.\"", vietnamese: "\"Tôi cần luật sư nói được tiếng Anh.\"", pronunciation: "toy kun luat su noy duoc tieng Anh", context: "Use to request an English-speaking lawyer." },
+      { cell_id: "aabf1468-2e21-4165-b7c3-3001cada78b1", english: "\"Trước khi tôi ký, tôi muốn người hiểu luật đọc qua.\"", vietnamese: "\"Trước khi tôi ký, tôi muốn người hiểu luật đọc qua.\"", pronunciation: "chuok khi toy ky, toy muon nguoi hiew luat dok kwa", context: "Use to insist on legal review before signing." },
+      { cell_id: "a8910232-d08c-444c-b467-a2f3f8fa9409", english: "\"Hợp đồng này có điều khoản nào bất lợi cho tôi không?\"", vietnamese: "\"Hợp đồng này có điều khoản nào bất lợi cho tôi không?\"", pronunciation: "hup dong nay ko dieu khwan nao bat loi cho toy khong", context: "Use to ask about unfavorable terms." },
+      { cell_id: "9e0d976d-6309-4a80-a51e-16c018268b41", english: "\"Tôi muốn giữ bản sao hợp đồng có chữ ký hai bên.\"", vietnamese: "\"Tôi muốn giữ bản sao hợp đồng có chữ ký hai bên.\"", pronunciation: "toy muon ziu ban sao hup dong ko chu ky hai ben", context: "Use to request a signed copy of the contract." },
     ],
     cultural_note: "In Vietnam, contracts are sometimes seen as starting points for negotiation rather than binding documents; always keep signed copies and understand which terms the other party considers flexible vs fixed.",
     tip: "Use người hiểu luật — someone who understands the law — it is broader than luật sư (lawyer) and can include trusted advisors who may not be formally licensed.",
@@ -7267,10 +7603,10 @@ export const lessons: VietnameseLesson[] = [
     id: 287, level: "B1", title_en: "When Your Mother Cries During An Argument", subtitle: "De-escalation when emotions overflow.",
     intro: "Use these phrases when a family argument has escalated to tears and you need to de-escalate without abandoning your point.",
     phrases: [
-      { english: "\"Mẹ ơi, con xin lỗi đã làm mẹ khóc. Con không có ý đó.\"", vietnamese: "\"Mẹ ơi, con xin lỗi đã làm mẹ khóc. Con không có ý đó.\"", pronunciation: "me oi, kon sin loi da lam me khok, kon khong ko y do", context: "Acknowledge the emotional impact immediately." },
-      { english: "\"Mình dừng ở đây nha mẹ. Mai mình nói tiếp khi cả hai bình tĩnh hơn.\"", vietnamese: "\"Mình dừng ở đây nha mẹ. Mai mình nói tiếp khi cả hai bình tĩnh hơn.\"", pronunciation: "minh dung u day nha me, mai minh noy tiep khi ka hai binh tinh hon", context: "Pause without conceding the argument." },
-      { english: "\"Con không muốn thắng. Con muốn mẹ hiểu con.\"", vietnamese: "\"Con không muốn thắng. Con muốn mẹ hiểu con.\"", pronunciation: "kon khong muon thang, kon muon me hiew kon", context: "Reframe from winning to understanding." },
-      { english: "\"Con thương mẹ. Mà con cũng cần mẹ nghe con. Hai cái đó không mâu thuẫn.\"", vietnamese: "\"Con thương mẹ. Mà con cũng cần mẹ nghe con. Hai cái đó không mâu thuẫn.\"", pronunciation: "kon thuong me, ma kon kung kun me nghe kon, hai kai do khong mau thuan", context: "Separate love from agreement." },
+      { cell_id: "3473aebe-0958-4759-9980-a2e293308d96", english: "\"Mẹ ơi, con xin lỗi đã làm mẹ khóc. Con không có ý đó.\"", vietnamese: "\"Mẹ ơi, con xin lỗi đã làm mẹ khóc. Con không có ý đó.\"", pronunciation: "me oi, kon sin loi da lam me khok, kon khong ko y do", context: "Acknowledge the emotional impact immediately." },
+      { cell_id: "c79b08a6-90c5-4a15-b4d4-24e9c8401b05", english: "\"Mình dừng ở đây nha mẹ. Mai mình nói tiếp khi cả hai bình tĩnh hơn.\"", vietnamese: "\"Mình dừng ở đây nha mẹ. Mai mình nói tiếp khi cả hai bình tĩnh hơn.\"", pronunciation: "minh dung u day nha me, mai minh noy tiep khi ka hai binh tinh hon", context: "Pause without conceding the argument." },
+      { cell_id: "2b44ec27-a977-4b03-a133-19ffbc50b919", english: "\"Con không muốn thắng. Con muốn mẹ hiểu con.\"", vietnamese: "\"Con không muốn thắng. Con muốn mẹ hiểu con.\"", pronunciation: "kon khong muon thang, kon muon me hiew kon", context: "Reframe from winning to understanding." },
+      { cell_id: "68af3771-5f56-4ba8-9c02-fdefa2494707", english: "\"Con thương mẹ. Mà con cũng cần mẹ nghe con. Hai cái đó không mâu thuẫn.\"", vietnamese: "\"Con thương mẹ. Mà con cũng cần mẹ nghe con. Hai cái đó không mâu thuẫn.\"", pronunciation: "kon thuong me, ma kon kung kun me nghe kon, hai kai do khong mau thuan", context: "Separate love from agreement." },
     ],
     cultural_note: "A Vietnamese mother's tears carry enormous weight; acknowledge them genuinely while holding your boundary — they are not a veto on your perspective.",
     tip: "Use mình dừng ở đây — let us stop here — it does not say you are wrong, just that the conversation needs a pause.",
@@ -7294,10 +7630,10 @@ export const lessons: VietnameseLesson[] = [
     id: 289, level: "B1", title_en: "The Sibling Who Never Helps With Elderly Parents", subtitle: "Confronting unequal caregiving without destroying the relationship.",
     intro: "Use these phrases when one sibling carries all the burden of caring for aging parents and needs to call the other sibling in.",
     phrases: [
-      { english: "\"Chị không trách em. Chị chỉ muốn em biết là một mình chị không kham nổi.\"", vietnamese: "\"Chị không trách em. Chị chỉ muốn em biết là một mình chị không kham nổi.\"", pronunciation: "chi khong trach em, chi chi muon em biet la mot minh chi khong kham noi", context: "Share the burden without accusation." },
-      { english: "\"Có những việc chị cần em làm, không phải vì chị lười, mà vì ba mẹ cần cả hai đứa.\"", vietnamese: "\"Có những việc chị cần em làm, không phải vì chị lười, mà vì ba mẹ cần cả hai đứa.\"", pronunciation: "ko nhung viek chi kun em lam, khong fai vi chi luoi, ma vi ba me kun ka hai dua", context: "Frame it as the parents' need, not yours." },
-      { english: "\"Em ở xa thì gửi tiền. Không gửi được thì gọi video mỗi tuần. Làm gì cũng được, chỉ cần có làm.\"", vietnamese: "\"Em ở xa thì gửi tiền. Không gửi được thì gọi video mỗi tuần. Làm gì cũng được, chỉ cần có làm.\"", pronunciation: "em u xa thi goi tien, khong goi duoc thi goy video moi tuan, lam zi kung duoc, chi kun ko lam", context: "Give options instead of guilt." },
-      { english: "\"Chị không muốn tới ngày ba mẹ mất rồi em mới hối hận.\"", vietnamese: "\"Chị không muốn tới ngày ba mẹ mất rồi em mới hối hận.\"", pronunciation: "chi khong muon toi ngay ba me mat roy em moi hoy han", context: "The honest, heavy last line." },
+      { cell_id: "3b228fd3-3541-479d-8e4c-474b2c6de7fa", english: "\"Chị không trách em. Chị chỉ muốn em biết là một mình chị không kham nổi.\"", vietnamese: "\"Chị không trách em. Chị chỉ muốn em biết là một mình chị không kham nổi.\"", pronunciation: "chi khong trach em, chi chi muon em biet la mot minh chi khong kham noi", context: "Share the burden without accusation." },
+      { cell_id: "b26fbc25-d380-4b62-b030-cb7ac7d48f74", english: "\"Có những việc chị cần em làm, không phải vì chị lười, mà vì ba mẹ cần cả hai đứa.\"", vietnamese: "\"Có những việc chị cần em làm, không phải vì chị lười, mà vì ba mẹ cần cả hai đứa.\"", pronunciation: "ko nhung viek chi kun em lam, khong fai vi chi luoi, ma vi ba me kun ka hai dua", context: "Frame it as the parents' need, not yours." },
+      { cell_id: "8a96b60e-c4e7-462e-b27d-4f8c26c57abf", english: "\"Em ở xa thì gửi tiền. Không gửi được thì gọi video mỗi tuần. Làm gì cũng được, chỉ cần có làm.\"", vietnamese: "\"Em ở xa thì gửi tiền. Không gửi được thì gọi video mỗi tuần. Làm gì cũng được, chỉ cần có làm.\"", pronunciation: "em u xa thi goi tien, khong goi duoc thi goy video moi tuan, lam zi kung duoc, chi kun ko lam", context: "Give options instead of guilt." },
+      { cell_id: "7230ecb4-fef3-4440-85a2-64ca05c8f7d1", english: "\"Chị không muốn tới ngày ba mẹ mất rồi em mới hối hận.\"", vietnamese: "\"Chị không muốn tới ngày ba mẹ mất rồi em mới hối hận.\"", pronunciation: "chi khong muon toi ngay ba me mat roy em moi hoy han", context: "The honest, heavy last line." },
     ],
     cultural_note: "Elder care in Vietnamese families defaults to the eldest or the nearest sibling; the word kham means to carry a load beyond your capacity, a vivid and culturally resonant metaphor.",
     tip: "Use một mình chị không kham nổi — I alone cannot bear it — the most effective way to call someone in without blaming.",
@@ -7306,10 +7642,10 @@ export const lessons: VietnameseLesson[] = [
     id: 290, level: "B1", title_en: "When Relatives Visit Unannounced For Weeks", subtitle: "Setting hospitality boundaries with Vietnamese extended family.",
     intro: "Use these phrases when relatives show up without notice and stay longer than you can handle.",
     phrases: [
-      { english: "\"Cô chú lên chơi con mừng lắm. Mà lần sau cô chú gọi con trước một bữa để con sắp xếp.\"", vietnamese: "\"Cô chú lên chơi con mừng lắm. Mà lần sau cô chú gọi con trước một bữa để con sắp xếp.\"", pronunciation: "ko chu len choi kon mung lam, ma lan sau ko chu goy con chuok mot bua de con sap xep", context: "Welcome while establishing a norm for next time." },
-      { english: "\"Tuần sau tụi con có việc bận. Cô chú tính ở tới khi nào để con biết đường lo.\"", vietnamese: "\"Tuần sau tụi con có việc bận. Cô chú tính ở tới khi nào để con biết đường lo.\"", pronunciation: "tuan sau tui con ko viek ban, ko chu tinh u toi khi nao de con biet duong lo", context: "Ask about departure date directly." },
-      { english: "\"Nhà con nhỏ quá, sợ cô chú không thoải mái. Gần đây có nhà nghỉ sạch sẽ, con gửi địa chỉ cho.\"", vietnamese: "\"Nhà con nhỏ quá, sợ cô chú không thoải mái. Gần đây có nhà nghỉ sạch sẽ, con gửi địa chỉ cho.\"", pronunciation: "nha con nho kwa, suh ko chu khong thoai mai, gan day ko nha nghi sach se, con goi dia chi cho", context: "Suggest alternative accommodation politely." },
-      { english: "\"Con nói thật, tuần này con không lo được cơm nước đầy đủ. Cô chú thông cảm.\"", vietnamese: "\"Con nói thật, tuần này con không lo được cơm nước đầy đủ. Cô chú thông cảm.\"", pronunciation: "con noy that, tuan nay con khong lo duoc com nuok day du, ko chu thong kam", context: "Set an honest limit on hosting capacity." },
+      { cell_id: "4a409449-b249-472a-871f-72eb618eab20", english: "\"Cô chú lên chơi con mừng lắm. Mà lần sau cô chú gọi con trước một bữa để con sắp xếp.\"", vietnamese: "\"Cô chú lên chơi con mừng lắm. Mà lần sau cô chú gọi con trước một bữa để con sắp xếp.\"", pronunciation: "ko chu len choi kon mung lam, ma lan sau ko chu goy con chuok mot bua de con sap xep", context: "Welcome while establishing a norm for next time." },
+      { cell_id: "da5de128-d46e-4df8-90ed-a02da75626ea", english: "\"Tuần sau tụi con có việc bận. Cô chú tính ở tới khi nào để con biết đường lo.\"", vietnamese: "\"Tuần sau tụi con có việc bận. Cô chú tính ở tới khi nào để con biết đường lo.\"", pronunciation: "tuan sau tui con ko viek ban, ko chu tinh u toi khi nao de con biet duong lo", context: "Ask about departure date directly." },
+      { cell_id: "0a05de9b-1b04-4cee-9a66-016c0ff5a433", english: "\"Nhà con nhỏ quá, sợ cô chú không thoải mái. Gần đây có nhà nghỉ sạch sẽ, con gửi địa chỉ cho.\"", vietnamese: "\"Nhà con nhỏ quá, sợ cô chú không thoải mái. Gần đây có nhà nghỉ sạch sẽ, con gửi địa chỉ cho.\"", pronunciation: "nha con nho kwa, suh ko chu khong thoai mai, gan day ko nha nghi sach se, con goi dia chi cho", context: "Suggest alternative accommodation politely." },
+      { cell_id: "c39917c3-91fd-4077-9a48-a9f53118d1c5", english: "\"Con nói thật, tuần này con không lo được cơm nước đầy đủ. Cô chú thông cảm.\"", vietnamese: "\"Con nói thật, tuần này con không lo được cơm nước đầy đủ. Cô chú thông cảm.\"", pronunciation: "con noy that, tuan nay con khong lo duoc com nuok day du, ko chu thong kam", context: "Set an honest limit on hosting capacity." },
     ],
     cultural_note: "Vietnamese hospitality culture makes it hard to refuse relatives; welcome them warmly but set a clear end date and lower their expectations of your hosting capacity.",
     tip: "Use con biết đường lo — so I know how to arrange things — it frames the departure question as practical care, not a request to leave.",
@@ -7318,10 +7654,10 @@ export const lessons: VietnameseLesson[] = [
     id: 291, level: "B1", title_en: "Inheriting Family Debt", subtitle: "The conversation nobody wants to have.",
     intro: "Use these phrases when you discover a parent has debts that will fall to the children.",
     phrases: [
-      { english: "\"Ba, con cần ba nói thật với con về số nợ hiện tại. Con không giận, con cần biết.\"", vietnamese: "\"Ba, con cần ba nói thật với con về số nợ hiện tại. Con không giận, con cần biết.\"", pronunciation: "ba, kon kun ba noy that voi kon ve so nuh hien tai, kon khong zan, kon kun biet", context: "Open the conversation directly." },
-      { english: "\"Tụi con không trốn tránh trách nhiệm. Mà tụi con cần biết con số để chuẩn bị.\"", vietnamese: "\"Tụi con không trốn tránh trách nhiệm. Mà tụi con cần biết con số để chuẩn bị.\"", pronunciation: "tui con khong tron tranh trach nhiem, ma tui con kun biet kon so de chuan bi", context: "Signal commitment while asking for transparency." },
-      { english: "\"Ba đừng giấu vì sợ tụi con lo. Giấu rồi sau này lo gấp mới mệt.\"", vietnamese: "\"Ba đừng giấu vì sợ tụi con lo. Giấu rồi sau này lo gấp mới mệt.\"", pronunciation: "ba dung zau vi suh tui con lo, zau roy sau nay lo gap moi met", context: "Argue for honesty as the less stressful path." },
-      { english: "\"Mình lo từ từ. Quan trọng là ba khỏe và mình cùng biết.\"", vietnamese: "\"Mình lo từ từ. Quan trọng là ba khỏe và mình cùng biết.\"", pronunciation: "minh lo tu tu, kwan trong la ba khoe va minh kung biet", context: "Bring temperature down after hard news." },
+      { cell_id: "069fcc65-6aea-44b7-ab71-94ca5554d312", english: "\"Ba, con cần ba nói thật với con về số nợ hiện tại. Con không giận, con cần biết.\"", vietnamese: "\"Ba, con cần ba nói thật với con về số nợ hiện tại. Con không giận, con cần biết.\"", pronunciation: "ba, kon kun ba noy that voi kon ve so nuh hien tai, kon khong zan, kon kun biet", context: "Open the conversation directly." },
+      { cell_id: "f244c801-808f-412d-9a45-d6e18a8eaaba", english: "\"Tụi con không trốn tránh trách nhiệm. Mà tụi con cần biết con số để chuẩn bị.\"", vietnamese: "\"Tụi con không trốn tránh trách nhiệm. Mà tụi con cần biết con số để chuẩn bị.\"", pronunciation: "tui con khong tron tranh trach nhiem, ma tui con kun biet kon so de chuan bi", context: "Signal commitment while asking for transparency." },
+      { cell_id: "b1631589-ed80-415e-aa7d-05728a819639", english: "\"Ba đừng giấu vì sợ tụi con lo. Giấu rồi sau này lo gấp mới mệt.\"", vietnamese: "\"Ba đừng giấu vì sợ tụi con lo. Giấu rồi sau này lo gấp mới mệt.\"", pronunciation: "ba dung zau vi suh tui con lo, zau roy sau nay lo gap moi met", context: "Argue for honesty as the less stressful path." },
+      { cell_id: "4292f750-d0d0-47a0-b5eb-dd63c19776f1", english: "\"Mình lo từ từ. Quan trọng là ba khỏe và mình cùng biết.\"", vietnamese: "\"Mình lo từ từ. Quan trọng là ba khỏe và mình cùng biết.\"", pronunciation: "minh lo tu tu, kwan trong la ba khoe va minh kung biet", context: "Bring temperature down after hard news." },
     ],
     cultural_note: "Vietnamese parents often hide debt to avoid burdening children, which creates larger crises later; con không giận, con cần biết opens the door without triggering shame.",
     tip: "Use lo gấp mới mệt — scrambling later is more exhausting — a practical argument against secrecy that Vietnamese parents respond to.",
@@ -7344,10 +7680,10 @@ export const lessons: VietnameseLesson[] = [
     id: 293, level: "B1", title_en: "When Your Spouse And Your Mother Disagree", subtitle: "In the middle of the two most important women.",
     intro: "Use these phrases when you are caught between your wife and your mother and need language that does not betray either.",
     phrases: [
-      { english: "\"Em biết mẹ khó. Mà em cũng biết vợ anh không cố ý. Anh đang ở giữa, khó lắm.\"", vietnamese: "\"Em biết mẹ khó. Mà em cũng biết vợ anh không cố ý. Anh đang ở giữa, khó lắm.\"", pronunciation: "em biet me kho, ma em kung biet vuh anh khong ko y, anh dang u zua, kho lam", context: "Name your position honestly to your wife." },
-      { english: "\"Mẹ, mẹ nói vậy tội vợ con. Vợ con cũng đang cố gắng với mẹ.\"", vietnamese: "\"Mẹ, mẹ nói vậy tội vợ con. Vợ con cũng đang cố gắng với mẹ.\"", pronunciation: "me, me noy vay toi vuh kon, vuh kon kung dang ko gang voi me", context: "Defend your spouse without attacking your mother." },
-      { english: "\"Anh không bắt em nhịn. Anh chỉ xin em cho anh thời gian để nói với mẹ từ từ.\"", vietnamese: "\"Anh không bắt em nhịn. Anh chỉ xin em cho anh thời gian để nói với mẹ từ từ.\"", pronunciation: "anh khong bat em nin, anh chi sin em cho anh thoi zan de noy voi me tu tu", context: "Ask your wife for patience." },
-      { english: "\"Hai người không cần thương nhau. Chỉ cần không làm khó nhau trước mặt anh.\"", vietnamese: "\"Hai người không cần thương nhau. Chỉ cần không làm khó nhau trước mặt anh.\"", pronunciation: "hai nguoi khong kun thuong nhau, chi kun khong lam kho nhau chuok mat anh", context: "Set a minimum standard for both." },
+      { cell_id: "706baba7-cf8d-4d6b-8ad9-0414d263651d", english: "\"Em biết mẹ khó. Mà em cũng biết vợ anh không cố ý. Anh đang ở giữa, khó lắm.\"", vietnamese: "\"Em biết mẹ khó. Mà em cũng biết vợ anh không cố ý. Anh đang ở giữa, khó lắm.\"", pronunciation: "em biet me kho, ma em kung biet vuh anh khong ko y, anh dang u zua, kho lam", context: "Name your position honestly to your wife." },
+      { cell_id: "71d3dd33-f74b-4b35-8797-e4a238f07988", english: "\"Mẹ, mẹ nói vậy tội vợ con. Vợ con cũng đang cố gắng với mẹ.\"", vietnamese: "\"Mẹ, mẹ nói vậy tội vợ con. Vợ con cũng đang cố gắng với mẹ.\"", pronunciation: "me, me noy vay toi vuh kon, vuh kon kung dang ko gang voi me", context: "Defend your spouse without attacking your mother." },
+      { cell_id: "48aad88f-6f8b-482a-84cd-a4e61e94b6aa", english: "\"Anh không bắt em nhịn. Anh chỉ xin em cho anh thời gian để nói với mẹ từ từ.\"", vietnamese: "\"Anh không bắt em nhịn. Anh chỉ xin em cho anh thời gian để nói với mẹ từ từ.\"", pronunciation: "anh khong bat em nin, anh chi sin em cho anh thoi zan de noy voi me tu tu", context: "Ask your wife for patience." },
+      { cell_id: "6b62a338-5122-42ba-86fd-769a17ab352e", english: "\"Hai người không cần thương nhau. Chỉ cần không làm khó nhau trước mặt anh.\"", vietnamese: "\"Hai người không cần thương nhau. Chỉ cần không làm khó nhau trước mặt anh.\"", pronunciation: "hai nguoi khong kun thuong nhau, chi kun khong lam kho nhau chuok mat anh", context: "Set a minimum standard for both." },
     ],
     cultural_note: "The wife-mother dynamic is one of the hardest in Vietnamese families; the man in the middle's job is not to choose but to translate each side to the other and lower the temperature.",
     tip: "Use tội vợ con — it is unfair to my wife — the word tội carries moral weight without accusing the mother directly.",
@@ -7356,10 +7692,10 @@ export const lessons: VietnameseLesson[] = [
     id: 294, level: "B1", title_en: "Light Sarcasm Among Close Friends", subtitle: "Vietnamese banter style — not mean, just sharp.",
     intro: "Use these phrases when you want to tease friends in the casual Vietnamese way that signals closeness, not cruelty.",
     phrases: [
-      { english: "\"Trời ơi, nay bạn đẹp dữ ha. Có bồ mới hả?\"", vietnamese: "\"Trời ơi, nay bạn đẹp dữ ha. Có bồ mới hả?\"", pronunciation: "choy oi, nay ban dep zu ha, ko bo moi ha", context: "Tease a friend who dressed up unusually." },
-      { english: "\"Bạn nói câu đó mà không mắc cỡ hả?\"", vietnamese: "\"Bạn nói câu đó mà không mắc cỡ hả?\"", pronunciation: "ban noy kau do ma khong mak kuh ha", context: "Said when a friend brags jokingly." },
-      { english: "\"Chắc tui mới là bạn quý nhất của bạn luôn đó.\"", vietnamese: "\"Chắc tui mới là bạn quý nhất của bạn luôn đó.\"", pronunciation: "chak tui moi la ban kwy nhat kua ban luon do", context: "Sarcastic when a friend asks for yet another favor." },
-      { english: "\"Bạn nói chuyện như người lớn dữ. Mới hôm qua còn hỏi tui mượn tiền.\"", vietnamese: "\"Bạn nói chuyện như người lớn dữ. Mới hôm qua còn hỏi tui mượn tiền.\"", pronunciation: "ban noy chuyen nhu nguoi lon zu, moi hom kwa kon hoy tui muon tien", context: "Gently mock a friend acting wise." },
+      { cell_id: "47199550-b1be-44a3-be5e-eaa477204f10", english: "\"Trời ơi, nay bạn đẹp dữ ha. Có bồ mới hả?\"", vietnamese: "\"Trời ơi, nay bạn đẹp dữ ha. Có bồ mới hả?\"", pronunciation: "choy oi, nay ban dep zu ha, ko bo moi ha", context: "Tease a friend who dressed up unusually." },
+      { cell_id: "6b669413-dff5-401b-9610-8ebe066fab16", english: "\"Bạn nói câu đó mà không mắc cỡ hả?\"", vietnamese: "\"Bạn nói câu đó mà không mắc cỡ hả?\"", pronunciation: "ban noy kau do ma khong mak kuh ha", context: "Said when a friend brags jokingly." },
+      { cell_id: "e8588e57-0280-4f3b-9319-3238bbb135bb", english: "\"Chắc tui mới là bạn quý nhất của bạn luôn đó.\"", vietnamese: "\"Chắc tui mới là bạn quý nhất của bạn luôn đó.\"", pronunciation: "chak tui moi la ban kwy nhat kua ban luon do", context: "Sarcastic when a friend asks for yet another favor." },
+      { cell_id: "de27c553-775a-46fc-84ad-913e11ee6588", english: "\"Bạn nói chuyện như người lớn dữ. Mới hôm qua còn hỏi tui mượn tiền.\"", vietnamese: "\"Bạn nói chuyện như người lớn dữ. Mới hôm qua còn hỏi tui mượn tiền.\"", pronunciation: "ban noy chuyen nhu nguoi lon zu, moi hom kwa kon hoy tui muon tien", context: "Gently mock a friend acting wise." },
     ],
     cultural_note: "Vietnamese banter among friends is fast, sharp, and often involves pointing out contradictions; it lands as affection when the tone is light and the target is a shared joke, not an insecurity.",
     tip: "The marker ha at the end of a sarcastic line turns it from a statement into a playful jab.",
@@ -7368,10 +7704,10 @@ export const lessons: VietnameseLesson[] = [
     id: 295, level: "B1", title_en: "Gentle Teasing About Someone's Hometown", subtitle: "Regional humor — the rules and the risks.",
     intro: "Use these phrases to understand how Vietnamese people tease each other about regional origins, and when it crosses a line.",
     phrases: [
-      { english: "\"Dân Bắc Kỳ kỹ tính quá ha?\" — with a smile to a Northern friend.", vietnamese: "\"Dân Bắc Kỳ kỹ tính quá ha?\" — nói cười với bạn ngoài Bắc.", pronunciation: "zan Bak Ky ky tinh kwa ha", context: "Only with close friends who know you are joking." },
-      { english: "\"Người miền Trung chịu cực dữ. Tui nể lắm.\" — compliment that acknowledges the stereotype.", vietnamese: "\"Người miền Trung chịu cực dữ. Tui nể lắm.\"", pronunciation: "nguoi mien Trung chiu kuk zu, tui ne lam", context: "Turn a regional stereotype into respect." },
-      { english: "\"Bạn Sài Gòn sống gấp quá. Tui theo không kịp.\"", vietnamese: "\"Bạn Sài Gòn sống gấp quá. Tui theo không kịp.\"", pronunciation: "ban Sai Gon song gap kwa, tui theo khong kip", context: "Tease about the fast-paced Saigon lifestyle." },
-      { english: "\"Đùa vậy thôi, chứ tui mê đồ ăn quê bạn. Dẫn tui về một bữa đi.\"", vietnamese: "\"Đùa vậy thôi, chứ tui mê đồ ăn quê bạn. Dẫn tui về một bữa đi.\"", pronunciation: "dua vay thoy, chu tui me do an kwe ban, dan tui ve mot bua di", context: "Close a regional tease with warmth." },
+      { cell_id: "ee59aa52-1015-457f-a7b9-ed8cf0c076cd", english: "\"Dân Bắc Kỳ kỹ tính quá ha?\" — with a smile to a Northern friend.", vietnamese: "\"Dân Bắc Kỳ kỹ tính quá ha?\" — nói cười với bạn ngoài Bắc.", pronunciation: "zan Bak Ky ky tinh kwa ha", context: "Only with close friends who know you are joking." },
+      { cell_id: "b109ef00-3b3e-4317-864a-34d0f335d944", english: "\"Người miền Trung chịu cực dữ. Tui nể lắm.\" — compliment that acknowledges the stereotype.", vietnamese: "\"Người miền Trung chịu cực dữ. Tui nể lắm.\"", pronunciation: "nguoi mien Trung chiu kuk zu, tui ne lam", context: "Turn a regional stereotype into respect." },
+      { cell_id: "47efa7ac-f39b-428d-b598-33da875e3051", english: "\"Bạn Sài Gòn sống gấp quá. Tui theo không kịp.\"", vietnamese: "\"Bạn Sài Gòn sống gấp quá. Tui theo không kịp.\"", pronunciation: "ban Sai Gon song gap kwa, tui theo khong kip", context: "Tease about the fast-paced Saigon lifestyle." },
+      { cell_id: "8481944c-3057-4f01-aa38-89bebba782b2", english: "\"Đùa vậy thôi, chứ tui mê đồ ăn quê bạn. Dẫn tui về một bữa đi.\"", vietnamese: "\"Đùa vậy thôi, chứ tui mê đồ ăn quê bạn. Dẫn tui về một bữa đi.\"", pronunciation: "dua vay thoy, chu tui me do an kwe ban, dan tui ve mot bua di", context: "Close a regional tease with warmth." },
     ],
     cultural_note: "Regional teasing in Vietnam is common and usually affectionate, but it can sting if the person already feels insecure about their background; always follow with a genuine compliment about their region.",
     tip: "The rule: one tease + one compliment = safe. Two teases without a compliment = you are testing the friendship.",
@@ -7380,10 +7716,10 @@ export const lessons: VietnameseLesson[] = [
     id: 296, level: "B1", title_en: "Telling A Joke That Lands In Vietnamese", subtitle: "Timing, setup, and the punchline that actually works.",
     intro: "Use these phrases to understand how Vietnamese humor is structured — the setup, the delay, and the payoff.",
     phrases: [
-      { english: "\"Hồi xưa có một thằng...\" — classic opening for a funny story.", vietnamese: "\"Hồi xưa có một thằng...\"", pronunciation: "hoi xua ko mot thang", context: "Begin a humorous anecdote." },
-      { english: "\"Mà khoan...\" — hold on, let me set this up right (comic pause).", vietnamese: "\"Mà khoan...\"", pronunciation: "ma khwan", context: "Comic pause before the punchline." },
-      { english: "\"Xong rồi sao biết không?\" — and then, you know what happened?", vietnamese: "\"Xong rồi sao biết không?\"", pronunciation: "xong roy sao biet khong", context: "Build anticipation before the punchline." },
-      { english: "\"Nó nói một câu mà cả bàn cười banh.\" — the punchline lands and the whole table bursts.", vietnamese: "\"Nó nói một câu mà cả bàn cười banh.\"", pronunciation: "no noy mot kau ma ka ban kuoi ban", context: "Cap a funny story." },
+      { cell_id: "16712bf4-e9aa-41a4-bf8c-e751e6eec0c3", english: "\"Hồi xưa có một thằng...\" — classic opening for a funny story.", vietnamese: "\"Hồi xưa có một thằng...\"", pronunciation: "hoi xua ko mot thang", context: "Begin a humorous anecdote." },
+      { cell_id: "fb164c44-8bf3-4406-b603-aba0409fd425", english: "\"Mà khoan...\" — hold on, let me set this up right (comic pause).", vietnamese: "\"Mà khoan...\"", pronunciation: "ma khwan", context: "Comic pause before the punchline." },
+      { cell_id: "324b8507-fdf5-4439-9248-755663da709f", english: "\"Xong rồi sao biết không?\" — and then, you know what happened?", vietnamese: "\"Xong rồi sao biết không?\"", pronunciation: "xong roy sao biet khong", context: "Build anticipation before the punchline." },
+      { cell_id: "de17606d-419e-492d-8499-13ac4aa87742", english: "\"Nó nói một câu mà cả bàn cười banh.\" — the punchline lands and the whole table bursts.", vietnamese: "\"Nó nói một câu mà cả bàn cười banh.\"", pronunciation: "no noy mot kau ma ka ban kuoi ban", context: "Cap a funny story." },
     ],
     cultural_note: "Vietnamese humor values the setup-pause-reveal rhythm; rushing to the punchline kills the joke. The phrase mà khoan is the comedian's best friend — it builds tension.",
     tip: "Use cười banh — burst out laughing — the word banh means to break open, which captures the physical release of a good laugh.",
@@ -7392,10 +7728,10 @@ export const lessons: VietnameseLesson[] = [
     id: 297, level: "B1", title_en: "When Sarcasm Goes Wrong", subtitle: "Repair phrases for when your joke landed badly.",
     intro: "Use these phrases when your sarcasm or teasing accidentally hurt someone and you need to repair quickly.",
     phrases: [
-      { english: "\"Ấy chết, tui đùa quá lố rồi. Xin lỗi bạn, thiệt tình luôn.\"", vietnamese: "\"Ấy chết, tui đùa quá lố rồi. Xin lỗi bạn, thiệt tình luôn.\"", pronunciation: "ay chet, tui dua kwa lo roi, sin loi ban, thiet tinh luon", context: "Immediately own the overstep." },
-      { english: "\"Câu đó tui nói giỡn. Mà tui thấy bạn không cười. Tui sai. Tui rút lại.\"", vietnamese: "\"Câu đó tui nói giỡn. Mà tui thấy bạn không cười. Tui sai. Tui rút lại.\"", pronunciation: "kau do tui noy zun, ma tui thay ban khong kuoi, tui sai, tui zut lai", context: "Name that you saw their reaction and are responding." },
-      { english: "\"Tui không có ý đụng chạm. Mà rõ ràng tui đã đụng. Cho tui xin lỗi một lần đàng hoàng.\"", vietnamese: "\"Tui không có ý đụng chạm. Mà rõ ràng tui đã đụng. Cho tui xin lỗi một lần đàng hoàng.\"", pronunciation: "tui khong ko y dung cham, ma ro rang tui da dung, cho tui sin loi mot lan dang hoang", context: "Separate intention from impact and apologize formally." },
-      { english: "\"Bài học rút ra: tui nên bớt giỡn với mấy chuyện tui chưa hiểu hết.\"", vietnamese: "\"Bài học rút ra: tui nên bớt giỡn với mấy chuyện tui chưa hiểu hết.\"", pronunciation: "bai hok zut ra, tui nen but zun voi may chuyen tui chua hiew het", context: "Show learning, not just apologizing." },
+      { cell_id: "1dde3c85-42cd-4989-9c32-acfc8d996f6f", english: "\"Ấy chết, tui đùa quá lố rồi. Xin lỗi bạn, thiệt tình luôn.\"", vietnamese: "\"Ấy chết, tui đùa quá lố rồi. Xin lỗi bạn, thiệt tình luôn.\"", pronunciation: "ay chet, tui dua kwa lo roi, sin loi ban, thiet tinh luon", context: "Immediately own the overstep." },
+      { cell_id: "0dc70143-ef1d-43e7-9dd8-8a5fef6b3570", english: "\"Câu đó tui nói giỡn. Mà tui thấy bạn không cười. Tui sai. Tui rút lại.\"", vietnamese: "\"Câu đó tui nói giỡn. Mà tui thấy bạn không cười. Tui sai. Tui rút lại.\"", pronunciation: "kau do tui noy zun, ma tui thay ban khong kuoi, tui sai, tui zut lai", context: "Name that you saw their reaction and are responding." },
+      { cell_id: "4f5a7783-07a1-4ad3-8d01-cedfcb980780", english: "\"Tui không có ý đụng chạm. Mà rõ ràng tui đã đụng. Cho tui xin lỗi một lần đàng hoàng.\"", vietnamese: "\"Tui không có ý đụng chạm. Mà rõ ràng tui đã đụng. Cho tui xin lỗi một lần đàng hoàng.\"", pronunciation: "tui khong ko y dung cham, ma ro rang tui da dung, cho tui sin loi mot lan dang hoang", context: "Separate intention from impact and apologize formally." },
+      { cell_id: "0ba4d539-7249-499a-a16b-e7a6ec8c0598", english: "\"Bài học rút ra: tui nên bớt giỡn với mấy chuyện tui chưa hiểu hết.\"", vietnamese: "\"Bài học rút ra: tui nên bớt giỡn với mấy chuyện tui chưa hiểu hết.\"", pronunciation: "bai hok zut ra, tui nen but zun voi may chuyen tui chua hiew het", context: "Show learning, not just apologizing." },
     ],
     cultural_note: "When Vietnamese sarcasm misses, the fastest repair is to name the miss explicitly — I saw you did not laugh — which shows you are paying attention to them, not just your own joke.",
     tip: "Use thiệt tình luôn — I mean it, truly — it signals that you have dropped the joke persona and are being sincere.",
@@ -7404,10 +7740,10 @@ export const lessons: VietnameseLesson[] = [
     id: 298, level: "B1", title_en: "Self-Deprecating Humor — Vietnamese Style", subtitle: "Making fun of yourself the way locals do.",
     intro: "Use these phrases when you want to use the Vietnamese style of self-deprecation that signals humility and likability.",
     phrases: [
-      { english: "\"Tui nói tiếng Việt như con nít. Mà con nít còn nói giỏi hơn tui nữa.\"", vietnamese: "\"Tui nói tiếng Việt như con nít. Mà con nít còn nói giỏi hơn tui nữa.\"", pronunciation: "tui noy tieng Viet nhu kon nit, ma kon nit kon noy zoi hon tui nua", context: "Get a warm laugh about your language skills." },
-      { english: "\"Tui dở nhất khoản nhớ tên. Mới gặp mà quên rồi, đừng giận tui nha.\"", vietnamese: "\"Tui dở nhất khoản nhớ tên. Mới gặp mà quên rồi, đừng giận tui nha.\"", pronunciation: "tui duh nhat khwan nuh ten, moi gap ma kwen roi, dung zan tui nha", context: "Preempt the awkwardness of forgetting a name." },
-      { english: "\"Tui mập lên rồi phải không? Tui biết mà, đừng nịnh.\"", vietnamese: "\"Tui mập lên rồi phải không? Tui biết mà, đừng nịnh.\"", pronunciation: "tui map len roi fai khong, tui biet ma, dung ninh", context: "Joke about weight before anyone else can." },
-      { english: "\"Tui già rồi, tụi trẻ nói gì tui không hiểu. Từ từ nghe riết rồi cũng quen.\"", vietnamese: "\"Tui già rồi, tụi trẻ nói gì tui không hiểu. Từ từ nghe riết rồi cũng quen.\"", pronunciation: "tui za roi, tui che noy zi tui khong hiew, tu tu nghe riet roi kung kwen", context: "Laugh at your own generational gap." },
+      { cell_id: "6b47251b-b7c4-489b-9b13-7acd83c6f181", english: "\"Tui nói tiếng Việt như con nít. Mà con nít còn nói giỏi hơn tui nữa.\"", vietnamese: "\"Tui nói tiếng Việt như con nít. Mà con nít còn nói giỏi hơn tui nữa.\"", pronunciation: "tui noy tieng Viet nhu kon nit, ma kon nit kon noy zoi hon tui nua", context: "Get a warm laugh about your language skills." },
+      { cell_id: "a59a084f-40ff-49d0-b5bb-5e76abd31175", english: "\"Tui dở nhất khoản nhớ tên. Mới gặp mà quên rồi, đừng giận tui nha.\"", vietnamese: "\"Tui dở nhất khoản nhớ tên. Mới gặp mà quên rồi, đừng giận tui nha.\"", pronunciation: "tui duh nhat khwan nuh ten, moi gap ma kwen roi, dung zan tui nha", context: "Preempt the awkwardness of forgetting a name." },
+      { cell_id: "4dfc5f65-ba29-43b8-80f4-18622acd8113", english: "\"Tui mập lên rồi phải không? Tui biết mà, đừng nịnh.\"", vietnamese: "\"Tui mập lên rồi phải không? Tui biết mà, đừng nịnh.\"", pronunciation: "tui map len roi fai khong, tui biet ma, dung ninh", context: "Joke about weight before anyone else can." },
+      { cell_id: "6f12cdd4-66a2-4225-8a79-36f19b4f5283", english: "\"Tui già rồi, tụi trẻ nói gì tui không hiểu. Từ từ nghe riết rồi cũng quen.\"", vietnamese: "\"Tui già rồi, tụi trẻ nói gì tui không hiểu. Từ từ nghe riết rồi cũng quen.\"", pronunciation: "tui za roi, tui che noy zi tui khong hiew, tu tu nghe riet roi kung kwen", context: "Laugh at your own generational gap." },
     ],
     cultural_note: "Vietnamese self-deprecation works best when it is specific, true, and ends with a smile; it signals that you do not take yourself too seriously, a highly valued trait.",
     tip: "Use đừng nịnh — do not flatter me — it preempts the polite denial and turns it into a shared joke.",
@@ -7416,10 +7752,10 @@ export const lessons: VietnameseLesson[] = [
     id: 299, level: "B1", title_en: "Roasting A Close Friend — The Rules", subtitle: "Vietnamese insult-as-affection between real friends.",
     intro: "Use these phrases to understand the unwritten rules of Vietnamese friend-roasting — when it is funny and when it is just mean.",
     phrases: [
-      { english: "\"Ê mập, lâu quá không gặp, mập thêm hả?\" — classic opener between old friends.", vietnamese: "\"Ê mập, lâu quá không gặp, mập thêm hả?\"", pronunciation: "e map, lau kwa khong gap, map them ha", context: "Only with a friend you have known for years." },
-      { english: "\"Nay bạn ăn mặc như đi đám cưới. Mà đám cưới của bạn chắc mới dữ vậy.\"", vietnamese: "\"Nay bạn ăn mặc như đi đám cưới. Mà đám cưới của bạn chắc mới dữ vậy.\"", pronunciation: "nay ban an mak nhu di dam kuoi, ma dam kuoi kua ban chak moi du vay", context: "Tease about overdressing." },
-      { english: "\"Bạn nói câu đó tui thấy mắc cười quá, mà thôi, tui không nói đâu.\" — the fake restraint.", vietnamese: "\"Bạn nói câu đó tui thấy mắc cười quá, mà thôi, tui không nói đâu.\"", pronunciation: "ban noy kau do tui thay mak kuoi kwa, ma thoy, tui khong noy dau", context: "Roast by pretending you are holding back." },
-      { english: "\"Bạn mà giàu chắc tui hết bạn. Mà may quá, bạn nghèo y chang tui.\"", vietnamese: "\"Bạn mà giàu chắc tui hết bạn. Mà may quá, bạn nghèo y chang tui.\"", pronunciation: "ban ma zao chak tui het ban, ma may kwa, ban ngeo y chang tui", context: "Bond through mutual poverty humor." },
+      { cell_id: "37402de8-5de4-493a-a0bc-094f0f3c995e", english: "\"Ê mập, lâu quá không gặp, mập thêm hả?\" — classic opener between old friends.", vietnamese: "\"Ê mập, lâu quá không gặp, mập thêm hả?\"", pronunciation: "e map, lau kwa khong gap, map them ha", context: "Only with a friend you have known for years." },
+      { cell_id: "9e1083ee-9fbe-4f38-83bf-b8dcfbd88afd", english: "\"Nay bạn ăn mặc như đi đám cưới. Mà đám cưới của bạn chắc mới dữ vậy.\"", vietnamese: "\"Nay bạn ăn mặc như đi đám cưới. Mà đám cưới của bạn chắc mới dữ vậy.\"", pronunciation: "nay ban an mak nhu di dam kuoi, ma dam kuoi kua ban chak moi du vay", context: "Tease about overdressing." },
+      { cell_id: "e74eeeeb-dd66-46d7-b24c-928a13b010a0", english: "\"Bạn nói câu đó tui thấy mắc cười quá, mà thôi, tui không nói đâu.\" — the fake restraint.", vietnamese: "\"Bạn nói câu đó tui thấy mắc cười quá, mà thôi, tui không nói đâu.\"", pronunciation: "ban noy kau do tui thay mak kuoi kwa, ma thoy, tui khong noy dau", context: "Roast by pretending you are holding back." },
+      { cell_id: "7c891291-415a-44d4-b1d2-5efe5dabe0c6", english: "\"Bạn mà giàu chắc tui hết bạn. Mà may quá, bạn nghèo y chang tui.\"", vietnamese: "\"Bạn mà giàu chắc tui hết bạn. Mà may quá, bạn nghèo y chang tui.\"", pronunciation: "ban ma zao chak tui het ban, ma may kwa, ban ngeo y chang tui", context: "Bond through mutual poverty humor." },
     ],
     cultural_note: "Vietnamese friend-roasting requires three conditions: long history, equal status, and quick follow-up warmth; without the warmth, it reads as contempt.",
     tip: "Never roast a Vietnamese friend about something they have never joked about themselves — you can only go where they have already gone.",
@@ -7443,10 +7779,10 @@ export const lessons: VietnameseLesson[] = [
     id: 301, level: "B1", title_en: "When A Joke Hits A Sensitive Spot", subtitle: "Recovery when humor accidentally wounds.",
     intro: "Use these phrases when you realize mid-laugh that your joke landed on something real and you need to recover.",
     phrases: [
-      { english: "\"Tui vừa nói câu đó xong tui thấy mặt bạn đổi. Cho tui xin lỗi liền.\"", vietnamese: "\"Tui vừa nói câu đó xong tui thấy mặt bạn đổi. Cho tui xin lỗi liền.\"", pronunciation: "tui vua noy kau do xong tui thay mat ban doi, cho tui sin loi lien", context: "Acknowledge impact the moment you see it." },
-      { english: "\"Tui đùa dở quá. Không phải kiểu đùa đó đâu. Tui rút kinh nghiệm.\"", vietnamese: "\"Tui đùa dở quá. Không phải kiểu đùa đó đâu. Tui rút kinh nghiệm.\"", pronunciation: "tui dua duh kwa, khong fai kieu dua do dau, tui zut kinh ngiem", context: "Call your own joke bad and promise to learn." },
-      { english: "\"Bạn đừng giận tui. Mà nếu bạn giận, tui hiểu. Tui sai.\"", vietnamese: "\"Bạn đừng giận tui. Mà nếu bạn giận, tui hiểu. Tui sai.\"", pronunciation: "ban dung zan tui, ma new ban zan, tui hiew, tui sai", context: "Give them permission to be upset." },
-      { english: "\"Tui im một chút nha. Không phải giận ngược. Mà để tui nghe bạn.\"", vietnamese: "\"Tui im một chút nha. Không phải giận ngược. Mà để tui nghe bạn.\"", pronunciation: "tui im mot chut nha, khong fai zan nguok, ma de tui nghe ban", context: "Shift from defense to listening." },
+      { cell_id: "4e7a412f-b2ea-4eaa-81ce-3d9c20793ea2", english: "\"Tui vừa nói câu đó xong tui thấy mặt bạn đổi. Cho tui xin lỗi liền.\"", vietnamese: "\"Tui vừa nói câu đó xong tui thấy mặt bạn đổi. Cho tui xin lỗi liền.\"", pronunciation: "tui vua noy kau do xong tui thay mat ban doi, cho tui sin loi lien", context: "Acknowledge impact the moment you see it." },
+      { cell_id: "fc1d83cf-7bcc-43d8-8f1e-afe0bf6af68b", english: "\"Tui đùa dở quá. Không phải kiểu đùa đó đâu. Tui rút kinh nghiệm.\"", vietnamese: "\"Tui đùa dở quá. Không phải kiểu đùa đó đâu. Tui rút kinh nghiệm.\"", pronunciation: "tui dua duh kwa, khong fai kieu dua do dau, tui zut kinh ngiem", context: "Call your own joke bad and promise to learn." },
+      { cell_id: "0334a54a-703b-419a-b6c5-1d96e13f36a6", english: "\"Bạn đừng giận tui. Mà nếu bạn giận, tui hiểu. Tui sai.\"", vietnamese: "\"Bạn đừng giận tui. Mà nếu bạn giận, tui hiểu. Tui sai.\"", pronunciation: "ban dung zan tui, ma new ban zan, tui hiew, tui sai", context: "Give them permission to be upset." },
+      { cell_id: "05b2bed4-0abd-4387-b4ec-c00bd721ebbc", english: "\"Tui im một chút nha. Không phải giận ngược. Mà để tui nghe bạn.\"", vietnamese: "\"Tui im một chút nha. Không phải giận ngược. Mà để tui nghe bạn.\"", pronunciation: "tui im mot chut nha, khong fai zan nguok, ma de tui nghe ban", context: "Shift from defense to listening." },
     ],
     cultural_note: "The Vietnamese recovery from a bad joke is about showing you see the hurt; the faster you name it (mặt bạn đổi — your face changed), the more credible your apology.",
     tip: "Use tui rút kinh nghiệm — I will learn from this — it signals sincerity without over-apologizing.",
@@ -7455,10 +7791,10 @@ export const lessons: VietnameseLesson[] = [
     id: 302, level: "B1", title_en: "Playful Insults That Mean Affection", subtitle: "When 'đồ điên' means 'I love you, idiot.'",
     intro: "Use these phrases to understand the Vietnamese vocabulary of affectionate insult between close friends and partners.",
     phrases: [
-      { english: "\"Đồ ngốc\" — you dummy (said with a smile to a partner).", vietnamese: "\"Đồ ngốc\" — nói cười với người yêu.", pronunciation: "do ngok", context: "When your partner did something adorably silly." },
-      { english: "\"Cái đồ ham ăn\" — you little foodie (to a friend reaching for more).", vietnamese: "\"Cái đồ ham ăn\"", pronunciation: "kai do ham an", context: "Tease a friend who loves food." },
-      { english: "\"Mắc cười quá à\" — you are so ridiculous (affectionate).", vietnamese: "\"Mắc cười quá à\" — thương chứ không chê.", pronunciation: "mak kuoi kwa a", context: "When someone does something endearingly funny." },
-      { english: "\"Trời ơi là trời\" — oh my god (exasperated but warm).", vietnamese: "\"Trời ơi là trời\"", pronunciation: "choy oi la choy", context: "When someone is being their usual ridiculous self." },
+      { cell_id: "195ee764-ead3-4585-8f76-a5cc9c85d19f", english: "\"Đồ ngốc\" — you dummy (said with a smile to a partner).", vietnamese: "\"Đồ ngốc\" — nói cười với người yêu.", pronunciation: "do ngok", context: "When your partner did something adorably silly." },
+      { cell_id: "f6f8b228-6abf-4d44-b2d5-2817994a5464", english: "\"Cái đồ ham ăn\" — you little foodie (to a friend reaching for more).", vietnamese: "\"Cái đồ ham ăn\"", pronunciation: "kai do ham an", context: "Tease a friend who loves food." },
+      { cell_id: "4638841c-96db-4b65-9627-e0f9ac79d453", english: "\"Mắc cười quá à\" — you are so ridiculous (affectionate).", vietnamese: "\"Mắc cười quá à\" — thương chứ không chê.", pronunciation: "mak kuoi kwa a", context: "When someone does something endearingly funny." },
+      { cell_id: "80786393-9647-4ce4-a0df-9bc2fd8ef52d", english: "\"Trời ơi là trời\" — oh my god (exasperated but warm).", vietnamese: "\"Trời ơi là trời\"", pronunciation: "choy oi la choy", context: "When someone is being their usual ridiculous self." },
     ],
     cultural_note: "Vietnamese affectionate insults rely heavily on tone; đồ ngốc said sharply is an insult, said softly with a head shake is I love you.",
     tip: "The universal rule: if you add à or nha at the end, it softens almost anything into affection.",
@@ -7467,10 +7803,10 @@ export const lessons: VietnameseLesson[] = [
     id: 303, level: "B1", title_en: "Humor As Deflection", subtitle: "When someone uses jokes to avoid depth.",
     intro: "Use these phrases when you notice a friend or partner constantly deflecting serious topics with humor.",
     phrases: [
-      { english: "\"Bữa nay mình nói thiệt một bữa nha. Không đùa.\"", vietnamese: "\"Bữa nay mình nói thiệt một bữa nha. Không đùa.\"", pronunciation: "bua nay minh noy thiet mot bua nha, khong dua", context: "Call for a real conversation." },
-      { english: "\"Tui thấy bạn cười, mà mắt bạn không cười. Có gì trong đó không?\"", vietnamese: "\"Tui thấy bạn cười, mà mắt bạn không cười. Có gì trong đó không?\"", pronunciation: "tui thay ban kuoi, ma mat ban khong kuoi, ko zi trong do khong", context: "Notice the disconnect between joke and feeling." },
-      { english: "\"Bạn nói giỡn hoài, tui không biết lúc nào bạn thật.\"", vietnamese: "\"Bạn nói giỡn hoài, tui không biết lúc nào bạn thật.\"", pronunciation: "ban noy zun hoai, tui khong biet luk nao ban that", context: "Gently name the pattern." },
-      { english: "\"Tui không ép bạn kể. Chỉ muốn bạn biết là tui sẵn sàng nghe khi bạn muốn.\"", vietnamese: "\"Tui không ép bạn kể. Chỉ muốn bạn biết là tui sẵn sàng nghe khi bạn muốn.\"", pronunciation: "tui khong ep ban ke, chi muon ban biet la tui sang sang nghe khi ban muon", context: "Leave the door open without forcing it." },
+      { cell_id: "5143ce9c-4982-4571-beda-8d769ef673d7", english: "\"Bữa nay mình nói thiệt một bữa nha. Không đùa.\"", vietnamese: "\"Bữa nay mình nói thiệt một bữa nha. Không đùa.\"", pronunciation: "bua nay minh noy thiet mot bua nha, khong dua", context: "Call for a real conversation." },
+      { cell_id: "e8deba13-22a2-4e98-b3c8-c3dafd8862cf", english: "\"Tui thấy bạn cười, mà mắt bạn không cười. Có gì trong đó không?\"", vietnamese: "\"Tui thấy bạn cười, mà mắt bạn không cười. Có gì trong đó không?\"", pronunciation: "tui thay ban kuoi, ma mat ban khong kuoi, ko zi trong do khong", context: "Notice the disconnect between joke and feeling." },
+      { cell_id: "142e0239-fb06-44e1-ad46-b4c67f55ba84", english: "\"Bạn nói giỡn hoài, tui không biết lúc nào bạn thật.\"", vietnamese: "\"Bạn nói giỡn hoài, tui không biết lúc nào bạn thật.\"", pronunciation: "ban noy zun hoai, tui khong biet luk nao ban that", context: "Gently name the pattern." },
+      { cell_id: "e74417a8-d97b-49e0-88d7-33dcd23ed4e6", english: "\"Tui không ép bạn kể. Chỉ muốn bạn biết là tui sẵn sàng nghe khi bạn muốn.\"", vietnamese: "\"Tui không ép bạn kể. Chỉ muốn bạn biết là tui sẵn sàng nghe khi bạn muốn.\"", pronunciation: "tui khong ep ban ke, chi muon ban biet la tui sang sang nghe khi ban muon", context: "Leave the door open without forcing it." },
     ],
     cultural_note: "Vietnamese humor-as-shield is common, especially among men taught not to show vulnerability; mắt bạn không cười (your eyes are not laughing) can crack the door without breaking the person.",
     tip: "Use mắt bạn không cười — your eyes are not laughing — it is poetic, precise, and impossible to deflect.",
@@ -7479,10 +7815,10 @@ export const lessons: VietnameseLesson[] = [
     id: 304, level: "B1", title_en: "Regional Accent Teasing — Friendly vs Hurtful", subtitle: "When to laugh, when to stop.",
     intro: "Use these phrases to understand the line between affectionate accent teasing and genuine accent discrimination in Vietnam.",
     phrases: [
-      { english: "\"Bạn nói giọng Huế nghe thương dễ sợ.\" — a compliment wrapped in accent notice.", vietnamese: "\"Bạn nói giọng Huế nghe thương dễ sợ.\"", pronunciation: "ban noy zong Hue nghe thuong de suh", context: "Acknowledge an accent positively." },
-      { english: "\"Tui bắt chước giọng bạn hoài, mà không giống. Chắc tui dở.\" — self-deprecation, not mockery.", vietnamese: "\"Tui bắt chước giọng bạn hoài, mà không giống. Chắc tui dở.\"", pronunciation: "tui bat chuok zong ban hoai, ma khong zong, chak tui duh", context: "Turn accent imitation into a compliment about their uniqueness." },
-      { english: "\"Tui nghe giọng Nam không hiểu. Mà lỗi tui, không phải lỗi giọng bạn.\"", vietnamese: "\"Tui nghe giọng Nam không hiểu. Mà lỗi tui, không phải lỗi giọng bạn.\"", pronunciation: "tui nghe zong Nam khong hiew, ma loi tui, khong fai loi zong ban", context: "Own your comprehension gap without blaming their accent." },
-      { english: "\"Nhiều người chê giọng miền Trung nghe nặng. Tui thấy nó thiệt, và tui thích.\"", vietnamese: "\"Nhiều người chê giọng miền Trung nghe nặng. Tui thấy nó thiệt, và tui thích.\"", pronunciation: "nhieu nguoi che zong mien Trung nghe nang, tui thay no thiet, va tui thik", context: "Push back on accent prejudice." },
+      { cell_id: "6b77dfa1-feee-4afe-b1ea-722f657c407d", english: "\"Bạn nói giọng Huế nghe thương dễ sợ.\" — a compliment wrapped in accent notice.", vietnamese: "\"Bạn nói giọng Huế nghe thương dễ sợ.\"", pronunciation: "ban noy zong Hue nghe thuong de suh", context: "Acknowledge an accent positively." },
+      { cell_id: "b2e43784-ed85-4628-9bac-a546442a1997", english: "\"Tui bắt chước giọng bạn hoài, mà không giống. Chắc tui dở.\" — self-deprecation, not mockery.", vietnamese: "\"Tui bắt chước giọng bạn hoài, mà không giống. Chắc tui dở.\"", pronunciation: "tui bat chuok zong ban hoai, ma khong zong, chak tui duh", context: "Turn accent imitation into a compliment about their uniqueness." },
+      { cell_id: "fbb9b3a6-5f4b-4769-859b-4345c043ff41", english: "\"Tui nghe giọng Nam không hiểu. Mà lỗi tui, không phải lỗi giọng bạn.\"", vietnamese: "\"Tui nghe giọng Nam không hiểu. Mà lỗi tui, không phải lỗi giọng bạn.\"", pronunciation: "tui nghe zong Nam khong hiew, ma loi tui, khong fai loi zong ban", context: "Own your comprehension gap without blaming their accent." },
+      { cell_id: "db5182bd-eb19-4359-9176-cdc7f1539682", english: "\"Nhiều người chê giọng miền Trung nghe nặng. Tui thấy nó thiệt, và tui thích.\"", vietnamese: "\"Nhiều người chê giọng miền Trung nghe nặng. Tui thấy nó thiệt, và tui thích.\"", pronunciation: "nhieu nguoi che zong mien Trung nghe nang, tui thay no thiet, va tui thik", context: "Push back on accent prejudice." },
     ],
     cultural_note: "Vietnam has strong accent hierarchies; Northern and Southern accents dominate media, while Central and rural accents are often mocked — knowing when teasing becomes punching down is essential social literacy.",
     tip: "If you imitate an accent, make sure the Vietnamese people in the room are laughing with you, not at someone in the room.",
@@ -7506,10 +7842,10 @@ export const lessons: VietnameseLesson[] = [
     id: 306, level: "B1", title_en: "Sarcasm In Vietnamese Texting", subtitle: "Tone markers that tell the reader you are joking.",
     intro: "Use these phrases to understand how Vietnamese people signal sarcasm in text — where tone is invisible and a joke can land as an insult.",
     phrases: [
-      { english: "Adding \"=))\" or \"haha\" at the end of a sarcastic line.", vietnamese: "Thêm \"=))\" hoặc \"haha\" cuối câu mỉa mai.", pronunciation: "them =)) hoac haha kuoi kau mia mai", context: "Signal you are joking in text." },
-      { english: "\"Nói giỡn thôi đừng giận nha\" — just kidding, do not be mad.", vietnamese: "\"Nói giỡn thôi đừng giận nha\"", pronunciation: "noy zun thoy dung zan nha", context: "Text disclaimer after something risky." },
-      { english: "\"Chọc tí\" — just teasing a bit.", vietnamese: "\"Chọc tí\"", pronunciation: "chok ti", context: "Clarify that the previous message was playful." },
-      { english: "Using all-caps or repeated letters for exaggerated tone: \"DỮ VẬY TRỜIII\"", vietnamese: "Viết hoa hoặc lặp chữ để thể hiện giọng điệu phóng đại.", pronunciation: "viet hoa hoac lap chu", context: "Mimic exaggerated spoken sarcasm." },
+      { cell_id: "9b1bb5b9-6e72-4ed4-b164-88659df89139", english: "Adding \"=))\" or \"haha\" at the end of a sarcastic line.", vietnamese: "Thêm \"=))\" hoặc \"haha\" cuối câu mỉa mai.", pronunciation: "them =)) hoac haha kuoi kau mia mai", context: "Signal you are joking in text." },
+      { cell_id: "1c66e6f1-0396-42b1-9427-78db34d2041c", english: "\"Nói giỡn thôi đừng giận nha\" — just kidding, do not be mad.", vietnamese: "\"Nói giỡn thôi đừng giận nha\"", pronunciation: "noy zun thoy dung zan nha", context: "Text disclaimer after something risky." },
+      { cell_id: "a2726cc6-d1dc-42d7-8452-a9c58ce11919", english: "\"Chọc tí\" — just teasing a bit.", vietnamese: "\"Chọc tí\"", pronunciation: "chok ti", context: "Clarify that the previous message was playful." },
+      { cell_id: "0403619d-7b09-4e93-9d95-d90d2479d83b", english: "Using all-caps or repeated letters for exaggerated tone: \"DỮ VẬY TRỜIII\"", vietnamese: "Viết hoa hoặc lặp chữ để thể hiện giọng điệu phóng đại.", pronunciation: "viet hoa hoac lap chu", context: "Mimic exaggerated spoken sarcasm." },
     ],
     cultural_note: "Sarcasm in Vietnamese text is dangerous without tone markers; Vietnamese texters use emoji, stretched words, and explicit disclaimers (nói giỡn thôi) to keep jokes from becoming conflicts.",
     tip: "If a sarcastic text does not get a response in 10 minutes, send chọc tí immediately — it resets the tone before the silence hardens.",
@@ -7518,10 +7854,10 @@ export const lessons: VietnameseLesson[] = [
     id: 307, level: "B1", title_en: "Telling A Story With Suspense", subtitle: "Narrative connectors that keep people listening.",
     intro: "Use these phrases to structure a story in Vietnamese with the pacing and suspense that holds attention.",
     phrases: [
-      { english: "\"Chuyện là vầy...\" — here is how it went (classic story opener).", vietnamese: "\"Chuyện là vầy...\"", pronunciation: "chuyen la vay", context: "Open any spoken story." },
-      { english: "\"Đang yên đang lành, tự nhiên...\" — everything was fine, and then suddenly...", vietnamese: "\"Đang yên đang lành, tự nhiên...\"", pronunciation: "dang yen dang lanh, tu nhien", context: "Mark the turning point in a story." },
-      { english: "\"Tui chưa kịp hiểu chuyện gì thì...\" — before I could understand what was happening...", vietnamese: "\"Tui chưa kịp hiểu chuyện gì thì...\"", pronunciation: "tui chua kip hiew chuyen zi thi", context: "Add speed and confusion to a narrative." },
-      { english: "\"Để coi chuyện gì xảy ra tiếp...\" — let us see what happens next (cliffhanger).", vietnamese: "\"Để coi chuyện gì xảy ra tiếp...\"", pronunciation: "de koy chuyen zi xay ra tiep", context: "Pause before a reveal." },
+      { cell_id: "e4962806-d46d-4247-9848-ec6d004bc95b", english: "\"Chuyện là vầy...\" — here is how it went (classic story opener).", vietnamese: "\"Chuyện là vầy...\"", pronunciation: "chuyen la vay", context: "Open any spoken story." },
+      { cell_id: "4afa52fb-1682-4e23-b74a-f527514d835b", english: "\"Đang yên đang lành, tự nhiên...\" — everything was fine, and then suddenly...", vietnamese: "\"Đang yên đang lành, tự nhiên...\"", pronunciation: "dang yen dang lanh, tu nhien", context: "Mark the turning point in a story." },
+      { cell_id: "6c299fb8-0cd3-47a5-8f90-e8975588aa36", english: "\"Tui chưa kịp hiểu chuyện gì thì...\" — before I could understand what was happening...", vietnamese: "\"Tui chưa kịp hiểu chuyện gì thì...\"", pronunciation: "tui chua kip hiew chuyen zi thi", context: "Add speed and confusion to a narrative." },
+      { cell_id: "510b8f08-2f6d-42cc-9fe2-7b8e58870266", english: "\"Để coi chuyện gì xảy ra tiếp...\" — let us see what happens next (cliffhanger).", vietnamese: "\"Để coi chuyện gì xảy ra tiếp...\"", pronunciation: "de koy chuyen zi xay ra tiep", context: "Pause before a reveal." },
     ],
     cultural_note: "Vietnamese storytelling relies on the listener's reactions (trời ơi, thiệt hả, rồi sao) to fuel the teller; a story without audience gasps is a story that is failing.",
     tip: "Use đang yên đang lành, tự nhiên — it is the Vietnamese 'and then suddenly' that signals the story is about to get good.",
@@ -7530,10 +7866,10 @@ export const lessons: VietnameseLesson[] = [
     id: 308, level: "B1", title_en: "Describing A Near Miss", subtitle: "Accident and almost-accident storytelling.",
     intro: "Use these phrases when you need to describe a close call — on the road, at work, or in daily life.",
     phrases: [
-      { english: "\"Suýt nữa là tai nạn rồi. Một giây nữa thôi là tui không ngồi đây.\"", vietnamese: "\"Suýt nữa là tai nạn rồi. Một giây nữa thôi là tui không ngồi đây.\"", pronunciation: "suit nua la tai nan roi, mot zay nua thoy la tui khong ngoy day", context: "Open a near-miss story." },
-      { english: "\"Tui thắng gấp. Xe sau cũng thắng gấp. Hai xe cách nhau một gang tay.\"", vietnamese: "\"Tui thắng gấp. Xe sau cũng thắng gấp. Hai xe cách nhau một gang tay.\"", pronunciation: "tui thang gap, seh sau kung thang gap, hai seh kach nhau mot gang tay", context: "Describe a traffic close call." },
-      { english: "\"Tim tui đập muốn rớt ra ngoài luôn.\"", vietnamese: "\"Tim tui đập muốn rớt ra ngoài luôn.\"", pronunciation: "tim tui dap muon zut ra ngoai luon", context: "Describe the physical sensation of fear." },
-      { english: "\"Xong rồi tui đứng đó, thở một hồi mới đi tiếp được.\"", vietnamese: "\"Xong rồi tui đứng đó, thở một hồi mới đi tiếp được.\"", pronunciation: "xong roi tui dung do, thuh mot hoi moi di tiep duoc", context: "Describe the aftermath." },
+      { cell_id: "db736021-39f8-4727-874b-0e8ad7779f3a", english: "\"Suýt nữa là tai nạn rồi. Một giây nữa thôi là tui không ngồi đây.\"", vietnamese: "\"Suýt nữa là tai nạn rồi. Một giây nữa thôi là tui không ngồi đây.\"", pronunciation: "suit nua la tai nan roi, mot zay nua thoy la tui khong ngoy day", context: "Open a near-miss story." },
+      { cell_id: "51d11aa1-2c1d-4a46-a311-417cd3fd208a", english: "\"Tui thắng gấp. Xe sau cũng thắng gấp. Hai xe cách nhau một gang tay.\"", vietnamese: "\"Tui thắng gấp. Xe sau cũng thắng gấp. Hai xe cách nhau một gang tay.\"", pronunciation: "tui thang gap, seh sau kung thang gap, hai seh kach nhau mot gang tay", context: "Describe a traffic close call." },
+      { cell_id: "41f44df8-1f86-4056-a051-3b892453a266", english: "\"Tim tui đập muốn rớt ra ngoài luôn.\"", vietnamese: "\"Tim tui đập muốn rớt ra ngoài luôn.\"", pronunciation: "tim tui dap muon zut ra ngoai luon", context: "Describe the physical sensation of fear." },
+      { cell_id: "0b59e095-6a11-42d5-9132-c61476262d11", english: "\"Xong rồi tui đứng đó, thở một hồi mới đi tiếp được.\"", vietnamese: "\"Xong rồi tui đứng đó, thở một hồi mới đi tiếp được.\"", pronunciation: "xong roi tui dung do, thuh mot hoi moi di tiep duoc", context: "Describe the aftermath." },
     ],
     cultural_note: "Near-miss stories are a staple of Vietnamese conversation, especially about traffic; the more specific the distance (một gang tay — a handspan), the more vivid the story.",
     tip: "Use một gang tay — a handspan — Vietnamese listeners respond to physical measurements in storytelling.",
@@ -7542,10 +7878,10 @@ export const lessons: VietnameseLesson[] = [
     id: 309, level: "B1", title_en: "Telling Your Origin Story In Vietnamese", subtitle: "Immigration, career, life — compressed and compelling.",
     intro: "Use these phrases when someone asks about your life story and you want to tell it concisely in Vietnamese.",
     phrases: [
-      { english: "\"Tui qua Việt Nam lần đầu năm... hồi đó tui chưa biết một chữ tiếng Việt nào.\"", vietnamese: "\"Tui qua Việt Nam lần đầu năm... hồi đó tui chưa biết một chữ tiếng Việt nào.\"", pronunciation: "tui kwa Viet Nam lan dau nam, hoi do tui chua biet mot chu tieng Viet nao", context: "Mark your starting point." },
-      { english: "\"Hồi đó tui nghĩ ở đây một năm rồi về. Mà một năm thành năm năm.\"", vietnamese: "\"Hồi đó tui nghĩ ở đây một năm rồi về. Mà một năm thành năm năm.\"", pronunciation: "hoi do tui nghi u day mot nam roi ve, ma mot nam thanh nam nam", context: "Describe how temporary became permanent." },
-      { english: "\"Có những ngày tui muốn bỏ hết về nước. Mà rồi sáng hôm sau thức dậy, đi cà phê, lại thấy ở được.\"", vietnamese: "\"Có những ngày tui muốn bỏ hết về nước. Mà rồi sáng hôm sau thức dậy, đi cà phê, lại thấy ở được.\"", pronunciation: "ko nhung ngay tui muon bo het ve nuok, ma roi sang hom sau thuk day, di ca fe, lai thay u duoc", context: "Describe the rhythm of expat life." },
-      { english: "\"Giờ tui coi Việt Nam là nhà. Không phải vì tui quên chỗ cũ. Mà vì tui đã xây chỗ mới.\"", vietnamese: "\"Giờ tui coi Việt Nam là nhà. Không phải vì tui quên chỗ cũ. Mà vì tui đã xây chỗ mới.\"", pronunciation: "zo tui koi Viet Nam la nha, khong phai vi tui kwen cho ku, ma vi tui da xay cho moi", context: "Land the conclusion." },
+      { cell_id: "0d3bd96a-f396-434f-9522-0dcbc360afcc", english: "\"Tui qua Việt Nam lần đầu năm... hồi đó tui chưa biết một chữ tiếng Việt nào.\"", vietnamese: "\"Tui qua Việt Nam lần đầu năm... hồi đó tui chưa biết một chữ tiếng Việt nào.\"", pronunciation: "tui kwa Viet Nam lan dau nam, hoi do tui chua biet mot chu tieng Viet nao", context: "Mark your starting point." },
+      { cell_id: "0d60c5d1-7c31-4215-823a-f9721231e1ab", english: "\"Hồi đó tui nghĩ ở đây một năm rồi về. Mà một năm thành năm năm.\"", vietnamese: "\"Hồi đó tui nghĩ ở đây một năm rồi về. Mà một năm thành năm năm.\"", pronunciation: "hoi do tui nghi u day mot nam roi ve, ma mot nam thanh nam nam", context: "Describe how temporary became permanent." },
+      { cell_id: "65558ea7-ddda-40ac-881d-0e4f9966f5a1", english: "\"Có những ngày tui muốn bỏ hết về nước. Mà rồi sáng hôm sau thức dậy, đi cà phê, lại thấy ở được.\"", vietnamese: "\"Có những ngày tui muốn bỏ hết về nước. Mà rồi sáng hôm sau thức dậy, đi cà phê, lại thấy ở được.\"", pronunciation: "ko nhung ngay tui muon bo het ve nuok, ma roi sang hom sau thuk day, di ca fe, lai thay u duoc", context: "Describe the rhythm of expat life." },
+      { cell_id: "4534ddf1-0a55-4dc4-a9b3-7f149a8b6c3d", english: "\"Giờ tui coi Việt Nam là nhà. Không phải vì tui quên chỗ cũ. Mà vì tui đã xây chỗ mới.\"", vietnamese: "\"Giờ tui coi Việt Nam là nhà. Không phải vì tui quên chỗ cũ. Mà vì tui đã xây chỗ mới.\"", pronunciation: "zo tui koi Viet Nam la nha, khong phai vi tui kwen cho ku, ma vi tui da xay cho moi", context: "Land the conclusion." },
     ],
     cultural_note: "Vietnamese listeners appreciate an origin story that includes struggle and adaptation — it mirrors the Vietnamese value of vượt khó (overcoming difficulty).",
     tip: "Use sáng hôm sau thức dậy, đi cà phê — it is the smallest, most human anchor for choosing to stay.",
@@ -7570,10 +7906,10 @@ export const lessons: VietnameseLesson[] = [
     id: 311, level: "B1", title_en: "Northern vs Southern Storytelling Style", subtitle: "Pace and rhythm differences.",
     intro: "Use these phrases to understand how storytelling pace differs between Northern and Southern Vietnamese speakers.",
     phrases: [
-      { english: "Northern style: more formal, uses \"ạ\" even in stories, sentences are more structured.", vietnamese: "Giọng Bắc: lịch sự hơn, dùng \"ạ\" ngay cả trong chuyện kể, câu cú đầy đủ.", pronunciation: "zong Bak: lich su hon, zung a ngay ka trong chuyen ke, kau ku day du", context: "Recognize Northern storytelling formality." },
-      { english: "Southern style: faster, more contractions, more sound effects and gestures.", vietnamese: "Giọng Nam: nhanh hơn, nói tắt nhiều, thêm tiếng động và động tác tay.", pronunciation: "zong Nam: nhanh hon, noy tat nhieu, them tieng dong va dong tak tay", context: "Recognize Southern storytelling energy." },
-      { english: "\"Người Bắc kể chuyện như đọc văn. Người Nam kể chuyện như diễn kịch.\"", vietnamese: "\"Người Bắc kể chuyện như đọc văn. Người Nam kể chuyện như diễn kịch.\"", pronunciation: "nguoi Bak ke chuyen nhu dok van, nguoi Nam ke chuyen nhu dien kich", context: "Playful observation." },
-      { english: "\"Người miền Trung kể chuyện ít chữ nhất, mà nghe thấm nhất.\"", vietnamese: "\"Người miền Trung kể chuyện ít chữ nhất, mà nghe thấm nhất.\"", pronunciation: "nguoi mien Trung ke chuyen it chu nhat, ma nghe tham nhat", context: "Respect Central Vietnamese concision." },
+      { cell_id: "26a1602a-80f6-4123-9bb2-c2eac15ac554", english: "Northern style: more formal, uses \"ạ\" even in stories, sentences are more structured.", vietnamese: "Giọng Bắc: lịch sự hơn, dùng \"ạ\" ngay cả trong chuyện kể, câu cú đầy đủ.", pronunciation: "zong Bak: lich su hon, zung a ngay ka trong chuyen ke, kau ku day du", context: "Recognize Northern storytelling formality." },
+      { cell_id: "8a89a149-05fa-4a24-9649-0a3c469fc2e0", english: "Southern style: faster, more contractions, more sound effects and gestures.", vietnamese: "Giọng Nam: nhanh hơn, nói tắt nhiều, thêm tiếng động và động tác tay.", pronunciation: "zong Nam: nhanh hon, noy tat nhieu, them tieng dong va dong tak tay", context: "Recognize Southern storytelling energy." },
+      { cell_id: "1beaf46c-2f21-4e90-bf35-5b8254efa043", english: "\"Người Bắc kể chuyện như đọc văn. Người Nam kể chuyện như diễn kịch.\"", vietnamese: "\"Người Bắc kể chuyện như đọc văn. Người Nam kể chuyện như diễn kịch.\"", pronunciation: "nguoi Bak ke chuyen nhu dok van, nguoi Nam ke chuyen nhu dien kich", context: "Playful observation." },
+      { cell_id: "5cbac80a-5e3f-47a3-bb65-15057d889073", english: "\"Người miền Trung kể chuyện ít chữ nhất, mà nghe thấm nhất.\"", vietnamese: "\"Người miền Trung kể chuyện ít chữ nhất, mà nghe thấm nhất.\"", pronunciation: "nguoi mien Trung ke chuyen it chu nhat, ma nghe tham nhat", context: "Respect Central Vietnamese concision." },
     ],
     cultural_note: "Storytelling style in Vietnam is regional; Northerners value structure, Southerners value energy, Central Vietnamese value weight — knowing this helps you read the room.",
     tip: "If you are learning, adopt the Southern storytelling style first — it is more forgiving and rewards enthusiasm over accuracy.",
@@ -7582,10 +7918,10 @@ export const lessons: VietnameseLesson[] = [
     id: 312, level: "B1", title_en: "Central Vietnamese Directness", subtitle: "Regional communication patterns — blunt and warm.",
     intro: "Use these phrases to understand the Central Vietnamese communication style that outsiders often misread as rude.",
     phrases: [
-      { english: "\"Người miền Trung nói thẳng. Không phải không lịch sự. Là họ không vòng vo.\"", vietnamese: "\"Người miền Trung nói thẳng. Không phải không lịch sự. Là họ không vòng vo.\"", pronunciation: "nguoi mien Trung noy thang, khong phai khong lich su, la ho khong vong vo", context: "Explain Central bluntness." },
-      { english: "\"Răng rứa?\" — Central dialect for \"Sao vậy?\" (What is it? / Why?)", vietnamese: "\"Răng rứa?\" — tiếng miền Trung cho \"Sao vậy?\"", pronunciation: "zang zua", context: "Ask 'why' in Central style." },
-      { english: "\"Nỏ biết\" — Central dialect for \"Không biết\" (I don't know).", vietnamese: "\"Nỏ biết\" — tiếng miền Trung cho \"Không biết.\"", pronunciation: "no biet", context: "Say 'I do not know' in Central style." },
-      { english: "\"Mần chi?\" — Central dialect for \"Làm gì?\" (What are you doing?).", vietnamese: "\"Mần chi?\" — tiếng miền Trung cho \"Làm gì?\"", pronunciation: "mun chi", context: "Ask what someone is doing." },
+      { cell_id: "54fa2ac4-3e49-473f-984f-4f481df0150f", english: "\"Người miền Trung nói thẳng. Không phải không lịch sự. Là họ không vòng vo.\"", vietnamese: "\"Người miền Trung nói thẳng. Không phải không lịch sự. Là họ không vòng vo.\"", pronunciation: "nguoi mien Trung noy thang, khong phai khong lich su, la ho khong vong vo", context: "Explain Central bluntness." },
+      { cell_id: "d4237614-5bf9-447e-8d65-77bb2d23252e", english: "\"Răng rứa?\" — Central dialect for \"Sao vậy?\" (What is it? / Why?)", vietnamese: "\"Răng rứa?\" — tiếng miền Trung cho \"Sao vậy?\"", pronunciation: "zang zua", context: "Ask 'why' in Central style." },
+      { cell_id: "d08abfd3-1c6d-480d-b34b-5bcd5b09b7f1", english: "\"Nỏ biết\" — Central dialect for \"Không biết\" (I don't know).", vietnamese: "\"Nỏ biết\" — tiếng miền Trung cho \"Không biết.\"", pronunciation: "no biet", context: "Say 'I do not know' in Central style." },
+      { cell_id: "0da1eb17-3aba-4a3c-8ecc-78337ebafe49", english: "\"Mần chi?\" — Central dialect for \"Làm gì?\" (What are you doing?).", vietnamese: "\"Mần chi?\" — tiếng miền Trung cho \"Làm gì?\"", pronunciation: "mun chi", context: "Ask what someone is doing." },
     ],
     cultural_note: "Central Vietnamese sounds abrupt to Northern and Southern ears, but it is not hostile — it is efficient. The region's history of hardship produced a communication style that values clarity over cushioning.",
     tip: "If a Central person says something that sounds harsh, wait. The warmth usually comes in the next sentence, not in the phrasing.",
@@ -7594,10 +7930,10 @@ export const lessons: VietnameseLesson[] = [
     id: 313, level: "B1", title_en: "Mekong Delta Casual Speech", subtitle: "Relaxed, slow, indirect — the river style.",
     intro: "Use these phrases to recognize the distinctive Mekong Delta communication style.",
     phrases: [
-      { english: "\"Người miền Tây nói chuyện như nước chảy — từ từ, không gấp.\"", vietnamese: "\"Người miền Tây nói chuyện như nước chảy — từ từ, không gấp.\"", pronunciation: "nguoi mien Tay noy chuyen nhu nuoc chay — tu tu, khong gap", context: "Describe the Delta pace." },
-      { english: "\"Hổng sao đâu\" — Mekong version of \"Không sao đâu\" (It's fine).", vietnamese: "\"Hổng sao đâu\" — tiếng miền Tây cho \"Không sao đâu.\"", pronunciation: "hong sao dau", context: "Reassure someone in Delta style." },
-      { english: "\"Gì đâu mà lo dữ vậy?\" — What is there to worry about so much? (calming style).", vietnamese: "\"Gì đâu mà lo dữ vậy?\"", pronunciation: "zi dau ma lo zu vay", context: "Tell someone to relax." },
-      { english: "\"Thôi, từ từ rồi tính. Uống trà trước đi.\" — Relax, we will figure it out. Have tea first.", vietnamese: "\"Thôi, từ từ rồi tính. Uống trà trước đi.\"", pronunciation: "thoy, tu tu roi tinh, uong tra chuok di", context: "Embody the Delta approach to problems." },
+      { cell_id: "c01f7351-b913-47b8-a3ef-e539f3934d8e", english: "\"Người miền Tây nói chuyện như nước chảy — từ từ, không gấp.\"", vietnamese: "\"Người miền Tây nói chuyện như nước chảy — từ từ, không gấp.\"", pronunciation: "nguoi mien Tay noy chuyen nhu nuoc chay — tu tu, khong gap", context: "Describe the Delta pace." },
+      { cell_id: "a5e6b273-74f8-42eb-9040-3ca3c2d0fc44", english: "\"Hổng sao đâu\" — Mekong version of \"Không sao đâu\" (It's fine).", vietnamese: "\"Hổng sao đâu\" — tiếng miền Tây cho \"Không sao đâu.\"", pronunciation: "hong sao dau", context: "Reassure someone in Delta style." },
+      { cell_id: "ca58fa7e-fc02-4e83-a0d8-f3f533ab96e3", english: "\"Gì đâu mà lo dữ vậy?\" — What is there to worry about so much? (calming style).", vietnamese: "\"Gì đâu mà lo dữ vậy?\"", pronunciation: "zi dau ma lo zu vay", context: "Tell someone to relax." },
+      { cell_id: "4db27c86-ec0d-4892-9ff4-c39f5e7e5c3d", english: "\"Thôi, từ từ rồi tính. Uống trà trước đi.\" — Relax, we will figure it out. Have tea first.", vietnamese: "\"Thôi, từ từ rồi tính. Uống trà trước đi.\"", pronunciation: "thoy, tu tu roi tinh, uong tra chuok di", context: "Embody the Delta approach to problems." },
     ],
     cultural_note: "The Mekong Delta values pace and presence over urgency; someone who rushes a Delta person through a conversation loses their trust faster than someone who sits and has tea first.",
     tip: "Use uống trà trước đi — have tea first — it is about establishing that you are not in a hurry, the prerequisite for any real conversation in the Delta.",
@@ -7606,10 +7942,10 @@ export const lessons: VietnameseLesson[] = [
     id: 314, level: "B1", title_en: "Hà Nội Formal Reserve", subtitle: "When formality is distance, not respect.",
     intro: "Use these phrases to recognize when a Hanoian is being formally polite as a way of keeping you at arm's length.",
     phrases: [
-      { english: "\"Người Hà Nội lịch sự là đang giữ khoảng cách. Thân rồi mới bắt đầu chê.\"", vietnamese: "\"Người Hà Nội lịch sự là đang giữ khoảng cách. Thân rồi mới bắt đầu chê.\"", pronunciation: "nguoi Ha Noi lich su la dang ziu khwang kach, than roi moi bat dau che", context: "Decode Hanoian politeness as distance." },
-      { english: "\"Dạ vâng ạ\" — the triple politeness that means 'I am not comfortable yet.'", vietnamese: "\"Dạ vâng ạ\" — lịch sự gấp ba nghĩa là 'tôi chưa thoải mái.'", pronunciation: "da vang a", context: "Recognize ultra-formal discomfort." },
-      { english: "\"Khi nào người Hà Nội nói 'mày' với bạn, lúc đó mới là bạn thật.\"", vietnamese: "\"Khi nào người Hà Nội nói 'mày' với bạn, lúc đó mới là bạn thật.\"", pronunciation: "khi nao nguoi Ha Noi noy may voi ban, luk do moi la ban that", context: "Understand the pronoun shift from formality to friendship." },
-      { english: "\"Tôi không dám hứa, để tôi xem lại lịch đã.\" — the Hanoian 'maybe not.'", vietnamese: "\"Tôi không dám hứa, để tôi xem lại lịch đã.\"", pronunciation: "toy khong zam hua, de toy xem lai lich da", context: "Recognize a polite decline." },
+      { cell_id: "49753585-ed26-4000-a24e-adfada589b6a", english: "\"Người Hà Nội lịch sự là đang giữ khoảng cách. Thân rồi mới bắt đầu chê.\"", vietnamese: "\"Người Hà Nội lịch sự là đang giữ khoảng cách. Thân rồi mới bắt đầu chê.\"", pronunciation: "nguoi Ha Noi lich su la dang ziu khwang kach, than roi moi bat dau che", context: "Decode Hanoian politeness as distance." },
+      { cell_id: "0cc8e94d-c50f-4ed3-a567-6436956b8dc7", english: "\"Dạ vâng ạ\" — the triple politeness that means 'I am not comfortable yet.'", vietnamese: "\"Dạ vâng ạ\" — lịch sự gấp ba nghĩa là 'tôi chưa thoải mái.'", pronunciation: "da vang a", context: "Recognize ultra-formal discomfort." },
+      { cell_id: "8442b862-b26d-4a90-93fe-9fc9d4a8235a", english: "\"Khi nào người Hà Nội nói 'mày' với bạn, lúc đó mới là bạn thật.\"", vietnamese: "\"Khi nào người Hà Nội nói 'mày' với bạn, lúc đó mới là bạn thật.\"", pronunciation: "khi nao nguoi Ha Noi noy may voi ban, luk do moi la ban that", context: "Understand the pronoun shift from formality to friendship." },
+      { cell_id: "6a708ff8-e316-4301-b152-895324eb86cd", english: "\"Tôi không dám hứa, để tôi xem lại lịch đã.\" — the Hanoian 'maybe not.'", vietnamese: "\"Tôi không dám hứa, để tôi xem lại lịch đã.\"", pronunciation: "toy khong zam hua, de toy xem lai lich da", context: "Recognize a polite decline." },
     ],
     cultural_note: "Hà Nội social culture uses formality as a buffer; the shift from anh/chị to mày is the real milestone of friendship, and it can take months or years.",
     tip: "Do not rush a Hanoian to drop formality — they will when they are ready, and pushing it triggers more formality, not less.",
@@ -7618,10 +7954,10 @@ export const lessons: VietnameseLesson[] = [
     id: 315, level: "B1", title_en: "Sài Gòn Openness", subtitle: "Reading when friendly is just surface.",
     intro: "Use these phrases to understand Saigon's famous openness — when it is genuine and when it is just the social default.",
     phrases: [
-      { english: "\"Người Sài Gòn dễ gần, mà khó vô sâu. Cười với bạn một tiếng, mà chưa chắc nhớ tên bạn.\"", vietnamese: "\"Người Sài Gòn dễ gần, mà khó vô sâu. Cười với bạn một tiếng, mà chưa chắc nhớ tên bạn.\"", pronunciation: "nguoi Sai Gon de gan, ma kho vo sau, kuoi voi ban mot tieng, ma chua chak nuh ten ban", context: "Describe the Saigon friendly-surface paradox." },
-      { english: "\"Ở Sài Gòn, ai cũng kêu em ơi, anh ơi. Nhưng 'ơi' không có nghĩa là thân.\"", vietnamese: "\"Ở Sài Gòn, ai cũng kêu em ơi, anh ơi. Nhưng 'ơi' không có nghĩa là thân.\"", pronunciation: "u Sai Gon, ai kung keu em oi, anh oi, nhung oi khong ko ngia la than", context: "Decode casual address as social lubricant, not intimacy." },
-      { english: "\"Bạn Sài Gòn rủ đi cà phê một cái là ok liền. Mà rủ kể chuyện buồn thì từ từ.\"", vietnamese: "\"Bạn Sài Gòn rủ đi cà phê một cái là ok liền. Mà rủ kể chuyện buồn thì từ từ.\"", pronunciation: "ban Sai Gon ru di ca fe mot kai la ok lien, ma ru ke chuyen buon thi tu tu", context: "Understand the difference between social access and emotional access." },
-      { english: "\"Đừng tưởng người ta cười với mình là người ta tin mình.\"", vietnamese: "\"Đừng tưởng người ta cười với mình là người ta tin mình.\"", pronunciation: "dung tuong nguoi ta kuoi voi minh la nguoi ta tin minh", context: "A general Saigon social rule." },
+      { cell_id: "5c9cd0b3-d36c-4166-86ce-412bdf227e2a", english: "\"Người Sài Gòn dễ gần, mà khó vô sâu. Cười với bạn một tiếng, mà chưa chắc nhớ tên bạn.\"", vietnamese: "\"Người Sài Gòn dễ gần, mà khó vô sâu. Cười với bạn một tiếng, mà chưa chắc nhớ tên bạn.\"", pronunciation: "nguoi Sai Gon de gan, ma kho vo sau, kuoi voi ban mot tieng, ma chua chak nuh ten ban", context: "Describe the Saigon friendly-surface paradox." },
+      { cell_id: "3c5c4110-b90d-4c01-9ffa-fb57f8d109a2", english: "\"Ở Sài Gòn, ai cũng kêu em ơi, anh ơi. Nhưng 'ơi' không có nghĩa là thân.\"", vietnamese: "\"Ở Sài Gòn, ai cũng kêu em ơi, anh ơi. Nhưng 'ơi' không có nghĩa là thân.\"", pronunciation: "u Sai Gon, ai kung keu em oi, anh oi, nhung oi khong ko ngia la than", context: "Decode casual address as social lubricant, not intimacy." },
+      { cell_id: "c019b447-09b7-4527-acbb-aa74cd9b6438", english: "\"Bạn Sài Gòn rủ đi cà phê một cái là ok liền. Mà rủ kể chuyện buồn thì từ từ.\"", vietnamese: "\"Bạn Sài Gòn rủ đi cà phê một cái là ok liền. Mà rủ kể chuyện buồn thì từ từ.\"", pronunciation: "ban Sai Gon ru di ca fe mot kai la ok lien, ma ru ke chuyen buon thi tu tu", context: "Understand the difference between social access and emotional access." },
+      { cell_id: "e9d1300d-c601-4ac1-a4c5-45a775716b0a", english: "\"Đừng tưởng người ta cười với mình là người ta tin mình.\"", vietnamese: "\"Đừng tưởng người ta cười với mình là người ta tin mình.\"", pronunciation: "dung tuong nguoi ta kuoi voi minh la nguoi ta tin minh", context: "A general Saigon social rule." },
     ],
     cultural_note: "Saigon friendliness is genuine but broad; people will share coffee, food, and laughs easily, but trust and deep conversation take as long in Saigon as anywhere else.",
     tip: "The Saigon rule: invitation to eat = easy. Invitation to share feelings = earned. Do not confuse the two.",
@@ -7630,10 +7966,10 @@ export const lessons: VietnameseLesson[] = [
     id: 316, level: "B1", title_en: "Code-Switching Between Northern And Southern Dialects", subtitle: "When and how Vietnamese people switch.",
     intro: "Use these phrases to understand why and how Vietnamese people switch between Northern and Southern speech depending on context.",
     phrases: [
-      { english: "\"Tui nói giọng Nam, mà đi Hà Nội tui phải sửa cách nói chút.\"", vietnamese: "\"Tui nói giọng Nam, mà đi Hà Nội tui phải sửa cách nói chút.\"", pronunciation: "tui noy zong Nam, ma di Ha Noi tui fai sua kak noy chut", context: "Describe adapting accent to region." },
-      { english: "\"Gọi là 'bát' hay 'chén' tùy người đối diện.\"", vietnamese: "\"Gọi là 'bát' hay 'chén' tùy người đối diện.\"", pronunciation: "goy la bat hay chen tuy nguoi doi dien", context: "Note vocabulary switching (bát = North, chén = South)." },
-      { english: "\"Trong công ty nói giọng Hà Nội cho lịch sự. Về nhà nói giọng Sài Gòn cho thoải mái.\"", vietnamese: "\"Trong công ty nói giọng Hà Nội cho lịch sự. Về nhà nói giọng Sài Gòn cho thoải mái.\"", pronunciation: "trong kong ty noy zong Ha Noi cho lich su, ve nha noy zong Sai Gon cho thoai mai", context: "Describe workplace vs home dialect switching." },
-      { english: "\"Đừng bắt chước giọng người khác để giễu. Dễ bị hiểu lầm lắm.\"", vietnamese: "\"Đừng bắt chước giọng người khác để giễu. Dễ bị hiểu lầm lắm.\"", pronunciation: "dung bat chuok zong nguoi khak de zieu, de bi hiew lam lam", context: "Warn against mocking accents." },
+      { cell_id: "24049683-3fd3-421d-9b2d-ef7f30521c68", english: "\"Tui nói giọng Nam, mà đi Hà Nội tui phải sửa cách nói chút.\"", vietnamese: "\"Tui nói giọng Nam, mà đi Hà Nội tui phải sửa cách nói chút.\"", pronunciation: "tui noy zong Nam, ma di Ha Noi tui fai sua kak noy chut", context: "Describe adapting accent to region." },
+      { cell_id: "390c2170-d535-4ec5-8e44-0112bb80ef59", english: "\"Gọi là 'bát' hay 'chén' tùy người đối diện.\"", vietnamese: "\"Gọi là 'bát' hay 'chén' tùy người đối diện.\"", pronunciation: "goy la bat hay chen tuy nguoi doi dien", context: "Note vocabulary switching (bát = North, chén = South)." },
+      { cell_id: "b8635712-85b0-45af-a184-d84e611226de", english: "\"Trong công ty nói giọng Hà Nội cho lịch sự. Về nhà nói giọng Sài Gòn cho thoải mái.\"", vietnamese: "\"Trong công ty nói giọng Hà Nội cho lịch sự. Về nhà nói giọng Sài Gòn cho thoải mái.\"", pronunciation: "trong kong ty noy zong Ha Noi cho lich su, ve nha noy zong Sai Gon cho thoai mai", context: "Describe workplace vs home dialect switching." },
+      { cell_id: "44c8012b-ed8b-4d32-a88c-388ecdbb5a35", english: "\"Đừng bắt chước giọng người khác để giễu. Dễ bị hiểu lầm lắm.\"", vietnamese: "\"Đừng bắt chước giọng người khác để giễu. Dễ bị hiểu lầm lắm.\"", pronunciation: "dung bat chuok zong nguoi khak de zieu, de bi hiew lam lam", context: "Warn against mocking accents." },
     ],
     cultural_note: "Code-switching is a survival skill for Vietnamese people who move between regions; being able to switch even one word (bát/chén) impresses Vietnamese people enormously.",
     tip: "If you are a foreigner, switching one regional word shows you understand nuance — it earns more respect than perfect grammar.",
@@ -7642,10 +7978,10 @@ export const lessons: VietnameseLesson[] = [
     id: 317, level: "B1", title_en: "When Your Accent Reveals Your Class", subtitle: "Social nuance in Vietnamese speech.",
     intro: "Use these phrases to understand how accent and word choice signal social class in Vietnam.",
     phrases: [
-      { english: "\"Có những từ người nghèo hay xài, người giàu không nói. Và ngược lại.\"", vietnamese: "\"Có những từ người nghèo hay xài, người giàu không nói. Và ngược lại.\"", pronunciation: "ko nhung tu nguoi ngeo hay sai, nguoi zao khong noy, va nguok lai", context: "Note vocabulary class markers." },
-      { english: "\"Nghe cách ai đó gọi món ăn là biết họ quen quán sang hay quán via hè.\"", vietnamese: "\"Nghe cách ai đó gọi món ăn là biết họ quen quán sang hay quán via hè.\"", pronunciation: "nghe kak ai do goy mon an la biet ho kwen kwan sang hay kwan via he", context: "Note how ordering reveals class." },
-      { english: "\"Ở Việt Nam, giọng Hà Nội chuẩn thường được coi là có học. Dù không công bằng, mà có thật.\"", vietnamese: "\"Ở Việt Nam, giọng Hà Nội chuẩn thường được coi là có học. Dù không công bằng, mà có thật.\"", pronunciation: "u Viet Nam, zong Ha Noi chuan thuong duoc koy la ko hok, zu khong kong bang, ma ko that", context: "Acknowledge accent privilege honestly." },
-      { english: "\"Tui không chọn giọng tui. Mà tui biết có người đánh giá tui vì nó.\"", vietnamese: "\"Tui không chọn giọng tui. Mà tui biết có người đánh giá tui vì nó.\"", pronunciation: "tui khong chon zong tui, ma tui biet ko nguoi danh za tui vi no", context: "Name accent-based judgment." },
+      { cell_id: "fe7a5f86-b0e4-4bb7-ba0b-8a4d572bbe37", english: "\"Có những từ người nghèo hay xài, người giàu không nói. Và ngược lại.\"", vietnamese: "\"Có những từ người nghèo hay xài, người giàu không nói. Và ngược lại.\"", pronunciation: "ko nhung tu nguoi ngeo hay sai, nguoi zao khong noy, va nguok lai", context: "Note vocabulary class markers." },
+      { cell_id: "b817d117-bf20-4a3d-8ea5-ff63a3366327", english: "\"Nghe cách ai đó gọi món ăn là biết họ quen quán sang hay quán via hè.\"", vietnamese: "\"Nghe cách ai đó gọi món ăn là biết họ quen quán sang hay quán via hè.\"", pronunciation: "nghe kak ai do goy mon an la biet ho kwen kwan sang hay kwan via he", context: "Note how ordering reveals class." },
+      { cell_id: "bc206463-13aa-449e-9da6-5b22e1bdd0f2", english: "\"Ở Việt Nam, giọng Hà Nội chuẩn thường được coi là có học. Dù không công bằng, mà có thật.\"", vietnamese: "\"Ở Việt Nam, giọng Hà Nội chuẩn thường được coi là có học. Dù không công bằng, mà có thật.\"", pronunciation: "u Viet Nam, zong Ha Noi chuan thuong duoc koy la ko hok, zu khong kong bang, ma ko that", context: "Acknowledge accent privilege honestly." },
+      { cell_id: "cab5110c-a6d2-4aed-9939-d79b4119a0a7", english: "\"Tui không chọn giọng tui. Mà tui biết có người đánh giá tui vì nó.\"", vietnamese: "\"Tui không chọn giọng tui. Mà tui biết có người đánh giá tui vì nó.\"", pronunciation: "tui khong chon zong tui, ma tui biet ko nguoi danh za tui vi no", context: "Name accent-based judgment." },
     ],
     cultural_note: "Vietnam has a quiet but real accent class system; the standard Hà Nội accent is associated with education and status, while rural and Central accents face prejudice — acknowledging this openly is rare and powerful.",
     tip: "As a foreigner, you are largely outside this class system — but being aware of it helps you understand why Vietnamese people sometimes switch accents.",
@@ -7654,10 +7990,10 @@ export const lessons: VietnameseLesson[] = [
     id: 318, level: "B1", title_en: "Urban vs Rural Communication Gaps", subtitle: "When city and countryside Vietnamese miss each other.",
     intro: "Use these phrases when you notice misunderstandings between urban and rural Vietnamese speakers.",
     phrases: [
-      { english: "\"Người thành phố nói nhanh. Người quê nói ít. Cả hai đều tưởng người kia không muốn nói chuyện.\"", vietnamese: "\"Người thành phố nói nhanh. Người quê nói ít. Cả hai đều tưởng người kia không muốn nói chuyện.\"", pronunciation: "nguoi thanh fo noy nhanh, nguoi kwe noy it, ka hai deu tuong nguoi kia khong muon noy chuyen", context: "Explain the speed mismatch." },
-      { english: "\"Ở quê, im lặng là bình thường. Ở thành phố, im lặng là có chuyện.\"", vietnamese: "\"Ở quê, im lặng là bình thường. Ở thành phố, im lặng là có chuyện.\"", pronunciation: "u kwe, im lang la binh thuong, u thanh fo, im lang la ko chuyen", context: "Explain silence norms." },
-      { english: "\"Dân quê không nói 'cảm ơn' nhiều như dân phố. Không phải vô ơn, mà họ thể hiện kiểu khác.\"", vietnamese: "\"Dân quê không nói 'cảm ơn' nhiều như dân phố. Không phải vô ơn, mà họ thể hiện kiểu khác.\"", pronunciation: "zan kwe khong noy kam un nhieu nhu zan fo, khong fai vo un, ma ho the hien kieu khak", context: "Explain different gratitude expressions." },
-      { english: "\"Tui mất một thời gian mới hiểu: người quê hỏi 'ăn cơm chưa' không phải muốn biết thiệt.\"", vietnamese: "\"Tui mất một thời gian mới hiểu: người quê hỏi 'ăn cơm chưa' không phải muốn biết thiệt.\"", pronunciation: "tui mat mot thoi zan moi hiew, nguoi kwe hoy an com chua khong fai muon biet thiet", context: "Decode rural phatic questions." },
+      { cell_id: "bfcb9408-422e-4c14-b179-3dd519e172f7", english: "\"Người thành phố nói nhanh. Người quê nói ít. Cả hai đều tưởng người kia không muốn nói chuyện.\"", vietnamese: "\"Người thành phố nói nhanh. Người quê nói ít. Cả hai đều tưởng người kia không muốn nói chuyện.\"", pronunciation: "nguoi thanh fo noy nhanh, nguoi kwe noy it, ka hai deu tuong nguoi kia khong muon noy chuyen", context: "Explain the speed mismatch." },
+      { cell_id: "0d95d0e7-8696-43d7-9af8-2fc44affd2a0", english: "\"Ở quê, im lặng là bình thường. Ở thành phố, im lặng là có chuyện.\"", vietnamese: "\"Ở quê, im lặng là bình thường. Ở thành phố, im lặng là có chuyện.\"", pronunciation: "u kwe, im lang la binh thuong, u thanh fo, im lang la ko chuyen", context: "Explain silence norms." },
+      { cell_id: "2393c788-fefa-4826-b165-16c88373dd00", english: "\"Dân quê không nói 'cảm ơn' nhiều như dân phố. Không phải vô ơn, mà họ thể hiện kiểu khác.\"", vietnamese: "\"Dân quê không nói 'cảm ơn' nhiều như dân phố. Không phải vô ơn, mà họ thể hiện kiểu khác.\"", pronunciation: "zan kwe khong noy kam un nhieu nhu zan fo, khong fai vo un, ma ho the hien kieu khak", context: "Explain different gratitude expressions." },
+      { cell_id: "9c0f3515-2f98-4e59-a680-dd41b72d5e69", english: "\"Tui mất một thời gian mới hiểu: người quê hỏi 'ăn cơm chưa' không phải muốn biết thiệt.\"", vietnamese: "\"Tui mất một thời gian mới hiểu: người quê hỏi 'ăn cơm chưa' không phải muốn biết thiệt.\"", pronunciation: "tui mat mot thoi zan moi hiew, nguoi kwe hoy an com chua khong fai muon biet thiet", context: "Decode rural phatic questions." },
     ],
     cultural_note: "The urban-rural communication gap in Vietnam is real and widening; city speed meets countryside silence in ways that each side misreads as rudeness or slowness.",
     tip: "When talking with rural Vietnamese, slow down and leave longer pauses — they are not bored, they are processing.",
@@ -7666,10 +8002,10 @@ export const lessons: VietnameseLesson[] = [
     id: 319, level: "B1", title_en: "Overseas Vietnamese Returning", subtitle: "Re-entry social friction for Việt Kiều.",
     intro: "Use these phrases when you are a Việt Kiều returning to Vietnam and navigating the subtle social friction.",
     phrases: [
-      { english: "\"Mình nói tiếng Việt không trôi chảy, mà người ta tưởng mình chảnh.\"", vietnamese: "\"Mình nói tiếng Việt không trôi chảy, mà người ta tưởng mình chảnh.\"", pronunciation: "minh noy tieng Viet khong troy chay, ma nguoi ta tuong minh chan", context: "Explain the accent-judgment trap." },
-      { english: "\"Ở bển tui quen nói thẳng. Về đây nói thẳng bị nói là mất dạy.\"", vietnamese: "\"Ở bển tui quen nói thẳng. Về đây nói thẳng bị nói là mất dạy.\"", pronunciation: "u ben tui kwen noy thang, ve day noy thang bi noy la mat day", context: "Describe the directness culture clash." },
-      { english: "\"Bà con hỏi 'khi nào về hẳn', tui không biết trả lời sao.\"", vietnamese: "\"Bà con hỏi 'khi nào về hẳn', tui không biết trả lời sao.\"", pronunciation: "ba kon hoy khi nao ve han, tui khong biet tra loi sao", context: "Name the permanent-return question." },
-      { english: "\"Tui không phải người Việt 100% trong mắt họ, mà cũng không phải người nước ngoài. Tui ở giữa.\"", vietnamese: "\"Tui không phải người Việt 100% trong mắt họ, mà cũng không phải người nước ngoài. Tui ở giữa.\"", pronunciation: "tui khong fai nguoi Viet mot tram fan tram trong mat ho, ma kung khong fai nguoi nuoc ngoai, tui u zua", context: "Name the in-between identity." },
+      { cell_id: "836ccf02-f857-407c-8a36-61424cdca4cb", english: "\"Mình nói tiếng Việt không trôi chảy, mà người ta tưởng mình chảnh.\"", vietnamese: "\"Mình nói tiếng Việt không trôi chảy, mà người ta tưởng mình chảnh.\"", pronunciation: "minh noy tieng Viet khong troy chay, ma nguoi ta tuong minh chan", context: "Explain the accent-judgment trap." },
+      { cell_id: "6031ce74-3fc1-4908-91ae-e4e77b8b164a", english: "\"Ở bển tui quen nói thẳng. Về đây nói thẳng bị nói là mất dạy.\"", vietnamese: "\"Ở bển tui quen nói thẳng. Về đây nói thẳng bị nói là mất dạy.\"", pronunciation: "u ben tui kwen noy thang, ve day noy thang bi noy la mat day", context: "Describe the directness culture clash." },
+      { cell_id: "759f65e4-bbb2-48af-833f-91d6c99f6ea9", english: "\"Bà con hỏi 'khi nào về hẳn', tui không biết trả lời sao.\"", vietnamese: "\"Bà con hỏi 'khi nào về hẳn', tui không biết trả lời sao.\"", pronunciation: "ba kon hoy khi nao ve han, tui khong biet tra loi sao", context: "Name the permanent-return question." },
+      { cell_id: "e58fd044-639f-4542-ad08-079e25a269e2", english: "\"Tui không phải người Việt 100% trong mắt họ, mà cũng không phải người nước ngoài. Tui ở giữa.\"", vietnamese: "\"Tui không phải người Việt 100% trong mắt họ, mà cũng không phải người nước ngoài. Tui ở giữa.\"", pronunciation: "tui khong fai nguoi Viet mot tram fan tram trong mat ho, ma kung khong fai nguoi nuoc ngoai, tui u zua", context: "Name the in-between identity." },
     ],
     cultural_note: "Việt Kiều returning to Vietnam face a unique double bind: their Vietnamese is judged as insufficient while their Western habits are judged as excessive; tui ở giữa captures the exact experience.",
     tip: "Use nói thẳng bị nói là mất dạy — speaking directly gets called rude — it names the communication conflict precisely.",
@@ -7692,10 +8028,10 @@ export const lessons: VietnameseLesson[] = [
     id: 321, level: "B1", title_en: "Native-Speed Group Conversations", subtitle: "Tracking three speakers at once.",
     intro: "Use these phrases to understand what is happening when Vietnamese speakers talk fast in groups — and how to stay oriented.",
     phrases: [
-      { english: "\"Tui nghe kịp khoảng 60%. Còn 40% tui đoán theo nét mặt.\"", vietnamese: "\"Tui nghe kịp khoảng 60%. Còn 40% tui đoán theo nét mặt.\"", pronunciation: "tui nghe kip khwang sau muoi fan tram, kon bon muoi fan tram tui doan theo net mat", context: "Describe your comprehension level honestly." },
-      { english: "\"Mấy bạn nói chậm lại một chút được không? Tui muốn hiểu hết.\"", vietnamese: "\"Mấy bạn nói chậm lại một chút được không? Tui muốn hiểu hết.\"", pronunciation: "may ban noy cham lai mot chut duoc khong, tui muon hiew het", context: "Ask the group to slow down." },
-      { english: "\"Tui theo được chủ đề. Mà chi tiết thì tui lạc.\"", vietnamese: "\"Tui theo được chủ đề. Mà chi tiết thì tui lạc.\"", pronunciation: "tui theo duoc chu de, ma chi tiet thi tui lak", context: "Name your specific comprehension gap." },
-      { english: "\"Bạn nào vừa nói câu đó? Tui muốn nghe lại.\"", vietnamese: "\"Bạn nào vừa nói câu đó? Tui muốn nghe lại.\"", pronunciation: "ban nao vua noy kau do, tui muon nghe lai", context: "Identify the speaker in a fast conversation." },
+      { cell_id: "20e71c41-e4ae-4c61-b4d8-faced7f16af4", english: "\"Tui nghe kịp khoảng 60%. Còn 40% tui đoán theo nét mặt.\"", vietnamese: "\"Tui nghe kịp khoảng 60%. Còn 40% tui đoán theo nét mặt.\"", pronunciation: "tui nghe kip khwang sau muoi fan tram, kon bon muoi fan tram tui doan theo net mat", context: "Describe your comprehension level honestly." },
+      { cell_id: "ab022c5a-cadb-4bb9-8ba7-0cb0611c880a", english: "\"Mấy bạn nói chậm lại một chút được không? Tui muốn hiểu hết.\"", vietnamese: "\"Mấy bạn nói chậm lại một chút được không? Tui muốn hiểu hết.\"", pronunciation: "may ban noy cham lai mot chut duoc khong, tui muon hiew het", context: "Ask the group to slow down." },
+      { cell_id: "011ecf70-611b-4073-a3d0-bc5291b4a2a5", english: "\"Tui theo được chủ đề. Mà chi tiết thì tui lạc.\"", vietnamese: "\"Tui theo được chủ đề. Mà chi tiết thì tui lạc.\"", pronunciation: "tui theo duoc chu de, ma chi tiet thi tui lak", context: "Name your specific comprehension gap." },
+      { cell_id: "37fe86e7-3c40-48d0-9b3f-9e9350e5d690", english: "\"Bạn nào vừa nói câu đó? Tui muốn nghe lại.\"", vietnamese: "\"Bạn nào vừa nói câu đó? Tui muốn nghe lại.\"", pronunciation: "ban nao vua noy kau do, tui muon nghe lai", context: "Identify the speaker in a fast conversation." },
     ],
     cultural_note: "Vietnamese group conversations are fast, overlapping, and full of shared references; asking tui muốn hiểu hết (I want to understand everything) signals respect while asking for accommodation.",
     tip: "Focus on the topic and the emotions, not every word — native speakers in group settings miss words too, they just fill the gaps from context.",
@@ -7704,10 +8040,10 @@ export const lessons: VietnameseLesson[] = [
     id: 322, level: "B1", title_en: "Fast Interruptions And Overlaps", subtitle: "When everyone talks at once.",
     intro: "Use these phrases to understand and participate in Vietnamese conversations where multiple people speak simultaneously.",
     phrases: [
-      { english: "\"Khoan khoan, từ từ, mỗi người một câu.\" — the traffic controller.", vietnamese: "\"Khoan khoan, từ từ, mỗi người một câu.\"", pronunciation: "khwan khwan, tu tu, moi nguoi mot kau", context: "Slow down a chaotic conversation." },
-      { english: "\"Chưa hết, để tui nói hết đã.\" — I am not done, let me finish.", vietnamese: "\"Chưa hết, để tui nói hết đã.\"", pronunciation: "chua het, de tui noy het da", context: "Hold your turn when interrupted." },
-      { english: "\"Ờ ờ, tui hiểu ý bạn rồi, mà nghe tui nói thêm cái này.\"", vietnamese: "\"Ờ ờ, tui hiểu ý bạn rồi, mà nghe tui nói thêm cái này.\"", pronunciation: "uh uh, tui hiew y ban roi, ma nghe tui noy them kai nay", context: "Acknowledge and then re-enter." },
-      { english: "\"Tui biết là tui đang chen ngang. Cho tui chen một câu rồi trả lại liền.\"", vietnamese: "\"Tui biết là tui đang chen ngang. Cho tui chen một câu rồi trả lại liền.\"", pronunciation: "tui biet la tui dang chen ngang, cho tui chen mot kau roi cha lai lien", context: "Politely interrupt with self-awareness." },
+      { cell_id: "f701a858-4cf9-47cc-b3d1-5401551b9460", english: "\"Khoan khoan, từ từ, mỗi người một câu.\" — the traffic controller.", vietnamese: "\"Khoan khoan, từ từ, mỗi người một câu.\"", pronunciation: "khwan khwan, tu tu, moi nguoi mot kau", context: "Slow down a chaotic conversation." },
+      { cell_id: "bd6f9cb2-9a29-41e4-a02e-e6c8478b012d", english: "\"Chưa hết, để tui nói hết đã.\" — I am not done, let me finish.", vietnamese: "\"Chưa hết, để tui nói hết đã.\"", pronunciation: "chua het, de tui noy het da", context: "Hold your turn when interrupted." },
+      { cell_id: "a188b081-5492-4d18-8f0d-f688246d8fff", english: "\"Ờ ờ, tui hiểu ý bạn rồi, mà nghe tui nói thêm cái này.\"", vietnamese: "\"Ờ ờ, tui hiểu ý bạn rồi, mà nghe tui nói thêm cái này.\"", pronunciation: "uh uh, tui hiew y ban roi, ma nghe tui noy them kai nay", context: "Acknowledge and then re-enter." },
+      { cell_id: "35b93510-2692-40d9-8717-7ad1eef0cc84", english: "\"Tui biết là tui đang chen ngang. Cho tui chen một câu rồi trả lại liền.\"", vietnamese: "\"Tui biết là tui đang chen ngang. Cho tui chen một câu rồi trả lại liền.\"", pronunciation: "tui biet la tui dang chen ngang, cho tui chen mot kau roi cha lai lien", context: "Politely interrupt with self-awareness." },
     ],
     cultural_note: "Overlapping speech in Vietnamese conversations is not necessarily rude — in casual settings, it signals engagement and enthusiasm; the skill is knowing when overlap is bonding and when it is bulldozing.",
     tip: "Use cho tui chen một câu rồi trả lại liền — let me squeeze in one sentence and I will give it right back — this acknowledges the interruption and promises brevity.",
@@ -7716,10 +8052,10 @@ export const lessons: VietnameseLesson[] = [
     id: 323, level: "B1", title_en: "The Art Of The Pause", subtitle: "Silence in Vietnamese fast conversation.",
     intro: "Use these phrases to understand the role of silence in Vietnamese speech — when a pause means thinking, when it means refusing.",
     phrases: [
-      { english: "\"Có những khoảng im lặng là người ta đang chọn chữ. Không phải đang từ chối.\"", vietnamese: "\"Có những khoảng im lặng là người ta đang chọn chữ. Không phải đang từ chối.\"", pronunciation: "ko nhung khwang im lang la nguoi ta dang chon chu, khong fai dang tu choy", context: "Explain that silence can be word-searching." },
-      { english: "\"Im lặng ba giây mà mặt không nhăn là đang nghĩ. Mặt nhăn là đang khó chịu.\"", vietnamese: "\"Im lặng ba giây mà mặt không nhăn là đang nghĩ. Mặt nhăn là đang khó chịu.\"", pronunciation: "im lang ba zay ma mat khong nan la dang nghi, mat nan la dang kho chiu", context: "Read the face during silence." },
-      { english: "\"Đừng sợ im lặng. Im lặng cho người ta thời gian trả lời đàng hoàng.\"", vietnamese: "\"Đừng sợ im lặng. Im lặng cho người ta thời gian trả lời đàng hoàng.\"", pronunciation: "dung suh im lang, im lang cho nguoi ta thoi zan tra loi dang hoang", context: "Counsel patience in conversation." },
-      { english: "\"Ở Việt Nam, im lặng lâu quá là không đồng ý. Mà không muốn nói.\"", vietnamese: "\"Ở Việt Nam, im lặng lâu quá là không đồng ý. Mà không muốn nói.\"", pronunciation: "u Viet Nam, im lang lau kwa la khong dong y, ma khong muon noy", context: "Decode prolonged silence as polite refusal." },
+      { cell_id: "45e9e7ac-6a9d-4ca6-8511-92f84ffe80a8", english: "\"Có những khoảng im lặng là người ta đang chọn chữ. Không phải đang từ chối.\"", vietnamese: "\"Có những khoảng im lặng là người ta đang chọn chữ. Không phải đang từ chối.\"", pronunciation: "ko nhung khwang im lang la nguoi ta dang chon chu, khong fai dang tu choy", context: "Explain that silence can be word-searching." },
+      { cell_id: "5e4fae61-0b1e-4e5d-b538-18bb06bd4d2b", english: "\"Im lặng ba giây mà mặt không nhăn là đang nghĩ. Mặt nhăn là đang khó chịu.\"", vietnamese: "\"Im lặng ba giây mà mặt không nhăn là đang nghĩ. Mặt nhăn là đang khó chịu.\"", pronunciation: "im lang ba zay ma mat khong nan la dang nghi, mat nan la dang kho chiu", context: "Read the face during silence." },
+      { cell_id: "f2338266-36d3-4db4-b1b1-5a355b5a3110", english: "\"Đừng sợ im lặng. Im lặng cho người ta thời gian trả lời đàng hoàng.\"", vietnamese: "\"Đừng sợ im lặng. Im lặng cho người ta thời gian trả lời đàng hoàng.\"", pronunciation: "dung suh im lang, im lang cho nguoi ta thoi zan tra loi dang hoang", context: "Counsel patience in conversation." },
+      { cell_id: "76290d4d-d88d-4a19-9869-dc8cf7a5a9b2", english: "\"Ở Việt Nam, im lặng lâu quá là không đồng ý. Mà không muốn nói.\"", vietnamese: "\"Ở Việt Nam, im lặng lâu quá là không đồng ý. Mà không muốn nói.\"", pronunciation: "u Viet Nam, im lang lau kwa la khong dong y, ma khong muon noy", context: "Decode prolonged silence as polite refusal." },
     ],
     cultural_note: "Silence in Vietnamese conversation has a time limit: a short pause is processing, a long pause with a neutral face is disagreement, a long pause with a tight face is anger.",
     tip: "After asking a question, count to five silently before rephrasing — Vietnamese speakers often need the pause to formulate a complete answer.",
@@ -7728,10 +8064,10 @@ export const lessons: VietnameseLesson[] = [
     id: 324, level: "B1", title_en: "Understanding Mumbled Vietnamese", subtitle: "When people trail off or speak unclearly.",
     intro: "Use these phrases to handle situations where a Vietnamese speaker mumbles, speaks too softly, or trails off mid-sentence.",
     phrases: [
-      { english: "\"Bạn nói lại được không? Chỗ cuối tui nghe không rõ.\"", vietnamese: "\"Bạn nói lại được không? Chỗ cuối tui nghe không rõ.\"", pronunciation: "ban noy lai duoc khong, cho kuoy tui nghe khong ro", context: "Ask for repetition of the unclear part." },
-      { english: "\"Hình như bạn đang nói nhỏ quá. Tui ngồi gần hơn chút.\"", vietnamese: "\"Hình như bạn đang nói nhỏ quá. Tui ngồi gần hơn chút.\"", pronunciation: "hinh nhu ban dang noy nho kwa, tui ngoy gun hon chut", context: "Address volume without criticizing." },
-      { english: "\"Bạn vừa nói xong câu đó mà tui thấy hình như chưa hết ý.\"", vietnamese: "\"Bạn vừa nói xong câu đó mà tui thấy hình như chưa hết ý.\"", pronunciation: "ban vua noy xong kau do ma tui thay hinh nhu chua het y", context: "Gently ask someone to finish their thought." },
-      { english: "\"Tui hơi lãng tai. Bạn nói to hơn một chút được không?\"", vietnamese: "\"Tui hơi lãng tai. Bạn nói to hơn một chút được không?\"", pronunciation: "tui hoi lang tai, ban noy to hon mot chut duoc khong", context: "Self-deprecating reason to ask for louder speech." },
+      { cell_id: "63b7fcb3-6e57-4d93-a59e-5180b40d1086", english: "\"Bạn nói lại được không? Chỗ cuối tui nghe không rõ.\"", vietnamese: "\"Bạn nói lại được không? Chỗ cuối tui nghe không rõ.\"", pronunciation: "ban noy lai duoc khong, cho kuoy tui nghe khong ro", context: "Ask for repetition of the unclear part." },
+      { cell_id: "79b82aea-5080-4e0d-af43-0661308b83e9", english: "\"Hình như bạn đang nói nhỏ quá. Tui ngồi gần hơn chút.\"", vietnamese: "\"Hình như bạn đang nói nhỏ quá. Tui ngồi gần hơn chút.\"", pronunciation: "hinh nhu ban dang noy nho kwa, tui ngoy gun hon chut", context: "Address volume without criticizing." },
+      { cell_id: "5f150354-3ae8-4317-94b6-a3c48b2c3a82", english: "\"Bạn vừa nói xong câu đó mà tui thấy hình như chưa hết ý.\"", vietnamese: "\"Bạn vừa nói xong câu đó mà tui thấy hình như chưa hết ý.\"", pronunciation: "ban vua noy xong kau do ma tui thay hinh nhu chua het y", context: "Gently ask someone to finish their thought." },
+      { cell_id: "916a2e48-8778-4c04-9547-43910ac4c7d9", english: "\"Tui hơi lãng tai. Bạn nói to hơn một chút được không?\"", vietnamese: "\"Tui hơi lãng tai. Bạn nói to hơn một chút được không?\"", pronunciation: "tui hoi lang tai, ban noy to hon mot chut duoc khong", context: "Self-deprecating reason to ask for louder speech." },
     ],
     cultural_note: "Vietnamese speakers sometimes trail off when they are uncertain, embarrassed, or delivering bad news; blaming yourself for the mishearing (tui hơi lãng tai) is the universal face-saving excuse.",
     tip: "Use chỗ cuối tui nghe không rõ — the end part I did not hear clearly — asking for one specific part is less embarrassing for them than asking them to repeat everything.",
@@ -7740,10 +8076,10 @@ export const lessons: VietnameseLesson[] = [
     id: 325, level: "B1", title_en: "Slang That Changes Every Year", subtitle: "Staying current with Vietnamese youth language.",
     intro: "Use these phrases to recognize and (carefully) use Vietnamese slang that evolves fast.",
     phrases: [
-      { english: "\"Trẻ con giờ nói chữ tui không hiểu. Mỗi năm một kiểu.\"", vietnamese: "\"Trẻ con giờ nói chữ tui không hiểu. Mỗi năm một kiểu.\"", pronunciation: "che kon zo noy chu tui khong hiew, moi nam mot kieu", context: "Acknowledge the slang generation gap." },
-      { english: "\"Đừng học tiếng lóng trên mạng rồi xài với người lớn. Kỳ lắm.\"", vietnamese: "\"Đừng học tiếng lóng trên mạng rồi xài với người lớn. Kỳ lắm.\"", pronunciation: "dung hok tieng long tren mang roi sai voi nguoi lon, ky lam", context: "Warn against using internet slang with elders." },
-      { english: "\"Bạn trẻ nói 'trmúa hmề' là 'trầm cảm' đó. Nói lái cho vui.\"", vietnamese: "\"Bạn trẻ nói 'trmúa hmề' là 'trầm cảm' đó. Nói lái cho vui.\"", pronunciation: "ban che noy trmua hme la tram kam do, noy lai cho vui", context: "Decode playful word-flipping." },
-      { english: "\"Hỏi bạn trẻ coi từ này còn xài không. Chứ năm ngoái xài, năm nay là già rồi.\"", vietnamese: "\"Hỏi bạn trẻ coi từ này còn xài không. Chứ năm ngoái xài, năm nay là già rồi.\"", pronunciation: "hoy ban che koy tu nay kon sai khong, chu nam ngoai sai, nam nay la za roi", context: "Check if slang is still current." },
+      { cell_id: "65b636db-ad9c-4400-a2cc-8d27c03a4a98", english: "\"Trẻ con giờ nói chữ tui không hiểu. Mỗi năm một kiểu.\"", vietnamese: "\"Trẻ con giờ nói chữ tui không hiểu. Mỗi năm một kiểu.\"", pronunciation: "che kon zo noy chu tui khong hiew, moi nam mot kieu", context: "Acknowledge the slang generation gap." },
+      { cell_id: "1e59f6a8-fc51-49b1-b54a-ab8c1f30a17d", english: "\"Đừng học tiếng lóng trên mạng rồi xài với người lớn. Kỳ lắm.\"", vietnamese: "\"Đừng học tiếng lóng trên mạng rồi xài với người lớn. Kỳ lắm.\"", pronunciation: "dung hok tieng long tren mang roi sai voi nguoi lon, ky lam", context: "Warn against using internet slang with elders." },
+      { cell_id: "92cf6ba6-e633-4a67-b5bb-73775abc73a9", english: "\"Bạn trẻ nói 'trmúa hmề' là 'trầm cảm' đó. Nói lái cho vui.\"", vietnamese: "\"Bạn trẻ nói 'trmúa hmề' là 'trầm cảm' đó. Nói lái cho vui.\"", pronunciation: "ban che noy trmua hme la tram kam do, noy lai cho vui", context: "Decode playful word-flipping." },
+      { cell_id: "1eba877d-f6b2-4e45-a052-b8ce4e8bb130", english: "\"Hỏi bạn trẻ coi từ này còn xài không. Chứ năm ngoái xài, năm nay là già rồi.\"", vietnamese: "\"Hỏi bạn trẻ coi từ này còn xài không. Chứ năm ngoái xài, năm nay là già rồi.\"", pronunciation: "hoy ban che koy tu nay kon sai khong, chu nam ngoai sai, nam nay la za roi", context: "Check if slang is still current." },
     ],
     cultural_note: "Vietnamese internet slang evolves at breakneck speed; using last year's slang marks you as outdated faster than using no slang at all.",
     tip: "Nói lái (word-flipping) is a beloved Vietnamese wordplay tradition — learning the mechanics is more useful than memorizing specific slang terms.",
