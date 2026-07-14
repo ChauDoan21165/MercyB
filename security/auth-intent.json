@@ -1,0 +1,1459 @@
+{
+  "schema_version": 1,
+  "generated_by": "scripts/security/auth-matrix-scan.mjs",
+  "scan_roots": [
+    "functions",
+    "supabase/functions",
+    "src"
+  ],
+  "endpoints": {
+    "edge:account-convert": {
+      "kind": "supabase-edge-function",
+      "route": "/functions/v1/account-convert",
+      "classification": "bearer-required",
+      "writes": true,
+      "returns_user_scoped_data": true,
+      "review_flag": false
+    },
+    "edge:admin-billing-cancel-subscription": {
+      "kind": "supabase-edge-function",
+      "route": "/functions/v1/admin-billing-cancel-subscription",
+      "classification": "bearer-required",
+      "writes": true,
+      "returns_user_scoped_data": true,
+      "review_flag": false
+    },
+    "edge:admin-billing-metrics": {
+      "kind": "supabase-edge-function",
+      "route": "/functions/v1/admin-billing-metrics",
+      "classification": "bearer-required",
+      "writes": false,
+      "returns_user_scoped_data": true,
+      "review_flag": false
+    },
+    "edge:admin-billing-portal-session": {
+      "kind": "supabase-edge-function",
+      "route": "/functions/v1/admin-billing-portal-session",
+      "classification": "bearer-required",
+      "writes": false,
+      "returns_user_scoped_data": true,
+      "review_flag": false
+    },
+    "edge:admin-daily-digest": {
+      "kind": "supabase-edge-function",
+      "route": "/functions/v1/admin-daily-digest",
+      "classification": "bearer-required",
+      "writes": false,
+      "returns_user_scoped_data": true,
+      "review_flag": false
+    },
+    "edge:admin-hide-room": {
+      "kind": "supabase-edge-function",
+      "route": "/functions/v1/admin-hide-room",
+      "classification": "bearer-required",
+      "writes": true,
+      "returns_user_scoped_data": true,
+      "review_flag": false
+    },
+    "edge:admin-list-registered-users": {
+      "kind": "supabase-edge-function",
+      "route": "/functions/v1/admin-list-registered-users",
+      "classification": "bearer-required",
+      "writes": false,
+      "returns_user_scoped_data": true,
+      "review_flag": false
+    },
+    "edge:admin-list-rooms": {
+      "kind": "supabase-edge-function",
+      "route": "/functions/v1/admin-list-rooms",
+      "classification": "bearer-required",
+      "writes": false,
+      "returns_user_scoped_data": true,
+      "review_flag": false
+    },
+    "edge:admin-list-users": {
+      "kind": "supabase-edge-function",
+      "route": "/functions/v1/admin-list-users",
+      "classification": "bearer-required",
+      "writes": false,
+      "returns_user_scoped_data": true,
+      "review_flag": false
+    },
+    "edge:admin-management": {
+      "kind": "supabase-edge-function",
+      "route": "/functions/v1/admin-management",
+      "classification": "bearer-required",
+      "writes": true,
+      "returns_user_scoped_data": true,
+      "review_flag": false
+    },
+    "edge:admin-publish-room": {
+      "kind": "supabase-edge-function",
+      "route": "/functions/v1/admin-publish-room",
+      "classification": "bearer-required",
+      "writes": true,
+      "returns_user_scoped_data": true,
+      "review_flag": false
+    },
+    "edge:admin-security-health": {
+      "kind": "supabase-edge-function",
+      "route": "/functions/v1/admin-security-health",
+      "classification": "bearer-required",
+      "writes": false,
+      "returns_user_scoped_data": true,
+      "review_flag": false
+    },
+    "edge:admin-set-tier": {
+      "kind": "supabase-edge-function",
+      "route": "/functions/v1/admin-set-tier",
+      "classification": "bearer-required",
+      "writes": true,
+      "returns_user_scoped_data": true,
+      "review_flag": false
+    },
+    "edge:admin-stats": {
+      "kind": "supabase-edge-function",
+      "route": "/functions/v1/admin-stats",
+      "classification": "bearer-required",
+      "writes": false,
+      "returns_user_scoped_data": true,
+      "review_flag": false
+    },
+    "edge:adult-content-url": {
+      "kind": "supabase-edge-function",
+      "route": "/functions/v1/adult-content-url",
+      "classification": "bearer-required",
+      "writes": false,
+      "returns_user_scoped_data": true,
+      "review_flag": false
+    },
+    "edge:ai-chat": {
+      "kind": "supabase-edge-function",
+      "route": "/functions/v1/ai-chat",
+      "classification": "bearer-required",
+      "writes": true,
+      "returns_user_scoped_data": true,
+      "review_flag": false
+    },
+    "edge:ai-dashboard": {
+      "kind": "supabase-edge-function",
+      "route": "/functions/v1/ai-dashboard",
+      "classification": "bearer-required",
+      "writes": true,
+      "returns_user_scoped_data": true,
+      "review_flag": false
+    },
+    "edge:ai-reasoning": {
+      "kind": "supabase-edge-function",
+      "route": "/functions/v1/ai-reasoning",
+      "classification": "bearer-required",
+      "writes": true,
+      "returns_user_scoped_data": false,
+      "review_flag": false
+    },
+    "edge:ai-tutor": {
+      "kind": "supabase-edge-function",
+      "route": "/functions/v1/ai-tutor",
+      "classification": "bearer-required",
+      "writes": false,
+      "returns_user_scoped_data": true,
+      "review_flag": false
+    },
+    "edge:apple-iap-sync": {
+      "kind": "supabase-edge-function",
+      "route": "/functions/v1/apple-iap-sync",
+      "classification": "bearer-required",
+      "writes": true,
+      "returns_user_scoped_data": true,
+      "review_flag": false
+    },
+    "edge:apple-server-notifications": {
+      "kind": "supabase-edge-function",
+      "route": "/functions/v1/apple-server-notifications",
+      "classification": "anon-key-open",
+      "writes": true,
+      "returns_user_scoped_data": true,
+      "review_flag": true
+    },
+    "edge:apple-webhook": {
+      "kind": "supabase-edge-function",
+      "route": "/functions/v1/apple-webhook",
+      "classification": "service-role-only",
+      "writes": false,
+      "returns_user_scoped_data": true,
+      "review_flag": false
+    },
+    "edge:apply-room-specification": {
+      "kind": "supabase-edge-function",
+      "route": "/functions/v1/apply-room-specification",
+      "classification": "bearer-required",
+      "writes": true,
+      "returns_user_scoped_data": true,
+      "review_flag": false
+    },
+    "edge:audio-storage-audit": {
+      "kind": "supabase-edge-function",
+      "route": "/functions/v1/audio-storage-audit",
+      "classification": "bearer-required",
+      "writes": false,
+      "returns_user_scoped_data": false,
+      "review_flag": false
+    },
+    "edge:audit-db-health": {
+      "kind": "supabase-edge-function",
+      "route": "/functions/v1/audit-db-health",
+      "classification": "bearer-required",
+      "writes": true,
+      "returns_user_scoped_data": false,
+      "review_flag": false
+    },
+    "edge:audit-v4-safe-shield": {
+      "kind": "supabase-edge-function",
+      "route": "/functions/v1/audit-v4-safe-shield",
+      "classification": "bearer-required",
+      "writes": false,
+      "returns_user_scoped_data": false,
+      "review_flag": false
+    },
+    "edge:azure-phoneme": {
+      "kind": "supabase-edge-function",
+      "route": "/functions/v1/azure-phoneme",
+      "classification": "bearer-required",
+      "writes": true,
+      "returns_user_scoped_data": true,
+      "review_flag": false
+    },
+    "edge:azure-phoneme-stream": {
+      "kind": "supabase-edge-function",
+      "route": "/functions/v1/azure-phoneme-stream",
+      "classification": "bearer-required",
+      "writes": true,
+      "returns_user_scoped_data": true,
+      "review_flag": false
+    },
+    "edge:azure-stt": {
+      "kind": "supabase-edge-function",
+      "route": "/functions/v1/azure-stt",
+      "classification": "public-unauthenticated",
+      "writes": false,
+      "returns_user_scoped_data": false,
+      "review_flag": false
+    },
+    "edge:bank-transfer-orders": {
+      "kind": "supabase-edge-function",
+      "route": "/functions/v1/bank-transfer-orders",
+      "classification": "bearer-required",
+      "writes": true,
+      "returns_user_scoped_data": true,
+      "review_flag": false
+    },
+    "edge:billing-google-attach-purchase": {
+      "kind": "supabase-edge-function",
+      "route": "/functions/v1/billing-google-attach-purchase",
+      "classification": "bearer-required",
+      "writes": true,
+      "returns_user_scoped_data": true,
+      "review_flag": false
+    },
+    "edge:billing-stripe-change-plan": {
+      "kind": "supabase-edge-function",
+      "route": "/functions/v1/billing-stripe-change-plan",
+      "classification": "bearer-required",
+      "writes": true,
+      "returns_user_scoped_data": true,
+      "review_flag": false
+    },
+    "edge:client-error-alert": {
+      "kind": "supabase-edge-function",
+      "route": "/functions/v1/client-error-alert",
+      "classification": "bearer-required",
+      "writes": true,
+      "returns_user_scoped_data": true,
+      "review_flag": false
+    },
+    "edge:cohort-retention-aggregator": {
+      "kind": "supabase-edge-function",
+      "route": "/functions/v1/cohort-retention-aggregator",
+      "classification": "anon-key-open",
+      "writes": true,
+      "returns_user_scoped_data": true,
+      "review_flag": true
+    },
+    "edge:content-moderation": {
+      "kind": "supabase-edge-function",
+      "route": "/functions/v1/content-moderation",
+      "classification": "bearer-required",
+      "writes": true,
+      "returns_user_scoped_data": true,
+      "review_flag": false
+    },
+    "edge:content-quality-audit": {
+      "kind": "supabase-edge-function",
+      "route": "/functions/v1/content-quality-audit",
+      "classification": "bearer-required",
+      "writes": false,
+      "returns_user_scoped_data": false,
+      "review_flag": false
+    },
+    "edge:create-billing-portal-session": {
+      "kind": "supabase-edge-function",
+      "route": "/functions/v1/create-billing-portal-session",
+      "classification": "bearer-required",
+      "writes": false,
+      "returns_user_scoped_data": true,
+      "review_flag": false
+    },
+    "edge:delete-account": {
+      "kind": "supabase-edge-function",
+      "route": "/functions/v1/delete-account",
+      "classification": "bearer-required",
+      "writes": true,
+      "returns_user_scoped_data": true,
+      "review_flag": false
+    },
+    "edge:dispatcher": {
+      "kind": "supabase-edge-function",
+      "route": "/functions/v1/dispatcher",
+      "classification": "bearer-required",
+      "writes": true,
+      "returns_user_scoped_data": true,
+      "review_flag": false
+    },
+    "edge:email-automations": {
+      "kind": "supabase-edge-function",
+      "route": "/functions/v1/email-automations",
+      "classification": "bearer-required",
+      "writes": true,
+      "returns_user_scoped_data": true,
+      "review_flag": false
+    },
+    "edge:email-broadcast": {
+      "kind": "supabase-edge-function",
+      "route": "/functions/v1/email-broadcast",
+      "classification": "bearer-required",
+      "writes": true,
+      "returns_user_scoped_data": true,
+      "review_flag": false
+    },
+    "edge:email-reengagement": {
+      "kind": "supabase-edge-function",
+      "route": "/functions/v1/email-reengagement",
+      "classification": "bearer-required",
+      "writes": true,
+      "returns_user_scoped_data": true,
+      "review_flag": false
+    },
+    "edge:email-unsubscribe": {
+      "kind": "supabase-edge-function",
+      "route": "/functions/v1/email-unsubscribe",
+      "classification": "bearer-required",
+      "writes": false,
+      "returns_user_scoped_data": true,
+      "review_flag": false
+    },
+    "edge:export-missing-json": {
+      "kind": "supabase-edge-function",
+      "route": "/functions/v1/export-missing-json",
+      "classification": "anon-key-open",
+      "writes": false,
+      "returns_user_scoped_data": false,
+      "review_flag": false
+    },
+    "edge:export-room": {
+      "kind": "supabase-edge-function",
+      "route": "/functions/v1/export-room",
+      "classification": "bearer-required",
+      "writes": false,
+      "returns_user_scoped_data": true,
+      "review_flag": false
+    },
+    "edge:generate-english-plan": {
+      "kind": "supabase-edge-function",
+      "route": "/functions/v1/generate-english-plan",
+      "classification": "bearer-required",
+      "writes": false,
+      "returns_user_scoped_data": false,
+      "review_flag": false
+    },
+    "edge:generate-gift-code": {
+      "kind": "supabase-edge-function",
+      "route": "/functions/v1/generate-gift-code",
+      "classification": "bearer-required",
+      "writes": true,
+      "returns_user_scoped_data": true,
+      "review_flag": false
+    },
+    "edge:generate-matches": {
+      "kind": "supabase-edge-function",
+      "route": "/functions/v1/generate-matches",
+      "classification": "bearer-required",
+      "writes": true,
+      "returns_user_scoped_data": true,
+      "review_flag": false
+    },
+    "edge:generate-room-audio": {
+      "kind": "supabase-edge-function",
+      "route": "/functions/v1/generate-room-audio",
+      "classification": "bearer-required",
+      "writes": false,
+      "returns_user_scoped_data": false,
+      "review_flag": false
+    },
+    "edge:generate-warmth-audio": {
+      "kind": "supabase-edge-function",
+      "route": "/functions/v1/generate-warmth-audio",
+      "classification": "bearer-required",
+      "writes": false,
+      "returns_user_scoped_data": false,
+      "review_flag": false
+    },
+    "edge:get-profile": {
+      "kind": "supabase-edge-function",
+      "route": "/functions/v1/get-profile",
+      "classification": "bearer-required",
+      "writes": false,
+      "returns_user_scoped_data": true,
+      "review_flag": false
+    },
+    "edge:get-room": {
+      "kind": "supabase-edge-function",
+      "route": "/functions/v1/get-room",
+      "classification": "bearer-required",
+      "writes": true,
+      "returns_user_scoped_data": true,
+      "review_flag": false
+    },
+    "edge:get-source-file": {
+      "kind": "supabase-edge-function",
+      "route": "/functions/v1/get-source-file",
+      "classification": "bearer-required",
+      "writes": false,
+      "returns_user_scoped_data": false,
+      "review_flag": false
+    },
+    "edge:get-subscription-status": {
+      "kind": "supabase-edge-function",
+      "route": "/functions/v1/get-subscription-status",
+      "classification": "bearer-required",
+      "writes": false,
+      "returns_user_scoped_data": true,
+      "review_flag": false
+    },
+    "edge:google-webhook": {
+      "kind": "supabase-edge-function",
+      "route": "/functions/v1/google-webhook",
+      "classification": "bearer-required",
+      "writes": false,
+      "returns_user_scoped_data": true,
+      "review_flag": false
+    },
+    "edge:guide-assistant": {
+      "kind": "supabase-edge-function",
+      "route": "/functions/v1/guide-assistant",
+      "classification": "bearer-required",
+      "writes": true,
+      "returns_user_scoped_data": true,
+      "review_flag": false
+    },
+    "edge:guide-english-helper": {
+      "kind": "supabase-edge-function",
+      "route": "/functions/v1/guide-english-helper",
+      "classification": "bearer-required",
+      "writes": true,
+      "returns_user_scoped_data": true,
+      "review_flag": false
+    },
+    "edge:guide-pronunciation-coach": {
+      "kind": "supabase-edge-function",
+      "route": "/functions/v1/guide-pronunciation-coach",
+      "classification": "bearer-required",
+      "writes": true,
+      "returns_user_scoped_data": true,
+      "review_flag": false
+    },
+    "edge:health-check": {
+      "kind": "supabase-edge-function",
+      "route": "/functions/v1/health-check",
+      "classification": "bearer-required",
+      "writes": false,
+      "returns_user_scoped_data": false,
+      "review_flag": false
+    },
+    "edge:learner-capture": {
+      "kind": "supabase-edge-function",
+      "route": "/functions/v1/learner-capture",
+      "classification": "bearer-required",
+      "writes": true,
+      "returns_user_scoped_data": true,
+      "review_flag": false
+    },
+    "edge:list-rooms": {
+      "kind": "supabase-edge-function",
+      "route": "/functions/v1/list-rooms",
+      "classification": "bearer-required",
+      "writes": false,
+      "returns_user_scoped_data": false,
+      "review_flag": false
+    },
+    "edge:manage-admins": {
+      "kind": "supabase-edge-function",
+      "route": "/functions/v1/manage-admins",
+      "classification": "bearer-required",
+      "writes": true,
+      "returns_user_scoped_data": true,
+      "review_flag": false
+    },
+    "edge:me-entitlement": {
+      "kind": "supabase-edge-function",
+      "route": "/functions/v1/me-entitlement",
+      "classification": "bearer-required",
+      "writes": false,
+      "returns_user_scoped_data": true,
+      "review_flag": false
+    },
+    "edge:mercy-ai-builder-email": {
+      "kind": "supabase-edge-function",
+      "route": "/functions/v1/mercy-ai-builder-email",
+      "classification": "bearer-required",
+      "writes": false,
+      "returns_user_scoped_data": true,
+      "review_flag": false
+    },
+    "edge:mercy-guide": {
+      "kind": "supabase-edge-function",
+      "route": "/functions/v1/mercy-guide",
+      "classification": "bearer-required",
+      "writes": false,
+      "returns_user_scoped_data": false,
+      "review_flag": false
+    },
+    "edge:mercy-tts": {
+      "kind": "supabase-edge-function",
+      "route": "/functions/v1/mercy-tts",
+      "classification": "public-unauthenticated",
+      "writes": false,
+      "returns_user_scoped_data": false,
+      "review_flag": false
+    },
+    "edge:mfa-backup-codes": {
+      "kind": "supabase-edge-function",
+      "route": "/functions/v1/mfa-backup-codes",
+      "classification": "bearer-required",
+      "writes": true,
+      "returns_user_scoped_data": true,
+      "review_flag": false
+    },
+    "edge:mfa-challenge-rate-limit": {
+      "kind": "supabase-edge-function",
+      "route": "/functions/v1/mfa-challenge-rate-limit",
+      "classification": "bearer-required",
+      "writes": true,
+      "returns_user_scoped_data": true,
+      "review_flag": false
+    },
+    "edge:mock-interview": {
+      "kind": "supabase-edge-function",
+      "route": "/functions/v1/mock-interview",
+      "classification": "bearer-required",
+      "writes": true,
+      "returns_user_scoped_data": true,
+      "review_flag": false
+    },
+    "edge:parent-weekly-digest": {
+      "kind": "supabase-edge-function",
+      "route": "/functions/v1/parent-weekly-digest",
+      "classification": "bearer-required",
+      "writes": true,
+      "returns_user_scoped_data": true,
+      "review_flag": false
+    },
+    "edge:perf-alert": {
+      "kind": "supabase-edge-function",
+      "route": "/functions/v1/perf-alert",
+      "classification": "bearer-required",
+      "writes": true,
+      "returns_user_scoped_data": true,
+      "review_flag": false
+    },
+    "edge:placement-session": {
+      "kind": "supabase-edge-function",
+      "route": "/functions/v1/placement-session",
+      "classification": "anon-key-open",
+      "writes": true,
+      "returns_user_scoped_data": true,
+      "review_flag": true
+    },
+    "edge:placement-v3-grade-writing": {
+      "kind": "supabase-edge-function",
+      "route": "/functions/v1/placement-v3-grade-writing",
+      "classification": "public-unauthenticated",
+      "writes": false,
+      "returns_user_scoped_data": false,
+      "review_flag": false
+    },
+    "edge:placement-v3-mercy-conversation": {
+      "kind": "supabase-edge-function",
+      "route": "/functions/v1/placement-v3-mercy-conversation",
+      "classification": "public-unauthenticated",
+      "writes": false,
+      "returns_user_scoped_data": false,
+      "review_flag": false
+    },
+    "edge:placement-v3-session": {
+      "kind": "supabase-edge-function",
+      "route": "/functions/v1/placement-v3-session",
+      "classification": "bearer-required",
+      "writes": false,
+      "returns_user_scoped_data": true,
+      "review_flag": false
+    },
+    "edge:public-api": {
+      "kind": "supabase-edge-function",
+      "route": "/functions/v1/public-api",
+      "classification": "bearer-required",
+      "writes": true,
+      "returns_user_scoped_data": false,
+      "review_flag": false
+    },
+    "edge:r2-logwatch": {
+      "kind": "supabase-edge-function",
+      "route": "/functions/v1/r2-logwatch",
+      "classification": "bearer-required",
+      "writes": true,
+      "returns_user_scoped_data": true,
+      "review_flag": false
+    },
+    "edge:redeem-access-code": {
+      "kind": "supabase-edge-function",
+      "route": "/functions/v1/redeem-access-code",
+      "classification": "bearer-required",
+      "writes": false,
+      "returns_user_scoped_data": true,
+      "review_flag": false
+    },
+    "edge:redeem-gift-code": {
+      "kind": "supabase-edge-function",
+      "route": "/functions/v1/redeem-gift-code",
+      "classification": "bearer-required",
+      "writes": true,
+      "returns_user_scoped_data": true,
+      "review_flag": false
+    },
+    "edge:referral-recognition-email": {
+      "kind": "supabase-edge-function",
+      "route": "/functions/v1/referral-recognition-email",
+      "classification": "bearer-required",
+      "writes": true,
+      "returns_user_scoped_data": true,
+      "review_flag": false
+    },
+    "edge:regenerate-room-registry": {
+      "kind": "supabase-edge-function",
+      "route": "/functions/v1/regenerate-room-registry",
+      "classification": "public-unauthenticated",
+      "writes": false,
+      "returns_user_scoped_data": false,
+      "review_flag": false
+    },
+    "edge:revenuecat-webhook": {
+      "kind": "supabase-edge-function",
+      "route": "/functions/v1/revenuecat-webhook",
+      "classification": "bearer-required",
+      "writes": false,
+      "returns_user_scoped_data": true,
+      "review_flag": false
+    },
+    "edge:room-cache": {
+      "kind": "supabase-edge-function",
+      "route": "/functions/v1/room-cache",
+      "classification": "bearer-required",
+      "writes": false,
+      "returns_user_scoped_data": false,
+      "review_flag": false
+    },
+    "edge:room-chat": {
+      "kind": "supabase-edge-function",
+      "route": "/functions/v1/room-chat",
+      "classification": "bearer-required",
+      "writes": true,
+      "returns_user_scoped_data": true,
+      "review_flag": false
+    },
+    "edge:room-health-auto-fix": {
+      "kind": "supabase-edge-function",
+      "route": "/functions/v1/room-health-auto-fix",
+      "classification": "anon-key-open",
+      "writes": true,
+      "returns_user_scoped_data": false,
+      "review_flag": true
+    },
+    "edge:room-health-summary": {
+      "kind": "supabase-edge-function",
+      "route": "/functions/v1/room-health-summary",
+      "classification": "bearer-required",
+      "writes": false,
+      "returns_user_scoped_data": true,
+      "review_flag": false
+    },
+    "edge:safety-audit": {
+      "kind": "supabase-edge-function",
+      "route": "/functions/v1/safety-audit",
+      "classification": "bearer-required",
+      "writes": false,
+      "returns_user_scoped_data": false,
+      "review_flag": false
+    },
+    "edge:save-room-json": {
+      "kind": "supabase-edge-function",
+      "route": "/functions/v1/save-room-json",
+      "classification": "bearer-required",
+      "writes": true,
+      "returns_user_scoped_data": true,
+      "review_flag": false
+    },
+    "edge:scan-design-violations": {
+      "kind": "supabase-edge-function",
+      "route": "/functions/v1/scan-design-violations",
+      "classification": "bearer-required",
+      "writes": false,
+      "returns_user_scoped_data": false,
+      "review_flag": false
+    },
+    "edge:search-entries": {
+      "kind": "supabase-edge-function",
+      "route": "/functions/v1/search-entries",
+      "classification": "bearer-required",
+      "writes": false,
+      "returns_user_scoped_data": false,
+      "review_flag": false
+    },
+    "edge:secure-room-loader": {
+      "kind": "supabase-edge-function",
+      "route": "/functions/v1/secure-room-loader",
+      "classification": "bearer-required",
+      "writes": false,
+      "returns_user_scoped_data": true,
+      "review_flag": false
+    },
+    "edge:security-alert": {
+      "kind": "supabase-edge-function",
+      "route": "/functions/v1/security-alert",
+      "classification": "bearer-required",
+      "writes": true,
+      "returns_user_scoped_data": true,
+      "review_flag": false
+    },
+    "edge:send-bulk-invitations": {
+      "kind": "supabase-edge-function",
+      "route": "/functions/v1/send-bulk-invitations",
+      "classification": "anon-key-open",
+      "writes": true,
+      "returns_user_scoped_data": true,
+      "review_flag": true
+    },
+    "edge:send-email-campaign": {
+      "kind": "supabase-edge-function",
+      "route": "/functions/v1/send-email-campaign",
+      "classification": "bearer-required",
+      "writes": true,
+      "returns_user_scoped_data": true,
+      "review_flag": false
+    },
+    "edge:send-feedback-reply": {
+      "kind": "supabase-edge-function",
+      "route": "/functions/v1/send-feedback-reply",
+      "classification": "bearer-required",
+      "writes": true,
+      "returns_user_scoped_data": true,
+      "review_flag": false
+    },
+    "edge:send-pending-emails": {
+      "kind": "supabase-edge-function",
+      "route": "/functions/v1/send-pending-emails",
+      "classification": "bearer-required",
+      "writes": true,
+      "returns_user_scoped_data": true,
+      "review_flag": false
+    },
+    "edge:send-push": {
+      "kind": "supabase-edge-function",
+      "route": "/functions/v1/send-push",
+      "classification": "bearer-required",
+      "writes": true,
+      "returns_user_scoped_data": true,
+      "review_flag": false
+    },
+    "edge:send-redeem-email": {
+      "kind": "supabase-edge-function",
+      "route": "/functions/v1/send-redeem-email",
+      "classification": "bearer-required",
+      "writes": false,
+      "returns_user_scoped_data": true,
+      "review_flag": false
+    },
+    "edge:send-security-email": {
+      "kind": "supabase-edge-function",
+      "route": "/functions/v1/send-security-email",
+      "classification": "bearer-required",
+      "writes": true,
+      "returns_user_scoped_data": true,
+      "review_flag": false
+    },
+    "edge:speech-analyze": {
+      "kind": "supabase-edge-function",
+      "route": "/functions/v1/speech-analyze",
+      "classification": "bearer-required",
+      "writes": true,
+      "returns_user_scoped_data": true,
+      "review_flag": false
+    },
+    "edge:streak-reminder-email": {
+      "kind": "supabase-edge-function",
+      "route": "/functions/v1/streak-reminder-email",
+      "classification": "bearer-required",
+      "writes": false,
+      "returns_user_scoped_data": true,
+      "review_flag": false
+    },
+    "edge:stripe-webhook": {
+      "kind": "supabase-edge-function",
+      "route": "/functions/v1/stripe-webhook",
+      "classification": "anon-key-open",
+      "writes": true,
+      "returns_user_scoped_data": true,
+      "review_flag": true
+    },
+    "edge:sync-rooms-from-json": {
+      "kind": "supabase-edge-function",
+      "route": "/functions/v1/sync-rooms-from-json",
+      "classification": "bearer-required",
+      "writes": true,
+      "returns_user_scoped_data": false,
+      "review_flag": false
+    },
+    "edge:system-metrics": {
+      "kind": "supabase-edge-function",
+      "route": "/functions/v1/system-metrics",
+      "classification": "bearer-required",
+      "writes": true,
+      "returns_user_scoped_data": true,
+      "review_flag": false
+    },
+    "edge:teacher-notifications": {
+      "kind": "supabase-edge-function",
+      "route": "/functions/v1/teacher-notifications",
+      "classification": "bearer-required",
+      "writes": false,
+      "returns_user_scoped_data": true,
+      "review_flag": false
+    },
+    "edge:text-to-speech": {
+      "kind": "supabase-edge-function",
+      "route": "/functions/v1/text-to-speech",
+      "classification": "bearer-required",
+      "writes": true,
+      "returns_user_scoped_data": true,
+      "review_flag": false
+    },
+    "edge:trial-expiry-emails": {
+      "kind": "supabase-edge-function",
+      "route": "/functions/v1/trial-expiry-emails",
+      "classification": "bearer-required",
+      "writes": true,
+      "returns_user_scoped_data": true,
+      "review_flag": false
+    },
+    "edge:update-profile": {
+      "kind": "supabase-edge-function",
+      "route": "/functions/v1/update-profile",
+      "classification": "bearer-required",
+      "writes": true,
+      "returns_user_scoped_data": true,
+      "review_flag": false
+    },
+    "edge:uptime-monitor": {
+      "kind": "supabase-edge-function",
+      "route": "/functions/v1/uptime-monitor",
+      "classification": "bearer-required",
+      "writes": true,
+      "returns_user_scoped_data": false,
+      "review_flag": false
+    },
+    "edge:verify-payment-screenshot": {
+      "kind": "supabase-edge-function",
+      "route": "/functions/v1/verify-payment-screenshot",
+      "classification": "bearer-required",
+      "writes": true,
+      "returns_user_scoped_data": true,
+      "review_flag": false
+    },
+    "edge:weekly-digest-email": {
+      "kind": "supabase-edge-function",
+      "route": "/functions/v1/weekly-digest-email",
+      "classification": "bearer-required",
+      "writes": true,
+      "returns_user_scoped_data": true,
+      "review_flag": false
+    },
+    "edge:weekly-progress-email": {
+      "kind": "supabase-edge-function",
+      "route": "/functions/v1/weekly-progress-email",
+      "classification": "bearer-required",
+      "writes": false,
+      "returns_user_scoped_data": true,
+      "review_flag": false
+    },
+    "edge:writing-feedback": {
+      "kind": "supabase-edge-function",
+      "route": "/functions/v1/writing-feedback",
+      "classification": "anon-key-open",
+      "writes": true,
+      "returns_user_scoped_data": true,
+      "review_flag": true
+    },
+    "pages:/api/mercy-ai": {
+      "kind": "cloudflare-pages-function",
+      "route": "/api/mercy-ai",
+      "classification": "bearer-required",
+      "writes": false,
+      "returns_user_scoped_data": true,
+      "review_flag": false
+    },
+    "pages:/api/mercy-feedback": {
+      "kind": "cloudflare-pages-function",
+      "route": "/api/mercy-feedback",
+      "classification": "anon-key-open",
+      "writes": true,
+      "returns_user_scoped_data": false,
+      "review_flag": true
+    },
+    "pages:/api/mercy/grammar": {
+      "kind": "cloudflare-pages-function",
+      "route": "/api/mercy/grammar",
+      "classification": "anon-key-open",
+      "writes": false,
+      "returns_user_scoped_data": true,
+      "review_flag": true
+    },
+    "pages:/api/tts": {
+      "kind": "cloudflare-pages-function",
+      "route": "/api/tts",
+      "classification": "bearer-required",
+      "writes": true,
+      "returns_user_scoped_data": false,
+      "review_flag": false
+    },
+    "rpc:analytics_cohort_retention": {
+      "kind": "client-invoked-rpc",
+      "route": "rpc:analytics_cohort_retention",
+      "classification": "bearer-required",
+      "writes": false,
+      "returns_user_scoped_data": true,
+      "review_flag": false
+    },
+    "rpc:analytics_l1_rule_effectiveness": {
+      "kind": "client-invoked-rpc",
+      "route": "rpc:analytics_l1_rule_effectiveness",
+      "classification": "bearer-required",
+      "writes": false,
+      "returns_user_scoped_data": true,
+      "review_flag": false
+    },
+    "rpc:analytics_weakness_trends_weekly": {
+      "kind": "client-invoked-rpc",
+      "route": "rpc:analytics_weakness_trends_weekly",
+      "classification": "bearer-required",
+      "writes": false,
+      "returns_user_scoped_data": true,
+      "review_flag": false
+    },
+    "rpc:apply_referral_code": {
+      "kind": "client-invoked-rpc",
+      "route": "rpc:apply_referral_code",
+      "classification": "anon-key-open",
+      "writes": true,
+      "returns_user_scoped_data": true,
+      "review_flag": true
+    },
+    "rpc:award_leaderboard_points": {
+      "kind": "client-invoked-rpc",
+      "route": "rpc:award_leaderboard_points",
+      "classification": "anon-key-open",
+      "writes": true,
+      "returns_user_scoped_data": true,
+      "review_flag": true
+    },
+    "rpc:award_points": {
+      "kind": "client-invoked-rpc",
+      "route": "rpc:award_points",
+      "classification": "bearer-required",
+      "writes": true,
+      "returns_user_scoped_data": true,
+      "review_flag": false
+    },
+    "rpc:award_xp_event": {
+      "kind": "client-invoked-rpc",
+      "route": "rpc:award_xp_event",
+      "classification": "anon-key-open",
+      "writes": true,
+      "returns_user_scoped_data": true,
+      "review_flag": true
+    },
+    "rpc:check_admin_email_rate_limit": {
+      "kind": "client-invoked-rpc",
+      "route": "rpc:check_admin_email_rate_limit",
+      "classification": "anon-key-open",
+      "writes": false,
+      "returns_user_scoped_data": true,
+      "review_flag": true
+    },
+    "rpc:check_ai_budget": {
+      "kind": "client-invoked-rpc",
+      "route": "rpc:check_ai_budget",
+      "classification": "anon-key-open",
+      "writes": false,
+      "returns_user_scoped_data": true,
+      "review_flag": true
+    },
+    "rpc:check_endpoint_rate_limit": {
+      "kind": "client-invoked-rpc",
+      "route": "rpc:check_endpoint_rate_limit",
+      "classification": "bearer-required",
+      "writes": true,
+      "returns_user_scoped_data": true,
+      "review_flag": false
+    },
+    "rpc:check_rate_limit": {
+      "kind": "client-invoked-rpc",
+      "route": "rpc:check_rate_limit",
+      "classification": "anon-key-open",
+      "writes": true,
+      "returns_user_scoped_data": true,
+      "review_flag": true
+    },
+    "rpc:check_rls_enabled": {
+      "kind": "client-invoked-rpc",
+      "route": "rpc:check_rls_enabled",
+      "classification": "anon-key-open",
+      "writes": false,
+      "returns_user_scoped_data": false,
+      "review_flag": false
+    },
+    "rpc:compute_operation_p95": {
+      "kind": "client-invoked-rpc",
+      "route": "rpc:compute_operation_p95",
+      "classification": "anon-key-open",
+      "writes": true,
+      "returns_user_scoped_data": false,
+      "review_flag": true
+    },
+    "rpc:compute_route_p95": {
+      "kind": "client-invoked-rpc",
+      "route": "rpc:compute_route_p95",
+      "classification": "anon-key-open",
+      "writes": true,
+      "returns_user_scoped_data": false,
+      "review_flag": true
+    },
+    "rpc:corporate_seat_redeem_invite": {
+      "kind": "client-invoked-rpc",
+      "route": "rpc:corporate_seat_redeem_invite",
+      "classification": "anon-key-open",
+      "writes": true,
+      "returns_user_scoped_data": true,
+      "review_flag": true
+    },
+    "rpc:count_family_invitations_in_window": {
+      "kind": "client-invoked-rpc",
+      "route": "rpc:count_family_invitations_in_window",
+      "classification": "anon-key-open",
+      "writes": true,
+      "returns_user_scoped_data": true,
+      "review_flag": true
+    },
+    "rpc:family_plan_redeem_invite": {
+      "kind": "client-invoked-rpc",
+      "route": "rpc:family_plan_redeem_invite",
+      "classification": "anon-key-open",
+      "writes": true,
+      "returns_user_scoped_data": true,
+      "review_flag": true
+    },
+    "rpc:get_admin_level": {
+      "kind": "client-invoked-rpc",
+      "route": "rpc:get_admin_level",
+      "classification": "bearer-required",
+      "writes": true,
+      "returns_user_scoped_data": true,
+      "review_flag": false
+    },
+    "rpc:get_behavioral_metrics": {
+      "kind": "client-invoked-rpc",
+      "route": "rpc:get_behavioral_metrics",
+      "classification": "bearer-required",
+      "writes": false,
+      "returns_user_scoped_data": true,
+      "review_flag": false
+    },
+    "rpc:get_cohort_retention": {
+      "kind": "client-invoked-rpc",
+      "route": "rpc:get_cohort_retention",
+      "classification": "bearer-required",
+      "writes": false,
+      "returns_user_scoped_data": true,
+      "review_flag": false
+    },
+    "rpc:get_cohort_retention_freshness": {
+      "kind": "client-invoked-rpc",
+      "route": "rpc:get_cohort_retention_freshness",
+      "classification": "bearer-required",
+      "writes": false,
+      "returns_user_scoped_data": false,
+      "review_flag": false
+    },
+    "rpc:get_conversion_funnel": {
+      "kind": "client-invoked-rpc",
+      "route": "rpc:get_conversion_funnel",
+      "classification": "bearer-required",
+      "writes": false,
+      "returns_user_scoped_data": true,
+      "review_flag": false
+    },
+    "rpc:get_email_preferences": {
+      "kind": "client-invoked-rpc",
+      "route": "rpc:get_email_preferences",
+      "classification": "bearer-required",
+      "writes": false,
+      "returns_user_scoped_data": true,
+      "review_flag": false
+    },
+    "rpc:get_family_invitation_by_token": {
+      "kind": "client-invoked-rpc",
+      "route": "rpc:get_family_invitation_by_token",
+      "classification": "anon-key-open",
+      "writes": false,
+      "returns_user_scoped_data": true,
+      "review_flag": true
+    },
+    "rpc:get_or_create_referral_code": {
+      "kind": "client-invoked-rpc",
+      "route": "rpc:get_or_create_referral_code",
+      "classification": "anon-key-open",
+      "writes": true,
+      "returns_user_scoped_data": true,
+      "review_flag": true
+    },
+    "rpc:get_public_profile_by_username": {
+      "kind": "client-invoked-rpc",
+      "route": "rpc:get_public_profile_by_username",
+      "classification": "anon-key-open",
+      "writes": true,
+      "returns_user_scoped_data": true,
+      "review_flag": true
+    },
+    "rpc:get_referral_recognition_candidates": {
+      "kind": "client-invoked-rpc",
+      "route": "rpc:get_referral_recognition_candidates",
+      "classification": "anon-key-open",
+      "writes": false,
+      "returns_user_scoped_data": true,
+      "review_flag": true
+    },
+    "rpc:get_user_certificates": {
+      "kind": "client-invoked-rpc",
+      "route": "rpc:get_user_certificates",
+      "classification": "anon-key-open",
+      "writes": false,
+      "returns_user_scoped_data": true,
+      "review_flag": true
+    },
+    "rpc:get_user_weekly_contribution": {
+      "kind": "client-invoked-rpc",
+      "route": "rpc:get_user_weekly_contribution",
+      "classification": "anon-key-open",
+      "writes": true,
+      "returns_user_scoped_data": true,
+      "review_flag": true
+    },
+    "rpc:grant_referral_reward": {
+      "kind": "client-invoked-rpc",
+      "route": "rpc:grant_referral_reward",
+      "classification": "anon-key-open",
+      "writes": true,
+      "returns_user_scoped_data": true,
+      "review_flag": true
+    },
+    "rpc:has_role": {
+      "kind": "client-invoked-rpc",
+      "route": "rpc:has_role",
+      "classification": "bearer-required",
+      "writes": true,
+      "returns_user_scoped_data": true,
+      "review_flag": false
+    },
+    "rpc:incr_ip_rate_limit": {
+      "kind": "client-invoked-rpc",
+      "route": "rpc:incr_ip_rate_limit",
+      "classification": "anon-key-open",
+      "writes": true,
+      "returns_user_scoped_data": false,
+      "review_flag": true
+    },
+    "rpc:increment_user_xp": {
+      "kind": "client-invoked-rpc",
+      "route": "rpc:increment_user_xp",
+      "classification": "anon-key-open",
+      "writes": true,
+      "returns_user_scoped_data": true,
+      "review_flag": true
+    },
+    "rpc:ironclad_sync_v1": {
+      "kind": "client-invoked-rpc",
+      "route": "rpc:ironclad_sync_v1",
+      "classification": "anon-key-open",
+      "writes": true,
+      "returns_user_scoped_data": true,
+      "review_flag": true
+    },
+    "rpc:is_user_blocked": {
+      "kind": "client-invoked-rpc",
+      "route": "rpc:is_user_blocked",
+      "classification": "anon-key-open",
+      "writes": false,
+      "returns_user_scoped_data": true,
+      "review_flag": true
+    },
+    "rpc:issue_certificate": {
+      "kind": "client-invoked-rpc",
+      "route": "rpc:issue_certificate",
+      "classification": "anon-key-open",
+      "writes": false,
+      "returns_user_scoped_data": true,
+      "review_flag": true
+    },
+    "rpc:join_study_group": {
+      "kind": "client-invoked-rpc",
+      "route": "rpc:join_study_group",
+      "classification": "anon-key-open",
+      "writes": true,
+      "returns_user_scoped_data": true,
+      "review_flag": true
+    },
+    "rpc:kick_study_group_member": {
+      "kind": "client-invoked-rpc",
+      "route": "rpc:kick_study_group_member",
+      "classification": "anon-key-open",
+      "writes": true,
+      "returns_user_scoped_data": true,
+      "review_flag": true
+    },
+    "rpc:leaderboard_weekly_my_rank": {
+      "kind": "client-invoked-rpc",
+      "route": "rpc:leaderboard_weekly_my_rank",
+      "classification": "anon-key-open",
+      "writes": true,
+      "returns_user_scoped_data": true,
+      "review_flag": true
+    },
+    "rpc:leaderboard_weekly_top10": {
+      "kind": "client-invoked-rpc",
+      "route": "rpc:leaderboard_weekly_top10",
+      "classification": "anon-key-open",
+      "writes": true,
+      "returns_user_scoped_data": true,
+      "review_flag": true
+    },
+    "rpc:list_user_data_tables_rls_status": {
+      "kind": "client-invoked-rpc",
+      "route": "rpc:list_user_data_tables_rls_status",
+      "classification": "anon-key-open",
+      "writes": false,
+      "returns_user_scoped_data": true,
+      "review_flag": true
+    },
+    "rpc:log_admin_access": {
+      "kind": "client-invoked-rpc",
+      "route": "rpc:log_admin_access",
+      "classification": "bearer-required",
+      "writes": true,
+      "returns_user_scoped_data": true,
+      "review_flag": false
+    },
+    "rpc:log_security_event": {
+      "kind": "client-invoked-rpc",
+      "route": "rpc:log_security_event",
+      "classification": "bearer-required",
+      "writes": true,
+      "returns_user_scoped_data": true,
+      "review_flag": false
+    },
+    "rpc:log_system_event": {
+      "kind": "client-invoked-rpc",
+      "route": "rpc:log_system_event",
+      "classification": "anon-key-open",
+      "writes": true,
+      "returns_user_scoped_data": true,
+      "review_flag": true
+    },
+    "rpc:mark_family_invite_clicked": {
+      "kind": "client-invoked-rpc",
+      "route": "rpc:mark_family_invite_clicked",
+      "classification": "anon-key-open",
+      "writes": true,
+      "returns_user_scoped_data": true,
+      "review_flag": true
+    },
+    "rpc:mark_family_invite_signed_up": {
+      "kind": "client-invoked-rpc",
+      "route": "rpc:mark_family_invite_signed_up",
+      "classification": "anon-key-open",
+      "writes": true,
+      "returns_user_scoped_data": true,
+      "review_flag": true
+    },
+    "rpc:mark_push_token_invalid": {
+      "kind": "client-invoked-rpc",
+      "route": "rpc:mark_push_token_invalid",
+      "classification": "anon-key-open",
+      "writes": true,
+      "returns_user_scoped_data": true,
+      "review_flag": true
+    },
+    "rpc:merge_anon_user_into_permanent": {
+      "kind": "client-invoked-rpc",
+      "route": "rpc:merge_anon_user_into_permanent",
+      "classification": "anon-key-open",
+      "writes": true,
+      "returns_user_scoped_data": true,
+      "review_flag": true
+    },
+    "rpc:migrate_local_streak": {
+      "kind": "client-invoked-rpc",
+      "route": "rpc:migrate_local_streak",
+      "classification": "bearer-required",
+      "writes": true,
+      "returns_user_scoped_data": true,
+      "review_flag": false
+    },
+    "rpc:pick_todays_challenge": {
+      "kind": "client-invoked-rpc",
+      "route": "rpc:pick_todays_challenge",
+      "classification": "anon-key-open",
+      "writes": true,
+      "returns_user_scoped_data": true,
+      "review_flag": true
+    },
+    "rpc:r2_recent_cron_failures": {
+      "kind": "client-invoked-rpc",
+      "route": "rpc:r2_recent_cron_failures",
+      "classification": "anon-key-open",
+      "writes": false,
+      "returns_user_scoped_data": true,
+      "review_flag": true
+    },
+    "rpc:r2_recent_http_errors": {
+      "kind": "client-invoked-rpc",
+      "route": "rpc:r2_recent_http_errors",
+      "classification": "anon-key-open",
+      "writes": false,
+      "returns_user_scoped_data": false,
+      "review_flag": false
+    },
+    "rpc:recompute_entitlement_tx": {
+      "kind": "client-invoked-rpc",
+      "route": "rpc:recompute_entitlement_tx",
+      "classification": "service-role-only",
+      "writes": true,
+      "returns_user_scoped_data": true,
+      "review_flag": false
+    },
+    "rpc:record_login_attempt": {
+      "kind": "client-invoked-rpc",
+      "route": "rpc:record_login_attempt",
+      "classification": "anon-key-open",
+      "writes": true,
+      "returns_user_scoped_data": true,
+      "review_flag": true
+    },
+    "rpc:record_paywall_exposure_anon": {
+      "kind": "client-invoked-rpc",
+      "route": "rpc:record_paywall_exposure_anon",
+      "classification": "anon-key-open",
+      "writes": true,
+      "returns_user_scoped_data": true,
+      "review_flag": true
+    },
+    "rpc:record_pronunciation_attempt": {
+      "kind": "client-invoked-rpc",
+      "route": "rpc:record_pronunciation_attempt",
+      "classification": "bearer-required",
+      "writes": true,
+      "returns_user_scoped_data": true,
+      "review_flag": false
+    },
+    "rpc:redeem_access_code_atomic": {
+      "kind": "client-invoked-rpc",
+      "route": "rpc:redeem_access_code_atomic",
+      "classification": "bearer-required",
+      "writes": true,
+      "returns_user_scoped_data": true,
+      "review_flag": false
+    },
+    "rpc:refresh_weekly_digest": {
+      "kind": "client-invoked-rpc",
+      "route": "rpc:refresh_weekly_digest",
+      "classification": "anon-key-open",
+      "writes": true,
+      "returns_user_scoped_data": true,
+      "review_flag": true
+    },
+    "rpc:register_billing_provider_event": {
+      "kind": "client-invoked-rpc",
+      "route": "rpc:register_billing_provider_event",
+      "classification": "anon-key-open",
+      "writes": true,
+      "returns_user_scoped_data": true,
+      "review_flag": true
+    },
+    "rpc:register_push_token": {
+      "kind": "client-invoked-rpc",
+      "route": "rpc:register_push_token",
+      "classification": "anon-key-open",
+      "writes": true,
+      "returns_user_scoped_data": true,
+      "review_flag": true
+    },
+    "rpc:unsubscribe_by_token": {
+      "kind": "client-invoked-rpc",
+      "route": "rpc:unsubscribe_by_token",
+      "classification": "anon-key-open",
+      "writes": true,
+      "returns_user_scoped_data": true,
+      "review_flag": true
+    },
+    "rpc:verify_certificate": {
+      "kind": "client-invoked-rpc",
+      "route": "rpc:verify_certificate",
+      "classification": "anon-key-open",
+      "writes": false,
+      "returns_user_scoped_data": true,
+      "review_flag": true
+    },
+    "rpc:weekly_leaderboard_my_rank": {
+      "kind": "client-invoked-rpc",
+      "route": "rpc:weekly_leaderboard_my_rank",
+      "classification": "anon-key-open",
+      "writes": false,
+      "returns_user_scoped_data": true,
+      "review_flag": true
+    },
+    "rpc:weekly_leaderboard_top": {
+      "kind": "client-invoked-rpc",
+      "route": "rpc:weekly_leaderboard_top",
+      "classification": "anon-key-open",
+      "writes": false,
+      "returns_user_scoped_data": true,
+      "review_flag": true
+    }
+  }
+}
