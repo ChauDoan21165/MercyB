@@ -806,7 +806,10 @@ variables:
   # green). Halving to 1 worker/shard cuts the concurrent esbuild service
   # count and RAM footprint. A NODE_OPTIONS heap bump would NOT help —
   # the esbuild service is a native child process, not V8 heap.
-  - npx vitest run --shard=$CI_NODE_INDEX/$CI_NODE_TOTAL --maxWorkers=1
+  - |
+    VITE_SUPABASE_URL="http://127.0.0.1:54321" \
+    VITE_SUPABASE_ANON_KEY="ci-vitest-non-prod-anon-key" \
+      npx vitest run --shard=$CI_NODE_INDEX/$CI_NODE_TOTAL --maxWorkers=1
 
 .ai_tutor_quality_gate_script: &ai_tutor_quality_gate_script
   - npm run test:ai-tutor-golden-flow
@@ -858,7 +861,10 @@ variables:
       git fetch --depth 1 origin +main:refs/remotes/origin/main
       MOBILE_AUDIO_VERIFY_BASE="origin/main"
     fi
-  - npm run verify:mobile-audio -- --base "$MOBILE_AUDIO_VERIFY_BASE"
+  - |
+    VITE_SUPABASE_URL="http://127.0.0.1:54321" \
+    VITE_SUPABASE_ANON_KEY="ci-vitest-non-prod-anon-key" \
+      npm run verify:mobile-audio -- --base "$MOBILE_AUDIO_VERIFY_BASE" --skip-build
 
 .playwright_perf_budget_script: &playwright_perf_budget_script
   - |
@@ -939,7 +945,9 @@ reservoir:test-shard:
     - |
       SHARD="${SHARD:-1}"
       SHARD_TOTAL="${SHARD_TOTAL:-2}"
-      npx vitest run --shard="$SHARD/$SHARD_TOTAL" --maxWorkers=2
+      VITE_SUPABASE_URL="http://127.0.0.1:54321" \
+      VITE_SUPABASE_ANON_KEY="ci-vitest-non-prod-anon-key" \
+        npx vitest run --shard="$SHARD/$SHARD_TOTAL" --maxWorkers=2
 
 reservoir:corpus-validate:
   <<: [*node_job, *local_runner, *reservoir_rules]
@@ -949,6 +957,8 @@ reservoir:corpus-validate:
     policy: pull
   script:
     - |
+      VITE_SUPABASE_URL="http://127.0.0.1:54321" \
+      VITE_SUPABASE_ANON_KEY="ci-vitest-non-prod-anon-key" \
       npx vitest run \
         src/lib/tutor/__tests__/step11VietlishCorpusD4Wave*.test.ts \
         tests/regression/golden-set/_pending-guards/__tests__/step11VietlishCorpusD4Wave*.test.ts
@@ -1174,7 +1184,9 @@ test:targeted:
       echo "$CHANGED"
       CHANGED_SPACE=$(printf '%s' "$CHANGED" | tr '\n' ' ')
       echo "[test:targeted] running vitest related --run $CHANGED_SPACE"
-      npx vitest related --run $CHANGED_SPACE
+      VITE_SUPABASE_URL="http://127.0.0.1:54321" \
+      VITE_SUPABASE_ANON_KEY="ci-vitest-non-prod-anon-key" \
+        npx vitest related --run $CHANGED_SPACE
 
 ai-tutor-quality-gate:
   <<: [*node_job, *local_runner, *ai_tutor_golden_flow_rules]
@@ -1314,7 +1326,10 @@ nightly-full-suite:
           exit 1
           ;;
       esac
-    - npx vitest run
+    - |
+      VITE_SUPABASE_URL="http://127.0.0.1:54321" \
+      VITE_SUPABASE_ANON_KEY="ci-vitest-non-prod-anon-key" \
+        npx vitest run
     - |
       case "$(uname -s)" in
         Darwin)
@@ -1352,7 +1367,10 @@ delete-account-guard:
     - if: '$CI_PIPELINE_SOURCE == "push" && ($CI_COMMIT_BRANCH == "main" || $CI_COMMIT_BRANCH == "develop" || $CI_COMMIT_BRANCH =~ /^release(\/|$)/)'
       changes: *delete_account_guard_changes
   script:
-    - npm run check:delete-account-guard
+    - |
+      VITE_SUPABASE_URL="http://127.0.0.1:54321" \
+      VITE_SUPABASE_ANON_KEY="ci-vitest-non-prod-anon-key" \
+        npm run check:delete-account-guard
 
 delete-account-guard:shared-fallback:
   <<: [*node_job, *manual_shared_fallback]
@@ -1365,7 +1383,10 @@ delete-account-guard:shared-fallback:
     - if: '$MERCYB_SHARED_RUNNER_FALLBACK == "1" && $CI_PIPELINE_SOURCE == "push" && ($CI_COMMIT_BRANCH == "main" || $CI_COMMIT_BRANCH == "develop" || $CI_COMMIT_BRANCH =~ /^release(\/|$)/)'
       when: manual
   script:
-    - npm run check:delete-account-guard
+    - |
+      VITE_SUPABASE_URL="http://127.0.0.1:54321" \
+      VITE_SUPABASE_ANON_KEY="ci-vitest-non-prod-anon-key" \
+        npm run check:delete-account-guard
 
 delete-account-live:
   <<: [*node_job, *local_runner]
@@ -1419,7 +1440,10 @@ migration-security-contracts:
   script:
     - node scripts/sql-lint.mjs
     - HARDENING_SCAN_CHECKS=L HARDENING_SCAN_FAIL_ON_FINDINGS=1 node scripts/hardening-scan.mjs
-    - npx vitest run supabase/migrations/__tests__ scripts/__tests__/rls-matrix-scan.test.mjs scripts/__tests__/sql-lint.test.mjs
+    - |
+      VITE_SUPABASE_URL="http://127.0.0.1:54321" \
+      VITE_SUPABASE_ANON_KEY="ci-vitest-non-prod-anon-key" \
+        npx vitest run supabase/migrations/__tests__ scripts/__tests__/rls-matrix-scan.test.mjs scripts/__tests__/sql-lint.test.mjs
 
 # `validate-rooms` — the full room-content validator. Heavier than the
 # build-stage validate-room-registry / validate-kids-rooms steps; runs
