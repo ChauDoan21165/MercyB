@@ -92,12 +92,9 @@ export function createPersistence(
       return data ? rowToProfile(data) : null;
     },
     async createSession(input) {
-      const row = sessionInsertRow(input);
-      const { data, error } = await db
-        .from("placement_v3_sessions")
-        .insert(row)
-        .select("*")
-        .single();
+      const isSynthetic = input.isSynthetic === true || await loadProfileIsSynthetic(db, input.userId);
+      const row = sessionInsertRow({ ...input, isSynthetic });
+      const { data, error } = await insertSessionRow(db, row);
       if (error) throw new Error(`createSession: ${error.message}`);
       return rowToSession(data);
     },
@@ -247,7 +244,7 @@ function recommendLessonsFromProfile(profile: PlacementV3Profile): Recommendatio
 }
 
 function sessionInsertRow(input: PersistSessionInput) {
-  return {
+  const row: Record<string, unknown> = {
     id: input.id,
     user_id: input.userId,
     started_at: input.now,
@@ -266,6 +263,8 @@ function sessionInsertRow(input: PersistSessionInput) {
     created_at: input.now,
     updated_at: input.now,
   };
+  if (input.isSynthetic === true) row.is_synthetic = true;
+  return row;
 }
 
 function sessionUpdateRow(session: PlacementV3Session) {
@@ -329,9 +328,9 @@ function sanitizeMetadataValue(
     const output = Array.from({ length: value.length }, (_, index) =>
       Object.prototype.hasOwnProperty.call(value, index)
         ? value[index] === undefined
-          ? "[undefined]"
+          ? null
           : sanitizeMetadataValue(value[index], seen, depth + 1)
-        : "[sparse]"
+        : null
     );
     seen.delete(value);
     return output;
@@ -360,14 +359,55 @@ function sanitizeMetadataValue(
   const output: Record<string, unknown> = Object.create(null);
   for (const key of Object.keys(record).sort()) {
     const item = record[key];
+    if (item === undefined) continue;
     output[key] = isSensitiveMetadataKey(key)
       ? "[redacted]"
-      : item === undefined
-        ? "[undefined]"
-        : sanitizeMetadataValue(item, seen, depth + 1);
+      : sanitizeMetadataValue(item, seen, depth + 1);
   }
   seen.delete(value);
   return output;
+}
+
+async function loadProfileIsSynthetic(db: SupabaseLike, userId: string): Promise<boolean> {
+  try {
+    const { data, error } = await db
+      .from("profiles")
+      .select("is_synthetic")
+      .eq("id", userId)
+      .maybeSingle();
+    if (error) return false;
+    return (data as { is_synthetic?: unknown } | null)?.is_synthetic === true;
+  } catch {
+    return false;
+  }
+}
+
+async function insertSessionRow(
+  db: SupabaseLike,
+  row: Record<string, unknown>,
+): Promise<{ data: unknown; error: { message?: string } | null }> {
+  const result = await db
+    .from("placement_v3_sessions")
+    .insert(row)
+    .select("*")
+    .single();
+  if (!result.error || !row.is_synthetic || !isUndefinedColumnError(result.error.message)) {
+    return result;
+  }
+
+  const fallbackRow = { ...row };
+  delete fallbackRow.is_synthetic;
+  return db
+    .from("placement_v3_sessions")
+    .insert(fallbackRow)
+    .select("*")
+    .single();
+}
+
+function isUndefinedColumnError(message?: string): boolean {
+  return /column .*is_synthetic.*does not exist|could not find .*is_synthetic|schema cache.*is_synthetic/i.test(
+    String(message ?? ""),
+  );
 }
 
 function isSensitiveMetadataKey(key: string): boolean {
@@ -456,6 +496,7 @@ export function makeSession(input: {
   return {
     id: input.id,
     user_id: input.userId,
+    is_synthetic: false,
     started_at: input.now,
     completed_at: null,
     abandoned_at: null,

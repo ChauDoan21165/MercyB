@@ -26,6 +26,7 @@ import {
   type PromptTask,
   type RespondInput,
 } from "./types.ts";
+import { isPlacementSyntheticMarkerValue } from "./syntheticMarker.ts";
 
 const PLACEMENT_V3_BANK_VERSION = "placement-v3-session-v1";
 const FALLBACK_STARTING_ROOM = "placement-v3:b1:grammar-foundation";
@@ -97,6 +98,7 @@ async function startSession(
     firstPrompt,
     now,
     totalTasks: MAX_TOTAL_TASKS,
+    isSynthetic: isPlacementSyntheticMarkerValue(input.syntheticMonitoring),
     id: deps.newId(),
   });
   deps.log?.("placement_v3.transition", {
