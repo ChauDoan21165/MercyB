@@ -1,3 +1,4 @@
+-- Corrected post-apply on 2026-07-14 to match live certificate_code uuid casts.
 BEGIN;
 
 -- Capture and replace dashboard-only certificate RPCs so browser callers can
@@ -140,7 +141,7 @@ BEGIN
     c.user_id,
     c.cert_type,
     c.milestone_value,
-    c.certificate_code,
+    c.certificate_code::text,
     c.metadata,
     c.issued_at,
     ct.display_name_en,
@@ -183,14 +184,14 @@ AS $$
     c.id,
     c.cert_type,
     c.milestone_value,
-    c.certificate_code,
+    c.certificate_code::text,
     c.issued_at,
     ct.display_name_en,
     ct.display_name_vi
   FROM public.certificates c
   JOIN public.certificate_types ct
     ON ct.cert_type = c.cert_type
-  WHERE c.certificate_code = p_code
+  WHERE c.certificate_code = p_code::uuid
   LIMIT 1
 $$;
 
