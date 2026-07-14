@@ -1,5 +1,7 @@
 import { defineConfig, devices } from "@playwright/test";
 
+import { CORRECTION_SOURCE_SYNTHETIC_MARKER_KEY } from "./src/lib/ai-tutor/correctionSourceSyntheticMarker";
+
 const parsePositiveInteger = (value: string | undefined): number | undefined => {
   const parsed = Number(value);
   return Number.isInteger(parsed) && parsed > 0 ? parsed : undefined;
@@ -12,6 +14,7 @@ const defaultPort =
   process.env.CI && ciPortSeed !== undefined ? 20_000 + (ciPortSeed % 40_000) : 4_173;
 const port = parsePositiveInteger(process.env.PERF_BUDGET_PORT) ?? defaultPort;
 const baseURL = process.env.TEST_BASE_URL ?? `http://127.0.0.1:${port}`;
+const baseOrigin = new URL(baseURL).origin;
 const webServerTimeoutMs = Number(process.env.PERF_BUDGET_WEB_SERVER_TIMEOUT_MS) || 480 * 1000;
 
 export default defineConfig({
@@ -33,6 +36,20 @@ export default defineConfig({
 
   use: {
     baseURL,
+    storageState: {
+      cookies: [],
+      origins: [
+        {
+          origin: baseOrigin,
+          localStorage: [
+            {
+              name: CORRECTION_SOURCE_SYNTHETIC_MARKER_KEY,
+              value: "1",
+            },
+          ],
+        },
+      ],
+    },
     trace: "retain-on-failure",
     screenshot: "only-on-failure",
     video: "off",
