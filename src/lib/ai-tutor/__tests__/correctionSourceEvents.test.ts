@@ -49,12 +49,13 @@ describe("correction source events", () => {
     );
   });
 
-  it("normalizes missing profile context without throwing", async () => {
+  it("falls back to local anonymous pair context when profile context fails", async () => {
     const insertRow = vi.fn(async (_row: CorrectionSourceEventRow) => ({ error: null }));
 
     await writeCorrectionSourceEvent(
       { source: "server_failed", targetLanguage: "en" },
       {
+        getLocalContext: () => ({ nativeLanguage: "vietnamese", isSynthetic: false }),
         getUserContext: async () => {
           throw new Error("profile read failed");
         },
@@ -62,7 +63,35 @@ describe("correction source events", () => {
       },
     );
 
-    expect(insertRow).not.toHaveBeenCalled();
-    expect(deriveCorrectionSourceLangPair(" Vietnamese ", "en")).toBe("vietnamese-en");
+    expect(insertRow).toHaveBeenCalledWith({
+      source: "server_failed",
+      lang_pair: "vi-en",
+      is_synthetic: false,
+    });
+    expect(deriveCorrectionSourceLangPair(" Vietnamese ", "en")).toBe("vi-en");
+  });
+
+  it("merges local language context with remote synthetic profile context", async () => {
+    const rows: CorrectionSourceEventRow[] = [];
+
+    await writeCorrectionSourceEvent(
+      { source: "local_corrected", targetLanguage: "en" },
+      {
+        getLocalContext: () => ({ nativeLanguage: "vi", isSynthetic: false }),
+        getUserContext: async () => ({ nativeLanguage: null, isSynthetic: true }),
+        insertRow: async (row) => {
+          rows.push(row);
+          return { error: null };
+        },
+      },
+    );
+
+    expect(rows).toEqual([
+      {
+        source: "local_corrected",
+        lang_pair: "vi-en",
+        is_synthetic: true,
+      },
+    ]);
   });
 });
