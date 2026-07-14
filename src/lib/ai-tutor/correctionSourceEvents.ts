@@ -1,5 +1,9 @@
 import { supabase } from "@/lib/supabaseClient";
 import type { TutorTarget } from "@/lib/tutor/tutorCopy";
+import {
+  CORRECTION_SOURCE_SYNTHETIC_MARKER_KEY,
+  isCorrectionSourceSyntheticMarkerValue,
+} from "./correctionSourceSyntheticMarker";
 
 export const CORRECTION_SOURCE_EVENTS_TABLE = "correction_source_events";
 
@@ -108,8 +112,12 @@ function defaultGetLocalContext(): UserContext {
 
   return {
     nativeLanguage: readNativeLanguageFromLocalStorage(),
-    isSynthetic: false,
+    isSynthetic: readSyntheticMarkerFromLocalStorage(),
   };
+}
+
+export function readCorrectionSourceLocalContextForTest(): UserContext {
+  return defaultGetLocalContext();
 }
 
 function readNativeLanguageFromLocalStorage(): string | null {
@@ -125,6 +133,16 @@ function readNativeLanguageFromLocalStorage(): string | null {
     return readStringField(anonymousPair, "native");
   } catch {
     return null;
+  }
+}
+
+function readSyntheticMarkerFromLocalStorage(): boolean {
+  try {
+    return isCorrectionSourceSyntheticMarkerValue(
+      window.localStorage.getItem(CORRECTION_SOURCE_SYNTHETIC_MARKER_KEY),
+    );
+  } catch {
+    return false;
   }
 }
 

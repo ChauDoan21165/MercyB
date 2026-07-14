@@ -2,10 +2,12 @@ import { describe, expect, it, vi } from "vitest";
 import {
   classifyCorrectionSourceEvent,
   deriveCorrectionSourceLangPair,
+  readCorrectionSourceLocalContextForTest,
   writeCorrectionSourceEvent,
   type CorrectionSourceEventRow,
   type CorrectionSourceEventSource,
 } from "../correctionSourceEvents";
+import { CORRECTION_SOURCE_SYNTHETIC_MARKER_KEY } from "../correctionSourceSyntheticMarker";
 
 describe("correction source events", () => {
   it.each([
@@ -17,7 +19,7 @@ describe("correction source events", () => {
     expect(classifyCorrectionSourceEvent(input)).toBe(expected);
   });
 
-  it("writes the four text-free source rows with language pair and synthetic tag", async () => {
+  it("writes the five text-free source rows with language pair and synthetic tag", async () => {
     const rows: CorrectionSourceEventRow[] = [];
     const sources: CorrectionSourceEventSource[] = [
       "local_corrected",
@@ -79,6 +81,36 @@ describe("correction source events", () => {
       {
         getLocalContext: () => ({ nativeLanguage: "vi", isSynthetic: false }),
         getUserContext: async () => ({ nativeLanguage: null, isSynthetic: true }),
+        insertRow: async (row) => {
+          rows.push(row);
+          return { error: null };
+        },
+      },
+    );
+
+    expect(rows).toEqual([
+      {
+        source: "local_corrected",
+        lang_pair: "vi-en",
+        is_synthetic: true,
+      },
+    ]);
+  });
+
+  it("reads the prod-monitoring synthetic marker from local browser storage", async () => {
+    window.localStorage.setItem("mercyblade.languagePair", JSON.stringify({ native: "vi", targets: ["en"] }));
+    window.localStorage.setItem(CORRECTION_SOURCE_SYNTHETIC_MARKER_KEY, "1");
+
+    expect(readCorrectionSourceLocalContextForTest()).toEqual({
+      nativeLanguage: "vi",
+      isSynthetic: true,
+    });
+
+    const rows: CorrectionSourceEventRow[] = [];
+    await writeCorrectionSourceEvent(
+      { source: "local_corrected", targetLanguage: "en" },
+      {
+        getUserContext: async () => ({ nativeLanguage: null, isSynthetic: false }),
         insertRow: async (row) => {
           rows.push(row);
           return { error: null };
