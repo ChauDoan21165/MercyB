@@ -47,3 +47,15 @@ Local files are evidence only for the current unmerged worktree. Remote refs are
 ## Worktree Discipline
 
 Use a fresh dedicated worktree from `origin/main` for every workpack. Keep one workpack per branch. Before pushing, verify the changed-file list is exactly the intended surface and that no unrelated dirty state, generated reports, or previous agent output is included.
+
+## Production Credential Fence
+
+CI test suites must never resolve production credentials. Vitest and unit-test jobs run against non-production environments. The shared Vitest setup hard-fails if `VITE_SUPABASE_URL` resolves to the production project ref. Never weaken this guard.
+
+## Stale Ref Discipline
+
+Any branch whose merge-base predates the current CI guards must be rebased onto `origin/main` before its pipeline runs. Old refs execute their own CI config, so in-repo guards added later do not protect them.
+
+## No-Write Verification
+
+Verification of "no unwanted writes" requires a trigger event plus a direct table `SELECT` afterward. Never rely on absence of noise during a quiet window. Name the event, run it, then query the table that would receive the unwanted write.
