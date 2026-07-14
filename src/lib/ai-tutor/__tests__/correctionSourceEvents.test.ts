@@ -126,4 +126,33 @@ describe("correction source events", () => {
       },
     ]);
   });
+
+  it("reads the synthetic marker per emission, so a late page-origin seed fixes the next row", async () => {
+    window.localStorage.setItem("mercyblade.languagePair", JSON.stringify({ native: "vi", targets: ["en"] }));
+    const rows: CorrectionSourceEventRow[] = [];
+    const deps = {
+      getUserContext: async () => ({ nativeLanguage: null, isSynthetic: false }),
+      insertRow: async (row: CorrectionSourceEventRow) => {
+        rows.push(row);
+        return { error: null };
+      },
+    };
+
+    await writeCorrectionSourceEvent({ source: "server_corrected", targetLanguage: "en" }, deps);
+    window.localStorage.setItem(CORRECTION_SOURCE_SYNTHETIC_MARKER_KEY, "1");
+    await writeCorrectionSourceEvent({ source: "server_no_correction", targetLanguage: "en" }, deps);
+
+    expect(rows).toEqual([
+      {
+        source: "server_corrected",
+        lang_pair: "vi-en",
+        is_synthetic: false,
+      },
+      {
+        source: "server_no_correction",
+        lang_pair: "vi-en",
+        is_synthetic: true,
+      },
+    ]);
+  });
 });
