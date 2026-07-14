@@ -6,18 +6,18 @@
 // module exports issue + list only.
 //
 // Backend contract (prod, verified read-only on 2026-04-29):
-//   issue_certificate(p_user_id uuid, p_cert_type text,
-//                     p_milestone_value int, p_metadata jsonb)
+//   issue_certificate(p_cert_type text, p_milestone_value int,
+//                     p_metadata jsonb)
 //     → returns row { id, user_id, cert_type, milestone_value,
 //                     certificate_code, metadata, issued_at }.
+//     Derives user_id from auth.uid() inside the database function.
 //     Idempotent on (user_id, cert_type, milestone_value): returns the
 //     pre-existing row instead of creating a duplicate.
 //
-//   get_user_certificates(p_user_id uuid)
+//   get_user_certificates()
 //     → returns rows joined with the type catalog: { id, certificate_code,
 //       cert_type, milestone_value, issued_at, display_name_en,
-//       display_name_vi }. Self-checked inside the function — caller's
-//       JWT must match p_user_id (or be admin).
+//       display_name_vi }. Self-scoped inside the function via auth.uid().
 //
 // Failure mode: RPC errors return `{ ok: false, error: msg }` without
 // throwing and without falling back to a local mock. Call sites
@@ -78,7 +78,6 @@ function listRowToEarned(row: ListRpcRow, userId: string): EarnedCertificate {
 }
 
 export interface IssueCertificateInput {
-  user_id: string;
   certificate_type: CertificateType;
   metadata?: Record<string, unknown> & { backfilled?: boolean };
 }
@@ -92,12 +91,11 @@ export interface IssueCertificateResult {
 export async function issueCertificate(
   input: IssueCertificateInput,
 ): Promise<IssueCertificateResult> {
-  if (!input.user_id || !input.certificate_type) {
+  if (!input.certificate_type) {
     return { ok: false, certificate: null, error: "invalid_input" };
   }
 
   const { data, error } = await supabase.rpc("issue_certificate", {
-    p_user_id: input.user_id,
     p_cert_type: input.certificate_type,
     p_milestone_value: milestoneValueOf(input.certificate_type),
     p_metadata: input.metadata ?? {},
@@ -125,9 +123,7 @@ export async function listEarnedCertificates(
 ): Promise<EarnedCertificate[]> {
   if (!userId) return [];
 
-  const { data, error } = await supabase.rpc("get_user_certificates", {
-    p_user_id: userId,
-  });
+  const { data, error } = await supabase.rpc("get_user_certificates");
 
   if (error) {
     console.warn("[certificates/rpc] get_user_certificates failed", error);

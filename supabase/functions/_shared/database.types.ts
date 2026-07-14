@@ -1,4 +1,4 @@
-// Supabase migrations fingerprint: df198072c67ff2a660034e5a55aa660471fb7106b8d83c4cdbec67e1e0afc34b
+// Supabase migrations fingerprint: 81bcc423a68098c1e48ac0ede39423e886e825fbe44aa21abbf74babcc2f395d
 export type Json =
   | string
   | number
@@ -15211,7 +15211,7 @@ export type Database = {
         }[]
       }
       get_user_certificates: {
-        Args: { p_user_id: string }
+        Args: never
         Returns: {
           category: string
           cert_type: string
@@ -15308,7 +15308,6 @@ export type Database = {
           p_cert_type: string
           p_metadata?: Json
           p_milestone_value: number
-          p_user_id: string
         }
         Returns: {
           cert_type: string

@@ -1227,7 +1227,7 @@
       "kind": "client-invoked-rpc",
       "route": "rpc:issue_certificate",
       "classification": "anon-key-open",
-      "writes": false,
+      "writes": true,
       "returns_user_scoped_data": true,
       "review_flag": true
     },
