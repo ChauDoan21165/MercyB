@@ -3540,10 +3540,10 @@
     "fixture_files_used": 57,
     "fixture_families": 53,
     "total_probes_run": 112,
-    "total_caught": 47,
-    "total_rule_family_correct": 46,
-    "measured_covered": 17,
-    "measured_blind": 53,
+    "total_caught": 100,
+    "total_rule_family_correct": 96,
+    "measured_covered": 54,
+    "measured_blind": 16,
     "unmeasured": 145
   },
   "families": [
@@ -3566,9 +3566,9 @@
       ],
       "applicable_probes": 2,
       "applicable_cells": 2,
-      "caught": 0,
-      "rule_family_correct": 0,
-      "blind_probes": 2,
+      "caught": 2,
+      "rule_family_correct": 2,
+      "blind_probes": 0,
       "structural_detector": "implemented"
     },
     {
@@ -3590,9 +3590,9 @@
       ],
       "applicable_probes": 3,
       "applicable_cells": 3,
-      "caught": 0,
-      "rule_family_correct": 0,
-      "blind_probes": 3,
+      "caught": 3,
+      "rule_family_correct": 3,
+      "blind_probes": 0,
       "structural_detector": "implemented"
     },
     {
@@ -3650,9 +3650,9 @@
       ],
       "applicable_probes": 13,
       "applicable_cells": 13,
-      "caught": 0,
-      "rule_family_correct": 0,
-      "blind_probes": 13,
+      "caught": 13,
+      "rule_family_correct": 13,
+      "blind_probes": 0,
       "structural_detector": "implemented"
     },
     {
@@ -3686,9 +3686,9 @@
       ],
       "applicable_probes": 2,
       "applicable_cells": 2,
-      "caught": 0,
-      "rule_family_correct": 0,
-      "blind_probes": 2,
+      "caught": 2,
+      "rule_family_correct": 2,
+      "blind_probes": 0,
       "structural_detector": "implemented"
     },
     {
@@ -3699,9 +3699,9 @@
       ],
       "applicable_probes": 3,
       "applicable_cells": 3,
-      "caught": 0,
-      "rule_family_correct": 0,
-      "blind_probes": 3,
+      "caught": 3,
+      "rule_family_correct": 3,
+      "blind_probes": 0,
       "structural_detector": "implemented"
     },
     {
@@ -3712,9 +3712,9 @@
       ],
       "applicable_probes": 4,
       "applicable_cells": 4,
-      "caught": 2,
-      "rule_family_correct": 2,
-      "blind_probes": 2,
+      "caught": 4,
+      "rule_family_correct": 3,
+      "blind_probes": 1,
       "structural_detector": "implemented"
     },
     {
@@ -3749,9 +3749,9 @@
       ],
       "applicable_probes": 1,
       "applicable_cells": 1,
-      "caught": 0,
-      "rule_family_correct": 0,
-      "blind_probes": 1,
+      "caught": 1,
+      "rule_family_correct": 1,
+      "blind_probes": 0,
       "structural_detector": "implemented"
     },
     {
@@ -3786,9 +3786,9 @@
       ],
       "applicable_probes": 7,
       "applicable_cells": 7,
-      "caught": 0,
-      "rule_family_correct": 0,
-      "blind_probes": 7,
+      "caught": 7,
+      "rule_family_correct": 7,
+      "blind_probes": 0,
       "structural_detector": "implemented"
     },
     {
@@ -3798,9 +3798,9 @@
       ],
       "applicable_probes": 2,
       "applicable_cells": 2,
-      "caught": 0,
-      "rule_family_correct": 0,
-      "blind_probes": 2,
+      "caught": 2,
+      "rule_family_correct": 2,
+      "blind_probes": 0,
       "structural_detector": "implemented"
     },
     {
@@ -3810,9 +3810,9 @@
       ],
       "applicable_probes": 2,
       "applicable_cells": 2,
-      "caught": 1,
-      "rule_family_correct": 0,
-      "blind_probes": 2,
+      "caught": 2,
+      "rule_family_correct": 1,
+      "blind_probes": 1,
       "structural_detector": "implemented"
     },
     {
@@ -3846,7 +3846,7 @@
       ],
       "applicable_probes": 2,
       "applicable_cells": 2,
-      "caught": 0,
+      "caught": 2,
       "rule_family_correct": 0,
       "blind_probes": 2,
       "structural_detector": "implemented"
@@ -3858,9 +3858,9 @@
       ],
       "applicable_probes": 32,
       "applicable_cells": 32,
-      "caught": 30,
-      "rule_family_correct": 30,
-      "blind_probes": 2,
+      "caught": 32,
+      "rule_family_correct": 32,
+      "blind_probes": 0,
       "structural_detector": "implemented"
     },
     {
@@ -3870,9 +3870,9 @@
       ],
       "applicable_probes": 2,
       "applicable_cells": 2,
-      "caught": 0,
-      "rule_family_correct": 0,
-      "blind_probes": 2,
+      "caught": 2,
+      "rule_family_correct": 2,
+      "blind_probes": 0,
       "structural_detector": "implemented"
     },
     {
@@ -3906,9 +3906,9 @@
       ],
       "applicable_probes": 1,
       "applicable_cells": 1,
-      "caught": 0,
-      "rule_family_correct": 0,
-      "blind_probes": 1,
+      "caught": 1,
+      "rule_family_correct": 1,
+      "blind_probes": 0,
       "structural_detector": "implemented"
     },
     {
@@ -3918,9 +3918,9 @@
       ],
       "applicable_probes": 1,
       "applicable_cells": 1,
-      "caught": 0,
-      "rule_family_correct": 0,
-      "blind_probes": 1,
+      "caught": 1,
+      "rule_family_correct": 1,
+      "blind_probes": 0,
       "structural_detector": "implemented"
     },
     {
@@ -4026,9 +4026,9 @@
       ],
       "applicable_probes": 11,
       "applicable_cells": 11,
-      "caught": 10,
-      "rule_family_correct": 10,
-      "blind_probes": 1,
+      "caught": 11,
+      "rule_family_correct": 11,
+      "blind_probes": 0,
       "structural_detector": "implemented"
     },
     {
@@ -4182,9 +4182,9 @@
       ],
       "applicable_probes": 24,
       "applicable_cells": 24,
-      "caught": 4,
-      "rule_family_correct": 4,
-      "blind_probes": 20,
+      "caught": 12,
+      "rule_family_correct": 12,
+      "blind_probes": 12,
       "structural_detector": "implemented"
     }
   ],
@@ -4389,9 +4389,9 @@
       "lesson_title_en": "Roleplay: Asking A Taxi Or Grab Driver",
       "english": "Is this the right car?",
       "probes_run": 2,
-      "caught": 1,
-      "rule_family_correct": 1,
-      "coverage": "measured-blind",
+      "caught": 2,
+      "rule_family_correct": 2,
+      "coverage": "measured-covered",
       "probes": [
         {
           "probe_id": "109df3ac086a",
@@ -4435,11 +4435,13 @@
           },
           "original": "Is this the right car?",
           "corrupted": "This the right car?",
-          "engine_status": "unchanged",
-          "corrected": "This the right car?",
-          "applied_rule_ids": [],
-          "caught": false,
-          "rule_family_correct": false
+          "engine_status": "corrected",
+          "corrected": "Is this the right car?",
+          "applied_rule_ids": [
+            "en-vn-yesno-do-support"
+          ],
+          "caught": true,
+          "rule_family_correct": true
         }
       ]
     },
@@ -4578,9 +4580,9 @@
       "lesson_title_en": "Roleplay: Asking Directions",
       "english": "Is it far?",
       "probes_run": 2,
-      "caught": 1,
-      "rule_family_correct": 1,
-      "coverage": "measured-blind",
+      "caught": 2,
+      "rule_family_correct": 2,
+      "coverage": "measured-covered",
       "probes": [
         {
           "probe_id": "bc3b3a653dc0",
@@ -4624,11 +4626,13 @@
           },
           "original": "Is it far?",
           "corrupted": "It far?",
-          "engine_status": "unchanged",
-          "corrected": "It far?",
-          "applied_rule_ids": [],
-          "caught": false,
-          "rule_family_correct": false
+          "engine_status": "corrected",
+          "corrected": "Is it far?",
+          "applied_rule_ids": [
+            "en-vn-yesno-do-support"
+          ],
+          "caught": true,
+          "rule_family_correct": true
         }
       ]
     },
@@ -4884,9 +4888,9 @@
       "lesson_title_en": "Roleplay: Meeting A New Vietnamese Friend",
       "english": "I am from Canada.",
       "probes_run": 1,
-      "caught": 0,
-      "rule_family_correct": 0,
-      "coverage": "measured-blind",
+      "caught": 1,
+      "rule_family_correct": 1,
+      "coverage": "measured-covered",
       "probes": [
         {
           "probe_id": "a3d7f70b82eb",
@@ -4906,11 +4910,13 @@
           },
           "original": "I am from Canada.",
           "corrupted": "I from Canada.",
-          "engine_status": "unchanged",
-          "corrected": "I from Canada.",
-          "applied_rule_ids": [],
-          "caught": false,
-          "rule_family_correct": false
+          "engine_status": "corrected",
+          "corrected": "I am from Canada.",
+          "applied_rule_ids": [
+            "en-step6-location-be-drop"
+          ],
+          "caught": true,
+          "rule_family_correct": true
         }
       ]
     },
@@ -4935,9 +4941,9 @@
       "lesson_title_en": "Roleplay: Landlord And Apartment Issue",
       "english": "Sorry, the air conditioner is broken.",
       "probes_run": 1,
-      "caught": 0,
-      "rule_family_correct": 0,
-      "coverage": "measured-blind",
+      "caught": 1,
+      "rule_family_correct": 1,
+      "coverage": "measured-covered",
       "probes": [
         {
           "probe_id": "1a6128c5dae6",
@@ -4956,11 +4962,13 @@
           },
           "original": "Sorry, the air conditioner is broken.",
           "corrupted": "Sorry, the air conditioner broken.",
-          "engine_status": "unchanged",
-          "corrected": "Sorry, the air conditioner broken.",
-          "applied_rule_ids": [],
-          "caught": false,
-          "rule_family_correct": false
+          "engine_status": "corrected",
+          "corrected": "Sorry, the air conditioner is broken.",
+          "applied_rule_ids": [
+            "en-vn-copula-be-adjective"
+          ],
+          "caught": true,
+          "rule_family_correct": true
         }
       ]
     },
@@ -5024,9 +5032,9 @@
       "lesson_title_en": "Roleplay: Asking For Help When Lost",
       "english": "Excuse me, I am lost.",
       "probes_run": 1,
-      "caught": 0,
-      "rule_family_correct": 0,
-      "coverage": "measured-blind",
+      "caught": 1,
+      "rule_family_correct": 1,
+      "coverage": "measured-covered",
       "probes": [
         {
           "probe_id": "a1a2b793aee2",
@@ -5045,11 +5053,13 @@
           },
           "original": "Excuse me, I am lost.",
           "corrupted": "Excuse me, I lost.",
-          "engine_status": "unchanged",
-          "corrected": "Excuse me, I lost.",
-          "applied_rule_ids": [],
-          "caught": false,
-          "rule_family_correct": false
+          "engine_status": "corrected",
+          "corrected": "Excuse me, I am lost.",
+          "applied_rule_ids": [
+            "en-vn-copula-be-adjective"
+          ],
+          "caught": true,
+          "rule_family_correct": true
         }
       ]
     },
@@ -5100,9 +5110,9 @@
       "lesson_title_en": "Roleplay: Asking For Help When Lost",
       "english": "I want to go to this hotel.",
       "probes_run": 1,
-      "caught": 0,
-      "rule_family_correct": 0,
-      "coverage": "measured-blind",
+      "caught": 1,
+      "rule_family_correct": 1,
+      "coverage": "measured-covered",
       "probes": [
         {
           "probe_id": "c42363a3804c",
@@ -5122,11 +5132,13 @@
           },
           "original": "I want to go to this hotel.",
           "corrupted": "I want to go this hotel.",
-          "engine_status": "unchanged",
-          "corrected": "I want to go this hotel.",
-          "applied_rule_ids": [],
-          "caught": false,
-          "rule_family_correct": false
+          "engine_status": "corrected",
+          "corrected": "I want to go to this hotel.",
+          "applied_rule_ids": [
+            "en-step5-preposition-pattern"
+          ],
+          "caught": true,
+          "rule_family_correct": true
         }
       ]
     },
@@ -5151,9 +5163,9 @@
       "lesson_title_en": "Roleplay: Asking For Help When Lost",
       "english": "Can you show me on the map?",
       "probes_run": 2,
-      "caught": 1,
-      "rule_family_correct": 1,
-      "coverage": "measured-blind",
+      "caught": 2,
+      "rule_family_correct": 2,
+      "coverage": "measured-covered",
       "probes": [
         {
           "probe_id": "6e1793c966b6",
@@ -5197,11 +5209,13 @@
           },
           "original": "Can you show me on the map?",
           "corrupted": "You show me on the map?",
-          "engine_status": "unchanged",
-          "corrected": "You show me on the map?",
-          "applied_rule_ids": [],
-          "caught": false,
-          "rule_family_correct": false
+          "engine_status": "corrected",
+          "corrected": "Can you show me on the map?",
+          "applied_rule_ids": [
+            "en-vn-yesno-do-support"
+          ],
+          "caught": true,
+          "rule_family_correct": true
         }
       ]
     },
@@ -5402,9 +5416,9 @@
       "lesson_title_en": "Roleplay: Clinic Or Pharmacy Help",
       "english": "Excuse me, I am sick.",
       "probes_run": 1,
-      "caught": 0,
-      "rule_family_correct": 0,
-      "coverage": "measured-blind",
+      "caught": 1,
+      "rule_family_correct": 1,
+      "coverage": "measured-covered",
       "probes": [
         {
           "probe_id": "befd02ad1ace",
@@ -5423,11 +5437,13 @@
           },
           "original": "Excuse me, I am sick.",
           "corrupted": "Excuse me, I sick.",
-          "engine_status": "unchanged",
-          "corrected": "Excuse me, I sick.",
-          "applied_rule_ids": [],
-          "caught": false,
-          "rule_family_correct": false
+          "engine_status": "corrected",
+          "corrected": "Excuse me, I am sick.",
+          "applied_rule_ids": [
+            "en-vn-copula-be-adjective"
+          ],
+          "caught": true,
+          "rule_family_correct": true
         }
       ]
     },
@@ -5439,9 +5455,9 @@
       "lesson_title_en": "Roleplay: Clinic Or Pharmacy Help",
       "english": "What is wrong?",
       "probes_run": 2,
-      "caught": 1,
-      "rule_family_correct": 1,
-      "coverage": "measured-blind",
+      "caught": 2,
+      "rule_family_correct": 2,
+      "coverage": "measured-covered",
       "probes": [
         {
           "probe_id": "2cf2a8f65f8d",
@@ -5485,11 +5501,13 @@
           },
           "original": "What is wrong?",
           "corrupted": "What wrong?",
-          "engine_status": "unchanged",
-          "corrected": "What wrong?",
-          "applied_rule_ids": [],
-          "caught": false,
-          "rule_family_correct": false
+          "engine_status": "corrected",
+          "corrected": "What is wrong?",
+          "applied_rule_ids": [
+            "en-vn-copula-be-adjective"
+          ],
+          "caught": true,
+          "rule_family_correct": true
         }
       ]
     },
@@ -5501,9 +5519,9 @@
       "lesson_title_en": "Roleplay: Clinic Or Pharmacy Help",
       "english": "I have a stomachache.",
       "probes_run": 1,
-      "caught": 0,
-      "rule_family_correct": 0,
-      "coverage": "measured-blind",
+      "caught": 1,
+      "rule_family_correct": 1,
+      "coverage": "measured-covered",
       "probes": [
         {
           "probe_id": "b6a1c44d6f5c",
@@ -5522,11 +5540,13 @@
           },
           "original": "I have a stomachache.",
           "corrupted": "I have stomachache.",
-          "engine_status": "unchanged",
-          "corrected": "I have stomachache.",
-          "applied_rule_ids": [],
-          "caught": false,
-          "rule_family_correct": false
+          "engine_status": "corrected",
+          "corrected": "I have a stomachache.",
+          "applied_rule_ids": [
+            "en-l4-missing-singular-article"
+          ],
+          "caught": true,
+          "rule_family_correct": true
         }
       ]
     },
@@ -5613,9 +5633,9 @@
       "lesson_title_en": "Roleplay: Clinic Or Pharmacy Help",
       "english": "If it gets worse, go to the hospital.",
       "probes_run": 1,
-      "caught": 0,
-      "rule_family_correct": 0,
-      "coverage": "measured-blind",
+      "caught": 1,
+      "rule_family_correct": 1,
+      "coverage": "measured-covered",
       "probes": [
         {
           "probe_id": "9dcc669d822c",
@@ -5635,11 +5655,13 @@
           },
           "original": "If it gets worse, go to the hospital.",
           "corrupted": "If it gets worse, go the hospital.",
-          "engine_status": "unchanged",
-          "corrected": "If it gets worse, go the hospital.",
-          "applied_rule_ids": [],
-          "caught": false,
-          "rule_family_correct": false
+          "engine_status": "corrected",
+          "corrected": "If it gets worse, go to the hospital.",
+          "applied_rule_ids": [
+            "en-step5-preposition-pattern"
+          ],
+          "caught": true,
+          "rule_family_correct": true
         }
       ]
     },
@@ -5690,8 +5712,8 @@
       "lesson_title_en": "Telling Stories About Your Day",
       "english": "I went to work, then came home early.",
       "probes_run": 3,
-      "caught": 0,
-      "rule_family_correct": 0,
+      "caught": 3,
+      "rule_family_correct": 2,
       "coverage": "measured-blind",
       "probes": [
         {
@@ -5712,11 +5734,13 @@
           },
           "original": "I went to work, then came home early.",
           "corrupted": "I went work, then came home early.",
-          "engine_status": "unchanged",
-          "corrected": "I went work, then came home early.",
-          "applied_rule_ids": [],
-          "caught": false,
-          "rule_family_correct": false
+          "engine_status": "corrected",
+          "corrected": "I went to work, then came home early.",
+          "applied_rule_ids": [
+            "en-step5-preposition-pattern"
+          ],
+          "caught": true,
+          "rule_family_correct": true
         },
         {
           "probe_id": "3b1c6cdd1df1",
@@ -5735,11 +5759,13 @@
           },
           "original": "I went to work, then came home early.",
           "corrupted": "I go to work, then came home early.",
-          "engine_status": "unchanged",
-          "corrected": "I go to work, then came home early.",
-          "applied_rule_ids": [],
-          "caught": false,
-          "rule_family_correct": false
+          "engine_status": "corrected",
+          "corrected": "I went to work, then came home early.",
+          "applied_rule_ids": [
+            "en-step6-past-marker-recall"
+          ],
+          "caught": true,
+          "rule_family_correct": true
         },
         {
           "probe_id": "6a92adc8716b",
@@ -5759,10 +5785,12 @@
           },
           "original": "I went to work, then came home early.",
           "corrupted": "I go to work, then came home early.",
-          "engine_status": "unchanged",
-          "corrected": "I go to work, then came home early.",
-          "applied_rule_ids": [],
-          "caught": false,
+          "engine_status": "corrected",
+          "corrected": "I went to work, then came home early.",
+          "applied_rule_ids": [
+            "en-step6-past-marker-recall"
+          ],
+          "caught": true,
           "rule_family_correct": false
         }
       ]
@@ -5801,9 +5829,9 @@
       "lesson_title_en": "Explaining Problems",
       "english": "What happened?",
       "probes_run": 1,
-      "caught": 0,
-      "rule_family_correct": 0,
-      "coverage": "measured-blind",
+      "caught": 1,
+      "rule_family_correct": 1,
+      "coverage": "measured-covered",
       "probes": [
         {
           "probe_id": "5ab00a400545",
@@ -5822,11 +5850,13 @@
           },
           "original": "What happened?",
           "corrupted": "What happened",
-          "engine_status": "unchanged",
-          "corrected": "What happened",
-          "applied_rule_ids": [],
-          "caught": false,
-          "rule_family_correct": false
+          "engine_status": "corrected",
+          "corrected": "What happened?",
+          "applied_rule_ids": [
+            "en-question-form-final-mark"
+          ],
+          "caught": true,
+          "rule_family_correct": true
         }
       ]
     },
@@ -5851,8 +5881,8 @@
       "lesson_title_en": "Explaining Problems",
       "english": "Have you tried turning it off and on again?",
       "probes_run": 2,
-      "caught": 0,
-      "rule_family_correct": 0,
+      "caught": 1,
+      "rule_family_correct": 1,
       "coverage": "measured-blind",
       "probes": [
         {
@@ -5872,11 +5902,13 @@
           },
           "original": "Have you tried turning it off and on again?",
           "corrupted": "Have you tried turning it off and on again",
-          "engine_status": "unchanged",
-          "corrected": "Have you tried turning it off and on again",
-          "applied_rule_ids": [],
-          "caught": false,
-          "rule_family_correct": false
+          "engine_status": "corrected",
+          "corrected": "Have you tried turning it off and on again?",
+          "applied_rule_ids": [
+            "en-question-form-final-mark"
+          ],
+          "caught": true,
+          "rule_family_correct": true
         },
         {
           "probe_id": "94cf72fa93da",
@@ -6204,9 +6236,9 @@
       "lesson_title_en": "Doctor And Pharmacy Explanations",
       "english": "I have had a fever since yesterday.",
       "probes_run": 2,
-      "caught": 1,
-      "rule_family_correct": 1,
-      "coverage": "measured-blind",
+      "caught": 2,
+      "rule_family_correct": 2,
+      "coverage": "measured-covered",
       "probes": [
         {
           "probe_id": "33efa7ba4604",
@@ -6225,11 +6257,13 @@
           },
           "original": "I have had a fever since yesterday.",
           "corrupted": "I yesterday have had a fever since.",
-          "engine_status": "unchanged",
-          "corrected": "I yesterday have had a fever since.",
-          "applied_rule_ids": [],
-          "caught": false,
-          "rule_family_correct": false
+          "engine_status": "corrected",
+          "corrected": "I have had a fever since yesterday.",
+          "applied_rule_ids": [
+            "en-time-expression-placement"
+          ],
+          "caught": true,
+          "rule_family_correct": true
         },
         {
           "probe_id": "113ad6d619d5",
@@ -6267,9 +6301,9 @@
       "lesson_title_en": "Doctor And Pharmacy Explanations",
       "english": "Do you have a sore throat?",
       "probes_run": 3,
-      "caught": 2,
-      "rule_family_correct": 2,
-      "coverage": "measured-blind",
+      "caught": 3,
+      "rule_family_correct": 3,
+      "coverage": "measured-covered",
       "probes": [
         {
           "probe_id": "c1e3d0d5daf0",
@@ -6288,11 +6322,13 @@
           },
           "original": "Do you have a sore throat?",
           "corrupted": "Do you have sore throat?",
-          "engine_status": "unchanged",
-          "corrected": "Do you have sore throat?",
-          "applied_rule_ids": [],
-          "caught": false,
-          "rule_family_correct": false
+          "engine_status": "corrected",
+          "corrected": "Do you have a sore throat?",
+          "applied_rule_ids": [
+            "en-l4-missing-singular-article"
+          ],
+          "caught": true,
+          "rule_family_correct": true
         },
         {
           "probe_id": "a81b4408569f",
@@ -6419,9 +6455,9 @@
       "lesson_title_en": "Clarifying And Following Up",
       "english": "Yes, 6 o'clock is fine.",
       "probes_run": 1,
-      "caught": 0,
-      "rule_family_correct": 0,
-      "coverage": "measured-blind",
+      "caught": 1,
+      "rule_family_correct": 1,
+      "coverage": "measured-covered",
       "probes": [
         {
           "probe_id": "d15535999214",
@@ -6440,11 +6476,13 @@
           },
           "original": "Yes, 6 o'clock is fine.",
           "corrupted": "Yes, 6 o'clock fine.",
-          "engine_status": "unchanged",
-          "corrected": "Yes, 6 o'clock fine.",
-          "applied_rule_ids": [],
-          "caught": false,
-          "rule_family_correct": false
+          "engine_status": "corrected",
+          "corrected": "Yes, 6 o'clock is fine.",
+          "applied_rule_ids": [
+            "en-vn-copula-be-adjective"
+          ],
+          "caught": true,
+          "rule_family_correct": true
         }
       ]
     },
@@ -6598,8 +6636,8 @@
       "lesson_title_en": "Bank Account And ATM Problems",
       "english": "Do you already have a temporary residence card?",
       "probes_run": 3,
-      "caught": 1,
-      "rule_family_correct": 1,
+      "caught": 2,
+      "rule_family_correct": 2,
       "coverage": "measured-blind",
       "probes": [
         {
@@ -6619,11 +6657,13 @@
           },
           "original": "Do you already have a temporary residence card?",
           "corrupted": "Do you already have temporary residence card?",
-          "engine_status": "unchanged",
-          "corrected": "Do you already have temporary residence card?",
-          "applied_rule_ids": [],
-          "caught": false,
-          "rule_family_correct": false
+          "engine_status": "corrected",
+          "corrected": "Do you already have a temporary residence card?",
+          "applied_rule_ids": [
+            "en-l4-missing-singular-article"
+          ],
+          "caught": true,
+          "rule_family_correct": true
         },
         {
           "probe_id": "bf20b9b1efb4",
@@ -6696,9 +6736,9 @@
       "lesson_title_en": "Bank Account And ATM Problems",
       "english": "Okay, then you also need an address confirmation.",
       "probes_run": 1,
-      "caught": 0,
-      "rule_family_correct": 0,
-      "coverage": "measured-blind",
+      "caught": 1,
+      "rule_family_correct": 1,
+      "coverage": "measured-covered",
       "probes": [
         {
           "probe_id": "0d73a2a28055",
@@ -6717,11 +6757,13 @@
           },
           "original": "Okay, then you also need an address confirmation.",
           "corrupted": "Okay, then you also need address confirmation.",
-          "engine_status": "unchanged",
-          "corrected": "Okay, then you also need address confirmation.",
-          "applied_rule_ids": [],
-          "caught": false,
-          "rule_family_correct": false
+          "engine_status": "corrected",
+          "corrected": "Okay, then you also need an address confirmation.",
+          "applied_rule_ids": [
+            "en-l4-missing-singular-article"
+          ],
+          "caught": true,
+          "rule_family_correct": true
         }
       ]
     },
@@ -6733,9 +6775,9 @@
       "lesson_title_en": "Bank Account And ATM Problems",
       "english": "Yesterday the ATM took my card.",
       "probes_run": 1,
-      "caught": 0,
-      "rule_family_correct": 0,
-      "coverage": "measured-blind",
+      "caught": 1,
+      "rule_family_correct": 1,
+      "coverage": "measured-covered",
       "probes": [
         {
           "probe_id": "7168a7ff5f8f",
@@ -6755,11 +6797,13 @@
           },
           "original": "Yesterday the ATM took my card.",
           "corrupted": "Yesterday the ATM take my card.",
-          "engine_status": "unchanged",
-          "corrected": "Yesterday the ATM take my card.",
-          "applied_rule_ids": [],
-          "caught": false,
-          "rule_family_correct": false
+          "engine_status": "corrected",
+          "corrected": "Yesterday the ATM took my card.",
+          "applied_rule_ids": [
+            "en-yesterday-irregular-beginner-past"
+          ],
+          "caught": true,
+          "rule_family_correct": true
         }
       ]
     },
@@ -6797,9 +6841,9 @@
       "lesson_title_en": "Phone SIM And Internet Setup",
       "english": "Any network is fine, or do you want a stronger one?",
       "probes_run": 2,
-      "caught": 1,
-      "rule_family_correct": 1,
-      "coverage": "measured-blind",
+      "caught": 2,
+      "rule_family_correct": 2,
+      "coverage": "measured-covered",
       "probes": [
         {
           "probe_id": "b12a8811e7a7",
@@ -6843,11 +6887,13 @@
           },
           "original": "Any network is fine, or do you want a stronger one?",
           "corrupted": "Any network fine, or do you want a stronger one?",
-          "engine_status": "unchanged",
-          "corrected": "Any network fine, or do you want a stronger one?",
-          "applied_rule_ids": [],
-          "caught": false,
-          "rule_family_correct": false
+          "engine_status": "corrected",
+          "corrected": "Any network is fine, or do you want a stronger one?",
+          "applied_rule_ids": [
+            "en-vn-copula-be-adjective"
+          ],
+          "caught": true,
+          "rule_family_correct": true
         }
       ]
     },
@@ -6950,9 +6996,9 @@
       "lesson_title_en": "Workplace Problems And Requests",
       "english": "Okay, but it needs to be done before 5 o'clock today.",
       "probes_run": 1,
-      "caught": 0,
-      "rule_family_correct": 0,
-      "coverage": "measured-blind",
+      "caught": 1,
+      "rule_family_correct": 1,
+      "coverage": "measured-covered",
       "probes": [
         {
           "probe_id": "1c39053826fa",
@@ -6971,11 +7017,13 @@
           },
           "original": "Okay, but it needs to be done before 5 o'clock today.",
           "corrupted": "Okay, but it ne to be done before 5 o'clock today.",
-          "engine_status": "unchanged",
-          "corrected": "Okay, but it ne to be done before 5 o'clock today.",
-          "applied_rule_ids": [],
-          "caught": false,
-          "rule_family_correct": false
+          "engine_status": "corrected",
+          "corrected": "Okay, but it needs to be done before 5 o'clock today.",
+          "applied_rule_ids": [
+            "en-step5-subject-verb-agreement"
+          ],
+          "caught": true,
+          "rule_family_correct": true
         }
       ]
     },
@@ -7039,9 +7087,9 @@
       "lesson_title_en": "School Childcare And Family Schedules",
       "english": "I need to pick up my child at five p.m.",
       "probes_run": 1,
-      "caught": 0,
-      "rule_family_correct": 0,
-      "coverage": "measured-blind",
+      "caught": 1,
+      "rule_family_correct": 1,
+      "coverage": "measured-covered",
       "probes": [
         {
           "probe_id": "6acfd4736a48",
@@ -7060,11 +7108,13 @@
           },
           "original": "I need to pick up my child at five p.m.",
           "corrupted": "I need to pick up my child five p.m.",
-          "engine_status": "unchanged",
-          "corrected": "I need to pick up my child five p.m.",
-          "applied_rule_ids": [],
-          "caught": false,
-          "rule_family_correct": false
+          "engine_status": "corrected",
+          "corrected": "I need to pick up my child at five p.m.",
+          "applied_rule_ids": [
+            "en-step6-at-clock-time"
+          ],
+          "caught": true,
+          "rule_family_correct": true
         }
       ]
     },
@@ -7180,9 +7230,9 @@
       "lesson_title_en": "Dating Social Nuance And Boundaries",
       "english": "Okay, a cafe is fine.",
       "probes_run": 1,
-      "caught": 0,
-      "rule_family_correct": 0,
-      "coverage": "measured-blind",
+      "caught": 1,
+      "rule_family_correct": 1,
+      "coverage": "measured-covered",
       "probes": [
         {
           "probe_id": "b901e1904fd2",
@@ -7201,11 +7251,13 @@
           },
           "original": "Okay, a cafe is fine.",
           "corrupted": "Okay, a cafe fine.",
-          "engine_status": "unchanged",
-          "corrected": "Okay, a cafe fine.",
-          "applied_rule_ids": [],
-          "caught": false,
-          "rule_family_correct": false
+          "engine_status": "corrected",
+          "corrected": "Okay, a cafe is fine.",
+          "applied_rule_ids": [
+            "en-vn-copula-be-adjective"
+          ],
+          "caught": true,
+          "rule_family_correct": true
         }
       ]
     },
@@ -7321,8 +7373,8 @@
       "lesson_title_en": "Doctor Visit Symptoms And Pharmacy Details",
       "english": "Doctor, I have had a sore throat and cough for about three days.",
       "probes_run": 3,
-      "caught": 0,
-      "rule_family_correct": 0,
+      "caught": 3,
+      "rule_family_correct": 2,
       "coverage": "measured-blind",
       "probes": [
         {
@@ -7342,11 +7394,13 @@
           },
           "original": "Doctor, I have had a sore throat and cough for about three days.",
           "corrupted": "Doctor, I have had sore throat and cough for about three days.",
-          "engine_status": "unchanged",
-          "corrected": "Doctor, I have had sore throat and cough for about three days.",
-          "applied_rule_ids": [],
-          "caught": false,
-          "rule_family_correct": false
+          "engine_status": "corrected",
+          "corrected": "Doctor, I have had a sore throat and cough for about three days.",
+          "applied_rule_ids": [
+            "en-l4-missing-singular-article"
+          ],
+          "caught": true,
+          "rule_family_correct": true
         },
         {
           "probe_id": "46af4c260dd3",
@@ -7365,10 +7419,12 @@
           },
           "original": "Doctor, I have had a sore throat and cough for about three days.",
           "corrupted": "Doctor, I have had a sore throat and cough for about three day.",
-          "engine_status": "unchanged",
-          "corrected": "Doctor, I have had a sore throat and cough for about three day.",
-          "applied_rule_ids": [],
-          "caught": false,
+          "engine_status": "corrected",
+          "corrected": "Doctor, I have had a sore throat and cough for about three days.",
+          "applied_rule_ids": [
+            "en-vn-numeral-quantifier-plural"
+          ],
+          "caught": true,
           "rule_family_correct": false
         },
         {
@@ -7388,11 +7444,13 @@
           },
           "original": "Doctor, I have had a sore throat and cough for about three days.",
           "corrupted": "Doctor, I have had a sore throat and cough for about three day.",
-          "engine_status": "unchanged",
-          "corrected": "Doctor, I have had a sore throat and cough for about three day.",
-          "applied_rule_ids": [],
-          "caught": false,
-          "rule_family_correct": false
+          "engine_status": "corrected",
+          "corrected": "Doctor, I have had a sore throat and cough for about three days.",
+          "applied_rule_ids": [
+            "en-vn-numeral-quantifier-plural"
+          ],
+          "caught": true,
+          "rule_family_correct": true
         }
       ]
     },
@@ -7494,9 +7552,9 @@
       "lesson_title_en": "Doctor Visit Symptoms And Pharmacy Details",
       "english": "Do I take this medicine after eating?",
       "probes_run": 2,
-      "caught": 1,
-      "rule_family_correct": 1,
-      "coverage": "measured-blind",
+      "caught": 2,
+      "rule_family_correct": 2,
+      "coverage": "measured-covered",
       "probes": [
         {
           "probe_id": "f03990cdf718",
@@ -7540,11 +7598,13 @@
           },
           "original": "Do I take this medicine after eating?",
           "corrupted": "I take this medicine after eating?",
-          "engine_status": "unchanged",
-          "corrected": "I take this medicine after eating?",
-          "applied_rule_ids": [],
-          "caught": false,
-          "rule_family_correct": false
+          "engine_status": "corrected",
+          "corrected": "Do I take this medicine after eating?",
+          "applied_rule_ids": [
+            "en-vn-yesno-do-support"
+          ],
+          "caught": true,
+          "rule_family_correct": true
         }
       ]
     },
@@ -7569,9 +7629,9 @@
       "lesson_title_en": "Negotiating Politely And Making Complaints",
       "english": "Can you lower the price a little?",
       "probes_run": 2,
-      "caught": 1,
-      "rule_family_correct": 1,
-      "coverage": "measured-blind",
+      "caught": 2,
+      "rule_family_correct": 2,
+      "coverage": "measured-covered",
       "probes": [
         {
           "probe_id": "72fafb3daaf5",
@@ -7615,11 +7675,13 @@
           },
           "original": "Can you lower the price a little?",
           "corrupted": "You lower the price a little?",
-          "engine_status": "unchanged",
-          "corrected": "You lower the price a little?",
-          "applied_rule_ids": [],
-          "caught": false,
-          "rule_family_correct": false
+          "engine_status": "corrected",
+          "corrected": "Can you lower the price a little?",
+          "applied_rule_ids": [
+            "en-vn-yesno-do-support"
+          ],
+          "caught": true,
+          "rule_family_correct": true
         }
       ]
     },
@@ -7709,9 +7771,9 @@
       "lesson_title_en": "Negotiating Politely And Making Complaints",
       "english": "I understand, let me see if there is another option.",
       "probes_run": 1,
-      "caught": 0,
-      "rule_family_correct": 0,
-      "coverage": "measured-blind",
+      "caught": 1,
+      "rule_family_correct": 1,
+      "coverage": "measured-covered",
       "probes": [
         {
           "probe_id": "28ccbab012b4",
@@ -7730,11 +7792,13 @@
           },
           "original": "I understand, let me see if there is another option.",
           "corrupted": "I understand, let me see if Here have another option.",
-          "engine_status": "unchanged",
-          "corrected": "I understand, let me see if Here have another option.",
-          "applied_rule_ids": [],
-          "caught": false,
-          "rule_family_correct": false
+          "engine_status": "corrected",
+          "corrected": "I understand, let me see if there is another option.",
+          "applied_rule_ids": [
+            "en-existential-have-there-is"
+          ],
+          "caught": true,
+          "rule_family_correct": true
         }
       ]
     },
@@ -7785,9 +7849,9 @@
       "lesson_title_en": "Apologizing And Fixing Mistakes",
       "english": "Thank you, then it is fine.",
       "probes_run": 1,
-      "caught": 0,
-      "rule_family_correct": 0,
-      "coverage": "measured-blind",
+      "caught": 1,
+      "rule_family_correct": 1,
+      "coverage": "measured-covered",
       "probes": [
         {
           "probe_id": "09f5db50e28c",
@@ -7806,11 +7870,13 @@
           },
           "original": "Thank you, then it is fine.",
           "corrupted": "Thank you, then it fine.",
-          "engine_status": "unchanged",
-          "corrected": "Thank you, then it fine.",
-          "applied_rule_ids": [],
-          "caught": false,
-          "rule_family_correct": false
+          "engine_status": "corrected",
+          "corrected": "Thank you, then it is fine.",
+          "applied_rule_ids": [
+            "en-vn-copula-be-adjective"
+          ],
+          "caught": true,
+          "rule_family_correct": true
         }
       ]
     },
@@ -7988,8 +8054,8 @@
       "lesson_title_en": "Bank Account And ATM Problems",
       "english": "Do you already have a temporary residence card?",
       "probes_run": 3,
-      "caught": 1,
-      "rule_family_correct": 1,
+      "caught": 2,
+      "rule_family_correct": 2,
       "coverage": "measured-blind",
       "probes": [
         {
@@ -8009,11 +8075,13 @@
           },
           "original": "Do you already have a temporary residence card?",
           "corrupted": "Do you already have temporary residence card?",
-          "engine_status": "unchanged",
-          "corrected": "Do you already have temporary residence card?",
-          "applied_rule_ids": [],
-          "caught": false,
-          "rule_family_correct": false
+          "engine_status": "corrected",
+          "corrected": "Do you already have a temporary residence card?",
+          "applied_rule_ids": [
+            "en-l4-missing-singular-article"
+          ],
+          "caught": true,
+          "rule_family_correct": true
         },
         {
           "probe_id": "9987048472b7",
@@ -8268,9 +8336,9 @@
       "lesson_title_en": "Workplace Problems And Requests",
       "english": "Okay, but it needs to be finished before 5 o'clock today.",
       "probes_run": 1,
-      "caught": 0,
-      "rule_family_correct": 0,
-      "coverage": "measured-blind",
+      "caught": 1,
+      "rule_family_correct": 1,
+      "coverage": "measured-covered",
       "probes": [
         {
           "probe_id": "0e0e028926de",
@@ -8289,11 +8357,13 @@
           },
           "original": "Okay, but it needs to be finished before 5 o'clock today.",
           "corrupted": "Okay, but it ne to be finished before 5 o'clock today.",
-          "engine_status": "unchanged",
-          "corrected": "Okay, but it ne to be finished before 5 o'clock today.",
-          "applied_rule_ids": [],
-          "caught": false,
-          "rule_family_correct": false
+          "engine_status": "corrected",
+          "corrected": "Okay, but it needs to be finished before 5 o'clock today.",
+          "applied_rule_ids": [
+            "en-step5-subject-verb-agreement"
+          ],
+          "caught": true,
+          "rule_family_correct": true
         }
       ]
     },
@@ -8357,9 +8427,9 @@
       "lesson_title_en": "School Childcare And Family Schedules",
       "english": "I need to pick up my child at five in the evening.",
       "probes_run": 1,
-      "caught": 0,
-      "rule_family_correct": 0,
-      "coverage": "measured-blind",
+      "caught": 1,
+      "rule_family_correct": 1,
+      "coverage": "measured-covered",
       "probes": [
         {
           "probe_id": "5fa3299628b3",
@@ -8378,11 +8448,13 @@
           },
           "original": "I need to pick up my child at five in the evening.",
           "corrupted": "I need to pick up my child five in the evening.",
-          "engine_status": "unchanged",
-          "corrected": "I need to pick up my child five in the evening.",
-          "applied_rule_ids": [],
-          "caught": false,
-          "rule_family_correct": false
+          "engine_status": "corrected",
+          "corrected": "I need to pick up my child at five in the evening.",
+          "applied_rule_ids": [
+            "en-step6-at-clock-time"
+          ],
+          "caught": true,
+          "rule_family_correct": true
         }
       ]
     },
@@ -8498,9 +8570,9 @@
       "lesson_title_en": "Dating Social Nuance And Boundaries",
       "english": "Okay, a cafe is fine.",
       "probes_run": 1,
-      "caught": 0,
-      "rule_family_correct": 0,
-      "coverage": "measured-blind",
+      "caught": 1,
+      "rule_family_correct": 1,
+      "coverage": "measured-covered",
       "probes": [
         {
           "probe_id": "ca95d8fa23f8",
@@ -8519,11 +8591,13 @@
           },
           "original": "Okay, a cafe is fine.",
           "corrupted": "Okay, a cafe fine.",
-          "engine_status": "unchanged",
-          "corrected": "Okay, a cafe fine.",
-          "applied_rule_ids": [],
-          "caught": false,
-          "rule_family_correct": false
+          "engine_status": "corrected",
+          "corrected": "Okay, a cafe is fine.",
+          "applied_rule_ids": [
+            "en-vn-copula-be-adjective"
+          ],
+          "caught": true,
+          "rule_family_correct": true
         }
       ]
     },
@@ -8639,8 +8713,8 @@
       "lesson_title_en": "Doctor Visit Symptoms And Pharmacy Details",
       "english": "Doctor, I have had a sore throat and cough for about three days.",
       "probes_run": 3,
-      "caught": 0,
-      "rule_family_correct": 0,
+      "caught": 3,
+      "rule_family_correct": 2,
       "coverage": "measured-blind",
       "probes": [
         {
@@ -8660,11 +8734,13 @@
           },
           "original": "Doctor, I have had a sore throat and cough for about three days.",
           "corrupted": "Doctor, I have had sore throat and cough for about three days.",
-          "engine_status": "unchanged",
-          "corrected": "Doctor, I have had sore throat and cough for about three days.",
-          "applied_rule_ids": [],
-          "caught": false,
-          "rule_family_correct": false
+          "engine_status": "corrected",
+          "corrected": "Doctor, I have had a sore throat and cough for about three days.",
+          "applied_rule_ids": [
+            "en-l4-missing-singular-article"
+          ],
+          "caught": true,
+          "rule_family_correct": true
         },
         {
           "probe_id": "9f15554eee1b",
@@ -8683,10 +8759,12 @@
           },
           "original": "Doctor, I have had a sore throat and cough for about three days.",
           "corrupted": "Doctor, I have had a sore throat and cough for about three day.",
-          "engine_status": "unchanged",
-          "corrected": "Doctor, I have had a sore throat and cough for about three day.",
-          "applied_rule_ids": [],
-          "caught": false,
+          "engine_status": "corrected",
+          "corrected": "Doctor, I have had a sore throat and cough for about three days.",
+          "applied_rule_ids": [
+            "en-vn-numeral-quantifier-plural"
+          ],
+          "caught": true,
           "rule_family_correct": false
         },
         {
@@ -8706,11 +8784,13 @@
           },
           "original": "Doctor, I have had a sore throat and cough for about three days.",
           "corrupted": "Doctor, I have had a sore throat and cough for about three day.",
-          "engine_status": "unchanged",
-          "corrected": "Doctor, I have had a sore throat and cough for about three day.",
-          "applied_rule_ids": [],
-          "caught": false,
-          "rule_family_correct": false
+          "engine_status": "corrected",
+          "corrected": "Doctor, I have had a sore throat and cough for about three days.",
+          "applied_rule_ids": [
+            "en-vn-numeral-quantifier-plural"
+          ],
+          "caught": true,
+          "rule_family_correct": true
         }
       ]
     },
@@ -8812,9 +8892,9 @@
       "lesson_title_en": "Doctor Visit Symptoms And Pharmacy Details",
       "english": "Do I take this medicine after eating?",
       "probes_run": 2,
-      "caught": 1,
-      "rule_family_correct": 1,
-      "coverage": "measured-blind",
+      "caught": 2,
+      "rule_family_correct": 2,
+      "coverage": "measured-covered",
       "probes": [
         {
           "probe_id": "ee358448c168",
@@ -8858,11 +8938,13 @@
           },
           "original": "Do I take this medicine after eating?",
           "corrupted": "I take this medicine after eating?",
-          "engine_status": "unchanged",
-          "corrected": "I take this medicine after eating?",
-          "applied_rule_ids": [],
-          "caught": false,
-          "rule_family_correct": false
+          "engine_status": "corrected",
+          "corrected": "Do I take this medicine after eating?",
+          "applied_rule_ids": [
+            "en-vn-yesno-do-support"
+          ],
+          "caught": true,
+          "rule_family_correct": true
         }
       ]
     },
@@ -8926,9 +9008,9 @@
       "lesson_title_en": "Pharmacy Details And Dosage",
       "english": "After eating is better.",
       "probes_run": 2,
-      "caught": 1,
-      "rule_family_correct": 1,
-      "coverage": "measured-blind",
+      "caught": 2,
+      "rule_family_correct": 2,
+      "coverage": "measured-covered",
       "probes": [
         {
           "probe_id": "d269a4194353",
@@ -8972,11 +9054,13 @@
           },
           "original": "After eating is better.",
           "corrupted": "After eating better.",
-          "engine_status": "unchanged",
-          "corrected": "After eating better.",
-          "applied_rule_ids": [],
-          "caught": false,
-          "rule_family_correct": false
+          "engine_status": "corrected",
+          "corrected": "After eating is better.",
+          "applied_rule_ids": [
+            "en-vn-copula-be-adjective"
+          ],
+          "caught": true,
+          "rule_family_correct": true
         }
       ]
     },
@@ -8988,9 +9072,9 @@
       "lesson_title_en": "Pharmacy Details And Dosage",
       "english": "Is there something that will not make me sleepy?",
       "probes_run": 2,
-      "caught": 1,
-      "rule_family_correct": 1,
-      "coverage": "measured-blind",
+      "caught": 2,
+      "rule_family_correct": 2,
+      "coverage": "measured-covered",
       "probes": [
         {
           "probe_id": "6879be8fcd3f",
@@ -9034,11 +9118,13 @@
           },
           "original": "Is there something that will not make me sleepy?",
           "corrupted": "There something that will not make me sleepy?",
-          "engine_status": "unchanged",
-          "corrected": "There something that will not make me sleepy?",
-          "applied_rule_ids": [],
-          "caught": false,
-          "rule_family_correct": false
+          "engine_status": "corrected",
+          "corrected": "Is there something that will not make me sleepy?",
+          "applied_rule_ids": [
+            "en-vn-yesno-do-support"
+          ],
+          "caught": true,
+          "rule_family_correct": true
         }
       ]
     },
@@ -9063,9 +9149,9 @@
       "lesson_title_en": "Negotiating Politely",
       "english": "Can you lower the price a little?",
       "probes_run": 2,
-      "caught": 1,
-      "rule_family_correct": 1,
-      "coverage": "measured-blind",
+      "caught": 2,
+      "rule_family_correct": 2,
+      "coverage": "measured-covered",
       "probes": [
         {
           "probe_id": "535edfb3b3c0",
@@ -9109,11 +9195,13 @@
           },
           "original": "Can you lower the price a little?",
           "corrupted": "You lower the price a little?",
-          "engine_status": "unchanged",
-          "corrected": "You lower the price a little?",
-          "applied_rule_ids": [],
-          "caught": false,
-          "rule_family_correct": false
+          "engine_status": "corrected",
+          "corrected": "Can you lower the price a little?",
+          "applied_rule_ids": [
+            "en-vn-yesno-do-support"
+          ],
+          "caught": true,
+          "rule_family_correct": true
         }
       ]
     },
@@ -9203,9 +9291,9 @@
       "lesson_title_en": "Negotiating Politely",
       "english": "I understand, let me see if there is another option.",
       "probes_run": 1,
-      "caught": 0,
-      "rule_family_correct": 0,
-      "coverage": "measured-blind",
+      "caught": 1,
+      "rule_family_correct": 1,
+      "coverage": "measured-covered",
       "probes": [
         {
           "probe_id": "67db422992cc",
@@ -9224,11 +9312,13 @@
           },
           "original": "I understand, let me see if there is another option.",
           "corrupted": "I understand, let me see if Here have another option.",
-          "engine_status": "unchanged",
-          "corrected": "I understand, let me see if Here have another option.",
-          "applied_rule_ids": [],
-          "caught": false,
-          "rule_family_correct": false
+          "engine_status": "corrected",
+          "corrected": "I understand, let me see if there is another option.",
+          "applied_rule_ids": [
+            "en-existential-have-there-is"
+          ],
+          "caught": true,
+          "rule_family_correct": true
         }
       ]
     },
@@ -9240,8 +9330,8 @@
       "lesson_title_en": "Telling Longer Stories",
       "english": "Yesterday I went to the clinic because I felt unwell.",
       "probes_run": 3,
-      "caught": 2,
-      "rule_family_correct": 1,
+      "caught": 3,
+      "rule_family_correct": 2,
       "coverage": "measured-blind",
       "probes": [
         {
@@ -9286,11 +9376,13 @@
           },
           "original": "Yesterday I went to the clinic because I felt unwell.",
           "corrupted": "Yesterday I went to the clinic Because I felt, so unwell.",
-          "engine_status": "unchanged",
-          "corrected": "Yesterday I went to the clinic Because I felt, so unwell.",
-          "applied_rule_ids": [],
-          "caught": false,
-          "rule_family_correct": false
+          "engine_status": "corrected",
+          "corrected": "Yesterday I went to the clinic Because I felt, unwell.",
+          "applied_rule_ids": [
+            "en-vn-because-so-doubling"
+          ],
+          "caught": true,
+          "rule_family_correct": true
         },
         {
           "probe_id": "10040c961a66",
@@ -9471,9 +9563,9 @@
       "lesson_title_en": "Explaining Preferences And Reasons",
       "english": "I like this area because it is quiet and convenient.",
       "probes_run": 3,
-      "caught": 0,
-      "rule_family_correct": 0,
-      "coverage": "measured-blind",
+      "caught": 3,
+      "rule_family_correct": 3,
+      "coverage": "measured-covered",
       "probes": [
         {
           "probe_id": "72a78d57bc2a",
@@ -9492,11 +9584,13 @@
           },
           "original": "I like this area because it is quiet and convenient.",
           "corrupted": "this I like area because it is quiet and convenient.",
-          "engine_status": "unchanged",
-          "corrected": "this I like area because it is quiet and convenient.",
-          "applied_rule_ids": [],
-          "caught": false,
-          "rule_family_correct": false
+          "engine_status": "corrected",
+          "corrected": "I like this area because it is quiet and convenient.",
+          "applied_rule_ids": [
+            "en-l4-topic-comment-word-order"
+          ],
+          "caught": true,
+          "rule_family_correct": true
         },
         {
           "probe_id": "8330d1143a5e",
@@ -9515,11 +9609,13 @@
           },
           "original": "I like this area because it is quiet and convenient.",
           "corrupted": "I like this area Because it is quiet and, so convenient.",
-          "engine_status": "unchanged",
-          "corrected": "I like this area Because it is quiet and, so convenient.",
-          "applied_rule_ids": [],
-          "caught": false,
-          "rule_family_correct": false
+          "engine_status": "corrected",
+          "corrected": "I like this area Because it is quiet and, convenient.",
+          "applied_rule_ids": [
+            "en-vn-because-so-doubling"
+          ],
+          "caught": true,
+          "rule_family_correct": true
         },
         {
           "probe_id": "ac09df37ac99",
@@ -9538,11 +9634,13 @@
           },
           "original": "I like this area because it is quiet and convenient.",
           "corrupted": "I like this area because it quiet and convenient.",
-          "engine_status": "unchanged",
-          "corrected": "I like this area because it quiet and convenient.",
-          "applied_rule_ids": [],
-          "caught": false,
-          "rule_family_correct": false
+          "engine_status": "corrected",
+          "corrected": "I like this area because it is quiet and convenient.",
+          "applied_rule_ids": [
+            "en-vn-copula-be-adjective"
+          ],
+          "caught": true,
+          "rule_family_correct": true
         }
       ]
     },
@@ -9554,9 +9652,9 @@
       "lesson_title_en": "Explaining Preferences And Reasons",
       "english": "Then why do you not move closer to the center?",
       "probes_run": 1,
-      "caught": 0,
-      "rule_family_correct": 0,
-      "coverage": "measured-blind",
+      "caught": 1,
+      "rule_family_correct": 1,
+      "coverage": "measured-covered",
       "probes": [
         {
           "probe_id": "226e61d85acd",
@@ -9575,11 +9673,13 @@
           },
           "original": "Then why do you not move closer to the center?",
           "corrupted": "Then why do you not move more closer to the center?",
-          "engine_status": "unchanged",
-          "corrected": "Then why do you not move more closer to the center?",
-          "applied_rule_ids": [],
-          "caught": false,
-          "rule_family_correct": false
+          "engine_status": "corrected",
+          "corrected": "Then why do you not move closer to the center?",
+          "applied_rule_ids": [
+            "en-vietlish-double-comparative"
+          ],
+          "caught": true,
+          "rule_family_correct": true
         }
       ]
     },
@@ -9643,9 +9743,9 @@
       "lesson_title_en": "Explaining Preferences And Reasons",
       "english": "I chose this cafe because it is good for working.",
       "probes_run": 2,
-      "caught": 0,
-      "rule_family_correct": 0,
-      "coverage": "measured-blind",
+      "caught": 2,
+      "rule_family_correct": 2,
+      "coverage": "measured-covered",
       "probes": [
         {
           "probe_id": "69ec95246f35",
@@ -9664,11 +9764,13 @@
           },
           "original": "I chose this cafe because it is good for working.",
           "corrupted": "I chose this cafe Because it is good for, so working.",
-          "engine_status": "unchanged",
-          "corrected": "I chose this cafe Because it is good for, so working.",
-          "applied_rule_ids": [],
-          "caught": false,
-          "rule_family_correct": false
+          "engine_status": "corrected",
+          "corrected": "I chose this cafe Because it is good for, working.",
+          "applied_rule_ids": [
+            "en-vn-because-so-doubling"
+          ],
+          "caught": true,
+          "rule_family_correct": true
         },
         {
           "probe_id": "c0c41ca9b9ab",
@@ -9687,11 +9789,13 @@
           },
           "original": "I chose this cafe because it is good for working.",
           "corrupted": "I chose this cafe because it good for working.",
-          "engine_status": "unchanged",
-          "corrected": "I chose this cafe because it good for working.",
-          "applied_rule_ids": [],
-          "caught": false,
-          "rule_family_correct": false
+          "engine_status": "corrected",
+          "corrected": "I chose this cafe because it is good for working.",
+          "applied_rule_ids": [
+            "en-vn-copula-be-adjective"
+          ],
+          "caught": true,
+          "rule_family_correct": true
         }
       ]
     },
@@ -9703,9 +9807,9 @@
       "lesson_title_en": "Explaining Preferences And Reasons",
       "english": "Yeah, it is quiet here and the Wi-Fi is stable.",
       "probes_run": 1,
-      "caught": 0,
-      "rule_family_correct": 0,
-      "coverage": "measured-blind",
+      "caught": 1,
+      "rule_family_correct": 1,
+      "coverage": "measured-covered",
       "probes": [
         {
           "probe_id": "74451222e310",
@@ -9724,11 +9828,13 @@
           },
           "original": "Yeah, it is quiet here and the Wi-Fi is stable.",
           "corrupted": "Yeah, it quiet here and the Wi-Fi is stable.",
-          "engine_status": "unchanged",
-          "corrected": "Yeah, it quiet here and the Wi-Fi is stable.",
-          "applied_rule_ids": [],
-          "caught": false,
-          "rule_family_correct": false
+          "engine_status": "corrected",
+          "corrected": "Yeah, it is quiet here and the Wi-Fi is stable.",
+          "applied_rule_ids": [
+            "en-vn-copula-be-adjective"
+          ],
+          "caught": true,
+          "rule_family_correct": true
         }
       ]
     }

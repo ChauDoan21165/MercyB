@@ -6660,19 +6660,13 @@
       "has_ipa": false,
       "has_translation": true,
       "int_probe": {
-        "state": "blind",
+        "state": "covered",
         "scope": "dialogue_probe_subset",
         "source": "reports/cell-inventory/int-probe-vn-en-a1.json",
         "probes_run": 2,
-        "covered_probe_count": 1,
-        "blind_probe_count": 1,
-        "abstention_marker": {
-          "kind": "class_b_fixture_locked_abstention",
-          "probe_id": "41570833003f",
-          "rule_family": "en-vn-yesno-do-support",
-          "engine_status": "unchanged",
-          "corrupted": "This the right car?"
-        }
+        "covered_probe_count": 2,
+        "blind_probe_count": 0,
+        "abstention_marker": null
       }
     },
     {
@@ -6952,19 +6946,13 @@
       "has_ipa": false,
       "has_translation": true,
       "int_probe": {
-        "state": "blind",
+        "state": "covered",
         "scope": "dialogue_probe_subset",
         "source": "reports/cell-inventory/int-probe-vn-en-a1.json",
         "probes_run": 2,
-        "covered_probe_count": 1,
-        "blind_probe_count": 1,
-        "abstention_marker": {
-          "kind": "class_b_fixture_locked_abstention",
-          "probe_id": "84b083cd3d08",
-          "rule_family": "en-vn-yesno-do-support",
-          "engine_status": "unchanged",
-          "corrupted": "It far?"
-        }
+        "covered_probe_count": 2,
+        "blind_probe_count": 0,
+        "abstention_marker": null
       }
     },
     {
@@ -7444,19 +7432,13 @@
       "has_ipa": false,
       "has_translation": true,
       "int_probe": {
-        "state": "blind",
+        "state": "covered",
         "scope": "dialogue_probe_subset",
         "source": "reports/cell-inventory/int-probe-vn-en-a1.json",
         "probes_run": 1,
-        "covered_probe_count": 0,
-        "blind_probe_count": 1,
-        "abstention_marker": {
-          "kind": "class_b_fixture_locked_abstention",
-          "probe_id": "a3d7f70b82eb",
-          "rule_family": "en-step6-location-be-drop",
-          "engine_status": "unchanged",
-          "corrupted": "I from Canada."
-        }
+        "covered_probe_count": 1,
+        "blind_probe_count": 0,
+        "abstention_marker": null
       }
     },
     {
@@ -7530,19 +7512,13 @@
       "has_ipa": false,
       "has_translation": true,
       "int_probe": {
-        "state": "blind",
+        "state": "covered",
         "scope": "dialogue_probe_subset",
         "source": "reports/cell-inventory/int-probe-vn-en-a1.json",
         "probes_run": 1,
-        "covered_probe_count": 0,
-        "blind_probe_count": 1,
-        "abstention_marker": {
-          "kind": "class_b_fixture_locked_abstention",
-          "probe_id": "1a6128c5dae6",
-          "rule_family": "en-vn-copula-be-adjective",
-          "engine_status": "unchanged",
-          "corrupted": "Sorry, the air conditioner broken."
-        }
+        "covered_probe_count": 1,
+        "blind_probe_count": 0,
+        "abstention_marker": null
       }
     },
     {
@@ -7736,19 +7712,13 @@
       "has_ipa": false,
       "has_translation": true,
       "int_probe": {
-        "state": "blind",
+        "state": "covered",
         "scope": "dialogue_probe_subset",
         "source": "reports/cell-inventory/int-probe-vn-en-a1.json",
         "probes_run": 1,
-        "covered_probe_count": 0,
-        "blind_probe_count": 1,
-        "abstention_marker": {
-          "kind": "class_b_fixture_locked_abstention",
-          "probe_id": "a1a2b793aee2",
-          "rule_family": "en-vn-copula-be-adjective",
-          "engine_status": "unchanged",
-          "corrupted": "Excuse me, I lost."
-        }
+        "covered_probe_count": 1,
+        "blind_probe_count": 0,
+        "abstention_marker": null
       }
     },
     {
@@ -7822,19 +7792,13 @@
       "has_ipa": false,
       "has_translation": true,
       "int_probe": {
-        "state": "blind",
+        "state": "covered",
         "scope": "dialogue_probe_subset",
         "source": "reports/cell-inventory/int-probe-vn-en-a1.json",
         "probes_run": 1,
-        "covered_probe_count": 0,
-        "blind_probe_count": 1,
-        "abstention_marker": {
-          "kind": "class_b_fixture_locked_abstention",
-          "probe_id": "c42363a3804c",
-          "rule_family": "en-step5-preposition-pattern",
-          "engine_status": "unchanged",
-          "corrupted": "I want to go this hotel."
-        }
+        "covered_probe_count": 1,
+        "blind_probe_count": 0,
+        "abstention_marker": null
       }
     },
     {
@@ -7908,19 +7872,13 @@
       "has_ipa": false,
       "has_translation": true,
       "int_probe": {
-        "state": "blind",
+        "state": "covered",
         "scope": "dialogue_probe_subset",
         "source": "reports/cell-inventory/int-probe-vn-en-a1.json",
         "probes_run": 2,
-        "covered_probe_count": 1,
-        "blind_probe_count": 1,
-        "abstention_marker": {
-          "kind": "class_b_fixture_locked_abstention",
-          "probe_id": "420b3005e502",
-          "rule_family": "en-vn-yesno-do-support",
-          "engine_status": "unchanged",
-          "corrupted": "You show me on the map?"
-        }
+        "covered_probe_count": 2,
+        "blind_probe_count": 0,
+        "abstention_marker": null
       }
     },
     {
@@ -8246,19 +8204,13 @@
       "has_ipa": false,
       "has_translation": true,
       "int_probe": {
-        "state": "blind",
+        "state": "covered",
         "scope": "dialogue_probe_subset",
         "source": "reports/cell-inventory/int-probe-vn-en-a1.json",
         "probes_run": 1,
-        "covered_probe_count": 0,
-        "blind_probe_count": 1,
-        "abstention_marker": {
-          "kind": "class_b_fixture_locked_abstention",
-          "probe_id": "befd02ad1ace",
-          "rule_family": "en-vn-copula-be-adjective",
-          "engine_status": "unchanged",
-          "corrupted": "Excuse me, I sick."
-        }
+        "covered_probe_count": 1,
+        "blind_probe_count": 0,
+        "abstention_marker": null
       }
     },
     {
@@ -8292,19 +8244,13 @@
       "has_ipa": false,
       "has_translation": true,
       "int_probe": {
-        "state": "blind",
+        "state": "covered",
         "scope": "dialogue_probe_subset",
         "source": "reports/cell-inventory/int-probe-vn-en-a1.json",
         "probes_run": 2,
-        "covered_probe_count": 1,
-        "blind_probe_count": 1,
-        "abstention_marker": {
-          "kind": "class_b_fixture_locked_abstention",
-          "probe_id": "3c2598620e7d",
-          "rule_family": "en-vn-copula-be-adjective",
-          "engine_status": "unchanged",
-          "corrupted": "What wrong?"
-        }
+        "covered_probe_count": 2,
+        "blind_probe_count": 0,
+        "abstention_marker": null
       }
     },
     {
@@ -8338,19 +8284,13 @@
       "has_ipa": false,
       "has_translation": true,
       "int_probe": {
-        "state": "blind",
+        "state": "covered",
         "scope": "dialogue_probe_subset",
         "source": "reports/cell-inventory/int-probe-vn-en-a1.json",
         "probes_run": 1,
-        "covered_probe_count": 0,
-        "blind_probe_count": 1,
-        "abstention_marker": {
-          "kind": "class_b_fixture_locked_abstention",
-          "probe_id": "b6a1c44d6f5c",
-          "rule_family": "en-l4-missing-singular-article",
-          "engine_status": "unchanged",
-          "corrupted": "I have stomachache."
-        }
+        "covered_probe_count": 1,
+        "blind_probe_count": 0,
+        "abstention_marker": null
       }
     },
     {
@@ -8474,8 +8414,8 @@
         "scope": "dialogue_probe_subset",
         "source": "reports/cell-inventory/int-probe-vn-en-a1.json",
         "probes_run": 1,
-        "covered_probe_count": 0,
-        "blind_probe_count": 1,
+        "covered_probe_count": 1,
+        "blind_probe_count": 0,
         "abstention_marker": null
       }
     },
@@ -10230,13 +10170,19 @@
       "has_ipa": false,
       "has_translation": true,
       "int_probe": {
-        "state": "covered",
+        "state": "blind",
         "scope": "dialogue_probe_subset",
         "source": "reports/cell-inventory/int-probe-vn-en-a1.json",
         "probes_run": 3,
-        "covered_probe_count": 0,
-        "blind_probe_count": 3,
-        "abstention_marker": null
+        "covered_probe_count": 2,
+        "blind_probe_count": 1,
+        "abstention_marker": {
+          "kind": "class_b_fixture_locked_abstention",
+          "probe_id": "6a92adc8716b",
+          "rule_family": "en-yesterday-irregular-beginner-past",
+          "engine_status": "corrected",
+          "corrupted": "I go to work, then came home early."
+        }
       }
     },
     {
@@ -10594,8 +10540,8 @@
         "scope": "dialogue_probe_subset",
         "source": "reports/cell-inventory/int-probe-vn-en-a1.json",
         "probes_run": 1,
-        "covered_probe_count": 0,
-        "blind_probe_count": 1,
+        "covered_probe_count": 1,
+        "blind_probe_count": 0,
         "abstention_marker": null
       }
     },
@@ -10670,13 +10616,19 @@
       "has_ipa": false,
       "has_translation": true,
       "int_probe": {
-        "state": "covered",
+        "state": "blind",
         "scope": "dialogue_probe_subset",
         "source": "reports/cell-inventory/int-probe-vn-en-a1.json",
         "probes_run": 2,
-        "covered_probe_count": 0,
-        "blind_probe_count": 2,
-        "abstention_marker": null
+        "covered_probe_count": 1,
+        "blind_probe_count": 1,
+        "abstention_marker": {
+          "kind": "class_b_fixture_locked_abstention",
+          "probe_id": "94cf72fa93da",
+          "rule_family": "en-vn-yesno-do-support",
+          "engine_status": "unchanged",
+          "corrupted": "You tried turning it off and on again?"
+        }
       }
     },
     {
@@ -11630,13 +11582,19 @@
       "has_ipa": false,
       "has_translation": true,
       "int_probe": {
-        "state": "covered",
+        "state": "blind",
         "scope": "dialogue_probe_subset",
         "source": "reports/cell-inventory/int-probe-vn-en-a1.json",
         "probes_run": 2,
         "covered_probe_count": 1,
         "blind_probe_count": 1,
-        "abstention_marker": null
+        "abstention_marker": {
+          "kind": "class_b_fixture_locked_abstention",
+          "probe_id": "2bb92f23d583",
+          "rule_family": "en-vn-yesno-do-support",
+          "engine_status": "unchanged",
+          "corrupted": "Work busy?"
+        }
       }
     },
     {
@@ -12150,13 +12108,19 @@
       "has_ipa": false,
       "has_translation": true,
       "int_probe": {
-        "state": "covered",
+        "state": "blind",
         "scope": "dialogue_probe_subset",
         "source": "reports/cell-inventory/int-probe-vn-en-a1.json",
         "probes_run": 2,
         "covered_probe_count": 1,
         "blind_probe_count": 1,
-        "abstention_marker": null
+        "abstention_marker": {
+          "kind": "class_b_fixture_locked_abstention",
+          "probe_id": "eb6f5d3ed99f",
+          "rule_family": "en-vn-yesno-do-support",
+          "engine_status": "unchanged",
+          "corrupted": "Electricity and water included in the rent?"
+        }
       }
     },
     {
@@ -12554,8 +12518,8 @@
         "scope": "dialogue_probe_subset",
         "source": "reports/cell-inventory/int-probe-vn-en-a1.json",
         "probes_run": 2,
-        "covered_probe_count": 1,
-        "blind_probe_count": 1,
+        "covered_probe_count": 2,
+        "blind_probe_count": 0,
         "abstention_marker": null
       }
     },
@@ -12594,8 +12558,8 @@
         "scope": "dialogue_probe_subset",
         "source": "reports/cell-inventory/int-probe-vn-en-a1.json",
         "probes_run": 3,
-        "covered_probe_count": 2,
-        "blind_probe_count": 1,
+        "covered_probe_count": 3,
+        "blind_probe_count": 0,
         "abstention_marker": null
       }
     },
@@ -13514,8 +13478,8 @@
         "scope": "dialogue_probe_subset",
         "source": "reports/cell-inventory/int-probe-vn-en-a1.json",
         "probes_run": 1,
-        "covered_probe_count": 0,
-        "blind_probe_count": 1,
+        "covered_probe_count": 1,
+        "blind_probe_count": 0,
         "abstention_marker": null
       }
     },
@@ -16630,13 +16594,19 @@
       "has_ipa": false,
       "has_translation": true,
       "int_probe": {
-        "state": "covered",
+        "state": "blind",
         "scope": "dialogue_probe_subset",
         "source": "reports/cell-inventory/int-probe-vn-en-a1.json",
         "probes_run": 3,
-        "covered_probe_count": 1,
-        "blind_probe_count": 2,
-        "abstention_marker": null
+        "covered_probe_count": 2,
+        "blind_probe_count": 1,
+        "abstention_marker": {
+          "kind": "class_b_fixture_locked_abstention",
+          "probe_id": "e81ca121679f",
+          "rule_family": "en-vn-yesno-do-support",
+          "engine_status": "unchanged",
+          "corrupted": "You already have a temporary residence card?"
+        }
       }
     },
     {
@@ -16714,8 +16684,8 @@
         "scope": "dialogue_probe_subset",
         "source": "reports/cell-inventory/int-probe-vn-en-a1.json",
         "probes_run": 1,
-        "covered_probe_count": 0,
-        "blind_probe_count": 1,
+        "covered_probe_count": 1,
+        "blind_probe_count": 0,
         "abstention_marker": null
       }
     },
@@ -16754,8 +16724,8 @@
         "scope": "dialogue_probe_subset",
         "source": "reports/cell-inventory/int-probe-vn-en-a1.json",
         "probes_run": 1,
-        "covered_probe_count": 0,
-        "blind_probe_count": 1,
+        "covered_probe_count": 1,
+        "blind_probe_count": 0,
         "abstention_marker": null
       }
     },
@@ -17074,8 +17044,8 @@
         "scope": "dialogue_probe_subset",
         "source": "reports/cell-inventory/int-probe-vn-en-a1.json",
         "probes_run": 2,
-        "covered_probe_count": 1,
-        "blind_probe_count": 1,
+        "covered_probe_count": 2,
+        "blind_probe_count": 0,
         "abstention_marker": null
       }
     },
@@ -17594,8 +17564,8 @@
         "scope": "dialogue_probe_subset",
         "source": "reports/cell-inventory/int-probe-vn-en-a1.json",
         "probes_run": 1,
-        "covered_probe_count": 0,
-        "blind_probe_count": 1,
+        "covered_probe_count": 1,
+        "blind_probe_count": 0,
         "abstention_marker": null
       }
     },
@@ -17994,8 +17964,8 @@
         "scope": "dialogue_probe_subset",
         "source": "reports/cell-inventory/int-probe-vn-en-a1.json",
         "probes_run": 1,
-        "covered_probe_count": 0,
-        "blind_probe_count": 1,
+        "covered_probe_count": 1,
+        "blind_probe_count": 0,
         "abstention_marker": null
       }
     },
@@ -18474,8 +18444,8 @@
         "scope": "dialogue_probe_subset",
         "source": "reports/cell-inventory/int-probe-vn-en-a1.json",
         "probes_run": 1,
-        "covered_probe_count": 0,
-        "blind_probe_count": 1,
+        "covered_probe_count": 1,
+        "blind_probe_count": 0,
         "abstention_marker": null
       }
     },
@@ -19230,13 +19200,19 @@
       "has_ipa": false,
       "has_translation": true,
       "int_probe": {
-        "state": "covered",
+        "state": "blind",
         "scope": "dialogue_probe_subset",
         "source": "reports/cell-inventory/int-probe-vn-en-a1.json",
         "probes_run": 3,
-        "covered_probe_count": 0,
-        "blind_probe_count": 3,
-        "abstention_marker": null
+        "covered_probe_count": 2,
+        "blind_probe_count": 1,
+        "abstention_marker": {
+          "kind": "class_b_fixture_locked_abstention",
+          "probe_id": "46af4c260dd3",
+          "rule_family": "en-l4-quantity-plural-s",
+          "engine_status": "corrected",
+          "corrupted": "Doctor, I have had a sore throat and cough for about three day."
+        }
       }
     },
     {
@@ -19394,8 +19370,8 @@
         "scope": "dialogue_probe_subset",
         "source": "reports/cell-inventory/int-probe-vn-en-a1.json",
         "probes_run": 2,
-        "covered_probe_count": 1,
-        "blind_probe_count": 1,
+        "covered_probe_count": 2,
+        "blind_probe_count": 0,
         "abstention_marker": null
       }
     },
@@ -19674,8 +19650,8 @@
         "scope": "dialogue_probe_subset",
         "source": "reports/cell-inventory/int-probe-vn-en-a1.json",
         "probes_run": 2,
-        "covered_probe_count": 1,
-        "blind_probe_count": 1,
+        "covered_probe_count": 2,
+        "blind_probe_count": 0,
         "abstention_marker": null
       }
     },
@@ -19874,8 +19850,8 @@
         "scope": "dialogue_probe_subset",
         "source": "reports/cell-inventory/int-probe-vn-en-a1.json",
         "probes_run": 1,
-        "covered_probe_count": 0,
-        "blind_probe_count": 1,
+        "covered_probe_count": 1,
+        "blind_probe_count": 0,
         "abstention_marker": null
       }
     },
@@ -20434,8 +20410,8 @@
         "scope": "dialogue_probe_subset",
         "source": "reports/cell-inventory/int-probe-vn-en-a1.json",
         "probes_run": 1,
-        "covered_probe_count": 0,
-        "blind_probe_count": 1,
+        "covered_probe_count": 1,
+        "blind_probe_count": 0,
         "abstention_marker": null
       }
     },
@@ -20910,13 +20886,19 @@
       "has_ipa": false,
       "has_translation": true,
       "int_probe": {
-        "state": "covered",
+        "state": "blind",
         "scope": "dialogue_probe_subset",
         "source": "reports/cell-inventory/int-probe-vn-en-a1.json",
         "probes_run": 2,
         "covered_probe_count": 1,
         "blind_probe_count": 1,
-        "abstention_marker": null
+        "abstention_marker": {
+          "kind": "class_b_fixture_locked_abstention",
+          "probe_id": "54df029881c5",
+          "rule_family": "en-vn-yesno-do-support",
+          "engine_status": "unchanged",
+          "corrupted": "You already have all the documents?"
+        }
       }
     },
     {
@@ -21270,13 +21252,19 @@
       "has_ipa": false,
       "has_translation": true,
       "int_probe": {
-        "state": "covered",
+        "state": "blind",
         "scope": "dialogue_probe_subset",
         "source": "reports/cell-inventory/int-probe-vn-en-a1.json",
         "probes_run": 3,
-        "covered_probe_count": 1,
-        "blind_probe_count": 2,
-        "abstention_marker": null
+        "covered_probe_count": 2,
+        "blind_probe_count": 1,
+        "abstention_marker": {
+          "kind": "class_b_fixture_locked_abstention",
+          "probe_id": "873070645eed",
+          "rule_family": "en-vn-yesno-do-support",
+          "engine_status": "unchanged",
+          "corrupted": "You already have a temporary residence card?"
+        }
       }
     },
     {
@@ -22074,8 +22062,8 @@
         "scope": "dialogue_probe_subset",
         "source": "reports/cell-inventory/int-probe-vn-en-a1.json",
         "probes_run": 1,
-        "covered_probe_count": 0,
-        "blind_probe_count": 1,
+        "covered_probe_count": 1,
+        "blind_probe_count": 0,
         "abstention_marker": null
       }
     },
@@ -22394,8 +22382,8 @@
         "scope": "dialogue_probe_subset",
         "source": "reports/cell-inventory/int-probe-vn-en-a1.json",
         "probes_run": 1,
-        "covered_probe_count": 0,
-        "blind_probe_count": 1,
+        "covered_probe_count": 1,
+        "blind_probe_count": 0,
         "abstention_marker": null
       }
     },
@@ -22794,8 +22782,8 @@
         "scope": "dialogue_probe_subset",
         "source": "reports/cell-inventory/int-probe-vn-en-a1.json",
         "probes_run": 1,
-        "covered_probe_count": 0,
-        "blind_probe_count": 1,
+        "covered_probe_count": 1,
+        "blind_probe_count": 0,
         "abstention_marker": null
       }
     },
@@ -23390,13 +23378,19 @@
       "has_ipa": false,
       "has_translation": true,
       "int_probe": {
-        "state": "covered",
+        "state": "blind",
         "scope": "dialogue_probe_subset",
         "source": "reports/cell-inventory/int-probe-vn-en-a1.json",
         "probes_run": 3,
-        "covered_probe_count": 0,
-        "blind_probe_count": 3,
-        "abstention_marker": null
+        "covered_probe_count": 2,
+        "blind_probe_count": 1,
+        "abstention_marker": {
+          "kind": "class_b_fixture_locked_abstention",
+          "probe_id": "9f15554eee1b",
+          "rule_family": "en-l4-quantity-plural-s",
+          "engine_status": "corrected",
+          "corrupted": "Doctor, I have had a sore throat and cough for about three day."
+        }
       }
     },
     {
@@ -23554,8 +23548,8 @@
         "scope": "dialogue_probe_subset",
         "source": "reports/cell-inventory/int-probe-vn-en-a1.json",
         "probes_run": 2,
-        "covered_probe_count": 1,
-        "blind_probe_count": 1,
+        "covered_probe_count": 2,
+        "blind_probe_count": 0,
         "abstention_marker": null
       }
     },
@@ -23874,8 +23868,8 @@
         "scope": "dialogue_probe_subset",
         "source": "reports/cell-inventory/int-probe-vn-en-a1.json",
         "probes_run": 2,
-        "covered_probe_count": 1,
-        "blind_probe_count": 1,
+        "covered_probe_count": 2,
+        "blind_probe_count": 0,
         "abstention_marker": null
       }
     },
@@ -23914,8 +23908,8 @@
         "scope": "dialogue_probe_subset",
         "source": "reports/cell-inventory/int-probe-vn-en-a1.json",
         "probes_run": 2,
-        "covered_probe_count": 1,
-        "blind_probe_count": 1,
+        "covered_probe_count": 2,
+        "blind_probe_count": 0,
         "abstention_marker": null
       }
     },
@@ -24114,8 +24108,8 @@
         "scope": "dialogue_probe_subset",
         "source": "reports/cell-inventory/int-probe-vn-en-a1.json",
         "probes_run": 2,
-        "covered_probe_count": 1,
-        "blind_probe_count": 1,
+        "covered_probe_count": 2,
+        "blind_probe_count": 0,
         "abstention_marker": null
       }
     },
@@ -24314,8 +24308,8 @@
         "scope": "dialogue_probe_subset",
         "source": "reports/cell-inventory/int-probe-vn-en-a1.json",
         "probes_run": 1,
-        "covered_probe_count": 0,
-        "blind_probe_count": 1,
+        "covered_probe_count": 1,
+        "blind_probe_count": 0,
         "abstention_marker": null
       }
     },
@@ -24470,13 +24464,19 @@
       "has_ipa": false,
       "has_translation": true,
       "int_probe": {
-        "state": "covered",
+        "state": "blind",
         "scope": "dialogue_probe_subset",
         "source": "reports/cell-inventory/int-probe-vn-en-a1.json",
         "probes_run": 3,
-        "covered_probe_count": 1,
-        "blind_probe_count": 2,
-        "abstention_marker": null
+        "covered_probe_count": 2,
+        "blind_probe_count": 1,
+        "abstention_marker": {
+          "kind": "class_b_fixture_locked_abstention",
+          "probe_id": "03e4798d1087",
+          "rule_family": "en-step6-past-marker-recall",
+          "engine_status": "corrected",
+          "corrupted": "Yesterday I go to the clinic because I felt unwell."
+        }
       }
     },
     {
@@ -24834,8 +24834,8 @@
         "scope": "dialogue_probe_subset",
         "source": "reports/cell-inventory/int-probe-vn-en-a1.json",
         "probes_run": 3,
-        "covered_probe_count": 0,
-        "blind_probe_count": 3,
+        "covered_probe_count": 3,
+        "blind_probe_count": 0,
         "abstention_marker": null
       }
     },
@@ -24874,8 +24874,8 @@
         "scope": "dialogue_probe_subset",
         "source": "reports/cell-inventory/int-probe-vn-en-a1.json",
         "probes_run": 1,
-        "covered_probe_count": 0,
-        "blind_probe_count": 1,
+        "covered_probe_count": 1,
+        "blind_probe_count": 0,
         "abstention_marker": null
       }
     },
@@ -24994,8 +24994,8 @@
         "scope": "dialogue_probe_subset",
         "source": "reports/cell-inventory/int-probe-vn-en-a1.json",
         "probes_run": 2,
-        "covered_probe_count": 0,
-        "blind_probe_count": 2,
+        "covered_probe_count": 2,
+        "blind_probe_count": 0,
         "abstention_marker": null
       }
     },
@@ -25034,8 +25034,8 @@
         "scope": "dialogue_probe_subset",
         "source": "reports/cell-inventory/int-probe-vn-en-a1.json",
         "probes_run": 1,
-        "covered_probe_count": 0,
-        "blind_probe_count": 1,
+        "covered_probe_count": 1,
+        "blind_probe_count": 0,
         "abstention_marker": null
       }
     },
