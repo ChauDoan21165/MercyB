@@ -569,14 +569,12 @@ export default function AccountPage() {
               onClick={() => nav("/billing")}
             />
 
-            {pronunciationFlagEnabled ? (
-              <SecondaryLink
-                en="My progress"
-                vi="Tiến độ"
-                onClick={() => nav("/progress")}
-                testId="account-progress-link"
-              />
-            ) : null}
+            <SecondaryLink
+              en="My progress"
+              vi="Tiến độ"
+              onClick={() => nav("/progress")}
+              testId="account-progress-link"
+            />
 
             {pronunciationFlagEnabled ? (
               <SecondaryLink
