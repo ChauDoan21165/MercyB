@@ -105,6 +105,7 @@ async function assertSyntheticMarkerOnCurrentOrigin(
 async function submitCorrectionProbe(
   page: import("@playwright/test").Page,
   probe: SeededCorrectionProbe,
+  beforeSubmit?: () => void,
 ): Promise<void> {
   await page.goto(`${SYNTH_BASE_URL}/ai-tutor`, { waitUntil: "networkidle" });
   await assertSyntheticMarkerOnCurrentOrigin(page);
@@ -115,6 +116,7 @@ async function submitCorrectionProbe(
   // ui.submit = "Sửa câu này" (vi) / "Correct my sentence" (en). Match the FULL
   // submit label — NOT the bare "Sửa câu", which also names the mode-switcher
   // TAB (already active on this surface).
+  beforeSubmit?.();
   await page.getByRole("button", { name: /Sửa câu này|Correct my sentence/i }).first().click();
 }
 
@@ -336,15 +338,16 @@ test("(b/c/d) correction → feedback tap → row lands with rule_or_detector_id
       let correctionSourceInsert: Promise<string> | null = null;
       let aiSentenceCorrectionResponse: Promise<string> | null = null;
       try {
-        correctionSourceInsert = probe.id === feedbackProbe.id
-          ? waitForCorrectionSourceEventInsert(page, ["local_corrected"])
-          : probe.expectedProductPath === "lpi_shadow_defer"
-            ? waitForCorrectionSourceEventInsert(page, ["server_corrected", "server_no_correction"])
+        await submitCorrectionProbe(page, probe, () => {
+          correctionSourceInsert = probe.id === feedbackProbe.id
+            ? waitForCorrectionSourceEventInsert(page, ["local_corrected"])
+            : probe.expectedProductPath === "lpi_shadow_defer"
+              ? waitForCorrectionSourceEventInsert(page, ["server_corrected", "server_no_correction"])
+              : null;
+          aiSentenceCorrectionResponse = probe.expectedProductPath === "lpi_shadow_defer"
+            ? waitForAiSentenceCorrectionResponse(page, probe)
             : null;
-        aiSentenceCorrectionResponse = probe.expectedProductPath === "lpi_shadow_defer"
-          ? waitForAiSentenceCorrectionResponse(page, probe)
-          : null;
-        await submitCorrectionProbe(page, probe);
+        });
 
         if (probe.expectedProductPath === "legacy_timing_defer") {
           await expect(page.getByText(DEFER_NOTICE_TITLE, { exact: true })).toBeVisible({ timeout: 30_000 });
