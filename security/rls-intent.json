@@ -4,7 +4,7 @@
   "scan_roots": [
     "supabase/migrations"
   ],
-  "migration_files": 271,
+  "migration_files": 272,
   "tables": {
     "private.referral_leaderboard_all_time_private": {
       "created_in_migrations": true,
@@ -1010,6 +1010,39 @@
         },
         {
           "name": "correction_source_events_auth_insert",
+          "command": "insert",
+          "roles": [
+            "authenticated"
+          ],
+          "using": null,
+          "with_check": "true"
+        }
+      ]
+    },
+    "public.self_audit_outcome_events": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "self_audit_outcome_events_admin_select",
+          "command": "select",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "public.get_admin_level(auth.uid()) >= 9",
+          "with_check": null
+        },
+        {
+          "name": "self_audit_outcome_events_anon_insert",
+          "command": "insert",
+          "roles": [
+            "anon"
+          ],
+          "using": null,
+          "with_check": "true"
+        },
+        {
+          "name": "self_audit_outcome_events_auth_insert",
           "command": "insert",
           "roles": [
             "authenticated"
