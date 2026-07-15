@@ -939,10 +939,24 @@ export const rulePrepositionTransfer: Rule = ({ userTokens, expectedTokens, rawE
   // collapse to the base form before substring lookup. Stem floor of
   // 3 chars avoids mangling short words (`bed`, `was`, `wing`). Mirrors
   // the lemma-aware approach in isToTriggerInflection (rule 29).
+  const lemmatizeToken = (token: string): string => {
+    if (token.length < 4) return token;
+    if (token.endsWith('ies') && token.length > 5) return `${token.slice(0, -3)}y`;
+    if (token.endsWith('es') && token.length > 4) {
+      const stem = token.slice(0, -2);
+      if (/(s|x|z|ch|sh)$/.test(stem)) return stem;
+    }
+    if (token.endsWith('ed') && token.length > 5) return token.slice(0, -2);
+    if (token.endsWith('ing') && token.length > 6) return token.slice(0, -3);
+    if (token.endsWith('s') && token.length > 4) return token.slice(0, -1);
+    return token;
+  };
   const lemmatize = (s: string): string =>
-    s.replace(/\b([a-z]+?)(?:ed|ing|s)\b/gi, (m, stem) =>
-      stem.length >= 3 ? stem : m,
-    );
+    s
+      .split(/\s+/)
+      .filter(Boolean)
+      .map(lemmatizeToken)
+      .join(' ');
   const userLemma = lemmatize(userTokens.join(' '));
   const expectedLemma = lemmatize(expectedTokens.join(' '));
 
@@ -989,9 +1003,10 @@ export const rulePrepositionTransfer: Rule = ({ userTokens, expectedTokens, rawE
   for (const m of PREPOSITION_MISMATCHES) {
     if (m.delete !== true) continue;
     if (
-      userRaw.includes(m.wrong) &&
-      expectedRaw.includes(m.right) &&
-      !expectedRaw.includes(m.wrong)
+      (userRaw.includes(m.wrong) || userLemma.includes(m.wrong)) &&
+      (expectedRaw.includes(m.right) || expectedLemma.includes(m.right)) &&
+      !expectedRaw.includes(m.wrong) &&
+      !expectedLemma.includes(m.wrong)
     ) {
       return {
         tag: 'vi_l1_preposition_transfer',
@@ -1748,6 +1763,16 @@ const PAST_PARTICIPLES_TO_SIMPLE = new Map<string, string>([
   ['heard', 'heard'],
 ]);
 
+function isPerfectParticipleOfBase(base: string, participle: string): boolean {
+  if (!base || !participle || base === participle) return false;
+  const irregularSimple = PAST_PARTICIPLES_TO_SIMPLE.get(participle);
+  if (irregularSimple && IRREGULAR_PAST[base] === irregularSimple) return true;
+  if (participle === `${base}ed`) return true;
+  if (participle === `${base}d`) return true;
+  if (base.endsWith('y') && participle === `${base.slice(0, -1)}ied`) return true;
+  return false;
+}
+
 // Verbs that REQUIRE a gerund complement in modern English. Using
 // "to + V" after these is the classic VN-learner pattern.
 const GERUND_REQUIRING_VERBS = new Set([
@@ -1914,6 +1939,27 @@ export const rulePresentPerfectVsPast: Rule = ({
   expectedText,
   rawExpected,
 }) => {
+  // Vietnamese completive `đã ... rồi` often surfaces as "already" with
+  // a bare verb where English wants present perfect: "I already eat" →
+  // "I have already eaten".
+  if (userTokens.includes('already') && expectedTokens.includes('already')) {
+    const expectedAlready = expectedTokens.indexOf('already');
+    const expectedAux = expectedTokens[expectedAlready - 1];
+    const expectedParticiple = expectedTokens[expectedAlready + 1];
+    if ((expectedAux === 'have' || expectedAux === 'has') && expectedParticiple) {
+      for (let i = 0; i < userTokens.length - 1; i++) {
+        if (userTokens[i] !== 'already') continue;
+        const userVerb = userTokens[i + 1];
+        if (isPerfectParticipleOfBase(userVerb, expectedParticiple)) {
+          return {
+            tag: 'vi_l1_present_perfect_vs_past',
+            replacements: { FIX: rawExpected },
+          };
+        }
+      }
+    }
+  }
+
   // Must: user has "have/has" + past-participle AND a past-time marker,
   //       expected does NOT use have/has in the same slot.
   if (!/\b(have|has)\s+\w+/.test(userText)) return null;

@@ -294,6 +294,28 @@ describe('rule 9: vi_l1_preposition_transfer', () => {
     expectMissOrDifferentTag('i eat apple', 'i eat an apple', 'vi_l1_preposition_transfer');
     expectMiss('the book is here',      'the book is here');
   });
+
+  it('detects inflected transitive-verb preposition calques', () => {
+    expectHit(
+      'we discussed about the plan',
+      'we discussed the plan',
+      'vi_l1_preposition_transfer',
+    );
+    expectHit(
+      'They discuss about the schedule',
+      'They discuss the schedule',
+      'vi_l1_preposition_transfer',
+    );
+    expectHit(
+      'she discusses about the lesson',
+      'she discusses the lesson',
+      'vi_l1_preposition_transfer',
+    );
+    expectMiss(
+      'we talked about the plan',
+      'we talked about the plan',
+    );
+  });
 });
 
 // ────────────────────────────────────────────────────────────────────────────
