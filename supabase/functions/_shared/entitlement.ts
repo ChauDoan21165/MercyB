@@ -116,8 +116,8 @@ function normalizeNowMs(now: Date | number): number {
 export function getExpiresAt(row: EntitlementInput): string | null {
   return (
     toIsoString(row.expires_at) ??
-    toIsoString(row.current_period_end) ??
     toIsoString(row.current_period_end_at) ??
+    toIsoString(row.current_period_end) ??
     toIsoString(row.period_end) ??
     toIsoString(row.ends_at) ??
     toIsoString(row.expired_at) ??
@@ -128,8 +128,8 @@ export function getExpiresAt(row: EntitlementInput): string | null {
 function getSortTimestamp(row: EntitlementInput): number {
   const candidates: unknown[] = [
     row.updated_at,
-    row.current_period_end,
     row.current_period_end_at,
+    row.current_period_end,
     row.expires_at,
     row.period_end,
     row.ends_at,
@@ -238,7 +238,7 @@ export function normalizeStatus(
  * The single is_premium decision used by every reader after PR-B lands.
  *
  *   1. non-entitling status → false
- *   2. null expiry           → true   (lifetime / gift / no-period)
+ *   2. null expiry           → false  (malformed provider row / no period)
  *   3. expiresAtMs > nowMs   → true   (strict)
  *   4. otherwise             → false  (expiresAtMs === nowMs ⇒ expired)
  */
@@ -248,7 +248,7 @@ export function isEntitled(
   nowMs: number
 ): boolean {
   if (!ENTITLING_STATUSES.has(status)) return false;
-  if (expiresAtMs === null) return true;
+  if (expiresAtMs === null) return false;
   return expiresAtMs > nowMs;
 }
 

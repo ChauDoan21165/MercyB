@@ -75,6 +75,19 @@ describe("mapStripeSubscription — columns that were missing from the type", ()
     expect(row.provider_customer_id).toBe("cus_ABC");
     expect(row.provider_subscription_id).toBe("sub_XYZ");
   });
+
+  it("writes both legacy and _at period columns from the same timestamps", () => {
+    const row = mapStripeSubscription({
+      ...baseParams(),
+      currentPeriodStart: "2026-12-01T00:00:00.000Z",
+      currentPeriodEnd: "2027-01-01T00:00:00.000Z",
+    });
+
+    expect(row.current_period_start).toBe("2026-12-01T00:00:00.000Z");
+    expect(row.current_period_start_at).toBe("2026-12-01T00:00:00.000Z");
+    expect(row.current_period_end).toBe("2027-01-01T00:00:00.000Z");
+    expect(row.current_period_end_at).toBe("2027-01-01T00:00:00.000Z");
+  });
 });
 
 describe("mapStripeSubscription — invariants & defaults", () => {

@@ -254,9 +254,9 @@ describe("B13 Phase 3 PR-B — R1 expiry regression + parity", () => {
     expect(e.expires_at).toBe(future(ONE_DAY));
   });
 
-  it("active + null expiry ⇒ is_premium=true (lifetime/gift, no new lockout)", () => {
+  it("active + null expiry ⇒ is_premium=false", () => {
     const e = normalizeEntitlement([{ status: "active", provider: "stripe" }]);
-    expect(e.is_premium).toBe(true);
+    expect(e.is_premium).toBe(false);
     expect(e.expires_at).toBeNull();
   });
 

@@ -16,8 +16,8 @@
 //   active           — status=active, future expiry             → premium
 //   expired          — status=active, PAST expiry (bug case)    → NOT premium
 //   trialing         — status=trialing, future expiry           → premium
-//   gift             — gift_code source, null expiry (lifetime) → premium
-//   test-grant       — no provider, null expiry (manual grant)  → premium
+//   gift             — gift_code source, future expiry          → premium
+//   test-grant       — no provider, null expiry (manual grant)  → NOT premium
 //   tier-null        — entitlement snapshot is null (fetch fail)→ NOT premium
 //   provider-null    — provider=null, active, future expiry     → premium
 
@@ -66,9 +66,9 @@ const FIXTURES: Array<{
     expectedIsPremium: false,
   },
   {
-    label: "active — null expiry (lifetime / no-period)",
+    label: "active — null expiry (malformed provider row)",
     row: { status: "active", provider: "stripe" },
-    expectedIsPremium: true,
+    expectedIsPremium: false,
   },
   {
     label: "trialing — future expiry",
@@ -89,8 +89,12 @@ const FIXTURES: Array<{
     expectedIsPremium: false,
   },
   {
-    label: "gift — gift_code source, null expiry (lifetime gift code)",
-    row: { status: "active", source: "gift_code" },
+    label: "gift — gift_code source, future expiry",
+    row: {
+      status: "active",
+      source: "gift_code",
+      current_period_end: future(365),
+    },
     expectedIsPremium: true,
   },
   {
@@ -99,9 +103,9 @@ const FIXTURES: Array<{
     expectedIsPremium: true,
   },
   {
-    label: "test-grant — no provider, null expiry (manual admin grant)",
+    label: "test-grant — no provider, null expiry",
     row: { status: "active", provider: null },
-    expectedIsPremium: true,
+    expectedIsPremium: false,
   },
   {
     label:

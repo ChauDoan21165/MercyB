@@ -203,7 +203,9 @@ export function mapStripeSubscription(params: {
     environment: params.environment,
     status: params.status ?? "revoked",
     current_period_start: params.currentPeriodStart ?? null,
+    current_period_start_at: params.currentPeriodStart ?? null,
     current_period_end: params.currentPeriodEnd ?? null,
+    current_period_end_at: params.currentPeriodEnd ?? null,
     cancel_at_period_end:
       typeof params.cancelAtPeriodEnd === "boolean"
         ? params.cancelAtPeriodEnd

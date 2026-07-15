@@ -53,12 +53,12 @@ describe("R2 — buildEntitlementSnapshot — expiry regression", () => {
     expect(snap.expires_at).toBe(future(ONE_DAY));
   });
 
-  it("active subscription + null expiry ⇒ is_premium=true (lifetime preserved)", () => {
+  it("active subscription + null expiry ⇒ is_premium=false", () => {
     const snap = buildEntitlementSnapshot(
       [{ status: "active", current_period_end: null, provider: "stripe" }],
       NOW_MS
     );
-    expect(snap.is_premium).toBe(true);
+    expect(snap.is_premium).toBe(false);
     expect(snap.expires_at).toBeNull();
   });
 

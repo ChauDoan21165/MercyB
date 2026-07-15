@@ -52,14 +52,14 @@ describe("R3 — deriveEntitlementFromSubscriptions — expiry regression", () =
     });
   });
 
-  it("active + null expiry ⇒ status='active', expiry=null (lifetime/no-period)", () => {
+  it("active + null expiry ⇒ inactive projection", () => {
     const snap = deriveEntitlementFromSubscriptions(
       [{ status: "active", current_period_end: null, provider: "stripe" }],
       NOW_MS,
     );
-    expect(snap.status).toBe("active");
+    expect(snap.status).toBe("inactive");
     expect(snap.expires_at).toBeNull();
-    expect(snap.source).toBe("stripe");
+    expect(snap.source).toBeNull();
   });
 
   it("trialing/grace_period/past_due respect expiry too", () => {
@@ -165,13 +165,13 @@ describe("R3 — isEntitlingSubscription (shim)", () => {
     ).toBe(false);
   });
 
-  it("active + null expiry ⇒ true (lifetime)", () => {
+  it("active + null expiry ⇒ false", () => {
     expect(
       isEntitlingSubscription(
         { status: "active", current_period_end: null },
         NOW_MS,
       ),
-    ).toBe(true);
+    ).toBe(false);
   });
 
   it("non-entitling status ⇒ false regardless of expiry", () => {
