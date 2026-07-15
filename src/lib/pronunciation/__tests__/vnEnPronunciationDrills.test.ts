@@ -18,6 +18,7 @@ import {
   FINAL_CONSONANT_DRILLS,
   STRESS_DRILLS,
   VN_EN_PRONUNCIATION_DRILL_BANKS,
+  selectFinalClusterFeedbackKey,
 } from '../vnEnPronunciationDrills';
 
 const BANKS: Record<string, ProblemPair[]> = {
@@ -96,5 +97,23 @@ describe('VN_EN_PRONUNCIATION_DRILL_BANKS — grouped map', () => {
       expect(Array.isArray(bank), `${slug} is an array`).toBe(true);
       expect(bank.length, `${slug} non-empty`).toBeGreaterThan(0);
     }
+  });
+});
+
+describe('selectFinalClusterFeedbackKey', () => {
+  it('returns the final-cluster key for accepted Vietnamese simplification variants', () => {
+    expect(selectFinalClusterFeedbackKey('next', 'nex')).toBe('final_cluster_simplification');
+    expect(selectFinalClusterFeedbackKey('first', 'firs')).toBe('final_cluster_simplification');
+    expect(selectFinalClusterFeedbackKey('friend', 'frien')).toBe('final_cluster_simplification');
+  });
+
+  it('returns the final-cluster key from target context when no heard word is available', () => {
+    expect(selectFinalClusterFeedbackKey('next')).toBe('final_cluster_simplification');
+  });
+
+  it('does not fire for non-cluster words or non-matching heard variants', () => {
+    expect(selectFinalClusterFeedbackKey('book', 'boo')).toBeNull();
+    expect(selectFinalClusterFeedbackKey('next', 'net')).toBeNull();
+    expect(selectFinalClusterFeedbackKey('apple')).toBeNull();
   });
 });

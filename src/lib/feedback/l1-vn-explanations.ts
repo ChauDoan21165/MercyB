@@ -587,6 +587,94 @@ export const L1_VN_EXPLANATIONS: Record<L1WeaknessTag, L1VnExplanation> = {
       "Tomorrow I go → 'Ngày mai + tôi + đi' (mình thấy 'tomorrow' là đủ, quên 'will' trước 'go')",
     needs_review: false,
   },
+  vi_l1_profession_article_copula: {
+    name_vi: "Nghề nghiệp cần be và a/an",
+    explanation_vi:
+      "Tiếng Việt nói 'ba tôi bác sĩ' rất tự nhiên. Tiếng Anh khi nói nghề nghiệp thường cần **be** và **a/an**: *My father is a doctor*. Đừng bỏ một trong hai phần này.",
+    example_wrong_vi_gloss:
+      "My father doctor → 'Ba tôi + bác sĩ' (dịch thẳng từ tiếng Việt; tiếng Anh cần 'is a doctor')",
+    needs_review: false,
+  },
+  vi_l1_progressive_be_drop: {
+    name_vi: "Thiếu be trong thì tiếp diễn",
+    explanation_vi:
+      "Tiếng Việt có thể nói 'tôi đang đi' mà không chia trợ động từ. Tiếng Anh dùng **be + V-ing**: *I am going*, *she is cooking*. Có V-ing thì kiểm tra am/is/are.",
+    example_wrong_vi_gloss:
+      "I going to school → 'Tôi + đang đi học' (mình quên 'am' trước going)",
+    needs_review: false,
+  },
+  vi_l1_definite_article_remention: {
+    name_vi: "Nhắc lại vật đã nói cần the",
+    explanation_vi:
+      "Sau khi đã nhắc một vật/người, tiếng Anh thường dùng **the** ở lần nhắc sau vì người nghe biết mình nói cái nào. Tiếng Việt không có mạo từ nên rất dễ bỏ phần này.",
+    example_wrong_vi_gloss:
+      "I read a book. Book is interesting → 'Tôi đọc một cuốn sách. Sách hay' (lần hai cần 'the book')",
+    needs_review: false,
+  },
+  vi_l1_noun_preposition_collocation: {
+    name_vi: "Cụm danh từ đi với giới từ cố định",
+    explanation_vi:
+      "Một số cụm học thuật trong tiếng Anh phải đi với giới từ cố định, như **reason for** hoặc **demand for**. Không thể dịch từng chữ từ tiếng Việt sang 'of/about' tùy ý.",
+    example_wrong_vi_gloss:
+      "reason of this problem → 'lý do của vấn đề này' (tiếng Anh tự nhiên là 'reason for')",
+    needs_review: false,
+  },
+  vi_l1_say_tell_argument_frame: {
+    name_vi: "Say / tell / talk có khung tân ngữ khác nhau",
+    explanation_vi:
+      "Tiếng Việt dùng 'nói với / kể cho' khá linh hoạt. Tiếng Anh tách rõ: **tell someone**, **say to someone**, **talk to someone**. Chọn sai khung sẽ nghe rất lạ.",
+    example_wrong_vi_gloss:
+      "She said me the truth → 'Cô ấy nói tôi sự thật' (tiếng Anh cần 'told me')",
+    needs_review: false,
+  },
+  vi_l1_learn_study_transfer: {
+    name_vi: "Học có thể là learn, study hoặc practice",
+    explanation_vi:
+      "Tiếng Việt dùng **học** cho nhiều nghĩa. Tiếng Anh chọn theo ngữ cảnh: **study** ở trường/tài liệu, **learn** để tiếp thu, **practice** để luyện kỹ năng.",
+    example_wrong_vi_gloss:
+      "I study how to cook → 'Tôi học cách nấu ăn' (ngữ cảnh này tự nhiên hơn là 'learn')",
+    needs_review: false,
+  },
+  vi_l1_know_meet_timeline: {
+    name_vi: "Gặp lần đầu dùng met, không dùng knew",
+    explanation_vi:
+      "Tiếng Việt có thể nói 'biết anh ấy hôm qua' theo nghĩa mới gặp. Tiếng Anh dùng **met** cho lần gặp đầu; **knew** nghĩa là đã quen/biết từ trước.",
+    example_wrong_vi_gloss:
+      "I knew him yesterday → 'Tôi biết anh ấy hôm qua' (ý là gặp lần đầu nên dùng 'met')",
+    needs_review: false,
+  },
+  vi_l1_verb_noun_collocation: {
+    name_vi: "Medicine đi với take",
+    explanation_vi:
+      "Tiếng Việt nói uống/ăn thuốc tùy thói quen nói. Tiếng Anh dùng cụm cố định **take medicine**. Không nói *eat medicine* hay *drink medicine*.",
+    example_wrong_vi_gloss:
+      "I eat medicine → 'Tôi ăn/uống thuốc' (tiếng Anh tự nhiên là 'take medicine')",
+    needs_review: false,
+  },
+  vi_l1_appliance_open_close_transfer: {
+    name_vi: "Thiết bị điện dùng turn on/off",
+    explanation_vi:
+      "Tiếng Việt hay nói mở/tắt đèn, mở TV. Tiếng Anh với đèn, TV, quạt, máy lạnh dùng **turn on / turn off**, không dùng open/close.",
+    example_wrong_vi_gloss:
+      "Open the light → 'Mở đèn' (tiếng Anh là 'turn on the light')",
+    needs_review: false,
+  },
+  vi_l1_connector_stacking: {
+    name_vi: "Không dùng cặp because-so / although-but",
+    explanation_vi:
+      "Tiếng Việt dùng cặp liên từ khá tự nhiên: vì... nên..., mặc dù... nhưng.... Tiếng Anh thường chọn một: **because** không đi với **so**, **although** không đi với **but**.",
+    example_wrong_vi_gloss:
+      "Because it rained, so I stayed home → 'Vì trời mưa nên tôi ở nhà' (tiếng Anh bỏ 'so')",
+    needs_review: false,
+  },
+  vi_l1_elliptical_subject_transfer: {
+    name_vi: "Mệnh đề tiếng Anh cần chủ ngữ rõ",
+    explanation_vi:
+      "Tiếng Việt có thể lược chủ ngữ khi ai cũng hiểu. Tiếng Anh trong mệnh đề hữu hạn thường cần chủ ngữ rõ: *Because I was busy*, *When he arrived*.",
+    example_wrong_vi_gloss:
+      "Because busy, I didn't go → 'Vì bận nên tôi không đi' (tiếng Anh cần 'I was busy')",
+    needs_review: false,
+  },
 };
 
 /**

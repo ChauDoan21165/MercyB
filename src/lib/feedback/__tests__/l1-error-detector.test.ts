@@ -209,7 +209,7 @@ describe('rule 6: vi_l1_missing_article', () => {
     expectHit('she bought car',         'she bought a car',            'vi_l1_missing_article');
     expectHit('book is on table',       'the book is on the table',    'vi_l1_missing_article');
     expectHit('i go to market',         'i go to the market',          'vi_l1_missing_article');
-    expectHit('he is teacher',          'he is a teacher',             'vi_l1_missing_article');
+    expectHit('he is teacher',          'he is a teacher',             'vi_l1_profession_article_copula');
     expectHit('they saw movie',         'they saw a movie',            'vi_l1_missing_article');
     expectHit('open door please',       'open the door please',        'vi_l1_missing_article');
     expectHit('give me pen',            'give me a pen',               'vi_l1_missing_article');

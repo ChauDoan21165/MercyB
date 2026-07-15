@@ -24,7 +24,7 @@
  * `soundPairDrills.ts`.
  */
 
-import type { ProblemPair } from './vn-phoneme-map';
+import { getAcceptedVariants, type ProblemPair } from './vn-phoneme-map';
 
 /**
  * Voiced /ð/ minimal pairs (this/dis, they/day…) plus a few extra voiceless
@@ -315,3 +315,50 @@ export const VN_EN_PRONUNCIATION_DRILL_BANKS: Record<string, ProblemPair[]> = {
   'final-consonant': FINAL_CONSONANT_DRILLS,
   stress: STRESS_DRILLS,
 };
+
+export type FinalClusterFeedbackKey = 'final_cluster_simplification';
+
+const FINAL_CLUSTER_SUFFIXES = [
+  'st', 'sk', 'sp', 'ld', 'nd', 'nt', 'ft', 'lf', 'mp',
+  'lp', 'lt', 'ct', 'pt', 'xt', 'nk',
+];
+
+function hasFinalClusterShape(word: string): boolean {
+  return FINAL_CLUSTER_SUFFIXES.some((suffix) => word.endsWith(suffix));
+}
+
+/**
+ * Select the stable feedback key for Vietnamese-speaker final-cluster
+ * simplification. Conservative by design: only returns a key when the target
+ * has a known coda-cluster variant from getAcceptedVariants(), and when a
+ * heard word is supplied it must equal one of those variants.
+ */
+export function selectFinalClusterFeedbackKey(
+  targetWord: string,
+  heardWord?: string,
+): FinalClusterFeedbackKey | null {
+  const target = String(targetWord || '').toLowerCase().trim();
+  if (!target || !hasFinalClusterShape(target)) return null;
+
+  const variants = getAcceptedVariants(target).filter((entry) => {
+    const ruleTarget = entry.rule?.target ?? '';
+    const suffix = ruleTarget.endsWith('$') ? ruleTarget.slice(0, -1) : '';
+    return FINAL_CLUSTER_SUFFIXES.includes(suffix);
+  });
+  if (variants.length === 0) return null;
+
+  const heard = String(heardWord || '').toLowerCase().trim();
+  if (heard) {
+    return variants.some((entry) => entry.variant === heard)
+      ? 'final_cluster_simplification'
+      : null;
+  }
+
+  const hasDrillContext = FINAL_CONSONANT_DRILLS.some((pair) =>
+    pair.phoneme === 'final-consonant' && (
+      hasFinalClusterShape(pair.target.toLowerCase()) ||
+      hasFinalClusterShape(pair.contrast.toLowerCase())
+    ),
+  );
+  return hasDrillContext || variants.length > 0 ? 'final_cluster_simplification' : null;
+}

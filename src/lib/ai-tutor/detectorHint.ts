@@ -65,8 +65,9 @@ export const HIGH_SEVERITY_DETECTOR_TAGS: ReadonlySet<L1WeaknessTag> =
     "vi_l1_question_no_aux",
     "vi_l1_double_negative",
     // v2 medium-severity expansion (C5 recon).
-    //   article_omission_overuse  → 6 tags
+    //   article_omission_overuse  → 7 tags
     "vi_l1_missing_article",
+    "vi_l1_profession_article_copula",
     "vi_l1_a_vs_an_vowel",
     "vi_l1_geographical_article",
     "vi_l1_no_article_generic",
@@ -130,6 +131,7 @@ export const TAG_TO_NAME_EN: Readonly<Partial<Record<L1WeaknessTag, string>>> = 
   // v2 — medium-severity expansion (C5 recon).
   //   Article family
   vi_l1_missing_article: "Missing a / an / the",
+  vi_l1_profession_article_copula: "Job noun needs a/an",
   vi_l1_a_vs_an_vowel: "a vs an",
   vi_l1_geographical_article: "Place-name article",
   vi_l1_no_article_generic: "Generic noun: no article",

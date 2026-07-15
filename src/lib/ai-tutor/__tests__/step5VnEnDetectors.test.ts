@@ -14,7 +14,7 @@ describe("detectStep5VnEnError — article omission", () => {
     });
     expect(detect("She is teacher", "She is a teacher")).toMatchObject({
       matched: true,
-      weaknessTag: "vi_l1_missing_article",
+      weaknessTag: "vi_l1_profession_article_copula",
     });
   });
 

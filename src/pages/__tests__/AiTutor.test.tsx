@@ -408,9 +408,9 @@ describe("AiTutor four-tab seed flow", () => {
     await correctSentence("She is teacher here.", "She is a teacher here.");
 
     const chip = await screen.findByTestId("detector-hint-chip");
-    expect(chip).toHaveAttribute("data-tag", "vi_l1_missing_article");
-    expect(chip).toHaveTextContent("Missing a / an / the");
-    expect(recentL1Tags()).toEqual(["vi_l1_missing_article"]);
+    expect(chip).toHaveAttribute("data-tag", "vi_l1_profession_article_copula");
+    expect(chip).toHaveTextContent("Job noun needs a/an");
+    expect(recentL1Tags()).toEqual(["vi_l1_profession_article_copula"]);
   });
 
   it("shows a Step 5 plural omission hint in Correction", async () => {
@@ -465,15 +465,15 @@ describe("AiTutor four-tab seed flow", () => {
     await correctSentence("She is teacher here.", "She is a teacher here.");
     expect(await screen.findByTestId("detector-hint-chip")).toHaveAttribute(
       "data-tag",
-      "vi_l1_missing_article",
+      "vi_l1_profession_article_copula",
     );
-    await waitFor(() => expect(hasShownHint("vi_l1_missing_article")).toBe(true));
+    await waitFor(() => expect(hasShownHint("vi_l1_profession_article_copula")).toBe(true));
 
     await userEvent.click(screen.getByRole("button", { name: "Sửa câu khác" }));
     await correctSentence("She is teacher here.", "She is a teacher here.");
 
     expect(screen.queryByTestId("detector-hint-chip")).not.toBeInTheDocument();
-    expect(recentL1Tags()).toEqual(["vi_l1_missing_article"]);
+    expect(recentL1Tags()).toEqual(["vi_l1_profession_article_copula"]);
   });
 
   it("does not record VN-to-EN L1 tags for non-English Correction targets", async () => {
