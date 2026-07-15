@@ -34,25 +34,38 @@ type Choice = "helpful" | "not_helpful";
 type Props = {
   /**
    * Provenance of the displayed correction. Null/empty → no buttons render.
-   * This is the ONLY gate: the caller passes whatever rule/detector fired for
-   * the correction on screen (see CorrectionMode's resolution).
+   * The caller must pass an engine-applied rule/detector id for the correction
+   * on screen (see CorrectionMode's resolution).
    */
   ruleOrDetectorId: string | null | undefined;
   /** Product surface. Adult AI Tutor by default (this is not a kids surface). */
   product?: LearningEventProduct;
   /** Target language of the correction, carried into the event payload. */
   targetLanguage?: string | null;
+  /** Persisted WP-CELL-ID-1 UUID when this correction is curriculum-anchored. */
+  cellId?: string | null;
   /** Injectable for tests; defaults to the real queue producer. */
   record?: (event: LearningEventInput) => LearningEvent | null;
 };
+
+export function isCorrectionFeedbackEnabled(): boolean {
+  try {
+    return import.meta.env?.VITE_FEEDBACK_BUTTONS_ENABLED === "true";
+  } catch {
+    return false;
+  }
+}
 
 export default function CorrectionFeedbackButtons({
   ruleOrDetectorId,
   product = "ai_tutor",
   targetLanguage,
+  cellId,
   record = recordLearningEvent,
 }: Props) {
   const [choice, setChoice] = useState<Choice | null>(null);
+
+  if (!isCorrectionFeedbackEnabled()) return null;
 
   // Hard gate: no provenance → no feedback affordance at all.
   const id = typeof ruleOrDetectorId === "string" ? ruleOrDetectorId.trim() : "";
@@ -68,6 +81,7 @@ export default function CorrectionFeedbackButtons({
       product,
       targetLanguage: targetLanguage ?? null,
       ruleOrDetectorId: id,
+      cellId: cellId ?? null,
       // session_id is filled by recordLearningEvent from the local session,
       // the same address every existing event carries.
     });

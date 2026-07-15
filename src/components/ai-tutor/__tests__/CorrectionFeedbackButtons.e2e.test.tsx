@@ -15,7 +15,7 @@
 // proves the pipeline delivers the id end-to-end and is CI-deterministic.
 
 import React from "react";
-import { describe, it, expect, beforeEach, afterEach } from "vitest";
+import { describe, it, expect, beforeEach, afterEach, vi } from "vitest";
 import { render, screen, fireEvent, cleanup } from "@testing-library/react";
 
 import CorrectionFeedbackButtons from "../CorrectionFeedbackButtons";
@@ -33,10 +33,14 @@ beforeEach(() => {
   clearLearningEvents();
   window.localStorage.clear();
 });
-afterEach(() => cleanup());
+afterEach(() => {
+  cleanup();
+  vi.unstubAllEnvs();
+});
 
 describe("Lane A feedback capture — reaches the sink with the id populated", () => {
   it("delivers a feedback_helpful row carrying rule_or_detector_id through the real drain", async () => {
+    vi.stubEnv("VITE_FEEDBACK_BUTTONS_ENABLED", "true");
     const inserted: LearningEventRow[] = [];
     const insertRows = async (rows: LearningEventRow[]): Promise<InsertResult> => {
       inserted.push(...rows);
@@ -76,6 +80,7 @@ describe("Lane A feedback capture — reaches the sink with the id populated", (
   });
 
   it("does not queue any event when the correction has no id (no buttons, nothing to drain)", async () => {
+    vi.stubEnv("VITE_FEEDBACK_BUTTONS_ENABLED", "true");
     const inserted: LearningEventRow[] = [];
     render(<CorrectionFeedbackButtons ruleOrDetectorId={null} targetLanguage="en" />);
 

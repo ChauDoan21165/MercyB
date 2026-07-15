@@ -36,7 +36,13 @@ describe("learning eventSink", () => {
 
   it("toLearningEventRow carries only allowlisted, non-PII fields", () => {
     const row = toLearningEventRow(
-      ev("id-1", 1000, { mode: "grammar", safeTopicTag: "past-tense", count: 2, ruleOrDetectorId: "l1:past" }),
+      ev("id-1", 1000, {
+        mode: "grammar",
+        safeTopicTag: "past-tense",
+        count: 2,
+        ruleOrDetectorId: "l1:past",
+        cellId: "550e8400-e29b-41d4-a716-446655440000",
+      }),
       "user-abc",
       "v9.9.9",
     );
@@ -44,13 +50,26 @@ describe("learning eventSink", () => {
       user_id: "user-abc",
       event_type: "lesson_started",
       rule_or_detector_id: "l1:past",
-      payload: { product: "ai_tutor", target_language: "en", mode: "grammar", safe_topic_tag: "past-tense", count: 2 },
+      payload: {
+        product: "ai_tutor",
+        target_language: "en",
+        mode: "grammar",
+        safe_topic_tag: "past-tense",
+        count: 2,
+        cell_id: "550e8400-e29b-41d4-a716-446655440000",
+      },
       client_ts: new Date(1000).toISOString(),
       session_id: "s1",
       app_version: "v9.9.9",
     });
     // No raw text/audio/transcript keys can appear.
     expect(JSON.stringify(row)).not.toMatch(/transcript|audio|learnerText|jwt/i);
+  });
+
+  it("writes cell_id as null in the payload when an event is not curriculum-anchored", () => {
+    const row = toLearningEventRow(ev("id-1", 1000), "user-abc", null);
+
+    expect(row.payload.cell_id).toBeNull();
   });
 
   it("flushes a batch and acks only on a successful insert", async () => {

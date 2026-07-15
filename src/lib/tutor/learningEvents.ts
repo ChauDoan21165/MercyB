@@ -41,9 +41,12 @@ export type LearningEvent = {
   count?: number;
   value?: number;
   // Provenance for feedback/correction-class events (which rule or detector
-  // produced them). No producer wires this yet; carried through so the durable
-  // sink (WP-PHASE2-01) can persist it once producers opt in.
+  // produced them). Feedback controls pass the engine-applied rule id; the
+  // durable sink (WP-PHASE2-01) persists it as rule_or_detector_id.
   ruleOrDetectorId?: string;
+  // Persisted WP-CELL-ID-1 UUID when the event is anchored to curriculum
+  // content. Omitted for non-anchored/local events.
+  cellId?: string;
   payload?: Record<string, unknown>;
 };
 
@@ -59,6 +62,7 @@ export type LearningEventInput = {
   count?: number | null;
   value?: number | null;
   ruleOrDetectorId?: string | null;
+  cellId?: string | null;
   payload?: Record<string, unknown> | null;
 };
 
@@ -99,6 +103,7 @@ const MAX_RULE_ID_LENGTH = 64;
 const DEFAULT_PEEK_LIMIT = 50;
 const MAX_PEEK_LIMIT = 300;
 const DAY_MS = 24 * 60 * 60 * 1000;
+const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
 
 const EVENT_TYPES = new Set<LearningEventType>([
   "lesson_started",
@@ -249,6 +254,7 @@ function normalizeLearningEvent(
   const count = normalizeOptionalNumber(input.count);
   const value = normalizeOptionalNumber(input.value);
   const ruleOrDetectorId = sanitizeRuleOrDetectorId(input.ruleOrDetectorId);
+  const cellId = sanitizeCellId(input.cellId);
   const payload = sanitizePayload(input.payload);
   const existingId = sanitizeEventId(input.id);
   const id = existingId ?? (options.mintId ? createEventId() : undefined);
@@ -265,6 +271,7 @@ function normalizeLearningEvent(
     ...(count !== undefined ? { count } : {}),
     ...(value !== undefined ? { value } : {}),
     ...(ruleOrDetectorId ? { ruleOrDetectorId } : {}),
+    ...(cellId ? { cellId } : {}),
     ...(payload ? { payload } : {}),
   };
 }
@@ -315,6 +322,7 @@ function normalizeStoredEvent(value: unknown): LearningEvent | null {
       count: event.count,
       value: event.value,
       ruleOrDetectorId: event.ruleOrDetectorId,
+      cellId: event.cellId,
       payload: event.payload,
     },
     { mintId: false },
@@ -426,6 +434,11 @@ function sanitizeRuleOrDetectorId(value: string | null | undefined): string | un
     .replace(/[^A-Za-z0-9._:-]/g, "")
     .slice(0, MAX_RULE_ID_LENGTH);
   return cleaned || undefined;
+}
+
+function sanitizeCellId(value: string | null | undefined): string | undefined {
+  const cleaned = String(value ?? "").trim().toLowerCase();
+  return UUID_RE.test(cleaned) ? cleaned : undefined;
 }
 
 function sanitizePayload(value: Record<string, unknown> | null | undefined): Record<string, unknown> | undefined {

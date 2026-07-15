@@ -91,6 +91,7 @@ export function toLearningEventRow(
   if (event.count !== undefined) payload.count = event.count;
   if (event.value !== undefined) payload.value = event.value;
   if (event.payload !== undefined) Object.assign(payload, event.payload);
+  payload.cell_id = event.cellId ?? null;
 
   return {
     user_id: userId,
