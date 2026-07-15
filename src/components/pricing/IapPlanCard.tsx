@@ -1,23 +1,24 @@
 // src/components/pricing/IapPlanCard.tsx
 //
-// iOS-only subscription purchase card. Rendered by Pricing.tsx in place
-// of the Stripe monthly/yearly cards when getPlatform() === "ios".
+// Native subscription purchase card. Rendered by Pricing.tsx in place
+// of the Stripe monthly/yearly cards inside iOS / Android Capacitor apps.
 //
 // Responsibilities:
 // - Fetch current offering from RevenueCat on mount
 // - Surface loading / error / "IAP not configured" states
 // - Render monthly + yearly purchase buttons with localized prices
-// - Render Apple-required "Restore Purchases" button
+// - Render store-required "Restore Purchases" button
 // - Render compact subscription disclosure near the buy buttons
 //   (duration, auto-renewal, cancel anytime, Terms/Privacy links) —
 //   complements the full disclosure footer at the bottom of Pricing.tsx
 //   which remains unchanged.
-// - After successful purchase, show "Manage in Apple" link (user already
-//   subscribed via IAP).
+// - After successful purchase, show native store management link (user
+//   already subscribed via IAP).
 
 import React, { useCallback, useEffect, useMemo, useState } from "react";
 import {
-  APPLE_MANAGE_SUBSCRIPTIONS_URL,
+  getManageSubscriptionsUrl,
+  getNativeBillingStoreName,
   getCurrentEntitlement,
   getIapOfferings,
   isIapReady,
@@ -56,6 +57,8 @@ export default function IapPlanCard({ onEntitlementGranted }: IapPlanCardProps) 
   const [busy, setBusy] = useState<Kind | "restore" | null>(null);
   const [banner, setBanner] = useState<Banner | null>(null);
   const [alreadySubscribed, setAlreadySubscribed] = useState(false);
+  const nativeBillingStoreName = getNativeBillingStoreName();
+  const manageSubscriptionsUrl = getManageSubscriptionsUrl();
 
   const loadOfferings = useCallback(async () => {
     if (!isIapReady()) {
@@ -132,8 +135,8 @@ export default function IapPlanCard({ onEntitlementGranted }: IapPlanCardProps) 
       } else {
         setBanner({
           kind: "info",
-          en: "No previous purchase was found for this Apple ID.",
-          vi: "Không tìm thấy gói đã mua trước đây trên Apple ID này.",
+          en: `No previous purchase was found for this ${nativeBillingStoreName} account.`,
+          vi: `Không tìm thấy gói đã mua trước đây trên tài khoản ${nativeBillingStoreName} này.`,
         });
       }
     } else {
@@ -147,13 +150,13 @@ export default function IapPlanCard({ onEntitlementGranted }: IapPlanCardProps) 
     setBusy(null);
   }, [busy, onEntitlementGranted]);
 
-  const openAppleManage = useCallback(() => {
+  const openStoreManage = useCallback(() => {
     try {
-      window.open(APPLE_MANAGE_SUBSCRIPTIONS_URL, "_blank", "noopener,noreferrer");
+      window.open(manageSubscriptionsUrl, "_blank", "noopener,noreferrer");
     } catch {
-      window.location.href = APPLE_MANAGE_SUBSCRIPTIONS_URL;
+      window.location.href = manageSubscriptionsUrl;
     }
-  }, []);
+  }, [manageSubscriptionsUrl]);
 
   // ── Render ────────────────────────────────────────────────────────────────
 
@@ -200,13 +203,13 @@ export default function IapPlanCard({ onEntitlementGranted }: IapPlanCardProps) 
       {alreadySubscribed ? (
         <div style={alreadySubscribedBoxStyle}>
           <div style={{ fontWeight: 900 }}>
-            You already have Mercy Blade Pro on this Apple ID.
+            You already have Mercy Blade Pro on this {nativeBillingStoreName} account.
           </div>
           <div style={{ fontSize: 12, color: "#5eead4", marginTop: 2 }}>
-            Bạn đã có Mercy Blade Pro trên Apple ID này.
+            Bạn đã có Mercy Blade Pro trên tài khoản {nativeBillingStoreName} này.
           </div>
-          <button type="button" onClick={openAppleManage} style={{ ...primaryBtnStyle, marginTop: 12 }}>
-            Manage in Apple / Quản lý qua Apple
+          <button type="button" onClick={openStoreManage} style={{ ...primaryBtnStyle, marginTop: 12 }}>
+            Manage in {nativeBillingStoreName} / Quản lý qua {nativeBillingStoreName}
           </button>
         </div>
       ) : (
@@ -220,8 +223,8 @@ export default function IapPlanCard({ onEntitlementGranted }: IapPlanCardProps) 
             onBuy={() => void handleBuy("monthly")}
             ctaEnIdle="Subscribe monthly"
             ctaViIdle="Đăng ký hàng tháng"
-            ctaEnBusy="Opening Apple sheet…"
-            ctaViBusy="Đang mở Apple…"
+            ctaEnBusy={`Opening ${nativeBillingStoreName} sheet…`}
+            ctaViBusy={`Đang mở ${nativeBillingStoreName}…`}
           />
           <PlanRow
             titleEn="Premium — Yearly"
@@ -233,8 +236,8 @@ export default function IapPlanCard({ onEntitlementGranted }: IapPlanCardProps) 
             onBuy={() => void handleBuy("yearly")}
             ctaEnIdle="Subscribe yearly"
             ctaViIdle="Đăng ký hàng năm"
-            ctaEnBusy="Opening Apple sheet…"
-            ctaViBusy="Đang mở Apple…"
+            ctaEnBusy={`Opening ${nativeBillingStoreName} sheet…`}
+            ctaViBusy={`Đang mở ${nativeBillingStoreName}…`}
           />
         </>
       )}
@@ -248,7 +251,7 @@ export default function IapPlanCard({ onEntitlementGranted }: IapPlanCardProps) 
         {restoreBusy ? "Restoring… / Đang khôi phục…" : "Restore Purchases / Khôi phục"}
       </button>
 
-      <InlineDisclosure />
+      <InlineDisclosure storeName={nativeBillingStoreName} />
     </ShellCard>
   );
 }
@@ -349,7 +352,7 @@ function PlanRow(props: {
   );
 }
 
-function InlineDisclosure() {
+function InlineDisclosure({ storeName }: { storeName: string }) {
   return (
     <div
       style={{
@@ -364,15 +367,15 @@ function InlineDisclosure() {
       }}
     >
       <p style={{ margin: 0 }}>
-        <strong>Auto-renewing subscription.</strong> Billed through your Apple ID.
+        <strong>Auto-renewing subscription.</strong> Billed through {storeName}.
         Subscription automatically renews for the same duration and price unless
         cancelled at least 24 hours before the renewal date. Manage or cancel any
-        time in Settings → Apple ID → Subscriptions.
+        time in your store subscription settings.
       </p>
       <p style={{ margin: "6px 0 0", color: "#64748b" }}>
-        Gói tự động gia hạn. Thanh toán qua Apple ID của bạn. Tự động gia hạn
+        Gói tự động gia hạn. Thanh toán qua {storeName}. Tự động gia hạn
         với cùng thời hạn và giá trừ khi hủy ít nhất 24 giờ trước ngày gia hạn.
-        Quản lý hoặc hủy trong Cài đặt → Apple ID → Đăng ký.
+        Quản lý hoặc hủy trong phần đăng ký của cửa hàng ứng dụng.
       </p>
       <div style={{ display: "flex", gap: 12, flexWrap: "wrap", marginTop: 8 }}>
         <a href="/terms" target="_blank" rel="noopener noreferrer" style={linkStyle}>
@@ -393,8 +396,8 @@ function bannerForPurchaseError(code: string): Banner {
     case "store_problem":
       return {
         kind: "error",
-        en: "Please make sure you're signed into your Apple ID and try again.",
-        vi: "Vui lòng đăng nhập Apple ID và thử lại.",
+        en: "Please make sure you're signed into your store account and try again.",
+        vi: "Vui lòng đăng nhập tài khoản cửa hàng ứng dụng và thử lại.",
       };
     case "purchase_not_allowed":
       return {
@@ -411,14 +414,14 @@ function bannerForPurchaseError(code: string): Banner {
     case "already_purchased":
       return {
         kind: "info",
-        en: "You already have this subscription on this Apple ID. Try Restore Purchases.",
-        vi: "Bạn đã có gói này trên Apple ID này. Hãy bấm Khôi phục.",
+        en: "You already have this subscription on this store account. Try Restore Purchases.",
+        vi: "Bạn đã có gói này trên tài khoản cửa hàng ứng dụng này. Hãy bấm Khôi phục.",
       };
     case "receipt_in_use_other":
       return {
         kind: "error",
-        en: "This subscription belongs to another account. Sign in with that Apple ID to restore.",
-        vi: "Gói này thuộc về tài khoản khác. Đăng nhập Apple ID đó để khôi phục.",
+        en: "This subscription belongs to another account. Sign in with that store account to restore.",
+        vi: "Gói này thuộc về tài khoản khác. Đăng nhập tài khoản cửa hàng ứng dụng đó để khôi phục.",
       };
     case "network":
     case "offline":

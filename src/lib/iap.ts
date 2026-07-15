@@ -1,28 +1,28 @@
 // src/lib/iap.ts
 //
-// RevenueCat wrapper for Apple In-App Purchase.
+// RevenueCat wrapper for native In-App Purchase.
 //
 // Scope (Step 4 of IAP track): configure + offerings + purchase + restore
 // + entitlement check + "manage subscription" helper. All helpers no-op
-// on non-iOS platforms so the same module is safe to import from shared
+// on non-native platforms so the same module is safe to import from shared
 // components.
 //
 // Constants here are the single source of truth for:
-//   - App Store Connect product IDs (must match ASC exactly)
+//   - Store product IDs (must match App Store Connect / Play Console exactly)
 //   - RevenueCat entitlement identifier (may be renamed in dashboard)
 // Update these in one place, not scattered across components.
 
 import { getPlatform, isNativePlatform } from "./platform";
 
 // ── Product + entitlement identifiers ───────────────────────────────────────
-// These MUST match the values configured in App Store Connect and the
-// RevenueCat dashboard. Changing them here without matching the dashboards
-// silently breaks purchases.
+// These MUST match the values configured in App Store Connect, Play Console,
+// and the RevenueCat dashboard. Changing them here without matching the
+// dashboards silently breaks purchases.
 
-/** App Store Connect product ID — monthly subscription. */
+/** Store product ID — monthly subscription. */
 export const IAP_PRODUCT_MONTHLY = "mercy.premium.monthly";
 
-/** App Store Connect product ID — yearly subscription. */
+/** Store product ID — yearly subscription. */
 export const IAP_PRODUCT_YEARLY = "mercy.premium.yearly";
 
 /**
@@ -42,6 +42,16 @@ export const IAP_ENTITLEMENT_ID = "MercyBlade Pro";
 export const APPLE_MANAGE_SUBSCRIPTIONS_URL =
   "https://apps.apple.com/account/subscriptions";
 
+/**
+ * Google Play subscription management page for this app. Play opens the
+ * account subscription center scoped to the package; individual product IDs
+ * are still owned by Play Console / RevenueCat config.
+ */
+export const GOOGLE_PLAY_MANAGE_SUBSCRIPTIONS_URL =
+  "https://play.google.com/store/account/subscriptions?package=com.mercyapps.mercyblade";
+
+export type NativeIapPlatform = "ios" | "android";
+
 // ── Init state ──────────────────────────────────────────────────────────────
 
 let initialized = false;
@@ -51,23 +61,51 @@ export function isIapReady(): boolean {
   return initialized;
 }
 
-/** True when this runtime should show the IAP flow (iOS native + SDK ready). */
+export function getNativeIapPlatform(): NativeIapPlatform | null {
+  if (!isNativePlatform()) return null;
+  const platform = getPlatform();
+  return platform === "ios" || platform === "android" ? platform : null;
+}
+
+/** True when this runtime should show the IAP flow (native shell + SDK ready). */
 export function shouldShowIap(): boolean {
-  return getPlatform() === "ios" && isNativePlatform();
+  return getNativeIapPlatform() !== null;
+}
+
+export function getManageSubscriptionsUrl(): string {
+  return getNativeIapPlatform() === "android"
+    ? GOOGLE_PLAY_MANAGE_SUBSCRIPTIONS_URL
+    : APPLE_MANAGE_SUBSCRIPTIONS_URL;
+}
+
+export function getNativeBillingStoreName(): "Apple" | "Google Play" | "Store" {
+  const platform = getNativeIapPlatform();
+  if (platform === "ios") return "Apple";
+  if (platform === "android") return "Google Play";
+  return "Store";
+}
+
+function revenueCatApiKeyForPlatform(platform: NativeIapPlatform): string {
+  const env = import.meta.env as Record<string, string | undefined>;
+  return platform === "ios"
+    ? String(env.VITE_REVENUECAT_APPLE_API_KEY ?? "").trim()
+    : String(env.VITE_REVENUECAT_GOOGLE_API_KEY ?? "").trim();
 }
 
 // ── Configure ───────────────────────────────────────────────────────────────
 
 export async function initRevenueCat(): Promise<void> {
   if (initialized) return;
-  if (getPlatform() !== "ios") return;
-  if (!isNativePlatform()) return;
+  const platform = getNativeIapPlatform();
+  if (!platform) return;
 
-  const apiKey = (import.meta.env as Record<string, string | undefined>)
-    ?.VITE_REVENUECAT_APPLE_API_KEY;
+  const apiKey = revenueCatApiKeyForPlatform(platform);
   if (!apiKey) {
+    const keyName = platform === "ios"
+      ? "VITE_REVENUECAT_APPLE_API_KEY"
+      : "VITE_REVENUECAT_GOOGLE_API_KEY";
     console.warn(
-      "[iap] VITE_REVENUECAT_APPLE_API_KEY is not set; RevenueCat init skipped. " +
+      `[iap] ${keyName} is not set; RevenueCat init skipped. ` +
         "IAP purchase UI will render a disabled state.",
     );
     return;
@@ -80,7 +118,7 @@ export async function initRevenueCat(): Promise<void> {
     await Purchases.setLogLevel({ level: LOG_LEVEL.WARN });
     await Purchases.configure({ apiKey });
     initialized = true;
-    console.info("[iap] RevenueCat configured");
+    console.info(`[iap] RevenueCat configured for ${platform}`);
   } catch (err) {
     console.error("[iap] RevenueCat configure failed:", err);
   }
@@ -219,7 +257,7 @@ export async function purchasePackageById(
 
 // ── Restore ─────────────────────────────────────────────────────────────────
 
-/** Restore purchases made under the current Apple ID. */
+/** Restore purchases made under the current native store account. */
 export async function restorePurchases(): Promise<RestoreResult> {
   if (!shouldShowIap()) return { ok: false, error: "IAP not available" };
   if (!initialized) return { ok: false, error: "IAP not configured" };

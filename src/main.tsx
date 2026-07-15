@@ -597,7 +597,7 @@ function scheduleOneTimeChunkReload(): boolean {
 
 (function initIapOnNative() {
   // Lazy-load so the web bundle does not include the RevenueCat module.
-  // initRevenueCat() is internally a no-op on non-iOS platforms, but the
+  // initRevenueCat() is internally a no-op on non-native platforms, but the
   // import itself only runs here. Never block boot.
   try {
     runAfterInitialPaint(() => {

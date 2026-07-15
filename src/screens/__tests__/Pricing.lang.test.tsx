@@ -35,6 +35,12 @@ vi.mock("@/lib/platform", () => ({
   getPlatform: () => "web",
 }));
 
+vi.mock("@/lib/iap", () => ({
+  shouldShowIap: () => false,
+  getNativeBillingStoreName: () => "Store",
+  getManageSubscriptionsUrl: () => "https://store.example.test/subscriptions",
+}));
+
 vi.mock("@/lib/analytics", () => ({
   trackCheckoutStarted: vi.fn(),
   trackPaywallShown: vi.fn(),

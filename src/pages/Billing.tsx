@@ -10,8 +10,11 @@ import {
   openBillingPortal,
   startCheckoutOrOpenPortal,
 } from "@/lib/billing";
-import { getPlatform } from "@/lib/platform";
-import { APPLE_MANAGE_SUBSCRIPTIONS_URL } from "@/lib/iap";
+import {
+  getManageSubscriptionsUrl,
+  getNativeBillingStoreName,
+  shouldShowIap,
+} from "@/lib/iap";
 import {
   formatPrice,
   MONTHLY_PRICE_VND,
@@ -247,9 +250,11 @@ export default function Billing() {
   const navigate = useNavigate();
   const access = useUserAccess();
 
-  // Platform gate — iOS uses Apple IAP via RevenueCat per Apple 3.1.1.
-  // Stripe subscribe / manage buttons must not render on iOS.
-  const isIos = getPlatform() === "ios";
+  // Platform gate — native apps use RevenueCat IAP per Apple / Google digital
+  // goods policy. Stripe subscribe / manage buttons must not render in native.
+  const usesNativeIap = shouldShowIap();
+  const nativeBillingStoreName = getNativeBillingStoreName();
+  const manageSubscriptionsUrl = getManageSubscriptionsUrl();
 
   const monthPriceId = resolvePriceId(
     pickEnv("VITE_STRIPE_PRICE_ONE_MONTH", "VITE_STRIPE_PRICE_MONTHLY", "VITE_STRIPE_MONTHLY_PRICE_ID"),
@@ -517,21 +522,21 @@ export default function Billing() {
             <span style={VIETNAMESE_SUB_STYLE}>Làm mới quyền truy cập</span>
           </button>
 
-          {isIos ? (
+          {usesNativeIap ? (
             <button
               type="button"
               onClick={() => {
                 try {
-                  window.open(APPLE_MANAGE_SUBSCRIPTIONS_URL, "_blank", "noopener,noreferrer");
+                  window.open(manageSubscriptionsUrl, "_blank", "noopener,noreferrer");
                 } catch {
-                  window.location.href = APPLE_MANAGE_SUBSCRIPTIONS_URL;
+                  window.location.href = manageSubscriptionsUrl;
                 }
               }}
               style={primaryButton}
             >
-              Manage in Apple
+              Manage in {nativeBillingStoreName}
               <span style={{ ...VIETNAMESE_SUB_STYLE, color: "rgba(255,255,255,0.7)" }}>
-                Quản lý qua Apple
+                Quản lý qua {nativeBillingStoreName}
               </span>
             </button>
           ) : (
@@ -605,8 +610,8 @@ export default function Billing() {
           </div>
         </div>
 
-        {/* Monthly plan — hidden on iOS per Apple 3.1.1 (IAP-only) */}
-        {!isIos && (
+        {/* Monthly plan — hidden in native apps (IAP-only). */}
+        {!usesNativeIap && (
           <div style={card}>
             <div style={{ fontSize: 11, fontWeight: 800, textTransform: "uppercase", color: "rgba(0,0,0,0.4)", marginBottom: 8 }}>
               Monthly
@@ -633,8 +638,8 @@ export default function Billing() {
           </div>
         )}
 
-        {/* Yearly plan — hidden on iOS per Apple 3.1.1 (IAP-only) */}
-        {!isIos && (
+        {/* Yearly plan — hidden in native apps (IAP-only). */}
+        {!usesNativeIap && (
           <div style={card}>
             <div style={{ fontSize: 11, fontWeight: 800, textTransform: "uppercase", color: "rgba(0,0,0,0.4)", marginBottom: 8 }}>
               Yearly
@@ -668,17 +673,17 @@ export default function Billing() {
           </div>
         )}
 
-        {/* iOS-only — direct users to /pricing where Apple IAP card renders */}
-        {isIos && (
+        {/* Native-only — direct users to /pricing where RevenueCat IAP card renders. */}
+        {usesNativeIap && (
           <div style={card}>
             <div style={{ fontSize: 11, fontWeight: 800, textTransform: "uppercase", color: "rgba(0,0,0,0.4)", marginBottom: 8 }}>
               Subscribe
               <span style={VIETNAMESE_SUB_STYLE}>Đăng ký</span>
             </div>
             <div style={{ marginTop: 8, color: "#475569", lineHeight: 1.5, fontSize: 14 }}>
-              Subscriptions on iOS are billed through your Apple ID.
+              Subscriptions in the native app are billed through {nativeBillingStoreName}.
               <span style={{ ...VIETNAMESE_SUB_STYLE, color: "#64748b", fontSize: 12 }}>
-                Trên iOS, gói đăng ký được thanh toán qua Apple ID.
+                Trong ứng dụng native, gói đăng ký được thanh toán qua {nativeBillingStoreName}.
               </span>
             </div>
             <button
