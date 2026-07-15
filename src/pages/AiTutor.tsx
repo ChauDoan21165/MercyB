@@ -39,6 +39,7 @@ import {
   appendCleanSpeech,
 } from "@/lib/ai-tutor/tutorUiCopy";
 import { recordCorrectionSourceEvent } from "@/lib/ai-tutor/correctionSourceEvents";
+import { recordSelfAuditOutcomeEvent } from "@/lib/ai-tutor/selfAuditOutcomeEvents";
 import { recordLearnerProfileCorrection } from "@/lib/learner-profile/profileWriter";
 import { fetchWithTimeout } from "@/lib/networkTimeout";
 import { getTutorCopy, type TutorCopy, type TutorTarget } from "@/lib/tutor/tutorCopy";
@@ -127,7 +128,10 @@ import {
   type SpeakFollowUpSelection,
 } from "@/lib/tutor/speakFollowups";
 import { auditCorrectionQuick } from "@/lib/tutor/teacherMercyAuditGate";
-import { selfAuditCorrectionQuick } from "@/lib/tutor/teacherMercySelfAuditGate";
+import {
+  formatSelfAuditTelemetry,
+  selfAuditCorrectionQuick,
+} from "@/lib/tutor/teacherMercySelfAuditGate";
 import { detectResidualError } from "@/lib/tutor/residualErrorCheck";
 import {
   resolveInterimEnglishBridge,
@@ -2624,6 +2628,10 @@ export default function AiTutorPage() {
           // BLOCK: hard-safety violation (fake praise, shaming) → don't show.
           // SHOW/SHOW_WITH_CAUTION: response is safe → show to learner.
           const selfAuditResult = selfAuditCorrectionQuick(trimmed, turn.explanation, aiCorrected);
+          recordSelfAuditOutcomeEvent({
+            telemetry: formatSelfAuditTelemetry(selfAuditResult),
+            targetLanguage: target,
+          });
           if (selfAuditResult.isBlocked) {
             console.warn("[MercySelfAudit] AI correction blocked:", selfAuditResult.summaryVi);
             setLoading(false);
@@ -2799,6 +2807,10 @@ export default function AiTutorPage() {
     // BLOCK: hard-safety violation (fake praise, shaming) → don't show.
     // SHOW/SHOW_WITH_CAUTION: response is safe → show to learner.
     const selfAuditResult = selfAuditCorrectionQuick(trimmed, turn.explanation, corrected);
+    recordSelfAuditOutcomeEvent({
+      telemetry: formatSelfAuditTelemetry(selfAuditResult),
+      targetLanguage: target,
+    });
     if (selfAuditResult.isBlocked) {
       console.warn("[MercySelfAudit] Rule correction blocked:", selfAuditResult.summaryVi);
       setLoading(false);
