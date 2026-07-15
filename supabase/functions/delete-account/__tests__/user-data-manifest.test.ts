@@ -117,3 +117,22 @@ describe("user-data-manifest — B1 (#797) coverage lock", () => {
     expect(missing).toEqual([]);
   });
 });
+
+describe("user-data-manifest — learner profile coverage lock", () => {
+  const LEARNER_PROFILE_TABLES = [
+    "learner_error_patterns",
+    "learner_skill_state",
+  ] as const;
+
+  it("covers durable learner profile tables as delete-by-user-id data", () => {
+    for (const table of LEARNER_PROFILE_TABLES) {
+      expect(USER_DATA_MANIFEST).toContainEqual(
+        expect.objectContaining({
+          table,
+          action: "delete",
+          column: "user_id",
+        }),
+      );
+    }
+  });
+});
