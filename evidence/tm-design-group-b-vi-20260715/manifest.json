@@ -1,0 +1,127 @@
+{
+  "batch": "tm-design-group-b-vi-20260715",
+  "created_at": "2026-07-15T00:00:00.000Z",
+  "count": 12,
+  "rows": [
+    {
+      "tm_int_id": "TM-INT-10160",
+      "source_candidate": "VI-2",
+      "module": "l1ErrorDetector",
+      "axis": "vi-profession-article-copula",
+      "export": "vi_l1_profession_article_copula",
+      "assertion": "matched weaknessTag vi_l1_profession_article_copula for profession article/copula transfer",
+      "output_digest": "sha256:1389d7e69b46ab407fa1deaee3a838ccb32872f095e13acc0595de47e54773e4",
+      "status": "evidence_passed"
+    },
+    {
+      "tm_int_id": "TM-INT-10161",
+      "source_candidate": "VI-3",
+      "module": "l1ErrorDetector",
+      "axis": "vi-progressive-be-drop",
+      "export": "vi_l1_progressive_be_drop",
+      "assertion": "matched weaknessTag vi_l1_progressive_be_drop for dropped progressive be",
+      "output_digest": "sha256:9425385e42f50b3bc0f653ff336dd0618f321a1790bf22e58fdeebbf3e481a1e",
+      "status": "evidence_passed"
+    },
+    {
+      "tm_int_id": "TM-INT-10162",
+      "source_candidate": "VI-7",
+      "module": "l1ErrorDetector",
+      "axis": "vi-definite-article-remention",
+      "export": "vi_l1_definite_article_remention",
+      "assertion": "matched weaknessTag vi_l1_definite_article_remention for repeated noun the insertion",
+      "output_digest": "sha256:d517c4a828296ab2c80954ef48c103a03ed8f000eb6a37024f772fdf009c6523",
+      "status": "evidence_passed"
+    },
+    {
+      "tm_int_id": "TM-INT-10163",
+      "source_candidate": "VI-11",
+      "module": "l1ErrorDetector",
+      "axis": "vi-noun-preposition-collocation",
+      "export": "vi_l1_noun_preposition_collocation",
+      "assertion": "matched weaknessTag vi_l1_noun_preposition_collocation for whitelisted reason for collocation",
+      "output_digest": "sha256:6ccb49406477100d968f3b3f6444d89fe96c71336d302f27fdbc97e944b29f27",
+      "status": "evidence_passed"
+    },
+    {
+      "tm_int_id": "TM-INT-10164",
+      "source_candidate": "VI-12",
+      "module": "l1ErrorDetector",
+      "axis": "vi-say-tell-argument-frame",
+      "export": "vi_l1_say_tell_argument_frame",
+      "assertion": "matched weaknessTag vi_l1_say_tell_argument_frame for said me to told me",
+      "output_digest": "sha256:21894339f3e5bfd59cee5f431d4525c24a2597fb985189c339e86e44d06bbc09",
+      "status": "evidence_passed"
+    },
+    {
+      "tm_int_id": "TM-INT-10165",
+      "source_candidate": "VI-13",
+      "module": "l1ErrorDetector",
+      "axis": "vi-learn-study-transfer",
+      "export": "vi_l1_learn_study_transfer",
+      "assertion": "matched weaknessTag vi_l1_learn_study_transfer for study how to cook to learn how to cook",
+      "output_digest": "sha256:53bd692a2f25d398db9052dbb7da368931210af92702f1dd64ccc6fdd89be911",
+      "status": "evidence_passed"
+    },
+    {
+      "tm_int_id": "TM-INT-10166",
+      "source_candidate": "VI-14",
+      "module": "l1ErrorDetector",
+      "axis": "vi-know-meet-timeline",
+      "export": "vi_l1_know_meet_timeline",
+      "assertion": "matched weaknessTag vi_l1_know_meet_timeline for knew him yesterday to met him yesterday",
+      "output_digest": "sha256:e12044e905b90367d0caf6cb7ef4042d5b6db665dd38d68cf54640bf4ee348e4",
+      "status": "evidence_passed"
+    },
+    {
+      "tm_int_id": "TM-INT-10167",
+      "source_candidate": "VI-15",
+      "module": "l1ErrorDetector",
+      "axis": "vi-verb-noun-collocation",
+      "export": "vi_l1_verb_noun_collocation",
+      "assertion": "matched weaknessTag vi_l1_verb_noun_collocation for eat medicine to take medicine",
+      "output_digest": "sha256:5a506b4c10d3b79ff8f3e1d1f6c7182e5bee4683a1381db79a76214d96119b88",
+      "status": "evidence_passed"
+    },
+    {
+      "tm_int_id": "TM-INT-10168",
+      "source_candidate": "VI-16",
+      "module": "l1ErrorDetector",
+      "axis": "vi-appliance-open-close-transfer",
+      "export": "vi_l1_appliance_open_close_transfer",
+      "assertion": "matched weaknessTag vi_l1_appliance_open_close_transfer for open the light to turn on the light",
+      "output_digest": "sha256:823d8ac634a3d73dccf689fcaee3edbbaf5c26dadaa9e383da62faafe65d24ad",
+      "status": "evidence_passed"
+    },
+    {
+      "tm_int_id": "TM-INT-10169",
+      "source_candidate": "VI-17",
+      "module": "l1ErrorDetector",
+      "axis": "vi-connector-stacking",
+      "export": "vi_l1_connector_stacking",
+      "assertion": "matched weaknessTag vi_l1_connector_stacking for because plus so connector stacking",
+      "output_digest": "sha256:f46458c6c1924e0fb6cb9cba37ba30ead4093368bb4e1f439ceb56b71990c2ac",
+      "status": "evidence_passed"
+    },
+    {
+      "tm_int_id": "TM-INT-10170",
+      "source_candidate": "VI-19",
+      "module": "l1ErrorDetector",
+      "axis": "vi-elliptical-subject-transfer",
+      "export": "vi_l1_elliptical_subject_transfer",
+      "assertion": "matched weaknessTag vi_l1_elliptical_subject_transfer for because busy to because I was busy",
+      "output_digest": "sha256:a4ab634190e6d53b85b6025e343dd95970e242a5ed4cd1b4b5e1f340967063e1",
+      "status": "evidence_passed"
+    },
+    {
+      "tm_int_id": "TM-INT-10171",
+      "source_candidate": "VI-22",
+      "module": "vnEnPronunciationDrills",
+      "axis": "vi-final-cluster-simplification",
+      "export": "selectFinalClusterFeedbackKey",
+      "assertion": "returned final_cluster_simplification for next heard as nex",
+      "output_digest": "sha256:e5c390d8527afc09a2fabee5a22717963a2e5cb7430e9aa73ef89647a2971dfd",
+      "status": "evidence_passed"
+    }
+  ]
+}

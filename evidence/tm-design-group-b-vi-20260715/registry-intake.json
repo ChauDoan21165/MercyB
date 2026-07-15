@@ -1,0 +1,261 @@
+{
+  "gate": "sqlite_registry_mandatory_intake",
+  "db": "/Users/chaudoanm3/ai-tutor-factory/state/int_registry.sqlite3",
+  "source_queue": "tm-design-group-b-vi-20260715",
+  "rows_added": [
+    {
+      "tm_int_id": "TM-INT-10160",
+      "source_candidate": "VI-2",
+      "module": "l1ErrorDetector",
+      "axis": "vi-profession-article-copula",
+      "behavior_boundary": "Detects Vietnamese L1 profession noun article/copula transfer when learner text omits be and/or a/an before a profession noun and the expected correction supplies the missing article or copula.",
+      "registry_intake": {
+        "action": "added",
+        "runnable": true,
+        "tm_int_id": "TM-INT-10160",
+        "semantic_key": "7ceffb2176c75a64b6a40877f5555b8a88a3e128b2958efed2043fb54bbb2716",
+        "normalized_boundary": "detects vietnamese l1 profession noun article copula transfer when learner text omits before profession noun expected correction supplies missing article copula",
+        "reason": null,
+        "existing_tm_int_id": null,
+        "similarity_score": null,
+        "matched_behavior_boundary": null
+      },
+      "semantic_key": "7ceffb2176c75a64b6a40877f5555b8a88a3e128b2958efed2043fb54bbb2716",
+      "normalized_boundary": "detects vietnamese l1 profession noun article copula transfer when learner text omits before profession noun expected correction supplies missing article copula"
+    },
+    {
+      "tm_int_id": "TM-INT-10161",
+      "source_candidate": "VI-3",
+      "module": "l1ErrorDetector",
+      "axis": "vi-progressive-be-drop",
+      "behavior_boundary": "Detects Vietnamese L1 dropped progressive be when learner text uses a subject plus -ing verb and the expected correction inserts am/is/are before that progressive verb.",
+      "registry_intake": {
+        "action": "added",
+        "runnable": true,
+        "tm_int_id": "TM-INT-10161",
+        "semantic_key": "c09452069f5905f0a1071b558b418807888818e34b7b715ce965c0bdd6ac18b4",
+        "normalized_boundary": "detects vietnamese l1 dropped progressive when learner text uses subject plus ing verb expected correction inserts am before progressive verb",
+        "reason": null,
+        "existing_tm_int_id": null,
+        "similarity_score": null,
+        "matched_behavior_boundary": null
+      },
+      "semantic_key": "c09452069f5905f0a1071b558b418807888818e34b7b715ce965c0bdd6ac18b4",
+      "normalized_boundary": "detects vietnamese l1 dropped progressive when learner text uses subject plus ing verb expected correction inserts am before progressive verb"
+    },
+    {
+      "tm_int_id": "TM-INT-10162",
+      "source_candidate": "VI-7",
+      "module": "l1ErrorDetector",
+      "axis": "vi-definite-article-remention",
+      "behavior_boundary": "Detects Vietnamese L1 definite article remention loss when a previously introduced count noun is repeated bare and the expected correction adds the before that repeated noun.",
+      "registry_intake": {
+        "action": "added",
+        "runnable": true,
+        "tm_int_id": "TM-INT-10162",
+        "semantic_key": "21075822b6b62d60f028f6938bbd08c05fac2070164602111da3e96485d70c13",
+        "normalized_boundary": "detects vietnamese l1 definite article remention loss when previously introduced count noun repeated bare expected correction adds before repeated noun",
+        "reason": null,
+        "existing_tm_int_id": null,
+        "similarity_score": null,
+        "matched_behavior_boundary": null
+      },
+      "semantic_key": "21075822b6b62d60f028f6938bbd08c05fac2070164602111da3e96485d70c13",
+      "normalized_boundary": "detects vietnamese l1 definite article remention loss when previously introduced count noun repeated bare expected correction adds before repeated noun"
+    },
+    {
+      "tm_int_id": "TM-INT-10163",
+      "source_candidate": "VI-11",
+      "module": "l1ErrorDetector",
+      "axis": "vi-noun-preposition-collocation",
+      "behavior_boundary": "Detects a conservative whitelist of Vietnamese L1 noun-preposition collocation transfer such as reason of to reason for, opinion about to opinion on, and demand of to demand for.",
+      "registry_intake": {
+        "action": "added",
+        "runnable": true,
+        "tm_int_id": "TM-INT-10163",
+        "semantic_key": "8be8eb06bfd8310d7c775d3fa35e7bf8ea7d9685af0837955fc06f2cbf0d57f1",
+        "normalized_boundary": "detects conservative whitelist vietnamese l1 noun preposition collocation transfer such reason reason opinion about opinion demand demand",
+        "reason": null,
+        "existing_tm_int_id": null,
+        "similarity_score": null,
+        "matched_behavior_boundary": null
+      },
+      "semantic_key": "8be8eb06bfd8310d7c775d3fa35e7bf8ea7d9685af0837955fc06f2cbf0d57f1",
+      "normalized_boundary": "detects conservative whitelist vietnamese l1 noun preposition collocation transfer such reason reason opinion about opinion demand demand"
+    },
+    {
+      "tm_int_id": "TM-INT-10164",
+      "source_candidate": "VI-12",
+      "module": "l1ErrorDetector",
+      "axis": "vi-say-tell-argument-frame",
+      "behavior_boundary": "Detects Vietnamese L1 say/tell/talk argument frame transfer when learner text uses said me, tell with, or talk someone about and the expected correction selects the English argument frame.",
+      "registry_intake": {
+        "action": "added",
+        "runnable": true,
+        "tm_int_id": "TM-INT-10164",
+        "semantic_key": "d916d1af36ca24d196444dfc7f42e3638da9693539c88f219965017bc8bc197c",
+        "normalized_boundary": "detects vietnamese l1 say tell talk argument frame transfer when learner text uses said me tell talk someone about expected correction selects english argument frame",
+        "reason": null,
+        "existing_tm_int_id": null,
+        "similarity_score": null,
+        "matched_behavior_boundary": null
+      },
+      "semantic_key": "d916d1af36ca24d196444dfc7f42e3638da9693539c88f219965017bc8bc197c",
+      "normalized_boundary": "detects vietnamese l1 say tell talk argument frame transfer when learner text uses said me tell talk someone about expected correction selects english argument frame"
+    },
+    {
+      "tm_int_id": "TM-INT-10165",
+      "source_candidate": "VI-13",
+      "module": "l1ErrorDetector",
+      "axis": "vi-learn-study-transfer",
+      "behavior_boundary": "Detects Vietnamese L1 learn/study lexical transfer when learner text uses study for learning a skill or learn for attending formal education and the expected correction chooses learn, practice, or study by context.",
+      "registry_intake": {
+        "action": "added",
+        "runnable": true,
+        "tm_int_id": "TM-INT-10165",
+        "semantic_key": "221f8523e5db65c311134144fb3a0966e76e74b3cb0249bf4c22ea48e87ca22c",
+        "normalized_boundary": "detects vietnamese l1 learn study lexical transfer when learner text uses study learning skill learn attending formal education expected correction chooses learn practice study context",
+        "reason": null,
+        "existing_tm_int_id": null,
+        "similarity_score": null,
+        "matched_behavior_boundary": null
+      },
+      "semantic_key": "221f8523e5db65c311134144fb3a0966e76e74b3cb0249bf4c22ea48e87ca22c",
+      "normalized_boundary": "detects vietnamese l1 learn study lexical transfer when learner text uses study learning skill learn attending formal education expected correction chooses learn practice study context"
+    },
+    {
+      "tm_int_id": "TM-INT-10166",
+      "source_candidate": "VI-14",
+      "module": "l1ErrorDetector",
+      "axis": "vi-know-meet-timeline",
+      "behavior_boundary": "Detects Vietnamese L1 know/meet timeline transfer when learner text uses know for first meeting in a past time context and the expected correction uses meet/met.",
+      "registry_intake": {
+        "action": "added",
+        "runnable": true,
+        "tm_int_id": "TM-INT-10166",
+        "semantic_key": "6ff9866e3afb57847a86c87ce8e29e52a6dfe035ef8f001120b650c4b0963dda",
+        "normalized_boundary": "detects vietnamese l1 know meet timeline transfer when learner text uses know first meeting past time context expected correction uses meet met",
+        "reason": null,
+        "existing_tm_int_id": null,
+        "similarity_score": null,
+        "matched_behavior_boundary": null
+      },
+      "semantic_key": "6ff9866e3afb57847a86c87ce8e29e52a6dfe035ef8f001120b650c4b0963dda",
+      "normalized_boundary": "detects vietnamese l1 know meet timeline transfer when learner text uses know first meeting past time context expected correction uses meet met"
+    },
+    {
+      "tm_int_id": "TM-INT-10167",
+      "source_candidate": "VI-15",
+      "module": "l1ErrorDetector",
+      "axis": "vi-verb-noun-collocation",
+      "behavior_boundary": "Detects a conservative whitelist of Vietnamese L1 verb-noun collocation transfer for medicine, where learner text uses eat, drink, or use medicine and the expected correction uses take medicine.",
+      "registry_intake": {
+        "action": "added",
+        "runnable": true,
+        "tm_int_id": "TM-INT-10167",
+        "semantic_key": "c21137888fee63625f3e385a0b7af46d0de20009153887f0d3f3a129dda5e3f3",
+        "normalized_boundary": "detects conservative whitelist vietnamese l1 verb noun collocation transfer medicine where learner text uses eat drink use medicine expected correction uses take medicine",
+        "reason": null,
+        "existing_tm_int_id": null,
+        "similarity_score": null,
+        "matched_behavior_boundary": null
+      },
+      "semantic_key": "c21137888fee63625f3e385a0b7af46d0de20009153887f0d3f3a129dda5e3f3",
+      "normalized_boundary": "detects conservative whitelist vietnamese l1 verb noun collocation transfer medicine where learner text uses eat drink use medicine expected correction uses take medicine"
+    },
+    {
+      "tm_int_id": "TM-INT-10168",
+      "source_candidate": "VI-16",
+      "module": "l1ErrorDetector",
+      "axis": "vi-appliance-open-close-transfer",
+      "behavior_boundary": "Detects Vietnamese L1 open/close appliance transfer when learner text says open or close a light, TV, fan, computer, or air conditioner and the expected correction uses turn on or turn off.",
+      "registry_intake": {
+        "action": "added",
+        "runnable": true,
+        "tm_int_id": "TM-INT-10168",
+        "semantic_key": "b7e81305b09591735efa7c7dff15b93bce323cff919963f49b6d68e230bb31a1",
+        "normalized_boundary": "detects vietnamese l1 open close appliance transfer when learner text says open close light tv fan computer air conditioner expected correction uses turn turn off",
+        "reason": null,
+        "existing_tm_int_id": null,
+        "similarity_score": null,
+        "matched_behavior_boundary": null
+      },
+      "semantic_key": "b7e81305b09591735efa7c7dff15b93bce323cff919963f49b6d68e230bb31a1",
+      "normalized_boundary": "detects vietnamese l1 open close appliance transfer when learner text says open close light tv fan computer air conditioner expected correction uses turn turn off"
+    },
+    {
+      "tm_int_id": "TM-INT-10169",
+      "source_candidate": "VI-17",
+      "module": "l1ErrorDetector",
+      "axis": "vi-connector-stacking",
+      "behavior_boundary": "Detects Vietnamese L1 paired connector stacking when learner text combines because with so, although with but, or even though with but and the expected correction removes the redundant connector.",
+      "registry_intake": {
+        "action": "added",
+        "runnable": true,
+        "tm_int_id": "TM-INT-10169",
+        "semantic_key": "d4907061fd68e35cfc269d908dbc981dc9b4f6ce4e9c13e013c875b06e8163bd",
+        "normalized_boundary": "detects vietnamese l1 paired connector stacking when learner text combines because so although but even though but expected correction removes redundant connector",
+        "reason": null,
+        "existing_tm_int_id": null,
+        "similarity_score": null,
+        "matched_behavior_boundary": null
+      },
+      "semantic_key": "d4907061fd68e35cfc269d908dbc981dc9b4f6ce4e9c13e013c875b06e8163bd",
+      "normalized_boundary": "detects vietnamese l1 paired connector stacking when learner text combines because so although but even though but expected correction removes redundant connector"
+    },
+    {
+      "tm_int_id": "TM-INT-10170",
+      "source_candidate": "VI-19",
+      "module": "l1ErrorDetector",
+      "axis": "vi-elliptical-subject-transfer",
+      "behavior_boundary": "Detects Vietnamese L1 elliptical subject transfer when learner text omits the finite clause subject after because, when, or in my opinion and the expected correction supplies an explicit English subject.",
+      "registry_intake": {
+        "action": "added",
+        "runnable": true,
+        "tm_int_id": "TM-INT-10170",
+        "semantic_key": "f545b15a859af7250b03c38d97b0112101e60105d7c6c32803485bdb05a47626",
+        "normalized_boundary": "detects vietnamese l1 elliptical subject transfer when learner text omits finite clause subject after because when opinion expected correction supplies explicit english subject",
+        "reason": null,
+        "existing_tm_int_id": null,
+        "similarity_score": null,
+        "matched_behavior_boundary": null
+      },
+      "semantic_key": "f545b15a859af7250b03c38d97b0112101e60105d7c6c32803485bdb05a47626",
+      "normalized_boundary": "detects vietnamese l1 elliptical subject transfer when learner text omits finite clause subject after because when opinion expected correction supplies explicit english subject"
+    },
+    {
+      "tm_int_id": "TM-INT-10171",
+      "source_candidate": "VI-22",
+      "module": "vnEnPronunciationDrills",
+      "axis": "vi-final-cluster-simplification",
+      "behavior_boundary": "Detects Vietnamese L1 final consonant cluster simplification for pronunciation feedback when a target with a known final cluster such as next is heard or typed as its accepted simplified variant such as nex.",
+      "registry_intake": {
+        "action": "added",
+        "runnable": true,
+        "tm_int_id": "TM-INT-10171",
+        "semantic_key": "9ff29f9ca965495d23cf4fc9668d9f26634747d20f421cd6f0e79422d12ea114",
+        "normalized_boundary": "detects vietnamese l1 final consonant cluster simplification pronunciation feedback when target known final cluster such next heard typed accepted simplified variant such nex",
+        "reason": null,
+        "existing_tm_int_id": null,
+        "similarity_score": null,
+        "matched_behavior_boundary": null
+      },
+      "semantic_key": "9ff29f9ca965495d23cf4fc9668d9f26634747d20f421cd6f0e79422d12ea114",
+      "normalized_boundary": "detects vietnamese l1 final consonant cluster simplification pronunciation feedback when target known final cluster such next heard typed accepted simplified variant such nex"
+    }
+  ],
+  "rows_blocked_as_duplicate": [],
+  "rows_already_present": [],
+  "blocked_non_duplicate": [],
+  "unresolved_collisions_left_for_judge_governor": [],
+  "counts": {
+    "rows_added": 12,
+    "rows_blocked_as_duplicate": 0,
+    "rows_already_present": 0,
+    "blocked_non_duplicate": 0,
+    "unresolved_collisions_left_for_judge_governor": 0,
+    "packets_or_rows_runnable": 12
+  },
+  "covered_by_self_assigned": false,
+  "status_policy": "new worker-created intake is report_only; verified is preserved only from trusted existing source rows"
+}

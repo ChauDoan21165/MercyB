@@ -1,0 +1,59 @@
+{
+  "schema": "tm-int-obs-evidence-packet-v1",
+  "packet_id": "OBS-004-TM-INT-10162",
+  "created_at": "2026-07-15T00:00:00.000Z",
+  "source": "tm-design-group-b-vi-runtime-observation",
+  "tm_int_id": "TM-INT-10162",
+  "module": "l1ErrorDetector",
+  "axis": "vi-definite-article-remention",
+  "behavior_boundary": "Detects Vietnamese L1 definite article remention loss when a previously introduced count noun is repeated bare and the expected correction adds the before that repeated noun.",
+  "previous_behavior_boundary": null,
+  "code_path": "src/lib/feedback/index.ts:detectL1Error",
+  "probe_id": "tm-design-group-b-vi-20260715:VI-7",
+  "input": {
+    "userAnswer": "I read a book. Book is interesting.",
+    "expectedAnswer": "I read a book. The book is interesting."
+  },
+  "output": {
+    "detection": {
+      "matched": true,
+      "weaknessTag": "vi_l1_definite_article_remention",
+      "feedback": {
+        "en": "When you mention the same thing again, English often switches to **the** because the listener now knows which one. Try: *I read a book. The book is interesting.*.",
+        "vi": "Khi nhắc lại cùng một vật/người, tiếng Anh thường dùng **the** vì người nghe đã biết mình nói tới cái nào. Thử: *I read a book. The book is interesting.*."
+      }
+    }
+  },
+  "input_digest": "sha256:7cb033671d24834c1b55e6855f5740ae55b784d39d6bd02bafbcd2d3b4f217f5",
+  "output_digest": "sha256:d517c4a828296ab2c80954ef48c103a03ed8f000eb6a37024f772fdf009c6523",
+  "attribution": {
+    "repository": "MercyB",
+    "generated_by": "scripts/tm-int/group-b-vi-evidence.mjs",
+    "spec_first_source": "reports/tm-design-ruling-sheet.md + reports/tm-research-vi-interference.md",
+    "spec_written_from_public_interface_only": true,
+    "shared_digest_rule": "one packet per ID; no shared digest"
+  },
+  "replay_proof": {
+    "replayed": true,
+    "command": "cd /Users/chaudoanm3/MercyB && npx vite-node scripts/tm-int/group-b-vi-evidence.mjs",
+    "checks": {
+      "code_path_match": true,
+      "input_digest_match": true,
+      "output_digest_match": true,
+      "matched": true,
+      "weakness_tag_match": true,
+      "feedback_mentions_expected": true
+    },
+    "recorded_output_digest": "sha256:d517c4a828296ab2c80954ef48c103a03ed8f000eb6a37024f772fdf009c6523"
+  },
+  "run_ids": {
+    "obs001": "tm-design-group-b-vi-20260715:obs001:TM-INT-10162",
+    "obs003": "tm-design-group-b-vi-20260715:obs003:TM-INT-10162",
+    "obs004": "tm-design-group-b-vi-20260715:obs004:TM-INT-10162"
+  },
+  "lineage": {
+    "design_ruling": "group-b-2026-07-15",
+    "source_candidate": "VI-7",
+    "evidence_batch": "tm-design-group-b-vi-20260715"
+  }
+}

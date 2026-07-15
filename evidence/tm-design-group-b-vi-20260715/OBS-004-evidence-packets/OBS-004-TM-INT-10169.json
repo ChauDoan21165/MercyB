@@ -1,0 +1,59 @@
+{
+  "schema": "tm-int-obs-evidence-packet-v1",
+  "packet_id": "OBS-004-TM-INT-10169",
+  "created_at": "2026-07-15T00:00:00.000Z",
+  "source": "tm-design-group-b-vi-runtime-observation",
+  "tm_int_id": "TM-INT-10169",
+  "module": "l1ErrorDetector",
+  "axis": "vi-connector-stacking",
+  "behavior_boundary": "Detects Vietnamese L1 paired connector stacking when learner text combines because with so, although with but, or even though with but and the expected correction removes the redundant connector.",
+  "previous_behavior_boundary": null,
+  "code_path": "src/lib/feedback/index.ts:detectL1Error",
+  "probe_id": "tm-design-group-b-vi-20260715:VI-17",
+  "input": {
+    "userAnswer": "Because it rained, so I stayed home.",
+    "expectedAnswer": "Because it rained, I stayed home."
+  },
+  "output": {
+    "detection": {
+      "matched": true,
+      "weaknessTag": "vi_l1_connector_stacking",
+      "feedback": {
+        "en": "English usually uses one connector, not a paired double connector: **because** without **so**, **although/even though** without **but**. Try: *Because it rained, I stayed home.*.",
+        "vi": "Tiếng Anh thường chỉ dùng một liên từ: **because** không đi kèm **so**, **although/even though** không đi kèm **but**. Thử: *Because it rained, I stayed home.*."
+      }
+    }
+  },
+  "input_digest": "sha256:d3b338182449a2d79a801186e4fa16d0b2e65f1ed47473d09d511625c7b5ff99",
+  "output_digest": "sha256:f46458c6c1924e0fb6cb9cba37ba30ead4093368bb4e1f439ceb56b71990c2ac",
+  "attribution": {
+    "repository": "MercyB",
+    "generated_by": "scripts/tm-int/group-b-vi-evidence.mjs",
+    "spec_first_source": "reports/tm-design-ruling-sheet.md + reports/tm-research-vi-interference.md",
+    "spec_written_from_public_interface_only": true,
+    "shared_digest_rule": "one packet per ID; no shared digest"
+  },
+  "replay_proof": {
+    "replayed": true,
+    "command": "cd /Users/chaudoanm3/MercyB && npx vite-node scripts/tm-int/group-b-vi-evidence.mjs",
+    "checks": {
+      "code_path_match": true,
+      "input_digest_match": true,
+      "output_digest_match": true,
+      "matched": true,
+      "weakness_tag_match": true,
+      "feedback_mentions_expected": true
+    },
+    "recorded_output_digest": "sha256:f46458c6c1924e0fb6cb9cba37ba30ead4093368bb4e1f439ceb56b71990c2ac"
+  },
+  "run_ids": {
+    "obs001": "tm-design-group-b-vi-20260715:obs001:TM-INT-10169",
+    "obs003": "tm-design-group-b-vi-20260715:obs003:TM-INT-10169",
+    "obs004": "tm-design-group-b-vi-20260715:obs004:TM-INT-10169"
+  },
+  "lineage": {
+    "design_ruling": "group-b-2026-07-15",
+    "source_candidate": "VI-17",
+    "evidence_batch": "tm-design-group-b-vi-20260715"
+  }
+}

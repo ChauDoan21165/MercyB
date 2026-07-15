@@ -1,0 +1,59 @@
+{
+  "schema": "tm-int-obs-evidence-packet-v1",
+  "packet_id": "OBS-004-TM-INT-10167",
+  "created_at": "2026-07-15T00:00:00.000Z",
+  "source": "tm-design-group-b-vi-runtime-observation",
+  "tm_int_id": "TM-INT-10167",
+  "module": "l1ErrorDetector",
+  "axis": "vi-verb-noun-collocation",
+  "behavior_boundary": "Detects a conservative whitelist of Vietnamese L1 verb-noun collocation transfer for medicine, where learner text uses eat, drink, or use medicine and the expected correction uses take medicine.",
+  "previous_behavior_boundary": null,
+  "code_path": "src/lib/feedback/index.ts:detectL1Error",
+  "probe_id": "tm-design-group-b-vi-20260715:VI-15",
+  "input": {
+    "userAnswer": "I eat medicine twice a day.",
+    "expectedAnswer": "I take medicine twice a day."
+  },
+  "output": {
+    "detection": {
+      "matched": true,
+      "weaknessTag": "vi_l1_verb_noun_collocation",
+      "feedback": {
+        "en": "English says **take medicine**, not *eat/drink medicine*. This is a fixed verb-noun collocation. Try: *I take medicine twice a day.*.",
+        "vi": "Tiếng Anh nói **take medicine**, không nói *eat/drink medicine*. Đây là cụm động từ-danh từ cố định. Thử: *I take medicine twice a day.*."
+      }
+    }
+  },
+  "input_digest": "sha256:a7b93204102ddff6988151827d2baaeb2962eb5d4d1531b3d9096f78b13fe830",
+  "output_digest": "sha256:5a506b4c10d3b79ff8f3e1d1f6c7182e5bee4683a1381db79a76214d96119b88",
+  "attribution": {
+    "repository": "MercyB",
+    "generated_by": "scripts/tm-int/group-b-vi-evidence.mjs",
+    "spec_first_source": "reports/tm-design-ruling-sheet.md + reports/tm-research-vi-interference.md",
+    "spec_written_from_public_interface_only": true,
+    "shared_digest_rule": "one packet per ID; no shared digest"
+  },
+  "replay_proof": {
+    "replayed": true,
+    "command": "cd /Users/chaudoanm3/MercyB && npx vite-node scripts/tm-int/group-b-vi-evidence.mjs",
+    "checks": {
+      "code_path_match": true,
+      "input_digest_match": true,
+      "output_digest_match": true,
+      "matched": true,
+      "weakness_tag_match": true,
+      "feedback_mentions_expected": true
+    },
+    "recorded_output_digest": "sha256:5a506b4c10d3b79ff8f3e1d1f6c7182e5bee4683a1381db79a76214d96119b88"
+  },
+  "run_ids": {
+    "obs001": "tm-design-group-b-vi-20260715:obs001:TM-INT-10167",
+    "obs003": "tm-design-group-b-vi-20260715:obs003:TM-INT-10167",
+    "obs004": "tm-design-group-b-vi-20260715:obs004:TM-INT-10167"
+  },
+  "lineage": {
+    "design_ruling": "group-b-2026-07-15",
+    "source_candidate": "VI-15",
+    "evidence_batch": "tm-design-group-b-vi-20260715"
+  }
+}
