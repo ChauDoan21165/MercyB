@@ -106,4 +106,29 @@ describe("LearnerProfileProgressView", () => {
       suggestedMode: "grammar",
     });
   });
+
+  it("renders no trend arrow or label below the evidence floor", () => {
+    render(
+      <LearnerProfileProgressView
+        data={{
+          ...emptyData(),
+          patterns: [
+            {
+              pattern_code: "missing-article",
+              l1: "vi",
+              occurrence_count: 2,
+              resolved_count: 0,
+              first_seen_at: "2026-07-10T00:00:00Z",
+              last_seen_at: "2026-07-15T00:00:00Z",
+              trend: "worsening",
+            },
+          ],
+        }}
+      />,
+    );
+
+    expect(screen.getByText("thiếu mạo từ (a/an/the)")).toBeInTheDocument();
+    expect(screen.getByText("2 lần thấy")).toBeInTheDocument();
+    expect(screen.queryByText("cần chú ý")).not.toBeInTheDocument();
+  });
 });

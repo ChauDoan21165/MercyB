@@ -175,7 +175,7 @@ export function LearnerProfileProgressView({
                         <h3 style={patternTitleStyle}>{meta.labelVi}</h3>
                         <p style={patternExplanationStyle}>{meta.noteVi}</p>
                       </div>
-                      <TrendPill trend={pattern.trend} />
+                      <TrendPill trend={pattern.trend} occurrenceCount={pattern.occurrence_count} />
                     </div>
                     <div style={patternMetaRowStyle}>
                       <span>{pattern.occurrence_count} lần thấy</span>
@@ -271,7 +271,8 @@ function RollupStat({ label, value }: { label: string; value: string }) {
   );
 }
 
-function TrendPill({ trend }: { trend: string }) {
+function TrendPill({ trend, occurrenceCount }: { trend: string; occurrenceCount: number }) {
+  if (occurrenceCount < PATTERN_TREND_EVIDENCE_FLOOR || trend === "insufficient") return null;
   const meta = TREND_LABELS[trend] ?? TREND_LABELS.stable;
   return (
     <span style={{ ...trendPillStyle, color: meta.color, borderColor: meta.border }}>
@@ -419,6 +420,8 @@ const SKILL_ORDER: Skill[] = [
   "reading",
   "writing",
 ];
+
+const PATTERN_TREND_EVIDENCE_FLOOR = 5;
 
 const SKILL_LABELS: Record<Skill, { vi: string; en: string }> = {
   pronunciation: { vi: "Phát âm", en: "Pronunciation" },
