@@ -11,7 +11,12 @@
 import { createAdminClient } from "../_billing/client.ts";
 import { sha256Hex } from "../_billing/crypto.ts";
 import { error, json } from "../_billing/http.ts";
-import { registerProviderEvent } from "../_billing/provider-events.ts";
+import {
+  markProviderEventFailed,
+  markProviderEventProcessed,
+  registerProviderEvent,
+} from "../_billing/provider-events.ts";
+import { projectAppleNotification } from "../_billing/store-webhook-projection.ts";
 import type { BillingEnvironment } from "../_billing/types.ts";
 import { verifyAppleJws } from "../_billing/verifyAppleJws.ts";
 import { captureEdgeError } from "../_shared/sentry.ts";
@@ -55,9 +60,13 @@ function normalizeEnvironment(value: unknown): BillingEnvironment {
 
 interface AppleNotificationV2 {
   notificationType?: string;
+  subtype?: string;
   notificationUUID?: string;
+  signedDate?: number;
   data?: {
     environment?: string;
+    signedTransactionInfo?: string;
+    signedRenewalInfo?: string;
   };
 }
 
@@ -117,6 +126,31 @@ Deno.serve(async (req) => {
   }
 
   const verifiedPayload = verification.payload;
+  const signedTransactionInfo =
+    typeof verifiedPayload?.data?.signedTransactionInfo === "string"
+      ? verifiedPayload.data.signedTransactionInfo
+      : null;
+  if (!signedTransactionInfo) {
+    return error("Missing signedTransactionInfo", 400);
+  }
+
+  const transactionVerification = await verifyAppleJws(signedTransactionInfo);
+  if (!transactionVerification.ok || !transactionVerification.payload) {
+    return error("Transaction verification failed", 401, {
+      reason: transactionVerification.reason,
+    });
+  }
+
+  const renewalVerification =
+    typeof verifiedPayload?.data?.signedRenewalInfo === "string"
+      ? await verifyAppleJws(verifiedPayload.data.signedRenewalInfo)
+      : null;
+  if (renewalVerification && !renewalVerification.ok) {
+    return error("Renewal info verification failed", 401, {
+      reason: renewalVerification.reason,
+    });
+  }
+
   const providerEventId =
     typeof verifiedPayload?.notificationUUID === "string"
       ? verifiedPayload.notificationUUID
@@ -125,6 +159,8 @@ Deno.serve(async (req) => {
   const eventKey =
     providerEventId ??
     `apple-webhook:${await sha256Hex(rawBody || JSON.stringify(verifiedPayload))}`;
+
+  let registeredEventId: string | null = null;
 
   try {
     const supabase = createAdminClient();
@@ -140,10 +176,49 @@ Deno.serve(async (req) => {
       payload: verifiedPayload,
       headers,
       metadata: {
-        scaffold_only: true,
         route: "apple-webhook",
         signature_verified: true,
       },
+    });
+    registeredEventId = result.id;
+
+    if (!result.isNew && result.processStatus === "processed") {
+      return json({
+        ok: true,
+        accepted: true,
+        duplicate: true,
+        provider: "apple",
+        environment,
+        event: result,
+      });
+    }
+
+    const notificationType =
+      typeof verifiedPayload?.notificationType === "string"
+        ? verifiedPayload.notificationType
+        : "apple_webhook_received";
+    const projection = await projectAppleNotification(supabase, {
+      notificationType,
+      subtype:
+        typeof verifiedPayload?.subtype === "string"
+          ? verifiedPayload.subtype
+          : null,
+      environment,
+      transaction: transactionVerification.payload as never,
+      renewalInfo: renewalVerification?.payload
+        ? renewalVerification.payload as never
+        : null,
+      payload: verifiedPayload,
+    });
+
+    await markProviderEventProcessed(supabase, result.id, {
+      projection,
+      provider_subscription_id:
+        projection.action === "upserted"
+          ? projection.providerSubscriptionId
+          : null,
+      canonical_status:
+        projection.action === "upserted" ? projection.status : null,
     });
 
     return json({
@@ -152,9 +227,8 @@ Deno.serve(async (req) => {
       provider: "apple",
       environment,
       event: result,
-      next_step:
-        "TODO: derive stable subscription identifier from verified payload, then project into public.subscriptions",
-    }, { status: 202 });
+      projection,
+    });
   } catch (err) {
     // PRIMARY billing-observability capture: the JWS ALREADY verified
     // above, so this is a genuine Apple notification whose processing
@@ -171,6 +245,18 @@ Deno.serve(async (req) => {
           ? verifiedPayload.notificationType
           : "unknown",
     });
+    if (registeredEventId) {
+      try {
+        const supabase = createAdminClient();
+        await markProviderEventFailed(
+          supabase,
+          registeredEventId,
+          err instanceof Error ? err : new Error("Unexpected error"),
+        );
+      } catch (markErr) {
+        console.warn("[apple-webhook] failed to mark provider event failed:", markErr);
+      }
+    }
     return error(err instanceof Error ? err.message : "Unexpected error", 500);
   }
 });

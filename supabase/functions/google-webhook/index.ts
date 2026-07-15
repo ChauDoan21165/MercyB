@@ -20,9 +20,24 @@
 import { createAdminClient } from "../_billing/client.ts";
 import { sha256Hex } from "../_billing/crypto.ts";
 import { error, json } from "../_billing/http.ts";
-import { registerProviderEvent } from "../_billing/provider-events.ts";
+import {
+  markProviderEventFailed,
+  markProviderEventProcessed,
+  registerProviderEvent,
+} from "../_billing/provider-events.ts";
+import {
+  type GoogleRtdnPayload,
+  type GoogleSubscriptionPurchaseV2,
+  projectGoogleRtdn,
+} from "../_billing/store-webhook-projection.ts";
 import type { BillingEnvironment } from "../_billing/types.ts";
 import { verifyGooglePubsubAuth } from "../_billing/verifyGoogleJwt.ts";
+
+type JsonRecord = Record<string, unknown>;
+
+const GOOGLE_ANDROID_PUBLISHER_SCOPE =
+  "https://www.googleapis.com/auth/androidpublisher";
+const GOOGLE_OAUTH_TOKEN_URL = "https://oauth2.googleapis.com/token";
 
 function requestHeaders(req: Request): Record<string, string> {
   return Object.fromEntries(req.headers.entries());
@@ -50,6 +65,154 @@ function decodePubSubData(body: Record<string, unknown>): unknown {
 function getRequiredEnv(name: string): string | null {
   const v = Deno.env.get(name);
   return v && v.length > 0 ? v : null;
+}
+
+function firstNonEmptyString(...values: unknown[]): string | null {
+  for (const value of values) {
+    if (typeof value === "string" && value.trim()) {
+      return value.trim();
+    }
+  }
+  return null;
+}
+
+function base64UrlEncode(input: Uint8Array | string): string {
+  const bytes =
+    typeof input === "string" ? new TextEncoder().encode(input) : input;
+  let binary = "";
+  for (const byte of bytes) binary += String.fromCharCode(byte);
+  return btoa(binary)
+    .replace(/\+/g, "-")
+    .replace(/\//g, "_")
+    .replace(/=+$/g, "");
+}
+
+function pemToArrayBuffer(pem: string): ArrayBuffer {
+  const cleaned = pem
+    .replace(/-----BEGIN PRIVATE KEY-----/g, "")
+    .replace(/-----END PRIVATE KEY-----/g, "")
+    .replace(/\s+/g, "");
+  const binary = atob(cleaned);
+  const bytes = new Uint8Array(binary.length);
+  for (let i = 0; i < binary.length; i += 1) bytes[i] = binary.charCodeAt(i);
+  return bytes.buffer;
+}
+
+async function signJwtRs256(
+  payload: JsonRecord,
+  privateKeyPem: string,
+): Promise<string> {
+  const encodedHeader = base64UrlEncode(
+    JSON.stringify({ alg: "RS256", typ: "JWT" }),
+  );
+  const encodedPayload = base64UrlEncode(JSON.stringify(payload));
+  const signingInput = `${encodedHeader}.${encodedPayload}`;
+
+  const cryptoKey = await crypto.subtle.importKey(
+    "pkcs8",
+    pemToArrayBuffer(privateKeyPem),
+    { name: "RSASSA-PKCS1-v1_5", hash: "SHA-256" },
+    false,
+    ["sign"],
+  );
+
+  const signature = await crypto.subtle.sign(
+    "RSASSA-PKCS1-v1_5",
+    cryptoKey,
+    new TextEncoder().encode(signingInput),
+  );
+
+  return `${signingInput}.${base64UrlEncode(new Uint8Array(signature))}`;
+}
+
+function getGoogleCredentials(): { clientEmail: string; privateKey: string } {
+  const rawJson = Deno.env.get("GOOGLE_SERVICE_ACCOUNT_JSON");
+  if (rawJson) {
+    const parsed = JSON.parse(rawJson);
+    const clientEmail = firstNonEmptyString(parsed.client_email);
+    const privateKey = firstNonEmptyString(parsed.private_key);
+    if (clientEmail && privateKey) return { clientEmail, privateKey };
+  }
+
+  const clientEmail = firstNonEmptyString(Deno.env.get("GOOGLE_CLIENT_EMAIL"));
+  const privateKey = firstNonEmptyString(
+    Deno.env.get("GOOGLE_PRIVATE_KEY"),
+  )?.replace(/\\n/g, "\n");
+
+  if (!clientEmail || !privateKey) {
+    throw new Error(
+      "Missing Google service account credentials. Set GOOGLE_SERVICE_ACCOUNT_JSON or GOOGLE_CLIENT_EMAIL + GOOGLE_PRIVATE_KEY.",
+    );
+  }
+
+  return { clientEmail, privateKey };
+}
+
+async function getGoogleAccessToken(): Promise<string> {
+  const { clientEmail, privateKey } = getGoogleCredentials();
+  const now = Math.floor(Date.now() / 1000);
+
+  const assertion = await signJwtRs256(
+    {
+      iss: clientEmail,
+      scope: GOOGLE_ANDROID_PUBLISHER_SCOPE,
+      aud: GOOGLE_OAUTH_TOKEN_URL,
+      iat: now,
+      exp: now + 3600,
+    },
+    privateKey,
+  );
+
+  const response = await fetch(GOOGLE_OAUTH_TOKEN_URL, {
+    method: "POST",
+    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    body: new URLSearchParams({
+      grant_type: "urn:ietf:params:oauth:grant-type:jwt-bearer",
+      assertion,
+    }),
+  });
+
+  if (!response.ok) {
+    const text = await response.text();
+    throw new Error(
+      `Failed to obtain Google access token: ${response.status} ${text}`,
+    );
+  }
+
+  const payload = await response.json();
+  const accessToken = firstNonEmptyString(payload.access_token);
+  if (!accessToken) {
+    throw new Error("Google OAuth response did not include access_token");
+  }
+
+  return accessToken;
+}
+
+async function fetchGoogleSubscriptionPurchase(
+  packageName: string,
+  purchaseToken: string,
+): Promise<GoogleSubscriptionPurchaseV2> {
+  const accessToken = await getGoogleAccessToken();
+  const url = `https://androidpublisher.googleapis.com/androidpublisher/v3/applications/${
+    encodeURIComponent(packageName)
+  }/purchases/subscriptionsv2/tokens/${encodeURIComponent(purchaseToken)}`;
+
+  const response = await fetch(url, {
+    method: "GET",
+    headers: {
+      Authorization: `Bearer ${accessToken}`,
+      Accept: "application/json",
+    },
+  });
+
+  const text = await response.text();
+  if (!response.ok) {
+    throw new Error(
+      `Google subscription lookup failed: ${response.status} ${text}`,
+    );
+  }
+
+  return JSON.parse(text) as GoogleSubscriptionPurchaseV2;
 }
 
 Deno.serve(async (req) => {
@@ -127,6 +290,14 @@ Deno.serve(async (req) => {
       : undefined,
   );
   const eventKey = messageId ?? `google-webhook:${await sha256Hex(rawBody || JSON.stringify(body))}`;
+  const packageName = firstNonEmptyString(
+    typeof pubSubPayload === "object" && pubSubPayload !== null
+      ? (pubSubPayload as GoogleRtdnPayload).packageName
+      : null,
+    Deno.env.get("GOOGLE_PLAY_PACKAGE_NAME"),
+    Deno.env.get("GOOGLE_PACKAGE_NAME"),
+  );
+  let registeredEventId: string | null = null;
 
   try {
     const supabase = createAdminClient();
@@ -144,11 +315,54 @@ Deno.serve(async (req) => {
       },
       headers,
       metadata: {
-        scaffold_only: true,
         route: "google-webhook",
         signature_verified: true,
         verified_email: verification.claims.email,
       },
+    });
+    registeredEventId = result.id;
+
+    if (!result.isNew && result.processStatus === "processed") {
+      return json({
+        ok: true,
+        accepted: true,
+        duplicate: true,
+        provider: "google",
+        environment,
+        event: result,
+      });
+    }
+
+    if (!pubSubPayload || typeof pubSubPayload !== "object") {
+      return error("Expected Pub/Sub data JSON payload", 400);
+    }
+
+    if (!packageName) {
+      return error("packageName is required or set GOOGLE_PLAY_PACKAGE_NAME", 400);
+    }
+
+    const rtdn = pubSubPayload as GoogleRtdnPayload;
+    const purchaseToken = rtdn.subscriptionNotification?.purchaseToken;
+    const purchase = purchaseToken
+      ? await fetchGoogleSubscriptionPurchase(packageName, purchaseToken)
+      : null;
+    const projection = purchase
+      ? await projectGoogleRtdn(supabase, {
+        environment,
+        packageName,
+        rtdn,
+        purchase,
+      })
+      : { action: "ignored" as const, reason: "not_subscription_notification" };
+
+    await markProviderEventProcessed(supabase, result.id, {
+      projection,
+      provider_subscription_id:
+        projection.action === "upserted"
+          ? projection.providerSubscriptionId
+          : null,
+      canonical_status:
+        projection.action === "upserted" ? projection.status : null,
     });
 
     return json({
@@ -157,10 +371,21 @@ Deno.serve(async (req) => {
       provider: "google",
       environment,
       event: result,
-      next_step:
-        "TODO: resolve stable subscription identity from verified RTDN payload, then project into public.subscriptions",
-    }, { status: 202 });
+      projection,
+    });
   } catch (err) {
+    if (registeredEventId) {
+      try {
+        const supabase = createAdminClient();
+        await markProviderEventFailed(
+          supabase,
+          registeredEventId,
+          err instanceof Error ? err : new Error("Unexpected error"),
+        );
+      } catch (markErr) {
+        console.warn("[google-webhook] failed to mark provider event failed:", markErr);
+      }
+    }
     return error(err instanceof Error ? err.message : "Unexpected error", 500);
   }
 });
