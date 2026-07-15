@@ -52,6 +52,8 @@ export const USER_DATA_MANIFEST: ManifestEntry[] = [
   { table: "email_events",                    action: "delete",    column: "user_id", reason: "per-user email open/click events" },
   { table: "favorite_rooms",                  action: "delete",    column: "user_id", reason: "user's favorited rooms" },
   { table: "favorite_tracks",                 action: "delete",    column: "user_id", reason: "user's favorited tracks" },
+  { table: "learner_error_patterns",          action: "delete",    column: "user_id", reason: "durable per-learner error-pattern counts; user-owned learning diagnosis" },
+  { table: "learner_skill_state",             action: "delete",    column: "user_id", reason: "durable per-learner skill profile; user-owned learning diagnosis" },
   { table: "matchmaking_preferences",         action: "delete",    column: "user_id", reason: "matchmaking preferences" },
   { table: "matchmaking_suggestions",         action: "delete",    column: "user_id", reason: "matchmaking results" },
   { table: "mb_ai_quality_events",            action: "delete",    column: "user_id", reason: "per-user AI quality events" },

@@ -1,6 +1,6 @@
 # Privacy Label Answers — App Store & Google Play
 
-Generated: 2026-06-11  
+Generated: 2026-07-15
 Scope: mercyblade.com web app + iOS Capacitor shell + Android Capacitor shell  
 Evidence: every claim cites file:line in the repo
 
@@ -18,7 +18,7 @@ All steps verified against live code (29 unit tests pass: `npm run check:delete-
 | 4 | Edge function validates the caller identity | ✅ | `supabase/functions/delete-account/index.ts:63–77` — `authClient.auth.getUser()` verifies the JWT against Supabase; 401 on any failure |
 | 5 | MFA re-auth gate (AAL2) for accounts with TOTP | ✅ | `supabase/functions/delete-account/index.ts:84–116` — lists MFA factors; blocks with `aal2_required` if user has a verified TOTP factor but JWT is AAL1; fail-CLOSED if factor lookup errors |
 | 6 | AAL2 UI: user routed to re-auth page | ✅ | `src/pages/account/deleteAccountFlow.ts:39–45` — `aal2_required` → `navigate("/auth/challenge?next=/account")` |
-| 7 | Personal learning data deleted (Pass 1) | ✅ | `supabase/functions/delete-account/index.ts:120–136` iterates `getDeleteEntries()` — 97 delete rows across tables including `study_log`, `speech_attempts`, `room_usage_analytics`, `teacher_memory`, `mercy_conversations`, `mercy_user_facts`, `user_notebook_items`, etc. See full manifest at `supabase/functions/delete-account/user-data-manifest.ts:43–432` |
+| 7 | Personal learning data deleted (Pass 1) | ✅ | `supabase/functions/delete-account/index.ts:120–136` iterates `getDeleteEntries()` — delete rows include `study_log`, `speech_attempts`, `room_usage_analytics`, `teacher_memory`, `mercy_conversations`, `mercy_user_facts`, `user_notebook_items`, `learner_skill_state`, `learner_error_patterns`, etc. See full manifest at `supabase/functions/delete-account/user-data-manifest.ts:43–434` |
 | 8 | Financial/billing rows anonymized, not deleted | ✅ | `supabase/functions/delete-account/index.ts:138–162` iterates `getAnonymizeEntries()` — 47 anonymize rows; `user_id` set to NULL; free-text fields (feedback, messages, Stripe IDs, jsonb payloads) scrubbed via `scrub_columns` spec. Retained for tax/legal audit per GDPR Art. 17(3)(e) |
 | 9 | Email audit scrubbed by recipient email (Pass 2b) | ✅ | `supabase/functions/delete-account/index.ts:164–189`; `email-audit-recipient-scrub.ts` — rows where deleted user was the *recipient* of an admin email are scrubbed by email address match (GAP A close from #819) |
 | 10 | `profiles` row deleted (Pass 3) | ✅ | `supabase/functions/delete-account/index.ts:191–202` — `admin.from("profiles").delete().eq("id", userId)` |
@@ -61,7 +61,8 @@ Answer format follows the App Store Connect questionnaire categories.
 | Product interaction | **Yes** | Yes | No |
 | In-app search history | No | — | — |
 
-- **Product interaction**: `study_log`, `room_usage_analytics`, `study_events`, `user_sessions` (`user-data-manifest.ts:92,88,91,106`). Used to power personal progress dashboard and AI tutor personalisation. Deleted on account deletion.
+- **Product interaction**: `study_log`, `room_usage_analytics`, `study_events`, `user_sessions` (`user-data-manifest.ts:94,90,93,108`). Used to power personal progress dashboard and AI tutor personalisation. Deleted on account deletion.
+- **Learner profile state**: `learner_skill_state` and `learner_error_patterns` (`user-data-manifest.ts:55-56`; schema at `supabase/migrations/20260723000000_learner_profile_state.sql:21-51`). Stores skill scores/CEFR estimates, pattern codes, counts, trend, timestamps, and UUID example references. It does **not** store raw learner text. Deleted on account deletion.
 
 #### Diagnostics
 | Data | Collected | Linked to user | Used for tracking |
@@ -82,7 +83,7 @@ Answer format follows the App Store Connect questionnaire categories.
 | Purchase history | **Yes** | Anonymized on deletion | No |
 | Payment info | No (handled by Stripe/Apple IAP; never touches our server) | — | — |
 
-- **Purchase history**: `payments`, `subscriptions`, `payment_transactions`, `apple_iap_events` (`user-data-manifest.ts:175,184,167,123`). `user_id` nulled on deletion; Stripe IDs and raw payloads scrubbed.
+- **Purchase history**: `payments`, `subscriptions`, `payment_transactions`, `apple_iap_events` (`user-data-manifest.ts:177,186,169,125`). Google Play purchase attach/webhook infrastructure also stores provider events in `billing_provider_events` (`supabase/migrations/20260319000000_team_c_billing_foundation.sql:235-276`) and canonical Google subscriptions in `subscriptions` (`supabase/functions/billing-google-attach-purchase/index.ts:374-419,551-579`). User-linked billing rows are anonymized on deletion where the schema exposes `user_id`; Stripe/Apple provider IDs, raw payloads, and metadata are scrubbed per manifest.
 
 #### Health & Fitness
 Not collected.
@@ -127,9 +128,10 @@ Fill each answer in the Play Console "Data safety" form as follows.
 | Personal info | Email address | Yes | Account + transactional email | Yes (HTTPS/TLS) | Yes (account deletion) |
 | Personal info | Name | No (user-provided optional) | In-app personalisation | Yes | Yes |
 | App activity | App interactions | Yes | Analytics, personalisation | Yes | Yes |
+| App activity | Learner profile state | Yes | Skill/profile personalisation; pattern counts, no raw learner text | Yes | Yes |
 | App activity | In-app search history | No | — | — | — |
 | Audio files | Voice/audio recordings (pronunciation) | Yes | Core feature: pronunciation scoring | Yes | Yes |
-| Financial info | Purchase history | Yes | Subscription management, support | Yes | Anonymized (user_id nulled) |
+| Financial info | Purchase history | Yes | Subscription management, support, Apple/Google/Stripe entitlement reconciliation | Yes | Anonymized where linked by user_id; provider audit rows retained for legal/financial logs |
 | App info and performance | Crash logs | Yes (Sentry) | Bug fixing | Yes | Contact support |
 
 ### Is all of the user data collected by your app encrypted in transit?
@@ -147,6 +149,7 @@ Deletion web link (for Play Console): `https://mercyblade.com/account` → Delet
 | Supabase | All user data (hosting) | Database + auth hosting |
 | Stripe | Email, subscription events | Payment processing |
 | Apple (IAP) | Transaction IDs, purchase events | In-app purchase processing |
+| Google Play Billing | Purchase tokens, product IDs, subscription state | Android in-app purchase processing and entitlement reconciliation |
 | Resend | Email address | Transactional + marketing email |
 | Google Analytics 4 | Anonymised usage events (web only) | Analytics; consent-gated |
 | Meta Pixel | Conversion events (web only) | Ad attribution; consent-gated |
