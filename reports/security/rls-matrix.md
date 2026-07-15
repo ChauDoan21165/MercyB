@@ -3,12 +3,12 @@
 Static scan only. Source: `supabase/migrations/*.sql`; no live database probing.
 
 ## Summary
-- migration_files: 267
-- tables_observed: 201
-- rls_enabled: 198
+- migration_files: 271
+- tables_observed: 203
+- rls_enabled: 200
 - rls_not_enabled: 3
-- policies_observed: 483
-- manifest_tables: 201
+- policies_observed: 487
+- manifest_tables: 203
 - manifest_drift_findings: 0
 
 ## Tables
@@ -87,7 +87,9 @@ Static scan only. Source: `supabase/migrations/*.sql`; no live database probing.
 | `public.latency_aggregates` | yes | yes | 1 | `supabase/migrations/20260518000000_latency_events.sql:77` |
 | `public.latency_events` | yes | yes | 1 | `supabase/migrations/20260518000000_latency_events.sql:46` |
 | `public.leaderboard_weekly` | yes | yes | 3 | `supabase/migrations/20260429000000_leaderboard_weekly.sql:42` |
+| `public.learner_error_patterns` | yes | yes | 2 | `supabase/migrations/20260723000000_learner_profile_state.sql:38` |
 | `public.learner_interaction_capture` | yes | yes | 0 | `supabase/migrations/20260703000000_learner_interaction_capture.sql:32` |
+| `public.learner_skill_state` | yes | yes | 2 | `supabase/migrations/20260723000000_learner_profile_state.sql:19` |
 | `public.learning_data_consent` | yes | yes | 0 | `supabase/migrations/20260703000000_learner_interaction_capture.sql:97` |
 | `public.learning_events` | yes | yes | 2 | `supabase/migrations/20260708000000_learning_events.sql:12` |
 | `public.lifetime_intent_signups` | yes | yes | 2 | `supabase/migrations/20260503010000_lifetime_intent.sql:24` |
@@ -543,9 +545,9 @@ Static scan only. Source: `supabase/migrations/*.sql`; no live database probing.
 
 | Policy | Command | Roles | USING | WITH CHECK | Source |
 |---|---|---|---|---|---|
-| `correction_source_events_admin_select` | select | authenticated | `public.get_admin_level(auth.uid()) >= 9` |  | `supabase/migrations/20260721000000_correction_source_events.sql:58` |
-| `correction_source_events_anon_insert` | insert | anon |  | `true` | `supabase/migrations/20260721000000_correction_source_events.sql:44` |
-| `correction_source_events_auth_insert` | insert | authenticated |  | `true` | `supabase/migrations/20260721000000_correction_source_events.sql:51` |
+| `correction_source_events_admin_select` | select | authenticated | `public.get_admin_level(auth.uid()) >= 9` |  | `supabase/migrations/20260721000000_correction_source_events.sql:59` |
+| `correction_source_events_anon_insert` | insert | anon |  | `true` | `supabase/migrations/20260721000000_correction_source_events.sql:45` |
+| `correction_source_events_auth_insert` | insert | authenticated |  | `true` | `supabase/migrations/20260721000000_correction_source_events.sql:52` |
 
 ### public.daily_challenges
 - RLS enabled: yes
@@ -756,9 +758,25 @@ Static scan only. Source: `supabase/migrations/*.sql`; no live database probing.
 | `leaderboard_weekly_update_own` | update | authenticated | `user_id = auth.uid()` | `user_id = auth.uid()` | `supabase/migrations/20260429000000_leaderboard_weekly.sql:86` |
 | `leaderboard_weekly_write_own` | insert | authenticated |  | `user_id = auth.uid()` | `supabase/migrations/20260429000000_leaderboard_weekly.sql:79` |
 
+### public.learner_error_patterns
+- RLS enabled: yes
+
+| Policy | Command | Roles | USING | WITH CHECK | Source |
+|---|---|---|---|---|---|
+| `learner_error_patterns_admin_select` | select | authenticated | `public.get_admin_level(auth.uid()) >= 9` |  | `supabase/migrations/20260723000000_learner_profile_state.sql:126` |
+| `learner_error_patterns_select_own` | select | authenticated | `user_id = auth.uid()` |  | `supabase/migrations/20260723000000_learner_profile_state.sql:118` |
+
 ### public.learner_interaction_capture
 - RLS enabled: yes
 - Policies: none observed in migrations
+
+### public.learner_skill_state
+- RLS enabled: yes
+
+| Policy | Command | Roles | USING | WITH CHECK | Source |
+|---|---|---|---|---|---|
+| `learner_skill_state_admin_select` | select | authenticated | `public.get_admin_level(auth.uid()) >= 9` |  | `supabase/migrations/20260723000000_learner_profile_state.sql:110` |
+| `learner_skill_state_select_own` | select | authenticated | `user_id = auth.uid()` |  | `supabase/migrations/20260723000000_learner_profile_state.sql:102` |
 
 ### public.learning_data_consent
 - RLS enabled: yes
