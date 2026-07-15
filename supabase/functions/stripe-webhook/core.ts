@@ -174,7 +174,8 @@ export function toMillis(value: string | null | undefined): number {
  * directly with a full row.
  */
 export function isEntitlingSubscription(
-  subscription: Pick<CanonicalSubscriptionRow, "status" | "current_period_end">,
+  subscription: Pick<CanonicalSubscriptionRow, "status" | "current_period_end"> &
+    Partial<Pick<CanonicalSubscriptionRow, "current_period_end_at">>,
   now: Date | number = new Date(),
 ): boolean {
   return sharedDeriveEntitlement([subscription], now).is_premium;
@@ -193,7 +194,10 @@ export function isEntitlingSubscription(
  */
 export function deriveEntitlementFromSubscriptions(
   subscriptions: Array<
-    Pick<CanonicalSubscriptionRow, "status" | "current_period_end" | "provider">
+    Pick<
+      CanonicalSubscriptionRow,
+      "status" | "current_period_end" | "current_period_end_at" | "provider"
+    >
   >,
   now: Date | number = new Date(),
 ): EntitlementSnapshot {

@@ -42,6 +42,8 @@ export type CanonicalSubscriptionRow = {
   status: SharedSubscriptionStatus;
   current_period_start: string | null;
   current_period_end: string | null;
+  current_period_start_at: string | null;
+  current_period_end_at: string | null;
   cancel_at_period_end: boolean | null;
   canceled_at: string | null;
   ended_at: string | null;
@@ -84,7 +86,9 @@ export type Database = {
           environment: BillingEnvironment | null;
           status: string;
           current_period_start: string | null;
+          current_period_start_at: string | null;
           current_period_end: string | null;
+          current_period_end_at: string | null;
           cancel_at_period_end: boolean | null;
           canceled_at: string | null;
           ended_at: string | null;
@@ -114,7 +118,9 @@ export type Database = {
           environment?: BillingEnvironment | null;
           status: string;
           current_period_start?: string | null;
+          current_period_start_at?: string | null;
           current_period_end?: string | null;
+          current_period_end_at?: string | null;
           cancel_at_period_end?: boolean | null;
           canceled_at?: string | null;
           ended_at?: string | null;
@@ -373,6 +379,8 @@ export type ExistingSubscriptionRow =
     | "status"
     | "current_period_start"
     | "current_period_end"
+    | "current_period_start_at"
+    | "current_period_end_at"
     | "cancel_at_period_end"
     | "canceled_at"
     | "ended_at"
@@ -398,6 +406,8 @@ export type ComparableSubscriptionWrite = Pick<
   | "status"
   | "current_period_start"
   | "current_period_end"
+  | "current_period_start_at"
+  | "current_period_end_at"
   | "cancel_at_period_end"
   | "canceled_at"
   | "ended_at"

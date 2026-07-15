@@ -11,7 +11,7 @@
 //      `deriveEntitlement` — the source of truth for the rule.
 //   2. Named boundary cases the dispatch spec calls out by name:
 //        active + past expiry      ⇒ NOT premium    (the bug)
-//        active + null expiry      ⇒ premium        (no new lockout)
+//        active + null expiry      ⇒ NOT premium    (malformed provider row)
 //        expiry === now            ⇒ expired        (boundary, strict)
 //        canceled + future expiry  ⇒ status="expired", not premium
 //        empty rows                ⇒ inactive/false
@@ -85,8 +85,8 @@ describe("isEntitled — the rule, in isolation", () => {
   }
 
   for (const status of ENTITLING) {
-    it(`returns true for "${status}" + null expiry (lifetime / gift)`, () => {
-      expect(isEntitled(status, null, NOW_MS)).toBe(true);
+    it(`returns false for "${status}" + null expiry`, () => {
+      expect(isEntitled(status, null, NOW_MS)).toBe(false);
     });
     it(`returns true for "${status}" + future expiry`, () => {
       expect(isEntitled(status, NOW_MS + ONE_DAY, NOW_MS)).toBe(true);
@@ -258,14 +258,88 @@ describe("getExpiresAt — canonical field order", () => {
     ).toBe(future(ONE_DAY));
   });
 
-  it("falls back to current_period_end, then current_period_end_at, then period_end, then ends_at, then expired_at", () => {
-    expect(getExpiresAt({ current_period_end: future(ONE_DAY) })).toBe(
-      future(ONE_DAY)
-    );
+  it("falls back to current_period_end_at, then current_period_end, then period_end, then ends_at, then expired_at", () => {
     expect(getExpiresAt({ current_period_end_at: future(ONE_DAY) })).toBe(
       future(ONE_DAY)
     );
-    expect(getExpiresAt({ period_end: future(ONE_DAY) })).toBe(future(ONE_DAY));
+    expect(getExpiresAt({ current_period_end: future(ONE_DAY) })).toBe(
+      future(ONE_DAY)
+    );
+    expect(
+      getExpiresAt({
+        current_period_end_at: future(ONE_DAY),
+        current_period_end: future(2 * ONE_DAY),
+      })
+    ).toBe(future(ONE_DAY));
+    expect(
+      getExpiresAt({
+        current_period_end_at: null,
+        current_period_end: future(ONE_DAY),
+      })
+    ).toBe(future(ONE_DAY));
+    expect(
+      getExpiresAt({
+        current_period_end_at: future(2 * ONE_DAY),
+        current_period_end: future(ONE_DAY),
+      })
+    ).toBe(future(2 * ONE_DAY));
+    expect(
+      getExpiresAt({
+        current_period_end_at: null,
+        current_period_end: null,
+      })
+    ).toBeNull();
+    expect(
+      deriveEntitlement(
+        [
+          {
+            status: "active",
+            current_period_end_at: null,
+            current_period_end: future(ONE_DAY),
+          },
+        ],
+        NOW_MS
+      ).is_premium
+    ).toBe(true);
+    expect(
+      deriveEntitlement(
+        [
+          {
+            status: "active",
+            current_period_end_at: future(2 * ONE_DAY),
+            current_period_end: future(ONE_DAY),
+          },
+        ],
+        NOW_MS
+      ).expires_at
+    ).toBe(future(2 * ONE_DAY));
+    expect(
+      deriveEntitlement(
+        [
+          {
+            status: "active",
+            current_period_end_at: null,
+            current_period_end: null,
+          },
+        ],
+        NOW_MS
+      ).is_premium
+    ).toBe(false);
+    expect(
+      deriveEntitlement(
+        [
+          {
+            status: "active",
+            current_period_end_at: null,
+            current_period_end: null,
+          },
+        ],
+        NOW_MS
+      ).expires_at
+    ).toBeNull();
+    expect(getExpiresAt({ period_end: future(ONE_DAY) })).toBe(
+      future(ONE_DAY)
+    );
     expect(getExpiresAt({ ends_at: future(ONE_DAY) })).toBe(future(ONE_DAY));
     expect(getExpiresAt({ expired_at: future(ONE_DAY) })).toBe(future(ONE_DAY));
   });
@@ -430,16 +504,16 @@ describe("deriveEntitlement — single-row matrix (status × expiry)", () => {
     status: EntitlementStatus;
   }> = [];
 
-  // Entitling raw statuses → premium iff expiry is null OR future.
+  // Entitling raw statuses → premium iff expiry is a parseable future timestamp.
   for (const s of ["active", "trialing", "grace_period", "past_due"] as const) {
-    cases.push({ rawStatus: s, expiry: "null", is_premium: true, status: s });
+    cases.push({ rawStatus: s, expiry: "null", is_premium: false, status: s });
     cases.push({ rawStatus: s, expiry: "future", is_premium: true, status: s });
     cases.push({ rawStatus: s, expiry: "past", is_premium: false, status: s });
     cases.push({ rawStatus: s, expiry: "now", is_premium: false, status: s });
     cases.push({
       rawStatus: s,
       expiry: "unparseable",
-      is_premium: true,
+      is_premium: false,
       status: s,
     });
   }
@@ -492,9 +566,9 @@ describe("deriveEntitlement — named cases the dispatch spec calls out", () => 
     expect(snap.expires_at).toBe(past(ONE_DAY));
   });
 
-  it("active + null expiry ⇒ premium (no new lockout for lifetime/gift)", () => {
+  it("active + null expiry ⇒ NOT premium", () => {
     const snap = deriveEntitlement([{ status: "active" }], NOW_MS);
-    expect(snap.is_premium).toBe(true);
+    expect(snap.is_premium).toBe(false);
     expect(snap.status).toBe("active");
     expect(snap.expires_at).toBeNull();
   });
@@ -619,7 +693,7 @@ describe("deriveEntitlement — `now` accepts Date or number identically", () =>
       deriveEntitlement([{ status: "active" }], Number.NaN)
     ).not.toThrow();
     const snap = deriveEntitlement([{ status: "active" }], Number.NaN);
-    expect(snap.is_premium).toBe(true); // null expiry stays entitling
+    expect(snap.is_premium).toBe(false);
   });
 });
 

@@ -53,12 +53,12 @@ describe("R4 — toEntitlementResponse — expiry regression", () => {
     });
   });
 
-  it("status='active' + null expiry ⇒ is_premium=true (no new lockout)", () => {
+  it("status='active' + null expiry ⇒ is_premium=false", () => {
     const res = toEntitlementResponse(
       { status: "active", expires_at: null, source: "stripe" },
       NOW_MS,
     );
-    expect(res.is_premium).toBe(true);
+    expect(res.is_premium).toBe(false);
     expect(res.expires_at).toBeNull();
   });
 

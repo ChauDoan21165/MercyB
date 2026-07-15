@@ -502,7 +502,7 @@ export async function getSharedSubscriptionByProviderSubscriptionId(params: {
   if (!params.providerSubscriptionId) return null;
 
   const selectClause =
-    "user_id,app_id,customer_id,provider,provider_customer_id,provider_subscription_id,provider_transaction_id,provider_original_transaction_id,product_id,provider_product_id,provider_price_id,environment,status,current_period_start,current_period_end,cancel_at_period_end,canceled_at,ended_at,metadata,provider_metadata,raw_payload";
+    "user_id,app_id,customer_id,provider,provider_customer_id,provider_subscription_id,provider_transaction_id,provider_original_transaction_id,product_id,provider_product_id,provider_price_id,environment,status,current_period_start,current_period_start_at,current_period_end,current_period_end_at,cancel_at_period_end,canceled_at,ended_at,metadata,provider_metadata,raw_payload";
 
   const byProviderSubscriptionId = await params.supabase
     .from("subscriptions")
@@ -523,7 +523,7 @@ async function getSharedSubscriptionByProviderCustomerId(params: {
   if (!params.providerCustomerId) return null;
 
   const selectClause =
-    "user_id,app_id,customer_id,provider,provider_customer_id,provider_subscription_id,provider_transaction_id,provider_original_transaction_id,product_id,provider_product_id,provider_price_id,environment,status,current_period_start,current_period_end,cancel_at_period_end,canceled_at,ended_at,metadata,provider_metadata,raw_payload";
+    "user_id,app_id,customer_id,provider,provider_customer_id,provider_subscription_id,provider_transaction_id,provider_original_transaction_id,product_id,provider_product_id,provider_price_id,environment,status,current_period_start,current_period_start_at,current_period_end,current_period_end_at,cancel_at_period_end,canceled_at,ended_at,metadata,provider_metadata,raw_payload";
 
   const byProviderCustomerId = await params.supabase
     .from("subscriptions")
@@ -623,7 +623,7 @@ async function recomputeAndPersistEntitlement(
 ): Promise<import("./types.ts").EntitlementSnapshot> {
   const { data, error } = await supabase
     .from("subscriptions")
-    .select("status,current_period_end,provider")
+    .select("status,current_period_end,current_period_end_at,provider")
     .eq("user_id", userId)
     .eq("app_id", DEFAULT_APP_ID);
 
@@ -636,7 +636,7 @@ async function recomputeAndPersistEntitlement(
     (data ?? []) as Array<
       Pick<
         CanonicalSubscriptionRow,
-        "status" | "current_period_end" | "provider"
+        "status" | "current_period_end" | "current_period_end_at" | "provider"
       >
     >,
     now,
