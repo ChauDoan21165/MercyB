@@ -1,0 +1,50 @@
+{
+  "schema": "tm-int-obs-evidence-packet-v1",
+  "packet_id": "OBS-004-TM-INT-10171",
+  "created_at": "2026-07-15T00:00:00.000Z",
+  "source": "tm-design-group-b-vi-runtime-observation",
+  "tm_int_id": "TM-INT-10171",
+  "module": "vnEnPronunciationDrills",
+  "axis": "vi-final-cluster-simplification",
+  "behavior_boundary": "Detects Vietnamese L1 final consonant cluster simplification for pronunciation feedback when a target with a known final cluster such as next is heard or typed as its accepted simplified variant such as nex.",
+  "previous_behavior_boundary": null,
+  "code_path": "src/lib/pronunciation/vnEnPronunciationDrills.ts:selectFinalClusterFeedbackKey",
+  "probe_id": "tm-design-group-b-vi-20260715:VI-22",
+  "input": {
+    "targetWord": "next",
+    "heardWord": "nex"
+  },
+  "output": {
+    "feedbackKey": "final_cluster_simplification"
+  },
+  "input_digest": "sha256:b40b7c246dbf254d2d6ca2dcb4371549a2706cf067026f12313e66fa2f280535",
+  "output_digest": "sha256:e5c390d8527afc09a2fabee5a22717963a2e5cb7430e9aa73ef89647a2971dfd",
+  "attribution": {
+    "repository": "MercyB",
+    "generated_by": "scripts/tm-int/group-b-vi-evidence.mjs",
+    "spec_first_source": "reports/tm-design-ruling-sheet.md + reports/tm-research-vi-interference.md",
+    "spec_written_from_public_interface_only": true,
+    "shared_digest_rule": "one packet per ID; no shared digest"
+  },
+  "replay_proof": {
+    "replayed": true,
+    "command": "cd /Users/chaudoanm3/MercyB && npx vite-node scripts/tm-int/group-b-vi-evidence.mjs",
+    "checks": {
+      "code_path_match": true,
+      "input_digest_match": true,
+      "output_digest_match": true,
+      "final_cluster_feedback_key_match": true
+    },
+    "recorded_output_digest": "sha256:e5c390d8527afc09a2fabee5a22717963a2e5cb7430e9aa73ef89647a2971dfd"
+  },
+  "run_ids": {
+    "obs001": "tm-design-group-b-vi-20260715:obs001:TM-INT-10171",
+    "obs003": "tm-design-group-b-vi-20260715:obs003:TM-INT-10171",
+    "obs004": "tm-design-group-b-vi-20260715:obs004:TM-INT-10171"
+  },
+  "lineage": {
+    "design_ruling": "group-b-2026-07-15",
+    "source_candidate": "VI-22",
+    "evidence_batch": "tm-design-group-b-vi-20260715"
+  }
+}

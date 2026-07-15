@@ -1,0 +1,59 @@
+{
+  "schema": "tm-int-obs-evidence-packet-v1",
+  "packet_id": "OBS-004-TM-INT-10166",
+  "created_at": "2026-07-15T00:00:00.000Z",
+  "source": "tm-design-group-b-vi-runtime-observation",
+  "tm_int_id": "TM-INT-10166",
+  "module": "l1ErrorDetector",
+  "axis": "vi-know-meet-timeline",
+  "behavior_boundary": "Detects Vietnamese L1 know/meet timeline transfer when learner text uses know for first meeting in a past time context and the expected correction uses meet/met.",
+  "previous_behavior_boundary": null,
+  "code_path": "src/lib/feedback/index.ts:detectL1Error",
+  "probe_id": "tm-design-group-b-vi-20260715:VI-14",
+  "input": {
+    "userAnswer": "I knew him yesterday.",
+    "expectedAnswer": "I met him yesterday."
+  },
+  "output": {
+    "detection": {
+      "matched": true,
+      "weaknessTag": "vi_l1_know_meet_timeline",
+      "feedback": {
+        "en": "For the first time you saw someone, English uses **met**, not **knew**. **Know** means you already have familiarity. Try: *I met him yesterday.*.",
+        "vi": "Khi gặp ai lần đầu, tiếng Anh dùng **met**, không dùng **knew**. **Know** nghĩa là đã quen/biết người đó. Thử: *I met him yesterday.*."
+      }
+    }
+  },
+  "input_digest": "sha256:dc50ac49644142cf10ec35c42d8016cadc7ec28e7e138c4942309324e80ef21a",
+  "output_digest": "sha256:e12044e905b90367d0caf6cb7ef4042d5b6db665dd38d68cf54640bf4ee348e4",
+  "attribution": {
+    "repository": "MercyB",
+    "generated_by": "scripts/tm-int/group-b-vi-evidence.mjs",
+    "spec_first_source": "reports/tm-design-ruling-sheet.md + reports/tm-research-vi-interference.md",
+    "spec_written_from_public_interface_only": true,
+    "shared_digest_rule": "one packet per ID; no shared digest"
+  },
+  "replay_proof": {
+    "replayed": true,
+    "command": "cd /Users/chaudoanm3/MercyB && npx vite-node scripts/tm-int/group-b-vi-evidence.mjs",
+    "checks": {
+      "code_path_match": true,
+      "input_digest_match": true,
+      "output_digest_match": true,
+      "matched": true,
+      "weakness_tag_match": true,
+      "feedback_mentions_expected": true
+    },
+    "recorded_output_digest": "sha256:e12044e905b90367d0caf6cb7ef4042d5b6db665dd38d68cf54640bf4ee348e4"
+  },
+  "run_ids": {
+    "obs001": "tm-design-group-b-vi-20260715:obs001:TM-INT-10166",
+    "obs003": "tm-design-group-b-vi-20260715:obs003:TM-INT-10166",
+    "obs004": "tm-design-group-b-vi-20260715:obs004:TM-INT-10166"
+  },
+  "lineage": {
+    "design_ruling": "group-b-2026-07-15",
+    "source_candidate": "VI-14",
+    "evidence_batch": "tm-design-group-b-vi-20260715"
+  }
+}

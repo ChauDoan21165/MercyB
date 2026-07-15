@@ -1,0 +1,59 @@
+{
+  "schema": "tm-int-obs-evidence-packet-v1",
+  "packet_id": "OBS-004-TM-INT-10161",
+  "created_at": "2026-07-15T00:00:00.000Z",
+  "source": "tm-design-group-b-vi-runtime-observation",
+  "tm_int_id": "TM-INT-10161",
+  "module": "l1ErrorDetector",
+  "axis": "vi-progressive-be-drop",
+  "behavior_boundary": "Detects Vietnamese L1 dropped progressive be when learner text uses a subject plus -ing verb and the expected correction inserts am/is/are before that progressive verb.",
+  "previous_behavior_boundary": null,
+  "code_path": "src/lib/feedback/index.ts:detectL1Error",
+  "probe_id": "tm-design-group-b-vi-20260715:VI-3",
+  "input": {
+    "userAnswer": "I going to school.",
+    "expectedAnswer": "I am going to school."
+  },
+  "output": {
+    "detection": {
+      "matched": true,
+      "weaknessTag": "vi_l1_progressive_be_drop",
+      "feedback": {
+        "en": "For actions happening now, English uses **be + -ing**: *I am going*, *she is cooking*. Vietnamese does not need that helper. Try: *I am going to school.*.",
+        "vi": "Khi nói hành động đang diễn ra, tiếng Anh dùng **be + V-ing**: *I am going*, *she is cooking*. Tiếng Việt không cần trợ động từ này. Thử: *I am going to school.*."
+      }
+    }
+  },
+  "input_digest": "sha256:81d7ba51fe2e25a182dcab34647f7a1061194eadfb07cdc9e34d43ccb4db44af",
+  "output_digest": "sha256:9425385e42f50b3bc0f653ff336dd0618f321a1790bf22e58fdeebbf3e481a1e",
+  "attribution": {
+    "repository": "MercyB",
+    "generated_by": "scripts/tm-int/group-b-vi-evidence.mjs",
+    "spec_first_source": "reports/tm-design-ruling-sheet.md + reports/tm-research-vi-interference.md",
+    "spec_written_from_public_interface_only": true,
+    "shared_digest_rule": "one packet per ID; no shared digest"
+  },
+  "replay_proof": {
+    "replayed": true,
+    "command": "cd /Users/chaudoanm3/MercyB && npx vite-node scripts/tm-int/group-b-vi-evidence.mjs",
+    "checks": {
+      "code_path_match": true,
+      "input_digest_match": true,
+      "output_digest_match": true,
+      "matched": true,
+      "weakness_tag_match": true,
+      "feedback_mentions_expected": true
+    },
+    "recorded_output_digest": "sha256:9425385e42f50b3bc0f653ff336dd0618f321a1790bf22e58fdeebbf3e481a1e"
+  },
+  "run_ids": {
+    "obs001": "tm-design-group-b-vi-20260715:obs001:TM-INT-10161",
+    "obs003": "tm-design-group-b-vi-20260715:obs003:TM-INT-10161",
+    "obs004": "tm-design-group-b-vi-20260715:obs004:TM-INT-10161"
+  },
+  "lineage": {
+    "design_ruling": "group-b-2026-07-15",
+    "source_candidate": "VI-3",
+    "evidence_batch": "tm-design-group-b-vi-20260715"
+  }
+}

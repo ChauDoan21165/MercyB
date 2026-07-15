@@ -1,0 +1,59 @@
+{
+  "schema": "tm-int-obs-evidence-packet-v1",
+  "packet_id": "OBS-004-TM-INT-10163",
+  "created_at": "2026-07-15T00:00:00.000Z",
+  "source": "tm-design-group-b-vi-runtime-observation",
+  "tm_int_id": "TM-INT-10163",
+  "module": "l1ErrorDetector",
+  "axis": "vi-noun-preposition-collocation",
+  "behavior_boundary": "Detects a conservative whitelist of Vietnamese L1 noun-preposition collocation transfer such as reason of to reason for, opinion about to opinion on, and demand of to demand for.",
+  "previous_behavior_boundary": null,
+  "code_path": "src/lib/feedback/index.ts:detectL1Error",
+  "probe_id": "tm-design-group-b-vi-20260715:VI-11",
+  "input": {
+    "userAnswer": "The reason of this problem is unclear.",
+    "expectedAnswer": "The reason for this problem is unclear."
+  },
+  "output": {
+    "detection": {
+      "matched": true,
+      "weaknessTag": "vi_l1_noun_preposition_collocation",
+      "feedback": {
+        "en": "Some academic noun phrases take fixed prepositions in English. This one is a collocation, not a word-for-word translation. Try: *The reason for this problem is unclear.*.",
+        "vi": "Một số cụm danh từ học thuật trong tiếng Anh đi với giới từ cố định. Đây là collocation, không dịch từng chữ từ tiếng Việt. Thử: *The reason for this problem is unclear.*."
+      }
+    }
+  },
+  "input_digest": "sha256:483d8c7b64372cc76dc0d1352122d485abd9eaa8cd22e063d6ef6107753d8d26",
+  "output_digest": "sha256:6ccb49406477100d968f3b3f6444d89fe96c71336d302f27fdbc97e944b29f27",
+  "attribution": {
+    "repository": "MercyB",
+    "generated_by": "scripts/tm-int/group-b-vi-evidence.mjs",
+    "spec_first_source": "reports/tm-design-ruling-sheet.md + reports/tm-research-vi-interference.md",
+    "spec_written_from_public_interface_only": true,
+    "shared_digest_rule": "one packet per ID; no shared digest"
+  },
+  "replay_proof": {
+    "replayed": true,
+    "command": "cd /Users/chaudoanm3/MercyB && npx vite-node scripts/tm-int/group-b-vi-evidence.mjs",
+    "checks": {
+      "code_path_match": true,
+      "input_digest_match": true,
+      "output_digest_match": true,
+      "matched": true,
+      "weakness_tag_match": true,
+      "feedback_mentions_expected": true
+    },
+    "recorded_output_digest": "sha256:6ccb49406477100d968f3b3f6444d89fe96c71336d302f27fdbc97e944b29f27"
+  },
+  "run_ids": {
+    "obs001": "tm-design-group-b-vi-20260715:obs001:TM-INT-10163",
+    "obs003": "tm-design-group-b-vi-20260715:obs003:TM-INT-10163",
+    "obs004": "tm-design-group-b-vi-20260715:obs004:TM-INT-10163"
+  },
+  "lineage": {
+    "design_ruling": "group-b-2026-07-15",
+    "source_candidate": "VI-11",
+    "evidence_batch": "tm-design-group-b-vi-20260715"
+  }
+}

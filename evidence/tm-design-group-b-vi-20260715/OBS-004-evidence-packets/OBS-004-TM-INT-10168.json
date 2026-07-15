@@ -1,0 +1,59 @@
+{
+  "schema": "tm-int-obs-evidence-packet-v1",
+  "packet_id": "OBS-004-TM-INT-10168",
+  "created_at": "2026-07-15T00:00:00.000Z",
+  "source": "tm-design-group-b-vi-runtime-observation",
+  "tm_int_id": "TM-INT-10168",
+  "module": "l1ErrorDetector",
+  "axis": "vi-appliance-open-close-transfer",
+  "behavior_boundary": "Detects Vietnamese L1 open/close appliance transfer when learner text says open or close a light, TV, fan, computer, or air conditioner and the expected correction uses turn on or turn off.",
+  "previous_behavior_boundary": null,
+  "code_path": "src/lib/feedback/index.ts:detectL1Error",
+  "probe_id": "tm-design-group-b-vi-20260715:VI-16",
+  "input": {
+    "userAnswer": "Open the light, please.",
+    "expectedAnswer": "Turn on the light, please."
+  },
+  "output": {
+    "detection": {
+      "matched": true,
+      "weaknessTag": "vi_l1_appliance_open_close_transfer",
+      "feedback": {
+        "en": "For lights, TVs, fans, and appliances, English uses **turn on/off**, not **open/close**. Try: *Turn on the light, please.*.",
+        "vi": "Với đèn, TV, quạt và thiết bị điện, tiếng Anh dùng **turn on/off**, không dùng **open/close**. Thử: *Turn on the light, please.*."
+      }
+    }
+  },
+  "input_digest": "sha256:30d38b69372debfe34dec4157b3b3b7c21103d84c4a1250f5e95664b54a7b9dd",
+  "output_digest": "sha256:823d8ac634a3d73dccf689fcaee3edbbaf5c26dadaa9e383da62faafe65d24ad",
+  "attribution": {
+    "repository": "MercyB",
+    "generated_by": "scripts/tm-int/group-b-vi-evidence.mjs",
+    "spec_first_source": "reports/tm-design-ruling-sheet.md + reports/tm-research-vi-interference.md",
+    "spec_written_from_public_interface_only": true,
+    "shared_digest_rule": "one packet per ID; no shared digest"
+  },
+  "replay_proof": {
+    "replayed": true,
+    "command": "cd /Users/chaudoanm3/MercyB && npx vite-node scripts/tm-int/group-b-vi-evidence.mjs",
+    "checks": {
+      "code_path_match": true,
+      "input_digest_match": true,
+      "output_digest_match": true,
+      "matched": true,
+      "weakness_tag_match": true,
+      "feedback_mentions_expected": true
+    },
+    "recorded_output_digest": "sha256:823d8ac634a3d73dccf689fcaee3edbbaf5c26dadaa9e383da62faafe65d24ad"
+  },
+  "run_ids": {
+    "obs001": "tm-design-group-b-vi-20260715:obs001:TM-INT-10168",
+    "obs003": "tm-design-group-b-vi-20260715:obs003:TM-INT-10168",
+    "obs004": "tm-design-group-b-vi-20260715:obs004:TM-INT-10168"
+  },
+  "lineage": {
+    "design_ruling": "group-b-2026-07-15",
+    "source_candidate": "VI-16",
+    "evidence_batch": "tm-design-group-b-vi-20260715"
+  }
+}
