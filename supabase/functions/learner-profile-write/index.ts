@@ -8,6 +8,7 @@
 
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
+import { computePatternTrend } from "./trend.ts";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -157,14 +158,6 @@ function normalizeUuidArray(existing: unknown, next?: string | null): string[] {
   return [...new Set(base)].slice(-20);
 }
 
-function computeTrend(previousOccurrence: number, previousResolved: number, occurrence: number, resolved: number): string {
-  const previousOpen = Math.max(0, previousOccurrence - previousResolved);
-  const nextOpen = Math.max(0, occurrence - resolved);
-  if (nextOpen < previousOpen) return "improving";
-  if (nextOpen > previousOpen && previousOccurrence > 0) return "worsening";
-  return "stable";
-}
-
 async function upsertPattern(
   userId: string,
   input: PatternInput,
@@ -213,7 +206,7 @@ async function upsertPattern(
       resolved_count: resolvedCount,
       first_seen_at: existing?.first_seen_at ?? now,
       last_seen_at: now,
-      trend: computeTrend(previousOccurrence, previousResolved, occurrenceCount, resolvedCount),
+      trend: computePatternTrend(previousOccurrence, previousResolved, occurrenceCount, resolvedCount),
       example_unit_ids: normalizeUuidArray(existing?.example_unit_ids, input.example_unit_id ?? null),
       is_synthetic: isSynthetic,
     }, { onConflict: "user_id,pattern_code,l1" });

@@ -6,6 +6,10 @@ const sql = readFileSync(
   resolve(process.cwd(), "supabase/migrations/20260723000000_learner_profile_state.sql"),
   "utf8",
 ).toLowerCase();
+const trendFloorSql = readFileSync(
+  resolve(process.cwd(), "supabase/migrations/20260724000000_learner_error_pattern_trend_floor.sql"),
+  "utf8",
+).toLowerCase();
 
 describe("learner profile state migration", () => {
   it("creates the durable skill and error-pattern tables", () => {
@@ -55,5 +59,11 @@ describe("learner profile state migration", () => {
     expect(sql).toContain("learner_skill_state_admin_select");
     expect(sql).toContain("learner_error_patterns_admin_select");
     expect(sql).toContain("public.get_admin_level(auth.uid()) >= 9");
+  });
+
+  it("allows error-pattern trend abstention below the evidence floor", () => {
+    expect(trendFloorSql).toContain("drop constraint if exists learner_error_patterns_trend_chk");
+    expect(trendFloorSql).toContain("'insufficient'");
+    expect(trendFloorSql).toContain("'worsening'");
   });
 });
