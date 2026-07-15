@@ -67,15 +67,15 @@ export const CERTIFICATE_CATALOG: ReadonlyArray<CertificateMeta> = [
 
   // Vocab
   { type: "vocab_50",  group: "vocab", icon: "📚",
-    label_vi: "50 từ vững",      label_en: "50 words mastered",
+    label_vi: "50 từ vựng",      label_en: "50 words mastered",
     blurb_vi: "Nền tảng từ vựng.",
     blurb_en: "Vocabulary foundation." },
   { type: "vocab_200", group: "vocab", icon: "📚",
-    label_vi: "200 từ vững",     label_en: "200 words mastered",
+    label_vi: "200 từ vựng",     label_en: "200 words mastered",
     blurb_vi: "Vốn từ chắc chắn.",
     blurb_en: "Solid vocabulary base." },
   { type: "vocab_500", group: "vocab", icon: "📚",
-    label_vi: "500 từ vững",     label_en: "500 words mastered",
+    label_vi: "500 từ vựng",     label_en: "500 words mastered",
     blurb_vi: "Đã đủ giao tiếp tự tin.",
     blurb_en: "Enough to speak confidently." },
 
