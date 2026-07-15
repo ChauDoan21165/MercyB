@@ -18,6 +18,7 @@ export type PunjabiC2NuanceFocus =
 export type PunjabiC2Register = "formal" | "warm" | "community" | "workplace" | "public";
 
 export type PunjabiC2NuancePhrase = {
+  cell_id?: string;
   gurmukhi: string;
   romanization: string;
   vi: string;
@@ -67,6 +68,7 @@ export const discourseNuanceC2Entries: PunjabiC2NuanceEntry[] = [
     discourse_move_en: "Limit the claim first, then state the main point.",
     phrases: [
       {
+        cell_id: "8ff7e310-90c4-4557-adee-d273966f5910",
         gurmukhi: "ਮੇਰੇ ਕੋਲ ਜਿੰਨੀ ਜਾਣਕਾਰੀ ਹੈ",
         romanization: "mere kol jinni jaankaari hai",
         vi: "Theo lượng thông tin tôi có.",
@@ -74,6 +76,7 @@ export const discourseNuanceC2Entries: PunjabiC2NuanceEntry[] = [
         register: "workplace",
       },
       {
+        cell_id: "92db85cc-474f-46e4-affe-89ab567e1baa",
         gurmukhi: "ਇਹ ਲੱਗਦਾ ਹੈ ਕਿ",
         romanization: "ih laggda hai ki",
         vi: "Có vẻ là...",
@@ -103,6 +106,7 @@ export const discourseNuanceC2Entries: PunjabiC2NuanceEntry[] = [
     discourse_move_en: "Validate the other person's reason, then open another angle.",
     phrases: [
       {
+        cell_id: "9166939e-60f8-401d-9f4c-71f0272e97ce",
         gurmukhi: "ਤੁਹਾਡੀ ਚਿੰਤਾ ਵਾਜਬ ਹੈ",
         romanization: "tuhadi chinta vaajab hai",
         vi: "Quan ngại của anh/chị là hợp lý.",
@@ -110,6 +114,7 @@ export const discourseNuanceC2Entries: PunjabiC2NuanceEntry[] = [
         register: "community",
       },
       {
+        cell_id: "39e579a2-9cf6-472d-b1ab-57860debc308",
         gurmukhi: "ਫਿਰ ਵੀ ਇੱਕ ਹੋਰ ਪੱਖ ਹੈ",
         romanization: "fir vi ikk hor pakkh hai",
         vi: "Tuy vậy còn một khía cạnh khác.",
@@ -139,6 +144,7 @@ export const discourseNuanceC2Entries: PunjabiC2NuanceEntry[] = [
     discourse_move_en: "Treat the unclear part as wording you can repair, then restate.",
     phrases: [
       {
+        cell_id: "874fefd1-525e-4a48-8de9-54a53b9c7fb9",
         gurmukhi: "ਸ਼ਾਇਦ ਮੇਰੀ ਗੱਲ ਸਪਸ਼ਟ ਨਹੀਂ ਸੀ",
         romanization: "shayad meri gall spasht nahin si",
         vi: "Có lẽ lời tôi chưa rõ.",
@@ -146,6 +152,7 @@ export const discourseNuanceC2Entries: PunjabiC2NuanceEntry[] = [
         register: "workplace",
       },
       {
+        cell_id: "51ddaf1e-355a-48e2-8594-a777cd7f44d7",
         gurmukhi: "ਮੇਰਾ ਮਤਲਬ ਇਹ ਸੀ ਕਿ",
         romanization: "mera matlab ih si ki",
         vi: "Ý tôi là...",
@@ -175,6 +182,7 @@ export const discourseNuanceC2Entries: PunjabiC2NuanceEntry[] = [
     discourse_move_en: "Acknowledge sensitivity, then return to the task-relevant part.",
     phrases: [
       {
+        cell_id: "eb787b9b-6ff1-4b39-96e3-8f46bc2c713f",
         gurmukhi: "ਇਹ ਵਿਸ਼ਾ ਸੰਵੇਦਨਸ਼ੀਲ ਹੈ",
         romanization: "ih visha sanvedansheel hai",
         vi: "Chủ đề này nhạy cảm.",
@@ -182,6 +190,7 @@ export const discourseNuanceC2Entries: PunjabiC2NuanceEntry[] = [
         register: "formal",
       },
       {
+        cell_id: "eb6e4b87-f4a1-4317-937b-e8a9ff33d948",
         gurmukhi: "ਆਓ ਕੰਮ ਵਾਲੇ ਹਿੱਸੇ ਤੇ ਧਿਆਨ ਦੇਈਏ",
         romanization: "aao kamm wale hisse te dhiaan deie",
         vi: "Ta hãy tập trung vào phần công việc.",
@@ -211,6 +220,7 @@ export const discourseNuanceC2Entries: PunjabiC2NuanceEntry[] = [
     discourse_move_en: "Open politely, state the purpose clearly, close with thanks.",
     phrases: [
       {
+        cell_id: "bd07548d-e379-4edf-9c18-be84d84cdf1c",
         gurmukhi: "ਤੁਹਾਡੇ ਸਮੇਂ ਲਈ ਧੰਨਵਾਦ",
         romanization: "tuhade same lai dhannvaad",
         vi: "Cảm ơn vì thời gian của anh/chị.",
@@ -218,6 +228,7 @@ export const discourseNuanceC2Entries: PunjabiC2NuanceEntry[] = [
         register: "formal",
       },
       {
+        cell_id: "766e5593-bfab-4195-8396-a6ef3df87b23",
         gurmukhi: "ਜੇ ਹੋਰ ਜਾਣਕਾਰੀ ਚਾਹੀਦੀ ਹੋਵੇ",
         romanization: "je hor jaankaari chahidi hove",
         vi: "Nếu cần thêm thông tin.",
@@ -242,6 +253,7 @@ export const discourseNuanceC2Entries: PunjabiC2NuanceEntry[] = [
     discourse_move_en: "Mark the setting, turning point, then meaning.",
     phrases: [
       {
+        cell_id: "584d6769-6e06-4fa1-b32e-c14219337c5d",
         gurmukhi: "ਉਸ ਵੇਲੇ ਗੱਲ ਇਹ ਸੀ ਕਿ",
         romanization: "us vele gall ih si ki",
         vi: "Lúc đó vấn đề là...",
@@ -249,6 +261,7 @@ export const discourseNuanceC2Entries: PunjabiC2NuanceEntry[] = [
         register: "warm",
       },
       {
+        cell_id: "738a0b39-e1bd-470d-888f-b26f3f1c68ff",
         gurmukhi: "ਇਥੋਂ ਗੱਲ ਬਦਲੀ",
         romanization: "ithon gall badli",
         vi: "Từ đây câu chuyện đổi hướng.",
@@ -272,6 +285,7 @@ export const discourseNuanceC2Entries: PunjabiC2NuanceEntry[] = [
     discourse_move_en: "Name the issue without blame, give a reason, then propose a small next step.",
     phrases: [
       {
+        cell_id: "ec303784-f67f-44ea-b208-fbc5c0e6f1d5",
         gurmukhi: "ਮੁੱਦਾ ਇਹ ਹੈ ਕਿ",
         romanization: "mudda ih hai ki",
         vi: "Vấn đề là...",
@@ -279,6 +293,7 @@ export const discourseNuanceC2Entries: PunjabiC2NuanceEntry[] = [
         register: "formal",
       },
       {
+        cell_id: "a206e584-7dba-4c42-9bd0-842aaff6b93f",
         gurmukhi: "ਪਹਿਲਾ ਕਦਮ ਇਹ ਹੋ ਸਕਦਾ ਹੈ",
         romanization: "pehla kadam ih ho sakda hai",
         vi: "Bước đầu có thể là...",
@@ -308,6 +323,7 @@ export const discourseNuanceC2Entries: PunjabiC2NuanceEntry[] = [
     discourse_move_en: "Address the group, state the change, thank people for cooperation.",
     phrases: [
       {
+        cell_id: "a384de71-502f-46ec-8d75-c311db5de33d",
         gurmukhi: "ਸਭ ਮੈਂਬਰਾਂ ਨੂੰ ਸੂਚਿਤ ਕੀਤਾ ਜਾਂਦਾ ਹੈ",
         romanization: "sabh memberan nu suchit kita jaanda hai",
         vi: "Xin thông báo đến tất cả thành viên.",
@@ -315,6 +331,7 @@ export const discourseNuanceC2Entries: PunjabiC2NuanceEntry[] = [
         register: "public",
       },
       {
+        cell_id: "2a64b7ac-4272-4c57-b46f-085a34c77227",
         gurmukhi: "ਤੁਹਾਡੇ ਸਹਿਯੋਗ ਲਈ ਧੰਨਵਾਦ",
         romanization: "tuhade sahiyog lai dhannvaad",
         vi: "Cảm ơn sự hợp tác của anh/chị/mọi người.",
@@ -338,6 +355,7 @@ export const discourseNuanceC2Entries: PunjabiC2NuanceEntry[] = [
     discourse_move_en: "Acknowledge the error, give the correct information, apologize for inconvenience.",
     phrases: [
       {
+        cell_id: "0a727a5d-6e16-4e0f-a429-1c969d504519",
         gurmukhi: "ਪਿਛਲੇ ਸੁਨੇਹੇ ਵਿੱਚ ਗਲਤੀ ਰਹਿ ਗਈ ਸੀ",
         romanization: "pichhle sunehe vich galti rahi gayi si",
         vi: "Tin nhắn trước có thiếu sót/lỗi.",
@@ -345,6 +363,7 @@ export const discourseNuanceC2Entries: PunjabiC2NuanceEntry[] = [
         register: "public",
       },
       {
+        cell_id: "7db67485-cf54-42f7-a84c-a436d8687266",
         gurmukhi: "ਅਸੁਵਿਧਾ ਲਈ ਮਾਫ਼ ਕਰਨਾ",
         romanization: "asuvidha lai maaf karna",
         vi: "Xin lỗi vì bất tiện.",

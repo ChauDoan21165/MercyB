@@ -18,6 +18,7 @@ export type PunjabiInteractionRepairA2Topic =
   | "workplace_confusion";
 
 export type PunjabiInteractionRepairA2Phrase = {
+  cell_id?: string;
   pa: string;
   romanization: string;
   vi: string;
@@ -74,9 +75,9 @@ export const interactionRepairA2: PunjabiInteractionRepairA2Card[] = [
     script_awareness_vi: scriptAwarenessVi,
     script_awareness_en: scriptAwarenessEn,
     phrases: [
-      { pa: "ਮਾਫ਼ ਕਰਨਾ, ਕੀ ਤੁਸੀਂ ਦੁਬਾਰਾ ਕਹਿ ਸਕਦੇ ਹੋ?", romanization: "maaf karna, ki tusi dubara keh sakde ho?", vi: "Xin lỗi, bạn có thể nói lại không?", en: "Sorry, can you say that again?", when_vi: "Dùng với người lạ, giáo viên, nhân viên.", when_en: "Use with strangers, teachers, or staff." },
-      { pa: "ਮੈਂ ਠੀਕ ਨਾਲ ਨਹੀਂ ਸੁਣਿਆ।", romanization: "main theek naal nahi sunia.", vi: "Tôi không nghe rõ.", en: "I did not hear clearly.", when_vi: "Giải thích lý do cần nhắc lại.", when_en: "Explain why you need repetition." },
-      { pa: "ਇੱਕ ਵਾਰ ਫਿਰ, ਕਿਰਪਾ ਕਰਕੇ।", romanization: "ikk vaar phir, kirpa karke.", vi: "Một lần nữa, làm ơn.", en: "One more time, please.", when_vi: "Câu ngắn ở A2, lịch sự vừa đủ.", when_en: "A short A2-level polite phrase." },
+      { cell_id: "161fbc5b-c987-4469-8d5c-8a6b80c0971a", pa: "ਮਾਫ਼ ਕਰਨਾ, ਕੀ ਤੁਸੀਂ ਦੁਬਾਰਾ ਕਹਿ ਸਕਦੇ ਹੋ?", romanization: "maaf karna, ki tusi dubara keh sakde ho?", vi: "Xin lỗi, bạn có thể nói lại không?", en: "Sorry, can you say that again?", when_vi: "Dùng với người lạ, giáo viên, nhân viên.", when_en: "Use with strangers, teachers, or staff." },
+      { cell_id: "784be41c-0fbb-49bb-bff2-4f150f2c4801", pa: "ਮੈਂ ਠੀਕ ਨਾਲ ਨਹੀਂ ਸੁਣਿਆ।", romanization: "main theek naal nahi sunia.", vi: "Tôi không nghe rõ.", en: "I did not hear clearly.", when_vi: "Giải thích lý do cần nhắc lại.", when_en: "Explain why you need repetition." },
+      { cell_id: "5f93b3d9-21f2-48c4-9c99-6e7ee85b6574", pa: "ਇੱਕ ਵਾਰ ਫਿਰ, ਕਿਰਪਾ ਕਰਕੇ।", romanization: "ikk vaar phir, kirpa karke.", vi: "Một lần nữa, làm ơn.", en: "One more time, please.", when_vi: "Câu ngắn ở A2, lịch sự vừa đủ.", when_en: "A short A2-level polite phrase." },
     ],
     traps: [
       { trap_vi: "Đừng chỉ nói ਕੀ? với người lạ; nghe cụt.", trap_en: "Do not only say ਕੀ? to a stranger; it sounds abrupt.", better_pa: "ਮਾਫ਼ ਕਰਨਾ, ਦੁਬਾਰਾ ਕਹੋ ਜੀ।", better_romanization: "maaf karna, dubara kaho ji." },
@@ -102,9 +103,9 @@ export const interactionRepairA2: PunjabiInteractionRepairA2Card[] = [
     script_awareness_vi: scriptAwarenessVi,
     script_awareness_en: scriptAwarenessEn,
     phrases: [
-      { pa: "ਕਿਰਪਾ ਕਰਕੇ ਥੋੜ੍ਹਾ ਹੌਲੀ ਬੋਲੋ।", romanization: "kirpa karke thoda hauli bolo.", vi: "Làm ơn nói chậm hơn một chút.", en: "Please speak a little slower.", when_vi: "Dùng trong lớp, clinic, văn phòng.", when_en: "Use in class, clinics, or offices." },
-      { pa: "ਮੈਂ ਪੰਜਾਬੀ ਸਿੱਖ ਰਿਹਾ ਹਾਂ।", romanization: "main punjabi sikh riha haan.", vi: "Tôi đang học Punjabi. (nam)", en: "I am learning Punjabi. (male speaker)", when_vi: "Giải thích trình độ để người kia điều chỉnh.", when_en: "Explain your level so the other person adjusts." },
-      { pa: "ਹੌਲੀ ਬੋਲੋ ਜੀ।", romanization: "hauli bolo ji.", vi: "Xin nói chậm hơn.", en: "Please speak slowly.", when_vi: "Bản rất ngắn, vẫn có ਜੀ để lịch sự.", when_en: "Very short but still polite with ਜੀ." },
+      { cell_id: "2e45edfb-87a1-44ae-9dd2-dec173316bb2", pa: "ਕਿਰਪਾ ਕਰਕੇ ਥੋੜ੍ਹਾ ਹੌਲੀ ਬੋਲੋ।", romanization: "kirpa karke thoda hauli bolo.", vi: "Làm ơn nói chậm hơn một chút.", en: "Please speak a little slower.", when_vi: "Dùng trong lớp, clinic, văn phòng.", when_en: "Use in class, clinics, or offices." },
+      { cell_id: "1f76aa3c-4cc3-4b30-9346-9cb69f872dc9", pa: "ਮੈਂ ਪੰਜਾਬੀ ਸਿੱਖ ਰਿਹਾ ਹਾਂ।", romanization: "main punjabi sikh riha haan.", vi: "Tôi đang học Punjabi. (nam)", en: "I am learning Punjabi. (male speaker)", when_vi: "Giải thích trình độ để người kia điều chỉnh.", when_en: "Explain your level so the other person adjusts." },
+      { cell_id: "edb9148b-7596-453c-b485-576b0f3fef59", pa: "ਹੌਲੀ ਬੋਲੋ ਜੀ।", romanization: "hauli bolo ji.", vi: "Xin nói chậm hơn.", en: "Please speak slowly.", when_vi: "Bản rất ngắn, vẫn có ਜੀ để lịch sự.", when_en: "Very short but still polite with ਜੀ." },
     ],
     traps: [
       { trap_vi: "Người nói nữ: ਸਿੱਖ ਰਹੀ ਹਾਂ, không ਸਿੱਖ ਰਿਹਾ ਹਾਂ.", trap_en: "Female speaker: ਸਿੱਖ ਰਹੀ ਹਾਂ, not ਸਿੱਖ ਰਿਹਾ ਹਾਂ.", better_pa: "ਮੈਂ ਪੰਜਾਬੀ ਸਿੱਖ ਰਹੀ ਹਾਂ।", better_romanization: "main punjabi sikh rahi haan." },
@@ -132,9 +133,9 @@ export const interactionRepairA2: PunjabiInteractionRepairA2Card[] = [
     script_awareness_vi: scriptAwarenessVi,
     script_awareness_en: scriptAwarenessEn,
     phrases: [
-      { pa: "ਇਸਦਾ ਕੀ ਮਤਲਬ ਹੈ?", romanization: "isda ki matlab hai?", vi: "Cái này nghĩa là gì?", en: "What does this mean?", when_vi: "Dùng cho một từ/cụm vừa nghe hoặc đọc.", when_en: "Use for a word/phrase you just heard or read." },
-      { pa: "ਇਹ ਸ਼ਬਦ ਮੈਨੂੰ ਨਹੀਂ ਪਤਾ।", romanization: "eh shabad mainu nahi pata.", vi: "Tôi không biết từ này.", en: "I do not know this word.", when_vi: "Nói rõ vấn đề là từ vựng.", when_en: "Clarify that the issue is vocabulary." },
-      { pa: "ਕੀ ਤੁਸੀਂ ਉਦਾਹਰਨ ਦੇ ਸਕਦੇ ਹੋ?", romanization: "ki tusi udaharan de sakde ho?", vi: "Bạn có thể cho ví dụ không?", en: "Can you give an example?", when_vi: "Khi định nghĩa vẫn chưa đủ rõ.", when_en: "When the definition is still unclear." },
+      { cell_id: "854b322d-d0c8-4136-a044-515f9a13d9c9", pa: "ਇਸਦਾ ਕੀ ਮਤਲਬ ਹੈ?", romanization: "isda ki matlab hai?", vi: "Cái này nghĩa là gì?", en: "What does this mean?", when_vi: "Dùng cho một từ/cụm vừa nghe hoặc đọc.", when_en: "Use for a word/phrase you just heard or read." },
+      { cell_id: "dc8b565a-c256-4ad7-be53-82b79531759a", pa: "ਇਹ ਸ਼ਬਦ ਮੈਨੂੰ ਨਹੀਂ ਪਤਾ।", romanization: "eh shabad mainu nahi pata.", vi: "Tôi không biết từ này.", en: "I do not know this word.", when_vi: "Nói rõ vấn đề là từ vựng.", when_en: "Clarify that the issue is vocabulary." },
+      { cell_id: "e0c833ff-f130-4f82-8a03-9dba21ecf370", pa: "ਕੀ ਤੁਸੀਂ ਉਦਾਹਰਨ ਦੇ ਸਕਦੇ ਹੋ?", romanization: "ki tusi udaharan de sakde ho?", vi: "Bạn có thể cho ví dụ không?", en: "Can you give an example?", when_vi: "Khi định nghĩa vẫn chưa đủ rõ.", when_en: "When the definition is still unclear." },
     ],
     traps: [
       { trap_vi: "ਮਤਲਬ là 'nghĩa/ý', không phải lúc nào cũng là 'purpose'.", trap_en: "ਮਤਲਬ means meaning/point, not always 'purpose'.", better_pa: "ਇਸਦਾ ਮਤਲਬ ਕੀ ਹੈ?", better_romanization: "isda matlab ki hai?" },
@@ -160,9 +161,9 @@ export const interactionRepairA2: PunjabiInteractionRepairA2Card[] = [
     script_awareness_vi: scriptAwarenessVi,
     script_awareness_en: scriptAwarenessEn,
     phrases: [
-      { pa: "ਨਹੀਂ, ਮੇਰਾ ਮਤਲਬ ਕੱਲ੍ਹ ਸੀ।", romanization: "nahi, mera matlab kal si.", vi: "Không, ý tôi là ngày mai/hôm qua theo ngữ cảnh.", en: "No, I meant kal (tomorrow/yesterday by context).", when_vi: "Cẩn thận vì ਕੱਲ੍ਹ có thể cần ngữ cảnh.", when_en: "Be careful because ਕੱਲ੍ਹ needs context." },
-      { pa: "ਮੈਂ ਤਿੰਨ ਵਜੇ ਨਹੀਂ, ਚਾਰ ਵਜੇ ਆਵਾਂਗਾ।", romanization: "main tinn vaje nahi, chaar vaje aavanga.", vi: "Tôi sẽ đến lúc bốn giờ, không phải ba giờ. (nam)", en: "I will come at four, not three. (male speaker)", when_vi: "Dùng cấu trúc 'không phải X, mà Y'.", when_en: "Use the 'not X, but Y' repair pattern." },
-      { pa: "ਮਾਫ਼ ਕਰਨਾ, ਮੈਂ ਸਾਫ਼ ਨਹੀਂ ਕਿਹਾ।", romanization: "maaf karna, main saaf nahi keha.", vi: "Xin lỗi, tôi nói chưa rõ.", en: "Sorry, I was not clear.", when_vi: "Giảm căng thẳng khi sửa lại.", when_en: "Reduces tension when correcting." },
+      { cell_id: "6a63790e-ff14-4b29-8dc4-1ec22793c961", pa: "ਨਹੀਂ, ਮੇਰਾ ਮਤਲਬ ਕੱਲ੍ਹ ਸੀ।", romanization: "nahi, mera matlab kal si.", vi: "Không, ý tôi là ngày mai/hôm qua theo ngữ cảnh.", en: "No, I meant kal (tomorrow/yesterday by context).", when_vi: "Cẩn thận vì ਕੱਲ੍ਹ có thể cần ngữ cảnh.", when_en: "Be careful because ਕੱਲ੍ਹ needs context." },
+      { cell_id: "a84036d1-c5b9-4dd5-a763-5060d8069fde", pa: "ਮੈਂ ਤਿੰਨ ਵਜੇ ਨਹੀਂ, ਚਾਰ ਵਜੇ ਆਵਾਂਗਾ।", romanization: "main tinn vaje nahi, chaar vaje aavanga.", vi: "Tôi sẽ đến lúc bốn giờ, không phải ba giờ. (nam)", en: "I will come at four, not three. (male speaker)", when_vi: "Dùng cấu trúc 'không phải X, mà Y'.", when_en: "Use the 'not X, but Y' repair pattern." },
+      { cell_id: "06689dc5-4102-4aa1-a09f-c2b4c0315898", pa: "ਮਾਫ਼ ਕਰਨਾ, ਮੈਂ ਸਾਫ਼ ਨਹੀਂ ਕਿਹਾ।", romanization: "maaf karna, main saaf nahi keha.", vi: "Xin lỗi, tôi nói chưa rõ.", en: "Sorry, I was not clear.", when_vi: "Giảm căng thẳng khi sửa lại.", when_en: "Reduces tension when correcting." },
     ],
     traps: [
       { trap_vi: "ਕੱਲ੍ਹ có thể gây mơ hồ; thêm ਦਿਨ/date nếu cần.", trap_en: "ਕੱਲ੍ਹ can be ambiguous; add a day/date if needed.", better_pa: "ਸੋਮਵਾਰ ਨੂੰ", better_romanization: "somvaar nu" },
@@ -190,9 +191,9 @@ export const interactionRepairA2: PunjabiInteractionRepairA2Card[] = [
     canada_practical_vi: "Rất hữu ích khi xác nhận địa chỉ, suite number, unit number ở Canada.",
     canada_practical_en: "Very useful when confirming addresses, suite numbers, and unit numbers in Canada.",
     phrases: [
-      { pa: "ਤਾਂ ਮੀਟਿੰਗ ਦੋ ਵਜੇ ਹੈ, ਠੀਕ ਹੈ?", romanization: "tan meeting do vaje hai, theek hai?", vi: "Vậy cuộc họp lúc hai giờ, đúng không?", en: "So the meeting is at two, right?", when_vi: "Dùng khi lặp lại thông tin vừa nghe.", when_en: "Use when repeating what you heard." },
-      { pa: "ਪਤਾ ਦੁਬਾਰਾ ਦੱਸੋ ਜੀ।", romanization: "pata dubara dasso ji.", vi: "Xin cho biết lại địa chỉ.", en: "Please tell me the address again.", when_vi: "Khi cần xác nhận địa chỉ.", when_en: "When confirming an address." },
-      { pa: "ਕੀ ਇਹ ਸਹੀ ਹੈ?", romanization: "ki eh sahi hai?", vi: "Cái này có đúng không?", en: "Is this correct?", when_vi: "Dùng với số, tên, spelling, thông tin.", when_en: "Use for numbers, names, spelling, and details." },
+      { cell_id: "4d863679-6709-4976-a3d3-c24b1ab42608", pa: "ਤਾਂ ਮੀਟਿੰਗ ਦੋ ਵਜੇ ਹੈ, ਠੀਕ ਹੈ?", romanization: "tan meeting do vaje hai, theek hai?", vi: "Vậy cuộc họp lúc hai giờ, đúng không?", en: "So the meeting is at two, right?", when_vi: "Dùng khi lặp lại thông tin vừa nghe.", when_en: "Use when repeating what you heard." },
+      { cell_id: "d3bf9daf-7f33-4421-adb3-dd116f57db37", pa: "ਪਤਾ ਦੁਬਾਰਾ ਦੱਸੋ ਜੀ।", romanization: "pata dubara dasso ji.", vi: "Xin cho biết lại địa chỉ.", en: "Please tell me the address again.", when_vi: "Khi cần xác nhận địa chỉ.", when_en: "When confirming an address." },
+      { cell_id: "e6e21eff-8cee-440e-a2a4-86211c8c5f40", pa: "ਕੀ ਇਹ ਸਹੀ ਹੈ?", romanization: "ki eh sahi hai?", vi: "Cái này có đúng không?", en: "Is this correct?", when_vi: "Dùng với số, tên, spelling, thông tin.", when_en: "Use for numbers, names, spelling, and details." },
     ],
     traps: [
       { trap_vi: "ਠੀਕ ਹੈ? có thể là xác nhận, không chỉ 'okay'.", trap_en: "ਠੀਕ ਹੈ? can confirm, not only mean 'okay'.", better_pa: "ਦੋ ਵਜੇ, ਠੀਕ ਹੈ?", better_romanization: "do vaje, theek hai?" },
@@ -220,9 +221,9 @@ export const interactionRepairA2: PunjabiInteractionRepairA2Card[] = [
     canada_practical_vi: "Áp dụng ở clinic, dentist, school office tại Canada.",
     canada_practical_en: "Applies to clinics, dentists, and school offices in Canada.",
     phrases: [
-      { pa: "ਮੇਰੀ ਅਪਾਇੰਟਮੈਂਟ ਕਿਹੜੇ ਦਿਨ ਹੈ?", romanization: "meri appointment kihre din hai?", vi: "Lịch hẹn của tôi vào ngày nào?", en: "What day is my appointment?", when_vi: "Khi không chắc ngày.", when_en: "When you are unsure of the day." },
-      { pa: "ਕੀ ਮੈਂ ਸਮਾਂ ਬਦਲ ਸਕਦਾ ਹਾਂ?", romanization: "ki main sama badal sakda haan?", vi: "Tôi có thể đổi giờ không? (nam)", en: "Can I change the time? (male speaker)", when_vi: "Người nói nữ dùng ਸਕਦੀ.", when_en: "A female speaker uses ਸਕਦੀ." },
-      { pa: "ਸੋਮਵਾਰ ਦੋ ਵਜੇ, ਠੀਕ ਹੈ?", romanization: "somvaar do vaje, theek hai?", vi: "Thứ Hai lúc hai giờ, đúng không?", en: "Monday at two, correct?", when_vi: "Xác nhận sau khi nghe thông tin.", when_en: "Confirm after receiving the information." },
+      { cell_id: "b0f114ff-45f3-4117-b2df-a8e90287ac33", pa: "ਮੇਰੀ ਅਪਾਇੰਟਮੈਂਟ ਕਿਹੜੇ ਦਿਨ ਹੈ?", romanization: "meri appointment kihre din hai?", vi: "Lịch hẹn của tôi vào ngày nào?", en: "What day is my appointment?", when_vi: "Khi không chắc ngày.", when_en: "When you are unsure of the day." },
+      { cell_id: "dc5af42c-7530-43ee-bd0b-6c8a9d64ff6e", pa: "ਕੀ ਮੈਂ ਸਮਾਂ ਬਦਲ ਸਕਦਾ ਹਾਂ?", romanization: "ki main sama badal sakda haan?", vi: "Tôi có thể đổi giờ không? (nam)", en: "Can I change the time? (male speaker)", when_vi: "Người nói nữ dùng ਸਕਦੀ.", when_en: "A female speaker uses ਸਕਦੀ." },
+      { cell_id: "7c5f524e-0733-4e76-9d27-c7ec16a4f218", pa: "ਸੋਮਵਾਰ ਦੋ ਵਜੇ, ਠੀਕ ਹੈ?", romanization: "somvaar do vaje, theek hai?", vi: "Thứ Hai lúc hai giờ, đúng không?", en: "Monday at two, correct?", when_vi: "Xác nhận sau khi nghe thông tin.", when_en: "Confirm after receiving the information." },
     ],
     traps: [
       { trap_vi: "ਸਕਦਾ/ਸਕਦੀ đổi theo người nói.", trap_en: "ਸਕਦਾ/ਸਕਦੀ changes with the speaker.", better_pa: "ਕੀ ਮੈਂ ਸਮਾਂ ਬਦਲ ਸਕਦੀ ਹਾਂ?", better_romanization: "ki main sama badal sakdi haan?" },
@@ -250,9 +251,9 @@ export const interactionRepairA2: PunjabiInteractionRepairA2Card[] = [
     canada_practical_vi: "Dùng với TTC, SkyTrain, bus stop, platform trong bối cảnh Canada.",
     canada_practical_en: "Use with TTC, SkyTrain, bus stops, and platforms in Canada.",
     phrases: [
-      { pa: "ਇਹ ਬੱਸ ਕਿੱਥੇ ਜਾਂਦੀ ਹੈ?", romanization: "eh bass kitthe jandi hai?", vi: "Xe buýt này đi đâu?", en: "Where does this bus go?", when_vi: "ਜਾਂਦੀ agrees với ਬੱਸ.", when_en: "ਜਾਂਦੀ agrees with ਬੱਸ." },
-      { pa: "ਮੈਨੂੰ ਕਿੱਥੇ ਉਤਰਨਾ ਹੈ?", romanization: "mainu kitthe utarna hai?", vi: "Tôi phải xuống ở đâu?", en: "Where should I get off?", when_vi: "Dùng khi hỏi điểm xuống.", when_en: "Use when asking the stop to get off." },
-      { pa: "ਕੀ ਇਹ ਸਹੀ ਪਲੇਟਫਾਰਮ ਹੈ?", romanization: "ki eh sahi platform hai?", vi: "Đây có phải sân ga đúng không?", en: "Is this the correct platform?", when_vi: "Xác nhận trước khi đi.", when_en: "Confirm before boarding." },
+      { cell_id: "334be2ee-c025-4aaa-86f5-4b95873ce693", pa: "ਇਹ ਬੱਸ ਕਿੱਥੇ ਜਾਂਦੀ ਹੈ?", romanization: "eh bass kitthe jandi hai?", vi: "Xe buýt này đi đâu?", en: "Where does this bus go?", when_vi: "ਜਾਂਦੀ agrees với ਬੱਸ.", when_en: "ਜਾਂਦੀ agrees with ਬੱਸ." },
+      { cell_id: "aa30760c-5ff1-40bd-8ec5-c0bf57010a5c", pa: "ਮੈਨੂੰ ਕਿੱਥੇ ਉਤਰਨਾ ਹੈ?", romanization: "mainu kitthe utarna hai?", vi: "Tôi phải xuống ở đâu?", en: "Where should I get off?", when_vi: "Dùng khi hỏi điểm xuống.", when_en: "Use when asking the stop to get off." },
+      { cell_id: "3d8254fe-84d7-43c5-bc26-99f871e31990", pa: "ਕੀ ਇਹ ਸਹੀ ਪਲੇਟਫਾਰਮ ਹੈ?", romanization: "ki eh sahi platform hai?", vi: "Đây có phải sân ga đúng không?", en: "Is this the correct platform?", when_vi: "Xác nhận trước khi đi.", when_en: "Confirm before boarding." },
     ],
     traps: [
       { trap_vi: "Đừng dùng ਜਾਂਦਾ với ਬੱਸ nếu đang giữ agreement giống cái.", trap_en: "Do not use ਜਾਂਦਾ with ਬੱਸ when keeping feminine agreement.", better_pa: "ਬੱਸ ਜਾਂਦੀ ਹੈ।", better_romanization: "bass jandi hai." },
@@ -280,9 +281,9 @@ export const interactionRepairA2: PunjabiInteractionRepairA2Card[] = [
     canada_practical_vi: "Hữu ích khi nói với landlord, building manager, maintenance.",
     canada_practical_en: "Useful with landlords, building managers, and maintenance.",
     phrases: [
-      { pa: "ਇੱਥੇ ਇੱਕ ਸਮੱਸਿਆ ਹੈ।", romanization: "itthe ikk samassia hai.", vi: "Ở đây có một vấn đề.", en: "There is a problem here.", when_vi: "Mở đầu khi chưa biết mô tả chi tiết.", when_en: "Open when you do not know the detailed description yet." },
-      { pa: "ਮੈਨੂੰ ਇਸ ਚੀਜ਼ ਦਾ ਨਾਮ ਨਹੀਂ ਪਤਾ।", romanization: "mainu is cheez da naam nahi pata.", vi: "Tôi không biết tên của thứ này.", en: "I do not know the name of this thing.", when_vi: "Dùng khi chỉ vào vật/ảnh.", when_en: "Use when pointing to an object/photo." },
-      { pa: "ਕੀ ਤੁਸੀਂ ਆ ਕੇ ਦੇਖ ਸਕਦੇ ਹੋ?", romanization: "ki tusi aa ke dekh sakde ho?", vi: "Bạn có thể đến xem không?", en: "Can you come and look?", when_vi: "Yêu cầu hỗ trợ sửa chữa lịch sự.", when_en: "A polite repair-support request." },
+      { cell_id: "95e06331-1479-4a03-b421-c43482084cb8", pa: "ਇੱਥੇ ਇੱਕ ਸਮੱਸਿਆ ਹੈ।", romanization: "itthe ikk samassia hai.", vi: "Ở đây có một vấn đề.", en: "There is a problem here.", when_vi: "Mở đầu khi chưa biết mô tả chi tiết.", when_en: "Open when you do not know the detailed description yet." },
+      { cell_id: "dc65a0d0-5a73-4ddd-9865-9206f0bc8534", pa: "ਮੈਨੂੰ ਇਸ ਚੀਜ਼ ਦਾ ਨਾਮ ਨਹੀਂ ਪਤਾ।", romanization: "mainu is cheez da naam nahi pata.", vi: "Tôi không biết tên của thứ này.", en: "I do not know the name of this thing.", when_vi: "Dùng khi chỉ vào vật/ảnh.", when_en: "Use when pointing to an object/photo." },
+      { cell_id: "e7ac53f2-f30e-4a41-990a-a8239abcb5cb", pa: "ਕੀ ਤੁਸੀਂ ਆ ਕੇ ਦੇਖ ਸਕਦੇ ਹੋ?", romanization: "ki tusi aa ke dekh sakde ho?", vi: "Bạn có thể đến xem không?", en: "Can you come and look?", when_vi: "Yêu cầu hỗ trợ sửa chữa lịch sự.", when_en: "A polite repair-support request." },
     ],
     traps: [
       { trap_vi: "Đừng im lặng khi thiếu từ; dùng 'tôi không biết tên thứ này'.", trap_en: "Do not go silent when missing a word; say 'I do not know the name of this thing'.", better_pa: "ਮੈਨੂੰ ਇਸਦਾ ਨਾਮ ਨਹੀਂ ਪਤਾ।", better_romanization: "mainu isda naam nahi pata." },
@@ -310,9 +311,9 @@ export const interactionRepairA2: PunjabiInteractionRepairA2Card[] = [
     canada_practical_vi: "Dùng được trong school office, daycare, parent-teacher messages.",
     canada_practical_en: "Usable in school offices, daycare, and parent-teacher messages.",
     phrases: [
-      { pa: "ਹੋਮਵਰਕ ਕਦੋਂ ਦੇਣਾ ਹੈ?", romanization: "homework kadon dena hai?", vi: "Khi nào phải nộp bài tập?", en: "When is the homework due?", when_vi: "Hỏi hạn nộp.", when_en: "Ask a due date." },
-      { pa: "ਕਲਾਸ ਕਿਹੜੇ ਕਮਰੇ ਵਿੱਚ ਹੈ?", romanization: "class kihre kamre vich hai?", vi: "Lớp ở phòng nào?", en: "Which room is the class in?", when_vi: "Hỏi địa điểm lớp.", when_en: "Ask class location." },
-      { pa: "ਮੈਂ ਨੋਟਿਸ ਨਹੀਂ ਸਮਝਿਆ।", romanization: "main notice nahi samjhia.", vi: "Tôi chưa hiểu thông báo. (nam)", en: "I did not understand the notice. (male speaker)", when_vi: "Người nói nữ dùng ਸਮਝੀ.", when_en: "A female speaker uses ਸਮਝੀ." },
+      { cell_id: "b99bc98d-8caf-453d-af84-dbcb94335191", pa: "ਹੋਮਵਰਕ ਕਦੋਂ ਦੇਣਾ ਹੈ?", romanization: "homework kadon dena hai?", vi: "Khi nào phải nộp bài tập?", en: "When is the homework due?", when_vi: "Hỏi hạn nộp.", when_en: "Ask a due date." },
+      { cell_id: "8f1a6628-f208-4ac7-b403-c5b54154768c", pa: "ਕਲਾਸ ਕਿਹੜੇ ਕਮਰੇ ਵਿੱਚ ਹੈ?", romanization: "class kihre kamre vich hai?", vi: "Lớp ở phòng nào?", en: "Which room is the class in?", when_vi: "Hỏi địa điểm lớp.", when_en: "Ask class location." },
+      { cell_id: "54bc5e0c-2b72-4a51-a86b-d472ddb46e28", pa: "ਮੈਂ ਨੋਟਿਸ ਨਹੀਂ ਸਮਝਿਆ।", romanization: "main notice nahi samjhia.", vi: "Tôi chưa hiểu thông báo. (nam)", en: "I did not understand the notice. (male speaker)", when_vi: "Người nói nữ dùng ਸਮਝੀ.", when_en: "A female speaker uses ਸਮਝੀ." },
     ],
     traps: [
       { trap_vi: "ਸਮਝਿਆ/ਸਮਝੀ đổi theo người nói trong câu này.", trap_en: "ਸਮਝਿਆ/ਸਮਝੀ changes with the speaker in this sentence.", better_pa: "ਮੈਂ ਨੋਟਿਸ ਨਹੀਂ ਸਮਝੀ।", better_romanization: "main notice nahi samjhi." },
@@ -340,9 +341,9 @@ export const interactionRepairA2: PunjabiInteractionRepairA2Card[] = [
     canada_practical_vi: "Hữu ích trong shift work, training, warehouse, retail, office.",
     canada_practical_en: "Useful in shift work, training, warehouses, retail, and offices.",
     phrases: [
-      { pa: "ਮੈਨੂੰ ਇਹ ਹਦਾਇਤ ਸਮਝ ਨਹੀਂ ਆਈ।", romanization: "mainu eh hidayat samajh nahi aai.", vi: "Tôi chưa hiểu hướng dẫn này.", en: "I did not understand this instruction.", when_vi: "Nói thẳng nhưng không thô.", when_en: "Direct but not rude." },
-      { pa: "ਕੀ ਮੈਂ ਇੱਕ ਸਵਾਲ ਪੁੱਛ ਸਕਦਾ ਹਾਂ?", romanization: "ki main ikk sawaal puchh sakda haan?", vi: "Tôi có thể hỏi một câu không? (nam)", en: "Can I ask a question? (male speaker)", when_vi: "Người nói nữ dùng ਸਕਦੀ.", when_en: "A female speaker uses ਸਕਦੀ." },
-      { pa: "ਮੇਰਾ ਸ਼ਿਫ਼ਟ ਕਦੋਂ ਸ਼ੁਰੂ ਹੁੰਦਾ ਹੈ?", romanization: "mera shift kadon shuru hunda hai?", vi: "Ca của tôi bắt đầu khi nào?", en: "When does my shift start?", when_vi: "Hỏi lịch làm việc.", when_en: "Ask about work schedule." },
+      { cell_id: "2b9430e9-42e6-4236-b44f-d957a7d32959", pa: "ਮੈਨੂੰ ਇਹ ਹਦਾਇਤ ਸਮਝ ਨਹੀਂ ਆਈ।", romanization: "mainu eh hidayat samajh nahi aai.", vi: "Tôi chưa hiểu hướng dẫn này.", en: "I did not understand this instruction.", when_vi: "Nói thẳng nhưng không thô.", when_en: "Direct but not rude." },
+      { cell_id: "a28dbed4-f004-4162-9a35-86d85f040d3d", pa: "ਕੀ ਮੈਂ ਇੱਕ ਸਵਾਲ ਪੁੱਛ ਸਕਦਾ ਹਾਂ?", romanization: "ki main ikk sawaal puchh sakda haan?", vi: "Tôi có thể hỏi một câu không? (nam)", en: "Can I ask a question? (male speaker)", when_vi: "Người nói nữ dùng ਸਕਦੀ.", when_en: "A female speaker uses ਸਕਦੀ." },
+      { cell_id: "e9a7450e-bdc5-4a34-bca9-916cbb77a178", pa: "ਮੇਰਾ ਸ਼ਿਫ਼ਟ ਕਦੋਂ ਸ਼ੁਰੂ ਹੁੰਦਾ ਹੈ?", romanization: "mera shift kadon shuru hunda hai?", vi: "Ca của tôi bắt đầu khi nào?", en: "When does my shift start?", when_vi: "Hỏi lịch làm việc.", when_en: "Ask about work schedule." },
     ],
     traps: [
       { trap_vi: "Với workplace, tránh ਤੂੰ nếu chưa thân; dùng ਤੁਸੀਂ hoặc câu trung tính.", trap_en: "At work, avoid ਤੂੰ unless close; use ਤੁਸੀਂ or neutral phrasing.", better_pa: "ਕੀ ਤੁਸੀਂ ਸਮਝਾ ਸਕਦੇ ਹੋ?", better_romanization: "ki tusi samjha sakde ho?" },

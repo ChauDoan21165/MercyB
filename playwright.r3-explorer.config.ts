@@ -6,7 +6,10 @@
  */
 import { defineConfig, devices } from "@playwright/test";
 
+import { CORRECTION_SOURCE_SYNTHETIC_MARKER_KEY } from "./src/lib/ai-tutor/correctionSourceSyntheticMarker";
+
 const baseURL = process.env.PROD_SYNTH_BASE_URL ?? "https://mercyblade.com";
+const baseOrigin = new URL(baseURL).origin;
 
 export default defineConfig({
   testDir: "./tests/prod-r3-explorer",
@@ -24,6 +27,20 @@ export default defineConfig({
 
   use: {
     baseURL,
+    storageState: {
+      cookies: [],
+      origins: [
+        {
+          origin: baseOrigin,
+          localStorage: [
+            {
+              name: CORRECTION_SOURCE_SYNTHETIC_MARKER_KEY,
+              value: "1",
+            },
+          ],
+        },
+      ],
+    },
     trace: "retain-on-failure",
     screenshot: "only-on-failure",
   },

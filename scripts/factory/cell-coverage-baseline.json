@@ -1,7 +1,7 @@
 {
   "schema": "cell-coverage-baseline-v1",
-  "date": "2026-07-12",
-  "source": "Measured from origin/main after git fetch origin && git reset --hard origin/main.",
+  "date": "2026-07-13",
+  "source": "Measured from origin/main after b58a5664 expanded CELL vocabulary scope to include phrases; counts verified on c4.1/wp-cell-reconcile-2 after phrase cell_id retrofit.",
   "ratchet": "Uncovered counts may not rise. Coverage may improve. The only legitimate baseline increase is intentional CELL content removal, updated in the same MR that removes it.",
   "definitions": {
     "ipaCovered": "An object is IPA-covered when any of ipa, ipa_en, ipa_vi, pronunciation, pronunciation_en, pronunciation_vi exists as a non-empty string. Empty strings are uncovered.",
@@ -10,22 +10,22 @@
   },
   "scan": {
     "filesScanned": 1235,
-    "filesWithCell": 487,
-    "lessonObjects": 2061,
+    "filesWithCell": 503,
+    "lessonObjects": 2611,
     "audioAssets": 1285
   },
   "totals": {
     "vocabulary": {
-      "objects": 14418,
-      "ipaCoveredObjects": 10365,
+      "objects": 16697,
+      "ipaCoveredObjects": 12110,
       "audioCoveredObjects": 0,
-      "uniqueWordTokens": 11062,
-      "ipaCoveredUniqueWordTokens": 8124,
+      "uniqueWordTokens": 13026,
+      "ipaCoveredUniqueWordTokens": 9675,
       "audioCoveredUniqueWordTokens": 0,
-      "uncoveredIpaObjects": 4053,
-      "uncoveredAudioObjects": 14418,
-      "uncoveredIpaUniqueWordTokens": 2938,
-      "uncoveredAudioUniqueWordTokens": 11062
+      "uncoveredIpaObjects": 4587,
+      "uncoveredAudioObjects": 16697,
+      "uncoveredIpaUniqueWordTokens": 3351,
+      "uncoveredAudioUniqueWordTokens": 13026
     },
     "dialogue": {
       "objects": 7053,

@@ -1,4 +1,4 @@
-// Supabase migrations fingerprint: df198072c67ff2a660034e5a55aa660471fb7106b8d83c4cdbec67e1e0afc34b
+// Supabase migrations fingerprint: de299c421f39a3c288f7548e32776050e6134bf24d2ea176b4ac6d0689c2a3ff
 export type Json =
   | string
   | number
@@ -5808,6 +5808,7 @@ export type Database = {
           current_task_index: number
           flow_state: string
           id: string
+          is_synthetic: boolean
           language_pair: Json
           metadata: Json
           started_at: string
@@ -5823,6 +5824,7 @@ export type Database = {
           current_task_index?: number
           flow_state?: string
           id?: string
+          is_synthetic?: boolean
           language_pair: Json
           metadata?: Json
           started_at?: string
@@ -5838,6 +5840,7 @@ export type Database = {
           current_task_index?: number
           flow_state?: string
           id?: string
+          is_synthetic?: boolean
           language_pair?: Json
           metadata?: Json
           started_at?: string
@@ -15211,7 +15214,7 @@ export type Database = {
         }[]
       }
       get_user_certificates: {
-        Args: { p_user_id: string }
+        Args: never
         Returns: {
           category: string
           cert_type: string
@@ -15308,7 +15311,6 @@ export type Database = {
           p_cert_type: string
           p_metadata?: Json
           p_milestone_value: number
-          p_user_id: string
         }
         Returns: {
           cert_type: string

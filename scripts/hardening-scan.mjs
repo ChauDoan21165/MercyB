@@ -20,6 +20,10 @@
 //   LOW    = style / lint debt
 //
 // Network: only npm audit's advisory lookup. Nothing else reaches out.
+//
+// By default this command remains a report generator and exits 0 even when it
+// emits findings. CI gates that must fail on findings opt in with
+// HARDENING_SCAN_FAIL_ON_FINDINGS=1.
 
 import { execFileSync } from "node:child_process";
 import fs from "node:fs";
@@ -37,6 +41,12 @@ import {
   compareRlsIntent,
   scanRlsMigrations,
 } from "./security/rls-matrix-scan.mjs";
+import {
+  DEFAULT_INTENT_PATH as DEFAULT_AUTH_INTENT_PATH,
+  authClassificationCounts,
+  compareAuthIntent,
+  scanAuthBoundaries,
+} from "./security/auth-matrix-scan.mjs";
 
 const ROOT = process.cwd();
 const SRC = "src";
@@ -48,6 +58,7 @@ const CHECK_TIMEOUT_MS = {
   D: 90_000,
   K: 10_000,
   L: 10_000,
+  M: 10_000,
 };
 const rel = (p) => path.relative(ROOT, p) || p;
 
@@ -56,7 +67,7 @@ const rel = (p) => path.relative(ROOT, p) || p;
 export function run(cmd, args, options = {}) {
   const timeout = options.timeoutMs ?? DEFAULT_CMD_TIMEOUT_MS;
   try {
-    const out = execFileSync(cmd, args, { cwd: ROOT, encoding: "utf8", maxBuffer: 1 << 28, timeout });
+    const out = execFileSync(cmd, args, { cwd: options.cwd ?? ROOT, env: options.env ?? process.env, encoding: "utf8", maxBuffer: 1 << 28, timeout });
     return { code: 0, stdout: out, stderr: "" };
   } catch (e) {
     const timedOut = e.signal === "SIGTERM" || /ETIMEDOUT|timed out/i.test(String(e.message));
@@ -673,6 +684,41 @@ function checkL() {
   return { status: "ok", findings, notes };
 }
 
+// ── Check M — Auth-boundary intent drift ─────────────────────────────────
+function checkM() {
+  const scan = scanAuthBoundaries({ root: ROOT });
+  let intent;
+  try {
+    intent = JSON.parse(fs.readFileSync(path.join(ROOT, DEFAULT_AUTH_INTENT_PATH), "utf8"));
+  } catch (e) {
+    return {
+      status: "SKIPPED",
+      note: `Auth intent manifest missing/unreadable at ${DEFAULT_AUTH_INTENT_PATH}: ${e?.message || e}`,
+      findings: [],
+    };
+  }
+
+  const drift = compareAuthIntent(scan, intent);
+  const counts = authClassificationCounts(scan);
+  const flags = scan.endpoints.filter((endpoint) => endpoint.review_flag);
+  const notes = [
+    `Auth matrix: endpoints=${scan.endpoints.length}; bearer-required=${counts["bearer-required"]}; anon-key-open=${counts["anon-key-open"]}; service-role-only=${counts["service-role-only"]}; public-unauthenticated=${counts["public-unauthenticated"]}; review_flags=${flags.length}; manifest_drift=${drift.length}`,
+  ];
+  const findings = [];
+
+  if (drift.length) {
+    findings.push(makeFinding({
+      id: "AUTH-boundary-intent-drift",
+      severity: "HIGH",
+      evidence: `Auth boundary intent drift: ${drift.length} endpoint difference(s) from ${DEFAULT_AUTH_INTENT_PATH}. ${drift.map((item) => `${item.type}:${item.endpoint} @ ${item.file}:${item.line}`).join("; ")}`,
+      hits: drift.map((item) => ({ file: item.file, line: item.line })),
+      consumer_question: "Did this MR intentionally add or reclassify a callable auth boundary, and was security/auth-intent.json updated in the same MR?",
+    }));
+  }
+
+  return { status: "ok", findings, notes };
+}
+
 // ── Orchestrate ───────────────────────────────────────────────────────────
 function main() {
   const started = new Date().toISOString();
@@ -690,14 +736,16 @@ function main() {
   const dirty = run("git", ["status", "--porcelain"]).stdout.trim().length > 0;
   const treeMatchesRef = headSha === refSha && !dirty;
 
-  const versions = {
-    eslint: run("npx", ["--no-install", "eslint", "--version"]).stdout.trim() || "MISSING",
-    tsc: run("npx", ["--no-install", "tsc", "--version"]).stdout.trim() || "MISSING",
-    npm: run("npm", ["--version"]).stdout.trim() || "MISSING",
-    node: process.version,
-  };
+  const versions = process.env.HARDENING_SCAN_SKIP_TOOL_VERSIONS === "1"
+    ? { eslint: "SKIPPED", tsc: "SKIPPED", npm: "SKIPPED", node: process.version }
+    : {
+        eslint: run("npx", ["--no-install", "eslint", "--version"]).stdout.trim() || "MISSING",
+        tsc: run("npx", ["--no-install", "tsc", "--version"]).stdout.trim() || "MISSING",
+        npm: run("npm", ["--version"]).stdout.trim() || "MISSING",
+        node: process.version,
+      };
 
-  const checkFns = { A: checkA, B: checkB, C: checkC, D: checkD, E: checkE, F: checkF, G: checkG, H: checkH, I: checkI, J: checkJ, K: checkK, L: checkL };
+  const checkFns = { A: checkA, B: checkB, C: checkC, D: checkD, E: checkE, F: checkF, G: checkG, H: checkH, I: checkI, J: checkJ, K: checkK, L: checkL, M: checkM };
   const labels = {
     A: "Lint debt (eslint)",
     B: "Type safety gaps (tsc + patterns)",
@@ -711,6 +759,7 @@ function main() {
     J: "v4 async UI request states without terminal failure state",
     K: "CELL-layer IPA/audio coverage ratchet",
     L: "Supabase migration RLS intent drift",
+    M: "Auth-boundary intent drift",
   };
   const requestedChecks = (process.env.HARDENING_SCAN_CHECKS || "")
     .split(",")
@@ -790,6 +839,11 @@ function main() {
     process.stderr.write(`\n[report written] ${outPath}\n`);
   } catch (e) {
     process.stderr.write(`\n[report write failed] ${e.message}\n`);
+  }
+
+  if (process.env.HARDENING_SCAN_FAIL_ON_FINDINGS === "1" && allFindings.length > 0) {
+    process.stderr.write(`[hardening-scan] FAIL_ON_FINDINGS: ${allFindings.length} finding(s); exiting 1\n`);
+    process.exitCode = 1;
   }
 }
 

@@ -17,7 +17,10 @@
  */
 import { defineConfig, devices } from "@playwright/test";
 
+import { CORRECTION_SOURCE_SYNTHETIC_MARKER_KEY } from "./src/lib/ai-tutor/correctionSourceSyntheticMarker";
+
 const baseURL = process.env.PROD_SMOKE_URL ?? "https://mercyblade.com";
+const baseOrigin = new URL(baseURL).origin;
 
 export default defineConfig({
   testDir: "./tests/prod-smoke",
@@ -43,6 +46,20 @@ export default defineConfig({
 
   use: {
     baseURL,
+    storageState: {
+      cookies: [],
+      origins: [
+        {
+          origin: baseOrigin,
+          localStorage: [
+            {
+              name: CORRECTION_SOURCE_SYNTHETIC_MARKER_KEY,
+              value: "1",
+            },
+          ],
+        },
+      ],
+    },
     // Rich artifacts so a failure says WHAT broke, not just THAT it broke.
     trace: "retain-on-failure",
     screenshot: "only-on-failure",

@@ -92,7 +92,6 @@ export function MilestoneObserver(): null {
       void Promise.all(
         newly.map((type) =>
           issueCertificate({
-            user_id: userId,
             certificate_type: type,
             metadata: {
               source: "milestone_observer",

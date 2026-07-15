@@ -15,8 +15,13 @@ if [[ ! -d "$OUTBOX_DIR" ]]; then
   exit 1
 fi
 
-FILE_COUNT=0
-while IFS= read -r file; do
+mapfile -t FILES < <(find "$OUTBOX_DIR" -type f -name '*.mp3' | sort)
+if [[ "${#FILES[@]}" -eq 0 ]]; then
+  echo "No mp3 files found under $OUTBOX_DIR" >&2
+  exit 1
+fi
+
+for file in "${FILES[@]}"; do
   object_path="${file#"$OUTBOX_DIR"/}"
   echo "upload $object_path"
   curl -fsS -X POST \
@@ -26,12 +31,6 @@ while IFS= read -r file; do
     -H "Content-Type: audio/mpeg" \
     -H "x-upsert: true" \
     --data-binary "@$file" >/dev/null
-  FILE_COUNT=$((FILE_COUNT + 1))
-done < <(find "$OUTBOX_DIR" -type f -name '*.mp3' | sort)
+done
 
-if [[ "$FILE_COUNT" -eq 0 ]]; then
-  echo "No mp3 files found under $OUTBOX_DIR" >&2
-  exit 1
-fi
-
-echo "Uploaded $FILE_COUNT mp3 file(s) to $BUCKET."
+echo "Uploaded ${#FILES[@]} mp3 file(s) to $BUCKET."

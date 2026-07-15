@@ -97,12 +97,12 @@ function scanFile(file) {
   const sourceText = fs.readFileSync(file, "utf8");
   const sourceFile = ts.createSourceFile(file, sourceText, ts.ScriptTarget.Latest, true);
   const insertions = [];
-  const counts = { vocabulary: 0, dialogue: 0 };
+  const counts = { vocabulary: 0, phrases: 0, dialogue: 0 };
 
   function visit(node) {
     if (ts.isObjectLiteralExpression(node)) {
       const properties = objectProperties(node);
-      for (const arrayName of ["vocabulary", "dialogue"]) {
+      for (const arrayName of ["vocabulary", "phrases", "dialogue"]) {
         const arrayNode = properties.get(arrayName);
         if (!arrayNode || !ts.isArrayLiteralExpression(arrayNode)) continue;
         for (const element of arrayNode.elements) {
@@ -150,6 +150,7 @@ function unifiedDiff(file, before, after) {
 const files = walkFiles(path.join(ROOT, SOURCE_DIR)).sort();
 const touched = [];
 let vocabularyItems = 0;
+let phraseItems = 0;
 let dialogueItems = 0;
 
 for (const file of files) {
@@ -158,6 +159,7 @@ for (const file of files) {
   const next = applyInsertions(result.sourceText, result.insertions);
   touched.push({ file, result, next });
   vocabularyItems += result.counts.vocabulary;
+  phraseItems += result.counts.phrases;
   dialogueItems += result.counts.dialogue;
 }
 
@@ -165,8 +167,9 @@ console.log(`[cell-id] mode=${apply ? "apply" : "dry-run"}`);
 console.log(`[cell-id] files_scanned=${files.length}`);
 console.log(`[cell-id] files_touched=${touched.length}`);
 console.log(`[cell-id] vocabulary_ids_to_add=${vocabularyItems}`);
+console.log(`[cell-id] phrase_ids_to_add=${phraseItems}`);
 console.log(`[cell-id] dialogue_ids_to_add=${dialogueItems}`);
-console.log(`[cell-id] total_ids_to_add=${vocabularyItems + dialogueItems}`);
+console.log(`[cell-id] total_ids_to_add=${vocabularyItems + phraseItems + dialogueItems}`);
 
 if (diffSample > 0) {
   for (const item of touched.slice(0, diffSample)) {

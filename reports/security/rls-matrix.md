@@ -3,12 +3,12 @@
 Static scan only. Source: `supabase/migrations/*.sql`; no live database probing.
 
 ## Summary
-- migration_files: 266
-- tables_observed: 200
-- rls_enabled: 197
+- migration_files: 267
+- tables_observed: 201
+- rls_enabled: 198
 - rls_not_enabled: 3
-- policies_observed: 480
-- manifest_tables: 200
+- policies_observed: 483
+- manifest_tables: 201
 - manifest_drift_findings: 0
 
 ## Tables
@@ -59,6 +59,7 @@ Static scan only. Source: `supabase/migrations/*.sql`; no live database probing.
 | `public.corporate_accounts` | yes | yes | 4 | `supabase/migrations/20260425140923_corporate_seats.sql:28` |
 | `public.corporate_seat_invites` | yes | yes | 3 | `supabase/migrations/20260425140923_corporate_seats.sql:97` |
 | `public.corporate_seats` | yes | yes | 3 | `supabase/migrations/20260425140923_corporate_seats.sql:76` |
+| `public.correction_source_events` | yes | yes | 3 | `supabase/migrations/20260721000000_correction_source_events.sql:9` |
 | `public.daily_challenges` | yes | yes | 3 | `supabase/migrations/20260424221000_xp_and_daily.sql:54` |
 | `public.db_p95_snapshots` | yes | yes | 1 | `supabase/migrations/20260526000000_slo_incidents.sql:120` |
 | `public.developer_accounts` | yes | yes | 1 | `supabase/migrations/20260505000000_public_api_dev_keys.sql:26` |
@@ -536,6 +537,15 @@ Static scan only. Source: `supabase/migrations/*.sql`; no live database probing.
 | `corporate_seats_delete_owner_or_self` | delete | authenticated | `user_id = auth.uid() OR EXISTS ( SELECT 1 FROM public.corporate_accounts a WHERE a.id = corporate_seats.corporate_account_id AND a.owner_user_id = auth.uid() )` |  | `supabase/migrations/20260425140923_corporate_seats.sql:250` |
 | `corporate_seats_insert_owner` | insert | authenticated |  | `EXISTS ( SELECT 1 FROM public.corporate_accounts a WHERE a.id = corporate_account_id AND a.owner_user_id = auth.uid() )` | `supabase/migrations/20260425140923_corporate_seats.sql:237` |
 | `corporate_seats_select_owner_or_self` | select | authenticated | `user_id = auth.uid() OR EXISTS ( SELECT 1 FROM public.corporate_accounts a WHERE a.id = corporate_seats.corporate_account_id AND a.owner_user_id = auth.uid() )` |  | `supabase/migrations/20260425140923_corporate_seats.sql:223` |
+
+### public.correction_source_events
+- RLS enabled: yes
+
+| Policy | Command | Roles | USING | WITH CHECK | Source |
+|---|---|---|---|---|---|
+| `correction_source_events_admin_select` | select | authenticated | `public.get_admin_level(auth.uid()) >= 9` |  | `supabase/migrations/20260721000000_correction_source_events.sql:58` |
+| `correction_source_events_anon_insert` | insert | anon |  | `true` | `supabase/migrations/20260721000000_correction_source_events.sql:44` |
+| `correction_source_events_auth_insert` | insert | authenticated |  | `true` | `supabase/migrations/20260721000000_correction_source_events.sql:51` |
 
 ### public.daily_challenges
 - RLS enabled: yes

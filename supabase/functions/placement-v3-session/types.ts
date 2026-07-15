@@ -115,6 +115,7 @@ export interface SessionError {
 export interface PlacementV3Session {
   id: string;
   user_id: string;
+  is_synthetic?: boolean;
   started_at: string;
   completed_at: string | null;
   abandoned_at: string | null;
@@ -161,6 +162,7 @@ export interface RespondInput {
 export interface StartInput {
   languagePair?: LanguagePair;
   initialLevel?: CEFRLevel;
+  syntheticMonitoring?: string | boolean | null;
 }
 
 export type PlacementV3Request =
@@ -226,6 +228,7 @@ export interface PersistSessionInput {
   firstPrompt: PromptTask;
   now: string;
   totalTasks: number;
+  isSynthetic?: boolean;
   id?: string;
 }
 

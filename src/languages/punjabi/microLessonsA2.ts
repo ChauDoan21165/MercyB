@@ -18,6 +18,7 @@ export type PunjabiA2MicroLessonTopic =
   | "polite_problem_description";
 
 export type PunjabiA2MicroPhrase = {
+  cell_id?: string;
   pa: string;
   romanization: string;
   vi: string;
@@ -69,9 +70,9 @@ export const microLessonsA2: PunjabiA2MicroLesson[] = [
     script_awareness_vi: "Gurmukhi là chữ chính ở đây; Shahmukhi chỉ là nhận biết tên chữ.",
     script_awareness_en: "Gurmukhi is the working script here; Shahmukhi is awareness by name only.",
     phrases: [
-      { pa: "ਕੱਲ੍ਹ ਮੈਂ ਜਲਦੀ ਉੱਠਿਆ।", romanization: "kal main jaldi utthia.", vi: "Hôm qua tôi dậy sớm. (nam)", en: "Yesterday I woke up early. (male speaker)", usage_vi: "Dùng khi kể một hành động đã xong.", usage_en: "Use for a completed action." },
-      { pa: "ਮੈਂ ਨਾਸ਼ਤਾ ਕੀਤਾ।", romanization: "main nashta kita.", vi: "Tôi đã ăn sáng.", en: "I had breakfast.", usage_vi: "ਕੀਤਾ dùng với ਕਰਨਾ trong quá khứ.", usage_en: "ਕੀਤਾ is the past form used with ਕਰਨਾ." },
-      { pa: "ਸ਼ਾਮ ਨੂੰ ਮੈਂ ਘਰ ਆਇਆ।", romanization: "shaam nu main ghar aia.", vi: "Buổi tối tôi về nhà. (nam)", en: "In the evening I came home. (male speaker)", usage_vi: "ਸ਼ਾਮ ਨੂੰ đánh dấu thời gian.", usage_en: "ਸ਼ਾਮ ਨੂੰ marks the time." },
+      { cell_id: "91515e49-29eb-47d6-92aa-c273b4129b58", pa: "ਕੱਲ੍ਹ ਮੈਂ ਜਲਦੀ ਉੱਠਿਆ।", romanization: "kal main jaldi utthia.", vi: "Hôm qua tôi dậy sớm. (nam)", en: "Yesterday I woke up early. (male speaker)", usage_vi: "Dùng khi kể một hành động đã xong.", usage_en: "Use for a completed action." },
+      { cell_id: "4e06ae02-5019-4067-878e-5bfd839125eb", pa: "ਮੈਂ ਨਾਸ਼ਤਾ ਕੀਤਾ।", romanization: "main nashta kita.", vi: "Tôi đã ăn sáng.", en: "I had breakfast.", usage_vi: "ਕੀਤਾ dùng với ਕਰਨਾ trong quá khứ.", usage_en: "ਕੀਤਾ is the past form used with ਕਰਨਾ." },
+      { cell_id: "b9790fab-dfdf-4fe3-915e-a75dbaa370e1", pa: "ਸ਼ਾਮ ਨੂੰ ਮੈਂ ਘਰ ਆਇਆ।", romanization: "shaam nu main ghar aia.", vi: "Buổi tối tôi về nhà. (nam)", en: "In the evening I came home. (male speaker)", usage_vi: "ਸ਼ਾਮ ਨੂੰ đánh dấu thời gian.", usage_en: "ਸ਼ਾਮ ਨੂੰ marks the time." },
     ],
     learner_traps: [
       { trap_vi: "Người nói nữ cần đổi ਉੱਠਿਆ/ਆਇਆ thành ਉੱਠੀ/ਆਈ.", trap_en: "A female speaker changes ਉੱਠਿਆ/ਆਇਆ to ਉੱਠੀ/ਆਈ.", better_pa: "ਕੱਲ੍ਹ ਮੈਂ ਜਲਦੀ ਉੱਠੀ।", better_romanization: "kal main jaldi utthi." },
@@ -90,9 +91,9 @@ export const microLessonsA2: PunjabiA2MicroLesson[] = [
     script_awareness_vi: "Tiếp tục đọc Gurmukhi trước; Shahmukhi không phải nội dung học chính.",
     script_awareness_en: "Keep reading Gurmukhi first; Shahmukhi is not the main course content.",
     phrases: [
-      { pa: "ਕੱਲ੍ਹ ਮੈਂ ਡਾਕਟਰ ਕੋਲ ਜਾਵਾਂਗਾ।", romanization: "kal main daktar kol javanga.", vi: "Ngày mai tôi sẽ đi bác sĩ. (nam)", en: "Tomorrow I will go to the doctor. (male speaker)", usage_vi: "ਕੋਲ dùng với nơi/người bạn đến gặp.", usage_en: "ਕੋਲ is used for the person/place you go to." },
-      { pa: "ਮੈਂ ਸ਼ਾਮ ਨੂੰ ਫ਼ੋਨ ਕਰਾਂਗੀ।", romanization: "main shaam nu phone karangi.", vi: "Tôi sẽ gọi điện buổi tối. (nữ)", en: "I will call in the evening. (female speaker)", usage_vi: "-ਾਂਗੀ cho người nói nữ trong mẫu này.", usage_en: "-ਾਂਗੀ is used by a female speaker here." },
-      { pa: "ਅਸੀਂ ਵੀਕਐਂਡ ਤੇ ਮਿਲਾਂਗੇ।", romanization: "asin weekend te milange.", vi: "Chúng ta/chúng tôi sẽ gặp cuối tuần.", en: "We will meet on the weekend.", usage_vi: "ਅਸੀਂ không luôn nói rõ có bao gồm người nghe hay không.", usage_en: "ਅਸੀਂ does not always mark whether the listener is included." },
+      { cell_id: "446c11ed-50f0-4359-8656-1f35094c73d2", pa: "ਕੱਲ੍ਹ ਮੈਂ ਡਾਕਟਰ ਕੋਲ ਜਾਵਾਂਗਾ।", romanization: "kal main daktar kol javanga.", vi: "Ngày mai tôi sẽ đi bác sĩ. (nam)", en: "Tomorrow I will go to the doctor. (male speaker)", usage_vi: "ਕੋਲ dùng với nơi/người bạn đến gặp.", usage_en: "ਕੋਲ is used for the person/place you go to." },
+      { cell_id: "27d6cede-3a15-45b2-bd70-1a141e867bba", pa: "ਮੈਂ ਸ਼ਾਮ ਨੂੰ ਫ਼ੋਨ ਕਰਾਂਗੀ।", romanization: "main shaam nu phone karangi.", vi: "Tôi sẽ gọi điện buổi tối. (nữ)", en: "I will call in the evening. (female speaker)", usage_vi: "-ਾਂਗੀ cho người nói nữ trong mẫu này.", usage_en: "-ਾਂਗੀ is used by a female speaker here." },
+      { cell_id: "6cc4bc88-8add-4dea-8046-d2308b437950", pa: "ਅਸੀਂ ਵੀਕਐਂਡ ਤੇ ਮਿਲਾਂਗੇ।", romanization: "asin weekend te milange.", vi: "Chúng ta/chúng tôi sẽ gặp cuối tuần.", en: "We will meet on the weekend.", usage_vi: "ਅਸੀਂ không luôn nói rõ có bao gồm người nghe hay không.", usage_en: "ਅਸੀਂ does not always mark whether the listener is included." },
     ],
     learner_traps: [
       { trap_vi: "Đừng dùng cùng một đuôi tương lai cho mọi chủ ngữ.", trap_en: "Do not use one future ending for every subject.", better_pa: "ਉਹ ਕੱਲ੍ਹ ਆਵੇਗੀ।", better_romanization: "oh kal aavegi." },
@@ -113,9 +114,9 @@ export const microLessonsA2: PunjabiA2MicroLesson[] = [
     script_awareness_vi: "Gurmukhi là văn bản chính; Shahmukhi chỉ được nhắc để nhận biết.",
     script_awareness_en: "Gurmukhi is the main text; Shahmukhi is mentioned only for awareness.",
     phrases: [
-      { pa: "ਇਹ ਕਿੰਨੇ ਦਾ ਹੈ?", romanization: "eh kinne da hai?", vi: "Cái này bao nhiêu tiền?", en: "How much is this?", usage_vi: "Dùng với món giống đực/số ít hoặc khi không chắc.", usage_en: "Use with masculine singular items or when unsure." },
-      { pa: "ਮੈਨੂੰ ਦੋ ਕਿਲੋ ਆਲੂ ਚਾਹੀਦੇ ਹਨ।", romanization: "mainu do kilo aloo chahide han.", vi: "Tôi cần hai ký khoai tây.", en: "I need two kilos of potatoes.", usage_vi: "ਚਾਹੀਦੇ dùng với số nhiều.", usage_en: "ਚਾਹੀਦੇ is used with plural items." },
-      { pa: "ਕੀ ਬੈਗ ਚਾਹੀਦਾ ਹੈ?", romanization: "ki bag chahida hai?", vi: "Có cần túi không?", en: "Do you need a bag?", usage_vi: "Câu hữu ích ở quầy tính tiền.", usage_en: "Useful at checkout." },
+      { cell_id: "0b42ce1b-9a0b-4c3d-8043-fd9f498d5163", pa: "ਇਹ ਕਿੰਨੇ ਦਾ ਹੈ?", romanization: "eh kinne da hai?", vi: "Cái này bao nhiêu tiền?", en: "How much is this?", usage_vi: "Dùng với món giống đực/số ít hoặc khi không chắc.", usage_en: "Use with masculine singular items or when unsure." },
+      { cell_id: "603df009-4205-494a-a1a9-b0541a90b5dd", pa: "ਮੈਨੂੰ ਦੋ ਕਿਲੋ ਆਲੂ ਚਾਹੀਦੇ ਹਨ।", romanization: "mainu do kilo aloo chahide han.", vi: "Tôi cần hai ký khoai tây.", en: "I need two kilos of potatoes.", usage_vi: "ਚਾਹੀਦੇ dùng với số nhiều.", usage_en: "ਚਾਹੀਦੇ is used with plural items." },
+      { cell_id: "b1b64b18-e7a7-4513-9bb5-d9e1fdad7ac4", pa: "ਕੀ ਬੈਗ ਚਾਹੀਦਾ ਹੈ?", romanization: "ki bag chahida hai?", vi: "Có cần túi không?", en: "Do you need a bag?", usage_vi: "Câu hữu ích ở quầy tính tiền.", usage_en: "Useful at checkout." },
     ],
     learner_traps: [
       { trap_vi: "ਚਾਹੀਦਾ agrees với vật cần, không với người cần.", trap_en: "ਚਾਹੀਦਾ agrees with the needed thing, not the person who needs it.", better_pa: "ਮੈਨੂੰ ਚਾਹ ਚਾਹੀਦੀ ਹੈ।", better_romanization: "mainu chah chahidi hai." },
@@ -136,9 +137,9 @@ export const microLessonsA2: PunjabiA2MicroLesson[] = [
     script_awareness_vi: "Bài dùng Gurmukhi; Shahmukhi là awareness, không luyện viết.",
     script_awareness_en: "This lesson uses Gurmukhi; Shahmukhi is awareness, not writing practice.",
     phrases: [
-      { pa: "ਮੈਨੂੰ ਡਾਕਟਰ ਨਾਲ ਸਮਾਂ ਲੈਣਾ ਹੈ।", romanization: "mainu daktar naal sama laina hai.", vi: "Tôi cần đặt lịch với bác sĩ.", en: "I need to book an appointment with the doctor.", usage_vi: "ਨਾਲ = với; ਸਮਾਂ ਲੈਣਾ là cụm đặt lịch.", usage_en: "ਨਾਲ = with; ਸਮਾਂ ਲੈਣਾ is the booking phrase." },
-      { pa: "ਕੀ ਮੰਗਲਵਾਰ ਨੂੰ ਸਮਾਂ ਮਿਲ ਸਕਦਾ ਹੈ?", romanization: "ki mangalvaar nu sama mil sakda hai?", vi: "Thứ Ba có giờ trống không?", en: "Is a time available on Tuesday?", usage_vi: "ਮਿਲ ਸਕਦਾ ਹੈ = có thể có/available.", usage_en: "ਮਿਲ ਸਕਦਾ ਹੈ = can be available." },
-      { pa: "ਮੈਂ ਆਪਣੀ ਅਪਾਇੰਟਮੈਂਟ ਬਦਲਣੀ ਹੈ।", romanization: "main apni appointment badalni hai.", vi: "Tôi cần đổi lịch hẹn.", en: "I need to change my appointment.", usage_vi: "ਬਦਲਣੀ agrees với ਅਪਾਇੰਟਮੈਂਟ giống cái.", usage_en: "ਬਦਲਣੀ agrees with feminine ਅਪਾਇੰਟਮੈਂਟ." },
+      { cell_id: "ab247c55-1496-4d50-ab64-b08e98d9aeb9", pa: "ਮੈਨੂੰ ਡਾਕਟਰ ਨਾਲ ਸਮਾਂ ਲੈਣਾ ਹੈ।", romanization: "mainu daktar naal sama laina hai.", vi: "Tôi cần đặt lịch với bác sĩ.", en: "I need to book an appointment with the doctor.", usage_vi: "ਨਾਲ = với; ਸਮਾਂ ਲੈਣਾ là cụm đặt lịch.", usage_en: "ਨਾਲ = with; ਸਮਾਂ ਲੈਣਾ is the booking phrase." },
+      { cell_id: "c6c633d2-e650-45c1-80be-032ea037fad9", pa: "ਕੀ ਮੰਗਲਵਾਰ ਨੂੰ ਸਮਾਂ ਮਿਲ ਸਕਦਾ ਹੈ?", romanization: "ki mangalvaar nu sama mil sakda hai?", vi: "Thứ Ba có giờ trống không?", en: "Is a time available on Tuesday?", usage_vi: "ਮਿਲ ਸਕਦਾ ਹੈ = có thể có/available.", usage_en: "ਮਿਲ ਸਕਦਾ ਹੈ = can be available." },
+      { cell_id: "d8913565-e46b-41a9-b33f-f796c490d207", pa: "ਮੈਂ ਆਪਣੀ ਅਪਾਇੰਟਮੈਂਟ ਬਦਲਣੀ ਹੈ।", romanization: "main apni appointment badalni hai.", vi: "Tôi cần đổi lịch hẹn.", en: "I need to change my appointment.", usage_vi: "ਬਦਲਣੀ agrees với ਅਪਾਇੰਟਮੈਂਟ giống cái.", usage_en: "ਬਦਲਣੀ agrees with feminine ਅਪਾਇੰਟਮੈਂਟ." },
     ],
     learner_traps: [
       { trap_vi: "Không dịch 'appointment' bằng một động từ; dùng ਸਮਾਂ/ਅਪਾਇੰਟਮੈਂਟ theo ngữ cảnh.", trap_en: "Do not translate appointment as a verb; use ਸਮਾਂ/ਅਪਾਇੰਟਮੈਂਟ by context.", better_pa: "ਮੇਰੀ ਅਪਾਇੰਟਮੈਂਟ ਦੋ ਵਜੇ ਹੈ।", better_romanization: "meri appointment do vaje hai." },
@@ -159,9 +160,9 @@ export const microLessonsA2: PunjabiA2MicroLesson[] = [
     script_awareness_vi: "Đọc Gurmukhi là mục tiêu; Shahmukhi chỉ là ghi nhớ rằng Punjabi cũng có bối cảnh chữ khác.",
     script_awareness_en: "Reading Gurmukhi is the goal; Shahmukhi is only awareness that Punjabi has another script context.",
     phrases: [
-      { pa: "ਇਹ ਬੱਸ ਕਿੱਥੇ ਜਾਂਦੀ ਹੈ?", romanization: "eh bass kitthe jandi hai?", vi: "Xe buýt này đi đâu?", en: "Where does this bus go?", usage_vi: "ਜਾਂਦੀ agrees với ਬੱਸ.", usage_en: "ਜਾਂਦੀ agrees with ਬੱਸ." },
-      { pa: "ਅਗਲੀ ਟ੍ਰੇਨ ਕਦੋਂ ਆਵੇਗੀ?", romanization: "agli train kadon aavegi?", vi: "Chuyến tàu tiếp theo khi nào đến?", en: "When will the next train arrive?", usage_vi: "ਆਵੇਗੀ agrees với ਟ੍ਰੇਨ giống cái.", usage_en: "ਆਵੇਗੀ agrees with feminine ਟ੍ਰੇਨ." },
-      { pa: "ਕੀ ਇਹ ਸਟਾਪ ਮੇਨ ਸਟਰੀਟ ਲਈ ਹੈ?", romanization: "ki eh stop main street lai hai?", vi: "Trạm này có phải cho Main Street không?", en: "Is this stop for Main Street?", usage_vi: "ਲਈ = cho/để đi đến.", usage_en: "ਲਈ = for/toward." },
+      { cell_id: "e4133256-758c-4ec8-a84d-a2273d300cb1", pa: "ਇਹ ਬੱਸ ਕਿੱਥੇ ਜਾਂਦੀ ਹੈ?", romanization: "eh bass kitthe jandi hai?", vi: "Xe buýt này đi đâu?", en: "Where does this bus go?", usage_vi: "ਜਾਂਦੀ agrees với ਬੱਸ.", usage_en: "ਜਾਂਦੀ agrees with ਬੱਸ." },
+      { cell_id: "7702d6d8-9840-46ac-940b-14897791fa8b", pa: "ਅਗਲੀ ਟ੍ਰੇਨ ਕਦੋਂ ਆਵੇਗੀ?", romanization: "agli train kadon aavegi?", vi: "Chuyến tàu tiếp theo khi nào đến?", en: "When will the next train arrive?", usage_vi: "ਆਵੇਗੀ agrees với ਟ੍ਰੇਨ giống cái.", usage_en: "ਆਵੇਗੀ agrees with feminine ਟ੍ਰੇਨ." },
+      { cell_id: "ec866bfd-d4d3-4822-8c2a-1ff62ada6b77", pa: "ਕੀ ਇਹ ਸਟਾਪ ਮੇਨ ਸਟਰੀਟ ਲਈ ਹੈ?", romanization: "ki eh stop main street lai hai?", vi: "Trạm này có phải cho Main Street không?", en: "Is this stop for Main Street?", usage_vi: "ਲਈ = cho/để đi đến.", usage_en: "ਲਈ = for/toward." },
     ],
     learner_traps: [
       { trap_vi: "Đừng dùng ਜਾਂਦਾ với ਬੱਸ trong câu này.", trap_en: "Do not use ਜਾਂਦਾ with ਬੱਸ in this sentence.", better_pa: "ਬੱਸ ਕਿੱਥੇ ਜਾਂਦੀ ਹੈ?", better_romanization: "bass kitthe jandi hai?" },
@@ -182,9 +183,9 @@ export const microLessonsA2: PunjabiA2MicroLesson[] = [
     script_awareness_vi: "Gurmukhi là phần học chính; Shahmukhi chỉ xuất hiện như awareness.",
     script_awareness_en: "Gurmukhi is the main learning script; Shahmukhi appears only as awareness.",
     phrases: [
-      { pa: "ਕੀ ਕਮਰਾ ਖਾਲੀ ਹੈ?", romanization: "ki kamra khali hai?", vi: "Phòng còn trống không?", en: "Is the room available?", usage_vi: "ਖਾਲੀ = trống/available.", usage_en: "ਖਾਲੀ = empty/available." },
-      { pa: "ਕਿਰਾਇਆ ਕਿੰਨਾ ਹੈ?", romanization: "kiraya kinna hai?", vi: "Tiền thuê bao nhiêu?", en: "How much is the rent?", usage_vi: "ਕਿੰਨਾ hỏi số lượng/giá.", usage_en: "ਕਿੰਨਾ asks amount/price." },
-      { pa: "ਬਾਥਰੂਮ ਵਿੱਚ ਪਾਣੀ ਨਹੀਂ ਆ ਰਿਹਾ।", romanization: "bathroom vich paani nahi aa riha.", vi: "Trong phòng tắm không có nước chảy.", en: "Water is not coming in the bathroom.", usage_vi: "Dùng để mô tả vấn đề lịch sự, trung tính.", usage_en: "Use to describe a problem politely and neutrally." },
+      { cell_id: "e5c3fb84-875d-40f5-824d-298aa90a27b0", pa: "ਕੀ ਕਮਰਾ ਖਾਲੀ ਹੈ?", romanization: "ki kamra khali hai?", vi: "Phòng còn trống không?", en: "Is the room available?", usage_vi: "ਖਾਲੀ = trống/available.", usage_en: "ਖਾਲੀ = empty/available." },
+      { cell_id: "2cdf1fe3-7272-4ed0-a5da-2eb6d08875ba", pa: "ਕਿਰਾਇਆ ਕਿੰਨਾ ਹੈ?", romanization: "kiraya kinna hai?", vi: "Tiền thuê bao nhiêu?", en: "How much is the rent?", usage_vi: "ਕਿੰਨਾ hỏi số lượng/giá.", usage_en: "ਕਿੰਨਾ asks amount/price." },
+      { cell_id: "a33fbe56-d551-44a1-b06c-88d5a3207de6", pa: "ਬਾਥਰੂਮ ਵਿੱਚ ਪਾਣੀ ਨਹੀਂ ਆ ਰਿਹਾ।", romanization: "bathroom vich paani nahi aa riha.", vi: "Trong phòng tắm không có nước chảy.", en: "Water is not coming in the bathroom.", usage_vi: "Dùng để mô tả vấn đề lịch sự, trung tính.", usage_en: "Use to describe a problem politely and neutrally." },
     ],
     learner_traps: [
       { trap_vi: "Không nói ਮੈਂ ਕਿਰਾਇਆ ਹੈ cho 'tôi có tiền thuê'; dùng ਮੇਰੇ ਕੋਲ.", trap_en: "Do not say ਮੈਂ ਕਿਰਾਇਆ ਹੈ for 'I have rent money'; use ਮੇਰੇ ਕੋਲ.", better_pa: "ਮੇਰੇ ਕੋਲ ਕਿਰਾਇਆ ਹੈ।", better_romanization: "mere kol kiraya hai." },
@@ -205,9 +206,9 @@ export const microLessonsA2: PunjabiA2MicroLesson[] = [
     script_awareness_vi: "Bài tập đọc dùng Gurmukhi; Shahmukhi chỉ là awareness.",
     script_awareness_en: "Reading practice uses Gurmukhi; Shahmukhi is awareness only.",
     phrases: [
-      { pa: "ਮੇਰੀ ਕਲਾਸ ਸਵੇਰੇ ਨੌਂ ਵਜੇ ਹੈ।", romanization: "meri class savere naun vaje hai.", vi: "Lớp của tôi lúc chín giờ sáng.", en: "My class is at nine in the morning.", usage_vi: "ਮੇਰੀ vì ਕਲਾਸ giống cái.", usage_en: "ਮੇਰੀ because ਕਲਾਸ is feminine." },
-      { pa: "ਹੋਮਵਰਕ ਕਦੋਂ ਦੇਣਾ ਹੈ?", romanization: "homework kadon dena hai?", vi: "Khi nào nộp bài tập?", en: "When is the homework due?", usage_vi: "ਦੇਣਾ ở đây nghĩa là nộp/đưa.", usage_en: "ਦੇਣਾ here means submit/give in." },
-      { pa: "ਮੇਰਾ ਬੱਚਾ ਅੱਜ ਸਕੂਲ ਨਹੀਂ ਆਵੇਗਾ।", romanization: "mera bachcha ajj school nahi aavega.", vi: "Con tôi hôm nay sẽ không đến trường.", en: "My child will not come to school today.", usage_vi: "Câu thông báo vắng mặt ngắn gọn.", usage_en: "A short absence notice." },
+      { cell_id: "d29e844d-eb4d-4f8c-a69a-3d2bbc5c0f78", pa: "ਮੇਰੀ ਕਲਾਸ ਸਵੇਰੇ ਨੌਂ ਵਜੇ ਹੈ।", romanization: "meri class savere naun vaje hai.", vi: "Lớp của tôi lúc chín giờ sáng.", en: "My class is at nine in the morning.", usage_vi: "ਮੇਰੀ vì ਕਲਾਸ giống cái.", usage_en: "ਮੇਰੀ because ਕਲਾਸ is feminine." },
+      { cell_id: "75d600f6-d00e-4cb6-9d74-d059fe0e2776", pa: "ਹੋਮਵਰਕ ਕਦੋਂ ਦੇਣਾ ਹੈ?", romanization: "homework kadon dena hai?", vi: "Khi nào nộp bài tập?", en: "When is the homework due?", usage_vi: "ਦੇਣਾ ở đây nghĩa là nộp/đưa.", usage_en: "ਦੇਣਾ here means submit/give in." },
+      { cell_id: "2e0a68cc-1836-40b1-a4a6-32861a1e1933", pa: "ਮੇਰਾ ਬੱਚਾ ਅੱਜ ਸਕੂਲ ਨਹੀਂ ਆਵੇਗਾ।", romanization: "mera bachcha ajj school nahi aavega.", vi: "Con tôi hôm nay sẽ không đến trường.", en: "My child will not come to school today.", usage_vi: "Câu thông báo vắng mặt ngắn gọn.", usage_en: "A short absence notice." },
     ],
     learner_traps: [
       { trap_vi: "ਮੇਰਾ/ਮੇਰੀ phụ thuộc danh từ sau nó, không phụ thuộc giới của người nói.", trap_en: "ਮੇਰਾ/ਮੇਰੀ depends on the following noun, not the speaker's gender.", better_pa: "ਮੇਰੀ ਕਲਾਸ", better_romanization: "meri class" },
@@ -228,9 +229,9 @@ export const microLessonsA2: PunjabiA2MicroLesson[] = [
     script_awareness_vi: "Gurmukhi là mục tiêu đọc; Shahmukhi không được triển khai thành khóa riêng.",
     script_awareness_en: "Gurmukhi is the reading target; Shahmukhi is not developed into a separate course.",
     phrases: [
-      { pa: "ਮੈਂ ਬੱਚੇ ਨੂੰ ਤਿੰਨ ਵਜੇ ਲੈਣ ਆਵਾਂਗਾ।", romanization: "main bachche nu tinn vaje lain aavanga.", vi: "Tôi sẽ đến đón trẻ lúc ba giờ. (nam)", en: "I will come to pick up the child at three. (male speaker)", usage_vi: "ਲੈਣ ਆਉਣਾ = đến để đón/lấy.", usage_en: "ਲੈਣ ਆਉਣਾ = come to pick up." },
-      { pa: "ਬੱਚੇ ਨੇ ਖਾਣਾ ਖਾਧਾ?", romanization: "bachche ne khana khadha?", vi: "Bé đã ăn chưa?", en: "Did the child eat?", usage_vi: "ਨੇ xuất hiện trong quá khứ chuyển tác.", usage_en: "ਨੇ appears in a transitive past question." },
-      { pa: "ਉਸਨੂੰ ਥੋੜ੍ਹਾ ਬੁਖਾਰ ਹੈ।", romanization: "usnu thoda bukhar hai.", vi: "Bé hơi sốt.", en: "The child has a slight fever.", usage_vi: "ਉਸਨੂੰ ... ਹੈ dùng cho tình trạng sức khỏe.", usage_en: "ਉਸਨੂੰ ... ਹੈ is used for health conditions." },
+      { cell_id: "118dafba-81a7-4e9a-a834-005934c69f1e", pa: "ਮੈਂ ਬੱਚੇ ਨੂੰ ਤਿੰਨ ਵਜੇ ਲੈਣ ਆਵਾਂਗਾ।", romanization: "main bachche nu tinn vaje lain aavanga.", vi: "Tôi sẽ đến đón trẻ lúc ba giờ. (nam)", en: "I will come to pick up the child at three. (male speaker)", usage_vi: "ਲੈਣ ਆਉਣਾ = đến để đón/lấy.", usage_en: "ਲੈਣ ਆਉਣਾ = come to pick up." },
+      { cell_id: "b606cb50-3cda-4437-bb16-667e88253c3c", pa: "ਬੱਚੇ ਨੇ ਖਾਣਾ ਖਾਧਾ?", romanization: "bachche ne khana khadha?", vi: "Bé đã ăn chưa?", en: "Did the child eat?", usage_vi: "ਨੇ xuất hiện trong quá khứ chuyển tác.", usage_en: "ਨੇ appears in a transitive past question." },
+      { cell_id: "bb465261-d11e-4d26-a7a1-db59c4b99481", pa: "ਉਸਨੂੰ ਥੋੜ੍ਹਾ ਬੁਖਾਰ ਹੈ।", romanization: "usnu thoda bukhar hai.", vi: "Bé hơi sốt.", en: "The child has a slight fever.", usage_vi: "ਉਸਨੂੰ ... ਹੈ dùng cho tình trạng sức khỏe.", usage_en: "ਉਸਨੂੰ ... ਹੈ is used for health conditions." },
     ],
     learner_traps: [
       { trap_vi: "Không nói ਉਹ ਬੁਖਾਰ ਹੈ; dùng ਉਸਨੂੰ ਬੁਖਾਰ ਹੈ.", trap_en: "Do not say ਉਹ ਬੁਖਾਰ ਹੈ; use ਉਸਨੂੰ ਬੁਖਾਰ ਹੈ.", better_pa: "ਉਸਨੂੰ ਬੁਖਾਰ ਹੈ।", better_romanization: "usnu bukhar hai." },
@@ -251,9 +252,9 @@ export const microLessonsA2: PunjabiA2MicroLesson[] = [
     script_awareness_vi: "Tất cả ví dụ dùng Gurmukhi; Shahmukhi chỉ là awareness.",
     script_awareness_en: "All examples use Gurmukhi; Shahmukhi is awareness only.",
     phrases: [
-      { pa: "ਤੁਹਾਡਾ ਵੀਕਐਂਡ ਕਿਵੇਂ ਸੀ?", romanization: "tuhada weekend kiven si?", vi: "Cuối tuần của bạn thế nào?", en: "How was your weekend?", usage_vi: "ਤੁਹਾਡਾ lịch sự hơn ਤੇਰਾ.", usage_en: "ਤੁਹਾਡਾ is more polite than ਤੇਰਾ." },
-      { pa: "ਅੱਜ ਮੌਸਮ ਚੰਗਾ ਹੈ।", romanization: "ajj mausam changa hai.", vi: "Hôm nay thời tiết đẹp.", en: "The weather is nice today.", usage_vi: "Câu mở đầu an toàn.", usage_en: "A safe opener." },
-      { pa: "ਕੰਮ ਕਿਵੇਂ ਚੱਲ ਰਿਹਾ ਹੈ?", romanization: "kamm kiven chall riha hai?", vi: "Công việc đang thế nào?", en: "How is work going?", usage_vi: "ਚੱਲ ਰਿਹਾ = đang diễn tiến.", usage_en: "ਚੱਲ ਰਿਹਾ = going/progressing." },
+      { cell_id: "205a7856-0c2f-440d-878e-38b232b89b71", pa: "ਤੁਹਾਡਾ ਵੀਕਐਂਡ ਕਿਵੇਂ ਸੀ?", romanization: "tuhada weekend kiven si?", vi: "Cuối tuần của bạn thế nào?", en: "How was your weekend?", usage_vi: "ਤੁਹਾਡਾ lịch sự hơn ਤੇਰਾ.", usage_en: "ਤੁਹਾਡਾ is more polite than ਤੇਰਾ." },
+      { cell_id: "ff590348-5d7f-4d43-9f81-8d13185b816e", pa: "ਅੱਜ ਮੌਸਮ ਚੰਗਾ ਹੈ।", romanization: "ajj mausam changa hai.", vi: "Hôm nay thời tiết đẹp.", en: "The weather is nice today.", usage_vi: "Câu mở đầu an toàn.", usage_en: "A safe opener." },
+      { cell_id: "256f0c82-ba25-4003-8d90-73dd60e6fe19", pa: "ਕੰਮ ਕਿਵੇਂ ਚੱਲ ਰਿਹਾ ਹੈ?", romanization: "kamm kiven chall riha hai?", vi: "Công việc đang thế nào?", en: "How is work going?", usage_vi: "ਚੱਲ ਰਿਹਾ = đang diễn tiến.", usage_en: "ਚੱਲ ਰਿਹਾ = going/progressing." },
     ],
     learner_traps: [
       { trap_vi: "Với đồng nghiệp chưa thân, tránh ਤੂੰ/ਤੇਰਾ.", trap_en: "With coworkers you do not know well, avoid ਤੂੰ/ਤੇਰਾ.", better_pa: "ਤੁਹਾਡਾ ਦਿਨ ਕਿਵੇਂ ਹੈ?", better_romanization: "tuhada din kiven hai?" },
@@ -274,9 +275,9 @@ export const microLessonsA2: PunjabiA2MicroLesson[] = [
     script_awareness_vi: "Gurmukhi là chữ làm việc; Shahmukhi chỉ là awareness trong phạm vi này.",
     script_awareness_en: "Gurmukhi is the working script; Shahmukhi is awareness only in this scope.",
     phrases: [
-      { pa: "ਮੈਨੂੰ ਇੱਕ ਛੋਟੀ ਸਮੱਸਿਆ ਹੈ।", romanization: "mainu ikk chhoti samassia hai.", vi: "Tôi có một vấn đề nhỏ.", en: "I have a small problem.", usage_vi: "Cách mở đầu lịch sự.", usage_en: "A polite opener." },
-      { pa: "ਹੀਟਰ ਕੰਮ ਨਹੀਂ ਕਰ ਰਿਹਾ।", romanization: "heater kamm nahi kar riha.", vi: "Máy sưởi không hoạt động.", en: "The heater is not working.", usage_vi: "Câu thực tế cho nhà ở.", usage_en: "A practical housing sentence." },
-      { pa: "ਕੀ ਤੁਸੀਂ ਮਦਦ ਕਰ ਸਕਦੇ ਹੋ?", romanization: "ki tusi madad kar sakde ho?", vi: "Bạn có thể giúp không?", en: "Can you help?", usage_vi: "ਸਕਦੇ ਹੋ làm yêu cầu lịch sự.", usage_en: "ਸਕਦੇ ਹੋ makes the request polite." },
+      { cell_id: "c8c37b78-44ae-4969-934a-596d7476abba", pa: "ਮੈਨੂੰ ਇੱਕ ਛੋਟੀ ਸਮੱਸਿਆ ਹੈ।", romanization: "mainu ikk chhoti samassia hai.", vi: "Tôi có một vấn đề nhỏ.", en: "I have a small problem.", usage_vi: "Cách mở đầu lịch sự.", usage_en: "A polite opener." },
+      { cell_id: "98891ba8-b792-4663-bba0-f7f636e5749c", pa: "ਹੀਟਰ ਕੰਮ ਨਹੀਂ ਕਰ ਰਿਹਾ।", romanization: "heater kamm nahi kar riha.", vi: "Máy sưởi không hoạt động.", en: "The heater is not working.", usage_vi: "Câu thực tế cho nhà ở.", usage_en: "A practical housing sentence." },
+      { cell_id: "1828cb69-42ee-44f0-b5d0-5525bce868d8", pa: "ਕੀ ਤੁਸੀਂ ਮਦਦ ਕਰ ਸਕਦੇ ਹੋ?", romanization: "ki tusi madad kar sakde ho?", vi: "Bạn có thể giúp không?", en: "Can you help?", usage_vi: "ਸਕਦੇ ਹੋ làm yêu cầu lịch sự.", usage_en: "ਸਕਦੇ ਹੋ makes the request polite." },
     ],
     learner_traps: [
       { trap_vi: "Đừng bắt đầu bằng mệnh lệnh mạnh khi báo lỗi với người lạ.", trap_en: "Do not start with a strong command when reporting a problem to a stranger.", better_pa: "ਮਾਫ਼ ਕਰਨਾ, ਮੈਨੂੰ ਇੱਕ ਸਮੱਸਿਆ ਹੈ।", better_romanization: "maaf karna, mainu ikk samassia hai." },

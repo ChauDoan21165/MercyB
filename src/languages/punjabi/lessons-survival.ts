@@ -24,6 +24,7 @@ export type PunjabiSurvivalCategory =
   | "lost_documents";
 
 export type PunjabiSurvivalPhrase = {
+  cell_id?: string;
   /** Gurmukhi script: the line learners can say or show. */
   pa: string;
   /** Practical romanization for Vietnamese and English readers. */
@@ -71,11 +72,11 @@ export const punjabiSurvivalLessons: PunjabiSurvivalLesson[] = [
     scenario_en:
       "Use when there is an accident, danger, or you need someone to call 911 in Canada. This is language support only.",
     phrases: [
-      { pa: "ਮਦਦ ਕਰੋ!", roman: "madad karo!", vi: "Cứu với! / Giúp tôi!", en: "Help me!" },
-      { pa: "ਇਹ ਐਮਰਜੈਂਸੀ ਹੈ।", roman: "ih emergency hai.", vi: "Đây là trường hợp khẩn cấp.", en: "This is an emergency." },
-      { pa: "ਕਿਰਪਾ ਕਰਕੇ 911 ਤੇ ਕਾਲ ਕਰੋ।", roman: "kirpa karke nau-ikk-ikk te call karo.", vi: "Làm ơn gọi 911.", en: "Please call 911." },
-      { pa: "ਮੈਨੂੰ ਪੰਜਾਬੀ ਥੋੜ੍ਹੀ ਆਉਂਦੀ ਹੈ।", roman: "mainu Punjabi thori aundi hai.", vi: "Tôi biết một ít tiếng Punjabi.", en: "I know a little Punjabi." },
-      { pa: "ਮੈਂ ਅੰਗਰੇਜ਼ੀ/ਵਿਯਤਨਾਮੀ ਬੋਲਦਾ/ਬੋਲਦੀ ਹਾਂ।", roman: "main angrezi/vietnammi bolda/boldi han.", vi: "Tôi nói tiếng Anh/tiếng Việt.", en: "I speak English/Vietnamese." },
+      { cell_id: "615dbf71-4814-44f6-b3b8-91ca9ebb0b84", pa: "ਮਦਦ ਕਰੋ!", roman: "madad karo!", vi: "Cứu với! / Giúp tôi!", en: "Help me!" },
+      { cell_id: "5910586f-74cd-48b3-ac05-9f7dad5baedf", pa: "ਇਹ ਐਮਰਜੈਂਸੀ ਹੈ।", roman: "ih emergency hai.", vi: "Đây là trường hợp khẩn cấp.", en: "This is an emergency." },
+      { cell_id: "8a317cd5-6eb9-48b0-b110-1efdffbbdc99", pa: "ਕਿਰਪਾ ਕਰਕੇ 911 ਤੇ ਕਾਲ ਕਰੋ।", roman: "kirpa karke nau-ikk-ikk te call karo.", vi: "Làm ơn gọi 911.", en: "Please call 911." },
+      { cell_id: "79076175-a187-4ee6-98b1-fa7565a88c82", pa: "ਮੈਨੂੰ ਪੰਜਾਬੀ ਥੋੜ੍ਹੀ ਆਉਂਦੀ ਹੈ।", roman: "mainu Punjabi thori aundi hai.", vi: "Tôi biết một ít tiếng Punjabi.", en: "I know a little Punjabi." },
+      { cell_id: "acbc1311-def0-4cfd-9ae4-c928430ca177", pa: "ਮੈਂ ਅੰਗਰੇਜ਼ੀ/ਵਿਯਤਨਾਮੀ ਬੋਲਦਾ/ਬੋਲਦੀ ਹਾਂ।", roman: "main angrezi/vietnammi bolda/boldi han.", vi: "Tôi nói tiếng Anh/tiếng Việt.", en: "I speak English/Vietnamese." },
     ],
     vocab: [
       { pa: "ਮਦਦ", roman: "madad", vi: "sự giúp đỡ", en: "help" },
@@ -98,11 +99,11 @@ export const punjabiSurvivalLessons: PunjabiSurvivalLesson[] = [
     scenario_en:
       "Use to describe simple symptoms, speak to a pharmacist/clinician, and request plain explanations. Do not use this lesson as diagnosis or treatment advice.",
     phrases: [
-      { pa: "ਮੈਨੂੰ ਠੀਕ ਨਹੀਂ ਲੱਗ ਰਿਹਾ।", roman: "mainu theek nahin lag riha.", vi: "Tôi thấy không khỏe.", en: "I do not feel well." },
-      { pa: "ਮੈਨੂੰ ਇੱਥੇ ਦਰਦ ਹੈ।", roman: "mainu ithe dard hai.", vi: "Tôi đau ở đây.", en: "It hurts here." },
-      { pa: "ਮੈਨੂੰ ਦਵਾਈ ਤੋਂ ਐਲਰਜੀ ਹੈ।", roman: "mainu davai ton allergy hai.", vi: "Tôi bị dị ứng với thuốc.", en: "I am allergic to medicine." },
-      { pa: "ਕਿਰਪਾ ਕਰਕੇ ਹੌਲੀ ਹੌਲੀ ਸਮਝਾਓ।", roman: "kirpa karke hauli hauli samjhao.", vi: "Làm ơn giải thích chậm hơn.", en: "Please explain slowly." },
-      { pa: "ਕੀ ਇਹ ਫਾਰਮਾਸਿਸਟ ਨਾਲ ਗੱਲ ਕਰਨ ਲਈ ਹੈ?", roman: "ki ih pharmacist nal gall karan lai hai?", vi: "Cái này là để nói với dược sĩ phải không?", en: "Is this for speaking with the pharmacist?" },
+      { cell_id: "61b95f30-9830-436f-aa25-3db13fe49f39", pa: "ਮੈਨੂੰ ਠੀਕ ਨਹੀਂ ਲੱਗ ਰਿਹਾ।", roman: "mainu theek nahin lag riha.", vi: "Tôi thấy không khỏe.", en: "I do not feel well." },
+      { cell_id: "e03fb183-11c9-4d35-8022-a085d68df622", pa: "ਮੈਨੂੰ ਇੱਥੇ ਦਰਦ ਹੈ।", roman: "mainu ithe dard hai.", vi: "Tôi đau ở đây.", en: "It hurts here." },
+      { cell_id: "071ee996-886b-4653-8299-ddfae18b44f1", pa: "ਮੈਨੂੰ ਦਵਾਈ ਤੋਂ ਐਲਰਜੀ ਹੈ।", roman: "mainu davai ton allergy hai.", vi: "Tôi bị dị ứng với thuốc.", en: "I am allergic to medicine." },
+      { cell_id: "a87b0c6f-e109-4be4-9216-d13e53efd0d3", pa: "ਕਿਰਪਾ ਕਰਕੇ ਹੌਲੀ ਹੌਲੀ ਸਮਝਾਓ।", roman: "kirpa karke hauli hauli samjhao.", vi: "Làm ơn giải thích chậm hơn.", en: "Please explain slowly." },
+      { cell_id: "a071136d-8440-4b95-820b-e4166fce3894", pa: "ਕੀ ਇਹ ਫਾਰਮਾਸਿਸਟ ਨਾਲ ਗੱਲ ਕਰਨ ਲਈ ਹੈ?", roman: "ki ih pharmacist nal gall karan lai hai?", vi: "Cái này là để nói với dược sĩ phải không?", en: "Is this for speaking with the pharmacist?" },
     ],
     vocab: [
       { pa: "ਕਲਿਨਿਕ", roman: "clinic", vi: "phòng khám", en: "clinic" },
@@ -125,10 +126,10 @@ export const punjabiSurvivalLessons: PunjabiSurvivalLesson[] = [
     scenario_en:
       "Use with a school office, teacher, or parent meeting about schedules, absences, and language support.",
     phrases: [
-      { pa: "ਮੇਰਾ ਬੱਚਾ ਅੱਜ ਗੈਰਹਾਜ਼ਰ ਹੈ।", roman: "mera bacha aj gair-hazar hai.", vi: "Con tôi hôm nay vắng mặt.", en: "My child is absent today." },
-      { pa: "ਮੀਟਿੰਗ ਕਦੋਂ ਹੈ?", roman: "meeting kadon hai?", vi: "Cuộc họp khi nào?", en: "When is the meeting?" },
-      { pa: "ਕੀ ਤੁਸੀਂ ਇਹ ਨੋਟ ਅੰਗਰੇਜ਼ੀ ਵਿੱਚ ਦੇ ਸਕਦੇ ਹੋ?", roman: "ki tusin ih note angrezi vich de sakde ho?", vi: "Bạn có thể đưa ghi chú này bằng tiếng Anh không?", en: "Can you provide this note in English?" },
-      { pa: "ਮੈਨੂੰ ਦੁਭਾਸ਼ੀਏ ਦੀ ਲੋੜ ਹੈ।", roman: "mainu dubhashiye di lor hai.", vi: "Tôi cần thông dịch viên.", en: "I need an interpreter." },
+      { cell_id: "daa5d2c8-674b-4955-958b-8ca3ec24629b", pa: "ਮੇਰਾ ਬੱਚਾ ਅੱਜ ਗੈਰਹਾਜ਼ਰ ਹੈ।", roman: "mera bacha aj gair-hazar hai.", vi: "Con tôi hôm nay vắng mặt.", en: "My child is absent today." },
+      { cell_id: "8693243c-b329-40d5-83f2-579679dcb476", pa: "ਮੀਟਿੰਗ ਕਦੋਂ ਹੈ?", roman: "meeting kadon hai?", vi: "Cuộc họp khi nào?", en: "When is the meeting?" },
+      { cell_id: "02e49f16-7c35-440d-8f74-ada13e19291c", pa: "ਕੀ ਤੁਸੀਂ ਇਹ ਨੋਟ ਅੰਗਰੇਜ਼ੀ ਵਿੱਚ ਦੇ ਸਕਦੇ ਹੋ?", roman: "ki tusin ih note angrezi vich de sakde ho?", vi: "Bạn có thể đưa ghi chú này bằng tiếng Anh không?", en: "Can you provide this note in English?" },
+      { cell_id: "659f795e-d3f5-4390-954d-0e16b0e53295", pa: "ਮੈਨੂੰ ਦੁਭਾਸ਼ੀਏ ਦੀ ਲੋੜ ਹੈ।", roman: "mainu dubhashiye di lor hai.", vi: "Tôi cần thông dịch viên.", en: "I need an interpreter." },
     ],
     vocab: [
       { pa: "ਸਕੂਲ", roman: "school", vi: "trường học", en: "school" },
@@ -151,10 +152,10 @@ export const punjabiSurvivalLessons: PunjabiSurvivalLesson[] = [
     scenario_en:
       "Use on the first day at work when asking about schedule, tasks, safety, or asking a supervisor to speak more slowly.",
     phrases: [
-      { pa: "ਮੇਰੀ ਸ਼ਿਫਟ ਕਦੋਂ ਸ਼ੁਰੂ ਹੁੰਦੀ ਹੈ?", roman: "meri shift kadon shuru hundi hai?", vi: "Ca làm của tôi bắt đầu khi nào?", en: "When does my shift start?" },
-      { pa: "ਕਿਰਪਾ ਕਰਕੇ ਇਹ ਦੁਬਾਰਾ ਦਿਖਾਓ।", roman: "kirpa karke ih dubara dikhao.", vi: "Làm ơn chỉ lại việc này.", en: "Please show this again." },
-      { pa: "ਸੁਰੱਖਿਆ ਨਿਯਮ ਕੀ ਹਨ?", roman: "surakhia niyam ki han?", vi: "Quy tắc an toàn là gì?", en: "What are the safety rules?" },
-      { pa: "ਮੈਨੂੰ ਸਮਝ ਨਹੀਂ ਆਇਆ।", roman: "mainu samajh nahin aia.", vi: "Tôi chưa hiểu.", en: "I did not understand." },
+      { cell_id: "790b594c-c0f5-4a04-a4ed-690ba5460e03", pa: "ਮੇਰੀ ਸ਼ਿਫਟ ਕਦੋਂ ਸ਼ੁਰੂ ਹੁੰਦੀ ਹੈ?", roman: "meri shift kadon shuru hundi hai?", vi: "Ca làm của tôi bắt đầu khi nào?", en: "When does my shift start?" },
+      { cell_id: "c6abd429-502f-42b3-a0c8-9022d7f268d0", pa: "ਕਿਰਪਾ ਕਰਕੇ ਇਹ ਦੁਬਾਰਾ ਦਿਖਾਓ।", roman: "kirpa karke ih dubara dikhao.", vi: "Làm ơn chỉ lại việc này.", en: "Please show this again." },
+      { cell_id: "166cd5e8-19d5-4805-b1d1-bf05ba6af968", pa: "ਸੁਰੱਖਿਆ ਨਿਯਮ ਕੀ ਹਨ?", roman: "surakhia niyam ki han?", vi: "Quy tắc an toàn là gì?", en: "What are the safety rules?" },
+      { cell_id: "d5c2e877-3fbe-46e7-a988-ca0b961730b9", pa: "ਮੈਨੂੰ ਸਮਝ ਨਹੀਂ ਆਇਆ।", roman: "mainu samajh nahin aia.", vi: "Tôi chưa hiểu.", en: "I did not understand." },
     ],
     vocab: [
       { pa: "ਕੰਮ", roman: "kamm", vi: "công việc", en: "work" },
@@ -177,10 +178,10 @@ export const punjabiSurvivalLessons: PunjabiSurvivalLesson[] = [
     scenario_en:
       "Use when asking about routes, stops, fares, or when you are lost in a Canadian city.",
     phrases: [
-      { pa: "ਇਹ ਬੱਸ ਕਿੱਥੇ ਜਾਂਦੀ ਹੈ?", roman: "ih bus kithe jandi hai?", vi: "Xe buýt này đi đâu?", en: "Where does this bus go?" },
-      { pa: "ਕੀ ਇਹ ਬੱਸ ਡਾਊਨਟਾਊਨ ਜਾਂਦੀ ਹੈ?", roman: "ki ih bus downtown jandi hai?", vi: "Xe này có đi trung tâm không?", en: "Does this bus go downtown?" },
-      { pa: "ਮੈਨੂੰ ਇੱਥੇ ਉਤਰਨਾ ਹੈ।", roman: "mainu ithe utarna hai.", vi: "Tôi cần xuống ở đây.", en: "I need to get off here." },
-      { pa: "ਮੈਂ ਰਸਤਾ ਭੁੱਲ ਗਿਆ/ਗਈ ਹਾਂ।", roman: "main rasta bhul gaya/gai han.", vi: "Tôi bị lạc đường.", en: "I am lost." },
+      { cell_id: "8d914625-7219-45be-8825-0a8e52038577", pa: "ਇਹ ਬੱਸ ਕਿੱਥੇ ਜਾਂਦੀ ਹੈ?", roman: "ih bus kithe jandi hai?", vi: "Xe buýt này đi đâu?", en: "Where does this bus go?" },
+      { cell_id: "8f08a818-08a1-4183-85f1-d872154fd358", pa: "ਕੀ ਇਹ ਬੱਸ ਡਾਊਨਟਾਊਨ ਜਾਂਦੀ ਹੈ?", roman: "ki ih bus downtown jandi hai?", vi: "Xe này có đi trung tâm không?", en: "Does this bus go downtown?" },
+      { cell_id: "043c0be5-eed5-4844-a301-bbae20080731", pa: "ਮੈਨੂੰ ਇੱਥੇ ਉਤਰਨਾ ਹੈ।", roman: "mainu ithe utarna hai.", vi: "Tôi cần xuống ở đây.", en: "I need to get off here." },
+      { cell_id: "e09e52b9-2adc-4696-a99b-b03ca88aa5a4", pa: "ਮੈਂ ਰਸਤਾ ਭੁੱਲ ਗਿਆ/ਗਈ ਹਾਂ।", roman: "main rasta bhul gaya/gai han.", vi: "Tôi bị lạc đường.", en: "I am lost." },
     ],
     vocab: [
       { pa: "ਬੱਸ", roman: "bus", vi: "xe buýt", en: "bus" },
@@ -203,10 +204,10 @@ export const punjabiSurvivalLessons: PunjabiSurvivalLesson[] = [
     scenario_en:
       "Use when viewing a rental, speaking with a landlord/property manager, or reporting repairs. This is communication language, not tenancy legal advice.",
     phrases: [
-      { pa: "ਕਿਰਾਇਆ ਕਿੰਨਾ ਹੈ?", roman: "kiraya kinna hai?", vi: "Tiền thuê là bao nhiêu?", en: "How much is the rent?" },
-      { pa: "ਕੀ ਪਾਣੀ ਅਤੇ ਬਿਜਲੀ ਸ਼ਾਮਲ ਹਨ?", roman: "ki pani ate bijli shamil han?", vi: "Nước và điện có bao gồm không?", en: "Are water and electricity included?" },
-      { pa: "ਹੀਟਿੰਗ ਕੰਮ ਨਹੀਂ ਕਰ ਰਹੀ।", roman: "heating kamm nahin kar rahi.", vi: "Máy sưởi không hoạt động.", en: "The heating is not working." },
-      { pa: "ਕਿਰਪਾ ਕਰਕੇ ਇਹ ਲਿਖ ਕੇ ਭੇਜੋ।", roman: "kirpa karke ih likh ke bhejo.", vi: "Làm ơn gửi điều này bằng văn bản.", en: "Please send this in writing." },
+      { cell_id: "b4986664-e54a-4647-960b-03f8866998bb", pa: "ਕਿਰਾਇਆ ਕਿੰਨਾ ਹੈ?", roman: "kiraya kinna hai?", vi: "Tiền thuê là bao nhiêu?", en: "How much is the rent?" },
+      { cell_id: "f40b4e37-f131-4356-b32e-8accfa1bf39a", pa: "ਕੀ ਪਾਣੀ ਅਤੇ ਬਿਜਲੀ ਸ਼ਾਮਲ ਹਨ?", roman: "ki pani ate bijli shamil han?", vi: "Nước và điện có bao gồm không?", en: "Are water and electricity included?" },
+      { cell_id: "696c132b-eb5a-4e23-b83d-c47cf050b2c7", pa: "ਹੀਟਿੰਗ ਕੰਮ ਨਹੀਂ ਕਰ ਰਹੀ।", roman: "heating kamm nahin kar rahi.", vi: "Máy sưởi không hoạt động.", en: "The heating is not working." },
+      { cell_id: "30e21cff-b679-4757-a08f-4e031204bf6e", pa: "ਕਿਰਪਾ ਕਰਕੇ ਇਹ ਲਿਖ ਕੇ ਭੇਜੋ।", roman: "kirpa karke ih likh ke bhejo.", vi: "Làm ơn gửi điều này bằng văn bản.", en: "Please send this in writing." },
     ],
     vocab: [
       { pa: "ਕਿਰਾਇਆ", roman: "kiraya", vi: "tiền thuê", en: "rent" },
@@ -229,10 +230,10 @@ export const punjabiSurvivalLessons: PunjabiSurvivalLesson[] = [
     scenario_en:
       "Use when opening an account, asking about a card, or reporting a lost card. This is communication language, not financial advice.",
     phrases: [
-      { pa: "ਮੈਨੂੰ ਬੈਂਕ ਖਾਤਾ ਖੋਲ੍ਹਣਾ ਹੈ।", roman: "mainu bank khata kholhna hai.", vi: "Tôi muốn mở tài khoản ngân hàng.", en: "I want to open a bank account." },
-      { pa: "ਮੈਂ ਨਵਾਂ ਆਇਆ/ਆਈ ਹਾਂ।", roman: "main nava aia/navi ai han.", vi: "Tôi mới đến.", en: "I am new here." },
-      { pa: "ਮੇਰਾ ਕਾਰਡ ਗੁੰਮ ਹੋ ਗਿਆ ਹੈ।", roman: "mera card gumm ho gaya hai.", vi: "Thẻ của tôi bị mất.", en: "My card is lost." },
-      { pa: "ਫੀਸ ਕਿੰਨੀ ਹੈ?", roman: "fees kinni hai?", vi: "Phí là bao nhiêu?", en: "How much is the fee?" },
+      { cell_id: "601d97a2-1365-4dcd-ab65-7c67a3903a9d", pa: "ਮੈਨੂੰ ਬੈਂਕ ਖਾਤਾ ਖੋਲ੍ਹਣਾ ਹੈ।", roman: "mainu bank khata kholhna hai.", vi: "Tôi muốn mở tài khoản ngân hàng.", en: "I want to open a bank account." },
+      { cell_id: "ed037a90-9a9d-4e48-b004-8742d7873124", pa: "ਮੈਂ ਨਵਾਂ ਆਇਆ/ਆਈ ਹਾਂ।", roman: "main nava aia/navi ai han.", vi: "Tôi mới đến.", en: "I am new here." },
+      { cell_id: "367a9c88-4467-46c0-9e65-151bc8b64f2d", pa: "ਮੇਰਾ ਕਾਰਡ ਗੁੰਮ ਹੋ ਗਿਆ ਹੈ।", roman: "mera card gumm ho gaya hai.", vi: "Thẻ của tôi bị mất.", en: "My card is lost." },
+      { cell_id: "7342040f-edfe-49f1-8c58-6197eeb8059c", pa: "ਫੀਸ ਕਿੰਨੀ ਹੈ?", roman: "fees kinni hai?", vi: "Phí là bao nhiêu?", en: "How much is the fee?" },
     ],
     vocab: [
       { pa: "ਬੈਂਕ", roman: "bank", vi: "ngân hàng", en: "bank" },
@@ -255,10 +256,10 @@ export const punjabiSurvivalLessons: PunjabiSurvivalLesson[] = [
     scenario_en:
       "Use at libraries, service centres, city offices, or public offices when asking about counters, documents, and appointments.",
     phrases: [
-      { pa: "ਮੈਨੂੰ ਕਿਸ ਕਾਊਂਟਰ ਤੇ ਜਾਣਾ ਚਾਹੀਦਾ ਹੈ?", roman: "mainu kis counter te jana chahida hai?", vi: "Tôi nên đến quầy nào?", en: "Which counter should I go to?" },
-      { pa: "ਮੇਰੀ ਅਪਾਇੰਟਮੈਂਟ ਹੈ।", roman: "meri appointment hai.", vi: "Tôi có lịch hẹn.", en: "I have an appointment." },
-      { pa: "ਮੈਨੂੰ ਕਿਹੜੇ ਦਸਤਾਵੇਜ਼ ਚਾਹੀਦੇ ਹਨ?", roman: "mainu kihre dastavez chahide han?", vi: "Tôi cần giấy tờ nào?", en: "Which documents do I need?" },
-      { pa: "ਕਿਰਪਾ ਕਰਕੇ ਨੰਬਰ ਲਿਖ ਦਿਓ।", roman: "kirpa karke number likh dio.", vi: "Làm ơn viết số xuống.", en: "Please write the number down." },
+      { cell_id: "3fbfae03-9945-48be-b83d-62ea5564d1ac", pa: "ਮੈਨੂੰ ਕਿਸ ਕਾਊਂਟਰ ਤੇ ਜਾਣਾ ਚਾਹੀਦਾ ਹੈ?", roman: "mainu kis counter te jana chahida hai?", vi: "Tôi nên đến quầy nào?", en: "Which counter should I go to?" },
+      { cell_id: "58c931b9-0ebb-4456-adf5-ecebb7c1b0a9", pa: "ਮੇਰੀ ਅਪਾਇੰਟਮੈਂਟ ਹੈ।", roman: "meri appointment hai.", vi: "Tôi có lịch hẹn.", en: "I have an appointment." },
+      { cell_id: "5e75d951-6a04-4340-b602-5603cf289a97", pa: "ਮੈਨੂੰ ਕਿਹੜੇ ਦਸਤਾਵੇਜ਼ ਚਾਹੀਦੇ ਹਨ?", roman: "mainu kihre dastavez chahide han?", vi: "Tôi cần giấy tờ nào?", en: "Which documents do I need?" },
+      { cell_id: "a742adf3-0909-4930-91c1-72e9b451f890", pa: "ਕਿਰਪਾ ਕਰਕੇ ਨੰਬਰ ਲਿਖ ਦਿਓ।", roman: "kirpa karke number likh dio.", vi: "Làm ơn viết số xuống.", en: "Please write the number down." },
     ],
     vocab: [
       { pa: "ਦਫ਼ਤਰ", roman: "daftar", vi: "văn phòng", en: "office" },
@@ -281,10 +282,10 @@ export const punjabiSurvivalLessons: PunjabiSurvivalLesson[] = [
     scenario_en:
       "Use at hospitals, schools, banks, public offices, or important appointments when you need language support.",
     phrases: [
-      { pa: "ਮੈਨੂੰ ਦੁਭਾਸ਼ੀਏ ਦੀ ਲੋੜ ਹੈ।", roman: "mainu dubhashiye di lor hai.", vi: "Tôi cần thông dịch viên.", en: "I need an interpreter." },
-      { pa: "ਕੀ ਵਿਯਤਨਾਮੀ ਦੁਭਾਸ਼ੀਆ ਮਿਲ ਸਕਦਾ ਹੈ?", roman: "ki vietnammi dubhashiya mil sakda hai?", vi: "Có thông dịch viên tiếng Việt không?", en: "Is a Vietnamese interpreter available?" },
-      { pa: "ਕੀ ਅੰਗਰੇਜ਼ੀ ਵਿੱਚ ਗੱਲ ਕਰ ਸਕਦੇ ਹੋ?", roman: "ki angrezi vich gall kar sakde ho?", vi: "Bạn có thể nói bằng tiếng Anh không?", en: "Can we speak in English?" },
-      { pa: "ਮੈਂ ਦਸਤਖ਼ਤ ਕਰਨ ਤੋਂ ਪਹਿਲਾਂ ਸਮਝਣਾ ਚਾਹੁੰਦਾ/ਚਾਹੁੰਦੀ ਹਾਂ।", roman: "main dastkhat karan ton pehlan samajhna chaunda/chaundi han.", vi: "Tôi muốn hiểu trước khi ký.", en: "I want to understand before signing." },
+      { cell_id: "125f3f73-2d5d-42e6-9ca3-860bf2455aa8", pa: "ਮੈਨੂੰ ਦੁਭਾਸ਼ੀਏ ਦੀ ਲੋੜ ਹੈ।", roman: "mainu dubhashiye di lor hai.", vi: "Tôi cần thông dịch viên.", en: "I need an interpreter." },
+      { cell_id: "d8cf8b7b-6889-414d-9244-c415621ddb0f", pa: "ਕੀ ਵਿਯਤਨਾਮੀ ਦੁਭਾਸ਼ੀਆ ਮਿਲ ਸਕਦਾ ਹੈ?", roman: "ki vietnammi dubhashiya mil sakda hai?", vi: "Có thông dịch viên tiếng Việt không?", en: "Is a Vietnamese interpreter available?" },
+      { cell_id: "1ee028e9-c70f-4302-9358-a4e99dce5607", pa: "ਕੀ ਅੰਗਰੇਜ਼ੀ ਵਿੱਚ ਗੱਲ ਕਰ ਸਕਦੇ ਹੋ?", roman: "ki angrezi vich gall kar sakde ho?", vi: "Bạn có thể nói bằng tiếng Anh không?", en: "Can we speak in English?" },
+      { cell_id: "84e561e4-d825-46f5-8687-bb35d5afbc68", pa: "ਮੈਂ ਦਸਤਖ਼ਤ ਕਰਨ ਤੋਂ ਪਹਿਲਾਂ ਸਮਝਣਾ ਚਾਹੁੰਦਾ/ਚਾਹੁੰਦੀ ਹਾਂ।", roman: "main dastkhat karan ton pehlan samajhna chaunda/chaundi han.", vi: "Tôi muốn hiểu trước khi ký.", en: "I want to understand before signing." },
     ],
     vocab: [
       { pa: "ਦੁਭਾਸ਼ੀਆ", roman: "dubhashiya", vi: "thông dịch viên", en: "interpreter" },
@@ -307,10 +308,10 @@ export const punjabiSurvivalLessons: PunjabiSurvivalLesson[] = [
     scenario_en:
       "Use when filling forms at school, a clinic, bank, rental office, or public office. Ask what a field means before signing.",
     phrases: [
-      { pa: "ਇਸ ਦਾ ਕੀ ਮਤਲਬ ਹੈ?", roman: "is da ki matlab hai?", vi: "Cái này nghĩa là gì?", en: "What does this mean?" },
-      { pa: "ਮੈਨੂੰ ਇਹ ਫਾਰਮ ਭਰਨ ਵਿੱਚ ਮਦਦ ਚਾਹੀਦੀ ਹੈ।", roman: "mainu ih form bharan vich madad chahidi hai.", vi: "Tôi cần giúp điền mẫu này.", en: "I need help filling out this form." },
-      { pa: "ਕੀ ਇਹ ਲਾਜ਼ਮੀ ਹੈ?", roman: "ki ih lazmi hai?", vi: "Mục này có bắt buộc không?", en: "Is this required?" },
-      { pa: "ਕੀ ਮੈਂ ਇਸ ਦੀ ਕਾਪੀ ਰੱਖ ਸਕਦਾ/ਸਕਦੀ ਹਾਂ?", roman: "ki main is di copy rakh sakda/sakdi han?", vi: "Tôi có thể giữ bản sao không?", en: "Can I keep a copy of this?" },
+      { cell_id: "30d695a0-3769-4183-bbb0-d08fe441ba9e", pa: "ਇਸ ਦਾ ਕੀ ਮਤਲਬ ਹੈ?", roman: "is da ki matlab hai?", vi: "Cái này nghĩa là gì?", en: "What does this mean?" },
+      { cell_id: "16c119d5-1f92-470d-a096-546414cb9c1f", pa: "ਮੈਨੂੰ ਇਹ ਫਾਰਮ ਭਰਨ ਵਿੱਚ ਮਦਦ ਚਾਹੀਦੀ ਹੈ।", roman: "mainu ih form bharan vich madad chahidi hai.", vi: "Tôi cần giúp điền mẫu này.", en: "I need help filling out this form." },
+      { cell_id: "c83f0777-b64e-4e0f-9744-aee3ba1f92cf", pa: "ਕੀ ਇਹ ਲਾਜ਼ਮੀ ਹੈ?", roman: "ki ih lazmi hai?", vi: "Mục này có bắt buộc không?", en: "Is this required?" },
+      { cell_id: "0190d822-6b27-4327-a4b6-71153edabf00", pa: "ਕੀ ਮੈਂ ਇਸ ਦੀ ਕਾਪੀ ਰੱਖ ਸਕਦਾ/ਸਕਦੀ ਹਾਂ?", roman: "ki main is di copy rakh sakda/sakdi han?", vi: "Tôi có thể giữ bản sao không?", en: "Can I keep a copy of this?" },
     ],
     vocab: [
       { pa: "ਫਾਰਮ", roman: "form", vi: "biểu mẫu", en: "form" },
@@ -333,10 +334,10 @@ export const punjabiSurvivalLessons: PunjabiSurvivalLesson[] = [
     scenario_en:
       "Use at restaurants, school, work, or community meals when you need to state an allergy or food restriction.",
     phrases: [
-      { pa: "ਮੈਨੂੰ ਮੂੰਗਫਲੀ ਤੋਂ ਐਲਰਜੀ ਹੈ।", roman: "mainu mungfali ton allergy hai.", vi: "Tôi dị ứng đậu phộng.", en: "I am allergic to peanuts." },
-      { pa: "ਕੀ ਇਸ ਵਿੱਚ ਦੁੱਧ ਹੈ?", roman: "ki is vich duddh hai?", vi: "Trong món này có sữa không?", en: "Does this contain milk?" },
-      { pa: "ਮੈਂ ਮਾਸ ਨਹੀਂ ਖਾਂਦਾ/ਖਾਂਦੀ।", roman: "main maas nahin khanda/khandi.", vi: "Tôi không ăn thịt.", en: "I do not eat meat." },
-      { pa: "ਕਿਰਪਾ ਕਰਕੇ ਸਮੱਗਰੀ ਦੱਸੋ।", roman: "kirpa karke samagri dasso.", vi: "Làm ơn cho biết nguyên liệu.", en: "Please tell me the ingredients." },
+      { cell_id: "2c189c0c-9cbd-4ae0-b352-f3a4227415ce", pa: "ਮੈਨੂੰ ਮੂੰਗਫਲੀ ਤੋਂ ਐਲਰਜੀ ਹੈ।", roman: "mainu mungfali ton allergy hai.", vi: "Tôi dị ứng đậu phộng.", en: "I am allergic to peanuts." },
+      { cell_id: "d5151d0b-257c-4170-900b-3e59669661e3", pa: "ਕੀ ਇਸ ਵਿੱਚ ਦੁੱਧ ਹੈ?", roman: "ki is vich duddh hai?", vi: "Trong món này có sữa không?", en: "Does this contain milk?" },
+      { cell_id: "aae80290-e0db-459d-85ea-8134adc3c67b", pa: "ਮੈਂ ਮਾਸ ਨਹੀਂ ਖਾਂਦਾ/ਖਾਂਦੀ।", roman: "main maas nahin khanda/khandi.", vi: "Tôi không ăn thịt.", en: "I do not eat meat." },
+      { cell_id: "5b7c1dbd-c550-4b81-bc7d-12472c4e62f7", pa: "ਕਿਰਪਾ ਕਰਕੇ ਸਮੱਗਰੀ ਦੱਸੋ।", roman: "kirpa karke samagri dasso.", vi: "Làm ơn cho biết nguyên liệu.", en: "Please tell me the ingredients." },
     ],
     vocab: [
       { pa: "ਖਾਣਾ", roman: "khana", vi: "đồ ăn", en: "food" },
@@ -359,10 +360,10 @@ export const punjabiSurvivalLessons: PunjabiSurvivalLesson[] = [
     scenario_en:
       "Use when a passport, ID, bank card, or important document is lost and you need to report the situation. This is reporting language, not legal advice.",
     phrases: [
-      { pa: "ਮੇਰਾ ਪਾਸਪੋਰਟ ਗੁੰਮ ਹੋ ਗਿਆ ਹੈ।", roman: "mera passport gumm ho gaya hai.", vi: "Hộ chiếu của tôi bị mất.", en: "My passport is lost." },
-      { pa: "ਮੇਰੇ ਦਸਤਾਵੇਜ਼ ਚੋਰੀ ਹੋ ਗਏ ਹਨ।", roman: "mere dastavez chori ho gaye han.", vi: "Giấy tờ của tôi bị đánh cắp.", en: "My documents were stolen." },
-      { pa: "ਮੈਨੂੰ ਰਿਪੋਰਟ ਬਣਵਾਉਣੀ ਹੈ।", roman: "mainu report banvauni hai.", vi: "Tôi cần lập báo cáo.", en: "I need to make a report." },
-      { pa: "ਮੇਰੇ ਕੋਲ ਕਾਪੀ ਹੈ।", roman: "mere kol copy hai.", vi: "Tôi có bản sao.", en: "I have a copy." },
+      { cell_id: "f9c61ad7-e9ca-4807-8f01-e8ca772af032", pa: "ਮੇਰਾ ਪਾਸਪੋਰਟ ਗੁੰਮ ਹੋ ਗਿਆ ਹੈ।", roman: "mera passport gumm ho gaya hai.", vi: "Hộ chiếu của tôi bị mất.", en: "My passport is lost." },
+      { cell_id: "b5b3e982-97ab-4ee3-a0f7-c5e0e0fb2d25", pa: "ਮੇਰੇ ਦਸਤਾਵੇਜ਼ ਚੋਰੀ ਹੋ ਗਏ ਹਨ।", roman: "mere dastavez chori ho gaye han.", vi: "Giấy tờ của tôi bị đánh cắp.", en: "My documents were stolen." },
+      { cell_id: "c1a10dc6-eaeb-403f-9db3-99f265156f42", pa: "ਮੈਨੂੰ ਰਿਪੋਰਟ ਬਣਵਾਉਣੀ ਹੈ।", roman: "mainu report banvauni hai.", vi: "Tôi cần lập báo cáo.", en: "I need to make a report." },
+      { cell_id: "f6d822c4-a8f8-45c9-ae79-a52b05980789", pa: "ਮੇਰੇ ਕੋਲ ਕਾਪੀ ਹੈ।", roman: "mere kol copy hai.", vi: "Tôi có bản sao.", en: "I have a copy." },
     ],
     vocab: [
       { pa: "ਪਾਸਪੋਰਟ", roman: "passport", vi: "hộ chiếu", en: "passport" },

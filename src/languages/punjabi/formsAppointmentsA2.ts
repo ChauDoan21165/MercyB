@@ -24,6 +24,7 @@ export type PunjabiFormsAppointmentsA2Mode =
   | "readiness";
 
 export type PunjabiFormsAppointmentsA2Phrase = {
+  cell_id?: string;
   pa: string;
   romanization: string;
   vi: string;
@@ -82,9 +83,9 @@ export const formsAppointmentsA2: PunjabiFormsAppointmentsA2Item[] = [
     canada_practical_vi: "Useful for clinic, school office, library card, and Service Canada style counters.",
     canada_practical_en: "Useful for clinic, school office, library card, and Service Canada style counters.",
     phrases: [
-      { pa: "ਮੇਰਾ ਨਾਮ ਅਮਨ ਹੈ।", romanization: "mera naam aman hai.", vi: "Tên tôi là Aman.", en: "My name is Aman.", note_vi: "ਮੇਰਾ agrees với ਨਾਮ.", note_en: "ਮੇਰਾ agrees with ਨਾਮ." },
-      { pa: "ਕੀ ਤੁਸੀਂ ਨਾਮ ਦੁਬਾਰਾ ਲਿਖ ਸਕਦੇ ਹੋ?", romanization: "ki tusi naam dubara likh sakde ho?", vi: "Bạn có thể viết lại tên không?", en: "Can you write the name again?", note_vi: "ਤੁਸੀਂ + ਸਕਦੇ ਹੋ giữ lịch sự.", note_en: "ਤੁਸੀਂ + ਸਕਦੇ ਹੋ keeps it polite." },
-      { pa: "ਨਾਮ ਸਹੀ ਹੈ।", romanization: "naam sahi hai.", vi: "Tên đúng rồi.", en: "The name is correct.", note_vi: "ਸਹੀ = đúng/correct.", note_en: "ਸਹੀ = correct." },
+      { cell_id: "69f9dd54-e305-490d-aadd-86d59e2d93c3", pa: "ਮੇਰਾ ਨਾਮ ਅਮਨ ਹੈ।", romanization: "mera naam aman hai.", vi: "Tên tôi là Aman.", en: "My name is Aman.", note_vi: "ਮੇਰਾ agrees với ਨਾਮ.", note_en: "ਮੇਰਾ agrees with ਨਾਮ." },
+      { cell_id: "235c2f9c-0151-4c52-a303-b01f5df07d56", pa: "ਕੀ ਤੁਸੀਂ ਨਾਮ ਦੁਬਾਰਾ ਲਿਖ ਸਕਦੇ ਹੋ?", romanization: "ki tusi naam dubara likh sakde ho?", vi: "Bạn có thể viết lại tên không?", en: "Can you write the name again?", note_vi: "ਤੁਸੀਂ + ਸਕਦੇ ਹੋ giữ lịch sự.", note_en: "ਤੁਸੀਂ + ਸਕਦੇ ਹੋ keeps it polite." },
+      { cell_id: "893460bb-240e-4040-afe5-97d2fc47a533", pa: "ਨਾਮ ਸਹੀ ਹੈ।", romanization: "naam sahi hai.", vi: "Tên đúng rồi.", en: "The name is correct.", note_vi: "ਸਹੀ = đúng/correct.", note_en: "ਸਹੀ = correct." },
     ],
     traps: [
       { trap_vi: "Đừng dùng ਮੇਰੀ ਨਾਮ; ਨਾਮ thường masculine nên ਮੇਰਾ.", trap_en: "Do not use ਮੇਰੀ ਨਾਮ; ਨਾਮ is usually masculine, so ਮੇਰਾ.", better_pa: "ਮੇਰਾ ਨਾਮ", better_romanization: "mera naam" },
@@ -106,9 +107,9 @@ export const formsAppointmentsA2: PunjabiFormsAppointmentsA2Item[] = [
     canada_practical_vi: "Unit, apartment, postal code, proof of address are frequent Canada tasks.",
     canada_practical_en: "Unit, apartment, postal code, proof of address are frequent Canada tasks.",
     phrases: [
-      { pa: "ਮੇਰਾ ਪਤਾ 25 ਮੇਨ ਸਟਰੀਟ ਹੈ।", romanization: "mera pata 25 main street hai.", vi: "Địa chỉ của tôi là 25 Main Street.", en: "My address is 25 Main Street.", note_vi: "ਪਤਾ = địa chỉ.", note_en: "ਪਤਾ = address." },
-      { pa: "ਅਪਾਰਟਮੈਂਟ ਨੰਬਰ ਪੰਜ ਹੈ।", romanization: "apartment number panj hai.", vi: "Số căn hộ là năm.", en: "The apartment number is five.", note_vi: "ਨੰਬਰ thường dùng như loanword.", note_en: "ਨੰਬਰ is commonly used as a loanword." },
-      { pa: "ਕੀ ਤੁਸੀਂ ਪਤਾ ਦੁਬਾਰਾ ਕਹਿ ਸਕਦੇ ਹੋ?", romanization: "ki tusi pata dubara keh sakde ho?", vi: "Bạn có thể nói lại địa chỉ không?", en: "Can you say the address again?", note_vi: "Repair phrase cho địa chỉ.", note_en: "Repair phrase for addresses." },
+      { cell_id: "6a8732de-70e8-41a2-9770-90051718e541", pa: "ਮੇਰਾ ਪਤਾ 25 ਮੇਨ ਸਟਰੀਟ ਹੈ।", romanization: "mera pata 25 main street hai.", vi: "Địa chỉ của tôi là 25 Main Street.", en: "My address is 25 Main Street.", note_vi: "ਪਤਾ = địa chỉ.", note_en: "ਪਤਾ = address." },
+      { cell_id: "8a68d936-aed2-48ac-8d1b-4c59ecdb3cde", pa: "ਅਪਾਰਟਮੈਂਟ ਨੰਬਰ ਪੰਜ ਹੈ।", romanization: "apartment number panj hai.", vi: "Số căn hộ là năm.", en: "The apartment number is five.", note_vi: "ਨੰਬਰ thường dùng như loanword.", note_en: "ਨੰਬਰ is commonly used as a loanword." },
+      { cell_id: "053f28bb-bccb-437c-82d6-2c9c6d9f2deb", pa: "ਕੀ ਤੁਸੀਂ ਪਤਾ ਦੁਬਾਰਾ ਕਹਿ ਸਕਦੇ ਹੋ?", romanization: "ki tusi pata dubara keh sakde ho?", vi: "Bạn có thể nói lại địa chỉ không?", en: "Can you say the address again?", note_vi: "Repair phrase cho địa chỉ.", note_en: "Repair phrase for addresses." },
     ],
     traps: [
       { trap_vi: "ਪਤਾ cũng có thể nghĩa 'biết' trong ਮੈਨੂੰ ਪਤਾ ਹੈ; trong form là địa chỉ.", trap_en: "ਪਤਾ can mean 'know' in ਮੈਨੂੰ ਪਤਾ ਹੈ; on a form it means address.", better_pa: "ਮੇਰਾ ਪਤਾ", better_romanization: "mera pata" },
@@ -130,9 +131,9 @@ export const formsAppointmentsA2: PunjabiFormsAppointmentsA2Item[] = [
     canada_practical_vi: "Critical for appointments, shifts, school meetings, and public-service bookings.",
     canada_practical_en: "Critical for appointments, shifts, school meetings, and public-service bookings.",
     phrases: [
-      { pa: "ਅਪਾਇੰਟਮੈਂਟ ਸ਼ੁੱਕਰਵਾਰ ਨੂੰ ਹੈ।", romanization: "appointment shukkarvaar nu hai.", vi: "Lịch hẹn vào thứ Sáu.", en: "The appointment is on Friday.", note_vi: "ਨੂੰ đánh dấu ngày.", note_en: "ਨੂੰ marks the day." },
-      { pa: "ਸਮਾਂ ਦੋ ਵਜੇ ਹੈ।", romanization: "sama do vaje hai.", vi: "Giờ là hai giờ.", en: "The time is two.", note_vi: "ਵਜੇ cần cho giờ đồng hồ.", note_en: "ਵਜੇ is needed for clock time." },
-      { pa: "ਸੋਮਵਾਰ ਸਵੇਰੇ ਦਸ ਵਜੇ।", romanization: "somvaar savere das vaje.", vi: "Thứ Hai lúc mười giờ sáng.", en: "Monday at ten in the morning.", note_vi: "ਸਵੇਰੇ làm rõ buổi sáng.", note_en: "ਸਵੇਰੇ clarifies morning." },
+      { cell_id: "728c1f2b-27f6-4f27-8738-43c1aeee9ff2", pa: "ਅਪਾਇੰਟਮੈਂਟ ਸ਼ੁੱਕਰਵਾਰ ਨੂੰ ਹੈ।", romanization: "appointment shukkarvaar nu hai.", vi: "Lịch hẹn vào thứ Sáu.", en: "The appointment is on Friday.", note_vi: "ਨੂੰ đánh dấu ngày.", note_en: "ਨੂੰ marks the day." },
+      { cell_id: "965355d9-c29a-479d-9a5f-e4d7a6cdbe9b", pa: "ਸਮਾਂ ਦੋ ਵਜੇ ਹੈ।", romanization: "sama do vaje hai.", vi: "Giờ là hai giờ.", en: "The time is two.", note_vi: "ਵਜੇ cần cho giờ đồng hồ.", note_en: "ਵਜੇ is needed for clock time." },
+      { cell_id: "3ab9af85-20dd-4f74-b00c-33f2c0515056", pa: "ਸੋਮਵਾਰ ਸਵੇਰੇ ਦਸ ਵਜੇ।", romanization: "somvaar savere das vaje.", vi: "Thứ Hai lúc mười giờ sáng.", en: "Monday at ten in the morning.", note_vi: "ਸਵੇਰੇ làm rõ buổi sáng.", note_en: "ਸਵੇਰੇ clarifies morning." },
     ],
     traps: [
       { trap_vi: "Đừng nói chỉ ਦੋ cho 'at two'; nói ਦੋ ਵਜੇ.", trap_en: "Do not say only ਦੋ for 'at two'; say ਦੋ ਵਜੇ.", better_pa: "ਦੋ ਵਜੇ", better_romanization: "do vaje" },
@@ -154,9 +155,9 @@ export const formsAppointmentsA2: PunjabiFormsAppointmentsA2Item[] = [
     canada_practical_vi: "Useful for clinic, dentist, settlement, and school appointments.",
     canada_practical_en: "Useful for clinic, dentist, settlement, and school appointments.",
     phrases: [
-      { pa: "ਮੈਨੂੰ ਸਮਾਂ ਬਦਲਣਾ ਹੈ।", romanization: "mainu sama badalna hai.", vi: "Tôi cần đổi giờ.", en: "I need to change the time.", note_vi: "ਬਦਲਣਾ = đổi/thay đổi.", note_en: "ਬਦਲਣਾ = change." },
-      { pa: "ਕੀ ਸ਼ੁੱਕਰਵਾਰ ਨੂੰ ਸਮਾਂ ਮਿਲ ਸਕਦਾ ਹੈ?", romanization: "ki shukkarvaar nu sama mil sakda hai?", vi: "Thứ Sáu có giờ trống không?", en: "Is a time available on Friday?", note_vi: "ਮਿਲ ਸਕਦਾ ਹੈ hỏi availability.", note_en: "ਮਿਲ ਸਕਦਾ ਹੈ asks availability." },
-      { pa: "ਮੈਂ ਅੱਜ ਨਹੀਂ ਆ ਸਕਦਾ।", romanization: "main ajj nahi aa sakda.", vi: "Hôm nay tôi không thể đến. (nam)", en: "I cannot come today. (male speaker)", note_vi: "ਸਕਦਾ đổi thành ਸਕਦੀ với nữ.", note_en: "ਸਕਦਾ changes to ਸਕਦੀ for female speaker." },
+      { cell_id: "726e2b9e-8142-4208-8f40-308ca5f3c7b8", pa: "ਮੈਨੂੰ ਸਮਾਂ ਬਦਲਣਾ ਹੈ।", romanization: "mainu sama badalna hai.", vi: "Tôi cần đổi giờ.", en: "I need to change the time.", note_vi: "ਬਦਲਣਾ = đổi/thay đổi.", note_en: "ਬਦਲਣਾ = change." },
+      { cell_id: "47825e5e-72e4-432f-b312-fac02f4af5cf", pa: "ਕੀ ਸ਼ੁੱਕਰਵਾਰ ਨੂੰ ਸਮਾਂ ਮਿਲ ਸਕਦਾ ਹੈ?", romanization: "ki shukkarvaar nu sama mil sakda hai?", vi: "Thứ Sáu có giờ trống không?", en: "Is a time available on Friday?", note_vi: "ਮਿਲ ਸਕਦਾ ਹੈ hỏi availability.", note_en: "ਮਿਲ ਸਕਦਾ ਹੈ asks availability." },
+      { cell_id: "01806807-fedf-49dd-8cbd-f3990b294a6a", pa: "ਮੈਂ ਅੱਜ ਨਹੀਂ ਆ ਸਕਦਾ।", romanization: "main ajj nahi aa sakda.", vi: "Hôm nay tôi không thể đến. (nam)", en: "I cannot come today. (male speaker)", note_vi: "ਸਕਦਾ đổi thành ਸਕਦੀ với nữ.", note_en: "ਸਕਦਾ changes to ਸਕਦੀ for female speaker." },
     ],
     traps: [
       { trap_vi: "Khi đổi lịch, nói rõ ngày/giờ mới.", trap_en: "When rescheduling, state the new day/time clearly.", better_pa: "ਸ਼ੁੱਕਰਵਾਰ ਨੂੰ ਸਮਾਂ ਮਿਲ ਸਕਦਾ ਹੈ?", better_romanization: "shukkarvaar nu sama mil sakda hai?" },
@@ -178,9 +179,9 @@ export const formsAppointmentsA2: PunjabiFormsAppointmentsA2Item[] = [
     canada_practical_vi: "Common with health card, proof of address, school forms, and public-service counters.",
     canada_practical_en: "Common with health card, proof of address, school forms, and public-service counters.",
     phrases: [
-      { pa: "ਮੇਰੇ ਕੋਲ ਇਹ ਦਸਤਾਵੇਜ਼ ਨਹੀਂ ਹੈ।", romanization: "mere kol eh dastavez nahi hai.", vi: "Tôi không có giấy tờ này.", en: "I do not have this document.", note_vi: "Possession uses ਮੇਰੇ ਕੋਲ.", note_en: "Possession uses ਮੇਰੇ ਕੋਲ." },
-      { pa: "ਕੀ ਮੈਂ ਇਹ ਬਾਅਦ ਵਿੱਚ ਲਿਆ ਸਕਦਾ ਹਾਂ?", romanization: "ki main eh baad vich lia sakda haan?", vi: "Tôi có thể mang cái này sau không? (nam)", en: "Can I bring this later? (male speaker)", note_vi: "Người nói nữ dùng ਸਕਦੀ.", note_en: "Female speaker uses ਸਕਦੀ." },
-      { pa: "ਮੈਨੂੰ ਕਿਹੜੇ ਦਸਤਾਵੇਜ਼ ਚਾਹੀਦੇ ਹਨ?", romanization: "mainu kihre dastavez chahide han?", vi: "Tôi cần những giấy tờ nào?", en: "Which documents do I need?", note_vi: "ਦਸਤਾਵੇਜ਼ plural → ਚਾਹੀਦੇ ਹਨ.", note_en: "ਦਸਤਾਵੇਜ਼ plural → ਚਾਹੀਦੇ ਹਨ." },
+      { cell_id: "7590b40b-f437-4528-8c2e-d609d4a9c751", pa: "ਮੇਰੇ ਕੋਲ ਇਹ ਦਸਤਾਵੇਜ਼ ਨਹੀਂ ਹੈ।", romanization: "mere kol eh dastavez nahi hai.", vi: "Tôi không có giấy tờ này.", en: "I do not have this document.", note_vi: "Possession uses ਮੇਰੇ ਕੋਲ.", note_en: "Possession uses ਮੇਰੇ ਕੋਲ." },
+      { cell_id: "9ece1b78-eb49-4e20-a6ae-8efb586b5e85", pa: "ਕੀ ਮੈਂ ਇਹ ਬਾਅਦ ਵਿੱਚ ਲਿਆ ਸਕਦਾ ਹਾਂ?", romanization: "ki main eh baad vich lia sakda haan?", vi: "Tôi có thể mang cái này sau không? (nam)", en: "Can I bring this later? (male speaker)", note_vi: "Người nói nữ dùng ਸਕਦੀ.", note_en: "Female speaker uses ਸਕਦੀ." },
+      { cell_id: "7d31b7d2-3479-4b47-a199-1912457fb74a", pa: "ਮੈਨੂੰ ਕਿਹੜੇ ਦਸਤਾਵੇਜ਼ ਚਾਹੀਦੇ ਹਨ?", romanization: "mainu kihre dastavez chahide han?", vi: "Tôi cần những giấy tờ nào?", en: "Which documents do I need?", note_vi: "ਦਸਤਾਵੇਜ਼ plural → ਚਾਹੀਦੇ ਹਨ.", note_en: "ਦਸਤਾਵੇਜ਼ plural → ਚਾਹੀਦੇ ਹਨ." },
     ],
     traps: [
       { trap_vi: "Không nói ਮੈਂ ਦਸਤਾਵੇਜ਼ ਹੈ; possession dùng ਕੋਲ.", trap_en: "Do not say ਮੈਂ ਦਸਤਾਵੇਜ਼ ਹੈ; possession uses ਕੋਲ.", better_pa: "ਮੇਰੇ ਕੋਲ ਦਸਤਾਵੇਜ਼ ਹੈ।", better_romanization: "mere kol dastavez hai." },
@@ -202,9 +203,9 @@ export const formsAppointmentsA2: PunjabiFormsAppointmentsA2Item[] = [
     canada_practical_vi: "Interpreter/language support requests are practical in Canada services.",
     canada_practical_en: "Interpreter/language support requests are practical in Canadian services.",
     phrases: [
-      { pa: "ਕੀ ਪੰਜਾਬੀ ਇੰਟਰਪ੍ਰੇਟਰ ਮਿਲ ਸਕਦਾ ਹੈ?", romanization: "ki punjabi interpreter mil sakda hai?", vi: "Có thể có thông dịch viên Punjabi không?", en: "Is a Punjabi interpreter available?", note_vi: "ਮਿਲ ਸਕਦਾ ਹੈ hỏi availability.", note_en: "ਮਿਲ ਸਕਦਾ ਹੈ asks availability." },
-      { pa: "ਮੈਨੂੰ ਅੰਗਰੇਜ਼ੀ ਪੂਰੀ ਸਮਝ ਨਹੀਂ ਆਉਂਦੀ।", romanization: "mainu angrezi poori samajh nahi aundi.", vi: "Tôi không hiểu tiếng Anh hoàn toàn.", en: "I do not fully understand English.", note_vi: "ਮੈਨੂੰ ... ਸਮਝ ਨਹੀਂ ਆਉਂਦੀ = tôi không hiểu.", note_en: "ਮੈਨੂੰ ... ਸਮਝ ਨਹੀਂ ਆਉਂਦੀ = I do not understand." },
-      { pa: "ਕੀ ਕੋਈ ਭਾਸ਼ਾ ਮਦਦ ਹੈ?", romanization: "ki koi bhasha madad hai?", vi: "Có hỗ trợ ngôn ngữ nào không?", en: "Is there any language help?", note_vi: "Câu đơn giản khi không biết từ interpreter.", note_en: "Simple fallback if you do not know interpreter." },
+      { cell_id: "f1df9250-1afe-439d-bb45-1d25eb8f2312", pa: "ਕੀ ਪੰਜਾਬੀ ਇੰਟਰਪ੍ਰੇਟਰ ਮਿਲ ਸਕਦਾ ਹੈ?", romanization: "ki punjabi interpreter mil sakda hai?", vi: "Có thể có thông dịch viên Punjabi không?", en: "Is a Punjabi interpreter available?", note_vi: "ਮਿਲ ਸਕਦਾ ਹੈ hỏi availability.", note_en: "ਮਿਲ ਸਕਦਾ ਹੈ asks availability." },
+      { cell_id: "4edc0b8a-fa3a-4a63-85c7-6be78129e132", pa: "ਮੈਨੂੰ ਅੰਗਰੇਜ਼ੀ ਪੂਰੀ ਸਮਝ ਨਹੀਂ ਆਉਂਦੀ।", romanization: "mainu angrezi poori samajh nahi aundi.", vi: "Tôi không hiểu tiếng Anh hoàn toàn.", en: "I do not fully understand English.", note_vi: "ਮੈਨੂੰ ... ਸਮਝ ਨਹੀਂ ਆਉਂਦੀ = tôi không hiểu.", note_en: "ਮੈਨੂੰ ... ਸਮਝ ਨਹੀਂ ਆਉਂਦੀ = I do not understand." },
+      { cell_id: "a0ed8a0c-7fb5-4510-9e39-1b238e0d1b67", pa: "ਕੀ ਕੋਈ ਭਾਸ਼ਾ ਮਦਦ ਹੈ?", romanization: "ki koi bhasha madad hai?", vi: "Có hỗ trợ ngôn ngữ nào không?", en: "Is there any language help?", note_vi: "Câu đơn giản khi không biết từ interpreter.", note_en: "Simple fallback if you do not know interpreter." },
     ],
     traps: [
       { trap_vi: "Đừng claim hiểu nếu không hiểu; dùng repair/request phrase.", trap_en: "Do not claim understanding if you do not understand; use a repair/request phrase.", better_pa: "ਮੈਨੂੰ ਸਮਝ ਨਹੀਂ ਆਈ।", better_romanization: "mainu samajh nahi aai." },
@@ -226,9 +227,9 @@ export const formsAppointmentsA2: PunjabiFormsAppointmentsA2Item[] = [
     canada_practical_vi: "Health card and family doctor language is common in Canada.",
     canada_practical_en: "Health card and family doctor language is common in Canada.",
     phrases: [
-      { pa: "ਮੈਨੂੰ ਡਾਕਟਰ ਨਾਲ ਅਪਾਇੰਟਮੈਂਟ ਲੈਣੀ ਹੈ।", romanization: "mainu daktar naal appointment laini hai.", vi: "Tôi cần đặt lịch với bác sĩ.", en: "I need to book an appointment with the doctor.", note_vi: "ਲੈਣੀ agrees với ਅਪਾਇੰਟਮੈਂਟ.", note_en: "ਲੈਣੀ agrees with ਅਪਾਇੰਟਮੈਂਟ." },
-      { pa: "ਕੀ ਹੈਲਥ ਕਾਰਡ ਲਿਆਉਣਾ ਹੈ?", romanization: "ki health card liauna hai?", vi: "Có cần mang thẻ y tế không?", en: "Do I need to bring the health card?", note_vi: "ਲਿਆਉਣਾ = mang đến.", note_en: "ਲਿਆਉਣਾ = bring." },
-      { pa: "ਮੈਨੂੰ ਸਿਰ ਦਰਦ ਹੈ।", romanization: "mainu sir dard hai.", vi: "Tôi đau đầu.", en: "I have a headache.", note_vi: "Triệu chứng dùng ਮੈਨੂੰ ... ਹੈ.", note_en: "Symptoms use ਮੈਨੂੰ ... ਹੈ." },
+      { cell_id: "667d38f2-dccc-44af-a307-757ca04110f2", pa: "ਮੈਨੂੰ ਡਾਕਟਰ ਨਾਲ ਅਪਾਇੰਟਮੈਂਟ ਲੈਣੀ ਹੈ।", romanization: "mainu daktar naal appointment laini hai.", vi: "Tôi cần đặt lịch với bác sĩ.", en: "I need to book an appointment with the doctor.", note_vi: "ਲੈਣੀ agrees với ਅਪਾਇੰਟਮੈਂਟ.", note_en: "ਲੈਣੀ agrees with ਅਪਾਇੰਟਮੈਂਟ." },
+      { cell_id: "e0847279-1ab5-4a1b-b7bf-163b430002dd", pa: "ਕੀ ਹੈਲਥ ਕਾਰਡ ਲਿਆਉਣਾ ਹੈ?", romanization: "ki health card liauna hai?", vi: "Có cần mang thẻ y tế không?", en: "Do I need to bring the health card?", note_vi: "ਲਿਆਉਣਾ = mang đến.", note_en: "ਲਿਆਉਣਾ = bring." },
+      { cell_id: "728a3468-ff25-4e27-bf56-45eba16a746a", pa: "ਮੈਨੂੰ ਸਿਰ ਦਰਦ ਹੈ।", romanization: "mainu sir dard hai.", vi: "Tôi đau đầu.", en: "I have a headache.", note_vi: "Triệu chứng dùng ਮੈਨੂੰ ... ਹੈ.", note_en: "Symptoms use ਮੈਨੂੰ ... ਹੈ." },
     ],
     traps: [
       { trap_vi: "Không nói ਮੈਂ ਸਿਰ ਦਰਦ ਹਾਂ.", trap_en: "Do not say ਮੈਂ ਸਿਰ ਦਰਦ ਹਾਂ.", better_pa: "ਮੈਨੂੰ ਸਿਰ ਦਰਦ ਹੈ।", better_romanization: "mainu sir dard hai." },
@@ -250,9 +251,9 @@ export const formsAppointmentsA2: PunjabiFormsAppointmentsA2Item[] = [
     canada_practical_vi: "Useful for school office, parent-teacher meetings, daycare handoff.",
     canada_practical_en: "Useful for school offices, parent-teacher meetings, daycare handoff.",
     phrases: [
-      { pa: "ਕੀ ਅਧਿਆਪਕ ਨਾਲ ਮਿਲਣ ਦਾ ਸਮਾਂ ਹੈ?", romanization: "ki adhiapak naal milan da sama hai?", vi: "Có giờ gặp giáo viên không?", en: "Is there a time to meet the teacher?", note_vi: "ਨਾਲ = với; ਮਿਲਣ ਦਾ ਸਮਾਂ = giờ gặp.", note_en: "ਨਾਲ = with; ਮਿਲਣ ਦਾ ਸਮਾਂ = time to meet." },
-      { pa: "ਮੇਰਾ ਬੱਚਾ ਅੱਜ ਸਕੂਲ ਨਹੀਂ ਆ ਸਕਦਾ।", romanization: "mera bachcha ajj school nahi aa sakda.", vi: "Con tôi hôm nay không thể đến trường.", en: "My child cannot come to school today.", note_vi: "ਸਕਦਾ agrees với ਬੱਚਾ.", note_en: "ਸਕਦਾ agrees with ਬੱਚਾ." },
-      { pa: "ਕਲਾਸ ਕਿਹੜੇ ਕਮਰੇ ਵਿੱਚ ਹੈ?", romanization: "class kihre kamre vich hai?", vi: "Lớp ở phòng nào?", en: "Which room is the class in?", note_vi: "ਕਿਹੜੇ ਕਮਰੇ ਵਿੱਚ = ở phòng nào.", note_en: "ਕਿਹੜੇ ਕਮਰੇ ਵਿੱਚ = in which room." },
+      { cell_id: "be0c2ab0-a4c5-4bd0-b243-1bbc54677cc1", pa: "ਕੀ ਅਧਿਆਪਕ ਨਾਲ ਮਿਲਣ ਦਾ ਸਮਾਂ ਹੈ?", romanization: "ki adhiapak naal milan da sama hai?", vi: "Có giờ gặp giáo viên không?", en: "Is there a time to meet the teacher?", note_vi: "ਨਾਲ = với; ਮਿਲਣ ਦਾ ਸਮਾਂ = giờ gặp.", note_en: "ਨਾਲ = with; ਮਿਲਣ ਦਾ ਸਮਾਂ = time to meet." },
+      { cell_id: "f5f7a000-f73b-42e8-8aac-f70a3ed8ffc4", pa: "ਮੇਰਾ ਬੱਚਾ ਅੱਜ ਸਕੂਲ ਨਹੀਂ ਆ ਸਕਦਾ।", romanization: "mera bachcha ajj school nahi aa sakda.", vi: "Con tôi hôm nay không thể đến trường.", en: "My child cannot come to school today.", note_vi: "ਸਕਦਾ agrees với ਬੱਚਾ.", note_en: "ਸਕਦਾ agrees with ਬੱਚਾ." },
+      { cell_id: "7a9a896f-428c-4203-854f-724738b09b98", pa: "ਕਲਾਸ ਕਿਹੜੇ ਕਮਰੇ ਵਿੱਚ ਹੈ?", romanization: "class kihre kamre vich hai?", vi: "Lớp ở phòng nào?", en: "Which room is the class in?", note_vi: "ਕਿਹੜੇ ਕਮਰੇ ਵਿੱਚ = ở phòng nào.", note_en: "ਕਿਹੜੇ ਕਮਰੇ ਵਿੱਚ = in which room." },
     ],
     traps: [
       { trap_vi: "ਮੇਰਾ/ਮੇਰੀ agrees với danh từ sau: ਮੇਰਾ ਬੱਚਾ, ਮੇਰੀ ਕਲਾਸ.", trap_en: "ਮੇਰਾ/ਮੇਰੀ agrees with the following noun: ਮੇਰਾ ਬੱਚਾ, ਮੇਰੀ ਕਲਾਸ.", better_pa: "ਮੇਰੀ ਕਲਾਸ", better_romanization: "meri class" },
@@ -274,9 +275,9 @@ export const formsAppointmentsA2: PunjabiFormsAppointmentsA2Item[] = [
     canada_practical_vi: "Works at Service Canada, library, community centre, settlement office.",
     canada_practical_en: "Works at Service Canada, libraries, community centres, settlement offices.",
     phrases: [
-      { pa: "ਮੈਨੂੰ ਇਹ ਫਾਰਮ ਭਰਨਾ ਹੈ।", romanization: "mainu eh form bharna hai.", vi: "Tôi cần điền mẫu này.", en: "I need to fill out this form.", note_vi: "ਫਾਰਮ ਭਰਨਾ = điền form.", note_en: "ਫਾਰਮ ਭਰਨਾ = fill out a form." },
-      { pa: "ਕਿਹੜੇ ਦਸਤਾਵੇਜ਼ ਚਾਹੀਦੇ ਹਨ?", romanization: "kihre dastavez chahide han?", vi: "Cần những giấy tờ nào?", en: "Which documents are needed?", note_vi: "Plural ਦਸਤਾਵੇਜ਼ → ਚਾਹੀਦੇ ਹਨ.", note_en: "Plural ਦਸਤਾਵੇਜ਼ → ਚਾਹੀਦੇ ਹਨ." },
-      { pa: "ਅਗਲਾ ਕਦਮ ਕੀ ਹੈ?", romanization: "agla kadam ki hai?", vi: "Bước tiếp theo là gì?", en: "What is the next step?", note_vi: "Useful routing/checkpoint phrase.", note_en: "Useful routing/checkpoint phrase." },
+      { cell_id: "4ba851c4-db44-43f6-83c8-f8ec26e22d6c", pa: "ਮੈਨੂੰ ਇਹ ਫਾਰਮ ਭਰਨਾ ਹੈ।", romanization: "mainu eh form bharna hai.", vi: "Tôi cần điền mẫu này.", en: "I need to fill out this form.", note_vi: "ਫਾਰਮ ਭਰਨਾ = điền form.", note_en: "ਫਾਰਮ ਭਰਨਾ = fill out a form." },
+      { cell_id: "f3e85e73-5708-43d0-84c3-5c0f08403eef", pa: "ਕਿਹੜੇ ਦਸਤਾਵੇਜ਼ ਚਾਹੀਦੇ ਹਨ?", romanization: "kihre dastavez chahide han?", vi: "Cần những giấy tờ nào?", en: "Which documents are needed?", note_vi: "Plural ਦਸਤਾਵੇਜ਼ → ਚਾਹੀਦੇ ਹਨ.", note_en: "Plural ਦਸਤਾਵੇਜ਼ → ਚਾਹੀਦੇ ਹਨ." },
+      { cell_id: "2a442951-d5b8-42d1-a39e-7300d4b2e0d6", pa: "ਅਗਲਾ ਕਦਮ ਕੀ ਹੈ?", romanization: "agla kadam ki hai?", vi: "Bước tiếp theo là gì?", en: "What is the next step?", note_vi: "Useful routing/checkpoint phrase.", note_en: "Useful routing/checkpoint phrase." },
     ],
     traps: [
       { trap_vi: "ਚਾਹੀਦਾ with singular, ਚਾਹੀਦੇ ਹਨ with plural.", trap_en: "ਚਾਹੀਦਾ with singular, ਚਾਹੀਦੇ ਹਨ with plural.", better_pa: "ਦਸਤਾਵੇਜ਼ ਚਾਹੀਦੇ ਹਨ।", better_romanization: "dastavez chahide han." },
@@ -296,9 +297,9 @@ export const formsAppointmentsA2: PunjabiFormsAppointmentsA2Item[] = [
     script_awareness_vi: scriptAwarenessVi,
     script_awareness_en: scriptAwarenessEn,
     phrases: [
-      { pa: "ਠੀਕ ਹੈ, ਮੈਨੂੰ ਸਮਝ ਆ ਗਈ।", romanization: "theek hai, mainu samajh aa gai.", vi: "Được, tôi hiểu rồi.", en: "Okay, I understand now.", note_vi: "ਸਮਝ ਆ ਗਈ = đã hiểu.", note_en: "ਸਮਝ ਆ ਗਈ = understood." },
-      { pa: "ਹਾਂ ਜੀ, ਪਤਾ ਸਹੀ ਹੈ।", romanization: "haan ji, pata sahi hai.", vi: "Vâng, địa chỉ đúng.", en: "Yes, the address is correct.", note_vi: "ਜੀ làm câu lịch sự hơn.", note_en: "ਜੀ makes it more polite." },
-      { pa: "ਮੈਂ ਕੱਲ੍ਹ ਸਵੇਰੇ ਦਸ ਵਜੇ ਆਵਾਂਗੀ।", romanization: "main kal savere das vaje aavangi.", vi: "Tôi sẽ đến sáng mai lúc mười giờ. (nữ)", en: "I will come tomorrow morning at ten. (female speaker)", note_vi: "ਆਵਾਂਗੀ cho người nói nữ.", note_en: "ਆਵਾਂਗੀ for a female speaker." },
+      { cell_id: "1d307c38-d435-4e6d-bcea-827d97bb381b", pa: "ਠੀਕ ਹੈ, ਮੈਨੂੰ ਸਮਝ ਆ ਗਈ।", romanization: "theek hai, mainu samajh aa gai.", vi: "Được, tôi hiểu rồi.", en: "Okay, I understand now.", note_vi: "ਸਮਝ ਆ ਗਈ = đã hiểu.", note_en: "ਸਮਝ ਆ ਗਈ = understood." },
+      { cell_id: "ce93705e-93b2-48c9-952d-cc2c45fcf7f6", pa: "ਹਾਂ ਜੀ, ਪਤਾ ਸਹੀ ਹੈ।", romanization: "haan ji, pata sahi hai.", vi: "Vâng, địa chỉ đúng.", en: "Yes, the address is correct.", note_vi: "ਜੀ làm câu lịch sự hơn.", note_en: "ਜੀ makes it more polite." },
+      { cell_id: "bdf4b6e1-2eb3-44fa-8310-3e26390d3395", pa: "ਮੈਂ ਕੱਲ੍ਹ ਸਵੇਰੇ ਦਸ ਵਜੇ ਆਵਾਂਗੀ।", romanization: "main kal savere das vaje aavangi.", vi: "Tôi sẽ đến sáng mai lúc mười giờ. (nữ)", en: "I will come tomorrow morning at ten. (female speaker)", note_vi: "ਆਵਾਂਗੀ cho người nói nữ.", note_en: "ਆਵਾਂਗੀ for a female speaker." },
     ],
     traps: [
       { trap_vi: "ਕੱਲ੍ਹ cần ngữ cảnh; với future verb là ngày mai.", trap_en: "ਕੱਲ੍ਹ needs context; with a future verb it means tomorrow.", better_pa: "ਕੱਲ੍ਹ ਸਵੇਰੇ ਆਵਾਂਗੀ", better_romanization: "kal savere aavangi" },

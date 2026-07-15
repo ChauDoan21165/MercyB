@@ -16,6 +16,7 @@
 import { test, expect, type TestInfo } from "@playwright/test";
 import { GoTrueClient } from "@supabase/auth-js";
 
+import { CORRECTION_SOURCE_SYNTHETIC_MARKER_KEY } from "../../src/lib/ai-tutor/correctionSourceSyntheticMarker";
 import {
   SYNTH_BASE_URL,
   SYNTH_EMAIL,
@@ -39,8 +40,10 @@ test.skip(
 );
 
 const FEEDBACK_TABLE = "learning_events";
+const CORRECTION_SOURCE_EVENTS_TABLE = "correction_source_events";
 const SINK_WAIT_MS = 60_000; // journey (d) budget
-const DEFER_NOTICE_RE = /Đã ghi nhận · Noted|Mercy ghi nhận câu này|Got it.*share a small tip in a moment/i;
+const DEFER_NOTICE_TITLE = "Đã ghi nhận · Noted";
+const CORRECTION_SOURCE_EVENT_WAIT_MS = 15_000;
 
 function projectRef(url: string): string {
   return new URL(url).host.split(".")[0];
@@ -87,11 +90,22 @@ function orderedCorrectionProbes(
   return [...probes.filter((probe) => probe.id !== feedbackProbe.id), feedbackProbe];
 }
 
+async function assertSyntheticMarkerOnCurrentOrigin(
+  page: import("@playwright/test").Page,
+): Promise<void> {
+  const marker = await page.evaluate((key) => {
+    window.localStorage.setItem(key, "1");
+    return window.localStorage.getItem(key);
+  }, CORRECTION_SOURCE_SYNTHETIC_MARKER_KEY);
+  expect(marker).toBe("1");
+}
+
 async function submitCorrectionProbe(
   page: import("@playwright/test").Page,
   probe: SeededCorrectionProbe,
 ): Promise<void> {
   await page.goto(`${SYNTH_BASE_URL}/ai-tutor`, { waitUntil: "networkidle" });
+  await assertSyntheticMarkerOnCurrentOrigin(page);
   const field = page.getByRole("textbox").first();
   await field.click();
   await field.fill(probe.sentence);
@@ -126,6 +140,24 @@ async function readLatestShadowDecision(
   const row = rows[0];
   if (!row) return `shadow_missing: expected ${expectedShadowAction(probe)}`;
   return `shadow=${row.payload?.action ?? "unknown"} reason=${row.payload?.reason ?? "unknown"} expected=${expectedShadowAction(probe)}`;
+}
+
+async function waitForCorrectionSourceEventInsert(
+  page: import("@playwright/test").Page,
+): Promise<string> {
+  const resp = await page.waitForResponse(
+    (candidate) => {
+      if (candidate.request().method() !== "POST") return false;
+      if (!candidate.url().includes(`/rest/v1/${CORRECTION_SOURCE_EVENTS_TABLE}`)) return false;
+      const body = candidate.request().postData() ?? "";
+      return body.includes('"source":"local_corrected"') && body.includes('"is_synthetic":true');
+    },
+    { timeout: CORRECTION_SOURCE_EVENT_WAIT_MS },
+  );
+  if (!resp.ok()) {
+    throw new Error(`correction_source_events insert returned ${resp.status()}: ${(await resp.text()).slice(0, 120)}`);
+  }
+  return `correction_source_events local_corrected synthetic insert completed (${resp.status()})`;
 }
 
 /**
@@ -179,7 +211,7 @@ async function seedSession(
   const blob = captured[key];
   if (!blob) throw new Error("GoTrueClient persisted no session blob under the storage key");
   await context.addInitScript(
-    ([k, v, pairKey, pairVal, nativeKey, nativeVal]) => {
+    ([k, v, pairKey, pairVal, nativeKey, nativeVal, syntheticMarkerKey]) => {
       window.localStorage.setItem(k, v);
       // The synthetic account authenticates via API injection and never runs the
       // /ai-tutor language picker, so it has no stored pair. Bare /ai-tutor gates
@@ -189,6 +221,7 @@ async function seedSession(
       // (readAnonymousPair shape {native, targets[]} + the nativeLang mirror).
       window.localStorage.setItem(pairKey, pairVal);
       window.localStorage.setItem(nativeKey, nativeVal);
+      window.localStorage.setItem(syntheticMarkerKey, "1");
     },
     [
       key,
@@ -197,6 +230,7 @@ async function seedSession(
       JSON.stringify({ native: "vi", targets: ["en"] }),
       "mercyblade.nativeLang",
       "vi",
+      CORRECTION_SOURCE_SYNTHETIC_MARKER_KEY,
     ] as const,
   );
   return { accessToken: data.session.access_token };
@@ -251,11 +285,15 @@ test("(b/c/d) correction → feedback tap → row lands with rule_or_detector_id
   } else {
     for (const probe of orderedCorrectionProbes(seededProbes, feedbackProbe)) {
       const submittedAt = new Date();
+      let correctionSourceInsert: Promise<string> | null = null;
       try {
+        correctionSourceInsert = probe.id === feedbackProbe.id
+          ? waitForCorrectionSourceEventInsert(page)
+          : null;
         await submitCorrectionProbe(page, probe);
 
         if (probe.expectedProductPath === "legacy_timing_defer") {
-          await expect(page.getByText(DEFER_NOTICE_RE)).toBeVisible({ timeout: 30_000 });
+          await expect(page.getByText(DEFER_NOTICE_TITLE, { exact: true })).toBeVisible({ timeout: 30_000 });
           await expect(page.getByTestId("correction-feedback-helpful")).toHaveCount(0);
           details.push(
             `${probe.id}: legacy timing defer notice rendered; no correction feedback expected; expectedDetector=${probe.expectedDetector}`,
@@ -266,15 +304,21 @@ test("(b/c/d) correction → feedback tap → row lands with rule_or_detector_id
         // The correction is "rendered" iff the feedback buttons mount (they only
         // render for a correction that carries a real rule_or_detector_id).
         await expect(page.getByTestId("correction-feedback-helpful")).toBeVisible({ timeout: 30_000 });
+        const correctionSourceDetail = correctionSourceInsert
+          ? await correctionSourceInsert
+          : "correction_source_events_not_checked";
         const shadowDecision = probe.expectedProductPath === "lpi_shadow_defer"
           ? await readLatestShadowDecision(page, accessToken, probe, submittedAt)
             .catch((e) => `shadow_unchecked: ${redact((e as Error).message)}`)
           : "shadow_not_checked";
         details.push(
-          `${probe.id}: correction rendered with feedback buttons; productPath=${probe.expectedProductPath}; expectedDetector=${probe.expectedDetector}; expectedShadowPath=${probe.expectedShadowPath}; ${shadowDecision}`,
+          `${probe.id}: correction rendered with feedback buttons; productPath=${probe.expectedProductPath}; expectedDetector=${probe.expectedDetector}; expectedShadowPath=${probe.expectedShadowPath}; ${correctionSourceDetail}; ${shadowDecision}`,
         );
         if (probe.id === feedbackProbe.id) feedbackReady = true;
       } catch (e) {
+        if (correctionSourceInsert) {
+          await correctionSourceInsert.catch(() => undefined);
+        }
         failures.push(`${probe.id}: ${redact((e as Error).message)}`);
       }
     }

@@ -1,4 +1,7 @@
 import { expect, test } from "vitest";
+import fs from "node:fs";
+import os from "node:os";
+import path from "node:path";
 
 import { run, runCheck, scanAsyncUiStateNoTerminalFailureFromText } from "../hardening-scan.mjs";
 
@@ -63,4 +66,75 @@ test("scanner check wrapper records elapsed time and timeout budget", () => {
   expect(result.findings).toEqual([]);
   expect(typeof result.elapsedMs).toBe("number");
   expect(result.timeoutMs).toBe(60_000);
+});
+
+test("scanner fail-on-findings mode exits nonzero when check L reports RLS intent drift", () => {
+  const root = fs.mkdtempSync(path.join(os.tmpdir(), "hardening-fail-on-findings-"));
+  try {
+    fs.mkdirSync(path.join(root, "supabase/migrations"), { recursive: true });
+    fs.mkdirSync(path.join(root, "security"), { recursive: true });
+    fs.writeFileSync(path.join(root, "supabase/migrations/001_table.sql"), `
+      create table public.audit_log (id uuid primary key);
+      alter table public.audit_log enable row level security;
+    `);
+    fs.writeFileSync(path.join(root, "security/rls-intent.json"), `${JSON.stringify({
+      schema_version: 1,
+      generated_by: "fixture",
+      scan_roots: ["supabase/migrations"],
+      migration_files: 0,
+      tables: {},
+    })}\n`);
+
+    const args = [path.resolve("scripts/hardening-scan.mjs")];
+    const env = { ...process.env, HARDENING_SCAN_CHECKS: "L", HARDENING_SCAN_SKIP_TOOL_VERSIONS: "1" };
+    const advisory = run(process.execPath, args, { timeoutMs: 10_000, cwd: root, env });
+    expect(advisory.code).toBe(0);
+    expect(advisory.stdout).toContain("Finding counts");
+
+    const failing = run(process.execPath, args, {
+      timeoutMs: 10_000,
+      cwd: root,
+      env: { ...env, HARDENING_SCAN_FAIL_ON_FINDINGS: "1" },
+    });
+    expect(failing.code).toBe(1);
+    expect(failing.stderr).toContain("FAIL_ON_FINDINGS");
+  } finally {
+    fs.rmSync(root, { recursive: true, force: true });
+  }
+});
+
+test("scanner fail-on-findings mode exits nonzero when check M reports auth intent drift", () => {
+  const root = fs.mkdtempSync(path.join(os.tmpdir(), "hardening-auth-fail-on-findings-"));
+  try {
+    fs.mkdirSync(path.join(root, "functions/api"), { recursive: true });
+    fs.mkdirSync(path.join(root, "security"), { recursive: true });
+    fs.writeFileSync(path.join(root, "functions/api/ping.ts"), `
+      export async function onRequest() {
+        return new Response(JSON.stringify({ ok: true }));
+      }
+    `);
+    fs.writeFileSync(path.join(root, "security/auth-intent.json"), `${JSON.stringify({
+      schema_version: 1,
+      generated_by: "fixture",
+      scan_roots: ["functions", "supabase/functions", "src"],
+      endpoints: {},
+    })}\n`);
+
+    const args = [path.resolve("scripts/hardening-scan.mjs")];
+    const env = { ...process.env, HARDENING_SCAN_CHECKS: "M", HARDENING_SCAN_SKIP_TOOL_VERSIONS: "1" };
+    const advisory = run(process.execPath, args, { timeoutMs: 10_000, cwd: root, env });
+    expect(advisory.code).toBe(0);
+    expect(advisory.stdout).toContain("Finding counts");
+    expect(advisory.stdout).toContain("M:1");
+
+    const failing = run(process.execPath, args, {
+      timeoutMs: 10_000,
+      cwd: root,
+      env: { ...env, HARDENING_SCAN_FAIL_ON_FINDINGS: "1" },
+    });
+    expect(failing.code).toBe(1);
+    expect(failing.stderr).toContain("FAIL_ON_FINDINGS");
+  } finally {
+    fs.rmSync(root, { recursive: true, force: true });
+  }
 });

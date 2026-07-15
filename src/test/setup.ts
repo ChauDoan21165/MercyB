@@ -10,6 +10,16 @@ import {
   resetCanonicalStorageMock,
 } from "./storageMock";
 
+const PROD_SUPABASE_PROJECT_REF = "buemdfxyhxunzpgdoqin";
+const resolvedVitestSupabaseUrl = String(import.meta.env.VITE_SUPABASE_URL ?? "");
+
+if (resolvedVitestSupabaseUrl.includes(PROD_SUPABASE_PROJECT_REF)) {
+  throw new Error(
+    `[vitest-prod-supabase-guard] Vitest must not run against production Supabase (${PROD_SUPABASE_PROJECT_REF}). ` +
+      "Override VITE_SUPABASE_URL/VITE_SUPABASE_ANON_KEY to non-prod values for test jobs.",
+  );
+}
+
 installCanonicalStorageMock();
 
 beforeEach(() => {
