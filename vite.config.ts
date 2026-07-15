@@ -669,7 +669,13 @@ export default defineConfig({
             return 'ai-tutor-vietlish-content';
           }
           if (s.includes('/src/lib/feedback/')) return 'ai-tutor-feedback';
-          if (s.includes('/src/lib/pronunciation/')) return 'ai-tutor-pronunciation';
+          // Pronunciation helpers import tutor adapters and tutor surfaces import
+          // pronunciation feedback. Keeping them in separate manual chunks creates
+          // a Rollup circular chunk warning (`ai-tutor-pronunciation ->
+          // ai-tutor-engine -> ai-tutor-pronunciation`) and can make stale-tab
+          // deploy skew harder to recover. Bucket the shared pronunciation library
+          // with the tutor engine; route-level pronunciation pages still stay lazy.
+          if (s.includes('/src/lib/pronunciation/')) return 'ai-tutor-engine';
           if (s.includes('/src/lib/ai-tutor/')) return 'ai-tutor-core';
           if (s.includes('/src/lib/tutor/')) return 'ai-tutor-engine';
 
