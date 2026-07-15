@@ -145,6 +145,25 @@ describe("learningEvents", () => {
     expect(getLearningEvents()[0]?.ruleOrDetectorId).toBe("l1-detector:past-tense");
   });
 
+  it("carries only valid persisted cell UUIDs through", () => {
+    const event = recordLearningEvent({
+      eventType: "feedback_helpful",
+      product: "ai_tutor",
+      ruleOrDetectorId: "engine:rule",
+      cellId: "550E8400-E29B-41D4-A716-446655440000",
+    });
+    const invalid = recordLearningEvent({
+      eventType: "feedback_not_helpful",
+      product: "ai_tutor",
+      ruleOrDetectorId: "engine:rule",
+      cellId: "not-a-cell-id",
+    });
+
+    expect(event?.cellId).toBe("550e8400-e29b-41d4-a716-446655440000");
+    expect(invalid?.cellId).toBeUndefined();
+    expect(getLearningEvents()[0]?.cellId).toBe("550e8400-e29b-41d4-a716-446655440000");
+  });
+
   describe("drain API (peekPendingEvents / ackEvents)", () => {
     it("drains oldest-first and acks a round-trip, leaving the rest queued", () => {
       const now = Date.now();

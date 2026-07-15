@@ -16,6 +16,8 @@ type CorrectionResult = TutorTurn & {
   grammarTip: string;
   practicePrompt: string;
   appliedRuleIds?: string[];
+  cell_id?: string | null;
+  cellId?: string | null;
 };
 
 type Props = {
@@ -83,13 +85,11 @@ export default function CorrectionMode({
   const register = result ? detectRegisterError({ learnerText: result.userText }) : { matched: false as const };
   const registerTag = register.matched ? register.tag : null;
 
-  const fallbackRuleId = result?.appliedRuleIds?.find((id) => id.trim()) ?? null;
-  // Provenance for the displayed correction, used to gate + attribute the
-  // learner feedback thumbs. Prefer the register detector (its explanation is a
-  // dedicated correction block), fall back to the L1 pattern chip, then to the
-  // local/AI correction rule id carried on the rendered result. Null only when
-  // the correction truly carries no provenance.
-  const correctionRuleId = registerTag ?? detectorHint?.tag ?? fallbackRuleId;
+  // Feedback provenance must come from the correction engine rule(s) that
+  // actually fired. Visual register/chip tags are teaching surfaces, not
+  // feedback attribution ids.
+  const correctionRuleId = result?.appliedRuleIds?.find((id) => id.trim()) ?? null;
+  const correctionCellId = result?.cell_id ?? result?.cellId ?? null;
   useEffect(() => {
     // Telemetry: emit register_correction_shown with the tag so the team can
     // measure how often each surface-detectable register pattern fires in prod.
@@ -335,6 +335,7 @@ export default function CorrectionMode({
           <CorrectionFeedbackButtons
             ruleOrDetectorId={correctionRuleId}
             targetLanguage={result.targetLanguage}
+            cellId={correctionCellId}
           />
 
           <button

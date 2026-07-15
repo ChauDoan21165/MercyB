@@ -14,6 +14,8 @@ export type TutorTurn = {
   nextQuestion?: string;
   shouldReadAloudText: string;
   createdAt: string;
+  cell_id?: string | null;
+  cellId?: string | null;
 };
 
 export type TutorCorrectionResult = {
