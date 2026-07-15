@@ -36,6 +36,7 @@ import { ConsentModal } from "@/components/ConsentModal";
 import { hasCaptureConsentDecision } from "@/lib/conversationCapture/captureConsent";
 import { putCorrection } from "@/lib/ai-tutor/learningMemory";
 import { emitFeatureOutcome } from "@/lib/analytics";
+import { recordLearnerProfileCorrection } from "@/lib/learner-profile/profileWriter";
 
 // A 'Sửa câu' correction handed off from the grammar surface. When present we
 // seed a learner-led, live-generated conversation with the learner's own
@@ -258,6 +259,9 @@ export default function AiConversationScenarioPanel({
       // sanitizes the tag; no raw learner text stored) so a future session can
       // recall it. Conversation practice is English on this surface.
       if (response.correction?.interferencePattern) {
+        recordLearnerProfileCorrection({
+          patternCode: response.correction.interferencePattern,
+        });
         try {
           await putCorrection({
             id: `conv-${Date.now()}`,

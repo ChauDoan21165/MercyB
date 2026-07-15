@@ -1,4 +1,4 @@
-// Supabase migrations fingerprint: d6ef4c58d29205c7fde51d97534a8fe32339e8c309d7b51e9c59be302d298702
+// Supabase migrations fingerprint: da3143e21c547716754b4dfb44de6eb6d182fe4b088af084f35e63e24ba059df
 export type Json =
   | string
   | number
@@ -3370,6 +3370,81 @@ export type Database = {
           updated_at?: string
           user_id?: string
           week_start?: string
+        }
+        Relationships: []
+      }
+      learner_error_patterns: {
+        Row: {
+          example_unit_ids: string[]
+          first_seen_at: string
+          is_synthetic: boolean
+          l1: string
+          last_seen_at: string
+          occurrence_count: number
+          pattern_code: string
+          resolved_count: number
+          trend: string
+          user_id: string
+        }
+        Insert: {
+          example_unit_ids?: string[]
+          first_seen_at?: string
+          is_synthetic?: boolean
+          l1: string
+          last_seen_at?: string
+          occurrence_count?: number
+          pattern_code: string
+          resolved_count?: number
+          trend?: string
+          user_id: string
+        }
+        Update: {
+          example_unit_ids?: string[]
+          first_seen_at?: string
+          is_synthetic?: boolean
+          l1?: string
+          last_seen_at?: string
+          occurrence_count?: number
+          pattern_code?: string
+          resolved_count?: number
+          trend?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      learner_skill_state: {
+        Row: {
+          cefr_estimate: string | null
+          confidence: number | null
+          evidence_count: number
+          is_synthetic: boolean
+          last_assessed_at: string | null
+          score: number | null
+          skill: Database["public"]["Enums"]["learner_skill"]
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          cefr_estimate?: string | null
+          confidence?: number | null
+          evidence_count?: number
+          is_synthetic?: boolean
+          last_assessed_at?: string | null
+          score?: number | null
+          skill: Database["public"]["Enums"]["learner_skill"]
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          cefr_estimate?: string | null
+          confidence?: number | null
+          evidence_count?: number
+          is_synthetic?: boolean
+          last_assessed_at?: string | null
+          score?: number | null
+          skill?: Database["public"]["Enums"]["learner_skill"]
+          updated_at?: string
+          user_id?: string
         }
         Relationships: []
       }
@@ -15833,6 +15908,14 @@ export type Database = {
       feedback_priority: "low" | "normal" | "high"
       feedback_status: "new" | "open" | "resolved" | "archived"
       interview_prompt_difficulty: "easy" | "medium" | "hard"
+      learner_skill:
+        | "pronunciation"
+        | "grammar"
+        | "vocabulary"
+        | "listening"
+        | "speaking"
+        | "reading"
+        | "writing"
       interview_prompt_question_type:
         | "behavioral"
         | "technical"

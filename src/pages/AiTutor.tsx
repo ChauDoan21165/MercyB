@@ -39,6 +39,7 @@ import {
   appendCleanSpeech,
 } from "@/lib/ai-tutor/tutorUiCopy";
 import { recordCorrectionSourceEvent } from "@/lib/ai-tutor/correctionSourceEvents";
+import { recordLearnerProfileCorrection } from "@/lib/learner-profile/profileWriter";
 import { fetchWithTimeout } from "@/lib/networkTimeout";
 import { getTutorCopy, type TutorCopy, type TutorTarget } from "@/lib/tutor/tutorCopy";
 import { getSpeechLocale, getTtsLocale } from "@/lib/tutor/languageRegistry";
@@ -2862,6 +2863,9 @@ export default function AiTutorPage() {
     // Track 2 — anonymized learner-interaction capture. Fire-and-forget;
     // flag + consent gated, never throws. The local correction is what the
     // learner saw, so capture it here next to the existing telemetry.
+    recordLearnerProfileCorrection({
+      appliedRuleIds: localCorrection.appliedRuleIds,
+    });
     void captureCorrection({
       userText: trimmed,
       correctedText: corrected,

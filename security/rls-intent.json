@@ -4,7 +4,7 @@
   "scan_roots": [
     "supabase/migrations"
   ],
-  "migration_files": 267,
+  "migration_files": 271,
   "tables": {
     "private.referral_leaderboard_all_time_private": {
       "created_in_migrations": true,
@@ -1672,10 +1672,58 @@
         }
       ]
     },
+    "public.learner_error_patterns": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "learner_error_patterns_admin_select",
+          "command": "select",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "public.get_admin_level(auth.uid()) >= 9",
+          "with_check": null
+        },
+        {
+          "name": "learner_error_patterns_select_own",
+          "command": "select",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "user_id = auth.uid()",
+          "with_check": null
+        }
+      ]
+    },
     "public.learner_interaction_capture": {
       "created_in_migrations": true,
       "rls_enabled": true,
       "policies": []
+    },
+    "public.learner_skill_state": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "learner_skill_state_admin_select",
+          "command": "select",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "public.get_admin_level(auth.uid()) >= 9",
+          "with_check": null
+        },
+        {
+          "name": "learner_skill_state_select_own",
+          "command": "select",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "user_id = auth.uid()",
+          "with_check": null
+        }
+      ]
     },
     "public.learning_data_consent": {
       "created_in_migrations": true,
