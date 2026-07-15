@@ -6,6 +6,10 @@ import {
   normalizeEntitlement,
   toIsoString,
 } from "./entitlement.ts";
+import {
+  buildProfileProjection,
+  profileProjectionNeedsSync,
+} from "../_shared/entitlementProjection.ts";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -41,7 +45,7 @@ function json(payload: unknown, status = 200) {
 // lifetime), so dropping null-tolerance is safe.
 async function fetchActiveGiftSubscription(
   client: ReturnType<typeof createClient>,
-  userId: string,
+  userId: string
 ): Promise<{ current_period_end: string | null } | null> {
   const nowIso = new Date().toISOString();
   const { data, error } = await client
@@ -57,7 +61,7 @@ async function fetchActiveGiftSubscription(
   if (error || !data) return null;
   return {
     current_period_end: toIsoString(
-      (data as { current_period_end?: unknown }).current_period_end,
+      (data as { current_period_end?: unknown }).current_period_end
     ),
   };
 }
@@ -82,7 +86,7 @@ Deno.serve(async (req) => {
           error:
             "Missing SUPABASE_URL, SUPABASE_ANON_KEY, or SUPABASE_SERVICE_ROLE_KEY",
         },
-        500,
+        500
       );
     }
 
@@ -129,16 +133,23 @@ Deno.serve(async (req) => {
       return json({ error: subscriptionsError.message }, 500);
     }
 
-    let profileCreatedAt: unknown = null;
-    let profileTrialExtensionDays: unknown = 0;
+    let profile: {
+      created_at?: unknown;
+      trial_extension_days?: unknown;
+      premium_status?: unknown;
+      premium_expires_at?: unknown;
+      premium_source?: unknown;
+      tier?: unknown;
+    } | null = null;
     try {
-      const { data: profile } = await adminClient
+      const { data } = await adminClient
         .from("profiles")
-        .select("created_at, trial_extension_days")
+        .select(
+          "created_at, trial_extension_days, premium_status, premium_expires_at, premium_source, tier"
+        )
         .eq("id", user.id)
         .maybeSingle();
-      profileCreatedAt = profile?.created_at ?? null;
-      profileTrialExtensionDays = profile?.trial_extension_days ?? 0;
+      profile = data ?? null;
     } catch {
       // fail open: missing profile → grandfathered
     }
@@ -166,10 +177,31 @@ Deno.serve(async (req) => {
       }
     }
 
+    const projection = buildProfileProjection(entitlement);
+    if (profileProjectionNeedsSync(profile, projection)) {
+      try {
+        const { error: projectionError } = await adminClient
+          .from("profiles")
+          .update(projection)
+          .eq("id", user.id);
+        if (projectionError) {
+          console.warn(
+            "[me-entitlement] projection sync skipped:",
+            projectionError.message
+          );
+        }
+      } catch (projectionError) {
+        console.warn(
+          "[me-entitlement] projection sync threw:",
+          projectionError
+        );
+      }
+    }
+
     const trial = computeTrialStatus(
-      profileCreatedAt,
+      profile?.created_at ?? null,
       entitlement.is_premium,
-      profileTrialExtensionDays,
+      profile?.trial_extension_days ?? 0
     );
 
     return json({ ...entitlement, ...trial });
@@ -178,7 +210,7 @@ Deno.serve(async (req) => {
       {
         error: error instanceof Error ? error.message : "Unknown error",
       },
-      500,
+      500
     );
   }
 });

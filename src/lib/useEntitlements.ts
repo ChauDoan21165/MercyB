@@ -15,6 +15,7 @@ import {
 import { supabase } from "@/lib/supabaseClient";
 import { qk } from "@/lib/queries/keys";
 import { useEntitlementQuery } from "@/lib/queries/useEntitlementQuery";
+import { dispatchEntitlementRefresh } from "@/lib/entitlementRefresh";
 import { useAuth } from "@/providers/AuthProvider";
 
 type Ent = BackendEntitlement & {
@@ -26,11 +27,15 @@ type Ent = BackendEntitlement & {
 };
 
 function normalizeTier(tier: string | null | undefined): string {
-  return String(tier || "level0").toLowerCase().trim();
+  return String(tier || "level0")
+    .toLowerCase()
+    .trim();
 }
 
 function isPremiumStatus(status: string | null | undefined): boolean {
-  const s = String(status || "").toLowerCase().trim();
+  const s = String(status || "")
+    .toLowerCase()
+    .trim();
   return s === "active" || s === "trialing";
 }
 
@@ -60,7 +65,10 @@ function tierToRank(tier: string, entitlement?: BackendEntitlement): number {
   return Number.isFinite(n) ? n : 0;
 }
 
-function hasPaidRepoAccess(ent: BackendEntitlement, resolvedTier: string): boolean {
+function hasPaidRepoAccess(
+  ent: BackendEntitlement,
+  resolvedTier: string
+): boolean {
   const tier = normalizeTier(resolvedTier);
   const premiumActive = ent.is_premium === true && isPremiumStatus(ent.status);
   if (isPaidBillingTier(tier)) return premiumActive;
@@ -70,7 +78,7 @@ function hasPaidRepoAccess(ent: BackendEntitlement, resolvedTier: string): boole
 function buildFeatures(
   entitlement: BackendEntitlement,
   resolvedTier: string,
-  vipRank: number,
+  vipRank: number
 ) {
   const normalizedTier = normalizeTier(resolvedTier);
   const premiumActive =
@@ -114,7 +122,7 @@ function buildFeatures(
  */
 function applyGiftSubscriptionOverlay(
   base: BackendEntitlement,
-  giftSub: ActiveGiftSubscription,
+  giftSub: ActiveGiftSubscription
 ): BackendEntitlement {
   return {
     ...base,
@@ -195,15 +203,18 @@ export function useEntitlements() {
       queryClient.invalidateQueries({ queryKey: qk.entitlement(userId) }),
       queryClient.invalidateQueries({ queryKey: qk.giftSubscription(userId) }),
     ]);
+    dispatchEntitlementRefresh();
   }, [queryClient, userId]);
 
   const features = useMemo(
     () => (data?.features ?? {}) as Record<string, unknown>,
-    [data],
+    [data]
   );
 
   function hasFlag(key: string, fallback = false) {
-    const normalized = String(key || "").trim().toLowerCase();
+    const normalized = String(key || "")
+      .trim()
+      .toLowerCase();
     const value = features[normalized];
 
     if (typeof value === "boolean") return value;
@@ -239,7 +250,9 @@ export function useEntitlements() {
   }
 
   function getLimit(key: string, fallback: number) {
-    const normalized = String(key || "").trim().toLowerCase();
+    const normalized = String(key || "")
+      .trim()
+      .toLowerCase();
     const value = features[normalized];
 
     if (typeof value === "number" && Number.isFinite(value)) return value;
