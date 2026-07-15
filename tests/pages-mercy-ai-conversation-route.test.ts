@@ -18,16 +18,21 @@ const env = {
   OPENAI_API_KEY: "openai-key",
 };
 
+let testRequestIndex = 0;
+let testUserIndex = 0;
+
 function postMercyAi(
   body: Record<string, unknown>,
   envOverride?: Record<string, string>,
 ): Promise<Response> {
+  testRequestIndex += 1;
   return onRequestPost({
     request: new Request("https://example.test/api/mercy-ai", {
       method: "POST",
       headers: {
         Authorization: "Bearer user-token",
         "Content-Type": "application/json",
+        "x-real-ip": `192.0.2.${testRequestIndex}`,
       },
       body: JSON.stringify(body),
     }),
@@ -51,8 +56,9 @@ function appFetchCalls(fetchMock: FetchSpy) {
 describe("Pages /api/mercy-ai AI conversation mode", () => {
   beforeEach(() => {
     vi.restoreAllMocks();
+    testUserIndex += 1;
     getUserMock.mockResolvedValue({
-      data: { user: { id: "user-1" } },
+      data: { user: { id: `00000000-0000-4000-8000-${String(testUserIndex).padStart(12, "0")}` } },
       error: null,
     });
   });
@@ -109,8 +115,8 @@ describe("Pages /api/mercy-ai AI conversation mode", () => {
         apikey: "anon-key",
       },
     });
-    expect(String(calls[1][0])).toBe(
-      "https://supabase.test/rest/v1/profiles?select=admin_level&id=eq.user-1&limit=1",
+    expect(String(calls[1][0])).toMatch(
+      /^https:\/\/supabase\.test\/rest\/v1\/profiles\?select=admin_level&id=eq\.[0-9a-f-]+&limit=1$/,
     );
 
     const openAiBody = JSON.parse(String(calls[2][1]?.body));
@@ -153,6 +159,98 @@ describe("Pages /api/mercy-ai AI conversation mode", () => {
       error: "OpenAI response missing generated Mercy reply",
     });
     expect(appFetchCalls(fetchMock)).toHaveLength(3);
+  });
+
+  it("logs OpenAI provider failures with the failing subcall and model", async () => {
+    const fetchMock = vi.fn<typeof fetch>()
+      .mockResolvedValue(new Response(null, { status: 201 }))
+      .mockResolvedValueOnce(jsonResponse({ is_premium: true, status: "active" }))
+      .mockResolvedValueOnce(jsonResponse([{ admin_level: 0 }]))
+      .mockResolvedValueOnce(new Response(
+        JSON.stringify({ error: { message: "model unavailable" } }),
+        { status: 403, headers: { "Content-Type": "application/json" } },
+      ));
+    vi.stubGlobal("fetch", fetchMock);
+
+    const response = await postMercyAi({
+      mode: "ai-conversation-turn",
+      scenarioId: "learner-led",
+      learnerText: "I need to call my landlord.",
+      turnCount: 0,
+    });
+
+    expect(response.status).toBe(502);
+    await expect(response.json()).resolves.toEqual({ error: "OpenAI 403" });
+
+    const failureLogCall = fetchMock.mock.calls.find(([url]) =>
+      String(url).includes("function_failure_logs"),
+    );
+    expect(failureLogCall).toBeTruthy();
+    const row = JSON.parse(String(failureLogCall?.[1]?.body));
+    expect(row).toMatchObject({
+      status: 502,
+      error_signature: "ai_conversation_failed",
+      detail: {
+        mode: "ai-conversation-turn",
+        provider: "openai",
+        providerStatus: 403,
+        upstreamStatus: 403,
+        model: "gpt-4o-mini",
+        subcall: "draft",
+        failureStage: "provider_response",
+        upstreamBody: '{"error":{"message":"model unavailable"}}',
+      },
+    });
+  });
+
+  it("logs unexpected post-turn handler throws with typed JSON and stage detail", async () => {
+    const fetchMock = vi.fn<typeof fetch>()
+      .mockResolvedValue(new Response(null, { status: 201 }))
+      .mockResolvedValueOnce(jsonResponse({ is_premium: true, status: "active" }))
+      .mockResolvedValueOnce(jsonResponse([{ admin_level: 0 }]))
+      .mockResolvedValueOnce(jsonResponse({
+        choices: [{
+          message: {
+            content: JSON.stringify({
+              reply: "You need to call your landlord. What do you want to ask first?",
+              correctionCandidate: null,
+            }),
+          },
+        }],
+        usage: { prompt_tokens: 90, completion_tokens: 20, total_tokens: 110 },
+      }));
+    vi.stubGlobal("fetch", fetchMock);
+
+    const response = await postMercyAi({
+      mode: "ai-conversation-turn",
+      scenarioId: "learner-led",
+      learnerText: "I need to call my landlord.",
+      turnCount: 0,
+    }, {
+      ...env,
+      SUPABASE_SERVICE_ROLE_KEY: "service-role-key",
+    });
+
+    expect(response.status).toBe(502);
+    await expect(response.json()).resolves.toEqual({
+      error: "client.from is not a function",
+    });
+
+    const failureLogCall = fetchMock.mock.calls.find(([url]) =>
+      String(url).includes("function_failure_logs"),
+    );
+    expect(failureLogCall).toBeTruthy();
+    const row = JSON.parse(String(failureLogCall?.[1]?.body));
+    expect(row).toMatchObject({
+      status: 502,
+      error_signature: "ai_conversation_failed",
+      detail: {
+        mode: "ai-conversation-turn",
+        failureStage: "cost_logging",
+        errorName: "TypeError",
+        errorMessage: "client.from is not a function",
+      },
+    });
   });
 
   it("requires premium entitlement before calling OpenAI", async () => {
@@ -310,8 +408,9 @@ describe("Pages /api/mercy-ai AI conversation mode", () => {
 describe("Pages /api/mercy-ai sentence-correction mode", () => {
   beforeEach(() => {
     vi.restoreAllMocks();
+    testUserIndex += 1;
     getUserMock.mockResolvedValue({
-      data: { user: { id: "user-1" } },
+      data: { user: { id: `00000000-0000-4000-8000-${String(testUserIndex).padStart(12, "0")}` } },
       error: null,
     });
   });
@@ -354,6 +453,43 @@ describe("Pages /api/mercy-ai sentence-correction mode", () => {
     expect(body.model).toBe("gpt-4o-mini");
     expect(body.temperature).toBe(0.25);
     expect(body.response_format).toEqual({ type: "json_object" });
+  });
+
+  it("fails over sentence correction from OpenAI to DeepSeek on provider failure", async () => {
+    const fetchMock = vi.fn<typeof fetch>()
+      .mockResolvedValueOnce(jsonResponse({ error: { message: "quota" } }, 429))
+      .mockResolvedValueOnce(jsonResponse({
+        choices: [{
+          message: {
+            content: JSON.stringify({
+              corrected: "This lesson is easier than yesterday.",
+              explanation: "Dùng 'easier' thay vì 'more easy'.",
+              grammarTip: "Mẹo: easy → easier trong so sánh hơn.",
+              confident: true,
+            }),
+          },
+        }],
+        usage: { prompt_tokens: 90, completion_tokens: 35, total_tokens: 125 },
+      }));
+    vi.stubGlobal("fetch", fetchMock);
+
+    const response = await postMercyAi(
+      {
+        mode: "sentence-correction",
+        learnerText: "This lesson is more easy than yesterday.",
+      },
+      { ...env, DEEPSEEK_API_KEY: "deepseek-key" },
+    );
+
+    expect(response.status).toBe(200);
+    await expect(response.json()).resolves.toMatchObject({
+      corrected: "This lesson is easier than yesterday.",
+      confident: true,
+    });
+    const calls = appFetchCalls(fetchMock);
+    expect(calls).toHaveLength(2);
+    expect(String(calls[0][0])).toBe("https://api.openai.com/v1/chat/completions");
+    expect(String(calls[1][0])).toBe("https://api.deepseek.com/chat/completions");
   });
 
   it("returns confident:false with abstain message when the learner text is incomprehensible", async () => {
@@ -473,6 +609,10 @@ describe("Pages /api/mercy-ai sentence-correction mode", () => {
   });
 
   it("returns 500 when OPENAI_API_KEY is absent", async () => {
+    getUserMock.mockResolvedValueOnce({
+      data: { user: { id: "missing-openai-user" } },
+      error: null,
+    });
     const fetchMock = vi.fn<typeof fetch>();
     vi.stubGlobal("fetch", fetchMock);
 
@@ -484,5 +624,45 @@ describe("Pages /api/mercy-ai sentence-correction mode", () => {
     expect(response.status).toBe(500);
     await expect(response.json()).resolves.toEqual({ error: "Missing OPENAI_API_KEY" });
     expect(appFetchCalls(fetchMock)).toHaveLength(0);
+  });
+});
+
+describe("Pages /api/mercy-ai host mode", () => {
+  beforeEach(() => {
+    vi.restoreAllMocks();
+    getUserMock.mockResolvedValue({
+      data: { user: { id: "host-user" } },
+      error: null,
+    });
+  });
+
+  it("fails over host chat from OpenAI to DeepSeek while preserving { text } response shape", async () => {
+    const fetchMock = vi.fn<typeof fetch>()
+      .mockResolvedValueOnce(jsonResponse({ error: { message: "upstream overloaded" } }, 503))
+      .mockResolvedValueOnce(jsonResponse({
+        choices: [{
+          message: {
+            content: JSON.stringify({
+              text: "EN:\nHi. What are you practicing today?\n\nVI:\nChào bạn. Hôm nay bạn muốn luyện gì?",
+            }),
+          },
+        }],
+        usage: { prompt_tokens: 70, completion_tokens: 25, total_tokens: 95 },
+      }));
+    vi.stubGlobal("fetch", fetchMock);
+
+    const response = await postMercyAi(
+      { userText: "hi", lang: "en" },
+      { ...env, DEEPSEEK_API_KEY: "deepseek-key" },
+    );
+
+    expect(response.status).toBe(200);
+    await expect(response.json()).resolves.toEqual({
+      text: "EN:\nHi. What are you practicing today?\n\nVI:\nChào bạn. Hôm nay bạn muốn luyện gì?",
+    });
+    const calls = appFetchCalls(fetchMock);
+    expect(calls).toHaveLength(2);
+    expect(String(calls[0][0])).toBe("https://api.openai.com/v1/chat/completions");
+    expect(String(calls[1][0])).toBe("https://api.deepseek.com/chat/completions");
   });
 });

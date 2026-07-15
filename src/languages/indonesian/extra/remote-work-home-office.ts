@@ -16,6 +16,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   /** Indonesian word/phrase. */
   word: string;
   /** English meaning. */
@@ -31,6 +32,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   /** Indonesian line. */
   text: string;
@@ -193,6 +195,7 @@ export const lessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: learn work chunks: `kerja dari rumah`, `ruang kerja`, `gangguan rumah`, `jadwal fleksibel`, `laporan online`, `komunikasi tim`, `produktivitas`. When reporting an issue, use the frame `Ada..., jadi...` then add `Saya akan...` to give a solution.",
     vocabulary: [
       {
+        cell_id: "3c024018-ca55-46df-ae5b-6f4caba4e122",
         word: "kerja dari rumah",
         en: "work from home",
         vi: "làm việc từ nhà",
@@ -201,6 +204,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "KER-ja da-ri ROO-mah",
       },
       {
+        cell_id: "265bc52b-0427-4a27-960b-80b387c5e0f1",
         word: "ruang kerja",
         en: "workspace / office room",
         vi: "không gian làm việc",
@@ -209,6 +213,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "ROO-ang KER-ja",
       },
       {
+        cell_id: "efcd8f82-b823-4e46-818a-6338e14e7122",
         word: "gangguan rumah",
         en: "home interruption",
         vi: "việc gián đoạn ở nhà",
@@ -217,6 +222,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "gang-GOO-an ROO-mah",
       },
       {
+        cell_id: "417332c7-62a1-4e40-aa15-517d4771bc96",
         word: "jadwal fleksibel",
         en: "flexible schedule",
         vi: "lịch linh hoạt",
@@ -225,6 +231,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "JAD-wal flek-SEE-bel",
       },
       {
+        cell_id: "67861824-7b15-4cea-bdba-3c10791027c1",
         word: "laporan online",
         en: "online report",
         vi: "báo cáo online",
@@ -233,6 +240,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "la-PO-ran on-LINE",
       },
       {
+        cell_id: "272b0d43-4004-4950-97f0-847bcb635ca7",
         word: "komunikasi tim",
         en: "team communication",
         vi: "giao tiếp nhóm",
@@ -241,6 +249,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "ko-mu-ni-KA-si team",
       },
       {
+        cell_id: "508db537-a6f8-4a7b-a1b5-2f3ca9f6592b",
         word: "produktivitas",
         en: "productivity",
         vi: "năng suất",
@@ -249,6 +258,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "pro-duk-ti-VEE-tas",
       },
       {
+        cell_id: "a023f908-e85c-46aa-9272-4b342e12df64",
         word: "ringkasan pekerjaan",
         en: "work summary",
         vi: "tóm tắt công việc",
@@ -259,30 +269,35 @@ export const lessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "ec5dbea5-6bd8-410d-9055-d8ce46a96033",
         speaker: "Karyawan",
         text: "Pagi, hari ini saya kerja dari rumah karena ada urusan keluarga sebentar.",
         vi: "Chào buổi sáng, hôm nay tôi làm việc từ nhà vì có việc gia đình một lát.",
         en: "Morning, today I am working from home because I have a brief family matter.",
       },
       {
+        cell_id: "decc604d-f9cd-4d00-a6bc-19c76899c9df",
         speaker: "Manajer",
         text: "Baik. Pastikan tetap update progres di grup tim.",
         vi: "Được. Hãy đảm bảo vẫn cập nhật tiến độ trong nhóm.",
         en: "Okay. Make sure you still update progress in the team group.",
       },
       {
+        cell_id: "a52f9a11-122f-4a0c-9299-0b9f59cd704d",
         speaker: "Karyawan",
         text: "Siap. Kalau internet rumah bermasalah, saya akan pakai hotspot sementara.",
         vi: "Vâng. Nếu internet nhà có vấn đề, tôi sẽ dùng hotspot tạm thời.",
         en: "Understood. If the home internet has problems, I will use a hotspot temporarily.",
       },
       {
+        cell_id: "d23ca401-12a2-48e9-97a8-7cf79c971b3e",
         speaker: "Manajer",
         text: "Laporan online bisa dikirim sebelum jam lima sore?",
         vi: "Báo cáo online có thể gửi trước năm giờ chiều không?",
         en: "Can the online report be sent before 5 p.m.?",
       },
       {
+        cell_id: "e3ee9890-d25a-4a8e-827c-f2f34a00cf27",
         speaker: "Karyawan",
         text: "Bisa. Saya akan kirim ringkasan pekerjaan setelah rapat online selesai.",
         vi: "Có thể. Tôi sẽ gửi tóm tắt công việc sau khi cuộc họp online kết thúc.",

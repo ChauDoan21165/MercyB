@@ -88,6 +88,7 @@ export type ArabicSentence = {
 };
 
 export type ArabicVocabEntry = {
+  cell_id?: string;
   ar: string;
   romanization: string;
   en: string;
@@ -97,6 +98,7 @@ export type ArabicVocabEntry = {
 };
 
 export type ArabicDialogueLine = {
+  cell_id?: string;
   speaker: string;
   ar: string;
   romanization: string;

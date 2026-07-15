@@ -30,6 +30,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   /** Indonesian word/phrase. */
   word: string;
   /** English meaning. */
@@ -45,6 +46,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   /** Indonesian line. */
   text: string;
@@ -310,6 +312,7 @@ export const lessons: IndonesianLesson[] = [
     vocabulary: [
       // Roles & setup
       {
+        cell_id: "2a5b60a3-6212-4f01-bede-d9e7560921b7",
         word: "freelancer",
         en: "freelancer",
         vi: "người làm tự do",
@@ -318,6 +321,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "free-LAN-cer — also `pekerja lepas`",
       },
       {
+        cell_id: "e8920db0-b654-4cbb-b758-9bb41c2c6751",
         word: "klien",
         en: "client",
         vi: "khách hàng (dự án)",
@@ -326,6 +330,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "kli-EN — address them directly as `Kak`/`Pak`/`Bu`",
       },
       {
+        cell_id: "9c9a058d-3220-4535-93be-f416d7ea85bb",
         word: "proyek",
         en: "project",
         vi: "dự án",
@@ -334,6 +339,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "pro-YEK — `detail proyeknya` = project details",
       },
       {
+        cell_id: "67d35cd5-a4a2-484a-ba13-ab290935fc9b",
         word: "kerja remote",
         en: "remote work",
         vi: "làm việc từ xa",
@@ -343,6 +349,7 @@ export const lessons: IndonesianLesson[] = [
       },
       // Money & terms
       {
+        cell_id: "2da17c5e-29d0-4471-97cc-176a716f69d2",
         word: "tarif",
         en: "rate / fee",
         vi: "mức phí / biểu giá",
@@ -351,6 +358,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "TA-rif — `tarif per jam` = hourly rate",
       },
       {
+        cell_id: "e8b0ffed-03c2-4c9d-be0d-b3162eef2f70",
         word: "anggaran",
         en: "budget",
         vi: "ngân sách",
@@ -359,6 +367,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "ANG-ga-ran — don't code-switch to `budget`",
       },
       {
+        cell_id: "2a72d891-cf9e-44df-af26-a7ead5ecc5de",
         word: "tenggat waktu",
         en: "deadline",
         vi: "hạn chót",
@@ -367,6 +376,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "TENG-gat WAK-tu — also `deadline`",
       },
       {
+        cell_id: "69db0166-b542-4d72-a6b9-e6ea6caa4cc7",
         word: "DP (uang muka)",
         en: "deposit / down payment",
         vi: "tiền cọc / tạm ứng",
@@ -375,6 +385,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "day-pay — `minta DP 50% di awal`",
       },
       {
+        cell_id: "8f920f76-4665-40a6-833a-e884d97e9da1",
         word: "revisi",
         en: "revision / edit",
         vi: "chỉnh sửa",
@@ -384,6 +395,7 @@ export const lessons: IndonesianLesson[] = [
       },
       // Delivery & payment
       {
+        cell_id: "62f45697-06dc-4be6-a03b-9bc72c8716b8",
         word: "invoice",
         en: "invoice",
         vi: "hóa đơn",
@@ -392,6 +404,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "in-VOICE — `mohon segera dilunasi`",
       },
       {
+        cell_id: "853da6b3-d59b-4454-82bd-74c8a17292a2",
         word: "rekening",
         en: "bank account",
         vi: "tài khoản ngân hàng",
@@ -400,6 +413,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "re-ke-NING — NOT `akun` (an app account); `transfer ke rekening`",
       },
       {
+        cell_id: "a2dc422e-8435-4f11-9b00-480b33e4893f",
         word: "cair",
         en: "(funds) cleared / disbursed",
         vi: "(tiền) về / giải ngân",
@@ -408,6 +422,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "CHA-ir — `c`='ch'; `dananya sudah cair`",
       },
       {
+        cell_id: "6d6f8faf-ee06-462b-9f06-d90586ac687e",
         word: "mengerjakan",
         en: "to work on / do (a task)",
         vi: "thực hiện / làm (việc cụ thể)",
@@ -416,6 +431,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "me-nger-JA-kan — root `kerja` + `meN-...-kan`; passive `dikerjakan`",
       },
       {
+        cell_id: "c9b6410d-bf4a-4432-bf1a-552cdd658b43",
         word: "keterlambatan",
         en: "delay",
         vi: "sự chậm trễ",
@@ -424,6 +440,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "ke-ter-lam-BA-tan — `ke-...-an` frame on `terlambat`",
       },
       {
+        cell_id: "c2ba8cfe-1b99-4dc7-ad6f-5bec8a1b2f28",
         word: "bekerja sama",
         en: "to collaborate / work together",
         vi: "hợp tác",
@@ -435,48 +452,56 @@ export const lessons: IndonesianLesson[] = [
     dialogue: [
       // Dialogue: scoping, quoting, delivering a freelance design job
       {
+        cell_id: "c893b7f2-3c96-4f88-bb4b-61d8a81d6c87",
         speaker: "Klien",
         text: "Halo, Kak. Saya butuh desain logo untuk kafe baru saya.",
         vi: "Chào bạn. Mình cần thiết kế logo cho quán cà phê mới.",
         en: "Hi. I need a logo design for my new café.",
       },
       {
+        cell_id: "82890e9b-9467-439e-a1c0-02229c3f609c",
         speaker: "Freelancer",
         text: "Halo, Kak. Boleh saya tahu konsep dan tenggat waktunya?",
         vi: "Chào bạn. Mình có thể biết concept và hạn chót không ạ?",
         en: "Hi. May I know the concept and the deadline?",
       },
       {
+        cell_id: "7a88c086-3148-44de-a55e-d0e642343d1b",
         speaker: "Klien",
         text: "Konsepnya minimalis, warna cokelat. Anggaran sekitar satu juta. Butuh dalam dua minggu.",
         vi: "Concept tối giản, màu nâu. Ngân sách khoảng một triệu. Cần trong hai tuần.",
         en: "Minimalist concept, brown tones. Budget around one million. Needed in two weeks.",
       },
       {
+        cell_id: "39cdfa41-75e7-4c76-a0c1-7b3a39b9c433",
         speaker: "Freelancer",
         text: "Baik. Tarif saya satu juta, sudah termasuk tiga kali revisi. Saya minta DP lima puluh persen di awal.",
         vi: "Được. Phí của mình một triệu, đã gồm ba lần chỉnh sửa. Mình xin cọc năm mươi phần trăm trước.",
         en: "Alright. My rate is one million, including three revisions. I'll need a fifty percent deposit upfront.",
       },
       {
+        cell_id: "a483b682-27d2-4429-9bc7-bed21e6a77b3",
         speaker: "Klien",
         text: "Setuju. DP-nya saya transfer hari ini. Kita meeting online dulu, ya?",
         vi: "Đồng ý. Cọc mình chuyển hôm nay. Mình họp online trước nhé?",
         en: "Agreed. I'll transfer the deposit today. Shall we have an online meeting first?",
       },
       {
+        cell_id: "641db086-4ea1-4e19-b716-fd3701e13003",
         speaker: "Freelancer",
         text: "Boleh, lewat Zoom besok jam dua. Draf pertama akan saya kirim minggu depan.",
         vi: "Được, qua Zoom mai hai giờ. Bản nháp đầu mình sẽ gửi tuần sau.",
         en: "Sure, via Zoom tomorrow at two. I'll send the first draft next week.",
       },
       {
+        cell_id: "54dd19dc-fdd7-49de-bed2-b75330f1c1de",
         speaker: "Freelancer",
         text: "Hasil akhirnya sudah saya kirim ke email Kakak. Ini invoice-nya, mohon segera dilunasi, ya.",
         vi: "Kết quả cuối mình đã gửi vào email bạn. Đây hóa đơn, mong thanh toán nốt sớm nhé.",
         en: "The final result is in your email. Here's the invoice, please settle it soon.",
       },
       {
+        cell_id: "55540b86-1ef1-4494-8b41-51ce1aefb330",
         speaker: "Klien",
         text: "Sudah saya lunasi. Hasilnya bagus! Senang bekerja sama, Kak.",
         vi: "Mình thanh toán hết rồi. Kết quả đẹp lắm! Rất vui được hợp tác.",

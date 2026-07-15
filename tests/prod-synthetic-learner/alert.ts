@@ -37,13 +37,15 @@ export async function sendFailureAlert(
   options: FailureAlertOptions = {},
 ): Promise<void> {
   if (!failed.length) return;
+  const { subject, text } = buildFailureAlertPayload(failed, liveHash, options);
+  if (await sendDispatcherAlert(failed, liveHash, subject, text)) return;
+
   const token = process.env.RESEND_ALERT_TOKEN;
   if (!token) {
     // eslint-disable-next-line no-console
     console.log("[synthetic-alert] RESEND_ALERT_TOKEN unset — skipping email (failures still in the artifact).");
     return;
   }
-  const { subject, text } = buildFailureAlertPayload(failed, liveHash, options);
   try {
     const res = await fetch(RESEND_ENDPOINT, {
       method: "POST",
@@ -55,5 +57,50 @@ export async function sendFailureAlert(
   } catch (e) {
     // eslint-disable-next-line no-console
     console.log(`[synthetic-alert] send failed: ${redact((e as Error).message)}`);
+  }
+}
+
+async function sendDispatcherAlert(
+  failed: JourneyResult[],
+  liveHash: string | null,
+  subject: string,
+  text: string,
+): Promise<boolean> {
+  const dispatcherUrl = process.env.DISPATCHER_URL?.trim();
+  const dispatcherSecret = process.env.DISPATCHER_SECRET?.trim();
+  if (!dispatcherUrl || !dispatcherSecret) return false;
+
+  try {
+    const res = await fetch(dispatcherUrl, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "x-dispatcher-secret": dispatcherSecret,
+      },
+      body: JSON.stringify({
+        robot: "R0 WALKER",
+        severity: "high",
+        signature: `prod-synthetic-learner:${liveHash ?? "unknown"}:${failed.map((f) => f.id).sort().join(",")}`,
+        summary: subject,
+        evidence_url: "reports/prod-synthetic-learner/latest.md",
+        metadata: {
+          liveHash,
+          failedJourneys: failed.map((f) => ({ id: f.id, name: f.name, detail: redact(f.detail) })),
+          text,
+        },
+      }),
+    });
+    if (res.ok) {
+      // eslint-disable-next-line no-console
+      console.log(`[synthetic-alert] dispatcher accepted alert (${res.status})`);
+      return true;
+    }
+    // eslint-disable-next-line no-console
+    console.log(`[synthetic-alert] dispatcher failed (${res.status}); falling back to direct email`);
+    return false;
+  } catch (e) {
+    // eslint-disable-next-line no-console
+    console.log(`[synthetic-alert] dispatcher send failed: ${redact((e as Error).message)}; falling back to direct email`);
+    return false;
   }
 }

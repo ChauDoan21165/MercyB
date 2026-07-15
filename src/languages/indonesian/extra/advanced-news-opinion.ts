@@ -21,6 +21,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   /** Indonesian word/phrase. */
   word: string;
   /** English meaning. */
@@ -36,6 +37,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   /** Indonesian line. */
   text: string;
@@ -240,6 +242,7 @@ export const lessons: IndonesianLesson[] = [
       "Chunks to memorize: `Menurut saya...`, `Sudut pandang penulis...`, `Narasumbernya berasal dari...`, `Ini fakta atau opini?`, `Saya melihat ada bias media...`, `Saya ingin menanggapi tanpa menyerang...`.",
     vocabulary: [
       {
+        cell_id: "9ecd2912-b6fb-4980-9b52-0e3a479ae874",
         word: "opini berita",
         en: "news opinion/commentary",
         vi: "ý kiến/bình luận về tin tức",
@@ -248,6 +251,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "o-PEE-nee be-REE-ta",
       },
       {
+        cell_id: "2a95fbc4-5250-4604-83be-5e83641b1c1f",
         word: "sudut pandang",
         en: "point of view",
         vi: "góc nhìn",
@@ -256,6 +260,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "SOO-doot PAN-dang",
       },
       {
+        cell_id: "43ac011f-8410-4bdd-b66a-bc67915ce022",
         word: "narasumber",
         en: "source; interviewee",
         vi: "nguồn/người cung cấp thông tin",
@@ -264,6 +269,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "na-ra-SOOM-ber",
       },
       {
+        cell_id: "84dfaf0c-7347-4a3f-9bd9-461140dd0270",
         word: "fakta",
         en: "fact",
         vi: "sự kiện/sự thật",
@@ -272,6 +278,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "FAK-ta",
       },
       {
+        cell_id: "b4b5b35a-f614-4160-8e91-6d5223006fba",
         word: "asumsi pribadi",
         en: "personal assumption",
         vi: "giả định cá nhân",
@@ -280,6 +287,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "a-SOOM-see pree-BA-dee",
       },
       {
+        cell_id: "814f31b0-2f7b-4faf-bf48-409a53ad226e",
         word: "bias media",
         en: "media bias",
         vi: "thiên kiến truyền thông",
@@ -288,6 +296,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "BEE-as ME-dee-a",
       },
       {
+        cell_id: "dc5bb223-0b53-46f9-8bac-24964c7e3b4b",
         word: "menanggapi berita",
         en: "respond to news",
         vi: "phản hồi tin tức",
@@ -296,6 +305,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "meh-nang-GA-pee be-REE-ta",
       },
       {
+        cell_id: "58287826-7e35-4ea8-8f64-2f3fb802624c",
         word: "diskusi sopan",
         en: "polite discussion",
         vi: "thảo luận lịch sự",
@@ -304,6 +314,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "dis-KOO-see SO-pan",
       },
       {
+        cell_id: "2476ed3d-8bdb-4c3c-8e49-77583a282c32",
         word: "memihak",
         en: "to side with; be biased toward",
         vi: "nghiêng về một phía/thiên vị",
@@ -312,6 +323,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "meh-MEE-hak",
       },
       {
+        cell_id: "79d65dae-d2da-40f4-a9f1-5feeda8c19d3",
         word: "diverifikasi",
         en: "verified",
         vi: "được xác minh",
@@ -322,36 +334,42 @@ export const lessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "162ee8c3-76a4-44b9-b2e7-612a7c1652f5",
         speaker: "Rina",
         text: "Menurutmu, artikel ini fakta atau opini?",
         vi: "Theo bạn, bài này là sự kiện hay ý kiến?",
         en: "In your view, is this article fact or opinion?",
       },
       {
+        cell_id: "90d64de7-01eb-43fe-bb22-b6e1a9a14e73",
         speaker: "Adi",
         text: "Sebagian faktanya jelas, tapi sudut pandang penulisnya juga kuat.",
         vi: "Một phần sự kiện rõ ràng, nhưng góc nhìn của tác giả cũng mạnh.",
         en: "Some of the facts are clear, but the writer's point of view is also strong.",
       },
       {
+        cell_id: "3145b19b-758d-48a8-a480-7108e17c2300",
         speaker: "Rina",
         text: "Narasumbernya hanya dari satu pihak, ya?",
         vi: "Nguồn/người được trích dẫn chỉ từ một phía nhỉ?",
         en: "The sources are only from one side, right?",
       },
       {
+        cell_id: "47ea7dc4-b4ee-4b7e-9b5f-6eb027553f6d",
         speaker: "Adi",
         text: "Iya, karena itu saya belum berani menyimpulkan.",
         vi: "Ừ, vì vậy tôi chưa dám kết luận.",
         en: "Yes, for that reason I am not ready to conclude yet.",
       },
       {
+        cell_id: "a105da22-c2bd-405b-98c1-629f3ef8dd5b",
         speaker: "Rina",
         text: "Saya ingin menanggapi berita ini, tapi tetap sopan.",
         vi: "Tôi muốn phản hồi tin này, nhưng vẫn lịch sự.",
         en: "I want to respond to this news, but stay polite.",
       },
       {
+        cell_id: "2a35a39e-6f24-4d81-b0b9-a53602eaac0c",
         speaker: "Adi",
         text: "Boleh berbeda pendapat, asal kita tetap membahas isi beritanya.",
         vi: "Có thể khác ý kiến, miễn là chúng ta vẫn bàn nội dung tin.",

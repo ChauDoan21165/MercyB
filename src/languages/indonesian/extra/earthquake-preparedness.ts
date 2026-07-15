@@ -22,6 +22,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   /** Indonesian word/phrase. */
   word: string;
   /** English meaning. */
@@ -37,6 +38,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   /** Indonesian line. */
   text: string;
@@ -254,6 +256,7 @@ export const lessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: in emergencies, shorter Indonesian is better. Memorize these frames: `Jangan panik`, `Berlindung di bawah meja`, `Evakuasi lewat jalur aman`, `Berkumpul di titik kumpul`, `Waspada gempa susulan`. Keep `di` = at/in, `ke` = to, and `dari` = from/source distinct.",
     vocabulary: [
       {
+        cell_id: "b236331e-8279-41f5-9857-d44c09d2d1b3",
         word: "gempa bumi",
         en: "earthquake",
         vi: "động đất",
@@ -262,6 +265,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "GEM-pa BOO-mee",
       },
       {
+        cell_id: "bf618e5b-654f-4cc9-b58b-15a3a66fa723",
         word: "siaga",
         en: "alert / ready",
         vi: "sẵn sàng / cảnh giác",
@@ -270,6 +274,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "see-A-ga",
       },
       {
+        cell_id: "e11672e3-d50e-46d2-87f8-028fc65ee013",
         word: "tas siaga",
         en: "emergency go-bag",
         vi: "túi khẩn cấp",
@@ -278,6 +283,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "tas see-A-ga",
       },
       {
+        cell_id: "ca2a8648-d248-4a3c-967b-af0970965b46",
         word: "P3K",
         en: "first aid",
         vi: "sơ cứu",
@@ -286,6 +292,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "PEH-tee-GA-kah",
       },
       {
+        cell_id: "e0e87657-6526-4eec-b67e-0b00a245ab68",
         word: "kotak P3K",
         en: "first-aid kit",
         vi: "hộp sơ cứu",
@@ -294,6 +301,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "KO-tak PEH-tee-GA-kah",
       },
       {
+        cell_id: "b0b9037d-6284-451e-9b49-c2b28e3609e9",
         word: "evakuasi",
         en: "evacuation / evacuate",
         vi: "sơ tán",
@@ -302,6 +310,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "eh-va-koo-A-see",
       },
       {
+        cell_id: "136652bd-d17c-4214-ac4f-a513e56a8731",
         word: "jalur evakuasi",
         en: "evacuation route",
         vi: "lối sơ tán",
@@ -310,6 +319,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "JA-loor eh-va-koo-A-see",
       },
       {
+        cell_id: "18836c8d-d186-433d-b0cc-f4f87aa35ee0",
         word: "titik kumpul",
         en: "assembly point",
         vi: "điểm tập kết",
@@ -318,6 +328,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "TEE-tik KOOM-pool",
       },
       {
+        cell_id: "7a27ff22-965a-4b62-9c24-2af7597fa753",
         word: "BMKG",
         en: "Indonesian meteorology, climatology, and geophysics agency",
         vi: "cơ quan khí tượng, khí hậu và địa vật lý Indonesia",
@@ -326,6 +337,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "BEH-EM-KA-GEH",
       },
       {
+        cell_id: "5b786b25-c0f4-47e7-90ce-696453b63dc6",
         word: "gempa susulan",
         en: "aftershock",
         vi: "dư chấn",
@@ -334,6 +346,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "GEM-pa soo-SOO-lan",
       },
       {
+        cell_id: "cb8b06a1-fd26-4805-9052-6c30e78e9967",
         word: "guncangan",
         en: "shaking",
         vi: "rung lắc",
@@ -342,6 +355,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "goon-CHA-ngan",
       },
       {
+        cell_id: "6e74eaeb-7b2b-48f2-9609-8b9cbe42505d",
         word: "berlindung",
         en: "to take shelter",
         vi: "trú ẩn / nấp để an toàn",
@@ -352,24 +366,28 @@ export const lessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "2fe00377-9f57-4b7d-843a-dac85c71c4c6",
         speaker: "Petugas",
         text: "Jangan panik. Setelah guncangan berhenti, ikuti jalur evakuasi.",
         vi: "Đừng hoảng loạn. Sau khi rung lắc dừng lại, hãy theo lối sơ tán.",
         en: "Do not panic. After the shaking stops, follow the evacuation route.",
       },
       {
+        cell_id: "ffb0cde2-e263-47dc-811d-c7a837d75422",
         speaker: "Warga",
         text: "Titik kumpulnya di mana?",
         vi: "Điểm tập kết ở đâu?",
         en: "Where is the assembly point?",
       },
       {
+        cell_id: "26d623f3-e7f3-4aaa-878c-80a93c3b6c6a",
         speaker: "Petugas",
         text: "Di lapangan depan. Jangan gunakan lift.",
         vi: "Ở sân phía trước. Đừng dùng thang máy.",
         en: "At the front field. Do not use the elevator.",
       },
       {
+        cell_id: "af755c28-39d3-46d3-8e10-ef56a5e8c7d1",
         speaker: "Warga",
         text: "Baik. Saya ambil tas siaga dan kotak P3K.",
         vi: "Vâng. Tôi lấy túi khẩn cấp và hộp sơ cứu.",

@@ -28,6 +28,7 @@ export type LessonSentence = {
 };
 
 export type VocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -39,6 +40,7 @@ export type VocabEntry = {
 };
 
 export type DialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -422,6 +424,7 @@ export const lesson: ItalianLesson = {
 
   vocabulary: [
     {
+      cell_id: "77a0bb4e-241b-4724-a209-516e4ef4d537",
       word: "Nguyên âm cuối (final vowels)",
       en: "final vowels: lavoro, casa, grazie",
       vi: "âm cuối -o / -a / -e",
@@ -432,6 +435,7 @@ export const lesson: ItalianLesson = {
         "Always sound the final vowel — the #1 Vietnamese-speaker error is dropping it: la-VO-ro (not 'lavor')",
     },
     {
+      cell_id: "d15e9e8f-0899-4f68-b471-385b15e0c9a5",
       word: "Phụ âm đôi (double consonants)",
       en: "double consonants: fatto, palla, sette",
       vi: "phụ âm đôi kéo dài",
@@ -442,6 +446,7 @@ export const lesson: ItalianLesson = {
         "Hold double consonants longer — fatto ≠ fato, palla ≠ pala. Tiny held pause before release",
     },
     {
+      cell_id: "28319b0e-aed7-4647-a6b6-c578813410d2",
       word: "Trọng âm (stress)",
       en: "stress: telefono, lavoro, documento",
       vi: "nhấn đúng âm tiết",
@@ -452,6 +457,7 @@ export const lesson: ItalianLesson = {
         "Don't flatten every syllable: te-LE-fo-no, la-VO-ro, do-cu-MEN-to",
     },
     {
+      cell_id: "6541dcbd-b4ed-4218-9c70-acd7c04289b3",
       word: "gli",
       en: "'gli': famiglia, foglio",
       vi: "cụm 'gli' = 'l' mềm ('ly')",
@@ -462,6 +468,7 @@ export const lesson: ItalianLesson = {
         "'gli' is NOT a Vietnamese 'li' — it's a palatal 'l' (like 'lli' in 'million'): fa-MEE-lya, FO-lyo",
     },
     {
+      cell_id: "354167ae-9213-468b-a630-aae4c1490e75",
       word: "r",
       en: "'r': Roma, lavoro, arrivare",
       vi: "âm 'r' rung đầu lưỡi",
@@ -475,36 +482,42 @@ export const lesson: ItalianLesson = {
 
   dialogue: [
     {
+      cell_id: "a5bb4ee4-fd27-4207-b3d1-cdf8b9102a19",
       speaker: "Bước 1",
       text: "Ascolta una volta senza parlare.",
       vi: "Nghe một lần không nói.",
       en: "Listen once without speaking.",
     },
     {
+      cell_id: "77b38d31-b894-493f-919c-d27581bebc3a",
       speaker: "Bước 2",
       text: "Leggi il testo lentamente.",
       vi: "Đọc văn bản chậm.",
       en: "Read the text slowly.",
     },
     {
+      cell_id: "c2f3a0e5-b692-446f-bb0c-51b48a2cdb50",
       speaker: "Bước 3",
       text: "Ripeti frase per frase.",
       vi: "Lặp lại từng câu.",
       en: "Repeat sentence by sentence.",
     },
     {
+      cell_id: "40de2e4e-4734-4329-af04-a8640648b452",
       speaker: "Bước 4",
       text: "Fai shadowing con l'audio.",
       vi: "Nói đuổi theo audio.",
       en: "Shadow along with the audio.",
     },
     {
+      cell_id: "226831d8-5b56-487d-b7c2-1f9c56aec2ee",
       speaker: "Bước 5",
       text: "Registrati per un minuto.",
       vi: "Tự ghi âm một phút.",
       en: "Record yourself for one minute.",
     },
     {
+      cell_id: "26682c20-f4db-436e-ac76-5313f37eaa6b",
       speaker: "Bước 6",
       text: "Correggi un solo errore.",
       vi: "Chỉ sửa một lỗi.",

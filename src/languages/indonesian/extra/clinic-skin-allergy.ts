@@ -21,6 +21,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   /** Indonesian word/phrase. */
   word: string;
   /** English meaning. */
@@ -36,6 +37,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   /** Indonesian line. */
   text: string;
@@ -240,6 +242,7 @@ export const lessons: IndonesianLesson[] = [
       "Safe template: `Saya mau periksa alergi kulit. Kulit saya gatal dan ada ruam merah sejak kemarin. Saya baru ganti sabun mandi, dan saya makan udang sebelum ruamnya muncul. Apakah saya perlu salep, dan kapan kontrol ulang?`",
     vocabulary: [
       {
+        cell_id: "e27f9585-6551-4261-bc3a-fb2635a3f72a",
         word: "alergi kulit",
         en: "skin allergy",
         vi: "dị ứng da",
@@ -248,6 +251,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "a-LER-gee KOO-lit",
       },
       {
+        cell_id: "cd92e828-9272-4407-9916-a333e57255ac",
         word: "gatal",
         en: "itchy",
         vi: "ngứa",
@@ -256,6 +260,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "GA-tal",
       },
       {
+        cell_id: "eaa7ab65-b826-4617-9861-b2355c270d82",
         word: "ruam",
         en: "rash",
         vi: "phát ban",
@@ -264,6 +269,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "ROO-am",
       },
       {
+        cell_id: "05e7ffc0-9b04-45c4-8374-57724c718146",
         word: "salep",
         en: "ointment",
         vi: "thuốc mỡ/kem bôi",
@@ -272,6 +278,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "SA-lep",
       },
       {
+        cell_id: "d34bb2e9-59ce-4e16-8892-1d790cd3b8cf",
         word: "dokter kulit",
         en: "dermatologist",
         vi: "bác sĩ da liễu",
@@ -280,6 +287,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "DOK-ter KOO-lit",
       },
       {
+        cell_id: "8959060d-e0d4-433d-9190-0df8bf55f8fc",
         word: "sabun mandi",
         en: "bath soap; body wash",
         vi: "xà phòng/sữa tắm",
@@ -288,6 +296,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "SA-boon MAN-dee",
       },
       {
+        cell_id: "473f5237-b3af-47d7-b411-333a6240d6ab",
         word: "makanan pemicu",
         en: "triggering food",
         vi: "thức ăn kích hoạt dị ứng",
@@ -296,6 +305,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "ma-KA-nan peh-MEE-choo",
       },
       {
+        cell_id: "e5175f2d-02be-464d-884f-273be1f0b18e",
         word: "kontrol ulang",
         en: "follow-up visit",
         vi: "tái khám",
@@ -304,6 +314,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "KON-trol OO-lang",
       },
       {
+        cell_id: "49716fbd-0510-4b46-aa89-f35d210cb771",
         word: "dioleskan",
         en: "applied by rubbing/spreading",
         vi: "được bôi",
@@ -312,6 +323,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "dee-o-LES-kan",
       },
       {
+        cell_id: "9fed313a-1cc2-43f2-94f8-a0ad996ce7a8",
         word: "makin melebar",
         en: "spreading wider",
         vi: "ngày càng lan rộng",
@@ -322,36 +334,42 @@ export const lessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "86b2dbf9-aac4-4430-8eca-4f331a25aad3",
         speaker: "Pasien",
         text: "Selamat pagi, saya mau periksa alergi kulit.",
         vi: "Chào buổi sáng, tôi muốn khám dị ứng da.",
         en: "Good morning, I would like to have a skin allergy checked.",
       },
       {
+        cell_id: "9fde2e65-1b7f-4dec-bc94-bc637b3403a7",
         speaker: "Petugas klinik",
         text: "Gejalanya apa saja?",
         vi: "Các triệu chứng là gì?",
         en: "What symptoms do you have?",
       },
       {
+        cell_id: "e4d9f086-60e5-4c35-a8ce-27211b27f80e",
         speaker: "Pasien",
         text: "Kulit saya gatal dan ada ruam merah di tangan sejak kemarin malam.",
         vi: "Da tôi bị ngứa và có phát ban đỏ ở tay từ tối qua.",
         en: "My skin is itchy and there is a red rash on my hand since last night.",
       },
       {
+        cell_id: "e4d1b318-4200-4d59-8b54-37c2884fced3",
         speaker: "Petugas klinik",
         text: "Apakah Anda baru ganti sabun atau makan sesuatu yang berbeda?",
         vi: "Bạn có mới đổi xà phòng/sữa tắm hoặc ăn thứ gì khác không?",
         en: "Did you recently change soap or eat something different?",
       },
       {
+        cell_id: "ddab29d2-31fc-41d9-a0ac-76639310e7a4",
         speaker: "Pasien",
         text: "Saya baru ganti sabun mandi, dan saya makan udang sebelum ruamnya muncul.",
         vi: "Tôi mới đổi sữa tắm, và tôi ăn tôm trước khi vết phát ban xuất hiện.",
         en: "I recently changed body wash, and I ate shrimp before the rash appeared.",
       },
       {
+        cell_id: "2b5cdcc0-f589-4fc5-8441-3cbfbed9d425",
         speaker: "Petugas klinik",
         text: "Baik, dokter akan periksa dulu dan menjelaskan cara pakai salepnya.",
         vi: "Được, bác sĩ sẽ khám trước và giải thích cách dùng thuốc bôi.",

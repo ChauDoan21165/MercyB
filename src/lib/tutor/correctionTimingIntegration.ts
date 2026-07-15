@@ -26,6 +26,7 @@ import {
   type ErrorSeverity,
 } from "./teacherMercyCorrectionTiming";
 import { enrichCorrectionExperience, type EnrichedCorrectionContext } from "./correctionExperienceEnricher";
+import { isLpiTargetFormDetectorTag } from "./lpiTargetFormDetectors";
 
 // ─── Severity Inference ────────────────────────────────────────────────────
 
@@ -53,6 +54,12 @@ export function inferErrorSeverity(result: CorrectionEngineResult): ErrorSeverit
   // Fatal meaning: existential-have errors change meaning structure
   if (ids.some((id) => id.includes("existential"))) {
     return "fatal_meaning";
+  }
+
+  // Vietnamese-L1 flagship detector tags are lesson-target-equivalent for
+  // Mercy's audience even when the current lesson card has drifted.
+  if (ids.some(isLpiTargetFormDetectorTag)) {
+    return "lesson_target";
   }
 
   // Lesson-target-like: past tense, SVA, third-person, preposition patterns are common lesson targets

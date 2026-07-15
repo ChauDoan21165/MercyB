@@ -13,6 +13,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -22,6 +23,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -235,43 +237,48 @@ export const lessons: IndonesianLesson[] = [
     tip_advice_en:
       "Tip for Vietnamese speakers: your advantage is that Vietnamese also tells past stories with time words rather than verb conjugation. Build a five-step frame: `Dulu/Waktu itu` (background), `Awalnya` (beginning), `Tiba-tiba` (turning point), `Akhirnya` (result), `Dari pengalaman itu...` (lesson). Do not overuse `sudah`; storytelling needs time anchors and connectors more than tense markers.",
     vocabulary: [
-      { word: "bercerita", en: "to tell a story", vi: "kể chuyện", pos: "verb", pronunciation_vi: "ber-ce-RI-ta", pronunciation_en: "ber-che-REE-ta" },
-      { word: "pengalaman masa lalu", en: "past experience", vi: "trải nghiệm quá khứ", pos: "noun phrase", pronunciation_vi: "peng-a-LA-man MA-sa LA-lu", pronunciation_en: "peng-a-LA-man MA-sa LA-loo" },
-      { word: "waktu itu", en: "at that time", vi: "lúc đó", pos: "time phrase", pronunciation_vi: "WAK-tu I-tu", pronunciation_en: "WAK-too I-too" },
-      { word: "tiba-tiba", en: "suddenly", vi: "đột nhiên", pos: "adverb", pronunciation_vi: "TI-ba-TI-ba", pronunciation_en: "TEE-ba-TEE-ba" },
-      { word: "akhirnya", en: "finally / in the end", vi: "cuối cùng", pos: "adverb", pronunciation_vi: "a-KHIR-nya", pronunciation_en: "a-KHIR-nya" },
-      { word: "ternyata", en: "it turned out", vi: "hóa ra", pos: "adverb", pronunciation_vi: "ter-NYA-ta", pronunciation_en: "ter-NYA-ta" },
-      { word: "pelajaran hidup", en: "life lesson", vi: "bài học cuộc sống", pos: "noun phrase", pronunciation_vi: "pe-la-JAR-an HI-dup", pronunciation_en: "pe-la-JAR-an HI-dup" },
-      { word: "cerita lucu", en: "funny story", vi: "câu chuyện vui", pos: "noun phrase", pronunciation_vi: "ce-RI-ta LU-cu", pronunciation_en: "che-REE-ta LOO-choo" },
-      { word: "sejak saat itu", en: "since then", vi: "từ lúc đó", pos: "time phrase", pronunciation_vi: "SE-jak SA-at I-tu", pronunciation_en: "SE-jak SA-at I-too" },
-      { word: "kalau dipikir-pikir", en: "when I think about it", vi: "nghĩ lại thì", pos: "phrase", pronunciation_vi: "KA-lau di-PI-kir-PI-kir", pronunciation_en: "KA-lau di-PI-kir-PI-kir" },
+      { cell_id: "9706fbb9-b51a-47f7-92e3-d94d12985014", word: "bercerita", en: "to tell a story", vi: "kể chuyện", pos: "verb", pronunciation_vi: "ber-ce-RI-ta", pronunciation_en: "ber-che-REE-ta" },
+      { cell_id: "e27526a5-b1ed-4f22-9d53-fe0820c24351", word: "pengalaman masa lalu", en: "past experience", vi: "trải nghiệm quá khứ", pos: "noun phrase", pronunciation_vi: "peng-a-LA-man MA-sa LA-lu", pronunciation_en: "peng-a-LA-man MA-sa LA-loo" },
+      { cell_id: "34d807c7-ed76-4318-8d3f-ecf4b7387e03", word: "waktu itu", en: "at that time", vi: "lúc đó", pos: "time phrase", pronunciation_vi: "WAK-tu I-tu", pronunciation_en: "WAK-too I-too" },
+      { cell_id: "435cfc99-8e29-4449-8120-a211900c8b10", word: "tiba-tiba", en: "suddenly", vi: "đột nhiên", pos: "adverb", pronunciation_vi: "TI-ba-TI-ba", pronunciation_en: "TEE-ba-TEE-ba" },
+      { cell_id: "04424513-7394-400a-8981-a0c9728b3453", word: "akhirnya", en: "finally / in the end", vi: "cuối cùng", pos: "adverb", pronunciation_vi: "a-KHIR-nya", pronunciation_en: "a-KHIR-nya" },
+      { cell_id: "e73609c9-d5ab-464e-a8fa-db9ef4361fde", word: "ternyata", en: "it turned out", vi: "hóa ra", pos: "adverb", pronunciation_vi: "ter-NYA-ta", pronunciation_en: "ter-NYA-ta" },
+      { cell_id: "6d952953-2274-4afd-a00e-137b61943154", word: "pelajaran hidup", en: "life lesson", vi: "bài học cuộc sống", pos: "noun phrase", pronunciation_vi: "pe-la-JAR-an HI-dup", pronunciation_en: "pe-la-JAR-an HI-dup" },
+      { cell_id: "d046335b-552b-404f-b48a-f91cda90f70d", word: "cerita lucu", en: "funny story", vi: "câu chuyện vui", pos: "noun phrase", pronunciation_vi: "ce-RI-ta LU-cu", pronunciation_en: "che-REE-ta LOO-choo" },
+      { cell_id: "5a98f5f7-6567-4026-97e3-c8e3df8809dc", word: "sejak saat itu", en: "since then", vi: "từ lúc đó", pos: "time phrase", pronunciation_vi: "SE-jak SA-at I-tu", pronunciation_en: "SE-jak SA-at I-too" },
+      { cell_id: "b7d143cf-e9d2-4595-bec8-f94c13e7491f", word: "kalau dipikir-pikir", en: "when I think about it", vi: "nghĩ lại thì", pos: "phrase", pronunciation_vi: "KA-lau di-PI-kir-PI-kir", pronunciation_en: "KA-lau di-PI-kir-PI-kir" },
     ],
     dialogue: [
       {
+        cell_id: "c63b43a5-faec-4620-963e-b2dd495b8462",
         speaker: "Ayu",
         text: "Kamu punya cerita lucu waktu pertama kali tinggal di Jakarta?",
         vi: "Bạn có câu chuyện vui nào lúc lần đầu sống ở Jakarta không?",
         en: "Do you have a funny story from when you first lived in Jakarta?",
       },
       {
+        cell_id: "87db043a-49b0-4bba-906d-f56ee7f4641d",
         speaker: "Minh",
         text: "Ada. Waktu itu saya naik kereta malam untuk pertama kali.",
         vi: "Có. Lúc đó tôi đi tàu đêm lần đầu tiên.",
         en: "Yes. At that time I took a night train for the first time.",
       },
       {
+        cell_id: "0e415e27-778e-49af-803a-01d91de5153f",
         speaker: "Minh",
         text: "Awalnya lancar, tapi tiba-tiba saya sadar ternyata salah gerbong.",
         vi: "Ban đầu suôn sẻ, nhưng đột nhiên tôi nhận ra hóa ra nhầm toa.",
         en: "At first it went smoothly, but suddenly I realized I was in the wrong carriage.",
       },
       {
+        cell_id: "9ddba635-88e3-40be-b024-6ab52392815a",
         speaker: "Ayu",
         text: "Akhirnya bagaimana?",
         vi: "Cuối cùng thì sao?",
         en: "What happened in the end?",
       },
       {
+        cell_id: "e3cac591-6556-4ea2-bbb0-9dde35c510ab",
         speaker: "Minh",
         text: "Akhirnya saya menemukan tempat duduk yang benar. Dari pengalaman itu, saya belajar untuk selalu mengecek tiket.",
         vi: "Cuối cùng tôi tìm được chỗ ngồi đúng. Từ trải nghiệm đó, tôi học được là luôn kiểm tra vé.",

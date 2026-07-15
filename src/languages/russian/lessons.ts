@@ -71,6 +71,7 @@ export type RussianSentence = {
 };
 
 export type RussianVocabEntry = {
+  cell_id?: string;
   word: string;
   romanization: string;
   en: string;
@@ -81,6 +82,7 @@ export type RussianVocabEntry = {
 };
 
 export type RussianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   romanization?: string;

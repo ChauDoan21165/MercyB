@@ -16,6 +16,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   /** Indonesian word/phrase. */
   word: string;
   /** English meaning. */
@@ -31,6 +32,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   /** Indonesian line. */
   text: string;
@@ -193,6 +195,7 @@ export const lessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: learn procedure chunks: `mengadopsi hewan`, `biaya adopsi`, `sudah divaksin`, `sudah steril`, `kunjungan rumah`, and `tanggung jawab pemilik`. When asking, use `apakah` or `apa saja` to sound polite. When talking about care, use `saya siap...` to show commitment.",
     vocabulary: [
       {
+        cell_id: "5bcb2d15-e925-48f9-9d48-018d258d84b1",
         word: "adopsi hewan",
         en: "pet/animal adoption",
         vi: "nhận nuôi động vật",
@@ -201,6 +204,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "a-DOP-si HE-wan",
       },
       {
+        cell_id: "1a641d29-e139-4d46-a2a8-ae38300f4cb2",
         word: "shelter",
         en: "animal shelter",
         vi: "trạm/cơ sở cứu hộ động vật",
@@ -209,6 +213,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "SHEL-ter",
       },
       {
+        cell_id: "4af17ca0-7f31-4e6c-8648-635de8eefecc",
         word: "vaksin",
         en: "vaccine; vaccination",
         vi: "vắc-xin / tiêm vắc-xin",
@@ -217,6 +222,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "VAK-sin",
       },
       {
+        cell_id: "fec0f746-b0a3-4abd-9435-7d7fbf05e17e",
         word: "steril",
         en: "spayed/neutered",
         vi: "đã triệt sản",
@@ -225,6 +231,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "STE-ril",
       },
       {
+        cell_id: "7375712b-c50c-4090-981f-1bd5908eea52",
         word: "biaya adopsi",
         en: "adoption fee",
         vi: "phí nhận nuôi",
@@ -233,6 +240,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "BEE-a-ya a-DOP-si",
       },
       {
+        cell_id: "338eae22-5fca-487d-bb8a-184c08c59078",
         word: "kucing",
         en: "cat",
         vi: "mèo",
@@ -241,6 +249,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "KOO-ching",
       },
       {
+        cell_id: "cab5bdbc-c04f-4b8d-abe3-56bc128cef57",
         word: "anjing",
         en: "dog",
         vi: "chó",
@@ -249,6 +258,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "AN-jing",
       },
       {
+        cell_id: "4aaf9b63-d030-4d92-a0e8-ff67fa6fd4c6",
         word: "tanggung jawab pemilik",
         en: "owner's responsibility",
         vi: "trách nhiệm của chủ nuôi",
@@ -259,30 +269,35 @@ export const lessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "5edf5fc9-a97f-4a60-96c2-476b1985f2b9",
         speaker: "Calon adopter",
         text: "Permisi, saya tertarik mengadopsi kucing yang ada di foto ini.",
         vi: "Xin phép, tôi quan tâm đến việc nhận nuôi con mèo trong ảnh này.",
         en: "Excuse me, I am interested in adopting the cat in this photo.",
       },
       {
+        cell_id: "d87e976f-945f-47d5-9198-2a3d8fe69ec7",
         speaker: "Petugas shelter",
         text: "Boleh. Kucing ini sudah divaksin dan sudah steril.",
         vi: "Được. Con mèo này đã tiêm vắc-xin và đã triệt sản.",
         en: "Sure. This cat has been vaccinated and sterilized.",
       },
       {
+        cell_id: "3e7272a2-e3ee-4086-a1e8-6b2ef7660df2",
         speaker: "Calon adopter",
         text: "Berapa biaya adopsinya, dan apakah ada formulir yang harus saya isi?",
         vi: "Phí nhận nuôi là bao nhiêu, và có mẫu đơn nào tôi phải điền không?",
         en: "How much is the adoption fee, and is there a form I need to fill out?",
       },
       {
+        cell_id: "1748921a-0e27-4dd7-ad7f-6895f7c99c2b",
         speaker: "Petugas shelter",
         text: "Ada formulir singkat dan kami akan menanyakan kondisi rumah Anda.",
         vi: "Có một mẫu đơn ngắn và chúng tôi sẽ hỏi về điều kiện nhà của anh/chị.",
         en: "There is a short form, and we will ask about your home conditions.",
       },
       {
+        cell_id: "a53ac253-a65b-4ea6-8e53-98608f549596",
         speaker: "Calon adopter",
         text: "Saya siap merawatnya dengan makanan, vaksin rutin, dan tempat yang aman.",
         vi: "Tôi sẵn sàng chăm sóc nó bằng thức ăn, tiêm vắc-xin định kỳ, và nơi an toàn.",

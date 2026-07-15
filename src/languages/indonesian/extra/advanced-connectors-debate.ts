@@ -13,6 +13,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -22,6 +23,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -235,37 +237,41 @@ export const lessons: IndonesianLesson[] = [
     tip_advice_en:
       "Tip for Vietnamese speakers: avoid copying Vietnamese `although... but...` into Indonesian. One connector is enough: `Meskipun begitu, ...` or `Namun, ...`. When disagreeing, avoid `kamu salah`; use `saya kurang setuju karena...`, `data menunjukkan...`, or `izinkan saya menyanggah...`. Keep formal pronouns `saya/Anda/Bapak/Ibu` in public debate.",
     vocabulary: [
-      { word: "menurut saya", en: "in my opinion", vi: "theo tôi", pos: "phrase", pronunciation_vi: "me-NU-rut SA-ya", pronunciation_en: "me-NU-root SA-ya" },
-      { word: "di sisi lain", en: "on the other hand", vi: "mặt khác", pos: "connector", pronunciation_vi: "di SI-si LA-in", pronunciation_en: "di SI-si LA-in" },
-      { word: "meskipun begitu", en: "even so / nevertheless", vi: "mặc dù vậy", pos: "connector", pronunciation_vi: "mes-ki-PUN be-GI-tu", pronunciation_en: "mes-kee-POON be-GI-too" },
-      { word: "oleh karena itu", en: "therefore", vi: "do đó / vì vậy", pos: "connector", pronunciation_vi: "O-leh ka-RE-na I-tu", pronunciation_en: "O-leh ka-RE-na I-too" },
-      { word: "sebagai contoh", en: "for example", vi: "ví dụ", pos: "connector", pronunciation_vi: "se-BA-gai CON-toh", pronunciation_en: "se-BA-gai CHON-toh" },
-      { word: "menyanggah pendapat", en: "rebut an opinion/argument", vi: "phản biện ý kiến", pos: "verb phrase", pronunciation_vi: "me-NYANG-gah pen-DA-pat", pronunciation_en: "me-NYANG-gah pen-DA-pat" },
-      { word: "debat sopan", en: "polite debate", vi: "tranh luận lịch sự", pos: "noun phrase", pronunciation_vi: "de-BAT SO-pan", pronunciation_en: "de-BAT SO-pan" },
-      { word: "kurang setuju", en: "do not quite agree", vi: "không hẳn đồng ý", pos: "phrase", pronunciation_vi: "KU-rang se-TU-ju", pronunciation_en: "KOO-rang se-TOO-joo" },
-      { word: "bukan A, melainkan B", en: "not A, but rather B", vi: "không phải A mà là B", pos: "frame", pronunciation_vi: "BU-kan ... me-LAIN-kan ...", pronunciation_en: "BOO-kan ... me-LAIN-kan ..." },
-      { word: "kesimpulannya", en: "in conclusion", vi: "kết luận là", pos: "connector", pronunciation_vi: "ke-sim-PUL-an-nya", pronunciation_en: "ke-sim-POOL-an-nya" },
+      { cell_id: "fc6fda74-342c-4cf2-a2ec-8273f2ad8d84", word: "menurut saya", en: "in my opinion", vi: "theo tôi", pos: "phrase", pronunciation_vi: "me-NU-rut SA-ya", pronunciation_en: "me-NU-root SA-ya" },
+      { cell_id: "e12bf707-47d1-43fd-b020-af88c1f1e927", word: "di sisi lain", en: "on the other hand", vi: "mặt khác", pos: "connector", pronunciation_vi: "di SI-si LA-in", pronunciation_en: "di SI-si LA-in" },
+      { cell_id: "cfae09f3-0662-4bbd-812f-691b6a9b43e3", word: "meskipun begitu", en: "even so / nevertheless", vi: "mặc dù vậy", pos: "connector", pronunciation_vi: "mes-ki-PUN be-GI-tu", pronunciation_en: "mes-kee-POON be-GI-too" },
+      { cell_id: "452a464d-5321-4459-b067-01fefdb6267b", word: "oleh karena itu", en: "therefore", vi: "do đó / vì vậy", pos: "connector", pronunciation_vi: "O-leh ka-RE-na I-tu", pronunciation_en: "O-leh ka-RE-na I-too" },
+      { cell_id: "965c79e6-3c70-4559-b123-6a14307aecf1", word: "sebagai contoh", en: "for example", vi: "ví dụ", pos: "connector", pronunciation_vi: "se-BA-gai CON-toh", pronunciation_en: "se-BA-gai CHON-toh" },
+      { cell_id: "87b6c4b2-0363-4b2f-9515-e9eb5cfd6788", word: "menyanggah pendapat", en: "rebut an opinion/argument", vi: "phản biện ý kiến", pos: "verb phrase", pronunciation_vi: "me-NYANG-gah pen-DA-pat", pronunciation_en: "me-NYANG-gah pen-DA-pat" },
+      { cell_id: "8b0aaca6-2c09-499e-8ff1-e733bde8d534", word: "debat sopan", en: "polite debate", vi: "tranh luận lịch sự", pos: "noun phrase", pronunciation_vi: "de-BAT SO-pan", pronunciation_en: "de-BAT SO-pan" },
+      { cell_id: "d748ad62-3460-4cba-bd2e-9e9e0487b6fb", word: "kurang setuju", en: "do not quite agree", vi: "không hẳn đồng ý", pos: "phrase", pronunciation_vi: "KU-rang se-TU-ju", pronunciation_en: "KOO-rang se-TOO-joo" },
+      { cell_id: "c1bded0f-4b66-4450-bc09-97695c6a5cc4", word: "bukan A, melainkan B", en: "not A, but rather B", vi: "không phải A mà là B", pos: "frame", pronunciation_vi: "BU-kan ... me-LAIN-kan ...", pronunciation_en: "BOO-kan ... me-LAIN-kan ..." },
+      { cell_id: "5dfd925f-e3f9-475d-912e-bf8acdb80fd3", word: "kesimpulannya", en: "in conclusion", vi: "kết luận là", pos: "connector", pronunciation_vi: "ke-sim-PUL-an-nya", pronunciation_en: "ke-sim-POOL-an-nya" },
     ],
     dialogue: [
       {
+        cell_id: "477f2f90-7dc3-44bc-84c2-9f664e762c54",
         speaker: "Moderator",
         text: "Menurut Anda, apakah program ini perlu dilanjutkan?",
         vi: "Theo anh/chị, chương trình này có cần tiếp tục không?",
         en: "In your opinion, should this program be continued?",
       },
       {
+        cell_id: "3d499752-273a-4706-aa04-2f7f8bd91cb8",
         speaker: "Raka",
         text: "Menurut saya, program ini bermanfaat. Sebagai contoh, banyak warga terbantu.",
         vi: "Theo tôi, chương trình này có ích. Ví dụ, nhiều người dân đã được hỗ trợ.",
         en: "In my opinion, this program is useful. For example, many residents were helped.",
       },
       {
+        cell_id: "ff933853-638c-40ea-9b2a-d8cba31a3ff1",
         speaker: "Sari",
         text: "Saya memahami pendapat itu. Di sisi lain, biayanya terlalu besar.",
         vi: "Tôi hiểu ý kiến đó. Mặt khác, chi phí quá lớn.",
         en: "I understand that opinion. On the other hand, the cost is too high.",
       },
       {
+        cell_id: "019b4690-b710-47e8-8404-ca5c838e5ca1",
         speaker: "Raka",
         text: "Meskipun begitu, kita bisa mencari solusi yang lebih seimbang.",
         vi: "Mặc dù vậy, chúng ta có thể tìm giải pháp cân bằng hơn.",

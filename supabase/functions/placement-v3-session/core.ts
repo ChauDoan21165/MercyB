@@ -26,12 +26,14 @@ import {
   type PromptTask,
   type RespondInput,
 } from "./types.ts";
+import { isPlacementSyntheticMarkerValue } from "./syntheticMarker.ts";
 
 const PLACEMENT_V3_BANK_VERSION = "placement-v3-session-v1";
 const FALLBACK_STARTING_ROOM = "placement-v3:b1:grammar-foundation";
 
 const DEFAULT_PAIR = { native: "vi", target: "en" };
 const STALE_UNGRADED_RESPONSE_MS = 30_000;
+const COMPLETION_RETRY_DELAYS_MS = [150, 450] as const;
 
 export interface CoreDeps extends OrchestratorDeps {
   writingGrader?: WritingGraderClient;
@@ -96,6 +98,7 @@ async function startSession(
     firstPrompt,
     now,
     totalTasks: MAX_TOTAL_TASKS,
+    isSynthetic: isPlacementSyntheticMarkerValue(input.syntheticMonitoring),
     id: deps.newId(),
   });
   deps.log?.("placement_v3.transition", {
@@ -244,8 +247,18 @@ async function respond(
       },
       now,
     );
-    const updated = await deps.updateSession(completed);
-    const profile = await finalizeProfile(userId, updated.id, allResponses, now, deps);
+    const updated = await retryCompletionStep(
+      deps,
+      "completion.updateSession",
+      input.taskIndex,
+      () => deps.updateSession(completed),
+    );
+    const profile = await retryCompletionStep(
+      deps,
+      "completion.finalizeProfile",
+      input.taskIndex,
+      () => finalizeProfile(userId, updated.id, allResponses, now, deps),
+    );
     deps.log?.("placement_v3.transition", {
       from: "in_progress",
       to: "completed",
@@ -341,6 +354,46 @@ function collectWeaknessTags(profile: PlacementV3Profile): string[] {
     if (out.length >= 8) return out;
   }
   return out;
+}
+
+async function retryCompletionStep<T>(
+  deps: CoreDeps,
+  operation: string,
+  taskIndex: number,
+  run: () => Promise<T>,
+): Promise<T> {
+  for (let attempt = 0; attempt <= COMPLETION_RETRY_DELAYS_MS.length; attempt++) {
+    try {
+      return await run();
+    } catch (err) {
+      if (!isTransientCompletionError(err) || attempt >= COMPLETION_RETRY_DELAYS_MS.length) {
+        throw err;
+      }
+      deps.log?.("placement_v3.completion_retry", {
+        operation,
+        attempt: attempt + 1,
+        taskIndex,
+        error: errorMessage(err),
+      });
+      await delay(COMPLETION_RETRY_DELAYS_MS[attempt]);
+    }
+  }
+  throw new Error(`Retry loop exhausted for ${operation}`);
+}
+
+function isTransientCompletionError(err: unknown): boolean {
+  const message = errorMessage(err).toLowerCase();
+  return /\b(500|502|503|504|timeout|timed out|temporar|connection|network|fetch failed|econnreset|etimedout|und_err)\b/
+    .test(message);
+}
+
+function errorMessage(err: unknown): string {
+  if (err instanceof Error) return err.message.slice(0, 240);
+  return String(err).slice(0, 240);
+}
+
+function delay(ms: number): Promise<void> {
+  return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
 async function abandon(

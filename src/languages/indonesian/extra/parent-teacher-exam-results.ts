@@ -17,6 +17,7 @@ type IndonesianLessonSentence = {
 };
 
 type IndonesianVocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -26,6 +27,7 @@ type IndonesianVocabEntry = {
 };
 
 type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -212,6 +214,7 @@ export const parentTeacherExamResultsLessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: use safe frames like `Saya ingin membahas...`, `Apakah perlu remedial?`, `Guru menyarankan...`, `Target semester depan...`. Remember that `wali kelas` is the homeroom teacher, `rapor` is the report card, and `membahas` sounds more polite than `ngomongin`.",
     vocabulary: [
       {
+        cell_id: "6578cd3f-1a2e-466c-9ebf-ef79ae5f8ddf",
         word: "hasil ujian",
         en: "exam results",
         vi: "ket qua bai kiem tra",
@@ -220,6 +223,7 @@ export const parentTeacherExamResultsLessons: IndonesianLesson[] = [
         pronunciation_en: "HAH-seel oo-JEE-an",
       },
       {
+        cell_id: "adb968e3-807d-47aa-a6fb-f6e44c64e88f",
         word: "nilai rapor",
         en: "report card grades",
         vi: "diem trong hoc ba",
@@ -228,6 +232,7 @@ export const parentTeacherExamResultsLessons: IndonesianLesson[] = [
         pronunciation_en: "NEE-lie RAH-por",
       },
       {
+        cell_id: "ef23edd6-5398-40e1-9655-5a32a3ddf7bf",
         word: "remedial",
         en: "remedial work / retake",
         vi: "hoc but / thi lai",
@@ -236,6 +241,7 @@ export const parentTeacherExamResultsLessons: IndonesianLesson[] = [
         pronunciation_en: "reh-MEE-dee-uhl",
       },
       {
+        cell_id: "0a3282ac-56e5-48ee-894e-8a49c5de46fe",
         word: "bimbingan belajar",
         en: "tutoring",
         vi: "hoc kem / hoc them",
@@ -244,6 +250,7 @@ export const parentTeacherExamResultsLessons: IndonesianLesson[] = [
         pronunciation_en: "BIM-bing-an beh-LAH-jar",
       },
       {
+        cell_id: "f1b2bb29-4dad-4972-8a70-6206abec7cbd",
         word: "wali kelas",
         en: "homeroom teacher",
         vi: "giao vien chu nhiem",
@@ -252,6 +259,7 @@ export const parentTeacherExamResultsLessons: IndonesianLesson[] = [
         pronunciation_en: "WAH-lee KEH-las",
       },
       {
+        cell_id: "e3ba06f8-46dc-4d89-9878-0f6da9aa9896",
         word: "kebiasaan belajar",
         en: "study habits",
         vi: "thoi quen hoc tap",
@@ -260,6 +268,7 @@ export const parentTeacherExamResultsLessons: IndonesianLesson[] = [
         pronunciation_en: "keh-bee-AH-sah-an beh-LAH-jar",
       },
       {
+        cell_id: "3ea5695f-4304-4ac4-bebf-34474860d921",
         word: "rapor",
         en: "report card",
         vi: "hoc ba / bang diem",
@@ -268,6 +277,7 @@ export const parentTeacherExamResultsLessons: IndonesianLesson[] = [
         pronunciation_en: "RAH-por",
       },
       {
+        cell_id: "b7be577a-34aa-43d6-bdad-74c7e61cae57",
         word: "target semester",
         en: "semester target",
         vi: "muc tieu hoc ky",
@@ -278,30 +288,35 @@ export const parentTeacherExamResultsLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "ec50818e-a195-46d5-a939-1efe4ebafdf2",
         speaker: "Orang Tua",
         text: "Selamat sore, Bu. Saya ingin membahas hasil ujian anak saya.",
         vi: "Chào buổi chiều ạ, cô. Tôi muốn trao đổi về kết quả bài kiểm tra của con tôi.",
         en: "Good afternoon, ma'am. I would like to discuss my child's exam results.",
       },
       {
+        cell_id: "6f1cb99e-ed74-4734-806c-03909f8c9a89",
         speaker: "Wali Kelas",
         text: "Tentu, Bu. Nilainya memang turun dibanding semester lalu.",
         vi: "Vâng ạ, đúng là điểm có giảm so với học kỳ trước.",
         en: "Of course. The grades did drop compared with last semester.",
       },
       {
+        cell_id: "ebe4f440-357f-4398-9f87-310e5a0ecacb",
         speaker: "Orang Tua",
         text: "Apakah anak saya perlu remedial atau bimbingan belajar tambahan?",
         vi: "Con tôi có cần học bù hoặc học thêm kèm không ạ?",
         en: "Does my child need remedial work or additional tutoring?",
       },
       {
+        cell_id: "e244edeb-0264-46f7-ae44-a0cf933bee32",
         speaker: "Wali Kelas",
         text: "Kami melihat kebiasaan belajarnya sudah mulai lebih teratur.",
         vi: "Chúng tôi thấy thói quen học tập của cháu đã bắt đầu có trật tự hơn.",
         en: "We can see that the study habit is starting to become more regular.",
       },
       {
+        cell_id: "886a0a7a-b6e9-401b-846a-1f5fc294cf36",
         speaker: "Orang Tua",
         text: "Baik, saya akan membantu mengawasi kebiasaan belajar di rumah.",
         vi: "Vâng, tôi sẽ giúp theo dõi thói quen học tập ở nhà.",

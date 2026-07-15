@@ -18,6 +18,7 @@ export type PunjabiConsistencyReviewFocus =
 export type PunjabiConsistencyReviewMode = "consistency" | "guardrail" | "readiness" | "regression";
 
 export type PunjabiScriptVocabularyConsistencyReviewItem = {
+  cell_id?: string;
   id: string;
   focus: PunjabiConsistencyReviewFocus;
   mode: PunjabiConsistencyReviewMode;
@@ -39,6 +40,7 @@ export type PunjabiScriptVocabularyConsistencyReviewItem = {
 };
 
 export type PunjabiScriptVocabularyConsistencyReviewSection = {
+  cell_id?: string;
   focus: PunjabiConsistencyReviewFocus;
   title_vi: string;
   title_en: string;

@@ -30,6 +30,7 @@ export type PortugueseLessonSentence = {
 };
 
 export type PortugueseVocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -40,6 +41,7 @@ export type PortugueseVocabEntry = {
 };
 
 export type PortugueseDialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -163,16 +165,16 @@ export const lessons: PortugueseLesson[] = [
     tip_advice_en:
       "Intro formula: 'O trecho em análise, extraído de [work] de [author], situa-se em [context].' then state your reading axis: 'Pretendo demonstrar que…' (I aim to show that…). To quote-and-comment, always quote then gloss: 'Note-se o emprego de…' (Note the use of…), 'O narrador recorre à ironia para…'. Memorize the figura names (metáfora, metonímia, ironia, anáfora, hipérbato, antítese). Conclude with 'Em suma, longe de ser [shallow], o trecho [deeper point].' Avoid 'É muito bonito' (sentimental, not analytical), 'O autor quis dizer' (intentional fallacy), plot summary, and bolting theory on from outside — start from textual evidence.",
     vocabulary: [
-      { word: "a análise literária", en: "literary analysis", vi: "phân tích văn học", pos: "n.f.", pronunciation_vi: "a-NA-li-zi li-te-RA-ria", pronunciation_en: "a-NAH-lee-zee lee-te-RAH-rya — proparoxytone 'análise'" },
-      { word: "o trecho", en: "the passage / excerpt", vi: "đoạn trích", pos: "n.m.", pronunciation_vi: "TRÊ-xu", pronunciation_en: "TRAY-shoo — 'ch' = 'sh'; the standard word for an excerpt" },
-      { word: "o foco narrativo", en: "narrative point of view", vi: "tiêu điểm trần thuật", pos: "n.m.", pronunciation_vi: "FÔ-cu na-ha-TJI-vu", pronunciation_en: "FOH-koo na-ha-CHEE-voo — 1ª/3ª pessoa, narrator's stance" },
-      { word: "o narrador onisciente", en: "the omniscient narrator", vi: "người kể toàn tri", pos: "n.m.", pronunciation_vi: "na-ha-DOR ô-ni-si-ÊN-tji", pronunciation_en: "na-ha-DOR oh-nee-syen-CHEE" },
-      { word: "a ironia", en: "irony", vi: "sự mỉa mai", pos: "n.f.", pronunciation_vi: "i-rô-NI-a", pronunciation_en: "ee-roh-NEE-a — saying X to mean the opposite" },
-      { word: "a metáfora", en: "metaphor", vi: "ẩn dụ", pos: "n.f.", pronunciation_vi: "me-TA-fo-ra", pronunciation_en: "me-TAH-fo-ra — proparoxytone" },
-      { word: "o hipérbato", en: "hyperbaton (inverted word order)", vi: "phép đảo trang", pos: "n.m.", pronunciation_vi: "i-PÉR-ba-tu", pronunciation_en: "ee-PEHR-ba-too — silent 'h'" },
-      { word: "a verossimilhança", en: "verisimilitude", vi: "tính chân thực (văn học)", pos: "n.f.", pronunciation_vi: "ve-rô-si-mi-LIÃN-sa", pronunciation_en: "ve-ro-see-mee-LYAHN-sa — 'lh' = 'ly'; nasal 'an'" },
-      { word: "o desfecho", en: "the denouement / outcome", vi: "kết cục", pos: "n.m.", pronunciation_vi: "djis-FÊ-xu", pronunciation_en: "jees-FAY-shoo" },
-      { word: "subentender", en: "to imply / leave implicit", vi: "ngụ ý, ám chỉ", pos: "v.", pronunciation_vi: "su-ben-ten-DER", pronunciation_en: "soo-ben-ten-DEHR — sub- + entender" },
+      { cell_id: "7e395e31-8444-4f11-8301-efc7e2ee19fb", word: "a análise literária", en: "literary analysis", vi: "phân tích văn học", pos: "n.f.", pronunciation_vi: "a-NA-li-zi li-te-RA-ria", pronunciation_en: "a-NAH-lee-zee lee-te-RAH-rya — proparoxytone 'análise'" },
+      { cell_id: "57df7d0b-707e-463a-b555-e657242afd72", word: "o trecho", en: "the passage / excerpt", vi: "đoạn trích", pos: "n.m.", pronunciation_vi: "TRÊ-xu", pronunciation_en: "TRAY-shoo — 'ch' = 'sh'; the standard word for an excerpt" },
+      { cell_id: "3a5146eb-2aa4-49e3-b129-470d94caec2b", word: "o foco narrativo", en: "narrative point of view", vi: "tiêu điểm trần thuật", pos: "n.m.", pronunciation_vi: "FÔ-cu na-ha-TJI-vu", pronunciation_en: "FOH-koo na-ha-CHEE-voo — 1ª/3ª pessoa, narrator's stance" },
+      { cell_id: "21b2549d-84ed-43f1-a39d-cf30432f648d", word: "o narrador onisciente", en: "the omniscient narrator", vi: "người kể toàn tri", pos: "n.m.", pronunciation_vi: "na-ha-DOR ô-ni-si-ÊN-tji", pronunciation_en: "na-ha-DOR oh-nee-syen-CHEE" },
+      { cell_id: "08c930a7-4a92-4647-b4cd-75d615508a1c", word: "a ironia", en: "irony", vi: "sự mỉa mai", pos: "n.f.", pronunciation_vi: "i-rô-NI-a", pronunciation_en: "ee-roh-NEE-a — saying X to mean the opposite" },
+      { cell_id: "b929dc4e-7b69-458f-ba19-bc94addc65b7", word: "a metáfora", en: "metaphor", vi: "ẩn dụ", pos: "n.f.", pronunciation_vi: "me-TA-fo-ra", pronunciation_en: "me-TAH-fo-ra — proparoxytone" },
+      { cell_id: "7129c9b5-78b7-498a-acf9-72c40fa008da", word: "o hipérbato", en: "hyperbaton (inverted word order)", vi: "phép đảo trang", pos: "n.m.", pronunciation_vi: "i-PÉR-ba-tu", pronunciation_en: "ee-PEHR-ba-too — silent 'h'" },
+      { cell_id: "ed9b2463-8ffc-4fe9-a9ec-585ef46b0d17", word: "a verossimilhança", en: "verisimilitude", vi: "tính chân thực (văn học)", pos: "n.f.", pronunciation_vi: "ve-rô-si-mi-LIÃN-sa", pronunciation_en: "ve-ro-see-mee-LYAHN-sa — 'lh' = 'ly'; nasal 'an'" },
+      { cell_id: "4e88ca84-1b9c-4099-a7b2-941aa73336a7", word: "o desfecho", en: "the denouement / outcome", vi: "kết cục", pos: "n.m.", pronunciation_vi: "djis-FÊ-xu", pronunciation_en: "jees-FAY-shoo" },
+      { cell_id: "e84d28aa-a731-40e6-91c7-6870ed05d841", word: "subentender", en: "to imply / leave implicit", vi: "ngụ ý, ám chỉ", pos: "v.", pronunciation_vi: "su-ben-ten-DER", pronunciation_en: "soo-ben-ten-DEHR — sub- + entender" },
     ],
     exercises: [
       {
@@ -277,21 +279,21 @@ export const lessons: PortugueseLesson[] = [
     tip_advice_en:
       "C2 rebuttal frame: (1) concede — 'Concedo que…' / 'Há que reconhecer que…'; (2) pivot — 'Porém' / 'Não obstante' / 'Dito isso'; (3) rebut — 'a premissa não se sustenta', 'isso não decorre logicamente'; (4) push it — 'Se levarmos isso às últimas consequências…'. The hortative subjunctive sounds erudite: 'Não confundamos…', 'Consideremos…', 'Reconheçamos…'. Transition with 'Em última análise', 'Por outro lado', 'Cabe ressaltar que'. Avoid 'Você está errado' (too blunt/casual), filler like 'tipo assim' / 'né?' (drops the register), and raising your voice — in Brazil whoever raises it first looks like they've lost the point.",
     vocabulary: [
-      { word: "a tese", en: "the thesis / central claim", vi: "luận điểm trung tâm", pos: "n.f.", pronunciation_vi: "TÉ-zi", pronunciation_en: "TEH-zee — open 'é'; the claim you defend" },
-      { word: "a premissa", en: "the premise", vi: "tiền đề", pos: "n.f.", pronunciation_vi: "pre-MI-sa", pronunciation_en: "pre-MEE-sa" },
-      { word: "a refutação", en: "the rebuttal", vi: "sự phản bác", pos: "n.f.", pronunciation_vi: "he-fu-ta-SÃU", pronunciation_en: "he-foo-ta-SOWNG — initial 'r' = 'h'" },
-      { word: "conceder", en: "to concede (a point)", vi: "nhượng bộ một điểm", pos: "v.", pronunciation_vi: "côn-se-DER", pronunciation_en: "kong-se-DEHR" },
-      { word: "a falácia", en: "the fallacy", vi: "ngụy biện", pos: "n.f.", pronunciation_vi: "fa-LA-sia", pronunciation_en: "fa-LAH-sya" },
-      { word: "a falsa dicotomia", en: "the false dichotomy", vi: "lưỡng phân giả", pos: "n.f.", pronunciation_vi: "FAU-sa di-cô-tô-MI-a", pronunciation_en: "FOW-sa dee-ko-toh-MEE-a" },
-      { word: "o raciocínio", en: "the reasoning", vi: "lập luận, suy luận", pos: "n.m.", pronunciation_vi: "ha-siô-SI-niu", pronunciation_en: "ha-syoh-SEE-nyoo" },
-      { word: "não obstante", en: "nevertheless", vi: "tuy nhiên, dù vậy", pos: "conj.", pronunciation_vi: "NÃU obs-TÃN-tji", pronunciation_en: "NOWNG obs-TAHN-chee — formal pivot word" },
-      { word: "decorrer (de)", en: "to follow / result (from)", vi: "suy ra từ, phát sinh từ", pos: "v.", pronunciation_vi: "de-cô-HER", pronunciation_en: "de-ko-HEHR — 'isso não decorre' = it doesn't follow" },
-      { word: "em última análise", en: "in the final analysis", vi: "xét cho cùng", pos: "expr.", pronunciation_vi: "ein UU-tji-ma a-NA-li-zi", pronunciation_en: "eng OOL-chee-ma a-NAH-lee-zee" },
+      { cell_id: "55e50e6b-57eb-4829-9cb7-5f189c492281", word: "a tese", en: "the thesis / central claim", vi: "luận điểm trung tâm", pos: "n.f.", pronunciation_vi: "TÉ-zi", pronunciation_en: "TEH-zee — open 'é'; the claim you defend" },
+      { cell_id: "3f57cd5d-b197-4069-b28b-ff07a72fa075", word: "a premissa", en: "the premise", vi: "tiền đề", pos: "n.f.", pronunciation_vi: "pre-MI-sa", pronunciation_en: "pre-MEE-sa" },
+      { cell_id: "e9d28755-bc1c-44d3-866b-86c9fa5e312c", word: "a refutação", en: "the rebuttal", vi: "sự phản bác", pos: "n.f.", pronunciation_vi: "he-fu-ta-SÃU", pronunciation_en: "he-foo-ta-SOWNG — initial 'r' = 'h'" },
+      { cell_id: "69b08a77-88ce-49cc-9bbb-a39034036406", word: "conceder", en: "to concede (a point)", vi: "nhượng bộ một điểm", pos: "v.", pronunciation_vi: "côn-se-DER", pronunciation_en: "kong-se-DEHR" },
+      { cell_id: "a0ef2677-0377-4748-bc6a-aa60f0d389c2", word: "a falácia", en: "the fallacy", vi: "ngụy biện", pos: "n.f.", pronunciation_vi: "fa-LA-sia", pronunciation_en: "fa-LAH-sya" },
+      { cell_id: "8f291b9f-dc16-4762-8ee7-17e16dcc2c37", word: "a falsa dicotomia", en: "the false dichotomy", vi: "lưỡng phân giả", pos: "n.f.", pronunciation_vi: "FAU-sa di-cô-tô-MI-a", pronunciation_en: "FOW-sa dee-ko-toh-MEE-a" },
+      { cell_id: "9636df13-b443-4623-a1f7-425ce51a0281", word: "o raciocínio", en: "the reasoning", vi: "lập luận, suy luận", pos: "n.m.", pronunciation_vi: "ha-siô-SI-niu", pronunciation_en: "ha-syoh-SEE-nyoo" },
+      { cell_id: "b3be5d98-e95e-4f52-99c3-154b4851dd80", word: "não obstante", en: "nevertheless", vi: "tuy nhiên, dù vậy", pos: "conj.", pronunciation_vi: "NÃU obs-TÃN-tji", pronunciation_en: "NOWNG obs-TAHN-chee — formal pivot word" },
+      { cell_id: "2f0cb007-724a-4506-9944-46e6746c1e67", word: "decorrer (de)", en: "to follow / result (from)", vi: "suy ra từ, phát sinh từ", pos: "v.", pronunciation_vi: "de-cô-HER", pronunciation_en: "de-ko-HEHR — 'isso não decorre' = it doesn't follow" },
+      { cell_id: "3f91b9de-00bf-4c77-9d0f-c740d7ed9b26", word: "em última análise", en: "in the final analysis", vi: "xét cho cùng", pos: "expr.", pronunciation_vi: "ein UU-tji-ma a-NA-li-zi", pronunciation_en: "eng OOL-chee-ma a-NAH-lee-zee" },
     ],
     dialogue: [
-      { speaker: "Debatedor A", text: "Concedo que os dados são preocupantes, porém a sua interpretação parte de uma premissa frágil.", vi: "Tôi nhượng bộ rằng các số liệu đáng lo, song cách diễn giải của ngài khởi từ một tiền đề yếu.", en: "I grant the data is worrying, but your reading starts from a shaky premise." },
-      { speaker: "Debatedor B", text: "Permita-me precisar: não afirmei causalidade, apenas correlação.", vi: "Cho phép tôi nói rõ: tôi không khẳng định nhân quả, chỉ là tương quan.", en: "Let me be precise: I claimed correlation, not causation." },
-      { speaker: "Debatedor A", text: "Nesse caso, retiro a objeção — mas então a sua conclusão é bem mais modesta do que parecia.", vi: "Trong trường hợp đó, tôi rút lại phản đối — nhưng kết luận của ngài khi ấy khiêm tốn hơn nhiều so với vẻ ban đầu.", en: "Then I withdraw the objection — but your conclusion is far more modest than it seemed." },
+      { cell_id: "24fc9d9b-eebb-4bfd-ab7f-b7e4987ec5fd", speaker: "Debatedor A", text: "Concedo que os dados são preocupantes, porém a sua interpretação parte de uma premissa frágil.", vi: "Tôi nhượng bộ rằng các số liệu đáng lo, song cách diễn giải của ngài khởi từ một tiền đề yếu.", en: "I grant the data is worrying, but your reading starts from a shaky premise." },
+      { cell_id: "4a7bfdea-28de-49fa-bb0e-6aa37d960def", speaker: "Debatedor B", text: "Permita-me precisar: não afirmei causalidade, apenas correlação.", vi: "Cho phép tôi nói rõ: tôi không khẳng định nhân quả, chỉ là tương quan.", en: "Let me be precise: I claimed correlation, not causation." },
+      { cell_id: "607499b1-40d2-42db-93fd-0d4ec2410001", speaker: "Debatedor A", text: "Nesse caso, retiro a objeção — mas então a sua conclusão é bem mais modesta do que parecia.", vi: "Trong trường hợp đó, tôi rút lại phản đối — nhưng kết luận của ngài khi ấy khiêm tốn hơn nhiều so với vẻ ban đầu.", en: "Then I withdraw the objection — but your conclusion is far more modest than it seemed." },
     ],
     exercises: [
       {
@@ -395,16 +397,16 @@ export const lessons: PortugueseLesson[] = [
     tip_advice_en:
       "To detect irony, ask whether the words fit the situation: 'Que pontualidade!' (Such punctuality!) when you're 40 minutes late = sarcasm. The mismatch is the signal. To be indirect politely, combine litotes + a hedge: 'Não que eu queira me intrometer, mas…' (opening unsolicited advice), 'Talvez valesse a pena reconsiderar' (soft criticism via subjunctive), 'Não deixa de ter os seus méritos' (faint praise = veiled critique). Flag euphemism with 'digamos' / 'por assim dizer'. Watch register: 'com a devida vênia' is for parliament; 'aham, sei…' (yeah, sure…) is for friends — don't swap them. Avoid irony with new acquaintances; it's read literally and offends. It's safest once both sides are close.",
     vocabulary: [
-      { word: "a ironia", en: "irony", vi: "sự mỉa mai", pos: "n.f.", pronunciation_vi: "i-rô-NI-a", pronunciation_en: "ee-roh-NEE-a" },
-      { word: "o subtexto", en: "the subtext", vi: "ẩn ngôn, hàm ý", pos: "n.m.", pronunciation_vi: "sub-TÊS-tu", pronunciation_en: "soob-TES-too" },
-      { word: "nas entrelinhas", en: "between the lines", vi: "giữa những dòng chữ", pos: "expr.", pronunciation_vi: "nas en-tre-LI-ñas", pronunciation_en: "nas en-tre-LEE-nyas — 'lh' = 'ny'" },
-      { word: "o eufemismo", en: "the euphemism", vi: "uyển ngữ", pos: "n.m.", pronunciation_vi: "eu-fe-MIS-mu", pronunciation_en: "ew-fe-MEES-moo" },
-      { word: "a litotes", en: "litotes (affirming by negating the opposite)", vi: "phép nói giảm (khẳng định qua phủ định)", pos: "n.f.", pronunciation_vi: "li-TÔ-tis", pronunciation_en: "lee-TOH-tees — e.g. 'não é nada mau'" },
-      { word: "a indireta", en: "the hint / veiled remark", vi: "lời bóng gió", pos: "n.f.", pronunciation_vi: "in-di-RÉ-ta", pronunciation_en: "in-jee-REH-ta — 'mandar uma indireta' = to drop a hint" },
-      { word: "debochado", en: "mocking / cheekily ironic", vi: "giễu cợt, đùa cợt", pos: "adj.", pronunciation_vi: "de-bô-XA-du", pronunciation_en: "de-bo-SHAH-doo — 'ch' = 'sh'; playful mockery" },
-      { word: "subentender", en: "to imply", vi: "ngụ ý", pos: "v.", pronunciation_vi: "su-ben-ten-DER", pronunciation_en: "soo-ben-ten-DEHR" },
-      { word: "com a devida vênia", en: "with all due respect (often ironic)", vi: "với sự kính trọng đúng mực", pos: "expr.", pronunciation_vi: "côm a de-VI-da VÊ-nia", pronunciation_en: "kohm a de-VEE-da VAY-nya" },
-      { word: "econômico com a verdade", en: "economical with the truth (= lying)", vi: "tiết kiệm sự thật (= nói dối)", pos: "expr.", pronunciation_vi: "e-cô-NÔ-mi-cu côm a ver-DA-dji", pronunciation_en: "eh-ko-NOH-mee-koo kohm a ver-DAH-jee" },
+      { cell_id: "66ea1418-061e-4e8e-9b28-aebe809e8ff4", word: "a ironia", en: "irony", vi: "sự mỉa mai", pos: "n.f.", pronunciation_vi: "i-rô-NI-a", pronunciation_en: "ee-roh-NEE-a" },
+      { cell_id: "e49e2486-34e7-43b5-9221-0437f215452c", word: "o subtexto", en: "the subtext", vi: "ẩn ngôn, hàm ý", pos: "n.m.", pronunciation_vi: "sub-TÊS-tu", pronunciation_en: "soob-TES-too" },
+      { cell_id: "f48424b3-f667-4acf-9385-1818e4569679", word: "nas entrelinhas", en: "between the lines", vi: "giữa những dòng chữ", pos: "expr.", pronunciation_vi: "nas en-tre-LI-ñas", pronunciation_en: "nas en-tre-LEE-nyas — 'lh' = 'ny'" },
+      { cell_id: "cf93e0d1-9a86-4eb2-9190-67beab0778f1", word: "o eufemismo", en: "the euphemism", vi: "uyển ngữ", pos: "n.m.", pronunciation_vi: "eu-fe-MIS-mu", pronunciation_en: "ew-fe-MEES-moo" },
+      { cell_id: "19498970-e9ca-448e-b157-ec5f7b2afd9f", word: "a litotes", en: "litotes (affirming by negating the opposite)", vi: "phép nói giảm (khẳng định qua phủ định)", pos: "n.f.", pronunciation_vi: "li-TÔ-tis", pronunciation_en: "lee-TOH-tees — e.g. 'não é nada mau'" },
+      { cell_id: "a35f2c09-fbc2-4dac-bba9-0a7f17ba5718", word: "a indireta", en: "the hint / veiled remark", vi: "lời bóng gió", pos: "n.f.", pronunciation_vi: "in-di-RÉ-ta", pronunciation_en: "in-jee-REH-ta — 'mandar uma indireta' = to drop a hint" },
+      { cell_id: "8808ad5f-dbeb-483b-b29a-23f4d2aac687", word: "debochado", en: "mocking / cheekily ironic", vi: "giễu cợt, đùa cợt", pos: "adj.", pronunciation_vi: "de-bô-XA-du", pronunciation_en: "de-bo-SHAH-doo — 'ch' = 'sh'; playful mockery" },
+      { cell_id: "71452bf2-5558-497a-88a2-172415c35802", word: "subentender", en: "to imply", vi: "ngụ ý", pos: "v.", pronunciation_vi: "su-ben-ten-DER", pronunciation_en: "soo-ben-ten-DEHR" },
+      { cell_id: "ad336470-9c6b-4359-9626-cd7771f2de51", word: "com a devida vênia", en: "with all due respect (often ironic)", vi: "với sự kính trọng đúng mực", pos: "expr.", pronunciation_vi: "côm a de-VI-da VÊ-nia", pronunciation_en: "kohm a de-VEE-da VAY-nya" },
+      { cell_id: "0ce4ad60-aab7-4886-a2a2-bf18f905a2b8", word: "econômico com a verdade", en: "economical with the truth (= lying)", vi: "tiết kiệm sự thật (= nói dối)", pos: "expr.", pronunciation_vi: "e-cô-NÔ-mi-cu côm a ver-DA-dji", pronunciation_en: "eh-ko-NOH-mee-koo kohm a ver-DAH-jee" },
     ],
     idiom_glosses: [
       {
@@ -538,21 +540,21 @@ export const lessons: PortugueseLesson[] = [
     tip_advice_en:
       "Drill register-switching: say one idea three ways — formal 'Cabe-nos reconsiderar a estratégia', neutral 'A gente precisa repensar a estratégia', popular 'A gente tem que dar um jeito nesse plano'. Formal cues (writing/meetings): enclisis/mesoclisis ('cabe-nos', 'far-se-á'), formal connectives ('outrossim', 'porquanto', 'não obstante'), Latinate verbs ('reiterar', 'carecer de'). Popular cues (close friends only): 'grana', 'rolê', 'mano/cara', 'top/da hora', fillers 'tipo', 'sei lá', 'né?'. Safe default for learners: when unsure, pick the NEUTRAL tier ('a gente', clear sentences) — it's rarely wrong anywhere; only use slang after you've heard a Brazilian use it WITH you first. Avoid: slang from films aimed at a boss; 'véi' in a work email; 'outrossim' in a text to a friend (sounds robotic).",
     vocabulary: [
-      { word: "o registro", en: "the register (level of formality)", vi: "văn phong, ngữ vực", pos: "n.m.", pronunciation_vi: "he-JIS-tru", pronunciation_en: "he-ZHEES-troo — 'mudar de registro' = to switch register" },
-      { word: "culto / erudito", en: "highbrow / erudite (register)", vi: "(văn phong) bác học", pos: "adj.", pronunciation_vi: "CUU-tu / e-ru-DJI-tu", pronunciation_en: "KOOL-too / eh-roo-JEE-too" },
-      { word: "coloquial", en: "colloquial", vi: "thông tục, đời thường", pos: "adj.", pronunciation_vi: "cô-lô-kui-AU", pronunciation_en: "ko-lo-kwee-OW — final '-al' = 'ow'" },
-      { word: "a gíria", en: "slang", vi: "tiếng lóng", pos: "n.f.", pronunciation_vi: "JI-ria", pronunciation_en: "ZHEE-rya — the popular/street tier" },
-      { word: "a grana", en: "money (slang)", vi: "tiền (lóng)", pos: "n.f.", pronunciation_vi: "GRÃ-na", pronunciation_en: "GRAH-na — cash/dough" },
-      { word: "dar um jeito", en: "to find a way / sort it out", vi: "xoay xở, lo liệu", pos: "expr.", pronunciation_vi: "dar un JÊi-tu", pronunciation_en: "dar oon ZHAY-too — the quintessential Brazilian fix-it phrase" },
-      { word: "mandar bem", en: "to do great / nail it (slang)", vi: "làm cực tốt", pos: "expr.", pronunciation_vi: "man-DAR bein", pronunciation_en: "man-DAR beng" },
-      { word: "outrossim", en: "moreover / furthermore (formal)", vi: "hơn nữa (trang trọng)", pos: "adv.", pronunciation_vi: "ô-trô-SIN", pronunciation_en: "oh-tro-SEENG — very formal connective" },
-      { word: "carecer de", en: "to lack (formal)", vi: "thiếu (trang trọng)", pos: "v.", pronunciation_vi: "ca-re-SER dji", pronunciation_en: "ka-re-SEHR jee" },
-      { word: "deixa de frescura", en: "quit the fuss / drop the drama (slang)", vi: "thôi làm màu", pos: "expr.", pronunciation_vi: "DÊi-xa dji fres-CU-ra", pronunciation_en: "DAY-sha jee fres-KOO-ra" },
+      { cell_id: "13daa3fb-73a7-4a94-a004-8a8bccc555ac", word: "o registro", en: "the register (level of formality)", vi: "văn phong, ngữ vực", pos: "n.m.", pronunciation_vi: "he-JIS-tru", pronunciation_en: "he-ZHEES-troo — 'mudar de registro' = to switch register" },
+      { cell_id: "a480d112-b724-49b8-8752-9867a93b3ad4", word: "culto / erudito", en: "highbrow / erudite (register)", vi: "(văn phong) bác học", pos: "adj.", pronunciation_vi: "CUU-tu / e-ru-DJI-tu", pronunciation_en: "KOOL-too / eh-roo-JEE-too" },
+      { cell_id: "dcbfa585-b74a-4225-96f5-a47c20038c8e", word: "coloquial", en: "colloquial", vi: "thông tục, đời thường", pos: "adj.", pronunciation_vi: "cô-lô-kui-AU", pronunciation_en: "ko-lo-kwee-OW — final '-al' = 'ow'" },
+      { cell_id: "bf034aa8-a286-4184-8b1d-f400f9739261", word: "a gíria", en: "slang", vi: "tiếng lóng", pos: "n.f.", pronunciation_vi: "JI-ria", pronunciation_en: "ZHEE-rya — the popular/street tier" },
+      { cell_id: "a1f8ec86-0634-43ff-9506-f08c3746b655", word: "a grana", en: "money (slang)", vi: "tiền (lóng)", pos: "n.f.", pronunciation_vi: "GRÃ-na", pronunciation_en: "GRAH-na — cash/dough" },
+      { cell_id: "5b00b5e5-2e0c-4106-ba08-3608733f236b", word: "dar um jeito", en: "to find a way / sort it out", vi: "xoay xở, lo liệu", pos: "expr.", pronunciation_vi: "dar un JÊi-tu", pronunciation_en: "dar oon ZHAY-too — the quintessential Brazilian fix-it phrase" },
+      { cell_id: "b611d1cb-4b1e-4c7d-a12e-889081d0e582", word: "mandar bem", en: "to do great / nail it (slang)", vi: "làm cực tốt", pos: "expr.", pronunciation_vi: "man-DAR bein", pronunciation_en: "man-DAR beng" },
+      { cell_id: "53735b67-37c7-417e-9922-f19ba02b8566", word: "outrossim", en: "moreover / furthermore (formal)", vi: "hơn nữa (trang trọng)", pos: "adv.", pronunciation_vi: "ô-trô-SIN", pronunciation_en: "oh-tro-SEENG — very formal connective" },
+      { cell_id: "611961e4-ab9b-4f75-8bd5-f48812320092", word: "carecer de", en: "to lack (formal)", vi: "thiếu (trang trọng)", pos: "v.", pronunciation_vi: "ca-re-SER dji", pronunciation_en: "ka-re-SEHR jee" },
+      { cell_id: "a223c56d-0591-4d26-9c61-236265d4f61b", word: "deixa de frescura", en: "quit the fuss / drop the drama (slang)", vi: "thôi làm màu", pos: "expr.", pronunciation_vi: "DÊi-xa dji fres-CU-ra", pronunciation_en: "DAY-sha jee fres-KOO-ra" },
     ],
     dialogue: [
-      { speaker: "Formal (na reunião)", text: "Cabe-nos otimizar os recursos disponíveis antes de solicitar verba adicional.", vi: "Phận sự của chúng ta là tối ưu nguồn lực hiện có trước khi xin thêm ngân sách.", en: "It falls to us to optimize available resources before requesting more budget." },
-      { speaker: "Neutro (com colega)", text: "A gente precisa repensar como usar a grana antes de pedir mais.", vi: "Bọn mình cần nghĩ lại cách dùng tiền trước khi xin thêm.", en: "We need to rethink how we use the money before asking for more." },
-      { speaker: "Popular (com amigo)", text: "Pô, deixa de frescura — a gente dá um jeito nessa grana, relaxa.", vi: "Trời, thôi làm màu đi — bọn mình xoay được khoản tiền đó mà, bình tĩnh.", en: "Come on, drop the drama — we'll sort the money out, chill." },
+      { cell_id: "91c225a1-8215-4eeb-a878-85d8759459a7", speaker: "Formal (na reunião)", text: "Cabe-nos otimizar os recursos disponíveis antes de solicitar verba adicional.", vi: "Phận sự của chúng ta là tối ưu nguồn lực hiện có trước khi xin thêm ngân sách.", en: "It falls to us to optimize available resources before requesting more budget." },
+      { cell_id: "fb8f7438-61da-425d-9e8e-02bb44effc67", speaker: "Neutro (com colega)", text: "A gente precisa repensar como usar a grana antes de pedir mais.", vi: "Bọn mình cần nghĩ lại cách dùng tiền trước khi xin thêm.", en: "We need to rethink how we use the money before asking for more." },
+      { cell_id: "ebcac114-6601-439c-b1d9-3a8c59de0ffd", speaker: "Popular (com amigo)", text: "Pô, deixa de frescura — a gente dá um jeito nessa grana, relaxa.", vi: "Trời, thôi làm màu đi — bọn mình xoay được khoản tiền đó mà, bình tĩnh.", en: "Come on, drop the drama — we'll sort the money out, chill." },
     ],
     exercises: [
       {
@@ -657,22 +659,22 @@ export const lessons: PortugueseLesson[] = [
     tip_advice_en:
       "Academic presentation frame: (1) frame the problem 'O presente trabalho propõe-se a investigar…'; (2) hypothesis 'Parte-se da hipótese de que…'; (3) method 'Para tanto, recorreu-se a…'; (4) caveat 'Cumpre ressalvar que…'; (5) contribution 'Pretende-se contribuir para…'. The impersonal voice (voz impessoal) with 'se' is the core marker of academic Portuguese — 'parte-se de…', 'observa-se que…', 'conclui-se que…' — more objective than 'eu'. Fielding questions in a banca: agree 'Pertinente a observação. De fato…'; disagree 'Compreendo o ponto, contudo os dados sugerem o contrário'; concede 'Trata-se de uma limitação que reconheço e pretendo abordar em trabalhos futuros'. Avoid absolutes ('isso prova definitivamente') — prefer 'os dados sugerem/indicam'; avoid emotional defensiveness and weak 'eu acho' — use 'argumenta-se que' / 'sustenta-se que'.",
     vocabulary: [
-      { word: "a hipótese", en: "the hypothesis", vi: "giả thuyết", pos: "n.f.", pronunciation_vi: "i-PÓ-te-zi", pronunciation_en: "ee-POH-te-zee — proparoxytone; silent 'h'" },
-      { word: "a ressalva", en: "the caveat / qualification", vi: "lời lưu ý, dè dặt", pos: "n.f.", pronunciation_vi: "he-SAU-va", pronunciation_en: "he-SOW-va — 'fazer uma ressalva' = to add a caveat" },
-      { word: "a amostra", en: "the sample (data)", vi: "mẫu (dữ liệu)", pos: "n.f.", pronunciation_vi: "a-MOS-tra", pronunciation_en: "a-MOS-tra" },
-      { word: "a lacuna", en: "the gap (in the literature)", vi: "lỗ hổng (nghiên cứu)", pos: "n.f.", pronunciation_vi: "la-CU-na", pronunciation_en: "la-KOO-na — 'apontar uma lacuna' = to identify a gap" },
-      { word: "debruçar-se (sobre)", en: "to delve into / study closely", vi: "nghiền ngẫm về", pos: "v.", pronunciation_vi: "de-bru-SAR-si", pronunciation_en: "de-broo-SAR-see — lit. 'to lean over'" },
-      { word: "cumpre ressalvar que", en: "it must be noted that", vi: "cần lưu ý rằng", pos: "expr.", pronunciation_vi: "CUM-pri he-sau-VAR ki", pronunciation_en: "KOOM-pree he-sow-VAR kee" },
-      { word: "contudo", en: "however / nevertheless", vi: "tuy vậy", pos: "conj.", pronunciation_vi: "côn-TU-du", pronunciation_en: "kong-TOO-doo — formal 'however'" },
-      { word: "esgotar o assunto", en: "to exhaust the topic", vi: "bàn cạn vấn đề", pos: "expr.", pronunciation_vi: "es-gô-TAR u a-SUN-tu", pronunciation_en: "es-go-TAR oo a-SOON-too" },
-      { word: "reservar-se o direito", en: "to reserve the right", vi: "giữ quyền", pos: "v.", pronunciation_vi: "he-zer-VAR-si u di-RÊi-tu", pronunciation_en: "he-zer-VAR-see oo jee-RAY-too" },
-      { word: "sustentar (uma tese)", en: "to uphold / argue (a thesis)", vi: "bảo vệ, chống đỡ (luận điểm)", pos: "v.", pronunciation_vi: "sus-ten-TAR", pronunciation_en: "soos-ten-TAR — 'sustenta-se que' = it is argued that" },
+      { cell_id: "111e8023-86bc-4cd2-aa40-a0f06d4f5f37", word: "a hipótese", en: "the hypothesis", vi: "giả thuyết", pos: "n.f.", pronunciation_vi: "i-PÓ-te-zi", pronunciation_en: "ee-POH-te-zee — proparoxytone; silent 'h'" },
+      { cell_id: "d2829317-4866-4b16-bcd0-6b9783cbad6d", word: "a ressalva", en: "the caveat / qualification", vi: "lời lưu ý, dè dặt", pos: "n.f.", pronunciation_vi: "he-SAU-va", pronunciation_en: "he-SOW-va — 'fazer uma ressalva' = to add a caveat" },
+      { cell_id: "6af368a9-b906-4829-9a61-1704fbf08237", word: "a amostra", en: "the sample (data)", vi: "mẫu (dữ liệu)", pos: "n.f.", pronunciation_vi: "a-MOS-tra", pronunciation_en: "a-MOS-tra" },
+      { cell_id: "044555df-ecc4-474a-b8ea-2863725f1eeb", word: "a lacuna", en: "the gap (in the literature)", vi: "lỗ hổng (nghiên cứu)", pos: "n.f.", pronunciation_vi: "la-CU-na", pronunciation_en: "la-KOO-na — 'apontar uma lacuna' = to identify a gap" },
+      { cell_id: "986a397b-ebbf-4f3d-b560-d6dc1add7a7d", word: "debruçar-se (sobre)", en: "to delve into / study closely", vi: "nghiền ngẫm về", pos: "v.", pronunciation_vi: "de-bru-SAR-si", pronunciation_en: "de-broo-SAR-see — lit. 'to lean over'" },
+      { cell_id: "d2380aaa-ec21-4ea1-9f7c-dd0bd0e70d89", word: "cumpre ressalvar que", en: "it must be noted that", vi: "cần lưu ý rằng", pos: "expr.", pronunciation_vi: "CUM-pri he-sau-VAR ki", pronunciation_en: "KOOM-pree he-sow-VAR kee" },
+      { cell_id: "bbfa3b1c-565c-4d77-a2fd-f557832d649d", word: "contudo", en: "however / nevertheless", vi: "tuy vậy", pos: "conj.", pronunciation_vi: "côn-TU-du", pronunciation_en: "kong-TOO-doo — formal 'however'" },
+      { cell_id: "93546f1b-49ba-427c-9f6b-aa13d13e7554", word: "esgotar o assunto", en: "to exhaust the topic", vi: "bàn cạn vấn đề", pos: "expr.", pronunciation_vi: "es-gô-TAR u a-SUN-tu", pronunciation_en: "es-go-TAR oo a-SOON-too" },
+      { cell_id: "8fef52c6-d1be-4490-b859-5a6268a37087", word: "reservar-se o direito", en: "to reserve the right", vi: "giữ quyền", pos: "v.", pronunciation_vi: "he-zer-VAR-si u di-RÊi-tu", pronunciation_en: "he-zer-VAR-see oo jee-RAY-too" },
+      { cell_id: "e368c6ba-a640-4332-a7f1-2b9e479e5a20", word: "sustentar (uma tese)", en: "to uphold / argue (a thesis)", vi: "bảo vệ, chống đỡ (luận điểm)", pos: "v.", pronunciation_vi: "sus-ten-TAR", pronunciation_en: "soos-ten-TAR — 'sustenta-se que' = it is argued that" },
     ],
     dialogue: [
-      { speaker: "Membro da banca", text: "A sua amostra não seria pequena demais para sustentar uma generalização tão ampla?", vi: "Mẫu của bạn liệu có quá nhỏ để chống đỡ một khái quát rộng như vậy không?", en: "Isn't your sample too small to support such a broad generalization?" },
-      { speaker: "Candidato(a)", text: "Pertinente a observação. De fato, cumpre ressalvar que a amostra limita o alcance — por isso falo em indícios, não em prova.", vi: "Nhận xét rất xác đáng. Quả thực, cần lưu ý mẫu hạn chế phạm vi — vì thế tôi nói là dấu hiệu, không phải bằng chứng.", en: "A fair point. Indeed, I must note the sample limits the scope — which is why I speak of indications, not proof." },
-      { speaker: "Membro da banca", text: "Como o senhor pretende contornar essa limitação em pesquisas futuras?", vi: "Ngài định khắc phục hạn chế đó trong các nghiên cứu sau bằng cách nào?", en: "How do you intend to overcome that limitation in future research?" },
-      { speaker: "Candidato(a)", text: "Reservo-me o direito de reavaliar a hipótese à luz de uma amostra ampliada e de novas evidências.", vi: "Tôi giữ quyền đánh giá lại giả thuyết dưới ánh sáng của một mẫu mở rộng và bằng chứng mới.", en: "I reserve the right to reassess the hypothesis in light of a larger sample and new evidence." },
+      { cell_id: "30585f89-becc-453a-b7be-390d7f7c9d9b", speaker: "Membro da banca", text: "A sua amostra não seria pequena demais para sustentar uma generalização tão ampla?", vi: "Mẫu của bạn liệu có quá nhỏ để chống đỡ một khái quát rộng như vậy không?", en: "Isn't your sample too small to support such a broad generalization?" },
+      { cell_id: "6a73e996-aba8-4a3c-99d7-0a4e4c327b64", speaker: "Candidato(a)", text: "Pertinente a observação. De fato, cumpre ressalvar que a amostra limita o alcance — por isso falo em indícios, não em prova.", vi: "Nhận xét rất xác đáng. Quả thực, cần lưu ý mẫu hạn chế phạm vi — vì thế tôi nói là dấu hiệu, không phải bằng chứng.", en: "A fair point. Indeed, I must note the sample limits the scope — which is why I speak of indications, not proof." },
+      { cell_id: "0b9a9312-dff2-49ad-b4b9-b6a1c8b97e1e", speaker: "Membro da banca", text: "Como o senhor pretende contornar essa limitação em pesquisas futuras?", vi: "Ngài định khắc phục hạn chế đó trong các nghiên cứu sau bằng cách nào?", en: "How do you intend to overcome that limitation in future research?" },
+      { cell_id: "c55e88c0-de78-46a7-bc79-f0795f3b5bef", speaker: "Candidato(a)", text: "Reservo-me o direito de reavaliar a hipótese à luz de uma amostra ampliada e de novas evidências.", vi: "Tôi giữ quyền đánh giá lại giả thuyết dưới ánh sáng của một mẫu mở rộng và bằng chứng mới.", en: "I reserve the right to reassess the hypothesis in light of a larger sample and new evidence." },
     ],
     exercises: [
       {

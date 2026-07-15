@@ -30,6 +30,7 @@ export type ItalianLessonSentence = {
 };
 
 export type ItalianVocabEntry = {
+  cell_id?: string;
   /** Italian word/phrase (with article where it teaches gender). */
   word: string;
   /** English meaning. */
@@ -45,6 +46,7 @@ export type ItalianVocabEntry = {
 };
 
 export type ItalianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   /** Italian line. */
   text: string;
@@ -266,6 +268,7 @@ export const lessons: ItalianLesson[] = [
       "Two grammar habits save you in Italy: (1) document nouns always travel WITH their article and agree in gender — `LA patente`, `IL libretto`, `L'assicurazione è validA`. (2) `studiare PER`, `il limite DI velocità`, `avere bisogno DI` — don't drop the preposition the way a word-for-word Vietnamese translation would. If you get pulled over, the safest lines are `Certo, eccoli` (handing over the documents) and `Mi dispiace, non lo sapevo` (Sorry, I didn't know) — stay calm and polite.",
     vocabulary: [
       {
+        cell_id: "a69ecd16-de41-4f10-a68b-66d749a59c62",
         word: "la patente",
         en: "driving license",
         vi: "bằng lái",
@@ -274,6 +277,7 @@ export const lessons: ItalianLesson[] = [
         pronunciation_en: "la pa-TEN-te",
       },
       {
+        cell_id: "66b7cceb-a87b-4ee5-925e-7ae1ddc59e51",
         word: "l'autoscuola",
         en: "driving school",
         vi: "trường dạy lái xe",
@@ -282,6 +286,7 @@ export const lessons: ItalianLesson[] = [
         pronunciation_en: "lau-to-SKWO-la — `sc` is `sk`",
       },
       {
+        cell_id: "e4b50abf-544d-4980-bbbe-8b5882922ee7",
         word: "l'esame teorico",
         en: "theory test",
         vi: "thi lý thuyết",
@@ -290,6 +295,7 @@ export const lessons: ItalianLesson[] = [
         pronunciation_en: "le-ZA-me te-O-ri-co — `s` is `z`",
       },
       {
+        cell_id: "2afb4333-018e-4843-898f-4e0d27facfd4",
         word: "l'esame pratico",
         en: "practical test",
         vi: "thi thực hành",
@@ -298,6 +304,7 @@ export const lessons: ItalianLesson[] = [
         pronunciation_en: "le-ZA-me PRA-ti-co",
       },
       {
+        cell_id: "0b01e1cc-612b-4dd4-972f-e20fa84f1c2f",
         word: "il segnale stradale",
         en: "road sign",
         vi: "biển báo đường",
@@ -306,6 +313,7 @@ export const lessons: ItalianLesson[] = [
         pronunciation_en: "il se-NYA-le stra-DA-le — `gn` is `ny`",
       },
       {
+        cell_id: "34d9f5a5-61cc-4937-a384-57954b991d3f",
         word: "il limite di velocità",
         en: "speed limit",
         vi: "giới hạn tốc độ",
@@ -314,6 +322,7 @@ export const lessons: ItalianLesson[] = [
         pronunciation_en: "il LEE-mee-te di ve-lo-chee-TA — `c` is `ch`",
       },
       {
+        cell_id: "474ee5c1-dab2-4726-844f-d6dbc166ba81",
         word: "l'assicurazione",
         en: "insurance",
         vi: "bảo hiểm",
@@ -322,6 +331,7 @@ export const lessons: ItalianLesson[] = [
         pronunciation_en: "las-si-cu-ra-TSYO-ne — `z` is `ts`",
       },
       {
+        cell_id: "eb1774d3-d201-4233-a5d7-41f55119ddc9",
         word: "il libretto",
         en: "vehicle registration document",
         vi: "giấy đăng ký xe",
@@ -330,6 +340,7 @@ export const lessons: ItalianLesson[] = [
         pronunciation_en: "il lee-BRET-to",
       },
       {
+        cell_id: "3bcd1495-8a37-4dab-a741-59a410fec83b",
         word: "la revisione",
         en: "roadworthiness inspection",
         vi: "kiểm định xe",
@@ -338,6 +349,7 @@ export const lessons: ItalianLesson[] = [
         pronunciation_en: "la re-vee-ZYO-ne — `s` is `z`",
       },
       {
+        cell_id: "82f16255-2f24-48b8-9948-f413f44b97e1",
         word: "la multa",
         en: "fine / ticket",
         vi: "tiền phạt",
@@ -346,6 +358,7 @@ export const lessons: ItalianLesson[] = [
         pronunciation_en: "la MUL-ta — don't confuse with `molta` (a lot)",
       },
       {
+        cell_id: "181c87ed-5e47-4ac5-98b8-a79dab76551b",
         word: "il divieto di sosta",
         en: "no parking",
         vi: "cấm đỗ xe",
@@ -354,6 +367,7 @@ export const lessons: ItalianLesson[] = [
         pronunciation_en: "il di-VYE-to di SOS-ta",
       },
       {
+        cell_id: "f885ec96-c469-454c-a0b2-3b683ca9ad3c",
         word: "il senso unico",
         en: "one-way street",
         vi: "đường một chiều",
@@ -362,6 +376,7 @@ export const lessons: ItalianLesson[] = [
         pronunciation_en: "il SEN-so OO-ni-co",
       },
       {
+        cell_id: "c0bb68ac-6820-4240-b59c-d7a12dd12957",
         word: "dare precedenza",
         en: "to give way / yield",
         vi: "nhường đường",
@@ -370,6 +385,7 @@ export const lessons: ItalianLesson[] = [
         pronunciation_en: "DA-re pre-che-DEN-tsa — `c` is `ch`, `z` is `ts`",
       },
       {
+        cell_id: "310249d6-aa5d-4b43-9824-e2071285138e",
         word: "l'attraversamento pedonale",
         en: "pedestrian crossing",
         vi: "vạch qua đường",
@@ -378,6 +394,7 @@ export const lessons: ItalianLesson[] = [
         pronunciation_en: "lat-tra-ver-sa-MEN-to pe-do-NA-le",
       },
       {
+        cell_id: "dc7fa30e-dcfe-48a3-a9e4-8b394f72dea6",
         word: "la zona a traffico limitato (ZTL)",
         en: "limited traffic zone",
         vi: "khu hạn chế giao thông",
@@ -386,6 +403,7 @@ export const lessons: ItalianLesson[] = [
         pronunciation_en: "la TSO-na a TRAF-fee-co lee-mee-TA-to",
       },
       {
+        cell_id: "e6d4fb0f-2f87-4f5d-b8e8-de6a60c595cc",
         word: "la strada chiusa",
         en: "road closed",
         vi: "đường đóng",
@@ -394,6 +412,7 @@ export const lessons: ItalianLesson[] = [
         pronunciation_en: "la STRA-da KYOO-za — `chi` is `ky`",
       },
       {
+        cell_id: "e652fc55-85bd-44af-8540-3ddc349ef644",
         word: "l'incidente",
         en: "accident",
         vi: "tai nạn",
@@ -402,6 +421,7 @@ export const lessons: ItalianLesson[] = [
         pronunciation_en: "lin-chee-DEN-te — `c` is `ch`",
       },
       {
+        cell_id: "3d4af8b8-8020-4baf-8dcf-a4a8b4819516",
         word: "ferito / ferita",
         en: "injured",
         vi: "bị thương",
@@ -410,6 +430,7 @@ export const lessons: ItalianLesson[] = [
         pronunciation_en: "fe-REE-to (m) / fe-REE-ta (f)",
       },
       {
+        cell_id: "d51428bd-3bd9-4886-98e2-b85bfc799f2a",
         word: "il modulo di constatazione amichevole",
         en: "friendly accident report form (CAI)",
         vi: "mẫu thỏa thuận tai nạn",
@@ -421,36 +442,42 @@ export const lessons: ItalianLesson[] = [
     dialogue: [
       // ── Police stop (Officer ⇄ Driver) ─────────────────────────────────
       {
+        cell_id: "0ecd65b1-7b03-4273-8957-64833b850568",
         speaker: "Agente",
         text: "Buongiorno, patente e libretto, per favore.",
         vi: "Chào, bằng lái và giấy xe, làm ơn.",
         en: "Good morning, license and registration, please.",
       },
       {
+        cell_id: "169aba7a-ec39-4aad-bbda-33ea1f18b38c",
         speaker: "Conducente",
         text: "Certo, eccoli.",
         vi: "Vâng, đây.",
         en: "Of course, here they are.",
       },
       {
+        cell_id: "add1a681-99e8-43d7-a657-57ead0644286",
         speaker: "Agente",
         text: "Sa perché l'abbiamo fermata?",
         vi: "Ông/bà biết vì sao chúng tôi dừng xe không?",
         en: "Do you know why we stopped you?",
       },
       {
+        cell_id: "1822283d-eec1-4f5c-9a50-f9a6c3d36547",
         speaker: "Conducente",
         text: "No, mi dispiace. Ho fatto qualcosa di sbagliato?",
         vi: "Không, xin lỗi. Tôi đã làm gì sai à?",
         en: "No, sorry. Did I do something wrong?",
       },
       {
+        cell_id: "1eea0f5b-b3d1-4de2-9ffb-e8beede8adb6",
         speaker: "Agente",
         text: "Ha superato il limite di velocità.",
         vi: "Ông/bà đã vượt giới hạn tốc độ.",
         en: "You went over the speed limit.",
       },
       {
+        cell_id: "39736a27-f326-42e9-927e-9cd417e8997e",
         speaker: "Conducente",
         text: "Capisco. Posso vedere il limite indicato?",
         vi: "Tôi hiểu. Tôi có thể xem giới hạn được chỉ ra không?",
@@ -458,30 +485,35 @@ export const lessons: ItalianLesson[] = [
       },
       // ── Driving school enquiry (Learner ⇄ School) ──────────────────────
       {
+        cell_id: "aa185bb5-08ba-4ee0-8d75-0b5c53fbf174",
         speaker: "Allievo",
         text: "Vorrei informazioni per prendere la patente in Italia.",
         vi: "Tôi muốn thông tin để lấy bằng lái ở Ý.",
         en: "I'd like information about getting a license in Italy.",
       },
       {
+        cell_id: "69901ed9-b79c-4fab-8848-77e1a68062c9",
         speaker: "Scuola",
         text: "Ha già una patente straniera?",
         vi: "Anh/chị đã có bằng nước ngoài chưa?",
         en: "Do you already have a foreign license?",
       },
       {
+        cell_id: "6801d9c3-27ca-4211-9f0f-46deb8cd36a0",
         speaker: "Allievo",
         text: "Sì, ho una patente vietnamita.",
         vi: "Có, tôi có bằng Việt Nam.",
         en: "Yes, I have a Vietnamese license.",
       },
       {
+        cell_id: "053e063c-209c-4921-bad2-7c8580f47853",
         speaker: "Scuola",
         text: "Dobbiamo controllare la sua situazione.",
         vi: "Chúng tôi cần kiểm tra tình trạng của anh/chị.",
         en: "We need to check your situation.",
       },
       {
+        cell_id: "dcab89b3-c51a-4401-a368-f438f55b9f30",
         speaker: "Allievo",
         text: "Quali documenti devo portare?",
         vi: "Tôi phải mang giấy tờ nào?",

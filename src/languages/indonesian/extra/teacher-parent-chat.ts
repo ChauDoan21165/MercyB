@@ -6,6 +6,7 @@ type IndonesianLessonSentence = {
 };
 
 type VocabEntry = {
+  cell_id?: string;
   word: string;
   meaning_vi: string;
   meaning_en: string;
@@ -14,6 +15,7 @@ type VocabEntry = {
 };
 
 type DialogueLine = {
+  cell_id?: string;
   speaker: string;
   line: string;
   vi: string;
@@ -117,6 +119,7 @@ export const lessons: IndonesianLesson[] = [
     ],
     vocabulary: [
       {
+        cell_id: "2406fa9d-bad4-45b6-9e10-6015651cd10d",
         word: 'guru',
         meaning_vi: 'giáo viên',
         meaning_en: 'teacher',
@@ -124,6 +127,7 @@ export const lessons: IndonesianLesson[] = [
         example_vi: 'Cô giáo gửi thông báo trong nhóm lớp.',
       },
       {
+        cell_id: "c3a2c4b4-f166-4785-85b4-60e308c9fff4",
         word: 'orang tua murid',
         meaning_vi: 'phụ huynh học sinh',
         meaning_en: 'student’s parent or guardian',
@@ -131,6 +135,7 @@ export const lessons: IndonesianLesson[] = [
         example_vi: 'Phụ huynh học sinh được yêu cầu đọc thông báo của trường.',
       },
       {
+        cell_id: "455b18a6-6e19-404a-9c27-f03cdfe90a41",
         word: 'grup WhatsApp kelas',
         meaning_vi: 'nhóm WhatsApp của lớp',
         meaning_en: 'class WhatsApp group',
@@ -138,6 +143,7 @@ export const lessons: IndonesianLesson[] = [
         example_vi: 'Lịch thi được chia sẻ trong nhóm WhatsApp của lớp.',
       },
       {
+        cell_id: "64f589fe-663a-4fac-8864-da2dc788c40e",
         word: 'izin sakit',
         meaning_vi: 'xin nghỉ vì ốm',
         meaning_en: 'sick leave or absence due to illness',
@@ -145,6 +151,7 @@ export const lessons: IndonesianLesson[] = [
         example_vi: 'Hôm nay con tôi xin nghỉ vì bị ốm.',
       },
       {
+        cell_id: "70d7f1a7-562b-4d5e-b361-50fb578bdf2c",
         word: 'tugas anak',
         meaning_vi: 'bài tập/việc được giao của con',
         meaning_en: 'child’s assignment or homework',
@@ -152,6 +159,7 @@ export const lessons: IndonesianLesson[] = [
         example_vi: 'Tôi muốn xác nhận bài tập của con tôi.',
       },
       {
+        cell_id: "b05043e5-d4cd-44ec-934f-efbf5ba71222",
         word: 'pengumuman sekolah',
         meaning_vi: 'thông báo của trường',
         meaning_en: 'school announcement',
@@ -159,6 +167,7 @@ export const lessons: IndonesianLesson[] = [
         example_vi: 'Thông báo của trường được gửi chiều nay.',
       },
       {
+        cell_id: "dcad91ce-2031-405a-94d4-45dca0b62322",
         word: 'wali kelas',
         meaning_vi: 'giáo viên chủ nhiệm',
         meaning_en: 'homeroom teacher',
@@ -166,6 +175,7 @@ export const lessons: IndonesianLesson[] = [
         example_vi: 'Vui lòng liên hệ giáo viên chủ nhiệm nếu con chưa vào lớp.',
       },
       {
+        cell_id: "336f78b3-0900-4ad0-94c1-17a31fa9b942",
         word: 'sopan santun chat',
         meaning_vi: 'phép lịch sự khi nhắn tin',
         meaning_en: 'chat etiquette',
@@ -175,36 +185,42 @@ export const lessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "8ce5623b-8626-415e-84f0-bf9b6944cc5f",
         speaker: 'Orang Tua',
         line: 'Selamat pagi, Bu. Maaf mengganggu. Hari ini anak saya izin sakit.',
         vi: 'Chào buổi sáng cô. Xin lỗi làm phiền. Hôm nay con tôi xin nghỉ vì bị ốm.',
         en: 'Good morning, Ma’am. Sorry to bother you. My child is absent due to illness today.',
       },
       {
+        cell_id: "df6ff226-c76e-4674-9bc8-dc2ed456eb1e",
         speaker: 'Guru',
         line: 'Selamat pagi. Baik, semoga lekas sembuh. Tolong kirim surat izin ya, Bu.',
         vi: 'Chào buổi sáng. Vâng, mong bé mau khỏe. Chị vui lòng gửi giấy xin phép nhé.',
         en: 'Good morning. All right, I hope your child gets well soon. Please send a leave note.',
       },
       {
+        cell_id: "379f3d40-4da0-4765-9bd9-5a6c38076709",
         speaker: 'Orang Tua',
         line: 'Baik, Bu. Nanti saya kirim foto surat izin ke wali kelas.',
         vi: 'Vâng cô. Lát nữa tôi sẽ gửi ảnh giấy xin phép cho giáo viên chủ nhiệm.',
         en: 'Sure. I will send a photo of the leave note to the homeroom teacher later.',
       },
       {
+        cell_id: "bdbfc944-badb-41f8-a902-38558cac0550",
         speaker: 'Orang Tua',
         line: 'Apakah ada tugas yang perlu dikerjakan di rumah?',
         vi: 'Có bài tập nào cần làm ở nhà không?',
         en: 'Is there any assignment that needs to be done at home?',
       },
       {
+        cell_id: "5fe6fa06-3c6d-4379-a68b-5c08d1bb62a5",
         speaker: 'Guru',
         line: 'Ada tugas matematika. Detailnya sudah saya kirim di grup WhatsApp kelas.',
         vi: 'Có bài tập toán. Chi tiết tôi đã gửi trong nhóm WhatsApp lớp.',
         en: 'There is a math assignment. I already sent the details in the class WhatsApp group.',
       },
       {
+        cell_id: "d4e1b5ae-8b51-464b-bc0e-048421f430b0",
         speaker: 'Orang Tua',
         line: 'Terima kasih atas informasinya, Bu.',
         vi: 'Cảm ơn cô về thông tin đó.',

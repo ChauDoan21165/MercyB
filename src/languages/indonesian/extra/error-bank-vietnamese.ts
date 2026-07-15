@@ -30,6 +30,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   /** Indonesian word/phrase. */
   word: string;
   /** English meaning. */
@@ -45,6 +46,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   /** Indonesian line. */
   text: string;
@@ -302,6 +304,7 @@ export const lessons: IndonesianLesson[] = [
     vocabulary: [
       // Prefix / affix building blocks
       {
+        cell_id: "426a55e9-542e-481b-b64e-2a8a0309c926",
         word: "meN-",
         en: "active verb prefix (me-, mem-, men-, meng-, meny-)",
         vi: "tiền tố động từ chủ động",
@@ -310,6 +313,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "men — shape-shifts by initial consonant; t/p/s/k DROP: `tulis`→`menulis`",
       },
       {
+        cell_id: "4f08da60-ef15-465c-b134-d4d40d790642",
         word: "di- (passive)",
         en: "passive verb prefix (joined)",
         vi: "tiền tố bị động (viết dính)",
@@ -318,6 +322,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "di — JOINED to the verb: `ditulis` (is written); not locational `di`",
       },
       {
+        cell_id: "7c14705a-63f0-49cc-b5dc-83a069906f2f",
         word: "di (preposition)",
         en: "at / in / on (separate)",
         vi: "ở (giới từ, viết rời)",
@@ -327,6 +332,7 @@ export const lessons: IndonesianLesson[] = [
       },
       // Negation set
       {
+        cell_id: "87cb0a71-e361-4f91-bec4-30d7fcde3bb6",
         word: "tidak",
         en: "not (verbs/adjectives)",
         vi: "không (động từ/tính từ)",
@@ -335,6 +341,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "TEE-dak — colloquial `nggak`/`enggak`; NOT for nouns",
       },
       {
+        cell_id: "caebba6a-7ec7-40e2-9d60-8fd803049b6c",
         word: "bukan",
         en: "not (nouns)",
         vi: "không phải (danh từ)",
@@ -343,6 +350,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "BU-kan — `bukan guru` (not a teacher)",
       },
       {
+        cell_id: "944e3499-9816-4b18-8db5-34e95ec724a7",
         word: "belum",
         en: "not yet",
         vi: "chưa",
@@ -351,6 +359,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "be-LUM — it may still happen; a tactful answer instead of `tidak`",
       },
       {
+        cell_id: "e80bf4ce-874b-4979-a405-338289b958d0",
         word: "jangan",
         en: "don't (negative command)",
         vi: "đừng",
@@ -360,6 +369,7 @@ export const lessons: IndonesianLesson[] = [
       },
       // Pronoun & modal contrasts
       {
+        cell_id: "ea4897aa-9a30-4257-bf07-a1918296c903",
         word: "kita",
         en: "we (inclusive — includes you)",
         vi: "chúng ta (gồm người nghe)",
@@ -368,6 +378,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "KEE-ta — includes the listener",
       },
       {
+        cell_id: "e7e9e8fb-c164-4599-865f-150ed30b900d",
         word: "kami",
         en: "we (exclusive — not you)",
         vi: "chúng tôi (không gồm người nghe)",
@@ -376,6 +387,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "KA-mi — excludes the listener",
       },
       {
+        cell_id: "54cf7444-ff59-439d-bf8b-a9c9e6554612",
         word: "boleh",
         en: "may / be allowed",
         vi: "được phép",
@@ -384,6 +396,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "BO-leh — permission: `boleh saya …?`; not `bisa` (ability)",
       },
       {
+        cell_id: "888d5ef2-151f-41b2-85d8-92c1c3afe59b",
         word: "bisa",
         en: "can / be able to",
         vi: "có thể (khả năng)",
@@ -393,6 +406,7 @@ export const lessons: IndonesianLesson[] = [
       },
       // Classic false-friend homonyms
       {
+        cell_id: "8aad78af-c13d-45ca-8eb4-9e1803cfb983",
         word: "tahu",
         en: "to know / tofu (homonyms)",
         vi: "biết / đậu phụ (trùng mặt chữ)",
@@ -401,6 +415,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "TA-hu — tell apart by context; `tahu` know vs `tahu` tofu",
       },
       {
+        cell_id: "69fabea8-9120-4733-8001-0b8e2e42cce3",
         word: "bulan",
         en: "month / moon (homonyms)",
         vi: "tháng / mặt trăng",
@@ -409,6 +424,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "BU-lan — `bulan depan` next month vs `bulan purnama` full moon",
       },
       {
+        cell_id: "f6380454-580a-4d9a-a907-e6d3c969fcff",
         word: "punya",
         en: "to have / own",
         vi: "có (sở hữu)",
@@ -417,6 +433,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "PU-nya — possessor follows: `buku saya`, NOT `saya buku`",
       },
       {
+        cell_id: "270d4b62-a719-4698-9636-52c9665f1496",
         word: "c (huruf)",
         en: "the letter c — always 'ch'",
         vi: "chữ c — luôn đọc 'ch'",
@@ -428,36 +445,42 @@ export const lessons: IndonesianLesson[] = [
     dialogue: [
       // Dialogue: a teacher correcting a Vietnamese learner's mistakes
       {
+        cell_id: "d333491d-e831-4016-84b3-c98ee153a7b8",
         speaker: "Murid",
         text: "Bu, saya beli buku kemarin. Ini saya buku.",
         vi: "Cô ơi, hôm qua em mua sách. Đây là sách của em. (hai lỗi: thiếu meN-, sai trật tự sở hữu)",
         en: "Ma'am, I bought a book yesterday. This is my book. (two errors: missing meN-, wrong possession order)",
       },
       {
+        cell_id: "d9c3b035-e327-4848-a286-239a80ea07e6",
         speaker: "Guru",
         text: "Bagus, tapi dua koreksi: `saya membeli buku`, dan `ini buku saya`.",
         vi: "Tốt, nhưng có hai chỗ sửa: `saya membeli buku`, và `ini buku saya`.",
         en: "Good, but two corrections: `saya membeli buku`, and `ini buku saya`.",
       },
       {
+        cell_id: "9daed065-bf79-4f91-a653-50df6986625a",
         speaker: "Murid",
         text: "Oh, benar. Saya belum mengerti prefiks meN-. Boleh saya tanya lagi?",
         vi: "À đúng rồi. Em chưa hiểu tiền tố meN-. Em hỏi thêm được không ạ?",
         en: "Oh, right. I don't understand the meN- prefix yet. May I ask again?",
       },
       {
+        cell_id: "2fe724de-00ca-4efa-8c16-e2ef5af137fa",
         speaker: "Guru",
         text: "Tentu. Bagus kamu pakai `belum` dan `boleh` dengan benar!",
         vi: "Tất nhiên. Em dùng `belum` và `boleh` đúng rồi đấy, giỏi lắm!",
         en: "Of course. Well done using `belum` and `boleh` correctly!",
       },
       {
+        cell_id: "d3658cae-c891-4854-9431-f50b3448eb5e",
         speaker: "Murid",
         text: "Terima kasih. Ini bukan susah, tapi saya harus banyak latihan.",
         vi: "Cảm ơn cô. Cái này không khó, nhưng em phải luyện tập nhiều.",
         en: "Thank you. This isn't hard, but I have to practice a lot.",
       },
       {
+        cell_id: "1200ee95-1082-40a1-84ed-f02fdc279275",
         speaker: "Guru",
         text: "Betul. Ingat: `c` dibaca 'ch', jadi `susah` bukan `cusah`. Semangat!",
         vi: "Đúng vậy. Nhớ: `c` đọc 'ch', nên là `susah` chứ không phải `cusah`. Cố lên!",

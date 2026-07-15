@@ -13,42 +13,52 @@ export const lessons: KoreanLesson[] =     [
       "intro_vi": "정독 (精讀) là nền tảng của phê bình văn học Hàn Quốc — bắt đầu từ đơn vị nhỏ nhất (어휘 선택, 문장 구조, 위치) rồi xây dựng lên ý nghĩa toàn văn bản. Truyền thống Hàn từ 김현 (1942-1990) trở đi nhấn mạnh: '비평은 정독 없이는 성립하지 않는다'. C2 đòi hỏi phân biệt 미시적 / 거시적 đọc, phân biệt 텍스트 내부 evidence vs 텍스트 외부 evidence.",
       "vocabulary": [
         {
+          cell_id: "794265da-782e-43b4-a6cf-3d7d8a6dcc4e",
           "hangul": "정독 (精讀)",
           "meaning": "đọc kỹ / close reading"
         },
         {
+          cell_id: "01a30130-5382-4283-8d27-c34d70ed8b5d",
           "hangul": "분석 (分析)",
           "meaning": "phân tích"
         },
         {
+          cell_id: "ef76ab4c-9265-401c-b95b-b449bb3a54e5",
           "hangul": "어휘 선택 (語彙選擇)",
           "meaning": "lựa chọn từ ngữ"
         },
         {
+          cell_id: "a1889664-1e56-4b55-b2a5-912e414132ff",
           "hangul": "문장 구조 (文章構造)",
           "meaning": "cấu trúc câu"
         },
         {
+          cell_id: "59e5b732-ff61-4ddf-9073-1ac16fb1d433",
           "hangul": "미시적 독해 (微視的)",
           "meaning": "đọc cấp vi mô"
         },
         {
+          cell_id: "8e6bbf9a-3ec9-4bb6-81b4-edb5ea96d46e",
           "hangul": "거시적 독해 (巨視的)",
           "meaning": "đọc cấp vĩ mô"
         },
         {
+          cell_id: "b45eb38b-228f-484b-8d84-75a245bd8d9e",
           "hangul": "텍스트 내부",
           "meaning": "nội tại văn bản / textual internal"
         },
         {
+          cell_id: "f354cb13-d3e6-48f0-b03b-5a79466c0468",
           "hangul": "텍스트 외부",
           "meaning": "ngoại tại văn bản / textual external (biographical/historical)"
         },
         {
+          cell_id: "daee660b-c5f4-4418-bdfb-d1f2d62991a7",
           "hangul": "모순 (矛盾)",
           "meaning": "mâu thuẫn / contradiction"
         },
         {
+          cell_id: "1ce350b3-5c58-4a4f-aace-abf145b473b0",
           "hangul": "함축 (含蓄)",
           "meaning": "hàm chứa / connotation"
         }
@@ -87,24 +97,28 @@ export const lessons: KoreanLesson[] =     [
       ],
       "dialogue": [
         {
+          cell_id: "9c216ec0-c075-4a25-bb5f-70067dc7376d",
           "speaker": "A",
           "hangul": "본 텍스트의 어떤 측면에 주목해야 합니까?",
           "meaning": "Which aspect of the text should we focus on?",
           "text_vi": "Chúng ta nên chú ý đến khía cạnh nào của văn bản này?"
         },
         {
+          cell_id: "1d23c83c-84b4-4bcd-8f5c-59ce7496eadd",
           "speaker": "B",
           "hangul": "우선 반복되는 어휘와 그 위치 변화를 살펴야 합니다.",
           "meaning": "First, recurring vocabulary and shifts in their position.",
           "text_vi": "Trước hết, cần khảo sát những từ ngữ lặp lại và sự dịch chuyển vị trí của chúng."
         },
         {
+          cell_id: "ec4f637b-7d9b-4e2a-b838-33b2c1222ed3",
           "speaker": "A",
           "hangul": "거시적 구조보다 미시적 분석부터 시작하는 셈이군요.",
           "meaning": "So we start with micro-analysis before macro-structure.",
           "text_vi": "Vậy là chúng ta khởi đầu từ phân tích vi mô trước khi bàn đến cấu trúc vĩ mô."
         },
         {
+          cell_id: "c92dc5e3-cfb8-4f08-8922-286cd245ab4b",
           "speaker": "B",
           "hangul": "정독은 항상 단위에서 전체로 향하는 운동입니다.",
           "meaning": "Close reading is always a movement from unit to whole.",
@@ -312,42 +326,52 @@ export const lessons: KoreanLesson[] =     [
       "intro_vi": "서술자 (narrator) — chủ đề trung tâm của tự sự học (narratology). C2 đòi hỏi phân biệt 시점 (POV: 1인칭 / 3인칭 전지적 / 3인칭 제한적), 자유간접화법 (FID), 신뢰할 수 없는 화자 (unreliable narrator), 거리 (distance) và 어조 (tone). Phân tích narrative voice không dừng ở 'narrator là ai' mà chuyển sang 'voice tạo nghĩa thế nào'.",
       "vocabulary": [
         {
+          cell_id: "4005e865-238f-484f-93ed-92557f763c23",
           "hangul": "서술자 (敍述者)",
           "meaning": "người kể chuyện / narrator"
         },
         {
+          cell_id: "c5483e3b-5cfb-4ae8-b3e4-7805417ae4f2",
           "hangul": "시점 (視點)",
           "meaning": "điểm nhìn / point of view"
         },
         {
+          cell_id: "3d674091-ad1f-4648-abdd-eba7324e113e",
           "hangul": "1인칭 (一人稱)",
           "meaning": "ngôi thứ nhất"
         },
         {
+          cell_id: "8446150e-3343-443c-9c64-beb1f214bb91",
           "hangul": "3인칭 전지적 (全知的)",
           "meaning": "ngôi thứ ba toàn tri / third-person omniscient"
         },
         {
+          cell_id: "44d0547b-9f75-4623-8542-7d42c9a01734",
           "hangul": "3인칭 제한적 (制限的)",
           "meaning": "ngôi thứ ba hạn định"
         },
         {
+          cell_id: "445f33ec-7c7d-4535-8b23-d61dbf5c9b08",
           "hangul": "자유간접화법 (自由間接話法)",
           "meaning": "diễn ngôn gián tiếp tự do / free indirect discourse"
         },
         {
+          cell_id: "c964798b-e1da-4e10-bc3d-89196ae2b2df",
           "hangul": "신뢰할 수 없는 화자",
           "meaning": "người kể không đáng tin / unreliable narrator"
         },
         {
+          cell_id: "67136acf-b0a3-407e-b485-75774589237e",
           "hangul": "거리 (距離)",
           "meaning": "khoảng cách tự sự / narrative distance"
         },
         {
+          cell_id: "7717430a-5841-414e-a624-a8bb0d9a8e8b",
           "hangul": "어조 (語調)",
           "meaning": "âm điệu / tone"
         },
         {
+          cell_id: "2ade27ed-8ac8-4ace-8f36-77aba72b3c81",
           "hangul": "초점화 (焦點化)",
           "meaning": "tiêu điểm hóa / focalization (Genette)"
         }
@@ -386,24 +410,28 @@ export const lessons: KoreanLesson[] =     [
       ],
       "dialogue": [
         {
+          cell_id: "bc5f1815-125c-47a1-8f0d-cc1899f3362d",
           "speaker": "A",
           "hangul": "1인칭과 3인칭 중 어느 시점이 본 분석에 더 적절합니까?",
           "meaning": "Between first and third person, which POV better suits this analysis?",
           "text_vi": "Giữa ngôi thứ nhất và ngôi thứ ba, điểm nhìn nào phù hợp hơn với phân tích này?"
         },
         {
+          cell_id: "109739d0-fde8-448a-8a52-8b8baa779017",
           "speaker": "B",
           "hangul": "사건 자체보다 인물의 내면이 중요하다면 1인칭이 유리합니다.",
           "meaning": "If character interiority matters more than the events themselves, first person is advantageous.",
           "text_vi": "Nếu nội tâm nhân vật quan trọng hơn bản thân các sự kiện thì ngôi thứ nhất sẽ có lợi thế."
         },
         {
+          cell_id: "4ef5ddba-1f87-4bc3-b7c0-bab902112af6",
           "speaker": "A",
           "hangul": "다만 1인칭은 서술자 신뢰도 문제가 따라옵니다.",
           "meaning": "However, first person carries the narrator-reliability problem.",
           "text_vi": "Tuy nhiên, ngôi thứ nhất kéo theo vấn đề độ tin cậy của người trần thuật."
         },
         {
+          cell_id: "23c9ff27-7386-45b7-b620-14327df3c284",
           "speaker": "B",
           "hangul": "그것을 한계로 명시하는 것이 비평의 정직성입니다.",
           "meaning": "Acknowledging that as a limitation is the honesty of criticism.",
@@ -611,42 +639,52 @@ export const lessons: KoreanLesson[] =     [
       "intro_vi": "Phân tích biểu tượng (상징) và ẩn dụ (은유) trong văn bản — phải phân biệt 직유 (simile), 환유 (metonymy), 제유 (synecdoche), 알레고리 (allegory). C2 đòi hỏi: KHÔNG identify một symbol đơn lẻ, MÀ analyze 상징체계 (symbol network). Truyền thống Hàn từ 김현 trở đi nhấn mạnh phân biệt symbol (open-ended) vs allegory (fixed mapping).",
       "vocabulary": [
         {
+          cell_id: "84989d87-fc1d-4cbf-86aa-5f19e24bea6b",
           "hangul": "상징 (象徵)",
           "meaning": "biểu tượng / symbol"
         },
         {
+          cell_id: "02d543ae-6daf-41f1-b471-cf8872e244cd",
           "hangul": "은유 (隱喩)",
           "meaning": "ẩn dụ / metaphor"
         },
         {
+          cell_id: "80e87c2c-7948-4ce1-82d3-c01626f8c72a",
           "hangul": "직유 (直喩)",
           "meaning": "tỉ dụ / simile"
         },
         {
+          cell_id: "bbd4f8a8-3742-434f-874b-10f1056480ce",
           "hangul": "환유 (換喩)",
           "meaning": "hoán dụ / metonymy"
         },
         {
+          cell_id: "392da8c7-1d28-422e-ad05-607f109ad007",
           "hangul": "제유 (提喩)",
           "meaning": "ẩn dụ bộ phận / synecdoche"
         },
         {
+          cell_id: "458ae415-1940-4378-a271-0a23e71894ee",
           "hangul": "알레고리",
           "meaning": "ngụ ngôn / allegory"
         },
         {
+          cell_id: "e5757e6d-b313-4783-8068-de58c9fab9d6",
           "hangul": "이미지",
           "meaning": "hình ảnh / image"
         },
         {
+          cell_id: "42dbb9fd-5ca2-42b2-b038-977bad1f21b2",
           "hangul": "형상화 (形象化)",
           "meaning": "tạo hình / figuration"
         },
         {
+          cell_id: "eabe871a-a3a6-4efd-aeed-48ba9cc6ea7c",
           "hangul": "비유 (比喩)",
           "meaning": "tu từ so sánh / figure of speech (general)"
         },
         {
+          cell_id: "1fc5fa40-3565-4f3d-ad28-78c4ddfe3c49",
           "hangul": "상징체계 (象徵體系)",
           "meaning": "hệ thống biểu tượng / symbolic system"
         }
@@ -685,24 +723,28 @@ export const lessons: KoreanLesson[] =     [
       ],
       "dialogue": [
         {
+          cell_id: "cfd32b63-baf6-45de-bf71-513afb29c67e",
           "speaker": "A",
           "hangul": "본 작품의 핵심 상징은 무엇입니까?",
           "meaning": "What is the central symbol of this work?",
           "text_vi": "Biểu tượng cốt lõi của tác phẩm này là gì?"
         },
         {
+          cell_id: "c43a897d-c4e6-42d5-899a-3214309d2341",
           "speaker": "B",
           "hangul": "'나무'와 '식물 되기'가 핵심 상징체계입니다.",
           "meaning": "'Tree' and 'becoming-plant' form the core symbolic system.",
           "text_vi": "'Cây' và 'sự hóa thân thành thực vật' là hệ biểu tượng cốt lõi."
         },
         {
+          cell_id: "c43442a9-3935-4505-8c14-1a708d5cc97e",
           "speaker": "A",
           "hangul": "단일 상징인지 상징 네트워크인지 구별하셨습니까?",
           "meaning": "Did you distinguish single symbol vs symbol network?",
           "text_vi": "Anh đã phân biệt được đây là một biểu tượng đơn lẻ hay một mạng lưới biểu tượng chưa?"
         },
         {
+          cell_id: "9e0360dd-6dec-4110-ba84-99107d68a058",
           "speaker": "B",
           "hangul": "네트워크입니다. 식물 모티프가 세 인물에 걸쳐 변주됩니다.",
           "meaning": "Network — the plant motif varies across three characters.",
@@ -904,42 +946,52 @@ export const lessons: KoreanLesson[] =     [
       "intro_vi": "Phân biệt 장르 위반 (violation), 장르 전복 (subversion), 장르 굴절 (refraction), 장르 혼합 (mixing) — tinh tế của C2 phê bình. Sau 1990s ở Hàn, phân chia 순문학 / 대중문학 sụp đổ; 김영하, 정유정, 박민규, 김애란 freely cross 추리 / SF / 판타지 / 순문학. Bài này dạy cách analyze genre work critically, không simply describe.",
       "vocabulary": [
         {
+          cell_id: "1d53bac7-3eeb-4d5a-9ee9-d7effdf07287",
           "hangul": "장르",
           "meaning": "thể loại / genre"
         },
         {
+          cell_id: "32df998e-f85c-4e00-b740-2caca1f0163a",
           "hangul": "관습 (慣習)",
           "meaning": "ước lệ / convention"
         },
         {
+          cell_id: "8130e120-f8ef-4d1c-8b5f-477ef3613bfd",
           "hangul": "전복 (顚覆)",
           "meaning": "lật đổ / subversion"
         },
         {
+          cell_id: "e8572697-e0d9-4abd-ae98-bc9a9ea62d71",
           "hangul": "패러디",
           "meaning": "nhại / parody"
         },
         {
+          cell_id: "c7fe3bca-0618-424a-bab9-27950bb19c18",
           "hangul": "패스티시",
           "meaning": "ghép nối / pastiche"
         },
         {
+          cell_id: "8e930f12-9d20-4eef-97e2-207835d240ee",
           "hangul": "메타픽션",
           "meaning": "siêu hư cấu / metafiction"
         },
         {
+          cell_id: "7abdbf5d-c63c-494c-be7a-b627145f9a9c",
           "hangul": "장르 혼합",
           "meaning": "lai thể loại / genre mixing"
         },
         {
+          cell_id: "14df66cd-511b-4921-b4c9-a4efdf708bcf",
           "hangul": "추리소설 (推理小說)",
           "meaning": "tiểu thuyết trinh thám / mystery"
         },
         {
+          cell_id: "e510e490-2d60-4551-b423-5349c8554dcc",
           "hangul": "환상소설 (幻想小說)",
           "meaning": "tiểu thuyết kỳ ảo / fantasy"
         },
         {
+          cell_id: "686c5e7a-917c-43c8-8a95-d85a0a68a681",
           "hangul": "굴절 (屈折)",
           "meaning": "khúc xạ / refraction"
         }
@@ -978,24 +1030,28 @@ export const lessons: KoreanLesson[] =     [
       ],
       "dialogue": [
         {
+          cell_id: "41b179b5-af1e-4560-834a-c75ee8b37921",
           "speaker": "A",
           "hangul": "'장르 전복'이 단순한 장르 위반과 어떻게 다릅니까?",
           "meaning": "How does 'genre subversion' differ from mere genre violation?",
           "text_vi": "'Sự lật đổ thể loại' khác với việc đơn thuần vi phạm thể loại ở chỗ nào?"
         },
         {
+          cell_id: "6028aecd-14e5-4de9-8e06-984ff3eb0149",
           "speaker": "B",
           "hangul": "위반이 의식적이고 그 행위 자체가 의미가 있을 때 전복이 됩니다.",
           "meaning": "When violation is conscious and the act itself bears meaning, it becomes subversion.",
           "text_vi": "Khi sự vi phạm mang tính ý thức và bản thân hành vi ấy hàm chứa ý nghĩa, nó trở thành sự lật đổ."
         },
         {
+          cell_id: "7155dc8e-7bbc-4c98-af0f-89632f7ef343",
           "speaker": "A",
           "hangul": "그렇다면 모든 위반이 전복은 아니군요.",
           "meaning": "So not every violation is subversion.",
           "text_vi": "Vậy thì không phải mọi sự vi phạm đều là sự lật đổ."
         },
         {
+          cell_id: "19dd55a8-99c7-4ce2-b870-51373e093866",
           "speaker": "B",
           "hangul": "그렇습니다. 무자각적 위반은 그저 실패일 뿐입니다.",
           "meaning": "Right. Unconscious violation is mere failure.",
@@ -1209,42 +1265,52 @@ export const lessons: KoreanLesson[] =     [
       "intro_vi": "So sánh nhiều bản dịch của một văn bản — kỹ năng C2 cốt lõi trong 번역학 (translation studies) Hàn. Phân biệt 직역 (literal) / 의역 (sense-for-sense), 충실성 (fidelity) / 가독성 (readability), 자연화 (domestication) / 외국화 (foreignization). Critical move: KHÔNG declare one translation better; analyze trade-offs. Reference Venuti's domestication/foreignization framework (널리 received in Korean translation theory).",
       "vocabulary": [
         {
+          cell_id: "1fbd4eda-0287-479e-96d2-fd4db80835a4",
           "hangul": "번역 (翻譯)",
           "meaning": "phiên dịch / translation"
         },
         {
+          cell_id: "c8d2d7f9-41d3-48dc-bf38-d603adc96e91",
           "hangul": "원전 (原典)",
           "meaning": "nguyên văn / original text"
         },
         {
+          cell_id: "92434a6b-a6e9-4733-a12e-2dbf8134b81f",
           "hangul": "직역 (直譯)",
           "meaning": "dịch sát / literal translation"
         },
         {
+          cell_id: "a46e47dc-aef9-4719-b6e3-1868f248ee1a",
           "hangul": "의역 (意譯)",
           "meaning": "dịch ý / sense-for-sense"
         },
         {
+          cell_id: "7bcc6939-17e4-41d0-b0ad-9ed3faf93e17",
           "hangul": "충실성 (忠實性)",
           "meaning": "tính trung thành / fidelity"
         },
         {
+          cell_id: "1341da6c-19d4-42fa-bac6-f7177cf9f05e",
           "hangul": "가독성 (可讀性)",
           "meaning": "tính dễ đọc / readability"
         },
         {
+          cell_id: "72df93d4-e94b-49c2-a976-bac32919b55e",
           "hangul": "등가 (等價)",
           "meaning": "tương đương / equivalence"
         },
         {
+          cell_id: "b37724ec-9c3f-49f4-ba07-49f695c722fb",
           "hangul": "외국화",
           "meaning": "foreignization (Venuti)"
         },
         {
+          cell_id: "bc816aca-5a66-4247-b141-38889a3939dc",
           "hangul": "자연화",
           "meaning": "domestication (Venuti)"
         },
         {
+          cell_id: "3b1c3622-e9ca-4773-b82a-f0d9cd851fa6",
           "hangul": "번역자의 보이지 않는 손",
           "meaning": "bàn tay vô hình của dịch giả / translator's invisible hand"
         }
@@ -1283,24 +1349,28 @@ export const lessons: KoreanLesson[] =     [
       ],
       "dialogue": [
         {
+          cell_id: "3fccb201-11c5-4ade-aad0-ba8a141544ac",
           "speaker": "A",
           "hangul": "두 번역 중 어느 것이 더 좋은 번역입니까?",
           "meaning": "Which of the two translations is better?",
           "text_vi": "Trong hai bản dịch, bản nào là bản dịch tốt hơn?"
         },
         {
+          cell_id: "31bc7b93-dd4c-4891-9114-d5dac18bbe48",
           "speaker": "B",
           "hangul": "'좋다'를 어떤 기준으로 판단할지가 먼저입니다.",
           "meaning": "First we must define by what criteria 'good' is judged.",
           "text_vi": "Trước hết phải xác định 'tốt' được đánh giá theo tiêu chí nào."
         },
         {
+          cell_id: "8631d98c-422c-4145-afb6-c66e622cc259",
           "speaker": "A",
           "hangul": "충실성과 가독성 사이에서요?",
           "meaning": "Between fidelity and readability?",
           "text_vi": "Là giữa tính trung thành và tính dễ đọc phải không?"
         },
         {
+          cell_id: "4acb37bb-951f-4d49-b6d4-67bdadd6cc99",
           "speaker": "B",
           "hangul": "그 둘은 자주 충돌합니다. 비평은 그 충돌을 추적합니다.",
           "meaning": "Those two often clash. Criticism tracks that clash.",
@@ -1510,42 +1580,52 @@ export const lessons: KoreanLesson[] =     [
       "intro_vi": "Khi nào tiểu sử tác giả relevant cho phê bình, khi nào không? Tranh luận trung tâm — 의도주의의 오류 (intentional fallacy, Wimsatt-Beardsley) vs 작가의 죽음 (death of the author, Barthes) vs Korean colonial-era reading requiring historical context. C2 đòi hỏi balance: neither pure formalism nor biographical reductionism. Cốt lõi distinction: 흔적 (textual trace) vs 의도 (authorial intent).",
       "vocabulary": [
         {
+          cell_id: "b370819c-176b-47fe-a8ab-b0b58038a573",
           "hangul": "전기 (傳記)",
           "meaning": "tiểu sử / biography"
         },
         {
+          cell_id: "23596a2c-5b13-4598-895d-ab0b2d3106c5",
           "hangul": "텍스트",
           "meaning": "văn bản / text"
         },
         {
+          cell_id: "9f8b34f1-e983-4a93-9087-266729386dff",
           "hangul": "작가 의도 (作家意圖)",
           "meaning": "ý đồ tác giả / authorial intent"
         },
         {
+          cell_id: "f60209dc-8c6c-428c-adf6-7c3557fd9217",
           "hangul": "의도주의의 오류",
           "meaning": "ngụy biện ý đồ / intentional fallacy (Wimsatt-Beardsley)"
         },
         {
+          cell_id: "6c9e9140-d5da-4c5e-b852-a0bf9ddb7805",
           "hangul": "시대적 맥락 (時代的脈絡)",
           "meaning": "bối cảnh thời đại / historical context"
         },
         {
+          cell_id: "8baa1a8e-5e9e-437e-9142-b74baff51854",
           "hangul": "전기적 비평",
           "meaning": "phê bình tiểu sử / biographical criticism"
         },
         {
+          cell_id: "fbeb88b5-730c-42a5-9460-9aa84f91aa9a",
           "hangul": "신비평 (新批評)",
           "meaning": "Tân phê bình / New Criticism"
         },
         {
+          cell_id: "2fc5408a-5076-43b9-ae14-8e94e6fe6586",
           "hangul": "텍스트 자율성",
           "meaning": "tính tự trị văn bản / textual autonomy"
         },
         {
+          cell_id: "3bb1d18d-61ee-4f06-b8d8-ad22e3c5d7e5",
           "hangul": "작가의 죽음",
           "meaning": "cái chết của tác giả / death of the author (Barthes)"
         },
         {
+          cell_id: "1c0a9a0c-7026-4b95-945c-bd57e6fb0039",
           "hangul": "흔적 (痕跡)",
           "meaning": "dấu vết / trace (vs intent)"
         }
@@ -1584,24 +1664,28 @@ export const lessons: KoreanLesson[] =     [
       ],
       "dialogue": [
         {
+          cell_id: "7a48e607-692e-4e86-9403-187b4ab89289",
           "speaker": "A",
           "hangul": "작가의 삶을 비평에 끌어들이는 것이 정당합니까?",
           "meaning": "Is it legitimate to draw the author's life into criticism?",
           "text_vi": "Việc đưa cuộc đời tác giả vào phê bình có chính đáng hay không?"
         },
         {
+          cell_id: "9246a845-de70-4fc1-a3a9-e78d6d0f905c",
           "speaker": "B",
           "hangul": "정당한 경우와 부당한 경우가 있습니다.",
           "meaning": "There are legitimate and illegitimate cases.",
           "text_vi": "Có những trường hợp chính đáng và những trường hợp không chính đáng."
         },
         {
+          cell_id: "66911500-d8d6-4bf7-b8e2-909a0a81c200",
           "speaker": "A",
           "hangul": "어느 경우가 부당합니까?",
           "meaning": "Which cases are illegitimate?",
           "text_vi": "Trường hợp nào là không chính đáng?"
         },
         {
+          cell_id: "290fd14d-f1d4-4c29-b850-c1dc21a9ede6",
           "speaker": "B",
           "hangul": "텍스트에서 끌어낼 수 있는 의미를 작가 일대기로 환원할 때입니다.",
           "meaning": "When meaning derivable from the text is reduced to author's biography.",
@@ -1799,42 +1883,52 @@ export const lessons: KoreanLesson[] =     [
       "intro_vi": "수용사 (reception history) — văn bản có nghĩa qua quá trình tiếp nhận; cùng văn bản đọc khác nhau qua các thời. Truyền thống 수용미학 (Iser, Jauss) du nhập Hàn 1980s. C2 đòi hỏi: phân kỳ (periodize) afterlife của tác phẩm thành các giai đoạn, sample đa nguồn (phê bình + bán + giáo dục), phân tích shifts giữa giai đoạn. Sample case: 박경리 「토지」 (1969-1994) — 4 thập kỷ tiếp nhận biến đổi.",
       "vocabulary": [
         {
+          cell_id: "794c0a53-b4d7-42d2-bdb8-f45497e89d92",
           "hangul": "수용 (受容)",
           "meaning": "tiếp nhận / reception"
         },
         {
+          cell_id: "a72bdb3b-3426-45cd-9206-94e054b71377",
           "hangul": "수용사 (受容史)",
           "meaning": "lịch sử tiếp nhận / reception history"
         },
         {
+          cell_id: "64597184-e609-4e58-a11b-4c0b41ec58d0",
           "hangul": "수용미학 (受容美學)",
           "meaning": "mỹ học tiếp nhận / reception aesthetics (Iser, Jauss)"
         },
         {
+          cell_id: "399e0f90-f0a5-45df-baa9-1e3d09d5cc04",
           "hangul": "시대정신 (時代精神)",
           "meaning": "tinh thần thời đại / Zeitgeist"
         },
         {
+          cell_id: "8ae7e395-ce49-4aa5-b1e8-73d2fa5bfb32",
           "hangul": "독해 공동체",
           "meaning": "cộng đồng diễn giải / interpretive community"
         },
         {
+          cell_id: "2bc3096f-c17c-492d-ba02-fd130b1e92d8",
           "hangul": "정전 (正典)",
           "meaning": "kinh điển / canon"
         },
         {
+          cell_id: "cf5509a9-3449-4649-91e9-0bf0557c3cc2",
           "hangul": "재발견 (再發見)",
           "meaning": "tái phát hiện / rediscovery"
         },
         {
+          cell_id: "5f48c32b-19e4-45a8-b4be-b0263e0def19",
           "hangul": "평가 (評價)",
           "meaning": "đánh giá / evaluation"
         },
         {
+          cell_id: "770eba31-8638-41a6-ba3f-3462145e62b5",
           "hangul": "비평사 (批評史)",
           "meaning": "lịch sử phê bình / history of criticism"
         },
         {
+          cell_id: "dd8b41b5-977e-4db6-a2ee-547bf1b28cd0",
           "hangul": "비평사적 침묵",
           "meaning": "im lặng phê bình sử / critical-historical silence"
         }
@@ -1873,24 +1967,28 @@ export const lessons: KoreanLesson[] =     [
       ],
       "dialogue": [
         {
+          cell_id: "65a69b1e-1a0c-440b-b5b3-e53a0325dbcb",
           "speaker": "A",
           "hangul": "수용사 분석에서 가장 어려운 점은 무엇입니까?",
           "meaning": "What is the hardest part of reception-history analysis?",
           "text_vi": "Điểm khó khăn nhất trong phân tích lịch sử tiếp nhận là gì?"
         },
         {
+          cell_id: "a724aa05-0e10-44c9-9dea-667303946ef2",
           "speaker": "B",
           "hangul": "과거 독자의 반응을 어떻게 복원할 것인가입니다.",
           "meaning": "How to reconstruct past readers' responses.",
           "text_vi": "Đó là làm thế nào để phục dựng phản ứng của những độc giả trong quá khứ."
         },
         {
+          cell_id: "083e97f7-6c05-426f-9477-e25b63216f9d",
           "speaker": "A",
           "hangul": "동시대 서평을 자료로 쓰면 됩니까?",
           "meaning": "Can contemporary reviews serve as material?",
           "text_vi": "Có thể dùng các bài điểm sách đương thời làm tư liệu không?"
         },
         {
+          cell_id: "5478a1e4-0155-4e77-9800-1d86dced704e",
           "speaker": "B",
           "hangul": "서평은 시작점이지만 그것만으로는 부족합니다.",
           "meaning": "Reviews are a starting point but insufficient alone.",
@@ -2103,42 +2201,52 @@ export const lessons: KoreanLesson[] =     [
       "intro_vi": "Áp dụng các lý thuyết phê bình — Marxist, feminist, psychoanalytic, postcolonial, ecocritical — vào phân tích văn học. C2 đòi hỏi: KHÔNG 'theory-shopping', KHÔNG bắt văn bản phục vụ lý thuyết; lắng nghe văn bản đáp lại lý thuyết nào. Khi pluralistic, phân biệt 통합 (synthesis) vs 병치 (juxtaposition). Reference Korean reception of major theories.",
       "vocabulary": [
         {
+          cell_id: "1d431f1c-fb3d-4baa-b4ac-62dd29b9a033",
           "hangul": "이론 (理論)",
           "meaning": "lý thuyết / theory"
         },
         {
+          cell_id: "a0f5f53c-479a-444c-ad81-27d953bd47a0",
           "hangul": "관점 (觀點)",
           "meaning": "góc nhìn / viewpoint / lens"
         },
         {
+          cell_id: "4ac9bff2-e9c8-46f8-b6ef-320f8c5db231",
           "hangul": "마르크스주의 비평",
           "meaning": "phê bình mác-xít / Marxist criticism"
         },
         {
+          cell_id: "c11df7b9-29b5-477d-983a-3f4a52c3d70b",
           "hangul": "페미니즘 비평",
           "meaning": "phê bình nữ quyền / feminist criticism"
         },
         {
+          cell_id: "f6584d97-4340-4c61-b138-c710e5c22216",
           "hangul": "정신분석 비평",
           "meaning": "phê bình phân tâm / psychoanalytic criticism"
         },
         {
+          cell_id: "e129649b-9200-4966-8282-93594896c3a4",
           "hangul": "탈식민주의 (脫植民主義)",
           "meaning": "hậu thực dân / postcolonialism"
         },
         {
+          cell_id: "ff8c95bd-60d9-46f0-9e52-dbbfece9ff47",
           "hangul": "생태비평 (生態批評)",
           "meaning": "phê bình sinh thái / ecocriticism"
         },
         {
+          cell_id: "2443b10e-9c56-445e-a124-a706f6cbad1b",
           "hangul": "퀴어 비평",
           "meaning": "phê bình queer / queer criticism"
         },
         {
+          cell_id: "6b663aa1-dbde-4cb7-838f-edf0315cb56b",
           "hangul": "텍스트가 응답하다",
           "meaning": "văn bản đáp lại / text responds to (theory)"
         },
         {
+          cell_id: "300d217b-bb06-4c69-9f6e-7aa7296f424d",
           "hangul": "다층적 읽기",
           "meaning": "đọc đa tầng / multi-layered reading"
         }
@@ -2177,24 +2285,28 @@ export const lessons: KoreanLesson[] =     [
       ],
       "dialogue": [
         {
+          cell_id: "ded823a0-84eb-4d49-b7fd-9f930f1ef106",
           "speaker": "A",
           "hangul": "한 작품에 여러 이론을 적용해도 됩니까?",
           "meaning": "Is it acceptable to apply multiple theories to one work?",
           "text_vi": "Có được phép áp dụng nhiều lý thuyết khác nhau vào cùng một tác phẩm không?"
         },
         {
+          cell_id: "190fdae2-5bde-4431-914c-bed2c7b3dd75",
           "speaker": "B",
           "hangul": "가능하지만 이론을 쇼핑하듯 골라서는 안 됩니다.",
           "meaning": "Possible, but you must not theory-shop.",
           "text_vi": "Có thể, nhưng không được chọn lựa lý thuyết như thể đi mua sắm."
         },
         {
+          cell_id: "8834350a-d927-45dc-ab09-64e36e6d6fc6",
           "speaker": "A",
           "hangul": "이론 선택의 기준은 무엇입니까?",
           "meaning": "What are the criteria for theory selection?",
           "text_vi": "Tiêu chí để lựa chọn lý thuyết là gì?"
         },
         {
+          cell_id: "ddb535b7-a836-42a6-8d35-29457e8d5d4f",
           "speaker": "B",
           "hangul": "텍스트가 어떤 이론에 응답하는지를 먼저 듣는 것입니다.",
           "meaning": "First, listen to which theory the text responds to.",
@@ -2414,42 +2526,52 @@ export const lessons: KoreanLesson[] =     [
       "intro_vi": "Đoạn mở đầu là phần đọc nhiều nhất nhưng viết khó nhất của bài phê bình. C2 đòi hỏi: KHÔNG announce ('이 글은 ~을 다룬다'), KHÔNG cliché ('한강은 한국 문학을 세계에 알린 작가이다'), KHÔNG reveal conclusion. Năm chiến lược chính: 화두 던지기, 일화 도입, 문제 제기, 인용 도입, 개념 흔들기. Phải align tone với body — opening là mirror của body.",
       "vocabulary": [
         {
+          cell_id: "5622ecce-038a-40ca-9020-dd77ccfdbf69",
           "hangul": "도입부 (導入部)",
           "meaning": "mở đầu / introduction"
         },
         {
+          cell_id: "dd98cd67-455e-45b9-9526-fea349bf1602",
           "hangul": "첫 문장",
           "meaning": "câu mở đầu / opening sentence"
         },
         {
+          cell_id: "0259fded-c44b-495b-8d36-403da3bc6d5b",
           "hangul": "화두 (話頭)",
           "meaning": "đề tài chính / keynote / opening subject"
         },
         {
+          cell_id: "2ce843bf-933d-4c1b-a3b6-354767185363",
           "hangul": "인용 도입 (引用)",
           "meaning": "mở đầu bằng trích dẫn / opening with quotation"
         },
         {
+          cell_id: "8ba4ab52-8ba6-45c2-b253-8401167ba78d",
           "hangul": "일화 도입 (逸話)",
           "meaning": "mở đầu bằng giai thoại / opening with anecdote"
         },
         {
+          cell_id: "895a862f-7b4a-42ec-8dcf-86cb10649580",
           "hangul": "문제 제기 (問題提起)",
           "meaning": "nêu vấn đề / problem statement"
         },
         {
+          cell_id: "d9eee571-5e17-4f88-8428-068f078b4bb3",
           "hangul": "논점 (論點)",
           "meaning": "luận điểm / point of argument"
         },
         {
+          cell_id: "e702b2bf-bf54-4db0-85b9-1f093899f4f7",
           "hangul": "비평적 거리",
           "meaning": "khoảng cách phê bình / critical distance"
         },
         {
+          cell_id: "f5355e68-a3b6-4955-8810-87d7be56481e",
           "hangul": "어조의 정립",
           "meaning": "thiết lập âm điệu / establishment of tone"
         },
         {
+          cell_id: "5e8d7e00-3155-46ad-8bf1-7beb82db4fb4",
           "hangul": "개념 흔들기",
           "meaning": "lay khái niệm / concept-shaking opening (modern Korean critical move)"
         }
@@ -2488,24 +2610,28 @@ export const lessons: KoreanLesson[] =     [
       ],
       "dialogue": [
         {
+          cell_id: "a0137d09-958e-4f7b-ae56-f5c5c8665abf",
           "speaker": "A",
           "hangul": "비평문 첫 문장을 어떻게 잡으면 좋습니까?",
           "meaning": "How should I shape the opening sentence of a critical essay?",
           "text_vi": "Nên định hình câu mở đầu của một bài phê bình như thế nào thì tốt?"
         },
         {
+          cell_id: "d407cbf7-b547-4618-97a3-487dcc61d617",
           "speaker": "B",
           "hangul": "결론보다는 화두를 던지는 것이 안전합니다.",
           "meaning": "Throwing a keynote is safer than disclosing conclusion.",
           "text_vi": "Nêu lên một luận đề khơi gợi thì an toàn hơn là phơi bày kết luận."
         },
         {
+          cell_id: "e6da6527-97e7-4ee9-8d11-948fbf33791e",
           "speaker": "A",
           "hangul": "인용으로 시작해도 됩니까?",
           "meaning": "May I start with a quotation?",
           "text_vi": "Có thể mở đầu bằng một trích dẫn không?"
         },
         {
+          cell_id: "23f691e9-0193-49a6-b595-4d4cb938c274",
           "speaker": "B",
           "hangul": "가능하지만 인용이 비평을 압도하지 않게 조절해야 합니다.",
           "meaning": "Yes, but ensure the quotation doesn't dominate the criticism.",
@@ -2719,42 +2845,52 @@ export const lessons: KoreanLesson[] =     [
       "intro_vi": "Khi bạn đọc văn bản theo hướng đối lập với 통설 (received wisdom). Tình huống đòi hỏi C2 cao nhất. Hai cái bẫy: 단정적 어조 ('통설은 틀렸다' — provokes resistance) hoặc 자기 약화 ('chỉ là ý kiến cá nhân' — disables advocacy). Middle path: confident proposal + acknowledge limits + frame as parallel multi-layered reading.",
       "vocabulary": [
         {
+          cell_id: "90fea6ed-b8bb-4393-b2e9-acb3812273b1",
           "hangul": "논쟁적 (論爭的)",
           "meaning": "gây tranh cãi / controversial"
         },
         {
+          cell_id: "805d509a-0a7f-45ac-a052-888f211ee3bc",
           "hangul": "해석 (解釋)",
           "meaning": "diễn giải / interpretation"
         },
         {
+          cell_id: "23761890-28c9-4406-b7b9-2577b08555b2",
           "hangul": "옹호 (擁護)",
           "meaning": "bảo vệ / defense / advocacy"
         },
         {
+          cell_id: "6b489b6c-106e-4362-bb10-de6ca0580cad",
           "hangul": "통설 (通說)",
           "meaning": "định kiến chung / received wisdom"
         },
         {
+          cell_id: "305fb9ea-30bc-4c4b-800c-ba31b67992d1",
           "hangul": "도전 (挑戰)",
           "meaning": "thách thức / challenge"
         },
         {
+          cell_id: "c1c21d7e-7dd1-4445-87e3-fcf78ff5b3ea",
           "hangul": "반박 (反駁)",
           "meaning": "phản bác / refutation"
         },
         {
+          cell_id: "b9f7a1f2-a2fe-46bd-bc78-f1a20db84db1",
           "hangul": "새로운 시각",
           "meaning": "góc nhìn mới / new perspective"
         },
         {
+          cell_id: "c190eef9-dac5-499d-af27-548e6583f31b",
           "hangul": "텍스트 잉여",
           "meaning": "phần dư văn bản / textual surplus"
         },
         {
+          cell_id: "9d13d844-f363-43ab-a846-a399ff59a58a",
           "hangul": "단정하다 (斷定)",
           "meaning": "khẳng định dứt khoát / assert categorically"
         },
         {
+          cell_id: "00e6a083-c85e-4a80-a35e-4e37cf9fa19e",
           "hangul": "평행적 다층 해석",
           "meaning": "diễn giải đa tầng song song / parallel multi-layered interpretation"
         }
@@ -2793,24 +2929,28 @@ export const lessons: KoreanLesson[] =     [
       ],
       "dialogue": [
         {
+          cell_id: "a8bc3a86-33ad-4221-8f8c-67f908d829b8",
           "speaker": "A",
           "hangul": "통설과 충돌하는 해석을 어떻게 옹호합니까?",
           "meaning": "How do you defend an interpretation that conflicts with received wisdom?",
           "text_vi": "Làm thế nào để bảo vệ một cách diễn giải xung đột với quan điểm phổ quát đã được thừa nhận?"
         },
         {
+          cell_id: "c95b0c88-4a5e-412c-831f-1a592b966c18",
           "speaker": "B",
           "hangul": "통설을 부정하지 않고 통설이 보지 못한 것을 드러내는 식으로 접근합니다.",
           "meaning": "Approach by not refuting received wisdom but revealing what it couldn't see.",
           "text_vi": "Tiếp cận theo lối không phủ định quan điểm phổ quát mà phơi bày điều mà quan điểm ấy đã không nhìn thấy."
         },
         {
+          cell_id: "837f17a0-aee1-440f-9db3-6b1211ee1acf",
           "speaker": "A",
           "hangul": "그것이 통설을 약화시키지 않습니까?",
           "meaning": "Doesn't that weaken received wisdom?",
           "text_vi": "Điều đó chẳng phải làm suy yếu quan điểm phổ quát hay sao?"
         },
         {
+          cell_id: "a24f2b11-fd88-4832-80a0-7401c88c33a1",
           "speaker": "B",
           "hangul": "약화가 아닌 보강입니다. 통설은 절반의 진실이라는 입장입니다.",
           "meaning": "Not weakening but supplementing — the position is that received wisdom is half-truth.",
@@ -3036,42 +3176,52 @@ export const lessons: KoreanLesson[] =     [
       "intro_vi": "미술 비평 (art criticism) ở Hàn Quốc có lịch sử gắn liền với sự du nhập của modernism phương Tây qua Nhật Bản thời thuộc địa, rồi bùng nổ sau chiến tranh Triều Tiên trong các nhóm như AG (Avant-Garde, 1969), ST (Space & Time, 1981). C2 đòi hỏi sinh viên phân biệt các dòng phê bình: 인상비평 (impressionistic), 분석비평 (analytic), 이데올로기비평 (ideological — minjung art 1980s), 그리고 hậu-민중 thời hậu-1990s. Phê bình mỹ thuật Hàn không tách rời khỏi bối cảnh thuộc địa / phân liệt / dân chủ hóa.",
       "vocabulary": [
         {
+          cell_id: "2cd49d83-2708-4924-9ffc-496fcc8d79b3",
           "hangul": "미술 비평 (美術批評)",
           "meaning": "phê bình mỹ thuật / art criticism"
         },
         {
+          cell_id: "2579bc88-9873-46a5-b06b-0e7e6e8d2831",
           "hangul": "평론 (評論)",
           "meaning": "bình luận / critical essay"
         },
         {
+          cell_id: "20d6b5eb-1f2b-416b-880e-b151f6416fbb",
           "hangul": "전시 기획 (展示企劃)",
           "meaning": "curating triển lãm"
         },
         {
+          cell_id: "738d38fd-9e10-45d6-b78d-9ba7694b5438",
           "hangul": "조형 언어 (造形言語)",
           "meaning": "ngôn ngữ tạo hình"
         },
         {
+          cell_id: "683480cc-d44a-4f8c-a4db-8980ebe20f4f",
           "hangul": "평면성 (平面性)",
           "meaning": "tính phẳng / flatness (modernism)"
         },
         {
+          cell_id: "d464ec9a-eb1f-4ca5-8ae1-985a7a5150c5",
           "hangul": "행위의 흔적 (行爲의 痕跡)",
           "meaning": "dấu vết của hành vi (performance)"
         },
         {
+          cell_id: "d42de084-f1d1-4c7f-92e2-672a6f547ec2",
           "hangul": "관객 참여 (觀客參與)",
           "meaning": "sự tham gia của khán giả"
         },
         {
+          cell_id: "c92d66ba-deae-49a9-81bf-080a5d4f54ce",
           "hangul": "현대미술 (現代美術)",
           "meaning": "mỹ thuật đương đại"
         },
         {
+          cell_id: "bcd45555-2e80-4ebc-8542-d777dff6a487",
           "hangul": "전위 (前衛)",
           "meaning": "avant-garde / tiền vệ"
         },
         {
+          cell_id: "869fc9be-6475-4365-a47a-0214e2001881",
           "hangul": "작가론 (作家論)",
           "meaning": "chuyên khảo về nghệ sĩ / artist monograph"
         }
@@ -3110,24 +3260,28 @@ export const lessons: KoreanLesson[] =     [
       ],
       "dialogue": [
         {
+          cell_id: "3fea3482-7793-4a53-987f-5d9aa3056b66",
           "speaker": "A",
           "hangul": "한국 현대미술을 논할 때, 단색화와 민중미술, 어느 쪽을 중심축으로 삼아야 합니까?",
           "meaning": "When discussing Korean contemporary art, which should be taken as the central axis — Dansaekhwa or Minjung art?",
           "text_vi": "Khi bàn về mỹ thuật đương đại Hàn Quốc, nên lấy hội họa đơn sắc hay mỹ thuật dân chúng làm trục trung tâm?"
         },
         {
+          cell_id: "bd333879-b878-462a-bc99-d74ad6419b7b",
           "speaker": "B",
           "hangul": "둘 중 하나를 선택할 필요는 없습니다. 두 흐름은 '한국적 현대성이란 무엇인가'라는 동일한 질문에 대한 서로 다른 응답으로 보아야 합니다.",
           "meaning": "There is no need to choose one. The two currents should be seen as different answers to the same question: 'What is Korean modernity?'",
           "text_vi": "Không nhất thiết phải chọn một trong hai. Hai dòng chảy này nên được nhìn nhận như những lời đáp khác nhau cho cùng một câu hỏi: 'Tính hiện đại mang bản sắc Hàn Quốc là gì?'"
         },
         {
+          cell_id: "4a449f5b-60e4-4435-9047-ce0fe83eb350",
           "speaker": "A",
           "hangul": "서구 이론으로 한국 미술을 분석하는 것의 한계는 어디에 있다고 보십니까?",
           "meaning": "Where do you see the limits of analyzing Korean art with Western theory?",
           "text_vi": "Theo anh, giới hạn của việc phân tích mỹ thuật Hàn Quốc bằng lý thuyết phương Tây nằm ở đâu?"
         },
         {
+          cell_id: "f5541f99-d209-4f07-b63c-4c4191c0bd8e",
           "speaker": "B",
           "hangul": "서구 이론은 '분석했다고 착각하게 만드는' 데 한계가 있습니다. 한국 미술의 특수성은 이론의 틀로 포착되지 않는 잉여에 있다고 사료됩니다.",
           "meaning": "The limit of Western theory is that it 'makes one mistakenly think one has analyzed it.' The specificity of Korean art, I judge, lies in the surplus not captured by the theoretical frame.",
@@ -3243,42 +3397,52 @@ export const lessons: KoreanLesson[] =     [
       "intro_vi": "영화 비평 (film criticism) Hàn Quốc phát triển trong bối cảnh đặc biệt: chế độ kiểm duyệt quân sự (1961-1987), phong trào dân chủ hóa, sự trỗi dậy của New Korean Cinema (1990s), và gần đây là sự công nhận toàn cầu (Parasite 2019, Oscar). C2 đòi hỏi phân biệt giữa 저널리즘 비평 (báo chí, Cine21) và 학술 비평 (đại học, Korean Journal of Cinema Studies). Điện ảnh Hàn là một trong số ít nền điện ảnh nơi phim thương mại và phim nghệ thuật cùng tồn tại trong cùng một không gian phê bình sôi động.",
       "vocabulary": [
         {
+          cell_id: "82cc8d55-558e-426f-af06-7871db98b9bb",
           "hangul": "영화 비평 (映畫批評)",
           "meaning": "phê bình điện ảnh / film criticism"
         },
         {
+          cell_id: "df6374f6-b306-492d-a765-2b4712cfd400",
           "hangul": "미장센 (mise en scène)",
           "meaning": "dàn dựng / mise en scène"
         },
         {
+          cell_id: "adc3a41d-da16-4f78-8e5a-c46285ded1f7",
           "hangul": "롱테이크 (long take)",
           "meaning": "cú máy dài / plan-séquence"
         },
         {
+          cell_id: "57a72358-8fb5-4ebf-86a6-36dbd6a2b9f6",
           "hangul": "편집 (編輯)",
           "meaning": "dựng phim / editing"
         },
         {
+          cell_id: "81f76dc8-3a20-485f-b784-1cd092718de9",
           "hangul": "프레임 밖 (off-screen)",
           "meaning": "ngoại cảnh / off-screen"
         },
         {
+          cell_id: "61c83e1f-be37-4eda-947b-87f67d443799",
           "hangul": "작가주의 (作家主義)",
           "meaning": "chính sách tác giả / auteur theory"
         },
         {
+          cell_id: "288ec71c-ebe0-45de-ba26-42247ecf3770",
           "hangul": "응시의 정치학 (凝視의 政治學)",
           "meaning": "chính trị của cái nhìn"
         },
         {
+          cell_id: "67bac355-1b24-4e17-9ba5-27928efd3a8e",
           "hangul": "사운드 디자인 (sound design)",
           "meaning": "thiết kế âm thanh"
         },
         {
+          cell_id: "f97e7c49-5e97-4eb8-bf0b-ae64057eaaf3",
           "hangul": "디스토피아 (dystopia)",
           "meaning": "phản địa đàng / dystopia"
         },
         {
+          cell_id: "0a67fd95-10d7-4367-8881-86bce139ef13",
           "hangul": "한국형 블록버스터",
           "meaning": "blockbuster kiểu Hàn"
         }
@@ -3317,24 +3481,28 @@ export const lessons: KoreanLesson[] =     [
       ],
       "dialogue": [
         {
+          cell_id: "b3125d3b-3aa5-43d7-9107-6f58e1454444",
           "speaker": "A",
           "hangul": "봉준호의 영화를 계급 비평으로만 읽는 것은 환원주의가 아닐까요?",
           "meaning": "Isn't reading Bong Joon-ho's films only through class critique a reductionism?",
           "text_vi": "Việc chỉ đọc phim của Bong Joon-ho qua lăng kính phê bình giai cấp chẳng phải là chủ nghĩa quy giản hay sao?"
         },
         {
+          cell_id: "5051f033-c553-43f2-b223-9e525c77b6d1",
           "speaker": "B",
           "hangul": "계급 비평을 '환원주의'로 치부하는 것도 하나의 환원입니다. 문제는 계급을 '무엇으로' 읽느냐이지, 계급을 읽느냐 마느냐가 아닙니다.",
           "meaning": "Dismissing class critique as 'reductionism' is also a reduction. The issue is 'as what' one reads class, not whether one reads class.",
           "text_vi": "Việc gạt bỏ phê bình giai cấp như một thứ 'chủ nghĩa quy giản' bản thân nó cũng là một sự quy giản. Vấn đề là đọc giai cấp 'như là cái gì', chứ không phải có đọc giai cấp hay không."
         },
         {
+          cell_id: "1416f778-0d77-42ab-8d31-1daa77b5afa0",
           "speaker": "A",
           "hangul": "한국 영화에서 '한국적인 것'이란 무엇이라고 정의할 수 있을까요?",
           "meaning": "How can one define 'the Korean' in Korean cinema?",
           "text_vi": "Có thể định nghĩa 'cái mang bản sắc Hàn Quốc' trong điện ảnh Hàn Quốc là gì?"
         },
         {
+          cell_id: "0eec6bda-5615-45a9-92af-8a265094add2",
           "speaker": "B",
           "hangul": "그 질문 자체가 함정입니다. '한국적인 것'은 본질이 아니라, 매 작품마다 새롭게 구성되는 무엇입니다.",
           "meaning": "That very question is a trap. 'The Korean' is not an essence but something newly constituted with each work.",
@@ -3444,42 +3612,52 @@ export const lessons: KoreanLesson[] =     [
       "intro_vi": "정치 담화 분석 (political discourse analysis) ở Hàn Quốc có đặc thù riêng: sự phân cực chính trị gay gắt (진보 vs 보수), vai trò của các biểu tượng lịch sử (광주, 제주 4.3, 촛불혁명), và sự bùng nổ của 정치 유튜브 (political YouTube) từ 2010s. C2 đòi hỏi phân biệt giữa 연설 (formal speech), 토론 (debate), và SNS 정치 담화. Phân tích tập trung vào: 대명사 (pronouns — 우리/그들), 역사적 참조 (historical references), và 감정적 호소 (emotional appeals).",
       "vocabulary": [
         {
+          cell_id: "a2e5a692-7d54-4891-9633-bab77c01c901",
           "hangul": "정치 담화 (政治談話)",
           "meaning": "diễn ngôn chính trị / political discourse"
         },
         {
+          cell_id: "f98bed1c-71b7-4c36-b10d-4c9315eb2107",
           "hangul": "대통령 연설 (大統領演說)",
           "meaning": "bài phát biểu tổng thống"
         },
         {
+          cell_id: "e8df6251-f931-435b-9ba8-a87c3b562180",
           "hangul": "국회 연설 (國會演說)",
           "meaning": "bài phát biểu quốc hội"
         },
         {
+          cell_id: "92b8dbe9-36a8-4ec7-8454-cacec2c26b41",
           "hangul": "수사 분석 (修辭分析)",
           "meaning": "phân tích tu từ"
         },
         {
+          cell_id: "09a27b6a-b392-45fe-80c3-28566fd78d87",
           "hangul": "대명사 정치학 (代名詞政治學)",
           "meaning": "chính trị học đại từ"
         },
         {
+          cell_id: "ce855ba5-6d21-4f00-baa7-76747d430091",
           "hangul": "감정적 호소 (感情的呼訴)",
           "meaning": "kêu gọi cảm xúc / pathos"
         },
         {
+          cell_id: "e4a12aa5-ef42-492a-bfd8-d474e5e52e5b",
           "hangul": "역사적 정당성 (歷史的正當性)",
           "meaning": "tính chính danh lịch sử"
         },
         {
+          cell_id: "c2998fdc-bdcf-4e26-a6f4-434037011fe6",
           "hangul": "포퓰리즘 (populism)",
           "meaning": "chủ nghĩa dân túy"
         },
         {
+          cell_id: "95ba911a-57c3-4a59-903d-4a6af28e2275",
           "hangul": "양극화 (兩極化)",
           "meaning": "sự phân cực / polarization"
         },
         {
+          cell_id: "f2ca5b8f-60ed-43b0-8e4a-2e14a8a0088c",
           "hangul": "공론장 (公論場)",
           "meaning": "không gian công luận (Habermas)"
         }
@@ -3518,12 +3696,14 @@ export const lessons: KoreanLesson[] =     [
       ],
       "dialogue": [
         {
+          cell_id: "d66fb54f-fdb2-4fb4-bd78-e704d5dd8dcd",
           "speaker": "A",
           "hangul": "한국 대통령 연설문의 수사적 특징을 가장 잘 보여주는 예는 무엇일까요?",
           "meaning": "What example best shows the rhetorical characteristics of Korean presidential speeches?",
           "text_vi": "Ví dụ nào thể hiện rõ nhất các đặc trưng tu từ của diễn văn tổng thống Hàn Quốc?"
         },
         {
+          cell_id: "4793beab-19fe-4dbd-a422-2db5070be93b",
           "speaker": "B",
           "hangul": "김대중 대통령의 2000년 6.15 남북정상회담 기자회견문을 추천합니다. '적'에서 '형제'로의 명명 전환이 단적으로 드러나는 텍스트입니다.",
           "meaning": "I recommend President Kim Dae-jung's press conference statement at the June 15, 2000 Inter-Korean Summit. It is a text where the shift in naming from 'enemy' to 'brother' appears in concentrated form.",
@@ -3612,42 +3792,52 @@ export const lessons: KoreanLesson[] =     [
       "intro_vi": "시민 토론 (citizen deliberation) ở Hàn Quốc có lịch sử đặc biệt: từ các cuộc họp dân chủ hóa những năm 1980, qua các diễn đàn 공론화 (public deliberation) về các vấn đề gây tranh cãi như hạt nhân (신고리 5·6호기 공론화, 2017), đến các nền tảng 온라인 토론 (online debate platforms). C2 đòi hỏi sinh viên phân tích cách thức tổ chức và tham gia thảo luận công dân trong bối cảnh phân cực chính trị cực đoan.",
       "vocabulary": [
         {
+          cell_id: "80688f44-4ee8-4cc5-a57e-e5cbbc561c40",
           "hangul": "시민 토론 (市民討論)",
           "meaning": "thảo luận công dân"
         },
         {
+          cell_id: "edbaf79c-a18d-4727-8336-940a1c42203a",
           "hangul": "공론화 (公論化)",
           "meaning": "đưa ra công luận / public deliberation"
         },
         {
+          cell_id: "8106e3a8-f43f-448d-9adb-8c1cc4ebfe80",
           "hangul": "숙의 민주주의 (熟議民主主義)",
           "meaning": "dân chủ thảo luận / deliberative democracy"
         },
         {
+          cell_id: "7ac37a8e-609b-4dab-a82d-e104c8d4ab7c",
           "hangul": "이해관계자 (利害關係者)",
           "meaning": "các bên liên quan / stakeholder"
         },
         {
+          cell_id: "36636fea-ea39-4947-a33d-5351747a3d65",
           "hangul": "합의 형성 (合意形成)",
           "meaning": "hình thành đồng thuận"
         },
         {
+          cell_id: "30bf4842-b18f-4b4f-ba3d-091a2a9adf61",
           "hangul": "의견 수렴 (意見收斂)",
           "meaning": "thu thập ý kiến"
         },
         {
+          cell_id: "1c146d03-8df9-41f8-bd91-e22623b61c24",
           "hangul": "갈등 조정 (葛藤調整)",
           "meaning": "hòa giải xung đột"
         },
         {
+          cell_id: "987bc3dd-caa6-4796-9105-74b64406b9e0",
           "hangul": "소수 의견 존중 (少數意見尊重)",
           "meaning": "tôn trọng ý kiến thiểu số"
         },
         {
+          cell_id: "b097866b-0309-4118-9d56-dde1471e75ea",
           "hangul": "팩트체크 (fact-check)",
           "meaning": "kiểm tra sự thật / fact-checking"
         },
         {
+          cell_id: "dc7ff595-dc27-4631-b06c-082f88ce07bd",
           "hangul": "공공선 (公共善)",
           "meaning": "thiện ích công cộng / common good"
         }
@@ -3674,12 +3864,14 @@ export const lessons: KoreanLesson[] =     [
       ],
       "dialogue": [
         {
+          cell_id: "c8eae5bf-29c3-46a2-a645-592186e3b80d",
           "speaker": "A",
           "hangul": "시민 토론이 실제 정책 결정에 영향을 미친 사례가 있나요?",
           "meaning": "Are there cases where citizen deliberation actually influenced policy decisions?",
           "text_vi": "Có trường hợp nào mà thảo luận của công dân thực sự tác động đến quyết sách hay không?"
         },
         {
+          cell_id: "aeaf2a85-6b6b-4c44-98fe-942aec0819a1",
           "speaker": "B",
           "hangul": "신고리 공론화가 대표적입니다. 시민참여단의 권고에 따라 정부가 실제로 건설 재개를 결정했습니다. 논란은 여전하지만, 절차의 정당성은 확보된 셈이지요.",
           "meaning": "The Shin-Kori deliberation is representative. Following the recommendation of the citizen panel, the government actually decided to resume construction. The controversy remains, but the procedural legitimacy was secured.",
@@ -3757,42 +3949,52 @@ export const lessons: KoreanLesson[] =     [
       "intro_vi": "학술 에세이 (academic essay) ở bậc C2 đòi hỏi sinh viên làm chủ được cấu trúc 논증 (lập luận) và biết cách tự phê phán (자기 비판). Khác với 논문 (thesis) vốn có cấu trúc cứng, 에세이 cho phép linh hoạt hơn nhưng vẫn đòi hỏi 계산된 구성 (bố cục được tính toán).",
       "vocabulary": [
         {
+          cell_id: "8f3eba05-a150-48c0-89ac-4f1a3d3eb2b5",
           "hangul": "논증 (論證)",
           "meaning": "lập luận / argumentation"
         },
         {
+          cell_id: "a875af1f-5349-4b61-925e-210de13be6c0",
           "hangul": "서론·본론·결론 (序論·本論·結論)",
           "meaning": "mở bài - thân bài - kết luận"
         },
         {
+          cell_id: "868f8b80-acc3-4cfc-ac9b-e911bd00a939",
           "hangul": "문제 제기 (問題提起)",
           "meaning": "đặt vấn đề"
         },
         {
+          cell_id: "0db0619e-7b08-4893-85d4-8ea217500310",
           "hangul": "반론 (反論)",
           "meaning": "phản luận / counterargument"
         },
         {
+          cell_id: "2cb1eb56-908c-495e-b447-197aa4f52cd6",
           "hangul": "자기 비판 (自己批判)",
           "meaning": "tự phê phán"
         },
         {
+          cell_id: "14682d0b-8c1e-43be-a446-96f58ea78008",
           "hangul": "유보 (留保)",
           "meaning": "bảo lưu / qualification"
         },
         {
+          cell_id: "2bfcce6e-68bf-427b-bfeb-f3127d0724e3",
           "hangul": "논지 전개 (論旨展開)",
           "meaning": "triển khai luận điểm"
         },
         {
+          cell_id: "0191d7a9-f7e9-41a1-85f5-f4ff11b0cab7",
           "hangul": "근거 제시 (根據提示)",
           "meaning": "trình bày căn cứ / presenting evidence"
         },
         {
+          cell_id: "1806f98e-a139-41ef-8e5f-15666596dc69",
           "hangul": "단락 구성 (段落構成)",
           "meaning": "cấu trúc đoạn văn / paragraph structure"
         },
         {
+          cell_id: "c962ffc9-c96f-4947-aa0d-97c5cfc7a440",
           "hangul": "초안 수정 (草案修正)",
           "meaning": "chỉnh sửa bản nháp / revising a draft"
         }
@@ -3831,12 +4033,14 @@ export const lessons: KoreanLesson[] =     [
       ],
       "dialogue": [
         {
+          cell_id: "2c3a4b28-ff76-4f3f-8c4b-c642caa51194",
           "speaker": "지도교수",
           "hangul": "초안은 성실하지만 아직 요약에 가깝습니다. 본인의 문제 제기가 어디에 있습니까?",
           "meaning": "The draft is diligent, but it is still close to a summary. Where is your own problem statement?",
           "text_vi": "Bản nháp chăm chỉ, nhưng vẫn gần với tóm tắt. Phần đặt vấn đề của chính em nằm ở đâu?"
         },
         {
+          cell_id: "6aa946bb-284b-4f5b-93e8-9c74eefac931",
           "speaker": "학생",
           "hangul": "선행 논의의 공백을 먼저 한 단락으로 정리하고, 그 뒤에 제 논지를 좁혀 보겠습니다.",
           "meaning": "I will first summarise the gap in prior discussion in one paragraph, then narrow my own argument.",
@@ -3948,42 +4152,52 @@ export const lessons: KoreanLesson[] =     [
       "intro_vi": "논문 구술 심사 (oral defense) ở Hàn Quốc thường diễn ra trong không khí trang trọng nhưng ít nghi lễ hơn so với Pháp. 심사위원 (hội đồng) thường gồm 3-5 người. Thời gian: 1-2 giờ. Trọng tâm: 논리적 일관성 (tính nhất quán logic) và 연구 윤리 (đạo đức nghiên cứu).",
       "vocabulary": [
         {
+          cell_id: "72506383-f58b-4f27-ab16-3c4a472f2506",
           "hangul": "구술 심사 (口述審査)",
           "meaning": "thi vấn đáp / oral defense"
         },
         {
+          cell_id: "d99ad8c7-544c-4fc4-b39f-44eec8892d1a",
           "hangul": "심사위원 (審査委員)",
           "meaning": "hội đồng chấm thi"
         },
         {
+          cell_id: "3a7acc1e-3094-426d-91e8-a1c7c73e6adf",
           "hangul": "질의응답 (質疑應答)",
           "meaning": "hỏi-đáp / Q&A"
         },
         {
+          cell_id: "8f62e389-ba65-4227-8d27-8748fff0fa99",
           "hangul": "연구 윤리 (硏究倫理)",
           "meaning": "đạo đức nghiên cứu"
         },
         {
+          cell_id: "e4eca348-e5ed-4a7b-b42a-d39ff2a76a08",
           "hangul": "한계 인정 (限界認定)",
           "meaning": "thừa nhận giới hạn"
         },
         {
+          cell_id: "f05d531d-d19c-450e-a16f-8d4226446348",
           "hangul": "논리적 일관성 (論理的一貫性)",
           "meaning": "tính nhất quán logic"
         },
         {
+          cell_id: "89172bcc-cbfb-44be-8f53-c11bad2a2a36",
           "hangul": "방법론적 선택 (方法論的選擇)",
           "meaning": "lựa chọn phương pháp luận"
         },
         {
+          cell_id: "a9b147a3-c7e1-404c-8a8a-3f710d91e24c",
           "hangul": "수정 요구 (修正要求)",
           "meaning": "yêu cầu chỉnh sửa"
         },
         {
+          cell_id: "2c3bf416-427a-40c2-a09a-ec5c8561c5c9",
           "hangul": "최종본 제출 (最終本提出)",
           "meaning": "nộp bản cuối"
         },
         {
+          cell_id: "cc543c4a-09e0-4b19-9431-b097c65fdc3e",
           "hangul": "학위 논문 (學位論文)",
           "meaning": "luận văn / luận án học vị"
         }
@@ -4022,12 +4236,14 @@ export const lessons: KoreanLesson[] =     [
       ],
       "dialogue": [
         {
+          cell_id: "64275acb-0397-4b6b-9944-2bcf5ab7f19d",
           "speaker": "심사위원",
           "hangul": "이 표본 규모로 일반화가 가능하다고 보십니까?",
           "meaning": "Do you think generalization is possible with this sample size?",
           "text_vi": "Với quy mô mẫu này, anh/chị có cho rằng có thể khái quát hóa không?"
         },
         {
+          cell_id: "1d5be6f2-22aa-49be-96a7-53bee98f4738",
           "speaker": "응시자",
           "hangul": "전면적 일반화에는 한계가 있습니다. 다만 본 연구는 일반화보다 특정 맥락에서의 기제 설명을 목표로 하였습니다.",
           "meaning": "There is a limit to full generalization. However, this study aimed to explain a mechanism in a specific context rather than to generalize broadly.",
@@ -4139,42 +4355,52 @@ export const lessons: KoreanLesson[] =     [
       "intro_vi": "철학적 사고 (philosophical thinking) ở bậc C2 đòi hỏi sinh viên phân biệt được 경험적 사고 (tư duy kinh nghiệm) và 초월론적 사고 (tư duy siêu nghiệm). 칸트의 질문 — 'X가 참인가?'가 아니라 'X는 어떤 조건 아래서 비로소 가능한가?' — 은 철학적 전회의 핵심이다. 추상은 현실 도피가 아니라, 개별 사례들의 배후에 놓인 공통 구조를 추출함으로써 현실을 더 깊이 이해하기 위한 조작이다.",
       "vocabulary": [
         {
+          cell_id: "b573d582-5363-49a4-833a-71c2272dd405",
           "hangul": "초월론적 (超越論的)",
           "meaning": "siêu nghiệm / transcendental (Kant)"
         },
         {
+          cell_id: "8572bb88-14c2-4ae0-a64b-c572f8f6b88a",
           "hangul": "개념 분석 (槪念分析)",
           "meaning": "phân tích khái niệm"
         },
         {
+          cell_id: "41dc9f77-8da3-4af1-b0d9-a292e386a2aa",
           "hangul": "전제 (前提)",
           "meaning": "tiền đề / presupposition"
         },
         {
+          cell_id: "9ec78667-7229-4bbe-976b-236f8ae080cc",
           "hangul": "귀류법 (歸謬法)",
           "meaning": "phép quy giản về phi lý / reductio ad absurdum"
         },
         {
+          cell_id: "3c641360-5c0b-4562-a66a-b0a11534f7d1",
           "hangul": "딜레마 (dilemma)",
           "meaning": "song đề / thế lưỡng nan"
         },
         {
+          cell_id: "8ecf90f9-f55e-4511-8fc6-55dd7376dd23",
           "hangul": "사고 실험 (思考實驗)",
           "meaning": "thí nghiệm tư duy / thought experiment"
         },
         {
+          cell_id: "98988722-abfa-4740-b47a-8908b3a87d0f",
           "hangul": "추상 (抽象)",
           "meaning": "trừu tượng / abstraction"
         },
         {
+          cell_id: "6d8ce4a8-d417-4fd1-b7e7-8878919d955c",
           "hangul": "보편 (普遍)",
           "meaning": "phổ biến / universal"
         },
         {
+          cell_id: "ae9549ea-adba-4a3e-980b-43f239d71181",
           "hangul": "논박 (論駁)",
           "meaning": "luận bác / refutation"
         },
         {
+          cell_id: "a32dc8d3-a833-490f-9531-c0c318294a9d",
           "hangul": "언어 게임 (言語 game)",
           "meaning": "trò chơi ngôn ngữ (Wittgenstein)"
         }
@@ -4201,12 +4427,14 @@ export const lessons: KoreanLesson[] =     [
       ],
       "dialogue": [
         {
+          cell_id: "dd1e91dd-64ea-4f42-b90c-cc80a9d5af8a",
           "speaker": "A",
           "hangul": "철학 논문에서 '제 의견으로는'이라고 써도 됩니까?",
           "meaning": "In a philosophy paper, is it OK to write 'in my opinion'?",
           "text_vi": "Trong một luận văn triết học, có được phép viết 'theo ý kiến của tôi' không?"
         },
         {
+          cell_id: "ca177a99-7462-4765-838f-5541e48deee7",
           "speaker": "B",
           "hangul": "쓰면 안 됩니다. 철학은 의견의 표명이 아니라 논증의 구축입니다. '나는 ~라고 생각한다'가 아니라 '~라는 이유로 ~라고 결론짓지 않을 수 없다'라고 써야 합니다.",
           "meaning": "You must not. Philosophy is not the expression of opinion but the construction of argument. Not 'I think that...' but 'For reasons X, Y, Z, one cannot but conclude that...'",
@@ -4251,30 +4479,37 @@ export const lessons: KoreanLesson[] =     [
       "intro_vi": "설득 (persuasion)은 조작 (manipulation)과 다르다. 아리스토텔레스 이후 설득의 기술은 세 기둥에 의해 지탱되어 왔다: 로고스 (논리), 에토스 (화자의 신뢰성), 파토스 (청중의 감정). 이 삼자의 균형이야말로 윤리적 설득의 조건이다. 계산된 양보 — 약한 논점을 스스로 인정하는 것 — 는 약점이 아니라, 화자의 지적 정직성을 보여주고 남은 주장의 무게를 증가시키는 전략이다.",
       "vocabulary": [
         {
+          cell_id: "7fdf3d42-2ffa-4ae7-b523-7fed55fbec74",
           "hangul": "설득 (說得)",
           "meaning": "thuyết phục / persuasion"
         },
         {
+          cell_id: "e0afee5e-ee17-4892-8f3f-d9481f3c3fe9",
           "hangul": "로고스 (logos)",
           "meaning": "lập luận logic"
         },
         {
+          cell_id: "0c71ebbf-f578-4aa3-8140-c605c101449a",
           "hangul": "에토스 (ethos)",
           "meaning": "độ tin cậy của người nói"
         },
         {
+          cell_id: "b19288a4-fad0-46b2-95db-4501bb5a4aba",
           "hangul": "파토스 (pathos)",
           "meaning": "kêu gọi cảm xúc"
         },
         {
+          cell_id: "24e67817-8188-4e98-845b-f1c2088c9884",
           "hangul": "생략삼단논법 (省略三段論法)",
           "meaning": "enthymeme — tam đoạn luận tu từ"
         },
         {
+          cell_id: "15913d9f-46ad-46e0-875c-08693ba9fff5",
           "hangul": "청중 (聽衆)",
           "meaning": "cử tọa / audience"
         },
         {
+          cell_id: "9fbf7e44-5257-48d9-8cf0-3b465328dfe6",
           "hangul": "계산된 양보 (計算된 讓步)",
           "meaning": "sự nhượng bộ có tính toán"
         }
@@ -4295,12 +4530,14 @@ export const lessons: KoreanLesson[] =     [
       ],
       "dialogue": [
         {
+          cell_id: "d78ca962-b72f-4c3d-861a-0d8d1be59a53",
           "speaker": "A",
           "hangul": "설득과 조작의 경계선은 어디에 있습니까?",
           "meaning": "Where is the boundary between persuasion and manipulation?",
           "text_vi": "Lằn ranh giữa thuyết phục và thao túng nằm ở đâu?"
         },
         {
+          cell_id: "ddfe65b6-ed0c-41bb-905f-d984f77529d7",
           "speaker": "B",
           "hangul": "로고스의 유무입니다. 상대의 이성에 호소하지 않고 감정만을 움직이려는 것이 조작입니다. 이성과 감정과 신뢰 모두에 균형 있게 호소하는 것이 설득입니다.",
           "meaning": "It is the presence or absence of logos. To try to move only emotion without appealing to the other's reason is manipulation. To appeal in a balanced way to reason, emotion, and trust — all three — is persuasion.",
@@ -4345,34 +4582,42 @@ export const lessons: KoreanLesson[] =     [
       "intro_vi": "미디어 비평 (media criticism) ở bậc C2 không phải là hô hào '언론은 편향되어 있다', mà là phân tích 구체적 프레임 (framing), 기사 제목 (headline choices), 인용 동사 (reporting verbs), 그리고 정보원 선택 (source selection)이 어떻게 독자의 해석을 유도하는지 밝히는 작업이다.",
       "vocabulary": [
         {
+          cell_id: "d3fe9dca-2dba-41eb-a66b-6bde55bc26ab",
           "hangul": "미디어 비평 (media批評)",
           "meaning": "phê bình truyền thông"
         },
         {
+          cell_id: "0566d33d-033b-4ff5-a805-9eef394b0f06",
           "hangul": "보도 (報道)",
           "meaning": "tường thuật / news reporting"
         },
         {
+          cell_id: "de30cddc-a441-4d74-b016-a373faf449af",
           "hangul": "논평 (論評)",
           "meaning": "bình luận / commentary"
         },
         {
+          cell_id: "23579409-3e1b-4232-8fde-69da131f5b0f",
           "hangul": "프레이밍 (framing)",
           "meaning": "đóng khung / framing"
         },
         {
+          cell_id: "d087f1e8-b103-47e5-b903-99164f26916b",
           "hangul": "표제 (標題)",
           "meaning": "tít báo / headline"
         },
         {
+          cell_id: "85db6d77-4a49-4650-9f98-2161f9f25f59",
           "hangul": "익명 정보원 (匿名情報源)",
           "meaning": "nguồn ẩn danh"
         },
         {
+          cell_id: "3b2a6d92-24a5-46d3-9931-d4c7cc5aa489",
           "hangul": "보도 태도 (報道態度)",
           "meaning": "thái độ tường thuật / editorial stance"
         },
         {
+          cell_id: "c340e911-255d-4807-8bf2-af23fee47344",
           "hangul": "객관성 (客觀性)",
           "meaning": "tính khách quan / objectivity"
         }
@@ -4393,12 +4638,14 @@ export const lessons: KoreanLesson[] =     [
       ],
       "dialogue": [
         {
+          cell_id: "2101971b-5480-4772-9f0f-4a7e2813ea99",
           "speaker": "A",
           "hangul": "기사가 '보도'인지 '논평'인지 어떻게 구별합니까?",
           "meaning": "How do you distinguish whether an article is 'reporting' or 'commentary'?",
           "text_vi": "Làm thế nào để phân biệt một bài báo là 'tin tức' hay 'bình luận'?"
         },
         {
+          cell_id: "73589671-1284-4f52-9346-fb556f7e1786",
           "speaker": "B",
           "hangul": "동사입니다. '밝혔다', '전했다'는 보도. '주장했다', '불과하다'는 논평입니다. 형용사의 유무도 중요한 지표입니다.",
           "meaning": "It is the verbs. 'Revealed,' 'conveyed' are reporting. 'Claimed,' 'merely' are commentary. The presence of adjectives is also an important indicator.",
@@ -4443,30 +4690,37 @@ export const lessons: KoreanLesson[] =     [
       "intro_vi": "외교 언어 (diplomatic language)의 본질은 정확한 모호성의 기술이다 — 구속하기에 충분한 말을 하면서도, 고정되기에는 충분하지 않은 말을 하는 것. '비난 (condemn)'과 '유감 (regret)' 사이에는 일반 독자에게는 보이지 않지만 외교관에게는 결정적인 차이가 존재한다.",
       "vocabulary": [
         {
+          cell_id: "8d76928b-07e1-4d74-8807-a68bbbeec9d1",
           "hangul": "외교 언어 (外交言語)",
           "meaning": "ngôn ngữ ngoại giao"
         },
         {
+          cell_id: "9fe9f850-68f4-4548-8426-88efb9dc9940",
           "hangul": "공동 성명 (共同聲明)",
           "meaning": "tuyên bố chung / joint statement"
         },
         {
+          cell_id: "d284e0dc-56b1-4e5f-8a55-2b825282fb5c",
           "hangul": "비난 (非難)",
           "meaning": "lên án / condemnation"
         },
         {
+          cell_id: "3d5701e6-3e70-4234-93f3-6b47d188c134",
           "hangul": "유감 (遺憾)",
           "meaning": "lấy làm tiếc / regret"
         },
         {
+          cell_id: "c8e8f094-7829-4614-96cb-8cdd22dac51e",
           "hangul": "전략적 모호성 (戰略的模糊性)",
           "meaning": "tính mơ hồ chiến lược"
         },
         {
+          cell_id: "989ca1ca-2b1f-47f8-961e-8fc76dd89e4a",
           "hangul": "다자간 협의 (多者間協議)",
           "meaning": "đàm phán đa phương"
         },
         {
+          cell_id: "76d89b92-5308-47bd-b549-585d0edf966e",
           "hangul": "건설적 대화 (建設的對話)",
           "meaning": "đối thoại xây dựng"
         }
@@ -4487,12 +4741,14 @@ export const lessons: KoreanLesson[] =     [
       ],
       "dialogue": [
         {
+          cell_id: "a6a6dbab-7262-4b91-841e-bdc3c8932911",
           "speaker": "A",
           "hangul": "공동 성명에서 '비난'과 '유감' 중 어느 것을 선택해야 합니까?",
           "meaning": "In the joint statement, should we choose 'condemn' or 'express regret'?",
           "text_vi": "Trong tuyên bố chung, nên chọn 'lên án' hay 'lấy làm tiếc'?"
         },
         {
+          cell_id: "441e620a-c0b1-4b41-9296-2149feea9b6f",
           "speaker": "B",
           "hangul": "'유감'입니다. '비난'은 다음 회담의 문을 닫습니다. '유감'은 불일치를 표명하면서도 출구를 남깁니다.",
           "meaning": "'Express regret.' 'Condemn' closes the door to the next meeting. 'Regret' expresses disagreement while leaving an exit.",

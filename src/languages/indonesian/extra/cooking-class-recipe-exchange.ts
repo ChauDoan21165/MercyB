@@ -21,6 +21,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   /** Indonesian word/phrase. */
   word: string;
   /** English meaning. */
@@ -36,6 +37,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   /** Indonesian line. */
   text: string;
@@ -240,6 +242,7 @@ export const lessons: IndonesianLesson[] = [
       "Useful frames: `Boleh saya lihat resepnya?`, `Takaran ___ berapa?`, `Bagaimana cara mengiris ___?`, `Boleh saya mencicipi?`, and `Kita bisa tukar resep?` Keep `rasa` = taste/feeling, `bumbu` = seasoning/spice paste, and `resep` = recipe separate.",
     vocabulary: [
       {
+        cell_id: "7802fd8f-d37c-4ded-9182-e300adc8b77f",
         word: "kelas memasak",
         en: "cooking class",
         vi: "lớp nấu ăn",
@@ -248,6 +251,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "KE-las me-MA-sak",
       },
       {
+        cell_id: "f3bdab0f-6e7e-4a08-b587-ab18875a7e4b",
         word: "resep",
         en: "recipe",
         vi: "công thức nấu ăn",
@@ -256,6 +260,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "RE-sep",
       },
       {
+        cell_id: "f9e58819-3f7b-4f1f-ab75-61f5d9949cd7",
         word: "bahan",
         en: "ingredient; material",
         vi: "nguyên liệu",
@@ -264,6 +269,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "BA-han",
       },
       {
+        cell_id: "a5c11fd4-ff6c-4350-8caa-f0ea53ee17ae",
         word: "takaran",
         en: "measurement; amount",
         vi: "định lượng",
@@ -272,6 +278,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "ta-KA-ran",
       },
       {
+        cell_id: "7a5e00e9-f230-4ff3-b146-081f7e5919fe",
         word: "mengiris",
         en: "to slice",
         vi: "thái/lát",
@@ -280,6 +287,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "me-NGEE-ris",
       },
       {
+        cell_id: "ab5894b9-433c-4771-bd2c-29bc64f55456",
         word: "mencicipi",
         en: "to taste; to sample",
         vi: "nếm thử",
@@ -288,6 +296,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "men-chee-CHEE-pee",
       },
       {
+        cell_id: "79cb48ff-17bb-4cb5-a673-341f8da26858",
         word: "bumbu",
         en: "seasoning; spice paste",
         vi: "gia vị/hỗn hợp gia vị",
@@ -296,6 +305,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "BOOM-boo",
       },
       {
+        cell_id: "7d4fbd2e-8395-4c94-87ce-5124d71204a5",
         word: "kurang sedikit",
         en: "a little lacking",
         vi: "thiếu một chút",
@@ -304,6 +314,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "KOO-rang se-DEE-kit",
       },
       {
+        cell_id: "cff74c09-80df-4ecd-9f98-d4000fcf6ded",
         word: "tukar resep",
         en: "exchange recipes",
         vi: "trao đổi công thức",
@@ -312,6 +323,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "TOO-kar RE-sep",
       },
       {
+        cell_id: "6bf4a3ef-596e-4cb5-a1ee-de0b517f4f66",
         word: "santan",
         en: "coconut milk",
         vi: "nước cốt dừa",
@@ -322,36 +334,42 @@ export const lessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "cb0851b0-372e-43f7-8b88-5f1a24d17a97",
         speaker: "Peserta",
         text: "Boleh saya lihat resepnya dulu?",
         vi: "Tôi xem công thức trước được không?",
         en: "May I look at the recipe first?",
       },
       {
+        cell_id: "f2b05ca5-2dab-4a48-bdaf-3bdf8c7642b5",
         speaker: "Instruktur",
         text: "Boleh. Bahan utama hari ini adalah ayam, santan, dan bumbu halus.",
         vi: "Được. Nguyên liệu chính hôm nay là gà, nước cốt dừa, và bumbu xay/giã mịn.",
         en: "Sure. Today's main ingredients are chicken, coconut milk, and ground spice paste.",
       },
       {
+        cell_id: "926c4f5b-f621-49e3-ac10-4a4d8f165009",
         speaker: "Peserta",
         text: "Takaran garamnya berapa?",
         vi: "Lượng muối là bao nhiêu?",
         en: "How much salt should we use?",
       },
       {
+        cell_id: "b1e349ff-21ba-4ef7-91d5-f923499fb35e",
         speaker: "Instruktur",
         text: "Satu sendok teh dulu, nanti kita cicipi lagi.",
         vi: "Một muỗng cà phê trước, lát nữa chúng ta nếm lại.",
         en: "One teaspoon first, then we will taste it again.",
       },
       {
+        cell_id: "56dd57bf-00e8-48c7-b05d-df1923431282",
         speaker: "Peserta",
         text: "Menurut saya, bumbunya masih kurang sedikit.",
         vi: "Theo tôi, gia vị vẫn còn thiếu một chút.",
         en: "In my opinion, the seasoning is still a little lacking.",
       },
       {
+        cell_id: "5e31287a-68c6-45aa-a3a6-5095c451c2d0",
         speaker: "Instruktur",
         text: "Baik, tambahkan garam sedikit dan aduk pelan-pelan.",
         vi: "Được, thêm một chút muối và khuấy từ từ.",

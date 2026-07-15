@@ -13,42 +13,52 @@ export const lessons: KoreanLesson[] =         [
       "intro_vi": "Bài này luyện cách nêu luận điểm chính (논지) và giả thuyết nghiên cứu (가설) ở cấp C1 — đăng ký 문어체 cho bản thảo và 〜습니다 thể cho phần nói khi thuyết trình. Trọng tâm: cấu trúc 'bối cảnh → khoảng trống → câu hỏi → giả thuyết → đóng góp', dùng nhiều 한자어 (本 연구, 선행 연구, 가설 등) để đạt độ chính xác học thuật.",
       "vocabulary": [
         {
+          cell_id: "3b30ac95-0f8a-47b6-b9b6-b1aecd1088a5",
           "hangul": "논지 (論旨)",
           "meaning": "luận điểm chính"
         },
         {
+          cell_id: "fe968d75-5245-46cc-80fc-68dd77d18467",
           "hangul": "가설 (假說)",
           "meaning": "giả thuyết"
         },
         {
+          cell_id: "6d168115-f7c6-47a6-869b-a3033f0ecbc9",
           "hangul": "선행 연구 (先行 硏究)",
           "meaning": "nghiên cứu tiền bối / công trình đi trước"
         },
         {
+          cell_id: "2d605419-f718-452c-96f8-b97ce5538423",
           "hangul": "연구 문제",
           "meaning": "câu hỏi nghiên cứu"
         },
         {
+          cell_id: "86324910-540c-4a7a-b89e-a82b03fe7fa4",
           "hangul": "검증하다 (檢證)",
           "meaning": "kiểm chứng"
         },
         {
+          cell_id: "7fb86b21-8343-470c-9667-ec7c8ee7ba44",
           "hangul": "주장 (主張)",
           "meaning": "lập luận / quan điểm"
         },
         {
+          cell_id: "1d5bcf7a-1436-466a-aa72-60419aa09417",
           "hangul": "전제 (前提)",
           "meaning": "tiền đề"
         },
         {
+          cell_id: "68e8e3a0-03ce-4430-9a7a-78d22f28596d",
           "hangul": "본 연구 (本 硏究)",
           "meaning": "nghiên cứu này (cụm dùng trong bản thảo)"
         },
         {
+          cell_id: "2fa63695-2b44-4344-a3ce-f558da2410ce",
           "hangul": "기여 (寄與)",
           "meaning": "đóng góp (học thuật)"
         },
         {
+          cell_id: "35a1f5e6-aef3-4ff8-8a02-ffd9ee5d81e8",
           "hangul": "사료되다 (思料)",
           "meaning": "được cho rằng — hedging trang trọng"
         }
@@ -87,24 +97,28 @@ export const lessons: KoreanLesson[] =         [
       ],
       "dialogue": [
         {
+          cell_id: "c4642e8a-c798-457e-9a7c-b671fdd30323",
           "speaker": "발표자",
           "hangul": "본 연구의 핵심 논지는 두 변수가 비선형 관계를 형성한다는 것입니다.",
           "meaning": "The core thesis of this study is that the two variables form a non-linear relationship.",
           "text_vi": "Luận điểm cốt lõi của nghiên cứu này là hai biến số hình thành một mối quan hệ phi tuyến."
         },
         {
+          cell_id: "fbc57a8f-eced-40f3-bdaf-a056c4578d3e",
           "speaker": "청중",
           "hangul": "그 가설을 어떤 자료로 검증하셨습니까?",
           "meaning": "What data did you use to test that hypothesis?",
           "text_vi": "Quý vị đã kiểm định giả thuyết đó bằng dữ liệu nào ạ?"
         },
         {
+          cell_id: "279bca12-670f-4f7e-aa12-1c016a42af0f",
           "speaker": "발표자",
           "hangul": "2015년부터 2024년까지의 패널 자료를 활용하였습니다.",
           "meaning": "We used panel data from 2015 to 2024.",
           "text_vi": "Chúng tôi đã sử dụng dữ liệu bảng từ năm 2015 đến năm 2024."
         },
         {
+          cell_id: "8477c41d-34d6-48fa-bcd5-3c51bcbc3b2a",
           "speaker": "청중",
           "hangul": "선행 연구와의 차별점을 말씀해 주시겠습니까?",
           "meaning": "Could you explain how this differs from prior work?",
@@ -306,42 +320,52 @@ export const lessons: KoreanLesson[] =         [
       "intro_vi": "Bài này tập cách trích dẫn (인용) và quy gán quan điểm (귀속) trong văn học thuật Hàn — phân biệt trích nguyên văn (직접 인용), trích diễn ý (간접 인용), và tóm gọn (요약). Cấu trúc 〜에 따르면, 〜이/가 지적한 바와 같이 là cụm chuẩn. Tránh 'X said that' kiểu Anh ngữ — Hàn dùng 〜라고 보고하였다 / 〜라고 주장하였다 với động từ chuyển dẫn riêng.",
       "vocabulary": [
         {
+          cell_id: "ef8e1c9a-a4e3-4218-afe7-8453f0989d12",
           "hangul": "인용 (引用)",
           "meaning": "trích dẫn"
         },
         {
+          cell_id: "34ab6ff4-b14d-4717-ac15-9261ef66927d",
           "hangul": "출처 (出處)",
           "meaning": "nguồn / xuất xứ"
         },
         {
+          cell_id: "e0db8855-b988-4675-80b1-c7957732ea1a",
           "hangul": "참고 문헌 (參考 文獻)",
           "meaning": "tài liệu tham khảo"
         },
         {
+          cell_id: "07a8d54e-5a5b-4931-a06f-67c3a83bc649",
           "hangul": "직접 인용",
           "meaning": "trích nguyên văn"
         },
         {
+          cell_id: "d904025e-0051-4b47-ab3e-d6ff31a31879",
           "hangul": "간접 인용",
           "meaning": "trích diễn ý"
         },
         {
+          cell_id: "ddb62e82-aee8-4178-b88c-c3f895d1a487",
           "hangul": "지적하다 (指摘)",
           "meaning": "chỉ ra (động từ chuyển dẫn trang trọng)"
         },
         {
+          cell_id: "360a6882-d170-4511-aeea-77ab7cccd07f",
           "hangul": "주장하다 (主張)",
           "meaning": "lập luận / khẳng định"
         },
         {
+          cell_id: "e652fc80-d938-4651-aae2-e02884c163ff",
           "hangul": "보고하다 (報告)",
           "meaning": "báo cáo"
         },
         {
+          cell_id: "0a69d021-69aa-43e8-af8e-e23912315456",
           "hangul": "귀속시키다 (歸屬)",
           "meaning": "quy gán cho"
         },
         {
+          cell_id: "71ae5cbe-e4b5-4c23-8aa9-139975252fa9",
           "hangul": "표절 (剽竊)",
           "meaning": "đạo văn"
         }
@@ -380,24 +404,28 @@ export const lessons: KoreanLesson[] =         [
       ],
       "dialogue": [
         {
+          cell_id: "972bd826-e38c-4071-a9e6-827c2f0c3e7c",
           "speaker": "지도교수",
           "hangul": "이 문장은 출처가 없는데, Kim 선생의 글에서 그대로 가져온 것 아닙니까?",
           "meaning": "This sentence lacks a source — isn't it lifted from Prof. Kim's piece?",
           "text_vi": "Câu này không có nguồn trích dẫn — chẳng phải nó được lấy nguyên văn từ bài viết của thầy Kim hay sao?"
         },
         {
+          cell_id: "13bc20dc-06d0-4382-a4b1-ccf92b6e2398",
           "speaker": "학생",
           "hangul": "죄송합니다. 다음 판본에서 출처를 명시하겠습니다.",
           "meaning": "I apologise. I will state the source in the next draft.",
           "text_vi": "Em xin lỗi ạ. Ở bản thảo tiếp theo em sẽ ghi rõ nguồn trích dẫn."
         },
         {
+          cell_id: "98b44e5d-7f2e-4d5f-a675-485af4c30aca",
           "speaker": "지도교수",
           "hangul": "직접 인용이라면 큰따옴표를, 간접 인용이라면 패러프레이즈를 분명히 해 주십시오.",
           "meaning": "If it's a direct quote use double quotes; if it's indirect, make the paraphrase clear.",
           "text_vi": "Nếu là trích dẫn trực tiếp thì dùng dấu ngoặc kép, còn nếu là trích dẫn gián tiếp thì hãy diễn giải lại cho rõ ràng."
         },
         {
+          cell_id: "f90ca19c-a24b-43b9-b197-bda47aadc328",
           "speaker": "학생",
           "hangul": "네, 표절을 피하기 위해 인용 규정을 다시 확인하겠습니다.",
           "meaning": "Yes, I will re-check the citation rules to avoid plagiarism.",
@@ -611,42 +639,52 @@ export const lessons: KoreanLesson[] =         [
       "intro_vi": "Bài này luyện cách xây dựng lập luận học thuật và phản biện luận điểm đối lập theo phong cách Hàn — KHÔNG đối đầu trực diện mà thừa nhận một phần (부분 인정) trước khi đưa luận cứ riêng. Cấu trúc kinh điển: '〜에 대해서는 동의한다. 다만 ~에 대해서는 다른 해석이 가능하다.' Trọng tâm: cụm 그러나, 한편, 이에 반해, 그럼에도 불구하고, 더 나아가.",
       "vocabulary": [
         {
+          cell_id: "5e557644-36e3-4597-a15f-56f8200419fb",
           "hangul": "논거 (論據)",
           "meaning": "luận cứ"
         },
         {
+          cell_id: "25106f1e-866d-4da7-b4cc-de051f509a4d",
           "hangul": "반박 (反駁)",
           "meaning": "phản bác"
         },
         {
+          cell_id: "f85a5b04-545e-4635-bb27-f425ea8db5e9",
           "hangul": "반론 (反論)",
           "meaning": "phản luận / counter-argument"
         },
         {
+          cell_id: "2afc2663-2044-4128-b320-1ee2653ce560",
           "hangul": "이의를 제기하다 (異議)",
           "meaning": "nêu phản đối"
         },
         {
+          cell_id: "8d877c69-dbee-4cf2-98ba-990785c95a83",
           "hangul": "한계 (限界)",
           "meaning": "hạn chế"
         },
         {
+          cell_id: "d059ba54-dcc7-436b-a57e-ac30d1bb4b94",
           "hangul": "타당성 (妥當性)",
           "meaning": "tính chính đáng / hợp lý"
         },
         {
+          cell_id: "78f75428-1918-40ff-93e2-8ee5540caed2",
           "hangul": "수긍하다 (首肯)",
           "meaning": "công nhận / gật đầu"
         },
         {
+          cell_id: "9789b0d3-7842-41e3-a29d-01c60808be06",
           "hangul": "전제 조건",
           "meaning": "điều kiện tiền đề"
         },
         {
+          cell_id: "51c080e9-b3aa-4596-b7c8-191b2e64c820",
           "hangul": "재고하다 (再考)",
           "meaning": "xem xét lại"
         },
         {
+          cell_id: "04b56bea-badd-42e2-a946-f042c3978e55",
           "hangul": "오히려",
           "meaning": "ngược lại / trái lại"
         }
@@ -685,24 +723,28 @@ export const lessons: KoreanLesson[] =         [
       ],
       "dialogue": [
         {
+          cell_id: "a437665c-d73a-4099-811a-ef025ff8fffb",
           "speaker": "발표자",
           "hangul": "본 연구는 자율성이 성취에 직접 영향을 미친다고 주장합니다.",
           "meaning": "This study argues that autonomy directly influences achievement.",
           "text_vi": "Nghiên cứu này lập luận rằng tính tự chủ ảnh hưởng trực tiếp đến thành tích."
         },
         {
+          cell_id: "2e5c341d-4036-404c-8037-11c45c219744",
           "speaker": "토론자",
           "hangul": "그 부분에는 일부 동의합니다만, 매개 변수의 역할이 간과된 듯합니다.",
           "meaning": "I partially agree, but the role of mediator variables seems overlooked.",
           "text_vi": "Tôi đồng ý một phần với điểm đó, nhưng có vẻ vai trò của biến trung gian đã bị bỏ qua."
         },
         {
+          cell_id: "74c6a9af-5200-4f84-8ccb-9e0842d6c9b5",
           "speaker": "발표자",
           "hangul": "좋은 지적이십니다. 다만 본 자료에서는 매개 효과가 통계적으로 유의하지 않았습니다.",
           "meaning": "An astute point. However, in our data the mediation effect was not statistically significant.",
           "text_vi": "Đó là một nhận xét sắc sảo. Tuy nhiên, trong dữ liệu của chúng tôi, hiệu ứng trung gian không có ý nghĩa thống kê."
         },
         {
+          cell_id: "5d2cf50b-6748-47fc-a26d-b1ad721a9e2a",
           "speaker": "토론자",
           "hangul": "그렇다면 표본 특성이 일반화를 제약할 가능성을 검토하셨는지요?",
           "meaning": "Then have you considered that sample characteristics may limit generalisability?",
@@ -892,42 +934,52 @@ export const lessons: KoreanLesson[] =         [
       "intro_vi": "Hedging (완곡 표현) là kỹ năng C1 cốt lõi — biết đặt cường độ phù hợp giữa quá tự tin và quá rụt rè. Bài này phân ba mức: (a) cao chắc chắn '~임이 분명하다 / ~이 확인되었다'; (b) trung bình '~인 것으로 보인다 / ~일 가능성이 높다'; (c) dè dặt '~일 수 있다 / ~일 가능성도 배제할 수 없다'. 사료된다 (rất trang trọng, văn viết) chỉ dùng cho phát biểu chính.",
       "vocabulary": [
         {
+          cell_id: "3b3d71e0-dd47-4248-a1a3-19732db919de",
           "hangul": "추정 (推定)",
           "meaning": "ước đoán"
         },
         {
+          cell_id: "863020a9-a807-4ba9-b978-29e11ceee318",
           "hangul": "추론 (推論)",
           "meaning": "suy luận"
         },
         {
+          cell_id: "b00987fa-62f8-41c8-960d-7e01bd21a434",
           "hangul": "가능성 (可能性)",
           "meaning": "khả năng"
         },
         {
+          cell_id: "28341ba1-a7f2-4379-9cb6-049f55386eee",
           "hangul": "함의 (含意)",
           "meaning": "hàm ý"
         },
         {
+          cell_id: "1cac8c64-4132-40c7-8745-c681e18d6bba",
           "hangul": "잠재적 (潛在的)",
           "meaning": "tiềm tàng"
         },
         {
+          cell_id: "89077a3c-efa7-4247-a350-ce6876eabde9",
           "hangul": "보인다 (見)",
           "meaning": "có vẻ / dường như"
         },
         {
+          cell_id: "70ee904e-cdf2-473e-bb06-6988a3321c4c",
           "hangul": "시사하다 (示唆)",
           "meaning": "gợi ý / hàm chứa ngụ ý"
         },
         {
+          cell_id: "1281e86c-4510-4968-85d2-ec8933189772",
           "hangul": "단정하다 (斷定)",
           "meaning": "kết luận chắc nịch"
         },
         {
+          cell_id: "dc7b044b-1809-4fc2-9dfc-ca250d428172",
           "hangul": "신중하게 (愼重)",
           "meaning": "thận trọng"
         },
         {
+          cell_id: "82fb121c-21a3-4ca2-89c7-e039a413fab1",
           "hangul": "조심스럽게 표현하다",
           "meaning": "diễn đạt thận trọng"
         }
@@ -966,24 +1018,28 @@ export const lessons: KoreanLesson[] =         [
       ],
       "dialogue": [
         {
+          cell_id: "087c5c50-263a-4116-aad7-4a8ca629810b",
           "speaker": "발표자",
           "hangul": "본 결과는 음주 빈도와 우울 수준 간의 연관성을 시사합니다.",
           "meaning": "The results suggest an association between drinking frequency and depression level.",
           "text_vi": "Kết quả này gợi ý về mối liên hệ giữa tần suất uống rượu và mức độ trầm cảm."
         },
         {
+          cell_id: "b22e30cf-4875-4754-88e5-fa94ffdc6ff1",
           "speaker": "토론자",
           "hangul": "'시사한다'와 '입증한다' 사이에서 어느 정도의 표현을 쓰셨습니까?",
           "meaning": "Where did you place your expression between 'suggests' and 'demonstrates'?",
           "text_vi": "Giữa 'gợi ý' và 'chứng minh', quý vị đã dùng cách diễn đạt ở mức độ nào?"
         },
         {
+          cell_id: "8c4a58f4-0cb5-4635-a8f6-d0ce05f9b1e6",
           "speaker": "발표자",
           "hangul": "자료가 횡단면이라 '시사한다' 수준에서 멈추었습니다.",
           "meaning": "Since the data are cross-sectional, I stopped at 'suggests.'",
           "text_vi": "Vì dữ liệu là cắt ngang nên tôi dừng lại ở mức 'gợi ý'."
         },
         {
+          cell_id: "548d5f3a-a542-40c8-9673-cdbcc0f1f358",
           "speaker": "토론자",
           "hangul": "그 신중함이 본 결과의 신뢰성을 높여 준다고 봅니다.",
           "meaning": "That caution, I believe, strengthens the credibility of the results.",
@@ -1173,42 +1229,52 @@ export const lessons: KoreanLesson[] =         [
       "intro_vi": "Bài này luyện cách định nghĩa thuật ngữ chuyên môn (전문 용어) trong văn học thuật Hàn — bao gồm định nghĩa hoạt động (조작적 정의), dẫn nguồn định nghĩa của học giả khác, và phân biệt thuật ngữ với khái niệm dân dụng. Cấu trúc 〜이란/는 〜을/를 의미한다, 〜으로 정의된다, 〜의 개념과 구분된다.",
       "vocabulary": [
         {
+          cell_id: "ef18e608-37e1-4ada-bcd2-bd65bd365a5c",
           "hangul": "용어 (用語)",
           "meaning": "thuật ngữ"
         },
         {
+          cell_id: "04a2ac6e-e0d1-4865-898f-0d4d888c9f1b",
           "hangul": "개념 (槪念)",
           "meaning": "khái niệm"
         },
         {
+          cell_id: "f522d7db-d8f4-4484-8e9e-5bccef4f4884",
           "hangul": "정의 (定義)",
           "meaning": "định nghĩa"
         },
         {
+          cell_id: "e4775383-af1e-4ff0-b1d2-f8bed87dd5d2",
           "hangul": "조작적 정의 (操作的)",
           "meaning": "định nghĩa hoạt động (operational)"
         },
         {
+          cell_id: "bd5d83c7-afe0-476c-9a54-30aec8d932e3",
           "hangul": "포괄하다 (包括)",
           "meaning": "bao hàm"
         },
         {
+          cell_id: "b8e71173-4ed5-4569-b0ac-d42e3136c0ad",
           "hangul": "구분하다 (區分)",
           "meaning": "phân biệt"
         },
         {
+          cell_id: "7e78b0c7-ea75-4a3c-9e38-46648f6f2747",
           "hangul": "범주 (範疇)",
           "meaning": "phạm trù / category"
         },
         {
+          cell_id: "a12eda08-50c0-4b24-8e98-d7075a313de9",
           "hangul": "외연 (外延)",
           "meaning": "ngoại diên (extension)"
         },
         {
+          cell_id: "b9aeb42c-5dfd-497f-9a1c-e3075f4e2f2d",
           "hangul": "내포 (內包)",
           "meaning": "nội hàm (intension)"
         },
         {
+          cell_id: "dfec0357-03b0-4200-b801-6f0656353ce3",
           "hangul": "혼용하다 (混用)",
           "meaning": "dùng lẫn lộn"
         }
@@ -1247,24 +1313,28 @@ export const lessons: KoreanLesson[] =         [
       ],
       "dialogue": [
         {
+          cell_id: "9e0e51f5-82a2-4401-9075-0717aa259d6f",
           "speaker": "학생",
           "hangul": "교수님, '학습 자율성'을 어떻게 정의하면 될까요?",
           "meaning": "Professor, how should I define 'learning autonomy'?",
           "text_vi": "Thưa giáo sư, em nên định nghĩa 'tính tự chủ trong học tập' như thế nào ạ?"
         },
         {
+          cell_id: "a6fb5cb1-9a43-4f26-9bdc-206be080a8fc",
           "speaker": "교수",
           "hangul": "Deci와 Ryan(2000)의 정의를 출발점으로 하되, 본 연구에 맞게 조작적 정의를 추가하십시오.",
           "meaning": "Take Deci and Ryan's (2000) definition as a starting point, then add an operational definition fitted to your study.",
           "text_vi": "Hãy lấy định nghĩa của Deci và Ryan (2000) làm điểm xuất phát, rồi bổ sung một định nghĩa thao tác phù hợp với nghiên cứu của em."
         },
         {
+          cell_id: "939025dc-90de-48a5-a7ad-8b29dbf4b708",
           "speaker": "학생",
           "hangul": "조작적 정의는 어떤 형태로 제시해야 합니까?",
           "meaning": "What form should the operational definition take?",
           "text_vi": "Định nghĩa thao tác nên được trình bày dưới hình thức nào ạ?"
         },
         {
+          cell_id: "4a0e90ce-4c26-4a5b-8c86-1bfef8f34fe9",
           "speaker": "교수",
           "hangul": "측정 도구와 점수 산출 방식을 한 문장으로 명시하면 충분합니다.",
           "meaning": "Stating the measurement instrument and the scoring method in one sentence is sufficient.",
@@ -1478,42 +1548,52 @@ export const lessons: KoreanLesson[] =         [
       "intro_vi": "Bài này luyện cách so sánh phương pháp nghiên cứu — định lượng (양적 연구) vs định tính (질적 연구), cắt ngang (횡단면) vs dọc (종단), thực nghiệm vs quan sát. Cấu trúc đối lập 〜인 반면, 〜와/과 달리, 〜에 비해, 〜이/가 ~한 데 비해. Trọng tâm: chỉ ra ưu/nhược của mỗi phương pháp dựa trên câu hỏi nghiên cứu.",
       "vocabulary": [
         {
+          cell_id: "42e1ee09-f12d-4d22-9d65-b00b080612ac",
           "hangul": "방법론 (方法論)",
           "meaning": "phương pháp luận"
         },
         {
+          cell_id: "8e439244-f2ee-47e6-b4d6-bb2871a18fb0",
           "hangul": "양적 연구 (量的)",
           "meaning": "nghiên cứu định lượng"
         },
         {
+          cell_id: "5c3f81fa-8d0e-44e8-b367-cdcda1db67fd",
           "hangul": "질적 연구 (質的)",
           "meaning": "nghiên cứu định tính"
         },
         {
+          cell_id: "0bc34b30-3698-4760-810c-b44eac1096e1",
           "hangul": "횡단면 (橫斷面)",
           "meaning": "cắt ngang"
         },
         {
+          cell_id: "266656a1-534e-446f-b888-9fe9e00bd235",
           "hangul": "종단 (縱斷)",
           "meaning": "dọc / longitudinal"
         },
         {
+          cell_id: "7d4c11d7-fa4c-4422-9dc1-c90bbfdb38b0",
           "hangul": "실험 연구 (實驗)",
           "meaning": "nghiên cứu thực nghiệm"
         },
         {
+          cell_id: "db86c3c2-c895-4a72-92ae-3e55e508664e",
           "hangul": "관찰 연구 (觀察)",
           "meaning": "nghiên cứu quan sát"
         },
         {
+          cell_id: "62dd395a-2ee2-44a2-8f52-4b0d6da7c054",
           "hangul": "인과 추론 (因果 推論)",
           "meaning": "suy luận nhân quả"
         },
         {
+          cell_id: "35c96c30-ced0-44fd-aa76-f945db330765",
           "hangul": "타당성 (妥當性)",
           "meaning": "tính chính đáng"
         },
         {
+          cell_id: "8d13f12c-9934-45ce-a005-a9bb0664dbb4",
           "hangul": "신뢰도 (信賴度)",
           "meaning": "độ tin cậy"
         }
@@ -1552,24 +1632,28 @@ export const lessons: KoreanLesson[] =         [
       ],
       "dialogue": [
         {
+          cell_id: "3505ae7f-a595-4708-9326-1f763ce77ab7",
           "speaker": "발표자",
           "hangul": "본 연구는 양적 방법과 질적 방법을 함께 사용하였습니다.",
           "meaning": "This study used both quantitative and qualitative methods.",
           "text_vi": "Nghiên cứu này đã sử dụng kết hợp cả phương pháp định lượng và phương pháp định tính."
         },
         {
+          cell_id: "9bcdf49f-9398-4d88-9a07-bfcd74314191",
           "speaker": "토론자",
           "hangul": "두 방법의 결합 근거를 설명해 주실 수 있겠습니까?",
           "meaning": "Could you explain the rationale for combining the two methods?",
           "text_vi": "Quý vị có thể giải thích cơ sở của việc kết hợp hai phương pháp được không ạ?"
         },
         {
+          cell_id: "c3b76ea2-eafd-46c1-a1aa-39674dafbaa0",
           "speaker": "발표자",
           "hangul": "양적 자료로 일반 경향을 파악하고, 질적 자료로 그 메커니즘을 규명하는 보완적 설계입니다.",
           "meaning": "It's a complementary design — quantitative data identify the trend, qualitative data clarify the mechanism.",
           "text_vi": "Đây là một thiết kế bổ trợ — dữ liệu định lượng nắm bắt xu hướng chung, còn dữ liệu định tính làm rõ cơ chế của xu hướng đó."
         },
         {
+          cell_id: "8e12b8ab-178d-4332-9e54-6502d19a5935",
           "speaker": "토론자",
           "hangul": "두 자료의 통합 방식이 결과 해석에 어떻게 반영되었는지 궁금합니다.",
           "meaning": "I'd like to know how the integration of the two data is reflected in the interpretation.",
@@ -1759,42 +1843,52 @@ export const lessons: KoreanLesson[] =         [
       "intro_vi": "Bài này luyện kỹ năng phê bình (비평) một nghiên cứu trong literature review hoặc journal club — cân bằng giữa công nhận đóng góp và chỉ ra hạn chế. Cấu trúc 4 lớp: (1) thừa nhận đóng góp; (2) chỉ ra hạn chế cụ thể; (3) đặt câu hỏi mở; (4) gợi ý hướng cải thiện. Văn phong 〜다 thể cho viết, 〜습니다 cho nói trong seminar.",
       "vocabulary": [
         {
+          cell_id: "98d613ed-4607-49d9-8b3a-255a3ce6d35a",
           "hangul": "비평 (批評)",
           "meaning": "phê bình"
         },
         {
+          cell_id: "62b16254-cc79-426e-8a86-58aa378f71f8",
           "hangul": "공헌 (貢獻)",
           "meaning": "đóng góp"
         },
         {
+          cell_id: "91b781bb-b590-45c7-a4c1-5e8c0926a883",
           "hangul": "한계점 (限界點)",
           "meaning": "điểm hạn chế"
         },
         {
+          cell_id: "461fc123-dfb1-40d7-9514-2e4134112328",
           "hangul": "문제점 (問題點)",
           "meaning": "điểm có vấn đề"
         },
         {
+          cell_id: "8ffdd504-f7b9-4ad2-ba7a-2c3e7608e77b",
           "hangul": "약점 (弱點)",
           "meaning": "điểm yếu"
         },
         {
+          cell_id: "d4b5a851-30d7-438b-b77e-55226cb810ff",
           "hangul": "표본의 대표성 (代表性)",
           "meaning": "tính đại diện của mẫu"
         },
         {
+          cell_id: "37c23c1a-3dc0-4a1d-bf70-9054089311a1",
           "hangul": "분석의 엄밀성 (嚴密性)",
           "meaning": "tính chặt chẽ của phân tích"
         },
         {
+          cell_id: "3b4d8ac4-f181-4b6f-b37e-2707a8a404e4",
           "hangul": "해석의 비약 (飛躍)",
           "meaning": "bước nhảy trong diễn giải"
         },
         {
+          cell_id: "3b3f756d-5452-4369-908d-e1f84be9e439",
           "hangul": "재현 가능성 (再現)",
           "meaning": "khả năng tái lập (reproducibility)"
         },
         {
+          cell_id: "e9a96969-8263-49ed-8495-b37c6aabf76b",
           "hangul": "후속 과제 (後續)",
           "meaning": "đề tài kế tiếp"
         }
@@ -1833,24 +1927,28 @@ export const lessons: KoreanLesson[] =         [
       ],
       "dialogue": [
         {
+          cell_id: "8dff8a5d-d2b6-445e-a55d-b7fbbf4dc5c5",
           "speaker": "발표자",
           "hangul": "오늘 저는 Kim(2020) 논문을 비평적으로 검토하겠습니다.",
           "meaning": "Today I will critically review Kim's (2020) paper.",
           "text_vi": "Hôm nay tôi sẽ xem xét một cách phê phán bài báo của Kim (2020)."
         },
         {
+          cell_id: "a3593a99-d29d-474e-9dcb-10738f6a4182",
           "speaker": "참석자",
           "hangul": "어떤 점에 초점을 두실 예정이십니까?",
           "meaning": "Which point do you plan to focus on?",
           "text_vi": "Quý vị dự định tập trung vào điểm nào ạ?"
         },
         {
+          cell_id: "a67509d6-7acd-4f50-a702-814adcb7c914",
           "speaker": "발표자",
           "hangul": "공헌 두 가지, 한계 세 가지, 그리고 후속 과제 한 가지를 다루겠습니다.",
           "meaning": "I'll address two contributions, three limitations, and one follow-up direction.",
           "text_vi": "Tôi sẽ đề cập đến hai đóng góp, ba hạn chế và một hướng nghiên cứu tiếp theo."
         },
         {
+          cell_id: "85761fb8-d81d-4fc6-8ccb-f2bcb196316b",
           "speaker": "참석자",
           "hangul": "균형 있는 구성이군요. 시작하시지요.",
           "meaning": "A balanced structure. Please proceed.",
@@ -2028,42 +2126,52 @@ export const lessons: KoreanLesson[] =         [
       "intro_vi": "Bài này luyện đăng ký 〜습니다 thể trong Q&A hội nghị (학회 Q&A) — bao gồm cách nhận câu hỏi, đáp ngắn, hoãn câu hỏi không có sẵn, và đóng phiên Q&A. Nguyên tắc: nhận diện câu hỏi (acknowledge) → đáp ngắn (1-3 câu) → mời câu tiếp theo. KHÔNG dài dòng vì thời gian Q&A có hạn.",
       "vocabulary": [
         {
+          cell_id: "89511d3e-1217-4b46-92b9-7fb4c9d08c15",
           "hangul": "질의응답 (質疑應答)",
           "meaning": "hỏi đáp / Q&A"
         },
         {
+          cell_id: "f19e4d5f-fa96-4386-a9da-eb4997d29c89",
           "hangul": "사회자 (司會者)",
           "meaning": "người điều phối / chair"
         },
         {
+          cell_id: "dcbd260b-6bf7-4bbd-962f-2b90c16888e1",
           "hangul": "질문자 (質問者)",
           "meaning": "người hỏi"
         },
         {
+          cell_id: "383c15ff-1b20-4c6a-952c-d9f6f4b3f3b5",
           "hangul": "답변하다 (答辯)",
           "meaning": "trả lời (formal)"
         },
         {
+          cell_id: "2876d93c-3044-4f7a-be10-3d31e96a9821",
           "hangul": "보충하다 (補充)",
           "meaning": "bổ sung"
         },
         {
+          cell_id: "952c1f5a-081c-44b1-969e-e5b02f2469df",
           "hangul": "여쭙다",
           "meaning": "(khiêm cung) xin hỏi"
         },
         {
+          cell_id: "b7694877-a751-4fc0-9aaf-bc09b7aede4a",
           "hangul": "마무리하다",
           "meaning": "kết thúc / đóng"
         },
         {
+          cell_id: "948737dd-2168-4fdb-8aa9-a9b7f0689b33",
           "hangul": "정리하다 (整理)",
           "meaning": "tóm gọn / sắp xếp"
         },
         {
+          cell_id: "aa1c8153-81bb-4f86-a9e0-feb2bc34ad1c",
           "hangul": "감사드리다 (感謝)",
           "meaning": "(khiêm cung) cảm ơn"
         },
         {
+          cell_id: "615028ec-2f72-4c60-aa8e-8571feefb1aa",
           "hangul": "추후 (追後)",
           "meaning": "sau / về sau"
         }
@@ -2102,24 +2210,28 @@ export const lessons: KoreanLesson[] =         [
       ],
       "dialogue": [
         {
+          cell_id: "e2615722-cf8a-4194-b43c-de59d61937d5",
           "speaker": "사회자",
           "hangul": "발표 잘 들었습니다. 질문 받겠습니다.",
           "meaning": "Thank you for the talk. I'll take questions.",
           "text_vi": "Cảm ơn quý vị về phần trình bày. Tôi xin nhận câu hỏi."
         },
         {
+          cell_id: "856ec490-be5c-4450-a601-3014e14fbb97",
           "speaker": "질문자",
           "hangul": "한 가지 여쭙겠습니다. 표본 규모를 어떻게 결정하셨습니까?",
           "meaning": "I'd like to ask — how was the sample size determined?",
           "text_vi": "Tôi xin hỏi một điều. Quý vị đã xác định quy mô mẫu như thế nào ạ?"
         },
         {
+          cell_id: "01da0db2-ca3e-4deb-bc8c-f926a4e65979",
           "speaker": "발표자",
           "hangul": "선행 연구의 효과 크기를 바탕으로 최소 200명 이상으로 설정하였습니다.",
           "meaning": "Based on prior effect sizes, we set a minimum of 200.",
           "text_vi": "Dựa trên độ lớn hiệu ứng của các nghiên cứu đi trước, chúng tôi đã ấn định tối thiểu từ 200 người trở lên."
         },
         {
+          cell_id: "7283bd5a-980b-4409-925a-7b4f0afffe41",
           "speaker": "사회자",
           "hangul": "다음 질문 받겠습니다.",
           "meaning": "Next question please.",
@@ -2321,42 +2433,52 @@ export const lessons: KoreanLesson[] =         [
       "intro_vi": "Bài này luyện viết tóm tắt (초록) và lược thuật (요약) học thuật — cấu trúc IMRD nén lại trong 200-250 chữ Hàn: bối cảnh-mục đích-방법-kết quả-결론. 〜다 thể, mật độ 한자어 cao, KHÔNG hedging quá đà, KHÔNG self-citation. Trọng tâm: chọn động từ thay 'study X' kiểu Anh — 다루다, 분석하다, 검토하다, 규명하다.",
       "vocabulary": [
         {
+          cell_id: "e08f9b3a-1844-423e-8887-56091767d7a3",
           "hangul": "초록 (抄錄)",
           "meaning": "tóm tắt (abstract)"
         },
         {
+          cell_id: "5e05aa24-fe36-4b89-9718-508fa8a1ab6f",
           "hangul": "요약 (要約)",
           "meaning": "lược thuật / summary"
         },
         {
+          cell_id: "6c784777-06f8-408e-bdfa-6904304a4382",
           "hangul": "핵심어 (核心語)",
           "meaning": "từ khóa (keywords)"
         },
         {
+          cell_id: "8723fcb9-1fca-48d3-a363-2f3dbd9e617d",
           "hangul": "다루다",
           "meaning": "xử lý / bàn về"
         },
         {
+          cell_id: "5175cbeb-5955-4a4e-ab38-1591a7095971",
           "hangul": "규명하다 (糾明)",
           "meaning": "làm rõ / xác định"
         },
         {
+          cell_id: "6e0181ca-9dde-436e-99d2-e0ebf4fddbbe",
           "hangul": "도출하다 (導出)",
           "meaning": "rút ra (kết luận)"
         },
         {
+          cell_id: "4ecf13af-9dfb-4c83-a781-661ff00470e7",
           "hangul": "함의 (含意)",
           "meaning": "hàm ý"
         },
         {
+          cell_id: "97bff745-b413-4748-b3b2-02686c103287",
           "hangul": "본고 (本稿)",
           "meaning": "bài viết này (formal)"
         },
         {
+          cell_id: "f3418053-8151-4ed5-b726-7e8aefcc2eb2",
           "hangul": "압축적으로 (壓縮)",
           "meaning": "một cách cô đọng"
         },
         {
+          cell_id: "9c79d3dd-fd8f-4bf9-b9de-f928f8890026",
           "hangul": "자수 (字數)",
           "meaning": "số chữ"
         }
@@ -2395,24 +2517,28 @@ export const lessons: KoreanLesson[] =         [
       ],
       "dialogue": [
         {
+          cell_id: "9e262a7b-f87e-4b65-aaef-f03dd02c9de2",
           "speaker": "지도교수",
           "hangul": "초록을 250자 이내로 줄여 주십시오.",
           "meaning": "Please cut the abstract to within 250 Korean characters.",
           "text_vi": "Xin hãy rút gọn phần tóm tắt xuống trong vòng 250 ký tự."
         },
         {
+          cell_id: "ee4935be-3c96-4732-a83f-529a30c08d19",
           "speaker": "학생",
           "hangul": "현재 320자입니다. 어디를 우선 줄이면 좋겠습니까?",
           "meaning": "It's currently 320. Where should I cut first?",
           "text_vi": "Hiện tại đang là 320 ký tự ạ. Em nên rút gọn phần nào trước ạ?"
         },
         {
+          cell_id: "1b63d8d0-928f-4221-8a7b-84a52bb3aa01",
           "speaker": "지도교수",
           "hangul": "방법 부분의 부수적 설명을 없애고, 결과를 한 문장으로 압축하십시오.",
           "meaning": "Remove ancillary description in the method, and compress results into one sentence.",
           "text_vi": "Hãy bỏ phần giải thích phụ trợ ở mục phương pháp, và nén phần kết quả lại thành một câu."
         },
         {
+          cell_id: "af0707c1-3e9f-4670-83dd-d1c99b619161",
           "speaker": "학생",
           "hangul": "알겠습니다. 핵심어도 5개 이내로 정리하겠습니다.",
           "meaning": "Understood. I'll also keep keywords to within five.",
@@ -2614,42 +2740,52 @@ export const lessons: KoreanLesson[] =         [
       "intro_vi": "Bài này luyện hai chiều của peer review: (a) viết comment cho bài đồng nghiệp, (b) phản hồi reviewer khi bài của bạn được góp ý. Đăng ký 〜다 thể cho written review, 〜습니다 thể cho response letter. Trọng tâm: cụm 'major revision' / 'minor revision' / 'reject', cấu trúc response 'comment-by-comment' với inline acknowledgment + revised text.",
       "vocabulary": [
         {
+          cell_id: "6aef802c-b87f-4711-8bc1-dc53faa7bd75",
           "hangul": "심사 (審査)",
           "meaning": "thẩm định / review"
         },
         {
+          cell_id: "c54355c0-645f-477f-887d-903fd9408f08",
           "hangul": "심사위원 (審査委員)",
           "meaning": "reviewer / phản biện viên"
         },
         {
+          cell_id: "9dddd61b-70e9-41ba-ab1e-d76952d4dbba",
           "hangul": "수정 사항 (修正)",
           "meaning": "mục cần sửa"
         },
         {
+          cell_id: "081e6a21-8040-460c-bb50-c0132a7ab2f8",
           "hangul": "주요 수정 (主要)",
           "meaning": "major revision"
         },
         {
+          cell_id: "11899569-0a52-432e-85d9-64696bfbea2a",
           "hangul": "경미한 수정 (輕微)",
           "meaning": "minor revision"
         },
         {
+          cell_id: "21cb21e5-b5d5-43ea-837b-e88fb7375238",
           "hangul": "반영하다 (反映)",
           "meaning": "phản ánh / áp dụng"
         },
         {
+          cell_id: "b08f98e2-664e-44f5-a0b3-9a4b1eea1cf0",
           "hangul": "이의 제기 (異議)",
           "meaning": "phản đối / dispute"
         },
         {
+          cell_id: "f7d1201a-d0c9-4a84-8158-8129acddb751",
           "hangul": "응답서 (應答書)",
           "meaning": "thư phản hồi (response letter)"
         },
         {
+          cell_id: "ca8a4523-18c0-4b74-abdd-3d24c1c8fe94",
           "hangul": "재투고 (再投稿)",
           "meaning": "nộp lại"
         },
         {
+          cell_id: "a016ff42-942a-420e-b9b9-789d497fcf59",
           "hangul": "익명 심사 (匿名)",
           "meaning": "blind review"
         }
@@ -2688,24 +2824,28 @@ export const lessons: KoreanLesson[] =         [
       ],
       "dialogue": [
         {
+          cell_id: "3fda4bd7-15f3-4a66-926d-9bbf75cbfebc",
           "speaker": "편집장",
           "hangul": "심사 결과 '주요 수정' 판정이 나왔습니다.",
           "meaning": "The review verdict is 'major revision.'",
           "text_vi": "Kết quả phản biện đưa ra phán định 'chỉnh sửa lớn'."
         },
         {
+          cell_id: "fee0792b-6d23-4fad-b325-093ec5d54caa",
           "speaker": "저자",
           "hangul": "지적 사항을 정리해 보내 주시면 감사하겠습니다.",
           "meaning": "I'd appreciate it if you could send the consolidated comments.",
           "text_vi": "Nếu quý vị tổng hợp các điểm góp ý rồi gửi cho tôi thì tôi rất cảm kích."
         },
         {
+          cell_id: "0e1bd4ce-0bcf-4b6b-94a7-b45b86845e2c",
           "speaker": "편집장",
           "hangul": "오늘 안에 응답서 양식과 함께 송부드리겠습니다.",
           "meaning": "I'll send them today along with the response-letter template.",
           "text_vi": "Trong hôm nay tôi sẽ gửi kèm theo mẫu thư phản hồi."
         },
         {
+          cell_id: "ba87c3a1-0b1d-45b3-b481-233c1243f302",
           "speaker": "저자",
           "hangul": "한 달 이내에 수정본과 응답서를 제출하도록 하겠습니다.",
           "meaning": "I'll submit the revision and response letter within a month.",
@@ -2906,22 +3046,27 @@ export const lessons: KoreanLesson[] =         [
       "intro_vi": "Bài này luyện cách nói về lương, thưởng và gói đãi ngộ bằng 존댓말 trong môi trường doanh nghiệp Hàn.",
       "vocabulary": [
         {
+          cell_id: "99afaa17-4b54-42f7-8218-d1002b4b7dba",
           "hangul": "연봉 (年俸)",
           "meaning": "lương năm"
         },
         {
+          cell_id: "e38beab2-7a6e-49f1-88ef-8839546a835a",
           "hangul": "성과급 (成果給)",
           "meaning": "thưởng theo thành tích"
         },
         {
+          cell_id: "b7570e2c-535f-4854-ad72-9e7809d552e3",
           "hangul": "총보상",
           "meaning": "tổng đãi ngộ"
         },
         {
+          cell_id: "76153731-ce8e-40ed-85ed-a413c430263b",
           "hangul": "처우 (處遇)",
           "meaning": "đãi ngộ"
         },
         {
+          cell_id: "86067e72-44e7-4b56-9479-c9d7decd0d8e",
           "hangul": "재검토하다 (再檢討)",
           "meaning": "xem xét lại"
         }
@@ -2994,6 +3139,7 @@ export const lessons: KoreanLesson[] =         [
       ],
       "dialogue": [
         {
+          cell_id: "ad084456-d168-4fbf-990a-658d4067113d",
           "speaker": "지원자",
           "hangul": "이번 조건을 감사히 검토하였습니다만, 연봉과 성과급 부분을 다시 말씀드려도 되겠습니까?",
           "meaning": "I appreciate the offer, but may I revisit the salary and bonus portions?",
@@ -3002,6 +3148,7 @@ export const lessons: KoreanLesson[] =         [
           "text_en": "I appreciate the offer, but may I revisit the salary and bonus portions?"
         },
         {
+          cell_id: "bb7f9465-ca33-4df2-adb3-85bc20213fdf",
           "speaker": "인사팀",
           "hangul": "물론입니다. 어떤 부분이 가장 중요하신지 말씀해 주시겠습니까?",
           "meaning": "Of course. Could you tell us which part matters most to you?",
@@ -3010,6 +3157,7 @@ export const lessons: KoreanLesson[] =         [
           "text_en": "Of course. Could you tell us which part matters most to you?"
         },
         {
+          cell_id: "e5dbc018-10da-4033-acca-1933eee4f430",
           "speaker": "지원자",
           "hangul": "총보상 기준으로 보면, 제 경력과 책임 범위를 조금 더 반영해 주시면 좋겠습니다.",
           "meaning": "Looking at total compensation, I would appreciate a bit more reflection of my experience and responsibilities.",
@@ -3018,6 +3166,7 @@ export const lessons: KoreanLesson[] =         [
           "text_en": "Looking at total compensation, I would appreciate a bit more reflection of my experience and responsibilities."
         },
         {
+          cell_id: "e828cf8e-4b98-453a-8706-5c72f05370b9",
           "speaker": "인사팀",
           "hangul": "보너스 구조도 함께 조정해 보는 방안을 검토해 보겠습니다.",
           "meaning": "We will consider adjusting the bonus structure as well.",
@@ -3026,6 +3175,7 @@ export const lessons: KoreanLesson[] =         [
           "text_en": "We will consider adjusting the bonus structure as well."
         },
         {
+          cell_id: "4a24193d-0cb3-4fd4-b240-740427d17e35",
           "speaker": "지원자",
           "hangul": "감사합니다. 회사와 함께 장기적으로 성장하고 싶습니다.",
           "meaning": "Thank you. I want to grow with the company in the long term.",
@@ -3034,6 +3184,7 @@ export const lessons: KoreanLesson[] =         [
           "text_en": "Thank you. I want to grow with the company in the long term."
         },
         {
+          cell_id: "3db7d23b-9b90-4434-a90b-106488aaea48",
           "speaker": "인사팀",
           "hangul": "좋습니다. 다음 주까지 검토 결과를 다시 전달드리겠습니다.",
           "meaning": "Very well. We will share the review result again by next week.",
@@ -3067,22 +3218,27 @@ export const lessons: KoreanLesson[] =         [
       "intro_vi": "Bài này luyện cách phản biện điều khoản hợp đồng bằng cách nói thẳng nhưng vẫn giữ thể diện cho hai bên.",
       "vocabulary": [
         {
+          cell_id: "9bcb2a24-7a58-46a1-a54c-b9ff03218375",
           "hangul": "계약서 (契約書)",
           "meaning": "hợp đồng"
         },
         {
+          cell_id: "1d3c6811-fd6d-4018-8eec-11707d266f0c",
           "hangul": "조항 (條項)",
           "meaning": "điều khoản"
         },
         {
+          cell_id: "93fe2b5e-5c0e-494b-97f1-f406501fbd70",
           "hangul": "면책 (免責)",
           "meaning": "miễn trách nhiệm"
         },
         {
+          cell_id: "de2a7a96-9f3a-48a1-bb2a-ad7f5ec71425",
           "hangul": "위약금 (違約金)",
           "meaning": "tiền phạt vi phạm"
         },
         {
+          cell_id: "6e47f7fa-dc82-4b88-ade3-21de67b9a38b",
           "hangul": "법무팀",
           "meaning": "pháp chế"
         }
@@ -3155,6 +3311,7 @@ export const lessons: KoreanLesson[] =         [
       ],
       "dialogue": [
         {
+          cell_id: "b50cb05c-7bf1-43ba-b695-e5069eb32afe",
           "speaker": "법무팀",
           "hangul": "이 조항은 저희 표준 계약과 비교해도 많이 불리합니다.",
           "meaning": "This clause is much less favorable even compared with our standard contract.",
@@ -3163,6 +3320,7 @@ export const lessons: KoreanLesson[] =         [
           "text_en": "This clause is much less favorable even compared with our standard contract."
         },
         {
+          cell_id: "f98c52f9-76dc-4415-8c83-cfb70c342867",
           "speaker": "거래처",
           "hangul": "어느 부분이 가장 문제라고 보십니까?",
           "meaning": "Which part do you see as the biggest issue?",
@@ -3171,6 +3329,7 @@ export const lessons: KoreanLesson[] =         [
           "text_en": "Which part do you see as the biggest issue?"
         },
         {
+          cell_id: "41986b9a-3b21-42ce-9633-805749c64f84",
           "speaker": "법무팀",
           "hangul": "면책 범위가 너무 넓고, 위약금도 과도합니다.",
           "meaning": "The disclaimer is too broad, and the penalty is excessive.",
@@ -3179,6 +3338,7 @@ export const lessons: KoreanLesson[] =         [
           "text_en": "The disclaimer is too broad, and the penalty is excessive."
         },
         {
+          cell_id: "bcf505ba-cf8b-4310-9f8b-85b9a182a170",
           "speaker": "거래처",
           "hangul": "그렇다면 어느 수준까지 수정하면 가능하시겠습니까?",
           "meaning": "Then to what extent would it be possible if we revised it?",
@@ -3187,6 +3347,7 @@ export const lessons: KoreanLesson[] =         [
           "text_en": "Then to what extent would it be possible if we revised it?"
         },
         {
+          cell_id: "d045f460-9436-4d07-bcad-5db1ff9b7b78",
           "speaker": "법무팀",
           "hangul": "책임 한도만 명확히 조정하면 내부 승인 가능성이 높습니다.",
           "meaning": "If we clarify only the liability cap, internal approval is likely.",
@@ -3195,6 +3356,7 @@ export const lessons: KoreanLesson[] =         [
           "text_en": "If we clarify only the liability cap, internal approval is likely."
         },
         {
+          cell_id: "112de9e3-fc99-4232-adfb-f79452aa0896",
           "speaker": "거래처",
           "hangul": "좋습니다. 수정안을 오늘 안에 보내드리겠습니다.",
           "meaning": "Good. We will send a revised draft within today.",
@@ -3228,22 +3390,27 @@ export const lessons: KoreanLesson[] =         [
       "intro_vi": "Bài này luyện cách chủ trì họp có nhiều bên, giữ nhịp trao đổi và chốt kết luận bằng 존댓말 rất tự nhiên.",
       "vocabulary": [
         {
+          cell_id: "0bccf756-4710-4789-946a-9f9e639f04d1",
           "hangul": "안건 (案件)",
           "meaning": "vấn đề trong cuộc họp"
         },
         {
+          cell_id: "40be31f1-31a3-4cec-9b0e-f59b53efd5d8",
           "hangul": "발언 순서",
           "meaning": "thứ tự phát biểu"
         },
         {
+          cell_id: "958701ed-4004-45cd-babd-a31c7116f5a9",
           "hangul": "쟁점 (爭點)",
           "meaning": "điểm tranh luận"
         },
         {
+          cell_id: "630bb6d3-fd71-43aa-a63c-6ee15e7d84c7",
           "hangul": "합의점 (合意點)",
           "meaning": "điểm đồng thuận"
         },
         {
+          cell_id: "c3dbc267-dea3-45fa-9a8c-52edb256ff24",
           "hangul": "회의록 (會議錄)",
           "meaning": "biên bản họp"
         }
@@ -3316,6 +3483,7 @@ export const lessons: KoreanLesson[] =         [
       ],
       "dialogue": [
         {
+          cell_id: "90320d62-f8b3-4059-a8f8-298175648efb",
           "speaker": "사회자",
           "hangul": "바쁘신데 참석해 주셔서 감사합니다. 오늘은 세 가지 안건을 순서대로 다루겠습니다.",
           "meaning": "Thank you for joining despite your busy schedule. Today we will address three agenda items in order.",
@@ -3324,6 +3492,7 @@ export const lessons: KoreanLesson[] =         [
           "text_en": "Thank you for joining despite your busy schedule. Today we will address three agenda items in order."
         },
         {
+          cell_id: "91d7c082-a8e5-4543-9e4d-5e0ecb0125c8",
           "speaker": "공급사",
           "hangul": "먼저 가격 조정이 가능한지 말씀드려도 되겠습니까?",
           "meaning": "May I first ask whether price adjustment is possible?",
@@ -3332,6 +3501,7 @@ export const lessons: KoreanLesson[] =         [
           "text_en": "May I first ask whether price adjustment is possible?"
         },
         {
+          cell_id: "9b4a2dff-c98b-4cc0-8848-1611381c8684",
           "speaker": "사회자",
           "hangul": "좋습니다. 가격부터 논의하겠습니다. 내부팀께서 현재 기준을 말씀해 주시겠습니까?",
           "meaning": "Good. We will discuss price first. Could the internal team share the current 기준?",
@@ -3340,6 +3510,7 @@ export const lessons: KoreanLesson[] =         [
           "text_en": "Good. We will discuss price first. Could the internal team share the current 기준?"
         },
         {
+          cell_id: "e740c736-d15d-48ff-8a4d-87a9a667ca2a",
           "speaker": "내부팀",
           "hangul": "기준은 유지하되 납기 단축이 가능하면 일부 조정 여지는 있습니다.",
           "meaning": "The standard will remain, but if the lead time can be shortened, there is room for partial adjustment.",
@@ -3348,6 +3519,7 @@ export const lessons: KoreanLesson[] =         [
           "text_en": "The standard will remain, but if the lead time can be shortened, there is room for partial adjustment."
         },
         {
+          cell_id: "083b81c9-a12a-44f5-bbac-c93a224b4075",
           "speaker": "사회자",
           "hangul": "그럼 이 부분은 합의 가능성으로 정리하고, 일정 안건으로 넘어가겠습니다.",
           "meaning": "Then let us record this as a potential agreement and move on to the schedule item.",
@@ -3356,6 +3528,7 @@ export const lessons: KoreanLesson[] =         [
           "text_en": "Then let us record this as a potential agreement and move on to the schedule item."
         },
         {
+          cell_id: "63442832-ce0c-4c5c-8a1c-98d7ba958ac4",
           "speaker": "사회자",
           "hangul": "회의록은 오늘 오후에 공유드리겠습니다.",
           "meaning": "I will share the minutes this afternoon.",
@@ -3389,22 +3562,27 @@ export const lessons: KoreanLesson[] =         [
       "intro_vi": "Bài này luyện cách nói về đơn giá, khối lượng, thời hạn giao hàng và điều kiện hợp tác lâu dài với nhà cung cấp.",
       "vocabulary": [
         {
+          cell_id: "3b1f7551-085b-416a-b626-84dd057ffc63",
           "hangul": "단가 (單價)",
           "meaning": "đơn giá"
         },
         {
+          cell_id: "149cbe1c-5d74-41df-8077-b3339a6831b6",
           "hangul": "납기 (納期)",
           "meaning": "thời hạn giao hàng"
         },
         {
+          cell_id: "84ddbc9f-7242-47a9-b3a7-4b921deee3f9",
           "hangul": "물량",
           "meaning": "khối lượng hàng"
         },
         {
+          cell_id: "8aace75e-c320-4c1c-b173-b96abad22b91",
           "hangul": "재견적",
           "meaning": "báo giá lại"
         },
         {
+          cell_id: "47264bcb-1376-49f2-9a8a-9e7a14143938",
           "hangul": "장기 계약",
           "meaning": "hợp đồng dài hạn"
         }
@@ -3477,6 +3655,7 @@ export const lessons: KoreanLesson[] =         [
       ],
       "dialogue": [
         {
+          cell_id: "69f92c43-31dc-4272-8723-876714b56bb4",
           "speaker": "구매팀",
           "hangul": "이번 물량 기준으로 다시 견적을 주실 수 있겠습니까?",
           "meaning": "Could you provide a new quote based on this volume?",
@@ -3485,6 +3664,7 @@ export const lessons: KoreanLesson[] =         [
           "text_en": "Could you provide a new quote based on this volume?"
         },
         {
+          cell_id: "7d91e7ae-8c6e-4dd5-8cf3-336a3979ca5f",
           "speaker": "공급사",
           "hangul": "가능합니다만, 현재 단가를 많이 낮추기는 어렵습니다.",
           "meaning": "It is possible, but it is hard to lower the current unit price much.",
@@ -3493,6 +3673,7 @@ export const lessons: KoreanLesson[] =         [
           "text_en": "It is possible, but it is hard to lower the current unit price much."
         },
         {
+          cell_id: "79ed1cd3-9bc0-476a-b36c-d8e7e8b8dca9",
           "speaker": "구매팀",
           "hangul": "납기를 조금 앞당겨 주시면 단가 조정 여지를 더 볼 수 있습니다.",
           "meaning": "If you can move the lead time up a little, we can look at more room to adjust the price.",
@@ -3501,6 +3682,7 @@ export const lessons: KoreanLesson[] =         [
           "text_en": "If you can move the lead time up a little, we can look at more room to adjust the price."
         },
         {
+          cell_id: "b4a9158c-64d6-48c3-8c16-8abd85fc7be8",
           "speaker": "공급사",
           "hangul": "그럼 재견적을 받아 내부에서 다시 검토해 보겠습니다.",
           "meaning": "Then we will take a revised quote and review it internally again.",
@@ -3509,6 +3691,7 @@ export const lessons: KoreanLesson[] =         [
           "text_en": "Then we will take a revised quote and review it internally again."
         },
         {
+          cell_id: "b28d554f-1627-4318-a10b-b3664b27a67c",
           "speaker": "구매팀",
           "hangul": "장기 계약 조건까지 함께 보면 더 좋은 구조가 나올 수도 있습니다.",
           "meaning": "If we also look at long-term contract terms, we may reach a better structure.",
@@ -3517,6 +3700,7 @@ export const lessons: KoreanLesson[] =         [
           "text_en": "If we also look at long-term contract terms, we may reach a better structure."
         },
         {
+          cell_id: "9d37e65a-a75a-4f7c-b030-0dcd9f5978ff",
           "speaker": "공급사",
           "hangul": "알겠습니다. 오늘 안에 수정 제안을 보내드리겠습니다.",
           "meaning": "Understood. We will send a revised proposal today.",
@@ -3550,22 +3734,27 @@ export const lessons: KoreanLesson[] =         [
       "intro_vi": "Bài này luyện cách phản đối cấp trên một cách xây dựng, giữ lễ phép nhưng vẫn bảo vệ góc nhìn chuyên môn.",
       "vocabulary": [
         {
+          cell_id: "ed2c1ecd-38fc-41dd-932f-6076bd841c9e",
           "hangul": "우려 (憂慮)",
           "meaning": "lo ngại"
         },
         {
+          cell_id: "108e749d-62c4-4505-a7cf-6ae7b5c3afda",
           "hangul": "리스크",
           "meaning": "rủi ro"
         },
         {
+          cell_id: "8e053bb9-2527-4f31-8d43-f4e4ede70063",
           "hangul": "대안 (代案)",
           "meaning": "phương án thay thế"
         },
         {
+          cell_id: "f2aa6bfd-c1de-4354-aefe-724f80734c90",
           "hangul": "우선순위",
           "meaning": "ưu tiên"
         },
         {
+          cell_id: "84fdd7d7-419d-41ad-b162-15d22dbacae0",
           "hangul": "자원 배분",
           "meaning": "phân bổ nguồn lực"
         }
@@ -3638,6 +3827,7 @@ export const lessons: KoreanLesson[] =         [
       ],
       "dialogue": [
         {
+          cell_id: "323cd627-d82f-4fb9-a4e2-547efb754005",
           "speaker": "팀장",
           "hangul": "이번 일정은 그대로 밀고 가겠습니다.",
           "meaning": "We will push ahead with this schedule as is.",
@@ -3646,6 +3836,7 @@ export const lessons: KoreanLesson[] =         [
           "text_en": "We will push ahead with this schedule as is."
         },
         {
+          cell_id: "58cc0fdc-cf62-4c7a-a3b5-91f5bd0ebae5",
           "speaker": "실무자",
           "hangul": "말씀하신 방향은 이해하지만, 품질 점검 시간이 조금 부족해 보입니다.",
           "meaning": "I understand the direction, but the quality-check time looks a little insufficient.",
@@ -3654,6 +3845,7 @@ export const lessons: KoreanLesson[] =         [
           "text_en": "I understand the direction, but the quality-check time looks a little insufficient."
         },
         {
+          cell_id: "37d4b1c0-8ac9-4b46-9935-1b09799070e8",
           "speaker": "팀장",
           "hangul": "그렇다면 어떤 대안이 있습니까?",
           "meaning": "Then what alternative do you have?",
@@ -3662,6 +3854,7 @@ export const lessons: KoreanLesson[] =         [
           "text_en": "Then what alternative do you have?"
         },
         {
+          cell_id: "ac8c8890-e146-4587-96d8-7f29c56c0da7",
           "speaker": "실무자",
           "hangul": "우선순위를 조금 조정하면 핵심 기능을 먼저 내고 나머지는 다음 단계로 넘길 수 있습니다.",
           "meaning": "If we adjust priorities slightly, we can ship the core functions first and move the rest to the next stage.",
@@ -3670,6 +3863,7 @@ export const lessons: KoreanLesson[] =         [
           "text_en": "If we adjust priorities slightly, we can ship the core functions first and move the rest to the next stage."
         },
         {
+          cell_id: "849f85c7-53c0-4a0d-9e47-f5c2dd1a9ec9",
           "speaker": "팀장",
           "hangul": "그 의견을 반영해 다시 정리해 보세요.",
           "meaning": "Please revise it again reflecting that opinion.",
@@ -3678,6 +3872,7 @@ export const lessons: KoreanLesson[] =         [
           "text_en": "Please revise it again reflecting that opinion."
         },
         {
+          cell_id: "fab7747a-40e3-40ed-a6ac-937a9926a782",
           "speaker": "실무자",
           "hangul": "네, 오늘 안에 수정해서 공유드리겠습니다.",
           "meaning": "Yes, I will revise it and share it within today.",
@@ -3711,22 +3906,27 @@ export const lessons: KoreanLesson[] =         [
       "intro_vi": "Bài này giúp người học nói về khác biệt văn hóa đàm phán mà không rơi vào định kiến hay giọng phán xét.",
       "vocabulary": [
         {
+          cell_id: "1f48fe9d-2881-48d7-896e-e8b12a5065af",
           "hangul": "체면 (體面)",
           "meaning": "thể diện"
         },
         {
+          cell_id: "db94edf1-2bc4-41ba-8562-a8abe58d2b38",
           "hangul": "정 (情)",
           "meaning": "tình nghĩa"
         },
         {
+          cell_id: "2722d721-8db4-42fa-9988-3db2bc4e889f",
           "hangul": "완곡하게",
           "meaning": "một cách uyển chuyển"
         },
         {
+          cell_id: "000839b9-4793-4fb8-b039-439be504608a",
           "hangul": "직접적",
           "meaning": "trực tiếp"
         },
         {
+          cell_id: "f66f409e-a230-4af9-94d6-8d8cde4c19b1",
           "hangul": "관계 중심",
           "meaning": "thiên về quan hệ"
         }
@@ -3799,6 +3999,7 @@ export const lessons: KoreanLesson[] =         [
       ],
       "dialogue": [
         {
+          cell_id: "8f32880d-bbf2-4235-ba31-5b1be9e07ecb",
           "speaker": "동료",
           "hangul": "한국식 협상과 베트남식 협상의 차이를 어떻게 보십니까?",
           "meaning": "How do you see the difference between Korean and Vietnamese negotiation styles?",
@@ -3807,6 +4008,7 @@ export const lessons: KoreanLesson[] =         [
           "text_en": "How do you see the difference between Korean and Vietnamese negotiation styles?"
         },
         {
+          cell_id: "cb4a9d10-475a-4eb7-9d29-a6c6739f5661",
           "speaker": "실무자",
           "hangul": "한국에서는 사전 조율이 중요하고, 베트남에서는 관계 형성이 더 먼저 보이는 경우가 많습니다.",
           "meaning": "In Korea, prior coordination matters; in Vietnam, relationship building often comes first.",
@@ -3815,6 +4017,7 @@ export const lessons: KoreanLesson[] =         [
           "text_en": "In Korea, prior coordination matters; in Vietnam, relationship building often comes first."
         },
         {
+          cell_id: "f0ed912c-f522-49e4-9cf2-592a674abde4",
           "speaker": "동료",
           "hangul": "그럼 베트남에서는 더 직접적으로 말하면 안 되나요?",
           "meaning": "Then should we not speak more directly in Vietnam?",
@@ -3823,6 +4026,7 @@ export const lessons: KoreanLesson[] =         [
           "text_en": "Then should we not speak more directly in Vietnam?"
         },
         {
+          cell_id: "68aa3585-a644-4832-9c8d-4f6694169b0b",
           "speaker": "실무자",
           "hangul": "직접성은 필요하지만, 관계를 해치지 않는 선에서 완곡하게 말하는 것이 좋습니다.",
           "meaning": "Directness is needed, but it is better to speak softly enough not to damage the relationship.",
@@ -3831,6 +4035,7 @@ export const lessons: KoreanLesson[] =         [
           "text_en": "Directness is needed, but it is better to speak softly enough not to damage the relationship."
         },
         {
+          cell_id: "ec7dc21a-389a-4938-84dc-f252aa4b9219",
           "speaker": "동료",
           "hangul": "체면과 효율을 함께 생각해야 하는군요.",
           "meaning": "So we need to think about both face and efficiency.",
@@ -3839,6 +4044,7 @@ export const lessons: KoreanLesson[] =         [
           "text_en": "So we need to think about both face and efficiency."
         },
         {
+          cell_id: "58c524de-662c-4ee0-8a2d-fbd3048391b6",
           "speaker": "실무자",
           "hangul": "맞습니다. 그 균형이 협상 성공률을 높여 줍니다.",
           "meaning": "Exactly. That balance raises the success rate of the negotiation.",
@@ -3872,22 +4078,27 @@ export const lessons: KoreanLesson[] =         [
       "intro_vi": "Bài này luyện cách xử lý tranh chấp nội bộ bằng ngôn ngữ chính thức, rõ ràng và không kích động cảm xúc.",
       "vocabulary": [
         {
+          cell_id: "c5c6cd45-2db2-403d-ade3-8d1d9ee46b02",
           "hangul": "중재 (仲裁)",
           "meaning": "trung gian hòa giải"
         },
         {
+          cell_id: "1fdd3856-e629-4790-b2e2-2a3efb1dea8e",
           "hangul": "사실관계",
           "meaning": "tình tiết sự việc"
         },
         {
+          cell_id: "1e34e8d6-2482-4bb2-86fc-c2e237435bf6",
           "hangul": "증빙 (證憑)",
           "meaning": "bằng chứng"
         },
         {
+          cell_id: "03c785ce-f866-4693-aa9d-01d5bd15d4b3",
           "hangul": "인사팀",
           "meaning": "phòng nhân sự"
         },
         {
+          cell_id: "3735c103-0ed3-4fe4-8469-f76b236c703d",
           "hangul": "재발 방지",
           "meaning": "ngăn tái diễn"
         }
@@ -3960,6 +4171,7 @@ export const lessons: KoreanLesson[] =         [
       ],
       "dialogue": [
         {
+          cell_id: "e2704762-7bab-4443-adb9-0b745a021630",
           "speaker": "직원",
           "hangul": "이 문제는 개인 감정이 아니라 절차 문제로 다루었으면 합니다.",
           "meaning": "I would like this issue to be handled as a procedural matter, not a personal one.",
@@ -3968,6 +4180,7 @@ export const lessons: KoreanLesson[] =         [
           "text_en": "I would like this issue to be handled as a procedural matter, not a personal one."
         },
         {
+          cell_id: "b3923fe0-11a1-4778-b9df-1b593e11775e",
           "speaker": "인사팀",
           "hangul": "알겠습니다. 우선 사실관계를 먼저 확인하겠습니다.",
           "meaning": "Understood. We will first confirm the facts.",
@@ -3976,6 +4189,7 @@ export const lessons: KoreanLesson[] =         [
           "text_en": "Understood. We will first confirm the facts."
         },
         {
+          cell_id: "b3e8122f-b3b0-4b7d-b79d-556af54eb6db",
           "speaker": "직원",
           "hangul": "증빙 자료는 이메일과 회의록으로 모두 남아 있습니다.",
           "meaning": "The supporting evidence remains in email and meeting minutes.",
@@ -3984,6 +4198,7 @@ export const lessons: KoreanLesson[] =         [
           "text_en": "The supporting evidence remains in email and meeting minutes."
         },
         {
+          cell_id: "0856d00b-3564-46e5-ad90-749aa8a67c05",
           "speaker": "인사팀",
           "hangul": "그럼 관련 부서와 함께 중재안을 검토하겠습니다.",
           "meaning": "Then we will review a mediation proposal with the relevant department.",
@@ -3992,6 +4207,7 @@ export const lessons: KoreanLesson[] =         [
           "text_en": "Then we will review a mediation proposal with the relevant department."
         },
         {
+          cell_id: "b735ac27-0cef-4d5b-a9dc-4e8365117acf",
           "speaker": "직원",
           "hangul": "재발 방지까지 포함해서 정리해 주시면 감사하겠습니다.",
           "meaning": "I would appreciate it if you could include recurrence prevention as well.",
@@ -4000,6 +4216,7 @@ export const lessons: KoreanLesson[] =         [
           "text_en": "I would appreciate it if you could include recurrence prevention as well."
         },
         {
+          cell_id: "0f29d4ed-a4e4-4b8b-b125-3fa2d43474cb",
           "speaker": "인사팀",
           "hangul": "네, 오늘 안에 정리해 드리겠습니다.",
           "meaning": "Yes, we will organize it within today.",
@@ -4033,22 +4250,27 @@ export const lessons: KoreanLesson[] =         [
       "intro_vi": "Bài này luyện cách rút khỏi đàm phán mà vẫn giữ quan hệ, đặc biệt khi bạn đã có phương án thay thế tốt hơn.",
       "vocabulary": [
         {
+          cell_id: "91b9e8fc-4dbf-47bb-9c27-519cebe08104",
           "hangul": "철수 (撤收)",
           "meaning": "rút lui"
         },
         {
+          cell_id: "b5423170-ae67-4ca5-b446-e82adbc88c2c",
           "hangul": "대안 (代案)",
           "meaning": "phương án thay thế"
         },
         {
+          cell_id: "6556f59d-dcf1-4794-bd15-c849745484b8",
           "hangul": "최종안",
           "meaning": "đề xuất cuối cùng"
         },
         {
+          cell_id: "c9764ab0-4a1c-468f-b855-6bfcf3794d2b",
           "hangul": "보류",
           "meaning": "tạm hoãn"
         },
         {
+          cell_id: "b67ddfbc-0ae4-408a-99f4-d2679ca4dbe9",
           "hangul": "우선순위",
           "meaning": "ưu tiên"
         }
@@ -4121,6 +4343,7 @@ export const lessons: KoreanLesson[] =         [
       ],
       "dialogue": [
         {
+          cell_id: "66f24d6b-96a7-477e-83df-3cbd013f58ec",
           "speaker": "상대방",
           "hangul": "이 조건이면 바로 계약하실 수 있습니까?",
           "meaning": "At these terms, can you sign the contract right away?",
@@ -4129,6 +4352,7 @@ export const lessons: KoreanLesson[] =         [
           "text_en": "At these terms, can you sign the contract right away?"
         },
         {
+          cell_id: "6670d2fe-6760-456c-afc5-3515981e15c1",
           "speaker": "협상자",
           "hangul": "감사하지만, 현재 우선순위와는 조금 맞지 않습니다.",
           "meaning": "Thank you, but it does not quite match our current priorities.",
@@ -4137,6 +4361,7 @@ export const lessons: KoreanLesson[] =         [
           "text_en": "Thank you, but it does not quite match our current priorities."
         },
         {
+          cell_id: "1ae85ec1-d4be-404f-ba8f-15ac2d9b6943",
           "speaker": "상대방",
           "hangul": "그럼 조건을 조금 더 바꾸면 가능하시겠습니까?",
           "meaning": "Then would it be possible if we change the terms a little more?",
@@ -4145,6 +4370,7 @@ export const lessons: KoreanLesson[] =         [
           "text_en": "Then would it be possible if we change the terms a little more?"
         },
         {
+          cell_id: "d04e16bb-2f0f-450d-8303-1db09c50ecd9",
           "speaker": "협상자",
           "hangul": "다른 대안이 있어서 무리하게 진행하지는 않으려 합니다.",
           "meaning": "Since we have another option, we do not want to proceed forcefully.",
@@ -4153,6 +4379,7 @@ export const lessons: KoreanLesson[] =         [
           "text_en": "Since we have another option, we do not want to proceed forcefully."
         },
         {
+          cell_id: "6da026e7-863a-4f88-b1b1-d06831723e34",
           "speaker": "상대방",
           "hangul": "알겠습니다. 그럼 다시 검토해 보겠습니다.",
           "meaning": "Understood. Then we will review it again.",
@@ -4161,6 +4388,7 @@ export const lessons: KoreanLesson[] =         [
           "text_en": "Understood. Then we will review it again."
         },
         {
+          cell_id: "259c37ad-6f52-497d-a357-fb97e129c686",
           "speaker": "협상자",
           "hangul": "감사합니다. 좋은 관계는 앞으로도 계속 이어가고 싶습니다.",
           "meaning": "Thank you. I would like to continue the good relationship going forward.",
@@ -4194,22 +4422,27 @@ export const lessons: KoreanLesson[] =         [
       "intro_vi": "Bài này luyện cách xử lý lời đề nghị quá thấp mà không làm đổ vỡ 정 và 체면 trong quan hệ làm ăn.",
       "vocabulary": [
         {
+          cell_id: "53d50fd6-e14c-47b2-803c-171ab6379757",
           "hangul": "저가",
           "meaning": "giá quá thấp"
         },
         {
+          cell_id: "b51c65a1-5863-4fb5-a9d2-becb8f185e7f",
           "hangul": "예산",
           "meaning": "ngân sách"
         },
         {
+          cell_id: "c296e164-5a26-492b-a993-696699995310",
           "hangul": "관계 유지",
           "meaning": "duy trì quan hệ"
         },
         {
+          cell_id: "e5657b42-7687-47c1-84fc-99b3e7549be7",
           "hangul": "체면 (體面)",
           "meaning": "thể diện"
         },
         {
+          cell_id: "dbf56b8d-e8b7-4a3b-8a67-d689b8202b7c",
           "hangul": "완곡하게",
           "meaning": "uyển chuyển"
         }
@@ -4282,6 +4515,7 @@ export const lessons: KoreanLesson[] =         [
       ],
       "dialogue": [
         {
+          cell_id: "a7d200c4-84b0-419a-9b9e-d12841a6e67a",
           "speaker": "상대방",
           "hangul": "이 정도 금액이면 바로 진행해 주실 수 있습니까?",
           "meaning": "Can you proceed right away at this amount?",
@@ -4290,6 +4524,7 @@ export const lessons: KoreanLesson[] =         [
           "text_en": "Can you proceed right away at this amount?"
         },
         {
+          cell_id: "9d287887-f7c0-44bf-8664-e2e2b014da7f",
           "speaker": "협상자",
           "hangul": "감사하지만, 제안 금액이 저희 예산과는 꽤 차이가 있습니다.",
           "meaning": "Thank you, but the proposed amount is quite far from our budget.",
@@ -4298,6 +4533,7 @@ export const lessons: KoreanLesson[] =         [
           "text_en": "Thank you, but the proposed amount is quite far from our budget."
         },
         {
+          cell_id: "faadd9bc-b5df-43ff-bb14-08ec0f02710f",
           "speaker": "상대방",
           "hangul": "그럼 어느 정도가 가능하시겠습니까?",
           "meaning": "Then what range would be possible?",
@@ -4306,6 +4542,7 @@ export const lessons: KoreanLesson[] =         [
           "text_en": "Then what range would be possible?"
         },
         {
+          cell_id: "11f3be01-37ef-493b-8b98-f2bb2a14a2ea",
           "speaker": "협상자",
           "hangul": "관계를 생각해서라도 서로 부담이 없는 수준으로 조정하면 좋겠습니다.",
           "meaning": "For the sake of the relationship, I think it would be good to adjust to a non-burdensome level for both sides.",
@@ -4314,6 +4551,7 @@ export const lessons: KoreanLesson[] =         [
           "text_en": "For the sake of the relationship, I think it would be good to adjust to a non-burdensome level for both sides."
         },
         {
+          cell_id: "7be68be2-2f68-4387-aa9a-206e58a69cae",
           "speaker": "상대방",
           "hangul": "알겠습니다. 다시 계산해 보겠습니다.",
           "meaning": "Understood. We will recalculate it.",
@@ -4322,6 +4560,7 @@ export const lessons: KoreanLesson[] =         [
           "text_en": "Understood. We will recalculate it."
         },
         {
+          cell_id: "261b86d3-ed5e-408b-8380-be09b5d304b1",
           "speaker": "협상자",
           "hangul": "감사합니다. 좋은 관계를 오래 이어가고 싶습니다.",
           "meaning": "Thank you. I want to keep the good relationship for a long time.",
@@ -4355,22 +4594,27 @@ export const lessons: KoreanLesson[] =         [
       "intro_vi": "Bài này luyện cách giữ bình tĩnh, đặt ranh giới và không để cuộc đàm phán bị kéo vào đối đầu cảm xúc.",
       "vocabulary": [
         {
+          cell_id: "cbe7c284-5a5d-4520-ae96-d3ee6a775b42",
           "hangul": "압박",
           "meaning": "áp lực"
         },
         {
+          cell_id: "e25ab896-f2cc-4495-a3f7-cd047614b861",
           "hangul": "경계선",
           "meaning": "ranh giới"
         },
         {
+          cell_id: "305fd606-be58-468e-aa48-d0a6a904341f",
           "hangul": "기록",
           "meaning": "ghi lại"
         },
         {
+          cell_id: "71e829c4-85f3-417e-98e0-b3d165fb5897",
           "hangul": "중단",
           "meaning": "tạm dừng"
         },
         {
+          cell_id: "da5285c8-1b7d-460d-ad59-cbe52926902b",
           "hangul": "정중하게",
           "meaning": "một cách lịch sự"
         }
@@ -4443,6 +4687,7 @@ export const lessons: KoreanLesson[] =         [
       ],
       "dialogue": [
         {
+          cell_id: "9bff72ba-d511-4756-9a85-abefc5c388ac",
           "speaker": "상대방",
           "hangul": "이 조건이 아니면 협의할 이유가 없습니다.",
           "meaning": "If it is not this condition, there is no reason to negotiate.",
@@ -4451,6 +4696,7 @@ export const lessons: KoreanLesson[] =         [
           "text_en": "If it is not this condition, there is no reason to negotiate."
         },
         {
+          cell_id: "016f5dda-e9cf-4249-b684-1e9e114009e0",
           "speaker": "협상자",
           "hangul": "압박하시는 의도는 이해하지만, 저희 기준은 분명합니다.",
           "meaning": "I understand the intention to pressure us, but our 기준 is clear.",
@@ -4459,6 +4705,7 @@ export const lessons: KoreanLesson[] =         [
           "text_en": "I understand the intention to pressure us, but our 기준 is clear."
         },
         {
+          cell_id: "d673b29f-ddaa-4f09-84ca-896c69c32e31",
           "speaker": "상대방",
           "hangul": "그럼 더 이상 얘기할 필요가 없겠군요.",
           "meaning": "Then there is no need to talk further, I suppose.",
@@ -4467,6 +4714,7 @@ export const lessons: KoreanLesson[] =         [
           "text_en": "Then there is no need to talk further, I suppose."
         },
         {
+          cell_id: "e8405175-0d7f-4a5d-b77a-a771a58e92e3",
           "speaker": "협상자",
           "hangul": "아닙니다. 사실만 정리해서 다시 보시면 선택지가 더 보일 수 있습니다.",
           "meaning": "Not at all. If we review the facts again, more options may become visible.",
@@ -4475,6 +4723,7 @@ export const lessons: KoreanLesson[] =         [
           "text_en": "Not at all. If we review the facts again, more options may become visible."
         },
         {
+          cell_id: "d4e6fc55-ea67-4c7d-97bc-5cddfb0356b0",
           "speaker": "상대방",
           "hangul": "좋습니다. 그럼 문서로 다시 주세요.",
           "meaning": "Fine. Then please send it again in writing.",
@@ -4483,6 +4732,7 @@ export const lessons: KoreanLesson[] =         [
           "text_en": "Fine. Then please send it again in writing."
         },
         {
+          cell_id: "633a64d7-989a-4c93-9531-c46c068b7768",
           "speaker": "협상자",
           "hangul": "네, 정리해서 오늘 안에 보내드리겠습니다.",
           "meaning": "Yes, I will organize it and send it within today.",
@@ -4516,42 +4766,52 @@ export const lessons: KoreanLesson[] =         [
       "intro_vi": "Bài này luyện đăng ký cao nhất của tiếng Hàn học thuật — 하십시오체 — trong tình huống bảo vệ luận án (논문 심사). Đặc trưng: câu kết 〜습니다/〜십니까, từ vựng 한자어 dày đặc, hedging cấp cao (〜라고 사료됩니다, 〜로 판단됩니다), tránh tuyệt đối từ Anh hóa và 해요체.",
       "vocabulary": [
         {
+          cell_id: "4bd0c320-118f-47d4-bfe7-ad13270bb76b",
           "hangul": "심사위원 (審査委員)",
           "meaning": "thành viên hội đồng thẩm định"
         },
         {
+          cell_id: "4e34a034-7c74-4e89-9c22-2a2847d1ca00",
           "hangul": "공방 (攻防)",
           "meaning": "tấn công – phòng thủ (Q&A)"
         },
         {
+          cell_id: "f7c2575b-f68e-4ba4-99cd-2a7cd94c6990",
           "hangul": "방어하다 (防禦)",
           "meaning": "bảo vệ (luận điểm)"
         },
         {
+          cell_id: "58313c34-b502-4514-a704-23ddfa7bda8e",
           "hangul": "논거 (論據)",
           "meaning": "luận cứ"
         },
         {
+          cell_id: "6957dedb-c4ca-48ae-9f0a-faedff3cc4fa",
           "hangul": "한계점 (限界點)",
           "meaning": "giới hạn nghiên cứu"
         },
         {
+          cell_id: "c1a94bc7-f18a-43ce-8da4-544cfe18cb04",
           "hangul": "후속 연구 (後續 硏究)",
           "meaning": "nghiên cứu tiếp theo"
         },
         {
+          cell_id: "e7488fb9-8f6d-4f2a-a048-98c8283b56f8",
           "hangul": "타당성 (妥當性)",
           "meaning": "tính chính đáng / hợp lệ"
         },
         {
+          cell_id: "34634fae-9a8e-444a-b172-a814f4473fcc",
           "hangul": "재고하다 (再考)",
           "meaning": "xem xét lại"
         },
         {
+          cell_id: "a1312d72-cf53-44e2-a9df-4820d1f957d2",
           "hangul": "지적해 주시다",
           "meaning": "chỉ ra (đối với người trên — kính ngữ)"
         },
         {
+          cell_id: "d748a805-1c0b-4bf2-92c5-7f81c0fda94c",
           "hangul": "보완하다 (補完)",
           "meaning": "bổ sung / hoàn thiện"
         }
@@ -4640,24 +4900,28 @@ export const lessons: KoreanLesson[] =         [
       ],
       "dialogue": [
         {
+          cell_id: "f816886c-8dc3-4a63-a1ef-12c920daa0ad",
           "speaker": "심사위원",
           "hangul": "표본의 대표성에 대해 다시 한번 설명해 주시겠습니까?",
           "meaning": "Could you explain once more the representativeness of the sample?",
           "text_vi": "Quý vị có thể giải thích lại một lần nữa về tính đại diện của mẫu được không ạ?"
         },
         {
+          cell_id: "5e2d76e8-9178-4481-90d9-214c66e4b1fb",
           "speaker": "발표자",
           "hangul": "예, 좋은 지적이십니다. 표본은 층화 무작위 추출 방식으로 구성하였습니다.",
           "meaning": "Yes, thank you for the point. The sample was constructed via stratified random sampling.",
           "text_vi": "Vâng, đó là một nhận xét xác đáng. Mẫu được cấu thành theo phương thức lấy mẫu ngẫu nhiên phân tầng."
         },
         {
+          cell_id: "ce422340-8527-4978-8177-dff9ee84ccba",
           "speaker": "심사위원",
           "hangul": "그 방식이 본 연구 맥락에서 충분히 타당하다고 보십니까?",
           "meaning": "Do you regard that method as sufficiently valid in the context of this study?",
           "text_vi": "Quý vị có cho rằng phương thức đó đủ giá trị trong bối cảnh của nghiên cứu này không ạ?"
         },
         {
+          cell_id: "231ef757-6d9c-4190-8111-337aed2e5774",
           "speaker": "발표자",
           "hangul": "선행 연구에서 동일 방식이 채택된 사례를 근거로 타당하다고 사료됩니다.",
           "meaning": "Based on prior cases that adopted the same method, it is considered valid.",
@@ -4825,42 +5089,52 @@ export const lessons: KoreanLesson[] =         [
       "intro_vi": "Bài này luyện cách viết 'response to reviewers' (심사평 답변서) cho tạp chí học thuật Hàn — hỗn hợp 〜다체 (response chính thức bằng văn) và 〜습니다 thể (khi người viết tự xưng). Trọng tâm: ba kỹ thuật — (1) chấp nhận đầy đủ, (2) chấp nhận một phần kèm chỉnh sửa, (3) bảo vệ giữ nguyên với lý lẽ. Tránh giọng phòng thủ; chỉ ra cụ thể trang/câu đã sửa.",
       "vocabulary": [
         {
+          cell_id: "b6703534-b453-40ba-8296-4712d548c4e6",
           "hangul": "심사평 (審査評)",
           "meaning": "ý kiến thẩm định (peer review)"
         },
         {
+          cell_id: "37414790-05ab-4766-8d5e-e0f1de040ea5",
           "hangul": "답변서 (答辯書)",
           "meaning": "thư trả lời"
         },
         {
+          cell_id: "f0de63f3-1ab4-41e2-83b3-c800b4045e5b",
           "hangul": "수정 사항 (修正 事項)",
           "meaning": "các điểm đã sửa"
         },
         {
+          cell_id: "6d2ed875-f886-4a05-9d2e-68f6a397f3d2",
           "hangul": "반영하다 (反映)",
           "meaning": "phản ánh / đưa vào"
         },
         {
+          cell_id: "d80d2075-8412-4623-8aa9-3438bd5769eb",
           "hangul": "수용하다 (受容)",
           "meaning": "chấp nhận / tiếp nhận"
         },
         {
+          cell_id: "39a13002-e902-4958-8289-524f0ff1307e",
           "hangul": "재고하다 (再考)",
           "meaning": "xem xét lại"
         },
         {
+          cell_id: "4572f457-1329-48a3-8f41-4df7a22198a8",
           "hangul": "반박하다 (反駁)",
           "meaning": "phản bác"
         },
         {
+          cell_id: "8602aa85-6439-4b1e-8b9d-242e26492e7c",
           "hangul": "유지하다 (維持)",
           "meaning": "giữ nguyên"
         },
         {
+          cell_id: "c33e64ff-036a-4ee8-be9c-7c727af33192",
           "hangul": "원고 (原稿)",
           "meaning": "bản thảo"
         },
         {
+          cell_id: "911f0714-456f-4aab-926e-f5485941d0f9",
           "hangul": "심사위원의 견해 (見解)",
           "meaning": "quan điểm của reviewer"
         }
@@ -4949,24 +5223,28 @@ export const lessons: KoreanLesson[] =         [
       ],
       "dialogue": [
         {
+          cell_id: "704c8289-ff04-46de-a18d-16fd0abca6e5",
           "speaker": "공동 저자",
           "hangul": "심사위원 2가 표본 편향을 지적했어요. 어떻게 답변하실래요?",
           "meaning": "Reviewer 2 raised the sampling bias. How will you respond?",
           "text_vi": "Phản biện viên thứ 2 đã chỉ ra sai lệch chọn mẫu. Anh định trả lời thế nào?"
         },
         {
+          cell_id: "7c9a7c59-492c-434d-9b38-03d2ff665f88",
           "speaker": "주저자",
           "hangul": "전면 수용하기로 했습니다. 부록에 표본 비교표를 추가하고, 6쪽 결론도 보완할 계획입니다.",
           "meaning": "I've decided to fully accept it. We'll add a sample comparison in the appendix and revise the conclusion on page 6.",
           "text_vi": "Tôi đã quyết định tiếp thu hoàn toàn. Tôi dự định bổ sung bảng so sánh mẫu vào phụ lục, và bổ sung thêm cho phần kết luận ở trang 6."
         },
         {
+          cell_id: "2d09dbfe-78d2-49dc-9b48-e0a1808171ba",
           "speaker": "공동 저자",
           "hangul": "심사위원 1이 이론 틀을 바꾸라고 했는데, 그건 좀 어렵잖아요?",
           "meaning": "Reviewer 1 asked to change the theoretical frame, but that's difficult, isn't it?",
           "text_vi": "Phản biện viên thứ 1 yêu cầu thay đổi khung lý thuyết, nhưng điều đó hơi khó phải không?"
         },
         {
+          cell_id: "9e4e6ba2-7d9b-4ba3-9e2f-7937a92d0bd7",
           "speaker": "주저자",
           "hangul": "그 부분은 일부만 수용하기로 하고, 사유를 답변서에 상술하겠습니다.",
           "meaning": "That part we'll accept only in part, and detail the rationale in the response letter.",
@@ -5134,42 +5412,52 @@ export const lessons: KoreanLesson[] =         [
       "intro_vi": "Bài này luyện vai trò 사회자 (chair) trong panel học thuật Hàn. Đăng ký: 하십시오체 trang trọng. Chức năng: mở phiên, giới thiệu diễn giả, điều phối thời gian, gọi câu hỏi, kết phiên. Đặc trưng: cụm cố định '〜시겠습니다 / 〜겠습니다' cho thông báo; '〜님' kèm chức danh; tránh trộn 해요체.",
       "vocabulary": [
         {
+          cell_id: "7571a84d-2afd-4a32-b488-e8aca2bdcd60",
           "hangul": "사회자 (司會者)",
           "meaning": "người điều phối / chair"
         },
         {
+          cell_id: "46a51eb5-9962-4664-83d5-0689b574e6d8",
           "hangul": "좌장 (座長)",
           "meaning": "chủ tọa"
         },
         {
+          cell_id: "339556fd-2183-4f66-8c67-b30108ade3ea",
           "hangul": "발표자 (發表者)",
           "meaning": "diễn giả"
         },
         {
+          cell_id: "cca473ea-9683-411e-b09e-ca4ad8853b91",
           "hangul": "토론자 (討論者)",
           "meaning": "người phản biện / discussant"
         },
         {
+          cell_id: "b81ca4c9-c379-4b04-b1a8-0d32a6b6f772",
           "hangul": "질의응답 (質疑應答)",
           "meaning": "phần hỏi đáp"
         },
         {
+          cell_id: "3c7f3959-714f-4e7c-b01e-749f46655757",
           "hangul": "시간 관리 (時間 管理)",
           "meaning": "quản lý thời gian"
         },
         {
+          cell_id: "58fd582b-668e-4b2f-a8bc-4475ada81b2e",
           "hangul": "마무리하다",
           "meaning": "kết thúc / tổng kết"
         },
         {
+          cell_id: "3cee49e3-c9da-47da-b572-10e489025fe6",
           "hangul": "발언권 (發言權)",
           "meaning": "quyền phát biểu"
         },
         {
+          cell_id: "575397d1-9011-4f84-b630-9d57c48251c7",
           "hangul": "정해진 시간",
           "meaning": "thời gian quy định"
         },
         {
+          cell_id: "e8cbb6b8-3041-4159-b6ce-f466d7f9dae4",
           "hangul": "의장 (議長)",
           "meaning": "chủ tọa (formal hơn)"
         }
@@ -5258,24 +5546,28 @@ export const lessons: KoreanLesson[] =         [
       ],
       "dialogue": [
         {
+          cell_id: "0740760c-599c-4360-81b4-fa1ec828972e",
           "speaker": "사회자",
           "hangul": "안녕하십니까. 오늘 세션 사회를 맡은 김민지입니다.",
           "meaning": "Good day. I am Kim Minji, chair of today's session.",
           "text_vi": "Xin kính chào quý vị. Tôi là Kim Minji, người điều phối phiên họp hôm nay."
         },
         {
+          cell_id: "7ee56629-8c3b-4485-adf5-1329e270d9b5",
           "speaker": "사회자",
           "hangul": "첫 번째 발표는 박지훈 교수님께서 '디지털 학습과 자율성'이라는 주제로 진행하시겠습니다.",
           "meaning": "The first presentation will be given by Prof. Park Jihoon on 'Digital Learning and Autonomy'.",
           "text_vi": "Bài trình bày đầu tiên sẽ do Giáo sư Park Jihoon thực hiện với chủ đề 'Học tập số và tính tự chủ'."
         },
         {
+          cell_id: "ae73eaa5-0102-4fcb-995b-56f2bd78221e",
           "speaker": "발표자",
           "hangul": "감사합니다. 안녕하십니까, 박지훈입니다.",
           "meaning": "Thank you. Good day, I am Park Jihoon.",
           "text_vi": "Xin cảm ơn. Kính chào quý vị, tôi là Park Jihoon."
         },
         {
+          cell_id: "e2425ca0-2564-45bc-8906-a1bdf64161e2",
           "speaker": "사회자",
           "hangul": "발표 시간은 15분, 질의응답은 5분으로 진행됩니다.",
           "meaning": "The talk will run 15 minutes, with 5 minutes for Q&A.",
@@ -5443,42 +5735,52 @@ export const lessons: KoreanLesson[] =         [
       "intro_vi": "Bài này luyện kỹ năng trích dẫn (인용) kèm phê bình (비판) công trình tiền bối — phân biệt 4 mức: ủng hộ (지지) / hòa giải (절충) / phê bình một phần (부분 비판) / phản bác toàn diện (전면 반박). Đăng ký: hỗn hợp 〜다체 (văn) và 〜습니다 thể (semi). Cụm trục: 〜에 따르면 (theo X), 〜이/가 지적한 바와 같이 (như X đã chỉ ra), 〜의 주장은 〜라는 점에서 한계가 있다 (luận điểm của X có giới hạn ở chỗ).",
       "vocabulary": [
         {
+          cell_id: "2806559d-a486-405f-bff3-c91b843c5870",
           "hangul": "선행 연구의 한계 (限界)",
           "meaning": "giới hạn của nghiên cứu tiền bối"
         },
         {
+          cell_id: "64a9da26-331a-4199-ae4c-04755768b5bf",
           "hangul": "지지하다 (支持)",
           "meaning": "ủng hộ"
         },
         {
+          cell_id: "8808fa7c-bab4-4fa6-9c07-7cf17181e0e6",
           "hangul": "절충하다 (折衷)",
           "meaning": "hòa giải / dung hòa"
         },
         {
+          cell_id: "ed1a2795-ae69-4c14-9522-fcd3f41f00b0",
           "hangul": "비판적으로 검토하다",
           "meaning": "xem xét có phê phán"
         },
         {
+          cell_id: "9f465cc1-5b8e-4a0a-a747-10047a5976bc",
           "hangul": "전면 반박",
           "meaning": "phản bác toàn diện"
         },
         {
+          cell_id: "ad2c7ce0-1930-4dc5-a463-dfa4a2016b87",
           "hangul": "맥락화하다 (脈絡)",
           "meaning": "đặt vào ngữ cảnh"
         },
         {
+          cell_id: "8b544453-b170-459f-a275-2974c2c41700",
           "hangul": "재해석 (再解釋)",
           "meaning": "diễn giải lại"
         },
         {
+          cell_id: "0ba7524c-b007-4c3a-ac5f-0f6487d364da",
           "hangul": "통념 (通念)",
           "meaning": "quan niệm thông thường"
         },
         {
+          cell_id: "af5c7d74-7a7f-4a99-9e15-f5d5ab3b5e35",
           "hangul": "보완 관점",
           "meaning": "góc nhìn bổ sung"
         },
         {
+          cell_id: "5d3f8155-1e70-4ce7-b376-3d14b0e3d33e",
           "hangul": "쟁점 (爭點)",
           "meaning": "vấn đề tranh cãi / điểm tranh luận"
         }
@@ -5567,24 +5869,28 @@ export const lessons: KoreanLesson[] =         [
       ],
       "dialogue": [
         {
+          cell_id: "3d4e469a-2cac-4d2c-8700-693d67e2b7b1",
           "speaker": "지도교수",
           "hangul": "Kim(2018)을 근거로만 인용하면 약합니다. 비판적 거리를 두세요.",
           "meaning": "Citing Kim (2018) only as ground is weak. Keep critical distance.",
           "text_vi": "Nếu chỉ trích dẫn Kim (2018) như một căn cứ thì còn yếu. Em hãy giữ khoảng cách phê phán."
         },
         {
+          cell_id: "7989f513-c333-4c11-b43a-9956b038cbf7",
           "speaker": "학생",
           "hangul": "그렇다면 'Kim(2018)이 지지하지만, 〜라는 점에서 한계가 있다'로 수정하는 것이 좋겠습니까?",
           "meaning": "Should I revise it to 'Kim (2018) supports this, but it has limits in the following respect'?",
           "text_vi": "Vậy thì em sửa thành 'Kim (2018) ủng hộ điều này, nhưng nó có hạn chế ở điểm là ~' thì có tốt hơn không ạ?"
         },
         {
+          cell_id: "7d587044-7fab-4e54-8e9f-186df2a8cf7c",
           "speaker": "지도교수",
           "hangul": "그게 훨씬 좋습니다. 그리고 그 한계를 본 연구가 어떻게 보완하는지 한 줄을 추가하세요.",
           "meaning": "Much better. And add one line on how this study addresses the limitation.",
           "text_vi": "Như vậy tốt hơn nhiều. Và hãy bổ sung một dòng về việc nghiên cứu này khắc phục hạn chế đó như thế nào."
         },
         {
+          cell_id: "c9008543-c297-457a-93e0-6674c34782f2",
           "speaker": "학생",
           "hangul": "예, 알겠습니다. 보완하여 다시 보여드리겠습니다.",
           "meaning": "Yes, understood. I'll revise and show you again.",
@@ -5746,42 +6052,52 @@ export const lessons: KoreanLesson[] =         [
       "intro_vi": "Bài này luyện kỹ thuật khó nhất trong văn hóa học thuật Hàn — bày tỏ bất đồng với 대가 (học giả lớn) hoặc 선배 학자 (tiền bối) mà KHÔNG mất mặt. Đăng ký: 하십시오체 cộng kính ngữ tối đa. Cấu trúc 3 lớp: (1) công nhận đóng góp, (2) đặt câu hỏi gợi mở thay vì khẳng định sai, (3) đề xuất góc bổ sung kèm khiêm cung. Cụm trục: '~ 입장에서 보면 다른 해석도 가능할 듯합니다', '제가 미처 이해하지 못한 부분이 있을지도 모르겠습니다만'.",
       "vocabulary": [
         {
+          cell_id: "81659995-0f04-44d2-85ec-72baff63c247",
           "hangul": "선배 학자 (先輩 學者)",
           "meaning": "học giả tiền bối"
         },
         {
+          cell_id: "9ecddbef-12dc-457c-acd6-7af3d3ff4755",
           "hangul": "대가 (大家)",
           "meaning": "học giả lớn / chuyên gia hàng đầu"
         },
         {
+          cell_id: "437068e4-77c8-467c-b731-4d1ec634cd12",
           "hangul": "이견 (異見)",
           "meaning": "ý kiến khác / bất đồng"
         },
         {
+          cell_id: "2679cdaf-0d9d-42bf-86f3-3ae5fcbc98a1",
           "hangul": "조심스럽게",
           "meaning": "thận trọng / dè dặt"
         },
         {
+          cell_id: "ceae0b81-8214-423d-9e3b-202d10eb5301",
           "hangul": "여쭈다",
           "meaning": "xin hỏi (kính ngữ với 윗사람)"
         },
         {
+          cell_id: "b2337516-8711-47d9-b410-c62aa94ddd51",
           "hangul": "다른 해석",
           "meaning": "diễn giải khác"
         },
         {
+          cell_id: "9283d684-4760-496c-bfb6-e32036a8bd52",
           "hangul": "보충 의견",
           "meaning": "ý kiến bổ sung"
         },
         {
+          cell_id: "38d9bd10-3eb8-41cf-8bb4-7e39a7feb82c",
           "hangul": "미처 이해하지 못하다",
           "meaning": "chưa hiểu hết được"
         },
         {
+          cell_id: "c945f847-ec95-47bc-8efa-6d6575c80c20",
           "hangul": "조심스러운 의문",
           "meaning": "câu hỏi thận trọng"
         },
         {
+          cell_id: "51e89482-d7c9-4061-8aee-69104fbdcbdc",
           "hangul": "관점의 차이 (觀點)",
           "meaning": "khác biệt về góc nhìn"
         }
@@ -5868,24 +6184,28 @@ export const lessons: KoreanLesson[] =         [
       ],
       "dialogue": [
         {
+          cell_id: "e9d1a081-8de2-4eb3-9766-a8bfc7f5da53",
           "speaker": "박사 과정생",
           "hangul": "교수님, 한 가지 여쭙고 싶은 점이 있습니다.",
           "meaning": "Professor, there is one point I should like to raise.",
           "text_vi": "Thưa giáo sư, có một điểm em muốn xin được hỏi ạ."
         },
         {
+          cell_id: "eabca63d-ff65-4f9c-b379-78d7a5353d65",
           "speaker": "교수",
           "hangul": "예, 말씀해 보세요.",
           "meaning": "Yes, please go ahead.",
           "text_vi": "Vâng, em cứ nói đi."
         },
         {
+          cell_id: "f0c74065-7c88-49ca-90ab-00fd2e7e84c7",
           "speaker": "박사 과정생",
           "hangul": "교수님께서 제시하신 모형에 전적으로 공감하지만, 자료의 비선형 패턴은 또 다른 해석을 시사할 수도 있을 듯합니다.",
           "meaning": "I fully concur with your model, yet the non-linear pattern in the data may suggest another interpretation.",
           "text_vi": "Em hoàn toàn đồng cảm với mô hình thầy đưa ra, nhưng dường như mẫu hình phi tuyến trong dữ liệu cũng có thể gợi ý một cách diễn giải khác ạ."
         },
         {
+          cell_id: "728dcc2e-f768-4658-b6ed-61c078743ddb",
           "speaker": "교수",
           "hangul": "흥미로운 지적입니다. 그 부분은 다음 미팅에서 함께 검토합시다.",
           "meaning": "That is an interesting point. Let us look at it together in the next meeting.",
@@ -6053,42 +6373,52 @@ export const lessons: KoreanLesson[] =         [
       "intro_vi": "Bài này luyện cấu trúc abstract (초록) chuẩn cho hội thảo Hàn — giới hạn 250-300 글자 (KHÔNG 단어). Đăng ký: 〜다 thể nghiêm ngặt; KHÔNG '~합니다' (đó là oral); KHÔNG '~한다' kết hợp '~할 것이다'. Cấu trúc 5 ô: 배경 (background) → 연구 문제 (gap) → 방법 (method) → 결과 (results) → 함의 (implications). Trục: '본 연구는 〜을/를 다룬다 / 〜을/를 검토한다 / 〜을/를 제시한다'.",
       "vocabulary": [
         {
+          cell_id: "9d468295-b53a-4209-a6e1-84eeddbb05b6",
           "hangul": "초록 (抄錄)",
           "meaning": "abstract"
         },
         {
+          cell_id: "e295c9f7-99a9-4696-a5b6-ee5de926ffb2",
           "hangul": "투고하다 (投稿)",
           "meaning": "nộp / gửi đăng"
         },
         {
+          cell_id: "4a454c52-9e35-4ff7-9ac4-ca9aa9558296",
           "hangul": "주제어 (主題語)",
           "meaning": "từ khóa"
         },
         {
+          cell_id: "033ec5d1-a106-4519-8dce-687615843cdc",
           "hangul": "연구 배경 (硏究 背景)",
           "meaning": "bối cảnh nghiên cứu"
         },
         {
+          cell_id: "e342c41d-c40a-45ff-aaba-33017c517ad0",
           "hangul": "연구 문제",
           "meaning": "câu hỏi nghiên cứu"
         },
         {
+          cell_id: "1ea30fe4-e8f7-4715-9bee-0acdd8ee0d3b",
           "hangul": "분석 방법 (分析 方法)",
           "meaning": "phương pháp phân tích"
         },
         {
+          cell_id: "6f2e3982-f46d-4f8a-beee-1db0f65b5e9e",
           "hangul": "주요 결과 (主要 結果)",
           "meaning": "kết quả chính"
         },
         {
+          cell_id: "3354068f-fa94-4a09-a17d-7ea94d83460d",
           "hangul": "함의 (含意)",
           "meaning": "hàm ý / hệ quả"
         },
         {
+          cell_id: "e09ff57c-4540-46d4-af39-2b6e4dbbe853",
           "hangul": "기여하다 (寄與)",
           "meaning": "đóng góp"
         },
         {
+          cell_id: "f2784186-20d4-4b0b-86a7-e586444d162c",
           "hangul": "글자 수 제한 (字數 制限)",
           "meaning": "giới hạn số chữ"
         }
@@ -6177,24 +6507,28 @@ export const lessons: KoreanLesson[] =         [
       ],
       "dialogue": [
         {
+          cell_id: "1ea8d736-6309-4848-b51d-4e2831dfe2f1",
           "speaker": "공동 저자",
           "hangul": "초록 글자 수가 320자입니다. 50자를 줄여야 합니다.",
           "meaning": "The abstract is 320 characters. We need to cut 50.",
           "text_vi": "Số ký tự của phần tóm tắt là 320. Chúng ta phải cắt bớt 50 ký tự."
         },
         {
+          cell_id: "5abdead1-b1db-40ec-9aac-bce23c9ddb00",
           "speaker": "주저자",
           "hangul": "배경 부분에서 두 문장을 압축해 보겠습니다.",
           "meaning": "Let me compress two sentences in the background.",
           "text_vi": "Để tôi thử nén lại hai câu ở phần bối cảnh."
         },
         {
+          cell_id: "fd023189-5e32-49a9-98b3-fe59e35bd26e",
           "speaker": "공동 저자",
           "hangul": "함의 부분도 한 문장으로 줄일 수 있을 듯합니다.",
           "meaning": "The implications part could also be reduced to one sentence.",
           "text_vi": "Có vẻ phần hàm ý cũng có thể rút gọn xuống còn một câu."
         },
         {
+          cell_id: "fc4b4b3e-f754-437d-9998-ce5421c7c17d",
           "speaker": "주저자",
           "hangul": "그러면 270자 안에 들어올 듯합니다.",
           "meaning": "Then it should fit within 270 characters.",
@@ -6380,42 +6714,52 @@ export const lessons: KoreanLesson[] =         [
       "intro_vi": "Bài này luyện viết 연구 계획서 (grant proposal) cho 한국연구재단 (NRF) — đề xuất tài trợ. Đăng ký: 〜다 thể trang trọng cho văn bản; 하십시오체 cho phần presentation tới hội đồng. Cấu trúc: 연구 필요성 → 연구 목적 → 추진 전략 → 기대 효과 → 예산 근거. Ngôn ngữ: bán-quan liêu (관료적 어휘) + học thuật. Trục: '본 연구는 〜의 시급성을 갖는다', '〜이/가 갖는 사회적 함의'.",
       "vocabulary": [
         {
+          cell_id: "6d4de4f8-6103-4479-924b-5c4854d477aa",
           "hangul": "연구 계획서 (硏究 計劃書)",
           "meaning": "đề xuất nghiên cứu"
         },
         {
+          cell_id: "fd550daa-dc5e-4ee1-9dc6-c77d9ace5732",
           "hangul": "한국연구재단 (NRF)",
           "meaning": "Quỹ Nghiên cứu Hàn Quốc"
         },
         {
+          cell_id: "70afc13b-0bee-4aa3-a1b5-d836182b6e94",
           "hangul": "연구 필요성 (必要性)",
           "meaning": "tính cấp thiết của nghiên cứu"
         },
         {
+          cell_id: "62daff79-7b92-4f38-b816-697d08f8df6c",
           "hangul": "추진 전략 (推進 戰略)",
           "meaning": "chiến lược triển khai"
         },
         {
+          cell_id: "f08e7af7-2b62-4f93-81ea-41f6b207c5df",
           "hangul": "기대 효과 (期待 效果)",
           "meaning": "hiệu quả kỳ vọng"
         },
         {
+          cell_id: "22c4b34a-ed78-40b7-a24d-1c3e40e27f28",
           "hangul": "예산 (豫算)",
           "meaning": "ngân sách"
         },
         {
+          cell_id: "8d670ed9-4589-415c-9db4-052a06f2e59c",
           "hangul": "사업비 (事業費)",
           "meaning": "kinh phí dự án"
         },
         {
+          cell_id: "e4a732de-2e25-4269-b1b6-d7f7b3bf09e1",
           "hangul": "단계별 추진 (段階別 推進)",
           "meaning": "triển khai theo giai đoạn"
         },
         {
+          cell_id: "be3b147d-fd27-4cfd-937a-80b1280cbe61",
           "hangul": "사회적 파급 효과",
           "meaning": "tác động lan tỏa xã hội"
         },
         {
+          cell_id: "55568741-791d-4257-b982-7f26a9dc7886",
           "hangul": "기존 연구와의 차별성",
           "meaning": "tính khác biệt so với nghiên cứu hiện hữu"
         }
@@ -6504,24 +6848,28 @@ export const lessons: KoreanLesson[] =         [
       ],
       "dialogue": [
         {
+          cell_id: "b2696b80-597e-4de5-ae4d-bf17b3bfb27f",
           "speaker": "공동 연구자",
           "hangul": "예산 항목에서 인건비 비율이 50%를 넘는데, NRF 가이드라인 어긋나지 않을까요?",
           "meaning": "Personnel exceeds 50% of the budget — won't it conflict with NRF guidelines?",
           "text_vi": "Trong các hạng mục ngân sách, tỷ lệ chi phí nhân công vượt quá 50%, liệu có vi phạm hướng dẫn của NRF không ạ?"
         },
         {
+          cell_id: "680c219d-f344-4484-8d33-8c828cf10122",
           "speaker": "주연구자",
           "hangul": "맞습니다. 가이드라인이 50%까지인데 우리 비율은 53%입니다. 박사 후 연구원 1명을 자료 수집비로 옮기겠습니다.",
           "meaning": "Right. The guideline caps at 50%, ours is 53%. I'll move one post-doc to data collection.",
           "text_vi": "Đúng vậy. Hướng dẫn cho phép đến 50% mà tỷ lệ của chúng ta là 53%. Tôi sẽ chuyển một nghiên cứu viên sau tiến sĩ sang khoản chi phí thu thập dữ liệu."
         },
         {
+          cell_id: "9074c674-8983-4471-aa3d-a852838e26cc",
           "speaker": "공동 연구자",
           "hangul": "기대 효과 부분도 사회적 함의를 좀 더 강조해야 할 것 같습니다.",
           "meaning": "The expected impact section should emphasise social implications more.",
           "text_vi": "Có vẻ phần hiệu quả kỳ vọng cũng cần nhấn mạnh hơn nữa về hàm ý xã hội."
         },
         {
+          cell_id: "b47f9840-b8aa-4385-8927-e96810666448",
           "speaker": "주연구자",
           "hangul": "동의합니다. 정책 적용 시나리오 한 단락을 추가하겠습니다.",
           "meaning": "Agreed. I'll add a paragraph on policy application scenarios.",
@@ -6695,42 +7043,52 @@ export const lessons: KoreanLesson[] =         [
       "intro_vi": "Bài này luyện đăng ký '해요체' (informal-polite, 〜아요/어요 thể) — chuẩn của lab meeting và seminar nội bộ giữa giáo sư hướng dẫn + students + post-docs. Đặc trưng: thân mật nhưng vẫn lịch sự; có thể trộn '〜죠' '〜네요' nhưng KHÔNG '〜야'; cụm 'X 씨' cho 박사 과정생; xưng nhau bằng tên + 씨 hoặc chức danh + 님 tùy quan hệ. Khác hẳn 하십시오체 của defense.",
       "vocabulary": [
         {
+          cell_id: "039ac202-f15f-46c7-b5bb-d73fc4cf2a93",
           "hangul": "랩 미팅 (lab meeting)",
           "meaning": "họp lab hàng tuần"
         },
         {
+          cell_id: "8a61af49-e912-4914-9735-fcd83b7ea7a8",
           "hangul": "세미나",
           "meaning": "seminar"
         },
         {
+          cell_id: "ed88f164-f4f4-4196-a78c-4a900ae76414",
           "hangul": "발표 순서 (順序)",
           "meaning": "thứ tự trình bày"
         },
         {
+          cell_id: "6fa20d26-97f3-4e90-b017-26ec77e407eb",
           "hangul": "리딩 그룹",
           "meaning": "reading group"
         },
         {
+          cell_id: "92473ad2-8c71-41b2-b61a-4523a1ee9286",
           "hangul": "지도 학생",
           "meaning": "học sinh được hướng dẫn"
         },
         {
+          cell_id: "35327c77-1a43-493a-8e8f-0137aea37e30",
           "hangul": "데이터 점검 (點檢)",
           "meaning": "kiểm tra dữ liệu"
         },
         {
+          cell_id: "58d43038-5e06-43e6-b5cf-bf60c18f7285",
           "hangul": "다음 주까지",
           "meaning": "đến tuần sau"
         },
         {
+          cell_id: "f9e1a989-c36a-43d1-96b0-81f40efaa267",
           "hangul": "초안 (草案)",
           "meaning": "bản nháp"
         },
         {
+          cell_id: "92728a79-0300-41f1-8e63-dcb81751ba99",
           "hangul": "공유하다 (共有)",
           "meaning": "chia sẻ"
         },
         {
+          cell_id: "df841f15-3ebb-42f7-8071-f30e56a0953b",
           "hangul": "도움이 필요하면",
           "meaning": "nếu cần hỗ trợ"
         }
@@ -6817,24 +7175,28 @@ export const lessons: KoreanLesson[] =         [
       ],
       "dialogue": [
         {
+          cell_id: "ea9dc073-da53-4edc-af9c-1ef33046c77f",
           "speaker": "지도교수 (랩 미팅 시작)",
           "hangul": "다들 모였네요. 시작할까요?",
           "meaning": "Everyone's here. Shall we begin?",
           "text_vi": "Mọi người tụ họp đông đủ rồi nhỉ. Chúng ta bắt đầu nhé?"
         },
         {
+          cell_id: "616d7aa3-ae9d-4194-a8cb-1099f404ecb2",
           "speaker": "박사 과정생",
           "hangul": "예, 시작하시면 좋겠어요. 오늘 분석 결과 보고 드릴게요.",
           "meaning": "Yes, please begin. I'll report the analysis results today.",
           "text_vi": "Vâng, thầy bắt đầu thì tốt ạ. Hôm nay em sẽ báo cáo kết quả phân tích ạ."
         },
         {
+          cell_id: "f42288de-9642-4990-87dc-4a86f16d0545",
           "speaker": "지도교수",
           "hangul": "지영 씨, 오늘 발표 시간은 20분이에요. 충분하죠?",
           "meaning": "Jiyoung-ssi, you have 20 minutes today. Enough?",
           "text_vi": "Jiyoung này, thời gian trình bày hôm nay của em là 20 phút. Đủ chứ?"
         },
         {
+          cell_id: "3a395dc9-365a-481e-9d2f-749fd999d3cb",
           "speaker": "박사 과정생",
           "hangul": "네, 충분합니다. 질문은 발표 끝나고 받을게요.",
           "meaning": "Yes, enough. I'll take questions after the talk.",
@@ -7019,42 +7381,52 @@ export const lessons: KoreanLesson[] =         [
       "intro_vi": "Bài này luyện kỹ năng giải thích nghiên cứu cho công chúng — phỏng vấn báo, podcast, radio, op-ed cho 한겨레/조선일보. Đăng ký: 〜습니다 thể (formal cho TV/báo) hoặc 해요체 (cho podcast). Trục: chuyển từ 학술 용어 sang 일상어 mà KHÔNG mất chính xác. Cụm trục: '쉽게 말씀드리면 〜', '비유하자면 〜', '핵심은 〜에 있습니다'.",
       "vocabulary": [
         {
+          cell_id: "6476f4ff-a6db-48b0-a509-bcba90fad24f",
           "hangul": "대중 강연 (大衆 講演)",
           "meaning": "diễn thuyết đại chúng"
         },
         {
+          cell_id: "81621fb0-89a9-478a-ad0a-819cec649c93",
           "hangul": "쉽게 풀어 설명하다",
           "meaning": "giải thích dễ hiểu"
         },
         {
+          cell_id: "d7d937fb-4e68-4df7-9aa0-e5c26018d928",
           "hangul": "비유하다 (比喩)",
           "meaning": "ví dụ / so sánh"
         },
         {
+          cell_id: "1b0d1bd4-27ea-4b66-a524-9cc8e6855d2a",
           "hangul": "오해를 풀다",
           "meaning": "giải tỏa hiểu lầm"
         },
         {
+          cell_id: "f712b88b-ef0d-416a-9606-1cccc651cf93",
           "hangul": "핵심 메시지 (核心)",
           "meaning": "thông điệp cốt lõi"
         },
         {
+          cell_id: "0c3f666d-4e00-465d-ae81-692d5191e187",
           "hangul": "전문 용어 → 일상어",
           "meaning": "thuật ngữ → ngôn ngữ thường ngày"
         },
         {
+          cell_id: "8342c912-5c7d-44d0-950b-3b73427e336a",
           "hangul": "통계 해석",
           "meaning": "giải thích thống kê"
         },
         {
+          cell_id: "ba2fa5a5-f572-4047-9155-9d1bbf5502f4",
           "hangul": "기자와의 인터뷰",
           "meaning": "phỏng vấn với phóng viên"
         },
         {
+          cell_id: "61eb8e70-d278-42ed-b868-9c8ef794cf52",
           "hangul": "사회적 함의를 짚다",
           "meaning": "chỉ ra hàm ý xã hội"
         },
         {
+          cell_id: "5cda1c12-9241-460c-af89-cfb5a2857061",
           "hangul": "지나치게 단순화하다",
           "meaning": "đơn giản hóa quá mức"
         }
@@ -7143,24 +7515,28 @@ export const lessons: KoreanLesson[] =         [
       ],
       "dialogue": [
         {
+          cell_id: "9f883a45-a9e9-4070-90ff-a8d863d9b83a",
           "speaker": "기자",
           "hangul": "교수님, 일반 독자에게 이 연구를 한 줄로 설명해 주실 수 있을까요?",
           "meaning": "Professor, could you explain this research in one sentence for general readers?",
           "text_vi": "Thưa giáo sư, ông có thể giải thích nghiên cứu này trong một câu cho độc giả phổ thông được không ạ?"
         },
         {
+          cell_id: "b763a98c-012e-4260-a754-87da35747017",
           "speaker": "교수",
           "hangul": "예, 한 줄로 말씀드리면 — 학습자에게 자유를 주는 것만으로는 부족하고, 동기와 함께 줘야 효과가 있다는 겁니다.",
           "meaning": "Yes — in one line, simply giving learners freedom isn't enough; it works only when paired with motivation.",
           "text_vi": "Vâng, nói gọn trong một câu thì — chỉ trao cho người học sự tự do thôi là chưa đủ, phải trao kèm cả động lực thì mới có hiệu quả."
         },
         {
+          cell_id: "b7b699d6-77af-4ec7-bd2f-a7b700e762aa",
           "speaker": "기자",
           "hangul": "그러면 학교에서는 무엇을 바꿔야 할까요?",
           "meaning": "Then what should schools change?",
           "text_vi": "Vậy thì ở trường học cần phải thay đổi điều gì ạ?"
         },
         {
+          cell_id: "6cf46167-3fa7-4bbf-9988-10fd9e818eaa",
           "speaker": "교수",
           "hangul": "자유 시간을 단순히 늘리기보다, 그 시간을 의미 있게 설계하는 것이 핵심입니다.",
           "meaning": "Rather than simply expanding free time, the key is designing it meaningfully.",
@@ -7352,42 +7728,52 @@ export const lessons: KoreanLesson[] =         [
       "intro_vi": "Bài này luyện kỹ năng giữ bình tĩnh và bảo vệ phương pháp luận khi bị 심사위원 hoặc 토론자 truy vấn gay gắt. Đăng ký: 하십시오체 (kiểm soát cao). Cấu trúc 4 bước: (1) công nhận quan điểm phản biện, (2) định lại câu hỏi (reframe), (3) đưa lý lẽ bằng evidence, (4) đề xuất bổ sung trong 후속 연구. Tránh phản ứng cảm xúc; sử dụng pause + cụm khung 'OO 위원님께서 지적하신 점은 〜라는 측면에서 매우 중요합니다'.",
       "vocabulary": [
         {
+          cell_id: "2f2a097d-930b-4e40-b4e8-3f668c427a7d",
           "hangul": "공격적 질문 (攻擊的)",
           "meaning": "câu hỏi tấn công"
         },
         {
+          cell_id: "a4a56a00-ea4b-45a6-b379-ab0719b0f702",
           "hangul": "방법론적 한계 (方法論)",
           "meaning": "giới hạn phương pháp luận"
         },
         {
+          cell_id: "c7d94cdf-c896-49bc-a5fc-01312c3c524b",
           "hangul": "차분하게 응대하다",
           "meaning": "đáp lại bình tĩnh"
         },
         {
+          cell_id: "70b31f58-b865-4c11-bbab-58a63c90a1cd",
           "hangul": "재구성하다 (再構成)",
           "meaning": "tái cấu trúc / định lại"
         },
         {
+          cell_id: "92f1f5c3-1c05-47e2-a21f-45c5164e9392",
           "hangul": "근거를 제시하다",
           "meaning": "đưa căn cứ"
         },
         {
+          cell_id: "050855ba-efb5-42f4-9043-2352bef22eb8",
           "hangul": "후속 연구 (後續 硏究)",
           "meaning": "nghiên cứu tiếp theo"
         },
         {
+          cell_id: "cac30baa-ea57-4f15-9143-0a219df479ff",
           "hangul": "감정적 대응",
           "meaning": "phản ứng cảm xúc"
         },
         {
+          cell_id: "372ab4af-410c-416d-87db-ce64584ce89b",
           "hangul": "잠시 숨을 고르다",
           "meaning": "tạm thở để bình ổn"
         },
         {
+          cell_id: "1333f725-1e36-4e03-8319-78d2b9d3920f",
           "hangul": "재해석의 여지 (再解釋)",
           "meaning": "không gian diễn giải lại"
         },
         {
+          cell_id: "a62ab834-edef-454b-986c-503f4f346c51",
           "hangul": "방어적 자세를 버리다",
           "meaning": "bỏ tư thế phòng thủ"
         }
@@ -7476,24 +7862,28 @@ export const lessons: KoreanLesson[] =         [
       ],
       "dialogue": [
         {
+          cell_id: "a0e138ad-c114-4d06-b836-0974516ecf3f",
           "speaker": "심사위원",
           "hangul": "솔직히 이 분석은 결론을 끌어내기에 자료가 부족하지 않습니까?",
           "meaning": "Frankly — isn't the data insufficient to draw this conclusion?",
           "text_vi": "Nói thẳng thì — chẳng phải dữ liệu còn thiếu để rút ra kết luận này hay sao?"
         },
         {
+          cell_id: "588cdce5-38c7-4e45-ad34-b9a6ae70e601",
           "speaker": "발표자",
           "hangul": "위원님께서 지적하신 점은 본 연구의 한계와 직결되는 매우 중요한 부분입니다.",
           "meaning": "The point you raise is tied to the limitation of this study, and is genuinely important.",
           "text_vi": "Điểm mà thầy chỉ ra là một phần rất quan trọng, liên quan trực tiếp đến hạn chế của nghiên cứu này."
         },
         {
+          cell_id: "f5db8ff2-438c-4129-b047-b22d5a02663b",
           "speaker": "발표자",
           "hangul": "다만 자료의 양보다는 분석의 정밀도로 결론의 견고함을 확보하였다고 사료됩니다.",
           "meaning": "However, the robustness was secured through analytical precision rather than sample size, it is considered.",
           "text_vi": "Tuy nhiên, chúng tôi cho rằng độ vững chắc của kết luận đã được bảo đảm bằng độ chính xác của phân tích chứ không phải bằng khối lượng dữ liệu."
         },
         {
+          cell_id: "a1d9b943-e8ec-4daa-acad-fd5731a69e73",
           "speaker": "심사위원",
           "hangul": "그 정밀도라는 것이 구체적으로 무엇입니까?",
           "meaning": "What does that 'precision' refer to specifically?",
@@ -7667,42 +8057,52 @@ export const lessons: KoreanLesson[] =         [
       "intro_vi": "Bài này luyện đăng ký 하십시오체 cho họp báo chính thức (기자회견) — hình thức Hàn rất nghiêm. Cấu trúc 4 ô: 인사 → 자기소개 → 회견 목적 → 진행 안내. Mỗi câu kết bằng 〜습니다 / 〜겠습니다. Cụm trục: '안녕하십니까. 〜의 〜입니다', '오늘 이 자리는 〜에 관해 말씀드리고자 마련되었습니다'. Cấm trộn 해요체 dù chỉ một câu — sẽ là tin nóng trong 24h.",
       "vocabulary": [
         {
+          cell_id: "feb075b2-85f4-4047-ab42-68060430e241",
           "hangul": "기자회견 (記者會見)",
           "meaning": "họp báo (n.m. — gi-ja-hoe-gyeon)"
         },
         {
+          cell_id: "d4ef29c6-fc5a-4ba3-835a-95d6e7419cd5",
           "hangul": "회견장 (會見場)",
           "meaning": "phòng họp báo (n.m. — hoe-gyeon-jang)"
         },
         {
+          cell_id: "bf89a58a-7d4b-4ff3-8f8a-981b4b3546f5",
           "hangul": "사전 안내 (事前 案內)",
           "meaning": "thông báo trước (n.m. — sa-jeon an-nae)"
         },
         {
+          cell_id: "66579059-8d47-4a0f-a55b-6aadd01efcfc",
           "hangul": "진행 순서",
           "meaning": "thứ tự tiến hành (n.m. — jin-haeng sun-seo)"
         },
         {
+          cell_id: "3ebcc3bf-4f8f-4daf-a3f2-5959a1058770",
           "hangul": "마련되다",
           "meaning": "được sắp xếp / chuẩn bị (v. passive — ma-ryeon-doe-da)"
         },
         {
+          cell_id: "877d6d99-b2da-4fc9-a627-7638e8451a71",
           "hangul": "발표 후 질의응답",
           "meaning": "hỏi đáp sau công bố (n.m. — bal-pyo hu jil-ui-eung-dap)"
         },
         {
+          cell_id: "f5987f84-0386-4883-8010-682e7a887a17",
           "hangul": "공식 입장 (公式 立場)",
           "meaning": "lập trường chính thức (n.m. — gong-sik ip-jang)"
         },
         {
+          cell_id: "985495a8-59df-4c84-8bd8-ce92ab9a2c35",
           "hangul": "사전 공지 (事前 公知)",
           "meaning": "thông báo công khai trước (n.m. — sa-jeon gong-ji)"
         },
         {
+          cell_id: "7d382a7b-ea99-47be-b244-62f92eb82468",
           "hangul": "협조 부탁드립니다",
           "meaning": "kính mong hợp tác (formal request — hyeop-jo bu-tak-deu-rim-ni-da)"
         },
         {
+          cell_id: "b980d974-157e-45f9-b551-c14f2592cc35",
           "hangul": "이상으로",
           "meaning": "đến đây / với điều này (transitional — i-sang-eu-ro)"
         }
@@ -7791,24 +8191,28 @@ export const lessons: KoreanLesson[] =         [
       ],
       "dialogue": [
         {
+          cell_id: "648048b6-3256-4afe-b309-21e08974eddd",
           "speaker": "사회자",
           "hangul": "지금부터 한국교육개발원 기자회견을 시작하겠습니다.",
           "meaning": "We shall now begin the press briefing of the Korea Educational Development Institute.",
           "text_vi": "Từ bây giờ chúng tôi xin bắt đầu buổi họp báo của Viện Phát triển Giáo dục Hàn Quốc."
         },
         {
+          cell_id: "9abe2059-70d6-4511-9495-3ca48cdd683c",
           "speaker": "사회자",
           "hangul": "먼저 본원 대외협력실장께서 회견 목적과 진행 순서를 안내해 드리겠습니다.",
           "meaning": "First, the Director of External Affairs will outline the purpose and order of proceedings.",
           "text_vi": "Trước hết, Trưởng phòng Đối ngoại của Viện sẽ giới thiệu mục đích buổi họp và trình tự tiến hành."
         },
         {
+          cell_id: "eb3128b3-c7d3-4eae-a994-739646a0a96c",
           "speaker": "발표자",
           "hangul": "안녕하십니까. 본원 대외협력실장 김민지입니다.",
           "meaning": "Good day. I am Kim Minji, Director of External Affairs.",
           "text_vi": "Xin kính chào quý vị. Tôi là Kim Minji, Trưởng phòng Đối ngoại của Viện."
         },
         {
+          cell_id: "eecd518b-7cab-4bc7-be41-6e5e81b90815",
           "speaker": "발표자",
           "hangul": "협조 부탁드리며, 본격적인 발표를 시작하겠습니다.",
           "meaning": "Thank you for your cooperation. Let me now begin the main briefing.",
@@ -7976,42 +8380,52 @@ export const lessons: KoreanLesson[] =         [
       "intro_vi": "Bài này luyện 보도자료 — văn bản tổ chức gửi báo chí. Đăng ký: 〜다체 nghiêm ngặt (〜한다 / 〜이다 / 〜되었다). Cấu trúc 5 ô: 헤드라인 (lead) → 부제목 → 본문 lead 단락 → 세부 사항 → 연락처. Trục: '〜에 따르면', '〜은/는 〜이라고 밝혔다'. Yêu cầu cốt: tin tức quan trọng nhất phải ở câu đầu (lead 1 dòng); 5W1H trong đoạn 1; quote chính thức ở đoạn 2.",
       "vocabulary": [
         {
+          cell_id: "ffca3d23-e4a9-4d32-b886-fc1e04168f9a",
           "hangul": "보도자료 (報道資料)",
           "meaning": "thông cáo báo chí (n.m. — bo-do-ja-ryo)"
         },
         {
+          cell_id: "5e3c6937-286d-4337-b65a-423d67f00b15",
           "hangul": "헤드라인",
           "meaning": "headline / tiêu đề chính (n.m. — he-deu-ra-in)"
         },
         {
+          cell_id: "fe774722-fa31-4225-83b5-267f55bdaa11",
           "hangul": "부제목 (副題目)",
           "meaning": "tiêu đề phụ (n.m. — bu-je-mok)"
         },
         {
+          cell_id: "7f1c7b9c-8685-40a9-a51a-2b500fd1a85b",
           "hangul": "본문 (本文)",
           "meaning": "nội dung chính (n.m. — bon-mun)"
         },
         {
+          cell_id: "065c3771-59a9-47b2-85aa-89ab363fb30f",
           "hangul": "공동 발표 (共同 發表)",
           "meaning": "công bố chung (n.m. — gong-dong bal-pyo)"
         },
         {
+          cell_id: "f750bb92-d927-4adb-b2fa-95ea2198849a",
           "hangul": "출입처 (出入處)",
           "meaning": "press pool / báo đăng ký (n.m. — chul-ip-cheo)"
         },
         {
+          cell_id: "b8a3e6ba-c86b-4aa1-9525-b16fe1c86506",
           "hangul": "엠바고 (embargo)",
           "meaning": "lệnh cấm đăng trước (loanword — em-ba-go)"
         },
         {
+          cell_id: "748b1220-f8af-420c-b60b-33580b9caad8",
           "hangul": "공보팀",
           "meaning": "đội PR / báo chí (n.m. — gong-bo-tim)"
         },
         {
+          cell_id: "354302ff-9821-4c4e-b5de-5d064dcdabf8",
           "hangul": "별첨 (別添)",
           "meaning": "tài liệu kèm theo (n.m. — byeol-cheom)"
         },
         {
+          cell_id: "50066f12-9ce0-4702-a926-330d93610baf",
           "hangul": "문의 사항",
           "meaning": "thắc mắc liên hệ (n.m. — mun-ui sa-hang)"
         }
@@ -8096,24 +8510,28 @@ export const lessons: KoreanLesson[] =         [
       ],
       "dialogue": [
         {
+          cell_id: "f96dc746-1d2a-4397-9f5e-f64b5a03337d",
           "speaker": "공보팀장",
           "hangul": "헤드라인이 길어요. 한 줄로 줄이고 부제목에 세부 정보 넣읍시다.",
           "meaning": "The headline is too long. Cut to one line and put details in the subhead.",
           "text_vi": "Tiêu đề dài quá. Hãy rút gọn thành một dòng và đưa thông tin chi tiết vào tiêu đề phụ."
         },
         {
+          cell_id: "13ecb5ed-ab75-4a4b-bbbc-95c350cdfa3c",
           "speaker": "주무관",
           "hangul": "예. '학습 격차 보완 3개년 시범 사업, 5,000명 대상으로 추진'으로 해 보겠습니다.",
           "meaning": "Yes — let me try 'Three-year Pilot Programme for Learning-Gap Remediation, Targeting 5,000 Learners'.",
           "text_vi": "Vâng. Tôi sẽ thử đặt là 'Dự án thí điểm 3 năm bù đắp khoảng cách học tập, triển khai cho 5.000 người'."
         },
         {
+          cell_id: "d5f0238f-7657-4042-9015-186d32ac9c38",
           "speaker": "공보팀장",
           "hangul": "좋습니다. 그리고 엠바고 시간 — 4월 1일 오전 10시 — 헤더에 명시하세요.",
           "meaning": "Good. And the embargo — 10 AM on 1 April — note it explicitly in the header.",
           "text_vi": "Tốt lắm. Và thời gian cấm đăng — 10 giờ sáng ngày 1 tháng 4 — hãy ghi rõ ở phần đầu đề."
         },
         {
+          cell_id: "5c59fdb6-3412-4d38-a3cd-b7350953abca",
           "speaker": "주무관",
           "hangul": "알겠습니다. 보도자료 상단에 '4월 1일 오전 10시 엠바고'로 표기하겠습니다.",
           "meaning": "Understood. I will mark '10 AM on 1 April Embargo' at the top of the release.",
@@ -8287,42 +8705,52 @@ export const lessons: KoreanLesson[] =         [
       "intro_vi": "Bài này luyện 기고문 / 칼럼 — bài viết quan điểm cá nhân (chuyên gia) đăng trên báo lớn (한겨레, 경향, 조선, 중앙). Đăng ký: 〜다체 soutenu — pha trộn 한자어 dày đặc với câu ngắn xen lẫn câu dài. Cấu trúc 5 phần: (1) hook — ví dụ cụ thể hoặc số liệu sốc, (2) 진단 — chẩn đoán vấn đề, (3) 분석 — lý lẽ trung tâm, (4) 제안 — đề xuất chính sách, (5) 결언 — kết luận có sức nặng. 1500–2500 글자. Trục: '〜야 한다', '〜이/가 필요한 시점이다'.",
       "vocabulary": [
         {
+          cell_id: "253e6fd4-b434-42dd-9f45-b375d1a9831e",
           "hangul": "기고문 (寄稿文)",
           "meaning": "bài viết đóng góp / op-ed (n.m. — gi-go-mun)"
         },
         {
+          cell_id: "b9657d63-3f49-44b9-9921-873ee28e9375",
           "hangul": "칼럼",
           "meaning": "column / op-ed thường kỳ (loanword — kal-leom)"
         },
         {
+          cell_id: "a624e283-d927-4a22-a081-b2b5e1d74e90",
           "hangul": "사설 (社說)",
           "meaning": "xã luận (báo viết) (n.m. — sa-seol)"
         },
         {
+          cell_id: "d513ae20-466d-458b-a57b-da36127e396b",
           "hangul": "기고하다 (寄稿)",
           "meaning": "đóng góp bài viết (v. — gi-go-ha-da)"
         },
         {
+          cell_id: "4034f03f-aa2f-494e-827f-c393f0ad6906",
           "hangul": "필자 (筆者)",
           "meaning": "tác giả (n.m. — pil-ja)"
         },
         {
+          cell_id: "92fc4874-987c-4a1e-bc6e-5ecb46674a2e",
           "hangul": "정책 제안 (政策 提案)",
           "meaning": "đề xuất chính sách (n.m. — jeong-chaek je-an)"
         },
         {
+          cell_id: "c1cd6323-def3-4137-a42a-9c0db665e521",
           "hangul": "공론장 (公論場)",
           "meaning": "diễn đàn công luận (n.m. — gong-non-jang)"
         },
         {
+          cell_id: "5c5d957f-6e0a-4605-915e-c97062db2a5f",
           "hangul": "근본적 처방",
           "meaning": "biện pháp cơ bản / fundamental (n.m. — geun-bon-jeok cheo-bang)"
         },
         {
+          cell_id: "757d8038-0d77-4fff-beee-1f559658218e",
           "hangul": "지면 (紙面)",
           "meaning": "trang báo (n.m. — ji-myeon)"
         },
         {
+          cell_id: "e7367a19-873c-4757-bd62-189f5f765228",
           "hangul": "분량 제한 (分量 制限)",
           "meaning": "giới hạn dung lượng (n.m. — bun-nyang je-han)"
         }
@@ -8411,24 +8839,28 @@ export const lessons: KoreanLesson[] =         [
       ],
       "dialogue": [
         {
+          cell_id: "b9f3493a-dd82-4772-b431-5b496ff4b4df",
           "speaker": "한겨레 칼럼 담당 데스크",
           "hangul": "1,800자 칼럼 한 편 부탁드립니다. 학습 격차 주제로요. 마감 사흘 후입니다.",
           "meaning": "Could you write an 1,800-character column on the learning-gap theme? Deadline three days.",
           "text_vi": "Nhờ anh viết giúp một bài bình luận 1.800 chữ. Với chủ đề khoảng cách học tập. Hạn chót là ba ngày sau."
         },
         {
+          cell_id: "efb896a2-de67-4dd9-ae99-a1758966358a",
           "speaker": "필자 (대학교수)",
           "hangul": "예, 가능합니다. 헤드라인은 어느 정도 자유롭게 잡아도 되겠습니까?",
           "meaning": "Yes, doable. May I have leeway on the headline?",
           "text_vi": "Vâng, được ạ. Tiêu đề thì tôi được tự do đặt đến mức nào ạ?"
         },
         {
+          cell_id: "3f452908-733b-4c5a-b846-aa10562eb6ce",
           "speaker": "데스크",
           "hangul": "예. 다만 너무 길거나 학술적 용어 위주는 피해 주십시오.",
           "meaning": "Yes — but please avoid overly long or jargon-heavy headlines.",
           "text_vi": "Vâng. Tuy nhiên xin tránh tiêu đề quá dài hoặc thiên về thuật ngữ học thuật."
         },
         {
+          cell_id: "f20626b8-c22b-4e18-892b-69d883885f2d",
           "speaker": "필자",
           "hangul": "알겠습니다. 토요일 오전까지 보내드리겠습니다.",
           "meaning": "Understood. I'll send by Saturday morning.",
@@ -8596,42 +9028,52 @@ export const lessons: KoreanLesson[] =         [
       "intro_vi": "Bài này luyện đăng ký 해요체 cho podcast và 시사 토크쇼 — tone informal-warm khác hẳn 기자회견. Đặc trưng: 〜아요/어요 / 〜죠 / 〜네요; xen lẫn '아, 그게요…' (chuyển ý); cho phép tự đùa nhẹ. KHÔNG '〜야' (반말). Cấu trúc dialogue: 호스트 mở chào → guest tự giới thiệu warm → host hỏi câu mở → guest dẫn vào nội dung. Trục: '아, 좋은 질문이세요', '말씀드리자면 〜이에요', '그렇죠'.",
       "vocabulary": [
         {
+          cell_id: "5dbdb54d-70c5-4178-a506-6aba18f3506e",
           "hangul": "팟캐스트",
           "meaning": "podcast (loanword — pat-kae-seu-teu)"
         },
         {
+          cell_id: "4f8e43e7-be2b-4a3b-85b9-a388d6caa327",
           "hangul": "토크쇼",
           "meaning": "talk show (loanword — to-keu-syo)"
         },
         {
+          cell_id: "f63f9932-9c88-40c0-9aa7-c6986810a8f2",
           "hangul": "진행자",
           "meaning": "host / người dẫn (n.m. — jin-haeng-ja)"
         },
         {
+          cell_id: "8ffc1a61-defc-4c60-8f3d-53bd7e106f98",
           "hangul": "출연자 (出演者)",
           "meaning": "khách mời / người xuất hiện (n.m. — chu-ryeon-ja)"
         },
         {
+          cell_id: "05e0337f-94eb-4ffe-8431-2f2e807bd01e",
           "hangul": "방송 분량",
           "meaning": "thời lượng phát sóng (n.m. — bang-song bun-nyang)"
         },
         {
+          cell_id: "68d9c952-f1c9-4124-b198-1fbac9f310df",
           "hangul": "녹음하다 (錄音)",
           "meaning": "thu âm (v. — no-geum-ha-da)"
         },
         {
+          cell_id: "4d1f8131-7e33-4184-a124-ed2e447d08c5",
           "hangul": "편집되다 (編輯)",
           "meaning": "được biên tập (v. passive — pyeon-jip-doe-da)"
         },
         {
+          cell_id: "0e38c758-ad36-44f5-bf15-47aae0aea3aa",
           "hangul": "청취자 (聽取者)",
           "meaning": "thính giả (n.m. — cheong-chwi-ja)"
         },
         {
+          cell_id: "7375b41a-715e-4691-b2cf-eeeb565d5e31",
           "hangul": "방청객 (傍聽客)",
           "meaning": "khán giả tại chỗ (n.m. — bang-cheong-gaek)"
         },
         {
+          cell_id: "7bdf0a66-1a04-440a-946f-efd77e3d6e92",
           "hangul": "라이브 방송",
           "meaning": "phát sóng trực tiếp (loanword — la-i-beu bang-song)"
         }
@@ -8720,24 +9162,28 @@ export const lessons: KoreanLesson[] =         [
       ],
       "dialogue": [
         {
+          cell_id: "09a61766-1cae-45b3-a0e1-3af731b3e2a1",
           "speaker": "진행자",
           "hangul": "박사님, 학습 격차 문제 — 해결할 수 있을까요? 솔직히 어려워 보이는데요.",
           "meaning": "Doctor — the learning gap, can we really solve it? Honestly, it looks hard.",
           "text_vi": "Thưa tiến sĩ, vấn đề khoảng cách học tập — liệu có giải quyết được không ạ? Nói thật thì trông có vẻ khó."
         },
         {
+          cell_id: "087e3752-4e6c-4f28-8fa1-01c3a934d01a",
           "speaker": "박사",
           "hangul": "어렵죠. 그런데 '시간 늘리기'에서 '시간 의미 있게 채우기'로 관점만 바꿔도 절반은 풀려요.",
           "meaning": "It's hard, yes. But shifting from 'expand time' to 'fill time meaningfully' resolves half of it.",
           "text_vi": "Khó chứ. Nhưng chỉ cần đổi góc nhìn từ 'tăng thời gian' sang 'lấp đầy thời gian một cách có ý nghĩa' thì đã giải được một nửa."
         },
         {
+          cell_id: "a885e66d-fb95-4720-aa62-d09776dd88ac",
           "speaker": "진행자",
           "hangul": "오, 그게 핵심이군요. 청취자분들 잘 이해하셨을 것 같아요.",
           "meaning": "Oh, that's the heart of it. I think listeners got that.",
           "text_vi": "Ồ, đó chính là điểm cốt lõi. Tôi nghĩ quý thính giả đã hiểu rõ điều đó."
         },
         {
+          cell_id: "fb70b9c7-cc8e-4db5-a948-fb8195852d79",
           "speaker": "박사",
           "hangul": "감사합니다. 더 풀어 드리고 싶지만 시간이 짧네요!",
           "meaning": "Thanks. I'd love to elaborate, but time's short!",
@@ -8923,42 +9369,52 @@ export const lessons: KoreanLesson[] =         [
       "intro_vi": "Bài này luyện đăng ký 하십시오체 cho phỏng vấn live trên TV news (KBS 뉴스9, MBC 뉴스데스크, JTBC 뉴스룸). Đặc trưng: 앵커 hỏi câu xen lẫn 〜습니까 / 〜십니까; guest đáp 〜습니다 / 〜겠습니다 nghiêm. Khác podcast: KHÔNG đùa, KHÔNG '아 그게요', KHÔNG 〜네요. Câu phải ngắn (30-50 글자), trả lời 60-90 giây tối đa cho mỗi câu hỏi. Trục: '말씀드리자면 〜입니다', '간단히 말씀드리면 〜입니다'.",
       "vocabulary": [
         {
+          cell_id: "a54633bf-ac00-44fb-833a-0527616fc85f",
           "hangul": "앵커 (anchor)",
           "meaning": "phát thanh viên / anchor (loanword — aeng-keo)"
         },
         {
+          cell_id: "867382a1-0b15-4165-9b83-f0a2563e06d2",
           "hangul": "스튜디오 출연",
           "meaning": "lên hình studio (n.m. — seu-tyu-di-o chu-ryeon)"
         },
         {
+          cell_id: "d0ba4aa2-c453-498d-80f8-8fb93d182505",
           "hangul": "생방송 (生放送)",
           "meaning": "phát sóng trực tiếp (n.m. — saeng-bang-song)"
         },
         {
+          cell_id: "4a6583fb-dd8c-472e-acd1-532a3edea3a4",
           "hangul": "패키지 인터뷰",
           "meaning": "interview pre-recorded edited (loanword — pae-ki-ji)"
         },
         {
+          cell_id: "8e9aca83-0ed0-464f-8c82-8294becfa7e1",
           "hangul": "원격 연결",
           "meaning": "kết nối từ xa (n.m. — won-gyeok yeon-gyeol)"
         },
         {
+          cell_id: "4bd3f78b-dde9-41fd-be62-d4b204132771",
           "hangul": "톱뉴스 (top news)",
           "meaning": "tin chính của bản tin (loanword — top-nyu-seu)"
         },
         {
+          cell_id: "9d7098c0-f846-410d-807a-3316267cb9b8",
           "hangul": "사실관계 (事實關係)",
           "meaning": "sự thật và mối liên hệ (n.m. — sa-sil-gwan-gye)"
         },
         {
+          cell_id: "fc2d63ea-d904-4eae-b80c-6f7b9a84f6e3",
           "hangul": "공식 입장",
           "meaning": "lập trường chính thức (n.m. — gong-sik ip-jang)"
         },
         {
+          cell_id: "557fd1f8-e9bd-45ec-a5bf-b562088ab153",
           "hangul": "현장 중계 (現場 中繼)",
           "meaning": "tường thuật hiện trường (n.m. — hyeon-jang jung-gye)"
         },
         {
+          cell_id: "561d3e0e-381c-45f3-9482-d7317798b9fb",
           "hangul": "방송 시간 관리",
           "meaning": "quản lý thời gian phát sóng (n.m. — bang-song si-gan gwan-li)"
         }
@@ -9045,24 +9501,28 @@ export const lessons: KoreanLesson[] =         [
       ],
       "dialogue": [
         {
+          cell_id: "0efd4c33-ed3c-4636-b355-21be2a12250f",
           "speaker": "앵커",
           "hangul": "오늘 KEDI 김민지 박사님 모셨습니다. 박사님, 안녕하십니까.",
           "meaning": "Tonight Dr. Kim Minji of KEDI joins us. Doctor, good evening.",
           "text_vi": "Tối nay chúng tôi có sự hiện diện của Tiến sĩ Kim Minji thuộc KEDI. Thưa tiến sĩ, xin chào ông."
         },
         {
+          cell_id: "d5059a7e-8eca-4f3f-b972-9a03c13143d3",
           "speaker": "박사",
           "hangul": "안녕하십니까. 불러 주셔서 감사합니다.",
           "meaning": "Good evening. Thank you for having me.",
           "text_vi": "Xin chào. Cảm ơn quý vị đã mời tôi."
         },
         {
+          cell_id: "379c3a57-5089-476e-a352-229066432753",
           "speaker": "앵커",
           "hangul": "박사님, 이번 보고서의 핵심을 30초 안에 정리해 주실 수 있겠습니까?",
           "meaning": "Doctor, could you summarise the report's core in 30 seconds?",
           "text_vi": "Thưa tiến sĩ, ông có thể tóm tắt cốt lõi của báo cáo lần này trong vòng 30 giây được không ạ?"
         },
         {
+          cell_id: "cca57d99-52c4-4d33-8a08-fa5e9bc40c8a",
           "speaker": "박사",
           "hangul": "예. 학습 격차는 시간 부족이 아닌 동기 부족에서 비롯되며, 정책은 양이 아닌 질에 집중해야 합니다.",
           "meaning": "Yes. The learning gap stems not from time but from motivation; policy should focus on quality, not quantity.",
@@ -9230,42 +9690,52 @@ export const lessons: KoreanLesson[] =         [
       "intro_vi": "Bài này luyện một trong các thể loại nghi lễ công khai nghiêm trọng nhất của Hàn — 사과 기자회견. Đăng ký: 하십시오체 + 謙讓語 (khiêm nhường tối đa). Cấu trúc cố định 5 ô: (1) thừa nhận sự việc (인정), (2) bow 90 độ + lời xin lỗi (사과), (3) trách nhiệm cá nhân/tổ chức (책임), (4) biện pháp khắc phục cụ thể (재발 방지 대책), (5) bow lần hai. Câu mở chuẩn: '진심으로 사과드립니다' / '머리 숙여 사과드립니다'. Một câu sai = headline 24h cấp quốc gia.",
       "vocabulary": [
         {
+          cell_id: "234ba9c6-6f6e-46cf-aa49-639d1285c6ce",
           "hangul": "공식 사과 (公式 謝過)",
           "meaning": "xin lỗi chính thức (n.m. — gong-sik sa-gwa)"
         },
         {
+          cell_id: "7981c05c-794b-430e-a292-f626472209ec",
           "hangul": "사과문 (謝過文)",
           "meaning": "văn bản xin lỗi (n.m. — sa-gwa-mun)"
         },
         {
+          cell_id: "5681fca2-a2c4-4c82-8739-2dad534ef4e1",
           "hangul": "고개를 숙이다",
           "meaning": "cúi đầu (idiom-physical — go-gae-reul suk-i-da)"
         },
         {
+          cell_id: "e918f039-d19e-4187-8423-fc0f589e5dc0",
           "hangul": "머리 숙여 사과드리다",
           "meaning": "cúi đầu xin lỗi (formal — meo-ri suk-yeo)"
         },
         {
+          cell_id: "f48cc179-40d6-4fb3-91fa-2d3195537fb1",
           "hangul": "전적인 책임 (全的 責任)",
           "meaning": "trách nhiệm hoàn toàn (n.m. — jeon-jeo-gin chae-gim)"
         },
         {
+          cell_id: "d725c61f-3c95-44c4-a9cc-8867d0f83c50",
           "hangul": "재발 방지 대책 (再發 防止)",
           "meaning": "biện pháp ngăn tái phát (n.m. — jae-bal bang-ji)"
         },
         {
+          cell_id: "06b1c19b-48a9-4a08-8ac8-df9e88eec41f",
           "hangul": "심려를 끼쳐 드리다",
           "meaning": "khiến quý vị lo lắng (humble — sim-ryeo)"
         },
         {
+          cell_id: "383d62a2-1cee-4525-8e89-eac57f80e91c",
           "hangul": "송구스럽다",
           "meaning": "rất hổ thẹn (formal-emotional — song-gu-seu-reop-da)"
         },
         {
+          cell_id: "903a570c-2b7e-42db-b5ac-7f7bb5babe08",
           "hangul": "변명의 여지가 없다",
           "meaning": "không có chỗ biện minh (idiom — byeon-myeong-ui yeo-ji)"
         },
         {
+          cell_id: "6e5288d0-3237-41a0-8f13-170363057604",
           "hangul": "다시 한번 사과드리다",
           "meaning": "một lần nữa xin lỗi (closing repeat — da-si han-beon)"
         }
@@ -9354,24 +9824,28 @@ export const lessons: KoreanLesson[] =         [
       ],
       "dialogue": [
         {
+          cell_id: "d5acdcd2-194c-4d07-b204-a810854ace28",
           "speaker": "원장 (단상에서)",
           "hangul": "안녕하십니까. 한국교육개발원 원장 박지훈입니다.",
           "meaning": "Good day. I am Park Jihoon, President of KEDI.",
           "text_vi": "Xin kính chào quý vị. Tôi là Park Jihoon, Viện trưởng Viện Phát triển Giáo dục Hàn Quốc."
         },
         {
+          cell_id: "f8f98ec9-a99c-4e38-911f-bd10e12f7923",
           "speaker": "원장",
           "hangul": "먼저, 이번 일로 심려를 끼쳐 드린 점, 머리 숙여 사과드립니다.",
           "meaning": "First, for the concern this matter has caused, I bow my head in apology.",
           "text_vi": "Trước hết, về việc đã gây lo lắng cho quý vị qua sự việc lần này, tôi xin cúi đầu tạ lỗi."
         },
         {
+          cell_id: "93116baf-1555-4812-b142-ba73c3432a99",
           "speaker": "원장 (90도 인사 후 다시 일어남)",
           "hangul": "본 사안에 대한 모든 책임은 본원에 있습니다.",
           "meaning": "All responsibility for this matter rests with the Institute.",
           "text_vi": "Toàn bộ trách nhiệm về sự việc này thuộc về Viện chúng tôi."
         },
         {
+          cell_id: "7ddaef85-3544-4f65-9ee8-0123e3427c71",
           "speaker": "원장",
           "hangul": "다시 한번 진심으로 사과드립니다.",
           "meaning": "Once again, I sincerely apologise.",
@@ -9539,42 +10013,52 @@ export const lessons: KoreanLesson[] =         [
       "intro_vi": "백브리핑 là họp gặp giữa 출입처 phóng viên và 대변인/관계자, KHÔNG để trích dẫn trực tiếp. Đăng ký: 하십시오체 nhưng giảm rườm; cho phép giải thích nội bộ. Quy ước cố định: 'on the record' (cho trích nguyên) / 'on background' (chỉ trích nội dung không nêu nguồn) / 'off the record' (KHÔNG được dùng). Không được vi phạm — vi phạm = 출입처 đóng cửa với báo đó. Trục: '오늘 자리는 백브리핑임을 사전에 안내드립니다', '이 부분은 인용하지 말아 주시기 바랍니다'.",
       "vocabulary": [
         {
+          cell_id: "ea5acf16-4047-439d-ab72-0e01690e111a",
           "hangul": "백브리핑 (back briefing)",
           "meaning": "họp báo nền không trích (loanword — baek-beu-ri-ping)"
         },
         {
+          cell_id: "86c898b0-e0a8-49e5-b3fd-0c193991ffe1",
           "hangul": "오프 더 레코드 (off-the-record)",
           "meaning": "không công bố (loanword — o-peu-deo-le-ko-deu)"
         },
         {
+          cell_id: "0bb1e57e-6e4a-41ae-a77e-212c80cc8ca2",
           "hangul": "온 더 레코드 (on-the-record)",
           "meaning": "có thể trích (loanword — on-deo-le-ko-deu)"
         },
         {
+          cell_id: "630d90f7-722f-4a56-959e-fb4d047c228f",
           "hangul": "익명 처리 (匿名 處理)",
           "meaning": "xử lý ẩn danh (n.m. — ig-myeong cheo-ri)"
         },
         {
+          cell_id: "8266db21-a55f-4bbc-8592-6549c916df95",
           "hangul": "관계자 (關係者)",
           "meaning": "người liên quan / nguồn (n.m. — gwan-gye-ja)"
         },
         {
+          cell_id: "6ac682b6-3678-4966-a9b5-2572ad8e7c86",
           "hangul": "당국자 (當局者)",
           "meaning": "quan chức (đề cập ẩn danh) (n.m. — dang-guk-ja)"
         },
         {
+          cell_id: "c0f5efc4-9d3a-4fc8-91e8-1d10fe60de6a",
           "hangul": "정부 소식통",
           "meaning": "nguồn tin chính phủ (n.m. — jeong-bu so-sik-tong)"
         },
         {
+          cell_id: "500c290a-ea78-4e7a-94bc-4806a416b573",
           "hangul": "맥락을 이해하는 것이 중요하다",
           "meaning": "hiểu bối cảnh là quan trọng (idiom — maeng-na-geul ihae)"
         },
         {
+          cell_id: "6f0110fb-fa56-4426-9846-d26b1894368b",
           "hangul": "공식 발표 전 (公式 發表 前)",
           "meaning": "trước khi công bố chính thức (n.m. — gong-sik bal-pyo jeon)"
         },
         {
+          cell_id: "60cc214a-5ec5-478e-84cc-3c6d8eee58ec",
           "hangul": "엠바고 깨다",
           "meaning": "phá embargo (idiom — em-ba-go kkae-da)"
         }
@@ -9663,24 +10147,28 @@ export const lessons: KoreanLesson[] =         [
       ],
       "dialogue": [
         {
+          cell_id: "f269cb75-feae-4307-9355-770d42ce5357",
           "speaker": "대변인",
           "hangul": "오늘 자리는 백브리핑입니다. 인용은 '관계자' 익명으로 부탁드립니다.",
           "meaning": "Today's meeting is a background briefing. Please attribute as 'a source', anonymously.",
           "text_vi": "Buổi gặp hôm nay là họp báo nền. Xin quý vị trích dẫn ẩn danh dưới danh nghĩa 'người có liên quan'."
         },
         {
+          cell_id: "3ebc7c34-7d6a-48df-9d1f-4d08c706f08e",
           "speaker": "기자",
           "hangul": "예, 알겠습니다. 데이터 부분에 대해 좀 더 풀어 주실 수 있겠습니까?",
           "meaning": "Understood. Could you elaborate on the data portion?",
           "text_vi": "Vâng, tôi hiểu rồi. Ông có thể giải thích thêm một chút về phần dữ liệu được không ạ?"
         },
         {
+          cell_id: "f147d8d7-3489-436f-b2ad-d0be64edce44",
           "speaker": "대변인",
           "hangul": "예. 이 부분은 공식 발표 전이라 맥락만 이해해 주시면 됩니다.",
           "meaning": "Yes. As this is pre-announcement, just grasp the context.",
           "text_vi": "Vâng. Phần này là trước khi công bố chính thức nên quý vị chỉ cần nắm bối cảnh là được."
         },
         {
+          cell_id: "20d03923-fe78-4ff9-8cf2-7c21da923632",
           "speaker": "기자",
           "hangul": "감사합니다. 엠바고는 언제까지입니까?",
           "meaning": "Thank you. Until when does the embargo apply?",
@@ -9860,42 +10348,52 @@ export const lessons: KoreanLesson[] =         [
       "intro_vi": "Bài này luyện kỹ năng cao nhất: trả lời câu hỏi 송곳 (mũi dùi) — gay gắt, công khai, dưới ánh đèn TV. Đăng ký: 하십시오체 nghiêm + sang số controlled (giảm hedge khi bị truy vấn cứng). Cấu trúc 4 bước: (1) thừa nhận quan điểm phóng viên (인정), (2) tách yếu tố giả định (구분), (3) đưa fact + evidence (사실), (4) đề xuất bước tiếp theo (다음 단계). KHÔNG phản ứng cảm xúc; KHÔNG '잘 모르겠습니다'; KHÔNG cãi tay đôi. Quy ước Hàn: 1-2 round phản biện gay gắt OK, 3 round = 사회자 can thiệp.",
       "vocabulary": [
         {
+          cell_id: "a3e74061-2875-40c2-ad31-321e14013f75",
           "hangul": "송곳 질문",
           "meaning": "câu hỏi mũi dùi / gay gắt (n.m. — song-got jil-mun)"
         },
         {
+          cell_id: "c85d79d9-f100-486c-9b94-198db2763aa8",
           "hangul": "공세적 (攻勢的)",
           "meaning": "tính tấn công (adj. — gong-se-jeok)"
         },
         {
+          cell_id: "f50cc1e8-e7d9-45ef-bbdb-cc94089876ab",
           "hangul": "대응하다 (對應)",
           "meaning": "đáp lại / xử lý (v. — dae-eung-ha-da)"
         },
         {
+          cell_id: "464fd6cd-c24c-4247-a634-8c1e819a4c69",
           "hangul": "감정적 대응",
           "meaning": "phản ứng cảm xúc (n.m. — gam-jeong-jeok)"
         },
         {
+          cell_id: "eda920eb-3552-40a0-8786-14e09e935a73",
           "hangul": "차분히 응대하다",
           "meaning": "đáp lại bình tĩnh (v. — cha-bun-hi)"
         },
         {
+          cell_id: "a4e6233e-8ea3-4c7e-a0a3-1c60365b4e96",
           "hangul": "전제를 구분하다",
           "meaning": "phân tách giả định (v. — jeon-je-reul gu-bun)"
         },
         {
+          cell_id: "d6691a82-aff4-456f-8204-5d0149980b5f",
           "hangul": "정확한 사실관계",
           "meaning": "sự thật chính xác (n.m. — jeong-hwak-han)"
         },
         {
+          cell_id: "12676e39-ef4e-479c-802a-7792cd284e24",
           "hangul": "오해를 풀다",
           "meaning": "giải tỏa hiểu lầm (v. — o-hae-reul pul-da)"
         },
         {
+          cell_id: "7e031773-ab56-4e12-92fe-ee74aa6b694d",
           "hangul": "의도적 왜곡 (歪曲)",
           "meaning": "bóp méo cố ý (n.m. — ui-do-jeok wae-gok)"
         },
         {
+          cell_id: "75c7be72-2e9e-4420-a280-af2612b2c9fe",
           "hangul": "추가로 답변드리겠습니다",
           "meaning": "tôi sẽ trả lời bổ sung (formal — chu-ga-ro)"
         }
@@ -9984,24 +10482,28 @@ export const lessons: KoreanLesson[] =         [
       ],
       "dialogue": [
         {
+          cell_id: "4ad4b0f5-3269-406a-9346-55066fe140cd",
           "speaker": "기자 (강한 톤)",
           "hangul": "박사님, 이 자료가 조작되었다는 의혹이 나오고 있는데 어떻게 해명하시겠습니까?",
           "meaning": "Doctor — there are suspicions the data has been manipulated. How do you account for this?",
           "text_vi": "Thưa tiến sĩ, đang có nghi ngờ rằng dữ liệu này đã bị thao túng, ông sẽ giải trình thế nào ạ?"
         },
         {
+          cell_id: "eacad92a-ebdf-4a0c-bc02-abf62212a454",
           "speaker": "박사 (1초 pause)",
           "hangul": "기자님께서 지적하신 부분은 매우 중요한 우려라고 받아들이고 있습니다.",
           "meaning": "I take the journalist's concern as a significant one.",
           "text_vi": "Tôi đang tiếp nhận điểm mà phóng viên chỉ ra như một mối quan ngại rất quan trọng."
         },
         {
+          cell_id: "55c8ac33-e3f5-4bbb-aa62-55109421444d",
           "speaker": "박사",
           "hangul": "다만, 질문에 포함된 '조작' 전제는 사실관계와 다릅니다. 본 자료는 측정 시점이 다르게 기록된 부분이 있어, 의도적 왜곡이 아닌 측정 차이임을 본원이 확인하였습니다.",
           "meaning": "However, the premise of 'manipulation' in the question differs from the facts. The data show measurement-timing differences, not intentional distortion — verified by the Institute.",
           "text_vi": "Tuy nhiên, tiền đề 'thao túng' bao hàm trong câu hỏi khác với thực tế sự việc. Bộ dữ liệu này có phần được ghi nhận ở các thời điểm đo lường khác nhau, và Viện chúng tôi đã xác nhận rằng đó là sự khác biệt về đo lường chứ không phải sự bóp méo có chủ ý."
         },
         {
+          cell_id: "54ca1295-499d-448b-81af-654aba25c3e3",
           "speaker": "박사",
           "hangul": "추가 자료를 정리하여 회견 종료 후 별도로 전달드리겠습니다.",
           "meaning": "I will compile further materials and deliver them after the briefing.",
@@ -10169,42 +10671,52 @@ export const lessons: KoreanLesson[] =         [
       "intro_vi": "Bài này luyện vai 대변인 (spokesperson) — người phát ngôn của tổ chức, gặp 출입처 hằng tuần. Đăng ký: 하십시오체 nhưng cho phép giảm chính thức trong dialogue qua lại. Khác 원장 (CEO) ở chỗ: 대변인 KHÔNG quyết định nội dung, chỉ truyền đạt. Vì thế phải có '제가 본원의 입장을 전달드리겠습니다' framing. Câu trả lời '노 코멘트' (no comment) cũng có nghệ thuật — KHÔNG dùng tùy tiện. Trục: '본원의 공식 입장은 〜입니다', '아직 결정된 바 없습니다'.",
       "vocabulary": [
         {
+          cell_id: "031fba37-7c98-4a4d-918e-46413d0da42e",
           "hangul": "대변인 (代辯人)",
           "meaning": "người phát ngôn (n.m. — dae-byeo-nin)"
         },
         {
+          cell_id: "db67ebc1-f96b-4161-abc3-dd0e48e2032c",
           "hangul": "공식 입장",
           "meaning": "lập trường chính thức (n.m. — gong-sik ip-jang)"
         },
         {
+          cell_id: "c094200a-a441-4aa4-9e03-e38ac7167fd9",
           "hangul": "입장을 전달하다",
           "meaning": "truyền đạt lập trường (v. — ip-jang-eul jeon-dal)"
         },
         {
+          cell_id: "b8084eed-f7c4-40e0-aa78-65664495db98",
           "hangul": "결정된 바 없다",
           "meaning": "chưa có quyết định (idiom — gyeoljeong-doen ba)"
         },
         {
+          cell_id: "e978a80f-89fb-4dd5-9aa6-020ac2eeb5fb",
           "hangul": "노 코멘트 (no comment)",
           "meaning": "không bình luận (loanword — no-ko-men-teu)"
         },
         {
+          cell_id: "c8f7ccba-2d39-41ad-bfe1-f179afca2a7a",
           "hangul": "주간 브리핑",
           "meaning": "briefing hàng tuần (n.m. — ju-gan beu-ri-ping)"
         },
         {
+          cell_id: "4b5b6d4d-ffc3-4070-84e6-54dc7392b0b3",
           "hangul": "정례 브리핑 (定例)",
           "meaning": "briefing định kỳ (n.m. — jeong-nye)"
         },
         {
+          cell_id: "77d4e7e6-c672-4e88-8156-42ae825b0dbc",
           "hangul": "공보 담당관 (公報 擔當官)",
           "meaning": "cán bộ phụ trách PR (n.m. — gong-bo dam-dang-gwan)"
         },
         {
+          cell_id: "b8eb2335-a5b5-4b18-8a21-2d885b761f3b",
           "hangul": "취재 요청 (取材 要請)",
           "meaning": "yêu cầu phỏng vấn (n.m. — chwi-jae yo-cheong)"
         },
         {
+          cell_id: "268c5f5a-8aa4-490a-95b3-786159ee5096",
           "hangul": "대언론 창구 (對言論 窓口)",
           "meaning": "kênh giao tiếp với báo chí (n.m. — dae-eon-non chang-gu)"
         }
@@ -10291,24 +10803,28 @@ export const lessons: KoreanLesson[] =         [
       ],
       "dialogue": [
         {
+          cell_id: "d6f2891e-3fd4-4505-9321-437801bd791b",
           "speaker": "기자",
           "hangul": "원장님이 어제 학회에서 발언하신 부분 — 본원 입장과 일치합니까?",
           "meaning": "Yesterday's remarks by the President at the conference — do they align with the Institute's position?",
           "text_vi": "Phần Viện trưởng phát biểu tại hội thảo hôm qua — có nhất quán với lập trường của Viện không ạ?"
         },
         {
+          cell_id: "621789b9-8093-415f-98e4-c84f2173c0bc",
           "speaker": "대변인",
           "hangul": "예, 일치합니다. 원장의 발언은 본원의 공식 입장이며, 발언 전문은 본원 홈페이지에 공개되어 있습니다.",
           "meaning": "Yes, they align. The President's remarks reflect the Institute's official position; the full transcript is on our homepage.",
           "text_vi": "Vâng, có nhất quán. Phát biểu của Viện trưởng là lập trường chính thức của Viện, và toàn văn phát biểu đã được công bố trên trang chủ của Viện."
         },
         {
+          cell_id: "eabc94a3-6bc4-4e48-b98b-7ee5c2811421",
           "speaker": "기자",
           "hangul": "5월 시범 사업 일정 — 변동 가능성이 있습니까?",
           "meaning": "The May pilot — any possibility of schedule change?",
           "text_vi": "Lịch trình dự án thí điểm tháng 5 — có khả năng thay đổi không ạ?"
         },
         {
+          cell_id: "2d2d2a7a-fcf0-4daa-8464-f6a1e0def313",
           "speaker": "대변인",
           "hangul": "현 시점에서는 5월 1일 시작으로 확정되어 있습니다. 변경 사항이 발생하면 즉시 안내드리겠습니다.",
           "meaning": "As of now, the start is firmly 1 May. Any change will be communicated promptly.",
@@ -10488,42 +11004,52 @@ export const lessons: KoreanLesson[] =         [
       "intro_vi": "Bài này luyện viết 공식 입장문 cho kênh mạng xã hội (Twitter/X, Facebook, Instagram, blog tổ chức). Đăng ký: 〜다체 nghiêm ngặt — không hoàn toàn 〜습니다 (vì đó là PR style of TV news, lệch trên social) và KHÔNG 〜아요 (informal, kém uy). Cấu trúc 3 ô: 사실 확인 → 본원 입장 → 향후 조치. Ngắn — 280 chữ cho Twitter/X; 800-1000 글자 cho post đầy đủ. Trục: '〜에 대한 본원의 입장을 다음과 같이 밝힌다', '본원은 〜에 대하여 〜한다'.",
       "vocabulary": [
         {
+          cell_id: "31f6956a-8641-4a3c-b955-c78a2e0f0018",
           "hangul": "입장문 (立場文)",
           "meaning": "văn bản lập trường (n.m. — ip-jang-mun)"
         },
         {
+          cell_id: "ea386cfc-b2a1-4bdd-bb67-55e0466d9a08",
           "hangul": "공식 채널",
           "meaning": "kênh chính thức (n.m. — gong-sik chae-neol)"
         },
         {
+          cell_id: "38a2eea0-1517-49d5-9c73-7b849e3ada78",
           "hangul": "사실 확인 (事實 確認)",
           "meaning": "xác nhận sự thật (n.m. — sa-sil hwa-gin)"
         },
         {
+          cell_id: "c414e076-6023-438f-87b6-bcf851573914",
           "hangul": "사실과 다르다",
           "meaning": "khác với sự thật (idiom — sa-sil-gwa)"
         },
         {
+          cell_id: "266888fe-8a49-4d37-95ae-a92a10dbd44d",
           "hangul": "유감을 표하다 (遺憾)",
           "meaning": "bày tỏ tiếc (formal-political — yu-gam)"
         },
         {
+          cell_id: "8a02a7dc-6c9b-425c-b660-018427ec0c04",
           "hangul": "강력히 부인하다 (强力)",
           "meaning": "phủ nhận mạnh mẽ (v. — gang-nyeok-hi)"
         },
         {
+          cell_id: "2f012895-a364-43a5-961c-389ba394191e",
           "hangul": "향후 조치",
           "meaning": "biện pháp tiếp theo (n.m. — hyang-hu jo-chi)"
         },
         {
+          cell_id: "b5ee39f8-87f2-4fe6-847c-4880e8e0b653",
           "hangul": "허위 사실 (虛僞 事實)",
           "meaning": "thông tin sai sự thật (n.m. — heo-wi sa-sil)"
         },
         {
+          cell_id: "54e00036-8f44-4400-8f87-3873ddb0ca26",
           "hangul": "법적 대응",
           "meaning": "biện pháp pháp lý (n.m. — beop-jeok dae-eung)"
         },
         {
+          cell_id: "fa2cc284-ecae-48aa-8a4b-287dbc554666",
           "hangul": "공식 채널을 통해 발표하다",
           "meaning": "công bố qua kênh chính thức (idiom — gong-sik chae-neol)"
         }
@@ -10612,24 +11138,28 @@ export const lessons: KoreanLesson[] =         [
       ],
       "dialogue": [
         {
+          cell_id: "5fe947f8-d5eb-437a-8492-7b0cf324203e",
           "speaker": "공보팀장",
           "hangul": "트위터에 5분 안에 발표문 올려야 합니다. 한 문장 lead 부탁드립니다.",
           "meaning": "We need to post on X in five minutes. One-sentence lead, please.",
           "text_vi": "Phải đăng văn bản công bố lên Twitter trong vòng 5 phút. Nhờ anh viết câu mở đầu một câu."
         },
         {
+          cell_id: "2b16398b-2f08-4496-8ca4-ea4a8b0d731c",
           "speaker": "주무관",
           "hangul": "'본원은 SNS상에서 유포되는 일부 주장에 대해 다음과 같이 입장을 밝힙니다.' — 280자 안에 들어옵니다.",
           "meaning": "'The Institute states its position on certain claims circulating on social media as follows.' — fits within 280 characters.",
           "text_vi": "'Viện chúng tôi xin bày tỏ lập trường như sau đối với một số luận điệu đang lan truyền trên mạng xã hội.' — câu này nằm gọn trong 280 ký tự."
         },
         {
+          cell_id: "dd26bfa1-bf8c-4bfd-af15-f21a7bfbe93b",
           "speaker": "공보팀장",
           "hangul": "본문은 페이스북 1,000자 버전과 트위터 280자 압축 버전 두 가지 만들어 주세요.",
           "meaning": "Make two versions — full 1,000 characters for Facebook and a 280-character compressed version for X.",
           "text_vi": "Phần nội dung chính thì hãy làm hai phiên bản — bản đầy đủ 1.000 chữ cho Facebook và bản nén 280 ký tự cho Twitter."
         },
         {
+          cell_id: "42ab304a-c64a-43fd-9e32-56e1b7f75bdd",
           "speaker": "주무관",
           "hangul": "예. 두 버전 다 끝나면 법무 확인 거쳐 즉시 게시하겠습니다.",
           "meaning": "Yes. Both versions go to Legal, then post immediately.",

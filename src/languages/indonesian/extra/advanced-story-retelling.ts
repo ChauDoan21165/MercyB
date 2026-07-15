@@ -6,6 +6,7 @@ type IndonesianLessonSentence = {
 };
 
 type VocabEntry = {
+  cell_id?: string;
   word: string;
   meaning_vi: string;
   meaning_en: string;
@@ -14,6 +15,7 @@ type VocabEntry = {
 };
 
 type DialogueLine = {
+  cell_id?: string;
   speaker: string;
   line: string;
   vi: string;
@@ -117,6 +119,7 @@ export const lessons: IndonesianLesson[] = [
     ],
     vocabulary: [
       {
+        cell_id: "aa75f7d9-061a-4e1b-9747-cbe535b10c1f",
         word: 'menceritakan ulang',
         meaning_vi: 'kể lại',
         meaning_en: 'retell',
@@ -124,6 +127,7 @@ export const lessons: IndonesianLesson[] = [
         example_vi: 'Học sinh được yêu cầu kể lại truyện cổ tích đó.',
       },
       {
+        cell_id: "cbaa14a4-3d68-438c-8249-a3b6dbc07fa0",
         word: 'alur cerita',
         meaning_vi: 'mạch truyện, cốt truyện',
         meaning_en: 'plot or story flow',
@@ -131,6 +135,7 @@ export const lessons: IndonesianLesson[] = [
         example_vi: 'Mạch truyện của tiểu thuyết này đi qua lại giữa hiện tại và quá khứ.',
       },
       {
+        cell_id: "f1930589-769d-46fd-b3fc-922bef183015",
         word: 'tokoh utama',
         meaning_vi: 'nhân vật chính',
         meaning_en: 'main character',
@@ -138,6 +143,7 @@ export const lessons: IndonesianLesson[] = [
         example_vi: 'Nhân vật chính thay đổi sau khi đối mặt với xung đột.',
       },
       {
+        cell_id: "d1a7bf86-cd9c-4120-89af-3b066ddf63a2",
         word: 'konflik',
         meaning_vi: 'xung đột',
         meaning_en: 'conflict',
@@ -145,6 +151,7 @@ export const lessons: IndonesianLesson[] = [
         example_vi: 'Xung đột trong câu chuyện này xuất phát từ hiểu lầm.',
       },
       {
+        cell_id: "df40c859-7bfa-4a47-8404-e2d569a18dcb",
         word: 'sudut pandang',
         meaning_vi: 'góc nhìn, ngôi kể',
         meaning_en: 'point of view',
@@ -152,6 +159,7 @@ export const lessons: IndonesianLesson[] = [
         example_vi: 'Ngôi kể thứ nhất làm câu chuyện có cảm giác cá nhân.',
       },
       {
+        cell_id: "cd3eb48a-9377-49af-b7c7-c911690944de",
         word: 'ringkasan',
         meaning_vi: 'bản tóm tắt',
         meaning_en: 'summary',
@@ -159,6 +167,7 @@ export const lessons: IndonesianLesson[] = [
         example_vi: 'Bản tóm tắt phải ngắn gọn nhưng rõ ràng.',
       },
       {
+        cell_id: "2b0ff936-0b97-406c-9b74-6f07b832b73d",
         word: 'pesan moral',
         meaning_vi: 'thông điệp đạo đức, bài học',
         meaning_en: 'moral message',
@@ -166,6 +175,7 @@ export const lessons: IndonesianLesson[] = [
         example_vi: 'Thông điệp của câu chuyện đó không được truyền đạt trực tiếp.',
       },
       {
+        cell_id: "888a5c23-d3a4-4c0e-8fd0-3fcd488526a9",
         word: 'gaya narasi',
         meaning_vi: 'phong cách kể chuyện',
         meaning_en: 'narrative style',
@@ -175,36 +185,42 @@ export const lessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "25da4e29-b83b-4b9d-85c2-d7327155a756",
         speaker: 'Guru',
         line: 'Coba ceritakan ulang isi cerita ini secara singkat.',
         vi: 'Hãy thử kể lại nội dung câu chuyện này một cách ngắn gọn.',
         en: 'Try retelling the content of this story briefly.',
       },
       {
+        cell_id: "926b30f1-7895-4d5d-a270-3774ec602919",
         speaker: 'Siswa',
         line: 'Baik. Cerita ini tentang seorang anak yang mencari ayahnya.',
         vi: 'Vâng. Câu chuyện này nói về một đứa trẻ đi tìm cha của mình.',
         en: 'All right. This story is about a child looking for his father.',
       },
       {
+        cell_id: "1470135d-86b8-4b9d-9bac-091699cfba0c",
         speaker: 'Guru',
         line: 'Bagaimana alur cerita dan konflik utamanya?',
         vi: 'Mạch truyện và xung đột chính như thế nào?',
         en: 'What are the plot and main conflict like?',
       },
       {
+        cell_id: "749c1cc1-e1e9-45eb-b197-bcef41015cf0",
         speaker: 'Siswa',
         line: 'Alurnya maju. Konflik muncul ketika tokoh utama kehilangan petunjuk penting.',
         vi: 'Mạch truyện tiến theo thời gian. Xung đột xuất hiện khi nhân vật chính mất manh mối quan trọng.',
         en: 'The plot is chronological. The conflict appears when the main character loses an important clue.',
       },
       {
+        cell_id: "245438df-c0fe-4ab6-b153-f851f9caac4e",
         speaker: 'Guru',
         line: 'Menurutmu, apa pesan moralnya?',
         vi: 'Theo em, thông điệp/bài học là gì?',
         en: 'In your opinion, what is the moral message?',
       },
       {
+        cell_id: "e6e96891-7768-4489-8027-5e98043f2b43",
         speaker: 'Siswa',
         line: 'Pesan moralnya adalah keluarga dan kejujuran lebih penting daripada rasa takut.',
         vi: 'Thông điệp là gia đình và sự trung thực quan trọng hơn nỗi sợ.',

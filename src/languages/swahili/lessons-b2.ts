@@ -82,6 +82,7 @@ export const lessons: SwahiliLesson[] = [
       "and avoid adding 'nadhani' (I think) or 'labda' (maybe). Good pattern: Kulingana na ___, ___. Aliongeza kuwa ___.",
     vocabulary: [
       {
+        cell_id: "84d4e436-5152-4608-8271-2f0843511c84",
         word: "gazeti",
         en: "newspaper",
         vi: "báo",
@@ -90,6 +91,7 @@ export const lessons: SwahiliLesson[] = [
         pronunciation_en: "gah-ZEH-tee",
       },
       {
+        cell_id: "e8f3b292-0917-4e7c-ac02-81f10daf301b",
         word: "bei",
         en: "price",
         vi: "giá cả",
@@ -98,6 +100,7 @@ export const lessons: SwahiliLesson[] = [
         pronunciation_en: "BEH-ee",
       },
       {
+        cell_id: "cb1552f0-60fc-4265-aa7c-8d22eb751b0d",
         word: "hatua",
         en: "step / action / measure",
         vi: "bước đi / hành động / biện pháp",
@@ -106,6 +109,7 @@ export const lessons: SwahiliLesson[] = [
         pronunciation_en: "hah-TOO-ah",
       },
       {
+        cell_id: "db6eb97e-1667-469c-9391-150df8235a6c",
         word: "kuchukua hatua",
         en: "to take action",
         vi: "hành động, ra tay",
@@ -210,6 +214,7 @@ export const lessons: SwahiliLesson[] = [
       "(3) Propose with 'Tunashauri' or 'Inafaa', (4) Close with 'Asante kwa ushirikiano wako.'",
     vocabulary: [
       {
+        cell_id: "1acbf623-312c-439a-a22a-82db25745996",
         word: "kupendekeza",
         en: "to propose / suggest",
         vi: "đề xuất",
@@ -218,6 +223,7 @@ export const lessons: SwahiliLesson[] = [
         pronunciation_en: "koo-pen-deh-KEH-zah",
       },
       {
+        cell_id: "d9088c95-7387-41dd-b7d7-7f42e012f0f5",
         word: "mkutano",
         en: "meeting",
         vi: "cuộc họp",
@@ -226,6 +232,7 @@ export const lessons: SwahiliLesson[] = [
         pronunciation_en: "m-koo-TAH-no",
       },
       {
+        cell_id: "0ade3d74-70bb-4f5a-8a1a-24aa05b05e0d",
         word: "njia mbadala",
         en: "alternative way / approach",
         vi: "cách thay thế",
@@ -234,6 +241,7 @@ export const lessons: SwahiliLesson[] = [
         pronunciation_en: "N-JEE-ah m-bah-DAH-lah",
       },
       {
+        cell_id: "4d4f504f-5382-4899-97a2-11918b64dc83",
         word: "kutatua",
         en: "to solve / resolve",
         vi: "giải quyết",
@@ -244,12 +252,14 @@ export const lessons: SwahiliLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "2d696ddf-5635-429f-9413-6657977d4d3f",
         speaker: "Mwenzako",
         text: "Habari ya asubuhi? Je, umepata nafasi ya kuangalia ripoti yangu?",
         vi: "Chào buổi sáng! Bạn đã có thời gian xem báo cáo của tôi chưa?",
         en: "Good morning! Have you had a chance to look at my report?",
       },
       {
+        cell_id: "8727df3d-450f-46d9-97a8-27743a81cc14",
         speaker: "Wewe",
         text: "Ndiyo, nimeiangalia. Ningependa kukutana ili kujadili baadhi ya mapendekezo.",
         vi: "Vâng, tôi đã xem rồi. Tôi muốn gặp để thảo luận một vài đề xuất.",
@@ -349,6 +359,7 @@ export const lessons: SwahiliLesson[] = [
       "(3) distinguish between fact ('alisema kuwa...') and hearsay ('inasemekana kuwa...').",
     vocabulary: [
       {
+        cell_id: "8a4e0fe6-d32d-4bde-acb7-b08063da6493",
         word: "kueleza",
         en: "to explain",
         vi: "giải thích",
@@ -357,6 +368,7 @@ export const lessons: SwahiliLesson[] = [
         pronunciation_en: "koo-eh-LEH-zah",
       },
       {
+        cell_id: "7f4732ba-c7cb-4b1c-99fb-875afeb9de9a",
         word: "kuonya",
         en: "to warn",
         vi: "cảnh báo",
@@ -365,6 +377,7 @@ export const lessons: SwahiliLesson[] = [
         pronunciation_en: "koo-OH-nyah",
       },
       {
+        cell_id: "32e140f7-b0a5-4526-86fe-2b49581c1d9b",
         word: "kulalamika",
         en: "to complain",
         vi: "phàn nàn, than phiền",
@@ -373,6 +386,7 @@ export const lessons: SwahiliLesson[] = [
         pronunciation_en: "koo-lah-lah-MEE-kah",
       },
       {
+        cell_id: "5ea3d3d7-3288-42df-8793-d7f02c5f788c",
         word: "kuzidi",
         en: "to exceed / increase / worsen",
         vi: "vượt quá / tăng lên / xấu đi",
@@ -481,6 +495,7 @@ export const lessons: SwahiliLesson[] = [
       "Hilo ni muhimu, hata hivyo... (That's important, however...).",
     vocabulary: [
       {
+        cell_id: "14b7afe1-032e-4ba4-bbeb-7ccfc8b8706e",
         word: "hoja",
         en: "argument / point / motion",
         vi: "lập luận / luận điểm",
@@ -489,6 +504,7 @@ export const lessons: SwahiliLesson[] = [
         pronunciation_en: "HOH-jah",
       },
       {
+        cell_id: "620dc155-3737-4532-b18c-c25eda65ae7f",
         word: "kukubaliana",
         en: "to agree with each other",
         vi: "đồng ý với nhau",
@@ -497,6 +513,7 @@ export const lessons: SwahiliLesson[] = [
         pronunciation_en: "koo-koo-bah-lee-AH-nah",
       },
       {
+        cell_id: "3fc06862-285a-4b34-b230-a068c7f88b66",
         word: "hata hivyo",
         en: "however / nevertheless",
         vi: "tuy nhiên / dù vậy",
@@ -505,6 +522,7 @@ export const lessons: SwahiliLesson[] = [
         pronunciation_en: "HAH-tah HEE-vyoh",
       },
       {
+        cell_id: "0953475c-250f-42c3-b0c1-43ad40b23148",
         word: "kuzingatia",
         en: "to consider / take into account",
         vi: "cân nhắc / xem xét",
@@ -515,12 +533,14 @@ export const lessons: SwahiliLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "28477bf5-1107-41f3-bc76-a3015349cbda",
         speaker: "Mwanafunzi A",
         text: "Nafikiri teknolojia inaharibu utamaduni wetu.",
         vi: "Tôi nghĩ công nghệ đang phá hủy văn hóa của chúng ta.",
         en: "I think technology is destroying our culture.",
       },
       {
+        cell_id: "5f40386e-f447-47b3-a054-8567e5bc7739",
         speaker: "Mwanafunzi B",
         text: "Ni kweli kwamba teknolojia inaleta changamoto, lakini pia inasaidia kuhifadhi lugha zetu kupitia programu za kujifunza.",
         vi: "Đúng là công nghệ mang đến thách thức, nhưng nó cũng giúp bảo tồn ngôn ngữ của chúng ta qua các ứng dụng học tập.",
@@ -631,6 +651,7 @@ export const lessons: SwahiliLesson[] = [
       "-funguka (open by itself — opposite meaning!). Practice one root per day.",
     vocabulary: [
       {
+        cell_id: "4b1e435c-b633-4d9e-a76f-b26b1641eb7a",
         word: "kutuma",
         en: "to send",
         vi: "gửi",
@@ -639,6 +660,7 @@ export const lessons: SwahiliLesson[] = [
         pronunciation_en: "koo-TOO-mah",
       },
       {
+        cell_id: "5830e75b-83d1-46a8-a753-76eb91f6c8a8",
         word: "kupokea",
         en: "to receive",
         vi: "nhận",
@@ -647,6 +669,7 @@ export const lessons: SwahiliLesson[] = [
         pronunciation_en: "koo-poh-KEH-ah",
       },
       {
+        cell_id: "4d3b77aa-a3ba-47f6-b9b1-e9d200333c64",
         word: "kusaidia",
         en: "to help",
         vi: "giúp đỡ",
@@ -655,6 +678,7 @@ export const lessons: SwahiliLesson[] = [
         pronunciation_en: "koo-sah-ee-DEE-ah",
       },
       {
+        cell_id: "44e0856e-5c00-4179-bd78-ea7bebe2b156",
         word: "kufundisha",
         en: "to teach",
         vi: "dạy",
@@ -663,6 +687,7 @@ export const lessons: SwahiliLesson[] = [
         pronunciation_en: "koo-foon-DEE-shah",
       },
       {
+        cell_id: "2c5f241d-7646-4516-9e7f-03afa871173c",
         word: "kufunguka",
         en: "to open (by itself) / become open",
         vi: "tự mở / trở nên mở",

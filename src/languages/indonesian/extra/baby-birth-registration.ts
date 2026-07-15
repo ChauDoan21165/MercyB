@@ -21,6 +21,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   /** Indonesian word/phrase. */
   word: string;
   /** English meaning. */
@@ -36,6 +37,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   /** Indonesian line. */
   text: string;
@@ -225,43 +227,48 @@ export const lessons: IndonesianLesson[] = [
     tip_advice_en:
       "Tip for Vietnamese speakers: separate `surat lahir` = hospital birth letter from `akta kelahiran` = official birth certificate. `Orang tua` in child paperwork means parents. To ask progress, use `sudah jadi?`, `kapan keluar?`, and `tolong kabari kami`. For names on documents, use `sesuai` to stress that it matches the paperwork.",
     vocabulary: [
-      { word: "akta kelahiran", en: "birth certificate", vi: "giấy khai sinh", pos: "noun phrase", pronunciation_vi: "AK-ta ke-la-HIR-an", pronunciation_en: "AK-ta ke-la-HEER-an" },
-      { word: "surat lahir", en: "birth letter / hospital birth certificate", vi: "giấy chứng sinh", pos: "noun phrase", pronunciation_vi: "SU-rat LA-hir", pronunciation_en: "SOO-rat LA-hir" },
-      { word: "nama bayi", en: "baby's name", vi: "tên em bé", pos: "noun phrase", pronunciation_vi: "NA-ma BA-yi", pronunciation_en: "NA-ma BA-yi" },
-      { word: "rumah sakit", en: "hospital", vi: "bệnh viện", pos: "noun phrase", pronunciation_vi: "RU-mah SA-kit", pronunciation_en: "ROO-mah SA-kit" },
-      { word: "kartu keluarga", en: "family card", vi: "thẻ hộ gia đình", pos: "noun phrase", pronunciation_vi: "KAR-tu ke-LU-ar-ga", pronunciation_en: "KAR-too ke-LOO-ar-ga" },
-      { word: "catatan sipil", en: "civil registry", vi: "cơ quan hộ tịch", pos: "noun phrase", pronunciation_vi: "ca-TA-tan SI-pil", pronunciation_en: "cha-TA-tan SEE-pil" },
-      { word: "NIK", en: "population identity number", vi: "số định danh dân cư", pos: "noun", pronunciation_vi: "EN-I-KA", pronunciation_en: "EN-EE-KA" },
-      { word: "dokumen orang tua", en: "parents' documents", vi: "giấy tờ của cha mẹ", pos: "noun phrase", pronunciation_vi: "do-ku-MEN O-rang TU-a", pronunciation_en: "do-koo-MEN O-rang TOO-a" },
-      { word: "sudah jadi", en: "ready / finished", vi: "đã xong", pos: "phrase", pronunciation_vi: "SU-dah JA-di", pronunciation_en: "SOO-dah JA-dee" },
-      { word: "fotokopi", en: "photocopy", vi: "bản sao photocopy", pos: "noun", pronunciation_vi: "FO-to-ko-pi", pronunciation_en: "FO-to-ko-pee" },
+      { cell_id: "f5391cdf-bb15-4b9b-bd86-ed1879344121", word: "akta kelahiran", en: "birth certificate", vi: "giấy khai sinh", pos: "noun phrase", pronunciation_vi: "AK-ta ke-la-HIR-an", pronunciation_en: "AK-ta ke-la-HEER-an" },
+      { cell_id: "4ec63c5f-8a89-4caf-aa15-a6af673fc5ab", word: "surat lahir", en: "birth letter / hospital birth certificate", vi: "giấy chứng sinh", pos: "noun phrase", pronunciation_vi: "SU-rat LA-hir", pronunciation_en: "SOO-rat LA-hir" },
+      { cell_id: "0157b5e6-f18a-463b-ab46-86f0851e829c", word: "nama bayi", en: "baby's name", vi: "tên em bé", pos: "noun phrase", pronunciation_vi: "NA-ma BA-yi", pronunciation_en: "NA-ma BA-yi" },
+      { cell_id: "d9f32174-4ecd-4f83-81c3-ed77b855709a", word: "rumah sakit", en: "hospital", vi: "bệnh viện", pos: "noun phrase", pronunciation_vi: "RU-mah SA-kit", pronunciation_en: "ROO-mah SA-kit" },
+      { cell_id: "e048c4d9-5d13-4102-84eb-b281760c10c6", word: "kartu keluarga", en: "family card", vi: "thẻ hộ gia đình", pos: "noun phrase", pronunciation_vi: "KAR-tu ke-LU-ar-ga", pronunciation_en: "KAR-too ke-LOO-ar-ga" },
+      { cell_id: "f4c0076b-1a29-49af-82c0-8729aaec77e9", word: "catatan sipil", en: "civil registry", vi: "cơ quan hộ tịch", pos: "noun phrase", pronunciation_vi: "ca-TA-tan SI-pil", pronunciation_en: "cha-TA-tan SEE-pil" },
+      { cell_id: "d45a887d-4a25-48e2-b48a-782972db3dca", word: "NIK", en: "population identity number", vi: "số định danh dân cư", pos: "noun", pronunciation_vi: "EN-I-KA", pronunciation_en: "EN-EE-KA" },
+      { cell_id: "562209b2-8984-4106-9119-6b501e7fe34f", word: "dokumen orang tua", en: "parents' documents", vi: "giấy tờ của cha mẹ", pos: "noun phrase", pronunciation_vi: "do-ku-MEN O-rang TU-a", pronunciation_en: "do-koo-MEN O-rang TOO-a" },
+      { cell_id: "9bc17387-73bf-4cd7-a7a1-ef3af51e88b7", word: "sudah jadi", en: "ready / finished", vi: "đã xong", pos: "phrase", pronunciation_vi: "SU-dah JA-di", pronunciation_en: "SOO-dah JA-dee" },
+      { cell_id: "3122b5fe-abbb-438e-9d2f-bd3b001f8f09", word: "fotokopi", en: "photocopy", vi: "bản sao photocopy", pos: "noun", pronunciation_vi: "FO-to-ko-pi", pronunciation_en: "FO-to-ko-pee" },
     ],
     dialogue: [
       {
+        cell_id: "3a2597e1-bb5f-400c-a779-45aaea787337",
         speaker: "Ayah",
         text: "Selamat pagi, kami mau mengurus akta kelahiran bayi.",
         vi: "Chào buổi sáng, chúng tôi muốn làm giấy khai sinh cho em bé.",
         en: "Good morning, we want to process the baby's birth certificate.",
       },
       {
+        cell_id: "67520f9d-4d0e-44a4-8ec0-dbee17075b89",
         speaker: "Petugas",
         text: "Apakah sudah membawa surat lahir dari rumah sakit?",
         vi: "Anh/chị đã mang giấy chứng sinh từ bệnh viện chưa?",
         en: "Have you brought the birth letter from the hospital?",
       },
       {
+        cell_id: "a7e025fa-0b26-4677-92d7-c90d2f649ad2",
         speaker: "Ibu",
         text: "Sudah. Ini surat lahir, kartu keluarga, dan dokumen orang tua.",
         vi: "Rồi. Đây là giấy chứng sinh, thẻ gia đình và giấy tờ của cha mẹ.",
         en: "Yes. Here are the birth letter, family card, and parents' documents.",
       },
       {
+        cell_id: "425fa6e6-4872-43e0-9a20-80a79b0f8535",
         speaker: "Petugas",
         text: "Baik, nanti NIK bayi akan keluar setelah data diproses.",
         vi: "Được, lát nữa NIK của em bé sẽ được cấp sau khi dữ liệu được xử lý.",
         en: "Okay, the baby's NIK will be issued after the data is processed.",
       },
       {
+        cell_id: "bfc6ec05-ef90-458d-96a9-1e3fb7aa5a68",
         speaker: "Ayah",
         text: "Tolong kabari kami kalau akta kelahiran sudah jadi.",
         vi: "Làm ơn báo cho chúng tôi nếu giấy khai sinh đã xong.",

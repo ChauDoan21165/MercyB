@@ -12,6 +12,7 @@ type LessonSentence = {
 };
 
 type VocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -21,6 +22,7 @@ type VocabEntry = {
 };
 
 type DialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -137,6 +139,7 @@ export const coworkingDigitalNomadLessons: IndonesianLesson[] = [
       "Safe frames: `Saya mau pesan...`, `Apakah sudah termasuk...?`, `Saya perlu...`, `Bisa dipakai...?`. Vietnamese speakers should track `di sini` = here/at this place, while `ke sini` = to here; for amenities at a coworking space, use `di sini`.",
     vocabulary: [
       {
+        cell_id: "0495abee-4a25-42b8-8905-872ce56e6abc",
         word: "coworking space",
         en: "coworking space",
         vi: "không gian làm việc chung",
@@ -145,6 +148,7 @@ export const coworkingDigitalNomadLessons: IndonesianLesson[] = [
         pronunciation_en: "CO-working space",
       },
       {
+        cell_id: "d715c4ae-c374-45c8-b253-70d9d25081e5",
         word: "meja harian",
         en: "day desk",
         vi: "bàn theo ngày",
@@ -153,6 +157,7 @@ export const coworkingDigitalNomadLessons: IndonesianLesson[] = [
         pronunciation_en: "ME-ja ha-ree-AN",
       },
       {
+        cell_id: "39c91d4d-b7b7-40d6-8536-3d89ae235f10",
         word: "Wi-Fi cepat",
         en: "fast Wi-Fi",
         vi: "Wi-Fi nhanh",
@@ -161,6 +166,7 @@ export const coworkingDigitalNomadLessons: IndonesianLesson[] = [
         pronunciation_en: "WAI-fai CHE-pat",
       },
       {
+        cell_id: "f9de8061-5648-481f-ada7-71d87f4de55b",
         word: "meeting room",
         en: "meeting room",
         vi: "phòng họp",
@@ -169,6 +175,7 @@ export const coworkingDigitalNomadLessons: IndonesianLesson[] = [
         pronunciation_en: "MEE-ting room",
       },
       {
+        cell_id: "8684e806-dbba-4514-b94c-fd9fde465b83",
         word: "kopi gratis",
         en: "free coffee",
         vi: "cà phê miễn phí",
@@ -177,6 +184,7 @@ export const coworkingDigitalNomadLessons: IndonesianLesson[] = [
         pronunciation_en: "KO-pee GRA-tis",
       },
       {
+        cell_id: "00c7f106-6a54-4cd0-8b1e-b64c7fcbcf5f",
         word: "stop kontak",
         en: "power outlet",
         vi: "ổ cắm điện",
@@ -187,24 +195,28 @@ export const coworkingDigitalNomadLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "d558fe5c-4b0d-48c4-8c9b-1f6099d69c60",
         speaker: "Resepsionis",
         text: "Selamat pagi. Mau ambil paket harian atau bulanan?",
         vi: "Chào buổi sáng. Bạn muốn lấy gói theo ngày hay theo tháng?",
         en: "Good morning. Would you like the daily or monthly package?",
       },
       {
+        cell_id: "ff5f0e09-ea6b-4135-a2bc-026197ccbe59",
         speaker: "Nomad",
         text: "Paket harian dulu. Wi-Fi di sini stabil?",
         vi: "Gói theo ngày trước. Wi-Fi ở đây ổn định không?",
         en: "The daily package first. Is the Wi-Fi stable here?",
       },
       {
+        cell_id: "613f6394-c3b3-4d67-b8b0-f00559ebb2f3",
         speaker: "Resepsionis",
         text: "Stabil. Kopi gratis juga sudah termasuk.",
         vi: "Ổn định. Cà phê miễn phí cũng đã bao gồm.",
         en: "Stable. Free coffee is also included.",
       },
       {
+        cell_id: "9575a781-ae13-4aa2-9e8d-4290259bde6f",
         speaker: "Nomad",
         text: "Bagus. Saya juga perlu meeting room satu jam sore ini.",
         vi: "Tốt. Tôi cũng cần phòng họp một giờ chiều nay.",
@@ -334,6 +346,7 @@ export const coworkingDigitalNomadLessons: IndonesianLesson[] = [
       "Useful networking chunks: `Boleh kenalan?`, `Saya kerja remote untuk...`, `Saya ingin ikut workshop...`, `Acara networking mulai jam berapa?`. With people you just met, use `Kak`, `Bapak/Ibu`, or the person's name instead of `kamu`.",
     vocabulary: [
       {
+        cell_id: "5ef07552-ff55-451c-9211-156e66cb72b0",
         word: "kerja remote",
         en: "remote work",
         vi: "làm việc từ xa",
@@ -342,6 +355,7 @@ export const coworkingDigitalNomadLessons: IndonesianLesson[] = [
         pronunciation_en: "KER-ja ree-MOTE",
       },
       {
+        cell_id: "7019f8d0-10d3-4b38-8024-ed01602cc51c",
         word: "digital nomad",
         en: "digital nomad",
         vi: "người du mục số",
@@ -350,6 +364,7 @@ export const coworkingDigitalNomadLessons: IndonesianLesson[] = [
         pronunciation_en: "DI-gi-tal NO-mad",
       },
       {
+        cell_id: "6a3940df-6ab9-4b90-9ca8-be8b7fc94aa4",
         word: "komunitas startup",
         en: "startup community",
         vi: "cộng đồng startup",
@@ -358,6 +373,7 @@ export const coworkingDigitalNomadLessons: IndonesianLesson[] = [
         pronunciation_en: "ko-mu-ni-TAS STAR-tup",
       },
       {
+        cell_id: "a9f621a8-abc7-4464-9a3a-b1eaa08ca223",
         word: "acara networking",
         en: "networking event",
         vi: "sự kiện networking",
@@ -366,6 +382,7 @@ export const coworkingDigitalNomadLessons: IndonesianLesson[] = [
         pronunciation_en: "a-CHA-ra NET-working",
       },
       {
+        cell_id: "192a9a9d-b03f-4ade-b3bb-cddfb23a7281",
         word: "video call",
         en: "video call",
         vi: "cuộc gọi video",
@@ -374,6 +391,7 @@ export const coworkingDigitalNomadLessons: IndonesianLesson[] = [
         pronunciation_en: "VI-de-o call",
       },
       {
+        cell_id: "7f1c2c8f-ee52-4ab3-86ce-37b3f663049d",
         word: "kenalan",
         en: "to get acquainted",
         vi: "làm quen",
@@ -384,24 +402,28 @@ export const coworkingDigitalNomadLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "1d869393-1276-4738-91a1-e380511bd58c",
         speaker: "Nina",
         text: "Kamu digital nomad juga?",
         vi: "Bạn cũng là digital nomad à?",
         en: "Are you a digital nomad too?",
       },
       {
+        cell_id: "2ba2c729-5758-4f89-9ea7-6ec4283045d3",
         speaker: "Mai",
         text: "Iya, saya kerja remote untuk perusahaan di Vietnam.",
         vi: "Ừ, tôi làm việc từ xa cho một công ty ở Việt Nam.",
         en: "Yes, I work remotely for a company in Vietnam.",
       },
       {
+        cell_id: "526d8a52-0a45-44db-abf4-87278e8b8ac2",
         speaker: "Nina",
         text: "Nanti malam ada acara networking komunitas startup.",
         vi: "Tối nay có sự kiện networking của cộng đồng startup.",
         en: "Tonight there is a networking event for the startup community.",
       },
       {
+        cell_id: "7b72bdcf-721d-4f5d-bdb6-1866c06b197d",
         speaker: "Mai",
         text: "Menarik. Boleh saya ikut dan kenalan dengan founder lain?",
         vi: "Thú vị đấy. Tôi có thể tham gia và làm quen với các founder khác không?",
@@ -532,6 +554,7 @@ export const coworkingDigitalNomadLessons: IndonesianLesson[] = [
       "Practical frames: `Bisa minta invoice...?`, `Pembayaran bisa lewat...?`, `Tolong kirim ke email saya`, `Ada diskon untuk paket...?`. Vietnamese speakers should distinguish `ke email` (send to email) from `di email` (in the email).",
     vocabulary: [
       {
+        cell_id: "e9e00136-59eb-493f-a6cd-e7ae540284c2",
         word: "invoice",
         en: "invoice",
         vi: "hóa đơn",
@@ -540,6 +563,7 @@ export const coworkingDigitalNomadLessons: IndonesianLesson[] = [
         pronunciation_en: "IN-voice",
       },
       {
+        cell_id: "9804318d-d7cf-44d6-b414-30d7440f40b1",
         word: "atas nama perusahaan",
         en: "under the company's name",
         vi: "đứng tên công ty",
@@ -548,6 +572,7 @@ export const coworkingDigitalNomadLessons: IndonesianLesson[] = [
         pronunciation_en: "A-tas NA-ma per-u-sa-HA-an",
       },
       {
+        cell_id: "f04a3946-f28f-4aaf-a031-77e088821c76",
         word: "pembayaran",
         en: "payment",
         vi: "thanh toán",
@@ -556,6 +581,7 @@ export const coworkingDigitalNomadLessons: IndonesianLesson[] = [
         pronunciation_en: "pem-ba-YA-ran",
       },
       {
+        cell_id: "4a2a2d4a-22b0-4867-b156-d6e57136d9b8",
         word: "transfer bank",
         en: "bank transfer",
         vi: "chuyển khoản ngân hàng",
@@ -564,6 +590,7 @@ export const coworkingDigitalNomadLessons: IndonesianLesson[] = [
         pronunciation_en: "TRANS-fer bank",
       },
       {
+        cell_id: "b7e45544-177c-45bb-9176-25aa1cab0522",
         word: "paket mingguan",
         en: "weekly package",
         vi: "gói theo tuần",
@@ -572,6 +599,7 @@ export const coworkingDigitalNomadLessons: IndonesianLesson[] = [
         pronunciation_en: "PA-ket ming-goo-AN",
       },
       {
+        cell_id: "e28931cc-8b6c-4a64-80c3-33e20b04da2a",
         word: "perpanjang paket",
         en: "extend a package",
         vi: "gia hạn gói",
@@ -582,24 +610,28 @@ export const coworkingDigitalNomadLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "cadc05ef-d2f4-44b4-977b-3d59c790a73a",
         speaker: "Nomad",
         text: "Bisa minta invoice atas nama perusahaan?",
         vi: "Tôi có thể xin hóa đơn đứng tên công ty không?",
         en: "Can I request an invoice under the company name?",
       },
       {
+        cell_id: "7f08ec36-f2c4-4688-bde0-307a8cb07c35",
         speaker: "Admin",
         text: "Bisa. Tolong tulis nama perusahaan dan emailnya.",
         vi: "Được. Vui lòng viết tên công ty và email.",
         en: "Yes. Please write the company name and email.",
       },
       {
+        cell_id: "7e2e8f06-3527-4598-a610-7282d16f58d1",
         speaker: "Nomad",
         text: "Pembayaran bisa lewat QRIS?",
         vi: "Thanh toán có thể qua QRIS không?",
         en: "Can payment be made through QRIS?",
       },
       {
+        cell_id: "94d6e9b5-8cbe-4aad-88da-b18ce9aaea0c",
         speaker: "Admin",
         text: "Bisa. Invoice akan kami kirim ke email setelah pembayaran.",
         vi: "Được. Chúng tôi sẽ gửi hóa đơn vào email sau khi thanh toán.",

@@ -145,6 +145,7 @@ export const lessons: ChineseLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "e883799b-dfc1-4bae-ba3a-5b9127ba8332",
         "speaker": "学生",
         "chinese": "教授, 我提出的研究假设, 围绕《红楼梦》判词与全书命运结构之对应, 不知是否成立?",
         "pinyin": "Jiàoshòu, wǒ tíchū de yánjiū jiǎshè, wéirào «Hónglóumèng» pàncí yǔ quán shū mìngyùn jiégòu zhī duìyìng, bùzhī shìfǒu chénglì?",
@@ -152,6 +153,7 @@ export const lessons: ChineseLesson[] = [
         "vi": "Thưa giáo sư, giả thuyết em đưa ra xoay quanh sự đối ứng giữa phán từ của Hồng Lâu Mộng và cấu trúc số phận toàn truyện, không biết có đứng được không?"
       },
       {
+        cell_id: "dd6cc8ec-1676-41b0-9708-a1a6e5344597",
         "speaker": "教授",
         "chinese": "命题本身具学术价值, 红学'草蛇灰线'之说由来已久, 然将其上升为'元图式', 实属较强之主张, 须慎之又慎。",
         "pinyin": "Mìngtí běnshēn jù xuéshù jiàzhí, Hóngxué 'cǎo shé huī xiàn' zhī shuō yóulái yǐjiǔ, rán jiāng qí shàngshēng wéi 'yuán túshì', shí shǔ jiào qiáng zhī zhǔzhāng, xū shèn zhī yòu shèn.",
@@ -159,6 +161,7 @@ export const lessons: ChineseLesson[] = [
         "vi": "Mệnh đề tự thân có giá trị học thuật, thuyết 'thảo xà khôi tuyến' trong Hồng học đã có từ lâu. Nhưng nâng nó lên thành 'siêu đồ thức' thực ra là một chủ trương khá mạnh, phải cực kỳ thận trọng."
       },
       {
+        cell_id: "e7b9548d-a63e-4a04-a7eb-e99f7e4f898a",
         "speaker": "学生",
         "chinese": "如何使此命题臻于可证伪之境?",
         "pinyin": "Rúhé shǐ cǐ mìngtí zhēn yú kě zhèngwěi zhī jìng?",
@@ -166,6 +169,7 @@ export const lessons: ChineseLesson[] = [
         "vi": "Làm sao để mệnh đề này đạt được trạng thái khả bác?"
       },
       {
+        cell_id: "691c9223-c6d9-4c82-9b82-5221037d9161",
         "speaker": "教授",
         "chinese": "量化对应关系, 设阈值, 比对程甲本与脂本之异同。良好的文学假设, 不应止于诗化, 而当能被证据推翻。",
         "pinyin": "Liànghuà duìyìng guānxì, shè yùzhí, bǐduì Chéngjiǎběn yǔ Zhīběn zhī yìtóng. Liánghǎo de wénxué jiǎshè, bù yīng zhǐ yú shīhuà, ér dāng néng bèi zhèngjù tuīfān.",
@@ -489,6 +493,7 @@ export const lessons: ChineseLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "194f5cd5-bef9-4ca2-a001-1b9642ca950f",
         "speaker": "学生",
         "chinese": "教授, 我引用了王国维'有境界则自成高格', 但reviewer说我浅尝辄止。",
         "pinyin": "Jiàoshòu, wǒ yǐnyòngle Wáng Guówéi 'yǒu jìngjiè zé zì chéng gāogé', dàn reviewer shuō wǒ qiǎn cháng zhé zhǐ.",
@@ -496,6 +501,7 @@ export const lessons: ChineseLesson[] = [
         "vi": "Thưa giáo sư, em đã trích Vương Quốc Duy 'có cảnh giới thì tự thành phẩm cách cao', nhưng reviewer nói em chỉ chạm bề ngoài."
       },
       {
+        cell_id: "aad70c48-72e9-41f2-8def-e54d6ed4a853",
         "speaker": "教授",
         "chinese": "Reviewer说得对。'境界'说在《人间词话》六十四则中层层递进, 你只引第一则, 等于无视后续的'造境/写境', '有我/无我'之精微辨析。",
         "pinyin": "Reviewer shuō de duì. 'Jìngjiè' shuō zài «Rénjiān Cíhuà» liùshísì zé zhōng céngcéng dìjìn, nǐ zhǐ yǐn dì yī zé, děngyú wúshì hòuxù de 'zàojìng/xiějìng', 'yǒu wǒ/wú wǒ' zhī jīngwéi biànxī.",
@@ -503,6 +509,7 @@ export const lessons: ChineseLesson[] = [
         "vi": "Reviewer nói đúng. Thuyết 'cảnh giới' trong Nhân Gian Từ Thoại 64 mục là tầng tầng tăng tiến, em chỉ trích mục 1, tức là bỏ qua phân tích tinh vi sau như 'tạo cảnh/tả cảnh', 'có ta/không ta'."
       },
       {
+        cell_id: "a7c196bf-a3a3-4721-aab1-7b0643098de8",
         "speaker": "学生",
         "chinese": "如何示意我已读全书?",
         "pinyin": "Rúhé shìyì wǒ yǐ dú quán shū?",
@@ -510,6 +517,7 @@ export const lessons: ChineseLesson[] = [
         "vi": "Làm sao bày tỏ rằng em đã đọc toàn bộ?"
       },
       {
+        cell_id: "5e06fdb4-9bc3-4a05-822a-c9effa50d311",
         "speaker": "教授",
         "chinese": "Cite 第N则, cross-reference between sections, acknowledge textual history (王国维 sinh前 published 64则, 后 posthumous additions 收入 全集). Show you grasp the system, not the slogan.",
         "pinyin": "Cite dì N zé, cross-reference between sections, acknowledge textual history (Wáng Guówéi shēng qián published 64 zé, hòu posthumous additions shōurù quánjí). Show you grasp the system, not the slogan.",
@@ -833,6 +841,7 @@ export const lessons: ChineseLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "b1ef38f2-9a4f-4bab-92ce-acef2a0e3cf3",
         "speaker": "甲",
         "chinese": "王维'明月松间照, 清泉石上流'实为'无我之境'之绝佳例证, 此点似不难得到共识。",
         "pinyin": "Wáng Wéi 'míng yuè sōng jiān zhào, qīng quán shí shàng liú' shí wèi 'wú wǒ zhī jìng' zhī juéjiā lìzhèng, cǐ diǎn sì bù nán dédào gòngshí.",
@@ -840,6 +849,7 @@ export const lessons: ChineseLesson[] = [
         "vi": "Câu 'minh nguyệt tùng gian chiếu, thanh tuyền thạch thượng lưu' của Vương Duy thực sự là minh chứng tuyệt vời cho 'cảnh không ta' — điểm này có vẻ không khó đạt đồng thuận."
       },
       {
+        cell_id: "877488d2-c65e-43d7-8dcf-198af6446d46",
         "speaker": "乙",
         "chinese": "您此论恕笔者持保留意见。'境界'乃王国维所立之范畴, 用以解读早其千年之王维, 实有'以后律前'之嫌, 不可不察。",
         "pinyin": "Nín cǐ lùn shù bǐzhě chí bǎoliú yìjiàn. 'Jìngjiè' nǎi Wáng Guówéi suǒ lì zhī fànchóu, yòngyǐ jiědú zǎo qí qiān nián zhī Wáng Wéi, shí yǒu 'yǐ hòu lǜ qián' zhī xián, bùkě bù chá.",
@@ -847,6 +857,7 @@ export const lessons: ChineseLesson[] = [
         "vi": "Xin được giữ ý kiến bảo lưu. 'Cảnh giới' là phạm trù do Vương Quốc Duy thiết lập, dùng để giải đọc Vương Duy người sống trước ngàn năm, có sự khả nghi 'lấy sau đo trước', không thể không xét."
       },
       {
+        cell_id: "1911818c-b795-4648-b4da-8aaed9dae755",
         "speaker": "甲",
         "chinese": "诚如先生所言, 时代之差不可忽视。但王国维亦自称其'境界'说本于古人之实践, 非凭空创设。",
         "pinyin": "Chéng rú xiānshēng suǒ yán, shídài zhī chā bùkě hūshì. Dàn Wáng Guówéi yì zì chēng qí 'jìngjiè' shuō běn yú gǔrén zhī shíjiàn, fēi píngkōng chuàngshè.",
@@ -854,6 +865,7 @@ export const lessons: ChineseLesson[] = [
         "vi": "Đúng như tiên sinh nói, khoảng cách thời đại không thể bỏ qua. Nhưng Vương Quốc Duy cũng tự nhận thuyết 'cảnh giới' của ông xuất phát từ thực tiễn của cổ nhân, không phải sáng lập từ hư không."
       },
       {
+        cell_id: "b9b3e37b-d116-418d-8508-2c62793ca18a",
         "speaker": "乙",
         "chinese": "此点甚善。或可言之: 王维之诗确具王国维所概括之美学品质, 然以'境界'命名之, 仍属理论后设。两层不可混淆。",
         "pinyin": "Cǐ diǎn shèn shàn. Huò kě yán zhī: Wáng Wéi zhī shī què jù Wáng Guówéi suǒ gàikuò zhī měixué pǐnzhì, rán yǐ 'jìngjiè' mìngmíng zhī, réng shǔ lǐlùn hòushè. Liǎng céng bùkě hùnxiáo.",
@@ -1163,6 +1175,7 @@ export const lessons: ChineseLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "164ddfdb-cc0a-468f-ba7d-6d3fd46d0f17",
         "speaker": "审稿人",
         "chinese": "你这一段对牡丹亭明末影响之描述, 用了'家喻户晓''妇孺皆知'这种强词, 在材料如此残缺之情况下, 此种笃定恐难成立。",
         "pinyin": "Nǐ zhè yī duàn duì Mǔdāntíng Míng mò yǐngxiǎng zhī miáoshù, yòngle 'jiā yù hù xiǎo' 'fù rú jiē zhī' zhè zhǒng qiángcí, zài cáiliào rúcǐ cánquē zhī qíngkuàng xià, cǐ zhǒng dǔdìng kǒng nán chénglì.",
@@ -1170,6 +1183,7 @@ export const lessons: ChineseLesson[] = [
         "vi": "Đoạn em mô tả về ảnh hưởng của Mẫu Đơn Đình cuối Minh dùng các từ mạnh như 'gia dụ hộ hiểu', 'phụ nhụ giai tri' — trong tình hình tài liệu thiếu hụt như vậy, sự chắc chắn này e khó đứng vững."
       },
       {
+        cell_id: "bc221f94-277e-4750-bf85-918db3cb1c1f",
         "speaker": "学生",
         "chinese": "我应该如何修改才合适?",
         "pinyin": "Wǒ yīnggāi rúhé xiūgǎi cái héshì?",
@@ -1177,6 +1191,7 @@ export const lessons: ChineseLesson[] = [
         "vi": "Em nên sửa thế nào cho phù hợp?"
       },
       {
+        cell_id: "031bbcc6-3a62-49a9-a3c8-98f505d45383",
         "speaker": "审稿人",
         "chinese": "降级处理: '据现存文献所示, 牡丹亭于明末士大夫圈中颇受推崇'。把'家喻户晓'换成'颇受推崇', 把'妇孺皆知'去掉。'据现存文献所示'是关键 hedge。",
         "pinyin": "Jiàngjí chǔlǐ: 'jù xiàncún wénxiàn suǒ shì, Mǔdāntíng yú Míng mò shìdàfū quān zhōng pō shòu tuīchóng'. Bǎ 'jiā yù hù xiǎo' huàn chéng 'pō shòu tuīchóng', bǎ 'fù rú jiē zhī' qùdiào. 'Jù xiàncún wénxiàn suǒ shì' shì guānjiàn hedge.",
@@ -1184,6 +1199,7 @@ export const lessons: ChineseLesson[] = [
         "vi": "Giảm cấp: 'Theo tài liệu hiện tồn, Mẫu Đơn Đình ở giới sĩ đại phu cuối Minh được khá tôn sùng'. Thay 'gia dụ hộ hiểu' bằng 'khá được tôn sùng', bỏ 'phụ nhụ giai tri'. 'Theo tài liệu hiện tồn' là hedge then chốt."
       },
       {
+        cell_id: "655cd253-e9a9-43f9-9b2f-13443103d407",
         "speaker": "学生",
         "chinese": "明白了。学术写作中的'确定'与'诚实', 真不是一回事。",
         "pinyin": "Míngbái le. Xuéshù xiězuò zhōng de 'quèdìng' yǔ 'chéngshí', zhēn bù shì yī huí shì.",
@@ -1514,6 +1530,7 @@ export const lessons: ChineseLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "330e5882-37c0-43f2-bc8e-5d12c649e39d",
         "speaker": "学生",
         "chinese": "教授, 我paper 中混用了'意境'与'境界'两词, reviewer要求 我 明确 界定。",
         "pinyin": "Jiàoshòu, wǒ paper zhōng hùnyòng le 'yìjìng' yǔ 'jìngjiè' liǎng cí, reviewer yāoqiú wǒ míngquè jièdìng.",
@@ -1521,6 +1538,7 @@ export const lessons: ChineseLesson[] = [
         "vi": "Thưa giáo sư, bài em trộn lẫn hai từ 'ý cảnh' và 'cảnh giới', reviewer yêu cầu em định nghĩa rõ."
       },
       {
+        cell_id: "4d9d8f01-864a-4f10-a9ba-237756d1d450",
         "speaker": "教授",
         "chinese": "Reviewer 是 对 的。这 两 词 在 王 国 维 处 已 趋 合 流, 但 在 古 典 诗 学 中, '意境' 是 主 流, '境 界' 是 王 国 维 之 创 用。你 必 须 区 分 lineage。",
         "pinyin": "Reviewer shì duì de. Zhè liǎng cí zài Wáng Guówéi chù yǐ qū hé liú, dàn zài gǔdiǎn shīxué zhōng, 'yìjìng' shì zhǔliú, 'jìngjiè' shì Wáng Guówéi zhī chuàng yòng. Nǐ bìxū qūfēn lineage.",
@@ -1528,6 +1546,7 @@ export const lessons: ChineseLesson[] = [
         "vi": "Reviewer đúng. Đến Vương Quốc Duy hai từ đã có xu hướng hợp lưu, nhưng trong thi học cổ điển, 'ý cảnh' là chủ lưu, 'cảnh giới' là sáng dụng của Vương Quốc Duy. Em phải phân biệt lineage."
       },
       {
+        cell_id: "093162a6-7425-4722-98e3-be89ee5d41b4",
         "speaker": "学生",
         "chinese": "如果我研究的是宋词, 应该用哪个?",
         "pinyin": "Rúguǒ wǒ yánjiū de shì Sòng cí, yīnggāi yòng nǎ gè?",
@@ -1535,6 +1554,7 @@ export const lessons: ChineseLesson[] = [
         "vi": "Nếu em nghiên cứu Tống từ, nên dùng cái nào?"
       },
       {
+        cell_id: "2ed318d9-c2c0-4efa-9d3a-8dcdf9acdef4",
         "speaker": "教授",
         "chinese": "宋人自身用'意境'。讨论王国维如何重读宋词时, 切换到'境界'。在论文中明确说明: '本文论及宋人之原意时用意境, 涉及王国维理论时用境界'。这就是规范的概念区分。",
         "pinyin": "Sòng rén zìshēn yòng 'yìjìng'. Tǎolùn Wáng Guówéi rúhé chóng dú Sòng cí shí, qiēhuàn dào 'jìngjiè'. Zài lùnwén zhōng míngquè shuōmíng: 'běnwén lùn jí Sòng rén zhī yuányì shí yòng yìjìng, shèjí Wáng Guówéi lǐlùn shí yòng jìngjiè'. Zhè jiùshì guīfàn de gàiniàn qūfēn.",
@@ -1858,6 +1878,7 @@ export const lessons: ChineseLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "92e6d30a-ccf4-4b85-9cbc-57dd73a93d2b",
         "speaker": "学生",
         "chinese": "教授, 我的论文在'方法选择'这一章, 一直拿不定主意是用文本细读还是接受美学。",
         "pinyin": "Jiàoshòu, wǒ de lùnwén zài 'fāngfǎ xuǎnzé' zhè yī zhāng, yīzhí ná bùdìng zhǔyì shì yòng wénběn xìdú háishì jiēshòu měixué.",
@@ -1865,6 +1886,7 @@ export const lessons: ChineseLesson[] = [
         "vi": "Thưa giáo sư, ở chương 'lựa chọn phương pháp' luận án em, em cứ chần chừ chưa quyết được giữa đọc văn bản tỉ mỉ và mỹ học tiếp nhận."
       },
       {
+        cell_id: "37a2fd9d-643d-49ca-922e-9f6315a0947d",
         "speaker": "教授",
         "chinese": "你的研究问题是什么? 选方法之前, 先想清楚你要回答的问题。",
         "pinyin": "Nǐ de yánjiū wèntí shì shénme? Xuǎn fāngfǎ zhīqián, xiān xiǎng qīngchu nǐ yào huídá de wèntí.",
@@ -1872,6 +1894,7 @@ export const lessons: ChineseLesson[] = [
         "vi": "Câu hỏi nghiên cứu của em là gì? Trước khi chọn phương pháp, trước hết nghĩ rõ câu hỏi em muốn trả lời."
       },
       {
+        cell_id: "b99bae06-272b-4956-ab4e-291e8aaca862",
         "speaker": "学生",
         "chinese": "我想知道'为什么《红楼梦》在 19 世纪末士大夫圈中之接受方式与今日大众之接受方式如此不同'。",
         "pinyin": "Wǒ xiǎng zhīdào 'wèishéme «Hónglóumèng» zài 19 shìjì mò shìdàfū quān zhōng zhī jiēshòu fāngshì yǔ jīnrì dàzhòng zhī jiēshòu fāngshì rúcǐ bùtóng'.",
@@ -1879,6 +1902,7 @@ export const lessons: ChineseLesson[] = [
         "vi": "Em muốn biết 'tại sao cách tiếp nhận Hồng Lâu Mộng trong giới sĩ đại phu cuối thế kỷ 19 và cách tiếp nhận của đại chúng hôm nay khác biệt đến vậy'."
       },
       {
+        cell_id: "c63fc852-2805-4561-be92-b15465aad021",
         "speaker": "教授",
         "chinese": "'为什么 接受 不同'是 接受美学问题, 不是 文本 细读 问题。文本 细读 适合 微观 结构 分析。但若 同时 想 know'文本 中 哪些 features 引发 不同 接受', 就 需要 mixed methods。",
         "pinyin": "'Wèishéme jiēshòu bùtóng' shì jiēshòu měixué wèntí, bùshì wénběn xìdú wèntí. Wénběn xìdú shìhé wéiguān jiégòu fēnxī. Dàn ruò tóngshí xiǎng know 'wénběn zhōng nǎxiē features yǐnfā bùtóng jiēshòu', jiù xūyào mixed methods.",
@@ -2188,6 +2212,7 @@ export const lessons: ChineseLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "eb9c5b6e-6fa3-4b7b-ab46-071c09a8dc0c",
         "speaker": "审稿人A",
         "chinese": "你怎么看这篇唐诗法译比较的paper?",
         "pinyin": "Nǐ zěnme kàn zhè piān Táng shī fǎyì bǐjiào de paper?",
@@ -2195,6 +2220,7 @@ export const lessons: ChineseLesson[] = [
         "vi": "Anh/chị nghĩ gì về bài so sánh dịch tiếng Pháp của thơ Đường này?"
       },
       {
+        cell_id: "5c032ce9-6300-4be3-9bec-1a3bb2f8f4e3",
         "speaker": "审稿人B",
         "chinese": "选题颇具价值, 三种译本之比较亦有新意。然方法论层面, 形与神之 二分 略 嫌 简化。",
         "pinyin": "Xuǎntí pō jù jiàzhí, sān zhǒng yìběn zhī bǐjiào yì yǒu xīnyì. Rán fāngfǎlùn céngmiàn, xíng yǔ shén zhī èr fēn lüè xián jiǎnhuà.",
@@ -2202,6 +2228,7 @@ export const lessons: ChineseLesson[] = [
         "vi": "Đề tài khá có giá trị, so sánh ba bản dịch cũng có cái mới. Nhưng tầng phương pháp luận, sự phân đôi hình/thần hơi đơn giản hóa."
       },
       {
+        cell_id: "06f26ceb-d331-47ef-bf25-e98f964ef521",
         "speaker": "审稿人A",
         "chinese": "你建议reject还是major revision?",
         "pinyin": "Nǐ jiànyì reject háishì major revision?",
@@ -2209,6 +2236,7 @@ export const lessons: ChineseLesson[] = [
         "vi": "Anh/chị khuyến nghị reject hay major revision?"
       },
       {
+        cell_id: "5530982c-77af-4851-b059-6975105cb91e",
         "speaker": "审稿人B",
         "chinese": "Major revision。要求作者增加 source-domain / target-domain 多 维分析, 并 acknowledge 三 种 译本 之 时间差。瑕不掩瑜, 但需要补足。",
         "pinyin": "Major revision. Yāoqiú zuòzhě zēngjiā source-domain / target-domain duōwéi fēnxī, bìng acknowledge sān zhǒng yìběn zhī shíjiān chā. Xiá bù yǎn yú, dàn xūyào bǔzú.",
@@ -2539,6 +2567,7 @@ export const lessons: ChineseLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "5342c398-e56f-4e7b-abef-8cfc284d2a49",
         "speaker": "评委",
         "chinese": "你所讨论的'卮言'与'寓言'两个概念之间, 是否有 overlap 之处? 若 overlap, 你 的 critical lens 如何 distinguish?",
         "pinyin": "Nǐ suǒ tǎolùn de 'zhīyán' yǔ 'yùyán' liǎng gè gàiniàn zhī jiān, shìfǒu yǒu overlap zhī chù? Ruò overlap, nǐ de critical lens rúhé distinguish?",
@@ -2546,6 +2575,7 @@ export const lessons: ChineseLesson[] = [
         "vi": "Hai khái niệm 'chi ngôn' và 'ngụ ngôn' anh/chị thảo luận, có overlap không? Nếu có, critical lens của anh/chị phân biệt thế nào?"
       },
       {
+        cell_id: "83d9c0e1-12e6-438f-84ff-7cb00ee7949e",
         "speaker": "答辩人",
         "chinese": "感谢评委指出。您所提之问题极具启发性。诚如您所言, 卮言与寓言之间确有重叠, 庄子 自身 亦未 严格 区分。",
         "pinyin": "Gǎnxiè píngwěi zhǐchū. Nín suǒ tí zhī wèntí jí jù qǐfāxìng. Chéngrú nín suǒ yán, zhīyán yǔ yùyán zhī jiān què yǒu chóngdié, Zhuāngzǐ zìshēn yì wèi yángé qūfēn.",
@@ -2553,6 +2583,7 @@ export const lessons: ChineseLesson[] = [
         "vi": "Cảm ơn ủy viên đã chỉ ra. Câu hỏi rất gợi mở. Đúng như thầy/cô nói, chi ngôn và ngụ ngôn có chồng lấp; Trang Tử bản thân cũng không phân biệt nghiêm ngặt."
       },
       {
+        cell_id: "32c4a6e3-07c1-4fdd-98f5-f4b8d069b53f",
         "speaker": "答辩人",
         "chinese": "笔者拟以 narrative function 加以区分: 寓言以 plot-narrative 为主, 卮言以 dialogic-aphoristic 为主。两者 在 形式 上 重叠, 在 功能 上 异质。",
         "pinyin": "Bǐzhě nǐ yǐ narrative function jiāyǐ qūfēn: yùyán yǐ plot-narrative wèi zhǔ, zhīyán yǐ dialogic-aphoristic wèi zhǔ. Liǎngzhě zài xíngshì shàng chóngdié, zài gōngnéng shàng yìzhì.",
@@ -2560,6 +2591,7 @@ export const lessons: ChineseLesson[] = [
         "vi": "Tác giả định phân biệt theo narrative function: ngụ ngôn chủ yếu plot-narrative, chi ngôn chủ yếu dialogic-aphoristic. Hai cái chồng lấp về hình thức nhưng dị chất về chức năng."
       },
       {
+        cell_id: "0dbe6b15-a031-4771-a58b-d92651a33e66",
         "speaker": "评委",
         "chinese": "此 distinction 论 来 颇 有 道 理, 然 你 paper 中 似乎 未 充 分 展 开, 还 望 在 修 订 版 中 强化。",
         "pinyin": "Cǐ distinction lùn lái pō yǒu dàolǐ, rán nǐ paper zhōng sìhū wèi chōngfèn zhǎnkāi, hái wàng zài xiūdìng bǎn zhōng qiánghuà.",
@@ -2883,6 +2915,7 @@ export const lessons: ChineseLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "bcc52965-09af-4afa-a69e-f687ff25cd87",
         "speaker": "学生",
         "chinese": "教授, 我的摘要 reviewer 说太长, 380词。但您之前说'问题、方法、案例、结论'四要素都要写。",
         "pinyin": "Jiàoshòu, wǒ de zhāiyào reviewer shuō tài cháng, 380 cí. Dàn nín zhīqián shuō 'wèntí, fāngfǎ, ànlì, jiélùn' sì yàosù dōu yào xiě.",
@@ -2890,6 +2923,7 @@ export const lessons: ChineseLesson[] = [
         "vi": "Thưa giáo sư, tóm tắt của em reviewer nói quá dài, 380 từ. Nhưng trước thầy/cô nói 'câu hỏi, phương pháp, case, kết luận' — bốn yếu tố đều phải viết."
       },
       {
+        cell_id: "d2401bf8-5dc3-4350-94f2-6f783b31f3a8",
         "speaker": "教授",
         "chinese": "四要素都写, 但每个要素只用1-2句, 这是关键。380词意味着每个要素3-4句, 太冗。",
         "pinyin": "Sì yàosù dōu xiě, dàn měi gè yàosù zhǐ yòng 1-2 jù, zhè shì guānjiàn. 380 cí yìwèizhe měi gè yàosù 3-4 jù, tài rǒng.",
@@ -2897,6 +2931,7 @@ export const lessons: ChineseLesson[] = [
         "vi": "Bốn yếu tố đều viết, nhưng mỗi yếu tố chỉ dùng 1-2 câu, đây là điểm then chốt. 380 từ nghĩa là mỗi yếu tố khoảng 3-4 câu, quá rườm."
       },
       {
+        cell_id: "45c8ac3c-bbcd-4ea4-bcfd-2b1734117c26",
         "speaker": "学生",
         "chinese": "标准长度大概是多少?",
         "pinyin": "Biāozhǔn chángdù dàgài shì duōshǎo?",
@@ -2904,6 +2939,7 @@ export const lessons: ChineseLesson[] = [
         "vi": "Độ dài chuẩn khoảng bao nhiêu?"
       },
       {
+        cell_id: "47e2c4a1-d628-4cc2-9526-c4a2ce11b682",
         "speaker": "教授",
         "chinese": "不同期刊不同。古典文学领域 200-300词最常见, 比较文学期刊允许到350词。你的目标250词, 'delete first, qualify second'。",
         "pinyin": "Bùtóng qīkān bùtóng. Gǔdiǎn wénxué lǐngyù 200-300 cí zuì chángjiàn, bǐjiào wénxué qīkān yǔnxǔ dào 350 cí. Nǐ de mùbiāo 250 cí, 'delete first, qualify second'.",
@@ -3241,6 +3277,7 @@ export const lessons: ChineseLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "a969783f-3e29-49f0-9710-971ff2e4bcc8",
         "speaker": "新审稿人",
         "chinese": "教授, 我第一次给《文学评论》审稿, 不知道review letter怎么开头比较合适。",
         "pinyin": "Jiàoshòu, wǒ dì yī cì gěi «Wénxué Pínglùn» shěngǎo, bù zhīdào review letter zěnme kāitóu bǐjiào héshì.",
@@ -3248,6 +3285,7 @@ export const lessons: ChineseLesson[] = [
         "vi": "Thưa giáo sư, em lần đầu phản biện cho Văn Học Bình Luận, không biết review letter nên mở đầu thế nào cho phù hợp."
       },
       {
+        cell_id: "889c0a23-5d8f-48cb-9696-831b663ef501",
         "speaker": "资深审稿人",
         "chinese": "标准开头: '笔者已就该手稿展开仔细审读, 现就其学术贡献、方法论及表述三方面, 提供如下评审意见。' 客观、专业、保留余地。",
         "pinyin": "Biāozhǔn kāitóu: 'bǐzhě yǐ jiù gāi shǒugǎo zhǎnkāi zǐxì shěndú, xiàn jiù qí xuéshù gòngxiàn, fāngfǎlùn jí biǎoshù sān fāngmiàn, tígōng rúxià píngshěn yìjiàn.' Kèguān, zhuānyè, bǎoliú yúdì.",
@@ -3255,6 +3293,7 @@ export const lessons: ChineseLesson[] = [
         "vi": "Mở đầu chuẩn: 'Tác giả đã đọc kỹ bản thảo, nay cung cấp ý kiến đánh giá về ba mặt: đóng góp, phương pháp luận, cách trình bày.' Khách quan, chuyên nghiệp, để lại không gian."
       },
       {
+        cell_id: "1e8816be-e4f5-49f7-94a5-63fee5b1b860",
         "speaker": "新审稿人",
         "chinese": "如果我觉得这paper完全没救了, 也要这样温和?",
         "pinyin": "Rúguǒ wǒ juéde zhè paper wánquán méi jiùle, yě yào zhèyàng wēnhé?",
@@ -3262,6 +3301,7 @@ export const lessons: ChineseLesson[] = [
         "vi": "Nếu em cảm thấy bài này không cứu được nữa, cũng phải nhẹ nhàng thế à?"
       },
       {
+        cell_id: "8770d1f1-1a4d-4fc8-b4b9-f8ba49efcdc8",
         "speaker": "资深审稿人",
         "chinese": "尤其要温和。Reject letter如果情绪化, 作者会上诉到 editor, 麻烦你。专业的critique让reject站得住脚, 同时尊重作者人格。 '字斟句酌' 是核心。",
         "pinyin": "Yóuqí yào wēnhé. Reject letter rúguǒ qíngxùhuà, zuòzhě huì shàngsù dào editor, máfan nǐ. Zhuānyè de critique ràng reject zhàn de zhù jiǎo, tóngshí zūnzhòng zuòzhě réngé. 'Zì zhēn jù zhuó' shì héxīn.",
@@ -3486,10 +3526,10 @@ export const lessons: ChineseLesson[] = [
       "pronunciation_focus_en": ["宗白华 → Zōng Báihuá (the aesthetician Zong Baihua)","心物一元 → xīn wù yī yuán ('mind and matter as one origin' — Zong's formula; no exact English equivalent)","元命题 → yuán mìngtí ('meta-proposition')","别开生面 → biékāishēngmiàn (idiom: 'to open a fresh dimension')"]}
     ],
     "dialogue": [
-      {"speaker": "研究生", "chinese": "老师, 用西方理论阐释中国当代艺术, 是否必然导致削足适履?", "pinyin": "Lǎoshī, yòng Xīfāng lǐlùn chǎnshì Zhōngguó dāngdài yìshù, shìfǒu bìrán dǎozhì xuēzúshìlǚ?", "english": "Professor, does interpreting Chinese contemporary art through Western theory necessarily lead to cutting the foot to fit the shoe?", "vi": "Thưa thầy, dùng lý thuyết phương Tây giải thích nghệ thuật đương đại Trung Quốc, có phải tất yếu dẫn đến gọt chân cho vừa giày?"},
-      {"speaker": "教授", "chinese": "不可一概而论。关键不在是否使用西方理论, 而在使用者是否清楚: 你是用理论去'发现', 还是用理论去'覆盖'?", "pinyin": "Bùkě yīgài'érlùn. Guānjiàn bù zài shìfǒu shǐyòng Xīfāng lǐlùn, ér zài shǐyòngzhě shìfǒu qīngchǔ: nǐ shì yòng lǐlùn qù 'fāxiàn', háishì yòng lǐlùn qù 'fùgài'?", "english": "One cannot generalize. The key is not whether one uses Western theory but whether the user is clear: are you using theory to 'discover' or using theory to 'cover over'?", "vi": "Không thể nói chung. Mấu chốt không nằm ở chỗ có dùng lý thuyết phương Tây không, mà ở chỗ người dùng có rõ: bạn dùng lý thuyết để 'phát hiện', hay dùng lý thuyết để 'che phủ'?"},
-      {"speaker": "研究生", "chinese": "'发现'与'覆盖'之别, 以何判之?", "pinyin": "'Fāxiàn' yǔ 'fùgài' zhī bié, yǐ hé pàn zhī?", "english": "How does one judge the difference between 'discovering' and 'covering over'?", "vi": "Sự khác biệt giữa 'phát hiện' và 'che phủ', lấy gì để phán định?"},
-      {"speaker": "教授", "chinese": "以作品为判。若理论让你看见了先前忽略的东西, 那是发现; 若理论让你对作品本身的异质性视而不见, 那是覆盖。", "pinyin": "Yǐ zuòpǐn wéi pàn. Ruò lǐlùn ràng nǐ kànjiànle xiānqián hūlüè de dōngxī, nà shì fāxiàn; ruò lǐlùn ràng nǐ duì zuòpǐn běnshēn de yìzhìxìng shì'érbùjiàn, nà shì fùgài.", "english": "Take the work as the criterion. If theory lets you see something previously overlooked, that is discovery; if theory makes you blind to the heterogeneity of the work itself, that is covering over.", "vi": "Lấy tác phẩm làm tiêu chí. Nếu lý thuyết khiến bạn thấy được điều trước kia bỏ qua, đó là phát hiện; nếu lý thuyết khiến bạn nhìn mà không thấy tính dị chất của bản thân tác phẩm, đó là che phủ."}
+      { cell_id: "77123bfa-5d2b-4f4a-8070-bd3a261c0da1","speaker": "研究生", "chinese": "老师, 用西方理论阐释中国当代艺术, 是否必然导致削足适履?", "pinyin": "Lǎoshī, yòng Xīfāng lǐlùn chǎnshì Zhōngguó dāngdài yìshù, shìfǒu bìrán dǎozhì xuēzúshìlǚ?", "english": "Professor, does interpreting Chinese contemporary art through Western theory necessarily lead to cutting the foot to fit the shoe?", "vi": "Thưa thầy, dùng lý thuyết phương Tây giải thích nghệ thuật đương đại Trung Quốc, có phải tất yếu dẫn đến gọt chân cho vừa giày?"},
+      { cell_id: "539810a3-140f-4271-913d-d71f047960b1","speaker": "教授", "chinese": "不可一概而论。关键不在是否使用西方理论, 而在使用者是否清楚: 你是用理论去'发现', 还是用理论去'覆盖'?", "pinyin": "Bùkě yīgài'érlùn. Guānjiàn bù zài shìfǒu shǐyòng Xīfāng lǐlùn, ér zài shǐyòngzhě shìfǒu qīngchǔ: nǐ shì yòng lǐlùn qù 'fāxiàn', háishì yòng lǐlùn qù 'fùgài'?", "english": "One cannot generalize. The key is not whether one uses Western theory but whether the user is clear: are you using theory to 'discover' or using theory to 'cover over'?", "vi": "Không thể nói chung. Mấu chốt không nằm ở chỗ có dùng lý thuyết phương Tây không, mà ở chỗ người dùng có rõ: bạn dùng lý thuyết để 'phát hiện', hay dùng lý thuyết để 'che phủ'?"},
+      { cell_id: "53ac2c4f-54f3-40fa-ad2a-cc997f87206c","speaker": "研究生", "chinese": "'发现'与'覆盖'之别, 以何判之?", "pinyin": "'Fāxiàn' yǔ 'fùgài' zhī bié, yǐ hé pàn zhī?", "english": "How does one judge the difference between 'discovering' and 'covering over'?", "vi": "Sự khác biệt giữa 'phát hiện' và 'che phủ', lấy gì để phán định?"},
+      { cell_id: "f481d423-c230-4bab-a436-ced2bf2821d5","speaker": "教授", "chinese": "以作品为判。若理论让你看见了先前忽略的东西, 那是发现; 若理论让你对作品本身的异质性视而不见, 那是覆盖。", "pinyin": "Yǐ zuòpǐn wéi pàn. Ruò lǐlùn ràng nǐ kànjiànle xiānqián hūlüè de dōngxī, nà shì fāxiàn; ruò lǐlùn ràng nǐ duì zuòpǐn běnshēn de yìzhìxìng shì'érbùjiàn, nà shì fùgài.", "english": "Take the work as the criterion. If theory lets you see something previously overlooked, that is discovery; if theory makes you blind to the heterogeneity of the work itself, that is covering over.", "vi": "Lấy tác phẩm làm tiêu chí. Nếu lý thuyết khiến bạn thấy được điều trước kia bỏ qua, đó là phát hiện; nếu lý thuyết khiến bạn nhìn mà không thấy tính dị chất của bản thân tác phẩm, đó là che phủ."}
     ],
     "dialogue_long": [
       {"speaker": "研究生", "chinese": "老师, 我打算以论文探讨徐冰《天书》中的'不可读性'。但不知如何将'不可读'这样一个否定性概念, 转化为可操作的批评框架?", "pinyin": "Lǎoshī, wǒ dǎsuàn yǐ lùnwén tàntǎo Xú Bīng «Tiānshū» zhōng de 'bùkědúxìng'. Dàn bùzhī rúhé jiāng 'bùkědú' zhèyàng yī gè fǒudìngxìng gàiniàn, zhuǎnhuà wéi kě cāozuò de pīpíng kuàngjià?", "english": "Professor, I plan to use my thesis to explore the 'unreadability' in Xu Bing's 'Book from the Sky.' But I don't know how to transform such a negative concept as 'unreadable' into an operable critical framework.", "vi": "Thưa thầy, em định lấy luận văn thảo luận 'tính không thể đọc' trong 'Thiên Thư' của Từ Băng. Nhưng không biết làm sao để biến một khái niệm phủ định như 'không thể đọc' thành khung phê bình khả thao tác?"},
@@ -3556,10 +3596,10 @@ export const lessons: ChineseLesson[] = [
       "pronunciation_focus_en": ["臧否 → zāngpǐ ('to appraise as good or bad' — written register)","照亮 → zhàoliàng ('to illuminate')","建构 → jiàngòu ('to construct')","忽略 → hūlüè ('to overlook')"]}
     ],
     "dialogue": [
-      {"speaker": "研究生", "chinese": "老师, 我写影评时常陷入'复述情节'的惯性, 如何突破?", "pinyin": "Lǎoshī, wǒ xiě yǐngpíng shí cháng xiànrù 'fùshù qíngjié' de guànxìng, rúhé túpò?", "english": "Professor, when writing film reviews I often fall into the habit of 'recapping the plot.' How to break through?", "vi": "Thưa thầy, khi viết phê bình phim em thường rơi vào thói quen 'kể lại cốt truyện', làm sao đột phá?"},
-      {"speaker": "教授", "chinese": "给自己一个规则: 全文不超三句涉及情节。你被迫谈论的, 就只能是画面、声音、剪接、面孔 — 而这正是批评。", "pinyin": "Gěi zìjǐ yī gè guīzé: quán wén bù chāo sān jù shèjí qíngjié. Nǐ bèi pò tánlùn de, jiù zhǐ néng shì huàmiàn, shēngyīn, jiǎnjiē, miànkǒng — ér zhè zhèng shì pīpíng.", "english": "Give yourself a rule: no more than three sentences in the whole piece may touch on plot. What you are forced to discuss can only be image, sound, editing, faces — and that is precisely criticism.", "vi": "Hãy cho mình một quy tắc: toàn bài không quá ba câu đụng đến cốt truyện. Cái em bị buộc phải bàn, chỉ có thể là hình ảnh, âm thanh, cắt dựng, gương mặt — và đó chính là phê bình."},
-      {"speaker": "研究生", "chinese": "但是, 不交代情节, 读者如何理解我说的是哪个场景?", "pinyin": "Dànshì, bù jiāodài qíngjié, dúzhě rúhé lǐjiě wǒ shuō de shì nǎge chǎngjǐng?", "english": "But without providing plot, how will the reader understand which scene I'm talking about?", "vi": "Nhưng, không dặn dò cốt truyện, độc giả làm sao hiểu em đang nói cảnh nào?"},
-      {"speaker": "教授", "chinese": "用一句话交代情境足矣。'深夜, 厨房, 两人对坐' — 这就是全部读者需要知道的。其余的, 交给你的分析。", "pinyin": "Yòng yī jù huà jiāodài qíngjìng zú yǐ. 'Shēnyè, chúfáng, liǎng rén duìzuò' — zhè jiùshì quánbù dúzhě xūyào zhīdào de. Qíyú de, jiāo gěi nǐ de fēnxī.", "english": "One sentence to give the situation is enough. 'Late night, kitchen, two people sitting across from each other' — that is all the reader needs to know. The rest, leave to your analysis.", "vi": "Một câu dặn dò tình huống là đủ. 'Đêm khuya, nhà bếp, hai người ngồi đối diện' — đó là tất cả những gì độc giả cần biết. Phần còn lại, giao cho phân tích của em."}
+      { cell_id: "b4578844-3d07-4d5f-8237-f0859c19c26a","speaker": "研究生", "chinese": "老师, 我写影评时常陷入'复述情节'的惯性, 如何突破?", "pinyin": "Lǎoshī, wǒ xiě yǐngpíng shí cháng xiànrù 'fùshù qíngjié' de guànxìng, rúhé túpò?", "english": "Professor, when writing film reviews I often fall into the habit of 'recapping the plot.' How to break through?", "vi": "Thưa thầy, khi viết phê bình phim em thường rơi vào thói quen 'kể lại cốt truyện', làm sao đột phá?"},
+      { cell_id: "1fb5b32e-9ebb-4675-a62a-d4171edf13ea","speaker": "教授", "chinese": "给自己一个规则: 全文不超三句涉及情节。你被迫谈论的, 就只能是画面、声音、剪接、面孔 — 而这正是批评。", "pinyin": "Gěi zìjǐ yī gè guīzé: quán wén bù chāo sān jù shèjí qíngjié. Nǐ bèi pò tánlùn de, jiù zhǐ néng shì huàmiàn, shēngyīn, jiǎnjiē, miànkǒng — ér zhè zhèng shì pīpíng.", "english": "Give yourself a rule: no more than three sentences in the whole piece may touch on plot. What you are forced to discuss can only be image, sound, editing, faces — and that is precisely criticism.", "vi": "Hãy cho mình một quy tắc: toàn bài không quá ba câu đụng đến cốt truyện. Cái em bị buộc phải bàn, chỉ có thể là hình ảnh, âm thanh, cắt dựng, gương mặt — và đó chính là phê bình."},
+      { cell_id: "98a315e5-debc-4445-8061-8ab4f64fc9e3","speaker": "研究生", "chinese": "但是, 不交代情节, 读者如何理解我说的是哪个场景?", "pinyin": "Dànshì, bù jiāodài qíngjié, dúzhě rúhé lǐjiě wǒ shuō de shì nǎge chǎngjǐng?", "english": "But without providing plot, how will the reader understand which scene I'm talking about?", "vi": "Nhưng, không dặn dò cốt truyện, độc giả làm sao hiểu em đang nói cảnh nào?"},
+      { cell_id: "ae6a3d36-9116-4424-b1ed-0ec172618775","speaker": "教授", "chinese": "用一句话交代情境足矣。'深夜, 厨房, 两人对坐' — 这就是全部读者需要知道的。其余的, 交给你的分析。", "pinyin": "Yòng yī jù huà jiāodài qíngjìng zú yǐ. 'Shēnyè, chúfáng, liǎng rén duìzuò' — zhè jiùshì quánbù dúzhě xūyào zhīdào de. Qíyú de, jiāo gěi nǐ de fēnxī.", "english": "One sentence to give the situation is enough. 'Late night, kitchen, two people sitting across from each other' — that is all the reader needs to know. The rest, leave to your analysis.", "vi": "Một câu dặn dò tình huống là đủ. 'Đêm khuya, nhà bếp, hai người ngồi đối diện' — đó là tất cả những gì độc giả cần biết. Phần còn lại, giao cho phân tích của em."}
     ],
     "dialogue_long": [
       {"speaker": "研究生", "chinese": "想请教老师, 关于中国电影批评中'作者论'的运用: 是否每个导演都可以用作者论来分析?", "pinyin": "Xiǎng qǐngjiào lǎoshī, guānyú Zhōngguó diànyǐng pīpíng zhōng 'zuòzhělùn' de yùnyòng: shìfǒu měi gè dǎoyǎn dōu kěyǐ yòng zuòzhělùn lái fēnxī?", "english": "I want to ask about the use of 'auteur theory' in Chinese film criticism: can every director be analyzed through auteur theory?", "vi": "Em muốn thỉnh giáo thầy về việc vận dụng 'thuyết tác giả' trong phê bình điện ảnh Trung Quốc: có phải đạo diễn nào cũng có thể dùng thuyết tác giả để phân tích?"},
@@ -3617,8 +3657,8 @@ export const lessons: ChineseLesson[] = [
       "pronunciation_focus_en": ["说服 → shuōfú ('to persuade')","昭示 → zhāoshì ('to declare/proclaim openly')","信念 → xìnniàn ('conviction/belief')","认同 → rèntóng ('to identify with / endorse')"]}
     ],
     "dialogue": [
-      {"speaker": "研究生", "chinese": "老师, 分析政府工作报告的修辞, 学术上是否敏感?", "pinyin": "Lǎoshī, fēnxī zhèngfǔ gōngzuò bàogào de xiūcí, xuéshù shàng shìfǒu mǐngǎn?", "english": "Professor, is it academically sensitive to analyze the rhetoric of the government work report?", "vi": "Thưa thầy, phân tích tu từ của báo cáo công tác chính phủ, về mặt học thuật có nhạy cảm không?"},
-      {"speaker": "教授", "chinese": "关键在于你的分析立场。你若站在'揭露'的立场, 那是政治; 你若站在'描述'的立场, 那是学术。描述其修辞机制, 而不评判其政治立场 — 这是学术的边界。", "pinyin": "Guānjiàn zài yú nǐ de fēnxī lìchǎng. Nǐ ruò zhàn zài 'jiēlù' de lìchǎng, nà shì zhèngzhì; nǐ ruò zhàn zài 'miáoshù' de lìchǎng, nà shì xuéshù. Miáoshù qí xiūcí jīzhì, ér bù píngpàn qí zhèngzhì lìchǎng — zhè shì xuéshù de biānjiè.", "english": "The key is your analytical stance. If you take a stance of 'exposing,' that is politics; if you take a stance of 'describing,' that is scholarship. Describe its rhetorical mechanisms without judging its political position — that is the boundary of scholarship.", "vi": "Mấu chốt nằm ở lập trường phân tích của em. Nếu em đứng ở lập trường 'vạch trần', đó là chính trị; nếu em đứng ở lập trường 'mô tả', đó là học thuật. Mô tả cơ chế tu từ của nó, mà không phán xét lập trường chính trị — đó là biên giới của học thuật."}
+      { cell_id: "27f55c7d-b3fa-4d61-b1b6-17a259e91d4e","speaker": "研究生", "chinese": "老师, 分析政府工作报告的修辞, 学术上是否敏感?", "pinyin": "Lǎoshī, fēnxī zhèngfǔ gōngzuò bàogào de xiūcí, xuéshù shàng shìfǒu mǐngǎn?", "english": "Professor, is it academically sensitive to analyze the rhetoric of the government work report?", "vi": "Thưa thầy, phân tích tu từ của báo cáo công tác chính phủ, về mặt học thuật có nhạy cảm không?"},
+      { cell_id: "14a36321-f21d-44e2-aa9c-3ca9deda7d8d","speaker": "教授", "chinese": "关键在于你的分析立场。你若站在'揭露'的立场, 那是政治; 你若站在'描述'的立场, 那是学术。描述其修辞机制, 而不评判其政治立场 — 这是学术的边界。", "pinyin": "Guānjiàn zài yú nǐ de fēnxī lìchǎng. Nǐ ruò zhàn zài 'jiēlù' de lìchǎng, nà shì zhèngzhì; nǐ ruò zhàn zài 'miáoshù' de lìchǎng, nà shì xuéshù. Miáoshù qí xiūcí jīzhì, ér bù píngpàn qí zhèngzhì lìchǎng — zhè shì xuéshù de biānjiè.", "english": "The key is your analytical stance. If you take a stance of 'exposing,' that is politics; if you take a stance of 'describing,' that is scholarship. Describe its rhetorical mechanisms without judging its political position — that is the boundary of scholarship.", "vi": "Mấu chốt nằm ở lập trường phân tích của em. Nếu em đứng ở lập trường 'vạch trần', đó là chính trị; nếu em đứng ở lập trường 'mô tả', đó là học thuật. Mô tả cơ chế tu từ của nó, mà không phán xét lập trường chính trị — đó là biên giới của học thuật."}
     ],
     "dialogue_long": [
       {"speaker": "研究生", "chinese": "我想研究十八大以来政府工作报告中'创新'一词的语义演变。但不知从何入手?", "pinyin": "Wǒ xiǎng yánjiū Shíbā Dà yǐlái zhèngfǔ gōngzuò bàogào zhōng 'chuàngxīn' yī cí de yǔyì yǎnbiàn. Dàn bùzhī cóng hé rùshǒu?", "english": "I want to study the semantic evolution of the word 'innovation' in government work reports since the 18th Party Congress. But I don't know where to start.", "vi": "Em muốn nghiên cứu sự biến thiên ngữ nghĩa của từ 'sáng tạo' trong báo cáo công tác chính phủ từ Đại hội 18. Nhưng không biết bắt đầu từ đâu?"},
@@ -3671,8 +3711,8 @@ export const lessons: ChineseLesson[] = [
       "pronunciation_focus_en": ["压倒 → yādǎo ('to overwhelm')","同质 → tóngzhì ('homogeneous')","强化 → qiánghuà ('to reinforce')","沦为 → lúnwéi ('to degenerate into' — pejorative)"]}
     ],
     "dialogue": [
-      {"speaker": "市民", "chinese": "听证会我参加过, 说了也白说, 价格最后还是涨了。", "pinyin": "Tīngzhènghuì wǒ cānjiā guò, shuōle yě bái shuō, jiàgé zuìhòu háishì zhǎngle.", "english": "I've been to a hearing — spoke but in vain; prices still went up in the end.", "vi": "Tôi từng tham gia phiên điều trần, nói cũng như không, giá cuối cùng vẫn tăng."},
-      {"speaker": "Linh", "chinese": "您说得没错 — 这是听证制度目前最大的困境。但'说了白说'与'不去说'之间, 仍有质的区别: 前者留下了记录, 后者什么都没留下。", "pinyin": "Nín shuō de méi cuò — zhè shì tīngzhèng zhìdù mùqián zuì dà de kùnjìng. Dàn 'shuōle bái shuō' yǔ 'bù qù shuō' zhījiān, réng yǒu zhì de qūbié: qiánzhě liúxiàle jìlù, hòuzhě shénme dōu méi liúxià.", "english": "You're right — that is the biggest predicament of the hearing system at present. But between 'spoke in vain' and 'didn't go to speak,' there remains a qualitative difference: the former leaves a record; the latter leaves nothing.", "vi": "Bác nói đúng — đó là khốn cảnh lớn nhất của chế độ điều trần hiện nay. Nhưng giữa 'nói cũng như không' và 'không đi nói', vẫn có khác biệt về chất: bên trước để lại ghi chép, bên sau không để lại gì."}
+      { cell_id: "44a5cf6f-d07c-4733-93a6-65f0edc6c737","speaker": "市民", "chinese": "听证会我参加过, 说了也白说, 价格最后还是涨了。", "pinyin": "Tīngzhènghuì wǒ cānjiā guò, shuōle yě bái shuō, jiàgé zuìhòu háishì zhǎngle.", "english": "I've been to a hearing — spoke but in vain; prices still went up in the end.", "vi": "Tôi từng tham gia phiên điều trần, nói cũng như không, giá cuối cùng vẫn tăng."},
+      { cell_id: "fdaf9d1b-9510-4925-8a4d-23d23d42eabc","speaker": "Linh", "chinese": "您说得没错 — 这是听证制度目前最大的困境。但'说了白说'与'不去说'之间, 仍有质的区别: 前者留下了记录, 后者什么都没留下。", "pinyin": "Nín shuō de méi cuò — zhè shì tīngzhèng zhìdù mùqián zuì dà de kùnjìng. Dàn 'shuōle bái shuō' yǔ 'bù qù shuō' zhījiān, réng yǒu zhì de qūbié: qiánzhě liúxiàle jìlù, hòuzhě shénme dōu méi liúxià.", "english": "You're right — that is the biggest predicament of the hearing system at present. But between 'spoke in vain' and 'didn't go to speak,' there remains a qualitative difference: the former leaves a record; the latter leaves nothing.", "vi": "Bác nói đúng — đó là khốn cảnh lớn nhất của chế độ điều trần hiện nay. Nhưng giữa 'nói cũng như không' và 'không đi nói', vẫn có khác biệt về chất: bên trước để lại ghi chép, bên sau không để lại gì."}
     ],
     "dialogue_long": [
       {"speaker": "主持人 (社区议事厅)", "chinese": "今天的议题是: 小区停车位不足, 是否应该将部分绿地改为停车场。请各位邻居发表意见。", "pinyin": "Jīntiān de yìtí shì: xiǎoqū tíngchēwèi bùzú, shìfǒu yīnggāi jiāng bùfèn lǜdì gǎi wéi tíngchēchǎng. Qǐng gèwèi línjū fābiǎo yìjiàn.", "english": "Today's topic: insufficient parking spaces in the compound — should part of the green area be converted to a parking lot? Neighbors, please share your views.", "vi": "Chủ đề hôm nay: chỗ đỗ xe trong tiểu khu không đủ, có nên chuyển một phần đất xanh thành bãi đỗ xe không. Mời các bà con hàng xóm phát biểu ý kiến."},
@@ -3720,8 +3760,8 @@ export const lessons: ChineseLesson[] = [
       {"chinese": "答辩之要义, 不在辩'倒'对方, 而在让对方看见: 你的结论是在充分考虑反方意见之后, 依然能够成立的。", "pinyin": "Dábiàn zhī yàoyì, bù zài biàn 'dǎo' duìfāng, ér zài ràng duìfāng kànjiàn: nǐ de jiélùn shì zài chōngfèn kǎolǜ fǎn fāng yìjiàn zhīhòu, yīrán nénggòu chénglì de.", "english": "The essential point of a defense is not to 'defeat' the opponent but to let the opponent see: your conclusion can still stand after having fully considered the opposing views.", "vi": "Yếu nghĩa của đáp biện không nằm ở 'đánh bại' đối phương, mà ở khiến đối phương thấy: kết luận của bạn sau khi đã xem xét đầy đủ ý kiến phản phương, vẫn có thể thành lập."}
     ],
     "dialogue": [
-      {"speaker": "答辩委员", "chinese": "你这篇论文最大的弱点是什么?", "pinyin": "Nǐ zhè piān lùnwén zuì dà de ruòdiǎn shì shénme?", "english": "What is the biggest weakness of this thesis?", "vi": "Điểm yếu lớn nhất của luận văn này là gì?"},
-      {"speaker": "学生", "chinese": "在于史料范围。本文仅依据已刊文献, 未涉档案材料。这一局限, 笔者在绪论中已予说明。", "pinyin": "Zàiyú shǐliào fànwéi. Běn wén jǐn yījù yǐ kān wénxiàn, wèi shè dàng'àn cáiliào. Zhè yī júxiàn, bǐzhě zài xùlùn zhōng yǐ yǔ shuōmíng.", "english": "In the scope of historical sources. This paper relies only on published documents and has not touched archival materials. This limitation was already noted in the introduction.", "vi": "Nằm ở phạm vi sử liệu. Bài này chỉ dựa trên văn hiến đã xuất bản, chưa đụng đến tài liệu lưu trữ. Giới hạn này, bút giả đã nói rõ trong phần tựa luận."}
+      { cell_id: "d64c449c-384b-41eb-91eb-9436e2ccb24f","speaker": "答辩委员", "chinese": "你这篇论文最大的弱点是什么?", "pinyin": "Nǐ zhè piān lùnwén zuì dà de ruòdiǎn shì shénme?", "english": "What is the biggest weakness of this thesis?", "vi": "Điểm yếu lớn nhất của luận văn này là gì?"},
+      { cell_id: "9c35b546-73e0-4357-948e-9f2ddf27aad2","speaker": "学生", "chinese": "在于史料范围。本文仅依据已刊文献, 未涉档案材料。这一局限, 笔者在绪论中已予说明。", "pinyin": "Zàiyú shǐliào fànwéi. Běn wén jǐn yījù yǐ kān wénxiàn, wèi shè dàng'àn cáiliào. Zhè yī júxiàn, bǐzhě zài xùlùn zhōng yǐ yǔ shuōmíng.", "english": "In the scope of historical sources. This paper relies only on published documents and has not touched archival materials. This limitation was already noted in the introduction.", "vi": "Nằm ở phạm vi sử liệu. Bài này chỉ dựa trên văn hiến đã xuất bản, chưa đụng đến tài liệu lưu trữ. Giới hạn này, bút giả đã nói rõ trong phần tựa luận."}
     ],
     "exercises": [
       {"type": "fill-blank", "question": "论文之道, 不在结论之新奇, 而在___之透辟。", "answer": "论证"},
@@ -3773,8 +3813,8 @@ export const lessons: ChineseLesson[] = [
       "pronunciation_focus_en": ["抽象 → chōuxiàng ('abstraction')","不可或缺 → bùkěhuòquē (idiom: 'indispensable')"]}
     ],
     "dialogue": [
-      {"speaker": "研究生", "chinese": "在哲学论文中，可否说「我认为」？", "pinyin": "Zai zhexue lunwen zhong， kefou shuo 「wo renwei」？", "english": "In a philosophy paper, can one say I think?", "vi": "Trong luận văn triết học， có thể nói tôi cho rằng không？"},
-      {"speaker": "教授", "chinese": "不可。哲学非意见之表达，而是论证之建构。非「我认为」，而是「基于某理由，不得不如此结论」。", "pinyin": "Buke。 Zhexue fei yijian zhi biaoda， er shi lunzheng zhi jiangou。 Fei 「wo renwei」， er shi 「jiyu mou liyou， budebu ruci jielun」。", "english": "No. Philosophy is not expressing opinions but constructing arguments. Not I think but Based on such reasons, one cannot but conclude thus.", "vi": "Không thể。 Triết học không phải biểu đạt ý kiến， mà là kiến tạo luận chứng。 Không phải tôi cho rằng， mà là dựa trên lý do như thế， không thể không kết luận như vậy。"}
+      { cell_id: "839cafac-da9d-480d-ba31-bdb200d4d284","speaker": "研究生", "chinese": "在哲学论文中，可否说「我认为」？", "pinyin": "Zai zhexue lunwen zhong， kefou shuo 「wo renwei」？", "english": "In a philosophy paper, can one say I think?", "vi": "Trong luận văn triết học， có thể nói tôi cho rằng không？"},
+      { cell_id: "6c797048-1e05-483c-bb17-26565f852967","speaker": "教授", "chinese": "不可。哲学非意见之表达，而是论证之建构。非「我认为」，而是「基于某理由，不得不如此结论」。", "pinyin": "Buke。 Zhexue fei yijian zhi biaoda， er shi lunzheng zhi jiangou。 Fei 「wo renwei」， er shi 「jiyu mou liyou， budebu ruci jielun」。", "english": "No. Philosophy is not expressing opinions but constructing arguments. Not I think but Based on such reasons, one cannot but conclude thus.", "vi": "Không thể。 Triết học không phải biểu đạt ý kiến， mà là kiến tạo luận chứng。 Không phải tôi cho rằng， mà là dựa trên lý do như thế， không thể không kết luận như vậy。"}
     ],
     "exercises": [
       {"type": "fill-blank", "question": "康德之超越论方法，非问「X是否为真」，而问「X在何种___下方为可能」。", "answer": "条件"},
@@ -3804,8 +3844,8 @@ export const lessons: ChineseLesson[] = [
       "pronunciation_focus_en": ["佩雷尔曼 → Pèiléi'ěrmàn ('Perelman' — Chaïm Perelman, of the New Rhetoric)","论证 → lùnzhèng ('argumentation')","认同 → rèntóng ('adherence/identification' — Perelman's 'audience adherence')"]}
     ],
     "dialogue": [
-      {"speaker": "研究生", "chinese": "这么说来，好的论证不取决于逻辑是否严密，而取决于听众是否接受？", "pinyin": "Zheme shuolai， hao de lunzheng bu qujue yu luoji shifou yanmi， er qujue yu tingzhong shifou jieshou？", "english": "So a good argument depends on whether the audience accepts it, not on logical rigor?", "vi": "Vậy luận chứng tốt không phụ thuộc vào lô-gic chặt chẽ， mà phụ thuộc vào thính chúng có tiếp nhận không？"},
-      {"speaker": "教授", "chinese": "非也。逻辑不严，终会被人发现。但逻辑虽严而听众不信，则论证亦归无效。二者不可偏废。", "pinyin": "Fei ye。 Luoji bu yan， zhong hui bei ren faxian。 Dan luoji sui yan er tingzhong bu xin， ze lunzheng yi gui wuxiao。 Erzhe buke pianfei。", "english": "No. Bad logic will eventually be discovered. But good logic without audience belief is still ineffective. Neither can be neglected.", "vi": "Không phải。 Lô-gic không chặt sẽ bị phát hiện。 Nhưng lô-gic dù chặt mà thính chúng không tin， luận chứng cũng vô hiệu。 Cả hai không thể bỏ bên nào。"}
+      { cell_id: "fd3e10a7-be1a-402b-8742-5af6c780c70f","speaker": "研究生", "chinese": "这么说来，好的论证不取决于逻辑是否严密，而取决于听众是否接受？", "pinyin": "Zheme shuolai， hao de lunzheng bu qujue yu luoji shifou yanmi， er qujue yu tingzhong shifou jieshou？", "english": "So a good argument depends on whether the audience accepts it, not on logical rigor?", "vi": "Vậy luận chứng tốt không phụ thuộc vào lô-gic chặt chẽ， mà phụ thuộc vào thính chúng có tiếp nhận không？"},
+      { cell_id: "9e27ebe2-fb76-4763-b31a-97d865dafad0","speaker": "教授", "chinese": "非也。逻辑不严，终会被人发现。但逻辑虽严而听众不信，则论证亦归无效。二者不可偏废。", "pinyin": "Fei ye。 Luoji bu yan， zhong hui bei ren faxian。 Dan luoji sui yan er tingzhong bu xin， ze lunzheng yi gui wuxiao。 Erzhe buke pianfei。", "english": "No. Bad logic will eventually be discovered. But good logic without audience belief is still ineffective. Neither can be neglected.", "vi": "Không phải。 Lô-gic không chặt sẽ bị phát hiện。 Nhưng lô-gic dù chặt mà thính chúng không tin， luận chứng cũng vô hiệu。 Cả hai không thể bỏ bên nào。"}
     ],
     "exercises": [
       {"type": "fill-blank", "question": "亚里士多德以降，说服之艺术由三柱支撑：理性论证、言者品格、___诉求。", "answer": "情感"},
@@ -3834,8 +3874,8 @@ export const lessons: ChineseLesson[] = [
       {"chinese": "引语动词之选择 — '指出'、'声称'、'承认'、'辩称' — 从来不是中立的: 每一动词皆暗含报道者对所言之事的态度。", "pinyin": "Yǐnyǔ dòngcí zhī xuǎnzé — 'zhǐchū', 'shēngchēng', 'chéngrèn', 'biànchēng' — cónglái bùshì zhōnglì de: měi yī dòngcí jiē ànhán bàodàozhě duì suǒ yán zhī shì de tàidù.", "english": "The choice of reporting verb — 'point out,' 'claim,' 'admit,' 'argue' — is never neutral: each verb implicitly contains the reporter's attitude toward what is said.", "vi": "Việc chọn động từ dẫn lời — 'chỉ ra', 'tuyên bố', 'thừa nhận', 'biện xưng' — không bao giờ trung lập: mỗi động từ đều ngầm chứa thái độ của người tường thuật đối với điều được nói."}
     ],
     "dialogue": [
-      {"speaker": "研究生", "chinese": "如何辨别一篇文章是'报道'还是'评论'?", "pinyin": "Rúhé biànbié yī piān wénzhāng shì 'bàodào' háishì 'pínglùn'?", "english": "How to distinguish whether an article is 'reporting' or 'commentary'?", "vi": "Làm sao phân biệt một bài là 'tường thuật' hay 'bình luận'?"},
-      {"speaker": "教授", "chinese": "看动词和形容词。'表示'、'宣布'、'据'是报道。'声称'、'不过'、'令人遗憾'是评论。动词的选择就是立场的选择。", "pinyin": "Kàn dòngcí hé xíngróngcí. 'Biǎoshì', 'xuānbù', 'jù' shì bàodào. 'Shēngchēng', 'bùguò', 'lìngrén yíhàn' shì pínglùn. Dòngcí de xuǎnzé jiùshì lìchǎng de xuǎnzé.", "english": "Look at verbs and adjectives. 'Indicated,' 'announced,' 'according to' are reporting. 'Claimed,' 'merely,' 'regrettably' are commentary. The choice of verb is the choice of stance.", "vi": "Nhìn động từ và tính từ. 'Cho biết', 'tuyên bố', 'theo' là tường thuật. 'Tự nhận', 'chỉ là', 'đáng tiếc' là bình luận. Chọn động từ chính là chọn lập trường."}
+      { cell_id: "5893d6fa-9e78-48da-a775-93d5bb59b757","speaker": "研究生", "chinese": "如何辨别一篇文章是'报道'还是'评论'?", "pinyin": "Rúhé biànbié yī piān wénzhāng shì 'bàodào' háishì 'pínglùn'?", "english": "How to distinguish whether an article is 'reporting' or 'commentary'?", "vi": "Làm sao phân biệt một bài là 'tường thuật' hay 'bình luận'?"},
+      { cell_id: "5e35509b-7e01-46da-ae24-f1f9d8b0ef0c","speaker": "教授", "chinese": "看动词和形容词。'表示'、'宣布'、'据'是报道。'声称'、'不过'、'令人遗憾'是评论。动词的选择就是立场的选择。", "pinyin": "Kàn dòngcí hé xíngróngcí. 'Biǎoshì', 'xuānbù', 'jù' shì bàodào. 'Shēngchēng', 'bùguò', 'lìngrén yíhàn' shì pínglùn. Dòngcí de xuǎnzé jiùshì lìchǎng de xuǎnzé.", "english": "Look at verbs and adjectives. 'Indicated,' 'announced,' 'according to' are reporting. 'Claimed,' 'merely,' 'regrettably' are commentary. The choice of verb is the choice of stance.", "vi": "Nhìn động từ và tính từ. 'Cho biết', 'tuyên bố', 'theo' là tường thuật. 'Tự nhận', 'chỉ là', 'đáng tiếc' là bình luận. Chọn động từ chính là chọn lập trường."}
     ],
     "exercises": [
       {"type": "fill-blank", "question": "引语动词之选择 — '指出'、'___'、'承认'、'辩称' — 从来不是中立的。", "answer": "声称"},
@@ -3863,8 +3903,8 @@ export const lessons: ChineseLesson[] = [
       {"chinese": "联合公报中若出现'进行了建设性而坦率的意见交换', 在外交密码中即意味着: 未达成任何协议, 但双方均愿保持对话。", "pinyin": "Liánhé gōngbào zhōng ruò chūxiàn 'jìnxíngle jiànshèxìng ér tǎnshuài de yìjiàn jiāohuàn', zài wàijiāo mìmǎ zhōng jí yìwèizhe: wèi dáchéng rènhé xiéyì, dàn shuāngfāng jūn yuàn bǎochí duìhuà.", "english": "If 'a constructive and frank exchange of views took place' appears in a joint communiqué, in diplomatic code this means: no agreement was reached, but both sides wish to maintain dialogue.", "vi": "Nếu trong thông cáo chung xuất hiện 'đã tiến hành trao đổi ý kiến xây dựng và thẳng thắn', trong mật mã ngoại giao điều đó có nghĩa: không đạt được thỏa thuận nào, nhưng hai bên đều muốn duy trì đối thoại."}
     ],
     "dialogue": [
-      {"speaker": "外交官", "chinese": "联合公报中, 用'谴责'还是'表示遗憾'?", "pinyin": "Liánhé gōngbào zhōng, yòng 'qiǎnzé' háishì 'biǎoshì yíhàn'?", "english": "In the joint communiqué, use 'condemn' or 'express regret'?", "vi": "Trong thông cáo chung, dùng 'lên án' hay 'biểu thị lấy làm tiếc'?"},
-      {"speaker": "Linh", "chinese": "'表示遗憾'。'谴责'会关闭下次会谈之门。'表示遗憾'在表达分歧的同时, 留下了出口。", "pinyin": "'Biǎoshì yíhàn'. 'Qiǎnzé' huì guānbì xià cì huìtán zhī mén. 'Biǎoshì yíhàn' zài biǎodá fēnqí de tóngshí, liúxiàle chūkǒu.", "english": "'Express regret.' 'Condemn' would close the door to the next meeting. 'Express regret' expresses disagreement while leaving an exit.", "vi": "'Biểu thị lấy làm tiếc'. 'Lên án' sẽ đóng cửa cuộc họp tiếp theo. 'Biểu thị lấy làm tiếc' biểu đạt bất đồng trong khi vẫn để lại lối ra."}
+      { cell_id: "62e877a8-cd56-43a6-ab49-3de59fd0557e","speaker": "外交官", "chinese": "联合公报中, 用'谴责'还是'表示遗憾'?", "pinyin": "Liánhé gōngbào zhōng, yòng 'qiǎnzé' háishì 'biǎoshì yíhàn'?", "english": "In the joint communiqué, use 'condemn' or 'express regret'?", "vi": "Trong thông cáo chung, dùng 'lên án' hay 'biểu thị lấy làm tiếc'?"},
+      { cell_id: "156f5fb0-2be7-4b4a-b407-89ac2dc69602","speaker": "Linh", "chinese": "'表示遗憾'。'谴责'会关闭下次会谈之门。'表示遗憾'在表达分歧的同时, 留下了出口。", "pinyin": "'Biǎoshì yíhàn'. 'Qiǎnzé' huì guānbì xià cì huìtán zhī mén. 'Biǎoshì yíhàn' zài biǎodá fēnqí de tóngshí, liúxiàle chūkǒu.", "english": "'Express regret.' 'Condemn' would close the door to the next meeting. 'Express regret' expresses disagreement while leaving an exit.", "vi": "'Biểu thị lấy làm tiếc'. 'Lên án' sẽ đóng cửa cuộc họp tiếp theo. 'Biểu thị lấy làm tiếc' biểu đạt bất đồng trong khi vẫn để lại lối ra."}
     ],
     "exercises": [
       {"type": "fill-blank", "question": "'表示遗憾'与'予以___'之间, 有一般读者所不见之外交鸿沟。", "answer": "谴责"},

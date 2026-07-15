@@ -21,6 +21,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   /** Indonesian word/phrase. */
   word: string;
   /** English meaning. */
@@ -36,6 +37,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   /** Indonesian line. */
   text: string;
@@ -225,43 +227,48 @@ export const lessons: IndonesianLesson[] = [
     tip_advice_en:
       "Tip for Vietnamese speakers: separate `antar` = drop off, `jemput` = pick up, `penitipan` = childcare/care arrangement, and `pengasuh` = caregiver. Ask requirements with `Apa saja syarat pendaftaran anak?` and pricing with `Biaya bulanannya sudah termasuk apa saja?`.",
     vocabulary: [
-      { word: "daycare", en: "daycare", vi: "nhà trẻ/daycare", pos: "noun", pronunciation_vi: "DE-ker", pronunciation_en: "DAY-care" },
-      { word: "pendaftaran anak", en: "child enrollment", vi: "đăng ký cho trẻ", pos: "noun phrase", pronunciation_vi: "pen-DAF-tar-an A-nak", pronunciation_en: "pen-DAF-tar-an A-nak" },
-      { word: "jam penitipan", en: "childcare hours", vi: "giờ gửi/trông trẻ", pos: "noun phrase", pronunciation_vi: "jam pe-ni-TIP-an", pronunciation_en: "jam pe-ni-TEE-pan" },
-      { word: "biaya bulanan", en: "monthly fee", vi: "phí hằng tháng", pos: "noun phrase", pronunciation_vi: "BI-a-ya bu-LA-nan", pronunciation_en: "BEE-a-ya boo-LA-nan" },
-      { word: "makan siang", en: "lunch", vi: "bữa trưa", pos: "noun phrase", pronunciation_vi: "MA-kan SI-ang", pronunciation_en: "MA-kan SEE-ang" },
-      { word: "tidur siang", en: "nap", vi: "ngủ trưa", pos: "verb/noun phrase", pronunciation_vi: "TI-dur SI-ang", pronunciation_en: "TEE-door SEE-ang" },
-      { word: "kontak darurat", en: "emergency contact", vi: "liên hệ khẩn cấp", pos: "noun phrase", pronunciation_vi: "KON-tak da-RU-rat", pronunciation_en: "KON-tak da-ROO-rat" },
-      { word: "pengasuh", en: "caregiver", vi: "người chăm/trông trẻ", pos: "noun", pronunciation_vi: "pe-NGA-suh", pronunciation_en: "pe-NGA-sooh" },
-      { word: "balita", en: "child under five", vi: "trẻ dưới 5 tuổi", pos: "noun", pronunciation_vi: "ba-LI-ta", pronunciation_en: "ba-LEE-ta" },
-      { word: "alergi", en: "allergy", vi: "dị ứng", pos: "noun", pronunciation_vi: "a-LER-gi", pronunciation_en: "a-LER-gee" },
+      { cell_id: "aa36eec9-0bd9-431d-a987-64934c650a3a", word: "daycare", en: "daycare", vi: "nhà trẻ/daycare", pos: "noun", pronunciation_vi: "DE-ker", pronunciation_en: "DAY-care" },
+      { cell_id: "3645c961-b93b-45ff-b789-26f9c18fea18", word: "pendaftaran anak", en: "child enrollment", vi: "đăng ký cho trẻ", pos: "noun phrase", pronunciation_vi: "pen-DAF-tar-an A-nak", pronunciation_en: "pen-DAF-tar-an A-nak" },
+      { cell_id: "53a27bbb-aae5-4cbb-92b7-af7b7630a640", word: "jam penitipan", en: "childcare hours", vi: "giờ gửi/trông trẻ", pos: "noun phrase", pronunciation_vi: "jam pe-ni-TIP-an", pronunciation_en: "jam pe-ni-TEE-pan" },
+      { cell_id: "482bac77-6125-407a-9886-ac440e8a5343", word: "biaya bulanan", en: "monthly fee", vi: "phí hằng tháng", pos: "noun phrase", pronunciation_vi: "BI-a-ya bu-LA-nan", pronunciation_en: "BEE-a-ya boo-LA-nan" },
+      { cell_id: "7ead0d19-8b3b-4ad5-b292-95656d9c871d", word: "makan siang", en: "lunch", vi: "bữa trưa", pos: "noun phrase", pronunciation_vi: "MA-kan SI-ang", pronunciation_en: "MA-kan SEE-ang" },
+      { cell_id: "a3551871-018c-4061-9c8c-1d0cb8d4f9d1", word: "tidur siang", en: "nap", vi: "ngủ trưa", pos: "verb/noun phrase", pronunciation_vi: "TI-dur SI-ang", pronunciation_en: "TEE-door SEE-ang" },
+      { cell_id: "2ca2cd7b-a499-4c0b-a8b8-13da2cf0bc1f", word: "kontak darurat", en: "emergency contact", vi: "liên hệ khẩn cấp", pos: "noun phrase", pronunciation_vi: "KON-tak da-RU-rat", pronunciation_en: "KON-tak da-ROO-rat" },
+      { cell_id: "02a80938-08fb-4807-ad8c-25b2f653e82b", word: "pengasuh", en: "caregiver", vi: "người chăm/trông trẻ", pos: "noun", pronunciation_vi: "pe-NGA-suh", pronunciation_en: "pe-NGA-sooh" },
+      { cell_id: "84529300-50e1-44e7-88f2-9a379c110c7b", word: "balita", en: "child under five", vi: "trẻ dưới 5 tuổi", pos: "noun", pronunciation_vi: "ba-LI-ta", pronunciation_en: "ba-LEE-ta" },
+      { cell_id: "b32ab8c1-bb37-4ce9-a924-9ab28550035d", word: "alergi", en: "allergy", vi: "dị ứng", pos: "noun", pronunciation_vi: "a-LER-gi", pronunciation_en: "a-LER-gee" },
     ],
     dialogue: [
       {
+        cell_id: "31f1ab4f-9f41-4924-bcca-2d8c380394b2",
         speaker: "Orang tua",
         text: "Saya mau mendaftarkan anak saya ke daycare.",
         vi: "Tôi muốn đăng ký cho con tôi vào daycare.",
         en: "I want to enroll my child in daycare.",
       },
       {
+        cell_id: "f1178a49-5959-43d5-a55b-057f278a2eac",
         speaker: "Staf daycare",
         text: "Baik. Usia anaknya berapa tahun?",
         vi: "Vâng. Bé mấy tuổi rồi ạ?",
         en: "Sure. How old is your child?",
       },
       {
+        cell_id: "2a4418e3-8f93-4d9a-898e-aa303f584934",
         speaker: "Orang tua",
         text: "Dua tahun. Saya mau tanya jam penitipan dan biaya bulanan.",
         vi: "Hai tuổi. Tôi muốn hỏi giờ gửi trẻ và phí hằng tháng.",
         en: "Two years old. I want to ask about childcare hours and the monthly fee.",
       },
       {
+        cell_id: "918b2530-530b-45a5-8d32-d7e95af47bcb",
         speaker: "Staf daycare",
         text: "Biaya bulanan sudah termasuk makan siang dan tidur siang.",
         vi: "Phí hằng tháng đã bao gồm bữa trưa và giờ ngủ trưa.",
         en: "The monthly fee includes lunch and nap time.",
       },
       {
+        cell_id: "85f3e453-08c1-46a8-932f-e8e9315d3e9d",
         speaker: "Orang tua",
         text: "Ini nomor kontak darurat saya. Anak saya punya alergi telur.",
         vi: "Đây là số liên hệ khẩn cấp của tôi. Con tôi bị dị ứng trứng.",

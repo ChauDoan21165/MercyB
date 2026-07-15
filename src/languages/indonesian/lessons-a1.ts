@@ -35,6 +35,7 @@ export type LessonSentence = {
 };
 
 export type VocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -46,6 +47,7 @@ export type VocabEntry = {
 };
 
 export type DialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -174,6 +176,7 @@ export const lessons: IndonesianLesson[] = [
       "Memorize the time-of-day set: pagi / siang / sore / malam — only the last word changes, *selamat* stays. Key sounds: 'c' is always 'ch' (cara = 'CHA-ra'), 'g' is always hard (as in 'go'), and there are absolutely no tones — keep your pitch flat. For Vietnamese learners the hardest habit is NOT adding a rising or falling tone.",
     vocabulary: [
       {
+        cell_id: "ab29ea32-2ca8-4d6a-b46f-7a0c521a0ab8",
         word: "selamat pagi",
         en: "good morning",
         vi: "chào buổi sáng",
@@ -182,6 +185,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "se-LAH-mat PAH-gee — hard 'g'",
       },
       {
+        cell_id: "26a075d1-5d39-4d56-8632-203bce745c56",
         word: "selamat siang",
         en: "good midday (11–15h)",
         vi: "chào buổi trưa",
@@ -190,6 +194,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "se-LAH-mat SEE-ahng",
       },
       {
+        cell_id: "0cc553df-d40d-41f7-ab96-d49f472bd439",
         word: "selamat sore",
         en: "good afternoon (15–18h)",
         vi: "chào buổi chiều",
@@ -198,6 +203,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "se-LAH-mat SOH-reh — open 'e'",
       },
       {
+        cell_id: "0f332950-aa7d-42d6-8c60-2bbd21960d52",
         word: "selamat malam",
         en: "good evening / good night",
         vi: "chào buổi tối",
@@ -206,6 +212,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "se-LAH-mat MAH-lam",
       },
       {
+        cell_id: "3092d6e2-f46a-40e0-b8f4-3d6d28ea2262",
         word: "apa kabar?",
         en: "how are you?",
         vi: "bạn khỏe không?",
@@ -214,6 +221,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "AH-pah KAH-bar",
       },
       {
+        cell_id: "0c70368b-3c42-49ae-8edb-e53db86a4de8",
         word: "baik",
         en: "fine / good",
         vi: "khỏe / tốt",
@@ -222,6 +230,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "BAH-ik — like 'bike' with two vowels",
       },
       {
+        cell_id: "86cd7ede-aeb1-4660-a8b6-8e873bf0cb8d",
         word: "terima kasih",
         en: "thank you",
         vi: "cảm ơn",
@@ -230,6 +239,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "te-REE-mah KAH-see",
       },
       {
+        cell_id: "b470e0c3-7cbb-4db5-b942-34a45f7b6aac",
         word: "sama-sama",
         en: "you're welcome",
         vi: "không có gì",
@@ -238,6 +248,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "SAH-mah SAH-mah",
       },
       {
+        cell_id: "8f23896d-1569-4295-ad97-a477883a3bd9",
         word: "permisi",
         en: "excuse me",
         vi: "xin phép / xin lỗi (để đi qua)",
@@ -246,6 +257,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "per-MEE-see",
       },
       {
+        cell_id: "9033d5c8-a888-4ee8-845d-69f5e2bb8df7",
         word: "maaf",
         en: "sorry",
         vi: "xin lỗi",
@@ -254,6 +266,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "mah-AHF — two 'a' vowels",
       },
       {
+        cell_id: "0b5bdd15-4fff-4dc9-81c5-62e5e8e22fd9",
         word: "sampai jumpa",
         en: "see you / goodbye",
         vi: "hẹn gặp lại",
@@ -264,24 +277,28 @@ export const lessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "09b9e2d2-317e-48c2-8096-2329dfd6e85c",
         speaker: "A",
         text: "Selamat pagi! Apa kabar?",
         vi: "Chào buổi sáng! Bạn khỏe không?",
         en: "Good morning! How are you?",
       },
       {
+        cell_id: "597ebae7-b1c3-49fa-92d3-79d4f15f7844",
         speaker: "B",
         text: "Baik-baik saja, terima kasih. Dan kamu?",
         vi: "Tôi khỏe, cảm ơn. Còn bạn?",
         en: "I'm fine, thank you. And you?",
       },
       {
+        cell_id: "23949d15-7624-4c53-9e4a-fea03c2f6251",
         speaker: "A",
         text: "Saya juga baik. Sampai jumpa!",
         vi: "Tôi cũng khỏe. Hẹn gặp lại!",
         en: "I'm good too. See you!",
       },
       {
+        cell_id: "614b7dc7-8f14-477f-8c0a-70e4b8c6fa31",
         speaker: "B",
         text: "Sampai jumpa! Selamat jalan.",
         vi: "Hẹn gặp lại! Đi đường bình an.",
@@ -450,6 +467,7 @@ export const lessons: IndonesianLesson[] = [
       "Golden frame: 'Nama saya ___. Saya dari ___. Senang bertemu dengan Anda.' Swap only the name and place. For Vietnamese learners, the trick is the reversed possessive (nama saya, not saya nama). The 'ber-' at the start of bertemu/berbahasa is a verb prefix — covered fully in A2; for now just learn the whole phrase.",
     vocabulary: [
       {
+        cell_id: "e2ea893c-79ef-4d1e-8258-56f6f46928ab",
         word: "nama",
         en: "name",
         vi: "tên",
@@ -458,6 +476,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "NAH-mah",
       },
       {
+        cell_id: "2176200b-3a23-4b0b-8493-2a4702770bb8",
         word: "saya",
         en: "I / me (polite)",
         vi: "tôi (lịch sự)",
@@ -466,6 +485,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "SAH-yah",
       },
       {
+        cell_id: "df458e73-aee2-4728-9631-bef746d2de72",
         word: "kamu",
         en: "you (casual)",
         vi: "bạn (thân mật)",
@@ -474,6 +494,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "KAH-moo",
       },
       {
+        cell_id: "03e82a25-a221-4470-8c6a-57fa02dd0706",
         word: "Anda",
         en: "you (polite)",
         vi: "bạn / ông / bà (lịch sự)",
@@ -482,6 +503,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "AHN-dah",
       },
       {
+        cell_id: "11087d74-c896-44d4-8cb0-fa33c6615f42",
         word: "siapa",
         en: "who",
         vi: "ai",
@@ -490,6 +512,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "see-AH-pah",
       },
       {
+        cell_id: "01df115d-a5a1-428a-97a0-0926d6361e6b",
         word: "dari",
         en: "from",
         vi: "từ",
@@ -498,6 +521,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "DAH-ree",
       },
       {
+        cell_id: "1d10d36e-9e56-4bfe-9f41-73ce06cdf572",
         word: "senang",
         en: "happy / glad",
         vi: "vui",
@@ -506,6 +530,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "se-NAHNG",
       },
       {
+        cell_id: "1bd90097-c9b9-45b5-a186-13536e630024",
         word: "bertemu",
         en: "to meet",
         vi: "gặp",
@@ -514,6 +539,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "ber-te-MOO",
       },
       {
+        cell_id: "8b7e95c7-4a5d-4323-ab6c-bb6304cc017d",
         word: "bisa",
         en: "can / able to",
         vi: "có thể",
@@ -522,6 +548,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "BEE-sah",
       },
       {
+        cell_id: "231a7e49-6a7a-4186-bac5-82c1013ffb94",
         word: "sedikit",
         en: "a little",
         vi: "một chút",
@@ -532,24 +559,28 @@ export const lessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "45f4cff7-9c64-4414-98a5-00a9731d9e67",
         speaker: "A",
         text: "Halo! Siapa nama Anda?",
         vi: "Xin chào! Bạn tên là gì?",
         en: "Hello! What is your name?",
       },
       {
+        cell_id: "cc94a838-99d5-40a8-b21d-1c95d2024e52",
         speaker: "B",
         text: "Nama saya Linh. Saya dari Vietnam. Dan Anda?",
         vi: "Tên tôi là Linh. Tôi đến từ Việt Nam. Còn bạn?",
         en: "My name is Linh. I'm from Vietnam. And you?",
       },
       {
+        cell_id: "5c4c7818-cea7-4680-b856-6ac71348a9e6",
         speaker: "A",
         text: "Saya Budi, dari Jakarta. Senang bertemu dengan Anda.",
         vi: "Tôi là Budi, đến từ Jakarta. Rất vui được gặp bạn.",
         en: "I'm Budi, from Jakarta. Nice to meet you.",
       },
       {
+        cell_id: "dafe77ad-11a0-47f1-abb2-6bd2463c370d",
         speaker: "B",
         text: "Senang bertemu juga! Saya bisa berbahasa Indonesia sedikit.",
         vi: "Tôi cũng rất vui! Tôi nói được một chút tiếng Indonesia.",
@@ -719,6 +750,7 @@ export const lessons: IndonesianLesson[] = [
       "Master 1–10 cold; everything else is just assembly. 13 = tiga belas, 30 = tiga puluh, 33 = tiga puluh tiga. Tip: 'belas' = teens (small), 'puluh' = tens (big) — don't mix them up. Use 'se-' instead of 'satu' before a unit (seratus, not 'satu ratus').",
     vocabulary: [
       {
+        cell_id: "c62f87da-c98f-4bb3-b61e-9336ab0f5457",
         word: "satu",
         en: "one (1)",
         vi: "một",
@@ -727,6 +759,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "SAH-too",
       },
       {
+        cell_id: "4a6fa565-9cfe-40f5-99c9-393cb2e51a91",
         word: "lima",
         en: "five (5)",
         vi: "năm",
@@ -735,6 +768,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "LEE-mah",
       },
       {
+        cell_id: "8a5540bf-2a2c-4e6f-8112-d8b8abd5aa39",
         word: "sepuluh",
         en: "ten (10)",
         vi: "mười",
@@ -743,6 +777,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "se-POO-looh",
       },
       {
+        cell_id: "38cb8cf8-d96d-4e21-84a4-0e4c548c4752",
         word: "sebelas",
         en: "eleven (11)",
         vi: "mười một",
@@ -751,6 +786,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "se-BE-las",
       },
       {
+        cell_id: "b49b8eb6-fb4e-4a84-9b7c-edbe706aa173",
         word: "dua belas",
         en: "twelve (12)",
         vi: "mười hai",
@@ -759,6 +795,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "DOO-ah be-LAS",
       },
       {
+        cell_id: "9bb3bc33-cecd-4658-9a78-a059fbb16ef3",
         word: "dua puluh",
         en: "twenty (20)",
         vi: "hai mươi",
@@ -767,6 +804,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "DOO-ah POO-looh",
       },
       {
+        cell_id: "2f24c411-a78e-4625-8f54-a86e9d1820cb",
         word: "lima puluh",
         en: "fifty (50)",
         vi: "năm mươi",
@@ -775,6 +813,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "LEE-mah POO-looh",
       },
       {
+        cell_id: "a3802de9-0436-4a49-86bb-a81abd1e6b0a",
         word: "seratus",
         en: "one hundred (100)",
         vi: "một trăm",
@@ -783,6 +822,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "se-RAH-toos",
       },
       {
+        cell_id: "d6ce1d6d-a632-486c-bcfe-58e8c352e1f5",
         word: "puluh",
         en: "tens (suffix)",
         vi: "chục / mươi",
@@ -791,6 +831,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "POO-looh",
       },
       {
+        cell_id: "ed3efecd-b51f-4f59-bb31-238ef516e7d2",
         word: "belas",
         en: "-teen (suffix)",
         vi: "mười-mấy",
@@ -801,24 +842,28 @@ export const lessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "83115e29-f4f5-4e53-ad1d-6ec95eb73fd4",
         speaker: "A",
         text: "Berapa umur kamu?",
         vi: "Bạn bao nhiêu tuổi?",
         en: "How old are you?",
       },
       {
+        cell_id: "a5bf6a33-2113-456e-bbc9-4ce59a8d6504",
         speaker: "B",
         text: "Umur saya dua puluh lima tahun.",
         vi: "Tôi hai mươi lăm tuổi.",
         en: "I'm twenty-five years old.",
       },
       {
+        cell_id: "798cc071-6a5c-4727-be4b-5b85d397ae98",
         speaker: "A",
         text: "Berapa nomor teleponmu?",
         vi: "Số điện thoại của bạn là gì?",
         en: "What's your phone number?",
       },
       {
+        cell_id: "d7ea4dc3-9366-46cf-b1f3-bd90e524f317",
         speaker: "B",
         text: "Nol delapan satu dua, tiga empat lima...",
         vi: "Không tám một hai, ba bốn năm...",
@@ -988,6 +1033,7 @@ export const lessons: IndonesianLesson[] = [
       "Memory hook: berapa always pairs with numbers/money (Berapa harganya? Berapa umur?). siapa is for people, apa for things. Master the 'mana' trio by swapping the preposition: di mana (where at), ke mana (where to), dari mana (where from). No 'do/does' is needed — a big bonus over English.",
     vocabulary: [
       {
+        cell_id: "b50122ab-af61-4b57-89c1-00172304d95c",
         word: "apa",
         en: "what",
         vi: "gì / cái gì",
@@ -996,6 +1042,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "AH-pah",
       },
       {
+        cell_id: "2b7ce000-2eee-4789-b0e6-f71c61c46344",
         word: "siapa",
         en: "who",
         vi: "ai",
@@ -1004,6 +1051,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "see-AH-pah",
       },
       {
+        cell_id: "3e816fcf-d73b-4202-8bfd-bd4d56b25378",
         word: "di mana",
         en: "where",
         vi: "ở đâu",
@@ -1012,6 +1060,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "dee MAH-nah",
       },
       {
+        cell_id: "ea31958c-03bb-4f48-8190-13e44a569817",
         word: "berapa",
         en: "how much / how many",
         vi: "bao nhiêu",
@@ -1020,6 +1069,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "be-RAH-pah",
       },
       {
+        cell_id: "ee2235b8-d49d-4bfc-ab5c-ec6034176353",
         word: "kapan",
         en: "when",
         vi: "khi nào",
@@ -1028,6 +1078,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "KAH-pan",
       },
       {
+        cell_id: "19f034c4-f9ce-489a-af87-3a5978f83f5e",
         word: "kenapa",
         en: "why",
         vi: "tại sao",
@@ -1036,6 +1087,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "ke-NAH-pah",
       },
       {
+        cell_id: "77125a67-66e9-416d-969c-9f9f99108086",
         word: "bagaimana",
         en: "how",
         vi: "như thế nào",
@@ -1044,6 +1096,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "bah-guy-MAH-nah",
       },
       {
+        cell_id: "4a5ab4b4-e87a-481c-972b-e554417b0c4f",
         word: "ini",
         en: "this",
         vi: "này / đây",
@@ -1052,6 +1105,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "EE-nee",
       },
       {
+        cell_id: "b004912b-4a26-4a5c-9470-003f6949cc65",
         word: "itu",
         en: "that",
         vi: "kia / đó",
@@ -1060,6 +1114,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "EE-too",
       },
       {
+        cell_id: "4d6b68a6-c010-441c-95b8-9e938266e45b",
         word: "harga",
         en: "price",
         vi: "giá",
@@ -1070,24 +1125,28 @@ export const lessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "647f5a13-faa2-4f23-aec7-335260f05adf",
         speaker: "A",
         text: "Apa ini?",
         vi: "Đây là cái gì?",
         en: "What is this?",
       },
       {
+        cell_id: "f0e5b4bf-939e-438a-8668-95689c0f96f0",
         speaker: "B",
         text: "Ini buku. Itu tas saya.",
         vi: "Đây là quyển sách. Kia là túi của tôi.",
         en: "This is a book. That is my bag.",
       },
       {
+        cell_id: "7f07eebf-c295-43d8-9332-146ab8ed74a5",
         speaker: "A",
         text: "Berapa harga buku ini?",
         vi: "Quyển sách này giá bao nhiêu?",
         en: "How much is this book?",
       },
       {
+        cell_id: "a24e283a-74e2-4ecb-9eb8-6556f7cbc685",
         speaker: "B",
         text: "Lima puluh ribu rupiah.",
         vi: "Năm mươi nghìn rupiah.",
@@ -1257,6 +1316,7 @@ export const lessons: IndonesianLesson[] = [
       "Three survival lines at any eatery: 'Saya mau ___' (to order), 'Berapa harganya?' (how much), 'Enak sekali!' (very tasty). For Vietnamese learners: 'sekali' (very) comes AFTER the adjective — enak sekali, pedas sekali. For 'not spicy' say 'tidak pedas'. 'Tolong' = please (asking a favor), distinct from 'silakan' = please/go ahead (inviting someone).",
     vocabulary: [
       {
+        cell_id: "7455bc08-f8d2-4925-8efd-3e384409d161",
         word: "saya mau",
         en: "I want",
         vi: "tôi muốn",
@@ -1265,6 +1325,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "SAH-yah mau",
       },
       {
+        cell_id: "b23b4aa0-9fa7-42ed-8c46-65893eb7af0b",
         word: "nasi goreng",
         en: "fried rice",
         vi: "cơm chiên",
@@ -1273,6 +1334,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "NAH-see GO-reng",
       },
       {
+        cell_id: "5cb126bf-2fb3-41b9-917f-1a55c3bc4e95",
         word: "mie goreng",
         en: "fried noodles",
         vi: "mì xào",
@@ -1281,6 +1343,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "MEE GO-reng",
       },
       {
+        cell_id: "dfb64790-fa72-47cc-ac69-4a7484879d00",
         word: "ayam",
         en: "chicken",
         vi: "gà",
@@ -1289,6 +1352,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "AH-yam",
       },
       {
+        cell_id: "9d4c808a-3416-4881-a135-7419a438c026",
         word: "teh",
         en: "tea",
         vi: "trà",
@@ -1297,6 +1361,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "TEH",
       },
       {
+        cell_id: "1b868f2a-781a-484e-bbad-75749cb59f82",
         word: "kopi",
         en: "coffee",
         vi: "cà phê",
@@ -1305,6 +1370,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "KO-pee",
       },
       {
+        cell_id: "08268783-a206-49b6-940c-555ba215ca39",
         word: "air putih",
         en: "plain water",
         vi: "nước lọc",
@@ -1313,6 +1379,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "AH-ir POO-tee",
       },
       {
+        cell_id: "935ca8a9-f630-49f6-bcdb-58e090c54aa9",
         word: "enak",
         en: "delicious",
         vi: "ngon",
@@ -1321,6 +1388,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "E-nak",
       },
       {
+        cell_id: "58303cd6-ce38-4637-abf7-be0e25c44f6e",
         word: "pedas",
         en: "spicy",
         vi: "cay",
@@ -1329,6 +1397,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "pe-DAS",
       },
       {
+        cell_id: "ebadab8a-8ae0-44ff-bf01-06a9cca9614a",
         word: "tolong",
         en: "please (asking a favor)",
         vi: "làm ơn",
@@ -1339,24 +1408,28 @@ export const lessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "431e5796-688a-4fec-8e34-55a8830f4a22",
         speaker: "Pelayan",
         text: "Selamat siang! Mau pesan apa?",
         vi: "Chào buổi trưa! Anh/chị muốn gọi gì?",
         en: "Good afternoon! What would you like to order?",
       },
       {
+        cell_id: "ebbd6a7f-396d-444b-911d-49d0e4aa751a",
         speaker: "Tamu",
         text: "Saya mau nasi goreng dan es teh, tolong.",
         vi: "Cho tôi cơm chiên và trà đá.",
         en: "I'd like fried rice and iced tea, please.",
       },
       {
+        cell_id: "6bb1d9f1-44fa-4895-a30c-6f3b6973e740",
         speaker: "Pelayan",
         text: "Mau pedas atau tidak?",
         vi: "Anh/chị muốn cay hay không cay?",
         en: "Do you want it spicy or not?",
       },
       {
+        cell_id: "d976ac60-8e23-48a4-aa34-5ab7263b3a4b",
         speaker: "Tamu",
         text: "Tidak pedas, terima kasih. Berapa semuanya?",
         vi: "Không cay, cảm ơn. Tổng cộng bao nhiêu?",
@@ -1526,6 +1599,7 @@ export const lessons: IndonesianLesson[] = [
       "Direction combo: 'Permisi, di mana ___?' → listen for 'lurus / belok kiri / belok kanan'. For Vietnamese learners: 'belok' (turn) always pairs with kiri/kanan. Distinguish 'di sini' (here), 'di situ' (there, nearby), 'di sana' (over there, far). 'di' = at (static), 'ke' = to (movement): 'ke kiri' = to the left.",
     vocabulary: [
       {
+        cell_id: "55522167-8950-495d-b97a-22ceac17c49b",
         word: "di mana",
         en: "where",
         vi: "ở đâu",
@@ -1534,6 +1608,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "dee MAH-nah",
       },
       {
+        cell_id: "b71ef90a-b791-4ab6-bdb5-cc8c8e2814bf",
         word: "lurus",
         en: "straight",
         vi: "thẳng",
@@ -1542,6 +1617,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "LOO-roos",
       },
       {
+        cell_id: "10efa3de-8edd-4f54-9da2-cba8f4a4e683",
         word: "belok kiri",
         en: "turn left",
         vi: "rẽ trái",
@@ -1550,6 +1626,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "BE-lok KEE-ree",
       },
       {
+        cell_id: "1af7c171-79d0-496a-a876-920acd8a8e2b",
         word: "belok kanan",
         en: "turn right",
         vi: "rẽ phải",
@@ -1558,6 +1635,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "BE-lok KAH-nan",
       },
       {
+        cell_id: "d1e9385c-df3e-41f7-8e6b-fb27dbdb021b",
         word: "dekat",
         en: "near",
         vi: "gần",
@@ -1566,6 +1644,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "DE-kat",
       },
       {
+        cell_id: "12fd2490-e80e-4be2-9a41-4a984d3d8754",
         word: "jauh",
         en: "far",
         vi: "xa",
@@ -1574,6 +1653,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "JAH-ooh",
       },
       {
+        cell_id: "35e405cf-fb93-40f4-bd41-ed51ab8d09b7",
         word: "depan",
         en: "front / in front",
         vi: "phía trước",
@@ -1582,6 +1662,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "de-PAN",
       },
       {
+        cell_id: "172ee87d-eb4a-4938-80fe-2ebcac6e3112",
         word: "belakang",
         en: "back / behind",
         vi: "phía sau",
@@ -1590,6 +1671,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "be-lah-KANG",
       },
       {
+        cell_id: "77d54e63-630d-4ed7-9958-6c34a4216b31",
         word: "pasar",
         en: "market",
         vi: "chợ",
@@ -1598,6 +1680,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "PAH-sar",
       },
       {
+        cell_id: "baebd8b7-8677-48e0-9da3-a1e0d6d38021",
         word: "jalan",
         en: "road / to walk",
         vi: "đường / đi bộ",
@@ -1608,24 +1691,28 @@ export const lessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "501dca8c-9902-4776-aeb2-2af477d440e2",
         speaker: "A",
         text: "Permisi, di mana pasar?",
         vi: "Xin lỗi, chợ ở đâu?",
         en: "Excuse me, where is the market?",
       },
       {
+        cell_id: "36f8758d-f675-4cae-bbbc-cbdc03231d0f",
         speaker: "B",
         text: "Jalan lurus terus, lalu belok kanan.",
         vi: "Đi thẳng tiếp, rồi rẽ phải.",
         en: "Keep going straight, then turn right.",
       },
       {
+        cell_id: "3a8f0c82-87bc-4028-9c5d-c5ebccb44520",
         speaker: "A",
         text: "Apakah jauh dari sini?",
         vi: "Có xa đây không?",
         en: "Is it far from here?",
       },
       {
+        cell_id: "603f7f60-91f7-46b7-b64b-05110ff2b22b",
         speaker: "B",
         text: "Tidak, dekat. Di depan masjid.",
         vi: "Không, gần thôi. Ở trước nhà thờ Hồi giáo.",
@@ -1795,6 +1882,7 @@ export const lessons: IndonesianLesson[] = [
       "Main axis: kakak (older) ↔ adik (younger); add laki-laki/perempuan only when you must mark sex. For Vietnamese learners: don't map anh/chị/em one-to-one — Indonesian merges older-brother + older-sister into kakak, and younger-brother + younger-sister into adik, which is simpler. Possessor always follows: 'ibu saya' (my mother), 'anak kamu' (your child). 'punya' = to have/own.",
     vocabulary: [
       {
+        cell_id: "076f53a4-9f92-415d-ae11-016c933dd0a4",
         word: "keluarga",
         en: "family",
         vi: "gia đình",
@@ -1803,6 +1891,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "ke-loo-AR-gah",
       },
       {
+        cell_id: "cea7de1d-f61a-4469-b801-c370504c91ef",
         word: "ayah",
         en: "father",
         vi: "cha / ba",
@@ -1811,6 +1900,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "AH-yah",
       },
       {
+        cell_id: "1d88bb87-76d8-48eb-a71e-04d0e28d226d",
         word: "ibu",
         en: "mother",
         vi: "mẹ",
@@ -1819,6 +1909,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "EE-boo",
       },
       {
+        cell_id: "3c69a015-af20-41e6-a590-d8c6f475a555",
         word: "kakak",
         en: "older sibling",
         vi: "anh / chị",
@@ -1827,6 +1918,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "KAH-kak",
       },
       {
+        cell_id: "76a90529-5563-4ea5-8b4a-86586d0908bd",
         word: "adik",
         en: "younger sibling",
         vi: "em",
@@ -1835,6 +1927,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "AH-dik",
       },
       {
+        cell_id: "4649dc2a-8c82-473a-a524-ca7ce1ad8de7",
         word: "laki-laki",
         en: "male",
         vi: "nam / trai",
@@ -1843,6 +1936,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "LAH-kee LAH-kee",
       },
       {
+        cell_id: "52eb61f0-3d55-43d4-8fc1-517d18a80eac",
         word: "perempuan",
         en: "female",
         vi: "nữ / gái",
@@ -1851,6 +1945,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "pe-rem-POO-an",
       },
       {
+        cell_id: "3e2087bf-70e1-47a4-b350-db28ce5ba63c",
         word: "anak",
         en: "child",
         vi: "con",
@@ -1859,6 +1954,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "AH-nak",
       },
       {
+        cell_id: "f1830b9a-abd4-499b-8bd5-fcadf60e7ddb",
         word: "kakek",
         en: "grandfather",
         vi: "ông",
@@ -1867,6 +1963,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "KAH-kek",
       },
       {
+        cell_id: "895678c3-bfe4-4ed7-891f-8c7d48f3974f",
         word: "nenek",
         en: "grandmother",
         vi: "bà",
@@ -1877,24 +1974,28 @@ export const lessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "0e3d03b0-ae28-46c6-9c0d-b025594e2167",
         speaker: "A",
         text: "Berapa saudara kamu?",
         vi: "Bạn có mấy anh chị em?",
         en: "How many siblings do you have?",
       },
       {
+        cell_id: "17667b22-914f-401b-9eda-abb95619317a",
         speaker: "B",
         text: "Saya punya satu kakak dan satu adik.",
         vi: "Tôi có một anh/chị và một em.",
         en: "I have one older sibling and one younger sibling.",
       },
       {
+        cell_id: "c33d8253-5903-410d-a555-c0b871cdd5ed",
         speaker: "A",
         text: "Kakak laki-laki atau perempuan?",
         vi: "Anh trai hay chị gái?",
         en: "Older brother or older sister?",
       },
       {
+        cell_id: "6db02272-cda3-4908-8515-43e27d1f0bb0",
         speaker: "B",
         text: "Kakak perempuan. Ini foto keluarga saya.",
         vi: "Chị gái. Đây là ảnh gia đình tôi.",

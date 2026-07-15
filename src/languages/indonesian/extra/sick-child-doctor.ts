@@ -21,6 +21,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   /** Indonesian word/phrase. */
   word: string;
   /** English meaning. */
@@ -36,6 +37,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   /** Indonesian line. */
   text: string;
@@ -225,43 +227,48 @@ export const lessons: IndonesianLesson[] = [
     tip_advice_en:
       "Tip for Vietnamese speakers: use `demam turun` for fever going down, `kontrol ulang` for follow-up visit, `obat sirup` for syrup medicine, and `aturan minum obat` for dosing instructions. Avoid `libur sekolah` when a child is absent because of illness; say `izin sakit` or `surat izin sekolah`. If you have a temperature reading, state it clearly: `tiga puluh delapan koma lima derajat`.",
     vocabulary: [
-      { word: "anak demam", en: "child with a fever", vi: "trẻ bị sốt", pos: "noun phrase", pronunciation_vi: "A-nak de-MAM", pronunciation_en: "A-nak de-MAM" },
-      { word: "dokter anak", en: "pediatrician", vi: "bác sĩ nhi", pos: "noun phrase", pronunciation_vi: "DOK-ter A-nak", pronunciation_en: "DOK-ter A-nak" },
-      { word: "batuk pilek", en: "cough and runny nose / cold", vi: "ho và sổ mũi/cảm", pos: "noun phrase", pronunciation_vi: "BA-tuk PI-lek", pronunciation_en: "BA-tuk PEE-lek" },
-      { word: "obat sirup", en: "syrup medicine", vi: "thuốc siro", pos: "noun phrase", pronunciation_vi: "O-bat SI-rup", pronunciation_en: "O-bat SEE-rup" },
-      { word: "izin sekolah", en: "permission to miss school", vi: "xin phép nghỉ học", pos: "noun phrase", pronunciation_vi: "I-zin se-KO-lah", pronunciation_en: "EE-zin se-KO-lah" },
-      { word: "kompres", en: "compress / sponge down", vi: "chườm/lau hạ sốt", pos: "verb/noun", pronunciation_vi: "KOM-pres", pronunciation_en: "KOM-pres" },
-      { word: "suhu tubuh", en: "body temperature", vi: "nhiệt độ cơ thể", pos: "noun phrase", pronunciation_vi: "SU-hu TU-buh", pronunciation_en: "SOO-hoo TOO-booh" },
-      { word: "kontrol ulang", en: "follow-up visit", vi: "tái khám", pos: "noun phrase", pronunciation_vi: "KON-trol U-lang", pronunciation_en: "KON-trol OO-lang" },
-      { word: "demam turun", en: "fever goes down", vi: "sốt hạ", pos: "clause", pronunciation_vi: "de-MAM TU-run", pronunciation_en: "de-MAM TOO-roon" },
-      { word: "aturan minum obat", en: "medicine-taking instructions", vi: "hướng dẫn uống thuốc", pos: "noun phrase", pronunciation_vi: "a-TU-ran MI-num O-bat", pronunciation_en: "a-TOO-ran MEE-noom O-bat" },
+      { cell_id: "9da12160-6d52-408f-9d28-2f62cabdf984", word: "anak demam", en: "child with a fever", vi: "trẻ bị sốt", pos: "noun phrase", pronunciation_vi: "A-nak de-MAM", pronunciation_en: "A-nak de-MAM" },
+      { cell_id: "afc755f8-b3b8-452f-b907-1832ceef9b2b", word: "dokter anak", en: "pediatrician", vi: "bác sĩ nhi", pos: "noun phrase", pronunciation_vi: "DOK-ter A-nak", pronunciation_en: "DOK-ter A-nak" },
+      { cell_id: "75f65044-8eaa-4dbd-ae29-c76daefc2889", word: "batuk pilek", en: "cough and runny nose / cold", vi: "ho và sổ mũi/cảm", pos: "noun phrase", pronunciation_vi: "BA-tuk PI-lek", pronunciation_en: "BA-tuk PEE-lek" },
+      { cell_id: "9ac33c38-01e8-4a3e-b093-ec5b5a119153", word: "obat sirup", en: "syrup medicine", vi: "thuốc siro", pos: "noun phrase", pronunciation_vi: "O-bat SI-rup", pronunciation_en: "O-bat SEE-rup" },
+      { cell_id: "ba6b6e22-31c9-4827-a89a-917c08122ae8", word: "izin sekolah", en: "permission to miss school", vi: "xin phép nghỉ học", pos: "noun phrase", pronunciation_vi: "I-zin se-KO-lah", pronunciation_en: "EE-zin se-KO-lah" },
+      { cell_id: "ac7e17be-195b-4441-8359-ef1989aca3c8", word: "kompres", en: "compress / sponge down", vi: "chườm/lau hạ sốt", pos: "verb/noun", pronunciation_vi: "KOM-pres", pronunciation_en: "KOM-pres" },
+      { cell_id: "9d79e91a-ceba-4279-9177-3f2744504bfc", word: "suhu tubuh", en: "body temperature", vi: "nhiệt độ cơ thể", pos: "noun phrase", pronunciation_vi: "SU-hu TU-buh", pronunciation_en: "SOO-hoo TOO-booh" },
+      { cell_id: "82021d5a-aff6-4f86-9115-59874884145c", word: "kontrol ulang", en: "follow-up visit", vi: "tái khám", pos: "noun phrase", pronunciation_vi: "KON-trol U-lang", pronunciation_en: "KON-trol OO-lang" },
+      { cell_id: "700e59f9-ea16-42b3-ac6a-62e5ed4a0d34", word: "demam turun", en: "fever goes down", vi: "sốt hạ", pos: "clause", pronunciation_vi: "de-MAM TU-run", pronunciation_en: "de-MAM TOO-roon" },
+      { cell_id: "e51243ec-6b55-4c34-b1a9-d58f97474857", word: "aturan minum obat", en: "medicine-taking instructions", vi: "hướng dẫn uống thuốc", pos: "noun phrase", pronunciation_vi: "a-TU-ran MI-num O-bat", pronunciation_en: "a-TOO-ran MEE-noom O-bat" },
     ],
     dialogue: [
       {
+        cell_id: "1151ad87-8eff-4b43-a0b6-156debdf3747",
         speaker: "Orang tua",
         text: "Dok, anak saya demam sejak tadi malam.",
         vi: "Bác sĩ ơi, con tôi bị sốt từ tối qua.",
         en: "Doctor, my child has had a fever since last night.",
       },
       {
+        cell_id: "00c58f52-00e8-4241-8527-ae99e47d698e",
         speaker: "Dokter",
         text: "Suhu tubuhnya berapa?",
         vi: "Nhiệt độ cơ thể của bé là bao nhiêu?",
         en: "What is the child's body temperature?",
       },
       {
+        cell_id: "f7ad45b5-b035-4692-ac17-a9a82ad5f702",
         speaker: "Orang tua",
         text: "Tadi pagi tiga puluh delapan koma lima derajat. Dia juga batuk pilek.",
         vi: "Sáng nay ba mươi tám phẩy năm độ. Bé cũng ho và sổ mũi.",
         en: "This morning it was 38.5 degrees. The child also has a cough and runny nose.",
       },
       {
+        cell_id: "5ea466f9-65a1-4bac-bc46-065e577cea8e",
         speaker: "Dokter",
         text: "Saya beri obat sirup. Tolong ikuti aturan minum obatnya.",
         vi: "Tôi cho thuốc siro. Làm ơn làm theo hướng dẫn uống thuốc.",
         en: "I will give syrup medicine. Please follow the dosing instructions.",
       },
       {
+        cell_id: "ca3bed15-257d-4046-8fdd-b00ef1caf0d9",
         speaker: "Orang tua",
         text: "Kalau demamnya tidak turun, kapan harus kontrol ulang?",
         vi: "Nếu sốt không hạ, khi nào phải tái khám?",

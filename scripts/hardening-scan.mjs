@@ -20,20 +20,45 @@
 //   LOW    = style / lint debt
 //
 // Network: only npm audit's advisory lookup. Nothing else reaches out.
+//
+// By default this command remains a report generator and exits 0 even when it
+// emits findings. CI gates that must fail on findings opt in with
+// HARDENING_SCAN_FAIL_ON_FINDINGS=1.
 
 import { execFileSync } from "node:child_process";
 import fs from "node:fs";
 import path from "node:path";
 import { pathToFileURL } from "node:url";
+import {
+  DEFAULT_BASELINE_PATH,
+  compareCellCoverageToBaseline,
+  formatCellCoverageSummary,
+  readCellCoverageBaseline,
+  scanCellCoverage,
+} from "./cell-coverage-scan.mjs";
+import {
+  DEFAULT_INTENT_PATH as DEFAULT_RLS_INTENT_PATH,
+  compareRlsIntent,
+  scanRlsMigrations,
+} from "./security/rls-matrix-scan.mjs";
+import {
+  DEFAULT_INTENT_PATH as DEFAULT_AUTH_INTENT_PATH,
+  authClassificationCounts,
+  compareAuthIntent,
+  scanAuthBoundaries,
+} from "./security/auth-matrix-scan.mjs";
 
 const ROOT = process.cwd();
 const SRC = "src";
 const SEV_RANK = { HIGH: 0, MEDIUM: 1, LOW: 2 };
 const DEFAULT_CMD_TIMEOUT_MS = 120_000;
 const CHECK_TIMEOUT_MS = {
-  A: 180_000,
-  B: 240_000,
+  A: 300_000,
+  B: 360_000,
   D: 90_000,
+  K: 10_000,
+  L: 10_000,
+  M: 10_000,
 };
 const rel = (p) => path.relative(ROOT, p) || p;
 
@@ -42,7 +67,7 @@ const rel = (p) => path.relative(ROOT, p) || p;
 export function run(cmd, args, options = {}) {
   const timeout = options.timeoutMs ?? DEFAULT_CMD_TIMEOUT_MS;
   try {
-    const out = execFileSync(cmd, args, { cwd: ROOT, encoding: "utf8", maxBuffer: 1 << 28, timeout });
+    const out = execFileSync(cmd, args, { cwd: options.cwd ?? ROOT, env: options.env ?? process.env, encoding: "utf8", maxBuffer: 1 << 28, timeout });
     return { code: 0, stdout: out, stderr: "" };
   } catch (e) {
     const timedOut = e.signal === "SIGTERM" || /ETIMEDOUT|timed out/i.test(String(e.message));
@@ -569,6 +594,131 @@ function checkJ() {
   return { status: "ok", findings };
 }
 
+// ── Check K — CELL-layer content coverage ratchet ────────────────────────
+function checkK() {
+  const scan = scanCellCoverage({ root: ROOT });
+  let baseline;
+  try {
+    baseline = readCellCoverageBaseline(ROOT, DEFAULT_BASELINE_PATH);
+  } catch (e) {
+    return {
+      status: "SKIPPED",
+      note: `CELL coverage baseline missing/unreadable at ${DEFAULT_BASELINE_PATH}: ${e?.message || e}`,
+      findings: [],
+    };
+  }
+  const baselineFindings = compareCellCoverageToBaseline(scan, baseline);
+  const notes = [formatCellCoverageSummary(scan, baselineFindings)];
+  const findings = baselineFindings.map((finding) => makeFinding({
+    id: `CELL-coverage-ratchet-${finding.type}-${finding.metric}`,
+    severity: "HIGH",
+    evidence: `CELL coverage uncovered-count ratchet exceeded for ${finding.type}.${finding.metric}: actual ${finding.actual} > baseline ${finding.baseline}. ${formatCellCoverageSummary(scan, baselineFindings)}`,
+    hits: [{ file: DEFAULT_BASELINE_PATH, line: 0 }],
+    consumer_question: "Did this MR intentionally remove CELL content and update the baseline in the same MR, or did it add uncovered IPA/audio debt?",
+  }));
+  if (scan.cellIds.missing > 0) {
+    findings.push(makeFinding({
+      id: "CELL-cell-id-missing",
+      severity: "HIGH",
+      evidence: `CELL item identity gate: ${scan.cellIds.missing}/${scan.cellIds.totalObjects} vocabulary/dialogue objects are missing populated cell_id.`,
+      hits: [{ file: "src/languages", line: 0 }],
+      consumer_question: "Did this MR add CELL vocabulary/dialogue items without persisted cell_id values?",
+    }));
+  }
+  if (scan.cellIds.duplicateIds > 0) {
+    findings.push(makeFinding({
+      id: "CELL-cell-id-duplicate",
+      severity: "HIGH",
+      evidence: `CELL item identity gate: ${scan.cellIds.duplicateIds} duplicate cell_id value(s) across ${scan.cellIds.duplicateObjects} objects. Samples: ${JSON.stringify(scan.cellIds.duplicateSamples)}`,
+      hits: [{ file: "src/languages", line: 0 }],
+      consumer_question: "Did this MR duplicate CELL item IDs while copying or generating content?",
+    }));
+  }
+  return { status: "ok", findings, notes };
+}
+
+// ── Check L — Supabase migration RLS intent drift ────────────────────────
+function checkL() {
+  const scan = scanRlsMigrations({ root: ROOT });
+  let intent;
+  try {
+    intent = JSON.parse(fs.readFileSync(path.join(ROOT, DEFAULT_RLS_INTENT_PATH), "utf8"));
+  } catch (e) {
+    return {
+      status: "SKIPPED",
+      note: `RLS intent manifest missing/unreadable at ${DEFAULT_RLS_INTENT_PATH}: ${e?.message || e}`,
+      findings: [],
+    };
+  }
+
+  const drift = compareRlsIntent(scan, intent);
+  const noRls = scan.tables.filter((table) => !table.rls_enabled);
+  const policyCount = scan.tables.reduce((sum, table) => sum + table.policies.length, 0);
+  const notes = [
+    `RLS matrix: migration_files=${scan.migration_files}; tables=${scan.tables.length}; rls_enabled=${scan.tables.length - noRls.length}; rls_not_enabled=${noRls.length}; policies=${policyCount}; manifest_drift=${drift.length}`,
+  ];
+  const newNoRls = drift.filter((item) => item.type === "new_table_without_rls");
+  const otherDrift = drift.filter((item) => item.type !== "new_table_without_rls");
+  const findings = [];
+
+  if (newNoRls.length) {
+    findings.push(makeFinding({
+      id: "RLS-new-table-without-rls",
+      severity: "HIGH",
+      evidence: `Supabase migration RLS intent drift: ${newNoRls.length} table(s) exist in migrations without RLS and without ${DEFAULT_RLS_INTENT_PATH}. ${newNoRls.map((item) => `${item.table} @ ${item.file}:${item.line}`).join("; ")}`,
+      hits: newNoRls.map((item) => ({ file: item.file, line: item.line })),
+      consumer_question: "Did this MR add a table without enabling RLS and without an explicit manifest update documenting the intent?",
+    }));
+  }
+
+  if (otherDrift.length) {
+    findings.push(makeFinding({
+      id: "RLS-intent-drift",
+      severity: "HIGH",
+      evidence: `Supabase migration RLS intent drift: ${otherDrift.length} table/policy state difference(s) from ${DEFAULT_RLS_INTENT_PATH}. ${otherDrift.map((item) => `${item.type}:${item.table} @ ${item.file}:${item.line}`).join("; ")}`,
+      hits: otherDrift.map((item) => ({ file: item.file, line: item.line })),
+      consumer_question: "Did this MR intentionally change table RLS or policies, and was security/rls-intent.json updated in the same MR?",
+    }));
+  }
+
+  return { status: "ok", findings, notes };
+}
+
+// ── Check M — Auth-boundary intent drift ─────────────────────────────────
+function checkM() {
+  const scan = scanAuthBoundaries({ root: ROOT });
+  let intent;
+  try {
+    intent = JSON.parse(fs.readFileSync(path.join(ROOT, DEFAULT_AUTH_INTENT_PATH), "utf8"));
+  } catch (e) {
+    return {
+      status: "SKIPPED",
+      note: `Auth intent manifest missing/unreadable at ${DEFAULT_AUTH_INTENT_PATH}: ${e?.message || e}`,
+      findings: [],
+    };
+  }
+
+  const drift = compareAuthIntent(scan, intent);
+  const counts = authClassificationCounts(scan);
+  const flags = scan.endpoints.filter((endpoint) => endpoint.review_flag);
+  const notes = [
+    `Auth matrix: endpoints=${scan.endpoints.length}; bearer-required=${counts["bearer-required"]}; anon-key-open=${counts["anon-key-open"]}; service-role-only=${counts["service-role-only"]}; public-unauthenticated=${counts["public-unauthenticated"]}; review_flags=${flags.length}; manifest_drift=${drift.length}`,
+  ];
+  const findings = [];
+
+  if (drift.length) {
+    findings.push(makeFinding({
+      id: "AUTH-boundary-intent-drift",
+      severity: "HIGH",
+      evidence: `Auth boundary intent drift: ${drift.length} endpoint difference(s) from ${DEFAULT_AUTH_INTENT_PATH}. ${drift.map((item) => `${item.type}:${item.endpoint} @ ${item.file}:${item.line}`).join("; ")}`,
+      hits: drift.map((item) => ({ file: item.file, line: item.line })),
+      consumer_question: "Did this MR intentionally add or reclassify a callable auth boundary, and was security/auth-intent.json updated in the same MR?",
+    }));
+  }
+
+  return { status: "ok", findings, notes };
+}
+
 // ── Orchestrate ───────────────────────────────────────────────────────────
 function main() {
   const started = new Date().toISOString();
@@ -586,14 +736,16 @@ function main() {
   const dirty = run("git", ["status", "--porcelain"]).stdout.trim().length > 0;
   const treeMatchesRef = headSha === refSha && !dirty;
 
-  const versions = {
-    eslint: run("npx", ["--no-install", "eslint", "--version"]).stdout.trim() || "MISSING",
-    tsc: run("npx", ["--no-install", "tsc", "--version"]).stdout.trim() || "MISSING",
-    npm: run("npm", ["--version"]).stdout.trim() || "MISSING",
-    node: process.version,
-  };
+  const versions = process.env.HARDENING_SCAN_SKIP_TOOL_VERSIONS === "1"
+    ? { eslint: "SKIPPED", tsc: "SKIPPED", npm: "SKIPPED", node: process.version }
+    : {
+        eslint: run("npx", ["--no-install", "eslint", "--version"]).stdout.trim() || "MISSING",
+        tsc: run("npx", ["--no-install", "tsc", "--version"]).stdout.trim() || "MISSING",
+        npm: run("npm", ["--version"]).stdout.trim() || "MISSING",
+        node: process.version,
+      };
 
-  const checkFns = { A: checkA, B: checkB, C: checkC, D: checkD, E: checkE, F: checkF, G: checkG, H: checkH, I: checkI, J: checkJ };
+  const checkFns = { A: checkA, B: checkB, C: checkC, D: checkD, E: checkE, F: checkF, G: checkG, H: checkH, I: checkI, J: checkJ, K: checkK, L: checkL, M: checkM };
   const labels = {
     A: "Lint debt (eslint)",
     B: "Type safety gaps (tsc + patterns)",
@@ -605,6 +757,9 @@ function main() {
     H: "v3 network calls without timeouts",
     I: "v3 api/function env reads without missing-var handling",
     J: "v4 async UI request states without terminal failure state",
+    K: "CELL-layer IPA/audio coverage ratchet",
+    L: "Supabase migration RLS intent drift",
+    M: "Auth-boundary intent drift",
   };
   const requestedChecks = (process.env.HARDENING_SCAN_CHECKS || "")
     .split(",")
@@ -684,6 +839,11 @@ function main() {
     process.stderr.write(`\n[report written] ${outPath}\n`);
   } catch (e) {
     process.stderr.write(`\n[report write failed] ${e.message}\n`);
+  }
+
+  if (process.env.HARDENING_SCAN_FAIL_ON_FINDINGS === "1" && allFindings.length > 0) {
+    process.stderr.write(`[hardening-scan] FAIL_ON_FINDINGS: ${allFindings.length} finding(s); exiting 1\n`);
+    process.exitCode = 1;
   }
 }
 

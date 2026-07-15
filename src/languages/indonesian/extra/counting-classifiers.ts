@@ -34,6 +34,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   /** Indonesian word/phrase. */
   word: string;
   /** English meaning. */
@@ -49,6 +50,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   /** Indonesian line. */
   text: string;
@@ -319,6 +321,7 @@ export const lessons: IndonesianLesson[] = [
     vocabulary: [
       // The six core classifiers (mapped to Vietnamese)
       {
+        cell_id: "6a4e8894-1b68-48a9-a236-458641fe110d",
         word: "orang",
         en: "classifier for people",
         vi: "lượng từ cho người (= người)",
@@ -327,6 +330,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "O-rang — `tiga orang` three people; NOT for animals",
       },
       {
+        cell_id: "4ea76043-5711-4a74-b9ee-952609a53c2f",
         word: "ekor",
         en: "classifier for animals (lit. 'tail')",
         vi: "lượng từ cho động vật (= con)",
@@ -335,6 +339,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "E-kor — `dua ekor kucing` two cats; the Vietnamese `con`",
       },
       {
+        cell_id: "16c4090d-053a-4301-a0b6-316d89718242",
         word: "buah",
         en: "all-purpose object classifier (lit. 'fruit')",
         vi: "lượng từ vạn năng cho đồ vật (= cái/quả)",
@@ -343,6 +348,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "BU-ah — the 'rescue' classifier; `tiga buah apel`",
       },
       {
+        cell_id: "5bd3a4a2-fd36-4d90-b660-e20edeff34ea",
         word: "batang",
         en: "classifier for long, rigid things (lit. 'stem')",
         vi: "lượng từ cho vật dài cứng (= cây/điếu)",
@@ -351,6 +357,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "BA-tang — pens, cigarettes, trees; `dua batang pensil`",
       },
       {
+        cell_id: "ebca6049-9741-48b1-87a9-eaa395bcea2f",
         word: "lembar",
         en: "classifier for flat, thin things",
         vi: "lượng từ cho vật phẳng mỏng (= tờ)",
@@ -359,6 +366,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "LEM-bar — paper, cloth, banknotes; `tiga lembar kertas`",
       },
       {
+        cell_id: "c3d61656-3ad2-4395-8f57-361867381d9c",
         word: "helai",
         en: "classifier for fine strands (hair, leaf, thread)",
         vi: "lượng từ cho vật sợi mảnh (= sợi/lá)",
@@ -368,6 +376,7 @@ export const lessons: IndonesianLesson[] = [
       },
       // se- prefix and number words
       {
+        cell_id: "51544b29-0c40-41cf-bfad-bdea63b22d7c",
         word: "se-",
         en: "prefix 'one' fused to a classifier",
         vi: "tiền tố 'một' gắn vào lượng từ",
@@ -376,6 +385,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "se- — `seorang`, `seekor`, `sebuah`, `sebatang`, `selembar`, `sehelai`",
       },
       {
+        cell_id: "7d83e119-db1f-47b3-ab1e-53df0572301b",
         word: "berapa",
         en: "how many / how much",
         vi: "mấy / bao nhiêu",
@@ -385,6 +395,7 @@ export const lessons: IndonesianLesson[] = [
       },
       // Measure / container words that fill the same slot
       {
+        cell_id: "485608a0-1547-4cb5-a42f-8ba9caa371f0",
         word: "kilo",
         en: "kilogram (measure word)",
         vi: "ký / cân (đơn vị)",
@@ -393,6 +404,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "KI-lo — `dua kilo mangga` two kilos of mango",
       },
       {
+        cell_id: "2ad27667-7ebd-4f37-8192-4b52a87aa316",
         word: "botol",
         en: "bottle (container classifier)",
         vi: "chai (vật chứa)",
@@ -401,6 +413,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "BO-tol — `tiga botol air` three bottles of water",
       },
       {
+        cell_id: "bf65f582-1b25-4da5-a8c2-a1f26928c4f1",
         word: "bungkus",
         en: "pack / packet (container classifier)",
         vi: "gói (vật chứa)",
@@ -409,6 +422,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "BUNG-kus — `dua bungkus nasi` two packs of rice",
       },
       {
+        cell_id: "8cafb369-7835-4e21-a2b7-8f1fbd712143",
         word: "keping",
         en: "classifier for coins / flat discs",
         vi: "lượng từ cho đồng xu / vật tròn dẹt",
@@ -418,6 +432,7 @@ export const lessons: IndonesianLesson[] = [
       },
       // Common counted nouns (so the classifier has something to attach to)
       {
+        cell_id: "2f634aef-5b32-4573-88eb-816123921609",
         word: "kucing",
         en: "cat",
         vi: "con mèo",
@@ -426,6 +441,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "KU-ching — `c`='ch'; counted `seekor kucing`",
       },
       {
+        cell_id: "b4693f0a-f8a4-4fa6-b8ce-40dab84b80da",
         word: "kertas",
         en: "paper",
         vi: "giấy",
@@ -434,6 +450,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "KER-tas — counted `selembar kertas` one sheet of paper",
       },
       {
+        cell_id: "458c4010-ecfb-44ae-98b0-1f7bf8e27846",
         word: "rambut",
         en: "hair",
         vi: "tóc",
@@ -445,42 +462,49 @@ export const lessons: IndonesianLesson[] = [
     dialogue: [
       // Dialogue: at the market, classifiers in natural use
       {
+        cell_id: "feb8c6a5-bca2-4fff-b65c-3760f693f27a",
         speaker: "Pembeli",
         text: "Bu, saya mau beli tiga ekor ikan dan dua kilo mangga.",
         vi: "Cô ơi, con muốn mua ba con cá và hai ký xoài.",
         en: "Ma'am, I'd like three fish and two kilos of mango.",
       },
       {
+        cell_id: "925d1fb6-4741-47ba-a89d-3a9151726e7d",
         speaker: "Penjual",
         text: "Baik. Ikannya yang mana? Yang besar atau yang kecil?",
         vi: "Được. Cá loại nào? Loại to hay loại nhỏ?",
         en: "Alright. Which fish? The big or the small ones?",
       },
       {
+        cell_id: "f257a061-57ef-42d5-8f80-98a143973863",
         speaker: "Pembeli",
         text: "Yang besar dua ekor, yang kecil satu ekor saja.",
         vi: "Loại to hai con, loại nhỏ một con thôi.",
         en: "Two big ones, just one small one.",
       },
       {
+        cell_id: "652c5ce5-7bee-47f6-a8bf-03f86e39830c",
         speaker: "Penjual",
         text: "Siap. Mau tambah telur? Sepuluh butir lagi promo, lho.",
         vi: "Vâng. Có lấy thêm trứng không? Mười quả đang khuyến mãi đấy.",
         en: "Got it. Want to add eggs? Ten of them are on promo.",
       },
       {
+        cell_id: "e4eff72a-a5d7-4327-8cc2-a942133d584d",
         speaker: "Pembeli",
         text: "Boleh, sepuluh butir telur. Oh, ada kantong plastik? Satu lembar saja.",
         vi: "Được, mười quả trứng. À, có túi nilon không? Một cái thôi.",
         en: "Sure, ten eggs. Oh, do you have a plastic bag? Just one.",
       },
       {
+        cell_id: "dd619f99-c155-4fa3-a539-f6da11814481",
         speaker: "Penjual",
         text: "Ini. Jadi tiga ekor ikan, dua kilo mangga, sepuluh butir telur. Totalnya tujuh puluh ribu.",
         vi: "Đây ạ. Vậy là ba con cá, hai ký xoài, mười quả trứng. Tổng bảy mươi nghìn.",
         en: "Here. So three fish, two kilos of mango, ten eggs. Total seventy thousand.",
       },
       {
+        cell_id: "5bc88103-0a36-43f3-aa1e-f2ed3c99deb3",
         speaker: "Pembeli",
         text: "Saya bayar pakai dua lembar lima puluh ribu, ya.",
         vi: "Con trả bằng hai tờ năm mươi nghìn nhé.",

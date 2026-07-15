@@ -17,6 +17,7 @@ type IndonesianLessonSentence = {
 };
 
 type IndonesianVocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -26,6 +27,7 @@ type IndonesianVocabEntry = {
 };
 
 type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -212,6 +214,7 @@ export const advancedDiplomaticLanguageLessons: IndonesianLesson[] = [
       "Safe formula: open with `Dengan hormat` or `Mohon maaf`, express your view with `menurut saya`, soften conflict with `kami memahami`, and close with `Terima kasih atas perhatian dan kerja samanya`. If you want to object, use `menyampaikan keberatan secara netral` rather than an emotional direct statement.",
     vocabulary: [
       {
+        cell_id: "9bf791b8-0062-4866-b118-fa27ab5369ee",
         word: "dengan hormat",
         en: "respectfully",
         vi: "kinh thua / tran trong",
@@ -220,6 +223,7 @@ export const advancedDiplomaticLanguageLessons: IndonesianLesson[] = [
         pronunciation_en: "DEH-ngan HOR-mat",
       },
       {
+        cell_id: "8a0b50d5-e829-43bc-b7c9-1f37245bc0c7",
         word: "mempertimbangkan",
         en: "to consider",
         vi: "xem xet",
@@ -228,6 +232,7 @@ export const advancedDiplomaticLanguageLessons: IndonesianLesson[] = [
         pronunciation_en: "mem-per-TEEM-bung-kan",
       },
       {
+        cell_id: "5db854f0-7438-4ad2-90a4-bcceaaa17b4a",
         word: "menyampaikan",
         en: "to convey, to present",
         vi: "trinh bay, truyen dat",
@@ -236,6 +241,7 @@ export const advancedDiplomaticLanguageLessons: IndonesianLesson[] = [
         pronunciation_en: "meh-nyam-PAI-kan",
       },
       {
+        cell_id: "7e25990a-309f-43d3-8d1a-de1bccad3bd4",
         word: "keberatan",
         en: "objection, concern",
         vi: "y kien phan doi, quan ngai",
@@ -244,6 +250,7 @@ export const advancedDiplomaticLanguageLessons: IndonesianLesson[] = [
         pronunciation_en: "keh-beh-RAH-tan",
       },
       {
+        cell_id: "164548c2-d63c-477e-9ec4-68aaffb34797",
         word: "menjaga hubungan",
         en: "maintain relations",
         vi: "giu quan he",
@@ -252,6 +259,7 @@ export const advancedDiplomaticLanguageLessons: IndonesianLesson[] = [
         pronunciation_en: "men-JAH-ga hoo-BOONG-an",
       },
       {
+        cell_id: "3d67d598-364d-4b59-8092-2d4bef7cbe51",
         word: "solusi bersama",
         en: "joint solution",
         vi: "giai phap cung nhau",
@@ -260,6 +268,7 @@ export const advancedDiplomaticLanguageLessons: IndonesianLesson[] = [
         pronunciation_en: "soh-LOO-see ber-SAH-mah",
       },
       {
+        cell_id: "e21a202d-63db-490a-9228-857676fe27c6",
         word: "netral",
         en: "neutral",
         vi: "trung lap",
@@ -268,6 +277,7 @@ export const advancedDiplomaticLanguageLessons: IndonesianLesson[] = [
         pronunciation_en: "NEH-tral",
       },
       {
+        cell_id: "09f0753d-65d9-4d02-8b6d-35cb9b2beab7",
         word: "mohon maaf",
         en: "please excuse me / sorry",
         vi: "xin loi",
@@ -278,30 +288,35 @@ export const advancedDiplomaticLanguageLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "6d1788eb-e13d-432e-a63f-5bb5ebab8321",
         speaker: "Perwakilan A",
         text: "Dengan hormat, kami ingin menyampaikan beberapa catatan.",
         vi: "Kinh thua, chung toi muon trinh bay mot vai ghi chu.",
         en: "Respectfully, we would like to convey several notes.",
       },
       {
+        cell_id: "1a75562f-9a81-409f-9729-91cb27e4d6a4",
         speaker: "Perwakilan B",
         text: "Tentu, kami memahami posisi Anda.",
         vi: "Tat nhien, chung toi hieu vi tri cua quy vi.",
         en: "Certainly, we understand your position.",
       },
       {
+        cell_id: "9c4bb6de-688a-47ba-af5c-5bbfadc29879",
         speaker: "Perwakilan A",
         text: "Kami menyampaikan keberatan secara netral agar hubungan tetap baik.",
         vi: "Chung toi neu y kien phan doi theo cach trung lap de quan he van tot dep.",
         en: "We are raising our objection neutrally so the relationship remains good.",
       },
       {
+        cell_id: "39a12a42-0aee-45af-97a6-9968ba4ff5b3",
         speaker: "Perwakilan B",
         text: "Baik, mari kita mencari solusi bersama.",
         vi: "Duoc, hay cung nhau tim giai phap.",
         en: "Alright, let us look for a joint solution.",
       },
       {
+        cell_id: "f2920854-d258-4424-9af4-3134b914f7ef",
         speaker: "Perwakilan A",
         text: "Terima kasih atas perhatian dan kerja samanya.",
         vi: "Cam on vi su chu y va hop tac cua quy vi.",

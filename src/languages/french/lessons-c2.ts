@@ -97,6 +97,7 @@ export const lessons: FrenchLesson[] =           [
       "tip_advice_vi": "QUY TRÌNH 6 BƯỚC để chuẩn bị một explication de texte (cho oral 30 phút, chuẩn bị 1 giờ):\n\nBƯỚC 1 (5 phút) — ĐỌC YÊN LẶNG hai lần. Lần đầu cho ấn tượng tổng quát; lần hai chú ý các chi tiết bất thường.\n\nBƯỚC 2 (10 phút) — ANNOTATION DENSE: gạch dưới mọi figure de style (anaphore, métaphore, antithèse, hyperbate), mọi từ « marqué » (lexique chuyên môn, archaïsme, néologisme), mọi rupture (changement de temps, changement de focalisation, hapax dans l'œuvre).\n\nBƯỚC 3 (10 phút) — IDENTIFIER 3 AXES DE LECTURE: ba câu hỏi văn học cho phép kéo dài cả đoạn. Ví dụ: (a) cấu trúc nhịp điệu, (b) jeu sur les voix narratives, (c) charge ironique. KHÔNG « les personnages », « le décor », « l'action » — đây là phân loại nội dung, không phải axes de lecture.\n\nBƯỚC 4 (10 phút) — DISTRIBUER LES CITATIONS theo 3 axes. Mỗi axe có 3-4 citations với bình luận tu từ.\n\nBƯỚC 5 (10 phút) — RÉDIGER L'INTRODUCTION đầy đủ (3-5 câu) và CONCLUSION (3-5 câu). Phần analyse có thể nói tự do từ notes.\n\nBƯỚC 6 (5 phút) — RELIRE LE TEXTE LENTEMENT một lần nữa. Souvent một détail bị bỏ sót sẽ xuất hiện ở lần đọc cuối.\n\nCỤM HỮU ÍCH:\n\nĐỂ MỞ ĐẦU EXPLICATION:\n- « Le passage que nous allons commenter est extrait de [tác phẩm], paru en [năm]. »\n- « Cet extrait se situe à un moment-clé du récit — [bối cảnh ngắn]. »\n- « Nous nous demanderons en quoi cette page constitue [problématique]. »\n- « Notre analyse se déploiera selon trois axes: [axe 1]; [axe 2]; [axe 3]. »\n\nĐỂ CITER ET COMMENTER:\n- « L'auteur écrit, à la ligne X: « [citation] ». Cette formulation appelle plusieurs remarques. »\n- « On notera, dans cette même phrase, le glissement de l'imparfait au passé simple — glissement chargé de sens. »\n- « Cette anaphore — répétition de X en début de trois phrases consécutives — confère au passage une cadence presque incantatoire. »\n\nĐỂ ANALYSER LA STYLISTIQUE:\n- « L'écart stylistique est ici manifeste: [observation]. »\n- « Le travail rythmique repose sur une opposition entre phrases longues et phrases brèves. »\n- « Ce choix énonciatif n'est pas anodin: il [effet produit]. »\n\nĐỂ CONCLURE:\n- « Cette page, à première vue descriptive, recèle en réalité [synthèse]. »\n- « Loin d'être un simple ornement narratif, ce passage constitue [enjeu]. »\n- « Cette analyse pourrait être prolongée par la lecture de [autre texte], qui présente une mise en œuvre comparable. »\n\nTRÁNH:\n- « Dans ce passage, l'auteur veut nous faire comprendre que… » → intentionnalisme naïf\n- « C'est très beau » / « c'est intéressant » → jugement non analytique\n- Tóm tắt cốt truyện thay vì bình giảng\n- Plaquage theórique — bắt đầu từ Bourdieu rồi mới đọc văn bản",
       "vocabulary": [
         {
+          cell_id: "2bb29702-8c99-443b-ac2d-edd53e481609",
           "word": "l'explication de texte",
           "en": "close reading (French tradition)",
           "vi": "bình giảng văn bản chi tiết",
@@ -105,6 +106,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "lehks-plee-kah-SYON duh TEKST — 'l'explication de texte'; the French close-reading exercise, with no exact English equivalent"
         },
         {
+          cell_id: "01be1359-d682-45f8-9363-fe3295915cf1",
           "word": "un commentaire composé",
           "en": "a structured commentary",
           "vi": "bình luận có cấu trúc",
@@ -113,6 +115,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "UN koh-mahn-TEHR kohm-poh-ZAY — 'commentaire composé'; a thematic (non-linear) written commentary"
         },
         {
+          cell_id: "e1ce955e-7875-457d-93dc-17ed62901c17",
           "word": "un axe de lecture",
           "en": "a line of interpretation",
           "vi": "một trục đọc",
@@ -121,6 +124,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "UN AKS duh lek-TUR — 'axe de lecture'; an interpretive thread sustained across the whole passage"
         },
         {
+          cell_id: "a7ea0355-986d-47bb-b7dc-93c9c15d826d",
           "word": "l'écart stylistique",
           "en": "stylistic divergence",
           "vi": "sự lệch về phong cách",
@@ -129,6 +133,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "lay-KAR stee-lees-TEEK — 'écart stylistique'; a deviation from the stylistic norm"
         },
         {
+          cell_id: "a44f9789-0cfd-4d3c-bc93-2e8358febafc",
           "word": "un choix énonciatif",
           "en": "an enunciative choice",
           "vi": "một lựa chọn phát ngôn",
@@ -137,6 +142,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "UN SHWAH ay-non-syah-TEEF — 'choix énonciatif'; a choice of utterance/voice — who speaks, and in what mode"
         },
         {
+          cell_id: "1306374d-0081-4a67-bfc6-502ed29f4bf6",
           "word": "recéler un sens",
           "en": "to harbor a meaning",
           "vi": "ẩn chứa một ý nghĩa",
@@ -145,6 +151,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ruh-say-LAY un SAHNS — 'recéler un sens'; literary verb = to harbor / conceal a meaning"
         },
         {
+          cell_id: "1bfe33d1-fa25-401f-8fb4-728f18aa04c5",
           "word": "en filigrane",
           "en": "as a watermark / implicitly",
           "vi": "ngầm ẩn (littéraire)",
@@ -153,6 +160,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ahn fee-lee-GRAHN — 'en filigrane'; like a watermark — i.e. implicitly, beneath the surface"
         },
         {
+          cell_id: "c14050f5-1c3b-4b44-86f4-530b8dd4519d",
           "word": "une anaphore",
           "en": "an anaphora",
           "vi": "phép điệp ngữ đầu câu",
@@ -161,6 +169,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ün ah-nah-FOR — 'anaphore'; rhetorical repetition of a word at the start of successive clauses"
         },
         {
+          cell_id: "b4ee437b-b609-4e2d-b045-08edda10074f",
           "word": "une hyperbate",
           "en": "a hyperbaton",
           "vi": "phép đảo ngữ tu từ",
@@ -169,6 +178,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ün ee-pehr-BAT — 'hyperbate' (hyperbaton); a syntactic dislocation for effect; 'h' silent"
         },
         {
+          cell_id: "f8187f62-e8ba-4f20-915c-ff8bada83952",
           "word": "un hapax",
           "en": "a hapax (single occurrence)",
           "vi": "hapax — từ xuất hiện duy nhất một lần",
@@ -179,21 +189,25 @@ export const lessons: FrenchLesson[] =           [
       ],
       "dialogue": [
         {
+          cell_id: "d2cb3a8c-469c-4d5e-b65f-aff2ad714a66",
           "speaker": "Pr. Compagnon",
           "text": "Madame Tran, vous tirez le texte vers une lecture politique avant d'avoir épuisé sa lettre. Reprenez par le rythme.",
           "vi": "Cô Trần, cô kéo văn bản về một cách đọc chính trị trước khi vắt kiệt văn tự. Cô bắt đầu lại bằng nhịp điệu."
         },
         {
+          cell_id: "77c0dc2b-062b-47d6-9940-894db27b8106",
           "speaker": "Linh",
           "text": "Vous avez raison — j'ai plaqué une grille avant d'écouter la phrase.",
           "vi": "Thầy đúng — tôi đã dán một lưới trước khi lắng nghe câu văn."
         },
         {
+          cell_id: "bc03255d-2c67-4940-8738-40b815cf394a",
           "speaker": "Pr. Compagnon",
           "text": "Lisez à voix haute la première phrase, lentement. Qu'est-ce qui frappe l'oreille ?",
           "vi": "Cô đọc to câu đầu, chậm. Điều gì đập vào tai?"
         },
         {
+          cell_id: "01b0e61f-a963-49d9-ac20-51e5ffc83f59",
           "speaker": "Linh",
           "text": "L'alternance entre une protase courte et une apodose étirée — la phrase se déséquilibre vers la fin.",
           "vi": "Sự xen kẽ giữa một protase ngắn và một apodose kéo dài — câu mất cân bằng về cuối."
@@ -432,6 +446,7 @@ export const lessons: FrenchLesson[] =           [
       "tip_advice_vi": "GRILLE D'ANALYSE Genettien complète pour un texte donné:\n\n(1) VOIX:\n- Personne grammaticale (je / il-elle / nous — rare)\n- Position du narrateur (homo / hétéro / auto-diégétique)\n- Niveau narratif (extra / intra / méta-diégétique)\n- Temps du récit (passé simple = distance; présent = immédiateté; passé composé = familier)\n\n(2) FOCALISATION:\n- Type (zéro / interne / externe)\n- Constance ou variations\n- Si interne: identification du focalisateur (qui voit ?)\n- Cohérence avec la voix\n\n(3) MODE:\n- Discours rapporté (direct / indirect / indirect libre)\n- Sommaire vs scène (vitesse narrative)\n- Récit itératif vs singulatif (fréquence)\n\nCỤM HỮU ÍCH:\n\nPOUR DÉCRIRE LA VOIX:\n- « Le narrateur, ici autodiégétique, raconte une expérience dont il fut le protagoniste. »\n- « Le récit s'organise depuis une instance hétérodiégétique qui ne se met jamais en scène. »\n- « La voix narrative oscille entre l'omniscience apparente et la limitation à la conscience d'Emma. »\n\nPOUR DÉCRIRE LA FOCALISATION:\n- « La focalisation, strictement interne, restreint la perception au point de vue de Meursault. »\n- « On observe ici un changement de focalisation: le narrateur abandonne le regard d'Emma pour adopter celui de Charles. »\n- « La focalisation externe — ou, pour reprendre Genette, behavioriste — interdit tout accès aux pensées des personnages. »\n\nPOUR ANALYSER LE DISCOURS INDIRECT LIBRE:\n- « Le passage glisse insensiblement du discours du narrateur au discours du personnage, sans verbe introducteur. »\n- « Cette indistinction énonciative est la signature flaubertienne par excellence. »\n- « L'ironie naît précisément de l'indécision: parle-t-il en son nom ou rapporte-t-il celui d'Emma ? »\n\nPOUR LA POLYPHONIE BAKHTINIENNE:\n- « Le roman, comme l'a montré Bakhtine, est un espace polyphonique où plusieurs consciences se font entendre. »\n- « Cette pluralité de voix, irréductible à un seul point de vue, constitue le dialogisme du genre romanesque. »\n\nTRÁNH:\n- « Le narrateur sait tout. » → flou; précisez focalisation zéro\n- « Le personnage pense que… » → vérifier si c'est focalisation interne ou monologue rapporté\n- « L'auteur dit que… » → confusion auteur empirique / narrateur\n- « Ce texte est subjectif. » → terme non technique; dire « focalisation interne »",
       "vocabulary": [
         {
+          cell_id: "aebaa448-a62e-4b1f-b333-3fde2624b222",
           "word": "un narrateur autodiégétique",
           "en": "an autodiegetic narrator",
           "vi": "người trần thuật tự kể đời mình",
@@ -440,6 +455,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "UN nah-rah-TUR oh-toh-dyay-zhay-TEEK — a narrator who is the protagonist of his own story (Proust's Marcel)"
         },
         {
+          cell_id: "df0e75ff-0684-4e25-92e2-7625b7952059",
           "word": "un narrateur hétérodiégétique",
           "en": "a heterodiegetic narrator",
           "vi": "người trần thuật ngoài câu chuyện",
@@ -448,6 +464,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "UN nah-rah-TUR ay-tay-roh-dyay-zhay-TEEK — a narrator outside the story he tells (Balzac, Flaubert)"
         },
         {
+          cell_id: "eef49a07-d331-4392-86d5-7835b18faa4b",
           "word": "la focalisation interne",
           "en": "internal focalization",
           "vi": "điểm nhìn nội tại",
@@ -456,6 +473,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "lah foh-kah-lee-zah-SYON an-TEHRN — the world filtered through one character's perception"
         },
         {
+          cell_id: "6de7b42d-bd06-4487-b079-ca10eea74a85",
           "word": "la focalisation zéro",
           "en": "zero focalization (omniscient)",
           "vi": "điểm nhìn zéro / toàn tri",
@@ -464,6 +482,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "lah foh-kah-lee-zah-SYON zay-ROH — classic 'omniscient' narration (Balzac, Tolstoy)"
         },
         {
+          cell_id: "a7a11e2c-dd9c-4ab7-b387-262c746ec078",
           "word": "le discours indirect libre",
           "en": "free indirect discourse",
           "vi": "discours indirect libre / lời nửa trực tiếp",
@@ -472,6 +491,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "luh dees-KOOR an-dee-REKT LEE-bruh — free indirect discourse; the Flaubertian signature"
         },
         {
+          cell_id: "cf98fd97-7290-48b6-90ff-59206090ddfc",
           "word": "la diégèse",
           "en": "the diegesis",
           "vi": "thế giới câu chuyện",
@@ -480,6 +500,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "lah dyay-ZHEZ — the storyworld; distinct from 'histoire' (the events) and 'récit' (the text)"
         },
         {
+          cell_id: "b7002264-fa47-49ba-891a-fc83bde1790e",
           "word": "la polyphonie narrative",
           "en": "narrative polyphony",
           "vi": "sự đa âm trần thuật",
@@ -488,6 +509,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "lah poh-lee-foh-NEE nah-rah-TEEV — Bakhtin's polyphony: many consciousnesses contend for the floor"
         },
         {
+          cell_id: "1c3ac6d7-faa1-42e0-b9bc-b27d19f3a9d8",
           "word": "l'instance énonciative",
           "en": "the enunciating instance",
           "vi": "thực thể phát ngôn",
@@ -496,6 +518,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "lan-STAHNS ay-non-syah-TEEV — the speaking instance of the text, NOT the empirical author"
         },
         {
+          cell_id: "3d89976d-8e88-4624-a970-96c4bf795783",
           "word": "un récit itératif",
           "en": "an iterative narrative",
           "vi": "tự sự lặp lại",
@@ -504,6 +527,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "UN ray-SEE ee-tay-rah-TEEF — telling once what happened repeatedly (Genette's frequency category)"
         },
         {
+          cell_id: "978cf183-a0cd-4761-a148-254822342a45",
           "word": "la vitesse narrative",
           "en": "narrative pace",
           "vi": "vận tốc trần thuật",
@@ -514,21 +538,25 @@ export const lessons: FrenchLesson[] =           [
       ],
       "dialogue": [
         {
+          cell_id: "ff5b1c8f-9220-43d4-aa34-2107f0183c6d",
           "speaker": "Pr. Compagnon",
           "text": "Madame Tran, vous parlez de « narrateur omniscient » à propos de Madame Bovary. Précisez.",
           "vi": "Cô Trần, cô nói về « narrateur omniscient » liên quan Madame Bovary. Cô làm rõ."
         },
         {
+          cell_id: "6085f304-1a51-4fe4-95b1-a34f5a4dfd52",
           "speaker": "Linh",
           "text": "En réalité, l'omniscience flaubertienne est intermittente — par moments le narrateur sait tout, à d'autres il se restreint à la conscience d'Emma.",
           "vi": "Thực ra, omniscience của Flaubert là gián đoạn — có lúc người trần thuật biết tất, có lúc giới hạn vào ý thức Emma."
         },
         {
+          cell_id: "c88172e5-dcd3-4609-8614-c5e5a58a1dbc",
           "speaker": "Pr. Compagnon",
           "text": "Voilà — c'est précisément cette modulation qui est intéressante, pas l'omniscience pleine.",
           "vi": "Đó — chính sự modulation này thú vị, không phải omniscience đầy."
         },
         {
+          cell_id: "47ae70db-473c-4f5e-b4df-ec729b04fd4f",
           "speaker": "Linh",
           "text": "Genette parlerait d'une focalisation variable, ce qui est plus juste.",
           "vi": "Genette sẽ gọi đó là focalisation variable, chính xác hơn."
@@ -757,6 +785,7 @@ export const lessons: FrenchLesson[] =           [
       "tip_advice_vi": "GRILLE D'ANALYSE pour identifier et commenter une figure:\n\n(1) IDENTIFIER LE TYPE PRÉCIS:\n- Comparaison? Métaphore? Métonymie? Synecdoque? Allégorie? Symbole?\n- Si métaphore: in praesentia / in absentia / filée?\n- Champ source / champ cible (modèle Lakoff-Johnson, Les Métaphores dans la vie quotidienne, traduit en français en 1985)\n\n(2) ANALYSER LE TRAVAIL DE L'IMAGE:\n- Quel rapprochement opère la figure?\n- Quel effet produit-elle (cognitif, affectif, ironique)?\n- Où se situe-t-elle dans la phrase, dans le poème, dans l'œuvre?\n- Y a-t-il systématisation (filage), récurrence (leitmotiv), variation?\n\n(3) RELIER À UNE TRADITION:\n- L'image appartient-elle à un répertoire (la rose pétrarquiste, la mer baudelairienne)?\n- L'auteur le reprend-il, le subvertit-il, l'épuise-t-il?\n- Quelle est la singularité de SA mise en œuvre?\n\nCỤM HỮU ÍCH:\n\nĐỂ INTRODUIRE UNE ANALYSE:\n- « La métaphore qui s'élabore ici relève d'une tradition que l'on peut faire remonter à… »\n- « Cette image, en apparence convenue, prend chez l'auteur une coloration singulière. »\n- « Le réseau métaphorique de cette page se déploie selon un axe… »\n\nĐỂ DÉCRIRE UNE MÉTAPHORE:\n- « La métaphore opère un transfert du champ X vers le champ Y. »\n- « L'auteur file ici la métaphore sur l'ensemble du paragraphe — chaque image relance la précédente. »\n- « Ce qui frappe, c'est la rupture du registre métaphorique au milieu de la phrase. »\n\nĐỂ DÉCRIRE UN SYMBOLE:\n- « Le motif récurrent du X acquiert, par sa répétition, un statut symbolique. »\n- « Ce symbole résiste à toute paraphrase: il signifie à la fois l'absence, l'attente et le désir. »\n- « La polyvalence du symbole est ici le moteur même de la lecture. »\n\nĐỂ DÉCRIRE UNE ALLÉGORIE:\n- « Le récit fonctionne comme une allégorie transparente: chaque personnage renvoie à un type. »\n- « Cette transparence allégorique est précisément ce que l'auteur subvertit en seconde partie. »\n\nTRÁNH:\n- « C'est un symbole de la liberté » → réduction allégorisante d'un symbole; incompatible avec la définition de symbole\n- « L'auteur utilise une métaphore pour décorer son texte » → conception ornementale dépassée depuis Bachelard\n- Confondre « image » (terme générique) et « figure » (terme rhétorique précis)\n- Identifier toute personnification comme métaphore (ce sont deux figures distinctes)",
       "vocabulary": [
         {
+          cell_id: "2ba2de3e-1771-4928-9989-aff3fa287c55",
           "word": "une métaphore filée",
           "en": "an extended metaphor",
           "vi": "ẩn dụ kéo dài",
@@ -765,6 +794,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ün may-tah-FOR fee-LAY — a metaphor sustained across several sentences (Baudelaire's Correspondances)"
         },
         {
+          cell_id: "f09156b3-c002-404f-802a-3ba853cf3175",
           "word": "in praesentia / in absentia",
           "en": "in presence / in absence",
           "vi": "có / không cả hai termes",
@@ -773,6 +803,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "in pray-zahn-SYAH / in ab-sahn-SYAH — Latin: with both terms present vs only the vehicle stated"
         },
         {
+          cell_id: "73e4e5da-e993-489a-b402-c1cb13e9205f",
           "word": "l'allégorie",
           "en": "allegory",
           "vi": "ngụ ngôn / phúng dụ",
@@ -781,6 +812,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "lah-lay-goh-REE — allegory: one fixed point-by-point meaning (the opposite of a polysemous symbole)"
         },
         {
+          cell_id: "7f332017-d613-4ad3-b2e5-8e5c989fe27d",
           "word": "le champ sémantique",
           "en": "the semantic field",
           "vi": "trường ngữ nghĩa",
@@ -789,6 +821,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "luh SHAHN say-mahn-TEEK — the semantic field; 'champ' is nasal, final 'p' silent"
         },
         {
+          cell_id: "b0e7c650-9bea-40e4-937f-a2462c6978e8",
           "word": "un réseau métaphorique",
           "en": "a metaphorical network",
           "vi": "một mạng lưới ẩn dụ",
@@ -797,6 +830,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "UN ray-ZOH may-tah-foh-REEK — a network of linked images running through a work"
         },
         {
+          cell_id: "1dc6c86d-76d0-43ae-ad58-b55698b9ea13",
           "word": "un leitmotiv",
           "en": "a leitmotiv",
           "vi": "chủ đề lặp lại",
@@ -805,6 +839,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "UN layt-moh-TEEF — a recurring motif (German loanword); final 'v' = 'f'"
         },
         {
+          cell_id: "685f6753-4129-4899-a670-ac4bffe231be",
           "word": "polysémique",
           "en": "polysemous",
           "vi": "đa nghĩa",
@@ -813,6 +848,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "poh-lee-say-MEEK — polysemous: open to many meanings at once (the mark of a symbole)"
         },
         {
+          cell_id: "6f44720d-99a7-412b-9349-953dc102c36f",
           "word": "l'innovation sémantique",
           "en": "semantic innovation",
           "vi": "sự sáng tạo ngữ nghĩa",
@@ -821,6 +857,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "lee-noh-vah-SYON say-mahn-TEEK — Ricœur's term: metaphor creates new, un-paraphrasable meaning"
         },
         {
+          cell_id: "ee2bd39f-af4c-4923-bbe5-c58c4a13bd9c",
           "word": "un transfert métaphorique",
           "en": "a metaphorical transfer",
           "vi": "một sự chuyển ẩn dụ",
@@ -829,6 +866,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "UN trahns-FEHR may-tah-foh-REEK — the carrying-over from source field to target field"
         },
         {
+          cell_id: "ff09c53a-a058-469c-a5ee-ea7f206541ca",
           "word": "épuiser un sens",
           "en": "to exhaust a meaning",
           "vi": "vắt kiệt một ý nghĩa",
@@ -839,21 +877,25 @@ export const lessons: FrenchLesson[] =           [
       ],
       "dialogue": [
         {
+          cell_id: "a759a35f-6479-4c90-9a20-9cdcc6aff783",
           "speaker": "Pr. Compagnon",
           "text": "Madame Tran, vous parlez du « cygne, symbole de la pureté ». Cette lecture est-elle suffisante ?",
           "vi": "Cô Trần, cô nói về « con thiên nga, biểu tượng của sự thuần khiết ». Cách đọc này có đủ không?"
         },
         {
+          cell_id: "10c1ed46-3071-4c5a-82b8-a5d5bad6a9ef",
           "speaker": "Linh",
           "text": "Non — la réduire à la pureté, c'est l'allégoriser. Mallarmé en fait un symbole polysémique: stérilité, exil, idéal inatteignable.",
           "vi": "Không — quy giảm thành sự thuần khiết là biến nó thành ngụ ngôn. Mallarmé biến nó thành biểu tượng đa nghĩa: vô sinh, lưu vong, lý tưởng không thể đạt."
         },
         {
+          cell_id: "db9e22a9-2c25-41d7-87d6-fde479f86fc4",
           "speaker": "Pr. Compagnon",
           "text": "Voilà — un symbole résiste à la paraphrase unique. C'est ce qui le distingue de l'allégorie.",
           "vi": "Đó — một biểu tượng kháng cự lại paraphrase duy nhất. Chính điều này phân biệt nó với ngụ ngôn."
         },
         {
+          cell_id: "b5d00313-9ad7-4dc4-84a6-4fafda4aeaf3",
           "speaker": "Linh",
           "text": "Et c'est en quoi le sonnet mallarméen demeure ouvert: aucune lecture ne l'épuise.",
           "vi": "Và vì thế bài sonnet của Mallarmé vẫn mở: không cách đọc nào vắt kiệt nó."
@@ -1077,6 +1119,7 @@ export const lessons: FrenchLesson[] =           [
       "tip_advice_vi": "GRILLE D'ANALYSE pour identifier une subversion de genre:\n\n(1) IDENTIFIER LE GENRE PRÉSUMÉ — quel modèle l'œuvre semble-t-elle convoquer?\n(2) LISTER LES CONVENTIONS DE CE GENRE — narratives, formelles, thématiques.\n(3) RELEVER LES DÉPLACEMENTS — convention par convention, qu'est-ce qui est respecté, déplacé, inversé, exposé?\n(4) INTERPRÉTER L'ENJEU DU DÉPLACEMENT — pourquoi l'auteur opère-t-il ce travail? Quel effet en résulte?\n(5) SITUER DANS UNE TRADITION DE SUBVERSION — l'œuvre est-elle isolée ou s'inscrit-elle dans un mouvement?\n\nCỤM HỮU ÍCH:\n\nPOUR IDENTIFIER LE GENRE:\n- « L'œuvre se réclame, sur le mode parodique, du roman X. »\n- « Les conventions du genre Y sont ici à la fois convoquées et déjouées. »\n- « Sur le plan formel, le texte épouse l'apparence de Z, mais en travaille la substance. »\n\nPOUR ANALYSER LA SUBVERSION:\n- « Le roman conserve l'apparence de l'intrigue tout en lui retirant son moteur causal. »\n- « Le narrateur omniscient est ici maintenu, mais privé de la maîtrise qui le caractérisait chez Balzac. »\n- « Cette subversion n'est pas négation: elle suppose au contraire une intimité avec les codes qu'elle déplace. »\n\nPOUR INTERPRÉTER L'ENJEU:\n- « En subvertissant le genre romanesque, l'auteur interroge la possibilité même du roman après [événement historique / esthétique]. »\n- « Cette mise en crise des conventions répond à une perte de crédibilité du modèle hérité. »\n- « Le travail de subversion est inséparable, ici, d'une réflexion sur les conditions de possibilité de la littérature contemporaine. »\n\nPOUR DISTINGUER SUBVERSION ET ÉCHEC:\n- « Cette tentative de subversion échoue précisément parce qu'elle n'a pas maîtrisé les conventions qu'elle prétend renverser. »\n- « Le geste de rupture demeure superficiel: les codes profonds du genre restent intacts. »\n- « Pour subvertir, encore faut-il connaître. »\n\nTRÁNH:\n- « C'est moderne donc c'est bien. » → jugement non-critique\n- « Beckett a inventé un théâtre nouveau. » → trop vague; préciser EN QUOI il subvertit\n- Confondre subversion et nouveauté absolue (toute subversion suppose un connu)\n- Identifier toute innovation formelle comme subversion (l'innovation peut être un perfectionnement, pas une rupture)",
       "vocabulary": [
         {
+          cell_id: "536f3335-fc9c-45d0-b768-8f1ef1097c99",
           "word": "subvertir un genre",
           "en": "to subvert a genre",
           "vi": "lật đổ một thể loại",
@@ -1085,6 +1128,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "sewb-vehr-TEER UN ZHAHN-ruh — to subvert a genre; 'genre' is nasal, 'g' = 'zh'"
         },
         {
+          cell_id: "6a70e607-9a1e-49f9-9b7e-183ddf353297",
           "word": "les conventions narratives",
           "en": "narrative conventions",
           "vi": "các quy ước trần thuật",
@@ -1093,6 +1137,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "lay kohn-vahn-SYON nah-rah-TEEV — the narrative conventions a genre rests on"
         },
         {
+          cell_id: "4e8e7610-02f3-40e7-a105-d3449750cfca",
           "word": "un héritage paradoxal",
           "en": "a paradoxical heritage",
           "vi": "di sản nghịch lý",
@@ -1101,6 +1146,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "UN ay-ree-TAZH pah-rah-dok-SAL — a paradoxical inheritance; 'h' silent, '-age' = 'ahzh'"
         },
         {
+          cell_id: "60f88daf-4770-488b-8aae-132280cb96f2",
           "word": "l'épuisement d'un modèle",
           "en": "the exhaustion of a model",
           "vi": "sự cạn kiệt của một mô hình",
@@ -1109,6 +1155,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "lay-pwee-zuh-MAHN dUN moh-DEL — the exhaustion of a model (Houellebecq's diagnosis)"
         },
         {
+          cell_id: "fddda688-9c6f-4387-af32-1e86d974517c",
           "word": "déjouer les attentes",
           "en": "to thwart expectations",
           "vi": "phá các mong đợi",
@@ -1117,6 +1164,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "day-zhoo-AY lay zah-TAHNT — to thwart expectations; liaison 'les_attentes' = 'lay-zah-TAHNT'"
         },
         {
+          cell_id: "70139f20-106d-4588-ad63-3812531be3aa",
           "word": "le Nouveau Roman",
           "en": "the Nouveau Roman movement",
           "vi": "phong trào Tiểu thuyết Mới",
@@ -1125,6 +1173,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "luh noo-VOH roh-MAHN — the Nouveau Roman movement (1950-70); a proper-noun label"
         },
         {
+          cell_id: "3c510437-33b5-4637-8334-628ac5250eac",
           "word": "le théâtre de l'absurde",
           "en": "theatre of the absurd",
           "vi": "kịch phi lý",
@@ -1133,6 +1182,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "luh tay-AH-truh duh lab-SURD — the theatre of the absurd (Beckett, Ionesco, Adamov)"
         },
         {
+          cell_id: "92f3adba-58cb-4d48-a4ba-45966d14a672",
           "word": "l'autofiction",
           "en": "autofiction",
           "vi": "tự hư cấu",
@@ -1141,6 +1191,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "loh-toh-feek-SYON — autofiction; Doubrovsky's 1977 coinage, kept in French in English criticism"
         },
         {
+          cell_id: "f5ef6455-0a2a-43dd-b8be-305a7e430779",
           "word": "la mise en crise",
           "en": "the putting-into-crisis",
           "vi": "sự đặt vào khủng hoảng",
@@ -1149,6 +1200,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "lah MEEZ ahn KREEZ — the putting-into-crisis (of conventions); 'mise' final 'e' silent"
         },
         {
+          cell_id: "85d04b03-736b-4ca1-97d2-678a221e44fc",
           "word": "un déplacement formel",
           "en": "a formal displacement",
           "vi": "một sự dịch chuyển hình thức",
@@ -1159,21 +1211,25 @@ export const lessons: FrenchLesson[] =           [
       ],
       "dialogue": [
         {
+          cell_id: "b8b6df02-6e7c-4f62-8409-3fe8f4ea6f4a",
           "speaker": "Pr. Compagnon",
           "text": "Madame Tran, vous écrivez que Beckett « a détruit le théâtre ». Reformulez.",
           "vi": "Cô Trần, cô viết rằng Beckett « đã phá hủy kịch ». Cô diễn đạt lại."
         },
         {
+          cell_id: "5b6d9a45-bec8-4d80-8d4d-edd961e88f2c",
           "speaker": "Linh",
           "text": "Bien sûr — formulation excessive. Je devrais dire qu'il en a subverti les conventions héritées du drame bourgeois, sans abolir le théâtre comme genre.",
           "vi": "Vâng — diễn đạt quá đáng. Tôi nên nói ông lật đổ các quy ước thừa hưởng từ kịch tư sản, mà không xóa bỏ kịch như thể loại."
         },
         {
+          cell_id: "74e8068f-2dc7-4b54-bbcb-8359e1d669ee",
           "speaker": "Pr. Compagnon",
           "text": "Et il faut ajouter: pour subvertir, il faut connaître. Beckett était un lecteur attentif de Racine.",
           "vi": "Và phải thêm: để lật đổ, phải biết. Beckett là người đọc chú ý Racine."
         },
         {
+          cell_id: "072be43f-6a07-41f4-a068-be09cb465beb",
           "speaker": "Linh",
           "text": "Précisément — la subversion suppose une intimité avec les codes.",
           "vi": "Chính xác — lật đổ đòi hỏi sự thân thuộc với các mã."
@@ -1402,6 +1458,7 @@ export const lessons: FrenchLesson[] =           [
       "tip_advice_vi": "GRILLE D'ANALYSE pour comparer deux traductions:\n\n(1) CHOISIR UN PASSAGE COURT — 5 à 15 phrases, dense, représentatif du texte source. Travail détaillé impossible sur plus.\n\n(2) ÉTABLIR LE TEXTE SOURCE EN COLONNE CENTRALE, les deux traductions de part et d'autre. Numéroter chaque ligne pour faciliter la référence.\n\n(3) ANALYSER POINT PAR POINT:\n- Lexique: chaque mot du source rendu comment?\n- Syntaxe: phrase coupée, fusionnée, restructurée?\n- Temps verbaux: respect ou modulation?\n- Rythme: cadence préservée?\n- Connotations: registre maintenu?\n- Effets sonores: allitérations, assonances, rimes internes?\n- Niveaux de langue: soutenu / courant / familier?\n\n(4) IDENTIFIER UN CHOIX TRADUCTOLOGIQUE GLOBAL chez chaque traducteur — souvent une grille fait apparaître une cohérence: l'un naturalise (cible), l'autre étrangéise (source).\n\n(5) ÉVALUER NON L'ERREUR mais LA STRATÉGIE — chaque choix a un coût et un bénéfice. Une critique C2 ne dit pas « cette traduction est mauvaise »; elle dit « cette traduction privilégie X au détriment de Y ».\n\nCỤM HỮU ÍCH:\n\nPOUR INTRODUIRE LA COMPARAISON:\n- « La confrontation des deux versions fait apparaître non tant un meilleur et un moins bon que deux stratégies divergentes. »\n- « Chaque traducteur opère, face au même original, un arbitrage différent entre les exigences contradictoires de la fidélité. »\n\nPOUR DÉCRIRE UN ÉCART:\n- « Là où l'original use d'un imparfait à valeur durative, la traduction X opte pour un présent qui en accélère le tempo. »\n- « Le rythme ternaire de l'original est rendu, dans la version Y, par une cadence binaire — choix qui appauvrit la dimension lyrique. »\n- « L'allitération en [s] de la phrase source disparaît purement et simplement dans la traduction Z. »\n\nPOUR ÉVALUER UNE STRATÉGIE:\n- « La stratégie de naturalisation est ici poussée à un point qui efface la singularité de la voix originale. »\n- « À l'inverse, la stratégie étrangéisante préserve la défamiliarisation — au prix d'une lecture plus exigeante. »\n- « Aucune des deux versions ne saurait prétendre à l'exhaustivité; chacune éclaire un aspect que l'autre laisse dans l'ombre. »\n\nPOUR CONCLURE:\n- « Cette comparaison illustre le théorème bermanien selon lequel toute traduction est nécessairement déplacement. »\n- « C'est précisément ce que Meschonnic appelait l'épreuve du rythme: ce qui résiste, dans la traduction, à la pure équivalence sémantique. »\n\nTRÁNH:\n- « Cette traduction est meilleure que celle-là. » → jugement non analytique\n- « Le traducteur a fait une erreur. » → distinguer erreur (lapsus) et choix (stratégie)\n- « Le vietnamien ne peut rendre cela. » → toujours faux; nuancer en disant « le vietnamien rend cela par d'autres moyens »\n- Comparer sans citer ligne par ligne — vague et invérifiable",
       "vocabulary": [
         {
+          cell_id: "b38f724f-1b85-48fa-8243-9540fedfe198",
           "word": "la traductologie",
           "en": "translation studies",
           "vi": "dịch học",
@@ -1410,6 +1467,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "lah trah-dük-toh-loh-ZHEE — translation studies; 'g' = 'zh'"
         },
         {
+          cell_id: "d85aed21-c337-4240-8979-69caba0a7f64",
           "word": "un déplacement traductologique",
           "en": "a translative displacement",
           "vi": "một sự dịch chuyển dịch thuật",
@@ -1418,6 +1476,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "UN day-plahs-MAHN trah-dük-toh-loh-ZHEEK — a translative displacement (Berman: every translation operates one)"
         },
         {
+          cell_id: "413ba65a-e1d0-489b-936f-e25eb78cde9f",
           "word": "la naturalisation",
           "en": "domestication",
           "vi": "sự nội địa hóa (dịch)",
@@ -1426,6 +1485,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "lah nah-tü-rah-lee-zah-SYON — domestication: pulling the text toward the target reader (Venuti)"
         },
         {
+          cell_id: "40b70d42-4867-4b8b-83af-37ede2026c28",
           "word": "l'étrangéisation",
           "en": "foreignization",
           "vi": "sự giữ tính lạ",
@@ -1434,6 +1494,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "lay-trahn-zhay-ee-zah-SYON — foreignization: pulling the reader toward the source text (Venuti)"
         },
         {
+          cell_id: "1fc7be78-ee71-41d1-8435-c781da830372",
           "word": "une tendance déformante",
           "en": "a deforming tendency (Berman)",
           "vi": "một khuynh hướng làm méo (Berman)",
@@ -1442,6 +1503,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ün tahn-DAHNS day-for-MAHNT — a deforming tendency (one of Berman's thirteen)"
         },
         {
+          cell_id: "74d54f85-8c3b-4fde-a844-3172e4e19b5f",
           "word": "la fidélité au sens",
           "en": "fidelity to meaning",
           "vi": "sự trung thành với nghĩa",
@@ -1450,6 +1512,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "lah fee-day-lee-TAY oh SAHNS — fidelity to meaning (which Meschonnic subordinates to rhythm)"
         },
         {
+          cell_id: "80bc9141-83a4-464c-8783-e2be16876197",
           "word": "la restitution du rythme",
           "en": "the restitution of rhythm",
           "vi": "sự khôi phục nhịp điệu",
@@ -1458,6 +1521,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "lah res-tee-tü-SYON dü REETM — the restitution of rhythm (Meschonnic's true criterion)"
         },
         {
+          cell_id: "acaa51a8-4be2-4ee2-9c92-c6b5dec500a5",
           "word": "un intraduisible",
           "en": "an untranslatable",
           "vi": "một khái niệm không dịch được",
@@ -1466,6 +1530,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "UN an-trah-dwee-ZEE-bluh — an untranslatable (Cassin): what one never stops re-translating"
         },
         {
+          cell_id: "9113b40b-47f1-4737-b6e6-e68ea38204f7",
           "word": "une auto-traduction",
           "en": "a self-translation",
           "vi": "sự tự dịch",
@@ -1474,6 +1539,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ün oh-toh-trah-dük-SYON — a self-translation (Beckett's French↔English re-writing)"
         },
         {
+          cell_id: "b1a558f7-c277-4a08-a569-b4d48c743263",
           "word": "un calque",
           "en": "a calque (loan translation)",
           "vi": "sự dịch sao (calque)",
@@ -1484,21 +1550,25 @@ export const lessons: FrenchLesson[] =           [
       ],
       "dialogue": [
         {
+          cell_id: "1f11c04d-b206-41fa-acc0-63174342f8eb",
           "speaker": "Pr. Compagnon",
           "text": "Madame Tran, vous comparez deux traductions vietnamiennes de Madame Bovary. Sur quelle phrase précise ?",
           "vi": "Cô Trần, cô so sánh hai bản dịch tiếng Việt của Madame Bovary. Trên câu cụ thể nào?"
         },
         {
+          cell_id: "90b1a772-1282-4f2c-847a-462e5d7c4dba",
           "speaker": "Linh",
           "text": "Sur l'incipit du chapitre VI, partie I — le passage sur les lectures romantiques d'Emma adolescente.",
           "vi": "Trên incipit của chương VI, phần I — đoạn về các cuốn tiểu thuyết lãng mạn Emma đọc tuổi thiếu nữ."
         },
         {
+          cell_id: "49ed9a79-e643-4966-8f23-261bfdfc7c5e",
           "speaker": "Pr. Compagnon",
           "text": "Bon choix — passage à discours indirect libre intense. Comment chacune rend-elle l'ironie flaubertienne ?",
           "vi": "Lựa chọn tốt — đoạn discours indirect libre mạnh. Mỗi bản rendre châm biếm Flaubert thế nào?"
         },
         {
+          cell_id: "9957a383-d91d-4439-b296-12b25d0ca921",
           "speaker": "Linh",
           "text": "L'une l'efface en choisissant un présent narratif neutre; l'autre la préserve en restituant l'imparfait à valeur ironique.",
           "vi": "Một bản xóa nó bằng cách chọn một présent narratif trung lập; bản kia giữ bằng cách khôi phục imparfait có giá trị châm biếm."
@@ -1717,6 +1787,7 @@ export const lessons: FrenchLesson[] =           [
       "tip_advice_vi": "GRILLE D'ANALYSE pour articuler biographie et œuvre sans tomber dans le biographisme:\n\n(1) IDENTIFIER LE PACTE PROPOSÉ:\n- Pacte fictionnel (roman classique): « ce livre est inventé »\n- Pacte autobiographique (Lejeune): « ce livre dit la vérité de ma vie »\n- Pacte autofictionnel (Doubrovsky): « ce livre joue avec les frontières — vérité et invention sont indistinctes »\n\n(2) CHOISIR LES DONNÉES BIOGRAPHIQUES PERTINENTES — celles que le texte SOLLICITE explicitement:\n- Période historique de l'écriture (souvent pertinente)\n- Position de l'auteur dans le champ littéraire (souvent pertinente)\n- Lectures avérées de l'auteur (parfois pertinentes pour intertextualité)\n- Détails intimes de la vie privée (rarement pertinents)\n\n(3) DISTINGUER TROIS NIVEAUX:\n- AUTEUR EMPIRIQUE: la personne historique, qui mange, dort, signe ses contrats\n- AUTEUR IMPLIQUÉ (Booth, Wayne): l'image que le texte construit de son auteur\n- NARRATEUR: la voix du texte, distincte des deux précédents\n\n(4) ANALYSER LES PARATEXTES (Genette, Seuils, 1987):\n- Préface, dédicace, épigraphe, notes\n- Bandeaux éditoriaux, jaquette, prière d'insérer\n- Interviews, articles autour de la sortie\nCes paratextes orientent la lecture, qu'on l'accepte ou la résiste.\n\nCỤM HỮU ÍCH:\n\nPOUR INVOQUER LA BIOGRAPHIE LÉGITIMEMENT:\n- « Le contexte de la rédaction — [période, événement] — éclaire ce passage. »\n- « Sans tomber dans le biographisme, on peut noter que l'auteur a explicitement revendiqué cette filiation avec X. »\n- « Le texte sollicite lui-même la donnée biographique en intégrant des références datables. »\n\nPOUR ÉVITER LE BIOGRAPHISME NAÏF:\n- « Il convient de distinguer ce que le texte donne à lire de ce que la biographie de l'auteur permettrait de supposer. »\n- « Le moi qui écrit, comme le rappelle Proust, n'est pas le moi qui vit. »\n- « L'instance énonciative ne se confond pas avec l'auteur empirique. »\n\nPOUR ANALYSER L'AUTOFICTION:\n- « Annie Ernaux propose un pacte référentiel explicite, qu'on ne peut ignorer sans contresens. »\n- « L'autofiction brouille sciemment la frontière, mais ne l'abolit pas. »\n- « La référentialité du texte est une donnée du texte, non une indiscrétion sur l'auteur. »\n\nTRÁNH:\n- « L'auteur a écrit cela parce qu'il a vécu telle expérience. » → biographisme strict\n- « La biographie n'a aucune importance. » → purisme excessif, naïf\n- Confondre auteur empirique et narrateur (« Marcel Proust dit dans la Recherche que… »)\n- Sourcer un trait de personnage par un trait psychologique de l'auteur",
       "vocabulary": [
         {
+          cell_id: "89f9e047-5c9a-4b34-9a4e-518a64b8c153",
           "word": "le pacte autobiographique",
           "en": "the autobiographical pact",
           "vi": "hợp đồng tự thuật",
@@ -1725,6 +1796,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "luh PAKT oh-toh-byoh-grah-FEEK — the autobiographical pact (Lejeune): author = narrator = character"
         },
         {
+          cell_id: "70fe9f02-b1ca-45bd-84e0-3a2efe12d97c",
           "word": "le pacte référentiel",
           "en": "the referential pact",
           "vi": "hợp đồng tham chiếu",
@@ -1733,6 +1805,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "luh PAKT ray-fay-rahn-SYEL — the referential pact: the text claims to refer to the author's real life"
         },
         {
+          cell_id: "e225a3d6-677a-43bb-be1e-d678b7a9858a",
           "word": "le pacte fictionnel",
           "en": "the fictional pact",
           "vi": "hợp đồng hư cấu",
@@ -1741,6 +1814,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "luh PAKT feek-syoh-NEL — the fictional pact: 'this book is invention'"
         },
         {
+          cell_id: "a13e8428-382a-48c2-a096-f9fd27c05716",
           "word": "l'autofiction",
           "en": "autofiction",
           "vi": "tự hư cấu",
@@ -1749,6 +1823,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "loh-toh-feek-SYON — autofiction (Doubrovsky, 1977); kept in French in English criticism"
         },
         {
+          cell_id: "97cf7449-823f-471b-aa36-9bc4b51516c1",
           "word": "le moi créateur",
           "en": "the creating self",
           "vi": "cái tôi sáng tạo",
@@ -1757,6 +1832,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "luh MWAH kray-ah-TUR — the creating self (Proust): the self that writes, not the social self"
         },
         {
+          cell_id: "d4427ec8-303c-4617-b108-e769b10dafd1",
           "word": "le moi social",
           "en": "the social self",
           "vi": "cái tôi xã hội",
@@ -1765,6 +1841,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "luh MWAH soh-SYAL — the social self (Proust): the self that dines, converses, suffers"
         },
         {
+          cell_id: "4c969376-a3d3-4d7a-9c7b-0a826787b505",
           "word": "l'auteur empirique",
           "en": "the empirical author",
           "vi": "tác giả thực nghiệm",
@@ -1773,6 +1850,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "loh-TUR ahn-pee-REEK — the empirical author: the historical person, distinct from the narrator"
         },
         {
+          cell_id: "601e0fa5-c72f-4879-98c7-6f0ccd60f247",
           "word": "l'auteur impliqué",
           "en": "the implied author",
           "vi": "tác giả ngụ ý",
@@ -1781,6 +1859,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "loh-TUR an-plee-KAY — Booth's 'implied author': the authorial image the text constructs"
         },
         {
+          cell_id: "45336ebe-eedf-4622-bd07-fd2411630293",
           "word": "le biographisme",
           "en": "biographism",
           "vi": "thuyết tiểu sử",
@@ -1789,6 +1868,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "luh byoh-grah-FEEZM — biographism: explaining a work by the author's life (the Sainte-Beuvian fallacy)"
         },
         {
+          cell_id: "cdf098b0-d06e-4644-92e7-dc637ae918eb",
           "word": "un paratexte",
           "en": "a paratext",
           "vi": "một văn bản phụ",
@@ -1799,21 +1879,25 @@ export const lessons: FrenchLesson[] =           [
       ],
       "dialogue": [
         {
+          cell_id: "18ca84de-00ed-47f1-bc27-538dc95a618a",
           "speaker": "Pr. Compagnon",
           "text": "Madame Tran, vous expliquez Madame Bovary par les déceptions amoureuses de Flaubert. C'est typiquement Sainte-Beuve.",
           "vi": "Cô Trần, cô giải thích Madame Bovary bằng các thất vọng tình yêu của Flaubert. Đó là Sainte-Beuve điển hình."
         },
         {
+          cell_id: "825b78a9-ff1e-449f-9eee-a4b986d6288d",
           "speaker": "Linh",
           "text": "Vous avez raison — j'ai glissé vers le biographisme. Le texte n'a pas besoin de cette explication.",
           "vi": "Thầy đúng — tôi đã trượt vào biographisme. Văn bản không cần giải thích đó."
         },
         {
+          cell_id: "71411420-a3c6-4525-9f74-ca7d9ec32d1a",
           "speaker": "Pr. Compagnon",
           "text": "Et la fameuse formule « Madame Bovary, c'est moi » est probablement apocryphe — Flaubert ne l'a sans doute jamais dite.",
           "vi": "Và cụm nổi tiếng « Madame Bovary, c'est moi » có lẽ apocryphe — Flaubert có thể chưa bao giờ nói."
         },
         {
+          cell_id: "97c0fc96-082e-451c-a730-05b67c81b5cb",
           "speaker": "Linh",
           "text": "Encore une raison de ne pas la mobiliser. Je reformule en restant dans le texte.",
           "vi": "Thêm một lý do để không huy động. Tôi diễn đạt lại bằng cách ở lại trong văn bản."
@@ -2037,6 +2121,7 @@ export const lessons: FrenchLesson[] =           [
       "tip_advice_vi": "GRILLE D'ANALYSE pour étudier la réception d'une œuvre:\n\n(1) RECONSTITUER L'HORIZON D'ATTENTE de l'époque de publication:\n- Quel public? Quelle critique?\n- Quelles autres œuvres concurrentes?\n- Quelles attentes esthétiques dominantes?\n\n(2) IDENTIFIER LES PREMIERS LECTEURS et LEURS RÉACTIONS:\n- Compte rendus de presse à la sortie\n- Lettres et correspondance\n- Réactions publiques (succès ou scandale)\n\n(3) SUIVRE L'ÉVOLUTION DE LA RÉCEPTION sur la durée:\n- Périodes d'oubli ou de marginalisation\n- Périodes de redécouverte\n- Variations selon les écoles critiques (sainte-beuviste, formaliste, structuraliste, postcoloniale)\n\n(4) ANALYSER LES CRITÈRES DE CANONISATION:\n- Édition critique (Pléiade, Garnier)\n- Inscription au programme du baccalauréat ou de l'agrégation\n- Citations académiques\n- Adaptations (théâtre, cinéma)\n- Prix posthumes ou hommages\n\n(5) INTERROGER LA POSITION DE L'ŒUVRE DANS LE CANON ACTUEL:\n- Centrale, périphérique, marginale, exclue?\n- Pour quelles raisons (esthétiques, sociales, politiques)?\n- Le statut est-il stable ou contesté?\n\nCỤM HỮU ÍCH:\n\nPOUR INTRODUIRE UNE ANALYSE DE RÉCEPTION:\n- « La réception de l'œuvre, à sa parution, fut [scandalisée / discrète / triomphale]. »\n- « Trois moments distincts marquent la trajectoire critique de l'œuvre: [période 1], [période 2], [période 3]. »\n- « L'horizon d'attente de [année] explique la défaveur initiale dont l'œuvre fit l'objet. »\n\nPOUR ANALYSER UNE CANONISATION:\n- « L'entrée d'Ernaux dans la Pléiade en [année] consacre une reconnaissance institutionnelle préparée par deux décennies de travaux universitaires. »\n- « Ce n'est qu'à partir des années 1990 que Beckett quitte la marge expérimentale pour intégrer le canon. »\n- « La canonisation tardive de Duras s'explique moins par la qualité de l'œuvre, jamais discutée, que par les transformations du champ critique. »\n\nPOUR INTERROGER LE CANON:\n- « Le canon, comme construction historique, ne se confond pas avec la valeur littéraire intrinsèque — à supposer qu'une telle valeur existe. »\n- « Élargir le canon n'est pas le diluer — c'est en restaurer la richesse. »\n- « Encore faut-il distinguer la critique légitime du canon de son rejet idéologique. »\n\nTRÁNH:\n- « C'est un classique parce que c'est bon. » → tautologie sans contenu critique\n- « Le canon est arbitraire. » → trop fort; nuancer en disant « historiquement construit »\n- « Toutes les œuvres se valent. » → relativisme stérile, qui rend impossible toute hiérarchisation\n- Confondre canon scolaire (programmes) et canon académique (recherche)",
       "vocabulary": [
         {
+          cell_id: "80e08a2b-ce70-4593-93c5-e7040bbdc2c4",
           "word": "l'esthétique de la réception",
           "en": "reception aesthetics",
           "vi": "thẩm mỹ tiếp nhận",
@@ -2045,6 +2130,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "les-tay-TEEK duh lah ray-sep-SYON — reception aesthetics (Jauss, the Constance School)"
         },
         {
+          cell_id: "6de13282-ae6e-4366-bf58-1fa12cdcecb8",
           "word": "l'horizon d'attente",
           "en": "horizon of expectation (Jauss)",
           "vi": "chân trời mong đợi (Jauss)",
@@ -2053,6 +2139,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "loh-ree-ZON dah-TAHNT — Jauss's 'horizon of expectation': an era's system of literary expectations"
         },
         {
+          cell_id: "087b7b51-9fe1-4281-89f0-056619d6a5a9",
           "word": "le canon littéraire",
           "en": "the literary canon",
           "vi": "kinh điển văn học",
@@ -2061,6 +2148,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "luh kah-NON lee-tay-REHR — the literary canon (a constructed, contested set, not natural)"
         },
         {
+          cell_id: "d5ea006c-a306-4b93-94d2-3b306f678781",
           "word": "la canonisation",
           "en": "canonization",
           "vi": "sự kinh điển hóa",
@@ -2069,6 +2157,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "lah kah-noh-nee-zah-SYON — canonization; '-tion' = 'syon'"
         },
         {
+          cell_id: "5b8f0cc8-6bb6-4079-8262-3e392a5fd1be",
           "word": "le champ littéraire",
           "en": "the literary field (Bourdieu)",
           "vi": "trường văn học (Bourdieu)",
@@ -2077,6 +2166,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "luh SHAHN lee-tay-REHR — Bourdieu's literary field: the structured space of literary positions"
         },
         {
+          cell_id: "470efcae-63c9-47a3-9a89-e9547797a4b1",
           "word": "la reconnaissance institutionnelle",
           "en": "institutional recognition",
           "vi": "sự công nhận thể chế",
@@ -2085,6 +2175,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "lah ruh-koh-neh-SAHNS an-stee-tü-syoh-NEL — institutional recognition"
         },
         {
+          cell_id: "3a4179c0-4948-4266-9b37-ad44b5127bab",
           "word": "la consécration",
           "en": "consecration / official recognition",
           "vi": "sự thánh hóa / công nhận chính thức",
@@ -2093,6 +2184,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "lah kohn-say-krah-SYON — Bourdieu's 'consecration': official institutional recognition"
         },
         {
+          cell_id: "b623cdfa-9580-48c7-b724-7c4d7acacc85",
           "word": "un auteur marginal",
           "en": "a marginal author",
           "vi": "một tác giả ngoại biên",
@@ -2101,6 +2193,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "UN oh-TUR mar-zhee-NAL — a marginal author (outside the canon's centre)"
         },
         {
+          cell_id: "53ddc3db-9531-4c8d-a4d7-ea4427923342",
           "word": "l'effacement du canon",
           "en": "the erosion of the canon",
           "vi": "sự xói mòn của kinh điển",
@@ -2109,6 +2202,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "lay-fahs-MAHN dü kah-NON — the erosion of the canon; nasal '-ment'"
         },
         {
+          cell_id: "6367195a-7ede-4415-9a7a-89b249bb2c5c",
           "word": "la francophonie littéraire",
           "en": "literary francophony",
           "vi": "văn học Pháp ngữ",
@@ -2119,21 +2213,25 @@ export const lessons: FrenchLesson[] =           [
       ],
       "dialogue": [
         {
+          cell_id: "6e14c369-28b2-47bc-add0-4b4a3d7e5e2e",
           "speaker": "Pr. Compagnon",
           "text": "Madame Tran, vous parlez de Beckett comme d'un classique. Il l'est aujourd'hui, mais quand l'est-il devenu ?",
           "vi": "Cô Trần, cô nói về Beckett như một kinh điển. Hôm nay đúng, nhưng khi nào ông trở thành kinh điển?"
         },
         {
+          cell_id: "c8581566-e86a-4999-9c04-9675c28e9999",
           "speaker": "Linh",
           "text": "Pas avant les années 1990, à mon sens. Avant cela, il restait classé « expérimental », hors du canon scolaire.",
           "vi": "Không trước thập niên 1990, theo tôi. Trước đó, ông vẫn xếp loại « thực nghiệm », ngoài kinh điển học đường."
         },
         {
+          cell_id: "dfaedead-af09-4d6f-a2c1-2c824ebadd0c",
           "speaker": "Pr. Compagnon",
           "text": "Et le tournant ?",
           "vi": "Và bước ngoặt?"
         },
         {
+          cell_id: "5f422cb4-ad0b-4828-bb2a-2fe3492d8b7f",
           "speaker": "Linh",
           "text": "L'entrée à la Pléiade en 2006, après le centenaire de sa naissance, scelle la canonisation officielle.",
           "vi": "Sự gia nhập Pléiade năm 2006, sau dịp 100 năm sinh, niêm phong sự kinh điển hóa chính thức."
@@ -2362,6 +2460,7 @@ export const lessons: FrenchLesson[] =           [
       "tip_advice_vi": "GRILLE D'ANALYSE pour mobiliser une lecture théorique:\n\n(1) IDENTIFIER CE QUE LE TEXTE SOLLICITE — les thématiques, les structures, les positions énonciatives qui rendent telle ou telle grille pertinente.\n\n(2) CHOISIR UNE GRILLE — ou deux, si le texte le supporte. Trois grilles plaquées sur le même texte = surcharge théorique.\n\n(3) LIRE LA GRILLE AU PLUS PRÈS — citer les théoriciens précisément, pas en bloc:\n- « Comme l'a montré Bourdieu dans Les Règles de l'art (1992)… »\n- « En reprenant le concept d'écriture féminine forgé par Cixous dans Le Rire de la Méduse (1975)… »\n- « Mbembe, dans De la postcolonie (2000), propose une analyse… »\n\n(4) APPLIQUER LA GRILLE AU TEXTE — chercher dans le texte les éléments qui valident l'application. Citation par citation.\n\n(5) ÉVALUER LES LIMITES de la grille pour ce texte — quels aspects elle éclaire, quels aspects elle laisse dans l'ombre.\n\nCỤM HỮU ÍCH:\n\nPOUR INTRODUIRE UNE LECTURE THÉORIQUE:\n- « Cette page peut être lue à la lumière de [théorie]. »\n- « La grille [théorique] que je mobilise ici n'épuise pas le texte, mais elle en éclaire un aspect particulier. »\n- « Sans prétendre à l'exhaustivité, une lecture [féministe / formaliste / postcoloniale] permet de faire apparaître [élément spécifique]. »\n\nPOUR ANALYSER FORMALLEMENT:\n- « L'isotopie dominante — le champ lexical de [X] — structure l'ensemble du paragraphe. »\n- « Le récit déploie ici une opposition binaire entre [pôle 1] et [pôle 2], opposition que la fin viendra subvertir. »\n- « La fonction cardinale de cet épisode, au sens proppien, consiste à [fonction]. »\n\nPOUR ANALYSER FÉMINISTEMENT:\n- « Le personnage féminin est ici construit selon les codes de la féminité du XIXe siècle — fragilité, intériorité, pâmoison — codes que le texte reprend [ou subvertit]. »\n- « L'écriture féminine, telle que la pense Cixous, se manifeste dans ce texte par [traits spécifiques]. »\n- « Le rapport de genre inscrit dans cette scène mérite d'être analysé sans anachronisme. »\n\nPOUR ANALYSER POSTCOLONIALEMENT:\n- « Le roman engage la question coloniale par [élément spécifique], que la lecture longtemps dominante avait laissé dans l'ombre. »\n- « En reprenant la grille de Glissant, on peut analyser ce passage comme une mise en relation des cultures. »\n- « Cette représentation de l'autre relève de ce que Said nommait l'« orientalisme » — construction occidentale projetée. »\n\nTRÁNH:\n- Plaquer une grille sans justification du texte\n- Empiler trois grilles sur le même paragraphe\n- Citer un théoricien sans nommer l'œuvre et l'année\n- Réduire un texte à un seul aspect (« Madame Bovary, c'est juste une critique du patriarcat »)",
       "vocabulary": [
         {
+          cell_id: "8ba6bf1a-498b-48cf-9d8a-7d9f3094a07f",
           "word": "une grille de lecture",
           "en": "an interpretive grid",
           "vi": "một lưới đọc",
@@ -2370,6 +2469,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ün GREE duh lek-TUR — an interpretive grid/framework; '-ill-' = 'y'"
         },
         {
+          cell_id: "4a838737-dc28-4462-b00c-d54ed5c1ed7a",
           "word": "la lecture formaliste",
           "en": "formalist reading",
           "vi": "cách đọc hình thức luận",
@@ -2378,6 +2478,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "lah lek-TUR for-mah-LEEST — formalist reading (Jakobson, the Russian School)"
         },
         {
+          cell_id: "cc656e15-6050-41a3-941a-0939311ac114",
           "word": "la lecture féministe",
           "en": "feminist reading",
           "vi": "cách đọc nữ quyền",
@@ -2386,6 +2487,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "lah lek-TUR fay-mee-NEEST — feminist reading (Beauvoir, Cixous)"
         },
         {
+          cell_id: "b9412c9e-0239-4ca4-9b87-e60c95e78807",
           "word": "la lecture postcoloniale",
           "en": "postcolonial reading",
           "vi": "cách đọc hậu thuộc địa",
@@ -2394,6 +2496,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "lah lek-TUR post-koh-loh-NYAL — postcolonial reading (Glissant, Mbembe, Said)"
         },
         {
+          cell_id: "9b37fab3-a32c-48a2-9402-4fc13fff18ab",
           "word": "l'écriture féminine",
           "en": "feminine writing (Cixous)",
           "vi": "lối viết nữ tính (Cixous)",
@@ -2402,6 +2505,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "lay-kree-TUR fay-mee-NEEN — Cixous's « écriture féminine »; kept in French in English theory"
         },
         {
+          cell_id: "f3fab727-6b10-43da-bfec-c0c711449f62",
           "word": "un rapport de genre",
           "en": "a gender relation",
           "vi": "một quan hệ giới",
@@ -2410,6 +2514,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "UN rah-POR duh ZHAHN-ruh — a gender relation; 'rapport' final 't' silent"
         },
         {
+          cell_id: "aceee355-e233-43c9-93bb-04caac37529e",
           "word": "une isotopie",
           "en": "an isotopy (Greimas)",
           "vi": "một đẳng cấu (Greimas)",
@@ -2418,6 +2523,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ün ee-zoh-toh-PEE — an isotopy (Greimas): a recurring semantic thread structuring a text"
         },
         {
+          cell_id: "19987eb3-7640-45a6-b99f-07bf4e47e610",
           "word": "un plaquage théorique",
           "en": "theoretical imposition",
           "vi": "sự dán lý thuyết",
@@ -2426,6 +2532,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "UN plah-KAZH tay-oh-REEK — a theoretical imposition: slapping a framework on regardless of the text (pejorative)"
         },
         {
+          cell_id: "0ac87ce0-3654-440a-8742-4a4816e8d851",
           "word": "l'orientalisme",
           "en": "Orientalism (Said)",
           "vi": "chủ nghĩa Đông phương (Said)",
@@ -2434,6 +2541,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "loh-ryahn-tah-LEEZM — Said's 'Orientalism': the Western construction projected onto the East"
         },
         {
+          cell_id: "969d5267-cd5f-4db6-b55c-233c1d85f31a",
           "word": "la mise en relation",
           "en": "putting-into-relation (Glissant)",
           "vi": "sự đặt vào quan hệ (Glissant)",
@@ -2444,21 +2552,25 @@ export const lessons: FrenchLesson[] =           [
       ],
       "dialogue": [
         {
+          cell_id: "caa1c7a1-c652-4822-8ea5-827782df0258",
           "speaker": "Pr. Compagnon",
           "text": "Madame Tran, vous lisez Madame Bovary uniquement avec la grille féministe. C'est trop étroit.",
           "vi": "Cô Trần, cô đọc Madame Bovary chỉ với lưới nữ quyền. Quá hẹp."
         },
         {
+          cell_id: "477961d6-425b-405e-851a-59a2b61d551f",
           "speaker": "Linh",
           "text": "Vous avez raison — la grille est puissante mais ne saurait épuiser le roman. Je devrais l'articuler avec la lecture formaliste.",
           "vi": "Thầy đúng — lưới này mạnh nhưng không thể vắt kiệt tiểu thuyết. Tôi nên khớp với cách đọc hình thức luận."
         },
         {
+          cell_id: "72c06fc1-1d00-43f5-aecd-37637ca5e3ab",
           "speaker": "Pr. Compagnon",
           "text": "Voilà — chez Flaubert, la critique des illusions romanesques s'opère par la forme même, pas seulement par le contenu thématique.",
           "vi": "Đó — ở Flaubert, phê bình các ảo tưởng tiểu thuyết hoạt động qua chính hình thức, không chỉ qua nội dung chủ đề."
         },
         {
+          cell_id: "3ab213c5-aa4c-485a-b88d-8b4b134d111d",
           "speaker": "Linh",
           "text": "D'où l'intérêt de croiser les deux grilles — féministe sur le contenu, formaliste sur le dispositif énonciatif.",
           "vi": "Vì thế lợi ích chéo hai lưới — nữ quyền trên nội dung, hình thức luận trên thiết kế phát ngôn."
@@ -2687,6 +2799,7 @@ export const lessons: FrenchLesson[] =           [
       "tip_advice_vi": "PROCESSUS EN 6 ÉTAPES pour rédiger une introduction de dissertation:\n\nÉTAPE 1 — ANALYSE DU SUJET (15 min sur 4h de devoir):\n- Quels sont les mots-clés du sujet ?\n- Quels sont leurs sens possibles ?\n- Quelle tension secrète recèle le sujet ?\n\nÉTAPE 2 — RECHERCHE D'EXEMPLES (30 min):\n- 5-8 œuvres mobilisables\n- 2-3 références théoriques mobilisables\n- 1-2 amorces possibles\n\nÉTAPE 3 — FORMULATION DE LA PROBLÉMATIQUE (15 min):\n- Brouillon de 3-4 problématiques alternatives\n- Choix de la plus tenue (qui ouvre 3 parties claires)\n- Reformulation rigoureuse\n\nÉTAPE 4 — CONSTRUCTION DU PLAN (30 min):\n- Identification des 3 parties qui répondent à la problématique\n- Vérification: chaque partie est nécessaire ET suffisante\n- Test: peut-on permuter les parties ? Si oui, le plan est mauvais (pas de progression)\n\nÉTAPE 5 — RÉDACTION DE L'INTRODUCTION (30 min):\n- Amorce, analyse, problématique, annonce — dans cet ordre\n- 25-35 lignes, pas plus, pas moins\n- Style soutenu, sans pédanterie\n\nÉTAPE 6 — RELECTURE (10 min):\n- L'amorce conduit-elle naturellement à la problématique ?\n- La problématique est-elle une vraie question ?\n- L'annonce fait-elle apparaître une logique ?\n\nMODÈLES D'AMORCES RÉUSSIES — adaptables:\n\nA. AMORCE HISTORIQUE PRÉCISE:\n« En 1857, deux procès secouent la littérature française: celui de Madame Bovary, et celui des Fleurs du mal. Cette concomitance ne doit rien au hasard. Elle signale qu'une époque cherche, par la voie judiciaire, à délimiter ce qu'il est encore permis de dire en littérature… »\n\nB. AMORCE ESTHÉTIQUE:\n« Le sonnet, depuis Pétrarque, repose sur une économie strictement codifiée: quatorze vers, deux quatrains, deux tercets, schéma rimique fixe. Cette contrainte, loin d'épuiser la forme, l'a rendue capable d'accueillir Mallarmé, Rimbaud, Yves Bonnefoy… »\n\nC. AMORCE THÉORIQUE:\n« Lorsque Roland Barthes, en 1968, annonçait « la mort de l'auteur », il ne célébrait pas une disparition, mais inaugurait un déplacement: la critique devait désormais lire les textes sans l'autorité d'une intention auctoriale… »\n\nD. AMORCE PAR LA RÉCEPTION:\n« Les Particules élémentaires, à sa parution en 1998, suscite un débat d'une violence rare: les uns y voient le grand roman du désenchantement contemporain, les autres une simple provocation cynique. Cette polarisation appelle l'analyse… »\n\nFORMULATIONS DE PROBLÉMATIQUE TESTÉES:\n\n- « En quoi cette tension permet-elle à l'œuvre de [faire X] tout en [faisant Y, qui semble s'y opposer] ? »\n- « Faut-il dès lors considérer [position A] comme la seule légitime, ou plutôt admettre que [position B] reste défendable ? »\n- « Comment articuler [enjeu 1] et [enjeu 2] sans sacrifier ni l'un ni l'autre ? »\n- « Si [thèse dominante], alors comment expliquer que [contre-exemple précis] ? »\n\nMODÈLES D'ANNONCES DE PLAN:\n\n- « Nous montrerons d'abord que [partie 1, position thèse]. Cependant, cette première lecture appelle aussitôt une nuance [partie 2, antithèse ou complication]. Cette tension ne saurait être résolue qu'en envisageant [partie 3, synthèse]. »\n- « Une première analyse mettra en évidence [partie 1]. À cette analyse s'opposera, dans un second temps, [partie 2]. Le dépassement de cette opposition exigera enfin [partie 3]. »",
       "vocabulary": [
         {
+          cell_id: "629ecb34-2dd9-4c5a-a647-32d191829bfe",
           "word": "une dissertation",
           "en": "a dissertation (essay)",
           "vi": "một bài dissertation",
@@ -2695,6 +2808,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ün dee-sehr-tah-SYON — a dissertation: the canonical French tripartite essay (FALSE FRIEND: not a doctoral 'dissertation')"
         },
         {
+          cell_id: "d6a09051-c100-477d-b4e5-643245554cce",
           "word": "une amorce",
           "en": "an opening hook",
           "vi": "phần mở đầu / amorce",
@@ -2703,6 +2817,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ün ah-MORS — an opening hook; final '-e' silent"
         },
         {
+          cell_id: "cb24e230-6d3b-4db5-865e-573a7a8545ea",
           "word": "la problématique",
           "en": "the problematic / central question",
           "vi": "vấn đề trung tâm",
@@ -2711,6 +2826,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "lah proh-blay-mah-TEEK — the central critical question (a NOUN; not the English adjective 'problematic')"
         },
         {
+          cell_id: "d015efb6-261c-44d0-984f-0bb1e6e20297",
           "word": "l'annonce de plan",
           "en": "the announcement of plan",
           "vi": "sự công bố kế hoạch",
@@ -2719,6 +2835,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "lah-NONS duh PLAHN — the announcement of the plan; 'plan' nasal, final 'n' not a hard consonant"
         },
         {
+          cell_id: "e54b644c-e6e9-4922-bcdc-4ab71ab1fc97",
           "word": "un plan dialectique",
           "en": "a dialectical plan",
           "vi": "một kế hoạch biện chứng",
@@ -2727,6 +2844,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "UN PLAHN dyah-lek-TEEK — a dialectical plan (thesis-antithesis-synthesis)"
         },
         {
+          cell_id: "41f25c5c-01e7-4e64-a5af-efc80ac22f1a",
           "word": "thèse / antithèse / synthèse",
           "en": "thesis / antithesis / synthesis",
           "vi": "luận điểm / phản đề / tổng hợp",
@@ -2735,6 +2853,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "TEZ / ahn-tee-TEZ / san-TEZ — thesis / antithesis / synthesis; 'th' = plain 't'"
         },
         {
+          cell_id: "61fbad48-d20c-449d-ad7d-f6f9a1ed8ae1",
           "word": "un enjeu critique",
           "en": "a critical stake",
           "vi": "một vấn đề critique",
@@ -2743,6 +2862,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "UN ahn-ZHUH kree-TEEK — a critical stake; 'enjeu' nasal, '-eu' rounded"
         },
         {
+          cell_id: "d8c432c6-f514-47d2-913b-990a4d5fd941",
           "word": "une tension dialectique",
           "en": "a dialectical tension",
           "vi": "một sự căng thẳng biện chứng",
@@ -2751,6 +2871,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ün tahn-SYON dyah-lek-TEEK — a dialectical tension"
         },
         {
+          cell_id: "4e381896-cf99-4be2-9b28-5c42cc1c60ce",
           "word": "intitulé",
           "en": "a heading / title",
           "vi": "tiêu đề",
@@ -2759,6 +2880,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "an-tee-tü-LAY — a heading/title; nasal 'in', 'u' rounded, '-é' = 'ay'"
         },
         {
+          cell_id: "256ed4b3-7b23-4d44-9b27-0ff00eb261c6",
           "word": "un préambule",
           "en": "a preamble",
           "vi": "phần mở đầu / lời nói đầu",
@@ -2769,21 +2891,25 @@ export const lessons: FrenchLesson[] =           [
       ],
       "dialogue": [
         {
+          cell_id: "37a82f8a-9e39-4215-a712-4ef7625990e1",
           "speaker": "Pr. Compagnon",
           "text": "Madame Tran, votre amorce part de « Depuis l'Antiquité, l'homme s'interroge sur l'art… ». C'est trop large.",
           "vi": "Cô Trần, amorce của cô bắt đầu bằng « Từ thời cổ đại, con người tra hỏi nghệ thuật… ». Quá rộng."
         },
         {
+          cell_id: "9b499346-414e-4699-96b5-4ff5e41d09db",
           "speaker": "Linh",
           "text": "Vous avez raison. Je devrais partir d'un fait précis qui rende le sujet pertinent.",
           "vi": "Thầy đúng. Tôi nên bắt đầu từ một sự kiện cụ thể làm đề bài liên quan."
         },
         {
+          cell_id: "5c9b1297-5beb-4a10-9d1d-58185f8188fe",
           "speaker": "Pr. Compagnon",
           "text": "Pour un sujet sur le réalisme flaubertien, partez du procès de 1857. Concret, daté, pertinent.",
           "vi": "Cho đề về hiện thực Flaubert, bắt đầu từ vụ án 1857. Cụ thể, có ngày, liên quan."
         },
         {
+          cell_id: "56338abf-0052-4070-a0f0-b43451c06875",
           "speaker": "Linh",
           "text": "Et je conduis vers la problématique en montrant ce que ce procès révèle de la conception du réel à l'époque.",
           "vi": "Và tôi dẫn đến problématique bằng cách cho thấy điều vụ án này tiết lộ về quan niệm hiện thực thời ấy."
@@ -3017,6 +3143,7 @@ export const lessons: FrenchLesson[] =           [
       "tip_advice_vi": "PROCESSUS EN 7 ÉTAPES pour défendre une lecture controversée:\n\nÉTAPE 1 — IDENTIFIER LA TRADITION DOMINANTE sur le texte. Lire au moins 3-5 lectures canoniques avant de proposer la sienne. On ne se démarque pas de ce qu'on ignore.\n\nÉTAPE 2 — IDENTIFIER LE POINT AVEUGLE de la tradition. Quoi, dans le texte, est passé sous silence ? Quel élément textuel n'est jamais commenté ? Quelle question n'est jamais posée ?\n\nÉTAPE 3 — VÉRIFIER QUE LE POINT AVEUGLE EST RÉEL — pas un fantasme, pas un détail anecdotique. Citer trois passages au moins où il se manifeste.\n\nÉTAPE 4 — FORMULER LA LECTURE NEUVE en prenant le point aveugle comme entrée. Ne pas démolir la tradition — la complexifier.\n\nÉTAPE 5 — ANTICIPER LES TROIS OBJECTIONS LES PLUS PROBABLES. Préparer une réponse à chacune, fondée textuellement.\n\nÉTAPE 6 — RÉDIGER L'ARGUMENT en respectant la structure: tradition → point aveugle → lecture neuve → objections anticipées → limites de la position.\n\nÉTAPE 7 — TESTER LA LECTURE auprès d'un ou deux pairs avant publication. Si elle ne tient pas devant un critique de bonne foi, la retravailler ou l'abandonner.\n\nCỤM HỮU ÍCH:\n\nPOUR INTRODUIRE UNE LECTURE NEUVE:\n- « Je voudrais proposer ici une lecture qui s'écarte délibérément de la tradition exégétique dominante. »\n- « Il existe, sur ce texte, une lecture désormais canonique que je ne contesterai pas en bloc, mais que je voudrais nuancer sur un point précis. »\n- « Sans renoncer aux acquis de la critique antérieure, je propose un déplacement d'angle qui fait apparaître [aspect négligé]. »\n\nPOUR IDENTIFIER LE POINT AVEUGLE:\n- « Or, un élément demeure curieusement absent des commentaires courants: [élément précis, paginé]. »\n- « La tradition critique a longtemps passé sous silence [aspect], pour des raisons sur lesquelles il faut s'interroger. »\n- « Ce silence n'est pas neutre — il dit quelque chose de la position adoptée par les générations précédentes face au texte. »\n\nPOUR DÉFENDRE LA LECTURE:\n- « Trois passages au moins viennent étayer cette interprétation: [page X, page Y, page Z]. »\n- « Cette lecture ne contredit pas la tradition; elle l'enrichit en intégrant un aspect qu'elle laissait dans l'ombre. »\n- « Je ne prétends pas avoir le dernier mot — je propose un nouveau point d'entrée dans le texte. »\n\nPOUR ANTICIPER LES OBJECTIONS:\n- « On objectera, à juste titre, que [objection probable]. À cela je répondrais que [réponse fondée]. »\n- « La principale difficulté de cette lecture tient à [point faible]. Je ne la sous-estime pas, et propose [stratégie de gestion]. »\n- « Reste l'objection la plus sérieuse: [objection]. Je l'admets en partie, en limitant la portée de ma thèse à [périmètre restreint]. »\n\nPOUR DÉFINIR LES LIMITES:\n- « Cette lecture ne saurait être généralisée à l'ensemble de l'œuvre; elle vaut pour [sous-corpus précis]. »\n- « Je n'avance pas une interprétation totale — je propose un éclairage partiel qui appelle à être complété par d'autres approches. »\n- « Les limites de cette lecture sont aussi son honnêteté: elle ne prétend pas remplacer la tradition, mais l'enrichir. »\n\nTRÁNH:\n- « Tous les autres critiques se sont trompés. » → arrogance, isolement\n- « Cette lecture est évidente. » → si elle l'était, elle ne serait pas neuve\n- « Personne n'a vu ce que je vois. » → souvent faux, et toujours mal venu\n- Provocation gratuite (« Madame Bovary est en réalité un roman féministe » sans argumentation textuelle)",
       "vocabulary": [
         {
+          cell_id: "3cb7787b-5e8b-4593-a8d5-ef6f33a5053a",
           "word": "une lecture controversée",
           "en": "a controversial reading",
           "vi": "một cách đọc gây tranh cãi",
@@ -3025,6 +3152,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ün lek-TUR kohn-troh-vehr-SAY — a controversial reading; '-ée' = 'ay'"
         },
         {
+          cell_id: "f7689818-6df4-4d45-855b-8806a0551f3e",
           "word": "une lecture exigeante",
           "en": "a demanding reading",
           "vi": "một cách đọc đòi hỏi",
@@ -3033,6 +3161,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ün lek-TUR eg-zee-ZHAHNT — a demanding reading; 'x' = 'gz', 'ge' = 'zh'"
         },
         {
+          cell_id: "e6f103fc-e94a-47fc-bb39-39db339cb24d",
           "word": "la tradition exégétique",
           "en": "the exegetical tradition",
           "vi": "truyền thống chú giải",
@@ -3041,6 +3170,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "lah trah-dee-SYON eg-zay-zhay-TEEK — the exegetical tradition (the established body of commentary)"
         },
         {
+          cell_id: "21dbff63-cd94-4d49-a343-80f30ade2ec6",
           "word": "un point aveugle",
           "en": "a blind spot",
           "vi": "một điểm mù",
@@ -3049,6 +3179,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "UN PWAN ah-VUH-gluh — a blind spot; 'point' = 'pwan' (nasal, final 't' silent)"
         },
         {
+          cell_id: "2fcca3c9-d564-4907-993a-f3b9d5cebf97",
           "word": "un déplacement d'angle",
           "en": "a shift of angle",
           "vi": "một sự dịch chuyển góc nhìn",
@@ -3057,6 +3188,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "UN day-plahs-MAHN DAHN-gluh — a shift of angle; nasal '-ment' and 'an'"
         },
         {
+          cell_id: "aa489988-2a8e-4a58-b49a-14b0d204eb28",
           "word": "une provocation gratuite",
           "en": "a gratuitous provocation",
           "vi": "một khiêu khích vô cớ",
@@ -3065,6 +3197,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ün proh-voh-kah-SYON grah-TWEET — a gratuitous provocation; 'gratuite' 'ui' = 'wee'"
         },
         {
+          cell_id: "4a28cc98-5ce5-4094-8974-dcd0fa803d70",
           "word": "l'humilité épistémique",
           "en": "epistemic humility",
           "vi": "sự khiêm tốn nhận thức luận",
@@ -3073,6 +3206,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "lü-mee-lee-TAY ay-pees-tay-MEEK — epistemic humility; 'h' silent, 'u' rounded"
         },
         {
+          cell_id: "2e8837c6-0bd0-4d91-a448-036317e5261d",
           "word": "contrarianisme",
           "en": "contrarianism",
           "vi": "chủ nghĩa phản đối",
@@ -3081,6 +3215,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "kohn-trah-ryah-NEEZM — contrarianism (opposing for opposition's sake — pejorative in academic criticism)"
         },
         {
+          cell_id: "e4c6b43e-8d4a-4956-9ff4-b5265a48ad18",
           "word": "un éclairage partiel",
           "en": "a partial illumination",
           "vi": "một sự soi sáng cục bộ",
@@ -3089,6 +3224,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "UN ay-kleh-RAZH par-SYEL — a partial illumination; '-age' = 'azh', final 'l' pronounced"
         },
         {
+          cell_id: "7267099d-15c0-4b62-8eb8-065ad3216c15",
           "word": "étayer une lecture",
           "en": "to support a reading",
           "vi": "củng cố một cách đọc",
@@ -3099,21 +3235,25 @@ export const lessons: FrenchLesson[] =           [
       ],
       "dialogue": [
         {
+          cell_id: "d7b95a49-72f3-4437-b8ae-c53fd661103a",
           "speaker": "Pr. Compagnon",
           "text": "Madame Tran, vous proposez une lecture postcoloniale de L'Étranger. Beaucoup la jugent anachronique. Comment la défendez-vous ?",
           "vi": "Cô Trần, cô đề xuất một cách đọc hậu thuộc địa cho L'Étranger. Nhiều người cho là lỗi thời. Cô bảo vệ thế nào?"
         },
         {
+          cell_id: "24b3799f-887d-4d84-b611-3b96cb6356f9",
           "speaker": "Linh",
           "text": "Je m'appuie sur un point textuel précis: l'Arabe que Meursault tue n'a jamais de nom dans le roman. Cette absence n'est pas neutre.",
           "vi": "Tôi dựa trên một điểm văn bản cụ thể: người Arab Meursault giết không bao giờ có tên trong tiểu thuyết. Sự vắng mặt này không trung lập."
         },
         {
+          cell_id: "51b603ba-8d5f-45ef-9c98-a13db8a02103",
           "speaker": "Pr. Compagnon",
           "text": "Argument solide. Et vous anticipez l'objection que ce silence est précisément le sujet du roman ?",
           "vi": "Lập luận vững. Và cô lường trước phản biện rằng sự im lặng đó chính là đề tài của tiểu thuyết?"
         },
         {
+          cell_id: "6ea45cde-9d70-4887-9f45-29954872e4eb",
           "speaker": "Linh",
           "text": "Oui — je distingue le silence comme procédé voulu et le silence comme symptôme. La distinction est subtile mais textuellement défendable.",
           "vi": "Có — tôi phân biệt sự im lặng như thủ pháp cố ý và sự im lặng như triệu chứng. Phân biệt tinh tế nhưng có thể bảo vệ về mặt văn bản."
@@ -3342,6 +3482,7 @@ export const lessons: FrenchLesson[] =           [
       "tip_advice_vi": "CẤU TRÚC CRITIQUE D'ART CHUẨN (1500-3000 mots, báo hoặc revue):\n\n1. ACCROCHE (1-2 câu) — bắt đầu bằng một chi tiết cụ thể của tác phẩm, không bằng généralité: 'À l'entrée de la salle, un immense panneau noir vous arrête net.'\n\n2. DESCRIPTION (20%) — tả tác phẩm minh bạch, như thể độc giả không thấy nó. Dùng présent de l'indicatif. Éviter vocabulaire technique quá dày — 'couleur froide' thay vì 'palette restreinte aux tons azuréens'.\n\n3. CONTEXTUALISATION (20%) — đặt tác phẩm trong œuvre của nghệ sĩ, trong mouvement, trong époque. Không cần dài — 2-3 câu gọn.\n\n4. ANALYSE (40%) — phát triển 2-3 'axes de lecture' giống explication de texte:\n- Axe 1: matière / technique (chất liệu, cử chỉ)\n- Axe 2: dispositif spatial (không gian, người xem)\n- Axe 3: charge symbolique (symbolique, politique)\nMỗi axe cần citations visuelles — 'le rouge, posé à la jonction des deux plans, fait basculer la composition.'\n\n5. JUGEMENT (20%) — đưa ra đánh giá, có lập luận. KHÔNG 'c'est beau' / 'c'est laid'. Dùng: 'réussi' / 'moins convaincant' + lý do. Formule: 'Si la première salle emporte l'adhésion par son audace formelle, la seconde déçoit par son académisme revenu.'\n\nCỤM HỮU ÍCH:\n- 'L'œuvre donne à voir...' (tác phẩm cho thấy...)\n- 'Le parti pris de l'artiste consiste à...' (chủ trương của nghệ sĩ là...)\n- 'On peut lire cette installation comme...' (có thể đọc sắp đặt này như...)\n- 'Le spectateur se trouve convoqué à...' (người xem bị triệu tập vào...)\n- 'La réussite tient à...' (sự thành công nằm ở...)\n- 'En revanche, tel aspect laisse perplexe.' (ngược lại, khía cạnh này gây bối rối.)\n\nSAI LẦM PHỔ BIẾN:\n- Dùng nhiều adjectif rỗng ('magnifique', 'sublime', 'saisissant')\n- Biographie de l'artiste quá dài — critique không phải notice Wikipedia\n- Éviter le name-dropping théorique — một référence à Deleuze / Rancière / Didi-Huberman đủ, không cần parade érudite\n- Không bao giờ kết luận 'À vous de juger' — critique assume son jugement",
       "vocabulary": [
         {
+          cell_id: "d0020186-9dc1-4fe2-add3-1a706856ec16",
           "word": "un compte rendu d'exposition",
           "en": "exhibition review",
           "vi": "bài điểm triển lãm",
@@ -3350,6 +3491,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "UN kohnt rahn-DOO deks-poh-zee-SYON — 'compte rendu d'exposition'"
         },
         {
+          cell_id: "244b59d2-0fc2-40c4-bcff-c9e2a5260192",
           "word": "le parti pris",
           "en": "the chosen approach / bias",
           "vi": "chủ trương / thiên kiến",
@@ -3358,6 +3500,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "luh par-TEE PREE — 'parti pris'; both final consonants silent"
         },
         {
+          cell_id: "970328ef-17b2-4174-b424-f355f81bb1f4",
           "word": "la matière picturale",
           "en": "the painterly material",
           "vi": "chất liệu hội họa",
@@ -3366,6 +3509,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "lah mah-TYEHR peek-tu-RAL — 'matière picturale'"
         },
         {
+          cell_id: "261eeb5b-2c4d-48c2-9cd9-7d5f1a8c6b8a",
           "word": "le dispositif",
           "en": "the apparatus / setup",
           "vi": "thiết đặt (không gian)",
@@ -3374,6 +3518,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "luh dees-poh-zee-TEEF — final 'f' pronounced; the apparatus/setup"
         },
         {
+          cell_id: "16827209-7eae-4da7-af6c-aad06d52e801",
           "word": "la touche",
           "en": "the brushstroke",
           "vi": "nét cọ",
@@ -3382,6 +3527,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "lah TOOSH — 'touche' = brushstroke; final '-e' silent"
         },
         {
+          cell_id: "c1fed0ea-38eb-40b9-83c8-8c1e9965b370",
           "word": "la toile",
           "en": "the canvas",
           "vi": "bức toan / vải vẽ",
@@ -3390,6 +3536,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "lah TWAL — 'toile' = canvas; 'oi' = 'wah'"
         },
         {
+          cell_id: "38261740-e552-4373-a52e-bbecfa384123",
           "word": "un accrochage",
           "en": "the hanging (of works)",
           "vi": "cách treo / bố trí tranh",
@@ -3398,6 +3545,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "UN ah-kroh-SHAZH — 'accrochage' = the hang; final '-age' = 'ahzh'"
         },
         {
+          cell_id: "765f7ad7-3461-404d-bb43-7708e04d3857",
           "word": "le regardeur",
           "en": "the viewer / beholder",
           "vi": "người xem (Duchamp)",
@@ -3406,6 +3554,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "luh ruh-gar-DUR — 'regardeur' (Duchamp's term for the beholder); '-eur' rounded"
         },
         {
+          cell_id: "0f8beceb-a140-486c-95f4-1d3bbaa9bfbb",
           "word": "une installation",
           "en": "an installation (art)",
           "vi": "một sắp đặt",
@@ -3414,6 +3563,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ün an-stah-lah-SYON — 'installation'; nasal 'in' + '-tion'"
         },
         {
+          cell_id: "bc9ba015-003d-423f-aba2-21d593942ab9",
           "word": "plastique",
           "en": "plastic / formal (adj.)",
           "vi": "tạo hình (tính từ)",
@@ -3424,24 +3574,28 @@ export const lessons: FrenchLesson[] =           [
       ],
       "dialogue": [
         {
+          cell_id: "bd0905b8-edb1-4e04-ba77-941d4ccb3aa8",
           "speaker": "Commissaire",
           "text": "Quelle lecture faites-vous de cette série de Soulages ?",
           "en": "What reading do you give of this Soulages series?",
           "vi": "Chị đọc loạt tranh Soulages này thế nào?"
         },
         {
+          cell_id: "33b2d104-5a66-46a2-9e64-5b3085c0b9ba",
           "speaker": "Linh",
           "text": "J'y vois moins une exploration du noir qu'une archéologie de la lumière — le tableau fonctionne comme un piège à photons.",
           "en": "I see in it less an exploration of black than an archaeology of light — the painting works like a photon trap.",
           "vi": "Tôi thấy ở đó ít là một khảo sát về màu đen hơn là một khảo cổ học về ánh sáng — bức tranh vận hành như một cái bẫy photon."
         },
         {
+          cell_id: "168409f8-4062-4be7-b40b-e2f4fe1510b6",
           "speaker": "Commissaire",
           "text": "Intéressant. Mais ne surinterprétez-vous pas ? Soulages lui-même récuse toute métaphysique.",
           "en": "Interesting. But aren't you over-interpreting? Soulages himself rejects any metaphysics.",
           "vi": "Thú vị. Nhưng có phải chị diễn giải thái quá? Soulages tự bác bỏ mọi siêu hình."
         },
         {
+          cell_id: "b2eb934b-1c05-4bd7-9218-93909b6e264f",
           "speaker": "Linh",
           "text": "L'artiste n'est pas le propriétaire du sens — une fois l'œuvre livrée au public, la lecture lui échappe.",
           "en": "The artist isn't the owner of meaning — once the work is delivered to the public, the reading escapes him.",
@@ -3687,6 +3841,7 @@ export const lessons: FrenchLesson[] =           [
       "tip_advice_vi": "STRUCTURE D'UNE CRITIQUE DE FILM C2 (1500-2000 mots):\n\n1. ENTRÉE EN MATIÈRE (2 phrases max): bắt đầu bằng một plan cụ thể, một scène, một geste — không 'Ce film raconte l'histoire de...'\n- 'Dès le premier plan — un travelling latéral sur un mur de brique —, le film impose son rythme.'\n\n2. RÉSUMÉ MINIMAL (10% max): résumer tối thiểu, đủ để comprendre contexte. Jamais spoiler fin. Formule: 'Le film suit X qui... jusqu'à ce que...'\n\n3. ANALYSE DE LA MISE EN SCÈNE (60%) — các axes:\n- Axe espace: cadrage / profondeur de champ / décor / hors-champ\n- Axe temps: montage / ellipse / plan-séquence / ralenti\n- Axe son: voix / musique / bruits / silence\n- Axe acteur: direction d'acteurs / corps / voix\n- Axe lumière: source / couleur / ombre\nKHÔNG cần tất cả — chọn 2-3 axes phù hợp với film.\n\n4. MISE EN PERSPECTIVE (20%): situer trong filmographie du cinéaste, trong courant esthétique. Citation critique: 'Comme l'écrit Daney...' / 'Bazin aurait vu dans ce plan...'\n\n5. JUGEMENT (10%): đưa verdict có lập luận. Có thể aimer ET critiquer ('réussi formellement mais politiquement naïf').\n\nCỤM HỮU ÍCH:\n- 'La mise en scène consiste ici à...' (mise en scène ở đây là...)\n- 'Ce plan, qui dure plus de trois minutes, oblige le spectateur à...'\n- 'La lumière, dans ce film, n'éclaire pas — elle signifie.'\n- 'Le choix du hors-champ est ici plus éloquent que ce qui est montré.'\n- 'Le montage, heurté, refuse toute psychologie — il impose une lecture politique.'\n\nTRÁNH:\n- Juger le scénario seulement: 'L'histoire est invraisemblable' → pas pertinent en critique française.\n- Note sur 5 étoiles sans texte: rédactionnel attendu.\n- Parler des acteurs en people: critique, pas Voici.\n- 'Ce film est un chef-d'œuvre' sans argument: affirmation vide.",
       "vocabulary": [
         {
+          cell_id: "0af9c47a-af6e-4401-b901-c4fe6cd139d0",
           "word": "la mise en scène",
           "en": "direction / staging",
           "vi": "dàn dựng / mise en scène",
@@ -3695,6 +3850,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "lah mee-zahn-SEN — 'mise en scène'; not just 'directing' — staging as thought"
         },
         {
+          cell_id: "0274cade-cb08-4896-8809-3008a36f4d50",
           "word": "un travelling",
           "en": "a tracking shot",
           "vi": "cú travelling",
@@ -3703,6 +3859,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "UN trav-LEENG — anglicism; 'travelling' = tracking shot"
         },
         {
+          cell_id: "314473fe-b353-495c-9947-5d1a7e3a5a65",
           "word": "le hors-champ",
           "en": "off-screen space",
           "vi": "ngoại cảnh / không gian ngoài khung",
@@ -3711,6 +3868,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "luh or-SHAHN — 'hors-champ'; 'h' silent; off-screen space"
         },
         {
+          cell_id: "1960b139-48ea-49ae-b706-1e649325f975",
           "word": "la profondeur de champ",
           "en": "depth of field",
           "vi": "độ sâu trường ảnh",
@@ -3719,6 +3877,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "lah pro-fohn-DUR duh SHAHN — 'profondeur de champ' = depth of field"
         },
         {
+          cell_id: "290c4b1c-a0c8-49bd-b20c-bcd300d72f00",
           "word": "le montage",
           "en": "editing",
           "vi": "dựng phim",
@@ -3727,6 +3886,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "luh mohn-TAHZH — 'montage' = editing; final '-age' = 'ahzh'"
         },
         {
+          cell_id: "33ae59c0-c6a1-4115-9b26-23c084f97c51",
           "word": "un plan-séquence",
           "en": "a long take / sequence shot",
           "vi": "cú máy liên tục không cắt",
@@ -3735,6 +3895,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "UN plahn-say-KAHNSS — 'plan-séquence' = a long take / sequence shot"
         },
         {
+          cell_id: "bea24fc8-efe5-44cc-b9b9-b50e3433e480",
           "word": "la politique des auteurs",
           "en": "auteur theory",
           "vi": "chính sách tác giả",
@@ -3743,6 +3904,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "lah po-lee-TEEK day-zoh-TUR — 'la politique des auteurs'; liaison 'des auteurs'"
         },
         {
+          cell_id: "5f33e1c6-7dde-4321-8cab-4b0128879623",
           "word": "diégétique",
           "en": "diegetic (within the story world)",
           "vi": "thuộc về thế giới truyện",
@@ -3751,6 +3913,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "dyay-zhay-TEEK — 'diégétique' = within the story world (false friend: NOT 'diegetic' casual)"
         },
         {
+          cell_id: "0f02eba5-8d79-484f-9888-39771a24b1ca",
           "word": "un panoramique",
           "en": "a pan shot",
           "vi": "cú lia máy",
@@ -3759,6 +3922,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "UN pah-noh-rah-MEEK — 'panoramique' = a pan shot"
         },
         {
+          cell_id: "6c1d188c-da22-4682-a4e1-13577aa38185",
           "word": "le cadre",
           "en": "the frame",
           "vi": "khuôn hình",
@@ -3769,24 +3933,28 @@ export const lessons: FrenchLesson[] =           [
       ],
       "dialogue": [
         {
+          cell_id: "5c1f5d85-75fc-4eb5-b5b7-5693537604fa",
           "speaker": "Rédacteur",
           "text": "Votre critique du dernier Desplechin est trop descriptive. Où est l'analyse de la mise en scène ?",
           "en": "Your review of the latest Desplechin is too descriptive. Where's the analysis of the mise en scène?",
           "vi": "Bài phê bình Desplechin mới nhất của bạn quá mô tả. Phân tích mise en scène đâu?"
         },
         {
+          cell_id: "4ce42f98-0a72-4fe2-b52f-60baf2d7031c",
           "speaker": "Linh",
           "text": "J'ai décrit la séquence d'ouverture, mais vous avez raison — je n'ai pas dit pourquoi la caméra quitte le personnage pour s'attarder sur la fenêtre.",
           "en": "I described the opening sequence, but you're right — I didn't say why the camera leaves the character to linger on the window.",
           "vi": "Tôi đã mô tả cảnh mở đầu, nhưng anh đúng — tôi chưa nói tại sao máy quay rời nhân vật để nấn ná ở cửa sổ."
         },
         {
+          cell_id: "b875a2b8-f605-47e5-b9de-42f8d0b7d2d7",
           "speaker": "Rédacteur",
           "text": "Exactement. Ce mouvement n'est pas anodin: il dit le point de vue du cinéaste sur son personnage.",
           "en": "Exactly. That movement isn't trivial: it states the filmmaker's point of view on his character.",
           "vi": "Chính xác. Chuyển động đó không vô cớ: nó nói lên điểm nhìn của đạo diễn về nhân vật của ông."
         },
         {
+          cell_id: "6af6a682-1493-4819-bde9-1725e95a7578",
           "speaker": "Linh",
           "text": "Je reprends — je pars de ce décadrage pour montrer comment Desplechin construit un regard ironique sur son protagoniste.",
           "en": "I'll redo it — I'll start from that decentered framing to show how Desplechin builds an ironic gaze on his protagonist.",
@@ -4032,6 +4200,7 @@ export const lessons: FrenchLesson[] =           [
       "tip_advice_vi": "TRANH LUẬN LAÏCITÉ C2 — CẤU TRÚC PHÁT BIỂU:\n\n1. POSITIONNER SON CAMP immédiatement: 'Je parle depuis une position laïque ouverte...' / 'Je me réclame de la laïcité historique de 1905...'\n\n2. DISTINGUER LES NIVEAUX:\n- Le plan juridique (que dit la loi?)\n- Le plan politique (que devrait dire la loi?)\n- Le plan sociologique (quelles sont les pratiques réelles?)\n\n3. CITER LA LOI, PAS L'OPINION: 'L'article 1 de la loi de 1905 dispose que...' > 'À mon avis...'\n\n4. RECONNAÎTRE LA COMPLEXITÉ: 'La question est complexe et ne saurait se réduire à...'\n\n5. CONCÉDER UN POINT avant de marquer le sien: 'Je concède que... Cependant...'\n\nCỤM HỮU ÍCH:\n- 'Il importe de distinguer...' (cần phân biệt)\n- 'La laïcité n'est pas... elle est...' (laïcité không phải là... mà là...)\n- 'On aurait tort de confondre...' (sẽ sai nếu nhầm lẫn...)\n- 'Le principe de laïcité exige que...' (nguyên lý laïcité đòi hỏi...)\n- 'C'est là une dérive sémantique qu'il faut dénoncer.' (đó là một sự trượt nghĩa cần vạch trần.)\n\nTRÁNH:\n- 'La laïcité, c'est l'interdiction de...' → simplification abusive\n- 'Tous les croyants pensent que...' → généralisation\n- Ton passionnel: 'C'est scandaleux!' → disqualifiant en débat républicain",
       "vocabulary": [
         {
+          cell_id: "9083f6cf-ab22-4989-bc33-a337588f1ba6",
           "word": "la laïcité",
           "en": "secularism (French model)",
           "vi": "chủ nghĩa thế tục kiểu Pháp",
@@ -4040,6 +4209,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "lah lah-ee-see-TAY — the French model of secularism; no English equivalent"
         },
         {
+          cell_id: "4c74f7d2-b790-497d-a9c4-5ee5caa90116",
           "word": "la liberté de conscience",
           "en": "freedom of conscience",
           "vi": "tự do lương tâm",
@@ -4048,6 +4218,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "lah lee-behr-TAY duh kohn-SYAHNSS — 'liberté de conscience' (1905, Article 1)"
         },
         {
+          cell_id: "a307c72f-fb2c-448b-946b-e5f116ac47b3",
           "word": "la neutralité de l'État",
           "en": "state neutrality",
           "vi": "tính trung lập của Nhà nước",
@@ -4056,6 +4227,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "lah nuh-trah-lee-TAY duh lay-TAH — 'neutralité de l'État'"
         },
         {
+          cell_id: "196ad748-108b-47c5-a6e8-acc604af79b4",
           "word": "un signe religieux ostensible",
           "en": "conspicuous religious symbol",
           "vi": "biểu tượng tôn giáo lộ liễu",
@@ -4064,6 +4236,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "UN SEE-nyuh ruh-lee-ZHYUH os-tahn-SEE-bluh — 'conspicuous religious symbol' (2004 law)"
         },
         {
+          cell_id: "46aecc4a-2e2d-4776-9a10-bf210fce98f7",
           "word": "le prosélytisme",
           "en": "proselytism",
           "vi": "sự truyền giáo tích cực",
@@ -4072,6 +4245,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "luh pro-zay-lee-TEEZM — 'proselytism'; 's' = 'z'; final '-isme' = 'eezm'"
         },
         {
+          cell_id: "60583738-9af0-40d8-a10a-19259ae9bf92",
           "word": "le vivre-ensemble",
           "en": "living together / social cohesion",
           "vi": "sống chung / cộng đồng",
@@ -4080,6 +4254,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "luh VEEVR-ahn-SAHN-bluh — 'le vivre-ensemble' = social cohesion; hyphenated nominal"
         },
         {
+          cell_id: "3efb5598-ebc5-4adf-af5a-b9f365ea934d",
           "word": "le communautarisme",
           "en": "communitarianism (pejorative)",
           "vi": "chủ nghĩa cộng đồng khép kín",
@@ -4088,6 +4263,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "luh koh-mu-noh-tah-REEZM — 'communautarisme' (pejorative); NOT neutral 'communitarianism'"
         },
         {
+          cell_id: "e5c91d1a-76a0-4a68-b87f-213103cf90cf",
           "word": "un signifiant flottant",
           "en": "a floating signifier",
           "vi": "cái biểu đạt trôi nổi",
@@ -4096,6 +4272,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "UN see-nyee-FYAHN floh-TAHN — 'floating signifier' (Lacan/Lévi-Strauss)"
         },
         {
+          cell_id: "44d190c4-194c-43c4-a18e-d85b98fb7849",
           "word": "la sphère publique",
           "en": "the public sphere",
           "vi": "không gian công cộng",
@@ -4104,6 +4281,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "lah SFEHR pu-BLEEK — 'la sphère publique' = the public sphere"
         },
         {
+          cell_id: "a0d6ddb5-3b36-4449-aecb-856a5aa79100",
           "word": "séculier / séculière",
           "en": "secular (adj.)",
           "vi": "thế tục (tính từ)",
@@ -4114,24 +4292,28 @@ export const lessons: FrenchLesson[] =           [
       ],
       "dialogue": [
         {
+          cell_id: "2f818466-18b9-4385-af81-10e34367ad38",
           "speaker": "Interlocuteur",
           "text": "La laïcité, pour vous, est-ce d'abord un principe juridique ou une valeur identitaire?",
           "en": "Laïcité, for you — is it first a legal principle or an identity value?",
           "vi": "Laïcité, với bạn, trước hết là nguyên lý pháp lý hay giá trị bản sắc?"
         },
         {
+          cell_id: "07bc7f2f-e3af-46cb-9807-18de07b2f7f4",
           "speaker": "Linh",
           "text": "Juridique, sans hésitation. La loi de 1905 a tranché: l'État ne connaît pas les cultes, il les ignore institutionnellement, mais il les protège tous également.",
           "en": "Legal, without hesitation. The 1905 law settled it: the State doesn't know religions, it ignores them institutionally, but it protects all of them equally.",
           "vi": "Pháp lý, không do dự. Luật 1905 đã phân xử: Nhà nước không biết đến các tín ngưỡng, bỏ qua chúng về mặt thể chế, nhưng bảo vệ tất cả như nhau."
         },
         {
+          cell_id: "d5157f14-450d-499f-9ff2-9c7310718e8d",
           "speaker": "Interlocuteur",
           "text": "Mais cette neutralité n'est-elle pas, en pratique, une fiction? L'État finance l'entretien des églises d'avant 1905.",
           "en": "But isn't that neutrality, in practice, a fiction? The State funds the upkeep of pre-1905 churches.",
           "vi": "Nhưng tính trung lập đó trong thực tế không phải là hư cấu sao? Nhà nước tài trợ bảo trì nhà thờ xây trước 1905."
         },
         {
+          cell_id: "66c9e4f1-73a2-45d3-8a1b-840addcf8265",
           "speaker": "Linh",
           "text": "Vous touchez juste — c'est le paradoxe concordataire qui subsiste en Alsace-Moselle. Mais l'exception confirme la règle, elle ne l'invalide pas.",
           "en": "You're right — that's the concordat paradox still surviving in Alsace-Moselle. But the exception confirms the rule, it doesn't invalidate it.",
@@ -4351,6 +4533,7 @@ export const lessons: FrenchLesson[] =           [
       "tip_advice_vi": "GRILLE PHÂN TÍCH DIỄN VĂN CHÍNH TRỊ C2 (7 axes):\n\n1. ÉNONCIATION: Qui parle? D'où? À qui? (Président / candidat / ministre)\n2. PRONOMS: Je / Nous / On / Ils — mỗi đại từ vẽ một bản đồ chính trị\n3. TEMPS VERBAUX: Présent (vérité générale), Futur (promesse), Passé composé (bilan), Imparfait (nostalgie)\n4. FIGURES: Anaphore, métaphore, antithèse, question rhétorique\n5. CHAMP LEXICAL: abstrait (République, Nation, Peuple) vs concret (salaire, hôpital)\n6. SYNTAXE: Phrase longue hypotaxique (Jaurès) vs phrase courte parataxique (Clémenceau)\n7. SILENCES / HÉSITATIONS: Ce qui n'est pas dit, les thèmes évités\n\nCỤM HỮU ÍCH:\n- 'Le locuteur se construit ici comme...' (người nói tự kiến tạo ở đây như...)\n- 'L'usage du pronom X révèle...' (cách dùng đại từ X tiết lộ...)\n- 'Le choix du passé composé n'est pas anodin: il...' (chọn passé composé không vô cớ: nó...)\n- 'Cette anaphore en début de paragraphe scande...' (phép điệp ngữ đầu đoạn này gõ nhịp...)",
       "vocabulary": [
         {
+          cell_id: "906f47da-04b7-4749-9f07-0830a75ca08d",
           "word": "un discours-programme",
           "en": "a platform speech",
           "vi": "diễn văn cương lĩnh",
@@ -4359,6 +4542,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "UN dees-KOOR-pro-GRAHM — 'discours-programme' = a platform speech"
         },
         {
+          cell_id: "ede321c1-8d20-450a-8080-8ab577c39e25",
           "word": "le pronom 'nous'",
           "en": "the pronoun 'we'",
           "vi": "đại từ 'chúng ta'",
@@ -4367,6 +4551,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "luh pro-NOHN NOO — 'le pronom nous' = the pronoun 'we'"
         },
         {
+          cell_id: "ba47d57d-bc1c-4a23-a507-bbb2f841bf22",
           "word": "une anaphore",
           "en": "anaphora (rhetorical)",
           "vi": "phép điệp ngữ đầu câu",
@@ -4375,6 +4560,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ün ah-nah-FOR — 'anaphora' (rhetorical repetition at clause openings)"
         },
         {
+          cell_id: "b78cb6d4-023d-4a79-a527-46bfcd4754af",
           "word": "l'allocution",
           "en": "formal address / speech",
           "vi": "bài phát biểu chính thức",
@@ -4383,6 +4569,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "lah-loh-ku-SYON — 'l'allocution' = a formal address; '-tion' = 'syon'"
         },
         {
+          cell_id: "60e9dfa8-ca77-4e5b-b6c2-8581f3e7a663",
           "word": "la performativité",
           "en": "performativity (Austin)",
           "vi": "tính ngôn hành",
@@ -4391,6 +4578,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "lah pehr-for-mah-tee-vee-TAY — 'performativity' (Austin)"
         },
         {
+          cell_id: "135835a9-e4b1-4a74-8d9f-a8fa32af39b0",
           "word": "l'éloquence",
           "en": "eloquence",
           "vi": "tài hùng biện",
@@ -4399,6 +4587,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "lay-loh-KAHNSS — 'l'éloquence' = eloquence; nasal '-ence'"
         },
         {
+          cell_id: "7fa0e1f1-842c-4787-a6a1-7d894fd06644",
           "word": "la tribune",
           "en": "the rostrum / platform",
           "vi": "bục diễn đàn",
@@ -4407,6 +4596,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "lah tree-BUN — 'la tribune' = the rostrum / platform"
         },
         {
+          cell_id: "b82c5ffd-7951-4a37-adf4-1085dd8dab8f",
           "word": "le clivage",
           "en": "cleavage / divide",
           "vi": "sự chia rẽ / phân tuyến",
@@ -4415,6 +4605,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "luh klee-VAHZH — 'le clivage' = cleavage/divide; final '-age' = 'ahzh'"
         },
         {
+          cell_id: "d0a9f6d1-f426-412c-90ec-5bef0f47cbde",
           "word": "rassembleur / rassembleuse",
           "en": "unifying (adj.)",
           "vi": "tập hợp / đoàn kết",
@@ -4423,6 +4614,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "rah-sahn-BLUR — 'rassembleur' (adj.) = unifying; '-eur' rounded"
         },
         {
+          cell_id: "ac80eb34-9c9e-4f63-8e41-41d74e30978f",
           "word": "un slogan",
           "en": "a slogan",
           "vi": "khẩu hiệu",
@@ -4433,24 +4625,28 @@ export const lessons: FrenchLesson[] =           [
       ],
       "dialogue": [
         {
+          cell_id: "54719495-1b6f-4a3a-8bf0-cc6c2048059b",
           "speaker": "Étudiant",
           "text": "Comment analyser le 'nous' dans un discours de Macron?",
           "en": "How do you analyze the 'we' in a Macron speech?",
           "vi": "Phân tích chữ 'nous' trong diễn văn Macron thế nào?"
         },
         {
+          cell_id: "db9ce530-a120-4b2f-b84c-22f6e807e024",
           "speaker": "Prof. Maingueneau",
           "text": "Demandez-vous: ce 'nous' inclut-il l'auditoire présent? Le pays entier? L'humanité? La réponse change selon le paragraphe — et c'est cette variation qu'il faut cartographier.",
           "en": "Ask yourself: does this 'we' include the present audience? The whole country? Humanity? The answer changes by paragraph — and it's that variation you must map.",
           "vi": "Hãy tự hỏi: 'nous' này có bao gồm cử tọa hiện diện? Toàn đất nước? Nhân loại? Câu trả lời thay đổi theo từng đoạn — và chính sự biến đổi đó cần được vẽ bản đồ."
         },
         {
+          cell_id: "2476ba3a-29c6-4efb-b3a3-edc71ea41e13",
           "speaker": "Étudiant",
           "text": "Et si 'nous' est ambigu?",
           "en": "And if 'we' is ambiguous?",
           "vi": "Nếu 'nous' mơ hồ thì sao?"
         },
         {
+          cell_id: "324d159c-0107-470d-9ed6-a14bdc2f498f",
           "speaker": "Prof. Maingueneau",
           "text": "L'ambiguïté n'est pas un défaut — c'est une ressource rhétorique. Un 'nous' qui peut être lu comme 'les Français' OU 'mon gouvernement' permet de parler à deux publics en même temps.",
           "en": "Ambiguity isn't a flaw — it's a rhetorical resource. A 'we' that can be read as 'the French' OR 'my government' lets you speak to two publics at once.",
@@ -4655,6 +4851,7 @@ export const lessons: FrenchLesson[] =           [
       "tip_advice_vi": "MÉTHODE EN 6 ÉTAPES (cho dissertation 4 giờ):\n\n1. ANALYSE DU SUJET (30 min): Définir chaque terme. Repérer les présupposés. 'La liberté consiste-t-elle à faire ce qu'il nous plaît?' — le mot 'consiste' est crucial: il demande une définition de l'essence.\n\n2. PROBLÉMATISER (30 min): Transformer la question en problème. 'Cette question suppose que la liberté se définit par son objet (ce qu'on fait). Mais la liberté n'est-elle pas plutôt dans l'origine de l'acte que dans son contenu?'\n\n3. ÉLABORER LE PLAN (20 min): 2-3 parties. Chaque partie = une réponse possible à la problématique. Ordre: du plus évident (qu'il faut dépasser) au plus élaboré.\n\n4. RÉDIGER L'INTRODUCTION AU BROUILLON (20 min): Soigner l'accroche (une citation, un exemple, un paradoxe). La problématique tient en 2-3 phrases. L'annonce du plan doit être explicite: 'Nous verrons d'abord..., puis..., enfin...'\n\n5. RÉDIGER LE DÉVELOPPEMENT (120 min): Chaque partie = 1 argument principal + 1-2 arguments secondaires + 1 exemple philosophique + 1 transition. Toujours lier à la problématique.\n\n6. RÉDIGER LA CONCLUSION ET RELIRE (40 min): Conclusion: synthèse + ouverture. Relire: orthographe, cohérence des transitions, hors-sujet?",
       "vocabulary": [
         {
+          cell_id: "9e1e2c31-0176-4188-a9fd-a64fb6df725b",
           "word": "problématiser",
           "en": "to problematize",
           "vi": "đặt vấn đề hóa",
@@ -4663,6 +4860,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "pro-blay-mah-tee-ZAY — 'problématiser'; the defining verb of the genre"
         },
         {
+          cell_id: "cd8aa455-4ea1-4467-97b2-504d36ee6a37",
           "word": "une accroche",
           "en": "a hook / opening sentence",
           "vi": "câu móc / câu vào bài",
@@ -4671,6 +4869,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ün ah-KROSH — 'une accroche' = the hook / opening sentence"
         },
         {
+          cell_id: "a7f310bd-83cb-4c24-b5d8-386aece0b9a1",
           "word": "une transition",
           "en": "a transition between parts",
           "vi": "chuyển đoạn",
@@ -4679,6 +4878,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ün trahn-zee-SYON — 'une transition' between parts"
         },
         {
+          cell_id: "475cb344-8518-475d-b145-cbf78a25391e",
           "word": "un présupposé",
           "en": "a presupposition",
           "vi": "tiền giả định",
@@ -4687,6 +4887,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "UN pray-su-poh-ZAY — 'un présupposé' = a presupposition"
         },
         {
+          cell_id: "cbabb7ef-8897-495f-b08f-853f627d537d",
           "word": "la progression argumentative",
           "en": "argumentative progression",
           "vi": "tiến trình lập luận",
@@ -4695,6 +4896,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "lah pro-greh-SYON ar-gu-mahn-tah-TEEV — 'progression argumentative'"
         },
         {
+          cell_id: "b2967d9d-61fc-415c-a458-0cfe3851ca23",
           "word": "une objection",
           "en": "an objection",
           "vi": "phản bác / bác luận",
@@ -4703,6 +4905,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ün ob-zhek-SYON — 'une objection'; 'j' = 'zh'; '-tion' = 'syon'"
         },
         {
+          cell_id: "7ec47df0-a454-43c5-9850-bc108a23e7e5",
           "word": "une réfutation",
           "en": "a refutation",
           "vi": "sự bác bỏ",
@@ -4711,6 +4914,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ün ray-fu-tah-SYON — 'une réfutation' = a refutation"
         },
         {
+          cell_id: "c5b01ab5-b5e7-452d-b620-82c10abfdd32",
           "word": "un concept",
           "en": "a concept",
           "vi": "khái niệm",
@@ -4719,6 +4923,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "UN kohn-SEP — 'un concept'; final 'pt' → only 'p' lightly; '-cept' = 'sep'"
         },
         {
+          cell_id: "0e45217b-40aa-471b-8d5b-0834be36b988",
           "word": "une ouverture",
           "en": "an opening / concluding opening",
           "vi": "phần mở ra cuối bài",
@@ -4727,6 +4932,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ün oo-vehr-TUR — 'une ouverture' = the concluding opening"
         },
         {
+          cell_id: "b29f8c12-9fe8-47fd-8507-cd1bfa2fa31d",
           "word": "le hors-sujet",
           "en": "off-topic (cardinal sin)",
           "vi": "lạc đề",
@@ -4737,24 +4943,28 @@ export const lessons: FrenchLesson[] =           [
       ],
       "dialogue": [
         {
+          cell_id: "9150ec84-5ce9-4712-8ab1-d83ca056aa7c",
           "speaker": "Professeur",
           "text": "Votre dissertation sur la liberté est bien écrite, mais où est la problématique?",
           "en": "Your dissertation on freedom is well written, but where is the problématique?",
           "vi": "Bài dissertation về tự do của em viết tốt, nhưng problématique đâu?"
         },
         {
+          cell_id: "689ef627-7349-43a6-8f64-cdfce30c35e4",
           "speaker": "Linh",
           "text": "J'ai pensé que la question 'La liberté consiste-t-elle à faire ce qu'il nous plaît?' était déjà une problématique.",
           "en": "I thought the question 'Does freedom consist in doing what we please?' was already a problématique.",
           "vi": "Em tưởng câu hỏi 'Tự do có phải là làm điều ta thích không?' đã là một problématique."
         },
         {
+          cell_id: "d9dbf5b4-43b4-4826-9352-56d505155482",
           "speaker": "Professeur",
           "text": "Non — une question n'est pas une problématique. La problématique, c'est le conflit des réponses possibles à cette question. Reformulez.",
           "en": "No — a question is not a problématique. The problématique is the conflict of possible answers to that question. Reformulate.",
           "vi": "Không — câu hỏi không phải là problématique. Problématique là sự xung đột giữa các câu trả lời khả dĩ cho câu hỏi đó. Làm lại."
         },
         {
+          cell_id: "0b97001e-bb56-40c5-b28d-ff4742e416b9",
           "speaker": "Linh",
           "text": "Donc: 'Si la liberté se définit par l'absence de contrainte, faire ce qu'il nous plaît serait libre. Mais si la liberté suppose la maîtrise rationnelle de soi, alors céder à ses plaisirs pourrait être une forme d'esclavage.' Est-ce une problématique?",
           "en": "So: 'If freedom is defined as the absence of constraint, doing what we please would be free. But if freedom presupposes rational self-mastery, then yielding to one's pleasures could be a form of slavery.' Is that a problématique?",
@@ -4881,6 +5091,7 @@ export const lessons: FrenchLesson[] =           [
       "tip_advice_vi": "PRÉPARER UN GRAND ORAL (10 CONSEILS):\n\n1. CONNAÎTRE SES LIMITES: Biết điểm yếu của mình trước khi jury tìm ra.\n2. STRUCTURER L'EXPOSÉ: Introduction (pourquoi ce sujet, quelle thèse, quel plan), développement (3 points max), conclusion (ouverture).\n3. PARLER LENTEMENT: 120 mots / minute tối đa.\n4. REGARDER LE JURY: Pas lire ses notes.\n5. REFORMULER LA QUESTION avant de répondre — montre qu'on a compris, gagne du temps.\n6. AVOUER L'IGNORANCE: 'Je n'ai pas exploré cet aspect, mais...'\n7. MONTRER LE CHEMINEMENT: 'Au début de ma thèse, je pensais X; maintenant, je pense Y.'\n8. CITER LE JURY: 'Comme l'a montré le Professeur X, membre de ce jury...' — déférence stratégique.\n9. GÉRER LE TRAC: Respirer avant chaque réponse.\n10. CONCLURE AVEC DIGNITÉ: Remercier le jury, reconnaître ce qu'on a appris.",
       "vocabulary": [
         {
+          cell_id: "c943d9b4-b356-43f5-833a-cf7eb68b7718",
           "word": "la soutenance",
           "en": "thesis defense",
           "vi": "buổi bảo vệ luận án",
@@ -4889,6 +5100,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "lah soo-tuh-NAHNSS — 'la soutenance' = the thesis defense"
         },
         {
+          cell_id: "f4898506-bcbc-4f9b-a8d6-67809b090003",
           "word": "le jury",
           "en": "the examining committee",
           "vi": "hội đồng chấm thi",
@@ -4897,6 +5109,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "luh zhu-REE — 'le jury' = the examining committee; 'j' = 'zh'"
         },
         {
+          cell_id: "7953c7ce-741a-49f2-8e5a-82872ab0c0b2",
           "word": "un exposé",
           "en": "an oral presentation",
           "vi": "bài trình bày miệng",
@@ -4905,6 +5118,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "UN eks-poh-ZAY — 'un exposé' = an oral presentation"
         },
         {
+          cell_id: "58b879a0-3b50-4833-87c6-82814a02596b",
           "word": "la délibération",
           "en": "the deliberation (of the jury)",
           "vi": "sự nghị bàn của hội đồng",
@@ -4913,6 +5127,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "lah day-lee-bay-rah-SYON — 'la délibération' of the jury"
         },
         {
+          cell_id: "00c479fd-e011-4c13-a6d8-772a94b0c399",
           "word": "une mention",
           "en": "a grade / distinction",
           "vi": "xếp hạng / danh dự",
@@ -4921,6 +5136,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ün mahn-SYON — 'une mention' = a distinction/grade; nasal 'en' + '-tion'"
         },
         {
+          cell_id: "40769438-c8c2-476f-8b50-fd2f7f00f3e3",
           "word": "une objection",
           "en": "an objection",
           "vi": "phản bác",
@@ -4929,6 +5145,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ün ob-zhek-SYON — 'une objection'; 'j' = 'zh'"
         },
         {
+          cell_id: "ce38c1f5-6898-4dc8-b8f0-075622280db2",
           "word": "un rapporteur",
           "en": "a reviewer / rapporteur",
           "vi": "người phản biện / báo cáo viên",
@@ -4937,6 +5154,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "UN rah-por-TUR — 'un rapporteur' = a reviewer; '-eur' rounded"
         },
         {
+          cell_id: "e4294e5c-a09a-4561-94fc-a50102931989",
           "word": "le directeur de thèse",
           "en": "thesis advisor",
           "vi": "người hướng dẫn luận án",
@@ -4945,6 +5163,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "luh dee-rek-TUR duh TEZ — 'le directeur de thèse' = the thesis advisor"
         },
         {
+          cell_id: "3731d8b7-98b5-4008-972b-738b99cedbd9",
           "word": "la loge",
           "en": "the preparation room (agrégation)",
           "vi": "phòng chuẩn bị thi",
@@ -4953,6 +5172,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "lah LOZH — 'la loge' = the preparation room (agrégation); 'g' = 'zh'"
         },
         {
+          cell_id: "e3877db7-18e3-4595-af8e-311609fdbccd",
           "word": "les félicitations",
           "en": "congratulations (highest distinction)",
           "vi": "lời khen tặng (danh dự cao nhất)",
@@ -4963,12 +5183,14 @@ export const lessons: FrenchLesson[] =           [
       ],
       "dialogue": [
         {
+          cell_id: "6f85681b-1c65-4ee3-af90-ae8ca8ed44c5",
           "speaker": "Jury",
           "text": "Vous affirmez que votre thèse comble une lacune. Mais l'ouvrage de Martin (2019), que vous ne citez pas, traite exactement de cette question. Que répondez-vous?",
           "en": "You claim your thesis fills a gap. But Martin's work (2019), which you don't cite, deals with exactly this question. How do you respond?",
           "vi": "Bà khẳng định luận án của bà lấp một khoảng trống. Nhưng công trình của Martin (2019), mà bà không trích dẫn, bàn chính xác về câu hỏi này. Bà trả lời sao?"
         },
         {
+          cell_id: "684fb193-3c1c-4727-a8c3-436edc9fb5db",
           "speaker": "Linh",
           "text": "Je vous remercie de cette référence que je ne connaissais pas. Si vous me le permettez, je répondrai en deux temps: d'abord, je reconnais cette lacune bibliographique — c'est une faiblesse de mon travail. Ensuite, je précise que ma thèse aborde la question sous un angle différent, celui de..., qui me semble complémentaire plutôt que redondant.",
           "en": "Thank you for this reference, which I didn't know. If I may, I'll answer in two stages: first, I acknowledge this bibliographic gap — it's a weakness of my work. Second, I'll specify that my thesis approaches the question from a different angle, that of..., which seems to me complementary rather than redundant.",
@@ -5127,6 +5349,7 @@ export const lessons: FrenchLesson[] =           [
       "tip_advice_vi": "MÉTHODE POUR UNE DISSERTATION DE PHILOSOPHIE ABSTRAITE (4 heures):\n\n1. ANALYSE CONCEPTUELLE (45 min): Définir chaque terme du sujet. Distinguer les sens (sens commun, sens technique, sens philosophique). Identifier les présupposés cachés.\n\n2. CONSTRUCTION DU PROBLÈME (30 min): Ne pas chercher une 'réponse' mais formuler le problème de façon à montrer pourquoi il est insoluble dans les termes où il est posé. Un bon problème philosophique est un problème dont la formulation même est l'enjeu.\n\n3. ARGUMENTATION (120 min):\n- Arguments directs: déduction, modus ponens, modus tollens\n- Arguments indirects: dilemme, réduction à l'absurde, argument transcendantal\n- Contre-arguments: objections qu'on se fait à soi-même avant de les réfuter\n- Exemples: un exemple philosophique n'est pas une anecdote, c'est une expérience de pensée (le voile d'ignorance de Rawls, la chambre chinoise de Searle)\n\n4. RÉDACTION (45 min):\n- Clarté cartésienne: chaque paragraphe = une idée\n- Connecteurs logiques: 'or', 'donc', 'cependant', 'néanmoins', 'en effet'\n- Citations intégrées, pas plaquées: 'Comme l'écrit Kant...' et non 'Kant a dit que...'\n\nCỤM HỮU ÍCH:\n- 'Il importe de distinguer...' (cần phân biệt)\n- 'Ce n'est pas une question de fait, mais une question de droit.'\n- 'La thèse adverse se heurte au dilemme suivant: soit..., soit...'\n- 'Cette objection, pour sérieuse qu'elle soit, ne résiste pas à l'examen.'\n- 'L'argument transcendantal consiste à montrer que...'\n\nTRÁNH:\n- 'À mon avis...' → la philosophie n'est pas une affaire d'opinion\n- 'De tout temps, les hommes...' → généralité vide\n- 'Comme le dit le dictionnaire...' → la définition lexicographique n'est pas l'analyse conceptuelle\n- Citer sans expliquer: une citation n'est pas un argument",
       "vocabulary": [
         {
+          cell_id: "a5e09fff-289f-4517-bafd-8a3b2b8b0d5c",
           "word": "un argument transcendantal",
           "en": "a transcendental argument",
           "vi": "lập luận siêu nghiệm",
@@ -5135,6 +5358,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "UN ar-gu-MAHN trahn-sahn-dahn-TAL — 'argument transcendantal' (Kant)"
         },
         {
+          cell_id: "9d42f838-0d90-4b6b-8565-3efe196a0969",
           "word": "un dilemme",
           "en": "a dilemma",
           "vi": "song đề / thế lưỡng nan",
@@ -5143,6 +5367,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "UN dee-LEM — 'un dilemme' = a dilemma; double 'm' = single 'm'"
         },
         {
+          cell_id: "7d76adeb-14ea-4589-b38a-64b2e62ea1d6",
           "word": "le plan épistémologique",
           "en": "the epistemological level",
           "vi": "bình diện nhận thức luận",
@@ -5151,6 +5376,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "luh PLAHN ay-pees-tay-moh-loh-ZHEEK — 'le plan épistémologique'"
         },
         {
+          cell_id: "20254087-09c3-415b-bf24-04eff9928877",
           "word": "le plan ontologique",
           "en": "the ontological level",
           "vi": "bình diện bản thể luận",
@@ -5159,6 +5385,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "luh PLAHN ohn-toh-loh-ZHEEK — 'le plan ontologique'"
         },
         {
+          cell_id: "4660ff86-e1d0-41bf-81f9-f68ef9054298",
           "word": "une question de droit",
           "en": "a question of right / principle",
           "vi": "câu hỏi về nguyên lý (≠ thực tế)",
@@ -5167,6 +5394,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ün kes-TYON duh DRWAH — 'une question de droit' (of principle) ≠ 'de fait' (of fact)"
         },
         {
+          cell_id: "a1da858b-6632-4371-8dbe-86c39dd0a2ff",
           "word": "la clarification conceptuelle",
           "en": "conceptual clarification",
           "vi": "sự làm sáng tỏ khái niệm",
@@ -5175,6 +5403,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "lah klah-ree-fee-kah-SYON kohn-sep-tu-EL — 'clarification conceptuelle'"
         },
         {
+          cell_id: "aa8f190a-0a28-4bb4-b2c1-916dbacd9b9d",
           "word": "un présupposé",
           "en": "a presupposition",
           "vi": "tiền giả định",
@@ -5183,6 +5412,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "UN pray-su-poh-ZAY — 'un présupposé' = a presupposition"
         },
         {
+          cell_id: "a57964d9-d45f-406d-8b8c-a2ec1dd57e1f",
           "word": "une expérience de pensée",
           "en": "a thought experiment",
           "vi": "thí nghiệm tư duy",
@@ -5191,6 +5421,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ün eks-pay-RYAHNSS duh pahn-SAY — 'expérience de pensée' = thought experiment"
         },
         {
+          cell_id: "16b62ef9-c8e0-4956-9c19-b518b88b959d",
           "word": "la réduction à l'absurde",
           "en": "reductio ad absurdum",
           "vi": "phép quy giản về phi lý",
@@ -5199,6 +5430,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "lah ray-duk-SYON ah lab-SURD — 'réduction à l'absurde' = reductio ad absurdum"
         },
         {
+          cell_id: "1da1c847-0bcd-4fde-bd25-49e4ed9a1890",
           "word": "eidétique",
           "en": "eidetic (pertaining to essence)",
           "vi": "thuộc về bản chất (Husserl)",
@@ -5209,24 +5441,28 @@ export const lessons: FrenchLesson[] =           [
       ],
       "dialogue": [
         {
+          cell_id: "9fa57f63-1a17-44ac-a302-abe0a3f49b8b",
           "speaker": "Étudiant",
           "text": "Comment distinguer un argument transcendantal d'un argument logique ordinaire?",
           "en": "How does one distinguish a transcendental argument from an ordinary logical argument?",
           "vi": "Làm sao phân biệt lập luận siêu nghiệm với lập luận logic thông thường?"
         },
         {
+          cell_id: "f06ee79f-a17a-45d3-88c1-34380d247398",
           "speaker": "Professeur",
           "text": "L'argument logique ordinaire déduit une conclusion de prémisses. L'argument transcendantal remonte de la conclusion — qui est un fait indubitable — à ses conditions de possibilité. Le mouvement est inverse.",
           "en": "An ordinary logical argument deduces a conclusion from premises. A transcendental argument moves back from the conclusion — which is an indubitable fact — to its conditions of possibility. The movement is reversed.",
           "vi": "Lập luận logic thông thường suy diễn kết luận từ tiền đề. Lập luận siêu nghiệm đi ngược từ kết luận — là một sự kiện không thể nghi ngờ — đến các điều kiện khả thể của nó. Chuyển động là ngược lại."
         },
         {
+          cell_id: "9f212643-eff0-48db-b258-a5d62cd877f2",
           "speaker": "Étudiant",
           "text": "Pouvez-vous donner un exemple concret?",
           "en": "Can you give a concrete example?",
           "vi": "Thầy có thể cho một ví dụ cụ thể không?"
         },
         {
+          cell_id: "22860eb7-5796-4310-9b48-a80f871d9431",
           "speaker": "Professeur",
           "text": "Kant: la science newtonienne existe — c'est un fait. Comment est-elle possible? Réponse: parce que l'entendement humain impose ses catégories a priori à l'expérience. L'argument ne prouve pas que les catégories existent; il montre qu'elles sont requises pour que la science soit possible.",
           "en": "Kant: Newtonian science exists — that's a fact. How is it possible? Answer: because the human understanding imposes its a priori categories on experience. The argument doesn't prove the categories exist; it shows they are required for science to be possible.",
@@ -5413,6 +5649,7 @@ export const lessons: FrenchLesson[] =           [
       "tip_advice_vi": "GRILLE D'ANALYSE D'UN DISCOURS PERSUASIF (inspirée de Perelman):\n\n1. LOGOS — l'argument:\n- Quels sont les arguments explicites?\n- Y a-t-il des arguments implicites (enthymèmes)?\n- L'argumentation est-elle déductive, inductive, ou par analogie?\n\n2. ETHOS — l'orateur:\n- Comment l'orateur construit-il sa crédibilité?\n- Quels pronoms utilise-t-il (je/nous/on)?\n- Comment anticipe-t-il les objections?\n\n3. PATHOS — l'auditoire:\n- Quelles émotions sont mobilisées (peur, espoir, indignation, fierté)?\n- L'auditoire est-il traité comme universel ou particulier?\n- Quelles valeurs sont présupposées partagées?\n\n4. STRUCTURE:\n- Exorde (captatio benevolentiae)\n- Narration (exposé des faits)\n- Argumentation (preuves + réfutation)\n- Péroraison (appel final)\n\nCỤM HỮU ÍCH POUR ANALYSER:\n- 'L'orateur construit son ethos en...'\n- 'Cet argument relève du logos, mais il est renforcé par un appel au pathos qui...'\n- 'La concession au début du paragraphe est une figure de l'ethos: elle montre que l'orateur est raisonnable.'\n- 'L'auditoire visé n'est pas universel — Perelman dirait qu'il s'agit d'un auditoire particulier.'",
       "vocabulary": [
         {
+          cell_id: "e46ec7cd-88a9-4db3-9f85-9aea860d246f",
           "word": "le logos",
           "en": "logos — logical argument",
           "vi": "logos — lập luận logic",
@@ -5421,6 +5658,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "luh loh-GOSS — 'le logos' = logical argument; final 's' pronounced"
         },
         {
+          cell_id: "3654d28b-acdc-4d10-9ce3-1c10f3596f54",
           "word": "l'ethos",
           "en": "ethos — speaker's character",
           "vi": "ethos — tư cách người nói",
@@ -5429,6 +5667,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "lay-TOSS — 'l'ethos' = the speaker's projected character; final 's' pronounced"
         },
         {
+          cell_id: "28e33fe1-8660-471b-b74d-7850eb9eff08",
           "word": "le pathos",
           "en": "pathos — emotional appeal",
           "vi": "pathos — kêu gọi cảm xúc",
@@ -5437,6 +5676,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "luh pah-TOSS — 'le pathos' = the emotional appeal; final 's' pronounced"
         },
         {
+          cell_id: "e73a5d41-dfc4-4ec1-9258-bd2edc43c5cd",
           "word": "l'adhésion des esprits",
           "en": "the adherence of minds",
           "vi": "sự tán thành của tinh thần",
@@ -5445,6 +5685,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "lah-day-ZYON day-zes-PREE — 'l'adhésion des esprits' = the adherence of minds"
         },
         {
+          cell_id: "afbb44c6-a47f-4a25-b339-f9e2ce2c03bc",
           "word": "un enthymème",
           "en": "an enthymeme (rhetorical syllogism)",
           "vi": "enthymème — tam đoạn luận tu từ",
@@ -5453,6 +5694,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "UN ahn-tee-MEM — 'un enthymème' = a rhetorical syllogism with a suppressed premise"
         },
         {
+          cell_id: "04f53bd7-bf12-4ea6-8c7b-4c3d223a80f3",
           "word": "la captatio benevolentiae",
           "en": "the capturing of goodwill",
           "vi": "chiếm lấy thiện cảm (mở đầu)",
@@ -5461,6 +5703,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "lah kap-TAH-tsyo bay-nay-voh-LEN-tsyeh — 'captatio benevolentiae' (Latin); the goodwill opening"
         },
         {
+          cell_id: "66984c12-2026-494c-bfea-1de1f689890d",
           "word": "la péroraison",
           "en": "the peroration (closing appeal)",
           "vi": "lời kết thúc hùng biện",
@@ -5469,6 +5712,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "lah pay-roh-reh-ZON — 'la péroraison' = the closing appeal"
         },
         {
+          cell_id: "d6e5f33c-264d-490b-a5dc-064481ee1b9c",
           "word": "l'auditoire universel",
           "en": "the universal audience (Perelman)",
           "vi": "cử tọa phổ quát",
@@ -5477,6 +5721,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "loh-dee-TWAR u-nee-vehr-SEL — 'l'auditoire universel' (Perelman)"
         },
         {
+          cell_id: "ced8c33e-3513-4d7a-94fc-2d9c09549e5e",
           "word": "le vraisemblable",
           "en": "the plausible / probable",
           "vi": "cái có vẻ đúng / khả tín",
@@ -5485,6 +5730,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "luh vreh-sahn-BLAH-bluh — 'le vraisemblable' = the plausible/probable"
         },
         {
+          cell_id: "fc7b4dfc-f60d-498a-b982-0115c32bb688",
           "word": "une concession calculée",
           "en": "a calculated concession",
           "vi": "sự nhượng bộ có tính toán",
@@ -5495,24 +5741,28 @@ export const lessons: FrenchLesson[] =           [
       ],
       "dialogue": [
         {
+          cell_id: "f884be4a-6950-4494-8479-523dc93df44c",
           "speaker": "Étudiant",
           "text": "Quelle est la différence entre convaincre et persuader?",
           "en": "What's the difference between 'convaincre' and 'persuader'?",
           "vi": "Khác biệt giữa 'convaincre' và 'persuader' là gì?"
         },
         {
+          cell_id: "a3cf433c-711f-46c4-886d-3e6af76f4f3f",
           "speaker": "Professeur",
           "text": "Convaincre s'adresse à la raison seule — c'est le domaine du logos. Persuader mobilise la raison, mais aussi l'émotion et la confiance — c'est le domaine des trois piliers: logos, ethos, pathos. On peut être convaincu sans être persuadé, et inversement.",
           "en": "'Convaincre' addresses reason alone — the domain of logos. 'Persuader' mobilizes reason, but also emotion and trust — the domain of all three pillars: logos, ethos, pathos. One can be convinced without being persuaded, and vice versa.",
           "vi": "'Convaincre' hướng đến lý tính đơn thuần — đó là lĩnh vực của logos. 'Persuader' huy động lý tính, nhưng cả cảm xúc và lòng tin — đó là lĩnh vực của ba trụ cột: logos, ethos, pathos. Có thể bị thuyết phục lý trí mà không bị thuyết phục toàn diện, và ngược lại."
         },
         {
+          cell_id: "190f667a-d521-4431-b149-440ca0bf535d",
           "speaker": "Étudiant",
           "text": "Donc un bon avocat doit maîtriser les trois?",
           "en": "So a good lawyer must master all three?",
           "vi": "Vậy một luật sư giỏi phải làm chủ cả ba?"
         },
         {
+          cell_id: "39d52615-128f-480c-9857-581bb4bb7002",
           "speaker": "Professeur",
           "text": "Exactement. Le logos construit le dossier. L'ethos fait que le jury lui fait confiance. Le pathos fait que le jury se soucie de l'issue. Sans logos, c'est de la manipulation; sans ethos, c'est du sophisme; sans pathos, c'est un cours magistral — pas une plaidoirie.",
           "en": "Exactly. Logos builds the case. Ethos makes the jury trust him. Pathos makes the jury care about the outcome. Without logos, it's manipulation; without ethos, sophistry; without pathos, a lecture — not a closing argument.",
@@ -5711,6 +5961,7 @@ export const lessons: FrenchLesson[] =           [
       "tip_advice_vi": "GRILLE D'ANALYSE D'UN ARTICLE C2: (1) CADRAGE: Quel angle? (2) TITRAILLE: titre, chapeau — fidèles au contenu? (3) SOURCES: Qui est cité? Verbes introducteurs neutres ou orientés? (4) LEXIQUE: neutre ou connoté? (5) SILENCES: De quoi ne parle-t-on pas? CỤM: 'Le cadrage consiste à...', 'Le choix du verbe X suggère...', 'L'absence de citation de Y est significative.'",
       "vocabulary": [
         {
+          cell_id: "05b80592-a555-4d91-a4e4-7849603d1952",
           "word": "le cadrage",
           "en": "framing (media analysis)",
           "vi": "sự đóng khung / cadrage",
@@ -5719,6 +5970,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "luh kah-DRAHZH — 'le cadrage' = framing (media-analysis term)"
         },
         {
+          cell_id: "c5ce54ae-7aca-4582-88ba-00df82f00b85",
           "word": "la titraille",
           "en": "headlines / titling system",
           "vi": "hệ thống tít báo",
@@ -5727,6 +5979,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "lah tee-TRAH-yuh — 'la titraille' = the headline/titling system"
         },
         {
+          cell_id: "f7fede36-8e03-41fe-af56-5ca81173328f",
           "word": "un verbe introducteur",
           "en": "a reporting verb",
           "vi": "động từ giới thiệu lời dẫn",
@@ -5735,6 +5988,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "UN VEHRB an-troh-duk-TUR — 'verbe introducteur' = a reporting verb"
         },
         {
+          cell_id: "83f226b6-712d-4000-b595-ef7faef50565",
           "word": "la ligne éditoriale",
           "en": "editorial line",
           "vi": "đường lối biên tập",
@@ -5743,6 +5997,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "lah LEEN-yuh ay-dee-toh-RYAL — 'la ligne éditoriale' = editorial line"
         },
         {
+          cell_id: "6bd11e6a-0b30-4fc1-9dae-79f39170a7a8",
           "word": "une source anonyme",
           "en": "an anonymous source",
           "vi": "nguồn ẩn danh",
@@ -5751,6 +6006,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ün SOORSS ah-noh-NEEM — 'une source anonyme' = an anonymous source"
         },
         {
+          cell_id: "f0e62cd8-1f61-4187-9e12-d0cf5a7af915",
           "word": "le fait divers",
           "en": "short news item",
           "vi": "tin vắn",
@@ -5759,6 +6015,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "luh FEH dee-VEHR — 'le fait divers' = a short human-interest news item"
         },
         {
+          cell_id: "8bbd16b8-1a43-4448-823a-665e6a352912",
           "word": "la dépêche",
           "en": "news wire / dispatch",
           "vi": "điện tin / bản tin hãng",
@@ -5767,6 +6024,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "lah day-PESH — 'la dépêche' = a news-wire dispatch; final '-e' silent"
         },
         {
+          cell_id: "cd473c95-f7ef-48ee-a2f2-4eaec33a3b57",
           "word": "le pluralisme",
           "en": "pluralism",
           "vi": "tính đa nguyên",
@@ -5777,24 +6035,28 @@ export const lessons: FrenchLesson[] =           [
       ],
       "dialogue": [
         {
+          cell_id: "27c4d02d-d752-4dc3-be28-24c2f139dab2",
           "speaker": "Étudiant",
           "text": "Comment distinguer un article de fait d'un article d'opinion?",
           "en": "How do you distinguish a fact-based article from an opinion article?",
           "vi": "Làm sao phân biệt bài báo sự kiện với bài báo ý kiến?"
         },
         {
+          cell_id: "252dd130-a4d0-4d98-be4d-84eff866ac1c",
           "speaker": "Professeur",
           "text": "Regardez les verbes introducteurs. 'A déclaré' = fait. 'Prétend' = opinion. La frontière est dans la grammaire.",
           "en": "Look at the reporting verbs. 'A déclaré' = fact. 'Prétend' = opinion. The boundary is in the grammar.",
           "vi": "Nhìn các động từ giới thiệu. 'Đã tuyên bố' = sự kiện. 'Tự nhận' = ý kiến. Biên giới nằm trong ngữ pháp."
         },
         {
+          cell_id: "791126d6-e337-405f-aa8a-a300337a7216",
           "speaker": "Étudiant",
           "text": "Et si l'article mélange les deux?",
           "en": "And if the article mixes the two?",
           "vi": "Nếu bài báo trộn lẫn cả hai?"
         },
         {
+          cell_id: "3bcb649a-f306-487e-b740-80e2c9d95944",
           "speaker": "Professeur",
           "text": "C'est le cas le plus fréquent — et le plus dangereux. Votre travail est de séparer ce que le journaliste a mélangé.",
           "en": "That's the most frequent case — and the most dangerous. Your job is to separate what the journalist has mixed.",
@@ -5924,6 +6186,7 @@ export const lessons: FrenchLesson[] =           [
       "tip_advice_vi": "VERBES DIPLOMATIQUES (fort→faible): DÉSACCORD: condamner > déplorer > regretter > s'inquiéter de > prendre note de. DEMANDE: exiger > demander instamment > appeler à > inviter à > encourager. ACCORD: se féliciter de > saluer > accueillir favorablement > prendre acte de. CỤM: 'Les parties ont convenu de...', 'Dans un esprit de...', 'Sans préjudice de...', 'Sous réserve de...'",
       "vocabulary": [
         {
+          cell_id: "d3299f6a-7aca-4b0a-8526-1ebafbcd496f",
           "word": "un communiqué",
           "en": "communiqué",
           "vi": "thông cáo",
@@ -5932,6 +6195,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "UN koh-mu-nee-KAY — 'un communiqué' = an official statement"
         },
         {
+          cell_id: "14fd25fe-e17a-4755-a4aa-3e5bce90166c",
           "word": "une démarche",
           "en": "diplomatic démarche",
           "vi": "bước đi ngoại giao",
@@ -5940,6 +6204,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ün day-MARSH — 'une démarche' = a diplomatic approach/step; final '-e' silent"
         },
         {
+          cell_id: "27e768b8-ed4a-4d24-88e8-ee658f59f08d",
           "word": "la langue de bois",
           "en": "diplomatic jargon",
           "vi": "sáo ngữ ngoại giao",
@@ -5948,6 +6213,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "lah LAHNG duh BWAH — 'la langue de bois' = wooden, evasive jargon"
         },
         {
+          cell_id: "6d3e0a26-9be4-4a31-80ce-7459dd3fe886",
           "word": "une résolution",
           "en": "UN resolution",
           "vi": "nghị quyết",
@@ -5956,6 +6222,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "ün ray-zoh-lu-SYON — 'une résolution' = a UN resolution"
         },
         {
+          cell_id: "27b990b4-0ee1-4711-972a-3c16d2676a6d",
           "word": "condamner",
           "en": "to condemn",
           "vi": "lên án",
@@ -5964,6 +6231,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "kohn-dah-NAY — 'condamner' = to condemn; 'm' silent before 'n'"
         },
         {
+          cell_id: "1c0e3888-d4e0-4496-ae07-c4cc91874a49",
           "word": "déplorer",
           "en": "to deplore",
           "vi": "lấy làm tiếc",
@@ -5972,6 +6240,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "day-ploh-RAY — 'déplorer' = to deplore (weaker than English on the scale)"
         },
         {
+          cell_id: "aa7f07d5-e944-49e8-86d2-53130806d9fc",
           "word": "un traité",
           "en": "treaty",
           "vi": "hiệp ước",
@@ -5980,6 +6249,7 @@ export const lessons: FrenchLesson[] =           [
           "pronunciation_en": "UN treh-TAY — 'un traité' = a treaty; '-é' = 'ay'"
         },
         {
+          cell_id: "69d3c8fc-6b43-448c-9fa8-7e00b42581e0",
           "word": "sans préjudice de",
           "en": "without prejudice to",
           "vi": "không phương hại đến",
@@ -5990,12 +6260,14 @@ export const lessons: FrenchLesson[] =           [
       ],
       "dialogue": [
         {
+          cell_id: "cf02b749-14fe-491f-8013-8e8f0cad3984",
           "speaker": "Diplomate",
           "text": "Dans le communiqué final, 'condamner' ou 'déplorer'?",
           "en": "In the final communique — 'condamner' or 'déplorer'?",
           "vi": "Trong thông cáo cuối, 'lên án' hay 'lấy làm tiếc'?"
         },
         {
+          cell_id: "c88c2328-c613-411b-912b-d5efbbe65efb",
           "speaker": "Linh",
           "text": "'Déplorer'. 'Condamner' fermerait la porte. 'Déplorer' exprime le désaccord tout en laissant une issue.",
           "en": "'Déplorer'. 'Condamner' would shut the door. 'Déplorer' expresses disagreement while leaving a way out.",

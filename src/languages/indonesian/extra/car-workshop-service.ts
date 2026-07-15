@@ -18,6 +18,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   /** Indonesian word/phrase. */
   word: string;
   /** English meaning. */
@@ -33,6 +34,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   /** Indonesian line. */
   text: string;
@@ -211,6 +213,7 @@ export const carWorkshopServiceLessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: learn workshop chunks as whole phrases: `servis berkala`, `ganti oli`, `tekanan ban`, `rem kurang pakem`, `aki lemah`, `mobil mogok`, `biaya jasa`, `spare part`. Do not use `rusak` for every fault; `mogok`, `bocor`, `lemah`, `kurang pakem`, and `bunyi kasar` are more precise.",
     vocabulary: [
       {
+        cell_id: "fb9f367c-9dc7-45c4-9453-b06b920c5906",
         word: "bengkel mobil",
         en: "car workshop",
         vi: "tiệm sửa ô tô",
@@ -219,6 +222,7 @@ export const carWorkshopServiceLessons: IndonesianLesson[] = [
         pronunciation_en: "BENG-kel MO-bil",
       },
       {
+        cell_id: "a32a58ed-2d73-41db-8ac9-69c8bb55b7d1",
         word: "ganti oli",
         en: "oil change",
         vi: "thay dầu nhớt",
@@ -227,6 +231,7 @@ export const carWorkshopServiceLessons: IndonesianLesson[] = [
         pronunciation_en: "GAN-tee O-lee",
       },
       {
+        cell_id: "99760401-64ea-4f15-ba76-549374059615",
         word: "ban",
         en: "tire",
         vi: "lốp xe",
@@ -235,6 +240,7 @@ export const carWorkshopServiceLessons: IndonesianLesson[] = [
         pronunciation_en: "BAN",
       },
       {
+        cell_id: "f9025f3f-010a-4ee1-9468-d4e208be32ee",
         word: "rem",
         en: "brake",
         vi: "phanh / thắng",
@@ -243,6 +249,7 @@ export const carWorkshopServiceLessons: IndonesianLesson[] = [
         pronunciation_en: "rem",
       },
       {
+        cell_id: "177ad674-0cc0-4e39-aadd-19a144b55498",
         word: "aki",
         en: "car battery",
         vi: "ắc quy",
@@ -251,6 +258,7 @@ export const carWorkshopServiceLessons: IndonesianLesson[] = [
         pronunciation_en: "A-kee",
       },
       {
+        cell_id: "a563ba26-73de-42b0-af65-a20c9fbda32f",
         word: "servis berkala",
         en: "routine service",
         vi: "bảo dưỡng định kỳ",
@@ -259,6 +267,7 @@ export const carWorkshopServiceLessons: IndonesianLesson[] = [
         pronunciation_en: "SER-vis ber-KA-la",
       },
       {
+        cell_id: "4181e2ae-33d3-4c06-b8b6-d168288c7e83",
         word: "biaya jasa",
         en: "labor/service fee",
         vi: "tiền công / phí dịch vụ",
@@ -267,6 +276,7 @@ export const carWorkshopServiceLessons: IndonesianLesson[] = [
         pronunciation_en: "BEE-a-ya JA-sa",
       },
       {
+        cell_id: "88ce38eb-1188-4ebf-82ed-55b4a454ff87",
         word: "spare part",
         en: "spare part",
         vi: "phụ tùng",
@@ -275,6 +285,7 @@ export const carWorkshopServiceLessons: IndonesianLesson[] = [
         pronunciation_en: "SPARE-part",
       },
       {
+        cell_id: "c0b0f9e4-1095-47d1-9448-1b0d130639f9",
         word: "mogok",
         en: "to stall / break down",
         vi: "chết máy / hỏng giữa đường",
@@ -283,6 +294,7 @@ export const carWorkshopServiceLessons: IndonesianLesson[] = [
         pronunciation_en: "MO-gok",
       },
       {
+        cell_id: "b7f0bb1a-ae15-49f3-a44d-de0115311a2c",
         word: "estimasi biaya",
         en: "cost estimate",
         vi: "ước tính chi phí",
@@ -293,24 +305,28 @@ export const carWorkshopServiceLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "02281924-6039-48c8-a3cd-6c25273d1d54",
         speaker: "Pemilik Mobil",
         text: "Mas, mobil saya mogok tadi pagi. Bisa dicek?",
         vi: "Anh ơi, sáng nay xe tôi chết máy. Kiểm tra được không?",
         en: "Sir, my car broke down this morning. Can you check it?",
       },
       {
+        cell_id: "373c5267-c7e7-411b-b97d-8b38f3651ee0",
         speaker: "Mekanik",
         text: "Bisa. Akinya lemah atau mesin tidak mau hidup?",
         vi: "Được. Ắc quy yếu hay máy không chịu nổ?",
         en: "Yes. Is the battery weak or does the engine refuse to start?",
       },
       {
+        cell_id: "eba53818-5b33-4579-acba-8a0effb712db",
         speaker: "Pemilik Mobil",
         text: "Mesin susah dinyalakan, dan rem juga kurang pakem.",
         vi: "Máy khó khởi động, và phanh cũng không ăn lắm.",
         en: "The engine is hard to start, and the brakes also do not grip well.",
       },
       {
+        cell_id: "977048ad-6723-4a44-bb0b-43b3f2a9da5c",
         speaker: "Mekanik",
         text: "Baik, nanti saya beri estimasi biaya jasa dan spare part.",
         vi: "Vâng, lát nữa tôi sẽ đưa ước tính tiền công và phụ tùng.",

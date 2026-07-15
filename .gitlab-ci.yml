@@ -301,6 +301,48 @@ variables:
         while [ ! -d "$TARGET" ] && [ "$TARGET" != "/" ]; do
           TARGET="$(dirname "$TARGET")"
         done
+        # Pressure-mode safe-cache prune. This runs before DISK_GATE and only
+        # touches known rebuildable cache state outside active pipeline dirs:
+        #   - $HOME/.cache/mercyb-node-modules/.lock-* and .tmp-* older than
+        #     MERCYB_PRESSURE_LOCK_AGE_MIN (default 360min)
+        #   - immutable lockfile-keyed node_modules cache entries beyond the
+        #     newest MERCYB_PRESSURE_NODE_MODULES_CACHE_KEEP entries (default 2)
+        #     and older than MERCYB_PRESSURE_NODE_MODULES_CACHE_AGE_MIN
+        #     (default 360min)
+        # It never touches Playwright/browser caches or anything inside the
+        # current/active pipeline build dirs.
+        _pre_gate_free_kb="$(df -Pk "$TARGET" 2>/dev/null | awk 'NR==2 {print $4}')"
+        if [ -n "$_pre_gate_free_kb" ] && [ "$_pre_gate_free_kb" -lt "$DISK_FLOOR_KB" ]; then
+          echo "[disk-pressure-prune] free=${_pre_gate_free_kb}KB < floor=${DISK_FLOOR_KB}KB — pruning known-safe rebuildable caches before DISK_GATE"
+          _cache_root="${MERCYB_NODE_MODULES_CACHE_ROOT:-${HOME:-}/.cache/mercyb-node-modules}"
+          _cache_keep="${MERCYB_PRESSURE_NODE_MODULES_CACHE_KEEP:-2}"
+          _cache_age_min="${MERCYB_PRESSURE_NODE_MODULES_CACHE_AGE_MIN:-360}"
+          _lock_age_min="${MERCYB_PRESSURE_LOCK_AGE_MIN:-360}"
+          if [ -n "$_cache_root" ] && [ -d "$_cache_root" ]; then
+            echo "[disk-pressure-prune] node_modules_cache_root=$_cache_root keep=$_cache_keep cache_age_min=$_cache_age_min lock_age_min=$_lock_age_min"
+            find "$_cache_root" -mindepth 1 -maxdepth 1 -type d \( -name ".lock-*" -o -name ".tmp-*" \) -mmin "+${_lock_age_min}" -print 2>/dev/null |
+              while IFS= read -r d; do
+                [ -n "$d" ] || continue
+                echo "[disk-pressure-prune] REMOVE stale-cache-workdir path=$d age>${_lock_age_min}min"
+                rm -rf -- "$d" || echo "[disk-pressure-prune] WARN remove-failed path=$d"
+              done
+            find "$_cache_root" -mindepth 1 -maxdepth 1 -type d ! -name ".lock-*" ! -name ".tmp-*" -mmin "+${_cache_age_min}" -print 2>/dev/null |
+              while IFS= read -r d; do
+                printf '%s\t%s\n' "$(stat -f '%m' "$d" 2>/dev/null || echo 0)" "$d"
+              done |
+              sort -rn |
+              awk -v keep="$_cache_keep" 'NR > keep {print $2}' |
+              while IFS= read -r d; do
+                [ -n "$d" ] || continue
+                echo "[disk-pressure-prune] REMOVE stale-node-modules-cache path=$d keep=$_cache_keep age>${_cache_age_min}min"
+                rm -rf -- "$d" || echo "[disk-pressure-prune] WARN remove-failed path=$d"
+              done
+          else
+            echo "[disk-pressure-prune] SKIP node_modules cache root missing path=$_cache_root"
+          fi
+          _post_prune_free_kb="$(df -Pk "$TARGET" 2>/dev/null | awk 'NR==2 {print $4}')"
+          echo "[disk-pressure-prune] after free=${_post_prune_free_kb:-unknown}KB"
+        fi
         FREE_KB="$(df -Pk "$TARGET" 2>/dev/null | awk 'NR==2 {print $4}')"
         if [ -z "$FREE_KB" ]; then
           echo "DISK_GATE: unknownGB < 14GB floor — job refused (could not read build volume target '$TARGET')" >&2
@@ -308,6 +350,13 @@ variables:
         fi
         FREE_GB="$(awk "BEGIN {printf \"%.2f\", $FREE_KB/1048576}")"
         if [ "$FREE_KB" -lt "$DISK_FLOOR_KB" ]; then
+          _diag_root="${MERCYB_DISK_DIAG_ROOT:-${HOME:-/Users/admin}}"
+          echo "[disk-pressure-diagnostic] top-level disk usage for $_diag_root (top 10; Playwright cache is report-only, never pruned here)" >&2
+          if [ -d "$_diag_root" ]; then
+            du -sh "$_diag_root"/* "$_diag_root"/.[!.]* "$_diag_root"/..?* 2>/dev/null | sort -hr | head -10 | sed 's/^/[disk-pressure-diagnostic] /' >&2 || true
+          else
+            echo "[disk-pressure-diagnostic] SKIP missing diag root path=$_diag_root" >&2
+          fi
           echo "DISK_GATE: ${FREE_GB}GB < 14GB floor — job refused (target=$TARGET runner=${CI_RUNNER_DESCRIPTION:-unknown})" >&2
           exit 1
         fi
@@ -436,6 +485,11 @@ variables:
   - .gitlab-ci.yml
   - scripts/ci/check-job-tags.mjs
 
+.migration_security_changes: &migration_security_changes
+  - supabase/migrations/**/*
+  - security/**/*
+  - reports/security/**/*
+
 # Reusable rules: protected branch pushes run full validation regardless
 # of changes. Merge requests use changes filters to skip heavy work for
 # docs-only or unrelated updates.
@@ -459,6 +513,8 @@ variables:
     - if: '$CI_PIPELINE_SOURCE == "push" && ($CI_COMMIT_BRANCH == "main" || $CI_COMMIT_BRANCH == "develop" || $CI_COMMIT_BRANCH =~ /^release(\/|$)/)'
     - if: '$CI_PIPELINE_SOURCE == "merge_request_event" && ($CI_MERGE_REQUEST_TARGET_BRANCH_NAME == "main" || $CI_MERGE_REQUEST_TARGET_BRANCH_NAME == "develop" || $CI_MERGE_REQUEST_TARGET_BRANCH_NAME =~ /^release(\/|$)/)'
       changes: *lint_validation_changes
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event" && ($CI_MERGE_REQUEST_TARGET_BRANCH_NAME == "main" || $CI_MERGE_REQUEST_TARGET_BRANCH_NAME == "develop" || $CI_MERGE_REQUEST_TARGET_BRANCH_NAME =~ /^release(\/|$)/)'
+      changes: *migration_security_changes
 
 .room_test_rules: &room_test_rules
   rules:
@@ -750,7 +806,10 @@ variables:
   # green). Halving to 1 worker/shard cuts the concurrent esbuild service
   # count and RAM footprint. A NODE_OPTIONS heap bump would NOT help —
   # the esbuild service is a native child process, not V8 heap.
-  - npx vitest run --shard=$CI_NODE_INDEX/$CI_NODE_TOTAL --maxWorkers=1
+  - |
+    VITE_SUPABASE_URL="http://127.0.0.1:54321" \
+    VITE_SUPABASE_ANON_KEY="ci-vitest-non-prod-anon-key" \
+      npx vitest run --shard=$CI_NODE_INDEX/$CI_NODE_TOTAL --maxWorkers=1
 
 .ai_tutor_quality_gate_script: &ai_tutor_quality_gate_script
   - npm run test:ai-tutor-golden-flow
@@ -802,7 +861,10 @@ variables:
       git fetch --depth 1 origin +main:refs/remotes/origin/main
       MOBILE_AUDIO_VERIFY_BASE="origin/main"
     fi
-  - npm run verify:mobile-audio -- --base "$MOBILE_AUDIO_VERIFY_BASE"
+  - |
+    VITE_SUPABASE_URL="http://127.0.0.1:54321" \
+    VITE_SUPABASE_ANON_KEY="ci-vitest-non-prod-anon-key" \
+      npm run verify:mobile-audio -- --base "$MOBILE_AUDIO_VERIFY_BASE" --skip-build
 
 .playwright_perf_budget_script: &playwright_perf_budget_script
   - |
@@ -883,7 +945,9 @@ reservoir:test-shard:
     - |
       SHARD="${SHARD:-1}"
       SHARD_TOTAL="${SHARD_TOTAL:-2}"
-      npx vitest run --shard="$SHARD/$SHARD_TOTAL" --maxWorkers=2
+      VITE_SUPABASE_URL="http://127.0.0.1:54321" \
+      VITE_SUPABASE_ANON_KEY="ci-vitest-non-prod-anon-key" \
+        npx vitest run --shard="$SHARD/$SHARD_TOTAL" --maxWorkers=2
 
 reservoir:corpus-validate:
   <<: [*node_job, *local_runner, *reservoir_rules]
@@ -893,6 +957,8 @@ reservoir:corpus-validate:
     policy: pull
   script:
     - |
+      VITE_SUPABASE_URL="http://127.0.0.1:54321" \
+      VITE_SUPABASE_ANON_KEY="ci-vitest-non-prod-anon-key" \
       npx vitest run \
         src/lib/tutor/__tests__/step11VietlishCorpusD4Wave*.test.ts \
         tests/regression/golden-set/_pending-guards/__tests__/step11VietlishCorpusD4Wave*.test.ts
@@ -1069,6 +1135,8 @@ typecheck:ci:
     - if: '$MERCYB_SHARED_RUNNER_FALLBACK == "1"'
       when: never
     - if: '$CI_PIPELINE_SOURCE == "merge_request_event" && $CI_MERGE_REQUEST_LABELS =~ /(^|,)hotfix(,|$)/'
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event" && ($CI_MERGE_REQUEST_TARGET_BRANCH_NAME == "main" || $CI_MERGE_REQUEST_TARGET_BRANCH_NAME == "develop" || $CI_MERGE_REQUEST_TARGET_BRANCH_NAME =~ /^release(\/|$)/)'
+      changes: *migration_security_changes
   script:
     - npm run typecheck:ci
 
@@ -1116,7 +1184,9 @@ test:targeted:
       echo "$CHANGED"
       CHANGED_SPACE=$(printf '%s' "$CHANGED" | tr '\n' ' ')
       echo "[test:targeted] running vitest related --run $CHANGED_SPACE"
-      npx vitest related --run $CHANGED_SPACE
+      VITE_SUPABASE_URL="http://127.0.0.1:54321" \
+      VITE_SUPABASE_ANON_KEY="ci-vitest-non-prod-anon-key" \
+        npx vitest related --run $CHANGED_SPACE
 
 ai-tutor-quality-gate:
   <<: [*node_job, *local_runner, *ai_tutor_golden_flow_rules]
@@ -1169,6 +1239,8 @@ production-placement-smoke:
     - if: '$RESERVOIR == "1"'
       when: never
     - if: '$MERCYB_SHARED_RUNNER_FALLBACK == "1"'
+      when: never
+    - if: '$CI_PIPELINE_SOURCE == "schedule" && $NIGHTLY_MAINTENANCE_ENABLED == "1"'
       when: never
     - if: '$RUN_PROD_PLACEMENT_SMOKE == "true"'
       when: manual
@@ -1237,6 +1309,9 @@ nightly-full-suite:
     # this gate the 505s full suite ran every 15 minutes.
     - if: '$CI_PIPELINE_SOURCE == "schedule" && $CI_COMMIT_BRANCH == "main" && $NIGHTLY_MAINTENANCE_ENABLED == "1"'
     - when: never
+  before_script:
+    - !reference [.node_job, before_script]
+    - npx playwright install chromium
   script:
     - |
       case "$(uname -s)" in
@@ -1251,7 +1326,10 @@ nightly-full-suite:
           exit 1
           ;;
       esac
-    - npx vitest run
+    - |
+      VITE_SUPABASE_URL="http://127.0.0.1:54321" \
+      VITE_SUPABASE_ANON_KEY="ci-vitest-non-prod-anon-key" \
+        npx vitest run
     - |
       case "$(uname -s)" in
         Darwin)
@@ -1289,7 +1367,10 @@ delete-account-guard:
     - if: '$CI_PIPELINE_SOURCE == "push" && ($CI_COMMIT_BRANCH == "main" || $CI_COMMIT_BRANCH == "develop" || $CI_COMMIT_BRANCH =~ /^release(\/|$)/)'
       changes: *delete_account_guard_changes
   script:
-    - npm run check:delete-account-guard
+    - |
+      VITE_SUPABASE_URL="http://127.0.0.1:54321" \
+      VITE_SUPABASE_ANON_KEY="ci-vitest-non-prod-anon-key" \
+        npm run check:delete-account-guard
 
 delete-account-guard:shared-fallback:
   <<: [*node_job, *manual_shared_fallback]
@@ -1302,7 +1383,10 @@ delete-account-guard:shared-fallback:
     - if: '$MERCYB_SHARED_RUNNER_FALLBACK == "1" && $CI_PIPELINE_SOURCE == "push" && ($CI_COMMIT_BRANCH == "main" || $CI_COMMIT_BRANCH == "develop" || $CI_COMMIT_BRANCH =~ /^release(\/|$)/)'
       when: manual
   script:
-    - npm run check:delete-account-guard
+    - |
+      VITE_SUPABASE_URL="http://127.0.0.1:54321" \
+      VITE_SUPABASE_ANON_KEY="ci-vitest-non-prod-anon-key" \
+        npm run check:delete-account-guard
 
 delete-account-live:
   <<: [*node_job, *local_runner]
@@ -1339,6 +1423,27 @@ lint:shared-fallback:
   <<: [*node_job, *manual_shared_fallback, *manual_shared_lint_rules]
   stage: test
   script: *lint_script
+
+migration-security-contracts:
+  <<: [*node_job, *local_runner]
+  stage: test
+  cache:
+    <<: *npm_cache_def
+    policy: pull
+  rules:
+    - if: '$RESERVOIR == "1"'
+      when: never
+    - if: '$MERCYB_SHARED_RUNNER_FALLBACK == "1"'
+      when: never
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event" && ($CI_MERGE_REQUEST_TARGET_BRANCH_NAME == "main" || $CI_MERGE_REQUEST_TARGET_BRANCH_NAME == "develop" || $CI_MERGE_REQUEST_TARGET_BRANCH_NAME =~ /^release(\/|$)/)'
+      changes: *migration_security_changes
+  script:
+    - node scripts/sql-lint.mjs
+    - HARDENING_SCAN_CHECKS=L HARDENING_SCAN_FAIL_ON_FINDINGS=1 node scripts/hardening-scan.mjs
+    - |
+      VITE_SUPABASE_URL="http://127.0.0.1:54321" \
+      VITE_SUPABASE_ANON_KEY="ci-vitest-non-prod-anon-key" \
+        npx vitest run supabase/migrations/__tests__ scripts/__tests__/rls-matrix-scan.test.mjs scripts/__tests__/sql-lint.test.mjs
 
 # `validate-rooms` — the full room-content validator. Heavier than the
 # build-stage validate-room-registry / validate-kids-rooms steps; runs
@@ -1438,6 +1543,21 @@ check-new-orphans:shared-fallback:
     GIT_DEPTH: "0"
   cache: {}
   script: *orphan_guard_script
+
+scheduled-hardening-scan:
+  <<: [*node_job, *local_runner]
+  stage: test
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "schedule" && $HARDENING_SCAN_SCHEDULE == "1"'
+    - when: never
+  script:
+    - export NODE_OPTIONS="${NODE_OPTIONS:-} --max-old-space-size=6144"
+    - node scripts/factory/run-scheduled-hardening-scan.mjs
+  artifacts:
+    when: always
+    expire_in: 30 days
+    paths:
+      - reports/hardening-scan-scheduled.md
 
 ci-job-tags-guard:
   <<: [*local_runner]
@@ -1604,6 +1724,8 @@ golden-flows-prod:
     - if: '$RESERVOIR == "1"'
       when: never
     - if: '$MERCYB_SHARED_RUNNER_FALLBACK == "1"'
+      when: never
+    - if: '$CI_PIPELINE_SOURCE == "schedule" && $NIGHTLY_MAINTENANCE_ENABLED == "1"'
       when: never
     - if: '$CI_PIPELINE_SOURCE == "schedule" && $CI_COMMIT_BRANCH == "main"'
     - if: '$CI_PIPELINE_SOURCE == "push" && $CI_COMMIT_BRANCH == "main"'
@@ -1862,6 +1984,24 @@ flywheel-mine:
       - _flywheel_out/
 
 # ── Tier-3 prod synthetic learner (SL-001) ──────────────────────────────────
+# DISABLED BY DEFAULT. Lists open MRs, comments their merge-policy tier, and
+# auto-merges only green/conflict-free Tier 1 MRs after the R0/R1 safety gates.
+# `GATEKEEPER_ENABLED` is intentionally not set globally; add it only to the
+# dedicated schedule or a manual web pipeline when Chau wants the gatekeeper on.
+tier1-gatekeeper:
+  <<: [*node_job, *local_runner]
+  stage: verify
+  interruptible: false
+  rules:
+    - if: '$RESERVOIR == "1"'
+      when: never
+    - if: '$CI_PIPELINE_SOURCE == "schedule" && $GATEKEEPER_ENABLED == "1"'
+    - if: '$CI_PIPELINE_SOURCE == "web" && $GATEKEEPER_ENABLED == "1"'
+      when: manual
+    - when: never
+  script:
+    - node scripts/gatekeeper/tier1-automerge.mjs
+
 # DISABLED BY DEFAULT. Runs journeys (a)–(f) against REAL production as the
 # dedicated synthetic account, on a schedule (or ad-hoc web run) ONLY when Chau
 # sets SYNTHETIC_LEARNER_ENABLED=1 and has provisioned the masked PROD_SYNTH_*
@@ -1885,6 +2025,8 @@ prod-synthetic-learner:
   rules:
     - if: '$RESERVOIR == "1"'
       when: never
+    - if: '$CI_PIPELINE_SOURCE == "schedule" && $NIGHTLY_MAINTENANCE_ENABLED == "1"'
+      when: never
     - if: '$CI_PIPELINE_SOURCE == "schedule" && $SYNTHETIC_LEARNER_ENABLED == "1"'
     - if: '$CI_PIPELINE_SOURCE == "web" && $SYNTHETIC_LEARNER_ENABLED == "1"'
       when: manual
@@ -1901,4 +2043,34 @@ prod-synthetic-learner:
       # journey's exact session/redirect sequence is retrievable — journey (a)
       # is runner-conditional and needs the trace.zip to confirm the anon-session
       # bootstrap race (run #3 had no trace uploaded → undiagnosable from CI).
+      - test-results/
+
+# DISABLED BY DEFAULT. R3 explores production beyond R0's scripted journeys
+# using only the dedicated synthetic account and the read-only crawler policy.
+# Chau schedule: daily pipeline on main, variables R3_EXPLORER_ENABLED=1 plus
+# the existing masked PROD_SYNTH_* and RESEND_ALERT_TOKEN values. Optional:
+# DISPATCHER_URL and DISPATCHER_SECRET route alerts through Dispatcher first.
+prod-r3-explorer:
+  <<: [*node_job, *local_runner]
+  tags:
+    - local
+    - mac-c2
+  stage: verify
+  interruptible: false
+  rules:
+    - if: '$RESERVOIR == "1"'
+      when: never
+    - if: '$CI_PIPELINE_SOURCE == "schedule" && $R3_EXPLORER_ENABLED == "1"'
+    - if: '$CI_PIPELINE_SOURCE == "api" && $R3_EXPLORER_ENABLED == "1"'
+    - if: '$CI_PIPELINE_SOURCE == "web" && $R3_EXPLORER_ENABLED == "1"'
+      when: manual
+    - when: never
+  script:
+    - npx playwright install --with-deps chromium
+    - npm run test:r3-explorer
+  artifacts:
+    when: always
+    expire_in: 30 days
+    paths:
+      - reports/prod-r3-explorer/
       - test-results/

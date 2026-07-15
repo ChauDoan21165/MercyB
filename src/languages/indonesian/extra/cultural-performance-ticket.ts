@@ -18,6 +18,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   /** Indonesian word/phrase. */
   word: string;
   /** English meaning. */
@@ -33,6 +34,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   /** Indonesian line. */
   text: string;
@@ -243,6 +245,7 @@ export const culturalPerformanceTicketLessons: IndonesianLesson[] = [
       "Useful patterns: `Saya mau beli tiket masuk`, `Tempat duduk saya masih tersedia?`, `Aturan foto sangat ketat`, `Penonton diminta tidak mengambil foto`. If unsure, ask the `petugas` or `loket` before entering. `Tolong tunjukkan` and `silakan beri tahu` are both very usable polite phrases.",
     vocabulary: [
       {
+        cell_id: "476bffdb-f7ee-4da3-9089-8e0be31fc268",
         word: "tiket masuk",
         en: "admission ticket",
         vi: "vé vào cửa",
@@ -251,6 +254,7 @@ export const culturalPerformanceTicketLessons: IndonesianLesson[] = [
         pronunciation_en: "TEE-ket MAH-sook",
       },
       {
+        cell_id: "8d8f6a06-5c19-4a65-a805-49aabe5b3f72",
         word: "jadwal acara",
         en: "event schedule",
         vi: "lịch chương trình",
@@ -259,6 +263,7 @@ export const culturalPerformanceTicketLessons: IndonesianLesson[] = [
         pronunciation_en: "JAHD-waal AH-cha-rah",
       },
       {
+        cell_id: "93f6a0e1-5d59-4986-a79f-2b116689e9e3",
         word: "tempat duduk",
         en: "seat",
         vi: "chỗ ngồi",
@@ -267,6 +272,7 @@ export const culturalPerformanceTicketLessons: IndonesianLesson[] = [
         pronunciation_en: "tem-paht DOO-dook",
       },
       {
+        cell_id: "83122748-c6b0-49f5-8efe-55617d042f35",
         word: "panggung",
         en: "stage",
         vi: "sân khấu",
@@ -275,6 +281,7 @@ export const culturalPerformanceTicketLessons: IndonesianLesson[] = [
         pronunciation_en: "PANG-goong",
       },
       {
+        cell_id: "7ffb7ced-4859-4efe-97ee-d40b6a286ec7",
         word: "barcode tiket",
         en: "ticket barcode",
         vi: "mã vạch vé",
@@ -283,6 +290,7 @@ export const culturalPerformanceTicketLessons: IndonesianLesson[] = [
         pronunciation_en: "bar-COAD TEE-ket",
       },
       {
+        cell_id: "fa05ea7d-9e88-4eea-ae80-11ea7a89b511",
         word: "aturan foto",
         en: "photo rule",
         vi: "quy định chụp ảnh",
@@ -291,6 +299,7 @@ export const culturalPerformanceTicketLessons: IndonesianLesson[] = [
         pronunciation_en: "a-too-RAHN FOH-toh",
       },
       {
+        cell_id: "363768ff-b6d6-4461-a27d-971fc94105bc",
         word: "penonton",
         en: "audience",
         vi: "khán giả",
@@ -299,6 +308,7 @@ export const culturalPerformanceTicketLessons: IndonesianLesson[] = [
         pronunciation_en: "peh-NON-ton",
       },
       {
+        cell_id: "b5da9939-0ca7-485d-b6b4-ccb369a88149",
         word: "gamelan",
         en: "gamelan ensemble",
         vi: "dàn gamelan",
@@ -307,6 +317,7 @@ export const culturalPerformanceTicketLessons: IndonesianLesson[] = [
         pronunciation_en: "gah-me-LAHN",
       },
       {
+        cell_id: "c7d44785-ae03-42cd-b294-85ba1d34c4ad",
         word: "tari tradisional",
         en: "traditional dance",
         vi: "múa truyền thống",
@@ -315,6 +326,7 @@ export const culturalPerformanceTicketLessons: IndonesianLesson[] = [
         pronunciation_en: "TAH-ree tra-di-see-oh-NAHL",
       },
       {
+        cell_id: "328071e5-9fcf-4ce7-ac97-7ec41acc6d54",
         word: "petugas",
         en: "staff / officer",
         vi: "nhân viên / người phụ trách",
@@ -325,36 +337,42 @@ export const culturalPerformanceTicketLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "adecda7b-6ad3-4951-9597-c23c870e91fd",
         speaker: "Pengunjung",
         text: "Halo, saya mau beli tiket masuk untuk dua orang.",
         vi: "Xin chào, tôi muốn mua vé vào cửa cho hai người.",
         en: "Hello, I want to buy admission tickets for two people.",
       },
       {
+        cell_id: "9acc19a4-86d1-47c3-b412-694dffbf2917",
         speaker: "Loket",
         text: "Baik, pertunjukannya mulai jam tujuh malam.",
         vi: "Vâng, buổi biểu diễn bắt đầu lúc bảy giờ tối.",
         en: "Okay, the performance starts at 7 p.m.",
       },
       {
+        cell_id: "6be69c44-41fc-42e7-89a3-fddc706ef261",
         speaker: "Pengunjung",
         text: "Tempat duduk saya masih tersedia?",
         vi: "Chỗ ngồi của tôi còn trống không?",
         en: "Is my seat still available?",
       },
       {
+        cell_id: "728ad2fb-de98-492b-864c-09a2a551ba2f",
         speaker: "Loket",
         text: "Masih. Baris depan sedang penuh, tetapi ada di tengah.",
         vi: "Vẫn còn. Hàng ghế trước đã đầy, nhưng còn chỗ ở giữa.",
         en: "Yes. The front row is full, but there are seats in the middle.",
       },
       {
+        cell_id: "92bc1052-7e55-491a-8b1a-eff595a50e29",
         speaker: "Pengunjung",
         text: "Aturan foto di dalam gedung bagaimana?",
         vi: "Quy định chụp ảnh bên trong tòa nhà như thế nào?",
         en: "What are the photo rules inside the venue?",
       },
       {
+        cell_id: "e1052705-92ee-4bb8-8da0-216ab12d8168",
         speaker: "Loket",
         text: "Penonton diminta tidak mengambil foto dengan flash.",
         vi: "Khán giả được yêu cầu không chụp ảnh có đèn flash.",

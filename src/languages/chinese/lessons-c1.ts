@@ -145,6 +145,7 @@ export const lessons: ChineseLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "c782a043-6460-4859-bd2c-82d00f2528a5",
         "speaker": "学生",
         "chinese": "教授, 我想就开题报告中的核心假设向您汇报一下。",
         "pinyin": "Jiàoshòu, wǒ xiǎng jiù kāití bàogào zhōng de héxīn jiǎshè xiàng nín huìbào yīxià.",
@@ -152,6 +153,7 @@ export const lessons: ChineseLesson[] = [
         "vi": "Thưa giáo sư, em muốn báo cáo về giả thuyết cốt lõi trong đề cương ạ."
       },
       {
+        cell_id: "deb21e5d-285f-4cce-b10f-86499a727000",
         "speaker": "教授",
         "chinese": "好, 你先说一下你这个假设的理论基础是什么。",
         "pinyin": "Hǎo, nǐ xiān shuō yīxià nǐ zhège jiǎshè de lǐlùn jīchǔ shì shénme.",
@@ -159,6 +161,7 @@ export const lessons: ChineseLesson[] = [
         "vi": "Tốt, em nói trước về cơ sở lý thuyết của giả thuyết."
       },
       {
+        cell_id: "3a51f86d-e8b5-4ba0-a5ed-37577b4064aa",
         "speaker": "学生",
         "chinese": "主要源自外部反馈循环对技能习得的促进作用, 已有相关教育心理学研究支持。",
         "pinyin": "Zhǔyào yuán zì wàibù fǎnkuì xúnhuán duì jìnéng xídé de cùjìn zuòyòng, yǐ yǒu xiāngguān jiàoyù xīnlǐxué yánjiū zhīchí.",
@@ -166,6 +169,7 @@ export const lessons: ChineseLesson[] = [
         "vi": "Chủ yếu từ tác dụng thúc đẩy của vòng phản hồi bên ngoài đối với tiếp thu kỹ năng — đã có nghiên cứu tâm lý học giáo dục liên quan ủng hộ."
       },
       {
+        cell_id: "4df30f2d-a6f2-4467-8811-5077179609d7",
         "speaker": "教授",
         "chinese": "嗯, 那你的样本规模和实验周期是怎么设计的? 局限性有没有充分讨论?",
         "pinyin": "Èn, nà nǐ de yàngběn guīmó hé shíyàn zhōuqī shì zěnme shèjì de? Júxiànxìng yǒu méi yǒu chōngfèn tǎolùn?",
@@ -493,6 +497,7 @@ export const lessons: ChineseLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "1d98cf5d-4375-453c-854c-ae388f4aaacc",
         "speaker": "助教",
         "chinese": "你这一段直接引用了Vaswani的论文, 但只提了名字, 没标年份和页码。",
         "pinyin": "Nǐ zhè yī duàn zhíjiē yǐnyòngle Vaswani de lùnwén, dàn zhǐ tíle míngzì, méi biāo niánfèn hé yèmǎ.",
@@ -500,6 +505,7 @@ export const lessons: ChineseLesson[] = [
         "vi": "Đoạn này em trích dẫn trực tiếp paper của Vaswani nhưng chỉ nhắc tên, chưa ghi năm và số trang."
       },
       {
+        cell_id: "800e4f24-1691-488b-b2d4-bd43239a9568",
         "speaker": "学生",
         "chinese": "我以为列在参考文献最后就够了, 不用每次标。",
         "pinyin": "Wǒ yǐwéi liè zài cānkǎo wénxiàn zuìhòu jiù gòu le, bùyòng měi cì biāo.",
@@ -507,6 +513,7 @@ export const lessons: ChineseLesson[] = [
         "vi": "Em tưởng liệt kê ở mục tài liệu tham khảo cuối là đủ, không cần đánh dấu mỗi lần."
       },
       {
+        cell_id: "117dd616-77f0-4904-9fd1-bdce6a84bb2b",
         "speaker": "助教",
         "chinese": "不行。每次直接引用都必须标注作者、年份、页码。否则按学术不端处理。",
         "pinyin": "Bù xíng. Měi cì zhíjiē yǐnyòng dōu bìxū biāozhù zuòzhě, niánfèn, yèmǎ. Fǒuzé àn xuéshù bùduān chǔlǐ.",
@@ -514,6 +521,7 @@ export const lessons: ChineseLesson[] = [
         "vi": "Không được. Mỗi lần trích dẫn trực tiếp phải đánh dấu tác giả, năm, số trang. Nếu không sẽ bị xử lý như gian lận học thuật."
       },
       {
+        cell_id: "c62033c8-e8bc-4250-abce-ac698e596143",
         "speaker": "学生",
         "chinese": "明白了。我马上改, 改完再请您审一遍。",
         "pinyin": "Míngbái le. Wǒ mǎshàng gǎi, gǎi wán zài qǐng nín shěn yī biàn.",
@@ -848,6 +856,7 @@ export const lessons: ChineseLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "10d1dc30-4f26-4955-9cbc-df04c3e79e8d",
         "speaker": "研究员A",
         "chinese": "我认为大语言模型已经具备某种程度的语言理解能力, 测试结果就是证据。",
         "pinyin": "Wǒ rènwéi dà yǔyán móxíng yǐjīng jùbèi mǒu zhǒng chéngdù de yǔyán lǐjiě nénglì, cèshì jiéguǒ jiùshì zhèngjù.",
@@ -855,6 +864,7 @@ export const lessons: ChineseLesson[] = [
         "vi": "Tôi cho rằng các mô hình ngôn ngữ lớn đã sở hữu một mức độ năng lực lý giải nhất định, kết quả kiểm tra chính là bằng chứng."
       },
       {
+        cell_id: "07194c38-fad2-4c66-bfa1-042530b2c2ed",
         "speaker": "研究员B",
         "chinese": "这个结论恐怕下得太早了。测试成绩高, 不等于真正理解, 二者不应混为一谈。",
         "pinyin": "Zhège jiélùn kǒngpà xià de tài zǎo le. Cèshì chéngjì gāo, bù děngyú zhēnzhèng lǐjiě, èr zhě bù yīng hùn wéi yī tán.",
@@ -862,6 +872,7 @@ export const lessons: ChineseLesson[] = [
         "vi": "Kết luận này e rằng đưa ra quá sớm. Điểm số bài kiểm tra cao không có nghĩa là thực sự lý giải, hai cái không nên gộp lại làm một."
       },
       {
+        cell_id: "06ec1388-ebdf-45c7-a0a4-3192886f41b4",
         "speaker": "研究员A",
         "chinese": "那您怎么定义'真正理解'? 没有可操作的定义, 这场辩论永远没有结果。",
         "pinyin": "Nà nín zěnme dìngyì 'zhēnzhèng lǐjiě'? Méiyǒu kě cāozuò de dìngyì, zhè chǎng biànlùn yǒngyuǎn méiyǒu jiéguǒ.",
@@ -869,6 +880,7 @@ export const lessons: ChineseLesson[] = [
         "vi": "Vậy ngài định nghĩa 'thực sự lý giải' thế nào? Không có định nghĩa khả thao tác, cuộc tranh luận này mãi không có kết quả."
       },
       {
+        cell_id: "5706d545-8cd2-4648-a260-92103275f2d4",
         "speaker": "研究员B",
         "chinese": "您这个反问很到位。我承认, 双方对'理解'的界定确实不同。这正是症结所在。",
         "pinyin": "Nín zhège fǎnwèn hěn dàowèi. Wǒ chéngrèn, shuāngfāng duì 'lǐjiě' de jièdìng quèshí bùtóng. Zhè zhèng shì zhèngjié suǒzài.",
@@ -1196,6 +1208,7 @@ export const lessons: ChineseLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "a44d27fa-06e2-4179-946f-144852b43060",
         "speaker": "审稿人",
         "chinese": "你这一段写得太确定了。'AI筛查工具优于人类放射科医生'这种说法, 在样本量这么小的情况下不能下。",
         "pinyin": "Nǐ zhè yī duàn xiě de tài quèdìng le. 'AI shāichá gōngjù yōu yú rénlèi fàngshèkē yīshēng' zhè zhǒng shuōfǎ, zài yàngběn liàng zhème xiǎo de qíngkuàng xià bùnéng xià.",
@@ -1203,6 +1216,7 @@ export const lessons: ChineseLesson[] = [
         "vi": "Đoạn này em viết quá chắc chắn. Câu 'công cụ sàng lọc AI vượt trội bác sĩ X-quang' không thể đưa ra với cỡ mẫu nhỏ như vậy."
       },
       {
+        cell_id: "d3f77bca-7bf1-435a-961c-941b12ff61f6",
         "speaker": "学生",
         "chinese": "我应该怎么修改才合适?",
         "pinyin": "Wǒ yīnggāi zěnme xiūgǎi cái héshì?",
@@ -1210,6 +1224,7 @@ export const lessons: ChineseLesson[] = [
         "vi": "Em nên sửa thế nào cho phù hợp?"
       },
       {
+        cell_id: "5d1ad20d-604d-416a-9b76-7f83cdcf3056",
         "speaker": "审稿人",
         "chinese": "加hedge: '初步数据似乎显示...在某种程度上...有待进一步验证'。这样既保留发现, 又不过度承诺。",
         "pinyin": "Jiā hedge: 'chūbù shùjù sìhū xiǎnshì...zài mǒu zhǒng chéngdù shàng...yǒu dài jìn yī bù yànzhèng'. Zhèyàng jì bǎoliú fāxiàn, yòu bù guòdù chéngnuò.",
@@ -1217,6 +1232,7 @@ export const lessons: ChineseLesson[] = [
         "vi": "Thêm hedge: 'dữ liệu sơ bộ dường như cho thấy... ở một mức độ nào đó... cần kiểm chứng thêm'. Như thế vừa giữ phát hiện, vừa không cam kết quá mức."
       },
       {
+        cell_id: "170657f5-78ac-4940-ab4a-4d4391b68426",
         "speaker": "学生",
         "chinese": "明白了。学术写作的'确定'和'诚实', 不是同一回事。",
         "pinyin": "Míngbái le. Xuéshù xiězuò de 'quèdìng' hé 'chéngshí', bù shì tóng yī huí shì.",
@@ -1551,6 +1567,7 @@ export const lessons: ChineseLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "bcf400f5-5207-4801-a636-7b92e4f5047f",
         "speaker": "学生",
         "chinese": "教授, 我paper第二段提到'AI agent', 但reviewer问这个术语具体指什么。",
         "pinyin": "Jiàoshòu, wǒ paper dì èr duàn tídào 'AI agent', dàn reviewer wèn zhège shùyǔ jùtǐ zhǐ shénme.",
@@ -1558,6 +1575,7 @@ export const lessons: ChineseLesson[] = [
         "vi": "Thưa giáo sư, đoạn hai bài em có đề cập 'AI agent', nhưng reviewer hỏi thuật ngữ này cụ thể chỉ cái gì."
       },
       {
+        cell_id: "1385ad8d-dd02-4abf-8833-b8edb286f491",
         "speaker": "教授",
         "chinese": "Reviewer问得对。'AI agent'在不同文献中含义不同, 你必须先界定。",
         "pinyin": "Reviewer wèn de duì. 'AI agent' zài bùtóng wénxiàn zhōng hányì bùtóng, nǐ bìxū xiān jièdìng.",
@@ -1565,6 +1583,7 @@ export const lessons: ChineseLesson[] = [
         "vi": "Reviewer hỏi đúng. 'AI agent' trong các tài liệu khác nhau có ý nghĩa khác nhau, em phải định nghĩa trước."
       },
       {
+        cell_id: "bace9a5c-9aea-4ba5-ab0c-332b2675c8a2",
         "speaker": "学生",
         "chinese": "我应该按哪个流派的定义? Russell-Norvig的, 还是Wooldridge的, 还是LLM-era的?",
         "pinyin": "Wǒ yīnggāi àn nǎ gè liúpài de dìngyì? Russell-Norvig de, háishì Wooldridge de, háishì LLM-era de?",
@@ -1572,6 +1591,7 @@ export const lessons: ChineseLesson[] = [
         "vi": "Em nên theo định nghĩa của trường phái nào? Russell-Norvig, hay Wooldridge, hay LLM-era?"
       },
       {
+        cell_id: "c5ae3584-5e3c-491f-bda9-6d28908f9e73",
         "speaker": "教授",
         "chinese": "选一个, 注明出处, 解释为何选这个, 然后全文一致使用。这是术语规范的基本原则。",
         "pinyin": "Xuǎn yī gè, zhùmíng chūchù, jiěshì wèihé xuǎn zhège, ránhòu quánwén yīzhì shǐyòng. Zhè shì shùyǔ guīfàn de jīběn yuánzé.",
@@ -1899,6 +1919,7 @@ export const lessons: ChineseLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "fb6e240b-d292-4294-8946-e99f4cbf6786",
         "speaker": "学生",
         "chinese": "教授, 我的论文在'方法选择'这一章, 一直拿不定主意是用定量还是定性。",
         "pinyin": "Jiàoshòu, wǒ de lùnwén zài 'fāngfǎ xuǎnzé' zhè yī zhāng, yīzhí ná bù dìng zhǔyì shì yòng dìngliàng háishì dìngxìng.",
@@ -1906,6 +1927,7 @@ export const lessons: ChineseLesson[] = [
         "vi": "Thưa giáo sư, ở chương 'lựa chọn phương pháp', em cứ chần chừ chưa quyết được giữa định lượng và định tính."
       },
       {
+        cell_id: "dc035eb2-ace7-48e0-a81d-ae5c97d009b5",
         "speaker": "教授",
         "chinese": "你的研究问题是什么? 选方法之前, 先想清楚你要回答的问题。",
         "pinyin": "Nǐ de yánjiū wèntí shì shénme? Xuǎn fāngfǎ zhīqián, xiān xiǎng qīngchu nǐ yào huídá de wèntí.",
@@ -1913,6 +1935,7 @@ export const lessons: ChineseLesson[] = [
         "vi": "Câu hỏi nghiên cứu của em là gì? Trước khi chọn phương pháp, hãy nghĩ rõ về câu hỏi em muốn trả lời."
       },
       {
+        cell_id: "293d8454-d2cb-4cc1-aa1d-28c5e8018611",
         "speaker": "学生",
         "chinese": "我想知道'为什么开发者在使用AI编程助手后, 仍然觉得效率没提升'。",
         "pinyin": "Wǒ xiǎng zhīdào 'wèishéme kāifāzhě zài shǐyòng AI biānchéng zhùshǒu hòu, réngrán juéde xiàolǜ méi tíshēng'.",
@@ -1920,6 +1943,7 @@ export const lessons: ChineseLesson[] = [
         "vi": "Em muốn biết 'tại sao lập trình viên sau khi dùng trợ lý lập trình AI vẫn cảm thấy hiệu suất không tăng'."
       },
       {
+        cell_id: "bb00f818-1a1b-4e71-bad2-dd7503f87fcb",
         "speaker": "教授",
         "chinese": "'为什么'是定性问题。你需要深度访谈, 而非问卷调查。但若同时想知'多少%开发者有这种感觉', 就需要混合方法。",
         "pinyin": "'Wèishéme' shì dìngxìng wèntí. Nǐ xūyào shēndù fǎngtán, ér fēi wènjuàn diàochá. Dàn ruò tóngshí xiǎng zhī 'duōshǎo % kāifāzhě yǒu zhè zhǒng gǎnjué', jiù xūyào hùnhé fāngfǎ.",
@@ -2247,6 +2271,7 @@ export const lessons: ChineseLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "1161af0f-d360-4bbd-b23f-8a336d4b2040",
         "speaker": "审稿人A",
         "chinese": "你怎么看这篇关于新diffusion模型的paper?",
         "pinyin": "Nǐ zěnme kàn zhè piān guānyú xīn diffusion móxíng de paper?",
@@ -2254,6 +2279,7 @@ export const lessons: ChineseLesson[] = [
         "vi": "Anh/chị nghĩ gì về bài paper về diffusion model mới này?"
       },
       {
+        cell_id: "78467cb7-8e3e-4243-b9f0-89b5dc9f1c2b",
         "speaker": "审稿人B",
         "chinese": "结果挺漂亮, 但消融实验薄弱。各组件贡献没有有效隔离, 我担心是过拟合到benchmark。",
         "pinyin": "Jiéguǒ tǐng piàoliang, dàn xiāoróng shíyàn bóruò. Gè zǔjiàn gòngxiàn méiyǒu yǒuxiào gélí, wǒ dānxīn shì guò nǐhé dào benchmark.",
@@ -2261,6 +2287,7 @@ export const lessons: ChineseLesson[] = [
         "vi": "Kết quả khá đẹp, nhưng ablation study mỏng. Đóng góp các cấu phần chưa được tách bạch hiệu quả, tôi lo nó overfitting vào benchmark."
       },
       {
+        cell_id: "105fbc60-0ca3-4192-a028-a302638b8d36",
         "speaker": "审稿人A",
         "chinese": "你建议reject还是major revision?",
         "pinyin": "Nǐ jiànyì reject háishì major revision?",
@@ -2268,6 +2295,7 @@ export const lessons: ChineseLesson[] = [
         "vi": "Anh/chị khuyến nghị reject hay major revision?"
       },
       {
+        cell_id: "836cd07b-108a-4546-8431-a1ee6e167ed0",
         "speaker": "审稿人B",
         "chinese": "Major revision。提交一个完整消融表 + cross-domain validation, 我可以接受。瑕不掩瑜, 但需要补足。",
         "pinyin": "Major revision. Tíjiāo yī gè wánzhěng xiāoróng biǎo + cross-domain validation, wǒ kěyǐ jiēshòu. Xiá bù yǎn yú, dàn xūyào bǔzú.",
@@ -2602,6 +2630,7 @@ export const lessons: ChineseLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "6f1750a1-460b-4174-a2e2-fc935b4c7f99",
         "speaker": "评委",
         "chinese": "你的实验只用了一个数据集, 怎么说明方法的普适性?",
         "pinyin": "Nǐ de shíyàn zhǐ yòngle yī gè shùjùjí, zěnme shuōmíng fāngfǎ de pǔshìxìng?",
@@ -2609,6 +2638,7 @@ export const lessons: ChineseLesson[] = [
         "vi": "Thí nghiệm của em chỉ dùng một tập dữ liệu, làm sao chứng minh tính phổ quát của phương pháp?"
       },
       {
+        cell_id: "33830b72-010b-45c2-8d30-8c5f1fcb2c1f",
         "speaker": "答辩人",
         "chinese": "感谢评委指出, 您所提之问题极具启发性。诚如您所言, 单一数据集的确限制了普适性论证。笔者拟在后续研究中拓展至三个跨域数据集。",
         "pinyin": "Gǎnxiè píngwěi zhǐchū, nín suǒ tí zhī wèntí jí jù qǐfāxìng. Chéngrú nín suǒ yán, dānyī shùjùjí díquè xiànzhì le pǔshìxìng lùnzhèng. Bǐzhě nǐ zài hòuxù yánjiū zhōng tuòzhǎn zhì sān gè kuàyù shùjùjí.",
@@ -2616,6 +2646,7 @@ export const lessons: ChineseLesson[] = [
         "vi": "Cảm ơn ủy viên đã chỉ ra, câu hỏi rất gợi mở. Đúng như thầy/cô nói, tập dữ liệu duy nhất quả thực hạn chế lập luận về tính phổ quát. Tác giả dự định trong nghiên cứu sau sẽ mở rộng sang 3 tập dữ liệu liên ngành."
       },
       {
+        cell_id: "edfe06ce-d7e3-4390-a9bf-fab0d1288f2c",
         "speaker": "评委",
         "chinese": "听上去合理。但你能否先简要说说, 为什么本次只选了这一个?",
         "pinyin": "Tīng shàngqù hélǐ. Dàn nǐ néng fǒu xiān jiǎnyào shuō shuō, wèishéme běn cì zhǐ xuǎnle zhè yī gè?",
@@ -2623,6 +2654,7 @@ export const lessons: ChineseLesson[] = [
         "vi": "Nghe có lý. Nhưng em có thể nói sơ lược trước, tại sao lần này chỉ chọn một cái?"
       },
       {
+        cell_id: "5cbfaf84-8fcb-4641-8f08-83e67a5872e4",
         "speaker": "答辩人",
         "chinese": "限于实验室计算资源, 本研究优先选取了与同行最具可比性的数据集。其他数据集的实验已列入后续计划。",
         "pinyin": "Xiànyú shíyànshì jìsuàn zīyuán, běn yánjiū yōuxiān xuǎnqǔle yǔ tóngháng zuì jù kěbǐxìng de shùjùjí. Qítā shùjùjí de shíyàn yǐ lièrù hòuxù jìhuà.",
@@ -2950,6 +2982,7 @@ export const lessons: ChineseLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "23b1a610-254c-4dc2-8a04-16f70d7e09e7",
         "speaker": "学生",
         "chinese": "教授, 我的摘要reviewer说太长, 350词。但您之前说'背景、方法、结果、结论'四要素都要写。",
         "pinyin": "Jiàoshòu, wǒ de zhāiyào reviewer shuō tài cháng, 350 cí. Dàn nín zhīqián shuō 'bèijǐng, fāngfǎ, jiéguǒ, jiélùn' sì yàosù dōu yào xiě.",
@@ -2957,6 +2990,7 @@ export const lessons: ChineseLesson[] = [
         "vi": "Thưa giáo sư, tóm tắt của em reviewer nói quá dài, 350 từ. Nhưng trước thầy/cô nói 'bối cảnh, phương pháp, kết quả, kết luận' — bốn yếu tố đều phải viết."
       },
       {
+        cell_id: "f2375e39-3ec3-40f2-87e6-cf846808d322",
         "speaker": "教授",
         "chinese": "四要素都写, 但每个要素只用1-2句, 这是关键。350词意味着每个要素3句左右, 太冗。",
         "pinyin": "Sì yàosù dōu xiě, dàn měi gè yàosù zhǐ yòng 1-2 jù, zhè shì guānjiàn. 350 cí yìwèizhe měi gè yàosù 3 jù zuǒyòu, tài rǒng.",
@@ -2964,6 +2998,7 @@ export const lessons: ChineseLesson[] = [
         "vi": "Bốn yếu tố đều viết, nhưng mỗi yếu tố chỉ dùng 1-2 câu, đây là điểm then chốt. 350 từ nghĩa là mỗi yếu tố khoảng 3 câu, quá rườm."
       },
       {
+        cell_id: "24b0126c-044f-40cf-947e-0f0e496d9fac",
         "speaker": "学生",
         "chinese": "标准长度大概是多少?",
         "pinyin": "Biāozhǔn chángdù dàgài shì duōshǎo?",
@@ -2971,6 +3006,7 @@ export const lessons: ChineseLesson[] = [
         "vi": "Độ dài chuẩn khoảng bao nhiêu?"
       },
       {
+        cell_id: "f0ec6430-7113-4e73-9f9f-0802f0a074b7",
         "speaker": "教授",
         "chinese": "不同期刊不同。计算机领域150-250词最常见, 医学期刊允许到300词。你的目标250词, 'delete first, qualify second'。",
         "pinyin": "Bùtóng qīkān bùtóng. Jìsuànjī lǐngyù 150-250 cí zuì chángjiàn, yīxué qīkān yǔnxǔ dào 300 cí. Nǐ de mùbiāo 250 cí, 'delete first, qualify second'.",
@@ -3312,6 +3348,7 @@ export const lessons: ChineseLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "c1bf24b6-5d56-4c99-ace4-61ff83cceca6",
         "speaker": "新审稿人",
         "chinese": "教授, 我第一次给期刊审稿, 不知道review letter怎么开头比较合适。",
         "pinyin": "Jiàoshòu, wǒ dì yī cì gěi qīkān shěngǎo, bù zhīdào review letter zěnme kāitóu bǐjiào héshì.",
@@ -3319,6 +3356,7 @@ export const lessons: ChineseLesson[] = [
         "vi": "Thưa giáo sư, em lần đầu phản biện cho tạp chí, không biết review letter nên mở đầu thế nào cho phù hợp."
       },
       {
+        cell_id: "f7352bda-9771-4636-b7e6-6f46f554198f",
         "speaker": "资深审稿人",
         "chinese": "标准开头: '笔者已就该手稿展开仔细审读, 现就其学术贡献、方法论及表述三方面, 提供如下评审意见。' 客观、专业、保留余地。",
         "pinyin": "Biāozhǔn kāitóu: 'bǐzhě yǐ jiù gāi shǒugǎo zhǎnkāi zǐxì shěndú, xiàn jiù qí xuéshù gòngxiàn, fāngfǎlùn jí biǎoshù sān fāngmiàn, tígōng rúxià píngshěn yìjiàn.' Kèguān, zhuānyè, bǎoliú yúdì.",
@@ -3326,6 +3364,7 @@ export const lessons: ChineseLesson[] = [
         "vi": "Mở đầu chuẩn: 'Tác giả đã đọc kỹ bản thảo, nay cung cấp ý kiến đánh giá về ba mặt: đóng góp, phương pháp luận, cách trình bày.' Khách quan, chuyên nghiệp, để lại không gian."
       },
       {
+        cell_id: "590f4d0e-5d3b-45e2-a090-820e17e2584c",
         "speaker": "新审稿人",
         "chinese": "如果我觉得这paper完全没救了, 也要这样温和?",
         "pinyin": "Rúguǒ wǒ juéde zhè paper wánquán méi jiùle, yě yào zhèyàng wēnhé?",
@@ -3333,6 +3372,7 @@ export const lessons: ChineseLesson[] = [
         "vi": "Nếu em cảm thấy bài này không cứu được nữa, cũng phải nhẹ nhàng thế à?"
       },
       {
+        cell_id: "d6aca3d9-fe82-4180-be10-ab6e8b3fcc5f",
         "speaker": "资深审稿人",
         "chinese": "尤其要温和。Reject letter如果情绪化, 作者会上诉到editor, 麻烦你。专业的critique让reject站得住脚, 同时尊重作者人格。', 字斟句酌'是核心。",
         "pinyin": "Yóuqí yào wēnhé. Reject letter rúguǒ qíngxùhuà, zuòzhě huì shàngsù dào editor, máfan nǐ. Zhuānyè de critique ràng reject zhàn de zhù jiǎo, tóngshí zūnzhòng zuòzhě réngé. 'Zì zhēn jù zhuó' shì héxīn.",
@@ -3589,10 +3629,10 @@ export const lessons: ChineseLesson[] = [
       { "chinese": "增长空间", "pinyin": "zēng zhǎng kōng jiān", "english": "growth potential", "vi": "dư địa tăng trưởng" }
     ],
     "dialogue": [
-      { "speaker": "候选人", "chinese": "谢谢贵司给我这个offer。我对团队很有兴趣, 但想进一步讨论总薪酬结构。", "pinyin": "Xièxie guìsī gěi wǒ zhège offer. Wǒ duì tuánduì hěn yǒu xìngqù, dàn xiǎng jìnyībù tǎolùn zǒng xīnchóu jiégòu.", "english": "Thank you for the offer. I am very interested in the team, but I would like to discuss the total compensation structure further.", "vi": "Cảm ơn quý công ty đã gửi offer. Tôi rất quan tâm đến đội ngũ, nhưng muốn trao đổi thêm về cơ cấu tổng đãi ngộ." },
-      { "speaker": "HR", "chinese": "当然。您最关心的是底薪、奖金, 还是入职时间?", "pinyin": "Dāngrán. Nín zuì guānxīn de shì dǐxīn, jiǎngjīn, háishì rùzhí shíjiān?", "english": "Of course. Are you most concerned about base salary, bonus, or start date?", "vi": "Tất nhiên. Anh/chị quan tâm nhất đến lương cơ bản, thưởng, hay thời điểm nhận việc?" },
-      { "speaker": "候选人", "chinese": "主要是奖金机制。若季度目标达成, 我希望计算方式能更透明。", "pinyin": "Zhǔyào shì jiǎngjīn jīzhì. Ruò jìdù mùbiāo dáchéng, wǒ xīwàng jìsuàn fāngshì néng gèng tòumíng.", "english": "Mainly the bonus mechanism. If quarterly targets are met, I hope the calculation method can be more transparent.", "vi": "Chủ yếu là cơ chế thưởng. Nếu đạt mục tiêu theo quý, tôi mong cách tính minh bạch hơn." },
-      { "speaker": "HR", "chinese": "理解。我可以把这一点带回去确认, 并在修订版offer里写清楚。", "pinyin": "Lǐjiě. Wǒ kěyǐ bǎ zhè yīdiǎn dài huíqù quèrèn, bìng zài xiūdìngbǎn offer lǐ xiě qīngchu.", "english": "Understood. I can take this back for confirmation and state it clearly in the revised offer.", "vi": "Tôi hiểu. Tôi có thể mang điểm này về xác nhận và ghi rõ trong bản offer sửa đổi." }
+      { cell_id: "9138516b-407d-489c-aee8-2110ab22d24b", "speaker": "候选人", "chinese": "谢谢贵司给我这个offer。我对团队很有兴趣, 但想进一步讨论总薪酬结构。", "pinyin": "Xièxie guìsī gěi wǒ zhège offer. Wǒ duì tuánduì hěn yǒu xìngqù, dàn xiǎng jìnyībù tǎolùn zǒng xīnchóu jiégòu.", "english": "Thank you for the offer. I am very interested in the team, but I would like to discuss the total compensation structure further.", "vi": "Cảm ơn quý công ty đã gửi offer. Tôi rất quan tâm đến đội ngũ, nhưng muốn trao đổi thêm về cơ cấu tổng đãi ngộ." },
+      { cell_id: "33608122-e6ee-4f4d-841b-2f2679403c08", "speaker": "HR", "chinese": "当然。您最关心的是底薪、奖金, 还是入职时间?", "pinyin": "Dāngrán. Nín zuì guānxīn de shì dǐxīn, jiǎngjīn, háishì rùzhí shíjiān?", "english": "Of course. Are you most concerned about base salary, bonus, or start date?", "vi": "Tất nhiên. Anh/chị quan tâm nhất đến lương cơ bản, thưởng, hay thời điểm nhận việc?" },
+      { cell_id: "822078de-6288-4a12-b30e-bc0a77eac513", "speaker": "候选人", "chinese": "主要是奖金机制。若季度目标达成, 我希望计算方式能更透明。", "pinyin": "Zhǔyào shì jiǎngjīn jīzhì. Ruò jìdù mùbiāo dáchéng, wǒ xīwàng jìsuàn fāngshì néng gèng tòumíng.", "english": "Mainly the bonus mechanism. If quarterly targets are met, I hope the calculation method can be more transparent.", "vi": "Chủ yếu là cơ chế thưởng. Nếu đạt mục tiêu theo quý, tôi mong cách tính minh bạch hơn." },
+      { cell_id: "ec9e3dbd-6c21-4af2-9a4d-5ef8c1c91893", "speaker": "HR", "chinese": "理解。我可以把这一点带回去确认, 并在修订版offer里写清楚。", "pinyin": "Lǐjiě. Wǒ kěyǐ bǎ zhè yīdiǎn dài huíqù quèrèn, bìng zài xiūdìngbǎn offer lǐ xiě qīngchu.", "english": "Understood. I can take this back for confirmation and state it clearly in the revised offer.", "vi": "Tôi hiểu. Tôi có thể mang điểm này về xác nhận và ghi rõ trong bản offer sửa đổi." }
     ],
     "exercises": [
       { "type": "fill-blank", "question": "我希望重新讨论总___结构, 尤其是固定薪资与绩效奖金的比例。", "answer": "薪酬" },
@@ -3636,10 +3676,10 @@ export const lessons: ChineseLesson[] = [
       { "chinese": "修订版", "pinyin": "xiū dìng bǎn", "english": "revised version", "vi": "bản sửa đổi" }
     ],
     "dialogue": [
-      { "speaker": "客户", "chinese": "我们希望保留现有违约金条款, 这样对双方都有约束力。", "pinyin": "Wǒmen xīwàng bǎoliú xiànyǒu wéiyuējīn tiáokuǎn, zhèyàng duì shuāngfāng dōu yǒu yuēshùlì.", "english": "We hope to keep the current penalty clause; it creates discipline for both sides.", "vi": "Chúng tôi muốn giữ điều khoản phạt vi phạm hiện tại; như vậy cả hai bên đều có ràng buộc." },
-      { "speaker": "供应方", "chinese": "我们理解这个考虑, 但没有上限的责任会使我们无法签署。", "pinyin": "Wǒmen lǐjiě zhège kǎolǜ, dàn méiyǒu shàngxiàn de zérèn huì shǐ wǒmen wúfǎ qiānshǔ.", "english": "We understand that consideration, but uncapped liability would make it impossible for us to sign.", "vi": "Chúng tôi hiểu cân nhắc đó, nhưng trách nhiệm không giới hạn sẽ khiến chúng tôi không thể ký." },
-      { "speaker": "客户", "chinese": "那你们可以接受什么样的上限?", "pinyin": "Nà nǐmen kěyǐ jiēshòu shénme yàng de shàngxiàn?", "english": "What kind of cap could you accept?", "vi": "Vậy mức trần nào thì phía anh/chị có thể chấp nhận?" },
-      { "speaker": "供应方", "chinese": "我们建议以上一季度已付款项为上限, 并把严重疏忽单独列明。", "pinyin": "Wǒmen jiànyì yǐ shàng yī jìdù yǐ fù kuǎnxiàng wéi shàngxiàn, bìng bǎ yánzhòng shūhū dāndú lièmíng.", "english": "We suggest using the previous quarter's paid fees as the cap, and listing gross negligence separately.", "vi": "Chúng tôi đề nghị lấy khoản đã thanh toán của quý trước làm mức trần, và liệt kê riêng trường hợp sơ suất nghiêm trọng." }
+      { cell_id: "b410eeb2-856e-4f86-84f7-d6e12ef4374b", "speaker": "客户", "chinese": "我们希望保留现有违约金条款, 这样对双方都有约束力。", "pinyin": "Wǒmen xīwàng bǎoliú xiànyǒu wéiyuējīn tiáokuǎn, zhèyàng duì shuāngfāng dōu yǒu yuēshùlì.", "english": "We hope to keep the current penalty clause; it creates discipline for both sides.", "vi": "Chúng tôi muốn giữ điều khoản phạt vi phạm hiện tại; như vậy cả hai bên đều có ràng buộc." },
+      { cell_id: "4fdd8005-a616-4e55-a155-28c19efd5d42", "speaker": "供应方", "chinese": "我们理解这个考虑, 但没有上限的责任会使我们无法签署。", "pinyin": "Wǒmen lǐjiě zhège kǎolǜ, dàn méiyǒu shàngxiàn de zérèn huì shǐ wǒmen wúfǎ qiānshǔ.", "english": "We understand that consideration, but uncapped liability would make it impossible for us to sign.", "vi": "Chúng tôi hiểu cân nhắc đó, nhưng trách nhiệm không giới hạn sẽ khiến chúng tôi không thể ký." },
+      { cell_id: "1a015405-f4f7-40f3-ba0a-9725ea474de1", "speaker": "客户", "chinese": "那你们可以接受什么样的上限?", "pinyin": "Nà nǐmen kěyǐ jiēshòu shénme yàng de shàngxiàn?", "english": "What kind of cap could you accept?", "vi": "Vậy mức trần nào thì phía anh/chị có thể chấp nhận?" },
+      { cell_id: "a2de2190-a5a9-457e-b2d9-9b390b4219f8", "speaker": "供应方", "chinese": "我们建议以上一季度已付款项为上限, 并把严重疏忽单独列明。", "pinyin": "Wǒmen jiànyì yǐ shàng yī jìdù yǐ fù kuǎnxiàng wéi shàngxiàn, bìng bǎ yánzhòng shūhū dāndú lièmíng.", "english": "We suggest using the previous quarter's paid fees as the cap, and listing gross negligence separately.", "vi": "Chúng tôi đề nghị lấy khoản đã thanh toán của quý trước làm mức trần, và liệt kê riêng trường hợp sơ suất nghiêm trọng." }
     ],
     "exercises": [
       { "type": "fill-blank", "question": "如果责任没有___, 我们内部很难批准这份合约。", "answer": "上限" },
@@ -3683,10 +3723,10 @@ export const lessons: ChineseLesson[] = [
       { "chinese": "会议纪要", "pinyin": "huì yì jì yào", "english": "meeting minutes", "vi": "biên bản cuộc họp" }
     ],
     "dialogue": [
-      { "speaker": "主持人", "chinese": "我们先确认共同目标: 这个项目要按时上线, 同时控制额外成本。", "pinyin": "Wǒmen xiān quèrèn gòngtóng mùbiāo: zhège xiàngmù yào ànshí shàngxiàn, tóngshí kòngzhì éwài chéngběn.", "english": "Let's first confirm the shared goal: the project should launch on time while controlling extra cost.", "vi": "Trước tiên hãy xác nhận mục tiêu chung: dự án cần lên đúng hạn, đồng thời kiểm soát chi phí phát sinh." },
-      { "speaker": "客户", "chinese": "我们最担心的是上线时间, 因为市场活动已经排好了。", "pinyin": "Wǒmen zuì dānxīn de shì shàngxiàn shíjiān, yīnwèi shìchǎng huódòng yǐjīng pái hǎo le.", "english": "Our biggest concern is launch timing, because the marketing campaign is already scheduled.", "vi": "Điều chúng tôi lo nhất là thời điểm lên sản phẩm, vì chiến dịch marketing đã được xếp lịch." },
-      { "speaker": "供应方", "chinese": "我们可以保证核心功能, 但新增功能需要调整范围或预算。", "pinyin": "Wǒmen kěyǐ bǎozhèng héxīn gōngnéng, dàn xīnzēng gōngnéng xūyào tiáozhěng fànwéi huò yùsuàn.", "english": "We can guarantee core features, but new features require adjusting scope or budget.", "vi": "Chúng tôi có thể bảo đảm chức năng cốt lõi, nhưng tính năng mới cần điều chỉnh phạm vi hoặc ngân sách." },
-      { "speaker": "主持人", "chinese": "好, 我把这个记录为待确认事项: 范围不变则预算调整, 预算不变则范围调整。", "pinyin": "Hǎo, wǒ bǎ zhège jìlù wéi dài quèrèn shìxiàng: fànwéi bú biàn zé yùsuàn tiáozhěng, yùsuàn bú biàn zé fànwéi tiáozhěng.", "english": "Good, I will record this as an item to confirm: if scope stays unchanged, budget adjusts; if budget stays unchanged, scope adjusts.", "vi": "Được, tôi ghi điểm này là mục cần xác nhận: nếu phạm vi không đổi thì ngân sách điều chỉnh; nếu ngân sách không đổi thì phạm vi điều chỉnh." }
+      { cell_id: "17ab94c7-4604-4a16-8060-9a917c8d629d", "speaker": "主持人", "chinese": "我们先确认共同目标: 这个项目要按时上线, 同时控制额外成本。", "pinyin": "Wǒmen xiān quèrèn gòngtóng mùbiāo: zhège xiàngmù yào ànshí shàngxiàn, tóngshí kòngzhì éwài chéngběn.", "english": "Let's first confirm the shared goal: the project should launch on time while controlling extra cost.", "vi": "Trước tiên hãy xác nhận mục tiêu chung: dự án cần lên đúng hạn, đồng thời kiểm soát chi phí phát sinh." },
+      { cell_id: "9afb59e6-e2d5-42e3-8957-656f42d958e0", "speaker": "客户", "chinese": "我们最担心的是上线时间, 因为市场活动已经排好了。", "pinyin": "Wǒmen zuì dānxīn de shì shàngxiàn shíjiān, yīnwèi shìchǎng huódòng yǐjīng pái hǎo le.", "english": "Our biggest concern is launch timing, because the marketing campaign is already scheduled.", "vi": "Điều chúng tôi lo nhất là thời điểm lên sản phẩm, vì chiến dịch marketing đã được xếp lịch." },
+      { cell_id: "f82a3602-929a-442d-a8d0-ecb03826c641", "speaker": "供应方", "chinese": "我们可以保证核心功能, 但新增功能需要调整范围或预算。", "pinyin": "Wǒmen kěyǐ bǎozhèng héxīn gōngnéng, dàn xīnzēng gōngnéng xūyào tiáozhěng fànwéi huò yùsuàn.", "english": "We can guarantee core features, but new features require adjusting scope or budget.", "vi": "Chúng tôi có thể bảo đảm chức năng cốt lõi, nhưng tính năng mới cần điều chỉnh phạm vi hoặc ngân sách." },
+      { cell_id: "e89df0e5-9ee2-446b-bb84-fc5345319c1f", "speaker": "主持人", "chinese": "好, 我把这个记录为待确认事项: 范围不变则预算调整, 预算不变则范围调整。", "pinyin": "Hǎo, wǒ bǎ zhège jìlù wéi dài quèrèn shìxiàng: fànwéi bú biàn zé yùsuàn tiáozhěng, yùsuàn bú biàn zé fànwéi tiáozhěng.", "english": "Good, I will record this as an item to confirm: if scope stays unchanged, budget adjusts; if budget stays unchanged, scope adjusts.", "vi": "Được, tôi ghi điểm này là mục cần xác nhận: nếu phạm vi không đổi thì ngân sách điều chỉnh; nếu ngân sách không đổi thì phạm vi điều chỉnh." }
     ],
     "exercises": [
       { "type": "fill-blank", "question": "目前我们已经形成两项初步___, 剩下的问题集中在价格和交付时间。", "answer": "共识" },
@@ -3730,10 +3770,10 @@ export const lessons: ChineseLesson[] = [
       { "chinese": "付款条件", "pinyin": "fù kuǎn tiáo jiàn", "english": "payment terms", "vi": "điều kiện thanh toán" }
     ],
     "dialogue": [
-      { "speaker": "采购经理", "chinese": "这次报价比去年高不少, 能否说明主要成本变化?", "pinyin": "Zhècì bàojià bǐ qùnián gāo bù shǎo, néngfǒu shuōmíng zhǔyào chéngběn biànhuà?", "english": "This quotation is much higher than last year. Could you explain the main cost changes?", "vi": "Báo giá lần này cao hơn năm ngoái khá nhiều. Anh/chị có thể giải thích các thay đổi chi phí chính không?" },
-      { "speaker": "供应商", "chinese": "主要是原材料和物流成本上涨, 我们也承受了不少压力。", "pinyin": "Zhǔyào shì yuáncáiliào hé wùliú chéngběn shàngzhǎng, wǒmen yě chéngshòule bù shǎo yālì.", "english": "Mainly raw materials and logistics costs have increased; we are under considerable pressure as well.", "vi": "Chủ yếu là chi phí nguyên vật liệu và logistics tăng, phía chúng tôi cũng chịu áp lực không nhỏ." },
-      { "speaker": "采购经理", "chinese": "理解。若我们承诺年度采购量, 单价是否还有调整空间?", "pinyin": "Lǐjiě. Ruò wǒmen chéngnuò niándù cǎigòu liàng, dānjià shìfǒu hái yǒu tiáozhěng kōngjiān?", "english": "Understood. If we commit to annual volume, is there still room to adjust unit price?", "vi": "Tôi hiểu. Nếu chúng tôi cam kết sản lượng hằng năm, đơn giá còn không gian điều chỉnh không?" },
-      { "speaker": "供应商", "chinese": "如果订单分三批确认, 我们可以给出阶梯折扣。", "pinyin": "Rúguǒ dìngdān fēn sān pī quèrèn, wǒmen kěyǐ gěi chū jiētī zhékòu.", "english": "If the orders are confirmed in three batches, we can offer tiered discounts.", "vi": "Nếu đơn hàng được xác nhận thành ba lô, chúng tôi có thể đưa ra chiết khấu bậc thang." }
+      { cell_id: "332e56cd-2df1-4af3-a508-29a7a3da68f7", "speaker": "采购经理", "chinese": "这次报价比去年高不少, 能否说明主要成本变化?", "pinyin": "Zhècì bàojià bǐ qùnián gāo bù shǎo, néngfǒu shuōmíng zhǔyào chéngběn biànhuà?", "english": "This quotation is much higher than last year. Could you explain the main cost changes?", "vi": "Báo giá lần này cao hơn năm ngoái khá nhiều. Anh/chị có thể giải thích các thay đổi chi phí chính không?" },
+      { cell_id: "0ca0b916-a680-43cb-8033-daabd06386fe", "speaker": "供应商", "chinese": "主要是原材料和物流成本上涨, 我们也承受了不少压力。", "pinyin": "Zhǔyào shì yuáncáiliào hé wùliú chéngběn shàngzhǎng, wǒmen yě chéngshòule bù shǎo yālì.", "english": "Mainly raw materials and logistics costs have increased; we are under considerable pressure as well.", "vi": "Chủ yếu là chi phí nguyên vật liệu và logistics tăng, phía chúng tôi cũng chịu áp lực không nhỏ." },
+      { cell_id: "611e692f-b164-4f05-91c1-4bb5bebb749f", "speaker": "采购经理", "chinese": "理解。若我们承诺年度采购量, 单价是否还有调整空间?", "pinyin": "Lǐjiě. Ruò wǒmen chéngnuò niándù cǎigòu liàng, dānjià shìfǒu hái yǒu tiáozhěng kōngjiān?", "english": "Understood. If we commit to annual volume, is there still room to adjust unit price?", "vi": "Tôi hiểu. Nếu chúng tôi cam kết sản lượng hằng năm, đơn giá còn không gian điều chỉnh không?" },
+      { cell_id: "6564d329-4890-4016-95de-7aa228f595f2", "speaker": "供应商", "chinese": "如果订单分三批确认, 我们可以给出阶梯折扣。", "pinyin": "Rúguǒ dìngdān fēn sān pī quèrèn, wǒmen kěyǐ gěi chū jiētī zhékòu.", "english": "If the orders are confirmed in three batches, we can offer tiered discounts.", "vi": "Nếu đơn hàng được xác nhận thành ba lô, chúng tôi có thể đưa ra chiết khấu bậc thang." }
     ],
     "exercises": [
       { "type": "fill-blank", "question": "我们并非单纯___, 而是希望综合评估价格、交期和服务水平。", "answer": "压价" },
@@ -3777,10 +3817,10 @@ export const lessons: ChineseLesson[] = [
       { "chinese": "持续汇报", "pinyin": "chí xù huì bào", "english": "keep reporting", "vi": "tiếp tục báo cáo" }
     ],
     "dialogue": [
-      { "speaker": "经理", "chinese": "我希望这个版本月底上线, 所有功能都要包含。", "pinyin": "Wǒ xīwàng zhège bǎnběn yuèdǐ shàngxiàn, suǒyǒu gōngnéng dōu yào bāohán.", "english": "I want this version launched by month-end with all features included.", "vi": "Tôi muốn phiên bản này lên vào cuối tháng, bao gồm toàn bộ chức năng." },
-      { "speaker": "员工", "chinese": "我理解目标, 但以目前资源来看, 这样做可能会牺牲交付质量。", "pinyin": "Wǒ lǐjiě mùbiāo, dàn yǐ mùqián zīyuán lái kàn, zhèyàng zuò kěnéng huì xīshēng jiāofù zhìliàng.", "english": "I understand the goal, but with current resources, doing so may sacrifice delivery quality.", "vi": "Tôi hiểu mục tiêu, nhưng với nguồn lực hiện tại, làm vậy có thể phải hy sinh chất lượng bàn giao." },
-      { "speaker": "经理", "chinese": "那你的替代方案是什么?", "pinyin": "Nà nǐ de tìdài fāng'àn shì shénme?", "english": "What is your alternative proposal?", "vi": "Vậy phương án thay thế của bạn là gì?" },
-      { "speaker": "员工", "chinese": "保留核心功能按时上线, 其他功能列入第二阶段, 我明天给您风险对照表。", "pinyin": "Bǎoliú héxīn gōngnéng ànshí shàngxiàn, qítā gōngnéng lièrù dì èr jiēduàn, wǒ míngtiān gěi nín fēngxiǎn duìzhào biǎo.", "english": "Launch core features on time, move the others to phase two, and I will give you a risk comparison table tomorrow.", "vi": "Giữ chức năng cốt lõi lên đúng hạn, đưa các chức năng khác vào giai đoạn hai, và ngày mai tôi gửi anh/chị bảng đối chiếu rủi ro." }
+      { cell_id: "737e6745-3629-4ef6-9f7d-07c2cae57f13", "speaker": "经理", "chinese": "我希望这个版本月底上线, 所有功能都要包含。", "pinyin": "Wǒ xīwàng zhège bǎnběn yuèdǐ shàngxiàn, suǒyǒu gōngnéng dōu yào bāohán.", "english": "I want this version launched by month-end with all features included.", "vi": "Tôi muốn phiên bản này lên vào cuối tháng, bao gồm toàn bộ chức năng." },
+      { cell_id: "a7d763ed-08f6-43f1-a740-25c450bfc8f1", "speaker": "员工", "chinese": "我理解目标, 但以目前资源来看, 这样做可能会牺牲交付质量。", "pinyin": "Wǒ lǐjiě mùbiāo, dàn yǐ mùqián zīyuán lái kàn, zhèyàng zuò kěnéng huì xīshēng jiāofù zhìliàng.", "english": "I understand the goal, but with current resources, doing so may sacrifice delivery quality.", "vi": "Tôi hiểu mục tiêu, nhưng với nguồn lực hiện tại, làm vậy có thể phải hy sinh chất lượng bàn giao." },
+      { cell_id: "c2cff7d0-dbb8-4ab9-a4f7-524e230f342e", "speaker": "经理", "chinese": "那你的替代方案是什么?", "pinyin": "Nà nǐ de tìdài fāng'àn shì shénme?", "english": "What is your alternative proposal?", "vi": "Vậy phương án thay thế của bạn là gì?" },
+      { cell_id: "16aa921b-e9dd-475b-a123-4f5a8cadb894", "speaker": "员工", "chinese": "保留核心功能按时上线, 其他功能列入第二阶段, 我明天给您风险对照表。", "pinyin": "Bǎoliú héxīn gōngnéng ànshí shàngxiàn, qítā gōngnéng lièrù dì èr jiēduàn, wǒ míngtiān gěi nín fēngxiǎn duìzhào biǎo.", "english": "Launch core features on time, move the others to phase two, and I will give you a risk comparison table tomorrow.", "vi": "Giữ chức năng cốt lõi lên đúng hạn, đưa các chức năng khác vào giai đoạn hai, và ngày mai tôi gửi anh/chị bảng đối chiếu rủi ro." }
     ],
     "exercises": [
       { "type": "fill-blank", "question": "我不是反对目标本身, 而是担心资源___不足会影响交付质量。", "answer": "配置" },
@@ -3824,10 +3864,10 @@ export const lessons: ChineseLesson[] = [
       { "chinese": "口头善意", "pinyin": "kǒu tóu shàn yì", "english": "verbal goodwill", "vi": "thiện chí bằng lời" }
     ],
     "dialogue": [
-      { "speaker": "越南经理", "chinese": "刚才对方一直说'可以再研究', 这算同意了吗?", "pinyin": "Gāngcái duìfāng yìzhí shuō 'kěyǐ zài yánjiū', zhè suàn tóngyì le ma?", "english": "They kept saying 'we can study it further.' Does that count as agreement?", "vi": "Nãy giờ họ cứ nói 'có thể nghiên cứu thêm', vậy có tính là đồng ý không?" },
-      { "speaker": "顾问", "chinese": "不一定。这种说法比较含蓄, 可能是保留空间, 也可能是礼貌拒绝。", "pinyin": "Bù yídìng. Zhè zhǒng shuōfǎ bǐjiào hánxù, kěnéng shì bǎoliú kōngjiān, yě kěnéng shì lǐmào jùjué.", "english": "Not necessarily. That wording is indirect; it may preserve room, or it may be a polite refusal.", "vi": "Chưa chắc. Cách nói này khá hàm ý; có thể là giữ không gian, cũng có thể là từ chối lịch sự." },
-      { "speaker": "越南经理", "chinese": "那我应该怎么跟进?", "pinyin": "Nà wǒ yīnggāi zěnme gēnjìn?", "english": "How should I follow up?", "vi": "Vậy tôi nên theo dõi tiếp thế nào?" },
-      { "speaker": "顾问", "chinese": "会后发一封邮件, 把你理解的共识列出来, 请他们修正或确认。", "pinyin": "Huì hòu fā yī fēng yóujiàn, bǎ nǐ lǐjiě de gòngshí liè chūlái, qǐng tāmen xiūzhèng huò quèrèn.", "english": "Send an email after the meeting listing your understanding of the consensus, and ask them to correct or confirm it.", "vi": "Sau họp gửi một email, liệt kê các điểm đồng thuận theo cách hiểu của bạn, rồi mời họ sửa hoặc xác nhận." }
+      { cell_id: "1619a71e-7307-47aa-aa8b-e02ce6bf95a7", "speaker": "越南经理", "chinese": "刚才对方一直说'可以再研究', 这算同意了吗?", "pinyin": "Gāngcái duìfāng yìzhí shuō 'kěyǐ zài yánjiū', zhè suàn tóngyì le ma?", "english": "They kept saying 'we can study it further.' Does that count as agreement?", "vi": "Nãy giờ họ cứ nói 'có thể nghiên cứu thêm', vậy có tính là đồng ý không?" },
+      { cell_id: "9da588c3-0406-4383-9ccc-b27b68ebb28c", "speaker": "顾问", "chinese": "不一定。这种说法比较含蓄, 可能是保留空间, 也可能是礼貌拒绝。", "pinyin": "Bù yídìng. Zhè zhǒng shuōfǎ bǐjiào hánxù, kěnéng shì bǎoliú kōngjiān, yě kěnéng shì lǐmào jùjué.", "english": "Not necessarily. That wording is indirect; it may preserve room, or it may be a polite refusal.", "vi": "Chưa chắc. Cách nói này khá hàm ý; có thể là giữ không gian, cũng có thể là từ chối lịch sự." },
+      { cell_id: "fba89ae1-629f-43c5-aa4b-9b8f8c22cb8f", "speaker": "越南经理", "chinese": "那我应该怎么跟进?", "pinyin": "Nà wǒ yīnggāi zěnme gēnjìn?", "english": "How should I follow up?", "vi": "Vậy tôi nên theo dõi tiếp thế nào?" },
+      { cell_id: "fad1841a-dafc-4998-8702-8055b844d1bc", "speaker": "顾问", "chinese": "会后发一封邮件, 把你理解的共识列出来, 请他们修正或确认。", "pinyin": "Huì hòu fā yī fēng yóujiàn, bǎ nǐ lǐjiě de gòngshí liè chūlái, qǐng tāmen xiūzhèng huò quèrèn.", "english": "Send an email after the meeting listing your understanding of the consensus, and ask them to correct or confirm it.", "vi": "Sau họp gửi một email, liệt kê các điểm đồng thuận theo cách hiểu của bạn, rồi mời họ sửa hoặc xác nhận." }
     ],
     "exercises": [
       { "type": "fill-blank", "question": "若对方表达得比较___, 不宜立刻理解为同意。", "answer": "含蓄" },
@@ -3871,10 +3911,10 @@ export const lessons: ChineseLesson[] = [
       { "chinese": "重复发生", "pinyin": "chóng fù fā shēng", "english": "recurrence", "vi": "lặp lại" }
     ],
     "dialogue": [
-      { "speaker": "HR", "chinese": "我们今天先聚焦事实, 不讨论个人动机。", "pinyin": "Wǒmen jīntiān xiān jùjiāo shìshí, bù tǎolùn gèrén dòngjī.", "english": "Today we will focus on facts first and not discuss personal motives.", "vi": "Hôm nay chúng ta tập trung vào sự kiện trước, không bàn động cơ cá nhân." },
-      { "speaker": "员工A", "chinese": "我可以接受, 但希望我的邮件记录被纳入材料。", "pinyin": "Wǒ kěyǐ jiēshòu, dàn xīwàng wǒ de yóujiàn jìlù bèi nàrù cáiliào.", "english": "I can accept that, but I hope my email records are included in the materials.", "vi": "Tôi có thể chấp nhận, nhưng mong hồ sơ email của tôi được đưa vào tài liệu." },
-      { "speaker": "员工B", "chinese": "我也希望会议纪要能准确记录我的说明。", "pinyin": "Wǒ yě xīwàng huìyì jìyào néng zhǔnquè jìlù wǒ de shuōmíng.", "english": "I also hope the meeting minutes accurately record my explanation.", "vi": "Tôi cũng mong biên bản họp ghi chính xác phần giải thích của tôi." },
-      { "speaker": "HR", "chinese": "可以。会后我会发给双方确认, 再进入下一步程序。", "pinyin": "Kěyǐ. Huì hòu wǒ huì fā gěi shuāngfāng quèrèn, zài jìnrù xià yī bù chéngxù.", "english": "Yes. After the meeting I will send it to both sides for confirmation before moving to the next step.", "vi": "Được. Sau cuộc họp tôi sẽ gửi cho hai bên xác nhận, rồi mới đi vào bước tiếp theo." }
+      { cell_id: "42530575-c1d9-457d-8de8-db8cfceec59e", "speaker": "HR", "chinese": "我们今天先聚焦事实, 不讨论个人动机。", "pinyin": "Wǒmen jīntiān xiān jùjiāo shìshí, bù tǎolùn gèrén dòngjī.", "english": "Today we will focus on facts first and not discuss personal motives.", "vi": "Hôm nay chúng ta tập trung vào sự kiện trước, không bàn động cơ cá nhân." },
+      { cell_id: "d7db2613-5074-419d-bb92-58dc06bfff30", "speaker": "员工A", "chinese": "我可以接受, 但希望我的邮件记录被纳入材料。", "pinyin": "Wǒ kěyǐ jiēshòu, dàn xīwàng wǒ de yóujiàn jìlù bèi nàrù cáiliào.", "english": "I can accept that, but I hope my email records are included in the materials.", "vi": "Tôi có thể chấp nhận, nhưng mong hồ sơ email của tôi được đưa vào tài liệu." },
+      { cell_id: "659878c2-a25d-4fc0-97e3-aaa3156ca286", "speaker": "员工B", "chinese": "我也希望会议纪要能准确记录我的说明。", "pinyin": "Wǒ yě xīwàng huìyì jìyào néng zhǔnquè jìlù wǒ de shuōmíng.", "english": "I also hope the meeting minutes accurately record my explanation.", "vi": "Tôi cũng mong biên bản họp ghi chính xác phần giải thích của tôi." },
+      { cell_id: "882990df-d0f5-4b35-97a9-121d71e4da4a", "speaker": "HR", "chinese": "可以。会后我会发给双方确认, 再进入下一步程序。", "pinyin": "Kěyǐ. Huì hòu wǒ huì fā gěi shuāngfāng quèrèn, zài jìnrù xià yī bù chéngxù.", "english": "Yes. After the meeting I will send it to both sides for confirmation before moving to the next step.", "vi": "Được. Sau cuộc họp tôi sẽ gửi cho hai bên xác nhận, rồi mới đi vào bước tiếp theo." }
     ],
     "exercises": [
       { "type": "fill-blank", "question": "所有陈述都应附上可核实___, 包括邮件和会议纪要。", "answer": "证据" },
@@ -3918,10 +3958,10 @@ export const lessons: ChineseLesson[] = [
       { "chinese": "商业判断", "pinyin": "shāng yè pàn duàn", "english": "business judgment", "vi": "phán đoán kinh doanh" }
     ],
     "dialogue": [
-      { "speaker": "买方", "chinese": "我们讨论了三轮, 但价格和交期仍然差距很大。", "pinyin": "Wǒmen tǎolùn le sān lún, dàn jiàgé hé jiāoqī réngrán chājù hěn dà.", "english": "We have discussed for three rounds, but price and delivery timeline still differ greatly.", "vi": "Chúng ta đã thảo luận ba vòng, nhưng giá và thời hạn giao hàng vẫn chênh lệch rất lớn." },
-      { "speaker": "卖方", "chinese": "您的意思是暂时不继续推进?", "pinyin": "Nín de yìsi shì zànshí bù jìxù tuījìn?", "english": "Do you mean not moving forward for now?", "vi": "Ý anh/chị là tạm thời không tiếp tục thúc đẩy nữa?" },
-      { "speaker": "买方", "chinese": "是的。但我们希望记录为暂缓, 不是关闭合作可能。", "pinyin": "Shì de. Dàn wǒmen xīwàng jìlù wéi zànhuǎn, bú shì guānbì hézuò kěnéng.", "english": "Yes. But we hope to record it as paused, not as closing the possibility of cooperation.", "vi": "Đúng vậy. Nhưng chúng tôi muốn ghi nhận là tạm hoãn, không phải đóng khả năng hợp tác." },
-      { "speaker": "卖方", "chinese": "理解。若条件变化, 我们再基于新范围重新沟通。", "pinyin": "Lǐjiě. Ruò tiáojiàn biànhuà, wǒmen zài jīyú xīn fànwéi chóngxīn gōutōng.", "english": "Understood. If conditions change, we can reconnect based on the new scope.", "vi": "Tôi hiểu. Nếu điều kiện thay đổi, chúng ta sẽ trao đổi lại dựa trên phạm vi mới." }
+      { cell_id: "1285ee49-d698-4ada-a7bc-bdd25fb2d883", "speaker": "买方", "chinese": "我们讨论了三轮, 但价格和交期仍然差距很大。", "pinyin": "Wǒmen tǎolùn le sān lún, dàn jiàgé hé jiāoqī réngrán chājù hěn dà.", "english": "We have discussed for three rounds, but price and delivery timeline still differ greatly.", "vi": "Chúng ta đã thảo luận ba vòng, nhưng giá và thời hạn giao hàng vẫn chênh lệch rất lớn." },
+      { cell_id: "a8f317cd-9354-4399-8084-966e1b91d96c", "speaker": "卖方", "chinese": "您的意思是暂时不继续推进?", "pinyin": "Nín de yìsi shì zànshí bù jìxù tuījìn?", "english": "Do you mean not moving forward for now?", "vi": "Ý anh/chị là tạm thời không tiếp tục thúc đẩy nữa?" },
+      { cell_id: "5e167f45-6094-4ed6-b856-bbc72eb284d7", "speaker": "买方", "chinese": "是的。但我们希望记录为暂缓, 不是关闭合作可能。", "pinyin": "Shì de. Dàn wǒmen xīwàng jìlù wéi zànhuǎn, bú shì guānbì hézuò kěnéng.", "english": "Yes. But we hope to record it as paused, not as closing the possibility of cooperation.", "vi": "Đúng vậy. Nhưng chúng tôi muốn ghi nhận là tạm hoãn, không phải đóng khả năng hợp tác." },
+      { cell_id: "a74bc9d1-3afc-48d0-8391-9a4f1fe36afc", "speaker": "卖方", "chinese": "理解。若条件变化, 我们再基于新范围重新沟通。", "pinyin": "Lǐjiě. Ruò tiáojiàn biànhuà, wǒmen zài jīyú xīn fànwéi chóngxīn gōutōng.", "english": "Understood. If conditions change, we can reconnect based on the new scope.", "vi": "Tôi hiểu. Nếu điều kiện thay đổi, chúng ta sẽ trao đổi lại dựa trên phạm vi mới." }
     ],
     "exercises": [
       { "type": "fill-blank", "question": "继续投入时间可能会产生更高___成本。", "answer": "机会" },
@@ -3965,10 +4005,10 @@ export const lessons: ChineseLesson[] = [
       { "chinese": "第二阶段", "pinyin": "dì èr jiē duàn", "english": "phase two", "vi": "giai đoạn hai" }
     ],
     "dialogue": [
-      { "speaker": "客户", "chinese": "我们的预算只有这个数, 希望你们尽量配合。", "pinyin": "Wǒmen de yùsuàn zhǐyǒu zhège shù, xīwàng nǐmen jìnliàng pèihé.", "english": "Our budget is only this amount. We hope you can cooperate as much as possible.", "vi": "Ngân sách của chúng tôi chỉ có mức này, mong phía anh/chị cố gắng phối hợp." },
-      { "speaker": "服务方", "chinese": "谢谢您坦率说明。这个预算低于完整交付的成本线。", "pinyin": "Xièxie nín tǎnshuài shuōmíng. Zhège yùsuàn dī yú wánzhěng jiāofù de chéngběn xiàn.", "english": "Thank you for explaining frankly. This budget is below the cost line for full delivery.", "vi": "Cảm ơn anh/chị đã thẳng thắn nói rõ. Ngân sách này thấp hơn đường chi phí cho việc bàn giao đầy đủ." },
-      { "speaker": "客户", "chinese": "那有没有折中的做法?", "pinyin": "Nà yǒu méiyǒu zhézhōng de zuòfǎ?", "english": "Is there a compromise approach?", "vi": "Vậy có cách dung hòa nào không?" },
-      { "speaker": "服务方", "chinese": "可以。我们保留核心服务, 暂缓两个模块, 这样既照顾预算, 也不牺牲质量。", "pinyin": "Kěyǐ. Wǒmen bǎoliú héxīn fúwù, zànhuǎn liǎng gè mókuài, zhèyàng jì zhàogù yùsuàn, yě bù xīshēng zhìliàng.", "english": "Yes. We keep the core service and pause two modules, which respects the budget without sacrificing quality.", "vi": "Có. Chúng tôi giữ dịch vụ cốt lõi, tạm hoãn hai module; như vậy vừa cân nhắc ngân sách, vừa không hy sinh chất lượng." }
+      { cell_id: "5bcad0ca-778b-4a59-964b-c3ac07c2e7f2", "speaker": "客户", "chinese": "我们的预算只有这个数, 希望你们尽量配合。", "pinyin": "Wǒmen de yùsuàn zhǐyǒu zhège shù, xīwàng nǐmen jìnliàng pèihé.", "english": "Our budget is only this amount. We hope you can cooperate as much as possible.", "vi": "Ngân sách của chúng tôi chỉ có mức này, mong phía anh/chị cố gắng phối hợp." },
+      { cell_id: "6e456604-7cb8-4de1-b34e-c046f4cb33c3", "speaker": "服务方", "chinese": "谢谢您坦率说明。这个预算低于完整交付的成本线。", "pinyin": "Xièxie nín tǎnshuài shuōmíng. Zhège yùsuàn dī yú wánzhěng jiāofù de chéngběn xiàn.", "english": "Thank you for explaining frankly. This budget is below the cost line for full delivery.", "vi": "Cảm ơn anh/chị đã thẳng thắn nói rõ. Ngân sách này thấp hơn đường chi phí cho việc bàn giao đầy đủ." },
+      { cell_id: "a57f514c-4d45-49d5-8ab5-30c87700f785", "speaker": "客户", "chinese": "那有没有折中的做法?", "pinyin": "Nà yǒu méiyǒu zhézhōng de zuòfǎ?", "english": "Is there a compromise approach?", "vi": "Vậy có cách dung hòa nào không?" },
+      { cell_id: "bbb370b6-82b8-4444-97b2-480ddef60c6a", "speaker": "服务方", "chinese": "可以。我们保留核心服务, 暂缓两个模块, 这样既照顾预算, 也不牺牲质量。", "pinyin": "Kěyǐ. Wǒmen bǎoliú héxīn fúwù, zànhuǎn liǎng gè mókuài, zhèyàng jì zhàogù yùsuàn, yě bù xīshēng zhìliàng.", "english": "Yes. We keep the core service and pause two modules, which respects the budget without sacrificing quality.", "vi": "Có. Chúng tôi giữ dịch vụ cốt lõi, tạm hoãn hai module; như vậy vừa cân nhắc ngân sách, vừa không hy sinh chất lượng." }
     ],
     "exercises": [
       { "type": "fill-blank", "question": "这个报价低于我们可持续交付的___线。", "answer": "成本" },
@@ -4012,10 +4052,10 @@ export const lessons: ChineseLesson[] = [
       { "chinese": "第三方", "pinyin": "dì sān fāng", "english": "third party", "vi": "bên thứ ba" }
     ],
     "dialogue": [
-      { "speaker": "对方", "chinese": "你们一直拖延, 现在还要求修改条款, 这很难接受。", "pinyin": "Nǐmen yìzhí tuōyán, xiànzài hái yāoqiú xiūgǎi tiáokuǎn, zhè hěn nán jiēshòu.", "english": "You have been delaying, and now you still ask to modify terms. This is hard to accept.", "vi": "Phía anh/chị cứ kéo dài, giờ còn yêu cầu sửa điều khoản, điều này rất khó chấp nhận." },
-      { "speaker": "我方", "chinese": "我听到您的不满。为了处理问题, 我们先把争议点拆开看。", "pinyin": "Wǒ tīng dào nín de bùmǎn. Wèile chǔlǐ wèntí, wǒmen xiān bǎ zhēngyì diǎn chāi kāi kàn.", "english": "I hear your dissatisfaction. To handle the issue, let's first separate the disputed points.", "vi": "Tôi nghe thấy sự không hài lòng của anh/chị. Để xử lý vấn đề, trước hết ta tách các điểm tranh cãi ra." },
-      { "speaker": "对方", "chinese": "你们是不是根本不想合作?", "pinyin": "Nǐmen shì bú shì gēnběn bù xiǎng hézuò?", "english": "Do you actually not want to cooperate at all?", "vi": "Có phải phía anh/chị căn bản không muốn hợp tác không?" },
-      { "speaker": "我方", "chinese": "我们仍希望合作, 但需要先确认事实和底线。若有必要, 可以请第三方协助主持。", "pinyin": "Wǒmen réng xīwàng hézuò, dàn xūyào xiān quèrèn shìshí hé dǐxiàn. Ruò yǒu bìyào, kěyǐ qǐng dìsānfāng xiézhù zhǔchí.", "english": "We still hope to cooperate, but we need to confirm facts and bottom lines first. If necessary, we can invite a third party to facilitate.", "vi": "Chúng tôi vẫn mong hợp tác, nhưng cần xác nhận sự thật và ranh giới trước. Nếu cần, có thể mời bên thứ ba hỗ trợ chủ trì." }
+      { cell_id: "899ba17e-eacf-43c7-8cd7-4e95e0622b4c", "speaker": "对方", "chinese": "你们一直拖延, 现在还要求修改条款, 这很难接受。", "pinyin": "Nǐmen yìzhí tuōyán, xiànzài hái yāoqiú xiūgǎi tiáokuǎn, zhè hěn nán jiēshòu.", "english": "You have been delaying, and now you still ask to modify terms. This is hard to accept.", "vi": "Phía anh/chị cứ kéo dài, giờ còn yêu cầu sửa điều khoản, điều này rất khó chấp nhận." },
+      { cell_id: "7273f842-df4b-4b6b-80cb-f1fe06d13f16", "speaker": "我方", "chinese": "我听到您的不满。为了处理问题, 我们先把争议点拆开看。", "pinyin": "Wǒ tīng dào nín de bùmǎn. Wèile chǔlǐ wèntí, wǒmen xiān bǎ zhēngyì diǎn chāi kāi kàn.", "english": "I hear your dissatisfaction. To handle the issue, let's first separate the disputed points.", "vi": "Tôi nghe thấy sự không hài lòng của anh/chị. Để xử lý vấn đề, trước hết ta tách các điểm tranh cãi ra." },
+      { cell_id: "e2bd6a05-7f36-455a-a4d7-415d68518fe3", "speaker": "对方", "chinese": "你们是不是根本不想合作?", "pinyin": "Nǐmen shì bú shì gēnběn bù xiǎng hézuò?", "english": "Do you actually not want to cooperate at all?", "vi": "Có phải phía anh/chị căn bản không muốn hợp tác không?" },
+      { cell_id: "126ebf11-e138-4b96-a619-4ee1257b608b", "speaker": "我方", "chinese": "我们仍希望合作, 但需要先确认事实和底线。若有必要, 可以请第三方协助主持。", "pinyin": "Wǒmen réng xīwàng hézuò, dàn xūyào xiān quèrèn shìshí hé dǐxiàn. Ruò yǒu bìyào, kěyǐ qǐng dìsānfāng xiézhù zhǔchí.", "english": "We still hope to cooperate, but we need to confirm facts and bottom lines first. If necessary, we can invite a third party to facilitate.", "vi": "Chúng tôi vẫn mong hợp tác, nhưng cần xác nhận sự thật và ranh giới trước. Nếu cần, có thể mời bên thứ ba hỗ trợ chủ trì." }
     ],
     "exercises": [
       { "type": "fill-blank", "question": "对方语气强硬时, 我们不必立刻___。", "answer": "反击" },
@@ -4116,10 +4156,10 @@ export const lessons: ChineseLesson[] = [
       { "chinese": "可行性", "pinyin": "kě xíng xìng", "english": "feasibility", "vi": "tính khả thi" }
     ],
     "dialogue": [
-      { "speaker": "Linh (HKUST博士后)", "chinese": "陈教授, 这是我准备申请明年RGC优配研究金的初稿, 想请您先看一遍。", "pinyin": "Chén jiàoshòu, zhè shì wǒ zhǔnbèi shēnqǐng míngnián RGC yōupèi yánjiū jīn de chūgǎo, xiǎng qǐng nín xiān kàn yī biàn.", "english": "Prof. Chen, this is the draft I'm preparing for next year's RGC GRF — I'd like you to look it over first.", "vi": "Giáo sư Chen, đây là bản nháp em chuẩn bị xin RGC GRF năm sau — em muốn nhờ thầy xem qua trước." },
-      { "speaker": "Prof. Chen (合作导师)", "chinese": "好。先告诉我, 你的研究问题在评审看来够不够清晰?", "pinyin": "Hǎo. Xiān gàosù wǒ, nǐ de yánjiū wèntí zài píngshěn kàn lái gòu bù gòu qīngxī?", "english": "Good. First tell me — does your research question read clearly to a reviewer?", "vi": "Tốt. Trước hết em nói cho thầy: câu hỏi nghiên cứu của em với một reviewer đọc có đủ rõ không?" },
-      { "speaker": "Linh", "chinese": "我聚焦在多模态模型对低资源语言的适应性, 选了越南语、缅甸语、寮语作为基准。", "pinyin": "Wǒ jùjiāo zài duōmótài móxíng duì dīzīyuán yǔyán de shìyìngxìng, xuǎn le Yuènányǔ, Miǎndiànyǔ, Liáoyǔ zuòwéi jīzhǔn.", "english": "I focus on multimodal model adaptability to low-resource languages — Vietnamese, Burmese, Lao as benchmarks.", "vi": "Em tập trung vào tính thích ứng của mô hình đa phương thức với ngôn ngữ ít tài nguyên — Việt, Miến, Lào làm chuẩn." },
-      { "speaker": "Prof. Chen", "chinese": "范围合理。RGC评审最看重三点: 创新性、可行性、本港相关性。你的本港相关性怎么写?", "pinyin": "Fànwéi hélǐ. RGC píngshěn zuì kànzhòng sān diǎn: chuàngxīnxìng, kěxíngxìng, běn gǎng xiāngguānxìng. Nǐ de běn gǎng xiāngguānxìng zěnme xiě?", "english": "Reasonable scope. RGC reviewers weigh three things: novelty, feasibility, HK relevance. How do you write the HK-relevance section?", "vi": "Phạm vi hợp lý. Reviewer RGC đặt nặng ba điểm: tính mới, khả thi, liên quan HK. Mục liên quan HK em viết thế nào?" }
+      { cell_id: "8bc9ad15-0602-48e5-aa2a-ae3026c0243f", "speaker": "Linh (HKUST博士后)", "chinese": "陈教授, 这是我准备申请明年RGC优配研究金的初稿, 想请您先看一遍。", "pinyin": "Chén jiàoshòu, zhè shì wǒ zhǔnbèi shēnqǐng míngnián RGC yōupèi yánjiū jīn de chūgǎo, xiǎng qǐng nín xiān kàn yī biàn.", "english": "Prof. Chen, this is the draft I'm preparing for next year's RGC GRF — I'd like you to look it over first.", "vi": "Giáo sư Chen, đây là bản nháp em chuẩn bị xin RGC GRF năm sau — em muốn nhờ thầy xem qua trước." },
+      { cell_id: "88b0c2ff-a186-4d00-bc2e-1ffe86bf06e7", "speaker": "Prof. Chen (合作导师)", "chinese": "好。先告诉我, 你的研究问题在评审看来够不够清晰?", "pinyin": "Hǎo. Xiān gàosù wǒ, nǐ de yánjiū wèntí zài píngshěn kàn lái gòu bù gòu qīngxī?", "english": "Good. First tell me — does your research question read clearly to a reviewer?", "vi": "Tốt. Trước hết em nói cho thầy: câu hỏi nghiên cứu của em với một reviewer đọc có đủ rõ không?" },
+      { cell_id: "9dd87743-8969-4611-b58c-2d99e8970097", "speaker": "Linh", "chinese": "我聚焦在多模态模型对低资源语言的适应性, 选了越南语、缅甸语、寮语作为基准。", "pinyin": "Wǒ jùjiāo zài duōmótài móxíng duì dīzīyuán yǔyán de shìyìngxìng, xuǎn le Yuènányǔ, Miǎndiànyǔ, Liáoyǔ zuòwéi jīzhǔn.", "english": "I focus on multimodal model adaptability to low-resource languages — Vietnamese, Burmese, Lao as benchmarks.", "vi": "Em tập trung vào tính thích ứng của mô hình đa phương thức với ngôn ngữ ít tài nguyên — Việt, Miến, Lào làm chuẩn." },
+      { cell_id: "4e7ed129-c539-4a0d-b460-a2add95aeb00", "speaker": "Prof. Chen", "chinese": "范围合理。RGC评审最看重三点: 创新性、可行性、本港相关性。你的本港相关性怎么写?", "pinyin": "Fànwéi hélǐ. RGC píngshěn zuì kànzhòng sān diǎn: chuàngxīnxìng, kěxíngxìng, běn gǎng xiāngguānxìng. Nǐ de běn gǎng xiāngguānxìng zěnme xiě?", "english": "Reasonable scope. RGC reviewers weigh three things: novelty, feasibility, HK relevance. How do you write the HK-relevance section?", "vi": "Phạm vi hợp lý. Reviewer RGC đặt nặng ba điểm: tính mới, khả thi, liên quan HK. Mục liên quan HK em viết thế nào?" }
     ],
     "dialogue_long": [
       { "speaker": "Linh", "chinese": "陈教授, 我希望明年三月提交RGC优配研究金的申请, 这是计划书初稿, 大约二十页。", "pinyin": "Chén jiàoshòu, wǒ xīwàng míngnián sān yuè tíjiāo RGC yōupèi yánjiū jīn de shēnqǐng, zhè shì jìhuàshū chūgǎo, dàyuē èrshí yè.", "english": "Prof. Chen, I plan to submit the RGC GRF application next March — this is the draft proposal, about twenty pages.", "vi": "Thầy Chen, em dự định nộp RGC GRF tháng Ba sang năm — đây là bản nháp đề cương, khoảng 20 trang." },
@@ -4255,10 +4295,10 @@ export const lessons: ChineseLesson[] = [
       { "chinese": "指正", "pinyin": "zhǐ zhèng", "english": "to point out errors (humble term)", "vi": "chỉ chỗ sai (谦词)" }
     ],
     "dialogue": [
-      { "speaker": "Linh (博士候选人)", "chinese": "感谢答辩委员会拨冗审阅本论文。我先用二十分钟简述, 然后请各位委员提问。", "pinyin": "Gǎnxiè dábiàn wěiyuánhuì bōrǒng shěnyuè běn lùnwén. Wǒ xiān yòng èrshí fēnzhōng jiǎnshù, ránhòu qǐng gèwèi wěiyuán tíwèn.", "english": "I thank the committee for taking time. I'll first spend twenty minutes outlining, then welcome questions.", "vi": "Cảm ơn hội đồng đã dành thời gian. Em xin trình bày trong 20 phút, sau đó xin các ủy viên đặt câu hỏi." },
-      { "speaker": "外部委员 (NUS)", "chinese": "你的核心贡献——多语种对齐方法——在第三章已有论证, 但你如何排除是数据集本身的偏差?", "pinyin": "Nǐ de héxīn gòngxiàn — duō yǔzhǒng duìqí fāngfǎ — zài dì sān zhāng yǐ yǒu lùnzhèng, dàn nǐ rúhé páichú shì shùjùjí běnshēn de piānchā?", "english": "Your core contribution — multilingual alignment — is argued in Chapter 3, but how do you rule out dataset bias as the cause?", "vi": "Đóng góp cốt lõi của em — phương pháp đa ngữ — đã chứng minh ở Chương 3, nhưng làm sao em loại trừ thiên lệch của chính dataset?" },
-      { "speaker": "Linh", "chinese": "感谢您的提问。我在第五章设计了三个对照实验来排除数据集偏差, 但坦承这部分论证仍嫌不足, 修订版中我将加入跨数据集的稳健性测试。", "pinyin": "Gǎnxiè nín de tíwèn. Wǒ zài dì wǔ zhāng shèjì le sān gè duìzhào shíyàn lái páichú shùjùjí piānchā, dàn tǎnchéng zhè bùfèn lùnzhèng réng xián bùzú, xiūdìngbǎn zhōng wǒ jiāng jiārù kuà shùjùjí de wěnjiànxìng cèshì.", "english": "Thank you. Chapter 5 has three control experiments to rule out dataset bias, but I candidly acknowledge that argument is insufficient — revised version will add cross-dataset robustness tests.", "vi": "Cảm ơn câu hỏi. Em đã thiết kế ba thí nghiệm đối chứng ở Chương 5 để loại trừ thiên lệch dataset, nhưng em thừa nhận lập luận này vẫn chưa đủ — bản sửa sẽ thêm kiểm tra robustness chéo dataset." },
-      { "speaker": "主席 (HKUST)", "chinese": "回答得体。还有委员要问吗?", "pinyin": "Huídá détǐ. Hái yǒu wěiyuán yào wèn ma?", "english": "Answer is appropriate. Other committee members?", "vi": "Trả lời thỏa đáng. Còn ủy viên nào hỏi không?" }
+      { cell_id: "a3ff0451-981c-494c-a80b-c3cb25af54bb", "speaker": "Linh (博士候选人)", "chinese": "感谢答辩委员会拨冗审阅本论文。我先用二十分钟简述, 然后请各位委员提问。", "pinyin": "Gǎnxiè dábiàn wěiyuánhuì bōrǒng shěnyuè běn lùnwén. Wǒ xiān yòng èrshí fēnzhōng jiǎnshù, ránhòu qǐng gèwèi wěiyuán tíwèn.", "english": "I thank the committee for taking time. I'll first spend twenty minutes outlining, then welcome questions.", "vi": "Cảm ơn hội đồng đã dành thời gian. Em xin trình bày trong 20 phút, sau đó xin các ủy viên đặt câu hỏi." },
+      { cell_id: "2d7cf53b-29ce-4749-a029-4a2de7b902df", "speaker": "外部委员 (NUS)", "chinese": "你的核心贡献——多语种对齐方法——在第三章已有论证, 但你如何排除是数据集本身的偏差?", "pinyin": "Nǐ de héxīn gòngxiàn — duō yǔzhǒng duìqí fāngfǎ — zài dì sān zhāng yǐ yǒu lùnzhèng, dàn nǐ rúhé páichú shì shùjùjí běnshēn de piānchā?", "english": "Your core contribution — multilingual alignment — is argued in Chapter 3, but how do you rule out dataset bias as the cause?", "vi": "Đóng góp cốt lõi của em — phương pháp đa ngữ — đã chứng minh ở Chương 3, nhưng làm sao em loại trừ thiên lệch của chính dataset?" },
+      { cell_id: "edc2c5eb-ed15-4aae-8017-2cfe071d3844", "speaker": "Linh", "chinese": "感谢您的提问。我在第五章设计了三个对照实验来排除数据集偏差, 但坦承这部分论证仍嫌不足, 修订版中我将加入跨数据集的稳健性测试。", "pinyin": "Gǎnxiè nín de tíwèn. Wǒ zài dì wǔ zhāng shèjì le sān gè duìzhào shíyàn lái páichú shùjùjí piānchā, dàn tǎnchéng zhè bùfèn lùnzhèng réng xián bùzú, xiūdìngbǎn zhōng wǒ jiāng jiārù kuà shùjùjí de wěnjiànxìng cèshì.", "english": "Thank you. Chapter 5 has three control experiments to rule out dataset bias, but I candidly acknowledge that argument is insufficient — revised version will add cross-dataset robustness tests.", "vi": "Cảm ơn câu hỏi. Em đã thiết kế ba thí nghiệm đối chứng ở Chương 5 để loại trừ thiên lệch dataset, nhưng em thừa nhận lập luận này vẫn chưa đủ — bản sửa sẽ thêm kiểm tra robustness chéo dataset." },
+      { cell_id: "10ead462-c421-46cf-8977-93c50eb77242", "speaker": "主席 (HKUST)", "chinese": "回答得体。还有委员要问吗?", "pinyin": "Huídá détǐ. Hái yǒu wěiyuán yào wèn ma?", "english": "Answer is appropriate. Other committee members?", "vi": "Trả lời thỏa đáng. Còn ủy viên nào hỏi không?" }
     ],
     "dialogue_long": [
       { "speaker": "Linh", "chinese": "感谢答辩委员会拨冗审阅本论文。本研究探讨多模态语言模型在低资源东南亚语言上的翻译表现, 共分七章。我先用二十分钟简述研究问题、主要发现及局限性, 然后请教各位委员的意见。", "pinyin": "Gǎnxiè dábiàn wěiyuánhuì bōrǒng shěnyuè běn lùnwén. Běn yánjiū tàntǎo duōmótài yǔyán móxíng zài dīzīyuán dōngnányà yǔyán shàng de fānyì biǎoxiàn, gòng fēn qī zhāng. Wǒ xiān yòng èrshí fēnzhōng jiǎnshù yánjiū wèntí, zhǔyào fāxiàn jí júxiànxìng, ránhòu qǐngjiào gèwèi wěiyuán de yìjiàn.", "english": "Thank you, committee, for reviewing this dissertation. The study examines multimodal LM performance on low-resource Southeast Asian languages — seven chapters total. I'll spend twenty minutes outlining research question, main findings, limitations; then welcome questions.", "vi": "Cảm ơn hội đồng đã đọc xét luận án. Nghiên cứu khảo sát hiệu năng mô hình đa phương thức ở các ngôn ngữ Đông Nam Á ít tài nguyên — tổng cộng 7 chương. Em sẽ dùng 20 phút trình bày câu hỏi, phát hiện, hạn chế; sau đó xin ý kiến hội đồng." },
@@ -4394,10 +4434,10 @@ export const lessons: ChineseLesson[] = [
       { "chinese": "致以掌声", "pinyin": "zhì yǐ zhǎng shēng", "english": "to give applause (formal)", "vi": "tặng tràng vỗ tay" }
     ],
     "dialogue": [
-      { "speaker": "主持人 Linh", "chinese": "诸位同仁, 欢迎莅临今日之研讨会。陈教授将以四十五分钟介绍神经形态计算的研究进展, 末了留出十五分钟问答。", "pinyin": "Zhūwèi tóngrén, huānyíng lìlín jīnrì zhī yántǎohuì. Chén jiàoshòu jiāng yǐ sìshíwǔ fēnzhōng jièshào shénjīng xíngtài jìsuàn de yánjiū jìnzhǎn, mòle liúchū shíwǔ fēnzhōng wèndá.", "english": "Colleagues, welcome to today's colloquium. Prof. Chen will spend 45 minutes on neuromorphic computing progress, with 15 minutes for Q&A.", "vi": "Quý đồng nghiệp, chào mừng đến hội thảo hôm nay. Giáo sư Chen sẽ trình bày 45 phút về tiến triển điện toán hình thái thần kinh, dành 15 phút Q&A cuối." },
-      { "speaker": "陈教授 (主讲人)", "chinese": "感谢林博士的介绍。请允许笔者借此机会感谢香港研资局和新加坡NRF对本项目的资助。", "pinyin": "Gǎnxiè Lín bóshì de jièshào. Qǐng yǔnxǔ bǐzhě jiè cǐ jīhuì gǎnxiè Xiānggǎng yánzī jú hé Xīnjiāpō NRF duì běn xiàngmù de zīzhù.", "english": "Thanks for the introduction. Allow me to thank Hong Kong RGC and Singapore NRF for funding the project.", "vi": "Cảm ơn Tiến sĩ Lin. Xin phép tác giả nhân dịp này cảm ơn RGC Hong Kong và NRF Singapore đã tài trợ dự án." },
-      { "speaker": "听众 Q1", "chinese": "我是NTHU的张教授, 想问陈教授, 你们在低功耗设计上是否考虑过模拟脉冲网络?", "pinyin": "Wǒ shì NTHU de Zhāng jiàoshòu, xiǎng wèn Chén jiàoshòu, nǐmen zài dīgōnghào shèjì shàng shìfǒu kǎolǜ guò mónǐ màichōng wǎngluò?", "english": "I'm Prof. Zhang from NTHU — have you considered analog spiking networks for low-power design?", "vi": "Tôi là Giáo sư Trương ở NTHU — Giáo sư Chen có cân nhắc mạng nơ-ron xung dạng analog cho thiết kế công suất thấp không?" },
-      { "speaker": "主持人 Linh", "chinese": "陈教授请简短回答, 我们还有四位同仁在等待。", "pinyin": "Chén jiàoshòu qǐng jiǎnduǎn huídá, wǒmen hái yǒu sì wèi tóngrén zài děngdài.", "english": "Prof. Chen please answer briefly — we have four colleagues waiting.", "vi": "Mời Giáo sư Chen trả lời ngắn — còn bốn đồng nghiệp đang chờ." }
+      { cell_id: "4f5a2a02-2dc5-4f29-922b-4039a083013b", "speaker": "主持人 Linh", "chinese": "诸位同仁, 欢迎莅临今日之研讨会。陈教授将以四十五分钟介绍神经形态计算的研究进展, 末了留出十五分钟问答。", "pinyin": "Zhūwèi tóngrén, huānyíng lìlín jīnrì zhī yántǎohuì. Chén jiàoshòu jiāng yǐ sìshíwǔ fēnzhōng jièshào shénjīng xíngtài jìsuàn de yánjiū jìnzhǎn, mòle liúchū shíwǔ fēnzhōng wèndá.", "english": "Colleagues, welcome to today's colloquium. Prof. Chen will spend 45 minutes on neuromorphic computing progress, with 15 minutes for Q&A.", "vi": "Quý đồng nghiệp, chào mừng đến hội thảo hôm nay. Giáo sư Chen sẽ trình bày 45 phút về tiến triển điện toán hình thái thần kinh, dành 15 phút Q&A cuối." },
+      { cell_id: "a28ae33a-74c1-4d2b-83ea-e90696579924", "speaker": "陈教授 (主讲人)", "chinese": "感谢林博士的介绍。请允许笔者借此机会感谢香港研资局和新加坡NRF对本项目的资助。", "pinyin": "Gǎnxiè Lín bóshì de jièshào. Qǐng yǔnxǔ bǐzhě jiè cǐ jīhuì gǎnxiè Xiānggǎng yánzī jú hé Xīnjiāpō NRF duì běn xiàngmù de zīzhù.", "english": "Thanks for the introduction. Allow me to thank Hong Kong RGC and Singapore NRF for funding the project.", "vi": "Cảm ơn Tiến sĩ Lin. Xin phép tác giả nhân dịp này cảm ơn RGC Hong Kong và NRF Singapore đã tài trợ dự án." },
+      { cell_id: "0c6a3d7a-ab19-4747-9c1c-462f428222f2", "speaker": "听众 Q1", "chinese": "我是NTHU的张教授, 想问陈教授, 你们在低功耗设计上是否考虑过模拟脉冲网络?", "pinyin": "Wǒ shì NTHU de Zhāng jiàoshòu, xiǎng wèn Chén jiàoshòu, nǐmen zài dīgōnghào shèjì shàng shìfǒu kǎolǜ guò mónǐ màichōng wǎngluò?", "english": "I'm Prof. Zhang from NTHU — have you considered analog spiking networks for low-power design?", "vi": "Tôi là Giáo sư Trương ở NTHU — Giáo sư Chen có cân nhắc mạng nơ-ron xung dạng analog cho thiết kế công suất thấp không?" },
+      { cell_id: "594a7578-81ae-42fd-b981-1715b981ff9b", "speaker": "主持人 Linh", "chinese": "陈教授请简短回答, 我们还有四位同仁在等待。", "pinyin": "Chén jiàoshòu qǐng jiǎnduǎn huídá, wǒmen hái yǒu sì wèi tóngrén zài děngdài.", "english": "Prof. Chen please answer briefly — we have four colleagues waiting.", "vi": "Mời Giáo sư Chen trả lời ngắn — còn bốn đồng nghiệp đang chờ." }
     ],
     "dialogue_long": [
       { "speaker": "Linh (主持人)", "chinese": "诸位同仁, 欢迎莅临今日之研讨会。今日主讲人是HKUST的陈教授, 题目为'神经形态计算: 跨学科视角下的下一个十年'。", "pinyin": "Zhūwèi tóngrén, huānyíng lìlín jīnrì zhī yántǎohuì. Jīnrì zhǔjiǎngrén shì HKUST de Chén jiàoshòu, tímù wèi 'shénjīng xíngtài jìsuàn: kuà xuékē shìjiǎo xià de xià yī gè shí nián'.", "english": "Colleagues, welcome to today's colloquium. Today's keynote: Prof. Chen of HKUST — 'Neuromorphic computing: the next decade through an interdisciplinary lens'.", "vi": "Quý đồng nghiệp, chào mừng đến hội thảo. Diễn giả chính: Giáo sư Chen của HKUST — 'Điện toán hình thái thần kinh: thập kỷ tiếp theo qua góc nhìn liên ngành'." },
@@ -4531,10 +4571,10 @@ export const lessons: ChineseLesson[] = [
       { "chinese": "可问责性", "pinyin": "kě wèn zé xìng", "english": "accountability", "vi": "tính chịu trách nhiệm" }
     ],
     "dialogue": [
-      { "speaker": "Linh (NTU SG postdoc)", "chinese": "陈教授, 在我们投稿NeurIPS之前, 我想就作者顺序与CRediT贡献达成共识。", "pinyin": "Chén jiàoshòu, zài wǒmen tóugǎo NeurIPS zhī qián, wǒ xiǎng jiù zuòzhě shùnxù yǔ CRediT gòngxiàn dáchéng gòngshí.", "english": "Prof. Chen, before we submit to NeurIPS, I'd like to reach consensus on author order and CRediT contributions.", "vi": "Giáo sư Chen, trước khi nộp NeurIPS, em muốn thống nhất về thứ tự tác giả và đóng góp CRediT." },
-      { "speaker": "陈教授 (HKUST PI)", "chinese": "好。先告诉我你认为自己的核心贡献是什么。", "pinyin": "Hǎo. Xiān gàosù wǒ nǐ rènwéi zìjǐ de héxīn gòngxiàn shì shénme.", "english": "Good — first tell me what you see as your core contributions.", "vi": "Được. Trước hết em nói cho thầy điều gì em thấy là đóng góp cốt lõi của mình." },
-      { "speaker": "Linh", "chinese": "数据收集、实验设计、方法论开发——三者皆为本研究核心。我建议列为第一作者; 您在概念框架与资金获取上贡献尤为关键, 宜列为通讯作者。", "pinyin": "Shùjù shōují, shíyàn shèjì, fāngfǎlùn kāifā — sān zhě jiē wèi běn yánjiū héxīn. Wǒ jiànyì lièwèi dì yī zuòzhě; nín zài gàiniàn kuàngjià yǔ zījīn huòqǔ shàng gòngxiàn yóuwéi guānjiàn, yí lièwèi tōngxùn zuòzhě.", "english": "Data collection, experimental design, methodology development — all core. I propose first authorship; your conceptual + funding contributions especially crucial, so corresponding author.", "vi": "Thu thập dữ liệu, thiết kế thực nghiệm, phát triển phương pháp luận — cả ba cốt lõi. Em đề xuất tác giả thứ nhất; thầy đóng góp khung khái niệm + xin tài trợ then chốt, nên là corresponding author." },
-      { "speaker": "陈教授", "chinese": "合理。NRF和RGC对资助项目都要求PI是corresponding author, 这刚好对得上。文档化我们的CRediT贡献, 双方签字, 系主任见证。", "pinyin": "Hélǐ. NRF hé RGC duì zīzhù xiàngmù dōu yāoqiú PI shì corresponding author, zhè gānghǎo duì de shàng. Wéndàng huà wǒmen de CRediT gòngxiàn, shuāngfāng qiānzì, xìzhǔrèn jiànzhèng.", "english": "Reasonable. NRF and RGC both require PI as corresponding author for funded projects — that aligns. Document our CRediT, both sign, dept head witnesses.", "vi": "Hợp lý. NRF và RGC đều yêu cầu PI là corresponding author cho dự án tài trợ — vừa khớp. Tư liệu hóa CRediT, hai bên ký, trưởng khoa làm chứng." }
+      { cell_id: "73801ced-a44e-4d19-a3df-2d0e639b5fbf", "speaker": "Linh (NTU SG postdoc)", "chinese": "陈教授, 在我们投稿NeurIPS之前, 我想就作者顺序与CRediT贡献达成共识。", "pinyin": "Chén jiàoshòu, zài wǒmen tóugǎo NeurIPS zhī qián, wǒ xiǎng jiù zuòzhě shùnxù yǔ CRediT gòngxiàn dáchéng gòngshí.", "english": "Prof. Chen, before we submit to NeurIPS, I'd like to reach consensus on author order and CRediT contributions.", "vi": "Giáo sư Chen, trước khi nộp NeurIPS, em muốn thống nhất về thứ tự tác giả và đóng góp CRediT." },
+      { cell_id: "10cdadb7-b609-4984-9adf-bda1a5b46642", "speaker": "陈教授 (HKUST PI)", "chinese": "好。先告诉我你认为自己的核心贡献是什么。", "pinyin": "Hǎo. Xiān gàosù wǒ nǐ rènwéi zìjǐ de héxīn gòngxiàn shì shénme.", "english": "Good — first tell me what you see as your core contributions.", "vi": "Được. Trước hết em nói cho thầy điều gì em thấy là đóng góp cốt lõi của mình." },
+      { cell_id: "68f29bdf-c1df-4f52-afb6-60d2d071ec73", "speaker": "Linh", "chinese": "数据收集、实验设计、方法论开发——三者皆为本研究核心。我建议列为第一作者; 您在概念框架与资金获取上贡献尤为关键, 宜列为通讯作者。", "pinyin": "Shùjù shōují, shíyàn shèjì, fāngfǎlùn kāifā — sān zhě jiē wèi běn yánjiū héxīn. Wǒ jiànyì lièwèi dì yī zuòzhě; nín zài gàiniàn kuàngjià yǔ zījīn huòqǔ shàng gòngxiàn yóuwéi guānjiàn, yí lièwèi tōngxùn zuòzhě.", "english": "Data collection, experimental design, methodology development — all core. I propose first authorship; your conceptual + funding contributions especially crucial, so corresponding author.", "vi": "Thu thập dữ liệu, thiết kế thực nghiệm, phát triển phương pháp luận — cả ba cốt lõi. Em đề xuất tác giả thứ nhất; thầy đóng góp khung khái niệm + xin tài trợ then chốt, nên là corresponding author." },
+      { cell_id: "42017fb7-691d-46c0-b740-25e63eb71575", "speaker": "陈教授", "chinese": "合理。NRF和RGC对资助项目都要求PI是corresponding author, 这刚好对得上。文档化我们的CRediT贡献, 双方签字, 系主任见证。", "pinyin": "Hélǐ. NRF hé RGC duì zīzhù xiàngmù dōu yāoqiú PI shì corresponding author, zhè gānghǎo duì de shàng. Wéndàng huà wǒmen de CRediT gòngxiàn, shuāngfāng qiānzì, xìzhǔrèn jiànzhèng.", "english": "Reasonable. NRF and RGC both require PI as corresponding author for funded projects — that aligns. Document our CRediT, both sign, dept head witnesses.", "vi": "Hợp lý. NRF và RGC đều yêu cầu PI là corresponding author cho dự án tài trợ — vừa khớp. Tư liệu hóa CRediT, hai bên ký, trưởng khoa làm chứng." }
     ],
     "dialogue_long": [
       { "speaker": "Linh", "chinese": "陈教授, 我们的NeurIPS投稿截止还有六周。在确定共同作者之前, 我们有必要先就CRediT分类法之十四类贡献达成一致, 以避免日后争议。", "pinyin": "Chén jiàoshòu, wǒmen de NeurIPS tóugǎo jiézhǐ hái yǒu liù zhōu. Zài quèdìng gòngtóng zuòzhě zhī qián, wǒmen yǒu bìyào xiān jiù CRediT fēnlèifǎ zhī shísì lèi gòngxiàn dáchéng yīzhì, yǐ bìmiǎn rìhòu zhēngyì.", "english": "Prof. Chen, six weeks to NeurIPS submission. Before finalizing co-authorship, we need consensus on CRediT's fourteen categories — avoid future disputes.", "vi": "Thầy Chen, còn 6 tuần đến hạn NeurIPS. Trước khi xác định đồng tác giả, chúng ta cần thống nhất về 14 loại CRediT để tránh tranh chấp sau." },
@@ -4668,10 +4708,10 @@ export const lessons: ChineseLesson[] = [
       { "chinese": "教学评价", "pinyin": "jiào xué píng jià", "english": "teaching evaluation", "vi": "đánh giá giảng dạy" }
     ],
     "dialogue": [
-      { "speaker": "Linh (求职者)", "chinese": "Prof. Lim, 这是我为CS3245课程准备的大纲与教学声明初稿。", "pinyin": "Prof. Lim, zhè shì wǒ wèi CS3245 kèchéng zhǔnbèi de dàgāng yǔ jiàoxué shēngmíng chūgǎo.", "english": "Prof. Lim, here's my draft syllabus and teaching statement for CS3245.", "vi": "Prof. Lim, đây là bản nháp đề cương và tuyên ngôn giảng dạy của em cho CS3245." },
-      { "speaker": "Prof. Lim (NUS搜索委员会)", "chinese": "好。NUS看重'student-centered'的具体落实。你的教学声明写学生为中心, 但具体怎么操作?", "pinyin": "Hǎo. NUS kànzhòng 'student-centered' de jùtǐ luòshí. Nǐ de jiàoxué shēngmíng xiě xuéshēng wéi zhōngxīn, dàn jùtǐ zěnme cāozuò?", "english": "Good. NUS values concrete implementation of 'student-centered'. Your statement says student-centered — but how operationalized?", "vi": "Tốt. NUS coi trọng triển khai cụ thể của 'student-centered'. Tuyên ngôn em viết lấy sinh viên làm trung tâm — nhưng cụ thể vận hành thế nào?" },
-      { "speaker": "Linh", "chinese": "三个机制: 一, 每周二下午两小时office hours; 二, 课程项目允许学生自选主题, 但需经我批准; 三, 期末分数底线计算 (10%)以最高单次表现, 鼓励学生敢于尝试。", "pinyin": "Sān gè jīzhì: yī, měi zhōu èr xiàwǔ liǎng xiǎoshí office hours; èr, kèchéng xiàngmù yǔnxǔ xuéshēng zì xuǎn zhǔtí, dàn xū jīng wǒ pīzhǔn; sān, qīmò fēnshù dǐxiàn jìsuàn (10%) yǐ zuìgāo dāncì biǎoxiàn, gǔlì xuéshēng gǎnyú chángshì.", "english": "Three mechanisms: 2hr office hours every Tuesday; project topic chosen by students with my approval; final score 10% drop-the-lowest, encouraging students to try.", "vi": "Ba cơ chế: 2 giờ office hours chiều thứ Ba; sinh viên tự chọn topic dự án, em duyệt; điểm cuối 10% bỏ điểm thấp nhất, khuyến khích thử." },
-      { "speaker": "Prof. Lim", "chinese": "具体, 可操作。我会推荐你进下一轮面试。", "pinyin": "Jùtǐ, kě cāozuò. Wǒ huì tuījiàn nǐ jìn xià yī lún miànshì.", "english": "Concrete, actionable. I'll recommend you for the next interview round.", "vi": "Cụ thể, vận hành được. Tôi sẽ đề cử em vào vòng phỏng vấn tiếp." }
+      { cell_id: "7201d295-c725-466e-adca-9482e5615d12", "speaker": "Linh (求职者)", "chinese": "Prof. Lim, 这是我为CS3245课程准备的大纲与教学声明初稿。", "pinyin": "Prof. Lim, zhè shì wǒ wèi CS3245 kèchéng zhǔnbèi de dàgāng yǔ jiàoxué shēngmíng chūgǎo.", "english": "Prof. Lim, here's my draft syllabus and teaching statement for CS3245.", "vi": "Prof. Lim, đây là bản nháp đề cương và tuyên ngôn giảng dạy của em cho CS3245." },
+      { cell_id: "5678ffa1-eca3-460f-bfe0-f980c10f44d7", "speaker": "Prof. Lim (NUS搜索委员会)", "chinese": "好。NUS看重'student-centered'的具体落实。你的教学声明写学生为中心, 但具体怎么操作?", "pinyin": "Hǎo. NUS kànzhòng 'student-centered' de jùtǐ luòshí. Nǐ de jiàoxué shēngmíng xiě xuéshēng wéi zhōngxīn, dàn jùtǐ zěnme cāozuò?", "english": "Good. NUS values concrete implementation of 'student-centered'. Your statement says student-centered — but how operationalized?", "vi": "Tốt. NUS coi trọng triển khai cụ thể của 'student-centered'. Tuyên ngôn em viết lấy sinh viên làm trung tâm — nhưng cụ thể vận hành thế nào?" },
+      { cell_id: "4d355fd2-296d-4a5f-9888-e6bed139384d", "speaker": "Linh", "chinese": "三个机制: 一, 每周二下午两小时office hours; 二, 课程项目允许学生自选主题, 但需经我批准; 三, 期末分数底线计算 (10%)以最高单次表现, 鼓励学生敢于尝试。", "pinyin": "Sān gè jīzhì: yī, měi zhōu èr xiàwǔ liǎng xiǎoshí office hours; èr, kèchéng xiàngmù yǔnxǔ xuéshēng zì xuǎn zhǔtí, dàn xū jīng wǒ pīzhǔn; sān, qīmò fēnshù dǐxiàn jìsuàn (10%) yǐ zuìgāo dāncì biǎoxiàn, gǔlì xuéshēng gǎnyú chángshì.", "english": "Three mechanisms: 2hr office hours every Tuesday; project topic chosen by students with my approval; final score 10% drop-the-lowest, encouraging students to try.", "vi": "Ba cơ chế: 2 giờ office hours chiều thứ Ba; sinh viên tự chọn topic dự án, em duyệt; điểm cuối 10% bỏ điểm thấp nhất, khuyến khích thử." },
+      { cell_id: "86e66f78-14bf-4917-9a1c-7b60ea642fc7", "speaker": "Prof. Lim", "chinese": "具体, 可操作。我会推荐你进下一轮面试。", "pinyin": "Jùtǐ, kě cāozuò. Wǒ huì tuījiàn nǐ jìn xià yī lún miànshì.", "english": "Concrete, actionable. I'll recommend you for the next interview round.", "vi": "Cụ thể, vận hành được. Tôi sẽ đề cử em vào vòng phỏng vấn tiếp." }
     ],
     "dialogue_long": [
       { "speaker": "Linh", "chinese": "Prof. Lim, 感谢您抽时间面试。这是我为CS3245 (Information Retrieval) 准备的课程大纲与教学声明初稿, 共十五页。", "pinyin": "Prof. Lim, gǎnxiè nín chōu shíjiān miànshì. Zhè shì wǒ wèi CS3245 (Information Retrieval) zhǔnbèi de kèchéng dàgāng yǔ jiàoxué shēngmíng chūgǎo, gòng shíwǔ yè.", "english": "Prof. Lim, thank you for the time. Here's my draft syllabus and teaching statement for CS3245 (Information Retrieval) — 15 pages.", "vi": "Prof. Lim, cảm ơn anh dành thời gian. Đây là bản nháp đề cương và tuyên ngôn giảng dạy của em cho CS3245 (Truy xuất thông tin) — 15 trang." },
@@ -4807,10 +4847,10 @@ export const lessons: ChineseLesson[] = [
       { "chinese": "撤稿", "pinyin": "chè gǎo", "english": "retraction (of paper)", "vi": "rút bài đã đăng" }
     ],
     "dialogue": [
-      { "speaker": "Linh", "chinese": "Tan教授, 我准备开始HK-Vietnam跨境数据收集, 但发现有跨jurisdiction伦理问题。", "pinyin": "Tan jiàoshòu, wǒ zhǔnbèi kāishǐ HK-Vietnam kuàjìng shùjù shōují, dàn fāxiàn yǒu kuà jurisdiction lúnlǐ wèntí.", "english": "Prof. Tan, I'm about to start HK-Vietnam cross-border data collection, but found cross-jurisdiction ethics issues.", "vi": "Prof. Tan, em chuẩn bị bắt đầu thu thập dữ liệu xuyên biên HK-Việt Nam, nhưng phát hiện vấn đề đạo đức cross-jurisdiction." },
-      { "speaker": "Tan教授", "chinese": "在涉及人类受试者之研究中, 笔者须先取得机构伦理审查委员会之批准, 方可启动数据收集。HK的话需要HKUST IRB+你的VN partner institution的IRB也要批。Dual approval。", "pinyin": "Zài shèjí rénlèi shòushì zhě zhī yánjiū zhōng, bǐzhě xū xiān qǔdé jīgòu lúnlǐ shěnchá wěiyuánhuì zhī pīzhǔn, fāng kě qǐdòng shùjù shōují. HK de huà xūyào HKUST IRB + nǐ de VN partner institution de IRB yě yào pī. Dual approval.", "english": "Research with human subjects requires IRB approval before data collection. HK needs HKUST IRB; your VN partner institution's IRB also needs to approve. Dual approval.", "vi": "Nghiên cứu liên quan đối tượng người cần IRB duyệt trước khi thu thập. HK cần HKUST IRB; partner institution VN của em cũng phải duyệt. Dual approval." },
-      { "speaker": "Linh", "chinese": "VN partner是HUST河内, 他们的研究伦理委员会还在phase-up阶段。可能要4-6个月。", "pinyin": "VN partner shì HUST Hénèi, tāmen de yánjiū lúnlǐ wěiyuánhuì hái zài phase-up jiēduàn. Kěnéng yào 4-6 gè yuè.", "english": "VN partner is HUST Hanoi — their research ethics committee still phase-up. Could be 4-6 months.", "vi": "Partner VN là HUST Hà Nội — Ủy ban Đạo đức của họ vẫn đang phase-up. Có thể 4-6 tháng." },
-      { "speaker": "Tan教授", "chinese": "等就是了。学术诚信非可商榷之议题, 而是研究者职业生涯之底线。RGC ECS可以延后6个月, 我们要求extension合理。", "pinyin": "Děng jiù shì le. Xuéshù chéngxìn fēi kě shāngquè zhī yìtí, érshì yánjiūzhě zhíyè shēngyá zhī dǐxiàn. RGC ECS kěyǐ yánhòu 6 gè yuè, wǒmen yāoqiú extension hélǐ.", "english": "Wait. Research integrity is non-negotiable — researcher's career baseline. RGC ECS can defer 6 months; we'll request a reasonable extension.", "vi": "Đợi thôi. Liêm chính học thuật không thể thương lượng — giới hạn sự nghiệp nghiên cứu. RGC ECS có thể dời 6 tháng; mình xin extension hợp lý." }
+      { cell_id: "a21f00de-c435-46ab-b386-f02143904776", "speaker": "Linh", "chinese": "Tan教授, 我准备开始HK-Vietnam跨境数据收集, 但发现有跨jurisdiction伦理问题。", "pinyin": "Tan jiàoshòu, wǒ zhǔnbèi kāishǐ HK-Vietnam kuàjìng shùjù shōují, dàn fāxiàn yǒu kuà jurisdiction lúnlǐ wèntí.", "english": "Prof. Tan, I'm about to start HK-Vietnam cross-border data collection, but found cross-jurisdiction ethics issues.", "vi": "Prof. Tan, em chuẩn bị bắt đầu thu thập dữ liệu xuyên biên HK-Việt Nam, nhưng phát hiện vấn đề đạo đức cross-jurisdiction." },
+      { cell_id: "fc372e49-de93-48c1-90d4-c367bfd3cd56", "speaker": "Tan教授", "chinese": "在涉及人类受试者之研究中, 笔者须先取得机构伦理审查委员会之批准, 方可启动数据收集。HK的话需要HKUST IRB+你的VN partner institution的IRB也要批。Dual approval。", "pinyin": "Zài shèjí rénlèi shòushì zhě zhī yánjiū zhōng, bǐzhě xū xiān qǔdé jīgòu lúnlǐ shěnchá wěiyuánhuì zhī pīzhǔn, fāng kě qǐdòng shùjù shōují. HK de huà xūyào HKUST IRB + nǐ de VN partner institution de IRB yě yào pī. Dual approval.", "english": "Research with human subjects requires IRB approval before data collection. HK needs HKUST IRB; your VN partner institution's IRB also needs to approve. Dual approval.", "vi": "Nghiên cứu liên quan đối tượng người cần IRB duyệt trước khi thu thập. HK cần HKUST IRB; partner institution VN của em cũng phải duyệt. Dual approval." },
+      { cell_id: "74ef00b8-e4cb-4b1e-a768-e4584c745120", "speaker": "Linh", "chinese": "VN partner是HUST河内, 他们的研究伦理委员会还在phase-up阶段。可能要4-6个月。", "pinyin": "VN partner shì HUST Hénèi, tāmen de yánjiū lúnlǐ wěiyuánhuì hái zài phase-up jiēduàn. Kěnéng yào 4-6 gè yuè.", "english": "VN partner is HUST Hanoi — their research ethics committee still phase-up. Could be 4-6 months.", "vi": "Partner VN là HUST Hà Nội — Ủy ban Đạo đức của họ vẫn đang phase-up. Có thể 4-6 tháng." },
+      { cell_id: "60cc2ba9-e7b4-4f7a-9a14-3972ccfafdd4", "speaker": "Tan教授", "chinese": "等就是了。学术诚信非可商榷之议题, 而是研究者职业生涯之底线。RGC ECS可以延后6个月, 我们要求extension合理。", "pinyin": "Děng jiù shì le. Xuéshù chéngxìn fēi kě shāngquè zhī yìtí, érshì yánjiūzhě zhíyè shēngyá zhī dǐxiàn. RGC ECS kěyǐ yánhòu 6 gè yuè, wǒmen yāoqiú extension hélǐ.", "english": "Wait. Research integrity is non-negotiable — researcher's career baseline. RGC ECS can defer 6 months; we'll request a reasonable extension.", "vi": "Đợi thôi. Liêm chính học thuật không thể thương lượng — giới hạn sự nghiệp nghiên cứu. RGC ECS có thể dời 6 tháng; mình xin extension hợp lý." }
     ],
     "dialogue_long": [
       { "speaker": "Linh", "chinese": "Tan教授, 我有两个伦理问题想请您指导。第一: HK-Vietnam跨境数据收集的IRB流程; 第二: 我组里发现一名硕士生的paper涉嫌抄袭。", "pinyin": "Tan jiàoshòu, wǒ yǒu liǎng gè lúnlǐ wèntí xiǎng qǐng nín zhǐdǎo. Dì yī: HK-Vietnam kuàjìng shùjù shōují de IRB liúchéng; dì èr: wǒ zǔ lǐ fāxiàn yī míng shuòshìshēng de paper shèxián chāoxí.", "english": "Prof. Tan, two ethics questions for guidance. First: IRB flow for HK-Vietnam cross-border data collection. Second: a master's student in my group is suspected of plagiarism.", "vi": "Prof. Tan, em có hai vấn đề đạo đức xin chỉ dẫn. Một: quy trình IRB cho thu thập dữ liệu xuyên biên HK-Việt Nam. Hai: một học viên thạc sĩ trong nhóm em bị nghi đạo văn." },
@@ -4946,10 +4986,10 @@ export const lessons: ChineseLesson[] = [
       { "chinese": "持续互相学习", "pinyin": "chí xù hù xiāng xué xí", "english": "ongoing mutual learning", "vi": "học hỏi qua lại liên tục" }
     ],
     "dialogue": [
-      { "speaker": "Linh (CS)", "chinese": "Kumar教授, 我们项目跨CS、语言学、公卫三个领域, 团队对'什么算证据'还没共识。", "pinyin": "Kumar jiàoshòu, wǒmen xiàngmù kuà CS, yǔyánxué, gōngwèi sān gè lǐngyù, tuánduì duì 'shénme suàn zhèngjù' hái méi gòngshí.", "english": "Prof. Kumar, our project spans CS, linguistics, public health — team has no consensus on 'what counts as evidence'.", "vi": "Prof. Kumar, dự án chúng ta trải qua CS, ngôn ngữ học, y tế công cộng — nhóm chưa thống nhất 'cái gì gọi là bằng chứng'." },
-      { "speaker": "Kumar (公卫)", "chinese": "这就是跨学科的核心问题。CS要benchmark, 公卫要statistical significance, 语言学要qualitative depth。每个领域reviewer都用自己的尺子。", "pinyin": "Zhè jiù shì kuà xuékē de héxīn wèntí. CS yào benchmark, gōngwèi yào statistical significance, yǔyánxué yào qualitative depth. Měi gè lǐngyù reviewer dōu yòng zìjǐ de chǐzi.", "english": "That's the core interdisciplinary issue. CS wants benchmarks, public health wants statistical significance, linguistics wants qualitative depth. Each field's reviewer uses their own ruler.", "vi": "Đó là vấn đề cốt lõi của liên ngành. CS muốn benchmark, y tế công cộng muốn ý nghĩa thống kê, ngôn ngữ học muốn chiều sâu định tính. Reviewer mỗi ngành dùng thước riêng." },
-      { "speaker": "Linh", "chinese": "笔者建议每两周举行一次跨学科研讨会, 由不同领域成员轮流主讲, 以确保各方持续互相学习, 而非各自为政。", "pinyin": "Bǐzhě jiànyì měi liǎng zhōu jǔxíng yī cì kuà xuékē yántǎohuì, yóu bùtóng lǐngyù chéngyuán lúnliú zhǔjiǎng, yǐ quèbǎo gèfāng chíxù hùxiāng xuéxí, ér fēi gèzì wéi zhèng.", "english": "I propose biweekly interdisciplinary seminars — different field members rotate as presenters — to ensure mutual learning, not siloed work.", "vi": "Em đề xuất hai tuần một lần tổ chức seminar liên ngành, thành viên các ngành luân phiên thuyết trình, đảm bảo cùng học hỏi, không mạnh ai nấy làm." },
-      { "speaker": "Kumar", "chinese": "好主意。从下周开始。我先来讲'公卫研究的evidence hierarchy'。", "pinyin": "Hǎo zhǔyì. Cóng xià zhōu kāishǐ. Wǒ xiān lái jiǎng 'gōngwèi yánjiū de evidence hierarchy'.", "english": "Good idea. Starting next week. I'll go first — 'Evidence hierarchy in public health research'.", "vi": "Ý hay. Bắt đầu tuần sau. Tôi nói trước — 'Hệ thống bằng chứng trong nghiên cứu y tế công cộng'." }
+      { cell_id: "722377e8-e8ba-40a1-8de1-3cbbeadd5737", "speaker": "Linh (CS)", "chinese": "Kumar教授, 我们项目跨CS、语言学、公卫三个领域, 团队对'什么算证据'还没共识。", "pinyin": "Kumar jiàoshòu, wǒmen xiàngmù kuà CS, yǔyánxué, gōngwèi sān gè lǐngyù, tuánduì duì 'shénme suàn zhèngjù' hái méi gòngshí.", "english": "Prof. Kumar, our project spans CS, linguistics, public health — team has no consensus on 'what counts as evidence'.", "vi": "Prof. Kumar, dự án chúng ta trải qua CS, ngôn ngữ học, y tế công cộng — nhóm chưa thống nhất 'cái gì gọi là bằng chứng'." },
+      { cell_id: "ec6150aa-36d0-47c3-9134-0ae6421563de", "speaker": "Kumar (公卫)", "chinese": "这就是跨学科的核心问题。CS要benchmark, 公卫要statistical significance, 语言学要qualitative depth。每个领域reviewer都用自己的尺子。", "pinyin": "Zhè jiù shì kuà xuékē de héxīn wèntí. CS yào benchmark, gōngwèi yào statistical significance, yǔyánxué yào qualitative depth. Měi gè lǐngyù reviewer dōu yòng zìjǐ de chǐzi.", "english": "That's the core interdisciplinary issue. CS wants benchmarks, public health wants statistical significance, linguistics wants qualitative depth. Each field's reviewer uses their own ruler.", "vi": "Đó là vấn đề cốt lõi của liên ngành. CS muốn benchmark, y tế công cộng muốn ý nghĩa thống kê, ngôn ngữ học muốn chiều sâu định tính. Reviewer mỗi ngành dùng thước riêng." },
+      { cell_id: "b8fef045-af98-43f0-aba0-777d74422cce", "speaker": "Linh", "chinese": "笔者建议每两周举行一次跨学科研讨会, 由不同领域成员轮流主讲, 以确保各方持续互相学习, 而非各自为政。", "pinyin": "Bǐzhě jiànyì měi liǎng zhōu jǔxíng yī cì kuà xuékē yántǎohuì, yóu bùtóng lǐngyù chéngyuán lúnliú zhǔjiǎng, yǐ quèbǎo gèfāng chíxù hùxiāng xuéxí, ér fēi gèzì wéi zhèng.", "english": "I propose biweekly interdisciplinary seminars — different field members rotate as presenters — to ensure mutual learning, not siloed work.", "vi": "Em đề xuất hai tuần một lần tổ chức seminar liên ngành, thành viên các ngành luân phiên thuyết trình, đảm bảo cùng học hỏi, không mạnh ai nấy làm." },
+      { cell_id: "f5375696-731b-4e91-9f86-ab5e3cd150ad", "speaker": "Kumar", "chinese": "好主意。从下周开始。我先来讲'公卫研究的evidence hierarchy'。", "pinyin": "Hǎo zhǔyì. Cóng xià zhōu kāishǐ. Wǒ xiān lái jiǎng 'gōngwèi yánjiū de evidence hierarchy'.", "english": "Good idea. Starting next week. I'll go first — 'Evidence hierarchy in public health research'.", "vi": "Ý hay. Bắt đầu tuần sau. Tôi nói trước — 'Hệ thống bằng chứng trong nghiên cứu y tế công cộng'." }
     ],
     "dialogue_long": [
       { "speaker": "Linh", "chinese": "Kumar教授, Tan教授, 我们的Vietnamese-AI-Health项目已经做了三个月, 我感觉团队进展不顺利——三个领域成员各做各的, 没有合流。", "pinyin": "Kumar jiàoshòu, Tan jiàoshòu, wǒmen de Vietnamese-AI-Health xiàngmù yǐjīng zuò le sān gè yuè, wǒ gǎnjué tuánduì jìnzhǎn bù shùnlì — sān gè lǐngyù chéngyuán gè zuò gè de, méi yǒu héliú.", "english": "Prof. Kumar, Prof. Tan, our Vietnamese-AI-Health project has been going three months — I feel team progress is uneven; three field members work in parallel without converging.", "vi": "Prof. Kumar, Prof. Tan, dự án Vietnamese-AI-Health của chúng ta đã làm 3 tháng — em cảm thấy tiến triển nhóm không thuận lợi; 3 thành viên 3 ngành làm song song, chưa hội tụ." },
@@ -5084,10 +5124,10 @@ export const lessons: ChineseLesson[] = [
       { "chinese": "院系评议", "pinyin": "yuàn xì píng yì", "english": "departmental review", "vi": "xét duyệt khoa" }
     ],
     "dialogue": [
-      { "speaker": "Linh", "chinese": "院长, 我打算明年提交tenure dossier。能否请您简要review我的research statement初稿?", "pinyin": "Yuànzhǎng, wǒ dǎsuàn míngnián tíjiāo tenure dossier. Néngfǒu qǐng nín jiǎnyào review wǒ de research statement chūgǎo?", "english": "Dean, I plan to submit my tenure dossier next year. Could you briefly review my research statement draft?", "vi": "Thưa trưởng khoa, em định nộp dossier tenure năm sau. Anh có thể xem nhanh bản nháp research statement của em được không?" },
-      { "speaker": "Dean", "chinese": "好。Six-year case的关键不只是数字, 是narrative — 你怎么show 'independent research program with national/international impact'.", "pinyin": "Hǎo. Six-year case de guānjiàn bù zhǐshì shùzì, shì narrative — nǐ zěnme show 'independent research program with national/international impact'.", "english": "Good. Six-year case isn't just numbers — it's narrative. How do you show 'independent research program with national/international impact'?", "vi": "Tốt. Six-year case không chỉ con số — là narrative. Em làm sao chứng tỏ 'chương trình nghiên cứu độc lập có ảnh hưởng quốc gia/quốc tế'?" },
-      { "speaker": "Linh", "chinese": "三个narrative arc: 一, 从PhD topic到independent direction的演变; 二, NSF CAREER + Sloan Fellowship作为'peer-reviewed external recognition'; 三, 我培养的5个PhD学生中3个已是其它R1 institution的tenure-track AP。", "pinyin": "Sān gè narrative arc: yī, cóng PhD topic dào independent direction de yǎnbiàn; èr, NSF CAREER + Sloan Fellowship zuòwéi 'peer-reviewed external recognition'; sān, wǒ péiyǎng de 5 gè PhD xuéshēng zhōng 3 gè yǐ shì qítā R1 institution de tenure-track AP.", "english": "Three narrative arcs: PhD topic → independent direction evolution; NSF CAREER + Sloan as 'peer-reviewed external recognition'; my 5 PhD students with 3 already AP at other R1 institutions.", "vi": "Ba narrative arc: PhD topic → hướng độc lập; NSF CAREER + Sloan như 'peer-reviewed external recognition'; 5 PhD em đào tạo trong đó 3 đã là AP ở R1 institution khác." },
-      { "speaker": "Dean", "chinese": "三个都强。但external letter network — 你需要15位outside the institution. 我可以推荐10位, 你自己列5位 'arms-length' (外审制衡), 我们月底meet over them.", "pinyin": "Sān gè dōu qiáng. Dàn external letter network — nǐ xūyào 15 wèi outside the institution. Wǒ kěyǐ tuījiàn 10 wèi, nǐ zìjǐ liè 5 wèi 'arms-length' (wàishěn zhìhéng), wǒmen yuè dǐ meet over them.", "english": "All three strong. But external letter network — you need 15 outside the institution. I can recommend 10; you list 5 'arms-length' for balance. We meet end of month on this.", "vi": "Cả ba đều mạnh. Nhưng external letter network — em cần 15 người ngoài cơ sở. Tôi đề cử 10; em liệt kê 5 'arms-length' để cân bằng. Cuối tháng mình gặp về cái này." }
+      { cell_id: "3480e9fc-84a5-470b-a17e-ead378a2fc6e", "speaker": "Linh", "chinese": "院长, 我打算明年提交tenure dossier。能否请您简要review我的research statement初稿?", "pinyin": "Yuànzhǎng, wǒ dǎsuàn míngnián tíjiāo tenure dossier. Néngfǒu qǐng nín jiǎnyào review wǒ de research statement chūgǎo?", "english": "Dean, I plan to submit my tenure dossier next year. Could you briefly review my research statement draft?", "vi": "Thưa trưởng khoa, em định nộp dossier tenure năm sau. Anh có thể xem nhanh bản nháp research statement của em được không?" },
+      { cell_id: "aa4ee462-067f-4a0a-b988-4d0c25807d7a", "speaker": "Dean", "chinese": "好。Six-year case的关键不只是数字, 是narrative — 你怎么show 'independent research program with national/international impact'.", "pinyin": "Hǎo. Six-year case de guānjiàn bù zhǐshì shùzì, shì narrative — nǐ zěnme show 'independent research program with national/international impact'.", "english": "Good. Six-year case isn't just numbers — it's narrative. How do you show 'independent research program with national/international impact'?", "vi": "Tốt. Six-year case không chỉ con số — là narrative. Em làm sao chứng tỏ 'chương trình nghiên cứu độc lập có ảnh hưởng quốc gia/quốc tế'?" },
+      { cell_id: "79edf45e-c832-4832-9f09-1a774e583daa", "speaker": "Linh", "chinese": "三个narrative arc: 一, 从PhD topic到independent direction的演变; 二, NSF CAREER + Sloan Fellowship作为'peer-reviewed external recognition'; 三, 我培养的5个PhD学生中3个已是其它R1 institution的tenure-track AP。", "pinyin": "Sān gè narrative arc: yī, cóng PhD topic dào independent direction de yǎnbiàn; èr, NSF CAREER + Sloan Fellowship zuòwéi 'peer-reviewed external recognition'; sān, wǒ péiyǎng de 5 gè PhD xuéshēng zhōng 3 gè yǐ shì qítā R1 institution de tenure-track AP.", "english": "Three narrative arcs: PhD topic → independent direction evolution; NSF CAREER + Sloan as 'peer-reviewed external recognition'; my 5 PhD students with 3 already AP at other R1 institutions.", "vi": "Ba narrative arc: PhD topic → hướng độc lập; NSF CAREER + Sloan như 'peer-reviewed external recognition'; 5 PhD em đào tạo trong đó 3 đã là AP ở R1 institution khác." },
+      { cell_id: "ae379737-266f-4671-9001-98470332ae67", "speaker": "Dean", "chinese": "三个都强。但external letter network — 你需要15位outside the institution. 我可以推荐10位, 你自己列5位 'arms-length' (外审制衡), 我们月底meet over them.", "pinyin": "Sān gè dōu qiáng. Dàn external letter network — nǐ xūyào 15 wèi outside the institution. Wǒ kěyǐ tuījiàn 10 wèi, nǐ zìjǐ liè 5 wèi 'arms-length' (wàishěn zhìhéng), wǒmen yuè dǐ meet over them.", "english": "All three strong. But external letter network — you need 15 outside the institution. I can recommend 10; you list 5 'arms-length' for balance. We meet end of month on this.", "vi": "Cả ba đều mạnh. Nhưng external letter network — em cần 15 người ngoài cơ sở. Tôi đề cử 10; em liệt kê 5 'arms-length' để cân bằng. Cuối tháng mình gặp về cái này." }
     ],
     "dialogue_long": [
       { "speaker": "Linh", "chinese": "院长 (Stanford CS Department), 谢谢您今天抽时间. 我打算明年9月提交tenure case, 想请您review research statement的初稿, 并讨论external letter writers的strategy.", "pinyin": "Yuànzhǎng (Stanford CS Department), xièxie nín jīntiān chōu shíjiān. Wǒ dǎsuàn míngnián 9 yuè tíjiāo tenure case, xiǎng qǐng nín review research statement de chūgǎo, bìng tǎolùn external letter writers de strategy.", "english": "Chair (Stanford CS), thanks for the time today. I plan to submit tenure case September next year — want to review research statement draft and discuss external letter writers strategy.", "vi": "Trưởng khoa Stanford CS, cảm ơn anh dành thời gian. Em định nộp tenure case tháng 9 năm sau — muốn review nháp research statement và bàn chiến lược external letter writers." },
@@ -5221,10 +5261,10 @@ export const lessons: ChineseLesson[] = [
       { "chinese": "学术规范", "pinyin": "xué shù guī fàn", "english": "academic norms / standards", "vi": "chuẩn học thuật" }
     ],
     "dialogue": [
-      { "speaker": "记者 (CNA)", "chinese": "Linh博士, 您新发表的关于AI翻译低资源语言的研究, 能否用30秒概括给我们的电视观众?", "pinyin": "Linh bóshì, nín xīn fābiǎo de guānyú AI fānyì dīzīyuán yǔyán de yánjiū, néngfǒu yòng 30 miǎo gàikuò gěi wǒmen de diànshì guānzhòng?", "english": "Dr. Linh, can you summarize your new low-resource AI translation research in 30 seconds for our TV audience?", "vi": "Tiến sĩ Linh, nghiên cứu mới của cô về dịch AI cho ngôn ngữ ít tài nguyên, cô có thể tóm tắt 30 giây cho khán giả TV không?" },
-      { "speaker": "Linh", "chinese": "可以, 但我先说明: 这是研究发现, 不是政策建议, 也不代表整个学界共识. 我们发现, 加入图像信息可以让低资源语言翻译质量提升约15%, 但这只在三种东南亚语言上验证, 不能直接外推.", "pinyin": "Kěyǐ, dàn wǒ xiān shuōmíng: zhè shì yánjiū fāxiàn, bù shì zhèngcè jiànyì, yě bù dàibiǎo zhěnggè xuéjiè gòngshí. Wǒmen fāxiàn, jiārù túxiàng xìnxī kěyǐ ràng dīzīyuán yǔyán fānyì zhìliàng tíshēng yuē 15%, dàn zhè zhǐ zài sān zhǒng dōngnányà yǔyán shàng yànzhèng, bùnéng zhíjiē wàituī.", "english": "Yes, but first to clarify: this is research finding, not policy recommendation, nor whole-field consensus. We found adding image info raises low-resource translation quality ~15%, but only validated on three SE Asian languages, can't directly extrapolate.", "vi": "Được, nhưng tôi nói trước: đây là phát hiện nghiên cứu, không phải đề xuất chính sách, cũng không phải đồng thuận toàn ngành. Chúng tôi phát hiện thêm thông tin hình ảnh có thể nâng chất lượng dịch ngôn ngữ ít tài nguyên ~15%, nhưng chỉ kiểm chứng trên 3 ngôn ngữ Đông Nam Á, không thể ngoại suy trực tiếp." },
-      { "speaker": "记者", "chinese": "您觉得这项技术什么时候能商用?", "pinyin": "Nín juéde zhè xiàng jìshù shénme shíhòu néng shāngyòng?", "english": "When do you think this tech can go commercial?", "vi": "Cô nghĩ khi nào công nghệ này có thể thương mại hóa?" },
-      { "speaker": "Linh", "chinese": "这个问题超出我研究的范围. 商业化涉及工程、产品、市场考量, 笔者作为研究人员难以妄加揣测. 我建议您采访industry partner.", "pinyin": "Zhège wèntí chāochū wǒ yánjiū de fànwéi. Shāngyèhuà shèjí gōngchéng, chǎnpǐn, shìchǎng kǎoliàng, bǐzhě zuòwéi yánjiū rényuán nányǐ wàng jiā chuǎicè. Wǒ jiànyì nín cǎifǎng industry partner.", "english": "That question is beyond my research scope. Commercialization involves engineering, product, market considerations — as researcher, I can't speculate. I'd suggest interviewing an industry partner.", "vi": "Câu hỏi này vượt phạm vi nghiên cứu của tôi. Thương mại hóa liên quan đến kỹ thuật, sản phẩm, thị trường — với tư cách nghiên cứu, tôi khó suy đoán. Tôi đề xuất cô phỏng vấn industry partner." }
+      { cell_id: "d5510028-d1c0-425e-9f5d-cb03d159e94f", "speaker": "记者 (CNA)", "chinese": "Linh博士, 您新发表的关于AI翻译低资源语言的研究, 能否用30秒概括给我们的电视观众?", "pinyin": "Linh bóshì, nín xīn fābiǎo de guānyú AI fānyì dīzīyuán yǔyán de yánjiū, néngfǒu yòng 30 miǎo gàikuò gěi wǒmen de diànshì guānzhòng?", "english": "Dr. Linh, can you summarize your new low-resource AI translation research in 30 seconds for our TV audience?", "vi": "Tiến sĩ Linh, nghiên cứu mới của cô về dịch AI cho ngôn ngữ ít tài nguyên, cô có thể tóm tắt 30 giây cho khán giả TV không?" },
+      { cell_id: "aafbbb3a-fbcf-425b-ab68-bb0903b5f291", "speaker": "Linh", "chinese": "可以, 但我先说明: 这是研究发现, 不是政策建议, 也不代表整个学界共识. 我们发现, 加入图像信息可以让低资源语言翻译质量提升约15%, 但这只在三种东南亚语言上验证, 不能直接外推.", "pinyin": "Kěyǐ, dàn wǒ xiān shuōmíng: zhè shì yánjiū fāxiàn, bù shì zhèngcè jiànyì, yě bù dàibiǎo zhěnggè xuéjiè gòngshí. Wǒmen fāxiàn, jiārù túxiàng xìnxī kěyǐ ràng dīzīyuán yǔyán fānyì zhìliàng tíshēng yuē 15%, dàn zhè zhǐ zài sān zhǒng dōngnányà yǔyán shàng yànzhèng, bùnéng zhíjiē wàituī.", "english": "Yes, but first to clarify: this is research finding, not policy recommendation, nor whole-field consensus. We found adding image info raises low-resource translation quality ~15%, but only validated on three SE Asian languages, can't directly extrapolate.", "vi": "Được, nhưng tôi nói trước: đây là phát hiện nghiên cứu, không phải đề xuất chính sách, cũng không phải đồng thuận toàn ngành. Chúng tôi phát hiện thêm thông tin hình ảnh có thể nâng chất lượng dịch ngôn ngữ ít tài nguyên ~15%, nhưng chỉ kiểm chứng trên 3 ngôn ngữ Đông Nam Á, không thể ngoại suy trực tiếp." },
+      { cell_id: "a79a16a2-c11c-48e6-a99f-c6847920f158", "speaker": "记者", "chinese": "您觉得这项技术什么时候能商用?", "pinyin": "Nín juéde zhè xiàng jìshù shénme shíhòu néng shāngyòng?", "english": "When do you think this tech can go commercial?", "vi": "Cô nghĩ khi nào công nghệ này có thể thương mại hóa?" },
+      { cell_id: "89dc52d4-b7fd-4b1f-ae7e-2a88a6e5c36d", "speaker": "Linh", "chinese": "这个问题超出我研究的范围. 商业化涉及工程、产品、市场考量, 笔者作为研究人员难以妄加揣测. 我建议您采访industry partner.", "pinyin": "Zhège wèntí chāochū wǒ yánjiū de fànwéi. Shāngyèhuà shèjí gōngchéng, chǎnpǐn, shìchǎng kǎoliàng, bǐzhě zuòwéi yánjiū rényuán nányǐ wàng jiā chuǎicè. Wǒ jiànyì nín cǎifǎng industry partner.", "english": "That question is beyond my research scope. Commercialization involves engineering, product, market considerations — as researcher, I can't speculate. I'd suggest interviewing an industry partner.", "vi": "Câu hỏi này vượt phạm vi nghiên cứu của tôi. Thương mại hóa liên quan đến kỹ thuật, sản phẩm, thị trường — với tư cách nghiên cứu, tôi khó suy đoán. Tôi đề xuất cô phỏng vấn industry partner." }
     ],
     "dialogue_long": [
       { "speaker": "PR officer (NUS Communications Office)", "chinese": "Linh博士, CNA要求今日下午采访您, 关于您新发表的Nature paper. 我们建议您先read out a few briefing notes, 防止误读.", "pinyin": "Linh bóshì, CNA yāoqiú jīnrì xiàwǔ cǎifǎng nín, guānyú nín xīn fābiǎo de Nature paper. Wǒmen jiànyì nín xiān read out a few briefing notes, fángzhǐ wùdú.", "english": "Dr. Linh, CNA wants to interview you this afternoon about your new Nature paper. We recommend you read out a few briefing notes first to prevent misreading.", "vi": "Tiến sĩ Linh, CNA yêu cầu phỏng vấn cô chiều nay về bài Nature mới của cô. Chúng tôi đề xuất cô đọc qua mấy briefing notes trước để tránh hiểu sai." },
@@ -5357,10 +5397,10 @@ export const lessons: ChineseLesson[] = [
       { "chinese": "职业网络", "pinyin": "zhí yè wǎng luò", "english": "career network", "vi": "mạng lưới nghề nghiệp" }
     ],
     "dialogue": [
-      { "speaker": "Linh (advisor)", "chinese": "Wang同学, 我看了你的实验日志, 你停在第二步两周了. 怎么了?", "pinyin": "Wáng tóngxué, wǒ kàn le nǐ de shíyàn rìzhì, nǐ tíng zài dì èr bù liǎng zhōu le. Zěnme le?", "english": "Wang, I saw your experiment log — you're stuck on step 2 for two weeks. What's going on?", "vi": "Wang, em xem nhật ký thí nghiệm của em — em kẹt ở bước 2 hai tuần rồi. Có chuyện gì?" },
-      { "speaker": "Wang (PhD student)", "chinese": "结果出来了, 但是不像我想的那样. p值是0.06, 没达到0.05.", "pinyin": "Jiéguǒ chūlái le, dànshì bù xiàng wǒ xiǎng de nàyàng. p zhí shì 0.06, méi dádào 0.05.", "english": "Results came in — but not what I expected. p-value 0.06, missed 0.05.", "vi": "Kết quả ra rồi — nhưng không như em nghĩ. p-value 0.06, không đạt 0.05." },
-      { "speaker": "Linh", "chinese": "面对学生之研究困境, 笔者倾向先提问而非直接给出答案. 你怎么看这个0.06? 是设计有问题, 还是真实效应就在那里?", "pinyin": "Miànduì xuéshēng zhī yánjiū kùnjìng, bǐzhě qīngxiàng xiān tíwèn ér fēi zhíjiē gěi chū dá'àn. Nǐ zěnme kàn zhège 0.06? Shì shèjì yǒu wèntí, háishì zhēnshí xiàoyìng jiù zài nàlǐ?", "english": "Facing student dilemma, I tend to ask first not give answers. How do you read 0.06? Is it design problem, or real effect just at that level?", "vi": "Đối mặt khó khăn của em, em hỏi trước thay vì cho đáp án. Em nghĩ 0.06 là sao? Là thiết kế có vấn đề, hay hiệu ứng thật chỉ ở mức đó?" },
-      { "speaker": "Wang", "chinese": "我想是真实效应小. 我应该报告0.06作为exploratory finding, 还是再做一次实验?", "pinyin": "Wǒ xiǎng shì zhēnshí xiàoyìng xiǎo. Wǒ yīnggāi bàogào 0.06 zuòwéi exploratory finding, háishì zài zuò yīcì shíyàn?", "english": "Real effect probably small. Should I report 0.06 as exploratory finding, or rerun?", "vi": "Em nghĩ hiệu ứng thật nhỏ. Em nên báo 0.06 như exploratory finding, hay làm lại thí nghiệm?" }
+      { cell_id: "384b598d-1020-4a85-b427-2dea325f975c", "speaker": "Linh (advisor)", "chinese": "Wang同学, 我看了你的实验日志, 你停在第二步两周了. 怎么了?", "pinyin": "Wáng tóngxué, wǒ kàn le nǐ de shíyàn rìzhì, nǐ tíng zài dì èr bù liǎng zhōu le. Zěnme le?", "english": "Wang, I saw your experiment log — you're stuck on step 2 for two weeks. What's going on?", "vi": "Wang, em xem nhật ký thí nghiệm của em — em kẹt ở bước 2 hai tuần rồi. Có chuyện gì?" },
+      { cell_id: "6d25e1ea-f32f-4d84-bebd-9833ea186627", "speaker": "Wang (PhD student)", "chinese": "结果出来了, 但是不像我想的那样. p值是0.06, 没达到0.05.", "pinyin": "Jiéguǒ chūlái le, dànshì bù xiàng wǒ xiǎng de nàyàng. p zhí shì 0.06, méi dádào 0.05.", "english": "Results came in — but not what I expected. p-value 0.06, missed 0.05.", "vi": "Kết quả ra rồi — nhưng không như em nghĩ. p-value 0.06, không đạt 0.05." },
+      { cell_id: "fd910300-1130-47ac-b953-c23afcbc6705", "speaker": "Linh", "chinese": "面对学生之研究困境, 笔者倾向先提问而非直接给出答案. 你怎么看这个0.06? 是设计有问题, 还是真实效应就在那里?", "pinyin": "Miànduì xuéshēng zhī yánjiū kùnjìng, bǐzhě qīngxiàng xiān tíwèn ér fēi zhíjiē gěi chū dá'àn. Nǐ zěnme kàn zhège 0.06? Shì shèjì yǒu wèntí, háishì zhēnshí xiàoyìng jiù zài nàlǐ?", "english": "Facing student dilemma, I tend to ask first not give answers. How do you read 0.06? Is it design problem, or real effect just at that level?", "vi": "Đối mặt khó khăn của em, em hỏi trước thay vì cho đáp án. Em nghĩ 0.06 là sao? Là thiết kế có vấn đề, hay hiệu ứng thật chỉ ở mức đó?" },
+      { cell_id: "57c26b86-46d0-4eb0-8894-d5545418b95f", "speaker": "Wang", "chinese": "我想是真实效应小. 我应该报告0.06作为exploratory finding, 还是再做一次实验?", "pinyin": "Wǒ xiǎng shì zhēnshí xiàoyìng xiǎo. Wǒ yīnggāi bàogào 0.06 zuòwéi exploratory finding, háishì zài zuò yīcì shíyàn?", "english": "Real effect probably small. Should I report 0.06 as exploratory finding, or rerun?", "vi": "Em nghĩ hiệu ứng thật nhỏ. Em nên báo 0.06 như exploratory finding, hay làm lại thí nghiệm?" }
     ],
     "dialogue_long": [
       { "speaker": "Linh", "chinese": "Wang同学, 这周的one-on-one. 我看了你的实验日志, 你停在第二步两周了. 之前你提交的本周计划写'continue experimental setup', 但实际data没有进展. 怎么了?", "pinyin": "Wáng tóngxué, zhè zhōu de one-on-one. Wǒ kàn le nǐ de shíyàn rìzhì, nǐ tíng zài dì èr bù liǎng zhōu le. Zhīqián nǐ tíjiāo de běn zhōu jìhuà xiě 'continue experimental setup', dàn shíjì data méi yǒu jìnzhǎn. Zěnme le?", "english": "Wang, this week's one-on-one. I saw your log — stuck on step 2 for two weeks. Your weekly plan said 'continue experimental setup' but actual data hasn't progressed. What's going on?", "vi": "Wang, one-on-one tuần này. Em xem log của em — em kẹt ở bước 2 hai tuần rồi. Kế hoạch tuần em nộp ghi 'continue experimental setup' nhưng data thực không tiến triển. Có chuyện gì?" },
@@ -5440,8 +5480,8 @@ export const lessons: ChineseLesson[] = [
       { "chinese": "回应关切", "pinyin": "huí yìng guān qiè", "english": "respond to concerns", "vi": "phản hồi quan ngại" }
     ],
     "dialogue": [
-      { "speaker": "发言人", "chinese": "感谢各位媒体朋友到场, 我先用三分钟说明目前已经确认的情况。", "pinyin": "Gǎnxiè gèwèi méitǐ péngyǒu dàochǎng, wǒ xiān yòng sān fēnzhōng shuōmíng mùqián yǐjīng quèrèn de qíngkuàng.", "english": "Thank you all for coming. I will first use three minutes to explain what has been confirmed.", "vi": "Cảm ơn các bạn truyền thông đã đến. Tôi sẽ dùng ba phút để trình bày những gì đã xác nhận." },
-      { "speaker": "记者", "chinese": "请问今天会开放现场提问吗?", "pinyin": "Qǐngwèn jīntiān huì kāifàng xiànchǎng tíwèn ma?", "english": "Will there be live questions today?", "vi": "Hôm nay có mở phần hỏi trực tiếp không?" }
+      { cell_id: "d8c49be1-4947-4a1e-9e4f-cbe565fe5c8b", "speaker": "发言人", "chinese": "感谢各位媒体朋友到场, 我先用三分钟说明目前已经确认的情况。", "pinyin": "Gǎnxiè gèwèi méitǐ péngyǒu dàochǎng, wǒ xiān yòng sān fēnzhōng shuōmíng mùqián yǐjīng quèrèn de qíngkuàng.", "english": "Thank you all for coming. I will first use three minutes to explain what has been confirmed.", "vi": "Cảm ơn các bạn truyền thông đã đến. Tôi sẽ dùng ba phút để trình bày những gì đã xác nhận." },
+      { cell_id: "5c72c673-d112-4cf1-88da-d1b988ffcd70", "speaker": "记者", "chinese": "请问今天会开放现场提问吗?", "pinyin": "Qǐngwèn jīntiān huì kāifàng xiànchǎng tíwèn ma?", "english": "Will there be live questions today?", "vi": "Hôm nay có mở phần hỏi trực tiếp không?" }
     ],
     "register_notes": "HK/Taiwan/SG Chinese press-conference openings are calm, procedural, and relationship-aware. Open with thanks, define what is confirmed, reserve what is still under review, then promise a Q&A window. Avoid over-apologizing before facts are known.",
     "exercises": [
@@ -5482,8 +5522,8 @@ export const lessons: ChineseLesson[] = [
       { "chinese": "宣传口号", "pinyin": "xuān chuán kǒu hào", "english": "promotional slogan", "vi": "khẩu hiệu quảng bá" }
     ],
     "dialogue": [
-      { "speaker": "编辑", "chinese": "标题不要写'重新定义行业', 写清楚谁在何处推出什么。", "pinyin": "Biāotí bùyào xiě 'chóngxīn dìngyì hángyè', xiě qīngchǔ shéi zài héchù tuīchū shénme.", "english": "Do not write 'redefining the industry' in the headline. State who is launching what, and where.", "vi": "Đừng viết tiêu đề 'định nghĩa lại ngành'. Hãy viết rõ ai ra mắt cái gì, ở đâu." },
-      { "speaker": "公关经理", "chinese": "明白, 我会把第一段改成事实导向, 第二段再放引述。", "pinyin": "Míngbái, wǒ huì bǎ dì yī duàn gǎi chéng shìshí dǎoxiàng, dì èr duàn zài fàng yǐnshù.", "english": "Understood. I will make the first paragraph fact-led and put the quote in the second paragraph.", "vi": "Hiểu rồi. Tôi sẽ sửa đoạn đầu theo hướng sự kiện, rồi đặt trích dẫn ở đoạn hai." }
+      { cell_id: "9ad14cf2-1629-41a7-923d-28b850058387", "speaker": "编辑", "chinese": "标题不要写'重新定义行业', 写清楚谁在何处推出什么。", "pinyin": "Biāotí bùyào xiě 'chóngxīn dìngyì hángyè', xiě qīngchǔ shéi zài héchù tuīchū shénme.", "english": "Do not write 'redefining the industry' in the headline. State who is launching what, and where.", "vi": "Đừng viết tiêu đề 'định nghĩa lại ngành'. Hãy viết rõ ai ra mắt cái gì, ở đâu." },
+      { cell_id: "a0025956-f9da-4ca5-afec-2580607cdae0", "speaker": "公关经理", "chinese": "明白, 我会把第一段改成事实导向, 第二段再放引述。", "pinyin": "Míngbái, wǒ huì bǎ dì yī duàn gǎi chéng shìshí dǎoxiàng, dì èr duàn zài fàng yǐnshù.", "english": "Understood. I will make the first paragraph fact-led and put the quote in the second paragraph.", "vi": "Hiểu rồi. Tôi sẽ sửa đoạn đầu theo hướng sự kiện, rồi đặt trích dẫn ở đoạn hai." }
     ],
     "register_notes": "A Chinese-language press release in HK/Taiwan/SG business contexts should lead with fact, not hype. Keep the headline concrete, put data before adjectives, and make executive quotes sound accountable rather than grandiose.",
     "exercises": [
@@ -5524,8 +5564,8 @@ export const lessons: ChineseLesson[] = [
       { "chinese": "论点", "pinyin": "lùn diǎn", "english": "argument", "vi": "luận điểm" }
     ],
     "dialogue": [
-      { "speaker": "专栏编辑", "chinese": "你的稿子有观点, 但还缺一个公共问题的入口。", "pinyin": "Nǐ de gǎozi yǒu guāndiǎn, dàn hái quē yī gè gōnggòng wèntí de rùkǒu.", "english": "Your draft has a view, but it still lacks an entry point through a public issue.", "vi": "Bản thảo có quan điểm, nhưng còn thiếu lối vào qua một vấn đề công." },
-      { "speaker": "作者", "chinese": "我会把个人观察放到第三段, 第一段先写读者共同面对的压力。", "pinyin": "Wǒ huì bǎ gèrén guānchá fàng dào dì sān duàn, dì yī duàn xiān xiě dúzhě gòngtóng miànduì de yālì.", "english": "I will move personal observation to the third paragraph and open with the pressure readers face collectively.", "vi": "Tôi sẽ chuyển quan sát cá nhân xuống đoạn ba, đoạn đầu viết về áp lực chung mà độc giả đang đối mặt." }
+      { cell_id: "9886c928-a7cd-49b4-bb4f-3b6278d492d9", "speaker": "专栏编辑", "chinese": "你的稿子有观点, 但还缺一个公共问题的入口。", "pinyin": "Nǐ de gǎozi yǒu guāndiǎn, dàn hái quē yī gè gōnggòng wèntí de rùkǒu.", "english": "Your draft has a view, but it still lacks an entry point through a public issue.", "vi": "Bản thảo có quan điểm, nhưng còn thiếu lối vào qua một vấn đề công." },
+      { cell_id: "009cf7c9-0924-4a7b-9f18-36c41caf6af1", "speaker": "作者", "chinese": "我会把个人观察放到第三段, 第一段先写读者共同面对的压力。", "pinyin": "Wǒ huì bǎ gèrén guānchá fàng dào dì sān duàn, dì yī duàn xiān xiě dúzhě gòngtóng miànduì de yālì.", "english": "I will move personal observation to the third paragraph and open with the pressure readers face collectively.", "vi": "Tôi sẽ chuyển quan sát cá nhân xuống đoạn ba, đoạn đầu viết về áp lực chung mà độc giả đang đối mặt." }
     ],
     "register_notes": "For major Chinese-language papers in HK/Taiwan/SG, avoid slogans and partisan framing. A strong op-ed moves from shared public concern to evidence, then to a measured but clear recommendation.",
     "exercises": [
@@ -5566,8 +5606,8 @@ export const lessons: ChineseLesson[] = [
       { "chinese": "负责范围", "pinyin": "fù zé fàn wéi", "english": "scope of responsibility", "vi": "phạm vi chịu trách nhiệm" }
     ],
     "dialogue": [
-      { "speaker": "主持人", "chinese": "听起来你们内部其实早就知道问题存在, 对吗?", "pinyin": "Tīng qǐlái nǐmen nèibù qíshí zǎo jiù zhīdào wèntí cúnzài, duì ma?", "english": "It sounds like your team knew internally that the problem existed, right?", "vi": "Nghe như nội bộ các anh chị đã biết vấn đề từ lâu, đúng không?" },
-      { "speaker": "来宾", "chinese": "这是一个合理的追问。就我能确认的范围来说, 我们是在上周完成技术复核后才定案。", "pinyin": "Zhè shì yī gè hélǐ de zhuīwèn. Jiù wǒ néng quèrèn de fànwéi lái shuō, wǒmen shì zài shàng zhōu wánchéng jìshù fùhé hòu cái dìng'àn.", "english": "That is a fair follow-up. Within what I can confirm, we finalized it only after completing the technical review last week.", "vi": "Đó là câu hỏi tiếp hợp lý. Trong phạm vi tôi có thể xác nhận, chúng tôi chỉ chốt sau khi hoàn tất rà soát kỹ thuật tuần trước." }
+      { cell_id: "b4b24234-5b3f-4891-b50e-d560ccd6dd70", "speaker": "主持人", "chinese": "听起来你们内部其实早就知道问题存在, 对吗?", "pinyin": "Tīng qǐlái nǐmen nèibù qíshí zǎo jiù zhīdào wèntí cúnzài, duì ma?", "english": "It sounds like your team knew internally that the problem existed, right?", "vi": "Nghe như nội bộ các anh chị đã biết vấn đề từ lâu, đúng không?" },
+      { cell_id: "4274947a-f5e6-437e-a24b-768fc8c2ec89", "speaker": "来宾", "chinese": "这是一个合理的追问。就我能确认的范围来说, 我们是在上周完成技术复核后才定案。", "pinyin": "Zhè shì yī gè hélǐ de zhuīwèn. Jiù wǒ néng quèrèn de fànwéi lái shuō, wǒmen shì zài shàng zhōu wánchéng jìshù fùhé hòu cái dìng'àn.", "english": "That is a fair follow-up. Within what I can confirm, we finalized it only after completing the technical review last week.", "vi": "Đó là câu hỏi tiếp hợp lý. Trong phạm vi tôi có thể xác nhận, chúng tôi chỉ chốt sau khi hoàn tất rà soát kỹ thuật tuần trước." }
     ],
     "register_notes": "Podcast Chinese can be warmer and more conversational, but C1 public-facing speech still needs containment: acknowledge, clarify, and avoid casual speculation.",
     "exercises": [
@@ -5608,8 +5648,8 @@ export const lessons: ChineseLesson[] = [
       { "chinese": "可引用", "pinyin": "kě yǐn yòng", "english": "quotable", "vi": "có thể trích dẫn" }
     ],
     "dialogue": [
-      { "speaker": "主播", "chinese": "你现在能不能直接承诺, 同类事件不会再发生?", "pinyin": "Nǐ xiànzài néng bù néng zhíjiē chéngnuò, tónglèi shìjiàn bù huì zài fāshēng?", "english": "Can you directly promise now that this kind of incident will not happen again?", "vi": "Anh/chị có thể cam kết ngay rằng sự việc tương tự sẽ không xảy ra nữa không?" },
-      { "speaker": "发言人", "chinese": "我不能给空泛承诺, 但可以承诺两点: 今天完成复核, 明天公开改善时间表。", "pinyin": "Wǒ bùnéng gěi kōngfàn chéngnuò, dàn kěyǐ chéngnuò liǎng diǎn: jīntiān wánchéng fùhé, míngtiān gōngkāi gǎishàn shíjiānbiǎo.", "english": "I cannot give a vague promise, but I can commit to two things: completing the review today and publishing the improvement timeline tomorrow.", "vi": "Tôi không thể đưa lời hứa chung chung, nhưng có thể cam kết hai điểm: hoàn tất rà soát hôm nay và công bố lộ trình cải thiện ngày mai." }
+      { cell_id: "a4dc3118-df70-480a-91e4-8fd227f2e0b4", "speaker": "主播", "chinese": "你现在能不能直接承诺, 同类事件不会再发生?", "pinyin": "Nǐ xiànzài néng bù néng zhíjiē chéngnuò, tónglèi shìjiàn bù huì zài fāshēng?", "english": "Can you directly promise now that this kind of incident will not happen again?", "vi": "Anh/chị có thể cam kết ngay rằng sự việc tương tự sẽ không xảy ra nữa không?" },
+      { cell_id: "b2b5da89-da96-4234-8f81-06aa4c1b8ebe", "speaker": "发言人", "chinese": "我不能给空泛承诺, 但可以承诺两点: 今天完成复核, 明天公开改善时间表。", "pinyin": "Wǒ bùnéng gěi kōngfàn chéngnuò, dàn kěyǐ chéngnuò liǎng diǎn: jīntiān wánchéng fùhé, míngtiān gōngkāi gǎishàn shíjiānbiǎo.", "english": "I cannot give a vague promise, but I can commit to two things: completing the review today and publishing the improvement timeline tomorrow.", "vi": "Tôi không thể đưa lời hứa chung chung, nhưng có thể cam kết hai điểm: hoàn tất rà soát hôm nay và công bố lộ trình cải thiện ngày mai." }
     ],
     "register_notes": "Live TV rewards concise Chinese. Use two-point answers, avoid defensive tone, and never improvise facts. A strong line is calm enough for viewers and short enough for editors.",
     "exercises": [
@@ -5650,8 +5690,8 @@ export const lessons: ChineseLesson[] = [
       { "chinese": "改善时间表", "pinyin": "gǎi shàn shí jiān biǎo", "english": "improvement timeline", "vi": "lộ trình cải thiện" }
     ],
     "dialogue": [
-      { "speaker": "行政总裁", "chinese": "我们先道歉, 再说明补救方案。今天不是找借口的场合。", "pinyin": "Wǒmen xiān dàoqiàn, zài shuōmíng bǔjiù fāng'àn. Jīntiān bù shì zhǎo jièkǒu de chǎnghé.", "english": "We will apologize first, then explain remedies. Today is not the occasion for excuses.", "vi": "Chúng tôi xin lỗi trước, rồi trình bày phương án khắc phục. Hôm nay không phải nơi để viện cớ." },
-      { "speaker": "记者", "chinese": "谁会为这次失误负责?", "pinyin": "Shéi huì wèi zhè cì shīwù fùzé?", "english": "Who will take responsibility for this failure?", "vi": "Ai sẽ chịu trách nhiệm cho sai sót lần này?" }
+      { cell_id: "1e37fe2f-306e-444e-a8d8-4b0feb03ed22", "speaker": "行政总裁", "chinese": "我们先道歉, 再说明补救方案。今天不是找借口的场合。", "pinyin": "Wǒmen xiān dàoqiàn, zài shuōmíng bǔjiù fāng'àn. Jīntiān bù shì zhǎo jièkǒu de chǎnghé.", "english": "We will apologize first, then explain remedies. Today is not the occasion for excuses.", "vi": "Chúng tôi xin lỗi trước, rồi trình bày phương án khắc phục. Hôm nay không phải nơi để viện cớ." },
+      { cell_id: "6cca2672-7a4d-4c1f-922a-aa714fe4a23b", "speaker": "记者", "chinese": "谁会为这次失误负责?", "pinyin": "Shéi huì wèi zhè cì shīwù fùzé?", "english": "Who will take responsibility for this failure?", "vi": "Ai sẽ chịu trách nhiệm cho sai sót lần này?" }
     ],
     "register_notes": "In overseas Chinese institutional apologies, the apology must preserve dignity without evasion. Use direct responsibility, concrete repair, and a time-bound review. Avoid saying only 'we regret any inconvenience'.",
     "exercises": [
@@ -5692,8 +5732,8 @@ export const lessons: ChineseLesson[] = [
       { "chinese": "时间线", "pinyin": "shí jiān xiàn", "english": "timeline", "vi": "dòng thời gian" }
     ],
     "dialogue": [
-      { "speaker": "公关顾问", "chinese": "这部分可以背景理解, 但请不要直接引用姓名和数字。", "pinyin": "Zhè bùfen kěyǐ bèijǐng lǐjiě, dàn qǐng bùyào zhíjiē yǐnyòng xìngmíng hé shùzì.", "english": "This part is for background understanding, but please do not directly quote names or figures.", "vi": "Phần này dùng để hiểu bối cảnh, nhưng xin đừng trích dẫn trực tiếp tên và số liệu." },
-      { "speaker": "记者", "chinese": "明白, 我可以写'知情人士表示'吗?", "pinyin": "Míngbái, wǒ kěyǐ xiě 'zhīqíng rénshì biǎoshì' ma?", "english": "Understood. May I write 'a person familiar with the matter said'?", "vi": "Hiểu rồi. Tôi có thể viết 'người nắm sự việc cho biết' không?" }
+      { cell_id: "072d5d49-6040-42b5-ac2c-cc832f715d62", "speaker": "公关顾问", "chinese": "这部分可以背景理解, 但请不要直接引用姓名和数字。", "pinyin": "Zhè bùfen kěyǐ bèijǐng lǐjiě, dàn qǐng bùyào zhíjiē yǐnyòng xìngmíng hé shùzì.", "english": "This part is for background understanding, but please do not directly quote names or figures.", "vi": "Phần này dùng để hiểu bối cảnh, nhưng xin đừng trích dẫn trực tiếp tên và số liệu." },
+      { cell_id: "c104ea82-00a9-4e2e-aa42-cd0a8ea90e0f", "speaker": "记者", "chinese": "明白, 我可以写'知情人士表示'吗?", "pinyin": "Míngbái, wǒ kěyǐ xiě 'zhīqíng rénshì biǎoshì' ma?", "english": "Understood. May I write 'a person familiar with the matter said'?", "vi": "Hiểu rồi. Tôi có thể viết 'người nắm sự việc cho biết' không?" }
     ],
     "register_notes": "Background briefings require explicit ground rules. In HK/Taiwan/SG media settings, do not assume 'off the record' means the same thing to every outlet; state attribution rules before substance.",
     "exercises": [
@@ -5734,8 +5774,8 @@ export const lessons: ChineseLesson[] = [
       { "chinese": "纠正", "pinyin": "jiū zhèng", "english": "correct", "vi": "chỉnh lại" }
     ],
     "dialogue": [
-      { "speaker": "记者", "chinese": "你们是不是等到舆论爆发才愿意承认错误?", "pinyin": "Nǐmen shì bù shì děng dào yúlùn bàofā cái yuànyì chéngrèn cuòwù?", "english": "Did you only admit the mistake after public opinion erupted?", "vi": "Có phải các anh chị chỉ chịu nhận lỗi sau khi dư luận bùng lên không?" },
-      { "speaker": "发言人", "chinese": "我不同意这个前提, 但我理解大家为什么会有这种感受。我们昨天公开的时间线可以说明处理过程。", "pinyin": "Wǒ bù tóngyì zhège qiántí, dàn wǒ lǐjiě dàjiā wèishéme huì yǒu zhè zhǒng gǎnshòu. Wǒmen zuótiān gōngkāi de shíjiānxiàn kěyǐ shuōmíng chǔlǐ guòchéng.", "english": "I do not agree with that premise, but I understand why people may feel that way. The timeline we released yesterday explains the handling process.", "vi": "Tôi không đồng ý với tiền đề đó, nhưng tôi hiểu vì sao mọi người có cảm giác như vậy. Dòng thời gian chúng tôi công bố hôm qua giải thích quá trình xử lý." }
+      { cell_id: "3fe8fe98-aa2c-404f-8772-e97e5ac055b7", "speaker": "记者", "chinese": "你们是不是等到舆论爆发才愿意承认错误?", "pinyin": "Nǐmen shì bù shì děng dào yúlùn bàofā cái yuànyì chéngrèn cuòwù?", "english": "Did you only admit the mistake after public opinion erupted?", "vi": "Có phải các anh chị chỉ chịu nhận lỗi sau khi dư luận bùng lên không?" },
+      { cell_id: "b37d168e-8f7f-4045-83dc-fb107dea4be7", "speaker": "发言人", "chinese": "我不同意这个前提, 但我理解大家为什么会有这种感受。我们昨天公开的时间线可以说明处理过程。", "pinyin": "Wǒ bù tóngyì zhège qiántí, dàn wǒ lǐjiě dàjiā wèishéme huì yǒu zhè zhǒng gǎnshòu. Wǒmen zuótiān gōngkāi de shíjiānxiàn kěyǐ shuōmíng chǔlǐ guòchéng.", "english": "I do not agree with that premise, but I understand why people may feel that way. The timeline we released yesterday explains the handling process.", "vi": "Tôi không đồng ý với tiền đề đó, nhưng tôi hiểu vì sao mọi người có cảm giác như vậy. Dòng thời gian chúng tôi công bố hôm qua giải thích quá trình xử lý." }
     ],
     "register_notes": "Hostile Q&A in Chinese public settings needs firmness without face-loss escalation. Separate premise, emotion, and answer. Do not accuse the journalist; correct the frame and return to verifiable facts.",
     "exercises": [
@@ -5776,8 +5816,8 @@ export const lessons: ChineseLesson[] = [
       { "chinese": "暂不评论", "pinyin": "zàn bù píng lùn", "english": "no comment for now", "vi": "tạm thời không bình luận" }
     ],
     "dialogue": [
-      { "speaker": "记者", "chinese": "这个议题今天为什么没有更新?", "pinyin": "Zhège yìtí jīntiān wèishéme méiyǒu gēngxīn?", "english": "Why is there no update on this issue today?", "vi": "Vì sao hôm nay vấn đề này không có cập nhật?" },
-      { "speaker": "发言人", "chinese": "因为复核还在进行, 我们不想用不完整的信息误导公众。下周二前会给出书面更新。", "pinyin": "Yīnwèi fùhé hái zài jìnxíng, wǒmen bù xiǎng yòng bù wánzhěng de xìnxī wùdǎo gōngzhòng. Xià zhōu'èr qián huì gěi chū shūmiàn gēngxīn.", "english": "Because the review is still ongoing, we do not want to mislead the public with incomplete information. We will provide a written update before next Tuesday.", "vi": "Vì rà soát vẫn đang diễn ra, chúng tôi không muốn dùng thông tin chưa đầy đủ để làm công chúng hiểu sai. Trước thứ Ba tuần sau sẽ có cập nhật bằng văn bản." }
+      { cell_id: "cf891d79-194a-4d0e-b0b9-3128211ca338", "speaker": "记者", "chinese": "这个议题今天为什么没有更新?", "pinyin": "Zhège yìtí jīntiān wèishéme méiyǒu gēngxīn?", "english": "Why is there no update on this issue today?", "vi": "Vì sao hôm nay vấn đề này không có cập nhật?" },
+      { cell_id: "6547d5fb-f40a-4537-a2e9-5387750a80f3", "speaker": "发言人", "chinese": "因为复核还在进行, 我们不想用不完整的信息误导公众。下周二前会给出书面更新。", "pinyin": "Yīnwèi fùhé hái zài jìnxíng, wǒmen bù xiǎng yòng bù wánzhěng de xìnxī wùdǎo gōngzhòng. Xià zhōu'èr qián huì gěi chū shūmiàn gēngxīn.", "english": "Because the review is still ongoing, we do not want to mislead the public with incomplete information. We will provide a written update before next Tuesday.", "vi": "Vì rà soát vẫn đang diễn ra, chúng tôi không muốn dùng thông tin chưa đầy đủ để làm công chúng hiểu sai. Trước thứ Ba tuần sau sẽ có cập nhật bằng văn bản." }
     ],
     "register_notes": "A weekly spokesperson rhythm builds trust through predictability. It is acceptable to say 'no update' if you pair it with reason, next step, and timing.",
     "exercises": [
@@ -5818,8 +5858,8 @@ export const lessons: ChineseLesson[] = [
       { "chinese": "后续更新", "pinyin": "hòu xù gēng xīn", "english": "follow-up update", "vi": "cập nhật tiếp theo" }
     ],
     "dialogue": [
-      { "speaker": "社媒编辑", "chinese": "这条声明太像聊天, 我建议改成三句: 立场、行动、更新时间。", "pinyin": "Zhè tiáo shēngmíng tài xiàng liáotiān, wǒ jiànyì gǎi chéng sān jù: lìchǎng, xíngdòng, gēngxīn shíjiān.", "english": "This statement sounds too much like chat. I suggest three sentences: position, action, update time.", "vi": "Tuyên bố này giống trò chuyện quá. Tôi đề nghị sửa thành ba câu: lập trường, hành động, thời gian cập nhật." },
-      { "speaker": "主管", "chinese": "同意, 也把评论区置顶回复准备好, 避免每个问题都临场发挥。", "pinyin": "Tóngyì, yě bǎ pínglùn qū zhìdǐng huífù zhǔnbèi hǎo, bìmiǎn měi gè wèntí dōu línchǎng fāhuī.", "english": "Agreed. Also prepare a pinned reply for comments so we do not improvise every answer.", "vi": "Đồng ý. Chuẩn bị cả trả lời ghim trong phần bình luận để khỏi ứng biến từng câu." }
+      { cell_id: "f604183a-2c3c-4240-b507-c61b9413a48c", "speaker": "社媒编辑", "chinese": "这条声明太像聊天, 我建议改成三句: 立场、行动、更新时间。", "pinyin": "Zhè tiáo shēngmíng tài xiàng liáotiān, wǒ jiànyì gǎi chéng sān jù: lìchǎng, xíngdòng, gēngxīn shíjiān.", "english": "This statement sounds too much like chat. I suggest three sentences: position, action, update time.", "vi": "Tuyên bố này giống trò chuyện quá. Tôi đề nghị sửa thành ba câu: lập trường, hành động, thời gian cập nhật." },
+      { cell_id: "8243aaa5-75c6-411f-83d8-1265d4904fb2", "speaker": "主管", "chinese": "同意, 也把评论区置顶回复准备好, 避免每个问题都临场发挥。", "pinyin": "Tóngyì, yě bǎ pínglùn qū zhìdǐng huífù zhǔnbèi hǎo, bìmiǎn měi gè wèntí dōu línchǎng fāhuī.", "english": "Agreed. Also prepare a pinned reply for comments so we do not improvise every answer.", "vi": "Đồng ý. Chuẩn bị cả trả lời ghim trong phần bình luận để khỏi ứng biến từng câu." }
     ],
     "register_notes": "Official Chinese social copy should be compact, not cute. Assume screenshot circulation, keep the line accountable, and point readers to one verified update channel.",
     "exercises": [

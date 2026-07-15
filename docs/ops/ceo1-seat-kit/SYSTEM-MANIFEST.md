@@ -64,3 +64,19 @@ Any change above `concurrent = 2` requires updating `docs/ops/mac-runner-node-mo
 - Design note: `docs/design/adaptive-mastery-engine.md`.
 - Purpose: pure engine for per-skill BKT mastery state, `ts-fsrs` review scheduling, and ranked next-item selection with stable reason codes.
 - Status: architecture/V1 selector only; parameter tuning remains post-data after real learner histories exist.
+
+### Learner profile spine Phase 1a
+
+- Migration: `supabase/migrations/20260723000000_learner_profile_state.sql`.
+- Edge writer: `supabase/functions/learner-profile-write/`.
+- Client writer: `src/lib/learner-profile/profileWriter.ts`.
+- Purpose: durable server-side skill state and error-pattern counters with text-free writes from correction surfaces.
+- Status: schema and write paths only; UI, profile reads, and historical backfill are later phases. Supabase migration and edge deploy are owner-applied.
+
+### Learner profile progress surface Phase 1b
+
+- Route: `src/pages/Progress.tsx` at `/progress`.
+- Component: `src/components/learner-profile/LearnerProfileProgressCards.tsx`.
+- Data sources: direct own-row Supabase reads from `learner_skill_state`, `learner_error_patterns`, and `study_log`.
+- Purpose: learner-facing skill bars, top cause-level error patterns, and existing study-log rollup.
+- Status: read-only UI surface; no schema changes or edge deploy.

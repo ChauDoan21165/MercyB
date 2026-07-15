@@ -16,6 +16,7 @@
 import { test, expect, type TestInfo } from "@playwright/test";
 import { GoTrueClient } from "@supabase/auth-js";
 
+import { CORRECTION_SOURCE_SYNTHETIC_MARKER_KEY } from "../../src/lib/ai-tutor/correctionSourceSyntheticMarker";
 import {
   SYNTH_BASE_URL,
   SYNTH_EMAIL,
@@ -27,7 +28,10 @@ import {
 } from "./env";
 import { isDeployShaAcceptable } from "./expectedDeploy";
 import type { JourneyResult } from "./report";
-import { selectSeededCorrectionProbe } from "./seededCorrectionProbes";
+import {
+  selectSeededCorrectionProbes,
+  type SeededCorrectionProbe,
+} from "./seededCorrectionProbes";
 
 test.describe.configure({ mode: "default", timeout: 90_000 });
 test.skip(
@@ -36,7 +40,12 @@ test.skip(
 );
 
 const FEEDBACK_TABLE = "learning_events";
+const CORRECTION_SOURCE_EVENTS_TABLE = "correction_source_events";
 const SINK_WAIT_MS = 60_000; // journey (d) budget
+const DEFER_NOTICE_TITLE = "Đã ghi nhận · Noted";
+const AUDIT_BLOCK_FALLBACK_TEXT =
+  "Mercy chưa sửa chắc câu này bằng bộ quy tắc hiện tại. Bạn có thể chỉnh lại câu ngắn hơn một chút rồi bấm Sửa câu này nhé.";
+const CORRECTION_SOURCE_EVENT_WAIT_MS = 15_000;
 
 function projectRef(url: string): string {
   return new URL(url).host.split(".")[0];
@@ -47,6 +56,154 @@ async function attach(testInfo: TestInfo, r: JourneyResult): Promise<void> {
     body: JSON.stringify(r),
     contentType: "application/json",
   });
+}
+
+async function pinSyntheticLessonState(page: import("@playwright/test").Page): Promise<void> {
+  await page.route("**/rest/v1/conversation_events?**", async (route) => {
+    await route.fulfill({
+      status: 200,
+      contentType: "application/json",
+      headers: { "content-range": "0-0/0" },
+      body: "[]",
+    });
+  });
+  await page.route("**/rest/v1/conversations?**", async (route) => {
+    await route.fulfill({
+      status: 200,
+      contentType: "application/json",
+      headers: { "content-range": "0-0/0" },
+      body: route.request().method() === "HEAD" ? "" : "[]",
+    });
+  });
+}
+
+function expectsImmediateCorrection(probe: SeededCorrectionProbe): boolean {
+  return probe.expectedProductPath === "immediate_correction";
+}
+
+function expectedShadowAction(probe: SeededCorrectionProbe): "correct_now" | "defer_to_recap" {
+  return probe.expectedShadowPath === "target_form_correct_now" ? "correct_now" : "defer_to_recap";
+}
+
+function orderedCorrectionProbes(
+  probes: readonly SeededCorrectionProbe[],
+  feedbackProbe: SeededCorrectionProbe,
+): readonly SeededCorrectionProbe[] {
+  return [...probes.filter((probe) => probe.id !== feedbackProbe.id), feedbackProbe];
+}
+
+async function assertSyntheticMarkerOnCurrentOrigin(
+  page: import("@playwright/test").Page,
+): Promise<void> {
+  const marker = await page.evaluate((key) => {
+    window.localStorage.setItem(key, "1");
+    return window.localStorage.getItem(key);
+  }, CORRECTION_SOURCE_SYNTHETIC_MARKER_KEY);
+  expect(marker).toBe("1");
+}
+
+async function submitCorrectionProbe(
+  page: import("@playwright/test").Page,
+  probe: SeededCorrectionProbe,
+): Promise<void> {
+  await page.goto(`${SYNTH_BASE_URL}/ai-tutor`, { waitUntil: "networkidle" });
+  await assertSyntheticMarkerOnCurrentOrigin(page);
+  const field = page.getByRole("textbox").first();
+  await field.click();
+  await field.fill(probe.sentence);
+  // Grammar submit is <button type="button"> (CorrectionMode.tsx), label
+  // ui.submit = "Sửa câu này" (vi) / "Correct my sentence" (en). Match the FULL
+  // submit label — NOT the bare "Sửa câu", which also names the mode-switcher
+  // TAB (already active on this surface).
+  await page.getByRole("button", { name: /Sửa câu này|Correct my sentence/i }).first().click();
+}
+
+async function readLatestShadowDecision(
+  page: import("@playwright/test").Page,
+  accessToken: string,
+  probe: SeededCorrectionProbe,
+  since: Date,
+): Promise<string> {
+  const base = SYNTH_SUPABASE_URL.replace(/\/$/, "");
+  const params = new URLSearchParams({
+    select: "event_type,rule_or_detector_id,payload,created_at",
+    event_type: "eq.lpi_policy_decision",
+    rule_or_detector_id: `eq.${probe.expectedDetector}`,
+    created_at: `gte.${since.toISOString()}`,
+    order: "created_at.desc",
+    limit: "1",
+  });
+  const resp = await page.request.get(`${base}/rest/v1/${FEEDBACK_TABLE}?${params.toString()}`, {
+    headers: { apikey: SYNTH_SUPABASE_ANON_KEY, Authorization: `Bearer ${accessToken}` },
+    timeout: 15_000,
+  });
+  if (!resp.ok()) return `shadow_unchecked: rest ${resp.status()}`;
+  const rows = (await resp.json()) as Array<{ payload?: { action?: string; reason?: string } | null }>;
+  const row = rows[0];
+  if (!row) return `shadow_missing: expected ${expectedShadowAction(probe)}`;
+  return `shadow=${row.payload?.action ?? "unknown"} reason=${row.payload?.reason ?? "unknown"} expected=${expectedShadowAction(probe)}`;
+}
+
+async function waitForCorrectionSourceEventInsert(
+  page: import("@playwright/test").Page,
+  sources: readonly string[] = ["local_corrected"],
+): Promise<string> {
+  const resp = await page.waitForResponse(
+    (candidate) => {
+      if (candidate.request().method() !== "POST") return false;
+      if (!candidate.url().includes(`/rest/v1/${CORRECTION_SOURCE_EVENTS_TABLE}`)) return false;
+      const body = candidate.request().postData() ?? "";
+      return sources.some((source) => body.includes(`"source":"${source}"`)) && body.includes('"is_synthetic":true');
+    },
+    { timeout: CORRECTION_SOURCE_EVENT_WAIT_MS },
+  );
+  if (!resp.ok()) {
+    throw new Error(`correction_source_events insert returned ${resp.status()}: ${(await resp.text()).slice(0, 120)}`);
+  }
+  const body = resp.request().postData() ?? "";
+  const source = sources.find((candidate) => body.includes(`"source":"${candidate}"`)) ?? sources.join("|");
+  return `correction_source_events ${source} synthetic insert completed (${resp.status()})`;
+}
+
+async function waitForAiSentenceCorrectionResponse(
+  page: import("@playwright/test").Page,
+  probe: SeededCorrectionProbe,
+): Promise<string> {
+  const resp = await page.waitForResponse(
+    (candidate) => {
+      if (candidate.request().method() !== "POST") return false;
+      if (!candidate.url().includes("/api/mercy-ai")) return false;
+      const body = candidate.request().postData() ?? "";
+      return body.includes('"mode":"sentence-correction"') && body.includes(probe.sentence);
+    },
+    { timeout: 30_000 },
+  );
+  const body = await resp.text().catch(() => "");
+  if (!resp.ok()) {
+    throw new Error(`/api/mercy-ai returned ${resp.status()}: ${body.slice(0, 160)}`);
+  }
+  const source = body.includes('"confident":false') ? "server_no_correction_candidate" : "server_response";
+  return `/api/mercy-ai ${source} completed (${resp.status()})`;
+}
+
+async function waitForAiCorrectionVisibleOrAuditBlocked(
+  page: import("@playwright/test").Page,
+): Promise<"correction_card" | "audit_blocked"> {
+  const auditBlockedConsole = page.waitForEvent("console", {
+    predicate: (msg) => msg.text().includes("[MercySelfAudit] AI correction blocked:"),
+    timeout: 30_000,
+  });
+  const correctionCard = page
+    .getByTestId("correction-feedback-helpful")
+    .waitFor({ state: "visible", timeout: 30_000 })
+    .then(() => "correction_card" as const);
+  const auditBlocked = auditBlockedConsole
+    .then(async () => {
+      await expect(page.getByText(AUDIT_BLOCK_FALLBACK_TEXT, { exact: true })).toBeVisible({ timeout: 10_000 });
+      await expect(page.getByTestId("correction-feedback-helpful")).toHaveCount(0);
+      return "audit_blocked" as const;
+    });
+  return Promise.race([correctionCard, auditBlocked]);
 }
 
 /**
@@ -100,7 +257,7 @@ async function seedSession(
   const blob = captured[key];
   if (!blob) throw new Error("GoTrueClient persisted no session blob under the storage key");
   await context.addInitScript(
-    ([k, v, pairKey, pairVal, nativeKey, nativeVal]) => {
+    ([k, v, pairKey, pairVal, nativeKey, nativeVal, syntheticMarkerKey]) => {
       window.localStorage.setItem(k, v);
       // The synthetic account authenticates via API injection and never runs the
       // /ai-tutor language picker, so it has no stored pair. Bare /ai-tutor gates
@@ -110,6 +267,7 @@ async function seedSession(
       // (readAnonymousPair shape {native, targets[]} + the nativeLang mirror).
       window.localStorage.setItem(pairKey, pairVal);
       window.localStorage.setItem(nativeKey, nativeVal);
+      window.localStorage.setItem(syntheticMarkerKey, "1");
     },
     [
       key,
@@ -118,6 +276,7 @@ async function seedSession(
       JSON.stringify({ native: "vi", targets: ["en"] }),
       "mercyblade.nativeLang",
       "vi",
+      CORRECTION_SOURCE_SYNTHETIC_MARKER_KEY,
     ] as const,
   );
   return { accessToken: data.session.access_token };
@@ -152,45 +311,107 @@ test("(a) valid credential yields a working authed session (no bounce)", async (
 // ── (b) correction renders · (c) label shows · (d) row lands in learning_events ─
 test("(b/c/d) correction → feedback tap → row lands with rule_or_detector_id", async ({ page, context }, testInfo) => {
   const { accessToken } = await seedSession(context);
-  const seededProbe = selectSeededCorrectionProbe();
+  const seededProbes = selectSeededCorrectionProbes();
+  const feedbackProbe = seededProbes.find(expectsImmediateCorrection);
+  await pinSyntheticLessonState(page);
 
-  // (b) submit a seeded-error sentence in grammar mode and get a correction.
+  // (b) submit seeded-error sentences in grammar mode. The seed contract tracks
+  // the product path, not just LPI shadow telemetry:
+  // - immediate_correction: correction card + feedback buttons
+  // - legacy_timing_defer: true UI defer notice, no feedback buttons
+  // - lpi_shadow_defer: AI server response + server telemetry must complete,
+  //   then either the correction card renders or the explicit self-audit block
+  //   path renders the fallback panel. Shadow defer is telemetry only while
+  //   VITE_LPI_POLICY_MODE=shadow.
   const tB = Date.now();
   let bOk = false, bDetail = "";
-  try {
-    await page.goto(`${SYNTH_BASE_URL}/ai-tutor`, { waitUntil: "networkidle" });
-    const field = page.getByRole("textbox").first();
-    await field.click();
-    await field.fill(seededProbe.sentence);
-    // Grammar submit is <button type="button"> (CorrectionMode.tsx:140), label
-    // ui.submit = "Sửa câu này" (vi) / "Correct my sentence" (en). Match the FULL
-    // submit label — NOT the bare "Sửa câu", which also names the mode-switcher
-    // TAB (already active on this surface). `.first()` on the loose regex clicked
-    // that no-op tab, so the sentence was never submitted and the correction
-    // never rendered (run #9: output stuck at "Sẵn sàng sửa câu"). Same wrong-
-    // button class as journey (a). The unit test uses this exact name too
-    // (staleSessionGuard.test.tsx: getByRole button "Sửa câu này").
-    await page.getByRole("button", { name: /Sửa câu này|Correct my sentence/i }).first().click();
-    // The correction is "rendered" iff the feedback buttons mount (they only
-    // render for a correction that carries a real rule_or_detector_id).
-    await expect(page.getByTestId("correction-feedback-helpful")).toBeVisible({ timeout: 30_000 });
-    bOk = true;
-    bDetail = `correction rendered with feedback buttons; seed=${seededProbe.id}; expectedDetector=${seededProbe.expectedDetector}; expectedShadowPath=${seededProbe.expectedShadowPath}`;
-  } catch (e) {
-    bDetail = redact(`no correction/buttons: ${(e as Error).message}`);
+  let feedbackReady = false;
+  const details: string[] = [];
+  const failures: string[] = [];
+  if (!feedbackProbe) {
+    failures.push("seed rotation has no immediate-correction probe");
+  } else {
+    for (const probe of orderedCorrectionProbes(seededProbes, feedbackProbe)) {
+      const submittedAt = new Date();
+      let correctionSourceInsert: Promise<string> | null = null;
+      let aiSentenceCorrectionResponse: Promise<string> | null = null;
+      try {
+        correctionSourceInsert = probe.id === feedbackProbe.id
+          ? waitForCorrectionSourceEventInsert(page, ["local_corrected"])
+          : probe.expectedProductPath === "lpi_shadow_defer"
+            ? waitForCorrectionSourceEventInsert(page, ["server_corrected", "server_no_correction"])
+            : null;
+        aiSentenceCorrectionResponse = probe.expectedProductPath === "lpi_shadow_defer"
+          ? waitForAiSentenceCorrectionResponse(page, probe)
+          : null;
+        await submitCorrectionProbe(page, probe);
+
+        if (probe.expectedProductPath === "legacy_timing_defer") {
+          await expect(page.getByText(DEFER_NOTICE_TITLE, { exact: true })).toBeVisible({ timeout: 30_000 });
+          await expect(page.getByTestId("correction-feedback-helpful")).toHaveCount(0);
+          details.push(
+            `${probe.id}: legacy timing defer notice rendered; no correction feedback expected; expectedDetector=${probe.expectedDetector}`,
+          );
+          continue;
+        }
+
+        if (probe.expectedProductPath === "lpi_shadow_defer") {
+          const aiResponseDetail = aiSentenceCorrectionResponse
+            ? await aiSentenceCorrectionResponse
+            : "ai_response_not_checked";
+          const correctionSourceDetail = correctionSourceInsert
+            ? await correctionSourceInsert
+            : "correction_source_events_not_checked";
+          const visibleOutcome = await waitForAiCorrectionVisibleOrAuditBlocked(page);
+          const shadowDecision = await readLatestShadowDecision(page, accessToken, probe, submittedAt)
+            .catch((e) => `shadow_unchecked: ${redact((e as Error).message)}`);
+          details.push(
+            visibleOutcome === "audit_blocked"
+              ? `${probe.id}: audit_blocked; productPath=${probe.expectedProductPath}; expectedDetector=${probe.expectedDetector}; expectedShadowPath=${probe.expectedShadowPath}; ${aiResponseDetail}; ${correctionSourceDetail}; fallback panel rendered; ${shadowDecision}`
+              : `${probe.id}: correction rendered with feedback buttons after AI path; productPath=${probe.expectedProductPath}; expectedDetector=${probe.expectedDetector}; expectedShadowPath=${probe.expectedShadowPath}; ${aiResponseDetail}; ${correctionSourceDetail}; ${shadowDecision}`,
+          );
+          continue;
+        }
+
+        // The correction is "rendered" iff the feedback buttons mount (they only
+        // render for a correction that carries a real rule_or_detector_id).
+        await expect(page.getByTestId("correction-feedback-helpful")).toBeVisible({ timeout: 30_000 });
+        const correctionSourceDetail = correctionSourceInsert
+          ? await correctionSourceInsert
+          : "correction_source_events_not_checked";
+        const shadowDecision = probe.expectedProductPath === "lpi_shadow_defer"
+          ? await readLatestShadowDecision(page, accessToken, probe, submittedAt)
+            .catch((e) => `shadow_unchecked: ${redact((e as Error).message)}`)
+          : "shadow_not_checked";
+        details.push(
+          `${probe.id}: correction rendered with feedback buttons; productPath=${probe.expectedProductPath}; expectedDetector=${probe.expectedDetector}; expectedShadowPath=${probe.expectedShadowPath}; ${correctionSourceDetail}; ${shadowDecision}`,
+        );
+        if (probe.id === feedbackProbe.id) feedbackReady = true;
+      } catch (e) {
+        if (correctionSourceInsert) {
+          await correctionSourceInsert.catch(() => undefined);
+        }
+        if (aiSentenceCorrectionResponse) {
+          await aiSentenceCorrectionResponse.catch(() => undefined);
+        }
+        failures.push(`${probe.id}: ${redact((e as Error).message)}`);
+      }
+    }
   }
+  bOk = failures.length === 0 && feedbackReady;
+  bDetail = [...details, ...failures.map((failure) => `FAIL ${failure}`)].join(" | ");
   await attach(testInfo, { id: "b", name: "Sửa câu renders a correction", ok: bOk, detail: bDetail, ms: Date.now() - tB });
 
   // (c) tap helpful → visible "✓ Đã ghi nhận · Recorded".
   const tC = Date.now();
   let cOk = false, cDetail = "";
   const tapAt = new Date();
-  if (bOk) {
+  if (feedbackReady) {
     try {
       await page.getByTestId("correction-feedback-helpful").click();
       await expect(page.getByTestId("correction-feedback-thanks")).toBeVisible({ timeout: 10_000 });
       cOk = true;
-      cDetail = "Đã ghi nhận label visible";
+      cDetail = `Đã ghi nhận label visible; seed=${feedbackProbe?.id ?? "unknown"}`;
     } catch (e) {
       cDetail = redact(`no ack label: ${(e as Error).message}`);
     }
@@ -226,7 +447,7 @@ test("(b/c/d) correction → feedback tap → row lands with rule_or_detector_id
         const rows = (await resp.json()) as Array<{ id: string; rule_or_detector_id: string }>;
         if (rows.length) {
           dOk = true;
-          dDetail = `row ${rows[0].id} rule=${rows[0].rule_or_detector_id}; seed=${seededProbe.id}`;
+          dDetail = `row ${rows[0].id} rule=${rows[0].rule_or_detector_id}; seed=${feedbackProbe?.id ?? "unknown"}`;
           break;
         }
         await new Promise((r) => setTimeout(r, 3_000));

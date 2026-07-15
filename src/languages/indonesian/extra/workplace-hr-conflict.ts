@@ -18,6 +18,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   /** Indonesian word/phrase. */
   word: string;
   /** English meaning. */
@@ -33,6 +34,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   /** Indonesian line. */
   text: string;
@@ -243,6 +245,7 @@ export const workplaceHrConflictLessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: in workplace conflict, do not open with `dia salah` or `saya marah`. A safer frame is: `Saya ingin membicarakan konflik kerja`, then describe the `kronologi kejadian`, express impact with `saya merasa...`, and propose a `solusi profesional`. With HRD, use `saya`, `Bapak/Ibu`, `mohon`, `apakah`, and `secara tertulis`; avoid `aku/kamu` and slang.",
     vocabulary: [
       {
+        cell_id: "cd72901f-77d8-4322-a1ab-d8f0ad68bc62",
         word: "konflik kerja",
         en: "workplace conflict",
         vi: "mâu thuẫn công việc",
@@ -251,6 +254,7 @@ export const workplaceHrConflictLessons: IndonesianLesson[] = [
         pronunciation_en: "kon-FLIK KER-ja",
       },
       {
+        cell_id: "b4646f8a-1244-4685-8a91-b95913f754be",
         word: "HRD",
         en: "human resources department",
         vi: "phòng nhân sự",
@@ -259,6 +263,7 @@ export const workplaceHrConflictLessons: IndonesianLesson[] = [
         pronunciation_en: "ha-er-DAY",
       },
       {
+        cell_id: "05848715-a10c-4b1a-a539-ce56b4e278fa",
         word: "mediasi",
         en: "mediation",
         vi: "hòa giải",
@@ -267,6 +272,7 @@ export const workplaceHrConflictLessons: IndonesianLesson[] = [
         pronunciation_en: "me-dee-A-see",
       },
       {
+        cell_id: "f05b71a6-a3c9-4644-870d-139da24e407f",
         word: "teguran",
         en: "warning / reprimand",
         vi: "nhắc nhở / cảnh cáo",
@@ -275,6 +281,7 @@ export const workplaceHrConflictLessons: IndonesianLesson[] = [
         pronunciation_en: "te-GOO-ran",
       },
       {
+        cell_id: "b49e2397-847d-431c-84d5-c33cfc782a4f",
         word: "surat peringatan",
         en: "warning letter",
         vi: "thư cảnh cáo",
@@ -283,6 +290,7 @@ export const workplaceHrConflictLessons: IndonesianLesson[] = [
         pronunciation_en: "SOO-rat pe-REE-ngat-an",
       },
       {
+        cell_id: "db8c28b2-544c-445b-a587-dd8f5ba1e3ef",
         word: "rekan kerja",
         en: "coworker / colleague",
         vi: "đồng nghiệp",
@@ -291,6 +299,7 @@ export const workplaceHrConflictLessons: IndonesianLesson[] = [
         pronunciation_en: "re-KAN KER-ja",
       },
       {
+        cell_id: "439e28d8-72a7-43e8-88ae-ba2c3fda15a2",
         word: "atasan",
         en: "superior / manager",
         vi: "cấp trên / sếp",
@@ -299,6 +308,7 @@ export const workplaceHrConflictLessons: IndonesianLesson[] = [
         pronunciation_en: "a-TA-san",
       },
       {
+        cell_id: "d93e8f1b-fee3-4caf-999a-ba040b93268c",
         word: "kronologi kejadian",
         en: "chronology of events",
         vi: "diễn biến sự việc",
@@ -307,6 +317,7 @@ export const workplaceHrConflictLessons: IndonesianLesson[] = [
         pronunciation_en: "kro-no-lo-GI ke-JA-dee-an",
       },
       {
+        cell_id: "1fa012c1-4b0e-4f18-a049-e11abfe9322a",
         word: "solusi profesional",
         en: "professional solution",
         vi: "giải pháp chuyên nghiệp",
@@ -315,6 +326,7 @@ export const workplaceHrConflictLessons: IndonesianLesson[] = [
         pronunciation_en: "so-LOO-see pro-fe-see-o-NAL",
       },
       {
+        cell_id: "0e5709b6-21f1-43b1-9d17-0f39596c0faf",
         word: "secara tertulis",
         en: "in writing",
         vi: "bằng văn bản",
@@ -325,30 +337,35 @@ export const workplaceHrConflictLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "dc420e6b-0517-4ee8-b4b6-223ab003ec76",
         speaker: "Karyawan",
         text: "Selamat pagi, Bu. Saya ingin membicarakan konflik kerja dengan rekan saya.",
         vi: "Chào buổi sáng chị. Tôi muốn trao đổi về mâu thuẫn công việc với đồng nghiệp của tôi.",
         en: "Good morning, ma'am. I would like to discuss a workplace conflict with my coworker.",
       },
       {
+        cell_id: "797700d8-d412-436f-9430-afd998682ea3",
         speaker: "HRD",
         text: "Baik. Bisa jelaskan kronologi kejadiannya secara tertulis?",
         vi: "Được. Anh/chị có thể giải thích diễn biến sự việc bằng văn bản không?",
         en: "All right. Can you explain the chronology of events in writing?",
       },
       {
+        cell_id: "fe1f81c5-d4ce-4397-a65a-73df559a4839",
         speaker: "Karyawan",
         text: "Bisa, Bu. Saya tidak ingin menyalahkan siapa pun, saya ingin mencari solusi profesional.",
         vi: "Được ạ. Tôi không muốn đổ lỗi cho ai cả, tôi muốn tìm giải pháp chuyên nghiệp.",
         en: "Yes, ma'am. I do not want to blame anyone; I want to find a professional solution.",
       },
       {
+        cell_id: "335fe7a1-13ee-4289-b347-eb27ee82d79b",
         speaker: "HRD",
         text: "Kalau begitu, kami akan mengatur mediasi dengan atasan dan rekan kerja Anda.",
         vi: "Vậy thì chúng tôi sẽ sắp xếp buổi hòa giải với cấp trên và đồng nghiệp của anh/chị.",
         en: "In that case, we will arrange mediation with your manager and coworker.",
       },
       {
+        cell_id: "a5f567bb-ad0e-4685-adcc-05a1c7e66952",
         speaker: "Karyawan",
         text: "Terima kasih. Mohon hasil mediasi dikonfirmasi melalui email.",
         vi: "Cảm ơn. Xin xác nhận kết quả hòa giải qua email.",

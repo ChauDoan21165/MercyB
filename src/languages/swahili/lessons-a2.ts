@@ -29,6 +29,7 @@ type SwahiliSentence = {
 };
 
 type SwahiliVocabEntry = {
+  cell_id?: string;
   sw: string;
   en: string;
   vi: string;
@@ -103,11 +104,11 @@ export const lessons: SwahiliLesson[] = [
       },
     ],
     vocabulary: [
-      { sw: "kuamka", en: "to wake up", vi: "thức dậy", pos: "v." },
-      { sw: "asubuhi", en: "morning", vi: "buổi sáng", pos: "n.", ngeli: "n/n" },
-      { sw: "mswaki", en: "toothbrush", vi: "bàn chải đánh răng", pos: "n.", ngeli: "m/mi" },
-      { sw: "kuoga", en: "to shower/bathe", vi: "tắm", pos: "v." },
-      { sw: "kupumzika", en: "to rest", vi: "nghỉ ngơi", pos: "v." },
+      { cell_id: "eaac2b62-7c28-4c86-b76d-58d88c8d786c", sw: "kuamka", en: "to wake up", vi: "thức dậy", pos: "v." },
+      { cell_id: "23d4ee8a-58f8-46a7-8c9e-837c4a005853", sw: "asubuhi", en: "morning", vi: "buổi sáng", pos: "n.", ngeli: "n/n" },
+      { cell_id: "d5e14f2f-d060-42e0-bbfd-14974bb54fec", sw: "mswaki", en: "toothbrush", vi: "bàn chải đánh răng", pos: "n.", ngeli: "m/mi" },
+      { cell_id: "8bb40ba7-6ab9-48f5-a470-db7db622af39", sw: "kuoga", en: "to shower/bathe", vi: "tắm", pos: "v." },
+      { cell_id: "8d38a2d0-00eb-45b5-85d5-301fb4e6e1a6", sw: "kupumzika", en: "to rest", vi: "nghỉ ngơi", pos: "v." },
     ],
     exercises: [
       {
@@ -169,11 +170,11 @@ export const lessons: SwahiliLesson[] = [
       },
     ],
     vocabulary: [
-      { sw: "bei", en: "price", vi: "giá cả", pos: "n.", ngeli: "n/n" },
-      { sw: "ghali", en: "expensive", vi: "đắt", pos: "adj." },
-      { sw: "kupunguza", en: "to reduce", vi: "giảm bớt", pos: "v." },
-      { sw: "shilingi", en: "shilling", vi: "đồng shilling", pos: "n.", ngeli: "n/n" },
-      { sw: "nyanya", en: "tomatoes", vi: "cà chua", pos: "n.", ngeli: "n/n" },
+      { cell_id: "515dbb22-5f77-403a-a4cc-af76edfdccab", sw: "bei", en: "price", vi: "giá cả", pos: "n.", ngeli: "n/n" },
+      { cell_id: "7ee7a022-f64f-4cb7-9fea-2ff0bdede14f", sw: "ghali", en: "expensive", vi: "đắt", pos: "adj." },
+      { cell_id: "2bc520e5-5cd6-48dd-ba52-bcf63a719610", sw: "kupunguza", en: "to reduce", vi: "giảm bớt", pos: "v." },
+      { cell_id: "a44dded7-0a56-49b6-bb36-56cf7dc29d9b", sw: "shilingi", en: "shilling", vi: "đồng shilling", pos: "n.", ngeli: "n/n" },
+      { cell_id: "418871e1-c3f9-4415-9f9b-e545170bf9f9", sw: "nyanya", en: "tomatoes", vi: "cà chua", pos: "n.", ngeli: "n/n" },
     ],
     exercises: [
       {
@@ -229,11 +230,11 @@ export const lessons: SwahiliLesson[] = [
       },
     ],
     vocabulary: [
-      { sw: "daladala", en: "minibus", vi: "xe buýt nhỏ", pos: "n.", ngeli: "n/n" },
-      { sw: "nauli", en: "fare", vi: "tiền vé", pos: "n.", ngeli: "n/n" },
-      { sw: "kushuka", en: "to get off/descend", vi: "xuống xe", pos: "v." },
-      { sw: "kusimama", en: "to stop/stand", vi: "dừng lại", pos: "v." },
-      { sw: "mpaka", en: "until/up to", vi: "cho đến", pos: "prep." },
+      { cell_id: "90cc5980-9e00-4e60-843d-818bee8c21f1", sw: "daladala", en: "minibus", vi: "xe buýt nhỏ", pos: "n.", ngeli: "n/n" },
+      { cell_id: "77b85e75-f812-4721-8cc0-72d7cb30ff6b", sw: "nauli", en: "fare", vi: "tiền vé", pos: "n.", ngeli: "n/n" },
+      { cell_id: "c70e7c56-24ba-4d28-8b67-0065d16cce16", sw: "kushuka", en: "to get off/descend", vi: "xuống xe", pos: "v." },
+      { cell_id: "e11cc51d-0e59-47ad-aa15-b62616d259a2", sw: "kusimama", en: "to stop/stand", vi: "dừng lại", pos: "v." },
+      { cell_id: "1a22c1ba-249f-4032-8c8d-bf72f88e1aff", sw: "mpaka", en: "until/up to", vi: "cho đến", pos: "prep." },
     ],
     exercises: [
       {
@@ -289,11 +290,11 @@ export const lessons: SwahiliLesson[] = [
       },
     ],
     vocabulary: [
-      { sw: "kesho", en: "tomorrow", vi: "ngày mai", pos: "adv." },
-      { sw: "jana", en: "yesterday", vi: "hôm qua", pos: "adv." },
-      { sw: "tarehe", en: "date", vi: "ngày (trong tháng)", pos: "n.", ngeli: "n/n" },
-      { sw: "kukutana", en: "to meet", vi: "gặp nhau", pos: "v." },
-      { sw: "mwezi", en: "month / moon", vi: "tháng / mặt trăng", pos: "n.", ngeli: "m/mi" },
+      { cell_id: "357c3e93-a09c-4536-8d82-e57b1a7cb67b", sw: "kesho", en: "tomorrow", vi: "ngày mai", pos: "adv." },
+      { cell_id: "bb088d44-532c-409a-ad82-dbaaff8bd664", sw: "jana", en: "yesterday", vi: "hôm qua", pos: "adv." },
+      { cell_id: "c31efd6a-590f-401a-ac5c-d547d6556005", sw: "tarehe", en: "date", vi: "ngày (trong tháng)", pos: "n.", ngeli: "n/n" },
+      { cell_id: "52246f47-3a37-45f3-a7dd-7c1ff160d3e1", sw: "kukutana", en: "to meet", vi: "gặp nhau", pos: "v." },
+      { cell_id: "f64ada9e-99f3-4b92-93ac-921562dc68ae", sw: "mwezi", en: "month / moon", vi: "tháng / mặt trăng", pos: "n.", ngeli: "m/mi" },
     ],
     exercises: [
       {
@@ -349,11 +350,11 @@ export const lessons: SwahiliLesson[] = [
       },
     ],
     vocabulary: [
-      { sw: "jua", en: "sun", vi: "mặt trời", pos: "n.", ngeli: "ji/ma" },
-      { sw: "mvua", en: "rain", vi: "mưa", pos: "n.", ngeli: "n/n" },
-      { sw: "kali", en: "strong / fierce", vi: "mạnh / dữ dội", pos: "adj." },
-      { sw: "msimu", en: "season", vi: "mùa", pos: "n.", ngeli: "m/mi" },
-      { sw: "kunyesha", en: "to rain / fall (rain)", vi: "mưa / rơi", pos: "v." },
+      { cell_id: "ae73165e-2d03-45f9-8e77-908ab701ce46", sw: "jua", en: "sun", vi: "mặt trời", pos: "n.", ngeli: "ji/ma" },
+      { cell_id: "91ad9b24-19aa-4b8e-b585-9f2940219a83", sw: "mvua", en: "rain", vi: "mưa", pos: "n.", ngeli: "n/n" },
+      { cell_id: "81c681e0-4071-46a9-bbb7-ed70a3f724db", sw: "kali", en: "strong / fierce", vi: "mạnh / dữ dội", pos: "adj." },
+      { cell_id: "769081a5-6e50-4952-b593-7c4e4213dc56", sw: "msimu", en: "season", vi: "mùa", pos: "n.", ngeli: "m/mi" },
+      { cell_id: "c29737a7-f84c-4318-8c9c-4e633abc4204", sw: "kunyesha", en: "to rain / fall (rain)", vi: "mưa / rơi", pos: "v." },
     ],
     exercises: [
       {
@@ -409,11 +410,11 @@ export const lessons: SwahiliLesson[] = [
       },
     ],
     vocabulary: [
-      { sw: "nyumba", en: "house", vi: "nhà", pos: "n.", ngeli: "n/n" },
-      { sw: "chumba", en: "room", vi: "phòng", pos: "n.", ngeli: "ki/vi" },
-      { sw: "kodi", en: "rent / tax", vi: "tiền thuê / thuế", pos: "n.", ngeli: "n/n" },
-      { sw: "bafu", en: "bathroom", vi: "phòng tắm", pos: "n.", ngeli: "n/n" },
-      { sw: "jirani", en: "neighbor", vi: "hàng xóm", pos: "n.", ngeli: "ma-" },
+      { cell_id: "cc1ecd0b-d4a5-4830-adb5-cd5abfe247c9", sw: "nyumba", en: "house", vi: "nhà", pos: "n.", ngeli: "n/n" },
+      { cell_id: "42439828-761b-4ff5-8cbe-7d83ac6ad3b4", sw: "chumba", en: "room", vi: "phòng", pos: "n.", ngeli: "ki/vi" },
+      { cell_id: "521463db-840e-46ea-9677-a2cce97ca2c9", sw: "kodi", en: "rent / tax", vi: "tiền thuê / thuế", pos: "n.", ngeli: "n/n" },
+      { cell_id: "144a2703-145e-4cbe-bd67-5ef7dbb3e06b", sw: "bafu", en: "bathroom", vi: "phòng tắm", pos: "n.", ngeli: "n/n" },
+      { cell_id: "d6783850-d208-4d6b-b2a3-380bab8dc9c7", sw: "jirani", en: "neighbor", vi: "hàng xóm", pos: "n.", ngeli: "ma-" },
     ],
     exercises: [
       {

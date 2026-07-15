@@ -13,6 +13,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -22,6 +23,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -208,6 +210,7 @@ export const lessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: `obat` = medicine, `resep` = prescription, `dosis` = dose, `efek samping` = side effect. For symptoms, no passive word is needed: `Saya demam`, `Saya batuk`, `Saya masuk angin`. With body parts, use `hidung saya` or `hidungnya`; for going to a doctor use `ke dokter`, not `di dokter`.",
     vocabulary: [
       {
+        cell_id: "0c1cab7c-8111-4d0d-8e10-b88161081094",
         word: "apotek",
         en: "pharmacy",
         vi: "hiệu thuốc",
@@ -216,6 +219,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "ah-PO-tek",
       },
       {
+        cell_id: "ce4d7102-c3cc-41c8-a7f0-43719b8dbfc5",
         word: "obat bebas",
         en: "over-the-counter medicine",
         vi: "thuốc không cần đơn",
@@ -224,6 +228,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "OH-bat BEH-bas",
       },
       {
+        cell_id: "c0830a22-d637-4721-8a88-f6742d506749",
         word: "resep dokter",
         en: "doctor's prescription",
         vi: "đơn thuốc bác sĩ",
@@ -232,6 +237,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "REH-sep DOK-ter",
       },
       {
+        cell_id: "8e003acf-02a2-4bd1-8d4a-261fc3720332",
         word: "dosis",
         en: "dose / dosage",
         vi: "liều dùng",
@@ -240,6 +246,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "DOH-sis",
       },
       {
+        cell_id: "807253c0-07ea-42ad-aa4b-1f7b51d9dd1c",
         word: "efek samping",
         en: "side effect",
         vi: "tác dụng phụ",
@@ -248,6 +255,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "EH-fek SAM-ping",
       },
       {
+        cell_id: "57462294-98ec-4011-a1d1-fc442f7a57fe",
         word: "alergi",
         en: "allergy",
         vi: "dị ứng",
@@ -256,6 +264,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "ah-LER-gee",
       },
       {
+        cell_id: "269df113-69df-45e5-9cb4-59c8c2d5a43f",
         word: "demam",
         en: "fever",
         vi: "sốt",
@@ -264,6 +273,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "de-MAM",
       },
       {
+        cell_id: "585d0f75-3280-4839-b4f9-d70e0e4f812f",
         word: "batuk",
         en: "cough",
         vi: "ho",
@@ -272,6 +282,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "BAH-took",
       },
       {
+        cell_id: "376734e2-22a8-4ff2-bdab-01a90ac34abe",
         word: "masuk angin",
         en: "wind sickness / feeling chilled and unwell",
         vi: "trúng gió / cảm lạnh kiểu Indonesia",
@@ -280,6 +291,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "MAH-sook AH-ngin",
       },
       {
+        cell_id: "0ff5609d-fd70-4e84-9794-ebfa93b70494",
         word: "gejala",
         en: "symptom",
         vi: "triệu chứng",
@@ -290,30 +302,35 @@ export const lessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "b71598ea-6af0-4054-965c-ce53e5b61870",
         speaker: "Pelanggan",
         text: "Permisi, saya mau cari obat bebas untuk demam dan batuk.",
         vi: "Xin phép, tôi muốn tìm thuốc không cần đơn cho sốt và ho.",
         en: "Excuse me, I want to look for over-the-counter medicine for fever and cough.",
       },
       {
+        cell_id: "b258feb8-4af9-4cfc-83d4-3d57ec508407",
         speaker: "Apoteker",
         text: "Untuk orang dewasa atau anak-anak?",
         vi: "Cho người lớn hay trẻ em?",
         en: "For an adult or a child?",
       },
       {
+        cell_id: "a934d4ae-29d0-4912-a01f-0174767b49e7",
         speaker: "Pelanggan",
         text: "Untuk saya. Saya tidak punya alergi obat.",
         vi: "Cho tôi. Tôi không bị dị ứng thuốc.",
         en: "For me. I do not have a medicine allergy.",
       },
       {
+        cell_id: "e02a1243-16d8-4c9e-a4f2-86abdaba72ff",
         speaker: "Apoteker",
         text: "Minum satu tablet tiga kali sehari setelah makan.",
         vi: "Uống một viên, ngày ba lần sau khi ăn.",
         en: "Take one tablet three times a day after eating.",
       },
       {
+        cell_id: "1db46fe1-908c-422c-8c18-13f05aae0285",
         speaker: "Pelanggan",
         text: "Baik. Apa efek sampingnya?",
         vi: "Được. Tác dụng phụ là gì?",

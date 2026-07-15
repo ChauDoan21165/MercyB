@@ -16,6 +16,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   /** Indonesian word/phrase. */
   word: string;
   /** English meaning. */
@@ -31,6 +32,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   /** Indonesian line. */
   text: string;
@@ -193,6 +195,7 @@ export const lessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: separate three ideas: `sinyal` (signal), `kuota` (data allowance), and `pulsa` (phone credit). When something fails, be specific: `sinyal lemah`, `kuota habis`, `tidak bisa menerima SMS`, or `paket roaming belum aktif`. Use `boleh saya...` when asking to use a hotspot or requesting help from staff.",
     vocabulary: [
       {
+        cell_id: "4c9a737a-ad02-447d-9ccd-e3d269da82f2",
         word: "roaming",
         en: "roaming",
         vi: "chuyển vùng",
@@ -201,6 +204,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "ROA-ming",
       },
       {
+        cell_id: "82254581-5172-416e-8ae2-175ea57f5570",
         word: "kartu SIM lokal",
         en: "local SIM card",
         vi: "thẻ SIM địa phương",
@@ -209,6 +213,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "KAR-too SIM lo-KAL",
       },
       {
+        cell_id: "258c23b5-f6df-4f75-b960-1164069c401c",
         word: "paket data",
         en: "data package",
         vi: "gói dữ liệu",
@@ -217,6 +222,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "PA-ket DA-ta",
       },
       {
+        cell_id: "37d2d847-d094-4cc4-8a0f-a62cf0e40de0",
         word: "sinyal",
         en: "signal",
         vi: "tín hiệu / sóng điện thoại",
@@ -225,6 +231,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "SI-nyal",
       },
       {
+        cell_id: "88245d2f-e8c6-4613-9b86-df12141a83a4",
         word: "kuota habis",
         en: "data quota is used up",
         vi: "hết dung lượng",
@@ -233,6 +240,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "KOO-o-ta HA-bis",
       },
       {
+        cell_id: "7fda3a69-d30d-4f3d-bf9f-2c87a9e68369",
         word: "hotspot",
         en: "hotspot",
         vi: "điểm phát mạng / chia sẻ mạng",
@@ -241,6 +249,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "HOT-spot",
       },
       {
+        cell_id: "debb8776-60e2-4f13-ac56-5225a10ffd94",
         word: "registrasi nomor",
         en: "number registration",
         vi: "đăng ký số điện thoại",
@@ -249,6 +258,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "re-gis-TRA-si NO-mor",
       },
       {
+        cell_id: "f18351b5-713d-491e-a92f-79df87e5ac14",
         word: "pulsa darurat",
         en: "emergency phone credit",
         vi: "ứng tiền điện thoại khẩn cấp",
@@ -259,30 +269,35 @@ export const lessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "47dc29b4-a1dc-49b8-a16b-ea438b267291",
         speaker: "Pelanggan",
         text: "Permisi, saya mau beli kartu SIM lokal untuk satu minggu.",
         vi: "Xin phép, tôi muốn mua SIM địa phương dùng trong một tuần.",
         en: "Excuse me, I want to buy a local SIM card for one week.",
       },
       {
+        cell_id: "c4499bb4-03e4-493d-8582-68eae9529e2a",
         speaker: "Petugas konter",
         text: "Baik. Mau paket data berapa GB?",
         vi: "Được. Anh/chị muốn gói dữ liệu bao nhiêu GB?",
         en: "Sure. How many GB of data would you like?",
       },
       {
+        cell_id: "c51ab94f-1ea9-4f21-98ff-1b0e79f9aaa2",
         speaker: "Pelanggan",
         text: "Yang sinyalnya kuat di Bali dan bisa menerima SMS verifikasi.",
         vi: "Loại có sóng mạnh ở Bali và có thể nhận SMS xác minh.",
         en: "One with strong signal in Bali that can receive verification SMS.",
       },
       {
+        cell_id: "93ee34fb-fd94-4492-8fd3-3f0ead7b22b9",
         speaker: "Petugas konter",
         text: "Untuk registrasi nomor, saya perlu paspor Anda.",
         vi: "Để đăng ký số, tôi cần hộ chiếu của anh/chị.",
         en: "For number registration, I need your passport.",
       },
       {
+        cell_id: "b3e90e6b-7ad0-4d96-9031-42c7abb1fe82",
         speaker: "Pelanggan",
         text: "Kalau kuotanya habis, saya bisa isi ulang di sini?",
         vi: "Nếu hết dung lượng, tôi có thể nạp thêm ở đây không?",

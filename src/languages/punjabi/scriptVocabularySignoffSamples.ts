@@ -18,6 +18,7 @@ export type PunjabiSignoffFocus =
 export type PunjabiSignoffStage = "pre_a11_signoff" | "seal" | "snapshot" | "pre_integration" | "regression";
 
 export type PunjabiScriptVocabularySignoffSample = {
+  cell_id?: string;
   id: string;
   focus: PunjabiSignoffFocus;
   stage: PunjabiSignoffStage;
@@ -36,6 +37,7 @@ export type PunjabiScriptVocabularySignoffSample = {
 };
 
 export type PunjabiScriptVocabularySignoffSection = {
+  cell_id?: string;
   focus: PunjabiSignoffFocus;
   title_vi: string;
   title_en: string;

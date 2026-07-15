@@ -24,6 +24,7 @@ type LessonSentence = {
 };
 
 type VocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -35,6 +36,7 @@ type VocabEntry = {
 };
 
 type DialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -164,6 +166,7 @@ export const bankLoanCreditLessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: in banking, `bunga` means interest, not flower. `cicilan` is the installment, while `pinjaman` is the loan. Use frames: `Berapa bunga ...?`, `Tenornya berapa lama?`, and `Apakah perlu agunan?`.",
     vocabulary: [
       {
+        cell_id: "6f6a3cd5-d585-4419-bad3-84d3dfdc7472",
         word: "pinjaman",
         en: "loan",
         vi: "khoản vay",
@@ -172,6 +175,7 @@ export const bankLoanCreditLessons: IndonesianLesson[] = [
         pronunciation_en: "pin-JA-man",
       },
       {
+        cell_id: "751cc137-6441-45b2-a5eb-3c861b8f9b48",
         word: "mengajukan pinjaman",
         en: "to apply for a loan",
         vi: "nộp hồ sơ vay",
@@ -180,6 +184,7 @@ export const bankLoanCreditLessons: IndonesianLesson[] = [
         pronunciation_en: "meh-nga-JOO-kan pin-JA-man",
       },
       {
+        cell_id: "de701c47-8080-4c35-9028-cd433d8fb7e6",
         word: "bunga",
         en: "interest",
         vi: "lãi / lãi suất",
@@ -188,6 +193,7 @@ export const bankLoanCreditLessons: IndonesianLesson[] = [
         pronunciation_en: "BOONG-a",
       },
       {
+        cell_id: "f2b11125-b55b-4955-b69c-024ccac5f373",
         word: "tenor",
         en: "loan term",
         vi: "kỳ hạn vay",
@@ -196,6 +202,7 @@ export const bankLoanCreditLessons: IndonesianLesson[] = [
         pronunciation_en: "TEH-nor",
       },
       {
+        cell_id: "9fc49c0b-5966-4820-97ef-9ffd8934d770",
         word: "cicilan",
         en: "installment",
         vi: "khoản trả góp",
@@ -204,6 +211,7 @@ export const bankLoanCreditLessons: IndonesianLesson[] = [
         pronunciation_en: "chee-CHEE-lan",
       },
       {
+        cell_id: "674b93a0-83a7-44bb-ad8a-71adba42406a",
         word: "agunan",
         en: "collateral",
         vi: "tài sản thế chấp",
@@ -212,6 +220,7 @@ export const bankLoanCreditLessons: IndonesianLesson[] = [
         pronunciation_en: "a-GOO-nan",
       },
       {
+        cell_id: "65610cef-a24e-4c2c-bdc7-89f182defdb1",
         word: "skor kredit",
         en: "credit score",
         vi: "điểm tín dụng",
@@ -222,24 +231,28 @@ export const bankLoanCreditLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "a1b8d4c3-4dfe-45a5-80af-8096efa593e1",
         speaker: "Nasabah",
         text: "Saya ingin mengajukan pinjaman ke bank.",
         vi: "Tôi muốn nộp hồ sơ vay ngân hàng.",
         en: "I would like to apply for a bank loan.",
       },
       {
+        cell_id: "69f0564e-2da3-4968-af9b-858f380bf2f4",
         speaker: "Petugas bank",
         text: "Baik. Berapa jumlah pinjaman dan tenornya?",
         vi: "Vâng. Số tiền vay và kỳ hạn là bao nhiêu?",
         en: "Okay. What is the loan amount and term?",
       },
       {
+        cell_id: "eba98d2c-2210-4ce6-98b8-3301088b5268",
         speaker: "Nasabah",
         text: "Saya ingin pinjaman seratus juta dengan tenor tiga tahun.",
         vi: "Tôi muốn vay một trăm triệu với kỳ hạn ba năm.",
         en: "I want a loan of one hundred million with a three-year term.",
       },
       {
+        cell_id: "0b0da93d-6d9d-47c7-b996-7ff802f4c3e5",
         speaker: "Petugas bank",
         text: "Nanti skor kredit dan dokumen Bapak akan dicek dulu.",
         vi: "Lát nữa điểm tín dụng và giấy tờ của anh sẽ được kiểm tra trước.",
@@ -394,6 +407,7 @@ export const bankLoanCreditLessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: `telat bayar` is the natural phrase for late payment. `Lunas` means fully paid; the banking verb is `melunasi`. Do not sign if you do not understand `tanggal jatuh tempo` and `denda`.",
     vocabulary: [
       {
+        cell_id: "818b28a0-90f2-4824-a7d4-f8925be9cfa2",
         word: "kartu kredit",
         en: "credit card",
         vi: "thẻ tín dụng",
@@ -402,6 +416,7 @@ export const bankLoanCreditLessons: IndonesianLesson[] = [
         pronunciation_en: "KAR-too KREH-dit",
       },
       {
+        cell_id: "211dcbeb-9f3f-4f16-acac-2d7b32251ecc",
         word: "limit",
         en: "credit limit",
         vi: "hạn mức",
@@ -410,6 +425,7 @@ export const bankLoanCreditLessons: IndonesianLesson[] = [
         pronunciation_en: "LI-mit",
       },
       {
+        cell_id: "9c9033a2-51da-4856-843f-d4d07ed9ee73",
         word: "tagihan",
         en: "bill / amount due",
         vi: "hóa đơn / khoản phải trả",
@@ -418,6 +434,7 @@ export const bankLoanCreditLessons: IndonesianLesson[] = [
         pronunciation_en: "ta-GEE-han",
       },
       {
+        cell_id: "b2a4d19b-3530-4f00-8396-c56114dfa7e0",
         word: "tanggal jatuh tempo",
         en: "due date",
         vi: "ngày đến hạn",
@@ -426,6 +443,7 @@ export const bankLoanCreditLessons: IndonesianLesson[] = [
         pronunciation_en: "TANG-gal JA-tooh TEM-po",
       },
       {
+        cell_id: "89d043b3-eaca-4c5c-b89e-fcf0d6ac41af",
         word: "telat bayar",
         en: "pay late",
         vi: "trả chậm",
@@ -434,6 +452,7 @@ export const bankLoanCreditLessons: IndonesianLesson[] = [
         pronunciation_en: "TEH-lat BA-yar",
       },
       {
+        cell_id: "681f17aa-82d7-4a51-b0b3-764b13fda0da",
         word: "denda",
         en: "fine / penalty",
         vi: "tiền phạt",
@@ -442,6 +461,7 @@ export const bankLoanCreditLessons: IndonesianLesson[] = [
         pronunciation_en: "DEN-da",
       },
       {
+        cell_id: "a3712d1d-5b04-4f6c-96dd-9e314e005d35",
         word: "melunasi",
         en: "to pay off / settle",
         vi: "tất toán / trả hết",
@@ -452,24 +472,28 @@ export const bankLoanCreditLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "c01aa2b9-68b1-4a98-943e-fc0761124f2e",
         speaker: "Nasabah",
         text: "Saya mau mengajukan kartu kredit.",
         vi: "Tôi muốn đăng ký thẻ tín dụng.",
         en: "I want to apply for a credit card.",
       },
       {
+        cell_id: "b55991e9-f108-4272-9093-a8ff9a193e37",
         speaker: "Petugas bank",
         text: "Baik. Nanti limitnya tergantung skor kredit dan penghasilan.",
         vi: "Vâng. Hạn mức sẽ tùy vào điểm tín dụng và thu nhập.",
         en: "Okay. The limit will depend on credit score and income.",
       },
       {
+        cell_id: "c41a3797-a4b3-4b3f-b140-d16fb856bb3f",
         speaker: "Nasabah",
         text: "Kalau telat bayar, apakah ada denda?",
         vi: "Nếu trả chậm thì có tiền phạt không?",
         en: "If I pay late, is there a penalty?",
       },
       {
+        cell_id: "d872d681-ffff-4859-9e1f-0d61255d2f6b",
         speaker: "Petugas bank",
         text: "Ada. Karena itu, perhatikan tanggal jatuh tempo tagihan.",
         vi: "Có. Vì vậy, hãy chú ý ngày đến hạn của hóa đơn.",

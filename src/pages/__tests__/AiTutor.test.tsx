@@ -69,6 +69,7 @@ const {
   fetchCloudTtsUrl,
   fetchServerProfileInput,
   loadServerInterferenceTags,
+  recordCorrectionSourceEvent,
   useAuthMock,
 } = vi.hoisted(() => {
   type CloudTtsArgs = { text: string; language: "en" | "fr" | "zh" | "de" | "ja" | "ko" | "es" | "vi"; voiceIdOverride?: string };
@@ -85,6 +86,7 @@ const {
     fetchCloudTtsUrl: vi.fn(async (_args: CloudTtsArgs): Promise<CloudTtsResult | null> => null),
     fetchServerProfileInput: vi.fn(async () => ({ interferenceTagCounts: {}, sessionCount: 0 })),
     loadServerInterferenceTags: vi.fn(async () => [] as string[]),
+    recordCorrectionSourceEvent: vi.fn(),
     useAuthMock: vi.fn<() => AuthMockValue>(() => ({ user: null, session: null, isLoading: false })),
   };
 });
@@ -193,6 +195,14 @@ vi.mock("@/lib/ai-conversation/serverInterferenceMemory", () => ({
     return { interferencePatterns, recentFocus };
   },
 }));
+
+vi.mock("@/lib/ai-tutor/correctionSourceEvents", async (importOriginal) => {
+  const actual = await importOriginal<typeof import("@/lib/ai-tutor/correctionSourceEvents")>();
+  return {
+    ...actual,
+    recordCorrectionSourceEvent,
+  };
+});
 
 vi.mock("@/lib/mercyVoice", () => ({
   fetchCloudTtsUrl,
@@ -437,8 +447,10 @@ describe("AiTutor four-tab seed flow", () => {
     await userEvent.click(screen.getByRole("button", { name: "Sửa câu này" }));
     // The unchanged path shows either CANNOT_CORRECT or FRIENDLY_CORRECTION_UNAVAILABLE
     await waitFor(() => {
-      const errorSection = document.querySelector(".text-rose-600, .text-rose-700");
-      expect(errorSection).toBeTruthy();
+      const nonCorrectionSection = document.querySelector(
+        ".text-rose-600, .text-rose-700, .text-emerald-700",
+      );
+      expect(nonCorrectionSection).toBeTruthy();
     });
 
     expect(screen.queryByTestId("detector-hint-chip")).not.toBeInTheDocument();
@@ -532,8 +544,10 @@ describe("AiTutor four-tab seed flow", () => {
     );
     await userEvent.click(screen.getByRole("button", { name: "Sửa câu này" }));
     await waitFor(() => {
-      const errorSection = document.querySelector(".text-rose-600");
-      expect(errorSection).toBeTruthy();
+      const nonCorrectionSection = document.querySelector(
+        ".text-rose-600, .text-emerald-700",
+      );
+      expect(nonCorrectionSection).toBeTruthy();
     });
 
     expect(screen.queryByTestId("ai-tutor-l1-followup")).not.toBeInTheDocument();
@@ -2169,6 +2183,24 @@ describe("AiTutor four-tab seed flow", () => {
 // ─── Bug fix: unchanged-echo correction and session-hydration race ────────────
 
 describe("AiTutor Grammar submit — unchanged sentence + session handling", () => {
+  it("records local correction source once on submit, not while typing", async () => {
+    renderAiTutor();
+
+    const textbox = screen.getByRole("textbox", { name: /Gõ câu tiếng Anh của bạn/i });
+    await userEvent.type(textbox, "I buy a hat yesterday.");
+    expect(recordCorrectionSourceEvent).not.toHaveBeenCalled();
+
+    await userEvent.click(screen.getByRole("button", { name: "Sửa câu này" }));
+
+    await waitFor(() => {
+      expect(recordCorrectionSourceEvent).toHaveBeenCalledTimes(1);
+    });
+    expect(recordCorrectionSourceEvent).toHaveBeenCalledWith({
+      source: "local_corrected",
+      targetLanguage: "en",
+    });
+  });
+
   it("[fix-b] no token + unchanged sentence: shows honest message, never renders correction card", async () => {
     // Default: useAuthMock returns session: null (no token). supabase.auth.getSession()
     // also returns null (jsdom localStorage is empty). Submitting a grammatically correct
@@ -2185,6 +2217,14 @@ describe("AiTutor Grammar submit — unchanged sentence + session handling", () 
     expect(await screen.findByText(CANNOT_CORRECT_NO_SESSION_MESSAGE)).toBeInTheDocument();
     // No correction card: "Sửa câu khác" button only appears after a successful correction.
     expect(screen.queryByRole("button", { name: "Sửa câu khác" })).not.toBeInTheDocument();
+    expect(recordCorrectionSourceEvent).toHaveBeenCalledTimes(1);
+    expect(recordCorrectionSourceEvent).toHaveBeenCalledWith({
+      source: "local_unchanged_server_attempt",
+      targetLanguage: "en",
+    });
+    expect(recordCorrectionSourceEvent).not.toHaveBeenCalledWith(
+      expect.objectContaining({ source: "local_corrected" }),
+    );
   });
 
   it("[fix-c] with token + unchanged sentence: AI path is called (not local echo)", async () => {
@@ -2222,6 +2262,14 @@ describe("AiTutor Grammar submit — unchanged sentence + session handling", () 
     }
     const [, init] = aiCall;
     expect(init?.headers).toMatchObject({ Authorization: "Bearer session-jwt" });
+    expect(recordCorrectionSourceEvent).toHaveBeenCalledTimes(1);
+    expect(recordCorrectionSourceEvent).toHaveBeenCalledWith({
+      source: "server_no_correction",
+      targetLanguage: "en",
+    });
+    expect(recordCorrectionSourceEvent).not.toHaveBeenCalledWith(
+      expect.objectContaining({ source: "local_unchanged_server_attempt" }),
+    );
   });
 
   it("shows an auth-specific correction state when /api/mercy-ai rejects the session", async () => {

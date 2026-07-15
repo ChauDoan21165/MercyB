@@ -17,6 +17,7 @@ type LessonSentence = {
 };
 
 type VocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -28,6 +29,7 @@ type VocabEntry = {
 };
 
 type DialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -144,6 +146,7 @@ export const birthdayCelebrationLessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: 'ulang tahun' literally means 'repeat year', but it functions as 'birthday'. 'Semoga + phrase' is a strong wish pattern: 'Semoga sehat selalu', 'Semoga sukses'. Distinguish 'belum' = not yet from 'jangan' = don't; both appear often in party-prep sentences.",
     vocabulary: [
       {
+        cell_id: "14925906-7a9c-4527-85e8-99156b133872",
         word: "ulang tahun",
         en: "birthday",
         vi: "sinh nhật",
@@ -152,6 +155,7 @@ export const birthdayCelebrationLessons: IndonesianLesson[] = [
         pronunciation_en: "OO-lang TA-hoon",
       },
       {
+        cell_id: "cbdf01d4-7904-4220-9b3b-b1689cc5de87",
         word: "kue",
         en: "cake",
         vi: "bánh",
@@ -160,6 +164,7 @@ export const birthdayCelebrationLessons: IndonesianLesson[] = [
         pronunciation_en: "KOO-eh",
       },
       {
+        cell_id: "61565b02-fb68-4c4f-8232-9b7b5b57d7f4",
         word: "lilin",
         en: "candle",
         vi: "nến",
@@ -168,6 +173,7 @@ export const birthdayCelebrationLessons: IndonesianLesson[] = [
         pronunciation_en: "LEE-lin",
       },
       {
+        cell_id: "bb7da55f-d711-456d-8117-567d1a00873d",
         word: "tiup",
         en: "to blow",
         vi: "thổi",
@@ -176,6 +182,7 @@ export const birthdayCelebrationLessons: IndonesianLesson[] = [
         pronunciation_en: "TEE-oop",
       },
       {
+        cell_id: "a793c2b6-af0e-49e3-aa33-37d770fdcdb7",
         word: "surprise",
         en: "surprise",
         vi: "bất ngờ",
@@ -184,6 +191,7 @@ export const birthdayCelebrationLessons: IndonesianLesson[] = [
         pronunciation_en: "sur-PRISE",
       },
       {
+        cell_id: "f8f726cb-6149-4d3f-9074-acfd4bd8e355",
         word: "kado",
         en: "gift / present",
         vi: "quà",
@@ -192,6 +200,7 @@ export const birthdayCelebrationLessons: IndonesianLesson[] = [
         pronunciation_en: "KA-do",
       },
       {
+        cell_id: "516e6278-bafe-4c4b-8ee7-69f67debb5e9",
         word: "bungkus",
         en: "to wrap",
         vi: "gói / bọc",
@@ -202,24 +211,28 @@ export const birthdayCelebrationLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "7c022220-e95f-4dac-9b94-b9c73d6e859c",
         speaker: "Rina",
         text: "Besok ulang tahun Dina. Kita beli kue, ya?",
         vi: "Mai là sinh nhật Dina. Mình mua bánh nhé?",
         en: "Tomorrow is Dina's birthday. Let's buy a cake, okay?",
       },
       {
+        cell_id: "8c8e354a-a82f-4140-9626-6a280b5e888d",
         speaker: "Budi",
         text: "Boleh. Jangan lupa lilin angka dua puluh.",
         vi: "Được. Đừng quên nến số hai mươi.",
         en: "Sure. Don't forget the number twenty candles.",
       },
       {
+        cell_id: "d0100f9c-75cf-4e3c-b189-53507103cd18",
         speaker: "Rina",
         text: "Aku juga bawa kado kecil. Nanti kita bikin surprise.",
         vi: "Tớ cũng mang một món quà nhỏ. Lát nữa mình làm bất ngờ.",
         en: "I'll also bring a small gift. Later we'll make a surprise.",
       },
       {
+        cell_id: "5d7fb088-1580-438e-a741-b22ba547e9df",
         speaker: "Budi",
         text: "Setuju. Setelah tiup lilin, kita potong kue.",
         vi: "Đồng ý. Sau khi thổi nến, mình cắt bánh.",
@@ -360,6 +373,7 @@ export const birthdayCelebrationLessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: 'traktir' is different from 'bayar'. 'Bayar' simply means pay; 'traktir' means pay as a treat for others. 'Patungan' is useful for chipping in together. In formal passive sentences, watch di-: 'diberikan' = is given, 'dihormati' = is respected.",
     vocabulary: [
       {
+        cell_id: "3d63ad3c-53c2-477b-b0a6-f2a78327c9f2",
         word: "traktir",
         en: "to treat / pay for others",
         vi: "đãi / khao",
@@ -368,6 +382,7 @@ export const birthdayCelebrationLessons: IndonesianLesson[] = [
         pronunciation_en: "TRAK-teer",
       },
       {
+        cell_id: "b34c27ae-5587-48f4-ab66-72b30faefa8f",
         word: "patungan",
         en: "to chip in together",
         vi: "góp tiền chung",
@@ -376,6 +391,7 @@ export const birthdayCelebrationLessons: IndonesianLesson[] = [
         pronunciation_en: "pa-TOONG-an",
       },
       {
+        cell_id: "fc461b18-4b26-43c2-8055-606df75aeaa2",
         word: "merayakan",
         en: "to celebrate",
         vi: "mừng / tổ chức",
@@ -384,6 +400,7 @@ export const birthdayCelebrationLessons: IndonesianLesson[] = [
         pronunciation_en: "me-RA-ya-kan",
       },
       {
+        cell_id: "7d8c3ab7-7057-40ff-b812-c614078cdf84",
         word: "tumpeng",
         en: "cone-shaped ceremonial rice dish",
         vi: "cơm tumpeng hình nón",
@@ -392,6 +409,7 @@ export const birthdayCelebrationLessons: IndonesianLesson[] = [
         pronunciation_en: "TOOM-peng",
       },
       {
+        cell_id: "1689d643-70ba-457c-a6b7-fff0d6ad8089",
         word: "potong tumpeng",
         en: "to cut ceremonial tumpeng",
         vi: "cắt tumpeng trong nghi lễ",
@@ -400,6 +418,7 @@ export const birthdayCelebrationLessons: IndonesianLesson[] = [
         pronunciation_en: "POH-tong TOOM-peng",
       },
       {
+        cell_id: "40d93744-93ad-4dfb-b4e4-3861b08f6715",
         word: "potongan pertama",
         en: "first slice / first portion",
         vi: "miếng/phần đầu tiên",
@@ -408,6 +427,7 @@ export const birthdayCelebrationLessons: IndonesianLesson[] = [
         pronunciation_en: "po-TONG-an per-TA-ma",
       },
       {
+        cell_id: "ae03544a-bba1-4aa4-afc9-d1464dfeefcb",
         word: "dihormati",
         en: "respected / honored",
         vi: "được kính trọng",
@@ -418,24 +438,28 @@ export const birthdayCelebrationLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "6c215709-666b-446c-b32d-5f13dd147446",
         speaker: "Andi",
         text: "Selamat ulang tahun, Sari! Hari ini traktir, dong?",
         vi: "Chúc mừng sinh nhật, Sari! Hôm nay đãi đi chứ?",
         en: "Happy birthday, Sari! Treat us today, will you?",
       },
       {
+        cell_id: "6922c8c3-f9fb-4bbb-9430-54423794819c",
         speaker: "Sari",
         text: "Boleh, nanti aku traktir makan siang sederhana.",
         vi: "Được, lát nữa tớ đãi bữa trưa đơn giản.",
         en: "Sure, later I'll treat everyone to a simple lunch.",
       },
       {
+        cell_id: "17f0c720-1a5b-4c97-b0c2-f2ae8e971518",
         speaker: "Andi",
         text: "Teman-teman kantor sudah patungan beli kue dan kado.",
         vi: "Các bạn ở văn phòng đã góp tiền mua bánh và quà.",
         en: "The office friends already chipped in for cake and a gift.",
       },
       {
+        cell_id: "4c344111-8cfa-4200-8115-194bdbfcd730",
         speaker: "Sari",
         text: "Wah, terima kasih! Malam ini keluarga juga potong tumpeng.",
         vi: "Ôi, cảm ơn! Tối nay gia đình tớ cũng cắt tumpeng.",

@@ -17,6 +17,7 @@ type IndonesianLessonSentence = {
 };
 
 type IndonesianVocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -26,6 +27,7 @@ type IndonesianVocabEntry = {
 };
 
 type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -184,6 +186,7 @@ export const lessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: remember these office phrases: `jadwal rapatnya kapan?`, `tolong catat di notulen`, `deadline-nya kapan?`, `mohon tindak lanjut`, and `boleh saya izin meeting?`. In formal email, prefer `mohon` over `tolong`, and `tindak lanjut` over `follow up`.",
     vocabulary: [
       {
+        cell_id: "f2442e33-636a-4946-a017-124c27eded34",
         word: "rapat",
         en: "meeting",
         vi: "cuộc họp",
@@ -192,6 +195,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "RA-pat",
       },
       {
+        cell_id: "2b05a0ee-18ff-44d8-8d62-d34963f619d7",
         word: "notulen",
         en: "meeting minutes",
         vi: "biên bản họp",
@@ -200,6 +204,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "no-TOO-len",
       },
       {
+        cell_id: "fe816af3-3ffd-4ad6-b6d8-f9bb7399dd91",
         word: "jadwal",
         en: "schedule",
         vi: "lịch",
@@ -208,6 +213,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "JAD-wal",
       },
       {
+        cell_id: "ee5969d5-c44f-4d4b-b2f8-74289508f377",
         word: "undangan email",
         en: "email invitation",
         vi: "thư mời email",
@@ -216,6 +222,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "un-DA-ngan e-MAIL",
       },
       {
+        cell_id: "de6bb66e-7dd8-486c-89aa-1f6eac7c2b8f",
         word: "deadline",
         en: "deadline",
         vi: "hạn chót",
@@ -224,6 +231,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "DED-line",
       },
       {
+        cell_id: "c5de6f8d-6712-49d1-8185-d2222f57b475",
         word: "tindak lanjut",
         en: "follow-up",
         vi: "theo dõi xử lý / bước tiếp theo",
@@ -232,6 +240,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "TIN-dak LAN-jut",
       },
       {
+        cell_id: "3b938af6-ff86-4c7b-9295-a8171cfd633a",
         word: "presentasi",
         en: "presentation",
         vi: "bài thuyết trình",
@@ -240,6 +249,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "pre-sen-TA-see",
       },
       {
+        cell_id: "08c25d1c-ef80-4d11-8af5-a7abab68f1df",
         word: "izin meeting",
         en: "ask permission to miss a meeting",
         vi: "xin phép vắng họp",
@@ -250,24 +260,28 @@ export const lessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "7375a4b5-1ed6-4e19-a661-d2f5472228c8",
         speaker: "Karyawan",
         text: "Pak, jadwal rapat hari ini jam berapa?",
         vi: "Anh ơi, lịch họp hôm nay lúc mấy giờ ạ?",
         en: "Sir, what time is today's meeting?",
       },
       {
+        cell_id: "5c856446-41ca-4e2d-af74-73035449bde1",
         speaker: "Atasan",
         text: "Jam sepuluh. Saya sudah kirim undangan email.",
         vi: "Mười giờ. Tôi đã gửi thư mời qua email rồi.",
         en: "Ten o'clock. I already sent the email invitation.",
       },
       {
+        cell_id: "8dc419d7-462c-41fe-9bba-9bcefc25f16a",
         speaker: "Karyawan",
         text: "Baik, Pak. Saya akan siapkan materi presentasi.",
         vi: "Vâng anh. Tôi sẽ chuẩn bị tài liệu thuyết trình.",
         en: "Okay, sir. I will prepare the presentation materials.",
       },
       {
+        cell_id: "6e5af699-3736-4a34-87b6-a4c6b5e08604",
         speaker: "Atasan",
         text: "Tolong catat poin penting di notulen dan follow up setelah rapat.",
         vi: "Làm ơn ghi các điểm quan trọng vào biên bản và theo dõi xử lý sau họp.",

@@ -13,6 +13,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -22,6 +23,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -138,6 +140,7 @@ export const supermarketMembershipReturnLessons: IndonesianLesson[] = [
       "Useful frames: `daftar kartu member`, `poin belanja bisa dipakai?`, `struknya jangan dibuang dulu`, `sudah termasuk promo?`. `Promo` in Indonesian broadly covers discounts, offers, and membership deals.",
     vocabulary: [
       {
+        cell_id: "1c040980-910c-43b2-b81a-b6f109b4a8f0",
         word: "supermarket",
         en: "supermarket",
         vi: "siêu thị",
@@ -146,6 +149,7 @@ export const supermarketMembershipReturnLessons: IndonesianLesson[] = [
         pronunciation_en: "su-per-MAR-ket",
       },
       {
+        cell_id: "eed16b9f-650e-459d-a692-40becd114532",
         word: "kartu member",
         en: "member card",
         vi: "thẻ thành viên",
@@ -154,6 +158,7 @@ export const supermarketMembershipReturnLessons: IndonesianLesson[] = [
         pronunciation_en: "KAR-too MEM-ber",
       },
       {
+        cell_id: "15889f26-a111-45e1-bbac-ef70cf17eff5",
         word: "poin belanja",
         en: "shopping points",
         vi: "điểm mua sắm",
@@ -162,6 +167,7 @@ export const supermarketMembershipReturnLessons: IndonesianLesson[] = [
         pronunciation_en: "PO-in be-LAN-ja",
       },
       {
+        cell_id: "749da922-650d-4429-beec-fe9674b550b5",
         word: "kasir",
         en: "cashier",
         vi: "thu ngân",
@@ -170,6 +176,7 @@ export const supermarketMembershipReturnLessons: IndonesianLesson[] = [
         pronunciation_en: "KA-seer",
       },
       {
+        cell_id: "312d1c7d-a7da-473e-acce-7baeacdfd500",
         word: "struk",
         en: "receipt",
         vi: "hóa đơn / biên lai",
@@ -178,6 +185,7 @@ export const supermarketMembershipReturnLessons: IndonesianLesson[] = [
         pronunciation_en: "strook",
       },
       {
+        cell_id: "45fdf708-6ed1-4f81-aab9-48d4407aa3ef",
         word: "promo",
         en: "promotion / discount offer",
         vi: "khuyến mãi / ưu đãi",
@@ -188,18 +196,21 @@ export const supermarketMembershipReturnLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "3c41c8b5-a90c-4d5d-bab3-e73683aa222d",
         speaker: "Kasir",
         text: "Ada kartu member, Kak?",
         vi: "Bạn có thẻ thành viên không?",
         en: "Do you have a member card?",
       },
       {
+        cell_id: "529aa8f8-4dae-4d1e-84ee-6ae4baaa888d",
         speaker: "Pelanggan",
         text: "Ada. Poin belanja saya bisa dipakai untuk diskon?",
         vi: "Có. Điểm mua sắm của tôi có dùng để giảm giá được không?",
         en: "Yes. Can my shopping points be used for a discount?",
       },
       {
+        cell_id: "2e9ae8ef-0a4a-4d18-8cc0-d6ddbe4c50d4",
         speaker: "Kasir",
         text: "Bisa, tapi promo ini hanya untuk member.",
         vi: "Được, nhưng khuyến mãi này chỉ dành cho thành viên.",
@@ -316,6 +327,7 @@ export const supermarketMembershipReturnLessons: IndonesianLesson[] = [
       "Use a calm tone: `Saya mau retur barang`, `barang ini kedaluwarsa`, `saya masih punya struk`, `bisa ditukar?`. With staff, `minta bicara dengan supervisor` is more polite than getting angry at the counter.",
     vocabulary: [
       {
+        cell_id: "677d1b22-dc37-40f1-9585-2e764077d379",
         word: "retur barang",
         en: "return goods",
         vi: "trả/đổi hàng",
@@ -324,6 +336,7 @@ export const supermarketMembershipReturnLessons: IndonesianLesson[] = [
         pronunciation_en: "re-TOOR BA-rang",
       },
       {
+        cell_id: "ef6138e7-9246-43a5-9dc1-bedd647bcb40",
         word: "kedaluwarsa",
         en: "expired",
         vi: "hết hạn",
@@ -332,6 +345,7 @@ export const supermarketMembershipReturnLessons: IndonesianLesson[] = [
         pronunciation_en: "ke-da-loo-WAR-sa",
       },
       {
+        cell_id: "5df2b20a-72ee-480f-a4eb-9de949b9b144",
         word: "struk pembelian",
         en: "purchase receipt",
         vi: "hóa đơn mua hàng",
@@ -340,6 +354,7 @@ export const supermarketMembershipReturnLessons: IndonesianLesson[] = [
         pronunciation_en: "strook pem-BE-li-an",
       },
       {
+        cell_id: "bede8297-402c-4a95-a657-b37fd5ce4498",
         word: "ditukar",
         en: "exchanged",
         vi: "được đổi",
@@ -348,6 +363,7 @@ export const supermarketMembershipReturnLessons: IndonesianLesson[] = [
         pronunciation_en: "di-TOO-kar",
       },
       {
+        cell_id: "e3399226-191a-4aa1-8a26-69719468cb1b",
         word: "supervisor",
         en: "supervisor",
         vi: "quản lý ca/quầy",
@@ -356,6 +372,7 @@ export const supermarketMembershipReturnLessons: IndonesianLesson[] = [
         pronunciation_en: "su-per-VY-sor",
       },
       {
+        cell_id: "57515bd3-91d0-41e9-8b13-1a04ecb2f66b",
         word: "refund",
         en: "refund",
         vi: "hoàn tiền",
@@ -366,24 +383,28 @@ export const supermarketMembershipReturnLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "350ccf15-1790-43d7-802f-e7dcc5b1c7c8",
         speaker: "Pelanggan",
         text: "Permisi, saya mau retur barang. Ini kedaluwarsa sejak minggu lalu.",
         vi: "Xin lỗi, tôi muốn trả/đổi hàng. Món này đã hết hạn từ tuần trước.",
         en: "Excuse me, I want to return this item. It expired last week.",
       },
       {
+        cell_id: "12ed4d9d-ce52-4038-a703-471099a6fd25",
         speaker: "Kasir",
         text: "Apakah masih ada struk pembeliannya?",
         vi: "Vẫn còn hóa đơn mua hàng không?",
         en: "Do you still have the purchase receipt?",
       },
       {
+        cell_id: "56581cd1-883d-45ac-be01-c99ca8189e6e",
         speaker: "Pelanggan",
         text: "Ada. Bisa ditukar dengan barang yang belum kedaluwarsa?",
         vi: "Có. Có thể đổi sang món chưa hết hạn không?",
         en: "Yes. Can it be exchanged for an item that has not expired?",
       },
       {
+        cell_id: "8112cd16-5488-410b-b7f0-c237e16de2be",
         speaker: "Kasir",
         text: "Saya cek dulu dengan supervisor, ya.",
         vi: "Tôi kiểm tra với quản lý trước nhé.",

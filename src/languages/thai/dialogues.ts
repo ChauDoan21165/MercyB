@@ -35,6 +35,7 @@ export type ThaiExpectedResponse = {
 };
 
 export type ThaiDialogue = {
+  cell_id?: string;
   id: number;
   level: ThaiCefrLevel;
   topic: ThaiDialogueTopic;

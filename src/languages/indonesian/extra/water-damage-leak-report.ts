@@ -21,6 +21,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   /** Indonesian word/phrase. */
   word: string;
   /** English meaning. */
@@ -36,6 +37,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   /** Indonesian line. */
   text: string;
@@ -240,6 +242,7 @@ export const lessons: IndonesianLesson[] = [
       "Safe message template: `Selamat pagi, ada kebocoran air dari plafon kamar saya. Air menetes terus dan lantainya jadi licin. Saya sudah kirim foto bukti. Tolong kirim tukang ledeng secepatnya dan konfirmasi siapa yang bertanggung jawab atas biaya perbaikan.`",
     vocabulary: [
       {
+        cell_id: "cfcaabea-2655-4a12-9090-578727c3b5a7",
         word: "bocor",
         en: "leaking; leak",
         vi: "rò/rò rỉ",
@@ -248,6 +251,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "BO-chor",
       },
       {
+        cell_id: "97120750-9511-4a1c-8ba5-45105865d71b",
         word: "kebocoran air",
         en: "water leak",
         vi: "sự rò nước",
@@ -256,6 +260,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "keh-bo-CHO-ran A-eer",
       },
       {
+        cell_id: "95d376e6-c336-48aa-b2ea-75ca6622c0a9",
         word: "plafon rusak",
         en: "damaged ceiling",
         vi: "trần nhà bị hỏng",
@@ -264,6 +269,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "pla-FON ROO-sak",
       },
       {
+        cell_id: "016a3681-ce83-41d4-9da3-7d2bc332fbcf",
         word: "pipa pecah",
         en: "burst pipe",
         vi: "ống nước bị vỡ",
@@ -272,6 +278,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "PEE-pa PEH-chah",
       },
       {
+        cell_id: "e922392a-0d62-404a-a5a3-c6f96b91d796",
         word: "lapor pengelola",
         en: "report to management",
         vi: "báo cho ban quản lý",
@@ -280,6 +287,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "LA-por peh-ngeh-LO-la",
       },
       {
+        cell_id: "2c7913ca-6ad1-4c0e-ab0a-50de02c43360",
         word: "foto bukti",
         en: "evidence photo",
         vi: "ảnh bằng chứng",
@@ -288,6 +296,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "FO-to BOOK-tee",
       },
       {
+        cell_id: "d3f52353-8ad0-42b6-8350-53664f1e43eb",
         word: "tukang ledeng",
         en: "plumber",
         vi: "thợ ống nước",
@@ -296,6 +305,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "TOO-kang LEH-deng",
       },
       {
+        cell_id: "e693735e-8d72-4c2f-a0d8-78595d1456e9",
         word: "perbaikan",
         en: "repair",
         vi: "sửa chữa",
@@ -304,6 +314,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "per-BAI-kan",
       },
       {
+        cell_id: "cc8815c8-78b3-42d9-8e64-dde08fda519f",
         word: "ganti rugi",
         en: "compensation",
         vi: "bồi thường",
@@ -312,6 +323,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "GAN-tee ROO-gee",
       },
       {
+        cell_id: "d1245882-9529-4f05-80be-ccc58a3adb97",
         word: "biaya perbaikan",
         en: "repair cost",
         vi: "chi phí sửa chữa",
@@ -322,36 +334,42 @@ export const lessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "4feda1e7-6c24-4c6b-908b-f0af9a8d424c",
         speaker: "Penyewa",
         text: "Selamat pagi, saya mau lapor ada kebocoran air dari plafon kamar.",
         vi: "Chào buổi sáng, tôi muốn báo có rò nước từ trần phòng.",
         en: "Good morning, I would like to report a water leak from the room ceiling.",
       },
       {
+        cell_id: "cbfc4bed-64aa-4f13-846c-60075dec5584",
         speaker: "Pengelola",
         text: "Sejak kapan airnya menetes?",
         vi: "Nước bắt đầu nhỏ giọt từ khi nào?",
         en: "Since when has the water been dripping?",
       },
       {
+        cell_id: "ac21ee30-2d53-47b2-8e2a-be580cd5aa7b",
         speaker: "Penyewa",
         text: "Sejak tadi malam. Plafon rusak dan lantainya jadi licin.",
         vi: "Từ tối qua. Trần bị hỏng và sàn trở nên trơn.",
         en: "Since last night. The ceiling is damaged and the floor has become slippery.",
       },
       {
+        cell_id: "9fd24f87-5ff1-4ff3-babc-c55b613c2e71",
         speaker: "Pengelola",
         text: "Tolong kirim foto bukti lewat WhatsApp.",
         vi: "Vui lòng gửi ảnh bằng chứng qua WhatsApp.",
         en: "Please send evidence photos via WhatsApp.",
       },
       {
+        cell_id: "b01ac8ec-9a63-49fd-bf2a-2918c4c43bce",
         speaker: "Penyewa",
         text: "Sudah saya kirim. Tolong kirim tukang ledeng secepatnya.",
         vi: "Tôi đã gửi rồi. Làm ơn gửi thợ ống nước đến càng sớm càng tốt.",
         en: "I have sent them. Please send a plumber as soon as possible.",
       },
       {
+        cell_id: "35e0015a-d5f7-41aa-9b6d-6959cbb44d58",
         speaker: "Pengelola",
         text: "Baik, kami cek dulu dan konfirmasi jadwal perbaikan.",
         vi: "Được, chúng tôi kiểm tra trước và xác nhận lịch sửa chữa.",

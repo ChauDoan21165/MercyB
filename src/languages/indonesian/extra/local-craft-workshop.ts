@@ -17,6 +17,7 @@ type IndonesianLessonSentence = {
 };
 
 type IndonesianVocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -26,6 +27,7 @@ type IndonesianVocabEntry = {
 };
 
 type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -212,6 +214,7 @@ export const localCraftWorkshopLessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: when asking about a workshop, use safe frames: `cocok untuk pemula?`, `biaya kelas sudah termasuk bahan dan alat?`, `alat kerja disediakan?`, `hasil karya boleh dibawa pulang?`. Remember that adjectives follow nouns: `keranjang kecil`, `teknik dasar`, `motif rumit`.",
     vocabulary: [
       {
+        cell_id: "44bdc727-ecb5-431b-896a-412a3a7078aa",
         word: "workshop kerajinan",
         en: "craft workshop",
         vi: "workshop thu cong",
@@ -220,6 +223,7 @@ export const localCraftWorkshopLessons: IndonesianLesson[] = [
         pronunciation_en: "WORK-shop keh-ra-JEE-nan",
       },
       {
+        cell_id: "0d9c73c8-8cdc-454d-bb06-80e5b8f8da36",
         word: "batik",
         en: "batik",
         vi: "batik / vai ve sap nhuom",
@@ -228,6 +232,7 @@ export const localCraftWorkshopLessons: IndonesianLesson[] = [
         pronunciation_en: "BA-tik",
       },
       {
+        cell_id: "ec8e727e-1228-4c98-9f79-d452a17eecc6",
         word: "anyaman",
         en: "woven craft / weaving",
         vi: "do dan / ky thuat dan lat",
@@ -236,6 +241,7 @@ export const localCraftWorkshopLessons: IndonesianLesson[] = [
         pronunciation_en: "a-NYA-man",
       },
       {
+        cell_id: "3711941f-743e-4d3f-83f3-a0a05ac41cea",
         word: "tanah liat",
         en: "clay",
         vi: "dat set",
@@ -244,6 +250,7 @@ export const localCraftWorkshopLessons: IndonesianLesson[] = [
         pronunciation_en: "TA-nah LEE-at",
       },
       {
+        cell_id: "cc923f43-aafe-4fc9-957d-7b82f4765b1c",
         word: "alat kerja",
         en: "work tools",
         vi: "dung cu lam viec",
@@ -252,6 +259,7 @@ export const localCraftWorkshopLessons: IndonesianLesson[] = [
         pronunciation_en: "A-lat KER-ja",
       },
       {
+        cell_id: "2494da59-877d-4285-acd5-0ad37cd0ae15",
         word: "instruktur",
         en: "instructor",
         vi: "giang vien / nguoi huong dan",
@@ -260,6 +268,7 @@ export const localCraftWorkshopLessons: IndonesianLesson[] = [
         pronunciation_en: "in-STROOK-toor",
       },
       {
+        cell_id: "2f49ac84-37a4-42ff-95eb-09551e74c389",
         word: "hasil karya",
         en: "finished work / created piece",
         vi: "tac pham / san pham da lam",
@@ -268,6 +277,7 @@ export const localCraftWorkshopLessons: IndonesianLesson[] = [
         pronunciation_en: "HA-sil KAR-ya",
       },
       {
+        cell_id: "d7646211-dbbb-451c-818a-f97dd096597a",
         word: "biaya kelas",
         en: "class fee",
         vi: "phi lop / hoc phi",
@@ -278,30 +288,35 @@ export const localCraftWorkshopLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "3d6906a5-94d4-4cfa-9009-b4f2724bfdb0",
         speaker: "Peserta",
         text: "Permisi, workshop batik ini cocok untuk pemula?",
         vi: "Xin hoi, workshop batik nay co phu hop cho nguoi moi bat dau khong?",
         en: "Excuse me, is this batik workshop suitable for beginners?",
       },
       {
+        cell_id: "b3c98afb-5768-4601-a623-587d35618a96",
         speaker: "Instruktur",
         text: "Cocok. Nanti saya ajarkan teknik dasar dan cara memakai canting.",
         vi: "Phu hop. Lat nua toi se day ky thuat co ban va cach dung canting.",
         en: "Yes. Later I will teach basic techniques and how to use the canting.",
       },
       {
+        cell_id: "081355c5-991e-4108-ab65-a5611feec7e3",
         speaker: "Peserta",
         text: "Biaya kelas sudah termasuk bahan dan alat?",
         vi: "Phi lop da bao gom vat lieu va dung cu chua?",
         en: "Does the class fee already include materials and tools?",
       },
       {
+        cell_id: "6e28566e-254a-4eda-9b49-298d4b035556",
         speaker: "Instruktur",
         text: "Sudah. Hasil karya peserta juga boleh dibawa pulang.",
         vi: "Da bao gom. Tac pham cua hoc vien cung co the mang ve nha.",
         en: "Yes. Participants may also take their finished work home.",
       },
       {
+        cell_id: "37a5b71a-a607-49e2-9963-77dac2e29f72",
         speaker: "Peserta",
         text: "Kalau motif saya belum rapi, boleh minta bantuan?",
         vi: "Neu hoa tiet cua toi chua dep, toi co the nho giup khong?",

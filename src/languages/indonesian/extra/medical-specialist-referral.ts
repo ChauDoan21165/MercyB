@@ -21,6 +21,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   /** Indonesian word/phrase. */
   word: string;
   /** English meaning. */
@@ -36,6 +37,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   /** Indonesian line. */
   text: string;
@@ -253,6 +255,7 @@ export const lessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: distinguish `dokter umum` = general practitioner, `dokter spesialis` = specialist, `surat rujukan` = referral letter, and `jadwal kontrol` = follow-up schedule. Ask fees with `berapa`; ask insurance coverage with `ditanggung asuransi`.",
     vocabulary: [
       {
+        cell_id: "c8e170c2-19be-4dcc-9313-6d2652810e3f",
         word: "dokter spesialis",
         en: "specialist doctor",
         vi: "bác sĩ chuyên khoa",
@@ -261,6 +264,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "DOK-ter speh-see-a-LIS",
       },
       {
+        cell_id: "b0b660b2-f673-47d2-aebf-0098da4ac5fb",
         word: "surat rujukan",
         en: "referral letter",
         vi: "giấy chuyển tuyến",
@@ -269,6 +273,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "SOO-rat roo-JOO-kan",
       },
       {
+        cell_id: "21312872-6acd-4dd3-a9ac-5be9096bfd9b",
         word: "jadwal kontrol",
         en: "follow-up schedule",
         vi: "lịch tái khám",
@@ -277,6 +282,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "JAD-wal kon-TROL",
       },
       {
+        cell_id: "cca24aa0-82a5-46b7-846d-62cadc58ad44",
         word: "hasil pemeriksaan",
         en: "examination results",
         vi: "kết quả khám/kiểm tra",
@@ -285,6 +291,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "HA-sil peh-meh-RIK-sa-an",
       },
       {
+        cell_id: "493a2a32-0ab3-479d-a0b0-21b24d1dfd61",
         word: "penyakit kronis",
         en: "chronic illness",
         vi: "bệnh mãn tính",
@@ -293,6 +300,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "peh-NYA-kit KRO-nis",
       },
       {
+        cell_id: "86c67afd-18b9-4702-ae67-0bd85005ed82",
         word: "biaya konsultasi",
         en: "consultation fee",
         vi: "phí tư vấn/khám",
@@ -301,6 +309,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "BEE-a-ya kon-sool-TA-see",
       },
       {
+        cell_id: "8afc91dc-ef6f-40c6-87fa-1dc8747e1fee",
         word: "dokter umum",
         en: "general practitioner",
         vi: "bác sĩ đa khoa",
@@ -309,6 +318,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "DOK-ter OO-moom",
       },
       {
+        cell_id: "ef260ae1-1b63-4144-ad95-3aef188f5c23",
         word: "ditanggung asuransi",
         en: "covered by insurance",
         vi: "được bảo hiểm chi trả",
@@ -317,6 +327,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "dee-TANG-goong a-soo-RAN-see",
       },
       {
+        cell_id: "f173e912-2961-4e18-9fb0-8c8cb82197a7",
         word: "hasil lab",
         en: "lab results",
         vi: "kết quả xét nghiệm",
@@ -325,6 +336,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "HA-sil lab",
       },
       {
+        cell_id: "56a0d928-64d7-4c8f-aa54-380bd7518d69",
         word: "gejala memburuk",
         en: "symptoms worsen",
         vi: "triệu chứng nặng hơn",
@@ -335,24 +347,28 @@ export const lessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "863f77b3-3ac5-406b-b38e-a56490e3c813",
         speaker: "Pasien",
         text: "Saya perlu surat rujukan ke dokter spesialis penyakit dalam.",
         vi: "Tôi cần giấy chuyển tuyến đến bác sĩ chuyên khoa nội.",
         en: "I need a referral letter to an internal medicine specialist.",
       },
       {
+        cell_id: "c1f153fa-55c3-4789-a7bc-fde196146704",
         speaker: "Petugas Klinik",
         text: "Baik. Tolong bawa hasil pemeriksaan dan kartu asuransi.",
         vi: "Được. Vui lòng mang kết quả khám và thẻ bảo hiểm.",
         en: "All right. Please bring the examination results and insurance card.",
       },
       {
+        cell_id: "4951cf5f-1da8-43b2-a109-13ae7f3cc7ec",
         speaker: "Pasien",
         text: "Biaya konsultasi ditanggung asuransi atau bayar sendiri?",
         vi: "Phí khám được bảo hiểm chi trả hay tự trả?",
         en: "Is the consultation fee covered by insurance or self-paid?",
       },
       {
+        cell_id: "6fecc11a-ee73-4698-a5af-6d0b2f2fadfa",
         speaker: "Petugas Klinik",
         text: "Kalau rujukannya masih berlaku, biasanya ditanggung sesuai ketentuan.",
         vi: "Nếu giấy chuyển tuyến còn hiệu lực, thường được chi trả theo quy định.",

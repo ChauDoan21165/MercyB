@@ -13,6 +13,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -22,6 +23,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -235,39 +237,43 @@ export const lessons: IndonesianLesson[] = [
     tip_advice_en:
       "Tip for Vietnamese speakers: distinguish `banjir` (flood/flooding), `kebanjiran` (got flooded), `air surut` (water recedes), `mengungsi` (take shelter), and `evakuasi` (evacuation/rescue process). In warnings, passive `di-` is common: `ditutup`, `dimatikan`, `dibersihkan`. Learn fixed chunks so you can react quickly in an incident.",
     vocabulary: [
-      { word: "banjir", en: "flood / flooding", vi: "ngập lụt", pos: "noun / verb", pronunciation_vi: "ban-JIR", pronunciation_en: "ban-JEER" },
-      { word: "musim hujan", en: "rainy season", vi: "mùa mưa", pos: "noun phrase", pronunciation_vi: "MU-sim HU-jan", pronunciation_en: "MOO-sim HOO-jan" },
-      { word: "hujan deras", en: "heavy rain", vi: "mưa to", pos: "noun phrase", pronunciation_vi: "HU-jan de-RAS", pronunciation_en: "HOO-jan de-RAS" },
-      { word: "selokan", en: "drain / ditch", vi: "cống/rãnh thoát nước", pos: "noun", pronunciation_vi: "se-LO-kan", pronunciation_en: "se-LO-kan" },
-      { word: "pompa air", en: "water pump", vi: "máy bơm nước", pos: "noun phrase", pronunciation_vi: "POM-pa A-ir", pronunciation_en: "POM-pa A-eer" },
-      { word: "kebanjiran", en: "flooded / affected by flood", vi: "bị ngập", pos: "verb / state", pronunciation_vi: "ke-ban-JIR-an", pronunciation_en: "ke-ban-JEER-an" },
-      { word: "surut", en: "recede / go down", vi: "rút xuống", pos: "verb", pronunciation_vi: "SU-rut", pronunciation_en: "SOO-root" },
-      { word: "evakuasi", en: "evacuation", vi: "sơ tán", pos: "noun", pronunciation_vi: "e-va-ku-A-si", pronunciation_en: "e-va-koo-A-see" },
-      { word: "mengungsi", en: "to evacuate / take shelter", vi: "đi lánh nạn", pos: "verb", pronunciation_vi: "me-NGUNG-si", pronunciation_en: "me-NGUNG-see" },
-      { word: "posko", en: "relief post / command post", vi: "điểm cứu trợ/chỉ huy", pos: "noun", pronunciation_vi: "POS-ko", pronunciation_en: "POS-ko" },
-      { word: "bantuan warga", en: "resident/community aid", vi: "hỗ trợ của người dân", pos: "noun phrase", pronunciation_vi: "ban-TU-an WAR-ga", pronunciation_en: "ban-TOO-an WAR-ga" },
-      { word: "jalan ditutup", en: "road closed", vi: "đường bị đóng", pos: "phrase", pronunciation_vi: "JA-lan di-TU-tup", pronunciation_en: "JA-lan di-TOO-toop" },
+      { cell_id: "60fc9db6-2766-4354-bd75-89d869288d28", word: "banjir", en: "flood / flooding", vi: "ngập lụt", pos: "noun / verb", pronunciation_vi: "ban-JIR", pronunciation_en: "ban-JEER" },
+      { cell_id: "521099b9-d2b1-4146-9b39-3283d35aa45c", word: "musim hujan", en: "rainy season", vi: "mùa mưa", pos: "noun phrase", pronunciation_vi: "MU-sim HU-jan", pronunciation_en: "MOO-sim HOO-jan" },
+      { cell_id: "f367c040-a1ff-42f6-a47d-1543bb9d38cb", word: "hujan deras", en: "heavy rain", vi: "mưa to", pos: "noun phrase", pronunciation_vi: "HU-jan de-RAS", pronunciation_en: "HOO-jan de-RAS" },
+      { cell_id: "56923fab-7070-4401-bc4f-429c0567877c", word: "selokan", en: "drain / ditch", vi: "cống/rãnh thoát nước", pos: "noun", pronunciation_vi: "se-LO-kan", pronunciation_en: "se-LO-kan" },
+      { cell_id: "664256f1-c4d1-4919-a0e6-79d367d56ce0", word: "pompa air", en: "water pump", vi: "máy bơm nước", pos: "noun phrase", pronunciation_vi: "POM-pa A-ir", pronunciation_en: "POM-pa A-eer" },
+      { cell_id: "5cb2adb5-c946-47f7-a074-c056f4af5fb5", word: "kebanjiran", en: "flooded / affected by flood", vi: "bị ngập", pos: "verb / state", pronunciation_vi: "ke-ban-JIR-an", pronunciation_en: "ke-ban-JEER-an" },
+      { cell_id: "6bfa157c-9db6-44e4-816d-0c0c29d09240", word: "surut", en: "recede / go down", vi: "rút xuống", pos: "verb", pronunciation_vi: "SU-rut", pronunciation_en: "SOO-root" },
+      { cell_id: "eb6d3807-440a-47c9-bd05-c73d0fb93dac", word: "evakuasi", en: "evacuation", vi: "sơ tán", pos: "noun", pronunciation_vi: "e-va-ku-A-si", pronunciation_en: "e-va-koo-A-see" },
+      { cell_id: "de6b0db3-08bb-4bc7-927b-ffba20f8ff08", word: "mengungsi", en: "to evacuate / take shelter", vi: "đi lánh nạn", pos: "verb", pronunciation_vi: "me-NGUNG-si", pronunciation_en: "me-NGUNG-see" },
+      { cell_id: "db9715ba-4529-47b6-a997-aeae554c2519", word: "posko", en: "relief post / command post", vi: "điểm cứu trợ/chỉ huy", pos: "noun", pronunciation_vi: "POS-ko", pronunciation_en: "POS-ko" },
+      { cell_id: "1f901dec-435a-4562-a5b8-6dbd6effc298", word: "bantuan warga", en: "resident/community aid", vi: "hỗ trợ của người dân", pos: "noun phrase", pronunciation_vi: "ban-TU-an WAR-ga", pronunciation_en: "ban-TOO-an WAR-ga" },
+      { cell_id: "2a5dd02d-de56-48eb-8afb-72252a16b7c1", word: "jalan ditutup", en: "road closed", vi: "đường bị đóng", pos: "phrase", pronunciation_vi: "JA-lan di-TU-tup", pronunciation_en: "JA-lan di-TOO-toop" },
     ],
     dialogue: [
       {
+        cell_id: "36f3ff0b-d212-41be-a7b3-a175e76bb65a",
         speaker: "Rina",
         text: "Pak RT, air sudah masuk ke rumah kami.",
         vi: "Bác trưởng khu, nước đã vào nhà chúng tôi rồi.",
         en: "Neighborhood head, water has entered our house.",
       },
       {
+        cell_id: "93fd0876-056b-417d-b178-d4d234b6eb7c",
         speaker: "Pak RT",
         text: "Matikan listrik dulu. Kalau air makin tinggi, segera mengungsi ke posko.",
         vi: "Tắt điện trước. Nếu nước dâng cao hơn, hãy sơ tán ngay đến điểm cứu trợ.",
         en: "Turn off the power first. If the water rises higher, evacuate to the post immediately.",
       },
       {
+        cell_id: "e6dacf10-33db-4049-88b7-c1f5154e025f",
         speaker: "Rina",
         text: "Jalan utama masih bisa dilewati?",
         vi: "Đường chính vẫn còn đi qua được không?",
         en: "Can the main road still be passed?",
       },
       {
+        cell_id: "36ab1ee2-5192-48a6-849a-d6b212293be7",
         speaker: "Pak RT",
         text: "Tidak bisa. Jalan ditutup karena banjir setinggi lutut.",
         vi: "Không được. Đường bị đóng vì ngập cao tới đầu gối.",

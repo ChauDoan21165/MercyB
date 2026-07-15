@@ -91,6 +91,7 @@ export const lessons: GermanLesson[] = [
     "tip_advice_en": "Preparing a C2 close reading (4 steps):\n1. READ THE PASSAGE 3–5 TIMES before taking any notes. Pass 1: holistic. Pass 2: vocabulary choices. Pass 3: syntax. Pass 4: rhythm. Pass 5: rhetorical figures.\n2. ANNOTATION: underline and write margin notes — mark verbs (red ink), adjectives (blue), nouns (green). Make the patterns visible on the page.\n3. STEP-BY-STEP BUNDLING: gather your observations into 2–4 larger clusters — e.g. 'irony cues', 'figures of materiality', 'narrator-distancing'.\n4. RÜCKBINDUNG: every cluster has to connect to a larger interpretive question — what does this say about the work as a whole?\n\nThe language of C2 close reading:\n- 'Die mikrologische Lektüre offenbart…' (a close reading reveals…)\n- 'Bezeichnenderweise rückt der Erzähler X ins Zentrum, nicht Y' (tellingly, the narrator foregrounds X, not Y)\n- 'Im Übergang von X zu Y konstituiert sich jene Schwebe, in der…' (in the transition from X to Y a suspension emerges in which…)\n- 'Die Materialität der Schrift wird gleichsam zum Träger von X' (the materiality of writing becomes, as it were, the carrier of X)\n- 'Eine sorgfältige Lektüre verweigert sich der Versuchung zu paraphrasieren — sie verharrt bei der sprachlichen Gestalt' (a careful reading resists the temptation to paraphrase — it stays with the linguistic form)\n- 'Im Vorgang des Lesens selbst entfaltet sich die Bedeutung' (meaning unfolds in the act of reading itself)\n\nConcrete analytical techniques:\n- WORD CHOICE: 'Auffällig ist die Wahl von X anstelle des näherliegenden Y' (notable is the choice of X over the more obvious Y)\n- SYNTAX: 'Die hypotaktische Verschachtelung erzeugt eine Verzögerung, die…' (the hypotactic nesting produces a delay that…)\n- RHYTHM: 'Der jambische Grundpuls wird an Stelle X durch eine trochäische Inversion gebrochen' (the underlying iambic pulse is broken at point X by a trochaic inversion)\n- REPETITION: 'Das dreifache Wiederkehren des Verbs Y verleiht der Szene eine rituelle Qualität' (the threefold return of the verb Y gives the scene a ritual quality)\n\nWhen the passage is polyvalent:\n- 'Die Stelle eröffnet einen Bedeutungsspielraum, der sich nicht vorschnell schließen lässt' (the passage opens a semantic range that cannot be closed off too quickly)\n- 'Mehrere Lesarten konkurrieren miteinander, ohne dass eine den Vorrang beanspruchen könnte' (several readings compete without any one being able to claim priority)\n\nAvoid absolutely:\n- 'Der Autor will sagen X' (intentionalistic fallacy)\n- 'Diese Stelle bedeutet, dass…' (oversimplification)\n- Paraphrase ('In dieser Szene erzählt Mann, dass…')\n- Generic adjectives ('schöne Sprache', 'tiefer Sinn')\n\nFinal tip: write 1.5–2 pages of close reading per key scene. Less than 1 page = not enough; more than 3 pages = you've drifted into essay mode too early. Close reading is microscope mode — sustained analysis of a very narrow patch of text.",
     "vocabulary": [
       {
+        cell_id: "4d577642-50eb-45a3-b58e-65fd20395ca5",
         "word": "die mikrologische Lektüre",
         "en": "close reading, micrological analysis",
         "vi": "đọc cận văn bản",
@@ -99,6 +100,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee mee-kroh-LOH-gish-uh lek-TUE-ruh — German 'ü' rounded (lips for 'oo', tongue for 'ee'); close reading"
       },
       {
+        cell_id: "e2415440-54a1-4953-bb08-56223626062e",
         "word": "die Werkimmanenz",
         "en": "intrinsic interpretation (focus on the text alone)",
         "vi": "diễn giải nội tại tác phẩm",
@@ -107,6 +109,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee VAIRK-ee-mah-nents — intrinsic interpretation; stress on 'VAIRK'"
       },
       {
+        cell_id: "b70218a9-4100-4657-9c04-638c100e515e",
         "word": "die Erzählinstanz",
         "en": "narrative instance, narrative voice",
         "vi": "ngôi tường thuật, người kể",
@@ -115,6 +118,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee air-TSAYL-in-shtants — narrative instance; the 'z' in 'Erzähl' is 'ts'"
       },
       {
+        cell_id: "c1cebf6e-cafd-4153-9bf7-daa6d68096a3",
         "word": "die freie indirekte Rede / erlebte Rede",
         "en": "free indirect discourse",
         "vi": "lời thuật tự do gián tiếp",
@@ -123,6 +127,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee FRY-uh in-dee-REK-tuh RAY-duh — free indirect discourse"
       },
       {
+        cell_id: "bdb30ce7-f111-4d8d-ba82-8608914adda3",
         "word": "die Leerstelle",
         "en": "indeterminacy, gap (Iser)",
         "vi": "khoảng trống nghĩa (Iser)",
@@ -131,6 +136,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee LAYR-shteh-luh — gap, blank; long 'ay' in first syllable"
       },
       {
+        cell_id: "ee15714a-4a75-4641-9d90-f9e758154f0a",
         "word": "die Diktion",
         "en": "diction, choice of words",
         "vi": "phong cách dùng từ",
@@ -139,6 +145,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee deek-tsee-OHN — diction; stress on final syllable, 'ti' = 'tsee'"
       },
       {
+        cell_id: "c687dd78-3140-4255-9f3d-8a56d61ac51c",
         "word": "die Materialität (der Schrift)",
         "en": "materiality (of writing)",
         "vi": "tính vật chất (của văn tự)",
@@ -147,6 +154,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee mah-tay-ree-ah-lee-TAYT — materiality; stress on the final '-tät'"
       },
       {
+        cell_id: "f4ae3b88-9abc-445d-ad20-f6601f571038",
         "word": "die Verfremdung",
         "en": "estrangement (Brecht)",
         "vi": "sự lạ hóa (Brecht)",
@@ -155,6 +163,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee fair-FREM-doong — estrangement (Brecht)"
       },
       {
+        cell_id: "40770b03-f50a-402b-b074-3b0c115965e5",
         "word": "die Hypotaxe / die Parataxe",
         "en": "hypotaxis / parataxis (subordinated vs coordinated)",
         "vi": "phép giả định lồng / phép đặt cạnh",
@@ -163,6 +172,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee hue-poh-TAX-uh / pah-rah-TAX-uh — hypotaxis / parataxis ('y' in 'hypo' said like German 'ü')"
       },
       {
+        cell_id: "9f9bfce8-c9cd-4f8b-810f-7cb18417d8f7",
         "word": "rückbinden an",
         "en": "to relate back to (interpretive question)",
         "vi": "kết nối lại với",
@@ -173,21 +183,25 @@ export const lessons: GermanLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "6f244f0c-3412-49e0-aa6c-8af205b5e621",
         "speaker": "Habilitand Linh",
         "text": "Mein Close-Reading-Ansatz für den Buddenbrooks-Eingang konzentriert sich auf die Spannung zwischen Direktzitat und freier indirekter Rede.",
         "vi": "Cách tiếp cận close reading của tôi cho đoạn mở đầu Buddenbrooks tập trung vào sự căng thẳng giữa trích dẫn trực tiếp và lời thuật tự do gián tiếp."
       },
       {
+        cell_id: "8c1c996a-4a09-4376-92a9-c27b0e26a810",
         "speaker": "Prof. Wagner",
         "text": "Ein produktiver Zugriff. Aber rückbinden Sie auch — woran arbeitet der Roman insgesamt mit dieser Verschiebung?",
         "vi": "Một cách tiếp cận năng suất. Nhưng cô cũng kết nối lại — toàn bộ tiểu thuyết làm gì với sự dịch chuyển này?"
       },
       {
+        cell_id: "e4ef5181-d6f7-46fc-be4c-c41ad61c1eb4",
         "speaker": "Linh",
         "text": "An der Verfallsthematik: was als bürgerliche Selbstgewissheit erscheint, wird durch die ironische Erzählerdistanz schon im ersten Absatz unterhöhlt.",
         "vi": "Với chủ đề suy tàn: cái xuất hiện như sự tự xác tín tư sản đã bị xói mòn ở đoạn đầu tiên qua khoảng cách mỉa mai của người kể."
       },
       {
+        cell_id: "8ef27ce2-d24c-4096-bd7f-7644f15171df",
         "speaker": "Prof. Wagner",
         "text": "Die Mikroebene rückgebunden an die Makrothematik — genau das ist der C2-Move.",
         "vi": "Cấp độ vi mô được kết nối lại với chủ đề vĩ mô — đó chính là C2-Move."
@@ -489,6 +503,7 @@ export const lessons: GermanLesson[] = [
     "tip_advice_en": "Analysing Erzählinstanz at C2 (5 steps):\n1. IDENTIFY VOICE (Stimme): heterodiegetic vs. homodiegetic? Which grammatical person?\n2. IDENTIFY FOCALIZATION (Fokus): zero / internal / external? Does it shift?\n3. NOTE AUKTORIAL INTERVENTIONS: where does the narrator comment, ironize, distance himself?\n4. CLASSIFY MODES OF SPEECH REPRESENTATION (Figurenrede): direct speech / indirect speech / free indirect discourse / stream of consciousness\n5. RÜCKBINDUNG: what does this specific combination say about the work as a whole?\n\nThe language of C2 Erzählinstanz analysis:\n- 'Die Erzählinstanz tritt formal hinter X zurück' (the narrative instance formally recedes behind X)\n- 'Was als interne Fokalisierung erscheint, erweist sich als hybrider Modus' (what looks like internal focalization turns out to be a hybrid mode)\n- 'Die auktoriale Instanz artikuliert sich unverhohlen' (the authorial instance speaks openly)\n- 'Die Stimme des Erzählers behält stillschweigend ihre Souveränität' (the narrator's voice silently keeps its sovereignty)\n- 'Die Grenze zwischen Erzähler und Autor wird systematisch verwischt' (the line between narrator and author is systematically blurred)\n- 'Erzähler und Autor nicht in eins setzen' (do not collapse narrator and author into one)\n- 'Hier liegt eine Identifikationsfalle für die naive Lektüre' (this is an identification trap for the naive reader)\n\nConcrete analytical techniques:\n- MEASURE NARRATOR PRESENCE: frequency of narratorial commentary, generalisations, ironic ruptures\n- NOTE TRANSITIONS: where does the text move direct → free indirect → reported speech?\n- TRACK DEIXIS: 'gestern' vs. 'am Vortag', 'hier' vs. 'dort' — freie indirekte Rede keeps the character's deixis\n- TIME STRUCTURE: discontinuous time-leaps in Sebald, repetition structures in Bernhard\n\nWhen unreliability (Unzuverlässigkeit) is on the table:\n- 'Die Erzählerstimme weist Anzeichen von Unzuverlässigkeit auf' (the narratorial voice shows signs of unreliability)\n- 'Der Text durchsetzt die Erzählerperspektive mit Hinweisen, die deren Selbstdarstellung unterlaufen' (the text seeds the narrator's perspective with cues that undercut his self-presentation)\n- 'Eine Lesart als unreliable narrator gewinnt an Plausibilität, sofern…' (a reading as unreliable narrator gains plausibility provided that…)\n\nFor Sebald-style verwischung (blurring):\n- 'Der Text inszeniert die Differenz zwischen realem und implizitem Autor als selbst diskursive Operation' (the text stages the difference between real and implied author as itself a discursive operation)\n- 'Die Identifikationsangebote werden nicht aufgelöst, sondern produktiv in der Schwebe gehalten' (the offered identifications are not resolved but productively kept in suspension)\n\nAvoid absolutely:\n- 'Der Autor sagt' when you mean the narrator — Erzähler ≠ Autor\n- 'Der Erzähler ist der Autor' — naive identification\n- 'Allwissender Erzähler' when the text actually uses a Reflektor — terminological sloppiness\n- 'Innensicht' on its own — you have to specify Reflektor / Auktorial / Bewusstseinsstrom\n\nFinal tip: prepare a 2-page Erzählinstanz analysis per work before you write any larger essay. Skipping this step is the fastest way for an essay to drift into plot summary. Erzählinstanz is the foundation; every argument about theme or style rests on it.",
     "vocabulary": [
       {
+        cell_id: "efbf396d-328c-4e33-a7a6-0e285e7f933e",
         "word": "die Erzählinstanz",
         "en": "narrative instance, narrative voice",
         "vi": "ngôi tường thuật",
@@ -497,6 +512,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee air-TSAYL-in-shtants — narrative instance; 'z' = 'ts'"
       },
       {
+        cell_id: "6b415fcb-ba37-416d-80de-eac080a03548",
         "word": "die Fokalisierung",
         "en": "focalization (Genette)",
         "vi": "phối cảnh hóa (Genette)",
@@ -505,6 +521,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee foh-kah-lee-ZEE-rung — focalization (Genette); stress on 'ZEE'"
       },
       {
+        cell_id: "7cc2759c-7ab8-4a30-8515-dad76a6ed31d",
         "word": "auktorial / personal / Ich-Form",
         "en": "authorial / figural / first-person (Stanzel)",
         "vi": "auctorial / personal / ngôi thứ nhất (Stanzel)",
@@ -513,6 +530,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "owk-toh-ree-AHL / pair-zoh-NAHL / IKH-form — authorial / figural / first-person (Stanzel); 'ich' uses the soft ich-Laut"
       },
       {
+        cell_id: "83af84db-f414-467e-9050-52995f3ade68",
         "word": "der Reflektor",
         "en": "reflector character (figural focalizer)",
         "vi": "Reflektor (nhân vật phối cảnh)",
@@ -521,6 +539,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dair ray-FLEK-tor — reflector character; stress on 'FLEK'"
       },
       {
+        cell_id: "e55297c3-b5c3-4444-811a-810ecdc44a11",
         "word": "die Allwissenheit / Nullfokalisierung",
         "en": "omniscience / zero focalization",
         "vi": "tính toàn tri / không phối cảnh hóa",
@@ -529,6 +548,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee AHL-vee-sen-hite — omniscience; long 'ah' at the start"
       },
       {
+        cell_id: "3f215147-f6e4-4bc7-86d8-8a418e246b3b",
         "word": "die Heterodiegese / Homodiegese",
         "en": "heterodiegesis / homodiegesis (Genette)",
         "vi": "kể về kẻ khác / kể về mình",
@@ -537,6 +557,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee hay-tay-roh-dee-AY-geh-zuh — heterodiegesis; long 'AY' on the stressed syllable"
       },
       {
+        cell_id: "96cff9bf-40fb-48cd-b043-51999194bbe0",
         "word": "der/die unzuverlässige Erzähler/-in",
         "en": "unreliable narrator",
         "vi": "người kể không đáng tin",
@@ -545,6 +566,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "oon-tsoo-fair-LES-see-guh air-TSAY-ler — unreliable narrator; 'z' in 'Erzähler' is 'ts'"
       },
       {
+        cell_id: "4135c60e-df00-489d-bcd4-9c49b580879a",
         "word": "der implizite Autor",
         "en": "implied author",
         "vi": "tác giả ngầm",
@@ -553,6 +575,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dair im-PLEE-tsee-tuh OW-tor — implied author; 'au' = 'ow' as in 'how'"
       },
       {
+        cell_id: "c41c7068-25db-4e72-956b-82f1356b2fa4",
         "word": "der Bewusstseinsstrom",
         "en": "stream of consciousness",
         "vi": "dòng ý thức",
@@ -561,6 +584,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dair buh-VOOST-zines-shtrohm — stream of consciousness; long 'oh' in 'shtrohm'"
       },
       {
+        cell_id: "154c2dc5-47dd-4e2d-af42-18097a957101",
         "word": "verwischen",
         "en": "to blur, smudge",
         "vi": "làm mờ",
@@ -571,21 +595,25 @@ export const lessons: GermanLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "fd1c9d93-2b2d-4897-98d8-5e5d7e163368",
         "speaker": "Habilitand Linh",
         "text": "Mein Vortrag stellt die Erzählinstanz bei Sebald in den Mittelpunkt — ich argumentiere, dass die Verwischung zwischen Erzähler und Autor selbst ein literarisches Verfahren ist.",
         "vi": "Bài thuyết trình của tôi đặt Erzählinstanz ở Sebald vào trung tâm — tôi lập luận rằng sự làm mờ giữa người kể và tác giả tự bản thân là một quy trình văn chương."
       },
       {
+        cell_id: "bf12fec7-26c2-4358-aee6-46b572383eaa",
         "speaker": "Prof. Wagner",
         "text": "Ein produktiver Ausgangspunkt. Aber operieren Sie sauber mit der Genetteschen Achse Stimme-Fokus, oder vermengen Sie?",
         "vi": "Một điểm xuất phát năng suất. Nhưng cô vận hành sạch sẽ trục Stimme-Fokus của Genette, hay đang trộn lẫn?"
       },
       {
+        cell_id: "5a719dba-08bd-49c8-b800-9a52ab69da2e",
         "speaker": "Linh",
         "text": "Sauber: Sebald operiert formal homodiegetisch — ein Ich-Erzähler — bei interner Fokalisierung, doch jene Identifikation mit dem realen Sebald wird vom Text selbst inszeniert, nicht passiv vorausgesetzt.",
         "vi": "Sạch sẽ: Sebald vận hành hình thức homodiegetisch — ngôi thứ nhất — với nội phối cảnh hóa, song sự đồng nhất với Sebald thực được bản thân văn bản dàn dựng, không phải được thừa nhận thụ động."
       },
       {
+        cell_id: "3241cec6-ca02-4aef-99d7-beca76fe58a6",
         "speaker": "Prof. Wagner",
         "text": "Genau diese Differenz — zwischen passiver Voraussetzung und aktiver Inszenierung — ist die Pointe. Halten Sie das im Vortrag explizit.",
         "vi": "Chính sự khác biệt đó — giữa giả định thụ động và sự dàn dựng chủ động — là điểm nhọn. Hãy giữ điều đó rõ ràng trong bài."
@@ -887,6 +915,7 @@ export const lessons: GermanLesson[] = [
     "tip_advice_en": "Symbol-Metapher analysis at C2 (5 steps):\n1. KLASSIFIKATION: Symbol or Allegorie? Metapher or Metonymie? Which Bildtradition?\n2. INTERTEXTUELLE EINORDNUNG: which Bildreservoir is echoed? — Antiquity, the Bible, Petrarch, Romanticism, etc.\n3. KONTEXTUELLE FUNKTION: what is the image doing AT THIS PRECISE POINT of the work?\n4. THEORETISCHE VERORTUNG: Blumenberg, Adorno, Jakobson, Ricœur — which reading carries the most weight?\n5. WAHRUNG vs DEUTUNG: what needs to be explained, and what has to be left standing in its Vieldeutigkeit?\n\nLanguage for Symbol-Metapher-Analyse at C2:\n- 'X fungiert nicht bloß als Kulisse, sondern als komplexes Bedeutungsgeflecht' ('X functions not merely as backdrop but as a complex web of meaning')\n- 'Die Versuchung, X auf eine eindeutige allegorische Botschaft zu reduzieren, gilt es zu widerstehen' ('we must resist the temptation to reduce X to a single allegorical message')\n- 'Mit Blumenberg lässt sich die Metapher als kognitive Unverzichtbarkeit begreifen' ('with Blumenberg, metaphor can be grasped as cognitively indispensable')\n- 'Die Konjunktion von X und Y aktualisiert ein Bildreservoir, das von Antike bis Z reicht' ('the linking of X and Y reactivates an image reservoir stretching from antiquity to Z')\n- 'Eine intertextuelle Tiefenschicht, die der Text zugleich aufruft und ironisch bricht' ('an intertextual deep layer the text both invokes and ironically breaks')\n- 'Das Bild nicht zu entzaubern, sondern in seiner produktiven Vieldeutigkeit zu erhalten' ('preserve the image in its productive polyvalence rather than disenchanting it')\n\nBlumenberg move:\n- 'Hier handelt es sich um eine absolute Metapher im Sinne Blumenbergs — sie lässt sich nicht in Begriffe auflösen, ohne ihren kognitiven Eigensinn zu verlieren' ('this is an absolute metaphor in Blumenberg's sense — it cannot be dissolved into concepts without losing its own cognitive force')\n\nGoethean move:\n- 'In Goethes Sinn handelt es sich nicht um eine Allegorie, sondern um ein Symbol — die Bedeutung kann nicht erschöpfend formuliert werden' ('in Goethe's sense this is not an allegory but a symbol — its meaning cannot be exhaustively stated')\n\nJakobson move:\n- 'Die metonymische Verschiebung von X auf Y entlang einer Kontiguitätsachse' ('the metonymic shift from X to Y along an axis of contiguity')\n\nWhen the image is ironically broken:\n- 'Mann ruft die Tradition auf und bricht sie zugleich' ('Mann invokes the tradition and breaks it at the same time')\n- 'Die Bildtradition wird re-aktualisiert, ohne in restaurativem Pathos zu verharren' ('the image tradition is reactivated without lapsing into restorative pathos')\n\nWhen Adorno's Bildverbot becomes relevant:\n- 'Adornos Bildverbot mahnt: das, was sich nicht in Bilder bannen lässt, darf auch nicht durch begriffliche Vereindeutigung getilgt werden' ('Adorno's Bildverbot warns us: whatever cannot be captured in images must not be erased through conceptual univocalisation')\n\nAbsolute don'ts:\n- 'X bedeutet einfach Y' (oversimplification — Allegorie reduction)\n- 'Schnee = Tod' (equation-style writing — that's allegory, not symbol)\n- 'Was Mann uns sagen will' (intentionalist fallacy)\n- Fabricated quotations — only reference, paraphrase, or use verified quotes (like the closing sentence of the Schneekapitel).\n\nFinal tip: write 2–3 pages of Symbol-Analyse per key image. Keep Begriffsarbeit (conceptual work — what you can argue) and Bildwahrung (preserving the image — what must remain in suspension) cleanly distinct. You need both; missing either side gives you weak criticism.",
     "vocabulary": [
       {
+        cell_id: "0e27dcec-6a54-4545-aefe-03c9a8af4d8d",
         "word": "das Symbol / die Allegorie",
         "en": "symbol / allegory (Goethe distinction)",
         "vi": "biểu tượng / ngụ ngôn (phân biệt Goethe)",
@@ -895,6 +924,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dahs zoom-BOHL / dee ah-leh-GOH-ree-uh — 'y' in Symbol is short 'u' like 'put'"
       },
       {
+        cell_id: "f086a6a0-e965-4753-9e3b-e7535079c40b",
         "word": "die Metapher / die Metonymie",
         "en": "metaphor / metonymy (Jakobson)",
         "vi": "ẩn dụ / hoán dụ (Jakobson)",
@@ -903,6 +933,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee meh-TAH-fer / meh-toh-NEW-mee-uh — 'y' is the rounded 'ee' (lips for 'oo', say 'ee')"
       },
       {
+        cell_id: "0e32cfc6-7138-4154-8688-59242d8cd258",
         "word": "das Bedeutungsgeflecht",
         "en": "web of meaning",
         "vi": "mạng ý nghĩa",
@@ -911,6 +942,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dahs buh-DOY-toongs-guh-flekht — 'eu' is 'oy', 'ch' is hard back-of-throat"
       },
       {
+        cell_id: "6da27fbd-df71-4ba0-8eb5-6776d5292337",
         "word": "die Vieldeutigkeit / Polyvalenz",
         "en": "polyvalence, multiple meanings",
         "vi": "đa nghĩa",
@@ -919,6 +951,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee FEEL-doy-tikh-kite — long 'ee' in 'Viel', 'ei' at end is 'eye'"
       },
       {
+        cell_id: "84c23f96-0084-4c04-b242-f30a18e0062b",
         "word": "die absolute Metapher (Blumenberg)",
         "en": "absolute metaphor (Blumenberg)",
         "vi": "ẩn dụ tuyệt đối (Blumenberg)",
@@ -927,6 +960,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee ahp-zoh-LOO-tuh meh-TAH-fer — long 'oo' as in 'food'"
       },
       {
+        cell_id: "7aabfa1e-c38b-4fe2-9964-68f3be6ca043",
         "word": "die Vereindeutigung",
         "en": "univocalization, reduction to single meaning",
         "vi": "sự đơn nghĩa hóa",
@@ -935,6 +969,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee fer-EYEN-doy-ti-goong — 'ei' is 'eye', 'eu' is 'oy'"
       },
       {
+        cell_id: "7fbedd63-cd43-4b28-84a3-b9764bc4b339",
         "word": "die intertextuelle Tiefenschicht",
         "en": "intertextual deep layer",
         "vi": "tầng sâu liên văn bản",
@@ -943,6 +978,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee in-ter-tex-too-EL-luh TEE-fen-shikht — stress on 'EL'"
       },
       {
+        cell_id: "37f55fc0-b2a6-46f0-9e82-4dc389344e5b",
         "word": "das Bildreservoir",
         "en": "image reservoir, repertoire",
         "vi": "kho hình ảnh",
@@ -951,6 +987,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dahs BIL-der-zer-vwahr — French loan, final 'r' soft"
       },
       {
+        cell_id: "18aff086-2905-4ec5-9212-361e9e78bcd0",
         "word": "entzaubern",
         "en": "to disenchant, demystify",
         "vi": "phá ảo thuật",
@@ -959,6 +996,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "ent-TSOW-bern — 'z' is 'ts', 'au' is 'ow' as in 'how'"
       },
       {
+        cell_id: "1c014803-62a1-4a50-9289-02aab51d8c9d",
         "word": "die Diskursivierungspflicht",
         "en": "obligation to discursivize",
         "vi": "nghĩa vụ diễn ngôn hóa",
@@ -969,21 +1007,25 @@ export const lessons: GermanLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "2156de55-aea4-4f33-b0de-7f2bc1ce1be7",
         "speaker": "Habilitand Linh",
         "text": "Mein Aufsatz für die DVjs untersucht das Schneekapitel im ‚Zauberberg' — ich argumentiere mit Blumenberg gegen eine allegorische Reduktion.",
         "vi": "Bài viết của tôi cho DVjs khảo sát chương tuyết trong ‚Zauberberg' — tôi lập luận với Blumenberg chống lại một sự rút giảm ngụ ngôn."
       },
       {
+        cell_id: "c61d0ced-4757-45b4-85e0-25c227f2bee7",
         "speaker": "Prof. Wagner",
         "text": "Ein anspruchsvoller Zugriff. Welche absolute Metapher identifizieren Sie konkret?",
         "vi": "Một cách tiếp cận đầy tham vọng. Cô nhận diện ẩn dụ tuyệt đối cụ thể nào?"
       },
       {
+        cell_id: "f743c0cd-dade-4c58-a3fc-a166b4c33cdc",
         "speaker": "Linh",
         "text": "Schnee als Konjunktion von Tod und ästhetischer Selbstaufgabe — das Bild lässt sich nicht in einen Begriff auflösen, ohne seinen kognitiven Eigensinn zu verlieren.",
         "vi": "Tuyết như sự liên kết của cái chết và tự xóa mình thẩm mỹ — hình ảnh không thể giải về một khái niệm mà không mất tính riêng nhận thức."
       },
       {
+        cell_id: "b64fd923-1089-4213-a79e-3782d24ba200",
         "speaker": "Prof. Wagner",
         "text": "Halten Sie die Spannung zwischen Diskursivierungspflicht und Bildwahrung sauber? Sonst kippt Ihr Aufsatz in Mystifikation.",
         "vi": "Cô có giữ căng thẳng giữa nghĩa vụ diễn ngôn hóa và giữ gìn hình ảnh sạch không? Nếu không bài cô sẽ rơi vào huyền hóa."
@@ -1285,6 +1327,7 @@ export const lessons: GermanLesson[] = [
     "tip_advice_en": "Gattungssubversion analysis at C2 (5 steps):\n1. ESTABLISH THE NORM: what are the Wesensmerkmale of the genre historically? — e.g. Bildungsroman: young male protagonist, journey, crisis, synthesis, integration into society\n2. IDENTIFY SUBVERSION POINTS: which norm-elements get broken? — in Bachmann: young male hero → female first-person narrator; synthesis → disappearance\n3. PRODUCTIVITY: rupture for its own sake or constructive re-reading? — Bachmann re-reads Goethe explicitly, breaks productively\n4. GENRE-HISTORICAL POSITIONING: is this an innovative solitary case or embedded in a tradition of subversion?\n5. READER EFFECT: what does the rupture do to the reader? — disappointed expectation as a cognitive gesture\n\nLanguage for Gattungssubversion analysis at C2:\n- 'Die Gattungserwartung wird systematisch unterlaufen' ('the genre expectation is systematically undermined')\n- 'Was als X anhebt, kulminiert in Y' ('what begins as X culminates in Y')\n- 'Die Konvention wird zugleich aufgerufen und destabilisiert' ('the convention is simultaneously invoked and destabilised')\n- 'Subversion gelingt nicht als bloßer Bruch, sondern als produktive Re-Lektüre' ('subversion succeeds not as bare rupture but as productive re-reading')\n- 'Die Geste der Verweigerung ist ohne ihren ironischen Bezug auf X nicht zu denken' ('the gesture of refusal is unthinkable without its ironic relation to X')\n- 'Die Gattung erweist sich nicht als statisches Schema, sondern als historisch bewegliches Erwartungssystem' ('the genre proves to be not a static schema but a historically mobile system of expectations')\n- 'Stabilität wird allererst durch ihre Brüche sichtbar' ('stability only becomes visible through its ruptures')\n\nJaussian move:\n- 'Im Sinne von Jauss erweist sich die Gattung als Erwartungshorizont, der durch Subversionen historisch bewegt wird' ('in Jauss's sense the genre proves to be a horizon of expectation that is historically moved by subversions')\n\nFeminist move:\n- 'Die klassische Bildungsromankonvention ist gendered male konstruiert — der weibliche Held bricht nicht zufällig die Gattung, sondern macht ihre Voraussetzung sichtbar' ('the classical Bildungsroman convention is gendered male — the female protagonist does not break the genre by accident, she makes its presupposition visible')\n\nWhen subversion fails or is 'only' variation:\n- 'Hier handelt es sich nicht um Subversion, sondern um Variation innerhalb der Konvention' ('this is not subversion, but variation within the convention')\n- 'Der Text bleibt formal innerhalb der Gattung, ohne ihren Erwartungshorizont zu sprengen' ('the text stays formally within the genre without bursting its horizon of expectation')\n\nWhen reception shifts:\n- 'Was zur Entstehungszeit als Provokation galt, ist heute zum kanonischen Bestandteil der Gattung geworden' ('what was felt as provocation at the time of writing has now become a canonical part of the genre')\n\nAbsolute don'ts:\n- 'Bachmann verlässt die Bildungsroman-Tradition' (far too naive — she subverts it, she doesn't leave it behind)\n- 'X gehört nicht zur Gattung Y' (essentialist claim instead of historical one)\n- Fabricated Bachmann / Goethe / Mann quotations\n- Anachronisms — applying Goethe's Erwartungshorizont to Mann without mediation\n\nFinal tip: prepare a one-page Gattungs-Tabelle before drafting — norm elements in one column, subversion points in the second, productivity justification in the third. The visualisation helps avoid drift.",
     "vocabulary": [
       {
+        cell_id: "77a855aa-7470-4e23-98bd-9321acc9df29",
         "word": "die Gattung",
         "en": "genre, literary kind",
         "vi": "thể loại",
@@ -1293,6 +1336,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee GAH-toong — short 'a' as in 'father' cut short"
       },
       {
+        cell_id: "85e1ae9c-fdd8-463a-b2a0-e64c4644009d",
         "word": "die Gattungserwartung / Gattungskonvention",
         "en": "genre expectation / convention",
         "vi": "kỳ vọng / quy ước thể loại",
@@ -1301,6 +1345,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee GAH-toongs-er-vahr-toong — 'w' is 'v'"
       },
       {
+        cell_id: "a951c18b-8abd-4a9f-8346-25ce2bcadd4b",
         "word": "die Subversion",
         "en": "subversion",
         "vi": "lật ngược, phá ngầm",
@@ -1309,6 +1354,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee zoob-ver-zi-OHN — initial 's' voiced to 'z'"
       },
       {
+        cell_id: "6818adba-32b5-4e79-84c2-0ddb506a8313",
         "word": "unterlaufen",
         "en": "to undermine, subvert",
         "vi": "phá ngầm, làm dưới đáy",
@@ -1317,6 +1363,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "oon-ter-LOW-fen — 'au' is 'ow' as in 'how'"
       },
       {
+        cell_id: "91c0955a-f4ec-4315-add6-9eef1b8083b8",
         "word": "der Bildungsroman",
         "en": "novel of formation/education",
         "vi": "tiểu thuyết hình thành",
@@ -1325,6 +1372,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "der BIL-doongs-roh-mahn — 'u' short as in 'put'"
       },
       {
+        cell_id: "afdf527e-d38e-41f8-af0e-53fde7d8c888",
         "word": "der Erwartungshorizont (Jauss)",
         "en": "horizon of expectation (Jauss)",
         "vi": "chân trời kỳ vọng (Jauss)",
@@ -1333,6 +1381,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "der er-VAHR-toongs-hoh-ri-tsont — 'z' in horizont is 'ts'"
       },
       {
+        cell_id: "ae8499f8-f31c-46f5-bce1-941449ad0537",
         "word": "die Re-Lektüre / Wieder-Lektüre",
         "en": "re-reading",
         "vi": "đọc lại",
@@ -1341,6 +1390,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee ray lek-TUE-ruh — 'ü' rounded (lips for 'oo', say 'ee')"
       },
       {
+        cell_id: "908c021a-9c16-4d6c-b7b4-37017173afea",
         "word": "destabilisieren",
         "en": "to destabilize",
         "vi": "làm bất ổn",
@@ -1349,6 +1399,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "deh-shtah-bee-lee-ZEE-ren — 'st' is 'sht' at stem start"
       },
       {
+        cell_id: "9c45b488-a73e-4ca6-b66b-a98bbf42e040",
         "word": "die Selbsterkenntnis",
         "en": "self-knowledge (Bildungsroman telos)",
         "vi": "tự nhận thức",
@@ -1357,6 +1408,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee ZELP-st-er-KEN-tnis — initial 's' is 'z'"
       },
       {
+        cell_id: "e44a954f-bd01-4398-8c9f-fe5d16b10479",
         "word": "konstitutiv",
         "en": "constitutive (essential to)",
         "vi": "cấu thành",
@@ -1367,21 +1419,25 @@ export const lessons: GermanLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "f6bcff10-d7ac-420a-bd5a-c63ae1253a7e",
         "speaker": "Habilitand Linh",
         "text": "Ich argumentiere, dass Bachmanns ‚Malina' den Bildungsroman nicht ablöst, sondern ihn produktiv subvertiert — die Tradition wird zugleich aufgerufen und destabilisiert.",
         "vi": "Tôi lập luận rằng ‚Malina' của Bachmann không thay thế Bildungsroman, mà subvert nó năng suất — tradition đồng thời được gọi và làm bất ổn."
       },
       {
+        cell_id: "cef287e6-92d3-4165-84d1-392485de9234",
         "speaker": "Prof. Wagner",
         "text": "An welcher Stelle wird der Aufruf am sichtbarsten?",
         "vi": "Sự gọi rõ nhất ở chỗ nào?"
       },
       {
+        cell_id: "9bc50362-2978-480b-bf9f-8b4ea7a28917",
         "speaker": "Linh",
         "text": "Im strukturellen Echo zu Wilhelm Meister — die Suche nach Selbsterkenntnis, die Stationen, der Mentor — alles ist da, aber kippt jeweils. Statt Synthese das Verschwinden in der Wand.",
         "vi": "Trong vọng cấu trúc tới Wilhelm Meister — sự tìm tự nhận thức, các trạm, mentor — tất cả đều có, nhưng từng cái bị lật. Thay vì Synthese là sự biến mất trong tường."
       },
       {
+        cell_id: "2737074c-eda4-4b48-8893-784cfd53dd6d",
         "speaker": "Prof. Wagner",
         "text": "Eine genetische Lektüre. Vergessen Sie aber nicht die feministische Dimension — die männlich-konstruierte Konvention macht Bachmanns Bruch erst kognitiv vollständig.",
         "vi": "Một sự đọc lai lịch. Nhưng đừng quên chiều feminist — quy ước được kiến tạo male làm cho sự đứt gãy của Bachmann hoàn chỉnh về nhận thức."
@@ -1668,6 +1724,7 @@ export const lessons: GermanLesson[] = [
     "tip_advice_en": "Übersetzungsvergleich at C2 (5 steps):\n1. SELECT THE CORPUS: two or three translations of the same original — same excerpt, comparable length\n2. CARTOGRAPHY: capture the differences systematically — no value judgements yet, just observations\n3. IDENTIFY THE PRESUPPOSITIONS: which Übersetzungs-Programme lie behind each set of choices?\n4. FEED BACK: what do the differences say about the original?\n5. THEORETICAL POSITIONING: Schleiermacher's dichotomy? The Benjamin paradigm? Berman?\n\nLanguage for Übersetzungsvergleich at C2:\n- 'Der Übersetzungsvergleich erweist sich als Lehrstück hermeneutischer Differenz' ('comparing translations turns out to be a lesson in hermeneutic difference')\n- 'Keine Übertragung kann das Original unverstellt zur Sprache bringen' ('no translation can bring the original to expression undisguised')\n- 'Mit Benjamins ›Aufgabe des Übersetzers‹ lässt sich die Übersetzung als eigenständiges literarisches Verfahren begreifen' ('with Benjamin's essay we can grasp translation as a literary procedure in its own right')\n- 'Die Schlegelsche Übersetzung kanonisierte X um den Preis einer Glättung' ('Schlegel's translation canonised X at the price of a smoothing')\n- 'Die analytische Aufgabe besteht nicht im Verteilen von Noten, sondern im Sichtbarmachen impliziter Voraussetzungen' ('the analytical task is not to hand out grades but to make implicit presuppositions visible')\n- 'An deren Bruchlinien kommt das Original selbst neu zur Erscheinung' ('at those fault lines the original itself comes back into view')\n\nSchleiermacher move:\n- 'Schlegel verfolgt das einbürgernde Verfahren — er bringt Shakespeare zum deutschen Leser' ('Schlegel follows the domesticating method — he brings Shakespeare to the German reader')\n- 'Hölderlin hingegen verfolgt das verfremdende Verfahren — er bringt den Leser zu Sophokles' ('Hölderlin, on the other hand, follows the foreignising method — he brings the reader to Sophocles')\n\nBenjamin move:\n- 'In Benjamins Sinn lässt sich Hölderlin als idealtypisch begreifen — die Übersetzung verdeckt nicht das Original, sondern lässt es durchscheinen' ('in Benjamin's sense Hölderlin is ideal-typical — the translation does not cover the original, it lets it shine through')\n\nSpecific analytical techniques:\n- LEXICAL CHOICE: 'Wo Schlegel ›X‹ wählt, wählt Fried ›Y‹ — der Unterschied verschiebt das semantische Feld von Z zu W' ('where Schlegel chooses X, Fried chooses Y — the difference shifts the semantic field from Z to W')\n- SYNTACTIC STRUCTURE: 'Schlegel folgt der hypotaktischen Tradition; Günther bricht in Parataxe — eine zeitgenössische Lesbarkeit kostet die rhetorische Schwere' ('Schlegel follows the hypotactic tradition; Günther breaks into parataxis — contemporary readability comes at the cost of rhetorical weight')\n- PROSODY: 'Beide bewahren den Blankvers, aber Frieds Caesuren sind unregelmäßiger — was die Nähe zur sprechbaren Bühnensprache erkauft' ('both preserve the blank verse, but Fried's caesuras are more irregular — which buys closeness to a speakable stage idiom')\n- SEMANTICS: 'Die ›dejection‹ Hamlets ist bei Schlegel ›Schwermut‹ — bei Günther ›Verdüsterung‹ — der Unterschied verlagert das Stimmungsspektrum' ('Hamlet's dejection becomes Schwermut in Schlegel and Verdüsterung in Günther — the difference shifts the mood spectrum')\n- CULTURAL ALLUSIONS: 'Was bei Shakespeare eine elisabethanische Anspielung ist, fällt bei Schlegel weg, wird bei Günther erläutert' ('what is an Elizabethan allusion in Shakespeare drops out in Schlegel and is glossed in Günther')\n\nWhen drawing conclusions:\n- 'Der Vergleich legt nahe, dass das Original mehrere zugleich produktive Lektüren erlaubt — keine Übertragung kann sie alle zur Geltung bringen' ('the comparison suggests that the original allows several simultaneously productive readings — no translation can give them all their full force')\n- 'Erst die Pluralität der Übertragungen macht die Pluralität des Originals sichtbar' ('only the plurality of translations makes the plurality of the original visible')\n\nAbsolute don'ts:\n- 'X ist die bessere Übersetzung' (evaluative schema, not Wissenschaft)\n- 'Y verfehlt das Original' (presupposes that there is one 'correct' translation)\n- 'Schlegel klingt schöner' (subjective, untheoretical)\n- Fabricated Schlegel/Fried/Günther quotations — only verified references, or paraphrase analytically\n\nFinal tip: prepare a one-page Vergleichstabelle — columns: Schlegel / Fried / Günther; rows: lexical / syntactic / prosodic / semantic. The visualisation makes systematic analysis much easier.",
     "vocabulary": [
       {
+        cell_id: "1a70e0c0-ca8b-4416-8967-bfcfa0b3cc71",
         "word": "die Übersetzung / Übertragung",
         "en": "translation",
         "vi": "bản dịch",
@@ -1676,6 +1733,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee UE-ber-ZET-soong — 'ü' rounded (lips for 'oo', say 'ee')"
       },
       {
+        cell_id: "19561b6b-f8c8-48ea-a9e8-5e3d73cb630e",
         "word": "der Übersetzungsvergleich",
         "en": "translation comparison",
         "vi": "so sánh bản dịch",
@@ -1684,6 +1742,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "der UE-ber-ZET-soongs-fer-glykh — final 'ch' hard back-of-throat"
       },
       {
+        cell_id: "308413b3-f5fa-484c-bed1-c138f283381a",
         "word": "verfremdend / einbürgernd (Schleiermacher)",
         "en": "foreignizing / domesticating (Schleiermacher)",
         "vi": "lạ hóa / bản địa hóa (Schleiermacher)",
@@ -1692,6 +1751,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "fer-FREM-dend / EYEN-buer-gernd — 'ei' is 'eye', 'ü' rounded"
       },
       {
+        cell_id: "8e3d63c0-008c-45ba-b54a-6c5c93fbf91c",
         "word": "die Glättung",
         "en": "smoothing, flattening",
         "vi": "sự làm phẳng",
@@ -1700,6 +1760,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee GLET-toong — short 'eh' as in 'bet'"
       },
       {
+        cell_id: "dfed3389-f2a0-4e9a-aae2-1afaefc1663d",
         "word": "die Voraussetzung",
         "en": "presupposition, premise",
         "vi": "tiền đề",
@@ -1708,6 +1769,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee FOR-ow-zet-soong — 'au' is 'ow' as in 'how'"
       },
       {
+        cell_id: "c0563af1-e19c-4642-aa09-0680b0243749",
         "word": "kanonisieren",
         "en": "to canonize",
         "vi": "chính tự hóa, đưa vào kinh điển",
@@ -1716,6 +1778,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "kah-noh-nee-ZEER-en — 'z' is 'ts'"
       },
       {
+        cell_id: "81c562ac-5713-49bd-946a-f621ac4a92aa",
         "word": "die reine Sprache (Benjamin)",
         "en": "pure language (Benjamin)",
         "vi": "ngôn ngữ thuần (Benjamin)",
@@ -1724,6 +1787,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee RY-nuh SHPRAH-khuh — 'sp' is 'shp', 'ch' hard"
       },
       {
+        cell_id: "9cac03b5-8089-4635-820b-ae0f3c835efe",
         "word": "die Bruchlinie",
         "en": "fault line, fracture line",
         "vi": "đường đứt gãy",
@@ -1732,6 +1796,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee BROOKH-lee-nee-uh — 'ch' hard, 'u' long"
       },
       {
+        cell_id: "e69b661d-1b99-48c1-b1f3-ade1e25f4a29",
         "word": "der Möglichkeitsraum",
         "en": "space of possibilities",
         "vi": "không gian khả thi",
@@ -1740,6 +1805,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "der MOEK-likh-kites-rowm — 'ö' rounded 'eh'"
       },
       {
+        cell_id: "1dc795d3-2af4-4b2f-a960-3ddc2c0f863b",
         "word": "zur Erscheinung kommen / bringen",
         "en": "to come to / bring to manifestation",
         "vi": "xuất hiện / đưa đến xuất hiện",
@@ -1750,21 +1816,25 @@ export const lessons: GermanLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "dead3f12-7faa-401a-b50e-092f545b1a13",
         "speaker": "Habilitand Linh",
         "text": "Ich vergleiche Schlegel, Fried und Günther am ‚Sein oder Nichtsein'-Monolog — drei Übersetzungs-Programme über zwei Jahrhunderte.",
         "vi": "Tôi so sánh Schlegel, Fried và Günther ở độc thoại ‚Sein oder Nichtsein' — ba chương trình dịch qua hai thế kỷ."
       },
       {
+        cell_id: "01040337-9933-4020-841b-a46350c651ce",
         "speaker": "Prof. Wagner",
         "text": "Welches theoretische Raster legen Sie an?",
         "vi": "Cô áp dụng lược đồ lý thuyết nào?"
       },
       {
+        cell_id: "08f7195e-7599-44a8-a639-008d49fe7b29",
         "speaker": "Linh",
         "text": "Schleiermachers Dichotomie verfremdend/einbürgernd als Grundachse, Benjamin als zweite Schicht — die Frage nach der ‚reinen Sprache', die durch alle drei Übersetzungen verschieden hörbar wird.",
         "vi": "Dichotomie verfremdend/einbürgernd của Schleiermacher làm trục cơ bản, Benjamin làm tầng thứ hai — câu hỏi về ‚ngôn ngữ thuần' nghe được khác qua cả ba bản dịch."
       },
       {
+        cell_id: "024b1f74-1854-4dfb-a79b-112e7f41ec68",
         "speaker": "Prof. Wagner",
         "text": "Verfallen Sie nicht in Werturteile — Sichtbarmachen, nicht Verteilen von Noten.",
         "vi": "Đừng rơi vào phán đoán giá trị — làm thấy được, không phân điểm."
@@ -2056,6 +2126,7 @@ export const lessons: GermanLesson[] = [
     "tip_advice_en": "C2 biography-and-work analysis in five steps:\n1. METHODOLOGICAL SELF-POSITIONING. Werkimmanenz / biographism / productive double-move — where do you stand theoretically?\n2. INTERROGATE THE BIOGRAPHICAL MATERIAL. Is this a diary (self-presentation)? A letter (communicative, performative)? A third-party source? Self-mythologisation?\n3. IDENTIFY THE LINK TO THE WORK. At which points does the work touch biographical material — literally, motivically, structurally?\n4. ANALYSE THE DIFFERENCE. What does the literary transformation produce that wasn't in the biographical material?\n5. TIE IT BACK. What does that difference tell us about the work?\n\nC2 phrases for biography-and-work analysis:\n- 'Die methodische Spannung zwischen Werkimmanenz und biographischer Kontextualisierung gehört zu den Grunddebatten der Germanistik' (the methodological tension between intrinsic interpretation and biographical contextualisation is one of the foundational debates of Germanistik)\n- 'Roland Barthes' Verkündigung des ‚Tod des Autors' lässt sich als korrektives Manifest gegen biographistische Kurzschlüsse begreifen' (Barthes' announcement of the 'death of the author' can be read as a corrective manifesto against biographistic short-circuits)\n- 'Im Fall X erweist sich die Spannung als besonders fruchtbar — sein Schreiben verweist beständig auf biographische Substrate, ohne sich in ihnen zu erschöpfen' (in case X the tension is particularly productive — the writing constantly refers back to biographical substrates without being exhausted by them)\n- 'Die Aufgabe der Kritik ist mithin nicht, die Biographie hinter den Text zu setzen, sondern die produktive Differenz als analytischen Gegenstand zu fassen' (the task of criticism is therefore not to put biography behind the text, but to grasp the productive difference as the analytical object)\n- 'Eine reflektierte Biographik versteht sich nicht als Schlüssel zum Werk, sondern als ergänzende Perspektive' (a self-aware biographical approach sees itself not as the key to the work but as a complementary perspective)\n\nThe Bourdieu move:\n- 'Im Sinne von Bourdieus ‚biographischer Illusion' ist daran zu erinnern, dass Biographien nachträgliche Konstruktionen sind, keine vorgängigen Tatsachen' (following Bourdieu's 'biographical illusion', it's worth remembering that biographies are retrospective constructions, not pre-existing facts)\n\nThe Kafka move:\n- 'Kafkas ‚Brief an den Vater' lässt sich nicht als biographisches Dokument im naiven Sinn lesen — er ist selbst literarische Selbstinszenierung' (Kafka's 'Letter to His Father' can't be read as a biographical document in any naive sense — it is itself literary self-staging)\n\nThe Goethe move:\n- 'Auch Goethes ‚Dichtung und Wahrheit' verschränkt autobiographisches und literarisches Verfahren — der Titel selbst markiert die Aporie' (Goethe's 'Dichtung und Wahrheit' interweaves the autobiographical and the literary — the title itself signposts the aporia)\n\nWhen biographical speculation is tempting:\n- 'An dieser Stelle ist Vorsicht geboten — es liegt nahe, biographisches Material heranzuziehen, doch der Werkbefund trägt diese Spekulation nicht' (caution is warranted here — biographical material is at hand, but the textual evidence won't carry the speculation)\n- 'Die Versuchung des biographistischen Kurzschlusses ist abzuwehren' (the temptation of the biographistic short-circuit has to be resisted)\n\nWhen the work shows productive difference:\n- 'Was im Brief autobiographisches Bekenntnis war, wird im Werk literarische Konstruktion — der Wechsel des Modus ist konstitutiv' (what was autobiographical confession in the letter becomes literary construction in the work — the change of mode is constitutive)\n\nNever do this:\n- 'Werther IS Goethe' (identification, biographistic)\n- 'Kafka wrote that because his father was authoritarian' (causal short-circuit)\n- 'Biography explains the work' (essentialist)\n- Buying self-mythologisation uncritically — Goethe's 'Dichtung und Wahrheit', Mann's diaries, Kafka's letters are all performative\n\nLast tip: before citing anything biographical, ask what the epistemic status of the source is. Diary (private but performative?), letter (communicative, situational?), essay (public, programmatic?), third-party source (eyewitness, secondary, rumour?). Different sources carry different argumentative weight.",
     "vocabulary": [
       {
+        cell_id: "1787a4a2-63b5-473f-8a82-4a56ec40ef04",
         "word": "die Werkimmanenz",
         "en": "intrinsic interpretation",
         "vi": "nội tại tác phẩm",
@@ -2064,6 +2135,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee VAYRK-ee-mah-nents — 'Werk' rhymes with 'lurk', 'mah' like 'ma'"
       },
       {
+        cell_id: "89cb6964-3f4f-4bdd-88ec-2fc6b8d70fde",
         "word": "die biographische Kontextualisierung",
         "en": "biographical contextualization",
         "vi": "bối cảnh hóa tiểu sử",
@@ -2072,6 +2144,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee bee-oh-GRAH-fish-uh kon-text-too-ah-lee-ZEE-roong"
       },
       {
+        cell_id: "2cebbee0-4811-42a4-8a58-26db8f5b9076",
         "word": "der biographistische Kurzschluss",
         "en": "biographical short-circuit (fallacy)",
         "vi": "kết luận tắt tiểu sử luận",
@@ -2080,6 +2153,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dair bee-oh-grah-FIS-tish-uh KOORTS-shloos — 'Kurz' rhymes with 'curts'"
       },
       {
+        cell_id: "15a421b5-6c81-4bf9-8efd-56b4c127c8bb",
         "word": "die biographische Illusion (Bourdieu)",
         "en": "biographical illusion (Bourdieu)",
         "vi": "ảo tưởng tiểu sử (Bourdieu)",
@@ -2088,6 +2162,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee bee-oh-GRAH-fish-uh ee-loo-zee-OHN"
       },
       {
+        cell_id: "c001b53b-7264-4fc0-be60-815f0f61a938",
         "word": "die Selbstinszenierung",
         "en": "self-staging, self-presentation",
         "vi": "tự dàn dựng",
@@ -2096,6 +2171,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee ZELPST-in-tseh-nee-roong — 'tsay' = 'ts' + 'ay' as in 'say'"
       },
       {
+        cell_id: "3f959bf1-7659-43dd-9936-8a0835077565",
         "word": "die Selbstmythologisierung",
         "en": "self-mythologization",
         "vi": "tự huyền hóa",
@@ -2104,6 +2180,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee ZELPST-mue-toh-loh-gee-ZEE-roong"
       },
       {
+        cell_id: "9ff439e5-7611-4361-8e05-3343b032fa4a",
         "word": "der Tod des Autors (Barthes)",
         "en": "death of the author (Barthes)",
         "vi": "cái chết của tác giả (Barthes)",
@@ -2112,6 +2189,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dair TOHT des OW-tors — 'Tod' rhymes with 'goat' minus the 'g'"
       },
       {
+        cell_id: "8f5d862c-5bc9-42f3-b067-c1c4554f111a",
         "word": "die Biographik",
         "en": "biographical writing as genre",
         "vi": "tiểu sử học (như thể loại)",
@@ -2120,6 +2198,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee bee-oh-GRAH-fik"
       },
       {
+        cell_id: "8a20786a-bd55-4447-85c9-4512a7c2ea0e",
         "word": "die Aporie",
         "en": "aporia, productive impasse",
         "vi": "aporie, ngõ cụt năng suất",
@@ -2128,6 +2207,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee ah-poh-REE-uh — four syllables, stress on REE"
       },
       {
+        cell_id: "9c60d1c1-d3ce-49e2-90af-10a243e8ca54",
         "word": "ergänzend",
         "en": "supplementary, complementary",
         "vi": "bổ sung",
@@ -2138,21 +2218,25 @@ export const lessons: GermanLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "c4c2daa6-eb41-47a8-a8fd-2db8a9309f78",
         "speaker": "Habilitand Linh",
         "text": "In meinem Kafka-Aufsatz argumentiere ich für eine produktive Doppelbewegung — Werkimmanenz und Biographik nicht als Alternativen, sondern als komplementäre Achsen.",
         "vi": "Trong bài Kafka của tôi tôi lập luận cho một chuyển động kép năng suất — Werkimmanenz và Biographik không như alternatives, mà như trục bổ sung."
       },
       {
+        cell_id: "f6f9a8cc-d681-4927-a591-f105ae25352f",
         "speaker": "Prof. Wagner",
         "text": "Eine produktive Position. Aber wie wehren Sie biographistischen Kurzschluss konkret ab?",
         "vi": "Một quan điểm năng suất. Nhưng cụ thể cô chống lại kết luận tắt tiểu sử luận thế nào?"
       },
       {
+        cell_id: "b3072ad2-f5fd-4d96-98a5-6dc305556490",
         "speaker": "Linh",
         "text": "Mit Bourdieus ‚biographischer Illusion' als methodischem Anker — Biographien sind nachträgliche Konstruktionen, keine vorgängigen Tatsachen. Kafkas Briefe sind selbst literarische Verfahren, nicht neutrale Selbstauskunft.",
         "vi": "Với ‚biographische Illusion' của Bourdieu làm neo phương pháp — biographies là kiến tạo hậu nghiệm, không là sự kiện tiền nghiệm. Các thư của Kafka chính là quy trình văn chương, không phải tự khai trung lập."
       },
       {
+        cell_id: "47a10e7d-7185-4788-844c-8fe921de0700",
         "speaker": "Prof. Wagner",
         "text": "Eine doppelte Sicherung — Bourdieu plus Performativität der Briefe. Halten Sie das in der Einleitung explizit.",
         "vi": "Sự bảo đảm kép — Bourdieu cộng performativité của các thư. Hãy giữ rõ trong phần mở đầu."
@@ -2444,6 +2528,7 @@ export const lessons: GermanLesson[] = [
     "tip_advice_en": "C2 Wirkungsgeschichte analysis in five steps:\n1. DEFINE THE CORPUS. Reception history of what — a single work (Werther), an author (Goethe), a genre (Bildungsroman), an epoch (Weimar Classicism)?\n2. IDENTIFY THE PHASES: initial reception / canonisation / crisis / re-reading / present.\n3. NAME THE INSTITUTIONS: publishers, schools, universities, the feuilleton, prizes, canon editions.\n4. DOCUMENT THE CONTROVERSIES. Which disputes shaped which phase?\n5. BLIND SPOTS. What was passed over, overlooked, marginalised?\n\nC2 phrases for Wirkungsgeschichte analysis:\n- 'Die Wirkungsgeschichte ist nicht Anhängsel, sondern produktive Fortdauer in wechselnden Erwartungshorizonten' (reception history is not an appendix, it's the productive continuation of a work in shifting horizons of expectation)\n- 'Der Kanon erweist sich als Resultat institutioneller, ökonomischer und ideologischer Selektionsprozesse' (the canon turns out to be the result of institutional, economic and ideological selection processes)\n- 'Eine reflektierte Wirkungsgeschichtsforschung verfolgt nicht die Fortschreibung des Kanons, sondern die Rekonstruktion seiner Brüche' (a self-aware reception-history scholarship doesn't continue writing the canon — it reconstructs its ruptures)\n- 'Wer den Kanon historisiert, lässt ihn nicht hinter sich, sondern macht erst kritisch verfügbar, was als selbstverständlich erscheint' (historicising the canon doesn't leave it behind — it makes available for critique what otherwise looks self-evident)\n- 'Die Kanondebatten haben den vermeintlich gesicherten Bestand in seiner historischen Kontingenz aufgedeckt' (the canon debates have exposed the supposedly secured stock in its historical contingency)\n\nThe Jaussian move:\n- 'Im Sinne von Jauss erweist sich das Werk erst durch seine Wirkungsgeschichte als historisch — die Erstrezeption ist nur ein Moment unter vielen' (in Jauss's sense, the work becomes historical only through its reception history — first reception is just one moment among many)\n\nThe feminist move:\n- 'Die feministische Kanonkritik der achtziger und neunziger Jahre — Weigel, Heydebrand, Stephan — hat sichtbar gemacht, dass der klassische deutsche Kanon historisch gendered male konstruiert ist' (1980s–90s feminist canon criticism made visible the fact that the classical German canon is historically a male-gendered construction)\n\nThe postcolonial move:\n- 'Eine postkoloniale Re-Lektüre etwa von Goethes ‚West-östlichem Divan' fragt nicht, ob das Werk ‚orientalistisch' im pejorativen Sinn ist, sondern wie es sich zum diskursiven Feld des Orientalismus verhält' (a postcolonial re-reading of Goethe's 'West-östlicher Divan' doesn't ask whether the work is 'orientalist' in the pejorative sense, but how it positions itself in the discursive field of Orientalism)\n\nWhen defending the canon as a concept:\n- 'Eine Kanonkritik, die den Kanon nicht ganz auflöst, sondern auf seine Konstruktionsbedingungen reflektiert, leistet konstruktive Arbeit — keine Destruktion' (a canon criticism that doesn't dissolve the canon but reflects on its conditions of construction does constructive work — not destruction)\n\nWhen the canon shifts:\n- 'Was zur Erstrezeption marginalisiert wurde — Bettina von Arnim, Else Lasker-Schüler — wird im aktuellen Kanon zentral verhandelt' (what was marginalised at the time of first reception — Bettina von Arnim, Else Lasker-Schüler — is now treated centrally in the current canon)\n\nNever do this:\n- 'The canon has to be abolished' (destructive, untheoretical)\n- 'X belongs in the canon, Y doesn't' (a valuation move, not Wirkungsgeschichte)\n- A naive 'honour the marginalised' politics without theoretical reflection\n- Equating canon with 'patriarchal / colonial power' tout court — historically there is more differentiation to do\n\nLast tip: draw up a Wirkungsgeschichte phase table for the key work. Columns = phases (first reception / canonisation / crisis / re-reading / present). Rows = institutions / main voices / blind spots. Visualising it helps you avoid a teleological narrative.",
     "vocabulary": [
       {
+        cell_id: "0637f345-327a-49f0-93cf-63aeee932ef5",
         "word": "die Wirkungsgeschichte",
         "en": "reception history, Wirkungsgeschichte (Jauss)",
         "vi": "lịch sử tiếp nhận",
@@ -2452,6 +2537,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee VEER-koongs-guh-shikh-tuh — 'W' is 'V', 'ch' hard like 'loch'"
       },
       {
+        cell_id: "4cacc9e8-c794-479b-b9da-e27d46e2bfd5",
         "word": "der Kanon",
         "en": "canon",
         "vi": "kinh điển",
@@ -2460,6 +2546,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dair kah-NOHN — stress on the second syllable"
       },
       {
+        cell_id: "7ab26807-d094-478b-9407-d286465aed56",
         "word": "der Erwartungshorizont (Jauss)",
         "en": "horizon of expectation (Jauss)",
         "vi": "chân trời kỳ vọng (Jauss)",
@@ -2468,6 +2555,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dair air-VAR-toongs-ho-ri-tsont"
       },
       {
+        cell_id: "f79635aa-322a-4d19-9619-2eac40fa4d11",
         "word": "die Kanondebatte",
         "en": "canon debate",
         "vi": "tranh luận kinh điển",
@@ -2476,6 +2564,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee kah-NOHN-deh-bah-tuh"
       },
       {
+        cell_id: "bfe1beb4-9d16-4a09-a8fd-d85add0fac50",
         "word": "die Selektionsprozesse (institutionell, ökonomisch, ideologisch)",
         "en": "selection processes (institutional, economic, ideological)",
         "vi": "các quá trình lựa chọn",
@@ -2484,6 +2573,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee zeh-lek-tsee-OHNS-pro-tses-suh"
       },
       {
+        cell_id: "585404d4-5ccb-4d41-a141-b19bd5265753",
         "word": "der vermeintlich gesicherte Bestand",
         "en": "supposedly secured stock (canon)",
         "vi": "tài sản tưởng được bảo đảm",
@@ -2492,6 +2582,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dair fair-MAYNT-likh guh-ZEE-kher-tuh buh-SHTANT"
       },
       {
+        cell_id: "37b3e3a4-4028-42fb-bff9-b9361d405551",
         "word": "die Kontingenz",
         "en": "contingency, historical accident",
         "vi": "tính ngẫu nhiên lịch sử",
@@ -2500,6 +2591,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee kon-tin-GENTS — 'g' hard as in 'go'"
       },
       {
+        cell_id: "df2b5bd7-2e92-424e-9d1f-55f8e2ec89be",
         "word": "die blinden Flecken",
         "en": "blind spots",
         "vi": "điểm mù",
@@ -2508,6 +2600,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee BLIN-dn FLEK-n"
       },
       {
+        cell_id: "81daac87-fc25-405a-b94f-b729b1f97304",
         "word": "historisieren",
         "en": "to historicize",
         "vi": "lịch sử hóa",
@@ -2516,6 +2609,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "his-toh-ree-ZEE-rn"
       },
       {
+        cell_id: "829b87c6-c063-4c6d-96c5-36bcb798be82",
         "word": "der Gegenkanon (feministisch, postkolonial)",
         "en": "counter-canon (feminist, postcolonial)",
         "vi": "đối kinh điển (feminist, postcolonial)",
@@ -2526,21 +2620,25 @@ export const lessons: GermanLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "2d48d423-2b9e-47d7-9170-2bf02872529d",
         "speaker": "Habilitand Linh",
         "text": "Mein Aufsatz untersucht die Wirkungsgeschichte von Bettina von Arnims ‚Goethe-Briefe' — vom marginalen Status zur feministischen Wiederentdeckung der achtziger Jahre.",
         "vi": "Bài viết của tôi khảo sát Wirkungsgeschichte ‚Goethe-Briefe' của Bettina von Arnim — từ status marginal đến tái khám phá feminist những năm 80."
       },
       {
+        cell_id: "606cbfdc-3a73-4051-957f-79b933dbe66c",
         "speaker": "Prof. Wagner",
         "text": "Ein produktiver Korpus. Welche Phasen identifizieren Sie?",
         "vi": "Một corpus năng suất. Cô nhận diện các Phasen nào?"
       },
       {
+        cell_id: "0edea406-3e2f-4dd1-9763-d5490be1e00e",
         "speaker": "Linh",
         "text": "Vier: Erstrezeption als Goethe-Schülerin, Marginalisierung im Wilhelminischen Kanon, Wiederentdeckung durch Weigel und Bürger, aktuelle Verortung in Romantikforschung mit eigenem Profil.",
         "vi": "Bốn: Erstrezeption như học trò Goethe, marginalization trong kinh điển Wilhelminisch, tái khám phá qua Weigel và Bürger, định vị hiện tại trong nghiên cứu Romantik với hồ sơ riêng."
       },
       {
+        cell_id: "f4c54d83-2604-4950-8ad7-c332df132d34",
         "speaker": "Prof. Wagner",
         "text": "Die vierte Phase ist die anspruchsvollste — wie zeigt sich Bettinas eigenes Profil jenseits des Goethe-Bezugs?",
         "vi": "Phase thứ tư đầy tham vọng nhất — hồ sơ riêng của Bettina hiện ra thế nào ngoài Goethe-Bezug?"
@@ -2822,6 +2920,7 @@ export const lessons: GermanLesson[] = [
     "tip_advice_en": "Choosing your C2 theoretical lens in five steps:\n1. QUESTION FIRST. What do you want to investigate in the work? Devices? Gender? Power? Media? System?\n2. CANDIDATE LENSES. Which theories actually address that question?\n3. CHECK THE FIT. What premises does each lens come with? Are they compatible with your work?\n4. MARK THE LIMITS. What stays invisible under this lens?\n5. CONSIDER COMBINATION. Can a second lens absorb the first one's blind spots? Are the premises compatible?\n\nC2 phrasing for lens-discussion:\n- 'Eine theoretische Linse ist kein neutrales Instrument, sondern ein methodisches Versprechen' (a theoretical lens is not a neutral instrument; it's a methodological promise)\n- 'Sie verspricht Sichtbarmachung bestimmter Strukturen um den Preis der Verdunklung anderer' (it promises to make certain structures visible at the cost of obscuring others)\n- 'Die formalistische Lektüre fokussiert die Verfahren, durch die ein Text zur Literatur wird' (the formalist reading focuses on the devices by which a text becomes literature)\n- 'Die feministische Lektüre stellt die Frage nach der Geschlechtlichkeit literarischer Strukturen' (the feminist reading asks after the gendering of literary structures)\n- 'Die postkoloniale Lektüre arbeitet mit Begriffen wie ‚Othering' und ‚subaltern voice'' (the postcolonial reading works with concepts like Othering and the subaltern voice)\n- 'Eine reife Kritik weiß um die Begrenzungen jeder Linse und kombiniert sie reflektiert' (a mature criticism knows the limits of each lens and combines them deliberately)\n\nThe formalist move:\n- 'Mit Schklowskij lässt sich ‚Verfremdung' als zentrales Verfahren der literarischen Wahrnehmungsverlangsamung begreifen' (with Shklovsky, 'defamiliarisation' can be understood as the central device for slowing down perception in literature)\n\nThe feminist move:\n- 'Aus feministischer Perspektive ist zu fragen, wie die scheinbar neutrale Erzählerposition geschlechtlich kodiert ist' (from a feminist perspective, we have to ask how the apparently neutral narrator position is gender-coded)\n\nThe postcolonial move:\n- 'Eine postkoloniale Re-Lektüre fragt nicht, ob ein Text ‚orientalistisch' im pejorativen Sinn ist, sondern wie er sich zum diskursiven Feld des Orientalismus verhält' (a postcolonial re-reading doesn't ask whether a text is 'orientalist' in the pejorative sense, it asks how it relates to the discursive field of Orientalism)\n\nThe combination move (formalist-feminist):\n- 'Die Kombination formalistischer Verfahrensanalyse mit feministischer Geschlechtsreflexion erlaubt es, sowohl die literarische Strategie als auch ihre geschlechtsstrukturelle Voraussetzung sichtbar zu machen' (combining formalist analysis of devices with feminist reflection on gender lets you make both the literary strategy and its underlying gender structure visible)\n\nMarking limits:\n- 'Diese Linse hat ihre Begrenzungen: sie tendiert dazu, X zu übersehen' (this lens has its limits — it tends to overlook X)\n- 'Eine ergänzende Perspektive wäre Y, die genau das adressiert, was hier methodisch eingeklammert bleibt' (a complementary perspective would be Y, which addresses exactly what is methodologically bracketed here)\n\nWhen theories are incompatible:\n- 'Eine schlichte Addition der Linsen wäre methodisch unsauber, da ihre Voraussetzungen einander widersprechen' (simply adding lenses up would be methodologically sloppy, since their premises contradict each other)\n- 'Eine produktive Kombination erfordert eine metatheoretische Reflexion über die Vereinbarkeit' (productive combination requires meta-theoretical reflection on compatibility)\n\nNever do this:\n- 'Theoretical lenses are tools you can swap in and out' (instrumentalist, naive)\n- 'A feminist / postcolonial reading is self-evident today' (declarative, untheoretical)\n- Arbitrary lens combinations without reflection on their premises\n- Treating the lens itself as the agenda — the agenda should be the question, the lens is the means\n\nLast tip: before every theoretical essay, write a one-page methodological self-positioning — which lens, why this one, what stays invisible because of it, and how that blind spot is being compensated for. This step protects you from methodological sloppiness.",
     "vocabulary": [
       {
+        cell_id: "b3b38609-30fe-437d-be2a-57026e5c7a93",
         "word": "die theoretische Linse",
         "en": "theoretical lens",
         "vi": "lăng kính lý thuyết",
@@ -2830,6 +2929,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee teh-oh-REH-ti-shuh LIN-zuh"
       },
       {
+        cell_id: "d99c960f-0cf1-4139-a6d1-3074efa09fc9",
         "word": "der Formalismus / formalistisch",
         "en": "formalism / formalist",
         "vi": "thuyết hình thức / formalist",
@@ -2838,6 +2938,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dair for-mah-LIS-moos"
       },
       {
+        cell_id: "717241df-3381-4d2c-9477-064ba20ffdf9",
         "word": "die Verfremdung (Schklowski)",
         "en": "estrangement (Shklovsky)",
         "vi": "lạ hóa (Schklowski)",
@@ -2846,6 +2947,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee fair-FREM-doong — 'fer' like 'fair', soft 'r'"
       },
       {
+        cell_id: "0e729e7d-3aee-4f15-9dcb-cd1d494c9604",
         "word": "feministische Literaturwissenschaft",
         "en": "feminist literary studies",
         "vi": "khoa học văn chương feminist",
@@ -2854,6 +2956,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "feh-mi-NIS-ti-shuh li-teh-rah-toor-vis-n-shaft"
       },
       {
+        cell_id: "eef3f8b2-59f4-4715-a14c-49b23bbab754",
         "word": "postkolonial / Postkolonialismus",
         "en": "postcolonial / postcolonialism",
         "vi": "post-colonial / chủ nghĩa post-colonial",
@@ -2862,6 +2965,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "post-koh-loh-nee-AHL"
       },
       {
+        cell_id: "a832fb02-7e5a-481b-af74-3d71940acd90",
         "word": "das Othering",
         "en": "othering (postcolonial concept)",
         "vi": "khác hóa (khái niệm postcolonial)",
@@ -2870,6 +2974,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "das OH-tuh-ring — English loanword, said with German 't' and trilled-light 'r'"
       },
       {
+        cell_id: "c2e0dddf-8c0d-4ae6-9249-30e9023a8c4a",
         "word": "die subaltern voice (Spivak)",
         "en": "subaltern voice (Spivak)",
         "vi": "giọng subaltern (Spivak)",
@@ -2878,6 +2983,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee zoo-bal-TAIRN voys"
       },
       {
+        cell_id: "108ffa1a-3c79-4e47-958e-74b52f163ff0",
         "word": "die Sichtbarmachung",
         "en": "making-visible, visibilization",
         "vi": "sự làm thấy được",
@@ -2886,6 +2992,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee ZIKHT-bar-mah-khoong"
       },
       {
+        cell_id: "2ce0b656-b385-47bd-9a32-083e665e229e",
         "word": "die Verdunklung",
         "en": "obscuring, darkening",
         "vi": "sự làm tối",
@@ -2894,6 +3001,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee fair-DOON-kloong"
       },
       {
+        cell_id: "da92fa43-2314-4c4f-aee0-abe984cda2fe",
         "word": "einklammern",
         "en": "to bracket (methodologically)",
         "vi": "đặt vào ngoặc (về phương pháp)",
@@ -2904,21 +3012,25 @@ export const lessons: GermanLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "a51e17c6-d01e-4f13-bd7e-299fdef1f608",
         "speaker": "Habilitand Linh",
         "text": "Mein nächster Aufsatz arbeitet mit drei Linsen — formalistisch für die Verfahrensebene, feministisch für die Geschlechterordnung, postkolonial für den Orient-Diskurs in Goethes ‚West-östlichem Divan'.",
         "vi": "Bài viết tiếp theo của tôi làm việc với ba lăng kính — formalistisch cho cấp độ quy trình, feminist cho trật tự giới, postcolonial cho diễn ngôn phương Đông trong ‚West-östlicher Divan' của Goethe."
       },
       {
+        cell_id: "33592dfc-06c4-48f7-812a-d1a002a324bf",
         "speaker": "Prof. Wagner",
         "text": "Eine ambitionierte Trias. Wie gewährleisten Sie methodische Sauberkeit — drei Linsen können sich widersprechen?",
         "vi": "Một trias đầy tham vọng. Cô đảm bảo sự sạch về phương pháp thế nào — ba lăng kính có thể mâu thuẫn?"
       },
       {
+        cell_id: "daefba3b-4397-4d18-b84b-4e6220143d94",
         "speaker": "Linh",
         "text": "Eine schlichte Addition wäre unsauber. Ich gehe sequenziell vor: erst formalistisch das Verfahren rekonstruieren, dann feministisch die Geschlechterordnung, dann postkolonial den Diskurs — und reflektiere am Ende metatheoretisch, was die drei Lensen unterschiedlich sichtbar machen.",
         "vi": "Một cộng thẳng sẽ không sạch. Tôi đi tuần tự: trước formalistisch tái dựng quy trình, rồi feminist trật tự giới, rồi postcolonial diễn ngôn — và suy ngẫm metatheoretisch ở cuối điều ba lăng kính làm thấy khác nhau."
       },
       {
+        cell_id: "04865ebc-86ec-4194-a997-95d2a620f9f6",
         "speaker": "Prof. Wagner",
         "text": "Sequenziell statt simultan — das ist klüger. Aber denken Sie an die Ökonomie des Aufsatzes: drei Linsen plus Synthese können den Rahmen sprengen.",
         "vi": "Tuần tự thay đồng thời — thông minh hơn. Nhưng hãy nghĩ đến kinh tế của bài: ba lăng kính cộng Synthese có thể phá khuôn."
@@ -3205,6 +3317,7 @@ export const lessons: GermanLesson[] = [
     "tip_advice_en": "C2 essay-opening strategy in five steps:\n1. NO PLATITUDE. Check the first five words. If they are 'In an increasingly...', 'Scholarship has long...', 'X is an important theme...' — delete and start over.\n2. CONCRETE FINDING. What is your most specific, most precise observation point? Lead with it.\n3. SURPRISE + PLAUSIBILITY. The ideal finding is surprising (otherwise why write the essay?) and plausible (otherwise it can't be developed).\n4. METHODOLOGICAL PROMISE. By sentence two or three the reader should sense which procedure the essay uses.\n5. CORRESPONDENCE TO THE ENDING. Can the opening Befund be picked up again at the close? If yes, the opening can carry the essay.\n\nC2 phrasing for opening-discussion:\n- 'Die Eröffnung muss in den ersten drei Sätzen leisten, was der Aufsatz entfaltet' (the opening has to deliver in the first three sentences what the essay unfolds in full)\n- 'Sie muss Frage, Verortung und methodisches Versprechen verdichten' (it has to condense question, positioning and methodological promise)\n- 'Eine gelungene Eröffnung verzichtet auf Allgemeinplätze und biographische Eingangsfloskeln' (a successful opening avoids platitudes and biographical cliches)\n- 'Sie setzt mit einem präzisen Befund ein, dessen Erklärungsbedürftigkeit den Aufsatz rechtfertigt' (it starts with a precise finding whose need for explanation is what justifies the essay)\n- 'Die Forschungsstand-Verortung gehört nicht in den ersten Absatz' (research-state positioning does not belong in the first paragraph)\n- 'Wer den Essay mit einer Forschungslücken-Klage beginnt, verliert die Aufmerksamkeit binnen weniger Zeilen' (start with a 'research-gap' lament and you lose the reader's attention within a few lines)\n\nThe three standard opening modes:\n\nOBSERVATION OPENING (template):\n- 'Die Tatsache, dass [concrete observation], ist auffällig — [punchline in half a sentence]. [Methodological promise or question].'\n\nCONTROVERSY OPENING (template):\n- '[Position 1] read X as Y, [Position 2] as Z — both readings overlook [a third aspect]. The present contribution closes exactly this gap.'\n\nCONCEPT OPENING (template):\n- '‚X' has been established as a concept since [date] — its application to [Y] raises [theoretical problem] that scholarship has so far [insufficiently reflected on].'\n\nWhen the research state has to be integrated:\n- 'An [Position 1] und [Position 2] der einschlägigen Forschung anschließend, doch in deutlicher Differenz zu [Position 3]...' (building on positions 1 and 2 of the relevant scholarship, but with clear distance from position 3)\n- 'Die folgenden Ausführungen verstehen sich als Vertiefung der von [X] entwickelten Linie — mit einer methodischen Verschiebung, die in der Forschung bislang nicht erprobt wurde' (the following discussion is to be read as a deepening of the line developed by X — with a methodological shift not yet tried in the scholarship)\n\nWhen the thesis is provocative:\n- 'Die These der vorliegenden Untersuchung ist zugespitzt: [provocative thesis]. Was zunächst kontraintuitiv erscheint, lässt sich — so ist zu zeigen — durch [argumentation] plausibel begründen' (the present study's thesis is sharpened: [provocative thesis]. What looks counterintuitive at first can — so we will show — be plausibly grounded via [argumentation])\n\nWhen the opening corresponds to the ending:\n- The plan: pick up the opening Befund at the close in transformed form. For example, the opening observes X as a puzzle; the conclusion shows how X became readable through the argument.\n\nNever do this:\n- 'Goethe is one of the greatest German poets' (platitude)\n- 'The question of Y has occupied scholarship for decades' (research-gap lament)\n- 'In an increasingly X world...' (zeitgeisty cliche)\n- 'What Adorno once said about Mann still holds today...' (authority-quote opening)\n- Biographical opener ('Thomas Mann was born in Lübeck in 1875...')\n\nLast tip: after you've drafted the essay, read the first paragraph in isolation. Ask yourself: would I keep reading? If the answer is no or maybe — rewrite. The opening is the most expensive real estate in the essay — it's worth three or four drafts.",
     "vocabulary": [
       {
+        cell_id: "df951f6b-5346-41b3-aa2c-fb1951d78d49",
         "word": "die Eröffnung",
         "en": "opening (of an essay)",
         "vi": "phần mở",
@@ -3213,6 +3326,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee air-UERF-noong"
       },
       {
+        cell_id: "fee24414-57bf-4f97-9ec8-91797e6b8806",
         "word": "der kritische Essay",
         "en": "critical essay",
         "vi": "bài luận phê bình",
@@ -3221,6 +3335,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dair KRI-ti-shuh es-SAY — French loanword, stress on the last syllable"
       },
       {
+        cell_id: "9022dfa3-324f-44e8-bb0f-9a276b9fb513",
         "word": "der Befund",
         "en": "finding, observation",
         "vi": "kết quả, quan sát",
@@ -3229,6 +3344,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dair buh-FOONT — 'oo' as in 'foot'"
       },
       {
+        cell_id: "836b37ae-db25-4f7e-b7d7-38f53e0e1d1f",
         "word": "die Erklärungsbedürftigkeit",
         "en": "need for explanation",
         "vi": "nhu cầu giải thích",
@@ -3237,6 +3353,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee air-KLEH-roongs-buh-duerf-tikh-kait"
       },
       {
+        cell_id: "aeaa7cb5-28cd-407d-82f5-16b665e39edd",
         "word": "der Allgemeinplatz / die Floskel",
         "en": "platitude, cliche",
         "vi": "sáo ngữ",
@@ -3245,6 +3362,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dair AHL-guh-main-plats"
       },
       {
+        cell_id: "402d5aa7-0997-489a-a464-0bd8c1ef9abc",
         "word": "die Forschungslücken-Klage",
         "en": "research-gap lament (cliched opening)",
         "vi": "than phiền khoảng trống nghiên cứu (sáo)",
@@ -3253,6 +3371,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee FOR-shoongs-luek-n-klah-guh — 'ü' rounded"
       },
       {
+        cell_id: "ee8d572d-c23b-4f01-945d-f9e1e61941ed",
         "word": "die Verdichtung",
         "en": "condensation, compression",
         "vi": "sự nén",
@@ -3261,6 +3380,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee fair-DIKH-toong"
       },
       {
+        cell_id: "45865994-08ed-45eb-9c90-9c584fa38f37",
         "word": "verdichten",
         "en": "to compress, condense",
         "vi": "nén",
@@ -3269,6 +3389,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "fair-DIKH-tn"
       },
       {
+        cell_id: "49190b5f-a50d-4482-88e3-fedad936d060",
         "word": "kontraintuitiv",
         "en": "counterintuitive",
         "vi": "kontraintuitiv",
@@ -3277,6 +3398,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "kon-tra-in-tu-i-TEEF"
       },
       {
+        cell_id: "a2f22f15-6a7f-4080-92a8-c8d6ec437d09",
         "word": "zugespitzt",
         "en": "pointed, sharpened",
         "vi": "sắc nhọn",
@@ -3287,21 +3409,25 @@ export const lessons: GermanLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "24e683ab-12b9-405c-b048-6089710abb5e",
         "speaker": "Habilitand Linh",
         "text": "Mein Eröffnungsabsatz für den Kafka-Aufsatz lautet aktuell: ‚Kafka gehört zu den meistdiskutierten Autoren der deutschen Moderne. Die Forschung hat sich seit Jahrzehnten...' — ich frage mich, ob das tragfähig ist.",
         "vi": "Đoạn mở hiện tại của tôi cho bài Kafka: ‚Kafka thuộc các tác giả được bàn luận nhiều nhất của Moderne Đức. Nghiên cứu đã làm việc hàng chục năm...' — tôi tự hỏi điều đó có vững không."
       },
       {
+        cell_id: "cc43e739-c9a6-4fe5-8f71-40bd494ae93c",
         "speaker": "Prof. Wagner",
         "text": "Streichen Sie das. Beide Sätze sind Allgemeinplätze, die kein Lektor durchgehen lässt. Beginnen Sie mit einem konkreten Befund.",
         "vi": "Hãy xóa đi. Cả hai câu là sáo ngữ, không lektor nào cho qua. Bắt đầu với một kết quả cụ thể."
       },
       {
+        cell_id: "494d2c54-9e06-485d-8884-e3b5ab582af4",
         "speaker": "Linh",
         "text": "Ein Vorschlag: ‚Im ‚Brief an den Vater' und in ‚Das Urteil' begegnet uns dieselbe Vater-Figur — und doch sind beide Texte konstitutiv inkompatibel. Diese Inkompatibilität ist der Ausgangspunkt der folgenden Überlegungen.'",
         "vi": "Một đề xuất: ‚Trong ‚Brief an den Vater' và trong ‚Das Urteil' chúng ta gặp cùng một figura người cha — và dẫu vậy cả hai văn bản inkompatibel cấu thành. Sự inkompatibilität này là điểm xuất phát các suy ngẫm sau đây.'"
       },
       {
+        cell_id: "9dda2069-dc86-4bb7-a6eb-273efe755c52",
         "speaker": "Prof. Wagner",
         "text": "Das ist tragfähig. Konkreter Befund, präzise Pointe, methodisches Versprechen — alles in zwei Sätzen.",
         "vi": "Điều đó vững. Kết quả cụ thể, điểm nhọn chính xác, lời hứa phương pháp — tất cả trong hai câu."
@@ -3588,6 +3714,7 @@ export const lessons: GermanLesson[] = [
     "tip_advice_en": "C2 defence of a controversial reading in five steps:\n1. STEELMANNING. Reconstruct the strongest variant of the opposing position. Who is the leading dissenting voice? Which argument is the strongest? Prepare it in full.\n2. ACKNOWLEDGMENT. Signal that you take the opposing position seriously — not condescendingly, not ironically.\n3. ARGUMENT. Put your answer in sober, substantive terms — no polemic, no personalisation.\n4. SCOPE-MARKING. State what your reading carries for and what it doesn't. This strengthens, it does not weaken.\n5. SELF-REFLECTION. Where does your argument run out? Where does productive tension remain? Acknowledge it.\n\nC2 phrasing for defending a controversial reading:\n- 'Eine kontroverse Lektüre lässt sich nicht durch Behauptung verteidigen, sondern allein durch eine Argumentation, die ihre Voraussetzungen offenlegt' (a controversial reading can't be defended by assertion, only by an argument that lays its premises open)\n- 'Wer Mann gegen den Strich liest, muss diese Lesart gegen den hermeneutischen Konsens verteidigen' (reading Mann against the grain means having to defend that reading against the hermeneutic consensus)\n- 'Die Verteidigung gelingt nicht als Abwehr, sondern als sorgfältige Aufnahme der Einwände' (defence succeeds not as parrying but as careful uptake of the objections)\n- 'Wer den Gegenstandpunkt nicht in seiner stärksten Form rekonstruiert, hat seinen eigenen nicht verstanden' (anyone who doesn't reconstruct the opposing position in its strongest form hasn't understood their own)\n- 'Ihre Lesart ist nicht ‚richtiger', sondern eröffnet eine bislang nicht systematisch verfolgte Perspektive' (your reading is not 'more correct' — it opens up a perspective that hasn't been systematically pursued)\n- 'Wo die Argumentation erschöpft ist, beginnt die kritische Selbstreflexion' (where the argument runs out, critical self-reflection begins)\n\nThe steelmanning move:\n- 'Die stärkste mir bekannte Variante der Gegenposition stammt von [Name] und argumentiert wie folgt: [stated in full strength]. Selbst gegen diese Variante lässt sich folgendes anführen: [your reply]' (the strongest variant of the opposing position I know comes from [name] and argues as follows: [state in full strength]. Even against that variant, the following can be said: [your reply])\n\nThe differentiated-recognition move:\n- 'Die etablierte Lesart trägt für X — meine Lesart trägt für Y. Beide Lesarten konkurrieren nicht um eine ‚richtige' Auslegung, sondern öffnen unterschiedliche Aspektfelder' (the established reading carries for X; mine carries for Y. The two readings aren't competing for a 'correct' interpretation — they open different fields of aspects)\n\nScope-marking:\n- 'Meine Lesart trägt nicht für die formalen Aspekte — sie konzentriert sich auf die ideologische Dimension' (my reading doesn't carry for the formal aspects — it focuses on the ideological dimension)\n- 'Diese Argumentation hat ihre Grenzen: sie funktioniert für Werk X, weniger für Werk Y' (this argument has its limits: it works for work X, less for work Y)\n\nThe self-reflection move:\n- 'Wo erschöpft sich diese Argumentation? An der Stelle, an der [concrete example]. Hier muss eine ergänzende Perspektive einsetzen' (where does this argument run out? At the point where [concrete example]. A complementary perspective has to come in here)\n- 'Auch eine kontroverse Lektüre weiß um ihre Grenzen, ohne sich deshalb zurückzunehmen' (even a controversial reading knows its limits without retreating because of them)\n\nWhen polemic threatens:\n- 'Erlauben Sie mir, sachlich zu antworten' (allow me to answer in substantive terms)\n- 'Ich möchte den persönlichen Aspekt zurückstellen und auf das Argument fokussieren' (I'd like to set the personal aspect aside and focus on the argument)\n\nWhen the consensus is strong:\n- 'Der hermeneutische Konsens ist nicht Wahrheit, sondern Forschungsmehrheit — eine Differenz, die für die Argumentation entscheidend ist' (the hermeneutic consensus is not truth but a scholarly majority — a distinction that's decisive for the argument)\n\nNever do this:\n- 'X didn't understand it' (personalisation, weak argument)\n- 'This criticism is unjustified' (assertion instead of argument)\n- Strawmanning the opposing position\n- 'My reading is the only correct one' (anti-pluralistic, methodologically sloppy)\n- Polemic without substantive content\n\nLast tip: before every defence, write a one-page 'steelmanning memo' — the strongest opposing position in full form. If you can't reconstruct that form convincingly, your own position isn't ready yet.",
     "vocabulary": [
       {
+        cell_id: "ac799843-7968-4888-8d51-043ec86d38e5",
         "word": "die kontroverse Lektüre",
         "en": "controversial reading",
         "vi": "cách đọc gây tranh cãi",
@@ -3596,6 +3723,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee kon-tro-VAIR-zuh lek-TUE-ruh — 'ü' rounded"
       },
       {
+        cell_id: "4fb3c556-a551-4823-87f2-2d111d783741",
         "word": "die Verteidigung",
         "en": "defense (of a position)",
         "vi": "bảo vệ",
@@ -3604,6 +3732,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee fair-TAI-di-goong"
       },
       {
+        cell_id: "be209e9d-7860-459e-a70d-f6271d675c07",
         "word": "der Einwand (pl. Einwände)",
         "en": "objection",
         "vi": "phản biện",
@@ -3612,6 +3741,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dair AIN-vant"
       },
       {
+        cell_id: "37003597-bad6-4bb3-a1d3-03c7b8bd3f92",
         "word": "der Gegenstandpunkt",
         "en": "opposing position",
         "vi": "quan điểm đối lập",
@@ -3620,6 +3750,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dair GAY-gn-shtant-poonkt"
       },
       {
+        cell_id: "9946de00-6255-494f-ac8c-8b1546875991",
         "word": "die Reichweite",
         "en": "scope, range (of an argument)",
         "vi": "phạm vi",
@@ -3628,6 +3759,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee RAIKH-vai-tuh — hard 'ch'"
       },
       {
+        cell_id: "f743dd01-ac43-48ad-ba96-86cf710838d8",
         "word": "die differenzierte Anerkennung",
         "en": "differentiated recognition",
         "vi": "sự công nhận phân biệt",
@@ -3636,6 +3768,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee dif-eh-ren-TSEER-tuh AHN-air-ken-noong"
       },
       {
+        cell_id: "7f45f481-2bef-45e4-8f96-ac8d81ad1aa9",
         "word": "der hermeneutische Konsens",
         "en": "hermeneutic consensus",
         "vi": "sự đồng thuận giải thích học",
@@ -3644,6 +3777,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dair hair-meh-NOY-ti-shuh kon-ZENS"
       },
       {
+        cell_id: "01112d26-f499-4a41-9c03-c15786ecb8ec",
         "word": "die Selbstvergewisserung",
         "en": "self-reassurance",
         "vi": "tự đảm bảo",
@@ -3652,6 +3786,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee ZELPST-fair-guh-vis-uh-roong"
       },
       {
+        cell_id: "3db2e0f7-fc69-4e51-ab51-5075f2d789ce",
         "word": "gegen den Strich lesen",
         "en": "to read against the grain",
         "vi": "đọc ngược chiều lông",
@@ -3660,6 +3795,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "GAY-gn den SHTRIKH LAY-zn — idiomatic phrase, 'against the grain'"
       },
       {
+        cell_id: "b28bb04e-de9b-490a-b3f6-1a1adbd07d96",
         "word": "sich zurücknehmen",
         "en": "to retract, draw back",
         "vi": "rút lui",
@@ -3670,21 +3806,25 @@ export const lessons: GermanLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "59147e34-5c94-4b60-9f01-ebceb5096560",
         "speaker": "Habilitand Linh",
         "text": "In der Disputation muss ich meine kontroverse Mann-Lesart verteidigen — gegen Vagets etablierte bürgerliche Selbstkritik-Lesart.",
         "vi": "Ở Disputation tôi phải bảo vệ cách đọc Mann gây tranh cãi của tôi — chống lại cách đọc tự phê phán bürgerlich đã thiết lập của Vaget."
       },
       {
+        cell_id: "6d5fb75c-3ba0-4fab-b593-9e74187f40e3",
         "speaker": "Prof. Wagner",
         "text": "Was ist Ihre Lesart konkret?",
         "vi": "Cách đọc cô cụ thể là gì?"
       },
       {
+        cell_id: "83045d9f-0ffd-4cc8-b272-fabd1b6311e1",
         "speaker": "Linh",
         "text": "Ich lese das Buddenbrooks-Verfallsschema als ironische Affirmation bürgerlicher Selbstvergewisserung — die Familie inszeniert ihren eigenen Untergang als Bestätigung ihrer Werte. Gegen Vaget, der den Verfall als Kritik liest.",
         "vi": "Tôi đọc lược đồ suy tàn Buddenbrooks như khẳng định mỉa mai của tự đảm bảo bürgerlich — gia đình dàn dựng sự suy tàn của mình như xác nhận giá trị của họ. Chống lại Vaget, người đọc Verfall như Kritik."
       },
       {
+        cell_id: "32c3943a-111f-4293-b11f-005cec846525",
         "speaker": "Prof. Wagner",
         "text": "Eine ambitionierte Position. Steelmanning Vaget — was ist seine stärkste Variante?",
         "vi": "Một quan điểm đầy tham vọng. Steelmanning Vaget — variant mạnh nhất là gì?"
@@ -3991,6 +4131,7 @@ export const lessons: GermanLesson[] = [
     "tip_advice_en": "STRUCTURE OF A C2 FEUILLETON ART REVIEW (2,500-4,000 characters):\n\n1. EINSTIEG (2-3 sentences): open with a concrete observation — a colour, a material, a curatorial gesture. Never 'The exhibition shows works by…'.\n- 'Already in the first room your step falters: a monochrome grey that, on closer inspection, fractures into dozens of shades.'\n\n2. BESCHREIBUNG (25%): precise, objective description. German readers expect Präzision: material, technique, dimensions. 'Oil on canvas, 200 × 300 cm' is non-negotiable.\n\n3. KONTEXTUALISIERUNG (20%): place the work within the artist's œuvre and within art history — briefly. Germans hate empty name-dropping.\n\n4. DEUTUNG (40%): interpretation. The heart of the piece. Two or three angles:\n- Formal: how does the material act on the viewer?\n- Historical: which tradition does the work stand in?\n- Social: what does the work say about our present?\nEach angle needs a topic sentence: 'The work can be read as a comment on…'\n\n5. URTEIL (15%): a reasoned verdict. Germans want a clear judgement, argued for. 'Gelungen' / 'weniger überzeugend' — and why.\n\nUSEFUL PHRASES:\n- 'Das Werk gibt zu denken, dass…' (the work makes one think that…)\n- 'In der Tradition von X stehend, bricht das Werk doch zugleich mit…' (standing in the tradition of X, the work nevertheless breaks with…)\n- 'Die Materialentscheidung ist hier alles andere als beliebig.' (the choice of material here is anything but arbitrary.)\n- 'Gerade im Scheitern des Anspruchs liegt die eigentliche Aussage.' (the real statement lies precisely in the failure of the claim.)\n\nAVOID:\n- Schwärmerei (gushing): German readers distrust writers who sound 'enthralled'.\n- Biographism: the artist's private life is no substitute for Werkbeschreibung.\n- Unbelegte Behauptungen (unsupported claims): every assertion must be anchored in the work itself.",
     "vocabulary": [
       {
+        cell_id: "7b41e693-72ca-4817-98b0-41348fd1020a",
         "word": "die Kunstkritik",
         "en": "art criticism",
         "vi": "phê bình nghệ thuật",
@@ -3999,6 +4140,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee KOONST-kri-tik — long 'oo' as in 'food', stress on first syllable"
       },
       {
+        cell_id: "ca67b063-9b79-4ebf-8115-55b334ea34ad",
         "word": "die Bildbetrachtung",
         "en": "contemplation / analysis of a picture",
         "vi": "sự quan sát / phân tích tranh",
@@ -4007,6 +4149,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee BILT-buh-trakh-toong — 'ch' here is the hard back-of-throat sound"
       },
       {
+        cell_id: "040c4f74-f742-4a8d-864f-c5c48bde0a82",
         "word": "der erweiterte Kunstbegriff",
         "en": "expanded concept of art (Beuys)",
         "vi": "khái niệm nghệ thuật mở rộng",
@@ -4015,6 +4158,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dair er-VYE-ter-ter KOONST-buh-griff — 'ei' rhymes with 'eye'"
       },
       {
+        cell_id: "be8c897a-1ff2-4ed4-9c5e-29978f558446",
         "word": "die Verwischung",
         "en": "blurring (Richter)",
         "vi": "sự làm nhòe",
@@ -4023,6 +4167,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee fer-VISH-oong — short 'i' as in 'fish'"
       },
       {
+        cell_id: "9fc00385-82a2-4ea8-96c2-b903219e97e0",
         "word": "die Lasur",
         "en": "glaze (thin transparent paint layer)",
         "vi": "lớp men trong suốt",
@@ -4031,6 +4176,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee la-ZOOR — long 'oo' as in 'boot'"
       },
       {
+        cell_id: "6d1f5e4e-072b-40dd-94df-ab5cbed80a72",
         "word": "die Soziale Plastik",
         "en": "social sculpture (Beuys)",
         "vi": "điêu khắc xã hội",
@@ -4039,6 +4185,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee zo-tsee-AH-luh PLAS-tik — 'z' is 'ts' as in 'cats'"
       },
       {
+        cell_id: "cef5c40b-b76e-45c2-847d-e7c9e2a84abe",
         "word": "die Bildsprache",
         "en": "visual language / pictorial idiom",
         "vi": "ngôn ngữ hình ảnh",
@@ -4047,6 +4194,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee BILT-shprah-khuh — 'ch' here is hard, as in 'loch'"
       },
       {
+        cell_id: "6de75c76-bd80-4e81-aa82-6c664d4f2b16",
         "word": "das Tafelbild",
         "en": "panel painting",
         "vi": "tranh giá vẽ / bảng",
@@ -4055,6 +4203,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "das TAH-fel-bilt — long 'ah' as in 'father'"
       },
       {
+        cell_id: "48038f83-4eb6-4f4d-a02c-853e4f103a32",
         "word": "der Ausstellungskatalog",
         "en": "exhibition catalogue",
         "vi": "catalogue triển lãm",
@@ -4063,6 +4212,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dair OWS-shtel-loongs-ka-ta-log — 'au' as 'ow' in 'how'"
       },
       {
+        cell_id: "91ec3eae-83ba-4a4e-8f84-0ed32c0c2af8",
         "word": "die Kunstausstellung",
         "en": "art exhibition",
         "vi": "triển lãm nghệ thuật",
@@ -4073,21 +4223,25 @@ export const lessons: GermanLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "4ca4027f-2ef5-45a0-ba92-28cfc01e51a7",
         "speaker": "Doktorvater",
         "text": "Was genau meinen Sie mit ‚bildgewordene Skepsis' bei Richter?",
         "vi": "Chính xác thầy muốn nói gì với 'hoài nghi đã trở thành hình' ở Richter?"
       },
       {
+        cell_id: "83fa7c8c-9e09-4924-93b5-554c6fe7c924",
         "speaker": "Linh",
         "text": "Die Verwischung verweigert dem Betrachter die Festlegung — man sieht ein Foto, das keines mehr ist. Die Technik selbst trägt den Zweifel aus.",
         "vi": "Sự làm nhòe từ chối người xem sự xác định — ta thấy một bức ảnh không còn là ảnh. Chính kỹ thuật thực thi sự hoài nghi."
       },
       {
+        cell_id: "eed7209a-18eb-47e3-a722-90611ba0f029",
         "speaker": "Doktorvater",
         "text": "Sie unterscheiden also zwischen Sujet-Skepsis und Material-Skepsis?",
         "vi": "Vậy chị phân biệt giữa hoài nghi về chủ đề và hoài nghi về chất liệu?"
       },
       {
+        cell_id: "0c1d91c3-4a31-4c84-ac24-8ad970e5e882",
         "speaker": "Linh",
         "text": "Genau — die Skepsis ist nicht im Dargestellten, sondern im Darstellungsmodus selbst verankert.",
         "vi": "Chính xác — hoài nghi không nằm trong cái được biểu đạt, mà trong chính phương thức biểu đạt."
@@ -4360,6 +4514,7 @@ export const lessons: GermanLesson[] = [
     "tip_advice_en": "STRUCTURE OF A FEUILLETON FILM REVIEW (3,000-5,000 characters):\n\n1. VORSPANN (one sentence): the opening must cut — a single image, a sound, a paradox.\n\n2. MINIMALE INHALTSANGABE (10%): the bare minimum plot summary. No spoilers.\n\n3. FILMISCHE ANALYSE (50%) — the layers:\n- Bildästhetik: camerawork, framing, light, colour.\n- Montage: editing rhythm, ellipses, parallel cutting.\n- Sound: music, noise, silence, voice-over.\n- Schauspielführung: bodies, gesture, delivery.\n\n4. EINORDNUNG (25%): place the film in the director's filmography, in its current of cinema, in its political and social moment.\n\n5. FAZIT (15%): a clear verdict. German readers hate fence-sitting reviews.\n\nUSEFUL PHRASES:\n- 'Der Film handelt nicht von…, sondern er handelt durch…' (the film isn't about…, it acts through…)\n- 'Die Kamera ist hier keine Beobachterin, sondern eine Komplizin.' (the camera here isn't an observer, it's an accomplice.)\n- 'Der Schnitt setzt weniger auf Kontinuität als auf Reibung.' (the editing relies less on continuity than on friction.)\n\nAVOID:\n- Nacherzählung (retelling the plot) — a Filmkritik isn't a synopsis.\n- Betroffenheitsgestus ('this film moved me deeply') — too subjective for a German broadsheet.\n- Blanket verdicts ('a masterpiece') without justification.",
     "vocabulary": [
       {
+        cell_id: "c33a5e5d-070d-4aee-981b-e7325cb60a73",
         "word": "die Einstellung",
         "en": "shot / take",
         "vi": "cảnh quay / cú máy",
@@ -4368,6 +4523,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee INE-shtel-loong — long 'i' (eye), short 'e' as in 'bet'"
       },
       {
+        cell_id: "745cd266-244e-400b-997d-ca88dd534c26",
         "word": "die Kamerafahrt",
         "en": "camera movement / tracking",
         "vi": "cú di chuyển máy quay",
@@ -4376,6 +4532,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee KAH-may-rah-fart — long 'ah' as in 'father'"
       },
       {
+        cell_id: "9fa9b248-6275-4ebe-8e9c-4f53609d0fe4",
         "word": "die Kadrage",
         "en": "framing",
         "vi": "khuôn hình / bố cục",
@@ -4384,6 +4541,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee ka-DRAH-zhuh — French loan, 'zh' as in 'measure'"
       },
       {
+        cell_id: "b2589cba-2c4d-4af3-a0fd-e28f9f86f84b",
         "word": "der Off-Raum",
         "en": "off-screen space",
         "vi": "không gian ngoại cảnh",
@@ -4392,6 +4550,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dair OFF-rowm — 'au' as 'ow' in 'how'"
       },
       {
+        cell_id: "07236cb2-c44a-4057-82ba-1103c3fba25b",
         "word": "die Montage",
         "en": "editing",
         "vi": "dựng phim",
@@ -4400,6 +4559,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee mon-TAH-zhuh — French loan, 'zh' as in 'measure'"
       },
       {
+        cell_id: "bae6ea72-b267-4506-9bb6-6495b59fd57a",
         "word": "der Schnitt",
         "en": "cut / editing",
         "vi": "nhát cắt / dựng",
@@ -4408,6 +4568,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dair shnit — short 'i' as in 'sit'"
       },
       {
+        cell_id: "8f5b8a95-d30b-454a-9b64-cdfe18b19750",
         "word": "die Plansequenz",
         "en": "long take / sequence shot",
         "vi": "cú máy dài không cắt",
@@ -4416,6 +4577,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee PLAHN-zay-kvents — 'qu' is 'kv'"
       },
       {
+        cell_id: "469c7543-d03d-4ef3-a67d-99a3ee9dcbab",
         "word": "die Tonspur",
         "en": "soundtrack",
         "vi": "rãnh âm thanh",
@@ -4424,6 +4586,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee TONE-shpoor — long 'o' as in 'go'"
       },
       {
+        cell_id: "7f04b634-1276-47a8-9c09-b8d1a2e83576",
         "word": "die Schauspielführung",
         "en": "direction of actors",
         "vi": "chỉ đạo diễn xuất",
@@ -4432,6 +4595,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee SHOW-shpeel-fyoo-roong — 'au' as 'ow' in 'how'; 'ü' as in French 'tu'"
       },
       {
+        cell_id: "982c11a9-b05f-4b8c-9f54-7207ffb7481e",
         "word": "das Drehbuch",
         "en": "screenplay",
         "vi": "kịch bản phim",
@@ -4442,21 +4606,25 @@ export const lessons: GermanLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "4f281b00-b952-4e61-80e5-f17aa3afff91",
         "speaker": "Redakteur",
         "text": "Ihre Haneke-Kritik ist klug, aber Sie sagen kaum etwas zum Schnitt.",
         "vi": "Bài phê bình Haneke của bạn sắc sảo, nhưng bạn hầu như không nói gì về cách dựng phim."
       },
       {
+        cell_id: "3e131989-66a8-484e-acc8-33eae63cac1a",
         "speaker": "Linh",
         "text": "Stimmt — die Ellipse in der Eingangssequenz hätte ich genauer beschreiben müssen. Das Verschweigen des Ereignisses ist ja der eigentliche Schock.",
         "vi": "Đúng — lẽ ra tôi phải mô tả kỹ hơn đoạn ellipse trong cảnh mở đầu. Sự im lặng về sự kiện chính là cú sốc thực sự."
       },
       {
+        cell_id: "9bea2bc2-acaf-4485-be40-0f89e4655d54",
         "speaker": "Redakteur",
         "text": "Genau. Schreiben Sie einen Absatz nach, der die Abwesenheit des Bildes als Strategie analysiert.",
         "vi": "Chính xác. Viết thêm một đoạn phân tích sự vắng mặt của hình ảnh như chiến lược."
       },
       {
+        cell_id: "efc9cc82-e33e-466c-8bc7-42c14173cdd5",
         "speaker": "Linh",
         "text": "Mache ich — Haneke zwingt uns ja, das nicht Gezeigte zu sehen. Das ist die Pointe.",
         "vi": "Tôi làm — Haneke buộc ta thấy cái không được chiếu. Đó là điểm nhọn."
@@ -4724,6 +4892,7 @@ export const lessons: GermanLesson[] = [
     "tip_advice_en": "ANALYSING A C2 POLITICAL SPEECH:\n\n1. REDESITUATION: Who's speaking? Where? (Bundestag / campaign trail / commemoration) To whom?\n2. AUFBAU: Structure — German speeches tend to be very explicit about structure: Einleitung, Hauptteil (three points), Schluss.\n3. SPRACHLICHE MITTEL:\n- Nominalstil (a marker of Sachlichkeit).\n- Passive (offloading agency? 'It was decided' — by whom?).\n- Konjunktiv (hedging: 'It would be worth examining whether…').\n- Modal verbs (sollen, müssen, dürfen, können — each one maps obligation, possibility, permission differently).\n4. SCHLÜSSELWÖRTER: 'Freiheit', 'Verantwortung', 'Gerechtigkeit', 'Sicherheit', 'Europa'.\n5. HISTORICAL REFERENCES: German political speech almost always reaches back to NS-Zeit or Wiedervereinigung.\n\nUSEFUL PHRASES:\n- 'Die Rede inszeniert den Sprecher als…' (the speech stages the speaker as…)\n- 'Auffällig ist die Häufung von Passivkonstruktionen — sie…' (the clustering of passive constructions is striking — they…)\n- 'Der Konjunktiv II signalisiert hier…' (the subjunctive II here signals…)",
     "vocabulary": [
       {
+        cell_id: "d9fc6a7c-9bb7-46a0-8498-955874be5131",
         "word": "die Regierungserklärung",
         "en": "government declaration",
         "vi": "tuyên bố chính phủ",
@@ -4732,6 +4901,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee ray-GEE-roongs-er-klay-roong — stress on GEE; long 'ee' as in 'see'"
       },
       {
+        cell_id: "ecbb7afb-2d82-49cc-b6ce-a90e4c41ff5d",
         "word": "der Bundestag",
         "en": "German federal parliament",
         "vi": "Quốc hội liên bang Đức",
@@ -4740,6 +4910,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dair BOON-des-tahk — long 'oo' as in 'food'"
       },
       {
+        cell_id: "fafcb006-ad47-4b3e-8439-bb68feac5f7c",
         "word": "die Gedenkrede",
         "en": "commemorative speech",
         "vi": "diễn văn tưởng niệm",
@@ -4748,6 +4919,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee guh-DENK-ray-duh — short 'e' as in 'bet'"
       },
       {
+        cell_id: "438d55ed-b010-413d-9b59-814a0cf9eae2",
         "word": "der Schulterschluss",
         "en": "closing ranks / solidarity",
         "vi": "sự đoàn kết vai kề vai",
@@ -4756,6 +4928,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dair SHOOL-ter-shloos — 'sch' is 'sh'"
       },
       {
+        cell_id: "fc203afe-db8b-49c7-8911-4272b9bc4f18",
         "word": "die Streitkultur",
         "en": "culture of debate",
         "vi": "văn hóa tranh luận",
@@ -4764,6 +4937,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee SHTRITE-kool-toor — 'ei' rhymes with 'eye'"
       },
       {
+        cell_id: "bdba22e4-6b8b-4aa3-a51c-c1d112226540",
         "word": "der Konsens",
         "en": "consensus",
         "vi": "đồng thuận",
@@ -4772,6 +4946,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dair kon-ZENS — 'z' is 'ts'; stress on second syllable"
       },
       {
+        cell_id: "c86db9d3-1ee2-4263-881e-cd0185f7d191",
         "word": "die Willensbildung",
         "en": "formation of will",
         "vi": "sự hình thành ý chí",
@@ -4780,6 +4955,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee VIL-ens-bil-doong — short 'i' as in 'fish'"
       },
       {
+        cell_id: "a42ef970-7f0d-4754-b6da-84b58d326239",
         "word": "der Befreiungsschlag",
         "en": "liberating stroke",
         "vi": "cú giải phóng",
@@ -4788,6 +4964,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dair buh-FRY-oongs-shlahk — 'ei' rhymes with 'eye'"
       },
       {
+        cell_id: "833d9d3b-0901-46d8-adf5-f47808890091",
         "word": "die Sachlichkeit",
         "en": "objectivity / matter-of-factness",
         "vi": "tính khách quan",
@@ -4796,6 +4973,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee ZAKH-likh-kite — hard 'ch' (as in 'loch') in 'sach'"
       },
       {
+        cell_id: "36ee1a10-a392-4ec0-b2bb-55ef568a24b0",
         "word": "das Gedenken",
         "en": "remembrance",
         "vi": "sự tưởng niệm",
@@ -4806,21 +4984,25 @@ export const lessons: GermanLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "d25ff942-64eb-4b2d-ba41-fec32c3872b4",
         "speaker": "Seminarleiter",
         "text": "Was unterscheidet Weizsäckers Rede von 1985 von früheren Gedenkreden zum 8. Mai?",
         "vi": "Điều gì phân biệt diễn văn của Weizsäcker năm 1985 với các diễn văn tưởng niệm 8/5 trước đó?"
       },
       {
+        cell_id: "dc139c7d-00da-4e0e-83e2-c7a15cafa124",
         "speaker": "Linh",
         "text": "Vor allem das Wort 'Befreiung'. Seine Vorgänger sprachen von 'Niederlage' oder 'Zusammenbruch'. Der Wechsel des Substantivs ist ein Wechsel des Geschichtsbildes.",
         "vi": "Trước hết là từ 'giải phóng'. Những người tiền nhiệm nói về 'thất bại' hay 'sụp đổ'. Sự thay đổi danh từ là sự thay đổi quan niệm lịch sử."
       },
       {
+        cell_id: "cbfbfad3-53fc-4411-aff6-2e1f9d794ef4",
         "speaker": "Seminarleiter",
         "text": "Und rhetorisch — wie erzeugt die Rede diese Wirkung?",
         "vi": "Còn về mặt tu từ — diễn văn tạo ra hiệu ứng này thế nào?"
       },
       {
+        cell_id: "0ac03ee6-daa3-4a81-b6ee-42956fa5cad0",
         "speaker": "Linh",
         "text": "Durch eine Kette von kurzen Hauptsätzen, jeder ein Urteil. Keine Hypotaxe, keine Abschweifung. Jeder Satz ein Hammerschlag.",
         "vi": "Bằng một chuỗi câu chính ngắn, mỗi câu là một phán quyết. Không hypotaxe, không lan man. Mỗi câu một nhát búa."
@@ -5026,6 +5208,7 @@ export const lessons: GermanLesson[] = [
     "tip_advice_en": "TAKING PART IN A C2 BÜRGERDEBATTE:\n\n1. POSITION BEZIEHEN: 'I'm speaking here as…' — always name the position you're speaking from.\n2. ACKNOWLEDGE THE OTHER POSITION: 'I understand your point that…, but…'\n3. ATTACK THE ARGUMENT, NOT THE PERSON.\n4. EXPOSE YOUR PREMISES: 'My premise is that…' — Germans value transparency about premises.\n5. SEEK CONSENSUS, NOT VICTORY: 'Vielleicht können wir uns darauf einigen, dass…' ('Perhaps we can agree that…')\n\nUSEFUL PHRASES:\n- 'Dem würde ich entgegenhalten, dass…' (I'd counter that…)\n- 'Hier liegt, wie mir scheint, ein Missverständnis vor.' (there seems to be a misunderstanding here.)\n- 'Lassen Sie uns die Prämissen klären, bevor wir…' (let's clarify the premises before we…)\n- 'Das ist ein starkes Argument, allerdings…' (that's a strong argument, but…)\n\nAVOID:\n- Ad hominem: 'You don't know what you're talking about!'\n- Polemik instead of Argument.\n- Silence under provocation — you have to answer, but answer with an argument.",
     "vocabulary": [
       {
+        cell_id: "66ee7155-1a0b-49dc-8f37-bee5c4c482e2",
         "word": "die Öffentlichkeit",
         "en": "the public sphere (Habermas)",
         "vi": "không gian công cộng",
@@ -5034,6 +5217,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee ER-fent-likh-kite — 'ö' is the rounded 'eh' (lips for 'oh', say 'eh')"
       },
       {
+        cell_id: "fbd1739b-09d6-40d8-87cd-813389099f45",
         "word": "die Deliberation",
         "en": "deliberation",
         "vi": "sự thảo luận / nghị sự",
@@ -5042,6 +5226,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee day-li-bay-rah-tsee-OHN — stress on final syllable"
       },
       {
+        cell_id: "f1ea57cb-67c3-44cd-8f23-d44a08c6be24",
         "word": "der Bürgerdialog",
         "en": "citizen dialogue",
         "vi": "đối thoại công dân",
@@ -5050,6 +5235,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dair BYOOR-ger-dee-ah-lohk — 'ü' as in French 'tu'"
       },
       {
+        cell_id: "322bff0f-9550-421d-a8a1-65faf83e41f5",
         "word": "die Konsensfindung",
         "en": "consensus-building",
         "vi": "sự tìm kiếm đồng thuận",
@@ -5058,6 +5244,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee kon-ZENS-fin-doong — 'z' is 'ts' in Konsens"
       },
       {
+        cell_id: "14e3afb5-43d7-4922-8e53-b3df857df10b",
         "word": "der Dissens",
         "en": "dissent / disagreement",
         "vi": "sự bất đồng / dị kiến",
@@ -5066,6 +5253,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dair dis-ZENS — stress on second syllable"
       },
       {
+        cell_id: "8b7c2ec2-e029-4d3c-8c5b-2795b4262ad1",
         "word": "die Vorverständigung",
         "en": "prior understanding / pre-agreement",
         "vi": "sự thông hiểu trước / tiền nhất trí",
@@ -5074,6 +5262,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee FOR-fer-shten-di-goong — short 'i' as in 'fish'"
       },
       {
+        cell_id: "e17fead1-fb4e-4f37-85e8-9b4f5c4dc21d",
         "word": "der Interessenausgleich",
         "en": "balancing of interests",
         "vi": "sự cân bằng lợi ích",
@@ -5082,6 +5271,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dair IN-tay-res-en-ows-glykh — 'au' as 'ow' in 'how'"
       },
       {
+        cell_id: "031eb813-d56c-489e-aab4-73d8320e2b40",
         "word": "die Bürgerbeteiligung",
         "en": "citizen participation",
         "vi": "sự tham gia của công dân",
@@ -5090,6 +5280,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee BYOOR-ger-buh-tie-li-goong — 'ü' as in French 'tu'"
       },
       {
+        cell_id: "840e8489-fbd6-4fc9-a47b-a092c0cf2918",
         "word": "die Streitfrage",
         "en": "the point of contention",
         "vi": "vấn đề tranh cãi",
@@ -5098,6 +5289,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee SHTRITE-frah-guh — 'ei' rhymes with 'eye'"
       },
       {
+        cell_id: "0ac913c9-c3c4-4a9d-80b4-d40131738a88",
         "word": "der Grundkonsens",
         "en": "fundamental consensus",
         "vi": "đồng thuận nền tảng",
@@ -5108,11 +5300,13 @@ export const lessons: GermanLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "df464b7f-c256-4637-ad78-99430a804725",
         "speaker": "Bürger",
         "text": "Warum soll ich mich an einem Bürgerdialog beteiligen? Die Politik macht doch, was sie will.",
         "vi": "Tại sao tôi nên tham gia đối thoại công dân? Chính trị gia vẫn làm điều họ muốn."
       },
       {
+        cell_id: "7017f392-c701-4a67-9ee7-3b2afd7cdb6a",
         "speaker": "Linh",
         "text": "Das ist ein verbreitetes Gefühl — aber gerade weil Sie dieses Gefühl haben, ist Ihre Stimme im Dialog wichtig. Demokratie lebt nicht vom Schweigen der Unzufriedenen.",
         "vi": "Đó là một cảm giác phổ biến — nhưng chính vì bạn có cảm giác này, tiếng nói của bạn trong đối thoại mới quan trọng. Dân chủ không sống bằng sự im lặng của những người bất mãn."
@@ -5254,6 +5448,7 @@ export const lessons: GermanLesson[] = [
     "tip_advice_en": "Writing a C2 philosophical essay: (1) Open with a real question, not a fake one. (2) Allow yourself to 'think on paper' — write to discover, not to prove what you already know. (3) Use Konjunktiv II for speculation: 'Es könnte sein, dass…' (it could be that…). (4) End openly: 'Vielleicht…' (perhaps…) rather than 'Also…' (so…).",
     "vocabulary": [
       {
+        cell_id: "2a97552b-f35a-4616-9632-be5e21942264",
         "word": "der Essay",
         "en": "the essay",
         "vi": "tiểu luận",
@@ -5262,6 +5457,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dair eh-SAY — French loan, stress on second syllable"
       },
       {
+        cell_id: "8151a724-13e4-4041-80e5-9bd97d2025ca",
         "word": "die Abhandlung",
         "en": "treatise / academic paper",
         "vi": "luận văn / chuyên khảo",
@@ -5270,6 +5466,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee AHP-hand-loong — short 'a' as in 'father' (clipped)"
       },
       {
+        cell_id: "30adcf47-a892-48e9-9e3f-f061f83fc3b4",
         "word": "der Gedankengang",
         "en": "train of thought",
         "vi": "mạch tư duy",
@@ -5278,6 +5475,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dair guh-DAHN-ken-gahng — short 'a' as in 'father'"
       },
       {
+        cell_id: "d3edf457-5717-4723-8cf8-27a16165cb48",
         "word": "die Versuchsanordnung",
         "en": "experimental setup",
         "vi": "bố trí thử nghiệm",
@@ -5286,6 +5484,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee fer-ZOOKHS-an-or-doong — hard 'ch' as in 'loch'"
       },
       {
+        cell_id: "eb284588-6275-4803-a5d0-4e44a9498052",
         "word": "das Begriffliche",
         "en": "the conceptual",
         "vi": "cái thuộc về khái niệm",
@@ -5294,6 +5493,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "das buh-GRIF-li-khuh — short 'i' as in 'fish'"
       },
       {
+        cell_id: "0df6de86-354a-4058-bca6-5b6ed07093f5",
         "word": "erörtern",
         "en": "to discuss / examine thoroughly",
         "vi": "thảo luận kỹ lưỡng",
@@ -5302,6 +5502,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "er-ER-tern — 'ö' is rounded 'eh'"
       },
       {
+        cell_id: "41b47702-aa99-4624-8e64-7747af98941a",
         "word": "abwägen",
         "en": "to weigh / consider",
         "vi": "cân nhắc / đắn đo",
@@ -5310,6 +5511,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "AHP-vay-gen — 'ä' is long 'eh' as in 'they'"
       },
       {
+        cell_id: "5a2d6aeb-d075-408c-b963-bd5ba6f61df5",
         "word": "das Für und Wider",
         "en": "the pros and cons",
         "vi": "lợi và hại / thuận và nghịch",
@@ -5320,16 +5522,19 @@ export const lessons: GermanLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "4d04c606-7d2a-4bb5-b0d4-9a50a960e99f",
         "speaker": "Doktorvater",
         "text": "Ihr Essay ist klug, aber er springt. Wo ist der rote Faden?",
         "vi": "Essay của chị sắc sảo, nhưng nó nhảy cóc. Sợi chỉ đỏ đâu?"
       },
       {
+        cell_id: "fb01e8fd-457d-4eb7-9e9a-45718ac56f2e",
         "speaker": "Linh",
         "text": "Ich dachte, der Essay verträgt Sprünge — Adorno selbst sagt, der Essay dürfe assoziativ sein.",
         "vi": "Tôi tưởng essay chịu được những cú nhảy — chính Adorno nói essay được phép liên tưởng."
       },
       {
+        cell_id: "82806592-01b2-497f-941c-217511dad4d8",
         "speaker": "Doktorvater",
         "text": "Assoziativ, ja. Aber nicht beliebig. Die Sprünge müssen einer inneren Logik folgen, die der Leser nachvollziehen kann.",
         "vi": "Liên tưởng, đúng. Nhưng không phải tùy tiện. Những cú nhảy phải theo một logic nội tại mà độc giả có thể lần theo."
@@ -5396,6 +5601,7 @@ export const lessons: GermanLesson[] = [
     "tip_advice_en": "PREPARING FOR A C2 KOLLOQUIUM: (1) Have three answers ready for 'What's the biggest weakness of your work?' (2) Practise reformulating: 'If I understand you correctly, you mean…' ('Wenn ich Sie richtig verstehe, meinen Sie…'). (3) Use Konjunktiv II for humility: 'There I'd hesitate…' ('Da würde ich zögern…').",
     "vocabulary": [
       {
+        cell_id: "c27cef38-83de-42d2-87fd-684e4c95331f",
         "word": "das Kolloquium",
         "en": "colloquium / oral defense",
         "vi": "kỳ thi vấn đáp / bảo vệ",
@@ -5404,6 +5610,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "das ko-LO-kvee-oom — Latin loan, stress on second syllable"
       },
       {
+        cell_id: "77cc59e6-e053-43ed-bf37-3489a2cf7cb6",
         "word": "die Verteidigung",
         "en": "defense",
         "vi": "sự bảo vệ (luận án)",
@@ -5412,6 +5619,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee fer-TIE-di-goong — 'ei' rhymes with 'eye'"
       },
       {
+        cell_id: "084f7959-e8fe-4236-9aec-03adad0e3040",
         "word": "der Einwand",
         "en": "objection",
         "vi": "phản bác",
@@ -5420,6 +5628,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dair INE-vant — 'ei' rhymes with 'eye'"
       },
       {
+        cell_id: "8f557aa7-09e4-4b61-8c46-e36242d7c201",
         "word": "das Prüfungsgespräch",
         "en": "examination conversation",
         "vi": "đối thoại thi vấn đáp",
@@ -5540,6 +5749,7 @@ export const lessons: GermanLesson[] = [
     "tip_advice_en": "METHOD FOR A C2 PHILOSOPHY ESSAY:\n\n1. BEGRIFFSANALYSE (concept analysis): define every Begriff (concept) in the question. Distinguish Alltagsbedeutung (everyday meaning) from philosophische Bedeutung (philosophical meaning).\n\n2. EXPOSE THE PRESUPPOSITIONS: every philosophical question carries hidden premises. Your first job is to bring them to light.\n\n3. DEVELOP A THESIS: don't 'answer' the question; propose a thesis and develop it through two or three steps of argument.\n\n4. THINK THROUGH OBJECTIONS: pose the strongest objection to your own position, then answer it.\n\n5. CONCEPTUAL CONSISTENCY: every Begriff is used in exactly one sense throughout the essay.\n\nUSEFUL PHRASES:\n- 'Es wäre zu fragen, ob…' (one would need to ask whether…)\n- 'Unter der Voraussetzung, dass…' (under the premise that…)\n- 'Dem ließe sich entgegenhalten, dass…' (one might object that…)\n- 'Die entscheidende Unterscheidung ist die zwischen…' (the decisive distinction is between…)\n\nAVOID:\n- 'In my opinion…' — philosophy isn't personal opinion.\n- 'Humans have always…' — empty generalisation.\n- Vague vocabulary: 'irgendwie', 'gewissermaßen', 'eigentlich' (when not strictly needed).",
     "vocabulary": [
       {
+        cell_id: "55eb41e6-be2a-457b-9b1b-f96e0e7751a2",
         "word": "die Voraussetzung",
         "en": "presupposition / premise",
         "vi": "tiền giả định",
@@ -5548,6 +5758,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee FOR-ows-zet-soong — 'au' as 'ow' in 'how'"
       },
       {
+        cell_id: "a4874707-5bf3-4655-85f6-e505ef875bc6",
         "word": "transzendental",
         "en": "transcendental (Kant)",
         "vi": "siêu nghiệm (Kant)",
@@ -5556,6 +5767,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "trans-tsen-den-TAHL — stress on final syllable"
       },
       {
+        cell_id: "e303a427-f8f0-4896-ba54-bbdd9863c48f",
         "word": "der Fehlschluss",
         "en": "fallacy / false conclusion",
         "vi": "ngụy biện / kết luận sai",
@@ -5564,6 +5776,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dair FAYL-shloos — long 'ay' as in 'they'"
       },
       {
+        cell_id: "9e948ff5-c39c-450a-b791-8bec4f772580",
         "word": "die Redlichkeit",
         "en": "intellectual honesty",
         "vi": "sự chính trực trí tuệ",
@@ -5572,6 +5785,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee RAYT-likh-kite — 'ei' rhymes with 'eye'"
       },
       {
+        cell_id: "a4f544fb-ef34-42f2-bb1e-8a4d262c74ee",
         "word": "der Einwand",
         "en": "objection",
         "vi": "phản bác",
@@ -5580,6 +5794,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dair INE-vant — 'ei' rhymes with 'eye'"
       },
       {
+        cell_id: "1fc159e8-8eb2-4f2f-8638-a0c7baac71a6",
         "word": "entkräften",
         "en": "to refute / invalidate",
         "vi": "hóa giải / bác bỏ",
@@ -5588,6 +5803,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "ent-KREF-ten — short 'e' as in 'bet'"
       },
       {
+        cell_id: "0cae0880-4611-47e4-aaf1-752417aeb1c5",
         "word": "begrifflich",
         "en": "conceptual",
         "vi": "thuộc về khái niệm",
@@ -5596,6 +5812,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "buh-GRIF-likh — short 'i' as in 'fish'"
       },
       {
+        cell_id: "f52e70dd-0b12-495c-a50b-d606356b0614",
         "word": "die Anschauung",
         "en": "intuition (Kant)",
         "vi": "trực quan (Kant)",
@@ -5604,6 +5821,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee AHN-show-oong — 'au' as 'ow' in 'how'"
       },
       {
+        cell_id: "f048b70b-a571-41bd-b064-4ca6a31972d9",
         "word": "die Beliebigkeit",
         "en": "arbitrariness",
         "vi": "tính tùy tiện",
@@ -5612,6 +5830,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee buh-LEE-bikh-kite — long 'ee' as in 'see'"
       },
       {
+        cell_id: "d086c178-59ca-4d32-a253-19902ae7cf0f",
         "word": "das Sprachspiel",
         "en": "language-game (Wittgenstein)",
         "vi": "trò chơi ngôn ngữ (Wittgenstein)",
@@ -5622,11 +5841,13 @@ export const lessons: GermanLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "138fed80-dec5-4000-85aa-35554e399ef4",
         "speaker": "Doktorand",
         "text": "Was genau meint Kant mit 'transzendental'?",
         "vi": "Chính xác Kant có ý gì với 'siêu nghiệm'?"
       },
       {
+        cell_id: "48167beb-2cd0-4b93-af64-1cdce016c2ed",
         "speaker": "Professor",
         "text": "Transzendental ist eine Erkenntnis, die sich nicht mit Gegenständen, sondern mit unserer Erkenntnisart von Gegenständen befasst, sofern diese a priori möglich sein soll. Nicht was wir erkennen, sondern wie wir erkennen — das ist die transzendentale Frage.",
         "vi": "Siêu nghiệm là một nhận thức không bàn về các đối tượng, mà bàn về cách thức nhận thức của ta về các đối tượng, trong chừng mực cách thức đó phải khả thể một cách tiên nghiệm. Không phải ta nhận thức cái gì, mà ta nhận thức như thế nào — đó là câu hỏi siêu nghiệm."
@@ -5775,6 +5996,7 @@ export const lessons: GermanLesson[] = [
     "tip_advice_en": "C2 PERSUASION-ANALYSIS GRID:\n\n1. LOGOS: What arguments are made? Facts, statistics, logical inferences? Are there unstated premises (enthymemes)?\n\n2. ETHOS: How does the speaker build credibility? Competence signals, modesty signals, or attacks on the opponent's credibility?\n\n3. PATHOS: Which emotions are appealed to? Fear, hope, indignation, pride? At which point in the text?\n\n4. STRUCTURE: Exordium (opening), Narratio (statement of facts), Argumentatio (proofs), Peroratio (closing appeal).\n\nUSEFUL PHRASES:\n- 'Die Rede appelliert hier vorwiegend an den logos, indem…' (the speech here appeals mainly to logos by…)\n- 'Der ethos des Sprechers wird durch… aufgebaut.' (the speaker's ethos is built up through…)\n- 'Der pathos-Appell in der Peroratio zielt darauf ab…' (the pathos appeal in the peroration aims to…)\n- 'Diese Konzession ist eine rhetorische Figur, die den ethos stärkt.' (this concession is a rhetorical figure that strengthens ethos.)",
     "vocabulary": [
       {
+        cell_id: "c0807d14-a9af-42e0-8c94-5bbb97465d96",
         "word": "die Glaubwürdigkeit",
         "en": "credibility / ethos",
         "vi": "độ tin cậy / ethos",
@@ -5783,6 +6005,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee GLOWP-vyoor-dikh-kite — 'au' as 'ow' in 'how'; 'ü' as in French 'tu'"
       },
       {
+        cell_id: "8492cf64-70a3-40bf-a14d-90d4f6d64c8f",
         "word": "die Überzeugungskraft",
         "en": "persuasive power",
         "vi": "sức thuyết phục",
@@ -5791,6 +6014,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee YOO-ber-tsoy-goongs-kraft — 'ü' as in French 'tu'"
       },
       {
+        cell_id: "196cae09-9835-4005-b1c6-5c6cce1811d8",
         "word": "das Enthymem",
         "en": "enthymeme (rhetorical syllogism)",
         "vi": "enthymeme — tam đoạn luận tu từ",
@@ -5799,6 +6023,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "das en-tyoo-MAYM — Greek loan, stress on final syllable"
       },
       {
+        cell_id: "4df10171-4811-468f-a2c8-4241530fa97b",
         "word": "der Appell",
         "en": "appeal",
         "vi": "lời kêu gọi / appeal",
@@ -5807,6 +6032,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dair ah-PELL — French loan, stress on second syllable"
       },
       {
+        cell_id: "4b68af72-72da-438f-b8a1-10c88781b54e",
         "word": "die Konzession",
         "en": "concession",
         "vi": "sự nhượng bộ",
@@ -5815,6 +6041,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee kon-tses-see-OHN — stress on final syllable"
       },
       {
+        cell_id: "abf579a7-ca46-40d3-b77c-b3a4ef4053c3",
         "word": "das Publikum",
         "en": "audience / public",
         "vi": "công chúng / cử tọa",
@@ -5823,6 +6050,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "das POO-bli-koom — long 'oo' as in 'food'"
       },
       {
+        cell_id: "adfb263d-4ed4-48c0-81a5-ea1ff650f330",
         "word": "das Plädoyer",
         "en": "pleading / closing argument",
         "vi": "bài biện hộ / lời bào chữa",
@@ -5831,6 +6059,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "das play-doy-AY — French loan"
       },
       {
+        cell_id: "eba8abe3-3d26-49fb-9b9a-e2f5fa5feb9e",
         "word": "die Beweisführung",
         "en": "argumentation / proof",
         "vi": "sự dẫn chứng / lập luận",
@@ -5841,11 +6070,13 @@ export const lessons: GermanLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "e1bc0507-e171-4dc4-9574-d0a08854d82b",
         "speaker": "Student",
         "text": "Ist Rhetorik nicht einfach Manipulation?",
         "vi": "Tu từ học không đơn giản là thao túng sao?"
       },
       {
+        cell_id: "2d464230-74c8-4ac2-b730-087e2e232de1",
         "speaker": "Professor",
         "text": "Diese Frage ist selbst eine rhetorische Figur — sie appelliert an das Ethos des ehrlichen Skeptikers. Rhetorik ist ein Werkzeug; ob sie manipuliert oder aufklärt, hängt vom Verwender ab, nicht vom Werkzeug.",
         "vi": "Chính câu hỏi này là một hình thái tu từ — nó kêu gọi đến ethos của người hoài nghi trung thực. Tu từ học là một công cụ; nó thao túng hay khai sáng tùy thuộc vào người dùng, không phải vào công cụ."
@@ -5970,6 +6201,7 @@ export const lessons: GermanLesson[] = [
     "tip_advice_en": "C2 MEDIA-ANALYSIS GRID: (1) Trennungsgrundsatz: news or opinion? (2) Reporting verbs: 'behaupten' (claim, with doubt) vs 'mitteilen' (state) vs 'einräumen' (concede). (3) Sources: named or anonymous? (4) Agenda-setting: what's reported, what isn't?",
     "vocabulary": [
       {
+        cell_id: "596c4238-989d-4f0a-b30f-0751f82725bc",
         "word": "der Trennungsgrundsatz",
         "en": "separation principle (news vs opinion)",
         "vi": "nguyên tắc tách biệt",
@@ -5978,6 +6210,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dair TREN-noongs-groont-zats — short 'e' as in 'bet'"
       },
       {
+        cell_id: "9f04775b-29f8-42f2-81bb-d9230f5c24f0",
         "word": "die Ausgewogenheit",
         "en": "balance / impartiality",
         "vi": "tính cân bằng",
@@ -5986,6 +6219,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee OWS-guh-voh-gen-hite — 'au' as 'ow' in 'how'"
       },
       {
+        cell_id: "ada2fdd9-940d-4354-a0ee-698897fece10",
         "word": "das Berichtsverb",
         "en": "reporting verb",
         "vi": "động từ tường thuật",
@@ -5994,6 +6228,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "das buh-RIKHTS-verb — hard 'ch' as in 'loch'"
       },
       {
+        cell_id: "a5a25017-486f-46f5-a198-333ccfe8295d",
         "word": "die Themenauswahl",
         "en": "topic selection / agenda-setting",
         "vi": "sự chọn chủ đề",
@@ -6002,6 +6237,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee TAY-men-ows-vahl — long 'ay' as in 'they'"
       },
       {
+        cell_id: "099a6741-0082-417d-9efc-54e974c16e55",
         "word": "der Programmauftrag",
         "en": "public-service broadcasting mandate",
         "vi": "sự ủy nhiệm chương trình",
@@ -6010,6 +6246,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dair pro-GRAHM-owf-trahk — 'au' as 'ow' in 'how'"
       },
       {
+        cell_id: "753057ee-8eb9-4d0f-97d1-7d9678579f16",
         "word": "die Nachricht",
         "en": "news item",
         "vi": "tin tức",
@@ -6018,6 +6255,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee NAHKH-rikht — hard 'ch' as in 'loch'"
       },
       {
+        cell_id: "48fe6c0c-30f1-4e52-9a10-1eabedbdeece",
         "word": "der Kommentar",
         "en": "opinion piece / commentary",
         "vi": "bình luận",
@@ -6026,6 +6264,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dair ko-men-TAR — French/Latin loan, stress on final syllable"
       },
       {
+        cell_id: "1602ae43-67b7-4e4e-9c2d-ab8ec7b95235",
         "word": "der Presserat",
         "en": "German Press Council",
         "vi": "Hội đồng Báo chí Đức",
@@ -6036,11 +6275,13 @@ export const lessons: GermanLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "e1ad376b-7791-456e-b9a0-caf1d808556f",
         "speaker": "Student",
         "text": "Woran erkenne ich, ob ein Artikel Nachricht oder Kommentar ist?",
         "vi": "Làm sao tôi nhận ra một bài báo là tin tức hay bình luận?"
       },
       {
+        cell_id: "6ef88580-adb4-4b19-ad75-ab82bd0c1f88",
         "speaker": "Dozent",
         "text": "An den Berichtsverben und Adjektiven. 'Der Minister teilte mit' = Nachricht. 'Der Minister behauptete' = Kommentar, denn 'behaupten' impliziert Zweifel.",
         "vi": "Qua động từ tường thuật và tính từ. 'Bộ trưởng thông báo' = tin tức. 'Bộ trưởng khẳng định' (với sắc thái nghi ngờ) = bình luận, vì nó hàm ý hoài nghi."
@@ -6123,6 +6364,7 @@ export const lessons: GermanLesson[] = [
     "tip_advice_en": "SCALE OF DIPLOMATIC VERBS (strong → weak): verurteilen (condemn) > bedauern (regret) > zur Kenntnis nehmen (take note) > nicht kommentieren (no comment). 'Konstruktiver Meinungsaustausch' = disagreement. 'Fortsetzung des Dialogs vereinbart' = no result. ALWAYS: read communiqués twice — once for the public reading, once for the specialist reading.",
     "vocabulary": [
       {
+        cell_id: "536e9821-7469-41eb-80f6-10139775f24c",
         "word": "verurteilen",
         "en": "to condemn",
         "vi": "lên án",
@@ -6131,6 +6373,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "fer-OOR-tie-len — 'ei' rhymes with 'eye'"
       },
       {
+        cell_id: "589aeca4-2e59-47a5-8a18-4b8dfa9387ef",
         "word": "bedauern",
         "en": "to deplore / regret",
         "vi": "lấy làm tiếc",
@@ -6139,6 +6382,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "buh-DOW-ern — 'au' as 'ow' in 'how'"
       },
       {
+        cell_id: "b6b08ceb-57ee-4fa3-8589-87dda497c539",
         "word": "der Meinungsaustausch",
         "en": "exchange of views",
         "vi": "trao đổi ý kiến",
@@ -6147,6 +6391,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dair MY-noongs-ows-towsh — 'ei' rhymes with 'eye'; 'au' as 'ow' in 'how'"
       },
       {
+        cell_id: "9da2e7b0-25a6-4c06-8fb3-7ece03172fcb",
         "word": "die Vermittlerrolle",
         "en": "mediator role",
         "vi": "vai trò trung gian hòa giải",
@@ -6155,6 +6400,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee fer-MIT-ler-ro-luh — short 'i' as in 'fish'"
       },
       {
+        cell_id: "f422321e-d901-4388-bec9-2fe83ccb0611",
         "word": "zur Kenntnis nehmen",
         "en": "to take note of",
         "vi": "ghi nhận",
@@ -6165,11 +6411,13 @@ export const lessons: GermanLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "02066894-d526-400f-8a95-564e337d8ff8",
         "speaker": "Diplomat",
         "text": "Sollen wir 'verurteilen' oder 'bedauern' schreiben?",
         "vi": "Ta nên viết 'lên án' hay 'lấy làm tiếc'?"
       },
       {
+        cell_id: "26db0ff7-36a5-40a2-9ba0-768df3e49fa9",
         "speaker": "Linh",
         "text": "'Bedauern'. 'Verurteilen' würde die Tür für das nächste Treffen verschließen. 'Bedauern' drückt den Dissens aus und lässt einen Ausweg offen.",
         "vi": "'Lấy làm tiếc'. 'Lên án' sẽ đóng cửa cuộc gặp tới. 'Lấy làm tiếc' biểu đạt bất đồng và để ngỏ lối ra."

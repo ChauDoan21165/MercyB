@@ -25,6 +25,7 @@ export type HindiSentence = {
 };
 
 export type HindiVocabEntry = {
+  cell_id?: string;
   hi: string;
   romanization: string;
   en: string;
@@ -33,6 +34,7 @@ export type HindiVocabEntry = {
 };
 
 export type HindiDialogueLine = {
+  cell_id?: string;
   speaker: string;
   hi: string;
   romanization: string;
@@ -96,11 +98,11 @@ export const lessons: HindiLesson[] = [
     intro_en:
       "This lesson practices daily habits with the present habitual: karta/karti hoon.",
     vocabulary: [
-      { hi: "सुबह", romanization: "subah", vi: "buổi sáng", en: "morning", pos: "n.f." },
-      { hi: "उठना", romanization: "uthna", vi: "thức dậy", en: "to wake up", pos: "v." },
-      { hi: "काम", romanization: "kaam", vi: "công việc", en: "work", pos: "n.m." },
-      { hi: "पढ़ना", romanization: "padhna", vi: "học/đọc", en: "to study/read", pos: "v." },
-      { hi: "रोज़", romanization: "roz", vi: "mỗi ngày", en: "every day", pos: "adv." },
+      { cell_id: "e2d3b4b9-ddc3-4afa-aab8-f03e276a8ae9", hi: "सुबह", romanization: "subah", vi: "buổi sáng", en: "morning", pos: "n.f." },
+      { cell_id: "abf96fbe-f705-4f69-9838-b16fea57a919", hi: "उठना", romanization: "uthna", vi: "thức dậy", en: "to wake up", pos: "v." },
+      { cell_id: "d3235067-dc25-458b-be47-ca7d4b28d6b9", hi: "काम", romanization: "kaam", vi: "công việc", en: "work", pos: "n.m." },
+      { cell_id: "d181dd5d-e26c-4197-971f-9caf27f7c202", hi: "पढ़ना", romanization: "padhna", vi: "học/đọc", en: "to study/read", pos: "v." },
+      { cell_id: "4527cffd-504a-433e-a749-6db6b0611620", hi: "रोज़", romanization: "roz", vi: "mỗi ngày", en: "every day", pos: "adv." },
     ],
     sentences: [
       {
@@ -177,11 +179,11 @@ export const lessons: HindiLesson[] = [
     intro_en:
       "This lesson expands A1 price questions into colors, quantity, and polite store requests.",
     vocabulary: [
-      { hi: "दुकान", romanization: "dukaan", vi: "cửa hàng", en: "shop", pos: "n.f." },
-      { hi: "सस्ता", romanization: "sasta", vi: "rẻ", en: "cheap", pos: "adj." },
-      { hi: "महँगा", romanization: "mahanga", vi: "đắt", en: "expensive", pos: "adj." },
-      { hi: "लाल", romanization: "laal", vi: "màu đỏ", en: "red", pos: "adj." },
-      { hi: "दो", romanization: "do", vi: "hai", en: "two", pos: "number" },
+      { cell_id: "bc0d736a-ab19-4837-b70d-cd9a9b56cf09", hi: "दुकान", romanization: "dukaan", vi: "cửa hàng", en: "shop", pos: "n.f." },
+      { cell_id: "5e7518ee-42ab-4e43-bfcb-b7e49554232e", hi: "सस्ता", romanization: "sasta", vi: "rẻ", en: "cheap", pos: "adj." },
+      { cell_id: "b609f2d7-43b9-4a53-ac2f-f03b51698643", hi: "महँगा", romanization: "mahanga", vi: "đắt", en: "expensive", pos: "adj." },
+      { cell_id: "c95a0e15-0d8c-4c84-a306-635ccfd25b27", hi: "लाल", romanization: "laal", vi: "màu đỏ", en: "red", pos: "adj." },
+      { cell_id: "56eb99b7-b74b-4e9e-bb0c-611097ecf5cd", hi: "दो", romanization: "do", vi: "hai", en: "two", pos: "number" },
     ],
     sentences: [
       {
@@ -221,6 +223,7 @@ export const lessons: HindiLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "a2d51bb7-9773-4dc1-ab32-c66c19698271",
         speaker: "Customer",
         hi: "यह कितना है?",
         romanization: "yah kitna hai?",
@@ -228,6 +231,7 @@ export const lessons: HindiLesson[] = [
         en: "How much is this?",
       },
       {
+        cell_id: "b72a57ff-089e-4774-980a-9638182d9ef0",
         speaker: "Shopkeeper",
         hi: "यह सौ रुपये है।",
         romanization: "yah sau rupaye hai.",
@@ -271,11 +275,11 @@ export const lessons: HindiLesson[] = [
     intro_en:
       "Ask about buses/trains, departure time, and destination with clear A2 sentences.",
     vocabulary: [
-      { hi: "बस", romanization: "bas", vi: "xe buýt", en: "bus", pos: "n.f." },
-      { hi: "ट्रेन", romanization: "train", vi: "tàu", en: "train", pos: "n.f." },
-      { hi: "स्टेशन", romanization: "station", vi: "nhà ga", en: "station", pos: "n.m." },
-      { hi: "कहाँ", romanization: "kahaan", vi: "ở đâu", en: "where", pos: "question" },
-      { hi: "कब", romanization: "kab", vi: "khi nào", en: "when", pos: "question" },
+      { cell_id: "f2287f3c-3071-488a-9dc9-a93ccaf15532", hi: "बस", romanization: "bas", vi: "xe buýt", en: "bus", pos: "n.f." },
+      { cell_id: "b17b37c8-84a3-4d9d-9934-5138bc3bea5f", hi: "ट्रेन", romanization: "train", vi: "tàu", en: "train", pos: "n.f." },
+      { cell_id: "8e039077-74ab-41fb-99ce-22b7a2179045", hi: "स्टेशन", romanization: "station", vi: "nhà ga", en: "station", pos: "n.m." },
+      { cell_id: "18af92b3-8500-4df4-a33d-ca3ce1033bc7", hi: "कहाँ", romanization: "kahaan", vi: "ở đâu", en: "where", pos: "question" },
+      { cell_id: "156c17ab-1847-4fd6-8b80-75e48d118b60", hi: "कब", romanization: "kab", vi: "khi nào", en: "when", pos: "question" },
     ],
     sentences: [
       {
@@ -351,11 +355,11 @@ export const lessons: HindiLesson[] = [
     intro_en:
       "Practice asking for appointments, dates/times, and saying whether you are free or busy in polite Hindi.",
     vocabulary: [
-      { hi: "मुलाकात", romanization: "mulaaqaat", vi: "cuộc hẹn/gặp", en: "meeting/appointment", pos: "n.f." },
-      { hi: "समय", romanization: "samay", vi: "thời gian", en: "time", pos: "n.m." },
-      { hi: "आज", romanization: "aaj", vi: "hôm nay", en: "today", pos: "adv." },
-      { hi: "कल", romanization: "kal", vi: "ngày mai / hôm qua", en: "tomorrow / yesterday", pos: "adv." },
-      { hi: "व्यस्त", romanization: "vyast", vi: "bận", en: "busy", pos: "adj." },
+      { cell_id: "1401ef19-5a67-41c5-b64b-7830a032af7c", hi: "मुलाकात", romanization: "mulaaqaat", vi: "cuộc hẹn/gặp", en: "meeting/appointment", pos: "n.f." },
+      { cell_id: "1aba42a3-e240-4d73-9d16-403558407627", hi: "समय", romanization: "samay", vi: "thời gian", en: "time", pos: "n.m." },
+      { cell_id: "b20537e0-6395-4947-8dc3-250487e59af7", hi: "आज", romanization: "aaj", vi: "hôm nay", en: "today", pos: "adv." },
+      { cell_id: "6db8c3e2-58dd-448d-a318-7f7881175fd3", hi: "कल", romanization: "kal", vi: "ngày mai / hôm qua", en: "tomorrow / yesterday", pos: "adv." },
+      { cell_id: "5573784b-0091-4a68-8511-3af01e467e9d", hi: "व्यस्त", romanization: "vyast", vi: "bận", en: "busy", pos: "adj." },
     ],
     sentences: [
       {
@@ -389,6 +393,7 @@ export const lessons: HindiLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "230ab70e-42c2-4cdc-b938-8c8f0a5f3119",
         speaker: "A",
         hi: "क्या कल सुबह ठीक है?",
         romanization: "kya kal subah theek hai?",
@@ -396,6 +401,7 @@ export const lessons: HindiLesson[] = [
         en: "Is tomorrow morning okay?",
       },
       {
+        cell_id: "81d26755-afef-4da1-9868-e2d94c161cc8",
         speaker: "B",
         hi: "हाँ, दस बजे ठीक है।",
         romanization: "haan, das baje theek hai.",
@@ -439,11 +445,11 @@ export const lessons: HindiLesson[] = [
     intro_en:
       "This lesson practices address, simple documents, and asking where an office/service is.",
     vocabulary: [
-      { hi: "पता", romanization: "pata", vi: "địa chỉ", en: "address", pos: "n.m." },
-      { hi: "घर", romanization: "ghar", vi: "nhà", en: "home/house", pos: "n.m." },
-      { hi: "कमरा", romanization: "kamra", vi: "phòng", en: "room", pos: "n.m." },
-      { hi: "दफ़्तर", romanization: "daftar", vi: "văn phòng", en: "office", pos: "n.m." },
-      { hi: "दस्तावेज़", romanization: "dastaavez", vi: "giấy tờ/tài liệu", en: "document", pos: "n.m." },
+      { cell_id: "ba0eb940-7c43-4102-8333-8b7f09b63e04", hi: "पता", romanization: "pata", vi: "địa chỉ", en: "address", pos: "n.m." },
+      { cell_id: "affb22d0-7f00-42c4-9fbe-d59df57c8196", hi: "घर", romanization: "ghar", vi: "nhà", en: "home/house", pos: "n.m." },
+      { cell_id: "afc0bfa0-5f45-462e-a701-1b79b62340eb", hi: "कमरा", romanization: "kamra", vi: "phòng", en: "room", pos: "n.m." },
+      { cell_id: "3f7b2d09-7554-46a5-9ddd-36e6a9fa30cd", hi: "दफ़्तर", romanization: "daftar", vi: "văn phòng", en: "office", pos: "n.m." },
+      { cell_id: "7378b94f-9ea7-4b66-b74f-e744bd9c497f", hi: "दस्तावेज़", romanization: "dastaavez", vi: "giấy tờ/tài liệu", en: "document", pos: "n.m." },
     ],
     sentences: [
       {
@@ -520,11 +526,11 @@ export const lessons: HindiLesson[] = [
     intro_en:
       "Practice left/right/straight, near/far, and asking where a place is.",
     vocabulary: [
-      { hi: "बाएँ", romanization: "baayen", vi: "bên trái", en: "left", pos: "adv." },
-      { hi: "दाएँ", romanization: "daayen", vi: "bên phải", en: "right", pos: "adv." },
-      { hi: "सीधे", romanization: "seedhe", vi: "đi thẳng", en: "straight", pos: "adv." },
-      { hi: "पास", romanization: "paas", vi: "gần / ở chỗ", en: "near / at", pos: "postposition" },
-      { hi: "दूर", romanization: "door", vi: "xa", en: "far", pos: "adj." },
+      { cell_id: "55ef8105-dc67-4307-9187-e858dc7a2045", hi: "बाएँ", romanization: "baayen", vi: "bên trái", en: "left", pos: "adv." },
+      { cell_id: "7bc63332-0320-4565-83f7-41a0d2e69040", hi: "दाएँ", romanization: "daayen", vi: "bên phải", en: "right", pos: "adv." },
+      { cell_id: "dc2ed16b-aea8-455e-8c8c-b5658627ec02", hi: "सीधे", romanization: "seedhe", vi: "đi thẳng", en: "straight", pos: "adv." },
+      { cell_id: "24f3ccab-f133-4716-aa54-37451d763174", hi: "पास", romanization: "paas", vi: "gần / ở chỗ", en: "near / at", pos: "postposition" },
+      { cell_id: "89a5e557-33d2-4c4a-9509-058b4af803e9", hi: "दूर", romanization: "door", vi: "xa", en: "far", pos: "adj." },
     ],
     sentences: [
       {
@@ -564,6 +570,7 @@ export const lessons: HindiLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "dc0ab29d-ec1e-4900-acba-b851a35b8b68",
         speaker: "A",
         hi: "बैंक कहाँ है?",
         romanization: "bank kahaan hai?",
@@ -571,6 +578,7 @@ export const lessons: HindiLesson[] = [
         en: "Where is the bank?",
       },
       {
+        cell_id: "c1458ec6-e001-4917-9fae-83285374f8d2",
         speaker: "B",
         hi: "सीधे जाइए, फिर बाएँ मुड़िए।",
         romanization: "seedhe jaiye, phir baayen mudiye.",

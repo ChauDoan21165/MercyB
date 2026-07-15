@@ -17,6 +17,7 @@ type IndonesianLessonSentence = {
 };
 
 type IndonesianVocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -26,6 +27,7 @@ type IndonesianVocabEntry = {
 };
 
 type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -184,6 +186,7 @@ export const lessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: learn three fixed phrases: `buang sampah` (throw away trash), `pilah sampah` (sort trash), and `daur ulang` (recycle). For polite reminders, use `tolong jangan ...`; when the trash is being handled, use passives like `dipilah`, `dicampur`, `didaur ulang`.",
     vocabulary: [
       {
+        cell_id: "8ca83847-caf4-4306-9c98-c3e62d4818df",
         word: "sampah",
         en: "trash / garbage",
         vi: "rác",
@@ -192,6 +195,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "SAM-pah",
       },
       {
+        cell_id: "2e3eb835-a1e7-47be-9c16-9606db3c1b74",
         word: "daur ulang",
         en: "recycling / recycle",
         vi: "tái chế",
@@ -200,6 +204,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "DA-oor OO-lang",
       },
       {
+        cell_id: "d8b547cf-3a5e-47c0-ad08-af356623b8fa",
         word: "organik",
         en: "organic",
         vi: "hữu cơ",
@@ -208,6 +213,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "or-GA-nik",
       },
       {
+        cell_id: "db044c4b-a1eb-4612-9267-b7a5c60d1c58",
         word: "anorganik",
         en: "inorganic",
         vi: "vô cơ",
@@ -216,6 +222,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "an-or-GA-nik",
       },
       {
+        cell_id: "7f3f64e1-5709-4d6f-9521-9e87c34e196c",
         word: "petugas kebersihan",
         en: "sanitation worker / cleaner",
         vi: "nhân viên vệ sinh",
@@ -224,6 +231,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "pe-TOO-gas ke-ber-SEE-han",
       },
       {
+        cell_id: "ba79ca04-43fc-45ee-9b1b-809c4c5515b2",
         word: "iuran",
         en: "dues / shared fee",
         vi: "phí đóng góp",
@@ -232,6 +240,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "EE-oo-ran",
       },
       {
+        cell_id: "4f065cf2-27a6-459c-a122-4796595bc229",
         word: "gotong royong",
         en: "mutual aid / communal work",
         vi: "cùng chung tay / lao động cộng đồng",
@@ -240,6 +249,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "GO-tong RO-yong",
       },
       {
+        cell_id: "34e4475e-7771-402e-b28b-fc6d14dd8f5f",
         word: "lingkungan",
         en: "environment / neighborhood",
         vi: "môi trường / khu xóm",
@@ -248,6 +258,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "ling-KOONG-an",
       },
       {
+        cell_id: "1756d257-122e-42ee-9b8f-3ab81305dac4",
         word: "selokan",
         en: "drainage ditch",
         vi: "cống rãnh",
@@ -258,24 +269,28 @@ export const lessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "6ca4b7cc-efcf-4168-b596-76601661d092",
         speaker: "Tetangga",
         text: "Permisi, sampah organik dibuang di mana?",
         vi: "Xin hỏi, rác hữu cơ bỏ ở đâu ạ?",
         en: "Excuse me, where should organic trash be thrown away?",
       },
       {
+        cell_id: "aed477f4-0483-4057-ae90-bf21c1fa092f",
         speaker: "Pak RT",
         text: "Yang organik di tong hijau, yang anorganik di tong kuning.",
         vi: "Rác hữu cơ vào thùng xanh lá, rác vô cơ vào thùng vàng.",
         en: "Organic goes in the green bin, inorganic in the yellow bin.",
       },
       {
+        cell_id: "59502bfb-6454-45f8-95c3-6bc728c30dd4",
         speaker: "Tetangga",
         text: "Berapa iuran sampah per bulan, Pak?",
         vi: "Phí rác mỗi tháng là bao nhiêu, chú?",
         en: "How much is the monthly trash fee, sir?",
       },
       {
+        cell_id: "b87a670c-b9ac-46fe-a1d9-79ac46935b71",
         speaker: "Pak RT",
         text: "Dua puluh ribu. Hari Minggu juga ada gotong royong bersih-bersih selokan.",
         vi: "Hai mươi nghìn. Chủ nhật cũng có buổi cùng dọn cống rãnh.",

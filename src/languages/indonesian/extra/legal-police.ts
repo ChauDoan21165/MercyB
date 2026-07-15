@@ -33,6 +33,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   /** Indonesian word/phrase. */
   word: string;
   /** English meaning. */
@@ -48,6 +49,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   /** Indonesian line. */
   text: string;
@@ -250,6 +252,7 @@ export const lessons: IndonesianLesson[] = [
     vocabulary: [
       // People & places
       {
+        cell_id: "f9e8d23a-2155-498d-b1b4-1d96283fc106",
         word: "polisi",
         en: "police / police officer",
         vi: "cảnh sát",
@@ -258,6 +261,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "po-LEE-si — also used for an individual officer; politely `Pak Polisi`",
       },
       {
+        cell_id: "f86dc126-79d0-4218-aa1a-21bc8c12dcc5",
         word: "kantor polisi",
         en: "police station",
         vi: "đồn cảnh sát",
@@ -266,6 +270,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "KAN-tor po-LEE-si — tiers: `Polsek` < `Polres` < `Polda`",
       },
       {
+        cell_id: "93478fe9-7add-4522-8f14-615decb6ba87",
         word: "pengacara",
         en: "lawyer / attorney",
         vi: "luật sư",
@@ -274,6 +279,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "pe-nga-CHA-ra — peN- + `acara`; also `advokat`",
       },
       {
+        cell_id: "f65b609f-6b5e-4e0f-b0e4-002210bbe9ac",
         word: "saksi",
         en: "witness",
         vi: "nhân chứng",
@@ -283,6 +289,7 @@ export const lessons: IndonesianLesson[] = [
       },
       // Reports & documents
       {
+        cell_id: "5d0bb1d6-9b59-4e80-bf75-f6ecb1a9c58c",
         word: "laporan",
         en: "report (the document/act as a noun)",
         vi: "đơn trình báo / báo cáo",
@@ -291,6 +298,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "la-PO-ran — the noun (-an); `Laporan Polisi` abbreviated `LP`",
       },
       {
+        cell_id: "d40af86e-69bf-4673-a687-174b8b4b280a",
         word: "melaporkan",
         en: "to report (something)",
         vi: "trình báo (việc gì)",
@@ -299,6 +307,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "me-la-POR-kan — the verb (meN- + `lapor` + -kan); don't swap in `laporan`",
       },
       {
+        cell_id: "cb34e2b3-c075-465e-a391-e4200c4bfa9f",
         word: "SIM",
         en: "driver's licence",
         vi: "bằng lái xe",
@@ -307,6 +316,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "read as 'sim' — Surat Izin Mengemudi; `SIM A` car, `SIM C` motorbike",
       },
       {
+        cell_id: "9c18f39f-cc7d-4d64-8869-316220b6b88f",
         word: "STNK",
         en: "vehicle registration certificate",
         vi: "giấy đăng ký xe",
@@ -315,6 +325,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "es-te-en-KA — spell each letter; mandatory to carry while driving",
       },
       {
+        cell_id: "5beea100-db72-4ba4-adc7-f165a5f65116",
         word: "KTP",
         en: "national ID card",
         vi: "căn cước công dân",
@@ -324,6 +335,7 @@ export const lessons: IndonesianLesson[] = [
       },
       // The offence / penalty
       {
+        cell_id: "9a86e22a-b8dc-4fac-81f8-ba2da08a305c",
         word: "tilang",
         en: "traffic ticket / fine",
         vi: "phạt giao thông",
@@ -332,6 +344,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "TI-lang — `kena tilang`/`ditilang` = to get fined; `surat tilang` = the ticket",
       },
       {
+        cell_id: "7780062b-6784-407f-be84-9022137f1371",
         word: "denda",
         en: "fine / penalty (the money)",
         vi: "tiền phạt",
@@ -340,6 +353,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "DEN-da — the amount; pay via bank/`pengadilan` (court), not by hand",
       },
       {
+        cell_id: "9e681837-f7a8-4cd6-9678-6477d016ecd0",
         word: "pelanggaran",
         en: "violation / offence",
         vi: "vi phạm",
@@ -348,6 +362,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "pe-lang-GA-ran — peN-…-an from `langgar`; `melanggar` = to violate (verb)",
       },
       {
+        cell_id: "f64b6b64-ba8f-45ed-ba95-eb7db83e9b03",
         word: "pencurian",
         en: "theft",
         vi: "vụ trộm cắp",
@@ -356,6 +371,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "pen-CHU-ri-an — peN-…-an from `curi`; `dicuri` = stolen; `pencuri` = thief",
       },
       {
+        cell_id: "e79de550-77bd-4366-bc8d-8afbbf6405c7",
         word: "ditahan",
         en: "to be detained / held",
         vi: "bị tạm giữ / tạm giam",
@@ -365,6 +381,7 @@ export const lessons: IndonesianLesson[] = [
       },
       // Rights & procedure
       {
+        cell_id: "08f0c3ac-d052-45b7-8bae-d6e2e08264e8",
         word: "hak",
         en: "right (legal)",
         vi: "quyền",
@@ -373,6 +390,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "hak — `hak saya` = my right; `hak asasi` = human rights",
       },
       {
+        cell_id: "260a3284-47c9-4c81-88d9-af079cb5af6e",
         word: "prosedur resmi",
         en: "official procedure",
         vi: "thủ tục chính thức",
@@ -381,6 +399,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "pro-se-DUR re-SMI — `ikut prosedur resmi` = follow the official procedure (avoids bribes)",
       },
       {
+        cell_id: "5aec97e7-8fcf-42a8-9a21-f260d753eb97",
         word: "pungli",
         en: "illegal levy / petty bribe",
         vi: "tiêu cực / vòi tiền (bất hợp pháp)",
@@ -389,6 +408,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "PUNG-li — short for `pungutan liar`; never pay it — follow `prosedur resmi`",
       },
       {
+        cell_id: "111957dd-b51f-4205-bf02-90658ea0b34a",
         word: "kedutaan",
         en: "embassy",
         vi: "đại sứ quán",
@@ -400,30 +420,35 @@ export const lessons: IndonesianLesson[] = [
     dialogue: [
       // Dialogue A: filing a theft report at the station
       {
+        cell_id: "009400d4-955d-4f86-aa76-4deff7f0f63f",
         speaker: "Petugas",
         text: "Selamat siang. Ada yang bisa saya bantu?",
         vi: "Chào buổi trưa. Tôi có thể giúp gì ạ?",
         en: "Good afternoon. How can I help you?",
       },
       {
+        cell_id: "d3906948-605b-42b8-956c-3ef6736fc773",
         speaker: "Pelapor",
         text: "Selamat siang, Pak. Saya ingin membuat laporan kehilangan. Dompet saya dicuri di pasar tadi pagi.",
         vi: "Chào buổi trưa, thưa anh. Tôi muốn làm đơn trình báo mất đồ. Ví của tôi bị trộm ở chợ sáng nay.",
         en: "Good afternoon, sir. I'd like to file a loss report. My wallet was stolen at the market this morning.",
       },
       {
+        cell_id: "919d6a95-4678-4c4e-ab7b-4864c696280e",
         speaker: "Petugas",
         text: "Baik. Ada saksi? Apa saja yang hilang di dalam dompet?",
         vi: "Được. Có nhân chứng không? Trong ví mất những gì?",
         en: "All right. Any witnesses? What was in the wallet?",
       },
       {
+        cell_id: "6528044c-3f9f-4670-ad1f-532ee3672d05",
         speaker: "Pelapor",
         text: "Tidak ada saksi. Ada KTP, uang, dan kartu ATM. Saya butuh surat laporan resmi untuk bank.",
         vi: "Không có nhân chứng. Có CCCD, tiền và thẻ ATM. Tôi cần giấy trình báo chính thức để gửi ngân hàng.",
         en: "No witnesses. There were my ID, cash, and an ATM card. I need an official report letter for the bank.",
       },
       {
+        cell_id: "f5bf051e-7a69-4e53-b374-96ddbea91daa",
         speaker: "Petugas",
         text: "Akan saya buatkan Laporan Polisi. Tolong tunjukkan paspor Anda dulu.",
         vi: "Tôi sẽ lập Biên bản trình báo cho anh. Anh cho xem hộ chiếu trước nhé.",
@@ -431,30 +456,35 @@ export const lessons: IndonesianLesson[] = [
       },
       // Dialogue B: a traffic stop handled by the book
       {
+        cell_id: "b9fb17dc-f205-4b65-ba90-1da04062bcb2",
         speaker: "Polisi",
         text: "Selamat sore. Tolong pinggirkan motornya. SIM dan STNK, ya.",
         vi: "Chào buổi chiều. Vui lòng tấp xe vào lề. Cho xem bằng lái và đăng ký xe.",
         en: "Good evening. Please pull the bike over. Licence and registration, please.",
       },
       {
+        cell_id: "8b488c73-c384-49fa-885d-a5ce66b793e9",
         speaker: "Pengendara",
         text: "Selamat sore, Pak. Ini SIM dan STNK saya. Saya kena tilang karena apa, ya, Pak?",
         vi: "Chào buổi chiều, thưa anh. Đây là bằng lái và đăng ký xe. Tôi bị phạt vì lỗi gì vậy anh?",
         en: "Good evening, sir. Here are my licence and registration. What am I being ticketed for, sir?",
       },
       {
+        cell_id: "0a565045-1688-42bc-b7b5-93dfb0929386",
         speaker: "Polisi",
         text: "Tadi Anda menerobos lampu merah. Itu pelanggaran.",
         vi: "Vừa nãy anh vượt đèn đỏ. Đó là vi phạm.",
         en: "You just ran a red light. That's a violation.",
       },
       {
+        cell_id: "93bc335d-d6b8-4288-a59c-7c029322c6a9",
         speaker: "Pengendara",
         text: "Maaf, Pak. Kalau begitu, saya minta surat tilang yang resmi dan saya bayar dendanya lewat bank. Saya ikut prosedur resmi saja.",
         vi: "Tôi xin lỗi, thưa anh. Vậy thì tôi xin biên bản phạt chính thức và sẽ nộp phạt qua ngân hàng. Tôi xin theo đúng thủ tục thôi ạ.",
         en: "Sorry, sir. In that case, I'd like the official ticket and I'll pay the fine via the bank. I'll just follow the official procedure.",
       },
       {
+        cell_id: "25c203bd-5918-46f3-ba57-e2c26ef61acc",
         speaker: "Polisi",
         text: "Baik. Ini surat tilangnya. Sidang atau bayar di bank, terserah Anda.",
         vi: "Được. Đây là biên bản phạt. Ra tòa hay nộp ở ngân hàng, tùy anh.",

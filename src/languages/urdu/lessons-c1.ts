@@ -37,11 +37,11 @@ export const lessons: UrduLesson[] = [
       },
     ],
     vocabulary: [
-      { ur: "مقالہ", romanization: "maqala", vi: "bài nghiên cứu / bài luận", en: "paper/essay", pos: "noun" },
-      { ur: "مقصد", romanization: "maqsad", vi: "mục đích", en: "aim", pos: "noun" },
-      { ur: "مطالعہ", romanization: "mutala'a", vi: "nghiên cứu", en: "study", pos: "noun" },
-      { ur: "شواہد", romanization: "shawahid", vi: "bằng chứng", en: "evidence", pos: "noun" },
-      { ur: "طریقۂ کار", romanization: "tariqa-e-kar", vi: "phương pháp", en: "method", pos: "noun phrase" },
+      { cell_id: "8014e001-b047-413f-b4bf-2694b4d7a32b", ur: "مقالہ", romanization: "maqala", vi: "bài nghiên cứu / bài luận", en: "paper/essay", pos: "noun" },
+      { cell_id: "45595f7b-8404-4822-8acb-80e110607b2b", ur: "مقصد", romanization: "maqsad", vi: "mục đích", en: "aim", pos: "noun" },
+      { cell_id: "3b8f4523-0d65-4a21-8bd9-0738867eeaaa", ur: "مطالعہ", romanization: "mutala'a", vi: "nghiên cứu", en: "study", pos: "noun" },
+      { cell_id: "09c171cb-7aa0-4710-9500-33e49bc23d66", ur: "شواہد", romanization: "shawahid", vi: "bằng chứng", en: "evidence", pos: "noun" },
+      { cell_id: "93119cfc-85dc-4082-9551-94d2db3b2aa1", ur: "طریقۂ کار", romanization: "tariqa-e-kar", vi: "phương pháp", en: "method", pos: "noun phrase" },
     ],
     exercises: [
       {
@@ -96,10 +96,10 @@ export const lessons: UrduLesson[] = [
       },
     ],
     vocabulary: [
-      { ur: "رہنمائی", romanization: "rahnumai", vi: "sự hướng dẫn", en: "guidance", pos: "noun" },
-      { ur: "درکار", romanization: "darkar", vi: "cần thiết", en: "required/needed", pos: "adjective" },
-      { ur: "آگاہ فرمائیں", romanization: "aagah farmaen", vi: "xin thông báo", en: "please inform", pos: "formal verb phrase" },
-      { ur: "تعاون", romanization: "ta'awun", vi: "sự hỗ trợ/hợp tác", en: "cooperation", pos: "noun" },
+      { cell_id: "b7423651-dd71-443b-b964-4077a385c320", ur: "رہنمائی", romanization: "rahnumai", vi: "sự hướng dẫn", en: "guidance", pos: "noun" },
+      { cell_id: "cd240f6b-cf18-44da-a51d-11611cce03d1", ur: "درکار", romanization: "darkar", vi: "cần thiết", en: "required/needed", pos: "adjective" },
+      { cell_id: "2ba0ee0d-b8cf-4285-afd1-5bc30f6f0677", ur: "آگاہ فرمائیں", romanization: "aagah farmaen", vi: "xin thông báo", en: "please inform", pos: "formal verb phrase" },
+      { cell_id: "fd4e44bb-cbb8-42aa-b9fd-78ba7fa70816", ur: "تعاون", romanization: "ta'awun", vi: "sự hỗ trợ/hợp tác", en: "cooperation", pos: "noun" },
     ],
     exercises: [
       {
@@ -154,10 +154,10 @@ export const lessons: UrduLesson[] = [
       },
     ],
     vocabulary: [
-      { ur: "ذرائع کے مطابق", romanization: "zarai ke mutabiq", vi: "theo các nguồn", en: "according to sources", pos: "frame" },
-      { ur: "آزادانہ تصدیق", romanization: "azadana tasdeeq", vi: "xác minh độc lập", en: "independent verification", pos: "noun phrase" },
-      { ur: "نتیجہ اخذ کرنا", romanization: "natija akhaz karna", vi: "rút ra kết luận", en: "to draw a conclusion", pos: "verb phrase" },
-      { ur: "احتیاط", romanization: "ehtiyat", vi: "sự thận trọng", en: "caution", pos: "noun" },
+      { cell_id: "aab75b44-86a0-4d52-be1c-a5c33657665b", ur: "ذرائع کے مطابق", romanization: "zarai ke mutabiq", vi: "theo các nguồn", en: "according to sources", pos: "frame" },
+      { cell_id: "a7a68bdf-eb9d-48ab-bf29-7bda489064f2", ur: "آزادانہ تصدیق", romanization: "azadana tasdeeq", vi: "xác minh độc lập", en: "independent verification", pos: "noun phrase" },
+      { cell_id: "32cb24cf-3e26-4065-8314-e86ca357ba51", ur: "نتیجہ اخذ کرنا", romanization: "natija akhaz karna", vi: "rút ra kết luận", en: "to draw a conclusion", pos: "verb phrase" },
+      { cell_id: "8a181033-83f9-439d-9f62-67f8c8430337", ur: "احتیاط", romanization: "ehtiyat", vi: "sự thận trọng", en: "caution", pos: "noun" },
     ],
     exercises: [
       {
@@ -208,10 +208,10 @@ export const lessons: UrduLesson[] = [
       },
     ],
     vocabulary: [
-      { ur: "اہم نتائج", romanization: "aham nataij", vi: "kết quả chính", en: "key findings", pos: "noun phrase" },
-      { ur: "سفارش کرنا", romanization: "sifarish karna", vi: "khuyến nghị", en: "to recommend", pos: "verb" },
-      { ur: "فراہم کرنا", romanization: "faraham karna", vi: "cung cấp", en: "to provide", pos: "verb" },
-      { ur: "انتظار کا وقت", romanization: "intezar ka waqt", vi: "thời gian chờ", en: "waiting time", pos: "noun phrase" },
+      { cell_id: "69c4209e-60eb-4b57-ba8a-2b25749c0780", ur: "اہم نتائج", romanization: "aham nataij", vi: "kết quả chính", en: "key findings", pos: "noun phrase" },
+      { cell_id: "c028ffd0-a755-4fc5-a315-49d9856d3d89", ur: "سفارش کرنا", romanization: "sifarish karna", vi: "khuyến nghị", en: "to recommend", pos: "verb" },
+      { cell_id: "29f1728f-18b3-461e-a663-ad1fe3fcea47", ur: "فراہم کرنا", romanization: "faraham karna", vi: "cung cấp", en: "to provide", pos: "verb" },
+      { cell_id: "fff9eb41-6df6-4a07-941b-aeff703ea885", ur: "انتظار کا وقت", romanization: "intezar ka waqt", vi: "thời gian chờ", en: "waiting time", pos: "noun phrase" },
     ],
     exercises: [
       {

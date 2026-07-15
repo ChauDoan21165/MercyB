@@ -17,6 +17,7 @@ type LessonSentence = {
 };
 
 type VocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -26,6 +27,7 @@ type VocabEntry = {
 };
 
 type DialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -198,6 +200,7 @@ export const creativeWritingStoryLessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: Indonesian adjectives come after nouns in story-writing phrases: `cerita pendek`, `tokoh utama`, `kota kecil`, `akhir terbuka`. When summarizing a story, use frames: `Tokohnya...`, `Latarnya...`, `Konfliknya muncul ketika...`, `Akhir ceritanya...`.",
     vocabulary: [
       {
+        cell_id: "96bd3576-ceed-4816-8a34-e8df191efc55",
         word: "menulis cerita",
         en: "to write a story",
         vi: "viết truyện",
@@ -206,6 +209,7 @@ export const creativeWritingStoryLessons: IndonesianLesson[] = [
         pronunciation_en: "meh-NOO-lis che-REE-ta",
       },
       {
+        cell_id: "72f3febf-c380-4078-bc36-4064fa51341d",
         word: "tokoh utama",
         en: "main character",
         vi: "nhân vật chính",
@@ -214,6 +218,7 @@ export const creativeWritingStoryLessons: IndonesianLesson[] = [
         pronunciation_en: "TOH-koh oo-TA-ma",
       },
       {
+        cell_id: "172c86ae-15a3-47a5-89b6-ed65c116fd14",
         word: "alur cerita",
         en: "plot / story flow",
         vi: "cốt truyện / mạch truyện",
@@ -222,6 +227,7 @@ export const creativeWritingStoryLessons: IndonesianLesson[] = [
         pronunciation_en: "AH-loor che-REE-ta",
       },
       {
+        cell_id: "d690ec1b-29c7-402d-8687-441f6e43eaf5",
         word: "latar",
         en: "setting",
         vi: "bối cảnh",
@@ -230,6 +236,7 @@ export const creativeWritingStoryLessons: IndonesianLesson[] = [
         pronunciation_en: "LA-tar",
       },
       {
+        cell_id: "0c67d044-687b-4caf-a924-fa7b52292802",
         word: "dialog",
         en: "dialogue",
         vi: "lời thoại / đối thoại",
@@ -238,6 +245,7 @@ export const creativeWritingStoryLessons: IndonesianLesson[] = [
         pronunciation_en: "DEE-a-log",
       },
       {
+        cell_id: "080f7510-2c95-4123-a8b5-edba76f59728",
         word: "konflik",
         en: "conflict",
         vi: "xung đột",
@@ -246,6 +254,7 @@ export const creativeWritingStoryLessons: IndonesianLesson[] = [
         pronunciation_en: "KON-flik",
       },
       {
+        cell_id: "af3d1292-f7da-41db-8cf0-63ff2aa3faf7",
         word: "akhir cerita",
         en: "story ending",
         vi: "kết truyện",
@@ -254,6 +263,7 @@ export const creativeWritingStoryLessons: IndonesianLesson[] = [
         pronunciation_en: "AH-khir che-REE-ta",
       },
       {
+        cell_id: "e13a6a11-1078-48bb-8748-7f6ef338b917",
         word: "gaya bahasa",
         en: "language style / prose style",
         vi: "văn phong / phong cách ngôn ngữ",
@@ -264,24 +274,28 @@ export const creativeWritingStoryLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "bcf94018-7c8e-4e21-9f25-563a35f13113",
         speaker: "Guru",
         text: "Ceritamu menarik, tapi tokoh utamanya belum jelas.",
         vi: "Truyện của em thú vị, nhưng nhân vật chính chưa rõ.",
         en: "Your story is interesting, but the main character is not clear yet.",
       },
       {
+        cell_id: "b31c57c7-7efb-42d5-b957-e76fed73ae86",
         speaker: "Siswa",
         text: "Saya ingin tokohnya pendiam, tetapi berani di akhir cerita.",
         vi: "Em muốn nhân vật ít nói, nhưng dũng cảm ở cuối truyện.",
         en: "I want the character to be quiet, but brave at the end of the story.",
       },
       {
+        cell_id: "f379d42b-6889-4c83-b65c-6a7dc1181d80",
         speaker: "Guru",
         text: "Bagus. Sekarang perkuat konfliknya dan buat dialognya lebih alami.",
         vi: "Tốt. Bây giờ hãy làm xung đột mạnh hơn và làm lời thoại tự nhiên hơn.",
         en: "Good. Now strengthen the conflict and make the dialogue more natural.",
       },
       {
+        cell_id: "82246db5-28f7-416b-a474-6deb1817a85e",
         speaker: "Siswa",
         text: "Baik, saya akan revisi alur dan pembukaannya.",
         vi: "Vâng, em sẽ sửa mạch truyện và phần mở đầu.",

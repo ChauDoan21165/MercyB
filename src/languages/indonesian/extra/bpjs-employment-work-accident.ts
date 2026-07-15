@@ -21,6 +21,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   /** Indonesian word/phrase. */
   word: string;
   /** English meaning. */
@@ -36,6 +37,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   /** Indonesian line. */
   text: string;
@@ -155,17 +157,17 @@ export const bpjsEmploymentWorkAccidentLessons: IndonesianLesson[] = [
     tip_advice_en:
       "Survival set: `sudah terdaftar`, `kartu peserta`, `iuran dipotong dari gaji`, `cek status kepesertaan lewat HRD`. The big trap is `mendaftar` vs `mendaftarkan`: register yourself is `mendaftar`, register someone else is `mendaftarkan`.",
     vocabulary: [
-      { word: "BPJS Ketenagakerjaan", en: "employment social security", vi: "bảo hiểm lao động", pos: "noun phrase", pronunciation_vi: "be-pe-je-ES ke-te-na-ga-ker-JA-an", pronunciation_en: "be-pe-je-ES ke-te-na-ga-ker-JA-an" },
-      { word: "terdaftar", en: "registered", vi: "đã đăng ký", pos: "adjective/state", pronunciation_vi: "ter-DAF-tar", pronunciation_en: "ter-DAF-tar" },
-      { word: "kartu peserta", en: "participant/member card", vi: "thẻ người tham gia", pos: "noun phrase", pronunciation_vi: "KAR-tu pe-SER-ta", pronunciation_en: "KAR-too pe-SER-ta" },
-      { word: "iuran", en: "contribution/monthly fee", vi: "phí đóng góp", pos: "noun", pronunciation_vi: "i-U-ran", pronunciation_en: "ee-OO-ran" },
-      { word: "HRD", en: "human resources department", vi: "phòng nhân sự", pos: "noun", pronunciation_vi: "ha-er-DE", pronunciation_en: "ha-er-DE" },
-      { word: "kepesertaan", en: "membership status", vi: "tình trạng tham gia", pos: "noun", pronunciation_vi: "ke-pe-ser-TA-an", pronunciation_en: "ke-pe-ser-TA-an" },
+      { cell_id: "4456458a-ef91-457c-bbc2-7ac3ed50d157", word: "BPJS Ketenagakerjaan", en: "employment social security", vi: "bảo hiểm lao động", pos: "noun phrase", pronunciation_vi: "be-pe-je-ES ke-te-na-ga-ker-JA-an", pronunciation_en: "be-pe-je-ES ke-te-na-ga-ker-JA-an" },
+      { cell_id: "cf0a3a8e-2eb2-4a55-be4e-b2ff8b562a38", word: "terdaftar", en: "registered", vi: "đã đăng ký", pos: "adjective/state", pronunciation_vi: "ter-DAF-tar", pronunciation_en: "ter-DAF-tar" },
+      { cell_id: "9aa56110-f6ab-455d-a42d-b8bbc26e38cf", word: "kartu peserta", en: "participant/member card", vi: "thẻ người tham gia", pos: "noun phrase", pronunciation_vi: "KAR-tu pe-SER-ta", pronunciation_en: "KAR-too pe-SER-ta" },
+      { cell_id: "98306ba9-65c8-4929-a8e3-2bb45b7abb89", word: "iuran", en: "contribution/monthly fee", vi: "phí đóng góp", pos: "noun", pronunciation_vi: "i-U-ran", pronunciation_en: "ee-OO-ran" },
+      { cell_id: "24ec1c7c-b6dd-42ce-b989-eb693ae0eb20", word: "HRD", en: "human resources department", vi: "phòng nhân sự", pos: "noun", pronunciation_vi: "ha-er-DE", pronunciation_en: "ha-er-DE" },
+      { cell_id: "56b95538-8658-47a7-b5a1-a88027e42d20", word: "kepesertaan", en: "membership status", vi: "tình trạng tham gia", pos: "noun", pronunciation_vi: "ke-pe-ser-TA-an", pronunciation_en: "ke-pe-ser-TA-an" },
     ],
     dialogue: [
-      { speaker: "Karyawan", text: "Bu, apakah saya sudah terdaftar di BPJS Ketenagakerjaan?", vi: "Chị ơi, tôi đã được đăng ký vào BPJS lao động chưa?", en: "Ma'am, am I already registered with BPJS Ketenagakerjaan?" },
-      { speaker: "HRD", text: "Sudah. Iurannya dipotong dari gaji setiap bulan.", vi: "Rồi. Phí được trừ từ lương mỗi tháng.", en: "Yes. The contribution is deducted from your salary every month." },
-      { speaker: "Karyawan", text: "Bisa minta nomor kartu peserta BPJS saya?", vi: "Tôi xin số thẻ BPJS của tôi được không?", en: "Could I get my BPJS participant card number?" },
+      { cell_id: "5de1b1b8-9673-4f2b-861c-ad4bcb9dee14", speaker: "Karyawan", text: "Bu, apakah saya sudah terdaftar di BPJS Ketenagakerjaan?", vi: "Chị ơi, tôi đã được đăng ký vào BPJS lao động chưa?", en: "Ma'am, am I already registered with BPJS Ketenagakerjaan?" },
+      { cell_id: "755597bf-b92a-48da-a892-d9940592f645", speaker: "HRD", text: "Sudah. Iurannya dipotong dari gaji setiap bulan.", vi: "Rồi. Phí được trừ từ lương mỗi tháng.", en: "Yes. The contribution is deducted from your salary every month." },
+      { cell_id: "c2ad7403-fa9d-452f-a000-6009c36c2518", speaker: "Karyawan", text: "Bisa minta nomor kartu peserta BPJS saya?", vi: "Tôi xin số thẻ BPJS của tôi được không?", en: "Could I get my BPJS participant card number?" },
     ],
     exercises: [
       {
@@ -277,17 +279,17 @@ export const bpjsEmploymentWorkAccidentLessons: IndonesianLesson[] = [
     tip_advice_en:
       "Distinguish `JHT` and `JKK`: JHT = old age, JKK = work accident. When reporting an incident, use neutral, clear wording: `Saya mengalami kecelakaan kerja...`, without long emotional detail.",
     vocabulary: [
-      { word: "JHT", en: "old-age security", vi: "bảo đảm tuổi già/hưu trí", pos: "noun", pronunciation_vi: "ji-ha-TE", pronunciation_en: "ji-ha-TE" },
-      { word: "JKK", en: "work accident insurance", vi: "bảo hiểm tai nạn lao động", pos: "noun", pronunciation_vi: "ji-ka-KA", pronunciation_en: "ji-ka-KA" },
-      { word: "jaminan hari tua", en: "old-age security", vi: "bảo đảm tuổi già", pos: "noun phrase", pronunciation_vi: "ja-MI-nan HA-ri TU-a", pronunciation_en: "ja-MEE-nan HA-ree TOO-a" },
-      { word: "kecelakaan kerja", en: "workplace accident", vi: "tai nạn lao động", pos: "noun phrase", pronunciation_vi: "ke-che-la-KA-an KER-ja", pronunciation_en: "ke-che-la-KA-an KER-ja" },
-      { word: "menanggung", en: "cover/bear responsibility", vi: "chi trả/bảo đảm", pos: "verb", pronunciation_vi: "me-NANG-gung", pronunciation_en: "me-NANG-goong" },
-      { word: "secepatnya", en: "as soon as possible", vi: "càng sớm càng tốt", pos: "adverb", pronunciation_vi: "se-CE-pat-nya", pronunciation_en: "se-CHE-pat-nya" },
+      { cell_id: "ffd64338-1fc4-4811-bebd-52e956460351", word: "JHT", en: "old-age security", vi: "bảo đảm tuổi già/hưu trí", pos: "noun", pronunciation_vi: "ji-ha-TE", pronunciation_en: "ji-ha-TE" },
+      { cell_id: "c6091ef9-6611-4302-aaf1-24d391690470", word: "JKK", en: "work accident insurance", vi: "bảo hiểm tai nạn lao động", pos: "noun", pronunciation_vi: "ji-ka-KA", pronunciation_en: "ji-ka-KA" },
+      { cell_id: "cd2b2e51-38c2-47bc-ae64-a443cde621ca", word: "jaminan hari tua", en: "old-age security", vi: "bảo đảm tuổi già", pos: "noun phrase", pronunciation_vi: "ja-MI-nan HA-ri TU-a", pronunciation_en: "ja-MEE-nan HA-ree TOO-a" },
+      { cell_id: "87a05d98-bbb8-441e-8bbb-17a6869bcc97", word: "kecelakaan kerja", en: "workplace accident", vi: "tai nạn lao động", pos: "noun phrase", pronunciation_vi: "ke-che-la-KA-an KER-ja", pronunciation_en: "ke-che-la-KA-an KER-ja" },
+      { cell_id: "64e70d6b-6a66-4dc7-8df7-425536aa09f6", word: "menanggung", en: "cover/bear responsibility", vi: "chi trả/bảo đảm", pos: "verb", pronunciation_vi: "me-NANG-gung", pronunciation_en: "me-NANG-goong" },
+      { cell_id: "a4a95f8c-11ef-4f62-bbbb-55201c1e6883", word: "secepatnya", en: "as soon as possible", vi: "càng sớm càng tốt", pos: "adverb", pronunciation_vi: "se-CE-pat-nya", pronunciation_en: "se-CHE-pat-nya" },
     ],
     dialogue: [
-      { speaker: "Karyawan", text: "Pak, saya mengalami kecelakaan kerja di pabrik.", vi: "Anh ơi, tôi gặp tai nạn lao động ở nhà máy.", en: "Sir, I had a workplace accident at the factory." },
-      { speaker: "HRD", text: "Tolong lapor secepatnya dan kirim surat dokter.", vi: "Làm ơn báo càng sớm càng tốt và gửi giấy bác sĩ.", en: "Please report as soon as possible and send the doctor's letter." },
-      { speaker: "Karyawan", text: "Apakah ini termasuk klaim JKK?", vi: "Việc này có thuộc klaim JKK không?", en: "Does this count as a JKK claim?" },
+      { cell_id: "c315371f-1b46-4e1b-af7e-556e8e684b0f", speaker: "Karyawan", text: "Pak, saya mengalami kecelakaan kerja di pabrik.", vi: "Anh ơi, tôi gặp tai nạn lao động ở nhà máy.", en: "Sir, I had a workplace accident at the factory." },
+      { cell_id: "62fb6c8a-6916-4676-9da5-7a1fbb6ea9ad", speaker: "HRD", text: "Tolong lapor secepatnya dan kirim surat dokter.", vi: "Làm ơn báo càng sớm càng tốt và gửi giấy bác sĩ.", en: "Please report as soon as possible and send the doctor's letter." },
+      { cell_id: "8e6c4e39-75bd-4a30-b836-aa548c2e39a6", speaker: "Karyawan", text: "Apakah ini termasuk klaim JKK?", vi: "Việc này có thuộc klaim JKK không?", en: "Does this count as a JKK claim?" },
     ],
     exercises: [
       {
@@ -400,17 +402,17 @@ export const bpjsEmploymentWorkAccidentLessons: IndonesianLesson[] = [
     tip_advice_en:
       "A good claim message is: event + documents + request. Example: `Saya mengalami kecelakaan kerja. Saya sudah punya surat keterangan dari dokter. Mohon bantu cek proses klaim JKK saya.`",
     vocabulary: [
-      { word: "mengajukan klaim", en: "submit/file a claim", vi: "nộp yêu cầu klaim", pos: "verb phrase", pronunciation_vi: "me-nga-JU-kan klaim", pronunciation_en: "me-nga-JOO-kan klaim" },
-      { word: "dokumen", en: "documents", vi: "giấy tờ", pos: "noun", pronunciation_vi: "do-ku-MEN", pronunciation_en: "do-koo-MEN" },
-      { word: "surat keterangan", en: "certificate/statement letter", vi: "giấy xác nhận", pos: "noun phrase", pronunciation_vi: "SU-rat ke-te-RANG-an", pronunciation_en: "SOO-rat ke-te-RANG-an" },
-      { word: "proses klaim", en: "claim process", vi: "quá trình xử lý klaim", pos: "noun phrase", pronunciation_vi: "PRO-ses klaim", pronunciation_en: "PRO-ses klaim" },
-      { word: "status klaim", en: "claim status", vi: "trạng thái klaim", pos: "noun phrase", pronunciation_vi: "STA-tus klaim", pronunciation_en: "STA-tus klaim" },
-      { word: "mohon bantu", en: "please help", vi: "vui lòng giúp", pos: "polite phrase", pronunciation_vi: "MO-hon BAN-tu", pronunciation_en: "MO-hon BAN-too" },
+      { cell_id: "f15666c3-bda7-4c2b-a1df-c50265f91e54", word: "mengajukan klaim", en: "submit/file a claim", vi: "nộp yêu cầu klaim", pos: "verb phrase", pronunciation_vi: "me-nga-JU-kan klaim", pronunciation_en: "me-nga-JOO-kan klaim" },
+      { cell_id: "bd627800-b5e3-4c9b-9eee-07a9c998f520", word: "dokumen", en: "documents", vi: "giấy tờ", pos: "noun", pronunciation_vi: "do-ku-MEN", pronunciation_en: "do-koo-MEN" },
+      { cell_id: "54e9ff55-461e-4690-ad2b-de81400f60a1", word: "surat keterangan", en: "certificate/statement letter", vi: "giấy xác nhận", pos: "noun phrase", pronunciation_vi: "SU-rat ke-te-RANG-an", pronunciation_en: "SOO-rat ke-te-RANG-an" },
+      { cell_id: "ba9ecfcb-ddd7-4dd7-b719-a88cdf082e53", word: "proses klaim", en: "claim process", vi: "quá trình xử lý klaim", pos: "noun phrase", pronunciation_vi: "PRO-ses klaim", pronunciation_en: "PRO-ses klaim" },
+      { cell_id: "ded212c8-15e3-436e-a4f1-8b093d376591", word: "status klaim", en: "claim status", vi: "trạng thái klaim", pos: "noun phrase", pronunciation_vi: "STA-tus klaim", pronunciation_en: "STA-tus klaim" },
+      { cell_id: "161b8c7a-11a8-4fe6-8c45-ddde5ea3e13e", word: "mohon bantu", en: "please help", vi: "vui lòng giúp", pos: "polite phrase", pronunciation_vi: "MO-hon BAN-tu", pronunciation_en: "MO-hon BAN-too" },
     ],
     dialogue: [
-      { speaker: "Karyawan", text: "Saya mau mengajukan klaim BPJS Ketenagakerjaan.", vi: "Tôi muốn nộp klaim BPJS lao động.", en: "I want to submit a BPJS Ketenagakerjaan claim." },
-      { speaker: "Petugas", text: "Dokumen apa saja yang sudah Bapak siapkan?", vi: "Anh đã chuẩn bị những giấy tờ gì rồi?", en: "What documents have you prepared?" },
-      { speaker: "Karyawan", text: "Saya sudah punya surat keterangan dari dokter. Mohon bantu cek status klaim saya.", vi: "Tôi đã có giấy xác nhận từ bác sĩ. Vui lòng giúp kiểm tra trạng thái klaim của tôi.", en: "I already have a doctor's certificate. Please help check my claim status." },
+      { cell_id: "cf1497a6-27e5-4676-aa84-99fa82644c98", speaker: "Karyawan", text: "Saya mau mengajukan klaim BPJS Ketenagakerjaan.", vi: "Tôi muốn nộp klaim BPJS lao động.", en: "I want to submit a BPJS Ketenagakerjaan claim." },
+      { cell_id: "1ba41d5f-4ec1-4682-a82a-d5c1030998a8", speaker: "Petugas", text: "Dokumen apa saja yang sudah Bapak siapkan?", vi: "Anh đã chuẩn bị những giấy tờ gì rồi?", en: "What documents have you prepared?" },
+      { cell_id: "e1f3a86c-0adf-4fc8-984a-5d4949828b4d", speaker: "Karyawan", text: "Saya sudah punya surat keterangan dari dokter. Mohon bantu cek status klaim saya.", vi: "Tôi đã có giấy xác nhận từ bác sĩ. Vui lòng giúp kiểm tra trạng thái klaim của tôi.", en: "I already have a doctor's certificate. Please help check my claim status." },
     ],
     exercises: [
       {

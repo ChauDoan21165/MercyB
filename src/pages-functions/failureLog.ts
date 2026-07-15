@@ -55,6 +55,7 @@ export function logFunctionFailure({
     error_signature: errorClass,
     message: safeMessage(errorClass, status, detail),
     request_id: requestId,
+    user_id: safeUserId(detail?.userId),
     detail: safeDetail(mode, detail),
   });
   return requestId;
@@ -146,11 +147,28 @@ function safeDetail(
   detail: FailureLogContext["detail"],
 ): Record<string, string | number | boolean | null> {
   const safe: Record<string, string | number | boolean | null> = { mode };
-  for (const key of ["provider", "providerStatus", "errorName", "timeout", "seed"] as const) {
+  for (const key of [
+    "provider",
+    "providerStatus",
+    "upstreamStatus",
+    "model",
+    "subcall",
+    "errorName",
+    "errorMessage",
+    "upstreamBody",
+    "failureStage",
+    "trustFloorReason",
+    "timeout",
+    "seed",
+  ] as const) {
     const value = detail?.[key];
     if (typeof value === "string" || typeof value === "number" || typeof value === "boolean" || value === null) {
       safe[key] = value;
     }
   }
   return safe;
+}
+
+function safeUserId(value: unknown): string | null {
+  return typeof value === "string" && /^[0-9a-f-]{36}$/i.test(value) ? value : null;
 }

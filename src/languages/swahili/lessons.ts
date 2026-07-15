@@ -104,6 +104,7 @@ export type SwahiliSentenceInput = {
 };
 
 export type SwahiliVocabInput = {
+  cell_id?: string;
   /** Swahili word (B1 wave uses `sw`). */
   sw?: string;
   /** Swahili word (A1/B2/C2 waves use `word`). */
@@ -118,6 +119,7 @@ export type SwahiliVocabInput = {
 };
 
 export type SwahiliDialogueInput = {
+  cell_id?: string;
   speaker: string;
   /** Dialogue text (B1 wave uses `sw`). */
   sw?: string;

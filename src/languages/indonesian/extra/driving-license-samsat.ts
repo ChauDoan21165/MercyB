@@ -21,6 +21,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   /** Indonesian word/phrase. */
   word: string;
   /** English meaning. */
@@ -36,6 +37,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   /** Indonesian line. */
   text: string;
@@ -155,17 +157,17 @@ export const drivingLicenseSamsatLessons: IndonesianLesson[] = [
     tip_advice_en:
       "Survival set: `Saya mau membuat SIM C`, `ujian teori dan ujian praktik`, `biaya resmi`, `masa berlaku`. The big trap is `motor`: in Indonesian it means motorbike, not just engine.",
     vocabulary: [
-      { word: "SIM", en: "driving license", vi: "bằng lái xe", pos: "noun", pronunciation_vi: "sim", pronunciation_en: "sim" },
-      { word: "SIM C", en: "motorbike license", vi: "bằng lái xe máy", pos: "noun", pronunciation_vi: "sim CE", pronunciation_en: "sim CHE" },
-      { word: "ujian praktik", en: "practical test", vi: "thi thực hành", pos: "noun phrase", pronunciation_vi: "u-JI-an PRAK-tik", pronunciation_en: "oo-JEE-an PRAK-tik" },
-      { word: "perpanjang SIM", en: "renew a license", vi: "gia hạn bằng lái", pos: "verb phrase", pronunciation_vi: "per-PAN-jang SIM", pronunciation_en: "per-PAN-jang SIM" },
-      { word: "biaya resmi", en: "official fee", vi: "lệ phí chính thức", pos: "noun phrase", pronunciation_vi: "BI-a-ya res-MI", pronunciation_en: "BEE-a-ya res-MEE" },
-      { word: "masa berlaku", en: "validity period", vi: "thời hạn hiệu lực", pos: "noun phrase", pronunciation_vi: "MA-sa ber-LA-ku", pronunciation_en: "MA-sa ber-LA-koo" },
+      { cell_id: "94ee2925-1cff-4c3c-9dda-def7826f36ba", word: "SIM", en: "driving license", vi: "bằng lái xe", pos: "noun", pronunciation_vi: "sim", pronunciation_en: "sim" },
+      { cell_id: "0424b263-c003-48e4-bc3e-19a863a877e0", word: "SIM C", en: "motorbike license", vi: "bằng lái xe máy", pos: "noun", pronunciation_vi: "sim CE", pronunciation_en: "sim CHE" },
+      { cell_id: "f1f1d625-0542-4ec9-b5a4-f687e7d0b75a", word: "ujian praktik", en: "practical test", vi: "thi thực hành", pos: "noun phrase", pronunciation_vi: "u-JI-an PRAK-tik", pronunciation_en: "oo-JEE-an PRAK-tik" },
+      { cell_id: "d582fe91-267c-44aa-86eb-35d5b0b5da9b", word: "perpanjang SIM", en: "renew a license", vi: "gia hạn bằng lái", pos: "verb phrase", pronunciation_vi: "per-PAN-jang SIM", pronunciation_en: "per-PAN-jang SIM" },
+      { cell_id: "f1d850ea-1583-4a6b-838c-6fa2172ec393", word: "biaya resmi", en: "official fee", vi: "lệ phí chính thức", pos: "noun phrase", pronunciation_vi: "BI-a-ya res-MI", pronunciation_en: "BEE-a-ya res-MEE" },
+      { cell_id: "0cae1a85-f7e5-416d-ae2a-ef12b81061da", word: "masa berlaku", en: "validity period", vi: "thời hạn hiệu lực", pos: "noun phrase", pronunciation_vi: "MA-sa ber-LA-ku", pronunciation_en: "MA-sa ber-LA-koo" },
     ],
     dialogue: [
-      { speaker: "Pemohon", text: "Selamat pagi. Saya mau membuat SIM C untuk motor.", vi: "Chào buổi sáng. Tôi muốn làm SIM C cho xe máy.", en: "Good morning. I want to make a SIM C for a motorbike." },
-      { speaker: "Petugas", text: "Baik. Nanti ada ujian teori dan ujian praktik.", vi: "Vâng. Lát nữa có thi lý thuyết và thi thực hành.", en: "Okay. Later there will be a theory test and a practical test." },
-      { speaker: "Pemohon", text: "Berapa biaya resmi untuk membuat SIM baru?", vi: "Lệ phí chính thức để làm bằng lái mới là bao nhiêu?", en: "What is the official fee for making a new license?" },
+      { cell_id: "7d103101-277d-4b54-be43-d4d3dff93b2a", speaker: "Pemohon", text: "Selamat pagi. Saya mau membuat SIM C untuk motor.", vi: "Chào buổi sáng. Tôi muốn làm SIM C cho xe máy.", en: "Good morning. I want to make a SIM C for a motorbike." },
+      { cell_id: "1b069afb-2e02-4252-abb2-3474a54b267c", speaker: "Petugas", text: "Baik. Nanti ada ujian teori dan ujian praktik.", vi: "Vâng. Lát nữa có thi lý thuyết và thi thực hành.", en: "Okay. Later there will be a theory test and a practical test." },
+      { cell_id: "4e1b6e5b-48da-45e2-b573-a01bb47bce97", speaker: "Pemohon", text: "Berapa biaya resmi untuk membuat SIM baru?", vi: "Lệ phí chính thức để làm bằng lái mới là bao nhiêu?", en: "What is the official fee for making a new license?" },
     ],
     exercises: [
       {
@@ -277,17 +279,17 @@ export const drivingLicenseSamsatLessons: IndonesianLesson[] = [
     tip_advice_en:
       "Distinguish `SIM` and `STNK`: SIM is the driver's license; STNK is the vehicle registration. Vietnamese speakers may say generic 'vehicle papers', but in Indonesia use the precise names with police or Samsat.",
     vocabulary: [
-      { word: "Samsat", en: "vehicle tax/registration office", vi: "cơ quan Samsat về thuế/đăng ký xe", pos: "noun", pronunciation_vi: "SAM-sat", pronunciation_en: "SAM-sat" },
-      { word: "STNK", en: "vehicle registration certificate", vi: "giấy đăng ký xe", pos: "noun", pronunciation_vi: "es-te-en-KA", pronunciation_en: "es-te-en-KA" },
-      { word: "pajak kendaraan", en: "vehicle tax", vi: "thuế phương tiện", pos: "noun phrase", pronunciation_vi: "PA-jak ken-da-RA-an", pronunciation_en: "PA-jak ken-da-RA-an" },
-      { word: "BPKB", en: "vehicle ownership book", vi: "sổ/chứng nhận sở hữu xe", pos: "noun", pronunciation_vi: "be-pe-ka-BE", pronunciation_en: "be-pe-ka-BE" },
-      { word: "bukti pembayaran", en: "proof of payment", vi: "bằng chứng thanh toán", pos: "noun phrase", pronunciation_vi: "BUK-ti pem-ba-YA-ran", pronunciation_en: "BOOK-tee pem-ba-YA-ran" },
-      { word: "secara online", en: "online/by online method", vi: "bằng hình thức online", pos: "adverb phrase", pronunciation_vi: "se-CA-ra ON-line", pronunciation_en: "se-CHA-ra ON-line" },
+      { cell_id: "1ff0c32a-de84-4fcb-b7af-9c6843a99955", word: "Samsat", en: "vehicle tax/registration office", vi: "cơ quan Samsat về thuế/đăng ký xe", pos: "noun", pronunciation_vi: "SAM-sat", pronunciation_en: "SAM-sat" },
+      { cell_id: "37111147-a437-416d-aae9-4de6b427ab56", word: "STNK", en: "vehicle registration certificate", vi: "giấy đăng ký xe", pos: "noun", pronunciation_vi: "es-te-en-KA", pronunciation_en: "es-te-en-KA" },
+      { cell_id: "a4ab6894-80a8-4bce-ac77-a795d01425f9", word: "pajak kendaraan", en: "vehicle tax", vi: "thuế phương tiện", pos: "noun phrase", pronunciation_vi: "PA-jak ken-da-RA-an", pronunciation_en: "PA-jak ken-da-RA-an" },
+      { cell_id: "cee834fe-4763-48eb-b0f6-5d485f1285df", word: "BPKB", en: "vehicle ownership book", vi: "sổ/chứng nhận sở hữu xe", pos: "noun", pronunciation_vi: "be-pe-ka-BE", pronunciation_en: "be-pe-ka-BE" },
+      { cell_id: "15d26eef-12cb-4940-9eba-9d8d2e7788e4", word: "bukti pembayaran", en: "proof of payment", vi: "bằng chứng thanh toán", pos: "noun phrase", pronunciation_vi: "BUK-ti pem-ba-YA-ran", pronunciation_en: "BOOK-tee pem-ba-YA-ran" },
+      { cell_id: "f4d09483-ddcc-4a53-ac67-d0086e86ceba", word: "secara online", en: "online/by online method", vi: "bằng hình thức online", pos: "adverb phrase", pronunciation_vi: "se-CA-ra ON-line", pronunciation_en: "se-CHA-ra ON-line" },
     ],
     dialogue: [
-      { speaker: "Pemilik kendaraan", text: "Saya mau bayar pajak kendaraan di Samsat.", vi: "Tôi muốn đóng thuế xe ở Samsat.", en: "I want to pay vehicle tax at Samsat." },
-      { speaker: "Petugas", text: "Bawa KTP, STNK, dan bukti pembayaran kalau sudah bayar online.", vi: "Mang theo KTP, STNK, và bằng chứng thanh toán nếu đã trả online.", en: "Bring KTP, STNK, and proof of payment if you already paid online." },
-      { speaker: "Pemilik kendaraan", text: "Apakah bisa bayar pajak kendaraan secara online?", vi: "Có thể đóng thuế xe online không?", en: "Can vehicle tax be paid online?" },
+      { cell_id: "30b0f6b5-1e9c-4e53-a6e1-677515353443", speaker: "Pemilik kendaraan", text: "Saya mau bayar pajak kendaraan di Samsat.", vi: "Tôi muốn đóng thuế xe ở Samsat.", en: "I want to pay vehicle tax at Samsat." },
+      { cell_id: "23ba1d0c-1dc5-4624-b186-19326f34272f", speaker: "Petugas", text: "Bawa KTP, STNK, dan bukti pembayaran kalau sudah bayar online.", vi: "Mang theo KTP, STNK, và bằng chứng thanh toán nếu đã trả online.", en: "Bring KTP, STNK, and proof of payment if you already paid online." },
+      { cell_id: "096b114c-5ac8-4c49-b8bd-cb286dea7910", speaker: "Pemilik kendaraan", text: "Apakah bisa bayar pajak kendaraan secara online?", vi: "Có thể đóng thuế xe online không?", en: "Can vehicle tax be paid online?" },
     ],
     exercises: [
       {
@@ -400,17 +402,17 @@ export const drivingLicenseSamsatLessons: IndonesianLesson[] = [
     tip_advice_en:
       "When you are the person ticketed, use passive: `saya ditilang`, `saya diberi surat tilang`. Do not say `saya tilang`, which sounds like you are the one ticketing someone else.",
     vocabulary: [
-      { word: "tilang", en: "traffic ticket", vi: "biên bản/phạt giao thông", pos: "noun/verb", pronunciation_vi: "TI-lang", pronunciation_en: "TEE-lang" },
-      { word: "ditilang", en: "ticketed", vi: "bị phạt giao thông", pos: "passive verb", pronunciation_vi: "di-TI-lang", pronunciation_en: "dee-TEE-lang" },
-      { word: "denda", en: "fine", vi: "tiền phạt", pos: "noun", pronunciation_vi: "DEN-da", pronunciation_en: "DEN-da" },
-      { word: "aplikasi resmi", en: "official app", vi: "ứng dụng chính thức", pos: "noun phrase", pronunciation_vi: "ap-li-KA-si res-MI", pronunciation_en: "ap-lee-KA-see res-MEE" },
-      { word: "pelanggaran", en: "violation", vi: "lỗi vi phạm", pos: "noun", pronunciation_vi: "pe-lang-GA-ran", pronunciation_en: "pe-lang-GA-ran" },
-      { word: "hati-hati", en: "careful", vi: "cẩn thận", pos: "adjective", pronunciation_vi: "HA-ti HA-ti", pronunciation_en: "HA-tee HA-tee" },
+      { cell_id: "c6df277c-9a28-4335-b823-80e129bfabe5", word: "tilang", en: "traffic ticket", vi: "biên bản/phạt giao thông", pos: "noun/verb", pronunciation_vi: "TI-lang", pronunciation_en: "TEE-lang" },
+      { cell_id: "d535715d-a7e9-4668-814b-ad8016b56db9", word: "ditilang", en: "ticketed", vi: "bị phạt giao thông", pos: "passive verb", pronunciation_vi: "di-TI-lang", pronunciation_en: "dee-TEE-lang" },
+      { cell_id: "75c187db-015a-4d40-b48f-9e32745c40e8", word: "denda", en: "fine", vi: "tiền phạt", pos: "noun", pronunciation_vi: "DEN-da", pronunciation_en: "DEN-da" },
+      { cell_id: "58f73a76-fece-490a-a6bf-981bcb1d79b1", word: "aplikasi resmi", en: "official app", vi: "ứng dụng chính thức", pos: "noun phrase", pronunciation_vi: "ap-li-KA-si res-MI", pronunciation_en: "ap-lee-KA-see res-MEE" },
+      { cell_id: "2d0abe97-de5b-4b00-962e-14b560ad8965", word: "pelanggaran", en: "violation", vi: "lỗi vi phạm", pos: "noun", pronunciation_vi: "pe-lang-GA-ran", pronunciation_en: "pe-lang-GA-ran" },
+      { cell_id: "54f25a78-8e4a-4e89-b5a5-788e7cee67ac", word: "hati-hati", en: "careful", vi: "cẩn thận", pos: "adjective", pronunciation_vi: "HA-ti HA-ti", pronunciation_en: "HA-tee HA-tee" },
     ],
     dialogue: [
-      { speaker: "Polisi", text: "Selamat siang. Mohon tunjukkan SIM dan STNK.", vi: "Chào buổi trưa. Vui lòng xuất trình bằng lái và STNK.", en: "Good afternoon. Please show your license and STNK." },
-      { speaker: "Pengendara", text: "Ini SIM saya, Pak. Maaf, STNK tertinggal di rumah.", vi: "Đây là bằng lái của tôi, thưa anh. Xin lỗi, STNK để quên ở nhà.", en: "Here is my license, sir. Sorry, the STNK was left at home." },
-      { speaker: "Pengendara", text: "Mohon jelaskan pelanggaran saya dan cara membayar denda resmi.", vi: "Vui lòng giải thích lỗi vi phạm của tôi và cách trả tiền phạt chính thức.", en: "Please explain my violation and how to pay the official fine." },
+      { cell_id: "113aebee-28f2-42d9-837c-53e5ee846e04", speaker: "Polisi", text: "Selamat siang. Mohon tunjukkan SIM dan STNK.", vi: "Chào buổi trưa. Vui lòng xuất trình bằng lái và STNK.", en: "Good afternoon. Please show your license and STNK." },
+      { cell_id: "b71594e3-b6e0-4c2a-a062-462d041309dc", speaker: "Pengendara", text: "Ini SIM saya, Pak. Maaf, STNK tertinggal di rumah.", vi: "Đây là bằng lái của tôi, thưa anh. Xin lỗi, STNK để quên ở nhà.", en: "Here is my license, sir. Sorry, the STNK was left at home." },
+      { cell_id: "ae924dee-561e-4073-8d3e-217b351a97bb", speaker: "Pengendara", text: "Mohon jelaskan pelanggaran saya dan cara membayar denda resmi.", vi: "Vui lòng giải thích lỗi vi phạm của tôi và cách trả tiền phạt chính thức.", en: "Please explain my violation and how to pay the official fine." },
     ],
     exercises: [
       {

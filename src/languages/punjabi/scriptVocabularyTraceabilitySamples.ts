@@ -18,6 +18,7 @@ export type PunjabiTraceabilityFocus =
 export type PunjabiTraceabilityStage = "pre_a11_traceability" | "evidence_receipt" | "completion_record" | "pre_integration" | "sanity";
 
 export type PunjabiScriptVocabularyTraceabilitySample = {
+  cell_id?: string;
   id: string;
   focus: PunjabiTraceabilityFocus;
   stage: PunjabiTraceabilityStage;
@@ -39,6 +40,7 @@ export type PunjabiScriptVocabularyTraceabilitySample = {
 };
 
 export type PunjabiScriptVocabularyTraceabilitySection = {
+  cell_id?: string;
   focus: PunjabiTraceabilityFocus;
   title_vi: string;
   title_en: string;

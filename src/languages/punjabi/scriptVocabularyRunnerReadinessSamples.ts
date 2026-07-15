@@ -18,6 +18,7 @@ export type PunjabiRunnerReadinessFocus =
 export type PunjabiRunnerReadinessStage = "runner_readiness" | "pipeline_readiness" | "ci_readiness" | "pre_integration" | "sanity";
 
 export type PunjabiScriptVocabularyRunnerReadinessSample = {
+  cell_id?: string;
   id: string;
   focus: PunjabiRunnerReadinessFocus;
   stage: PunjabiRunnerReadinessStage;
@@ -39,6 +40,7 @@ export type PunjabiScriptVocabularyRunnerReadinessSample = {
 };
 
 export type PunjabiScriptVocabularyRunnerReadinessSection = {
+  cell_id?: string;
   focus: PunjabiRunnerReadinessFocus;
   title_vi: string;
   title_en: string;

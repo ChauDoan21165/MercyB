@@ -18,6 +18,7 @@ export type PunjabiAuditTrailFocus =
 export type PunjabiAuditTrailStage = "pre_a11_audit_trail" | "traceability" | "evidence_receipt" | "pre_integration" | "sanity";
 
 export type PunjabiScriptVocabularyAuditTrailSample = {
+  cell_id?: string;
   id: string;
   focus: PunjabiAuditTrailFocus;
   stage: PunjabiAuditTrailStage;
@@ -39,6 +40,7 @@ export type PunjabiScriptVocabularyAuditTrailSample = {
 };
 
 export type PunjabiScriptVocabularyAuditTrailSection = {
+  cell_id?: string;
   focus: PunjabiAuditTrailFocus;
   title_vi: string;
   title_en: string;

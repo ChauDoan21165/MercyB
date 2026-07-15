@@ -1,0 +1,5628 @@
+{
+  "schema_version": 1,
+  "generated_by": "scripts/security/rls-matrix-scan.mjs",
+  "scan_roots": [
+    "supabase/migrations"
+  ],
+  "migration_files": 272,
+  "tables": {
+    "private.referral_leaderboard_all_time_private": {
+      "created_in_migrations": true,
+      "rls_enabled": false,
+      "policies": []
+    },
+    "private.referral_leaderboard_monthly_private": {
+      "created_in_migrations": true,
+      "rls_enabled": false,
+      "policies": []
+    },
+    "public.access_code_redemptions": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "Admins can view all redemptions",
+          "command": "select",
+          "roles": [
+            "public"
+          ],
+          "using": "has_role(auth.uid(), 'admin')",
+          "with_check": null
+        },
+        {
+          "name": "System can insert redemptions",
+          "command": "insert",
+          "roles": [
+            "public"
+          ],
+          "using": null,
+          "with_check": "auth.uid() = user_id"
+        },
+        {
+          "name": "Users can view their own redemptions",
+          "command": "select",
+          "roles": [
+            "public"
+          ],
+          "using": "auth.uid() = user_id",
+          "with_check": null
+        }
+      ]
+    },
+    "public.access_codes": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "Admins can delete access codes",
+          "command": "delete",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "public.get_admin_level(auth.uid()) >= 7",
+          "with_check": null
+        },
+        {
+          "name": "Admins can insert access codes",
+          "command": "insert",
+          "roles": [
+            "authenticated"
+          ],
+          "using": null,
+          "with_check": "public.get_admin_level(auth.uid()) >= 7"
+        },
+        {
+          "name": "Admins can select access codes",
+          "command": "select",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "public.get_admin_level(auth.uid()) >= 7",
+          "with_check": null
+        },
+        {
+          "name": "Admins can update access codes",
+          "command": "update",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "public.get_admin_level(auth.uid()) >= 7",
+          "with_check": "public.get_admin_level(auth.uid()) >= 7"
+        },
+        {
+          "name": "Users can view their assigned codes or public codes",
+          "command": "select",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "(is_active = true) AND ((expires_at IS NULL) OR (expires_at > now())) AND (for_user_id IS NULL OR for_user_id = auth.uid())",
+          "with_check": null
+        }
+      ]
+    },
+    "public.account_conversions": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": []
+    },
+    "public.admin_access_audit": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "Admins can view audit logs",
+          "command": "select",
+          "roles": [
+            "public"
+          ],
+          "using": "public.has_role(auth.uid(), 'admin'::app_role)",
+          "with_check": null
+        },
+        {
+          "name": "System can insert audit logs",
+          "command": "insert",
+          "roles": [
+            "public"
+          ],
+          "using": null,
+          "with_check": "auth.uid() = admin_user_id"
+        }
+      ]
+    },
+    "public.admin_allowlist": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "Admins can manage admin allowlist",
+          "command": "all",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "public.has_role(auth.uid(), 'admin'::public.app_role)",
+          "with_check": "public.has_role(auth.uid(), 'admin'::public.app_role)"
+        }
+      ]
+    },
+    "public.admin_logs": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "Admins can insert logs",
+          "command": "insert",
+          "roles": [
+            "public"
+          ],
+          "using": null,
+          "with_check": "public.get_admin_level(auth.uid()) > 0"
+        },
+        {
+          "name": "Admins can view relevant logs",
+          "command": "select",
+          "roles": [
+            "public"
+          ],
+          "using": "public.get_admin_level(auth.uid()) > 0",
+          "with_check": null
+        }
+      ]
+    },
+    "public.admin_notification_preferences": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "Admins can manage their own preferences",
+          "command": "all",
+          "roles": [
+            "public"
+          ],
+          "using": "auth.uid() = admin_user_id",
+          "with_check": null
+        }
+      ]
+    },
+    "public.admin_notification_settings": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "Admins can insert own notification settings",
+          "command": "insert",
+          "roles": [
+            "public"
+          ],
+          "using": null,
+          "with_check": "EXISTS ( SELECT 1 FROM public.user_roles WHERE user_roles.user_id = auth.uid() AND user_roles.role = 'admin' AND user_roles.user_id = admin_user_id )"
+        },
+        {
+          "name": "Admins can update own notification settings",
+          "command": "update",
+          "roles": [
+            "public"
+          ],
+          "using": "EXISTS ( SELECT 1 FROM public.user_roles WHERE user_roles.user_id = auth.uid() AND user_roles.role = 'admin' AND user_roles.user_id = admin_user_id )",
+          "with_check": null
+        },
+        {
+          "name": "Admins can view own notification settings",
+          "command": "select",
+          "roles": [
+            "public"
+          ],
+          "using": "EXISTS ( SELECT 1 FROM public.user_roles WHERE user_roles.user_id = auth.uid() AND user_roles.role = 'admin' AND user_roles.user_id = admin_user_id )",
+          "with_check": null
+        },
+        {
+          "name": "only_admins_access_notification_settings",
+          "command": "all",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "has_role(auth.uid(), 'admin'::app_role)",
+          "with_check": null
+        }
+      ]
+    },
+    "public.admin_notifications": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "Admins can update their own notifications",
+          "command": "update",
+          "roles": [
+            "public"
+          ],
+          "using": "auth.uid() = admin_user_id",
+          "with_check": null
+        },
+        {
+          "name": "Admins can view their own notifications",
+          "command": "select",
+          "roles": [
+            "public"
+          ],
+          "using": "auth.uid() = admin_user_id",
+          "with_check": null
+        },
+        {
+          "name": "only_admins_access_admin_notifications",
+          "command": "all",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "has_role(auth.uid(), 'admin'::app_role)",
+          "with_check": null
+        },
+        {
+          "name": "System can insert notifications for admins",
+          "command": "insert",
+          "roles": [
+            "public"
+          ],
+          "using": null,
+          "with_check": "EXISTS ( SELECT 1 FROM public.user_roles WHERE user_id = admin_user_id AND role = 'admin' )"
+        }
+      ]
+    },
+    "public.admin_users": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "Admins can view lower level admins",
+          "command": "select",
+          "roles": [
+            "public"
+          ],
+          "using": "public.get_admin_level(auth.uid()) > 0 AND ( user_id = auth.uid() OR level < public.get_admin_level(auth.uid()) )",
+          "with_check": null
+        },
+        {
+          "name": "Higher level admins can delete lower level admins",
+          "command": "delete",
+          "roles": [
+            "public"
+          ],
+          "using": "public.get_admin_level(auth.uid()) > level AND level < 10",
+          "with_check": null
+        },
+        {
+          "name": "Higher level admins can update lower level admins",
+          "command": "update",
+          "roles": [
+            "public"
+          ],
+          "using": "public.get_admin_level(auth.uid()) > level AND level < 10",
+          "with_check": null
+        },
+        {
+          "name": "Level 9+ can create admins",
+          "command": "insert",
+          "roles": [
+            "public"
+          ],
+          "using": null,
+          "with_check": "public.get_admin_level(auth.uid()) >= 9"
+        }
+      ]
+    },
+    "public.ai_price_catalog": {
+      "created_in_migrations": false,
+      "rls_enabled": true,
+      "policies": []
+    },
+    "public.ai_product_catalog": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": []
+    },
+    "public.ai_settings": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "Admins can manage AI settings",
+          "command": "all",
+          "roles": [
+            "public"
+          ],
+          "using": "has_role(auth.uid(), 'admin'::app_role)",
+          "with_check": null
+        },
+        {
+          "name": "Anyone can read AI settings",
+          "command": "select",
+          "roles": [
+            "public"
+          ],
+          "using": "true",
+          "with_check": null
+        }
+      ]
+    },
+    "public.ai_usage": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "Admins can view all AI usage",
+          "command": "select",
+          "roles": [
+            "public"
+          ],
+          "using": "EXISTS ( SELECT 1 FROM public.user_roles WHERE user_roles.user_id = auth.uid() AND user_roles.role = 'admin'::app_role )",
+          "with_check": null
+        },
+        {
+          "name": "ai_usage_service_insert",
+          "command": "insert",
+          "roles": [
+            "service_role"
+          ],
+          "using": null,
+          "with_check": "true"
+        },
+        {
+          "name": "Users can view their own AI usage",
+          "command": "select",
+          "roles": [
+            "public"
+          ],
+          "using": "auth.uid() = user_id",
+          "with_check": null
+        }
+      ]
+    },
+    "public.ai_usage_events": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "Admins can view all AI usage",
+          "command": "select",
+          "roles": [
+            "public"
+          ],
+          "using": "has_role(auth.uid(), 'admin'::app_role)",
+          "with_check": null
+        },
+        {
+          "name": "ai_usage_events_service_insert",
+          "command": "insert",
+          "roles": [
+            "service_role"
+          ],
+          "using": null,
+          "with_check": "true"
+        }
+      ]
+    },
+    "public.ai_usage_logs": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": []
+    },
+    "public.alert_history": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "admin_read_alert_history",
+          "command": "select",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "public.get_admin_level(auth.uid()) >= 9",
+          "with_check": null
+        }
+      ]
+    },
+    "public.alert_pause": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "admin_read_alert_pause",
+          "command": "select",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "public.get_admin_level(auth.uid()) >= 9",
+          "with_check": null
+        },
+        {
+          "name": "admin_update_alert_pause",
+          "command": "update",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "public.get_admin_level(auth.uid()) >= 9",
+          "with_check": "public.get_admin_level(auth.uid()) >= 9"
+        }
+      ]
+    },
+    "public.anonymous_user_cleanup_log": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": []
+    },
+    "public.api_request_logs": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "api_request_logs_admin_select",
+          "command": "select",
+          "roles": [
+            "public"
+          ],
+          "using": "public.get_admin_level() >= 7",
+          "with_check": null
+        }
+      ]
+    },
+    "public.app_feedback": {
+      "created_in_migrations": false,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "app_feedback_admin_read",
+          "command": "select",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "public.get_admin_level(auth.uid()) >= 9",
+          "with_check": null
+        },
+        {
+          "name": "app_feedback_user_insert",
+          "command": "insert",
+          "roles": [
+            "authenticated"
+          ],
+          "using": null,
+          "with_check": "user_id IS NULL OR user_id = auth.uid()"
+        }
+      ]
+    },
+    "public.app_settings": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "Admins can insert app settings",
+          "command": "insert",
+          "roles": [
+            "authenticated"
+          ],
+          "using": null,
+          "with_check": "EXISTS ( SELECT 1 FROM public.user_roles WHERE user_id = auth.uid() AND role = 'admin' )"
+        },
+        {
+          "name": "Admins can update app settings",
+          "command": "update",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "EXISTS ( SELECT 1 FROM public.user_roles WHERE user_id = auth.uid() AND role = 'admin' )",
+          "with_check": "EXISTS ( SELECT 1 FROM public.user_roles WHERE user_id = auth.uid() AND role = 'admin' )"
+        },
+        {
+          "name": "Admins can view app settings",
+          "command": "select",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "EXISTS ( SELECT 1 FROM public.user_roles WHERE user_id = auth.uid() AND role = 'admin' )",
+          "with_check": null
+        }
+      ]
+    },
+    "public.apple_iap_events": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": []
+    },
+    "public.audio_audit_room": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "Admins can manage audio audit data",
+          "command": "all",
+          "roles": [
+            "public"
+          ],
+          "using": "has_role(auth.uid(), 'admin'::app_role)",
+          "with_check": "has_role(auth.uid(), 'admin'::app_role)"
+        },
+        {
+          "name": "Authenticated users can view audio audit data",
+          "command": "select",
+          "roles": [
+            "public"
+          ],
+          "using": "auth.uid() IS NOT NULL",
+          "with_check": null
+        }
+      ]
+    },
+    "public.audio_governance_reviews": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "Admins can manage governance reviews",
+          "command": "all",
+          "roles": [
+            "public"
+          ],
+          "using": "public.has_role(auth.uid(), 'admin')",
+          "with_check": null
+        },
+        {
+          "name": "Anyone can view governance reviews",
+          "command": "select",
+          "roles": [
+            "public"
+          ],
+          "using": "true",
+          "with_check": null
+        }
+      ]
+    },
+    "public.audit_logs": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "Admins can view audit logs",
+          "command": "select",
+          "roles": [
+            "public"
+          ],
+          "using": "EXISTS ( SELECT 1 FROM public.user_roles WHERE user_roles.user_id = auth.uid() AND user_roles.role = 'admin'::app_role )",
+          "with_check": null
+        },
+        {
+          "name": "System can insert audit logs",
+          "command": "insert",
+          "roles": [
+            "public"
+          ],
+          "using": null,
+          "with_check": "auth.uid() = admin_id"
+        }
+      ]
+    },
+    "public.bank_payment_requests": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "Admin can manage bank payments",
+          "command": "all",
+          "roles": [
+            "public"
+          ],
+          "using": "has_role(auth.uid(), 'admin'::app_role)",
+          "with_check": null
+        },
+        {
+          "name": "User can insert own bank payments",
+          "command": "insert",
+          "roles": [
+            "public"
+          ],
+          "using": null,
+          "with_check": "auth.uid() = user_id"
+        },
+        {
+          "name": "User can see own bank payments",
+          "command": "select",
+          "roles": [
+            "public"
+          ],
+          "using": "auth.uid() = user_id",
+          "with_check": null
+        }
+      ]
+    },
+    "public.bank_transfer_orders": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "Admins can update all orders",
+          "command": "update",
+          "roles": [
+            "public"
+          ],
+          "using": "get_admin_level(auth.uid()) >= 9",
+          "with_check": null
+        },
+        {
+          "name": "Admins can view all orders",
+          "command": "select",
+          "roles": [
+            "public"
+          ],
+          "using": "get_admin_level(auth.uid()) >= 9",
+          "with_check": null
+        },
+        {
+          "name": "Users can insert own orders",
+          "command": "insert",
+          "roles": [
+            "public"
+          ],
+          "using": null,
+          "with_check": "auth.uid() = user_id"
+        },
+        {
+          "name": "Users can update own pending orders",
+          "command": "update",
+          "roles": [
+            "public"
+          ],
+          "using": "auth.uid() = user_id AND status = 'pending'",
+          "with_check": "auth.uid() = user_id"
+        },
+        {
+          "name": "Users can view own orders",
+          "command": "select",
+          "roles": [
+            "public"
+          ],
+          "using": "auth.uid() = user_id",
+          "with_check": null
+        }
+      ]
+    },
+    "public.billing_entitlement_events": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": []
+    },
+    "public.billing_price_map": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": []
+    },
+    "public.billing_provider_events": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": []
+    },
+    "public.client_error_alert_history": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": []
+    },
+    "public.client_errors": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "client_errors_anon_insert",
+          "command": "insert",
+          "roles": [
+            "anon"
+          ],
+          "using": null,
+          "with_check": "user_id is null"
+        },
+        {
+          "name": "client_errors_auth_insert",
+          "command": "insert",
+          "roles": [
+            "authenticated"
+          ],
+          "using": null,
+          "with_check": "user_id is null or user_id = auth.uid()"
+        }
+      ]
+    },
+    "public.cohort_retention_daily": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": []
+    },
+    "public.companion_events": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "Users can insert own companion events",
+          "command": "insert",
+          "roles": [
+            "public"
+          ],
+          "using": null,
+          "with_check": "auth.uid() = user_id"
+        },
+        {
+          "name": "Users can read own companion events",
+          "command": "select",
+          "roles": [
+            "public"
+          ],
+          "using": "auth.uid() = user_id",
+          "with_check": null
+        }
+      ]
+    },
+    "public.companion_state": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "Users can insert own companion state",
+          "command": "insert",
+          "roles": [
+            "public"
+          ],
+          "using": null,
+          "with_check": "auth.uid() = user_id"
+        },
+        {
+          "name": "Users can read own companion state",
+          "command": "select",
+          "roles": [
+            "public"
+          ],
+          "using": "auth.uid() = user_id",
+          "with_check": null
+        },
+        {
+          "name": "Users can update own companion state",
+          "command": "update",
+          "roles": [
+            "public"
+          ],
+          "using": "auth.uid() = user_id",
+          "with_check": null
+        }
+      ]
+    },
+    "public.content_review_status": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "admin_all_review_status",
+          "command": "all",
+          "roles": [
+            "public"
+          ],
+          "using": "public.get_admin_level() >= 9",
+          "with_check": "public.get_admin_level() >= 9"
+        },
+        {
+          "name": "teacher_select_review_queue",
+          "command": "select",
+          "roles": [
+            "public"
+          ],
+          "using": "public.get_admin_level() >= 5 and status in ('in_review', 'needs_revision')",
+          "with_check": null
+        },
+        {
+          "name": "teacher_update_review_status",
+          "command": "update",
+          "roles": [
+            "public"
+          ],
+          "using": "public.get_admin_level() >= 5 and status in ('in_review', 'needs_revision')",
+          "with_check": "public.get_admin_level() >= 5"
+        }
+      ]
+    },
+    "public.conversation_events": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "conversation_events_insert_own",
+          "command": "insert",
+          "roles": [
+            "authenticated"
+          ],
+          "using": null,
+          "with_check": "EXISTS ( SELECT 1 FROM public.conversations c WHERE c.id = conversation_id AND c.user_id = auth.uid() )"
+        },
+        {
+          "name": "conversation_events_select_own",
+          "command": "select",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "EXISTS ( SELECT 1 FROM public.conversations c WHERE c.id = conversation_id AND c.user_id = auth.uid() )",
+          "with_check": null
+        }
+      ]
+    },
+    "public.conversations": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "conversations_insert_own",
+          "command": "insert",
+          "roles": [
+            "authenticated"
+          ],
+          "using": null,
+          "with_check": "user_id = auth.uid()"
+        },
+        {
+          "name": "conversations_select_own",
+          "command": "select",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "user_id = auth.uid()",
+          "with_check": null
+        },
+        {
+          "name": "conversations_update_own",
+          "command": "update",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "user_id = auth.uid()",
+          "with_check": "user_id = auth.uid()"
+        }
+      ]
+    },
+    "public.corporate_accounts": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "corporate_accounts_delete_owner",
+          "command": "delete",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "owner_user_id = auth.uid()",
+          "with_check": null
+        },
+        {
+          "name": "corporate_accounts_insert_self_as_owner",
+          "command": "insert",
+          "roles": [
+            "authenticated"
+          ],
+          "using": null,
+          "with_check": "owner_user_id = auth.uid()"
+        },
+        {
+          "name": "corporate_accounts_select_owner_or_seat",
+          "command": "select",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "owner_user_id = auth.uid() OR EXISTS ( SELECT 1 FROM public.corporate_seats s WHERE s.corporate_account_id = corporate_accounts.id AND s.user_id = auth.uid() )",
+          "with_check": null
+        },
+        {
+          "name": "corporate_accounts_update_owner",
+          "command": "update",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "owner_user_id = auth.uid()",
+          "with_check": "owner_user_id = auth.uid()"
+        }
+      ]
+    },
+    "public.corporate_seat_invites": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "corporate_seat_invites_owner_delete",
+          "command": "delete",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "EXISTS ( SELECT 1 FROM public.corporate_accounts a WHERE a.id = corporate_seat_invites.corporate_account_id AND a.owner_user_id = auth.uid() )",
+          "with_check": null
+        },
+        {
+          "name": "corporate_seat_invites_owner_insert",
+          "command": "insert",
+          "roles": [
+            "authenticated"
+          ],
+          "using": null,
+          "with_check": "EXISTS ( SELECT 1 FROM public.corporate_accounts a WHERE a.id = corporate_account_id AND a.owner_user_id = auth.uid() )"
+        },
+        {
+          "name": "corporate_seat_invites_owner_select",
+          "command": "select",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "EXISTS ( SELECT 1 FROM public.corporate_accounts a WHERE a.id = corporate_seat_invites.corporate_account_id AND a.owner_user_id = auth.uid() )",
+          "with_check": null
+        }
+      ]
+    },
+    "public.corporate_seats": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "corporate_seats_delete_owner_or_self",
+          "command": "delete",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "user_id = auth.uid() OR EXISTS ( SELECT 1 FROM public.corporate_accounts a WHERE a.id = corporate_seats.corporate_account_id AND a.owner_user_id = auth.uid() )",
+          "with_check": null
+        },
+        {
+          "name": "corporate_seats_insert_owner",
+          "command": "insert",
+          "roles": [
+            "authenticated"
+          ],
+          "using": null,
+          "with_check": "EXISTS ( SELECT 1 FROM public.corporate_accounts a WHERE a.id = corporate_account_id AND a.owner_user_id = auth.uid() )"
+        },
+        {
+          "name": "corporate_seats_select_owner_or_self",
+          "command": "select",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "user_id = auth.uid() OR EXISTS ( SELECT 1 FROM public.corporate_accounts a WHERE a.id = corporate_seats.corporate_account_id AND a.owner_user_id = auth.uid() )",
+          "with_check": null
+        }
+      ]
+    },
+    "public.correction_source_events": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "correction_source_events_admin_select",
+          "command": "select",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "public.get_admin_level(auth.uid()) >= 9",
+          "with_check": null
+        },
+        {
+          "name": "correction_source_events_anon_insert",
+          "command": "insert",
+          "roles": [
+            "anon"
+          ],
+          "using": null,
+          "with_check": "true"
+        },
+        {
+          "name": "correction_source_events_auth_insert",
+          "command": "insert",
+          "roles": [
+            "authenticated"
+          ],
+          "using": null,
+          "with_check": "true"
+        }
+      ]
+    },
+    "public.self_audit_outcome_events": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "self_audit_outcome_events_admin_select",
+          "command": "select",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "public.get_admin_level(auth.uid()) >= 9",
+          "with_check": null
+        },
+        {
+          "name": "self_audit_outcome_events_anon_insert",
+          "command": "insert",
+          "roles": [
+            "anon"
+          ],
+          "using": null,
+          "with_check": "true"
+        },
+        {
+          "name": "self_audit_outcome_events_auth_insert",
+          "command": "insert",
+          "roles": [
+            "authenticated"
+          ],
+          "using": null,
+          "with_check": "true"
+        }
+      ]
+    },
+    "public.daily_challenges": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "daily_challenges_insert_own",
+          "command": "insert",
+          "roles": [
+            "authenticated"
+          ],
+          "using": null,
+          "with_check": "auth.uid() = user_id"
+        },
+        {
+          "name": "daily_challenges_select_own",
+          "command": "select",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "auth.uid() = user_id",
+          "with_check": null
+        },
+        {
+          "name": "daily_challenges_update_own",
+          "command": "update",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "auth.uid() = user_id",
+          "with_check": "auth.uid() = user_id"
+        }
+      ]
+    },
+    "public.db_p95_snapshots": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "admin_read_db_p95_snap",
+          "command": "select",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "public.get_admin_level(auth.uid()) >= 9",
+          "with_check": null
+        }
+      ]
+    },
+    "public.developer_accounts": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "developer_accounts_admin_select",
+          "command": "select",
+          "roles": [
+            "public"
+          ],
+          "using": "public.get_admin_level() >= 7",
+          "with_check": null
+        }
+      ]
+    },
+    "public.developer_api_keys": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "developer_api_keys_admin_select",
+          "command": "select",
+          "roles": [
+            "public"
+          ],
+          "using": "public.get_admin_level() >= 7",
+          "with_check": null
+        }
+      ]
+    },
+    "public.email_audit": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": []
+    },
+    "public.email_campaigns": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "Admins can insert campaigns",
+          "command": "insert",
+          "roles": [
+            "public"
+          ],
+          "using": null,
+          "with_check": "public.get_admin_level(auth.uid()) >= 9"
+        },
+        {
+          "name": "Admins can update campaigns",
+          "command": "update",
+          "roles": [
+            "public"
+          ],
+          "using": "public.get_admin_level(auth.uid()) >= 9",
+          "with_check": null
+        },
+        {
+          "name": "Admins can view all campaigns",
+          "command": "select",
+          "roles": [
+            "public"
+          ],
+          "using": "public.get_admin_level(auth.uid()) >= 9",
+          "with_check": null
+        }
+      ]
+    },
+    "public.email_events": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "Admins can view all email events",
+          "command": "select",
+          "roles": [
+            "public"
+          ],
+          "using": "public.get_admin_level(auth.uid()) >= 9",
+          "with_check": null
+        },
+        {
+          "name": "email_events_service_insert",
+          "command": "insert",
+          "roles": [
+            "service_role"
+          ],
+          "using": null,
+          "with_check": "true"
+        }
+      ]
+    },
+    "public.email_sends_log": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": []
+    },
+    "public.entitlement_events": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "entitlement_events_own_insert",
+          "command": "insert",
+          "roles": [
+            "public"
+          ],
+          "using": null,
+          "with_check": "auth.uid() = user_id"
+        },
+        {
+          "name": "entitlement_events_own_read",
+          "command": "select",
+          "roles": [
+            "public"
+          ],
+          "using": "auth.uid() = user_id",
+          "with_check": null
+        }
+      ]
+    },
+    "public.entitlements": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "entitlements_select_own",
+          "command": "select",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "auth.uid() = user_id",
+          "with_check": null
+        }
+      ]
+    },
+    "public.family_invitations": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "family_invitations_owner_revoke",
+          "command": "update",
+          "roles": [
+            "public"
+          ],
+          "using": "inviter_user_id = auth.uid() AND status IN ('pending', 'sent')",
+          "with_check": "inviter_user_id = auth.uid() AND status = 'revoked'"
+        },
+        {
+          "name": "family_invitations_owner_select",
+          "command": "select",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "inviter_user_id = auth.uid()",
+          "with_check": null
+        }
+      ]
+    },
+    "public.family_plan_invites": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "family_plan_invites_owner_delete",
+          "command": "delete",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "EXISTS ( SELECT 1 FROM public.family_plans p WHERE p.id = family_plan_invites.family_plan_id AND p.owner_user_id = auth.uid() )",
+          "with_check": null
+        },
+        {
+          "name": "family_plan_invites_owner_insert",
+          "command": "insert",
+          "roles": [
+            "authenticated"
+          ],
+          "using": null,
+          "with_check": "EXISTS ( SELECT 1 FROM public.family_plans p WHERE p.id = family_plan_id AND p.owner_user_id = auth.uid() )"
+        },
+        {
+          "name": "family_plan_invites_owner_select",
+          "command": "select",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "EXISTS ( SELECT 1 FROM public.family_plans p WHERE p.id = family_plan_invites.family_plan_id AND p.owner_user_id = auth.uid() )",
+          "with_check": null
+        }
+      ]
+    },
+    "public.family_plan_members": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "family_plan_members_delete_owner_or_self",
+          "command": "delete",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "user_id = auth.uid() OR EXISTS ( SELECT 1 FROM public.family_plans p WHERE p.id = family_plan_members.family_plan_id AND p.owner_user_id = auth.uid() )",
+          "with_check": null
+        },
+        {
+          "name": "family_plan_members_insert_owner",
+          "command": "insert",
+          "roles": [
+            "authenticated"
+          ],
+          "using": null,
+          "with_check": "EXISTS ( SELECT 1 FROM public.family_plans p WHERE p.id = family_plan_id AND p.owner_user_id = auth.uid() )"
+        },
+        {
+          "name": "family_plan_members_select_owner_or_self",
+          "command": "select",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "user_id = auth.uid() OR EXISTS ( SELECT 1 FROM public.family_plans p WHERE p.id = family_plan_members.family_plan_id AND p.owner_user_id = auth.uid() )",
+          "with_check": null
+        }
+      ]
+    },
+    "public.family_plans": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "family_plans_delete_owner",
+          "command": "delete",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "owner_user_id = auth.uid()",
+          "with_check": null
+        },
+        {
+          "name": "family_plans_insert_self_as_owner",
+          "command": "insert",
+          "roles": [
+            "authenticated"
+          ],
+          "using": null,
+          "with_check": "owner_user_id = auth.uid()"
+        },
+        {
+          "name": "family_plans_select_owner_or_member",
+          "command": "select",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "owner_user_id = auth.uid() OR EXISTS ( SELECT 1 FROM public.family_plan_members m WHERE m.family_plan_id = family_plans.id AND m.user_id = auth.uid() )",
+          "with_check": null
+        },
+        {
+          "name": "family_plans_update_owner",
+          "command": "update",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "owner_user_id = auth.uid()",
+          "with_check": "owner_user_id = auth.uid()"
+        }
+      ]
+    },
+    "public.favorite_rooms": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "Users can manage their favorite rooms",
+          "command": "all",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "auth.uid() = user_id",
+          "with_check": "auth.uid() = user_id"
+        }
+      ]
+    },
+    "public.favorite_tracks": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "Users can manage their favorite tracks",
+          "command": "all",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "auth.uid() = user_id",
+          "with_check": "auth.uid() = user_id"
+        }
+      ]
+    },
+    "public.feature_flags": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "Admins can manage feature flags",
+          "command": "all",
+          "roles": [
+            "public"
+          ],
+          "using": "has_role(auth.uid(), 'admin')",
+          "with_check": null
+        },
+        {
+          "name": "feature_flags_admin_insert",
+          "command": "insert",
+          "roles": [
+            "authenticated"
+          ],
+          "using": null,
+          "with_check": "public.get_admin_level(auth.uid()) >= 9"
+        },
+        {
+          "name": "feature_flags_admin_select",
+          "command": "select",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "public.get_admin_level(auth.uid()) >= 9",
+          "with_check": null
+        },
+        {
+          "name": "feature_flags_admin_update",
+          "command": "update",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "public.get_admin_level(auth.uid()) >= 9",
+          "with_check": "public.get_admin_level(auth.uid()) >= 9"
+        }
+      ]
+    },
+    "public.feature_outcome_events": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "feature_outcome_events_insert_own",
+          "command": "insert",
+          "roles": [
+            "authenticated"
+          ],
+          "using": null,
+          "with_check": "user_id = auth.uid()"
+        },
+        {
+          "name": "feature_outcome_events_select_own",
+          "command": "select",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "user_id = auth.uid()",
+          "with_check": null
+        }
+      ]
+    },
+    "public.feedback": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "Admins can update all feedback",
+          "command": "update",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "public.has_role(auth.uid(), 'admin'::public.app_role)",
+          "with_check": "public.has_role(auth.uid(), 'admin'::public.app_role)"
+        },
+        {
+          "name": "Admins can view all feedback",
+          "command": "select",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "public.has_role(auth.uid(), 'admin'::public.app_role)",
+          "with_check": null
+        },
+        {
+          "name": "authenticated users insert own feedback",
+          "command": "insert",
+          "roles": [
+            "authenticated"
+          ],
+          "using": null,
+          "with_check": "user_id = auth.uid()"
+        },
+        {
+          "name": "Users can insert their own feedback",
+          "command": "insert",
+          "roles": [
+            "authenticated"
+          ],
+          "using": null,
+          "with_check": "(user_id is null or auth.uid() = user_id) and (created_by is null or created_by = auth.uid())"
+        },
+        {
+          "name": "Users can view their own feedback",
+          "command": "select",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "auth.uid() = user_id",
+          "with_check": null
+        }
+      ]
+    },
+    "public.gift_codes": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "Admins can manage gift codes",
+          "command": "all",
+          "roles": [
+            "public"
+          ],
+          "using": "public.has_role(auth.uid(), 'admin'::app_role)",
+          "with_check": null
+        },
+        {
+          "name": "Users can redeem gift codes",
+          "command": "update",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "is_active = true AND used_by IS NULL AND (code_expires_at IS NULL OR code_expires_at > now())",
+          "with_check": "used_by = auth.uid() AND is_active = false AND used_at IS NOT NULL"
+        },
+        {
+          "name": "Users can view available codes",
+          "command": "select",
+          "roles": [
+            "public"
+          ],
+          "using": "auth.uid() IS NOT NULL AND is_active = true AND used_by IS NULL AND (code_expires_at IS NULL OR code_expires_at > now())",
+          "with_check": null
+        }
+      ]
+    },
+    "public.gift_subscriptions": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "gift_subs_purchaser_insert",
+          "command": "insert",
+          "roles": [
+            "public"
+          ],
+          "using": null,
+          "with_check": "purchaser_user_id = auth.uid()"
+        },
+        {
+          "name": "gift_subs_purchaser_select",
+          "command": "select",
+          "roles": [
+            "public"
+          ],
+          "using": "purchaser_user_id = auth.uid()",
+          "with_check": null
+        },
+        {
+          "name": "gift_subs_recipient_select",
+          "command": "select",
+          "roles": [
+            "public"
+          ],
+          "using": "recipient_user_id = auth.uid()",
+          "with_check": null
+        },
+        {
+          "name": "gift_subs_redeem",
+          "command": "update",
+          "roles": [
+            "public"
+          ],
+          "using": "redeemed_at IS NULL AND expires_at > now()",
+          "with_check": "recipient_user_id = auth.uid() AND redeemed_at IS NOT NULL"
+        }
+      ]
+    },
+    "public.interview_sessions": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "interview_sessions_delete_own",
+          "command": "delete",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "auth.uid() = user_id",
+          "with_check": null
+        },
+        {
+          "name": "interview_sessions_insert_own",
+          "command": "insert",
+          "roles": [
+            "authenticated"
+          ],
+          "using": null,
+          "with_check": "auth.uid() = user_id"
+        },
+        {
+          "name": "interview_sessions_select_own",
+          "command": "select",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "auth.uid() = user_id",
+          "with_check": null
+        },
+        {
+          "name": "interview_sessions_update_own",
+          "command": "update",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "auth.uid() = user_id",
+          "with_check": "auth.uid() = user_id"
+        }
+      ]
+    },
+    "public.ip_rate_limit": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": []
+    },
+    "public.ip_rate_limit_hits": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": []
+    },
+    "public.latency_aggregates": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "admin_read_latency_aggregates",
+          "command": "select",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "public.get_admin_level(auth.uid()) >= 9",
+          "with_check": null
+        }
+      ]
+    },
+    "public.latency_events": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "admin_read_latency_events",
+          "command": "select",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "public.get_admin_level(auth.uid()) >= 9",
+          "with_check": null
+        }
+      ]
+    },
+    "public.leaderboard_weekly": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "leaderboard_weekly_select_all",
+          "command": "select",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "true",
+          "with_check": null
+        },
+        {
+          "name": "leaderboard_weekly_update_own",
+          "command": "update",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "user_id = auth.uid()",
+          "with_check": "user_id = auth.uid()"
+        },
+        {
+          "name": "leaderboard_weekly_write_own",
+          "command": "insert",
+          "roles": [
+            "authenticated"
+          ],
+          "using": null,
+          "with_check": "user_id = auth.uid()"
+        }
+      ]
+    },
+    "public.learner_error_patterns": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "learner_error_patterns_admin_select",
+          "command": "select",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "public.get_admin_level(auth.uid()) >= 9",
+          "with_check": null
+        },
+        {
+          "name": "learner_error_patterns_select_own",
+          "command": "select",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "user_id = auth.uid()",
+          "with_check": null
+        }
+      ]
+    },
+    "public.learner_interaction_capture": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": []
+    },
+    "public.learner_skill_state": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "learner_skill_state_admin_select",
+          "command": "select",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "public.get_admin_level(auth.uid()) >= 9",
+          "with_check": null
+        },
+        {
+          "name": "learner_skill_state_select_own",
+          "command": "select",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "user_id = auth.uid()",
+          "with_check": null
+        }
+      ]
+    },
+    "public.learning_data_consent": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": []
+    },
+    "public.learning_events": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "learning_events_insert_own",
+          "command": "insert",
+          "roles": [
+            "authenticated"
+          ],
+          "using": null,
+          "with_check": "user_id = auth.uid()"
+        },
+        {
+          "name": "learning_events_select_own",
+          "command": "select",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "user_id = auth.uid()",
+          "with_check": null
+        }
+      ]
+    },
+    "public.lifetime_intent_signups": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "lifetime_intent_insert_own",
+          "command": "insert",
+          "roles": [
+            "authenticated"
+          ],
+          "using": null,
+          "with_check": "auth.uid() = user_id"
+        },
+        {
+          "name": "lifetime_intent_select_own",
+          "command": "select",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "auth.uid() = user_id",
+          "with_check": null
+        }
+      ]
+    },
+    "public.listening_clips": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "listening_public_read",
+          "command": "select",
+          "roles": [
+            "public"
+          ],
+          "using": "true",
+          "with_check": null
+        }
+      ]
+    },
+    "public.login_attempts": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "Admins can view all login attempts",
+          "command": "select",
+          "roles": [
+            "public"
+          ],
+          "using": "has_role(auth.uid(), 'admin')",
+          "with_check": null
+        },
+        {
+          "name": "login_attempts_service_insert",
+          "command": "insert",
+          "roles": [
+            "service_role"
+          ],
+          "using": null,
+          "with_check": "true"
+        },
+        {
+          "name": "Only admins view login attempts",
+          "command": "select",
+          "roles": [
+            "public"
+          ],
+          "using": "has_role(auth.uid(), 'admin')",
+          "with_check": null
+        }
+      ]
+    },
+    "public.mercy_conversations": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "mercy_conversations_owner_delete",
+          "command": "delete",
+          "roles": [
+            "public"
+          ],
+          "using": "auth.uid() = user_id",
+          "with_check": null
+        },
+        {
+          "name": "mercy_conversations_owner_insert",
+          "command": "insert",
+          "roles": [
+            "public"
+          ],
+          "using": null,
+          "with_check": "auth.uid() = user_id"
+        },
+        {
+          "name": "mercy_conversations_owner_select",
+          "command": "select",
+          "roles": [
+            "public"
+          ],
+          "using": "auth.uid() = user_id",
+          "with_check": null
+        },
+        {
+          "name": "mercy_conversations_owner_update",
+          "command": "update",
+          "roles": [
+            "public"
+          ],
+          "using": "auth.uid() = user_id",
+          "with_check": "auth.uid() = user_id"
+        }
+      ]
+    },
+    "public.mercy_feedback_daily_rollups": {
+      "created_in_migrations": false,
+      "rls_enabled": true,
+      "policies": []
+    },
+    "public.mercy_feedback_events": {
+      "created_in_migrations": false,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "mercy_feedback_events_anon_insert",
+          "command": "insert",
+          "roles": [
+            "anon"
+          ],
+          "using": null,
+          "with_check": "true"
+        },
+        {
+          "name": "mercy_feedback_events_auth_insert",
+          "command": "insert",
+          "roles": [
+            "authenticated"
+          ],
+          "using": null,
+          "with_check": "true"
+        }
+      ]
+    },
+    "public.mercy_messages": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "mercy_messages_owner_delete",
+          "command": "delete",
+          "roles": [
+            "public"
+          ],
+          "using": "EXISTS ( SELECT 1 FROM public.mercy_conversations c WHERE c.id = mercy_messages.conversation_id AND c.user_id = auth.uid() )",
+          "with_check": null
+        },
+        {
+          "name": "mercy_messages_owner_insert",
+          "command": "insert",
+          "roles": [
+            "public"
+          ],
+          "using": null,
+          "with_check": "EXISTS ( SELECT 1 FROM public.mercy_conversations c WHERE c.id = mercy_messages.conversation_id AND c.user_id = auth.uid() )"
+        },
+        {
+          "name": "mercy_messages_owner_select",
+          "command": "select",
+          "roles": [
+            "public"
+          ],
+          "using": "EXISTS ( SELECT 1 FROM public.mercy_conversations c WHERE c.id = mercy_messages.conversation_id AND c.user_id = auth.uid() )",
+          "with_check": null
+        }
+      ]
+    },
+    "public.mercy_tts_usage": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "mercy_tts_usage_owner_read",
+          "command": "select",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "auth.uid() = user_id",
+          "with_check": null
+        }
+      ]
+    },
+    "public.mercy_unified_sessions": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "mercy_unified_sessions_select_own",
+          "command": "select",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "auth.uid() = user_id",
+          "with_check": null
+        },
+        {
+          "name": "mercy_unified_sessions_write_own",
+          "command": "all",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "auth.uid() = user_id",
+          "with_check": "auth.uid() = user_id"
+        }
+      ]
+    },
+    "public.mercy_user_facts": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "mercy_user_facts_delete_own",
+          "command": "delete",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "user_id = auth.uid()",
+          "with_check": null
+        },
+        {
+          "name": "mercy_user_facts_insert_own",
+          "command": "insert",
+          "roles": [
+            "authenticated"
+          ],
+          "using": null,
+          "with_check": "user_id = auth.uid()"
+        },
+        {
+          "name": "mercy_user_facts_select_own",
+          "command": "select",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "user_id = auth.uid()",
+          "with_check": null
+        },
+        {
+          "name": "mercy_user_facts_update_own",
+          "command": "update",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "user_id = auth.uid()",
+          "with_check": "user_id = auth.uid()"
+        }
+      ]
+    },
+    "public.mercy_worst_answers_daily": {
+      "created_in_migrations": false,
+      "rls_enabled": true,
+      "policies": []
+    },
+    "public.metrics_history": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "Admins can view metrics history",
+          "command": "select",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "EXISTS ( SELECT 1 FROM public.user_roles WHERE user_roles.user_id = auth.uid() AND user_roles.role = 'admin' )",
+          "with_check": null
+        },
+        {
+          "name": "System can insert metrics snapshots",
+          "command": "insert",
+          "roles": [
+            "authenticated"
+          ],
+          "using": null,
+          "with_check": "true"
+        }
+      ]
+    },
+    "public.mfa_backup_codes": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": []
+    },
+    "public.mfa_lockouts": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": []
+    },
+    "public.mock_interview_sessions": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "mock_interview_sessions_owner_select",
+          "command": "select",
+          "roles": [
+            "public"
+          ],
+          "using": "user_id = auth.uid()",
+          "with_check": null
+        }
+      ]
+    },
+    "public.path_days": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "Admins can manage path days",
+          "command": "all",
+          "roles": [
+            "public"
+          ],
+          "using": "has_role(auth.uid(), 'admin'::app_role)",
+          "with_check": null
+        },
+        {
+          "name": "Admins can manage path_days",
+          "command": "all",
+          "roles": [
+            "public"
+          ],
+          "using": "public.has_role(auth.uid(), 'admin')",
+          "with_check": null
+        },
+        {
+          "name": "Anyone can read path days",
+          "command": "select",
+          "roles": [
+            "public"
+          ],
+          "using": "true",
+          "with_check": null
+        },
+        {
+          "name": "Anyone can read path_days",
+          "command": "select",
+          "roles": [
+            "public"
+          ],
+          "using": "true",
+          "with_check": null
+        }
+      ]
+    },
+    "public.paths": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "Admins can manage paths",
+          "command": "all",
+          "roles": [
+            "public"
+          ],
+          "using": "has_role(auth.uid(), 'admin'::app_role)",
+          "with_check": null
+        },
+        {
+          "name": "Anyone can read paths",
+          "command": "select",
+          "roles": [
+            "public"
+          ],
+          "using": "true",
+          "with_check": null
+        }
+      ]
+    },
+    "public.payment_proof_audit_log": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "Admins can view audit logs",
+          "command": "select",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "has_role(auth.uid(), 'admin')",
+          "with_check": null
+        },
+        {
+          "name": "System can insert audit logs",
+          "command": "insert",
+          "roles": [
+            "authenticated"
+          ],
+          "using": null,
+          "with_check": "auth.uid() = admin_user_id AND has_role(auth.uid(), 'admin')"
+        }
+      ]
+    },
+    "public.payment_proof_submissions": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "Admins can update all submissions",
+          "command": "update",
+          "roles": [
+            "public"
+          ],
+          "using": "has_role(auth.uid(), 'admin')",
+          "with_check": null
+        },
+        {
+          "name": "Admins can view all submissions",
+          "command": "select",
+          "roles": [
+            "public"
+          ],
+          "using": "has_role(auth.uid(), 'admin')",
+          "with_check": null
+        },
+        {
+          "name": "Users can insert their own submissions",
+          "command": "insert",
+          "roles": [
+            "public"
+          ],
+          "using": null,
+          "with_check": "auth.uid() = user_id"
+        },
+        {
+          "name": "Users can view their own submissions",
+          "command": "select",
+          "roles": [
+            "public"
+          ],
+          "using": "auth.uid() = user_id",
+          "with_check": null
+        }
+      ]
+    },
+    "public.payment_transactions": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "Admins can view all transactions",
+          "command": "select",
+          "roles": [
+            "public"
+          ],
+          "using": "has_role(auth.uid(), 'admin')",
+          "with_check": null
+        },
+        {
+          "name": "payment_transactions_service_insert",
+          "command": "insert",
+          "roles": [
+            "service_role"
+          ],
+          "using": null,
+          "with_check": "true"
+        },
+        {
+          "name": "prevent_transaction_deletion",
+          "command": "delete",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "false",
+          "with_check": null
+        },
+        {
+          "name": "Users can view their own transactions",
+          "command": "select",
+          "roles": [
+            "public"
+          ],
+          "using": "auth.uid() = user_id",
+          "with_check": null
+        }
+      ]
+    },
+    "public.paywall_experiment_exposures": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "paywall_exposures_insert_self",
+          "command": "insert",
+          "roles": [
+            "authenticated"
+          ],
+          "using": null,
+          "with_check": "auth.uid() = user_id"
+        },
+        {
+          "name": "paywall_exposures_select_admin",
+          "command": "select",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "public.get_admin_level() >= 9",
+          "with_check": null
+        },
+        {
+          "name": "paywall_exposures_update_admin",
+          "command": "update",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "public.get_admin_level() >= 9",
+          "with_check": "public.get_admin_level() >= 9"
+        },
+        {
+          "name": "paywall_exposures_update_own_conversion",
+          "command": "update",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "auth.uid() = user_id",
+          "with_check": "auth.uid() = user_id"
+        }
+      ]
+    },
+    "public.perf_alert_history": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "admin_read_perf_alert_history",
+          "command": "select",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "public.get_admin_level(auth.uid()) >= 9",
+          "with_check": null
+        }
+      ]
+    },
+    "public.placement_item_exposure": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "plx_admin_sel",
+          "command": "select",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "public.get_admin_level() >= 9",
+          "with_check": null
+        }
+      ]
+    },
+    "public.placement_items": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "placement_items_admin_read",
+          "command": "select",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "public.get_admin_level() >= 9",
+          "with_check": null
+        }
+      ]
+    },
+    "public.placement_responses": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "plr_admin_sel",
+          "command": "select",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "public.get_admin_level() >= 9",
+          "with_check": null
+        },
+        {
+          "name": "plr_owner_ins",
+          "command": "insert",
+          "roles": [
+            "authenticated"
+          ],
+          "using": null,
+          "with_check": "auth.uid() = user_id"
+        },
+        {
+          "name": "plr_owner_sel",
+          "command": "select",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "auth.uid() = user_id",
+          "with_check": null
+        }
+      ]
+    },
+    "public.placement_sessions": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "pls_admin_sel",
+          "command": "select",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "public.get_admin_level() >= 9",
+          "with_check": null
+        },
+        {
+          "name": "pls_owner_ins",
+          "command": "insert",
+          "roles": [
+            "authenticated"
+          ],
+          "using": null,
+          "with_check": "auth.uid() = user_id"
+        },
+        {
+          "name": "pls_owner_sel",
+          "command": "select",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "auth.uid() = user_id",
+          "with_check": null
+        },
+        {
+          "name": "pls_owner_upd",
+          "command": "update",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "auth.uid() = user_id",
+          "with_check": "auth.uid() = user_id"
+        }
+      ]
+    },
+    "public.placement_v3_failure_timelines": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "Admins can read placement v3 failure timelines",
+          "command": "select",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "public.get_admin_level(auth.uid()) >= 9",
+          "with_check": null
+        }
+      ]
+    },
+    "public.placement_v3_forensic_events": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "Admins can read placement v3 forensic events",
+          "command": "select",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "public.get_admin_level(auth.uid()) >= 9",
+          "with_check": null
+        }
+      ]
+    },
+    "public.placement_v3_profiles": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "placement_v3_profiles_select_own",
+          "command": "select",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "user_id = auth.uid()",
+          "with_check": null
+        }
+      ]
+    },
+    "public.placement_v3_responses": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "placement_v3_responses_insert_own_session",
+          "command": "insert",
+          "roles": [
+            "authenticated"
+          ],
+          "using": null,
+          "with_check": "exists ( select 1 from public.placement_v3_sessions s where s.id = placement_v3_responses.session_id and s.user_id = auth.uid() )"
+        },
+        {
+          "name": "placement_v3_responses_select_own_session",
+          "command": "select",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "exists ( select 1 from public.placement_v3_sessions s where s.id = placement_v3_responses.session_id and s.user_id = auth.uid() )",
+          "with_check": null
+        }
+      ]
+    },
+    "public.placement_v3_runtime_alerts": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "Admins can read placement v3 runtime alerts",
+          "command": "select",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "public.get_admin_level(auth.uid()) >= 9",
+          "with_check": null
+        }
+      ]
+    },
+    "public.placement_v3_sessions": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "placement_v3_sessions_insert_own",
+          "command": "insert",
+          "roles": [
+            "authenticated"
+          ],
+          "using": null,
+          "with_check": "user_id = auth.uid()"
+        },
+        {
+          "name": "placement_v3_sessions_select_own",
+          "command": "select",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "user_id = auth.uid()",
+          "with_check": null
+        },
+        {
+          "name": "placement_v3_sessions_update_own",
+          "command": "update",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "user_id = auth.uid()",
+          "with_check": "user_id = auth.uid()"
+        }
+      ]
+    },
+    "public.private_chat_requests": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "Receivers can update request status",
+          "command": "update",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "auth.uid() = receiver_id",
+          "with_check": null
+        },
+        {
+          "name": "Users can create chat requests",
+          "command": "insert",
+          "roles": [
+            "authenticated"
+          ],
+          "using": null,
+          "with_check": "auth.uid() = sender_id"
+        },
+        {
+          "name": "Users can view their requests",
+          "command": "select",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "auth.uid() = sender_id OR auth.uid() = receiver_id",
+          "with_check": null
+        }
+      ]
+    },
+    "public.private_messages": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "Users can mark messages as read",
+          "command": "update",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "auth.uid() = receiver_id",
+          "with_check": null
+        },
+        {
+          "name": "Users can send messages",
+          "command": "insert",
+          "roles": [
+            "authenticated"
+          ],
+          "using": null,
+          "with_check": "auth.uid() = sender_id"
+        },
+        {
+          "name": "Users can view their approved messages",
+          "command": "select",
+          "roles": [
+            "public"
+          ],
+          "using": "(auth.uid() = sender_id OR auth.uid() = receiver_id) AND EXISTS ( SELECT 1 FROM public.private_chat_requests WHERE public.private_chat_requests.id = public.private_messages.request_id AND public.private_chat_requests.status = 'accepted' AND ( public.private_chat_requests.sender_id = auth.uid() OR public.private_chat_requests.receiver_id = auth.uid() ) )",
+          "with_check": null
+        }
+      ]
+    },
+    "public.profiles": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "admins_view_all_profiles",
+          "command": "select",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "EXISTS ( SELECT 1 FROM user_roles WHERE user_id = auth.uid() AND role = 'admin' )",
+          "with_check": null
+        },
+        {
+          "name": "deny_anonymous_profile_access",
+          "command": "all",
+          "roles": [
+            "anon"
+          ],
+          "using": "false",
+          "with_check": null
+        },
+        {
+          "name": "profiles_admin_can_select_all",
+          "command": "select",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "public.get_admin_level(auth.uid()) >= 9",
+          "with_check": null
+        },
+        {
+          "name": "users_insert_own_profile",
+          "command": "insert",
+          "roles": [
+            "authenticated"
+          ],
+          "using": null,
+          "with_check": "auth.uid() = id"
+        },
+        {
+          "name": "users_update_own_profile",
+          "command": "update",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "auth.uid() = id",
+          "with_check": "auth.uid() = id"
+        },
+        {
+          "name": "users_view_own_profile",
+          "command": "select",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "auth.uid() = id",
+          "with_check": null
+        }
+      ]
+    },
+    "public.promo_codes": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "Admins can manage promo codes",
+          "command": "all",
+          "roles": [
+            "public"
+          ],
+          "using": "has_role(auth.uid(), 'admin')",
+          "with_check": null
+        },
+        {
+          "name": "Authenticated users can validate entered codes",
+          "command": "select",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "is_active = true",
+          "with_check": null
+        }
+      ]
+    },
+    "public.pronunciation_challenges": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "pronunciation_challenges_select_all",
+          "command": "select",
+          "roles": [
+            "anon",
+            "authenticated"
+          ],
+          "using": "true",
+          "with_check": null
+        }
+      ]
+    },
+    "public.pronunciation_srs_items": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "Users delete own pronunciation SRS",
+          "command": "delete",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "user_id = auth.uid()",
+          "with_check": null
+        },
+        {
+          "name": "Users read own pronunciation SRS",
+          "command": "select",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "user_id = auth.uid()",
+          "with_check": null
+        },
+        {
+          "name": "Users update own pronunciation SRS",
+          "command": "update",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "user_id = auth.uid()",
+          "with_check": "user_id = auth.uid()"
+        },
+        {
+          "name": "Users write own pronunciation SRS",
+          "command": "insert",
+          "roles": [
+            "authenticated"
+          ],
+          "using": null,
+          "with_check": "user_id = auth.uid()"
+        }
+      ]
+    },
+    "public.push_preferences": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "push_pref_owner_all",
+          "command": "all",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "user_id = auth.uid()",
+          "with_check": "user_id = auth.uid()"
+        }
+      ]
+    },
+    "public.push_send_log": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": []
+    },
+    "public.push_tokens": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "push_tokens_owner_read",
+          "command": "select",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "user_id = auth.uid()",
+          "with_check": null
+        }
+      ]
+    },
+    "public.rate_limit_config": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "Admins can manage rate limits",
+          "command": "all",
+          "roles": [
+            "public"
+          ],
+          "using": "public.has_role(auth.uid(), 'admin')",
+          "with_check": null
+        },
+        {
+          "name": "Anyone can read rate limits",
+          "command": "select",
+          "roles": [
+            "public"
+          ],
+          "using": "true",
+          "with_check": null
+        }
+      ]
+    },
+    "public.rate_limits": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "System can manage rate limits",
+          "command": "all",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "true",
+          "with_check": "true"
+        },
+        {
+          "name": "system_manage_rate_limits",
+          "command": "all",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "true",
+          "with_check": "true"
+        }
+      ]
+    },
+    "public.referral_audit_log": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "referral_audit_log_admin_read",
+          "command": "select",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "public.get_admin_level(auth.uid()) >= 9",
+          "with_check": null
+        }
+      ]
+    },
+    "public.referral_codes": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "referral_codes_select_own",
+          "command": "select",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "auth.uid() = owner_user_id",
+          "with_check": null
+        },
+        {
+          "name": "referral_codes_write_own",
+          "command": "all",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "auth.uid() = owner_user_id",
+          "with_check": "auth.uid() = owner_user_id"
+        }
+      ]
+    },
+    "public.referral_leaderboard_all_time_public": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "referral_lb_all_time_public_read",
+          "command": "select",
+          "roles": [
+            "anon",
+            "authenticated"
+          ],
+          "using": "true",
+          "with_check": null
+        }
+      ]
+    },
+    "public.referral_leaderboard_monthly_public": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "referral_lb_monthly_public_read",
+          "command": "select",
+          "roles": [
+            "anon",
+            "authenticated"
+          ],
+          "using": "true",
+          "with_check": null
+        }
+      ]
+    },
+    "public.referral_leaderboard_optin": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "referral_lb_optin_admin_flag",
+          "command": "update",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "public.get_admin_level(auth.uid()) >= 9",
+          "with_check": "public.get_admin_level(auth.uid()) >= 9"
+        },
+        {
+          "name": "referral_lb_optin_select_own",
+          "command": "select",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "auth.uid() = user_id",
+          "with_check": null
+        },
+        {
+          "name": "referral_lb_optin_write_own",
+          "command": "all",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "auth.uid() = user_id",
+          "with_check": "auth.uid() = user_id"
+        }
+      ]
+    },
+    "public.referral_uses": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "referral_uses_select_owner_or_referred",
+          "command": "select",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "auth.uid() = referred_user_id OR EXISTS ( SELECT 1 FROM public.referral_codes c WHERE c.code = referral_uses.code AND c.owner_user_id = auth.uid() )",
+          "with_check": null
+        }
+      ]
+    },
+    "public.responses": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "Anonymous users can view demo room responses",
+          "command": "select",
+          "roles": [
+            "public"
+          ],
+          "using": "auth.uid() IS NULL AND room_id IN ( SELECT id FROM public.rooms WHERE is_demo = true )",
+          "with_check": null
+        },
+        {
+          "name": "Authenticated users can view all cached responses",
+          "command": "select",
+          "roles": [
+            "public"
+          ],
+          "using": "auth.uid() IS NOT NULL",
+          "with_check": null
+        }
+      ]
+    },
+    "public.review_log": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "review_log_insert_own",
+          "command": "insert",
+          "roles": [
+            "public"
+          ],
+          "using": null,
+          "with_check": "auth.uid() = user_id"
+        },
+        {
+          "name": "review_log_select_own",
+          "command": "select",
+          "roles": [
+            "public"
+          ],
+          "using": "auth.uid() = user_id",
+          "with_check": null
+        }
+      ]
+    },
+    "public.roadmap_item_votes": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "roadmap_item_votes_delete_self",
+          "command": "delete",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "auth.uid() = user_id",
+          "with_check": null
+        },
+        {
+          "name": "roadmap_item_votes_insert_self",
+          "command": "insert",
+          "roles": [
+            "authenticated"
+          ],
+          "using": null,
+          "with_check": "auth.uid() = user_id"
+        },
+        {
+          "name": "roadmap_item_votes_select_own",
+          "command": "select",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "auth.uid() = user_id",
+          "with_check": null
+        }
+      ]
+    },
+    "public.roadmap_items": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "roadmap_items_admin_all",
+          "command": "all",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "public.get_admin_level(auth.uid()) >= 9",
+          "with_check": "public.get_admin_level(auth.uid()) >= 9"
+        },
+        {
+          "name": "roadmap_items_select_public",
+          "command": "select",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "public_visible = true",
+          "with_check": null
+        }
+      ]
+    },
+    "public.role_audit_log": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "Admins can view role audit logs",
+          "command": "select",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "public.has_role(auth.uid(), 'admin'::public.app_role)",
+          "with_check": null
+        }
+      ]
+    },
+    "public.room_assignments": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "Users can insert their room assignments",
+          "command": "insert",
+          "roles": [
+            "public"
+          ],
+          "using": null,
+          "with_check": "auth.uid() = user_id"
+        },
+        {
+          "name": "Users can view their room assignments",
+          "command": "select",
+          "roles": [
+            "public"
+          ],
+          "using": "auth.uid() = user_id",
+          "with_check": null
+        }
+      ]
+    },
+    "public.room_entries": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "Admins can manage room entries",
+          "command": "all",
+          "roles": [
+            "public"
+          ],
+          "using": "has_role(auth.uid(), 'admin'::app_role)",
+          "with_check": "has_role(auth.uid(), 'admin'::app_role)"
+        },
+        {
+          "name": "room_entries_public_free_select",
+          "command": "select",
+          "roles": [
+            "public"
+          ],
+          "using": "EXISTS ( SELECT 1 FROM rooms r WHERE r.id = room_entries.room_id AND COALESCE(r.required_vip_rank, 0) = 0 )",
+          "with_check": null
+        },
+        {
+          "name": "room_entries_select_gated",
+          "command": "select",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "EXISTS ( SELECT 1 FROM rooms r WHERE r.id = room_entries.room_id AND ( COALESCE(r.required_vip_rank, 0) = 0 OR user_vip_rank(auth.uid()) >= COALESCE(r.required_vip_rank, 0) ) )",
+          "with_check": null
+        }
+      ]
+    },
+    "public.room_pins": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "Admins can manage room PINs",
+          "command": "all",
+          "roles": [
+            "public"
+          ],
+          "using": "has_role(auth.uid(), 'admin'::app_role)",
+          "with_check": null
+        }
+      ]
+    },
+    "public.room_specification_assignments": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "Admins can manage specification assignments",
+          "command": "all",
+          "roles": [
+            "public"
+          ],
+          "using": "public.has_role(auth.uid(), 'admin')",
+          "with_check": "public.has_role(auth.uid(), 'admin')"
+        },
+        {
+          "name": "Anyone can view assignments",
+          "command": "select",
+          "roles": [
+            "public"
+          ],
+          "using": "true",
+          "with_check": null
+        }
+      ]
+    },
+    "public.room_specifications": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "Admins can manage room specifications",
+          "command": "all",
+          "roles": [
+            "public"
+          ],
+          "using": "public.has_role(auth.uid(), 'admin')",
+          "with_check": "public.has_role(auth.uid(), 'admin')"
+        },
+        {
+          "name": "Anyone can view specifications",
+          "command": "select",
+          "roles": [
+            "public"
+          ],
+          "using": "true",
+          "with_check": null
+        }
+      ]
+    },
+    "public.room_usage_analytics": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "Admins can view all analytics",
+          "command": "select",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "public.has_role(auth.uid(), 'admin'::app_role)",
+          "with_check": null
+        },
+        {
+          "name": "Users can insert their own analytics",
+          "command": "insert",
+          "roles": [
+            "authenticated"
+          ],
+          "using": null,
+          "with_check": "auth.uid() = user_id"
+        },
+        {
+          "name": "Users can update their own analytics",
+          "command": "update",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "auth.uid() = user_id",
+          "with_check": null
+        },
+        {
+          "name": "Users can view their own analytics",
+          "command": "select",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "auth.uid() = user_id",
+          "with_check": null
+        }
+      ]
+    },
+    "public.rooms": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "Admins can delete rooms",
+          "command": "delete",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "has_role(auth.uid(), 'admin')",
+          "with_check": null
+        },
+        {
+          "name": "Admins can insert rooms",
+          "command": "insert",
+          "roles": [
+            "authenticated"
+          ],
+          "using": null,
+          "with_check": "has_role(auth.uid(), 'admin')"
+        },
+        {
+          "name": "Admins can update rooms",
+          "command": "update",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "has_role(auth.uid(), 'admin')",
+          "with_check": null
+        },
+        {
+          "name": "admins_full_access_rooms",
+          "command": "all",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "has_role(auth.uid(), 'admin'::app_role)",
+          "with_check": "has_role(auth.uid(), 'admin'::app_role)"
+        },
+        {
+          "name": "rooms_public_select",
+          "command": "select",
+          "roles": [
+            "public"
+          ],
+          "using": "true",
+          "with_check": null
+        },
+        {
+          "name": "Users can view rooms based on tier",
+          "command": "select",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "public.has_role(auth.uid(), 'admin') OR public.get_user_tier_level(auth.uid()) >= public.get_room_tier_level(tier)",
+          "with_check": null
+        }
+      ]
+    },
+    "public.security_events": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "Admins can view all security events",
+          "command": "select",
+          "roles": [
+            "public"
+          ],
+          "using": "has_role(auth.uid(), 'admin')",
+          "with_check": null
+        },
+        {
+          "name": "security_events_service_insert",
+          "command": "insert",
+          "roles": [
+            "service_role"
+          ],
+          "using": null,
+          "with_check": "true"
+        }
+      ]
+    },
+    "public.security_incidents": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "Admins can update incidents",
+          "command": "update",
+          "roles": [
+            "public"
+          ],
+          "using": "has_role(auth.uid(), 'admin')",
+          "with_check": null
+        },
+        {
+          "name": "Admins can view incidents",
+          "command": "select",
+          "roles": [
+            "public"
+          ],
+          "using": "has_role(auth.uid(), 'admin')",
+          "with_check": null
+        },
+        {
+          "name": "security_incidents_service_insert",
+          "command": "insert",
+          "roles": [
+            "service_role"
+          ],
+          "using": null,
+          "with_check": "true"
+        }
+      ]
+    },
+    "public.security_monitoring_config": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "Admins can manage monitoring config",
+          "command": "all",
+          "roles": [
+            "public"
+          ],
+          "using": "has_role(auth.uid(), 'admin')",
+          "with_check": null
+        }
+      ]
+    },
+    "public.sentry_crash_rate_snapshots": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "admin_read_sentry_snap",
+          "command": "select",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "public.get_admin_level(auth.uid()) >= 9",
+          "with_check": null
+        }
+      ]
+    },
+    "public.slo_burn_alerts": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "admin_read_slo_burn_alerts",
+          "command": "select",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "public.get_admin_level(auth.uid()) >= 9",
+          "with_check": null
+        }
+      ]
+    },
+    "public.slo_incidents": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "admin_read_slo_incidents",
+          "command": "select",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "public.get_admin_level(auth.uid()) >= 9",
+          "with_check": null
+        }
+      ]
+    },
+    "public.speech_analysis_logs": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "speech_analysis_logs_select_own",
+          "command": "select",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "auth.uid() = user_id",
+          "with_check": null
+        }
+      ]
+    },
+    "public.speech_attempts": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "speech_attempts_admin_select",
+          "command": "select",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "public.get_admin_level(auth.uid()) >= 9",
+          "with_check": null
+        },
+        {
+          "name": "speech_attempts_insert_own",
+          "command": "insert",
+          "roles": [
+            "authenticated"
+          ],
+          "using": null,
+          "with_check": "auth.uid() = user_id"
+        },
+        {
+          "name": "speech_attempts_select_own",
+          "command": "select",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "auth.uid() = user_id",
+          "with_check": null
+        },
+        {
+          "name": "speech_attempts_service_role",
+          "command": "all",
+          "roles": [
+            "service_role"
+          ],
+          "using": "true",
+          "with_check": "true"
+        }
+      ]
+    },
+    "public.stripe_events": {
+      "created_in_migrations": false,
+      "rls_enabled": true,
+      "policies": []
+    },
+    "public.stripe_webhook_events": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": []
+    },
+    "public.study_group_members": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "study_group_members_delete_self_or_owner",
+          "command": "delete",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "user_id = auth.uid() OR EXISTS ( SELECT 1 FROM public.study_groups g WHERE g.id = study_group_members.group_id AND g.owner_user_id = auth.uid() )",
+          "with_check": null
+        },
+        {
+          "name": "study_group_members_select",
+          "command": "select",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "EXISTS ( SELECT 1 FROM public.study_group_members me WHERE me.group_id = study_group_members.group_id AND me.user_id = auth.uid() ) OR EXISTS ( SELECT 1 FROM public.study_groups g WHERE g.id = study_group_members.group_id AND g.is_private = false )",
+          "with_check": null
+        }
+      ]
+    },
+    "public.study_groups": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "study_groups_delete_owner",
+          "command": "delete",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "auth.uid() = owner_user_id",
+          "with_check": null
+        },
+        {
+          "name": "study_groups_insert_owner",
+          "command": "insert",
+          "roles": [
+            "authenticated"
+          ],
+          "using": null,
+          "with_check": "auth.uid() = owner_user_id"
+        },
+        {
+          "name": "study_groups_select",
+          "command": "select",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "is_private = false OR EXISTS ( SELECT 1 FROM public.study_group_members m WHERE m.group_id = study_groups.id AND m.user_id = auth.uid() )",
+          "with_check": null
+        },
+        {
+          "name": "study_groups_update_owner",
+          "command": "update",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "auth.uid() = owner_user_id",
+          "with_check": "auth.uid() = owner_user_id"
+        }
+      ]
+    },
+    "public.study_log": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "study_log_own_insert",
+          "command": "insert",
+          "roles": [
+            "authenticated"
+          ],
+          "using": null,
+          "with_check": "auth.uid() = user_id"
+        },
+        {
+          "name": "study_log_own_select",
+          "command": "select",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "auth.uid() = user_id",
+          "with_check": null
+        },
+        {
+          "name": "study_log_own_update",
+          "command": "update",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "auth.uid() = user_id",
+          "with_check": "auth.uid() = user_id"
+        }
+      ]
+    },
+    "public.subscription_tiers": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "admins_manage_tiers",
+          "command": "all",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "has_role(auth.uid(), 'admin'::app_role)",
+          "with_check": "has_role(auth.uid(), 'admin'::app_role)"
+        },
+        {
+          "name": "authenticated_users_read_tiers",
+          "command": "select",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "is_active = true",
+          "with_check": null
+        }
+      ]
+    },
+    "public.subscription_usage": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "Admins can view all usage",
+          "command": "select",
+          "roles": [
+            "public"
+          ],
+          "using": "has_role(auth.uid(), 'admin')",
+          "with_check": null
+        },
+        {
+          "name": "Users can insert their own usage",
+          "command": "insert",
+          "roles": [
+            "public"
+          ],
+          "using": null,
+          "with_check": "auth.uid() = user_id"
+        },
+        {
+          "name": "Users can update their own usage",
+          "command": "update",
+          "roles": [
+            "public"
+          ],
+          "using": "auth.uid() = user_id",
+          "with_check": null
+        },
+        {
+          "name": "Users can view their own usage",
+          "command": "select",
+          "roles": [
+            "public"
+          ],
+          "using": "auth.uid() = user_id",
+          "with_check": null
+        }
+      ]
+    },
+    "public.subscriptions": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": []
+    },
+    "public.system_logs": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "Admins can view all system logs",
+          "command": "select",
+          "roles": [
+            "public"
+          ],
+          "using": "has_role(auth.uid(), 'admin'::app_role)",
+          "with_check": null
+        },
+        {
+          "name": "system_logs_service_insert",
+          "command": "insert",
+          "roles": [
+            "service_role"
+          ],
+          "using": null,
+          "with_check": "true"
+        }
+      ]
+    },
+    "public.teacher_feedback": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "admin_all_feedback",
+          "command": "all",
+          "roles": [
+            "public"
+          ],
+          "using": "public.get_admin_level() >= 9",
+          "with_check": "public.get_admin_level() >= 9"
+        },
+        {
+          "name": "teacher_insert_feedback",
+          "command": "insert",
+          "roles": [
+            "public"
+          ],
+          "using": null,
+          "with_check": "public.get_admin_level() >= 5 and reviewer_id = auth.uid()"
+        },
+        {
+          "name": "teacher_select_own_feedback",
+          "command": "select",
+          "roles": [
+            "public"
+          ],
+          "using": "public.get_admin_level() >= 5 and reviewer_id = auth.uid()",
+          "with_check": null
+        }
+      ]
+    },
+    "public.teacher_memory": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "teacher_memory_own_delete",
+          "command": "delete",
+          "roles": [
+            "public"
+          ],
+          "using": "auth.uid() = user_id",
+          "with_check": null
+        },
+        {
+          "name": "teacher_memory_own_insert",
+          "command": "insert",
+          "roles": [
+            "public"
+          ],
+          "using": null,
+          "with_check": "auth.uid() = user_id"
+        },
+        {
+          "name": "teacher_memory_own_read",
+          "command": "select",
+          "roles": [
+            "public"
+          ],
+          "using": "auth.uid() = user_id",
+          "with_check": null
+        },
+        {
+          "name": "teacher_memory_own_update",
+          "command": "update",
+          "roles": [
+            "public"
+          ],
+          "using": "auth.uid() = user_id",
+          "with_check": null
+        }
+      ]
+    },
+    "public.testimonials": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "Admin can manage testimonials",
+          "command": "all",
+          "roles": [
+            "public"
+          ],
+          "using": "EXISTS ( SELECT 1 FROM public.user_roles WHERE user_id = auth.uid() AND role = 'admin' )",
+          "with_check": null
+        },
+        {
+          "name": "Anyone can read testimonials",
+          "command": "select",
+          "roles": [
+            "public"
+          ],
+          "using": "true",
+          "with_check": null
+        }
+      ]
+    },
+    "public.tts_usage_log": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "System can insert TTS usage logs",
+          "command": "insert",
+          "roles": [
+            "public"
+          ],
+          "using": null,
+          "with_check": "auth.uid() = user_id"
+        },
+        {
+          "name": "Users can view their own TTS usage",
+          "command": "select",
+          "roles": [
+            "public"
+          ],
+          "using": "auth.uid() = user_id",
+          "with_check": null
+        }
+      ]
+    },
+    "public.ui_health_issues": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "Admins can manage UI health issues",
+          "command": "all",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "has_role(auth.uid(), 'admin'::app_role)",
+          "with_check": "has_role(auth.uid(), 'admin'::app_role)"
+        },
+        {
+          "name": "only_admins_manage_ui_health",
+          "command": "all",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "has_role(auth.uid(), 'admin'::app_role)",
+          "with_check": null
+        }
+      ]
+    },
+    "public.uptime_checks": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "Admins can view uptime checks",
+          "command": "select",
+          "roles": [
+            "public"
+          ],
+          "using": "has_role(auth.uid(), 'admin')",
+          "with_check": null
+        },
+        {
+          "name": "uptime_checks_service_insert",
+          "command": "insert",
+          "roles": [
+            "service_role"
+          ],
+          "using": null,
+          "with_check": "true"
+        }
+      ]
+    },
+    "public.user_challenge_completion": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "user_challenge_completion_insert_own",
+          "command": "insert",
+          "roles": [
+            "authenticated"
+          ],
+          "using": null,
+          "with_check": "user_id = auth.uid()"
+        },
+        {
+          "name": "user_challenge_completion_select_own",
+          "command": "select",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "user_id = auth.uid()",
+          "with_check": null
+        },
+        {
+          "name": "user_challenge_completion_update_own",
+          "command": "update",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "user_id = auth.uid()",
+          "with_check": "user_id = auth.uid()"
+        }
+      ]
+    },
+    "public.user_interview_prompt_votes": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "votes_delete_own",
+          "command": "delete",
+          "roles": [
+            "public"
+          ],
+          "using": "auth.uid() = user_id",
+          "with_check": null
+        },
+        {
+          "name": "votes_insert_own",
+          "command": "insert",
+          "roles": [
+            "public"
+          ],
+          "using": null,
+          "with_check": "auth.uid() = user_id"
+        },
+        {
+          "name": "votes_select_own",
+          "command": "select",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "auth.uid() = user_id",
+          "with_check": null
+        }
+      ]
+    },
+    "public.user_interview_prompts": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "admin_all",
+          "command": "all",
+          "roles": [
+            "public"
+          ],
+          "using": "public.get_admin_level() >= 9",
+          "with_check": "public.get_admin_level() >= 9"
+        },
+        {
+          "name": "public_select_published",
+          "command": "select",
+          "roles": [
+            "public"
+          ],
+          "using": "status = 'published'",
+          "with_check": null
+        },
+        {
+          "name": "submitter_delete_pending",
+          "command": "delete",
+          "roles": [
+            "public"
+          ],
+          "using": "auth.uid() = submitter_user_id and status = 'pending'",
+          "with_check": null
+        },
+        {
+          "name": "submitter_insert_pending",
+          "command": "insert",
+          "roles": [
+            "public"
+          ],
+          "using": null,
+          "with_check": "auth.uid() = submitter_user_id and status = 'pending'"
+        },
+        {
+          "name": "submitter_select_own",
+          "command": "select",
+          "roles": [
+            "public"
+          ],
+          "using": "auth.uid() = submitter_user_id",
+          "with_check": null
+        }
+      ]
+    },
+    "public.user_listening_progress": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "listening_progress_owner",
+          "command": "all",
+          "roles": [
+            "public"
+          ],
+          "using": "user_id = auth.uid()",
+          "with_check": "user_id = auth.uid()"
+        }
+      ]
+    },
+    "public.user_moderation_status": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "Only admins manage moderation",
+          "command": "all",
+          "roles": [
+            "public"
+          ],
+          "using": "has_role(auth.uid(), 'admin')",
+          "with_check": null
+        },
+        {
+          "name": "Users view own moderation status",
+          "command": "select",
+          "roles": [
+            "public"
+          ],
+          "using": "auth.uid() = user_id",
+          "with_check": null
+        }
+      ]
+    },
+    "public.user_moderation_violations": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "Admins can view all violations",
+          "command": "select",
+          "roles": [
+            "public"
+          ],
+          "using": "has_role(auth.uid(), 'admin')",
+          "with_check": null
+        },
+        {
+          "name": "user_moderation_violations_service_insert",
+          "command": "insert",
+          "roles": [
+            "service_role"
+          ],
+          "using": null,
+          "with_check": "true"
+        },
+        {
+          "name": "Users can view their own violations",
+          "command": "select",
+          "roles": [
+            "public"
+          ],
+          "using": "auth.uid() = user_id",
+          "with_check": null
+        }
+      ]
+    },
+    "public.user_music_uploads": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "Admins can delete music uploads",
+          "command": "delete",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "has_role(auth.uid(), 'admin')",
+          "with_check": null
+        },
+        {
+          "name": "Admins can update music uploads",
+          "command": "update",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "has_role(auth.uid(), 'admin')",
+          "with_check": null
+        },
+        {
+          "name": "Admins can view all music uploads",
+          "command": "select",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "has_role(auth.uid(), 'admin')",
+          "with_check": null
+        },
+        {
+          "name": "Users can insert their own music uploads",
+          "command": "insert",
+          "roles": [
+            "authenticated"
+          ],
+          "using": null,
+          "with_check": "auth.uid() = user_id"
+        },
+        {
+          "name": "Users can view approved music",
+          "command": "select",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "upload_status = 'approved'",
+          "with_check": null
+        },
+        {
+          "name": "Users can view their own uploads",
+          "command": "select",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "auth.uid() = user_id",
+          "with_check": null
+        }
+      ]
+    },
+    "public.user_notebook_items": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "user_notebook_items_delete_own",
+          "command": "delete",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "auth.uid() = user_id",
+          "with_check": null
+        },
+        {
+          "name": "user_notebook_items_insert_own",
+          "command": "insert",
+          "roles": [
+            "authenticated"
+          ],
+          "using": null,
+          "with_check": "auth.uid() = user_id"
+        },
+        {
+          "name": "user_notebook_items_select_own",
+          "command": "select",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "auth.uid() = user_id",
+          "with_check": null
+        },
+        {
+          "name": "user_notebook_items_service_role",
+          "command": "all",
+          "roles": [
+            "service_role"
+          ],
+          "using": "true",
+          "with_check": "true"
+        },
+        {
+          "name": "user_notebook_items_update_own",
+          "command": "update",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "auth.uid() = user_id",
+          "with_check": "auth.uid() = user_id"
+        }
+      ]
+    },
+    "public.user_notes": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "Admins can manage all notes",
+          "command": "all",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "has_role(auth.uid(), 'admin')",
+          "with_check": null
+        }
+      ]
+    },
+    "public.user_path_progress": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "Users can delete own progress",
+          "command": "delete",
+          "roles": [
+            "public"
+          ],
+          "using": "auth.uid() = user_id",
+          "with_check": null
+        },
+        {
+          "name": "Users can insert own progress",
+          "command": "insert",
+          "roles": [
+            "public"
+          ],
+          "using": null,
+          "with_check": "auth.uid() = user_id"
+        },
+        {
+          "name": "Users can read own progress",
+          "command": "select",
+          "roles": [
+            "public"
+          ],
+          "using": "auth.uid() = user_id",
+          "with_check": null
+        },
+        {
+          "name": "Users can update own progress",
+          "command": "update",
+          "roles": [
+            "public"
+          ],
+          "using": "auth.uid() = user_id",
+          "with_check": null
+        }
+      ]
+    },
+    "public.user_placements": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "user_placements_own_insert",
+          "command": "insert",
+          "roles": [
+            "authenticated"
+          ],
+          "using": null,
+          "with_check": "auth.uid() = user_id"
+        },
+        {
+          "name": "user_placements_own_select",
+          "command": "select",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "auth.uid() = user_id",
+          "with_check": null
+        }
+      ]
+    },
+    "public.user_points": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "user_points_own_select",
+          "command": "select",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "auth.uid() = user_id",
+          "with_check": null
+        },
+        {
+          "name": "Users can update own points",
+          "command": "update",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "auth.uid() = user_id",
+          "with_check": "auth.uid() = user_id"
+        },
+        {
+          "name": "Users can upsert own points",
+          "command": "insert",
+          "roles": [
+            "authenticated"
+          ],
+          "using": null,
+          "with_check": "auth.uid() = user_id"
+        },
+        {
+          "name": "Users can view own points",
+          "command": "select",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "auth.uid() = user_id",
+          "with_check": null
+        }
+      ]
+    },
+    "public.user_promo_redemptions": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "Admins can view all redemptions",
+          "command": "select",
+          "roles": [
+            "public"
+          ],
+          "using": "has_role(auth.uid(), 'admin')",
+          "with_check": null
+        },
+        {
+          "name": "Users can insert their own redemptions",
+          "command": "insert",
+          "roles": [
+            "public"
+          ],
+          "using": null,
+          "with_check": "auth.uid() = user_id"
+        },
+        {
+          "name": "Users can view their own redemptions",
+          "command": "select",
+          "roles": [
+            "public"
+          ],
+          "using": "auth.uid() = user_id",
+          "with_check": null
+        }
+      ]
+    },
+    "public.user_quotas": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "Users can insert their quotas",
+          "command": "insert",
+          "roles": [
+            "public"
+          ],
+          "using": null,
+          "with_check": "auth.uid() = user_id"
+        },
+        {
+          "name": "Users can update their quotas",
+          "command": "update",
+          "roles": [
+            "public"
+          ],
+          "using": "auth.uid() = user_id",
+          "with_check": null
+        },
+        {
+          "name": "Users can view their quotas",
+          "command": "select",
+          "roles": [
+            "public"
+          ],
+          "using": "auth.uid() = user_id",
+          "with_check": null
+        }
+      ]
+    },
+    "public.user_referrals": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "Users can create referrals",
+          "command": "insert",
+          "roles": [
+            "public"
+          ],
+          "using": null,
+          "with_check": "referrer_user_id = auth.uid()"
+        },
+        {
+          "name": "Users can read their own referrals",
+          "command": "select",
+          "roles": [
+            "public"
+          ],
+          "using": "referrer_user_id = auth.uid() OR referred_user_id = auth.uid()",
+          "with_check": null
+        }
+      ]
+    },
+    "public.user_roles": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "Admins can delete roles",
+          "command": "delete",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "public.has_role(auth.uid(), 'admin'::public.app_role)",
+          "with_check": null
+        },
+        {
+          "name": "Admins can grant roles to users",
+          "command": "insert",
+          "roles": [
+            "authenticated",
+            "for",
+            "insert",
+            "on",
+            "public.user_roles",
+            "to",
+            "users\""
+          ],
+          "using": null,
+          "with_check": "public.has_role(auth.uid(), 'admin')"
+        },
+        {
+          "name": "Admins can insert roles",
+          "command": "insert",
+          "roles": [
+            "authenticated"
+          ],
+          "using": null,
+          "with_check": "public.has_role(auth.uid(), 'admin'::public.app_role) and (created_by is null or created_by = auth.uid())"
+        },
+        {
+          "name": "Admins can revoke roles from users",
+          "command": "delete",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "public.has_role(auth.uid(), 'admin')",
+          "with_check": null
+        },
+        {
+          "name": "Admins can update roles",
+          "command": "update",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "public.has_role(auth.uid(), 'admin'::public.app_role)",
+          "with_check": "public.has_role(auth.uid(), 'admin'::public.app_role)"
+        },
+        {
+          "name": "Admins can view all roles",
+          "command": "select",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "public.has_role(auth.uid(), 'admin'::public.app_role)",
+          "with_check": null
+        },
+        {
+          "name": "only_admins_manage_roles",
+          "command": "all",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "has_role(auth.uid(), 'admin'::app_role)",
+          "with_check": "has_role(auth.uid(), 'admin'::app_role)"
+        },
+        {
+          "name": "only_admins_read_roles",
+          "command": "select",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "auth.uid() = user_id OR has_role(auth.uid(), 'admin'::app_role)",
+          "with_check": null
+        },
+        {
+          "name": "Users can view their own roles",
+          "command": "select",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "auth.uid() = user_id",
+          "with_check": null
+        }
+      ]
+    },
+    "public.user_room_progress": {
+      "created_in_migrations": false,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "user_room_progress_own_delete",
+          "command": "delete",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "auth.uid() = user_id",
+          "with_check": null
+        },
+        {
+          "name": "user_room_progress_own_insert",
+          "command": "insert",
+          "roles": [
+            "authenticated"
+          ],
+          "using": null,
+          "with_check": "auth.uid() = user_id"
+        },
+        {
+          "name": "user_room_progress_own_select",
+          "command": "select",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "auth.uid() = user_id",
+          "with_check": null
+        },
+        {
+          "name": "user_room_progress_own_update",
+          "command": "update",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "auth.uid() = user_id",
+          "with_check": "auth.uid() = user_id"
+        }
+      ]
+    },
+    "public.user_security_status": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "Admins can manage security statuses",
+          "command": "all",
+          "roles": [
+            "public"
+          ],
+          "using": "has_role(auth.uid(), 'admin')",
+          "with_check": null
+        },
+        {
+          "name": "Admins can view all security statuses",
+          "command": "select",
+          "roles": [
+            "public"
+          ],
+          "using": "has_role(auth.uid(), 'admin')",
+          "with_check": null
+        },
+        {
+          "name": "Users can view their own security status",
+          "command": "select",
+          "roles": [
+            "public"
+          ],
+          "using": "auth.uid() = user_id",
+          "with_check": null
+        }
+      ]
+    },
+    "public.user_sessions": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "Users can delete own sessions",
+          "command": "delete",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "auth.uid() = user_id",
+          "with_check": null
+        },
+        {
+          "name": "Users can insert own sessions",
+          "command": "insert",
+          "roles": [
+            "authenticated"
+          ],
+          "using": null,
+          "with_check": "auth.uid() = user_id"
+        },
+        {
+          "name": "Users can update own sessions",
+          "command": "update",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "auth.uid() = user_id",
+          "with_check": null
+        },
+        {
+          "name": "Users can view own sessions",
+          "command": "select",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "auth.uid() = user_id",
+          "with_check": null
+        }
+      ]
+    },
+    "public.user_stories": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "admin_select",
+          "command": "select",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "public.get_admin_level(auth.uid()) >= 9",
+          "with_check": null
+        },
+        {
+          "name": "admin_update",
+          "command": "update",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "public.get_admin_level(auth.uid()) >= 9",
+          "with_check": "public.get_admin_level(auth.uid()) >= 9"
+        },
+        {
+          "name": "owner_delete_pending",
+          "command": "delete",
+          "roles": [
+            "public"
+          ],
+          "using": "auth.uid() = user_id and status = 'pending'",
+          "with_check": null
+        },
+        {
+          "name": "owner_insert",
+          "command": "insert",
+          "roles": [
+            "public"
+          ],
+          "using": null,
+          "with_check": "auth.uid() = user_id and status = 'pending'"
+        },
+        {
+          "name": "owner_select",
+          "command": "select",
+          "roles": [
+            "public"
+          ],
+          "using": "auth.uid() = user_id",
+          "with_check": null
+        },
+        {
+          "name": "owner_update_pending",
+          "command": "update",
+          "roles": [
+            "public"
+          ],
+          "using": "auth.uid() = user_id and status in ('pending', 'published')",
+          "with_check": "auth.uid() = user_id"
+        },
+        {
+          "name": "public_select_published",
+          "command": "select",
+          "roles": [
+            "public"
+          ],
+          "using": "status = 'published'",
+          "with_check": null
+        }
+      ]
+    },
+    "public.user_submitted_sentences": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "user_sentences_insert_self",
+          "command": "insert",
+          "roles": [
+            "authenticated"
+          ],
+          "using": null,
+          "with_check": "submitter_user_id = auth.uid() and status = 'pending' and reviewed_at is null and reviewed_by_user_id is null"
+        },
+        {
+          "name": "user_sentences_select_admin",
+          "command": "select",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "public.get_admin_level(auth.uid()) >= 9",
+          "with_check": null
+        },
+        {
+          "name": "user_sentences_select_self",
+          "command": "select",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "submitter_user_id = auth.uid()",
+          "with_check": null
+        },
+        {
+          "name": "user_sentences_update_admin",
+          "command": "update",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "public.get_admin_level(auth.uid()) >= 9",
+          "with_check": "public.get_admin_level(auth.uid()) >= 9 and submitter_user_id is not distinct from submitter_user_id and en = en and vi = vi"
+        }
+      ]
+    },
+    "public.user_subscription_state": {
+      "created_in_migrations": false,
+      "rls_enabled": true,
+      "policies": []
+    },
+    "public.user_subscriptions": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "Admins can manage all subscriptions",
+          "command": "all",
+          "roles": [
+            "public"
+          ],
+          "using": "has_role(auth.uid(), 'admin')",
+          "with_check": null
+        },
+        {
+          "name": "admins_full_subscription_access",
+          "command": "all",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "has_role(auth.uid(), 'admin'::app_role)",
+          "with_check": "has_role(auth.uid(), 'admin'::app_role)"
+        },
+        {
+          "name": "Users can create their own subscription",
+          "command": "insert",
+          "roles": [
+            "authenticated"
+          ],
+          "using": null,
+          "with_check": "user_id = auth.uid()"
+        },
+        {
+          "name": "users_select_own_subscription_only",
+          "command": "select",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "auth.uid() = user_id OR has_role(auth.uid(), 'admin'::app_role)",
+          "with_check": null
+        }
+      ]
+    },
+    "public.user_tiers": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "Admins can manage all tiers",
+          "command": "all",
+          "roles": [
+            "public"
+          ],
+          "using": "has_role(auth.uid(), 'admin'::app_role)",
+          "with_check": null
+        },
+        {
+          "name": "Users can insert own tier",
+          "command": "insert",
+          "roles": [
+            "public"
+          ],
+          "using": null,
+          "with_check": "auth.uid() = user_id"
+        },
+        {
+          "name": "Users can update own tier",
+          "command": "update",
+          "roles": [
+            "public"
+          ],
+          "using": "auth.uid() = user_id",
+          "with_check": null
+        },
+        {
+          "name": "Users can view own tier",
+          "command": "select",
+          "roles": [
+            "public"
+          ],
+          "using": "auth.uid() = user_id",
+          "with_check": null
+        }
+      ]
+    },
+    "public.user_vocabulary": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "user_vocabulary_delete_own",
+          "command": "delete",
+          "roles": [
+            "public"
+          ],
+          "using": "auth.uid() = user_id",
+          "with_check": null
+        },
+        {
+          "name": "user_vocabulary_insert_own",
+          "command": "insert",
+          "roles": [
+            "public"
+          ],
+          "using": null,
+          "with_check": "auth.uid() = user_id"
+        },
+        {
+          "name": "user_vocabulary_select_own",
+          "command": "select",
+          "roles": [
+            "public"
+          ],
+          "using": "auth.uid() = user_id",
+          "with_check": null
+        },
+        {
+          "name": "user_vocabulary_update_own",
+          "command": "update",
+          "roles": [
+            "public"
+          ],
+          "using": "auth.uid() = user_id",
+          "with_check": "auth.uid() = user_id"
+        }
+      ]
+    },
+    "public.user_writing_submissions": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "user_writing_submissions_admin_all",
+          "command": "all",
+          "roles": [
+            "public"
+          ],
+          "using": "public.get_admin_level() >= 9",
+          "with_check": "public.get_admin_level() >= 9"
+        },
+        {
+          "name": "user_writing_submissions_delete_own",
+          "command": "delete",
+          "roles": [
+            "public"
+          ],
+          "using": "auth.uid() = user_id",
+          "with_check": null
+        },
+        {
+          "name": "user_writing_submissions_insert_own",
+          "command": "insert",
+          "roles": [
+            "public"
+          ],
+          "using": null,
+          "with_check": "auth.uid() = user_id"
+        },
+        {
+          "name": "user_writing_submissions_select_own",
+          "command": "select",
+          "roles": [
+            "public"
+          ],
+          "using": "auth.uid() = user_id",
+          "with_check": null
+        }
+      ]
+    },
+    "public.user_xp": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "user_xp_insert_own",
+          "command": "insert",
+          "roles": [
+            "authenticated"
+          ],
+          "using": null,
+          "with_check": "auth.uid() = user_id"
+        },
+        {
+          "name": "user_xp_select_own",
+          "command": "select",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "auth.uid() = user_id",
+          "with_check": null
+        },
+        {
+          "name": "user_xp_update_own",
+          "command": "update",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "auth.uid() = user_id",
+          "with_check": "auth.uid() = user_id"
+        }
+      ]
+    },
+    "public.v4_curriculum_plans": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "Admins can read all curriculum plans",
+          "command": "select",
+          "roles": [
+            "public"
+          ],
+          "using": "get_admin_level(auth.uid()) >= 9",
+          "with_check": null
+        },
+        {
+          "name": "Users can insert own curriculum plans",
+          "command": "insert",
+          "roles": [
+            "public"
+          ],
+          "using": null,
+          "with_check": "auth.uid() = user_id"
+        },
+        {
+          "name": "Users can read own curriculum plans",
+          "command": "select",
+          "roles": [
+            "public"
+          ],
+          "using": "auth.uid() = user_id",
+          "with_check": null
+        },
+        {
+          "name": "Users can update own curriculum plans",
+          "command": "update",
+          "roles": [
+            "public"
+          ],
+          "using": "auth.uid() = user_id",
+          "with_check": null
+        }
+      ]
+    },
+    "public.v4_learner_memory": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "Admins can read all learner memory",
+          "command": "select",
+          "roles": [
+            "public"
+          ],
+          "using": "get_admin_level(auth.uid()) >= 9",
+          "with_check": null
+        },
+        {
+          "name": "Users can insert own learner memory",
+          "command": "insert",
+          "roles": [
+            "public"
+          ],
+          "using": null,
+          "with_check": "auth.uid() = user_id"
+        },
+        {
+          "name": "Users can read own learner memory",
+          "command": "select",
+          "roles": [
+            "public"
+          ],
+          "using": "auth.uid() = user_id",
+          "with_check": null
+        },
+        {
+          "name": "Users can update own learner memory",
+          "command": "update",
+          "roles": [
+            "public"
+          ],
+          "using": "auth.uid() = user_id",
+          "with_check": null
+        }
+      ]
+    },
+    "public.v4_orchestration_snapshots": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "Admins can read all orchestration snapshots",
+          "command": "select",
+          "roles": [
+            "public"
+          ],
+          "using": "get_admin_level(auth.uid()) >= 9",
+          "with_check": null
+        },
+        {
+          "name": "Users can insert own orchestration snapshots",
+          "command": "insert",
+          "roles": [
+            "public"
+          ],
+          "using": null,
+          "with_check": "auth.uid() = user_id"
+        },
+        {
+          "name": "Users can read own orchestration snapshots",
+          "command": "select",
+          "roles": [
+            "public"
+          ],
+          "using": "auth.uid() = user_id",
+          "with_check": null
+        },
+        {
+          "name": "Users can update own orchestration snapshots",
+          "command": "update",
+          "roles": [
+            "public"
+          ],
+          "using": "auth.uid() = user_id",
+          "with_check": null
+        }
+      ]
+    },
+    "public.v4_provider_decisions": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "Admins can read all provider decisions",
+          "command": "select",
+          "roles": [
+            "public"
+          ],
+          "using": "get_admin_level(auth.uid()) >= 9",
+          "with_check": null
+        },
+        {
+          "name": "Users can read own provider decisions",
+          "command": "select",
+          "roles": [
+            "public"
+          ],
+          "using": "auth.uid() = user_id",
+          "with_check": null
+        }
+      ]
+    },
+    "public.v4_telemetry_events": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "Admins can read all telemetry events",
+          "command": "select",
+          "roles": [
+            "public"
+          ],
+          "using": "get_admin_level(auth.uid()) >= 9",
+          "with_check": null
+        },
+        {
+          "name": "Users can insert own telemetry events",
+          "command": "insert",
+          "roles": [
+            "public"
+          ],
+          "using": null,
+          "with_check": "auth.uid() = user_id"
+        },
+        {
+          "name": "Users can read own telemetry events",
+          "command": "select",
+          "roles": [
+            "public"
+          ],
+          "using": "auth.uid() = user_id",
+          "with_check": null
+        }
+      ]
+    },
+    "public.vip_room_requests": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "Admins can update all requests",
+          "command": "update",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "public.has_role(auth.uid(), 'admin'::app_role)",
+          "with_check": null
+        },
+        {
+          "name": "Admins can view all requests",
+          "command": "select",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "public.has_role(auth.uid(), 'admin'::app_role)",
+          "with_check": null
+        },
+        {
+          "name": "Level 1 users can create their own requests",
+          "command": "insert",
+          "roles": [
+            "authenticated"
+          ],
+          "using": null,
+          "with_check": "auth.uid() = user_id"
+        },
+        {
+          "name": "Users can view their own requests",
+          "command": "select",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "auth.uid() = user_id",
+          "with_check": null
+        }
+      ]
+    },
+    "public.vip_topic_requests_detailed": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "Admins can update all requests",
+          "command": "update",
+          "roles": [
+            "public"
+          ],
+          "using": "has_role(auth.uid(), 'admin')",
+          "with_check": null
+        },
+        {
+          "name": "Admins can view all requests",
+          "command": "select",
+          "roles": [
+            "public"
+          ],
+          "using": "has_role(auth.uid(), 'admin')",
+          "with_check": null
+        },
+        {
+          "name": "Users can insert their own requests",
+          "command": "insert",
+          "roles": [
+            "public"
+          ],
+          "using": null,
+          "with_check": "auth.uid() = user_id"
+        },
+        {
+          "name": "Users can view their own requests",
+          "command": "select",
+          "roles": [
+            "public"
+          ],
+          "using": "auth.uid() = user_id",
+          "with_check": null
+        }
+      ]
+    },
+    "public.vocabulary_srs_items": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "Users delete own vocab SRS",
+          "command": "delete",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "user_id = auth.uid()",
+          "with_check": null
+        },
+        {
+          "name": "Users read own vocab SRS",
+          "command": "select",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "user_id = auth.uid()",
+          "with_check": null
+        },
+        {
+          "name": "Users update own vocab SRS",
+          "command": "update",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "user_id = auth.uid()",
+          "with_check": "user_id = auth.uid()"
+        },
+        {
+          "name": "Users write own vocab SRS",
+          "command": "insert",
+          "roles": [
+            "authenticated"
+          ],
+          "using": null,
+          "with_check": "user_id = auth.uid()"
+        }
+      ]
+    },
+    "public.web_vitals_aggregates": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "admin_read_web_vitals_aggregates",
+          "command": "select",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "public.get_admin_level(auth.uid()) >= 9",
+          "with_check": null
+        }
+      ]
+    },
+    "public.web_vitals_events": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "admin_read_web_vitals",
+          "command": "select",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "public.get_admin_level(auth.uid()) >= 9",
+          "with_check": null
+        },
+        {
+          "name": "anyone_can_insert_web_vitals",
+          "command": "insert",
+          "roles": [
+            "anon",
+            "authenticated"
+          ],
+          "using": null,
+          "with_check": "true"
+        }
+      ]
+    },
+    "public.weekly_digest_data": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "weekly_digest_data_public_read",
+          "command": "select",
+          "roles": [
+            "anon",
+            "authenticated"
+          ],
+          "using": "true",
+          "with_check": null
+        }
+      ]
+    },
+    "public.weekly_leaderboard": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "weekly_leaderboard_select_own",
+          "command": "select",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "auth.uid() = user_id",
+          "with_check": null
+        },
+        {
+          "name": "weekly_leaderboard_select_public_optin",
+          "command": "select",
+          "roles": [
+            "anon",
+            "authenticated"
+          ],
+          "using": "display_name IS NOT NULL",
+          "with_check": null
+        },
+        {
+          "name": "weekly_leaderboard_write_own",
+          "command": "all",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "auth.uid() = user_id",
+          "with_check": "auth.uid() = user_id"
+        }
+      ]
+    },
+    "public.writing_prompts": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "writing_prompts_admin_all",
+          "command": "all",
+          "roles": [
+            "public"
+          ],
+          "using": "public.get_admin_level() >= 9",
+          "with_check": "public.get_admin_level() >= 9"
+        },
+        {
+          "name": "writing_prompts_public_read",
+          "command": "select",
+          "roles": [
+            "public"
+          ],
+          "using": "true",
+          "with_check": null
+        }
+      ]
+    },
+    "public.xp_events": {
+      "created_in_migrations": true,
+      "rls_enabled": true,
+      "policies": [
+        {
+          "name": "xp_events_select_own",
+          "command": "select",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "auth.uid() = user_id",
+          "with_check": null
+        }
+      ]
+    },
+    "storage.objects": {
+      "created_in_migrations": false,
+      "rls_enabled": false,
+      "policies": [
+        {
+          "name": "Admins can delete user music",
+          "command": "delete",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "bucket_id = 'user-music' AND has_role(auth.uid(), 'admin')",
+          "with_check": null
+        },
+        {
+          "name": "Admins can view all bank payment screenshots",
+          "command": "select",
+          "roles": [
+            "public"
+          ],
+          "using": "bucket_id = 'bank-payments' AND has_role(auth.uid(), 'admin'::app_role)",
+          "with_check": null
+        },
+        {
+          "name": "Admins can view all payment screenshots",
+          "command": "select",
+          "roles": [
+            "public"
+          ],
+          "using": "bucket_id = 'payment-proofs' AND has_role(auth.uid(), 'admin')",
+          "with_check": null
+        },
+        {
+          "name": "Admins can view all user music",
+          "command": "select",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "bucket_id = 'user-music' AND has_role(auth.uid(), 'admin')",
+          "with_check": null
+        },
+        {
+          "name": "admins_view_all_payment_proofs",
+          "command": "select",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "bucket_id = 'payment-proofs' AND EXISTS ( SELECT 1 FROM user_roles WHERE user_id = auth.uid() AND role = 'admin' )",
+          "with_check": null
+        },
+        {
+          "name": "Authenticated TTS can insert generated room audio",
+          "command": "insert",
+          "roles": [
+            "authenticated"
+          ],
+          "using": null,
+          "with_check": "bucket_id = 'room-audio' AND auth.uid() IS NOT NULL AND name ~ '^[^/]+/[^/]+\\.mp3$'"
+        },
+        {
+          "name": "Authenticated users can access room audio via signed URLs",
+          "command": "select",
+          "roles": [
+            "public"
+          ],
+          "using": "bucket_id = 'room-audio' AND auth.role() = 'authenticated'",
+          "with_check": null
+        },
+        {
+          "name": "Avatar images are publicly accessible",
+          "command": "select",
+          "roles": [
+            "public"
+          ],
+          "using": "bucket_id = 'avatars'",
+          "with_check": null
+        },
+        {
+          "name": "mercy_tts_cache_public_read",
+          "command": "select",
+          "roles": [
+            "public"
+          ],
+          "using": "bucket_id = 'mercy-tts-cache'",
+          "with_check": null
+        },
+        {
+          "name": "Public read access for audio files",
+          "command": "select",
+          "roles": [
+            "public"
+          ],
+          "using": "bucket_id = 'audio'",
+          "with_check": null
+        },
+        {
+          "name": "Service role can delete audio files",
+          "command": "delete",
+          "roles": [
+            "service_role"
+          ],
+          "using": "bucket_id = 'audio'",
+          "with_check": null
+        },
+        {
+          "name": "Service role can delete room audio uploads",
+          "command": "delete",
+          "roles": [
+            "service_role"
+          ],
+          "using": "bucket_id = 'room-audio-uploads'",
+          "with_check": null
+        },
+        {
+          "name": "Service role can update audio files",
+          "command": "update",
+          "roles": [
+            "service_role"
+          ],
+          "using": "bucket_id = 'audio'",
+          "with_check": "bucket_id = 'audio'"
+        },
+        {
+          "name": "Service role can upload audio files",
+          "command": "insert",
+          "roles": [
+            "service_role"
+          ],
+          "using": null,
+          "with_check": "bucket_id = 'audio'"
+        },
+        {
+          "name": "Service role can upload room audio",
+          "command": "insert",
+          "roles": [
+            "service_role"
+          ],
+          "using": null,
+          "with_check": "bucket_id = 'room-audio'"
+        },
+        {
+          "name": "Service role can upload room audio uploads",
+          "command": "insert",
+          "roles": [
+            "service_role"
+          ],
+          "using": null,
+          "with_check": "bucket_id = 'room-audio-uploads'"
+        },
+        {
+          "name": "share_cards_owner_delete",
+          "command": "delete",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "bucket_id = 'share-cards' AND auth.uid()::text = (storage.foldername(name))[1]",
+          "with_check": null
+        },
+        {
+          "name": "share_cards_owner_insert",
+          "command": "insert",
+          "roles": [
+            "authenticated"
+          ],
+          "using": null,
+          "with_check": "bucket_id = 'share-cards' AND auth.uid()::text = (storage.foldername(name))[1]"
+        },
+        {
+          "name": "share_cards_public_read",
+          "command": "select",
+          "roles": [
+            "public"
+          ],
+          "using": "bucket_id = 'share-cards'",
+          "with_check": null
+        },
+        {
+          "name": "Users can delete their own avatar",
+          "command": "delete",
+          "roles": [
+            "public"
+          ],
+          "using": "bucket_id = 'avatars' AND auth.uid()::text = (storage.foldername(name))[1]",
+          "with_check": null
+        },
+        {
+          "name": "Users can update their own avatar",
+          "command": "update",
+          "roles": [
+            "public"
+          ],
+          "using": "bucket_id = 'avatars' AND auth.uid()::text = (storage.foldername(name))[1]",
+          "with_check": null
+        },
+        {
+          "name": "Users can upload bank payment screenshots",
+          "command": "insert",
+          "roles": [
+            "public"
+          ],
+          "using": null,
+          "with_check": "bucket_id = 'bank-payments' AND auth.uid()::text = (storage.foldername(name))[1]"
+        },
+        {
+          "name": "Users can upload their own avatar",
+          "command": "insert",
+          "roles": [
+            "public"
+          ],
+          "using": null,
+          "with_check": "bucket_id = 'avatars' AND auth.uid()::text = (storage.foldername(name))[1]"
+        },
+        {
+          "name": "Users can upload their own music",
+          "command": "insert",
+          "roles": [
+            "authenticated"
+          ],
+          "using": null,
+          "with_check": "bucket_id = 'user-music' AND auth.uid()::text = (storage.foldername(name))[1]"
+        },
+        {
+          "name": "Users can upload their payment screenshots",
+          "command": "insert",
+          "roles": [
+            "public"
+          ],
+          "using": null,
+          "with_check": "bucket_id = 'payment-proofs' AND auth.uid()::text = (storage.foldername(name))[1]"
+        },
+        {
+          "name": "Users can view own bank payment screenshots",
+          "command": "select",
+          "roles": [
+            "public"
+          ],
+          "using": "bucket_id = 'bank-payments' AND auth.uid()::text = (storage.foldername(name))[1]",
+          "with_check": null
+        },
+        {
+          "name": "Users can view their own music",
+          "command": "select",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "bucket_id = 'user-music' AND auth.uid()::text = (storage.foldername(name))[1]",
+          "with_check": null
+        },
+        {
+          "name": "Users can view their own payment screenshots",
+          "command": "select",
+          "roles": [
+            "public"
+          ],
+          "using": "bucket_id = 'payment-proofs' AND auth.uid()::text = (storage.foldername(name))[1]",
+          "with_check": null
+        },
+        {
+          "name": "users_delete_own_payment_proofs",
+          "command": "delete",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "bucket_id = 'payment-proofs' AND (auth.uid())::text = (storage.foldername(name))[1]",
+          "with_check": null
+        },
+        {
+          "name": "users_insert_own_payment_proofs",
+          "command": "insert",
+          "roles": [
+            "authenticated"
+          ],
+          "using": null,
+          "with_check": "bucket_id = 'payment-proofs' AND (auth.uid())::text = (storage.foldername(name))[1]"
+        },
+        {
+          "name": "users_update_own_payment_proofs",
+          "command": "update",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "bucket_id = 'payment-proofs' AND (auth.uid())::text = (storage.foldername(name))[1]",
+          "with_check": null
+        },
+        {
+          "name": "users_view_own_payment_proofs",
+          "command": "select",
+          "roles": [
+            "authenticated"
+          ],
+          "using": "bucket_id = 'payment-proofs' AND (auth.uid())::text = (storage.foldername(name))[1]",
+          "with_check": null
+        }
+      ]
+    }
+  }
+}

@@ -21,6 +21,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   /** Indonesian word/phrase. */
   word: string;
   /** English meaning. */
@@ -36,6 +37,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   /** Indonesian line. */
   text: string;
@@ -253,6 +255,7 @@ export const lessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: use `kena tilang` or `ditilang` when you receive a ticket; `menilang` is what the officer does. If you do not understand, say `mohon dijelaskan pelan-pelan` instead of reacting sharply.",
     vocabulary: [
       {
+        cell_id: "e3c3b06e-fd09-4550-91dc-f9c5f53681ef",
         word: "tilang",
         en: "traffic ticket",
         vi: "biên bản/phạt giao thông",
@@ -261,6 +264,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "TEE-lang",
       },
       {
+        cell_id: "ce109bd5-457d-4e5f-ab16-616b88d3e7d5",
         word: "surat kendaraan",
         en: "vehicle documents",
         vi: "giấy tờ xe",
@@ -269,6 +273,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "SOO-rat ken-da-RA-an",
       },
       {
+        cell_id: "7ab459e3-2108-4d3b-8dc1-fc25283db281",
         word: "SIM",
         en: "driver's license",
         vi: "bằng lái",
@@ -277,6 +282,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "sim",
       },
       {
+        cell_id: "e83187ae-4bad-467b-9f31-4d9a218b1f05",
         word: "STNK",
         en: "vehicle registration",
         vi: "giấy đăng ký xe",
@@ -285,6 +291,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "es-teh-en-KA",
       },
       {
+        cell_id: "c5a21b44-b73a-44fd-95c3-c43b8f7882f3",
         word: "pelanggaran lalu lintas",
         en: "traffic violation",
         vi: "vi phạm giao thông",
@@ -293,6 +300,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "peh-lang-GA-ran LA-loo LIN-tas",
       },
       {
+        cell_id: "4efb072e-9389-4bbc-8882-c23fbf6ee101",
         word: "denda",
         en: "fine",
         vi: "tiền phạt",
@@ -301,6 +309,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "DEN-da",
       },
       {
+        cell_id: "cd1528bb-9e2e-4e85-a0c8-eb46114142e9",
         word: "sidang tilang",
         en: "traffic ticket hearing",
         vi: "phiên xử/giải quyết phạt giao thông",
@@ -309,6 +318,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "SEE-dang TEE-lang",
       },
       {
+        cell_id: "b0130f4c-84f3-4aa9-9f73-9c4ecf07e1a3",
         word: "petugas",
         en: "officer; staff member",
         vi: "cán bộ/nhân viên",
@@ -317,6 +327,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "peh-TOO-gas",
       },
       {
+        cell_id: "56b5b60e-3aa1-44dc-b8c4-20e74bc6bfbf",
         word: "resmi",
         en: "official",
         vi: "chính thức",
@@ -325,6 +336,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "res-MEE",
       },
       {
+        cell_id: "8001e6d3-bff4-42e9-b89b-62c9f7ef3625",
         word: "mengikuti prosedur",
         en: "follow procedure",
         vi: "làm theo quy trình",
@@ -335,24 +347,28 @@ export const lessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "2a8c8dd0-367d-41ed-9d9e-3f508dd3b434",
         speaker: "Pengendara",
         text: "Selamat siang, Pak. Ada apa, ya?",
         vi: "Chào anh. Có chuyện gì vậy ạ?",
         en: "Good afternoon, officer. What is the matter?",
       },
       {
+        cell_id: "dba57072-d657-442b-a31a-71950a430683",
         speaker: "Polisi",
         text: "Bapak melakukan pelanggaran lalu lintas. Tolong tunjukkan SIM dan STNK.",
         vi: "Anh đã vi phạm giao thông. Vui lòng cho xem bằng lái và giấy đăng ký xe.",
         en: "You committed a traffic violation. Please show your license and vehicle registration.",
       },
       {
+        cell_id: "d9457afa-3db6-485e-a7b7-aab1b610ef82",
         speaker: "Pengendara",
         text: "Ini SIM dan STNK saya. Pelanggarannya bisa dijelaskan, Pak?",
         vi: "Đây là bằng lái và giấy đăng ký xe của tôi. Anh có thể giải thích lỗi vi phạm không?",
         en: "Here are my license and registration. Could you explain the violation, officer?",
       },
       {
+        cell_id: "3aa5539c-4ff4-4062-a3a1-c9bdf99494c3",
         speaker: "Polisi",
         text: "Nanti tertulis di surat tilang. Dendanya dibayar lewat kanal resmi.",
         vi: "Lát nữa sẽ ghi trong biên bản phạt. Tiền phạt trả qua kênh chính thức.",

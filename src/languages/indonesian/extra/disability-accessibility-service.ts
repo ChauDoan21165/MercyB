@@ -12,6 +12,7 @@ type LessonSentence = {
 };
 
 type VocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -21,6 +22,7 @@ type VocabEntry = {
 };
 
 type DialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -137,6 +139,7 @@ export const disabilityAccessibilityServiceLessons: IndonesianLesson[] = [
       "Safe frames: `Saya memakai kursi roda`, `Saya perlu jalur landai`, `Apakah ada loket prioritas?`, `Pendamping saya boleh masuk?`. Vietnamese speakers should remember `untuk` = for, `bersama` = together with, `di mana` = where.",
     vocabulary: [
       {
+        cell_id: "e03dac47-fed4-44ae-b39b-04005682c233",
         word: "akses difabel",
         en: "disabled access",
         vi: "lối/khả năng tiếp cận cho người khuyết tật",
@@ -145,6 +148,7 @@ export const disabilityAccessibilityServiceLessons: IndonesianLesson[] = [
         pronunciation_en: "AK-ses dee-FA-bel",
       },
       {
+        cell_id: "a5c358a8-0cb0-4ce8-84a4-0e10435f1fbe",
         word: "kursi roda",
         en: "wheelchair",
         vi: "xe lăn",
@@ -153,6 +157,7 @@ export const disabilityAccessibilityServiceLessons: IndonesianLesson[] = [
         pronunciation_en: "KOOR-see RO-da",
       },
       {
+        cell_id: "5545bc9b-7688-44da-9bd6-d0079083656d",
         word: "jalur landai",
         en: "ramp / sloped access path",
         vi: "đường dốc / lối dốc",
@@ -161,6 +166,7 @@ export const disabilityAccessibilityServiceLessons: IndonesianLesson[] = [
         pronunciation_en: "JA-loor LAN-dai",
       },
       {
+        cell_id: "358d001a-043f-4b24-ba83-3f290c76bdb8",
         word: "loket prioritas",
         en: "priority counter",
         vi: "quầy ưu tiên",
@@ -169,6 +175,7 @@ export const disabilityAccessibilityServiceLessons: IndonesianLesson[] = [
         pronunciation_en: "LO-ket pree-o-ree-TAS",
       },
       {
+        cell_id: "7cce9232-4c3e-409e-a0b0-bbe882cb19e1",
         word: "penyandang disabilitas",
         en: "person with a disability",
         vi: "người khuyết tật",
@@ -177,6 +184,7 @@ export const disabilityAccessibilityServiceLessons: IndonesianLesson[] = [
         pronunciation_en: "pe-NYAN-dang dee-sa-bee-lee-TAS",
       },
       {
+        cell_id: "630ee7f4-967d-457e-9eca-e384bd476166",
         word: "pendamping",
         en: "companion / assistant",
         vi: "người đi cùng / người hỗ trợ",
@@ -187,24 +195,28 @@ export const disabilityAccessibilityServiceLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "66987714-e667-4feb-8632-7edda1879843",
         speaker: "Pengunjung",
         text: "Permisi, apakah kantor ini punya akses untuk difabel?",
         vi: "Xin lỗi, văn phòng này có lối tiếp cận cho người khuyết tật không?",
         en: "Excuse me, does this office have disabled access?",
       },
       {
+        cell_id: "cd6feb46-6f4e-4777-95b0-619be0c0fd42",
         speaker: "Petugas",
         text: "Ada, Pak. Jalur landai ada di pintu samping.",
         vi: "Có ạ. Đường dốc ở cửa bên.",
         en: "Yes, Sir. The ramp is at the side entrance.",
       },
       {
+        cell_id: "a251a31b-2dfc-4546-a056-c4bbcf8da048",
         speaker: "Pengunjung",
         text: "Saya memakai kursi roda. Pendamping saya boleh masuk?",
         vi: "Tôi dùng xe lăn. Người hỗ trợ tôi có được vào không?",
         en: "I use a wheelchair. May my companion enter?",
       },
       {
+        cell_id: "1d76e8ad-3b1e-42d7-9317-6e84407598dc",
         speaker: "Petugas",
         text: "Boleh. Silakan ke loket prioritas.",
         vi: "Được ạ. Mời đến quầy ưu tiên.",
@@ -334,6 +346,7 @@ export const disabilityAccessibilityServiceLessons: IndonesianLesson[] = [
       "Help-request frames: `Boleh minta bantuan petugas?`, `Saya kesulitan...`, `Tolong tunjukkan...`, `Apakah lift ini bisa dipakai...?`. Use `tolong` for a concrete request, and `terima kasih` after receiving help.",
     vocabulary: [
       {
+        cell_id: "72e0d20c-929c-4b70-a7eb-b567f378897a",
         word: "bantuan petugas",
         en: "staff assistance",
         vi: "sự hỗ trợ của nhân viên/cán bộ",
@@ -342,6 +355,7 @@ export const disabilityAccessibilityServiceLessons: IndonesianLesson[] = [
         pronunciation_en: "ban-TOO-an pe-TOO-gas",
       },
       {
+        cell_id: "0e6a435a-1588-40cb-94b7-b0c3ea7bb725",
         word: "kesulitan",
         en: "difficulty",
         vi: "khó khăn",
@@ -350,6 +364,7 @@ export const disabilityAccessibilityServiceLessons: IndonesianLesson[] = [
         pronunciation_en: "ke-su-LEE-tan",
       },
       {
+        cell_id: "7af3fe17-2edb-47f0-a31f-e64e2dc5e13a",
         word: "alat bantu jalan",
         en: "walking aid",
         vi: "dụng cụ hỗ trợ đi lại",
@@ -358,6 +373,7 @@ export const disabilityAccessibilityServiceLessons: IndonesianLesson[] = [
         pronunciation_en: "A-lat BAN-too JA-lan",
       },
       {
+        cell_id: "0a3560c6-69cc-44f6-a14e-30c6ceb66412",
         word: "pengguna kursi roda",
         en: "wheelchair user",
         vi: "người dùng xe lăn",
@@ -366,6 +382,7 @@ export const disabilityAccessibilityServiceLessons: IndonesianLesson[] = [
         pronunciation_en: "peng-GOO-na KOOR-see RO-da",
       },
       {
+        cell_id: "8b22ec59-974f-470c-b32a-3a07fe3a58bf",
         word: "jalur alternatif",
         en: "alternative route",
         vi: "lối đi thay thế",
@@ -374,6 +391,7 @@ export const disabilityAccessibilityServiceLessons: IndonesianLesson[] = [
         pronunciation_en: "JA-loor al-ter-na-TEEF",
       },
       {
+        cell_id: "2e564f19-2864-4c39-81e3-fb601c302064",
         word: "dengan sabar",
         en: "patiently",
         vi: "một cách kiên nhẫn",
@@ -384,24 +402,28 @@ export const disabilityAccessibilityServiceLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "f33d87a6-7e01-4e18-9509-635b0844a05c",
         speaker: "Pengunjung",
         text: "Permisi, boleh minta bantuan petugas sebentar?",
         vi: "Xin lỗi, tôi có thể nhờ nhân viên hỗ trợ một lát không?",
         en: "Excuse me, may I ask for staff assistance for a moment?",
       },
       {
+        cell_id: "a56785cb-c446-494f-a865-67c35b9d637b",
         speaker: "Petugas",
         text: "Tentu. Apa yang bisa saya bantu?",
         vi: "Tất nhiên. Tôi có thể giúp gì?",
         en: "Of course. How can I help?",
       },
       {
+        cell_id: "3aa565b0-bb28-45b3-9257-da205ac21ca7",
         speaker: "Pengunjung",
         text: "Saya kesulitan naik tangga. Apakah ada jalur alternatif?",
         vi: "Tôi gặp khó khăn khi lên cầu thang. Có lối đi thay thế không?",
         en: "I have difficulty climbing stairs. Is there an alternative route?",
       },
       {
+        cell_id: "00380a56-7da3-4425-a0ab-c431b809e968",
         speaker: "Petugas",
         text: "Ada. Saya tunjukkan lift yang ramah kursi roda.",
         vi: "Có. Tôi sẽ chỉ thang máy thân thiện với xe lăn.",

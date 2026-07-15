@@ -12,6 +12,7 @@ type LessonSentence = {
 };
 
 type VocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -21,6 +22,7 @@ type VocabEntry = {
 };
 
 type DialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -207,6 +209,7 @@ export const lessons: IndonesianLesson[] = [
       "Very useful patterns: `barang cacat`, `video sebagai bukti`, `ongkir retur`, `kebijakan toko`, `minta refund`, and `solusi penjual`. Use `mohon cek` or `silakan kirim` to stay polite but clear.",
     vocabulary: [
       {
+        cell_id: "1360dda6-b676-4a77-96a4-6f614b967df4",
         word: "retur",
         en: "return",
         vi: "trả hàng",
@@ -215,6 +218,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "reh-TOOR",
       },
       {
+        cell_id: "611e231f-6167-4204-874c-08d57b631615",
         word: "barang cacat",
         en: "defective item",
         vi: "hàng lỗi",
@@ -223,6 +227,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "BA-rang CHA-chat",
       },
       {
+        cell_id: "19551c1d-bb6f-49fb-8643-79937c18d04b",
         word: "ongkir retur",
         en: "return shipping fee",
         vi: "phí gửi trả",
@@ -231,6 +236,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "ong-KEER reh-TOOR",
       },
       {
+        cell_id: "a44abd94-b308-44b5-af98-c80c2a6987e3",
         word: "video sebagai bukti",
         en: "video as proof",
         vi: "video làm bằng chứng",
@@ -239,6 +245,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "VI-dee-oh seh-ba-GUY BOOK-tee",
       },
       {
+        cell_id: "82b582ef-8a00-49f7-b353-3377428a986f",
         word: "kebijakan toko",
         en: "store policy",
         vi: "chính sách của shop",
@@ -247,6 +254,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "keh-bee-JA-kan TO-ko",
       },
       {
+        cell_id: "1b9ad1d1-7b05-413d-92d2-2b825e20fd2c",
         word: "rating toko",
         en: "store rating",
         vi: "đánh giá shop",
@@ -255,6 +263,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "RAY-ting TO-ko",
       },
       {
+        cell_id: "c1745fc1-ae9f-4ce9-bd2e-035376e79486",
         word: "refund",
         en: "refund",
         vi: "hoàn tiền",
@@ -263,6 +272,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "REE-fund",
       },
       {
+        cell_id: "8982f65a-dfc8-4f51-8872-ce0c6af1fe34",
         word: "chat pelanggan",
         en: "customer chat",
         vi: "chat với khách",
@@ -271,6 +281,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "chat pel-LANG-gan",
       },
       {
+        cell_id: "418854b9-be0e-4964-9c2f-c09c80be7372",
         word: "solusi penjual",
         en: "seller solution",
         vi: "giải pháp của người bán",
@@ -279,6 +290,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "so-LOO-see pen-JOO-al",
       },
       {
+        cell_id: "5f0112a8-8c6d-48da-881e-d7deb75166d0",
         word: "masa garansi",
         en: "warranty period",
         vi: "thời hạn bảo hành",
@@ -289,36 +301,42 @@ export const lessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "5e9c97c5-151c-4b6d-9801-d35fb52b763d",
         speaker: "Pembeli",
         text: "Barang ini cacat, saya mau retur.",
         vi: "Món hàng này bị lỗi, tôi muốn trả hàng.",
         en: "This item is defective, I want to return it.",
       },
       {
+        cell_id: "16008bbe-7abd-47b6-9aec-f65495841cb6",
         speaker: "Penjual",
         text: "Silakan kirim video sebagai bukti, ya.",
         vi: "Vui lòng gửi video làm bằng chứng nhé.",
         en: "Please send a video as proof.",
       },
       {
+        cell_id: "9ae1e5ba-0092-4110-b88b-74faa246a881",
         speaker: "Pembeli",
         text: "Ongkir retur ini siapa yang bayar?",
         vi: "Phí gửi trả này ai trả?",
         en: "Who pays for this return shipping fee?",
       },
       {
+        cell_id: "65cbeaa2-56f7-4541-befe-a320715c5d22",
         speaker: "Penjual",
         text: "Mohon cek kebijakan toko dulu. Kita lihat solusi terbaik.",
         vi: "Vui lòng kiểm tra chính sách shop trước. Chúng ta xem giải pháp tốt nhất.",
         en: "Please check the store policy first. Let's see the best solution.",
       },
       {
+        cell_id: "20593775-976d-4b15-8c8c-bf36b7906aee",
         speaker: "Pembeli",
         text: "Kalau begitu, saya minta refund saja.",
         vi: "Vậy thì tôi chỉ xin hoàn tiền thôi.",
         en: "In that case, I would like a refund only.",
       },
       {
+        cell_id: "a69eeca7-4cfe-4d15-b259-4ed6f34818ab",
         speaker: "Penjual",
         text: "Baik, kami proses setelah video dan bukti diterima.",
         vi: "Vâng, chúng tôi sẽ xử lý sau khi nhận được video và bằng chứng.",

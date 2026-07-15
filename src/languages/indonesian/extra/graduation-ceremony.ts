@@ -23,6 +23,7 @@ export type LessonSentence = {
 };
 
 export type VocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -32,6 +33,7 @@ export type VocabEntry = {
 };
 
 export type DialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -128,17 +130,17 @@ export const lessons: IndonesianLesson[] = [
     tip_advice_en:
       "Three levels: skripsi (bachelor's) < tesis (master's) < disertasi (doctorate). 'dosen' = lecturer (vs 'guru' = school teacher). Academic verbs are full of the meN- prefix: mengerjakan, mengumpulkan, menulis — easy for Vietnamese. 'tentang' = about (a topic).",
     vocabulary: [
-      { word: "skripsi", en: "undergraduate thesis", vi: "luận văn cử nhân", pos: "noun", pronunciation_vi: "SKRIP-si", pronunciation_en: "SKRIP-see" },
-      { word: "dosen", en: "university lecturer", vi: "giảng viên", pos: "noun", pronunciation_vi: "DO-sen", pronunciation_en: "DOH-sen" },
-      { word: "dosen pembimbing", en: "thesis supervisor", vi: "giảng viên hướng dẫn", pos: "noun phrase", pronunciation_vi: "DO-sen pem-BIM-bing", pronunciation_en: "DOH-sen pem-BIM-bing" },
-      { word: "bab", en: "chapter", vi: "chương", pos: "noun", pronunciation_vi: "BAB", pronunciation_en: "BAB" },
-      { word: "mahasiswa", en: "university student", vi: "sinh viên", pos: "noun", pronunciation_vi: "ma-ha-SIS-wa", pronunciation_en: "mah-hah-SIS-wah" },
-      { word: "penelitian", en: "research", vi: "nghiên cứu", pos: "noun", pronunciation_vi: "pe-ne-li-TI-an", pronunciation_en: "puh-nuh-lee-TEE-an" },
+      { cell_id: "1532acf6-47d7-4f71-93bb-cbad6b4bd900", word: "skripsi", en: "undergraduate thesis", vi: "luận văn cử nhân", pos: "noun", pronunciation_vi: "SKRIP-si", pronunciation_en: "SKRIP-see" },
+      { cell_id: "1f52cc51-0395-495d-95f6-9b31c993415a", word: "dosen", en: "university lecturer", vi: "giảng viên", pos: "noun", pronunciation_vi: "DO-sen", pronunciation_en: "DOH-sen" },
+      { cell_id: "bf64e30c-b85e-4706-97bc-1a63c88ff5fb", word: "dosen pembimbing", en: "thesis supervisor", vi: "giảng viên hướng dẫn", pos: "noun phrase", pronunciation_vi: "DO-sen pem-BIM-bing", pronunciation_en: "DOH-sen pem-BIM-bing" },
+      { cell_id: "398bf6a7-78b6-44a1-b5bc-21ef7f28e34f", word: "bab", en: "chapter", vi: "chương", pos: "noun", pronunciation_vi: "BAB", pronunciation_en: "BAB" },
+      { cell_id: "ce4cffec-158c-495d-a459-5984cd513887", word: "mahasiswa", en: "university student", vi: "sinh viên", pos: "noun", pronunciation_vi: "ma-ha-SIS-wa", pronunciation_en: "mah-hah-SIS-wah" },
+      { cell_id: "6bd2c170-dac8-49a9-a070-7dcd66d56e61", word: "penelitian", en: "research", vi: "nghiên cứu", pos: "noun", pronunciation_vi: "pe-ne-li-TI-an", pronunciation_en: "puh-nuh-lee-TEE-an" },
     ],
     dialogue: [
-      { speaker: "Tina", text: "Skripsimu udah sampai bab berapa?", vi: "Luận văn cậu tới chương mấy rồi?", en: "Which chapter is your thesis on now?" },
-      { speaker: "Joko", text: "Baru bab tiga. Lagi nunggu revisi dari dosen pembimbing.", vi: "Mới chương ba. Đang đợi chỉnh sửa từ giảng viên hướng dẫn.", en: "Only chapter three. Waiting for revisions from my supervisor." },
-      { speaker: "Tina", text: "Semangat ya! Sebentar lagi sidang.", vi: "Cố lên nhé! Sắp bảo vệ rồi đấy.", en: "Hang in there! The defense is coming soon." },
+      { cell_id: "67ad4a3b-8358-4863-8899-9de772a56274", speaker: "Tina", text: "Skripsimu udah sampai bab berapa?", vi: "Luận văn cậu tới chương mấy rồi?", en: "Which chapter is your thesis on now?" },
+      { cell_id: "ef4b0145-bdb5-4417-8b86-7567d87c9354", speaker: "Joko", text: "Baru bab tiga. Lagi nunggu revisi dari dosen pembimbing.", vi: "Mới chương ba. Đang đợi chỉnh sửa từ giảng viên hướng dẫn.", en: "Only chapter three. Waiting for revisions from my supervisor." },
+      { cell_id: "e00d4776-13f1-49a0-bae8-4ab835f741de", speaker: "Tina", text: "Semangat ya! Sebentar lagi sidang.", vi: "Cố lên nhé! Sắp bảo vệ rồi đấy.", en: "Hang in there! The defense is coming soon." },
     ],
     exercises: [
       {
@@ -223,17 +225,17 @@ export const lessons: IndonesianLesson[] = [
     tip_advice_en:
       "'sidang' = defense (also 'court hearing' outside academia). 'penguji' (examiner) from 'uji' (to test) + pe-. 'lulus' = pass, 'gagal' = fail. 'presentasi' is an English borrowing. Useful line: 'Semoga lancar sidangnya!' (May your defense go smoothly!).",
     vocabulary: [
-      { word: "sidang", en: "thesis defense / session", vi: "buổi bảo vệ", pos: "noun", pronunciation_vi: "SI-dang", pronunciation_en: "SEE-dang" },
-      { word: "penguji", en: "examiner", vi: "giám khảo", pos: "noun", pronunciation_vi: "pe-NGU-ji", pronunciation_en: "puh-NGOO-jee" },
-      { word: "lulus", en: "to pass", vi: "đậu, đỗ", pos: "verb", pronunciation_vi: "LU-lus", pronunciation_en: "LOO-loos" },
-      { word: "gugup", en: "nervous", vi: "hồi hộp, run", pos: "adjective", pronunciation_vi: "GU-gup", pronunciation_en: "GOO-goop" },
-      { word: "presentasi", en: "presentation", vi: "bài thuyết trình", pos: "noun", pronunciation_vi: "pre-sen-TA-si", pronunciation_en: "preh-sen-TAH-see" },
-      { word: "nilai", en: "grade, score", vi: "điểm số", pos: "noun", pronunciation_vi: "NI-lai", pronunciation_en: "NEE-lai" },
+      { cell_id: "5d5cadad-4e97-4631-88b7-0db17de5b57b", word: "sidang", en: "thesis defense / session", vi: "buổi bảo vệ", pos: "noun", pronunciation_vi: "SI-dang", pronunciation_en: "SEE-dang" },
+      { cell_id: "d852c9a6-fcf6-4ce8-a375-7dde3df694bf", word: "penguji", en: "examiner", vi: "giám khảo", pos: "noun", pronunciation_vi: "pe-NGU-ji", pronunciation_en: "puh-NGOO-jee" },
+      { cell_id: "9338a304-c3aa-464e-91d0-eff15a003bd4", word: "lulus", en: "to pass", vi: "đậu, đỗ", pos: "verb", pronunciation_vi: "LU-lus", pronunciation_en: "LOO-loos" },
+      { cell_id: "c0351c86-ccf4-4638-9c21-fc49a3794704", word: "gugup", en: "nervous", vi: "hồi hộp, run", pos: "adjective", pronunciation_vi: "GU-gup", pronunciation_en: "GOO-goop" },
+      { cell_id: "6aafdc2e-66f0-47c4-b307-f47b62b4e118", word: "presentasi", en: "presentation", vi: "bài thuyết trình", pos: "noun", pronunciation_vi: "pre-sen-TA-si", pronunciation_en: "preh-sen-TAH-see" },
+      { cell_id: "c531d16c-cf2a-4bfc-b652-ad5200d49af3", word: "nilai", en: "grade, score", vi: "điểm số", pos: "noun", pronunciation_vi: "NI-lai", pronunciation_en: "NEE-lai" },
     ],
     dialogue: [
-      { speaker: "Rani", text: "Gimana sidangmu tadi? Lancar?", vi: "Buổi bảo vệ vừa rồi sao? Suôn sẻ không?", en: "How was your defense earlier? Did it go smoothly?" },
-      { speaker: "Doni", text: "Alhamdulillah lulus! Penguji cuma kasih sedikit revisi.", vi: "Ơn trời đậu rồi! Giám khảo chỉ cho ít chỉnh sửa.", en: "Thank God I passed! The examiners gave only minor revisions." },
-      { speaker: "Rani", text: "Selamat ya! Sebentar lagi wisuda!", vi: "Chúc mừng! Sắp tốt nghiệp rồi!", en: "Congratulations! Graduation is coming soon!" },
+      { cell_id: "d3f71ad7-fcbf-4ac1-8d91-286fa1214cad", speaker: "Rani", text: "Gimana sidangmu tadi? Lancar?", vi: "Buổi bảo vệ vừa rồi sao? Suôn sẻ không?", en: "How was your defense earlier? Did it go smoothly?" },
+      { cell_id: "11eed8b0-08c3-46e9-ab7d-22c8821103c0", speaker: "Doni", text: "Alhamdulillah lulus! Penguji cuma kasih sedikit revisi.", vi: "Ơn trời đậu rồi! Giám khảo chỉ cho ít chỉnh sửa.", en: "Thank God I passed! The examiners gave only minor revisions." },
+      { cell_id: "6ffc3d58-ab31-45e2-9907-2d7dae3fffb9", speaker: "Rani", text: "Selamat ya! Sebentar lagi wisuda!", vi: "Chúc mừng! Sắp tốt nghiệp rồi!", en: "Congratulations! Graduation is coming soon!" },
     ],
     exercises: [
       {
@@ -316,17 +318,17 @@ export const lessons: IndonesianLesson[] = [
     tip_advice_en:
       "'wisuda' = graduation ceremony, 'toga' = gown, 'sarjana' = graduate/bachelor. The rite: 'memindahkan tali toga' (move the tassel). Passive di-: dipanggil (is called). 'memakai' (to wear) covers both gown and cap. Congratulation: 'Selamat wisuda!'.",
     vocabulary: [
-      { word: "wisuda", en: "graduation ceremony", vi: "lễ tốt nghiệp", pos: "noun", pronunciation_vi: "wi-SU-da", pronunciation_en: "wee-SOO-dah" },
-      { word: "toga", en: "academic gown", vi: "áo choàng cử nhân", pos: "noun", pronunciation_vi: "TO-ga", pronunciation_en: "TOH-gah" },
-      { word: "sarjana", en: "graduate, bachelor's holder", vi: "cử nhân", pos: "noun", pronunciation_vi: "sar-JA-na", pronunciation_en: "sar-JAH-nah" },
-      { word: "topi", en: "cap, hat", vi: "mũ, nón", pos: "noun", pronunciation_vi: "TO-pi", pronunciation_en: "TOH-pee" },
-      { word: "universitas", en: "university", vi: "trường đại học", pos: "noun", pronunciation_vi: "u-ni-ver-si-TAS", pronunciation_en: "oo-nee-ver-see-TAS" },
-      { word: "rektor", en: "rector, university head", vi: "hiệu trưởng đại học", pos: "noun", pronunciation_vi: "REK-tor", pronunciation_en: "REK-tor" },
+      { cell_id: "d9164fe9-0d72-4fd2-896b-1ca693d64cec", word: "wisuda", en: "graduation ceremony", vi: "lễ tốt nghiệp", pos: "noun", pronunciation_vi: "wi-SU-da", pronunciation_en: "wee-SOO-dah" },
+      { cell_id: "4d973b97-f565-4ff1-8414-fd72a97830e9", word: "toga", en: "academic gown", vi: "áo choàng cử nhân", pos: "noun", pronunciation_vi: "TO-ga", pronunciation_en: "TOH-gah" },
+      { cell_id: "fdff59ac-bbdf-41c4-936f-21f0d52aaefb", word: "sarjana", en: "graduate, bachelor's holder", vi: "cử nhân", pos: "noun", pronunciation_vi: "sar-JA-na", pronunciation_en: "sar-JAH-nah" },
+      { cell_id: "85098c5b-1214-4158-8c9e-2b7a5fca5dcc", word: "topi", en: "cap, hat", vi: "mũ, nón", pos: "noun", pronunciation_vi: "TO-pi", pronunciation_en: "TOH-pee" },
+      { cell_id: "7d4ea7cf-36e9-4c23-8341-490d2fcf688d", word: "universitas", en: "university", vi: "trường đại học", pos: "noun", pronunciation_vi: "u-ni-ver-si-TAS", pronunciation_en: "oo-nee-ver-see-TAS" },
+      { cell_id: "52195bd1-4e92-41b1-bebf-ef9cff402551", word: "rektor", en: "rector, university head", vi: "hiệu trưởng đại học", pos: "noun", pronunciation_vi: "REK-tor", pronunciation_en: "REK-tor" },
     ],
     dialogue: [
-      { speaker: "Ibu", text: "Anakku, hari ini kamu resmi jadi sarjana!", vi: "Con của mẹ, hôm nay con chính thức là cử nhân!", en: "My child, today you officially become a graduate!" },
-      { speaker: "Sinta", text: "Iya, Bu. Terima kasih sudah mendukung selama ini.", vi: "Vâng mẹ. Cảm ơn mẹ đã ủng hộ suốt thời gian qua.", en: "Yes, Mum. Thank you for supporting me all this time." },
-      { speaker: "Ibu", text: "Bangga sekali. Ayo foto bareng pakai toga!", vi: "Mẹ tự hào lắm. Nào chụp ảnh chung với áo cử nhân!", en: "So proud. Let's take a photo together in your gown!" },
+      { cell_id: "a78efc5c-f377-468d-9fed-eab7ed1c4b3e", speaker: "Ibu", text: "Anakku, hari ini kamu resmi jadi sarjana!", vi: "Con của mẹ, hôm nay con chính thức là cử nhân!", en: "My child, today you officially become a graduate!" },
+      { cell_id: "6590a726-5073-4228-84db-ce143c900284", speaker: "Sinta", text: "Iya, Bu. Terima kasih sudah mendukung selama ini.", vi: "Vâng mẹ. Cảm ơn mẹ đã ủng hộ suốt thời gian qua.", en: "Yes, Mum. Thank you for supporting me all this time." },
+      { cell_id: "9e27e777-4dfb-4acf-b817-2162948a407f", speaker: "Ibu", text: "Bangga sekali. Ayo foto bareng pakai toga!", vi: "Mẹ tự hào lắm. Nào chụp ảnh chung với áo cử nhân!", en: "So proud. Let's take a photo together in your gown!" },
     ],
     exercises: [
       {
@@ -411,12 +413,12 @@ export const lessons: IndonesianLesson[] = [
     tip_advice_en:
       "'ijazah' = diploma, 'transkrip' = transcript, 'IPK' = GPA. Decimal COMMA (3,5) like Vietnamese — don't use the English period. 'melamar kerja' = to apply for a job. Passive di-: dilegalisir (is certified). 'ijazah' has a clear 'z' — pronounce it fully.",
     vocabulary: [
-      { word: "ijazah", en: "diploma, certificate", vi: "bằng tốt nghiệp", pos: "noun", pronunciation_vi: "i-JA-zah", pronunciation_en: "ee-JAH-zah" },
-      { word: "transkrip", en: "transcript", vi: "bảng điểm", pos: "noun", pronunciation_vi: "trans-KRIP", pronunciation_en: "trans-KRIP" },
-      { word: "IPK", en: "cumulative GPA", vi: "điểm trung bình tích lũy", pos: "noun", pronunciation_vi: "i-pe-KA", pronunciation_en: "ee-peh-KAH" },
-      { word: "melamar kerja", en: "to apply for a job", vi: "xin việc", pos: "verb phrase", pronunciation_vi: "me-LA-mar KER-ja", pronunciation_en: "muh-LAH-mar KER-jah" },
-      { word: "fotokopi", en: "photocopy", vi: "bản photo", pos: "noun", pronunciation_vi: "fo-to-KO-pi", pronunciation_en: "foh-toh-KOH-pee" },
-      { word: "cumlaude", en: "with honours (GPA ≥3.5)", vi: "loại giỏi/xuất sắc", pos: "noun", pronunciation_vi: "kum-LA-u-de", pronunciation_en: "koom-LAU-deh" },
+      { cell_id: "f8a79b5c-c4a7-4739-a5d7-0f7422cdce0e", word: "ijazah", en: "diploma, certificate", vi: "bằng tốt nghiệp", pos: "noun", pronunciation_vi: "i-JA-zah", pronunciation_en: "ee-JAH-zah" },
+      { cell_id: "40d2b1a7-e1cb-4d00-9f4b-7ce5964fb562", word: "transkrip", en: "transcript", vi: "bảng điểm", pos: "noun", pronunciation_vi: "trans-KRIP", pronunciation_en: "trans-KRIP" },
+      { cell_id: "27113628-8e72-4363-a7dd-e12a46100851", word: "IPK", en: "cumulative GPA", vi: "điểm trung bình tích lũy", pos: "noun", pronunciation_vi: "i-pe-KA", pronunciation_en: "ee-peh-KAH" },
+      { cell_id: "744fd929-f329-4866-9acd-1cab13c8a1dd", word: "melamar kerja", en: "to apply for a job", vi: "xin việc", pos: "verb phrase", pronunciation_vi: "me-LA-mar KER-ja", pronunciation_en: "muh-LAH-mar KER-jah" },
+      { cell_id: "35e27081-5656-4503-8b3e-ad1fe705fc51", word: "fotokopi", en: "photocopy", vi: "bản photo", pos: "noun", pronunciation_vi: "fo-to-KO-pi", pronunciation_en: "foh-toh-KOH-pee" },
+      { cell_id: "c66e30cc-f84c-4ecb-81e4-cafd16dac873", word: "cumlaude", en: "with honours (GPA ≥3.5)", vi: "loại giỏi/xuất sắc", pos: "noun", pronunciation_vi: "kum-LA-u-de", pronunciation_en: "koom-LAU-deh" },
     ],
     exercises: [
       {
@@ -507,17 +509,17 @@ export const lessons: IndonesianLesson[] = [
     tip_advice_en:
       "Wishes: 'Selamat atas kelulusanmu!' / 'Selamat wisuda!'. Formal register for ceremony: telah (>sudah), ingin (>mau), kepada (>ke). 'fresh graduate' is an English borrowing. The ke-...-an pattern: kelulusan (graduation), from 'lulus'. 'langsung' has two 'ng' — pronounce clearly.",
     vocabulary: [
-      { word: "selamat", en: "congratulations", vi: "chúc mừng", pos: "interjection", pronunciation_vi: "se-LA-mat", pronunciation_en: "suh-LAH-mat" },
-      { word: "kelulusan", en: "graduation, passing", vi: "sự tốt nghiệp", pos: "noun", pronunciation_vi: "ke-lu-LU-san", pronunciation_en: "kuh-loo-LOO-san" },
-      { word: "mencari kerja", en: "to look for work", vi: "tìm việc", pos: "verb phrase", pronunciation_vi: "men-CA-ri KER-ja", pronunciation_en: "men-CHAH-ree KER-jah" },
-      { word: "membimbing", en: "to guide, mentor", vi: "dìu dắt, hướng dẫn", pos: "verb", pronunciation_vi: "mem-BIM-bing", pronunciation_en: "mem-BIM-bing" },
-      { word: "bangga", en: "proud", vi: "tự hào", pos: "adjective", pronunciation_vi: "BANG-ga", pronunciation_en: "BANG-gah" },
-      { word: "masa depan", en: "the future", vi: "tương lai", pos: "noun phrase", pronunciation_vi: "MA-sa de-PAN", pronunciation_en: "MAH-sah duh-PAN" },
+      { cell_id: "c13ecfd1-ed25-407c-ac2c-5bc304db43b8", word: "selamat", en: "congratulations", vi: "chúc mừng", pos: "interjection", pronunciation_vi: "se-LA-mat", pronunciation_en: "suh-LAH-mat" },
+      { cell_id: "936763f8-592e-4aee-b24a-b275d0b68c7a", word: "kelulusan", en: "graduation, passing", vi: "sự tốt nghiệp", pos: "noun", pronunciation_vi: "ke-lu-LU-san", pronunciation_en: "kuh-loo-LOO-san" },
+      { cell_id: "8c17b760-27a3-4902-ad32-c42c45b2f2ac", word: "mencari kerja", en: "to look for work", vi: "tìm việc", pos: "verb phrase", pronunciation_vi: "men-CA-ri KER-ja", pronunciation_en: "men-CHAH-ree KER-jah" },
+      { cell_id: "b5bdd8b8-3157-42ad-b0f4-57dcd6530952", word: "membimbing", en: "to guide, mentor", vi: "dìu dắt, hướng dẫn", pos: "verb", pronunciation_vi: "mem-BIM-bing", pronunciation_en: "mem-BIM-bing" },
+      { cell_id: "af0d4cc8-7a88-42f0-a2b2-078f7be2a34a", word: "bangga", en: "proud", vi: "tự hào", pos: "adjective", pronunciation_vi: "BANG-ga", pronunciation_en: "BANG-gah" },
+      { cell_id: "ae298fa6-3e95-4730-866a-c60d754542b6", word: "masa depan", en: "the future", vi: "tương lai", pos: "noun phrase", pronunciation_vi: "MA-sa de-PAN", pronunciation_en: "MAH-sah duh-PAN" },
     ],
     dialogue: [
-      { speaker: "Teman", text: "Selamat atas kelulusanmu! Rencana selanjutnya apa?", vi: "Chúc mừng cậu tốt nghiệp! Kế hoạch tiếp theo là gì?", en: "Congrats on graduating! What's your next plan?" },
-      { speaker: "Wira", text: "Makasih! Aku mau langsung mencari kerja.", vi: "Cảm ơn! Tớ muốn tìm việc ngay.", en: "Thanks! I want to start job-hunting right away." },
-      { speaker: "Teman", text: "Semoga cepat dapat ya. Masa depanmu cerah!", vi: "Mong cậu sớm có việc. Tương lai cậu tươi sáng!", en: "Hope you find one soon. Your future is bright!" },
+      { cell_id: "d0b2630d-5f62-4ddd-ad6e-45390cf57dbd", speaker: "Teman", text: "Selamat atas kelulusanmu! Rencana selanjutnya apa?", vi: "Chúc mừng cậu tốt nghiệp! Kế hoạch tiếp theo là gì?", en: "Congrats on graduating! What's your next plan?" },
+      { cell_id: "69f4127f-10a0-4a68-a6c4-875594cbd2b0", speaker: "Wira", text: "Makasih! Aku mau langsung mencari kerja.", vi: "Cảm ơn! Tớ muốn tìm việc ngay.", en: "Thanks! I want to start job-hunting right away." },
+      { cell_id: "38ab8478-b330-451e-94fd-f9757b70dcad", speaker: "Teman", text: "Semoga cepat dapat ya. Masa depanmu cerah!", vi: "Mong cậu sớm có việc. Tương lai cậu tươi sáng!", en: "Hope you find one soon. Your future is bright!" },
     ],
     exercises: [
       {

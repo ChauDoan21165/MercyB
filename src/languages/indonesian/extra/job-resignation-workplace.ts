@@ -13,6 +13,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -22,6 +23,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -208,6 +210,7 @@ export const lessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: for resignation, avoid blunt translations like 'I quit'. Use office chunks: `ingin resign`, `surat pengunduran diri`, `notice period`, `handover`, `pamit kepada rekan kerja`, `mohon konfirmasi`. For entitlements, use `berhak mendapat + noun`: `berhak mendapat pesangon`. In email use `saya`, `Bapak/Ibu`, `mohon`, `terima kasih`, and avoid `aku/kamu`.",
     vocabulary: [
       {
+        cell_id: "68b05b11-7f89-4451-8a9d-1de49e8b2a43",
         word: "resign",
         en: "to resign",
         vi: "xin nghỉ việc",
@@ -216,6 +219,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "re-SIGN",
       },
       {
+        cell_id: "5e062799-6c1a-4add-9710-d062ae44eb2f",
         word: "surat pengunduran diri",
         en: "resignation letter",
         vi: "thư xin nghỉ việc",
@@ -224,6 +228,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "SOO-rat pe-ngoon-DOO-ran DEE-ree",
       },
       {
+        cell_id: "f46ed51e-1ce2-4b16-99a8-dfe95e636675",
         word: "notice period",
         en: "notice period",
         vi: "thời gian báo trước",
@@ -232,6 +237,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "NO-tice PEER-ee-od",
       },
       {
+        cell_id: "d3e4de9b-457c-4498-a642-3f5b373bc2d5",
         word: "handover",
         en: "handover",
         vi: "bàn giao",
@@ -240,6 +246,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "HAN-do-ver",
       },
       {
+        cell_id: "ae4d6708-6a8e-4aeb-81e8-15e3f7d0498f",
         word: "atasan",
         en: "superior / boss",
         vi: "cấp trên / sếp",
@@ -248,6 +255,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "a-TA-san",
       },
       {
+        cell_id: "1c1f89ff-21c3-4735-aae4-9635cfc18613",
         word: "rekan kerja",
         en: "coworker",
         vi: "đồng nghiệp",
@@ -256,6 +264,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "re-KAN KER-ja",
       },
       {
+        cell_id: "9a89bb06-ebfc-4abf-b376-42121b9963f9",
         word: "pesangon",
         en: "severance pay",
         vi: "trợ cấp thôi việc",
@@ -264,6 +273,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "pe-SAH-ngon",
       },
       {
+        cell_id: "5c2c1881-63f6-4b85-83ca-7bda5445ddf3",
         word: "exit interview",
         en: "exit interview",
         vi: "phỏng vấn nghỉ việc",
@@ -272,6 +282,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "EK-sit IN-ter-view",
       },
       {
+        cell_id: "cf5c28cd-1780-4048-a047-d44e12227629",
         word: "pamit",
         en: "to take leave / say goodbye respectfully",
         vi: "chào/xin phép trước khi đi",
@@ -280,6 +291,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "PAH-mit",
       },
       {
+        cell_id: "fd1ce810-d847-4457-bb46-0b8084f45766",
         word: "tanggal terakhir",
         en: "last date",
         vi: "ngày cuối cùng",
@@ -290,30 +302,35 @@ export const lessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "39a799e0-02b1-42e8-9f7d-a5eb30aaee13",
         speaker: "Karyawan",
         text: "Pak, saya ingin bicara tentang rencana resign saya.",
         vi: "Anh/chú ơi, tôi muốn nói về kế hoạch nghỉ việc của tôi.",
         en: "Sir, I would like to talk about my plan to resign.",
       },
       {
+        cell_id: "2c2bc410-6d60-4dc5-addf-e497707e8488",
         speaker: "Atasan",
         text: "Baik. Apakah Anda sudah menyiapkan surat pengunduran diri?",
         vi: "Được. Anh/chị đã chuẩn bị thư xin nghỉ việc chưa?",
         en: "Okay. Have you prepared a resignation letter?",
       },
       {
+        cell_id: "05fefd3b-60ec-4017-998f-916b0d0c17a5",
         speaker: "Karyawan",
         text: "Sudah, Pak. Notice period saya tiga puluh hari.",
         vi: "Rồi ạ. Thời gian báo trước của tôi là ba mươi ngày.",
         en: "Yes, sir. My notice period is thirty days.",
       },
       {
+        cell_id: "df856e32-4982-4ad2-bec2-9e52e522b292",
         speaker: "Atasan",
         text: "Tolong selesaikan handover dengan rekan kerja sebelum hari terakhir.",
         vi: "Vui lòng hoàn thành bàn giao với đồng nghiệp trước ngày cuối cùng.",
         en: "Please complete the handover with your coworker before the last day.",
       },
       {
+        cell_id: "21248abd-e9dd-4c4b-a798-fd9f9be370d8",
         speaker: "Karyawan",
         text: "Baik. Saya juga akan pamit kepada tim dan ikut exit interview.",
         vi: "Vâng. Tôi cũng sẽ chào tạm biệt nhóm và tham gia phỏng vấn nghỉ việc.",

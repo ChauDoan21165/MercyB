@@ -13,6 +13,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -22,6 +23,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -138,6 +140,7 @@ export const foodDeliveryCustomerLessons: IndonesianLesson[] = [
       "Remember three frames: `Saya mau pesan...`, `Di catatan pesanan, tulis...`, and `Alamat saya di...`. For delivery apps, `driver`, `promo`, `ongkir`, and `catatan pesanan` are the most practical keywords.",
     vocabulary: [
       {
+        cell_id: "b6731b17-f8f3-47e0-9a09-e40d1ef70b2d",
         word: "GoFood",
         en: "GoFood food delivery service",
         vi: "dịch vụ giao đồ ăn GoFood",
@@ -146,6 +149,7 @@ export const foodDeliveryCustomerLessons: IndonesianLesson[] = [
         pronunciation_en: "GO-food",
       },
       {
+        cell_id: "68422d04-240a-415c-96a9-2b1b39013552",
         word: "GrabFood",
         en: "GrabFood food delivery service",
         vi: "dịch vụ giao đồ ăn GrabFood",
@@ -154,6 +158,7 @@ export const foodDeliveryCustomerLessons: IndonesianLesson[] = [
         pronunciation_en: "GRAB-food",
       },
       {
+        cell_id: "5b318a7b-3a4f-4dd2-b429-d6a64f8a4180",
         word: "pesan makanan",
         en: "order food",
         vi: "đặt đồ ăn",
@@ -162,6 +167,7 @@ export const foodDeliveryCustomerLessons: IndonesianLesson[] = [
         pronunciation_en: "PE-san ma-KA-nan",
       },
       {
+        cell_id: "20eb7b5f-6582-412c-9cac-f0e0356d59cc",
         word: "catatan pesanan",
         en: "order note",
         vi: "ghi chú đơn hàng",
@@ -170,6 +176,7 @@ export const foodDeliveryCustomerLessons: IndonesianLesson[] = [
         pronunciation_en: "cha-TA-tan pe-SA-nan",
       },
       {
+        cell_id: "60b861e8-a0fa-480b-bd0a-b3bddf630692",
         word: "alamat",
         en: "address",
         vi: "địa chỉ",
@@ -178,6 +185,7 @@ export const foodDeliveryCustomerLessons: IndonesianLesson[] = [
         pronunciation_en: "A-la-mat",
       },
       {
+        cell_id: "942c938e-4692-4005-986c-a8584d8ff217",
         word: "ongkir",
         en: "delivery fee / shipping fee",
         vi: "phí ship",
@@ -188,18 +196,21 @@ export const foodDeliveryCustomerLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "2d471e36-47fd-4006-8e14-79adbe4f2d82",
         speaker: "Pelanggan",
         text: "Halo, Pak. Alamat saya di lobi utama apartemen.",
         vi: "A lô chú. Địa chỉ của tôi ở sảnh chính chung cư.",
         en: "Hello, sir. My address is at the main lobby of the apartment building.",
       },
       {
+        cell_id: "88f0d9ad-df7e-44de-b717-ef304b8ce8ba",
         speaker: "Driver",
         text: "Baik, saya sudah ambil pesanannya.",
         vi: "Được, tôi đã lấy đơn rồi.",
         en: "Okay, I have picked up the order.",
       },
       {
+        cell_id: "29346b1c-5e08-44a8-8a9f-e81f10824b8f",
         speaker: "Pelanggan",
         text: "Terima kasih. Tolong taruh di meja resepsionis.",
         vi: "Cảm ơn. Làm ơn để ở bàn lễ tân.",
@@ -316,6 +327,7 @@ export const foodDeliveryCustomerLessons: IndonesianLesson[] = [
       "For a clear complaint, use the pattern: problem + when it happened + proof. Example: `Makanan tumpah waktu diantar. Saya sudah kirim foto sebagai bukti.`",
     vocabulary: [
       {
+        cell_id: "b5ff71d5-ac55-4ebe-94d6-8e36bdf996cd",
         word: "tumpah",
         en: "spilled",
         vi: "bị đổ / tràn",
@@ -324,6 +336,7 @@ export const foodDeliveryCustomerLessons: IndonesianLesson[] = [
         pronunciation_en: "TOOM-pah",
       },
       {
+        cell_id: "b911aa0e-4e94-43df-a5b3-d498bdaef4c8",
         word: "refund",
         en: "refund",
         vi: "hoàn tiền",
@@ -332,6 +345,7 @@ export const foodDeliveryCustomerLessons: IndonesianLesson[] = [
         pronunciation_en: "REE-fund",
       },
       {
+        cell_id: "0f310acc-29c4-4855-912a-493b530b0c11",
         word: "ajukan refund",
         en: "request a refund",
         vi: "yêu cầu hoàn tiền",
@@ -340,6 +354,7 @@ export const foodDeliveryCustomerLessons: IndonesianLesson[] = [
         pronunciation_en: "a-JOO-kan REE-fund",
       },
       {
+        cell_id: "04cd980a-fc91-4711-bd4d-cddfd482384b",
         word: "bukti",
         en: "proof / evidence",
         vi: "bằng chứng",
@@ -348,6 +363,7 @@ export const foodDeliveryCustomerLessons: IndonesianLesson[] = [
         pronunciation_en: "BOOK-ti",
       },
       {
+        cell_id: "00a73493-5453-423c-abc7-4528aabb4c1f",
         word: "tidak lengkap",
         en: "incomplete",
         vi: "không đầy đủ",
@@ -356,6 +372,7 @@ export const foodDeliveryCustomerLessons: IndonesianLesson[] = [
         pronunciation_en: "TEE-dak leng-KAP",
       },
       {
+        cell_id: "3ef9b52b-b9cf-431d-8f20-953c0f01af9d",
         word: "terlambat",
         en: "late",
         vi: "trễ",
@@ -366,24 +383,28 @@ export const foodDeliveryCustomerLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "c162f6bf-63d2-4092-9d65-1324347057f8",
         speaker: "Pelanggan",
         text: "Maaf, makanan saya tumpah waktu diantar.",
         vi: "Xin lỗi, đồ ăn của tôi bị đổ lúc được giao.",
         en: "Sorry, my food spilled during delivery.",
       },
       {
+        cell_id: "5b17b764-c06a-4f9f-8fbe-2ac865b5a4de",
         speaker: "Layanan Pelanggan",
         text: "Boleh kirim foto sebagai bukti?",
         vi: "Bạn có thể gửi ảnh làm bằng chứng không?",
         en: "Could you send a photo as proof?",
       },
       {
+        cell_id: "a54e92ff-bc2f-40ba-bc68-9c1c21dab878",
         speaker: "Pelanggan",
         text: "Sudah saya kirim. Bagaimana cara ajukan refund?",
         vi: "Tôi đã gửi rồi. Làm sao để yêu cầu hoàn tiền?",
         en: "I already sent it. How do I request a refund?",
       },
       {
+        cell_id: "7568124f-099e-430f-bc97-9c27fc355b4c",
         speaker: "Layanan Pelanggan",
         text: "Kami akan cek laporan Anda dulu.",
         vi: "Chúng tôi sẽ kiểm tra báo cáo của bạn trước.",

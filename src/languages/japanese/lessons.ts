@@ -5,6 +5,7 @@
 export type JapaneseCefrLevel = "A1" | "A2" | "B1" | "B2" | "C1" | "C2";
 
 export type JapaneseVocabEntry = {
+  cell_id?: string;
   japanese: string;
   english: string;
 };
@@ -22,6 +23,7 @@ export type JapaneseExample = {
 };
 
 export type JapaneseDialogueLine = {
+  cell_id?: string;
   speaker: string;
   japanese: string;
   english: string;

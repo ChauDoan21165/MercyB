@@ -18,6 +18,7 @@ export type PunjabiGoNoGoFocus =
 export type PunjabiGoNoGoStage = "go_no_go" | "final_cross_check" | "pre_integration" | "sanity";
 
 export type PunjabiScriptVocabularyGoNoGoSample = {
+  cell_id?: string;
   id: string;
   focus: PunjabiGoNoGoFocus;
   stage: PunjabiGoNoGoStage;
@@ -39,6 +40,7 @@ export type PunjabiScriptVocabularyGoNoGoSample = {
 };
 
 export type PunjabiScriptVocabularyGoNoGoSection = {
+  cell_id?: string;
   focus: PunjabiGoNoGoFocus;
   title_vi: string;
   title_en: string;

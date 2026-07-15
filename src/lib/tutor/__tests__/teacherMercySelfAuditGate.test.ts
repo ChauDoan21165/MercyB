@@ -89,6 +89,8 @@ function assertResultShape(result: SelfAuditResult) {
   expect(result).toHaveProperty("summaryEn");
   expect(result).toHaveProperty("contractResult");
   expect(result).toHaveProperty("evaluationResult");
+  expect(result).toHaveProperty("repairOutcome");
+  expect(result).toHaveProperty("deliverableExplanationVi");
   expect(result.decision).oneOf(["SHOW", "SHOW_WITH_CAUTION", "REVISE", "BLOCK"]);
 }
 
@@ -104,6 +106,7 @@ describe("S1 — Hard safety (R3, R7, R8)", () => {
     expect(s1.passed).toBe(false);
     expect(s1.decision).toBe("BLOCK");
     expect(s1.reasonCode).toBe("s1_hard_safety_failed");
+    expect(result.repairOutcome).toBe("none");
   });
 
   it("BLOCKs response with shaming language (R8)", () => {
@@ -111,6 +114,46 @@ describe("S1 — Hard safety (R3, R7, R8)", () => {
     expect(result.decision).toBe("BLOCK");
     expect(result.isBlocked).toBe(true);
     expect(result.decidingGate).toBe("S1_HARD_SAFETY");
+  });
+
+  it("repairs the replayed R8 face-saving phrase and delivers the correction", () => {
+    const replayExplanation =
+      "Mình hiểu ý bạn — bạn muốn so sánh bài học hôm nay với hôm qua. " +
+      "🔍 Bạn viết: \"This lesson is more easy than yesterday.\" " +
+      "💡 Gợi ý: \"This lesson is easier than yesterday.\" " +
+      "📝 Giải thích: \"more easy\" không đúng trong câu này; với tính từ ngắn như \"easy\", mình dùng \"easier\". " +
+      "Bạn thử nói lại câu này với \"easier\" nhé?";
+
+    const result = selfAuditBeforeShowing(
+      input({
+        learnerText: "This lesson is more easy than yesterday.",
+        explanationVi: replayExplanation,
+        correctedSentence: "This lesson is easier than yesterday.",
+        cefrLevel: "A2",
+      }),
+    );
+
+    expect(result.decision).not.toBe("BLOCK");
+    expect(result.canShow).toBe(true);
+    expect(result.repairOutcome).toBe("repaired-delivered");
+    expect(result.repairedExplanationVi).toContain("\"more easy\" chưa đúng trong câu này");
+    expect(result.deliverableExplanationVi).toBe(result.repairedExplanationVi);
+    expect(result.contractResult?.rules.find((rule) => rule.ruleId === "R8_FACE_SAVING")?.passed).toBe(true);
+
+    const telemetry = formatSelfAuditTelemetry(result);
+    expect(telemetry.repairOutcome).toBe("repaired-delivered");
+  });
+
+  it("keeps blocking an unrepairable R8 face-saving failure", () => {
+    const result = selfAuditBeforeShowing(input({ explanationVi: shamingVi() }));
+
+    expect(result.decision).toBe("BLOCK");
+    expect(result.isBlocked).toBe(true);
+    expect(result.decidingGate).toBe("S1_HARD_SAFETY");
+    expect(result.repairOutcome).toBe("blocked-unrepairable");
+
+    const telemetry = formatSelfAuditTelemetry(result);
+    expect(telemetry.repairOutcome).toBe("blocked-unrepairable");
   });
 
   it("passes S1 for a good correction response", () => {
@@ -454,6 +497,7 @@ describe("formatSelfAuditTelemetry", () => {
     expect(telemetry.decision).toBe("BLOCK");
     expect(telemetry.isBlocked).toBe(true);
     expect(telemetry.decidingGate).toBe("S1_HARD_SAFETY");
+    expect(telemetry.repairOutcome).toBe("none");
   });
 });
 

@@ -1,7 +1,7 @@
 // src/components/ErrorBoundary.tsx — v2026-05-18-01
 import React from "react";
 import { captureError } from "@/lib/monitoring/captureException";
-import { looksLikeChunkLoadFailure } from "@/lib/chunkLoadError";
+import { isChunkLoadRecoveryError, looksLikeChunkLoadFailure } from "@/lib/chunkLoadError";
 import {
   cacheBustingReload,
   hasErrorBoundaryReloaded,
@@ -102,7 +102,7 @@ export class ErrorBoundary extends React.Component<Props, State> {
     return {
       hasError: true,
       err: normalizeError(error),
-      isChunkError: looksLikeChunkLoadFailure(error),
+      isChunkError: isChunkLoadRecoveryError(error) || looksLikeChunkLoadFailure(error),
     };
   }
 

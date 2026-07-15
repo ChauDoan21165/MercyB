@@ -24,6 +24,7 @@ export type PunjabiSentence = {
 };
 
 export type PunjabiVocabEntry = {
+  cell_id?: string;
   /** Word or phrase in Gurmukhi script. */
   gurmukhi: string;
   romanization: string;
@@ -33,6 +34,7 @@ export type PunjabiVocabEntry = {
 };
 
 export type PunjabiDialogueLine = {
+  cell_id?: string;
   speaker: string;
   gurmukhi: string;
   romanization: string;

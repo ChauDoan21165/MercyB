@@ -6,6 +6,7 @@ type IndonesianLessonSentence = {
 };
 
 type VocabEntry = {
+  cell_id?: string;
   word: string;
   meaning_vi: string;
   meaning_en: string;
@@ -14,6 +15,7 @@ type VocabEntry = {
 };
 
 type DialogueLine = {
+  cell_id?: string;
   speaker: string;
   line: string;
   vi: string;
@@ -117,6 +119,7 @@ export const lessons: IndonesianLesson[] = [
     ],
     vocabulary: [
       {
+        cell_id: "dc3ff8a0-2ff2-43c7-9f5f-48eef529a838",
         word: 'riwayat kesehatan keluarga',
         meaning_vi: 'tiền sử sức khỏe gia đình',
         meaning_en: 'family health history',
@@ -124,6 +127,7 @@ export const lessons: IndonesianLesson[] = [
         example_vi: 'Tiền sử sức khỏe gia đình quan trọng cho lần kiểm tra ban đầu.',
       },
       {
+        cell_id: "365caefd-46e0-48e0-b283-1c4d3b8242d1",
         word: 'penyakit turunan',
         meaning_vi: 'bệnh di truyền',
         meaning_en: 'hereditary disease',
@@ -131,6 +135,7 @@ export const lessons: IndonesianLesson[] = [
         example_vi: 'Bác sĩ hỏi có bệnh di truyền nào không.',
       },
       {
+        cell_id: "f7b61f4d-2078-45a3-9c4f-7caa356fb5a9",
         word: 'diabetes',
         meaning_vi: 'bệnh tiểu đường',
         meaning_en: 'diabetes',
@@ -138,6 +143,7 @@ export const lessons: IndonesianLesson[] = [
         example_vi: 'Ông tôi bị tiểu đường từ lâu.',
       },
       {
+        cell_id: "d3ace853-291a-4815-bb72-bbffbf025ce1",
         word: 'tekanan darah',
         meaning_vi: 'huyết áp',
         meaning_en: 'blood pressure',
@@ -145,6 +151,7 @@ export const lessons: IndonesianLesson[] = [
         example_vi: 'Huyết áp của tôi cần được kiểm tra định kỳ.',
       },
       {
+        cell_id: "f28da396-f9db-4ad7-85b9-490f4e81a7ea",
         word: 'alergi',
         meaning_vi: 'dị ứng',
         meaning_en: 'allergy',
@@ -152,6 +159,7 @@ export const lessons: IndonesianLesson[] = [
         example_vi: 'Tôi bị dị ứng hải sản.',
       },
       {
+        cell_id: "6eb1d044-e7aa-424d-b4e8-e3f6cfe9e1cf",
         word: 'dokter keluarga',
         meaning_vi: 'bác sĩ gia đình',
         meaning_en: 'family doctor',
@@ -159,6 +167,7 @@ export const lessons: IndonesianLesson[] = [
         example_vi: 'Bác sĩ gia đình cho giấy chuyển tuyến đến chuyên khoa.',
       },
       {
+        cell_id: "9d35ff65-7f65-43b5-aa90-5949d15616b9",
         word: 'catatan medis',
         meaning_vi: 'hồ sơ y tế',
         meaning_en: 'medical records',
@@ -166,6 +175,7 @@ export const lessons: IndonesianLesson[] = [
         example_vi: 'Hồ sơ y tế cũ giúp bác sĩ hiểu tình trạng của tôi.',
       },
       {
+        cell_id: "a84fd82e-a540-4961-996c-0a1f6aafbfce",
         word: 'pihak ibu',
         meaning_vi: 'bên mẹ',
         meaning_en: 'mother’s side of the family',
@@ -175,36 +185,42 @@ export const lessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "65733826-599f-472f-9aa2-508315351c50",
         speaker: 'Dokter',
         line: 'Apakah ada riwayat kesehatan keluarga yang perlu saya tahu?',
         vi: 'Có tiền sử sức khỏe gia đình nào tôi cần biết không?',
         en: 'Is there any family health history I should know about?',
       },
       {
+        cell_id: "3b60d0df-e330-44d0-a342-23ff741b6327",
         speaker: 'Pasien',
         line: 'Ayah saya punya diabetes, dan ibu saya tekanan darah tinggi.',
         vi: 'Bố tôi bị tiểu đường, và mẹ tôi bị huyết áp cao.',
         en: 'My father has diabetes, and my mother has high blood pressure.',
       },
       {
+        cell_id: "27d22c31-2d91-41b2-9727-0d5bee2009a2",
         speaker: 'Dokter',
         line: 'Apakah ada penyakit turunan lain di keluarga?',
         vi: 'Có bệnh di truyền nào khác trong gia đình không?',
         en: 'Are there any other hereditary diseases in the family?',
       },
       {
+        cell_id: "b1309385-e484-423b-88b9-73e923cd50a7",
         speaker: 'Pasien',
         line: 'Saya belum tahu dari pihak ibu, tapi saya bisa cek catatan medis lama.',
         vi: 'Tôi chưa biết từ bên mẹ, nhưng tôi có thể kiểm tra hồ sơ y tế cũ.',
         en: 'I do not know from my mother’s side yet, but I can check old medical records.',
       },
       {
+        cell_id: "c955c2a8-cdbe-40ad-afe0-4d0bb5a7c789",
         speaker: 'Dokter',
         line: 'Baik. Ada alergi obat atau alergi makanan?',
         vi: 'Được. Có dị ứng thuốc hoặc dị ứng thức ăn không?',
         en: 'All right. Any medicine or food allergies?',
       },
       {
+        cell_id: "071bc962-0186-4b65-92de-c6d269082a86",
         speaker: 'Pasien',
         line: 'Saya alergi antibiotik tertentu. Tolong catat di berkas pasien.',
         vi: 'Tôi dị ứng với một số kháng sinh. Vui lòng ghi vào hồ sơ bệnh nhân.',

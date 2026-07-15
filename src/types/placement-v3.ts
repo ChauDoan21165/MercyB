@@ -132,6 +132,8 @@ export interface PlacementV3SessionRow {
   id: string;
   /** Auth user who owns this placement attempt. */
   user_id: string;
+  /** True for automated monitoring placement sessions. */
+  is_synthetic?: boolean;
   /** Time the user started the placement attempt. */
   started_at: string;
   /** Time the attempt completed, or null while still open. */
@@ -161,6 +163,8 @@ export interface PlacementV3SessionInsert {
   id?: string;
   /** Auth user who owns this placement attempt. */
   user_id: string;
+  /** True for automated monitoring placement sessions. */
+  is_synthetic?: boolean;
   /** Optional start timestamp; defaults to now() when omitted. */
   started_at?: string;
   /** Completion timestamp, normally set when flow_state becomes completed. */

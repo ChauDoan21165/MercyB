@@ -69,6 +69,31 @@ describe('round5 rule 37: vi_l1_present_perfect_vs_past', () => {
       'vi_l1_present_perfect_vs_past',
     );
   });
+
+  it('detects already plus bare verb when expected uses present perfect', () => {
+    expectHit(
+      'i already eat',
+      'i have already eaten',
+      'vi_l1_present_perfect_vs_past',
+    );
+    expectHit(
+      'we already finish the homework',
+      'we have already finished the homework',
+      'vi_l1_present_perfect_vs_past',
+    );
+    expectHit(
+      'She already see the movie',
+      'She has already seen the movie',
+      'vi_l1_present_perfect_vs_past',
+    );
+  });
+
+  it('does not flag already when the present-perfect form is already present', () => {
+    expectMiss(
+      'i have already eaten',
+      'i have already eaten',
+    );
+  });
 });
 
 // ── 38. vi_l1_subjunctive_were (L1-037) ─────────────────────────────────

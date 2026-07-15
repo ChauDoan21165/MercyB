@@ -13,6 +13,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -22,6 +23,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -194,6 +196,7 @@ export const lessons: IndonesianLesson[] = [
       "Safe frames: `Maaf, saya mau follow up soal invoice`, `Apakah pembayaran saya sudah masuk?`, `Tolong beri kabar kapan transfernya`. If you need to be firmer, stay polite and mention the due date.",
     vocabulary: [
       {
+        cell_id: "b83c621f-7cbc-49d9-b967-57d64310ebfd",
         word: "invoice",
         en: "invoice",
         vi: "hóa đơn",
@@ -202,6 +205,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "IN-voys",
       },
       {
+        cell_id: "741efcf0-7b06-440c-a8ac-bbafc95a1f98",
         word: "jatuh tempo",
         en: "due date",
         vi: "đến hạn",
@@ -210,6 +214,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "JAH-tooh TEM-poh",
       },
       {
+        cell_id: "3cc845cf-977d-4785-85bf-465b437f3ee4",
         word: "follow up",
         en: "follow up",
         vi: "nhắc/đòi thông tin",
@@ -218,6 +223,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "FOL-oh up",
       },
       {
+        cell_id: "bc3fc90b-873a-497e-8e06-1136f2d7d1f2",
         word: "DP",
         en: "down payment / advance payment",
         vi: "đặt cọc / tiền ứng trước",
@@ -226,6 +232,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "DEE-pee",
       },
       {
+        cell_id: "8cc6b380-4339-4a5e-a63c-56239afa08ad",
         word: "termin",
         en: "installment / payment stage",
         vi: "đợt thanh toán",
@@ -234,6 +241,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "TER-meen",
       },
       {
+        cell_id: "6eeb0f69-8d5b-4c51-9dcc-c5f3279921fc",
         word: "serah terima",
         en: "handover",
         vi: "bàn giao",
@@ -242,6 +250,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "seh-RAH teh-REE-mah",
       },
       {
+        cell_id: "31fca4cd-a33c-4aad-8911-c81c2540f3b1",
         word: "menagih",
         en: "to collect payment",
         vi: "đòi thanh toán",
@@ -250,6 +259,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "meh-NAH-geeh",
       },
       {
+        cell_id: "16d07c46-fe9d-4e84-a4eb-ed13d19799c2",
         word: "sopan",
         en: "polite",
         vi: "lịch sự",
@@ -260,24 +270,28 @@ export const lessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "66fd1312-5210-4b95-94b5-cc47142167c5",
         speaker: "Freelancer",
         text: "Maaf, saya mau follow up soal invoice yang jatuh tempo kemarin.",
         vi: "Xin lỗi, tôi muốn nhắc về hóa đơn đến hạn hôm qua.",
         en: "Sorry, I want to follow up about the invoice that was due yesterday.",
       },
       {
+        cell_id: "877e29b4-0dca-4baf-ae50-5b7581a49a4b",
         speaker: "Klien",
         text: "Maaf, pembayaran belum masuk karena dana kami belum cair.",
         vi: "Xin lỗi, thanh toán chưa vào vì tiền bên tôi هنوز chưa giải ngân.",
         en: "Sorry, the payment has not come in because our funds have not cleared yet.",
       },
       {
+        cell_id: "f7ec99e1-a29e-4571-92a8-e6533161859c",
         speaker: "Freelancer",
         text: "Baik, tolong beri kabar kapan transfernya bisa dilakukan.",
         vi: "Vâng, làm ơn báo tôi biết khi nào có thể chuyển khoản.",
         en: "Okay, please let me know when the transfer can be made.",
       },
       {
+        cell_id: "a70ba228-1123-4103-aad6-eb083fcc21fd",
         speaker: "Klien",
         text: "Tentu. Kami targetkan minggu ini, sesuai termin di kontrak.",
         vi: "Chắc chắn rồi. Chúng tôi dự kiến trong tuần này, theo đợt thanh toán trong hợp đồng.",

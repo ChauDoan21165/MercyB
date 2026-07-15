@@ -11,8 +11,11 @@
  */
 import { defineConfig, devices } from "@playwright/test";
 
+import { CORRECTION_SOURCE_SYNTHETIC_MARKER_KEY } from "./src/lib/ai-tutor/correctionSourceSyntheticMarker";
+
 const baseURL =
   process.env.CRAWL_BASE_URL ?? process.env.TEST_BASE_URL ?? "https://mercyblade.com";
+const baseOrigin = new URL(baseURL).origin;
 const startLocal =
   baseURL.startsWith("http://127.0.0.1:") || baseURL.startsWith("http://localhost:");
 
@@ -37,6 +40,20 @@ export default defineConfig({
 
   use: {
     baseURL,
+    storageState: {
+      cookies: [],
+      origins: [
+        {
+          origin: baseOrigin,
+          localStorage: [
+            {
+              name: CORRECTION_SOURCE_SYNTHETIC_MARKER_KEY,
+              value: "1",
+            },
+          ],
+        },
+      ],
+    },
     trace: "retain-on-failure",
     screenshot: "only-on-failure",
   },

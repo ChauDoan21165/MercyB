@@ -16,6 +16,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   /** Indonesian word/phrase. */
   word: string;
   /** English meaning. */
@@ -31,6 +32,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   /** Indonesian line. */
   text: string;
@@ -209,6 +211,7 @@ export const parentingTeenagersLessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: learn fixed family-talk chunks that sound firm but not harsh: `aturan rumah`, `uang jajan`, `waktu memakai gawai`, `pergaulan anak`, `diajak bicara baik-baik`, `nasihat orang tua`, `batasan`. 'My child' is always `anak saya`, not `saya anak`. For softer advice, use `sebaiknya` or `lebih baik`, not only `harus`.",
     vocabulary: [
       {
+        cell_id: "2cce2d0b-788c-4b1c-9814-e052b5337571",
         word: "remaja",
         en: "teenager / adolescent",
         vi: "thiếu niên / tuổi teen",
@@ -217,6 +220,7 @@ export const parentingTeenagersLessons: IndonesianLesson[] = [
         pronunciation_en: "re-MA-ja",
       },
       {
+        cell_id: "a13050c1-b124-45b3-a258-949be4cded8c",
         word: "aturan rumah",
         en: "house rules",
         vi: "quy tắc gia đình",
@@ -225,6 +229,7 @@ export const parentingTeenagersLessons: IndonesianLesson[] = [
         pronunciation_en: "a-TOOR-an ROO-mah",
       },
       {
+        cell_id: "ffd6faa8-78ec-4b87-8a0c-c443694aa33f",
         word: "pergaulan",
         en: "social circle / peer environment",
         vi: "mối quan hệ bạn bè / môi trường giao du",
@@ -233,6 +238,7 @@ export const parentingTeenagersLessons: IndonesianLesson[] = [
         pronunciation_en: "per-GAU-lan",
       },
       {
+        cell_id: "f3717bd8-d891-4857-a64d-b3410021fceb",
         word: "uang jajan",
         en: "allowance / pocket money",
         vi: "tiền tiêu vặt",
@@ -241,6 +247,7 @@ export const parentingTeenagersLessons: IndonesianLesson[] = [
         pronunciation_en: "OO-ang JA-jan",
       },
       {
+        cell_id: "4a7ad660-b6c2-459f-b244-1b33f00cc221",
         word: "gawai",
         en: "device / gadget",
         vi: "thiết bị điện tử",
@@ -249,6 +256,7 @@ export const parentingTeenagersLessons: IndonesianLesson[] = [
         pronunciation_en: "GA-wai",
       },
       {
+        cell_id: "c52e2018-4a25-4484-9609-c4f12820b103",
         word: "berkomunikasi",
         en: "to communicate",
         vi: "giao tiếp",
@@ -257,6 +265,7 @@ export const parentingTeenagersLessons: IndonesianLesson[] = [
         pronunciation_en: "ber-ko-moo-nee-KA-see",
       },
       {
+        cell_id: "0b201961-e16d-4a13-b6b7-09e69c9e6060",
         word: "nasihat orang tua",
         en: "parental advice",
         vi: "lời khuyên của cha mẹ",
@@ -265,6 +274,7 @@ export const parentingTeenagersLessons: IndonesianLesson[] = [
         pronunciation_en: "na-SEE-hat o-RANG TOO-a",
       },
       {
+        cell_id: "829de458-ce10-4a19-b98b-4cd1e611df25",
         word: "batasan",
         en: "boundary / limit",
         vi: "giới hạn / ranh giới",
@@ -273,6 +283,7 @@ export const parentingTeenagersLessons: IndonesianLesson[] = [
         pronunciation_en: "ba-TAS-an",
       },
       {
+        cell_id: "6abe0e3f-2761-4c7e-aedb-537d7947fe49",
         word: "diajak bicara baik-baik",
         en: "talked to respectfully/gently",
         vi: "được nói chuyện tử tế/nhẹ nhàng",
@@ -281,6 +292,7 @@ export const parentingTeenagersLessons: IndonesianLesson[] = [
         pronunciation_en: "dee-A-jak bee-CHA-ra BAIK-BAIK",
       },
       {
+        cell_id: "9131f8c4-05f6-46a5-847a-162147c2bac4",
         word: "sekolah",
         en: "school",
         vi: "trường học",
@@ -291,24 +303,28 @@ export const parentingTeenagersLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "0c78c73f-d119-4274-be29-402afe209feb",
         speaker: "Ibu",
         text: "Kamu boleh main dengan teman, tapi pulang sebelum jam sembilan.",
         vi: "Con được đi chơi với bạn, nhưng về trước chín giờ.",
         en: "You may hang out with friends, but come home before nine.",
       },
       {
+        cell_id: "9fa248ae-d316-4659-a888-4e333730683b",
         speaker: "Anak",
         text: "Boleh sampai jam sepuluh? Teman-teman masih di sana.",
         vi: "Đến mười giờ được không ạ? Các bạn vẫn còn ở đó.",
         en: "Can it be until ten? My friends are still there.",
       },
       {
+        cell_id: "8d20691a-ab4e-4507-ba37-b3bfd4d4c61b",
         speaker: "Ibu",
         text: "Hari sekolah tetap jam sembilan. Akhir pekan bisa kita bicarakan.",
         vi: "Ngày đi học vẫn là chín giờ. Cuối tuần thì mình có thể bàn lại.",
         en: "On school days it is still nine. We can discuss weekends.",
       },
       {
+        cell_id: "17e5434d-1ab7-45d8-abbe-e1dc7aca912c",
         speaker: "Anak",
         text: "Baik, Bu. Nanti saya kabari kalau sudah berangkat pulang.",
         vi: "Vâng mẹ. Lát nữa con sẽ báo khi bắt đầu về.",

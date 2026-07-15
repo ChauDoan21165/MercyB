@@ -38,6 +38,9 @@ import {
   normalizeSpokenText,
   appendCleanSpeech,
 } from "@/lib/ai-tutor/tutorUiCopy";
+import { recordCorrectionSourceEvent } from "@/lib/ai-tutor/correctionSourceEvents";
+import { recordSelfAuditOutcomeEvent } from "@/lib/ai-tutor/selfAuditOutcomeEvents";
+import { recordLearnerProfileCorrection } from "@/lib/learner-profile/profileWriter";
 import { fetchWithTimeout } from "@/lib/networkTimeout";
 import { getTutorCopy, type TutorCopy, type TutorTarget } from "@/lib/tutor/tutorCopy";
 import { getSpeechLocale, getTtsLocale } from "@/lib/tutor/languageRegistry";
@@ -67,6 +70,7 @@ import { captureCorrection } from "@/services/learnerCapture";
 import {
   applyCorrectionPolicyDecision,
   decideCorrection,
+  isLpiTargetFormDetectorTag,
   resolveLpiPolicyMode,
   type LpiPolicyMode,
   type PolicyDecision,
@@ -124,7 +128,10 @@ import {
   type SpeakFollowUpSelection,
 } from "@/lib/tutor/speakFollowups";
 import { auditCorrectionQuick } from "@/lib/tutor/teacherMercyAuditGate";
-import { selfAuditCorrectionQuick } from "@/lib/tutor/teacherMercySelfAuditGate";
+import {
+  formatSelfAuditTelemetry,
+  selfAuditCorrectionQuick,
+} from "@/lib/tutor/teacherMercySelfAuditGate";
 import { detectResidualError } from "@/lib/tutor/residualErrorCheck";
 import {
   resolveInterimEnglishBridge,
@@ -197,6 +204,7 @@ import { TutorTodayLessonCard } from "@/components/ai-tutor/TutorMemoryCard";
 type CorrectionResult = TutorTurn & {
   grammarTip: string;
   practicePrompt: string;
+  appliedRuleIds?: string[];
 };
 
 export type LpiSessionTracker = {
@@ -330,31 +338,6 @@ const LPI_ERROR_DENSITY_WINDOW = 5;
 const LPI_MIN_DENSITY_TURNS = 3;
 const LPI_RECAP_TURN_LIMIT = 8;
 const LPI_UNKNOWN_TAG = "__unknown__";
-const LPI_TARGET_FORM_DETECTOR_TAGS = new Set<string>([
-  "vi_l1_3rd_person_s",
-  "vi_l1_past_ed",
-  "vi_l1_plural_s",
-  "vi_l1_missing_be",
-  "vi_l1_question_no_aux",
-  "vi_l1_double_negative",
-  "vi_l1_missing_article",
-  "vi_l1_a_vs_an_vowel",
-  "vi_l1_geographical_article",
-  "vi_l1_no_article_generic",
-  "vi_l1_superlative_the",
-  "vi_l1_generic_plural",
-  "vi_l1_preposition_transfer",
-  "vi_l1_time_expressions",
-  "vi_l1_by_vs_with",
-  "vi_l1_possessive_gender",
-  "vi_l1_there_are_singular",
-  "en-vn-past-marker-regular-verb",
-  "en-vn-numeral-quantifier-plural",
-  "en-vn-although-even-though-but",
-  "en-vn-because-so-doubling",
-  "en-vn-copula-be-adjective",
-  "en-vn-yesno-do-support",
-]);
 const LPI_POLICY_MODE = resolveLpiPolicyMode(
   (import.meta as ImportMeta & { env?: Record<string, string> }).env?.VITE_LPI_POLICY_MODE,
 );
@@ -694,7 +677,7 @@ export function resolveCorrectionSeverity(detectorTag: string | null): PolicySev
   }
 
   // Flagship Vietnamese-L1 cause-level patterns are always lesson-salient for this audience.
-  if (detectorTag && LPI_TARGET_FORM_DETECTOR_TAGS.has(detectorTag)) {
+  if (isLpiTargetFormDetectorTag(detectorTag)) {
     return "target_form";
   }
 
@@ -2613,6 +2596,10 @@ export default function AiTutorPage() {
         const aiResult = await callAiSentenceCorrection(trimmed, accessToken, explainLanguage, target);
         setLoading(false);
         if (isAiCorrectionFailure(aiResult)) {
+          recordCorrectionSourceEvent({
+            source: "server_failed",
+            targetLanguage: target,
+          });
           recordLpiLearnerTurn(false);
           setError(
             aiResult.reason === "auth"
@@ -2624,6 +2611,10 @@ export default function AiTutorPage() {
           return;
         }
         if (aiResult?.confident && aiResult.corrected) {
+          recordCorrectionSourceEvent({
+            source: "server_corrected",
+            targetLanguage: target,
+          });
           const aiCorrected = aiResult.corrected;
           const { turn } = buildCorrectionTurn({
             id: `corr-${Date.now()}-${Math.random().toString(16).slice(2, 8)}`,
@@ -2637,6 +2628,10 @@ export default function AiTutorPage() {
           // BLOCK: hard-safety violation (fake praise, shaming) → don't show.
           // SHOW/SHOW_WITH_CAUTION: response is safe → show to learner.
           const selfAuditResult = selfAuditCorrectionQuick(trimmed, turn.explanation, aiCorrected);
+          recordSelfAuditOutcomeEvent({
+            telemetry: formatSelfAuditTelemetry(selfAuditResult),
+            targetLanguage: target,
+          });
           if (selfAuditResult.isBlocked) {
             console.warn("[MercySelfAudit] AI correction blocked:", selfAuditResult.summaryVi);
             setLoading(false);
@@ -2662,6 +2657,7 @@ export default function AiTutorPage() {
             ...turn,
             grammarTip: aiResult.grammarTip,
             practicePrompt: MOCK_RESULTS_BY_TARGET[target].practicePrompt[explainLanguage],
+            appliedRuleIds: ["ai-correction"],
           };
           const sessionErrorDensity = recordLpiLearnerTurn(true);
           const registerDetection = detectRegisterError({ learnerText: turn.userText });
@@ -2687,12 +2683,20 @@ export default function AiTutorPage() {
           return;
         }
         // AI also not confident — specific abstention, not a generic canned line.
+        recordCorrectionSourceEvent({
+          source: "server_no_correction",
+          targetLanguage: target,
+        });
         recordLpiLearnerTurn(false);
         setError(aiResult?.explanation || GRAMMAR_CORRECTION_UNAVAILABLE_MESSAGE);
         return;
       }
       // No token — rule engine abstained: show error.
       if (!localCorrection.ok) {
+        recordCorrectionSourceEvent({
+          source: "server_failed",
+          targetLanguage: target,
+        });
         setLoading(false);
         setError(GRAMMAR_CORRECTION_UNAVAILABLE_MESSAGE);
         recordLpiLearnerTurn(false);
@@ -2700,11 +2704,19 @@ export default function AiTutorPage() {
       }
       // No token + unchanged: the sentence may be correct but AI cannot verify it.
       // Never show a correction card in this state — that would echo the input as a "correction".
+      recordCorrectionSourceEvent({
+        source: "local_unchanged_server_attempt",
+        targetLanguage: target,
+      });
       setLoading(false);
       setError(CANNOT_CORRECT_NO_SESSION_MESSAGE);
       recordLpiLearnerTurn(false);
       return;
     }
+    recordCorrectionSourceEvent({
+      source: "local_corrected",
+      targetLanguage: target,
+    });
     const sessionErrorDensity = recordLpiLearnerTurn(true);
     // Step 013 / WP-000 — correction timing before showing the result.
     // Flag OFF (default): original correctWithTimingAwareness path — byte-identical
@@ -2795,6 +2807,10 @@ export default function AiTutorPage() {
     // BLOCK: hard-safety violation (fake praise, shaming) → don't show.
     // SHOW/SHOW_WITH_CAUTION: response is safe → show to learner.
     const selfAuditResult = selfAuditCorrectionQuick(trimmed, turn.explanation, corrected);
+    recordSelfAuditOutcomeEvent({
+      telemetry: formatSelfAuditTelemetry(selfAuditResult),
+      targetLanguage: target,
+    });
     if (selfAuditResult.isBlocked) {
       console.warn("[MercySelfAudit] Rule correction blocked:", selfAuditResult.summaryVi);
       setLoading(false);
@@ -2820,6 +2836,7 @@ export default function AiTutorPage() {
       ...turn,
       grammarTip: buildGrammarTip(target, localCorrection, explainLanguage),
       practicePrompt: next.practicePrompt[explainLanguage],
+      appliedRuleIds: localCorrection.appliedRuleIds,
     };
     const registerDetection = detectRegisterError({ learnerText: turn.userText });
     const detectorTag = registerDetection.matched
@@ -2858,6 +2875,9 @@ export default function AiTutorPage() {
     // Track 2 — anonymized learner-interaction capture. Fire-and-forget;
     // flag + consent gated, never throws. The local correction is what the
     // learner saw, so capture it here next to the existing telemetry.
+    recordLearnerProfileCorrection({
+      appliedRuleIds: localCorrection.appliedRuleIds,
+    });
     void captureCorrection({
       userText: trimmed,
       correctedText: corrected,

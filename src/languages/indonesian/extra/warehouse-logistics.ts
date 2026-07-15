@@ -21,6 +21,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   /** Indonesian word/phrase. */
   word: string;
   /** English meaning. */
@@ -36,6 +37,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   /** Indonesian line. */
   text: string;
@@ -253,6 +255,7 @@ export const lessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: separate `stok` (stock), `jumlah` (quantity), `barang` (goods), and `pengiriman` (shipment/delivery). In warehouse reports, use passive `di-`: `dikirim`, `diterima`, `dipindai`, `dicek`. That is natural operational style.",
     vocabulary: [
       {
+        cell_id: "245290fb-4454-452c-923b-803c0a38828b",
         word: "gudang",
         en: "warehouse",
         vi: "kho",
@@ -261,6 +264,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "GOO-dang",
       },
       {
+        cell_id: "c451dd54-18bb-4fea-88a2-49f92123b2db",
         word: "stok barang",
         en: "inventory stock",
         vi: "tồn kho hàng hóa",
@@ -269,6 +273,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "stok BA-rang",
       },
       {
+        cell_id: "cf39a266-34be-4102-8f76-0770698a9616",
         word: "pengiriman",
         en: "shipment / delivery",
         vi: "việc gửi/giao hàng",
@@ -277,6 +282,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "pe-ngi-REE-man",
       },
       {
+        cell_id: "12be77e2-3d4d-42f3-97d8-e9fb9195ba51",
         word: "surat jalan",
         en: "delivery note / waybill",
         vi: "phiếu giao hàng / chứng từ vận chuyển",
@@ -285,6 +291,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "SOO-rat JA-lan",
       },
       {
+        cell_id: "4932fbd4-8876-4738-ae8a-a314c9c0d211",
         word: "barcode",
         en: "barcode",
         vi: "mã vạch",
@@ -293,6 +300,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "BAR-code",
       },
       {
+        cell_id: "b0826c38-85a7-4e4a-be5c-aa6899923037",
         word: "forklift",
         en: "forklift",
         vi: "xe nâng",
@@ -301,6 +309,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "FORK-lift",
       },
       {
+        cell_id: "0f416763-a66c-4541-aaaa-9a34251c77df",
         word: "packing",
         en: "packing / packaging",
         vi: "đóng gói",
@@ -309,6 +318,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "PAK-ing",
       },
       {
+        cell_id: "c2162b5e-9d56-4962-9812-5046538803d8",
         word: "retur",
         en: "return",
         vi: "hàng trả lại",
@@ -317,6 +327,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "re-TOOR",
       },
       {
+        cell_id: "010a4b7f-2229-4210-9fe4-c135eb178ddf",
         word: "selisih stok",
         en: "stock discrepancy",
         vi: "chênh lệch tồn kho",
@@ -325,6 +336,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "se-LEE-sih stok",
       },
       {
+        cell_id: "b99d814b-c1bf-468a-9ae1-e91b46227323",
         word: "stok fisik",
         en: "physical stock",
         vi: "tồn kho thực tế",
@@ -333,6 +345,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "stok FEE-sik",
       },
       {
+        cell_id: "e690ed8e-9002-4939-aaa9-e610fff96bf5",
         word: "barang pecah belah",
         en: "fragile goods",
         vi: "hàng dễ vỡ",
@@ -341,6 +354,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "BA-rang pe-CHAH be-LAH",
       },
       {
+        cell_id: "f4347e9a-bd76-4e82-9861-cb84162fbfb5",
         word: "dipindai",
         en: "scanned",
         vi: "được quét",
@@ -351,24 +365,28 @@ export const lessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "ee2ba4ea-6d8e-4a83-8482-506cdf4e9cb7",
         speaker: "Supervisor",
         text: "Tolong cek stok barang ini sebelum pengiriman sore.",
         vi: "Làm ơn kiểm tra tồn kho mặt hàng này trước chuyến giao chiều.",
         en: "Please check this stock before the afternoon shipment.",
       },
       {
+        cell_id: "8c3d9080-44ea-426d-9a7f-6d36594a8f02",
         speaker: "Staf Gudang",
         text: "Baik. Barcode-nya belum bisa dipindai, jadi saya cek stok fisik dulu.",
         vi: "Vâng. Mã vạch chưa quét được, nên tôi kiểm tra tồn kho thực tế trước.",
         en: "Okay. The barcode cannot be scanned yet, so I will check the physical stock first.",
       },
       {
+        cell_id: "1d1e2b0e-75b1-46df-b578-3227a5f205e5",
         speaker: "Supervisor",
         text: "Kalau ada selisih stok, langsung laporkan ke saya.",
         vi: "Nếu có chênh lệch tồn kho, báo ngay cho tôi.",
         en: "If there is a stock discrepancy, report it to me immediately.",
       },
       {
+        cell_id: "04dae9fc-ad0a-4991-9ed2-eebc2d2a3f80",
         speaker: "Staf Gudang",
         text: "Siap. Untuk barang retur, saya cek kondisinya dulu.",
         vi: "Rõ. Với hàng trả lại, tôi kiểm tra tình trạng trước.",

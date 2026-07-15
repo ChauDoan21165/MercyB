@@ -29,6 +29,7 @@ export type LessonSentence = {
 };
 
 export type VocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -40,6 +41,7 @@ export type VocabEntry = {
 };
 
 export type DialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -245,6 +247,7 @@ export const lesson: ItalianLesson = {
 
   vocabulary: [
     {
+      cell_id: "63ca9467-8023-4392-82eb-011aac2d1b46",
       word: "andare",
       en: "to go",
       vi: "đi",
@@ -253,6 +256,7 @@ export const lesson: ItalianLesson = {
       pronunciation_en: "vado, vai, va, andiamo, andate, vanno — past: sono andato/a",
     },
     {
+      cell_id: "3904ac6c-cb39-45f6-8d4d-96b90c6ac767",
       word: "fare",
       en: "to do / to make",
       vi: "làm",
@@ -261,6 +265,7 @@ export const lesson: ItalianLesson = {
       pronunciation_en: "faccio, fai, fa, facciamo, fate, fanno — past: ho fatto (double 'tt')",
     },
     {
+      cell_id: "87f4889e-78c6-4887-b8c9-b006dca4ebc4",
       word: "capire",
       en: "to understand",
       vi: "hiểu",
@@ -269,6 +274,7 @@ export const lesson: ItalianLesson = {
       pronunciation_en: "capisco, capisci, capisce, capiamo, capite, capiscono — no -isc- at noi/voi",
     },
     {
+      cell_id: "efb9f746-2675-46f8-b766-089b87759fb3",
       word: "potere",
       en: "can / to be able to",
       vi: "có thể",
@@ -277,6 +283,7 @@ export const lesson: ItalianLesson = {
       pronunciation_en: "posso, puoi, può, possiamo, potete, possono — + infinitive (posso entrare)",
     },
     {
+      cell_id: "f3e946c7-283f-4708-b011-0216ccbfb386",
       word: "dovere",
       en: "must / to have to",
       vi: "phải",
@@ -285,6 +292,7 @@ export const lesson: ItalianLesson = {
       pronunciation_en: "devo, devi, deve, dobbiamo, dovete, devono — + infinitive (devo lavorare)",
     },
     {
+      cell_id: "653bf962-6066-4b81-bb8a-3ba779f17b26",
       word: "volere",
       en: "to want",
       vi: "muốn",
@@ -293,6 +301,7 @@ export const lesson: ItalianLesson = {
       pronunciation_en: "voglio, vuoi, vuole, vogliamo, volete, vogliono — formal Lei = vuole",
     },
     {
+      cell_id: "8a31adfc-4a6e-488d-a88a-4413185671f5",
       word: "sapere",
       en: "to know / to know how to",
       vi: "biết",
@@ -301,6 +310,7 @@ export const lesson: ItalianLesson = {
       pronunciation_en: "so, sai, sa, sappiamo, sapete, sanno — for a skill: sapere + infinitive (so parlare)",
     },
     {
+      cell_id: "2c467020-6f9a-4979-81e8-76114909b757",
       word: "essere",
       en: "to be",
       vi: "là / thì",
@@ -309,6 +319,7 @@ export const lesson: ItalianLesson = {
       pronunciation_en: "sono, sei, è, siamo, siete, sono — auxiliary for motion/reflexive verbs; past: sono stato/a",
     },
     {
+      cell_id: "29483a7b-0798-42b6-8daa-07d59b51ac7b",
       word: "avere",
       en: "to have",
       vi: "có",
@@ -317,6 +328,7 @@ export const lesson: ItalianLesson = {
       pronunciation_en: "ho, hai, ha, abbiamo, avete, hanno — default auxiliary; age uses avere: avevo 20 anni",
     },
     {
+      cell_id: "2b97f0b9-e518-440d-9e96-e5a0d26a6953",
       word: "piacere",
       en: "to like (lit. to be pleasing)",
       vi: "thích",
@@ -325,6 +337,7 @@ export const lesson: ItalianLesson = {
       pronunciation_en: "mi/ti/gli/le/ci/vi piace (sing.) · piacciono (plur.); the liked thing is the subject",
     },
     {
+      cell_id: "2e401edd-2da1-4cee-8595-04272b9b7383",
       word: "svegliarsi",
       en: "to wake up (oneself)",
       vi: "thức dậy",
@@ -333,6 +346,7 @@ export const lesson: ItalianLesson = {
       pronunciation_en: "mi sveglio, ti svegli… — past with essere: mi sono svegliato/a",
     },
     {
+      cell_id: "6ca26d0b-6ee2-48c9-a731-a241e1ae567e",
       word: "tornare",
       en: "to return / to come back",
       vi: "quay lại / về",
@@ -344,24 +358,28 @@ export const lesson: ItalianLesson = {
 
   dialogue: [
     {
+      cell_id: "4878a2ea-a1ee-4f92-9405-a7b0d5fca714",
       speaker: "Maestro",
       text: "Oggi alleniamo una sola cosa: l'ausiliare. Avere o essere?",
       vi: "Hôm nay ta luyện đúng một thứ: trợ động từ. Avere hay essere?",
       en: "Today we train just one thing: the auxiliary. Avere or essere?",
     },
     {
+      cell_id: "f495b5f9-f2be-4670-8ccb-239128c78321",
       speaker: "Linh",
       text: "Ho andato al lavoro… no, sono andato al lavoro.",
       vi: "'Ho andato'… không, 'Sono andato al lavoro' mới đúng.",
       en: "'Ho andato'… no, 'Sono andato al lavoro' is right.",
     },
     {
+      cell_id: "1e97afb9-60e2-4358-90cd-f9fb580f333f",
       speaker: "Maestro",
       text: "Bene. 'Andare' è movimento: essere + accordo. Sei uomo, quindi -o.",
       vi: "Tốt. 'Andare' là chuyển động: essere + hợp giống. Em là nam nên -o.",
       en: "Good. 'Andare' is motion: essere + agreement. You're male, so -o.",
     },
     {
+      cell_id: "41e4a1e6-1580-4a81-989f-9d92ea5ffb7f",
       speaker: "Linh",
       text: "Dobbiamo andare adesso, non 'dobbiamo andiamo'.",
       vi: "'Dobbiamo andare adesso', không phải 'dobbiamo andiamo'.",

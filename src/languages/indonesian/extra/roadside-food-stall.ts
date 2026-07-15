@@ -12,6 +12,7 @@ type LessonSentence = {
 };
 
 type VocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -21,6 +22,7 @@ type VocabEntry = {
 };
 
 type DialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -193,6 +195,7 @@ export const lessons: IndonesianLesson[] = [
       "Very useful patterns: `Boleh pesan ...?`, `Jangan terlalu pedas`, `Bayar tunai saja`, `Makan di tempat atau bungkus?`, `Nasinya boleh tambah sedikit?` At a stall, `bungkus` is usually understood immediately as takeaway.",
     vocabulary: [
       {
+        cell_id: "24c4836b-685a-4b5c-9883-548fbfc78269",
         word: "warung pinggir jalan",
         en: "roadside food stall",
         vi: "quán ven đường",
@@ -201,6 +204,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "WA-rung PEENG-geer JA-lan",
       },
       {
+        cell_id: "1df2ce52-feb6-40ce-98b1-07bf956bddf3",
         word: "nasi bungkus",
         en: "packed rice meal",
         vi: "cơm gói mang đi",
@@ -209,6 +213,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "NA-see BOONG-koos",
       },
       {
+        cell_id: "2ac913cc-a06a-4490-aadf-df8df0e8c15f",
         word: "lauk",
         en: "side dish; savory dish",
         vi: "món mặn",
@@ -217,6 +222,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "LA-ook",
       },
       {
+        cell_id: "e031effa-c264-49a8-883a-b9051e657cf3",
         word: "sambal",
         en: "chili sauce / chili paste",
         vi: "sa tế / sốt ớt",
@@ -225,6 +231,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "SAM-bahl",
       },
       {
+        cell_id: "4bcd6be8-1541-41b4-b656-1cbcc39234b9",
         word: "teh manis",
         en: "sweet tea",
         vi: "trà ngọt",
@@ -233,6 +240,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "TEH MA-nees",
       },
       {
+        cell_id: "36d7319b-8f12-4de1-8ae1-21827989956c",
         word: "bayar tunai",
         en: "pay in cash",
         vi: "trả tiền mặt",
@@ -241,6 +249,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "BA-yar TOO-nai",
       },
       {
+        cell_id: "766ea0d2-01eb-42e4-b7b9-a6538b49b75c",
         word: "makan di tempat",
         en: "eat on site",
         vi: "ăn tại chỗ",
@@ -249,6 +258,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "MA-kan dee TEM-pat",
       },
       {
+        cell_id: "e8eaf587-cc81-4c53-aea0-818c98dc84e7",
         word: "bungkus",
         en: "take away; wrap",
         vi: "gói mang đi",
@@ -257,6 +267,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "BOONG-koos",
       },
       {
+        cell_id: "0641461b-dc9b-475e-8dc4-ad3067c8f9d7",
         word: "pedas",
         en: "spicy",
         vi: "cay",
@@ -265,6 +276,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "PEH-das",
       },
       {
+        cell_id: "3a632e61-cff1-41ba-aa6c-3f580e95c0ee",
         word: "tambah",
         en: "add more",
         vi: "thêm",
@@ -275,36 +287,42 @@ export const lessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "9d44d691-1152-409e-89e6-692d0bd19f66",
         speaker: "Pelanggan",
         text: "Boleh pesan nasi bungkus satu?",
         vi: "Tôi có thể gọi một phần cơm gói không?",
         en: "May I order one packed rice meal?",
       },
       {
+        cell_id: "617b66fa-74da-4286-83ab-3f6b4e03c05b",
         speaker: "Penjual",
         text: "Boleh. Lauknya apa?",
         vi: "Được chứ. Món mặn là gì ạ?",
         en: "Sure. What side dish would you like?",
       },
       {
+        cell_id: "0d0b7088-2698-4305-8506-eef7d4648476",
         speaker: "Pelanggan",
         text: "Saya mau ayam goreng, sambal sedikit saja, dan teh manis dingin.",
         vi: "Tôi muốn gà rán, một ít sambal thôi, và trà ngọt đá.",
         en: "I want fried chicken, just a little sambal, and iced sweet tea.",
       },
       {
+        cell_id: "eeb30e0f-8b0d-4915-a9cb-5e455a95dcf3",
         speaker: "Penjual",
         text: "Makan di tempat atau bungkus?",
         vi: "Ăn tại chỗ hay gói mang đi?",
         en: "Eat here or take away?",
       },
       {
+        cell_id: "0b23f8be-2166-47fe-8025-06cef368603c",
         speaker: "Pelanggan",
         text: "Makan di tempat. Saya bayar tunai saja.",
         vi: "Ăn tại chỗ. Tôi chỉ trả tiền mặt thôi.",
         en: "Eat here. I will pay in cash only.",
       },
       {
+        cell_id: "8134a3b5-75b3-43bb-95bc-32b285d9884b",
         speaker: "Penjual",
         text: "Baik, nasinya boleh tambah sedikit?",
         vi: "Được, cơm có thể thêm một chút không?",

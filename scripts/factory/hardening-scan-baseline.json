@@ -1,0 +1,19 @@
+{
+  "description": "Scheduled hardening scan baseline. The scheduled CI job fails when any check count exceeds this value.",
+  "target_ref": "origin/main",
+  "checks": {
+    "A": 0,
+    "B": 3,
+    "C": 3,
+    "D": 41,
+    "E": 3,
+    "F": 1,
+    "G": 1,
+    "H": 1,
+    "I": 1,
+    "J": 0,
+    "K": 0,
+    "L": 0
+  },
+  "total": 54
+}

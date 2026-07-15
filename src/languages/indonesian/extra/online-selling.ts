@@ -30,6 +30,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   /** Indonesian word/phrase. */
   word: string;
   /** English meaning. */
@@ -45,6 +46,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   /** Indonesian line. */
   text: string;
@@ -310,6 +312,7 @@ export const lessons: IndonesianLesson[] = [
     vocabulary: [
       // Platform & people
       {
+        cell_id: "4e0d6fda-7498-47b0-8f92-d702ca9d230b",
         word: "penjual",
         en: "seller",
         vi: "người bán",
@@ -318,6 +321,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "pen-JU-al — root `jual` + `peN-`; the buyer is `pembeli`",
       },
       {
+        cell_id: "f46f1d66-8b57-49d2-97f6-6decf1bf0a87",
         word: "toko",
         en: "shop / store",
         vi: "cửa hàng / shop",
@@ -326,6 +330,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "TO-ko — `toko online` = online store",
       },
       {
+        cell_id: "7b772796-e11b-4a5e-ac6a-82fab5ad43fa",
         word: "pesanan",
         en: "order",
         vi: "đơn hàng",
@@ -335,6 +340,7 @@ export const lessons: IndonesianLesson[] = [
       },
       // Payment & fulfilment
       {
+        cell_id: "e2a1c711-4b16-44b3-9518-86dd920e1735",
         word: "pembayaran",
         en: "payment",
         vi: "việc thanh toán",
@@ -343,6 +349,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "pem-ba-YA-ran — `pembayaran masuk` = payment received",
       },
       {
+        cell_id: "46daaac3-cebc-4378-82af-d656a5d51c80",
         word: "COD",
         en: "cash on delivery",
         vi: "trả tiền khi nhận hàng",
@@ -351,6 +358,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "see-oh-dee — pay the `kurir` cash on arrival",
       },
       {
+        cell_id: "2383eeea-78cb-401f-8ce4-fe7201a2ba11",
         word: "proses",
         en: "to process (an order)",
         vi: "xử lý (đơn)",
@@ -359,6 +367,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "PRO-ses — passive `diproses` = is processed",
       },
       {
+        cell_id: "1c1e03d5-bf6d-4fd0-b83b-4aef6f5cf7cc",
         word: "pengiriman",
         en: "shipping / delivery",
         vi: "việc giao hàng",
@@ -367,6 +376,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "pe-ngi-RI-man — root `kirim` + `pe-...-an`",
       },
       {
+        cell_id: "30b310d5-1ff1-408d-bdc7-e5c19922650b",
         word: "kurir",
         en: "courier",
         vi: "người giao hàng / shipper",
@@ -375,6 +385,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "KU-rir — JNE/J&T/SiCepat... are the `ekspedisi`",
       },
       {
+        cell_id: "09a80c2b-c64a-48f7-93e0-fc20831d3230",
         word: "resi",
         en: "tracking / receipt number",
         vi: "mã vận đơn",
@@ -383,6 +394,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "RE-si — `nomor resi`; buyers `lacak` (track) with it",
       },
       {
+        cell_id: "fd361451-cc93-4bba-9c61-6188859517c4",
         word: "lacak",
         en: "to track",
         vi: "tra cứu / theo dõi (đơn)",
@@ -391,6 +403,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "LA-chak — `c`='ch'; passive `dilacak`",
       },
       {
+        cell_id: "8915c81d-bab8-4629-a028-6eb7f58a914e",
         word: "J&T / JNE",
         en: "courier companies",
         vi: "các hãng chuyển phát",
@@ -400,6 +413,7 @@ export const lessons: IndonesianLesson[] = [
       },
       // Complaints & ratings
       {
+        cell_id: "fbf85548-e1b2-45cc-9dc3-11e82d280e7b",
         word: "komplain",
         en: "complaint / to complain",
         vi: "khiếu nại",
@@ -408,6 +422,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "kom-PLAIN — handle with `mohon maaf` + `sebagai bukti`",
       },
       {
+        cell_id: "1a615f60-7a2d-4eb2-af7d-aa922baf0c7c",
         word: "retur",
         en: "return (of goods)",
         vi: "trả hàng / hoàn hàng",
@@ -416,6 +431,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "RE-tur — not English `return`",
       },
       {
+        cell_id: "22d5067b-cdc7-46ed-a3e4-83cf036d1d89",
         word: "rating / ulasan",
         en: "rating / review",
         vi: "đánh giá / nhận xét",
@@ -424,6 +440,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "RE-ting / u-LA-san — `bintang lima` = five stars",
       },
       {
+        cell_id: "fea3a323-492c-4e55-8b6d-618cc8de35e2",
         word: "garansi",
         en: "warranty / guarantee",
         vi: "bảo hành",
@@ -435,54 +452,63 @@ export const lessons: IndonesianLesson[] = [
     dialogue: [
       // Dialogue: a buyer asks stock, pays, ships, then a small complaint
       {
+        cell_id: "0ff2f02a-2665-405b-ad82-319d15a7cefc",
         speaker: "Pembeli",
         text: "Kak, yang warna hitam masih ready? Mau order satu.",
         vi: "Shop ơi, màu đen còn hàng không? Mình muốn đặt một cái.",
         en: "Hi, is the black one still in stock? I'd like to order one.",
       },
       {
+        cell_id: "7354dd64-cc8a-4a3b-a0a8-daca7afb44bf",
         speaker: "Penjual",
         text: "Ready, Kak. Stok masih ada. Silakan checkout, nanti kami proses.",
         vi: "Còn nha bạn. Vẫn còn hàng. Bạn cứ đặt, tụi mình sẽ xử lý.",
         en: "In stock. Please check out and we'll process it.",
       },
       {
+        cell_id: "56f5349b-40bb-491f-9aa9-cb98f6f31c42",
         speaker: "Pembeli",
         text: "Sudah saya bayar pakai ShopeePay. Kira-kira sampai berapa hari?",
         vi: "Mình trả bằng ShopeePay rồi. Khoảng mấy ngày thì tới?",
         en: "I've paid with ShopeePay. Roughly how many days to arrive?",
       },
       {
+        cell_id: "b1f7c7b3-1618-4417-b458-a87534d02bd1",
         speaker: "Penjual",
         text: "Pembayarannya sudah masuk, ya. Estimasi dua sampai tiga hari, kami kirim lewat J&T.",
         vi: "Thanh toán đã vào rồi nha. Dự kiến hai đến ba ngày, tụi mình gửi qua J&T.",
         en: "Payment received. Estimate two to three days, we'll ship via J&T.",
       },
       {
+        cell_id: "b6f97d8d-cef8-477b-8dcf-2d2dedf750d9",
         speaker: "Penjual",
         text: "Ini nomor resinya: JT123456789. Bisa dilacak di aplikasi, ya, Kak.",
         vi: "Đây mã vận đơn: JT123456789. Bạn tra trên app được nha.",
         en: "Here's the tracking number: JT123456789. You can track it in the app.",
       },
       {
+        cell_id: "90d096d3-de45-4904-a433-ec45505ad21d",
         speaker: "Pembeli",
         text: "Kak, barangnya sudah sampai tapi ada sedikit lecet di sisi.",
         vi: "Shop ơi, hàng tới rồi nhưng có một chút trầy ở cạnh.",
         en: "Hi, the item arrived but there's a small scuff on the side.",
       },
       {
+        cell_id: "677cd7b2-7c31-47cd-b268-b986ebb373a6",
         speaker: "Penjual",
         text: "Mohon maaf atas ketidaknyamanannya. Tolong kirim foto sebagai bukti, nanti bisa kami retur atau ganti baru.",
         vi: "Thành thật xin lỗi vì sự bất tiện. Bạn gửi ảnh làm bằng chứng nhé, tụi mình sẽ đổi trả hoặc đổi cái mới.",
         en: "So sorry for the inconvenience. Please send a photo as proof, then we can return or replace it.",
       },
       {
+        cell_id: "544f67ea-82a0-4c67-bf7b-26a46498d6a7",
         speaker: "Pembeli",
         text: "Oke, sudah saya kirim fotonya. Makasih responnya cepat.",
         vi: "Ok, mình gửi ảnh rồi. Cảm ơn shop phản hồi nhanh.",
         en: "Okay, I've sent the photo. Thanks for the quick response.",
       },
       {
+        cell_id: "b28559aa-240e-487e-8d2f-d702c50d2c11",
         speaker: "Penjual",
         text: "Sama-sama, Kak. Kalau berkenan, kasih bintang lima, ya. Ditunggu order berikutnya!",
         vi: "Không có gì bạn ơi. Nếu được, cho năm sao nhé. Hẹn đơn lần sau!",

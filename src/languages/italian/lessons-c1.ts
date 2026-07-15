@@ -31,6 +31,7 @@ export type LessonSentence = {
 };
 
 export type VocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -40,6 +41,7 @@ export type VocabEntry = {
 };
 
 export type DialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -181,6 +183,7 @@ export const lessons: ItalianLesson[] = [
       "A 5-part frame for a C1 'saggio argomentativo' (180–220 words):\n\n(1) INTRODUZIONE — frame the issue as complex: 'Negli ultimi anni si è discusso molto di…'. One sentence.\n(2) TESI — state a softened position: 'A mio avviso, la questione non può essere ridotta a…'. Avoid the binary 'Secondo me è giusto/sbagliato'.\n(3) ARGOMENTO — one concrete example PLUS why it matters: 'Un esempio significativo è…'. Never drop an example and move on.\n(4) CONCESSIONE — mandatory: 'È vero che…, tuttavia…' or 'Occorre però distinguere tra…'. This single move lifts the essay from B2 to C1.\n(5) CONCLUSIONE — a conditional close: 'Alla luce di queste considerazioni, ritengo che… a condizione che…'.\n\nVOCABULARY UPGRADES: 'buono' → 'efficace'; 'una cosa importante' → 'un aspetto rilevante'; 'il testo dice' → 'il testo sostiene / evidenzia'; 'un problema grande' → 'una questione complessa'; 'molto' → 'significativamente / notevolmente'.\n\nUSE AT LEAST 5 CONNECTORS: 'inoltre' (add), 'tuttavia' (contrast), 'di conseguenza' (consequence), 'a condizione che' (condition), 'in conclusione' (close).\n\nPractice: write exactly these five sentences for 'La tecnologia migliora davvero la qualità della vita?', then self-check: is the position clear but not rigid? at least one concession? one function per paragraph?",
     vocabulary: [
       {
+        cell_id: "5b99a78e-5551-4255-a575-d0f68ea99ff4",
         word: "a mio avviso",
         en: "in my view",
         vi: "theo quan điểm của tôi",
@@ -189,6 +192,7 @@ export const lessons: ItalianLesson[] = [
         pronunciation_en: "ah MEE-oh ahv-VEE-zo — more formal than 'secondo me'; the double v is held, s = 'z'",
       },
       {
+        cell_id: "da9f4730-6578-4432-b15c-d55ccd76b551",
         word: "la questione",
         en: "the issue / matter",
         vi: "vấn đề (mang sắc thái học thuật)",
@@ -197,6 +201,7 @@ export const lessons: ItalianLesson[] = [
         pronunciation_en: "lah kweh-STYOH-neh — academic register; prefer it to repeating 'il problema'",
       },
       {
+        cell_id: "47b476ea-5d6b-40a2-b8ec-38b13a617107",
         word: "occorre distinguere tra",
         en: "one must distinguish between",
         vi: "cần phân biệt giữa",
@@ -205,6 +210,7 @@ export const lessons: ItalianLesson[] = [
         pronunciation_en: "ok-KOR-reh dee-STEEN-gweh-reh trah — 'occorre' (double c, double r) = 'it is necessary'",
       },
       {
+        cell_id: "773fb0ee-de64-4db8-9318-aee3bfd55f2e",
         word: "è vero che… tuttavia",
         en: "it is true that… however",
         vi: "đúng là… tuy nhiên",
@@ -213,6 +219,7 @@ export const lessons: ItalianLesson[] = [
         pronunciation_en: "eh VEH-ro keh… toot-tah-VEE-ah — the core concession frame; 'che' = 'keh'",
       },
       {
+        cell_id: "72761a7b-e143-4d4b-9a4e-cf7ac8d44761",
         word: "comportare",
         en: "to entail / to involve",
         vi: "kéo theo / dẫn đến",
@@ -221,6 +228,7 @@ export const lessons: ItalianLesson[] = [
         pronunciation_en: "kom-por-TAH-reh — false friend: NOT 'to comport oneself'; means 'to entail/bring about'",
       },
       {
+        cell_id: "dab6742e-5abf-482f-86de-55be66750a8c",
         word: "non trascurabile",
         en: "not negligible",
         vi: "không thể xem nhẹ",
@@ -229,6 +237,7 @@ export const lessons: ItalianLesson[] = [
         pronunciation_en: "non trah-skoo-RAH-bee-leh — 'sc' before u = 'sk'; a key C1 hedge for risks/effects",
       },
       {
+        cell_id: "046a24fc-55fd-4e03-a0cf-f0daecfa7d58",
         word: "alla luce di queste considerazioni",
         en: "in light of these considerations",
         vi: "dựa trên những cân nhắc này",
@@ -237,6 +246,7 @@ export const lessons: ItalianLesson[] = [
         pronunciation_en: "ah-lah LOO-cheh dee KWEH-steh kon-see-deh-rah-TSYOH-nee — 'luce' = 'LOO-cheh'; standard essay-closing connector",
       },
       {
+        cell_id: "77379b42-a68f-4fd2-a1b6-96cdab46be9b",
         word: "la complessità",
         en: "complexity",
         vi: "tính phức tạp",
@@ -245,6 +255,7 @@ export const lessons: ItalianLesson[] = [
         pronunciation_en: "lah kom-ples-see-TAH — final stress; -ità abstract nouns are invariable in the plural",
       },
       {
+        cell_id: "7bfd8443-e45c-4f55-a388-58b86628db88",
         word: "sostenibile",
         en: "sustainable",
         vi: "bền vững",
@@ -253,6 +264,7 @@ export const lessons: ItalianLesson[] = [
         pronunciation_en: "so-steh-NEE-bee-leh — both an environmental and a figurative 'tenable/defensible' sense",
       },
       {
+        cell_id: "9f0cc606-7961-415d-98ec-daf35cd60a69",
         word: "a condizione che (+ congiuntivo)",
         en: "provided that (+ subjunctive)",
         vi: "với điều kiện là (đi với thức giả định)",
@@ -263,24 +275,28 @@ export const lessons: ItalianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "a8888dd3-3d55-488c-97ce-5733ee1e5e10",
         speaker: "Prof.ssa Conti",
         text: "Minh, ha strutturato il saggio, ma la sua tesi è troppo netta. Dov'è la concessione?",
         vi: "Minh, em đã dựng được bố cục bài luận, nhưng luận đề của em quá dứt khoát. Phần nhượng bộ đâu rồi?",
         en: "Minh, you've structured the essay, but your thesis is too clear-cut. Where's the concession?",
       },
       {
+        cell_id: "fc1fea00-31dc-498a-bb01-40c083c09d03",
         speaker: "Minh",
         text: "Pensavo che ammettere un limite indebolisse la mia posizione.",
         vi: "Em nghĩ thừa nhận một giới hạn sẽ làm yếu lập trường của em.",
         en: "I thought admitting a limit would weaken my position.",
       },
       {
+        cell_id: "8d2df72a-2dca-48f1-8215-37f7acb4d6c1",
         speaker: "Prof.ssa Conti",
         text: "Al contrario: a livello C1, riconoscere un limite la rafforza. Aggiunga un 'È vero che…, tuttavia…'.",
         vi: "Ngược lại: ở trình độ C1, thừa nhận một giới hạn làm lập trường mạnh hơn. Hãy thêm một câu « È vero che…, tuttavia… ».",
         en: "On the contrary: at C1, acknowledging a limit strengthens it. Add an 'È vero che…, tuttavia…'.",
       },
       {
+        cell_id: "41ed52f6-f777-4b1b-aad2-e678fca6db72",
         speaker: "Minh",
         text: "Capito. Quindi: è vero che la tecnologia isola, tuttavia, usata con criterio, può anche avvicinare.",
         vi: "Em hiểu rồi. Vậy: đúng là công nghệ gây cô lập, tuy nhiên, nếu dùng có cân nhắc, nó cũng có thể kéo người ta lại gần nhau.",
@@ -524,6 +540,7 @@ export const lessons: ItalianLesson[] = [
       "A 'C1 answer' frame that states a view AND shows critical thinking:\n\n'A mio avviso, ___. Da un lato, ___; dall'altro, ___. Il limite principale è che ___. Per questo, una soluzione equilibrata potrebbe essere ___.'\n\nNUANCED AGREEMENT (don't just say 'Sì'): 'Sono d'accordo in linea generale.' / 'Condivido questo punto, ma con una riserva.' / 'Mi sembra un'osservazione valida.'\n\nDISAGREEMENT WITHOUT RUDENESS: 'Hai torto' → 'Non sono del tutto d'accordo.' / 'Questo è sbagliato' → 'Questo punto mi sembra discutibile.' / 'Non capisci' → 'Forse stiamo guardando il problema da prospettive diverse.'\n\nEVALUATING EVIDENCE (C1 gold): 'I dati suggeriscono che…' / 'Non abbiamo prove sufficienti per dire che…' / 'Bisogna distinguere tra correlazione e causa.' / 'Potrebbe esserci un'altra spiegazione.'\n\nPOLITE CHALLENGE FRAMES: 'Capisco il punto, però mi chiedo se…' / 'È un'ipotesi interessante, ma quali dati la confermano?' / 'Questo vale in tutti i casi o solo in alcuni contesti?'\n\nThe hinge rule: every time you state a view, attach ONE limit or ONE condition. That's the line between B2 and C1.",
     vocabulary: [
       {
+        cell_id: "5ed1c7f6-e161-4dd9-a1d4-178abf08af7b",
         word: "condividere un punto",
         en: "to share / endorse a point",
         vi: "đồng tình với một luận điểm",
@@ -532,6 +549,7 @@ export const lessons: ItalianLesson[] = [
         pronunciation_en: "kon-dee-VEE-deh-reh oon POON-toh — also literally 'to share', but in debate = 'to agree with'",
       },
       {
+        cell_id: "53bd16b6-777a-4590-996d-735a804505c9",
         word: "discutibile",
         en: "debatable / questionable",
         vi: "còn phải bàn / đáng ngờ",
@@ -540,6 +558,7 @@ export const lessons: ItalianLesson[] = [
         pronunciation_en: "dee-skoo-TEE-bee-leh — a polite way to flag a weak point without saying 'sbagliato'",
       },
       {
+        cell_id: "5a48ad01-b366-4c91-b46f-2d92861ba6c8",
         word: "una riserva",
         en: "a reservation / caveat",
         vi: "một điều dè dặt / lưu ý",
@@ -548,6 +567,7 @@ export const lessons: ItalianLesson[] = [
         pronunciation_en: "OO-nah ree-SER-vah — 'con una riserva' = 'with one caveat'; the s = 'z'",
       },
       {
+        cell_id: "138c189d-7f15-42e4-b9eb-3c662c967abd",
         word: "distinguere tra correlazione e causa",
         en: "to distinguish correlation from cause",
         vi: "phân biệt tương quan và nguyên nhân",
@@ -556,6 +576,7 @@ export const lessons: ItalianLesson[] = [
         pronunciation_en: "dee-STEEN-gweh-reh trah kor-reh-lah-TSYOH-neh eh KOW-zah — the C1 analytical move par excellence",
       },
       {
+        cell_id: "7329d418-a52d-4e90-bf33-507a47ffe45c",
         word: "le prove sono sufficienti",
         en: "the evidence is sufficient",
         vi: "bằng chứng đủ thuyết phục",
@@ -564,6 +585,7 @@ export const lessons: ItalianLesson[] = [
         pronunciation_en: "leh PRO-veh so-no soof-fee-CHEN-tee — 'prova' (evidence) vs 'prova' (rehearsal) is context-driven",
       },
       {
+        cell_id: "1c15cd11-fbc2-45ac-b26f-aa2f80117aaa",
         word: "affidabile",
         en: "reliable / trustworthy",
         vi: "đáng tin cậy",
@@ -572,6 +594,7 @@ export const lessons: ItalianLesson[] = [
         pronunciation_en: "af-fee-DAH-bee-leh — 'la fonte è affidabile?' = 'is the source reliable?'; double f",
       },
       {
+        cell_id: "6a4694c7-e332-4805-ab6b-f23591683074",
         word: "una spiegazione alternativa",
         en: "an alternative explanation",
         vi: "một cách giải thích khác",
@@ -580,6 +603,7 @@ export const lessons: ItalianLesson[] = [
         pronunciation_en: "OO-nah spyeh-gah-TSYOH-neh al-ter-nah-TEE-vah — 'potrebbe esserci…' = 'there might be…'",
       },
       {
+        cell_id: "228894e8-c94a-4703-920f-f5ec418b67a4",
         word: "il limite principale",
         en: "the main limitation",
         vi: "giới hạn chính",
@@ -588,6 +612,7 @@ export const lessons: ItalianLesson[] = [
         pronunciation_en: "eel LEE-mee-teh preen-chee-PAH-leh — note: 'limite' stresses the FIRST syllable",
       },
       {
+        cell_id: "d0af49f5-4d47-4a30-b385-90af59b9f208",
         word: "trovare un equilibrio tra",
         en: "to strike a balance between",
         vi: "tìm sự cân bằng giữa",
@@ -598,24 +623,28 @@ export const lessons: ItalianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "59cd8255-b741-418f-a677-526e8bffaaf7",
         speaker: "Giulia",
         text: "Molti giovani leggono le notizie sui social, quindi i social sono la fonte migliore.",
         vi: "Nhiều người trẻ đọc tin tức trên mạng xã hội, vậy nên mạng xã hội là nguồn tốt nhất.",
         en: "Lots of young people read the news on social media, so social media is the best source.",
       },
       {
+        cell_id: "4de75807-1663-4a9d-abbd-2d3fb628b7b0",
         speaker: "Khanh",
         text: "Capisco il punto, però mi chiedo se la popolarità di una fonte ne provi davvero l'affidabilità.",
         vi: "Mình hiểu ý bạn, nhưng mình tự hỏi liệu độ phổ biến của một nguồn có thực sự chứng minh độ đáng tin của nó không.",
         en: "I see your point, but I wonder whether a source's popularity really proves its reliability.",
       },
       {
+        cell_id: "f3cc5f2c-9ff9-45b9-a3fc-2ef7ce487f84",
         speaker: "Giulia",
         text: "In che senso? Se tutti lo leggono, qualcosa di valido ci sarà.",
         vi: "Ý bạn là sao? Nếu ai cũng đọc thì hẳn phải có gì đó đáng giá chứ.",
         en: "How do you mean? If everyone reads it, there must be something valid to it.",
       },
       {
+        cell_id: "b4356074-39b1-405f-919f-dd92c95b4810",
         speaker: "Khanh",
         text: "Forse, ma bisogna distinguere tra popolarità e affidabilità. Un contenuto molto condiviso non è necessariamente vero.",
         vi: "Có thể, nhưng cần phân biệt giữa độ phổ biến và độ đáng tin. Một nội dung được chia sẻ nhiều không nhất thiết là đúng.",
@@ -844,6 +873,7 @@ export const lessons: ItalianLesson[] = [
       "A 6-part structure for a C1 work email:\n(1) OGGETTO (subject) — precise, never vague: 'Richiesta chiarimenti su contratto di lavoro'.\n(2) APERTURA — greet at the right rung: 'Gentile Sig.ra Ferri,'.\n(3) CONTESTO — why you're writing: 'Le scrivo in merito al contratto ricevuto ieri.'\n(4) RICHIESTA — what's needed, name the object: 'Avrei bisogno di un chiarimento sull'orario settimanale.'\n(5) SCADENZA/AZIONE — a dated next step: 'Sarebbe possibile ricevere una risposta entro venerdì?'\n(6) CHIUSURA — a professional close: 'Resto a disposizione e La ringrazio.'\n\nUPGRADE THE TONE (firm but polite): 'Mi serve il documento' → 'Le sarei grato/a se potesse inviarmi il documento.' / 'Il pacco non arriva' → 'Desidero segnalare che la consegna prevista non è stata effettuata.' / 'Rispondete presto' → 'Vi chiedo cortesemente un riscontro entro domani.'\n\nHIGH-VALUE PHRASES: 'Le scrivo in merito a…' (topic opener), 'Con riferimento a quanto concordato…' (follow-up), 'Alla luce di quanto sopra…' (C1 transition), 'Resto a disposizione per eventuali chiarimenti.' (close), 'In attesa di un Suo gentile riscontro…' (formal close), 'entro e non oltre il 20 giugno' (hard deadline).\n\nNEGOTIATION TIP: when you can't meet a deadline, don't merely ask for an extension — PROPOSE AN ALTERNATIVE: 'Le propongo di inviare una prima bozza venerdì e la versione definitiva lunedì entro le 12:00.' It keeps the project moving without sacrificing quality.",
     vocabulary: [
       {
+        cell_id: "82ef0eae-b994-4ccd-b97d-b551d1f1ccfe",
         word: "Le scrivo in merito a",
         en: "I'm writing to you regarding",
         vi: "tôi viết liên quan đến",
@@ -852,6 +882,7 @@ export const lessons: ItalianLesson[] = [
         pronunciation_en: "leh SKREE-vo een MEH-ree-toh ah — 'Le' = formal 'to you' (Lei); the standard topic opener",
       },
       {
+        cell_id: "b5feec4d-506e-4ff3-acb8-01b6c3ce8f9a",
         word: "Le sarei grato/a se potesse",
         en: "I would be grateful if you could",
         vi: "tôi sẽ rất biết ơn nếu anh/chị có thể",
@@ -860,6 +891,7 @@ export const lessons: ItalianLesson[] = [
         pronunciation_en: "leh sah-RAY GRAH-toh seh po-TES-seh — conditional + imperfect subjunctive = top-tier politeness",
       },
       {
+        cell_id: "9cc38ecc-1df2-4de3-9b3e-4db8cc09d942",
         word: "segnalare un disservizio",
         en: "to report a service failure",
         vi: "báo một sự cố dịch vụ",
@@ -868,6 +900,7 @@ export const lessons: ItalianLesson[] = [
         pronunciation_en: "seh-nyah-LAH-reh oon dees-ser-VEE-tsyo — 'gn' = 'ny'; neutral, professional verb for complaints",
       },
       {
+        cell_id: "0838aa94-5d97-4ad3-9c30-18d27255f8fc",
         word: "resto a disposizione",
         en: "I remain available",
         vi: "tôi sẵn sàng (nếu cần)",
@@ -876,6 +909,7 @@ export const lessons: ItalianLesson[] = [
         pronunciation_en: "RES-toh ah dees-po-zee-TSYOH-neh — a standard professional sign-off before the greeting",
       },
       {
+        cell_id: "c55316dd-9873-4d96-8350-e178552cebdf",
         word: "un riscontro",
         en: "a reply / feedback",
         vi: "phản hồi",
@@ -884,6 +918,7 @@ export const lessons: ItalianLesson[] = [
         pronunciation_en: "oon ree-SKON-tro — more formal than 'risposta'; 'in attesa di un Suo riscontro'",
       },
       {
+        cell_id: "eba55c90-e6c2-483f-9454-7260cd848317",
         word: "entro e non oltre",
         en: "by (and no later than)",
         vi: "chậm nhất là",
@@ -892,6 +927,7 @@ export const lessons: ItalianLesson[] = [
         pronunciation_en: "EN-tro eh non OL-treh — a firm, unambiguous deadline marker for contracts and escalations",
       },
       {
+        cell_id: "b62db736-8f3e-48f1-abb1-fc12d58e0c6b",
         word: "alla luce di quanto sopra",
         en: "in light of the above",
         vi: "dựa trên những điều nêu trên",
@@ -900,6 +936,7 @@ export const lessons: ItalianLesson[] = [
         pronunciation_en: "ah-lah LOO-cheh dee KWAN-toh SO-prah — a C1 transition that ties a request to prior context",
       },
       {
+        cell_id: "01345084-9296-4b76-9191-32abaa4ef5b8",
         word: "cortesemente",
         en: "kindly / courteously",
         vi: "một cách lịch sự",
@@ -908,6 +945,7 @@ export const lessons: ItalianLesson[] = [
         pronunciation_en: "kor-teh-zeh-MEN-teh — 'Vi chiedo cortesemente…' softens a firm request without weakening it",
       },
       {
+        cell_id: "5d274ac3-a12b-48b6-b98b-42efa38f731e",
         word: "qualora fosse necessario",
         en: "should it be necessary",
         vi: "nếu cần thiết",
@@ -918,24 +956,28 @@ export const lessons: ItalianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "ce9669d1-415d-430d-8796-acfc07855a2a",
         speaker: "Collega (Marco)",
         text: "Lan, hai scritto al fornitore per il ritardo? Stavo per mandargli un messaggio arrabbiato.",
         vi: "Lan, cậu viết cho nhà cung cấp về việc trễ hàng chưa? Tớ đang định gửi cho họ một tin nhắn bực bội.",
         en: "Lan, did you write to the supplier about the delay? I was about to send them an angry message.",
       },
       {
+        cell_id: "df02d84d-b26d-4a71-9529-c494fe88b4d3",
         speaker: "Lan",
         text: "Aspetta, meglio non scrivere arrabbiati. Segnaliamo i fatti e l'impatto, non la rabbia.",
         vi: "Khoan đã, tốt nhất đừng viết khi đang bực. Mình báo cáo sự việc và ảnh hưởng, chứ không phải cơn giận.",
         en: "Wait — best not to write angry. We report the facts and the impact, not the anger.",
       },
       {
+        cell_id: "79d66fc9-a72d-496d-a9f8-1f169535902a",
         speaker: "Marco",
         text: "Tipo come?",
         vi: "Kiểu như thế nào?",
         en: "Like how?",
       },
       {
+        cell_id: "b89f3e93-6407-40a6-9e5e-69c95e9e729b",
         speaker: "Lan",
         text: "« Desidero segnalare che la consegna prevista per il 12 giugno non è stata effettuata. La mancata consegna sta causando un disagio organizzativo. » Fermo, ma professionale.",
         vi: "« Tôi muốn báo rằng đợt giao hàng dự kiến ngày 12 tháng 6 đã không được thực hiện. Việc không giao hàng đang gây khó khăn cho việc tổ chức công việc. » Cứng rắn, nhưng chuyên nghiệp.",
@@ -1158,6 +1200,7 @@ export const lessons: ItalianLesson[] = [
       "A C1 academic-presentation frame (3–5 minutes):\n(1) INQUADRAMENTO (framing) — pose the object as complex: 'Il fenomeno che intendo analizzare presenta una complessità che non può essere ridotta a un solo fattore.'\n(2) TESI/POSIZIONE — state the position with an academic verb: 'Sostengo che…' / 'Il testo evidenzia che…' — NOT 'Penso che… secondo me'.\n(3) ANALISI — structured analysis using nominalisation: 'L'analisi dei dati rivela una distinzione tra cause immediate e cause strutturali.'\n(4) LIMITI — state the limits (mandatory at C1): 'Questa interpretazione presenta alcuni limiti, in particolare…'\n(5) CONCLUSIONE HEDGED — a cautious close: 'I dati disponibili non permettono una conclusione definitiva, ma suggeriscono che…'\n\nVOCABULARY UPGRADES: 'un problema grande' → 'una questione complessa'; 'una cosa importante' → 'un aspetto rilevante'; 'il testo dice' → 'il testo sostiene'; 'questo fa vedere' → 'questo evidenzia'; 'un modo buono' → 'un approccio efficace'.\n\nMEMORISE these academic noun phrases: 'un approccio efficace', 'una questione complessa', 'un fattore determinante', 'una conseguenza significativa', 'un punto di vista alternativo', 'un presupposto implicito', 'un ragionamento coerente', \"un'analisi approfondita\".\n\nSTANDARD VERB–NOUN COLLOCATIONS: 'sostenere una tesi', 'analizzare un fenomeno', 'evidenziare un problema', 'trarre una conclusione', 'approfondire un tema', 'confrontare due modelli'.\n\nPractice: take a B1 sentence ('Il testo dice che la tecnologia è buona') and lift it to C1 ('Il testo sostiene che la tecnologia possa rappresentare un fattore determinante, pur presentando alcuni limiti'). Notice: academic verb + nominalisation + subjunctive + limit.",
     vocabulary: [
       {
+        cell_id: "9acf61eb-d4e7-4a5a-b521-b28827158dfb",
         word: "sostenere una tesi",
         en: "to argue / defend a thesis",
         vi: "bảo vệ / cho rằng một luận điểm",
@@ -1166,6 +1209,7 @@ export const lessons: ItalianLesson[] = [
         pronunciation_en: "so-steh-NEH-reh OO-nah TEH-zee — 'sostenere' = both 'to support physically' and 'to argue'; 'tesi' s = 'z'",
       },
       {
+        cell_id: "dbd8c96b-93df-42f4-9103-45aa5c318b44",
         word: "evidenziare",
         en: "to highlight / point out",
         vi: "nhấn mạnh / làm nổi bật",
@@ -1174,6 +1218,7 @@ export const lessons: ItalianLesson[] = [
         pronunciation_en: "eh-vee-den-TSYAH-reh (-zi- = 'tsy') — 'lo studio evidenzia che…' = 'the study points out that…'",
       },
       {
+        cell_id: "9fe0c42d-37c2-4c75-94b2-ab5962197879",
         word: "un fattore determinante",
         en: "a decisive factor",
         vi: "một yếu tố quyết định",
@@ -1182,6 +1227,7 @@ export const lessons: ItalianLesson[] = [
         pronunciation_en: "oon fat-TOH-reh deh-ter-mee-NAHN-teh — double t in 'fattore'; a core academic noun phrase",
       },
       {
+        cell_id: "a2c5efbc-b826-439b-9ffd-39971490f25e",
         word: "una questione complessa",
         en: "a complex issue",
         vi: "một vấn đề phức tạp",
@@ -1190,6 +1236,7 @@ export const lessons: ItalianLesson[] = [
         pronunciation_en: "OO-nah kweh-STYOH-neh kom-PLES-sah — preferred over 'un problema grande'; double s in 'complessa'",
       },
       {
+        cell_id: "378b81e6-9238-469b-9464-9b56304b91a8",
         word: "trarre una conclusione",
         en: "to draw a conclusion",
         vi: "rút ra một kết luận",
@@ -1198,6 +1245,7 @@ export const lessons: ItalianLesson[] = [
         pronunciation_en: "TRAR-reh OO-nah kon-kloo-ZYOH-neh — 'trarre' (double r) is irregular; 'traggo, trai, trae…'",
       },
       {
+        cell_id: "09505438-0c94-45d9-be90-33fdad245bb8",
         word: "approfondire un tema",
         en: "to explore a topic in depth",
         vi: "đào sâu một chủ đề",
@@ -1206,6 +1254,7 @@ export const lessons: ItalianLesson[] = [
         pronunciation_en: "ap-pro-fon-DEE-reh oon TEH-mah — '-isc-' verb: 'approfondisco, approfondisci…'; double p",
       },
       {
+        cell_id: "c3237f27-29ea-4777-b42a-4fdf78ab5332",
         word: "un presupposto implicito",
         en: "an implicit assumption",
         vi: "một giả định ngầm",
@@ -1214,6 +1263,7 @@ export const lessons: ItalianLesson[] = [
         pronunciation_en: "oon preh-soop-POS-toh eem-PLEE-chee-toh — double p in 'presupposto'; 'implicito' c = 'ch'",
       },
       {
+        cell_id: "e3416dc8-cee6-47c3-8915-91bb60e67320",
         word: "un ragionamento coerente",
         en: "a coherent line of reasoning",
         vi: "một lập luận nhất quán",
@@ -1222,6 +1272,7 @@ export const lessons: ItalianLesson[] = [
         pronunciation_en: "oon rah-jo-nah-MEN-toh ko-eh-REN-teh — 'gio' = 'jo'; the opposite is 'un ragionamento incoerente'",
       },
       {
+        cell_id: "8cd63fc6-a638-4f10-88ee-d010baf5c71d",
         word: "rilevante",
         en: "relevant / significant",
         vi: "đáng kể / có liên quan",
@@ -1232,24 +1283,28 @@ export const lessons: ItalianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "cf088cea-7553-4b10-aa55-01af331bfb0a",
         speaker: "Prof. Bianchi",
         text: "Tien, la sua esposizione è chiara, ma il lessico è troppo quotidiano. 'Il testo dice una cosa importante' è da B1.",
         vi: "Tiên, phần trình bày của em rõ ràng, nhưng từ vựng quá đời thường. « Il testo dice una cosa importante » là mức B1.",
         en: "Tien, your presentation is clear, but the vocabulary is too everyday. 'The text says an important thing' is B1.",
       },
       {
+        cell_id: "281e3b4c-37c4-40d8-bc9d-d24badb5a835",
         speaker: "Tien",
         text: "Come lo dico a livello C1?",
         vi: "Em nói thế nào ở mức C1 ạ?",
         en: "How do I say it at C1?",
       },
       {
+        cell_id: "6dbcff2e-8cce-4032-b8a1-9c38ae6ce440",
         speaker: "Prof. Bianchi",
         text: "'Il testo evidenzia un aspetto rilevante.' Verbo accademico più nominalizzazione. E aggiunga sempre un limite.",
         vi: "« Il testo evidenzia un aspetto rilevante. » Động từ học thuật cộng với danh hoá. Và luôn thêm một giới hạn.",
         en: "'The text highlights a relevant aspect.' An academic verb plus nominalisation. And always add a limit.",
       },
       {
+        cell_id: "b32b7bf4-ff3e-473b-b665-bfacc578543c",
         speaker: "Tien",
         text: "Quindi: 'Il testo evidenzia un aspetto rilevante, pur presentando alcuni limiti metodologici.'",
         vi: "Vậy: « Il testo evidenzia un aspetto rilevante, pur presentando alcuni limiti metodologici. »",

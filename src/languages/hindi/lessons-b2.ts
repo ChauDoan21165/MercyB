@@ -20,6 +20,7 @@ export type HindiSentence = {
 };
 
 export type HindiVocabEntry = {
+  cell_id?: string;
   hi: string;
   romanization: string;
   vi: string;
@@ -96,10 +97,10 @@ export const lessons: HindiLesson[] = [
       },
     ],
     vocabulary: [
-      { hi: "कार्यसूची", romanization: "kaaryasuuchii", vi: "chương trình làm việc", en: "agenda", pos: "n." },
-      { hi: "मुद्दा", romanization: "muddaa", vi: "vấn đề", en: "issue", pos: "n." },
-      { hi: "निर्णय", romanization: "nirnay", vi: "quyết định", en: "decision", pos: "n." },
-      { hi: "सुझाव", romanization: "sujhaav", vi: "đề xuất", en: "suggestion", pos: "n." },
+      { cell_id: "3626d2e1-d316-4f1a-babf-1d8b4bc53d63", hi: "कार्यसूची", romanization: "kaaryasuuchii", vi: "chương trình làm việc", en: "agenda", pos: "n." },
+      { cell_id: "cb1b6c37-d45f-4c9d-835d-3664e90e48c6", hi: "मुद्दा", romanization: "muddaa", vi: "vấn đề", en: "issue", pos: "n." },
+      { cell_id: "1e403a80-7fbe-45fe-ac56-9743ae4bcf61", hi: "निर्णय", romanization: "nirnay", vi: "quyết định", en: "decision", pos: "n." },
+      { cell_id: "95ead234-83e8-47ec-98bc-161c2cd1d2c2", hi: "सुझाव", romanization: "sujhaav", vi: "đề xuất", en: "suggestion", pos: "n." },
     ],
     exercises: [
       {
@@ -150,10 +151,10 @@ export const lessons: HindiLesson[] = [
       },
     ],
     vocabulary: [
-      { hi: "शिकायत", romanization: "shikaayat", vi: "khiếu nại", en: "complaint", pos: "n." },
-      { hi: "समाधान", romanization: "samaadhaan", vi: "giải pháp", en: "solution", pos: "n." },
-      { hi: "रसीद", romanization: "rasiid", vi: "biên lai", en: "receipt", pos: "n." },
-      { hi: "संलग्न", romanization: "sanlagn", vi: "đính kèm", en: "attached", pos: "adj." },
+      { cell_id: "4207c681-173d-447c-9446-4c9229ddb63f", hi: "शिकायत", romanization: "shikaayat", vi: "khiếu nại", en: "complaint", pos: "n." },
+      { cell_id: "6ddd2904-bc7e-4cc4-8a8b-53c7e15e6a0e", hi: "समाधान", romanization: "samaadhaan", vi: "giải pháp", en: "solution", pos: "n." },
+      { cell_id: "acbf6175-9f12-4888-9233-b83ac8ef664b", hi: "रसीद", romanization: "rasiid", vi: "biên lai", en: "receipt", pos: "n." },
+      { cell_id: "aff80313-c9e3-4754-85bb-fece798dbbcd", hi: "संलग्न", romanization: "sanlagn", vi: "đính kèm", en: "attached", pos: "adj." },
     ],
     exercises: [
       {
@@ -207,10 +208,10 @@ export const lessons: HindiLesson[] = [
       },
     ],
     vocabulary: [
-      { hi: "सहमत", romanization: "sahamat", vi: "đồng ý", en: "in agreement", pos: "adj." },
-      { hi: "दूसरी ओर", romanization: "duusrii or", vi: "mặt khác", en: "on the other hand", pos: "phr." },
-      { hi: "आँकड़े", romanization: "aankde", vi: "số liệu", en: "data", pos: "n.pl." },
-      { hi: "संकेत देना", romanization: "sanket denaa", vi: "cho thấy, gợi ý", en: "to indicate", pos: "v." },
+      { cell_id: "00e639ea-a98f-4a9d-83ee-1658931bc4f3", hi: "सहमत", romanization: "sahamat", vi: "đồng ý", en: "in agreement", pos: "adj." },
+      { cell_id: "319a44eb-3e2d-455a-8b1f-95e14c54a9cc", hi: "दूसरी ओर", romanization: "duusrii or", vi: "mặt khác", en: "on the other hand", pos: "phr." },
+      { cell_id: "7d4cd851-103d-422e-8f78-392ba1e530f5", hi: "आँकड़े", romanization: "aankde", vi: "số liệu", en: "data", pos: "n.pl." },
+      { cell_id: "c35302bc-983d-4a33-a193-10f050364c4d", hi: "संकेत देना", romanization: "sanket denaa", vi: "cho thấy, gợi ý", en: "to indicate", pos: "v." },
     ],
     exercises: [
       {
@@ -261,10 +262,10 @@ export const lessons: HindiLesson[] = [
       },
     ],
     vocabulary: [
-      { hi: "के अनुसार", romanization: "ke anusaar", vi: "theo", en: "according to", pos: "postp. phr." },
-      { hi: "अधिकारी", romanization: "adhikaarii", vi: "quan chức, viên chức", en: "official", pos: "n." },
-      { hi: "यात्री", romanization: "yaatrii", vi: "hành khách", en: "passenger", pos: "n." },
-      { hi: "हालाँकि", romanization: "haalaanki", vi: "tuy nhiên", en: "however", pos: "adv." },
+      { cell_id: "9e4dbc2e-3bb6-4c3a-995d-43ccf06627a0", hi: "के अनुसार", romanization: "ke anusaar", vi: "theo", en: "according to", pos: "postp. phr." },
+      { cell_id: "33750d80-fd0d-4273-b1a5-e4434b1e361e", hi: "अधिकारी", romanization: "adhikaarii", vi: "quan chức, viên chức", en: "official", pos: "n." },
+      { cell_id: "d3c65551-b912-4a49-80f5-4424dbea9964", hi: "यात्री", romanization: "yaatrii", vi: "hành khách", en: "passenger", pos: "n." },
+      { cell_id: "bcc00fc5-f182-4efa-ad42-c0d0d970ccb7", hi: "हालाँकि", romanization: "haalaanki", vi: "tuy nhiên", en: "however", pos: "adv." },
     ],
     exercises: [
       {
@@ -314,10 +315,10 @@ export const lessons: HindiLesson[] = [
       },
     ],
     vocabulary: [
-      { hi: "परियोजना", romanization: "pariyojanaa", vi: "dự án", en: "project", pos: "n." },
-      { hi: "वर्तमान स्थिति", romanization: "vartamaan sthiti", vi: "tình trạng hiện tại", en: "current status", pos: "n." },
-      { hi: "अतिरिक्त", romanization: "atirikt", vi: "thêm, bổ sung", en: "additional", pos: "adj." },
-      { hi: "पुष्टि", romanization: "pushti", vi: "xác nhận", en: "confirmation", pos: "n." },
+      { cell_id: "a4a9ef19-cd32-40c5-994e-d756f3346a63", hi: "परियोजना", romanization: "pariyojanaa", vi: "dự án", en: "project", pos: "n." },
+      { cell_id: "7e31671c-eb90-4607-82e0-68598799f111", hi: "वर्तमान स्थिति", romanization: "vartamaan sthiti", vi: "tình trạng hiện tại", en: "current status", pos: "n." },
+      { cell_id: "d9b1ddf7-86f1-45ed-8675-1b8951fd6273", hi: "अतिरिक्त", romanization: "atirikt", vi: "thêm, bổ sung", en: "additional", pos: "adj." },
+      { cell_id: "e9f2458f-2deb-49c4-92c8-a0628f72df3d", hi: "पुष्टि", romanization: "pushti", vi: "xác nhận", en: "confirmation", pos: "n." },
     ],
     exercises: [
       {

@@ -92,24 +92,28 @@ export const lessons: ChineseLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "5469b7d0-ee2a-43ce-8304-cd8f42f7a1e1",
         "speaker": "A",
         "chinese": "如果你中了彩票，你会辞职吗？",
         "pinyin": "rú guǒ nǐ zhòng le cǎi piào, nǐ huì cí zhí ma?",
         "english": "If you won the lottery, would you resign?"
       },
       {
+        cell_id: "8d1fa8ca-95b8-4e6d-9299-f787a9e3c228",
         "speaker": "B",
         "chinese": "可能不会，除非是特别大奖。",
         "pinyin": "kě néng bù huì, chú fēi shì tè bié dà jiǎng.",
         "english": "Probably not, unless it's a huge jackpot."
       },
       {
+        cell_id: "57ea6b67-e91b-45dd-9f94-c0f26a69e3ad",
         "speaker": "A",
         "chinese": "只要工作有意义，钱少点也没关系？",
         "pinyin": "zhǐ yào gōng zuò yǒu yì yì, qián shǎo diǎn yě méi guān xì?",
         "english": "As long as work is meaningful, less money doesn't matter?"
       },
       {
+        cell_id: "373f511b-d1cd-4d7b-bb7a-7624c181d90b",
         "speaker": "B",
         "chinese": "对啊，我觉得开心最重要。",
         "pinyin": "duì a, wǒ jué de kāi xīn zuì zhòng yào.",
@@ -233,24 +237,28 @@ export const lessons: ChineseLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "4b9cdc78-4725-4840-936c-d23d380ff79d",
         "speaker": "A",
         "chinese": "明天要去新公司上班了，我心里七上八下的。",
         "pinyin": "míng tiān yào qù xīn gōng sī shàng bān le, wǒ xīn lǐ qī shàng bā xià de.",
         "english": "I'm going to work at a new company tomorrow, I feel anxious."
       },
       {
+        cell_id: "09569443-23d4-4c50-9e9e-172dd7c7e4ca",
         "speaker": "B",
         "chinese": "别担心，入乡随俗，慢慢就适应了。",
         "pinyin": "bié dān xīn, rù xiāng suí sú, màn màn jiù shì yìng le.",
         "english": "Don't worry, when in Rome do as the Romans do, you'll adapt gradually."
       },
       {
+        cell_id: "d701de5d-ed0c-4690-92dc-b6e6a12c2997",
         "speaker": "A",
         "chinese": "我中文说得还是马马虎虎。",
         "pinyin": "wǒ zhōng wén shuō de hái shì mǎ mǎ hǔ hǔ.",
         "english": "My Chinese is still just so-so."
       },
       {
+        cell_id: "f3c46a86-0c1d-4936-88ee-53cd055ba98a",
         "speaker": "B",
         "chinese": "没关系，多练习就好了。",
         "pinyin": "méi guān xì, duō liàn xí jiù hǎo le.",
@@ -374,24 +382,28 @@ export const lessons: ChineseLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "f9f9c2bc-837f-4b42-8fff-3bc2b091ea19",
         "speaker": "A",
         "chinese": "新来的同事怎么样？",
         "pinyin": "xīn lái de tóng shì zěn me yàng?",
         "english": "How's the new colleague?"
       },
       {
+        cell_id: "85bdad78-2a28-4bfb-92ae-830504ee717d",
         "speaker": "B",
         "chinese": "挺靠谱的，做事很给力。",
         "pinyin": "tǐng kào pǔ de, zuò shì hěn gěi lì.",
         "english": "Pretty reliable, his work is impressive."
       },
       {
+        cell_id: "5b1b06e9-c42d-4e8a-98d3-b28d915d71a5",
         "speaker": "A",
         "chinese": "那就好，之前那个太坑爹了。",
         "pinyin": "nà jiù hǎo, zhī qián nà gè tài kēng diē le.",
         "english": "Good, the previous one was too unreliable."
       },
       {
+        cell_id: "65276fa9-760c-4c6d-86be-e47a7af9d76a",
         "speaker": "B",
         "chinese": "哈哈，别提了，咱们聊天吧。",
         "pinyin": "hā hā, bié tí le, zán men liáo tiān ba.",
@@ -515,24 +527,28 @@ export const lessons: ChineseLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "ef63eac3-c823-44f3-85dd-ede9ccbcd412",
         "speaker": "A",
         "chinese": "我认为网络利大于弊。",
         "pinyin": "wǒ rèn wéi wǎng luò lì dà yú bì.",
         "english": "I think the internet has more advantages than disadvantages."
       },
       {
+        cell_id: "c8f0b279-8b2c-4a52-8f0c-e49b943ef6f9",
         "speaker": "B",
         "chinese": "我反对。很多人沉迷网络浪费时间。",
         "pinyin": "wǒ fǎn duì. hěn duō rén chén mí wǎng luò làng fèi shí jiān.",
         "english": "I disagree. Many people waste time addicted to the internet."
       },
       {
+        cell_id: "7536a27c-bc72-480b-9f0c-28e56710caa3",
         "speaker": "A",
         "chinese": "但是网络提高了工作效率。",
         "pinyin": "dàn shì wǎng luò tí gāo le gōng zuò xiào lǜ.",
         "english": "But the internet improves work efficiency."
       },
       {
+        cell_id: "269bb364-1f1e-477f-bd55-92913d4dfcf5",
         "speaker": "B",
         "chinese": "我承认这一点，但利与弊需要平衡。",
         "pinyin": "wǒ chéng rèn zhè yī diǎn, dàn lì yǔ bì xū yào píng héng.",
@@ -656,24 +672,28 @@ export const lessons: ChineseLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "e1c88df1-59dc-4d42-b750-3d702e796ee2",
         "speaker": "A",
         "chinese": "学完了这三十课，你觉得收获大吗？",
         "pinyin": "xué wán le zhè sān shí kè, nǐ jué de shōu huò dà ma?",
         "english": "After finishing these thirty lessons, do you think you've gained a lot?"
       },
       {
+        cell_id: "c73c7597-bc33-4c2d-9fa3-7208919b11bc",
         "speaker": "B",
         "chinese": "当然啦，我的口语和听力都进步了。",
         "pinyin": "dāng rán la, wǒ de kǒu yǔ hé tīng lì dōu jìn bù le.",
         "english": "Of course, my speaking and listening have improved."
       },
       {
+        cell_id: "bc4e2409-0df5-4103-8a33-c1d53816ed68",
         "speaker": "A",
         "chinese": "我们还需要继续巩固。",
         "pinyin": "wǒ men hái xū yào jì xù gǒng gù.",
         "english": "We still need to continue consolidating."
       },
       {
+        cell_id: "fa1a0514-2cec-49c0-b316-318ea11bf58f",
         "speaker": "B",
         "chinese": "没错，一起加油吧！",
         "pinyin": "méi cuò, yī qǐ jiā yóu ba!",
@@ -875,6 +895,7 @@ export const lessons: ChineseLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "8bba6dc8-5b0d-4440-a02a-cece478647c5",
         "speaker": "Linh",
         "chinese": "王经理, 我有件私事想跟您商量一下。",
         "pinyin": "Wáng jīnglǐ, wǒ yǒu jiàn sī shì xiǎng gēn nín shāngliang yīxià.",
@@ -882,6 +903,7 @@ export const lessons: ChineseLesson[] = [
         "vi": "Anh Vương, em có việc riêng muốn thảo luận với anh."
       },
       {
+        cell_id: "c2573ab7-cece-4b00-958d-d5221f33ead4",
         "speaker": "王经理",
         "chinese": "你说, 没事。是工作上的还是私事?",
         "pinyin": "Nǐ shuō, méi shì. Shì gōngzuò shàng de háishì sī shì?",
@@ -889,6 +911,7 @@ export const lessons: ChineseLesson[] = [
         "vi": "Em nói đi, không sao. Là chuyện công việc hay việc riêng?"
       },
       {
+        cell_id: "aebd5d87-5300-4c9f-8de8-4e27835046fc",
         "speaker": "Linh",
         "chinese": "是私事。我母亲身体不太好, 我想请假回越南陪她。",
         "pinyin": "Shì sī shì. Wǒ mǔqīn shēntǐ bù tài hǎo, wǒ xiǎng qǐng jià huí yuè nán péi tā.",
@@ -896,6 +919,7 @@ export const lessons: ChineseLesson[] = [
         "vi": "Là việc riêng. Mẹ em sức khỏe không tốt, em muốn xin nghỉ phép về Việt Nam ở cạnh bà."
       },
       {
+        cell_id: "afc71011-c7e0-4083-af9e-7678c109e2a0",
         "speaker": "王经理",
         "chinese": "这是大事, 应该的。你尽快把工作交接安排好就行。",
         "pinyin": "Zhè shì dà shì, yīnggāi de. Nǐ jǐnkuài bǎ gōngzuò jiāojiē ānpái hǎo jiù xíng.",
@@ -1290,6 +1314,7 @@ export const lessons: ChineseLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "1ab4ef22-d3b7-43d9-a05e-ee05180a1533",
         "speaker": "HR",
         "chinese": "请先做一下自我介绍。",
         "pinyin": "Qǐng xiān zuò yīxià zìwǒ jièshào.",
@@ -1297,6 +1322,7 @@ export const lessons: ChineseLesson[] = [
         "vi": "Trước tiên xin em tự giới thiệu một chút."
       },
       {
+        cell_id: "0f66ee7a-e601-4edd-a627-741cc2bb6342",
         "speaker": "阮文海",
         "chinese": "您好, 我叫阮文海, 越南河内人, 河内国家大学计算机系毕业。",
         "pinyin": "Nín hǎo, wǒ jiào Ruǎn Wénhǎi, Yuènán Hénèi rén, Hénèi Guójiā Dàxué jìsuànjī xì bìyè.",
@@ -1304,6 +1330,7 @@ export const lessons: ChineseLesson[] = [
         "vi": "Em chào anh/chị, em tên là Nguyễn Văn Hải, người Hà Nội Việt Nam, tốt nghiệp khoa Công nghệ Thông tin Đại học Quốc gia Hà Nội."
       },
       {
+        cell_id: "36c6c4f8-9c23-434b-a175-1eab13f16bd9",
         "speaker": "HR",
         "chinese": "你的中文是怎么学的?",
         "pinyin": "Nǐ de zhōngwén shì zěnme xué de?",
@@ -1311,6 +1338,7 @@ export const lessons: ChineseLesson[] = [
         "vi": "Tiếng Trung của em học bằng cách nào?"
       },
       {
+        cell_id: "7ad34c65-ec1a-446d-8f9f-13b7e0b9ced3",
         "speaker": "阮文海",
         "chinese": "我从大学一年级开始自学, 后来在孔子学院系统学习了三年。",
         "pinyin": "Wǒ cóng dàxué yī niánjí kāishǐ zìxué, hòulái zài Kǒngzǐ Xuéyuàn xìtǒng xuéxí le sān nián.",
@@ -1698,6 +1726,7 @@ export const lessons: ChineseLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "5b1b4284-671a-4c20-b352-76fe11ef6b9b",
         "speaker": "评审",
         "chinese": "请简要介绍一下您的学术背景。",
         "pinyin": "Qǐng jiǎnyào jièshào yīxià nín de xuéshù bèijǐng.",
@@ -1705,6 +1734,7 @@ export const lessons: ChineseLesson[] = [
         "vi": "Xin em giới thiệu ngắn gọn về nền tảng học thuật."
       },
       {
+        cell_id: "cf60379e-8d5f-4f01-adf1-4cd03564c35b",
         "speaker": "陈氏梅",
         "chinese": "我本科就读于河内国家大学, 主修计算机科学, GPA是3.85/4.0。",
         "pinyin": "Wǒ běnkē jiùdú yú Hénèi Guójiā Dàxué, zhǔ xiū jìsuànjī kēxué, GPA shì sān diǎn bā wǔ bǐ sì diǎn líng.",
@@ -1712,6 +1742,7 @@ export const lessons: ChineseLesson[] = [
         "vi": "Em học đại học tại Đại học Quốc gia Hà Nội, chuyên ngành Khoa học Máy tính, GPA 3.85/4.0."
       },
       {
+        cell_id: "50c115fc-8862-4bfb-960c-279fbc93ea66",
         "speaker": "评审",
         "chinese": "为什么选择中国, 而不是其他国家?",
         "pinyin": "Wèishénme xuǎnzé Zhōngguó, ér bù shì qítā guójiā?",
@@ -1719,6 +1750,7 @@ export const lessons: ChineseLesson[] = [
         "vi": "Sao lại chọn Trung Quốc thay vì các nước khác?"
       },
       {
+        cell_id: "36eea905-a63f-44e0-85ed-54f23a88d18b",
         "speaker": "陈氏梅",
         "chinese": "中国在AI领域发展最快, 而且越中两国关系密切, 我希望成为友谊的桥梁。",
         "pinyin": "Zhōngguó zài AI lǐngyù fāzhǎn zuì kuài, érqiě Yuè-Zhōng liǎng guó guānxi mìqiè, wǒ xīwàng chéngwéi yǒuyì de qiáoliáng.",
@@ -2106,6 +2138,7 @@ export const lessons: ChineseLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "130b72ca-39df-498c-9d37-51e6248e3b90",
         "speaker": "梅",
         "chinese": "王教授, 您现在方便讨论一下我的论文吗?",
         "pinyin": "Wáng jiàoshòu, nín xiànzài fāngbiàn tǎolùn yīxià wǒ de lùnwén ma?",
@@ -2113,6 +2146,7 @@ export const lessons: ChineseLesson[] = [
         "vi": "Giáo sư Vương, bây giờ thầy có tiện thảo luận về luận văn của em không?"
       },
       {
+        cell_id: "c3d11802-8432-46ca-894f-c752e471b84f",
         "speaker": "王教授",
         "chinese": "可以, 你说说现在的进展。",
         "pinyin": "Kěyǐ, nǐ shuōshuo xiànzài de jìnzhǎn.",
@@ -2120,6 +2154,7 @@ export const lessons: ChineseLesson[] = [
         "vi": "Được, em nói tiến độ hiện tại đi."
       },
       {
+        cell_id: "e49c64b7-80ad-497b-ac8c-911b0aebc668",
         "speaker": "梅",
         "chinese": "我看了二十多篇论文, 觉得越南语NLP方向最有意思。",
         "pinyin": "Wǒ kàn le èrshí duō piān lùnwén, juéde Yuènányǔ NLP fāngxiàng zuì yǒu yìsi.",
@@ -2127,6 +2162,7 @@ export const lessons: ChineseLesson[] = [
         "vi": "Em đã đọc hơn hai mươi bài, thấy hướng NLP tiếng Việt thú vị nhất."
       },
       {
+        cell_id: "d65dc8ec-e821-40d7-9566-292b5fc92457",
         "speaker": "王教授",
         "chinese": "那范围还是太大, 需要再具体一些。",
         "pinyin": "Nà fànwéi háishì tài dà, xūyào zài jùtǐ yīxiē.",
@@ -2514,6 +2550,7 @@ export const lessons: ChineseLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "224ccf42-f5ce-491e-b590-628c5530548a",
         "speaker": "实习生",
         "chinese": "李经理, 我下周一就能开始实习。",
         "pinyin": "Lǐ jīnglǐ, wǒ xià zhōu yī jiù néng kāishǐ shíxí.",
@@ -2521,6 +2558,7 @@ export const lessons: ChineseLesson[] = [
         "vi": "Anh Lý, em có thể bắt đầu thực tập từ thứ Hai tuần sau."
       },
       {
+        cell_id: "98d01a50-509d-498d-ab35-ac0069ee2547",
         "speaker": "李经理",
         "chinese": "好的。具体安排我们一会儿讨论。",
         "pinyin": "Hǎo de. Jùtǐ ānpái wǒmen yīhuǐr tǎolùn.",
@@ -2528,6 +2566,7 @@ export const lessons: ChineseLesson[] = [
         "vi": "Được. Lát nữa mình thảo luận chi tiết."
       },
       {
+        cell_id: "161f1df7-8e3b-4e15-8b76-5bee659b9847",
         "speaker": "实习生",
         "chinese": "我想知道工作时间和有没有导师指导。",
         "pinyin": "Wǒ xiǎng zhīdào gōngzuò shíjiān hé yǒu méiyǒu dǎoshī zhǐdǎo.",
@@ -2535,6 +2574,7 @@ export const lessons: ChineseLesson[] = [
         "vi": "Em muốn biết thời gian làm việc và có thầy hướng dẫn không."
       },
       {
+        cell_id: "fc4cdda3-1e46-4430-8d8d-d258df9b823e",
         "speaker": "李经理",
         "chinese": "工作时间九点到六点, 我们会给你安排一位mentor。",
         "pinyin": "Gōngzuò shíjiān jiǔ diǎn dào liù diǎn, wǒmen huì gěi nǐ ānpái yī wèi mentor.",
@@ -2915,6 +2955,7 @@ export const lessons: ChineseLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "3f2539a2-e453-4b9e-99ea-081e02fdb43f",
         "speaker": "学生",
         "chinese": "您好, 我是越南来的新生, 想咨询签证的事。",
         "pinyin": "Nín hǎo, wǒ shì Yuènán lái de xīnshēng, xiǎng zīxún qiānzhèng de shì.",
@@ -2922,6 +2963,7 @@ export const lessons: ChineseLesson[] = [
         "vi": "Chào thầy cô, em là tân sinh viên đến từ Việt Nam, muốn hỏi về visa."
       },
       {
+        cell_id: "9d5f0be8-6de4-4e5c-a86f-c727b85ac480",
         "speaker": "办公室老师",
         "chinese": "好的, 您的录取通知书号是多少?",
         "pinyin": "Hǎo de, nín de lùqǔ tōngzhīshū hào shì duōshao?",
@@ -2929,6 +2971,7 @@ export const lessons: ChineseLesson[] = [
         "vi": "Được, số giấy báo nhập học của em là bao nhiêu?"
       },
       {
+        cell_id: "1282c963-d474-4622-ad06-38e5e90f07ee",
         "speaker": "学生",
         "chinese": "QH202509-1234。",
         "pinyin": "QH èr líng èr wǔ líng jiǔ - yāo èr sān sì.",
@@ -2936,6 +2979,7 @@ export const lessons: ChineseLesson[] = [
         "vi": "QH202509-1234."
       },
       {
+        cell_id: "05f02e92-aba8-4511-8141-18f79f61f360",
         "speaker": "办公室老师",
         "chinese": "查到了, 您的JW202表已经在邮寄路上, 大概十天到。",
         "pinyin": "Chá dào le, nín de JW202 biǎo yǐjīng zài yóujì lùshàng, dàgài shí tiān dào.",
@@ -3316,6 +3360,7 @@ export const lessons: ChineseLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "f07ef5c8-174d-40e1-b8b3-05600e0ee68d",
         "speaker": "HR",
         "chinese": "您好, 是阮文海吗?",
         "pinyin": "Nín hǎo, shì Ruǎn Wénhǎi ma?",
@@ -3323,6 +3368,7 @@ export const lessons: ChineseLesson[] = [
         "vi": "Em chào anh, có phải Nguyễn Văn Hải không?"
       },
       {
+        cell_id: "20dc81c8-4fe2-42be-af45-9c682859f405",
         "speaker": "阮文海",
         "chinese": "是的, 您好。请问您是?",
         "pinyin": "Shì de, nín hǎo. Qǐng wèn nín shì?",
@@ -3330,6 +3376,7 @@ export const lessons: ChineseLesson[] = [
         "vi": "Vâng đúng ạ, em chào anh/chị. Cho em hỏi là ai vậy?"
       },
       {
+        cell_id: "15e7279b-8a47-46d5-93da-d47376e4f5d0",
         "speaker": "HR",
         "chinese": "我是上海ABC科技公司的张, 我们约的是今天下午三点电话面试。",
         "pinyin": "Wǒ shì Shànghǎi ABC Kējì Gōngsī de Zhāng, wǒmen yuē de shì jīntiān xiàwǔ sān diǎn diànhuà miànshì.",
@@ -3337,6 +3384,7 @@ export const lessons: ChineseLesson[] = [
         "vi": "Anh là Trương từ Công ty Công nghệ ABC Thượng Hải, mình hẹn phỏng vấn điện thoại 3 giờ chiều nay."
       },
       {
+        cell_id: "7b64f5c1-c17c-4770-a313-d8e8dfbffc67",
         "speaker": "阮文海",
         "chinese": "好的张哥, 我准备好了。请您开始。",
         "pinyin": "Hǎo de Zhāng gē, wǒ zhǔnbèi hǎo le. Qǐng nín kāishǐ.",
@@ -3724,6 +3772,7 @@ export const lessons: ChineseLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "54c2d80c-fd30-4115-89ad-6a4056551936",
         "speaker": "陈伟",
         "chinese": "您好, 我叫陈伟, 来自越南Vingroup。",
         "pinyin": "Nín hǎo, wǒ jiào Chén Wěi, láizì Yuènán Vingroup.",
@@ -3731,6 +3780,7 @@ export const lessons: ChineseLesson[] = [
         "vi": "Em chào anh, em là Trần Vĩ đến từ Vingroup Việt Nam."
       },
       {
+        cell_id: "6f750255-7b2e-4d66-b9c2-916ace70b555",
         "speaker": "张总",
         "chinese": "您好陈先生, 我是BYD的张明。",
         "pinyin": "Nín hǎo Chén xiānsheng, wǒ shì BYD de Zhāng Míng.",
@@ -3738,6 +3788,7 @@ export const lessons: ChineseLesson[] = [
         "vi": "Chào anh Trần, tôi là Trương Minh của BYD."
       },
       {
+        cell_id: "a4a43b85-3256-4107-a47f-dd57a47c3d66",
         "speaker": "陈伟",
         "chinese": "久仰大名。这是我的名片, 请多多指教。",
         "pinyin": "Jiǔ yǎng dà míng. Zhè shì wǒ de míngpiàn, qǐng duōduō zhǐjiào.",
@@ -3745,6 +3796,7 @@ export const lessons: ChineseLesson[] = [
         "vi": "Lâu nay đã ngưỡng mộ. Đây là danh thiếp của em, xin được chỉ giáo."
       },
       {
+        cell_id: "43de2f83-363b-4674-a053-7b4d1bb774e7",
         "speaker": "张总",
         "chinese": "客气了。这是我的, 我们多交流。",
         "pinyin": "Kèqì le. Zhè shì wǒ de, wǒmen duō jiāoliú.",
@@ -4132,6 +4184,7 @@ export const lessons: ChineseLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "9f8378ca-eefe-4cd8-a23e-373fe593195c",
         "speaker": "陈氏梅",
         "chinese": "李老师, 您好。我收到了贵校的拒信。",
         "pinyin": "Lǐ lǎoshī, nín hǎo. Wǒ shōu dào le guì xiào de jù xìn.",
@@ -4139,6 +4192,7 @@ export const lessons: ChineseLesson[] = [
         "vi": "Cô Lý, em chào cô. Em đã nhận được thư từ chối của quý trường."
       },
       {
+        cell_id: "1ebdfdf1-9b17-4e67-ae90-6aa7c0b02fb6",
         "speaker": "李老师",
         "chinese": "嗯, 很遗憾这次没能录取你。",
         "pinyin": "Èn, hěn yíhàn zhè cì méi néng lùqǔ nǐ.",
@@ -4146,6 +4200,7 @@ export const lessons: ChineseLesson[] = [
         "vi": "Ừm, rất tiếc lần này chưa thể nhận em."
       },
       {
+        cell_id: "182e75ec-c197-4045-9472-5066feb2c5aa",
         "speaker": "陈氏梅",
         "chinese": "请问能告诉我具体不足在哪里吗?",
         "pinyin": "Qǐng wèn néng gàosu wǒ jùtǐ bùzú zài nǎlǐ ma?",
@@ -4153,6 +4208,7 @@ export const lessons: ChineseLesson[] = [
         "vi": "Cho em hỏi cụ thể em chưa đủ ở chỗ nào ạ?"
       },
       {
+        cell_id: "5984f85a-12ac-48cc-94a4-072cb72baed4",
         "speaker": "李老师",
         "chinese": "主要是研究计划的可行性需要再加强。",
         "pinyin": "Zhǔyào shì yánjiū jìhuà de kěxíng xìng xūyào zài jiāqiáng.",
@@ -4533,6 +4589,7 @@ export const lessons: ChineseLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "a6ff181c-fc78-475a-bb56-282e3ec61a27",
         "speaker": "学生",
         "chinese": "王教授, 我有件事想恳请您。",
         "pinyin": "Wáng jiàoshòu, wǒ yǒu jiàn shì xiǎng kěnqǐng nín.",
@@ -4540,6 +4597,7 @@ export const lessons: ChineseLesson[] = [
         "vi": "Thầy Vương, em có việc muốn khẩn thiết nhờ thầy."
       },
       {
+        cell_id: "fb3fde85-928f-435c-b294-89ab2b8afaee",
         "speaker": "王教授",
         "chinese": "你说说看。",
         "pinyin": "Nǐ shuōshuo kàn.",
@@ -4547,6 +4605,7 @@ export const lessons: ChineseLesson[] = [
         "vi": "Em nói xem nào."
       },
       {
+        cell_id: "b34d2403-d58c-4a7d-bd0c-4c16418928fc",
         "speaker": "学生",
         "chinese": "我打算申请清华硕士, 希望您能为我写推荐信。",
         "pinyin": "Wǒ dǎsuàn shēnqǐng Qīnghuá shuòshì, xīwàng nín néng wèi wǒ xiě tuījiàn xìn.",
@@ -4554,6 +4613,7 @@ export const lessons: ChineseLesson[] = [
         "vi": "Em định ứng tuyển thạc sĩ Thanh Hoa, mong thầy có thể viết thư giới thiệu cho em."
       },
       {
+        cell_id: "98b70162-3d12-4f29-9f45-2784219b0834",
         "speaker": "王教授",
         "chinese": "可以, 把你的简历和申请项目发给我吧。",
         "pinyin": "Kěyǐ, bǎ nǐ de jiǎnlì hé shēnqǐng xiàngmù fā gěi wǒ ba.",
@@ -4934,6 +4994,7 @@ export const lessons: ChineseLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "fe1a30ae-c454-4be6-8003-6e6f9c8d17c2",
         "speaker": "教授",
         "chinese": "请简要介绍一下您的研究兴趣。",
         "pinyin": "Qǐng jiǎnyào jièshào yīxià nín de yánjiū xìngqù.",
@@ -4941,6 +5002,7 @@ export const lessons: ChineseLesson[] = [
         "vi": "Xin em giới thiệu ngắn gọn hướng nghiên cứu."
       },
       {
+        cell_id: "1edf3573-0113-41b7-9307-68f101798f64",
         "speaker": "学生",
         "chinese": "我的研究兴趣集中在低资源语言NLP, 特别是越南语处理。",
         "pinyin": "Wǒ de yánjiū xìngqù jízhōng zài dī zīyuán yǔyán NLP, tèbié shì Yuènányǔ chǔlǐ.",
@@ -4948,6 +5010,7 @@ export const lessons: ChineseLesson[] = [
         "vi": "Hướng nghiên cứu của em tập trung vào NLP ngôn ngữ ít tài nguyên, đặc biệt là tiếng Việt."
       },
       {
+        cell_id: "a60c4d80-69dd-4bcc-a4e3-0e4132475f1c",
         "speaker": "教授",
         "chinese": "为什么对这个方向感兴趣?",
         "pinyin": "Wèishénme duì zhège fāngxiàng gǎn xìngqù?",
@@ -4955,6 +5018,7 @@ export const lessons: ChineseLesson[] = [
         "vi": "Sao em lại quan tâm hướng này?"
       },
       {
+        cell_id: "8cbbb7d8-b1f4-4b22-af68-b6524cf7afdf",
         "speaker": "学生",
         "chinese": "因为越南语数据资源稀缺, 这是我作为越南人最有优势的研究方向。",
         "pinyin": "Yīnwèi Yuènányǔ shùjù zīyuán xīquē, zhè shì wǒ zuòwéi Yuènán rén zuì yǒu yōushì de yánjiū fāngxiàng.",
@@ -5342,6 +5406,7 @@ export const lessons: ChineseLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "e1f32869-e58f-4bde-bc5f-f2bdc5f3cbdc",
         "speaker": "黎",
         "chinese": "李总, 欢迎您来河内! 一路辛苦了。",
         "pinyin": "Lǐ zǒng, huānyíng nín lái Hénèi! Yī lù xīnkǔ le.",
@@ -5349,6 +5414,7 @@ export const lessons: ChineseLesson[] = [
         "vi": "Tổng Lý, hoan nghênh anh đến Hà Nội! Đi đường vất vả rồi."
       },
       {
+        cell_id: "a5b63b20-abd9-4314-837b-86b02e7a3067",
         "speaker": "李总",
         "chinese": "谢谢小黎, 终于到了。河内比我想象中还要热闹。",
         "pinyin": "Xièxie Xiǎo Lí, zhōngyú dào le. Hénèi bǐ wǒ xiǎngxiàng zhōng hái yào rènao.",
@@ -5356,6 +5422,7 @@ export const lessons: ChineseLesson[] = [
         "vi": "Cảm ơn Tiểu Lê, cuối cùng đến rồi. Hà Nội còn náo nhiệt hơn anh tưởng."
       },
       {
+        cell_id: "11959e5f-037f-4f16-8667-eb60224aa221",
         "speaker": "黎",
         "chinese": "您先到酒店休息, 行李我让司机送过去。",
         "pinyin": "Nín xiān dào jiǔdiàn xiūxi, xínglǐ wǒ ràng sījī sòng guòqù.",
@@ -5363,6 +5430,7 @@ export const lessons: ChineseLesson[] = [
         "vi": "Anh đến khách sạn nghỉ trước, hành lý em bảo lái xe đưa qua."
       },
       {
+        cell_id: "570066ab-6e2f-439d-8af1-48bf1617b0da",
         "speaker": "李总",
         "chinese": "好, 谢谢你的安排。今晚的安排是什么?",
         "pinyin": "Hǎo, xièxie nǐ de ānpái. Jīn wǎn de ānpái shì shénme?",
@@ -5743,6 +5811,7 @@ export const lessons: ChineseLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "0e961ae5-4652-4be7-b34f-00a2913a2b38",
         "speaker": "黎",
         "chinese": "王总, 欢迎您来胡志明市! 这是我们的工厂入口。",
         "pinyin": "Wáng zǒng, huānyíng nín lái Húzhìmíng shì! Zhè shì wǒmen de gōngchǎng rùkǒu.",
@@ -5750,6 +5819,7 @@ export const lessons: ChineseLesson[] = [
         "vi": "Tổng Vương, hoan nghênh anh đến TP HCM! Đây là cổng nhà máy của bọn em."
       },
       {
+        cell_id: "7d0a1c57-7cb4-4c3e-a54e-c001df1926c1",
         "speaker": "王总",
         "chinese": "工厂规模比我想的大。员工有多少人?",
         "pinyin": "Gōngchǎng guīmó bǐ wǒ xiǎng de dà. Yuángōng yǒu duōshao rén?",
@@ -5757,6 +5827,7 @@ export const lessons: ChineseLesson[] = [
         "vi": "Nhà máy quy mô lớn hơn tôi tưởng. Có bao nhiêu nhân viên?"
       },
       {
+        cell_id: "bc1229c9-5474-4574-b8bb-3b5aacd0b704",
         "speaker": "黎",
         "chinese": "目前八百人, 三班轮替。我们的产品质量符合中国国标。",
         "pinyin": "Mùqián bā bǎi rén, sān bān lúntì. Wǒmen de chǎnpǐn zhìliàng fúhé Zhōngguó guóbiāo.",
@@ -5764,6 +5835,7 @@ export const lessons: ChineseLesson[] = [
         "vi": "Hiện 800 người, ba ca luân phiên. Chất lượng sản phẩm bọn em đạt tiêu chuẩn quốc gia Trung Quốc."
       },
       {
+        cell_id: "c8db33c4-0dbf-4dcd-9afc-dd2214b9b186",
         "speaker": "王总",
         "chinese": "好, 我们边走边看。",
         "pinyin": "Hǎo, wǒmen biān zǒu biān kàn.",
@@ -6144,6 +6216,7 @@ export const lessons: ChineseLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "5e43591e-7208-4bb0-805d-1d29cf715fb6",
         "speaker": "李同事",
         "chinese": "小阮, 越南和中国文化是不是很像?",
         "pinyin": "Xiǎo Ruǎn, Yuènán hé Zhōngguó wénhuà shì bù shì hěn xiàng?",
@@ -6151,6 +6224,7 @@ export const lessons: ChineseLesson[] = [
         "vi": "Tiểu Nguyễn, văn hóa Việt và Trung có giống nhau không?"
       },
       {
+        cell_id: "e5fc6da1-fb08-42a6-baca-82b08f037a8a",
         "speaker": "阮",
         "chinese": "有同有异。我们都过春节, 都用筷子。",
         "pinyin": "Yǒu tóng yǒu yì. Wǒmen dōu guò Chūnjié, dōu yòng kuàizi.",
@@ -6158,6 +6232,7 @@ export const lessons: ChineseLesson[] = [
         "vi": "Vừa giống vừa khác. Mình đều ăn Tết, đều dùng đũa."
       },
       {
+        cell_id: "e9969343-ca9d-4237-aee6-2e3d59f0590b",
         "speaker": "李同事",
         "chinese": "差异在哪里?",
         "pinyin": "Chāyì zài nǎlǐ?",
@@ -6165,6 +6240,7 @@ export const lessons: ChineseLesson[] = [
         "vi": "Khác biệt ở đâu?"
       },
       {
+        cell_id: "24a1fabe-ebb5-4b41-9d9a-0a8f3aeed35e",
         "speaker": "阮",
         "chinese": "我们说越南语, 不是汉语; 文字用拉丁字母, 不是汉字。还有法式咖啡和奥黛。",
         "pinyin": "Wǒmen shuō Yuènányǔ, bù shì Hànyǔ; wénzì yòng Lādīng zìmǔ, bù shì Hànzì. Hái yǒu Fǎshì kāfēi hé àodài.",
@@ -6545,6 +6621,7 @@ export const lessons: ChineseLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "6f85b504-233a-4355-a6d5-31e1b56a6ba4",
         "speaker": "阮",
         "chinese": "陈先生, 中国和越南的商务礼仪差别大吗?",
         "pinyin": "Chén xiānsheng, Zhōngguó hé Yuènán de shāngwù lǐyí chābié dà ma?",
@@ -6552,6 +6629,7 @@ export const lessons: ChineseLesson[] = [
         "vi": "Anh Trần, lễ nghi kinh doanh Trung-Việt khác nhiều không?"
       },
       {
+        cell_id: "cc7d6873-a798-4020-8ea7-66c1f8743c6e",
         "speaker": "陈先生",
         "chinese": "整体相似, 但细节差很多。比如我们更重视饭局。",
         "pinyin": "Zhěngtǐ xiāngsì, dàn xìjié chā hěn duō. Bǐrú wǒmen gèng zhòngshì fànjú.",
@@ -6559,6 +6637,7 @@ export const lessons: ChineseLesson[] = [
         "vi": "Tổng thể giống, nhưng chi tiết khác nhiều. Ví dụ bọn anh coi trọng tiệc ăn cơm hơn."
       },
       {
+        cell_id: "66e894b2-1e2d-4554-8e3e-bc093d1a079c",
         "speaker": "阮",
         "chinese": "送礼有什么讲究?",
         "pinyin": "Sòng lǐ yǒu shénme jiǎngjiu?",
@@ -6566,6 +6645,7 @@ export const lessons: ChineseLesson[] = [
         "vi": "Tặng quà có lưu ý gì không?"
       },
       {
+        cell_id: "d8851746-593e-4e1f-a767-eb67ace4926d",
         "speaker": "陈先生",
         "chinese": "记住三忌: 不送钟、不送伞、不送鞋。这些都有不吉利的谐音。",
         "pinyin": "Jìzhù sān jì: bù sòng zhōng, bù sòng sǎn, bù sòng xié. Zhèxiē dōu yǒu bù jílì de xiéyīn.",
@@ -6946,6 +7026,7 @@ export const lessons: ChineseLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "6442a02d-bdcb-4dc2-839a-43bfcb2d5d50",
         "speaker": "黎",
         "chinese": "王总, 昨天我送您的礼物, 请您先别拆。",
         "pinyin": "Wáng zǒng, zuótiān wǒ sòng nín de lǐwù, qǐng nín xiān bié chāi.",
@@ -6953,6 +7034,7 @@ export const lessons: ChineseLesson[] = [
         "vi": "Tổng Vương, quà em tặng anh hôm qua, xin anh khoan mở."
       },
       {
+        cell_id: "4aa58f69-5bc9-49c3-9cbb-cee16c11b69d",
         "speaker": "王总",
         "chinese": "怎么了?",
         "pinyin": "Zěnme le?",
@@ -6960,6 +7042,7 @@ export const lessons: ChineseLesson[] = [
         "vi": "Có chuyện gì?"
       },
       {
+        cell_id: "90eaef99-e60e-40bd-99b7-b81b7a6cc938",
         "speaker": "黎",
         "chinese": "那是个钟表, 我不知道在中国是忌讳。我深感抱歉。",
         "pinyin": "Nà shì gè zhōngbiǎo, wǒ bù zhīdào zài Zhōngguó shì jìhuì. Wǒ shēn gǎn bàoqiàn.",
@@ -6967,6 +7050,7 @@ export const lessons: ChineseLesson[] = [
         "vi": "Đó là đồng hồ, em không biết ở Trung Quốc là điều kỵ. Em xin lỗi sâu sắc."
       },
       {
+        cell_id: "3e4b5a54-d504-4759-9c36-dc6028963b06",
         "speaker": "王总",
         "chinese": "没关系, 你不知道情有可原。我们换个礼物就行。",
         "pinyin": "Méi guānxi, nǐ bù zhīdào qíng yǒu kě yuán. Wǒmen huàn gè lǐwù jiù xíng.",
@@ -7347,6 +7431,7 @@ export const lessons: ChineseLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "5090888f-cb5b-4147-9943-74802f7547c1",
         "speaker": "黎",
         "chinese": "王总, 请这边坐, 这是主位。",
         "pinyin": "Wáng zǒng, qǐng zhè biān zuò, zhè shì zhǔ wèi.",
@@ -7354,6 +7439,7 @@ export const lessons: ChineseLesson[] = [
         "vi": "Tổng Vương, mời anh ngồi bên này, đây là vị trí chính."
       },
       {
+        cell_id: "89b8aba2-6298-4053-abd0-56131de7d43b",
         "speaker": "王总",
         "chinese": "我坐主位不合适吧?",
         "pinyin": "Wǒ zuò zhǔ wèi bù héshì ba?",
@@ -7361,6 +7447,7 @@ export const lessons: ChineseLesson[] = [
         "vi": "Tôi ngồi vị trí chính không phù hợp đâu nhỉ?"
       },
       {
+        cell_id: "0be0020d-e661-40fa-bcfc-d6d34fb01004",
         "speaker": "黎",
         "chinese": "您是远道而来的贵客, 主位非您莫属。我先敬您一杯。",
         "pinyin": "Nín shì yuǎndào ér lái de guìkè, zhǔ wèi fēi nín mò shǔ. Wǒ xiān jìng nín yī bēi.",
@@ -7368,6 +7455,7 @@ export const lessons: ChineseLesson[] = [
         "vi": "Anh là khách quý phương xa, vị trí chính không thể không phải anh. Em mời anh ly đầu."
       },
       {
+        cell_id: "1e318a36-76dc-4be5-8b5e-a7d3adbb3adf",
         "speaker": "王总",
         "chinese": "好, 干杯! 中越友谊!",
         "pinyin": "Hǎo, gānbēi! Zhōng-yuè yǒuyì!",
@@ -7748,6 +7836,7 @@ export const lessons: ChineseLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "4b6c5c75-55df-4cf9-ba78-23550741c63e",
         "speaker": "王朋友",
         "chinese": "你们越南也过春节吗?",
         "pinyin": "Nǐmen Yuènán yě guò Chūnjié ma?",
@@ -7755,6 +7844,7 @@ export const lessons: ChineseLesson[] = [
         "vi": "Việt Nam cũng ăn Tết à?"
       },
       {
+        cell_id: "c91a79f9-3dc5-41e6-a681-e5ced1a67400",
         "speaker": "阮",
         "chinese": "我们叫'Tết', 和中国春节同一天。",
         "pinyin": "Wǒmen jiào 'Tết', hé Zhōngguó Chūnjié tóng yī tiān.",
@@ -7762,6 +7852,7 @@ export const lessons: ChineseLesson[] = [
         "vi": "Bọn em gọi là 'Tết', cùng ngày với Tết Trung Quốc."
       },
       {
+        cell_id: "32b82846-c3ab-49ae-be38-3d0f18a35096",
         "speaker": "王朋友",
         "chinese": "你们也吃饺子和粽子吗?",
         "pinyin": "Nǐmen yě chī jiǎozi hé zòngzi ma?",
@@ -7769,6 +7860,7 @@ export const lessons: ChineseLesson[] = [
         "vi": "Các em cũng ăn sủi cảo và bánh ú không?"
       },
       {
+        cell_id: "7bf67564-7233-42a8-86ac-3ca175bea4bc",
         "speaker": "阮",
         "chinese": "饺子不吃, 但有越南粽子'bánh chưng', 是方形的, 用糯米和绿豆做。",
         "pinyin": "Jiǎozi bù chī, dàn yǒu Yuènán zòngzi 'bánh chưng', shì fāngxíng de, yòng nuòmǐ hé lǜdòu zuò.",
@@ -8149,6 +8241,7 @@ export const lessons: ChineseLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "0bcfe5e9-f548-49cb-85eb-da4072b52fc6",
         "speaker": "阮",
         "chinese": "小李, 你来河内多久了?",
         "pinyin": "Xiǎo Lǐ, nǐ lái Hénèi duō jiǔ le?",
@@ -8156,6 +8249,7 @@ export const lessons: ChineseLesson[] = [
         "vi": "Tiểu Lý, em đến Hà Nội bao lâu rồi?"
       },
       {
+        cell_id: "c7d740ba-910d-41e0-b50d-eb6154058277",
         "speaker": "李",
         "chinese": "三个月了。下班后不知道去哪里, 有点孤单。",
         "pinyin": "Sān gè yuè le. Xiàbān hòu bù zhīdào qù nǎlǐ, yǒudiǎn gūdān.",
@@ -8163,6 +8257,7 @@ export const lessons: ChineseLesson[] = [
         "vi": "Ba tháng rồi. Tan ca không biết đi đâu, hơi cô đơn."
       },
       {
+        cell_id: "dcb60c49-1664-454a-ba10-d8e3f1689c76",
         "speaker": "阮",
         "chinese": "周末跟我去咖啡店吧! 河内有好多有意思的小店。",
         "pinyin": "Zhōumò gēn wǒ qù kāfēi diàn ba! Hénèi yǒu hǎo duō yǒu yìsi de xiǎo diàn.",
@@ -8170,6 +8265,7 @@ export const lessons: ChineseLesson[] = [
         "vi": "Cuối tuần đi quán cà phê với mình đi! Hà Nội nhiều quán nhỏ thú vị lắm."
       },
       {
+        cell_id: "7739517e-5179-4735-9478-6ce74af57906",
         "speaker": "李",
         "chinese": "真的吗? 太好了, 谢谢你!",
         "pinyin": "Zhēn de ma? Tài hǎo le, xièxie nǐ!",
@@ -8550,6 +8646,7 @@ export const lessons: ChineseLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "c6241779-1544-4f7f-b735-a6706e09e17d",
         "speaker": "海关人员",
         "chinese": "您好, 请把护照和入境卡给我。",
         "pinyin": "Nín hǎo, qǐng bǎ hùzhào hé rùjìngkǎ gěi wǒ.",
@@ -8557,6 +8654,7 @@ export const lessons: ChineseLesson[] = [
         "vi": "Chào anh, xin đưa em hộ chiếu và tờ khai nhập cảnh."
       },
       {
+        cell_id: "916be000-a4c6-4dfa-af34-abb3c2ea4b6e",
         "speaker": "阮",
         "chinese": "好的, 给您。",
         "pinyin": "Hǎo de, gěi nín.",
@@ -8564,6 +8662,7 @@ export const lessons: ChineseLesson[] = [
         "vi": "Vâng, em đưa anh."
       },
       {
+        cell_id: "9cc0c8dd-b4a8-4f2c-a12f-4c1147fc8159",
         "speaker": "海关人员",
         "chinese": "您来中国做什么?",
         "pinyin": "Nín lái Zhōngguó zuò shénme?",
@@ -8571,6 +8670,7 @@ export const lessons: ChineseLesson[] = [
         "vi": "Anh đến Trung Quốc làm gì?"
       },
       {
+        cell_id: "c4279ef1-ad57-42f4-baff-848571f4b729",
         "speaker": "阮",
         "chinese": "我来出差, 待五天。",
         "pinyin": "Wǒ lái chū chāi, dāi wǔ tiān.",
@@ -8951,6 +9051,7 @@ export const lessons: ChineseLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "2fe3cb74-1fc6-4c96-8375-589a933acb94",
         "speaker": "阮",
         "chinese": "您好, 我的越南护照丢了, 需要补办。",
         "pinyin": "Nín hǎo, wǒ de Yuènán hùzhào diū le, xūyào bǔbàn.",
@@ -8958,6 +9059,7 @@ export const lessons: ChineseLesson[] = [
         "vi": "Chào anh/chị, hộ chiếu Việt Nam của em bị mất, em cần làm lại."
       },
       {
+        cell_id: "c73e92cc-43ae-4a6e-afd5-8f3f56c292b2",
         "speaker": "工作人员",
         "chinese": "请提供报案回执、护照复印件和两张证件照。",
         "pinyin": "Qǐng tígōng bào'àn huízhí, hùzhào fùyìnjiàn hé liǎng zhāng zhèngjiànzhào.",
@@ -8965,6 +9067,7 @@ export const lessons: ChineseLesson[] = [
         "vi": "Xin cung cấp biên nhận trình báo, bản sao hộ chiếu và hai ảnh thẻ."
       },
       {
+        cell_id: "0f1d305c-6664-40d5-ad46-a7c3d689d20f",
         "speaker": "阮",
         "chinese": "都准备好了。补办需要多长时间?",
         "pinyin": "Dōu zhǔnbèi hǎo le. Bǔbàn xūyào duō cháng shíjiān?",
@@ -8972,6 +9075,7 @@ export const lessons: ChineseLesson[] = [
         "vi": "Em đã chuẩn bị hết. Cấp lại mất bao lâu?"
       },
       {
+        cell_id: "3d2000ae-2cf3-4820-8eda-8fcb98435c56",
         "speaker": "工作人员",
         "chinese": "正常需要七到十个工作日。如果紧急, 可以申请临时旅行证, 三个工作日。",
         "pinyin": "Zhèngcháng xūyào qī dào shí gè gōngzuò rì. Rúguǒ jǐnjí, kěyǐ shēnqǐng línshí lǚxíng zhèng, sān gè gōngzuò rì.",
@@ -9352,6 +9456,7 @@ export const lessons: ChineseLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "3a10d3a0-246c-4851-8e5b-ce8c515a0a52",
         "speaker": "阮",
         "chinese": "您好, 我想改签车票。",
         "pinyin": "Nín hǎo, wǒ xiǎng gǎiqiān chē piào.",
@@ -9359,6 +9464,7 @@ export const lessons: ChineseLesson[] = [
         "vi": "Chào anh, em muốn đổi vé."
       },
       {
+        cell_id: "90559e29-82c5-4cc6-9c3d-db73ab634fae",
         "speaker": "工作人员",
         "chinese": "把身份证或护照给我, 报一下原车次。",
         "pinyin": "Bǎ shēnfènzhèng huò hùzhào gěi wǒ, bào yīxià yuán chēcì.",
@@ -9366,6 +9472,7 @@ export const lessons: ChineseLesson[] = [
         "vi": "Đưa em CMND hoặc hộ chiếu, đọc số chuyến gốc đi."
       },
       {
+        cell_id: "f7317957-1374-4423-8945-0ca813d942e9",
         "speaker": "阮",
         "chinese": "G2, 明天上午九点上海虹桥到北京南。我想改成下午三点的。",
         "pinyin": "G èr, míngtiān shàngwǔ jiǔ diǎn Shànghǎi Hóngqiáo dào Běijīng nán. Wǒ xiǎng gǎi chéng xiàwǔ sān diǎn de.",
@@ -9373,6 +9480,7 @@ export const lessons: ChineseLesson[] = [
         "vi": "G2, mai 9 giờ sáng Thượng Hải Hồng Kiều đi Bắc Kinh Nam. Em muốn đổi sang chiều 3 giờ."
       },
       {
+        cell_id: "68f8e80c-d57e-45d5-8073-aa1f2b4c2b60",
         "speaker": "工作人员",
         "chinese": "可以, 改签到G14, 三点零五。差额二十块, 不收手续费。",
         "pinyin": "Kěyǐ, gǎiqiān dào G shísì, sān diǎn líng wǔ. Chā'é èrshí kuài, bù shōu shǒuxùfèi.",
@@ -9753,6 +9861,7 @@ export const lessons: ChineseLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "f93310c1-f71f-47b7-94ed-c7c4a1444e0f",
         "speaker": "护士",
         "chinese": "您好, 哪里不舒服?",
         "pinyin": "Nín hǎo, nǎlǐ bù shūfu?",
@@ -9760,6 +9869,7 @@ export const lessons: ChineseLesson[] = [
         "vi": "Chào anh, anh thấy đau ở đâu?"
       },
       {
+        cell_id: "df13ea2f-eb4d-4d1b-8223-f875126c6062",
         "speaker": "阮",
         "chinese": "肚子疼, 还发烧。",
         "pinyin": "Dùzi téng, hái fāshāo.",
@@ -9767,6 +9877,7 @@ export const lessons: ChineseLesson[] = [
         "vi": "Đau bụng, lại sốt nữa."
       },
       {
+        cell_id: "d4e9ba8e-37ff-48d8-acc0-488934eff128",
         "speaker": "护士",
         "chinese": "请到二楼急诊挂号, 把护照给我。",
         "pinyin": "Qǐng dào èr lóu jí zhěn guà hào, bǎ hùzhào gěi wǒ.",
@@ -9774,6 +9885,7 @@ export const lessons: ChineseLesson[] = [
         "vi": "Lên tầng 2 đăng ký cấp cứu, đưa em hộ chiếu."
       },
       {
+        cell_id: "f4a58d04-49ea-4e6e-89aa-b1b18732c567",
         "speaker": "阮",
         "chinese": "好的, 给您。",
         "pinyin": "Hǎo de, gěi nín.",
@@ -10161,6 +10273,7 @@ export const lessons: ChineseLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "de0513c8-0dbd-4503-9878-f1fcabfdf5a9",
         "speaker": "阮",
         "chinese": "您好, 我想反映805房的问题。",
         "pinyin": "Nín hǎo, wǒ xiǎng fǎnyìng bā líng wǔ fáng de wèntí.",
@@ -10168,6 +10281,7 @@ export const lessons: ChineseLesson[] = [
         "vi": "Chào chị, em muốn phản ánh vấn đề phòng 805."
       },
       {
+        cell_id: "2edd964c-b803-4bfc-8869-4485613a0d2c",
         "speaker": "前台",
         "chinese": "请说, 是什么问题?",
         "pinyin": "Qǐng shuō, shì shénme wèntí?",
@@ -10175,6 +10289,7 @@ export const lessons: ChineseLesson[] = [
         "vi": "Mời anh nói, vấn đề gì?"
       },
       {
+        cell_id: "ad5d896b-a12f-4928-a720-08e58e299eef",
         "speaker": "阮",
         "chinese": "空调不冷, 还有热水时有时无。",
         "pinyin": "Kōngtiáo bù lěng, hái yǒu rèshuǐ shí yǒu shí wú.",
@@ -10182,6 +10297,7 @@ export const lessons: ChineseLesson[] = [
         "vi": "Điều hòa không lạnh, nước nóng lúc có lúc không."
       },
       {
+        cell_id: "53a7b51f-234a-4498-a715-dca31da8784b",
         "speaker": "前台",
         "chinese": "实在抱歉, 我马上派工程部来检查, 或者给您换一间。",
         "pinyin": "Shízài bàoqiàn, wǒ mǎshàng pài gōngchéng bù lái jiǎnchá, huòzhě gěi nín huàn yī jiān.",
@@ -10534,6 +10650,7 @@ export const lessons: ChineseLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "979783e3-d1b5-4655-8f8e-8b74455e197f",
         "speaker": "阮",
         "chinese": "您好, 我的行李没出来。",
         "pinyin": "Nín hǎo, wǒ de xíngli méi chūlái.",
@@ -10541,6 +10658,7 @@ export const lessons: ChineseLesson[] = [
         "vi": "Chào chị, hành lý của em không ra."
       },
       {
+        cell_id: "72b50ade-3197-44e8-955d-a3efaa0d7662",
         "speaker": "工作人员",
         "chinese": "把登机牌和托运凭条给我。",
         "pinyin": "Bǎ dēngjī pái hé tuōyùn píngtiáo gěi wǒ.",
@@ -10548,6 +10666,7 @@ export const lessons: ChineseLesson[] = [
         "vi": "Đưa em thẻ lên máy bay và cùi hành lý."
       },
       {
+        cell_id: "23e0afd7-dddb-4cf0-9b2f-78ef7be1ecef",
         "speaker": "阮",
         "chinese": "在这里。",
         "pinyin": "Zài zhèlǐ.",
@@ -10555,6 +10674,7 @@ export const lessons: ChineseLesson[] = [
         "vi": "Đây ạ."
       },
       {
+        cell_id: "0d06e84b-2f16-4190-8836-54796f0a6bdc",
         "speaker": "工作人员",
         "chinese": "我登记一下, 请描述行李的样子。",
         "pinyin": "Wǒ dēngjì yīxià, qǐng miáoshù xíngli de yàngzi.",
@@ -10935,6 +11055,7 @@ export const lessons: ChineseLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "41ec92c9-e32e-464f-ac0e-adcbe1b47383",
         "speaker": "阮",
         "chinese": "您好, 我钱包被偷了, 想报案。",
         "pinyin": "Nín hǎo, wǒ qiánbāo bèi tōu le, xiǎng bào'àn.",
@@ -10942,6 +11063,7 @@ export const lessons: ChineseLesson[] = [
         "vi": "Chào anh, ví em bị trộm, em muốn trình báo."
       },
       {
+        cell_id: "a7d17907-fd16-4f5e-8695-9ef5f5d363c1",
         "speaker": "民警",
         "chinese": "请把护照给我。在哪里被偷的?",
         "pinyin": "Qǐng bǎ hùzhào gěi wǒ. Zài nǎlǐ bèi tōu de?",
@@ -10949,6 +11071,7 @@ export const lessons: ChineseLesson[] = [
         "vi": "Đưa em hộ chiếu. Bị trộm ở đâu?"
       },
       {
+        cell_id: "4ac0afb8-9b65-4173-a707-9f67f608d12b",
         "speaker": "阮",
         "chinese": "今天上午在王府井, 大概十一点左右。",
         "pinyin": "Jīntiān shàngwǔ zài Wángfǔjǐng, dàgài shíyī diǎn zuǒyòu.",
@@ -10956,6 +11079,7 @@ export const lessons: ChineseLesson[] = [
         "vi": "Sáng nay ở Vương Phủ Tỉnh, khoảng 11 giờ."
       },
       {
+        cell_id: "23708802-db3f-4215-a017-3291215f8fa2",
         "speaker": "民警",
         "chinese": "请填这张表, 我办手续。完事我给您出回执。",
         "pinyin": "Qǐng tián zhè zhāng biǎo, wǒ bàn shǒuxù. Wánshì wǒ gěi nín chū huízhí.",
@@ -11364,6 +11488,7 @@ export const lessons: ChineseLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "fca33b6a-6157-482b-a85b-98610e991154",
         "speaker": "阮",
         "chinese": "您好, 请问王府井大街怎么走?",
         "pinyin": "Nín hǎo, qǐngwèn Wángfǔjǐng dàjiē zěnme zǒu?",
@@ -11371,6 +11496,7 @@ export const lessons: ChineseLesson[] = [
         "vi": "Em chào anh/chị, đến phố Vương Phủ Tỉnh đi thế nào?"
       },
       {
+        cell_id: "edf18e23-8245-4ddc-a44b-7b71065c75b5",
         "speaker": "路人",
         "chinese": "往前走, 第二个十字路口右转, 走五百米就到了。",
         "pinyin": "Wǎng qián zǒu, dì èr gè shízì lùkǒu yòu zhuǎn, zǒu wǔbǎi mǐ jiù dào le.",
@@ -11378,6 +11504,7 @@ export const lessons: ChineseLesson[] = [
         "vi": "Đi thẳng, ngã tư thứ hai rẽ phải, đi 500 mét là đến."
       },
       {
+        cell_id: "3ab91a86-0b36-4c2b-a9a4-40d8717bd75b",
         "speaker": "阮",
         "chinese": "走路远不远?",
         "pinyin": "Zǒulù yuǎn bù yuǎn?",
@@ -11385,6 +11512,7 @@ export const lessons: ChineseLesson[] = [
         "vi": "Đi bộ có xa không?"
       },
       {
+        cell_id: "7465f9f5-28cb-4733-8791-8c7490de0cac",
         "speaker": "路人",
         "chinese": "不远, 大概十分钟。",
         "pinyin": "Bù yuǎn, dàgài shí fēnzhōng.",
@@ -11772,6 +11900,7 @@ export const lessons: ChineseLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "c0e975be-21fe-4cc7-b2d5-8246ed2b8942",
         "speaker": "阮",
         "chinese": "服务员, 这道菜不是我点的。",
         "pinyin": "Fúwùyuán, zhè dào cài bù shì wǒ diǎn de.",
@@ -11779,6 +11908,7 @@ export const lessons: ChineseLesson[] = [
         "vi": "Anh ơi, món này không phải món em gọi."
       },
       {
+        cell_id: "b935255c-e813-4604-8193-7ab485f0bf9a",
         "speaker": "服务员",
         "chinese": "您点的是哪道?",
         "pinyin": "Nín diǎn de shì nǎ dào?",
@@ -11786,6 +11916,7 @@ export const lessons: ChineseLesson[] = [
         "vi": "Anh gọi món gì?"
       },
       {
+        cell_id: "f06e7210-65ab-49fd-8ca4-1f94b968f3c8",
         "speaker": "阮",
         "chinese": "宫保鸡丁。这道是辣子鸡。",
         "pinyin": "Gōngbǎo jīdīng. Zhè dào shì làzi jī.",
@@ -11793,6 +11924,7 @@ export const lessons: ChineseLesson[] = [
         "vi": "Gà Kung Pao. Cái này là gà cay khô."
       },
       {
+        cell_id: "c70830ec-6e72-42c2-8b73-a1f5ce6093c3",
         "speaker": "服务员",
         "chinese": "实在抱歉, 我马上换。",
         "pinyin": "Shízài bàoqiàn, wǒ mǎshàng huàn.",
@@ -12180,6 +12312,7 @@ export const lessons: ChineseLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "d7bdd128-28e9-47ec-bc15-3c47d4c5ac7b",
         "speaker": "阮",
         "chinese": "师傅, 去王府井, 走最近的路。",
         "pinyin": "Shīfu, qù Wángfǔjǐng, zǒu zuì jìn de lù.",
@@ -12187,6 +12320,7 @@ export const lessons: ChineseLesson[] = [
         "vi": "Anh ơi, đến Vương Phủ Tỉnh, đi đường gần nhất."
       },
       {
+        cell_id: "b38e2e7a-590b-4291-b72a-40c2599877e6",
         "speaker": "司机",
         "chinese": "好, 走二环吧, 不堵。",
         "pinyin": "Hǎo, zǒu èr huán ba, bù dǔ.",
@@ -12194,6 +12328,7 @@ export const lessons: ChineseLesson[] = [
         "vi": "Được, đi vành đai 2 nhé, không kẹt."
       },
       {
+        cell_id: "555b8204-94cd-4bf1-91b4-7d4a39f85239",
         "speaker": "阮",
         "chinese": "好的。打表了吗?",
         "pinyin": "Hǎo de. Dǎ biǎo le ma?",
@@ -12201,6 +12336,7 @@ export const lessons: ChineseLesson[] = [
         "vi": "Vâng. Bật đồng hồ chưa?"
       },
       {
+        cell_id: "2dda64d7-ed15-48f0-9e37-ac64f9096bd5",
         "speaker": "司机",
         "chinese": "打了, 起步价14块。",
         "pinyin": "Dǎ le, qǐbùjià shísì kuài.",
@@ -12574,6 +12710,7 @@ export const lessons: ChineseLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "a1e9aa1e-6225-47bd-b0f6-a8bb4338fc7e",
         "speaker": "婆婆",
         "chinese": "你们怎么不打算要孩子? 我们这把年纪等不及了。",
         "pinyin": "Nǐmen zěnme bù dǎsuàn yào háizi? Wǒmen zhè bǎ niánjì děng bù jí le.",
@@ -12581,6 +12718,7 @@ export const lessons: ChineseLesson[] = [
         "vi": "Sao các con không định có con? Bọn ta tuổi này đợi không nổi nữa."
       },
       {
+        cell_id: "8e32fb18-f586-42d6-9dee-ed5714b6148c",
         "speaker": "梅",
         "chinese": "妈, 我们想再等两年, 工作稳定一些。",
         "pinyin": "Mā, wǒmen xiǎng zài děng liǎng nián, gōngzuò wěndìng yīxiē.",
@@ -12588,6 +12726,7 @@ export const lessons: ChineseLesson[] = [
         "vi": "Mẹ ơi, bọn con muốn đợi hai năm nữa, công việc ổn định hơn đã."
       },
       {
+        cell_id: "f1f65f79-b853-4807-95d9-a72428cfda5a",
         "speaker": "婆婆",
         "chinese": "工作什么时候才稳定? 越早生越好。",
         "pinyin": "Gōngzuò shénme shíhou cái wěndìng? Yuè zǎo shēng yuè hǎo.",
@@ -12595,6 +12734,7 @@ export const lessons: ChineseLesson[] = [
         "vi": "Công việc khi nào mới ổn? Càng sớm sinh càng tốt."
       },
       {
+        cell_id: "ef9658ad-4d5e-4e23-89b5-0e5b39b00916",
         "speaker": "梅",
         "chinese": "我理解您的关心, 但这是我和明华一起的决定, 希望您尊重。",
         "pinyin": "Wǒ lǐjiě nín de guānxīn, dàn zhè shì wǒ hé Mínghuá yīqǐ de juédìng, xīwàng nín zūnzhòng.",
@@ -12975,6 +13115,7 @@ export const lessons: ChineseLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "29678e61-7d8b-4736-b737-c087ce696f2d",
         "speaker": "李同事",
         "chinese": "你最近怎么早就下班了? 是不是没事做?",
         "pinyin": "Nǐ zuìjìn zěnme zǎo jiù xiàbān le? Shì bù shì méi shì zuò?",
@@ -12982,6 +13123,7 @@ export const lessons: ChineseLesson[] = [
         "vi": "Sao dạo này bạn về sớm thế? Hết việc làm rồi à?"
       },
       {
+        cell_id: "679b7fc7-2b90-424c-90e9-d5b34b023ed4",
         "speaker": "梅",
         "chinese": "工作做完了我就走, 我不喜欢加班。",
         "pinyin": "Gōngzuò zuò wán le wǒ jiù zǒu, wǒ bù xǐhuan jiābān.",
@@ -12989,6 +13131,7 @@ export const lessons: ChineseLesson[] = [
         "vi": "Mình xong việc thì về, mình không thích tăng ca."
       },
       {
+        cell_id: "8d2981c3-e7db-4a18-ba6d-f57a1155b568",
         "speaker": "李同事",
         "chinese": "在中国不加班怎么升职? 老板不喜欢这种员工。",
         "pinyin": "Zài Zhōngguó bù jiābān zěnme shēngzhí? Lǎobǎn bù xǐhuan zhè zhǒng yuángōng.",
@@ -12996,6 +13139,7 @@ export const lessons: ChineseLesson[] = [
         "vi": "Ở Trung Quốc không tăng ca thì sao thăng chức? Sếp không thích kiểu nhân viên này."
       },
       {
+        cell_id: "9d44c6ed-9af2-4251-a02d-f002a2d271e9",
         "speaker": "梅",
         "chinese": "我懂, 但我有家人需要陪。我和你的选择不一样, 互相理解就好。",
         "pinyin": "Wǒ dǒng, dàn wǒ yǒu jiārén xūyào péi. Wǒ hé nǐ de xuǎnzé bù yīyàng, hùxiāng lǐjiě jiùhǎo.",
@@ -13369,6 +13513,7 @@ export const lessons: ChineseLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "917d0f79-2ec8-44ed-807e-08e9903d695a",
         "speaker": "朋友",
         "chinese": "梅, 我外婆昨天走了。",
         "pinyin": "Méi, wǒ wàipó zuótiān zǒu le.",
@@ -13376,6 +13521,7 @@ export const lessons: ChineseLesson[] = [
         "vi": "Mai, bà ngoại mình hôm qua mất rồi."
       },
       {
+        cell_id: "75a6cf28-2952-4839-923f-d3d1e5494367",
         "speaker": "梅",
         "chinese": "天啊, 节哀顺变。我能为你做什么吗?",
         "pinyin": "Tiān a, jié āi shùn biàn. Wǒ néng wèi nǐ zuò shénme ma?",
@@ -13383,6 +13529,7 @@ export const lessons: ChineseLesson[] = [
         "vi": "Trời ơi, mong bạn nén đau thương. Mình có thể làm gì cho bạn không?"
       },
       {
+        cell_id: "0b0f8ee7-29f3-419b-b7a3-89387c551a71",
         "speaker": "朋友",
         "chinese": "现在很难受, 不知道说什么。",
         "pinyin": "Xiànzài hěn nánshòu, bù zhīdào shuō shénme.",
@@ -13390,6 +13537,7 @@ export const lessons: ChineseLesson[] = [
         "vi": "Bây giờ mình đau lắm, không biết nói gì."
       },
       {
+        cell_id: "bf2c1bf5-67e6-439f-9fe9-e9a0453b9bb0",
         "speaker": "梅",
         "chinese": "不需要说什么, 我陪着你就好。我现在过来吗?",
         "pinyin": "Bù xūyào shuō shénme, wǒ péizhe nǐ jiùhǎo. Wǒ xiànzài guòlái ma?",
@@ -13770,6 +13918,7 @@ export const lessons: ChineseLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "d71f7d67-ba0c-42f7-b481-3370f45778e0",
         "speaker": "梅",
         "chinese": "丽丽, 上周我说的话太过分了, 我想当面道歉。",
         "pinyin": "Lìli, shàng zhōu wǒ shuō de huà tài guòfèn le, wǒ xiǎng dāngmiàn dàoqiàn.",
@@ -13777,6 +13926,7 @@ export const lessons: ChineseLesson[] = [
         "vi": "Lệ Lệ, tuần trước mình nói quá đáng, mình muốn xin lỗi trực tiếp."
       },
       {
+        cell_id: "8dc4d276-3b66-4e99-8815-d8b07cf401a5",
         "speaker": "丽丽",
         "chinese": "嗯, 我那天确实很伤心。",
         "pinyin": "Èn, wǒ nà tiān quèshí hěn shāngxīn.",
@@ -13784,6 +13934,7 @@ export const lessons: ChineseLesson[] = [
         "vi": "Ừm, hôm đó mình thực sự rất tổn thương."
       },
       {
+        cell_id: "31087ab9-860b-4677-bcfd-a507f4342f70",
         "speaker": "梅",
         "chinese": "我没站在你的角度想, 是我不对。我以后绝对不会再这样。",
         "pinyin": "Wǒ méi zhàn zài nǐ de jiǎodù xiǎng, shì wǒ bù duì. Wǒ yǐhòu juéduì bù huì zài zhèyàng.",
@@ -13791,6 +13942,7 @@ export const lessons: ChineseLesson[] = [
         "vi": "Mình không đặt mình vào góc nhìn của bạn, là mình sai. Sau này tuyệt đối không thế nữa."
       },
       {
+        cell_id: "61b59ed7-5f06-40bc-bd23-cc53b0498dab",
         "speaker": "丽丽",
         "chinese": "我需要点时间, 但我看到你的诚意了。",
         "pinyin": "Wǒ xūyào diǎn shíjiān, dàn wǒ kàn dào nǐ de chéngyì le.",
@@ -14164,6 +14316,7 @@ export const lessons: ChineseLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "c7c41488-bb80-48d9-b98a-dbd0c29edc0d",
         "speaker": "梅",
         "chinese": "丽丽, 后天就要走了, 心情怎么样?",
         "pinyin": "Lìli, hòutiān jiù yào zǒu le, xīnqíng zěnmeyàng?",
@@ -14171,6 +14324,7 @@ export const lessons: ChineseLesson[] = [
         "vi": "Lệ Lệ, kia là đi rồi, tâm trạng thế nào?"
       },
       {
+        cell_id: "a25fe8ac-e0d2-44ce-b496-1cdd6f89454d",
         "speaker": "丽丽",
         "chinese": "又激动又难过。激动是新生活, 难过是要离开你们。",
         "pinyin": "Yòu jīdòng yòu nánguò. Jīdòng shì xīn shēnghuó, nánguò shì yào líkāi nǐmen.",
@@ -14178,6 +14332,7 @@ export const lessons: ChineseLesson[] = [
         "vi": "Vừa hồi hộp vừa buồn. Hồi hộp vì cuộc sống mới, buồn vì phải xa các bạn."
       },
       {
+        cell_id: "61dc39d2-9700-4a2f-919d-16445009e223",
         "speaker": "梅",
         "chinese": "我也舍不得你, 但是为你高兴。这是好事。",
         "pinyin": "Wǒ yě shěbude nǐ, dànshì wèi nǐ gāoxìng. Zhè shì hǎo shì.",
@@ -14185,6 +14340,7 @@ export const lessons: ChineseLesson[] = [
         "vi": "Mình cũng tiếc xa bạn, nhưng mừng cho bạn. Đây là việc tốt."
       },
       {
+        cell_id: "4348a8be-e56d-44ca-b7c3-67037846c363",
         "speaker": "丽丽",
         "chinese": "保持联系啊, 我会想你的。",
         "pinyin": "Bǎochí liánxì a, wǒ huì xiǎng nǐ de.",
@@ -14565,6 +14721,7 @@ export const lessons: ChineseLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "99a5ef61-64c2-4cb5-945c-98d5d289dcfc",
         "speaker": "梅",
         "chinese": "丽丽, 你最近脸色不太好, 怎么了?",
         "pinyin": "Lìli, nǐ zuìjìn liǎnsè bù tài hǎo, zěnme le?",
@@ -14572,6 +14729,7 @@ export const lessons: ChineseLesson[] = [
         "vi": "Lệ Lệ, dạo này sắc mặt bạn không tốt, có chuyện gì vậy?"
       },
       {
+        cell_id: "a528eee3-fe37-41ef-876b-219623c49088",
         "speaker": "丽丽",
         "chinese": "工作上压力大, 加班到十一点, 还有家里催我相亲, 我快疯了。",
         "pinyin": "Gōngzuò shàng yālì dà, jiābān dào shíyī diǎn, hái yǒu jiā lǐ cuī wǒ xiāngqīn, wǒ kuài fēng le.",
@@ -14579,6 +14737,7 @@ export const lessons: ChineseLesson[] = [
         "vi": "Áp lực công việc lớn, tăng ca đến 11 giờ, lại bị nhà giục gặp người mai mối, mình sắp điên rồi."
       },
       {
+        cell_id: "d4f7af18-0de0-488e-b8ef-14e2de3ff4c6",
         "speaker": "梅",
         "chinese": "听起来很多事一起来, 周末来我家吃饭, 不聊重的, 就放松一下。",
         "pinyin": "Tīng qǐlái hěn duō shì yīqǐ lái, zhōumò lái wǒ jiā chīfàn, bù liáo zhòng de, jiù fàngsōng yīxià.",
@@ -14586,6 +14745,7 @@ export const lessons: ChineseLesson[] = [
         "vi": "Nghe như nhiều chuyện cùng đến. Cuối tuần qua nhà mình ăn cơm, không nói chuyện nặng, chỉ thư giãn."
       },
       {
+        cell_id: "c0f03f59-8fea-43ce-90cf-71d2c3085cee",
         "speaker": "丽丽",
         "chinese": "好, 我太需要这个了。",
         "pinyin": "Hǎo, wǒ tài xūyào zhège le.",
@@ -14987,6 +15147,7 @@ export const lessons: ChineseLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "c9324e62-c542-46c9-ba67-7b54874d262c",
         "speaker": "梅",
         "chinese": "丽丽, 我有点事想跟你商量, 不好开口。",
         "pinyin": "Lìli, wǒ yǒu diǎn shì xiǎng gēn nǐ shāngliang, bù hǎo kāikǒu.",
@@ -14994,6 +15155,7 @@ export const lessons: ChineseLesson[] = [
         "vi": "Lệ Lệ, mình có chút chuyện muốn bàn, khó mở lời."
       },
       {
+        cell_id: "3868d070-e4e6-4e8d-86c5-efa3c78ed5fe",
         "speaker": "丽丽",
         "chinese": "你说, 朋友嘛, 没什么不好说的。",
         "pinyin": "Nǐ shuō, péngyou ma, méi shénme bù hǎo shuō de.",
@@ -15001,6 +15163,7 @@ export const lessons: ChineseLesson[] = [
         "vi": "Bạn nói đi, bạn bè mà, không có gì khó nói."
       },
       {
+        cell_id: "df97f3d0-762f-4f22-9afb-32dd784fe22e",
         "speaker": "梅",
         "chinese": "我妈住院, 我急需八千块, 能借给我一个月吗?",
         "pinyin": "Wǒ mā zhùyuàn, wǒ jí xū bāqiān kuài, néng jiè gěi wǒ yī gè yuè ma?",
@@ -15008,6 +15171,7 @@ export const lessons: ChineseLesson[] = [
         "vi": "Mẹ mình nhập viện, gấp cần 8,000 tệ, cho mình mượn một tháng được không?"
       },
       {
+        cell_id: "30c7aa0f-1484-4c23-a0ed-372ba4fde8d5",
         "speaker": "丽丽",
         "chinese": "当然, 现在就转给你, 不用打借条, 朋友的信任。",
         "pinyin": "Dāngrán, xiànzài jiù zhuǎn gěi nǐ, bùyòng dǎ jiètiáo, péngyou de xìnrèn.",
@@ -15402,6 +15566,7 @@ export const lessons: ChineseLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "6006175e-3e93-4f68-a4ea-0e7b1d7a3212",
         "speaker": "梅",
         "chinese": "你妈妈烧香拜佛, 你也信佛吗?",
         "pinyin": "Nǐ māma shāo xiāng bài Fó, nǐ yě xìn Fó ma?",
@@ -15409,6 +15574,7 @@ export const lessons: ChineseLesson[] = [
         "vi": "Mẹ bạn thắp nhang lạy Phật, bạn cũng theo Phật à?"
       },
       {
+        cell_id: "fe24410b-8127-4ead-a5d7-946256a4eed6",
         "speaker": "丽丽",
         "chinese": "我家代代信佛, 但我自己更像是文化上的认同, 没有很严格地修行。",
         "pinyin": "Wǒ jiā dài dài xìn Fó, dàn wǒ zìjǐ gèng xiàng shì wénhuà shàng de rèntóng, méiyǒu hěn yángé de xiūxíng.",
@@ -15416,6 +15582,7 @@ export const lessons: ChineseLesson[] = [
         "vi": "Nhà mình nhiều đời theo Phật, nhưng với mình giống nhận đồng văn hóa, không tu nghiêm."
       },
       {
+        cell_id: "08196bb2-a9af-442c-8e67-979fbe293f1a",
         "speaker": "梅",
         "chinese": "我没有特定宗教, 但相信因果。",
         "pinyin": "Wǒ méiyǒu tèdìng zōngjiào, dàn xiāngxìn yīnguǒ.",
@@ -15423,6 +15590,7 @@ export const lessons: ChineseLesson[] = [
         "vi": "Mình không theo tôn giáo cụ thể, nhưng tin nhân quả."
       },
       {
+        cell_id: "7bb19573-0ada-4fc6-9135-55382a82fd5b",
         "speaker": "丽丽",
         "chinese": "因果其实就是佛教的核心思想之一, 我们其实想得差不多。",
         "pinyin": "Yīnguǒ qíshí jiùshì Fójiào de héxīn sīxiǎng zhī yī, wǒmen qíshí xiǎng de chàbuduō.",
@@ -15803,6 +15971,7 @@ export const lessons: ChineseLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "544179d1-5ce0-4ea5-bc52-7b2e866b1e53",
         "speaker": "丽丽",
         "chinese": "梅, 我想跟你说一件事, 我没跟很多人说过。",
         "pinyin": "Méi, wǒ xiǎng gēn nǐ shuō yī jiàn shì, wǒ méi gēn hěn duō rén shuō guò.",
@@ -15810,6 +15979,7 @@ export const lessons: ChineseLesson[] = [
         "vi": "Mai, mình muốn kể bạn một chuyện, mình chưa kể với nhiều người."
       },
       {
+        cell_id: "f733e24e-bf4a-4db0-aa2a-4ba1b4a121fe",
         "speaker": "梅",
         "chinese": "你想说就说, 我会认真听。",
         "pinyin": "Nǐ xiǎng shuō jiù shuō, wǒ huì rènzhēn tīng.",
@@ -15817,6 +15987,7 @@ export const lessons: ChineseLesson[] = [
         "vi": "Bạn muốn kể thì kể, mình sẽ nghe nghiêm túc."
       },
       {
+        cell_id: "884ab524-f88e-4c1e-873e-112ea7d37264",
         "speaker": "丽丽",
         "chinese": "我中学的时候被同学欺负过两年, 那段时间我...",
         "pinyin": "Wǒ zhōngxué de shíhou bèi tóngxué qīfu guò liǎng nián, nà duàn shíjiān wǒ...",
@@ -15824,6 +15995,7 @@ export const lessons: ChineseLesson[] = [
         "vi": "Hồi cấp 2 mình bị bạn học bắt nạt 2 năm, thời gian đó mình..."
       },
       {
+        cell_id: "5c103767-c282-42a4-bddc-ffd9a2d4e2e7",
         "speaker": "梅",
         "chinese": "你愿意说我都听。我不会催, 也不会跟别人说。",
         "pinyin": "Nǐ yuànyì shuō wǒ dōu tīng. Wǒ bù huì cuī, yě bù huì gēn biérén shuō.",
@@ -16211,6 +16383,7 @@ export const lessons: ChineseLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "9c668387-e680-4835-906c-7be79cea06c2",
         "speaker": "梅",
         "chinese": "丽丽, 我们聊一下我们最近联系的方式好吗?",
         "pinyin": "Lìli, wǒmen liáo yīxià wǒmen zuìjìn liánxì de fāngshì hǎo ma?",
@@ -16218,6 +16391,7 @@ export const lessons: ChineseLesson[] = [
         "vi": "Lệ Lệ, mình bàn về cách liên lạc dạo này nhé?"
       },
       {
+        cell_id: "0027f811-fbdc-4e21-b086-a72f2d30f5aa",
         "speaker": "丽丽",
         "chinese": "怎么了? 我做错什么了吗?",
         "pinyin": "Zěnme le? Wǒ zuò cuò shénme le ma?",
@@ -16225,6 +16399,7 @@ export const lessons: ChineseLesson[] = [
         "vi": "Sao? Mình làm gì sai à?"
       },
       {
+        cell_id: "7b64bd5f-bc94-428f-a7ca-26b375289221",
         "speaker": "梅",
         "chinese": "不是错, 是节奏问题。你最近半夜打电话, 我第二天上班好累。能不能改成微信留言?",
         "pinyin": "Bù shì cuò, shì jiézòu wèntí. Nǐ zuìjìn bànyè dǎ diànhuà, wǒ dì èr tiān shàngbān hǎo lèi. Néng bù néng gǎi chéng wēixìn liúyán?",
@@ -16232,6 +16407,7 @@ export const lessons: ChineseLesson[] = [
         "vi": "Không phải sai, là vấn đề nhịp độ. Bạn gọi nửa đêm, mình ngày hôm sau đi làm mệt. Đổi sang nhắn WeChat được không?"
       },
       {
+        cell_id: "29123e97-0ccc-4745-8230-79dad3a091e6",
         "speaker": "丽丽",
         "chinese": "对不起, 我没意识到。我会注意。",
         "pinyin": "Duìbuqǐ, wǒ méi yìshí dào. Wǒ huì zhùyì.",

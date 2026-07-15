@@ -22,6 +22,7 @@ export type LessonSentence = {
 };
 
 export type VocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -31,6 +32,7 @@ export type VocabEntry = {
 };
 
 export type DialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -127,17 +129,17 @@ export const lessons: IndonesianLesson[] = [
     tip_advice_en:
       "'pindah' = to move oneself; 'memindahkan' = to move an object (transitive). 'kos' = boarding room, 'ibu kos' = landlady. Comparative 'lebih dekat' — lebih goes BEFORE. 'memberi tahu' (to inform) is handy when leaving. 'daerah' splits into three syllables da-e-rah.",
     vocabulary: [
-      { word: "pindah", en: "to move, relocate", vi: "chuyển, dời", pos: "verb", pronunciation_vi: "PIN-dah", pronunciation_en: "PIN-dah" },
-      { word: "pindahan", en: "the move, moving", vi: "việc dọn nhà", pos: "noun", pronunciation_vi: "pin-DA-han", pronunciation_en: "pin-DAH-han" },
-      { word: "kos", en: "boarding room", vi: "nhà trọ", pos: "noun", pronunciation_vi: "KOS", pronunciation_en: "KOS" },
-      { word: "pemilik", en: "owner", vi: "chủ sở hữu", pos: "noun", pronunciation_vi: "pe-MI-lik", pronunciation_en: "puh-MEE-lik" },
-      { word: "deposit", en: "deposit", vi: "tiền cọc", pos: "noun", pronunciation_vi: "de-PO-sit", pronunciation_en: "deh-POH-sit" },
-      { word: "daerah", en: "area, region", vi: "khu vực, vùng", pos: "noun", pronunciation_vi: "da-E-rah", pronunciation_en: "dah-EH-rah" },
+      { cell_id: "bef9cb67-d62e-4484-a9d6-a8fedbdc3b2e", word: "pindah", en: "to move, relocate", vi: "chuyển, dời", pos: "verb", pronunciation_vi: "PIN-dah", pronunciation_en: "PIN-dah" },
+      { cell_id: "c671bf0e-c245-4c9b-bd92-4db65ebb7c8e", word: "pindahan", en: "the move, moving", vi: "việc dọn nhà", pos: "noun", pronunciation_vi: "pin-DA-han", pronunciation_en: "pin-DAH-han" },
+      { cell_id: "5a332e7b-5c05-41fe-b64d-1c1361d296b2", word: "kos", en: "boarding room", vi: "nhà trọ", pos: "noun", pronunciation_vi: "KOS", pronunciation_en: "KOS" },
+      { cell_id: "ab1b696f-f700-4de7-9ffa-32929e99bcd3", word: "pemilik", en: "owner", vi: "chủ sở hữu", pos: "noun", pronunciation_vi: "pe-MI-lik", pronunciation_en: "puh-MEE-lik" },
+      { cell_id: "32406ab5-b0e8-42c0-8808-5b7b4853498a", word: "deposit", en: "deposit", vi: "tiền cọc", pos: "noun", pronunciation_vi: "de-PO-sit", pronunciation_en: "deh-POH-sit" },
+      { cell_id: "8797eb90-f4e6-4c44-b641-06f9686c4bda", word: "daerah", en: "area, region", vi: "khu vực, vùng", pos: "noun", pronunciation_vi: "da-E-rah", pronunciation_en: "dah-EH-rah" },
     ],
     dialogue: [
-      { speaker: "Sari", text: "Katanya kamu mau pindah rumah?", vi: "Nghe nói cậu định chuyển nhà à?", en: "I heard you're moving house?" },
-      { speaker: "Andi", text: "Iya, bulan depan. Rumah baru lebih dekat ke kantor.", vi: "Ừ, tháng sau. Nhà mới gần văn phòng hơn.", en: "Yeah, next month. The new place is closer to the office." },
-      { speaker: "Sari", text: "Sudah bilang ibu kos belum?", vi: "Báo bà chủ trọ chưa?", en: "Have you told the landlady yet?" },
+      { cell_id: "290fa54e-b4cf-4e01-b186-7dd8de8436c7", speaker: "Sari", text: "Katanya kamu mau pindah rumah?", vi: "Nghe nói cậu định chuyển nhà à?", en: "I heard you're moving house?" },
+      { cell_id: "bb3d2f41-9db1-404a-91b6-f7f05f72020c", speaker: "Andi", text: "Iya, bulan depan. Rumah baru lebih dekat ke kantor.", vi: "Ừ, tháng sau. Nhà mới gần văn phòng hơn.", en: "Yeah, next month. The new place is closer to the office." },
+      { cell_id: "f069adb5-25af-402a-8a10-b58bbb03113b", speaker: "Sari", text: "Sudah bilang ibu kos belum?", vi: "Báo bà chủ trọ chưa?", en: "Have you told the landlady yet?" },
     ],
     exercises: [
       {
@@ -222,12 +224,12 @@ export const lessons: IndonesianLesson[] = [
     tip_advice_en:
       "Key prefix pair: 'di-' (deliberate passive: dibungkus = was wrapped) vs 'ter-' (accidental: tertukar = got mixed up). Like Vietnamese 'được' vs 'bị'. 'c' = 'ch': pecah. 'biar' = 'supaya' (so that) in speech. Grab free 'kardus' at Indomaret/Alfamart.",
     vocabulary: [
-      { word: "kardus", en: "cardboard box", vi: "thùng carton", pos: "noun", pronunciation_vi: "KAR-dus", pronunciation_en: "KAR-doos" },
-      { word: "barang", en: "belongings, goods", vi: "đồ đạc", pos: "noun", pronunciation_vi: "BA-rang", pronunciation_en: "BAH-rang" },
-      { word: "membungkus", en: "to wrap, pack", vi: "gói, bọc", pos: "verb", pronunciation_vi: "mem-BUNG-kus", pronunciation_en: "mem-BOONG-koos" },
-      { word: "label", en: "label", vi: "nhãn", pos: "noun", pronunciation_vi: "LA-bel", pronunciation_en: "LAH-bel" },
-      { word: "mudah pecah", en: "fragile", vi: "dễ vỡ", pos: "adjective phrase", pronunciation_vi: "MU-dah pe-CAH", pronunciation_en: "MOO-dah puh-CHAH" },
-      { word: "tertukar", en: "got mixed up, swapped", vi: "bị lẫn nhầm", pos: "verb", pronunciation_vi: "ter-TU-kar", pronunciation_en: "ter-TOO-kar" },
+      { cell_id: "a3e6f308-7040-4f13-a10f-4aec699ab05d", word: "kardus", en: "cardboard box", vi: "thùng carton", pos: "noun", pronunciation_vi: "KAR-dus", pronunciation_en: "KAR-doos" },
+      { cell_id: "f61a5712-6a27-4a4d-8618-fb7ed6ba881d", word: "barang", en: "belongings, goods", vi: "đồ đạc", pos: "noun", pronunciation_vi: "BA-rang", pronunciation_en: "BAH-rang" },
+      { cell_id: "92068e0a-a43e-42c7-b725-45fe239be65a", word: "membungkus", en: "to wrap, pack", vi: "gói, bọc", pos: "verb", pronunciation_vi: "mem-BUNG-kus", pronunciation_en: "mem-BOONG-koos" },
+      { cell_id: "3ffdf1e0-3ebf-4b49-a601-8a84970a8fd0", word: "label", en: "label", vi: "nhãn", pos: "noun", pronunciation_vi: "LA-bel", pronunciation_en: "LAH-bel" },
+      { cell_id: "6c30378a-3306-4f4f-b79b-4259555f4832", word: "mudah pecah", en: "fragile", vi: "dễ vỡ", pos: "adjective phrase", pronunciation_vi: "MU-dah pe-CAH", pronunciation_en: "MOO-dah puh-CHAH" },
+      { cell_id: "dd4d2268-b3ed-4ae4-ad9f-49af246a86ee", word: "tertukar", en: "got mixed up, swapped", vi: "bị lẫn nhầm", pos: "verb", pronunciation_vi: "ter-TU-kar", pronunciation_en: "ter-TOO-kar" },
     ],
     exercises: [
       {
@@ -310,17 +312,17 @@ export const lessons: IndonesianLesson[] = [
     tip_advice_en:
       "Gold price-asking line: 'Berapa biayanya?' (How much?). 'menyewa' (to hire) has 'ny'=ñ — easy for Vietnamese. 'jasa' = service. Structure 'dari X ke Y' = from X to Y. Haggling is 'nego'. Say 'hati-hati' for heavy/fragile items.",
     vocabulary: [
-      { word: "jasa pindahan", en: "moving service, movers", vi: "dịch vụ chuyển nhà", pos: "noun phrase", pronunciation_vi: "JA-sa pin-DA-han", pronunciation_en: "JAH-sah pin-DAH-han" },
-      { word: "ekspedisi", en: "freight/logistics company", vi: "công ty vận chuyển", pos: "noun", pronunciation_vi: "eks-pe-DI-si", pronunciation_en: "eks-puh-DEE-see" },
-      { word: "menyewa", en: "to rent, hire", vi: "thuê", pos: "verb", pronunciation_vi: "me-nye-WA", pronunciation_en: "muh-nyuh-WAH" },
-      { word: "mengangkut", en: "to transport, haul", vi: "vận chuyển, khuân", pos: "verb", pronunciation_vi: "me-ngang-KUT", pronunciation_en: "muh-ngang-KOOT" },
-      { word: "biaya", en: "cost, fee", vi: "chi phí", pos: "noun", pronunciation_vi: "bi-A-ya", pronunciation_en: "bee-AH-yah" },
-      { word: "berat", en: "heavy", vi: "nặng", pos: "adjective", pronunciation_vi: "be-RAT", pronunciation_en: "buh-RAT" },
+      { cell_id: "d001c915-c08c-4297-a31d-0557edb18c3b", word: "jasa pindahan", en: "moving service, movers", vi: "dịch vụ chuyển nhà", pos: "noun phrase", pronunciation_vi: "JA-sa pin-DA-han", pronunciation_en: "JAH-sah pin-DAH-han" },
+      { cell_id: "51bc7cbb-5ba4-40b2-9240-f7b43972d5d9", word: "ekspedisi", en: "freight/logistics company", vi: "công ty vận chuyển", pos: "noun", pronunciation_vi: "eks-pe-DI-si", pronunciation_en: "eks-puh-DEE-see" },
+      { cell_id: "dfdc2c9f-d8f4-4655-b11c-3c622134a2cc", word: "menyewa", en: "to rent, hire", vi: "thuê", pos: "verb", pronunciation_vi: "me-nye-WA", pronunciation_en: "muh-nyuh-WAH" },
+      { cell_id: "62357867-bc87-43ba-ba45-ebb23550da9c", word: "mengangkut", en: "to transport, haul", vi: "vận chuyển, khuân", pos: "verb", pronunciation_vi: "me-ngang-KUT", pronunciation_en: "muh-ngang-KOOT" },
+      { cell_id: "f3b61aa4-9008-4fc2-9ebc-8449f5cb1f39", word: "biaya", en: "cost, fee", vi: "chi phí", pos: "noun", pronunciation_vi: "bi-A-ya", pronunciation_en: "bee-AH-yah" },
+      { cell_id: "f076fbe6-c958-4906-b551-a319bd246b18", word: "berat", en: "heavy", vi: "nặng", pos: "adjective", pronunciation_vi: "be-RAT", pronunciation_en: "buh-RAT" },
     ],
     dialogue: [
-      { speaker: "Pelanggan", text: "Halo, saya mau pindahan. Berapa biaya ke Bandung?", vi: "Alô, tôi muốn chuyển nhà. Chi phí đến Bandung bao nhiêu?", en: "Hello, I want to move house. How much to Bandung?" },
-      { speaker: "Petugas", text: "Tergantung jumlah barang, Bu. Kira-kira satu juta.", vi: "Tùy số lượng đồ ạ. Khoảng một triệu.", en: "It depends on the amount of stuff, ma'am. Around one million." },
-      { speaker: "Pelanggan", text: "Oke. Tolong hati-hati ya, ada barang yang mudah pecah.", vi: "Ok. Làm ơn cẩn thận nhé, có đồ dễ vỡ.", en: "Okay. Please be careful, there are fragile items." },
+      { cell_id: "d34b511e-148e-4f01-8344-5fad9c395868", speaker: "Pelanggan", text: "Halo, saya mau pindahan. Berapa biaya ke Bandung?", vi: "Alô, tôi muốn chuyển nhà. Chi phí đến Bandung bao nhiêu?", en: "Hello, I want to move house. How much to Bandung?" },
+      { cell_id: "a410661f-071c-4fef-b4a6-c633c77d39c6", speaker: "Petugas", text: "Tergantung jumlah barang, Bu. Kira-kira satu juta.", vi: "Tùy số lượng đồ ạ. Khoảng một triệu.", en: "It depends on the amount of stuff, ma'am. Around one million." },
+      { cell_id: "ddc79765-d3b6-4d6f-844f-7645ce448889", speaker: "Pelanggan", text: "Oke. Tolong hati-hati ya, ada barang yang mudah pecah.", vi: "Ok. Làm ơn cẩn thận nhé, có đồ dễ vỡ.", en: "Okay. Please be careful, there are fragile items." },
     ],
     exercises: [
       {
@@ -403,17 +405,17 @@ export const lessons: IndonesianLesson[] = [
     tip_advice_en:
       "RT = 'er-teh', RW = 'er-weh'. 'melapor ke Pak RT' (report to the RT head) is the first task when you move in. 'mengurus' (to process) + surat/KTP. Address format: Jalan + nomor + RT/RW. For Vietnamese: RT ≈ tổ dân phố. Don't skip reporting to the RT.",
     vocabulary: [
-      { word: "alamat", en: "address", vi: "địa chỉ", pos: "noun", pronunciation_vi: "a-LA-mat", pronunciation_en: "ah-LAH-mat" },
-      { word: "RT (Rukun Tetangga)", en: "neighbourhood unit", vi: "tổ dân phố", pos: "noun", pronunciation_vi: "ER-TE", pronunciation_en: "er-TEH" },
-      { word: "RW (Rukun Warga)", en: "larger neighbourhood unit", vi: "khu phố (gồm nhiều RT)", pos: "noun", pronunciation_vi: "ER-WE", pronunciation_en: "er-WEH" },
-      { word: "melapor", en: "to report, register", vi: "trình báo", pos: "verb", pronunciation_vi: "me-LA-por", pronunciation_en: "muh-LAH-por" },
-      { word: "surat pindah", en: "change-of-residence letter", vi: "giấy chuyển hộ khẩu", pos: "noun phrase", pronunciation_vi: "SU-rat PIN-dah", pronunciation_en: "SOO-rat PIN-dah" },
-      { word: "KTP", en: "national ID card", vi: "chứng minh nhân dân", pos: "noun", pronunciation_vi: "KA-TE-PE", pronunciation_en: "kah-teh-PEH" },
+      { cell_id: "246ebeff-cdd6-41b0-8229-381ad62e7b18", word: "alamat", en: "address", vi: "địa chỉ", pos: "noun", pronunciation_vi: "a-LA-mat", pronunciation_en: "ah-LAH-mat" },
+      { cell_id: "647010dd-59a9-4973-b16f-ba8a6e9d90fb", word: "RT (Rukun Tetangga)", en: "neighbourhood unit", vi: "tổ dân phố", pos: "noun", pronunciation_vi: "ER-TE", pronunciation_en: "er-TEH" },
+      { cell_id: "5a212c2a-68b9-4122-8e68-42cbbe54c803", word: "RW (Rukun Warga)", en: "larger neighbourhood unit", vi: "khu phố (gồm nhiều RT)", pos: "noun", pronunciation_vi: "ER-WE", pronunciation_en: "er-WEH" },
+      { cell_id: "50dbc1c5-c569-4156-841c-0f41accfca7f", word: "melapor", en: "to report, register", vi: "trình báo", pos: "verb", pronunciation_vi: "me-LA-por", pronunciation_en: "muh-LAH-por" },
+      { cell_id: "30da8ed6-44b9-46a0-bdd0-36f02bac38ee", word: "surat pindah", en: "change-of-residence letter", vi: "giấy chuyển hộ khẩu", pos: "noun phrase", pronunciation_vi: "SU-rat PIN-dah", pronunciation_en: "SOO-rat PIN-dah" },
+      { cell_id: "a7871752-d95e-4b02-8780-633981095cf2", word: "KTP", en: "national ID card", vi: "chứng minh nhân dân", pos: "noun", pronunciation_vi: "KA-TE-PE", pronunciation_en: "kah-teh-PEH" },
     ],
     dialogue: [
-      { speaker: "Penghuni baru", text: "Permisi Pak, saya warga baru. Mau lapor pindah.", vi: "Xin phép bác, tôi là cư dân mới. Muốn trình báo chuyển đến.", en: "Excuse me sir, I'm a new resident. I'd like to report my move." },
-      { speaker: "Pak RT", text: "Oh, selamat datang! Bawa surat pindah dan KTP, ya.", vi: "Ồ, chào mừng! Mang theo giấy chuyển và CMND nhé.", en: "Oh, welcome! Bring your change-of-residence letter and ID." },
-      { speaker: "Penghuni baru", text: "Sudah saya bawa, Pak. Terima kasih.", vi: "Tôi mang theo rồi ạ. Cảm ơn bác.", en: "I've brought them, sir. Thank you." },
+      { cell_id: "aed73df2-22c5-4177-86c2-cc107e7ab680", speaker: "Penghuni baru", text: "Permisi Pak, saya warga baru. Mau lapor pindah.", vi: "Xin phép bác, tôi là cư dân mới. Muốn trình báo chuyển đến.", en: "Excuse me sir, I'm a new resident. I'd like to report my move." },
+      { cell_id: "68081e5f-c368-455d-85b3-d1b1dec9a512", speaker: "Pak RT", text: "Oh, selamat datang! Bawa surat pindah dan KTP, ya.", vi: "Ồ, chào mừng! Mang theo giấy chuyển và CMND nhé.", en: "Oh, welcome! Bring your change-of-residence letter and ID." },
+      { cell_id: "7d6692f5-3fe6-4ebd-8910-c562e35134a4", speaker: "Penghuni baru", text: "Sudah saya bawa, Pak. Terima kasih.", vi: "Tôi mang theo rồi ạ. Cảm ơn bác.", en: "I've brought them, sir. Thank you." },
     ],
     exercises: [
       {
@@ -496,17 +498,17 @@ export const lessons: IndonesianLesson[] = [
     tip_advice_en:
       "'tetangga' (neighbour) has 'ngg' = ng+g (tang-ga). 'perkenalkan' (let me introduce) opens a greeting. 'jangan sungkan' (don't hesitate) — 'sungkan' is like Vietnamese 'ngại/cả nể'. Bring 'oleh-oleh' (small gifts) to greet neighbours. Avoid seeming 'sombong'. Reduplication 'apa-apa' = anything.",
     vocabulary: [
-      { word: "tetangga", en: "neighbour", vi: "hàng xóm", pos: "noun", pronunciation_vi: "te-TANG-ga", pronunciation_en: "tuh-TANG-gah" },
-      { word: "perkenalkan", en: "allow me to introduce", vi: "xin giới thiệu", pos: "verb", pronunciation_vi: "per-ke-NAL-kan", pronunciation_en: "per-kuh-NAL-kan" },
-      { word: "sebelah", en: "next door, beside", vi: "bên cạnh", pos: "noun/adverb", pronunciation_vi: "se-be-LAH", pronunciation_en: "suh-buh-LAH" },
-      { word: "sungkan", en: "hesitant, reluctant to impose", vi: "ngại, cả nể", pos: "adjective", pronunciation_vi: "SUNG-kan", pronunciation_en: "SOONG-kan" },
-      { word: "oleh-oleh", en: "small gift/souvenir", vi: "quà nhỏ", pos: "noun", pronunciation_vi: "O-leh O-leh", pronunciation_en: "OH-leh OH-leh" },
-      { word: "minta tolong", en: "to ask for help", vi: "nhờ giúp đỡ", pos: "verb phrase", pronunciation_vi: "MIN-ta TO-long", pronunciation_en: "MIN-tah TOH-long" },
+      { cell_id: "d658664d-14c5-42d3-8bb7-70e36b55ccda", word: "tetangga", en: "neighbour", vi: "hàng xóm", pos: "noun", pronunciation_vi: "te-TANG-ga", pronunciation_en: "tuh-TANG-gah" },
+      { cell_id: "bc9cdfcd-d1f6-4cb3-82c5-007023d3ec8b", word: "perkenalkan", en: "allow me to introduce", vi: "xin giới thiệu", pos: "verb", pronunciation_vi: "per-ke-NAL-kan", pronunciation_en: "per-kuh-NAL-kan" },
+      { cell_id: "72277160-c36e-4632-93be-36ccbbf1fc9c", word: "sebelah", en: "next door, beside", vi: "bên cạnh", pos: "noun/adverb", pronunciation_vi: "se-be-LAH", pronunciation_en: "suh-buh-LAH" },
+      { cell_id: "b7365e43-53ed-41d6-81d9-ee670c9f8a49", word: "sungkan", en: "hesitant, reluctant to impose", vi: "ngại, cả nể", pos: "adjective", pronunciation_vi: "SUNG-kan", pronunciation_en: "SOONG-kan" },
+      { cell_id: "f9202e8d-9627-421b-89ff-0578e5e568bb", word: "oleh-oleh", en: "small gift/souvenir", vi: "quà nhỏ", pos: "noun", pronunciation_vi: "O-leh O-leh", pronunciation_en: "OH-leh OH-leh" },
+      { cell_id: "a0f6fa88-8896-4124-b407-6cc0e82e60c2", word: "minta tolong", en: "to ask for help", vi: "nhờ giúp đỡ", pos: "verb phrase", pronunciation_vi: "MIN-ta TO-long", pronunciation_en: "MIN-tah TOH-long" },
     ],
     dialogue: [
-      { speaker: "Mai", text: "Selamat sore, Bu. Perkenalkan, saya Mai, baru pindah ke sebelah.", vi: "Chào buổi chiều cô. Xin giới thiệu, tôi là Mai, mới chuyển đến bên cạnh.", en: "Good afternoon, ma'am. Let me introduce myself, I'm Mai, just moved in next door." },
-      { speaker: "Bu Ani", text: "Oh, selamat datang! Ini ada sedikit oleh-oleh, dimakan ya.", vi: "Ồ, chào mừng! Đây có chút quà, ăn nhé.", en: "Oh, welcome! Here's a little gift, please enjoy it." },
-      { speaker: "Mai", text: "Wah, terima kasih banyak. Kalau butuh apa-apa, jangan sungkan ya, Bu.", vi: "Ôi, cảm ơn cô nhiều. Nếu cần gì, cô đừng ngại nhé.", en: "Oh, thank you so much. If you need anything, don't hesitate, ma'am." },
+      { cell_id: "ff4e02ce-f500-4c51-aa02-df8f89da91b7", speaker: "Mai", text: "Selamat sore, Bu. Perkenalkan, saya Mai, baru pindah ke sebelah.", vi: "Chào buổi chiều cô. Xin giới thiệu, tôi là Mai, mới chuyển đến bên cạnh.", en: "Good afternoon, ma'am. Let me introduce myself, I'm Mai, just moved in next door." },
+      { cell_id: "011ffa6b-d4a4-4e13-87a2-aafc1d582ed7", speaker: "Bu Ani", text: "Oh, selamat datang! Ini ada sedikit oleh-oleh, dimakan ya.", vi: "Ồ, chào mừng! Đây có chút quà, ăn nhé.", en: "Oh, welcome! Here's a little gift, please enjoy it." },
+      { cell_id: "d65c5589-bb7c-498c-897d-b56c87d791fe", speaker: "Mai", text: "Wah, terima kasih banyak. Kalau butuh apa-apa, jangan sungkan ya, Bu.", vi: "Ôi, cảm ơn cô nhiều. Nếu cần gì, cô đừng ngại nhé.", en: "Oh, thank you so much. If you need anything, don't hesitate, ma'am." },
     ],
     exercises: [
       {

@@ -13,6 +13,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -22,6 +23,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -235,39 +237,43 @@ export const lessons: IndonesianLesson[] = [
     tip_advice_en:
       "Tip for Vietnamese speakers: learn noun - verb pairs: `pendaftaran` but `mendaftar`, `donasi` but `mendonasikan/menyumbang`, `bantuan` but `membantu`, `pembagian` but `dibagikan`. Community notices often use passive `di-`: `dibuka`, `diminta`, `dibagikan`, `dicatat`.",
     vocabulary: [
-      { word: "relawan", en: "volunteer", vi: "tình nguyện viên", pos: "noun", pronunciation_vi: "re-LA-wan", pronunciation_en: "re-LA-wan" },
-      { word: "pendaftaran relawan", en: "volunteer registration", vi: "đăng ký tình nguyện viên", pos: "noun phrase", pronunciation_vi: "pen-DAF-tar-an re-LA-wan", pronunciation_en: "pen-DAF-tar-an re-LA-wan" },
-      { word: "bakti sosial", en: "social service / charity event", vi: "hoạt động công tác xã hội", pos: "noun phrase", pronunciation_vi: "BAK-ti so-si-AL", pronunciation_en: "BAK-tee so-see-AL" },
-      { word: "donasi", en: "donation", vi: "quyên góp", pos: "noun", pronunciation_vi: "do-NA-si", pronunciation_en: "do-NA-see" },
-      { word: "posko", en: "relief post / command post", vi: "điểm cứu trợ/chỉ huy", pos: "noun", pronunciation_vi: "POS-ko", pronunciation_en: "POS-ko" },
-      { word: "bantuan warga", en: "community aid", vi: "hỗ trợ của người dân", pos: "noun phrase", pronunciation_vi: "ban-TU-an WAR-ga", pronunciation_en: "ban-TOO-an WAR-ga" },
-      { word: "kerja bakti", en: "community volunteer labor", vi: "lao động công ích", pos: "noun phrase", pronunciation_vi: "KER-ja BAK-ti", pronunciation_en: "KER-ja BAK-tee" },
-      { word: "komunitas", en: "community / group", vi: "cộng đồng / nhóm", pos: "noun", pronunciation_vi: "ko-mu-ni-TAS", pronunciation_en: "ko-moo-nee-TAS" },
-      { word: "terdata", en: "recorded/listed in data", vi: "được ghi danh / có trong dữ liệu", pos: "state verb", pronunciation_vi: "ter-DA-ta", pronunciation_en: "ter-DA-ta" },
-      { word: "penerima", en: "recipient", vi: "người nhận", pos: "noun", pronunciation_vi: "pe-ne-RI-ma", pronunciation_en: "pe-ne-REE-ma" },
-      { word: "karang taruna", en: "local youth organization", vi: "tổ chức thanh niên địa phương", pos: "noun phrase", pronunciation_vi: "KA-rang ta-RU-na", pronunciation_en: "KA-rang ta-ROO-na" },
-      { word: "gotong royong", en: "mutual community cooperation", vi: "tương trợ cộng đồng", pos: "noun phrase", pronunciation_vi: "GO-tong RO-yong", pronunciation_en: "GO-tong RO-yong" },
+      { cell_id: "a2742a7c-db68-40b0-8b9a-d2f5e9907b92", word: "relawan", en: "volunteer", vi: "tình nguyện viên", pos: "noun", pronunciation_vi: "re-LA-wan", pronunciation_en: "re-LA-wan" },
+      { cell_id: "4dc8bbb6-9c0b-475f-9cae-0dc195d92629", word: "pendaftaran relawan", en: "volunteer registration", vi: "đăng ký tình nguyện viên", pos: "noun phrase", pronunciation_vi: "pen-DAF-tar-an re-LA-wan", pronunciation_en: "pen-DAF-tar-an re-LA-wan" },
+      { cell_id: "5ee3100a-fa25-4cc8-bc9d-9052f7460cd5", word: "bakti sosial", en: "social service / charity event", vi: "hoạt động công tác xã hội", pos: "noun phrase", pronunciation_vi: "BAK-ti so-si-AL", pronunciation_en: "BAK-tee so-see-AL" },
+      { cell_id: "1049a443-9fea-47b2-9dd6-716140b2902f", word: "donasi", en: "donation", vi: "quyên góp", pos: "noun", pronunciation_vi: "do-NA-si", pronunciation_en: "do-NA-see" },
+      { cell_id: "70d236dc-0f72-4c71-8a25-31ffeb4034ae", word: "posko", en: "relief post / command post", vi: "điểm cứu trợ/chỉ huy", pos: "noun", pronunciation_vi: "POS-ko", pronunciation_en: "POS-ko" },
+      { cell_id: "2199b2d7-8c90-4a34-ba85-d986204b2086", word: "bantuan warga", en: "community aid", vi: "hỗ trợ của người dân", pos: "noun phrase", pronunciation_vi: "ban-TU-an WAR-ga", pronunciation_en: "ban-TOO-an WAR-ga" },
+      { cell_id: "7008b441-27fe-4f55-a227-1f48ca73534d", word: "kerja bakti", en: "community volunteer labor", vi: "lao động công ích", pos: "noun phrase", pronunciation_vi: "KER-ja BAK-ti", pronunciation_en: "KER-ja BAK-tee" },
+      { cell_id: "9c3358d5-8bac-47f8-aebb-b8164e2469b1", word: "komunitas", en: "community / group", vi: "cộng đồng / nhóm", pos: "noun", pronunciation_vi: "ko-mu-ni-TAS", pronunciation_en: "ko-moo-nee-TAS" },
+      { cell_id: "3837b32c-6838-4443-84f0-f3171dfe1595", word: "terdata", en: "recorded/listed in data", vi: "được ghi danh / có trong dữ liệu", pos: "state verb", pronunciation_vi: "ter-DA-ta", pronunciation_en: "ter-DA-ta" },
+      { cell_id: "084d0dd7-3294-40ff-96ae-bbbe3f01bd50", word: "penerima", en: "recipient", vi: "người nhận", pos: "noun", pronunciation_vi: "pe-ne-RI-ma", pronunciation_en: "pe-ne-REE-ma" },
+      { cell_id: "0f43a462-6080-4008-aa27-96219f744686", word: "karang taruna", en: "local youth organization", vi: "tổ chức thanh niên địa phương", pos: "noun phrase", pronunciation_vi: "KA-rang ta-RU-na", pronunciation_en: "KA-rang ta-ROO-na" },
+      { cell_id: "efb723af-8a1d-4441-87ef-05a51ac613da", word: "gotong royong", en: "mutual community cooperation", vi: "tương trợ cộng đồng", pos: "noun phrase", pronunciation_vi: "GO-tong RO-yong", pronunciation_en: "GO-tong RO-yong" },
     ],
     dialogue: [
       {
+        cell_id: "8794dfe9-86d9-4e13-b8cf-a4ec28ce48da",
         speaker: "Koordinator",
         text: "Halo, pendaftaran relawan masih dibuka. Kamu mau ikut bagian apa?",
         vi: "Chào, đăng ký tình nguyện viên vẫn đang mở. Bạn muốn tham gia phần nào?",
         en: "Hi, volunteer registration is still open. Which section do you want to join?",
       },
       {
+        cell_id: "03855426-9213-4ed2-b254-2070ee27dc81",
         speaker: "Minh",
         text: "Saya bisa jaga posko dan mencatat donasi yang masuk.",
         vi: "Tôi có thể trực điểm cứu trợ và ghi các khoản quyên góp nhận được.",
         en: "I can staff the relief post and record incoming donations.",
       },
       {
+        cell_id: "a4079ccf-de22-47f1-ad55-324d755e4bcf",
         speaker: "Koordinator",
         text: "Bagus. Besok pagi juga ada kerja bakti membersihkan selokan.",
         vi: "Tốt. Sáng mai cũng có buổi lao động cộng đồng dọn rãnh thoát nước.",
         en: "Good. Tomorrow morning there is also community service to clean the drains.",
       },
       {
+        cell_id: "e2656640-848d-4199-b9eb-d4f82eb56616",
         speaker: "Minh",
         text: "Siap. Saya bawa sarung tangan, masker, dan air minum.",
         vi: "Sẵn sàng. Tôi mang găng tay, khẩu trang và nước uống.",

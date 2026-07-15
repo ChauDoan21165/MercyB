@@ -17,6 +17,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   /** Indonesian word/phrase. */
   word: string;
   /** English meaning. */
@@ -32,6 +33,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   /** Indonesian line. */
   text: string;
@@ -210,6 +212,7 @@ export const traditionalHealthJamuLessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: learn fixed chunks rather than translating word by word: `masuk angin`, `kurang enak badan`, `badan pegal`, `oleskan minyak`, `pijat tradisional`, `periksa ke dokter`. Vietnamese has similar folk-care concepts, but the Indonesian words and polite permission frames matter: `Mau dikerok?`, `Boleh saya oleskan minyak?`, `Terlalu keras tidak?`.",
     vocabulary: [
       {
+        cell_id: "097aa101-34ca-4822-8125-c6e5f94bc645",
         word: "jamu",
         en: "traditional herbal drink/medicine",
         vi: "thuốc/thức uống thảo dược truyền thống",
@@ -218,6 +221,7 @@ export const traditionalHealthJamuLessons: IndonesianLesson[] = [
         pronunciation_en: "JA-moo",
       },
       {
+        cell_id: "6cb04d34-3afc-4c86-a06f-dc3e1abbb134",
         word: "minyak kayu putih",
         en: "cajeput/eucalyptus-style oil",
         vi: "dầu khuynh diệp / dầu gió Indonesia",
@@ -226,6 +230,7 @@ export const traditionalHealthJamuLessons: IndonesianLesson[] = [
         pronunciation_en: "MEE-nyak KA-yoo POO-tih",
       },
       {
+        cell_id: "0b96a8db-34a9-485f-bf74-a57ce7b5158e",
         word: "kerokan",
         en: "scraping therapy",
         vi: "cạo gió kiểu Indonesia",
@@ -234,6 +239,7 @@ export const traditionalHealthJamuLessons: IndonesianLesson[] = [
         pronunciation_en: "ke-RO-kan",
       },
       {
+        cell_id: "fef4bf7b-7da9-494d-87dd-6594a1afdbb4",
         word: "masuk angin",
         en: "folk illness: chills/bloating/fatigue",
         vi: "trúng gió / cảm gió",
@@ -242,6 +248,7 @@ export const traditionalHealthJamuLessons: IndonesianLesson[] = [
         pronunciation_en: "MA-sook AN-gin",
       },
       {
+        cell_id: "84c18f6c-170a-44f9-863f-1436123521d0",
         word: "pijat tradisional",
         en: "traditional massage",
         vi: "mát xa truyền thống",
@@ -250,6 +257,7 @@ export const traditionalHealthJamuLessons: IndonesianLesson[] = [
         pronunciation_en: "PEE-jat tra-dee-see-o-NAL",
       },
       {
+        cell_id: "1b6663e5-034d-4455-b1fa-2269548f1c7e",
         word: "herbal",
         en: "herbal",
         vi: "thảo dược",
@@ -258,6 +266,7 @@ export const traditionalHealthJamuLessons: IndonesianLesson[] = [
         pronunciation_en: "HER-bal",
       },
       {
+        cell_id: "10c2a579-1c34-45bc-8f33-62da9ed8289f",
         word: "badan pegal",
         en: "body aches / sore body",
         vi: "người đau mỏi",
@@ -266,6 +275,7 @@ export const traditionalHealthJamuLessons: IndonesianLesson[] = [
         pronunciation_en: "BA-dan PE-gal",
       },
       {
+        cell_id: "23b6ae0b-164f-42fc-a156-eb5f79e870a4",
         word: "kurang enak badan",
         en: "feeling unwell",
         vi: "thấy không khỏe",
@@ -274,6 +284,7 @@ export const traditionalHealthJamuLessons: IndonesianLesson[] = [
         pronunciation_en: "KOO-rang E-nak BA-dan",
       },
       {
+        cell_id: "71c74fbf-060f-41b1-8796-14acdd82f41d",
         word: "oleskan",
         en: "apply/rub on",
         vi: "thoa / bôi",
@@ -282,6 +293,7 @@ export const traditionalHealthJamuLessons: IndonesianLesson[] = [
         pronunciation_en: "o-LES-kan",
       },
       {
+        cell_id: "ccbd9924-504b-4997-9383-de4c76709479",
         word: "budaya sehat",
         en: "health culture",
         vi: "văn hóa chăm sóc sức khỏe",
@@ -292,24 +304,28 @@ export const traditionalHealthJamuLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "87520ec3-0d6a-4d79-9efa-7042a52455c3",
         speaker: "Linh",
         text: "Bu, badan saya kurang enak dan agak masuk angin.",
         vi: "Cô ơi, người tôi không khỏe và hơi bị trúng gió/cảm gió.",
         en: "Ma'am, I feel unwell and a bit masuk angin.",
       },
       {
+        cell_id: "56606481-c66b-4694-b3c2-7a4a85e76c57",
         speaker: "Ibu Sari",
         text: "Mau minum jamu jahe dulu? Bisa juga pakai minyak kayu putih.",
         vi: "Muốn uống jamu gừng trước không? Cũng có thể dùng dầu khuynh diệp.",
         en: "Would you like ginger jamu first? You can also use cajeput oil.",
       },
       {
+        cell_id: "5d9383c9-7cb9-405d-bf31-4a0f23c73cac",
         speaker: "Linh",
         text: "Boleh. Tolong oleskan sedikit di punggung saya.",
         vi: "Được ạ. Làm ơn thoa một ít lên lưng tôi.",
         en: "Yes. Please rub a little on my back.",
       },
       {
+        cell_id: "32243ad3-251d-4105-a35a-ab182b54ba9d",
         speaker: "Ibu Sari",
         text: "Kalau demam tinggi, sebaiknya tetap periksa ke dokter.",
         vi: "Nếu sốt cao, tốt nhất vẫn nên đi khám bác sĩ.",

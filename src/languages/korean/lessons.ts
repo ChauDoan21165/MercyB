@@ -2,6 +2,7 @@
 // Mirrors the schema used by lessons 1-20; lessons 21-50 should be backfilled to match.
 
 export type KoreanVocabEntry = {
+  cell_id?: string;
   hangul: string;
   meaning: string;
 };
@@ -16,6 +17,7 @@ export type KoreanSentence = {
 };
 
 export type KoreanDialogueLine = {
+  cell_id?: string;
   speaker: string;
   hangul: string;
   /** English gloss. Pre-#514 this was wrongly mapped to the VI slot;
@@ -73,6 +75,7 @@ export type IdiomGloss = {
 // (Post-#514 short-dialogue `KoreanDialogueLine.meaning` is likewise
 // English — its Vietnamese is `text_vi`; only vocab `meaning` is VI.)
 export type KoreanB2DialogueLine = {
+  cell_id?: string;
   speaker: string;
   hangul: string;
   /** English gloss of the line. (Post-#514 short-dialogue

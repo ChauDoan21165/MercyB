@@ -21,6 +21,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   /** Indonesian word/phrase. */
   word: string;
   /** English meaning. */
@@ -36,6 +37,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   /** Indonesian line. */
   text: string;
@@ -155,17 +157,17 @@ export const dentistAppointmentLessons: IndonesianLesson[] = [
     tip_advice_en:
       "Opening set: `Saya mau buat janji dengan dokter gigi`, `Gigi saya sakit`, `Masih ada jadwal kosong?`. The big traps are `gigi` vs `gusi`, and possessive order: `gigi saya`, not `saya gigi`.",
     vocabulary: [
-      { word: "dokter gigi", en: "dentist", vi: "nha sĩ", pos: "noun", pronunciation_vi: "DOK-ter GI-gi", pronunciation_en: "DOK-ter GEE-gee" },
-      { word: "buat janji", en: "make an appointment", vi: "đặt lịch hẹn", pos: "verb phrase", pronunciation_vi: "BU-at JAN-ji", pronunciation_en: "BOO-at JAN-jee" },
-      { word: "sakit gigi", en: "toothache", vi: "đau răng", pos: "noun phrase", pronunciation_vi: "SA-kit GI-gi", pronunciation_en: "SA-kit GEE-gee" },
-      { word: "jadwal kosong", en: "available slot", vi: "lịch trống", pos: "noun phrase", pronunciation_vi: "JAD-wal KO-song", pronunciation_en: "JAD-wal KO-song" },
-      { word: "sebelah kanan", en: "right side", vi: "bên phải", pos: "phrase", pronunciation_vi: "se-BE-lah KA-nan", pronunciation_en: "se-BE-lah KA-nan" },
-      { word: "makin parah", en: "getting worse", vi: "ngày càng nặng", pos: "phrase", pronunciation_vi: "MA-kin PA-rah", pronunciation_en: "MA-kin PA-rah" },
+      { cell_id: "214f8c0f-ca75-4c76-ae79-3eba61bf8c21", word: "dokter gigi", en: "dentist", vi: "nha sĩ", pos: "noun", pronunciation_vi: "DOK-ter GI-gi", pronunciation_en: "DOK-ter GEE-gee" },
+      { cell_id: "17ed20b7-bb68-4ea2-bba6-fbdfa2215407", word: "buat janji", en: "make an appointment", vi: "đặt lịch hẹn", pos: "verb phrase", pronunciation_vi: "BU-at JAN-ji", pronunciation_en: "BOO-at JAN-jee" },
+      { cell_id: "ea827a97-6700-4245-8c51-db4e4b4bb1fb", word: "sakit gigi", en: "toothache", vi: "đau răng", pos: "noun phrase", pronunciation_vi: "SA-kit GI-gi", pronunciation_en: "SA-kit GEE-gee" },
+      { cell_id: "3be5b620-852f-4e95-857c-9511ff15af2e", word: "jadwal kosong", en: "available slot", vi: "lịch trống", pos: "noun phrase", pronunciation_vi: "JAD-wal KO-song", pronunciation_en: "JAD-wal KO-song" },
+      { cell_id: "5ead5bd5-1a7b-4ff1-a738-1f54cf307dd8", word: "sebelah kanan", en: "right side", vi: "bên phải", pos: "phrase", pronunciation_vi: "se-BE-lah KA-nan", pronunciation_en: "se-BE-lah KA-nan" },
+      { cell_id: "597f51b9-bfd4-4dfb-9e94-1bbd2ccafaba", word: "makin parah", en: "getting worse", vi: "ngày càng nặng", pos: "phrase", pronunciation_vi: "MA-kin PA-rah", pronunciation_en: "MA-kin PA-rah" },
     ],
     dialogue: [
-      { speaker: "Pasien", text: "Selamat pagi. Saya mau buat janji dengan dokter gigi.", vi: "Chào buổi sáng. Tôi muốn đặt lịch hẹn với nha sĩ.", en: "Good morning. I want to make an appointment with a dentist." },
-      { speaker: "Resepsionis", text: "Keluhannya apa, Pak?", vi: "Anh có triệu chứng/vấn đề gì ạ?", en: "What is the complaint, sir?" },
-      { speaker: "Pasien", text: "Gigi saya sakit sejak tadi malam. Apakah masih ada jadwal kosong hari ini?", vi: "Răng tôi đau từ tối qua. Hôm nay còn lịch trống không ạ?", en: "My tooth has hurt since last night. Is there any available slot today?" },
+      { cell_id: "fdf9fac4-1a5c-4088-ab28-0a67a7bd0bf9", speaker: "Pasien", text: "Selamat pagi. Saya mau buat janji dengan dokter gigi.", vi: "Chào buổi sáng. Tôi muốn đặt lịch hẹn với nha sĩ.", en: "Good morning. I want to make an appointment with a dentist." },
+      { cell_id: "8c775c95-005c-4a63-805b-cc6860408d1f", speaker: "Resepsionis", text: "Keluhannya apa, Pak?", vi: "Anh có triệu chứng/vấn đề gì ạ?", en: "What is the complaint, sir?" },
+      { cell_id: "11389eac-6980-47e7-9497-1606879e6500", speaker: "Pasien", text: "Gigi saya sakit sejak tadi malam. Apakah masih ada jadwal kosong hari ini?", vi: "Răng tôi đau từ tối qua. Hôm nay còn lịch trống không ạ?", en: "My tooth has hurt since last night. Is there any available slot today?" },
     ],
     exercises: [
       {
@@ -277,17 +279,17 @@ export const dentistAppointmentLessons: IndonesianLesson[] = [
     tip_advice_en:
       "Distinguish three procedure verbs: `tambal` = fill, `cabut` = extract, `bersihkan` = clean. When the tooth receives treatment, Indonesian often uses passive `di-`: `ditambal`, `dicabut`, `dibersihkan`.",
     vocabulary: [
-      { word: "tambal gigi", en: "tooth filling", vi: "trám răng", pos: "noun/verb phrase", pronunciation_vi: "TAM-bal GI-gi", pronunciation_en: "TAM-bal GEE-gee" },
-      { word: "cabut gigi", en: "tooth extraction", vi: "nhổ răng", pos: "noun/verb phrase", pronunciation_vi: "CA-but GI-gi", pronunciation_en: "CHA-boot GEE-gee" },
-      { word: "ditambal", en: "filled", vi: "được trám", pos: "passive verb", pronunciation_vi: "di-TAM-bal", pronunciation_en: "dee-TAM-bal" },
-      { word: "dicabut", en: "extracted", vi: "được/bị nhổ", pos: "passive verb", pronunciation_vi: "di-CA-but", pronunciation_en: "dee-CHA-boot" },
-      { word: "biaya perawatan", en: "treatment cost", vi: "chi phí điều trị", pos: "noun phrase", pronunciation_vi: "BI-a-ya pe-ra-WA-tan", pronunciation_en: "BEE-a-ya pe-ra-WA-tan" },
-      { word: "risiko", en: "risk", vi: "rủi ro", pos: "noun", pronunciation_vi: "RI-si-ko", pronunciation_en: "REE-see-ko" },
+      { cell_id: "7b126160-ce33-410c-b0c6-bc87a0932568", word: "tambal gigi", en: "tooth filling", vi: "trám răng", pos: "noun/verb phrase", pronunciation_vi: "TAM-bal GI-gi", pronunciation_en: "TAM-bal GEE-gee" },
+      { cell_id: "e827d411-e93d-49f8-a640-04ab5c030c68", word: "cabut gigi", en: "tooth extraction", vi: "nhổ răng", pos: "noun/verb phrase", pronunciation_vi: "CA-but GI-gi", pronunciation_en: "CHA-boot GEE-gee" },
+      { cell_id: "2def3aa0-ece2-4d32-8ff3-025bd2ca1e99", word: "ditambal", en: "filled", vi: "được trám", pos: "passive verb", pronunciation_vi: "di-TAM-bal", pronunciation_en: "dee-TAM-bal" },
+      { cell_id: "8aea9777-43af-4563-8a6b-f16a4a645d16", word: "dicabut", en: "extracted", vi: "được/bị nhổ", pos: "passive verb", pronunciation_vi: "di-CA-but", pronunciation_en: "dee-CHA-boot" },
+      { cell_id: "aecf1dbd-c1d0-4cbb-b1ac-b3b357ed1d72", word: "biaya perawatan", en: "treatment cost", vi: "chi phí điều trị", pos: "noun phrase", pronunciation_vi: "BI-a-ya pe-ra-WA-tan", pronunciation_en: "BEE-a-ya pe-ra-WA-tan" },
+      { cell_id: "fe9d5e5d-4ed2-4a6e-9b00-e1cdc60a3f97", word: "risiko", en: "risk", vi: "rủi ro", pos: "noun", pronunciation_vi: "RI-si-ko", pronunciation_en: "REE-see-ko" },
     ],
     dialogue: [
-      { speaker: "Dokter gigi", text: "Gigi ini berlubang cukup besar.", vi: "Cái răng này bị sâu/lỗ khá lớn.", en: "This tooth has quite a large cavity." },
-      { speaker: "Pasien", text: "Apakah masih bisa ditambal, Dok?", vi: "Vẫn trám được không, bác sĩ?", en: "Can it still be filled, doctor?" },
-      { speaker: "Pasien", text: "Berapa biaya perawatan untuk tambal gigi?", vi: "Chi phí điều trị trám răng là bao nhiêu?", en: "How much is the treatment cost for a filling?" },
+      { cell_id: "1e31b68b-77b4-4e17-aa37-e98591bfaca8", speaker: "Dokter gigi", text: "Gigi ini berlubang cukup besar.", vi: "Cái răng này bị sâu/lỗ khá lớn.", en: "This tooth has quite a large cavity." },
+      { cell_id: "1eb3446e-d9ae-45b7-ac47-8d151eac1302", speaker: "Pasien", text: "Apakah masih bisa ditambal, Dok?", vi: "Vẫn trám được không, bác sĩ?", en: "Can it still be filled, doctor?" },
+      { cell_id: "113ffda5-32bc-4b59-8d79-8cf3e905d0a0", speaker: "Pasien", text: "Berapa biaya perawatan untuk tambal gigi?", vi: "Chi phí điều trị trám răng là bao nhiêu?", en: "How much is the treatment cost for a filling?" },
     ],
     exercises: [
       {
@@ -398,17 +400,17 @@ export const dentistAppointmentLessons: IndonesianLesson[] = [
     tip_advice_en:
       "Routine dental phrases: `konsultasi tentang behel`, `bersihkan karang gigi`, `jadwal kontrol`, `sebulan sekali`. The VN-speaker trap is `bersih` vs `bersihkan`: the adjective alone is not enough when requesting cleaning.",
     vocabulary: [
-      { word: "behel", en: "braces", vi: "niềng răng", pos: "noun", pronunciation_vi: "BE-hel", pronunciation_en: "BE-hel" },
-      { word: "karang gigi", en: "tartar/plaque", vi: "cao răng/vôi răng", pos: "noun phrase", pronunciation_vi: "KA-rang GI-gi", pronunciation_en: "KA-rang GEE-gee" },
-      { word: "bersihkan", en: "clean it", vi: "làm sạch/cạo", pos: "verb", pronunciation_vi: "ber-sih-KAN", pronunciation_en: "ber-sih-KAN" },
-      { word: "jadwal kontrol", en: "follow-up appointment", vi: "lịch tái khám", pos: "noun phrase", pronunciation_vi: "JAD-wal kon-TROL", pronunciation_en: "JAD-wal kon-TROL" },
-      { word: "sebulan sekali", en: "once a month", vi: "mỗi tháng một lần", pos: "phrase", pronunciation_vi: "se-BU-lan se-KA-li", pronunciation_en: "se-BOO-lan se-KA-lee" },
-      { word: "kawat behel", en: "braces wire", vi: "dây niềng", pos: "noun phrase", pronunciation_vi: "KA-wat BE-hel", pronunciation_en: "KA-wat BE-hel" },
+      { cell_id: "73ce866b-46f5-4390-b1c8-256bb8a0030b", word: "behel", en: "braces", vi: "niềng răng", pos: "noun", pronunciation_vi: "BE-hel", pronunciation_en: "BE-hel" },
+      { cell_id: "6c755bec-bcba-4a2c-9e69-3fbcd7a2691a", word: "karang gigi", en: "tartar/plaque", vi: "cao răng/vôi răng", pos: "noun phrase", pronunciation_vi: "KA-rang GI-gi", pronunciation_en: "KA-rang GEE-gee" },
+      { cell_id: "75fc4fb0-5c3d-44e6-9bfb-f1a9cb75285a", word: "bersihkan", en: "clean it", vi: "làm sạch/cạo", pos: "verb", pronunciation_vi: "ber-sih-KAN", pronunciation_en: "ber-sih-KAN" },
+      { cell_id: "93bbb161-bf90-4dec-af8e-d744ad2f3750", word: "jadwal kontrol", en: "follow-up appointment", vi: "lịch tái khám", pos: "noun phrase", pronunciation_vi: "JAD-wal kon-TROL", pronunciation_en: "JAD-wal kon-TROL" },
+      { cell_id: "0084677c-155f-4f93-af2b-f5164323709f", word: "sebulan sekali", en: "once a month", vi: "mỗi tháng một lần", pos: "phrase", pronunciation_vi: "se-BU-lan se-KA-li", pronunciation_en: "se-BOO-lan se-KA-lee" },
+      { cell_id: "5aade466-56af-45bb-aeb2-9fbc7454b169", word: "kawat behel", en: "braces wire", vi: "dây niềng", pos: "noun phrase", pronunciation_vi: "KA-wat BE-hel", pronunciation_en: "KA-wat BE-hel" },
     ],
     dialogue: [
-      { speaker: "Pasien", text: "Saya mau konsultasi tentang behel.", vi: "Tôi muốn tư vấn về niềng răng.", en: "I want to consult about braces." },
-      { speaker: "Dokter gigi", text: "Bisa. Nanti kita cek kondisi gigi dulu.", vi: "Được. Lát nữa chúng ta kiểm tra tình trạng răng trước.", en: "Sure. Later we will check the condition of your teeth first." },
-      { speaker: "Pasien", text: "Kalau pakai behel, jadwal kontrolnya kapan?", vi: "Nếu niềng răng, lịch tái khám là khi nào?", en: "If I use braces, when are the follow-up appointments?" },
+      { cell_id: "54dbee16-6cdd-498c-bb9a-2d2a469f9cf2", speaker: "Pasien", text: "Saya mau konsultasi tentang behel.", vi: "Tôi muốn tư vấn về niềng răng.", en: "I want to consult about braces." },
+      { cell_id: "9876c901-23fc-422e-b739-21f95b52b55b", speaker: "Dokter gigi", text: "Bisa. Nanti kita cek kondisi gigi dulu.", vi: "Được. Lát nữa chúng ta kiểm tra tình trạng răng trước.", en: "Sure. Later we will check the condition of your teeth first." },
+      { cell_id: "93747287-f302-44a0-a8da-f2a24003558d", speaker: "Pasien", text: "Kalau pakai behel, jadwal kontrolnya kapan?", vi: "Nếu niềng răng, lịch tái khám là khi nào?", en: "If I use braces, when are the follow-up appointments?" },
     ],
     exercises: [
       {

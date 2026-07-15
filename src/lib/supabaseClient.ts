@@ -324,6 +324,10 @@ function getEnvSnapshot(): EnvSnapshot {
   };
 }
 
+export function getSupabaseEnvSnapshot(): EnvSnapshot {
+  return getEnvSnapshot();
+}
+
 /**
  * TEST SUPPORT (SAFE)
  * Allows snapshot/unit tests to spy or override behavior without creating

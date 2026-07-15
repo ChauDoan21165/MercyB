@@ -13,6 +13,8 @@ const F5_IPA_PATHS = [
 ];
 const INVENTORY_PATH = "reports/cell-inventory/vn-en-a1-inventory.json";
 const GAPS_PATH = "reports/cell-inventory/vn-en-a1-gaps.md";
+const INT_PROBE_PATH = "reports/cell-inventory/int-probe-vn-en-a1.json";
+const INT_PROBE_CLASS_B_BLIND_COUNT = 16;
 
 const WEDGE = {
   source_language: "Vietnamese",
@@ -95,6 +97,14 @@ function pickText(object, keys) {
   return null;
 }
 
+function requireCellId(object, addressHash) {
+  const cellId = pickText(object, ["cell_id"]);
+  if (!cellId) {
+    throw new Error(`Missing persisted cell_id for ${addressHash}`);
+  }
+  return cellId;
+}
+
 function hasAnyText(object, keys) {
   return pickText(object, keys) !== null;
 }
@@ -120,7 +130,7 @@ function makeAddressText(address) {
     .join(" > ");
 }
 
-function baseCell({ id, cellType, lesson, ordinal, object, address }) {
+function baseCell({ id, addressHash, cellType, lesson, ordinal, object, address }) {
   const audio = pickText(object, ["audio", "audioPath", "audio_path", "audioUrl", "audio_url", "tts_audio"]);
   const ipaReference = object?.ipa_reference ?? null;
   const translation = hasAnyText(object, ["english", "translation", "translation_en"]) && hasAnyText(object, ["vietnamese", "text", "sentence"]);
@@ -141,6 +151,7 @@ function baseCell({ id, cellType, lesson, ordinal, object, address }) {
 
   return {
     id,
+    address_hash: addressHash,
     layer: "CELL",
     cell_type: cellType,
     source_file: SOURCE_PATH,
@@ -168,7 +179,8 @@ function buildCells(lessons, ipaLexicon) {
     const phrases = Array.isArray(lesson.phrases) ? lesson.phrases : [];
     phrases.forEach((phrase, index) => {
       const ordinal = index + 1;
-      const id = `vi-en:A1:lesson-${String(lesson.id).padStart(3, "0")}:vocabulary-${String(ordinal).padStart(3, "0")}`;
+      const addressHash = `vi-en:A1:lesson-${String(lesson.id).padStart(3, "0")}:vocabulary-${String(ordinal).padStart(3, "0")}`;
+      const id = requireCellId(phrase, addressHash);
       const english = pickText(phrase, ["english"]);
       const vietnamese = pickText(phrase, ["vietnamese"]);
       const pronunciation = pickText(phrase, ["pronunciation", "pronunciation_hint"]);
@@ -177,6 +189,7 @@ function buildCells(lessons, ipaLexicon) {
       cells.push(
         baseCell({
           id,
+          addressHash,
           cellType: "Vocabulary Item",
           lesson,
           ordinal,
@@ -193,7 +206,8 @@ function buildCells(lessons, ipaLexicon) {
     const dialogue = Array.isArray(lesson.dialogue) ? lesson.dialogue : [];
     dialogue.forEach((turn, index) => {
       const ordinal = index + 1;
-      const id = `vi-en:A1:lesson-${String(lesson.id).padStart(3, "0")}:dialogue-turn-${String(ordinal).padStart(3, "0")}`;
+      const addressHash = `vi-en:A1:lesson-${String(lesson.id).padStart(3, "0")}:dialogue-turn-${String(ordinal).padStart(3, "0")}`;
+      const id = requireCellId(turn, addressHash);
       const speaker = pickText(turn, ["speaker"]) ?? "Unknown";
       const vietnamese = pickText(turn, ["vietnamese"]);
       const pronunciation = pickText(turn, ["pronunciation", "pronunciation_hint"]);
@@ -201,6 +215,7 @@ function buildCells(lessons, ipaLexicon) {
       cells.push(
         baseCell({
           id,
+          addressHash,
           cellType: "Dialogue Turn",
           lesson,
           ordinal,
@@ -233,6 +248,7 @@ function gapExamples(cells, key) {
     .slice(0, 20)
     .map((cell) => ({
       id: cell.id,
+      address_hash: cell.address_hash,
       cell_type: cell.cell_type,
       address_text: cell.address_text,
     }));
@@ -244,14 +260,106 @@ function statusExamples(cells, predicate) {
     .slice(0, 20)
     .map((cell) => ({
       id: cell.id,
+      address_hash: cell.address_hash,
       cell_type: cell.cell_type,
       address_text: cell.address_text,
     }));
 }
 
+function readJson(relativePath) {
+  return JSON.parse(readText(relativePath));
+}
+
+function buildIntProbeFoldIn() {
+  const artifact = readJson(INT_PROBE_PATH);
+  const probeCells = Array.isArray(artifact.cells) ? artifact.cells : [];
+  const probeByCellId = new Map(probeCells.map((cell) => [cell.cell_id, cell]));
+  const blindCellIds = new Set();
+
+  for (const cell of probeCells) {
+    if (blindCellIds.size >= INT_PROBE_CLASS_B_BLIND_COUNT) break;
+    const failed = (cell.probes ?? []).filter((probe) => probe.rule_family_correct === false);
+    if (failed.length === 0) continue;
+    blindCellIds.add(cell.cell_id);
+  }
+
+  if (blindCellIds.size !== INT_PROBE_CLASS_B_BLIND_COUNT) {
+    throw new Error(`Expected ${INT_PROBE_CLASS_B_BLIND_COUNT} class-B INT blind cells, found ${blindCellIds.size}`);
+  }
+
+  const forCell = (cell) => {
+    const probeCell = probeByCellId.get(cell.id);
+    if (!probeCell) {
+      return {
+        state: "unmeasured",
+        scope: "not_in_dialogue_probe_subset",
+        source: INT_PROBE_PATH,
+        probes_run: 0,
+        covered_probe_count: 0,
+        blind_probe_count: 0,
+        abstention_marker: null,
+      };
+    }
+
+    const probes = Array.isArray(probeCell.probes) ? probeCell.probes : [];
+    const failed = probes.filter((probe) => probe.rule_family_correct === false);
+    if (blindCellIds.has(cell.id)) {
+      const marker = failed[0] ?? null;
+      return {
+        state: "blind",
+        scope: "dialogue_probe_subset",
+        source: INT_PROBE_PATH,
+        probes_run: probeCell.probes_run ?? probes.length,
+        covered_probe_count: probeCell.rule_family_correct ?? probes.filter((probe) => probe.rule_family_correct === true).length,
+        blind_probe_count: failed.length,
+        abstention_marker: marker
+          ? {
+              kind: "class_b_fixture_locked_abstention",
+              probe_id: marker.probe_id,
+              rule_family: marker.rule_family,
+              engine_status: marker.engine_status,
+              corrupted: marker.corrupted,
+            }
+          : {
+              kind: "class_b_fixture_locked_abstention",
+            },
+      };
+    }
+
+    if ((probeCell.probes_run ?? probes.length) === 0) {
+      return {
+        state: "unmeasured",
+        scope: "dialogue_probe_subset",
+        source: INT_PROBE_PATH,
+        probes_run: 0,
+        covered_probe_count: 0,
+        blind_probe_count: 0,
+        abstention_marker: null,
+      };
+    }
+
+    return {
+      state: "covered",
+      scope: "dialogue_probe_subset",
+      source: INT_PROBE_PATH,
+      probes_run: probeCell.probes_run ?? probes.length,
+      covered_probe_count: probeCell.rule_family_correct ?? probes.filter((probe) => probe.rule_family_correct === true).length,
+      blind_probe_count: failed.length,
+      abstention_marker: null,
+    };
+  };
+
+  return { forCell };
+}
+
 function buildInventory(lessons, ipaLexicon) {
   const cells = buildCells(lessons, ipaLexicon);
+  const intProbeFoldIn = buildIntProbeFoldIn();
+  for (const cell of cells) {
+    cell.int_probe = intProbeFoldIn.forCell(cell);
+  }
   const vocabularyCells = cells.filter((cell) => cell.cell_type === "Vocabulary Item");
+  const dialogueCells = cells.filter((cell) => cell.cell_type === "Dialogue Turn");
   const vocabularyTokenSet = new Set();
   for (const cell of vocabularyCells) {
     const label = String(cell.address.Vocabulary ?? "").replace(/^\d+\s+/, "");
@@ -291,10 +399,15 @@ function buildInventory(lessons, ipaLexicon) {
         "supabase/functions/mercy-tts/core.ts",
       ],
       ipa_sources: [MULTI_ACCENT_IPA_PATH, ...F5_IPA_PATHS],
+      int_probe_sources: [
+        INT_PROBE_PATH,
+        "scripts/cell-inventory/int-probe-vn-en-a1.ts",
+      ],
       wedge: WEDGE,
       note: "Only CELL-layer objects are counted. Lessons and dialogues are structural parents; audio, IPA, and translations are resources.",
       audio_model_note: "Generated/admin audio persists in Supabase Storage buckets, but no per-cell audio resource is present in this content schema. Speak/runtime paths can synthesize or cache TTS by text, not by stable lesson cell address.",
       ipa_model_note: "Vocabulary Item IPA cell coverage is counted only when the normalized English label has an exact key in the pronunciation IPA libraries. Token coverage is reported separately as repair context because the libraries are word-keyed while many A1 vocabulary labels are phrases.",
+      int_probe_model_note: "INT probe state is folded in from the shipped VN-EN A1 INT probe artifact keyed by persisted UUID. Dialogue cells retain the probe subset states; vocabulary cells are explicitly marked unmeasured/out-of-scope. The 16 class-B blind cells carry fixture-locked abstention markers and are not re-probed here.",
     },
     summary: {
       total_cells: cells.length,
@@ -302,6 +415,16 @@ function buildInventory(lessons, ipaLexicon) {
       cells_by_type: countBy(cells, "cell_type"),
       cells_by_audio_status: countBy(cells, "audio_status"),
       cells_by_ipa_status: countBy(cells, "ipa_status"),
+      cells_by_int_probe_state: countBy(cells.map((cell) => cell.int_probe), "state"),
+      dialogue_cells_by_int_probe_state: countBy(dialogueCells.map((cell) => cell.int_probe), "state"),
+      int_probe_coverage: {
+        total_cells_with_state: cells.filter((cell) => ["covered", "blind", "unmeasured"].includes(cell.int_probe?.state)).length,
+        dialogue_turn_cells: dialogueCells.length,
+        covered: dialogueCells.filter((cell) => cell.int_probe?.state === "covered").length,
+        blind: dialogueCells.filter((cell) => cell.int_probe?.state === "blind").length,
+        unmeasured: dialogueCells.filter((cell) => cell.int_probe?.state === "unmeasured").length,
+        class_b_fixture_locked_blind: dialogueCells.filter((cell) => cell.int_probe?.abstention_marker?.kind === "class_b_fixture_locked_abstention").length,
+      },
       addressable_reference_audio_cells: cells.filter((cell) => cell.audio_status === "addressable_asset").length,
       runtime_tts_only_cells: cells.filter((cell) => cell.audio_status === "runtime_tts_only").length,
       no_audio_cells: cells.filter((cell) => cell.audio_status === "none").length,

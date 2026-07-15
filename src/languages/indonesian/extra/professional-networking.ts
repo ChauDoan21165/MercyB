@@ -6,6 +6,7 @@ type IndonesianLessonSentence = {
 };
 
 type VocabEntry = {
+  cell_id?: string;
   word: string;
   meaning_vi: string;
   meaning_en: string;
@@ -14,6 +15,7 @@ type VocabEntry = {
 };
 
 type DialogueLine = {
+  cell_id?: string;
   speaker: string;
   line: string;
   vi: string;
@@ -117,6 +119,7 @@ export const lessons: IndonesianLesson[] = [
     ],
     vocabulary: [
       {
+        cell_id: "fa6473cf-f6d5-4fb4-bef8-3d06ff81dd26",
         word: 'networking',
         meaning_vi: 'networking, xây dựng quan hệ',
         meaning_en: 'networking',
@@ -124,6 +127,7 @@ export const lessons: IndonesianLesson[] = [
         example_vi: 'Networking quan trọng cho phát triển sự nghiệp.',
       },
       {
+        cell_id: "f0c57ff2-882f-4cd2-b207-d812b4b536ba",
         word: 'jaringan profesional',
         meaning_vi: 'mạng lưới chuyên nghiệp',
         meaning_en: 'professional network',
@@ -131,6 +135,7 @@ export const lessons: IndonesianLesson[] = [
         example_vi: 'Anh ấy/cô ấy có mạng lưới chuyên nghiệp rộng.',
       },
       {
+        cell_id: "0f69a69f-3fdf-4fc6-a476-c28040db072e",
         word: 'kenalan profesional',
         meaning_vi: 'mối quan hệ/người quen chuyên nghiệp',
         meaning_en: 'professional contact',
@@ -138,6 +143,7 @@ export const lessons: IndonesianLesson[] = [
         example_vi: 'Tôi có vài mối quan hệ chuyên nghiệp tại sự kiện đó.',
       },
       {
+        cell_id: "d0cda34c-9a02-4046-8b08-3b1b6d9563ea",
         word: 'kartu nama',
         meaning_vi: 'danh thiếp',
         meaning_en: 'business card',
@@ -145,6 +151,7 @@ export const lessons: IndonesianLesson[] = [
         example_vi: 'Danh thiếp của tôi có số điện thoại và email.',
       },
       {
+        cell_id: "434d753e-4f47-4e91-af8f-a64ac6929348",
         word: 'LinkedIn',
         meaning_vi: 'LinkedIn',
         meaning_en: 'LinkedIn',
@@ -152,6 +159,7 @@ export const lessons: IndonesianLesson[] = [
         example_vi: 'Tôi đã gửi lời kết nối trên LinkedIn.',
       },
       {
+        cell_id: "9104e8ef-44a0-48e0-bfb8-dd64d208528e",
         word: 'acara bisnis',
         meaning_vi: 'sự kiện kinh doanh',
         meaning_en: 'business event',
@@ -159,6 +167,7 @@ export const lessons: IndonesianLesson[] = [
         example_vi: 'Sự kiện kinh doanh đó có nhiều nhà sáng lập startup tham dự.',
       },
       {
+        cell_id: "cddfc9bb-5d17-4d4c-997f-0e7af76592bb",
         word: 'tindak lanjut',
         meaning_vi: 'follow-up, bước xử lý tiếp theo',
         meaning_en: 'follow-up',
@@ -166,6 +175,7 @@ export const lessons: IndonesianLesson[] = [
         example_vi: 'Follow-up sẽ được gửi qua email.',
       },
       {
+        cell_id: "22d48a1b-6d63-4b82-8437-f22a48b27419",
         word: 'kerja sama',
         meaning_vi: 'sự hợp tác',
         meaning_en: 'cooperation or collaboration',
@@ -175,36 +185,42 @@ export const lessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "7806cf2d-ef5b-4060-aa66-ac2cc8d4c06b",
         speaker: 'Linh',
         line: 'Selamat sore, Pak. Saya Linh dari perusahaan teknologi kecil.',
         vi: 'Chào buổi chiều anh/chú. Tôi là Linh từ một công ty công nghệ nhỏ.',
         en: 'Good afternoon, Sir. I am Linh from a small technology company.',
       },
       {
+        cell_id: "70dd2379-7317-4acc-a405-a5152dcc00ba",
         speaker: 'Budi',
         line: 'Selamat sore. Senang berkenalan. Bidang apa yang perusahaan Ibu kerjakan?',
         vi: 'Chào buổi chiều. Rất vui được làm quen. Công ty chị làm lĩnh vực gì?',
         en: 'Good afternoon. Nice to meet you. What field does your company work in?',
       },
       {
+        cell_id: "769bd10f-e649-4f23-8358-10889f6c7c3d",
         speaker: 'Linh',
         line: 'Kami fokus pada aplikasi belajar bahasa. Boleh saya minta kartu nama Bapak?',
         vi: 'Chúng tôi tập trung vào ứng dụng học ngôn ngữ. Tôi có thể xin danh thiếp của anh/chú không?',
         en: 'We focus on language-learning apps. May I ask for your business card?',
       },
       {
+        cell_id: "61bc7c12-75b5-48c1-8d1a-d0fb84be703e",
         speaker: 'Budi',
         line: 'Tentu. Mari kita juga terhubung di LinkedIn.',
         vi: 'Tất nhiên. Chúng ta cũng hãy kết nối trên LinkedIn.',
         en: 'Of course. Let us also connect on LinkedIn.',
       },
       {
+        cell_id: "1ea14f5d-a17f-4024-9bce-cd09d176a0b7",
         speaker: 'Linh',
         line: 'Baik, Pak. Saya akan follow up lewat email besok pagi.',
         vi: 'Vâng. Tôi sẽ follow up qua email vào sáng mai.',
         en: 'All right. I will follow up by email tomorrow morning.',
       },
       {
+        cell_id: "449fad3d-8d97-45f0-a163-4f7c4c6b04c8",
         speaker: 'Budi',
         line: 'Terima kasih. Saya tertarik membahas peluang kerja sama.',
         vi: 'Cảm ơn. Tôi quan tâm đến việc thảo luận cơ hội hợp tác.',

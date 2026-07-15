@@ -150,7 +150,8 @@ serve(async (req) => {
     }
 
     const diagnosis = diagnose(group);
-    const ok = await sendAlertEmail(group, diagnosis, since, now);
+    const dispatcher = await sendDispatcherAlert(group, diagnosis);
+    const ok = dispatcher.ok || await sendAlertEmail(group, diagnosis, since, now);
     const { error: insertErr } = await supabase
       .from("client_error_alert_history")
       .insert({
@@ -268,5 +269,46 @@ async function sendAlertEmail(
   } catch (err) {
     console.error("[client-error-alert] resend threw:", err);
     return false;
+  }
+}
+
+async function sendDispatcherAlert(
+  group: SignatureGroup,
+  diagnosis: string,
+): Promise<{ ok: boolean; attempted: boolean }> {
+  const dispatcherUrl = Deno.env.get("DISPATCHER_URL")?.trim();
+  const dispatcherSecret = Deno.env.get("DISPATCHER_SECRET")?.trim();
+  if (!dispatcherUrl || !dispatcherSecret) return { ok: false, attempted: false };
+
+  try {
+    const response = await fetch(dispatcherUrl, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "x-dispatcher-secret": dispatcherSecret,
+      },
+      body: JSON.stringify({
+        robot: "R1 SENTINEL",
+        severity: "high",
+        signature: group.signatureKey,
+        summary: `${group.realUsers.size} real users / ${group.rows.length} failed requests: ${group.errorSignature}`,
+        evidence_url: "https://mercyblade.com/admin/frontend-perf",
+        metadata: {
+          route: group.route,
+          endpoint: group.endpoint,
+          status: group.status,
+          buildSha: group.buildSha,
+          diagnosis,
+        },
+      }),
+    });
+    if (!response.ok) {
+      console.error("[client-error-alert] dispatcher failed:", response.status, await response.text());
+      return { ok: false, attempted: true };
+    }
+    return { ok: true, attempted: true };
+  } catch (err) {
+    console.error("[client-error-alert] dispatcher threw:", err instanceof Error ? err.message : "unknown");
+    return { ok: false, attempted: true };
   }
 }

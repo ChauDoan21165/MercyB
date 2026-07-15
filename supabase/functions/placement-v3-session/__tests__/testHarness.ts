@@ -21,12 +21,14 @@ export function createHarness(options: {
   now?: string;
   grade?: (input: GraderInput) => Promise<GraderResult>;
   insertResponseDelayMs?: number;
+  writeProfileSnapshotFailures?: number;
 } = {}) {
   const sessions = new Map<string, PlacementV3Session>();
   const responses = new Map<string, PlacementV3Response[]>();
   const profiles = new Map<string, PlacementV3Profile>();
   const profileSnapshots: PlacementProfileSnapshotV3[] = [];
   const inFlightClaims = new Set<string>();
+  let writeProfileSnapshotFailures = options.writeProfileSnapshotFailures ?? 0;
   let id = 1;
   const now = vi.fn(() => options.now ?? "2026-05-20T12:00:00.000Z");
   const deps: CoreDeps = {
@@ -114,6 +116,10 @@ export function createHarness(options: {
       return saved;
     },
     writeProfileSnapshot: async (snapshot) => {
+      if (writeProfileSnapshotFailures > 0) {
+        writeProfileSnapshotFailures--;
+        throw new Error("fetch failed: simulated transient profile snapshot write");
+      }
       profileSnapshots.push(snapshot);
     },
     grade: options.grade ?? stubGrade,

@@ -24,6 +24,7 @@ export type PunjabiPragmaticStrategySetting =
   | "education";
 
 export type PunjabiPragmaticPhrase = {
+  cell_id?: string;
   gurmukhi: string;
   romanization: string;
   vi: string;
@@ -74,12 +75,14 @@ export const pragmaticStrategyC2Entries: PunjabiPragmaticStrategyEntry[] = [
     strategy_en: "Use a gentle reminder + shared reason + specific deadline.",
     phrases: [
       {
+        cell_id: "b5d364a2-ca8c-414e-87a4-7965334b731e",
         gurmukhi: "ਸਿਰਫ਼ ਯਾਦ ਦਿਵਾਉਣਾ ਸੀ",
         romanization: "sirf yaad divauna si",
         vi: "Tôi chỉ muốn nhắc nhẹ.",
         en: "Just wanted to remind.",
       },
       {
+        cell_id: "769ce4fb-8d8c-4a76-8546-0f17824c0a90",
         gurmukhi: "ਤਾਂ ਜੋ ਕੰਮ ਸਮੇਂ ਤੇ ਪੂਰਾ ਹੋ ਸਕੇ",
         romanization: "taan jo kamm same te pura ho sake",
         vi: "Để công việc có thể hoàn tất đúng hạn.",
@@ -109,12 +112,14 @@ export const pragmaticStrategyC2Entries: PunjabiPragmaticStrategyEntry[] = [
     strategy_en: "Avoid 'you are wrong'; offer updated information or another reading.",
     phrases: [
       {
+        cell_id: "c9647983-adbb-40ed-b6f9-cb7c8460439a",
         gurmukhi: "ਮੇਰੀ ਜਾਣਕਾਰੀ ਅਨੁਸਾਰ",
         romanization: "meri jaankaari anusaar",
         vi: "Theo thông tin của tôi.",
         en: "According to my information.",
       },
       {
+        cell_id: "4b4d78a5-1810-40fc-adbf-30fe74fd9a57",
         gurmukhi: "ਸ਼ਾਇਦ ਨਵੀਂ ਜਾਣਕਾਰੀ ਇਹ ਹੈ",
         romanization: "shayad navin jaankaari ih hai",
         vi: "Có lẽ thông tin mới là...",
@@ -144,12 +149,14 @@ export const pragmaticStrategyC2Entries: PunjabiPragmaticStrategyEntry[] = [
     strategy_en: "Open with appreciation, allow refusal, then state the specific task.",
     phrases: [
       {
+        cell_id: "b804450f-6140-4124-a327-9e901088b55d",
         gurmukhi: "ਮੈਨੂੰ ਪਤਾ ਹੈ ਤੁਸੀਂ ਵਿਅਸਤ ਹੋ",
         romanization: "mainu pata hai tusin viast ho",
         vi: "Tôi biết anh/chị bận.",
         en: "I know you are busy.",
       },
       {
+        cell_id: "24fd8536-f97f-4074-aa48-18df5a8f9869",
         gurmukhi: "ਜੇ ਤੁਹਾਨੂੰ ਸੁਵਿਧਾ ਹੋਵੇ",
         romanization: "je tuhanu suvidha hove",
         vi: "Nếu anh/chị thấy tiện.",
@@ -173,12 +180,14 @@ export const pragmaticStrategyC2Entries: PunjabiPragmaticStrategyEntry[] = [
     strategy_en: "Acknowledge the shared goal, then give a specific concern.",
     phrases: [
       {
+        cell_id: "327a9ffc-2500-4c30-88ee-46ae6e358de4",
         gurmukhi: "ਮਕਸਦ ਨਾਲ ਮੈਂ ਸਹਿਮਤ ਹਾਂ",
         romanization: "maqsad naal main sahimat haan",
         vi: "Tôi đồng ý với mục tiêu.",
         en: "I agree with the goal.",
       },
       {
+        cell_id: "194a72da-b77c-43dc-9083-e59c3dcb321a",
         gurmukhi: "ਮੇਰੀ ਚਿੰਤਾ ਇਹ ਹੈ ਕਿ",
         romanization: "meri chinta ih hai ki",
         vi: "Điều tôi lo là...",
@@ -208,12 +217,14 @@ export const pragmaticStrategyC2Entries: PunjabiPragmaticStrategyEntry[] = [
     strategy_en: "Acknowledge the topic, then gently return to the main goal.",
     phrases: [
       {
+        cell_id: "43181f8e-052a-4d92-9d5e-e9aca297b7df",
         gurmukhi: "ਇਹ ਵੀ ਮਹੱਤਵਪੂਰਨ ਗੱਲ ਹੈ",
         romanization: "ih vi mahatvapuran gall hai",
         vi: "Đây cũng là việc quan trọng.",
         en: "This is also important.",
       },
       {
+        cell_id: "48224f26-9ec8-460d-9008-ccaf8a0a471f",
         gurmukhi: "ਫਿਲਹਾਲ ਮੁੱਖ ਗੱਲ ਵੱਲ ਆਈਏ",
         romanization: "filhaal mukh gall vall aie",
         vi: "Hiện tại ta quay lại việc chính.",
@@ -243,12 +254,14 @@ export const pragmaticStrategyC2Entries: PunjabiPragmaticStrategyEntry[] = [
     strategy_en: "Separate emotion from decision-making and suggest hearing each part.",
     phrases: [
       {
+        cell_id: "d325eccd-5391-4321-9e44-28111241e602",
         gurmukhi: "ਆਓ ਇੱਕ-ਇੱਕ ਗੱਲ ਸੁਣੀਏ",
         romanization: "aao ikk-ikk gall sunie",
         vi: "Ta hãy nghe từng ý một.",
         en: "Let's hear one point at a time.",
       },
       {
+        cell_id: "0c67e565-5f60-4883-8ec0-b9a7aaf9da95",
         gurmukhi: "ਫ਼ੈਸਲੇ ਤੋਂ ਪਹਿਲਾਂ ਸਭ ਨੂੰ ਸੁਣਨਾ ਜ਼ਰੂਰੀ ਹੈ",
         romanization: "faisle ton pehlan sabh nu sunna zaruri hai",
         vi: "Trước khi quyết định, cần nghe mọi người.",
@@ -278,12 +291,14 @@ export const pragmaticStrategyC2Entries: PunjabiPragmaticStrategyEntry[] = [
     strategy_en: "Briefly acknowledge the error, give correct information, apologize for inconvenience.",
     phrases: [
       {
+        cell_id: "203210f7-a93b-407a-aa53-1fc09d453f7b",
         gurmukhi: "ਪਿਛਲੇ ਸੁਨੇਹੇ ਵਿੱਚ ਗਲਤੀ ਰਹਿ ਗਈ ਸੀ",
         romanization: "pichhle sunehe vich galti rahi gayi si",
         vi: "Tin nhắn trước có lỗi.",
         en: "There was an error in the previous message.",
       },
       {
+        cell_id: "8a52b575-a18b-42d8-ae71-fbe23c4fca2f",
         gurmukhi: "ਅਸੁਵਿਧਾ ਲਈ ਮਾਫ਼ ਕਰਨਾ",
         romanization: "asuvidha lai maaf karna",
         vi: "Xin lỗi vì bất tiện.",
@@ -308,12 +323,14 @@ export const pragmaticStrategyC2Entries: PunjabiPragmaticStrategyEntry[] = [
     strategy_en: "Invite feedback as shared cooperation, not criticism.",
     phrases: [
       {
+        cell_id: "0a861fe6-b85e-4323-97bf-9f7d0e006ac4",
         gurmukhi: "ਤੁਹਾਡੀ ਰਾਏ ਸਾਡੇ ਲਈ ਕੀਮਤੀ ਹੈ",
         romanization: "tuhadi rai sade lai keemti hai",
         vi: "Ý kiến của anh/chị rất quý với chúng tôi.",
         en: "Your view is valuable to us.",
       },
       {
+        cell_id: "0e039fce-00f6-4176-96d2-ba7d650af2ee",
         gurmukhi: "ਜੇ ਕੋਈ ਸੁਝਾਅ ਹੋਵੇ",
         romanization: "je koi sujhaa hove",
         vi: "Nếu có đề xuất nào.",
@@ -337,12 +354,14 @@ export const pragmaticStrategyC2Entries: PunjabiPragmaticStrategyEntry[] = [
     strategy_en: "Open politely, state purpose, ask for the next step.",
     phrases: [
       {
+        cell_id: "7dc608fe-a345-4b3d-87ac-b62fc265df0d",
         gurmukhi: "ਮੈਂ ਦਾਖ਼ਲੇ ਦੀ ਪ੍ਰਕਿਰਿਆ ਬਾਰੇ ਪੁੱਛਣਾ ਚਾਹੁੰਦਾ/ਚਾਹੁੰਦੀ ਹਾਂ",
         romanization: "main daakhle di prakiria bare puchhna chahunda/chahundi haan",
         vi: "Tôi muốn hỏi về quy trình nhập học.",
         en: "I would like to ask about the admission process.",
       },
       {
+        cell_id: "eb724158-e689-4c7b-907d-b08ffacf879c",
         gurmukhi: "ਅਗਲਾ ਕਦਮ ਕੀ ਹੋਵੇਗਾ?",
         romanization: "agla kadam ki hovega?",
         vi: "Bước tiếp theo là gì?",
@@ -367,12 +386,14 @@ export const pragmaticStrategyC2Entries: PunjabiPragmaticStrategyEntry[] = [
     strategy_en: "State that Gurmukhi is primary and Shahmukhi is for awareness only.",
     phrases: [
       {
+        cell_id: "441a3bf2-c886-4e77-89ae-3fc5bd2ea0e2",
         gurmukhi: "ਗੁਰਮੁਖੀ ਮੁੱਖ ਲਿਪੀ ਹੈ",
         romanization: "Gurmukhi mukh lipi hai",
         vi: "Gurmukhi là hệ chữ chính.",
         en: "Gurmukhi is the primary script.",
       },
       {
+        cell_id: "d4632fc8-311f-4229-844e-8e4204c02836",
         gurmukhi: "ਸ਼ਾਹਮੁਖੀ ਸਿਰਫ਼ ਜਾਣਕਾਰੀ ਲਈ",
         romanization: "Shahmukhi sirf jaankaari lai",
         vi: "Shahmukhi chỉ để nhận biết.",

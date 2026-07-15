@@ -26,6 +26,7 @@ export type ItalianLessonSentence = {
 };
 
 export type ItalianVocabEntry = {
+  cell_id?: string;
   /** Italian word/phrase (with article where it teaches gender). */
   word: string;
   /** English meaning. */
@@ -41,6 +42,7 @@ export type ItalianVocabEntry = {
 };
 
 export type ItalianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   /** Italian line. */
   text: string;
@@ -264,6 +266,7 @@ export const lessons: ItalianLesson[] = [
       "Always repeat special requests to the kitchen with the exact keyword: `senza` (without), `con` (with), `a parte` (on the side). For complaints: apologize (`Mi dispiace`), offer options (`rifarlo o riscaldarlo`), then act fast. `Per Lei?` (And for you?) is the natural way to turn to the next guest.",
     vocabulary: [
       {
+        cell_id: "3e6e9a54-be94-4b37-b34f-72183a16030f",
         word: "il tavolo",
         en: "table",
         vi: "bàn",
@@ -272,6 +275,7 @@ export const lessons: ItalianLesson[] = [
         pronunciation_en: "il TA-vo-lo — stress the first syllable",
       },
       {
+        cell_id: "09bb4fa7-df49-4196-8527-2f1458c95559",
         word: "la prenotazione",
         en: "reservation / booking",
         vi: "đặt chỗ",
@@ -280,6 +284,7 @@ export const lessons: ItalianLesson[] = [
         pronunciation_en: "la pre-no-ta-TSYO-ne — `z` is `ts`",
       },
       {
+        cell_id: "a25c8d4e-07f6-4611-aaaa-7c7b120cb8d8",
         word: "il menu",
         en: "menu",
         vi: "thực đơn",
@@ -288,6 +293,7 @@ export const lessons: ItalianLesson[] = [
         pronunciation_en: "il me-NOO — stress the last syllable",
       },
       {
+        cell_id: "e11a1778-9895-4011-ab49-8b8083129372",
         word: "l'ordine",
         en: "order",
         vi: "đơn / món gọi",
@@ -296,6 +302,7 @@ export const lessons: ItalianLesson[] = [
         pronunciation_en: "LOR-dee-ne — stress the first syllable",
       },
       {
+        cell_id: "8a6f22f4-c6b1-4722-a2ea-ea3b556e6957",
         word: "il conto",
         en: "the bill (restaurant)",
         vi: "hóa đơn",
@@ -304,6 +311,7 @@ export const lessons: ItalianLesson[] = [
         pronunciation_en: "il KON-to — distinct from `fattura` (tax invoice)",
       },
       {
+        cell_id: "365a142f-1961-4b11-92c3-08ece4999c9f",
         word: "l'allergia",
         en: "allergy",
         vi: "dị ứng",
@@ -312,6 +320,7 @@ export const lessons: ItalianLesson[] = [
         pronunciation_en: "lal-ler-JEE-a — `gia` is `ja`",
       },
       {
+        cell_id: "3a3a0c0c-870d-4e7a-a62e-fea9285d5b58",
         word: "senza glutine",
         en: "gluten-free",
         vi: "không gluten",
@@ -320,6 +329,7 @@ export const lessons: ItalianLesson[] = [
         pronunciation_en: "SEN-tsa GLOO-tee-ne",
       },
       {
+        cell_id: "cf11287c-a772-44c8-94ee-b24d287db02b",
         word: "al sangue",
         en: "rare (steak)",
         vi: "tái",
@@ -328,6 +338,7 @@ export const lessons: ItalianLesson[] = [
         pronunciation_en: "al SAN-gwe — `gue` is `gwe`",
       },
       {
+        cell_id: "37cf20ea-0577-4dce-a43d-5255856c44fb",
         word: "la camera",
         en: "room (hotel)",
         vi: "phòng",
@@ -336,6 +347,7 @@ export const lessons: ItalianLesson[] = [
         pronunciation_en: "la KA-me-ra — stress the first syllable",
       },
       {
+        cell_id: "2f291b7a-53d6-49c4-883e-df26387985a4",
         word: "il check-in",
         en: "check-in",
         vi: "nhận phòng",
@@ -344,6 +356,7 @@ export const lessons: ItalianLesson[] = [
         pronunciation_en: "il chek-IN — English loanword",
       },
       {
+        cell_id: "4fab233b-1344-4270-9149-b9a72f68ab77",
         word: "il documento",
         en: "document / ID",
         vi: "giấy tờ",
@@ -352,6 +365,7 @@ export const lessons: ItalianLesson[] = [
         pronunciation_en: "il do-koo-MEN-to — stress `MEN`",
       },
       {
+        cell_id: "ecb5d133-02ad-4adb-91d2-0bb5338e1a02",
         word: "la colazione",
         en: "breakfast",
         vi: "bữa sáng",
@@ -360,6 +374,7 @@ export const lessons: ItalianLesson[] = [
         pronunciation_en: "la ko-la-TSYO-ne — `z` is `ts`",
       },
       {
+        cell_id: "87c1a85c-1097-4e58-88bc-5cfc3c9e0585",
         word: "la chiave",
         en: "key",
         vi: "chìa khóa",
@@ -368,6 +383,7 @@ export const lessons: ItalianLesson[] = [
         pronunciation_en: "la KYA-ve — `chi` is `ky`",
       },
       {
+        cell_id: "907e9589-0e93-490c-b34d-6ca5154eb75b",
         word: "il deposito bagagli",
         en: "luggage storage",
         vi: "chỗ gửi hành lý",
@@ -378,42 +394,49 @@ export const lessons: ItalianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "da854c04-cd6b-4af1-9801-55408a5607b6",
         speaker: "Cameriere",
         text: "Buonasera, avete una prenotazione?",
         vi: "Chào buổi tối, quý khách có đặt chỗ không?",
         en: "Good evening, do you have a reservation?",
       },
       {
+        cell_id: "5764b237-bb8d-43bd-b9e2-7fc458844a8a",
         speaker: "Cliente",
         text: "Sì, a nome Rossi, per due persone.",
         vi: "Có, tên Rossi, hai người.",
         en: "Yes, under Rossi, for two.",
       },
       {
+        cell_id: "9648c7b6-f327-4f6f-8926-08f3a8d1eb2c",
         speaker: "Cameriere",
         text: "Perfetto, il tavolo è pronto. Prego, da questa parte.",
         vi: "Tốt, bàn đã sẵn sàng. Mời quý khách đi lối này.",
         en: "Perfect, the table is ready. This way, please.",
       },
       {
+        cell_id: "ac464bc7-d9b8-44a2-9fdf-e556d744d342",
         speaker: "Cameriere",
         text: "Siete pronti per ordinare? Avete allergie?",
         vi: "Quý khách sẵn sàng gọi món chưa? Có dị ứng không?",
         en: "Are you ready to order? Any allergies?",
       },
       {
+        cell_id: "bd232bcb-93d4-4249-a952-6d7f6f0d3c07",
         speaker: "Cliente",
         text: "Vorrei il pollo, ma senza cipolla.",
         vi: "Tôi muốn món gà, nhưng không hành.",
         en: "I'd like the chicken, but without onion.",
       },
       {
+        cell_id: "968c65b6-cd9c-413b-b108-92c3c5c086c7",
         speaker: "Cliente",
         text: "Mi scusi, il piatto è freddo.",
         vi: "Xin lỗi, món ăn bị nguội.",
         en: "Excuse me, the dish is cold.",
       },
       {
+        cell_id: "4eb213a8-f287-40d7-a70a-3f62b1489570",
         speaker: "Cameriere",
         text: "Mi dispiace. Lo faccio scaldare subito oppure preferisce rifarlo?",
         vi: "Tôi xin lỗi. Tôi cho hâm nóng ngay hoặc quý khách muốn làm lại?",

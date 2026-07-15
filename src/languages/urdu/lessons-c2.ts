@@ -37,10 +37,10 @@ export const lessons: UrduLesson[] = [
       },
     ],
     vocabulary: [
-      { ur: "بظاہر", romanization: "bazahir", vi: "bề ngoài / có vẻ", en: "apparently", pos: "adverb" },
-      { ur: "اطلاق", romanization: "itlaq", vi: "sự áp dụng", en: "application", pos: "noun" },
-      { ur: "اصولی طور پر", romanization: "usuli taur par", vi: "về nguyên tắc", en: "in principle", pos: "phrase" },
-      { ur: "سیاق و سباق", romanization: "siyaq-o-sabaq", vi: "bối cảnh", en: "context", pos: "noun phrase" },
+      { cell_id: "a0441063-1662-480f-b34a-becb215f50b2", ur: "بظاہر", romanization: "bazahir", vi: "bề ngoài / có vẻ", en: "apparently", pos: "adverb" },
+      { cell_id: "2b311ae8-7f09-40d6-b2f4-84307dc51b39", ur: "اطلاق", romanization: "itlaq", vi: "sự áp dụng", en: "application", pos: "noun" },
+      { cell_id: "65436a63-c733-4d03-9cb3-92bac112a736", ur: "اصولی طور پر", romanization: "usuli taur par", vi: "về nguyên tắc", en: "in principle", pos: "phrase" },
+      { cell_id: "ee478f5f-10b2-47d2-96dc-3e0567f7ae5f", ur: "سیاق و سباق", romanization: "siyaq-o-sabaq", vi: "bối cảnh", en: "context", pos: "noun phrase" },
     ],
     exercises: [
       {
@@ -95,10 +95,10 @@ export const lessons: UrduLesson[] = [
       },
     ],
     vocabulary: [
-      { ur: "مصنف", romanization: "musannif", vi: "tác giả", en: "author", pos: "noun" },
-      { ur: "متن", romanization: "matn", vi: "văn bản", en: "text", pos: "noun" },
-      { ur: "لہجہ", romanization: "lehja", vi: "giọng điệu", en: "tone", pos: "noun" },
-      { ur: "قاری", romanization: "qari", vi: "người đọc", en: "reader", pos: "noun" },
+      { cell_id: "94c13706-b7ae-476a-9fbc-2acbcf02d727", ur: "مصنف", romanization: "musannif", vi: "tác giả", en: "author", pos: "noun" },
+      { cell_id: "3baa5f90-8092-4bdd-8868-db834c2dbe12", ur: "متن", romanization: "matn", vi: "văn bản", en: "text", pos: "noun" },
+      { cell_id: "a9f60d61-ef35-4bce-97ef-7e8d82214a90", ur: "لہجہ", romanization: "lehja", vi: "giọng điệu", en: "tone", pos: "noun" },
+      { cell_id: "179afade-af31-499e-8895-c07a88a8ce94", ur: "قاری", romanization: "qari", vi: "người đọc", en: "reader", pos: "noun" },
     ],
     exercises: [
       {
@@ -149,10 +149,10 @@ export const lessons: UrduLesson[] = [
       },
     ],
     vocabulary: [
-      { ur: "لفظی ترجمہ", romanization: "lafzi tarjuma", vi: "dịch sát chữ", en: "literal translation", pos: "noun phrase" },
-      { ur: "فطری", romanization: "fitri", vi: "tự nhiên", en: "natural", pos: "adjective" },
-      { ur: "برقرار رکھنا", romanization: "barqarar rakhna", vi: "giữ nguyên / duy trì", en: "to preserve", pos: "verb phrase" },
-      { ur: "مناسب", romanization: "munasib", vi: "phù hợp", en: "appropriate", pos: "adjective" },
+      { cell_id: "f187097f-73d8-4b99-be21-17b85ce85d29", ur: "لفظی ترجمہ", romanization: "lafzi tarjuma", vi: "dịch sát chữ", en: "literal translation", pos: "noun phrase" },
+      { cell_id: "e87e454f-2d38-4c10-9e25-727fe2a7def4", ur: "فطری", romanization: "fitri", vi: "tự nhiên", en: "natural", pos: "adjective" },
+      { cell_id: "85ebc6a9-719f-4a1e-ac0a-aec191c84f1d", ur: "برقرار رکھنا", romanization: "barqarar rakhna", vi: "giữ nguyên / duy trì", en: "to preserve", pos: "verb phrase" },
+      { cell_id: "9aa90121-6d0c-4c0d-8673-fc822c4a8b4e", ur: "مناسب", romanization: "munasib", vi: "phù hợp", en: "appropriate", pos: "adjective" },
     ],
     exercises: [
       {
@@ -206,10 +206,10 @@ export const lessons: UrduLesson[] = [
       },
     ],
     vocabulary: [
-      { ur: "براہ راست", romanization: "barah-e-rast", vi: "trực tiếp", en: "directly", pos: "adverb" },
-      { ur: "اشارہ", romanization: "ishara", vi: "hàm ý / dấu hiệu", en: "implication/sign", pos: "noun" },
-      { ur: "تکرار", romanization: "takrar", vi: "sự lặp lại", en: "repetition", pos: "noun" },
-      { ur: "نمایاں کرنا", romanization: "numayan karna", vi: "làm nổi bật", en: "to highlight", pos: "verb phrase" },
+      { cell_id: "6769b75f-36c7-43b8-9535-2575447cf318", ur: "براہ راست", romanization: "barah-e-rast", vi: "trực tiếp", en: "directly", pos: "adverb" },
+      { cell_id: "1d912106-694d-45fe-bb7e-5a67e6bc41bb", ur: "اشارہ", romanization: "ishara", vi: "hàm ý / dấu hiệu", en: "implication/sign", pos: "noun" },
+      { cell_id: "71e4f922-cd7d-4273-92e3-cecf2a304969", ur: "تکرار", romanization: "takrar", vi: "sự lặp lại", en: "repetition", pos: "noun" },
+      { cell_id: "62f3801d-f62a-4f12-a694-8613e180871b", ur: "نمایاں کرنا", romanization: "numayan karna", vi: "làm nổi bật", en: "to highlight", pos: "verb phrase" },
     ],
     exercises: [
       {
@@ -260,10 +260,10 @@ export const lessons: UrduLesson[] = [
       },
     ],
     vocabulary: [
-      { ur: "عام بول چال", romanization: "aam bol chal", vi: "lời nói thường ngày", en: "everyday speech", pos: "noun phrase" },
-      { ur: "رسمی انداز", romanization: "rasmi andaz", vi: "văn phong trang trọng", en: "formal style", pos: "noun phrase" },
-      { ur: "نظر ثانی", romanization: "nazar-e-sani", vi: "sự chỉnh sửa / xem lại", en: "revision", pos: "noun" },
-      { ur: "غیر مبہم", romanization: "ghair mubham", vi: "không mơ hồ", en: "unambiguous", pos: "adjective" },
+      { cell_id: "5da01236-dea4-4b88-bd82-eb5b4b250ec2", ur: "عام بول چال", romanization: "aam bol chal", vi: "lời nói thường ngày", en: "everyday speech", pos: "noun phrase" },
+      { cell_id: "1d5f0cb7-383e-4031-98fb-5994622e7c57", ur: "رسمی انداز", romanization: "rasmi andaz", vi: "văn phong trang trọng", en: "formal style", pos: "noun phrase" },
+      { cell_id: "b5003e62-8e50-47df-a4b9-0276ec334209", ur: "نظر ثانی", romanization: "nazar-e-sani", vi: "sự chỉnh sửa / xem lại", en: "revision", pos: "noun" },
+      { cell_id: "c0a84df9-272d-4d2a-b610-b39b8935d161", ur: "غیر مبہم", romanization: "ghair mubham", vi: "không mơ hồ", en: "unambiguous", pos: "adjective" },
     ],
     exercises: [
       {

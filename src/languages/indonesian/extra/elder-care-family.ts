@@ -18,6 +18,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   /** Indonesian word/phrase. */
   word: string;
   /** English meaning. */
@@ -33,6 +34,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   /** Indonesian line. */
   text: string;
@@ -243,6 +245,7 @@ export const elderCareFamilyLessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: `orang tua` can mean parents, not always elderly people. If you need to be clear, use `lansia` or `orang lanjut usia`. For medicine and care, use concrete chunks: `obat harian`, `jadwal obat`, `dosis terlewat`, `kontrol dokter`, `kursi roda`, `perawatan rumah`. When asking for help, `tolong` is polite enough; for urgent health matters add `segera`.",
     vocabulary: [
       {
+        cell_id: "6a36ed8f-2d66-42ca-826c-a3c69b70b750",
         word: "lanjut usia",
         en: "elderly / advanced in age",
         vi: "cao tuổi",
@@ -251,6 +254,7 @@ export const elderCareFamilyLessons: IndonesianLesson[] = [
         pronunciation_en: "lan-JUT OO-see-a",
       },
       {
+        cell_id: "116422fa-4859-4ec5-8ac2-0912d34aa586",
         word: "lansia",
         en: "elderly person / senior",
         vi: "người cao tuổi",
@@ -259,6 +263,7 @@ export const elderCareFamilyLessons: IndonesianLesson[] = [
         pronunciation_en: "LAN-see-a",
       },
       {
+        cell_id: "736309a8-418a-4e38-baf5-3f469d1098fb",
         word: "perawat",
         en: "nurse / caregiver",
         vi: "điều dưỡng / người chăm sóc",
@@ -267,6 +272,7 @@ export const elderCareFamilyLessons: IndonesianLesson[] = [
         pronunciation_en: "pe-RA-wat",
       },
       {
+        cell_id: "19e70a49-2975-415f-a03b-15c14798538e",
         word: "obat harian",
         en: "daily medicine",
         vi: "thuốc hằng ngày",
@@ -275,6 +281,7 @@ export const elderCareFamilyLessons: IndonesianLesson[] = [
         pronunciation_en: "O-bat HA-ree-an",
       },
       {
+        cell_id: "e1772bf9-32c5-4547-96c2-5e500f6f4996",
         word: "jadwal obat",
         en: "medicine schedule",
         vi: "lịch uống thuốc",
@@ -283,6 +290,7 @@ export const elderCareFamilyLessons: IndonesianLesson[] = [
         pronunciation_en: "JAD-wal O-bat",
       },
       {
+        cell_id: "8abc487a-896f-4242-94ff-3e68fcfef930",
         word: "kontrol dokter",
         en: "doctor follow-up / checkup",
         vi: "tái khám với bác sĩ",
@@ -291,6 +299,7 @@ export const elderCareFamilyLessons: IndonesianLesson[] = [
         pronunciation_en: "kon-TROL DOK-ter",
       },
       {
+        cell_id: "dc861c16-876e-44ea-9064-e78c28219c01",
         word: "kursi roda",
         en: "wheelchair",
         vi: "xe lăn",
@@ -299,6 +308,7 @@ export const elderCareFamilyLessons: IndonesianLesson[] = [
         pronunciation_en: "KUR-see RO-da",
       },
       {
+        cell_id: "d359b9ab-6a2e-4723-b62e-eb10febdb632",
         word: "perawatan rumah",
         en: "home care",
         vi: "chăm sóc tại nhà",
@@ -307,6 +317,7 @@ export const elderCareFamilyLessons: IndonesianLesson[] = [
         pronunciation_en: "pe-RA-wat-an ROO-mah",
       },
       {
+        cell_id: "e6fb0887-0c08-455b-bb9e-8cec40c62903",
         word: "bergantian menjaga",
         en: "take turns caring for",
         vi: "thay phiên nhau chăm sóc",
@@ -315,6 +326,7 @@ export const elderCareFamilyLessons: IndonesianLesson[] = [
         pronunciation_en: "ber-gan-TEE-an men-JA-ga",
       },
       {
+        cell_id: "b8b239bc-822b-4f1b-afab-d011c487e4f0",
         word: "keluhan mendadak",
         en: "sudden complaint / symptom",
         vi: "triệu chứng đột ngột",
@@ -325,30 +337,35 @@ export const elderCareFamilyLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "0f57fbb1-d8b7-45c2-9855-8ab9f42ce96d",
         speaker: "Anak",
         text: "Bu, besok ada kontrol dokter untuk Ayah. Obat hariannya sudah saya siapkan.",
         vi: "Mẹ ơi, mai có lịch tái khám cho bố. Thuốc hằng ngày con đã chuẩn bị rồi.",
         en: "Mom, Dad has a doctor follow-up tomorrow. I have prepared his daily medicine.",
       },
       {
+        cell_id: "bd827344-66db-43b8-9295-2d5236a93435",
         speaker: "Ibu",
         text: "Baik. Tolong siapkan kursi roda sebelum kita berangkat.",
         vi: "Được. Con chuẩn bị xe lăn trước khi mình đi nhé.",
         en: "All right. Please prepare the wheelchair before we leave.",
       },
       {
+        cell_id: "fca2273a-6884-4f44-83d6-dee81e44bab5",
         speaker: "Anak",
         text: "Perawat juga datang pagi ini untuk membantu mandi dan latihan jalan.",
         vi: "Người chăm sóc cũng đến sáng nay để hỗ trợ tắm và tập đi.",
         en: "The caregiver is also coming this morning to help with bathing and walking practice.",
       },
       {
+        cell_id: "30659c55-9722-4b28-b04f-5249a592f410",
         speaker: "Ibu",
         text: "Kalau ada keluhan mendadak, kita segera hubungi dokter.",
         vi: "Nếu có triệu chứng đột ngột, mình liên hệ bác sĩ ngay.",
         en: "If there is any sudden symptom, we will contact the doctor immediately.",
       },
       {
+        cell_id: "db0f6620-1f83-4147-b422-d8556a44ea45",
         speaker: "Anak",
         text: "Iya, Bu. Keluarga juga bergantian menjaga Ayah di rumah.",
         vi: "Vâng ạ. Gia đình cũng thay phiên nhau chăm bố ở nhà.",

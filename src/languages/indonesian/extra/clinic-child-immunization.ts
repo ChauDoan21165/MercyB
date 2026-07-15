@@ -6,6 +6,7 @@ type IndonesianLessonSentence = {
 };
 
 type VocabEntry = {
+  cell_id?: string;
   word: string;
   meaning_vi: string;
   meaning_en: string;
@@ -14,6 +15,7 @@ type VocabEntry = {
 };
 
 type DialogueLine = {
+  cell_id?: string;
   speaker: string;
   line: string;
   vi: string;
@@ -117,6 +119,7 @@ export const lessons: IndonesianLesson[] = [
     ],
     vocabulary: [
       {
+        cell_id: "5200c279-a22c-4b1e-b502-db20a10cadb6",
         word: 'imunisasi anak',
         meaning_vi: 'tiêm/chủng ngừa cho trẻ',
         meaning_en: 'child immunization',
@@ -124,6 +127,7 @@ export const lessons: IndonesianLesson[] = [
         example_vi: 'Tiêm chủng cho trẻ được thực hiện theo lịch.',
       },
       {
+        cell_id: "18851ad0-adeb-4336-ae14-997f60bbc0d1",
         word: 'jadwal vaksin',
         meaning_vi: 'lịch vắc-xin',
         meaning_en: 'vaccine schedule',
@@ -131,6 +135,7 @@ export const lessons: IndonesianLesson[] = [
         example_vi: 'Lịch vắc-xin tiếp theo là tháng sau.',
       },
       {
+        cell_id: "de680d52-f908-457b-9d37-7e22c8d778a8",
         word: 'kartu imunisasi',
         meaning_vi: 'thẻ tiêm chủng',
         meaning_en: 'immunization card',
@@ -138,6 +143,7 @@ export const lessons: IndonesianLesson[] = [
         example_vi: 'Đừng quên mang thẻ tiêm chủng.',
       },
       {
+        cell_id: "9dd67f90-8f74-4c2a-a3f5-4ee43e68754f",
         word: 'demam ringan',
         meaning_vi: 'sốt nhẹ',
         meaning_en: 'mild fever',
@@ -145,6 +151,7 @@ export const lessons: IndonesianLesson[] = [
         example_vi: 'Con tôi sốt nhẹ sau khi tiêm vắc-xin.',
       },
       {
+        cell_id: "d4ca9725-bc37-4176-ac96-1e939d2a426e",
         word: 'Posyandu',
         meaning_vi: 'điểm y tế cộng đồng ở khu dân cư',
         meaning_en: 'community health post',
@@ -152,6 +159,7 @@ export const lessons: IndonesianLesson[] = [
         example_vi: 'Posyandu hỗ trợ kiểm tra lịch tiêm chủng.',
       },
       {
+        cell_id: "d084305d-c392-4c9e-9a93-822a64ad49e1",
         word: 'puskesmas',
         meaning_vi: 'trung tâm y tế công cộng địa phương',
         meaning_en: 'local public health center',
@@ -159,6 +167,7 @@ export const lessons: IndonesianLesson[] = [
         example_vi: 'Chúng tôi đến puskesmas để tiêm chủng.',
       },
       {
+        cell_id: "f57051af-f61c-4f09-82a5-f8f34192c1d8",
         word: 'antrean',
         meaning_vi: 'hàng chờ, số/lượt chờ',
         meaning_en: 'queue',
@@ -166,6 +175,7 @@ export const lessons: IndonesianLesson[] = [
         example_vi: 'Hàng chờ tiêm chủng khá dài sáng nay.',
       },
       {
+        cell_id: "a8380de1-b0a5-49e8-a3c9-9e9b080e69aa",
         word: 'bidan',
         meaning_vi: 'hộ sinh, nữ hộ sinh',
         meaning_en: 'midwife',
@@ -175,36 +185,42 @@ export const lessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "b2f26570-220e-4236-ae46-f68baf99173b",
         speaker: 'Orang Tua',
         line: 'Selamat pagi, Bu. Saya mau imunisasi anak saya.',
         vi: 'Chào buổi sáng cô/chị. Tôi muốn tiêm chủng cho con tôi.',
         en: 'Good morning. I want my child to get immunized.',
       },
       {
+        cell_id: "209b09af-3461-40e5-a350-052b94df6ed8",
         speaker: 'Petugas',
         line: 'Selamat pagi. Silakan ambil nomor antrean dulu.',
         vi: 'Chào buổi sáng. Mời lấy số thứ tự trước.',
         en: 'Good morning. Please take a queue number first.',
       },
       {
+        cell_id: "d2910f72-0f91-49d3-8d07-7b331375376a",
         speaker: 'Orang Tua',
         line: 'Ini kartu imunisasi dan buku KIA anak saya.',
         vi: 'Đây là thẻ tiêm chủng và sổ KIA của con tôi.',
         en: 'This is my child’s immunization card and KIA book.',
       },
       {
+        cell_id: "8f0a9add-9320-4cec-a1fa-2e8371d344e3",
         speaker: 'Bidan',
         line: 'Baik, saya cek jadwal vaksinnya dulu.',
         vi: 'Vâng, tôi kiểm tra lịch vắc-xin trước.',
         en: 'All right, I will check the vaccine schedule first.',
       },
       {
+        cell_id: "11e2562e-90e7-4cc2-b5e2-1ffad7d2bdc7",
         speaker: 'Orang Tua',
         line: 'Kalau anak demam ringan setelah imunisasi, saya harus bagaimana?',
         vi: 'Nếu con sốt nhẹ sau khi tiêm chủng, tôi phải làm thế nào?',
         en: 'If my child has a mild fever after immunization, what should I do?',
       },
       {
+        cell_id: "62b6abf2-f0bf-4fe4-bdc0-2a87f3a709ee",
         speaker: 'Bidan',
         line: 'Nanti saya jelaskan. Jangan lupa kembali sesuai jadwal berikutnya.',
         vi: 'Lát nữa tôi sẽ giải thích. Đừng quên quay lại theo lịch tiếp theo.',

@@ -39,6 +39,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -49,6 +50,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -172,16 +174,16 @@ export const lessons: IndonesianLesson[] = [
     tip_advice_en:
       "Intro formula: 'Kutipan yang dianalisis, yang diambil dari [work] karya [author], berlatar [setting].' then your reading axis: 'Tulisan ini hendak menunjukkan bahwa…' (This paper aims to show that…). Quote-then-gloss: 'Perhatikan penggunaan…' (Note the use of…), 'Narator memanfaatkan ironi untuk…'. Memorize the majas names: metafora, metonimia, ironi, personifikasi, hiperbola, litotes, antitesis. Conclude: 'Singkatnya, jauh dari sekadar [shallow], kutipan ini [deeper point].' Avoid 'Ceritanya bagus sekali' (sentimental, not analytical), 'Penulis ingin mengatakan' (intentional fallacy), plot summary, and bolting theory on from outside — start from textual evidence.",
     vocabulary: [
-      { word: "analisis sastra", en: "literary analysis", vi: "phân tích văn học", pos: "n.", pronunciation_vi: "a-NA-li-sis SAS-tra", pronunciation_en: "a-NA-lee-sis SAS-tra — both loanwords; clean vowels" },
-      { word: "kutipan", en: "the quotation / excerpt", vi: "đoạn trích, trích dẫn", pos: "n.", pronunciation_vi: "ku-TI-pan", pronunciation_en: "koo-TEE-pan — kutip + -an; the standard word for an excerpt" },
-      { word: "sudut pandang", en: "point of view / narrative stance", vi: "điểm nhìn, ngôi kể", pos: "n.", pronunciation_vi: "SU-dut PAN-dang", pronunciation_en: "SOO-doot PAN-dang — 'ng' nasal; orang pertama/ketiga" },
-      { word: "majas", en: "figure of speech", vi: "biện pháp tu từ", pos: "n.", pronunciation_vi: "MA-jas", pronunciation_en: "MA-jas — umbrella term for all rhetorical figures" },
-      { word: "ironi", en: "irony", vi: "sự mỉa mai", pos: "n.", pronunciation_vi: "i-RO-ni", pronunciation_en: "ee-ROH-nee — saying X to mean the opposite" },
-      { word: "metafora", en: "metaphor", vi: "ẩn dụ", pos: "n.", pronunciation_vi: "mơ-ta-FO-ra", pronunciation_en: "muh-ta-FOH-ra" },
-      { word: "personifikasi", en: "personification", vi: "nhân hóa", pos: "n.", pronunciation_vi: "pơr-so-ni-fi-KA-si", pronunciation_en: "pur-so-nee-fee-KA-see" },
-      { word: "alur", en: "plot", vi: "cốt truyện", pos: "n.", pronunciation_vi: "A-lur", pronunciation_en: "A-loor — what you must NOT just summarize" },
-      { word: "latar", en: "setting (time/place)", vi: "bối cảnh", pos: "n.", pronunciation_vi: "LA-tar", pronunciation_en: "LA-tar — latar tempat/waktu" },
-      { word: "menafsirkan", en: "to interpret", vi: "diễn giải, lý giải", pos: "v.", pronunciation_vi: "mơ-naf-SIR-kan", pronunciation_en: "muh-naf-SEER-kan — me- + tafsir + -kan" },
+      { cell_id: "bebcb487-b555-4cbd-8367-92c6397dd5a7", word: "analisis sastra", en: "literary analysis", vi: "phân tích văn học", pos: "n.", pronunciation_vi: "a-NA-li-sis SAS-tra", pronunciation_en: "a-NA-lee-sis SAS-tra — both loanwords; clean vowels" },
+      { cell_id: "a9bf3e59-1577-49c5-8319-a8b5d56dfbea", word: "kutipan", en: "the quotation / excerpt", vi: "đoạn trích, trích dẫn", pos: "n.", pronunciation_vi: "ku-TI-pan", pronunciation_en: "koo-TEE-pan — kutip + -an; the standard word for an excerpt" },
+      { cell_id: "ccbf52a3-e799-4a77-ba95-129b3859caf3", word: "sudut pandang", en: "point of view / narrative stance", vi: "điểm nhìn, ngôi kể", pos: "n.", pronunciation_vi: "SU-dut PAN-dang", pronunciation_en: "SOO-doot PAN-dang — 'ng' nasal; orang pertama/ketiga" },
+      { cell_id: "115624d4-31c8-42ab-8cc5-18a3f7eddf88", word: "majas", en: "figure of speech", vi: "biện pháp tu từ", pos: "n.", pronunciation_vi: "MA-jas", pronunciation_en: "MA-jas — umbrella term for all rhetorical figures" },
+      { cell_id: "ce095b25-eeb6-42c5-9f59-1dbce83a58a3", word: "ironi", en: "irony", vi: "sự mỉa mai", pos: "n.", pronunciation_vi: "i-RO-ni", pronunciation_en: "ee-ROH-nee — saying X to mean the opposite" },
+      { cell_id: "b713ac7f-86a6-45c5-9af8-0a671adb315e", word: "metafora", en: "metaphor", vi: "ẩn dụ", pos: "n.", pronunciation_vi: "mơ-ta-FO-ra", pronunciation_en: "muh-ta-FOH-ra" },
+      { cell_id: "c0656f73-7603-479f-9b1e-dc0277a41659", word: "personifikasi", en: "personification", vi: "nhân hóa", pos: "n.", pronunciation_vi: "pơr-so-ni-fi-KA-si", pronunciation_en: "pur-so-nee-fee-KA-see" },
+      { cell_id: "e179cc45-fe4b-4e53-a699-9be0e3e80aba", word: "alur", en: "plot", vi: "cốt truyện", pos: "n.", pronunciation_vi: "A-lur", pronunciation_en: "A-loor — what you must NOT just summarize" },
+      { cell_id: "2bd37da3-c33d-44da-886b-dbd4368e1ef2", word: "latar", en: "setting (time/place)", vi: "bối cảnh", pos: "n.", pronunciation_vi: "LA-tar", pronunciation_en: "LA-tar — latar tempat/waktu" },
+      { cell_id: "3d30b2ca-3958-4321-9c38-e3c04f69bf39", word: "menafsirkan", en: "to interpret", vi: "diễn giải, lý giải", pos: "v.", pronunciation_vi: "mơ-naf-SIR-kan", pronunciation_en: "muh-naf-SEER-kan — me- + tafsir + -kan" },
     ],
     exercises: [
       {
@@ -286,16 +288,16 @@ export const lessons: IndonesianLesson[] = [
     tip_advice_en:
       "Reading a pantun: don't hunt for literal logic between sampiran and isi. Ask — do the line-endings rhyme a-b-a-b? What mood does the sampiran imagery evoke that resonates with the isi? Analysis vocabulary: bait (stanza), baris/larik (line), suku kata (syllable), rima (rhyme), sampiran, isi, majas. To comment on a gurindam, name the syarat→akibat relation: 'baris pertama menyatakan syarat…, baris kedua menegaskan akibatnya…'. To compose (berbalas pantun), write the isi first, then find a rhyming sampiran; keep 8-12 syllables per line. Avoid: translating word-for-word and losing the rhyme; confusing pantun (a-b-a-b, has sampiran) with syair (a-a-a-a, all content); dismissing the sampiran as 'meaningless' — it carries the music and the hint.",
     vocabulary: [
-      { word: "pantun", en: "pantun (four-line quatrain)", vi: "thể thơ pantun (tứ tuyệt)", pos: "n.", pronunciation_vi: "PAN-tun", pronunciation_en: "PAN-toon — UNESCO-listed Malay verse form" },
-      { word: "gurindam", en: "moralistic couplet", vi: "thể song thất đạo lý", pos: "n.", pronunciation_vi: "gu-RIN-dam", pronunciation_en: "goo-RIN-dam — condition + consequence" },
-      { word: "syair", en: "syair (narrative quatrain, a-a-a-a)", vi: "thể syair (trường thiên)", pos: "n.", pronunciation_vi: "SYA-ir", pronunciation_en: "SHA-eer — 'sy' = 'sh'; all four lines are content" },
-      { word: "sampiran", en: "the imagery lines (1-2)", vi: "hai câu dựng cảnh", pos: "n.", pronunciation_vi: "sam-PI-ran", pronunciation_en: "sam-PEE-ran — the 'setup' couplet" },
-      { word: "isi", en: "the message lines (3-4)", vi: "hai câu nội dung", pos: "n.", pronunciation_vi: "I-si", pronunciation_en: "EE-see — literally 'contents'" },
-      { word: "bait", en: "stanza", vi: "khổ thơ", pos: "n.", pronunciation_vi: "BA-it", pronunciation_en: "BA-eet — two syllables; a verse stanza" },
-      { word: "baris", en: "line (of verse)", vi: "dòng thơ", pos: "n.", pronunciation_vi: "BA-ris", pronunciation_en: "BA-rees — also larik" },
-      { word: "rima", en: "rhyme", vi: "vần", pos: "n.", pronunciation_vi: "RI-ma", pronunciation_en: "REE-ma — the a-b-a-b scheme" },
-      { word: "suku kata", en: "syllable", vi: "âm tiết", pos: "n.", pronunciation_vi: "SU-ku KA-ta", pronunciation_en: "SOO-koo KA-ta — count these per line (8-12)" },
-      { word: "berbalas pantun", en: "to exchange pantun (back and forth)", vi: "đối đáp pantun", pos: "v.", pronunciation_vi: "bơr-BA-las PAN-tun", pronunciation_en: "bur-BA-las PAN-toon — a courtship/ceremony tradition" },
+      { cell_id: "79e72dce-5ff1-4f85-a0e4-0ca4294c8ff9", word: "pantun", en: "pantun (four-line quatrain)", vi: "thể thơ pantun (tứ tuyệt)", pos: "n.", pronunciation_vi: "PAN-tun", pronunciation_en: "PAN-toon — UNESCO-listed Malay verse form" },
+      { cell_id: "69828b6d-43e9-4f97-b07d-fc8ab21ec8ac", word: "gurindam", en: "moralistic couplet", vi: "thể song thất đạo lý", pos: "n.", pronunciation_vi: "gu-RIN-dam", pronunciation_en: "goo-RIN-dam — condition + consequence" },
+      { cell_id: "3a2dc6a0-fd81-4e0c-8ff1-07919b8abf27", word: "syair", en: "syair (narrative quatrain, a-a-a-a)", vi: "thể syair (trường thiên)", pos: "n.", pronunciation_vi: "SYA-ir", pronunciation_en: "SHA-eer — 'sy' = 'sh'; all four lines are content" },
+      { cell_id: "37e71d09-8057-4b7c-86a0-6aadcd6e2808", word: "sampiran", en: "the imagery lines (1-2)", vi: "hai câu dựng cảnh", pos: "n.", pronunciation_vi: "sam-PI-ran", pronunciation_en: "sam-PEE-ran — the 'setup' couplet" },
+      { cell_id: "e1165529-115e-45b8-9dab-b0286967b8cd", word: "isi", en: "the message lines (3-4)", vi: "hai câu nội dung", pos: "n.", pronunciation_vi: "I-si", pronunciation_en: "EE-see — literally 'contents'" },
+      { cell_id: "d917ce13-33a9-452c-b204-95416ab9d2d8", word: "bait", en: "stanza", vi: "khổ thơ", pos: "n.", pronunciation_vi: "BA-it", pronunciation_en: "BA-eet — two syllables; a verse stanza" },
+      { cell_id: "80059c78-6211-4687-84b5-3d6989b3a520", word: "baris", en: "line (of verse)", vi: "dòng thơ", pos: "n.", pronunciation_vi: "BA-ris", pronunciation_en: "BA-rees — also larik" },
+      { cell_id: "87c72ac9-18e8-4435-88b1-03d12d053aa7", word: "rima", en: "rhyme", vi: "vần", pos: "n.", pronunciation_vi: "RI-ma", pronunciation_en: "REE-ma — the a-b-a-b scheme" },
+      { cell_id: "d73467c2-f770-4d6c-b8fd-78049a27cf9a", word: "suku kata", en: "syllable", vi: "âm tiết", pos: "n.", pronunciation_vi: "SU-ku KA-ta", pronunciation_en: "SOO-koo KA-ta — count these per line (8-12)" },
+      { cell_id: "3ddda87e-485f-4eee-b030-c35f379c07f0", word: "berbalas pantun", en: "to exchange pantun (back and forth)", vi: "đối đáp pantun", pos: "v.", pronunciation_vi: "bơr-BA-las PAN-tun", pronunciation_en: "bur-BA-las PAN-toon — a courtship/ceremony tradition" },
     ],
     exercises: [
       {
@@ -400,21 +402,21 @@ export const lessons: IndonesianLesson[] = [
     tip_advice_en:
       "Policy-critique frame (high, courteous register): (1) acknowledge — 'Saya menghargai niat baik di balik kebijakan ini, namun…'; (2) rebut — 'kebijakan ini justru berisiko…', 'data di lapangan menunjukkan sebaliknya'; (3) propose — 'Alangkah baiknya jika…'. Formal connectors: 'perlu digarisbawahi bahwa', 'pada hakikatnya' (in essence), 'dalam jangka panjang', 'demi kepentingan bersama'. Decode euphemism: hearing 'penyesuaian', 'restrukturisasi', 'efisiensi', 'dirumahkan' — ask what the blunt word is. The hortative 'Marilah kita…' (Let us together…) is the classic consensus-call in a pidato. Avoid: ad hominem (serangan pribadi), touching SARA, and colloquialisms ('gue/lo', 'banget', 'sih') that instantly drop the register. Composure (santun) outranks volume.",
     vocabulary: [
-      { word: "wacana", en: "discourse", vi: "diễn ngôn", pos: "n.", pronunciation_vi: "wa-CHA-na", pronunciation_en: "wa-CHA-na — 'c' = 'ch'; the academic word for discourse" },
-      { word: "pidato", en: "speech / address", vi: "bài diễn văn", pos: "n.", pronunciation_vi: "pi-DA-to", pronunciation_en: "pee-DA-toh — a formal public speech" },
-      { word: "kebijakan", en: "policy", vi: "chính sách", pos: "n.", pronunciation_vi: "kơ-bi-JA-kan", pronunciation_en: "kuh-bee-JA-kan — ke-bijak-an, from bijak (wise)" },
-      { word: "reformasi", en: "reform (esp. the 1998 era)", vi: "cải cách", pos: "n.", pronunciation_vi: "re-for-MA-si", pronunciation_en: "re-for-MA-see — loaded with 1998 history" },
-      { word: "penghalusan", en: "euphemism / softening", vi: "uyển ngữ, nói giảm", pos: "n.", pronunciation_vi: "pơng-ha-LU-san", pronunciation_en: "pung-ha-LOO-san — peng-halus-an; the politician's tool" },
-      { word: "oknum", en: "a rogue individual (bureaucratic spin)", vi: "cá nhân (tách khỏi tổ chức)", pos: "n.", pronunciation_vi: "OK-num", pronunciation_en: "OK-noom — used to deflect blame from an institution" },
-      { word: "rakyat", en: "the people", vi: "nhân dân", pos: "n.", pronunciation_vi: "RAK-yat", pronunciation_en: "RAK-yat — the rhetorical center of any speech" },
-      { word: "martabat", en: "dignity", vi: "nhân phẩm, phẩm giá", pos: "n.", pronunciation_vi: "mar-ta-BAT", pronunciation_en: "mar-ta-BAT — attack the policy, not the martabat" },
-      { word: "garis bawahi", en: "to underline / emphasize", vi: "nhấn mạnh, gạch chân", pos: "v.", pronunciation_vi: "GA-ris ba-WA-hi", pronunciation_en: "GA-rees ba-WA-hee — 'perlu digarisbawahi' = it must be emphasized" },
-      { word: "santun", en: "courteous / well-mannered", vi: "lịch thiệp, nhã nhặn", pos: "adj.", pronunciation_vi: "SAN-tun", pronunciation_en: "SAN-toon — the prized tone in public debate" },
+      { cell_id: "3787f864-750f-445e-b296-8bdb729731af", word: "wacana", en: "discourse", vi: "diễn ngôn", pos: "n.", pronunciation_vi: "wa-CHA-na", pronunciation_en: "wa-CHA-na — 'c' = 'ch'; the academic word for discourse" },
+      { cell_id: "12de1cc2-b072-47f9-8987-21bbec7ce082", word: "pidato", en: "speech / address", vi: "bài diễn văn", pos: "n.", pronunciation_vi: "pi-DA-to", pronunciation_en: "pee-DA-toh — a formal public speech" },
+      { cell_id: "68d289c0-0387-4f6a-9731-62927acfd6d9", word: "kebijakan", en: "policy", vi: "chính sách", pos: "n.", pronunciation_vi: "kơ-bi-JA-kan", pronunciation_en: "kuh-bee-JA-kan — ke-bijak-an, from bijak (wise)" },
+      { cell_id: "153883fa-3cb3-442a-926e-92975dfab277", word: "reformasi", en: "reform (esp. the 1998 era)", vi: "cải cách", pos: "n.", pronunciation_vi: "re-for-MA-si", pronunciation_en: "re-for-MA-see — loaded with 1998 history" },
+      { cell_id: "1eca3894-697b-47cf-90ea-867c93d7da30", word: "penghalusan", en: "euphemism / softening", vi: "uyển ngữ, nói giảm", pos: "n.", pronunciation_vi: "pơng-ha-LU-san", pronunciation_en: "pung-ha-LOO-san — peng-halus-an; the politician's tool" },
+      { cell_id: "28897871-7b06-4d4c-9cee-dc26ef6bfd53", word: "oknum", en: "a rogue individual (bureaucratic spin)", vi: "cá nhân (tách khỏi tổ chức)", pos: "n.", pronunciation_vi: "OK-num", pronunciation_en: "OK-noom — used to deflect blame from an institution" },
+      { cell_id: "188c7ffc-1120-4f19-9817-f63a69308384", word: "rakyat", en: "the people", vi: "nhân dân", pos: "n.", pronunciation_vi: "RAK-yat", pronunciation_en: "RAK-yat — the rhetorical center of any speech" },
+      { cell_id: "4aeaf461-3532-4837-a2dd-1c0763e25da1", word: "martabat", en: "dignity", vi: "nhân phẩm, phẩm giá", pos: "n.", pronunciation_vi: "mar-ta-BAT", pronunciation_en: "mar-ta-BAT — attack the policy, not the martabat" },
+      { cell_id: "484da468-3157-489f-8f8f-c433990acbce", word: "garis bawahi", en: "to underline / emphasize", vi: "nhấn mạnh, gạch chân", pos: "v.", pronunciation_vi: "GA-ris ba-WA-hi", pronunciation_en: "GA-rees ba-WA-hee — 'perlu digarisbawahi' = it must be emphasized" },
+      { cell_id: "9a0fda57-3583-4acf-919d-6f2d4ef85b32", word: "santun", en: "courteous / well-mannered", vi: "lịch thiệp, nhã nhặn", pos: "adj.", pronunciation_vi: "SAN-tun", pronunciation_en: "SAN-toon — the prized tone in public debate" },
     ],
     dialogue: [
-      { speaker: "Anggota DPR", text: "Saya menghargai niat di balik kebijakan ini, namun data di lapangan justru menunjukkan sebaliknya.", vi: "Tôi trân trọng ý định sau chính sách này, song số liệu thực địa lại cho thấy điều ngược lại.", en: "I appreciate the intent behind this policy, but field data shows the opposite." },
-      { speaker: "Menteri", text: "Yang kami lakukan bukanlah kenaikan, melainkan penyesuaian harga demi keberlanjutan anggaran.", vi: "Điều chúng tôi làm không phải là tăng giá, mà là điều chỉnh giá vì sự bền vững của ngân sách.", en: "What we did is not a hike but a price adjustment for budget sustainability." },
-      { speaker: "Anggota DPR", text: "Dengan segala hormat, 'penyesuaian' itu, di mata rakyat, tetaplah beban yang nyata.", vi: "Với tất cả sự kính trọng, 'điều chỉnh' ấy, trong mắt nhân dân, vẫn là một gánh nặng có thật.", en: "With all due respect, that 'adjustment', in the people's eyes, is still a real burden." },
+      { cell_id: "08b71580-484e-4691-baee-53a70aa137fb", speaker: "Anggota DPR", text: "Saya menghargai niat di balik kebijakan ini, namun data di lapangan justru menunjukkan sebaliknya.", vi: "Tôi trân trọng ý định sau chính sách này, song số liệu thực địa lại cho thấy điều ngược lại.", en: "I appreciate the intent behind this policy, but field data shows the opposite." },
+      { cell_id: "31abdcdb-eda6-46d8-bed3-b324ad7a1163", speaker: "Menteri", text: "Yang kami lakukan bukanlah kenaikan, melainkan penyesuaian harga demi keberlanjutan anggaran.", vi: "Điều chúng tôi làm không phải là tăng giá, mà là điều chỉnh giá vì sự bền vững của ngân sách.", en: "What we did is not a hike but a price adjustment for budget sustainability." },
+      { cell_id: "a059bc3c-2539-4af7-9a45-188fdac2c673", speaker: "Anggota DPR", text: "Dengan segala hormat, 'penyesuaian' itu, di mata rakyat, tetaplah beban yang nyata.", vi: "Với tất cả sự kính trọng, 'điều chỉnh' ấy, trong mắt nhân dân, vẫn là một gánh nặng có thật.", en: "With all due respect, that 'adjustment', in the people's eyes, is still a real burden." },
     ],
     exercises: [
       {
@@ -519,21 +521,21 @@ export const lessons: IndonesianLesson[] = [
     tip_advice_en:
       "Reading a contract: find 'Pihak Pertama' and 'Pihak Kedua' first, then each side's 'hak' (rights) and 'kewajiban' (obligations), then the 'sanksi' and 'penyelesaian sengketa' (dispute resolution) clauses. Official-letter skeleton: letterhead, Nomor/Lampiran/Perihal, 'Kepada Yth.' (To the respected…), body, 'Demikian… terima kasih', 'Hormat kami' + signature. Register upgrades: 'kalau'→'apabila/jikalau', 'tapi'→'namun/akan tetapi', 'soal'→'perihal/mengenai', 'harus'→'wajib/berkewajiban', 'bikin'→'membuat/menyusun'. Decode the agentless passive: at 'diharapkan', 'dimohon', 'akan ditindaklanjuti' — ask WHO hopes, requests, follows up; the form hides the agent on purpose. Avoid colloquialisms in official text, active voice where formal passive is expected, dropping the parenthetical ayat number (Pasal 5 ayat (2) is the standard citation), and rendering 'tersebut/dimaksud' as 'that one' instead of 'aforementioned/referred to'.",
     vocabulary: [
-      { word: "undang-undang", en: "statute / law (UU)", vi: "luật, đạo luật", pos: "n.", pronunciation_vi: "un-dang-UN-dang", pronunciation_en: "oon-dang-OON-dang — reduplicated; the highest statute" },
-      { word: "pasal", en: "Article (of a law/contract)", vi: "điều", pos: "n.", pronunciation_vi: "PA-sal", pronunciation_en: "PA-sal — Pasal 5; ayat is the sub-paragraph" },
-      { word: "ayat", en: "paragraph / clause", vi: "khoản", pos: "n.", pronunciation_vi: "A-yat", pronunciation_en: "A-yat — cited as ayat (2), in parentheses" },
-      { word: "perjanjian", en: "agreement / contract", vi: "hợp đồng, thỏa thuận", pos: "n.", pronunciation_vi: "pơr-jan-JI-an", pronunciation_en: "pur-jan-JEE-an — per-janji-an, from janji (promise)" },
-      { word: "kewajiban", en: "obligation / duty", vi: "nghĩa vụ", pos: "n.", pronunciation_vi: "kơ-wa-JI-ban", pronunciation_en: "kuh-wa-JEE-ban — paired with 'hak' (rights)" },
-      { word: "ketentuan", en: "provision / stipulation", vi: "quy định", pos: "n.", pronunciation_vi: "kơ-tơn-TU-an", pronunciation_en: "kuh-tun-TOO-an — ke-tentu-an" },
-      { word: "tersebut", en: "aforementioned / the said", vi: "nói trên", pos: "adj.", pronunciation_vi: "tơr-SƠ-but", pronunciation_en: "tur-SUH-boot — the bureaucratic 'the said'" },
-      { word: "selanjutnya disebut", en: "hereinafter referred to as", vi: "sau đây gọi là", pos: "expr.", pronunciation_vi: "sơ-lan-JUT-nya di-SƠ-but", pronunciation_en: "suh-lan-JOOT-nyah dee-SUH-boot — contract boilerplate" },
-      { word: "pemohon", en: "applicant", vi: "người nộp đơn", pos: "n.", pronunciation_vi: "pơ-MO-hon", pronunciation_en: "puh-MOH-hon — pe-mohon, from mohon (to request)" },
-      { word: "menimbang", en: "considering / whereas (legal preamble)", vi: "xét rằng", pos: "v.", pronunciation_vi: "mơ-NIM-bang", pronunciation_en: "muh-NIM-bang — opens the reasoning of a law" },
+      { cell_id: "07db4d89-25c0-4fea-a5b6-8532819d13af", word: "undang-undang", en: "statute / law (UU)", vi: "luật, đạo luật", pos: "n.", pronunciation_vi: "un-dang-UN-dang", pronunciation_en: "oon-dang-OON-dang — reduplicated; the highest statute" },
+      { cell_id: "1390d25d-d8c0-49c2-a7fa-61ff6632b6a4", word: "pasal", en: "Article (of a law/contract)", vi: "điều", pos: "n.", pronunciation_vi: "PA-sal", pronunciation_en: "PA-sal — Pasal 5; ayat is the sub-paragraph" },
+      { cell_id: "1caa6c62-37f5-4592-af30-c9ed6cd1fec5", word: "ayat", en: "paragraph / clause", vi: "khoản", pos: "n.", pronunciation_vi: "A-yat", pronunciation_en: "A-yat — cited as ayat (2), in parentheses" },
+      { cell_id: "2f8a0074-f7af-4824-bf48-86dc09ca7107", word: "perjanjian", en: "agreement / contract", vi: "hợp đồng, thỏa thuận", pos: "n.", pronunciation_vi: "pơr-jan-JI-an", pronunciation_en: "pur-jan-JEE-an — per-janji-an, from janji (promise)" },
+      { cell_id: "f750c0f5-7302-445d-bc5d-01afa055642b", word: "kewajiban", en: "obligation / duty", vi: "nghĩa vụ", pos: "n.", pronunciation_vi: "kơ-wa-JI-ban", pronunciation_en: "kuh-wa-JEE-ban — paired with 'hak' (rights)" },
+      { cell_id: "95ad3c8e-5ead-47c6-b458-139a84cfd86c", word: "ketentuan", en: "provision / stipulation", vi: "quy định", pos: "n.", pronunciation_vi: "kơ-tơn-TU-an", pronunciation_en: "kuh-tun-TOO-an — ke-tentu-an" },
+      { cell_id: "50afd263-38d4-49e7-8d58-bb66fe4304f9", word: "tersebut", en: "aforementioned / the said", vi: "nói trên", pos: "adj.", pronunciation_vi: "tơr-SƠ-but", pronunciation_en: "tur-SUH-boot — the bureaucratic 'the said'" },
+      { cell_id: "12440d8b-2701-4d12-a86b-3cab2af26ced", word: "selanjutnya disebut", en: "hereinafter referred to as", vi: "sau đây gọi là", pos: "expr.", pronunciation_vi: "sơ-lan-JUT-nya di-SƠ-but", pronunciation_en: "suh-lan-JOOT-nyah dee-SUH-boot — contract boilerplate" },
+      { cell_id: "5aa4ec15-7bc2-43d3-813a-76cf3195967f", word: "pemohon", en: "applicant", vi: "người nộp đơn", pos: "n.", pronunciation_vi: "pơ-MO-hon", pronunciation_en: "puh-MOH-hon — pe-mohon, from mohon (to request)" },
+      { cell_id: "4968c248-6aa3-4310-8502-72e402c46268", word: "menimbang", en: "considering / whereas (legal preamble)", vi: "xét rằng", pos: "v.", pronunciation_vi: "mơ-NIM-bang", pronunciation_en: "muh-NIM-bang — opens the reasoning of a law" },
     ],
     dialogue: [
-      { speaker: "Notaris", text: "Mohon Bapak membaca Pasal 7 ayat (1) mengenai kewajiban Pihak Kedua sebelum menandatangani.", vi: "Xin Ngài đọc Điều 7 khoản (1) về nghĩa vụ của Bên thứ hai trước khi ký.", en: "Please read Article 7 paragraph (1) on the Second Party's obligations before signing." },
-      { speaker: "Klien", text: "Apakah sanksi yang dimaksud dalam ayat berikutnya berlaku bila keterlambatan disebabkan keadaan kahar?", vi: "Chế tài được nói đến ở khoản tiếp theo có áp dụng không nếu sự chậm trễ do bất khả kháng?", en: "Does the sanction referred to in the next paragraph apply if the delay is caused by force majeure?" },
-      { speaker: "Notaris", text: "Tidak. Sesuai ketentuan, keadaan kahar membebaskan para pihak dari tanggung jawab tersebut.", vi: "Không. Theo quy định, trường hợp bất khả kháng miễn cho các bên khỏi trách nhiệm nói trên.", en: "No. Under the provision, force majeure releases the parties from the said liability." },
+      { cell_id: "0d2d2c5c-ad6b-4118-93df-3855489ad86d", speaker: "Notaris", text: "Mohon Bapak membaca Pasal 7 ayat (1) mengenai kewajiban Pihak Kedua sebelum menandatangani.", vi: "Xin Ngài đọc Điều 7 khoản (1) về nghĩa vụ của Bên thứ hai trước khi ký.", en: "Please read Article 7 paragraph (1) on the Second Party's obligations before signing." },
+      { cell_id: "40b0f674-e856-48e6-8dc6-469872eea5c2", speaker: "Klien", text: "Apakah sanksi yang dimaksud dalam ayat berikutnya berlaku bila keterlambatan disebabkan keadaan kahar?", vi: "Chế tài được nói đến ở khoản tiếp theo có áp dụng không nếu sự chậm trễ do bất khả kháng?", en: "Does the sanction referred to in the next paragraph apply if the delay is caused by force majeure?" },
+      { cell_id: "e73d6039-2414-40b6-a44b-91fcc722eac9", speaker: "Notaris", text: "Tidak. Sesuai ketentuan, keadaan kahar membebaskan para pihak dari tanggung jawab tersebut.", vi: "Không. Theo quy định, trường hợp bất khả kháng miễn cho các bên khỏi trách nhiệm nói trên.", en: "No. Under the provision, force majeure releases the parties from the said liability." },
     ],
     exercises: [
       {
@@ -638,21 +640,21 @@ export const lessons: IndonesianLesson[] = [
     tip_advice_en:
       "Core particle table (casual but universal): '-kah/-lah' = formal emphasis ('Benarkah?' Really?; 'Duduklah' Do sit); 'kan' = isn't it / seeking agreement ('Enak, kan?'); 'sih' = soften or press ('Kenapa sih?'); 'dong' = gentle urging/coaxing ('Ikut dong!'); 'kok' = surprise/mild pushback ('Kok bisa?'); 'lho/loh' = warning or 'hey now' ('Awas lho!'); 'deh' = grudging agreement ('Ya udah deh'). Register-switch: job interviews/meetings → baku (saya, tidak, sudah, bagaimana); friends → gaul (gue/aku, nggak, udah, gimana). A C2 speaker slides smoothly with the audience; mixing wrong (slang in a formal meeting, stiff baku with close friends) flags non-mastery. For subtle humor (sindiran halus), over-praise to imply a dig ('Wah, rajin sekali, sampai jam sebelas baru datang' — 'Wow, so diligent, only showed up at eleven'); keep a flat tone and let context do the work. Avoid: translating particles mechanically, overusing gaul in formal settings, joking about SARA, and mimicking regional accents you don't command — it easily reads as mockery (mengejek).",
     vocabulary: [
-      { word: "sindiran", en: "innuendo / a snide remark", vi: "lời móc mỉa", pos: "n.", pronunciation_vi: "sin-DI-ran", pronunciation_en: "seen-DEE-ran — sindiran halus = a subtle dig" },
-      { word: "satire / satir", en: "satire", vi: "châm biếm", pos: "n.", pronunciation_vi: "SA-tir", pronunciation_en: "SA-teer — 'satire menggigit' = biting satire" },
-      { word: "lelucon", en: "a joke", vi: "câu chuyện cười", pos: "n.", pronunciation_vi: "lơ-LU-chon", pronunciation_en: "luh-LOO-chon — 'c' = 'ch'" },
-      { word: "logat", en: "accent / regional dialect", vi: "giọng vùng miền", pos: "n.", pronunciation_vi: "LO-gat", pronunciation_en: "LOH-gat — logat Jawa/Medan/Sunda" },
-      { word: "penutur asli", en: "native speaker", vi: "người bản ngữ", pos: "n.", pronunciation_vi: "pơ-NU-tur AS-li", pronunciation_en: "puh-NOO-toor AS-lee — lit. 'original speaker'" },
-      { word: "baku", en: "standard / formal (language)", vi: "(ngôn ngữ) chuẩn", pos: "adj.", pronunciation_vi: "BA-ku", pronunciation_en: "BA-koo — bahasa baku, the formal register" },
-      { word: "gaul", en: "slang / hip casual register", vi: "tiếng lóng, đời thường", pos: "adj.", pronunciation_vi: "GA-ul", pronunciation_en: "GA-ool — bahasa gaul, Jakarta casual speech" },
-      { word: "baper", en: "to get over-emotional / take it personally", vi: "để bụng, đa cảm", pos: "v. (slang)", pronunciation_vi: "BA-pơr", pronunciation_en: "BA-pur — clipped from 'bawa perasaan'" },
-      { word: "justru", en: "precisely / on the contrary", vi: "chính là, trái lại", pos: "adv.", pronunciation_vi: "JUS-tru", pronunciation_en: "JOOS-troo — a C2 pivot for irony/contrast" },
-      { word: "kefasihan", en: "fluency", vi: "sự lưu loát, thông thạo", pos: "n.", pronunciation_vi: "kơ-fa-SI-han", pronunciation_en: "kuh-fa-SEE-han — ke-fasih-an, from fasih (fluent)" },
+      { cell_id: "6c8067fd-6478-4f57-b696-46e45b3a503e", word: "sindiran", en: "innuendo / a snide remark", vi: "lời móc mỉa", pos: "n.", pronunciation_vi: "sin-DI-ran", pronunciation_en: "seen-DEE-ran — sindiran halus = a subtle dig" },
+      { cell_id: "67295442-07e7-4a96-aae2-239bd168567f", word: "satire / satir", en: "satire", vi: "châm biếm", pos: "n.", pronunciation_vi: "SA-tir", pronunciation_en: "SA-teer — 'satire menggigit' = biting satire" },
+      { cell_id: "ea2d8a5e-5e09-40bb-a552-963f7ac653f5", word: "lelucon", en: "a joke", vi: "câu chuyện cười", pos: "n.", pronunciation_vi: "lơ-LU-chon", pronunciation_en: "luh-LOO-chon — 'c' = 'ch'" },
+      { cell_id: "64c183c4-d556-463c-95d9-638e8a295cdf", word: "logat", en: "accent / regional dialect", vi: "giọng vùng miền", pos: "n.", pronunciation_vi: "LO-gat", pronunciation_en: "LOH-gat — logat Jawa/Medan/Sunda" },
+      { cell_id: "8cc044e9-e07a-4c87-8399-984e80d37bbc", word: "penutur asli", en: "native speaker", vi: "người bản ngữ", pos: "n.", pronunciation_vi: "pơ-NU-tur AS-li", pronunciation_en: "puh-NOO-toor AS-lee — lit. 'original speaker'" },
+      { cell_id: "47b67840-0bab-4294-97d2-3b65055c696a", word: "baku", en: "standard / formal (language)", vi: "(ngôn ngữ) chuẩn", pos: "adj.", pronunciation_vi: "BA-ku", pronunciation_en: "BA-koo — bahasa baku, the formal register" },
+      { cell_id: "acd06881-b5f4-49fa-b628-ae1426afafeb", word: "gaul", en: "slang / hip casual register", vi: "tiếng lóng, đời thường", pos: "adj.", pronunciation_vi: "GA-ul", pronunciation_en: "GA-ool — bahasa gaul, Jakarta casual speech" },
+      { cell_id: "c302d767-85ae-45a0-9d31-9f6f8ece291b", word: "baper", en: "to get over-emotional / take it personally", vi: "để bụng, đa cảm", pos: "v. (slang)", pronunciation_vi: "BA-pơr", pronunciation_en: "BA-pur — clipped from 'bawa perasaan'" },
+      { cell_id: "412d476a-47c9-4f42-b341-355bac494065", word: "justru", en: "precisely / on the contrary", vi: "chính là, trái lại", pos: "adv.", pronunciation_vi: "JUS-tru", pronunciation_en: "JOOS-troo — a C2 pivot for irony/contrast" },
+      { cell_id: "5e020502-9bdb-4843-99dc-ff167eab557d", word: "kefasihan", en: "fluency", vi: "sự lưu loát, thông thạo", pos: "n.", pronunciation_vi: "kơ-fa-SI-han", pronunciation_en: "kuh-fa-SEE-han — ke-fasih-an, from fasih (fluent)" },
     ],
     dialogue: [
-      { speaker: "Rina", text: "Eh, kamu udah baca kolom satir di Mojok tadi? Nyindir banget, tapi nggak nyebut nama.", vi: "Này, cậu đọc cột châm biếm trên Mojok lúc nãy chưa? Móc mỉa cực kỳ, mà chẳng nêu tên ai.", en: "Hey, did you read the satire column on Mojok? So snide, but it names no one." },
-      { speaker: "Dimas", text: "Udah dong. Justru karena halus itu yang bikin nampar. Kalau kasar mah malah nggak kena.", vi: "Đọc rồi chứ. Chính vì nó tinh tế nên mới đau. Thô lỗ thì lại chẳng thấm.", en: "Of course. It's precisely the subtlety that stings. If it were crude it wouldn't land." },
-      { speaker: "Rina", text: "Nah, itu dia. Penulisnya penutur asli banget rasa bahasanya — kita mah masih nerjemahin dalam kepala, ya kan?", vi: "Đấy, đúng vậy. Cảm ngôn ngữ của tác giả đúng chất bản ngữ — bọn mình vẫn còn dịch trong đầu, đúng không?", en: "Right, exactly. The writer's feel for the language is so native — we still translate in our heads, don't we?" },
+      { cell_id: "b868ca61-c1fb-428e-b6f9-cb92221b6920", speaker: "Rina", text: "Eh, kamu udah baca kolom satir di Mojok tadi? Nyindir banget, tapi nggak nyebut nama.", vi: "Này, cậu đọc cột châm biếm trên Mojok lúc nãy chưa? Móc mỉa cực kỳ, mà chẳng nêu tên ai.", en: "Hey, did you read the satire column on Mojok? So snide, but it names no one." },
+      { cell_id: "be76c248-6702-48a7-ac2a-f7a0f0c56cda", speaker: "Dimas", text: "Udah dong. Justru karena halus itu yang bikin nampar. Kalau kasar mah malah nggak kena.", vi: "Đọc rồi chứ. Chính vì nó tinh tế nên mới đau. Thô lỗ thì lại chẳng thấm.", en: "Of course. It's precisely the subtlety that stings. If it were crude it wouldn't land." },
+      { cell_id: "4f3b5195-c3d9-4ff3-96b5-18b2d83932f3", speaker: "Rina", text: "Nah, itu dia. Penulisnya penutur asli banget rasa bahasanya — kita mah masih nerjemahin dalam kepala, ya kan?", vi: "Đấy, đúng vậy. Cảm ngôn ngữ của tác giả đúng chất bản ngữ — bọn mình vẫn còn dịch trong đầu, đúng không?", en: "Right, exactly. The writer's feel for the language is so native — we still translate in our heads, don't we?" },
     ],
     exercises: [
       {

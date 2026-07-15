@@ -25,6 +25,7 @@ export type PunjabiConflictContext =
   | "canada_service";
 
 export type PunjabiConflictPhrase = {
+  cell_id?: string;
   gurmukhi: string;
   romanization: string;
   vi: string;
@@ -75,12 +76,14 @@ export const conflictDeescalationC2Entries: PunjabiConflictDeescalationEntry[] =
     language_strategy_en: "Acknowledge the shared goal, then present the difference as a point to consider.",
     phrases: [
       {
+        cell_id: "5de3eaa5-0b77-4051-8e50-4647f74a87df",
         gurmukhi: "ਮਕਸਦ ਸਾਡਾ ਇੱਕੋ ਹੈ",
         romanization: "maqsad sada ikko hai",
         vi: "Mục tiêu của chúng ta là cùng một hướng.",
         en: "Our goal is the same.",
       },
       {
+        cell_id: "67355e5a-3a42-4ec6-ae6f-109c7571a4d6",
         gurmukhi: "ਮੇਰਾ ਇੱਕ ਵੱਖਰਾ ਨਜ਼ਰੀਆ ਹੈ",
         romanization: "mera ikk vakhra nazaria hai",
         vi: "Tôi có một góc nhìn khác.",
@@ -110,12 +113,14 @@ export const conflictDeescalationC2Entries: PunjabiConflictDeescalationEntry[] =
     language_strategy_en: "Say you can see the topic matters, without labeling anyone psychologically.",
     phrases: [
       {
+        cell_id: "f7207f08-432d-4e92-a8a7-9bdb698ac36b",
         gurmukhi: "ਮੈਨੂੰ ਲੱਗਦਾ ਹੈ ਇਹ ਗੱਲ ਤੁਹਾਡੇ ਲਈ ਮਹੱਤਵਪੂਰਨ ਹੈ",
         romanization: "mainu laggda hai ih gall tuhade lai mahatvapuran hai",
         vi: "Tôi thấy việc này quan trọng với anh/chị.",
         en: "It seems this matter is important to you.",
       },
       {
+        cell_id: "cd10b82b-f60a-4930-b878-bfc8a8cfff82",
         gurmukhi: "ਆਓ ਗੱਲ ਨੂੰ ਧਿਆਨ ਨਾਲ ਸੁਣੀਏ",
         romanization: "aao gall nu dhiaan naal sunie",
         vi: "Ta hãy lắng nghe việc này cẩn thận.",
@@ -145,12 +150,14 @@ export const conflictDeescalationC2Entries: PunjabiConflictDeescalationEntry[] =
     language_strategy_en: "Move from who is wrong to which process needs clarification.",
     phrases: [
       {
+        cell_id: "c2343343-86d1-48a0-8a68-82e46fc48f75",
         gurmukhi: "ਆਓ ਇਸ ਨੂੰ ਵਿਅਕਤੀ ਦੀ ਗਲਤੀ ਨਾ ਬਣਾਈਏ",
         romanization: "aao is nu viakti di galti na banaie",
         vi: "Ta đừng biến việc này thành lỗi cá nhân.",
         en: "Let's not make this an individual fault.",
       },
       {
+        cell_id: "d4e9a439-329c-4352-877c-27339b31c229",
         gurmukhi: "ਪ੍ਰਕਿਰਿਆ ਕਿੱਥੇ ਸਪਸ਼ਟ ਨਹੀਂ ਸੀ?",
         romanization: "prakiria kithe spasht nahin si?",
         vi: "Quy trình chưa rõ ở đâu?",
@@ -180,12 +187,14 @@ export const conflictDeescalationC2Entries: PunjabiConflictDeescalationEntry[] =
     language_strategy_en: "Propose a short pause as a way to think clearly, not to avoid the issue.",
     phrases: [
       {
+        cell_id: "65da4a31-05de-4269-b792-fd88759c07ad",
         gurmukhi: "ਕੀ ਅਸੀਂ ਦੋ ਮਿੰਟ ਰੁਕ ਸਕਦੇ ਹਾਂ?",
         romanization: "ki asin do mint ruk sakde haan?",
         vi: "Chúng ta có thể dừng hai phút không?",
         en: "Can we pause for two minutes?",
       },
       {
+        cell_id: "a92f1d0a-ebc8-4edb-93a3-4ed6d73aae77",
         gurmukhi: "ਫਿਰ ਗੱਲ ਨੂੰ ਸਾਫ਼ ਤਰੀਕੇ ਨਾਲ ਅੱਗੇ ਵਧਾਈਏ",
         romanization: "fir gall nu saaf tarike naal agge vadhaie",
         vi: "Rồi tiếp tục câu chuyện một cách rõ ràng hơn.",
@@ -209,12 +218,14 @@ export const conflictDeescalationC2Entries: PunjabiConflictDeescalationEntry[] =
     language_strategy_en: "Own the wording issue and restate goodwill.",
     phrases: [
       {
+        cell_id: "c69af83a-1592-41bd-8696-ca75c39b35d5",
         gurmukhi: "ਸ਼ਾਇਦ ਮੇਰੀ ਗੱਲ ਠੀਕ ਤਰ੍ਹਾਂ ਨਹੀਂ ਨਿਕਲੀ",
         romanization: "shayad meri gall theek tarah nahin nikli",
         vi: "Có lẽ lời tôi chưa được diễn đạt đúng.",
         en: "Perhaps my words did not come out well.",
       },
       {
+        cell_id: "7a0eabde-8bba-421f-86e3-9cf28d9ec88a",
         gurmukhi: "ਮੇਰਾ ਮਤਲਬ ਰਿਸ਼ਤਾ ਖ਼ਰਾਬ ਕਰਨਾ ਨਹੀਂ ਸੀ",
         romanization: "mera matlab rishta kharaab karna nahin si",
         vi: "Ý tôi không phải làm hỏng quan hệ.",
@@ -244,12 +255,14 @@ export const conflictDeescalationC2Entries: PunjabiConflictDeescalationEntry[] =
     language_strategy_en: "Talk about observations and discussion process, not HR advice.",
     phrases: [
       {
+        cell_id: "edfe396a-99d2-4491-a8e3-85ead9009ea2",
         gurmukhi: "ਇਹ ਗੱਲ ਸੰਵੇਦਨਸ਼ੀਲ ਹੈ",
         romanization: "ih gall sanvedansheel hai",
         vi: "Việc này nhạy cảm.",
         en: "This matter is sensitive.",
       },
       {
+        cell_id: "16258aee-5a82-4485-8476-7c218a3cbde0",
         gurmukhi: "ਆਓ ਇਸ ਨੂੰ ਧਿਆਨ ਨਾਲ ਅਤੇ ਆਦਰ ਨਾਲ ਚਰਚਾ ਕਰੀਏ",
         romanization: "aao is nu dhiaan naal ate aadar naal charcha kariye",
         vi: "Ta hãy thảo luận việc này cẩn thận và tôn trọng.",
@@ -273,12 +286,14 @@ export const conflictDeescalationC2Entries: PunjabiConflictDeescalationEntry[] =
     language_strategy_en: "Open space for multiple voices without dismissing anyone.",
     phrases: [
       {
+        cell_id: "42d40b0d-68e6-4d83-a7cf-5fa30eabb3f4",
         gurmukhi: "ਵੱਖ-ਵੱਖ ਅਨੁਭਵ ਹੋ ਸਕਦੇ ਹਨ",
         romanization: "vakh-vakh anubhav ho sakde han",
         vi: "Có thể có nhiều trải nghiệm khác nhau.",
         en: "There may be different experiences.",
       },
       {
+        cell_id: "355429f1-f056-4f26-b380-c45f14283999",
         gurmukhi: "ਆਓ ਹੋਰ ਲੋਕਾਂ ਦੀ ਗੱਲ ਵੀ ਸੁਣੀਏ",
         romanization: "aao hor lokan di gall vi sunie",
         vi: "Ta hãy nghe thêm ý kiến của người khác.",
@@ -308,12 +323,14 @@ export const conflictDeescalationC2Entries: PunjabiConflictDeescalationEntry[] =
     language_strategy_en: "Present the error as a point to check, then ask for the next step.",
     phrases: [
       {
+        cell_id: "995b13d2-adcd-4141-b7f0-9bba84164a62",
         gurmukhi: "ਇੱਥੇ ਇੱਕ ਗੱਲ ਮਿਲਦੀ ਨਹੀਂ ਲੱਗ ਰਹੀ",
         romanization: "ithe ikk gall mildi nahin lagg rahi",
         vi: "Ở đây có một điểm có vẻ không khớp.",
         en: "One point here does not seem to match.",
       },
       {
+        cell_id: "3fc3e472-826e-4a5e-8b74-b9e147511dc0",
         gurmukhi: "ਅਗਲਾ ਕਦਮ ਕੀ ਹੋਵੇਗਾ?",
         romanization: "agla kadam ki hovega?",
         vi: "Bước tiếp theo sẽ là gì?",
@@ -338,12 +355,14 @@ export const conflictDeescalationC2Entries: PunjabiConflictDeescalationEntry[] =
     language_strategy_en: "Ask for time to check, then say you will return with specific information.",
     phrases: [
       {
+        cell_id: "4edfd166-b91d-4396-aabc-feb6bc30ea85",
         gurmukhi: "ਕੀ ਮੈਂ ਇਹ ਜਾਣਕਾਰੀ ਚੈਕ ਕਰਕੇ ਵਾਪਸ ਦੱਸ ਸਕਦਾ/ਸਕਦੀ ਹਾਂ?",
         romanization: "ki main ih jaankaari check karke wapas dass sakda/sakdi haan?",
         vi: "Tôi có thể kiểm tra thông tin này rồi báo lại không?",
         en: "May I check this information and get back to you?",
       },
       {
+        cell_id: "a8b6a25d-1b11-4a1c-aed6-8f6a8db11a28",
         gurmukhi: "ਤਾਂ ਜੋ ਸਹੀ ਜਵਾਬ ਦੇ ਸਕਾਂ/ਸਕਾਂ",
         romanization: "taan jo sahi javaab de sakaan",
         vi: "Để tôi có thể trả lời đúng.",
@@ -368,12 +387,14 @@ export const conflictDeescalationC2Entries: PunjabiConflictDeescalationEntry[] =
     language_strategy_en: "State the current learning scope and acknowledge Shahmukhi at awareness level.",
     phrases: [
       {
+        cell_id: "391a299f-9e04-44c8-9909-f706130b6d4b",
         gurmukhi: "ਇਸ ਪਾਠ ਵਿੱਚ ਗੁਰਮੁਖੀ ਮੁੱਖ ਹੈ",
         romanization: "is paath vich Gurmukhi mukh hai",
         vi: "Trong bài này Gurmukhi là chính.",
         en: "In this lesson, Gurmukhi is primary.",
       },
       {
+        cell_id: "abcc7b1e-ed15-4457-beef-16b2269ca3c9",
         gurmukhi: "ਸ਼ਾਹਮੁਖੀ ਬਾਰੇ ਸਿਰਫ਼ ਜਾਣਕਾਰੀ ਲਈ ਜ਼ਿਕਰ ਹੈ",
         romanization: "Shahmukhi bare sirf jaankaari lai zikar hai",
         vi: "Shahmukhi chỉ được nhắc để nhận biết.",

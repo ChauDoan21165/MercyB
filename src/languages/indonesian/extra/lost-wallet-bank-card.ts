@@ -12,6 +12,7 @@ type LessonSentence = {
 };
 
 type VocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -21,6 +22,7 @@ type VocabEntry = {
 };
 
 type DialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -137,6 +139,7 @@ export const lostWalletBankCardLessons: IndonesianLesson[] = [
       "Chunks to memorize: `Dompet saya hilang`, `Di dompet ada...`, `Saya perlu membuat laporan kehilangan`, `Kapan terakhir...?`. Vietnamese speakers should distinguish `hilang` (lost) from formal `kehilangan` (loss/the state of losing).",
     vocabulary: [
       {
+        cell_id: "ccc316e0-ba44-453b-a143-c175d970100a",
         word: "dompet hilang",
         en: "lost wallet",
         vi: "ví bị mất",
@@ -145,6 +148,7 @@ export const lostWalletBankCardLessons: IndonesianLesson[] = [
         pronunciation_en: "DOM-pet HEE-lang",
       },
       {
+        cell_id: "3f4bcb5e-76fe-4be0-a03b-567840c63806",
         word: "KTP",
         en: "Indonesian ID card",
         vi: "căn cước Indonesia",
@@ -153,6 +157,7 @@ export const lostWalletBankCardLessons: IndonesianLesson[] = [
         pronunciation_en: "ka-te-PE",
       },
       {
+        cell_id: "567f4925-4bb1-4785-9ed5-22d59a98a99b",
         word: "uang tunai",
         en: "cash",
         vi: "tiền mặt",
@@ -161,6 +166,7 @@ export const lostWalletBankCardLessons: IndonesianLesson[] = [
         pronunciation_en: "OO-ang TOO-nai",
       },
       {
+        cell_id: "c8995cb1-9cb7-49c4-ba37-3db19a514ad1",
         word: "laporan kehilangan",
         en: "loss report",
         vi: "báo cáo/giấy xác nhận mất đồ",
@@ -169,6 +175,7 @@ export const lostWalletBankCardLessons: IndonesianLesson[] = [
         pronunciation_en: "la-PO-ran ke-hi-LANG-an",
       },
       {
+        cell_id: "b3a380fa-7137-45ef-9fa8-60f93957afbd",
         word: "terakhir",
         en: "last / most recent",
         vi: "lần cuối / gần nhất",
@@ -177,6 +184,7 @@ export const lostWalletBankCardLessons: IndonesianLesson[] = [
         pronunciation_en: "ter-A-khir",
       },
       {
+        cell_id: "464b54d8-d746-4acc-8160-2afee7e53038",
         word: "nomor laporan",
         en: "report number",
         vi: "số báo cáo / mã vụ việc",
@@ -187,24 +195,28 @@ export const lostWalletBankCardLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "e2dc6fdf-536d-4ae7-8c2b-d09a0e22fa05",
         speaker: "Pelapor",
         text: "Permisi, Pak. Dompet saya hilang di dalam taksi online.",
         vi: "Xin lỗi anh/bác. Ví của tôi bị mất trong xe taxi công nghệ.",
         en: "Excuse me, Sir. My wallet was lost inside an online taxi.",
       },
       {
+        cell_id: "5ffbe5c6-541d-4559-b823-d1ac7d3362c1",
         speaker: "Petugas",
         text: "Di dompet ada dokumen apa saja?",
         vi: "Trong ví có những giấy tờ gì?",
         en: "What documents were inside the wallet?",
       },
       {
+        cell_id: "8bc0ef41-acc6-4e73-bf23-c9f814707138",
         speaker: "Pelapor",
         text: "Ada KTP, kartu ATM, dan uang tunai.",
         vi: "Có KTP, thẻ ATM và tiền mặt.",
         en: "There was an ID card, ATM card, and cash.",
       },
       {
+        cell_id: "560e63bd-1f05-46aa-aa03-9ec0c7f7d136",
         speaker: "Petugas",
         text: "Baik. Kami buat laporan kehilangan dulu.",
         vi: "Được. Chúng tôi sẽ làm báo cáo mất đồ trước.",
@@ -334,6 +346,7 @@ export const lostWalletBankCardLessons: IndonesianLesson[] = [
       "Banking chunks to memorize: `tolong segera diblokir`, `customer service bank`, `transaksi terakhir`, `kartu pengganti`, `nomor laporan`. Vietnamese speakers should remember `rekening` is a bank account, while `akun` is usually for apps/social media.",
     vocabulary: [
       {
+        cell_id: "b2cef1a9-d91e-406f-b21a-de67b85e44ad",
         word: "kartu ATM",
         en: "ATM card",
         vi: "thẻ ATM",
@@ -342,6 +355,7 @@ export const lostWalletBankCardLessons: IndonesianLesson[] = [
         pronunciation_en: "KAR-tu A-TE-EM",
       },
       {
+        cell_id: "15c3001b-17a5-4f2e-8e9e-3aadcd52a78c",
         word: "blokir kartu",
         en: "block a card",
         vi: "khóa thẻ",
@@ -350,6 +364,7 @@ export const lostWalletBankCardLessons: IndonesianLesson[] = [
         pronunciation_en: "blo-KEER KAR-tu",
       },
       {
+        cell_id: "a1bcfe4b-5a26-4be2-b38a-3ed55405b9e3",
         word: "customer service bank",
         en: "bank customer service",
         vi: "chăm sóc khách hàng ngân hàng",
@@ -358,6 +373,7 @@ export const lostWalletBankCardLessons: IndonesianLesson[] = [
         pronunciation_en: "customer service bank",
       },
       {
+        cell_id: "193252de-e864-45b7-a6ce-c0a12fca965d",
         word: "transaksi terakhir",
         en: "latest transaction",
         vi: "giao dịch gần nhất",
@@ -366,6 +382,7 @@ export const lostWalletBankCardLessons: IndonesianLesson[] = [
         pronunciation_en: "tran-SAK-see ter-A-khir",
       },
       {
+        cell_id: "e7aa5f47-f490-4082-ac87-2d07c110027a",
         word: "kartu pengganti",
         en: "replacement card",
         vi: "thẻ thay thế",
@@ -374,6 +391,7 @@ export const lostWalletBankCardLessons: IndonesianLesson[] = [
         pronunciation_en: "KAR-tu peng-GAN-tee",
       },
       {
+        cell_id: "bdb60d91-5be7-4ed4-82f0-9cb851467cb1",
         word: "kode verifikasi",
         en: "verification code",
         vi: "mã xác minh",
@@ -384,24 +402,28 @@ export const lostWalletBankCardLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "041225dc-9ec6-4d53-b0a6-874a723aa901",
         speaker: "Nasabah",
         text: "Kartu ATM saya hilang, tolong segera diblokir.",
         vi: "Thẻ ATM của tôi bị mất, làm ơn khóa ngay.",
         en: "My ATM card is lost, please block it immediately.",
       },
       {
+        cell_id: "b11a3c86-ceed-4710-856e-6df555271979",
         speaker: "Customer Service",
         text: "Baik, Bu. Apakah KTP Ibu juga hilang?",
         vi: "Vâng, cô/chị. KTP của cô/chị cũng bị mất không?",
         en: "Okay, Ma'am. Was your ID card also lost?",
       },
       {
+        cell_id: "1c9bc8eb-ba26-4335-8ad7-d1ff255e94a3",
         speaker: "Nasabah",
         text: "Iya, KTP saya juga hilang bersama dompet.",
         vi: "Vâng, KTP của tôi cũng bị mất cùng ví.",
         en: "Yes, my ID card was also lost with the wallet.",
       },
       {
+        cell_id: "94d99cca-cf7f-46eb-8d82-1dc1e0d9ba6d",
         speaker: "Customer Service",
         text: "Kami blokir kartu dulu, lalu Ibu bisa mengurus kartu pengganti.",
         vi: "Chúng tôi sẽ khóa thẻ trước, rồi cô/chị có thể làm thẻ thay thế.",

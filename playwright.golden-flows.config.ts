@@ -1,5 +1,10 @@
 import { defineConfig, devices } from "@playwright/test";
 
+import { CORRECTION_SOURCE_SYNTHETIC_MARKER_KEY } from "./src/lib/ai-tutor/correctionSourceSyntheticMarker";
+
+const baseURL = process.env.GOLDEN_FLOW_BASE_URL ?? "https://mercyblade.com";
+const baseOrigin = new URL(baseURL).origin;
+
 export default defineConfig({
   testDir: "./tests/golden-flows",
   testMatch: /.*\.pw\.ts$/,
@@ -18,10 +23,24 @@ export default defineConfig({
   ],
 
   use: {
-    baseURL: process.env.GOLDEN_FLOW_BASE_URL ?? "https://mercyblade.com",
+    baseURL,
     trace: "retain-on-failure",
     screenshot: "only-on-failure",
     video: "retain-on-failure",
+    storageState: {
+      cookies: [],
+      origins: [
+        {
+          origin: baseOrigin,
+          localStorage: [
+            {
+              name: CORRECTION_SOURCE_SYNTHETIC_MARKER_KEY,
+              value: "1",
+            },
+          ],
+        },
+      ],
+    },
     ...devices["Desktop Chrome"],
   },
 });

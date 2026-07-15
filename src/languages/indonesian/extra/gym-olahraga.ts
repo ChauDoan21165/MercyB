@@ -16,6 +16,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   /** Indonesian word/phrase. */
   word: string;
   /** English meaning. */
@@ -31,6 +32,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   /** Indonesian line. */
   text: string;
@@ -193,6 +195,7 @@ export const lessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: `latihan` = training/session, `olahraga` = exercise/sport, `angkat beban` = lift weights, `otot` = muscle. Indonesian has no verb conjugation, so schedule sentences stay compact: `Saya olahraga tiga kali seminggu`, `Saya latihan kaki hari ini`, `Saya istirahat besok`.",
     vocabulary: [
       {
+        cell_id: "4d5b6a03-3d47-4e03-be30-04e95fb4a40d",
         word: "olahraga",
         en: "exercise / sport",
         vi: "tập thể thao / thể thao",
@@ -201,6 +204,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "oh-lah-RAH-ga",
       },
       {
+        cell_id: "67a74673-d709-436f-a2dc-f2898029fdf9",
         word: "fitness",
         en: "fitness / gym workout",
         vi: "tập fitness / tập gym",
@@ -209,6 +213,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "FIT-ness",
       },
       {
+        cell_id: "733a16e4-e0bb-475f-b451-ddc73f131c59",
         word: "angkat beban",
         en: "to lift weights",
         vi: "nâng tạ",
@@ -217,6 +222,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "ANG-kat BE-ban",
       },
       {
+        cell_id: "6031327b-27cd-4ae4-a083-72b9ecedd74f",
         word: "treadmill",
         en: "treadmill",
         vi: "máy chạy bộ",
@@ -225,6 +231,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "TRED-mill",
       },
       {
+        cell_id: "116c8896-56fe-4bfb-be45-86b6a4037fbb",
         word: "personal trainer",
         en: "personal trainer",
         vi: "huấn luyện viên cá nhân",
@@ -233,6 +240,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "PER-so-nal TRAY-ner",
       },
       {
+        cell_id: "8a17705a-015d-4155-a156-0ebf40651169",
         word: "member",
         en: "member",
         vi: "hội viên",
@@ -241,6 +249,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "MEM-ber",
       },
       {
+        cell_id: "d5d01be5-5299-409a-9b94-89b6d51e22f0",
         word: "suplemen",
         en: "supplement",
         vi: "thực phẩm bổ sung",
@@ -249,6 +258,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "su-ple-MEN",
       },
       {
+        cell_id: "4c6cd8af-3275-4af0-b72b-b32934319c14",
         word: "otot",
         en: "muscle",
         vi: "cơ bắp",
@@ -257,6 +267,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "OH-tot",
       },
       {
+        cell_id: "c40c59ba-9d06-4744-b092-a230e96e2af7",
         word: "pemanasan",
         en: "warm-up",
         vi: "khởi động",
@@ -265,6 +276,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "pe-MA-nas-an",
       },
       {
+        cell_id: "ce098ccf-2545-4024-9588-548716a07922",
         word: "istirahat",
         en: "rest",
         vi: "nghỉ ngơi",
@@ -275,30 +287,35 @@ export const lessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "ff5e11ed-7b12-4d8b-965d-6f5dca4709a5",
         speaker: "Resepsionis",
         text: "Halo, mau daftar member gym?",
         vi: "Xin chào, bạn muốn đăng ký hội viên phòng gym à?",
         en: "Hello, do you want to register as a gym member?",
       },
       {
+        cell_id: "86cbb2ad-e601-4cdd-b4a3-09690e02266d",
         speaker: "Khach",
         text: "Iya, saya mau member bulanan.",
         vi: "Vâng, tôi muốn gói hội viên theo tháng.",
         en: "Yes, I want a monthly membership.",
       },
       {
+        cell_id: "7fd85754-2935-4aa1-b3aa-7c297c4bf5bc",
         speaker: "Khach",
         text: "Treadmill ini masih dipakai?",
         vi: "Máy chạy bộ này còn đang được dùng không?",
         en: "Is this treadmill still being used?",
       },
       {
+        cell_id: "fc3720bd-fe62-4f89-bbea-4be31c67fcab",
         speaker: "Member lain",
         text: "Tidak, silakan pakai. Saya sudah selesai.",
         vi: "Không, bạn cứ dùng đi. Tôi xong rồi.",
         en: "No, please use it. I am finished.",
       },
       {
+        cell_id: "e8c6f923-9774-444b-9fec-4108bfe78654",
         speaker: "Personal trainer",
         text: "Pemanasan dulu, lalu kita latihan otot kaki.",
         vi: "Khởi động trước, rồi chúng ta tập cơ chân.",

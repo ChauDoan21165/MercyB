@@ -18,6 +18,7 @@ export type UrduSentence = {
 };
 
 export type UrduVocabEntry = {
+  cell_id?: string;
   ur: string;
   romanization: string;
   vi: string;
@@ -26,6 +27,7 @@ export type UrduVocabEntry = {
 };
 
 export type UrduDialogueLine = {
+  cell_id?: string;
   speaker: string;
   ur: string;
   romanization: string;
@@ -110,13 +112,14 @@ export const lessons: UrduLesson[] = [
       },
     ],
     vocabulary: [
-      { ur: "رپورٹ", romanization: "report", vi: "báo cáo", en: "report", pos: "noun" },
-      { ur: "مکمل", romanization: "mukammal", vi: "hoàn thành", en: "complete", pos: "adjective" },
-      { ur: "جاری", romanization: "jaari", vi: "đang tiếp diễn", en: "ongoing", pos: "adjective" },
-      { ur: "مزید وقت", romanization: "mazeed waqt", vi: "thêm thời gian", en: "more time", pos: "phrase" },
+      { cell_id: "5d66dd1f-1cc0-423d-a37b-40511ce4acc9", ur: "رپورٹ", romanization: "report", vi: "báo cáo", en: "report", pos: "noun" },
+      { cell_id: "2ab4e445-39f9-4f35-8205-1274698e8843", ur: "مکمل", romanization: "mukammal", vi: "hoàn thành", en: "complete", pos: "adjective" },
+      { cell_id: "a3de8283-61af-41dd-9645-518282d7abb8", ur: "جاری", romanization: "jaari", vi: "đang tiếp diễn", en: "ongoing", pos: "adjective" },
+      { cell_id: "c32c2293-5d5b-479c-8f01-c7c8249e57df", ur: "مزید وقت", romanization: "mazeed waqt", vi: "thêm thời gian", en: "more time", pos: "phrase" },
     ],
     dialogue: [
       {
+        cell_id: "174f65d1-5cbc-4e4e-a4a4-1433470da85f",
         speaker: "A",
         ur: "کیا رپورٹ تیار ہے؟",
         romanization: "kya report tayyar hai?",
@@ -125,6 +128,7 @@ export const lessons: UrduLesson[] = [
         register: "neutral",
       },
       {
+        cell_id: "6a43e28d-aae5-41ef-8280-b6a5c418cc7a",
         speaker: "B",
         ur: "جی، میں نے رپورٹ مکمل کر لی ہے۔",
         romanization: "ji, main ne report mukammal kar li hai.",
@@ -193,10 +197,10 @@ export const lessons: UrduLesson[] = [
       },
     ],
     vocabulary: [
-      { ur: "پہلے", romanization: "pehle", vi: "trước hết", en: "first", pos: "connector" },
-      { ur: "پھر", romanization: "phir", vi: "rồi / sau đó", en: "then", pos: "connector" },
-      { ur: "آخر میں", romanization: "aakhir main", vi: "cuối cùng", en: "finally", pos: "connector" },
-      { ur: "رسید", romanization: "raseed", vi: "biên lai", en: "receipt", pos: "noun" },
+      { cell_id: "127cbf20-0d13-4430-a2c7-4bd974b45d47", ur: "پہلے", romanization: "pehle", vi: "trước hết", en: "first", pos: "connector" },
+      { cell_id: "ec4c560b-7a5b-448e-a3f0-d147bc0d5f90", ur: "پھر", romanization: "phir", vi: "rồi / sau đó", en: "then", pos: "connector" },
+      { cell_id: "3626339f-253d-432b-b9a9-ef98d42105b2", ur: "آخر میں", romanization: "aakhir main", vi: "cuối cùng", en: "finally", pos: "connector" },
+      { cell_id: "d29da156-8751-447a-80ba-d5c0942cf05c", ur: "رسید", romanization: "raseed", vi: "biên lai", en: "receipt", pos: "noun" },
     ],
     exercises: [
       {
@@ -250,13 +254,14 @@ export const lessons: UrduLesson[] = [
       },
     ],
     vocabulary: [
-      { ur: "مشورہ", romanization: "mashwara", vi: "lời khuyên / tư vấn", en: "advice", pos: "noun" },
-      { ur: "نسخہ", romanization: "nuskha", vi: "đơn thuốc", en: "prescription", pos: "noun" },
-      { ur: "درخواست", romanization: "darkhwast", vi: "đơn yêu cầu", en: "application/request", pos: "noun" },
-      { ur: "اگلا قدم", romanization: "agla qadam", vi: "bước tiếp theo", en: "next step", pos: "phrase" },
+      { cell_id: "6c6e684d-0cb4-4619-b04d-df7e11167849", ur: "مشورہ", romanization: "mashwara", vi: "lời khuyên / tư vấn", en: "advice", pos: "noun" },
+      { cell_id: "4a7d3476-10ec-4625-a4c7-d160891c7999", ur: "نسخہ", romanization: "nuskha", vi: "đơn thuốc", en: "prescription", pos: "noun" },
+      { cell_id: "e783c47a-0968-4f60-a521-6c13e4f4a380", ur: "درخواست", romanization: "darkhwast", vi: "đơn yêu cầu", en: "application/request", pos: "noun" },
+      { cell_id: "9ec926e5-cffe-41d9-bc89-82ce8fe1cfc7", ur: "اگلا قدم", romanization: "agla qadam", vi: "bước tiếp theo", en: "next step", pos: "phrase" },
     ],
     dialogue: [
       {
+        cell_id: "a3197cf2-05a7-4226-9114-72925d3aec15",
         speaker: "Learner",
         ur: "براہ کرم مجھے اگلا قدم بتا دیجیے۔",
         romanization: "barah-e-karam mujhe agla qadam bata dijiye.",
@@ -265,6 +270,7 @@ export const lessons: UrduLesson[] = [
         register: "polite",
       },
       {
+        cell_id: "b9d52142-56d8-445a-b5ce-7462e08e7401",
         speaker: "Clerk",
         ur: "پہلے یہ فارم جمع کر دیجیے۔",
         romanization: "pehle yeh form jama kar dijiye.",
@@ -326,10 +332,10 @@ export const lessons: UrduLesson[] = [
       },
     ],
     vocabulary: [
-      { ur: "میرے خیال میں", romanization: "mere khayal main", vi: "theo tôi", en: "in my view", pos: "frame" },
-      { ur: "مجھے لگتا ہے", romanization: "mujhe lagta hai", vi: "tôi nghĩ / tôi cảm thấy", en: "I think", pos: "frame" },
-      { ur: "اس لیے کہ", romanization: "is liye ke", vi: "bởi vì", en: "because", pos: "connector" },
-      { ur: "بہتر", romanization: "behtar", vi: "tốt hơn", en: "better", pos: "adjective" },
+      { cell_id: "56222673-426e-41e7-9beb-69d12b9a261d", ur: "میرے خیال میں", romanization: "mere khayal main", vi: "theo tôi", en: "in my view", pos: "frame" },
+      { cell_id: "fdaf120f-f567-416b-80f3-30cde6558dc6", ur: "مجھے لگتا ہے", romanization: "mujhe lagta hai", vi: "tôi nghĩ / tôi cảm thấy", en: "I think", pos: "frame" },
+      { cell_id: "b1b21273-9b19-42c9-b3ee-a6330cae1151", ur: "اس لیے کہ", romanization: "is liye ke", vi: "bởi vì", en: "because", pos: "connector" },
+      { cell_id: "d0d8319d-7ebc-4ab2-9a71-c3c15acde3b4", ur: "بہتر", romanization: "behtar", vi: "tốt hơn", en: "better", pos: "adjective" },
     ],
     exercises: [
       {
@@ -380,9 +386,9 @@ export const lessons: UrduLesson[] = [
       },
     ],
     vocabulary: [
-      { ur: "جو... وہ...", romanization: "jo... woh...", vi: "cái/người nào... thì...", en: "which/who... that...", pos: "frame" },
-      { ur: "جہاں... وہاں...", romanization: "jahan... wahan...", vi: "ở đâu... ở đó...", en: "where... there...", pos: "frame" },
-      { ur: "جب... تب...", romanization: "jab... tab...", vi: "khi... lúc đó...", en: "when... then...", pos: "frame" },
+      { cell_id: "cd3ac6ee-fb04-4727-9a23-14545df90bae", ur: "جو... وہ...", romanization: "jo... woh...", vi: "cái/người nào... thì...", en: "which/who... that...", pos: "frame" },
+      { cell_id: "fd34b7ad-56fa-4182-9a79-c01444e536aa", ur: "جہاں... وہاں...", romanization: "jahan... wahan...", vi: "ở đâu... ở đó...", en: "where... there...", pos: "frame" },
+      { cell_id: "d11a2e1c-542e-4833-ad7c-22776cfe31bb", ur: "جب... تب...", romanization: "jab... tab...", vi: "khi... lúc đó...", en: "when... then...", pos: "frame" },
     ],
     exercises: [
       {

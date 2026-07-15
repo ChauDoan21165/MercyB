@@ -29,6 +29,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   /** Indonesian word/phrase. */
   word: string;
   /** English meaning. */
@@ -44,6 +45,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   /** Indonesian line. */
   text: string;
@@ -323,6 +325,7 @@ export const lessons: IndonesianLesson[] = [
     vocabulary: [
       // Venue & roles
       {
+        cell_id: "e48b8874-8cd1-41fc-8346-5444b85ee4b9",
         word: "warung",
         en: "small eatery / food stall",
         vi: "quán ăn nhỏ / quán bình dân",
@@ -331,6 +334,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "WA-rung — humble eatery; a bigger one is a `restoran`",
       },
       {
+        cell_id: "1c5d4477-92ac-4c7f-b62c-f039161e109f",
         word: "pelayan",
         en: "waiter / server",
         vi: "nhân viên phục vụ",
@@ -339,6 +343,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "pe-la-YAN — root `layan` (serve) + `pe-...-an`",
       },
       {
+        cell_id: "2a97a794-bc7c-4976-820c-410f3bdbf9a6",
         word: "menu",
         en: "menu / dish",
         vi: "thực đơn / món",
@@ -348,6 +353,7 @@ export const lessons: IndonesianLesson[] = [
       },
       // Order & service actions
       {
+        cell_id: "76b4b289-22cb-43cf-8252-2eff735b7464",
         word: "pesan",
         en: "to order",
         vi: "gọi món / đặt",
@@ -356,6 +362,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "pe-SAN — the noun is `pesanan` (the placed order)",
       },
       {
+        cell_id: "ace8cc07-b152-4dc2-985f-f4dc5ab81b65",
         word: "silakan",
         en: "please / go ahead",
         vi: "mời (mời ngồi, mời dùng)",
@@ -364,6 +371,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "si-LA-kan — NO `h`; don't write `silahkan`",
       },
       {
+        cell_id: "194b3c4d-388c-4128-88a9-8ff6d71efe4a",
         word: "bayar",
         en: "to pay",
         vi: "trả tiền / thanh toán",
@@ -372,6 +380,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "BA-yar — `membayar` is the formal form",
       },
       {
+        cell_id: "1321c858-9cbe-4a81-8f72-82c991feb350",
         word: "tunai",
         en: "cash",
         vi: "tiền mặt",
@@ -380,6 +389,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "TU-nai — opposite of `kartu` (card)",
       },
       {
+        cell_id: "37319ba9-c53a-40d8-82bb-0e63f183fa18",
         word: "kembalian",
         en: "change (money returned)",
         vi: "tiền thừa / tiền thối",
@@ -389,6 +399,7 @@ export const lessons: IndonesianLesson[] = [
       },
       // Food & drink basics
       {
+        cell_id: "bd063ded-af4e-44fb-bf65-01eeb568f0fa",
         word: "makan",
         en: "to eat",
         vi: "ăn",
@@ -397,6 +408,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "MA-kan — `makanan` = food (noun)",
       },
       {
+        cell_id: "f66270e4-ac1c-40a8-bf0c-934ce2688260",
         word: "minum",
         en: "to drink",
         vi: "uống",
@@ -405,6 +417,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "MI-num — `minuman` = drink (noun)",
       },
       {
+        cell_id: "15315048-39ca-42b5-a60e-cbf15ebde77c",
         word: "pedas",
         en: "spicy",
         vi: "cay",
@@ -413,6 +426,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "pe-DAS — the golden question: `pedas atau tidak?`",
       },
       {
+        cell_id: "fac83e71-5c43-4072-9bf8-a8711d840533",
         word: "nasi goreng",
         en: "fried rice",
         vi: "cơm chiên",
@@ -421,6 +435,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "NA-si GO-reng — the national dish; `nasi` = rice, `goreng` = fried",
       },
       {
+        cell_id: "c14eb1f1-43f5-416d-bd60-47f01805f649",
         word: "es teh",
         en: "iced tea",
         vi: "trà đá",
@@ -429,6 +444,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "es teh — `es` = ice; the most common drink",
       },
       {
+        cell_id: "57da1928-5cc1-41cd-aa06-ea0a2019b659",
         word: "halal",
         en: "halal (permissible under Islam)",
         vi: "halal (hợp lệ theo đạo Hồi)",
@@ -437,6 +453,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "ha-LAL — most guests are Muslim; avoid `babi` (pork) and alcohol",
       },
       {
+        cell_id: "ac77da91-2a92-4013-8781-80c682c7f503",
         word: "habis",
         en: "sold out / finished",
         vi: "hết (hàng)",
@@ -448,48 +465,56 @@ export const lessons: IndonesianLesson[] = [
     dialogue: [
       // Dialogue: Seating, ordering, a small mistake, and payment
       {
+        cell_id: "4417800b-d7c3-4850-94f4-9eab38b1f2bf",
         speaker: "Pelayan",
         text: "Selamat siang, Pak. Untuk berapa orang?",
         vi: "Chào buổi trưa, anh. Cho mấy người ạ?",
         en: "Good afternoon, sir. For how many people?",
       },
       {
+        cell_id: "dcff3784-a981-48c2-adc4-4fcd517b228c",
         speaker: "Tamu",
         text: "Dua orang. Ada meja dekat jendela?",
         vi: "Hai người. Có bàn gần cửa sổ không?",
         en: "Two people. Is there a table near the window?",
       },
       {
+        cell_id: "68e77bb3-8cfd-476a-933f-14eb54c7473b",
         speaker: "Pelayan",
         text: "Ada, silakan duduk di sini. Mau pesan apa?",
         vi: "Có ạ, mời anh ngồi đây. Anh muốn gọi món gì ạ?",
         en: "Yes, please sit here. What would you like to order?",
       },
       {
+        cell_id: "369feb24-ca21-44d4-80bb-e481e62f37a5",
         speaker: "Tamu",
         text: "Dua nasi goreng dan dua es teh. Tidak pedas, ya.",
         vi: "Hai phần cơm chiên và hai trà đá. Không cay nhé.",
         en: "Two fried rice and two iced teas. Not spicy, please.",
       },
       {
+        cell_id: "ded0bb09-b92a-4348-a2fd-da4aaffe2f55",
         speaker: "Pelayan",
         text: "Baik. Saya ulangi: dua nasi goreng tidak pedas, dua es teh. Mohon ditunggu, ya.",
         vi: "Vâng. Em nhắc lại: hai cơm chiên không cay, hai trà đá. Xin chờ một chút ạ.",
         en: "Okay. Let me read back: two not-spicy fried rice, two iced teas. Please wait a moment.",
       },
       {
+        cell_id: "53800de5-0633-4317-a1b7-4f13a82823f4",
         speaker: "Pelayan",
         text: "Maaf, Pak, satu es teh sedang habis. Boleh saya ganti dengan es jeruk?",
         vi: "Xin lỗi anh, một trà đá đã hết. Em đổi sang nước cam đá được không ạ?",
         en: "Sorry, sir, one iced tea is sold out. May I replace it with iced orange?",
       },
       {
+        cell_id: "e6fc0358-0c7c-4433-ad5f-a9435ba8142d",
         speaker: "Tamu",
         text: "Boleh. Nanti bayar pakai kartu, ya.",
         vi: "Được. Lát nữa thanh toán bằng thẻ nhé.",
         en: "Sure. We'll pay by card later.",
       },
       {
+        cell_id: "90702258-aff2-4f51-82a2-662ddaf64868",
         speaker: "Pelayan",
         text: "Baik, Pak. Terima kasih, silakan datang lagi.",
         vi: "Vâng ạ. Cảm ơn anh, hẹn gặp lại ạ.",

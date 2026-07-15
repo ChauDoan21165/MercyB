@@ -89,6 +89,7 @@ export const lessons: GermanLesson[] = [
     "tip_advice_en": "Learn each noun WITH its article — der/die/das is part of the word, not extra information. 'der Chef' (male boss) vs 'die Chefin' (female boss) — German marks gender on most job titles. When you don't know the person's gender, default to the masculine form.",
     "vocabulary": [
       {
+        cell_id: "6c15800b-19df-4843-a723-dc4e05cbe2fb",
         "word": "das Büro",
         "en": "office",
         "vi": "văn phòng",
@@ -97,6 +98,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dahs BUE-roh — round your lips for 'oo' but say 'ee'"
       },
       {
+        cell_id: "9ba8c490-a7cc-41e9-a6ba-39f0c92272e5",
         "word": "der Schreibtisch",
         "en": "desk",
         "vi": "bàn làm việc",
@@ -105,6 +107,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dayr SHRYBE-tish — 'sch' = 'sh', 'ei' = 'eye'"
       },
       {
+        cell_id: "9efba8f1-46d6-4d4c-8334-c9570e685101",
         "word": "der Computer",
         "en": "computer",
         "vi": "máy tính",
@@ -113,6 +116,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dayr kom-PYOO-tah — borrowed from English but German stress"
       },
       {
+        cell_id: "b3f76eed-6858-4fb3-bf8c-75b3d5a911ed",
         "word": "der Kollege",
         "en": "colleague (m)",
         "vi": "đồng nghiệp nam",
@@ -121,6 +125,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dayr koh-LAY-guh — male colleague"
       },
       {
+        cell_id: "53cbbaa6-a8f3-49aa-90c3-8f86863db9b1",
         "word": "die Kollegin",
         "en": "colleague (f)",
         "vi": "đồng nghiệp nữ",
@@ -129,6 +134,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee koh-LAY-gin — '-in' suffix marks female"
       },
       {
+        cell_id: "ad400e4f-7d3f-4b64-ac47-86cf2973db77",
         "word": "die Besprechung",
         "en": "meeting",
         "vi": "cuộc họp",
@@ -137,6 +143,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee buh-SHPRESH-oong — 'sp' inside word = 'shp'"
       },
       {
+        cell_id: "2f85be17-685c-49a2-9ac5-e48516cae8e8",
         "word": "der Chef",
         "en": "boss (m)",
         "vi": "sếp nam",
@@ -145,6 +152,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dayr SHEF — short, like the English chef"
       },
       {
+        cell_id: "12696fcd-6fd4-400d-b6f3-c99f7a4e2acc",
         "word": "die Chefin",
         "en": "boss (f)",
         "vi": "sếp nữ",
@@ -153,6 +161,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee SHEF-in — '-in' suffix marks female"
       },
       {
+        cell_id: "4f458ca9-a54d-434e-8023-181c5b755ff6",
         "word": "arbeiten",
         "en": "to work",
         "vi": "làm việc",
@@ -161,6 +170,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "AR-bye-ten — German 'r' is uvular, 'ei' = 'eye'"
       },
       {
+        cell_id: "10a186e6-8a89-4f0e-bbc1-bf95b7862021",
         "word": "anfangen",
         "en": "to start",
         "vi": "bắt đầu",
@@ -171,21 +181,25 @@ export const lessons: GermanLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "d04ad677-ab1e-4406-a323-4217de4a8681",
         "speaker": "A",
         "text": "Wo arbeitest du?",
         "vi": "Bạn làm việc ở đâu?"
       },
       {
+        cell_id: "9dd4d838-750c-4d75-b08d-ceefa45b47b7",
         "speaker": "B",
         "text": "Ich arbeite in einem kleinen Büro in Berlin.",
         "vi": "Tôi làm việc ở một văn phòng nhỏ ở Berlin."
       },
       {
+        cell_id: "c38610a8-f9c8-489f-87fc-adc8ad1cd2c7",
         "speaker": "A",
         "text": "Wann beginnst du?",
         "vi": "Bạn bắt đầu lúc mấy giờ?"
       },
       {
+        cell_id: "6b8d8876-3785-49b7-9c79-24292f69700b",
         "speaker": "B",
         "text": "Um neun Uhr. Wir haben jeden Tag eine kurze Besprechung.",
         "vi": "Lúc 9 giờ. Chúng tôi họp ngắn mỗi ngày."
@@ -344,6 +358,7 @@ export const lessons: GermanLesson[] = [
     "tip_advice_en": "Separable verbs like 'anrufen' or 'zurückrufen' split when conjugated: 'Ich rufe an' (I call), 'Sie ruft zurück' (she calls back) — the 'an' / 'zurück' jumps to the end of the clause. This is one of German's signature features and takes real practice. The infinitive is what you see in dictionaries; the conjugated form is what you'll actually say.",
     "vocabulary": [
       {
+        cell_id: "fb42fa95-9e6c-4d04-bc79-4040efe39e0d",
         "word": "die Email",
         "en": "email",
         "vi": "email",
@@ -352,6 +367,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee AY-mayl — close to English"
       },
       {
+        cell_id: "1e3402aa-fdd8-47e6-bf1e-f47a88ad3f73",
         "word": "das Telefon",
         "en": "telephone",
         "vi": "điện thoại",
@@ -360,6 +376,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dahs tay-leh-FOHN — French-style stress on last syllable"
       },
       {
+        cell_id: "91848238-6fff-4c01-812a-cff8b757c63b",
         "word": "der Termin",
         "en": "appointment",
         "vi": "cuộc hẹn",
@@ -368,6 +385,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dayr tair-MEEN — stress on second syllable"
       },
       {
+        cell_id: "2e5bb1f3-0bed-4cef-9e60-60ccf156d1a4",
         "word": "die Datei",
         "en": "file",
         "vi": "file/tệp",
@@ -376,6 +394,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee dah-TYE — 'ei' = 'eye'"
       },
       {
+        cell_id: "94273da4-5038-4efd-bcc4-8ac8b1112286",
         "word": "die Nachricht",
         "en": "message",
         "vi": "tin nhắn",
@@ -384,6 +403,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee NAHKH-rikht — hard ch (Scottish 'loch') in middle"
       },
       {
+        cell_id: "311fccd9-efd1-49e6-a8fd-4b6ca832b4e2",
         "word": "schreiben",
         "en": "to write",
         "vi": "viết",
@@ -392,6 +412,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "SHRYBE-en — 'sch' = 'sh', 'ei' = 'eye'"
       },
       {
+        cell_id: "c9c8df47-ac2f-4a14-8f9d-01e6cbb87855",
         "word": "anrufen",
         "en": "to call",
         "vi": "gọi điện",
@@ -400,6 +421,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "AHN-roo-fen — separable (an + rufen)"
       },
       {
+        cell_id: "b2e399fe-d2f3-4750-98a6-8d19da7a6fe2",
         "word": "zurückrufen",
         "en": "to call back",
         "vi": "gọi lại",
@@ -408,6 +430,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "tsoo-REWK-roo-fen — 'ü' rounded 'ee'"
       },
       {
+        cell_id: "451820d9-1c1f-4a8a-a822-239492127e98",
         "word": "senden",
         "en": "to send",
         "vi": "gửi",
@@ -416,6 +439,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "ZEN-den — 's' before vowel = 'z'"
       },
       {
+        cell_id: "91efc28d-8f8f-42e8-821a-6c0f63c3d006",
         "word": "antworten",
         "en": "to reply",
         "vi": "trả lời",
@@ -426,21 +450,25 @@ export const lessons: GermanLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "e07c3ad3-40ed-40dc-a04a-9380932d4301",
         "speaker": "A",
         "text": "Guten Tag, hier ist Anna Schmidt. Kann ich bitte mit Herrn Müller sprechen?",
         "vi": "Xin chào, đây là Anna Schmidt. Tôi có thể nói chuyện với ông Müller được không?"
       },
       {
+        cell_id: "29a142da-ddd0-40da-877d-b25dfa937c22",
         "speaker": "B",
         "text": "Einen Moment bitte. Er ist gerade nicht da.",
         "vi": "Xin chờ một lát. Ông ấy không có ở đây ngay bây giờ."
       },
       {
+        cell_id: "4daa2d9f-f4d2-4b88-a845-9d422377c094",
         "speaker": "A",
         "text": "Können Sie ihm bitte sagen, dass ich angerufen habe?",
         "vi": "Xin nói với ông ấy là tôi đã gọi được không?"
       },
       {
+        cell_id: "6a9de793-8906-485e-bdcc-b1dc84270331",
         "speaker": "B",
         "text": "Natürlich. Ich gebe ihm Ihre Nachricht.",
         "vi": "Tất nhiên. Tôi sẽ chuyển tin nhắn của bạn."
@@ -599,6 +627,7 @@ export const lessons: GermanLesson[] = [
     "tip_advice_en": "'Ich bin einverstanden' (I agree) is more polite than just 'Ja'. In work meetings use formal phrasing: 'Ich möchte vorschlagen' (I'd like to suggest) instead of 'Ich will' (I want). Avoid 'will' in formal contexts — it lands as a command rather than a request.",
     "vocabulary": [
       {
+        cell_id: "a8758a0a-0da8-4baf-bc6a-e1dfaefaae42",
         "word": "die Sitzung",
         "en": "session/meeting",
         "vi": "phiên họp",
@@ -607,6 +636,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee ZIT-tsoong — 's' before vowel = 'z'"
       },
       {
+        cell_id: "a0db2314-1306-4a0f-b98d-de540a507c8a",
         "word": "die Tagesordnung",
         "en": "agenda",
         "vi": "chương trình họp",
@@ -615,6 +645,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee TAH-ges-ord-noong — compound: Tag + es + Ordnung"
       },
       {
+        cell_id: "7e091676-d9dd-4336-9fe0-05eab5b8df59",
         "word": "der Vorschlag",
         "en": "suggestion",
         "vi": "đề xuất",
@@ -623,6 +654,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dayr FOR-shlahk — final 'g' devoices to 'k'"
       },
       {
+        cell_id: "bf807726-acfe-4406-81da-a6fee9aec932",
         "word": "die Entscheidung",
         "en": "decision",
         "vi": "quyết định",
@@ -631,6 +663,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee ent-SHY-doong — 'sch' = 'sh', 'ei' = 'eye'"
       },
       {
+        cell_id: "3e5567df-946b-4dcf-b030-70511487c56f",
         "word": "die Frage",
         "en": "question",
         "vi": "câu hỏi",
@@ -639,6 +672,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee FRAH-guh — long 'ah'"
       },
       {
+        cell_id: "72f4ab55-e663-4d49-94f9-fc2cf6630b9e",
         "word": "diskutieren",
         "en": "to discuss",
         "vi": "thảo luận",
@@ -647,6 +681,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dis-koo-TEER-en — borrowed, stress on third syllable"
       },
       {
+        cell_id: "b8ee25ae-7cdb-464a-8e3e-5b5408c3ec88",
         "word": "vorschlagen",
         "en": "to suggest",
         "vi": "đề xuất",
@@ -655,6 +690,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "FOR-shlah-gen — separable (vor + schlagen)"
       },
       {
+        cell_id: "6383abad-9149-458e-bda0-0ef1eb1a8a8f",
         "word": "zustimmen",
         "en": "to agree",
         "vi": "đồng ý",
@@ -663,6 +699,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "TSOO-shtim-en — separable, 'z' = 'ts'"
       },
       {
+        cell_id: "8a6c6b5f-d371-4e6e-aad5-10b2727e9d8d",
         "word": "ablehnen",
         "en": "to reject",
         "vi": "từ chối",
@@ -671,6 +708,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "AHP-lay-nen — separable (ab + lehnen)"
       },
       {
+        cell_id: "76e2e5f2-d032-4061-9436-7d5754e28973",
         "word": "einverstanden",
         "en": "agreed",
         "vi": "đồng ý",
@@ -681,21 +719,25 @@ export const lessons: GermanLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "65122234-5262-4e27-91b5-e7f215bb1922",
         "speaker": "A",
         "text": "Ich schlage vor, dass wir das Projekt im Mai starten.",
         "vi": "Tôi đề xuất bắt đầu dự án vào tháng 5."
       },
       {
+        cell_id: "ba923889-337d-4325-ab4f-71973620a1a3",
         "speaker": "B",
         "text": "Das ist zu früh. Können wir bis Juni warten?",
         "vi": "Sớm quá. Chúng ta có thể đợi đến tháng 6 không?"
       },
       {
+        cell_id: "6368f8dd-7605-4624-a71f-455992df295e",
         "speaker": "A",
         "text": "Gut, dann beginnen wir am ersten Juni.",
         "vi": "Được, vậy chúng ta bắt đầu ngày 1 tháng 6."
       },
       {
+        cell_id: "c4d96ec3-c09a-4fbc-b862-70c39bf766bd",
         "speaker": "B",
         "text": "Einverstanden. Ich notiere das.",
         "vi": "Đồng ý. Tôi sẽ ghi lại."
@@ -852,6 +894,7 @@ export const lessons: GermanLesson[] = [
     "tip_advice_en": "Interview German is formal: use 'Sie', never 'du'. Shake hands on the way in and the way out. Arrive 5–10 minutes early, but not earlier (it puts pressure on the interviewer). 'Ich freue mich auf Ihre Rückmeldung' (I look forward to your reply) is the polite closing line.",
     "vocabulary": [
       {
+        cell_id: "5d4bde9b-cddd-4208-8571-71fd3b567ddd",
         "word": "die Stelle",
         "en": "position/job",
         "vi": "vị trí công việc",
@@ -860,6 +903,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee SHTEL-uh — 'st' at start = 'sht'"
       },
       {
+        cell_id: "47a42776-53e6-47e8-a195-b2a3e4e4841f",
         "word": "der Beruf",
         "en": "profession",
         "vi": "nghề nghiệp",
@@ -868,6 +912,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dayr buh-ROOF — stress on second syllable"
       },
       {
+        cell_id: "a372849a-3d4e-4cee-b0b1-5e6fa84291cc",
         "word": "die Erfahrung",
         "en": "experience",
         "vi": "kinh nghiệm",
@@ -876,6 +921,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee air-FAH-roong — long 'ah' in middle"
       },
       {
+        cell_id: "a3dafda7-ee1f-4792-b498-654c13dc05a3",
         "word": "die Stärke",
         "en": "strength",
         "vi": "điểm mạnh",
@@ -884,6 +930,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee SHTAIR-kuh — 'ä' = long 'eh'"
       },
       {
+        cell_id: "6980cda3-728a-4946-ae86-c20f4ecd9a85",
         "word": "die Schwäche",
         "en": "weakness",
         "vi": "điểm yếu",
@@ -892,6 +939,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee SHVESH-uh — 'sch' = 'sh', 'w' = 'v'"
       },
       {
+        cell_id: "05d081f5-66a3-4cfb-a66a-6b982a356e3a",
         "word": "der Lebenslauf",
         "en": "CV/resume",
         "vi": "sơ yếu lý lịch",
@@ -900,6 +948,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dayr LAY-bens-lowf — compound: Leben + Lauf, 'au' = 'ow'"
       },
       {
+        cell_id: "71047398-5dde-4e54-8345-27b46e8c1f24",
         "word": "die Bewerbung",
         "en": "application",
         "vi": "đơn xin việc",
@@ -908,6 +957,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee buh-VAIR-boong — long 'ai/ay' in middle"
       },
       {
+        cell_id: "c323b0eb-7d1f-483b-814f-6d62ab6f7b86",
         "word": "das Gespräch",
         "en": "conversation/interview",
         "vi": "buổi trò chuyện/phỏng vấn",
@@ -916,6 +966,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dahs guh-SHPRESH — 'sp' = 'shp', 'ä' = long 'eh'"
       },
       {
+        cell_id: "f2348644-8c20-4eb4-a001-34855f3e674c",
         "word": "sich bewerben",
         "en": "to apply",
         "vi": "ứng tuyển",
@@ -924,6 +975,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "zish buh-VAIR-ben — reflexive verb (sich = oneself)"
       },
       {
+        cell_id: "ca676ed8-4067-46d3-8578-bb3fee93f4a8",
         "word": "anfangen",
         "en": "to start",
         "vi": "bắt đầu",
@@ -934,21 +986,25 @@ export const lessons: GermanLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "aafb7cd4-dff7-4970-9ba4-d249fff9b2ee",
         "speaker": "A",
         "text": "Erzählen Sie mir bitte etwas über sich.",
         "vi": "Xin kể cho tôi đôi điều về bạn."
       },
       {
+        cell_id: "9027a967-f485-403b-a7b9-34037a9ccac7",
         "speaker": "B",
         "text": "Ich heiße Linh und komme aus Vietnam. Ich bin Software-Entwicklerin.",
         "vi": "Tôi tên Linh, đến từ Việt Nam. Tôi là lập trình viên phần mềm."
       },
       {
+        cell_id: "90c1b7a2-7a4f-43d2-a396-6d0e75fe30c7",
         "speaker": "A",
         "text": "Warum wollen Sie bei uns arbeiten?",
         "vi": "Tại sao bạn muốn làm việc với chúng tôi?"
       },
       {
+        cell_id: "5623acc3-49ae-47b3-b70a-a4e3c2a2f093",
         "speaker": "B",
         "text": "Ihr Unternehmen ist innovativ und ich möchte mich weiterentwickeln.",
         "vi": "Công ty của bạn rất sáng tạo và tôi muốn phát triển bản thân thêm."
@@ -1105,6 +1161,7 @@ export const lessons: GermanLesson[] = [
     "tip_advice_en": "'Tut mir leid' (sorry) is for everyday small mistakes. 'Es tut mir sehr leid' (very sorry) is for serious ones. With a manager or formal situation, use 'Ich entschuldige mich' (I apologize). Don't use 'Sorry' in German workplaces — Germans hear it as not serious, even though they understand the word.",
     "vocabulary": [
       {
+        cell_id: "34df3a16-fe0a-4656-ad3a-57fecd4d19b9",
         "word": "das Problem",
         "en": "problem",
         "vi": "vấn đề",
@@ -1113,6 +1170,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dahs proh-BLAYM — stress on second syllable"
       },
       {
+        cell_id: "414c0f9a-a7aa-4210-b28b-2b79693826eb",
         "word": "der Fehler",
         "en": "mistake",
         "vi": "lỗi",
@@ -1121,6 +1179,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dayr FAY-lah — long 'ay'"
       },
       {
+        cell_id: "47000716-f6e6-459d-b88f-a5972410000a",
         "word": "der Stress",
         "en": "stress",
         "vi": "căng thẳng",
@@ -1129,6 +1188,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dayr SHTRESS — borrowed, no schwa"
       },
       {
+        cell_id: "7f8c4cd7-2b60-4940-b33d-9861400fb1cf",
         "word": "die Verspätung",
         "en": "delay",
         "vi": "trễ giờ",
@@ -1137,6 +1197,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee fair-SHPAY-toong — 'sp' = 'shp', 'ä' = long 'ay'"
       },
       {
+        cell_id: "359ab901-aeb3-4532-8224-4d6ae3b44dd9",
         "word": "die Frist",
         "en": "deadline",
         "vi": "hạn chót",
@@ -1145,6 +1206,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee FRIST — short 'i', single syllable"
       },
       {
+        cell_id: "342863f9-2842-43ad-89fe-f31e26d1b104",
         "word": "helfen",
         "en": "to help",
         "vi": "giúp đỡ",
@@ -1153,6 +1215,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "HEL-fen — flat 'e'"
       },
       {
+        cell_id: "d8f57c8a-4157-4f6e-85f4-2e3335d251c9",
         "word": "funktionieren",
         "en": "to function",
         "vi": "hoạt động",
@@ -1161,6 +1224,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "foonk-tsyoh-NEER-en — '-tion' = 'tsyohn'"
       },
       {
+        cell_id: "d0fd4fe0-166c-4536-b073-0261f9da64fe",
         "word": "reparieren",
         "en": "to repair",
         "vi": "sửa chữa",
@@ -1169,6 +1233,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "ray-pah-REER-en — borrowed, stress on third syllable"
       },
       {
+        cell_id: "142981b4-6b1c-416b-a3eb-736ae31cb702",
         "word": "krank",
         "en": "sick",
         "vi": "ốm",
@@ -1177,6 +1242,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "KRAHNK — single syllable, clear final 'k'"
       },
       {
+        cell_id: "47b50cb2-0199-431c-879e-d426f20ee439",
         "word": "müde",
         "en": "tired",
         "vi": "mệt",
@@ -1187,21 +1253,25 @@ export const lessons: GermanLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "ec7f2869-d8ee-4196-b9b7-3d6812012baf",
         "speaker": "A",
         "text": "Was ist los? Du siehst müde aus.",
         "vi": "Có chuyện gì? Bạn trông mệt mỏi."
       },
       {
+        cell_id: "8e821a01-b8ec-43d9-9d9f-d1bbb6b23c3a",
         "speaker": "B",
         "text": "Ich habe heute zu viel zu tun und der Drucker funktioniert nicht.",
         "vi": "Hôm nay tôi có quá nhiều việc và máy in không hoạt động."
       },
       {
+        cell_id: "9b542196-ac47-4733-933b-0b47f0bc7f5a",
         "speaker": "A",
         "text": "Soll ich dir helfen?",
         "vi": "Tôi giúp bạn nhé?"
       },
       {
+        cell_id: "7471fa25-54cf-47fa-8516-b1ce19209a6c",
         "speaker": "B",
         "text": "Ja bitte, das wäre toll.",
         "vi": "Vâng, được vậy thì tuyệt."
@@ -1358,6 +1428,7 @@ export const lessons: GermanLesson[] = [
     "tip_advice_en": "Read large amounts the German way: 'fünfzig Euro' (50 euro), 'hundert Euro' (100 euro). Numbers from 21 onward flip: 'einundzwanzig' is literally 'one-and-twenty' = 21. Get used to that flip when you hear prices — it'll keep tripping you until you stop translating in your head.",
     "vocabulary": [
       {
+        cell_id: "41675b2f-14cb-4456-a065-5cbd8b6fd8b9",
         "word": "die Bank",
         "en": "bank",
         "vi": "ngân hàng",
@@ -1366,6 +1437,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee BAHNK — short 'a', single syllable"
       },
       {
+        cell_id: "4ab59793-f40e-44ed-8232-b4b7b0deee1b",
         "word": "das Konto",
         "en": "account",
         "vi": "tài khoản",
@@ -1374,6 +1446,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dahs KON-toh — short 'o', long 'oh'"
       },
       {
+        cell_id: "f01170a1-0e63-4e9c-92d4-07d23c36b6d5",
         "word": "das Geld",
         "en": "money",
         "vi": "tiền",
@@ -1382,6 +1455,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dahs GELT — final 'd' devoices to 't'"
       },
       {
+        cell_id: "8b6f3de9-7179-4bc6-b0a4-7d4b23e69189",
         "word": "der Geldautomat",
         "en": "ATM",
         "vi": "máy ATM",
@@ -1390,6 +1464,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dayr GELT-ow-toh-maht — compound noun"
       },
       {
+        cell_id: "0c41730a-5c7a-4400-b008-cf1e535551c1",
         "word": "die Karte",
         "en": "card",
         "vi": "thẻ",
@@ -1398,6 +1473,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee KAR-tuh — uvular 'r' between vowels"
       },
       {
+        cell_id: "37a43e6b-aba1-47c9-b665-52526e5396c7",
         "word": "die Überweisung",
         "en": "transfer",
         "vi": "chuyển khoản",
@@ -1406,6 +1482,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee UE-bah-vye-zoong — 'ü' rounded, 'ei' = 'eye'"
       },
       {
+        cell_id: "1fb3fd0e-2b41-4dff-b389-b92b1cdf262b",
         "word": "der Berater",
         "en": "advisor",
         "vi": "nhân viên tư vấn",
@@ -1414,6 +1491,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dayr buh-RAH-tah — long 'ah'"
       },
       {
+        cell_id: "4d540d1a-181e-454e-a9f6-176a95d0d660",
         "word": "eröffnen",
         "en": "to open",
         "vi": "mở",
@@ -1422,6 +1500,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "air-URF-nen — 'ö' rounded 'eh'"
       },
       {
+        cell_id: "1dd2ab4d-3fb9-48ee-912b-ab3aeaeadd7e",
         "word": "wechseln",
         "en": "to exchange",
         "vi": "đổi",
@@ -1430,6 +1509,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "VEK-seln — 'w' = 'v', 'chs' = 'ks'"
       },
       {
+        cell_id: "f5bd9fc0-21ba-44fd-a4c1-ad5b0cd1620c",
         "word": "abheben",
         "en": "to withdraw",
         "vi": "rút (tiền)",
@@ -1440,21 +1520,25 @@ export const lessons: GermanLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "736c5338-14e5-43ab-b724-aa0d5309c035",
         "speaker": "A",
         "text": "Guten Tag, ich möchte ein Konto eröffnen.",
         "vi": "Xin chào, tôi muốn mở tài khoản."
       },
       {
+        cell_id: "e88af469-1ee2-4186-823e-ddbc040287ca",
         "speaker": "B",
         "text": "Gerne. Haben Sie Ihren Ausweis dabei?",
         "vi": "Vâng. Bạn có mang giấy tờ tuỳ thân không?"
       },
       {
+        cell_id: "66f0154d-d3ca-4f75-b100-f2bf4ae114bb",
         "speaker": "A",
         "text": "Ja, hier ist mein Reisepass.",
         "vi": "Có, đây là hộ chiếu của tôi."
       },
       {
+        cell_id: "616b5cc9-5ac5-4252-b86c-a1e80252c49d",
         "speaker": "B",
         "text": "Danke. Bitte füllen Sie dieses Formular aus.",
         "vi": "Cám ơn. Xin điền vào mẫu này."
@@ -1611,6 +1695,7 @@ export const lessons: GermanLesson[] = [
     "tip_advice_en": "'Per Luftpost' (airmail) is fast but expensive. 'Standard' is cheaper but takes 2–4 weeks to Asia. German addresses have a specific shape: street name + house number on the same line, then the 5-digit postal code BEFORE the city ('10115 Berlin'). This is the opposite of US format and the reverse of UK format.",
     "vocabulary": [
       {
+        cell_id: "5e19a99e-f853-489f-bde0-40c3559d8f02",
         "word": "die Post",
         "en": "post office/mail",
         "vi": "bưu điện/thư từ",
@@ -1619,6 +1704,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee POST — short, single syllable"
       },
       {
+        cell_id: "96750fb4-6a1a-4fce-9a68-3053d618d124",
         "word": "das Paket",
         "en": "package",
         "vi": "gói hàng",
@@ -1627,6 +1713,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dahs pah-KAYT — stress on second syllable"
       },
       {
+        cell_id: "3b492e90-ce88-4d3e-92dd-766ad72672ed",
         "word": "der Brief",
         "en": "letter",
         "vi": "thư",
@@ -1635,6 +1722,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dayr BREEF — long 'ee', single syllable"
       },
       {
+        cell_id: "cbe417cb-2aa3-41a6-bac8-3a047bd39bd3",
         "word": "die Briefmarke",
         "en": "stamp",
         "vi": "tem",
@@ -1643,6 +1731,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee BREEF-mar-kuh — compound: Brief + Marke"
       },
       {
+        cell_id: "de2dc294-11fd-48c1-8fb1-d759cfa8d04e",
         "word": "die Adresse",
         "en": "address",
         "vi": "địa chỉ",
@@ -1651,6 +1740,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee ah-DRES-uh — borrowed, German stress"
       },
       {
+        cell_id: "a765da8f-190e-4985-aae2-ceb03cfe420a",
         "word": "der Absender",
         "en": "sender",
         "vi": "người gửi",
@@ -1659,6 +1749,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dayr AHP-zen-dah — separable (ab + Sender)"
       },
       {
+        cell_id: "1db6ad5f-d2ef-4a8a-a72c-b4ca22930146",
         "word": "der Empfänger",
         "en": "recipient",
         "vi": "người nhận",
@@ -1667,6 +1758,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dayr emp-FENG-ah — stress on second syllable"
       },
       {
+        cell_id: "72f5215c-0073-4f50-a87f-7e42489cfdd0",
         "word": "schicken",
         "en": "to send",
         "vi": "gửi",
@@ -1675,6 +1767,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "SHIK-en — 'sch' = 'sh'"
       },
       {
+        cell_id: "bb1232e1-7b5d-48ab-9bca-d8a38cd7c2ad",
         "word": "ankommen",
         "en": "to arrive",
         "vi": "đến nơi",
@@ -1683,6 +1776,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "AHN-kom-en — separable (an + kommen)"
       },
       {
+        cell_id: "8c07d768-917c-4331-889a-6ae09f920a23",
         "word": "wiegen",
         "en": "to weigh",
         "vi": "cân",
@@ -1693,21 +1787,25 @@ export const lessons: GermanLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "9a6197be-a4c9-4826-b70e-f9230f6300fa",
         "speaker": "A",
         "text": "Ich möchte diesen Brief nach Vietnam schicken.",
         "vi": "Tôi muốn gửi thư này đi Việt Nam."
       },
       {
+        cell_id: "5d964ba8-900c-42ff-bb8d-61f829fe8c46",
         "speaker": "B",
         "text": "Per Luftpost oder Standard?",
         "vi": "Gửi máy bay hay tiêu chuẩn?"
       },
       {
+        cell_id: "f6957f1b-1bab-4d62-8de6-596dc1410964",
         "speaker": "A",
         "text": "Per Luftpost bitte. Wie lange dauert das?",
         "vi": "Máy bay nhé. Mất bao lâu?"
       },
       {
+        cell_id: "b7bd28cf-9845-4e4b-ae32-c55ef4c7db61",
         "speaker": "B",
         "text": "Etwa eine Woche. Das macht drei Euro fünfzig.",
         "vi": "Khoảng 1 tuần. Tổng cộng 3 euro 50."
@@ -1864,6 +1962,7 @@ export const lessons: GermanLesson[] = [
     "tip_advice_en": "'Tut weh' (hurts) takes a body part: 'Mein Kopf tut weh' (my head hurts), 'Mein Bauch tut weh' (my stomach hurts). 'Schmerzen' (pains) takes a compound noun: 'Halsschmerzen' (sore throat), 'Kopfschmerzen' (headache). Both structures are correct and used interchangeably.",
     "vocabulary": [
       {
+        cell_id: "d247e3f8-9733-4a8d-bdfc-0ac47764dc15",
         "word": "der Arzt",
         "en": "doctor (m)",
         "vi": "bác sĩ nam",
@@ -1872,6 +1971,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dayr ARTST — final cluster, no schwa"
       },
       {
+        cell_id: "a010d639-4a95-42a4-b616-11c604baa9a0",
         "word": "die Ärztin",
         "en": "doctor (f)",
         "vi": "bác sĩ nữ",
@@ -1880,6 +1980,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee ERTS-tin — '-in' suffix marks female, 'ä' = short 'eh'"
       },
       {
+        cell_id: "7e7a93cc-e4ed-470f-a841-2acd625169c9",
         "word": "die Praxis",
         "en": "doctor's office",
         "vi": "phòng khám",
@@ -1888,6 +1989,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee PRAHK-sis — 'x' = 'ks'"
       },
       {
+        cell_id: "deeb9f07-fc9b-4266-b70e-d8cf88cd09d1",
         "word": "das Rezept",
         "en": "prescription",
         "vi": "đơn thuốc",
@@ -1896,6 +1998,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dahs ray-TSEPT — 'z' = 'ts', stress on second syllable"
       },
       {
+        cell_id: "9e8a196a-1eef-44eb-9875-104f48e193c5",
         "word": "die Schmerzen",
         "en": "pain",
         "vi": "cơn đau",
@@ -1904,6 +2007,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee SHMAIR-tsen — 'sch' = 'sh', 'z' = 'ts'"
       },
       {
+        cell_id: "c29e4a9a-aa98-4496-9353-f932df40256e",
         "word": "das Fieber",
         "en": "fever",
         "vi": "sốt",
@@ -1912,6 +2016,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dahs FEE-bah — 'ie' = long 'ee'"
       },
       {
+        cell_id: "f7bb6b66-fab5-413a-a812-125655125706",
         "word": "die Krankmeldung",
         "en": "sick note",
         "vi": "giấy nghỉ ốm",
@@ -1920,6 +2025,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee KRAHNK-mel-doong — compound: krank + Meldung"
       },
       {
+        cell_id: "d0d99ad9-2f71-4681-a0c3-e9644782b7e6",
         "word": "untersuchen",
         "en": "to examine",
         "vi": "khám",
@@ -1928,6 +2034,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "oon-tah-ZOOKH-en — three syllables, hard ch in middle"
       },
       {
+        cell_id: "50a5703e-a1b5-4d22-864f-80fe71bb7f0a",
         "word": "wehtun",
         "en": "to hurt",
         "vi": "đau",
@@ -1936,6 +2043,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "VAY-toon — 'w' = 'v', separable (weh + tun)"
       },
       {
+        cell_id: "7b377356-5305-43e0-a315-abfd6b497d97",
         "word": "krank",
         "en": "sick",
         "vi": "ốm",
@@ -1946,21 +2054,25 @@ export const lessons: GermanLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "4f663bec-5683-4a4c-bddb-66f858ddca3a",
         "speaker": "A",
         "text": "Was kann ich für Sie tun?",
         "vi": "Tôi có thể giúp gì cho bạn?"
       },
       {
+        cell_id: "04dc195b-9387-46c6-84a1-1581bac09114",
         "speaker": "B",
         "text": "Ich habe seit zwei Tagen Halsschmerzen und Fieber.",
         "vi": "Tôi đau họng và sốt 2 ngày rồi."
       },
       {
+        cell_id: "2a3d6b27-b5b6-4c5a-991b-439699517662",
         "speaker": "A",
         "text": "Lassen Sie mich Sie untersuchen. Öffnen Sie bitte den Mund.",
         "vi": "Để tôi khám. Xin há miệng ra."
       },
       {
+        cell_id: "2f1cb176-907c-48d6-ad9b-2af8c3636e62",
         "speaker": "B",
         "text": "Brauche ich Antibiotika?",
         "vi": "Tôi có cần thuốc kháng sinh không?"
@@ -2117,6 +2229,7 @@ export const lessons: GermanLesson[] = [
     "tip_advice_en": "Germans typically ask the pharmacist for advice before buying medication — they're trained to recommend appropriate products. 'Haben Sie etwas gegen ___?' (Do you have something for ___?) is the standard opener. Don't be shy about asking dosage and side effects; the conversation is expected, not an imposition.",
     "vocabulary": [
       {
+        cell_id: "dfbb33ef-df45-4cee-933f-636b89635d8d",
         "word": "die Apotheke",
         "en": "pharmacy",
         "vi": "hiệu thuốc",
@@ -2125,6 +2238,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee ah-poh-TAY-kuh — borrowed, German stress"
       },
       {
+        cell_id: "0d75ac1f-f1e4-49cc-b1c5-d9bfba391c06",
         "word": "das Medikament",
         "en": "medicine",
         "vi": "thuốc",
@@ -2133,6 +2247,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dahs may-dee-kah-MENT — stress on last syllable"
       },
       {
+        cell_id: "7e859e4a-178a-4b8e-8680-b9f8e140784b",
         "word": "die Tablette",
         "en": "tablet/pill",
         "vi": "thuốc viên",
@@ -2141,6 +2256,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee tah-BLET-uh — borrowed, stress on second syllable"
       },
       {
+        cell_id: "c45c53e4-5998-4438-9cd4-1652ea2c9ebf",
         "word": "der Hustensaft",
         "en": "cough syrup",
         "vi": "siro ho",
@@ -2149,6 +2265,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dayr HOOS-ten-zaft — compound: Husten + Saft"
       },
       {
+        cell_id: "f242fc35-9ecc-49e3-b25e-3e33a563d714",
         "word": "die Salbe",
         "en": "ointment",
         "vi": "thuốc mỡ",
@@ -2157,6 +2274,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee ZAHL-buh — 's' before vowel = 'z'"
       },
       {
+        cell_id: "81b74821-252d-414b-b221-2ad245f1a282",
         "word": "die Kopfschmerzen",
         "en": "headache",
         "vi": "đau đầu",
@@ -2165,6 +2283,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee KOPF-shmair-tsen — compound: Kopf + Schmerzen"
       },
       {
+        cell_id: "a791022d-8007-4238-b7c3-ab4516fd3ebe",
         "word": "der Husten",
         "en": "cough",
         "vi": "ho",
@@ -2173,6 +2292,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dayr HOOS-ten — long 'oo'"
       },
       {
+        cell_id: "2c9baaea-be70-4ba7-aaaa-01d51ee4548a",
         "word": "die Erkältung",
         "en": "cold",
         "vi": "cảm lạnh",
@@ -2181,6 +2301,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee air-KEL-toong — 'ä' = short 'eh'"
       },
       {
+        cell_id: "9b7b7c77-0481-4f4d-b1e8-874b6ca2429b",
         "word": "nehmen",
         "en": "to take",
         "vi": "uống/dùng",
@@ -2189,6 +2310,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "NAY-men — long 'ay'"
       },
       {
+        cell_id: "6be8ca82-c511-4a4a-9408-7b08bb7c7cf6",
         "word": "rezeptpflichtig",
         "en": "prescription required",
         "vi": "cần đơn",
@@ -2199,21 +2321,25 @@ export const lessons: GermanLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "0a3cfd9b-21f9-47dd-bfa7-6875a091d66d",
         "speaker": "A",
         "text": "Guten Tag, was kann ich für Sie tun?",
         "vi": "Xin chào, tôi giúp gì được cho bạn?"
       },
       {
+        cell_id: "31c9ac86-1b15-41cf-a553-4437fc953f1c",
         "speaker": "B",
         "text": "Ich habe Kopfschmerzen. Haben Sie etwas dagegen?",
         "vi": "Tôi đau đầu. Có thuốc gì cho không?"
       },
       {
+        cell_id: "41c7006c-cd40-4d57-9e0a-fe76dffaecaf",
         "speaker": "A",
         "text": "Diese Tabletten helfen gut. Nehmen Sie eine Tablette alle vier Stunden.",
         "vi": "Thuốc viên này tốt lắm. Uống 1 viên mỗi 4 tiếng."
       },
       {
+        cell_id: "f20684fd-1e3c-44c6-8a80-35a15e590bfc",
         "speaker": "B",
         "text": "Danke. Wie viel kostet das?",
         "vi": "Cám ơn. Giá bao nhiêu?"
@@ -2370,6 +2496,7 @@ export const lessons: GermanLesson[] = [
     "tip_advice_en": "Asking about timing: 'Geht es am ___?' (Does ___ work?) is more polite than 'Können wir am ___?'. Reply with 'Das passt' (that works) or 'Das passt mir nicht' (that doesn't work for me). Days of the week: Montag, Dienstag, Mittwoch, Donnerstag, Freitag, Samstag, Sonntag.",
     "vocabulary": [
       {
+        cell_id: "92ad3687-42be-4c5a-aec5-ed1b69dc559e",
         "word": "der Termin",
         "en": "appointment",
         "vi": "cuộc hẹn",
@@ -2378,6 +2505,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dayr tair-MEEN — stress on second syllable"
       },
       {
+        cell_id: "35e8112e-9959-4090-ab4a-00fbbb357c63",
         "word": "die Uhrzeit",
         "en": "time of day",
         "vi": "giờ",
@@ -2386,6 +2514,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee OOR-tsyte — compound: Uhr + Zeit"
       },
       {
+        cell_id: "07981aa4-29fe-47a2-b72b-15c6ebf7790d",
         "word": "das Datum",
         "en": "date",
         "vi": "ngày",
@@ -2394,6 +2523,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dahs DAH-toom — long 'ah', short 'oo'"
       },
       {
+        cell_id: "84b711f6-d3ba-40ed-a47f-cf00e8db7c7d",
         "word": "die Woche",
         "en": "week",
         "vi": "tuần",
@@ -2402,6 +2532,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "dee VOKH-uh — hard ch in middle"
       },
       {
+        cell_id: "8844e5ae-a433-4777-af40-2587e77d92f5",
         "word": "vereinbaren",
         "en": "to arrange",
         "vi": "đặt/sắp xếp",
@@ -2410,6 +2541,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "fair-AYN-bah-ren — 'ei' = 'eye'"
       },
       {
+        cell_id: "651eb7ea-00c4-4186-8c22-5cb35f72ca55",
         "word": "verschieben",
         "en": "to postpone",
         "vi": "dời lại",
@@ -2418,6 +2550,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "fair-SHEE-ben — 'sch' = 'sh', long 'ee'"
       },
       {
+        cell_id: "2e905d1b-fca0-4592-b2c3-b84f43183929",
         "word": "absagen",
         "en": "to cancel",
         "vi": "huỷ",
@@ -2426,6 +2559,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "AHP-zah-gen — separable (ab + sagen)"
       },
       {
+        cell_id: "86e305f4-7178-48c4-ab86-db647dc265f5",
         "word": "bestätigen",
         "en": "to confirm",
         "vi": "xác nhận",
@@ -2434,6 +2568,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "buh-SHTAY-tee-gen — 'ä' long 'ay'"
       },
       {
+        cell_id: "fe9fdb98-1940-421d-b992-9faac5f59a19",
         "word": "passen",
         "en": "to fit/suit",
         "vi": "phù hợp",
@@ -2442,6 +2577,7 @@ export const lessons: GermanLesson[] = [
         "pronunciation_en": "PAH-sen — short 'a'"
       },
       {
+        cell_id: "305bae18-6c2b-42f6-aada-6041c663a400",
         "word": "frei",
         "en": "free/available",
         "vi": "rảnh",
@@ -2452,21 +2588,25 @@ export const lessons: GermanLesson[] = [
     ],
     "dialogue": [
       {
+        cell_id: "6f960dd5-765d-421f-af31-cd442a20d2a6",
         "speaker": "A",
         "text": "Guten Tag, ich möchte einen Termin vereinbaren.",
         "vi": "Xin chào, tôi muốn đặt cuộc hẹn."
       },
       {
+        cell_id: "937f4c8a-e458-4e31-9684-d973a8aed3f5",
         "speaker": "B",
         "text": "Wann passt es Ihnen?",
         "vi": "Khi nào tiện cho bạn?"
       },
       {
+        cell_id: "23d41bea-d42e-4e55-82f7-33e52458cbdd",
         "speaker": "A",
         "text": "Geht es am Donnerstag um fünfzehn Uhr?",
         "vi": "Thứ Năm lúc 15 giờ được không?"
       },
       {
+        cell_id: "ddc944ee-7d94-4ca8-8c6a-7380bb700af3",
         "speaker": "B",
         "text": "Ja, das passt. Ich bestätige den Termin per Email.",
         "vi": "Vâng, được. Tôi sẽ xác nhận qua email."

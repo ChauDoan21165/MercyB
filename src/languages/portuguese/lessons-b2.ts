@@ -26,6 +26,7 @@ export type PortugueseLessonSentence = {
 };
 
 export type PortugueseVocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -36,6 +37,7 @@ export type PortugueseVocabEntry = {
 };
 
 export type PortugueseDialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -134,37 +136,41 @@ export const lessons: PortugueseLesson[] = [
     tip_advice_en:
       "For a polite rebuttal use: [acknowledge] + 'mas' (but) + [your view]. E.g. 'Entendo, mas…'. 'Pelo contrário' = on the contrary; 'Na verdade' = actually (a gentle correction, not a fight-starter).",
     vocabulary: [
-      { word: "concordar", en: "to agree", vi: "đồng ý", pos: "v.", pronunciation_vi: "côn-cor-DAR", pronunciation_en: "kong-kor-DAR" },
-      { word: "discordar", en: "to disagree", vi: "không đồng ý", pos: "v.", pronunciation_vi: "djis-cor-DAR", pronunciation_en: "jees-kor-DAR" },
-      { word: "o argumento", en: "the argument (point)", vi: "lập luận", pos: "n.m.", pronunciation_vi: "ar-gu-MEN-tu", pronunciation_en: "ar-goo-MEN-too" },
-      { word: "o ponto de vista", en: "point of view", vi: "quan điểm", pos: "n.m.", pronunciation_vi: "PON-tu dji VIS-ta", pronunciation_en: "PON-too jee VEES-ta" },
-      { word: "pelo contrário", en: "on the contrary", vi: "ngược lại", pos: "expr.", pronunciation_vi: "PÊ-lu côn-TRA-riu", pronunciation_en: "PAY-loo kong-TRAH-ree-oo" },
-      { word: "na verdade", en: "actually", vi: "thật ra", pos: "expr.", pronunciation_vi: "na vér-DA-dji", pronunciation_en: "na ver-DAH-jee" },
-      { word: "rebater", en: "to rebut", vi: "phản bác", pos: "v.", pronunciation_vi: "rê-ba-TER", pronunciation_en: "heh-ba-TER" },
-      { word: "convencer", en: "to convince", vi: "thuyết phục", pos: "v.", pronunciation_vi: "côn-ven-SER", pronunciation_en: "kong-ven-SER" },
-      { word: "o respeito", en: "respect", vi: "sự tôn trọng", pos: "n.m.", pronunciation_vi: "rê-XPÊI-tu", pronunciation_en: "heh-SPAY-too" },
-      { word: "fazer sentido", en: "to make sense", vi: "hợp lý", pos: "expr.", pronunciation_vi: "fa-ZER sen-TJI-du", pronunciation_en: "fa-ZER sen-JEE-doo" },
+      { cell_id: "66b301a9-46f2-4738-b566-aa052f3340a9", word: "concordar", en: "to agree", vi: "đồng ý", pos: "v.", pronunciation_vi: "côn-cor-DAR", pronunciation_en: "kong-kor-DAR" },
+      { cell_id: "1dfb162c-f2ed-4a55-8f3c-0b9593971b19", word: "discordar", en: "to disagree", vi: "không đồng ý", pos: "v.", pronunciation_vi: "djis-cor-DAR", pronunciation_en: "jees-kor-DAR" },
+      { cell_id: "d40e2f4e-7b6c-42e1-a575-fb43ab1bda83", word: "o argumento", en: "the argument (point)", vi: "lập luận", pos: "n.m.", pronunciation_vi: "ar-gu-MEN-tu", pronunciation_en: "ar-goo-MEN-too" },
+      { cell_id: "85ed1bd1-92f4-47f5-ad10-fbd9480425a5", word: "o ponto de vista", en: "point of view", vi: "quan điểm", pos: "n.m.", pronunciation_vi: "PON-tu dji VIS-ta", pronunciation_en: "PON-too jee VEES-ta" },
+      { cell_id: "5f81263a-e813-4cfe-bd99-b82ab7df7a88", word: "pelo contrário", en: "on the contrary", vi: "ngược lại", pos: "expr.", pronunciation_vi: "PÊ-lu côn-TRA-riu", pronunciation_en: "PAY-loo kong-TRAH-ree-oo" },
+      { cell_id: "08d96dbc-b64d-463a-8cb7-da55c3a3faf8", word: "na verdade", en: "actually", vi: "thật ra", pos: "expr.", pronunciation_vi: "na vér-DA-dji", pronunciation_en: "na ver-DAH-jee" },
+      { cell_id: "f44b9ca7-d345-4122-9f84-2e4da29d8d9c", word: "rebater", en: "to rebut", vi: "phản bác", pos: "v.", pronunciation_vi: "rê-ba-TER", pronunciation_en: "heh-ba-TER" },
+      { cell_id: "89534305-0d1b-4411-ba61-0d98ff296751", word: "convencer", en: "to convince", vi: "thuyết phục", pos: "v.", pronunciation_vi: "côn-ven-SER", pronunciation_en: "kong-ven-SER" },
+      { cell_id: "9b180b70-955f-4fc7-ab15-b8878df15cc7", word: "o respeito", en: "respect", vi: "sự tôn trọng", pos: "n.m.", pronunciation_vi: "rê-XPÊI-tu", pronunciation_en: "heh-SPAY-too" },
+      { cell_id: "bbd99fb9-2363-4dba-bcd2-b0333584790f", word: "fazer sentido", en: "to make sense", vi: "hợp lý", pos: "expr.", pronunciation_vi: "fa-ZER sen-TJI-du", pronunciation_en: "fa-ZER sen-JEE-doo" },
     ],
     dialogue: [
       {
+        cell_id: "01b04479-ab96-4a5b-95f2-f75616ef3600",
         speaker: "A",
         text: "Eu acho que devíamos cortar o orçamento de marketing.",
         vi: "Tôi nghĩ ta nên cắt ngân sách marketing.",
         en: "I think we should cut the marketing budget.",
       },
       {
+        cell_id: "9cc1c52c-fdad-4f2a-8cc2-a383dd814fa9",
         speaker: "B",
         text: "Entendo o seu ponto, mas, pelo contrário, os números mostram que ele traz retorno.",
         vi: "Tôi hiểu ý bạn, nhưng ngược lại, các con số cho thấy nó mang lại lợi nhuận.",
         en: "I see your point, but on the contrary, the numbers show it brings a return.",
       },
       {
+        cell_id: "ea5c8bcd-8f5b-4ccf-b914-854b2d32db77",
         speaker: "A",
         text: "Pode ser, mas a verba está apertada este trimestre.",
         vi: "Có thể, nhưng quý này ngân sách eo hẹp.",
         en: "Maybe, but funds are tight this quarter.",
       },
       {
+        cell_id: "baea7be0-c972-42c6-ba6a-2d764134f8f4",
         speaker: "B",
         text: "Vamos combinar: cortamos 10% e reavaliamos em junho. Faz sentido?",
         vi: "Hãy thống nhất: cắt 10% rồi đánh giá lại vào tháng sáu. Hợp lý chứ?",
@@ -260,37 +266,41 @@ export const lessons: PortugueseLesson[] = [
     tip_advice_en:
       "Interrupt politely: 'Desculpe interromper, mas…'. Assign actions: 'Ficou decidido que [person] + [verb]'. Wrap up: 'Para encerrar…'. 'Será que…?' softens any question or request considerably.",
     vocabulary: [
-      { word: "a pauta", en: "the agenda", vi: "chương trình họp", pos: "n.f.", pronunciation_vi: "PAU-ta", pronunciation_en: "POW-ta" },
-      { word: "a ata", en: "the minutes", vi: "biên bản", pos: "n.f.", pronunciation_vi: "A-ta", pronunciation_en: "AH-ta" },
-      { word: "a reunião", en: "the meeting", vi: "cuộc họp", pos: "n.f.", pronunciation_vi: "rê-u-ni-ÃU", pronunciation_en: "heh-oo-nee-OWN" },
-      { word: "o prazo", en: "the deadline", vi: "thời hạn", pos: "n.m.", pronunciation_vi: "PRA-zu", pronunciation_en: "PRAH-zoo" },
-      { word: "o cronograma", en: "the schedule", vi: "tiến độ/lịch trình", pos: "n.m.", pronunciation_vi: "crô-nô-GRA-ma", pronunciation_en: "kroh-noh-GRA-ma" },
-      { word: "encerrar", en: "to close/end", vi: "kết thúc", pos: "v.", pronunciation_vi: "en-se-RRAR", pronunciation_en: "en-seh-HAR" },
-      { word: "interromper", en: "to interrupt", vi: "ngắt lời", pos: "v.", pronunciation_vi: "in-te-rrôm-PER", pronunciation_en: "een-teh-hohm-PER" },
-      { word: "esclarecer", en: "to clarify", vi: "làm rõ", pos: "v.", pronunciation_vi: "es-cla-re-SER", pronunciation_en: "es-kla-reh-SER" },
-      { word: "o item da pauta", en: "agenda item", vi: "mục họp", pos: "n.m.", pronunciation_vi: "I-tem da PAU-ta", pronunciation_en: "EE-teng da POW-ta" },
-      { word: "ficar decidido", en: "to be decided", vi: "được quyết định", pos: "expr.", pronunciation_vi: "fi-CAR de-si-DJI-du", pronunciation_en: "fee-KAR deh-see-JEE-doo" },
+      { cell_id: "9906fb74-f13f-44b2-a840-9fc9c8b17d00", word: "a pauta", en: "the agenda", vi: "chương trình họp", pos: "n.f.", pronunciation_vi: "PAU-ta", pronunciation_en: "POW-ta" },
+      { cell_id: "e8036f95-b644-47fe-9e4c-8ab288c15674", word: "a ata", en: "the minutes", vi: "biên bản", pos: "n.f.", pronunciation_vi: "A-ta", pronunciation_en: "AH-ta" },
+      { cell_id: "8528df2e-dcc6-40bd-b79d-ad80cde38cb3", word: "a reunião", en: "the meeting", vi: "cuộc họp", pos: "n.f.", pronunciation_vi: "rê-u-ni-ÃU", pronunciation_en: "heh-oo-nee-OWN" },
+      { cell_id: "dd4cd5ee-b1e9-4439-b5f3-ad89d3761223", word: "o prazo", en: "the deadline", vi: "thời hạn", pos: "n.m.", pronunciation_vi: "PRA-zu", pronunciation_en: "PRAH-zoo" },
+      { cell_id: "60f609f1-4a7a-4580-a187-83294d160a08", word: "o cronograma", en: "the schedule", vi: "tiến độ/lịch trình", pos: "n.m.", pronunciation_vi: "crô-nô-GRA-ma", pronunciation_en: "kroh-noh-GRA-ma" },
+      { cell_id: "b4742e5b-abef-4446-93b9-e7c668d6d67d", word: "encerrar", en: "to close/end", vi: "kết thúc", pos: "v.", pronunciation_vi: "en-se-RRAR", pronunciation_en: "en-seh-HAR" },
+      { cell_id: "7037daf6-67b3-447d-903b-493c44989487", word: "interromper", en: "to interrupt", vi: "ngắt lời", pos: "v.", pronunciation_vi: "in-te-rrôm-PER", pronunciation_en: "een-teh-hohm-PER" },
+      { cell_id: "7c3f22f6-e18b-4ab0-8316-11e57636b68d", word: "esclarecer", en: "to clarify", vi: "làm rõ", pos: "v.", pronunciation_vi: "es-cla-re-SER", pronunciation_en: "es-kla-reh-SER" },
+      { cell_id: "069fd319-5aea-46c2-a6e7-a35a90e2095d", word: "o item da pauta", en: "agenda item", vi: "mục họp", pos: "n.m.", pronunciation_vi: "I-tem da PAU-ta", pronunciation_en: "EE-teng da POW-ta" },
+      { cell_id: "447888c2-8060-4eeb-b240-99deac34c5aa", word: "ficar decidido", en: "to be decided", vi: "được quyết định", pos: "expr.", pronunciation_vi: "fi-CAR de-si-DJI-du", pronunciation_en: "fee-KAR deh-see-JEE-doo" },
     ],
     dialogue: [
       {
+        cell_id: "56ef1318-afae-47a0-b041-1397a9a04927",
         speaker: "Líder",
         text: "Bom dia a todos. Vamos começar pela pauta de hoje: o cronograma e o orçamento.",
         vi: "Chào buổi sáng mọi người. Ta bắt đầu với chương trình hôm nay: tiến độ và ngân sách.",
         en: "Good morning, everyone. Let's start with today's agenda: the schedule and the budget.",
       },
       {
+        cell_id: "b29dae89-5ca2-4b15-b94d-416d2b9c7230",
         speaker: "Carla",
         text: "Desculpe interromper, mas será que podemos confirmar o prazo antes?",
         vi: "Xin lỗi đã ngắt lời, nhưng liệu ta xác nhận thời hạn trước được không?",
         en: "Sorry to interrupt, but could we confirm the deadline first?",
       },
       {
+        cell_id: "0916c1ea-6ad3-4fd6-a13e-8271c66be31f",
         speaker: "Líder",
         text: "Claro. Ficou decidido que entregamos até dia 20. Todos de acordo?",
         vi: "Tất nhiên. Đã quyết định ta giao trước ngày 20. Mọi người đồng ý chứ?",
         en: "Of course. It's been decided we deliver by the 20th. Everyone agreed?",
       },
       {
+        cell_id: "af5dfa28-0856-4651-be0b-49f5ecd390b2",
         speaker: "Carla",
         text: "De acordo. Para encerrar, você envia a ata depois?",
         vi: "Đồng ý. Để kết thúc, anh sẽ gửi biên bản sau chứ?",
@@ -386,37 +396,41 @@ export const lessons: PortugueseLesson[] = [
     tip_advice_en:
       "Complaint-letter structure: (1) open with 'Venho por meio desta…' (2) state facts + evidence (3) 'Gostaria de solicitar…' (your request) (4) a deadline 'Aguardo retorno…'. Keep it polite — use the conditional 'gostaria' rather than 'quero'.",
     vocabulary: [
-      { word: "a reclamação", en: "the complaint", vi: "lời khiếu nại", pos: "n.f.", pronunciation_vi: "re-cla-ma-SÃU", pronunciation_en: "heh-kla-ma-SOWN" },
-      { word: "o defeito", en: "the defect", vi: "lỗi/khuyết tật", pos: "n.m.", pronunciation_vi: "de-FEI-tu", pronunciation_en: "deh-FAY-too" },
-      { word: "o reembolso", en: "the refund", vi: "việc hoàn tiền", pos: "n.m.", pronunciation_vi: "re-em-BOL-su", pronunciation_en: "heh-em-BOL-soo" },
-      { word: "a troca", en: "the exchange", vi: "đổi hàng", pos: "n.f.", pronunciation_vi: "TRÔ-ca", pronunciation_en: "TROH-ka" },
-      { word: "solicitar", en: "to request (formal)", vi: "yêu cầu", pos: "v.", pronunciation_vi: "sô-li-si-TAR", pronunciation_en: "soh-lee-see-TAR" },
-      { word: "exigir", en: "to demand", vi: "đòi hỏi", pos: "v.", pronunciation_vi: "e-zi-JIR", pronunciation_en: "eh-zee-ZHEER" },
-      { word: "o prazo", en: "the deadline", vi: "thời hạn", pos: "n.m.", pronunciation_vi: "PRA-zu", pronunciation_en: "PRAH-zoo" },
-      { word: "dias úteis", en: "business days", vi: "ngày làm việc", pos: "n.m.pl.", pronunciation_vi: "DJI-as Ú-teis", pronunciation_en: "JEE-as OO-tays" },
-      { word: "o atendimento", en: "customer service", vi: "dịch vụ chăm sóc KH", pos: "n.m.", pronunciation_vi: "a-ten-dji-MEN-tu", pronunciation_en: "a-ten-jee-MEN-too" },
-      { word: "providenciar", en: "to arrange/see to", vi: "thu xếp/giải quyết", pos: "v.", pronunciation_vi: "prô-vi-den-si-AR", pronunciation_en: "pro-vee-den-see-AR" },
+      { cell_id: "55bb3903-6fe8-44aa-b67a-acc5e650cfdb", word: "a reclamação", en: "the complaint", vi: "lời khiếu nại", pos: "n.f.", pronunciation_vi: "re-cla-ma-SÃU", pronunciation_en: "heh-kla-ma-SOWN" },
+      { cell_id: "ac085797-88b6-4115-a4ca-3253de273c15", word: "o defeito", en: "the defect", vi: "lỗi/khuyết tật", pos: "n.m.", pronunciation_vi: "de-FEI-tu", pronunciation_en: "deh-FAY-too" },
+      { cell_id: "10e44b94-77f9-41f4-9190-c24b88203744", word: "o reembolso", en: "the refund", vi: "việc hoàn tiền", pos: "n.m.", pronunciation_vi: "re-em-BOL-su", pronunciation_en: "heh-em-BOL-soo" },
+      { cell_id: "614b344c-e6d8-4117-a7bc-6bba6211d439", word: "a troca", en: "the exchange", vi: "đổi hàng", pos: "n.f.", pronunciation_vi: "TRÔ-ca", pronunciation_en: "TROH-ka" },
+      { cell_id: "1c347cb9-5811-4d0a-8bac-541cfc36d1f6", word: "solicitar", en: "to request (formal)", vi: "yêu cầu", pos: "v.", pronunciation_vi: "sô-li-si-TAR", pronunciation_en: "soh-lee-see-TAR" },
+      { cell_id: "a75f6cee-3c39-4267-8e57-9a6ba1c5c57b", word: "exigir", en: "to demand", vi: "đòi hỏi", pos: "v.", pronunciation_vi: "e-zi-JIR", pronunciation_en: "eh-zee-ZHEER" },
+      { cell_id: "ba459650-f5f2-4e40-ba1f-461f34d83b21", word: "o prazo", en: "the deadline", vi: "thời hạn", pos: "n.m.", pronunciation_vi: "PRA-zu", pronunciation_en: "PRAH-zoo" },
+      { cell_id: "ff6816af-d6ed-4641-9f21-e7dc9f4aaad5", word: "dias úteis", en: "business days", vi: "ngày làm việc", pos: "n.m.pl.", pronunciation_vi: "DJI-as Ú-teis", pronunciation_en: "JEE-as OO-tays" },
+      { cell_id: "5ee85af7-2e6c-4ee5-8785-69b1fc47e362", word: "o atendimento", en: "customer service", vi: "dịch vụ chăm sóc KH", pos: "n.m.", pronunciation_vi: "a-ten-dji-MEN-tu", pronunciation_en: "a-ten-jee-MEN-too" },
+      { cell_id: "34c1b741-bf25-4c1f-807d-4a19755491a8", word: "providenciar", en: "to arrange/see to", vi: "thu xếp/giải quyết", pos: "v.", pronunciation_vi: "prô-vi-den-si-AR", pronunciation_en: "pro-vee-den-see-AR" },
     ],
     dialogue: [
       {
+        cell_id: "4631a1ae-d3bb-40e6-822e-e51065c76326",
         speaker: "Cliente",
         text: "Boa tarde. Venho registrar uma reclamação: o produto chegou com defeito.",
         vi: "Chào buổi chiều. Tôi đến để khiếu nại: sản phẩm đến bị lỗi.",
         en: "Good afternoon. I'm here to file a complaint: the product arrived defective.",
       },
       {
+        cell_id: "06efd7dc-31e5-47b0-96af-db47917f9c7d",
         speaker: "Atendente",
         text: "Sinto muito pelo transtorno. O senhor tem a nota fiscal?",
         vi: "Tôi rất tiếc vì sự bất tiện. Quý khách có hóa đơn không?",
         en: "I'm sorry for the trouble. Do you have the receipt?",
       },
       {
+        cell_id: "4a20b698-f5ad-4923-8875-51af02a9855f",
         speaker: "Cliente",
         text: "Tenho. Gostaria de solicitar a troca ou o reembolso integral.",
         vi: "Có. Tôi muốn yêu cầu đổi hàng hoặc hoàn tiền toàn bộ.",
         en: "I do. I'd like to request an exchange or a full refund.",
       },
       {
+        cell_id: "c7c57fd3-db81-4d3a-9a56-43c0c4ef830a",
         speaker: "Atendente",
         text: "Vou providenciar. Caso não resolvamos em cinco dias úteis, o senhor pode acionar o Procon.",
         vi: "Tôi sẽ thu xếp. Nếu không giải quyết trong năm ngày làm việc, quý khách có thể liên hệ Procon.",
@@ -512,37 +526,41 @@ export const lessons: PortugueseLesson[] = [
     tip_advice_en:
       "Two moods to keep apart: the PRESENT subjunctive after emotion/wish/judgment ('Espero que…', 'É importante que…', 'Talvez…'). The FUTURE subjunctive after 'quando/se/enquanto/assim que' for the future. Tip: the future subjunctive looks like the infinitive for regular verbs (falar→falar, comer→comer) but differs for irregulars (ter→tiver, poder→puder, fazer→fizer).",
     vocabulary: [
-      { word: "espero que", en: "I hope that", vi: "tôi hy vọng rằng", pos: "expr.", pronunciation_vi: "es-PÊ-ru ki", pronunciation_en: "es-PEH-roo kee" },
-      { word: "é importante que", en: "it's important that", vi: "quan trọng là", pos: "expr.", pronunciation_vi: "é im-por-TAN-tji ki", pronunciation_en: "eh eem-por-TAN-chee kee" },
-      { word: "talvez", en: "maybe (+ subj.)", vi: "có lẽ", pos: "adv.", pronunciation_vi: "tau-VES", pronunciation_en: "tow-VES" },
-      { word: "quando (+ fut. subj.)", en: "when (future)", vi: "khi nào (tương lai)", pos: "conj.", pronunciation_vi: "QUAN-du", pronunciation_en: "KWAN-doo" },
-      { word: "assim que", en: "as soon as", vi: "ngay khi", pos: "conj.", pronunciation_vi: "a-SIM ki", pronunciation_en: "a-SEENG kee" },
-      { word: "caso", en: "in case (+ subj.)", vi: "phòng khi", pos: "conj.", pronunciation_vi: "CA-zu", pronunciation_en: "KAH-zoo" },
-      { word: "tiver", en: "(I/he) have — fut. subj. of ter", vi: "có (giả định tương lai)", pos: "v.", pronunciation_vi: "tji-VER", pronunciation_en: "chee-VER" },
-      { word: "puder", en: "(I/he) can — fut. subj. of poder", vi: "có thể (giả định tương lai)", pos: "v.", pronunciation_vi: "pu-DER", pronunciation_en: "poo-DER" },
-      { word: "fizer", en: "(I/he) do — fut. subj. of fazer", vi: "làm (giả định tương lai)", pos: "v.", pronunciation_vi: "fi-ZER", pronunciation_en: "fee-ZER" },
-      { word: "venha", en: "(he) come — pres. subj. of vir", vi: "đến (giả định hiện tại)", pos: "v.", pronunciation_vi: "VÊ-nha", pronunciation_en: "VEH-nya" },
+      { cell_id: "f5f79a4c-43df-4868-b4f1-11b022129898", word: "espero que", en: "I hope that", vi: "tôi hy vọng rằng", pos: "expr.", pronunciation_vi: "es-PÊ-ru ki", pronunciation_en: "es-PEH-roo kee" },
+      { cell_id: "4c0a3924-7f91-44b8-8074-e2725d0b8dfe", word: "é importante que", en: "it's important that", vi: "quan trọng là", pos: "expr.", pronunciation_vi: "é im-por-TAN-tji ki", pronunciation_en: "eh eem-por-TAN-chee kee" },
+      { cell_id: "d993baf2-563f-48f8-a79d-9edac6910e79", word: "talvez", en: "maybe (+ subj.)", vi: "có lẽ", pos: "adv.", pronunciation_vi: "tau-VES", pronunciation_en: "tow-VES" },
+      { cell_id: "c258c7f5-5816-42d0-bebf-5cf54b899c52", word: "quando (+ fut. subj.)", en: "when (future)", vi: "khi nào (tương lai)", pos: "conj.", pronunciation_vi: "QUAN-du", pronunciation_en: "KWAN-doo" },
+      { cell_id: "2b9626d1-5b7c-4efa-8498-15709c83943c", word: "assim que", en: "as soon as", vi: "ngay khi", pos: "conj.", pronunciation_vi: "a-SIM ki", pronunciation_en: "a-SEENG kee" },
+      { cell_id: "d668004e-8602-4dea-acca-3663c1966deb", word: "caso", en: "in case (+ subj.)", vi: "phòng khi", pos: "conj.", pronunciation_vi: "CA-zu", pronunciation_en: "KAH-zoo" },
+      { cell_id: "4f336a88-e666-406a-b2a1-04d489199837", word: "tiver", en: "(I/he) have — fut. subj. of ter", vi: "có (giả định tương lai)", pos: "v.", pronunciation_vi: "tji-VER", pronunciation_en: "chee-VER" },
+      { cell_id: "3d4d21b8-07ed-4574-ba5e-40efb1c46970", word: "puder", en: "(I/he) can — fut. subj. of poder", vi: "có thể (giả định tương lai)", pos: "v.", pronunciation_vi: "pu-DER", pronunciation_en: "poo-DER" },
+      { cell_id: "7ecc07f7-d69e-4749-9de4-234875e7e416", word: "fizer", en: "(I/he) do — fut. subj. of fazer", vi: "làm (giả định tương lai)", pos: "v.", pronunciation_vi: "fi-ZER", pronunciation_en: "fee-ZER" },
+      { cell_id: "4b6ebe0d-2d56-4e30-a7f9-646de079f249", word: "venha", en: "(he) come — pres. subj. of vir", vi: "đến (giả định hiện tại)", pos: "v.", pronunciation_vi: "VÊ-nha", pronunciation_en: "VEH-nya" },
     ],
     dialogue: [
       {
+        cell_id: "bbe31596-daee-4371-a492-cabdf72f9974",
         speaker: "A",
         text: "Você acha que o cliente assina hoje?",
         vi: "Bạn nghĩ khách sẽ ký hôm nay chứ?",
         en: "Do you think the client will sign today?",
       },
       {
+        cell_id: "749aae4c-fdd1-471c-b413-47f2835a211d",
         speaker: "B",
         text: "Talvez ele assine, mas é importante que a gente mande o contrato cedo.",
         vi: "Có lẽ ông ấy sẽ ký, nhưng quan trọng là ta gửi hợp đồng sớm.",
         en: "Maybe he'll sign, but it's important that we send the contract early.",
       },
       {
+        cell_id: "aade0cf2-2c73-477c-aa9d-922a18dda858",
         speaker: "A",
         text: "Combinado. Assim que eu tiver a versão final, te aviso.",
         vi: "Nhất trí. Ngay khi tôi có bản cuối, tôi báo bạn.",
         en: "Agreed. As soon as I have the final version, I'll let you know.",
       },
       {
+        cell_id: "a3a9466f-f1a1-48a8-b9b9-fbc49c79db23",
         speaker: "B",
         text: "Perfeito. E se ele pedir mudanças, a gente negocia.",
         vi: "Tuyệt. Và nếu ông ấy yêu cầu sửa, ta sẽ thương lượng.",
@@ -645,37 +663,41 @@ export const lessons: PortugueseLesson[] = [
     tip_advice_en:
       "Safe email frame: (1) 'Prezado(a) Sr./Sra. [Name]' (2) 'Espero que esteja bem.' (3) 'Escrevo para…' (purpose) (4) the body (5) 'Fico à disposição…' (6) 'Atenciosamente, [Name]'. Use 'gostaria', 'poderia', 'seria possível' to be polite instead of commanding.",
     vocabulary: [
-      { word: "prezado(a)", en: "dear (formal)", vi: "kính gửi", pos: "adj.", pronunciation_vi: "prê-ZA-du", pronunciation_en: "preh-ZAH-doo" },
-      { word: "atenciosamente", en: "sincerely/best regards", vi: "trân trọng", pos: "adv.", pronunciation_vi: "a-ten-si-ô-za-MEN-tji", pronunciation_en: "a-ten-see-oh-za-MEN-chee" },
-      { word: "em anexo", en: "attached", vi: "đính kèm", pos: "expr.", pronunciation_vi: "em a-NE-csu", pronunciation_en: "eng a-NEK-soo" },
-      { word: "dar seguimento", en: "to follow up", vi: "tiếp nối/theo dõi", pos: "expr.", pronunciation_vi: "dar se-gui-MEN-tu", pronunciation_en: "dar seh-gee-MEN-too" },
-      { word: "ficar à disposição", en: "to remain available", vi: "luôn sẵn sàng", pos: "expr.", pronunciation_vi: "fi-CAR a djis-pô-zi-SÃU", pronunciation_en: "fee-KAR ah jees-poh-zee-SOWN" },
-      { word: "o esclarecimento", en: "clarification", vi: "sự giải đáp", pos: "n.m.", pronunciation_vi: "es-cla-re-si-MEN-tu", pronunciation_en: "es-kla-reh-see-MEN-too" },
-      { word: "encaminhar", en: "to forward", vi: "chuyển tiếp", pos: "v.", pronunciation_vi: "en-ca-mi-NHAR", pronunciation_en: "en-ka-mee-NYAR" },
-      { word: "o prazo de entrega", en: "delivery deadline", vi: "hạn giao", pos: "n.m.", pronunciation_vi: "PRA-zu dji en-TRÊ-ga", pronunciation_en: "PRAH-zoo jee en-TREH-ga" },
-      { word: "conforme combinado", en: "as agreed", vi: "như đã thỏa thuận", pos: "expr.", pronunciation_vi: "côn-FOR-mi côm-bi-NA-du", pronunciation_en: "kong-FOR-mee kohm-bee-NAH-doo" },
-      { word: "aguardo seu retorno", en: "I await your reply", vi: "tôi chờ phản hồi", pos: "expr.", pronunciation_vi: "a-GUAR-du seu rê-TOR-nu", pronunciation_en: "a-GWAR-doo say-oo heh-TOR-noo" },
+      { cell_id: "9f436235-f16d-4760-a078-4a1c6e243980", word: "prezado(a)", en: "dear (formal)", vi: "kính gửi", pos: "adj.", pronunciation_vi: "prê-ZA-du", pronunciation_en: "preh-ZAH-doo" },
+      { cell_id: "c8d176e9-2fc7-4ac4-8485-5379ff9c126c", word: "atenciosamente", en: "sincerely/best regards", vi: "trân trọng", pos: "adv.", pronunciation_vi: "a-ten-si-ô-za-MEN-tji", pronunciation_en: "a-ten-see-oh-za-MEN-chee" },
+      { cell_id: "0db2fd00-746f-4bf5-89d6-a1b783cf418e", word: "em anexo", en: "attached", vi: "đính kèm", pos: "expr.", pronunciation_vi: "em a-NE-csu", pronunciation_en: "eng a-NEK-soo" },
+      { cell_id: "5e71fa7e-eb30-41a1-8005-b082db30e826", word: "dar seguimento", en: "to follow up", vi: "tiếp nối/theo dõi", pos: "expr.", pronunciation_vi: "dar se-gui-MEN-tu", pronunciation_en: "dar seh-gee-MEN-too" },
+      { cell_id: "08834a60-9560-4eef-aed4-287fff1a8386", word: "ficar à disposição", en: "to remain available", vi: "luôn sẵn sàng", pos: "expr.", pronunciation_vi: "fi-CAR a djis-pô-zi-SÃU", pronunciation_en: "fee-KAR ah jees-poh-zee-SOWN" },
+      { cell_id: "e34f0995-1b32-4cc9-8a38-4175470fdd39", word: "o esclarecimento", en: "clarification", vi: "sự giải đáp", pos: "n.m.", pronunciation_vi: "es-cla-re-si-MEN-tu", pronunciation_en: "es-kla-reh-see-MEN-too" },
+      { cell_id: "f4da8135-7d64-4a17-94dc-09df2e32dc73", word: "encaminhar", en: "to forward", vi: "chuyển tiếp", pos: "v.", pronunciation_vi: "en-ca-mi-NHAR", pronunciation_en: "en-ka-mee-NYAR" },
+      { cell_id: "33bcf8a6-e507-49e9-a4e3-b20da216b695", word: "o prazo de entrega", en: "delivery deadline", vi: "hạn giao", pos: "n.m.", pronunciation_vi: "PRA-zu dji en-TRÊ-ga", pronunciation_en: "PRAH-zoo jee en-TREH-ga" },
+      { cell_id: "8abe3eda-d016-4894-9d1a-0cc853984488", word: "conforme combinado", en: "as agreed", vi: "như đã thỏa thuận", pos: "expr.", pronunciation_vi: "côn-FOR-mi côm-bi-NA-du", pronunciation_en: "kong-FOR-mee kohm-bee-NAH-doo" },
+      { cell_id: "1361142a-a6c0-4c0e-a9de-db04afa99322", word: "aguardo seu retorno", en: "I await your reply", vi: "tôi chờ phản hồi", pos: "expr.", pronunciation_vi: "a-GUAR-du seu rê-TOR-nu", pronunciation_en: "a-GWAR-doo say-oo heh-TOR-noo" },
     ],
     dialogue: [
       {
+        cell_id: "5ba179f3-6574-4263-a857-08cc996fc478",
         speaker: "E-mail",
         text: "Prezada Sra. Lima, espero que esteja bem.",
         vi: "Kính gửi bà Lima, mong bà vẫn khỏe.",
         en: "Dear Ms. Lima, I hope you are well.",
       },
       {
+        cell_id: "f5bf6b8e-3adf-4758-85d2-d81fe40f1ecd",
         speaker: "E-mail",
         text: "Escrevo para dar seguimento à reunião e enviar a proposta. Segue em anexo.",
         vi: "Tôi viết để tiếp nối cuộc họp và gửi đề xuất. Đính kèm theo đây.",
         en: "I'm writing to follow up on the meeting and send the proposal. Please find it attached.",
       },
       {
+        cell_id: "c1e47325-f3a6-4f8d-b2b1-b40de6373dfd",
         speaker: "E-mail",
         text: "Conforme combinado, o prazo de entrega é dia 30. Fico à disposição para dúvidas.",
         vi: "Như đã thỏa thuận, hạn giao là ngày 30. Tôi luôn sẵn sàng giải đáp.",
         en: "As agreed, the delivery deadline is the 30th. I'm available for any questions.",
       },
       {
+        cell_id: "d63b839d-1212-47e2-9cd1-768ee54ff0af",
         speaker: "E-mail",
         text: "Atenciosamente, Mariana Costa.",
         vi: "Trân trọng, Mariana Costa.",

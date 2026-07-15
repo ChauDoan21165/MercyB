@@ -29,6 +29,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   /** Indonesian word/phrase. */
   word: string;
   /** English meaning. */
@@ -44,6 +45,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   /** Indonesian line. */
   text: string;
@@ -308,6 +310,7 @@ export const lessons: IndonesianLesson[] = [
     vocabulary: [
       // The tradesman
       {
+        cell_id: "040afd0a-ff7a-44c3-abb2-4e894d2907cb",
         word: "tukang",
         en: "tradesman / handyman",
         vi: "thợ",
@@ -316,6 +319,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "TU-kang — named by trade: `tukang listrik`, `tukang ledeng`, `tukang cat`",
       },
       {
+        cell_id: "5522766e-d841-448a-a733-851b240c8df8",
         word: "tukang ledeng",
         en: "plumber",
         vi: "thợ nước / thợ ống",
@@ -324,6 +328,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "TU-kang LE-deng — `ledeng` = plumbing/piped water",
       },
       {
+        cell_id: "74cf8af6-fce2-4ad2-bb79-9b1b3db64df8",
         word: "tukang listrik",
         en: "electrician",
         vi: "thợ điện",
@@ -333,6 +338,7 @@ export const lessons: IndonesianLesson[] = [
       },
       // Fault verbs (the heart of the lesson)
       {
+        cell_id: "2626c140-6a25-44ea-8ee8-1ff3a759ffdd",
         word: "rusak",
         en: "broken / out of order",
         vi: "hỏng (chung)",
@@ -341,6 +347,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "RU-sak — broken in general; `ACnya rusak`",
       },
       {
+        cell_id: "1e6c935c-eeef-4359-84ab-1f4a50789511",
         word: "bocor",
         en: "leaking / dripping",
         vi: "rò rỉ / dột",
@@ -349,6 +356,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "BO-chor — `c`='ch'; a dripping tap or a leaky roof is `bocor`",
       },
       {
+        cell_id: "f8262f45-c01e-435e-9436-195125d8fa55",
         word: "mati",
         en: "dead / off (bulb, device)",
         vi: "tắt / cháy / chết (đèn, máy)",
@@ -357,6 +365,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "MA-ti — `lampu mati` blown bulb; `listrik mati` power cut",
       },
       {
+        cell_id: "4b2ff4ab-e431-48df-8254-228b55d46f42",
         word: "mampet",
         en: "clogged / blocked",
         vi: "tắc / nghẹt",
@@ -365,6 +374,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "MAM-pet — a clogged drain/pipe; NOT `tertutup`",
       },
       {
+        cell_id: "dee9e3ac-0c72-49f3-8cbd-1b3c2ca7314b",
         word: "retak",
         en: "cracked",
         vi: "nứt",
@@ -374,6 +384,7 @@ export const lessons: IndonesianLesson[] = [
       },
       // Fixtures & materials
       {
+        cell_id: "c1a9b34b-ece4-4e6d-891e-467bf4edf6e4",
         word: "keran",
         en: "tap / faucet",
         vi: "vòi nước",
@@ -382,6 +393,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "KE-ran — also spelled `kran`",
       },
       {
+        cell_id: "3f2481a0-eaaa-488d-b82a-037481da4457",
         word: "saluran air",
         en: "drain / water channel",
         vi: "đường ống / cống thoát nước",
@@ -390,6 +402,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "sa-LU-ran A-ir — `saluran mampet` = clogged drain",
       },
       {
+        cell_id: "884e4fd5-1168-44e3-8774-26a3abad5947",
         word: "cat",
         en: "paint",
         vi: "sơn",
@@ -398,6 +411,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "chat — `c`='ch'; NOT the English animal 'cat'",
       },
       {
+        cell_id: "2cea2fa1-0afb-4292-a2ce-9c1fb7097f51",
         word: "suku cadang",
         en: "spare part",
         vi: "phụ tùng / linh kiện",
@@ -407,6 +421,7 @@ export const lessons: IndonesianLesson[] = [
       },
       // Cost & service
       {
+        cell_id: "79449adf-03f6-43ad-93bd-8592c2f6a5d4",
         word: "perbaikan",
         en: "repair / fixing",
         vi: "việc sửa chữa",
@@ -415,6 +430,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "per-ba-I-kan — root `baik` + `per-...-an`; verb `memperbaiki`",
       },
       {
+        cell_id: "729911d4-bc73-444f-a3bc-f80e103f7794",
         word: "ongkos jasa",
         en: "labor charge / service fee",
         vi: "tiền công",
@@ -423,6 +439,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "ONG-kos JA-sa — separate from `bahan` (materials) cost",
       },
       {
+        cell_id: "5fae7e36-129e-4faf-a06f-692c6ec9c9be",
         word: "garansi",
         en: "warranty / guarantee",
         vi: "bảo hành",
@@ -434,48 +451,56 @@ export const lessons: IndonesianLesson[] = [
     dialogue: [
       // Dialogue: calling a tukang AC, diagnosing, agreeing on cost
       {
+        cell_id: "c62a42a7-7230-4653-8de6-4c5d54aacda4",
         speaker: "Pemilik rumah",
         text: "Halo, Pak. ACnya rusak, sudah dua hari tidak dingin.",
         vi: "Alô anh ơi. Máy lạnh bị hỏng, hai ngày nay không lạnh.",
         en: "Hello, sir. The AC is broken — it hasn't been cold for two days.",
       },
       {
+        cell_id: "7fd0ce2c-0458-40e2-ae86-6c6b6a2f598d",
         speaker: "Tukang",
         text: "Oh, mungkin freonnya habis atau filternya kotor. Alamatnya di mana?",
         vi: "À, có thể hết gas hoặc lưới lọc bẩn. Địa chỉ ở đâu ạ?",
         en: "Ah, maybe it's out of refrigerant or the filter is dirty. What's the address?",
       },
       {
+        cell_id: "7e2a2036-b894-4af8-bf7c-212fbea8b5b1",
         speaker: "Pemilik rumah",
         text: "Di Jalan Melati nomor lima. Bisa datang hari ini?",
         vi: "Ở đường Melati số năm. Hôm nay tới được không ạ?",
         en: "On Jalan Melati number five. Can you come today?",
       },
       {
+        cell_id: "0d2b11bd-9c8e-4e3f-8372-43e702b25cfb",
         speaker: "Tukang",
         text: "Bisa, sore ini sekitar jam empat. Saya cek dulu, kira-kira satu jam.",
         vi: "Được, chiều nay khoảng bốn giờ. Tôi kiểm tra trước, chừng một tiếng.",
         en: "I can, this afternoon around four. I'll check first, roughly an hour.",
       },
       {
+        cell_id: "44a60b0c-b3e2-4a44-a679-08956f2e3dd8",
         speaker: "Pemilik rumah",
         text: "Berapa ongkos jasanya? Sudah termasuk bahan atau belum?",
         vi: "Tiền công bao nhiêu ạ? Đã gồm vật tư chưa?",
         en: "How much is the labor charge? Are materials included or not?",
       },
       {
+        cell_id: "f311f4a3-5156-4100-94ba-48b8c0a46a07",
         speaker: "Tukang",
         text: "Ongkos cek seratus ribu. Kalau perlu ganti suku cadang, bahannya dihitung terpisah.",
         vi: "Phí kiểm tra một trăm nghìn. Nếu cần thay linh kiện thì vật tư tính riêng.",
         en: "The inspection fee is one hundred thousand. If parts are needed, materials are counted separately.",
       },
       {
+        cell_id: "ec460ed5-c159-4e0e-b03f-dd158c6c4f8b",
         speaker: "Pemilik rumah",
         text: "Oke, setuju. Kalau rusak lagi, ada garansi tidak?",
         vi: "Được, đồng ý. Nếu hỏng lại thì có bảo hành không ạ?",
         en: "Okay, agreed. If it breaks again, is there a warranty?",
       },
       {
+        cell_id: "1d4dc0c6-b4ab-4871-8039-cc25fb28ece9",
         speaker: "Tukang",
         text: "Ada, garansi servis dua minggu. Nanti tolong rapikan dulu area dekat AC, ya.",
         vi: "Có, bảo hành dịch vụ hai tuần. Lát anh dọn gọn khu gần máy lạnh giúp nhé.",

@@ -37,6 +37,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   /** Indonesian/Javanese word/phrase. */
   word: string;
   /** English meaning. */
@@ -52,6 +53,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   /** Indonesian/Javanese line. */
   text: string;
@@ -275,6 +277,7 @@ export const lessons: IndonesianLesson[] = [
     vocabulary: [
       // Everyday Javanese loanwords now standard nationwide
       {
+        cell_id: "96f1d21e-28b7-4174-a19d-30314b8fd5ed",
         word: "mas",
         en: "mister / older brother (address)",
         vi: "anh (gọi nam giới)",
@@ -283,6 +286,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "mas — Javanese-origin, used nationwide; polite address for a young man",
       },
       {
+        cell_id: "0b1accf2-803a-494b-b171-0c9753fd9803",
         word: "mbak",
         en: "miss / older sister (address)",
         vi: "chị (gọi nữ giới)",
@@ -291,6 +295,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "mbak — initial `mb` (hum the lips); for a young woman or a server",
       },
       {
+        cell_id: "42c048c9-b57b-4f54-85e1-70e36537559c",
         word: "monggo",
         en: "please / go ahead / after you",
         vi: "mời / xin mời",
@@ -299,6 +304,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "MONG-go — a warm invitation; also to excuse oneself/pass",
       },
       {
+        cell_id: "d9d498b9-07fe-46ff-97aa-64559ae0c8e4",
         word: "matur nuwun",
         en: "thank you (polite)",
         vi: "cảm ơn (lịch sự)",
@@ -307,6 +313,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "MA-tur NU-wun — kromo; short ngoko form `nuwun`/`suwun`",
       },
       {
+        cell_id: "3d75e7db-23b2-417d-a7b0-619a52307af8",
         word: "nggih",
         en: "yes / okay (polite)",
         vi: "vâng / dạ",
@@ -315,6 +322,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "nggih — initial `ng` nasal; standard Indonesian is `iya`/`ya`",
       },
       {
+        cell_id: "79a62233-8e97-4d55-88af-b6e367e071c2",
         word: "sampun",
         en: "already / that's all (sign-off)",
         vi: "đã / xong / thôi (chào nhẹ)",
@@ -323,6 +331,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "SAM-pun — kromo of `sudah`; a gentle sign-off",
       },
       {
+        cell_id: "085464a2-b11d-46da-9775-8c8bd0542016",
         word: "sanget",
         en: "very (intensifier)",
         vi: "rất",
@@ -331,6 +340,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "SA-nget — kromo of `sangat`/`banget`",
       },
       {
+        cell_id: "a4a0785e-ce88-4031-ac07-d00599b7a9b1",
         word: "pripun / piye",
         en: "how? / how's it going?",
         vi: "thế nào? / sao rồi?",
@@ -340,6 +350,7 @@ export const lessons: IndonesianLesson[] = [
       },
       // Levels & concepts
       {
+        cell_id: "6f6fa589-f88e-456e-810d-e5ba60f4b81a",
         word: "bahasa Jawa",
         en: "the Javanese language",
         vi: "tiếng Java",
@@ -348,6 +359,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "ba-HA-sa JA-wa — Indonesia's largest regional language (~80M)",
       },
       {
+        cell_id: "05cad1b8-3dc2-4f26-ac0e-51eee20212f9",
         word: "ngoko",
         en: "casual/intimate Javanese speech level",
         vi: "tầng tiếng Java thân mật",
@@ -356,6 +368,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "NGO-ko — for friends, peers/juniors; initial `ng` is one sound",
       },
       {
+        cell_id: "1a22c0ba-109d-4ad6-b9e1-a1fcd04ed3cb",
         word: "kromo (krama)",
         en: "refined/respectful Javanese speech level",
         vi: "tầng tiếng Java trang nhã",
@@ -364,6 +377,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "KRO-mo — for elders/superiors; a whole separate vocabulary",
       },
       {
+        cell_id: "890889f2-e978-4efe-9d89-a58c9648d552",
         word: "suku",
         en: "ethnic group",
         vi: "dân tộc / tộc người",
@@ -372,6 +386,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "SU-ku — Javanese, Sundanese, Batak, Minang...; `suku bangsa` = ethnic group",
       },
       {
+        cell_id: "8560b919-4f5b-4c47-9c59-8a5b1734b235",
         word: "asli",
         en: "original / native (from)",
         vi: "gốc / quê gốc",
@@ -380,6 +395,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "AS-li — `asli mana?` = where are you originally from?; an icebreaker",
       },
       {
+        cell_id: "b2433f2c-543d-4122-a1d1-0d27e93d19a8",
         word: "logat / medok",
         en: "accent / a thick (Javanese) accent",
         vi: "giọng / giọng Java đặc",
@@ -389,6 +405,7 @@ export const lessons: IndonesianLesson[] = [
       },
       // Other big regional groups (sensitivity)
       {
+        cell_id: "0063c674-bb20-4153-972d-43aff7a6837a",
         word: "orang Sunda",
         en: "Sundanese person (West Java)",
         vi: "người Sunda (Tây Java)",
@@ -397,6 +414,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "O-rang SUN-da — Sundanese is distinct from Javanese; `hatur nuhun` = thank you",
       },
       {
+        cell_id: "b408d19f-5dc9-492f-b1d0-dcab339a9141",
         word: "orang Batak",
         en: "Batak person (North Sumatra)",
         vi: "người Batak (Bắc Sumatra)",
@@ -405,6 +423,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "O-rang BA-tak — known for a more direct style; `horas!` = a greeting",
       },
       {
+        cell_id: "9e877a0a-7ae2-43b8-892c-0371275ea592",
         word: "Jawa vs Jawa Barat",
         en: "Javanese (ethnic) vs West Java (province)",
         vi: "người Java (tộc) ≠ tỉnh Tây Java",
@@ -416,48 +435,56 @@ export const lessons: IndonesianLesson[] = [
     dialogue: [
       // A Vietnamese newcomer is welcomed by a Javanese vendor; learns to be gracious
       {
+        cell_id: "bf83a5d0-2288-4280-9e4d-c384b1b52303",
         speaker: "Pedagang",
         text: "Monggo, Mbak, silakan duduk. Mau pesan apa?",
         vi: "Mời chị, mời ngồi. Chị muốn gọi gì ạ?",
         en: "Please, miss, have a seat. What would you like to order?",
       },
       {
+        cell_id: "f98d57b1-2bb7-4566-ac3d-cff00d15b721",
         speaker: "Linh",
         text: "Teh hangat satu, ya, Mas. Eh, maaf, tadi 'monggo' artinya apa?",
         vi: "Cho em một trà nóng nhé anh. À, xin lỗi, 'monggo' nghĩa là gì vậy ạ?",
         en: "One hot tea, please. Oh, sorry — what does 'monggo' mean?",
       },
       {
+        cell_id: "9629b4ef-4555-439f-bdcd-5cfb816f16c1",
         speaker: "Pedagang",
         text: "Itu bahasa Jawa, artinya 'silakan'. Mbak bukan orang sini, ya?",
         vi: "Đó là tiếng Java, nghĩa là 'mời'. Chị không phải người ở đây à?",
         en: "That's Javanese, it means 'please'. You're not from around here, are you?",
       },
       {
+        cell_id: "2d296f3a-5db4-452f-bf36-3e291bd1b4ff",
         speaker: "Linh",
         text: "Betul, saya orang Vietnam. Saya belum bisa bahasa Jawa, tapi sedang belajar.",
         vi: "Đúng ạ, em là người Việt Nam. Em chưa biết tiếng Java, nhưng đang học.",
         en: "Right, I'm Vietnamese. I can't speak Javanese yet, but I'm learning.",
       },
       {
+        cell_id: "e3023fbf-919a-4638-8312-94347a87512b",
         speaker: "Pedagang",
         text: "Wah, hebat! Pakai bahasa Indonesia saja sudah bagus kok.",
         vi: "Ồ, giỏi quá! Cứ dùng tiếng Indonesia thôi là tốt rồi mà.",
         en: "Wow, great! Just using Indonesian is already good, you know.",
       },
       {
+        cell_id: "0cd362ed-18c7-485e-859f-3f10a3efc9cb",
         speaker: "Linh",
         text: "Matur nuwun, ya, Mas. Saya dengar tidak semua orang di sini orang Jawa?",
         vi: "Cảm ơn anh nhé. Em nghe nói không phải ai ở đây cũng là người Java?",
         en: "Thank you. I heard not everyone here is Javanese?",
       },
       {
+        cell_id: "976ee9c6-8724-467c-ab99-aed81d69a35f",
         speaker: "Pedagang",
         text: "Betul. Banyak suku: Jawa, Sunda, Batak. Teman saya itu asli Sunda.",
         vi: "Đúng vậy. Nhiều dân tộc lắm: Java, Sunda, Batak. Bạn em kia gốc Sunda đấy.",
         en: "True. Many ethnic groups: Javanese, Sundanese, Batak. My friend there is Sundanese.",
       },
       {
+        cell_id: "cbd9601b-34a1-40eb-aa3f-b78cb38db3b8",
         speaker: "Linh",
         text: "Oh begitu, menarik sekali. Nggih, matur nuwun sanget!",
         vi: "Ồ vậy à, thú vị thật. Dạ, cảm ơn anh rất nhiều!",

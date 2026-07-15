@@ -15,6 +15,7 @@ import { trackEvent } from "@/lib/analytics";
 type CorrectionResult = TutorTurn & {
   grammarTip: string;
   practicePrompt: string;
+  appliedRuleIds?: string[];
 };
 
 type Props = {
@@ -69,6 +70,11 @@ export default function CorrectionMode({
   const hasResult = Boolean(result && !loading);
   const canClearBoard = Boolean(input.trim() || result || error || voiceDraft);
   const { ui } = tutorCopy;
+  const isDeferredCorrectionNotice = Boolean(
+    error &&
+      (/Mercy ghi nhận câu này/.test(error) ||
+        /share a small tip in a moment/i.test(error)),
+  );
 
   // Step-18: once the correction engine has confirmed the sentence is wrong,
   // run the surface-detectable register-error detector (sync, <1ms). On a match
@@ -77,12 +83,13 @@ export default function CorrectionMode({
   const register = result ? detectRegisterError({ learnerText: result.userText }) : { matched: false as const };
   const registerTag = register.matched ? register.tag : null;
 
+  const fallbackRuleId = result?.appliedRuleIds?.find((id) => id.trim()) ?? null;
   // Provenance for the displayed correction, used to gate + attribute the
   // learner feedback thumbs. Prefer the register detector (its explanation is a
-  // dedicated correction block), fall back to the L1 pattern chip. Null when the
-  // correction carries no rule/detector id → CorrectionFeedbackButtons renders
-  // nothing (no id, no buttons).
-  const correctionRuleId = registerTag ?? detectorHint?.tag ?? null;
+  // dedicated correction block), fall back to the L1 pattern chip, then to the
+  // local/AI correction rule id carried on the rendered result. Null only when
+  // the correction truly carries no provenance.
+  const correctionRuleId = registerTag ?? detectorHint?.tag ?? fallbackRuleId;
   useEffect(() => {
     // Telemetry: emit register_correction_shown with the tag so the team can
     // measure how often each surface-detectable register pattern fires in prod.
@@ -222,11 +229,29 @@ export default function CorrectionMode({
           </div>
         </section>
 
-        {/* Error state */}
+        {/* Error / deferred-correction notice state */}
         {error && (
-          <section className="mt-4 rounded-[16px] border border-rose-200 bg-rose-50 p-5">
-            <div className="text-sm font-black text-rose-700">Lỗi · Error</div>
-            <p className="mt-1 text-sm font-medium text-rose-600">{error}</p>
+          <section
+            className={`mt-4 rounded-[16px] border p-5 ${
+              isDeferredCorrectionNotice
+                ? "border-emerald-200 bg-emerald-50"
+                : "border-rose-200 bg-rose-50"
+            }`}
+          >
+            <div
+              className={`text-sm font-black ${
+                isDeferredCorrectionNotice ? "text-emerald-700" : "text-rose-700"
+              }`}
+            >
+              {isDeferredCorrectionNotice ? "Đã ghi nhận · Noted" : "Lỗi · Error"}
+            </div>
+            <p
+              className={`mt-1 text-sm font-medium ${
+                isDeferredCorrectionNotice ? "text-emerald-700" : "text-rose-600"
+              }`}
+            >
+              {error}
+            </p>
           </section>
         )}
 

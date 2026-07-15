@@ -13,6 +13,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -22,6 +23,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -249,39 +251,43 @@ export const lessons: IndonesianLesson[] = [
     tip_advice_en:
       "Tip for Vietnamese speakers: at service shops, short polite lines are enough: `Tolong print...`, `Bisa scan...?`, `Berapa biaya...?`. Learn fixed chunks: `hitam putih`, `bolak-balik`, `per lembar`, `ukuran A4`, `jilid spiral`, `kirim file lewat WhatsApp`. For instructions about what staff should do to a document, passive `di-` sounds natural: `dicetak`, `dikirim`, `dilaminating`, `dimasukkan`.",
     vocabulary: [
-      { word: "fotokopi", en: "photocopy", vi: "photo / photocopy", pos: "noun / verb", pronunciation_vi: "fo-to-KO-pi", pronunciation_en: "fo-to-KO-pee" },
-      { word: "print", en: "print", vi: "in", pos: "verb", pronunciation_vi: "print", pronunciation_en: "print" },
-      { word: "scan", en: "scan", vi: "scan / quét tài liệu", pos: "verb", pronunciation_vi: "sken", pronunciation_en: "scan" },
-      { word: "PDF", en: "PDF", vi: "file PDF", pos: "noun", pronunciation_vi: "pe-de-ef", pronunciation_en: "pee-dee-ef" },
-      { word: "flashdisk", en: "USB flash drive", vi: "USB", pos: "noun", pronunciation_vi: "FLES-disk", pronunciation_en: "FLASH-disk" },
-      { word: "laminating", en: "laminating", vi: "ép plastic", pos: "noun / verb", pronunciation_vi: "LA-mi-na-ting", pronunciation_en: "LA-mi-na-ting" },
-      { word: "jilid", en: "binding", vi: "đóng gáy / đóng quyển", pos: "noun / verb", pronunciation_vi: "JI-lid", pronunciation_en: "JEE-lid" },
-      { word: "kirim file", en: "send a file", vi: "gửi file", pos: "verb phrase", pronunciation_vi: "KI-rim fail", pronunciation_en: "KI-rim file" },
-      { word: "ukuran kertas", en: "paper size", vi: "khổ giấy", pos: "noun phrase", pronunciation_vi: "u-KU-ran KER-tas", pronunciation_en: "u-KU-ran KER-tas" },
-      { word: "hitam putih", en: "black and white", vi: "đen trắng", pos: "adjective phrase", pronunciation_vi: "HI-tam PU-tih", pronunciation_en: "HI-tam POO-tih" },
-      { word: "bolak-balik", en: "double-sided / back-and-forth", vi: "hai mặt / qua lại", pos: "adverb", pronunciation_vi: "BO-lak-BA-lik", pronunciation_en: "BO-lak-BA-lik" },
-      { word: "per lembar", en: "per sheet", vi: "mỗi tờ", pos: "phrase", pronunciation_vi: "per LEM-bar", pronunciation_en: "per LEM-bar" },
+      { cell_id: "2c9f835d-3bb9-49cf-8e04-33f667ff51f6", word: "fotokopi", en: "photocopy", vi: "photo / photocopy", pos: "noun / verb", pronunciation_vi: "fo-to-KO-pi", pronunciation_en: "fo-to-KO-pee" },
+      { cell_id: "c77d1157-6029-47de-a270-b18fb1911bee", word: "print", en: "print", vi: "in", pos: "verb", pronunciation_vi: "print", pronunciation_en: "print" },
+      { cell_id: "d3cb496f-44f3-491f-8086-c307700de2a6", word: "scan", en: "scan", vi: "scan / quét tài liệu", pos: "verb", pronunciation_vi: "sken", pronunciation_en: "scan" },
+      { cell_id: "7a8ee030-f540-4d9a-997f-68afb3958f8d", word: "PDF", en: "PDF", vi: "file PDF", pos: "noun", pronunciation_vi: "pe-de-ef", pronunciation_en: "pee-dee-ef" },
+      { cell_id: "30ab8348-36f0-4da6-9185-13e6580d787f", word: "flashdisk", en: "USB flash drive", vi: "USB", pos: "noun", pronunciation_vi: "FLES-disk", pronunciation_en: "FLASH-disk" },
+      { cell_id: "eb5b9078-cf62-43f7-9b36-d412f4f3a88e", word: "laminating", en: "laminating", vi: "ép plastic", pos: "noun / verb", pronunciation_vi: "LA-mi-na-ting", pronunciation_en: "LA-mi-na-ting" },
+      { cell_id: "2457c20b-797b-4c7a-81b6-c73cd678f6ac", word: "jilid", en: "binding", vi: "đóng gáy / đóng quyển", pos: "noun / verb", pronunciation_vi: "JI-lid", pronunciation_en: "JEE-lid" },
+      { cell_id: "fa53902d-4d29-4d80-9113-304d96fcbb75", word: "kirim file", en: "send a file", vi: "gửi file", pos: "verb phrase", pronunciation_vi: "KI-rim fail", pronunciation_en: "KI-rim file" },
+      { cell_id: "33f8c9af-f558-44b1-b227-0f1d8485acb2", word: "ukuran kertas", en: "paper size", vi: "khổ giấy", pos: "noun phrase", pronunciation_vi: "u-KU-ran KER-tas", pronunciation_en: "u-KU-ran KER-tas" },
+      { cell_id: "d57a8083-d35d-40d1-b612-c2454e10c7ba", word: "hitam putih", en: "black and white", vi: "đen trắng", pos: "adjective phrase", pronunciation_vi: "HI-tam PU-tih", pronunciation_en: "HI-tam POO-tih" },
+      { cell_id: "581059e1-f46e-4797-8cd3-732ef6af8c5a", word: "bolak-balik", en: "double-sided / back-and-forth", vi: "hai mặt / qua lại", pos: "adverb", pronunciation_vi: "BO-lak-BA-lik", pronunciation_en: "BO-lak-BA-lik" },
+      { cell_id: "3f192bc6-4c2b-458a-a3aa-f5dd0334130b", word: "per lembar", en: "per sheet", vi: "mỗi tờ", pos: "phrase", pronunciation_vi: "per LEM-bar", pronunciation_en: "per LEM-bar" },
     ],
     dialogue: [
       {
+        cell_id: "74b0bf73-a4ba-48c7-85de-c4ae99d752f6",
         speaker: "Pelanggan",
         text: "Mbak, saya mau print file PDF ini ukuran A4, hitam putih saja.",
         vi: "Chị ơi, tôi muốn in file PDF này khổ A4, đen trắng thôi.",
         en: "Hi, I want to print this PDF in A4, black and white only.",
       },
       {
+        cell_id: "4d1d7bbc-6c82-4e62-a9df-01a7fe07b76b",
         speaker: "Petugas",
         text: "File-nya ada di flashdisk atau mau kirim lewat WhatsApp?",
         vi: "File ở trong USB hay muốn gửi qua WhatsApp?",
         en: "Is the file on a flash drive, or do you want to send it via WhatsApp?",
       },
       {
+        cell_id: "1f22ac74-2d89-4141-91d9-2c457ce9d6da",
         speaker: "Pelanggan",
         text: "Saya kirim lewat WhatsApp. Bisa sekalian scan KTP jadi PDF?",
         vi: "Tôi gửi qua WhatsApp. Có thể tiện scan KTP thành PDF luôn không?",
         en: "I will send it through WhatsApp. Can you also scan my ID into a PDF?",
       },
       {
+        cell_id: "0985199b-935b-4add-ba05-16c5d95e583e",
         speaker: "Petugas",
         text: "Bisa. Mau dilaminating juga atau cukup dimasukkan ke map?",
         vi: "Được. Muốn ép plastic luôn hay chỉ cần bỏ vào bìa hồ sơ?",

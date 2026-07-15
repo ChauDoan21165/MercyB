@@ -31,6 +31,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   /** Indonesian word/phrase. */
   word: string;
   /** English meaning. */
@@ -46,6 +47,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   /** Indonesian line. */
   text: string;
@@ -298,6 +300,7 @@ export const lessons: IndonesianLesson[] = [
     vocabulary: [
       // Body
       {
+        cell_id: "a9021263-1549-4a34-be5d-0e664595e653",
         word: "badan",
         en: "body",
         vi: "cơ thể / người",
@@ -306,6 +309,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "BA-dan — `badan lemas` = the body feels weak; also `tubuh`",
       },
       {
+        cell_id: "9b70571c-f2f2-4de2-a6eb-62dfd075d7d8",
         word: "kepala",
         en: "head",
         vi: "đầu",
@@ -314,6 +318,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "ke-PA-la — `kepala saya sakit/pusing` = my head hurts/is dizzy",
       },
       {
+        cell_id: "9ca50fb0-9dcc-4e1f-adf7-c46a81ffe95a",
         word: "perut",
         en: "stomach / belly",
         vi: "bụng",
@@ -322,6 +327,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "pe-RUT — sound the final `t`; `sakit perut` = stomachache",
       },
       {
+        cell_id: "57bb59ad-d02b-4575-ac7c-6aaceb16f62c",
         word: "tenggorokan",
         en: "throat",
         vi: "họng / cổ họng",
@@ -331,6 +337,7 @@ export const lessons: IndonesianLesson[] = [
       },
       // Symptoms
       {
+        cell_id: "6264e6f1-abd2-4447-880d-c3e2b7a0790b",
         word: "sakit",
         en: "sick / painful / to hurt",
         vi: "ốm / đau",
@@ -339,6 +346,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "SA-kit — `saya sakit` (ill) ≠ `[part] saya sakit` (hurts)",
       },
       {
+        cell_id: "875bfb1c-e4f3-49fe-928b-683a11bf2118",
         word: "demam",
         en: "fever",
         vi: "sốt",
@@ -347,6 +355,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "de-MAM — `demam tinggi` = high fever",
       },
       {
+        cell_id: "882d1222-9588-4ff2-a160-01ab739f2e89",
         word: "batuk",
         en: "cough",
         vi: "ho",
@@ -355,6 +364,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "BA-tuk — sound the final `k`; `batuk pilek` = cough and cold",
       },
       {
+        cell_id: "fda86edf-f101-4a2e-acd9-f53b598e91d4",
         word: "pilek",
         en: "runny nose / common cold",
         vi: "sổ mũi / cảm",
@@ -363,6 +373,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "PEE-lek — milder than 'flu'; the common cold",
       },
       {
+        cell_id: "7cabb554-ebc8-4882-8d00-d64f16dcf2e3",
         word: "pusing",
         en: "dizzy / headachy",
         vi: "chóng mặt / nhức đầu",
@@ -371,6 +382,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "PU-sing — `kepala pusing`; also figuratively 'stressed/confused'",
       },
       {
+        cell_id: "9efa5894-60b3-4450-ad50-4b6212b2e92e",
         word: "mual",
         en: "nauseous",
         vi: "buồn nôn",
@@ -380,6 +392,7 @@ export const lessons: IndonesianLesson[] = [
       },
       // Care & treatment
       {
+        cell_id: "886eb370-50ab-442f-b945-f007b5e47221",
         word: "dokter",
         en: "doctor",
         vi: "bác sĩ",
@@ -388,6 +401,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "DOK-ter — polite short form `Dok`; `periksa ke dokter` = to see a doctor",
       },
       {
+        cell_id: "e175711b-0ff0-4efd-b6cb-2aa201c2039f",
         word: "resep",
         en: "prescription",
         vi: "đơn thuốc",
@@ -396,6 +410,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "RE-sep — the doctor's slip; not `obat` (the actual medicine)",
       },
       {
+        cell_id: "d7f74e92-ed09-4ef3-99d6-46c45825d436",
         word: "obat",
         en: "medicine",
         vi: "thuốc",
@@ -404,6 +419,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "O-bat — `obat bebas` (over-the-counter); label says `diminum` (take/drink)",
       },
       {
+        cell_id: "f957678a-452c-47f1-bd10-c39a58687998",
         word: "apotek",
         en: "pharmacy",
         vi: "nhà thuốc / hiệu thuốc",
@@ -412,6 +428,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "a-po-TEK — where you buy `obat`; `apotek terdekat` = nearest pharmacy",
       },
       {
+        cell_id: "56445462-3019-41f0-b025-bc318bb5e607",
         word: "BPJS",
         en: "national health insurance",
         vi: "bảo hiểm y tế quốc gia",
@@ -420,6 +437,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "be-pe-je-ES — spell each letter; ask `menerima BPJS?`",
       },
       {
+        cell_id: "80cad72f-d5d2-4472-ad9e-9d4e83bf7c1b",
         word: "rumah sakit",
         en: "hospital",
         vi: "bệnh viện",
@@ -431,42 +449,49 @@ export const lessons: IndonesianLesson[] = [
     dialogue: [
       // Dialogue: a clinic visit
       {
+        cell_id: "775e9938-186a-4c4b-b510-e985542e7f86",
         speaker: "Dokter",
         text: "Selamat siang. Ada keluhan apa?",
         vi: "Chào buổi trưa. Anh/chị thấy khó chịu chỗ nào?",
         en: "Good afternoon. What's bothering you?",
       },
       {
+        cell_id: "478c9bbc-c32b-455d-a15b-b8e882600125",
         speaker: "Pasien",
         text: "Dok, saya demam dan batuk. Tenggorokan saya juga sakit.",
         vi: "Bác sĩ ơi, tôi bị sốt và ho. Họng tôi cũng đau.",
         en: "Doctor, I have a fever and a cough. My throat hurts too.",
       },
       {
+        cell_id: "023e8679-6f40-4a22-a405-1ad67f533742",
         speaker: "Dokter",
         text: "Sudah berapa lama? Apakah ada mual atau pusing?",
         vi: "Bao lâu rồi? Có buồn nôn hay chóng mặt không?",
         en: "For how long? Any nausea or dizziness?",
       },
       {
+        cell_id: "4d8e1a2f-2ce9-45a6-9e05-051aad4c81cc",
         speaker: "Pasien",
         text: "Sejak kemarin. Kepala saya pusing dan badan lemas.",
         vi: "Từ hôm qua. Đầu tôi chóng mặt và người mệt rũ.",
         en: "Since yesterday. My head is dizzy and my body feels weak.",
       },
       {
+        cell_id: "ffc0e134-1464-41e5-91a7-acc3d2c45265",
         speaker: "Dokter",
         text: "Baik. Saya beri resep. Obat ini diminum tiga kali sehari, dan banyak istirahat.",
         vi: "Được rồi. Tôi kê đơn. Thuốc này uống ba lần mỗi ngày, và nghỉ ngơi nhiều.",
         en: "Okay. I'll give you a prescription. Take this medicine three times a day, and rest a lot.",
       },
       {
+        cell_id: "1f42838a-d6f5-4bad-a653-1b09b23d6a76",
         speaker: "Pasien",
         text: "Terima kasih, Dok. Di mana apotek terdekat? Apakah klinik ini menerima BPJS?",
         vi: "Cảm ơn bác sĩ. Nhà thuốc gần nhất ở đâu? Phòng khám này có nhận BPJS không?",
         en: "Thank you, doctor. Where's the nearest pharmacy? Does this clinic accept BPJS?",
       },
       {
+        cell_id: "dc4a13c2-5241-41f7-a6ff-2cdfe41238ae",
         speaker: "Dokter",
         text: "Apotek di sebelah. Ya, kami menerima BPJS. Semoga cepat sembuh.",
         vi: "Nhà thuốc ở ngay bên cạnh. Vâng, chúng tôi nhận BPJS. Chúc mau khỏe.",

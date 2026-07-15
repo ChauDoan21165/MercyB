@@ -20,6 +20,7 @@ export type PunjabiB2Sentence = {
 };
 
 export type PunjabiB2Vocabulary = {
+  cell_id?: string;
   gurmukhi: string;
   romanization: string;
   vi: string;
@@ -82,9 +83,9 @@ export const punjabiB2CoreLessons: PunjabiB2Lesson[] = [
       },
     ],
     vocabulary: [
-      { gurmukhi: "ਵਿਚਾਰ", romanization: "vichaar", vi: "quan điểm", en: "opinion", pos: "n." },
-      { gurmukhi: "ਪੱਖ", romanization: "pakkh", vi: "phía / mặt", en: "side / aspect", pos: "n." },
-      { gurmukhi: "ਚਿੰਤਾ", romanization: "chintaa", vi: "mối lo", en: "concern", pos: "n." },
+      { cell_id: "46f33c87-1528-411b-acb0-48caddff1bd3", gurmukhi: "ਵਿਚਾਰ", romanization: "vichaar", vi: "quan điểm", en: "opinion", pos: "n." },
+      { cell_id: "9c97d861-166c-49f8-9612-40dce1f6f767", gurmukhi: "ਪੱਖ", romanization: "pakkh", vi: "phía / mặt", en: "side / aspect", pos: "n." },
+      { cell_id: "f3977c72-9039-4585-97bf-d26adedd84c6", gurmukhi: "ਚਿੰਤਾ", romanization: "chintaa", vi: "mối lo", en: "concern", pos: "n." },
     ],
     commonMistakes: [
       {
@@ -129,9 +130,9 @@ export const punjabiB2CoreLessons: PunjabiB2Lesson[] = [
       },
     ],
     vocabulary: [
-      { gurmukhi: "ਰਾਏ", romanization: "raae", vi: "ý kiến", en: "view", pos: "n." },
-      { gurmukhi: "ਵੱਖਰਾ", romanization: "vakhraa", vi: "khác", en: "different", pos: "adj." },
-      { gurmukhi: "ਪਾਸਾ", romanization: "paasaa", vi: "góc / phía", en: "angle / side", pos: "n." },
+      { cell_id: "5fc59f30-a783-4a7a-b7e0-d76fd470077b", gurmukhi: "ਰਾਏ", romanization: "raae", vi: "ý kiến", en: "view", pos: "n." },
+      { cell_id: "fda6fd2f-ed73-42bf-8bf2-9127abd7c8ca", gurmukhi: "ਵੱਖਰਾ", romanization: "vakhraa", vi: "khác", en: "different", pos: "adj." },
+      { cell_id: "a1da7c78-b054-47c4-ad73-44a6010bfdb7", gurmukhi: "ਪਾਸਾ", romanization: "paasaa", vi: "góc / phía", en: "angle / side", pos: "n." },
     ],
     commonMistakes: [
       {
@@ -176,9 +177,9 @@ export const punjabiB2CoreLessons: PunjabiB2Lesson[] = [
       },
     ],
     vocabulary: [
-      { gurmukhi: "ਤਰਜੀਹ", romanization: "tarjih", vi: "ưu tiên", en: "priority", pos: "n." },
-      { gurmukhi: "ਉਮੀਦ", romanization: "umiid", vi: "kỳ vọng", en: "expectation", pos: "n." },
-      { gurmukhi: "ਵਧਾਉਣਾ", romanization: "vadhaaunaa", vi: "gia hạn / tăng", en: "to extend / increase", pos: "v." },
+      { cell_id: "85ffb6c1-2c0c-4ef2-8feb-9b70fc731b75", gurmukhi: "ਤਰਜੀਹ", romanization: "tarjih", vi: "ưu tiên", en: "priority", pos: "n." },
+      { cell_id: "c06c7005-a12b-4585-95a1-ef3da0cdc8f2", gurmukhi: "ਉਮੀਦ", romanization: "umiid", vi: "kỳ vọng", en: "expectation", pos: "n." },
+      { cell_id: "d17bdfbd-83c9-4f5c-9110-c0a198974114", gurmukhi: "ਵਧਾਉਣਾ", romanization: "vadhaaunaa", vi: "gia hạn / tăng", en: "to extend / increase", pos: "v." },
     ],
     commonMistakes: [
       {
@@ -223,9 +224,9 @@ export const punjabiB2CoreLessons: PunjabiB2Lesson[] = [
       },
     ],
     vocabulary: [
-      { gurmukhi: "ਜਾਂਚ", romanization: "jaanch", vi: "kiểm tra", en: "check / investigation", pos: "n." },
-      { gurmukhi: "ਹੱਲ", romanization: "hall", vi: "giải pháp", en: "solution", pos: "n." },
-      { gurmukhi: "ਗੁੰਮ", romanization: "gumm", vi: "bị thiếu / mất", en: "missing", pos: "adj." },
+      { cell_id: "f9b427dd-c92a-40bf-84a7-6a3e651cc223", gurmukhi: "ਜਾਂਚ", romanization: "jaanch", vi: "kiểm tra", en: "check / investigation", pos: "n." },
+      { cell_id: "fc8053e6-af16-4aca-a9cc-b600948a61f0", gurmukhi: "ਹੱਲ", romanization: "hall", vi: "giải pháp", en: "solution", pos: "n." },
+      { cell_id: "88f069aa-813c-4430-8ae0-ee6388541f0d", gurmukhi: "ਗੁੰਮ", romanization: "gumm", vi: "bị thiếu / mất", en: "missing", pos: "adj." },
     ],
     commonMistakes: [
       {
@@ -270,9 +271,9 @@ export const punjabiB2CoreLessons: PunjabiB2Lesson[] = [
       },
     ],
     vocabulary: [
-      { gurmukhi: "ਦਰਦ", romanization: "dard", vi: "đau", en: "pain", pos: "n." },
-      { gurmukhi: "ਦਵਾਈ", romanization: "davaai", vi: "thuốc", en: "medicine", pos: "n." },
-      { gurmukhi: "ਲੱਛਣ", romanization: "lachhan", vi: "triệu chứng", en: "symptom", pos: "n." },
+      { cell_id: "31116967-66c3-4eab-98cd-c31fba145084", gurmukhi: "ਦਰਦ", romanization: "dard", vi: "đau", en: "pain", pos: "n." },
+      { cell_id: "2df33648-d611-4cf7-a539-52cbe812d6c3", gurmukhi: "ਦਵਾਈ", romanization: "davaai", vi: "thuốc", en: "medicine", pos: "n." },
+      { cell_id: "80c61665-b1aa-4db2-ae26-e84dbea93252", gurmukhi: "ਲੱਛਣ", romanization: "lachhan", vi: "triệu chứng", en: "symptom", pos: "n." },
     ],
     commonMistakes: [
       {
@@ -317,9 +318,9 @@ export const punjabiB2CoreLessons: PunjabiB2Lesson[] = [
       },
     ],
     vocabulary: [
-      { gurmukhi: "ਅਰਜ਼ੀ", romanization: "arzii", vi: "đơn / hồ sơ", en: "application", pos: "n." },
-      { gurmukhi: "ਸਥਿਤੀ", romanization: "sthiti", vi: "tình trạng", en: "status", pos: "n." },
-      { gurmukhi: "ਦਸਤਾਵੇਜ਼", romanization: "dastaavez", vi: "giấy tờ", en: "document", pos: "n." },
+      { cell_id: "5a601773-8d02-4dde-a98a-b50b27d678b9", gurmukhi: "ਅਰਜ਼ੀ", romanization: "arzii", vi: "đơn / hồ sơ", en: "application", pos: "n." },
+      { cell_id: "bdd340b8-3040-4a67-876a-b60cded0171b", gurmukhi: "ਸਥਿਤੀ", romanization: "sthiti", vi: "tình trạng", en: "status", pos: "n." },
+      { cell_id: "add0e8ef-f888-44f5-a0e6-5f25a3f0d9e0", gurmukhi: "ਦਸਤਾਵੇਜ਼", romanization: "dastaavez", vi: "giấy tờ", en: "document", pos: "n." },
     ],
     commonMistakes: [
       {
@@ -364,9 +365,9 @@ export const punjabiB2CoreLessons: PunjabiB2Lesson[] = [
       },
     ],
     vocabulary: [
-      { gurmukhi: "ਸਮੱਸਿਆ", romanization: "samassiaa", vi: "vấn đề", en: "problem", pos: "n." },
-      { gurmukhi: "ਕਾਰਨ", romanization: "kaaran", vi: "nguyên nhân", en: "cause", pos: "n." },
-      { gurmukhi: "ਪ੍ਰਕਿਰਿਆ", romanization: "prakiriaa", vi: "quy trình", en: "process", pos: "n." },
+      { cell_id: "d4d15dc7-79e3-49b3-a0b7-a233b04a61d6", gurmukhi: "ਸਮੱਸਿਆ", romanization: "samassiaa", vi: "vấn đề", en: "problem", pos: "n." },
+      { cell_id: "0a2977be-fd05-4f66-843d-6ff10d94cfe2", gurmukhi: "ਕਾਰਨ", romanization: "kaaran", vi: "nguyên nhân", en: "cause", pos: "n." },
+      { cell_id: "2f781ee6-9b21-472b-b4e4-3f98d310b661", gurmukhi: "ਪ੍ਰਕਿਰਿਆ", romanization: "prakiriaa", vi: "quy trình", en: "process", pos: "n." },
     ],
     commonMistakes: [
       {
@@ -411,9 +412,9 @@ export const punjabiB2CoreLessons: PunjabiB2Lesson[] = [
       },
     ],
     vocabulary: [
-      { gurmukhi: "ਤੁਸੀਂ", romanization: "tusii", vi: "anh/chị/bạn trang trọng", en: "formal/respectful you", pos: "pron." },
-      { gurmukhi: "ਤੂੰ", romanization: "tuun", vi: "mày/cậu/bạn thân", en: "intimate you", pos: "pron." },
-      { gurmukhi: "ਕਿਰਪਾ ਕਰਕੇ", romanization: "kirpaa karke", vi: "xin vui lòng", en: "please", pos: "phrase" },
+      { cell_id: "7a55fc36-0c5b-457f-9da6-f5f8de183a6a", gurmukhi: "ਤੁਸੀਂ", romanization: "tusii", vi: "anh/chị/bạn trang trọng", en: "formal/respectful you", pos: "pron." },
+      { cell_id: "89e7df53-0a5d-41a7-90ff-c2ef41deebc4", gurmukhi: "ਤੂੰ", romanization: "tuun", vi: "mày/cậu/bạn thân", en: "intimate you", pos: "pron." },
+      { cell_id: "545a6b27-4249-4c37-ab54-39c483e6b1ff", gurmukhi: "ਕਿਰਪਾ ਕਰਕੇ", romanization: "kirpaa karke", vi: "xin vui lòng", en: "please", pos: "phrase" },
     ],
     commonMistakes: [
       {
@@ -458,9 +459,9 @@ export const punjabiB2CoreLessons: PunjabiB2Lesson[] = [
       },
     ],
     vocabulary: [
-      { gurmukhi: "ਢਾਂਚਾ", romanization: "dhaanchaa", vi: "cấu trúc", en: "structure", pos: "n." },
-      { gurmukhi: "ਦਲੀਲ", romanization: "daliil", vi: "lập luận", en: "argument", pos: "n." },
-      { gurmukhi: "ਮਜ਼ਬੂਤ", romanization: "mazbuut", vi: "mạnh", en: "strong", pos: "adj." },
+      { cell_id: "6e647b8a-7ada-4911-b6f5-b622d8fa8741", gurmukhi: "ਢਾਂਚਾ", romanization: "dhaanchaa", vi: "cấu trúc", en: "structure", pos: "n." },
+      { cell_id: "3b7581b6-6b80-4ada-b392-5f2a78f05188", gurmukhi: "ਦਲੀਲ", romanization: "daliil", vi: "lập luận", en: "argument", pos: "n." },
+      { cell_id: "834371bb-b4a4-49c5-a7d8-9cfdcfc8be48", gurmukhi: "ਮਜ਼ਬੂਤ", romanization: "mazbuut", vi: "mạnh", en: "strong", pos: "adj." },
     ],
     commonMistakes: [
       {
@@ -505,9 +506,9 @@ export const punjabiB2CoreLessons: PunjabiB2Lesson[] = [
       },
     ],
     vocabulary: [
-      { gurmukhi: "ਅਫ਼ਸੋਸ", romanization: "afsos", vi: "tiếc / lấy làm tiếc", en: "regret / sorry", pos: "n." },
-      { gurmukhi: "ਤਜਰਬਾ", romanization: "tajurbaa", vi: "trải nghiệm", en: "experience", pos: "n." },
-      { gurmukhi: "ਅਪਡੇਟ", romanization: "update", vi: "cập nhật", en: "update", pos: "n." },
+      { cell_id: "06071b58-1922-449e-88fe-c1b3fffe4746", gurmukhi: "ਅਫ਼ਸੋਸ", romanization: "afsos", vi: "tiếc / lấy làm tiếc", en: "regret / sorry", pos: "n." },
+      { cell_id: "efc3f712-b13b-415b-afb7-a8726d1859c8", gurmukhi: "ਤਜਰਬਾ", romanization: "tajurbaa", vi: "trải nghiệm", en: "experience", pos: "n." },
+      { cell_id: "c1465e85-d8bf-4d53-af4e-c15d0dba0f8e", gurmukhi: "ਅਪਡੇਟ", romanization: "update", vi: "cập nhật", en: "update", pos: "n." },
     ],
     commonMistakes: [
       {
@@ -552,9 +553,9 @@ export const punjabiB2CoreLessons: PunjabiB2Lesson[] = [
       },
     ],
     vocabulary: [
-      { gurmukhi: "ਵਾਰ", romanization: "vaar", vi: "lần", en: "time / occurrence", pos: "n." },
-      { gurmukhi: "ਸਾਈਡ ਇਫੈਕਟ", romanization: "side effect", vi: "tác dụng phụ", en: "side effect", pos: "n." },
-      { gurmukhi: "ਮੁਲਾਕਾਤ", romanization: "mulaakaat", vi: "cuộc hẹn / lần gặp", en: "appointment / visit", pos: "n." },
+      { cell_id: "62bdc3e7-e6fa-40f1-aea8-63198ee19f68", gurmukhi: "ਵਾਰ", romanization: "vaar", vi: "lần", en: "time / occurrence", pos: "n." },
+      { cell_id: "b75a4eaf-fead-49f1-b3b8-52f4d7c1c3b1", gurmukhi: "ਸਾਈਡ ਇਫੈਕਟ", romanization: "side effect", vi: "tác dụng phụ", en: "side effect", pos: "n." },
+      { cell_id: "419e1b6e-75e2-45eb-bffa-0ae2dff8ba32", gurmukhi: "ਮੁਲਾਕਾਤ", romanization: "mulaakaat", vi: "cuộc hẹn / lần gặp", en: "appointment / visit", pos: "n." },
     ],
     commonMistakes: [
       {
@@ -599,9 +600,9 @@ export const punjabiB2CoreLessons: PunjabiB2Lesson[] = [
       },
     ],
     vocabulary: [
-      { gurmukhi: "ਅਸਲ", romanization: "asal", vi: "bản gốc", en: "original", pos: "adj./n." },
-      { gurmukhi: "ਕਾਪੀ", romanization: "copy", vi: "bản sao", en: "copy", pos: "n." },
-      { gurmukhi: "ਲੋੜ", romanization: "lorr", vi: "yêu cầu / nhu cầu", en: "requirement / need", pos: "n." },
+      { cell_id: "90f80c99-9c23-4d82-bdc7-e86b39148881", gurmukhi: "ਅਸਲ", romanization: "asal", vi: "bản gốc", en: "original", pos: "adj./n." },
+      { cell_id: "250c452f-cafa-4b51-ad27-43655581edea", gurmukhi: "ਕਾਪੀ", romanization: "copy", vi: "bản sao", en: "copy", pos: "n." },
+      { cell_id: "60eb51b8-ed15-4bd7-b589-5b3656f7a196", gurmukhi: "ਲੋੜ", romanization: "lorr", vi: "yêu cầu / nhu cầu", en: "requirement / need", pos: "n." },
     ],
     commonMistakes: [
       {
@@ -646,9 +647,9 @@ export const punjabiB2CoreLessons: PunjabiB2Lesson[] = [
       },
     ],
     vocabulary: [
-      { gurmukhi: "ਜੁੜਿਆ ਹੋਇਆ", romanization: "jurriyaa hoiaa", vi: "đính kèm", en: "attached", pos: "adj." },
-      { gurmukhi: "ਸੰਭਵ", romanization: "sambhav", vi: "có thể", en: "possible", pos: "adj." },
-      { gurmukhi: "ਧੰਨਵਾਦ", romanization: "dhannvaad", vi: "cảm ơn", en: "thank you", pos: "n./phrase" },
+      { cell_id: "a30efc27-6b3a-407e-a786-5e3f6fbadbb1", gurmukhi: "ਜੁੜਿਆ ਹੋਇਆ", romanization: "jurriyaa hoiaa", vi: "đính kèm", en: "attached", pos: "adj." },
+      { cell_id: "102834fb-6183-4b3b-8317-3d4ed30bef56", gurmukhi: "ਸੰਭਵ", romanization: "sambhav", vi: "có thể", en: "possible", pos: "adj." },
+      { cell_id: "1a8ee0ef-4726-4996-b8eb-a68bf53d1750", gurmukhi: "ਧੰਨਵਾਦ", romanization: "dhannvaad", vi: "cảm ơn", en: "thank you", pos: "n./phrase" },
     ],
     commonMistakes: [
       {
@@ -693,9 +694,9 @@ export const punjabiB2CoreLessons: PunjabiB2Lesson[] = [
       },
     ],
     vocabulary: [
-      { gurmukhi: "ਫੈਸਲਾ", romanization: "faislaa", vi: "quyết định", en: "decision", pos: "n." },
-      { gurmukhi: "ਖਤਰਾ", romanization: "khatraa", vi: "rủi ro", en: "risk", pos: "n." },
-      { gurmukhi: "ਪ੍ਰਗਤੀ", romanization: "pragti", vi: "tiến độ", en: "progress", pos: "n." },
+      { cell_id: "a9a7931d-43c8-4d1c-b602-8c73ec00b539", gurmukhi: "ਫੈਸਲਾ", romanization: "faislaa", vi: "quyết định", en: "decision", pos: "n." },
+      { cell_id: "177483ea-1c83-4b9d-a845-8f74e97fe053", gurmukhi: "ਖਤਰਾ", romanization: "khatraa", vi: "rủi ro", en: "risk", pos: "n." },
+      { cell_id: "c21118a9-ef88-4559-944d-25ac21843c1a", gurmukhi: "ਪ੍ਰਗਤੀ", romanization: "pragti", vi: "tiến độ", en: "progress", pos: "n." },
     ],
     commonMistakes: [
       {

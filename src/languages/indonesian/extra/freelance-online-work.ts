@@ -24,6 +24,7 @@ type LessonSentence = {
 };
 
 type VocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -35,6 +36,7 @@ type VocabEntry = {
 };
 
 type DialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -150,6 +152,7 @@ export const freelanceOnlineWorkLessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: in client chat, avoid `kamu`. Use `Kak` for friendly-neutral tone, or `Bapak/Ibu` for formal tone. Safe frames: `Boleh saya tahu ...?`, `Saya bisa kirim ...`, and `Perlu jelas dari awal`.",
     vocabulary: [
       {
+        cell_id: "0465a78d-4de5-4021-b6cc-253f85b9194c",
         word: "freelance",
         en: "freelance",
         vi: "làm tự do / freelance",
@@ -158,6 +161,7 @@ export const freelanceOnlineWorkLessons: IndonesianLesson[] = [
         pronunciation_en: "FREE-lance",
       },
       {
+        cell_id: "44e2f393-d524-44fc-a8ac-3cdd9e9f2d00",
         word: "klien",
         en: "client",
         vi: "khách hàng / client",
@@ -166,6 +170,7 @@ export const freelanceOnlineWorkLessons: IndonesianLesson[] = [
         pronunciation_en: "KLEE-en",
       },
       {
+        cell_id: "01cbae8d-16d1-4f1c-b604-86b29cec8636",
         word: "portofolio",
         en: "portfolio",
         vi: "hồ sơ sản phẩm / portfolio",
@@ -174,6 +179,7 @@ export const freelanceOnlineWorkLessons: IndonesianLesson[] = [
         pronunciation_en: "por-to-FO-lee-o",
       },
       {
+        cell_id: "71fea9eb-059b-49ac-84ac-bc02305a33da",
         word: "ruang lingkup pekerjaan",
         en: "scope of work",
         vi: "phạm vi công việc",
@@ -182,6 +188,7 @@ export const freelanceOnlineWorkLessons: IndonesianLesson[] = [
         pronunciation_en: "ROO-ang LING-koop peh-ker-JA-an",
       },
       {
+        cell_id: "6bee4836-14cb-4509-af88-ad650718037c",
         word: "deadline",
         en: "deadline",
         vi: "hạn chót",
@@ -190,6 +197,7 @@ export const freelanceOnlineWorkLessons: IndonesianLesson[] = [
         pronunciation_en: "DED-line",
       },
       {
+        cell_id: "8d9303ca-f3fd-4154-a052-5df587a342f7",
         word: "brief",
         en: "project brief",
         vi: "bản mô tả yêu cầu",
@@ -198,6 +206,7 @@ export const freelanceOnlineWorkLessons: IndonesianLesson[] = [
         pronunciation_en: "brief",
       },
       {
+        cell_id: "1ad0e29d-4c3c-4219-9e34-6ba112d11c41",
         word: "kerja remote",
         en: "remote work",
         vi: "làm việc từ xa",
@@ -208,24 +217,28 @@ export const freelanceOnlineWorkLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "e3c91be0-625a-42a8-bdf1-1d721ccf3a30",
         speaker: "Klien",
         text: "Halo, Kak. Saya butuh penulis konten untuk website.",
         vi: "Chào bạn. Tôi cần người viết nội dung cho website.",
         en: "Hello. I need a content writer for a website.",
       },
       {
+        cell_id: "06fb0a78-bab4-4bd6-83a8-ca562a0f3a22",
         speaker: "Freelancer",
         text: "Boleh saya tahu kebutuhan klien secara detail?",
         vi: "Cho tôi biết chi tiết nhu cầu của khách hàng được không?",
         en: "May I know the client's needs in detail?",
       },
       {
+        cell_id: "55485d5c-5548-411f-a0bd-b304dbbadd35",
         speaker: "Klien",
         text: "Nanti saya kirim brief dan contoh referensi.",
         vi: "Lát nữa tôi gửi brief và ví dụ tham khảo.",
         en: "I will send the brief and reference examples later.",
       },
       {
+        cell_id: "ac76e00a-a47b-4c4b-b4eb-d7c0829b568e",
         speaker: "Freelancer",
         text: "Baik. Saya juga bisa kirim portofolio lewat email.",
         vi: "Vâng. Tôi cũng có thể gửi portfolio qua email.",
@@ -380,6 +393,7 @@ export const freelanceOnlineWorkLessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: when discussing money, use the noun `pembayaran` instead of only `uang`. Professional frames: `akan dikenakan biaya`, `saya akan kirim invoice`, and `mohon konfirmasi setelah pembayaran masuk`.",
     vocabulary: [
       {
+        cell_id: "15f910cc-02db-4c45-8ed5-fa49acd7ff07",
         word: "revisi",
         en: "revision",
         vi: "chỉnh sửa",
@@ -388,6 +402,7 @@ export const freelanceOnlineWorkLessons: IndonesianLesson[] = [
         pronunciation_en: "reh-VEE-see",
       },
       {
+        cell_id: "59bea9da-c178-49c2-bab6-fc989987963c",
         word: "revisi tambahan",
         en: "additional revision",
         vi: "chỉnh sửa thêm",
@@ -396,6 +411,7 @@ export const freelanceOnlineWorkLessons: IndonesianLesson[] = [
         pronunciation_en: "reh-VEE-see tam-BA-han",
       },
       {
+        cell_id: "71cdb713-ec29-4c0d-b61c-4480268bfa75",
         word: "dikenakan biaya",
         en: "to be charged a fee",
         vi: "bị tính phí",
@@ -404,6 +420,7 @@ export const freelanceOnlineWorkLessons: IndonesianLesson[] = [
         pronunciation_en: "dee-keh-NA-kan bee-A-ya",
       },
       {
+        cell_id: "f7b082c6-8f65-4011-aa91-94df48e03fe0",
         word: "invoice",
         en: "invoice",
         vi: "hóa đơn / invoice",
@@ -412,6 +429,7 @@ export const freelanceOnlineWorkLessons: IndonesianLesson[] = [
         pronunciation_en: "IN-voice",
       },
       {
+        cell_id: "c709c7ec-711c-4ce4-9fb7-36f1d05f8390",
         word: "pembayaran",
         en: "payment",
         vi: "thanh toán",
@@ -420,6 +438,7 @@ export const freelanceOnlineWorkLessons: IndonesianLesson[] = [
         pronunciation_en: "pem-ba-YA-ran",
       },
       {
+        cell_id: "3c503615-efdd-4188-b8fa-27afae723a76",
         word: "transfer bank",
         en: "bank transfer",
         vi: "chuyển khoản ngân hàng",
@@ -428,6 +447,7 @@ export const freelanceOnlineWorkLessons: IndonesianLesson[] = [
         pronunciation_en: "TRANS-fer bank",
       },
       {
+        cell_id: "98793a66-baeb-4bca-84ea-17fb114f6a8a",
         word: "e-wallet",
         en: "e-wallet",
         vi: "ví điện tử",
@@ -436,6 +456,7 @@ export const freelanceOnlineWorkLessons: IndonesianLesson[] = [
         pronunciation_en: "EE-wallet",
       },
       {
+        cell_id: "e04828f0-750d-4a2c-9072-e88bd1f6471b",
         word: "pembayaran masuk",
         en: "payment received",
         vi: "thanh toán đã vào",
@@ -446,24 +467,28 @@ export const freelanceOnlineWorkLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "0ecdb37d-42c6-46e7-b1ba-5f10bfac7497",
         speaker: "Klien",
         text: "Kalau saya minta revisi lagi, apakah bisa?",
         vi: "Nếu tôi yêu cầu sửa thêm nữa thì có được không?",
         en: "If I ask for another revision, is that possible?",
       },
       {
+        cell_id: "b6747b41-ceab-497f-b870-468a65e37a31",
         speaker: "Freelancer",
         text: "Bisa, Kak. Tapi revisi tambahan akan dikenakan biaya.",
         vi: "Được ạ. Nhưng chỉnh sửa thêm sẽ bị tính phí.",
         en: "Yes. But additional revisions will be charged.",
       },
       {
+        cell_id: "e4edd1b8-44da-40d2-b679-fa10bd29cd63",
         speaker: "Klien",
         text: "Baik. Nanti invoice-nya dikirim setelah selesai, ya?",
         vi: "Vâng. Lát nữa invoice được gửi sau khi xong nhé?",
         en: "Okay. The invoice will be sent after it is finished, right?",
       },
       {
+        cell_id: "73eb6417-bb94-4665-8c2c-a0cb008d1a69",
         speaker: "Freelancer",
         text: "Betul. Pembayaran bisa lewat transfer bank atau e-wallet.",
         vi: "Đúng vậy. Thanh toán có thể qua chuyển khoản ngân hàng hoặc ví điện tử.",

@@ -12,6 +12,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -21,6 +22,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -137,6 +139,7 @@ export const boardingSchoolPesantrenLessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: in a pesantren context, `santri` is more precise than `siswa`. Learn fixed chunks: `tinggal di asrama`, `belajar dengan ustaz`, `mengikuti peraturan`, `kegiatan harian`. Indonesian has no verb conjugation, so focus on prepositions like `di`, `ke`, `dengan`, and `setelah`.",
     vocabulary: [
       {
+        cell_id: "d00d62bc-873c-468c-b44a-c52acb129cd1",
         word: "pesantren",
         en: "Islamic boarding school",
         vi: "trường nội trú Hồi giáo",
@@ -145,6 +148,7 @@ export const boardingSchoolPesantrenLessons: IndonesianLesson[] = [
         pronunciation_en: "pe-SAN-tren",
       },
       {
+        cell_id: "44f953fe-c088-45e3-9ef2-265d5551e410",
         word: "asrama",
         en: "dormitory",
         vi: "ký túc xá",
@@ -153,6 +157,7 @@ export const boardingSchoolPesantrenLessons: IndonesianLesson[] = [
         pronunciation_en: "as-RA-ma",
       },
       {
+        cell_id: "f623541d-8f12-44b3-a2c0-786099a588c1",
         word: "santri",
         en: "pesantren student",
         vi: "học viên pesantren",
@@ -161,6 +166,7 @@ export const boardingSchoolPesantrenLessons: IndonesianLesson[] = [
         pronunciation_en: "SAN-tree",
       },
       {
+        cell_id: "064572d7-97d5-4a53-94a8-f951ea4f547c",
         word: "ustaz / ustazah",
         en: "male / female Islamic teacher",
         vi: "thầy / cô giáo tôn giáo Hồi giáo",
@@ -169,6 +175,7 @@ export const boardingSchoolPesantrenLessons: IndonesianLesson[] = [
         pronunciation_en: "OOS-taz / oos-TA-zah",
       },
       {
+        cell_id: "d93775bc-acf5-4e23-819b-57f4855768e1",
         word: "jadwal belajar",
         en: "study schedule",
         vi: "lịch học",
@@ -177,6 +184,7 @@ export const boardingSchoolPesantrenLessons: IndonesianLesson[] = [
         pronunciation_en: "JAD-wal be-LA-jar",
       },
       {
+        cell_id: "d692186d-1d83-481d-be2a-11df5645ddff",
         word: "kegiatan harian",
         en: "daily activities",
         vi: "hoạt động hằng ngày",
@@ -187,24 +195,28 @@ export const boardingSchoolPesantrenLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "4d0980cb-8c35-4577-9003-f9c34f4e6db0",
         speaker: "Mai",
         text: "Adikmu tinggal di mana sekarang?",
         vi: "Em của bạn bây giờ sống ở đâu?",
         en: "Where does your younger sibling live now?",
       },
       {
+        cell_id: "0d28af26-11d9-4394-89c5-40b02f2b50f9",
         speaker: "Rafi",
         text: "Dia tinggal di asrama pesantren.",
         vi: "Em ấy sống trong ký túc xá pesantren.",
         en: "They live in a pesantren dormitory.",
       },
       {
+        cell_id: "11a95d5e-0482-40c2-a2cb-9c7363cd6244",
         speaker: "Mai",
         text: "Jadwalnya padat?",
         vi: "Lịch có dày không?",
         en: "Is the schedule packed?",
       },
       {
+        cell_id: "8238a4fc-b512-45b6-8fc6-6a4f715df89f",
         speaker: "Rafi",
         text: "Iya, para santri belajar setelah Subuh sampai malam.",
         vi: "Ừ, các santri học từ sau Subuh đến tối.",
@@ -334,6 +346,7 @@ export const boardingSchoolPesantrenLessons: IndonesianLesson[] = [
       "Useful polite chunks: `Saya ingin minta izin pulang...`, `Orang tua saya bisa menghubungi pengurus`, `Saya akan kembali sebelum...`. Vietnamese speakers often read `orang tua` as elderly people; in school contexts it usually means parents.",
     vocabulary: [
       {
+        cell_id: "24eb12e7-3530-4a87-81c8-b843d0cc4a62",
         word: "minta izin",
         en: "to ask permission",
         vi: "xin phép",
@@ -342,6 +355,7 @@ export const boardingSchoolPesantrenLessons: IndonesianLesson[] = [
         pronunciation_en: "MIN-ta EE-zin",
       },
       {
+        cell_id: "03449651-3ecd-4482-ac60-5364eeca23d6",
         word: "izin pulang",
         en: "permission to go home",
         vi: "phép về nhà",
@@ -350,6 +364,7 @@ export const boardingSchoolPesantrenLessons: IndonesianLesson[] = [
         pronunciation_en: "EE-zin POO-lang",
       },
       {
+        cell_id: "80d403ac-cbb3-4237-b780-f2aacda5b854",
         word: "pengurus asrama",
         en: "dormitory administrator",
         vi: "người phụ trách ký túc xá",
@@ -358,6 +373,7 @@ export const boardingSchoolPesantrenLessons: IndonesianLesson[] = [
         pronunciation_en: "pe-NGOO-roos as-RA-ma",
       },
       {
+        cell_id: "488472a4-b1d5-4c4f-93a4-3f2f9e5ab7c8",
         word: "wali santri",
         en: "guardian of a pesantren student",
         vi: "người giám hộ/phụ huynh của santri",
@@ -366,6 +382,7 @@ export const boardingSchoolPesantrenLessons: IndonesianLesson[] = [
         pronunciation_en: "WA-lee SAN-tree",
       },
       {
+        cell_id: "192dc800-e206-4e1b-81bd-ad0f2cf69821",
         word: "buku izin",
         en: "permission logbook",
         vi: "sổ phép",
@@ -374,6 +391,7 @@ export const boardingSchoolPesantrenLessons: IndonesianLesson[] = [
         pronunciation_en: "BOO-koo EE-zin",
       },
       {
+        cell_id: "05732380-6f54-4053-bb52-acd2dd33323f",
         word: "surat keterangan dokter",
         en: "doctor's note",
         vi: "giấy xác nhận của bác sĩ",
@@ -384,24 +402,28 @@ export const boardingSchoolPesantrenLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "867b713a-f85b-4b04-9536-c415ee66dff0",
         speaker: "Santri",
         text: "Ustaz, saya ingin minta izin pulang akhir pekan ini.",
         vi: "Thưa ustaz, em muốn xin phép về nhà cuối tuần này.",
         en: "Ustaz, I would like to ask permission to go home this weekend.",
       },
       {
+        cell_id: "ace0d1c3-e6de-45bc-a065-b28558aae0df",
         speaker: "Ustaz",
         text: "Apa orang tuamu sudah menghubungi pengurus asrama?",
         vi: "Phụ huynh của em đã liên hệ người phụ trách ký túc xá chưa?",
         en: "Have your parents contacted the dormitory administrator?",
       },
       {
+        cell_id: "fd1cae2c-b9e4-4d06-91d3-a3867408ec48",
         speaker: "Santri",
         text: "Sudah, Ustaz. Izin pulangnya juga sudah dicatat.",
         vi: "Rồi ạ, thưa ustaz. Phép về nhà cũng đã được ghi lại.",
         en: "Yes, Ustaz. The home-leave permission has also been recorded.",
       },
       {
+        cell_id: "072a4c05-5c26-4bc0-bf6f-cc1f680146e9",
         speaker: "Ustaz",
         text: "Baik. Kembali ke pesantren sebelum Magrib, ya.",
         vi: "Được. Quay lại pesantren trước Magrib nhé.",
@@ -532,6 +554,7 @@ export const boardingSchoolPesantrenLessons: IndonesianLesson[] = [
       "Chunks to memorize: `mengaji kitab`, `punya hafalan`, `bicara sopan`, `belum paham`. In class, `Saya belum paham` sounds more polite and natural than `Saya tidak mengerti` when you are still learning.",
     vocabulary: [
       {
+        cell_id: "e07d3318-373d-413b-8737-309b532faa6d",
         word: "kitab",
         en: "religious text / book",
         vi: "sách/văn bản tôn giáo",
@@ -540,6 +563,7 @@ export const boardingSchoolPesantrenLessons: IndonesianLesson[] = [
         pronunciation_en: "KI-tab",
       },
       {
+        cell_id: "f45074b4-d429-4e96-93b5-215ec11f5679",
         word: "mengaji / ngaji",
         en: "to recite or study religious texts",
         vi: "đọc/học kinh sách tôn giáo",
@@ -548,6 +572,7 @@ export const boardingSchoolPesantrenLessons: IndonesianLesson[] = [
         pronunciation_en: "me-NGA-jee / NGA-jee",
       },
       {
+        cell_id: "e2a785e5-bf18-4745-aee0-80ace9af54aa",
         word: "hafalan",
         en: "memorized material",
         vi: "phần học thuộc",
@@ -556,6 +581,7 @@ export const boardingSchoolPesantrenLessons: IndonesianLesson[] = [
         pronunciation_en: "ha-FAL-an",
       },
       {
+        cell_id: "39bf10d8-35a6-4a62-ae33-1b8c13c62ec4",
         word: "adab",
         en: "proper manners / conduct",
         vi: "phép tắc / cách cư xử đúng mực",
@@ -564,6 +590,7 @@ export const boardingSchoolPesantrenLessons: IndonesianLesson[] = [
         pronunciation_en: "A-dab",
       },
       {
+        cell_id: "f4c304e1-d078-4cb1-b3f3-60660b0cbd0a",
         word: "sopan",
         en: "polite",
         vi: "lịch sự / lễ phép",
@@ -572,6 +599,7 @@ export const boardingSchoolPesantrenLessons: IndonesianLesson[] = [
         pronunciation_en: "SO-pan",
       },
       {
+        cell_id: "404ecfa5-0bee-4bae-ab51-4a34e9edace0",
         word: "belum paham",
         en: "do not understand yet",
         vi: "chưa hiểu",
@@ -582,24 +610,28 @@ export const boardingSchoolPesantrenLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "bd494910-9b29-4b56-a711-55871baa26e6",
         speaker: "Ustazah",
         text: "Malam ini kita mengaji kitab yang sama.",
         vi: "Tối nay chúng ta học cùng kitab đó.",
         en: "Tonight we will study the same kitab.",
       },
       {
+        cell_id: "b9a31955-3816-409e-b7d8-8e4da6319edf",
         speaker: "Santri",
         text: "Ustazah, saya belum paham bagian ini.",
         vi: "Thưa ustazah, em chưa hiểu phần này.",
         en: "Ustazah, I do not understand this part yet.",
       },
       {
+        cell_id: "d527eec8-ee00-4e85-a283-83e63f37c798",
         speaker: "Ustazah",
         text: "Tidak apa-apa. Baca terjemahan Indonesia dulu.",
         vi: "Không sao. Hãy đọc bản dịch tiếng Indonesia trước.",
         en: "That's okay. Read the Indonesian translation first.",
       },
       {
+        cell_id: "f5d346ca-18fc-4da3-827e-9fbf078ea64c",
         speaker: "Santri",
         text: "Baik, saya juga akan mengulang hafalan.",
         vi: "Vâng, em cũng sẽ ôn lại phần học thuộc.",

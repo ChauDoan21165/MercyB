@@ -54,6 +54,7 @@ export const lessons: RussianLesson[] = [
     ],
     vocabulary: [
       {
+        cell_id: "b4e4ad0d-a1b6-4809-8899-db9257bc2208",
         word: "я",
         romanization: "ya",
         en: "I",
@@ -63,6 +64,7 @@ export const lessons: RussianLesson[] = [
         pronunciation_en: "yah",
       },
       {
+        cell_id: "27a0f948-0f51-4ca3-8138-d059adcdea2b",
         word: "говорить",
         romanization: "govorit",
         en: "to speak",
@@ -72,6 +74,7 @@ export const lessons: RussianLesson[] = [
         pronunciation_en: "ga-va-REET",
       },
       {
+        cell_id: "9d10e015-03cf-4493-96ad-02e3e8a62236",
         word: "русский",
         romanization: "russkiy",
         en: "Russian",
@@ -81,6 +84,7 @@ export const lessons: RussianLesson[] = [
         pronunciation_en: "ROOS-skee",
       },
       {
+        cell_id: "22eedb74-d2fb-44d0-861b-2dea79504a1e",
         word: "хорошо",
         romanization: "khorosho",
         en: "good / well",
@@ -167,6 +171,7 @@ export const lessons: RussianLesson[] = [
     ],
     vocabulary: [
       {
+        cell_id: "eb34a788-0fe4-4bbe-9d31-fd6fcdb9d6e7",
         word: "Здравствуйте",
         romanization: "zdravstvuyte",
         en: "hello",
@@ -176,6 +181,7 @@ export const lessons: RussianLesson[] = [
         pronunciation_en: "ZDRAHV-stvooy-tyeh",
       },
       {
+        cell_id: "8dec42cc-a809-461d-b152-34d2d585c290",
         word: "как",
         romanization: "kak",
         en: "how / what",
@@ -185,6 +191,7 @@ export const lessons: RussianLesson[] = [
         pronunciation_en: "kahk",
       },
       {
+        cell_id: "53a11468-ba8b-465e-8bff-b25f78b09c43",
         word: "вас",
         romanization: "vas",
         en: "you (polite object form)",
@@ -194,6 +201,7 @@ export const lessons: RussianLesson[] = [
         pronunciation_en: "vahs",
       },
       {
+        cell_id: "02cc05f4-336e-47a6-a71d-0ae84af65681",
         word: "зовут",
         romanization: "zovut",
         en: "call / is named",
@@ -205,6 +213,7 @@ export const lessons: RussianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "1dcde44a-8c36-461f-a633-e503ddec58ff",
         speaker: "Ан",
         text: "Здравствуйте.",
         romanization: "Zdravstvuyte.",
@@ -212,6 +221,7 @@ export const lessons: RussianLesson[] = [
         en: "Hello.",
       },
       {
+        cell_id: "4ae02323-ede0-406c-aa0c-360df01e9ccc",
         speaker: "Ира",
         text: "Здравствуйте. Как вас зовут?",
         romanization: "Zdravstvuyte. Kak vas zovut?",
@@ -219,6 +229,7 @@ export const lessons: RussianLesson[] = [
         en: "Hello. What is your name?",
       },
       {
+        cell_id: "a745d590-552d-4779-a788-963127507b5b",
         speaker: "Ан",
         text: "Меня зовут Ан.",
         romanization: "Menya zovut An.",
@@ -226,6 +237,7 @@ export const lessons: RussianLesson[] = [
         en: "My name is An.",
       },
       {
+        cell_id: "c7c06565-8c88-42d9-a563-7abf6a8db542",
         speaker: "Ира",
         text: "Очень приятно.",
         romanization: "Ochen priyatno.",
@@ -300,6 +312,7 @@ export const lessons: RussianLesson[] = [
     ],
     vocabulary: [
       {
+        cell_id: "37cd5d12-cfe4-46bf-92d8-bd2f7dac4bc9",
         word: "семья",
         romanization: "semya",
         en: "family",
@@ -309,6 +322,7 @@ export const lessons: RussianLesson[] = [
         pronunciation_en: "sem-YAH",
       },
       {
+        cell_id: "47ce7bf4-bdd8-4e95-9337-63e3186371bf",
         word: "мама",
         romanization: "mama",
         en: "mother",
@@ -318,6 +332,7 @@ export const lessons: RussianLesson[] = [
         pronunciation_en: "MAH-mah",
       },
       {
+        cell_id: "b866ea60-84c0-437a-ab9d-cd243afb246d",
         word: "брат",
         romanization: "brat",
         en: "brother",
@@ -327,6 +342,7 @@ export const lessons: RussianLesson[] = [
         pronunciation_en: "braht",
       },
       {
+        cell_id: "ac2a10dc-2353-4924-90db-bde4e15429e2",
         word: "сестра",
         romanization: "sestra",
         en: "sister",
@@ -338,6 +354,7 @@ export const lessons: RussianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "168c6011-d6bc-4487-bbe6-aa74893be4d5",
         speaker: "Иван",
         text: "У тебя есть родители?",
         romanization: "U tebya yest roditeli?",
@@ -345,6 +362,7 @@ export const lessons: RussianLesson[] = [
         en: "Do you have parents?",
       },
       {
+        cell_id: "6c66ee41-0563-44d5-b690-99bea6d9be52",
         speaker: "Лан",
         text: "Да, есть мама и папа.",
         romanization: "Da, yest mama i papa.",
@@ -352,6 +370,7 @@ export const lessons: RussianLesson[] = [
         en: "Yes, I have a mother and father.",
       },
       {
+        cell_id: "bf98fd59-1fc1-4115-a281-9abfb09ad1bb",
         speaker: "Иван",
         text: "Они во Вьетнаме?",
         romanization: "Oni vo Vyetname?",
@@ -359,6 +378,7 @@ export const lessons: RussianLesson[] = [
         en: "Are they in Vietnam?",
       },
       {
+        cell_id: "7752e7cd-e677-489a-8511-7a030c0a6f0a",
         speaker: "Лан",
         text: "Да, они в Ханое.",
         romanization: "Da, oni v Khanoye.",
@@ -438,6 +458,7 @@ export const lessons: RussianLesson[] = [
     ],
     vocabulary: [
       {
+        cell_id: "2be22275-fc54-4313-8d49-f54d5522769f",
         word: "из",
         romanization: "iz",
         en: "from",
@@ -447,6 +468,7 @@ export const lessons: RussianLesson[] = [
         pronunciation_en: "eez",
       },
       {
+        cell_id: "589f142d-f37a-4c64-9de5-c0cb09051717",
         word: "сейчас",
         romanization: "seychas",
         en: "now",
@@ -456,6 +478,7 @@ export const lessons: RussianLesson[] = [
         pronunciation_en: "see-CHAS",
       },
       {
+        cell_id: "8d91fac4-004e-4177-857c-b4cb406ada0e",
         word: "жить",
         romanization: "zhit",
         en: "to live",
@@ -465,6 +488,7 @@ export const lessons: RussianLesson[] = [
         pronunciation_en: "zheet",
       },
       {
+        cell_id: "cd0f53cb-f5ea-4542-98c9-506268f6a582",
         word: "учить",
         romanization: "uchit",
         en: "to learn / teach",

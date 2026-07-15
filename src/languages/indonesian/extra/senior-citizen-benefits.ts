@@ -12,6 +12,7 @@ type LessonSentence = {
 };
 
 type VocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -21,6 +22,7 @@ type VocabEntry = {
 };
 
 type DialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -137,6 +139,7 @@ export const seniorCitizenBenefitsLessons: IndonesianLesson[] = [
       "Administrative chunks to memorize: `Apakah ada bantuan sosial untuk lansia?`, `Dokumen apa saja yang perlu dibawa?`, `Kami membawa KTP...`, `Keluarga pendamping boleh membantu?`. Vietnamese speakers should use `lansia` instead of a blunt literal 'old person'.",
     vocabulary: [
       {
+        cell_id: "25d07a84-e274-403e-ba55-ae96f11d6523",
         word: "lansia",
         en: "senior citizen / elderly person",
         vi: "người cao tuổi",
@@ -145,6 +148,7 @@ export const seniorCitizenBenefitsLessons: IndonesianLesson[] = [
         pronunciation_en: "LAN-see-a",
       },
       {
+        cell_id: "7bdb1ddc-af45-48a9-95db-6daf321488a6",
         word: "bantuan sosial",
         en: "social assistance",
         vi: "trợ cấp / hỗ trợ xã hội",
@@ -153,6 +157,7 @@ export const seniorCitizenBenefitsLessons: IndonesianLesson[] = [
         pronunciation_en: "ban-TOO-an so-SEE-al",
       },
       {
+        cell_id: "5cd3d521-9446-4c88-a485-bed451c381f1",
         word: "kartu lansia",
         en: "senior citizen card",
         vi: "thẻ người cao tuổi",
@@ -161,6 +166,7 @@ export const seniorCitizenBenefitsLessons: IndonesianLesson[] = [
         pronunciation_en: "KAR-too LAN-see-a",
       },
       {
+        cell_id: "f1b1d76a-3c6d-4ce0-b6b0-f953020d6a51",
         word: "kartu keluarga",
         en: "family card",
         vi: "sổ/thẻ gia đình",
@@ -169,6 +175,7 @@ export const seniorCitizenBenefitsLessons: IndonesianLesson[] = [
         pronunciation_en: "KAR-too ke-LOO-ar-ga",
       },
       {
+        cell_id: "506842f0-4e48-4aa5-865d-4d61b4bd8a79",
         word: "keluarga pendamping",
         en: "accompanying family member",
         vi: "người nhà đi cùng / hỗ trợ",
@@ -177,6 +184,7 @@ export const seniorCitizenBenefitsLessons: IndonesianLesson[] = [
         pronunciation_en: "ke-LOO-ar-ga pen-DAM-ping",
       },
       {
+        cell_id: "e7bc8460-fcc2-48c4-98e0-0d5d4d3d7849",
         word: "dokumen",
         en: "documents",
         vi: "giấy tờ / tài liệu",
@@ -187,24 +195,28 @@ export const seniorCitizenBenefitsLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "882152b9-243f-4374-a4a7-aabd83babfc8",
         speaker: "Keluarga",
         text: "Permisi, Bu. Apakah ada bantuan sosial untuk lansia?",
         vi: "Xin lỗi cô/chị. Có trợ cấp xã hội cho người cao tuổi không?",
         en: "Excuse me, Ma'am. Is there social assistance for seniors?",
       },
       {
+        cell_id: "ab96d023-4b83-465e-a8b5-3d30869705d7",
         speaker: "Petugas",
         text: "Ada program daerah, tetapi harus cek data dulu.",
         vi: "Có chương trình địa phương, nhưng phải kiểm tra dữ liệu trước.",
         en: "There is a local program, but we need to check the data first.",
       },
       {
+        cell_id: "88255e24-364c-4577-a483-16eb6be9abf8",
         speaker: "Keluarga",
         text: "Dokumen apa saja yang perlu kami bawa?",
         vi: "Chúng tôi cần mang những giấy tờ gì?",
         en: "What documents do we need to bring?",
       },
       {
+        cell_id: "28a0a9f0-9d6e-4f96-bc57-12b4c2552e5b",
         speaker: "Petugas",
         text: "Bawa KTP, kartu keluarga, dan surat keterangan domisili.",
         vi: "Mang KTP, thẻ gia đình và giấy xác nhận cư trú.",
@@ -334,6 +346,7 @@ export const seniorCitizenBenefitsLessons: IndonesianLesson[] = [
       "Useful staff-facing frames: `Apakah ada antrean prioritas?`, `Puskesmas menyediakan layanan apa?`, `Bisa datang dengan keluarga pendamping?`, `Informasi layanan warga bisa ditanyakan ke mana?`. Keep the register polite with `Pak/Bu`, `mohon`, `boleh`, `apakah`.",
     vocabulary: [
       {
+        cell_id: "933be1c1-4377-4750-bd22-eec30a598beb",
         word: "antrean prioritas",
         en: "priority queue",
         vi: "hàng chờ ưu tiên",
@@ -342,6 +355,7 @@ export const seniorCitizenBenefitsLessons: IndonesianLesson[] = [
         pronunciation_en: "an-TRE-an pri-o-ri-TAS",
       },
       {
+        cell_id: "d38a62b3-3735-47b1-a995-83e3b33ec380",
         word: "puskesmas",
         en: "community health center",
         vi: "trung tâm y tế cộng đồng",
@@ -350,6 +364,7 @@ export const seniorCitizenBenefitsLessons: IndonesianLesson[] = [
         pronunciation_en: "PUS-kes-mas",
       },
       {
+        cell_id: "d29a2908-7b70-4cb3-b0d6-03f3bf7d9232",
         word: "pemeriksaan rutin",
         en: "routine checkup",
         vi: "kiểm tra định kỳ",
@@ -358,6 +373,7 @@ export const seniorCitizenBenefitsLessons: IndonesianLesson[] = [
         pronunciation_en: "pe-me-RIK-sa-an roo-TEEN",
       },
       {
+        cell_id: "f3ceb9b7-bf14-481a-bf6c-09b13b2e1e8f",
         word: "layanan warga",
         en: "resident/community service",
         vi: "dịch vụ cư dân / cộng đồng",
@@ -366,6 +382,7 @@ export const seniorCitizenBenefitsLessons: IndonesianLesson[] = [
         pronunciation_en: "LA-yan-an WAR-ga",
       },
       {
+        cell_id: "3ade90f4-2658-43c0-add9-943c456d3720",
         word: "petugas",
         en: "staff / officer on duty",
         vi: "nhân viên / cán bộ phụ trách",
@@ -374,6 +391,7 @@ export const seniorCitizenBenefitsLessons: IndonesianLesson[] = [
         pronunciation_en: "pe-TOO-gas",
       },
       {
+        cell_id: "4da340eb-dae3-4056-84fd-bc7955f8f330",
         word: "sulit berjalan",
         en: "difficulty walking",
         vi: "khó đi lại",
@@ -384,24 +402,28 @@ export const seniorCitizenBenefitsLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "b2506aa1-8325-4801-8057-b7055ff01c4e",
         speaker: "Keluarga",
         text: "Apakah ada antrean prioritas untuk lansia di puskesmas ini?",
         vi: "Ở puskesmas này có hàng chờ ưu tiên cho người cao tuổi không?",
         en: "Is there a priority queue for seniors at this puskesmas?",
       },
       {
+        cell_id: "9ced2d07-853a-4f5b-adc7-fa9ff7079e39",
         speaker: "Petugas",
         text: "Ada, Pak. Lansia bisa daftar di loket sebelah kiri.",
         vi: "Có ạ. Người cao tuổi có thể đăng ký ở quầy bên trái.",
         en: "Yes, Sir. Seniors can register at the counter on the left.",
       },
       {
+        cell_id: "af3b8b58-c860-4457-b4d2-8373ff97a0e0",
         speaker: "Keluarga",
         text: "Bapak saya sulit berjalan. Boleh saya dampingi sampai loket?",
         vi: "Bố tôi khó đi lại. Tôi có thể đi cùng hỗ trợ đến quầy không?",
         en: "My father has difficulty walking. May I accompany him to the counter?",
       },
       {
+        cell_id: "840fe56a-4960-4aa5-910c-3b9dd4ac5e6a",
         speaker: "Petugas",
         text: "Boleh. Kalau perlu, petugas juga bisa membantu.",
         vi: "Được. Nếu cần, nhân viên cũng có thể hỗ trợ.",

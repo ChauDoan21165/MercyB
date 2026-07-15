@@ -19,6 +19,7 @@ export type HindiSentence = {
 };
 
 export type HindiVocabEntry = {
+  cell_id?: string;
   hi: string;
   romanization: string;
   vi: string;
@@ -76,10 +77,10 @@ export const lessons: HindiLesson[] = [
       },
     ],
     vocabulary: [
-      { hi: "धारणा", romanization: "dhaarnaa", vi: "giả định", en: "assumption", pos: "n." },
-      { hi: "सिद्ध होना", romanization: "siddh honaa", vi: "được chứng minh", en: "to be proven", pos: "v." },
-      { hi: "विश्वसनीय", romanization: "vishvasaniy", vi: "đáng tin cậy", en: "reliable", pos: "adj." },
-      { hi: "प्रमाण", romanization: "pramaan", vi: "bằng chứng", en: "evidence", pos: "n." },
+      { cell_id: "b27a4959-ed13-48a1-8c0f-8699b693b6e4", hi: "धारणा", romanization: "dhaarnaa", vi: "giả định", en: "assumption", pos: "n." },
+      { cell_id: "7927868d-a32d-4b7e-b3ca-1336809c9066", hi: "सिद्ध होना", romanization: "siddh honaa", vi: "được chứng minh", en: "to be proven", pos: "v." },
+      { cell_id: "6913f9b6-32d5-45a7-896e-51be0b84ff79", hi: "विश्वसनीय", romanization: "vishvasaniy", vi: "đáng tin cậy", en: "reliable", pos: "adj." },
+      { cell_id: "8da64a12-7e1e-409a-a6e6-9ef2c1fff59b", hi: "प्रमाण", romanization: "pramaan", vi: "bằng chứng", en: "evidence", pos: "n." },
     ],
     cultural_notes_vi:
       "Tranh biện Hindi trang trọng ưu tiên kiểm tra giả định và bằng chứng. Công kích trực tiếp làm giảm sức thuyết phục.",
@@ -121,10 +122,10 @@ export const lessons: HindiLesson[] = [
       },
     ],
     vocabulary: [
-      { hi: "कथावाचक", romanization: "kathaavaachak", vi: "người kể", en: "narrator", pos: "n." },
-      { hi: "रूपक", romanization: "ruupak", vi: "ẩn dụ", en: "metaphor", pos: "n." },
-      { hi: "संकेत", romanization: "sanket", vi: "dấu hiệu, ám chỉ", en: "signal, cue", pos: "n." },
-      { hi: "अनुच्छेद", romanization: "anuchchhed", vi: "đoạn văn", en: "paragraph", pos: "n." },
+      { cell_id: "a0e99ebb-ec05-4c45-8ff2-fb874ee7a141", hi: "कथावाचक", romanization: "kathaavaachak", vi: "người kể", en: "narrator", pos: "n." },
+      { cell_id: "578b221e-301e-4495-b130-f934813ecd05", hi: "रूपक", romanization: "ruupak", vi: "ẩn dụ", en: "metaphor", pos: "n." },
+      { cell_id: "b1d18d28-82e4-452d-a602-6d27f40ddd67", hi: "संकेत", romanization: "sanket", vi: "dấu hiệu, ám chỉ", en: "signal, cue", pos: "n." },
+      { cell_id: "16ba4b4f-e85c-4b85-b10e-96481e58cc42", hi: "अनुच्छेद", romanization: "anuchchhed", vi: "đoạn văn", en: "paragraph", pos: "n." },
     ],
     cultural_notes_vi:
       "Ở phân tích văn học, tránh câu 'tác giả muốn nói' nếu không có chứng cứ. Hãy bắt đầu từ từ ngữ, cấu trúc và giọng kể.",
@@ -166,10 +167,10 @@ export const lessons: HindiLesson[] = [
       },
     ],
     vocabulary: [
-      { hi: "व्यंग्य", romanization: "vyangya", vi: "mỉa mai, châm biếm", en: "irony, satire", pos: "n." },
-      { hi: "निहितार्थ", romanization: "nihitaarth", vi: "hàm ý", en: "implication", pos: "n." },
-      { hi: "संदर्भ", romanization: "sandarbh", vi: "ngữ cảnh", en: "context", pos: "n." },
-      { hi: "चुनौती", romanization: "chunautii", vi: "thách thức", en: "challenge", pos: "n." },
+      { cell_id: "f22b09ce-b916-404d-bffb-7609fe736994", hi: "व्यंग्य", romanization: "vyangya", vi: "mỉa mai, châm biếm", en: "irony, satire", pos: "n." },
+      { cell_id: "fa23a5f0-ae94-432e-8aaa-e8c73dae064e", hi: "निहितार्थ", romanization: "nihitaarth", vi: "hàm ý", en: "implication", pos: "n." },
+      { cell_id: "d02674b3-6ade-4821-a21b-17cc0b058451", hi: "संदर्भ", romanization: "sandarbh", vi: "ngữ cảnh", en: "context", pos: "n." },
+      { cell_id: "22904609-bc7a-407d-882d-794008a881ed", hi: "चुनौती", romanization: "chunautii", vi: "thách thức", en: "challenge", pos: "n." },
     ],
     cultural_notes_vi:
       "Ví dụ C2 về mỉa mai nên trung lập hoặc hư cấu. Không dùng nhóm chính trị, tôn giáo hay sắc tộc thật làm mục tiêu luyện tập.",
@@ -211,10 +212,10 @@ export const lessons: HindiLesson[] = [
       },
     ],
     vocabulary: [
-      { hi: "बोलचाल", romanization: "bolchaal", vi: "ngôn ngữ nói thường", en: "colloquial speech", pos: "n." },
-      { hi: "पेशेवर", romanization: "peshevar", vi: "chuyên nghiệp", en: "professional", pos: "adj." },
-      { hi: "औपचारिक", romanization: "aupachaarik", vi: "trang trọng", en: "formal", pos: "adj." },
-      { hi: "पद्धति", romanization: "paddhati", vi: "phương pháp", en: "method", pos: "n." },
+      { cell_id: "fa10b288-795f-4f7c-bb20-84bd50a1fee4", hi: "बोलचाल", romanization: "bolchaal", vi: "ngôn ngữ nói thường", en: "colloquial speech", pos: "n." },
+      { cell_id: "676f1359-0b95-4429-a7b0-ecb6c3e84a4b", hi: "पेशेवर", romanization: "peshevar", vi: "chuyên nghiệp", en: "professional", pos: "adj." },
+      { cell_id: "d8248778-6309-404e-808c-7427a353e696", hi: "औपचारिक", romanization: "aupachaarik", vi: "trang trọng", en: "formal", pos: "adj." },
+      { cell_id: "db2e2e9a-366f-49a9-9ffd-33114a1428d8", hi: "पद्धति", romanization: "paddhati", vi: "phương pháp", en: "method", pos: "n." },
     ],
     cultural_notes_vi:
       "Hindi hiện đại có nhiều register cùng tồn tại: nói thường, Hindi pha English, truyền thông, học thuật và hành chính. Bài học phải giúp chọn đúng ngữ cảnh.",

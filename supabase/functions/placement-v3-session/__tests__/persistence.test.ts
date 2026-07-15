@@ -6,7 +6,11 @@ import { createPersistence, recommendLessons } from "../persistence.ts";
 import type { PlacementV3Profile, PlacementV3Session } from "../types.ts";
 
 type Row = Record<string, unknown>;
-type TableName = "placement_v3_sessions" | "placement_v3_responses" | "placement_v3_profiles";
+type TableName = "placement_v3_sessions" | "placement_v3_responses" | "placement_v3_profiles" | "profiles";
+
+type FakeDbOptions = {
+  unsupportedColumns?: Partial<Record<TableName, string[]>>;
+};
 
 class FakeQuery {
   private rows: Row[];
@@ -18,7 +22,11 @@ class FakeQuery {
   private ascending = true;
   private limitCount: number | null = null;
 
-  constructor(rows: Row[]) {
+  constructor(
+    private tableName: TableName,
+    rows: Row[],
+    private options: FakeDbOptions,
+  ) {
     this.rows = rows;
   }
 
@@ -65,6 +73,16 @@ class FakeQuery {
   async single() {
     if (this.insertValue) {
       const insertValue = serializeForDb(this.insertValue);
+      const unsupported = this.options.unsupportedColumns?.[this.tableName] ?? [];
+      const unsupportedColumn = unsupported.find((column) =>
+        Object.prototype.hasOwnProperty.call(insertValue, column)
+      );
+      if (unsupportedColumn) {
+        return {
+          data: null,
+          error: { message: `column "${unsupportedColumn}" of relation "${this.tableName}" does not exist` },
+        };
+      }
       if (
         this.rows.some((row) =>
           row.session_id === insertValue.session_id &&
@@ -135,17 +153,18 @@ function stableHash(value: unknown) {
   return createHash("sha256").update(JSON.stringify(value)).digest("hex");
 }
 
-function fakeDb(seed: Partial<Record<TableName, Row[]>> = {}) {
+function fakeDb(seed: Partial<Record<TableName, Row[]>> = {}, options: FakeDbOptions = {}) {
   const tables: Record<TableName, Row[]> = {
     placement_v3_sessions: seed.placement_v3_sessions ?? [],
     placement_v3_responses: seed.placement_v3_responses ?? [],
     placement_v3_profiles: seed.placement_v3_profiles ?? [],
+    profiles: seed.profiles ?? [],
   };
   return {
     tables,
     db: {
       from(table: string) {
-        return new FakeQuery(tables[table as TableName]);
+        return new FakeQuery(table as TableName, tables[table as TableName], options);
       },
     },
   };
@@ -169,6 +188,73 @@ describe("placement v3 persistence", () => {
     });
     expect(session.metadata.lastPrompt?.id).toBe(prompt.id);
     expect(f.tables.placement_v3_sessions).toHaveLength(1);
+  });
+
+  it("marks session rows synthetic when the start request carries the monitoring marker", async () => {
+    const f = fakeDb();
+    const p = createPersistence(f.db, {
+      now: () => "2026-05-20T12:00:00.000Z",
+      newId: () => "id-1",
+    });
+    const prompt = selectPrompt({ modality: "writing", targetLevel: "A2", responses: [] });
+
+    await p.createSession({
+      id: "session-1",
+      userId: "user-1",
+      languagePair: { native: "vi", target: "en" },
+      firstPrompt: prompt,
+      now: "2026-05-20T12:00:00.000Z",
+      totalTasks: 11,
+      isSynthetic: true,
+    });
+
+    expect(f.tables.placement_v3_sessions[0].is_synthetic).toBe(true);
+  });
+
+  it("marks session rows synthetic when the authenticated profile is synthetic", async () => {
+    const f = fakeDb({
+      profiles: [{ id: "user-1", is_synthetic: true }],
+    });
+    const p = createPersistence(f.db, {
+      now: () => "2026-05-20T12:00:00.000Z",
+      newId: () => "id-1",
+    });
+    const prompt = selectPrompt({ modality: "writing", targetLevel: "A2", responses: [] });
+
+    await p.createSession({
+      id: "session-1",
+      userId: "user-1",
+      languagePair: { native: "vi", target: "en" },
+      firstPrompt: prompt,
+      now: "2026-05-20T12:00:00.000Z",
+      totalTasks: 11,
+    });
+
+    expect(f.tables.placement_v3_sessions[0].is_synthetic).toBe(true);
+  });
+
+  it("falls back safely before the is_synthetic migration is applied", async () => {
+    const f = fakeDb({}, {
+      unsupportedColumns: { placement_v3_sessions: ["is_synthetic"] },
+    });
+    const p = createPersistence(f.db, {
+      now: () => "2026-05-20T12:00:00.000Z",
+      newId: () => "id-1",
+    });
+    const prompt = selectPrompt({ modality: "writing", targetLevel: "A2", responses: [] });
+
+    await p.createSession({
+      id: "session-1",
+      userId: "user-1",
+      languagePair: { native: "vi", target: "en" },
+      firstPrompt: prompt,
+      now: "2026-05-20T12:00:00.000Z",
+      totalTasks: 11,
+      isSynthetic: true,
+    });
+
+    expect(f.tables.placement_v3_sessions).toHaveLength(1);
+    expect(f.tables.placement_v3_sessions[0].is_synthetic).toBeUndefined();
   });
 
   it("loads most recent in-progress session", async () => {
@@ -468,6 +554,43 @@ describe("placement v3 persistence", () => {
     expect(nested.apiKey).toBe("[redacted]");
     expect(nested.authorization).toBe("[redacted]");
     expect(nested.message).toBe("email [email-redacted]");
+  });
+
+  it("omits object undefined metadata and serializes array undefined as null", async () => {
+    const f = fakeDb();
+    const p = createPersistence(f.db, {
+      now: () => "2026-05-20T12:00:00.000Z",
+      newId: () => "id-1",
+    });
+    const prompt = selectPrompt({ modality: "writing", targetLevel: "A2", responses: [] });
+    const session = await p.createSession({
+      id: "session-1",
+      userId: "user-1",
+      languagePair: { native: "vi", target: "en" },
+      firstPrompt: prompt,
+      now: "2026-05-20T12:00:00.000Z",
+      totalTasks: 11,
+    });
+
+    await p.updateSession({
+      ...session,
+      metadata: {
+        keep: "value",
+        omitMe: undefined,
+        nested: { keepNested: true, omitNested: undefined },
+        list: [undefined, "x"],
+      } as unknown as PlacementV3Session["metadata"],
+    });
+
+    const serialized = JSON.stringify(f.tables.placement_v3_sessions[0].metadata);
+    expect(serialized).not.toContain("[undefined]");
+    expect(serialized).not.toContain("omitMe");
+    expect(serialized).not.toContain("omitNested");
+    expect(f.tables.placement_v3_sessions[0].metadata).toMatchObject({
+      keep: "value",
+      nested: { keepNested: true },
+      list: [null, "x"],
+    });
   });
 
   it("prevents circular session metadata update failures", async () => {

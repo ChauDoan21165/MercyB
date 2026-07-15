@@ -6,6 +6,7 @@ type IndonesianLessonSentence = {
 };
 
 type VocabEntry = {
+  cell_id?: string;
   word: string;
   meaning_vi: string;
   meaning_en: string;
@@ -14,6 +15,7 @@ type VocabEntry = {
 };
 
 type DialogueLine = {
+  cell_id?: string;
   speaker: string;
   line: string;
   vi: string;
@@ -117,6 +119,7 @@ export const lessons: IndonesianLesson[] = [
     ],
     vocabulary: [
       {
+        cell_id: "1123fd84-95de-4957-a15b-082088104a97",
         word: 'buka rekening',
         meaning_vi: 'mở tài khoản ngân hàng',
         meaning_en: 'open a bank account',
@@ -124,6 +127,7 @@ export const lessons: IndonesianLesson[] = [
         example_vi: 'Tôi muốn mở tài khoản ở chi nhánh này.',
       },
       {
+        cell_id: "1ab6b12c-f971-4aec-b010-c04d94d91315",
         word: 'KTP',
         meaning_vi: 'thẻ căn cước Indonesia',
         meaning_en: 'Indonesian identity card',
@@ -131,6 +135,7 @@ export const lessons: IndonesianLesson[] = [
         example_vi: 'Khách hàng cần mang KTP bản gốc.',
       },
       {
+        cell_id: "f6cbd33d-5ca3-4d1f-83be-aa3fe323057d",
         word: 'setoran awal',
         meaning_vi: 'khoản nộp ban đầu',
         meaning_en: 'initial deposit',
@@ -138,6 +143,7 @@ export const lessons: IndonesianLesson[] = [
         example_vi: 'Khoản nộp ban đầu tối thiểu là một trăm nghìn rupiah.',
       },
       {
+        cell_id: "1d207e1f-e7fe-4425-bc8e-6b70005aba04",
         word: 'buku tabungan',
         meaning_vi: 'sổ tiết kiệm/sổ tài khoản',
         meaning_en: 'savings passbook',
@@ -145,6 +151,7 @@ export const lessons: IndonesianLesson[] = [
         example_vi: 'Sổ tài khoản có thể được in tại chi nhánh ngân hàng.',
       },
       {
+        cell_id: "020a2d9e-fa54-4bf3-8f1c-a2054d01f42d",
         word: 'kartu debit',
         meaning_vi: 'thẻ ghi nợ',
         meaning_en: 'debit card',
@@ -152,6 +159,7 @@ export const lessons: IndonesianLesson[] = [
         example_vi: 'Thẻ ghi nợ của tôi có thể dùng để rút tiền mặt.',
       },
       {
+        cell_id: "378c2842-0cc1-48ca-874d-dcd6b64806ef",
         word: 'mobile banking',
         meaning_vi: 'dịch vụ ngân hàng trên điện thoại',
         meaning_en: 'mobile banking',
@@ -159,6 +167,7 @@ export const lessons: IndonesianLesson[] = [
         example_vi: 'Mobile banking giúp chuyển khoản và kiểm tra số dư dễ hơn.',
       },
       {
+        cell_id: "1e13ba8b-7921-42d1-a5cc-1c12eaa679b1",
         word: 'tanda tangan',
         meaning_vi: 'chữ ký, ký tên',
         meaning_en: 'signature',
@@ -166,6 +175,7 @@ export const lessons: IndonesianLesson[] = [
         example_vi: 'Chữ ký trên mẫu đơn phải giống với KTP.',
       },
       {
+        cell_id: "b69157e8-5cf4-432e-a961-308facf6d81c",
         word: 'biaya admin',
         meaning_vi: 'phí admin/phí quản lý',
         meaning_en: 'admin or maintenance fee',
@@ -175,36 +185,42 @@ export const lessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "bb757676-877f-4f46-9569-cde067e70a74",
         speaker: 'Nasabah',
         line: 'Selamat pagi. Saya mau buka rekening tabungan.',
         vi: 'Chào buổi sáng. Tôi muốn mở tài khoản tiết kiệm.',
         en: 'Good morning. I would like to open a savings account.',
       },
       {
+        cell_id: "7f78ffb6-4b7f-4917-b047-a0e82030b17e",
         speaker: 'Petugas Bank',
         line: 'Selamat pagi. Boleh lihat KTP dan nomor HP, Pak?',
         vi: 'Chào buổi sáng. Tôi có thể xem KTP và số điện thoại của anh không?',
         en: 'Good morning. May I see your KTP and phone number, Sir?',
       },
       {
+        cell_id: "a9ff1454-d9c9-43da-af27-c09047dfb46c",
         speaker: 'Nasabah',
         line: 'Ini KTP saya. Berapa setoran awalnya?',
         vi: 'Đây là KTP của tôi. Khoản nộp ban đầu là bao nhiêu?',
         en: 'This is my KTP. How much is the initial deposit?',
       },
       {
+        cell_id: "2c798feb-29a6-4083-843c-a8e99e100de0",
         speaker: 'Petugas Bank',
         line: 'Setoran awal minimal seratus ribu rupiah.',
         vi: 'Khoản nộp ban đầu tối thiểu là một trăm nghìn rupiah.',
         en: 'The minimum initial deposit is one hundred thousand rupiah.',
       },
       {
+        cell_id: "0876489e-89fd-408b-ad3b-038584e83063",
         speaker: 'Nasabah',
         line: 'Saya juga ingin kartu debit dan mobile banking.',
         vi: 'Tôi cũng muốn thẻ ghi nợ và mobile banking.',
         en: 'I also want a debit card and mobile banking.',
       },
       {
+        cell_id: "9405cec7-d930-4e0a-a4cd-3f507ea139db",
         speaker: 'Petugas Bank',
         line: 'Baik. Silakan isi formulir dan tanda tangan di sini.',
         vi: 'Vâng. Vui lòng điền mẫu đơn và ký tên ở đây.',

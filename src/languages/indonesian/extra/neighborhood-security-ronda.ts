@@ -12,6 +12,7 @@ type LessonSentence = {
 };
 
 type VocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -21,6 +22,7 @@ type VocabEntry = {
 };
 
 type DialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -137,6 +139,7 @@ export const neighborhoodSecurityRondaLessons: IndonesianLesson[] = [
       "Useful chunks: `ikut ronda malam`, `lapor ke Pak RT`, `pos kamling di dekat...`, `keamanan lingkungan dijaga bersama`. Vietnamese speakers should distinguish `tamu` (visitor/guest) from `pelanggan` (customer).",
     vocabulary: [
       {
+        cell_id: "b3c45d0a-d39e-4cda-bf4d-20dc2452c8e5",
         word: "ronda malam",
         en: "night watch / night patrol",
         vi: "tuần tra đêm / gác đêm",
@@ -145,6 +148,7 @@ export const neighborhoodSecurityRondaLessons: IndonesianLesson[] = [
         pronunciation_en: "RON-da MA-lam",
       },
       {
+        cell_id: "d4e4dc24-b7bf-4e75-8e72-96f5465790a3",
         word: "pos kamling",
         en: "neighborhood security post",
         vi: "chốt an ninh khu dân cư",
@@ -153,6 +157,7 @@ export const neighborhoodSecurityRondaLessons: IndonesianLesson[] = [
         pronunciation_en: "pos KAM-ling",
       },
       {
+        cell_id: "a351f944-f85a-4c0d-9375-c507ebf31425",
         word: "satpam",
         en: "security guard",
         vi: "bảo vệ",
@@ -161,6 +166,7 @@ export const neighborhoodSecurityRondaLessons: IndonesianLesson[] = [
         pronunciation_en: "SAT-pam",
       },
       {
+        cell_id: "b207907f-0b80-4cc6-964a-98abf008adac",
         word: "tamu menginap",
         en: "overnight guest",
         vi: "khách ngủ lại",
@@ -169,6 +175,7 @@ export const neighborhoodSecurityRondaLessons: IndonesianLesson[] = [
         pronunciation_en: "TA-moo me-NGI-nap",
       },
       {
+        cell_id: "9a816e70-cda3-458f-8097-1c894ec09840",
         word: "keamanan lingkungan",
         en: "neighborhood security",
         vi: "an ninh khu dân cư",
@@ -177,6 +184,7 @@ export const neighborhoodSecurityRondaLessons: IndonesianLesson[] = [
         pronunciation_en: "ke-a-MA-nan ling-KUNG-an",
       },
       {
+        cell_id: "76539990-9042-4616-be4b-c06bc0aa0013",
         word: "lapor ke",
         en: "to report to",
         vi: "báo với / trình báo cho",
@@ -187,24 +195,28 @@ export const neighborhoodSecurityRondaLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "761d2883-5e3b-4311-b790-9cb97cb2a610",
         speaker: "Warga Baru",
         text: "Pak, pos kamling ada di mana?",
         vi: "Anh/bác ơi, chốt an ninh khu dân cư ở đâu?",
         en: "Sir, where is the neighborhood security post?",
       },
       {
+        cell_id: "0260e088-1829-4169-b18f-545c2b0a1891",
         speaker: "Satpam",
         text: "Di dekat gerbang utama. Malam ini ada ronda.",
         vi: "Ở gần cổng chính. Tối nay có tuần tra đêm.",
         en: "Near the main gate. There is night watch tonight.",
       },
       {
+        cell_id: "d35c77c3-92dd-4e51-8a45-ecbb13e0f8ac",
         speaker: "Warga Baru",
         text: "Kalau ada tamu menginap, saya lapor ke siapa?",
         vi: "Nếu có khách ngủ lại, tôi báo với ai?",
         en: "If there is an overnight guest, whom should I report to?",
       },
       {
+        cell_id: "f7b49e83-1dae-409d-b8fa-1137090c3516",
         speaker: "Satpam",
         text: "Lapor ke Pak RT atau satpam yang jaga.",
         vi: "Báo với Pak RT hoặc bảo vệ đang trực.",
@@ -334,6 +346,7 @@ export const neighborhoodSecurityRondaLessons: IndonesianLesson[] = [
       "Safe reporting frames: `Saya melihat...`, `Saya merasa curiga karena...`, `Lokasinya di...`, `Tolong dicek oleh satpam`. Avoid writing `pasti pencuri` without evidence; `mencurigakan` is safer and more polite.",
     vocabulary: [
       {
+        cell_id: "6ab2702b-0ad3-45d6-88bd-6f52c47c080e",
         word: "laporan warga",
         en: "resident report",
         vi: "báo cáo/thông tin từ cư dân",
@@ -342,6 +355,7 @@ export const neighborhoodSecurityRondaLessons: IndonesianLesson[] = [
         pronunciation_en: "la-PO-ran WAR-ga",
       },
       {
+        cell_id: "ae3ca06d-b667-4700-a3ce-4502ce860bd0",
         word: "curiga",
         en: "suspicious",
         vi: "nghi ngờ",
@@ -350,6 +364,7 @@ export const neighborhoodSecurityRondaLessons: IndonesianLesson[] = [
         pronunciation_en: "choo-REE-ga",
       },
       {
+        cell_id: "d7d755d4-2a3b-46e4-ae3b-c6ebf779d293",
         word: "mencurigakan",
         en: "suspicious-looking",
         vi: "đáng ngờ",
@@ -358,6 +373,7 @@ export const neighborhoodSecurityRondaLessons: IndonesianLesson[] = [
         pronunciation_en: "men-choo-ree-GA-kan",
       },
       {
+        cell_id: "38d86aac-4f7d-4b5f-99cb-3f4178615dde",
         word: "orang asing",
         en: "stranger / foreigner",
         vi: "người lạ / người nước ngoài",
@@ -366,6 +382,7 @@ export const neighborhoodSecurityRondaLessons: IndonesianLesson[] = [
         pronunciation_en: "O-rang A-sing",
       },
       {
+        cell_id: "efd5fb47-c348-4e70-9f77-3ff2684f38ea",
         word: "bukti",
         en: "evidence",
         vi: "bằng chứng",
@@ -374,6 +391,7 @@ export const neighborhoodSecurityRondaLessons: IndonesianLesson[] = [
         pronunciation_en: "BOOK-tee",
       },
       {
+        cell_id: "3ad513d4-eb46-4911-9981-b78f9b3504e3",
         word: "nomor darurat",
         en: "emergency number",
         vi: "số khẩn cấp",
@@ -384,24 +402,28 @@ export const neighborhoodSecurityRondaLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "dc9b21b9-ff6e-4e4a-a3e4-a3ad22c29312",
         speaker: "Warga",
         text: "Pak, ada orang asing mondar-mandir di depan rumah saya.",
         vi: "Anh/bác ơi, có người lạ đi qua đi lại trước nhà tôi.",
         en: "Sir, there is a stranger pacing in front of my house.",
       },
       {
+        cell_id: "2e08ab05-6a96-493e-b4b4-8971fd25afde",
         speaker: "Pak RT",
         text: "Apakah ada kejadian yang mencurigakan?",
         vi: "Có sự việc nào đáng ngờ không?",
         en: "Was there anything suspicious?",
       },
       {
+        cell_id: "a811ad8c-a5c9-45ea-8d93-64a1a08f29c2",
         speaker: "Warga",
         text: "Saya merasa curiga karena motornya tidak ada pelat nomor.",
         vi: "Tôi thấy nghi vì xe máy của người đó không có biển số.",
         en: "I feel suspicious because the motorbike has no license plate.",
       },
       {
+        cell_id: "2bb7191d-9ce6-4f9b-a113-5f08f99044ab",
         speaker: "Pak RT",
         text: "Baik, saya minta satpam cek lokasi. Jangan menuduh dulu.",
         vi: "Được, tôi sẽ nhờ bảo vệ kiểm tra địa điểm. Đừng buộc tội vội.",

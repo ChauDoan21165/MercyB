@@ -17,6 +17,7 @@ export const lessons: PunjabiLesson[] = [
       "This first lesson is Gurmukhi-first. Look at the Punjabi script before using the romanization. Punjabi has aspirated consonants such as ਖ /kh/ and retroflex sounds; English speakers should avoid reducing every vowel to a schwa.",
     vocabulary: [
       {
+        cell_id: "5aef77f3-3667-425a-add9-aea82a66a9ca",
         gurmukhi: "ਸਤ ਸ੍ਰੀ ਅਕਾਲ",
         romanization: "sat sri akal",
         vi: "xin chào / lời chào trang trọng phổ biến",
@@ -24,6 +25,7 @@ export const lessons: PunjabiLesson[] = [
         pos: "phrase",
       },
       {
+        cell_id: "fc292bc6-07c5-49e9-bf5c-fb42ebcac54c",
         gurmukhi: "ਸਤ ਸ੍ਰੀ ਅਕਾਲ ਜੀ",
         romanization: "sat sri akal ji",
         vi: "xin chào ạ / lời chào lịch sự hơn",
@@ -31,6 +33,7 @@ export const lessons: PunjabiLesson[] = [
         pos: "phrase",
       },
       {
+        cell_id: "bbaa96b5-4d07-4cec-b08b-182298b0a13b",
         gurmukhi: "ਜੀ",
         romanization: "ji",
         vi: "ạ / thưa, từ lịch sự đặt sau tên hoặc câu trả lời",
@@ -38,6 +41,7 @@ export const lessons: PunjabiLesson[] = [
         pos: "particle",
       },
       {
+        cell_id: "74369dc6-7534-462e-aa56-ea2bc13f5ffc",
         gurmukhi: "ਧੰਨਵਾਦ",
         romanization: "dhannvaad",
         vi: "cảm ơn",
@@ -45,6 +49,7 @@ export const lessons: PunjabiLesson[] = [
         pos: "noun/phrase",
       },
       {
+        cell_id: "a7e910df-a60b-47c7-a167-1663cd51e343",
         gurmukhi: "ਤੁਹਾਡਾ ਨਾਮ ਕੀ ਹੈ?",
         romanization: "tuhada naam ki hai?",
         vi: "Tên của bạn là gì?",
@@ -52,6 +57,7 @@ export const lessons: PunjabiLesson[] = [
         pos: "question",
       },
       {
+        cell_id: "65b1138b-772b-44dd-b44b-c011a59391d9",
         gurmukhi: "ਮੇਰਾ ਨਾਮ ਆਨਾ ਹੈ",
         romanization: "mera naam Ana hai",
         vi: "Tên tôi là Ana.",
@@ -133,6 +139,7 @@ export const lessons: PunjabiLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "b7817df6-feef-45eb-9295-449baf39fff1",
         speaker: "A",
         gurmukhi: "ਸਤ ਸ੍ਰੀ ਅਕਾਲ ਜੀ।",
         romanization: "sat sri akal ji",
@@ -140,6 +147,7 @@ export const lessons: PunjabiLesson[] = [
         en: "Hello, respectfully.",
       },
       {
+        cell_id: "06ce8ca8-2fc9-4fff-a39c-3c23b1e8cf1b",
         speaker: "B",
         gurmukhi: "ਸਤ ਸ੍ਰੀ ਅਕਾਲ। ਤੁਹਾਡਾ ਨਾਮ ਕੀ ਹੈ?",
         romanization: "sat sri akal. tuhada naam ki hai?",
@@ -147,6 +155,7 @@ export const lessons: PunjabiLesson[] = [
         en: "Hello. What is your name?",
       },
       {
+        cell_id: "11371400-ddcc-4e14-b737-d1b34b2b13e3",
         speaker: "A",
         gurmukhi: "ਮੇਰਾ ਨਾਮ ਆਨਾ ਹੈ।",
         romanization: "mera naam Ana hai",
@@ -154,6 +163,7 @@ export const lessons: PunjabiLesson[] = [
         en: "My name is Ana.",
       },
       {
+        cell_id: "4f833421-473c-46f4-a35f-d6345462374d",
         speaker: "B",
         gurmukhi: "ਧੰਨਵਾਦ ਜੀ।",
         romanization: "dhannvaad ji",

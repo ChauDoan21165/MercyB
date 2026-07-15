@@ -16,6 +16,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   /** Indonesian word/phrase. */
   word: string;
   /** English meaning. */
@@ -31,6 +32,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   /** Indonesian line. */
   text: string;
@@ -193,6 +195,7 @@ export const lessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: learn bank-issue chunks like `tidak bisa login`, `OTP belum masuk`, `saldo tidak muncul`, `transfer tertunda`, `lupa PIN`, `akun terblokir`. With customer service, speak briefly and clearly in order: problem -> evidence -> what you tried -> your request.",
     vocabulary: [
       {
+        cell_id: "d430d1e1-8958-439d-838c-7c3f7bad0bfc",
         word: "mobile banking",
         en: "mobile banking",
         vi: "ngân hàng trên điện thoại",
@@ -201,6 +204,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "MO-bile BAN-king",
       },
       {
+        cell_id: "c6643fe8-c5b9-40dc-bb08-9d2b72f80677",
         word: "login gagal",
         en: "failed login",
         vi: "đăng nhập thất bại",
@@ -209,6 +213,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "LO-gin GA-gal",
       },
       {
+        cell_id: "f0799a43-12c2-4814-bb35-0277b988d411",
         word: "OTP",
         en: "one-time password / code",
         vi: "mã một lần",
@@ -217,6 +222,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "O-TI-PI",
       },
       {
+        cell_id: "5694bd9a-e150-43a5-b89e-1e7de6540d1b",
         word: "transfer tertunda",
         en: "delayed transfer",
         vi: "chuyển khoản bị trì hoãn",
@@ -225,6 +231,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "TRAN-sfer ter-TOON-da",
       },
       {
+        cell_id: "f6b3307e-960b-4631-81a0-d6c538be7bc1",
         word: "saldo",
         en: "balance",
         vi: "số dư",
@@ -233,6 +240,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "SAL-doh",
       },
       {
+        cell_id: "3ed8ee9a-6ade-4aaa-af98-f43c115a68ea",
         word: "PIN",
         en: "PIN",
         vi: "mã PIN",
@@ -241,6 +249,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "PIN",
       },
       {
+        cell_id: "bd76314a-51c7-4514-a4cb-ad7e368f9dec",
         word: "terblokir",
         en: "blocked",
         vi: "bị khóa",
@@ -249,6 +258,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "ter-BLO-kir",
       },
       {
+        cell_id: "f9d3243d-d45e-499f-a1d6-b35017f37f93",
         word: "call center",
         en: "call center",
         vi: "tổng đài",
@@ -259,30 +269,35 @@ export const lessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "2c37570a-5bcc-4469-8b07-9cbdeb04fba5",
         speaker: "Nasabah",
         text: "Permisi, saya tidak bisa login mobile banking sejak pagi.",
         vi: "Xin phép, sáng nay tôi không thể đăng nhập mobile banking.",
         en: "Excuse me, I have not been able to log in to mobile banking since this morning.",
       },
       {
+        cell_id: "77ea15e5-6a13-4c74-87a6-6a606d98e90a",
         speaker: "CS",
         text: "Baik, apakah OTP sudah masuk ke nomor terdaftar?",
         vi: "Được rồi, OTP đã vào số đã đăng ký chưa?",
         en: "Okay, has the OTP arrived at the registered number?",
       },
       {
+        cell_id: "8d5c4b75-282d-4efa-a0ed-bfc2340b1284",
         speaker: "Nasabah",
         text: "Belum. Transfer saya juga tertunda dan saldo tidak muncul.",
         vi: "Chưa. Chuyển khoản của tôi cũng bị trì hoãn và số dư không hiện ra.",
         en: "Not yet. My transfer is also delayed and the balance is not showing.",
       },
       {
+        cell_id: "97f1cca4-689d-4b95-b25a-d29d7724885e",
         speaker: "CS",
         text: "Mohon tunggu, saya cek akun Anda dulu.",
         vi: "Xin chờ, tôi kiểm tra tài khoản của anh/chị trước.",
         en: "Please wait, I will check your account first.",
       },
       {
+        cell_id: "1124a18c-3355-4c74-a71c-88ef8c5995b5",
         speaker: "Nasabah",
         text: "Kalau perlu, saya juga mau blokir akun sementara.",
         vi: "Nếu cần, tôi cũng muốn khóa tài khoản tạm thời.",

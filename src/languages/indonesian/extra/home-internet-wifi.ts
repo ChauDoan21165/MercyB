@@ -21,6 +21,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   /** Indonesian word/phrase. */
   word: string;
   /** English meaning. */
@@ -36,6 +37,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   /** Indonesian line. */
   text: string;
@@ -253,6 +255,7 @@ export const lessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: distinguish `sinyal lemah` (weak signal), `putus-putus` (keeps cutting out), and `gangguan jaringan` (network disruption). When calling support, use frames like: `Saya mau mengajukan komplain`, `Internetnya putus-putus`, `Tolong kirim teknisi`, `Nomor pelanggan saya...`.",
     vocabulary: [
       {
+        cell_id: "914063fe-874a-49fc-8a9d-d4bc01f61080",
         word: "pasang internet",
         en: "install home internet",
         vi: "lắp internet",
@@ -261,6 +264,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "PA-sang IN-ter-net",
       },
       {
+        cell_id: "e1b2a793-a0b5-43b7-8208-bf5867b97474",
         word: "Wi-Fi",
         en: "Wi-Fi",
         vi: "Wi-Fi",
@@ -269,6 +273,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "WAI-fai",
       },
       {
+        cell_id: "cd25cd1a-bca4-400a-94e7-a20215a017b2",
         word: "router",
         en: "router",
         vi: "bộ phát router",
@@ -277,6 +282,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "ROO-ter",
       },
       {
+        cell_id: "fcc58621-b36d-41e3-bd58-4b44d67151f4",
         word: "gangguan jaringan",
         en: "network disruption",
         vi: "sự cố mạng",
@@ -285,6 +291,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "gang-GOO-an ja-REE-ngan",
       },
       {
+        cell_id: "6a7cd1c6-cd08-4b86-8b51-e81ec113f9a7",
         word: "teknisi",
         en: "technician",
         vi: "kỹ thuật viên",
@@ -293,6 +300,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "TEK-nee-see",
       },
       {
+        cell_id: "075f60a0-ad13-4f16-8558-b904ce7d645f",
         word: "tagihan",
         en: "bill",
         vi: "hóa đơn",
@@ -301,6 +309,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "ta-GEE-han",
       },
       {
+        cell_id: "13e7de07-3dc2-4f50-89c9-84eb9cbb8195",
         word: "paket internet",
         en: "internet package",
         vi: "gói internet",
@@ -309,6 +318,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "PA-ket IN-ter-net",
       },
       {
+        cell_id: "e99123b0-8b5d-4073-9388-84b970616c7a",
         word: "komplain layanan",
         en: "service complaint",
         vi: "khiếu nại dịch vụ",
@@ -317,6 +327,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "kom-PLAIN la-YA-nan",
       },
       {
+        cell_id: "315e316c-b560-4e18-b96b-d49059f2f9bf",
         word: "nomor pelanggan",
         en: "customer number",
         vi: "mã khách hàng",
@@ -325,6 +336,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "NO-mor pe-LANG-gan",
       },
       {
+        cell_id: "8d98c760-6586-4e08-ba75-8c2122f7ed42",
         word: "putus-putus",
         en: "keeps cutting out",
         vi: "chập chờn / đứt quãng",
@@ -333,6 +345,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "POO-toos-POO-toos",
       },
       {
+        cell_id: "6546893c-74b6-43e8-8fe7-3a32190a3671",
         word: "sinyal lemah",
         en: "weak signal",
         vi: "sóng yếu",
@@ -341,6 +354,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "see-NYAL LEH-mah",
       },
       {
+        cell_id: "6b5261bb-91e0-4b0d-a796-e462805152a2",
         word: "biaya pemasangan",
         en: "installation fee",
         vi: "phí lắp đặt",
@@ -351,24 +365,28 @@ export const lessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "0e543700-99f6-45c4-9039-c0e638f85069",
         speaker: "Pelanggan",
         text: "Halo, saya mau mengajukan komplain layanan. Internet saya sering putus-putus.",
         vi: "A lô, tôi muốn gửi khiếu nại dịch vụ. Internet của tôi thường xuyên chập chờn.",
         en: "Hello, I want to submit a service complaint. My internet keeps cutting out.",
       },
       {
+        cell_id: "93a78956-d198-4c57-bc1f-919efcffcfd2",
         speaker: "CS",
         text: "Baik, boleh minta nomor pelanggan dan alamat lengkapnya?",
         vi: "Vâng, cho tôi xin mã khách hàng và địa chỉ đầy đủ được không?",
         en: "Okay, may I have the customer number and full address?",
       },
       {
+        cell_id: "4b7640d7-c149-4bfe-afcb-ebeebf1d30e6",
         speaker: "Pelanggan",
         text: "Nomor pelanggan ada di tagihan. Tolong kirim teknisi hari ini.",
         vi: "Mã khách hàng có trên hóa đơn. Làm ơn cử kỹ thuật viên hôm nay.",
         en: "The customer number is on the bill. Please send a technician today.",
       },
       {
+        cell_id: "e3955078-5716-4e9d-98de-ad9ded408081",
         speaker: "CS",
         text: "Kami cek dulu. Sepertinya ada gangguan jaringan di area Bapak.",
         vi: "Chúng tôi kiểm tra trước. Có vẻ có sự cố mạng trong khu vực của anh.",

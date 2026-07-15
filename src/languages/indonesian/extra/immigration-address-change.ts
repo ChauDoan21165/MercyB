@@ -12,6 +12,7 @@ type LessonSentence = {
 };
 
 type VocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -21,6 +22,7 @@ type VocabEntry = {
 };
 
 type DialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -150,34 +152,38 @@ export const immigrationAddressChangeLessons: IndonesianLesson[] = [
     tip_advice_en:
       "Useful frames: `Saya pindah alamat...`, `Apakah perubahan alamat ini perlu dicatat di KITAS saya?`, `Dokumen pendukung apa saja yang perlu saya bawa?`. Vietnamese speakers should remember `dicatat` = recorded; in government paperwork, passive sentences often sound more natural.",
     vocabulary: [
-      { word: "pindah alamat", en: "move address", vi: "chuyển địa chỉ", pos: "verb phrase", pronunciation_vi: "PIN-dah A-la-mat", pronunciation_en: "PEEN-dah A-la-mat" },
-      { word: "lapor ke imigrasi", en: "report to immigration", vi: "báo với imigrasi", pos: "verb phrase", pronunciation_vi: "LA-por ke i-mi-gra-si", pronunciation_en: "LA-por ke ee-mee-gra-see" },
-      { word: "KITAS", en: "temporary stay permit", vi: "thẻ tạm trú", pos: "noun", pronunciation_vi: "KEE-tas", pronunciation_en: "KEE-tas" },
-      { word: "domisili baru", en: "new domicile/residence", vi: "nơi cư trú mới", pos: "noun phrase", pronunciation_vi: "do-mi-SI-li BA-ru", pronunciation_en: "do-mi-SEE-li BA-roo" },
-      { word: "surat keterangan", en: "statement letter / certificate", vi: "giấy xác nhận", pos: "noun phrase", pronunciation_vi: "SU-rat ke-te-RANG-an", pronunciation_en: "SOO-rat ke-te-RANG-an" },
-      { word: "dokumen pendukung", en: "supporting documents", vi: "giấy tờ hỗ trợ", pos: "noun phrase", pronunciation_vi: "do-KU-men pen-du-KUNG", pronunciation_en: "do-KU-men pen-du-KOONG" },
-      { word: "antrean", en: "queue / line", vi: "hàng đợi", pos: "noun", pronunciation_vi: "an-TRE-an", pronunciation_en: "an-TRE-an" },
+      { cell_id: "5f58af8a-e336-464d-86db-95f758011302", word: "pindah alamat", en: "move address", vi: "chuyển địa chỉ", pos: "verb phrase", pronunciation_vi: "PIN-dah A-la-mat", pronunciation_en: "PEEN-dah A-la-mat" },
+      { cell_id: "50227877-91d9-4eb4-986a-0afc314a9a25", word: "lapor ke imigrasi", en: "report to immigration", vi: "báo với imigrasi", pos: "verb phrase", pronunciation_vi: "LA-por ke i-mi-gra-si", pronunciation_en: "LA-por ke ee-mee-gra-see" },
+      { cell_id: "5b1939e1-ba89-4431-a6cf-9da699043303", word: "KITAS", en: "temporary stay permit", vi: "thẻ tạm trú", pos: "noun", pronunciation_vi: "KEE-tas", pronunciation_en: "KEE-tas" },
+      { cell_id: "7fa30852-1bca-44cb-8dd5-24409b6873eb", word: "domisili baru", en: "new domicile/residence", vi: "nơi cư trú mới", pos: "noun phrase", pronunciation_vi: "do-mi-SI-li BA-ru", pronunciation_en: "do-mi-SEE-li BA-roo" },
+      { cell_id: "7b8b1c5e-5712-43ab-a6c0-957e2434153c", word: "surat keterangan", en: "statement letter / certificate", vi: "giấy xác nhận", pos: "noun phrase", pronunciation_vi: "SU-rat ke-te-RANG-an", pronunciation_en: "SOO-rat ke-te-RANG-an" },
+      { cell_id: "56710783-c081-4269-9064-0e3db0239b02", word: "dokumen pendukung", en: "supporting documents", vi: "giấy tờ hỗ trợ", pos: "noun phrase", pronunciation_vi: "do-KU-men pen-du-KUNG", pronunciation_en: "do-KU-men pen-du-KOONG" },
+      { cell_id: "65f49b96-c1dd-4c32-985a-8491c70076ec", word: "antrean", en: "queue / line", vi: "hàng đợi", pos: "noun", pronunciation_vi: "an-TRE-an", pronunciation_en: "an-TRE-an" },
     ],
     dialogue: [
       {
+        cell_id: "3ad3a43c-2308-4fb0-b2e5-aeb6331e495d",
         speaker: "Pemohon",
         text: "Selamat pagi. Saya pindah alamat dan perlu lapor ke imigrasi.",
         vi: "Chào buổi sáng. Tôi chuyển địa chỉ và cần báo cho imigrasi.",
         en: "Good morning. I moved address and need to report to immigration.",
       },
       {
+        cell_id: "007ae710-598d-4bad-a4df-fe9bf0f5f0a0",
         speaker: "Petugas",
         text: "Baik. Apakah perubahan alamat ini sudah dicatat di KITAS Anda?",
         vi: "Được. Việc thay đổi địa chỉ này đã được ghi trên KITAS của anh/chị chưa?",
         en: "Okay. Has this address change already been recorded on your KITAS?",
       },
       {
+        cell_id: "f5cca546-385d-4af9-97a5-9cff8ab9ff27",
         speaker: "Pemohon",
         text: "Belum. Saya sudah punya surat keterangan domisili baru.",
         vi: "Chưa. Tôi đã có giấy xác nhận nơi cư trú mới.",
         en: "Not yet. I already have a new domicile letter.",
       },
       {
+        cell_id: "713a24d4-72dc-443d-a3fe-72a2b2f04421",
         speaker: "Petugas",
         text: "Silakan ambil nomor antrean dan siapkan dokumen pendukung.",
         vi: "Mời lấy số thứ tự và chuẩn bị giấy tờ hỗ trợ.",
@@ -309,34 +315,38 @@ export const immigrationAddressChangeLessons: IndonesianLesson[] = [
     tip_advice_en:
       "Very useful frames: `Saya pindah alamat...`, `Apakah perlu dicatat di KITAS?`, `Dokumen pendukung apa saja?`, `Kapan nomor antrean saya dipanggil?`. Vietnamese speakers should note that `dicatat`, `dipanggil`, and `dikirim` are common passive forms.",
     vocabulary: [
-      { word: "lapor ke imigrasi", en: "report to immigration", vi: "báo với imigrasi", pos: "verb phrase", pronunciation_vi: "LA-por ke i-mi-gra-si", pronunciation_en: "LA-por ke ee-mee-gra-see" },
-      { word: "perubahan alamat", en: "address change", vi: "thay đổi địa chỉ", pos: "noun phrase", pronunciation_vi: "per-ru-BA-han A-la-mat", pronunciation_en: "per-roo-BA-han A-la-mat" },
-      { word: "surat keterangan domisili", en: "domicile letter", vi: "giấy xác nhận nơi cư trú", pos: "noun phrase", pronunciation_vi: "SU-rat ke-te-RANG-an do-mi-SI-li", pronunciation_en: "SOO-rat ke-te-RANG-an do-mi-SEE-li" },
-      { word: "dokumen pendukung", en: "supporting documents", vi: "giấy tờ hỗ trợ", pos: "noun phrase", pronunciation_vi: "do-KU-men pen-du-KUNG", pronunciation_en: "do-KU-men pen-du-KOONG" },
-      { word: "antrean", en: "queue / line", vi: "hàng đợi", pos: "noun", pronunciation_vi: "an-TRE-an", pronunciation_en: "an-TRE-an" },
-      { word: "dipanggil", en: "called up / summoned", vi: "được gọi lên", pos: "verb / passive", pronunciation_vi: "di-PANG-gil", pronunciation_en: "di-PANG-geel" },
-      { word: "hasil", en: "result", vi: "kết quả", pos: "noun", pronunciation_vi: "ha-SIL", pronunciation_en: "ha-SEEL" },
+      { cell_id: "cdf22e21-4269-467b-a74a-3f5728abd49c", word: "lapor ke imigrasi", en: "report to immigration", vi: "báo với imigrasi", pos: "verb phrase", pronunciation_vi: "LA-por ke i-mi-gra-si", pronunciation_en: "LA-por ke ee-mee-gra-see" },
+      { cell_id: "3f19c9e6-fda9-493e-ae6b-5de371067a57", word: "perubahan alamat", en: "address change", vi: "thay đổi địa chỉ", pos: "noun phrase", pronunciation_vi: "per-ru-BA-han A-la-mat", pronunciation_en: "per-roo-BA-han A-la-mat" },
+      { cell_id: "540535fd-009d-441e-a864-aa82d796a0ec", word: "surat keterangan domisili", en: "domicile letter", vi: "giấy xác nhận nơi cư trú", pos: "noun phrase", pronunciation_vi: "SU-rat ke-te-RANG-an do-mi-SI-li", pronunciation_en: "SOO-rat ke-te-RANG-an do-mi-SEE-li" },
+      { cell_id: "771d6037-cf21-4c83-aaf5-78cf0f1ccc7b", word: "dokumen pendukung", en: "supporting documents", vi: "giấy tờ hỗ trợ", pos: "noun phrase", pronunciation_vi: "do-KU-men pen-du-KUNG", pronunciation_en: "do-KU-men pen-du-KOONG" },
+      { cell_id: "2b8ac0a3-9739-462d-96fa-8ea97e3d070f", word: "antrean", en: "queue / line", vi: "hàng đợi", pos: "noun", pronunciation_vi: "an-TRE-an", pronunciation_en: "an-TRE-an" },
+      { cell_id: "76717050-1176-42f4-a37b-57d1e2bad41e", word: "dipanggil", en: "called up / summoned", vi: "được gọi lên", pos: "verb / passive", pronunciation_vi: "di-PANG-gil", pronunciation_en: "di-PANG-geel" },
+      { cell_id: "6af43763-ad95-4b8a-8ce2-5ddd53ed1cbf", word: "hasil", en: "result", vi: "kết quả", pos: "noun", pronunciation_vi: "ha-SIL", pronunciation_en: "ha-SEEL" },
     ],
     dialogue: [
       {
+        cell_id: "232065cd-dbe1-4b7f-a9ad-60786a26bd92",
         speaker: "Pemohon",
         text: "Selamat pagi. Saya ingin menanyakan status laporan perubahan alamat saya.",
         vi: "Chào buổi sáng. Tôi muốn hỏi trạng thái báo cáo thay đổi địa chỉ của tôi.",
         en: "Good morning. I would like to ask about the status of my address-change report.",
       },
       {
+        cell_id: "1cc29cd9-204b-4581-a467-92211df37f1d",
         speaker: "Petugas",
         text: "Baik. Apakah perubahan alamat ini sudah dicatat di KITAS Anda?",
         vi: "Được. Việc thay đổi địa chỉ này đã được ghi trên KITAS của anh/chị chưa?",
         en: "Okay. Has this address change been recorded on your KITAS?",
       },
       {
+        cell_id: "6a23d4f6-8edf-4340-a6b6-e41d1f48f1cb",
         speaker: "Pemohon",
         text: "Belum. Sponsor saya sudah mengirim surat pendukung ke kantor.",
         vi: "Chưa. Người bảo lãnh của tôi đã gửi thư hỗ trợ đến văn phòng.",
         en: "Not yet. My sponsor has already sent a supporting letter to the office.",
       },
       {
+        cell_id: "de7870fb-a62d-43e5-b1c3-6b00ec885315",
         speaker: "Petugas",
         text: "Silakan tunggu sampai nomor antrean Anda dipanggil.",
         vi: "Mời chờ đến khi số thứ tự của anh/chị được gọi.",

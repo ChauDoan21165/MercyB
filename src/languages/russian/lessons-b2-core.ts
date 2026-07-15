@@ -61,6 +61,7 @@ export const lessons: RussianLesson[] = [
     ],
     vocabulary: [
       {
+        cell_id: "122c1d8e-7f22-447b-b41d-d2eeef29e69b",
         word: "я убеждён / убеждена",
         romanization: "ya ubezhdyon / ubezhdena",
         en: "I am convinced",
@@ -70,6 +71,7 @@ export const lessons: RussianLesson[] = [
         pronunciation_en: "ya oo-bezh-DYON / oo-bezh-deh-NA",
       },
       {
+        cell_id: "f073c5ef-bead-446c-b312-e9cd62e5b708",
         word: "во-первых",
         romanization: "vo-pervykh",
         en: "firstly",
@@ -79,6 +81,7 @@ export const lessons: RussianLesson[] = [
         pronunciation_en: "va-PYER-vykh",
       },
       {
+        cell_id: "284d188e-58e1-4e36-805d-a391059b6eb4",
         word: "например",
         romanization: "naprimer",
         en: "for example",
@@ -88,6 +91,7 @@ export const lessons: RussianLesson[] = [
         pronunciation_en: "na-pree-MYER",
       },
       {
+        cell_id: "696cbe7e-d5d5-4af3-bfa8-beea45fe65b1",
         word: "стоит",
         romanization: "stoit",
         en: "it is worth / one should",
@@ -169,6 +173,7 @@ export const lessons: RussianLesson[] = [
     ],
     vocabulary: [
       {
+        cell_id: "d517c0ff-29d6-4963-9c64-1bf16925315e",
         word: "отчасти",
         romanization: "otchasti",
         en: "partly",
@@ -178,6 +183,7 @@ export const lessons: RussianLesson[] = [
         pronunciation_en: "at-CHAS-tee",
       },
       {
+        cell_id: "74b27d8b-8572-4e79-84c5-37c4fae2f560",
         word: "с одной стороны",
         romanization: "s odnoy storony",
         en: "on one hand",
@@ -187,6 +193,7 @@ export const lessons: RussianLesson[] = [
         pronunciation_en: "s ad-NOY sta-ra-NY",
       },
       {
+        cell_id: "ac8abca8-188c-4143-a4d1-ca8dfbd39ade",
         word: "тем не менее",
         romanization: "tem ne meneye",
         en: "nevertheless",
@@ -196,6 +203,7 @@ export const lessons: RussianLesson[] = [
         pronunciation_en: "tyem ne MYE-ne-yeh",
       },
       {
+        cell_id: "cb3f4976-2f08-4f4f-910c-e4fd32dbcf62",
         word: "возражение",
         romanization: "vozrazheniye",
         en: "objection",
@@ -277,6 +285,7 @@ export const lessons: RussianLesson[] = [
     ],
     vocabulary: [
       {
+        cell_id: "648f37ad-ca41-421d-945f-fb5693ee0bcd",
         word: "честно говоря",
         romanization: "chestno govorya",
         en: "honestly speaking",
@@ -286,6 +295,7 @@ export const lessons: RussianLesson[] = [
         pronunciation_en: "CHES-na ga-va-RYA",
       },
       {
+        cell_id: "22b2a506-ae30-47c1-904f-9c234984d344",
         word: "похоже",
         romanization: "pokhozhe",
         en: "it seems",
@@ -295,6 +305,7 @@ export const lessons: RussianLesson[] = [
         pronunciation_en: "pa-KHO-zheh",
       },
       {
+        cell_id: "e57bd4df-5018-4a42-bdfc-e94732afdd2b",
         word: "на самом деле",
         romanization: "na samom dele",
         en: "in fact / actually",
@@ -304,6 +315,7 @@ export const lessons: RussianLesson[] = [
         pronunciation_en: "na SA-mam DYE-leh",
       },
       {
+        cell_id: "f4ecb1d8-acb6-4698-854e-1a76bdcf0647",
         word: "скорее всего",
         romanization: "skoree vsego",
         en: "most likely",
@@ -385,6 +397,7 @@ export const lessons: RussianLesson[] = [
     ],
     vocabulary: [
       {
+        cell_id: "dfdfaac0-8dbd-4d27-bdd8-fa3d56527df3",
         word: "передавать смену",
         romanization: "peredavat smenu",
         en: "to hand over a shift",
@@ -394,6 +407,7 @@ export const lessons: RussianLesson[] = [
         pronunciation_en: "pe-re-da-VAT SMYE-noo",
       },
       {
+        cell_id: "124a5335-e062-46b3-97d2-f352e62e0e7e",
         word: "зафиксировать",
         romanization: "zafiksirovat",
         en: "to record / log",
@@ -403,6 +417,7 @@ export const lessons: RussianLesson[] = [
         pronunciation_en: "za-feek-SEE-ra-vat",
       },
       {
+        cell_id: "ac789db9-8682-460d-b5fb-c0600f0228e8",
         word: "руководитель",
         romanization: "rukovoditel",
         en: "manager / supervisor",
@@ -412,6 +427,7 @@ export const lessons: RussianLesson[] = [
         pronunciation_en: "roo-ka-va-DEE-tel",
       },
       {
+        cell_id: "3b40897d-0c97-4b7a-9879-fd0c3af86230",
         word: "подтвердить",
         romanization: "podtverdit",
         en: "to confirm",
@@ -423,6 +439,7 @@ export const lessons: RussianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "012b7d15-94e1-47fb-ab08-8f68c9eaa1b5",
         speaker: "Сменщик",
         text: "Что осталось от прошлой смены?",
         romanization: "Chto ostalos ot proshloy smeny?",
@@ -430,6 +447,7 @@ export const lessons: RussianLesson[] = [
         en: "What is left from the previous shift?",
       },
       {
+        cell_id: "f8d32a03-415c-499e-9029-8de3780da8c5",
         speaker: "Вы",
         text: "Заказ готов, но две позиции не проверены. Я зафиксировал это письменно.",
         romanization: "Zakaz gotov, no dve pozitsii ne provereny. Ya zafiksiroval eto pismenno.",
@@ -437,6 +455,7 @@ export const lessons: RussianLesson[] = [
         en: "The order is ready, but two items are unchecked. I logged it in writing.",
       },
       {
+        cell_id: "9889bc71-f64b-4436-b75c-b4f5ef7a7002",
         speaker: "Сменщик",
         text: "Понял. Я приму информацию и проверю позиции.",
         romanization: "Ponyal. Ya primu informatsiyu i proveryu pozitsii.",
@@ -510,6 +529,7 @@ export const lessons: RussianLesson[] = [
     ],
     vocabulary: [
       {
+        cell_id: "ed2775b4-5c03-4e71-bc9e-47b2d8d29456",
         word: "произошла ошибка",
         romanization: "proizoshla oshibka",
         en: "a mistake happened",
@@ -519,6 +539,7 @@ export const lessons: RussianLesson[] = [
         pronunciation_en: "pra-ee-za-SHLA a-SHIB-ka",
       },
       {
+        cell_id: "5eb33cce-10d9-4ef4-a5aa-c490479da18f",
         word: "брать на себя ответственность",
         romanization: "brat na sebya otvetstvennost",
         en: "to take responsibility",
@@ -528,6 +549,7 @@ export const lessons: RussianLesson[] = [
         pronunciation_en: "brat na se-BYA at-VYET-stven-nast",
       },
       {
+        cell_id: "375daeb9-4c78-479a-88b6-a4b713a69206",
         word: "исправить",
         romanization: "ispravit",
         en: "to fix / correct",
@@ -537,6 +559,7 @@ export const lessons: RussianLesson[] = [
         pronunciation_en: "ees-PRA-veet",
       },
       {
+        cell_id: "99f943fc-8789-45f7-941e-f03e97b335a2",
         word: "чтобы это не повторилось",
         romanization: "chtoby eto ne povtorilos",
         en: "so it doesn't happen again",
@@ -618,6 +641,7 @@ export const lessons: RussianLesson[] = [
     ],
     vocabulary: [
       {
+        cell_id: "739521bd-c33b-447c-8219-5d1887bc97f2",
         word: "из-за",
         romanization: "iz-za",
         en: "because of (negative)",
@@ -627,6 +651,7 @@ export const lessons: RussianLesson[] = [
         pronunciation_en: "eez-ZA",
       },
       {
+        cell_id: "2b3244b3-65c4-47eb-9164-01c1ce8ea810",
         word: "будьте добры",
         romanization: "budte dobry",
         en: "be so kind",
@@ -636,6 +661,7 @@ export const lessons: RussianLesson[] = [
         pronunciation_en: "BOOT-te da-BRY",
       },
       {
+        cell_id: "8a3e85af-6d4f-48bf-958c-0c1b44448d90",
         word: "скидка",
         romanization: "skidka",
         en: "discount",
@@ -645,6 +671,7 @@ export const lessons: RussianLesson[] = [
         pronunciation_en: "SKEED-ka",
       },
       {
+        cell_id: "833f98fc-67cf-462e-a578-25c8226b10e7",
         word: "подтверждение",
         romanization: "podtverzhdeniye",
         en: "confirmation",
@@ -726,6 +753,7 @@ export const lessons: RussianLesson[] = [
     ],
     vocabulary: [
       {
+        cell_id: "d40168e1-b5a0-4166-b3e8-4c3b66cf9350",
         word: "из + родительный",
         romanization: "iz + roditelnyy",
         en: "from + genitive",
@@ -735,6 +763,7 @@ export const lessons: RussianLesson[] = [
         pronunciation_en: "iz + genitive",
       },
       {
+        cell_id: "d37b68c5-3ca9-4b47-bc0b-3032f31296c3",
         word: "до + родительный",
         romanization: "do + roditelnyy",
         en: "until / up to + genitive",
@@ -744,6 +773,7 @@ export const lessons: RussianLesson[] = [
         pronunciation_en: "do + genitive",
       },
       {
+        cell_id: "d5888cbe-07fc-458f-a391-122235a84c97",
         word: "без + родительный",
         romanization: "bez + roditelnyy",
         en: "without + genitive",
@@ -753,6 +783,7 @@ export const lessons: RussianLesson[] = [
         pronunciation_en: "bez + genitive",
       },
       {
+        cell_id: "d38d57ad-844b-4539-afb8-09f7e2c33666",
         word: "на + предложный / винительный",
         romanization: "na + predlozhnyy / vinitelnyy",
         en: "на + prepositional (location) / accusative (direction)",
@@ -836,6 +867,7 @@ export const lessons: RussianLesson[] = [
     ],
     vocabulary: [
       {
+        cell_id: "0eb6a44a-8b4d-4033-aaf1-3b20d698d5f6",
         word: "моё / моя / мой",
         romanization: "moyo / moya / moy",
         en: "my (neuter / feminine / masculine)",
@@ -845,6 +877,7 @@ export const lessons: RussianLesson[] = [
         pronunciation_en: "ma-YO / ma-YA / moy",
       },
       {
+        cell_id: "c1a7fc47-9572-4fd6-846d-c3ba6b069f89",
         word: "закончил / закончила",
         romanization: "zakonchil / zakonchila",
         en: "finished (male / female)",
@@ -854,6 +887,7 @@ export const lessons: RussianLesson[] = [
         pronunciation_en: "za-KON-cheel / za-KON-chee-la",
       },
       {
+        cell_id: "f0c82286-ed11-40ad-bbfb-0dbeaed95d89",
         word: "каждый день",
         romanization: "kazhdyy den",
         en: "every day",
@@ -863,6 +897,7 @@ export const lessons: RussianLesson[] = [
         pronunciation_en: "KAZH-dyy dyen",
       },
       {
+        cell_id: "c02904c3-d33a-4165-8d05-db78a8a2d561",
         word: "решить",
         romanization: "reshit",
         en: "to solve (perfective)",
@@ -946,6 +981,7 @@ export const lessons: RussianLesson[] = [
     ],
     vocabulary: [
       {
+        cell_id: "f8af21c0-6e9d-4684-b828-dc9ef85d5618",
         word: "читающий",
         romanization: "chitayushchiy",
         en: "reading (present active participle)",
@@ -955,6 +991,7 @@ export const lessons: RussianLesson[] = [
         pronunciation_en: "chee-TA-yoo-shchiy",
       },
       {
+        cell_id: "5109bfb8-c22d-4ee0-b655-932d46eeea99",
         word: "написанный",
         romanization: "napisannyy",
         en: "written (past passive participle)",
@@ -964,6 +1001,7 @@ export const lessons: RussianLesson[] = [
         pronunciation_en: "na-PEE-san-nyy",
       },
       {
+        cell_id: "95d44889-d75d-41da-8223-375e06f24092",
         word: "используемый",
         romanization: "ispolzuyemyy",
         en: "used (present passive participle)",
@@ -973,6 +1011,7 @@ export const lessons: RussianLesson[] = [
         pronunciation_en: "ees-POL-zoo-ye-myy",
       },
       {
+        cell_id: "d86be8e4-800b-47f9-a10c-1ec38d3b0a3d",
         word: "который",
         romanization: "kotoryy",
         en: "which / who (relative)",
@@ -1057,6 +1096,7 @@ export const lessons: RussianLesson[] = [
     ],
     vocabulary: [
       {
+        cell_id: "6705ab58-42a9-4724-af7e-58382bb87523",
         word: "читая",
         romanization: "chitaya",
         en: "while reading",
@@ -1066,6 +1106,7 @@ export const lessons: RussianLesson[] = [
         pronunciation_en: "chee-TA-ya",
       },
       {
+        cell_id: "9f30761e-2d0c-4afc-8dc1-95120fb7411a",
         word: "закончив",
         romanization: "zakonchiv",
         en: "having finished",
@@ -1075,6 +1116,7 @@ export const lessons: RussianLesson[] = [
         pronunciation_en: "za-KON-cheev",
       },
       {
+        cell_id: "0252dbd5-51dd-497d-a77c-8e553d82641d",
         word: "готовясь",
         romanization: "gotovyas",
         en: "while preparing",
@@ -1084,6 +1126,7 @@ export const lessons: RussianLesson[] = [
         pronunciation_en: "ga-TO-vyas",
       },
       {
+        cell_id: "ba20c4d4-48e5-421a-b485-92f1a16dc736",
         word: "разные субъекты",
         romanization: "raznyye subyekty",
         en: "different subjects",
@@ -1165,6 +1208,7 @@ export const lessons: RussianLesson[] = [
     ],
     vocabulary: [
       {
+        cell_id: "86913982-a523-4217-9960-0ebd4af6f78b",
         word: "если",
         romanization: "yesli",
         en: "if (real condition)",
@@ -1174,6 +1218,7 @@ export const lessons: RussianLesson[] = [
         pronunciation_en: "YES-lee",
       },
       {
+        cell_id: "6781e8c5-7f46-4284-9dc5-2d5719fe2760",
         word: "если бы",
         romanization: "yesli by",
         en: "if (hypothetical)",
@@ -1183,6 +1228,7 @@ export const lessons: RussianLesson[] = [
         pronunciation_en: "YES-lee by",
       },
       {
+        cell_id: "8d381fab-ffe2-41a0-9953-864e79fbdc08",
         word: "не могли бы вы",
         romanization: "ne mogli by vy",
         en: "could you (polite)",
@@ -1192,6 +1238,7 @@ export const lessons: RussianLesson[] = [
         pronunciation_en: "ne ma-GLEE by vy",
       },
       {
+        cell_id: "cda125e2-ae34-4e05-a7b4-47743dd98a94",
         word: "при условии что",
         romanization: "pri uslovii chto",
         en: "provided that (formal)",
@@ -1273,6 +1320,7 @@ export const lessons: RussianLesson[] = [
     ],
     vocabulary: [
       {
+        cell_id: "49942f4d-4131-464a-8b62-1b1442b30e2a",
         word: "сказать, что",
         romanization: "skazat, chto",
         en: "to say that",
@@ -1282,6 +1330,7 @@ export const lessons: RussianLesson[] = [
         pronunciation_en: "ska-ZAT shto",
       },
       {
+        cell_id: "74315129-4277-4d61-8ec3-078fc1b07fa4",
         word: "ли",
         romanization: "li",
         en: "whether / if (yes-no)",
@@ -1291,6 +1340,7 @@ export const lessons: RussianLesson[] = [
         pronunciation_en: "lee",
       },
       {
+        cell_id: "4b97f8ca-3e99-4906-a800-31bbf5f8f49e",
         word: "чтобы",
         romanization: "chtoby",
         en: "so that / to (indirect command)",
@@ -1300,6 +1350,7 @@ export const lessons: RussianLesson[] = [
         pronunciation_en: "SHTO-by",
       },
       {
+        cell_id: "bc8c8c5d-015d-49e3-8378-deb5a9ac522c",
         word: "спросить",
         romanization: "sprosit",
         en: "to ask (a question)",

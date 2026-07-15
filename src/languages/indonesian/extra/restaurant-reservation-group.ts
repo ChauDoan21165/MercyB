@@ -13,6 +13,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -22,6 +23,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -194,6 +196,7 @@ export const lessons: IndonesianLesson[] = [
       "Safe frames: `Kami mau reservasi restoran untuk rombongan...`, `Apakah ada meja besar?`, `Apakah perlu DP?`, `Jam berapa waktu kedatangan yang paling pas?`. If you need a children's chair or a set menu, mention it early so you do not need extra back-and-forth messages.",
     vocabulary: [
       {
+        cell_id: "5dc3fca3-ba67-46f2-af36-e33444e1501d",
         word: "reservasi",
         en: "reservation",
         vi: "đặt chỗ",
@@ -202,6 +205,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "reh-ser-VAH-see",
       },
       {
+        cell_id: "9a97f553-a3b8-4df2-b856-e104c451becd",
         word: "rombongan",
         en: "group / party",
         vi: "nhóm / đoàn",
@@ -210,6 +214,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "rom-BONG-an",
       },
       {
+        cell_id: "863154c6-3d4c-4e95-b8c9-2e3bd6b5672c",
         word: "meja besar",
         en: "large table",
         vi: "bàn lớn",
@@ -218,6 +223,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "MEH-jah beh-SAR",
       },
       {
+        cell_id: "851aaf76-c46c-4633-b131-c6aae661bbd6",
         word: "DP",
         en: "deposit / down payment",
         vi: "tiền cọc / tiền đặt trước",
@@ -226,6 +232,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "DEH-peh",
       },
       {
+        cell_id: "901050bd-5326-4d3c-95a9-3aa211497ad3",
         word: "menu paket",
         en: "set menu / package menu",
         vi: "thực đơn combo",
@@ -234,6 +241,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "meh-NYOO pah-KET",
       },
       {
+        cell_id: "5c669644-c047-4c30-8cec-9e927f7fac15",
         word: "waktu kedatangan",
         en: "arrival time",
         vi: "thời gian đến",
@@ -242,6 +250,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "WAK-too keh-dah-TAHNG-an",
       },
       {
+        cell_id: "ff60c213-d0c9-4286-8afd-2665e507567b",
         word: "kursi anak",
         en: "children's chair / high chair",
         vi: "ghế trẻ em",
@@ -250,6 +259,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "KOOR-see AH-nak",
       },
       {
+        cell_id: "75045a08-4e42-4185-b27d-b68ca4881d77",
         word: "membatalkan reservasi",
         en: "cancel a reservation",
         vi: "hủy đặt bàn",
@@ -260,30 +270,35 @@ export const lessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "c48a085b-1af6-4cac-8970-39aa039124ed",
         speaker: "Pelanggan",
         text: "Selamat malam. Kami mau reservasi restoran untuk rombongan delapan orang.",
         vi: "Chào buổi tối. Chúng tôi muốn đặt bàn nhà hàng cho nhóm tám người.",
         en: "Good evening. We would like to reserve a restaurant for a group of eight people.",
       },
       {
+        cell_id: "15ebaa2f-f542-486c-b770-0273d8483ae3",
         speaker: "Staf Restoran",
         text: "Baik. Apakah Anda perlu meja besar dan kursi anak?",
         vi: "Được. Quý khách có cần bàn lớn và ghế trẻ em không?",
         en: "All right. Do you need a large table and a children's chair?",
       },
       {
+        cell_id: "199310c7-72b8-4180-9f18-9a84703baae6",
         speaker: "Pelanggan",
         text: "Iya, dan kami ingin tahu apakah perlu DP.",
         vi: "Vâng, và chúng tôi muốn biết có cần tiền cọc không.",
         en: "Yes, and we would like to know whether a deposit is needed.",
       },
       {
+        cell_id: "4f79bda4-0de1-4b43-a9a8-d9d57fd2c600",
         speaker: "Staf Restoran",
         text: "Untuk hari Sabtu, reservasi perlu DP. Menu paket juga tersedia.",
         vi: "Vào thứ Bảy, đặt bàn cần tiền cọc. Cũng có menu combo.",
         en: "For Saturday, reservations require a deposit. A set menu is also available.",
       },
       {
+        cell_id: "de81d2a9-32e8-441b-8165-2b063390a56b",
         speaker: "Pelanggan",
         text: "Baik, kami akan konfirmasi lagi kalau jam kedatangan berubah.",
         vi: "Được, chúng tôi sẽ xác nhận lại nếu giờ đến thay đổi.",

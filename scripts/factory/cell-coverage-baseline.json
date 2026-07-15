@@ -1,0 +1,63 @@
+{
+  "schema": "cell-coverage-baseline-v1",
+  "date": "2026-07-13",
+  "source": "Measured from origin/main after b58a5664 expanded CELL vocabulary scope to include phrases; counts verified on c4.1/wp-cell-reconcile-2 after phrase cell_id retrofit.",
+  "ratchet": "Uncovered counts may not rise. Coverage may improve. The only legitimate baseline increase is intentional CELL content removal, updated in the same MR that removes it.",
+  "definitions": {
+    "ipaCovered": "An object is IPA-covered when any of ipa, ipa_en, ipa_vi, pronunciation, pronunciation_en, pronunciation_vi exists as a non-empty string. Empty strings are uncovered.",
+    "audioAddressable": "An object is audio-addressable when any of audio, audio_url, audioUrl, audio_path, audioPath, reference_audio, referenceAudio points to a checked-in audio asset under public/ or uses a data:audio URI. Missing files, empty strings, and http(s) runtime URLs are not counted as checked-in reference audio. Committed audio-map-*.json artifacts may mark canonical CELL UUIDs as cache_mapped, but structured lesson-unit audio-link artifacts are not CELL-level coverage and are excluded from check-K ratchets.",
+    "denominators": "Reports both per-object coverage and per-unique-word-token coverage."
+  },
+  "scan": {
+    "filesScanned": 1235,
+    "filesWithCell": 503,
+    "lessonObjects": 2611,
+    "audioAssets": 1285
+  },
+  "totals": {
+    "vocabulary": {
+      "objects": 16697,
+      "ipaCoveredObjects": 12110,
+      "audioCoveredObjects": 0,
+      "uniqueWordTokens": 13026,
+      "ipaCoveredUniqueWordTokens": 9675,
+      "audioCoveredUniqueWordTokens": 0,
+      "uncoveredIpaObjects": 4587,
+      "uncoveredAudioObjects": 16697,
+      "uncoveredIpaUniqueWordTokens": 3351,
+      "uncoveredAudioUniqueWordTokens": 13026
+    },
+    "dialogue": {
+      "objects": 7053,
+      "ipaCoveredObjects": 1139,
+      "audioCoveredObjects": 0,
+      "uniqueWordTokens": 13158,
+      "ipaCoveredUniqueWordTokens": 1649,
+      "audioCoveredUniqueWordTokens": 0,
+      "uncoveredIpaObjects": 5914,
+      "uncoveredAudioObjects": 7053,
+      "uncoveredIpaUniqueWordTokens": 11509,
+      "uncoveredAudioUniqueWordTokens": 13158
+    }
+  },
+  "worstFileClusters": [
+    {
+      "file": "src/languages/japanese/lessons-b2.ts",
+      "totalObjects": 644,
+      "missingIpaObjects": 644,
+      "missingAudioObjects": 644
+    },
+    {
+      "file": "src/languages/korean/lessons-b2.ts",
+      "totalObjects": 644,
+      "missingIpaObjects": 644,
+      "missingAudioObjects": 644
+    },
+    {
+      "file": "src/languages/korean/lessons-c1.ts",
+      "totalObjects": 530,
+      "missingIpaObjects": 530,
+      "missingAudioObjects": 530
+    }
+  ]
+}

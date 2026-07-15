@@ -82,6 +82,7 @@ export type UrduSentence = {
 };
 
 export type UrduVocabEntry = {
+  cell_id?: string;
   ur: string;
   romanization: string;
   en: string;
@@ -91,6 +92,7 @@ export type UrduVocabEntry = {
 };
 
 export type UrduDialogueLine = {
+  cell_id?: string;
   speaker: string;
   ur: string;
   romanization: string;

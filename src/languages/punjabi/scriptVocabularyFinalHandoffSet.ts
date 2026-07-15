@@ -17,6 +17,7 @@ export type PunjabiFinalHandoffFocus =
 export type PunjabiFinalHandoffUse = "final_handoff" | "pre_integration" | "final_readiness" | "regression";
 
 export type PunjabiScriptVocabularyFinalHandoffItem = {
+  cell_id?: string;
   id: string;
   focus: PunjabiFinalHandoffFocus;
   use: PunjabiFinalHandoffUse;
@@ -38,6 +39,7 @@ export type PunjabiScriptVocabularyFinalHandoffItem = {
 };
 
 export type PunjabiScriptVocabularyFinalHandoffSection = {
+  cell_id?: string;
   focus: PunjabiFinalHandoffFocus;
   title_vi: string;
   title_en: string;

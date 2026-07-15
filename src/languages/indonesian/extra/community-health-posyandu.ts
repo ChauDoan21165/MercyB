@@ -6,6 +6,7 @@ type IndonesianLessonSentence = {
 };
 
 type VocabEntry = {
+  cell_id?: string;
   word: string;
   meaning_vi: string;
   meaning_en: string;
@@ -14,6 +15,7 @@ type VocabEntry = {
 };
 
 type DialogueLine = {
+  cell_id?: string;
   speaker: string;
   line: string;
   vi: string;
@@ -117,6 +119,7 @@ export const lessons: IndonesianLesson[] = [
     ],
     vocabulary: [
       {
+        cell_id: "5de90fd7-4088-47cf-ba08-c143c429e267",
         word: 'Posyandu',
         meaning_vi: 'điểm/trạm y tế cộng đồng ở khu dân cư',
         meaning_en: 'community health post',
@@ -124,6 +127,7 @@ export const lessons: IndonesianLesson[] = [
         example_vi: 'Sáng mai có Posyandu ở nhà sinh hoạt tổ dân phố.',
       },
       {
+        cell_id: "7e394a15-8de5-4abc-a0de-dfe6397344a4",
         word: 'kader',
         meaning_vi: 'tình nguyện viên/cán bộ cộng đồng',
         meaning_en: 'community volunteer or local health worker',
@@ -131,6 +135,7 @@ export const lessons: IndonesianLesson[] = [
         example_vi: 'Cán bộ cộng đồng giúp phụ huynh điền sổ KIA.',
       },
       {
+        cell_id: "049e773e-6c6b-49ce-9d30-81ef9893bb0b",
         word: 'timbang bayi',
         meaning_vi: 'cân em bé',
         meaning_en: 'weigh a baby',
@@ -138,6 +143,7 @@ export const lessons: IndonesianLesson[] = [
         example_vi: 'Mỗi tháng chúng tôi cân em bé ở Posyandu.',
       },
       {
+        cell_id: "191bb8f2-ce31-42f7-ba12-cb20f7ef1b49",
         word: 'imunisasi',
         meaning_vi: 'tiêm/chủng ngừa',
         meaning_en: 'immunization',
@@ -145,6 +151,7 @@ export const lessons: IndonesianLesson[] = [
         example_vi: 'Đừng quên lịch chủng ngừa tháng sau.',
       },
       {
+        cell_id: "a4e25d26-e9ed-4875-97be-dfdd65a1a029",
         word: 'vitamin',
         meaning_vi: 'vitamin',
         meaning_en: 'vitamin',
@@ -152,6 +159,7 @@ export const lessons: IndonesianLesson[] = [
         example_vi: 'Con tôi đã nhận vitamin từ cán bộ cộng đồng.',
       },
       {
+        cell_id: "8f45d70a-c032-46fa-98c5-04d831d394e0",
         word: 'buku KIA',
         meaning_vi: 'sổ sức khỏe mẹ và bé',
         meaning_en: 'maternal and child health book',
@@ -159,6 +167,7 @@ export const lessons: IndonesianLesson[] = [
         example_vi: 'Tôi luôn mang sổ KIA khi đi Posyandu.',
       },
       {
+        cell_id: "41b825d6-8c76-4623-8144-18f5821d82c5",
         word: 'jadwal bulanan',
         meaning_vi: 'lịch hằng tháng',
         meaning_en: 'monthly schedule',
@@ -166,6 +175,7 @@ export const lessons: IndonesianLesson[] = [
         example_vi: 'Lịch hằng tháng được dán trên bảng thông tin.',
       },
       {
+        cell_id: "56968bf4-129c-4ca2-ad01-60ba610a9449",
         word: 'antrean',
         meaning_vi: 'hàng chờ, lượt chờ',
         meaning_en: 'queue',
@@ -175,36 +185,42 @@ export const lessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "2413f651-4b02-4e3c-a3f5-d766fda90bf1",
         speaker: 'Ibu',
         line: 'Selamat pagi, Bu. Saya mau ikut Posyandu hari ini.',
         vi: 'Chào buổi sáng cô/chị. Hôm nay tôi muốn tham gia Posyandu.',
         en: 'Good morning. I want to join Posyandu today.',
       },
       {
+        cell_id: "b04cadf5-68ff-4f48-a410-4a18743caf59",
         speaker: 'Kader',
         line: 'Selamat pagi. Silakan ambil nomor antrean dulu.',
         vi: 'Chào buổi sáng. Mời lấy số thứ tự trước.',
         en: 'Good morning. Please take a queue number first.',
       },
       {
+        cell_id: "f6df0777-11be-4d38-ad48-f49dd7ba4e06",
         speaker: 'Ibu',
         line: 'Ini buku KIA anak saya. Hari ini perlu imunisasi tidak?',
         vi: 'Đây là sổ KIA của con tôi. Hôm nay có cần chủng ngừa không?',
         en: 'This is my child’s KIA book. Does my child need immunization today?',
       },
       {
+        cell_id: "fe9585ad-19ab-48ef-835e-b896e88d4d7f",
         speaker: 'Kader',
         line: 'Saya cek dulu. Setelah timbang bayi, nanti kami catat berat badannya.',
         vi: 'Tôi kiểm tra trước. Sau khi cân em bé, chúng tôi sẽ ghi cân nặng.',
         en: 'Let me check first. After weighing the baby, we will record the weight.',
       },
       {
+        cell_id: "fa683ad5-1371-4371-8e04-888d6d561af9",
         speaker: 'Ibu',
         line: 'Kalau ada jadwal bulanan berikutnya, tolong beri tahu saya.',
         vi: 'Nếu có lịch hằng tháng tiếp theo, xin báo cho tôi biết.',
         en: 'Please tell me the next monthly schedule if it is available.',
       },
       {
+        cell_id: "fbecc942-45d3-441e-b8c8-85675bae5d7d",
         speaker: 'Kader',
         line: 'Baik, jadwal bulan depan hari Rabu minggu kedua.',
         vi: 'Được, lịch tháng sau là thứ Tư tuần thứ hai.',

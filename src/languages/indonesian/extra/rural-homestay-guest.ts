@@ -12,6 +12,7 @@ type LessonSentence = {
 };
 
 type VocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -21,6 +22,7 @@ type VocabEntry = {
 };
 
 type DialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -137,6 +139,7 @@ export const ruralHomestayGuestLessons: IndonesianLesson[] = [
       "Useful frames: `Saya menginap di...`, `Sarapan sudah termasuk?`, `Kamar mandi luar di mana?`, `Tolong jelaskan aturan rumah`. Vietnamese speakers should distinguish `menginap` (short overnight stay) from `tinggal` (live/reside).",
     vocabulary: [
       {
+        cell_id: "479ebd98-63c1-4532-9ff6-5b9e39cda8b5",
         word: "homestay desa",
         en: "village homestay",
         vi: "homestay làng quê",
@@ -145,6 +148,7 @@ export const ruralHomestayGuestLessons: IndonesianLesson[] = [
         pronunciation_en: "HOM-stay DE-sa",
       },
       {
+        cell_id: "6037452b-06e6-43ba-a569-8c58bf7ace25",
         word: "tuan rumah",
         en: "host",
         vi: "chủ nhà / người tiếp khách",
@@ -153,6 +157,7 @@ export const ruralHomestayGuestLessons: IndonesianLesson[] = [
         pronunciation_en: "TOO-an ROO-mah",
       },
       {
+        cell_id: "2a7f60b3-4082-4196-9fd3-c0cdb91ae580",
         word: "menginap",
         en: "to stay overnight",
         vi: "ở qua đêm",
@@ -161,6 +166,7 @@ export const ruralHomestayGuestLessons: IndonesianLesson[] = [
         pronunciation_en: "me-NGI-nap",
       },
       {
+        cell_id: "584bac73-8dda-4f6e-8a5e-9d826e113989",
         word: "sarapan",
         en: "breakfast",
         vi: "bữa sáng / ăn sáng",
@@ -169,6 +175,7 @@ export const ruralHomestayGuestLessons: IndonesianLesson[] = [
         pronunciation_en: "sa-RA-pan",
       },
       {
+        cell_id: "81caa57c-30f8-4641-a93e-70f080e1597d",
         word: "kamar mandi luar",
         en: "outside bathroom",
         vi: "phòng tắm bên ngoài",
@@ -177,6 +184,7 @@ export const ruralHomestayGuestLessons: IndonesianLesson[] = [
         pronunciation_en: "KA-mar MAN-dee LOO-ar",
       },
       {
+        cell_id: "25e984ff-e385-4725-9c03-058201a2ee9a",
         word: "aturan rumah",
         en: "house rules",
         vi: "nội quy nhà",
@@ -187,24 +195,28 @@ export const ruralHomestayGuestLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "251cf917-d84a-4cc7-95e9-9c026abe5e6c",
         speaker: "Tamu",
         text: "Selamat sore, Bu. Saya tamu atas nama Nguyen.",
         vi: "Chào buổi chiều cô/bác. Tôi là khách đặt tên Nguyen.",
         en: "Good afternoon, Ma'am. I am the guest under the name Nguyen.",
       },
       {
+        cell_id: "cddd9f87-421c-404b-9454-2cf7c57537f4",
         speaker: "Tuan rumah",
         text: "Selamat datang. Silakan masuk, kamarnya di sebelah kanan.",
         vi: "Chào mừng. Mời vào, phòng ở bên phải.",
         en: "Welcome. Please come in, the room is on the right.",
       },
       {
+        cell_id: "b9240278-d23a-49cc-a3a2-66e4aaacc8ba",
         speaker: "Tamu",
         text: "Terima kasih. Apakah sarapan sudah termasuk?",
         vi: "Cảm ơn. Bữa sáng đã bao gồm chưa?",
         en: "Thank you. Is breakfast included?",
       },
       {
+        cell_id: "ab97d8b5-98e0-45b2-9edf-b1bfe2495968",
         speaker: "Tuan rumah",
         text: "Sudah. Kamar mandi luar ada di sebelah dapur.",
         vi: "Rồi. Phòng tắm bên ngoài ở cạnh bếp.",
@@ -334,6 +346,7 @@ export const ruralHomestayGuestLessons: IndonesianLesson[] = [
       "Polite guest chunks: `Boleh saya...?`, `Apakah kami harus...?`, `Kami ingin menghormati...`, `Terima kasih sudah...`. Vietnamese speakers have an advantage because Vietnamese also uses permission and thanks naturally; just remember Indonesian noun-first word order.",
     vocabulary: [
       {
+        cell_id: "ecb8c9a4-50ad-4854-ab6f-92fc88f970ff",
         word: "wisata desa",
         en: "village tourism / village tour",
         vi: "du lịch làng quê / tour làng",
@@ -342,6 +355,7 @@ export const ruralHomestayGuestLessons: IndonesianLesson[] = [
         pronunciation_en: "wee-SA-ta DE-sa",
       },
       {
+        cell_id: "6ed12bdb-9777-4136-808a-039adc256868",
         word: "pemandu lokal",
         en: "local guide",
         vi: "hướng dẫn viên địa phương",
@@ -350,6 +364,7 @@ export const ruralHomestayGuestLessons: IndonesianLesson[] = [
         pronunciation_en: "pe-MAN-doo LO-kal",
       },
       {
+        cell_id: "1835854e-3f68-4f33-93f4-43985b600503",
         word: "mengambil foto",
         en: "to take a photo",
         vi: "chụp ảnh",
@@ -358,6 +373,7 @@ export const ruralHomestayGuestLessons: IndonesianLesson[] = [
         pronunciation_en: "me-NGAM-bil FO-to",
       },
       {
+        cell_id: "afc39682-9f76-41bd-9d5e-e53127db1e8f",
         word: "adat setempat",
         en: "local customs",
         vi: "phong tục địa phương",
@@ -366,6 +382,7 @@ export const ruralHomestayGuestLessons: IndonesianLesson[] = [
         pronunciation_en: "A-dat se-TEM-pat",
       },
       {
+        cell_id: "fd214841-3658-4d6f-9735-414f09d3ced2",
         word: "melepas sandal",
         en: "to take off sandals",
         vi: "cởi dép",
@@ -374,6 +391,7 @@ export const ruralHomestayGuestLessons: IndonesianLesson[] = [
         pronunciation_en: "me-LE-pas SAN-dal",
       },
       {
+        cell_id: "05d9d11a-7324-4340-8e73-e8905b32db69",
         word: "sopan santun tamu",
         en: "guest etiquette",
         vi: "phép lịch sự của khách",
@@ -384,24 +402,28 @@ export const ruralHomestayGuestLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "b53d4b10-edb8-4a9c-b9b0-b4e07c3ee565",
         speaker: "Pemandu",
         text: "Besok pagi kita ikut wisata desa dan mampir ke rumah warga.",
         vi: "Sáng mai chúng ta tham gia tour làng và ghé nhà người dân.",
         en: "Tomorrow morning we join a village tour and stop by residents' homes.",
       },
       {
+        cell_id: "681c7f95-0a95-46c9-84a9-1b9649e5f057",
         speaker: "Tamu",
         text: "Baik. Boleh saya mengambil foto di sana?",
         vi: "Vâng. Tôi có thể chụp ảnh ở đó không?",
         en: "Okay. May I take photos there?",
       },
       {
+        cell_id: "5d3f4570-17b2-4bb6-9b11-9017041aeceb",
         speaker: "Pemandu",
         text: "Boleh, tapi tanya dulu kepada tuan rumah.",
         vi: "Được, nhưng hãy hỏi chủ nhà trước.",
         en: "Yes, but ask the host first.",
       },
       {
+        cell_id: "b18fb73a-5cd0-4924-b036-bac07093f24c",
         speaker: "Tamu",
         text: "Tentu. Kami ingin menghormati adat setempat.",
         vi: "Tất nhiên. Chúng tôi muốn tôn trọng phong tục địa phương.",

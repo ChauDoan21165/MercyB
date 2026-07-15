@@ -32,6 +32,7 @@ type LessonSentence = {
 };
 
 type VocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -43,6 +44,7 @@ type VocabEntry = {
 };
 
 type DialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -159,6 +161,7 @@ export const musicEntertainmentLessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: 'suka' (to like) sits right before the noun/verb — 'suka musik' (like music), 'suka mendengarkan' (like to listen). Comparatives use 'lebih … (daripada)': lebih suka pop = prefer pop. Polite permission uses 'Boleh + verb?' (May I …?). The 'di-' prefix makes the passive: didengar = be heard, diputar = be played.",
     vocabulary: [
       {
+        cell_id: "279d6eb9-3a14-4d12-b9a2-3d6501bff596",
         word: "musik",
         en: "music",
         vi: "âm nhạc",
@@ -167,6 +170,7 @@ export const musicEntertainmentLessons: IndonesianLesson[] = [
         pronunciation_en: "MOO-seek",
       },
       {
+        cell_id: "e360e7a7-1f76-4420-bbdf-328ed09a5448",
         word: "lagu",
         en: "song",
         vi: "bài hát",
@@ -175,6 +179,7 @@ export const musicEntertainmentLessons: IndonesianLesson[] = [
         pronunciation_en: "LA-goo",
       },
       {
+        cell_id: "a6f564c0-3ac6-4efe-a151-2cff1d9e7807",
         word: "penyanyi",
         en: "singer",
         vi: "ca sĩ",
@@ -183,6 +188,7 @@ export const musicEntertainmentLessons: IndonesianLesson[] = [
         pronunciation_en: "pe-NYA-nyee",
       },
       {
+        cell_id: "2d03bd7e-57ae-4188-85b4-e77165eda8a9",
         word: "mendengarkan",
         en: "to listen to",
         vi: "nghe (chăm chú)",
@@ -191,6 +197,7 @@ export const musicEntertainmentLessons: IndonesianLesson[] = [
         pronunciation_en: "men-de-NGAR-kan",
       },
       {
+        cell_id: "a0755735-5f58-4603-b897-53d7c528d100",
         word: "dangdut",
         en: "dangdut (folk-pop genre)",
         vi: "nhạc dangdut",
@@ -199,6 +206,7 @@ export const musicEntertainmentLessons: IndonesianLesson[] = [
         pronunciation_en: "DANG-doot",
       },
       {
+        cell_id: "bcf0e5c8-8a55-455d-9aea-d2735dbfc211",
         word: "suka",
         en: "to like",
         vi: "thích",
@@ -207,6 +215,7 @@ export const musicEntertainmentLessons: IndonesianLesson[] = [
         pronunciation_en: "SOO-ka",
       },
       {
+        cell_id: "71a4ba38-7d7d-42fb-9ff3-2c0410c768de",
         word: "putar",
         en: "to play (music) / spin",
         vi: "mở / phát (nhạc)",
@@ -215,6 +224,7 @@ export const musicEntertainmentLessons: IndonesianLesson[] = [
         pronunciation_en: "POO-tar",
       },
       {
+        cell_id: "370d861c-434f-4252-b8c1-d049f7c312b1",
         word: "enak",
         en: "pleasant / tasty",
         vi: "hay / dễ chịu / ngon",
@@ -225,24 +235,28 @@ export const musicEntertainmentLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "6a4c3fe1-ff0d-4ba0-a281-ebafc843d231",
         speaker: "Andi",
         text: "Kamu suka musik apa?",
         vi: "Bạn thích nhạc gì?",
         en: "What music do you like?",
       },
       {
+        cell_id: "94ebb5b1-9eb2-4dc5-8e19-1543c83edf27",
         speaker: "Bella",
         text: "Saya lebih suka pop Indonesia. Kalau dangdut, kurang suka.",
         vi: "Mình thích nhạc pop Indonesia hơn. Còn dangdut thì ít thích.",
         en: "I prefer Indonesian pop. As for dangdut, not so much.",
       },
       {
+        cell_id: "5ad8232f-f15d-4a37-ab68-d38166b2fe57",
         speaker: "Andi",
         text: "Lagu ini enak, lho. Mau saya putar?",
         vi: "Bài này hay đó. Mình mở cho nghe nhé?",
         en: "This song is nice, you know. Want me to play it?",
       },
       {
+        cell_id: "b06fdba9-fb8c-42b9-9d26-9f617908a9ba",
         speaker: "Bella",
         text: "Boleh. Penyanyinya terkenal ya?",
         vi: "Được chứ. Ca sĩ nổi tiếng nhỉ?",
@@ -383,6 +397,7 @@ export const musicEntertainmentLessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: many leisure verbs have a casual prefix-dropped form — 'nonton' (= menonton, watch), 'bareng' (= bersama, together). To invite, put 'yuk' at the end (Nonton film yuk! = Let's watch a movie!). 'Terlalu + adjective' = too (terlalu panjang = too long). Asking the price: 'Berapa harganya?'. 'Setelah itu' chains events in sequence — handy for laying out a plan.",
     vocabulary: [
       {
+        cell_id: "2274f04c-8c9a-4248-9c2a-8d57aaf998b7",
         word: "bioskop",
         en: "cinema / movie theater",
         vi: "rạp chiếu phim",
@@ -391,6 +406,7 @@ export const musicEntertainmentLessons: IndonesianLesson[] = [
         pronunciation_en: "bee-OS-kop",
       },
       {
+        cell_id: "a0ec6fc7-7a57-460c-a46f-25e29344973d",
         word: "film",
         en: "film / movie",
         vi: "phim",
@@ -399,6 +415,7 @@ export const musicEntertainmentLessons: IndonesianLesson[] = [
         pronunciation_en: "film",
       },
       {
+        cell_id: "a047e4ca-7f40-4b64-b69d-e0eaaad24e93",
         word: "nonton",
         en: "to watch (casual = menonton)",
         vi: "xem",
@@ -407,6 +424,7 @@ export const musicEntertainmentLessons: IndonesianLesson[] = [
         pronunciation_en: "NON-ton",
       },
       {
+        cell_id: "00605c08-2a1f-402c-ae1c-acf0f93ee7be",
         word: "tiket",
         en: "ticket",
         vi: "vé",
@@ -415,6 +433,7 @@ export const musicEntertainmentLessons: IndonesianLesson[] = [
         pronunciation_en: "TEE-ket",
       },
       {
+        cell_id: "2587e422-50b6-4fba-9b91-fa0b364f39d0",
         word: "karaoke",
         en: "karaoke",
         vi: "karaoke",
@@ -423,6 +442,7 @@ export const musicEntertainmentLessons: IndonesianLesson[] = [
         pronunciation_en: "ka-ra-OH-keh",
       },
       {
+        cell_id: "cf63f263-5999-4764-9e5c-33fd8e87280a",
         word: "konser",
         en: "concert",
         vi: "buổi hòa nhạc",
@@ -431,6 +451,7 @@ export const musicEntertainmentLessons: IndonesianLesson[] = [
         pronunciation_en: "KON-ser",
       },
       {
+        cell_id: "562ffa33-9c0e-42e6-b0fe-0b7616344229",
         word: "bareng",
         en: "together (casual = bersama)",
         vi: "chung / cùng nhau",
@@ -439,6 +460,7 @@ export const musicEntertainmentLessons: IndonesianLesson[] = [
         pronunciation_en: "BA-reng",
       },
       {
+        cell_id: "d1783fe3-18c3-4258-847e-3236e56988d0",
         word: "seru",
         en: "exciting / thrilling",
         vi: "hấp dẫn / gay cấn",
@@ -449,24 +471,28 @@ export const musicEntertainmentLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "48bdaabe-71a4-4f6c-a119-892f99480d68",
         speaker: "Rina",
         text: "Akhir pekan ini nonton film di bioskop, yuk!",
         vi: "Cuối tuần này đi xem phim ở rạp đi!",
         en: "Let's watch a movie at the cinema this weekend!",
       },
       {
+        cell_id: "29a5334b-c501-4817-954c-335eee4468de",
         speaker: "Joko",
         text: "Boleh. Tiket filmnya berapa harganya sekarang?",
         vi: "Được đó. Vé phim giờ giá bao nhiêu?",
         en: "Sure. How much are movie tickets now?",
       },
       {
+        cell_id: "cef27f3c-e7ab-4e90-b776-7bfe52ad863b",
         speaker: "Rina",
         text: "Sekitar lima puluh ribu. Setelah itu, mau karaoke bareng?",
         vi: "Khoảng năm mươi nghìn. Sau đó đi karaoke chung không?",
         en: "Around fifty thousand. After that, want to do karaoke together?",
       },
       {
+        cell_id: "01295dcc-f4f8-44fe-b68d-6cedad5d60ff",
         speaker: "Joko",
         text: "Mau banget! Tapi jangan pilih film yang terlalu panjang, ya.",
         vi: "Muốn lắm! Nhưng đừng chọn phim dài quá nhé.",
@@ -607,6 +633,7 @@ export const musicEntertainmentLessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: give opinions politely with 'Menurut saya…' and soften criticism with 'kurang + adjective' (kurang bagus = not that good) — gentler than 'jelek' (bad). Full comparison: 'lebih X daripada Y' (more X than Y). The 'ter-' prefix forms the superlative: terbaru (latest), terbaik (best). 'Semakin + adjective' = increasingly. 'yang' links a relative clause: penyanyi yang terkenal = a singer who is famous.",
     vocabulary: [
       {
+        cell_id: "b7e664bb-24c4-481c-9c2a-2053284c7412",
         word: "menurut saya",
         en: "in my opinion",
         vi: "theo tôi",
@@ -615,6 +642,7 @@ export const musicEntertainmentLessons: IndonesianLesson[] = [
         pronunciation_en: "me-NOO-root SA-ya",
       },
       {
+        cell_id: "6e355d5a-ed6e-4903-8d3e-887c53fed44b",
         word: "film",
         en: "film / movie",
         vi: "phim",
@@ -623,6 +651,7 @@ export const musicEntertainmentLessons: IndonesianLesson[] = [
         pronunciation_en: "film",
       },
       {
+        cell_id: "3be0c583-c78f-4381-b029-72053a85c6c8",
         word: "aktor",
         en: "actor",
         vi: "diễn viên (nam)",
@@ -631,6 +660,7 @@ export const musicEntertainmentLessons: IndonesianLesson[] = [
         pronunciation_en: "AK-tor",
       },
       {
+        cell_id: "8e6d0a50-7c5e-4005-b325-0de2923150b5",
         word: "berperan",
         en: "to play a role / act",
         vi: "đóng vai",
@@ -639,6 +669,7 @@ export const musicEntertainmentLessons: IndonesianLesson[] = [
         pronunciation_en: "ber-pe-RAN",
       },
       {
+        cell_id: "02d0c81f-876d-4d39-ac06-f75f852e16b3",
         word: "terbaru",
         en: "newest / latest",
         vi: "mới nhất",
@@ -647,6 +678,7 @@ export const musicEntertainmentLessons: IndonesianLesson[] = [
         pronunciation_en: "ter-BA-roo",
       },
       {
+        cell_id: "73ebbf1a-bcf9-4760-9513-5dd806b42926",
         word: "semakin",
         en: "increasingly / more and more",
         vi: "ngày càng",
@@ -655,6 +687,7 @@ export const musicEntertainmentLessons: IndonesianLesson[] = [
         pronunciation_en: "se-MA-kin",
       },
       {
+        cell_id: "470adcfc-989e-4685-aba5-22200900486b",
         word: "memuaskan",
         en: "satisfying",
         vi: "thỏa mãn / làm hài lòng",
@@ -663,6 +696,7 @@ export const musicEntertainmentLessons: IndonesianLesson[] = [
         pronunciation_en: "me-moo-AS-kan",
       },
       {
+        cell_id: "0aecf7ad-d1af-46aa-b4b3-cfd2cb52305d",
         word: "kurang",
         en: "lacking / not enough",
         vi: "chưa đủ / thiếu",
@@ -673,24 +707,28 @@ export const musicEntertainmentLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "cbe80964-891b-47cd-ae96-1e9bae6b19fc",
         speaker: "Sari",
         text: "Kamu sudah nonton film Indonesia yang terbaru itu?",
         vi: "Bạn xem bộ phim Indonesia mới nhất đó chưa?",
         en: "Have you watched that latest Indonesian movie?",
       },
       {
+        cell_id: "ab1d74f8-eec7-4903-bcf5-e3886e6bb314",
         speaker: "Budi",
         text: "Sudah. Menurut saya aktornya berperan dengan sangat baik.",
         vi: "Rồi. Theo mình diễn viên diễn rất tốt.",
         en: "Yes. In my opinion the actor played the role really well.",
       },
       {
+        cell_id: "1984acfd-5cef-4dee-986c-088be55b6da8",
         speaker: "Sari",
         text: "Setuju. Tapi sayang sekali, akhirnya kurang memuaskan.",
         vi: "Đồng ý. Nhưng tiếc là đoạn kết chưa đã lắm.",
         en: "Agreed. But what a pity, the ending was a bit unsatisfying.",
       },
       {
+        cell_id: "d400416e-b68f-4c63-bedd-40a27d049829",
         speaker: "Budi",
         text: "Betul. Soal musik, aku lebih suka lagu lama daripada zaman sekarang.",
         vi: "Đúng vậy. Còn về nhạc, mình thích nhạc xưa hơn nhạc thời nay.",

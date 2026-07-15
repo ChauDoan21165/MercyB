@@ -20,6 +20,10 @@ import {
 import { withRetry } from "@/lib/retry";
 import { openSignal, track } from "@/lib/telemetry/signalCell";
 import { LISTENING_PLACEMENT_PROMPTS } from "@/data/placement/v3/prompts/listening";
+import {
+  CORRECTION_SOURCE_SYNTHETIC_MARKER_KEY,
+  isCorrectionSourceSyntheticMarkerValue,
+} from "@/lib/ai-tutor/correctionSourceSyntheticMarker";
 
 // The placement-v3-session edge function emits audioScript but not audioUrl, so
 // the client falls back to the catalog's audioUrl (Supabase room-audio bucket,
@@ -190,6 +194,16 @@ async function callPlacementSession(body: unknown): Promise<unknown> {
   return json;
 }
 
+function readSyntheticMonitoringMarker(): string | undefined {
+  if (typeof window === "undefined") return undefined;
+  try {
+    const marker = window.localStorage.getItem(CORRECTION_SOURCE_SYNTHETIC_MARKER_KEY);
+    return isCorrectionSourceSyntheticMarkerValue(marker) ? marker ?? undefined : undefined;
+  } catch {
+    return undefined;
+  }
+}
+
 function cacheSession(session: PlacementV3Session | null) {
   if (typeof window === "undefined") return;
   if (!session) window.localStorage.removeItem(SESSION_CACHE_KEY);
@@ -349,6 +363,7 @@ async function startSessionInner(): Promise<PlacementV3Session> {
     action: "start",
     languagePair: { native: "vi", target: "en" },
     initialLevel: "A2",
+    syntheticMonitoring: readSyntheticMonitoringMarker(),
   }) as StartResponse;
   const session = toSession({
     sessionId: json.sessionId,

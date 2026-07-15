@@ -13,6 +13,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -22,6 +23,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -235,41 +237,46 @@ export const lessons: IndonesianLesson[] = [
     tip_advice_en:
       "Tip for Vietnamese speakers: do not share news just because the headline is strong. Use a four-step frame: check the source (`sumber terpercaya`), read more than one source (`lebih dari satu sumber`), speak carefully when uncertain (`informasinya masih simpang siur`), and correct it if wrong (`mengoreksi informasi`). In debate, avoid `Anda salah`; `Saya paham pendapat Anda, tetapi...` sounds more natural and polite.",
     vocabulary: [
-      { word: "berita", en: "news", vi: "tin tức", pos: "noun", pronunciation_vi: "be-RI-ta", pronunciation_en: "be-REE-ta" },
-      { word: "media online", en: "online media", vi: "truyền thông/báo online", pos: "noun phrase", pronunciation_vi: "ME-di-a ON-lain", pronunciation_en: "ME-di-a ON-line" },
-      { word: "sumber terpercaya", en: "trusted source", vi: "nguồn đáng tin cậy", pos: "noun phrase", pronunciation_vi: "SUM-ber ter-per-CA-ya", pronunciation_en: "SOOM-ber ter-per-CHA-ya" },
-      { word: "hoaks", en: "hoax", vi: "tin giả/hoax", pos: "noun", pronunciation_vi: "HO-aks", pronunciation_en: "HO-aks" },
-      { word: "opini publik", en: "public opinion", vi: "dư luận", pos: "noun phrase", pronunciation_vi: "o-PI-ni PUB-lik", pronunciation_en: "o-PEE-ni PUB-lik" },
-      { word: "wawancara", en: "interview", vi: "phỏng vấn", pos: "noun", pronunciation_vi: "wa-WAN-ca-ra", pronunciation_en: "wa-WAN-cha-ra" },
-      { word: "judul berita", en: "news headline", vi: "tiêu đề tin", pos: "noun phrase", pronunciation_vi: "JU-dul be-RI-ta", pronunciation_en: "JOO-dool be-REE-ta" },
-      { word: "diskusi sopan", en: "polite discussion", vi: "thảo luận lịch sự", pos: "noun phrase", pronunciation_vi: "dis-KU-si SO-pan", pronunciation_en: "dis-KOO-si SO-pan" },
+      { cell_id: "4a476c73-c4e2-4e18-976e-f64a57461580", word: "berita", en: "news", vi: "tin tức", pos: "noun", pronunciation_vi: "be-RI-ta", pronunciation_en: "be-REE-ta" },
+      { cell_id: "825a7139-d861-4e91-adeb-08e1ea37e6b4", word: "media online", en: "online media", vi: "truyền thông/báo online", pos: "noun phrase", pronunciation_vi: "ME-di-a ON-lain", pronunciation_en: "ME-di-a ON-line" },
+      { cell_id: "8a009360-745e-4b16-83e1-fdd181b9d531", word: "sumber terpercaya", en: "trusted source", vi: "nguồn đáng tin cậy", pos: "noun phrase", pronunciation_vi: "SUM-ber ter-per-CA-ya", pronunciation_en: "SOOM-ber ter-per-CHA-ya" },
+      { cell_id: "6d82fe35-f024-4924-b962-bee85c2e0ec0", word: "hoaks", en: "hoax", vi: "tin giả/hoax", pos: "noun", pronunciation_vi: "HO-aks", pronunciation_en: "HO-aks" },
+      { cell_id: "561220cd-977b-4262-b95a-fc080bf1e134", word: "opini publik", en: "public opinion", vi: "dư luận", pos: "noun phrase", pronunciation_vi: "o-PI-ni PUB-lik", pronunciation_en: "o-PEE-ni PUB-lik" },
+      { cell_id: "3293b2b8-7fb1-41bb-80c2-d1374c502bb0", word: "wawancara", en: "interview", vi: "phỏng vấn", pos: "noun", pronunciation_vi: "wa-WAN-ca-ra", pronunciation_en: "wa-WAN-cha-ra" },
+      { cell_id: "17a7ab62-69bf-4fac-a2c4-e6b6bdee4ba2", word: "judul berita", en: "news headline", vi: "tiêu đề tin", pos: "noun phrase", pronunciation_vi: "JU-dul be-RI-ta", pronunciation_en: "JOO-dool be-REE-ta" },
+      { cell_id: "1e7dd740-5d89-4d5b-b353-56fc6f8abc62", word: "diskusi sopan", en: "polite discussion", vi: "thảo luận lịch sự", pos: "noun phrase", pronunciation_vi: "dis-KU-si SO-pan", pronunciation_en: "dis-KOO-si SO-pan" },
     ],
     dialogue: [
       {
+        cell_id: "92f297cb-4c38-49d2-aba8-5eba34611ceb",
         speaker: "Ayu",
         text: "Kamu sudah baca berita tentang kebijakan baru itu?",
         vi: "Bạn đã đọc tin về chính sách mới đó chưa?",
         en: "Have you read the news about that new policy?",
       },
       {
+        cell_id: "321d1381-7b05-4e4e-b413-8abbb73cc186",
         speaker: "Rizal",
         text: "Sudah, tapi saya belum yakin sumbernya terpercaya.",
         vi: "Rồi, nhưng tôi chưa chắc nguồn đó đáng tin.",
         en: "Yes, but I am not sure the source is reliable.",
       },
       {
+        cell_id: "0a2e88f9-2280-48ec-86da-29b9db85b3cc",
         speaker: "Ayu",
         text: "Benar juga. Judulnya memang agak sensasional.",
         vi: "Cũng đúng. Tiêu đề của nó đúng là hơi giật gân.",
         en: "That's true. The headline is a bit sensational.",
       },
       {
+        cell_id: "5419ff60-b926-459a-9236-7c585e004f9b",
         speaker: "Rizal",
         text: "Ada baiknya kita cek fakta dan baca sumber lain dulu.",
         vi: "Tốt hơn là chúng ta kiểm chứng và đọc nguồn khác trước đã.",
         en: "It would be good to fact-check and read another source first.",
       },
       {
+        cell_id: "35178a28-f2ae-4f71-8147-0b8cee861da8",
         speaker: "Ayu",
         text: "Setuju. Diskusi soal berita sebaiknya tetap sopan dan berdasarkan fakta.",
         vi: "Đồng ý. Thảo luận tin tức tốt nhất vẫn nên lịch sự và dựa trên sự thật.",

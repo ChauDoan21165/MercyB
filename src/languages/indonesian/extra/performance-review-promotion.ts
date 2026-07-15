@@ -13,6 +13,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -22,6 +23,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -138,6 +140,7 @@ export const performanceReviewPromotionLessons: IndonesianLesson[] = [
       "Useful frames: `mencapai target`, `selesai tepat waktu`, `meminta masukan`, `rencana karier`. Avoid vague claims like `saya kerja bagus`; state concrete results.",
     vocabulary: [
       {
+        cell_id: "9a67c04f-0ed8-4aaa-a40a-589f2c46b336",
         word: "evaluasi kerja",
         en: "performance review / work evaluation",
         vi: "đánh giá công việc",
@@ -146,6 +149,7 @@ export const performanceReviewPromotionLessons: IndonesianLesson[] = [
         pronunciation_en: "e-va-loo-A-si KER-ja",
       },
       {
+        cell_id: "bd80b24d-8796-4d05-9f1f-4315207f2c60",
         word: "target",
         en: "target",
         vi: "mục tiêu",
@@ -154,6 +158,7 @@ export const performanceReviewPromotionLessons: IndonesianLesson[] = [
         pronunciation_en: "TAR-get",
       },
       {
+        cell_id: "a96a903f-ce5a-4a11-9ef0-64b994fc54ef",
         word: "KPI",
         en: "KPI",
         vi: "KPI / chỉ số hiệu suất",
@@ -162,6 +167,7 @@ export const performanceReviewPromotionLessons: IndonesianLesson[] = [
         pronunciation_en: "ka-pe-EE",
       },
       {
+        cell_id: "927e8f14-326e-4cfb-9d9a-e48022b18f30",
         word: "masukan atasan",
         en: "manager feedback",
         vi: "góp ý từ cấp trên",
@@ -170,6 +176,7 @@ export const performanceReviewPromotionLessons: IndonesianLesson[] = [
         pronunciation_en: "ma-SOO-kan a-TA-san",
       },
       {
+        cell_id: "529dc01d-270f-4883-b322-4567603c2c8d",
         word: "rencana karier",
         en: "career plan",
         vi: "kế hoạch nghề nghiệp",
@@ -178,6 +185,7 @@ export const performanceReviewPromotionLessons: IndonesianLesson[] = [
         pronunciation_en: "ren-CHA-na ka-REE-er",
       },
       {
+        cell_id: "5e852396-78ec-49c6-96cd-45057a715638",
         word: "tepat waktu",
         en: "on time",
         vi: "đúng hạn / đúng giờ",
@@ -188,18 +196,21 @@ export const performanceReviewPromotionLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "77fe6665-f26d-43dd-895e-a21f5e029a79",
         speaker: "Karyawan",
         text: "Pak, saya ingin membahas hasil evaluasi kerja saya.",
         vi: "Anh/chú ơi, tôi muốn trao đổi về kết quả đánh giá công việc của tôi.",
         en: "Sir, I would like to discuss my performance review results.",
       },
       {
+        cell_id: "7e364b01-8d8b-4f1b-92c0-cc6425541b9a",
         speaker: "Atasan",
         text: "Baik. Target kuartal ini sudah tercapai dengan baik.",
         vi: "Được. Mục tiêu quý này đã được đạt tốt.",
         en: "Okay. This quarter's target has been achieved well.",
       },
       {
+        cell_id: "cab1234a-69bd-43aa-bf76-9a06d386fb21",
         speaker: "Karyawan",
         text: "Terima kasih. Saya juga ingin meminta masukan untuk rencana karier saya.",
         vi: "Cảm ơn. Tôi cũng muốn xin góp ý cho kế hoạch nghề nghiệp của tôi.",
@@ -316,6 +327,7 @@ export const performanceReviewPromotionLessons: IndonesianLesson[] = [
       "A safe opening: `Saya ingin berdiskusi tentang...`, then give evidence: `prestasi`, `laporan KPI`, `proyek`, `target`. Close by showing readiness for responsibility, not only wanting money or title.",
     vocabulary: [
       {
+        cell_id: "3e26a952-a937-4d8e-8212-e95ea921c891",
         word: "promosi",
         en: "promotion",
         vi: "thăng chức",
@@ -324,6 +336,7 @@ export const performanceReviewPromotionLessons: IndonesianLesson[] = [
         pronunciation_en: "pro-MO-si",
       },
       {
+        cell_id: "9789e32c-8442-42a7-910e-652fde259adf",
         word: "peluang promosi",
         en: "promotion opportunity",
         vi: "cơ hội thăng chức",
@@ -332,6 +345,7 @@ export const performanceReviewPromotionLessons: IndonesianLesson[] = [
         pronunciation_en: "pe-LOO-ang pro-MO-si",
       },
       {
+        cell_id: "8b67cdb8-2c41-4301-a970-e06ec5117f2a",
         word: "prestasi",
         en: "achievement",
         vi: "thành tích",
@@ -340,6 +354,7 @@ export const performanceReviewPromotionLessons: IndonesianLesson[] = [
         pronunciation_en: "pres-TA-si",
       },
       {
+        cell_id: "f5fd5521-53fa-4010-9407-a9eb1622c35b",
         word: "kenaikan gaji",
         en: "salary raise",
         vi: "tăng lương",
@@ -348,6 +363,7 @@ export const performanceReviewPromotionLessons: IndonesianLesson[] = [
         pronunciation_en: "ke-NAI-kan GA-ji",
       },
       {
+        cell_id: "85585aaf-f65e-463c-b0e9-2a9f0fa12f2d",
         word: "memimpin tim",
         en: "lead a team",
         vi: "dẫn dắt đội",
@@ -356,6 +372,7 @@ export const performanceReviewPromotionLessons: IndonesianLesson[] = [
         pronunciation_en: "me-MIM-pin tim",
       },
       {
+        cell_id: "b2e68b40-06d3-4369-8c67-eb4812994e9c",
         word: "tanggung jawab",
         en: "responsibility",
         vi: "trách nhiệm",
@@ -366,18 +383,21 @@ export const performanceReviewPromotionLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "aed2fefb-254e-4732-aa64-5267fee4c17b",
         speaker: "Karyawan",
         text: "Bu, saya ingin berdiskusi tentang peluang promosi.",
         vi: "Chị/cô ơi, tôi muốn thảo luận về cơ hội thăng chức.",
         en: "Ma'am, I would like to discuss promotion opportunities.",
       },
       {
+        cell_id: "445b70a1-e409-46ef-89c0-0b55163f9ea3",
         speaker: "Atasan",
         text: "Baik. Apa pencapaian utama Anda tahun ini?",
         vi: "Được. Thành tựu chính của bạn năm nay là gì?",
         en: "Okay. What are your main achievements this year?",
       },
       {
+        cell_id: "8085b401-b8d7-431b-888a-135c697243ac",
         speaker: "Karyawan",
         text: "Saya mencapai target, memimpin tiga proyek, dan siap menerima tanggung jawab lebih besar.",
         vi: "Tôi đã đạt mục tiêu, dẫn dắt ba dự án, và sẵn sàng nhận trách nhiệm lớn hơn.",

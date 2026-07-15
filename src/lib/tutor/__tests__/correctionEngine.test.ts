@@ -1789,6 +1789,18 @@ describe("correctionEngine — run-on: segmented+corrected, not refused", () => 
     expect(result.appliedRuleIds).not.toContain("runon-segmented");
   });
 
+  it("preserves both clauses when a learner omits the space after sentence punctuation", () => {
+    const result = correctWithTutorRules(
+      "I buy a hat yesterday.Because summer is coming and it's going to be very sunny.",
+      "en",
+    );
+
+    expect(result.status).toBe("corrected");
+    expect(result.corrected).toBe("I bought a hat yesterday. Because summer is coming and it's going to be very sunny.");
+    expect(result.appliedRuleIds).toContain("runon-segmented");
+    expect(result.appliedRuleIds).toContain("en-yesterday-irregular-beginner-past");
+  });
+
   it("no regression: short subject-verb error still corrected normally", () => {
     const result = correctWithTutorRules("She is teacher.", "en");
     expect(result.status).toBe("corrected");

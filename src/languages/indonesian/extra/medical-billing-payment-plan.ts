@@ -21,6 +21,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   /** Indonesian word/phrase. */
   word: string;
   /** English meaning. */
@@ -36,6 +37,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   /** Indonesian line. */
   text: string;
@@ -253,6 +255,7 @@ export const lessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: when the bill is unclear, ask for `rincian biaya`; for insurance coverage, use `ditanggung asuransi`; for installments, use `cicilan`; for fee assistance, use `keringanan biaya`.",
     vocabulary: [
       {
+        cell_id: "cf87a86b-e0a4-4fd3-b6c0-b66301a31952",
         word: "tagihan rumah sakit",
         en: "hospital bill",
         vi: "hóa đơn/khoản phải trả bệnh viện",
@@ -261,6 +264,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "ta-GEE-han ROO-mah SA-kit",
       },
       {
+        cell_id: "a65b7f55-e948-4548-ac2d-e681b873f857",
         word: "cicilan",
         en: "installment",
         vi: "trả góp/khoản trả góp",
@@ -269,6 +273,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "chee-CHEE-lan",
       },
       {
+        cell_id: "fc81909b-918b-4721-ae94-65eb3f5ef603",
         word: "kasir",
         en: "cashier; payment counter",
         vi: "thu ngân/quầy thanh toán",
@@ -277,6 +282,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "ka-SEER",
       },
       {
+        cell_id: "f8162fc5-a2dc-4d00-8948-192fb4553188",
         word: "rincian biaya",
         en: "cost breakdown",
         vi: "chi tiết chi phí",
@@ -285,6 +291,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "rin-CHEE-an BEE-a-ya",
       },
       {
+        cell_id: "fee89a95-1725-4f52-b1bd-651d090f0ecf",
         word: "asuransi",
         en: "insurance",
         vi: "bảo hiểm",
@@ -293,6 +300,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "a-soo-RAN-see",
       },
       {
+        cell_id: "7fcc5d09-0352-4015-8321-a7be4f4a468e",
         word: "keringanan biaya",
         en: "fee relief",
         vi: "hỗ trợ/giảm nhẹ chi phí",
@@ -301,6 +309,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "keh-ree-NGAN-an BEE-a-ya",
       },
       {
+        cell_id: "2a1dd495-e6c3-422b-a7e5-4d2ca085d521",
         word: "bukti bayar",
         en: "proof of payment",
         vi: "chứng từ thanh toán",
@@ -309,6 +318,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "BOOK-tee BA-yar",
       },
       {
+        cell_id: "b19343b0-41d9-48a4-aaa9-a4a3bff686d0",
         word: "jatuh tempo",
         en: "due date",
         vi: "đến hạn",
@@ -317,6 +327,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "ja-TOOH TEM-po",
       },
       {
+        cell_id: "97b4674f-0fb4-4c3f-a832-a5ec1fa0ee8a",
         word: "kuitansi asli",
         en: "original receipt",
         vi: "biên nhận bản gốc",
@@ -325,6 +336,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "kwee-TAN-see AS-lee",
       },
       {
+        cell_id: "86640c8c-2537-4dce-a8fc-5a46bdc5773c",
         word: "denda",
         en: "fine",
         vi: "tiền phạt",
@@ -335,24 +347,28 @@ export const lessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "224b9739-4783-438f-bad1-e62ec8656fc6",
         speaker: "Pasien",
         text: "Permisi, saya mau menanyakan tagihan rumah sakit dan rincian biaya.",
         vi: "Xin lỗi, tôi muốn hỏi về hóa đơn bệnh viện và chi tiết chi phí.",
         en: "Excuse me, I would like to ask about the hospital bill and cost breakdown.",
       },
       {
+        cell_id: "49a5cdef-ad14-4a7e-9757-6d5e69ab290c",
         speaker: "Kasir",
         text: "Baik. Sebagian biaya sudah dikurangi asuransi, tetapi ada biaya yang belum ditanggung.",
         vi: "Được. Một phần chi phí đã được trừ bảo hiểm, nhưng có khoản chưa được chi trả.",
         en: "All right. Part of the cost has been reduced by insurance, but some costs are not covered.",
       },
       {
+        cell_id: "d9220e20-3505-4ff0-ac36-0c2b026a2db9",
         speaker: "Pasien",
         text: "Apakah saya bisa mengajukan cicilan atau keringanan biaya?",
         vi: "Tôi có thể xin trả góp hoặc hỗ trợ giảm chi phí không?",
         en: "Can I apply for installments or fee relief?",
       },
       {
+        cell_id: "6b8bd057-bf23-40eb-897a-8f870f24db71",
         speaker: "Kasir",
         text: "Bisa kami jelaskan syaratnya. Tolong siapkan dokumen dan simpan bukti bayar.",
         vi: "Chúng tôi có thể giải thích điều kiện. Vui lòng chuẩn bị giấy tờ và giữ chứng từ thanh toán.",

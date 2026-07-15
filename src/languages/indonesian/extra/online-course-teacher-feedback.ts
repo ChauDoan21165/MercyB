@@ -6,6 +6,7 @@ type IndonesianLessonSentence = {
 };
 
 type VocabEntry = {
+  cell_id?: string;
   word: string;
   meaning_vi: string;
   meaning_en: string;
@@ -14,6 +15,7 @@ type VocabEntry = {
 };
 
 type DialogueLine = {
+  cell_id?: string;
   speaker: string;
   line: string;
   vi: string;
@@ -117,6 +119,7 @@ export const lessons: IndonesianLesson[] = [
     ],
     vocabulary: [
       {
+        cell_id: "5b4b9ece-6ea3-4c5d-a300-d27bdec6fc5c",
         word: 'feedback guru',
         meaning_vi: 'phản hồi của giáo viên',
         meaning_en: 'teacher feedback',
@@ -124,6 +127,7 @@ export const lessons: IndonesianLesson[] = [
         example_vi: 'Phản hồi của giáo viên giúp tôi rất nhiều.',
       },
       {
+        cell_id: "f1e01faf-cce2-4e5b-a3e5-0ff49c64e8d9",
         word: 'tugas online',
         meaning_vi: 'bài tập trực tuyến',
         meaning_en: 'online assignment',
@@ -131,6 +135,7 @@ export const lessons: IndonesianLesson[] = [
         example_vi: 'Bài tập trực tuyến phải nộp trước tối nay.',
       },
       {
+        cell_id: "f6de10fa-0e6e-4015-a372-06137a40e47a",
         word: 'komentar revisi',
         meaning_vi: 'nhận xét chỉnh sửa',
         meaning_en: 'revision comments',
@@ -138,6 +143,7 @@ export const lessons: IndonesianLesson[] = [
         example_vi: 'Tôi đọc từng nhận xét chỉnh sửa một.',
       },
       {
+        cell_id: "66c2c689-e1c8-4a64-a620-db662f00b9a9",
         word: 'rubrik nilai',
         meaning_vi: 'bảng tiêu chí chấm điểm',
         meaning_en: 'grading rubric',
@@ -145,6 +151,7 @@ export const lessons: IndonesianLesson[] = [
         example_vi: 'Bảng tiêu chí chấm điểm giải thích các phần được chấm.',
       },
       {
+        cell_id: "de08e085-2bec-4ce3-bcb8-9950b3eeba30",
         word: 'deadline',
         meaning_vi: 'hạn chót',
         meaning_en: 'deadline',
@@ -152,6 +159,7 @@ export const lessons: IndonesianLesson[] = [
         example_vi: 'Hạn chót của bài này là thứ Sáu.',
       },
       {
+        cell_id: "ee6af3eb-6f74-49e5-84f4-ddc7125c6fa8",
         word: 'diskusi kelas',
         meaning_vi: 'thảo luận lớp',
         meaning_en: 'class discussion',
@@ -159,6 +167,7 @@ export const lessons: IndonesianLesson[] = [
         example_vi: 'Thảo luận lớp giúp chúng tôi học hỏi lẫn nhau.',
       },
       {
+        cell_id: "467a3014-144d-4e6d-afaa-30c66a8edd89",
         word: 'perbaikan jawaban',
         meaning_vi: 'sửa/cải thiện câu trả lời',
         meaning_en: 'answer improvement',
@@ -166,6 +175,7 @@ export const lessons: IndonesianLesson[] = [
         example_vi: 'Cần sửa câu trả lời ở phần cuối.',
       },
       {
+        cell_id: "73787f9a-3073-4787-8b8b-52f804942bc4",
         word: 'pengumpulan otomatis',
         meaning_vi: 'nộp tự động',
         meaning_en: 'automatic submission',
@@ -175,36 +185,42 @@ export const lessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "f359d3b8-68c8-4e9e-b0e5-11c223d3b0c8",
         speaker: 'Siswa',
         line: 'Bu, saya sudah membaca feedback dari guru.',
         vi: 'Cô ơi, em đã đọc phản hồi từ giáo viên.',
         en: 'Ma’am, I have already read the teacher feedback.',
       },
       {
+        cell_id: "16f09c41-37e5-49d5-b188-2970d94b129c",
         speaker: 'Guru',
         line: 'Bagus. Silakan lihat komentar revisi pada tugas online Anda.',
         vi: 'Tốt. Hãy xem các nhận xét chỉnh sửa trên bài tập trực tuyến của bạn.',
         en: 'Good. Please look at the revision comments on your online assignment.',
       },
       {
+        cell_id: "677abe3c-f78e-44ba-9eab-b4a273bb835a",
         speaker: 'Siswa',
         line: 'Saya belum paham bagian rubrik nilainya.',
         vi: 'Em chưa hiểu phần bảng tiêu chí chấm điểm.',
         en: 'I do not yet understand the grading rubric section.',
       },
       {
+        cell_id: "85802ac4-4b31-4137-ac20-8af32417d1b1",
         speaker: 'Guru',
         line: 'Tidak apa-apa. Nanti kita bahas di diskusi kelas.',
         vi: 'Không sao. Lát nữa chúng ta sẽ bàn trong phần thảo luận lớp.',
         en: 'No problem. We will discuss it in class discussion later.',
       },
       {
+        cell_id: "af180923-1176-4115-854d-61e7ab5a99a5",
         speaker: 'Siswa',
         line: 'Apakah saya masih bisa mengumpulkan sebelum deadline?',
         vi: 'Em còn có thể nộp trước hạn chót không ạ?',
         en: 'Can I still submit before the deadline?',
       },
       {
+        cell_id: "30e247f0-318a-42ee-8200-18636070e547",
         speaker: 'Guru',
         line: 'Bisa, tapi tolong lakukan perbaikan jawaban dulu.',
         vi: 'Được, nhưng vui lòng sửa câu trả lời trước đã.',

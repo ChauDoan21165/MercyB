@@ -87,14 +87,15 @@ export const lessons: ArabicLessonInput[] = [
       },
     ],
     vocabulary: [
-      { ar: "الشركة", romanization: "ash-sharika", vi: "công ty", en: "company", pos: "n.f." },
-      { ar: "التقرير", romanization: "at-taqriir", vi: "báo cáo", en: "report", pos: "n.m." },
-      { ar: "الاجتماع", romanization: "al-ijtimaa'", vi: "cuộc họp", en: "meeting", pos: "n.m." },
-      { ar: "المهمة", romanization: "al-muhimma", vi: "nhiệm vụ", en: "task", pos: "n.f." },
-      { ar: "الموعد النهائي", romanization: "al-maw'id an-nihaa'ii", vi: "hạn chót", en: "deadline", pos: "n.m." },
+      { cell_id: "32bfe3e4-fff2-4a30-9f16-6627f7d8a030", ar: "الشركة", romanization: "ash-sharika", vi: "công ty", en: "company", pos: "n.f." },
+      { cell_id: "9f9156c8-e9e2-4846-b3cf-a627f395b307", ar: "التقرير", romanization: "at-taqriir", vi: "báo cáo", en: "report", pos: "n.m." },
+      { cell_id: "fe4ac637-8d2f-43fc-a799-19f3af6cabe2", ar: "الاجتماع", romanization: "al-ijtimaa'", vi: "cuộc họp", en: "meeting", pos: "n.m." },
+      { cell_id: "a5087645-93a6-481e-890f-a27200274f0b", ar: "المهمة", romanization: "al-muhimma", vi: "nhiệm vụ", en: "task", pos: "n.f." },
+      { cell_id: "4f58dd8c-dd4c-451d-a361-7820758ea3d3", ar: "الموعد النهائي", romanization: "al-maw'id an-nihaa'ii", vi: "hạn chót", en: "deadline", pos: "n.m." },
     ],
     dialogue: [
       {
+        cell_id: "03cd2747-e994-4006-aa8c-77a8da1eb1ff",
         speaker: "A",
         ar: "هل انتهيت من التقرير؟",
         romanization: "hal intahayta min at-taqriir?",
@@ -102,6 +103,7 @@ export const lessons: ArabicLessonInput[] = [
         en: "Have you finished the report?",
       },
       {
+        cell_id: "3597fd1a-077d-4316-bf0d-fdf0548a7c19",
         speaker: "B",
         ar: "ليس بعد، لكنني سأرسله قبل الاجتماع.",
         romanization: "laysa ba'd, laakinnanii sa-ursiluhu qabla al-ijtimaa'.",
@@ -206,14 +208,15 @@ export const lessons: ArabicLessonInput[] = [
       },
     ],
     vocabulary: [
-      { ar: "الألم", romanization: "al-alam", vi: "cơn đau", en: "pain", pos: "n.m." },
-      { ar: "الحلق", romanization: "al-halq", vi: "cổ họng", en: "throat", pos: "n.m." },
-      { ar: "الصداع", romanization: "as-sudaa'", vi: "đau đầu", en: "headache", pos: "n.m." },
-      { ar: "السعال", romanization: "as-su'aal", vi: "ho", en: "cough", pos: "n.m." },
-      { ar: "الموعد", romanization: "al-maw'id", vi: "lịch hẹn", en: "appointment", pos: "n.m." },
+      { cell_id: "4ed40a73-41d2-476f-b002-7da4d82a3e3f", ar: "الألم", romanization: "al-alam", vi: "cơn đau", en: "pain", pos: "n.m." },
+      { cell_id: "d11cad8d-faf4-4285-80e0-8963bf421918", ar: "الحلق", romanization: "al-halq", vi: "cổ họng", en: "throat", pos: "n.m." },
+      { cell_id: "49c6034a-eb21-440a-8813-c2bc4ba41916", ar: "الصداع", romanization: "as-sudaa'", vi: "đau đầu", en: "headache", pos: "n.m." },
+      { cell_id: "149cd190-9c38-44dd-8dda-2078f7d45c85", ar: "السعال", romanization: "as-su'aal", vi: "ho", en: "cough", pos: "n.m." },
+      { cell_id: "9ae9842a-ddde-47b4-bcda-96920401676e", ar: "الموعد", romanization: "al-maw'id", vi: "lịch hẹn", en: "appointment", pos: "n.m." },
     ],
     dialogue: [
       {
+        cell_id: "81f2fc51-96c9-4d44-8853-6167b8d49370",
         speaker: "Doctor",
         ar: "متى بدأ الألم؟",
         romanization: "mataa bada'a al-alam?",
@@ -221,6 +224,7 @@ export const lessons: ArabicLessonInput[] = [
         en: "When did the pain start?",
       },
       {
+        cell_id: "2d2075f0-4cec-449c-bf55-3b886d97bb50",
         speaker: "Patient",
         ar: "بدأ أمس، وأشعر بالتعب اليوم.",
         romanization: "bada'a ams, wa-ash'uru bit-ta'ab al-yawm.",
@@ -325,14 +329,15 @@ export const lessons: ArabicLessonInput[] = [
       },
     ],
     vocabulary: [
-      { ar: "الطلب", romanization: "at-talab", vi: "đơn/yêu cầu", en: "application/request", pos: "n.m." },
-      { ar: "الوثائق", romanization: "al-wathaa'iq", vi: "giấy tờ", en: "documents", pos: "n.pl." },
-      { ar: "الموعد", romanization: "al-maw'id", vi: "lịch hẹn", en: "appointment", pos: "n.m." },
-      { ar: "مكتب الاستقبال", romanization: "maktab al-istiqbaal", vi: "quầy tiếp tân", en: "reception desk", pos: "n." },
-      { ar: "الطابق الأول", romanization: "at-taabiq al-awwal", vi: "tầng một", en: "first floor", pos: "n.m." },
+      { cell_id: "4a971b03-ead6-4373-93bb-b3e78b288c8a", ar: "الطلب", romanization: "at-talab", vi: "đơn/yêu cầu", en: "application/request", pos: "n.m." },
+      { cell_id: "a8063a87-81f5-434c-8a4f-46b0a03f0814", ar: "الوثائق", romanization: "al-wathaa'iq", vi: "giấy tờ", en: "documents", pos: "n.pl." },
+      { cell_id: "c658e553-2a2c-40bc-812f-6a03cb24bc03", ar: "الموعد", romanization: "al-maw'id", vi: "lịch hẹn", en: "appointment", pos: "n.m." },
+      { cell_id: "aa08ee12-a5a7-483d-ae70-2a5fc9044c43", ar: "مكتب الاستقبال", romanization: "maktab al-istiqbaal", vi: "quầy tiếp tân", en: "reception desk", pos: "n." },
+      { cell_id: "68840de6-4026-48a5-97d7-cc1d72041def", ar: "الطابق الأول", romanization: "at-taabiq al-awwal", vi: "tầng một", en: "first floor", pos: "n.m." },
     ],
     dialogue: [
       {
+        cell_id: "51565880-6571-4686-a53d-e414077d338f",
         speaker: "Visitor",
         ar: "ما الوثائق المطلوبة لهذا الطلب؟",
         romanization: "maa al-wathaa'iq al-matluuba li-haadhaa at-talab?",
@@ -340,6 +345,7 @@ export const lessons: ArabicLessonInput[] = [
         en: "What documents are required for this application?",
       },
       {
+        cell_id: "b9a72375-e1e4-4de1-8486-4b973db8918a",
         speaker: "Clerk",
         ar: "تحتاج إلى جواز السفر وصورة شخصية.",
         romanization: "tahtaaju ilaa jawaaz as-safar wa-suura shakhsiiyya.",
@@ -447,14 +453,15 @@ export const lessons: ArabicLessonInput[] = [
       },
     ],
     vocabulary: [
-      { ar: "أعتقد أن", romanization: "a'taqidu anna", vi: "tôi nghĩ rằng", en: "I think that", pos: "phrase" },
-      { ar: "الرأي", romanization: "ar-ra'y", vi: "ý kiến", en: "opinion", pos: "n.m." },
-      { ar: "السبب", romanization: "as-sabab", vi: "lý do", en: "reason", pos: "n.m." },
-      { ar: "مفيد", romanization: "mufiid", vi: "hữu ích", en: "useful", pos: "adj." },
-      { ar: "من ناحية أخرى", romanization: "min naahiya ukhraa", vi: "mặt khác", en: "on the other hand", pos: "connector" },
+      { cell_id: "7ba49320-172f-4d80-8230-b133fa0ca069", ar: "أعتقد أن", romanization: "a'taqidu anna", vi: "tôi nghĩ rằng", en: "I think that", pos: "phrase" },
+      { cell_id: "5bb1bf89-df41-46ca-9d5c-542b353ab965", ar: "الرأي", romanization: "ar-ra'y", vi: "ý kiến", en: "opinion", pos: "n.m." },
+      { cell_id: "43560546-ec49-46ad-b0e7-78200bf5c4d2", ar: "السبب", romanization: "as-sabab", vi: "lý do", en: "reason", pos: "n.m." },
+      { cell_id: "1457a69c-664f-40c9-a724-dcba303d9c1b", ar: "مفيد", romanization: "mufiid", vi: "hữu ích", en: "useful", pos: "adj." },
+      { cell_id: "f3b5bcd7-c15f-40f7-a4b2-fb84029b0fc6", ar: "من ناحية أخرى", romanization: "min naahiya ukhraa", vi: "mặt khác", en: "on the other hand", pos: "connector" },
     ],
     dialogue: [
       {
+        cell_id: "396ce58e-22bc-4c30-8cbf-00b933a0c5c1",
         speaker: "A",
         ar: "ما رأيك في الدراسة عبر الإنترنت؟",
         romanization: "maa ra'yuka fii ad-diraasa 'abra al-internet?",
@@ -462,6 +469,7 @@ export const lessons: ArabicLessonInput[] = [
         en: "What is your opinion about online study?",
       },
       {
+        cell_id: "32663bc6-b12b-4bc6-a0d4-fe86cb138296",
         speaker: "B",
         ar: "أعتقد أنها مفيدة، ولكنها لا تناسب الجميع.",
         romanization: "a'taqidu annahaa mufiida, walaakinnahaa laa tunaasibu al-jamii'.",
@@ -576,14 +584,15 @@ export const lessons: ArabicLessonInput[] = [
       },
     ],
     vocabulary: [
-      { ar: "خرجت", romanization: "kharajtu", vi: "tôi đã rời/đi ra", en: "I left/went out", pos: "v." },
-      { ar: "انتظرت", romanization: "intazartu", vi: "tôi đã đợi", en: "I waited", pos: "v." },
-      { ar: "وصلت", romanization: "wasaltu", vi: "tôi đã đến", en: "I arrived", pos: "v." },
-      { ar: "مزدحم", romanization: "muzdahim", vi: "đông/ùn tắc", en: "crowded/congested", pos: "adj." },
-      { ar: "في النهاية", romanization: "fii an-nihaaya", vi: "cuối cùng", en: "in the end", pos: "connector" },
+      { cell_id: "526691de-978b-4aa2-a944-f8c5d83867a7", ar: "خرجت", romanization: "kharajtu", vi: "tôi đã rời/đi ra", en: "I left/went out", pos: "v." },
+      { cell_id: "72abcb9b-ea9f-4d00-af00-43fa16607bdd", ar: "انتظرت", romanization: "intazartu", vi: "tôi đã đợi", en: "I waited", pos: "v." },
+      { cell_id: "242beddd-d4e3-41c5-82de-943c3752e4d2", ar: "وصلت", romanization: "wasaltu", vi: "tôi đã đến", en: "I arrived", pos: "v." },
+      { cell_id: "1481f0d0-dec0-424e-9e42-ed6d3c79767a", ar: "مزدحم", romanization: "muzdahim", vi: "đông/ùn tắc", en: "crowded/congested", pos: "adj." },
+      { cell_id: "1260ab32-5894-4db0-9aac-f9281ad7f2b5", ar: "في النهاية", romanization: "fii an-nihaaya", vi: "cuối cùng", en: "in the end", pos: "connector" },
     ],
     dialogue: [
       {
+        cell_id: "15f0ea1d-2b24-417b-9fee-141515be6a20",
         speaker: "Manager",
         ar: "لماذا وصلت متأخرًا اليوم؟",
         romanization: "limaadhaa wasalta muta'akhkhiran al-yawm?",
@@ -591,6 +600,7 @@ export const lessons: ArabicLessonInput[] = [
         en: "Why did you arrive late today?",
       },
       {
+        cell_id: "ff13da4f-53cd-43fe-aee6-121b54e489fe",
         speaker: "Employee",
         ar: "أعتذر. انتظرت الحافلة طويلًا، ثم اتصلت بزميلي.",
         romanization: "a'tadhir. intazartu al-haafila tawiilan, thumma ittasaltu bi-zamiilii.",

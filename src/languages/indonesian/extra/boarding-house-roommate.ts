@@ -13,6 +13,7 @@ export type IndonesianLessonSentence = {
 };
 
 export type IndonesianVocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -22,6 +23,7 @@ export type IndonesianVocabEntry = {
 };
 
 export type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -208,6 +210,7 @@ export const lessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: four survival patterns in shared housing are `giliran saya/kamu...` (my/your turn), `boleh ...?` (permission), `jangan ... tanpa izin` (don't ... without permission), and `kita bicarakan baik-baik` (let's talk it through calmly). Keep `kami` = we excluding the listener separate from `kita` = we including the listener.",
     vocabulary: [
       {
+        cell_id: "3be38808-6a57-4ebb-a26e-cd3024e99104",
         word: "teman sekamar",
         en: "roommate",
         vi: "bạn cùng phòng",
@@ -216,6 +219,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "te-MAN se-KA-mar",
       },
       {
+        cell_id: "490e4d88-666d-422a-ade2-a1c360f08f18",
         word: "berbagi dapur",
         en: "share a kitchen",
         vi: "dùng chung bếp",
@@ -224,6 +228,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "ber-BA-gi DA-poor",
       },
       {
+        cell_id: "f55afe3a-b85f-44be-bb6c-73d586aa97ea",
         word: "bayar listrik",
         en: "pay electricity",
         vi: "trả tiền điện",
@@ -232,6 +237,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "BA-yar LIS-trik",
       },
       {
+        cell_id: "008bb25c-fc3f-4f27-a416-465416b5f868",
         word: "giliran bersih-bersih",
         en: "cleaning turn",
         vi: "lượt dọn dẹp",
@@ -240,6 +246,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "GI-li-ran ber-SIH-ber-SIH",
       },
       {
+        cell_id: "d5e09c34-2f1b-4579-b2e7-7992e6e04538",
         word: "tamu menginap",
         en: "overnight guest",
         vi: "khách ngủ lại",
@@ -248,6 +255,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "TA-moo me-NGI-nap",
       },
       {
+        cell_id: "b8a27988-c082-4ba7-81ea-9ca87406286a",
         word: "barang pribadi",
         en: "personal belongings",
         vi: "đồ cá nhân",
@@ -256,6 +264,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "BA-rang pri-BA-dee",
       },
       {
+        cell_id: "8645dcbf-2735-410c-8e4b-d382eba62ee1",
         word: "tanpa izin",
         en: "without permission",
         vi: "không có phép / chưa xin phép",
@@ -264,6 +273,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "TAN-pa EE-zin",
       },
       {
+        cell_id: "93c59d4e-85bb-4ae1-8989-5f178c01cd6c",
         word: "konflik kecil",
         en: "small conflict",
         vi: "mâu thuẫn nhỏ",
@@ -272,6 +282,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "KON-flik KE-chil",
       },
       {
+        cell_id: "2fea3eef-55ed-4a90-a86a-8cbe832f32ba",
         word: "baik-baik",
         en: "calmly / properly",
         vi: "tử tế / êm đẹp",
@@ -280,6 +291,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "BAIK-baik",
       },
       {
+        cell_id: "bd2b8745-d450-47ea-8f14-326aec126cab",
         word: "bilang langsung",
         en: "say directly",
         vi: "nói trực tiếp",
@@ -290,30 +302,35 @@ export const lessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "1605e90c-b4c1-4d30-a4f0-771f18328e83",
         speaker: "Linh",
         text: "Kita berbagi dapur, jadi bagaimana jadwal bersih-bersihnya?",
         vi: "Mình dùng chung bếp, vậy lịch dọn dẹp thế nào?",
         en: "We share the kitchen, so what is the cleaning schedule?",
       },
       {
+        cell_id: "3a5b6353-928a-4b85-a0ea-66a971a1da38",
         speaker: "Rani",
         text: "Hari ini giliran saya. Besok giliran kamu cuci piring.",
         vi: "Hôm nay đến lượt mình. Ngày mai đến lượt bạn rửa chén.",
         en: "Today is my turn. Tomorrow is your turn to wash dishes.",
       },
       {
+        cell_id: "25cb5582-eac7-4d87-876a-669c6858799c",
         speaker: "Linh",
         text: "Baik. Untuk listrik, kita bayar bersama setiap akhir bulan?",
         vi: "Được. Về tiền điện, mình trả chung vào cuối mỗi tháng nhé?",
         en: "Okay. For electricity, do we pay together at the end of every month?",
       },
       {
+        cell_id: "bbe7fef0-e680-44d5-b43d-e09b93223c67",
         speaker: "Rani",
         text: "Iya. Satu lagi, kalau ada tamu menginap, bilang dulu, ya.",
         vi: "Ừ. Một điều nữa, nếu có khách ngủ lại thì báo trước nhé.",
         en: "Yes. One more thing: if there is an overnight guest, tell me first.",
       },
       {
+        cell_id: "51166b5a-095b-4df1-805f-cac5e745bd6b",
         speaker: "Linh",
         text: "Setuju. Kalau ada masalah, kita bicarakan baik-baik.",
         vi: "Đồng ý. Nếu có vấn đề, mình nói chuyện tử tế nhé.",

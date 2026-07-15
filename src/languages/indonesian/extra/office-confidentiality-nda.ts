@@ -13,6 +13,7 @@ type IndonesianLessonSentence = {
 };
 
 type IndonesianVocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -22,6 +23,7 @@ type IndonesianVocabEntry = {
 };
 
 type IndonesianDialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -208,6 +210,7 @@ export const lessons: IndonesianLesson[] = [
       "Safe frames: `Saya perlu izin tertulis`, `Siapa yang punya izin akses?`, `Mohon jangan kirim file sensitif lewat chat biasa`, `Tanggung jawab kerja saya termasuk menjaga kerahasiaan data`. If in doubt, use `mohon` and `silakan konfirmasi` to stay professional.",
     vocabulary: [
       {
+        cell_id: "b671f378-b57d-43dc-b47f-16fc9f840bba",
         word: "rahasia perusahaan",
         en: "company secret",
         vi: "bí mật công ty",
@@ -216,6 +219,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "rah-HAH-see-ah per-oo-SAH-hah-an",
       },
       {
+        cell_id: "d917e2ad-3a57-46f2-8d6a-68224df0293a",
         word: "NDA",
         en: "non-disclosure agreement",
         vi: "thỏa thuận bảo mật",
@@ -224,6 +228,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "en-deh-AH",
       },
       {
+        cell_id: "0298799f-c3a7-4949-9e3a-6a5bd0c6ee5f",
         word: "data klien",
         en: "client data",
         vi: "dữ liệu khách hàng",
@@ -232,6 +237,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "DAH-tah KLEE-ehn",
       },
       {
+        cell_id: "a8315595-0952-4e4b-a3c8-7b15423c3a1a",
         word: "dokumen sensitif",
         en: "sensitive document",
         vi: "tài liệu nhạy cảm",
@@ -240,6 +246,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "do-KOO-men sen-see-TEEF",
       },
       {
+        cell_id: "26baad03-a6ec-4db7-a925-dad16fdaf31c",
         word: "izin akses",
         en: "access permission",
         vi: "quyền truy cập",
@@ -248,6 +255,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "EE-zeen AK-ses",
       },
       {
+        cell_id: "7f6b4d9d-d1af-4b03-8570-a2f6e3eb42fb",
         word: "membocorkan informasi",
         en: "to leak information",
         vi: "làm rò rỉ thông tin",
@@ -256,6 +264,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "mem-boh-KOR-kan in-for-MAH-see",
       },
       {
+        cell_id: "22fa858d-2ccc-4d90-bb1b-0ae1c656a493",
         word: "kerahasiaan",
         en: "confidentiality",
         vi: "tính bảo mật",
@@ -264,6 +273,7 @@ export const lessons: IndonesianLesson[] = [
         pronunciation_en: "keh-rah-hah-see-AH-an",
       },
       {
+        cell_id: "7e0580d3-54f1-43c5-89f1-7be01268112c",
         word: "tanggung jawab kerja",
         en: "work responsibility",
         vi: "trách nhiệm công việc",
@@ -274,24 +284,28 @@ export const lessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "635b3a98-122d-49ec-a061-64dbde0aac93",
         speaker: "HR",
         text: "Sebelum mulai bekerja, Anda perlu menandatangani NDA.",
         vi: "Trước khi bắt đầu làm việc, bạn cần ký NDA.",
         en: "Before starting work, you need to sign the NDA.",
       },
       {
+        cell_id: "f34e62a1-6168-4814-a33c-eb74cfb9da11",
         speaker: "Karyawan",
         text: "Baik. Apakah saya boleh melihat dokumen sensitif itu?",
         vi: "Được. Tôi có thể xem tài liệu nhạy cảm đó không?",
         en: "Okay. Am I allowed to see that sensitive document?",
       },
       {
+        cell_id: "3ea22bd2-cabc-4c08-9236-5ed9d0052650",
         speaker: "Atasan",
         text: "Belum. Anda perlu izin akses dulu dari tim legal.",
         vi: "Chưa. Bạn cần quyền truy cập trước từ nhóm pháp lý.",
         en: "Not yet. You need access permission first from the legal team.",
       },
       {
+        cell_id: "ce2b8f3d-ad65-4cfa-b47c-01c96f0c279f",
         speaker: "Karyawan",
         text: "Mengerti. Saya akan menjaga kerahasiaan data klien.",
         vi: "Hiểu rồi. Tôi sẽ giữ bí mật dữ liệu khách hàng.",

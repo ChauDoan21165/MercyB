@@ -33,6 +33,7 @@ type LessonSentence = {
 };
 
 type VocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -44,6 +45,7 @@ type VocabEntry = {
 };
 
 type DialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -160,6 +162,7 @@ export const wayangFolkloreLessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: 'wayang' = puppet; 'wayang kulit' = leather/shadow puppet (kulit = leather/skin). Note the verb prefixes: main→memainkan (operate/play), iring→mengiringi (accompany), langsung→berlangsung (take place). 'sepanjang + noun' means 'throughout': sepanjang malam (all night), sepanjang hari (all day). 'sendirian' = alone (vs 'sendiri' = self/own). Relate it to Vietnamese water-puppetry to anchor the concept.",
     vocabulary: [
       {
+        cell_id: "169718f3-ed52-4c41-a246-a7ebd75ff7cf",
         word: "wayang kulit",
         en: "leather shadow puppetry",
         vi: "rối bóng (bằng da)",
@@ -168,6 +171,7 @@ export const wayangFolkloreLessons: IndonesianLesson[] = [
         pronunciation_en: "WA-yang KOO-lit",
       },
       {
+        cell_id: "93fc38ba-7dcd-45bd-8b7c-54062cad8ff5",
         word: "dalang",
         en: "puppeteer-narrator",
         vi: "nghệ nhân điều khiển rối",
@@ -176,6 +180,7 @@ export const wayangFolkloreLessons: IndonesianLesson[] = [
         pronunciation_en: "DA-lang",
       },
       {
+        cell_id: "0855559c-fd4f-4cce-8724-ec927bd854fc",
         word: "gamelan",
         en: "traditional percussion orchestra",
         vi: "dàn nhạc gõ truyền thống",
@@ -184,6 +189,7 @@ export const wayangFolkloreLessons: IndonesianLesson[] = [
         pronunciation_en: "GA-me-lan",
       },
       {
+        cell_id: "ac1e8936-7ec5-4147-9852-4aa2a9756e7a",
         word: "layar",
         en: "screen",
         vi: "màn (chiếu)",
@@ -192,6 +198,7 @@ export const wayangFolkloreLessons: IndonesianLesson[] = [
         pronunciation_en: "LA-yar",
       },
       {
+        cell_id: "c6e388ff-5486-4202-8021-92f7ff42bb50",
         word: "bayangan",
         en: "shadow",
         vi: "bóng",
@@ -200,6 +207,7 @@ export const wayangFolkloreLessons: IndonesianLesson[] = [
         pronunciation_en: "ba-YA-ngan",
       },
       {
+        cell_id: "b1881344-0eb7-4ed6-9af2-c71d7ec34b30",
         word: "pertunjukan",
         en: "performance / show",
         vi: "buổi biểu diễn",
@@ -208,6 +216,7 @@ export const wayangFolkloreLessons: IndonesianLesson[] = [
         pronunciation_en: "per-toon-JOO-kan",
       },
       {
+        cell_id: "a64488b7-7a36-4ff7-92b6-f62e0d461021",
         word: "boneka",
         en: "puppet / doll",
         vi: "con rối / búp bê",
@@ -218,24 +227,28 @@ export const wayangFolkloreLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "9b1808ae-5e8b-457f-a946-ca42c654035b",
         speaker: "Turis",
         text: "Apa itu wayang kulit?",
         vi: "Wayang kulit là gì vậy?",
         en: "What is wayang kulit?",
       },
       {
+        cell_id: "a2ea0694-0a8e-4845-ae49-a189535b692a",
         speaker: "Pemandu",
         text: "Itu pertunjukan boneka bayangan. Dalang memainkan semua tokoh.",
         vi: "Đó là biểu diễn rối bóng. Dalang diễn tất cả nhân vật.",
         en: "It's a shadow-puppet performance. The dalang plays all the characters.",
       },
       {
+        cell_id: "b82c7e1e-8243-4157-a839-dec1c3e05ff5",
         speaker: "Turis",
         text: "Musiknya apa yang mengiringi?",
         vi: "Nhạc gì đệm theo vậy?",
         en: "What music accompanies it?",
       },
       {
+        cell_id: "c6155e08-e407-4031-8b78-8b45872ed384",
         speaker: "Pemandu",
         text: "Musik gamelan. Pertunjukannya bisa berlangsung sepanjang malam, lho.",
         vi: "Nhạc gamelan. Buổi diễn có thể kéo dài suốt đêm đó.",
@@ -376,6 +389,7 @@ export const wayangFolkloreLessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: the person classifier is 'seorang' (one person) — 'seorang ksatria' = a knight; for objects use 'sebuah'. 'berasal dari' = to originate from (a handy origin-telling frame). Passive 'di-…-kan': dimainkan = be performed, diceritakan = be told. 'setiap + noun' = each/every. Learn the phrases 'tokoh utama' (main character) and 'watak' (character/temperament) for discussing stories.",
     vocabulary: [
       {
+        cell_id: "44a82899-0c47-4f0b-8db5-1ab8a62ab1b0",
         word: "cerita",
         en: "story",
         vi: "câu chuyện",
@@ -384,6 +398,7 @@ export const wayangFolkloreLessons: IndonesianLesson[] = [
         pronunciation_en: "che-REE-ta",
       },
       {
+        cell_id: "be526cad-3767-4d29-aed0-6dad8d90e65d",
         word: "tokoh",
         en: "character / figure",
         vi: "nhân vật",
@@ -392,6 +407,7 @@ export const wayangFolkloreLessons: IndonesianLesson[] = [
         pronunciation_en: "TOH-koh",
       },
       {
+        cell_id: "497275b9-bb4c-40c4-b127-ab9f27d61cee",
         word: "ksatria",
         en: "knight / noble warrior",
         vi: "hiệp sĩ",
@@ -400,6 +416,7 @@ export const wayangFolkloreLessons: IndonesianLesson[] = [
         pronunciation_en: "ksa-TREE-a",
       },
       {
+        cell_id: "b366b901-57cb-4131-a400-38f75a5f675e",
         word: "Punakawan",
         en: "the four clown-servant figures",
         vi: "nhóm nhân vật hề-hầu",
@@ -408,6 +425,7 @@ export const wayangFolkloreLessons: IndonesianLesson[] = [
         pronunciation_en: "poo-na-KA-wan",
       },
       {
+        cell_id: "904f051e-22e2-460c-baa6-442c296b51ea",
         word: "cerita rakyat",
         en: "folk tale",
         vi: "truyện dân gian",
@@ -416,6 +434,7 @@ export const wayangFolkloreLessons: IndonesianLesson[] = [
         pronunciation_en: "che-REE-ta RAK-yat",
       },
       {
+        cell_id: "9819f7f1-8a0f-4e36-9fab-804024b8f022",
         word: "bijaksana",
         en: "wise",
         vi: "khôn ngoan / minh triết",
@@ -424,6 +443,7 @@ export const wayangFolkloreLessons: IndonesianLesson[] = [
         pronunciation_en: "bee-jak-SA-na",
       },
       {
+        cell_id: "5a307dad-6cbe-4219-90ce-4021fbf196f3",
         word: "watak",
         en: "character / temperament",
         vi: "tính cách",
@@ -434,24 +454,28 @@ export const wayangFolkloreLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "42e1ea40-2344-4738-ab43-d5a22cc2f79a",
         speaker: "Murid",
         text: "Cerita wayang itu dari mana asalnya, Bu?",
         vi: "Truyện wayang bắt nguồn từ đâu vậy cô?",
         en: "Where do wayang stories come from, ma'am?",
       },
       {
+        cell_id: "02175dc9-977e-489a-b487-55d3f1d78eb5",
         speaker: "Guru",
         text: "Banyak yang berasal dari Ramayana dan Mahabharata.",
         vi: "Nhiều truyện bắt nguồn từ Ramayana và Mahabharata.",
         en: "Many originate from the Ramayana and Mahabharata.",
       },
       {
+        cell_id: "b65ab534-0091-482f-8bdf-c6432c072897",
         speaker: "Murid",
         text: "Siapa Punakawan itu?",
         vi: "Punakawan là ai vậy?",
         en: "Who are the Punakawan?",
       },
       {
+        cell_id: "1aefd00b-30c3-4387-a0c3-a9709e01f97b",
         speaker: "Guru",
         text: "Mereka tokoh pelawak yang bijaksana. Setiap tokoh punya watak berbeda.",
         vi: "Họ là các nhân vật hề nhưng minh triết. Mỗi nhân vật có tính cách khác nhau.",
@@ -592,6 +616,7 @@ export const wayangFolkloreLessons: IndonesianLesson[] = [
       "Tip for Vietnamese speakers: the 'ke-…-an' circumfix turns adjectives into abstract nouns — baik→kebaikan (goodness), jahat→kejahatan (evil), seimbang→keseimbangan (balance). Tons of academic words follow this. 'meN-…-kan' makes transitive verbs: ajar→mengajarkan (teach), gambar→menggambarkan (depict). 'sebagai' = as/in the capacity of. Open a regret with 'Sayangnya, …'. 'semakin + adjective' = increasingly.",
     vocabulary: [
       {
+        cell_id: "86eddb6f-1924-4bc6-b57e-4640ea3fcf4f",
         word: "pesan moral",
         en: "moral message / lesson",
         vi: "bài học đạo đức",
@@ -600,6 +625,7 @@ export const wayangFolkloreLessons: IndonesianLesson[] = [
         pronunciation_en: "pe-SAN MOH-ral",
       },
       {
+        cell_id: "b5b8a1fa-a820-4e31-b846-d23b54d19cd8",
         word: "kebaikan",
         en: "goodness",
         vi: "cái thiện",
@@ -608,6 +634,7 @@ export const wayangFolkloreLessons: IndonesianLesson[] = [
         pronunciation_en: "ke-ba-EE-kan",
       },
       {
+        cell_id: "c903d39b-a0ad-4907-9034-4da88f6be76e",
         word: "kejahatan",
         en: "evil / crime",
         vi: "cái ác",
@@ -616,6 +643,7 @@ export const wayangFolkloreLessons: IndonesianLesson[] = [
         pronunciation_en: "ke-ja-HA-tan",
       },
       {
+        cell_id: "ee66d1ef-9258-4a76-a356-80115c775fee",
         word: "filosofi",
         en: "philosophy",
         vi: "triết lý",
@@ -624,6 +652,7 @@ export const wayangFolkloreLessons: IndonesianLesson[] = [
         pronunciation_en: "fee-loh-SOH-fee",
       },
       {
+        cell_id: "21c56176-4274-4cfa-86f5-daac0737bfd0",
         word: "keseimbangan",
         en: "balance",
         vi: "sự cân bằng",
@@ -632,6 +661,7 @@ export const wayangFolkloreLessons: IndonesianLesson[] = [
         pronunciation_en: "ke-seim-BA-ngan",
       },
       {
+        cell_id: "7338c60d-af3f-49e7-9466-6493f345be9d",
         word: "warisan budaya",
         en: "cultural heritage",
         vi: "di sản văn hóa",
@@ -640,6 +670,7 @@ export const wayangFolkloreLessons: IndonesianLesson[] = [
         pronunciation_en: "wa-REE-san boo-DA-ya",
       },
       {
+        cell_id: "dacb9315-0d36-49bf-bfe8-8e8fdc16bfa6",
         word: "mengakui",
         en: "to recognize / acknowledge",
         vi: "công nhận",
@@ -650,24 +681,28 @@ export const wayangFolkloreLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "4d59e41c-e191-468a-a89f-2e177f4c247a",
         speaker: "Mahasiswa",
         text: "Kenapa wayang dianggap penting, Pak?",
         vi: "Vì sao wayang được xem là quan trọng vậy thầy?",
         en: "Why is wayang considered important, sir?",
       },
       {
+        cell_id: "aef40294-a721-4e17-954a-365a0c23ab05",
         speaker: "Dosen",
         text: "Karena setiap pertunjukan mengandung pesan moral dan filosofi hidup.",
         vi: "Vì mỗi buổi diễn đều hàm chứa bài học đạo đức và triết lý sống.",
         en: "Because each performance carries a moral lesson and a life philosophy.",
       },
       {
+        cell_id: "bec0026c-f5df-4bf2-8778-7e8f79e149c1",
         speaker: "Mahasiswa",
         text: "Apakah dunia internasional mengakuinya?",
         vi: "Quốc tế có công nhận nó không ạ?",
         en: "Does the international community recognize it?",
       },
       {
+        cell_id: "de7bd653-2325-4d49-8137-25fb8aa03005",
         speaker: "Dosen",
         text: "Ya, UNESCO mengakuinya sebagai warisan budaya dunia. Sayangnya, generasi muda semakin jarang menontonnya.",
         vi: "Có, UNESCO công nhận là di sản văn hóa thế giới. Đáng tiếc, thế hệ trẻ ngày càng ít xem.",

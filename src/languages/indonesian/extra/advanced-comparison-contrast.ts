@@ -12,6 +12,7 @@ type LessonSentence = {
 };
 
 type VocabEntry = {
+  cell_id?: string;
   word: string;
   en: string;
   vi: string;
@@ -21,6 +22,7 @@ type VocabEntry = {
 };
 
 type DialogueLine = {
+  cell_id?: string;
   speaker: string;
   text: string;
   vi?: string;
@@ -137,6 +139,7 @@ export const advancedComparisonContrastLessons: IndonesianLesson[] = [
       "Chunks to memorize: `Dibandingkan dengan...`, `lebih baik daripada...`, `perbedaan utama adalah...`, `persamaannya...`, `dilihat dari sisi...`. Vietnamese speakers should watch the order `lebih + adjective`; do not place `lebih` after the adjective.",
     vocabulary: [
       {
+        cell_id: "35d0bbdc-319c-4328-a214-ef8159405292",
         word: "dibandingkan dengan",
         en: "compared with",
         vi: "so với / được so sánh với",
@@ -145,6 +148,7 @@ export const advancedComparisonContrastLessons: IndonesianLesson[] = [
         pronunciation_en: "di-ban-DING-kan de-NGAN",
       },
       {
+        cell_id: "1cb9b3de-d9ce-482d-aaee-4b2f8cd67ff7",
         word: "lebih baik daripada",
         en: "better than",
         vi: "tốt hơn so với",
@@ -153,6 +157,7 @@ export const advancedComparisonContrastLessons: IndonesianLesson[] = [
         pronunciation_en: "LE-bih BA-ik da-ri-PA-da",
       },
       {
+        cell_id: "afa765ab-f819-4cb8-904d-b663ec15492d",
         word: "perbedaan utama",
         en: "main difference",
         vi: "khác biệt chính",
@@ -161,6 +166,7 @@ export const advancedComparisonContrastLessons: IndonesianLesson[] = [
         pronunciation_en: "per-be-DA-an u-TA-ma",
       },
       {
+        cell_id: "0bfe7f20-048d-482f-b608-443c017cd12a",
         word: "persamaan",
         en: "similarity",
         vi: "điểm giống nhau / sự tương đồng",
@@ -169,6 +175,7 @@ export const advancedComparisonContrastLessons: IndonesianLesson[] = [
         pronunciation_en: "per-sa-MA-an",
       },
       {
+        cell_id: "e21eacab-9690-40df-8c2c-a291ed853afd",
         word: "dari sisi",
         en: "from the perspective of",
         vi: "từ góc độ",
@@ -177,6 +184,7 @@ export const advancedComparisonContrastLessons: IndonesianLesson[] = [
         pronunciation_en: "da-ri SI-si",
       },
       {
+        cell_id: "e26bbe3d-0a13-44a0-b58b-51935c65a4e1",
         word: "masuk akal",
         en: "reasonable / makes sense",
         vi: "hợp lý",
@@ -187,24 +195,28 @@ export const advancedComparisonContrastLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "a4f10443-9be0-4e17-a504-306d16d0fe66",
         speaker: "Rina",
         text: "Dibandingkan dengan paket lama, paket baru ini lebih mahal.",
         vi: "So với gói cũ, gói mới này đắt hơn.",
         en: "Compared with the old package, this new package is more expensive.",
       },
       {
+        cell_id: "700cd297-8a3c-4199-b99c-02ea2eb4c143",
         speaker: "Dimas",
         text: "Benar, tetapi fasilitasnya juga lebih lengkap.",
         vi: "Đúng, nhưng tiện nghi của nó cũng đầy đủ hơn.",
         en: "True, but the facilities are also more complete.",
       },
       {
+        cell_id: "750b8edb-7627-456b-82e1-97792a7857cf",
         speaker: "Rina",
         text: "Perbedaan utamanya ada pada biaya dan layanan tambahan.",
         vi: "Khác biệt chính nằm ở chi phí và dịch vụ bổ sung.",
         en: "The main difference is in cost and additional services.",
       },
       {
+        cell_id: "da3fcea9-cec4-42cb-a412-f09bf9b297c8",
         speaker: "Dimas",
         text: "Kalau dilihat dari sisi waktu, paket baru lebih masuk akal.",
         vi: "Nếu xét từ góc độ thời gian, gói mới hợp lý hơn.",
@@ -334,6 +346,7 @@ export const advancedComparisonContrastLessons: IndonesianLesson[] = [
       "For soft disagreement, use: `Saya setuju dengan..., sedangkan...`, `Sementara itu,...`, `Di satu sisi..., di sisi lain...`, `berbeda tetapi tidak harus bertentangan`. Avoid starting with `Anda salah`; compare perspectives first.",
     vocabulary: [
       {
+        cell_id: "3183ab14-4c14-4cb1-aeb9-5e1df07d4ed3",
         word: "sedangkan",
         en: "whereas / while",
         vi: "trong khi / còn",
@@ -342,6 +355,7 @@ export const advancedComparisonContrastLessons: IndonesianLesson[] = [
         pronunciation_en: "se-DANG-kan",
       },
       {
+        cell_id: "4deec6a2-e811-459a-8a59-93df6cd6f6f9",
         word: "sementara itu",
         en: "meanwhile / at the same time",
         vi: "trong khi đó",
@@ -350,6 +364,7 @@ export const advancedComparisonContrastLessons: IndonesianLesson[] = [
         pronunciation_en: "se-men-TA-ra I-too",
       },
       {
+        cell_id: "4bb6ac3c-5fbd-4dc9-b575-71a1bef866e9",
         word: "kontras dengan",
         en: "contrasts with",
         vi: "tương phản / đối lập với",
@@ -358,6 +373,7 @@ export const advancedComparisonContrastLessons: IndonesianLesson[] = [
         pronunciation_en: "KON-tras de-NGAN",
       },
       {
+        cell_id: "183b9430-887d-41e7-840d-d1b9baf484e6",
         word: "di sisi lain",
         en: "on the other hand",
         vi: "mặt khác",
@@ -366,6 +382,7 @@ export const advancedComparisonContrastLessons: IndonesianLesson[] = [
         pronunciation_en: "di SI-si LA-in",
       },
       {
+        cell_id: "7cc6ac87-587b-41b0-b841-3b1cdd36e213",
         word: "bertentangan",
         en: "contradictory / opposed",
         vi: "mâu thuẫn / đối nghịch",
@@ -374,6 +391,7 @@ export const advancedComparisonContrastLessons: IndonesianLesson[] = [
         pronunciation_en: "ber-ten-TA-ngan",
       },
       {
+        cell_id: "d4eda39c-de74-40a9-a951-877a23707f91",
         word: "sudut pandang",
         en: "point of view",
         vi: "góc nhìn / quan điểm",
@@ -384,24 +402,28 @@ export const advancedComparisonContrastLessons: IndonesianLesson[] = [
     ],
     dialogue: [
       {
+        cell_id: "1a50aae7-2fb1-4086-8323-b888f3ad15ef",
         speaker: "Moderator",
         text: "Apa perbedaan utama antara dua pendapat ini?",
         vi: "Khác biệt chính giữa hai ý kiến này là gì?",
         en: "What is the main difference between these two opinions?",
       },
       {
+        cell_id: "19d42733-3d7f-402c-beff-cc1da15cb7ca",
         speaker: "Peserta A",
         text: "Saya fokus pada biaya, sedangkan Bapak fokus pada kualitas.",
         vi: "Tôi tập trung vào chi phí, trong khi anh/bác tập trung vào chất lượng.",
         en: "I focus on cost, whereas you focus on quality.",
       },
       {
+        cell_id: "87e036fb-8452-49e9-9676-6c0cf35ba4a9",
         speaker: "Peserta B",
         text: "Benar. Namun, kedua pendapat itu tidak harus bertentangan.",
         vi: "Đúng. Tuy nhiên, hai ý kiến đó không nhất thiết phải mâu thuẫn.",
         en: "Correct. However, the two opinions do not have to contradict each other.",
       },
       {
+        cell_id: "ac110115-021a-4121-b56d-c947d8d20402",
         speaker: "Moderator",
         text: "Baik, mari kita cari persamaan sebelum membahas perbedaannya.",
         vi: "Được, hãy tìm điểm giống nhau trước khi bàn về khác biệt.",
