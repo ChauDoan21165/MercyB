@@ -27,12 +27,10 @@
 //      No clock-skew grace; a tolerance is itself a policy decision and
 //      would re-introduce the exact class of bug this PR closes.
 //
-// `normalizeStatus` keeps the raw→canonical *string* mapping verbatim
-// from me-entitlement/entitlement.ts — including the existing
-// `canceled + future expiry ⇒ active` rule at line 145 of that file —
-// so non-expired inputs map identically to today (the parity claim PR-B
-// will test at each repointed reader). The behavioral delta is rule (3)
-// only, and it lives exclusively in `isEntitled` / `deriveEntitlement`.
+// `normalizeStatus` is deliberately stricter for cancellation terminal
+// states: canceled/cancelled/ended/terminated are non-entitling even when a
+// stale period end remains in the future. Access comes from subscription
+// status + current_period_end + provider; a canceled status means free.
 
 export type EntitlementStatus =
   | "active"
@@ -59,6 +57,7 @@ export type EntitlementInput = {
   state?: unknown;
   expires_at?: unknown;
   current_period_end?: unknown;
+  current_period_end_at?: unknown;
   period_end?: unknown;
   ends_at?: unknown;
   expired_at?: unknown;
@@ -118,6 +117,7 @@ export function getExpiresAt(row: EntitlementInput): string | null {
   return (
     toIsoString(row.expires_at) ??
     toIsoString(row.current_period_end) ??
+    toIsoString(row.current_period_end_at) ??
     toIsoString(row.period_end) ??
     toIsoString(row.ends_at) ??
     toIsoString(row.expired_at) ??
@@ -129,6 +129,7 @@ function getSortTimestamp(row: EntitlementInput): number {
   const candidates: unknown[] = [
     row.updated_at,
     row.current_period_end,
+    row.current_period_end_at,
     row.expires_at,
     row.period_end,
     row.ends_at,
@@ -176,21 +177,13 @@ export function normalizeSource(row: EntitlementInput): EntitlementSource {
 /**
  * Map a raw row to a canonical EntitlementStatus string.
  *
- * Parity-with-main: rules match `me-entitlement/entitlement.ts:101-150`
- * verbatim. The only API difference is that `nowMs` is INJECTED rather
- * than read from `Date.now()` — required for the expiry-edge unit suite
- * to be deterministic and mirrors the recompute-injectable discipline
- * (PR #580).
- *
- * Note: this function preserves the existing `canceled + future expiry
- * ⇒ "active"` rule. That is a status-string preservation choice for
- * back-compat with downstream consumers that read `entitlement.status`;
- * `is_premium` is the value that decides access and flows through
- * `isEntitled` (which DOES check expiry).
+ * `nowMs` is INJECTED rather than read from `Date.now()` — required for the
+ * expiry-edge unit suite to be deterministic and mirrors the
+ * recompute-injectable discipline (PR #580).
  */
 export function normalizeStatus(
   row: EntitlementInput,
-  nowMs: number,
+  nowMs: number
 ): EntitlementStatus {
   const raw = (
     asNonEmptyString(row.status) ??
@@ -234,7 +227,6 @@ export function normalizeStatus(
     case "cancelled":
     case "ended":
     case "terminated":
-      if (expiresAtMs !== null && expiresAtMs > nowMs) return "active";
       return "expired";
     default:
       if (expiresAtMs !== null && expiresAtMs <= nowMs) return "expired";
@@ -253,7 +245,7 @@ export function normalizeStatus(
 export function isEntitled(
   status: EntitlementStatus,
   expiresAtMs: number | null,
-  nowMs: number,
+  nowMs: number
 ): boolean {
   if (!ENTITLING_STATUSES.has(status)) return false;
   if (expiresAtMs === null) return true;
@@ -292,7 +284,7 @@ export function statusRank(status: EntitlementStatus): number {
 export function compareRows(
   a: EntitlementInput,
   b: EntitlementInput,
-  nowMs: number,
+  nowMs: number
 ): number {
   const aStatus = normalizeStatus(a, nowMs);
   const bStatus = normalizeStatus(b, nowMs);
@@ -320,7 +312,7 @@ export function compareRows(
  */
 export function deriveEntitlement(
   rows: readonly EntitlementInput[],
-  now: Date | number,
+  now: Date | number
 ): EntitlementSnapshot {
   const nowMs = normalizeNowMs(now);
 

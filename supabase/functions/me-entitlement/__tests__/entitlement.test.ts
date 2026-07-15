@@ -89,33 +89,33 @@ describe("normalizeStatus — explicit status families", () => {
     expect(normalizeStatus({ state: "Trialing" })).toBe("trialing");
     // explicit `status` wins over the fallbacks
     expect(
-      normalizeStatus({ status: "active", subscription_status: "expired" }),
+      normalizeStatus({ status: "active", subscription_status: "expired" })
     ).toBe("active");
   });
 });
 
 describe("normalizeStatus — expiry-dependent branches (time pinned)", () => {
-  it("treats canceled/ended with a FUTURE expiry as still active", () => {
+  it("treats canceled/ended with a FUTURE expiry as expired", () => {
     for (const s of ["canceled", "cancelled", "ended", "terminated"]) {
       expect(
-        normalizeStatus({ status: s, current_period_end: future(ONE_DAY) }),
-      ).toBe("active");
+        normalizeStatus({ status: s, current_period_end: future(ONE_DAY) })
+      ).toBe("expired");
     }
   });
 
   it("treats canceled/ended with a PAST (or no) expiry as expired", () => {
     expect(
-      normalizeStatus({ status: "canceled", current_period_end: past(ONE_DAY) }),
+      normalizeStatus({ status: "canceled", current_period_end: past(ONE_DAY) })
     ).toBe("expired");
     expect(normalizeStatus({ status: "ended" })).toBe("expired");
   });
 
   it("an unknown status expires when expiry is in the past, else inactive", () => {
     expect(
-      normalizeStatus({ status: "weird", expires_at: past(ONE_DAY) }),
+      normalizeStatus({ status: "weird", expires_at: past(ONE_DAY) })
     ).toBe("expired");
     expect(
-      normalizeStatus({ status: "weird", expires_at: future(ONE_DAY) }),
+      normalizeStatus({ status: "weird", expires_at: future(ONE_DAY) })
     ).toBe("inactive");
     expect(normalizeStatus({ status: "weird" })).toBe("inactive");
   });
@@ -133,16 +133,14 @@ describe("normalizeSource", () => {
   });
 
   it("maps every google alias", () => {
-    for (
-      const s of [
-        "google",
-        "google_play",
-        "googleplay",
-        "play_store",
-        "play",
-        "android",
-      ]
-    ) {
+    for (const s of [
+      "google",
+      "google_play",
+      "googleplay",
+      "play_store",
+      "play",
+      "android",
+    ]) {
       expect(normalizeSource({ source: s })).toBe("google");
     }
   });
@@ -157,7 +155,7 @@ describe("normalizeSource", () => {
     expect(normalizeSource({ platform: "App_Store" })).toBe("apple");
     expect(normalizeSource({ store: "play" })).toBe("google");
     expect(normalizeSource({ source: "stripe", provider: "apple" })).toBe(
-      "stripe",
+      "stripe"
     );
   });
 });
@@ -168,22 +166,22 @@ describe("getExpiresAt", () => {
       getExpiresAt({
         expires_at: "2030-01-01T00:00:00Z",
         current_period_end: "2031-01-01T00:00:00Z",
-      }),
+      })
     ).toBe("2030-01-01T00:00:00.000Z");
   });
 
   it("falls through current_period_end → period_end → ends_at → expired_at", () => {
     expect(getExpiresAt({ current_period_end: "2030-01-01T00:00:00Z" })).toBe(
-      "2030-01-01T00:00:00.000Z",
+      "2030-01-01T00:00:00.000Z"
     );
     expect(getExpiresAt({ period_end: "2030-02-01T00:00:00Z" })).toBe(
-      "2030-02-01T00:00:00.000Z",
+      "2030-02-01T00:00:00.000Z"
     );
     expect(getExpiresAt({ ends_at: "2030-03-01T00:00:00Z" })).toBe(
-      "2030-03-01T00:00:00.000Z",
+      "2030-03-01T00:00:00.000Z"
     );
     expect(getExpiresAt({ expired_at: "2030-04-01T00:00:00Z" })).toBe(
-      "2030-04-01T00:00:00.000Z",
+      "2030-04-01T00:00:00.000Z"
     );
   });
 
@@ -211,7 +209,12 @@ describe("statusRank / isPremiumStatus", () => {
   });
 
   it("counts only active/trialing/grace_period/past_due as premium", () => {
-    for (const s of ["active", "trialing", "grace_period", "past_due"] as const) {
+    for (const s of [
+      "active",
+      "trialing",
+      "grace_period",
+      "past_due",
+    ] as const) {
       expect(isPremiumStatus(s)).toBe(true);
     }
     for (const s of ["paused", "expired", "revoked", "inactive"] as const) {
@@ -227,17 +230,25 @@ describe("statusRank / isPremiumStatus", () => {
 // changed only the expiry rule, nothing else.
 describe("B13 Phase 3 PR-B — R1 expiry regression + parity", () => {
   it("active + past expiry ⇒ is_premium=false (the bug PR-B closes)", () => {
-    const e = normalizeEntitlement(
-      [{ status: "active", current_period_end: past(ONE_DAY), provider: "stripe" }],
-    );
+    const e = normalizeEntitlement([
+      {
+        status: "active",
+        current_period_end: past(ONE_DAY),
+        provider: "stripe",
+      },
+    ]);
     expect(e.is_premium).toBe(false);
     expect(e.expires_at).toBe(past(ONE_DAY));
   });
 
   it("active + future expiry ⇒ is_premium=true (regression lock)", () => {
-    const e = normalizeEntitlement(
-      [{ status: "active", current_period_end: future(ONE_DAY), provider: "stripe" }],
-    );
+    const e = normalizeEntitlement([
+      {
+        status: "active",
+        current_period_end: future(ONE_DAY),
+        provider: "stripe",
+      },
+    ]);
     expect(e.is_premium).toBe(true);
     expect(e.source).toBe("stripe");
     expect(e.expires_at).toBe(future(ONE_DAY));
@@ -252,9 +263,8 @@ describe("B13 Phase 3 PR-B — R1 expiry regression + parity", () => {
   it("trialing/grace_period/past_due + past expiry ⇒ is_premium=false", () => {
     for (const s of ["trialing", "grace_period", "past_due"] as const) {
       expect(
-        normalizeEntitlement(
-          [{ status: s, current_period_end: past(ONE_DAY) }],
-        ).is_premium,
+        normalizeEntitlement([{ status: s, current_period_end: past(ONE_DAY) }])
+          .is_premium
       ).toBe(false);
     }
   });
@@ -269,10 +279,7 @@ describe("B13 Phase 3 PR-B — R1 expiry regression + parity", () => {
     }
   });
 
-  it("parity: status string for non-expired inputs is unchanged from main", () => {
-    // Captured from the pre-PR-B implementation. Each row is non-expired
-    // (or has no expiry), so the only candidate behavioral change is
-    // is_premium; the status string must match exactly.
+  it("normalizes non-expired inputs, with canceled terminal statuses remaining expired", () => {
     const cases: Array<[Record<string, unknown>, CanonicalStatus]> = [
       [{ status: "active", provider: "stripe" }, "active"],
       [{ status: "trialing", provider: "apple" }, "trialing"],
@@ -280,8 +287,12 @@ describe("B13 Phase 3 PR-B — R1 expiry regression + parity", () => {
       [{ status: "past_due", provider: "stripe" }, "past_due"],
       [{ status: "paused", provider: "stripe" }, "paused"],
       [
-        { status: "canceled", current_period_end: future(ONE_DAY), provider: "stripe" },
-        "active",
+        {
+          status: "canceled",
+          current_period_end: future(ONE_DAY),
+          provider: "stripe",
+        },
+        "expired",
       ],
     ];
     for (const [row, expected] of cases) {
@@ -295,8 +306,16 @@ describe("B13 Phase 3 PR-B — R1 expiry regression + parity", () => {
     // stripe-webhook's writer (R3) as well — see the PR description's
     // §parity-with-main note about that consolidation.
     const e = normalizeEntitlement([
-      { status: "trialing", current_period_end: future(30 * ONE_DAY), provider: "apple" },
-      { status: "active", current_period_end: future(ONE_DAY), provider: "stripe" },
+      {
+        status: "trialing",
+        current_period_end: future(30 * ONE_DAY),
+        provider: "apple",
+      },
+      {
+        status: "active",
+        current_period_end: future(ONE_DAY),
+        provider: "stripe",
+      },
     ]);
     expect(e.status).toBe("active");
     expect(e.source).toBe("stripe");
@@ -314,8 +333,16 @@ describe("compareRows / normalizeEntitlement", () => {
   });
 
   it("picks the highest-ranked status regardless of expiry distance", () => {
-    const active = { status: "active", provider: "stripe", expires_at: future(ONE_DAY) };
-    const pausedLater = { status: "paused", provider: "apple", expires_at: future(100 * ONE_DAY) };
+    const active = {
+      status: "active",
+      provider: "stripe",
+      expires_at: future(ONE_DAY),
+    };
+    const pausedLater = {
+      status: "paused",
+      provider: "apple",
+      expires_at: future(100 * ONE_DAY),
+    };
     expect([active, pausedLater].sort(compareRows)[0]).toBe(active);
 
     const e = normalizeEntitlement([pausedLater, active]);
@@ -326,20 +353,29 @@ describe("compareRows / normalizeEntitlement", () => {
   });
 
   it("breaks a status tie by the later expiry", () => {
-    const soon = { status: "active", provider: "apple", expires_at: future(ONE_DAY) };
-    const later = { status: "active", provider: "stripe", expires_at: future(30 * ONE_DAY) };
+    const soon = {
+      status: "active",
+      provider: "apple",
+      expires_at: future(ONE_DAY),
+    };
+    const later = {
+      status: "active",
+      provider: "stripe",
+      expires_at: future(30 * ONE_DAY),
+    };
     expect([soon, later].sort(compareRows)[0]).toBe(later);
     expect(normalizeEntitlement([soon, later]).source).toBe("stripe");
   });
 
   it("reports a lone inactive subscription as non-premium", () => {
-    expect(normalizeEntitlement([{ status: "inactive", provider: "stripe" }]))
-      .toEqual({
-        is_premium: false,
-        source: "stripe",
-        status: "inactive",
-        expires_at: null,
-      });
+    expect(
+      normalizeEntitlement([{ status: "inactive", provider: "stripe" }])
+    ).toEqual({
+      is_premium: false,
+      source: "stripe",
+      status: "inactive",
+      expires_at: null,
+    });
   });
 });
 
@@ -398,8 +434,9 @@ describe("computeTrialStatus (time pinned to 2026-05-01)", () => {
   it("clamps negative / NaN extension to 0 (behaves as the 3-day base)", () => {
     const base = computeTrialStatus("2026-04-25T00:00:00.000Z", false, 0);
     for (const bad of [-10, Number.NaN, "garbage", undefined]) {
-      expect(computeTrialStatus("2026-04-25T00:00:00.000Z", false, bad))
-        .toEqual(base);
+      expect(
+        computeTrialStatus("2026-04-25T00:00:00.000Z", false, bad)
+      ).toEqual(base);
     }
   });
 });

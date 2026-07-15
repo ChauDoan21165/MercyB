@@ -27,9 +27,9 @@
 // (R1's read surface) now routes `is_premium` through `deriveEntitlement`,
 // which applies the expiry check. An "active" row with a past expiry
 // stops granting premium. That is the B13 fix. The status STRING
-// produced by `normalizeStatus` is unchanged for non-expired inputs
-// (parity with the previous implementation, including the existing
-// `canceled + future expiry ⇒ active` rule).
+// produced by `normalizeStatus` is unchanged for non-terminal non-expired
+// inputs. Canceled-style terminal statuses intentionally normalize to expired
+// even if a stale period end is in the future.
 
 import {
   compareRows as sharedCompareRows,
@@ -75,7 +75,7 @@ export function normalizeSource(row: SubscriptionRow): CanonicalSource {
 // should pass `nowMs` explicitly per the shared module's contract.
 export function normalizeStatus(
   row: SubscriptionRow,
-  nowMs: number = Date.now(),
+  nowMs: number = Date.now()
 ): CanonicalStatus {
   return sharedNormalizeStatus(row, nowMs);
 }
@@ -95,7 +95,7 @@ export function statusRank(status: CanonicalStatus): number {
 export function compareRows(
   a: SubscriptionRow,
   b: SubscriptionRow,
-  nowMs: number = Date.now(),
+  nowMs: number = Date.now()
 ): number {
   return sharedCompareRows(a, b, nowMs);
 }
@@ -112,7 +112,7 @@ export function compareRows(
  */
 export function normalizeEntitlement(
   rows: SubscriptionRow[],
-  now: Date | number = new Date(),
+  now: Date | number = new Date()
 ): EntitlementSnapshot {
   return deriveEntitlement(rows, now);
 }
@@ -127,7 +127,7 @@ export const GRANDFATHER_CUTOFF_ISO = "2026-04-22T00:00:00Z";
 export function computeTrialStatus(
   createdAtRaw: unknown,
   isPremium: boolean,
-  trialExtensionDaysRaw: unknown = 0,
+  trialExtensionDaysRaw: unknown = 0
 ): { trial_expires_at: string | null; is_trial_expired: boolean } {
   if (isPremium) {
     return { trial_expires_at: null, is_trial_expired: false };
@@ -151,9 +151,10 @@ export function computeTrialStatus(
   // profiles.trial_extension_days. Defensive clamp: ignore non-finite or
   // negative values rather than corrupting the formula.
   const extensionDaysNum = Number(trialExtensionDaysRaw);
-  const extensionDays = Number.isFinite(extensionDaysNum) && extensionDaysNum > 0
-    ? extensionDaysNum
-    : 0;
+  const extensionDays =
+    Number.isFinite(extensionDaysNum) && extensionDaysNum > 0
+      ? extensionDaysNum
+      : 0;
 
   const totalTrialDays = TRIAL_DAYS + extensionDays;
   const trialEndsMs = createdAtMs + totalTrialDays * 24 * 60 * 60 * 1000;

@@ -73,7 +73,8 @@ type ProviderEventResult = {
   processStatus: string;
 };
 
-const GOOGLE_ANDROID_PUBLISHER_SCOPE = "https://www.googleapis.com/auth/androidpublisher";
+const GOOGLE_ANDROID_PUBLISHER_SCOPE =
+  "https://www.googleapis.com/auth/androidpublisher";
 const GOOGLE_OAUTH_TOKEN_URL = "https://oauth2.googleapis.com/token";
 
 function normalizeEnvironment(value: unknown): BillingEnvironment {
@@ -100,10 +101,14 @@ function nowIso(): string {
 }
 
 function base64UrlEncode(input: Uint8Array | string): string {
-  const bytes = typeof input === "string" ? new TextEncoder().encode(input) : input;
+  const bytes =
+    typeof input === "string" ? new TextEncoder().encode(input) : input;
   let binary = "";
   for (const byte of bytes) binary += String.fromCharCode(byte);
-  return btoa(binary).replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/g, "");
+  return btoa(binary)
+    .replace(/\+/g, "-")
+    .replace(/\//g, "_")
+    .replace(/=+$/g, "");
 }
 
 function pemToArrayBuffer(pem: string): ArrayBuffer {
@@ -117,8 +122,13 @@ function pemToArrayBuffer(pem: string): ArrayBuffer {
   return bytes.buffer;
 }
 
-async function signJwtRs256(payload: JsonRecord, privateKeyPem: string): Promise<string> {
-  const encodedHeader = base64UrlEncode(JSON.stringify({ alg: "RS256", typ: "JWT" }));
+async function signJwtRs256(
+  payload: JsonRecord,
+  privateKeyPem: string
+): Promise<string> {
+  const encodedHeader = base64UrlEncode(
+    JSON.stringify({ alg: "RS256", typ: "JWT" })
+  );
   const encodedPayload = base64UrlEncode(JSON.stringify(payload));
   const signingInput = `${encodedHeader}.${encodedPayload}`;
 
@@ -127,13 +137,13 @@ async function signJwtRs256(payload: JsonRecord, privateKeyPem: string): Promise
     pemToArrayBuffer(privateKeyPem),
     { name: "RSASSA-PKCS1-v1_5", hash: "SHA-256" },
     false,
-    ["sign"],
+    ["sign"]
   );
 
   const signature = await crypto.subtle.sign(
     "RSASSA-PKCS1-v1_5",
     cryptoKey,
-    new TextEncoder().encode(signingInput),
+    new TextEncoder().encode(signingInput)
   );
 
   return `${signingInput}.${base64UrlEncode(new Uint8Array(signature))}`;
@@ -151,11 +161,13 @@ function getGoogleCredentials(): { clientEmail: string; privateKey: string } {
   }
 
   const clientEmail = firstNonEmptyString(Deno.env.get("GOOGLE_CLIENT_EMAIL"));
-  const privateKey = firstNonEmptyString(Deno.env.get("GOOGLE_PRIVATE_KEY"))?.replace(/\\n/g, "\n");
+  const privateKey = firstNonEmptyString(
+    Deno.env.get("GOOGLE_PRIVATE_KEY")
+  )?.replace(/\\n/g, "\n");
 
   if (!clientEmail || !privateKey) {
     throw new Error(
-      "Missing Google service account credentials. Set GOOGLE_SERVICE_ACCOUNT_JSON or GOOGLE_CLIENT_EMAIL + GOOGLE_PRIVATE_KEY.",
+      "Missing Google service account credentials. Set GOOGLE_SERVICE_ACCOUNT_JSON or GOOGLE_CLIENT_EMAIL + GOOGLE_PRIVATE_KEY."
     );
   }
 
@@ -174,7 +186,7 @@ async function getGoogleAccessToken(): Promise<string> {
       iat: now,
       exp: now + 3600,
     },
-    privateKey,
+    privateKey
   );
 
   const response = await fetch(GOOGLE_OAUTH_TOKEN_URL, {
@@ -188,7 +200,9 @@ async function getGoogleAccessToken(): Promise<string> {
 
   if (!response.ok) {
     const text = await response.text();
-    throw new Error(`Failed to obtain Google access token: ${response.status} ${text}`);
+    throw new Error(
+      `Failed to obtain Google access token: ${response.status} ${text}`
+    );
   }
 
   const payload = await response.json();
@@ -202,11 +216,12 @@ async function getGoogleAccessToken(): Promise<string> {
 
 async function fetchGoogleSubscriptionPurchase(
   packageName: string,
-  purchaseToken: string,
+  purchaseToken: string
 ): Promise<GoogleSubscriptionPurchaseV2> {
   const accessToken = await getGoogleAccessToken();
-  const url =
-    `https://androidpublisher.googleapis.com/androidpublisher/v3/applications/${encodeURIComponent(packageName)}/purchases/subscriptionsv2/tokens/${encodeURIComponent(purchaseToken)}`;
+  const url = `https://androidpublisher.googleapis.com/androidpublisher/v3/applications/${encodeURIComponent(
+    packageName
+  )}/purchases/subscriptionsv2/tokens/${encodeURIComponent(purchaseToken)}`;
 
   const response = await fetch(url, {
     method: "GET",
@@ -218,7 +233,9 @@ async function fetchGoogleSubscriptionPurchase(
 
   const text = await response.text();
   if (!response.ok) {
-    throw new Error(`Google subscription lookup failed: ${response.status} ${text}`);
+    throw new Error(
+      `Google subscription lookup failed: ${response.status} ${text}`
+    );
   }
 
   return JSON.parse(text) as GoogleSubscriptionPurchaseV2;
@@ -227,11 +244,14 @@ async function fetchGoogleSubscriptionPurchase(
 async function acknowledgeGoogleSubscriptionPurchase(
   packageName: string,
   productId: string,
-  purchaseToken: string,
+  purchaseToken: string
 ): Promise<void> {
   const accessToken = await getGoogleAccessToken();
-  const url =
-    `https://androidpublisher.googleapis.com/androidpublisher/v3/applications/${encodeURIComponent(packageName)}/purchases/subscriptions/${encodeURIComponent(productId)}/tokens/${encodeURIComponent(purchaseToken)}:acknowledge`;
+  const url = `https://androidpublisher.googleapis.com/androidpublisher/v3/applications/${encodeURIComponent(
+    packageName
+  )}/purchases/subscriptions/${encodeURIComponent(
+    productId
+  )}/tokens/${encodeURIComponent(purchaseToken)}:acknowledge`;
 
   const response = await fetch(url, {
     method: "POST",
@@ -244,16 +264,20 @@ async function acknowledgeGoogleSubscriptionPurchase(
 
   if (!response.ok) {
     const text = await response.text();
-    throw new Error(`Google subscription acknowledge failed: ${response.status} ${text}`);
+    throw new Error(
+      `Google subscription acknowledge failed: ${response.status} ${text}`
+    );
   }
 }
 
 function getPrimaryLineItem(
   purchase: GoogleSubscriptionPurchaseV2,
-  requestedProductId: string,
+  requestedProductId: string
 ): GoogleLineItem | null {
   const lineItems = Array.isArray(purchase.lineItems) ? purchase.lineItems : [];
-  const exact = lineItems.find((item) => item?.productId === requestedProductId);
+  const exact = lineItems.find(
+    (item) => item?.productId === requestedProductId
+  );
   if (exact) return exact;
 
   const withExpiry = [...lineItems]
@@ -269,7 +293,7 @@ function getPrimaryLineItem(
 
 function deriveCanonicalStatus(
   purchase: GoogleSubscriptionPurchaseV2,
-  lineItem: GoogleLineItem | null,
+  lineItem: GoogleLineItem | null
 ): CanonicalStatus {
   switch (purchase.subscriptionState ?? "") {
     case "SUBSCRIPTION_STATE_ACTIVE":
@@ -297,22 +321,32 @@ function deriveCanonicalStatus(
   }
 }
 
-function isPremiumStatus(status: CanonicalStatus | string, currentPeriodEndAt: string | null): boolean {
-  if (status === "active" || status === "trialing" || status === "grace_period") {
+function isPremiumStatus(
+  status: CanonicalStatus | string,
+  currentPeriodEndAt: string | null
+): boolean {
+  if (
+    status === "active" ||
+    status === "trialing" ||
+    status === "grace_period"
+  ) {
     return true;
-  }
-
-  if (status === "canceled" && currentPeriodEndAt) {
-    return new Date(currentPeriodEndAt).getTime() > Date.now();
   }
 
   return false;
 }
 
-function buildProviderPriceId(lineItem: GoogleLineItem | null, fallbackProductId: string): string {
-  const productId = firstNonEmptyString(lineItem?.productId, fallbackProductId) ?? fallbackProductId;
-  const basePlanId = firstNonEmptyString(lineItem?.offerDetails?.basePlanId) ?? "base";
-  const offerId = firstNonEmptyString(lineItem?.offerDetails?.offerId) ?? "base";
+function buildProviderPriceId(
+  lineItem: GoogleLineItem | null,
+  fallbackProductId: string
+): string {
+  const productId =
+    firstNonEmptyString(lineItem?.productId, fallbackProductId) ??
+    fallbackProductId;
+  const basePlanId =
+    firstNonEmptyString(lineItem?.offerDetails?.basePlanId) ?? "base";
+  const offerId =
+    firstNonEmptyString(lineItem?.offerDetails?.offerId) ?? "base";
   return `google:${productId}:${basePlanId}:${offerId}`;
 }
 
@@ -324,28 +358,48 @@ function buildSubscriptionRow(args: {
   environment: BillingEnvironment;
   purchase: GoogleSubscriptionPurchaseV2;
 }): JsonRecord {
-  const { appUserId, purchaseToken, requestedProductId, packageName, environment, purchase } = args;
+  const {
+    appUserId,
+    purchaseToken,
+    requestedProductId,
+    packageName,
+    environment,
+    purchase,
+  } = args;
   const lineItem = getPrimaryLineItem(purchase, requestedProductId);
 
   const status = deriveCanonicalStatus(purchase, lineItem);
-  const providerProductId = firstNonEmptyString(lineItem?.productId, requestedProductId) ?? requestedProductId;
+  const providerProductId =
+    firstNonEmptyString(lineItem?.productId, requestedProductId) ??
+    requestedProductId;
   const currentPeriodStartAt = toIsoOrNull(purchase.startTime) ?? nowIso();
   const currentPeriodEndAt = toIsoOrNull(lineItem?.expiryTime);
-  const canceledAt = toIsoOrNull(purchase.canceledStateContext?.userInitiatedCancellation?.cancelTime);
+  const canceledAt = toIsoOrNull(
+    purchase.canceledStateContext?.userInitiatedCancellation?.cancelTime
+  );
   const providerCustomerId =
-    firstNonEmptyString(purchase.externalAccountIdentifiers?.obfuscatedExternalAccountId, appUserId) ?? appUserId;
+    firstNonEmptyString(
+      purchase.externalAccountIdentifiers?.obfuscatedExternalAccountId,
+      appUserId
+    ) ?? appUserId;
   const providerPriceId = buildProviderPriceId(lineItem, requestedProductId);
 
   return {
+    app_id: "mercy_blade",
     user_id: appUserId,
+    customer_id: providerCustomerId,
+    subscription_id: purchaseToken,
     status,
     provider: "google",
     provider_subscription_id: purchaseToken,
     provider_customer_id: providerCustomerId,
     provider_product_id: providerProductId,
+    product_id: providerProductId,
     provider_price_id: providerPriceId,
     environment,
+    current_period_start: currentPeriodStartAt,
     current_period_start_at: currentPeriodStartAt,
+    current_period_end: currentPeriodEndAt,
     current_period_end_at: currentPeriodEndAt,
     canceled_at: canceledAt,
     cancel_at: status === "canceled" ? currentPeriodEndAt : null,
@@ -373,7 +427,7 @@ function buildSubscriptionRow(args: {
 
 async function upsertCanonicalSubscription(
   supabase: ReturnType<typeof createAdminClient>,
-  row: JsonRecord,
+  row: JsonRecord
 ): Promise<JsonRecord> {
   const provider = String(row.provider);
   const providerSubscriptionId = String(row.provider_subscription_id);
@@ -387,7 +441,9 @@ async function upsertCanonicalSubscription(
     .maybeSingle();
 
   if (existingQuery.error) {
-    throw new Error(`Failed to query subscriptions: ${existingQuery.error.message}`);
+    throw new Error(
+      `Failed to query subscriptions: ${existingQuery.error.message}`
+    );
   }
 
   if (existingQuery.data?.id) {
@@ -399,7 +455,9 @@ async function upsertCanonicalSubscription(
       .single();
 
     if (updateResult.error) {
-      throw new Error(`Failed to update subscription: ${updateResult.error.message}`);
+      throw new Error(
+        `Failed to update subscription: ${updateResult.error.message}`
+      );
     }
 
     return updateResult.data as JsonRecord;
@@ -412,7 +470,9 @@ async function upsertCanonicalSubscription(
     .single();
 
   if (insertResult.error) {
-    throw new Error(`Failed to insert subscription: ${insertResult.error.message}`);
+    throw new Error(
+      `Failed to insert subscription: ${insertResult.error.message}`
+    );
   }
 
   return insertResult.data as JsonRecord;
@@ -420,7 +480,7 @@ async function upsertCanonicalSubscription(
 
 async function getProviderEventMetadata(
   supabase: ReturnType<typeof createAdminClient>,
-  eventId: string,
+  eventId: string
 ): Promise<JsonRecord> {
   const result = await supabase
     .from("billing_provider_events")
@@ -429,18 +489,20 @@ async function getProviderEventMetadata(
     .single();
 
   if (result.error) {
-    throw new Error(`Failed to load provider event metadata: ${result.error.message}`);
+    throw new Error(
+      `Failed to load provider event metadata: ${result.error.message}`
+    );
   }
 
-  return (result.data?.metadata && typeof result.data.metadata === "object")
-    ? result.data.metadata as JsonRecord
+  return result.data?.metadata && typeof result.data.metadata === "object"
+    ? (result.data.metadata as JsonRecord)
     : {};
 }
 
 async function markProviderEventProcessed(
   supabase: ReturnType<typeof createAdminClient>,
   eventId: string,
-  metadataPatch: JsonRecord,
+  metadataPatch: JsonRecord
 ): Promise<void> {
   const currentMetadata = await getProviderEventMetadata(supabase, eventId);
 
@@ -458,14 +520,16 @@ async function markProviderEventProcessed(
     .eq("id", eventId);
 
   if (updateError) {
-    throw new Error(`Failed to mark provider event processed: ${updateError.message}`);
+    throw new Error(
+      `Failed to mark provider event processed: ${updateError.message}`
+    );
   }
 }
 
 async function markProviderEventFailed(
   supabase: ReturnType<typeof createAdminClient>,
   eventId: string,
-  err: Error,
+  err: Error
 ): Promise<void> {
   await supabase
     .from("billing_provider_events")
@@ -495,7 +559,7 @@ Deno.serve(async (req) => {
     firstNonEmptyString(
       record.packageName,
       Deno.env.get("GOOGLE_PLAY_PACKAGE_NAME"),
-      Deno.env.get("GOOGLE_PACKAGE_NAME"),
+      Deno.env.get("GOOGLE_PACKAGE_NAME")
     ) ?? "";
   const environment = normalizeEnvironment(record.environment);
 
@@ -508,7 +572,10 @@ Deno.serve(async (req) => {
   }
 
   if (!packageName) {
-    return error("packageName is required or set GOOGLE_PLAY_PACKAGE_NAME", 400);
+    return error(
+      "packageName is required or set GOOGLE_PLAY_PACKAGE_NAME",
+      400
+    );
   }
 
   const eventKey = ["attach", "google", appUserId, purchaseToken].join(":");
@@ -521,7 +588,7 @@ Deno.serve(async (req) => {
   let eventId: string | null = null;
 
   try {
-    const event = await registerProviderEvent(supabase, {
+    const event = (await registerProviderEvent(supabase, {
       provider: "google",
       environment,
       eventKey,
@@ -529,14 +596,21 @@ Deno.serve(async (req) => {
       eventType: "attach_purchase_requested",
       payload: record,
       metadata: requestMetadata,
-    }) as ProviderEventResult;
+    })) as ProviderEventResult;
 
     eventId = event.id;
 
-    const purchase = await fetchGoogleSubscriptionPurchase(packageName, purchaseToken);
+    const purchase = await fetchGoogleSubscriptionPurchase(
+      packageName,
+      purchaseToken
+    );
 
     if (purchase.acknowledgementState === "ACKNOWLEDGEMENT_STATE_PENDING") {
-      await acknowledgeGoogleSubscriptionPurchase(packageName, productId, purchaseToken);
+      await acknowledgeGoogleSubscriptionPurchase(
+        packageName,
+        productId,
+        purchaseToken
+      );
     }
 
     const subscriptionRow = buildSubscriptionRow({
@@ -548,8 +622,13 @@ Deno.serve(async (req) => {
       purchase,
     });
 
-    const savedSubscription = await upsertCanonicalSubscription(supabase, subscriptionRow);
-    const currentPeriodEndAt = firstNonEmptyString(savedSubscription.current_period_end_at);
+    const savedSubscription = await upsertCanonicalSubscription(
+      supabase,
+      subscriptionRow
+    );
+    const currentPeriodEndAt = firstNonEmptyString(
+      savedSubscription.current_period_end_at
+    );
     const status = String(savedSubscription.status ?? subscriptionRow.status);
 
     await markProviderEventProcessed(supabase, event.id, {
@@ -559,26 +638,32 @@ Deno.serve(async (req) => {
       canonical_status: status,
     });
 
-    return json({
-      ok: true,
-      queued: false,
-      provider: "google",
-      environment,
-      event,
-      subscription: {
-        id: savedSubscription.id ?? null,
-        provider: savedSubscription.provider ?? "google",
-        providerSubscriptionId: savedSubscription.provider_subscription_id ?? purchaseToken,
-        providerCustomerId: savedSubscription.provider_customer_id ?? appUserId,
-        providerProductId: savedSubscription.provider_product_id ?? productId,
-        providerPriceId: savedSubscription.provider_price_id ?? null,
-        status,
-        currentPeriodEndAt,
+    return json(
+      {
+        ok: true,
+        queued: false,
+        provider: "google",
+        environment,
+        event,
+        subscription: {
+          id: savedSubscription.id ?? null,
+          provider: savedSubscription.provider ?? "google",
+          providerSubscriptionId:
+            savedSubscription.provider_subscription_id ?? purchaseToken,
+          providerCustomerId:
+            savedSubscription.provider_customer_id ?? appUserId,
+          providerProductId: savedSubscription.provider_product_id ?? productId,
+          providerPriceId: savedSubscription.provider_price_id ?? null,
+          status,
+          currentPeriodEndAt,
+        },
+        entitled: isPremiumStatus(status, currentPeriodEndAt),
       },
-      entitled: isPremiumStatus(status, currentPeriodEndAt),
-    }, { status: 200 });
+      { status: 200 }
+    );
   } catch (err) {
-    const normalizedError = err instanceof Error ? err : new Error("Unexpected error");
+    const normalizedError =
+      err instanceof Error ? err : new Error("Unexpected error");
 
     if (eventId) {
       await markProviderEventFailed(supabase, eventId, normalizedError);

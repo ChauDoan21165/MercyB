@@ -11,6 +11,7 @@ import {
   fetchCurrentEntitlement,
   resolveEntitlementTier,
 } from "@/lib/authService";
+import { subscribeToEntitlementRefresh } from "@/lib/entitlementRefresh";
 import { useProfileQuery } from "@/lib/queries/useProfileQuery";
 
 export interface FeatureAccess {
@@ -132,7 +133,10 @@ function parseDateMs(value: unknown): number | null {
   return Number.isFinite(parsed) ? parsed : null;
 }
 
-function inferTrialExpired(entitlement: unknown, entitlementTier: TierId): boolean {
+function inferTrialExpired(
+  entitlement: unknown,
+  entitlementTier: TierId
+): boolean {
   if (isPremiumTier(entitlementTier)) return false;
 
   const explicitExpired =
@@ -158,7 +162,7 @@ function buildFeatureAccess(
   options?: {
     unlockMercyFeatures?: boolean;
     trialExpired?: boolean;
-  },
+  }
 ): FeatureAccess {
   const isPremium = isPremiumTier(entitlementTier);
   const trialExpired = Boolean(options?.trialExpired);
@@ -242,7 +246,8 @@ function authenticatedFreeAccess(params: {
   const isAdmin = isHighAdmin;
   const loading = Boolean(params.loading);
   const isTrialExpired = Boolean(params.isTrialExpired) && !isHighAdmin;
-  const unlockMercyFeatures = !isTrialExpired && (FORCE_UNLOCK_MERCY_FEATURES || isHighAdmin);
+  const unlockMercyFeatures =
+    !isTrialExpired && (FORCE_UNLOCK_MERCY_FEATURES || isHighAdmin);
   const entitlementTier: TierId = "level0";
   const userTier: TierId = isHighAdmin
     ? "level9"
@@ -295,9 +300,16 @@ export const useUserAccess = (): UserAccess => {
   const profile = profileQuery.data ?? null;
   const profileLoading = Boolean(userId) && profileQuery.isLoading;
   const profileError = profileQuery.isError;
+  const [refreshNonce, setRefreshNonce] = useState(0);
 
   // Run counter — discard results from stale concurrent runs
   const runIdRef = useRef(0);
+
+  useEffect(() => {
+    return subscribeToEntitlementRefresh(() => {
+      setRefreshNonce((value) => value + 1);
+    });
+  }, []);
 
   useEffect(() => {
     const runId = ++runIdRef.current;
@@ -333,7 +345,7 @@ export const useUserAccess = (): UserAccess => {
           userId,
           email: userEmail,
           loading: true,
-        }),
+        })
       );
 
       if (profileLoading) {
@@ -427,7 +439,16 @@ export const useUserAccess = (): UserAccess => {
     };
 
     void run();
-  }, [authLoading, profile, profileError, profileLoading, user, userId, userEmail]);
+  }, [
+    authLoading,
+    profile,
+    profileError,
+    profileLoading,
+    refreshNonce,
+    user,
+    userId,
+    userEmail,
+  ]);
 
   return useMemo(() => access, [access]);
 };

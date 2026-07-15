@@ -7,45 +7,32 @@
 // the split already applied to `me-entitlement` (index → entitlement.ts)
 // and `revenuecat-webhook` (index → auth.ts).
 //
-// Pre-PR-B, this function lived inline at index.ts:50 as
-// `const isPremium = premiumStatus === "active"` — `premiumExpiresAt`
-// was read but never used. An "active" row with a past expiry was
-// projected as premium. R2 of B13 Phase 3.
-//
-// Now `is_premium` flows through the shared expiry-aware
-// `deriveEntitlement`; `status` becomes the canonical normalized
-// EntitlementStatus (previously the raw DB string was passed through,
-// which could be lowercase/mixed-case Stripe states); `expires_at` and
-// `source` mirror the persisted projection unchanged.
+// This function intentionally derives from public.subscriptions rows, not
+// profiles.premium_* projection columns. profiles.premium_* is only a display
+// cache and may be stale until the edge reader reconciles it.
 
 import {
   deriveEntitlement,
   type EntitlementSnapshot,
 } from "../_shared/entitlement.ts";
 
-export type SubscriptionStatusProfile = {
-  premium_status?: unknown;
-  premium_expires_at?: unknown;
-  premium_source?: unknown;
-} | null;
+export type SubscriptionStatusRow = {
+  status?: unknown;
+  current_period_end?: unknown;
+  current_period_end_at?: unknown;
+  provider?: unknown;
+  source?: unknown;
+  updated_at?: unknown;
+  id?: unknown;
+};
 
 /**
- * Project the persisted `profiles.premium_*` columns into the response
- * envelope returned by `get-subscription-status`. Pure; `now` is
- * injected for testability.
+ * Project canonical subscription rows into the response envelope returned by
+ * `get-subscription-status`. Pure; `now` is injected for testability.
  */
 export function buildEntitlementSnapshot(
-  profile: SubscriptionStatusProfile,
-  now: Date | number = new Date(),
+  subscriptions: readonly SubscriptionStatusRow[] | null | undefined,
+  now: Date | number = new Date()
 ): EntitlementSnapshot {
-  return deriveEntitlement(
-    [
-      {
-        status: profile?.premium_status,
-        expires_at: profile?.premium_expires_at,
-        source: profile?.premium_source,
-      },
-    ],
-    now,
-  );
+  return deriveEntitlement(subscriptions ?? [], now);
 }

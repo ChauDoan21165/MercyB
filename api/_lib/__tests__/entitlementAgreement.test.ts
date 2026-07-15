@@ -22,7 +22,10 @@
 //   provider-null    — provider=null, active, future expiry     → premium
 
 import { describe, expect, it } from "vitest";
-import { deriveEntitlement, type EntitlementInput } from "../../../supabase/functions/_shared/entitlement";
+import {
+  deriveEntitlement,
+  type EntitlementInput,
+} from "../../../supabase/functions/_shared/entitlement";
 import { resolveConversationEntitlementAccess } from "../conversationEntitlement";
 
 const NOW_MS = new Date("2026-06-01T00:00:00.000Z").getTime();
@@ -40,17 +43,26 @@ const FIXTURES: Array<{
 }> = [
   {
     label: "active — future expiry",
-    row: { status: "active", current_period_end: future(30), provider: "stripe" },
+    row: {
+      status: "active",
+      current_period_end: future(30),
+      provider: "stripe",
+    },
     expectedIsPremium: true,
   },
   {
-    label: "active — past expiry (FOLLOW-403 bug class: was premium before B13)",
+    label:
+      "active — past expiry (FOLLOW-403 bug class: was premium before B13)",
     row: { status: "active", current_period_end: past(1), provider: "stripe" },
     expectedIsPremium: false,
   },
   {
     label: "active — expiry exactly at NOW (strict boundary: expired)",
-    row: { status: "active", current_period_end: new Date(NOW_MS).toISOString(), provider: "stripe" },
+    row: {
+      status: "active",
+      current_period_end: new Date(NOW_MS).toISOString(),
+      provider: "stripe",
+    },
     expectedIsPremium: false,
   },
   {
@@ -60,12 +72,20 @@ const FIXTURES: Array<{
   },
   {
     label: "trialing — future expiry",
-    row: { status: "trialing", current_period_end: future(14), provider: "stripe" },
+    row: {
+      status: "trialing",
+      current_period_end: future(14),
+      provider: "stripe",
+    },
     expectedIsPremium: true,
   },
   {
     label: "trialing — past expiry",
-    row: { status: "trialing", current_period_end: past(1), provider: "stripe" },
+    row: {
+      status: "trialing",
+      current_period_end: past(1),
+      provider: "stripe",
+    },
     expectedIsPremium: false,
   },
   {
@@ -84,8 +104,13 @@ const FIXTURES: Array<{
     expectedIsPremium: true,
   },
   {
-    label: "test-grant — no provider, far future expiry (FOLLOW-403 account shape: active + 2030)",
-    row: { status: "active", provider: null, current_period_end: "2030-01-01T00:00:00.000Z" },
+    label:
+      "test-grant — no provider, far future expiry (FOLLOW-403 account shape: active + 2030)",
+    row: {
+      status: "active",
+      provider: null,
+      current_period_end: "2030-01-01T00:00:00.000Z",
+    },
     expectedIsPremium: true,
   },
   {
@@ -100,27 +125,47 @@ const FIXTURES: Array<{
   },
   {
     label: "paused — never premium regardless of expiry",
-    row: { status: "paused", current_period_end: future(30), provider: "stripe" },
+    row: {
+      status: "paused",
+      current_period_end: future(30),
+      provider: "stripe",
+    },
     expectedIsPremium: false,
   },
   {
     label: "expired-status — never premium",
-    row: { status: "expired", current_period_end: future(30), provider: "stripe" },
+    row: {
+      status: "expired",
+      current_period_end: future(30),
+      provider: "stripe",
+    },
     expectedIsPremium: false,
   },
   {
     label: "revoked — never premium",
-    row: { status: "revoked", current_period_end: future(30), provider: "stripe" },
+    row: {
+      status: "revoked",
+      current_period_end: future(30),
+      provider: "stripe",
+    },
     expectedIsPremium: false,
   },
   {
-    label: "canceled + future expiry — status='active', is_premium=true (parity with main)",
-    row: { status: "canceled", current_period_end: future(5), provider: "stripe" },
-    expectedIsPremium: true,
+    label: "canceled + future expiry — expired, not premium",
+    row: {
+      status: "canceled",
+      current_period_end: future(5),
+      provider: "stripe",
+    },
+    expectedIsPremium: false,
   },
   {
     label: "canceled + past expiry — expired, not premium",
-    row: { status: "canceled", current_period_end: past(5), provider: "stripe" },
+    row: {
+      status: "canceled",
+      current_period_end: past(5),
+      provider: "stripe",
+    },
     expectedIsPremium: false,
   },
 ];
@@ -150,13 +195,16 @@ describe("entitlement agreement: deriveEntitlement × resolveConversationEntitle
 describe("tier-null — entitlement snapshot absent or null (me-entitlement fetch failure)", () => {
   it("entitlement=null → not premium (fail closed)", () => {
     expect(
-      resolveConversationEntitlementAccess({ entitlement: null, adminLevel: 0 }),
+      resolveConversationEntitlementAccess({ entitlement: null, adminLevel: 0 })
     ).toBe(false);
   });
 
   it("entitlement=undefined → not premium (fail closed)", () => {
     expect(
-      resolveConversationEntitlementAccess({ entitlement: undefined, adminLevel: 0 }),
+      resolveConversationEntitlementAccess({
+        entitlement: undefined,
+        adminLevel: 0,
+      })
     ).toBe(false);
   });
 
@@ -165,7 +213,7 @@ describe("tier-null — entitlement snapshot absent or null (me-entitlement fetc
       resolveConversationEntitlementAccess({
         entitlement: { is_premium: undefined },
         adminLevel: 0,
-      }),
+      })
     ).toBe(false);
   });
 
@@ -173,7 +221,10 @@ describe("tier-null — entitlement snapshot absent or null (me-entitlement fetc
     const snapshot = deriveEntitlement([], NOW_MS);
     expect(snapshot.is_premium).toBe(false);
     expect(
-      resolveConversationEntitlementAccess({ entitlement: snapshot, adminLevel: 0 }),
+      resolveConversationEntitlementAccess({
+        entitlement: snapshot,
+        adminLevel: 0,
+      })
     ).toBe(false);
   });
 
@@ -185,7 +236,7 @@ describe("tier-null — entitlement snapshot absent or null (me-entitlement fetc
       resolveConversationEntitlementAccess({
         entitlement: { is_premium: 1 as unknown },
         adminLevel: 0,
-      }),
+      })
     ).toBe(false);
   });
 });
@@ -194,7 +245,7 @@ describe("tier-null — entitlement snapshot absent or null (me-entitlement fetc
 describe("admin bypass", () => {
   it("adminLevel=9 grants access even when entitlement is null", () => {
     expect(
-      resolveConversationEntitlementAccess({ entitlement: null, adminLevel: 9 }),
+      resolveConversationEntitlementAccess({ entitlement: null, adminLevel: 9 })
     ).toBe(true);
   });
 
@@ -203,7 +254,7 @@ describe("admin bypass", () => {
       resolveConversationEntitlementAccess({
         entitlement: { is_premium: false },
         adminLevel: 8,
-      }),
+      })
     ).toBe(false);
   });
 
@@ -212,7 +263,7 @@ describe("admin bypass", () => {
       resolveConversationEntitlementAccess({
         entitlement: null,
         adminLevel: "9",
-      }),
+      })
     ).toBe(true);
   });
 });

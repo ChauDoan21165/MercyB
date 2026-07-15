@@ -13,7 +13,7 @@
 //        active + past expiry      ⇒ NOT premium    (the bug)
 //        active + null expiry      ⇒ premium        (no new lockout)
 //        expiry === now            ⇒ expired        (boundary, strict)
-//        canceled + future expiry  ⇒ status="active" (parity with main)
+//        canceled + future expiry  ⇒ status="expired", not premium
 //        empty rows                ⇒ inactive/false
 //   3. Parity / determinism: `normalizeStatus` does NOT call Date.now()
 //      (provable by running with mocked timers and confirming output
@@ -107,9 +107,7 @@ describe("isEntitled — the rule, in isolation", () => {
   });
 
   it("ENTITLING_STATUSES set matches the four entitling strings", () => {
-    expect([...ENTITLING_STATUSES].sort()).toEqual(
-      [...ENTITLING].sort(),
-    );
+    expect([...ENTITLING_STATUSES].sort()).toEqual([...ENTITLING].sort());
   });
 });
 
@@ -146,9 +144,9 @@ describe("normalizeStatus — explicit families (parity with me-entitlement/enti
   });
 
   it("reads status from `subscription_status` when `status` is absent", () => {
-    expect(
-      normalizeStatus({ subscription_status: "active" }, NOW_MS),
-    ).toBe("active");
+    expect(normalizeStatus({ subscription_status: "active" }, NOW_MS)).toBe(
+      "active"
+    );
   });
 
   it("reads status from `state` as the final fallback", () => {
@@ -156,31 +154,31 @@ describe("normalizeStatus — explicit families (parity with me-entitlement/enti
   });
 });
 
-describe("normalizeStatus — canceled + expiry (parity with me-entitlement :145)", () => {
-  it("'canceled' + future expiry ⇒ active (status string preserved)", () => {
+describe("normalizeStatus — canceled + expiry", () => {
+  it("'canceled' + future expiry ⇒ expired", () => {
     expect(
       normalizeStatus(
         { status: "canceled", current_period_end: future(ONE_DAY) },
-        NOW_MS,
-      ),
-    ).toBe("active");
+        NOW_MS
+      )
+    ).toBe("expired");
   });
 
-  it("'cancelled' + future expiry ⇒ active (British spelling)", () => {
+  it("'cancelled' + future expiry ⇒ expired (British spelling)", () => {
     expect(
       normalizeStatus(
         { status: "cancelled", expires_at: future(ONE_DAY) },
-        NOW_MS,
-      ),
-    ).toBe("active");
+        NOW_MS
+      )
+    ).toBe("expired");
   });
 
   it("'canceled' + past expiry ⇒ expired", () => {
     expect(
       normalizeStatus(
         { status: "canceled", current_period_end: past(ONE_DAY) },
-        NOW_MS,
-      ),
+        NOW_MS
+      )
     ).toBe("expired");
   });
 
@@ -188,8 +186,8 @@ describe("normalizeStatus — canceled + expiry (parity with me-entitlement :145
     expect(
       normalizeStatus(
         { status: "canceled", current_period_end: atNow() },
-        NOW_MS,
-      ),
+        NOW_MS
+      )
     ).toBe("expired");
   });
 
@@ -203,8 +201,8 @@ describe("normalizeStatus — unrecognized + expiry (parity with me-entitlement 
     expect(
       normalizeStatus(
         { status: "weird-stripe-state", current_period_end: future(ONE_DAY) },
-        NOW_MS,
-      ),
+        NOW_MS
+      )
     ).toBe("inactive");
   });
 
@@ -212,8 +210,8 @@ describe("normalizeStatus — unrecognized + expiry (parity with me-entitlement 
     expect(
       normalizeStatus(
         { status: "weird-stripe-state", current_period_end: past(ONE_DAY) },
-        NOW_MS,
-      ),
+        NOW_MS
+      )
     ).toBe("expired");
   });
 
@@ -222,9 +220,9 @@ describe("normalizeStatus — unrecognized + expiry (parity with me-entitlement 
   });
 
   it("missing status + past expiry ⇒ expired", () => {
-    expect(
-      normalizeStatus({ current_period_end: past(ONE_DAY) }, NOW_MS),
-    ).toBe("expired");
+    expect(normalizeStatus({ current_period_end: past(ONE_DAY) }, NOW_MS)).toBe(
+      "expired"
+    );
   });
 });
 
@@ -233,15 +231,15 @@ describe("normalizeStatus — does NOT consult wall-clock", () => {
   // Sanity-check: call with two `nowMs` values that straddle a row's
   // expiry; the answer must change with the *parameter*, not the
   // process clock.
-  it("flips between active/expired purely from injected nowMs", () => {
+  it("flips between inactive/expired purely from injected nowMs", () => {
     const row: EntitlementInput = {
-      status: "canceled",
+      status: "provider_unknown",
       current_period_end: new Date(2026, 5, 15).toISOString(),
     };
     const before = new Date(2026, 5, 14).getTime();
     const after = new Date(2026, 5, 16).getTime();
 
-    expect(normalizeStatus(row, before)).toBe("active");
+    expect(normalizeStatus(row, before)).toBe("inactive");
     expect(normalizeStatus(row, after)).toBe("expired");
   });
 });
@@ -256,19 +254,20 @@ describe("getExpiresAt — canonical field order", () => {
       getExpiresAt({
         expires_at: future(ONE_DAY),
         current_period_end: future(2 * ONE_DAY),
-      }),
+      })
     ).toBe(future(ONE_DAY));
   });
 
-  it("falls back to current_period_end, then period_end, then ends_at, then expired_at", () => {
-    expect(getExpiresAt({ current_period_end: future(ONE_DAY) }))
-      .toBe(future(ONE_DAY));
-    expect(getExpiresAt({ period_end: future(ONE_DAY) }))
-      .toBe(future(ONE_DAY));
-    expect(getExpiresAt({ ends_at: future(ONE_DAY) }))
-      .toBe(future(ONE_DAY));
-    expect(getExpiresAt({ expired_at: future(ONE_DAY) }))
-      .toBe(future(ONE_DAY));
+  it("falls back to current_period_end, then current_period_end_at, then period_end, then ends_at, then expired_at", () => {
+    expect(getExpiresAt({ current_period_end: future(ONE_DAY) })).toBe(
+      future(ONE_DAY)
+    );
+    expect(getExpiresAt({ current_period_end_at: future(ONE_DAY) })).toBe(
+      future(ONE_DAY)
+    );
+    expect(getExpiresAt({ period_end: future(ONE_DAY) })).toBe(future(ONE_DAY));
+    expect(getExpiresAt({ ends_at: future(ONE_DAY) })).toBe(future(ONE_DAY));
+    expect(getExpiresAt({ expired_at: future(ONE_DAY) })).toBe(future(ONE_DAY));
   });
 
   it("returns null when no expiry field is set", () => {
@@ -282,8 +281,9 @@ describe("getExpiresAt — canonical field order", () => {
   });
 
   it("normalizes timezone variants to ISO 8601", () => {
-    expect(getExpiresAt({ expires_at: "2026-06-01T00:00:00Z" }))
-      .toBe("2026-06-01T00:00:00.000Z");
+    expect(getExpiresAt({ expires_at: "2026-06-01T00:00:00Z" })).toBe(
+      "2026-06-01T00:00:00.000Z"
+    );
   });
 });
 
@@ -357,7 +357,11 @@ describe("compareRows — multi-row contention", () => {
   it("breaks tie by latest expiry", () => {
     const rows: EntitlementInput[] = [
       { id: "early", status: "active", current_period_end: future(ONE_DAY) },
-      { id: "late", status: "active", current_period_end: future(10 * ONE_DAY) },
+      {
+        id: "late",
+        status: "active",
+        current_period_end: future(10 * ONE_DAY),
+      },
     ];
     rows.sort((x, y) => compareRows(x, y, NOW_MS));
     expect(rows[0].id).toBe("late");
@@ -441,15 +445,19 @@ describe("deriveEntitlement — single-row matrix (status × expiry)", () => {
   }
 
   // Non-entitling raw statuses → never premium, status mapped verbatim.
-  for (
-    const [raw, canonical] of [
-      ["paused", "paused"],
-      ["expired", "expired"],
-      ["revoked", "revoked"],
-      ["inactive", "inactive"],
-    ] as const
-  ) {
-    for (const exp of ["null", "past", "now", "future", "unparseable"] as const) {
+  for (const [raw, canonical] of [
+    ["paused", "paused"],
+    ["expired", "expired"],
+    ["revoked", "revoked"],
+    ["inactive", "inactive"],
+  ] as const) {
+    for (const exp of [
+      "null",
+      "past",
+      "now",
+      "future",
+      "unparseable",
+    ] as const) {
       cases.push({
         rawStatus: raw,
         expiry: exp,
@@ -469,7 +477,7 @@ describe("deriveEntitlement — single-row matrix (status × expiry)", () => {
       const snap = deriveEntitlement([row], NOW_MS);
       expect(snap.is_premium).toBe(is_premium);
       expect(snap.status).toBe(status);
-    },
+    }
   );
 });
 
@@ -477,7 +485,7 @@ describe("deriveEntitlement — named cases the dispatch spec calls out", () => 
   it("active + past expiry ⇒ NOT premium (the bug PR-B closes)", () => {
     const snap = deriveEntitlement(
       [{ status: "active", current_period_end: past(ONE_DAY) }],
-      NOW_MS,
+      NOW_MS
     );
     expect(snap.is_premium).toBe(false);
     expect(snap.status).toBe("active");
@@ -494,24 +502,24 @@ describe("deriveEntitlement — named cases the dispatch spec calls out", () => 
   it("expiry exactly === now ⇒ expired (strict boundary)", () => {
     const snap = deriveEntitlement(
       [{ status: "active", current_period_end: atNow() }],
-      NOW_MS,
+      NOW_MS
     );
     expect(snap.is_premium).toBe(false);
   });
 
-  it("canceled + future expiry ⇒ status='active' AND is_premium=true (parity with main)", () => {
+  it("canceled + future expiry ⇒ status='expired' AND is_premium=false", () => {
     const snap = deriveEntitlement(
       [{ status: "canceled", current_period_end: future(ONE_DAY) }],
-      NOW_MS,
+      NOW_MS
     );
-    expect(snap.status).toBe("active");
-    expect(snap.is_premium).toBe(true);
+    expect(snap.status).toBe("expired");
+    expect(snap.is_premium).toBe(false);
   });
 
   it("canceled + past expiry ⇒ status='expired', is_premium=false", () => {
     const snap = deriveEntitlement(
       [{ status: "canceled", current_period_end: past(ONE_DAY) }],
-      NOW_MS,
+      NOW_MS
     );
     expect(snap.status).toBe("expired");
     expect(snap.is_premium).toBe(false);
@@ -525,7 +533,7 @@ describe("deriveEntitlement — multi-row winner contention", () => {
         { id: "old", status: "expired", current_period_end: past(ONE_DAY) },
         { id: "new", status: "active", current_period_end: future(ONE_DAY) },
       ],
-      NOW_MS,
+      NOW_MS
     );
     expect(snap.is_premium).toBe(true);
     expect(snap.expires_at).toBe(future(ONE_DAY));
@@ -535,9 +543,13 @@ describe("deriveEntitlement — multi-row winner contention", () => {
     const snap = deriveEntitlement(
       [
         { id: "close", status: "active", current_period_end: future(ONE_DAY) },
-        { id: "far", status: "active", current_period_end: future(30 * ONE_DAY) },
+        {
+          id: "far",
+          status: "active",
+          current_period_end: future(30 * ONE_DAY),
+        },
       ],
-      NOW_MS,
+      NOW_MS
     );
     expect(snap.expires_at).toBe(future(30 * ONE_DAY));
   });
@@ -553,9 +565,13 @@ describe("deriveEntitlement — multi-row winner contention", () => {
           status: "expired",
           current_period_end: future(100 * ONE_DAY),
         },
-        { id: "active-new", status: "active", current_period_end: future(ONE_DAY) },
+        {
+          id: "active-new",
+          status: "active",
+          current_period_end: future(ONE_DAY),
+        },
       ],
-      NOW_MS,
+      NOW_MS
     );
     expect(snap.status).toBe("active");
     expect(snap.expires_at).toBe(future(ONE_DAY));
@@ -594,31 +610,31 @@ describe("deriveEntitlement — `now` accepts Date or number identically", () =>
       current_period_end: future(ONE_DAY),
     };
     expect(deriveEntitlement([row], NOW_MS)).toEqual(
-      deriveEntitlement([row], NOW_DATE),
+      deriveEntitlement([row], NOW_DATE)
     );
   });
 
   it("non-finite numeric `now` collapses to 0 (defensive — never throws)", () => {
-    expect(() => deriveEntitlement([{ status: "active" }], Number.NaN)).not
-      .toThrow();
+    expect(() =>
+      deriveEntitlement([{ status: "active" }], Number.NaN)
+    ).not.toThrow();
     const snap = deriveEntitlement([{ status: "active" }], Number.NaN);
     expect(snap.is_premium).toBe(true); // null expiry stays entitling
   });
 });
 
 /* ────────────────────────────────────────────────────────────────────────
- * Parity-with-main spot checks
+ * Status mapping spot checks
  *
- * For non-expired inputs, the new derive's STATUS STRING must equal
- * what me-entitlement/entitlement.ts would have emitted on the same row
- * — this is the load-bearing back-compat claim of PR-A. We re-implement
- * the old single-row decision inline (using current wall-clock would
- * make this non-deterministic; the old code's only `now` consumer was
- * the canceled/default branch, both of which we cover above).
+ * Non-terminal status mapping stays stable. Terminal canceled-style statuses
+ * intentionally remain expired even if a period date is still in the future.
  * ──────────────────────────────────────────────────────────────────── */
 
-describe("Parity — status-string mapping unchanged for non-expired inputs", () => {
-  const nonExpiredRows: Array<{ row: EntitlementInput; status: EntitlementStatus }> = [
+describe("Status mapping for non-expired inputs", () => {
+  const nonExpiredRows: Array<{
+    row: EntitlementInput;
+    status: EntitlementStatus;
+  }> = [
     { row: { status: "active" }, status: "active" },
     { row: { status: "trialing" }, status: "trialing" },
     { row: { status: "trial" }, status: "trialing" },
@@ -635,16 +651,13 @@ describe("Parity — status-string mapping unchanged for non-expired inputs", ()
     { row: { status: "ACTIVE" }, status: "active" },
     {
       row: { status: "canceled", current_period_end: future(ONE_DAY) },
-      status: "active",
+      status: "expired",
     },
   ];
 
-  it.each(nonExpiredRows)(
-    "row $row → status=$status",
-    ({ row, status }) => {
-      expect(normalizeStatus(row, NOW_MS)).toBe(status);
-    },
-  );
+  it.each(nonExpiredRows)("row $row → status=$status", ({ row, status }) => {
+    expect(normalizeStatus(row, NOW_MS)).toBe(status);
+  });
 
   it("ALL_STATUSES list matches the EntitlementStatus union (drift guard)", () => {
     // If a new status is added to the union, this test forces the test
