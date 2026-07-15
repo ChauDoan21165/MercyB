@@ -120,6 +120,11 @@ const L1_FOLLOW_UP_BANK: Readonly<
     { id: "article-job", tag: "vi_l1_missing_article", promptVi: "Mẹ bạn làm nghề gì? Viết một câu với 'a/an' trước nghề.", exampleEn: "She is a teacher." },
     { id: "article-have", tag: "vi_l1_missing_article", promptVi: "Bạn có một con vật nuôi nào không? Dùng 'a' trước danh từ.", exampleEn: "I have a dog." },
   ],
+  vi_l1_profession_article_copula: [
+    { id: "profession-family", tag: "vi_l1_profession_article_copula", promptVi: "Một người trong gia đình bạn làm nghề gì? Dùng 'is a/an ...'.", exampleEn: "My mother is a nurse." },
+    { id: "profession-friend", tag: "vi_l1_profession_article_copula", promptVi: "Bạn của bạn làm nghề gì? Viết một câu có 'is a/an' trước nghề.", exampleEn: "My friend is an engineer." },
+    { id: "profession-goal", tag: "vi_l1_profession_article_copula", promptVi: "Sau này bạn muốn làm nghề gì? Dùng 'be a/an ...'.", exampleEn: "I want to be a pilot." },
+  ],
   vi_l1_question_no_aux: [
     { id: "aux-habit", tag: "vi_l1_question_no_aux", promptVi: "Hỏi bạn cùng lớp về thói quen của họ. Bắt đầu bằng 'Do you ...?'.", exampleEn: "Do you like coffee?" },
     { id: "aux-3rd", tag: "vi_l1_question_no_aux", promptVi: "Hỏi về một người khác: bắt đầu bằng 'Does he/she ...?'.", exampleEn: "Does she play tennis?" },

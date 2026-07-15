@@ -67,6 +67,7 @@ describe("follow-up bank", () => {
       "vi_l1_plural_s",
       "vi_l1_missing_be",
       "vi_l1_missing_article",
+      "vi_l1_profession_article_copula",
       "vi_l1_question_no_aux",
       "vi_l1_preposition_transfer",
     ];
@@ -96,6 +97,7 @@ describe("follow-up bank", () => {
         "vi_l1_plural_s",
         "vi_l1_missing_be",
         "vi_l1_missing_article",
+        "vi_l1_profession_article_copula",
         "vi_l1_question_no_aux",
         "vi_l1_preposition_transfer",
       ] as L1WeaknessTag[]
@@ -116,6 +118,7 @@ describe("follow-up bank", () => {
       "vi_l1_plural_s",
       "vi_l1_missing_be",
       "vi_l1_missing_article",
+      "vi_l1_profession_article_copula",
       "vi_l1_question_no_aux",
       "vi_l1_preposition_transfer",
     ];
@@ -138,6 +141,7 @@ describe("follow-up bank", () => {
       "vi_l1_plural_s",
       "vi_l1_missing_be",
       "vi_l1_missing_article",
+      "vi_l1_profession_article_copula",
       "vi_l1_question_no_aux",
       "vi_l1_preposition_transfer",
     ];

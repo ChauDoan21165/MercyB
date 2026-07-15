@@ -168,7 +168,19 @@ export type L1WeaknessTag =
   | 'vi_l1_future_adverb_bare'        // L1-065 A2
   | 'vi_l1_co_transfer'               // L1-063 A2 — two sub-patterns
   | 'vi_l1_topic_comment_fronting'    // L1-064 B1
-  | 'vi_l1_subject_gender';           // L1-066 A2 — cross-sentence
+  | 'vi_l1_subject_gender'            // L1-066 A2 — cross-sentence
+  // Group B VI detector exports
+  | 'vi_l1_profession_article_copula'
+  | 'vi_l1_progressive_be_drop'
+  | 'vi_l1_definite_article_remention'
+  | 'vi_l1_noun_preposition_collocation'
+  | 'vi_l1_say_tell_argument_frame'
+  | 'vi_l1_learn_study_transfer'
+  | 'vi_l1_know_meet_timeline'
+  | 'vi_l1_verb_noun_collocation'
+  | 'vi_l1_appliance_open_close_transfer'
+  | 'vi_l1_connector_stacking'
+  | 'vi_l1_elliptical_subject_transfer';
 
 export type L1FeedbackText = {
   en: string;
@@ -766,6 +778,74 @@ const TIME_PREP_MISMATCHES: Array<{ wrong: string; right: string }> = [
   { wrong: 'in sunday',    right: 'on sunday' },
 ];
 
+const PROFESSION_NOUNS = new Set([
+  'accountant', 'architect', 'artist', 'cashier', 'chef', 'dentist',
+  'doctor', 'driver', 'engineer', 'farmer', 'lawyer', 'manager',
+  'mechanic', 'nurse', 'pilot', 'programmer', 'scientist', 'singer',
+  'student', 'teacher', 'waiter', 'worker', 'writer',
+]);
+
+const PROGRESSIVE_BE_FORMS = new Set(['am', 'is', 'are', 'was', 'were']);
+
+const NOUN_PREPOSITION_COLLOCATIONS: Array<{ wrong: string; right: string }> = [
+  { wrong: 'reason of', right: 'reason for' },
+  { wrong: 'opinion about', right: 'opinion on' },
+  { wrong: 'demand of', right: 'demand for' },
+  { wrong: 'solution of', right: 'solution to' },
+  { wrong: 'increase of', right: 'increase in' },
+];
+
+const SAY_TELL_ARGUMENT_FRAMES: Array<{ wrong: string; right: string }> = [
+  { wrong: 'said me', right: 'told me' },
+  { wrong: 'said him', right: 'told him' },
+  { wrong: 'said her', right: 'told her' },
+  { wrong: 'said us', right: 'told us' },
+  { wrong: 'said them', right: 'told them' },
+  { wrong: 'tell with him', right: 'talk to him' },
+  { wrong: 'tell with her', right: 'talk to her' },
+  { wrong: 'tell with them', right: 'talk to them' },
+  { wrong: 'talked him about', right: 'talked to him about' },
+  { wrong: 'talked her about', right: 'talked to her about' },
+  { wrong: 'talked them about', right: 'talked to them about' },
+];
+
+const STUDY_FORMS = new Set(['study', 'studies', 'studied', 'studying']);
+const LEARN_FORMS = new Set(['learn', 'learns', 'learned', 'learnt', 'learning']);
+const LEARN_PRACTICE_FORMS = new Set([
+  'learn', 'learns', 'learned', 'learnt', 'learning',
+  'practice', 'practices', 'practiced', 'practicing',
+  'practise', 'practises', 'practised', 'practising',
+]);
+
+const KNOW_FORMS = new Set(['know', 'knows', 'knew', 'known']);
+const MEET_FORMS = new Set(['meet', 'meets', 'met', 'meeting']);
+
+const MEDICINE_COLLOCATIONS: Array<{ wrong: string; right: string }> = [
+  { wrong: 'eat medicine', right: 'take medicine' },
+  { wrong: 'eats medicine', right: 'takes medicine' },
+  { wrong: 'ate medicine', right: 'took medicine' },
+  { wrong: 'drink medicine', right: 'take medicine' },
+  { wrong: 'drinks medicine', right: 'takes medicine' },
+  { wrong: 'drank medicine', right: 'took medicine' },
+  { wrong: 'used medicine', right: 'took medicine' },
+];
+
+const APPLIANCE_NOUNS = [
+  'light', 'lamp', 'tv', 'television', 'fan', 'air conditioner',
+  'ac', 'computer', 'heater',
+];
+
+const SUBJECT_PRONOUNS = new Set(['i', 'you', 'he', 'she', 'it', 'we', 'they']);
+
+function phraseIncludes(text: string, phrase: string): boolean {
+  const escaped = phrase.replace(/[.*+?^${}()|[\]\\]/g, '\\$&').replace(/\s+/g, '\\s+');
+  return new RegExp(`\\b${escaped}\\b`, 'i').test(text);
+}
+
+function removeOneAt(tokens: readonly string[], index: number): string[] {
+  return [...tokens.slice(0, index), ...tokens.slice(index + 1)];
+}
+
 // ────────────────────────────────────────────────────────────────────────────
 // Rule implementations (pure functions — no I/O, no side effects)
 // ────────────────────────────────────────────────────────────────────────────
@@ -805,6 +885,190 @@ export type L1Rule = (args: RuleArgs) => RuleHit | null;
 // Internal alias kept for backwards-compatibility with the existing rule
 // declarations (they're typed as `Rule` throughout the file).
 type Rule = L1Rule;
+
+/** Group B VI-2. Profession nouns need be + a/an. */
+export const ruleProfessionArticleCopula: Rule = ({ userTokens, expectedTokens, rawExpected }) => {
+  for (let i = 0; i < expectedTokens.length; i++) {
+    const article = expectedTokens[i];
+    const profession = expectedTokens[i + 1];
+    if (!['a', 'an'].includes(article) || !PROFESSION_NOUNS.has(profession)) continue;
+    const prev = expectedTokens[i - 1];
+    const hasCopulaNearArticle = prev ? BE_VERBS.has(prev) || prev === 'be' : false;
+    if (!hasCopulaNearArticle) continue;
+
+    const userProfessionIdx = userTokens.indexOf(profession);
+    if (userProfessionIdx < 0) continue;
+    const userPrev = userTokens[userProfessionIdx - 1];
+    const userPrev2 = userTokens[userProfessionIdx - 2];
+    const userHasArticle = userPrev === 'a' || userPrev === 'an';
+    const userHasBe = BE_VERBS.has(userPrev) || userPrev === 'be' || BE_VERBS.has(userPrev2) || userPrev2 === 'be';
+    if (!userHasArticle || !userHasBe) {
+      return { tag: 'vi_l1_profession_article_copula', replacements: { FIX: rawExpected } };
+    }
+  }
+  return null;
+};
+
+/** Group B VI-3. Progressive auxiliary be drop. */
+export const ruleProgressiveBeDrop: Rule = ({ userTokens, expectedTokens, rawExpected }) => {
+  if (expectedTokens.length !== userTokens.length + 1) return null;
+  for (let i = 0; i < expectedTokens.length; i++) {
+    if (!PROGRESSIVE_BE_FORMS.has(expectedTokens[i])) continue;
+    const next = expectedTokens[i + 1];
+    if (!next?.endsWith('ing')) continue;
+    const withoutBe = removeOneAt(expectedTokens, i);
+    if (withoutBe.every((token, idx) => token === userTokens[idx])) {
+      return { tag: 'vi_l1_progressive_be_drop', replacements: { FIX: rawExpected } };
+    }
+  }
+  return null;
+};
+
+/** Group B VI-7. Definite article on a repeated noun. */
+export const ruleDefiniteArticleRemention: Rule = ({ userTokens, expectedTokens, rawExpected }) => {
+  if (expectedTokens.length !== userTokens.length + 1) return null;
+  for (let i = 0; i < expectedTokens.length - 1; i++) {
+    if (expectedTokens[i] !== 'the') continue;
+    const noun = expectedTokens[i + 1];
+    if (!noun || ARTICLES.has(noun)) continue;
+    const withoutThe = removeOneAt(expectedTokens, i);
+    if (!withoutThe.every((token, idx) => token === userTokens[idx])) continue;
+    const earlier = expectedTokens.slice(0, i);
+    const wasMentioned =
+      earlier.some((token, idx) => token === noun && ARTICLES.has(earlier[idx - 1] ?? '')) ||
+      userTokens.slice(0, Math.max(0, i - 1)).some((token, idx, arr) => token === noun && ARTICLES.has(arr[idx - 1] ?? ''));
+    if (wasMentioned) {
+      return { tag: 'vi_l1_definite_article_remention', replacements: { FIX: rawExpected } };
+    }
+  }
+  return null;
+};
+
+/** Group B VI-11. Thin-evidence academic noun-preposition collocations. */
+export const ruleNounPrepositionCollocation: Rule = ({ userText, expectedText, rawExpected }) => {
+  for (const pair of NOUN_PREPOSITION_COLLOCATIONS) {
+    if (phraseIncludes(userText, pair.wrong) && phraseIncludes(expectedText, pair.right)) {
+      return { tag: 'vi_l1_noun_preposition_collocation', replacements: { FIX: rawExpected } };
+    }
+  }
+  return null;
+};
+
+/** Group B VI-12. say/tell/speak/talk argument frame transfer. */
+export const ruleSayTellArgumentFrame: Rule = ({ userText, expectedText, rawExpected }) => {
+  for (const pair of SAY_TELL_ARGUMENT_FRAMES) {
+    if (phraseIncludes(userText, pair.wrong) && phraseIncludes(expectedText, pair.right)) {
+      return { tag: 'vi_l1_say_tell_argument_frame', replacements: { FIX: rawExpected } };
+    }
+  }
+  return null;
+};
+
+/** Group B VI-13. Contextual learn/practice vs study transfer. */
+export const ruleLearnStudyTransfer: Rule = ({ userTokens, expectedTokens, rawExpected }) => {
+  if (userTokens.length !== expectedTokens.length) return null;
+  for (let i = 0; i < userTokens.length; i++) {
+    if (
+      (STUDY_FORMS.has(userTokens[i]) && LEARN_PRACTICE_FORMS.has(expectedTokens[i])) ||
+      (LEARN_FORMS.has(userTokens[i]) && STUDY_FORMS.has(expectedTokens[i]))
+    ) {
+      return { tag: 'vi_l1_learn_study_transfer', replacements: { FIX: rawExpected } };
+    }
+  }
+  return null;
+};
+
+/** Group B VI-14. know vs meet for first-meeting timeline contexts. */
+export const ruleKnowMeetTimeline: Rule = ({ userTokens, expectedTokens, rawExpected }) => {
+  if (userTokens.length !== expectedTokens.length) return null;
+  if (!hasPastTimeMarker(userTokens) && !hasPastTimeMarker(expectedTokens)) return null;
+  for (let i = 0; i < userTokens.length; i++) {
+    if (KNOW_FORMS.has(userTokens[i]) && MEET_FORMS.has(expectedTokens[i])) {
+      return { tag: 'vi_l1_know_meet_timeline', replacements: { FIX: rawExpected } };
+    }
+  }
+  return null;
+};
+
+/** Group B VI-15. Thin-evidence verb+noun collocation: take medicine. */
+export const ruleVerbNounCollocation: Rule = ({ userText, expectedText, rawExpected }) => {
+  for (const pair of MEDICINE_COLLOCATIONS) {
+    if (phraseIncludes(userText, pair.wrong) && phraseIncludes(expectedText, pair.right)) {
+      return { tag: 'vi_l1_verb_noun_collocation', replacements: { FIX: rawExpected } };
+    }
+  }
+  return null;
+};
+
+/** Group B VI-16. open/close appliance transfer. */
+export const ruleApplianceOpenCloseTransfer: Rule = ({ userText, expectedText, rawExpected }) => {
+  for (const appliance of APPLIANCE_NOUNS) {
+    if (
+      phraseIncludes(userText, `open the ${appliance}`) &&
+      phraseIncludes(expectedText, `turn on the ${appliance}`)
+    ) {
+      return { tag: 'vi_l1_appliance_open_close_transfer', replacements: { FIX: rawExpected } };
+    }
+    if (
+      phraseIncludes(userText, `close the ${appliance}`) &&
+      phraseIncludes(expectedText, `turn off the ${appliance}`)
+    ) {
+      return { tag: 'vi_l1_appliance_open_close_transfer', replacements: { FIX: rawExpected } };
+    }
+  }
+  return null;
+};
+
+/** Group B VI-17. Redundant paired connectors. */
+export const ruleConnectorStacking: Rule = ({ userText, expectedText, rawExpected }) => {
+  const userLower = userText.toLowerCase();
+  const expectedLower = expectedText.toLowerCase();
+  const becauseSo =
+    /\bbecause\b[\s\S]{1,120}\bso\b/.test(userLower) &&
+    !/\bbecause\b[\s\S]{1,120}\bso\b/.test(expectedLower);
+  const althoughBut =
+    /\b(although|even though)\b[\s\S]{1,120}\bbut\b/.test(userLower) &&
+    !/\b(although|even though)\b[\s\S]{1,120}\bbut\b/.test(expectedLower);
+  if (becauseSo || althoughBut) {
+    return { tag: 'vi_l1_connector_stacking', replacements: { FIX: rawExpected } };
+  }
+  return null;
+};
+
+/** Group B VI-19. Vietnamese-style omitted subject in English finite clauses. */
+export const ruleEllipticalSubjectTransfer: Rule = ({ userTokens, expectedTokens, rawExpected }) => {
+  if (expectedTokens.length !== userTokens.length + 1 && expectedTokens.length !== userTokens.length + 2) return null;
+  for (let i = 0; i < expectedTokens.length; i++) {
+    const inserted = expectedTokens[i];
+    if (!SUBJECT_PRONOUNS.has(inserted)) continue;
+    const prev = expectedTokens[i - 1] ?? '';
+    const next = expectedTokens[i + 1] ?? '';
+    const sentenceInitialSubordinate = i === 1 && ['because', 'when', 'if', 'although'].includes(prev);
+    const opinionModal = i >= 3 && expectedTokens.slice(0, i).join(' ') === 'in my opinion';
+
+    const withoutSubject = removeOneAt(expectedTokens, i);
+    if (
+      withoutSubject.length === userTokens.length &&
+      withoutSubject.every((token, idx) => token === userTokens[idx]) &&
+      (sentenceInitialSubordinate || (opinionModal && MODAL_VERBS.has(next)))
+    ) {
+      return { tag: 'vi_l1_elliptical_subject_transfer', replacements: { FIX: rawExpected } };
+    }
+
+    const withoutSubjectAndBe = BE_VERBS.has(next)
+      ? [...expectedTokens.slice(0, i), ...expectedTokens.slice(i + 2)]
+      : null;
+    if (
+      withoutSubjectAndBe &&
+      withoutSubjectAndBe.length === userTokens.length &&
+      withoutSubjectAndBe.every((token, idx) => token === userTokens[idx]) &&
+      sentenceInitialSubordinate
+    ) {
+      return { tag: 'vi_l1_elliptical_subject_transfer', replacements: { FIX: rawExpected } };
+    }
+  }
+  return null;
+};
 
 /** 1. Missing third-person -s. */
 export const ruleThirdPersonS: Rule = ({ userTokens, expectedTokens, rawExpected }) => {

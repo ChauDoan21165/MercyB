@@ -347,4 +347,59 @@ export const VN_EXPLANATIONS: L1Explanation[] = [
     en: "When you talk about the future with **tomorrow**, **next week**, **soon**, or **in 2 hours**, English needs **will** before the verb. Vietnamese just adds the time word — *Mai tôi đi* — and the verb stays the same. Try: *{FIX}*.",
     vi: "Khi nói về tương lai với **tomorrow**, **next week**, **soon**, hay **in 2 hours**, tiếng Anh cần **will** trước động từ. Tiếng Việt mình chỉ cần thêm từ chỉ thời gian — *Mai tôi đi* — động từ không đổi. Thử: *{FIX}*.",
   },
+  {
+    tag: 'vi_l1_profession_article_copula',
+    en: "For jobs and roles, English usually needs both **be** and **a/an**: *She is a teacher*. Vietnamese can say the role directly. Try: *{FIX}*.",
+    vi: "Khi nói nghề nghiệp/vai trò, tiếng Anh thường cần cả **be** và **a/an**: *She is a teacher*. Tiếng Việt có thể nói trực tiếp danh từ nghề. Thử: *{FIX}*.",
+  },
+  {
+    tag: 'vi_l1_progressive_be_drop',
+    en: "For actions happening now, English uses **be + -ing**: *I am going*, *she is cooking*. Vietnamese does not need that helper. Try: *{FIX}*.",
+    vi: "Khi nói hành động đang diễn ra, tiếng Anh dùng **be + V-ing**: *I am going*, *she is cooking*. Tiếng Việt không cần trợ động từ này. Thử: *{FIX}*.",
+  },
+  {
+    tag: 'vi_l1_definite_article_remention',
+    en: "When you mention the same thing again, English often switches to **the** because the listener now knows which one. Try: *{FIX}*.",
+    vi: "Khi nhắc lại cùng một vật/người, tiếng Anh thường dùng **the** vì người nghe đã biết mình nói tới cái nào. Thử: *{FIX}*.",
+  },
+  {
+    tag: 'vi_l1_noun_preposition_collocation',
+    en: "Some academic noun phrases take fixed prepositions in English. This one is a collocation, not a word-for-word translation. Try: *{FIX}*.",
+    vi: "Một số cụm danh từ học thuật trong tiếng Anh đi với giới từ cố định. Đây là collocation, không dịch từng chữ từ tiếng Việt. Thử: *{FIX}*.",
+  },
+  {
+    tag: 'vi_l1_say_tell_argument_frame',
+    en: "**Say**, **tell**, **speak**, and **talk** take different object patterns in English. Vietnamese uses a simpler frame. Try: *{FIX}*.",
+    vi: "**Say / tell / speak / talk** có khung tân ngữ khác nhau trong tiếng Anh. Tiếng Việt dùng cấu trúc đơn giản hơn. Thử: *{FIX}*.",
+  },
+  {
+    tag: 'vi_l1_learn_study_transfer',
+    en: "Vietnamese **học** can mean study, learn, or practice. English chooses the verb by context. Try: *{FIX}*.",
+    vi: "Tiếng Việt **học** có thể là study, learn hoặc practice. Tiếng Anh chọn động từ theo ngữ cảnh. Thử: *{FIX}*.",
+  },
+  {
+    tag: 'vi_l1_know_meet_timeline',
+    en: "For the first time you saw someone, English uses **met**, not **knew**. **Know** means you already have familiarity. Try: *{FIX}*.",
+    vi: "Khi gặp ai lần đầu, tiếng Anh dùng **met**, không dùng **knew**. **Know** nghĩa là đã quen/biết người đó. Thử: *{FIX}*.",
+  },
+  {
+    tag: 'vi_l1_verb_noun_collocation',
+    en: "English says **take medicine**, not *eat/drink medicine*. This is a fixed verb-noun collocation. Try: *{FIX}*.",
+    vi: "Tiếng Anh nói **take medicine**, không nói *eat/drink medicine*. Đây là cụm động từ-danh từ cố định. Thử: *{FIX}*.",
+  },
+  {
+    tag: 'vi_l1_appliance_open_close_transfer',
+    en: "For lights, TVs, fans, and appliances, English uses **turn on/off**, not **open/close**. Try: *{FIX}*.",
+    vi: "Với đèn, TV, quạt và thiết bị điện, tiếng Anh dùng **turn on/off**, không dùng **open/close**. Thử: *{FIX}*.",
+  },
+  {
+    tag: 'vi_l1_connector_stacking',
+    en: "English usually uses one connector, not a paired double connector: **because** without **so**, **although/even though** without **but**. Try: *{FIX}*.",
+    vi: "Tiếng Anh thường chỉ dùng một liên từ: **because** không đi kèm **so**, **although/even though** không đi kèm **but**. Thử: *{FIX}*.",
+  },
+  {
+    tag: 'vi_l1_elliptical_subject_transfer',
+    en: "Vietnamese can omit a subject when context is clear. English finite clauses normally need an explicit subject. Try: *{FIX}*.",
+    vi: "Tiếng Việt có thể lược bỏ chủ ngữ khi ngữ cảnh rõ. Mệnh đề tiếng Anh thường cần chủ ngữ rõ ràng. Thử: *{FIX}*.",
+  },
 ];

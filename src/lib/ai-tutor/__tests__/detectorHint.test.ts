@@ -51,9 +51,9 @@ describe("getDetectorHint", () => {
   });
 
   it("returns chip content for every tag in HIGH_SEVERITY_DETECTOR_TAGS", () => {
-    // v2 expansion: 6 high + 11 medium = 17 eligible tags. Iterates
+    // v2 expansion plus Group B profession article: 18 eligible tags. Iterates
     // the Set so the test stays correct if the Set is tuned later.
-    expect(HIGH_SEVERITY_DETECTOR_TAGS.size).toBe(17);
+    expect(HIGH_SEVERITY_DETECTOR_TAGS.size).toBe(18);
     for (const tag of HIGH_SEVERITY_DETECTOR_TAGS) {
       _resetHintDedupForTesting(); // each tag tested independently of the cap
       const hint = getDetectorHint(matched(tag));
@@ -116,14 +116,15 @@ describe("SESSION_CAP — session-wide cap across DIFFERENT tags", () => {
 });
 
 describe("TAG_TO_NAME_EN curated labels — v2 medium-severity expansion", () => {
-  // Authoring contract for the 11 medium-severity tags surfaced by the
+  // Authoring contract for the medium-severity tags surfaced by the
   // C5 recon. These tags become chip-eligible only once the gate
   // expansion lands (PR-A, already merged to main). The labels here
   // (PR-B) ensure the chip never falls back to a mechanical
   // "Missing Article" / "Vs With" type string in production.
   const MEDIUM_TAGS_V2 = [
-    // article family (6)
+    // article family (7)
     "vi_l1_missing_article",
+    "vi_l1_profession_article_copula",
     "vi_l1_a_vs_an_vowel",
     "vi_l1_geographical_article",
     "vi_l1_no_article_generic",
@@ -140,7 +141,7 @@ describe("TAG_TO_NAME_EN curated labels — v2 medium-severity expansion", () =>
   ] as const;
 
   it("ships a curated English label for every medium v2 tag", () => {
-    expect(MEDIUM_TAGS_V2.length).toBe(11);
+    expect(MEDIUM_TAGS_V2.length).toBe(12);
     for (const tag of MEDIUM_TAGS_V2) {
       const label = TAG_TO_NAME_EN[tag];
       expect(label, tag).toBeTruthy();

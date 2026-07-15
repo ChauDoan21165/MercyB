@@ -23,6 +23,7 @@ import {
   ruleAdjectiveOrder,
   ruleAdverbBeforeSubject,
   ruleAnotherVsOther,
+  ruleApplianceOpenCloseTransfer,
   ruleAvsAnVowel,
   ruleBeenVsGone,
   ruleByVsWith,
@@ -33,10 +34,13 @@ import {
   ruleCoTransfer,
   ruleCountable,
   ruleCountableMuch,
+  ruleConnectorStacking,
+  ruleDefiniteArticleRemention,
   ruleDoSupport3ps,
   ruleDoubleNegative,
   ruleDoublePast,
   ruleEachSingular,
+  ruleEllipticalSubjectTransfer,
   ruleEmbeddedQuestionOrder,
   ruleEveryonePlural,
   ruleGenericPlural,
@@ -44,6 +48,8 @@ import {
   ruleGerundAfterVerb,
   ruleFutureAdverbBare,
   ruleIfWill,
+  ruleKnowMeetTimeline,
+  ruleLearnStudyTransfer,
   ruleLookSeeWatch,
   ruleMakeLetBare,
   ruleMakeVsDo,
@@ -54,12 +60,15 @@ import {
   ruleNegativeInversion,
   ruleNoArticleGeneric,
   ruleNoAuxNegation,
+  ruleNounPrepositionCollocation,
   ruleOneOfTheSingular,
   rulePassiveMissingBe,
   rulePastEd,
   rulePastPerfectMissing,
   rulePhrasalPronounOrder,
   rulePluralS,
+  ruleProfessionArticleCopula,
+  ruleProgressiveBeDrop,
   rulePossessiveGender,
   rulePossessiveSMissing,
   rulePrepositionTransfer,
@@ -70,6 +79,7 @@ import {
   ruleReportedSpeech,
   ruleSinceVsFor,
   ruleSomeVsAny,
+  ruleSayTellArgumentFrame,
   ruleSubjectGender,
   ruleSubjectRelativeOmit,
   ruleSubjunctiveWere,
@@ -84,6 +94,7 @@ import {
   ruleToVerbConfusion,
   ruleUsedToVsBeUsedTo,
   ruleTopicCommentFronting,
+  ruleVerbNounCollocation,
   ruleVeryMuchPlacement,
 } from '../../l1-error-detector.js';
 
@@ -96,6 +107,10 @@ export const VN_RULES: L1Rule[] = [
   ruleThirdPersonS,          // 1
   rulePastEd,                // 2
   rulePluralS,               // 3
+  // Group B refinements run before broad missing-be/article/preposition
+  // fallbacks so learners get the named VI detector message.
+  ruleProfessionArticleCopula,
+  ruleProgressiveBeDrop,
   // 30 runs BEFORE 4 so "the cake eaten" → "the cake was eaten" lands
   // on passive-voice feedback instead of generic missing-be.
   rulePassiveMissingBe,      // 30
@@ -111,10 +126,19 @@ export const VN_RULES: L1Rule[] = [
   // message when both rules could fire.
   ruleGeographicalArticle,   // 47
   ruleSuperlativeThe,        // 60
+  ruleDefiniteArticleRemention,
   ruleMissingArticle,        // 6
   rulePossessiveGender,      // 8
+  ruleNounPrepositionCollocation,
+  ruleSayTellArgumentFrame,
+  ruleVerbNounCollocation,
+  ruleApplianceOpenCloseTransfer,
   rulePrepositionTransfer,   // 9
   ruleCountable,             // 10
+  ruleLearnStudyTransfer,
+  ruleKnowMeetTimeline,
+  ruleConnectorStacking,
+  ruleEllipticalSubjectTransfer,
   ruleToVerbConfusion,       // 11
   ruleCanNoInfinitive,       // 12
   ruleDoublePast,            // 13
