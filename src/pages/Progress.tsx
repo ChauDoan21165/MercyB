@@ -21,7 +21,7 @@
 //   - signed-in, 0 attempts → CTA to /speak
 
 import React, { useCallback, useEffect, useMemo, useState } from "react";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import {
   Bar,
   BarChart,
@@ -37,6 +37,7 @@ import {
 
 import { useAuth } from "@/providers/AuthProvider";
 import { useFeatureFlag } from "@/hooks/useFeatureFlag";
+import { LearnerProfileProgressCards } from "@/components/learner-profile/LearnerProfileProgressCards";
 import PhonemeHeatmapSection from "@/components/pronunciation/PhonemeHeatmapSection";
 import {
   CANONICAL_PHONEMES,
@@ -261,7 +262,10 @@ export default function ProgressPage() {
   // Lazy-load all data on /progress visit only — never on Home.
   useEffect(() => {
     if (flagLoading || authLoading) return;
-    if (!enabled) return;
+    if (!enabled) {
+      setLoading(false);
+      return;
+    }
     if (!user) {
       setLoading(false);
       return;
@@ -335,7 +339,7 @@ export default function ProgressPage() {
     [trend],
   );
 
-  if (flagLoading || authLoading) {
+  if (authLoading || flagLoading) {
     return (
       <div style={wrap}>
         <div style={column}>
@@ -344,7 +348,6 @@ export default function ProgressPage() {
       </div>
     );
   }
-  if (!enabled) return <Navigate to="/" replace />;
 
   // Anonymous-user empty state.
   if (!user) {
@@ -385,34 +388,70 @@ export default function ProgressPage() {
     );
   }
 
-  if (loading) {
-    return (
-      <div style={wrap}>
-        <div style={column}>
-          <h1 style={heading}>
-            {COPY.pageTitle.vi} · {COPY.pageTitle.en}
-          </h1>
-          <div style={{ ...cardStyle, color: "#64748b", fontSize: 13 }}>
-            {COPY.loading.vi} · {COPY.loading.en}
-          </div>
-        </div>
-      </div>
-    );
-  }
-
   const noAttempts =
     !summary ||
     (summary.thisWeek.attempts === 0 &&
       summary.lastWeek.attempts === 0 &&
       recent.length === 0);
 
-  if (noAttempts) {
-    return (
-      <div style={wrap}>
-        <div style={column}>
+  // Happy-path render. Learner-profile cards are independent of the
+  // pronunciation feature flag; the speech dashboard stays conditional below.
+  return (
+    <div style={wrap}>
+      <div style={column}>
+        <header
+          style={{ display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 8 }}
+        >
           <h1 style={heading}>
             {COPY.pageTitle.vi} · {COPY.pageTitle.en}
           </h1>
+          {enabled ? (
+            <button
+              type="button"
+              onClick={() => void onDownloadCsv()}
+              style={{
+                background: "white",
+                color: "#111827",
+                borderRadius: 9999,
+                minHeight: 36,
+                padding: "0 14px",
+                fontWeight: 600,
+                fontSize: 12,
+                border: "1px solid rgba(0,0,0,0.12)",
+                cursor: "pointer",
+              }}
+              data-testid="progress-download-csv"
+            >
+              Download CSV · Tải CSV
+            </button>
+          ) : null}
+        </header>
+
+        <LearnerProfileProgressCards
+          userId={user.id}
+          onPractice={() => navigate("/ai-tutor")}
+        />
+
+        {enabled && error ? (
+          <div
+            role="alert"
+            style={{
+              ...cardStyle,
+              borderColor: "#fecaca",
+              background: "#fef2f2",
+              color: "#991b1b",
+              fontSize: 13,
+            }}
+          >
+            {COPY.loadFailed.en} / {COPY.loadFailed.vi}: {error}
+          </div>
+        ) : null}
+
+        {!enabled ? null : loading ? (
+          <div style={{ ...cardStyle, color: "#64748b", fontSize: 13 }}>
+            {COPY.loading.vi} · {COPY.loading.en}
+          </div>
+        ) : noAttempts ? (
           <section
             style={{ ...cardStyle, textAlign: "center" }}
             data-testid="progress-empty"
@@ -442,87 +481,41 @@ export default function ProgressPage() {
               </button>
             </div>
           </section>
-        </div>
-      </div>
-    );
-  }
+        ) : (
+          <>
+            {summary ? <HeroCard summary={summary} /> : null}
 
-  // Happy-path render.
-  return (
-    <div style={wrap}>
-      <div style={column}>
-        <header
-          style={{ display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 8 }}
-        >
-          <h1 style={heading}>
-            {COPY.pageTitle.vi} · {COPY.pageTitle.en}
-          </h1>
-          <button
-            type="button"
-            onClick={() => void onDownloadCsv()}
-            style={{
-              background: "white",
-              color: "#111827",
-              borderRadius: 9999,
-              minHeight: 36,
-              padding: "0 14px",
-              fontWeight: 600,
-              fontSize: 12,
-              border: "1px solid rgba(0,0,0,0.12)",
-              cursor: "pointer",
-            }}
-            data-testid="progress-download-csv"
-          >
-            ⬇ Download CSV · Tải CSV
-          </button>
-        </header>
+            {/* Phoneme bar chart */}
+            {phonemeRows.length > 0 ? (
+              <PhonemeChartCard
+                rows={phonemeRows}
+                selected={selectedPhoneme}
+                onSelect={onSelectPhoneme}
+              />
+            ) : null}
 
-        {error ? (
-          <div
-            role="alert"
-            style={{
-              ...cardStyle,
-              borderColor: "#fecaca",
-              background: "#fef2f2",
-              color: "#991b1b",
-              fontSize: 13,
-            }}
-          >
-            {COPY.loadFailed.en} / {COPY.loadFailed.vi}: {error}
-          </div>
-        ) : null}
+            {/* Drilldown timeline */}
+            {selectedPhoneme && phonemeTimeline ? (
+              <PhonemeTimelineCard
+                phoneme={selectedPhoneme}
+                points={phonemeTimeline}
+              />
+            ) : null}
 
-        {summary ? <HeroCard summary={summary} /> : null}
+            {/* 4-week trend */}
+            {trendRows.length > 0 ? <TrendCard rows={trendRows} /> : null}
 
-        {/* Phoneme bar chart */}
-        {phonemeRows.length > 0 ? (
-          <PhonemeChartCard
-            rows={phonemeRows}
-            selected={selectedPhoneme}
-            onSelect={onSelectPhoneme}
-          />
-        ) : null}
+            {/* Most-improved + still-working badges */}
+            {summary ? <BadgesRow summary={summary} /> : null}
 
-        {/* Drilldown timeline */}
-        {selectedPhoneme && phonemeTimeline ? (
-          <PhonemeTimelineCard
-            phoneme={selectedPhoneme}
-            points={phonemeTimeline}
-          />
-        ) : null}
+            {/* Phoneme heatmap — per-day per-phoneme grid + insights.
+                Self-fetching; hidden until user has 5+ attempts in window. */}
+            <PhonemeHeatmapSection userId={user?.id ?? null} />
 
-        {/* 4-week trend */}
-        {trendRows.length > 0 ? <TrendCard rows={trendRows} /> : null}
-
-        {/* Most-improved + still-working badges */}
-        {summary ? <BadgesRow summary={summary} /> : null}
-
-        {/* Phoneme heatmap — per-day per-phoneme grid + insights.
-            Self-fetching; hidden until user has 5+ attempts in window. */}
-        <PhonemeHeatmapSection userId={user?.id ?? null} />
-
-        {/* Recent attempts */}
-        {recent.length > 0 ? <RecentAttemptsCard rows={recent} /> : null}
+            {/* Recent attempts */}
+            {recent.length > 0 ? <RecentAttemptsCard rows={recent} /> : null}
+          </>
+        )}
       </div>
     </div>
   );
