@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+
+import { useAuth } from "@/providers/AuthProvider";
 type Lang = { slug: string; name: string; nativeName: string; flag: string };
 const LANGUAGES: Lang[] = [
 { slug: "vietnamese", name: "Vietnamese", nativeName: "Tiếng Việt", flag: "🇻🇳" },
@@ -60,6 +62,7 @@ className="h-16 w-full rounded-xl border border-stone-300 bg-white/85 px-4 text-
 );
 }
 export default function MarketingLandingPage() {
+const { user, isLoading } = useAuth();
 const [nativeSlug, setNativeSlug] = useState("vietnamese");
 const [targetSlug, setTargetSlug] = useState("english");
 const native = LANGUAGES.find((lang) => lang.slug === nativeSlug) ?? LANGUAGES[0];
@@ -107,13 +110,22 @@ className="h-12 w-[180px] object-cover object-center"
 draggable={false}
 />
 </Link>
-<Link
-to="/login"
-className="rounded-xl bg-[#8b7d5e] px-5 py-3 font-serif text-lg font-semibold text-white shadow-md hover:bg-[#7a6d50] transition-colors"
->
-Sign In
-</Link>
-</header>
+	{!isLoading && user ? (
+	<Link
+	to="/account"
+	className="rounded-xl bg-[#8b7d5e] px-5 py-3 font-serif text-lg font-semibold text-white shadow-md hover:bg-[#7a6d50] transition-colors"
+	>
+	Account
+	</Link>
+	) : (
+	<Link
+	to="/login"
+	className="rounded-xl bg-[#8b7d5e] px-5 py-3 font-serif text-lg font-semibold text-white shadow-md hover:bg-[#7a6d50] transition-colors"
+	>
+	Sign In
+	</Link>
+	)}
+	</header>
 <div className="relative mx-auto max-w-7xl px-6 pb-16 pt-16">
 <div className="mx-auto max-w-4xl px-8 py-10 text-center [text-shadow:0_2px_12px_rgba(255,255,255,0.65)]">
 {/* Decorative Chinese ink-brush separator */}

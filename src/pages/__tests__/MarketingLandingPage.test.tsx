@@ -1,8 +1,27 @@
 import { render, screen } from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";
-import { describe, expect, it } from "vitest";
+import { beforeEach, describe, expect, it, vi } from "vitest";
+
+const authState = vi.hoisted(() => ({
+  value: { user: null as null | { id: string; email?: string }, isLoading: false },
+}));
+
+vi.mock("@/providers/AuthProvider", () => ({
+  useAuth: () => authState.value,
+}));
 
 import MarketingLandingPage from "../MarketingLandingPage";
+
+function setSignedOut() {
+  authState.value = { user: null, isLoading: false };
+}
+
+function setSignedIn() {
+  authState.value = {
+    user: { id: "user-1", email: "learner@example.com" },
+    isLoading: false,
+  };
+}
 
 function renderHomepage() {
   return render(
@@ -13,6 +32,10 @@ function renderHomepage() {
 }
 
 describe("Public homepage", () => {
+  beforeEach(() => {
+    setSignedOut();
+  });
+
   it("renders the approved inkwash homepage shell", () => {
     renderHomepage();
 
@@ -25,11 +48,36 @@ describe("Public homepage", () => {
     expect(h1.textContent).toContain("From Your Language");
   });
 
-  it("keeps the public brand and sign-in route", () => {
+  it("keeps the public brand and sign-in route for signed-out visitors", () => {
     renderHomepage();
 
     expect(screen.getByRole("link", { name: "MercyBlade home" })).toHaveAttribute("href", "/");
     expect(screen.getByRole("link", { name: "Sign In" })).toHaveAttribute("href", "/login");
+  });
+
+  it("shows the account route for signed-in visitors", () => {
+    setSignedIn();
+    renderHomepage();
+
+    expect(screen.getByRole("link", { name: "MercyBlade home" })).toHaveAttribute("href", "/");
+    expect(screen.getByRole("link", { name: "Account" })).toHaveAttribute("href", "/account");
+    expect(screen.queryByRole("link", { name: "Sign In" })).not.toBeInTheDocument();
+  });
+
+  it("reacts to auth changes without remounting the homepage", () => {
+    const { rerender } = renderHomepage();
+
+    expect(screen.getByRole("link", { name: "Sign In" })).toHaveAttribute("href", "/login");
+
+    setSignedIn();
+    rerender(
+      <MemoryRouter>
+        <MarketingLandingPage />
+      </MemoryRouter>,
+    );
+
+    expect(screen.getByRole("link", { name: "Account" })).toHaveAttribute("href", "/account");
+    expect(screen.queryByRole("link", { name: "Sign In" })).not.toBeInTheDocument();
   });
 
   it("starts the default Vietnamese to English learning route", () => {
