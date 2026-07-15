@@ -34,7 +34,8 @@
  *   2. Vietnamese-first — all detail messages in Vietnamese.
  *   3. Short-circuit — first blocking decision wins; no wasted computation.
  *   4. Composable — works with or without a teaching decision from the engine.
- *   5. Non-destructive — never modifies the response; only decides show/revise/block.
+ *   5. Non-destructive by default — only curated R8 face-saving substitutions may repair
+ *      the deliverable response text before the gate chain continues.
  *
  * Pure functions — no I/O, no side effects, deterministic.
  */
@@ -73,6 +74,8 @@ import type { TeacherDecision, TeacherDecisionInput } from "./teacherDecisionEng
  * BLOCK             — hard failures; response must NOT be shown to the learner.
  */
 export type SelfAuditDecision = "SHOW" | "SHOW_WITH_CAUTION" | "REVISE" | "BLOCK";
+
+export type SelfAuditRepairOutcome = "none" | "repaired-delivered" | "blocked-unrepairable";
 
 /**
  * The audit mode — which contract subset to check.
@@ -150,6 +153,12 @@ export type SelfAuditResult = {
   contractResult: ContractCheckResult | null;
   /** The teaching decision evaluation result (null if decision wasn't provided). */
   evaluationResult: EvaluationResult | null;
+  /** Whether a deterministic R8 repair was applied or failed. */
+  repairOutcome: SelfAuditRepairOutcome;
+  /** The repaired Vietnamese explanation when a curated R8 repair succeeds. */
+  repairedExplanationVi: string | null;
+  /** The explanation text the caller should deliver. */
+  deliverableExplanationVi: string;
 };
 
 // ─── Gate IDs ──────────────────────────────────────────────────────────────
@@ -173,6 +182,26 @@ const HARD_SAFETY_RULES = new Set([
   "R7_STRATEGIC_SILENCE",
   "R8_FACE_SAVING",
 ]);
+
+type FaceSavingRepairEntry = {
+  readonly search: string;
+  readonly replacement: string;
+  readonly pattern: RegExp;
+  readonly rationale: string;
+};
+
+const FACE_SAVING_REPAIR_MAP: readonly FaceSavingRepairEntry[] = [
+  {
+    search: "không đúng",
+    replacement: "chưa đúng",
+    pattern: /(?<![\p{L}\p{N}_])không đúng(?![\p{L}\p{N}_])/giu,
+    // Rationale: in correction explanations, this preserves the "needs correction"
+    // meaning while softening a final-sounding face threat into a growth-framed
+    // phrase. The Unicode boundary guard prevents substring edits inside a larger
+    // token or fused phrase.
+    rationale: "Softens a correction verdict without changing the grammatical point.",
+  },
+];
 
 // ─── Helpers ───────────────────────────────────────────────────────────────
 
@@ -226,6 +255,86 @@ function checkHardSafety(contractResult: ContractCheckResult): { safe: boolean; 
     (r) => HARD_SAFETY_RULES.has(r.ruleId) && !r.passed,
   );
   return { safe: failedRules.length === 0, failedRules };
+}
+
+function hasOnlyRepairableR8HardSafetyFailure(failedRules: ContractRuleCheck[]): boolean {
+  return failedRules.length > 0 && failedRules.every((rule) => rule.ruleId === "R8_FACE_SAVING");
+}
+
+function applyCuratedFaceSavingRepairs(explanationVi: string): {
+  repaired: string;
+  applied: readonly string[];
+} {
+  let repaired = explanationVi;
+  const applied: string[] = [];
+
+  for (const entry of FACE_SAVING_REPAIR_MAP) {
+    const next = repaired.replace(entry.pattern, entry.replacement);
+    if (next !== repaired) {
+      repaired = next;
+      applied.push(`${entry.search}->${entry.replacement}`);
+    }
+  }
+
+  return { repaired, applied };
+}
+
+function prepareR8Repair(
+  input: SelfAuditInput,
+  learnerInput: ContractLearnerInput,
+  tutorResponse: ContractTutorResponse,
+  contractResult: ContractCheckResult,
+): {
+  input: SelfAuditInput;
+  tutorResponse: ContractTutorResponse;
+  contractResult: ContractCheckResult;
+  repairOutcome: SelfAuditRepairOutcome;
+  repairedExplanationVi: string | null;
+} {
+  const { failedRules } = checkHardSafety(contractResult);
+  if (!hasOnlyRepairableR8HardSafetyFailure(failedRules)) {
+    return {
+      input,
+      tutorResponse,
+      contractResult,
+      repairOutcome: "none",
+      repairedExplanationVi: null,
+    };
+  }
+
+  const { repaired, applied } = applyCuratedFaceSavingRepairs(input.explanationVi);
+  if (applied.length === 0 || repaired === input.explanationVi) {
+    return {
+      input,
+      tutorResponse,
+      contractResult,
+      repairOutcome: "blocked-unrepairable",
+      repairedExplanationVi: null,
+    };
+  }
+
+  const repairedInput: SelfAuditInput = { ...input, explanationVi: repaired };
+  const repairedTutorResponse = buildTutorResponse(repairedInput);
+  const repairedContractResult = runContractCheck(learnerInput, repairedTutorResponse, repairedInput.mode);
+  const repairedR8 = repairedContractResult.rules.find((rule) => rule.ruleId === "R8_FACE_SAVING");
+
+  if (!repairedR8?.passed) {
+    return {
+      input,
+      tutorResponse,
+      contractResult,
+      repairOutcome: "blocked-unrepairable",
+      repairedExplanationVi: null,
+    };
+  }
+
+  return {
+    input: repairedInput,
+    tutorResponse: repairedTutorResponse,
+    contractResult: repairedContractResult,
+    repairOutcome: "repaired-delivered",
+    repairedExplanationVi: repaired,
+  };
 }
 
 // ─── S1 — Hard Safety Gate ────────────────────────────────────────────────
@@ -817,9 +926,10 @@ export function selfAuditBeforeShowing(input: SelfAuditInput): SelfAuditResult {
 
   // Run the contract check once — shared between S1 and S4
   const contractResult = runContractCheck(learnerInput, tutorResponse, input.mode);
+  const repair = prepareR8Repair(input, learnerInput, tutorResponse, contractResult);
 
   // Build the gate chain
-  const gateFns = buildGateChain(input, contractResult, learnerInput, tutorResponse);
+  const gateFns = buildGateChain(repair.input, repair.contractResult, learnerInput, repair.tutorResponse);
 
   // Run gates in order, short-circuit on first non-null decision
   const gates: SelfAuditGateResult[] = [];
@@ -857,8 +967,11 @@ export function selfAuditBeforeShowing(input: SelfAuditInput): SelfAuditResult {
     decidingGate,
     summaryVi: buildSummaryVi(finalDecision, decidingGate, gates),
     summaryEn: buildSummaryEn(finalDecision, decidingGate, gates),
-    contractResult,
+    contractResult: repair.contractResult,
     evaluationResult,
+    repairOutcome: repair.repairOutcome,
+    repairedExplanationVi: repair.repairedExplanationVi,
+    deliverableExplanationVi: repair.input.explanationVi,
   };
 }
 
@@ -919,6 +1032,7 @@ export function formatSelfAuditTelemetry(result: SelfAuditResult): Record<string
     decidingGate: result.decidingGate,
     passedCount: result.passedCount,
     firedCount: result.firedCount,
+    repairOutcome: result.repairOutcome,
     gateResults: Object.fromEntries(
       result.gates.map((g) => [g.gateId, { passed: g.passed, decision: g.decision, reasonCode: g.reasonCode }]),
     ),
