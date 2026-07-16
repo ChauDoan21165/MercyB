@@ -24,8 +24,8 @@
 # Things deliberately NOT ported:
 #   - GitHub Actions specifics (`actions/checkout@v4`, `actions/setup-node@v4`).
 #     GitLab clones the project automatically and the image carries Node.
-#   - Vercel-specific deploy steps. Netlify auto-deploys via its own
-#     GitLab integration; CI does not deploy.
+#   - Vercel-specific deploy steps. Cloudflare Pages auto-deploys via its own
+#     Git integration; CI does not deploy the web app.
 #   - Other workflows under `.github/workflows/` (performance-ci,
 #     mutation-testing, lighthouse, etc.). They moved to schedule /
 #     workflow_dispatch / push:main in the GitHub consolidation and

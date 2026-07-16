@@ -170,7 +170,7 @@ function scanContradictions() {
   const checks = [
     { pattern: /cloudflare/i, field: "CDN/DNS", expected: "Cloudflare" },
     { pattern: /vercel/i, field: "Hosting", expected: "Vercel is recovery host, not primary" },
-    { pattern: /netlify/i, field: "Hosting", expected: "Netlify is primary" },
+    { pattern: /cloudflare/i, field: "Hosting", expected: "Cloudflare Pages is primary" },
     { pattern: /gitlab/i, field: "Repo", expected: "GitLab is canonical repo" },
     { pattern: /github/i, field: "Repo", expected: "GitHub is legacy/read-only" },
     { pattern: /supabase/i, field: "Backend", expected: "Supabase" },
@@ -195,7 +195,7 @@ function scanContradictions() {
     try {
       const content = fs.readFileSync(doc.path, "utf8");
       // Check for deploy/host contradictions
-      if (/\bdeploy\b.*\bvercel\b/i.test(content) && /\bdeploy\b.*\bnetlify\b/i.test(content)) {
+      if (/\bdeploy\b.*\bvercel\b/i.test(content) && /\bdeploy\b.*\bcloudflare\b/i.test(content)) {
         deployInDocs.push(doc.rel);
       }
     } catch { /* skip */ }
@@ -205,7 +205,7 @@ function scanContradictions() {
     contradictions.push({
       severity: "info",
       field: "deploy",
-      message: `${deployInDocs.length} docs mention both Vercel and Netlify in deploy context. May be outdated.`,
+      message: `${deployInDocs.length} docs mention both Vercel and Cloudflare in deploy context. May be outdated.`,
       files: deployInDocs.slice(0, 10),
     });
   }

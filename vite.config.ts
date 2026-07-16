@@ -65,31 +65,13 @@ function isReactPath(s: string) {
   );
 }
 
-function sanitizeSentryDeployEnvPart(value: string): string {
-  return value
-    .trim()
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, '-')
-    .replace(/^-+|-+$/g, '');
-}
-
 function getSentryDeployEnvironment(): string {
-  const netlifyContext = process.env.CONTEXT?.trim();
-
-  if (netlifyContext === 'production') return 'production';
-  if (netlifyContext === 'deploy-preview') return 'preview';
-  if (netlifyContext === 'branch-deploy') {
-    const branch = sanitizeSentryDeployEnvPart(process.env.BRANCH ?? '');
-    return branch ? `branch-${branch}` : 'branch-deploy';
-  }
-
   return String(process.env.VITE_APP_ENV ?? process.env.NODE_ENV ?? 'development').trim();
 }
 
 function getSentryReleaseName(): string | undefined {
   return (
     process.env.VERCEL_GIT_COMMIT_SHA?.trim() ||
-    process.env.COMMIT_REF?.trim() ||
     undefined
   );
 }
@@ -105,12 +87,6 @@ function getBundleBuildHash(): string {
 const sentryReleaseName = getSentryReleaseName();
 const sentryDeployEnvironment = getSentryDeployEnvironment();
 const bundleBuildHash = getBundleBuildHash();
-
-if (process.env.CONTEXT || process.env.COMMIT_REF) {
-  console.info(
-    `[sentry] release deploy config: release=${sentryReleaseName ?? '(auto)'} env=${sentryDeployEnvironment}`,
-  );
-}
 
 export default defineConfig({
   plugins: [
@@ -157,14 +133,9 @@ export default defineConfig({
             telemetry: false,
             release: {
               // Use the same explicit release name for source-map upload and
-              // runtime events. Netlify exposes COMMIT_REF; leaving this empty
-              // lets @sentry/vite-plugin fall back to CI auto-detection.
+              // runtime events. Leaving this empty lets @sentry/vite-plugin
+              // fall back to CI auto-detection.
               name: sentryReleaseName,
-              // Netlify production deploys may still have legacy Vercel env
-              // vars in the build environment. Without an explicit deploy env,
-              // @sentry/vite-plugin auto-detects VERCEL_TARGET_ENV and reports
-              // releases as `vercel-preview`. Netlify CONTEXT is the source of
-              // truth for the release deploy label.
               deploy: {
                 env: sentryDeployEnvironment,
               },
@@ -508,7 +479,7 @@ export default defineConfig({
 
   // Inline the deploy SHA so the runtime Sentry init can tag every event
   // with the same release used for source maps. Vercel sets
-  // VERCEL_GIT_COMMIT_SHA; Netlify sets COMMIT_REF.
+  // VERCEL_GIT_COMMIT_SHA.
   define: {
     'import.meta.env.VITE_VERCEL_GIT_COMMIT_SHA': JSON.stringify(
       sentryReleaseName ?? '',

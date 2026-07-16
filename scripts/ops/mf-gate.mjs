@@ -34,7 +34,6 @@ export const UNSAFE_PATH_RULES = [
   { key: "env", pattern: /(^|\/)\.env($|\.|\/)|(^|\/)\.env\./i },
   { key: "deploy_config", pattern: /(^|\/)(deploy|deployment|release|prod|production)(\/|\.|$)/i },
   { key: "supabase_migrations", pattern: /(^|\/)supabase\/.*migrations/i },
-  { key: "netlify", pattern: /(^|\/)netlify\.toml$/i },
   { key: "wrangler", pattern: /(^|\/)wrangler\.(jsonc?|toml)$/i },
 ];
 
@@ -120,7 +119,7 @@ export function classifyJob(job = {}) {
     return {
       code: "D",
       job_type: JOB_TYPES.D,
-      reason: "auth, billing, SQL/RLS, secrets, deploy, production config, Supabase, Netlify, or wrangler scope",
+      reason: "auth, billing, SQL/RLS, secrets, deploy, production config, Supabase, or wrangler scope",
       unsafePaths,
     };
   }

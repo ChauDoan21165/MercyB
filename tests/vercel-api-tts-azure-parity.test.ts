@@ -10,7 +10,7 @@ function read(rel: string): string {
 
 // The Vercel `api/tts.ts` is the disaster-recovery host's TTS endpoint
 // (docs/runbooks/disaster-recovery.md). It must honour Product Contract C1
-// identically to the primary Netlify handler and the Cloudflare Pages handler:
+// identically to the Cloudflare Pages handler:
 // Vietnamese routes to an Azure vi-VN voice via the mercy-tts edge function,
 // never a direct-ElevenLabs English voice. Guards against silent regression on
 // failover — the gap that previously let this handler drift to ElevenLabs-only.

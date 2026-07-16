@@ -154,7 +154,7 @@ describe("Cloudflare Pages API function shape", () => {
     expect(mercyAi).toContain('providerOrder: MERCY_AI_PROVIDER_ORDER');
   });
 
-  it("keeps mode parity across all three API mirrors (Vercel / CF Pages / Netlify)", () => {
+  it("keeps mode parity across live API mirrors (Vercel recovery / CF Pages)", () => {
     const REQUIRED_MODES = [
       '"speak-follow-up"',
       '"ai-conversation-turn"',
@@ -163,7 +163,6 @@ describe("Cloudflare Pages API function shape", () => {
     const mirrors: Record<string, string> = {
       "Vercel (api/mercy-ai.ts)": readFromRepo("api/mercy-ai.ts"),
       "CF Pages (functions/api/mercy-ai.ts)": readFromRepo("functions/api/mercy-ai.ts"),
-      "Netlify (netlify/functions/api-mercy-ai.ts)": readFromRepo("netlify/functions/api-mercy-ai.ts"),
     };
     for (const [label, source] of Object.entries(mirrors)) {
       for (const mode of REQUIRED_MODES) {

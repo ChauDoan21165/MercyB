@@ -240,7 +240,7 @@ export const FEATURE_FLAGS = {
   /**
    * Web Vitals RUM → GA4. When ON (default), LCP/INP/CLS/TTFB are forwarded
    * to GA4 via window.gtag, behind the existing marketing-consent gate.
-   * Set VITE_WEB_VITALS_GA4_ENABLED=false in the Netlify env panel to disable
+   * Set VITE_WEB_VITALS_GA4_ENABLED=false in Cloudflare Pages variables to disable
    * this without a code change or rebuild (emergency kill switch).
    */
   WEB_VITALS_GA4_ENABLED: readEnvBool("VITE_WEB_VITALS_GA4_ENABLED", true),
