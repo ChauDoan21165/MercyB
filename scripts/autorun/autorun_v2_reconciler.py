@@ -28,7 +28,6 @@ DEFAULT_MAX_ATTEMPTS = 2
 DEFAULT_FORBIDDEN_PATHS = [
     ".env",
     ".env.*",
-    "netlify.toml",
     "wrangler.toml",
     "wrangler.json",
     "wrangler.jsonc",

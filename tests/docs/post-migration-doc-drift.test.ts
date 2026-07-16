@@ -2,7 +2,7 @@
 //
 // Static drift detector for the post-2026-05-27 migration docs. The
 // realignment work in !74 + !82 brought a set of root + docs/ files
-// into line with current ground truth (Netlify primary, GitLab repo,
+// into line with current ground truth (Cloudflare Pages primary, GitLab repo,
 // Vercel as documented recovery, Stripe webhook at the Supabase edge
 // function — see docs/runbooks/disaster-recovery.md). Without a
 // guard, those edits will rot silently as the codebase evolves. This
@@ -226,7 +226,7 @@ function formatFindings(rule: Rule, findings: Finding[]): string {
 // Rule 1: no Vercel URLs (vercel.com / vercel.app) as live links
 // ────────────────────────────────────────────────────────────────────
 //
-// Post-migration, mercyblade.com is on Netlify. Vercel is the
+// Current production hosting is Cloudflare Pages. Vercel is the
 // documented recovery host but is not the primary docs target. Email
 // contacts (`help@vercel.com`) are legitimate and excluded from this
 // rule — the regex requires a URL prefix.
@@ -404,7 +404,7 @@ const RULES: ReadonlyArray<Rule> = [
   {
     name: "vercel-url",
     description:
-      "Live URLs to vercel.com / vercel.app are pre-migration artifacts; Netlify is the production host post-2026-05-27. Email contacts (help@vercel.com) are not URLs and are excluded by the regex.",
+      "Live URLs to vercel.com / vercel.app are pre-migration artifacts; Cloudflare Pages is the production host. Email contacts (help@vercel.com) are not URLs and are excluded by the regex.",
     detect: findVercelUrls,
   },
   {

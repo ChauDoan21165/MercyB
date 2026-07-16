@@ -72,7 +72,7 @@ describe("Factory A dispatch gate", () => {
       job: {
         id: "dangerous-change",
         title: "update auth policy",
-        paths: ["supabase/migrations/202606160001_auth_rls.sql", ".env.production", "netlify.toml"],
+          paths: ["supabase/migrations/202606160001_auth_rls.sql", ".env.production", "wrangler.toml"],
       },
     });
 
@@ -82,7 +82,7 @@ describe("Factory A dispatch gate", () => {
       type: "Type D",
     });
     expect(result.unsafePaths.map((match) => match.rule)).toEqual(
-      expect.arrayContaining(["sql_rls_migrations", "env", "supabase_migrations", "netlify_wrangler"]),
+      expect.arrayContaining(["sql_rls_migrations", "env", "supabase_migrations", "wrangler"]),
     );
   });
 

@@ -1,8 +1,8 @@
 /**
  * CSP media-src regression guard.
  *
- * mercyblade.com's Content-Security-Policy is injected by the Cloudflare edge
- * (Netlify origin serves none). A restrictive `media-src 'self' https:` directive
+ * mercyblade.com's Content-Security-Policy is injected by the Cloudflare edge.
+ * A restrictive `media-src 'self' https:` directive
  * blocks blob: (MediaRecorder playback) and data: (browser TTS) audio — confirmed
  * as the real playback regression by console capture on 2026-06-11.
  *

@@ -25,7 +25,7 @@ export const UNSAFE_PATH_RULES = [
   { key: "env", pattern: /(^|\/)\.env($|\.|\/)|(^|\/)\.env\./i },
   { key: "deploy_config", pattern: /(^|\/)(deploy|deployment|release)(\/|\.|$)|(^|\/)(vercel|cloudflare)\.jsonc?$/i },
   { key: "supabase_migrations", pattern: /(^|\/)supabase\/.*migrations/i },
-  { key: "netlify_wrangler", pattern: /(^|\/)(netlify\.toml|wrangler\.jsonc?|wrangler\.toml)$/i },
+  { key: "wrangler", pattern: /(^|\/)(wrangler\.jsonc?|wrangler\.toml)$/i },
 ];
 
 const REPORT_DOC_EVIDENCE_PATTERN = /^(reports|docs|evidence)\//i;
@@ -74,7 +74,7 @@ export function classifyJob(job = {}) {
       type: JOB_TYPES.D,
       code: "D",
       unsafePaths,
-      reason: "job touches auth, billing, SQL/RLS, secrets, deploy config, Supabase migrations, Netlify, or wrangler areas",
+      reason: "job touches auth, billing, SQL/RLS, secrets, deploy config, Supabase migrations, or wrangler areas",
     };
   }
 

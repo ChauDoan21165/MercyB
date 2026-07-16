@@ -1,7 +1,6 @@
 // File: api/tts.ts
-// Vercel (recovery-host) TTS endpoint. Kept in lock-step with the primary
-// Netlify handler (netlify/functions/api-tts.ts) and the Cloudflare Pages
-// handler (functions/api/tts.ts) so a failover to Vercel cannot silently
+// Vercel (recovery-host) TTS endpoint. Kept in lock-step with the Cloudflare
+// Pages handler (functions/api/tts.ts) so a failover to Vercel cannot silently
 // breach Product Contract C1 (docs/PRODUCT-CONTRACT.md):
 //   - Vietnamese text MUST be read by an Azure vi-VN voice. Never an English
 //     ElevenLabs voice.

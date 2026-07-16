@@ -83,7 +83,7 @@ describe("MercyForge dispatch gate v1", () => {
     const rejected = evaluateDispatchGate({
       job: {
         job_id: "unsafe",
-        paths: ["auth/session.ts", "supabase/migrations/202606170001_rls.sql", ".env.production", "netlify.toml", "wrangler.toml"],
+        paths: ["auth/session.ts", "supabase/migrations/202606170001_rls.sql", ".env.production", "wrangler.toml"],
       },
     });
 
@@ -106,7 +106,6 @@ describe("MercyForge dispatch gate v1", () => {
         "UNSAFE_SQL_RLS_MIGRATIONS",
         "UNSAFE_ENV",
         "UNSAFE_SUPABASE_MIGRATIONS",
-        "UNSAFE_NETLIFY",
         "UNSAFE_WRANGLER",
       ]),
     );

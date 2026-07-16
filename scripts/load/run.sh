@@ -6,8 +6,7 @@
 # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 # WARNING: NEVER point --target at mercyblade.com, app.mercyblade.com, or ANY
 # production / staging URL without EXPLICIT written approval from Chau.
-# 500 VUs against prod WILL degrade real users and may exhaust Netlify's
-# concurrent-connection quota.  You have been warned.
+# 500 VUs against prod WILL degrade real users. You have been warned.
 # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 #
 # DEFAULT target: http://localhost:4173  (npm run preview — local build)
@@ -49,7 +48,7 @@ while [[ $# -gt 0 ]]; do
 done
 
 # ── prod-guard ─────────────────────────────────────────────────────────────────
-if echo "$TARGET" | grep -qiE '(mercyblade\.com|netlify\.app|vercel\.app)'; then
+if echo "$TARGET" | grep -qiE '(mercyblade\.com|vercel\.app)'; then
   echo ""
   echo "  ╔══════════════════════════════════════════════════════════════════╗"
   echo "  ║  BLOCKED: target looks like a production/staging URL.           ║"
