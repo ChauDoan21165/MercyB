@@ -63,7 +63,9 @@ function buildTracks(): Track[] {
 function getSingletonAudio(): HTMLAudioElement {
   if (!window.__mbBottomAudio) {
     const a = new Audio() as InlineAudioElement;
-    a.preload = "auto";
+    // Product ruling: music never auto-fetches. Keep the singleton empty until
+    // the learner explicitly presses play; assigning src is what starts the MP3 request.
+    a.preload = "none";
     a.playsInline = true;
     a.loop = false;
     window.__mbBottomAudio = a;
@@ -257,19 +259,17 @@ export default function BottomMusicBar() {
     if (!a || !track) return;
 
     const wasPlaying = !a.paused || playingRef.current;
-
-    const sameSrc = a.currentSrc === track.src || a.src === track.src;
-    if (sameSrc) {
-      localStorage.setItem(LS_TRACK, track.id);
-      return;
-    }
-
-    a.src = track.src;
     localStorage.setItem(LS_TRACK, track.id);
 
     if (wasPlaying) {
+      const sameSrc = a.currentSrc === track.src || a.src === track.src;
+      if (!sameSrc) {
+        a.src = track.src;
+      }
       a.play().catch(() => setPlaying(false));
     } else {
+      a.removeAttribute("src");
+      a.load();
       setCurrent(0);
       setDuration(0);
     }

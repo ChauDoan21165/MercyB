@@ -724,12 +724,12 @@ function AppHeroShell() {
                   <source srcSet="/brand/mercy-blade-header.avif" type="image/avif" />
                   <source srcSet="/brand/mercy-blade-header.webp" type="image/webp" />
                   <img
-                    src="/brand/mercy-blade-header.png"
+                    src="/brand/mercy-blade-header.webp"
                     alt="Mercy Blade"
                     width={512}
                     height={341}
                     style={brandImg}
-                    fetchPriority="high"
+                    {...({ fetchpriority: "high" } as Record<string, string>)}
                     loading="eager"
                     decoding="async"
                     draggable={false}

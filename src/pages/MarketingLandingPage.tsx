@@ -2,6 +2,16 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 import { useAuth } from "@/providers/AuthProvider";
+import { preloadHeroImage } from "@/lib/perf/preload";
+
+const HERO_AVIF_SRCSET =
+  "/marketing/hero-a-640.avif 640w, /marketing/hero-a-1024.avif 1024w, /marketing/hero-a-1536.avif 1536w";
+const HERO_WEBP_SRCSET =
+  "/marketing/hero-a-640.webp 640w, /marketing/hero-a-1024.webp 1024w, /marketing/hero-a-1536.webp 1536w";
+const HERO_SIZES = "100vw";
+const HERO_PRELOAD = "/marketing/hero-a-640.avif";
+const HERO_FALLBACK = "/marketing/hero-a-1024.webp";
+
 type Lang = { slug: string; name: string; nativeName: string; flag: string };
 const LANGUAGES: Lang[] = [
 { slug: "vietnamese", name: "Vietnamese", nativeName: "Tiếng Việt", flag: "🇻🇳" },
@@ -87,28 +97,50 @@ useEffect(() => {
 	}
 }, []);
 
+useEffect(() => {
+	preloadHeroImage(HERO_PRELOAD, HERO_AVIF_SRCSET, HERO_SIZES);
+	return () => {
+		document
+			.querySelector(`link[rel="preload"][href="${HERO_PRELOAD}"]`)
+			?.remove();
+	};
+}, []);
+
 return (
 <main
 data-mercy-marketing-home="true"
 className="relative min-h-screen overflow-hidden bg-[#f7efe0] text-slate-950"
-style={{
-backgroundImage: 'url("/marketing/hero-a.png")',
-backgroundSize: "cover",
-backgroundPosition: "center 28%",
-backgroundRepeat: "no-repeat",
-backgroundAttachment: "scroll",
-}}
 >
+<picture aria-hidden="true" className="pointer-events-none absolute inset-0 block">
+<source type="image/avif" srcSet={HERO_AVIF_SRCSET} sizes={HERO_SIZES} />
+<source type="image/webp" srcSet={HERO_WEBP_SRCSET} sizes={HERO_SIZES} />
+<img
+data-mercy-marketing-hero="true"
+src={HERO_FALLBACK}
+srcSet={HERO_WEBP_SRCSET}
+sizes={HERO_SIZES}
+alt=""
+width={1536}
+height={1024}
+{...({ fetchpriority: "high" } as Record<string, string>)}
+decoding="async"
+className="h-full w-full object-cover object-[center_28%]"
+/>
+</picture>
 {/* ── Page content ── */}
 <section className="relative min-h-screen">
 <header className="relative mx-auto flex max-w-7xl items-center justify-between rounded-2xl bg-white/35 px-6 py-5">
 <Link to="/" className="flex items-center gap-3" aria-label="MercyBlade home">
+<picture>
+<source srcSet="/brand/mercy-blade-header.avif" type="image/avif" />
+<source srcSet="/brand/mercy-blade-header.webp" type="image/webp" />
 <img
-src="/brand/mercy-blade-header.png"
+src="/brand/mercy-blade-header.webp"
 alt="MercyBlade"
 className="h-12 w-[180px] object-cover object-center"
 draggable={false}
 />
+</picture>
 </Link>
 	{!isLoading && user ? (
 	<Link

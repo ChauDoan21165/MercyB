@@ -41,7 +41,10 @@ describe("Public homepage", () => {
 
     const homepage = document.querySelector("[data-mercy-marketing-home='true']");
     expect(homepage).toBeInTheDocument();
-    expect(homepage?.getAttribute("style") ?? "").toContain("/marketing/hero-a.png");
+    expect(document.querySelector("[data-mercy-marketing-hero='true']")).toHaveAttribute(
+      "src",
+      "/marketing/hero-a-1024.webp",
+    );
 
     const h1 = screen.getByRole("heading", { level: 1 });
     expect(h1.textContent).toContain("Learn Any Language");

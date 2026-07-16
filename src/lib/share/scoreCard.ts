@@ -395,7 +395,7 @@ function paintFooter(ctx: CanvasRenderingContext2D): void {
   ctx.fillText(PRODUCT_CONFIG.domain, 56, CARD_HEIGHT - 40);
 
   // Mercy avatar bottom-right (text fallback — the brief disallows API
-  // calls during render, so we don't try to load /teacher-mercy.png).
+  // calls during render, so we don't try to load /teacher-mercy.webp).
   ctx.fillStyle = "rgba(120,30,60,0.55)";
   ctx.font = "700 italic 20px -apple-system, system-ui, 'Segoe UI', Roboto, sans-serif";
   ctx.textAlign = "right";

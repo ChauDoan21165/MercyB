@@ -514,11 +514,11 @@ export default function Home({ nativeLangOverride }: { nativeLangOverride?: Nati
             <source srcSet="/teacher-mercy.avif" type="image/avif" />
             <source srcSet="/teacher-mercy.webp" type="image/webp" />
             <img
-              src="/teacher-mercy.png"
+              src="/teacher-mercy.webp"
               alt="Teacher Mercy"
               width={1024}
               height={1024}
-              fetchPriority="high"
+              {...({ fetchpriority: "high" } as Record<string, string>)}
               loading="eager"
               onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = "none"; }}
               style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "50% 20%" }}
