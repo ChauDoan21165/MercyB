@@ -1,0 +1,68 @@
+{
+  "schema": "tm-int-obs-evidence-packet-v1",
+  "packet_id": "OBS-004-TM-INT-10181",
+  "created_at": "2026-07-16T00:00:00.000Z",
+  "source": "tm-design-group-d-runtime-observation",
+  "tm_int_id": "TM-INT-10181",
+  "module": "l1ErrorDetector",
+  "axis": "vi-time-reference-overmarking",
+  "behavior_boundary": "Detects Vietnamese L1 time-reference overmarking when learner text repeats the same narrative time marker across several sentences and the expected correction keeps only the first marker.",
+  "previous_behavior_boundary": null,
+  "code_path": "src/lib/feedback/index.ts:detectL1Error",
+  "probe_id": "tm-design-group-d-20260716:D-G5",
+  "input": {
+    "positive": {
+      "userAnswer": "Yesterday I went to work. Yesterday I met my boss. Yesterday I came home late.",
+      "expectedAnswer": "Yesterday I went to work. I met my boss. I came home late."
+    },
+    "negative": {
+      "userAnswer": "Yesterday I went to work. I met my boss. I came home late.",
+      "expectedAnswer": "Yesterday I went to work. I met my boss. I came home late."
+    }
+  },
+  "output": {
+    "positive": {
+      "matched": true,
+      "weaknessTag": "vi_l1_time_reference_overmarking",
+      "feedback": {
+        "en": "In a short narrative, English usually states the time once, then continues the sequence. Repeating the same time marker in every sentence sounds heavy. Try: *Yesterday I went to work. I met my boss. I came home late.*.",
+        "vi": "Khi kể một chuỗi việc, tiếng Anh thường nêu mốc thời gian một lần rồi kể tiếp. Lặp lại cùng mốc thời gian ở từng câu nghe nặng. Thử: *Yesterday I went to work. I met my boss. I came home late.*."
+      }
+    },
+    "negative": {
+      "matched": false,
+      "weaknessTag": null,
+      "feedback": null
+    }
+  },
+  "input_digest": "sha256:d14093e7a24467259561763faa2537e6ec6f68e9b0c69d043b906a0efc19a07b",
+  "output_digest": "sha256:4afeced8998d4798aa995caa5fa173fdad0e76aada382e8acf7036bcc8f17fb5",
+  "attribution": {
+    "repository": "MercyB",
+    "generated_by": "scripts/tm-int/group-d-evidence.mjs",
+    "spec_first_source": "reports/tm-group-d-ruling-sheet.md",
+    "spec_written_from_public_interface_only": true,
+    "shared_digest_rule": "one packet per ID; no shared digest"
+  },
+  "replay_proof": {
+    "replayed": true,
+    "command": "cd /Users/chaudoanm3/MercyB && npx vite-node scripts/tm-int/group-d-evidence.mjs",
+    "checks": {
+      "code_path_match": true,
+      "input_digest_match": true,
+      "output_digest_match": true,
+      "group_d_assertion_passed": true
+    },
+    "recorded_output_digest": "sha256:4afeced8998d4798aa995caa5fa173fdad0e76aada382e8acf7036bcc8f17fb5"
+  },
+  "run_ids": {
+    "obs001": "tm-design-group-d-20260716:obs001:TM-INT-10181",
+    "obs003": "tm-design-group-d-20260716:obs003:TM-INT-10181",
+    "obs004": "tm-design-group-d-20260716:obs004:TM-INT-10181"
+  },
+  "lineage": {
+    "design_ruling": "group-d-2026-07-16",
+    "source_candidate": "D-G5",
+    "evidence_batch": "tm-design-group-d-20260716"
+  }
+}

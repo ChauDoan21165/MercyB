@@ -1,0 +1,67 @@
+{
+  "schema": "tm-int-obs-evidence-packet-v1",
+  "packet_id": "OBS-004-TM-INT-10184",
+  "created_at": "2026-07-16T00:00:00.000Z",
+  "source": "tm-design-group-d-runtime-observation",
+  "tm_int_id": "TM-INT-10184",
+  "module": "registerDetector",
+  "axis": "register-refusal-softening-gap",
+  "behavior_boundary": "Detects professional refusal softening gaps when learner text gives a bare refusal and the expected correction includes a softener; casual refusal context abstains.",
+  "previous_behavior_boundary": null,
+  "code_path": "src/lib/feedback/registerDetector.ts:detectRegisterErrorWithContext",
+  "probe_id": "tm-design-group-d-20260716:D-R3",
+  "input": {
+    "positive": {
+      "learnerText": "No, I don't go.",
+      "expectedText": "Thanks for asking, but I can't this week.",
+      "scenario": "professional_refusal"
+    },
+    "casual": {
+      "learnerText": "No, I don't go.",
+      "expectedText": "",
+      "scenario": "casual_refusal"
+    }
+  },
+  "output": {
+    "positive": {
+      "matched": true,
+      "patternId": "refusal_softening_gap",
+      "tag": "en_l1_register_refusal_softening_gap",
+      "explanationVi": "Khi từ chối trong bối cảnh công việc, đừng chỉ nói \"No\". Thêm lời cảm ơn hoặc lý do ngắn để câu nghe lịch sự hơn.",
+      "explanationEn": "In a professional refusal, do not answer with a bare \"No.\" Add thanks, a brief reason, or a softener."
+    },
+    "casual": {
+      "matched": false
+    }
+  },
+  "input_digest": "sha256:cc27acd56a5e4ac9a89946640e0c570353eb7e87fde9148c6bacd64ef5b34b33",
+  "output_digest": "sha256:977d81c8f548d8c8c91e950946af472c869a7f1f78e662b5c0d45afaf6a6d3eb",
+  "attribution": {
+    "repository": "MercyB",
+    "generated_by": "scripts/tm-int/group-d-evidence.mjs",
+    "spec_first_source": "reports/tm-group-d-ruling-sheet.md",
+    "spec_written_from_public_interface_only": true,
+    "shared_digest_rule": "one packet per ID; no shared digest"
+  },
+  "replay_proof": {
+    "replayed": true,
+    "command": "cd /Users/chaudoanm3/MercyB && npx vite-node scripts/tm-int/group-d-evidence.mjs",
+    "checks": {
+      "code_path_match": true,
+      "input_digest_match": true,
+      "output_digest_match": true,
+      "group_d_assertion_passed": true
+    },
+    "recorded_output_digest": "sha256:977d81c8f548d8c8c91e950946af472c869a7f1f78e662b5c0d45afaf6a6d3eb"
+  },
+  "run_ids": {
+    "obs001": "tm-design-group-d-20260716:obs001:TM-INT-10184",
+    "obs003": "tm-design-group-d-20260716:obs003:TM-INT-10184",
+    "obs004": "tm-design-group-d-20260716:obs004:TM-INT-10184"
+  },
+  "lineage": {
+    "design_ruling": "group-d-2026-07-16",
+    "source_candidate": "D-R3",
+    "evidence_batch": "tm-design-group-d-20260716"
+  }
+}

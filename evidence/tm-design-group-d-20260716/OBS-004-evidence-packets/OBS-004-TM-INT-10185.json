@@ -1,0 +1,57 @@
+{
+  "schema": "tm-int-obs-evidence-packet-v1",
+  "packet_id": "OBS-004-TM-INT-10185",
+  "created_at": "2026-07-16T00:00:00.000Z",
+  "source": "tm-design-group-d-runtime-observation",
+  "tm_int_id": "TM-INT-10185",
+  "module": "vnEnPronunciationDrills",
+  "axis": "pron-final-stop-voicing",
+  "behavior_boundary": "Selects final_stop_voicing pronunciation feedback when a voiced-final-stop target such as bag is heard as its voiceless minimal-pair contrast such as back.",
+  "previous_behavior_boundary": null,
+  "code_path": "src/lib/pronunciation/vnEnPronunciationDrills.ts:selectFinalStopVoicingFeedbackKey",
+  "probe_id": "tm-design-group-d-20260716:D-P1",
+  "input": {
+    "positive": {
+      "targetWord": "bag",
+      "heardWord": "back"
+    },
+    "negative": {
+      "targetWord": "bag",
+      "heardWord": "bag"
+    }
+  },
+  "output": {
+    "positive": "final_stop_voicing",
+    "negative": null
+  },
+  "input_digest": "sha256:6a07481251956d32d380e3b183d9bdae71b3ede57e151bb60e1c233f09c4061c",
+  "output_digest": "sha256:3a488a14307fb82f7cb599231e08f3d88a4989fd9c048afe7f88a22cc1b80014",
+  "attribution": {
+    "repository": "MercyB",
+    "generated_by": "scripts/tm-int/group-d-evidence.mjs",
+    "spec_first_source": "reports/tm-group-d-ruling-sheet.md",
+    "spec_written_from_public_interface_only": true,
+    "shared_digest_rule": "one packet per ID; no shared digest"
+  },
+  "replay_proof": {
+    "replayed": true,
+    "command": "cd /Users/chaudoanm3/MercyB && npx vite-node scripts/tm-int/group-d-evidence.mjs",
+    "checks": {
+      "code_path_match": true,
+      "input_digest_match": true,
+      "output_digest_match": true,
+      "group_d_assertion_passed": true
+    },
+    "recorded_output_digest": "sha256:3a488a14307fb82f7cb599231e08f3d88a4989fd9c048afe7f88a22cc1b80014"
+  },
+  "run_ids": {
+    "obs001": "tm-design-group-d-20260716:obs001:TM-INT-10185",
+    "obs003": "tm-design-group-d-20260716:obs003:TM-INT-10185",
+    "obs004": "tm-design-group-d-20260716:obs004:TM-INT-10185"
+  },
+  "lineage": {
+    "design_ruling": "group-d-2026-07-16",
+    "source_candidate": "D-P1",
+    "evidence_batch": "tm-design-group-d-20260716"
+  }
+}

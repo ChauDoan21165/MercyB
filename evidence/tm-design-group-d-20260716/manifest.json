@@ -1,0 +1,127 @@
+{
+  "batch": "tm-design-group-d-20260716",
+  "created_at": "2026-07-16T00:00:00.000Z",
+  "count": 12,
+  "rows": [
+    {
+      "tm_int_id": "TM-INT-10177",
+      "source_candidate": "D-G1",
+      "module": "l1ErrorDetector",
+      "axis": "vi-modal-overinflection",
+      "export": "vi_l1_modal_overinflection",
+      "assertion": "positive returns vi_l1_modal_overinflection and the correct modal form does not return that tag",
+      "output_digest": "sha256:3c28d5ec5418825d9ff81672ee0a3d56ddc7c91454d1d490349fa14502d7c5fe",
+      "status": "evidence_passed"
+    },
+    {
+      "tm_int_id": "TM-INT-10178",
+      "source_candidate": "D-G2",
+      "module": "l1ErrorDetector",
+      "axis": "vi-phrasal-verb-transfer",
+      "export": "vi_l1_phrasal_verb_transfer",
+      "assertion": "all three whitelisted phrasal-transfer pairs return vi_l1_phrasal_verb_transfer and a non-whitelisted wake use does not",
+      "output_digest": "sha256:87d707c549a15d6dbff0a9465d5dd5e5c3831d7412910c89bb9379facab9e58f",
+      "status": "evidence_passed"
+    },
+    {
+      "tm_int_id": "TM-INT-10179",
+      "source_candidate": "D-G3",
+      "module": "l1ErrorDetector",
+      "axis": "vi-very-verb-calque",
+      "export": "vi_l1_very_verb_calque",
+      "assertion": "very plus verb returns vi_l1_very_verb_calque while really plus verb and very plus adjective do not",
+      "output_digest": "sha256:922a46f73e22d4c51e371c6ecce452dc78b675ad5028cbb2d6c4bb6d7d0fa545",
+      "status": "evidence_passed"
+    },
+    {
+      "tm_int_id": "TM-INT-10180",
+      "source_candidate": "D-G4",
+      "module": "l1ErrorDetector",
+      "axis": "vi-overexplicit-reference",
+      "export": "vi_l1_overexplicit_reference",
+      "assertion": "repeated name chain returns vi_l1_overexplicit_reference and a single mention does not",
+      "output_digest": "sha256:4f4d4a66c35518f7b69a6c59c26d323fd5fc80259f48d035ba90a1006bdcee37",
+      "status": "evidence_passed"
+    },
+    {
+      "tm_int_id": "TM-INT-10181",
+      "source_candidate": "D-G5",
+      "module": "l1ErrorDetector",
+      "axis": "vi-time-reference-overmarking",
+      "export": "vi_l1_time_reference_overmarking",
+      "assertion": "three repeated yesterday markers return vi_l1_time_reference_overmarking and a single initial marker does not",
+      "output_digest": "sha256:4afeced8998d4798aa995caa5fa173fdad0e76aada382e8acf7036bcc8f17fb5",
+      "status": "evidence_passed"
+    },
+    {
+      "tm_int_id": "TM-INT-10182",
+      "source_candidate": "D-R1",
+      "module": "registerDetector",
+      "axis": "register-direct-request-transfer",
+      "export": "detectRegisterErrorWithContext",
+      "assertion": "professional request context returns en_l1_register_direct_request_transfer; instruction and context-free calls abstain",
+      "output_digest": "sha256:a5cc58c8cbe415841821674e35b90e86b86b6b7cc95b04919037f2094d5c4257",
+      "status": "evidence_passed"
+    },
+    {
+      "tm_int_id": "TM-INT-10183",
+      "source_candidate": "D-R2",
+      "module": "registerDetector",
+      "axis": "register-apology-explanation-order",
+      "export": "detectRegisterErrorWithContext",
+      "assertion": "reason-first professional apology returns en_l1_register_apology_explanation_order and apology-first text abstains",
+      "output_digest": "sha256:f7995ddc34697de836f0232386f76538f687b38dadd0ded121b2de1b5b946b20",
+      "status": "evidence_passed"
+    },
+    {
+      "tm_int_id": "TM-INT-10184",
+      "source_candidate": "D-R3",
+      "module": "registerDetector",
+      "axis": "register-refusal-softening-gap",
+      "export": "detectRegisterErrorWithContext",
+      "assertion": "professional refusal context returns en_l1_register_refusal_softening_gap and casual refusal context abstains",
+      "output_digest": "sha256:977d81c8f548d8c8c91e950946af472c869a7f1f78e662b5c0d45afaf6a6d3eb",
+      "status": "evidence_passed"
+    },
+    {
+      "tm_int_id": "TM-INT-10185",
+      "source_candidate": "D-P1",
+      "module": "vnEnPronunciationDrills",
+      "axis": "pron-final-stop-voicing",
+      "export": "selectFinalStopVoicingFeedbackKey",
+      "assertion": "bag heard as back returns final_stop_voicing and bag heard as bag returns null",
+      "output_digest": "sha256:3a488a14307fb82f7cb599231e08f3d88a4989fd9c048afe7f88a22cc1b80014",
+      "status": "evidence_passed"
+    },
+    {
+      "tm_int_id": "TM-INT-10186",
+      "source_candidate": "D-P2",
+      "module": "vnEnPronunciationDrills",
+      "axis": "pron-diphthong-reduction",
+      "export": "selectDiphthongReductionFeedbackKey",
+      "assertion": "boat heard as bot returns diphthong_reduction and unrelated boat/bet returns null",
+      "output_digest": "sha256:d375bc12c4ec3b45796b36095ac7e33ec258ef73b6b35286e45047824e60249a",
+      "status": "evidence_passed"
+    },
+    {
+      "tm_int_id": "TM-INT-10187",
+      "source_candidate": "D-P3",
+      "module": "vnEnPronunciationDrills",
+      "axis": "pron-v-w-confusion",
+      "export": "selectVWFeedbackKey",
+      "assertion": "very heard as wery or yery returns v_w_confusion and correct very returns null",
+      "output_digest": "sha256:e18284f8542d35c6d5e5bbb70bbe65bf96d9ad60c0bb91eb68a202b21269e225",
+      "status": "evidence_passed"
+    },
+    {
+      "tm_int_id": "TM-INT-10188",
+      "source_candidate": "D-P4",
+      "module": "vnEnPronunciationDrills",
+      "axis": "pron-final-l-deletion",
+      "export": "selectFinalLFeedbackKey",
+      "assertion": "feel heard as fee returns final_l_deletion and feel heard as feel returns null",
+      "output_digest": "sha256:0ef16b91958514f84d6297d37c2f0e942243fb63f8036571f5019217da4fa609",
+      "status": "evidence_passed"
+    }
+  ]
+}

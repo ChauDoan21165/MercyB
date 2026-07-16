@@ -1,0 +1,67 @@
+{
+  "schema": "tm-int-obs-evidence-packet-v1",
+  "packet_id": "OBS-004-TM-INT-10183",
+  "created_at": "2026-07-16T00:00:00.000Z",
+  "source": "tm-design-group-d-runtime-observation",
+  "tm_int_id": "TM-INT-10183",
+  "module": "registerDetector",
+  "axis": "register-apology-explanation-order",
+  "behavior_boundary": "Detects professional apology explanation-before-responsibility order when learner text starts with the reason and the expected correction begins with sorry or apologies.",
+  "previous_behavior_boundary": null,
+  "code_path": "src/lib/feedback/registerDetector.ts:detectRegisterErrorWithContext",
+  "probe_id": "tm-design-group-d-20260716:D-R2",
+  "input": {
+    "positive": {
+      "learnerText": "The traffic was terrible, so I am late.",
+      "expectedText": "I'm sorry I'm late. The traffic was terrible.",
+      "scenario": "professional_apology"
+    },
+    "negative": {
+      "learnerText": "I'm sorry I'm late. The traffic was terrible.",
+      "expectedText": "I'm sorry I'm late. The traffic was terrible.",
+      "scenario": "professional_apology"
+    }
+  },
+  "output": {
+    "positive": {
+      "matched": true,
+      "patternId": "apology_explanation_before_responsibility",
+      "tag": "en_l1_register_apology_explanation_order",
+      "explanationVi": "Trong email hoặc lời xin lỗi công việc, nhận trách nhiệm trước rồi mới giải thích lý do. Mở đầu bằng \"Sorry/Apologies\" trước phần lý do.",
+      "explanationEn": "In a professional apology, take responsibility first and then explain. Start with \"Sorry/Apologies\" before the reason."
+    },
+    "negative": {
+      "matched": false
+    }
+  },
+  "input_digest": "sha256:aaa3ea215f852ddd42bc91c898c94566d89c2c6ca1a67a117f252048d73013ce",
+  "output_digest": "sha256:f7995ddc34697de836f0232386f76538f687b38dadd0ded121b2de1b5b946b20",
+  "attribution": {
+    "repository": "MercyB",
+    "generated_by": "scripts/tm-int/group-d-evidence.mjs",
+    "spec_first_source": "reports/tm-group-d-ruling-sheet.md",
+    "spec_written_from_public_interface_only": true,
+    "shared_digest_rule": "one packet per ID; no shared digest"
+  },
+  "replay_proof": {
+    "replayed": true,
+    "command": "cd /Users/chaudoanm3/MercyB && npx vite-node scripts/tm-int/group-d-evidence.mjs",
+    "checks": {
+      "code_path_match": true,
+      "input_digest_match": true,
+      "output_digest_match": true,
+      "group_d_assertion_passed": true
+    },
+    "recorded_output_digest": "sha256:f7995ddc34697de836f0232386f76538f687b38dadd0ded121b2de1b5b946b20"
+  },
+  "run_ids": {
+    "obs001": "tm-design-group-d-20260716:obs001:TM-INT-10183",
+    "obs003": "tm-design-group-d-20260716:obs003:TM-INT-10183",
+    "obs004": "tm-design-group-d-20260716:obs004:TM-INT-10183"
+  },
+  "lineage": {
+    "design_ruling": "group-d-2026-07-16",
+    "source_candidate": "D-R2",
+    "evidence_batch": "tm-design-group-d-20260716"
+  }
+}

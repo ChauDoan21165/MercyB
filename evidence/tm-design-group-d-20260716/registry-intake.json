@@ -1,0 +1,261 @@
+{
+  "gate": "sqlite_registry_mandatory_intake",
+  "db": "/Users/chaudoanm3/ai-tutor-factory/state/int_registry.sqlite3",
+  "source_queue": "tm-design-group-d-20260716",
+  "rows_added": [
+    {
+      "tm_int_id": "TM-INT-10177",
+      "source_candidate": "D-G1",
+      "module": "l1ErrorDetector",
+      "axis": "vi-modal-overinflection",
+      "behavior_boundary": "Detects Vietnamese L1 modal overinflection when learner text adds third-person -s to a modal such as can or should and the expected correction keeps the modal uninflected.",
+      "registry_intake": {
+        "action": "added",
+        "runnable": true,
+        "tm_int_id": "TM-INT-10177",
+        "semantic_key": "8859a33b9f445c257499ac05e85a0c848e3e77fd009c5da055cce2f2f1e1a197",
+        "normalized_boundary": "detects vietnamese l1 modal overinflection when learner text adds third person s modal such expected correction keeps modal uninflected",
+        "reason": null,
+        "existing_tm_int_id": null,
+        "similarity_score": null,
+        "matched_behavior_boundary": null
+      },
+      "semantic_key": "8859a33b9f445c257499ac05e85a0c848e3e77fd009c5da055cce2f2f1e1a197",
+      "normalized_boundary": "detects vietnamese l1 modal overinflection when learner text adds third person s modal such expected correction keeps modal uninflected"
+    },
+    {
+      "tm_int_id": "TM-INT-10178",
+      "source_candidate": "D-G2",
+      "module": "l1ErrorDetector",
+      "axis": "vi-phrasal-verb-transfer",
+      "behavior_boundary": "Detects a conservative whitelist of Vietnamese L1 phrasal-verb lexical transfer when learner text uses wake, wear, or care where the expected correction uses get up, put on, or look after.",
+      "registry_intake": {
+        "action": "added",
+        "runnable": true,
+        "tm_int_id": "TM-INT-10178",
+        "semantic_key": "b0aa69f7c9ca0e6367c53e78bb7257223765c910aefd58c4f9d17d7023c7fc30",
+        "normalized_boundary": "detects conservative whitelist vietnamese l1 phrasal verb lexical transfer when learner text uses wake wear care where expected correction uses get up put look after",
+        "reason": null,
+        "existing_tm_int_id": null,
+        "similarity_score": null,
+        "matched_behavior_boundary": null
+      },
+      "semantic_key": "b0aa69f7c9ca0e6367c53e78bb7257223765c910aefd58c4f9d17d7023c7fc30",
+      "normalized_boundary": "detects conservative whitelist vietnamese l1 phrasal verb lexical transfer when learner text uses wake wear care where expected correction uses get up put look after"
+    },
+    {
+      "tm_int_id": "TM-INT-10179",
+      "source_candidate": "D-G3",
+      "module": "l1ErrorDetector",
+      "axis": "vi-very-verb-calque",
+      "behavior_boundary": "Detects Vietnamese L1 degree-adverb calque when learner text puts very directly before a verb such as like and the expected correction uses really before the verb.",
+      "registry_intake": {
+        "action": "added",
+        "runnable": true,
+        "tm_int_id": "TM-INT-10179",
+        "semantic_key": "a35670182f0d9367dfd21a231ba3d0f9a233d545c6c4b843a93d72aec1c168ba",
+        "normalized_boundary": "detects vietnamese l1 degree adverb calque when learner text puts very directly before verb such like expected correction uses really before verb",
+        "reason": null,
+        "existing_tm_int_id": null,
+        "similarity_score": null,
+        "matched_behavior_boundary": null
+      },
+      "semantic_key": "a35670182f0d9367dfd21a231ba3d0f9a233d545c6c4b843a93d72aec1c168ba",
+      "normalized_boundary": "detects vietnamese l1 degree adverb calque when learner text puts very directly before verb such like expected correction uses really before verb"
+    },
+    {
+      "tm_int_id": "TM-INT-10180",
+      "source_candidate": "D-G4",
+      "module": "l1ErrorDetector",
+      "axis": "vi-overexplicit-reference",
+      "behavior_boundary": "Detects Vietnamese L1 overexplicit reference chains when learner text repeats the same named subject across adjacent sentences and the expected correction switches later mentions to pronouns.",
+      "registry_intake": {
+        "action": "added",
+        "runnable": true,
+        "tm_int_id": "TM-INT-10180",
+        "semantic_key": "42d37657fb0f49089f70d7b89700039232aea49d5293461b7cd782a8f1b872b7",
+        "normalized_boundary": "detects vietnamese l1 overexplicit reference chains when learner text repeats same named subject across adjacent sentences expected correction switches later mentions pronouns",
+        "reason": null,
+        "existing_tm_int_id": null,
+        "similarity_score": null,
+        "matched_behavior_boundary": null
+      },
+      "semantic_key": "42d37657fb0f49089f70d7b89700039232aea49d5293461b7cd782a8f1b872b7",
+      "normalized_boundary": "detects vietnamese l1 overexplicit reference chains when learner text repeats same named subject across adjacent sentences expected correction switches later mentions pronouns"
+    },
+    {
+      "tm_int_id": "TM-INT-10181",
+      "source_candidate": "D-G5",
+      "module": "l1ErrorDetector",
+      "axis": "vi-time-reference-overmarking",
+      "behavior_boundary": "Detects Vietnamese L1 time-reference overmarking when learner text repeats the same narrative time marker across several sentences and the expected correction keeps only the first marker.",
+      "registry_intake": {
+        "action": "added",
+        "runnable": true,
+        "tm_int_id": "TM-INT-10181",
+        "semantic_key": "b99e159b5cf4e4c37ced2430fc32ac55e50523425f372128d5b8e73d1541b78e",
+        "normalized_boundary": "detects vietnamese l1 time reference overmarking when learner text repeats same narrative time marker across several sentences expected correction keeps only first marker",
+        "reason": null,
+        "existing_tm_int_id": null,
+        "similarity_score": null,
+        "matched_behavior_boundary": null
+      },
+      "semantic_key": "b99e159b5cf4e4c37ced2430fc32ac55e50523425f372128d5b8e73d1541b78e",
+      "normalized_boundary": "detects vietnamese l1 time reference overmarking when learner text repeats same narrative time marker across several sentences expected correction keeps only first marker"
+    },
+    {
+      "tm_int_id": "TM-INT-10182",
+      "source_candidate": "D-R1",
+      "module": "registerDetector",
+      "axis": "register-direct-request-transfer",
+      "behavior_boundary": "Detects direct request transfer only when the caller supplies professional request context and the expected text contains a softened request form; context-free and instruction contexts abstain.",
+      "registry_intake": {
+        "action": "added",
+        "runnable": true,
+        "tm_int_id": "TM-INT-10182",
+        "semantic_key": "18caacae238c96538c8d6cf989d5e77f19a3ec8ce80fab005f5cb07018c3f151",
+        "normalized_boundary": "detects direct request transfer only when caller supplies professional request context expected text contains softened request form context free instruction contexts abstain",
+        "reason": null,
+        "existing_tm_int_id": null,
+        "similarity_score": null,
+        "matched_behavior_boundary": null
+      },
+      "semantic_key": "18caacae238c96538c8d6cf989d5e77f19a3ec8ce80fab005f5cb07018c3f151",
+      "normalized_boundary": "detects direct request transfer only when caller supplies professional request context expected text contains softened request form context free instruction contexts abstain"
+    },
+    {
+      "tm_int_id": "TM-INT-10183",
+      "source_candidate": "D-R2",
+      "module": "registerDetector",
+      "axis": "register-apology-explanation-order",
+      "behavior_boundary": "Detects professional apology explanation-before-responsibility order when learner text starts with the reason and the expected correction begins with sorry or apologies.",
+      "registry_intake": {
+        "action": "added",
+        "runnable": true,
+        "tm_int_id": "TM-INT-10183",
+        "semantic_key": "e9c619f2b8ceb212044464e559c82b68fc08f0eb9683a220d1112253f524f237",
+        "normalized_boundary": "detects professional apology explanation before responsibility order when learner text starts reason expected correction begins sorry apologies",
+        "reason": null,
+        "existing_tm_int_id": null,
+        "similarity_score": null,
+        "matched_behavior_boundary": null
+      },
+      "semantic_key": "e9c619f2b8ceb212044464e559c82b68fc08f0eb9683a220d1112253f524f237",
+      "normalized_boundary": "detects professional apology explanation before responsibility order when learner text starts reason expected correction begins sorry apologies"
+    },
+    {
+      "tm_int_id": "TM-INT-10184",
+      "source_candidate": "D-R3",
+      "module": "registerDetector",
+      "axis": "register-refusal-softening-gap",
+      "behavior_boundary": "Detects professional refusal softening gaps when learner text gives a bare refusal and the expected correction includes a softener; casual refusal context abstains.",
+      "registry_intake": {
+        "action": "added",
+        "runnable": true,
+        "tm_int_id": "TM-INT-10184",
+        "semantic_key": "3b6e04e9bc6e00a617310dccf5b7c8d414b6105ef28fc193449b728287e2a32c",
+        "normalized_boundary": "detects professional refusal softening gaps when learner text gives bare refusal expected correction includes softener casual refusal context abstains",
+        "reason": null,
+        "existing_tm_int_id": null,
+        "similarity_score": null,
+        "matched_behavior_boundary": null
+      },
+      "semantic_key": "3b6e04e9bc6e00a617310dccf5b7c8d414b6105ef28fc193449b728287e2a32c",
+      "normalized_boundary": "detects professional refusal softening gaps when learner text gives bare refusal expected correction includes softener casual refusal context abstains"
+    },
+    {
+      "tm_int_id": "TM-INT-10185",
+      "source_candidate": "D-P1",
+      "module": "vnEnPronunciationDrills",
+      "axis": "pron-final-stop-voicing",
+      "behavior_boundary": "Selects final_stop_voicing pronunciation feedback when a voiced-final-stop target such as bag is heard as its voiceless minimal-pair contrast such as back.",
+      "registry_intake": {
+        "action": "added",
+        "runnable": true,
+        "tm_int_id": "TM-INT-10185",
+        "semantic_key": "2354a2f849ad5ac1ca4b22c91313afad373b5738ffb0a0e7b4edcc19c2ea432f",
+        "normalized_boundary": "selects final stop voicing pronunciation feedback when voiced final stop target such bag heard voiceless minimal pair contrast such back",
+        "reason": null,
+        "existing_tm_int_id": null,
+        "similarity_score": null,
+        "matched_behavior_boundary": null
+      },
+      "semantic_key": "2354a2f849ad5ac1ca4b22c91313afad373b5738ffb0a0e7b4edcc19c2ea432f",
+      "normalized_boundary": "selects final stop voicing pronunciation feedback when voiced final stop target such bag heard voiceless minimal pair contrast such back"
+    },
+    {
+      "tm_int_id": "TM-INT-10186",
+      "source_candidate": "D-P2",
+      "module": "vnEnPronunciationDrills",
+      "axis": "pron-diphthong-reduction",
+      "behavior_boundary": "Selects diphthong_reduction pronunciation feedback when a diphthong target such as boat is heard as a monophthong reduction such as bot, while unrelated vowel substitutions return null.",
+      "registry_intake": {
+        "action": "added",
+        "runnable": true,
+        "tm_int_id": "TM-INT-10186",
+        "semantic_key": "9f7d2d97dcb6711290797181af35fcb3897c9d114d3becd58f30d7f66b745bf4",
+        "normalized_boundary": "selects diphthong reduction pronunciation feedback when diphthong target such boat heard monophthong reduction such bot while unrelated vowel substitutions return null",
+        "reason": null,
+        "existing_tm_int_id": null,
+        "similarity_score": null,
+        "matched_behavior_boundary": null
+      },
+      "semantic_key": "9f7d2d97dcb6711290797181af35fcb3897c9d114d3becd58f30d7f66b745bf4",
+      "normalized_boundary": "selects diphthong reduction pronunciation feedback when diphthong target such boat heard monophthong reduction such bot while unrelated vowel substitutions return null"
+    },
+    {
+      "tm_int_id": "TM-INT-10187",
+      "source_candidate": "D-P3",
+      "module": "vnEnPronunciationDrills",
+      "axis": "pron-v-w-confusion",
+      "behavior_boundary": "Selects v_w_confusion pronunciation feedback when a v-initial target such as very is heard with a w or y glide, while correct very returns null.",
+      "registry_intake": {
+        "action": "added",
+        "runnable": true,
+        "tm_int_id": "TM-INT-10187",
+        "semantic_key": "5b5680a3fd79330f3a729ad7965048a9d9820226e3f3db5b9ee81b8c60892d01",
+        "normalized_boundary": "selects v w confusion pronunciation feedback when v initial target such very heard w y glide while correct very returns null",
+        "reason": null,
+        "existing_tm_int_id": null,
+        "similarity_score": null,
+        "matched_behavior_boundary": null
+      },
+      "semantic_key": "5b5680a3fd79330f3a729ad7965048a9d9820226e3f3db5b9ee81b8c60892d01",
+      "normalized_boundary": "selects v w confusion pronunciation feedback when v initial target such very heard w y glide while correct very returns null"
+    },
+    {
+      "tm_int_id": "TM-INT-10188",
+      "source_candidate": "D-P4",
+      "module": "vnEnPronunciationDrills",
+      "axis": "pron-final-l-deletion",
+      "behavior_boundary": "Selects final_l_deletion pronunciation feedback when a final-l target such as feel is heard without final l as fee, while correct feel returns null.",
+      "registry_intake": {
+        "action": "added",
+        "runnable": true,
+        "tm_int_id": "TM-INT-10188",
+        "semantic_key": "2fd8fa50d9a3c3a8b56f14d8c67add871f18b93efe1dcfb0d83faece24859ac3",
+        "normalized_boundary": "selects final l deletion pronunciation feedback when final l target such feel heard final l fee while correct feel returns null",
+        "reason": null,
+        "existing_tm_int_id": null,
+        "similarity_score": null,
+        "matched_behavior_boundary": null
+      },
+      "semantic_key": "2fd8fa50d9a3c3a8b56f14d8c67add871f18b93efe1dcfb0d83faece24859ac3",
+      "normalized_boundary": "selects final l deletion pronunciation feedback when final l target such feel heard final l fee while correct feel returns null"
+    }
+  ],
+  "rows_blocked_as_duplicate": [],
+  "rows_already_present": [],
+  "blocked_non_duplicate": [],
+  "unresolved_collisions_left_for_judge_governor": [],
+  "counts": {
+    "rows_added": 12,
+    "rows_blocked_as_duplicate": 0,
+    "rows_already_present": 0,
+    "blocked_non_duplicate": 0,
+    "unresolved_collisions_left_for_judge_governor": 0,
+    "packets_or_rows_runnable": 12
+  },
+  "covered_by_self_assigned": false,
+  "status_policy": "new worker-created intake is report_only; verified is preserved only from trusted existing source rows"
+}

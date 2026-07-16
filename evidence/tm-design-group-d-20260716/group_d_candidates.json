@@ -1,0 +1,271 @@
+[
+  {
+    "id": "TM-INT-10177",
+    "sourceCandidate": "D-G1",
+    "module": "l1ErrorDetector",
+    "axis": "vi-modal-overinflection",
+    "exportName": "vi_l1_modal_overinflection",
+    "behaviorBoundary": "Detects Vietnamese L1 modal overinflection when learner text adds third-person -s to a modal such as can or should and the expected correction keeps the modal uninflected.",
+    "codePath": "src/lib/feedback/index.ts:detectL1Error",
+    "input": {
+      "positive": {
+        "userAnswer": "He cans speak English.",
+        "expectedAnswer": "He can speak English."
+      },
+      "negative": {
+        "userAnswer": "He can speak English.",
+        "expectedAnswer": "He can speak English."
+      }
+    },
+    "assertion": "positive returns vi_l1_modal_overinflection and the correct modal form does not return that tag"
+  },
+  {
+    "id": "TM-INT-10178",
+    "sourceCandidate": "D-G2",
+    "module": "l1ErrorDetector",
+    "axis": "vi-phrasal-verb-transfer",
+    "exportName": "vi_l1_phrasal_verb_transfer",
+    "behaviorBoundary": "Detects a conservative whitelist of Vietnamese L1 phrasal-verb lexical transfer when learner text uses wake, wear, or care where the expected correction uses get up, put on, or look after.",
+    "codePath": "src/lib/feedback/index.ts:detectL1Error",
+    "input": {
+      "positives": [
+        {
+          "userAnswer": "I wake at six.",
+          "expectedAnswer": "I get up at six."
+        },
+        {
+          "userAnswer": "Wear your jacket.",
+          "expectedAnswer": "Put on your jacket."
+        },
+        {
+          "userAnswer": "She cares her brother.",
+          "expectedAnswer": "She looks after her brother."
+        }
+      ],
+      "negative": {
+        "userAnswer": "I wake the baby.",
+        "expectedAnswer": "I wake the baby."
+      }
+    },
+    "assertion": "all three whitelisted phrasal-transfer pairs return vi_l1_phrasal_verb_transfer and a non-whitelisted wake use does not"
+  },
+  {
+    "id": "TM-INT-10179",
+    "sourceCandidate": "D-G3",
+    "module": "l1ErrorDetector",
+    "axis": "vi-very-verb-calque",
+    "exportName": "vi_l1_very_verb_calque",
+    "behaviorBoundary": "Detects Vietnamese L1 degree-adverb calque when learner text puts very directly before a verb such as like and the expected correction uses really before the verb.",
+    "codePath": "src/lib/feedback/index.ts:detectL1Error",
+    "input": {
+      "positive": {
+        "userAnswer": "I very like this song.",
+        "expectedAnswer": "I really like this song."
+      },
+      "negativeAdjective": {
+        "userAnswer": "This song is very good.",
+        "expectedAnswer": "This song is very good."
+      },
+      "negativeCorrect": {
+        "userAnswer": "I really like this song.",
+        "expectedAnswer": "I really like this song."
+      }
+    },
+    "assertion": "very plus verb returns vi_l1_very_verb_calque while really plus verb and very plus adjective do not"
+  },
+  {
+    "id": "TM-INT-10180",
+    "sourceCandidate": "D-G4",
+    "module": "l1ErrorDetector",
+    "axis": "vi-overexplicit-reference",
+    "exportName": "vi_l1_overexplicit_reference",
+    "behaviorBoundary": "Detects Vietnamese L1 overexplicit reference chains when learner text repeats the same named subject across adjacent sentences and the expected correction switches later mentions to pronouns.",
+    "codePath": "src/lib/feedback/index.ts:detectL1Error",
+    "input": {
+      "positive": {
+        "userAnswer": "Lan is my friend. Lan works with me. Lan is kind.",
+        "expectedAnswer": "Lan is my friend. She works with me. She is kind."
+      },
+      "negative": {
+        "userAnswer": "Lan is my friend.",
+        "expectedAnswer": "Lan is my friend."
+      }
+    },
+    "assertion": "repeated name chain returns vi_l1_overexplicit_reference and a single mention does not"
+  },
+  {
+    "id": "TM-INT-10181",
+    "sourceCandidate": "D-G5",
+    "module": "l1ErrorDetector",
+    "axis": "vi-time-reference-overmarking",
+    "exportName": "vi_l1_time_reference_overmarking",
+    "behaviorBoundary": "Detects Vietnamese L1 time-reference overmarking when learner text repeats the same narrative time marker across several sentences and the expected correction keeps only the first marker.",
+    "codePath": "src/lib/feedback/index.ts:detectL1Error",
+    "input": {
+      "positive": {
+        "userAnswer": "Yesterday I went to work. Yesterday I met my boss. Yesterday I came home late.",
+        "expectedAnswer": "Yesterday I went to work. I met my boss. I came home late."
+      },
+      "negative": {
+        "userAnswer": "Yesterday I went to work. I met my boss. I came home late.",
+        "expectedAnswer": "Yesterday I went to work. I met my boss. I came home late."
+      }
+    },
+    "assertion": "three repeated yesterday markers return vi_l1_time_reference_overmarking and a single initial marker does not"
+  },
+  {
+    "id": "TM-INT-10182",
+    "sourceCandidate": "D-R1",
+    "module": "registerDetector",
+    "axis": "register-direct-request-transfer",
+    "exportName": "detectRegisterErrorWithContext",
+    "behaviorBoundary": "Detects direct request transfer only when the caller supplies professional request context and the expected text contains a softened request form; context-free and instruction contexts abstain.",
+    "codePath": "src/lib/feedback/registerDetector.ts:detectRegisterErrorWithContext",
+    "input": {
+      "positive": {
+        "learnerText": "You send me the file.",
+        "expectedText": "Could you send me the file?",
+        "scenario": "professional_request"
+      },
+      "instruction": {
+        "learnerText": "You send me the file.",
+        "expectedText": "Send me the file.",
+        "scenario": "instruction"
+      },
+      "contextFree": {
+        "learnerText": "You send me the file."
+      }
+    },
+    "assertion": "professional request context returns en_l1_register_direct_request_transfer; instruction and context-free calls abstain"
+  },
+  {
+    "id": "TM-INT-10183",
+    "sourceCandidate": "D-R2",
+    "module": "registerDetector",
+    "axis": "register-apology-explanation-order",
+    "exportName": "detectRegisterErrorWithContext",
+    "behaviorBoundary": "Detects professional apology explanation-before-responsibility order when learner text starts with the reason and the expected correction begins with sorry or apologies.",
+    "codePath": "src/lib/feedback/registerDetector.ts:detectRegisterErrorWithContext",
+    "input": {
+      "positive": {
+        "learnerText": "The traffic was terrible, so I am late.",
+        "expectedText": "I'm sorry I'm late. The traffic was terrible.",
+        "scenario": "professional_apology"
+      },
+      "negative": {
+        "learnerText": "I'm sorry I'm late. The traffic was terrible.",
+        "expectedText": "I'm sorry I'm late. The traffic was terrible.",
+        "scenario": "professional_apology"
+      }
+    },
+    "assertion": "reason-first professional apology returns en_l1_register_apology_explanation_order and apology-first text abstains"
+  },
+  {
+    "id": "TM-INT-10184",
+    "sourceCandidate": "D-R3",
+    "module": "registerDetector",
+    "axis": "register-refusal-softening-gap",
+    "exportName": "detectRegisterErrorWithContext",
+    "behaviorBoundary": "Detects professional refusal softening gaps when learner text gives a bare refusal and the expected correction includes a softener; casual refusal context abstains.",
+    "codePath": "src/lib/feedback/registerDetector.ts:detectRegisterErrorWithContext",
+    "input": {
+      "positive": {
+        "learnerText": "No, I don't go.",
+        "expectedText": "Thanks for asking, but I can't this week.",
+        "scenario": "professional_refusal"
+      },
+      "casual": {
+        "learnerText": "No, I don't go.",
+        "expectedText": "",
+        "scenario": "casual_refusal"
+      }
+    },
+    "assertion": "professional refusal context returns en_l1_register_refusal_softening_gap and casual refusal context abstains"
+  },
+  {
+    "id": "TM-INT-10185",
+    "sourceCandidate": "D-P1",
+    "module": "vnEnPronunciationDrills",
+    "axis": "pron-final-stop-voicing",
+    "exportName": "selectFinalStopVoicingFeedbackKey",
+    "behaviorBoundary": "Selects final_stop_voicing pronunciation feedback when a voiced-final-stop target such as bag is heard as its voiceless minimal-pair contrast such as back.",
+    "codePath": "src/lib/pronunciation/vnEnPronunciationDrills.ts:selectFinalStopVoicingFeedbackKey",
+    "input": {
+      "positive": {
+        "targetWord": "bag",
+        "heardWord": "back"
+      },
+      "negative": {
+        "targetWord": "bag",
+        "heardWord": "bag"
+      }
+    },
+    "assertion": "bag heard as back returns final_stop_voicing and bag heard as bag returns null"
+  },
+  {
+    "id": "TM-INT-10186",
+    "sourceCandidate": "D-P2",
+    "module": "vnEnPronunciationDrills",
+    "axis": "pron-diphthong-reduction",
+    "exportName": "selectDiphthongReductionFeedbackKey",
+    "behaviorBoundary": "Selects diphthong_reduction pronunciation feedback when a diphthong target such as boat is heard as a monophthong reduction such as bot, while unrelated vowel substitutions return null.",
+    "codePath": "src/lib/pronunciation/vnEnPronunciationDrills.ts:selectDiphthongReductionFeedbackKey",
+    "input": {
+      "positive": {
+        "targetWord": "boat",
+        "heardWord": "bot"
+      },
+      "negative": {
+        "targetWord": "boat",
+        "heardWord": "bet"
+      }
+    },
+    "assertion": "boat heard as bot returns diphthong_reduction and unrelated boat/bet returns null"
+  },
+  {
+    "id": "TM-INT-10187",
+    "sourceCandidate": "D-P3",
+    "module": "vnEnPronunciationDrills",
+    "axis": "pron-v-w-confusion",
+    "exportName": "selectVWFeedbackKey",
+    "behaviorBoundary": "Selects v_w_confusion pronunciation feedback when a v-initial target such as very is heard with a w or y glide, while correct very returns null.",
+    "codePath": "src/lib/pronunciation/vnEnPronunciationDrills.ts:selectVWFeedbackKey",
+    "input": {
+      "positives": [
+        {
+          "targetWord": "very",
+          "heardWord": "wery"
+        },
+        {
+          "targetWord": "very",
+          "heardWord": "yery"
+        }
+      ],
+      "negative": {
+        "targetWord": "very",
+        "heardWord": "very"
+      }
+    },
+    "assertion": "very heard as wery or yery returns v_w_confusion and correct very returns null"
+  },
+  {
+    "id": "TM-INT-10188",
+    "sourceCandidate": "D-P4",
+    "module": "vnEnPronunciationDrills",
+    "axis": "pron-final-l-deletion",
+    "exportName": "selectFinalLFeedbackKey",
+    "behaviorBoundary": "Selects final_l_deletion pronunciation feedback when a final-l target such as feel is heard without final l as fee, while correct feel returns null.",
+    "codePath": "src/lib/pronunciation/vnEnPronunciationDrills.ts:selectFinalLFeedbackKey",
+    "input": {
+      "positive": {
+        "targetWord": "feel",
+        "heardWord": "fee"
+      },
+      "negative": {
+        "targetWord": "feel",
+        "heardWord": "feel"
+      }
+    },
+    "assertion": "feel heard as fee returns final_l_deletion and feel heard as feel returns null"
+  }
+]
