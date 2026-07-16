@@ -662,24 +662,6 @@ describe("AiTutor four-tab seed flow", () => {
     expect(screen.queryByText("Mercy needs the AI correction engine for this one.")).not.toBeInTheDocument();
   });
 
-  it("renders a fully corrected green-box sentence while keeping the explanation focused", async () => {
-    renderAiTutor();
-
-    await userEvent.type(
-      screen.getByRole("textbox", { name: /Gõ câu tiếng Anh của bạn/i }),
-      "I buy a hat yesterday. Because summer is comming and it is going to be very sunny.",
-    );
-    await userEvent.click(screen.getByRole("button", { name: "Sửa câu này" }));
-
-    const displayedCorrection = await screen.findByText(
-      "I bought a hat yesterday. Because summer is coming and it is going to be very sunny.",
-    );
-    expect(displayedCorrection).toBeInTheDocument();
-    expect(displayedCorrection).not.toHaveTextContent(/comming/i);
-    expect(screen.getByText(/^Khi nói về việc đã xảy ra/)).toBeInTheDocument();
-    expect(screen.queryByText(/spelling|chính tả/i)).not.toBeInTheDocument();
-  });
-
   it("clears stale correction errors when Grammar voice input starts", async () => {
     (window as Window & { SpeechRecognition?: unknown }).SpeechRecognition = MockSpeechRecognition;
     renderAiTutor();

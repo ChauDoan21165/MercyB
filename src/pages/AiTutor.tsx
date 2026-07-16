@@ -378,13 +378,6 @@ function isAiCorrectionFailure(value: AiCorrectionResponse): value is AiCorrecti
   return Boolean(value && "ok" in value && value.ok === false);
 }
 
-function polishDisplayedCorrectionText(text: string, target: TutorTarget): string {
-  if (target !== "en") return text;
-  return text
-    .replace(/\bcomming\b/g, "coming")
-    .replace(/\bComming\b/g, "Coming");
-}
-
 async function callAiSentenceCorrection(
   learnerText: string,
   accessToken: string,
@@ -2622,7 +2615,7 @@ export default function AiTutorPage() {
             source: "server_corrected",
             targetLanguage: target,
           });
-          const aiCorrected = polishDisplayedCorrectionText(aiResult.corrected, target);
+          const aiCorrected = aiResult.corrected;
           const { turn } = buildCorrectionTurn({
             id: `corr-${Date.now()}-${Math.random().toString(16).slice(2, 8)}`,
             targetLanguage: target,
@@ -2753,11 +2746,7 @@ export default function AiTutorPage() {
       // engine's needs_ai correction (which is empty). Resurfaces via advanceTurn below.
       if (engineResult.shouldDefer) {
         deferredQueueRef.current.enqueue(
-          buildDeferredTurnCorrection(
-            trimmed,
-            polishDisplayedCorrectionText(localCorrection.corrected, target),
-            engineResult,
-          ),
+          buildDeferredTurnCorrection(trimmed, localCorrection.corrected, engineResult),
         );
         setLoading(false);
         setError(
@@ -2791,7 +2780,7 @@ export default function AiTutorPage() {
       if (timingResult.shouldDefer && timingResult.correction.status === "corrected") {
         deferredQueueRef.current.enqueue({
           learnerText: trimmed,
-          correctedText: polishDisplayedCorrectionText(timingResult.correction.corrected, target),
+          correctedText: timingResult.correction.corrected,
           timing: timingResult.timing,
           remainingTurns: timingResult.timing.delayTurns ?? 1,
         });
@@ -2805,7 +2794,7 @@ export default function AiTutorPage() {
       }
     }
 
-    const corrected = polishDisplayedCorrectionText(localCorrection.corrected, target);
+    const corrected = localCorrection.corrected;
     const { turn } = buildCorrectionTurn({
       id: `corr-${Date.now()}-${Math.random().toString(16).slice(2, 8)}`,
       targetLanguage: target,
