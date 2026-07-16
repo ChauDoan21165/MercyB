@@ -50,3 +50,77 @@ export async function registerProviderEvent(
     processStatus: row.process_status,
   };
 }
+
+function nowIso(): string {
+  return new Date().toISOString();
+}
+
+export async function getProviderEventMetadata(
+  supabase: SupabaseClient,
+  eventId: string,
+): Promise<Record<string, unknown>> {
+  const result = await supabase
+    .from("billing_provider_events")
+    .select("metadata")
+    .eq("id", eventId)
+    .single();
+
+  if (result.error) {
+    throw new Error(
+      `Failed to load provider event metadata: ${result.error.message}`,
+    );
+  }
+
+  return result.data?.metadata && typeof result.data.metadata === "object"
+    ? result.data.metadata as Record<string, unknown>
+    : {};
+}
+
+export async function markProviderEventProcessed(
+  supabase: SupabaseClient,
+  eventId: string,
+  metadataPatch: Record<string, unknown>,
+): Promise<void> {
+  const currentMetadata = await getProviderEventMetadata(supabase, eventId);
+
+  const { error: updateError } = await supabase
+    .from("billing_provider_events")
+    .update({
+      process_status: "processed",
+      processed_at: nowIso(),
+      processing_error: null,
+      metadata: {
+        ...currentMetadata,
+        ...metadataPatch,
+      },
+    })
+    .eq("id", eventId);
+
+  if (updateError) {
+    throw new Error(
+      `Failed to mark provider event processed: ${updateError.message}`,
+    );
+  }
+}
+
+export async function markProviderEventFailed(
+  supabase: SupabaseClient,
+  eventId: string,
+  err: Error,
+): Promise<void> {
+  const { error: updateError } = await supabase
+    .from("billing_provider_events")
+    .update({
+      process_status: "failed",
+      processed_at: nowIso(),
+      processing_error: err.message,
+    })
+    .eq("id", eventId);
+
+  if (updateError) {
+    console.warn(
+      "[billing/provider-events] failed to mark provider event failed:",
+      updateError,
+    );
+  }
+}
