@@ -39,6 +39,19 @@ function clearReloadMark(): void {
   clearChunkRecoveryMarks();
 }
 
+function looksLikeLazyModuleResolutionFailure(err: unknown): boolean {
+  if (!(err instanceof TypeError)) return false;
+  const message = err.message.toLowerCase();
+  return (
+    message.includes("cannot read properties of undefined") &&
+    message.includes("reading")
+  );
+}
+
+function looksLikeRecoverableLazyImportFailure(err: unknown): boolean {
+  return looksLikeChunkLoadFailure(err) || looksLikeLazyModuleResolutionFailure(err);
+}
+
 // Exported for unit tests. Wraps an import() factory so a stale-chunk
 // failure after a deploy triggers a one-time index.html reload — the
 // only thing that picks up the new chunk hashes from the new manifest.
@@ -65,7 +78,7 @@ export function createRetryLoader<T extends LazyComponent>(
       clearReloadMark();
       return mod;
     } catch (error) {
-      if (!looksLikeChunkLoadFailure(error)) {
+      if (!looksLikeRecoverableLazyImportFailure(error)) {
         throw error;
       }
 
@@ -74,7 +87,7 @@ export function createRetryLoader<T extends LazyComponent>(
         clearReloadMark();
         return mod;
       } catch (retryError) {
-        if (!looksLikeChunkLoadFailure(retryError)) {
+        if (!looksLikeRecoverableLazyImportFailure(retryError)) {
           throw retryError;
         }
 
