@@ -1,0 +1,57 @@
+{
+  "batch": "tm-design-group-b2-cf-20260715",
+  "created_at": "2026-07-15T00:00:00.000Z",
+  "count": 5,
+  "rows": [
+    {
+      "tm_int_id": "TM-INT-10172",
+      "source_candidate": "CF-013",
+      "module": "writingFeedbackFocus",
+      "axis": "cf-focused-written-target-family",
+      "export": "selectWrittenFeedbackFocus",
+      "assertion": "primary.id is article-1 and reason is active_target_family despite a higher-severity tense candidate",
+      "output_digest": "sha256:20407cf03cc51d5cecb72b51e3fde3c2b8d7b763050b40bc7e6aabc1df75e6be",
+      "status": "evidence_passed"
+    },
+    {
+      "tm_int_id": "TM-INT-10173",
+      "source_candidate": "CF-014",
+      "module": "writtenMetalinguisticFeedback",
+      "axis": "cf-written-repeated-grammar-metalinguistic",
+      "export": "buildWrittenMetalinguisticFeedback",
+      "assertion": "kind is metalinguistic_explanation with an article rule label and corrected example",
+      "output_digest": "sha256:a653e54a008afb94871b2076442de29751b5ba9ba88cbfddccb96979179b2ca7",
+      "status": "evidence_passed"
+    },
+    {
+      "tm_int_id": "TM-INT-10174",
+      "source_candidate": "CF-015",
+      "module": "correctionSpeechPayload",
+      "axis": "cf-audio-compact-correction-cue",
+      "export": "splitCorrectionForSpeech",
+      "assertion": "audio output is compact, within maxSpokenChars, and keeps full explanation in textDetail",
+      "output_digest": "sha256:b3277df2db551a1fc09c67d0c613f358a4bb53c8883b9e363a5d8035dcb6000d",
+      "status": "evidence_passed"
+    },
+    {
+      "tm_int_id": "TM-INT-10175",
+      "source_candidate": "CF-018",
+      "module": "representativeWrittenErrors",
+      "axis": "cf-written-representative-error-instance",
+      "export": "selectRepresentativeWrittenErrors",
+      "assertion": "one article instance is selected, two are suppressed, and a same-pattern cue is present",
+      "output_digest": "sha256:571ef3c2c4170950ea1d62af25c763c92875346c01419a3754948df9890ee589",
+      "status": "evidence_passed"
+    },
+    {
+      "tm_int_id": "TM-INT-10176",
+      "source_candidate": "CF-023",
+      "module": "correctionFeedbackTaxonomy",
+      "axis": "cf-feedback-move-taxonomy-validation",
+      "export": "parseCorrectiveFeedbackMove/serializeCorrectiveFeedbackMove",
+      "assertion": "known recast serializes successfully and unknown nice_hint returns unknown_feedback_move",
+      "output_digest": "sha256:990d7c46bb99b1c8fab3a0cc2e42a87f7c10fa4272433959b2513545c06fd9c9",
+      "status": "evidence_passed"
+    }
+  ]
+}

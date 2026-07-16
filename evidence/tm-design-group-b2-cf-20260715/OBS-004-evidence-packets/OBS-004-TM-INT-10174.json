@@ -1,0 +1,56 @@
+{
+  "schema": "tm-int-obs-evidence-packet-v1",
+  "packet_id": "OBS-004-TM-INT-10174",
+  "created_at": "2026-07-15T00:00:00.000Z",
+  "source": "tm-design-group-b2-cf-runtime-observation",
+  "tm_int_id": "TM-INT-10174",
+  "module": "correctionSpeechPayload",
+  "axis": "cf-audio-compact-correction-cue",
+  "behavior_boundary": "When audio-mode correction detail is too long to speak comfortably, the splitter returns a short spoken cue and preserves the full correction and explanation in textDetail.",
+  "previous_behavior_boundary": null,
+  "code_path": "src/lib/feedback/correctionSpeechPayload.ts:splitCorrectionForSpeech",
+  "probe_id": "tm-design-group-b2-cf-20260715:CF-015",
+  "input": {
+    "mode": "audio",
+    "correctionText": "Say: I have lived here for three years.",
+    "explanation": "Use the present perfect with for plus a duration when the situation started in the past and continues now.",
+    "maxSpokenChars": 64
+  },
+  "output": {
+    "payload": {
+      "spokenText": "Try: Say: I have lived here for three years.",
+      "textDetail": "Say: I have lived here for three years. Use the present perfect with for plus a duration when the situation started in the past and continues now.",
+      "reason": "audio_compact_cue"
+    }
+  },
+  "input_digest": "sha256:1324ae524838e9fc0a3c807b8af98df0d9d3ed2588835ff4b29651f48c01efdd",
+  "output_digest": "sha256:b3277df2db551a1fc09c67d0c613f358a4bb53c8883b9e363a5d8035dcb6000d",
+  "attribution": {
+    "repository": "MercyB",
+    "generated_by": "scripts/tm-int/group-b2-cf-evidence.mjs",
+    "spec_first_source": "reports/tm-design-ruling-sheet.md + reports/tm-research-corrective-feedback.md",
+    "spec_written_from_public_interface_only": true,
+    "shared_digest_rule": "one packet per ID; no shared digest"
+  },
+  "replay_proof": {
+    "replayed": true,
+    "command": "cd /Users/chaudoanm3/MercyB && npx vite-node scripts/tm-int/group-b2-cf-evidence.mjs",
+    "checks": {
+      "code_path_match": true,
+      "input_digest_match": true,
+      "output_digest_match": true,
+      "cf-015_assertion_passed": true
+    },
+    "recorded_output_digest": "sha256:b3277df2db551a1fc09c67d0c613f358a4bb53c8883b9e363a5d8035dcb6000d"
+  },
+  "run_ids": {
+    "obs001": "tm-design-group-b2-cf-20260715:obs001:TM-INT-10174",
+    "obs003": "tm-design-group-b2-cf-20260715:obs003:TM-INT-10174",
+    "obs004": "tm-design-group-b2-cf-20260715:obs004:TM-INT-10174"
+  },
+  "lineage": {
+    "design_ruling": "group-b2-2026-07-15",
+    "source_candidate": "CF-015",
+    "evidence_batch": "tm-design-group-b2-cf-20260715"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "mode": "dry-run",
+  "db": "/Users/chaudoanm3/ai-tutor-factory/state/int_registry.sqlite3",
+  "total_ids": 5,
+  "flip_count": 5,
+  "refuse_count": 0,
+  "would_flip": [
+    "TM-INT-10172",
+    "TM-INT-10173",
+    "TM-INT-10174",
+    "TM-INT-10175",
+    "TM-INT-10176"
+  ],
+  "refused": [],
+  "module_audit_disagreement_count": 0,
+  "module_audit_disagreements": []
+}

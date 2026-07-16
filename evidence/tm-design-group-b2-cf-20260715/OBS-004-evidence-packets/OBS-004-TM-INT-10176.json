@@ -1,0 +1,58 @@
+{
+  "schema": "tm-int-obs-evidence-packet-v1",
+  "packet_id": "OBS-004-TM-INT-10176",
+  "created_at": "2026-07-15T00:00:00.000Z",
+  "source": "tm-design-group-b2-cf-runtime-observation",
+  "tm_int_id": "TM-INT-10176",
+  "module": "correctionFeedbackTaxonomy",
+  "axis": "cf-feedback-move-taxonomy-validation",
+  "behavior_boundary": "Corrective-feedback move taxonomy parsing and serialization accept canonical approved moves and reject unknown free-form feedback move strings instead of passing them through.",
+  "previous_behavior_boundary": null,
+  "code_path": "src/lib/feedback/correctionFeedbackTaxonomy.ts:parseCorrectiveFeedbackMove",
+  "probe_id": "tm-design-group-b2-cf-20260715:CF-023",
+  "input": {
+    "knownMove": "recast",
+    "unknownMove": "nice_hint"
+  },
+  "output": {
+    "known": {
+      "ok": true,
+      "value": "recast"
+    },
+    "unknown": {
+      "ok": false,
+      "reason": "unknown_feedback_move",
+      "value": "nice_hint"
+    }
+  },
+  "input_digest": "sha256:2c0afacff5f97c485eb5775a92eb01e1f4751dc4a583d7fce07b41158ffc57ad",
+  "output_digest": "sha256:990d7c46bb99b1c8fab3a0cc2e42a87f7c10fa4272433959b2513545c06fd9c9",
+  "attribution": {
+    "repository": "MercyB",
+    "generated_by": "scripts/tm-int/group-b2-cf-evidence.mjs",
+    "spec_first_source": "reports/tm-design-ruling-sheet.md + reports/tm-research-corrective-feedback.md",
+    "spec_written_from_public_interface_only": true,
+    "shared_digest_rule": "one packet per ID; no shared digest"
+  },
+  "replay_proof": {
+    "replayed": true,
+    "command": "cd /Users/chaudoanm3/MercyB && npx vite-node scripts/tm-int/group-b2-cf-evidence.mjs",
+    "checks": {
+      "code_path_match": true,
+      "input_digest_match": true,
+      "output_digest_match": true,
+      "cf-023_assertion_passed": true
+    },
+    "recorded_output_digest": "sha256:990d7c46bb99b1c8fab3a0cc2e42a87f7c10fa4272433959b2513545c06fd9c9"
+  },
+  "run_ids": {
+    "obs001": "tm-design-group-b2-cf-20260715:obs001:TM-INT-10176",
+    "obs003": "tm-design-group-b2-cf-20260715:obs003:TM-INT-10176",
+    "obs004": "tm-design-group-b2-cf-20260715:obs004:TM-INT-10176"
+  },
+  "lineage": {
+    "design_ruling": "group-b2-2026-07-15",
+    "source_candidate": "CF-023",
+    "evidence_batch": "tm-design-group-b2-cf-20260715"
+  }
+}

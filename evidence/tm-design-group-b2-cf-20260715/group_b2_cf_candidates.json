@@ -1,0 +1,116 @@
+[
+  {
+    "id": "TM-INT-10172",
+    "sourceCandidate": "CF-013",
+    "module": "writingFeedbackFocus",
+    "axis": "cf-focused-written-target-family",
+    "exportName": "selectWrittenFeedbackFocus",
+    "behaviorBoundary": "When written feedback has multiple error families and one family is the active lesson target, the selector makes that active family the primary correction and leaves the others secondary.",
+    "codePath": "src/lib/writing-feedback/correctiveFeedback.ts:selectWrittenFeedbackFocus",
+    "input": {
+      "candidates": [
+        {
+          "id": "tense-1",
+          "family": "tense",
+          "message": "Use past tense for yesterday.",
+          "severity": "high"
+        },
+        {
+          "id": "article-1",
+          "family": "articles",
+          "message": "Use an article before a singular count noun.",
+          "severity": "medium"
+        },
+        {
+          "id": "punctuation-1",
+          "family": "punctuation",
+          "message": "Split the comma splice.",
+          "severity": "low"
+        }
+      ],
+      "activeTargetFamily": "articles"
+    },
+    "assertion": "primary.id is article-1 and reason is active_target_family despite a higher-severity tense candidate"
+  },
+  {
+    "id": "TM-INT-10173",
+    "sourceCandidate": "CF-014",
+    "module": "writtenMetalinguisticFeedback",
+    "axis": "cf-written-repeated-grammar-metalinguistic",
+    "exportName": "buildWrittenMetalinguisticFeedback",
+    "behaviorBoundary": "When a learner repeats the same written grammar class across attempts, the feedback builder adds a concise metalinguistic rule label, explanation, and corrected example instead of direct correction only.",
+    "codePath": "src/lib/writing-feedback/correctiveFeedback.ts:buildWrittenMetalinguisticFeedback",
+    "input": {
+      "family": "articles",
+      "learnerSentence": "Teacher gave homework.",
+      "correctedSentence": "The teacher gave homework.",
+      "priorAttemptsWithSameFamily": 1
+    },
+    "assertion": "kind is metalinguistic_explanation with an article rule label and corrected example"
+  },
+  {
+    "id": "TM-INT-10174",
+    "sourceCandidate": "CF-015",
+    "module": "correctionSpeechPayload",
+    "axis": "cf-audio-compact-correction-cue",
+    "exportName": "splitCorrectionForSpeech",
+    "behaviorBoundary": "When audio-mode correction detail is too long to speak comfortably, the splitter returns a short spoken cue and preserves the full correction and explanation in textDetail.",
+    "codePath": "src/lib/feedback/correctionSpeechPayload.ts:splitCorrectionForSpeech",
+    "input": {
+      "mode": "audio",
+      "correctionText": "Say: I have lived here for three years.",
+      "explanation": "Use the present perfect with for plus a duration when the situation started in the past and continues now.",
+      "maxSpokenChars": 64
+    },
+    "assertion": "audio output is compact, within maxSpokenChars, and keeps full explanation in textDetail"
+  },
+  {
+    "id": "TM-INT-10175",
+    "sourceCandidate": "CF-018",
+    "module": "representativeWrittenErrors",
+    "axis": "cf-written-representative-error-instance",
+    "exportName": "selectRepresentativeWrittenErrors",
+    "behaviorBoundary": "When written feedback contains multiple instances of the same error family, the selector emits one representative instance and a pattern cue rather than correcting every repeated instance.",
+    "codePath": "src/lib/writing-feedback/correctiveFeedback.ts:selectRepresentativeWrittenErrors",
+    "input": {
+      "errors": [
+        {
+          "id": "article-1",
+          "family": "articles",
+          "message": "Missing article before teacher.",
+          "span": "teacher",
+          "correction": "the teacher"
+        },
+        {
+          "id": "article-2",
+          "family": "articles",
+          "message": "Missing article before school.",
+          "span": "school",
+          "correction": "the school"
+        },
+        {
+          "id": "article-3",
+          "family": "articles",
+          "message": "Missing article before lesson.",
+          "span": "lesson",
+          "correction": "the lesson"
+        }
+      ]
+    },
+    "assertion": "one article instance is selected, two are suppressed, and a same-pattern cue is present"
+  },
+  {
+    "id": "TM-INT-10176",
+    "sourceCandidate": "CF-023",
+    "module": "correctionFeedbackTaxonomy",
+    "axis": "cf-feedback-move-taxonomy-validation",
+    "exportName": "parseCorrectiveFeedbackMove/serializeCorrectiveFeedbackMove",
+    "behaviorBoundary": "Corrective-feedback move taxonomy parsing and serialization accept canonical approved moves and reject unknown free-form feedback move strings instead of passing them through.",
+    "codePath": "src/lib/feedback/correctionFeedbackTaxonomy.ts:parseCorrectiveFeedbackMove",
+    "input": {
+      "knownMove": "recast",
+      "unknownMove": "nice_hint"
+    },
+    "assertion": "known recast serializes successfully and unknown nice_hint returns unknown_feedback_move"
+  }
+]

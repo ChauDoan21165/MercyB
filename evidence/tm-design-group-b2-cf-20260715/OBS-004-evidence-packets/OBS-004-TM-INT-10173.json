@@ -1,0 +1,57 @@
+{
+  "schema": "tm-int-obs-evidence-packet-v1",
+  "packet_id": "OBS-004-TM-INT-10173",
+  "created_at": "2026-07-15T00:00:00.000Z",
+  "source": "tm-design-group-b2-cf-runtime-observation",
+  "tm_int_id": "TM-INT-10173",
+  "module": "writtenMetalinguisticFeedback",
+  "axis": "cf-written-repeated-grammar-metalinguistic",
+  "behavior_boundary": "When a learner repeats the same written grammar class across attempts, the feedback builder adds a concise metalinguistic rule label, explanation, and corrected example instead of direct correction only.",
+  "previous_behavior_boundary": null,
+  "code_path": "src/lib/writing-feedback/correctiveFeedback.ts:buildWrittenMetalinguisticFeedback",
+  "probe_id": "tm-design-group-b2-cf-20260715:CF-014",
+  "input": {
+    "family": "articles",
+    "learnerSentence": "Teacher gave homework.",
+    "correctedSentence": "The teacher gave homework.",
+    "priorAttemptsWithSameFamily": 1
+  },
+  "output": {
+    "feedback": {
+      "kind": "metalinguistic_explanation",
+      "ruleLabel": "Article before singular count nouns",
+      "explanation": "Use a or an before one singular count noun when it is introduced for the first time.",
+      "correctedExample": "The teacher gave homework."
+    }
+  },
+  "input_digest": "sha256:3f79160b186e3bc72440c53d1d33d011d8e2d7e6fe74e280bd6c2ea1f099d485",
+  "output_digest": "sha256:a653e54a008afb94871b2076442de29751b5ba9ba88cbfddccb96979179b2ca7",
+  "attribution": {
+    "repository": "MercyB",
+    "generated_by": "scripts/tm-int/group-b2-cf-evidence.mjs",
+    "spec_first_source": "reports/tm-design-ruling-sheet.md + reports/tm-research-corrective-feedback.md",
+    "spec_written_from_public_interface_only": true,
+    "shared_digest_rule": "one packet per ID; no shared digest"
+  },
+  "replay_proof": {
+    "replayed": true,
+    "command": "cd /Users/chaudoanm3/MercyB && npx vite-node scripts/tm-int/group-b2-cf-evidence.mjs",
+    "checks": {
+      "code_path_match": true,
+      "input_digest_match": true,
+      "output_digest_match": true,
+      "cf-014_assertion_passed": true
+    },
+    "recorded_output_digest": "sha256:a653e54a008afb94871b2076442de29751b5ba9ba88cbfddccb96979179b2ca7"
+  },
+  "run_ids": {
+    "obs001": "tm-design-group-b2-cf-20260715:obs001:TM-INT-10173",
+    "obs003": "tm-design-group-b2-cf-20260715:obs003:TM-INT-10173",
+    "obs004": "tm-design-group-b2-cf-20260715:obs004:TM-INT-10173"
+  },
+  "lineage": {
+    "design_ruling": "group-b2-2026-07-15",
+    "source_candidate": "CF-014",
+    "evidence_batch": "tm-design-group-b2-cf-20260715"
+  }
+}
