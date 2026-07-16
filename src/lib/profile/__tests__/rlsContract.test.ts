@@ -87,6 +87,7 @@ const LEGITIMATE_COLUMNS = [
   "onboarded_at",
   "placement_cefr",
   "placement_score",
+  "is_adult_confirmed",
   "email_weekly_digest_enabled",
   "email_unsubscribed_at",
 ] as const;
