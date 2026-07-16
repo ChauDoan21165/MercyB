@@ -14,6 +14,7 @@ A living reference of important lessons surfaced while building MercyBlade. New 
 
 ## Lesson Index
 
+17. [Host crons are invisible saboteurs — audit them first](#17-host-crons-are-invisible-saboteurs--audit-them-first)
 16. [The FOLLOW-403 class — manual grants are invisible until they match the resolver's exact decision input](#16-the-follow-403-class--manual-grants-are-invisible-until-they-match-the-resolvers-exact-decision-input)
 15. [When `du` and `df` disagree, look outside the repo](#15-when-du-and-df-disagree-look-outside-the-repo)
 14. [Cron files must live on main](#14-cron-files-must-live-on-main)
@@ -30,6 +31,22 @@ A living reference of important lessons surfaced while building MercyBlade. New 
 3. [Restore before redesign](#3-restore-before-redesign)
 4. [Verify against current main, not stale audit notes](#4-verify-against-current-main-not-stale-audit-notes)
 5. [Silent failures cost more than loud ones](#5-silent-failures-cost-more-than-loud-ones)
+
+---
+
+## 17. Host crons are invisible saboteurs — audit them first
+
+**What it is.** A cron on a runner host can break CI without any code change. It runs outside the repo. It can erase files, kill services, or mutate caches while tests are running.
+
+**Why it matters.** Twice now, a cron script on a Mac has silently broken CI. These failures looked like repo failures. They were host failures.
+
+**MercyBlade example.** In June, `~/bin/mercyb-strengthen-c2.sh` killed the vitest esbuild service every 15 minutes. That caused three weeks of red wall. In July, `/Users/admin/disk_cleanup.sh` deleted Playwright browsers. Its own comment said "never delete Playwright browsers." The `find` command below the comment deleted them anyway.
+
+**Action.** Lesson 1: when CI fails in ways no code change explains, list every cron on every runner machine first. Run `crontab -l` as each user.
+
+Lesson 2: a comment is not a gate. The June fix and the July fix were both "the script did the opposite of its comment." Mechanical exclusions like `find -prune` beat prose promises.
+
+Lesson 3: scripts that delete by size or age will eventually eat something critical. Deletion scripts must use explicit allowlists of paths they own. They must never broad-sweep shared cache directories.
 
 ---
 
