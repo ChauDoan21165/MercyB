@@ -35,6 +35,11 @@ import LessonUiLangToggle, {
 // 20260524 so neither layer is the only line of defense.
 import RequireAal2 from "@/components/auth/RequireAal2";
 import { WebOnlyRoute } from "@/router/WebOnlyRoute";
+import {
+  isKidsRoomId,
+  RequireKidsParentGate,
+  RequireKidsTierParentGate,
+} from "@/router/KidsParentGate";
 import { ReviewNavEntry } from "@/features/review";
 import ParentNavEntry from "@/components/parent-view/ParentNavEntry";
 import { writeAnonymousPair } from "@/lib/languagePair/anonymousPair";
@@ -170,6 +175,7 @@ const RussianLessonsPage      = lazyWithRetry(() => import("@/pages/languages/Ru
 const UrduLessonsPage       = lazyWithRetry(() => import("@/pages/languages/UrduLessonsPage"));
 const LearnPairRedirectPage = lazyWithRetry(() => import("@/pages/languages/LearnPairRedirectPage"));
 const ViKidsEnglishTutorPage = lazyWithRetry(() => import("@/pages/kids/ViKidsEnglishTutorPage"));
+const ParentGatePage = lazyWithRetry(() => import("@/pages/kids/ParentGatePage"));
 
 // Mercy v2 — multi-turn conversation thread page (auth-required).
 const MercyThreadPage      = lazyWithRetry(() => import("@/pages/mercy/MercyThreadPage"));
@@ -403,17 +409,17 @@ function RequireAuth({ children }: { children: React.ReactNode }) {
 }
 
 /**
- * Room-level auth gate. Kids rooms stay login-free per CLAUDE.md #2
- * ("Kids mode is sacred. No login friction."). All other rooms require
- * sign-in. Kids pattern match mirrors src/pages/TierIndex.tsx.
+ * Room-level auth gate. Kids rooms now require a signed-in adult-confirmed
+ * account holder; all other rooms keep the existing sign-in requirement.
+ * Kids pattern match mirrors src/pages/TierIndex.tsx.
  */
 function RequireAuthForRoom({ children }: { children: React.ReactNode }) {
   const { roomId } = useParams<{ roomId: string }>();
   const id = roomId ?? "";
-  const isKidsRoom =
-    id.includes("_kids_l1") || id.includes("_kids_l2") || id.includes("_kids_l3");
 
-  if (isKidsRoom) return <>{children}</>;
+  if (isKidsRoomId(id)) {
+    return <RequireKidsParentGate>{children}</RequireKidsParentGate>;
+  }
   return <RequireAuth>{children}</RequireAuth>;
 }
 
@@ -421,7 +427,6 @@ function RequireAuthForRoom({ children }: { children: React.ReactNode }) {
  * Trial-expiry gate. Renders the TrialExpiredScreen for free-tier users
  * whose 3-day trial has ended. Premium users and grandfathered users
  * (profiles.created_at before the cutoff in me-entitlement) pass through.
- * Kids rooms skip this layer entirely via RequireAuthForRoom.
  */
 function RequireTrialActive({ children }: { children: React.ReactNode }) {
   const { isTrialExpired, isLoading } = useUserAccess();
@@ -443,6 +448,16 @@ function RequireTrialActive({ children }: { children: React.ReactNode }) {
   const effectiveExpired = isLoading ? lastExpiredRef.current : isTrialExpired;
   if (effectiveExpired) return <TrialExpiredScreen />;
   return <>{children}</>;
+}
+
+/**
+ * Kids rooms are governed by the parent gate above, not the paid-trial room
+ * gate. Non-kids rooms keep the existing trial-expiry behavior.
+ */
+function RequireTrialActiveForRoom({ children }: { children: React.ReactNode }) {
+  const { roomId } = useParams<{ roomId: string }>();
+  if (isKidsRoomId(roomId ?? "")) return <>{children}</>;
+  return <RequireTrialActive>{children}</RequireTrialActive>;
 }
 
 // ── Fallbacks ─────────────────────────────────────────────────────────────────
@@ -913,7 +928,14 @@ export default function AppRouter() {
           <Route path="/cert/:code" element={<LazyPage><CertVerifyPage /></LazyPage>} />
 
           <Route path="/tiers"   element={<LazyPage><TierIndex /></LazyPage>} />
-          <Route path="/tiers/:tierId" element={<LazyPage><TierDetail /></LazyPage>} />
+          <Route
+            path="/tiers/:tierId"
+            element={
+              <RequireKidsTierParentGate>
+                <LazyPage><TierDetail /></LazyPage>
+              </RequireKidsTierParentGate>
+            }
+          />
           <Route path="/redeem"     element={<RedeemRedirect />} />
           <Route path="/promo-code" element={<RedeemRedirect />} />
 
@@ -1227,8 +1249,16 @@ export default function AppRouter() {
             path="/languages/urdu"
             element={<LazyPage><UrduLessonsPage /></LazyPage>}
           />
+          <Route
+            path="/kids/parent-gate"
+            element={<LazyPage><ParentGatePage /></LazyPage>}
+          />
           <Route path="/kids/vi-english"
-            element={<LazyPage><ViKidsEnglishTutorPage /></LazyPage>}
+            element={
+              <RequireKidsParentGate>
+                <LazyPage><ViKidsEnglishTutorPage /></LazyPage>
+              </RequireKidsParentGate>
+            }
           />
 
 
@@ -1839,9 +1869,9 @@ export default function AppRouter() {
             path="/room/:roomId"
             element={
               <RequireAuthForRoom>
-                <RequireTrialActive>
+                <RequireTrialActiveForRoom>
                   <LazyPage><ChatHub /></LazyPage>
-                </RequireTrialActive>
+                </RequireTrialActiveForRoom>
               </RequireAuthForRoom>
             }
           />
