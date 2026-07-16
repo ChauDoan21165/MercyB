@@ -32,7 +32,10 @@ function ev(id: string, t: number, over: Partial<LearningEvent> = {}): LearningE
 }
 
 describe("learning eventSink", () => {
-  beforeEach(() => vi.restoreAllMocks());
+  beforeEach(() => {
+    vi.useRealTimers();
+    vi.restoreAllMocks();
+  });
 
   it("toLearningEventRow carries only allowlisted, non-PII fields", () => {
     const row = toLearningEventRow(
@@ -150,6 +153,50 @@ describe("learning eventSink", () => {
 
     sink.stop();
     setIntervalSpy.mockRestore();
+  });
+
+  it("best-effort flushes on visibilitychange hidden and pagehide", async () => {
+    vi.useFakeTimers();
+    const q = makeFakeQueue([ev("a", 1)]);
+    const insertRows = insertMock(async () => ({ error: null }));
+    const getUserId = vi.fn(async () => null);
+    const sink = createLearningEventSink({
+      enabled: true,
+      peek: q.peek,
+      ack: q.ack,
+      insertRows,
+      getUserId,
+      flushIntervalMs: 30_000,
+      now: () => 0,
+    });
+    const originalVisibilityState = Object.getOwnPropertyDescriptor(Document.prototype, "visibilityState");
+    Object.defineProperty(document, "visibilityState", {
+      configurable: true,
+      value: "hidden",
+    });
+
+    sink.start();
+    await Promise.resolve();
+    expect(getUserId).toHaveBeenCalledTimes(1); // opportunistic first drain
+
+    document.dispatchEvent(new Event("visibilitychange"));
+    await Promise.resolve();
+    expect(getUserId).toHaveBeenCalledTimes(2);
+
+    window.dispatchEvent(new Event("pagehide"));
+    await Promise.resolve();
+    expect(getUserId).toHaveBeenCalledTimes(3);
+
+    expect(insertRows).not.toHaveBeenCalled();
+    expect(q.remaining().map((e) => e.id)).toEqual(["a"]);
+
+    sink.stop();
+    if (originalVisibilityState) {
+      Object.defineProperty(Document.prototype, "visibilityState", originalVisibilityState);
+    } else {
+      delete (document as { visibilityState?: string }).visibilityState;
+    }
+    vi.useRealTimers();
   });
 
   it("maybeFlushOnSize only flushes at or above the threshold", async () => {
