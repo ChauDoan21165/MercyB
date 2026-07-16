@@ -18,7 +18,11 @@ import {
   FINAL_CONSONANT_DRILLS,
   STRESS_DRILLS,
   VN_EN_PRONUNCIATION_DRILL_BANKS,
+  selectDiphthongReductionFeedbackKey,
   selectFinalClusterFeedbackKey,
+  selectFinalLFeedbackKey,
+  selectFinalStopVoicingFeedbackKey,
+  selectVWFeedbackKey,
 } from '../vnEnPronunciationDrills';
 
 const BANKS: Record<string, ProblemPair[]> = {
@@ -115,5 +119,35 @@ describe('selectFinalClusterFeedbackKey', () => {
     expect(selectFinalClusterFeedbackKey('book', 'boo')).toBeNull();
     expect(selectFinalClusterFeedbackKey('next', 'net')).toBeNull();
     expect(selectFinalClusterFeedbackKey('apple')).toBeNull();
+  });
+});
+
+describe('Group D pronunciation selectors', () => {
+  it('selects final stop voicing feedback only for known voiced-to-voiceless coda pairs', () => {
+    expect(selectFinalStopVoicingFeedbackKey('bag', 'back')).toBe('final_stop_voicing');
+    expect(selectFinalStopVoicingFeedbackKey('bad', 'bat')).toBe('final_stop_voicing');
+    expect(selectFinalStopVoicingFeedbackKey('bag', 'bag')).toBeNull();
+    expect(selectFinalStopVoicingFeedbackKey('bag', 'bog')).toBeNull();
+  });
+
+  it('selects diphthong reduction feedback only for known monophthong reductions', () => {
+    expect(selectDiphthongReductionFeedbackKey('boat', 'bot')).toBe('diphthong_reduction');
+    expect(selectDiphthongReductionFeedbackKey('late', 'let')).toBe('diphthong_reduction');
+    expect(selectDiphthongReductionFeedbackKey('boat', 'bet')).toBeNull();
+    expect(selectDiphthongReductionFeedbackKey('boat', 'boat')).toBeNull();
+  });
+
+  it('selects v/w feedback for very -> wery/yery and not for correct speech', () => {
+    expect(selectVWFeedbackKey('very', 'wery')).toBe('v_w_confusion');
+    expect(selectVWFeedbackKey('very', 'yery')).toBe('v_w_confusion');
+    expect(selectVWFeedbackKey('very', 'very')).toBeNull();
+    expect(selectVWFeedbackKey('very', 'berry')).toBeNull();
+  });
+
+  it('selects final-l deletion feedback only for known final-l omissions', () => {
+    expect(selectFinalLFeedbackKey('feel', 'fee')).toBe('final_l_deletion');
+    expect(selectFinalLFeedbackKey('sail', 'say')).toBe('final_l_deletion');
+    expect(selectFinalLFeedbackKey('feel', 'feel')).toBeNull();
+    expect(selectFinalLFeedbackKey('feel', 'fell')).toBeNull();
   });
 });

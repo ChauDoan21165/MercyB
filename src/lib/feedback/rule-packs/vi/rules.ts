@@ -43,6 +43,7 @@ import {
   ruleEllipticalSubjectTransfer,
   ruleEmbeddedQuestionOrder,
   ruleEveryonePlural,
+  ruleModalOverinflection,
   ruleGenericPlural,
   ruleGeographicalArticle,
   ruleGerundAfterVerb,
@@ -62,9 +63,11 @@ import {
   ruleNoAuxNegation,
   ruleNounPrepositionCollocation,
   ruleOneOfTheSingular,
+  ruleOverexplicitReference,
   rulePassiveMissingBe,
   rulePastEd,
   rulePastPerfectMissing,
+  rulePhrasalVerbTransfer,
   rulePhrasalPronounOrder,
   rulePluralS,
   ruleProfessionArticleCopula,
@@ -87,6 +90,7 @@ import {
   ruleTagPolarity,
   ruleTagQuestion,
   ruleThereAreSingular,
+  ruleTimeReferenceOvermarking,
   ruleThirdPersonS,
   ruleTimeExpressions,
   ruleToInfinitiveAfterIng,
@@ -95,6 +99,7 @@ import {
   ruleUsedToVsBeUsedTo,
   ruleTopicCommentFronting,
   ruleVerbNounCollocation,
+  ruleVeryVerbCalque,
   ruleVeryMuchPlacement,
 } from '../../l1-error-detector.js';
 
@@ -133,6 +138,10 @@ export const VN_RULES: L1Rule[] = [
   ruleSayTellArgumentFrame,
   ruleVerbNounCollocation,
   ruleApplianceOpenCloseTransfer,
+  rulePhrasalVerbTransfer,
+  ruleVeryVerbCalque,
+  ruleOverexplicitReference,
+  ruleTimeReferenceOvermarking,
   rulePrepositionTransfer,   // 9
   ruleCountable,             // 10
   ruleLearnStudyTransfer,
@@ -140,6 +149,7 @@ export const VN_RULES: L1Rule[] = [
   ruleConnectorStacking,
   ruleEllipticalSubjectTransfer,
   ruleToVerbConfusion,       // 11
+  ruleModalOverinflection,
   ruleCanNoInfinitive,       // 12
   ruleDoublePast,            // 13
   rulePossessiveSMissing,    // 14

@@ -675,6 +675,46 @@ export const L1_VN_EXPLANATIONS: Record<L1WeaknessTag, L1VnExplanation> = {
       "Because busy, I didn't go → 'Vì bận nên tôi không đi' (tiếng Anh cần 'I was busy')",
     needs_review: false,
   },
+  vi_l1_modal_overinflection: {
+    name_vi: "Trợ động từ không thêm -s",
+    explanation_vi:
+      "Tiếng Anh không chia **can / should / will** theo ngôi. Dù chủ ngữ là he/she/it, trợ động từ vẫn giữ nguyên, rồi động từ chính cũng ở dạng gốc.",
+    example_wrong_vi_gloss:
+      "He cans speak English → 'Anh ấy có thể nói tiếng Anh' (tiếng Anh dùng 'can', không phải 'cans')",
+    needs_review: false,
+  },
+  vi_l1_phrasal_verb_transfer: {
+    name_vi: "Cụm động từ đời thường không dịch từng chữ",
+    explanation_vi:
+      "Một số nghĩa rất đời thường trong tiếng Anh dùng cụm động từ như **get up**, **put on**, **look after**. Dịch thẳng động từ tiếng Việt dễ nghe cứng hoặc sai nghĩa.",
+    example_wrong_vi_gloss:
+      "I wake at six → 'Tôi thức lúc sáu giờ' (ngữ cảnh này tự nhiên là 'get up at six')",
+    needs_review: false,
+  },
+  vi_l1_very_verb_calque: {
+    name_vi: "Very không đứng ngay trước động từ",
+    explanation_vi:
+      "Tiếng Việt có thể nói 'rất thích'. Tiếng Anh không nói **very like**; với động từ thường dùng **really like** hoặc **like ... very much**.",
+    example_wrong_vi_gloss:
+      "I very like this song → 'Tôi rất thích bài này' (tiếng Anh tự nhiên là 'really like')",
+    needs_review: false,
+  },
+  vi_l1_overexplicit_reference: {
+    name_vi: "Không lặp tên người ở mọi câu",
+    explanation_vi:
+      "Tiếng Việt có thể lặp tên/chủ đề để giữ rõ mạch. Tiếng Anh sau lần nhắc đầu thường chuyển sang đại từ **he/she/they** để câu văn mượt hơn.",
+    example_wrong_vi_gloss:
+      "Lan is my friend. Lan works with me. Lan is kind → lặp 'Lan' quá nhiều; tiếng Anh dùng 'She'",
+    needs_review: false,
+  },
+  vi_l1_time_reference_overmarking: {
+    name_vi: "Không lặp mốc thời gian ở từng câu",
+    explanation_vi:
+      "Khi kể một chuỗi việc cùng mốc thời gian, tiếng Anh thường nêu mốc một lần rồi kể tiếp. Lặp **yesterday/today/tomorrow** ở mọi câu nghe nặng.",
+    example_wrong_vi_gloss:
+      "Yesterday I went... Yesterday I met... Yesterday I came... → nêu 'yesterday' một lần là đủ",
+    needs_review: false,
+  },
 };
 
 /**

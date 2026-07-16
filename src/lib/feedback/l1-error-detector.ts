@@ -180,7 +180,13 @@ export type L1WeaknessTag =
   | 'vi_l1_verb_noun_collocation'
   | 'vi_l1_appliance_open_close_transfer'
   | 'vi_l1_connector_stacking'
-  | 'vi_l1_elliptical_subject_transfer';
+  | 'vi_l1_elliptical_subject_transfer'
+  // Group D VN interference detectors
+  | 'vi_l1_modal_overinflection'
+  | 'vi_l1_phrasal_verb_transfer'
+  | 'vi_l1_very_verb_calque'
+  | 'vi_l1_overexplicit_reference'
+  | 'vi_l1_time_reference_overmarking';
 
 export type L1FeedbackText = {
   en: string;
@@ -837,6 +843,75 @@ const APPLIANCE_NOUNS = [
 
 const SUBJECT_PRONOUNS = new Set(['i', 'you', 'he', 'she', 'it', 'we', 'they']);
 
+const INFLECTED_MODAL_TO_BASE: Record<string, string> = {
+  cans: 'can',
+  coulds: 'could',
+  wills: 'will',
+  woulds: 'would',
+  shoulds: 'should',
+  shalls: 'shall',
+  mays: 'may',
+  mights: 'might',
+  musts: 'must',
+};
+
+const PHRASAL_VERB_TRANSFERS: Array<{ wrong: string; right: string }> = [
+  { wrong: 'wake', right: 'get up' },
+  { wrong: 'wake at', right: 'get up at' },
+  { wrong: 'wear your jacket', right: 'put on your jacket' },
+  { wrong: 'wear a jacket', right: 'put on a jacket' },
+  { wrong: 'wear the jacket', right: 'put on the jacket' },
+  { wrong: 'cares her brother', right: 'looks after her brother' },
+  { wrong: 'cares his brother', right: 'looks after his brother' },
+  { wrong: 'cares my brother', right: 'looks after my brother' },
+  { wrong: 'care her brother', right: 'look after her brother' },
+  { wrong: 'care his brother', right: 'look after his brother' },
+  { wrong: 'care my brother', right: 'look after my brother' },
+];
+
+const VERY_VERB_CALQUE_FORMS = new Set([
+  'like',
+  'likes',
+  'liked',
+  'love',
+  'loves',
+  'loved',
+  'want',
+  'wants',
+  'wanted',
+  'need',
+  'needs',
+  'needed',
+  'enjoy',
+  'enjoys',
+  'enjoyed',
+]);
+
+const TIME_REFERENCE_MARKERS = new Set([
+  'yesterday',
+  'today',
+  'tomorrow',
+  'tonight',
+  'morning',
+  'afternoon',
+  'evening',
+]);
+
+function countTokens(tokens: readonly string[], candidates: ReadonlySet<string>): number {
+  return tokens.filter((token) => candidates.has(token)).length;
+}
+
+function splitSentences(text: string): string[] {
+  return text
+    .split(/[.!?]+/)
+    .map((sentence) => sentence.trim())
+    .filter(Boolean);
+}
+
+function firstContentToken(sentence: string): string | null {
+  return tokenize(sentence)[0] ?? null;
+}
+
 function phraseIncludes(text: string, phrase: string): boolean {
   const escaped = phrase.replace(/[.*+?^${}()|[\]\\]/g, '\\$&').replace(/\s+/g, '\\s+');
   return new RegExp(`\\b${escaped}\\b`, 'i').test(text);
@@ -885,6 +960,74 @@ export type L1Rule = (args: RuleArgs) => RuleHit | null;
 // Internal alias kept for backwards-compatibility with the existing rule
 // declarations (they're typed as `Rule` throughout the file).
 type Rule = L1Rule;
+
+/** Group D. Modals do not take third-person -s: "he cans" -> "he can". */
+export const ruleModalOverinflection: Rule = ({ userTokens, expectedTokens, rawExpected }) => {
+  for (let i = 0; i < userTokens.length; i++) {
+    const base = INFLECTED_MODAL_TO_BASE[userTokens[i]];
+    if (!base) continue;
+    const userWithBase = [...userTokens];
+    userWithBase[i] = base;
+    if (expectedTokens.includes(base) && userWithBase.every((token, idx) => token === expectedTokens[idx])) {
+      return { tag: 'vi_l1_modal_overinflection', replacements: { FIX: rawExpected } };
+    }
+  }
+  return null;
+};
+
+/** Group D. Whitelisted lexical transfer where English expects a phrasal verb. */
+export const rulePhrasalVerbTransfer: Rule = ({ userText, expectedText, rawExpected }) => {
+  for (const { wrong, right } of PHRASAL_VERB_TRANSFERS) {
+    if (phraseIncludes(userText, wrong) && phraseIncludes(expectedText, right)) {
+      return { tag: 'vi_l1_phrasal_verb_transfer', replacements: { FIX: rawExpected } };
+    }
+  }
+  return null;
+};
+
+/** Group D. Degree-adverb calque: "very like" should be "really like". */
+export const ruleVeryVerbCalque: Rule = ({ userTokens, expectedTokens, rawExpected }) => {
+  for (let i = 0; i < userTokens.length - 1; i++) {
+    if (userTokens[i] !== 'very') continue;
+    const verb = userTokens[i + 1];
+    if (!VERY_VERB_CALQUE_FORMS.has(verb)) continue;
+    const expectedHasReallyVerb = expectedTokens.some(
+      (token, idx) => token === 'really' && VERY_VERB_CALQUE_FORMS.has(expectedTokens[idx + 1] ?? ''),
+    );
+    if (expectedHasReallyVerb) {
+      return { tag: 'vi_l1_very_verb_calque', replacements: { FIX: rawExpected } };
+    }
+  }
+  return null;
+};
+
+/** Group D. Repeated proper-name/noun reference where expected text uses pronouns. */
+export const ruleOverexplicitReference: Rule = ({ rawUser, rawExpected }) => {
+  const userSentenceStarts = splitSentences(rawUser).map(firstContentToken).filter(Boolean) as string[];
+  const expectedSentenceStarts = splitSentences(rawExpected).map(firstContentToken).filter(Boolean) as string[];
+  if (userSentenceStarts.length < 3 || expectedSentenceStarts.length < 3) return null;
+
+  const [first, ...rest] = userSentenceStarts;
+  if (!first || SUBJECT_PRONOUNS.has(first) || TIME_REFERENCE_MARKERS.has(first)) return null;
+  const repeated = rest.filter((token) => token === first).length;
+  const expectedPronounReplacements = expectedSentenceStarts
+    .slice(1)
+    .filter((token) => SUBJECT_PRONOUNS.has(token)).length;
+  if (repeated >= 2 && expectedPronounReplacements >= 2) {
+    return { tag: 'vi_l1_overexplicit_reference', replacements: { FIX: rawExpected } };
+  }
+  return null;
+};
+
+/** Group D. Repeated time markers in a short narrative after the first mention. */
+export const ruleTimeReferenceOvermarking: Rule = ({ userTokens, expectedTokens, rawExpected }) => {
+  const userMarkerCount = countTokens(userTokens, TIME_REFERENCE_MARKERS);
+  const expectedMarkerCount = countTokens(expectedTokens, TIME_REFERENCE_MARKERS);
+  if (userMarkerCount >= 3 && expectedMarkerCount <= 1) {
+    return { tag: 'vi_l1_time_reference_overmarking', replacements: { FIX: rawExpected } };
+  }
+  return null;
+};
 
 /** Group B VI-2. Profession nouns need be + a/an. */
 export const ruleProfessionArticleCopula: Rule = ({ userTokens, expectedTokens, rawExpected }) => {
