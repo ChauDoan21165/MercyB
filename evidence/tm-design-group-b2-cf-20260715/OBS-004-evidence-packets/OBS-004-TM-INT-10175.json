@@ -1,0 +1,83 @@
+{
+  "schema": "tm-int-obs-evidence-packet-v1",
+  "packet_id": "OBS-004-TM-INT-10175",
+  "created_at": "2026-07-15T00:00:00.000Z",
+  "source": "tm-design-group-b2-cf-runtime-observation",
+  "tm_int_id": "TM-INT-10175",
+  "module": "representativeWrittenErrors",
+  "axis": "cf-written-representative-error-instance",
+  "behavior_boundary": "When written feedback contains multiple instances of the same error family, the selector emits one representative instance and a pattern cue rather than correcting every repeated instance.",
+  "previous_behavior_boundary": null,
+  "code_path": "src/lib/writing-feedback/correctiveFeedback.ts:selectRepresentativeWrittenErrors",
+  "probe_id": "tm-design-group-b2-cf-20260715:CF-018",
+  "input": {
+    "errors": [
+      {
+        "id": "article-1",
+        "family": "articles",
+        "message": "Missing article before teacher.",
+        "span": "teacher",
+        "correction": "the teacher"
+      },
+      {
+        "id": "article-2",
+        "family": "articles",
+        "message": "Missing article before school.",
+        "span": "school",
+        "correction": "the school"
+      },
+      {
+        "id": "article-3",
+        "family": "articles",
+        "message": "Missing article before lesson.",
+        "span": "lesson",
+        "correction": "the lesson"
+      }
+    ]
+  },
+  "output": {
+    "selection": {
+      "selected": [
+        {
+          "id": "article-1",
+          "family": "articles",
+          "message": "Missing article before teacher.",
+          "span": "teacher",
+          "correction": "the teacher"
+        }
+      ],
+      "suppressedCount": 2,
+      "patternCue": "Fix this articles pattern once, then scan for the same pattern again."
+    }
+  },
+  "input_digest": "sha256:64b31f240b6b31d756fa58f65275d5a261f0e1c8183685eda7cea56217692df7",
+  "output_digest": "sha256:571ef3c2c4170950ea1d62af25c763c92875346c01419a3754948df9890ee589",
+  "attribution": {
+    "repository": "MercyB",
+    "generated_by": "scripts/tm-int/group-b2-cf-evidence.mjs",
+    "spec_first_source": "reports/tm-design-ruling-sheet.md + reports/tm-research-corrective-feedback.md",
+    "spec_written_from_public_interface_only": true,
+    "shared_digest_rule": "one packet per ID; no shared digest"
+  },
+  "replay_proof": {
+    "replayed": true,
+    "command": "cd /Users/chaudoanm3/MercyB && npx vite-node scripts/tm-int/group-b2-cf-evidence.mjs",
+    "checks": {
+      "code_path_match": true,
+      "input_digest_match": true,
+      "output_digest_match": true,
+      "cf-018_assertion_passed": true
+    },
+    "recorded_output_digest": "sha256:571ef3c2c4170950ea1d62af25c763c92875346c01419a3754948df9890ee589"
+  },
+  "run_ids": {
+    "obs001": "tm-design-group-b2-cf-20260715:obs001:TM-INT-10175",
+    "obs003": "tm-design-group-b2-cf-20260715:obs003:TM-INT-10175",
+    "obs004": "tm-design-group-b2-cf-20260715:obs004:TM-INT-10175"
+  },
+  "lineage": {
+    "design_ruling": "group-b2-2026-07-15",
+    "source_candidate": "CF-018",
+    "evidence_batch": "tm-design-group-b2-cf-20260715"
+  }
+}

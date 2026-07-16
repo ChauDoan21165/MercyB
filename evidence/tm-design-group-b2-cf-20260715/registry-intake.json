@@ -1,0 +1,121 @@
+{
+  "gate": "sqlite_registry_mandatory_intake",
+  "db": "/Users/chaudoanm3/ai-tutor-factory/state/int_registry.sqlite3",
+  "source_queue": "tm-design-group-b2-cf-20260715",
+  "rows_added": [
+    {
+      "tm_int_id": "TM-INT-10172",
+      "source_candidate": "CF-013",
+      "module": "writingFeedbackFocus",
+      "axis": "cf-focused-written-target-family",
+      "behavior_boundary": "When written feedback has multiple error families and one family is the active lesson target, the selector makes that active family the primary correction and leaves the others secondary.",
+      "registry_intake": {
+        "action": "added",
+        "runnable": true,
+        "tm_int_id": "TM-INT-10172",
+        "semantic_key": "912e3568af4c780a1c063d672680c613fe4ef08304f6ed454e1ccc83491feeb0",
+        "normalized_boundary": "when written feedback has multiple error families one family active lesson target selector makes active family primary correction leaves others secondary",
+        "reason": null,
+        "existing_tm_int_id": null,
+        "similarity_score": null,
+        "matched_behavior_boundary": null
+      },
+      "semantic_key": "912e3568af4c780a1c063d672680c613fe4ef08304f6ed454e1ccc83491feeb0",
+      "normalized_boundary": "when written feedback has multiple error families one family active lesson target selector makes active family primary correction leaves others secondary"
+    },
+    {
+      "tm_int_id": "TM-INT-10173",
+      "source_candidate": "CF-014",
+      "module": "writtenMetalinguisticFeedback",
+      "axis": "cf-written-repeated-grammar-metalinguistic",
+      "behavior_boundary": "When a learner repeats the same written grammar class across attempts, the feedback builder adds a concise metalinguistic rule label, explanation, and corrected example instead of direct correction only.",
+      "registry_intake": {
+        "action": "added",
+        "runnable": true,
+        "tm_int_id": "TM-INT-10173",
+        "semantic_key": "6d36117e8e70269ac7cfaa089992055e3451ac0346dc47aadb54e20e2fbf3415",
+        "normalized_boundary": "when learner repeats same written grammar class across attempts feedback builder adds concise metalinguistic rule label explanation corrected example instead direct correction only",
+        "reason": null,
+        "existing_tm_int_id": null,
+        "similarity_score": null,
+        "matched_behavior_boundary": null
+      },
+      "semantic_key": "6d36117e8e70269ac7cfaa089992055e3451ac0346dc47aadb54e20e2fbf3415",
+      "normalized_boundary": "when learner repeats same written grammar class across attempts feedback builder adds concise metalinguistic rule label explanation corrected example instead direct correction only"
+    },
+    {
+      "tm_int_id": "TM-INT-10174",
+      "source_candidate": "CF-015",
+      "module": "correctionSpeechPayload",
+      "axis": "cf-audio-compact-correction-cue",
+      "behavior_boundary": "When audio-mode correction detail is too long to speak comfortably, the splitter returns a short spoken cue and preserves the full correction and explanation in textDetail.",
+      "registry_intake": {
+        "action": "added",
+        "runnable": true,
+        "tm_int_id": "TM-INT-10174",
+        "semantic_key": "5b8044f869165de0e16abd2dc2a386dd72923df7855cdad2cc19e7889ed51f5c",
+        "normalized_boundary": "when audio mode correction detail too long speak comfortably splitter returns short spoken cue preserves full correction explanation textdetail",
+        "reason": null,
+        "existing_tm_int_id": null,
+        "similarity_score": null,
+        "matched_behavior_boundary": null
+      },
+      "semantic_key": "5b8044f869165de0e16abd2dc2a386dd72923df7855cdad2cc19e7889ed51f5c",
+      "normalized_boundary": "when audio mode correction detail too long speak comfortably splitter returns short spoken cue preserves full correction explanation textdetail"
+    },
+    {
+      "tm_int_id": "TM-INT-10175",
+      "source_candidate": "CF-018",
+      "module": "representativeWrittenErrors",
+      "axis": "cf-written-representative-error-instance",
+      "behavior_boundary": "When written feedback contains multiple instances of the same error family, the selector emits one representative instance and a pattern cue rather than correcting every repeated instance.",
+      "registry_intake": {
+        "action": "added",
+        "runnable": true,
+        "tm_int_id": "TM-INT-10175",
+        "semantic_key": "272f977f5ec037e8b314800c1767296346a6cdb7b7fd3e763cb329e9b37fc93d",
+        "normalized_boundary": "when written feedback contains multiple instances same error family selector emits one representative instance pattern cue rather than correcting every repeated instance",
+        "reason": null,
+        "existing_tm_int_id": null,
+        "similarity_score": null,
+        "matched_behavior_boundary": null
+      },
+      "semantic_key": "272f977f5ec037e8b314800c1767296346a6cdb7b7fd3e763cb329e9b37fc93d",
+      "normalized_boundary": "when written feedback contains multiple instances same error family selector emits one representative instance pattern cue rather than correcting every repeated instance"
+    },
+    {
+      "tm_int_id": "TM-INT-10176",
+      "source_candidate": "CF-023",
+      "module": "correctionFeedbackTaxonomy",
+      "axis": "cf-feedback-move-taxonomy-validation",
+      "behavior_boundary": "Corrective-feedback move taxonomy parsing and serialization accept canonical approved moves and reject unknown free-form feedback move strings instead of passing them through.",
+      "registry_intake": {
+        "action": "added",
+        "runnable": true,
+        "tm_int_id": "TM-INT-10176",
+        "semantic_key": "1bcb8ed95ac2f75581df6f7c33338aa1b789ee406e88eb140d76842be0ff4810",
+        "normalized_boundary": "corrective feedback move taxonomy parsing serialization accept canonical approved moves reject unknown free form feedback move strings instead passing them through",
+        "reason": null,
+        "existing_tm_int_id": null,
+        "similarity_score": null,
+        "matched_behavior_boundary": null
+      },
+      "semantic_key": "1bcb8ed95ac2f75581df6f7c33338aa1b789ee406e88eb140d76842be0ff4810",
+      "normalized_boundary": "corrective feedback move taxonomy parsing serialization accept canonical approved moves reject unknown free form feedback move strings instead passing them through"
+    }
+  ],
+  "rows_blocked_as_duplicate": [],
+  "rows_already_present": [],
+  "blocked_non_duplicate": [],
+  "unresolved_collisions_left_for_judge_governor": [],
+  "counts": {
+    "rows_added": 5,
+    "rows_blocked_as_duplicate": 0,
+    "rows_already_present": 0,
+    "blocked_non_duplicate": 0,
+    "unresolved_collisions_left_for_judge_governor": 0,
+    "packets_or_rows_runnable": 5
+  },
+  "covered_by_self_assigned": false,
+  "status_policy": "new worker-created intake is report_only; verified is preserved only from trusted existing source rows"
+}

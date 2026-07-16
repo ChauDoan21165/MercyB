@@ -1,0 +1,91 @@
+{
+  "schema": "tm-int-obs-evidence-packet-v1",
+  "packet_id": "OBS-004-TM-INT-10172",
+  "created_at": "2026-07-15T00:00:00.000Z",
+  "source": "tm-design-group-b2-cf-runtime-observation",
+  "tm_int_id": "TM-INT-10172",
+  "module": "writingFeedbackFocus",
+  "axis": "cf-focused-written-target-family",
+  "behavior_boundary": "When written feedback has multiple error families and one family is the active lesson target, the selector makes that active family the primary correction and leaves the others secondary.",
+  "previous_behavior_boundary": null,
+  "code_path": "src/lib/writing-feedback/correctiveFeedback.ts:selectWrittenFeedbackFocus",
+  "probe_id": "tm-design-group-b2-cf-20260715:CF-013",
+  "input": {
+    "candidates": [
+      {
+        "id": "tense-1",
+        "family": "tense",
+        "message": "Use past tense for yesterday.",
+        "severity": "high"
+      },
+      {
+        "id": "article-1",
+        "family": "articles",
+        "message": "Use an article before a singular count noun.",
+        "severity": "medium"
+      },
+      {
+        "id": "punctuation-1",
+        "family": "punctuation",
+        "message": "Split the comma splice.",
+        "severity": "low"
+      }
+    ],
+    "activeTargetFamily": "articles"
+  },
+  "output": {
+    "focus": {
+      "primary": {
+        "id": "article-1",
+        "family": "articles",
+        "message": "Use an article before a singular count noun.",
+        "severity": "medium"
+      },
+      "secondary": [
+        {
+          "id": "tense-1",
+          "family": "tense",
+          "message": "Use past tense for yesterday.",
+          "severity": "high"
+        },
+        {
+          "id": "punctuation-1",
+          "family": "punctuation",
+          "message": "Split the comma splice.",
+          "severity": "low"
+        }
+      ],
+      "reason": "active_target_family"
+    }
+  },
+  "input_digest": "sha256:3d6c5caf5dbe8ec9aee812491b22a437b843c217b7de429dcfc19c5d1d838816",
+  "output_digest": "sha256:20407cf03cc51d5cecb72b51e3fde3c2b8d7b763050b40bc7e6aabc1df75e6be",
+  "attribution": {
+    "repository": "MercyB",
+    "generated_by": "scripts/tm-int/group-b2-cf-evidence.mjs",
+    "spec_first_source": "reports/tm-design-ruling-sheet.md + reports/tm-research-corrective-feedback.md",
+    "spec_written_from_public_interface_only": true,
+    "shared_digest_rule": "one packet per ID; no shared digest"
+  },
+  "replay_proof": {
+    "replayed": true,
+    "command": "cd /Users/chaudoanm3/MercyB && npx vite-node scripts/tm-int/group-b2-cf-evidence.mjs",
+    "checks": {
+      "code_path_match": true,
+      "input_digest_match": true,
+      "output_digest_match": true,
+      "cf-013_assertion_passed": true
+    },
+    "recorded_output_digest": "sha256:20407cf03cc51d5cecb72b51e3fde3c2b8d7b763050b40bc7e6aabc1df75e6be"
+  },
+  "run_ids": {
+    "obs001": "tm-design-group-b2-cf-20260715:obs001:TM-INT-10172",
+    "obs003": "tm-design-group-b2-cf-20260715:obs003:TM-INT-10172",
+    "obs004": "tm-design-group-b2-cf-20260715:obs004:TM-INT-10172"
+  },
+  "lineage": {
+    "design_ruling": "group-b2-2026-07-15",
+    "source_candidate": "CF-013",
+    "evidence_batch": "tm-design-group-b2-cf-20260715"
+  }
+}
