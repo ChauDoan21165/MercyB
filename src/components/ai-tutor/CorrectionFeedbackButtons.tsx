@@ -22,6 +22,7 @@
 // which is what the rule-quality consumer (WP-001) needs.
 
 import { useState } from "react";
+import { learningEventSink } from "@/lib/learning/eventSink";
 import {
   recordLearningEvent,
   type LearningEvent,
@@ -76,7 +77,7 @@ export default function CorrectionFeedbackButtons({
     // (no toggle, no second event). See file header.
     if (choice) return;
     setChoice(next);
-    record({
+    const queued = record({
       eventType: next === "helpful" ? "feedback_helpful" : "feedback_not_helpful",
       product,
       targetLanguage: targetLanguage ?? null,
@@ -85,6 +86,7 @@ export default function CorrectionFeedbackButtons({
       // session_id is filled by recordLearningEvent from the local session,
       // the same address every existing event carries.
     });
+    if (queued) void learningEventSink.flush();
   }
 
   const locked = choice !== null;

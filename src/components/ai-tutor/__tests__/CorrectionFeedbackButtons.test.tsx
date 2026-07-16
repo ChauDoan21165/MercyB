@@ -2,10 +2,21 @@ import React from "react";
 import { describe, it, expect, beforeEach, afterEach, vi } from "vitest";
 import { render, screen, fireEvent, cleanup } from "@testing-library/react";
 
-import CorrectionFeedbackButtons from "../CorrectionFeedbackButtons";
-import type { LearningEventInput } from "@/lib/tutor/learningEvents";
+const flushMock = vi.hoisted(() => vi.fn(async () => ({ flushed: 0 })));
 
-beforeEach(() => cleanup());
+vi.mock("@/lib/learning/eventSink", () => ({
+  learningEventSink: {
+    flush: flushMock,
+  },
+}));
+
+import CorrectionFeedbackButtons from "../CorrectionFeedbackButtons";
+import type { LearningEvent, LearningEventInput } from "@/lib/tutor/learningEvents";
+
+beforeEach(() => {
+  cleanup();
+  flushMock.mockClear();
+});
 afterEach(() => vi.unstubAllEnvs());
 
 const RULE_ID = "en_l1_register_formal_opener_peer_ban";
@@ -74,6 +85,26 @@ describe("CorrectionFeedbackButtons — one tap per correction", () => {
       ruleOrDetectorId: RULE_ID,
       cellId: null,
     });
+  });
+
+  it("schedules an immediate sink flush after a successful queue append", () => {
+    enableFeedbackButtons();
+    const queued: LearningEvent = {
+      id: "queued-feedback-1",
+      eventType: "feedback_helpful",
+      product: "ai_tutor",
+      targetLanguage: "en",
+      timestamp: 1,
+      sessionId: "s1",
+      ruleOrDetectorId: RULE_ID,
+    };
+    const record = vi.fn<(e: LearningEventInput) => LearningEvent>(() => queued);
+    render(<CorrectionFeedbackButtons ruleOrDetectorId={RULE_ID} targetLanguage="en" record={record} />);
+
+    fireEvent.click(screen.getByTestId("correction-feedback-helpful"));
+
+    expect(record).toHaveBeenCalledTimes(1);
+    expect(flushMock).toHaveBeenCalledTimes(1);
   });
 
   it("records feedback_not_helpful for the thumbs-down", () => {

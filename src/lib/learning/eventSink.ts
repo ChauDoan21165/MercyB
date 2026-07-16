@@ -127,11 +127,32 @@ export type LearningEventSink = {
   isEnabled: () => boolean;
 };
 
+let sharedLearningEventSink: LearningEventSink | null = null;
+
 /**
  * Create a sink instance. Dependencies are injectable so the batching/ack/
  * backoff logic is unit-testable without a real Supabase client or timers.
  */
 export function createLearningEventSink(deps: LearningEventSinkDeps = {}): LearningEventSink {
+  if (hasNoOverrides(deps)) return getLearningEventSink();
+
+  return createLearningEventSinkInstance(deps);
+}
+
+export function getLearningEventSink(): LearningEventSink {
+  sharedLearningEventSink ??= createLearningEventSinkInstance();
+  return sharedLearningEventSink;
+}
+
+export const learningEventSink: LearningEventSink = {
+  flush: () => getLearningEventSink().flush(),
+  maybeFlushOnSize: () => getLearningEventSink().maybeFlushOnSize(),
+  start: () => getLearningEventSink().start(),
+  stop: () => getLearningEventSink().stop(),
+  isEnabled: () => getLearningEventSink().isEnabled(),
+};
+
+function createLearningEventSinkInstance(deps: LearningEventSinkDeps = {}): LearningEventSink {
   const peek = deps.peek ?? peekPendingEvents;
   const ack = deps.ack ?? ackEvents;
   const insertRows = deps.insertRows ?? defaultInsertRows;
@@ -147,6 +168,7 @@ export function createLearningEventSink(deps: LearningEventSinkDeps = {}): Learn
   let backoffAttempts = 0;
   let inFlight = false;
   let timer: ReturnType<typeof setInterval> | null = null;
+  let lifecycleListenersAttached = false;
 
   function backoff(): void {
     backoffAttempts += 1;
@@ -199,14 +221,51 @@ export function createLearningEventSink(deps: LearningEventSinkDeps = {}): Learn
     if (typeof window === "undefined") return;
     if (timer) return;
     timer = setInterval(() => { void flush(); }, flushIntervalMs);
+    attachLifecycleFlush();
     void flush(); // opportunistic first drain on start
   }
 
   function stop(): void {
     if (timer) { clearInterval(timer); timer = null; }
+    detachLifecycleFlush();
+  }
+
+  function requestBestEffortFlush(): void {
+    void flush();
+  }
+
+  function handleVisibilityChange(): void {
+    if (typeof document !== "undefined" && document.visibilityState === "hidden") {
+      requestBestEffortFlush();
+    }
+  }
+
+  function attachLifecycleFlush(): void {
+    if (lifecycleListenersAttached) return;
+    if (typeof window === "undefined") return;
+    lifecycleListenersAttached = true;
+    window.addEventListener("pagehide", requestBestEffortFlush);
+    if (typeof document !== "undefined") {
+      document.addEventListener("visibilitychange", handleVisibilityChange);
+    }
+  }
+
+  function detachLifecycleFlush(): void {
+    if (!lifecycleListenersAttached) return;
+    if (typeof window !== "undefined") {
+      window.removeEventListener("pagehide", requestBestEffortFlush);
+    }
+    if (typeof document !== "undefined") {
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
+    }
+    lifecycleListenersAttached = false;
   }
 
   return { flush, maybeFlushOnSize, start, stop, isEnabled: () => enabled };
+}
+
+function hasNoOverrides(deps: LearningEventSinkDeps): boolean {
+  return Object.keys(deps).length === 0;
 }
 
 function clampPositive(value: number | undefined, fallback: number): number {
