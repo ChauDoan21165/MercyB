@@ -10,6 +10,10 @@ function makeStaleChunkError(): Error {
   );
 }
 
+function makeStaleNamedExportError(): Error {
+  return new TypeError("Cannot read properties of undefined (reading 'MilestoneObserver')");
+}
+
 async function flushRecoveryNavigation(): Promise<void> {
   await Promise.resolve();
   await Promise.resolve();
@@ -76,6 +80,39 @@ describe("createRetryLoader", () => {
     const importer = vi
       .fn()
       .mockRejectedValueOnce(makeStaleChunkError())
+      .mockResolvedValueOnce({ default: fakeComponent });
+    const loader = createRetryLoader(importer);
+
+    await expect(loader()).resolves.toEqual({ default: fakeComponent });
+    expect(importer).toHaveBeenCalledTimes(2);
+    expect(replaceSpy).not.toHaveBeenCalled();
+    expect(sessionStorage.getItem(RELOAD_KEY)).toBeNull();
+  });
+
+  it("recovers when a stale lazy module resolves without the expected named export", async () => {
+    const importer = vi.fn(async () => {
+      throw makeStaleNamedExportError();
+    });
+    const loader = createRetryLoader(importer);
+
+    const pending = loader();
+    const settled = await Promise.race([
+      pending.then(() => "resolved" as const),
+      new Promise<"pending">((resolve) => setTimeout(() => resolve("pending"), 20)),
+    ]);
+
+    expect(settled).toBe("pending");
+    expect(importer).toHaveBeenCalledTimes(2);
+    expect(replaceSpy).toHaveBeenCalledTimes(1);
+    expect(replaceSpy.mock.calls[0][0]).toMatch(/[?&]_cb=\d+/);
+    expect(sessionStorage.getItem(RELOAD_KEY)).toBe("1");
+  });
+
+  it("retries named-export lazy module resolution once before triggering recovery", async () => {
+    const fakeComponent = () => null;
+    const importer = vi
+      .fn()
+      .mockRejectedValueOnce(makeStaleNamedExportError())
       .mockResolvedValueOnce({ default: fakeComponent });
     const loader = createRetryLoader(importer);
 
