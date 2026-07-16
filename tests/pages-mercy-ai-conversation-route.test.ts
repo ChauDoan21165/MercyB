@@ -455,6 +455,47 @@ describe("Pages /api/mercy-ai sentence-correction mode", () => {
     expect(body.response_format).toEqual({ type: "json_object" });
   });
 
+  it("asks the server model for a fully corrected display sentence while keeping the explanation single-focus", async () => {
+    const fetchMock = vi.fn<typeof fetch>().mockResolvedValueOnce(
+      jsonResponse({
+        choices: [{
+          message: {
+            content: JSON.stringify({
+              corrected: "I bought a hat yesterday. Because summer is coming, it is going to be very sunny.",
+              explanation: "Dùng 'bought' thay vì 'buy' vì câu có 'yesterday'.",
+              grammarTip: "Mẹo: Với 'yesterday', dùng động từ quá khứ.",
+              confident: true,
+            }),
+          },
+        }],
+      })
+    );
+    vi.stubGlobal("fetch", fetchMock);
+
+    const response = await postMercyAi({
+      mode: "sentence-correction",
+      learnerText: "I buy a hat yesterday. Because summer is comming and it is going to be very sunny.",
+      explainLanguage: "vi",
+    });
+
+    expect(response.status).toBe(200);
+    await expect(response.json()).resolves.toMatchObject({
+      corrected: "I bought a hat yesterday. Because summer is coming, it is going to be very sunny.",
+      explanation: "Dùng 'bought' thay vì 'buy' vì câu có 'yesterday'.",
+      grammarTip: "Mẹo: Với 'yesterday', dùng động từ quá khứ.",
+      confident: true,
+    });
+
+    const calls = appFetchCalls(fetchMock);
+    expect(calls).toHaveLength(1);
+    const body = JSON.parse(String(calls[0][1]?.body));
+    const prompt = body.messages?.[0]?.content;
+    expect(prompt).toContain("MUST be fully corrected");
+    expect(prompt).toContain("fix every clear error");
+    expect(prompt).toContain("including secondary spelling or punctuation errors");
+    expect(prompt).toContain("The explanation should stay single-focus");
+  });
+
   it("fails over sentence correction from OpenAI to DeepSeek on provider failure", async () => {
     const fetchMock = vi.fn<typeof fetch>()
       .mockResolvedValueOnce(jsonResponse({ error: { message: "quota" } }, 429))
