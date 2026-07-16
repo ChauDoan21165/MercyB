@@ -1,0 +1,73 @@
+{
+  "schema": "tm-int-obs-evidence-packet-v1",
+  "packet_id": "OBS-004-TM-INT-10182",
+  "created_at": "2026-07-16T00:00:00.000Z",
+  "source": "tm-design-group-d-runtime-observation",
+  "tm_int_id": "TM-INT-10182",
+  "module": "registerDetector",
+  "axis": "register-direct-request-transfer",
+  "behavior_boundary": "Detects direct request transfer only when the caller supplies professional request context and the expected text contains a softened request form; context-free and instruction contexts abstain.",
+  "previous_behavior_boundary": null,
+  "code_path": "src/lib/feedback/registerDetector.ts:detectRegisterErrorWithContext",
+  "probe_id": "tm-design-group-d-20260716:D-R1",
+  "input": {
+    "positive": {
+      "learnerText": "You send me the file.",
+      "expectedText": "Could you send me the file?",
+      "scenario": "professional_request"
+    },
+    "instruction": {
+      "learnerText": "You send me the file.",
+      "expectedText": "Send me the file.",
+      "scenario": "instruction"
+    },
+    "contextFree": {
+      "learnerText": "You send me the file."
+    }
+  },
+  "output": {
+    "positive": {
+      "matched": true,
+      "patternId": "direct_request_transfer",
+      "tag": "en_l1_register_direct_request_transfer",
+      "explanationVi": "Trong bối cảnh công việc, câu yêu cầu trực tiếp kiểu \"You send me...\" nghe như ra lệnh. Dùng \"Could you...\" hoặc \"Would you...\" để mềm hơn.",
+      "explanationEn": "In a professional request, a bare command like \"You send me...\" sounds like an order. Use a soft request form such as \"Could you...\" or \"Would you...\"."
+    },
+    "instruction": {
+      "matched": false
+    },
+    "contextFree": {
+      "matched": false
+    }
+  },
+  "input_digest": "sha256:4cdf16726e76865bc24732cfaff99e7250254fb0cd790586debb42d64af4b0f5",
+  "output_digest": "sha256:a5cc58c8cbe415841821674e35b90e86b86b6b7cc95b04919037f2094d5c4257",
+  "attribution": {
+    "repository": "MercyB",
+    "generated_by": "scripts/tm-int/group-d-evidence.mjs",
+    "spec_first_source": "reports/tm-group-d-ruling-sheet.md",
+    "spec_written_from_public_interface_only": true,
+    "shared_digest_rule": "one packet per ID; no shared digest"
+  },
+  "replay_proof": {
+    "replayed": true,
+    "command": "cd /Users/chaudoanm3/MercyB && npx vite-node scripts/tm-int/group-d-evidence.mjs",
+    "checks": {
+      "code_path_match": true,
+      "input_digest_match": true,
+      "output_digest_match": true,
+      "group_d_assertion_passed": true
+    },
+    "recorded_output_digest": "sha256:a5cc58c8cbe415841821674e35b90e86b86b6b7cc95b04919037f2094d5c4257"
+  },
+  "run_ids": {
+    "obs001": "tm-design-group-d-20260716:obs001:TM-INT-10182",
+    "obs003": "tm-design-group-d-20260716:obs003:TM-INT-10182",
+    "obs004": "tm-design-group-d-20260716:obs004:TM-INT-10182"
+  },
+  "lineage": {
+    "design_ruling": "group-d-2026-07-16",
+    "source_candidate": "D-R1",
+    "evidence_batch": "tm-design-group-d-20260716"
+  }
+}

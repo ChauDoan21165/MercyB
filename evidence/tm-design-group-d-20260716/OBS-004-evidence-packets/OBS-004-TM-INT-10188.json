@@ -1,0 +1,57 @@
+{
+  "schema": "tm-int-obs-evidence-packet-v1",
+  "packet_id": "OBS-004-TM-INT-10188",
+  "created_at": "2026-07-16T00:00:00.000Z",
+  "source": "tm-design-group-d-runtime-observation",
+  "tm_int_id": "TM-INT-10188",
+  "module": "vnEnPronunciationDrills",
+  "axis": "pron-final-l-deletion",
+  "behavior_boundary": "Selects final_l_deletion pronunciation feedback when a final-l target such as feel is heard without final l as fee, while correct feel returns null.",
+  "previous_behavior_boundary": null,
+  "code_path": "src/lib/pronunciation/vnEnPronunciationDrills.ts:selectFinalLFeedbackKey",
+  "probe_id": "tm-design-group-d-20260716:D-P4",
+  "input": {
+    "positive": {
+      "targetWord": "feel",
+      "heardWord": "fee"
+    },
+    "negative": {
+      "targetWord": "feel",
+      "heardWord": "feel"
+    }
+  },
+  "output": {
+    "positive": "final_l_deletion",
+    "negative": null
+  },
+  "input_digest": "sha256:04380e9f265951e8e0bc3c77ed1eb36211f7d36ba2f039062a8777b507993200",
+  "output_digest": "sha256:0ef16b91958514f84d6297d37c2f0e942243fb63f8036571f5019217da4fa609",
+  "attribution": {
+    "repository": "MercyB",
+    "generated_by": "scripts/tm-int/group-d-evidence.mjs",
+    "spec_first_source": "reports/tm-group-d-ruling-sheet.md",
+    "spec_written_from_public_interface_only": true,
+    "shared_digest_rule": "one packet per ID; no shared digest"
+  },
+  "replay_proof": {
+    "replayed": true,
+    "command": "cd /Users/chaudoanm3/MercyB && npx vite-node scripts/tm-int/group-d-evidence.mjs",
+    "checks": {
+      "code_path_match": true,
+      "input_digest_match": true,
+      "output_digest_match": true,
+      "group_d_assertion_passed": true
+    },
+    "recorded_output_digest": "sha256:0ef16b91958514f84d6297d37c2f0e942243fb63f8036571f5019217da4fa609"
+  },
+  "run_ids": {
+    "obs001": "tm-design-group-d-20260716:obs001:TM-INT-10188",
+    "obs003": "tm-design-group-d-20260716:obs003:TM-INT-10188",
+    "obs004": "tm-design-group-d-20260716:obs004:TM-INT-10188"
+  },
+  "lineage": {
+    "design_ruling": "group-d-2026-07-16",
+    "source_candidate": "D-P4",
+    "evidence_batch": "tm-design-group-d-20260716"
+  }
+}

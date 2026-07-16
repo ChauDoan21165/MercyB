@@ -1,0 +1,66 @@
+{
+  "schema": "tm-int-obs-evidence-packet-v1",
+  "packet_id": "OBS-004-TM-INT-10187",
+  "created_at": "2026-07-16T00:00:00.000Z",
+  "source": "tm-design-group-d-runtime-observation",
+  "tm_int_id": "TM-INT-10187",
+  "module": "vnEnPronunciationDrills",
+  "axis": "pron-v-w-confusion",
+  "behavior_boundary": "Selects v_w_confusion pronunciation feedback when a v-initial target such as very is heard with a w or y glide, while correct very returns null.",
+  "previous_behavior_boundary": null,
+  "code_path": "src/lib/pronunciation/vnEnPronunciationDrills.ts:selectVWFeedbackKey",
+  "probe_id": "tm-design-group-d-20260716:D-P3",
+  "input": {
+    "positives": [
+      {
+        "targetWord": "very",
+        "heardWord": "wery"
+      },
+      {
+        "targetWord": "very",
+        "heardWord": "yery"
+      }
+    ],
+    "negative": {
+      "targetWord": "very",
+      "heardWord": "very"
+    }
+  },
+  "output": {
+    "positives": [
+      "v_w_confusion",
+      "v_w_confusion"
+    ],
+    "negative": null
+  },
+  "input_digest": "sha256:8c51e6ed003e43687584945ba69c41790718f0956f5daf7705e6fb0f12c0cc88",
+  "output_digest": "sha256:e18284f8542d35c6d5e5bbb70bbe65bf96d9ad60c0bb91eb68a202b21269e225",
+  "attribution": {
+    "repository": "MercyB",
+    "generated_by": "scripts/tm-int/group-d-evidence.mjs",
+    "spec_first_source": "reports/tm-group-d-ruling-sheet.md",
+    "spec_written_from_public_interface_only": true,
+    "shared_digest_rule": "one packet per ID; no shared digest"
+  },
+  "replay_proof": {
+    "replayed": true,
+    "command": "cd /Users/chaudoanm3/MercyB && npx vite-node scripts/tm-int/group-d-evidence.mjs",
+    "checks": {
+      "code_path_match": true,
+      "input_digest_match": true,
+      "output_digest_match": true,
+      "group_d_assertion_passed": true
+    },
+    "recorded_output_digest": "sha256:e18284f8542d35c6d5e5bbb70bbe65bf96d9ad60c0bb91eb68a202b21269e225"
+  },
+  "run_ids": {
+    "obs001": "tm-design-group-d-20260716:obs001:TM-INT-10187",
+    "obs003": "tm-design-group-d-20260716:obs003:TM-INT-10187",
+    "obs004": "tm-design-group-d-20260716:obs004:TM-INT-10187"
+  },
+  "lineage": {
+    "design_ruling": "group-d-2026-07-16",
+    "source_candidate": "D-P3",
+    "evidence_batch": "tm-design-group-d-20260716"
+  }
+}
