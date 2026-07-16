@@ -1,19 +1,18 @@
 // src/components/iap/RestorePurchasesButton.tsx
 //
-// iOS-only drop-in button that lets a user restore subscriptions made
-// under the current Apple ID. Apple requires a visible "Restore
-// Purchases" control. The primary instance lives inside IapPlanCard on
+// Native drop-in button that lets a user restore subscriptions made
+// under the current App Store / Play Store account. The stores require a
+// visible "Restore Purchases" control. The primary instance lives inside IapPlanCard on
 // the Pricing screen; this component is a self-contained secondary
 // instance suitable for the Account page.
 //
 // Design: zero props, zero refs, mirrors the IapStateBanner palette and
 // button styling already used in IapPlanCard so the two surfaces look
-// consistent. Renders null on web and Android — safe to import from any
+// consistent. Renders null on web — safe to import from any
 // shared layout without extra platform branching at the call site.
 
 import React, { useCallback, useState } from "react";
-import { getPlatform } from "@/lib/platform";
-import { restorePurchases } from "@/lib/iap";
+import { getNativeBillingStoreName, restorePurchases, shouldShowIap } from "@/lib/iap";
 import IapStateBanner, {
   type IapBannerKind,
 } from "@/components/pricing/IapStateBanner";
@@ -23,6 +22,7 @@ type Banner = { kind: IapBannerKind; en: string; vi: string } | null;
 export default function RestorePurchasesButton() {
   const [busy, setBusy] = useState(false);
   const [banner, setBanner] = useState<Banner>(null);
+  const nativeBillingStoreName = getNativeBillingStoreName();
 
   const handleClick = useCallback(async () => {
     if (busy) return;
@@ -41,8 +41,8 @@ export default function RestorePurchasesButton() {
             }
           : {
               kind: "info",
-              en: "No previous purchase was found for this Apple ID.",
-              vi: "Không tìm thấy gói đã mua trước đây trên Apple ID này.",
+              en: `No previous purchase was found for this ${nativeBillingStoreName} account.`,
+              vi: `Không tìm thấy gói đã mua trước đây trên tài khoản ${nativeBillingStoreName} này.`,
             },
       );
     } else {
@@ -56,7 +56,7 @@ export default function RestorePurchasesButton() {
     setBusy(false);
   }, [busy]);
 
-  if (getPlatform() !== "ios") return null;
+  if (!shouldShowIap()) return null;
 
   return (
     <div>

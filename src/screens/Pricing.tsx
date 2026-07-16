@@ -18,8 +18,11 @@ import {
   trackPriceTestVariantExposure,
   trackPricingViewed,
 } from "@/lib/analytics";
-import { getPlatform } from "@/lib/platform";
-import { APPLE_MANAGE_SUBSCRIPTIONS_URL } from "@/lib/iap";
+import {
+  getManageSubscriptionsUrl,
+  getNativeBillingStoreName,
+  shouldShowIap,
+} from "@/lib/iap";
 import IapPlanCard from "@/components/pricing/IapPlanCard";
 import { SavingsBadge } from "@/components/pricing/SavingsBadge";
 import {
@@ -158,10 +161,11 @@ export default function Pricing() {
   const { user } = useAuth();
   const access = useUserAccess();
 
-  // Platform gate — iOS uses Apple IAP via RevenueCat per Apple 3.1.1.
-  // Web + Android keep the existing Stripe flow unchanged.
-  const platform = getPlatform();
-  const isIos = platform === "ios";
+  // Platform gate — native apps use RevenueCat IAP per Apple / Google digital
+  // goods policy. Web keeps the existing Stripe flow unchanged.
+  const usesNativeIap = shouldShowIap();
+  const nativeBillingStoreName = getNativeBillingStoreName();
+  const manageSubscriptionsUrl = getManageSubscriptionsUrl();
 
   const ONE_MONTH_PRICE_ID = resolvePriceId(
     pickEnv("VITE_STRIPE_PRICE_ONE_MONTH", "VITE_STRIPE_PRICE_MONTHLY", "VITE_STRIPE_MONTHLY_PRICE_ID"),
@@ -322,7 +326,7 @@ export default function Pricing() {
   }, [priceTestPlan]);
 
   useEffect(() => {
-    if (isIos) return;
+    if (usesNativeIap) return;
     if (!priceTestPlan.exposureEligible) return;
     if (trackedPriceTestExposure.current) return;
     trackPriceTestVariantExposure(priceTestAnalyticsPayload(priceTestPlan, {
@@ -334,7 +338,7 @@ export default function Pricing() {
       path: window.location.pathname,
     });
     trackedPriceTestExposure.current = true;
-  }, [isIos, priceTestPlan]);
+  }, [usesNativeIap, priceTestPlan]);
 
   useEffect(() => {
     let mounted = true;
@@ -817,7 +821,7 @@ export default function Pricing() {
         />
 
         <div style={{ display: "flex", gap: 10, flexWrap: "wrap", marginTop: 14, color: "#475569", fontSize: 13, fontWeight: 700 }}>
-          <span>{isIos ? "Billed through your Apple ID" : "Secure Stripe checkout"}</span>
+          <span>{usesNativeIap ? `Billed through ${nativeBillingStoreName}` : "Secure Stripe checkout"}</span>
           <span>•</span>
           <span>Cancel anytime</span>
           <span>•</span>
@@ -828,8 +832,8 @@ export default function Pricing() {
           {[
             { en: "Full access to all premium rooms",          vi: "Toàn quyền truy cập phòng premium" },
             { en: "Instant unlock after successful payment",   vi: "Mở khóa ngay sau khi thanh toán thành công" },
-            isIos
-              ? { en: "Manage or cancel in Apple ID settings",   vi: "Quản lý hoặc hủy trong Cài đặt Apple ID" }
+            usesNativeIap
+              ? { en: `Manage or cancel in ${nativeBillingStoreName}`, vi: `Quản lý hoặc hủy qua ${nativeBillingStoreName}` }
               : { en: "Manage or cancel anytime in Stripe",      vi: "Quản lý hoặc hủy bất cứ lúc nào qua Stripe" },
           ].map(({ en, vi }) => (
             <div key={en} style={{ borderRadius: 14, border: "1px solid rgba(15,23,42,0.08)", background: "rgba(255,255,255,0.80)", padding: "10px 12px" }}>
@@ -854,35 +858,35 @@ export default function Pricing() {
           {hasPremium ? (
             <button type="button"
               onClick={() => {
-                if (isIos) {
-                  try { window.open(APPLE_MANAGE_SUBSCRIPTIONS_URL, "_blank", "noopener,noreferrer"); }
-                  catch { window.location.href = APPLE_MANAGE_SUBSCRIPTIONS_URL; }
+                if (usesNativeIap) {
+                  try { window.open(manageSubscriptionsUrl, "_blank", "noopener,noreferrer"); }
+                  catch { window.location.href = manageSubscriptionsUrl; }
                   return;
                 }
                 void handleManageSubscription();
               }}
-              disabled={!isIos && (manageBusy || entitlementLoading)}
+              disabled={!usesNativeIap && (manageBusy || entitlementLoading)}
               style={{ borderRadius: 14, minHeight: 46, padding: "12px 16px", border: "1px solid rgba(15,23,42,0.12)", background: "#0f172a", color: "#fff", fontWeight: 900, cursor: manageBusy ? "wait" : "pointer", opacity: manageBusy ? 0.85 : 1 }}>
               <BiText
-                en={isIos ? "Manage in Apple" : (manageBusy ? "Opening portal…" : "Manage subscription")}
-                vi={isIos ? "Quản lý qua Apple" : (manageBusy ? "Đang mở cổng thanh toán…" : "Quản lý gói đăng ký")}
+                en={usesNativeIap ? `Manage in ${nativeBillingStoreName}` : (manageBusy ? "Opening portal…" : "Manage subscription")}
+                vi={usesNativeIap ? `Quản lý qua ${nativeBillingStoreName}` : (manageBusy ? "Đang mở cổng thanh toán…" : "Quản lý gói đăng ký")}
               />
             </button>
           ) : (
             <button type="button"
               onClick={() => {
-                if (isIos) {
+                if (usesNativeIap) {
                   const el = document.getElementById("mb-plans-grid");
                   if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
                   return;
                 }
                 void handlePaidPlan("year");
               }}
-              disabled={!isIos && (busyPlan !== null || entitlementLoading)}
+              disabled={!usesNativeIap && (busyPlan !== null || entitlementLoading)}
               style={{ borderRadius: 14, minHeight: 46, padding: "12px 16px", border: "1px solid rgba(15,23,42,0.12)", background: "#0f172a", color: "#fff", fontWeight: 900, cursor: busyPlan ? "wait" : "pointer", opacity: busyPlan ? 0.85 : 1 }}>
               <BiText
-                en={isIos ? "See plans" : (busyPlan === "year" ? "Opening…" : "Upgrade now")}
-                vi={isIos ? "Xem các gói" : (busyPlan === "year" ? "Đang mở…" : "Nâng cấp ngay")}
+                en={usesNativeIap ? "See plans" : (busyPlan === "year" ? "Opening…" : "Upgrade now")}
+                vi={usesNativeIap ? "Xem các gói" : (busyPlan === "year" ? "Đang mở…" : "Nâng cấp ngay")}
               />
             </button>
           )}
@@ -904,24 +908,24 @@ export default function Pricing() {
             Bạn đã có quyền truy cập premium.
           </div>
           <div style={{ lineHeight: 1.6, marginBottom: 10, fontSize: 14 }}>
-            {isIos
-              ? "Manage or cancel your subscription in Apple ID settings."
+            {usesNativeIap
+              ? `Manage or cancel your subscription in ${nativeBillingStoreName}.`
               : "Choose another paid plan to switch immediately, or open Stripe to manage billing and cancellation."}
           </div>
           <button type="button"
             onClick={() => {
-              if (isIos) {
-                try { window.open(APPLE_MANAGE_SUBSCRIPTIONS_URL, "_blank", "noopener,noreferrer"); }
-                catch { window.location.href = APPLE_MANAGE_SUBSCRIPTIONS_URL; }
+              if (usesNativeIap) {
+                try { window.open(manageSubscriptionsUrl, "_blank", "noopener,noreferrer"); }
+                catch { window.location.href = manageSubscriptionsUrl; }
                 return;
               }
               void handleManageSubscription();
             }}
-            disabled={!isIos && manageBusy}
+            disabled={!usesNativeIap && manageBusy}
             style={{ borderRadius: 12, minHeight: 42, padding: "10px 14px", border: "1px solid rgba(15,23,42,0.12)", background: "#0f172a", color: "#fff", fontWeight: 900, cursor: manageBusy ? "wait" : "pointer", opacity: manageBusy ? 0.85 : 1 }}>
             <BiText
-              en={isIos ? "Manage in Apple" : (manageBusy ? "Opening portal…" : "Manage subscription")}
-              vi={isIos ? "Quản lý qua Apple" : (manageBusy ? "Đang mở cổng thanh toán…" : "Quản lý gói đăng ký")}
+              en={usesNativeIap ? `Manage in ${nativeBillingStoreName}` : (manageBusy ? "Opening portal…" : "Manage subscription")}
+              vi={usesNativeIap ? `Quản lý qua ${nativeBillingStoreName}` : (manageBusy ? "Đang mở cổng thanh toán…" : "Quản lý gói đăng ký")}
             />
           </button>
         </div>
@@ -961,7 +965,7 @@ export default function Pricing() {
           Spelled out so the savings math is unambiguous: 12× monthly
           on the left, yearly on the right (highlighted), with the
           delta + percent saved between them. VN-first copy. */}
-      {!isIos ? (
+      {!usesNativeIap ? (
         <div
           style={{
             display: "grid",
@@ -1042,7 +1046,7 @@ export default function Pricing() {
 
       {/* ── Plan cards ──────────────────────────────────────── */}
       <div id="mb-plans-grid" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: 14, alignItems: "stretch" }}>
-        {isIos ? (
+        {usesNativeIap ? (
           <>
             {renderCard(plans[0])}
             <IapPlanCard onEntitlementGranted={() => { void refreshEntitlement(); }} />
@@ -1053,8 +1057,8 @@ export default function Pricing() {
       </div>
 
       <p lang="en" style={{ marginTop: 16, fontSize: 13, color: "#64748b", lineHeight: 1.6 }}>
-        {isIos
-          ? "Subscriptions are billed through your Apple ID and managed in Apple ID → Subscriptions."
+        {usesNativeIap
+          ? `Subscriptions are billed through ${nativeBillingStoreName} and managed there.`
           : "Payments are processed securely through Stripe. Existing subscribers are managed through Stripe Billing Portal."}
       </p>
 
@@ -1064,7 +1068,7 @@ export default function Pricing() {
           primary="en"
           en={
             <>
-              <strong>Auto-renewing subscription.</strong> Your subscription renews automatically at the end of each billing period at the price shown above unless you cancel at least 24 hours before the renewal date. You can manage or cancel your subscription at any time from the billing portal (web) or Apple account settings (iOS).
+              <strong>Auto-renewing subscription.</strong> Your subscription renews automatically at the end of each billing period at the price shown above unless you cancel at least 24 hours before the renewal date. You can manage or cancel your subscription at any time from the billing portal (web) or native store subscription settings (iOS/Android).
             </>
           }
           vi="Gói đăng ký tự động gia hạn. Gói sẽ tự động gia hạn vào cuối mỗi kỳ thanh toán với mức giá niêm yết trừ khi bạn hủy ít nhất 24 giờ trước ngày gia hạn. Bạn có thể quản lý hoặc hủy bất cứ lúc nào."

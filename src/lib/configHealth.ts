@@ -54,10 +54,15 @@ export async function runConfigHealthCheck(): Promise<ConfigCheck[]> {
   }
 
   // ── RevenueCat (optional — skip if not defined) ──────────────────
-  const rcKey = import.meta.env.VITE_REVENUECAT_APPLE_API_KEY;
-  if (rcKey !== undefined && (!rcKey || rcKey === "placeholder")) {
+  const rcAppleKey = import.meta.env.VITE_REVENUECAT_APPLE_API_KEY;
+  if (rcAppleKey !== undefined && (!rcAppleKey || rcAppleKey === "placeholder")) {
     checks.push({ name: "RevenueCat", key: "VITE_REVENUECAT_APPLE_API_KEY", present: false });
     report("RevenueCat Apple API key not configured", isDev);
+  }
+  const rcGoogleKey = import.meta.env.VITE_REVENUECAT_GOOGLE_API_KEY;
+  if (rcGoogleKey !== undefined && (!rcGoogleKey || rcGoogleKey === "placeholder")) {
+    checks.push({ name: "RevenueCat", key: "VITE_REVENUECAT_GOOGLE_API_KEY", present: false });
+    report("RevenueCat Google Play API key not configured", isDev);
   }
 
   return checks;
