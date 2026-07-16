@@ -11,20 +11,22 @@ import { unregisterAllServiceWorkers } from "@/lib/swRecovery";
 // alias so the rest of this file (and its tests, which assert the raw
 // string) stay unchanged.
 const RELOAD_SESSION_KEY = CHUNK_RELOAD_KEY;
+const SCOPED_RELOAD_PREFIX = `${RELOAD_SESSION_KEY}:`;
+const RECENT_RECOVERY_PREFIX = `${RELOAD_SESSION_KEY}:recent:`;
 
 type LazyComponent = Awaited<ReturnType<Parameters<typeof lazy>[0]>>["default"];
 
-function hasAlreadyReloaded(): boolean {
+function sessionGet(key: string): string | null {
   try {
-    return sessionStorage.getItem(RELOAD_SESSION_KEY) === "1";
+    return sessionStorage.getItem(key);
   } catch {
-    return false;
+    return null;
   }
 }
 
-function markReloaded(): void {
+function sessionSet(key: string, value: string): void {
   try {
-    sessionStorage.setItem(RELOAD_SESSION_KEY, "1");
+    sessionStorage.setItem(key, value);
   } catch {
     // sessionStorage can throw in private mode / sandboxed iframes.
     // Best-effort: if writing fails the second reload still won't loop —
@@ -32,11 +34,40 @@ function markReloaded(): void {
   }
 }
 
-function clearReloadMark(): void {
-  // Clears BOTH the Tier-1 (this module) and Tier-2 (ErrorBoundary) marks
-  // so a clean chunk load re-arms the whole recovery ladder for a later
-  // deploy in the same session. Internally best-effort (own try/catch).
-  clearChunkRecoveryMarks();
+function sessionRemove(key: string): void {
+  try {
+    sessionStorage.removeItem(key);
+  } catch {
+    // nothing persisted to clear if sessionStorage is unavailable
+  }
+}
+
+function hasAlreadyReloaded(storageKey: string): boolean {
+  return sessionGet(storageKey) === "1";
+}
+
+function markReloaded(storageKey: string, factoryKey: string): void {
+  sessionSet(storageKey, "1");
+  sessionSet(recentRecoveryKey(factoryKey), storageKey);
+}
+
+function clearReloadMark(storageKey: string, factoryKey: string): void {
+  sessionRemove(storageKey);
+  const recentKey = recentRecoveryKey(factoryKey);
+  if (sessionGet(recentKey) === storageKey) {
+    sessionRemove(recentKey);
+  }
+}
+
+function clearRecentReloadMarkForFactory(factoryKey: string): void {
+  const recentKey = recentRecoveryKey(factoryKey);
+  const storageKey = sessionGet(recentKey);
+  if (storageKey) sessionRemove(storageKey);
+  sessionRemove(recentKey);
+}
+
+function clearErrorBoundaryReloadMark(): void {
+  clearChunkRecoveryMarks({ tier1: false, tier2: true });
 }
 
 function looksLikeLazyModuleResolutionFailure(err: unknown): boolean {
@@ -50,6 +81,54 @@ function looksLikeLazyModuleResolutionFailure(err: unknown): boolean {
 
 function looksLikeRecoverableLazyImportFailure(err: unknown): boolean {
   return looksLikeChunkLoadFailure(err) || looksLikeLazyModuleResolutionFailure(err);
+}
+
+function recoveryStorageKey(componentImport: () => Promise<{ default: LazyComponent }>, err: unknown): string {
+  const id = chunkIdentifier(err) ?? factoryIdentifier(componentImport);
+  return `${SCOPED_RELOAD_PREFIX}${hashIdentifier(id)}`;
+}
+
+function recoveryFactoryKey(componentImport: () => Promise<{ default: LazyComponent }>): string {
+  return hashIdentifier(factoryIdentifier(componentImport));
+}
+
+function recentRecoveryKey(factoryKey: string): string {
+  return `${RECENT_RECOVERY_PREFIX}${factoryKey}`;
+}
+
+function chunkIdentifier(err: unknown): string | null {
+  const message = errorText(err);
+  const url = message.match(/https?:\/\/[^\s"'<>]+\/assets\/[A-Za-z0-9_.-]+\.js/)?.[0] ??
+    message.match(/\/assets\/[A-Za-z0-9_.-]+\.js/)?.[0];
+  if (url) return url;
+  return null;
+}
+
+function factoryIdentifier(componentImport: () => Promise<{ default: LazyComponent }>): string {
+  try {
+    return componentImport.toString();
+  } catch {
+    return "unknown-lazy-import";
+  }
+}
+
+function hashIdentifier(input: string): string {
+  let hash = 2166136261;
+  for (let i = 0; i < input.length; i += 1) {
+    hash ^= input.charCodeAt(i);
+    hash = Math.imul(hash, 16777619);
+  }
+  return (hash >>> 0).toString(36);
+}
+
+function errorText(err: unknown): string {
+  if (err instanceof Error) return `${err.name}: ${err.message}\n${err.stack ?? ""}`;
+  if (typeof err === "string") return err;
+  try {
+    return JSON.stringify(err) ?? String(err);
+  } catch {
+    return String(err);
+  }
 }
 
 // Exported for unit tests. Wraps an import() factory so a stale-chunk
@@ -73,26 +152,30 @@ export function createRetryLoader<T extends LazyComponent>(
   componentImport: () => Promise<{ default: T }>,
 ): () => Promise<{ default: T }> {
   return async () => {
+    const factoryKey = recoveryFactoryKey(componentImport);
     try {
       const mod = await componentImport();
-      clearReloadMark();
+      clearRecentReloadMarkForFactory(factoryKey);
+      clearErrorBoundaryReloadMark();
       return mod;
     } catch (error) {
       if (!looksLikeRecoverableLazyImportFailure(error)) {
         throw error;
       }
+      const storageKey = recoveryStorageKey(componentImport, error);
 
       try {
         const mod = await componentImport();
-        clearReloadMark();
+        clearReloadMark(storageKey, factoryKey);
+        clearErrorBoundaryReloadMark();
         return mod;
       } catch (retryError) {
         if (!looksLikeRecoverableLazyImportFailure(retryError)) {
           throw retryError;
         }
 
-        if (!hasAlreadyReloaded()) {
-          markReloaded();
+        if (!hasAlreadyReloaded(storageKey)) {
+          markReloaded(storageKey, factoryKey);
           if (typeof window !== "undefined") {
             // Cache-busting nav, NOT a plain reload: embedded webviews
             // (FB in-app browser, iOS Chrome/WKWebView) re-serve the stale

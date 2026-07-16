@@ -73,10 +73,14 @@ export function markErrorBoundaryReloaded(): void {
 // routinely spans ≥2 deploys at this repo's PR-per-deploy cadence. Loop
 // protection is preserved: a chunk that is genuinely gone never resolves,
 // so neither mark is ever cleared and the escalation terminates.
-export function clearChunkRecoveryMarks(): void {
+export function clearChunkRecoveryMarks(
+  options: { tier1?: boolean; tier2?: boolean } = {},
+): void {
+  const clearTier1 = options.tier1 ?? true;
+  const clearTier2 = options.tier2 ?? true;
   try {
-    sessionStorage.removeItem(CHUNK_RELOAD_KEY);
-    sessionStorage.removeItem(CHUNK_EB_RELOAD_KEY);
+    if (clearTier1) sessionStorage.removeItem(CHUNK_RELOAD_KEY);
+    if (clearTier2) sessionStorage.removeItem(CHUNK_EB_RELOAD_KEY);
   } catch {
     /* nothing persisted to clear if sessionStorage is unavailable */
   }

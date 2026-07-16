@@ -3,6 +3,7 @@ import { createRetryLoader } from "@/lib/lazyWithRetry";
 import { ChunkLoadRecoveryError } from "@/lib/chunkLoadError";
 
 const RELOAD_KEY = "__mb_chunk_reload_once__";
+const SCOPED_RELOAD_PREFIX = `${RELOAD_KEY}:`;
 
 function makeStaleChunkError(): Error {
   return new TypeError(
@@ -10,8 +11,23 @@ function makeStaleChunkError(): Error {
   );
 }
 
+function makeStalePricingChunkError(): Error {
+  return new TypeError(
+    "Failed to fetch dynamically imported module: https://www.mercyblade.com/assets/Pricing-CSa0EAu2.js",
+  );
+}
+
 function makeStaleNamedExportError(): Error {
   return new TypeError("Cannot read properties of undefined (reading 'MilestoneObserver')");
+}
+
+function scopedReloadKeys(): string[] {
+  const keys: string[] = [];
+  for (let i = 0; i < sessionStorage.length; i += 1) {
+    const key = sessionStorage.key(i);
+    if (key?.startsWith(SCOPED_RELOAD_PREFIX)) keys.push(key);
+  }
+  return keys;
 }
 
 async function flushRecoveryNavigation(): Promise<void> {
@@ -72,7 +88,8 @@ describe("createRetryLoader", () => {
     expect(importer).toHaveBeenCalledTimes(2);
     expect(replaceSpy).toHaveBeenCalledTimes(1);
     expect(replaceSpy.mock.calls[0][0]).toMatch(/[?&]_cb=\d+/);
-    expect(sessionStorage.getItem(RELOAD_KEY)).toBe("1");
+    expect(scopedReloadKeys()).toHaveLength(2);
+    expect(scopedReloadKeys().some((key) => sessionStorage.getItem(key) === "1")).toBe(true);
   });
 
   it("retries a stale-chunk import once before triggering recovery", async () => {
@@ -86,7 +103,7 @@ describe("createRetryLoader", () => {
     await expect(loader()).resolves.toEqual({ default: fakeComponent });
     expect(importer).toHaveBeenCalledTimes(2);
     expect(replaceSpy).not.toHaveBeenCalled();
-    expect(sessionStorage.getItem(RELOAD_KEY)).toBeNull();
+    expect(scopedReloadKeys()).toHaveLength(0);
   });
 
   it("recovers when a stale lazy module resolves without the expected named export", async () => {
@@ -105,7 +122,8 @@ describe("createRetryLoader", () => {
     expect(importer).toHaveBeenCalledTimes(2);
     expect(replaceSpy).toHaveBeenCalledTimes(1);
     expect(replaceSpy.mock.calls[0][0]).toMatch(/[?&]_cb=\d+/);
-    expect(sessionStorage.getItem(RELOAD_KEY)).toBe("1");
+    expect(scopedReloadKeys()).toHaveLength(2);
+    expect(scopedReloadKeys().some((key) => sessionStorage.getItem(key) === "1")).toBe(true);
   });
 
   it("retries named-export lazy module resolution once before triggering recovery", async () => {
@@ -119,15 +137,19 @@ describe("createRetryLoader", () => {
     await expect(loader()).resolves.toEqual({ default: fakeComponent });
     expect(importer).toHaveBeenCalledTimes(2);
     expect(replaceSpy).not.toHaveBeenCalled();
-    expect(sessionStorage.getItem(RELOAD_KEY)).toBeNull();
+    expect(scopedReloadKeys()).toHaveLength(0);
   });
 
   it("does not recover a second time within the same session — throws typed chunk recovery error", async () => {
-    sessionStorage.setItem(RELOAD_KEY, "1");
     const importer = vi.fn(async () => {
       throw makeStaleChunkError();
     });
     const loader = createRetryLoader(importer);
+
+    void loader();
+    await flushRecoveryNavigation();
+    replaceSpy.mockClear();
+    importer.mockClear();
 
     await expect(loader()).rejects.toMatchObject({
       name: "ChunkLoadRecoveryError",
@@ -149,49 +171,75 @@ describe("createRetryLoader", () => {
   });
 
   it("clears a previously-set reload mark on a successful chunk load", async () => {
-    // A prior stale-chunk recovery this session left the one-shot set.
-    sessionStorage.setItem(RELOAD_KEY, "1");
     const fakeComponent = () => null;
-    const loader = createRetryLoader(async () => ({ default: fakeComponent }));
+    const importer = vi
+      .fn()
+      .mockRejectedValueOnce(makeStaleChunkError())
+      .mockRejectedValueOnce(makeStaleChunkError())
+      .mockResolvedValueOnce({ default: fakeComponent });
+    const loader = createRetryLoader(importer);
+
+    void loader();
+    await flushRecoveryNavigation();
+    expect(scopedReloadKeys()).toHaveLength(2);
 
     await expect(loader()).resolves.toEqual({ default: fakeComponent });
-    // Clean load proves HTML/chunk hashes are consistent again → reset the
-    // one-shot so a later deploy in this session can recover too.
-    expect(sessionStorage.getItem(RELOAD_KEY)).toBeNull();
-    expect(replaceSpy).not.toHaveBeenCalled();
+    expect(scopedReloadKeys()).toHaveLength(0);
+    expect(replaceSpy).toHaveBeenCalledTimes(1);
   });
 
   it("also clears the Tier-2 (ErrorBoundary) mark on a successful chunk load", async () => {
-    sessionStorage.setItem(RELOAD_KEY, "1");
     sessionStorage.setItem("__mb_chunk_eb_reload_once__", "1");
     const loader = createRetryLoader(async () => ({ default: () => null }));
 
     await expect(loader()).resolves.toBeTruthy();
-    // A clean load re-arms the WHOLE ladder for a later deploy this session.
-    expect(sessionStorage.getItem(RELOAD_KEY)).toBeNull();
     expect(sessionStorage.getItem("__mb_chunk_eb_reload_once__")).toBeNull();
   });
 
   it("re-arms recovery: success-then-stale-chunk recovers again (later deploy in same session)", async () => {
-    // Session already spent its first recovery on an earlier deploy.
-    sessionStorage.setItem(RELOAD_KEY, "1");
-
-    // Post-reload boot: a chunk loads cleanly → mark is cleared.
-    const ok = createRetryLoader(async () => ({ default: () => null }));
-    await expect(ok()).resolves.toBeTruthy();
-    expect(sessionStorage.getItem(RELOAD_KEY)).toBeNull();
-
-    // A NEW deploy ships; the user navigates to a now-stale lazy route.
-    const stale = createRetryLoader(async () => {
+    const firstDeploy = createRetryLoader(async () => {
       throw makeStaleChunkError();
     });
-    void stale();
+    void firstDeploy();
+    await flushRecoveryNavigation();
+    expect(replaceSpy).toHaveBeenCalledTimes(1);
+
+    replaceSpy.mockClear();
+
+    // A later deploy ships a different chunk URL. It gets its own scoped
+    // recovery even though the earlier failed chunk remains marked.
+    const laterDeploy = createRetryLoader(async () => {
+      throw makeStalePricingChunkError();
+    });
+    void laterDeploy();
     await flushRecoveryNavigation();
 
-    // Recovery is re-armed: it cache-bust navigates again instead of
-    // crashing into the ErrorBoundary, and re-sets the one-shot.
     expect(replaceSpy).toHaveBeenCalledTimes(1);
-    expect(sessionStorage.getItem(RELOAD_KEY)).toBe("1");
+    expect(scopedReloadKeys().filter((key) => sessionStorage.getItem(key) === "1").length).toBeGreaterThanOrEqual(2);
+  });
+
+  it("does not re-arm a broken chunk after an unrelated lazy import succeeds", async () => {
+    const pricingImporter = vi.fn(async () => {
+      throw makeStalePricingChunkError();
+    });
+    const pricingLoader = createRetryLoader(pricingImporter);
+
+    void pricingLoader();
+    await flushRecoveryNavigation();
+    expect(replaceSpy).toHaveBeenCalledTimes(1);
+
+    const unrelatedLoader = createRetryLoader(async () => ({ default: () => null }));
+    await expect(unrelatedLoader()).resolves.toBeTruthy();
+
+    replaceSpy.mockClear();
+    pricingImporter.mockClear();
+
+    await expect(pricingLoader()).rejects.toMatchObject({
+      name: "ChunkLoadRecoveryError",
+      cause: expect.any(TypeError),
+    });
+    expect(pricingImporter).toHaveBeenCalledTimes(2);
+    expect(replaceSpy).not.toHaveBeenCalled();
   });
 
   it("supports the .then(m => ({ default: m.X })) factory shape (main.tsx toasters)", async () => {
@@ -202,7 +250,7 @@ describe("createRetryLoader", () => {
     );
 
     await expect(loader()).resolves.toEqual({ default: Named });
-    expect(sessionStorage.getItem(RELOAD_KEY)).toBeNull();
+    expect(scopedReloadKeys()).toHaveLength(0);
     expect(replaceSpy).not.toHaveBeenCalled();
   });
 
