@@ -402,4 +402,29 @@ export const VN_EXPLANATIONS: L1Explanation[] = [
     en: "Vietnamese can omit a subject when context is clear. English finite clauses normally need an explicit subject. Try: *{FIX}*.",
     vi: "Tiếng Việt có thể lược bỏ chủ ngữ khi ngữ cảnh rõ. Mệnh đề tiếng Anh thường cần chủ ngữ rõ ràng. Thử: *{FIX}*.",
   },
+  {
+    tag: 'vi_l1_modal_overinflection',
+    en: "English modals do not take **-s**. Use **can / should / will** for every subject, then keep the next verb bare. Try: *{FIX}*.",
+    vi: "Trợ động từ tiếng Anh như **can / should / will** không thêm **-s**, dù chủ ngữ là he/she/it. Thử: *{FIX}*.",
+  },
+  {
+    tag: 'vi_l1_phrasal_verb_transfer',
+    en: "This everyday English meaning uses a phrasal verb, not the direct verb. Treat the full phrase as one vocabulary chunk. Try: *{FIX}*.",
+    vi: "Ý này trong tiếng Anh tự nhiên dùng cụm động từ, không dùng động từ dịch thẳng từng chữ. Học cả cụm như một đơn vị. Thử: *{FIX}*.",
+  },
+  {
+    tag: 'vi_l1_very_verb_calque',
+    en: "Use **really** or **like ... very much** with verbs. **Very** goes before adjectives, not directly before verbs like **like**. Try: *{FIX}*.",
+    vi: "Với động từ như **like**, tiếng Anh dùng **really** hoặc **like ... very much**. **Very** thường đứng trước tính từ, không đứng ngay trước động từ. Thử: *{FIX}*.",
+  },
+  {
+    tag: 'vi_l1_overexplicit_reference',
+    en: "After naming someone once, English usually switches to a pronoun like **she** or **he**. Repeating the name in every sentence sounds unnatural. Try: *{FIX}*.",
+    vi: "Sau khi đã nêu tên một người, tiếng Anh thường chuyển sang đại từ như **she/he**. Lặp lại tên ở mọi câu nghe không tự nhiên. Thử: *{FIX}*.",
+  },
+  {
+    tag: 'vi_l1_time_reference_overmarking',
+    en: "In a short narrative, English usually states the time once, then continues the sequence. Repeating the same time marker in every sentence sounds heavy. Try: *{FIX}*.",
+    vi: "Khi kể một chuỗi việc, tiếng Anh thường nêu mốc thời gian một lần rồi kể tiếp. Lặp lại cùng mốc thời gian ở từng câu nghe nặng. Thử: *{FIX}*.",
+  },
 ];

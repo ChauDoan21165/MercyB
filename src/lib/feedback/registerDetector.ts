@@ -57,6 +57,19 @@ export type RegisterDetectionInput = {
   learnerText: string;
 };
 
+export type RegisterScenario =
+  | 'professional_request'
+  | 'instruction'
+  | 'professional_apology'
+  | 'professional_refusal'
+  | 'casual_refusal';
+
+export type RegisterDetectionWithContextInput = {
+  learnerText: string;
+  expectedText?: string;
+  scenario: RegisterScenario;
+};
+
 export type RegisterDetectionResult =
   | {
       matched: true;
@@ -135,6 +148,13 @@ const CASUAL_OPENER_PROFESSIONAL = /^(?:hey|yo)\s+(?:teacher|professor|dr\.?\s*|
  */
 const SLANG_APOLOGY = /\bmy\s+bad\b/i;
 
+const DIRECT_REQUEST_TRANSFER = /^\s*(?:you\s+(?:send|give|bring|tell|call|email|show|help|check|make|finish|open|close)|give\s+me|send\s+me)\b/i;
+const POLITE_REQUEST_FORMULA = /\b(?:could|would)\s+you\b|\bplease\b|\bwould\s+you\s+mind\b|\bcan\s+you\s+please\b/i;
+const APOLOGY_START = /^\s*(?:i['’]?\s*m\s+sorry|sorry|apologies|my\s+apologies)\b/i;
+const EXPLANATION_BEFORE_APOLOGY = /\b(?:traffic|train|bus|weather|because|so|therefore|late|delayed)\b/i;
+const BARE_REFUSAL = /^\s*(?:no\b|i\s+(?:do\s+not|don['’]?t)\s+(?:go|come|join|attend|help|do)|i\s+can['’]?t\b|cannot\b)/i;
+const SOFT_REFUSAL_FORMULA = /\b(?:thanks?|thank\s+you|unfortunately|i\s+appreciate|i\s+wish\s+i\s+could|but\s+i\s+can['’]?t|i\s+can['’]?t\s+this)\b/i;
+
 // ── Lookup table ────────────────────────────────────────────────────────────
 
 /**
@@ -160,6 +180,21 @@ function getTaxonomyPattern(id: string): RegisterPattern | undefined {
     _taxonomyMap = new Map(REGISTER_TAXONOMY.map((p) => [p.id, p]));
   }
   return _taxonomyMap.get(id);
+}
+
+function makeContextMatch(
+  patternId: string,
+  tag: string,
+  explanationVi: string,
+  explanationEn: string,
+): RegisterDetectionResult {
+  return {
+    matched: true,
+    patternId,
+    tag,
+    explanationVi,
+    explanationEn,
+  };
 }
 
 // ── Public API ───────────────────────────────────────────────────────────────
@@ -194,6 +229,63 @@ export function detectRegisterError(
         };
       }
     }
+  }
+
+  return { matched: false };
+}
+
+/**
+ * Context-aware register detector for cases where the caller already knows the
+ * scenario/addressee contract. This deliberately does not broaden
+ * detectRegisterError(): context-free direct requests/refusals still abstain.
+ */
+export function detectRegisterErrorWithContext(
+  input: RegisterDetectionWithContextInput,
+): RegisterDetectionResult {
+  const learnerText = input.learnerText.trim();
+  const expectedText = input.expectedText?.trim() ?? '';
+
+  const surfaceOnly = detectRegisterError({ learnerText });
+  if (surfaceOnly.matched) return surfaceOnly;
+
+  if (
+    input.scenario === 'professional_request' &&
+    DIRECT_REQUEST_TRANSFER.test(learnerText) &&
+    POLITE_REQUEST_FORMULA.test(expectedText)
+  ) {
+    return makeContextMatch(
+      'direct_request_transfer',
+      'en_l1_register_direct_request_transfer',
+      'Trong bối cảnh công việc, câu yêu cầu trực tiếp kiểu "You send me..." nghe như ra lệnh. Dùng "Could you..." hoặc "Would you..." để mềm hơn.',
+      'In a professional request, a bare command like "You send me..." sounds like an order. Use a soft request form such as "Could you..." or "Would you...".',
+    );
+  }
+
+  if (
+    input.scenario === 'professional_apology' &&
+    !APOLOGY_START.test(learnerText) &&
+    APOLOGY_START.test(expectedText) &&
+    EXPLANATION_BEFORE_APOLOGY.test(learnerText)
+  ) {
+    return makeContextMatch(
+      'apology_explanation_before_responsibility',
+      'en_l1_register_apology_explanation_order',
+      'Trong email hoặc lời xin lỗi công việc, nhận trách nhiệm trước rồi mới giải thích lý do. Mở đầu bằng "Sorry/Apologies" trước phần lý do.',
+      'In a professional apology, take responsibility first and then explain. Start with "Sorry/Apologies" before the reason.',
+    );
+  }
+
+  if (
+    input.scenario === 'professional_refusal' &&
+    BARE_REFUSAL.test(learnerText) &&
+    SOFT_REFUSAL_FORMULA.test(expectedText)
+  ) {
+    return makeContextMatch(
+      'refusal_softening_gap',
+      'en_l1_register_refusal_softening_gap',
+      'Khi từ chối trong bối cảnh công việc, đừng chỉ nói "No". Thêm lời cảm ơn hoặc lý do ngắn để câu nghe lịch sự hơn.',
+      'In a professional refusal, do not answer with a bare "No." Add thanks, a brief reason, or a softener.',
+    );
   }
 
   return { matched: false };

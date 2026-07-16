@@ -603,6 +603,41 @@ export const L1_DESCRIPTIONS: Record<L1WeaknessTag, LearnerLanguage> = {
     exampleEn: "Because I was busy.",
     severity: "high",
   },
+  vi_l1_modal_overinflection: {
+    shortVi: "Trợ động từ không thêm -s.",
+    shortEn: "Modals do not take -s.",
+    exampleVi: "He cans speak → He can speak.",
+    exampleEn: "He can speak English.",
+    severity: "high",
+  },
+  vi_l1_phrasal_verb_transfer: {
+    shortVi: "Một số ý cần cụm động từ.",
+    shortEn: "Some meanings need phrasal verbs.",
+    exampleVi: "wake at six → get up at six.",
+    exampleEn: "I get up at six.",
+    severity: "medium",
+  },
+  vi_l1_very_verb_calque: {
+    shortVi: "Very không đứng trước động từ.",
+    shortEn: "Very does not modify verbs directly.",
+    exampleVi: "very like → really like.",
+    exampleEn: "I really like this song.",
+    severity: "medium",
+  },
+  vi_l1_overexplicit_reference: {
+    shortVi: "Đã nêu tên rồi thường dùng đại từ.",
+    shortEn: "Use pronouns after naming someone.",
+    exampleVi: "Lan... Lan... Lan → Lan... She... She.",
+    exampleEn: "Lan is kind. She works with me.",
+    severity: "low",
+  },
+  vi_l1_time_reference_overmarking: {
+    shortVi: "Không lặp mốc thời gian ở mọi câu.",
+    shortEn: "Do not repeat the same time marker.",
+    exampleVi: "Yesterday... Yesterday... → Yesterday... I...",
+    exampleEn: "Yesterday I went. I met my boss.",
+    severity: "low",
+  },
 };
 
 // ──────────────────────────────────────────────────────────────────────────

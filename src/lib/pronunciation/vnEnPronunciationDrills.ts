@@ -317,6 +317,10 @@ export const VN_EN_PRONUNCIATION_DRILL_BANKS: Record<string, ProblemPair[]> = {
 };
 
 export type FinalClusterFeedbackKey = 'final_cluster_simplification';
+export type FinalStopVoicingFeedbackKey = 'final_stop_voicing';
+export type DiphthongReductionFeedbackKey = 'diphthong_reduction';
+export type VWFeedbackKey = 'v_w_confusion';
+export type FinalLFeedbackKey = 'final_l_deletion';
 
 const FINAL_CLUSTER_SUFFIXES = [
   'st', 'sk', 'sp', 'ld', 'nd', 'nt', 'ft', 'lf', 'mp',
@@ -326,6 +330,43 @@ const FINAL_CLUSTER_SUFFIXES = [
 function hasFinalClusterShape(word: string): boolean {
   return FINAL_CLUSTER_SUFFIXES.some((suffix) => word.endsWith(suffix));
 }
+
+function normalizePronunciationWord(word: string): string {
+  return String(word || '').toLowerCase().replace(/[^a-z]/g, '').trim();
+}
+
+const FINAL_STOP_VOICING_PAIRS: Record<string, readonly string[]> = {
+  bag: ['back'],
+  bad: ['bat'],
+  bed: ['bet'],
+  cab: ['cap'],
+  code: ['coat'],
+  league: ['leak'],
+  robe: ['rope'],
+  seed: ['seat'],
+};
+
+const DIPHTHONG_REDUCTION_PAIRS: Record<string, readonly string[]> = {
+  boat: ['bot'],
+  coat: ['cot'],
+  face: ['fess'],
+  late: ['let'],
+  road: ['rod'],
+};
+
+const VW_CONFUSION_PAIRS: Record<string, readonly string[]> = {
+  very: ['wery', 'yery'],
+  vest: ['west', 'yest'],
+  vine: ['wine', 'yine'],
+  voice: ['woice', 'yoice'],
+};
+
+const FINAL_L_DELETION_PAIRS: Record<string, readonly string[]> = {
+  call: ['caw'],
+  feel: ['fee'],
+  sail: ['say'],
+  tool: ['too'],
+};
 
 /**
  * Select the stable feedback key for Vietnamese-speaker final-cluster
@@ -337,7 +378,7 @@ export function selectFinalClusterFeedbackKey(
   targetWord: string,
   heardWord?: string,
 ): FinalClusterFeedbackKey | null {
-  const target = String(targetWord || '').toLowerCase().trim();
+  const target = normalizePronunciationWord(targetWord);
   if (!target || !hasFinalClusterShape(target)) return null;
 
   const variants = getAcceptedVariants(target).filter((entry) => {
@@ -347,7 +388,7 @@ export function selectFinalClusterFeedbackKey(
   });
   if (variants.length === 0) return null;
 
-  const heard = String(heardWord || '').toLowerCase().trim();
+  const heard = normalizePronunciationWord(heardWord ?? '');
   if (heard) {
     return variants.some((entry) => entry.variant === heard)
       ? 'final_cluster_simplification'
@@ -361,4 +402,44 @@ export function selectFinalClusterFeedbackKey(
     ),
   );
   return hasDrillContext || variants.length > 0 ? 'final_cluster_simplification' : null;
+}
+
+export function selectFinalStopVoicingFeedbackKey(
+  targetWord: string,
+  heardWord: string,
+): FinalStopVoicingFeedbackKey | null {
+  const target = normalizePronunciationWord(targetWord);
+  const heard = normalizePronunciationWord(heardWord);
+  if (!target || !heard || target === heard) return null;
+  return FINAL_STOP_VOICING_PAIRS[target]?.includes(heard) ? 'final_stop_voicing' : null;
+}
+
+export function selectDiphthongReductionFeedbackKey(
+  targetWord: string,
+  heardWord: string,
+): DiphthongReductionFeedbackKey | null {
+  const target = normalizePronunciationWord(targetWord);
+  const heard = normalizePronunciationWord(heardWord);
+  if (!target || !heard || target === heard) return null;
+  return DIPHTHONG_REDUCTION_PAIRS[target]?.includes(heard) ? 'diphthong_reduction' : null;
+}
+
+export function selectVWFeedbackKey(
+  targetWord: string,
+  heardWord: string,
+): VWFeedbackKey | null {
+  const target = normalizePronunciationWord(targetWord);
+  const heard = normalizePronunciationWord(heardWord);
+  if (!target || !heard || target === heard) return null;
+  return VW_CONFUSION_PAIRS[target]?.includes(heard) ? 'v_w_confusion' : null;
+}
+
+export function selectFinalLFeedbackKey(
+  targetWord: string,
+  heardWord: string,
+): FinalLFeedbackKey | null {
+  const target = normalizePronunciationWord(targetWord);
+  const heard = normalizePronunciationWord(heardWord);
+  if (!target || !heard || target === heard) return null;
+  return FINAL_L_DELETION_PAIRS[target]?.includes(heard) ? 'final_l_deletion' : null;
 }

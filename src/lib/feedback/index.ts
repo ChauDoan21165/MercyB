@@ -81,8 +81,11 @@ export {
 // See registerDetector.ts for the WIRING SPEC (how A1 wires this into the Sửa câu panel).
 export {
   detectRegisterError,
+  detectRegisterErrorWithContext,
   type RegisterDetectionInput,
+  type RegisterDetectionWithContextInput,
   type RegisterDetectionResult,
+  type RegisterScenario,
 } from './registerDetector';
 
 // Step 11 seed — awkward-Vietlish DARK detector (flag-gated, telemetry-only).
